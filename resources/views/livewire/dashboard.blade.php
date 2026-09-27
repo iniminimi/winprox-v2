@@ -1,4 +1,139 @@
 <div class="wp-stack" data-manual-capture="dashboard">
+    @if ($checkmate !== null)
+        {{-- Checkmate-dashboard (docs/CHECKMATE.md): wie is waar — geen
+             facility-tegels, meldingen of starter packs. --}}
+        <div class="wp-page-head">
+            <div class="wp-grow wp-stack-tight">
+                <x-wp-page-head-title
+                    icon="dashboard"
+                    :title="__('dashboard.title')"
+                    :subtitle="__('dashboard.checkmate.subtitle')"
+                />
+            </div>
+            <div class="wp-cluster">
+                @if ($portalBatteryState)
+                    <x-wp-trial-battery-capsule :state="$portalBatteryState" />
+                @endif
+            </div>
+        </div>
+
+        @if ($checkmate->presencePending)
+            <div class="wp-card wp-card-pad wp-stack-tight">
+                <p class="wp-text-body"><strong>{{ __('dashboard.checkmate.ciao.pending_title') }}</strong></p>
+                <p class="wp-muted">{{ __('dashboard.checkmate.ciao.pending_body') }}</p>
+                <div class="wp-cluster wp-cluster--tight">
+                    <a href="{{ route('settings.index') }}" class="btn btn--ghost btn--sm">
+                        {{ __('dashboard.checkmate.ciao.pending_cta') }}
+                    </a>
+                </div>
+            </div>
+        @endif
+
+        @if ($checkmate->needsWorkers)
+            <div class="wp-card wp-card-pad wp-stack-tight">
+                <p class="wp-text-body"><strong>{{ __('dashboard.checkmate.onboarding.workers_title') }}</strong></p>
+                <p class="wp-muted">{{ __('dashboard.checkmate.onboarding.workers_body') }}</p>
+                <div class="wp-cluster wp-cluster--tight">
+                    <a href="{{ route('workers.index') }}" class="btn btn--primary btn--sm">
+                        {{ __('dashboard.checkmate.onboarding.workers_cta') }}
+                    </a>
+                </div>
+            </div>
+        @elseif ($checkmate->needsCustomers)
+            <div class="wp-card wp-card-pad wp-stack-tight">
+                <p class="wp-text-body"><strong>{{ __('dashboard.checkmate.onboarding.customers_title') }}</strong></p>
+                <p class="wp-muted">{{ __('dashboard.checkmate.onboarding.customers_body') }}</p>
+                <div class="wp-cluster wp-cluster--tight">
+                    <a href="{{ route('customers.index', ['create' => 1]) }}" class="btn btn--primary btn--sm">
+                        {{ __('dashboard.checkmate.onboarding.customers_cta') }}
+                    </a>
+                </div>
+            </div>
+        @endif
+
+        <div class="wp-kpis">
+            @foreach ($checkmate->quickTiles as $tile)
+                <a href="{{ $tile['href'] }}"
+                   @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
+                   wire:key="cm-action-{{ $tile['key'] }}">
+                    <div class="wp-kpi-body">
+                        <span class="wp-kpi-icon" aria-hidden="true">
+                            <x-wp-icon :name="$tile['icon']" />
+                        </span>
+                        <div class="wp-kpi-main">
+                            <p class="wp-kpi-kicker">{{ __($tile['title']) }}</p>
+                            <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ __($tile['body']) }}</p>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
+        </div>
+
+        <div class="wp-kpis">
+            @foreach ($checkmate->kpis as $kpi)
+                <a href="{{ $kpi['href'] }}"
+                   @class(['wp-kpi', 'wp-kpi--'.$kpi['tone']])
+                   wire:key="cm-kpi-{{ $kpi['key'] }}">
+                    <div class="wp-kpi-body">
+                        <span class="wp-kpi-icon" aria-hidden="true">
+                            <x-wp-icon :name="$kpi['icon']" />
+                        </span>
+                        <div class="wp-kpi-main">
+                            <p class="wp-kpi-kicker">{{ __($kpi['label']) }}</p>
+                            <p class="wp-kpi-stats">
+                                <span class="wp-kpi-value wp-tabular">{{ $kpi['value'] }}</span>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
+        </div>
+
+        <div class="wp-card wp-card-pad wp-stack">
+            <div class="wp-row">
+                <h2 class="wp-section-title">{{ __('dashboard.checkmate.recent.title') }}</h2>
+                <a href="{{ route('time.presence.index') }}" class="btn btn--ghost btn--sm">
+                    {{ __('dashboard.checkmate.recent.open') }}
+                </a>
+            </div>
+
+            <div class="wp-list wp-list--entity-rows">
+                @forelse ($checkmate->recentVisits as $visit)
+                    @php
+                        $place = collect([
+                            $visit->location?->customer?->name,
+                            $visit->location?->name ?: $visit->location?->formattedAddress(),
+                        ])->filter()->join(' · ');
+                        $start = $visit->started_at?->timezone(config('app.timezone'));
+                        $timeLabel = $visit->isOpen()
+                            ? __('dashboard.checkmate.recent.since', ['time' => $start?->format('H:i')])
+                            : __('dashboard.checkmate.recent.range', [
+                                'start' => $start?->format('d/m H:i'),
+                                'end' => $visit->ended_at?->timezone(config('app.timezone'))->format('H:i'),
+                            ]);
+                    @endphp
+                    <a href="{{ $visit->isOpen() ? route('time.presence.index') : route('time.shifts.index') }}"
+                       class="wp-issue-row"
+                       wire:key="cm-visit-{{ $visit->id }}">
+                        <div class="wp-grow wp-stack-tight">
+                            <p class="wp-issue-card-title">{{ $visit->worker?->displayName() }}</p>
+                            @if ($place !== '')
+                                <p class="wp-issue-card-meta">{{ $place }}</p>
+                            @endif
+                            <p class="wp-issue-card-meta">{{ $timeLabel }}</p>
+                        </div>
+                        <div class="wp-issue-row-meta">
+                            <span class="wp-pill wp-pill--{{ $visit->isOpen() ? 'progress' : 'done' }}">
+                                {{ $visit->isOpen() ? __('dashboard.checkmate.recent.running') : __('dashboard.checkmate.recent.done') }}
+                            </span>
+                        </div>
+                    </a>
+                @empty
+                    <p class="wp-muted">{{ __('dashboard.checkmate.recent.empty') }}</p>
+                @endforelse
+            </div>
+        </div>
+    @else
     @if ($starterPackSummary)
         <div class="wp-card wp-card-pad">
             <div class="wp-stack">
@@ -289,5 +424,6 @@
                 </div>
             </div>
         </x-wp-modal>
+    @endif
     @endif
 </div>

@@ -10,6 +10,7 @@ use App\Actions\Time\RequestPresenceComplianceAction;
 use App\Actions\Time\StartWorkVisitAction;
 use App\Enums\PresenceComplianceScope;
 use App\Enums\PresenceSourceEvent;
+use App\Livewire\Dashboard;
 use App\Livewire\Pages\Subscription;
 use App\Livewire\Platform\Tenants as PlatformTenants;
 use App\Models\ClockPoint;
@@ -20,6 +21,7 @@ use App\Models\PresenceSubmission;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Models\Worker;
+use App\Models\WorkShift;
 use App\Models\WorkVisit;
 use App\Support\Billing\BillingCatalogViewData;
 use App\Support\Tenancy;
@@ -385,4 +387,57 @@ it('verbergt checkmate_trial uit de publieke catalogus maar niet uit Platform', 
     expect(BillingCatalogViewData::platformPlanKeys())
         ->toContain('checkmate')
         ->toContain('checkmate_trial');
+});
+
+it('toont het checkmate-dashboard met veldwerk-tegels en zonder facility-links', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+    $worker = checkmateWorker($tenant);
+    $customer = Customer::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'customer_id' => $customer->id,
+    ]);
+    WorkVisit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_shift_id' => WorkShift::factory()->create([
+            'tenant_id' => $tenant->id,
+            'worker_id' => $worker->id,
+        ])->id,
+        'unit_id' => null,
+        'location_id' => $location->id,
+    ]);
+
+    $this->actingAs($admin)->get('/dashboard')
+        ->assertOk()
+        ->assertSee(__('dashboard.checkmate.kpi.visits_today'))
+        ->assertSee(__('dashboard.checkmate.recent.title'))
+        ->assertSee($customer->name)
+        ->assertDontSee(__('dashboard.add_issue'))
+        ->assertDontSee(__('dashboard.recent.title'))
+        ->assertDontSee(route('issues.index'));
+});
+
+it('toont checkmate-onboarding voor uitvoerders in plaats van facility-starter packs', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $this->actingAs($admin)->get('/dashboard')
+        ->assertOk()
+        ->assertSee(__('dashboard.checkmate.onboarding.workers_title'))
+        ->assertDontSee(__('dashboard.starter_pack.offer_title'));
+});
+
+it('houdt het facility-dashboard ongewijzigd voor niet-checkmate tenants', function () {
+    $tenant = Tenant::factory()->create([
+        'checkmate_mode' => false,
+        'trial_ends_at' => now()->addDays(5),
+        'has_time_module' => true,
+    ]);
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    Livewire::actingAs($admin)
+        ->test(Dashboard::class)
+        ->assertViewHas('checkmate', null);
 });

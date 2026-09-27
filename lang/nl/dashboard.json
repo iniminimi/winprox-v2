@@ -1,150 +1,190 @@
 {
-    "title": "Dashboard",
-    "subtitle": "Overzicht van open meldingen, taken en aanwezigheid.",
-    "trial_capsule": {
-        "trial_short": "Proefperiode nog :days dagen.",
-        "trial_title": "Proefperiode",
-        "paid_short": "Abonnement nog :days dagen.",
-        "paid_title": "Abonnement",
-        "grace_short": "Nalichtperiode: nog :days dagen volledige toegang.",
-        "grace_title": "Nalichtperiode na verlopen abonnement"
+  "title": "Dashboard",
+  "subtitle": "Overzicht van open meldingen, taken en aanwezigheid.",
+  "trial_capsule": {
+    "trial_short": "Proefperiode nog :days dagen.",
+    "trial_title": "Proefperiode",
+    "paid_short": "Abonnement nog :days dagen.",
+    "paid_title": "Abonnement",
+    "grace_short": "Nalichtperiode: nog :days dagen volledige toegang.",
+    "grace_title": "Nalichtperiode na verlopen abonnement"
+  },
+  "add_issue": "+ Melding toevoegen",
+  "briefing": "Briefing",
+  "briefing_print": "Briefing afdrukken",
+  "briefing_empty": "Geen taken gepland voor vandaag.",
+  "briefing_no_team": "Geen team",
+  "kpi": {
+    "new_issues": "Nieuwe meldingen",
+    "open_tasks": "Open taken",
+    "present_now": "Nu aanwezig",
+    "pending_review": "Te beoordelen",
+    "time_attention": "Time-aandacht",
+    "pending_absence": "Aanvragen",
+    "pending_absence_leave": ":count Verlof",
+    "pending_absence_recup": ":count Recup",
+    "iot_alarms": "IoT-alarmen"
+  },
+  "recent": {
+    "title": "Recente meldingen",
+    "open_issues": "Meldingen openen",
+    "empty": "Er zijn nog geen meldingen.",
+    "reporter_anon": "Anoniem",
+    "no_location": "Geen locatie"
+  },
+  "welcome": "Welkom bij WinProx",
+  "onboarding": {
+    "teams": {
+      "title": "Begin met één team",
+      "text": "In een kleine organisatie is één team genoeg. Voeg iedereen die taken uitvoert toe (naam + icoon). Of laat WinProx eerst een voorbeeldomgeving klaarzetten.",
+      "button": "Team aanmaken"
     },
-    "add_issue": "+ Melding toevoegen",
-    "briefing": "Briefing",
-    "briefing_print": "Briefing afdrukken",
-    "briefing_empty": "Geen taken gepland voor vandaag.",
-    "briefing_no_team": "Geen team",
+    "categories": {
+      "title": "Begin met het aanmaken van categorieën",
+      "text": "Ga naar Plaatsen → Categorieën en voeg categorieën toe om units te groeperen (bijv. kamers, sanitair, kantoor). Eén team mag aan alle categorieën hangen — taken komen dan bij dezelfde mensen terecht. Bij meerdere teams koppel je elk team aan de categorieën waar het voor werkt. Voeg daarna locaties toe onder Plaatsen → Locaties en maak per locatie units aan — of via Plaatsen → Units.",
+      "button": "Categorieën beheren"
+    },
+    "locations": {
+      "title": "Begin met het aanmaken van locaties en units",
+      "text": "Ga naar Plaatsen → Locaties, voeg locaties toe en maak per locatie units aan (machines, ruimtes, assets). Units kun je ook importeren via CSV of Excel, of in bulk aanmaken.",
+      "button": "Locaties beheren"
+    },
+    "units": {
+      "title": "Begin met het aanmaken van units",
+      "text": "Open je locatie en voeg units toe (machines, ruimtes, assets). Units kun je één voor één, in bulk of via CSV/Excel aanmaken.",
+      "button": "Units toevoegen"
+    },
+    "clock_point": {
+      "title": "Maak een Clock Point aan",
+      "text": "Uitvoerders melden zich aan en klokken in via een Clock Point. Maak minstens één clock point aan en print de QR-sticker of het QR-afdrukblad zodat je team kan starten.",
+      "button": "Clock Points"
+    }
+  },
+  "register_success": {
+    "title": "Account aangemaakt",
+    "body": "Je werkruimte is klaar. Je kan nu meteen je eerste taken beheren."
+  },
+  "starter_pack": {
+    "help_button": "Wil je op weg geholpen worden?",
+    "modal_title": "Op weg geholpen worden",
+    "intro": "We kunnen een kleine voorbeeldomgeving voor je klaarzetten. Zo kun je meteen rondkijken en zelf een paar dingen uitproberen.",
+    "offer_title": "Wil je eerst even kijken hoe WinProx werkt?",
+    "intro_detail": "Je krijgt een voorbeeld met teams, categorieën, een locatie en enkele units.",
+    "issues_note": "Zodra er meldingen op een unit staan, kan die unit alleen nog gedeactiveerd worden (niet verwijderd). Het starttemplate blijft dan bestaan.",
+    "choose_type": "Waarvoor wil je WinProx gebruiken?",
+    "choose_size": "Hoe groot is je organisatie?",
+    "sizes": {
+      "small": "1–5",
+      "medium": "6–20",
+      "large": "21+"
+    },
+    "create": "Voorbeeldomgeving maken",
+    "result_title": "Je omgeving is klaar 🎉",
+    "dismiss_result": "Sluiten",
+    "remove": "Verwijder starttemplate",
+    "go_to_units": "Bekijk mijn omgeving",
+    "remove_title": "Starttemplate verwijderen?",
+    "remove_text": "Teams, categorieën, locatie en units van het starttemplate worden verwijderd. Eigen toevoegingen blijven staan.",
+    "remove_issues_note": "Als er al meldingen zijn, kunnen units alleen nog gedeactiveerd worden en blijft het template bestaan.",
+    "confirm_remove": "Verwijderen",
+    "preview_teams": "Teams",
+    "preview_categories": "Categorieën",
+    "preview_location": "Locatie",
+    "preview_units": "Units",
+    "errors": {
+      "type_required": "Kies waarvoor je WinProx wilt gebruiken.",
+      "unknown": "Dit starttemplate is niet beschikbaar.",
+      "already_applied": "Er is al een starttemplate geladen.",
+      "not_empty": "Je hebt al teams, categorieën of units. Het starttemplate is alleen als die nog leeg zijn. Een locatie zonder units wordt vervangen.",
+      "missing": "Er is geen starttemplate om te verwijderen.",
+      "has_issues": "Er zijn al meldingen of uitvoerders. Units kun je dan alleen nog deactiveren; het starttemplate blijft bestaan. Hernoemen kan altijd.",
+      "size_required": "Kies de grootte van je organisatie."
+    },
+    "result_body": "We hebben een kleine voorbeeldomgeving voor je klaargezet. Kijk rustig rond en probeer zelf een melding te maken.",
+    "result_own_later": "Wil je meteen met je eigen omgeving beginnen? Je kunt later altijd locaties, teams en units toevoegen.",
+    "self_start": "Liever zelf beginnen"
+  },
+  "intent": {
+    "title": "Wat wil je doen?",
+    "fallback_name": "daar",
+    "greeting": {
+      "morning": "Goedemorgen, :name",
+      "afternoon": "Goedemiddag, :name",
+      "evening": "Goedenavond, :name"
+    },
+    "tiles": {
+      "roster": {
+        "title": "Uurrooster bekijken",
+        "body": "Bekijk en plan wie wanneer werkt."
+      },
+      "presence": {
+        "title": "Wie werkt waar vandaag?",
+        "body": "Zie wie ingeklokt is en waar het team staat."
+      },
+      "today_tasks": {
+        "title": "Welke taken vandaag?",
+        "body": "Bekijk welke taken er vandaag moeten uitgevoerd worden."
+      },
+      "day_task_favorites": {
+        "title": "Nieuwe dagtaak",
+        "body": "Plan een inspectieronde via je favorieten."
+      },
+      "day_task": {
+        "title": "Nieuwe dagtaak",
+        "body": "Plan een inspectieronde bij je locaties."
+      },
+      "location": {
+        "title": "Locatie toevoegen",
+        "body": "Voeg een adres of klantlocatie toe."
+      },
+      "worker": {
+        "title": "Uitvoerder toevoegen",
+        "body": "Voeg iemand toe die taken uitvoert via Clock Point."
+      },
+      "workers": {
+        "title": "Uitvoerders bekijken",
+        "body": "Bekijk en wijzig de uitvoerders."
+      }
+    }
+  },
+  "checkmate": {
+    "subtitle": "Checkmate — klokken en klantbezoeken op locatie.",
+    "onboarding": {
+      "workers_title": "Voeg je eerste uitvoerder toe",
+      "workers_body": "Uitvoerders klokken in en uit via de Clock Point-QR op hun gsm.",
+      "workers_cta": "Uitvoerder toevoegen",
+      "customers_title": "Voeg je eerste klant toe",
+      "customers_body": "Klanten hebben werkadressen waar uitvoerders via GPS inchecken.",
+      "customers_cta": "Klant toevoegen"
+    },
+    "actions": {
+      "add_customer_title": "Klant toevoegen",
+      "add_customer_body": "Nieuwe klant met werkadres.",
+      "add_worker_title": "Uitvoerder toevoegen",
+      "add_worker_body": "Iemand die meeklokt op locatie.",
+      "presence_title": "Aanwezigheid",
+      "presence_body": "Wie is nu aan het werk.",
+      "clock_point_title": "Clock Point QR",
+      "clock_point_body": "Toon of print de QR voor uitvoerders."
+    },
     "kpi": {
-        "new_issues": "Nieuwe meldingen",
-        "open_tasks": "Open taken",
-        "present_now": "Nu aanwezig",
-        "pending_review": "Te beoordelen",
-        "time_attention": "Time-aandacht",
-        "pending_absence": "Aanvragen",
-        "pending_absence_leave": ":count Verlof",
-        "pending_absence_recup": ":count Recup",
-        "iot_alarms": "IoT-alarmen"
+      "visits_today": "Bezoeken vandaag",
+      "seats": "Uitvoerders",
+      "customers": "Actieve klanten"
     },
     "recent": {
-        "title": "Recente meldingen",
-        "open_issues": "Meldingen openen",
-        "empty": "Er zijn nog geen meldingen.",
-        "reporter_anon": "Anoniem",
-        "no_location": "Geen locatie"
+      "title": "Laatste activiteit",
+      "open": "Aanwezigheid openen",
+      "empty": "Nog geen klantbezoeken.",
+      "running": "Loopt",
+      "done": "Klaar",
+      "since": "Begonnen om :time",
+      "range": ":start – :end"
     },
-    "welcome": "Welkom bij WinProx",
-    "onboarding": {
-        "teams": {
-            "title": "Begin met één team",
-            "text": "In een kleine organisatie is één team genoeg. Voeg iedereen die taken uitvoert toe (naam + icoon). Of laat WinProx eerst een voorbeeldomgeving klaarzetten.",
-            "button": "Team aanmaken"
-        },
-        "categories": {
-            "title": "Begin met het aanmaken van categorieën",
-            "text": "Ga naar Plaatsen → Categorieën en voeg categorieën toe om units te groeperen (bijv. kamers, sanitair, kantoor). Eén team mag aan alle categorieën hangen — taken komen dan bij dezelfde mensen terecht. Bij meerdere teams koppel je elk team aan de categorieën waar het voor werkt. Voeg daarna locaties toe onder Plaatsen → Locaties en maak per locatie units aan — of via Plaatsen → Units.",
-            "button": "Categorieën beheren"
-        },
-        "locations": {
-            "title": "Begin met het aanmaken van locaties en units",
-            "text": "Ga naar Plaatsen → Locaties, voeg locaties toe en maak per locatie units aan (machines, ruimtes, assets). Units kun je ook importeren via CSV of Excel, of in bulk aanmaken.",
-            "button": "Locaties beheren"
-        },
-        "units": {
-            "title": "Begin met het aanmaken van units",
-            "text": "Open je locatie en voeg units toe (machines, ruimtes, assets). Units kun je één voor één, in bulk of via CSV/Excel aanmaken.",
-            "button": "Units toevoegen"
-        },
-        "clock_point": {
-            "title": "Maak een Clock Point aan",
-            "text": "Uitvoerders melden zich aan en klokken in via een Clock Point. Maak minstens één clock point aan en print de QR-sticker of het QR-afdrukblad zodat je team kan starten.",
-            "button": "Clock Points"
-        }
-    },
-    "register_success": {
-        "title": "Account aangemaakt",
-        "body": "Je werkruimte is klaar. Je kan nu meteen je eerste taken beheren."
-    },
-    "starter_pack": {
-        "help_button": "Wil je op weg geholpen worden?",
-        "modal_title": "Op weg geholpen worden",
-        "intro": "We kunnen een kleine voorbeeldomgeving voor je klaarzetten. Zo kun je meteen rondkijken en zelf een paar dingen uitproberen.",
-        "offer_title": "Wil je eerst even kijken hoe WinProx werkt?",
-        "intro_detail": "Je krijgt een voorbeeld met teams, categorieën, een locatie en enkele units.",
-        "issues_note": "Zodra er meldingen op een unit staan, kan die unit alleen nog gedeactiveerd worden (niet verwijderd). Het starttemplate blijft dan bestaan.",
-        "choose_type": "Waarvoor wil je WinProx gebruiken?",
-        "choose_size": "Hoe groot is je organisatie?",
-        "sizes": {
-            "small": "1–5",
-            "medium": "6–20",
-            "large": "21+"
-        },
-        "create": "Voorbeeldomgeving maken",
-        "result_title": "Je omgeving is klaar 🎉",
-        "dismiss_result": "Sluiten",
-        "remove": "Verwijder starttemplate",
-        "go_to_units": "Bekijk mijn omgeving",
-        "remove_title": "Starttemplate verwijderen?",
-        "remove_text": "Teams, categorieën, locatie en units van het starttemplate worden verwijderd. Eigen toevoegingen blijven staan.",
-        "remove_issues_note": "Als er al meldingen zijn, kunnen units alleen nog gedeactiveerd worden en blijft het template bestaan.",
-        "confirm_remove": "Verwijderen",
-        "preview_teams": "Teams",
-        "preview_categories": "Categorieën",
-        "preview_location": "Locatie",
-        "preview_units": "Units",
-        "errors": {
-            "type_required": "Kies waarvoor je WinProx wilt gebruiken.",
-            "unknown": "Dit starttemplate is niet beschikbaar.",
-            "already_applied": "Er is al een starttemplate geladen.",
-            "not_empty": "Je hebt al teams, categorieën of units. Het starttemplate is alleen als die nog leeg zijn. Een locatie zonder units wordt vervangen.",
-            "missing": "Er is geen starttemplate om te verwijderen.",
-            "has_issues": "Er zijn al meldingen of uitvoerders. Units kun je dan alleen nog deactiveren; het starttemplate blijft bestaan. Hernoemen kan altijd.",
-            "size_required": "Kies de grootte van je organisatie."
-        },
-        "result_body": "We hebben een kleine voorbeeldomgeving voor je klaargezet. Kijk rustig rond en probeer zelf een melding te maken.",
-        "result_own_later": "Wil je meteen met je eigen omgeving beginnen? Je kunt later altijd locaties, teams en units toevoegen.",
-        "self_start": "Liever zelf beginnen"
-    },
-    "intent": {
-        "title": "Wat wil je doen?",
-        "fallback_name": "daar",
-        "greeting": {
-            "morning": "Goedemorgen, :name",
-            "afternoon": "Goedemiddag, :name",
-            "evening": "Goedenavond, :name"
-        },
-        "tiles": {
-            "roster": {
-                "title": "Uurrooster bekijken",
-                "body": "Bekijk en plan wie wanneer werkt."
-            },
-            "presence": {
-                "title": "Wie werkt waar vandaag?",
-                "body": "Zie wie ingeklokt is en waar het team staat."
-            },
-            "today_tasks": {
-                "title": "Welke taken vandaag?",
-                "body": "Bekijk welke taken er vandaag moeten uitgevoerd worden."
-            },
-            "day_task_favorites": {
-                "title": "Nieuwe dagtaak",
-                "body": "Plan een inspectieronde via je favorieten."
-            },
-            "day_task": {
-                "title": "Nieuwe dagtaak",
-                "body": "Plan een inspectieronde bij je locaties."
-            },
-            "location": {
-                "title": "Locatie toevoegen",
-                "body": "Voeg een adres of klantlocatie toe."
-            },
-            "worker": {
-                "title": "Uitvoerder toevoegen",
-                "body": "Voeg iemand toe die taken uitvoert via Clock Point."
-            },
-            "workers": {
-                "title": "Uitvoerders bekijken",
-                "body": "Bekijk en wijzig de uitvoerders."
-            }
-        }
+    "ciao": {
+      "pending_title": "CIAO-aanvraag in behandeling",
+      "pending_body": "Je RSZ-aanvraag wacht op bevestiging. Daarna lopen de aanwezigheidsregistraties automatisch mee.",
+      "pending_cta": "Naar instellingen"
     }
+  }
 }

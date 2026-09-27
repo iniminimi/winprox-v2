@@ -1,150 +1,190 @@
 {
-    "title": "Tableau de bord",
-    "subtitle": "Aperçu des signalements ouverts, tâches et présence.",
-    "trial_capsule": {
-        "trial_short": "Période d'essai : encore :days jours.",
-        "trial_title": "Période d'essai",
-        "paid_short": "Abonnement : encore :days jours.",
-        "paid_title": "Abonnement",
-        "grace_short": "Délai de grâce : encore :days jours d'accès complet.",
-        "grace_title": "Délai de grâce après fin d'abonnement"
+  "title": "Tableau de bord",
+  "subtitle": "Aperçu des signalements ouverts, tâches et présence.",
+  "trial_capsule": {
+    "trial_short": "Période d'essai : encore :days jours.",
+    "trial_title": "Période d'essai",
+    "paid_short": "Abonnement : encore :days jours.",
+    "paid_title": "Abonnement",
+    "grace_short": "Délai de grâce : encore :days jours d'accès complet.",
+    "grace_title": "Délai de grâce après fin d'abonnement"
+  },
+  "add_issue": "+ Ajouter un signalement",
+  "briefing": "Briefing",
+  "briefing_print": "Imprimer le briefing",
+  "briefing_empty": "Aucune tâche prévue pour aujourd'hui.",
+  "briefing_no_team": "Aucune équipe",
+  "kpi": {
+    "new_issues": "Nouveaux signalements",
+    "open_tasks": "Tâches ouvertes",
+    "present_now": "Présents",
+    "pending_review": "À examiner",
+    "time_attention": "Attention Time",
+    "pending_absence": "Demandes",
+    "pending_absence_leave": ":count Congé",
+    "pending_absence_recup": ":count Récup",
+    "iot_alarms": "Alarmes IoT"
+  },
+  "recent": {
+    "title": "Signalements récents",
+    "open_issues": "Ouvrir les signalements",
+    "empty": "Aucun signalement pour l'instant.",
+    "reporter_anon": "Anonyme",
+    "no_location": "Aucun site"
+  },
+  "welcome": "Bienvenue sur WinProx",
+  "onboarding": {
+    "teams": {
+      "title": "Commencez par une équipe",
+      "text": "Dans une petite organisation, une équipe suffit. Ajoutez toutes les personnes qui exécutent des tâches (nom + icône). Ou laissez WinProx préparer d’abord un petit environnement d’exemple.",
+      "button": "Créer une équipe"
     },
-    "add_issue": "+ Ajouter un signalement",
-    "briefing": "Briefing",
-    "briefing_print": "Imprimer le briefing",
-    "briefing_empty": "Aucune tâche prévue pour aujourd'hui.",
-    "briefing_no_team": "Aucune équipe",
+    "categories": {
+      "title": "Commencez par créer des catégories",
+      "text": "Allez dans Emplacements → Catégories et ajoutez des catégories pour regrouper les unités (p. ex. chambres, sanitaires, bureau). Une même équipe peut être liée à toutes les catégories — les tâches arrivent alors aux mêmes personnes. Avec plusieurs équipes, reliez chacune aux catégories concernées. Ajoutez ensuite des sites sous Emplacements → Sites et créez des unités par site — ou via Emplacements → Unités.",
+      "button": "Gérer les catégories"
+    },
+    "locations": {
+      "title": "Commencez par créer des sites et des unités",
+      "text": "Allez dans Emplacements → Sites, ajoutez des sites et créez des unités par site (machines, salles, équipements). Vous pouvez aussi importer des unités via CSV ou Excel, ou les créer en masse.",
+      "button": "Gérer les sites"
+    },
+    "units": {
+      "title": "Commencez par créer des unités",
+      "text": "Ouvrez votre site et ajoutez des unités (machines, salles, équipements). Vous pouvez les créer une par une, en masse, ou via CSV/Excel.",
+      "button": "Ajouter des unités"
+    },
+    "clock_point": {
+      "title": "Créez un Clock Point",
+      "text": "Les exécutants se connectent et pointent via un Clock Point. Créez au moins un clock point et imprimez l'autocollant QR ou la feuille d'impression QR pour que votre équipe puisse démarrer.",
+      "button": "Clock Points"
+    }
+  },
+  "register_success": {
+    "title": "Compte créé",
+    "body": "Votre espace de travail est prêt. Vous pouvez maintenant gérer vos premières tâches."
+  },
+  "starter_pack": {
+    "help_button": "Voulez-vous un coup de pouce pour démarrer ?",
+    "modal_title": "Un coup de pouce pour démarrer",
+    "intro": "Nous pouvons préparer un petit environnement d’exemple. Vous pourrez tout de suite explorer et essayer quelques actions.",
+    "offer_title": "Voulez-vous d’abord voir comment WinProx fonctionne ?",
+    "intro_detail": "Vous obtenez un exemple avec des équipes, des catégories, un lieu et quelques units.",
+    "issues_note": "Dès qu’un unit a des signalements, il ne peut plus qu’être désactivé (pas supprimé). Le modèle de départ reste alors en place.",
+    "choose_type": "À quoi voulez-vous utiliser WinProx ?",
+    "choose_size": "Quelle est la taille de votre organisation ?",
+    "sizes": {
+      "small": "1–5",
+      "medium": "6–20",
+      "large": "21+"
+    },
+    "create": "Créer l’environnement d’exemple",
+    "result_title": "Votre environnement est prêt 🎉",
+    "dismiss_result": "Fermer",
+    "remove": "Supprimer le modèle de départ",
+    "go_to_units": "Voir mon environnement",
+    "remove_title": "Supprimer le modèle de départ ?",
+    "remove_text": "Les équipes, catégories, le lieu et les units du modèle de départ seront supprimés. Vos ajouts restent.",
+    "remove_issues_note": "S’il existe déjà des signalements, les units ne peuvent plus qu’être désactivés et le modèle reste.",
+    "confirm_remove": "Supprimer",
+    "preview_teams": "Équipes",
+    "preview_categories": "Catégories",
+    "preview_location": "Lieu",
+    "preview_units": "Units",
+    "errors": {
+      "type_required": "Choisissez à quoi vous voulez utiliser WinProx.",
+      "unknown": "Ce modèle de départ n’est pas disponible.",
+      "already_applied": "Un modèle de départ est déjà chargé.",
+      "not_empty": "Vous avez déjà des équipes, catégories ou units. Le modèle de départ n'est disponible que si ceux-ci sont vides. Un lieu sans units est remplacé.",
+      "missing": "Il n’y a pas de modèle de départ à supprimer.",
+      "has_issues": "Il y a déjà des signalements ou des exécutants. Les units ne peuvent alors plus qu’être désactivés ; le modèle reste. Vous pouvez toujours renommer.",
+      "size_required": "Choisissez la taille de votre organisation."
+    },
+    "result_body": "Nous avons préparé un petit environnement d’exemple. Explorez-le et essayez de créer un signalement.",
+    "result_own_later": "Vous préférez commencer tout de suite avec votre propre environnement ? Vous pourrez toujours ajouter des lieux, équipes et units plus tard.",
+    "self_start": "Commencer seul"
+  },
+  "intent": {
+    "title": "Que voulez-vous faire ?",
+    "fallback_name": "vous",
+    "greeting": {
+      "morning": "Bonjour, :name",
+      "afternoon": "Bon après-midi, :name",
+      "evening": "Bonsoir, :name"
+    },
+    "tiles": {
+      "roster": {
+        "title": "Voir le planning",
+        "body": "Consultez et planifiez qui travaille quand."
+      },
+      "presence": {
+        "title": "Qui travaille où aujourd'hui ?",
+        "body": "Voyez qui est pointé et où se trouve l'équipe."
+      },
+      "today_tasks": {
+        "title": "Quelles tâches aujourd’hui ?",
+        "body": "Voir les tâches à exécuter aujourd’hui."
+      },
+      "day_task_favorites": {
+        "title": "Nouvelle tâche du jour",
+        "body": "Planifiez une ronde d’inspection via vos favoris."
+      },
+      "day_task": {
+        "title": "Nouvelle tâche du jour",
+        "body": "Planifiez une tournée d'inspection sur vos sites."
+      },
+      "location": {
+        "title": "Ajouter un site",
+        "body": "Ajoutez une adresse ou un site client."
+      },
+      "worker": {
+        "title": "Ajouter un exécutant",
+        "body": "Ajoutez quelqu'un qui exécute des tâches via Clock Point."
+      },
+      "workers": {
+        "title": "Voir les exécutants",
+        "body": "Consultez et modifiez les exécutants."
+      }
+    }
+  },
+  "checkmate": {
+    "subtitle": "Checkmate — pointage et visites clients sur site.",
+    "onboarding": {
+      "workers_title": "Ajoutez votre premier exécutant",
+      "workers_body": "Les exécutants pointent via le QR du Clock Point sur leur smartphone.",
+      "workers_cta": "Ajouter un exécutant",
+      "customers_title": "Ajoutez votre premier client",
+      "customers_body": "Les clients ont des adresses de chantier où les exécutants pointent via GPS.",
+      "customers_cta": "Ajouter un client"
+    },
+    "actions": {
+      "add_customer_title": "Ajouter un client",
+      "add_customer_body": "Nouveau client avec adresse de chantier.",
+      "add_worker_title": "Ajouter un exécutant",
+      "add_worker_body": "Quelqu’un qui pointe sur site.",
+      "presence_title": "Présence",
+      "presence_body": "Qui travaille en ce moment.",
+      "clock_point_title": "QR Clock Point",
+      "clock_point_body": "Afficher ou imprimer le QR pour les exécutants."
+    },
     "kpi": {
-        "new_issues": "Nouveaux signalements",
-        "open_tasks": "Tâches ouvertes",
-        "present_now": "Présents",
-        "pending_review": "À examiner",
-        "time_attention": "Attention Time",
-        "pending_absence": "Demandes",
-        "pending_absence_leave": ":count Congé",
-        "pending_absence_recup": ":count Récup",
-        "iot_alarms": "Alarmes IoT"
+      "visits_today": "Visites aujourd’hui",
+      "seats": "Exécutants",
+      "customers": "Clients actifs"
     },
     "recent": {
-        "title": "Signalements récents",
-        "open_issues": "Ouvrir les signalements",
-        "empty": "Aucun signalement pour l'instant.",
-        "reporter_anon": "Anonyme",
-        "no_location": "Aucun site"
+      "title": "Dernière activité",
+      "open": "Ouvrir la présence",
+      "empty": "Pas encore de visites clients.",
+      "running": "En cours",
+      "done": "Terminé",
+      "since": "Commencé à :time",
+      "range": ":start – :end"
     },
-    "welcome": "Bienvenue sur WinProx",
-    "onboarding": {
-        "teams": {
-            "title": "Commencez par une équipe",
-            "text": "Dans une petite organisation, une équipe suffit. Ajoutez toutes les personnes qui exécutent des tâches (nom + icône). Ou laissez WinProx préparer d’abord un petit environnement d’exemple.",
-            "button": "Créer une équipe"
-        },
-        "categories": {
-            "title": "Commencez par créer des catégories",
-            "text": "Allez dans Emplacements → Catégories et ajoutez des catégories pour regrouper les unités (p. ex. chambres, sanitaires, bureau). Une même équipe peut être liée à toutes les catégories — les tâches arrivent alors aux mêmes personnes. Avec plusieurs équipes, reliez chacune aux catégories concernées. Ajoutez ensuite des sites sous Emplacements → Sites et créez des unités par site — ou via Emplacements → Unités.",
-            "button": "Gérer les catégories"
-        },
-        "locations": {
-            "title": "Commencez par créer des sites et des unités",
-            "text": "Allez dans Emplacements → Sites, ajoutez des sites et créez des unités par site (machines, salles, équipements). Vous pouvez aussi importer des unités via CSV ou Excel, ou les créer en masse.",
-            "button": "Gérer les sites"
-        },
-        "units": {
-            "title": "Commencez par créer des unités",
-            "text": "Ouvrez votre site et ajoutez des unités (machines, salles, équipements). Vous pouvez les créer une par une, en masse, ou via CSV/Excel.",
-            "button": "Ajouter des unités"
-        },
-        "clock_point": {
-            "title": "Créez un Clock Point",
-            "text": "Les exécutants se connectent et pointent via un Clock Point. Créez au moins un clock point et imprimez l'autocollant QR ou la feuille d'impression QR pour que votre équipe puisse démarrer.",
-            "button": "Clock Points"
-        }
-    },
-    "register_success": {
-        "title": "Compte créé",
-        "body": "Votre espace de travail est prêt. Vous pouvez maintenant gérer vos premières tâches."
-    },
-    "starter_pack": {
-        "help_button": "Voulez-vous un coup de pouce pour démarrer ?",
-        "modal_title": "Un coup de pouce pour démarrer",
-        "intro": "Nous pouvons préparer un petit environnement d’exemple. Vous pourrez tout de suite explorer et essayer quelques actions.",
-        "offer_title": "Voulez-vous d’abord voir comment WinProx fonctionne ?",
-        "intro_detail": "Vous obtenez un exemple avec des équipes, des catégories, un lieu et quelques units.",
-        "issues_note": "Dès qu’un unit a des signalements, il ne peut plus qu’être désactivé (pas supprimé). Le modèle de départ reste alors en place.",
-        "choose_type": "À quoi voulez-vous utiliser WinProx ?",
-        "choose_size": "Quelle est la taille de votre organisation ?",
-        "sizes": {
-            "small": "1–5",
-            "medium": "6–20",
-            "large": "21+"
-        },
-        "create": "Créer l’environnement d’exemple",
-        "result_title": "Votre environnement est prêt 🎉",
-        "dismiss_result": "Fermer",
-        "remove": "Supprimer le modèle de départ",
-        "go_to_units": "Voir mon environnement",
-        "remove_title": "Supprimer le modèle de départ ?",
-        "remove_text": "Les équipes, catégories, le lieu et les units du modèle de départ seront supprimés. Vos ajouts restent.",
-        "remove_issues_note": "S’il existe déjà des signalements, les units ne peuvent plus qu’être désactivés et le modèle reste.",
-        "confirm_remove": "Supprimer",
-        "preview_teams": "Équipes",
-        "preview_categories": "Catégories",
-        "preview_location": "Lieu",
-        "preview_units": "Units",
-        "errors": {
-            "type_required": "Choisissez à quoi vous voulez utiliser WinProx.",
-            "unknown": "Ce modèle de départ n’est pas disponible.",
-            "already_applied": "Un modèle de départ est déjà chargé.",
-            "not_empty": "Vous avez déjà des équipes, catégories ou units. Le modèle de départ n'est disponible que si ceux-ci sont vides. Un lieu sans units est remplacé.",
-            "missing": "Il n’y a pas de modèle de départ à supprimer.",
-            "has_issues": "Il y a déjà des signalements ou des exécutants. Les units ne peuvent alors plus qu’être désactivés ; le modèle reste. Vous pouvez toujours renommer.",
-            "size_required": "Choisissez la taille de votre organisation."
-        },
-        "result_body": "Nous avons préparé un petit environnement d’exemple. Explorez-le et essayez de créer un signalement.",
-        "result_own_later": "Vous préférez commencer tout de suite avec votre propre environnement ? Vous pourrez toujours ajouter des lieux, équipes et units plus tard.",
-        "self_start": "Commencer seul"
-    },
-    "intent": {
-        "title": "Que voulez-vous faire ?",
-        "fallback_name": "vous",
-        "greeting": {
-            "morning": "Bonjour, :name",
-            "afternoon": "Bon après-midi, :name",
-            "evening": "Bonsoir, :name"
-        },
-        "tiles": {
-            "roster": {
-                "title": "Voir le planning",
-                "body": "Consultez et planifiez qui travaille quand."
-            },
-            "presence": {
-                "title": "Qui travaille où aujourd'hui ?",
-                "body": "Voyez qui est pointé et où se trouve l'équipe."
-            },
-            "today_tasks": {
-                "title": "Quelles tâches aujourd’hui ?",
-                "body": "Voir les tâches à exécuter aujourd’hui."
-            },
-            "day_task_favorites": {
-                "title": "Nouvelle tâche du jour",
-                "body": "Planifiez une ronde d’inspection via vos favoris."
-            },
-            "day_task": {
-                "title": "Nouvelle tâche du jour",
-                "body": "Planifiez une tournée d'inspection sur vos sites."
-            },
-            "location": {
-                "title": "Ajouter un site",
-                "body": "Ajoutez une adresse ou un site client."
-            },
-            "worker": {
-                "title": "Ajouter un exécutant",
-                "body": "Ajoutez quelqu'un qui exécute des tâches via Clock Point."
-            },
-            "workers": {
-                "title": "Voir les exécutants",
-                "body": "Consultez et modifiez les exécutants."
-            }
-        }
+    "ciao": {
+      "pending_title": "Demande CIAO en attente",
+      "pending_body": "Votre demande ONSS attend une confirmation. Les enregistrements de présence suivent ensuite automatiquement.",
+      "pending_cta": "Vers les paramètres"
     }
+  }
 }

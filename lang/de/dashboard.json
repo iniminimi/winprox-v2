@@ -1,150 +1,190 @@
 {
-    "title": "Dashboard",
-    "subtitle": "Übersicht über offene Meldungen, Aufgaben und Anwesenheit.",
-    "trial_capsule": {
-        "trial_short": "Testphase noch :days Tage.",
-        "trial_title": "Testphase",
-        "paid_short": "Abonnement noch :days Tage.",
-        "paid_title": "Abonnement",
-        "grace_short": "Nachlaufzeit: noch :days Tage voller Zugriff.",
-        "grace_title": "Nachlaufzeit nach abgelaufenem Abonnement"
+  "title": "Dashboard",
+  "subtitle": "Übersicht über offene Meldungen, Aufgaben und Anwesenheit.",
+  "trial_capsule": {
+    "trial_short": "Testphase noch :days Tage.",
+    "trial_title": "Testphase",
+    "paid_short": "Abonnement noch :days Tage.",
+    "paid_title": "Abonnement",
+    "grace_short": "Nachlaufzeit: noch :days Tage voller Zugriff.",
+    "grace_title": "Nachlaufzeit nach abgelaufenem Abonnement"
+  },
+  "add_issue": "+ Meldung hinzufügen",
+  "briefing": "Briefing",
+  "briefing_print": "Briefing drucken",
+  "briefing_empty": "Keine Aufgaben für heute geplant.",
+  "briefing_no_team": "Kein Team",
+  "kpi": {
+    "new_issues": "Neue Meldungen",
+    "open_tasks": "Offene Aufgaben",
+    "present_now": "Anwesend",
+    "pending_review": "Zur Prüfung",
+    "time_attention": "Time-Aufmerksamkeit",
+    "pending_absence": "Anträge",
+    "pending_absence_leave": ":count Urlaub",
+    "pending_absence_recup": ":count Ausgleich",
+    "iot_alarms": "IoT-Alarme"
+  },
+  "recent": {
+    "title": "Aktuelle Meldungen",
+    "open_issues": "Meldungen öffnen",
+    "empty": "Noch keine Meldungen.",
+    "reporter_anon": "Anonym",
+    "no_location": "Kein Standort"
+  },
+  "welcome": "Willkommen bei WinProx",
+  "onboarding": {
+    "teams": {
+      "title": "Beginnen Sie mit einem Team",
+      "text": "In einer kleinen Organisation reicht ein Team. Fügen Sie alle hinzu, die Aufgaben ausführen (Name + Symbol). Oder lassen Sie WinProx zuerst eine kleine Beispielumgebung anlegen.",
+      "button": "Team anlegen"
     },
-    "add_issue": "+ Meldung hinzufügen",
-    "briefing": "Briefing",
-    "briefing_print": "Briefing drucken",
-    "briefing_empty": "Keine Aufgaben für heute geplant.",
-    "briefing_no_team": "Kein Team",
+    "categories": {
+      "title": "Beginnen Sie mit der Erstellung von Kategorien",
+      "text": "Gehen Sie zu Standorte → Kategorien und fügen Sie Kategorien hinzu, um Units zu gruppieren (z. B. Zimmer, Sanitär, Büro). Ein Team darf an allen Kategorien hängen — Aufgaben landen dann bei denselben Personen. Bei mehreren Teams verknüpfen Sie jedes Team mit den Kategorien, für die es arbeitet. Fügen Sie danach Standorte unter Standorte → Standorte hinzu und erstellen Sie Units pro Standort — oder über Standorte → Units.",
+      "button": "Kategorien verwalten"
+    },
+    "locations": {
+      "title": "Beginnen Sie mit Standorten und Units",
+      "text": "Gehen Sie zu Standorte → Standorte, fügen Sie Standorte hinzu und erstellen Sie Units pro Standort (Maschinen, Räume, Assets). Units können Sie auch per CSV oder Excel importieren oder in Masse anlegen.",
+      "button": "Standorte verwalten"
+    },
+    "units": {
+      "title": "Beginnen Sie mit dem Anlegen von Units",
+      "text": "Öffnen Sie Ihren Standort und fügen Sie Units hinzu (Maschinen, Räume, Assets). Units können Sie einzeln, in Masse oder per CSV/Excel anlegen.",
+      "button": "Units hinzufügen"
+    },
+    "clock_point": {
+      "title": "Clock Point anlegen",
+      "text": "Ausführende melden sich an und stempeln über einen Clock Point ein und aus. Legen Sie mindestens einen Clock Point an und drucken Sie den QR-Aufkleber oder das QR-Druckblatt, damit Ihr Team starten kann.",
+      "button": "Clock Points"
+    }
+  },
+  "register_success": {
+    "title": "Konto erstellt",
+    "body": "Ihr Arbeitsbereich ist bereit. Sie können jetzt Ihre ersten Aufgaben verwalten."
+  },
+  "starter_pack": {
+    "help_button": "Möchten Sie Hilfe beim Start?",
+    "modal_title": "Hilfe beim Start",
+    "intro": "Wir können eine kleine Beispielumgebung für Sie anlegen. So können Sie sofort umschauen und ein paar Dinge ausprobieren.",
+    "offer_title": "Möchten Sie zuerst sehen, wie WinProx funktioniert?",
+    "intro_detail": "Sie erhalten ein Beispiel mit Teams, Kategorien, einem Standort und einigen Units.",
+    "issues_note": "Sobald eine Unit Meldungen hat, kann sie nur noch deaktiviert (nicht gelöscht) werden. Die Startvorlage bleibt dann bestehen.",
+    "choose_type": "Wofür möchten Sie WinProx nutzen?",
+    "choose_size": "Wie groß ist Ihre Organisation?",
+    "sizes": {
+      "small": "1–5",
+      "medium": "6–20",
+      "large": "21+"
+    },
+    "create": "Beispielumgebung anlegen",
+    "result_title": "Ihre Umgebung ist bereit 🎉",
+    "dismiss_result": "Schließen",
+    "remove": "Startvorlage entfernen",
+    "go_to_units": "Meine Umgebung ansehen",
+    "remove_title": "Startvorlage entfernen?",
+    "remove_text": "Teams, Kategorien, Standort und Units der Startvorlage werden gelöscht. Eigene Ergänzungen bleiben.",
+    "remove_issues_note": "Gibt es bereits Meldungen, können Units nur noch deaktiviert werden und die Vorlage bleibt.",
+    "confirm_remove": "Entfernen",
+    "preview_teams": "Teams",
+    "preview_categories": "Kategorien",
+    "preview_location": "Standort",
+    "preview_units": "Units",
+    "errors": {
+      "type_required": "Wählen Sie, wofür Sie WinProx nutzen möchten.",
+      "unknown": "Diese Startvorlage ist nicht verfügbar.",
+      "already_applied": "Es ist bereits eine Startvorlage geladen.",
+      "not_empty": "Sie haben bereits Teams, Kategorien oder Units. Die Startvorlage gilt nur, wenn diese noch leer sind. Ein Standort ohne Units wird ersetzt.",
+      "missing": "Es gibt keine Startvorlage zum Entfernen.",
+      "has_issues": "Es gibt bereits Meldungen oder Ausführende. Units können dann nur noch deaktiviert werden; die Startvorlage bleibt. Umbenennen ist immer möglich.",
+      "size_required": "Wählen Sie die Größe Ihrer Organisation."
+    },
+    "result_body": "Wir haben eine kleine Beispielumgebung für Sie angelegt. Schauen Sie sich um und versuchen Sie, selbst eine Meldung zu erstellen.",
+    "result_own_later": "Möchten Sie gleich mit Ihrer eigenen Umgebung starten? Standorte, Teams und Units können Sie später jederzeit hinzufügen.",
+    "self_start": "Lieber selbst starten"
+  },
+  "intent": {
+    "title": "Was möchten Sie tun?",
+    "fallback_name": "dort",
+    "greeting": {
+      "morning": "Guten Morgen, :name",
+      "afternoon": "Guten Tag, :name",
+      "evening": "Guten Abend, :name"
+    },
+    "tiles": {
+      "roster": {
+        "title": "Dienstplan ansehen",
+        "body": "Sehen und planen, wer wann arbeitet."
+      },
+      "presence": {
+        "title": "Wer arbeitet heute wo?",
+        "body": "Sehen Sie, wer eingestempelt ist und wo das Team steht."
+      },
+      "today_tasks": {
+        "title": "Welche Aufgaben heute?",
+        "body": "Sehen Sie, welche Aufgaben heute erledigt werden müssen."
+      },
+      "day_task_favorites": {
+        "title": "Neue Tagesaufgabe",
+        "body": "Planen Sie eine Inspektionsrunde über Ihre Favoriten."
+      },
+      "day_task": {
+        "title": "Neue Tagesaufgabe",
+        "body": "Planen Sie eine Inspektionsrunde an Ihren Standorten."
+      },
+      "location": {
+        "title": "Standort hinzufügen",
+        "body": "Fügen Sie eine Adresse oder einen Kundenstandort hinzu."
+      },
+      "worker": {
+        "title": "Ausführenden hinzufügen",
+        "body": "Fügen Sie jemanden hinzu, der Aufgaben über Clock Point ausführt."
+      },
+      "workers": {
+        "title": "Ausführende ansehen",
+        "body": "Ausführende ansehen und bearbeiten."
+      }
+    }
+  },
+  "checkmate": {
+    "subtitle": "Checkmate — ein- und ausstempeln und Kundenbesuche vor Ort.",
+    "onboarding": {
+      "workers_title": "Ersten Mitarbeiter hinzufügen",
+      "workers_body": "Mitarbeiter stempeln über den Clock-Point-QR auf ihrem Smartphone.",
+      "workers_cta": "Mitarbeiter hinzufügen",
+      "customers_title": "Ersten Kunden hinzufügen",
+      "customers_body": "Kunden haben Einsatzadressen, an denen Mitarbeiter per GPS einchecken.",
+      "customers_cta": "Kunde hinzufügen"
+    },
+    "actions": {
+      "add_customer_title": "Kunde hinzufügen",
+      "add_customer_body": "Neuer Kunde mit Einsatzadresse.",
+      "add_worker_title": "Mitarbeiter hinzufügen",
+      "add_worker_body": "Jemand, der vor Ort einstempelt.",
+      "presence_title": "Anwesenheit",
+      "presence_body": "Wer gerade arbeitet.",
+      "clock_point_title": "Clock-Point-QR",
+      "clock_point_body": "QR für Mitarbeiter anzeigen oder drucken."
+    },
     "kpi": {
-        "new_issues": "Neue Meldungen",
-        "open_tasks": "Offene Aufgaben",
-        "present_now": "Anwesend",
-        "pending_review": "Zur Prüfung",
-        "time_attention": "Time-Aufmerksamkeit",
-        "pending_absence": "Anträge",
-        "pending_absence_leave": ":count Urlaub",
-        "pending_absence_recup": ":count Ausgleich",
-        "iot_alarms": "IoT-Alarme"
+      "visits_today": "Besuche heute",
+      "seats": "Mitarbeiter",
+      "customers": "Aktive Kunden"
     },
     "recent": {
-        "title": "Aktuelle Meldungen",
-        "open_issues": "Meldungen öffnen",
-        "empty": "Noch keine Meldungen.",
-        "reporter_anon": "Anonym",
-        "no_location": "Kein Standort"
+      "title": "Letzte Aktivität",
+      "open": "Anwesenheit öffnen",
+      "empty": "Noch keine Kundenbesuche.",
+      "running": "Läuft",
+      "done": "Fertig",
+      "since": "Begonnen um :time",
+      "range": ":start – :end"
     },
-    "welcome": "Willkommen bei WinProx",
-    "onboarding": {
-        "teams": {
-            "title": "Beginnen Sie mit einem Team",
-            "text": "In einer kleinen Organisation reicht ein Team. Fügen Sie alle hinzu, die Aufgaben ausführen (Name + Symbol). Oder lassen Sie WinProx zuerst eine kleine Beispielumgebung anlegen.",
-            "button": "Team anlegen"
-        },
-        "categories": {
-            "title": "Beginnen Sie mit der Erstellung von Kategorien",
-            "text": "Gehen Sie zu Standorte → Kategorien und fügen Sie Kategorien hinzu, um Units zu gruppieren (z. B. Zimmer, Sanitär, Büro). Ein Team darf an allen Kategorien hängen — Aufgaben landen dann bei denselben Personen. Bei mehreren Teams verknüpfen Sie jedes Team mit den Kategorien, für die es arbeitet. Fügen Sie danach Standorte unter Standorte → Standorte hinzu und erstellen Sie Units pro Standort — oder über Standorte → Units.",
-            "button": "Kategorien verwalten"
-        },
-        "locations": {
-            "title": "Beginnen Sie mit Standorten und Units",
-            "text": "Gehen Sie zu Standorte → Standorte, fügen Sie Standorte hinzu und erstellen Sie Units pro Standort (Maschinen, Räume, Assets). Units können Sie auch per CSV oder Excel importieren oder in Masse anlegen.",
-            "button": "Standorte verwalten"
-        },
-        "units": {
-            "title": "Beginnen Sie mit dem Anlegen von Units",
-            "text": "Öffnen Sie Ihren Standort und fügen Sie Units hinzu (Maschinen, Räume, Assets). Units können Sie einzeln, in Masse oder per CSV/Excel anlegen.",
-            "button": "Units hinzufügen"
-        },
-        "clock_point": {
-            "title": "Clock Point anlegen",
-            "text": "Ausführende melden sich an und stempeln über einen Clock Point ein und aus. Legen Sie mindestens einen Clock Point an und drucken Sie den QR-Aufkleber oder das QR-Druckblatt, damit Ihr Team starten kann.",
-            "button": "Clock Points"
-        }
-    },
-    "register_success": {
-        "title": "Konto erstellt",
-        "body": "Ihr Arbeitsbereich ist bereit. Sie können jetzt Ihre ersten Aufgaben verwalten."
-    },
-    "starter_pack": {
-        "help_button": "Möchten Sie Hilfe beim Start?",
-        "modal_title": "Hilfe beim Start",
-        "intro": "Wir können eine kleine Beispielumgebung für Sie anlegen. So können Sie sofort umschauen und ein paar Dinge ausprobieren.",
-        "offer_title": "Möchten Sie zuerst sehen, wie WinProx funktioniert?",
-        "intro_detail": "Sie erhalten ein Beispiel mit Teams, Kategorien, einem Standort und einigen Units.",
-        "issues_note": "Sobald eine Unit Meldungen hat, kann sie nur noch deaktiviert (nicht gelöscht) werden. Die Startvorlage bleibt dann bestehen.",
-        "choose_type": "Wofür möchten Sie WinProx nutzen?",
-        "choose_size": "Wie groß ist Ihre Organisation?",
-        "sizes": {
-            "small": "1–5",
-            "medium": "6–20",
-            "large": "21+"
-        },
-        "create": "Beispielumgebung anlegen",
-        "result_title": "Ihre Umgebung ist bereit 🎉",
-        "dismiss_result": "Schließen",
-        "remove": "Startvorlage entfernen",
-        "go_to_units": "Meine Umgebung ansehen",
-        "remove_title": "Startvorlage entfernen?",
-        "remove_text": "Teams, Kategorien, Standort und Units der Startvorlage werden gelöscht. Eigene Ergänzungen bleiben.",
-        "remove_issues_note": "Gibt es bereits Meldungen, können Units nur noch deaktiviert werden und die Vorlage bleibt.",
-        "confirm_remove": "Entfernen",
-        "preview_teams": "Teams",
-        "preview_categories": "Kategorien",
-        "preview_location": "Standort",
-        "preview_units": "Units",
-        "errors": {
-            "type_required": "Wählen Sie, wofür Sie WinProx nutzen möchten.",
-            "unknown": "Diese Startvorlage ist nicht verfügbar.",
-            "already_applied": "Es ist bereits eine Startvorlage geladen.",
-            "not_empty": "Sie haben bereits Teams, Kategorien oder Units. Die Startvorlage gilt nur, wenn diese noch leer sind. Ein Standort ohne Units wird ersetzt.",
-            "missing": "Es gibt keine Startvorlage zum Entfernen.",
-            "has_issues": "Es gibt bereits Meldungen oder Ausführende. Units können dann nur noch deaktiviert werden; die Startvorlage bleibt. Umbenennen ist immer möglich.",
-            "size_required": "Wählen Sie die Größe Ihrer Organisation."
-        },
-        "result_body": "Wir haben eine kleine Beispielumgebung für Sie angelegt. Schauen Sie sich um und versuchen Sie, selbst eine Meldung zu erstellen.",
-        "result_own_later": "Möchten Sie gleich mit Ihrer eigenen Umgebung starten? Standorte, Teams und Units können Sie später jederzeit hinzufügen.",
-        "self_start": "Lieber selbst starten"
-    },
-    "intent": {
-        "title": "Was möchten Sie tun?",
-        "fallback_name": "dort",
-        "greeting": {
-            "morning": "Guten Morgen, :name",
-            "afternoon": "Guten Tag, :name",
-            "evening": "Guten Abend, :name"
-        },
-        "tiles": {
-            "roster": {
-                "title": "Dienstplan ansehen",
-                "body": "Sehen und planen, wer wann arbeitet."
-            },
-            "presence": {
-                "title": "Wer arbeitet heute wo?",
-                "body": "Sehen Sie, wer eingestempelt ist und wo das Team steht."
-            },
-            "today_tasks": {
-                "title": "Welche Aufgaben heute?",
-                "body": "Sehen Sie, welche Aufgaben heute erledigt werden müssen."
-            },
-            "day_task_favorites": {
-                "title": "Neue Tagesaufgabe",
-                "body": "Planen Sie eine Inspektionsrunde über Ihre Favoriten."
-            },
-            "day_task": {
-                "title": "Neue Tagesaufgabe",
-                "body": "Planen Sie eine Inspektionsrunde an Ihren Standorten."
-            },
-            "location": {
-                "title": "Standort hinzufügen",
-                "body": "Fügen Sie eine Adresse oder einen Kundenstandort hinzu."
-            },
-            "worker": {
-                "title": "Ausführenden hinzufügen",
-                "body": "Fügen Sie jemanden hinzu, der Aufgaben über Clock Point ausführt."
-            },
-            "workers": {
-                "title": "Ausführende ansehen",
-                "body": "Ausführende ansehen und bearbeiten."
-            }
-        }
+    "ciao": {
+      "pending_title": "CIAO-Anfrage in Bearbeitung",
+      "pending_body": "Ihre LSS-Anfrage wartet auf Bestätigung. Anwesenheitsregistrierungen laufen danach automatisch mit.",
+      "pending_cta": "Zu den Einstellungen"
     }
+  }
 }

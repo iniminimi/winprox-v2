@@ -77,6 +77,10 @@ class Index extends Component
     public function mount(): void
     {
         $this->authorize('viewAny', Customer::class);
+
+        if (request()->boolean('create') && auth()->user()->can('create', Customer::class)) {
+            $this->openCreate();
+        }
     }
 
     public function updatedCustomerFormName(SuggestCustomerNameMatchesAction $suggest): void

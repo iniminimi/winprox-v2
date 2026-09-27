@@ -1,150 +1,190 @@
 {
-    "title": "Dashboard",
-    "subtitle": "Overview of open issues, tasks and presence.",
-    "trial_capsule": {
-        "trial_short": "Trial period: :days days left.",
-        "trial_title": "Trial period",
-        "paid_short": "Subscription: :days days left.",
-        "paid_title": "Subscription",
-        "grace_short": "Grace period: :days days of full access left.",
-        "grace_title": "Grace period after subscription ended"
+  "title": "Dashboard",
+  "subtitle": "Overview of open issues, tasks and presence.",
+  "trial_capsule": {
+    "trial_short": "Trial period: :days days left.",
+    "trial_title": "Trial period",
+    "paid_short": "Subscription: :days days left.",
+    "paid_title": "Subscription",
+    "grace_short": "Grace period: :days days of full access left.",
+    "grace_title": "Grace period after subscription ended"
+  },
+  "add_issue": "+ Add issue",
+  "briefing": "Briefing",
+  "briefing_print": "Print briefing",
+  "briefing_empty": "No tasks scheduled for today.",
+  "briefing_no_team": "No team",
+  "kpi": {
+    "new_issues": "New issues",
+    "open_tasks": "Open tasks",
+    "present_now": "Present now",
+    "pending_review": "Pending review",
+    "time_attention": "Time attention",
+    "pending_absence": "Requests",
+    "pending_absence_leave": ":count Leave",
+    "pending_absence_recup": ":count TOIL",
+    "iot_alarms": "IoT alarms"
+  },
+  "recent": {
+    "title": "Recent issues",
+    "open_issues": "Open issues",
+    "empty": "No issues yet.",
+    "reporter_anon": "Anonymous",
+    "no_location": "No location"
+  },
+  "welcome": "Welcome to WinProx",
+  "onboarding": {
+    "teams": {
+      "title": "Start with one team",
+      "text": "In a small organisation one team is enough. Add everyone who carries out tasks (name + icon). Or let WinProx set up a small sample environment first.",
+      "button": "Create team"
     },
-    "add_issue": "+ Add issue",
-    "briefing": "Briefing",
-    "briefing_print": "Print briefing",
-    "briefing_empty": "No tasks scheduled for today.",
-    "briefing_no_team": "No team",
+    "categories": {
+      "title": "Start by creating categories",
+      "text": "Go to Places → Categories and add categories to group units (e.g. rooms, sanitary, office). One team may be linked to every category — tasks then reach the same people. With several teams, link each team to the categories it works on. Then add locations under Places → Locations and create units per location — or via Places → Units.",
+      "button": "Manage categories"
+    },
+    "locations": {
+      "title": "Start by creating locations and units",
+      "text": "Go to Places → Locations, add locations and create units per location (machines, rooms, assets). You can also import units via CSV or Excel, or create them in bulk.",
+      "button": "Manage locations"
+    },
+    "units": {
+      "title": "Start by creating units",
+      "text": "Open your location and add units (machines, rooms, assets). You can add units one by one, in bulk, or via CSV/Excel.",
+      "button": "Add units"
+    },
+    "clock_point": {
+      "title": "Create a Clock Point",
+      "text": "Workers sign in and clock in/out via a Clock Point. Create at least one clock point and print the QR sticker or QR print sheet so your team can get started.",
+      "button": "Clock Points"
+    }
+  },
+  "register_success": {
+    "title": "Account created",
+    "body": "Your workspace is ready. You can start managing your first tasks now."
+  },
+  "starter_pack": {
+    "help_button": "Would you like a hand getting started?",
+    "modal_title": "Get a head start",
+    "intro": "We can set up a small sample environment for you. You can look around right away and try a few things yourself.",
+    "offer_title": "Would you like to see how WinProx works first?",
+    "intro_detail": "You get a sample with teams, categories, a location and a few units.",
+    "issues_note": "Once a unit has issues, it can only be deactivated (not deleted). The starter template then remains.",
+    "choose_type": "What do you want to use WinProx for?",
+    "choose_size": "How large is your organisation?",
+    "sizes": {
+      "small": "1–5",
+      "medium": "6–20",
+      "large": "21+"
+    },
+    "create": "Create sample environment",
+    "result_title": "Your environment is ready 🎉",
+    "dismiss_result": "Close",
+    "remove": "Remove starter template",
+    "go_to_units": "View my environment",
+    "remove_title": "Remove starter template?",
+    "remove_text": "Teams, categories, location and units from the starter template will be deleted. Anything you added yourself stays.",
+    "remove_issues_note": "If issues already exist, units can only be deactivated and the template remains.",
+    "confirm_remove": "Remove",
+    "preview_teams": "Teams",
+    "preview_categories": "Categories",
+    "preview_location": "Location",
+    "preview_units": "Units",
+    "errors": {
+      "type_required": "Choose what you want to use WinProx for.",
+      "unknown": "This starter template is not available.",
+      "already_applied": "A starter template is already loaded.",
+      "not_empty": "You already have teams, categories or units. The starter template is only available when those are empty. A location without units is replaced.",
+      "missing": "There is no starter template to remove.",
+      "has_issues": "There are already issues or workers. Units can then only be deactivated; the starter template remains. You can always rename.",
+      "size_required": "Choose your organisation size."
+    },
+    "result_body": "We have set up a small sample environment for you. Look around and try creating an issue yourself.",
+    "result_own_later": "Want to start with your own setup right away? You can always add locations, teams and units later.",
+    "self_start": "Start on my own"
+  },
+  "intent": {
+    "title": "What do you want to do?",
+    "fallback_name": "there",
+    "greeting": {
+      "morning": "Good morning, :name",
+      "afternoon": "Good afternoon, :name",
+      "evening": "Good evening, :name"
+    },
+    "tiles": {
+      "roster": {
+        "title": "View the roster",
+        "body": "See and plan who works when."
+      },
+      "presence": {
+        "title": "Who works where today?",
+        "body": "See who is clocked in and where the team is."
+      },
+      "today_tasks": {
+        "title": "Which tasks today?",
+        "body": "See which tasks need to be done today."
+      },
+      "day_task_favorites": {
+        "title": "New day task",
+        "body": "Plan an inspection round from your favorites."
+      },
+      "day_task": {
+        "title": "New day task",
+        "body": "Plan an inspection round at your locations."
+      },
+      "location": {
+        "title": "Add a location",
+        "body": "Add an address or customer site."
+      },
+      "worker": {
+        "title": "Add a worker",
+        "body": "Add someone who carries out tasks via Clock Point."
+      },
+      "workers": {
+        "title": "View workers",
+        "body": "View and edit workers."
+      }
+    }
+  },
+  "checkmate": {
+    "subtitle": "Checkmate — clocking in and customer visits on location.",
+    "onboarding": {
+      "workers_title": "Add your first worker",
+      "workers_body": "Workers clock in and out via the Clock Point QR on their phone.",
+      "workers_cta": "Add worker",
+      "customers_title": "Add your first customer",
+      "customers_body": "Customers have work addresses where workers check in via GPS.",
+      "customers_cta": "Add customer"
+    },
+    "actions": {
+      "add_customer_title": "Add customer",
+      "add_customer_body": "New customer with a work address.",
+      "add_worker_title": "Add worker",
+      "add_worker_body": "Someone who clocks in on location.",
+      "presence_title": "Presence",
+      "presence_body": "Who is at work right now.",
+      "clock_point_title": "Clock Point QR",
+      "clock_point_body": "Show or print the QR for workers."
+    },
     "kpi": {
-        "new_issues": "New issues",
-        "open_tasks": "Open tasks",
-        "present_now": "Present now",
-        "pending_review": "Pending review",
-        "time_attention": "Time attention",
-        "pending_absence": "Requests",
-        "pending_absence_leave": ":count Leave",
-        "pending_absence_recup": ":count TOIL",
-        "iot_alarms": "IoT alarms"
+      "visits_today": "Visits today",
+      "seats": "Workers",
+      "customers": "Active customers"
     },
     "recent": {
-        "title": "Recent issues",
-        "open_issues": "Open issues",
-        "empty": "No issues yet.",
-        "reporter_anon": "Anonymous",
-        "no_location": "No location"
+      "title": "Recent activity",
+      "open": "Open presence",
+      "empty": "No customer visits yet.",
+      "running": "Running",
+      "done": "Done",
+      "since": "Started at :time",
+      "range": ":start – :end"
     },
-    "welcome": "Welcome to WinProx",
-    "onboarding": {
-        "teams": {
-            "title": "Start with one team",
-            "text": "In a small organisation one team is enough. Add everyone who carries out tasks (name + icon). Or let WinProx set up a small sample environment first.",
-            "button": "Create team"
-        },
-        "categories": {
-            "title": "Start by creating categories",
-            "text": "Go to Places → Categories and add categories to group units (e.g. rooms, sanitary, office). One team may be linked to every category — tasks then reach the same people. With several teams, link each team to the categories it works on. Then add locations under Places → Locations and create units per location — or via Places → Units.",
-            "button": "Manage categories"
-        },
-        "locations": {
-            "title": "Start by creating locations and units",
-            "text": "Go to Places → Locations, add locations and create units per location (machines, rooms, assets). You can also import units via CSV or Excel, or create them in bulk.",
-            "button": "Manage locations"
-        },
-        "units": {
-            "title": "Start by creating units",
-            "text": "Open your location and add units (machines, rooms, assets). You can add units one by one, in bulk, or via CSV/Excel.",
-            "button": "Add units"
-        },
-        "clock_point": {
-            "title": "Create a Clock Point",
-            "text": "Workers sign in and clock in/out via a Clock Point. Create at least one clock point and print the QR sticker or QR print sheet so your team can get started.",
-            "button": "Clock Points"
-        }
-    },
-    "register_success": {
-        "title": "Account created",
-        "body": "Your workspace is ready. You can start managing your first tasks now."
-    },
-    "starter_pack": {
-        "help_button": "Would you like a hand getting started?",
-        "modal_title": "Get a head start",
-        "intro": "We can set up a small sample environment for you. You can look around right away and try a few things yourself.",
-        "offer_title": "Would you like to see how WinProx works first?",
-        "intro_detail": "You get a sample with teams, categories, a location and a few units.",
-        "issues_note": "Once a unit has issues, it can only be deactivated (not deleted). The starter template then remains.",
-        "choose_type": "What do you want to use WinProx for?",
-        "choose_size": "How large is your organisation?",
-        "sizes": {
-            "small": "1–5",
-            "medium": "6–20",
-            "large": "21+"
-        },
-        "create": "Create sample environment",
-        "result_title": "Your environment is ready 🎉",
-        "dismiss_result": "Close",
-        "remove": "Remove starter template",
-        "go_to_units": "View my environment",
-        "remove_title": "Remove starter template?",
-        "remove_text": "Teams, categories, location and units from the starter template will be deleted. Anything you added yourself stays.",
-        "remove_issues_note": "If issues already exist, units can only be deactivated and the template remains.",
-        "confirm_remove": "Remove",
-        "preview_teams": "Teams",
-        "preview_categories": "Categories",
-        "preview_location": "Location",
-        "preview_units": "Units",
-        "errors": {
-            "type_required": "Choose what you want to use WinProx for.",
-            "unknown": "This starter template is not available.",
-            "already_applied": "A starter template is already loaded.",
-            "not_empty": "You already have teams, categories or units. The starter template is only available when those are empty. A location without units is replaced.",
-            "missing": "There is no starter template to remove.",
-            "has_issues": "There are already issues or workers. Units can then only be deactivated; the starter template remains. You can always rename.",
-            "size_required": "Choose your organisation size."
-        },
-        "result_body": "We have set up a small sample environment for you. Look around and try creating an issue yourself.",
-        "result_own_later": "Want to start with your own setup right away? You can always add locations, teams and units later.",
-        "self_start": "Start on my own"
-    },
-    "intent": {
-        "title": "What do you want to do?",
-        "fallback_name": "there",
-        "greeting": {
-            "morning": "Good morning, :name",
-            "afternoon": "Good afternoon, :name",
-            "evening": "Good evening, :name"
-        },
-        "tiles": {
-            "roster": {
-                "title": "View the roster",
-                "body": "See and plan who works when."
-            },
-            "presence": {
-                "title": "Who works where today?",
-                "body": "See who is clocked in and where the team is."
-            },
-            "today_tasks": {
-                "title": "Which tasks today?",
-                "body": "See which tasks need to be done today."
-            },
-            "day_task_favorites": {
-                "title": "New day task",
-                "body": "Plan an inspection round from your favorites."
-            },
-            "day_task": {
-                "title": "New day task",
-                "body": "Plan an inspection round at your locations."
-            },
-            "location": {
-                "title": "Add a location",
-                "body": "Add an address or customer site."
-            },
-            "worker": {
-                "title": "Add a worker",
-                "body": "Add someone who carries out tasks via Clock Point."
-            },
-            "workers": {
-                "title": "View workers",
-                "body": "View and edit workers."
-            }
-        }
+    "ciao": {
+      "pending_title": "CIAO request pending",
+      "pending_body": "Your NSSO request is awaiting confirmation. Attendance registrations follow automatically afterwards.",
+      "pending_cta": "Go to settings"
     }
+  }
 }

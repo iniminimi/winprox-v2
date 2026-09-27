@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Actions\Billing\ApplyPlanEntitlementsAction;
 use App\Actions\Billing\RealignSubscriptionPeriodAction;
+use App\Actions\Checkmate\BuildCheckmateDashboardDataAction;
 use App\Actions\Dashboard\BuildDashboardIntentHubAction;
 use App\Actions\Dashboard\BuildDashboardStatsAction;
 use App\Actions\Dashboard\ListDashboardRecentIssuesAction;
@@ -16,6 +17,7 @@ use App\Enums\TenantStarterPackType;
 use App\Http\Requests\Onboarding\ApplyTenantStarterPackRequest;
 use App\Models\Tenant;
 use App\Models\User;
+use App\Support\Checkmate\CheckmateMode;
 use App\Support\Onboarding\TenantOnboardingState;
 use App\Support\Onboarding\TenantStarterPackCatalog;
 use App\Support\Onboarding\TenantStarterPackSummary;
@@ -139,6 +141,7 @@ class Dashboard extends Component
         BuildDashboardStatsAction $buildStats,
         BuildDashboardIntentHubAction $buildIntentHub,
         ListDashboardRecentIssuesAction $listRecentIssues,
+        BuildCheckmateDashboardDataAction $buildCheckmate,
     ) {
         $tenant = $this->resolveTenant();
         if ($tenant !== null) {
@@ -151,15 +154,24 @@ class Dashboard extends Component
         $tenantId = (int) (Tenancy::id() ?? $tenant?->id ?? 0);
         $hasTimeModule = $tenant?->hasTimeModule() ?? false;
         $hasIotModule = $tenant?->hasIotModule() ?? false;
-        $onboarding = TenantOnboardingState::current();
+        // Checkmate: eigen dashboard-variant — geen facility-onboarding,
+        // geen meldingen/taken-KPI's (docs/CHECKMATE.md §5).
+        $isCheckmate = CheckmateMode::isActive($tenant);
+        $checkmateData = $isCheckmate && $tenant !== null
+            ? $buildCheckmate->handle($tenant)
+            : null;
+        $onboarding = $isCheckmate ? null : TenantOnboardingState::current();
         $user = auth()->user();
         $canManageStarterPack = $user instanceof User
             && $tenant !== null
+            && ! $isCheckmate
             && $user->can('removeStarterPack', $tenant);
         $canDismissStarterPackResult = $user instanceof User
             && $tenant !== null
+            && ! $isCheckmate
             && $user->can('dismissStarterPackResult', $tenant);
-        $canApplyStarterPack = $onboarding->canApplyStarterPack
+        $canApplyStarterPack = $onboarding !== null
+            && $onboarding->canApplyStarterPack
             && ! ($tenant?->hasStarterPack() ?? false)
             && $user instanceof User
             && $tenant !== null
@@ -178,16 +190,19 @@ class Dashboard extends Component
             )
             : null;
 
-        $stats = $buildStats->handle($tenantId, $hasTimeModule, $hasIotModule);
-        $recent = $listRecentIssues->handle($tenantId);
-        $starterPackSummary = $tenant !== null && $tenant->shouldShowStarterPackResultCard()
+        $stats = $isCheckmate ? null : $buildStats->handle($tenantId, $hasTimeModule, $hasIotModule);
+        $recent = $isCheckmate ? collect() : $listRecentIssues->handle($tenantId);
+        $starterPackSummary = ! $isCheckmate
+            && $tenant !== null
+            && $tenant->shouldShowStarterPackResultCard()
             ? TenantStarterPackSummary::for($tenant)
             : null;
-        $intentHub = $tenant !== null && $user instanceof User
+        $intentHub = ! $isCheckmate && $tenant !== null && $user instanceof User
             ? $buildIntentHub->handle($tenant, $user)
             : null;
 
         return view('livewire.dashboard', [
+            'checkmate' => $checkmateData,
             'stats' => $stats,
             'recent' => $recent,
             'intentHub' => $intentHub,

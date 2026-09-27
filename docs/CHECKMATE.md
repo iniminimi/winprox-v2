@@ -72,7 +72,11 @@ evacuatielijst, uurrooster (initieel), meldingen.
 
 Whitelist-schermen:
 
-- **Dashboard** — wie is waar nu, open bezoeken, pending-CIAO-banner (§6).
+- **Dashboard** — Checkmate-variant: pending-CIAO-banner (§6), mini-onboarding
+  (eerste uitvoerder → eerste klant), snelacties (klant/uitvoerder/aanwezigheid/
+  Clock Point-QR), KPI's (nu aanwezig, bezoeken vandaag, seats, actieve klanten)
+  en de laatste klantbezoeken. Geen facility-tegels, starter packs of
+  meldingen-feed.
 - **Klanten** (`/klanten`, nieuw) — apart scherm; klant is de mentale eenheid.
   Lijst met klanten, uitklapbaar hun werkadressen, modal-aanmaak/bewerk.
   Het algemene Locaties-scherm staat **niet** op de whitelist (Facility-concept).
