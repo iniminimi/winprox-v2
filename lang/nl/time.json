@@ -275,6 +275,59 @@
             }
         }
     },
+    "clock_displays": {
+        "button": "Scherm",
+        "pill": "Scherm",
+        "title": "Klokscherm — :name",
+        "subtitle": "Koppel een TFT-scherm met roterende QR aan dit clock point.",
+        "back": "Terug naar Clock Points",
+        "confirmed": "Scherm gekoppeld.",
+        "denied": "Koppelaanvraag geweigerd.",
+        "unlinked": "Scherm ontkoppeld.",
+        "rotated": "Secret geroteerd — het scherm moet opnieuw gekoppeld worden.",
+        "linked": {
+                "title": "Gekoppeld scherm",
+                "active": "Gekoppeld",
+                "device": "Toestel",
+                "paired_at": "Gekoppeld op",
+                "last_seen": "laatst gezien",
+                "rotate": "Secret roteren",
+                "unlink": "Scherm ontkoppelen"
+        },
+        "code": {
+                "title": "Koppelcode",
+                "hint": "Genereer een eenmalige code en tik die in op het scherm. De code is 10 minuten geldig; een aanvraag moet je hier bevestigen.",
+                "replace_warning": "Let op: er is al een scherm gekoppeld. Bevestiging van een nieuwe aanvraag vervangt dat scherm — het oude toestel werkt dan niet meer.",
+                "valid_until": "Geldig tot :time — tik de code in op het scherm.",
+                "open": "Er loopt al een code; genereer een nieuwe om hem te vervangen.",
+                "issue": "Genereer koppelcode"
+        },
+        "pending": {
+                "title": "Koppelaanvraag",
+                "waiting": "Wacht op bevestiging",
+                "device": "Toestel",
+                "expires": "Verloopt :time",
+                "confirm": "Bevestigen",
+                "deny": "Weigeren"
+        },
+        "unlink_modal": {
+                "title": "Scherm ontkoppelen?",
+                "body": "Het scherm kan daarna geen geldige QR-codes meer tonen en valt terug naar de koppelmodus.",
+                "confirm": "Ontkoppelen"
+        },
+        "rotate_modal": {
+                "title": "Secret roteren?",
+                "body": "De huidige secret en device-token worden ongeldig. Het scherm moet daarna opnieuw gekoppeld worden met een nieuwe code.",
+                "confirm": "Roteren"
+        },
+        "errors": {
+                "claim_not_found": "Koppelaanvraag niet gevonden.",
+                "claim_not_pending": "Deze aanvraag is al afgehandeld.",
+                "clock_point_not_found": "Clock point niet gevonden.",
+                "display_not_linked": "Er is geen scherm gekoppeld.",
+                "tenant_mismatch": "Clock point hoort niet bij deze organisatie."
+        }
+},
     "duration": {
         "hour_short": "u",
         "minute_short": "min"

@@ -275,6 +275,59 @@
             }
         }
     },
+    "clock_displays": {
+        "button": "Display",
+        "pill": "Display",
+        "title": "Uhr-Display — :name",
+        "subtitle": "Verbinde ein TFT-Display mit rotierendem QR mit diesem Stempelpunkt.",
+        "back": "Zurück zu Clock Points",
+        "confirmed": "Display verbunden.",
+        "denied": "Verbindungsanfrage abgelehnt.",
+        "unlinked": "Display getrennt.",
+        "rotated": "Secret erneuert — das Display muss neu verbunden werden.",
+        "linked": {
+                "title": "Verbundenes Display",
+                "active": "Verbunden",
+                "device": "Gerät",
+                "paired_at": "Verbunden am",
+                "last_seen": "zuletzt gesehen",
+                "rotate": "Secret erneuern",
+                "unlink": "Display trennen"
+        },
+        "code": {
+                "title": "Kopplungscode",
+                "hint": "Erzeuge einen Einmal-Code und gib ihn auf dem Display ein. Der Code ist 10 Minuten gültig; eine Anfrage musst du hier bestätigen.",
+                "replace_warning": "Achtung: Es ist bereits ein Display verbunden. Das Bestätigen einer neuen Anfrage ersetzt es — das alte Gerät funktioniert dann nicht mehr.",
+                "valid_until": "Gültig bis :time — gib den Code auf dem Display ein.",
+                "open": "Es läuft bereits ein Code; erzeuge einen neuen, um ihn zu ersetzen.",
+                "issue": "Kopplungscode erzeugen"
+        },
+        "pending": {
+                "title": "Verbindungsanfrage",
+                "waiting": "Wartet auf Bestätigung",
+                "device": "Gerät",
+                "expires": "Läuft ab :time",
+                "confirm": "Bestätigen",
+                "deny": "Ablehnen"
+        },
+        "unlink_modal": {
+                "title": "Display trennen?",
+                "body": "Das Display kann danach keine gültigen QR-Codes mehr anzeigen und kehrt in den Kopplungsmodus zurück.",
+                "confirm": "Trennen"
+        },
+        "rotate_modal": {
+                "title": "Secret erneuern?",
+                "body": "Das aktuelle Secret und der Geräte-Token werden ungültig. Das Display muss danach mit einem neuen Code verbunden werden.",
+                "confirm": "Erneuern"
+        },
+        "errors": {
+                "claim_not_found": "Verbindungsanfrage nicht gefunden.",
+                "claim_not_pending": "Diese Anfrage wurde bereits bearbeitet.",
+                "clock_point_not_found": "Stempelpunkt nicht gefunden.",
+                "display_not_linked": "Es ist kein Display verbunden.",
+                "tenant_mismatch": "Der Stempelpunkt gehört nicht zu dieser Organisation."
+        }
+},
     "duration": {
         "hour_short": "h",
         "minute_short": "min"

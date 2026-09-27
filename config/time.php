@@ -34,4 +34,24 @@ return [
      * De prik zelf blijft altijd geregistreerd.
      */
     'roster_attendance_tolerance_minutes' => max(0, (int) env('TIME_ROSTER_ATTENDANCE_TOLERANCE_MINUTES', 15)),
+
+    // Klokschermen (ESP32-TFT met roterende QR).
+
+    /** Lengte van één QR-venster in seconden (scherm roteert hiermee mee). */
+    'display_window_seconds' => (int) env('TIME_DISPLAY_WINDOW_SECONDS', 30),
+
+    /** Hoeveel vensters voor/na de server ook nog accepteert (klokdrift). */
+    'display_window_tolerance' => (int) env('TIME_DISPLAY_WINDOW_TOLERANCE', 1),
+
+    /** Geldigheid van een pairing-code (XXXX-XXXX) in minuten. */
+    'display_pairing_ttl_minutes' => (int) env('TIME_DISPLAY_PAIRING_TTL_MINUTES', 10),
+
+    /** Max. nieuwe pending claims per Clock Point per uur (defence-in-depth). */
+    'display_claims_per_hour' => (int) env('TIME_DISPLAY_CLAIMS_PER_HOUR', 5),
+
+    /** Scherm toont "synchronisatie nodig"-waarschuwing na zoveel uur offline. */
+    'display_offline_warn_hours' => (int) env('TIME_DISPLAY_OFFLINE_WARN_HOURS', 24),
+
+    /** Scherm stopt QR's na zoveel uur zonder succesvolle ping (default 7d). */
+    'display_offline_block_hours' => (int) env('TIME_DISPLAY_OFFLINE_BLOCK_HOURS', 168),
 ];

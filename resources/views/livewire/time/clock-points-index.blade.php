@@ -102,7 +102,15 @@
                                 {{ __('common.qr.button') }}
                             </button>
                         @endcan
+                        @if (! ($checkmateMode ?? false) && $clockPoint->hasLinkedDisplay())
+                            <span class="wp-pill wp-pill--done" title="{{ __('time.clock_displays.linked.active') }}">{{ __('time.clock_displays.pill') }}</span>
+                        @endif
                         @can('update', $clockPoint)
+                            @unless ($checkmateMode ?? false)
+                                <a href="{{ route('time.clock-displays.pair', $clockPoint) }}" class="btn btn--ghost btn--sm">
+                                    {{ __('time.clock_displays.button') }}
+                                </a>
+                            @endunless
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="openEdit({{ $clockPoint->id }})">{{ __('common.button.edit') }}</button>
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleActive({{ $clockPoint->id }})">
                                 {{ $clockPoint->is_active ? __('time.clock_points.deactivate') : __('time.clock_points.activate') }}

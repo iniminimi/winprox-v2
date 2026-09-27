@@ -941,6 +941,44 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
 - **Print:** knop naast de titel opent een **nieuw venster** (zoals briefing); A4 **liggend**,
   zichtbare periode/filters.
 
+### 5g.7 Klokschermen (TFT met roterende QR)
+
+Fysiek scherm (ESP32-4848S040, 4" 480×480) aan een Clock Point dat zelf elke ~30 s een
+**nieuwe QR** toont. De werknemer fotografeert/scant het scherm en landt op hetzelfde
+`/time/{token}`-portaal als de sticker — geen aparte flow. Een foto van het scherm is
+binnen ~30–90 s dood.
+
+- **Token:** `{display_id:24}{dyn:40}` = 64 tekens. `display_id` is de stabiele publieke
+  sleutel; `dyn` = 40 hex van `HMAC-SHA256(display_secret, "wpx:<unix-venster>")`.
+  Resolver accepteert het huidige venster ±1; falende dyn → `blocked` + audit
+  `clock_point.qr_blocked` (zelfde log als verlopen sticker-tokens). Geen DB-rij per rotatie.
+- **Koppelen** (beheer, Clock Point → **Scherm**, route `time.clock-displays.pair` —
+  buiten de Checkmate-whitelist): admin genereert eenmalige code `XXXX-XXXX`
+  (Crockford base32, 10 min geldig, max 1 actieve code/punt) → device tikt die in →
+  `POST /api/v1/time/clock-displays/claim` maakt een **pending** claim → admin
+  **bevestigt/weigert** expliciet → device pollt `claim-status` en krijgt
+  `wpclk_`-token + `display_secret` + servertijd + offline-drempels.
+- **Claims:** max 1 pending per punt (DB-unique via `pending_slot` generated column);
+  zelfde device_hint retryt idempotent, ander device → `claim_pending`. Nieuwe code
+  doodt open claims (`denied/code_reissued`); admin deny → `denied/admin`; verlopen
+  claims → `expired` via `winprox:time-expire-clock-display-claims` (hourly) +
+  `isPending()`-predicate dekt de scheduler-kloof. Cooldown: `throttle:10,1` op claim
+  + max 5 claims/punt/uur.
+- **Re-pair:** waarschuwing in UI; `ConfirmClaim` auditeert `display_unlinked`
+  (`replaced_by_claim`) + `display_claim_confirmed`. `display_id` blijft; secret en
+  device-token roteren → het oude toestel sterft en keert naar pairing-modus.
+- **Ontkoppelen/roteren:** `Unlink` wist secret/token (display_id blijft voor het
+  audit-spoor); `RotateSecret` roteert beide (scherm moet her-pairen). Ping met oude
+  token → 401 → scherm wist credentials → pairing-modus.
+- **Heartbeat:** `GET /api/v1/time/clock-displays/ping` (`X-WinProx-Clock-Key`)
+  → `server_time`, `state`, naam/locatie, rotatie- en offline-drempels
+  (`time.display_*` in `config/time.php`). Firmware: sync bij confirm én elke ping;
+  amber banner na 24u offline, geen QR meer na 7 dagen. Dreigingsmodel "gestolen
+  scherm" = revocatie; worker-gsm-binding (één gsm per uitvoerder) blijft de
+  tweede fraude-laag.
+- Audit: `clock_point.display_pairing_issued`, `display_claim_confirmed`,
+  `display_claim_denied`, `display_unlinked`, `display_secret_rotated`.
+
 ---
 
 ## 6. Personen (Backoffice + Teams)

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\V1\AnnouncementController;
+use App\Http\Controllers\Api\V1\ClockDisplayController;
 use App\Http\Controllers\Api\V1\EsgMeasurementController;
 use App\Http\Controllers\Api\V1\HookController;
 use App\Http\Controllers\Api\V1\IotEventController;
@@ -31,6 +32,18 @@ Route::prefix('v1')->group(function () {
     Route::post('iot/events', [IotEventController::class, 'store'])
         ->middleware(['iot.gateway', 'throttle:120,1', 'idempotency'])
         ->name('api.v1.iot.events.store');
+
+    // Klokschermen (ESP32-TFT): pairing-claim + status-poll publiek (code +
+    // admin-confirm zijn de poort), ping achter wpclk_-device-token.
+    Route::post('time/clock-displays/claim', [ClockDisplayController::class, 'claim'])
+        ->middleware('throttle:10,1')
+        ->name('api.v1.time.clock-displays.claim');
+    Route::get('time/clock-displays/claim-status/{claimToken}', [ClockDisplayController::class, 'claimStatus'])
+        ->middleware('throttle:60,1')
+        ->name('api.v1.time.clock-displays.claim-status');
+    Route::get('time/clock-displays/ping', [ClockDisplayController::class, 'ping'])
+        ->middleware(['clock.display', 'throttle:60,1'])
+        ->name('api.v1.time.clock-displays.ping');
 
     Route::middleware(['auth:sanctum', SetTenantFromToken::class, 'api.access'])->group(function () {
         // Read endpoints (geen idempotency nodig)

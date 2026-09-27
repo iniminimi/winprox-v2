@@ -115,6 +115,7 @@ use App\Livewire\Tasks\Index as TaskIndex;
 use App\Livewire\Tasks\Show as TaskShow;
 use App\Livewire\Time\AbsenceRequestsIndex;
 use App\Livewire\Time\AlarmsIndex;
+use App\Livewire\Time\ClockDisplayPair;
 use App\Livewire\Time\ClockPointsIndex;
 use App\Livewire\Time\PresenceIndex;
 use App\Livewire\Time\PresenceSubmissionsIndex;
@@ -459,6 +460,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/time/clock-points', ClockPointsIndex::class)->name('time.clock-points.index');
         Route::get('/time/clock-points/{clockPoint}/qr', ClockPointQrController::class)->name('time.clock-points.qr');
         Route::get('/time/clock-points/{clockPoint}/qr-pack', ClockPointQrPackDownloadController::class)->name('time.clock-points.qr-pack');
+        // Klokscherm-koppeling: eigen naamruimte zodat Checkmate (whitelist
+        // op routenaam) schermbeheer NIET mee krijgt met time.clock-points.*.
+        Route::get('/time/clock-points/{clockPoint}/display', ClockDisplayPair::class)->name('time.clock-displays.pair');
         Route::get('/team', Team::class)->name('team.index');
         Route::get('/workers', WorkersIndex::class)->name('workers.index');
         Route::get('/settings', Settings::class)->name('settings.index');

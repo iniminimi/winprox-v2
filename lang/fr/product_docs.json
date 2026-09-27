@@ -62,7 +62,8 @@
                 "items": [
                     "Photo et note facultatives à la clôture.",
                     "Statut et historique en gestion.",
-                    "Les exécutants travaillent via le QR unité, ou Clock Point avec une visite GPS ouverte."
+                    "Les exécutants travaillent via le QR unité, ou Clock Point avec une visite GPS ouverte.",
+                    "En option : écran TFT sur un Clock Point avec QR tournant (association via code unique + confirmation)."
                 ]
             },
             {

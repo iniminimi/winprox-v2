@@ -275,6 +275,59 @@
             }
         }
     },
+    "clock_displays": {
+        "button": "Écran",
+        "pill": "Écran",
+        "title": "Écran horloge — :name",
+        "subtitle": "Associez un écran TFT avec QR tournant à ce point de badgeage.",
+        "back": "Retour aux Clock Points",
+        "confirmed": "Écran associé.",
+        "denied": "Demande d'association refusée.",
+        "unlinked": "Écran dissocié.",
+        "rotated": "Secret renouvelé — l'écran doit être associé à nouveau.",
+        "linked": {
+                "title": "Écran associé",
+                "active": "Associé",
+                "device": "Appareil",
+                "paired_at": "Associé le",
+                "last_seen": "vu pour la dernière fois",
+                "rotate": "Renouveler le secret",
+                "unlink": "Dissocier l'écran"
+        },
+        "code": {
+                "title": "Code d'association",
+                "hint": "Générez un code à usage unique et saisissez-le sur l'écran. Le code est valable 10 minutes ; une demande doit être confirmée ici.",
+                "replace_warning": "Attention : un écran est déjà associé. Confirmer une nouvelle demande le remplace — l'ancien appareil cessera de fonctionner.",
+                "valid_until": "Valide jusqu'à :time — saisissez le code sur l'écran.",
+                "open": "Un code est déjà actif ; générez-en un nouveau pour le remplacer.",
+                "issue": "Générer un code"
+        },
+        "pending": {
+                "title": "Demande d'association",
+                "waiting": "En attente de confirmation",
+                "device": "Appareil",
+                "expires": "Expire :time",
+                "confirm": "Confirmer",
+                "deny": "Refuser"
+        },
+        "unlink_modal": {
+                "title": "Dissocier l'écran ?",
+                "body": "L'écran ne pourra plus afficher de QR valides et repassera en mode association.",
+                "confirm": "Dissocier"
+        },
+        "rotate_modal": {
+                "title": "Renouveler le secret ?",
+                "body": "Le secret et le token de l'appareil deviennent invalides. L'écran devra être associé à nouveau avec un nouveau code.",
+                "confirm": "Renouveler"
+        },
+        "errors": {
+                "claim_not_found": "Demande d'association introuvable.",
+                "claim_not_pending": "Cette demande a déjà été traitée.",
+                "clock_point_not_found": "Point de badgeage introuvable.",
+                "display_not_linked": "Aucun écran n'est associé.",
+                "tenant_mismatch": "Le point de badgeage n'appartient pas à cette organisation."
+        }
+},
     "duration": {
         "hour_short": "h",
         "minute_short": "min"

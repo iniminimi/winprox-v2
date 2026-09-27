@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\ApplySupportTenantContext;
 use App\Support\ResolveAppLocale;
+use App\Http\Middleware\AuthenticateClockDisplay;
 use App\Http\Middleware\AuthenticateIotGateway;
 use App\Http\Middleware\CheckApiAccess;
 use App\Http\Middleware\EnsureCheckmateRouteAllowed;
@@ -43,6 +44,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'checkmate.allowed' => EnsureCheckmateRouteAllowed::class,
             'api.access' => CheckApiAccess::class,
             'iot.gateway' => AuthenticateIotGateway::class,
+            'clock.display' => AuthenticateClockDisplay::class,
             'idempotency' => EnsureRequestIdempotency::class,
         ]);
 

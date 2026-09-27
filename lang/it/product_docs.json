@@ -62,7 +62,8 @@
                 "items": [
                     "Foto e nota facoltative alla chiusura.",
                     "Stato e cronologia in gestione.",
-                    "Gli esecutori lavorano dal QR unità o dal Clock Point con una visita GPS aperta."
+                    "Gli esecutori lavorano dal QR unità o dal Clock Point con una visita GPS aperta.",
+                    "Opzionale: schermo TFT su un punto di timbratura con QR rotante (collegamento con codice monouso + conferma)."
                 ]
             },
             {

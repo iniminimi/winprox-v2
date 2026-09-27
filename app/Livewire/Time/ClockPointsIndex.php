@@ -17,6 +17,7 @@ use App\Models\AuditLog;
 use App\Models\ClockPoint;
 use App\Models\Location;
 use App\Models\Tenant;
+use App\Support\Checkmate\CheckmateMode;
 use App\Support\Qr\QrStickerSheetTemplate;
 use App\Support\Tenancy;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -245,6 +246,9 @@ class ClockPointsIndex extends Component
 
         return view('livewire.time.clock-points-index', [
             'clockPoints' => $clockPoints,
+            // Schermkoppeling (time.clock-displays.*) is buiten de Checkmate-
+            // whitelist — de knop hoort dan ook onzichtbaar, geen dode 404.
+            'checkmateMode' => CheckmateMode::isActive(Tenant::query()->find($tenantId)),
             'selectedRenewClockPoint' => $clockPoints->firstWhere('id', $this->renewQrClockPointId),
             'locations' => Location::query()->where('is_active', true)->orderBy('name')->get(),
             'blockedQrAttempts' => AuditLog::query()

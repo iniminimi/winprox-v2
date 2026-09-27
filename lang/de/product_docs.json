@@ -62,7 +62,8 @@
                 "items": [
                     "Optionales Foto und Notiz beim Abschließen.",
                     "Status und Historie in der Verwaltung.",
-                    "Ausführende arbeiten über Unit-QR oder Clock Point mit offenem GPS-Arbeitsbesuch."
+                    "Ausführende arbeiten über Unit-QR oder Clock Point mit offenem GPS-Arbeitsbesuch.",
+                    "Optional: TFT-Uhrdisplay an einem Stempelpunkt mit rotierendem QR (Kopplung per Einmal-Code + Bestätigung)."
                 ]
             },
             {

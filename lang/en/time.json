@@ -275,6 +275,59 @@
             }
         }
     },
+    "clock_displays": {
+        "button": "Display",
+        "pill": "Display",
+        "title": "Clock display — :name",
+        "subtitle": "Pair a TFT display with rotating QR to this clock point.",
+        "back": "Back to Clock Points",
+        "confirmed": "Display paired.",
+        "denied": "Pairing request denied.",
+        "unlinked": "Display unlinked.",
+        "rotated": "Secret rotated — the display must be paired again.",
+        "linked": {
+                "title": "Linked display",
+                "active": "Linked",
+                "device": "Device",
+                "paired_at": "Paired at",
+                "last_seen": "last seen",
+                "rotate": "Rotate secret",
+                "unlink": "Unlink display"
+        },
+        "code": {
+                "title": "Pairing code",
+                "hint": "Generate a single-use code and enter it on the display. The code is valid for 10 minutes; a request must be confirmed here.",
+                "replace_warning": "Warning: a display is already linked. Confirming a new request replaces it — the old device will stop working.",
+                "valid_until": "Valid until :time — enter the code on the display.",
+                "open": "A code is already active; generate a new one to replace it.",
+                "issue": "Generate pairing code"
+        },
+        "pending": {
+                "title": "Pairing request",
+                "waiting": "Awaiting confirmation",
+                "device": "Device",
+                "expires": "Expires :time",
+                "confirm": "Confirm",
+                "deny": "Deny"
+        },
+        "unlink_modal": {
+                "title": "Unlink display?",
+                "body": "The display will no longer show valid QR codes and returns to pairing mode.",
+                "confirm": "Unlink"
+        },
+        "rotate_modal": {
+                "title": "Rotate secret?",
+                "body": "The current secret and device token become invalid. The display must be paired again with a new code.",
+                "confirm": "Rotate"
+        },
+        "errors": {
+                "claim_not_found": "Pairing request not found.",
+                "claim_not_pending": "This request was already handled.",
+                "clock_point_not_found": "Clock point not found.",
+                "display_not_linked": "No display is linked.",
+                "tenant_mismatch": "Clock point does not belong to this organisation."
+        }
+},
     "duration": {
         "hour_short": "h",
         "minute_short": "min"

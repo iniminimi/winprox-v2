@@ -275,6 +275,59 @@
             }
         }
     },
+    "clock_displays": {
+        "button": "Schermo",
+        "pill": "Schermo",
+        "title": "Schermo orologio — :name",
+        "subtitle": "Collega uno schermo TFT con QR rotante a questo punto di timbratura.",
+        "back": "Torna ai Clock Points",
+        "confirmed": "Schermo collegato.",
+        "denied": "Richiesta di collegamento rifiutata.",
+        "unlinked": "Schermo scollegato.",
+        "rotated": "Segreto rinnovato — lo schermo deve essere collegato di nuovo.",
+        "linked": {
+                "title": "Schermo collegato",
+                "active": "Collegato",
+                "device": "Dispositivo",
+                "paired_at": "Collegato il",
+                "last_seen": "visto l'ultima volta",
+                "rotate": "Rinnova segreto",
+                "unlink": "Scollega schermo"
+        },
+        "code": {
+                "title": "Codice di collegamento",
+                "hint": "Genera un codice monouso e inseriscilo sullo schermo. Il codice è valido 10 minuti; una richiesta deve essere confermata qui.",
+                "replace_warning": "Attenzione: è già collegato uno schermo. Confermare una nuova richiesta lo sostituisce — il vecchio dispositivo smetterà di funzionare.",
+                "valid_until": "Valido fino alle :time — inserisci il codice sullo schermo.",
+                "open": "C'è già un codice attivo; generane uno nuovo per sostituirlo.",
+                "issue": "Genera codice"
+        },
+        "pending": {
+                "title": "Richiesta di collegamento",
+                "waiting": "In attesa di conferma",
+                "device": "Dispositivo",
+                "expires": "Scade :time",
+                "confirm": "Conferma",
+                "deny": "Rifiuta"
+        },
+        "unlink_modal": {
+                "title": "Scollegare lo schermo?",
+                "body": "Lo schermo non potrà più mostrare QR validi e tornerà in modalità collegamento.",
+                "confirm": "Scollega"
+        },
+        "rotate_modal": {
+                "title": "Rinnovare il segreto?",
+                "body": "Il segreto attuale e il token del dispositivo diventano invalidi. Lo schermo dovrà essere collegato di nuovo con un nuovo codice.",
+                "confirm": "Rinnova"
+        },
+        "errors": {
+                "claim_not_found": "Richiesta di collegamento non trovata.",
+                "claim_not_pending": "Questa richiesta è già stata gestita.",
+                "clock_point_not_found": "Punto di timbratura non trovato.",
+                "display_not_linked": "Nessuno schermo è collegato.",
+                "tenant_mismatch": "Il punto di timbratura non appartiene a questa organizzazione."
+        }
+},
     "duration": {
         "hour_short": "h",
         "minute_short": "min"

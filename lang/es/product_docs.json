@@ -62,7 +62,8 @@
                 "items": [
                     "Foto y nota opcionales al cerrar.",
                     "Estado e historial en gestión.",
-                    "Los operarios trabajan por el QR de unidad o Clock Point con una visita GPS abierta."
+                    "Los operarios trabajan por el QR de unidad o Clock Point con una visita GPS abierta.",
+                    "Opcional: pantalla TFT en un punto de fichaje con QR rotativo (vinculación con código único + confirmación)."
                 ]
             },
             {

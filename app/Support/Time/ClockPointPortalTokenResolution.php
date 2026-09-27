@@ -33,6 +33,16 @@ final class ClockPointPortalTokenResolution
         return new self(self::STATUS_BLOCKED, $clockPoint, $historyToken);
     }
 
+    /**
+     * Display-token van een gekoppeld scherm met falende/verlopen HMAC —
+     * zelfde "blocked"-semantiek als een history-token buiten grace
+     * (gelogd via LogBlockedClockPointQrAttemptAction, zonder history-rij).
+     */
+    public static function blockedDisplay(ClockPoint $clockPoint): self
+    {
+        return new self(self::STATUS_BLOCKED, $clockPoint, null);
+    }
+
     public static function notFound(): self
     {
         return new self(self::STATUS_NOT_FOUND, null, null);

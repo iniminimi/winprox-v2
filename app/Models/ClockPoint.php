@@ -24,6 +24,15 @@ class ClockPoint extends Model
         'is_active',
         'homescreen_shortcut',
         'sort_order',
+        'display_id',
+        'display_secret',
+        'display_token_hash',
+        'display_token_prefix',
+        'display_pairing_code',
+        'display_pairing_expires_at',
+        'display_device_hint',
+        'display_paired_at',
+        'display_last_seen_at',
     ];
 
     protected $casts = [
@@ -31,6 +40,10 @@ class ClockPoint extends Model
         'homescreen_shortcut' => 'boolean',
         'qr_renewed_at' => 'datetime',
         'qr_renewal_recommended_at' => 'datetime',
+        'display_secret' => 'encrypted',
+        'display_pairing_expires_at' => 'datetime',
+        'display_paired_at' => 'datetime',
+        'display_last_seen_at' => 'datetime',
     ];
 
     protected static function booted(): void
@@ -55,6 +68,25 @@ class ClockPoint extends Model
     public function qrTokens(): HasMany
     {
         return $this->hasMany(ClockPointQrToken::class);
+    }
+
+    public function displayClaims(): HasMany
+    {
+        return $this->hasMany(ClockDisplayClaim::class);
+    }
+
+    public function hasLinkedDisplay(): bool
+    {
+        return $this->display_id !== null && $this->display_secret !== null;
+    }
+
+    public function matchesDisplayToken(?string $plain): bool
+    {
+        if (! is_string($plain) || $plain === '' || $this->display_token_hash === null) {
+            return false;
+        }
+
+        return hash_equals($this->display_token_hash, hash('sha256', $plain));
     }
 
     public function isRenewalRecommended(): bool

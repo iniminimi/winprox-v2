@@ -7200,3 +7200,13 @@ a.wp-kpi.wp-kpi--attention {
 }
 
 
+
+/* Klokscherm-koppelcode (time.clock-displays) — groot intikbaar op het scherm. */
+.wp-display-code {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    font-variant-numeric: tabular-nums;
+    color: var(--wp-text-strong, #111827);
+}
