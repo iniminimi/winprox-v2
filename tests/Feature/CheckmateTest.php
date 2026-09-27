@@ -25,6 +25,7 @@ use App\Models\Worker;
 use App\Models\WorkShift;
 use App\Models\WorkVisit;
 use App\Support\Billing\BillingCatalogViewData;
+use App\Support\Locations\GoogleMapsAddressLine;
 use App\Support\Tenancy;
 use Livewire\Livewire;
 use Illuminate\Support\Facades\Mail;
@@ -496,4 +497,47 @@ it('weigert een klant zonder naam via het formulier', function () {
         ->assertHasErrors(['customerFormName' => 'required']);
 
     expect(Customer::where('tenant_id', $tenant->id)->count())->toBe(0);
+});
+
+it('vult werkadres-velden automatisch bij het plakken van een Google Maps-adres', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    Livewire::actingAs($admin)
+        ->test(CustomersIndex::class)
+        ->call('applyLocationAddressPaste', 'Marktstraat 61, 8301 Knokke-Heist')
+        ->assertSet('locationFormStreet', 'Marktstraat')
+        ->assertSet('locationFormHouseNumber', '61')
+        ->assertSet('locationFormPostalCode', '8301')
+        ->assertSet('locationFormCity', 'Knokke-Heist');
+});
+
+it('parst Google Maps-adresvarianten (land-suffix, bus, NL-postcode) en laat niet-adressen ongemoeid', function () {
+    expect(GoogleMapsAddressLine::tryParse('Marktstraat 61, 8301 Knokke-Heist, België'))
+        ->toMatchArray([
+            'street' => 'Marktstraat',
+            'house_number' => '61',
+            'postal_code' => '8301',
+            'city' => 'Knokke-Heist',
+        ]);
+
+    expect(GoogleMapsAddressLine::tryParse('Kerkstraat 12 bus 3, 2000 Antwerpen'))
+        ->toMatchArray([
+            'street' => 'Kerkstraat',
+            'house_number' => '12 bus 3',
+            'postal_code' => '2000',
+            'city' => 'Antwerpen',
+        ]);
+
+    expect(GoogleMapsAddressLine::tryParse('Kalvermarkt 1, 2511 CB Den Haag'))
+        ->toMatchArray([
+            'street' => 'Kalvermarkt',
+            'house_number' => '1',
+            'postal_code' => '2511 CB',
+            'city' => 'Den Haag',
+        ]);
+
+    expect(GoogleMapsAddressLine::tryParse('knokke-heist'))->toBeNull()
+        ->and(GoogleMapsAddressLine::tryParse('51.336167, 3.236306'))->toBeNull()
+        ->and(GoogleMapsAddressLine::tryParse(''))->toBeNull();
 });

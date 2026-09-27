@@ -13,6 +13,7 @@ use App\Livewire\Concerns\AppliesGpsCoordinatePair;
 use App\Models\Customer;
 use App\Models\Location;
 use App\Models\Tenant;
+use App\Support\Locations\GoogleMapsAddressLine;
 use App\Support\Platform\SupportTenantContext;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Validator;
@@ -188,6 +189,21 @@ class Index extends Component
         $this->showLocationModal = false;
         $this->locationCustomerId = null;
         $this->resetLocationForm();
+    }
+
+    public function applyLocationAddressPaste(string $text): bool
+    {
+        $parsed = GoogleMapsAddressLine::tryParse($text);
+        if ($parsed === null) {
+            return false;
+        }
+
+        $this->locationFormStreet = $parsed['street'];
+        $this->locationFormHouseNumber = $parsed['house_number'];
+        $this->locationFormPostalCode = $parsed['postal_code'];
+        $this->locationFormCity = $parsed['city'];
+
+        return true;
     }
 
     public function saveLocation(CreateLocationAction $create): void

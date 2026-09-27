@@ -167,13 +167,14 @@
                 <div class="wp-form-grid-2">
                     <div class="wp-field">
                         <label class="wp-label" for="locationFormStreet">{{ __('customers.location_form.street') }}</label>
-                        <input type="text" id="locationFormStreet" class="wp-input" wire:model="locationFormStreet" autocomplete="off">
+                        <input type="text" id="locationFormStreet" class="wp-input" wire:model="locationFormStreet" autocomplete="off" @paste="$wire.applyLocationAddressPaste($event.clipboardData.getData('text'))">
+                        <p class="wp-hint">{{ __('customers.location_form.address_paste_hint') }}</p>
                         @error('locationFormStreet') <p class="wp-error">{{ $message }}</p> @enderror
                         @error('street') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     <div class="wp-field">
                         <label class="wp-label" for="locationFormHouseNumber">{{ __('customers.location_form.house_number') }}</label>
-                        <input type="text" id="locationFormHouseNumber" class="wp-input" wire:model="locationFormHouseNumber" autocomplete="off">
+                        <input type="text" id="locationFormHouseNumber" class="wp-input" wire:model="locationFormHouseNumber" autocomplete="off" @paste="$wire.applyLocationAddressPaste($event.clipboardData.getData('text'))">
                         @error('house_number') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                 </div>
@@ -181,12 +182,12 @@
                 <div class="wp-form-grid-2">
                     <div class="wp-field">
                         <label class="wp-label" for="locationFormPostalCode">{{ __('customers.location_form.postal_code') }}</label>
-                        <input type="text" id="locationFormPostalCode" class="wp-input" wire:model="locationFormPostalCode" autocomplete="off">
+                        <input type="text" id="locationFormPostalCode" class="wp-input" wire:model="locationFormPostalCode" autocomplete="off" @paste="$wire.applyLocationAddressPaste($event.clipboardData.getData('text'))">
                         @error('postal_code') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     <div class="wp-field">
                         <label class="wp-label" for="locationFormCity">{{ __('customers.location_form.city') }}</label>
-                        <input type="text" id="locationFormCity" class="wp-input" wire:model="locationFormCity" autocomplete="off">
+                        <input type="text" id="locationFormCity" class="wp-input" wire:model="locationFormCity" autocomplete="off" @paste="$wire.applyLocationAddressPaste($event.clipboardData.getData('text'))">
                         @error('city') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                 </div>
