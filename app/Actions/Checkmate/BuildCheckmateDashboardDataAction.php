@@ -102,7 +102,7 @@ class BuildCheckmateDashboardDataAction
                     'tone' => 'open_tasks',
                     'label' => 'dashboard.checkmate.kpi.seats',
                     'value' => $seatsValue,
-                    'href' => route('workers.index'),
+                    'href' => route('team.index', ['section' => 'teams']),
                 ],
                 [
                     'key' => 'customers',

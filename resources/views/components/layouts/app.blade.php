@@ -189,8 +189,8 @@
                             <x-wp-icon name="team" class="wp-nav-icon" />
                             <span>{{ __('customers.title') }}</span>
                         </a>
-                        <a href="{{ route('workers.index') }}"
-                           class="wp-nav-link {{ request()->routeIs('workers.*') ? 'is-active' : '' }}"
+                        <a href="{{ route('team.index') }}"
+                           class="wp-nav-link {{ request()->routeIs(['team.*', 'workers.*']) ? 'is-active' : '' }}"
                            @click="nav = false">
                             <x-wp-icon name="team" class="wp-nav-icon" />
                             <span>{{ __('common.nav.workers') }}</span>
