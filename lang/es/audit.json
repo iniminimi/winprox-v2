@@ -169,5 +169,6 @@
         "time.absence.rejected": "Solicitud de permiso o compensación rechazada",
         "locations.import": "Ubicaciones importadas",
         "locations.delete_import_batch": "Lote de importación de ubicaciones eliminado"
-    }
+    },
+    "context_ref_field": ":field #:id"
 }

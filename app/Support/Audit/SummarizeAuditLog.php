@@ -60,12 +60,19 @@ final class SummarizeAuditLog
             $parts[] = '#'.$log->model_id;
         }
 
-        foreach (['name', 'email', 'slug', 'original_filename', 'recipient_email', 'target_name'] as $field) {
+        foreach (['name', 'email', 'slug', 'original_filename', 'recipient_email', 'target_name', 'reason'] as $field) {
             $value = $payload[$field] ?? null;
             if (! is_string($value) || trim($value) === '') {
                 continue;
             }
             $parts[] = Str::limit(trim($value), 80);
+        }
+
+        foreach (['attempted_worker_id', 'bound_device_id', 'attempted_device_id'] as $field) {
+            $value = $payload[$field] ?? null;
+            if (is_numeric($value) && (int) $value > 0) {
+                $parts[] = __('audit.context_ref_field', ['field' => $field, 'id' => (int) $value]);
+            }
         }
 
         if (isset($payload['target_count']) && is_numeric($payload['target_count'])) {

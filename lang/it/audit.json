@@ -169,5 +169,6 @@
         "time.absence.rejected": "Richiesta di ferie o recupero rifiutata",
         "locations.import": "Sedi importate",
         "locations.delete_import_batch": "Batch import sedi eliminato"
-    }
+    },
+    "context_ref_field": ":field #:id"
 }

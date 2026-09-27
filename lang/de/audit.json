@@ -169,5 +169,6 @@
         "time.absence.rejected": "Urlaubs- oder Ausgleichsantrag abgelehnt",
         "locations.import": "Standorte importiert",
         "locations.delete_import_batch": "Standort-Importstapel gelöscht"
-    }
+    },
+    "context_ref_field": ":field #:id"
 }

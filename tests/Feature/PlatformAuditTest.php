@@ -36,6 +36,33 @@ it('vat auditregels samen in gewone taal', function () {
         ->and($summary['context'])->toContain('Kapotte kraan');
 });
 
+it('toont reden en referenties bij kloktoestel-weigering', function () {
+    app()->setLocale('nl');
+
+    $tenant = Tenant::factory()->create(['name' => 'Demo Org']);
+
+    $log = app(LogAuditAction::class)->handle(
+        userId: null,
+        tenantId: $tenant->id,
+        action: 'worker.clock_device_refused',
+        modelType: 'Worker',
+        modelId: 31,
+        payload: [
+            'bound_device_id' => null,
+            'attempted_device_id' => 12,
+            'attempted_worker_id' => 7,
+            'reason' => 'clock_device_foreign',
+        ],
+    );
+
+    $summary = app(SummarizeAuditLog::class)->handle($log->fresh(['tenant', 'user']));
+
+    expect($summary['context'])->toContain('#31')
+        ->and($summary['context'])->toContain('clock_device_foreign')
+        ->and($summary['context'])->toContain('attempted_worker_id #7')
+        ->and($summary['context'])->toContain('attempted_device_id #12');
+});
+
 it('toont menselijke platformaudit met pagina-hulp', function () {
     app()->setLocale('nl');
 

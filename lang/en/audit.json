@@ -169,5 +169,6 @@
         "time.absence.rejected": "Leave or TOIL request rejected",
         "locations.import": "Locations imported",
         "locations.delete_import_batch": "Location import batch deleted"
-    }
+    },
+    "context_ref_field": ":field #:id"
 }

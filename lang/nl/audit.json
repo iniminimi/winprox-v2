@@ -169,5 +169,6 @@
         "time.absence.rejected": "Verlof- of recupaanvraag geweigerd",
         "locations.import": "Locaties geïmporteerd",
         "locations.delete_import_batch": "Locatie-importbatch verwijderd"
-    }
+    },
+    "context_ref_field": ":field #:id"
 }

@@ -169,5 +169,6 @@
         "time.absence.rejected": "Demande de congé ou de récup refusée",
         "locations.import": "Lieux importés",
         "locations.delete_import_batch": "Lot d'import de lieux supprimé"
-    }
+    },
+    "context_ref_field": ":field #:id"
 }
