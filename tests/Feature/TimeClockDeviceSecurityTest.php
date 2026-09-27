@@ -15,6 +15,7 @@ use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Tenant;
 use App\Models\Worker;
+use App\Models\WorkerDevice;
 use App\Support\Tenancy;
 use App\Support\Time\TimePresenceAttentionRules;
 use Illuminate\Support\Facades\DB;
@@ -231,6 +232,58 @@ it('koppelt geen gsm bij API-inkloken', function () {
         ->assertCreated();
 
     expect($worker->fresh()->clock_device_id)->toBeNull();
+});
+
+it('laat een andere uitvoerder binden nadat het toestel van de vorige is vrijgegeven', function () {
+    [$tenant, $team, $clockPoint, $workerA] = clockSecurityTenant();
+    $workerB = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    $deviceA = app(AttachWorkerDeviceAction::class)->handle($workerA);
+    $deviceAModel = $workerA->devices()->where('device_token', $deviceA['device_token'])->first();
+    app(ClockInAction::class)->handle(
+        $workerA,
+        $clockPoint,
+        $deviceAModel,
+        enforceClockDevice: true,
+        requestDeviceToken: $deviceA['device_token'],
+    );
+
+    // Zolang A gebonden is weigert B correct op dit toestel.
+    expect(fn () => app(AssertWorkerClockDeviceAction::class)->handle(
+        $workerB->fresh(), null, (int) $tenant->id, $deviceA['device_token'], true,
+    ))->toThrow(InvalidArgumentException::class, 'clock_device_mismatch');
+
+    app(ClearWorkerClockDeviceAction::class)->handle($workerA->fresh(), (int) $tenant->id);
+
+    // Vrijgave maakt het toestel-token dood — anders blijft de gsm "vreemd".
+    expect(WorkerDevice::withoutGlobalScope('tenant')->where('worker_id', $workerA->id)->exists())->toBeFalse();
+
+    $bound = app(AssertWorkerClockDeviceAction::class)->handle(
+        $workerB->fresh(), null, (int) $tenant->id, $deviceA['device_token'], true,
+    );
+
+    expect((int) $workerB->fresh()->clock_device_id)->toBe((int) $bound->id);
+});
+
+it('negeert een verweesd toestel-token waarvan de eigenaar niet meer gebonden is', function () {
+    [$tenant, $team, , $workerA] = clockSecurityTenant();
+    $workerB = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    // Oude data: rij overleeft een vrijgave van vóór de verwijder-fix.
+    $deviceA = app(AttachWorkerDeviceAction::class)->handle($workerA);
+    $workerA->forceFill(['clock_device_id' => null])->save();
+
+    $bound = app(AssertWorkerClockDeviceAction::class)->handle(
+        $workerB->fresh(), null, (int) $tenant->id, $deviceA['device_token'], true,
+    );
+
+    expect((int) $workerB->fresh()->clock_device_id)->toBe((int) $bound->id);
 });
 
 it('geeft een gekoppeld toestel vrij via de API met time:write', function () {

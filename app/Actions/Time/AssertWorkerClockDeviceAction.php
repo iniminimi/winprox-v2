@@ -120,14 +120,22 @@ class AssertWorkerClockDeviceAction
         }
 
         $device = WorkerDevice::withoutGlobalScope('tenant')
+            ->with('worker')
             ->where('device_token', $token)
             ->first();
 
-        if ($device === null) {
+        if ($device === null || (int) $device->worker_id === (int) $worker->id) {
             return null;
         }
 
-        return (int) $device->worker_id !== (int) $worker->id ? $device : null;
+        // Alleen het huidig gebonden toestel mag een vreemde claim maken.
+        // Verweesde rijen (na vrijgave of herbinding) blokkeren geen nieuwe worker.
+        $owner = $device->worker;
+        $isBoundToOwner = $owner !== null
+            && $owner->clock_device_id !== null
+            && (int) $owner->clock_device_id === (int) $device->id;
+
+        return $isBoundToOwner ? $device : null;
     }
 
     private function logRefusal(Worker $worker, ?WorkerDevice $attempted, ClockDeviceRefusalReason $reason): void
