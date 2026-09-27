@@ -166,9 +166,10 @@
 
                 <div class="wp-form-grid-2">
                     <div class="wp-field">
-                        <label class="wp-label" for="locationFormStreet">{{ __('customers.location_form.street') }}</label>
+                        <x-wp-tooltip :text="__('customers.location_form.address_paste_hint')" wrap>
+                            <label class="wp-label" for="locationFormStreet">{{ __('customers.location_form.street') }}</label>
+                        </x-wp-tooltip>
                         <input type="text" id="locationFormStreet" class="wp-input" wire:model="locationFormStreet" autocomplete="off" @paste="$wire.applyLocationAddressPaste($event.clipboardData.getData('text'))">
-                        <p class="wp-hint">{{ __('customers.location_form.address_paste_hint') }}</p>
                         @error('locationFormStreet') <p class="wp-error">{{ $message }}</p> @enderror
                         @error('street') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>

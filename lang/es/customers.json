@@ -29,7 +29,7 @@
         "house_number": "N.º",
         "postal_code": "Código postal",
         "city": "Localidad",
-        "address_paste_hint": "Consejo: pega una direccion de Google Maps (p. ej. Marktstraat 61, 8301 Knokke-Heist) — calle, numero, codigo postal y localidad se rellenan automaticamente.",
+        "address_paste_hint": "Consejo: pega una dirección — calle, número, código postal y localidad se rellenan automáticamente.",
         "pin_hint": "Se necesita un pin GPS para iniciar una visita de trabajo en esta dirección."
     },
     "errors": {

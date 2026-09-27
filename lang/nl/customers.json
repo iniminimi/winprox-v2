@@ -29,7 +29,7 @@
         "house_number": "Nr.",
         "postal_code": "Postcode",
         "city": "Plaats",
-        "address_paste_hint": "Tip: plak een adres uit Google Maps (bv. Marktstraat 61, 8301 Knokke-Heist) — straat, nummer, postcode en plaats worden automatisch ingevuld.",
+        "address_paste_hint": "Tip: plak een adres — straat, nummer, postcode en plaats worden automatisch ingevuld.",
         "pin_hint": "GPS-pin is nodig om op dit adres een werkbezoek te starten."
     },
     "errors": {
