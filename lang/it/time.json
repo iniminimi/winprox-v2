@@ -351,8 +351,10 @@
             "working_at": "Al lavoro presso :place",
             "stop_work": "Interrompi lavoro",
             "find_nearby": "Trova un luogo di lavoro vicino",
+            "find_nearby_customer": "Cerca indirizzo cliente nelle vicinanze",
             "start_work_at": "Avvia lavoro: :place (:distance m)",
             "no_nearby_units": "Nessuna unit con pin nel raggio.",
+            "no_nearby_customer": "Nessun indirizzo di lavoro cliente nel raggio.",
             "clocked_out_at": "Uscita timbrata alle :time",
             "scan_to_clock_in": "Scansiona il QR Clock Point per timbrare l'entrata."
         },
@@ -412,6 +414,7 @@
         "visit_ended": "Visita di lavoro terminata.",
         "today": {
             "title": "Dove devo andare oggi:",
+            "title_checkmate": "Visita cliente",
             "empty": "Nessuna visita pianificata per oggi",
             "navigate": "Naviga",
             "start_work": "Inizia il lavoro",

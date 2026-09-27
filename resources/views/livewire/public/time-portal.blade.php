@@ -568,18 +568,19 @@
                                 }
                             @endphp
                             <div class="wp-card wp-card-pad wp-stack wp-today-route" data-manual-capture="time-today">
-                                <h2 class="wp-section-title">{{ __('time.portal.today.title') }}</h2>
-                                @if ($todayDestinations !== [])
-                                    <div
-                                        class="wp-today-gps-off"
-                                        x-show="gpsReady === false"
-                                        x-cloak
-                                        role="status"
-                                    >
-                                        <x-wp-icon name="alert-triangle" />
-                                        <p>{{ __('time.portal.today.gps_off') }}</p>
-                                    </div>
-                                @endif
+                                <h2 class="wp-section-title">{{ ($checkmateMode ?? false) ? __('time.portal.today.title_checkmate') : __('time.portal.today.title') }}</h2>
+                                @if (! ($checkmateMode ?? false))
+                                    @if ($todayDestinations !== [])
+                                        <div
+                                            class="wp-today-gps-off"
+                                            x-show="gpsReady === false"
+                                            x-cloak
+                                            role="status"
+                                        >
+                                            <x-wp-icon name="alert-triangle" />
+                                            <p>{{ __('time.portal.today.gps_off') }}</p>
+                                        </div>
+                                    @endif
                                 @forelse ($todayDestinations as $group)
                                     @php
                                         $groupId = (int) $group['location_id'];
@@ -634,14 +635,15 @@
                                 @empty
                                     <p class="wp-muted">{{ __('time.portal.today.empty') }}</p>
                                 @endforelse
+                                @endif
                                 @unless ($openShift->openVisit)
                                     <div x-show="!hasStartWorkInRange()" x-cloak>
                                         @if ($nearbyClockUnits === [])
                                             <button type="button" class="btn btn--surface btn--block" @click="withFreshGps('refreshNearbyClockUnits')">
-                                                {{ __('time.portal.clock.find_nearby') }}
+                                                {{ ($checkmateMode ?? false) ? __('time.portal.clock.find_nearby_customer') : __('time.portal.clock.find_nearby') }}
                                             </button>
                                             @if ($nearbyClockUnitsLoaded)
-                                                <p class="wp-muted">{{ __('time.portal.clock.no_nearby_units') }}</p>
+                                                <p class="wp-muted">{{ ($checkmateMode ?? false) ? __('time.portal.clock.no_nearby_customer') : __('time.portal.clock.no_nearby_units') }}</p>
                                             @endif
                                         @else
                                             @foreach ($nearbyClockUnits as $nearby)

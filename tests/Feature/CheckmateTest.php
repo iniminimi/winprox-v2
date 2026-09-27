@@ -14,6 +14,7 @@ use App\Enums\PresenceSourceEvent;
 use App\Livewire\Customers\Index as CustomersIndex;
 use App\Livewire\Dashboard;
 use App\Livewire\Locations\Index as LocationsIndex;
+use App\Livewire\Public\TimePortal;
 use App\Livewire\Pages\Subscription;
 use App\Livewire\Platform\Tenants as PlatformTenants;
 use App\Models\ClockPoint;
@@ -29,6 +30,8 @@ use App\Models\WorkShift;
 use App\Models\WorkVisit;
 use App\Support\Billing\BillingCatalogViewData;
 use App\Support\Locations\GoogleMapsAddressLine;
+use App\Support\Portal\WorkerDeviceSession;
+use App\Support\Portal\WorkerVerification;
 use App\Support\Tenancy;
 use Livewire\Livewire;
 use Illuminate\Support\Facades\Mail;
@@ -252,6 +255,24 @@ it('weigert een werkbezoek op een legacy-locatie zonder klant', function () {
 
     expect(fn () => app(StartWorkVisitAction::class)->handle($worker, $legacy, 51.05, 3.73))
         ->toThrow(InvalidArgumentException::class, 'visit_requires_customer_location');
+});
+
+it('toont in checkmate geen geplande-bezoekenlijst maar wel de klant-zoekknop', function () {
+    $tenant = checkmateTenant();
+    Tenancy::actAs($tenant->id);
+    $worker = checkmateWorker($tenant);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $team = $worker->team;
+
+    WorkerVerification::markVerified($team, $worker);
+    WorkerDeviceSession::bindRememberedWorker($team, $worker);
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->assertSee(__('time.portal.today.title_checkmate'))
+        ->assertSee(__('time.portal.clock.find_nearby_customer'))
+        ->assertDontSee(__('time.portal.today.empty'))
+        ->assertDontSee(__('time.portal.today.title'));
 });
 
 it('weigert een werkbezoek op een werkadres van een inactieve klant', function () {

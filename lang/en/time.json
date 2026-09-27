@@ -351,8 +351,10 @@
             "working_at": "Working at :place",
             "stop_work": "Stop work",
             "find_nearby": "Find a nearby workplace",
+            "find_nearby_customer": "Find customer address nearby",
             "start_work_at": "Start work: :place (:distance m)",
             "no_nearby_units": "No pinned unit within range.",
+            "no_nearby_customer": "No customer work address in range.",
             "clocked_out_at": "Clocked out at :time",
             "scan_to_clock_in": "Scan the Clock Point QR to clock in."
         },
@@ -412,6 +414,7 @@
         "visit_ended": "Work visit ended.",
         "today": {
             "title": "Where do I need to go today:",
+            "title_checkmate": "Customer visit",
             "empty": "No planned visits today",
             "navigate": "Navigate",
             "start_work": "Start work",

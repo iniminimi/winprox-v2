@@ -351,8 +351,10 @@
             "working_at": "Au travail chez :place",
             "stop_work": "Arrêter le travail",
             "find_nearby": "Trouver un lieu de travail à proximité",
+            "find_nearby_customer": "Chercher une adresse client à proximité",
             "start_work_at": "Démarrer le travail : :place (:distance m)",
             "no_nearby_units": "Aucune unité épinglée à portée.",
+            "no_nearby_customer": "Aucune adresse de travail client à portée.",
             "clocked_out_at": "Dépointé à :time",
             "scan_to_clock_in": "Scannez le QR Clock Point pour pointer l'entrée."
         },
@@ -412,6 +414,7 @@
         "visit_ended": "Visite de travail terminée.",
         "today": {
             "title": "Où dois-je aller aujourd'hui :",
+            "title_checkmate": "Visite client",
             "empty": "Aucune visite prévue aujourd'hui",
             "navigate": "Naviguer",
             "start_work": "Commencer le travail",

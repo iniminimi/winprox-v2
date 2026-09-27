@@ -351,8 +351,10 @@
             "working_at": "Bei der Arbeit in :place",
             "stop_work": "Arbeit beenden",
             "find_nearby": "Arbeitsort in der Nähe suchen",
+            "find_nearby_customer": "Kundenadresse in der Nähe suchen",
             "start_work_at": "Arbeit starten: :place (:distance m)",
             "no_nearby_units": "Keine gepinnte Unit in Reichweite.",
+            "no_nearby_customer": "Keine Kunden-Arbeitsadresse in Reichweite.",
             "clocked_out_at": "Ausgestempelt um :time",
             "scan_to_clock_in": "Scannen Sie den Clock-Point-QR zum Einstempeln."
         },
@@ -412,6 +414,7 @@
         "visit_ended": "Arbeitsbesuch beendet.",
         "today": {
             "title": "Wohin muss ich heute:",
+            "title_checkmate": "Kundenbesuch",
             "empty": "Heute keine geplanten Besuche",
             "navigate": "Navigieren",
             "start_work": "Arbeit starten",

@@ -351,8 +351,10 @@
             "working_at": "Aan het werk bij :place",
             "stop_work": "Werk stoppen",
             "find_nearby": "Zoek werkplek in de buurt",
+            "find_nearby_customer": "Zoek klantadres in de buurt",
             "start_work_at": "Start werk: :place (:distance m)",
             "no_nearby_units": "Geen gepinde unit binnen bereik.",
+            "no_nearby_customer": "Geen klant-werkadres binnen bereik.",
             "clocked_out_at": "Uitgeklokt om :time",
             "scan_to_clock_in": "Scan de Clock Point-QR om in te klokken."
         },
@@ -412,6 +414,7 @@
         "visit_ended": "Werkbezoek beëindigd.",
         "today": {
             "title": "Waar moet ik vandaag naartoe:",
+            "title_checkmate": "Klantbezoek",
             "empty": "Vandaag geen geplande bezoeken",
             "navigate": "Navigeer",
             "start_work": "Start werk",
