@@ -10,6 +10,7 @@ use App\Actions\Time\RequestPresenceComplianceAction;
 use App\Actions\Time\StartWorkVisitAction;
 use App\Enums\PresenceComplianceScope;
 use App\Enums\PresenceSourceEvent;
+use App\Livewire\Customers\Index as CustomersIndex;
 use App\Livewire\Dashboard;
 use App\Livewire\Pages\Subscription;
 use App\Livewire\Platform\Tenants as PlatformTenants;
@@ -441,4 +442,58 @@ it('houdt het facility-dashboard ongewijzigd voor niet-checkmate tenants', funct
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
         ->assertViewHas('checkmate', null);
+});
+
+it('maakt een klant aan via het formulier op /klanten', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    Livewire::actingAs($admin)
+        ->test(CustomersIndex::class)
+        ->call('openCreate')
+        ->set('customerFormName', 'Kantoor Peeters')
+        ->set('customerFormEmail', 'info@peeters.be')
+        ->call('saveCustomer')
+        ->assertHasNoErrors();
+
+    $customer = Customer::where('tenant_id', $tenant->id)->sole();
+
+    expect($customer->name)->toBe('Kantoor Peeters')
+        ->and($customer->email)->toBe('info@peeters.be')
+        ->and($customer->is_active)->toBeTrue();
+});
+
+it('werkt een bestaande klant bij via het formulier op /klanten', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+    $customer = Customer::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Oude naam',
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(CustomersIndex::class)
+        ->call('openEdit', $customer->id)
+        ->set('customerFormName', 'Nieuwe naam')
+        ->set('customerFormPhone', '0470 12 34 56')
+        ->call('saveCustomer')
+        ->assertHasNoErrors();
+
+    $fresh = $customer->fresh();
+
+    expect($fresh->name)->toBe('Nieuwe naam')
+        ->and($fresh->phone)->toBe('0470 12 34 56');
+});
+
+it('weigert een klant zonder naam via het formulier', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    Livewire::actingAs($admin)
+        ->test(CustomersIndex::class)
+        ->call('openCreate')
+        ->call('saveCustomer')
+        ->assertHasErrors(['customerFormName' => 'required']);
+
+    expect(Customer::where('tenant_id', $tenant->id)->count())->toBe(0);
 });

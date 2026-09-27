@@ -134,14 +134,21 @@ class Index extends Component
 
         $validated = $this->validate($this->customerRules(), $this->customerMessages());
 
+        $data = [
+            'name' => (string) $validated['customerFormName'],
+            'contact_name' => $validated['customerFormContactName'] ?? null,
+            'email' => $validated['customerFormEmail'] ?? null,
+            'phone' => $validated['customerFormPhone'] ?? null,
+        ];
+
         if ($this->editingCustomerId !== null) {
             $customer = Customer::findOrFail($this->editingCustomerId);
             $this->authorize('update', $customer);
-            $update->handle($customer, $validated, (int) auth()->id());
+            $update->handle($customer, $data, (int) auth()->id());
         } else {
             $this->authorize('create', Customer::class);
             try {
-                $create->handle($tenant, $validated, (int) auth()->id());
+                $create->handle($tenant, $data, (int) auth()->id());
             } catch (InvalidArgumentException $e) {
                 if ($e->getMessage() === 'customer_name_required') {
                     $this->addError('customerFormName', __('customers.errors.name_required'));
