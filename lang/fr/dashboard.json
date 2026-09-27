@@ -169,8 +169,9 @@
     },
     "kpi": {
       "visits_today": "Visites aujourd’hui",
-      "seats": "Exécutants",
-      "customers": "Clients actifs"
+      "seats": "Sièges utilisés",
+      "customers": "Clients actifs",
+      "workers": "Exécutants"
     },
     "recent": {
       "title": "Dernière activité",

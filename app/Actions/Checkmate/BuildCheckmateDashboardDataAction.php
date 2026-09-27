@@ -39,6 +39,13 @@ class BuildCheckmateDashboardDataAction
             ->where('is_active', true)
             ->count();
 
+        $activeWorkers = Worker::query()
+            ->where('tenant_id', $tenantId)
+            ->where('is_active', true)
+            ->count();
+
+        // Seats = collega's (admin/medewerker) + uitvoerders — billing-basis.
+        // Los van het aantal uitvoerders zelf (kpi 'workers').
         $seatsQty = $tenant->billing_seats_qty ?? $tenant->maxSeatsLimit();
         $seatsValue = $seatsQty !== null
             ? $tenant->currentSeatsCount().' / '.(int) $seatsQty
@@ -97,12 +104,20 @@ class BuildCheckmateDashboardDataAction
                     'href' => route('time.shifts.index'),
                 ],
                 [
-                    'key' => 'seats',
+                    'key' => 'workers',
                     'icon' => 'team',
                     'tone' => 'open_tasks',
+                    'label' => 'dashboard.checkmate.kpi.workers',
+                    'value' => (string) $activeWorkers,
+                    'href' => route('team.index', ['section' => 'teams']),
+                ],
+                [
+                    'key' => 'seats',
+                    'icon' => 'subscription',
+                    'tone' => 'pending_review',
                     'label' => 'dashboard.checkmate.kpi.seats',
                     'value' => $seatsValue,
-                    'href' => route('team.index', ['section' => 'teams']),
+                    'href' => route('subscription.index'),
                 ],
                 [
                     'key' => 'customers',

@@ -169,8 +169,9 @@
     },
     "kpi": {
       "visits_today": "Bezoeken vandaag",
-      "seats": "Uitvoerders",
-      "customers": "Actieve klanten"
+      "seats": "Seats in gebruik",
+      "customers": "Actieve klanten",
+      "workers": "Uitvoerders"
     },
     "recent": {
       "title": "Laatste activiteit",
