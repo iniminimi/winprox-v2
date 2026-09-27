@@ -331,9 +331,9 @@
                             </div>
                         </div>
                         <div class="wp-field">
-                            <label class="wp-label" for="portalDdt">{{ __('locations.form.ddt') }}</label>
+                            <label class="wp-label" for="portalDdt">{{ __('locations.fields.ddt') }}</label>
                             <input id="portalDdt" type="text" class="wp-input" wire:model="customerDdt" autocomplete="off" maxlength="13">
-                            <p class="wp-hint">{{ __('locations.form.ddt_hint') }}</p>
+                            <p class="wp-hint">{{ __('locations.fields.ddt_hint') }}</p>
                             @error('contractual_relationship_reference') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
 

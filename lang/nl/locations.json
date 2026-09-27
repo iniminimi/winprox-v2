@@ -98,7 +98,7 @@
         "street": "Straat",
         "house_number": "Huisnummer",
         "postal_code": "Postcode",
-        "city": "Plaats",
+        "city": "Stad",
         "address_paste_hint": "Tip: plak een adres — straat, nummer, postcode en plaats worden automatisch ingevuld.",
         "country_code": "ISO-landcode",
         "notes": "Interne notities",
