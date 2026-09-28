@@ -48,6 +48,6 @@ it('geeft null voor schoonmaak en bouw zonder locale-video', function () {
 it('gebruikt de checkmate-video voor elke taal', function (string $locale) {
     $path = SectorLandingVideo::relativePath(PromoLanding::Checkmate, $locale);
 
-    expect($path)->toBe('video/checkmate.mp4')
+    expect($path)->toBe('video/checkmate_checkin.mp4')
         ->and(is_file(public_path($path)))->toBeTrue();
 })->with(['nl', 'en', 'fr', 'de', 'es', 'it']);

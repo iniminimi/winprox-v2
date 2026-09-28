@@ -256,7 +256,7 @@ it('toont de checkmate-landing met eigen video', function () {
         ->assertSee('wp-landing-block--wide-photo', false)
         ->assertSee('wp-landing-close--scrim', false)
         ->assertSee('id="landing-video"', false)
-        ->assertSee('video/checkmate.mp4', false)
+        ->assertSee('video/checkmate_checkin.mp4', false)
         ->assertSee('wp-video--sm', false)
         ->assertDontSee(__('landings.shared.video_placeholder', [], 'nl'))
         ->assertDontSee('Bekijk demo', false)
@@ -265,7 +265,7 @@ it('toont de checkmate-landing met eigen video', function () {
     $this->get(route('checkmate', ['locale' => 'fr']))
         ->assertOk()
         ->assertSee(__('landings.checkmate.title', [], 'fr'))
-        ->assertSee('video/checkmate.mp4', false);
+        ->assertSee('video/checkmate_checkin.mp4', false);
 });
 
 it('linkt de gele post-it op de welcome-pagina naar de checkmate-landing', function () {

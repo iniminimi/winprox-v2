@@ -58,7 +58,7 @@ final class SectorLandingVideo
         }
 
         if ($landing === PromoLanding::Checkmate) {
-            $fallback = 'video/checkmate.mp4';
+            $fallback = 'video/checkmate_checkin.mp4';
             if (is_file(public_path($fallback))) {
                 return $fallback;
             }
