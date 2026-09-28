@@ -79,6 +79,12 @@ Whitelist-schermen:
   meldingen-feed.
 - **Klanten** (`/klanten`, nieuw) — apart scherm; klant is de mentale eenheid.
   Lijst met klanten, uitklapbaar hun werkadressen, modal-aanmaak/bewerk.
+  **CSV/Excel-import** zoals bij locaties: `name` verplicht; optioneel
+  `contact_name`, `email`, `phone` en werkadres-kolommen (straat + postcode +
+  plaats samen verplicht, plus DDT-referentie en GPS-pin). Zelfde klantnaam op
+  meerdere rijen = meerdere werkadressen; een bestaande klant op naam wordt
+  hergebruikt. Recente imports (30 dagen) zijn terug te draaien — werkadressen
+  en klanten met inhoud (bezoeken, meldingen, documenten) blijven staan.
   Het algemene Locaties-scherm staat **niet** op de whitelist (Facility-concept).
 - **Uitvoerders** — menu linkt naar `/team` (teams aanmaken + uitvoerder-
   beheer wonen daar). `/workers` blijft whitelisted als alleen-lezen lijst.
@@ -148,7 +154,8 @@ Checklists, Kalender, Reserveringen, Unitmetingen, ESG, IoT, API.
    `assertSeatsQtyNotBelowActive`; provisioning-values (GPS-visits aan, radius 100).
 5. Checkmate-portaalvariant van `TimePortal` (slanke tegels, klant-kaart,
    klant-aanmaak).
-6. Admin `/klanten`-scherm.
+6. Admin `/klanten`-scherm + CSV/Excel klant-import (`ImportCustomersAction`,
+   `customers.import_batch_id`, undo-batch zoals locatie-import).
 7. CIAO self-service aanvraag + pending-banner.
 8. Landingspagina + locales (6 talen) + `product_docs`-update (verplicht, §10a RULES).
 

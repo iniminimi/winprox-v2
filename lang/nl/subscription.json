@@ -262,7 +262,8 @@
     "csv_workers_not_allowed": "CSV/Excel worker-import is niet beschikbaar op dit abonnement.",
     "csv_units_not_allowed": "CSV/Excel unit-import vereist een betaald abonnement.",
     "corporate_contact": "Corporate wordt op maat geactiveerd. Neem contact op met WinProx.",
-    "csv_locations_not_allowed": "CSV/Excel locatie-import vereist een betaald abonnement."
+    "csv_locations_not_allowed": "CSV/Excel locatie-import vereist een betaald abonnement.",
+    "csv_customers_not_allowed": "CSV/Excel klant-import vereist een betaald abonnement."
   },
   "status_module_iot": "IoT Connect actief op je account.",
   "purge": {

@@ -1173,7 +1173,10 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
   niet-vrijgegeven admin-routes → 404, sidebar beperkt tot Klanten (`/klanten`),
   Uitvoerders, Time (aanwezigheid/uren/CIAO/Clock Points), Instellingen en Abonnement.
   Zelfde Clock Point-portaal voor klokken, pauzes, klantbezoeken (klant kiezen of
-  onderweg aanmaken met zachte dedup-nudge) en Mijn uren. CIAO (RSZ) via
+  onderweg aanmaken met zachte dedup-nudge) en Mijn uren. **Klanten importeren**
+  via CSV/Excel op `/klanten` (zelfde patroon als locatie-import: `name` verplicht,
+  optioneel werkadres per rij, dedup op naam, recente imports terug te draaien).
+  CIAO (RSZ) via
   self-service aanvraag op Instellingen → pending → superuser-bevestiging
   (`presence_compliance_requested_at`). Volledige spec: `docs/CHECKMATE.md`.
 - **Legacy `facility_*` en `winprox_100`:** blijven in config (niet in catalogus).

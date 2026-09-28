@@ -8,6 +8,13 @@
             />
         </div>
         <div class="wp-cluster">
+            @if ($canImportCustomersCsv ?? false)
+                @can('create', \App\Models\Customer::class)
+                    <button type="button" class="btn btn--ghost" wire:click="openCustomersCsvImportModal">
+                        {{ __('customers.customers_csv.button') }}
+                    </button>
+                @endcan
+            @endif
             @can('create', \App\Models\Customer::class)
                 <button type="button" class="btn btn--primary" wire:click="openCreate">
                     {{ __('customers.add') }}
@@ -21,6 +28,12 @@
     @endif
     @if (session('error'))
         <div class="wp-flash wp-flash--danger">{{ session('error') }}</div>
+    @endif
+
+    @if ($customersImportNotice)
+        <div @class(['wp-flash', $customersImportNoticeType === 'error' ? 'wp-flash--danger' : 'wp-flash--success'])>
+            {{ $customersImportNotice }}
+        </div>
     @endif
 
     <div class="wp-card wp-card-pad wp-stack">
@@ -99,6 +112,52 @@
             @endforelse
         </div>
     </div>
+
+    @include('livewire.customers.customer-import-history', ['batches' => $customerImportBatches])
+
+    @if ($showCustomersCsvImportModal)
+        <x-wp-modal closeMethod="closeCustomersCsvImportModal" aria-labelledby="customers-csv-title">
+            <div class="wp-card wp-modal-card wp-modal-card--form">
+                <div class="wp-modal-head wp-modal-head--bordered">
+                    <h2 id="customers-csv-title" class="wp-section-title">{{ __('customers.customers_csv.title') }}</h2>
+                    <x-wp-modal-close wire:click="closeCustomersCsvImportModal" />
+                </div>
+                <div class="wp-modal-body wp-stack">
+                    <p class="wp-muted">{{ __('customers.customers_csv.hint') }}</p>
+                    <div class="wp-field">
+                        <label class="wp-label" for="customers-csv-file">{{ __('customers.import_file_label') }}</label>
+                        <div class="wp-cluster">
+                            <input type="file" id="customers-csv-file" class="wp-input wp-grow" wire:model="customersCsvImportFile" accept=".csv,.xlsx,text/csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="downloadCustomersSampleCsv">
+                                {{ __('customers.import_sample.download_sample_csv') }}
+                            </button>
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="downloadCustomersSampleXlsx">
+                                {{ __('customers.import_sample.download_sample_xlsx') }}
+                            </button>
+                        </div>
+                        @error('customersCsvImportFile') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    @if ($customersCsvImportErrors !== [])
+                        <div class="wp-flash wp-flash--danger">
+                            <ul class="wp-form-error-list">
+                                @foreach ($customersCsvImportErrors as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
+                <div class="wp-modal-foot">
+                    <button type="button" class="btn btn--ghost" wire:click="closeCustomersCsvImportModal">{{ __('common.button.cancel') }}</button>
+                    <button type="button" class="btn btn--primary" wire:click="importCustomersCsv" wire:loading.attr="disabled" wire:target="importCustomersCsv,customersCsvImportFile" :disabled="$customersCsvImportFile === null">
+                        <x-wp-spinner wire:loading wire:target="importCustomersCsv,customersCsvImportFile" class="wp-mr-2" />
+                        <span wire:loading.remove wire:target="importCustomersCsv,customersCsvImportFile">{{ __('customers.import_submit') }}</span>
+                        <span wire:loading wire:target="importCustomersCsv,customersCsvImportFile">{{ __('customers.import_submit_loading') }}</span>
+                    </button>
+                </div>
+            </div>
+        </x-wp-modal>
+    @endif
 
     @if ($showModal)
         <x-wp-modal closeMethod="closeModal" aria-labelledby="customer-modal-title">

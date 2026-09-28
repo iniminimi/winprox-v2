@@ -33,6 +33,7 @@ $winproxShared = static function (int $seats, int $units, int $documents): array
         'api_access'             => false,
         'csv_workers_import'     => true,
         'csv_units_import'       => true,
+        'csv_customers_import'   => true,
         'subscription_period_days' => 30,
         'self_activate'          => true,
     ];
@@ -83,6 +84,7 @@ $legacyFacility = static function (int $units, bool $iotEsg): array {
         'api_access'             => false,
         'csv_workers_import'     => true,
         'csv_units_import'       => true,
+        'csv_customers_import'   => true,
         'subscription_period_days' => 30,
         'self_activate'          => false,
         'public_catalog'         => false,
@@ -110,6 +112,7 @@ $checkmatePreset = static function (int $defaultSeats, bool $qtyEditable): array
         'api_access'             => false,
         'csv_workers_import'     => true,
         'csv_units_import'       => false,
+        'csv_customers_import'   => true,
         'subscription_period_days' => 30,
         'self_activate'          => true,
         'public_catalog'         => false,
@@ -170,6 +173,7 @@ return [
         'api_access'             => false,
         'csv_workers_import'     => true,
         'csv_units_import'       => true,
+        'csv_customers_import'   => true,
     ],
 
     'plans' => array_merge(
@@ -205,6 +209,7 @@ return [
                 'api_access'             => true,
                 'csv_workers_import'     => true,
                 'csv_units_import'       => true,
+                'csv_customers_import'   => true,
                 'subscription_period_days' => 365,
                 'self_activate'          => false,
                 'public_catalog'         => true,

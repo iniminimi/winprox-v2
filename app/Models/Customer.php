@@ -22,6 +22,7 @@ class Customer extends Model
         'email',
         'phone',
         'is_active',
+        'import_batch_id',
     ];
 
     protected $casts = [

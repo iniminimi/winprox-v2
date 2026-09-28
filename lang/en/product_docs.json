@@ -170,6 +170,7 @@
                     "Workers clock in via the same Clock Point QR.",
                     "A customer visit starts with a GPS check inside the agreed radius.",
                     "Manage customers and work addresses in one screen.",
+                    "Import customers in bulk via CSV or Excel (including work addresses per row).",
                     "Presence, hour statements and My hours as in Time.",
                     "CIAO (RSZ) on request from the settings.",
                     "Its own compact manual instead of the general WinProx manual.",

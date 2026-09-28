@@ -170,6 +170,7 @@
                     "Mitarbeiter stechen über denselben Clock-Point-QR ein.",
                     "Ein Kundenbesuch startet mit einer GPS-Prüfung innerhalb des Radius.",
                     "Kunden und Einsatzadressen in einem Bildschirm verwalten.",
+                    "Kunden per CSV oder Excel in Bulk importieren (inkl. Einsatzadressen pro Zeile).",
                     "Anwesenheit, Stundenkonto und Meine Stunden wie in Time.",
                     "CIAO (LSS) auf Anfrage in den Einstellungen.",
                     "Eigene kompakte Anleitung statt der allgemeinen WinProx-Anleitung.",

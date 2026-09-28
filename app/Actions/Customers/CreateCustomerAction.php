@@ -30,6 +30,7 @@ class CreateCustomerAction
             'email' => self::nullableString($data['email'] ?? null),
             'phone' => self::nullableString($data['phone'] ?? null),
             'is_active' => true,
+            'import_batch_id' => $data['import_batch_id'] ?? null,
         ]);
 
         $this->audit->record(

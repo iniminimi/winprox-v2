@@ -170,6 +170,7 @@
                     "Les ouvriers pointent via le même QR Clock Point.",
                     "Une visite client démarre par un contrôle GPS dans le rayon convenu.",
                     "Clients et adresses de chantier se gèrent dans un seul écran.",
+                    "Importez les clients en masse via CSV ou Excel (adresses de chantier par ligne incluses).",
                     "Présences, décomptes d’heures et Mes heures comme dans Time.",
                     "CIAO (ONSS) sur demande depuis les paramètres.",
                     "Son propre manuel compact au lieu du manuel WinProx général.",

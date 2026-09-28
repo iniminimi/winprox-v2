@@ -3,17 +3,24 @@
 namespace App\Livewire\Customers;
 
 use App\Actions\Customers\CreateCustomerAction;
+use App\Actions\Customers\DeleteCustomerImportBatchAction;
+use App\Actions\Customers\ImportCustomersAction;
 use App\Actions\Customers\SuggestCustomerNameMatchesAction;
 use App\Actions\Customers\UpdateCustomerAction;
 use App\Actions\Locations\ActivateLocationAction;
 use App\Actions\Locations\CreateLocationAction;
 use App\Actions\Locations\DeactivateLocationAction;
+use App\Data\Customers\DeleteCustomerImportBatchData;
+use App\Data\Customers\ImportCustomersData;
+use App\Http\Requests\Customers\ImportCustomersRequest;
 use App\Http\Requests\Locations\StoreLocationRequest;
 use App\Livewire\Concerns\AppliesGpsCoordinatePair;
 use App\Livewire\Concerns\AppliesPastedAddress;
 use App\Models\Customer;
 use App\Models\Location;
 use App\Models\Tenant;
+use App\Support\Customers\CustomerImportBatchRegistry;
+use App\Support\Import\MinimalXlsxWriter;
 use App\Support\Platform\SupportTenantContext;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Validator;
@@ -22,6 +29,9 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Livewire\WithFileUploads;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
  * Klanten — CRM-laag boven werkadressen (Locations). Kernscherm voor
@@ -34,6 +44,7 @@ class Index extends Component
     use AppliesGpsCoordinatePair;
     use AppliesPastedAddress;
     use AuthorizesRequests;
+    use WithFileUploads;
 
     #[Url(as: 'q')]
     public string $search = '';
@@ -57,6 +68,18 @@ class Index extends Component
 
     /** @var array<int, bool> */
     public array $expandedCustomerIds = [];
+
+    public bool $showCustomersCsvImportModal = false;
+
+    /** @var TemporaryUploadedFile|null */
+    public $customersCsvImportFile = null;
+
+    /** @var list<string> */
+    public array $customersCsvImportErrors = [];
+
+    public ?string $customersImportNotice = null;
+
+    public string $customersImportNoticeType = 'success';
 
     public bool $showLocationModal = false;
 
@@ -257,6 +280,190 @@ class Index extends Component
         }
     }
 
+    public function openCustomersCsvImportModal(): void
+    {
+        $this->authorize('create', Customer::class);
+        abort_unless($this->resolveTenant()?->hasCsvCustomersImport() ?? false, 403);
+
+        $this->customersCsvImportFile = null;
+        $this->customersCsvImportErrors = [];
+        $this->showCustomersCsvImportModal = true;
+    }
+
+    public function closeCustomersCsvImportModal(): void
+    {
+        $this->showCustomersCsvImportModal = false;
+        $this->customersCsvImportFile = null;
+        $this->customersCsvImportErrors = [];
+    }
+
+    public function importCustomersCsv(ImportCustomersAction $importCustomers): void
+    {
+        $this->authorize('create', Customer::class);
+        $tenant = $this->resolveTenant();
+        abort_unless($tenant?->hasCsvCustomersImport() ?? false, 403);
+
+        if ($this->customersCsvImportFile === null) {
+            $this->customersCsvImportErrors = [__('customers.customers_csv.errors.file_required')];
+
+            return;
+        }
+
+        $validator = Validator::make(
+            ['file' => $this->customersCsvImportFile],
+            ImportCustomersRequest::getReusableRules(),
+            ImportCustomersRequest::getReusableMessages()
+        );
+
+        if ($validator->fails()) {
+            $this->customersCsvImportErrors = $validator->errors()->all();
+
+            return;
+        }
+
+        $result = $importCustomers->handle(
+            new ImportCustomersData(
+                filePath: $this->customersCsvImportFile->getRealPath(),
+                originalName: $this->customersCsvImportFile->getClientOriginalName(),
+            ),
+            (int) $tenant->id,
+            (int) auth()->id(),
+        );
+
+        if ($result['success']) {
+            session()->flash('success', __('customers.imported', [
+                'count' => $result['count'],
+                'locations' => $result['locations_count'] ?? 0,
+            ]));
+            $this->closeCustomersCsvImportModal();
+
+            return;
+        }
+
+        $this->customersCsvImportErrors = $result['errors'] ?? [__('customers.customers_csv.errors.failed')];
+    }
+
+    public function downloadCustomersSampleCsv(): StreamedResponse
+    {
+        $this->authorize('create', Customer::class);
+        abort_unless($this->resolveTenant()?->hasCsvCustomersImport() ?? false, 403);
+
+        $headers = ImportCustomersAction::allHeaders();
+        $sampleRow = [
+            __('customers.import_sample.sample_customer_name'),
+            __('customers.import_sample.sample_contact_name'),
+            __('customers.import_sample.sample_email'),
+            __('customers.import_sample.sample_phone'),
+            __('customers.import_sample.sample_location_name'),
+            __('customers.import_sample.sample_street'),
+            __('customers.import_sample.sample_house_number'),
+            __('customers.import_sample.sample_postal_code'),
+            __('customers.import_sample.sample_city'),
+            'BE',
+            '',
+            '',
+            '',
+        ];
+
+        return response()->streamDownload(function () use ($headers, $sampleRow) {
+            echo "\xEF\xBB\xBF";
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $headers);
+            fputcsv($file, $sampleRow);
+            fclose($file);
+        }, 'customers-sample.csv', [
+            'Content-Type' => 'text/csv; charset=UTF-8',
+        ]);
+    }
+
+    public function downloadCustomersSampleXlsx(): StreamedResponse
+    {
+        $this->authorize('create', Customer::class);
+        abort_unless($this->resolveTenant()?->hasCsvCustomersImport() ?? false, 403);
+
+        $rows = [
+            ImportCustomersAction::allHeaders(),
+            [
+                __('customers.import_sample.sample_customer_name'),
+                __('customers.import_sample.sample_contact_name'),
+                __('customers.import_sample.sample_email'),
+                __('customers.import_sample.sample_phone'),
+                __('customers.import_sample.sample_location_name'),
+                __('customers.import_sample.sample_street'),
+                __('customers.import_sample.sample_house_number'),
+                __('customers.import_sample.sample_postal_code'),
+                __('customers.import_sample.sample_city'),
+                'BE',
+                '',
+                '',
+                '',
+            ],
+        ];
+
+        return response()->streamDownload(function () use ($rows) {
+            $tempPath = sys_get_temp_dir().DIRECTORY_SEPARATOR.'customers-sample-'.uniqid('', true).'.xlsx';
+            try {
+                MinimalXlsxWriter::write($tempPath, $rows);
+                readfile($tempPath);
+            } finally {
+                @unlink($tempPath);
+            }
+        }, 'customers-sample.xlsx', [
+            'Content-Type' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        ]);
+    }
+
+    public function deleteCustomerImportBatch(string $batchId, DeleteCustomerImportBatchAction $deleteBatch): void
+    {
+        $this->authorize('create', Customer::class);
+
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $summary = CustomerImportBatchRegistry::summary((int) $tenant->id, $batchId);
+
+        if (! $summary['can_delete']) {
+            $this->customersImportNotice = __('customers.customers_import_history.nothing_deletable');
+            $this->customersImportNoticeType = 'error';
+
+            return;
+        }
+
+        $result = $deleteBatch->handle(
+            new DeleteCustomerImportBatchData(importBatchId: $batchId),
+            (int) $tenant->id,
+            (int) auth()->id(),
+        );
+
+        if (! ($result['success'] ?? false)) {
+            $this->customersImportNotice = $result['errors'][0]
+                ?? __('customers.customers_import_history.delete_failed');
+            $this->customersImportNoticeType = 'error';
+
+            return;
+        }
+
+        $deletedCustomers = (int) ($result['deleted_customers'] ?? 0);
+        $deletedLocations = (int) ($result['deleted_locations'] ?? 0);
+        $preserved = (int) ($result['preserved_count'] ?? 0);
+
+        if ($preserved > 0) {
+            $this->customersImportNotice = __('customers.customers_import_history.partially_deleted', [
+                'customers' => $deletedCustomers,
+                'locations' => $deletedLocations,
+                'preserved' => $preserved,
+            ]);
+        } else {
+            $this->customersImportNotice = __('customers.customers_import_history.fully_deleted', [
+                'customers' => $deletedCustomers,
+                'locations' => $deletedLocations,
+            ]);
+        }
+        $this->customersImportNoticeType = 'success';
+    }
+
     public function render()
     {
         $tenant = $this->resolveTenant();
@@ -282,6 +489,14 @@ class Index extends Component
             'customers' => $customers,
             'tenant' => $tenant,
             'checkmateMode' => $tenant?->checkmateMode() ?? false,
+            'canImportCustomersCsv' => $tenant?->hasCsvCustomersImport() ?? false,
+            'customerImportBatches' => $tenant instanceof Tenant
+                ? CustomerImportBatchRegistry::recentBatchesForTenant((int) $tenant->id)
+                    ->map(fn (array $batch) => array_merge(
+                        $batch,
+                        CustomerImportBatchRegistry::summary((int) $tenant->id, $batch['batch_id']),
+                    ))
+                : collect(),
         ]);
     }
 
