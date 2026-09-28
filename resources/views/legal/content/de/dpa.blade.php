@@ -37,6 +37,7 @@
     <li>vorübergehende lokale Warteschlange auf dem Gerät des Ausführenden bis zur Synchronisation von Feldaktionen (Aufgaben, Meldungen, Fotos, Unit-Checks).</li>
     <li>optionale Zeiterfassung (Time): Ein-/Ausstempeln, Anwesenheit, Stundenliste (einschließlich etwaiger Team-Pauseminuten), Gerätebindung, optionales GPS beim Stempeln, Einsicht der eigenen Stunden am Clock Point, geplanter Dienstplan und Abwesenheiten (Urlaub, Ausgleich, Krank) die der Kunde erfasst, Mein Dienstplan am Clock Point und protokollierte Einsicht in die Evakuierungsliste (falls eingeschaltet).</li>
     <li>Verwaltung von Standorten und Units.</li>
+    <li>Verwaltung von Kunden und deren Arbeitsadressen (Checkmate).</li>
     <li>Versand von E-Mail-Benachrichtigungen im Auftrag des Kunden.</li>
     <li>Protokollierung und Sicherheit.</li>
     <li>Erfassung und Nachverfolgung von ESG-/Compliance-Messungen (falls das Modul aktiviert ist).</li>
@@ -48,6 +49,7 @@
 <ul>
     <li>Identifikationsdaten (Name, E-Mail-Adresse, Telefonnummer, soweit eingegeben).</li>
     <li>Standort- und Unit-Daten (Adressen, Standortdetails).</li>
+    <li>Kunden- und Arbeitsadressdaten (Kundenname, Ansprechpartner, Adresse, GPS-Pin) — Checkmate.</li>
     <li>Issue- und Aufgabendaten (einschließlich Fotos und Beschreibungen).</li>
     <li>Unit-Check-Daten (Ergebnis, Zeitpunkt, Unit, optional GPS, Ausführender).</li>
     <li>Daten von Ausführenden und QR-Meldern, soweit vom Kunden erhoben (einschließlich vorübergehender Entwurfsmeldungen bis zur E-Mail-Bestätigung).</li>

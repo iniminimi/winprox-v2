@@ -36,6 +36,7 @@
     <li>temporary on-device queue until field actions sync (tasks, reports, photos, unit checks).</li>
     <li>optional time tracking (Time): clock in/out, presence, timesheet (including any team-break minutes), device binding, optional GPS at the punch, own-hours view on Clock Point, planned roster and absences (leave, time off in lieu, sick) entered by the customer, My roster on Clock Point, and logged evacuation-list consultations (if enabled).</li>
     <li>management of locations and units.</li>
+    <li>management of customers and their work addresses (Checkmate).</li>
     <li>sending email notifications on the customer’s instructions.</li>
     <li>logging and security.</li>
     <li>recording and follow-up of ESG/compliance measurements (if the module is enabled).</li>
@@ -47,6 +48,7 @@
 <ul>
     <li>identification data (name, email address, phone number where entered).</li>
     <li>location and unit data (addresses, location details).</li>
+    <li>customer and work-address data (customer name, contact person, address, GPS pin) — Checkmate.</li>
     <li>issue and task data (including photos and descriptions).</li>
     <li>unit check data (result, timestamp, unit, optional GPS, worker).</li>
     <li>unit measurement data (measure field, value, timestamp, unit, source, optional worker or staff user).</li>

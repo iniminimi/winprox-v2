@@ -59,6 +59,12 @@
     <li>indirizzi e dati di localizzazione da lei inseriti</li>
 </ul>
 
+<p><strong>Clienti e indirizzi di lavoro (Checkmate)</strong></p>
+<ul>
+    <li>nomi dei clienti e dati di contatto (referente, e-mail, telefono), se inseriti da voi.</li>
+    <li>indirizzi di lavoro dei clienti, incluso il marker GPS per la verifica in loco.</li>
+</ul>
+
 <p><strong>Problematiche e attività</strong></p>
 <ul>
     <li>problematiche e attività</li>

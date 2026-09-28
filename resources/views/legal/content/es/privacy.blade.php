@@ -59,6 +59,12 @@
     <li>direcciones y datos de ubicación que usted introduce</li>
 </ul>
 
+<p><strong>Clientes y direcciones de trabajo (Checkmate)</strong></p>
+<ul>
+    <li>nombres de clientes y datos de contacto (persona de contacto, correo electrónico, teléfono), cuando usted los introduce.</li>
+    <li>direcciones de trabajo de clientes, incluida la marca GPS para la verificación in situ.</li>
+</ul>
+
 <p><strong>Incidencias y tareas</strong></p>
 <ul>
     <li>incidencias y tareas</li>

@@ -36,6 +36,7 @@
     <li>cola temporal en el dispositivo del ejecutor hasta sincronizar las acciones de campo (tareas, avisos, fotos, controles de unidad).</li>
     <li>fichaje opcional (Time): entrada/salida, presencia, parte de horas (incluidos posibles minutos de pausa de equipo), vinculación de dispositivo, GPS opcional al fichar, consulta de Mis horas en Clock Point, cuadrante y ausencias (permiso, compensación, baja) que introduce el cliente, Mi cuadrante en Clock Point y consultas registradas de la lista de evacuación (si está activada).</li>
     <li>gestión de ubicaciones y unidades.</li>
+    <li>gestión de clientes y sus direcciones de trabajo (Checkmate).</li>
     <li>envío de notificaciones por correo electrónico siguiendo las instrucciones del cliente.</li>
     <li>registro de actividad y seguridad.</li>
     <li>registro y seguimiento de mediciones ESG/cumplimiento (si el módulo está activado).</li>
@@ -47,6 +48,7 @@
 <ul>
     <li>datos de identificación (nombre, dirección de correo electrónico, número de teléfono cuando se introduzcan).</li>
     <li>datos de ubicación y unidades (direcciones, detalles de ubicación).</li>
+    <li>datos de clientes y direcciones de trabajo (nombre del cliente, persona de contacto, dirección, marcador GPS) — Checkmate.</li>
     <li>datos de incidencias y tareas (incluidas fotos y descripciones).</li>
     <li>datos de comprobación de unidad (resultado, marca de tiempo, unidad, GPS opcional, ejecutor).</li>
     <li>datos de mediciones de unidad (campo, valor, fecha/hora, unidad, origen, ejecutor o usuario opcional).</li>

@@ -436,6 +436,14 @@
                     "Same plan requirement as API (Corporate).",
                     "With optional email confirmation, the **issue created** event fires only after the link, not when the form is submitted on the portal."
                 ]
+            },
+            {
+                "title": "Checkmate",
+                "items": [
+                    "Checkmate is not a separate app: the same platform with a per-plan whitelist for admin routes and portal tiles.",
+                    "Same tenant isolation, Time infrastructure and Clock Point portal; facility routes return 404.",
+                    "€5 per active worker per month (per-seat via Stripe)."
+                ]
             }
         ],
         "full": [

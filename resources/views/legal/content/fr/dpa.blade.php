@@ -37,6 +37,7 @@
     <li>file d’attente temporaire sur l’appareil de l’exécutant jusqu’à synchronisation des actions de terrain (tâches, signalements, photos, contrôles d’unité).</li>
     <li>pointage optionnel (Time) : entrée/sortie, présence, feuille d’heures (y compris d’éventuelles minutes de pause d’équipe), liaison d’appareil, GPS optionnel à la pointe, consultation de Mes heures sur Clock Point, planning et absences (congé, récup, maladie) saisis par le client, Mon planning sur Clock Point, et consultations enregistrées de la liste d’évacuation (si activée).</li>
     <li>gestion des sites et unités.</li>
+    <li>gestion des clients et de leurs adresses de chantier (Checkmate).</li>
     <li>envoi de notifications par e-mail sur instruction du client.</li>
     <li>journalisation et sécurité.</li>
     <li>enregistrement et suivi des mesures ESG/conformité (si le module est activé).</li>
@@ -48,6 +49,7 @@
 <ul>
     <li>données d’identification (nom, adresse e-mail, numéro de téléphone le cas échéant).</li>
     <li>données de site et d’unité (adresses, détails de localisation).</li>
+    <li>données de clients et d’adresses de chantier (nom du client, personne de contact, adresse, repère GPS) — Checkmate.</li>
     <li>données d’issues et de tâches (y compris photos et descriptions).</li>
     <li>données de contrôle d’unité (résultat, horodatage, unité, GPS optionnel, exécutant).</li>
     <li>données des exécutants et des personnes signalant via QR, dans la mesure collectées par le client (y compris les brouillons temporaires en attente de confirmation e-mail).</li>

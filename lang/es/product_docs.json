@@ -436,6 +436,14 @@
                     "Same plan requirement as API (Corporate).",
                     "Con la confirmación por correo opcional, el evento **aviso creado** se dispara solo tras el enlace, no al enviar el formulario en el portal."
                 ]
+            },
+            {
+                "title": "Checkmate",
+                "items": [
+                    "Checkmate no es una app aparte: la misma plataforma con una whitelist por plan para rutas admin y tarjetas del portal.",
+                    "Mismo aislamiento de inquilinos, infraestructura Time y portal Clock Point; las rutas de facility devuelven 404.",
+                    "5 € por trabajador activo al mes (por puesto vía Stripe)."
+                ]
             }
         ],
         "full": [

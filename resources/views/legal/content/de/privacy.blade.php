@@ -59,6 +59,12 @@
     <li>Adressen und Standortdaten, die Sie eingeben.</li>
 </ul>
 
+<p><strong>Kunden und Arbeitsadressen (Checkmate)</strong></p>
+<ul>
+    <li>Kundennamen und Kontaktdaten (Ansprechpartner, E-Mail-Adresse, Telefonnummer), sofern von Ihnen eingegeben.</li>
+    <li>Arbeitsadressen von Kunden, einschließlich GPS-Pin zur Verifizierung vor Ort.</li>
+</ul>
+
 <p><strong>Meldungen und Aufgaben</strong></p>
 <ul>
     <li>Issues und Aufgaben.</li>

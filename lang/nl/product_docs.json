@@ -436,6 +436,14 @@
                     "Zelfde planvereiste als API (Corporate).",
                     "Bij optionele e-mailbevestiging volgt het event **melding aangemaakt** pas na de link, niet bij het indienen op het portaal."
                 ]
+            },
+            {
+                "title": "Checkmate",
+                "items": [
+                    "Checkmate is geen aparte app: hetzelfde platform met een per-plan whitelist voor admin-routes en portaal-tegels.",
+                    "Zelfde tenant-isolatie, Time-infrastructuur en Clock Point-portaal; facility-routes geven 404.",
+                    "€5 per actieve uitvoerder per maand (per-seat via Stripe)."
+                ]
             }
         ],
         "full": [

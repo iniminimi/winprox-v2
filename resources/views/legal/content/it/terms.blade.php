@@ -95,7 +95,7 @@
     WinProx può offrire un periodo di prova limitato. La durata viene comunicata al momento della registrazione o sulla piattaforma.
 </p>
 <p>
-    Dopo il periodo di prova, l'utilizzo continuato richiede un abbonamento appropriato come descritto sulla piattaforma (anche in base al numero di unità e moduli opzionali).
+    Dopo il periodo di prova, l'utilizzo continuato richiede un abbonamento appropriato come descritto sulla piattaforma (anche in base al numero di unità, moduli opzionali o il numero di esecutori — Checkmate).
 </p>
 <p>
     L'abbonamento copre l'accesso e l'utilizzo della piattaforma per la sua organizzazione (tenant). Pagamento, fatturazione e rinnovo seguono le condizioni indicate sulla piattaforma o in preventivi/fatture. Tutti i prezzi di abbonamento visualizzati sulla piattaforma sono IVA esclusa, salvo diversa indicazione espressa.

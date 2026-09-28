@@ -59,6 +59,12 @@
     <li>addresses and location data you enter</li>
 </ul>
 
+<p><strong>Customers and work addresses (Checkmate)</strong></p>
+<ul>
+    <li>customer names and contact details (contact person, email address, phone number), where you enter them.</li>
+    <li>customer work addresses, including GPS pin for on-site verification.</li>
+</ul>
+
 <p><strong>Issues and tasks</strong></p>
 <ul>
     <li>issues and tasks</li>

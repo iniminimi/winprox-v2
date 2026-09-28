@@ -59,6 +59,12 @@
     <li>adressen en locatiegegevens die u invoert.</li>
 </ul>
 
+<p><strong>Klanten en werkadressen (Checkmate)</strong></p>
+<ul>
+    <li>klantnamen en contactgegevens (contactpersoon, e-mailadres, telefoonnummer), indien door u ingevoerd.</li>
+    <li>werkadressen van klanten, inclusief GPS-pin voor verificatie op locatie.</li>
+</ul>
+
 <p><strong>Meldingen en taken</strong></p>
 <ul>
     <li>meldingen (issues) en taken.</li>

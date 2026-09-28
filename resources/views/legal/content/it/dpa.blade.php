@@ -35,6 +35,7 @@
     <li>coda temporanea sul dispositivo dell’esecutore fino alla sincronizzazione delle azioni sul campo (attività, segnalazioni, foto, controlli unità).</li>
     <li>timbratura opzionale (Time): ingresso/uscita, presenza, foglio ore (inclusi eventuali minuti di pausa team), associazione dispositivo, GPS opzionale alla timbratura, consultazione del riquadro Le mie ore su Clock Point, turno pianificato e assenze (ferie, recupero, malattia) inseriti dal cliente, Il mio turno su Clock Point e consultazioni registrate dell’elenco evacuazione (se attivato).</li>
     <li>gestione di sedi e unità.</li>
+    <li>gestione di clienti e dei loro indirizzi di lavoro (Checkmate).</li>
     <li>invio di notifiche e-mail seguendo le istruzioni del cliente.</li>
     <li>registrazione delle attività e sicurezza.</li>
     <li>registrazione e follow-up delle misurazioni ESG/conformità (se il modulo è attivato).</li>
@@ -46,6 +47,7 @@
 <ul>
     <li>dati identificativi (nome, indirizzo e-mail, numero di telefono ove inseriti).</li>
     <li>dati di sede e unità (indirizzi, dettagli di localizzazione).</li>
+    <li>dati di clienti e indirizzi di lavoro (nome cliente, referente, indirizzo, marker GPS) — Checkmate.</li>
     <li>dati di problematiche e attività (inclusi foto e descrizioni).</li>
     <li>dati di controllo unità (risultato, orario, unità, GPS opzionale, esecutore).</li>
     <li>dati di lavoratori e segnalanti QR, nella misura in cui raccolti dal cliente (incluse bozze temporanee in attesa di conferma e-mail).</li>

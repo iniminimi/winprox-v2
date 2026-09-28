@@ -36,6 +36,7 @@
     <li>tijdelijke lokale wachtrij op het toestel van de uitvoerder tot synchronisatie van veldacties (taken, meldingen, foto’s, unit checks).</li>
     <li>optionele tijdregistratie (Time): in-/uitklokken, aanwezigheid, urenstaat (inclusief eventuele teampauze-minuten), toestelkoppeling, optionele GPS bij de prik, eigen-urenraadpleging op Clock Point, gepland uurrooster en afwezigheden (verlof, recup, ziek) die de klant invoert, Mijn rooster op Clock Point, en gelogde raadplegingen van de evacuatielijst (indien ingeschakeld).</li>
     <li>beheer van locaties en units.</li>
+    <li>beheer van klanten en hun werkadressen (Checkmate).</li>
     <li>verzenden van e-mailnotificaties in opdracht van de klant.</li>
     <li>logging en beveiliging.</li>
     <li>registratie en opvolging van ESG-/compliance-metingen (indien de module is geactiveerd).</li>
@@ -47,6 +48,7 @@
 <ul>
     <li>identificatiegegevens (naam, e-mailadres, telefoonnummer indien ingevoerd).</li>
     <li>locatie- en unitgegevens (adressen, locatiedetails).</li>
+    <li>klant- en werkadresgegevens (klantnaam, contactpersoon, adres, GPS-pin) — Checkmate.</li>
     <li>meldingen en taakgegevens (inclusief foto’s en beschrijvingen).</li>
     <li>unit-checkgegevens (resultaat, tijdstip, unit, optioneel GPS, uitvoerder).</li>
     <li>unitmetinggegevens (meetveld, waarde, tijdstip, unit, bron, optioneel uitvoerder of beheerder).</li>

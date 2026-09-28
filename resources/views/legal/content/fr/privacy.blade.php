@@ -59,6 +59,12 @@
     <li>adresses et données de localisation que vous saisissez.</li>
 </ul>
 
+<p><strong>Clients et adresses de chantier (Checkmate)</strong></p>
+<ul>
+    <li>noms de clients et coordonnées (personne de contact, e-mail, téléphone), si vous les saisissez.</li>
+    <li>adresses de chantier des clients, y compris le repère GPS pour la vérification sur site.</li>
+</ul>
+
 <p><strong>Signalements et tâches</strong></p>
 <ul>
     <li>issues et tâches.</li>

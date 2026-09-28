@@ -436,6 +436,14 @@
                     "Same plan requirement as API (Corporate).",
                     "Con la conferma e-mail opzionale, l’evento **segnalazione creata** parte solo dopo il link, non all’invio del modulo sul portale."
                 ]
+            },
+            {
+                "title": "Checkmate",
+                "items": [
+                    "Checkmate non è un'app separata: la stessa piattaforma con una whitelist per piano per le rotte admin e le schede del portale.",
+                    "Stessa isolazione dei tenant, infrastruttura Time e portale Clock Point; le rotte facility restituiscono 404.",
+                    "5 € per esecutore attivo al mese (per posto via Stripe)."
+                ]
             }
         ],
         "full": [

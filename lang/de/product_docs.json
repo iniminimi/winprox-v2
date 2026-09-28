@@ -436,6 +436,14 @@
                     "Same plan requirement as API (Corporate).",
                     "Bei optionaler E-Mail-Bestätigung folgt das Ereignis **Meldung erstellt** erst nach dem Link, nicht beim Absenden im Portal."
                 ]
+            },
+            {
+                "title": "Checkmate",
+                "items": [
+                    "Checkmate ist keine eigene App: dieselbe Plattform mit einer per-Plan-Whitelist für Admin-Routen und Portal-Kacheln.",
+                    "Gleiche Mandantenisolation, Time-Infrastruktur und Clock-Point-Portal; Facility-Routen liefern 404.",
+                    "5 € pro aktivem Ausführenden und Monat (per Seat über Stripe)."
+                ]
             }
         ],
         "full": [
