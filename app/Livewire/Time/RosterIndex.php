@@ -23,6 +23,7 @@ use App\Models\WorkShift;
 use App\Support\Tenancy;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
@@ -36,6 +37,10 @@ class RosterIndex extends Component
 {
     use AuthorizesRequests;
     use ProvidesTimeNavAlarmCount;
+
+    private const VIEW_COOKIE = 'roster_view';
+
+    private const VIEW_COOKIE_MINUTES = 60 * 24 * 365;
 
     #[Url(as: 'week')]
     public string $weekStart = '';
@@ -67,6 +72,7 @@ class RosterIndex extends Component
     {
         $this->authorize('viewAny', PlannedShift::class);
         $this->normalizeView();
+        $this->restoreRememberedView();
 
         if ($this->weekStart === '') {
             $this->weekStart = $this->isMonth()
@@ -103,6 +109,7 @@ class RosterIndex extends Component
     public function setView(string $view, ResolveRosterPeriodAction $resolvePeriod): void
     {
         $this->view = $view === 'month' ? 'month' : 'week';
+        Cookie::queue(self::VIEW_COOKIE, $this->view, self::VIEW_COOKIE_MINUTES);
         [$start] = $resolvePeriod->handle($this->weekStart !== '' ? $this->weekStart : now()->toDateString(), $this->period());
         $this->weekStart = $start->toDateString();
         $this->dispatch('roster-week-changed');
@@ -401,5 +408,17 @@ class RosterIndex extends Component
     private function normalizeView(): void
     {
         $this->view = $this->view === 'month' ? 'month' : 'week';
+    }
+
+    private function restoreRememberedView(): void
+    {
+        if (request()->query->has('view')) {
+            return;
+        }
+
+        $remembered = request()->cookie(self::VIEW_COOKIE);
+        if (in_array($remembered, ['week', 'month'], true)) {
+            $this->view = $remembered;
+        }
     }
 }

@@ -34,6 +34,7 @@ use App\Models\Worker;
 use App\Models\WorkerNotification;
 use App\Support\Tenancy;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Cookie;
 use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
@@ -360,6 +361,30 @@ it('toont een maandoverzicht met dagnummers', function () {
         ->and($snapshot->dayNumbers[0])->toBe(1)
         ->and($snapshot->dayNumbers[29])->toBe(30)
         ->and($snapshot->monthLabel)->toContain('2026');
+});
+
+it('onthoudt de laatst gekozen weergave via een cookie', function () {
+    [$tenant, $admin] = scheduleTenant();
+
+    $this->actingAs($admin)
+        ->withCookie('roster_view', 'month')
+        ->get(route('time.schedule.index'))
+        ->assertOk()
+        ->assertSee('wp-roster-page--month', false);
+
+    $this->actingAs($admin)
+        ->withCookie('roster_view', 'month')
+        ->get(route('time.schedule.index', ['view' => 'week']))
+        ->assertOk()
+        ->assertDontSee('wp-roster-page--month', false);
+
+    Livewire::actingAs($admin)
+        ->test(RosterIndex::class)
+        ->call('setView', 'month');
+
+    $queued = Cookie::queued('roster_view');
+    expect($queued)->not->toBeNull()
+        ->and($queued->getValue())->toBe('month');
 });
 
 it('toont geen weekendkolommen in maandweergave als weekends uit staan', function () {
