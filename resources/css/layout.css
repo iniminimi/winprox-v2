@@ -107,6 +107,15 @@
     border-radius: calc(var(--wp-radius-lg) - 2px);
 }
 
+.wp-sidebar-header-logo--checkmate {
+    width: 100%;
+}
+
+.wp-sidebar-header-logo--checkmate img {
+    width: 100%;
+    max-height: none;
+}
+
 .wp-card.wp-onboarding-card {
     background-color: color-mix(in srgb, var(--wp-warning) 16%, #ffffff 84%) !important;
     border: 2px solid var(--wp-warning) !important;

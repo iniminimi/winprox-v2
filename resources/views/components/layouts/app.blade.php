@@ -150,7 +150,7 @@
                 @endphp
                 @if($tenantBg) style="--wp-tenant-bg: {{ $tenantBg }};" @endif>
             <div class="wp-sidebar-header">
-                <div class="wp-sidebar-header-logo">
+                <div class="wp-sidebar-header-logo @if ($checkmateNav) wp-sidebar-header-logo--checkmate @endif">
                     @if ($checkmateNav)
                         <img src="{{ asset('images/landing/work_on_location/winprox_checkmate.png') }}" alt="Checkmate">
                     @else
