@@ -91,6 +91,11 @@ Stap **2b** (`php artisan winprox:prepare-manual-capture`) voor de tenant van `M
 - vernieuwt de **trial** als die verlopen is (anders redirect naar `/subscription` → selector-timeout)
 - zet `has_esg_module`, `has_time_module` en `has_iot_module` aan
 - maakt zonodig een Clock Point aan
+- geeft het **kloktoestel** van `MANUAL_CAPTURE_WORKER_*` (en `MANUAL_CAPTURE_CHECKMATE_WORKER_*`)
+  vrij — Time koppelt max. één gsm per uitvoerder; zonder release weigert de portal elke
+  nieuwe browser-sessie ("toestel niet gekoppeld"). De capture-script-side hergebruikt
+  `workerSignIn`-targets één persistente browsersessie per portaal, dus de eerste sign-in
+  van een run bindt het toestel en alle volgende targets/locales gebruiken het opnieuw.
 
 Het script doet **altijd** alles:
 

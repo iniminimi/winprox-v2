@@ -102,6 +102,18 @@ it('ondersteunt de screenshot-toggle op de checkmate-handleiding', function () {
         ->assertSee('wp-manual-root--no-screenshots');
 });
 
+it('embed de gegenereerde checkmate-screenshots in de handleiding', function () {
+    $tenant = checkmateManualTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+    $this->actingAs($admin);
+
+    $this->get('/manual/checkmate?lang=nl')
+        ->assertOk()
+        ->assertSee('images/manual/nl/checkmate-dashboard.png')
+        ->assertSee('images/manual/nl/checkmate-clock-points.png')
+        ->assertSee('images/manual/nl/checkmate-portal-signin.png');
+});
+
 it('toont het checkmate-logo bovenaan het menu voor checkmate-tenants', function () {
     $tenant = checkmateManualTenant();
     $admin = User::factory()->admin()->for($tenant)->create();

@@ -419,8 +419,10 @@
                 { "click": "[data-manual-capture-trigger=\"portal-find-nearby\"]", "waitFor": "[data-manual-capture=\"time-today\"] .wp-btn--prio-pulse" }
             ],
             "cleanup": [
-                "[data-manual-capture-trigger=\"portal-now-toggle\"]",
-                "[data-manual-capture-trigger=\"portal-clock-out\"]"
+                { "reload": true },
+                { "click": "[data-manual-capture-trigger=\"portal-clock-out\"]", "optional": true },
+                { "click": "[data-manual-capture-trigger=\"portal-now-toggle\"]", "optional": true },
+                { "click": "[data-manual-capture-trigger=\"portal-clock-out\"]", "optional": true }
             ]
         },
         {

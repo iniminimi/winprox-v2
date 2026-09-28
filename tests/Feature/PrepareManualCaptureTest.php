@@ -4,6 +4,8 @@ use App\Actions\Manual\PrepareManualCaptureTenantAction;
 use App\Models\ClockPoint;
 use App\Models\Tenant;
 use App\Models\User;
+use App\Models\Worker;
+use App\Models\WorkerDevice;
 
 it('zet has_esg_module aan voor de capture-tenant', function () {
     $tenant = Tenant::factory()->create(['has_esg_module' => false]);
@@ -74,6 +76,34 @@ it('laat has_esg_module ongemoeid wanneer al actief', function () {
     app(PrepareManualCaptureTenantAction::class)->handle();
 
     expect($tenant->fresh()->has_esg_module)->toBeTrue();
+});
+
+it('geeft het kloktoestel van de capture-worker vrij', function () {
+    $tenant = Tenant::factory()->create(['has_esg_module' => true, 'has_iot_module' => true]);
+    User::factory()->admin()->for($tenant)->create(['email' => 'capture@example.com']);
+    config([
+        'manual_capture.email' => 'capture@example.com',
+        'manual_capture.worker_first_name' => 'John',
+        'manual_capture.worker_last_name' => 'Workman',
+    ]);
+
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'first_name' => 'John',
+        'last_name' => 'Workman',
+    ]);
+    $device = WorkerDevice::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+    ]);
+    $worker->forceFill(['clock_device_id' => $device->id])->save();
+
+    app(PrepareManualCaptureTenantAction::class)->handle();
+
+    // Zonder vrijgave weigert elke nieuwe browser-sessie de worker-sign-in
+    // (één gsm per uitvoerder); de eerste Playwright-sign-in bindt opnieuw.
+    expect($worker->fresh()->clock_device_id)->toBeNull()
+        ->and(WorkerDevice::withoutGlobalScope('tenant')->where('worker_id', $worker->id)->count())->toBe(0);
 });
 
 it('weigert voorbereiden zonder capture-email', function () {

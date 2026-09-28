@@ -13,6 +13,7 @@ final class ManualScreenshotAssets
     private const CHAPTER_FILENAME_ALIASES = [
         'team.teams' => 'team.png',
         'team.workers_index' => 'workers-index.png',
+        'checkmate.clock_points' => 'checkmate-clock-points.png',
     ];
 
     public static function filenameForChapter(string $chapterKey): string

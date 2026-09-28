@@ -1,4 +1,4 @@
-# Handleiding-screenshots: wissen → capture → commit → push (altijd volledige pipeline).
+# Handleiding-screenshots: wissen -> capture -> commit -> push (altijd volledige pipeline).
 $ErrorActionPreference = 'Stop'
 $root = Resolve-Path (Join-Path $PSScriptRoot '..')
 Set-Location $root
@@ -71,7 +71,7 @@ if (-not $env:MANUAL_CAPTURE_EMAIL -or -not $env:MANUAL_CAPTURE_PASSWORD) {
 }
 
 if ($env:MANUAL_CAPTURE_ONLY) {
-    Write-Host "Stap 1/5: MANUAL_CAPTURE_ONLY='$($env:MANUAL_CAPTURE_ONLY)' — subset-run: bestaande PNGs blijven staan, geen commit/push."
+    Write-Host "Stap 1/5: MANUAL_CAPTURE_ONLY='$($env:MANUAL_CAPTURE_ONLY)' - subset-run: bestaande PNGs blijven staan, geen commit/push."
 } else {
     Write-Host 'Stap 1/5: oude handleiding-PNGs verwijderen...'
     $removedCount = Clear-ManualCapturePngs -BasePath $manualRoot -LocaleDirs $locales
@@ -111,7 +111,7 @@ if ($pngCount -eq 0) {
 Write-Host "  $pngCount nieuwe PNG(s) aangemaakt."
 
 if ($env:MANUAL_CAPTURE_ONLY) {
-    Write-Host 'Subset-run klaar — commit/push zelf doen na controle van de PNGs.'
+    Write-Host 'Subset-run klaar - commit/push zelf doen na controle van de PNGs.'
     exit 0
 }
 

@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace App\Actions\Manual;
 
 use App\Actions\TenantPurge\CancelOpenExpiredTrialPurgesForTenantAction;
+use App\Actions\Time\ClearWorkerClockDeviceAction;
 use App\Actions\Time\EnsureDefaultClockPointAction;
 use App\Models\ClockPoint;
 use App\Models\Tenant;
 use App\Models\User;
+use App\Models\Worker;
 use InvalidArgumentException;
 
 final class PrepareManualCaptureTenantAction
@@ -16,6 +18,7 @@ final class PrepareManualCaptureTenantAction
     public function __construct(
         private EnsureDefaultClockPointAction $ensureDefaultClockPoint,
         private CancelOpenExpiredTrialPurgesForTenantAction $cancelExpiredTrialPurges,
+        private ClearWorkerClockDeviceAction $clearClockDevice,
     ) {}
 
     public function handle(?string $email = null, bool $checkmate = false): Tenant
@@ -83,7 +86,37 @@ final class PrepareManualCaptureTenantAction
             $user->id,
         );
 
+        $this->releaseCaptureWorkerClockDevice($tenant, $user, $checkmate);
+
         return $tenant->refresh();
+    }
+
+    /**
+     * De capture-browser is per run een "nieuw toestel"; Time koppelt max. één
+     * gsm per uitvoerder. Zonder vrijgave weigert elke verse browser-sessie de
+     * worker-sign-in (device niet gekoppeld), ook al klopt het icoon.
+     */
+    private function releaseCaptureWorkerClockDevice(Tenant $tenant, User $user, bool $checkmate): void
+    {
+        $prefix = $checkmate ? 'checkmate_worker' : 'worker';
+        $first = trim((string) config("manual_capture.{$prefix}_first_name"));
+        $last = trim((string) config("manual_capture.{$prefix}_last_name"));
+
+        if ($first === '' || $last === '') {
+            return;
+        }
+
+        $worker = Worker::query()
+            ->where('tenant_id', $tenant->id)
+            ->where('first_name', $first)
+            ->where('last_name', $last)
+            ->first();
+
+        if ($worker === null) {
+            return;
+        }
+
+        $this->clearClockDevice->handle($worker, (int) $tenant->id, (int) $user->id);
     }
 
     public function clockPointQrToken(Tenant $tenant): ?string

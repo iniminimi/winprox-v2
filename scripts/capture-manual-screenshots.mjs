@@ -49,7 +49,7 @@ if (!email || !password) {
     process.exit(1);
 }
 
-/** @type {{ targets: Array<{ id: string, path: string, selector: string, viewport?: { width: number, height: number }, auth?: boolean, checkmate?: boolean, prepareClick?: string, steps?: Array<string|{click:string, waitFor?:string}>, cleanup?: Array<string|{click:string}>, geolocation?: boolean, workerSignIn?: boolean, optional?: boolean }> }} */
+/** @type {{ targets: Array<{ id: string, path: string, selector: string, viewport?: { width: number, height: number }, auth?: boolean, checkmate?: boolean, prepareClick?: string, steps?: Array<string|{click:string, waitFor?:string, optional?:boolean}>, cleanup?: Array<string|{click?:string, optional?:boolean, reload?:boolean}>, geolocation?: boolean, workerSignIn?: boolean, workerSignInPath?: string, optional?: boolean }> }} */
 const config = JSON.parse(readFileSync(configPath, 'utf8'));
 
 if (onlyPrefix !== '') {
@@ -91,6 +91,24 @@ try {
         authPages.push(checkmatePage);
     }
 
+    // Worker-sign-in koppelt max. één gsm per uitvoerder: de sign-in bindt het
+    // device-token van de browser aan de worker. Schone cookies per target =
+    // elk een "vreemd toestel" → geweigerd. Daarom een persistente sessie per
+    // portaal (regulier + checkmate): één sign-in, alle volgende targets en
+    // locales hergebruiken hetzelfde gebonden toestel.
+    const portalSessions = new Map();
+
+    async function portalSession(checkmate) {
+        const key = checkmate ? 'checkmate' : 'default';
+        let session = portalSessions.get(key);
+        if (session === undefined) {
+            const context = await browser.newContext(contextOptions);
+            session = { context, page: await context.newPage() };
+            portalSessions.set(key, session);
+        }
+        return session;
+    }
+
     let captured = 0;
     let skipped = 0;
 
@@ -121,10 +139,19 @@ try {
                 continue;
             }
 
-            const page = useCheckmate && useAuth ? checkmatePage : (useAuth ? adminPage : publicPage);
-            const context = useCheckmate && useAuth ? checkmateContext : (useAuth ? adminContext : publicContext);
-
-            if (! useAuth) {
+            let page;
+            let context;
+            if (useCheckmate && useAuth) {
+                page = checkmatePage;
+                context = checkmateContext;
+            } else if (useAuth) {
+                page = adminPage;
+                context = adminContext;
+            } else if (target.workerSignIn === true) {
+                ({ page, context } = await portalSession(useCheckmate));
+            } else {
+                page = publicPage;
+                context = publicContext;
                 // Unit-portaal zet winprox_device_token; team-identify vereist schone browserstaat.
                 await resetPublicPortalSession(context);
             }
@@ -385,19 +412,29 @@ function captureUrl(path, locale, useAuth) {
 /**
  * Sequentiële UI-stappen vóór (steps) of na (cleanup) de screenshot.
  * Elke stap is een CSS-selector of { click, waitFor }.
+ * Met { click, optional: true } wordt de stap overgeslagen als het element
+ * niet zichtbaar is — voor state-afhankelijke cleanup (bv. disclosure die
+ * al open kan staan). { reload: true } herlaadt de pagina — nodig vóór een
+ * tweede prik (in/uit), want ClockPointScanGrant staat één prik per QR-scan toe.
  *
  * @param {import('playwright').Page} page
- * @param {Array<string|{click: string, waitFor?: string}>} steps
+ * @param {Array<string|{click?: string, waitFor?: string, optional?: boolean, reload?: boolean}>} steps
  * @param {{ ignoreErrors?: boolean }} [options]
  */
 async function runSteps(page, steps, options = {}) {
     for (const step of steps) {
+        if (typeof step === 'object' && step.reload === true) {
+            await page.reload({ waitUntil: 'networkidle' });
+            continue;
+        }
+
         const click = typeof step === 'string' ? step : step.click;
         const waitFor = typeof step === 'string' ? null : (step.waitFor ?? null);
+        const optional = typeof step === 'object' && step.optional === true;
 
         try {
             const trigger = page.locator(click).first();
-            await trigger.waitFor({ state: 'visible', timeout: 15_000 });
+            await trigger.waitFor({ state: 'visible', timeout: optional ? 4_000 : 15_000 });
             await trigger.click();
             await page.waitForLoadState('networkidle');
 
@@ -405,7 +442,7 @@ async function runSteps(page, steps, options = {}) {
                 await page.locator(waitFor).first().waitFor({ state: 'visible', timeout: 15_000 });
             }
         } catch {
-            if (options.ignoreErrors === true) {
+            if (optional || options.ignoreErrors === true) {
                 continue;
             }
 
