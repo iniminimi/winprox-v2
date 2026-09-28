@@ -44,3 +44,10 @@ it('gebruikt de cleaning-welcome-video per taal op schoonmaak en bouw', function
 it('geeft null voor schoonmaak en bouw zonder locale-video', function () {
     expect(SectorLandingVideo::relativePath(PromoLanding::WorkOnLocation, 'fr'))->toBeNull();
 });
+
+it('gebruikt de checkmate-video voor elke taal', function (string $locale) {
+    $path = SectorLandingVideo::relativePath(PromoLanding::Checkmate, $locale);
+
+    expect($path)->toBe('video/checkmate.mp4')
+        ->and(is_file(public_path($path)))->toBeTrue();
+})->with(['nl', 'en', 'fr', 'de', 'es', 'it']);

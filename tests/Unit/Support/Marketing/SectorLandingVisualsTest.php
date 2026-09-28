@@ -74,7 +74,7 @@ it('levert schoonmaak- en bouwfoto’s wanneer de bestanden bestaan', function (
 
     expect($visuals)->toHaveKeys(['hero', 'problem', 'steps', 'places', 'roles', 'why', 'close'])
         ->and($visuals['hero'])->toBe('images/landing/work_on_location/image01.jpg')
-        ->and($visuals['problem'])->toBe('images/landing/work_on_location/image02.jpg')
+        ->and($visuals['problem'])->toBe('images/landing/work_on_location/screenshot_cleaning.jpg')
         ->and($visuals['places'])->toBe('images/landing/work_on_location/image04.jpg')
         ->and($visuals['roles'])->toBe('images/landing/work_on_location/image03.jpg')
         ->and($visuals['close'])->toBe('images/landing/general/welcome_07.jpg')
@@ -84,4 +84,17 @@ it('levert schoonmaak- en bouwfoto’s wanneer de bestanden bestaan', function (
         ->and(SectorLandingVisuals::layouts(PromoLanding::WorkOnLocation))
         ->toHaveKey('places')
         ->and(SectorLandingVisuals::closeStyle(PromoLanding::WorkOnLocation))->toBe('scrim');
+});
+
+it('levert checkmate-foto’s wanneer de bestanden bestaan', function () {
+    $visuals = SectorLandingVisuals::for(PromoLanding::Checkmate);
+
+    expect($visuals)->toHaveKeys(['brand_logo', 'hero', 'problem', 'steps', 'places', 'roles', 'why', 'close'])
+        ->and($visuals['brand_logo'])->toBe('images/landing/work_on_location/winprox_checkmate.png')
+        ->and($visuals['hero'])->toBe('images/landing/work_on_location/image01.jpg')
+        ->and($visuals['close'])->toBe('images/landing/general/welcome_07.jpg')
+        ->and(is_file(public_path($visuals['brand_logo'])))->toBeTrue()
+        ->and(SectorLandingVisuals::layouts(PromoLanding::Checkmate))
+        ->toHaveKey('places')
+        ->and(SectorLandingVisuals::closeStyle(PromoLanding::Checkmate))->toBe('scrim');
 });

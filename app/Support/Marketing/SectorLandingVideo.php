@@ -57,6 +57,13 @@ final class SectorLandingVideo
             }
         }
 
+        if ($landing === PromoLanding::Checkmate) {
+            $fallback = 'video/checkmate.mp4';
+            if (is_file(public_path($fallback))) {
+                return $fallback;
+            }
+        }
+
         return null;
     }
 }

@@ -174,7 +174,8 @@
         "page_healthcare": "Gesundheits-Landing",
         "page_government": "Verwaltungs-Landing",
         "page_realestate": "Immobilien-Landing",
-        "page_work_on_location": "Reinigungs- und Bau-Landing"
+        "page_work_on_location": "Reinigungs- und Bau-Landing",
+        "page_checkmate": "Checkmate-Landing"
     },
     "promo_campaigns": {
         "nav": "Promo-Kampagnen",

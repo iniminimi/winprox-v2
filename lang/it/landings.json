@@ -746,5 +746,110 @@
             "why": "Portatile con la panoramica WinProx delle richieste.",
             "close": "Due colleghi guardano WinProx insieme su un tablet."
         }
+    },
+    "checkmate": {
+        "nav_label": "Checkmate (CIAO)",
+        "meta_title": "WinProx Checkmate | Presenza sul posto comunicata all'ONSS (CIAO)",
+        "social": {
+            "og_title": "WinProx Checkmate | Presenza sul posto comunicata all'ONSS",
+            "og_description": "Timbratura, visita cliente GPS e invio CIAO automatico all'ONSS — 5 € per operatore attivo al mese, senza app."
+        },
+        "eyebrow": "ONSS · Check In and Out at Work",
+        "title": "Presenza presso il cliente, comunicata correttamente all'ONSS.",
+        "lead": "WinProx Checkmate è per le squadre che lavorano presso il cliente. L'operatore timbra, avvia la visita cliente sul posto e Checkmate comunica la presenza a Check In and Out at Work (CIAO). Pulizie ora; l'edilizia segue con lo scope ONSS ufficiale.",
+        "flow": "Timbrare → visita cliente → CIAO a posto",
+        "video": {
+            "title": "Checkmate in un minuto",
+            "lead": "Link personale o QR, timbrare, avviare la visita cliente sul posto. Il controllo GPS e l'invio CIAO avvengono da sé."
+        },
+        "problem": {
+            "title": "Provare la presenza senza scartoffie",
+            "lead": "Chi fa lavorare squadre presso i clienti deve registrare e comunicare la presenza correttamente. Foglietti volanti, chat di gruppo e compilazione a posteriori non sono una prova solida.",
+            "questions": [
+                "Chi lavora oggi presso quale cliente?",
+                "Ogni presenza è comunicata correttamente all'ONSS?",
+                "Potete provare che la squadra era davvero in quel luogo?",
+                "Un cliente nuovo deve prima essere creato dall'ufficio?",
+                "Il titolare vede in diretta chi lavora dove, senza telefonare?"
+            ]
+        },
+        "steps": {
+            "title": "Dalla timbratura al CIAO in quattro passi",
+            "items": [
+                {
+                    "title": "Timbrare",
+                    "body": "L'operatore apre il suo link Clock Point personale e timbra. Dopo un primo abbinamento basta l'icona sulla schermata home — niente app, niente login."
+                },
+                {
+                    "title": "Avviare la visita cliente",
+                    "body": "Presso il cliente, l'operatore tocca «iniziare a lavorare». Il controllo GPS conferma che è davvero lì — vale subito come IN CIAO."
+                },
+                {
+                    "title": "Cliente nuovo mentre sei in giro",
+                    "body": "Inserisci nome e indirizzo; il telefono posiziona il pin automaticamente. Se il cliente esiste già con un nome leggermente diverso, compare un suggerimento invece di un duplicato."
+                },
+                {
+                    "title": "Pausa, cambio, uscita",
+                    "body": "Pause e cambi di cliente seguono lo stesso flusso. Ogni cambio diventa una registrazione CIAO corretta — nessuno deve ricordarsi nulla."
+                }
+            ]
+        },
+        "places": {
+            "title": "Pulizie ora, edilizia appena lo scope ONSS è live",
+            "lead": "Checkmate parte con pulizie e manutenzione in immobili per terzi (30bis). La stessa pipeline è pronta per i lavori in stato immobile — andrà live con le specifiche ufficiali dell'ONSS.",
+            "items": [
+                "pulizia di uffici e parti comuni",
+                "manutenzione e riparazioni presso i clienti",
+                "cantieri — appena lo scope edilizia dell'ONSS è live",
+                "lavori presso privati, dove non serve la dicitura DDT"
+            ],
+            "close": "L'operatore non deve ricordare nulla: iniziare e finire presso il cliente è la registrazione."
+        },
+        "roles": {
+            "title": "Pensato per operatore e titolare",
+            "items": [
+                {
+                    "title": "Per l'operatore",
+                    "body": "Timbrare, avviare la visita cliente, pausa e uscita sul proprio telefono. Niente app, niente login, niente problemi."
+                },
+                {
+                    "title": "Per il titolare",
+                    "body": "Vedi in diretta chi lavora dove, quali visite cliente ci sono state e quali registrazioni l'ONSS ha confermato. Clienti e indirizzi di lavoro li gestisci tu."
+                },
+                {
+                    "title": "Per il tuo dossier",
+                    "body": "La presenza è registrata correttamente per cliente, per indirizzo e per giorno — pronta per un controllo, senza ricostruire tutto dopo."
+                }
+            ]
+        },
+        "why": {
+            "title": "Perché Checkmate",
+            "items": [
+                "5 € per operatore attivo al mese — scegli tu il numero di seat.",
+                "Nessuna app da installare: basta un link personale o un QR una tantum.",
+                "La visita di lavoro GPS presso il cliente è la prova; timbrare da solo non basta.",
+                "Attivazione CIAO tramite il tuo numero d'impresa (BCE); noi confermiamo e da lì l'invio è automatico.",
+                "Le registrazioni valgono dall'attivazione — ciò che è stato timbrato prima non viene mai inviato dopo.",
+                "Niente payroll, niente Dimona, niente dossier doppi — solo presenza corretta."
+            ]
+        },
+        "start": {
+            "title": "Iniziare con Checkmate",
+            "lead": "Crea un account, inserisci il tuo numero d'impresa (BCE) e richiedi lo scope CIAO. Confermiamo noi il collegamento — da lì ogni registrazione parte in tempo reale verso l'ONSS.",
+            "trial": "Preferisci prima provare? Richiedi una prova via info@winprox.app — 3 seat, 30 giorni."
+        },
+        "close": {
+            "title": "Pronto per una presenza corretta?",
+            "lead": "Registra la tua squadra correttamente all'ONSS, senza amministrazione extra. 5 € per operatore attivo al mese."
+        },
+        "visuals": {
+            "hero": "Addetta alle pulizie con polo WinProx che guarda lo smartphone in un atrio di uffici.",
+            "problem": "Clock Point sullo smartphone: avviare la visita cliente e registrare la presenza.",
+            "steps": "Due persone a un tavolo con una carta QR in primo piano.",
+            "places": "Vista aerea di un cantiere con gru e squadre in arancione.",
+            "roles": "Operaio in gilet arancione che guarda lo smartphone in cantiere.",
+            "why": "Portatile con la panoramica WinProx di presenze e visite cliente.",
+            "close": "Due colleghi guardano WinProx insieme su un tablet."
+        }
     }
 }

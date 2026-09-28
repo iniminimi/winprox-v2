@@ -12,6 +12,7 @@ enum PromoLanding: string
     case Government = 'government';
     case RealEstate = 'realestate';
     case WorkOnLocation = 'work-on-location';
+    case Checkmate = 'checkmate';
 
     public static function default(): self
     {
@@ -32,6 +33,7 @@ enum PromoLanding: string
             self::Government => PromoVisitPage::Government,
             self::RealEstate => PromoVisitPage::RealEstate,
             self::WorkOnLocation => PromoVisitPage::WorkOnLocation,
+            self::Checkmate => PromoVisitPage::Checkmate,
         };
     }
 

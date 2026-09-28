@@ -746,5 +746,110 @@
             "why": "Portátil con el resumen de solicitudes de WinProx.",
             "close": "Dos colegas miran WinProx juntos en una tableta."
         }
+    },
+    "checkmate": {
+        "nav_label": "Checkmate (CIAO)",
+        "meta_title": "WinProx Checkmate | Presencia en el lugar declarada a la ONSS (CIAO)",
+        "social": {
+            "og_title": "WinProx Checkmate | Presencia en el lugar declarada a la ONSS",
+            "og_description": "Fichar, visita al cliente con GPS y envío CIAO automático a la ONSS — 5 € por trabajador activo al mes, sin app."
+        },
+        "eyebrow": "ONSS · Check In and Out at Work",
+        "title": "Presencia en el lugar del cliente, comunicada correctamente a la ONSS.",
+        "lead": "WinProx Checkmate es para equipos que trabajan en casa del cliente. El trabajador ficha, inicia la visita al cliente in situ y Checkmate comunica la presencia a Check In and Out at Work (CIAO). Limpieza ahora; construcción cuando entre en vigor el ámbito oficial de la ONSS.",
+        "flow": "Fichar → visita al cliente → CIAO resuelto",
+        "video": {
+            "title": "Checkmate en un minuto",
+            "lead": "Un enlace personal o un QR, fichar, iniciar la visita al cliente in situ. El control GPS y el envío CIAO ocurren solos."
+        },
+        "problem": {
+            "title": "Probar la presencia sin papeleo",
+            "lead": "Quien trabaja con equipos en casa de clientes debe registrar y comunicar la presencia correctamente. Notas sueltas, grupos de chat y rellenar después no son una prueba sólida.",
+            "questions": [
+                "¿Quién trabaja hoy en casa de qué cliente?",
+                "¿Se comunica cada presencia correctamente a la ONSS?",
+                "¿Puede probar que el equipo estuvo realmente en ese lugar?",
+                "¿Un cliente nuevo debe crearlo primero la oficina?",
+                "¿El jefe ve en directo quién trabaja dónde, sin llamar?"
+            ]
+        },
+        "steps": {
+            "title": "De fichar a CIAO en cuatro pasos",
+            "items": [
+                {
+                    "title": "Fichar",
+                    "body": "El trabajador abre su enlace personal de Clock Point y ficha. Tras una vinculación única basta el icono de la pantalla de inicio — sin app ni login."
+                },
+                {
+                    "title": "Iniciar la visita al cliente",
+                    "body": "En casa del cliente, el trabajador toca «empezar a trabajar». El control GPS confirma que está realmente allí — vale enseguida como IN de CIAO."
+                },
+                {
+                    "title": "Cliente nuevo sobre la marcha",
+                    "body": "Introduce nombre y dirección; el teléfono coloca el pin automáticamente. Si el cliente ya existe con un nombre ligeramente distinto, aparece una sugerencia en lugar de un duplicado."
+                },
+                {
+                    "title": "Pausa, cambio, salida",
+                    "body": "Las pausas y los cambios de cliente siguen el mismo flujo. Cada cambio se convierte en un registro CIAO correcto — nadie tiene que acordarse de nada."
+                }
+            ]
+        },
+        "places": {
+            "title": "Limpieza ahora, construcción cuando el ámbito ONSS esté en vigor",
+            "lead": "Checkmate empieza con limpieza y mantenimiento en inmuebles para terceros (30bis). El mismo pipeline está preparado para obras en inmuebles — entrará en vigor con las especificaciones oficiales de la ONSS.",
+            "items": [
+                "limpieza de oficinas y zonas comunes",
+                "mantenimiento y reparaciones en casa de clientes",
+                "obras y construcciones — cuando el ámbito de construcción de la ONSS esté en vigor",
+                "trabajos para particulares, donde no hace falta mención DDT"
+            ],
+            "close": "El trabajador no tiene que recordar nada: empezar y terminar en casa del cliente es el registro."
+        },
+        "roles": {
+            "title": "Hecho para el trabajador y el jefe",
+            "items": [
+                {
+                    "title": "Para el trabajador",
+                    "body": "Fichar, iniciar la visita al cliente, pausa y salida en su propio móvil. Sin app, sin login, sin líos."
+                },
+                {
+                    "title": "Para el jefe",
+                    "body": "Vea en directo quién trabaja dónde, qué visitas a clientes hubo y qué registros confirmó la ONSS. Clientes y direcciones de trabajo los gestiona usted."
+                },
+                {
+                    "title": "Para su expediente",
+                    "body": "La presencia queda correctamente registrada por cliente, por dirección y por día — lista para una inspección, sin reconstruir nada después."
+                }
+            ]
+        },
+        "why": {
+            "title": "Por qué Checkmate",
+            "items": [
+                "5 € por trabajador activo al mes — usted elige el número de plazas.",
+                "Sin app que instalar: basta un enlace personal o un QR único.",
+                "La visita de trabajo GPS en casa del cliente es la prueba; fichar solo no lo es.",
+                "Activación CIAO con su número de empresa (BCE); nosotros confirmamos y a partir de ahí el envío es automático.",
+                "Los registros valen desde la activación — lo fichado antes nunca se envía después.",
+                "Sin nóminas, sin Dimona, sin expedientes duplicados — solo presencia correcta."
+            ]
+        },
+        "start": {
+            "title": "Empezar con Checkmate",
+            "lead": "Cree una cuenta, introduzca su número de empresa (BCE) y solicite el ámbito CIAO. Confirmamos el enlace — a partir de ahí, cada registro se envía a la ONSS en tiempo real.",
+            "trial": "¿Prefiere probar primero? Pida una plaza de prueba en info@winprox.app — 3 plazas, 30 días."
+        },
+        "close": {
+            "title": "¿Listo para una presencia correcta?",
+            "lead": "Registre a su equipo correctamente ante la ONSS, sin administración extra. 5 € por trabajador activo al mes."
+        },
+        "visuals": {
+            "hero": "Limpiadora con polo de WinProx mirando su smartphone en un vestíbulo de oficinas.",
+            "problem": "Clock Point en el smartphone: iniciar la visita al cliente y registrar la presencia.",
+            "steps": "Dos personas en una mesa con una tarjeta QR en primer plano.",
+            "places": "Vista aérea de una obra con grúas y equipos en naranja.",
+            "roles": "Obrero con chaleco naranja mirando su smartphone en la obra.",
+            "why": "Portátil con el resumen WinProx de presencia y visitas a clientes.",
+            "close": "Dos compañeros miran WinProx juntos en una tableta."
+        }
     }
 }

@@ -12,6 +12,7 @@ enum PromoVisitPage: string
     case Government = 'government';
     case RealEstate = 'realestate';
     case WorkOnLocation = 'work-on-location';
+    case Checkmate = 'checkmate';
 
     public function labelKey(): string
     {
@@ -24,6 +25,7 @@ enum PromoVisitPage: string
             self::Government => 'platform.promo_recipients.page_government',
             self::RealEstate => 'platform.promo_recipients.page_realestate',
             self::WorkOnLocation => 'platform.promo_recipients.page_work_on_location',
+            self::Checkmate => 'platform.promo_recipients.page_checkmate',
         };
     }
 

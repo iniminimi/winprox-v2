@@ -174,7 +174,8 @@
         "page_healthcare": "Landing sanità",
         "page_government": "Landing enti pubblici",
         "page_realestate": "Landing immobiliare",
-        "page_work_on_location": "Landing pulizie ed edilizia"
+        "page_work_on_location": "Landing pulizie ed edilizia",
+        "page_checkmate": "Landing Checkmate"
     },
     "promo_campaigns": {
         "nav": "Campagne promo",

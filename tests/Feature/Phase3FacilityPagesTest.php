@@ -239,6 +239,42 @@ it('toont de schoonmaak- en bouwlanding', function () {
         ->assertSee(__('landings.shared.video_placeholder', [], 'fr'));
 });
 
+it('toont de checkmate-landing met eigen video', function () {
+    $this->withHeader('Accept-Language', 'xx-XX,xx;q=0.9')
+        ->get('/checkmate')
+        ->assertRedirect(route('checkmate', ['locale' => 'nl']));
+
+    $this->get(route('checkmate', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee(__('landings.checkmate.title', [], 'nl'))
+        ->assertSee(__('landings.checkmate.flow', [], 'nl'))
+        ->assertSee(__('landings.checkmate.problem.title', [], 'nl'))
+        ->assertSee(__('landings.checkmate.start.trial', [], 'nl'))
+        ->assertSee('images/landing/work_on_location/winprox_checkmate.png', false)
+        ->assertSee('images/landing/work_on_location/image01.jpg', false)
+        ->assertSee('images/landing/work_on_location/image04.jpg', false)
+        ->assertSee('wp-landing-block--wide-photo', false)
+        ->assertSee('wp-landing-close--scrim', false)
+        ->assertSee('id="landing-video"', false)
+        ->assertSee('video/checkmate.mp4', false)
+        ->assertSee('wp-video--sm', false)
+        ->assertDontSee(__('landings.shared.video_placeholder', [], 'nl'))
+        ->assertDontSee('Bekijk demo', false)
+        ->assertDontSee('langdurig contract', false);
+
+    $this->get(route('checkmate', ['locale' => 'fr']))
+        ->assertOk()
+        ->assertSee(__('landings.checkmate.title', [], 'fr'))
+        ->assertSee('video/checkmate.mp4', false);
+});
+
+it('linkt de gele post-it op de welcome-pagina naar de checkmate-landing', function () {
+    $this->get(route('welcome', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee('wp-welcome-feature-board', false)
+        ->assertSee('href="'.route('checkmate').'"', false);
+});
+
 it('toont taalkeuze bovenaan een sectorlanding', function () {
     $this->get(route('government'))
         ->assertOk()

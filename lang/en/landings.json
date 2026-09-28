@@ -746,5 +746,110 @@
             "why": "Laptop showing the WinProx overview of requests.",
             "close": "Two colleagues look at WinProx together on a tablet."
         }
+    },
+    "checkmate": {
+        "nav_label": "Checkmate (CIAO)",
+        "meta_title": "WinProx Checkmate | On-site presence for the RSZ (CIAO)",
+        "social": {
+            "og_title": "WinProx Checkmate | On-site presence for the RSZ",
+            "og_description": "Clock in, GPS customer visit and automatic CIAO reporting to the RSZ — €5 per active worker per month, no app needed."
+        },
+        "eyebrow": "RSZ · Check In and Out at Work",
+        "title": "Presence at the customer site, reported correctly to the RSZ.",
+        "lead": "WinProx Checkmate is for crews working at customer sites. The worker clocks in, starts the customer visit on location and Checkmate reports the presence to Check In and Out at Work (CIAO). Cleaning now; construction follows with the official RSZ scope.",
+        "flow": "Clock in → customer visit → CIAO handled",
+        "video": {
+            "title": "Checkmate in one minute",
+            "lead": "A personal link or QR, clock in, start the customer visit on site. The GPS check and the CIAO reporting happen automatically."
+        },
+        "problem": {
+            "title": "Proving presence without paperwork",
+            "lead": "If your crews work at customer sites, presence must be recorded and reported correctly. Loose notes, chat groups and filling it in later are not watertight proof.",
+            "questions": [
+                "Who is working at which customer today?",
+                "Is every presence reported correctly to the RSZ?",
+                "Can you prove the crew was really on that site?",
+                "Does a new customer have to be created by the office first?",
+                "Does the owner see live who is working where, without calling?"
+            ]
+        },
+        "steps": {
+            "title": "From clocking in to CIAO in four steps",
+            "items": [
+                {
+                    "title": "Clock in",
+                    "body": "The worker opens their personal Clock Point link and clocks in. After a one-time pairing, the home-screen icon is enough — no app, no login."
+                },
+                {
+                    "title": "Start the customer visit",
+                    "body": "At the customer site the worker taps ‘start working’. The GPS check confirms they are really there — that counts as the CIAO check-in right away."
+                },
+                {
+                    "title": "New customer on the road",
+                    "body": "Enter name and address; the phone sets the pin automatically. If the customer already exists under a slightly different name, a suggestion appears instead of a duplicate."
+                },
+                {
+                    "title": "Break, switch, clock out",
+                    "body": "Breaks and customer switches follow the same flow. Every change becomes a correct CIAO registration — nobody has to remember anything."
+                }
+            ]
+        },
+        "places": {
+            "title": "Cleaning now, construction once the RSZ scope is live",
+            "lead": "Checkmate starts with cleaning and maintenance in immovable property for third parties (Article 30bis). The same pipeline is prepared for works in immovable state — it goes live with the official RSZ specifications.",
+            "items": [
+                "cleaning offices and shared areas",
+                "maintenance and repairs at customer sites",
+                "construction sites — once the RSZ construction scope is live",
+                "jobs for private individuals, where no DDT entry is needed"
+            ],
+            "close": "The worker has nothing to remember: starting and stopping at the customer is the registration."
+        },
+        "roles": {
+            "title": "Made for worker and owner",
+            "items": [
+                {
+                    "title": "For the worker",
+                    "body": "Clock in, start the customer visit, break and clock out on your own phone. No app, no login, no hassle."
+                },
+                {
+                    "title": "For the owner",
+                    "body": "See live who works where, which customer visits took place and which registrations the RSZ confirmed. You manage customers and work addresses yourself."
+                },
+                {
+                    "title": "For your records",
+                    "body": "Presence is recorded correctly per customer, per address and per day — ready for inspection, without reconstructing anything later."
+                }
+            ]
+        },
+        "why": {
+            "title": "Why Checkmate",
+            "items": [
+                "€5 per active worker per month — you choose the number of seats yourself.",
+                "No app install: a personal link or a one-time QR is enough.",
+                "The GPS work visit at the customer site is the proof; clocking in alone is not.",
+                "CIAO activation via your enterprise number (BCE); we confirm and from then on reporting runs automatically.",
+                "Registrations count from activation — anything clocked before that is never sent afterwards.",
+                "No payroll, no Dimona, no duplicate files — just correct presence."
+            ]
+        },
+        "start": {
+            "title": "Getting started with Checkmate",
+            "lead": "Create an account, enter your enterprise number (BCE) and request the CIAO scope. We confirm the link — from then on every registration is sent to the RSZ in real time.",
+            "trial": "Prefer to try first? Request a trial seat via info@winprox.app — 3 seats, 30 days."
+        },
+        "close": {
+            "title": "Ready for correct presence registration?",
+            "lead": "Register your crew correctly with the RSZ, without extra admin. €5 per active worker per month."
+        },
+        "visuals": {
+            "hero": "Cleaner in a WinProx polo checking her smartphone in an office hall.",
+            "problem": "Clock Point on the smartphone: start the customer visit and register presence.",
+            "steps": "Two people at a table with a QR card in the foreground.",
+            "places": "Aerial view of a construction site with cranes and orange crews.",
+            "roles": "Construction worker in an orange vest checking his smartphone on site.",
+            "why": "Laptop with the WinProx overview of presence and customer visits.",
+            "close": "Two colleagues looking at WinProx together on a tablet."
+        }
     }
 }

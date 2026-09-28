@@ -746,5 +746,110 @@
             "why": "Laptop met het WinProx-overzicht van aanvragen.",
             "close": "Twee collega's bekijken WinProx samen op een tablet."
         }
+    },
+    "checkmate": {
+        "nav_label": "Checkmate (CIAO)",
+        "meta_title": "WinProx Checkmate | RSZ-aanwezigheid op locatie (CIAO)",
+        "social": {
+            "og_title": "WinProx Checkmate | RSZ-aanwezigheid op locatie",
+            "og_description": "Inklokken, GPS-klantbezoek en automatische CIAO-doorgifte naar de RSZ — €5 per actieve uitvoerder per maand, zonder app."
+        },
+        "eyebrow": "RSZ · Check In and Out at Work",
+        "title": "Aanwezigheid op de klantlocatie, correct doorgegeven aan de RSZ.",
+        "lead": "WinProx Checkmate is voor ploegen die bij de klant werken. De uitvoerder klokt in, start het klantbezoek op locatie en Checkmate stuurt de aanwezigheid door naar Check In and Out at Work (CIAO). Schoonmaak nu; bouw volgt met de officiële RSZ-scope.",
+        "flow": "Inklokken → klantbezoek → CIAO geregeld",
+        "video": {
+            "title": "Checkmate in één minuut",
+            "lead": "Persoonlijke link of QR, inklokken, klantbezoek starten op locatie. De GPS-check en de CIAO-doorgifte gebeuren vanzelf."
+        },
+        "problem": {
+            "title": "Aanwezigheid bewijzen, zonder papierwerk",
+            "lead": "Wie met ploegen bij klanten werkt, moet aanwezigheid correct registreren én doorgeven. Losse briefjes, app-groepen en nadien invullen leveren geen waterdicht bewijs.",
+            "questions": [
+                "Wie is er vandaag bij welke klant aan het werk?",
+                "Is elke aanwezigheid correct doorgegeven aan de RSZ?",
+                "Kan je bewijzen dat de ploeg echt op die locatie was?",
+                "Moet een nieuwe klant eerst via het kantoor aangemaakt worden?",
+                "Ziet de baas live wie waar werkt, zonder te bellen?"
+            ]
+        },
+        "steps": {
+            "title": "Van inklokken tot CIAO, in vier stappen",
+            "items": [
+                {
+                    "title": "Inklokken",
+                    "body": "De uitvoerder opent zijn persoonlijke Clock Point-link en klokt in. Na een eenmalige koppeling volstaat het icoon op het startscherm — geen app, geen login."
+                },
+                {
+                    "title": "Klantbezoek starten",
+                    "body": "Op de klantlocatie tikt de uitvoerder op ‘beginnen werken’. De GPS-check bevestigt dat hij er echt is — dat geldt meteen als CIAO IN."
+                },
+                {
+                    "title": "Nieuwe klant onderweg",
+                    "body": "Naam en adres ingeven; de gsm zet de pin automatisch. Staat de klant er al onder een lichtjes andere naam, dan volgt een suggestie in plaats van een duplicaat."
+                },
+                {
+                    "title": "Pauze, wissel, uitklokken",
+                    "body": "Pauzes en klantwissels lopen in dezelfde flow. Elke wijziging wordt een correcte CIAO-registratie, zonder dat iemand het moet onthouden."
+                }
+            ]
+        },
+        "places": {
+            "title": "Schoonmaak nu, bouw zodra de RSZ-scope live is",
+            "lead": "Checkmate start met schoonmaak en onderhoud in onroerende staat voor derden (30bis). Dezelfde pijplijn is voorbereid voor werken in onroerende staat — die gaat live met de officiële RSZ-specificaties.",
+            "items": [
+                "schoonmaak van kantoren en gemeenschappelijke delen",
+                "onderhoud en herstellingen bij klanten",
+                "werven en bouwplaatsen — zodra de RSZ-bouwscope live is",
+                "opdrachten bij particulieren, waar geen DDT-vermelding nodig is"
+            ],
+            "close": "De uitvoerder hoeft niets te onthouden: beginnen en stoppen bij de klant ís de registratie."
+        },
+        "roles": {
+            "title": "Gemaakt voor uitvoerder én zaakvoerder",
+            "items": [
+                {
+                    "title": "Voor de uitvoerder",
+                    "body": "Inklokken, klantbezoek starten, pauze en uitklokken op je eigen gsm. Geen app, geen login, geen gedoe."
+                },
+                {
+                    "title": "Voor de zaakvoerder",
+                    "body": "Zie live wie waar werkt, welke klantbezoeken liepen en welke registraties de RSZ bevestigde. Klanten en werkadressen beheer je zelf."
+                },
+                {
+                    "title": "Voor je dossier",
+                    "body": "Aanwezigheid staat correct vast per klant, per adres en per dag — klaar voor controle, zonder nadien alles te reconstrueren."
+                }
+            ]
+        },
+        "why": {
+            "title": "Waarom Checkmate",
+            "items": [
+                "€5 per actieve uitvoerder per maand — je kiest zelf het aantal seats.",
+                "Geen app-installatie: een persoonlijke link of eenmalige QR volstaat.",
+                "Het GPS-werkbezoek op de klantlocatie is het bewijs; inklokken alleen is dat niet.",
+                "CIAO-activering via je ondernemingsnummer (BCE); wij bevestigen en vanaf dan loopt de doorgifte automatisch.",
+                "Registraties gelden vanaf activering — wat ervoor werd geklokt, wordt niet achteraf verzonden.",
+                "Geen payroll, geen Dimona, geen dubbele dossiers — alleen correcte aanwezigheid."
+            ]
+        },
+        "start": {
+            "title": "Starten met Checkmate",
+            "lead": "Maak een account, vul je ondernemingsnummer (BCE) in en vraag de CIAO-scope aan. Wij bevestigen de koppeling — vanaf dan wordt elke registratie realtime naar de RSZ gestuurd.",
+            "trial": "Liever eerst proberen? Vraag een proefplaats aan via info@winprox.app — 3 seats, 30 dagen."
+        },
+        "close": {
+            "title": "Klaar voor correcte aanwezigheid?",
+            "lead": "Registreer je ploeg correct bij de RSZ, zonder extra administratie. €5 per actieve uitvoerder per maand."
+        },
+        "visuals": {
+            "hero": "Schoonmaakmedewerker met WinProx-polo bekijkt haar smartphone in een kantoorhal.",
+            "problem": "Clock Point op de smartphone: klantbezoek starten en aanwezigheid registreren.",
+            "steps": "Twee mensen aan een tafel met een QR-codekaart op de voorgrond.",
+            "places": "Luchtbeeld van een bouwplaats met kranen en ploegen in oranje.",
+            "roles": "Bouwvakker in oranje hesje bekijkt zijn smartphone op de werf.",
+            "why": "Laptop met het WinProx-overzicht van aanwezigheid en klantbezoeken.",
+            "close": "Twee collega's bekijken WinProx samen op een tablet."
+        }
     }
 }

@@ -746,5 +746,110 @@
             "why": "Ordinateur portable avec l’aperçu WinProx des demandes.",
             "close": "Deux collègues consultent WinProx ensemble sur une tablette."
         }
+    },
+    "checkmate": {
+        "nav_label": "Checkmate (CIAO)",
+        "meta_title": "WinProx Checkmate | Présence sur site déclarée à l'ONSS (CIAO)",
+        "social": {
+            "og_title": "WinProx Checkmate | Présence sur site déclarée à l'ONSS",
+            "og_description": "Pointage, visite client GPS et transmission CIAO automatique à l'ONSS — 5 € par ouvrier actif par mois, sans application."
+        },
+        "eyebrow": "ONSS · Check In and Out at Work",
+        "title": "La présence chez le client, transmise correctement à l'ONSS.",
+        "lead": "WinProx Checkmate est fait pour les équipes qui travaillent chez le client. L'ouvrier pointe, démarre la visite client sur place et Checkmate transmet la présence à Check In and Out at Work (CIAO). Nettoyage aujourd'hui ; la construction suivra avec le périmètre ONSS officiel.",
+        "flow": "Pointer → visite client → CIAO réglé",
+        "video": {
+            "title": "Checkmate en une minute",
+            "lead": "Un lien personnel ou un QR, pointer, démarrer la visite client sur place. Le contrôle GPS et la transmission CIAO se font tout seuls."
+        },
+        "problem": {
+            "title": "Prouver la présence sans paperasse",
+            "lead": "Qui fait travailler des équipes chez des clients doit enregistrer et transmettre la présence correctement. Bouts de papier, groupes de chat et encodage après coup ne font pas de preuve étanche.",
+            "questions": [
+                "Qui travaille chez quel client aujourd'hui ?",
+                "Chaque présence est-elle correctement transmise à l'ONSS ?",
+                "Pouvez-vous prouver que l'équipe était vraiment sur ce site ?",
+                "Un nouveau client doit-il d'abord être créé par le bureau ?",
+                "Le patron voit-il en direct qui travaille où, sans téléphoner ?"
+            ]
+        },
+        "steps": {
+            "title": "Du pointage au CIAO en quatre étapes",
+            "items": [
+                {
+                    "title": "Pointer",
+                    "body": "L'ouvrier ouvre son lien Clock Point personnel et pointe. Après un premier appairage, l'icône sur l'écran d'accueil suffit — pas d'application, pas de login."
+                },
+                {
+                    "title": "Démarrer la visite client",
+                    "body": "Chez le client, l'ouvrier touche « commencer à travailler ». Le contrôle GPS confirme qu'il y est vraiment — cela vaut immédiatement comme IN CIAO."
+                },
+                {
+                    "title": "Nouveau client en route",
+                    "body": "Encodez nom et adresse ; le téléphone place le repère automatiquement. Si le client existe déjà sous un nom légèrement différent, une suggestion apparaît au lieu d'un doublon."
+                },
+                {
+                    "title": "Pause, changement, dépointage",
+                    "body": "Pauses et changements de client suivent le même flux. Chaque changement devient une registration CIAO correcte — personne ne doit y penser."
+                }
+            ]
+        },
+        "places": {
+            "title": "Nettoyage aujourd'hui, construction dès que le périmètre ONSS est en ligne",
+            "lead": "Checkmate démarre avec le nettoyage et l'entretien en état immobilier pour des tiers (30bis). Le même pipeline est prêt pour les travaux en état immobilier — il passe en production avec les spécifications ONSS officielles.",
+            "items": [
+                "nettoyage de bureaux et de parties communes",
+                "entretien et réparations chez les clients",
+                "chantiers — dès que le périmètre construction de l'ONSS est en ligne",
+                "missions chez des particuliers, où aucune mention DDT n'est requise"
+            ],
+            "close": "L'ouvrier n'a rien à retenir : commencer et arrêter chez le client, c'est la registration."
+        },
+        "roles": {
+            "title": "Pensé pour l'ouvrier et le patron",
+            "items": [
+                {
+                    "title": "Pour l'ouvrier",
+                    "body": "Pointer, démarrer la visite client, pause et dépointage sur son propre gsm. Pas d'application, pas de login, pas de tracas."
+                },
+                {
+                    "title": "Pour le patron",
+                    "body": "Voyez en direct qui travaille où, quelles visites clients ont eu lieu et quelles registrations l'ONSS a confirmées. Clients et adresses de chantier, vous les gérez vous-même."
+                },
+                {
+                    "title": "Pour votre dossier",
+                    "body": "La présence est correctement consignée par client, par adresse et par jour — prête pour un contrôle, sans tout reconstruire après coup."
+                }
+            ]
+        },
+        "why": {
+            "title": "Pourquoi Checkmate",
+            "items": [
+                "5 € par ouvrier actif par mois — vous choisissez vous-même le nombre de sièges.",
+                "Aucune application à installer : un lien personnel ou un QR unique suffit.",
+                "La visite de travail GPS chez le client fait la preuve ; le seul pointage ne suffit pas.",
+                "Activation CIAO via votre numéro d'entreprise (BCE) ; nous confirmons et la transmission tourne ensuite automatiquement.",
+                "Les registrations valent à partir de l'activation — ce qui a été pointé avant n'est jamais envoyé après coup.",
+                "Pas de payroll, pas de Dimona, pas de dossiers en double — juste une présence correcte."
+            ]
+        },
+        "start": {
+            "title": "Démarrer avec Checkmate",
+            "lead": "Créez un compte, encodez votre numéro d'entreprise (BCE) et demandez le périmètre CIAO. Nous confirmons la liaison — à partir de là, chaque registration part en temps réel vers l'ONSS.",
+            "trial": "Vous préférez d'abord tester ? Demandez une place d'essai via info@winprox.app — 3 sièges, 30 jours."
+        },
+        "close": {
+            "title": "Prêt pour une présence correcte ?",
+            "lead": "Déclarez votre équipe correctement à l'ONSS, sans administration supplémentaire. 5 € par ouvrier actif par mois."
+        },
+        "visuals": {
+            "hero": "Agente de nettoyage en polo WinProx consultant son smartphone dans un hall de bureaux.",
+            "problem": "Clock Point sur le smartphone : démarrer la visite client et enregistrer la présence.",
+            "steps": "Deux personnes à une table avec une carte QR au premier plan.",
+            "places": "Vue aérienne d'un chantier avec grues et équipes en orange.",
+            "roles": "Ouvrier en gilet orange consultant son smartphone sur le chantier.",
+            "why": "Ordinateur portable avec l'aperçu WinProx des présences et visites clients.",
+            "close": "Deux collègues regardent WinProx ensemble sur une tablette."
+        }
     }
 }

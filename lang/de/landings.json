@@ -746,5 +746,110 @@
             "why": "Laptop mit der WinProx-Übersicht der Anfragen.",
             "close": "Zwei Kollegen schauen gemeinsam auf einem Tablet in WinProx."
         }
+    },
+    "checkmate": {
+        "nav_label": "Checkmate (CIAO)",
+        "meta_title": "WinProx Checkmate | Anwesenheit vor Ort an die LSS melden (CIAO)",
+        "social": {
+            "og_title": "WinProx Checkmate | Anwesenheit vor Ort an die LSS melden",
+            "og_description": "Einstechen, GPS-Kundenbesuch und automatische CIAO-Meldung an die LSS — 5 € pro aktivem Mitarbeiter pro Monat, ohne App."
+        },
+        "eyebrow": "LSS · Check In and Out at Work",
+        "title": "Anwesenheit beim Kunden, korrekt an die LSS gemeldet.",
+        "lead": "WinProx Checkmate ist für Teams, die beim Kunden arbeiten. Der Mitarbeiter sticht ein, startet den Kundenbesuch vor Ort und Checkmate meldet die Anwesenheit an Check In and Out at Work (CIAO). Reinigung jetzt; Bau folgt mit dem offiziellen LSS-Scope.",
+        "flow": "Einstechen → Kundenbesuch → CIAO geregelt",
+        "video": {
+            "title": "Checkmate in einer Minute",
+            "lead": "Persönlicher Link oder QR, einstechen, Kundenbesuch vor Ort starten. GPS-Prüfung und CIAO-Meldung laufen von selbst."
+        },
+        "problem": {
+            "title": "Anwesenheit beweisen, ohne Papierkram",
+            "lead": "Wer Teams bei Kunden arbeiten lässt, muss Anwesenheit korrekt erfassen und melden. Lose Zettel, Chatgruppen und nachträgliches Eintragen sind kein wasserdichter Beweis.",
+            "questions": [
+                "Wer arbeitet heute bei welchem Kunden?",
+                "Wird jede Anwesenheit korrekt an die LSS gemeldet?",
+                "Können Sie beweisen, dass das Team wirklich vor Ort war?",
+                "Muss ein neuer Kunde erst vom Büro angelegt werden?",
+                "Sieht der Chef live, wer wo arbeitet, ohne anzurufen?"
+            ]
+        },
+        "steps": {
+            "title": "Vom Einstechen zur CIAO in vier Schritten",
+            "items": [
+                {
+                    "title": "Einstechen",
+                    "body": "Der Mitarbeiter öffnet seinen persönlichen Clock-Point-Link und sticht ein. Nach einmaliger Kopplung genügt das Symbol auf dem Startbildschirm — keine App, kein Login."
+                },
+                {
+                    "title": "Kundenbesuch starten",
+                    "body": "Beim Kunden tippt der Mitarbeiter auf »Arbeit beginnen«. Der GPS-Check bestätigt, dass er wirklich da ist — das gilt sofort als CIAO IN."
+                },
+                {
+                    "title": "Neuer Kunde unterwegs",
+                    "body": "Name und Adresse eingeben; das Telefon setzt den Pin automatisch. Existiert der Kunde schon unter einem leicht anderen Namen, erscheint ein Vorschlag statt eines Duplikats."
+                },
+                {
+                    "title": "Pause, Wechsel, Ausstechen",
+                    "body": "Pausen und Kundenwechsel laufen im selben Fluss. Jede Änderung wird eine korrekte CIAO-Registrierung — niemand muss etwas im Kopf behalten."
+                }
+            ]
+        },
+        "places": {
+            "title": "Reinigung jetzt, Bau sobald der LSS-Scope live ist",
+            "lead": "Checkmate startet mit Reinigung und Instandhaltung in unbeweglichem Zustand für Dritte (30bis). Dieselbe Pipeline ist für Bauarbeiten vorbereitet — sie geht mit den offiziellen LSS-Spezifikationen live.",
+            "items": [
+                "Reinigung von Büros und Gemeinschaftsflächen",
+                "Wartung und Reparaturen bei Kunden",
+                "Baustellen — sobald der LSS-Bau-Scope live ist",
+                "Aufträge bei Privatpersonen, wo kein DDT-Eintrag nötig ist"
+            ],
+            "close": "Der Mitarbeiter muss sich nichts merken: Starten und Stoppen beim Kunden ist die Registrierung."
+        },
+        "roles": {
+            "title": "Gemacht für Mitarbeiter und Chef",
+            "items": [
+                {
+                    "title": "Für den Mitarbeiter",
+                    "body": "Einstechen, Kundenbesuch starten, Pause und Ausstechen auf dem eigenen Handy. Keine App, kein Login, kein Aufwand."
+                },
+                {
+                    "title": "Für den Chef",
+                    "body": "Sehen Sie live, wer wo arbeitet, welche Kundenbesuche liefen und welche Registrierungen die LSS bestätigte. Kunden und Arbeitsadressen verwalten Sie selbst."
+                },
+                {
+                    "title": "Für Ihre Akte",
+                    "body": "Anwesenheit ist korrekt pro Kunde, pro Adresse und pro Tag festgehalten — bereit für Kontrollen, ohne später alles zu rekonstruieren."
+                }
+            ]
+        },
+        "why": {
+            "title": "Warum Checkmate",
+            "items": [
+                "5 € pro aktivem Mitarbeiter pro Monat — Sie wählen die Zahl der Seats selbst.",
+                "Keine App-Installation: ein persönlicher Link oder einmaliger QR genügt.",
+                "Der GPS-Arbeitsbesuch beim Kunden ist der Beweis; Einstechen allein ist es nicht.",
+                "CIAO-Aktivierung über Ihre Unternehmensnummer (BCE); wir bestätigen und danach läuft die Meldung automatisch.",
+                "Registrierungen gelten ab Aktivierung — was vorher gestochen wurde, wird nie nachträglich gesendet.",
+                "Keine Payroll, kein Dimona, keine doppelten Akten — nur korrekte Anwesenheit."
+            ]
+        },
+        "start": {
+            "title": "Mit Checkmate starten",
+            "lead": "Konto anlegen, Unternehmensnummer (BCE) eintragen und den CIAO-Scope anfragen. Wir bestätigen die Verknüpfung — ab dann geht jede Registrierung in Echtzeit an die LSS.",
+            "trial": "Lieber erst testen? Fragen Sie einen Probesitz über info@winprox.app an — 3 Seats, 30 Tage."
+        },
+        "close": {
+            "title": "Bereit für korrekte Anwesenheit?",
+            "lead": "Melden Sie Ihr Team korrekt bei der LSS, ohne zusätzliche Administration. 5 € pro aktivem Mitarbeiter pro Monat."
+        },
+        "visuals": {
+            "hero": "Reinigungskraft im WinProx-Polo schaut auf ihr Smartphone in einer Bürohalle.",
+            "problem": "Clock Point auf dem Smartphone: Kundenbesuch starten und Anwesenheit registrieren.",
+            "steps": "Zwei Personen an einem Tisch mit einer QR-Karte im Vordergrund.",
+            "places": "Luftbild einer Baustelle mit Kränen und orangefarbenen Teams.",
+            "roles": "Bauarbeiter in orangefarbener Weste schaut auf sein Smartphone auf der Baustelle.",
+            "why": "Laptop mit der WinProx-Übersicht von Anwesenheit und Kundenbesuchen.",
+            "close": "Zwei Kollegen schauen WinProx gemeinsam auf einem Tablet an."
+        }
     }
 }

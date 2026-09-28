@@ -22,6 +22,7 @@ final class MarketingSeo
             'government',
             'realestate',
             'work-on-location',
+            'checkmate',
             'pricing',
             'contact.index',
             'faq.public',

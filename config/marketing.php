@@ -16,6 +16,7 @@ return [
         'government',
         'realestate',
         'work-on-location',
+        'checkmate',
     ],
 
     /*
