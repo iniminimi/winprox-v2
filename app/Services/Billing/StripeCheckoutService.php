@@ -115,14 +115,12 @@ class StripeCheckoutService
         ];
 
         // Stripe Tax: btw-berekening + btw-nummer-veld (VIES) in Checkout.
-        // Adres verplicht (bepaalt belastingland) en opgeslagen op de Customer
-        // voor de verlengingsfacturen.
+        // Adres verplicht (bepaalt belastingland). Bij subscription-mode slaat
+        // Checkout adres/naam sowieso op de nieuwe Customer op.
         if (config('stripe.automatic_tax')) {
             $payload['automatic_tax[enabled]'] = 'true';
             $payload['tax_id_collection[enabled]'] = 'true';
             $payload['billing_address_collection'] = 'required';
-            $payload['customer_update[address]'] = 'auto';
-            $payload['customer_update[name]'] = 'auto';
         }
 
         // Per-seat plannen (Checkmate): quantity = aantal licenties; klant kan
@@ -144,6 +142,13 @@ class StripeCheckoutService
         ) {
             $payload['customer'] = $tenant->stripe_customer_id;
             unset($payload['customer_email']);
+
+            // Alleen toegestaan mét customer: bewaar het Checkout-adres op de
+            // bestaande Customer (verlengingsfacturen taxen dan consistent).
+            if (config('stripe.automatic_tax')) {
+                $payload['customer_update[address]'] = 'auto';
+                $payload['customer_update[name]'] = 'auto';
+            }
         }
 
         return $payload;

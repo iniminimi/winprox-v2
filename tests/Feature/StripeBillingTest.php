@@ -193,7 +193,7 @@ class StripeBillingTest extends TestCase
         ]);
 
         $tenant = Tenant::factory()->create();
-        $admin = User::factory()->admin()->for($tenant)->create();
+        $admin = User::factory()->admin()->for($tenant)->create(['email' => 'admin@example.com']);
 
         Http::fake([
             'api.stripe.com/v1/checkout/sessions' => Http::response([
@@ -206,13 +206,48 @@ class StripeBillingTest extends TestCase
 
         $this->assertSame('https://checkout.stripe.com/c/pay/cs_tax', $result['url']);
 
+        // Nieuwe klant (geen stripe_customer_id): customer_update mag NIET
+        // meegestuurd worden — Stripe weigert dat.
         Http::assertSent(function ($request) {
             $data = $request->data();
 
             return ($data['automatic_tax[enabled]'] ?? null) === 'true'
                 && ($data['tax_id_collection[enabled]'] ?? null) === 'true'
                 && ($data['billing_address_collection'] ?? null) === 'required'
-                && ($data['customer_update[address]'] ?? null) === 'auto';
+                && ! array_key_exists('customer_update[address]', $data)
+                && ($data['customer_email'] ?? null) === 'admin@example.com';
+        });
+    }
+
+    public function test_checkout_sends_customer_update_for_stored_customer_with_tax(): void
+    {
+        config([
+            'stripe.enabled' => true,
+            'stripe.offer_checkout' => true,
+            'stripe.secret' => 'sk_test',
+            'stripe.automatic_tax' => true,
+            'stripe.price_ids.winprox_5' => 'price_5',
+        ]);
+
+        $tenant = Tenant::factory()->create(['stripe_customer_id' => 'cus_known']);
+        $admin = User::factory()->admin()->for($tenant)->create();
+
+        Http::fake([
+            'api.stripe.com/v1/checkout/sessions' => Http::response([
+                'id' => 'cs_tax2',
+                'url' => 'https://checkout.stripe.com/c/pay/cs_tax2',
+            ], 200),
+        ]);
+
+        app(StripeCheckoutService::class)->createCheckoutSession($admin, $tenant, 'winprox_5');
+
+        Http::assertSent(function ($request) {
+            $data = $request->data();
+
+            return ($data['customer'] ?? null) === 'cus_known'
+                && ! array_key_exists('customer_email', $data)
+                && ($data['customer_update[address]'] ?? null) === 'auto'
+                && ($data['customer_update[name]'] ?? null) === 'auto';
         });
     }
 
