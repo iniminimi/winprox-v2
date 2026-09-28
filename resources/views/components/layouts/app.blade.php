@@ -179,8 +179,9 @@
                             </a>
                         @endforeach
                     @elseif ($checkmateNav)
-                        {{-- Checkmate-whitelist (docs/CHECKMATE.md §5): Klanten, Uitvoerders,
-                             Time (aanwezigheid/uren/CIAO/clock points), Instellingen, Abonnement. --}}
+                        {{-- Checkmate-whitelist (docs/CHECKMATE.md §5): Klanten, Mensen
+                             (backoffice/teams/uitvoerders zoals andere plannen), Time
+                             (aanwezigheid/uren/CIAO/clock points), Instellingen, Abonnement. --}}
                         <hr class="wp-nav-divider" role="presentation" aria-hidden="true">
 
                         <a href="{{ route('customers.index') }}"
@@ -189,12 +190,39 @@
                             <x-wp-icon name="team" class="wp-nav-icon" />
                             <span>{{ __('customers.title') }}</span>
                         </a>
-                        <a href="{{ route('team.index') }}"
-                           class="wp-nav-link {{ request()->routeIs(['team.*', 'workers.*']) ? 'is-active' : '' }}"
-                           @click="nav = false">
-                            <x-wp-icon name="team" class="wp-nav-icon" />
-                            <span>{{ __('common.nav.workers') }}</span>
-                        </a>
+
+                        @php
+                            $cmPeopleGroupActive = request()->routeIs('team.index') || request()->routeIs('workers.index');
+                            $cmPeopleSection = request()->routeIs('team.index') ? (string) request()->query('section', '') : '';
+                            $cmBackofficeNavActive = request()->routeIs('team.index') && $cmPeopleSection === 'backoffice';
+                            $cmTeamsNavActive = request()->routeIs('team.index') && $cmPeopleSection !== 'backoffice';
+                            $cmWorkersNavActive = request()->routeIs('workers.index');
+                        @endphp
+                        <details class="wp-sidebar-accordion__group" @if($cmPeopleGroupActive) open @endif>
+                            <summary class="wp-nav-link {{ $cmPeopleGroupActive ? 'is-active' : '' }}">
+                                <x-wp-icon name="team" class="wp-nav-icon" />
+                                <span>{{ __('common.nav.people') }}</span>
+                            </summary>
+                            <div class="wp-sidebar-accordion__panel">
+                                @can('create', App\Models\User::class)
+                                    <a href="{{ route('team.index', ['section' => 'backoffice']) }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ $cmBackofficeNavActive ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <span>{{ __('common.nav.backoffice') }}</span>
+                                    </a>
+                                @endcan
+                                <a href="{{ route('team.index', ['section' => 'teams']) }}"
+                                   class="wp-nav-link wp-nav-link--sub {{ $cmTeamsNavActive ? 'is-active' : '' }}"
+                                   @click="nav = false">
+                                    <span>{{ __('team.nav.teams') }}</span>
+                                </a>
+                                <a href="{{ route('workers.index') }}"
+                                   class="wp-nav-link wp-nav-link--sub {{ $cmWorkersNavActive ? 'is-active' : '' }}"
+                                   @click="nav = false">
+                                    <span>{{ __('common.nav.workers') }}</span>
+                                </a>
+                            </div>
+                        </details>
 
                         @if ($showTimeNav)
                             <details class="wp-sidebar-accordion__group" @if(request()->routeIs('time.*')) open @endif>
