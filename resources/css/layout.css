@@ -108,12 +108,15 @@
 }
 
 .wp-sidebar-header-logo--checkmate {
-    padding: 0.7rem 1rem;
+    padding: 0.55rem 0.8rem;
     margin: 0.25rem 0;
 }
 
+/* De PNG-artwork loopt door tot de randen — géén radius op de img,
+   anders snijdt die in het artwork (witte img in witte pil = onzichtbaar). */
 .wp-sidebar-header-logo--checkmate img {
     max-height: 2.9rem;
+    border-radius: 0;
 }
 
 .wp-card.wp-onboarding-card {
