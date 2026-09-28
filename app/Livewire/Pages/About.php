@@ -30,6 +30,7 @@ class About extends Component
     private function relatedLinks(): array
     {
         return [
+            ['label' => __('about.links.checkmate'), 'url' => route('work-on-location')],
             ['label' => __('about.links.facility'), 'url' => route('features.facility')],
             ['label' => __('about.links.time'), 'url' => route('features.time')],
             ['label' => __('about.links.esg'), 'url' => route('features.esg')],

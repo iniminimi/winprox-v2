@@ -2,14 +2,14 @@
     "meta_title": "Informazioni su WinProx | Facility via QR",
     "social": {
         "og_title": "Informazioni su WinProx | Facility via QR",
-        "og_description": "WinProx è una piattaforma facility via QR: segnalazioni, compiti, timbratrice Time (inclusa) con visite GPS, ESG e IoT Connect. Anche per squadre di pulizie e cantiere in sede — nel browser, senza app."
+        "og_description": "WinProx è una piattaforma facility basata su QR: segnalazioni, attività, timbratrice Time (inclusa) con visite GPS, ESG e IoT Connect. WinProx Checkmate è la variante ridotta per pulizie ed edilizia: solo timbratura in loco con CIAO — nel browser, senza app."
     },
     "eyebrow": "Informazioni su WinProx",
     "title": "Che cos'è WinProx?",
-    "lead": "WinProx è una piattaforma facility via QR per segnalazioni e compiti. Anche per squadre di pulizie e cantiere che lavorano dal cliente o in cantiere. Time (timbratrice, visite GPS, CIAO opzionale) è incluso; ESG e IoT Connect sono opzionali (Corporate) — nel browser, senza app nativa.",
+    "lead": "WinProx è una piattaforma facility basata su QR per segnalazioni e attività. WinProx Checkmate è la variante ridotta per squadre di pulizia ed edilizia: timbratura di entrata e uscita in loco con verifica GPS (100 m) e registrazione CIAO presso l’RSZ — 5 € per operaio al mese, senza segnalazioni o attività.",
     "what": {
         "title": "Idea centrale",
-        "body": "Ogni sede o unità fisica ha un portale QR digitale. Cittadini e collaboratori segnalano i difetti con il QR dell'unità. Gli esecutori si identificano con il QR Clock Point, avviano e interrompono il lavoro sul pin della sede o dell'unità (visite GPS) e chiudono i compiti in loco. La gestione segue tutto in un workspace: segnalazione → compiti → chiusura. Un'unica app Facility — niente edizione separata per pulizie o edilizia."
+        "body": "Ogni sede o unità fisica ha un portale QR digitale. Cittadini e collaboratori segnalano i difetti con il QR dell'unità. Gli esecutori si identificano con il QR Clock Point, avviano e interrompono il lavoro sul pin della sede o dell'unità (visite GPS) e chiudono i compiti in loco. La gestione segue tutto in un workspace: segnalazione → compiti → chiusura. Un’unica app Facility come base; WinProx Checkmate è il prodotto derivato e ridotto per la sola presenza presso il cliente."
     },
     "audience": {
         "title": "Per chi",
@@ -20,7 +20,8 @@
             "Organizzazioni con più sedi, unità o asset",
             "Team che registrano tempo/presenza via Clock Point",
             "Organizzazioni che vogliono misure ESG sugli stessi portali",
-            "Organizzazioni che vogliono collegare sensori e gateway alle stesse segnalazioni e compiti (IoT Connect)"
+            "Organizzazioni che vogliono collegare sensori e gateway alle stesse segnalazioni e compiti (IoT Connect)",
+            "Organizzazioni che vogliono solo registrare la presenza presso il cliente — WinProx Checkmate (5 € per operaio/mese)"
         ]
     },
     "sectors": {
@@ -41,6 +42,10 @@
             {
                 "name": "Facility",
                 "text": "Segnalazioni, moderazione sui portali pubblici, compiti per team, calendario e briefing."
+            },
+            {
+                "name": "Checkmate",
+                "text": "Piano derivato per il lavoro in campo (pulizie ed edilizia): gli operai timbrano tramite il QR Clock Point, avviano e chiudono le visite clienti all’indirizzo di lavoro con verifica GPS entro 100 m, fanno pause e consultano Le mie ore — niente segnalazioni, attività o turni. Gestione tramite un back office ridotto (clienti, operai, ore); attivazione CIAO in self-service. 5 € per operaio al mese."
             },
             {
                 "name": "Time",
@@ -86,6 +91,7 @@
         "api": "API e Webhooks",
         "faq": "FAQ",
         "pricing": "Prezzi",
-        "iot": "IoT Connect"
+        "iot": "IoT Connect",
+        "checkmate": "Checkmate"
     }
 }
