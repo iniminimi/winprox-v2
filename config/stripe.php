@@ -8,6 +8,9 @@ return [
     'offer_checkout' => (bool) env('STRIPE_OFFER_CHECKOUT', true),
     'success_path' => env('STRIPE_SUCCESS_PATH', '/subscription'),
     'cancel_path' => env('STRIPE_CANCEL_PATH', '/subscription'),
+    // Vereist Stripe Tax actief in het dashboard (+ BE-registratie,
+    // product-tax-code, tax_behavior op Prices) — anders faalt Checkout.
+    'automatic_tax' => (bool) env('STRIPE_AUTOMATIC_TAX', false),
     'price_ids' => [
         'winprox_5'        => env('STRIPE_PRICE_WINPROX_5'),
         'winprox_5_time'   => env('STRIPE_PRICE_WINPROX_5_TIME'),

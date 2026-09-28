@@ -182,6 +182,70 @@ class StripeBillingTest extends TestCase
         });
     }
 
+    public function test_checkout_sends_automatic_tax_params_when_enabled(): void
+    {
+        config([
+            'stripe.enabled' => true,
+            'stripe.offer_checkout' => true,
+            'stripe.secret' => 'sk_test',
+            'stripe.automatic_tax' => true,
+            'stripe.price_ids.winprox_5' => 'price_5',
+        ]);
+
+        $tenant = Tenant::factory()->create();
+        $admin = User::factory()->admin()->for($tenant)->create();
+
+        Http::fake([
+            'api.stripe.com/v1/checkout/sessions' => Http::response([
+                'id' => 'cs_tax',
+                'url' => 'https://checkout.stripe.com/c/pay/cs_tax',
+            ], 200),
+        ]);
+
+        $result = app(StripeCheckoutService::class)->createCheckoutSession($admin, $tenant, 'winprox_5');
+
+        $this->assertSame('https://checkout.stripe.com/c/pay/cs_tax', $result['url']);
+
+        Http::assertSent(function ($request) {
+            $data = $request->data();
+
+            return ($data['automatic_tax[enabled]'] ?? null) === 'true'
+                && ($data['tax_id_collection[enabled]'] ?? null) === 'true'
+                && ($data['billing_address_collection'] ?? null) === 'required'
+                && ($data['customer_update[address]'] ?? null) === 'auto';
+        });
+    }
+
+    public function test_checkout_omits_automatic_tax_params_by_default(): void
+    {
+        config([
+            'stripe.enabled' => true,
+            'stripe.offer_checkout' => true,
+            'stripe.secret' => 'sk_test',
+            'stripe.automatic_tax' => false,
+            'stripe.price_ids.winprox_5' => 'price_5',
+        ]);
+
+        $tenant = Tenant::factory()->create();
+        $admin = User::factory()->admin()->for($tenant)->create();
+
+        Http::fake([
+            'api.stripe.com/v1/checkout/sessions' => Http::response([
+                'id' => 'cs_notax',
+                'url' => 'https://checkout.stripe.com/c/pay/cs_notax',
+            ], 200),
+        ]);
+
+        app(StripeCheckoutService::class)->createCheckoutSession($admin, $tenant, 'winprox_5');
+
+        Http::assertSent(function ($request) {
+            $data = $request->data();
+
+            return ! array_key_exists('automatic_tax[enabled]', $data)
+                && ($data['billing_address_collection'] ?? null) === 'auto';
+        });
+    }
+
     public function test_checkmate_fulfill_sets_billing_seats_qty_from_line_items(): void
     {
         config([
