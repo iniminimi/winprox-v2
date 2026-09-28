@@ -2,6 +2,7 @@
 
 use App\Models\Tenant;
 use App\Models\User;
+use App\Support\Manual\ManualScreenshotAssets;
 use App\Support\Tenancy;
 
 afterEach(fn () => Tenancy::forget());
@@ -99,4 +100,17 @@ it('ondersteunt de screenshot-toggle op de checkmate-handleiding', function () {
     $this->get('/manual/checkmate?screenshots=0')
         ->assertOk()
         ->assertSee('wp-manual-root--no-screenshots');
+});
+
+it('mapt checkmate-hoofdstukken op checkmate-screenshotbestanden', function () {
+    expect(ManualScreenshotAssets::filenameForChapter('checkmate.dashboard'))
+        ->toBe('checkmate-dashboard.png')
+        ->and(ManualScreenshotAssets::filenameForChapter('checkmate.portal.hours'))
+        ->toBe('checkmate-portal-hours.png')
+        ->and(ManualScreenshotAssets::isPortalChapter('checkmate.portal.visit'))
+        ->toBeTrue()
+        ->and(ManualScreenshotAssets::isPortalChapter('checkmate.dashboard'))
+        ->toBeFalse()
+        ->and(ManualScreenshotAssets::isPortalChapter('portal.team'))
+        ->toBeTrue();
 });

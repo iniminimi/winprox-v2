@@ -48,7 +48,8 @@ final class ManualScreenshotAssets
 
     public static function isPortalChapter(string $chapterKey): bool
     {
-        return str_starts_with($chapterKey, 'portal.');
+        return str_starts_with($chapterKey, 'portal.')
+            || str_starts_with($chapterKey, 'checkmate.portal.');
     }
 
     /**

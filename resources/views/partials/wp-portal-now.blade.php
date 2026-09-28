@@ -39,6 +39,7 @@
             @click="open = !open"
             :aria-expanded="open"
             aria-label="{{ __('time.portal.now.toggle') }}"
+            data-manual-capture-trigger="portal-now-toggle"
         >
             <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
             <strong class="wp-portal-now__name">{{ $workerName }}</strong>
@@ -47,7 +48,7 @@
             @if ($primary[0] === 'endBreak')
                 <button type="button" class="btn btn--primary btn--sm" wire:click="endBreak">{{ $primary[1] }}</button>
             @else
-                <button type="button" class="btn btn--primary btn--sm" @click="withGps('{{ $primary[0] }}')">{{ $primary[1] }}</button>
+                <button type="button" class="btn btn--primary btn--sm" @click="withGps('{{ $primary[0] }}')" data-manual-capture-trigger="portal-primary-action">{{ $primary[1] }}</button>
             @endif
         @endif
     </div>
@@ -105,7 +106,7 @@
 
         <div class="wp-portal-now__more-actions">
             @if ($openShift !== null && ($canPunch ?? false))
-                <button type="button" class="btn btn--surface btn--sm" @click="withGps('clockOut')">
+                <button type="button" class="btn btn--surface btn--sm" @click="withGps('clockOut')" data-manual-capture-trigger="portal-clock-out">
                     {{ __('time.portal.clock.out') }}
                 </button>
             @endif

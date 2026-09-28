@@ -18,9 +18,11 @@ final class PrepareManualCaptureTenantAction
         private CancelOpenExpiredTrialPurgesForTenantAction $cancelExpiredTrialPurges,
     ) {}
 
-    public function handle(?string $email = null): Tenant
+    public function handle(?string $email = null, bool $checkmate = false): Tenant
     {
-        $email = trim((string) ($email ?? config('manual_capture.email')));
+        $email = trim((string) ($email ?? ($checkmate
+            ? config('manual_capture.checkmate_email')
+            : config('manual_capture.email'))));
 
         if ($email === '') {
             throw new InvalidArgumentException('manual_capture_not_configured');
@@ -46,7 +48,12 @@ final class PrepareManualCaptureTenantAction
             $updates['is_active'] = true;
         }
 
-        if (! $tenant->hasEsgModule()) {
+        if ($checkmate) {
+            // Checkmate-screenshots tonen de Checkmate-UI (whitelist-nav, GPS-bezoeken).
+            if (! $tenant->checkmateMode()) {
+                $updates['checkmate_mode'] = true;
+            }
+        } elseif (! $tenant->hasEsgModule()) {
             $updates['has_esg_module'] = true;
         }
 
@@ -59,7 +66,7 @@ final class PrepareManualCaptureTenantAction
             $updates['time_gps_visits'] = true;
         }
 
-        if (! $tenant->hasIotModule()) {
+        if (! $checkmate && ! $tenant->hasIotModule()) {
             $updates['has_iot_module'] = true;
         }
 

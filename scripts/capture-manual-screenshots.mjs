@@ -21,6 +21,9 @@ const baseUrl = (process.env.MANUAL_CAPTURE_BASE_URL ?? 'http://127.0.0.1').repl
 const hostHeader = process.env.MANUAL_CAPTURE_HOST ?? '';
 const email = process.env.MANUAL_CAPTURE_EMAIL ?? '';
 const password = process.env.MANUAL_CAPTURE_PASSWORD ?? '';
+const checkmateEmail = process.env.MANUAL_CAPTURE_CHECKMATE_EMAIL ?? '';
+const checkmatePassword = process.env.MANUAL_CAPTURE_CHECKMATE_PASSWORD ?? '';
+const onlyPrefix = process.env.MANUAL_CAPTURE_ONLY ?? '';
 const outputDir = process.env.MANUAL_CAPTURE_OUTPUT_DIR ?? join(process.cwd(), 'public/images/manual');
 const configPath = process.env.MANUAL_CAPTURE_CONFIG_PATH ?? join(__dirname, 'manual-capture.config.json');
 const locales = process.env.MANUAL_CAPTURE_LOCALES
@@ -33,6 +36,12 @@ const pathVars = {
     task_id: process.env.MANUAL_CAPTURE_TASK_ID ?? '',
     unit_token: process.env.MANUAL_CAPTURE_UNIT_QR_TOKEN ?? '',
     clock_point_token: process.env.MANUAL_CAPTURE_CLOCK_POINT_TOKEN ?? '',
+    checkmate_clock_point_token: process.env.MANUAL_CAPTURE_CHECKMATE_CLOCK_POINT_TOKEN ?? '',
+};
+
+const geo = {
+    latitude: parseFloat(process.env.MANUAL_CAPTURE_GEO_LATITUDE ?? '51.0289'),
+    longitude: parseFloat(process.env.MANUAL_CAPTURE_GEO_LONGITUDE ?? '4.4803'),
 };
 
 if (!email || !password) {
@@ -40,8 +49,25 @@ if (!email || !password) {
     process.exit(1);
 }
 
-/** @type {{ targets: Array<{ id: string, path: string, selector: string, viewport?: { width: number, height: number }, auth?: boolean, prepareClick?: string, workerSignIn?: boolean }> }} */
+/** @type {{ targets: Array<{ id: string, path: string, selector: string, viewport?: { width: number, height: number }, auth?: boolean, checkmate?: boolean, prepareClick?: string, steps?: Array<string|{click:string, waitFor?:string}>, cleanup?: Array<string|{click:string}>, geolocation?: boolean, workerSignIn?: boolean, optional?: boolean }> }} */
 const config = JSON.parse(readFileSync(configPath, 'utf8'));
+
+if (onlyPrefix !== '') {
+    config.targets = config.targets.filter((t) => t.id.startsWith(onlyPrefix));
+    if (config.targets.length === 0) {
+        console.error(`MANUAL_CAPTURE_ONLY='${onlyPrefix}' matcht geen targets.`);
+        process.exit(1);
+    }
+    console.log(`Filter: ${config.targets.length} target(s) met prefix '${onlyPrefix}'.`);
+}
+
+const checkmateTargetsPresent = config.targets.some((t) => t.checkmate === true);
+const checkmateAdminNeeded = config.targets.some((t) => t.checkmate === true && t.auth !== false);
+const checkmateAvailable = checkmateEmail !== '' && checkmatePassword !== '';
+
+if (checkmateTargetsPresent && ! checkmateAvailable) {
+    console.warn('Checkmate-targets aanwezig maar MANUAL_CAPTURE_CHECKMATE_EMAIL/_PASSWORD ontbreken — die shots worden overgeslagen.');
+}
 
 const browser = await chromium.launch(resolveChromiumLaunchOptions());
 const contextOptions = hostHeader !== '' ? { extraHTTPHeaders: { Host: hostHeader } } : {};
@@ -49,16 +75,29 @@ const contextOptions = hostHeader !== '' ? { extraHTTPHeaders: { Host: hostHeade
 try {
     const adminContext = await browser.newContext(contextOptions);
     const adminPage = await adminContext.newPage();
-    await login(adminPage);
+    await login(adminPage, email, password);
 
     const publicContext = await browser.newContext(contextOptions);
     const publicPage = await publicContext.newPage();
+
+    let checkmateContext = null;
+    let checkmatePage = null;
+    const authPages = [adminPage];
+
+    if (checkmateAdminNeeded && checkmateAvailable) {
+        checkmateContext = await browser.newContext(contextOptions);
+        checkmatePage = await checkmateContext.newPage();
+        await login(checkmatePage, checkmateEmail, checkmatePassword);
+        authPages.push(checkmatePage);
+    }
 
     let captured = 0;
     let skipped = 0;
 
     for (const locale of locales) {
-        await switchAuthenticatedLocale(adminPage, locale);
+        for (const authPage of authPages) {
+            await switchAuthenticatedLocale(authPage, locale);
+        }
 
         for (const target of config.targets) {
             const resolvedPath = resolvePath(target.path);
@@ -69,12 +108,30 @@ try {
             }
 
             const useAuth = target.auth !== false;
-            const page = useAuth ? adminPage : publicPage;
-            const context = useAuth ? adminContext : publicContext;
+            const useCheckmate = target.checkmate === true;
+
+            if (useCheckmate && ! checkmateAvailable) {
+                skipped++;
+                continue;
+            }
+
+            if (useCheckmate && useAuth && checkmatePage === null) {
+                console.warn(`Skip ${target.id}: checkmate-login niet beschikbaar.`);
+                skipped++;
+                continue;
+            }
+
+            const page = useCheckmate && useAuth ? checkmatePage : (useAuth ? adminPage : publicPage);
+            const context = useCheckmate && useAuth ? checkmateContext : (useAuth ? adminContext : publicContext);
 
             if (! useAuth) {
                 // Unit-portaal zet winprox_device_token; team-identify vereist schone browserstaat.
                 await resetPublicPortalSession(context);
+            }
+
+            if (target.geolocation === true) {
+                await context.grantPermissions(['geolocation'], { origin: baseUrl });
+                await context.setGeolocation(geo);
             }
 
             const viewport = target.viewport ?? { width: 1280, height: 800 };
@@ -107,9 +164,9 @@ try {
                     await page.goto(captureUrl(signInPath, locale, useAuth), { waitUntil: 'networkidle' });
                 }
 
-                const signedIn = await workerSignIn(page);
+                const signedIn = await workerSignIn(page, useCheckmate);
                 if (!signedIn) {
-                    console.warn(`Skip ${target.id}: worker sign-in failed (check MANUAL_CAPTURE_WORKER_* and team token)`);
+                    console.warn(`Skip ${target.id}: worker sign-in failed (check MANUAL_CAPTURE_${useCheckmate ? 'CHECKMATE_' : ''}WORKER_* and team token)`);
                     skipped++;
                     continue;
                 }
@@ -137,10 +194,26 @@ try {
                 }
             }
 
+            if (Array.isArray(target.steps)) {
+                const stepsOk = await runSteps(page, target.steps);
+                if (! stepsOk) {
+                    console.warn(`Skip ${target.id}: een step faalde.`);
+                    if (Array.isArray(target.cleanup)) {
+                        await runSteps(page, target.cleanup, { ignoreErrors: true });
+                    }
+                    skipped++;
+                    continue;
+                }
+            }
+
             const locator = page.locator(target.selector).first();
             try {
                 await locator.waitFor({ state: 'visible', timeout: 30_000 });
             } catch (error) {
+                if (Array.isArray(target.cleanup)) {
+                    await runSteps(page, target.cleanup, { ignoreErrors: true });
+                }
+
                 if (target.optional === true) {
                     console.warn(
                         `Skip ${target.id}: selector not visible (${target.selector}). `
@@ -168,6 +241,11 @@ try {
             await locator.screenshot({ path: outputPath });
             console.log(`Captured ${locale}/${target.id}.png`);
             captured++;
+
+            if (Array.isArray(target.cleanup)) {
+                // Best-effort: cleanup-falen mag de capture niet breken.
+                await runSteps(page, target.cleanup, { ignoreErrors: true });
+            }
         }
     }
 
@@ -305,9 +383,45 @@ function captureUrl(path, locale, useAuth) {
 }
 
 /**
+ * Sequentiële UI-stappen vóór (steps) of na (cleanup) de screenshot.
+ * Elke stap is een CSS-selector of { click, waitFor }.
+ *
  * @param {import('playwright').Page} page
+ * @param {Array<string|{click: string, waitFor?: string}>} steps
+ * @param {{ ignoreErrors?: boolean }} [options]
  */
-async function login(page) {
+async function runSteps(page, steps, options = {}) {
+    for (const step of steps) {
+        const click = typeof step === 'string' ? step : step.click;
+        const waitFor = typeof step === 'string' ? null : (step.waitFor ?? null);
+
+        try {
+            const trigger = page.locator(click).first();
+            await trigger.waitFor({ state: 'visible', timeout: 15_000 });
+            await trigger.click();
+            await page.waitForLoadState('networkidle');
+
+            if (waitFor !== null) {
+                await page.locator(waitFor).first().waitFor({ state: 'visible', timeout: 15_000 });
+            }
+        } catch {
+            if (options.ignoreErrors === true) {
+                continue;
+            }
+
+            return false;
+        }
+    }
+
+    return true;
+}
+
+/**
+ * @param {import('playwright').Page} page
+ * @param {string} loginEmail
+ * @param {string} loginPassword
+ */
+async function login(page, loginEmail, loginPassword) {
     const loginUrl = `${baseUrl}/login`;
     await page.goto(loginUrl, { waitUntil: 'networkidle' });
 
@@ -320,8 +434,8 @@ async function login(page) {
         process.exit(1);
     }
 
-    await emailInput.fill(email);
-    await page.locator('#password').fill(password);
+    await emailInput.fill(loginEmail);
+    await page.locator('#password').fill(loginPassword);
     await page.locator('form.wp-auth-form button[type="submit"]').click();
     await page.waitForURL((url) => !url.pathname.endsWith('/login'), { timeout: 30_000 });
     await page.waitForLoadState('networkidle');
@@ -329,11 +443,13 @@ async function login(page) {
 
 /**
  * @param {import('playwright').Page} page
+ * @param {boolean} checkmate
  */
-async function workerSignIn(page) {
-    const first = process.env.MANUAL_CAPTURE_WORKER_FIRST_NAME ?? '';
-    const last = process.env.MANUAL_CAPTURE_WORKER_LAST_NAME ?? '';
-    const icon = process.env.MANUAL_CAPTURE_WORKER_ICON ?? '';
+async function workerSignIn(page, checkmate = false) {
+    const prefix = checkmate ? 'MANUAL_CAPTURE_CHECKMATE_WORKER' : 'MANUAL_CAPTURE_WORKER';
+    const first = process.env[`${prefix}_FIRST_NAME`] ?? '';
+    const last = process.env[`${prefix}_LAST_NAME`] ?? '';
+    const icon = process.env[`${prefix}_ICON`] ?? '';
 
     if (!first || !last || !icon) {
         return false;
@@ -347,33 +463,47 @@ async function workerSignIn(page) {
         return true;
     }
 
+    const iconTiles = page.locator('button.wp-icon-tile');
     const firstInput = page.locator('#first_name');
     if (await firstInput.isVisible().catch(() => false)) {
         await firstInput.fill(first);
         await page.locator('#last_name').fill(last);
 
-        const submit = page.locator('[data-manual-capture="portal-team-identify"] button[type="submit"]')
-            .or(page.locator('form[wire\\:submit="identifyWorker"] button[type="submit"]'));
+        const submit = page.locator('[data-manual-capture="portal-team-identify"] button[type="submit"]');
         await submit.first().click();
-        await page.locator(`button.wp-icon-tile[wire\\:click*="sign_in_icon_slug"][wire\\:click*="'${icon}'"]`)
-            .first()
-            .waitFor({ state: 'visible', timeout: 15_000 });
+        await iconTiles.first().waitFor({ state: 'visible', timeout: 20_000 });
     }
 
-    const iconButton = page.locator(
-        `button.wp-icon-tile[wire\\:click*="sign_in_icon_slug"][wire\\:click*="'${icon}'"]`,
-    ).first();
+    // CSS-attribuutselectors op wire:click (colon) werpen SyntaxError in
+    // headless Chromium — match de icoon-slug rechtstreeks op het attribuut.
+    const iconIndex = await iconTiles.evaluateAll(
+        (els, wanted) => els.findIndex(
+            (el) => (el.getAttribute('wire:click') ?? '').includes(`'${wanted}'`),
+        ),
+        icon,
+    );
 
-    if (await iconButton.isVisible().catch(() => false)) {
-        await iconButton.click();
-        await page.locator('button[wire\\:click="signInWithIcon"]:not([disabled])')
-            .waitFor({ state: 'visible', timeout: 10_000 });
+    if (iconIndex >= 0) {
+        await iconTiles.nth(iconIndex).click();
     }
 
-    const confirm = page.locator('button[wire\\:click="signInWithIcon"]:not([disabled])');
-    if (await confirm.isVisible().catch(() => false)) {
-        await confirm.click();
+    try {
+        await page.waitForFunction(
+            () => [...document.querySelectorAll('button')].some(
+                (b) => (b.getAttribute('wire:click') ?? '') === 'signInWithIcon' && ! b.disabled,
+            ),
+            undefined,
+            { timeout: 15_000 },
+        );
+    } catch {
+        // Confirm-knop nooit enabled (icoon niet gevonden / geen verify-scherm).
     }
+
+    await page.evaluate(() => {
+        [...document.querySelectorAll('button')]
+            .find((b) => (b.getAttribute('wire:click') ?? '') === 'signInWithIcon' && ! b.disabled)
+            ?.click();
+    });
 
     try {
         await signedInMarker.waitFor({ state: 'visible', timeout: 20_000 });

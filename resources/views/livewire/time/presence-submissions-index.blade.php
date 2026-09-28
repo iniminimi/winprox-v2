@@ -1,4 +1,4 @@
-<div class="wp-stack" wire:poll.visible.30s>
+<div class="wp-stack" wire:poll.visible.30s data-manual-capture="time-ciao">
     <x-wp-page-head-title
         :title="__('time.ciao.title')"
         help-page="time.ciao"

@@ -29,7 +29,25 @@ class PrepareManualCaptureCommand extends Command
         $clockPointToken = $prepare->clockPointQrToken($tenant);
         if (is_string($clockPointToken) && $clockPointToken !== '') {
             $this->line("Clock Point QR-token: {$clockPointToken}");
-            $this->line('Zet in .env: MANUAL_CAPTURE_CLOCK_POINT_TOKEN='.$clockPointToken);
+            $this->line('MANUAL_CAPTURE_CLOCK_POINT_TOKEN='.$clockPointToken);
+        }
+
+        $checkmateEmail = trim((string) config('manual_capture.checkmate_email'));
+        if ($checkmateEmail !== '') {
+            try {
+                $checkmateTenant = $prepare->handle($checkmateEmail, checkmate: true);
+            } catch (InvalidArgumentException $e) {
+                $this->warn("Checkmate-capture overgeslagen: {$e->getMessage()}");
+
+                return self::SUCCESS;
+            }
+
+            $this->info("Checkmate-tenant #{$checkmateTenant->id} ({$checkmateTenant->name}): checkmate_mode + Time + GPS-bezoeken klaar.");
+
+            $checkmateClockPointToken = $prepare->clockPointQrToken($checkmateTenant);
+            if (is_string($checkmateClockPointToken) && $checkmateClockPointToken !== '') {
+                $this->line('MANUAL_CAPTURE_CHECKMATE_CLOCK_POINT_TOKEN='.$checkmateClockPointToken);
+            }
         }
 
         return self::SUCCESS;

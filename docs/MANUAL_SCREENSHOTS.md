@@ -61,6 +61,23 @@ MANUAL_CAPTURE_WORKER_ICON=star    # field_icon_slug van die worker
   ]);
   ```
 
+**Checkmate-shots (`checkmate-*` targets):**
+
+- Tweede login op een **checkmate-tenant** (`checkmate_mode = 1`): `MANUAL_CAPTURE_CHECKMATE_EMAIL`
+  + `MANUAL_CAPTURE_CHECKMATE_PASSWORD`. `winprox:prepare-manual-capture` bereidt die tenant mee
+  voor (checkmate_mode, Time, GPS-bezoeken, Clock Point) en print `MANUAL_CAPTURE_CHECKMATE_CLOCK_POINT_TOKEN`.
+  Zonder deze vars worden alle `checkmate: true` targets overgeslagen (waarschuwing, geen fout).
+- **Portaal:** `MANUAL_CAPTURE_CHECKMATE_WORKER_FIRST_NAME/LAST_NAME/ICON` — een uitvoerder van de
+  checkmate-tenant mét `field_icon_slug` (icoon-signin), bereikbaar via het checkmate Clock Point-token.
+- **`checkmate-portal-visit`:** mocked geolocation (`MANUAL_CAPTURE_GEO_LATITUDE/LONGITUDE`, default
+  `51.0289 / 4.4803`) moet binnen de GPS-straal van een **klant-werkadres met pin** van die tenant
+  vallen, anders is er geen "klant in de buurt". De target klokt in, zoekt nabije klanten en klokt
+  daarna weer uit (cleanup) — zodat de `checkmate-portal-day`-shot van de volgende locale weer
+  "niet ingeklokt" toont.
+- Subset draaien (bv. alleen Checkmate): `MANUAL_CAPTURE_ONLY=checkmate-` in `.env` of als env-var.
+  Met ONLY-filter wist `capture-manual-local.ps1` **niets** en doet hij geen commit/push —
+  PNG's controleren en zelf committen.
+
 ### 2. Script draaien
 
 ```powershell

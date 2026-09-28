@@ -70,9 +70,13 @@ if (-not $env:MANUAL_CAPTURE_EMAIL -or -not $env:MANUAL_CAPTURE_PASSWORD) {
     Write-Error 'Zet MANUAL_CAPTURE_EMAIL en MANUAL_CAPTURE_PASSWORD in .env'
 }
 
-Write-Host 'Stap 1/5: oude handleiding-PNGs verwijderen...'
-$removedCount = Clear-ManualCapturePngs -BasePath $manualRoot -LocaleDirs $locales
-Write-Host "  $removedCount bestaande PNG(s) verwijderd."
+if ($env:MANUAL_CAPTURE_ONLY) {
+    Write-Host "Stap 1/5: MANUAL_CAPTURE_ONLY='$($env:MANUAL_CAPTURE_ONLY)' — subset-run: bestaande PNGs blijven staan, geen commit/push."
+} else {
+    Write-Host 'Stap 1/5: oude handleiding-PNGs verwijderen...'
+    $removedCount = Clear-ManualCapturePngs -BasePath $manualRoot -LocaleDirs $locales
+    Write-Host "  $removedCount bestaande PNG(s) verwijderd."
+}
 
 Write-Host 'Stap 2/5: Playwright Chromium controleren...'
 $capturePkg = Join-Path $root 'scripts\capture-pkg'
@@ -88,9 +92,9 @@ $prepareOutput = php artisan winprox:prepare-manual-capture 2>&1 | Out-String
 if ($LASTEXITCODE -ne 0) {
     throw 'Voorbereiden capture-tenant mislukt (MANUAL_CAPTURE_EMAIL in .env?).'
 }
-if ($prepareOutput -match 'MANUAL_CAPTURE_CLOCK_POINT_TOKEN=(\S+)') {
-    $env:MANUAL_CAPTURE_CLOCK_POINT_TOKEN = $Matches[1]
-    Write-Host "  Clock Point token uit prepare: $($Matches[1])"
+[regex]::Matches($prepareOutput, '(MANUAL_CAPTURE_[A-Z0-9_]+)=(\S+)') | ForEach-Object {
+    Set-Item -Path "env:$($_.Groups[1].Value)" -Value $_.Groups[2].Value
+    Write-Host "  $($_.Groups[1].Value) uit prepare: $($_.Groups[2].Value)"
 }
 
 Write-Host "Stap 3/5: capture tegen $($env:MANUAL_CAPTURE_BASE_URL) ..."
@@ -105,6 +109,11 @@ if ($pngCount -eq 0) {
 }
 
 Write-Host "  $pngCount nieuwe PNG(s) aangemaakt."
+
+if ($env:MANUAL_CAPTURE_ONLY) {
+    Write-Host 'Subset-run klaar — commit/push zelf doen na controle van de PNGs.'
+    exit 0
+}
 
 Write-Host 'Stap 4/5: git commit...'
 $pathsToAdd = $locales | ForEach-Object { "public/images/manual/$_" }

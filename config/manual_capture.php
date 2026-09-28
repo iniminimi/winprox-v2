@@ -25,5 +25,14 @@ return [
     'worker_first_name' => env('MANUAL_CAPTURE_WORKER_FIRST_NAME'),
     'worker_last_name' => env('MANUAL_CAPTURE_WORKER_LAST_NAME'),
     'worker_icon' => env('MANUAL_CAPTURE_WORKER_ICON'),
+
+    'checkmate_email' => env('MANUAL_CAPTURE_CHECKMATE_EMAIL'),
+    'checkmate_password' => env('MANUAL_CAPTURE_CHECKMATE_PASSWORD'),
+    'checkmate_clock_point_token' => env('MANUAL_CAPTURE_CHECKMATE_CLOCK_POINT_TOKEN'),
+    'checkmate_worker_first_name' => env('MANUAL_CAPTURE_CHECKMATE_WORKER_FIRST_NAME'),
+    'checkmate_worker_last_name' => env('MANUAL_CAPTURE_CHECKMATE_WORKER_LAST_NAME'),
+    'checkmate_worker_icon' => env('MANUAL_CAPTURE_CHECKMATE_WORKER_ICON'),
+    'geo_latitude' => env('MANUAL_CAPTURE_GEO_LATITUDE'),
+    'geo_longitude' => env('MANUAL_CAPTURE_GEO_LONGITUDE'),
     'chrome_low_resource' => filter_var(env('MANUAL_CAPTURE_CHROME_LOW_RESOURCE', false), FILTER_VALIDATE_BOOL),
 ];

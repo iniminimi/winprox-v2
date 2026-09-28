@@ -639,7 +639,7 @@
                                 @unless ($openShift->openVisit)
                                     <div x-show="!hasStartWorkInRange()" x-cloak>
                                         @if ($nearbyClockUnits === [])
-                                            <button type="button" class="btn btn--surface btn--block" @click="withFreshGps('refreshNearbyClockUnits')">
+                                            <button type="button" class="btn btn--surface btn--block" @click="withFreshGps('refreshNearbyClockUnits')" data-manual-capture-trigger="portal-find-nearby">
                                                 {{ ($checkmateMode ?? false) ? __('time.portal.clock.find_nearby_customer') : __('time.portal.clock.find_nearby') }}
                                             </button>
                                             @if ($nearbyClockUnitsLoaded)
@@ -805,7 +805,7 @@
                                     <span class="wp-tile-sub">{{ __('time.portal.schedule.tile_sub') }}</span>
                                 </button>
                             @endunless
-                            <button type="button" class="wp-tile" wire:click="openHours">
+                            <button type="button" class="wp-tile" wire:click="openHours" data-manual-capture-trigger="portal-open-hours">
                                 <span class="wp-cluster">
                                     <x-wp-icon name="clock" class="wp-tile-icon" />
                                     <span class="wp-tile-title">{{ __('time.portal.hours.tile') }}</span>

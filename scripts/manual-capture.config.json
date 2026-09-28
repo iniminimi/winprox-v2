@@ -314,6 +314,126 @@
             "auth": false,
             "workerSignIn": true,
             "prepareClick": "[data-manual-capture-trigger=\"unit-open-tasks\"]"
+        },
+        {
+            "id": "checkmate-dashboard",
+            "path": "/dashboard",
+            "selector": "[data-manual-capture=\"dashboard\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true,
+            "checkmate": true
+        },
+        {
+            "id": "checkmate-customers",
+            "path": "/klanten",
+            "selector": "[data-manual-capture=\"customers-list\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true,
+            "checkmate": true
+        },
+        {
+            "id": "checkmate-workers",
+            "path": "/workers",
+            "selector": "[data-manual-capture=\"workers-index\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true,
+            "checkmate": true
+        },
+        {
+            "id": "checkmate-clock-points",
+            "path": "/time/clock-points",
+            "selector": "[data-manual-capture=\"time-clock-points\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true,
+            "checkmate": true
+        },
+        {
+            "id": "checkmate-presence",
+            "path": "/time/presence",
+            "selector": "[data-manual-capture=\"time-presence\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true,
+            "checkmate": true
+        },
+        {
+            "id": "checkmate-shifts",
+            "path": "/time/shifts",
+            "selector": "[data-manual-capture=\"time-shifts\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true,
+            "checkmate": true
+        },
+        {
+            "id": "checkmate-ciao",
+            "path": "/time/ciao",
+            "selector": "[data-manual-capture=\"time-ciao\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true,
+            "checkmate": true
+        },
+        {
+            "id": "checkmate-settings",
+            "path": "/settings",
+            "selector": "[data-manual-capture=\"settings\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true,
+            "checkmate": true
+        },
+        {
+            "id": "checkmate-subscription",
+            "path": "/subscription",
+            "selector": "[data-manual-capture=\"subscription\"]",
+            "viewport": { "width": 1280, "height": 800 },
+            "auth": true,
+            "checkmate": true
+        },
+        {
+            "id": "checkmate-portal-signin",
+            "path": "/time/{checkmate_clock_point_token}",
+            "selector": "[data-manual-capture=\"portal-team-identify\"]",
+            "viewport": { "width": 390, "height": 844 },
+            "auth": false,
+            "checkmate": true
+        },
+        {
+            "id": "checkmate-portal-day",
+            "path": "/time/{checkmate_clock_point_token}",
+            "selector": "[data-manual-capture=\"portal-team-signed-in\"]",
+            "viewport": { "width": 390, "height": 844 },
+            "auth": false,
+            "checkmate": true,
+            "workerSignIn": true
+        },
+        {
+            "id": "checkmate-portal-visit",
+            "path": "/time/{checkmate_clock_point_token}",
+            "selector": "[data-manual-capture=\"time-today\"]",
+            "viewport": { "width": 390, "height": 844 },
+            "auth": false,
+            "checkmate": true,
+            "workerSignIn": true,
+            "geolocation": true,
+            "optional": true,
+            "steps": [
+                { "click": "[data-manual-capture-trigger=\"portal-primary-action\"]", "waitFor": "[data-manual-capture-trigger=\"portal-find-nearby\"]" },
+                { "click": "[data-manual-capture-trigger=\"portal-find-nearby\"]", "waitFor": "[data-manual-capture=\"time-today\"] .wp-btn--prio-pulse" }
+            ],
+            "cleanup": [
+                "[data-manual-capture-trigger=\"portal-now-toggle\"]",
+                "[data-manual-capture-trigger=\"portal-clock-out\"]"
+            ]
+        },
+        {
+            "id": "checkmate-portal-hours",
+            "path": "/time/{checkmate_clock_point_token}",
+            "selector": "[data-manual-capture=\"portal-team-signed-in\"]",
+            "viewport": { "width": 390, "height": 844 },
+            "auth": false,
+            "checkmate": true,
+            "workerSignIn": true,
+            "steps": [
+                { "click": "[data-manual-capture-trigger=\"portal-open-hours\"]", "waitFor": "nav.wp-pagination" }
+            ]
         }
     ]
 }
