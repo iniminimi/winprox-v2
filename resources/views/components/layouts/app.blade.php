@@ -151,7 +151,11 @@
                 @if($tenantBg) style="--wp-tenant-bg: {{ $tenantBg }};" @endif>
             <div class="wp-sidebar-header">
                 <div class="wp-sidebar-header-logo">
-                    <img src="{{ asset('images/winprox_logo_wide.jpg') }}" alt="WinProx">
+                    @if ($checkmateNav)
+                        <img src="{{ asset('images/landing/work_on_location/winprox_checkmate.png') }}" alt="Checkmate">
+                    @else
+                        <img src="{{ asset('images/winprox_logo_wide.jpg') }}" alt="WinProx">
+                    @endif
                 </div>
             </div>
             <div class="wp-sidebar-body">

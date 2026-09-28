@@ -102,6 +102,28 @@ it('ondersteunt de screenshot-toggle op de checkmate-handleiding', function () {
         ->assertSee('wp-manual-root--no-screenshots');
 });
 
+it('toont het checkmate-logo bovenaan het menu voor checkmate-tenants', function () {
+    $tenant = checkmateManualTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+    $this->actingAs($admin);
+
+    $this->get('/dashboard')
+        ->assertOk()
+        ->assertSee('winprox_checkmate.png')
+        ->assertDontSee('winprox_logo_wide.jpg');
+});
+
+it('toont het winprox-logo bovenaan het menu voor facility-tenants', function () {
+    $tenant = Tenant::factory()->create(['checkmate_mode' => false]);
+    $admin = User::factory()->admin()->for($tenant)->create();
+    $this->actingAs($admin);
+
+    $this->get('/dashboard')
+        ->assertOk()
+        ->assertSee('winprox_logo_wide.jpg')
+        ->assertDontSee('winprox_checkmate.png');
+});
+
 it('mapt checkmate-hoofdstukken op checkmate-screenshotbestanden', function () {
     expect(ManualScreenshotAssets::filenameForChapter('checkmate.dashboard'))
         ->toBe('checkmate-dashboard.png')
