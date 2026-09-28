@@ -108,12 +108,11 @@
 }
 
 .wp-sidebar-header-logo--checkmate {
-    width: 100%;
+    padding: 0.6rem 0.9rem;
 }
 
 .wp-sidebar-header-logo--checkmate img {
-    width: 100%;
-    max-height: none;
+    max-height: 3.5rem;
 }
 
 .wp-card.wp-onboarding-card {
