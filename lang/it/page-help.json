@@ -1847,6 +1847,235 @@
                     "text": "Istruzione opzionale sull'attività. Vuoto = descrizione del giro."
                 }
             ]
+        },
+        "checkmate.dashboard": {
+            "title": "Aiuto — Dashboard",
+            "actions": [
+                {
+                    "label": "Scopo",
+                    "text": "La tua giornata inizia qui: scorciatoie verso un nuovo cliente o operatore, il link Clock Point e le presenze di oggi. Sotto, le ultime visite ai clienti."
+                },
+                {
+                    "label": "KPI",
+                    "text": "Riquadri con chi è presente ora, le visite di oggi, i tuoi seat e il numero di clienti attivi. Ogni riquadro porta alla schermata corrispondente."
+                },
+                {
+                    "label": "Banner CIAO",
+                    "text": "Finché l'invio all'RSZ non è attivo, un banner mostra lo stato della tua richiesta. Le registrazioni partono solo dopo la conferma; le timbrature precedenti non vanno all'RSZ."
+                },
+                {
+                    "label": "Per iniziare",
+                    "text": "Finché non ci sono operatori o clienti, le schede ti guidano verso il primo operatore e il primo cliente."
+                }
+            ]
+        },
+        "checkmate.customers": {
+            "title": "Aiuto — Clienti",
+            "actions": [
+                {
+                    "label": "Scopo",
+                    "text": "I clienti sono le relazioni per cui lavori. Sotto ogni cliente ci sono indirizzi di lavoro con un marker GPS — quel marker decide dove un operatore può avviare una visita."
+                },
+                {
+                    "label": "Aggiungi cliente",
+                    "text": "Crea un cliente con nome ed eventualmente referente, e-mail e telefono. Aggiungi poi uno o più indirizzi di lavoro."
+                },
+                {
+                    "label": "Indirizzo di lavoro",
+                    "text": "Via, numero, CAP, comune e il marker GPS (automatico dall'indirizzo o inserito a mano come latitudine/longitudine). Per lavori con dichiarazione di lavori (30bis) compila anche il riferimento DDT; per i clienti privati può restare vuoto."
+                },
+                {
+                    "label": "Modifica e disattiva",
+                    "text": "Modifica cliente e indirizzo dalla riga. Disattivare conserva lo storico: su un indirizzo inattivo non può partire una nuova visita."
+                }
+            ]
+        },
+        "checkmate.workers": {
+            "title": "Aiuto — Operatori",
+            "actions": [
+                {
+                    "label": "Scopo",
+                    "text": "Gli operatori sono lavoratori sul campo senza login. Si registrano tramite il link o il QR del Clock Point con nome e un'icona personale (o PIN), e usano un solo cellulare fisso."
+                },
+                {
+                    "label": "Aggiungi",
+                    "text": "Aggiungi un operatore con nome e cognome in un team — un team basta per iniziare. Spunta Può timbrare ovunque per i sostituti."
+                },
+                {
+                    "label": "NISS (CIAO)",
+                    "text": "Compila il numero NISS/INSZ quando l'operatore partecipa alla registrazione presenze RSZ. Senza NISS nessun invio è possibile per quell'operatore."
+                },
+                {
+                    "label": "Icona, cellulare e PIN",
+                    "text": "Dispositivo perso, blocco o icona sbagliata: apri Modifica e libera icona, cellulare o PIN. L'operatore si registra di nuovo."
+                },
+                {
+                    "label": "Capo squadra",
+                    "text": "Un operatore con il flag capo squadra può liberare nel portale icone e dispositivi dei colleghi."
+                }
+            ]
+        },
+        "checkmate.clock_points": {
+            "title": "Aiuto — Clock Point",
+            "actions": [
+                {
+                    "label": "Scopo",
+                    "text": "Un Clock Point è il punto di registrazione della tua organizzazione. Il link o il QR porta gli operatori al portale dove timbrano, fanno pausa e registrano le visite ai clienti."
+                },
+                {
+                    "label": "Invia il link",
+                    "text": "Invia per mail il link di registrazione direttamente a un operatore, o stampa il QR per un posto fisso. Chi si è già registrato apre poi il portale dall'icona della schermata home — non serve una nuova scansione."
+                },
+                {
+                    "label": "Più Clock Point",
+                    "text": "Lavori in più posti fissi (magazzino, ufficio)? Crea un Clock Point per posto. Timbrare e spostarsi richiedono una nuova scansione del QR; pause e visite ai clienti no."
+                }
+            ]
+        },
+        "checkmate.presence": {
+            "title": "Aiuto — Presenze",
+            "actions": [
+                {
+                    "label": "Scopo",
+                    "text": "Chi è timbrato ora e dove: per operatore il servizio aperto e la visita al cliente in corso con cliente e indirizzo. Così vedi in diretta chi lavora dove."
+                },
+                {
+                    "label": "Servizi di oggi",
+                    "text": "Tutti i servizi del giorno con orari di entrata e uscita e pause."
+                }
+            ]
+        },
+        "checkmate.shifts": {
+            "title": "Aiuto — Ore",
+            "actions": [
+                {
+                    "label": "Scopo",
+                    "text": "Il registro ore per operatore: servizi timbrati con inizio, fine, pause e le visite ai clienti nel servizio."
+                },
+                {
+                    "label": "Correggere",
+                    "text": "Un amministratore corregge entrata, uscita o pausa con un motivo obbligatorio. Lasciando l'orario di uscita vuoto il servizio si riapre — ad esempio dopo un'uscita sbagliata."
+                },
+                {
+                    "label": "Scarica report",
+                    "text": "Esporta le ore filtrate in CSV o stampale in PDF dalla finestra di stampa."
+                }
+            ]
+        },
+        "checkmate.ciao": {
+            "title": "Aiuto — CIAO (RSZ)",
+            "actions": [
+                {
+                    "label": "Scopo",
+                    "text": "Presenze in tempo reale verso il servizio RSZ Check In and Out at Work: IN all'inizio di una visita al cliente, OUT alla fine e OUT/IN attorno alle pause. Per ogni invio vedi stato, eventuale errore e riferimento RSZ."
+                },
+                {
+                    "label": "Stati",
+                    "text": "In coda (invio in corso), Inviato, Fallito e Saltato. Per Fallito o Saltato puoi reinviare dopo aver corretto NISS, DDT o numero d'impresa."
+                },
+                {
+                    "label": "Requisiti",
+                    "text": "Per gli invii servono il numero d'impresa (BCE) della tua organizzazione e il NISS dell'operatore. Il riferimento DDT è opzionale per indirizzo di lavoro."
+                },
+                {
+                    "label": "Conservazione",
+                    "text": "Gli invii riusciti più vecchi di dodici mesi vengono cancellati automaticamente; la registrazione ufficiale resta all'RSZ."
+                }
+            ]
+        },
+        "checkmate.settings": {
+            "title": "Aiuto — Impostazioni",
+            "actions": [
+                {
+                    "label": "Dati aziendali",
+                    "text": "Nome, indirizzo e logo della tua organizzazione — il logo appare sul portale e nelle mail."
+                },
+                {
+                    "label": "Richiedi CIAO",
+                    "text": "Richiedi la registrazione presenze RSZ con il tuo numero d'impresa (o numero di partita IVA estero). WinProx conferma l'attivazione; da allora visite ai clienti e pause vanno in tempo reale all'RSZ. Le timbrature precedenti all'attivazione non vengono inviate."
+                },
+                {
+                    "label": "Timbratrice",
+                    "text": "Opzionale: richiedere un PIN alla registrazione degli operatori e offrire un link al Clock Point sulla schermata home del cellulare."
+                }
+            ]
+        },
+        "checkmate.subscription": {
+            "title": "Aiuto — Abbonamento",
+            "actions": [
+                {
+                    "label": "Formula",
+                    "text": "Checkmate fattura per operatore attivo al mese. Il numero di seat lo definisci tu; scendere sotto il numero di seat attivi non è possibile — disattiva prima degli operatori."
+                },
+                {
+                    "label": "Cancella dati",
+                    "text": "Gli amministratori possono eliminare l'organizzazione e tutti i dati: prima scarica un export, poi concludi con password e conferma via e-mail."
+                }
+            ]
+        },
+        "checkmate.portal.signin": {
+            "title": "Aiuto — Registrazione unica (operatore)",
+            "actions": [
+                {
+                    "label": "Scopo",
+                    "text": "L'operatore apre una volta il link Clock Point dalla mail o scansiona il QR, sceglie il suo nome e conferma con un'icona personale o un PIN. Quel cellulare resta collegato da quel momento."
+                },
+                {
+                    "label": "Schermata home",
+                    "text": "Poi basta l'icona WinProx sulla schermata home (Android: un tocco; iPhone: Condividi → Aggiungi a Home). Niente app store, niente password."
+                },
+                {
+                    "label": "Altro dispositivo",
+                    "text": "Un altro cellulare viene rifiutato finché un amministratore o un capo squadra libera il dispositivo — così resta un cellulare per operatore."
+                }
+            ]
+        },
+        "checkmate.portal.day": {
+            "title": "Aiuto — Timbratura e pausa (operatore)",
+            "actions": [
+                {
+                    "label": "Timbratura entrata",
+                    "text": "All'inizio della giornata: un tocco su timbra. Il servizio corre finché timbri l'uscita."
+                },
+                {
+                    "label": "Pausa",
+                    "text": "Avvia e ferma le pause dal portale; contano sul registro ore e — con CIAO attivo — vanno all'RSZ come OUT/IN."
+                },
+                {
+                    "label": "Timbratura uscita",
+                    "text": "Timbra l'uscita a fine giornata: chiude il servizio e un'eventuale visita al cliente aperta. Uscire dal portale non è la stessa cosa di timbrare l'uscita."
+                }
+            ]
+        },
+        "checkmate.portal.visit": {
+            "title": "Aiuto — Visita al cliente (operatore)",
+            "actions": [
+                {
+                    "label": "Scopo",
+                    "text": "Una visita al cliente registra il lavoro presso un cliente. Tocca Inizia a lavorare presso il cliente — il tuo cellulare verifica via GPS che sei nel raggio concordato. Fuori dal raggio la visita non parte."
+                },
+                {
+                    "label": "Cambia cliente",
+                    "text": "Dal cliente A al cliente B: la visita da A si ferma e quella da B parte, in una sola azione."
+                },
+                {
+                    "label": "Nuovo cliente in viaggio",
+                    "text": "Il cliente non è in lista? Crealo in viaggio con nome e indirizzo; il marker GPS arriva dal tuo cellulare. Se il nome somiglia a un cliente esistente, ricevi prima un avviso leggero."
+                },
+                {
+                    "label": "Naviga",
+                    "text": "Il pulsante Naviga apre l'indirizzo nella tua app di mappe — non registra nessuna visita."
+                }
+            ]
+        },
+        "checkmate.portal.hours": {
+            "title": "Aiuto — Le mie ore (operatore)",
+            "actions": [
+                {
+                    "label": "Scopo",
+                    "text": "L'operatore vede solo i propri servizi del mese scelto: per giorno la prima entrata, l'ultima uscita, la pausa e il tempo lavorato. Nessuna correzione e niente ore dei colleghi."
+                }
+            ]
         }
     }
 }

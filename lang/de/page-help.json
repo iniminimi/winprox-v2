@@ -1847,6 +1847,235 @@
                     "text": "Optionale Anweisung auf der Aufgabe. Leer = Beschreibung der Runde."
                 }
             ]
+        },
+        "checkmate.dashboard": {
+            "title": "Hilfe — Dashboard",
+            "actions": [
+                {
+                    "label": "Zweck",
+                    "text": "Ihr Tag beginnt hier: Schnellzugriffe auf einen neuen Kunden oder Ausführer, den Clock-Point-Link und die heutige Anwesenheit. Darunter die letzten Kundenbesuche."
+                },
+                {
+                    "label": "KPIs",
+                    "text": "Kacheln mit wer gerade anwesend ist, den heutigen Besuchen, Ihren Seats und der Zahl aktiver Kunden. Jede Kachel verlinkt zum passenden Bildschirm."
+                },
+                {
+                    "label": "CIAO-Banner",
+                    "text": "Solange die LSS-Übermittlung noch nicht aktiv ist, zeigt ein Banner den Stand Ihrer Anfrage. Registrierungen starten erst nach Bestätigung; Stempelungen davor gehen nicht an den LSS."
+                },
+                {
+                    "label": "Loslegen",
+                    "text": "Solange es noch keine Ausführer oder Kunden gibt, führen Karten Sie zum ersten Ausführer und ersten Kunden."
+                }
+            ]
+        },
+        "checkmate.customers": {
+            "title": "Hilfe — Kunden",
+            "actions": [
+                {
+                    "label": "Zweck",
+                    "text": "Kunden sind die Auftraggeber, für die Sie arbeiten. Unter jedem Kunden liegen Einsatzadressen mit einer GPS-Markierung — sie bestimmt, wo ein Ausführer einen Besuch starten kann."
+                },
+                {
+                    "label": "Kunde hinzufügen",
+                    "text": "Legen Sie einen Kunden mit Namen und optional Ansprechpartner, E-Mail und Telefon an. Fügen Sie dann eine oder mehrere Einsatzadressen hinzu."
+                },
+                {
+                    "label": "Einsatzadresse",
+                    "text": "Straße, Nummer, PLZ, Ort und die GPS-Markierung (automatisch aus der Adresse oder manuell als Breiten-/Längengrad). Für Arbeiten unter Werkverzeichnis (30bis) füllen Sie auch die DDT-Referenz aus; bei Privatkunden darf sie leer bleiben."
+                },
+                {
+                    "label": "Bearbeiten und deaktivieren",
+                    "text": "Passen Sie Kunde und Einsatzadresse über die Zeile an. Deaktivieren bewahrt die Historie: an einer inaktiven Adresse kann kein neuer Besuch starten."
+                }
+            ]
+        },
+        "checkmate.workers": {
+            "title": "Hilfe — Ausführer",
+            "actions": [
+                {
+                    "label": "Zweck",
+                    "text": "Ausführer sind Außendienstmitarbeiter ohne Login. Sie melden sich über den Clock-Point-Link oder QR mit Name und persönlichem Symbol (oder PIN) an und nutzen ein festes Handy."
+                },
+                {
+                    "label": "Hinzufügen",
+                    "text": "Fügen Sie einen Ausführer mit Vor- und Nachname in einem Team hinzu — ein Team genügt zum Start. Aktivieren Sie Darf überall einstempeln für Springer."
+                },
+                {
+                    "label": "NISS (CIAO)",
+                    "text": "Tragen Sie die NISS/INSZ-Nummer ein, wenn der Ausführer an der LSS-Anwesenheitsregistrierung teilnimmt. Ohne NISS ist keine Übermittlung für diesen Ausführer möglich."
+                },
+                {
+                    "label": "Symbol, Handy und PIN",
+                    "text": "Bei verlorenem Gerät, Sperre oder falschem Symbol: Bearbeiten öffnen und Symbol, Handy oder PIN freigeben. Der Ausführer meldet sich danach neu an."
+                },
+                {
+                    "label": "Teamleiter",
+                    "text": "Ein Ausführer mit Teamleiter-Flag kann im Portal Symbole und Geräte von Teamkollegen freigeben."
+                }
+            ]
+        },
+        "checkmate.clock_points": {
+            "title": "Hilfe — Clock Points",
+            "actions": [
+                {
+                    "label": "Zweck",
+                    "text": "Ein Clock Point ist der Anmeldepunkt Ihrer Organisation. Link oder QR führt Ausführer zum Portal, wo sie einstempeln, pausieren und Kundenbesuche registrieren."
+                },
+                {
+                    "label": "Link versenden",
+                    "text": "Mailen Sie den Anmeldelink direkt an einen Ausführer oder drucken Sie den QR für einen festen Ort. Wer einmal angemeldet ist, öffnet das Portal danach über das Startbildschirm-Symbol — erneutes Scannen ist nicht nötig."
+                },
+                {
+                    "label": "Mehrere Clock Points",
+                    "text": "Arbeiten Sie an mehreren festen Orten (Lager, Büro)? Legen Sie pro Ort einen Clock Point an. Ein-/Ausstempeln und Wechseln erfordern einen frischen QR-Scan; Pausen und Kundenbesuche nicht."
+                }
+            ]
+        },
+        "checkmate.presence": {
+            "title": "Hilfe — Anwesenheit",
+            "actions": [
+                {
+                    "label": "Zweck",
+                    "text": "Wer ist jetzt eingestempelt und wo: pro Ausführer der offene Dienst und der laufende Kundenbesuch mit Kunde und Adresse. So sehen Sie live, wer wo arbeitet."
+                },
+                {
+                    "label": "Dienste von heute",
+                    "text": "Alle Dienste des Tages mit Ein-/Ausstempelzeiten und Pausen."
+                }
+            ]
+        },
+        "checkmate.shifts": {
+            "title": "Hilfe — Stunden",
+            "actions": [
+                {
+                    "label": "Zweck",
+                    "text": "Der Stundennachweis pro Ausführer: gestempelte Dienste mit Start, Ende, Pausen und den Kundenbesuchen im Dienst."
+                },
+                {
+                    "label": "Korrigieren",
+                    "text": "Ein Administrator korrigiert Ein-/Ausstempelung oder Pause mit obligatorischem Grund. Lassen Sie die Ausstempelzeit leer, öffnet der Dienst wieder — etwa nach einem falschen Ausstempeln."
+                },
+                {
+                    "label": "Bericht herunterladen",
+                    "text": "Exportieren Sie die gefilterten Stunden als CSV oder drucken Sie sie als PDF über den Druckdialog."
+                }
+            ]
+        },
+        "checkmate.ciao": {
+            "title": "Hilfe — CIAO (LSS)",
+            "actions": [
+                {
+                    "label": "Zweck",
+                    "text": "Echtzeit-Anwesenheit an den LSS-Dienst Check In and Out at Work: IN beim Start eines Kundenbesuchs, OUT am Ende und OUT/IN rund um Pausen. Pro Übermittlung sehen Sie Status, eventuellen Fehler und die LSS-Referenz."
+                },
+                {
+                    "label": "Status",
+                    "text": "Warteschlange (wird gesendet), Gesendet, Fehlgeschlagen und Übersprungen. Bei Fehlgeschlagen oder Übersprungen können Sie nach Korrektur von NISS, DDT oder Unternehmensnummer erneut übermitteln."
+                },
+                {
+                    "label": "Voraussetzungen",
+                    "text": "Für Übermittlungen brauchen Sie die Unternehmensnummer (BCE) Ihrer Organisation und die NISS des Ausführers. Die DDT-Referenz ist optional pro Einsatzadresse."
+                },
+                {
+                    "label": "Aufbewahrung",
+                    "text": "Erfolgreiche Übermittlungen älter als zwölf Monate werden automatisch gelöscht; die amtliche Registrierung bleibt beim LSS."
+                }
+            ]
+        },
+        "checkmate.settings": {
+            "title": "Hilfe — Einstellungen",
+            "actions": [
+                {
+                    "label": "Firmendaten",
+                    "text": "Name, Adresse und Logo Ihrer Organisation — das Logo erscheint auf dem Portal und in Mails."
+                },
+                {
+                    "label": "CIAO anfragen",
+                    "text": "Beantragen Sie die LSS-Anwesenheitsregistrierung mit Ihrer Unternehmensnummer (oder ausländischer USt-Nummer). WinProx bestätigt die Aktivierung; ab dann gehen Kundenbesuche und Pausen in Echtzeit an den LSS. Stempelungen vor der Aktivierung werden nicht übermittelt."
+                },
+                {
+                    "label": "Stempeluhr",
+                    "text": "Optional: PIN bei der Anmeldung der Ausführer verlangen und einen Link zum Clock Point auf dem Startbildschirm des Handys anbieten."
+                }
+            ]
+        },
+        "checkmate.subscription": {
+            "title": "Hilfe — Abonnement",
+            "actions": [
+                {
+                    "label": "Formel",
+                    "text": "Checkmate rechnet pro aktivem Ausführer pro Monat ab. Sie legen die Seat-Anzahl selbst fest; unter die Zahl aktiver Seats senken geht nicht — deaktivieren Sie zuerst Ausführer."
+                },
+                {
+                    "label": "Daten löschen",
+                    "text": "Administratoren können die Organisation und alle Daten löschen: erst einen Export herunterladen, dann mit Passwort und E-Mail-Bestätigung abschließen."
+                }
+            ]
+        },
+        "checkmate.portal.signin": {
+            "title": "Hilfe — Einmalige Anmeldung (Ausführer)",
+            "actions": [
+                {
+                    "label": "Zweck",
+                    "text": "Der Ausführer öffnet einmalig den Clock-Point-Link aus der Mail oder scannt den QR, wählt seinen Namen und bestätigt mit persönlichem Symbol oder PIN. Dieses Handy ist ab dann gekoppelt."
+                },
+                {
+                    "label": "Startbildschirm",
+                    "text": "Danach genügt das WinProx-Symbol auf dem Startbildschirm (Android: ein Tipp; iPhone: Teilen → Zum Home-Bildschirm). Kein App-Store, kein Passwort."
+                },
+                {
+                    "label": "Anderes Gerät",
+                    "text": "Ein anderes Handy wird abgelehnt, bis ein Administrator oder Teamleiter das Gerät freigibt — so bleibt ein Handy pro Ausführer."
+                }
+            ]
+        },
+        "checkmate.portal.day": {
+            "title": "Hilfe — Stempeln und Pause (Ausführer)",
+            "actions": [
+                {
+                    "label": "Einstempeln",
+                    "text": "Zu Arbeitsbeginn: ein Tipp auf Einstempeln. Der Dienst läuft bis zum Ausstempeln."
+                },
+                {
+                    "label": "Pause",
+                    "text": "Pausen starten und stoppen Sie im Portal; sie zählen auf dem Stundennachweis und — mit aktivem CIAO — gehen als OUT/IN an den LSS."
+                },
+                {
+                    "label": "Ausstempeln",
+                    "text": "Am Tagesende ausstempeln: das schließt den Dienst und einen eventuell offenen Kundenbesuch. Abmelden vom Portal ist nicht dasselbe wie Ausstempeln."
+                }
+            ]
+        },
+        "checkmate.portal.visit": {
+            "title": "Hilfe — Kundenbesuch (Ausführer)",
+            "actions": [
+                {
+                    "label": "Zweck",
+                    "text": "Ein Kundenbesuch registriert Arbeit bei einem Kunden. Tippen Sie auf Arbeit beginnen beim Kunden — Ihr Handy prüft per GPS, dass Sie im vereinbarten Radius sind. Außerhalb des Radius startet der Besuch nicht."
+                },
+                {
+                    "label": "Kunde wechseln",
+                    "text": "Von Kunde A zu Kunde B: der Besuch bei A stoppt und der bei B startet, in einer Aktion."
+                },
+                {
+                    "label": "Neuer Kunde unterwegs",
+                    "text": "Kunde nicht in der Liste? Legen Sie ihn unterwegs mit Name und Adresse an; die GPS-Markierung kommt von Ihrem Handy. Ähnelt der Name einem bestehenden Kunden, erhalten Sie zuerst eine sanfte Warnung."
+                },
+                {
+                    "label": "Navigieren",
+                    "text": "Die Schaltfläche Navigieren öffnet die Adresse in Ihrer Karten-App — sie registriert keinen Besuch."
+                }
+            ]
+        },
+        "checkmate.portal.hours": {
+            "title": "Hilfe — Meine Stunden (Ausführer)",
+            "actions": [
+                {
+                    "label": "Zweck",
+                    "text": "Der Ausführer sieht nur seine eigenen Dienste des gewählten Monats: pro Tag das erste Einstempeln, das letzte Ausstempeln, Pause und gearbeitete Zeit. Keine Korrektur und keine Stunden von Kollegen."
+                }
+            ]
         }
     }
 }

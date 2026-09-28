@@ -1847,6 +1847,235 @@
                     "text": "Instrucción opcional en la tarea. Vacío = descripción de la ronda."
                 }
             ]
+        },
+        "checkmate.dashboard": {
+            "title": "Ayuda — Panel",
+            "actions": [
+                {
+                    "label": "Objetivo",
+                    "text": "Tu día empieza aquí: accesos directos a un nuevo cliente u operario, el enlace Clock Point y la presencia de hoy. Debajo, las últimas visitas a clientes."
+                },
+                {
+                    "label": "KPI",
+                    "text": "Tarjetas con quién está presente ahora, las visitas de hoy, tus plazas y el número de clientes activos. Cada tarjeta enlaza a la pantalla correspondiente."
+                },
+                {
+                    "label": "Banner CIAO",
+                    "text": "Mientras el envío a la RSZ no esté activo, un banner muestra el estado de tu solicitud. Los registros solo empiezan tras la confirmación; los fichajes anteriores no van a la RSZ."
+                },
+                {
+                    "label": "Primeros pasos",
+                    "text": "Mientras no haya operarios ni clientes, las tarjetas te guían hacia el primer operario y el primer cliente."
+                }
+            ]
+        },
+        "checkmate.customers": {
+            "title": "Ayuda — Clientes",
+            "actions": [
+                {
+                    "label": "Objetivo",
+                    "text": "Los clientes son las relaciones para las que trabajas. Bajo cada cliente hay direcciones de obra con un marcador GPS — ese marcador determina dónde puede empezar una visita el operario."
+                },
+                {
+                    "label": "Añadir cliente",
+                    "text": "Crea un cliente con nombre y opcionalmente persona de contacto, e-mail y teléfono. Añade después una o más direcciones de obra."
+                },
+                {
+                    "label": "Dirección de obra",
+                    "text": "Calle, número, código postal, localidad y el marcador GPS (automático desde la dirección o introducido a mano como latitud/longitud). Para trabajos bajo declaración de obras (30bis) rellena también la referencia DDT; en clientes particulares puede quedar vacía."
+                },
+                {
+                    "label": "Editar y desactivar",
+                    "text": "Ajusta cliente y dirección desde la fila. Desactivar conserva el historial: en una dirección inactiva no puede empezar una nueva visita."
+                }
+            ]
+        },
+        "checkmate.workers": {
+            "title": "Ayuda — Operarios",
+            "actions": [
+                {
+                    "label": "Objetivo",
+                    "text": "Los operarios son trabajadores de campo sin login. Se registran mediante el enlace o QR del Clock Point con su nombre y un icono personal (o PIN), y usan un solo móvil fijo."
+                },
+                {
+                    "label": "Añadir",
+                    "text": "Añade un operario con nombre y apellidos en un equipo — un equipo basta para empezar. Marca Puede fichar en cualquier sitio para los sustitutos."
+                },
+                {
+                    "label": "NISS (CIAO)",
+                    "text": "Rellena el número NISS/INSZ cuando el operario participa en el registro de presencia de la RSZ. Sin NISS no hay envío posible para ese operario."
+                },
+                {
+                    "label": "Icono, móvil y PIN",
+                    "text": "Móvil perdido, bloqueo o icono equivocado: abre Editar y libera icono, móvil o PIN. El operario se registra de nuevo después."
+                },
+                {
+                    "label": "Jefe de equipo",
+                    "text": "Un operario con la marca de jefe de equipo puede liberar en el portal iconos y dispositivos de sus compañeros."
+                }
+            ]
+        },
+        "checkmate.clock_points": {
+            "title": "Ayuda — Clock Points",
+            "actions": [
+                {
+                    "label": "Objetivo",
+                    "text": "Un Clock Point es el punto de registro de tu organización. El enlace o el QR lleva a los operarios al portal donde fichan, hacen pausas y registran visitas a clientes."
+                },
+                {
+                    "label": "Enviar el enlace",
+                    "text": "Envía por mail el enlace de registro directamente a un operario, o imprime el QR para un lugar fijo. Quien ya se registró abre el portal desde el icono de la pantalla de inicio — no hace falta volver a escanear."
+                },
+                {
+                    "label": "Varios Clock Points",
+                    "text": "¿Trabajas en varios lugares fijos (almacén, oficina)? Crea un Clock Point por lugar. Fichar y desplazarse piden un nuevo escaneo del QR; las pausas y las visitas a clientes no."
+                }
+            ]
+        },
+        "checkmate.presence": {
+            "title": "Ayuda — Presencia",
+            "actions": [
+                {
+                    "label": "Objetivo",
+                    "text": "Quién está fichado ahora y dónde: por operario el servicio abierto y la visita a cliente en curso con cliente y dirección. Así ves en directo quién trabaja dónde."
+                },
+                {
+                    "label": "Servicios de hoy",
+                    "text": "Todos los servicios del día con horas de entrada y salida y pausas."
+                }
+            ]
+        },
+        "checkmate.shifts": {
+            "title": "Ayuda — Horas",
+            "actions": [
+                {
+                    "label": "Objetivo",
+                    "text": "El registro de horas por operario: servicios fichados con inicio, fin, pausas y las visitas a clientes dentro del servicio."
+                },
+                {
+                    "label": "Corregir",
+                    "text": "Un administrador corrige entrada, salida o pausa con un motivo obligatorio. Si dejas la hora de salida vacía, el servicio se reabre — por ejemplo tras una salida errónea."
+                },
+                {
+                    "label": "Descargar informe",
+                    "text": "Exporta las horas filtradas en CSV, o imprímelas en PDF desde el cuadro de impresión."
+                }
+            ]
+        },
+        "checkmate.ciao": {
+            "title": "Ayuda — CIAO (RSZ)",
+            "actions": [
+                {
+                    "label": "Objetivo",
+                    "text": "Presencia en tiempo real hacia el servicio RSZ Check In and Out at Work: IN al empezar una visita a cliente, OUT al terminar y OUT/IN alrededor de las pausas. Por envío ves estado, posible error y la referencia RSZ."
+                },
+                {
+                    "label": "Estados",
+                    "text": "En cola (se está enviando), Enviado, Fallido y Omitido. Para Fallido u Omitido puedes reenviar tras corregir NISS, DDT o número de empresa."
+                },
+                {
+                    "label": "Requisitos",
+                    "text": "Para los envíos necesitas el número de empresa (BCE) de tu organización y el NISS del operario. La referencia DDT es opcional por dirección de obra."
+                },
+                {
+                    "label": "Conservación",
+                    "text": "Los envíos correctos de más de doce meses se borran automáticamente; el registro oficial queda en la RSZ."
+                }
+            ]
+        },
+        "checkmate.settings": {
+            "title": "Ayuda — Ajustes",
+            "actions": [
+                {
+                    "label": "Datos de empresa",
+                    "text": "Nombre, dirección y logo de tu organización — el logo aparece en el portal y en los mails."
+                },
+                {
+                    "label": "Solicitar CIAO",
+                    "text": "Solicita el registro de presencia RSZ con tu número de empresa (o número de IVA extranjero). WinProx confirma la activación; desde entonces las visitas a clientes y las pausas van en tiempo real a la RSZ. Los fichajes anteriores a la activación no se envían."
+                },
+                {
+                    "label": "Reloj de fichar",
+                    "text": "Opcional: exigir un PIN al registrarse los operarios, y ofrecer un enlace al Clock Point en la pantalla de inicio del móvil."
+                }
+            ]
+        },
+        "checkmate.subscription": {
+            "title": "Ayuda — Suscripción",
+            "actions": [
+                {
+                    "label": "Fórmula",
+                    "text": "Checkmate factura por operario activo al mes. Tú mismo defines el número de plazas; bajar por debajo del número de plazas activas no es posible — desactiva primero operarios."
+                },
+                {
+                    "label": "Borrar datos",
+                    "text": "Los administradores pueden eliminar la organización y todos los datos: primero descarga un export, luego termina con contraseña y confirmación por e-mail."
+                }
+            ]
+        },
+        "checkmate.portal.signin": {
+            "title": "Ayuda — Registro único (operario)",
+            "actions": [
+                {
+                    "label": "Objetivo",
+                    "text": "El operario abre una vez el enlace Clock Point del mail o escanea el QR, elige su nombre y confirma con un icono personal o PIN. Ese móvil queda vinculado desde entonces."
+                },
+                {
+                    "label": "Pantalla de inicio",
+                    "text": "Después basta el icono WinProx en la pantalla de inicio (Android: un toque; iPhone: Compartir → Añadir a pantalla de inicio). Sin app store, sin contraseña."
+                },
+                {
+                    "label": "Otro dispositivo",
+                    "text": "Otro móvil se rechaza hasta que un administrador o jefe de equipo libere el dispositivo — así queda un móvil por operario."
+                }
+            ]
+        },
+        "checkmate.portal.day": {
+            "title": "Ayuda — Fichar y pausa (operario)",
+            "actions": [
+                {
+                    "label": "Fichar entrada",
+                    "text": "Al empezar la jornada: un toque en fichar. El servicio corre hasta que fichas la salida."
+                },
+                {
+                    "label": "Pausa",
+                    "text": "Inicia y detén las pausas desde el portal; cuentan en el registro de horas y — con CIAO activo — van a la RSZ como OUT/IN."
+                },
+                {
+                    "label": "Fichar salida",
+                    "text": "Ficha la salida al final del día: cierra el servicio y una posible visita a cliente abierta. Cerrar sesión en el portal no es lo mismo que fichar la salida."
+                }
+            ]
+        },
+        "checkmate.portal.visit": {
+            "title": "Ayuda — Visita a cliente (operario)",
+            "actions": [
+                {
+                    "label": "Objetivo",
+                    "text": "Una visita a cliente registra el trabajo en casa de un cliente. Toca Empezar a trabajar en el cliente — tu móvil comprueba por GPS que estás dentro del radio acordado. Fuera del radio, la visita no empieza."
+                },
+                {
+                    "label": "Cambiar de cliente",
+                    "text": "Del cliente A al cliente B: la visita en A se detiene y la de B empieza, en una sola acción."
+                },
+                {
+                    "label": "Nuevo cliente en ruta",
+                    "text": "¿El cliente no está en la lista? Créalo en ruta con nombre y dirección; el marcador GPS viene de tu móvil. Si el nombre se parece a un cliente existente, primero recibes un aviso suave."
+                },
+                {
+                    "label": "Navegar",
+                    "text": "El botón Navegar abre la dirección en tu app de mapas — no registra ninguna visita."
+                }
+            ]
+        },
+        "checkmate.portal.hours": {
+            "title": "Ayuda — Mis horas (operario)",
+            "actions": [
+                {
+                    "label": "Objetivo",
+                    "text": "El operario solo ve sus propios servicios del mes elegido: por día la primera entrada, la última salida, la pausa y el tiempo trabajado. Sin corrección ni horas de compañeros."
+                }
+            ]
         }
     }
 }

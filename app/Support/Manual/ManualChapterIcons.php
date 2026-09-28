@@ -53,6 +53,19 @@ final class ManualChapterIcons
         'portal.teamleader.release' => 'team',
         'portal.teamleader.workers' => 'team',
         'portal.teamleader.tasks' => 'tasks',
+        'checkmate.dashboard' => 'dashboard',
+        'checkmate.customers' => 'locations',
+        'checkmate.workers' => 'team',
+        'checkmate.clock_points' => 'map-pin',
+        'checkmate.presence' => 'clock',
+        'checkmate.shifts' => 'calendar',
+        'checkmate.ciao' => 'document',
+        'checkmate.settings' => 'settings',
+        'checkmate.subscription' => 'subscription',
+        'checkmate.portal.signin' => 'map-pin',
+        'checkmate.portal.day' => 'clock',
+        'checkmate.portal.visit' => 'map-pin',
+        'checkmate.portal.hours' => 'document',
     ];
 
     public static function for(string $chapterKey): ?string

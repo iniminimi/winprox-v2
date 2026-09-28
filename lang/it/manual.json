@@ -75,7 +75,9 @@
         "technical_sheet": "Scheda tecnica",
         "technical_sheet_desc": "Hosting, GDPR, API, sicurezza — per IT (pubblico + stampabile).",
         "api_webhooks": "API & Webhooks",
-        "api_webhooks_desc": "Integrazione con software esistente via API e webhook — per decisori e IT (pubblico + stampabile)."
+        "api_webhooks_desc": "Integrazione con software esistente via API e webhook — per decisori e IT (pubblico + stampabile).",
+        "checkmate": "Manuale Checkmate",
+        "checkmate_desc": "Timbratura, visite ai clienti con GPS e CIAO (RSZ) — il manuale compatto della formula Checkmate, da stampare o salvare in PDF."
     },
     "workers": {
         "cover": {
@@ -87,6 +89,26 @@
         "cover": {
             "title": "Manuale caposquadra",
             "subtitle": "Portale Clock Point — coordini colleghi e attività"
+        }
+    },
+    "checkmate": {
+        "cover": {
+            "title": "Manuale Checkmate",
+            "subtitle": "Lavorare presso i clienti — timbratura, visite ai clienti e CIAO (RSZ)"
+        },
+        "toc": {
+            "admin": "Amministrazione",
+            "portal": "Portale operatore"
+        },
+        "sections": {
+            "admin": {
+                "title": "Amministrazione su desktop",
+                "intro": "Dashboard, clienti e indirizzi di lavoro, operatori, Clock Point, Time (presenze, ore, CIAO) e impostazioni."
+            },
+            "portal": {
+                "title": "L'operatore sul cellulare",
+                "intro": "Il portale Clock Point: registrazione unica, timbratura, pause, visite ai clienti con GPS e Le mie ore."
+            }
         }
     }
 }

@@ -1847,6 +1847,235 @@
                     "text": "Optionele instructie op de taak. Leeg laten mag; dan geldt de omschrijving van de ronde."
                 }
             ]
+        },
+        "checkmate.dashboard": {
+            "title": "Hulp — Dashboard",
+            "actions": [
+                {
+                    "label": "Doel",
+                    "text": "Je dag begint hier: snelkoppelingen naar een nieuwe klant of uitvoerder, de Clock Point-link en de aanwezigheid van vandaag. Daaronder de laatste klantbezoeken."
+                },
+                {
+                    "label": "KPI's",
+                    "text": "Tegels met wie nu aanwezig is, de bezoeken van vandaag, je seats en het aantal actieve klanten. Elke tegel linkt naar het bijbehorende scherm."
+                },
+                {
+                    "label": "CIAO-banner",
+                    "text": "Zolang de RSZ-doorgifte nog niet actief is, toont een banner de stand van je aanvraag. Registraties starten pas na bevestiging; prikken van daarvoor gaan niet naar de RSZ."
+                },
+                {
+                    "label": "Aan de slag",
+                    "text": "Zolang er nog geen uitvoerders of klanten zijn, leiden kaarten je naar de eerste uitvoerder en de eerste klant."
+                }
+            ]
+        },
+        "checkmate.customers": {
+            "title": "Hulp — Klanten",
+            "actions": [
+                {
+                    "label": "Doel",
+                    "text": "Klanten zijn de relaties voor wie je werkt. Onder elke klant hangen werkadressen met een GPS-pin — die pin bepaalt waar een uitvoerder een bezoek kan starten."
+                },
+                {
+                    "label": "Klant toevoegen",
+                    "text": "Maak een klant aan met naam en optioneel contactpersoon, e-mail en telefoon. Voeg er daarna een of meer werkadressen aan toe."
+                },
+                {
+                    "label": "Werkadres",
+                    "text": "Straat, nummer, postcode, plaats en de GPS-pin (automatisch via het adres of handmatig als breedte- en lengtegraad). Voor werken onder aangifte van werken (30bis) vul je ook de DDT-referentie in; bij particuliere klanten mag die leeg blijven."
+                },
+                {
+                    "label": "Bewerken en deactiveren",
+                    "text": "Pas klant en werkadres aan via de rij. Deactiveren bewaart de historiek: bij een inactief adres kan geen nieuw bezoek meer starten."
+                }
+            ]
+        },
+        "checkmate.workers": {
+            "title": "Hulp — Uitvoerders",
+            "actions": [
+                {
+                    "label": "Doel",
+                    "text": "Uitvoerders zijn veldwerkers zonder login. Ze melden zich aan via de Clock Point-link of QR met hun naam en een persoonlijk icoon (of pincode), en gebruiken één vaste gsm."
+                },
+                {
+                    "label": "Toevoegen",
+                    "text": "Voeg een uitvoerder toe met voor- en achternaam in een team — één team volstaat om te starten. Vink Mag overal inklokken aan voor invallers."
+                },
+                {
+                    "label": "NISS (CIAO)",
+                    "text": "Vul het NISS/INSZ-nummer in wanneer de uitvoerder meedoet aan de RSZ-aanwezigheidsregistratie. Zonder NISS kan er geen inzending voor die uitvoerder."
+                },
+                {
+                    "label": "Icoon, gsm en pincode",
+                    "text": "Bij een verloren toestel, lockout of verkeerd icoon: open Bewerken en geef icoon, gsm of pincode vrij. De uitvoerder meldt zich daarna opnieuw aan."
+                },
+                {
+                    "label": "Teamleader",
+                    "text": "Een uitvoerder met de teamleader-vlag kan in het portaal iconen en toestellen van teamgenoten vrijgeven."
+                }
+            ]
+        },
+        "checkmate.clock_points": {
+            "title": "Hulp — Clock Points",
+            "actions": [
+                {
+                    "label": "Doel",
+                    "text": "Een Clock Point is het aanmeldpunt van je organisatie. De link of QR brengt uitvoerders naar het portaal waar ze inklokken, pauzeren en klantbezoeken registreren."
+                },
+                {
+                    "label": "Link versturen",
+                    "text": "Mail de aanmeldlink rechtstreeks naar een uitvoerder, of druk de QR af voor een vaste plek. Wie zich eenmaal aanmeldde, opent het portaal daarna via het startscherm-icoon — opnieuw scannen is niet nodig."
+                },
+                {
+                    "label": "Meerdere Clock Points",
+                    "text": "Werk je op meerdere vaste plekken (magazijn, kantoor)? Maak per plek een Clock Point. In- en uitklokken en verplaatsen vragen een verse QR-scan; pauzes en klantbezoeken niet."
+                }
+            ]
+        },
+        "checkmate.presence": {
+            "title": "Hulp — Aanwezigheid",
+            "actions": [
+                {
+                    "label": "Doel",
+                    "text": "Wie is nu ingeklokt en waar: per uitvoerder de open dienst en het lopende klantbezoek met klant en adres. Zo zie je live wie waar werkt."
+                },
+                {
+                    "label": "Diensten van vandaag",
+                    "text": "Alle diensten van de dag met in- en uitkloktijd en pauzes."
+                }
+            ]
+        },
+        "checkmate.shifts": {
+            "title": "Hulp — Uren",
+            "actions": [
+                {
+                    "label": "Doel",
+                    "text": "De urenstaat per uitvoerder: geklokte diensten met start, einde, pauzes en de klantbezoeken binnen de dienst."
+                },
+                {
+                    "label": "Corrigeren",
+                    "text": "Een beheerder corrigeert inklok, uitklok of pauze met een verplichte reden. Laat je de uitkloktijd leeg, dan heropent de dienst — bijvoorbeeld na een foute uitklok."
+                },
+                {
+                    "label": "Download rapport",
+                    "text": "Exporteer de gefilterde uren als CSV, of druk ze af als PDF via het printvenster."
+                }
+            ]
+        },
+        "checkmate.ciao": {
+            "title": "Hulp — CIAO (RSZ)",
+            "actions": [
+                {
+                    "label": "Doel",
+                    "text": "Realtime-aanwezigheid naar de RSZ-dienst Check In and Out at Work: IN bij het starten van een klantbezoek, OUT bij het einde en OUT/IN rond pauzes. Per inzending zie je status, eventuele fout en de RSZ-referentie."
+                },
+                {
+                    "label": "Statussen",
+                    "text": "Wachtrij (wordt verstuurd), Verstuurd, Mislukt en Overgeslagen. Bij Mislukt of Overgeslagen kun je opnieuw indienen na correctie van NISS, DDT of ondernemingsnummer."
+                },
+                {
+                    "label": "Voorwaarden",
+                    "text": "Voor inzendingen heb je het ondernemingsnummer (BCE) van je organisatie nodig en het NISS van de uitvoerder. De DDT-referentie is optioneel per werkadres."
+                },
+                {
+                    "label": "Bewaartermijn",
+                    "text": "Geslaagde inzendingen ouder dan twaalf maanden worden automatisch verwijderd; de officiële registratie blijft bij de RSZ."
+                }
+            ]
+        },
+        "checkmate.settings": {
+            "title": "Hulp — Instellingen",
+            "actions": [
+                {
+                    "label": "Bedrijfsgegevens",
+                    "text": "Naam, adres en logo van je organisatie — het logo verschijnt op het portaal en in mails."
+                },
+                {
+                    "label": "CIAO aanvragen",
+                    "text": "Vraag RSZ-aanwezigheidsregistratie aan met je ondernemingsnummer (of buitenlands btw-nummer). WinProx bevestigt de activering; vanaf dan gaan klantbezoeken en pauzes realtime naar de RSZ. Prikken van vóór de activering worden niet ingediend."
+                },
+                {
+                    "label": "Prikklok",
+                    "text": "Optioneel: een pincode verplichten bij het aanmelden van uitvoerders, en een link naar het Clock Point op het startscherm van de gsm aanbieden."
+                }
+            ]
+        },
+        "checkmate.subscription": {
+            "title": "Hulp — Abonnement",
+            "actions": [
+                {
+                    "label": "Formule",
+                    "text": "Checkmate rekent per actieve uitvoerder per maand. Je stelt het aantal seats zelf in; verlagen kan niet onder het aantal actieve seats — deactiveer dan eerst uitvoerders."
+                },
+                {
+                    "label": "Gegevens wissen",
+                    "text": "Beheerders kunnen de organisatie en alle data verwijderen: eerst een export downloaden, dan afronden met wachtwoord en e-mailbevestiging."
+                }
+            ]
+        },
+        "checkmate.portal.signin": {
+            "title": "Hulp — Eenmalig aanmelden (uitvoerder)",
+            "actions": [
+                {
+                    "label": "Doel",
+                    "text": "De uitvoerder opent eenmalig de Clock Point-link uit de mail of scant de QR, kiest zijn naam en bevestigt met een persoonlijk icoon of pincode. Die gsm is vanaf dan gekoppeld."
+                },
+                {
+                    "label": "Startscherm",
+                    "text": "Daarna volstaat het WinProx-icoon op het startscherm (Android: één tik; iPhone: Deel → Zet op beginscherm). Geen app-store, geen wachtwoord."
+                },
+                {
+                    "label": "Ander toestel",
+                    "text": "Een andere gsm wordt geweigerd tot een beheerder of teamleader het toestel vrijgeeft — zo blijft één gsm per uitvoerder."
+                }
+            ]
+        },
+        "checkmate.portal.day": {
+            "title": "Hulp — Klokken en pauze (uitvoerder)",
+            "actions": [
+                {
+                    "label": "Inklokken",
+                    "text": "Aan het begin van de werkdag: één tik op inklokken. De dienst loopt tot je uitklokt."
+                },
+                {
+                    "label": "Pauze",
+                    "text": "Start en stop pauzes vanuit het portaal; ze tellen mee op de urenstaat en — met CIAO actief — gaan ze als OUT/IN naar de RSZ."
+                },
+                {
+                    "label": "Uitklokken",
+                    "text": "Aan het einde van de dag uitklokken: dat sluit de dienst én een eventueel open klantbezoek. Afmelden van het portaal is iets anders dan uitklokken."
+                }
+            ]
+        },
+        "checkmate.portal.visit": {
+            "title": "Hulp — Klantbezoek (uitvoerder)",
+            "actions": [
+                {
+                    "label": "Doel",
+                    "text": "Een klantbezoek registreert werk bij een klant. Tik op Beginnen werken bij de klant — je gsm controleert via GPS dat je binnen de afgesproken straal bent. Buiten de straal start het bezoek niet."
+                },
+                {
+                    "label": "Klant wisselen",
+                    "text": "Van klant A naar klant B: het bezoek bij A stopt en dat bij B start, in één handeling."
+                },
+                {
+                    "label": "Nieuwe klant onderweg",
+                    "text": "Staat de klant er niet tussen? Maak hem onderweg aan met naam en adres; de GPS-pin komt van je gsm. Lijkt de naam op een bestaande klant, dan krijg je eerst een zachte waarschuwing."
+                },
+                {
+                    "label": "Navigeren",
+                    "text": "De knop Navigeer opent het adres in je kaarten-app — dat registreert geen bezoek."
+                }
+            ]
+        },
+        "checkmate.portal.hours": {
+            "title": "Hulp — Mijn uren (uitvoerder)",
+            "actions": [
+                {
+                    "label": "Doel",
+                    "text": "De uitvoerder ziet alleen zijn eigen diensten van de gekozen maand: per dag de eerste inklok, de laatste uitklok, pauze en gewerkte tijd. Geen correctie en geen uren van collega's."
+                }
+            ]
         }
     }
 }

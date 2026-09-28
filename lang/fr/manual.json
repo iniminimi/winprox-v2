@@ -75,7 +75,9 @@
         "technical_sheet": "Fiche technique",
         "technical_sheet_desc": "Hébergement, RGPD, API, sécurité — pour l’IT (public + imprimable).",
         "api_webhooks": "API & Webhooks",
-        "api_webhooks_desc": "Intégration avec les logiciels existants via API et webhooks — pour décideurs et IT (public + imprimable)."
+        "api_webhooks_desc": "Intégration avec les logiciels existants via API et webhooks — pour décideurs et IT (public + imprimable).",
+        "checkmate": "Manuel Checkmate",
+        "checkmate_desc": "Pointage, visites clients avec GPS et CIAO (ONSS) — le manuel compact de la formule Checkmate, à imprimer ou à enregistrer en PDF."
     },
     "workers": {
         "cover": {
@@ -87,6 +89,26 @@
         "cover": {
             "title": "Manuel chefs d'équipe",
             "subtitle": "Portail Clock Point — coordonner collègues et tâches"
+        }
+    },
+    "checkmate": {
+        "cover": {
+            "title": "Manuel Checkmate",
+            "subtitle": "Travailler chez le client — pointage, visites clients et CIAO (ONSS)"
+        },
+        "toc": {
+            "admin": "Administration",
+            "portal": "Portail exécutant"
+        },
+        "sections": {
+            "admin": {
+                "title": "Administration sur ordinateur",
+                "intro": "Tableau de bord, clients et adresses de chantier, exécutants, Clock Points, Time (présence, heures, CIAO) et paramètres."
+            },
+            "portal": {
+                "title": "Exécutant sur GSM",
+                "intro": "Le portail Clock Point : connexion unique, pointage, pause, visites clients avec GPS et Mes heures."
+            }
         }
     }
 }

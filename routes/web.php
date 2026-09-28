@@ -72,6 +72,7 @@ use App\Livewire\Pages\ApiSettings;
 use App\Livewire\Pages\Calendar;
 use App\Livewire\Customers\Index as CustomersIndex;
 use App\Livewire\Pages\CheckListsIndex;
+use App\Livewire\Pages\CheckmateManualIndex;
 use App\Livewire\Pages\Contact;
 use App\Livewire\Pages\Faq;
 use App\Livewire\Pages\FeaturePage;
@@ -395,6 +396,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/manual/general', ManualIndex::class)->name('manual.general');
     Route::get('/manual/workers', WorkerManualIndex::class)->name('manual.workers');
     Route::get('/manual/teamleaders', TeamleaderManualIndex::class)->name('manual.teamleaders');
+    Route::get('/manual/checkmate', CheckmateManualIndex::class)->name('manual.checkmate');
     Route::get('/account/data-export', UserDataExportController::class)->name('account.data-export');
     Route::get('/subscription/purge/confirm/{purgeRequest}/{token}', TenantPurgeConfirmController::class)
         ->name('subscription.purge.confirm');

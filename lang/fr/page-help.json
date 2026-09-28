@@ -1855,6 +1855,235 @@
                     "text": "Instruction optionnelle sur la tâche. Vide = description de la tournée."
                 }
             ]
+        },
+        "checkmate.dashboard": {
+            "title": "Aide — Tableau de bord",
+            "actions": [
+                {
+                    "label": "Objectif",
+                    "text": "Votre journée commence ici : raccourcis vers un nouveau client ou exécutant, le lien Clock Point et la présence du jour. En dessous, les dernières visites clients."
+                },
+                {
+                    "label": "KPI",
+                    "text": "Tuiles avec qui est présent maintenant, les visites du jour, vos sièges et le nombre de clients actifs. Chaque tuile mène vers l'écran correspondant."
+                },
+                {
+                    "label": "Bannière CIAO",
+                    "text": "Tant que la transmission ONSS n'est pas active, une bannière montre l'état de votre demande. Les enregistrements ne démarrent qu'après confirmation ; les pointages antérieurs ne partent pas vers l'ONSS."
+                },
+                {
+                    "label": "Pour commencer",
+                    "text": "Tant qu'il n'y a pas encore d'exécutants ni de clients, des cartes vous guident vers le premier exécutant et le premier client."
+                }
+            ]
+        },
+        "checkmate.customers": {
+            "title": "Aide — Clients",
+            "actions": [
+                {
+                    "label": "Objectif",
+                    "text": "Les clients sont les relations pour lesquelles vous travaillez. Sous chaque client se trouvent des adresses de chantier avec un repère GPS — ce repère détermine où un exécutant peut démarrer une visite."
+                },
+                {
+                    "label": "Ajouter un client",
+                    "text": "Créez un client avec un nom et éventuellement une personne de contact, e-mail et téléphone. Ajoutez ensuite une ou plusieurs adresses de chantier."
+                },
+                {
+                    "label": "Adresse de chantier",
+                    "text": "Rue, numéro, code postal, commune et le repère GPS (automatique via l'adresse ou saisi manuellement en latitude/longitude). Pour les travaux sous déclaration de travaux (30bis), remplissez aussi la référence DDT ; pour les clients particuliers elle peut rester vide."
+                },
+                {
+                    "label": "Modifier et désactiver",
+                    "text": "Adaptez client et adresse via la ligne. La désactivation conserve l'historique : aucune nouvelle visite ne peut démarrer sur une adresse inactive."
+                }
+            ]
+        },
+        "checkmate.workers": {
+            "title": "Aide — Exécutants",
+            "actions": [
+                {
+                    "label": "Objectif",
+                    "text": "Les exécutants sont des travailleurs de terrain sans login. Ils se connectent via le lien ou le QR du Clock Point avec leur nom et une icône personnelle (ou code PIN), et utilisent un seul GSM fixe."
+                },
+                {
+                    "label": "Ajouter",
+                    "text": "Ajoutez un exécutant avec prénom et nom dans une équipe — une équipe suffit pour démarrer. Cochez « Peut pointer partout » pour les remplaçants."
+                },
+                {
+                    "label": "NISS (CIAO)",
+                    "text": "Renseignez le numéro NISS/INSZ lorsque l'exécutant participe à l'enregistrement de présence ONSS. Sans NISS, aucun envoi n'est possible pour cet exécutant."
+                },
+                {
+                    "label": "Icône, GSM et code PIN",
+                    "text": "Appareil perdu, blocage ou mauvaise icône : ouvrez Modifier et libérez l'icône, le GSM ou le code PIN. L'exécutant se reconnecte ensuite."
+                },
+                {
+                    "label": "Chef d'équipe",
+                    "text": "Un exécutant avec le statut chef d'équipe peut libérer dans le portail les icônes et appareils de ses collègues."
+                }
+            ]
+        },
+        "checkmate.clock_points": {
+            "title": "Aide — Clock Points",
+            "actions": [
+                {
+                    "label": "Objectif",
+                    "text": "Un Clock Point est le point de connexion de votre organisation. Le lien ou le QR amène les exécutants vers le portail où ils pointent, prennent des pauses et enregistrent des visites clients."
+                },
+                {
+                    "label": "Envoyer le lien",
+                    "text": "Envoyez le lien de connexion directement à un exécutant, ou imprimez le QR pour un endroit fixe. Une fois connecté, l'exécutant ouvre le portail via l'icône de l'écran d'accueil — pas besoin de rescanner."
+                },
+                {
+                    "label": "Plusieurs Clock Points",
+                    "text": "Vous travaillez sur plusieurs endroits fixes (magasin, bureau) ? Créez un Clock Point par endroit. Pointer et se déplacer demandent un nouveau scan du QR ; les pauses et visites clients non."
+                }
+            ]
+        },
+        "checkmate.presence": {
+            "title": "Aide — Présence",
+            "actions": [
+                {
+                    "label": "Objectif",
+                    "text": "Qui est pointé maintenant et où : par exécutant le service ouvert et la visite client en cours avec client et adresse. Vous voyez en direct qui travaille où."
+                },
+                {
+                    "label": "Services du jour",
+                    "text": "Tous les services du jour avec heures de début et de fin et pauses."
+                }
+            ]
+        },
+        "checkmate.shifts": {
+            "title": "Aide — Heures",
+            "actions": [
+                {
+                    "label": "Objectif",
+                    "text": "Le relevé d'heures par exécutant : services pointés avec début, fin, pauses et les visites clients dans le service."
+                },
+                {
+                    "label": "Corriger",
+                    "text": "Un administrateur corrige l'entrée, la sortie ou la pause avec un motif obligatoire. Laissez l'heure de sortie vide et le service se rouvre — par exemple après une sortie erronée."
+                },
+                {
+                    "label": "Télécharger le rapport",
+                    "text": "Exportez les heures filtrées en CSV, ou imprimez-les en PDF via la boîte d'impression."
+                }
+            ]
+        },
+        "checkmate.ciao": {
+            "title": "Aide — CIAO (ONSS)",
+            "actions": [
+                {
+                    "label": "Objectif",
+                    "text": "Présence en temps réel vers le service ONSS Check In and Out at Work : IN au début d'une visite client, OUT à la fin et OUT/IN autour des pauses. Par envoi vous voyez le statut, l'erreur éventuelle et la référence ONSS."
+                },
+                {
+                    "label": "Statuts",
+                    "text": "File d'attente (envoi en cours), Envoyé, Échoué et Ignoré. Pour Échoué ou Ignoré vous pouvez renvoyer après correction du NISS, du DDT ou du numéro d'entreprise."
+                },
+                {
+                    "label": "Conditions",
+                    "text": "Pour les envois il faut le numéro d'entreprise (BCE) de votre organisation et le NISS de l'exécutant. La référence DDT est optionnelle par adresse de chantier."
+                },
+                {
+                    "label": "Conservation",
+                    "text": "Les envois réussis de plus de douze mois sont supprimés automatiquement ; l'enregistrement officiel reste à l'ONSS."
+                }
+            ]
+        },
+        "checkmate.settings": {
+            "title": "Aide — Paramètres",
+            "actions": [
+                {
+                    "label": "Données de l'entreprise",
+                    "text": "Nom, adresse et logo de votre organisation — le logo apparaît sur le portail et dans les e-mails."
+                },
+                {
+                    "label": "Demander CIAO",
+                    "text": "Demandez l'enregistrement de présence ONSS avec votre numéro d'entreprise (ou numéro de TVA étranger). WinProx confirme l'activation ; dès lors, visites clients et pauses partent en temps réel vers l'ONSS. Les pointages antérieurs à l'activation ne sont pas envoyés."
+                },
+                {
+                    "label": "Pointeuse",
+                    "text": "Optionnel : exiger un code PIN lors de la connexion des exécutants, et proposer un lien vers le Clock Point sur l'écran d'accueil du GSM."
+                }
+            ]
+        },
+        "checkmate.subscription": {
+            "title": "Aide — Abonnement",
+            "actions": [
+                {
+                    "label": "Formule",
+                    "text": "Checkmate facture par exécutant actif par mois. Vous définissez vous-même le nombre de sièges ; descendre sous le nombre de sièges actifs n'est pas possible — désactivez d'abord des exécutants."
+                },
+                {
+                    "label": "Effacer les données",
+                    "text": "Les administrateurs peuvent supprimer l'organisation et toutes les données : téléchargez d'abord un export, puis terminez avec mot de passe et confirmation par e-mail."
+                }
+            ]
+        },
+        "checkmate.portal.signin": {
+            "title": "Aide — Connexion unique (exécutant)",
+            "actions": [
+                {
+                    "label": "Objectif",
+                    "text": "L'exécutant ouvre une fois le lien Clock Point reçu par mail ou scanne le QR, choisit son nom et confirme avec une icône personnelle ou un code PIN. Ce GSM est dès lors lié."
+                },
+                {
+                    "label": "Écran d'accueil",
+                    "text": "Ensuite, l'icône WinProx sur l'écran d'accueil suffit (Android : un appui ; iPhone : Partager → Sur l'écran d'accueil). Pas d'app store, pas de mot de passe."
+                },
+                {
+                    "label": "Autre appareil",
+                    "text": "Un autre GSM est refusé jusqu'à ce qu'un administrateur ou un chef d'équipe libère l'appareil — ainsi un seul GSM par exécutant."
+                }
+            ]
+        },
+        "checkmate.portal.day": {
+            "title": "Aide — Pointage et pause (exécutant)",
+            "actions": [
+                {
+                    "label": "Pointer l'entrée",
+                    "text": "Au début de la journée de travail : un appui sur pointer. Le service court jusqu'à ce que vous pointiez la sortie."
+                },
+                {
+                    "label": "Pause",
+                    "text": "Démarrez et arrêtez les pauses depuis le portail ; elles comptent sur le relevé d'heures et — avec CIAO actif — partent vers l'ONSS en OUT/IN."
+                },
+                {
+                    "label": "Pointer la sortie",
+                    "text": "Pointez la sortie en fin de journée : cela clôt le service et une éventuelle visite client ouverte. Se déconnecter du portail n'est pas la même chose que pointer la sortie."
+                }
+            ]
+        },
+        "checkmate.portal.visit": {
+            "title": "Aide — Visite client (exécutant)",
+            "actions": [
+                {
+                    "label": "Objectif",
+                    "text": "Une visite client enregistre le travail chez un client. Appuyez sur Commencer à travailler chez le client — votre GSM vérifie via GPS que vous êtes dans le rayon convenu. Hors du rayon, la visite ne démarre pas."
+                },
+                {
+                    "label": "Changer de client",
+                    "text": "Du client A au client B : la visite chez A s'arrête et celle chez B démarre, en une seule action."
+                },
+                {
+                    "label": "Nouveau client en route",
+                    "text": "Le client n'est pas dans la liste ? Créez-le en route avec nom et adresse ; le repère GPS vient de votre GSM. Si le nom ressemble à un client existant, vous recevez d'abord un avertissement léger."
+                },
+                {
+                    "label": "Naviguer",
+                    "text": "Le bouton Naviguer ouvre l'adresse dans votre app de cartes — cela n'enregistre pas de visite."
+                }
+            ]
+        },
+        "checkmate.portal.hours": {
+            "title": "Aide — Mes heures (exécutant)",
+            "actions": [
+                {
+                    "label": "Objectif",
+                    "text": "L'exécutant ne voit que ses propres services du mois choisi : par jour la première entrée, la dernière sortie, la pause et le temps travaillé. Pas de correction ni d'heures de collègues."
+                }
+            ]
         }
     }
 }

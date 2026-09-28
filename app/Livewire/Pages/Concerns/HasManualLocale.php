@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Livewire\Pages\Concerns;
 
 use App\Models\Tenant;
+use App\Support\Checkmate\CheckmateMode;
+use App\Support\Tenancy;
 use Illuminate\Support\Facades\App;
 use Livewire\Attributes\Url;
 
@@ -53,15 +55,18 @@ trait HasManualLocale
 
     protected function manualTenant(): ?Tenant
     {
-        $user = auth()->user();
+        $tenantId = Tenancy::id();
 
-        if ($user === null) {
+        if ($tenantId === null) {
             return null;
         }
 
-        $user->loadMissing('tenant');
+        return Tenant::query()->find($tenantId);
+    }
 
-        return $user->tenant;
+    protected function manualIsCheckmate(): bool
+    {
+        return CheckmateMode::isActive($this->manualTenant());
     }
 
     protected function manualTenantName(): string

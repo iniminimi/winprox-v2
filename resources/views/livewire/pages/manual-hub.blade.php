@@ -9,6 +9,14 @@
 
         <div class="wp-card wp-card-pad">
             <div class="wp-list wp-list--entity-rows">
+                @if ($checkmate)
+                <a href="{{ route('manual.checkmate') }}" target="_blank" rel="noopener" class="wp-issue-row">
+                    <div class="wp-grow wp-stack-tight">
+                        <p class="wp-issue-card-title">{{ __('manual.hub.checkmate') }}</p>
+                        <p class="wp-issue-card-desc">{{ __('manual.hub.checkmate_desc') }}</p>
+                    </div>
+                </a>
+                @else
                 <a href="{{ route('manual.general') }}" target="_blank" rel="noopener" class="wp-issue-row">
                     <div class="wp-grow wp-stack-tight">
                         <p class="wp-issue-card-title">{{ __('manual.hub.general') }}</p>
@@ -45,6 +53,7 @@
                         <p class="wp-issue-card-desc">{{ __('manual.hub.api_webhooks_desc') }}</p>
                     </div>
                 </a>
+                @endif
             </div>
         </div>
     </div>

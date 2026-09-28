@@ -1847,6 +1847,235 @@
                     "text": "Optional instruction on the task. Leave empty to use the round description."
                 }
             ]
+        },
+        "checkmate.dashboard": {
+            "title": "Help — Dashboard",
+            "actions": [
+                {
+                    "label": "Purpose",
+                    "text": "Your day starts here: shortcuts to a new customer or worker, the Clock Point link and today's presence. Below that, the latest customer visits."
+                },
+                {
+                    "label": "KPIs",
+                    "text": "Tiles showing who is present now, today's visits, your seats and the number of active customers. Each tile links to the matching screen."
+                },
+                {
+                    "label": "CIAO banner",
+                    "text": "As long as NSSO submission is not active yet, a banner shows the status of your request. Registrations only start after confirmation; punches from before that are not sent to the NSSO."
+                },
+                {
+                    "label": "Getting started",
+                    "text": "As long as there are no workers or customers yet, cards guide you to the first worker and the first customer."
+                }
+            ]
+        },
+        "checkmate.customers": {
+            "title": "Help — Customers",
+            "actions": [
+                {
+                    "label": "Purpose",
+                    "text": "Customers are the relations you work for. Under each customer sit work addresses with a GPS pin — that pin decides where a worker can start a visit."
+                },
+                {
+                    "label": "Add customer",
+                    "text": "Create a customer with a name and optionally a contact person, e-mail and phone. Then add one or more work addresses."
+                },
+                {
+                    "label": "Work address",
+                    "text": "Street, number, postcode, city and the GPS pin (automatic from the address or entered manually as latitude/longitude). For work under declaration of works (30bis) also fill in the DDT reference; for private customers it may stay empty."
+                },
+                {
+                    "label": "Edit and deactivate",
+                    "text": "Adjust customer and work address via the row. Deactivating keeps the history: no new visit can start at an inactive address."
+                }
+            ]
+        },
+        "checkmate.workers": {
+            "title": "Help — Workers",
+            "actions": [
+                {
+                    "label": "Purpose",
+                    "text": "Workers are field staff without a login. They sign in via the Clock Point link or QR with their name and a personal icon (or PIN), and use one fixed phone."
+                },
+                {
+                    "label": "Add",
+                    "text": "Add a worker with first and last name in a team — one team is enough to start. Tick May clock in anywhere for stand-ins."
+                },
+                {
+                    "label": "NISS (CIAO)",
+                    "text": "Fill in the NISS/INSZ number when the worker takes part in NSSO presence registration. Without NISS no submission is possible for that worker."
+                },
+                {
+                    "label": "Icon, phone and PIN",
+                    "text": "Lost device, lockout or wrong icon: open Edit and release the icon, phone or PIN. The worker then signs in again."
+                },
+                {
+                    "label": "Team leader",
+                    "text": "A worker with the team leader flag can release icons and devices of teammates in the portal."
+                }
+            ]
+        },
+        "checkmate.clock_points": {
+            "title": "Help — Clock Points",
+            "actions": [
+                {
+                    "label": "Purpose",
+                    "text": "A Clock Point is your organisation's sign-in point. The link or QR takes workers to the portal where they clock in, take breaks and register customer visits."
+                },
+                {
+                    "label": "Send the link",
+                    "text": "Mail the sign-in link directly to a worker, or print the QR for a fixed spot. Once signed in, a worker opens the portal via the home-screen icon — no new scan needed."
+                },
+                {
+                    "label": "Multiple Clock Points",
+                    "text": "Working at several fixed spots (warehouse, office)? Create a Clock Point per spot. Clocking in/out and moving require a fresh QR scan; breaks and customer visits do not."
+                }
+            ]
+        },
+        "checkmate.presence": {
+            "title": "Help — Presence",
+            "actions": [
+                {
+                    "label": "Purpose",
+                    "text": "Who is clocked in now and where: per worker the open shift and the running customer visit with customer and address. You see live who works where."
+                },
+                {
+                    "label": "Today's shifts",
+                    "text": "All shifts of the day with clock-in, clock-out times and breaks."
+                }
+            ]
+        },
+        "checkmate.shifts": {
+            "title": "Help — Hours",
+            "actions": [
+                {
+                    "label": "Purpose",
+                    "text": "The hours record per worker: clocked shifts with start, end, breaks and the customer visits within the shift."
+                },
+                {
+                    "label": "Correct",
+                    "text": "An administrator corrects clock-in, clock-out or break with a required reason. Leave the clock-out empty and the shift reopens — for example after a wrong clock-out."
+                },
+                {
+                    "label": "Download report",
+                    "text": "Export the filtered hours as CSV, or print them as PDF via the print dialog."
+                }
+            ]
+        },
+        "checkmate.ciao": {
+            "title": "Help — CIAO (NSSO)",
+            "actions": [
+                {
+                    "label": "Purpose",
+                    "text": "Real-time presence to the NSSO service Check In and Out at Work: IN when a customer visit starts, OUT when it ends and OUT/IN around breaks. Per submission you see status, any error and the NSSO reference."
+                },
+                {
+                    "label": "Statuses",
+                    "text": "Queued (being sent), Sent, Failed and Skipped. For Failed or Skipped you can resubmit after correcting NISS, DDT or enterprise number."
+                },
+                {
+                    "label": "Requirements",
+                    "text": "For submissions you need your organisation's enterprise number (BCE) and the worker's NISS. The DDT reference is optional per work address."
+                },
+                {
+                    "label": "Retention",
+                    "text": "Successful submissions older than twelve months are deleted automatically; the official registration stays with the NSSO."
+                }
+            ]
+        },
+        "checkmate.settings": {
+            "title": "Help — Settings",
+            "actions": [
+                {
+                    "label": "Company details",
+                    "text": "Name, address and logo of your organisation — the logo appears on the portal and in mails."
+                },
+                {
+                    "label": "Request CIAO",
+                    "text": "Request NSSO presence registration with your enterprise number (or foreign VAT number). WinProx confirms activation; from then on customer visits and breaks go to the NSSO in real time. Punches from before activation are not submitted."
+                },
+                {
+                    "label": "Time clock",
+                    "text": "Optional: require a PIN when workers sign in, and offer a link to the Clock Point on the phone's home screen."
+                }
+            ]
+        },
+        "checkmate.subscription": {
+            "title": "Help — Subscription",
+            "actions": [
+                {
+                    "label": "Plan",
+                    "text": "Checkmate bills per active worker per month. You set the number of seats yourself; lowering below the number of active seats is not possible — deactivate workers first."
+                },
+                {
+                    "label": "Delete data",
+                    "text": "Administrators can delete the organisation and all data: download an export first, then finish with password and e-mail confirmation."
+                }
+            ]
+        },
+        "checkmate.portal.signin": {
+            "title": "Help — One-time sign-in (worker)",
+            "actions": [
+                {
+                    "label": "Purpose",
+                    "text": "The worker opens the Clock Point link from the mail once or scans the QR, picks their name and confirms with a personal icon or PIN. That phone is linked from then on."
+                },
+                {
+                    "label": "Home screen",
+                    "text": "Afterwards the WinProx icon on the home screen is enough (Android: one tap; iPhone: Share → Add to Home Screen). No app store, no password."
+                },
+                {
+                    "label": "Other device",
+                    "text": "A different phone is refused until an administrator or team leader releases the device — keeping one phone per worker."
+                }
+            ]
+        },
+        "checkmate.portal.day": {
+            "title": "Help — Clocking and breaks (worker)",
+            "actions": [
+                {
+                    "label": "Clock in",
+                    "text": "At the start of the workday: one tap on clock in. The shift runs until you clock out."
+                },
+                {
+                    "label": "Break",
+                    "text": "Start and stop breaks from the portal; they count on the hours record and — with CIAO active — go to the NSSO as OUT/IN."
+                },
+                {
+                    "label": "Clock out",
+                    "text": "Clock out at the end of the day: it closes the shift and any open customer visit. Signing out of the portal is not the same as clocking out."
+                }
+            ]
+        },
+        "checkmate.portal.visit": {
+            "title": "Help — Customer visit (worker)",
+            "actions": [
+                {
+                    "label": "Purpose",
+                    "text": "A customer visit registers work at a customer. Tap Start working at the customer — your phone checks via GPS that you are within the agreed radius. Outside the radius the visit does not start."
+                },
+                {
+                    "label": "Switch customer",
+                    "text": "From customer A to customer B: the visit at A stops and the one at B starts, in one action."
+                },
+                {
+                    "label": "New customer on the road",
+                    "text": "Customer not in the list? Create it on the road with name and address; the GPS pin comes from your phone. If the name looks like an existing customer you get a soft warning first."
+                },
+                {
+                    "label": "Navigate",
+                    "text": "The Navigate button opens the address in your maps app — it does not register a visit."
+                }
+            ]
+        },
+        "checkmate.portal.hours": {
+            "title": "Help — My hours (worker)",
+            "actions": [
+                {
+                    "label": "Purpose",
+                    "text": "The worker only sees their own shifts of the selected month: per day the first clock-in, last clock-out, break and worked time. No correction and no colleagues' hours."
+                }
+            ]
         }
     }
 }

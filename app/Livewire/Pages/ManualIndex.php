@@ -22,6 +22,10 @@ class ManualIndex extends Component
     public function mount(): void
     {
         $this->mountManualLocale();
+
+        if ($this->manualIsCheckmate()) {
+            $this->redirect(route('manual.checkmate'), navigate: false);
+        }
     }
 
     public function changeLocale(string $locale): void

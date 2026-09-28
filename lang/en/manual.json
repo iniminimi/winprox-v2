@@ -75,7 +75,9 @@
         "technical_sheet": "Technical fact sheet",
         "technical_sheet_desc": "Hosting, GDPR, API, security — for IT (public + printable).",
         "api_webhooks": "API & Webhooks",
-        "api_webhooks_desc": "Integrate with existing software via APIs and webhooks — for decision makers and IT (public + printable)."
+        "api_webhooks_desc": "Integrate with existing software via APIs and webhooks — for decision makers and IT (public + printable).",
+        "checkmate": "Checkmate manual",
+        "checkmate_desc": "Clocking, GPS customer visits and CIAO (NSSO) — the compact manual for the Checkmate plan, print or save as PDF."
     },
     "workers": {
         "cover": {
@@ -87,6 +89,26 @@
         "cover": {
             "title": "Team leader manual",
             "subtitle": "Clock Point portal — coordinate colleagues and tasks"
+        }
+    },
+    "checkmate": {
+        "cover": {
+            "title": "Checkmate manual",
+            "subtitle": "Working on location at customers — clocking, customer visits and CIAO (NSSO)"
+        },
+        "toc": {
+            "admin": "Administration",
+            "portal": "Worker portal"
+        },
+        "sections": {
+            "admin": {
+                "title": "Administration on desktop",
+                "intro": "Dashboard, customers and work addresses, workers, Clock Points, Time (presence, hours, CIAO) and settings."
+            },
+            "portal": {
+                "title": "Worker on the phone",
+                "intro": "The Clock Point portal: one-time sign-in, clocking in, breaks, GPS customer visits and My hours."
+            }
         }
     }
 }

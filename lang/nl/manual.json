@@ -75,7 +75,9 @@
         "technical_sheet": "Technische fiche",
         "technical_sheet_desc": "Hosting, GDPR, API, veiligheid — voor IT (publiek + printbaar).",
         "api_webhooks": "API & Webhooks",
-        "api_webhooks_desc": "Integratie met bestaande software via API's en webhooks — voor beslissers én IT (publiek + printbaar)."
+        "api_webhooks_desc": "Integratie met bestaande software via API's en webhooks — voor beslissers én IT (publiek + printbaar).",
+        "checkmate": "Handleiding Checkmate",
+        "checkmate_desc": "Klokken, klantbezoeken met GPS en CIAO (RSZ) — de beknopte handleiding voor de Checkmate-formule, afdrukken of opslaan als PDF."
     },
     "workers": {
         "cover": {
@@ -87,6 +89,26 @@
         "cover": {
             "title": "Handleiding teamleaders",
             "subtitle": "Clock Point portaal — collega's en taken coördineren"
+        }
+    },
+    "checkmate": {
+        "cover": {
+            "title": "Handleiding Checkmate",
+            "subtitle": "Werken op locatie bij klanten — klokken, klantbezoeken en CIAO (RSZ)"
+        },
+        "toc": {
+            "admin": "Beheer",
+            "portal": "Uitvoerder-portaal"
+        },
+        "sections": {
+            "admin": {
+                "title": "Beheer op de desktop",
+                "intro": "Dashboard, klanten en werkadressen, uitvoerders, Clock Points, Time (aanwezigheid, uren, CIAO) en instellingen."
+            },
+            "portal": {
+                "title": "Uitvoerder op de gsm",
+                "intro": "Het Clock Point-portaal: eenmalig aanmelden, inklokken, pauze, klantbezoeken met GPS en Mijn uren."
+            }
         }
     }
 }

@@ -75,7 +75,9 @@
         "technical_sheet": "Ficha técnica",
         "technical_sheet_desc": "Hosting, RGPD, API, seguridad — para IT (público + imprimible).",
         "api_webhooks": "API & Webhooks",
-        "api_webhooks_desc": "Integración con software existente vía API y webhooks — para decisores e IT (público + imprimible)."
+        "api_webhooks_desc": "Integración con software existente vía API y webhooks — para decisores e IT (público + imprimible).",
+        "checkmate": "Manual Checkmate",
+        "checkmate_desc": "Fichaje, visitas a clientes con GPS y CIAO (RSZ) — el manual compacto de la fórmula Checkmate, para imprimir o guardar en PDF."
     },
     "workers": {
         "cover": {
@@ -87,6 +89,26 @@
         "cover": {
             "title": "Manual de jefe de equipo",
             "subtitle": "Portal Clock Point — coordinar colegas y tareas"
+        }
+    },
+    "checkmate": {
+        "cover": {
+            "title": "Manual Checkmate",
+            "subtitle": "Trabajar en casa del cliente — fichaje, visitas a clientes y CIAO (RSZ)"
+        },
+        "toc": {
+            "admin": "Administración",
+            "portal": "Portal del operario"
+        },
+        "sections": {
+            "admin": {
+                "title": "Administración en el escritorio",
+                "intro": "Panel, clientes y direcciones de obra, operarios, Clock Points, Time (presencia, horas, CIAO) y ajustes."
+            },
+            "portal": {
+                "title": "El operario en el móvil",
+                "intro": "El portal Clock Point: registro único, fichaje de entrada, pausas, visitas a clientes con GPS y Mis horas."
+            }
         }
     }
 }

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Livewire\Pages;
 
+use App\Models\Tenant;
+use App\Support\Checkmate\CheckmateMode;
+use App\Support\Tenancy;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -14,6 +17,11 @@ class ManualHub extends Component
 {
     public function render(): \Illuminate\View\View
     {
-        return view('livewire.pages.manual-hub');
+        $tenantId = Tenancy::id();
+
+        return view('livewire.pages.manual-hub', [
+            'checkmate' => $tenantId !== null
+                && CheckmateMode::isActive(Tenant::query()->find($tenantId)),
+        ]);
     }
 }

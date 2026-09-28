@@ -24,8 +24,8 @@
     <div class="wp-manual-cover__logos">
       <img
         class="wp-manual-cover__logo"
-        src="{{ asset('images/Winprox_logo_300.png') }}"
-        alt="WinProx"
+        src="{{ $brandLogoUrl ?? asset('images/Winprox_logo_300.png') }}"
+        alt="{{ $brandLogoAlt ?? 'WinProx' }}"
       >
       @if (!empty($tenantLogoUrl))
         <img
