@@ -114,6 +114,18 @@ class StripeCheckoutService
             'customer_email' => $actor->email,
         ];
 
+        // Per-seat plannen (Checkmate): quantity = aantal licenties; klant kan
+        // het aantal nog aanpassen op de Checkout-pagina zelf.
+        if ((bool) config("billing.plans.{$plan}.seats_qty_editable", false)) {
+            $payload['line_items[0][quantity]'] = max(
+                1,
+                (int) ($tenant->billing_seats_qty ?? $tenant->currentSeatsCount()),
+            );
+            $payload['line_items[0][adjustable_quantity][enabled]'] = 'true';
+            $payload['line_items[0][adjustable_quantity][minimum]'] = 1;
+            $payload['line_items[0][adjustable_quantity][maximum]'] = 500;
+        }
+
         if (
             $useStoredCustomer
             && is_string($tenant->stripe_customer_id)

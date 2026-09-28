@@ -20,7 +20,9 @@ class FulfillStripeCheckoutSessionAction
 
         $secret = (string) config('stripe.secret');
         $response = Http::withToken($secret)
-            ->get("https://api.stripe.com/v1/checkout/sessions/{$sessionId}");
+            ->get("https://api.stripe.com/v1/checkout/sessions/{$sessionId}", [
+                'expand[]' => 'line_items',
+            ]);
 
         if (! $response->successful()) {
             return false;
@@ -43,7 +45,15 @@ class FulfillStripeCheckoutSessionAction
             return false;
         }
 
-        $this->activate->handle(null, $tenant, $plan, 'stripe');
+        // Per-seat plannen (Checkmate): het effectief betaalde aantal licenties
+        // uit de Checkout-line-items is de seat-limiet.
+        $seatsQty = null;
+        if ((bool) config("billing.plans.{$plan}.seats_qty_editable", false)) {
+            $qty = $response->json('line_items.data.0.quantity');
+            $seatsQty = is_numeric($qty) ? max(1, (int) $qty) : null;
+        }
+
+        $this->activate->handle(null, $tenant, $plan, 'stripe', seatsQty: $seatsQty);
 
         $customerId = $response->json('customer');
         if (is_string($customerId) && $customerId !== '') {

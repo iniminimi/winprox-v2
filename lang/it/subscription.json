@@ -355,6 +355,7 @@
     "qty_required": "Inserisci una quantità.",
     "qty_invalid": "Inserisci una quantità valida (1-500).",
     "below_active": "Non puoi scendere sotto i :active posti attivi — disattiva prima degli operatori.",
-    "not_editable": "Questo piano non ha un numero di posti regolabile."
+    "not_editable": "Questo piano non ha un numero di posti regolabile.",
+    "stripe_failed": "Stripe non è riuscito ad aggiornare la quantità — riprova."
   }
 }

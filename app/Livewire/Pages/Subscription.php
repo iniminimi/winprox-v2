@@ -197,6 +197,7 @@ class Subscription extends Component
             $key = match ($e->getMessage()) {
                 'seats_qty_below_active' => 'subscription.seats.below_active',
                 'seats_qty_not_editable' => 'subscription.seats.not_editable',
+                'seats_qty_stripe_failed' => 'subscription.seats.stripe_failed',
                 default => 'subscription.seats.qty_invalid',
             };
             $this->addError('seatsQtyInput', __($key, ['active' => $tenant->currentSeatsCount()]));

@@ -355,6 +355,7 @@
     "qty_required": "Saisissez une quantité.",
     "qty_invalid": "Saisissez une quantité valide (1-500).",
     "below_active": "Vous ne pouvez pas descendre sous les :active sièges actifs — désactivez d'abord des exécutants.",
-    "not_editable": "Ce plan n'a pas de nombre de sièges ajustable."
+    "not_editable": "Ce plan n'a pas de nombre de sièges ajustable.",
+    "stripe_failed": "Stripe n'a pas pu ajuster la quantité — veuillez réessayer."
   }
 }

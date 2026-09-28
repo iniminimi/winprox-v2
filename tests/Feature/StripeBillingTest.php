@@ -4,11 +4,14 @@ namespace Tests\Feature;
 
 use App\Actions\Billing\ActivateSubscriptionPlanAction;
 use App\Actions\Billing\ExtendPaidSubscriptionFromStripeAction;
+use App\Actions\Billing\FulfillStripeCheckoutSessionAction;
+use App\Actions\Billing\UpdateBillingSeatsQtyAction;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Services\Billing\StripeCheckoutService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Http;
 use Tests\TestCase;
 
 class StripeBillingTest extends TestCase
@@ -138,6 +141,139 @@ class StripeBillingTest extends TestCase
         $this->assertNull($result['error']);
         $this->assertNull($tenant->fresh()->stripe_customer_id);
 
-        \Illuminate\Support\Facades\Http::assertSentCount(2);
+        Http::assertSentCount(2);
+    }
+
+    public function test_checkmate_checkout_sends_seat_quantity_and_adjustable(): void
+    {
+        config([
+            'stripe.enabled' => true,
+            'stripe.offer_checkout' => true,
+            'stripe.secret' => 'sk_test',
+            'stripe.price_ids.checkmate' => 'price_checkmate',
+        ]);
+
+        $tenant = Tenant::factory()->create(['billing_seats_qty' => 7]);
+        $admin = User::factory()->admin()->for($tenant)->create();
+
+        Http::fake([
+            'api.stripe.com/v1/checkout/sessions' => Http::response([
+                'id' => 'cs_cm',
+                'url' => 'https://checkout.stripe.com/c/pay/cs_cm',
+            ], 200),
+        ]);
+
+        $service = app(StripeCheckoutService::class);
+        $this->assertTrue($service->isConfiguredForPlan('checkmate'));
+
+        $result = $service->createCheckoutSession($admin, $tenant, 'checkmate');
+
+        $this->assertSame('https://checkout.stripe.com/c/pay/cs_cm', $result['url']);
+        $this->assertNull($result['error']);
+
+        Http::assertSent(function ($request) {
+            $data = $request->data();
+
+            return str_contains($request->url(), '/v1/checkout/sessions')
+                && $data['line_items[0][price]'] === 'price_checkmate'
+                && (int) $data['line_items[0][quantity]'] === 7
+                && ($data['line_items[0][adjustable_quantity][enabled]'] ?? null) === 'true'
+                && (int) ($data['line_items[0][adjustable_quantity][minimum]'] ?? 0) === 1;
+        });
+    }
+
+    public function test_checkmate_fulfill_sets_billing_seats_qty_from_line_items(): void
+    {
+        config([
+            'stripe.enabled' => true,
+            'stripe.secret' => 'sk_test',
+        ]);
+
+        $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+
+        Http::fake([
+            'api.stripe.com/v1/checkout/sessions/*' => Http::response([
+                'id' => 'cs_paid',
+                'payment_status' => 'paid',
+                'customer' => 'cus_paid',
+                'client_reference_id' => (string) $tenant->id,
+                'metadata' => ['tenant_id' => $tenant->id, 'plan' => 'checkmate'],
+                'line_items' => ['data' => [['quantity' => 12]]],
+            ], 200),
+        ]);
+
+        $this->assertTrue(app(FulfillStripeCheckoutSessionAction::class)->handle('cs_paid'));
+
+        $tenant->refresh();
+        $this->assertSame('checkmate', $tenant->billing_plan);
+        $this->assertSame(12, $tenant->billing_seats_qty);
+        $this->assertSame('cus_paid', $tenant->stripe_customer_id);
+        $this->assertTrue($tenant->isPaidSubscriptionActive());
+    }
+
+    public function test_checkmate_seats_qty_syncs_to_stripe_subscription(): void
+    {
+        config([
+            'stripe.enabled' => true,
+            'stripe.secret' => 'sk_test',
+        ]);
+
+        $tenant = Tenant::factory()->create([
+            'billing_plan' => 'checkmate',
+            'billing_active_until' => now()->addDays(10),
+            'billing_seats_qty' => 3,
+            'stripe_customer_id' => 'cus_cm',
+        ]);
+
+        Http::fake([
+            'api.stripe.com/v1/subscriptions?*' => Http::response([
+                'data' => [[
+                    'id' => 'sub_123',
+                    'metadata' => ['tenant_id' => $tenant->id],
+                    'items' => ['data' => [['id' => 'si_123', 'quantity' => 3]]],
+                ]],
+            ], 200),
+            'api.stripe.com/v1/subscriptions/sub_123' => Http::response(['id' => 'sub_123'], 200),
+        ]);
+
+        app(UpdateBillingSeatsQtyAction::class)->handle($tenant, 8);
+
+        $this->assertSame(8, $tenant->fresh()->billing_seats_qty);
+        Http::assertSent(function ($request) {
+            $data = $request->data();
+
+            return $request->method() === 'POST'
+                && str_contains($request->url(), '/v1/subscriptions/sub_123')
+                && ($data['items[0][id]'] ?? null) === 'si_123'
+                && (int) ($data['items[0][quantity]'] ?? 0) === 8;
+        });
+    }
+
+    public function test_checkmate_seats_qty_not_saved_when_stripe_sync_fails(): void
+    {
+        config([
+            'stripe.enabled' => true,
+            'stripe.secret' => 'sk_test',
+        ]);
+
+        $tenant = Tenant::factory()->create([
+            'billing_plan' => 'checkmate',
+            'billing_active_until' => now()->addDays(10),
+            'billing_seats_qty' => 3,
+            'stripe_customer_id' => 'cus_cm',
+        ]);
+
+        Http::fake([
+            'api.stripe.com/v1/subscriptions*' => Http::response(['error' => ['message' => 'boom']], 500),
+        ]);
+
+        try {
+            app(UpdateBillingSeatsQtyAction::class)->handle($tenant, 8);
+            $this->fail('expected seats_qty_stripe_failed');
+        } catch (\InvalidArgumentException $e) {
+            $this->assertSame('seats_qty_stripe_failed', $e->getMessage());
+        }
+
+        $this->assertSame(3, $tenant->fresh()->billing_seats_qty);
     }
 }

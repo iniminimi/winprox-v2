@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Billing;
 
-use App\Actions\Billing\ActivateSubscriptionPlanAction;
 use App\Actions\Billing\ExtendPaidSubscriptionFromStripeAction;
+use App\Actions\Billing\FulfillStripeCheckoutSessionAction;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -12,7 +12,7 @@ use Illuminate\Support\Carbon;
 class StripeWebhookController
 {
     public function __construct(
-        private ActivateSubscriptionPlanAction $activate,
+        private FulfillStripeCheckoutSessionAction $fulfill,
         private ExtendPaidSubscriptionFromStripeAction $extend,
     ) {}
 
@@ -43,26 +43,17 @@ class StripeWebhookController
     }
 
     /**
+     * Zelfde fulfillment als de success-redirect: haalt de sessie op bij Stripe
+     * (line_items voor per-seat qty) en activeert het plan.
+     *
      * @param  array<string, mixed>  $session
      */
     private function handleCheckoutCompleted(array $session): void
     {
-        $tenantId = (int) ($session['metadata']['tenant_id'] ?? $session['client_reference_id'] ?? 0);
-        $plan = (string) ($session['metadata']['plan'] ?? '');
+        $sessionId = $session['id'] ?? null;
 
-        if ($tenantId <= 0 || $plan === '' || ! array_key_exists($plan, config('billing.plans', []))) {
-            return;
-        }
-
-        $tenant = Tenant::query()->find($tenantId);
-        if ($tenant === null) {
-            return;
-        }
-
-        $this->activate->handle(null, $tenant, $plan, 'stripe_webhook');
-
-        if (is_string($session['customer'] ?? null) && $session['customer'] !== '') {
-            $tenant->forceFill(['stripe_customer_id' => $session['customer']])->save();
+        if (is_string($sessionId) && $sessionId !== '') {
+            $this->fulfill->handle($sessionId);
         }
     }
 

@@ -19,6 +19,8 @@ return [
         'winprox_50_time'  => env('STRIPE_PRICE_WINPROX_50_TIME'),
         'winprox_100'      => env('STRIPE_PRICE_WINPROX_100'),
         'winprox_100_time' => env('STRIPE_PRICE_WINPROX_100_TIME'),
+        // Checkmate: per-seat prijs (€5/licentie); quantity = aantal seats.
+        'checkmate'        => env('STRIPE_PRICE_WINPROX_CHECKMATE'),
         // Legacy maandtiers (bestaande abonnees / oude Price IDs).
         'facility_10'   => env('STRIPE_PRICE_FACILITY_10'),
         'facility_25'   => env('STRIPE_PRICE_FACILITY_25'),

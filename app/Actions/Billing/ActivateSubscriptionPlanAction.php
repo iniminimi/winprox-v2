@@ -19,6 +19,7 @@ class ActivateSubscriptionPlanAction
 
     /**
      * @param  'manual'|'stripe'|'stripe_webhook'|'platform'  $source
+     * @param  ?int  $seatsQty  Betaalde seat-quantity uit Stripe Checkout (per-seat plannen).
      */
     public function handle(
         ?User $actor,
@@ -26,6 +27,7 @@ class ActivateSubscriptionPlanAction
         string $plan,
         string $source = 'manual',
         ?int $unitsCap = null,
+        ?int $seatsQty = null,
     ): Tenant {
         $plan = Tenant::normalizeBillingPlanKey($plan) ?? $plan;
 
@@ -53,9 +55,10 @@ class ActivateSubscriptionPlanAction
             'billing_units_cap' => $plan === 'corporate'
                 ? ($unitsCap ?? $tenant->billing_units_cap)
                 : null,
-            // Per-seat plannen (Checkmate): start qty = huidige bezetting.
+            // Per-seat plannen (Checkmate): qty = betaald aantal uit Checkout,
+            // anders huidige bezetting.
             'billing_seats_qty' => $seatsQtyEditable
-                ? max(1, $tenant->currentSeatsCount())
+                ? max(1, $seatsQty ?? $tenant->currentSeatsCount())
                 : null,
         ])->save();
 

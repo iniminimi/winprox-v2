@@ -355,6 +355,7 @@
     "qty_required": "Enter a quantity.",
     "qty_invalid": "Enter a valid quantity (1-500).",
     "below_active": "You cannot go below the :active active seats — deactivate workers first.",
-    "not_editable": "This plan does not have an adjustable seat count."
+    "not_editable": "This plan does not have an adjustable seat count.",
+    "stripe_failed": "Stripe could not update the quantity — please try again."
   }
 }

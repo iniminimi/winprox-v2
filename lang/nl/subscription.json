@@ -355,6 +355,7 @@
     "qty_required": "Vul een aantal in.",
     "qty_invalid": "Vul een geldig aantal in (1-500).",
     "below_active": "Je kan niet onder de :active actieve seats zakken — deactiveer eerst uitvoerders.",
-    "not_editable": "Dit plan heeft geen instelbaar aantal seats."
+    "not_editable": "Dit plan heeft geen instelbaar aantal seats.",
+    "stripe_failed": "Stripe kon het aantal niet aanpassen — probeer het opnieuw."
   }
 }
