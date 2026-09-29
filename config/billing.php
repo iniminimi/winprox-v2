@@ -3,7 +3,7 @@
 /**
  * Billing — WinProx (maand, licenties) + Corporate.
  *
- * Publieke catalogus: winprox_5 / winprox_10 / winprox_25 / winprox_50 + corporate.
+ * Publieke catalogus: checkmate + winprox_5 / winprox_10 / winprox_25 / winprox_50 + corporate.
  * Time (prikklok) is inbegrepen. CIAO (RSZ) op aanvraag, zonder extra SKU.
  * IoT + ESG + API: uitsluitend Corporate. 100+ licenties = Corporate.
  *
@@ -177,6 +177,14 @@ return [
     ],
 
     'plans' => array_merge(
+        [
+            // Checkmate (RSZ-compliance preset) — self-serve in-app (public_catalog);
+            // goedkoopste formule, staat bovenaan de publieke catalogus.
+            'checkmate' => [
+                'label_key'      => 'subscription.plans.checkmate.name',
+                'public_catalog' => true,
+            ] + $checkmatePreset(1, true),
+        ],
         $winproxPlan(5, 50, 10, 59, true),
         $winproxPlan(10, 100, 20, 99, true),
         $winproxPlan(25, 250, 30, 199, true),
@@ -215,12 +223,7 @@ return [
                 'public_catalog'         => true,
             ],
 
-            // Checkmate (RSZ-compliance preset) — self-serve in-app (public_catalog);
-            // de proefvariant is enkel platform-assignable.
-            'checkmate' => [
-                'label_key'      => 'subscription.plans.checkmate.name',
-                'public_catalog' => true,
-            ] + $checkmatePreset(1, true),
+            // Checkmate-proef — enkel platform-assignable.
             'checkmate_trial' => [
                 'label_key'           => 'subscription.plans.checkmate_trial.name',
                 'platform_assignable' => true,
