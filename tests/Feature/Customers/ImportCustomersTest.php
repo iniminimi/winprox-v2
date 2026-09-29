@@ -169,6 +169,36 @@ it('imports customers from xlsx', function () {
         ->and($result['locations_count'])->toBe(1);
 });
 
+it('imports a work address with a DDT reference', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    $csv = "name,street,postal_code,city,contractual_relationship_reference\n";
+    $csv .= "Bakkerij Peeters,Kerkstraat,2000,Antwerpen,W123456789012\n";
+
+    $result = runCustomerImport($tenant, $user, $csv);
+
+    expect($result['success'])->toBeTrue();
+    expect(Location::where('tenant_id', $tenant->id)->sole()->contractual_relationship_reference)
+        ->toBe('W123456789012');
+});
+
+it('fails on an invalid DDT reference', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    $csv = "name,street,postal_code,city,contractual_relationship_reference\n";
+    $csv .= "Bakkerij Peeters,Kerkstraat,2000,Antwerpen,te-kort\n";
+
+    $result = runCustomerImport($tenant, $user, $csv);
+
+    expect($result['success'])->toBeFalse()
+        ->and($result['errors'])->not->toBeEmpty()
+        ->and(Location::where('tenant_id', $tenant->id)->count())->toBe(0);
+});
+
 it('fails when the name header is missing', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);

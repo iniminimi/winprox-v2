@@ -86,7 +86,12 @@
                             <div class="wp-data-row" wire:key="customer-location-{{ $location->id }}">
                                 <div class="wp-data-row-main">
                                     <span class="wp-data-row-title">{{ $location->name }}</span>
-                                    <p class="wp-issue-card-meta">{{ $location->formattedAddress() }}</p>
+                                    <p class="wp-issue-card-meta">
+                                        {{ $location->formattedAddress() }}
+                                        @if ($location->contractual_relationship_reference)
+                                            · {{ __('locations.fields.ddt') }}: {{ $location->contractual_relationship_reference }}
+                                        @endif
+                                    </p>
                                     @if (! $location->hasWorkVisitPin())
                                         <p class="wp-hint">{{ __('customers.location_no_pin') }}</p>
                                     @endif
@@ -96,6 +101,7 @@
                                         <span class="wp-pill wp-pill--closed">{{ __('customers.inactive') }}</span>
                                     @endunless
                                     @can('update', $location)
+                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openLocationEdit({{ $location->id }})">{{ __('common.button.edit') }}</button>
                                         <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleLocationActive({{ $location->id }})">
                                             {{ $location->is_active ? __('locations.deactivate') : __('locations.activate') }}
                                         </button>
@@ -211,7 +217,9 @@
         <x-wp-modal closeMethod="closeLocationModal" aria-labelledby="customer-location-modal-title">
             <form wire:submit="saveLocation" class="wp-card wp-card-pad wp-stack wp-modal-card">
                 <div class="wp-modal-head">
-                    <h2 id="customer-location-modal-title" class="wp-h2">{{ __('customers.location_create_title') }}</h2>
+                    <h2 id="customer-location-modal-title" class="wp-h2">
+                        {{ $editingLocationId ? __('customers.location_edit_title') : __('customers.location_create_title') }}
+                    </h2>
                     <x-wp-modal-close wire:click="closeLocationModal" />
                 </div>
 
@@ -250,6 +258,24 @@
                         <input type="text" id="locationFormCity" class="wp-input" wire:model="locationFormCity" autocomplete="off" @paste="$wire.applyLocationAddressPaste($event.clipboardData.getData('text'))">
                         @error('city') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
+                </div>
+
+                <div class="wp-form-grid-2">
+                    <div class="wp-field">
+                        <label class="wp-label" for="locationFormCountryCode">{{ __('locations.fields.country_code') }}</label>
+                        <input type="text" id="locationFormCountryCode" class="wp-input" wire:model="locationFormCountryCode" maxlength="2" autocomplete="off">
+                        @error('country_code') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    @if ($locationDdtVisible)
+                        <div class="wp-field">
+                            <x-wp-tooltip :text="__('locations.fields.ddt_tooltip')" wrap>
+                                <label class="wp-label" for="locationFormDdt">{{ __('locations.fields.ddt') }}</label>
+                            </x-wp-tooltip>
+                            <input type="text" id="locationFormDdt" class="wp-input" wire:model="locationFormDdt" maxlength="13" autocomplete="off">
+                            <p class="wp-hint">{{ __('locations.fields.ddt_hint') }}</p>
+                            @error('contractual_relationship_reference') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                    @endif
                 </div>
 
                 @include('partials.wp-gps-coords-fields', [

@@ -14,6 +14,7 @@
     "edit_title": "Edit customer",
     "add_location": "Add work address",
     "location_create_title": "Add work address",
+    "location_edit_title": "Edit work address",
     "location_no_pin": "No GPS pin — a work visit cannot start here yet.",
     "form": {
         "name": "Customer name",

@@ -28,6 +28,8 @@
         $primary = ['endBreak', __('time.portal.clock.end_break')];
     } elseif ($openElsewhere && ($canPunch ?? false)) {
         $primary = ['transferToThisClockPoint', __('time.portal.clock.transfer_here')];
+    } elseif ($openShift !== null && ($canPunch ?? false)) {
+        $primary = ['clockOut', __('time.portal.clock.out')];
     }
 @endphp
 <div class="wp-portal-now" x-data="{ open: false }">

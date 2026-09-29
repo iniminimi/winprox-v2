@@ -78,7 +78,8 @@ Whitelist-schermen:
   en de laatste klantbezoeken. Geen facility-tegels, starter packs of
   meldingen-feed.
 - **Klanten** (`/klanten`, nieuw) — apart scherm; klant is de mentale eenheid.
-  Lijst met klanten, uitklapbaar hun werkadressen, modal-aanmaak/bewerk.
+  Lijst met klanten, uitklapbaar hun werkadressen, modal-aanmaak/bewerk
+  (klant én werkadres — met DDT-referentie voor CIAO en GPS-pin).
   **CSV/Excel-import** zoals bij locaties: `name` verplicht; optioneel
   `contact_name`, `email`, `phone` en werkadres-kolommen (straat + postcode +
   plaats samen verplicht, plus DDT-referentie en GPS-pin). Zelfde klantnaam op

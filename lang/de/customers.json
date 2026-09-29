@@ -14,6 +14,7 @@
     "edit_title": "Kunde bearbeiten",
     "add_location": "Arbeitsadresse hinzufügen",
     "location_create_title": "Arbeitsadresse hinzufügen",
+    "location_edit_title": "Arbeitsadresse bearbeiten",
     "location_no_pin": "Kein GPS-Pin — ein Arbeitsbesuch kann hier noch nicht starten.",
     "form": {
         "name": "Kundenname",

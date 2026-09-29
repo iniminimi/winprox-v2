@@ -643,6 +643,73 @@ it('weigert een klant zonder naam via het formulier', function () {
     expect(Customer::where('tenant_id', $tenant->id)->count())->toBe(0);
 });
 
+it('bewerkt een werkadres met DDT via /klanten', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+    $customer = Customer::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'customer_id' => $customer->id,
+        'street' => 'Kerkstraat',
+        'postal_code' => '2000',
+        'city' => 'Antwerpen',
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(CustomersIndex::class)
+        ->call('openLocationEdit', $location->id)
+        ->assertSet('locationFormStreet', 'Kerkstraat')
+        ->set('locationFormCity', 'Berchem')
+        ->set('locationFormDdt', 'W123456789012')
+        ->call('saveLocation')
+        ->assertHasNoErrors();
+
+    $fresh = $location->fresh();
+
+    expect($fresh->city)->toBe('Berchem')
+        ->and($fresh->contractual_relationship_reference)->toBe('W123456789012')
+        ->and($fresh->customer_id)->toBe($customer->id);
+});
+
+it('maakt een werkadres met DDT aan via /klanten', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+    $customer = Customer::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(CustomersIndex::class)
+        ->call('openLocationCreate', $customer->id)
+        ->set('locationFormStreet', 'Kerkstraat')
+        ->set('locationFormPostalCode', '2000')
+        ->set('locationFormCity', 'Antwerpen')
+        ->set('locationFormDdt', 'W123456789012')
+        ->call('saveLocation')
+        ->assertHasNoErrors();
+
+    $location = Location::where('tenant_id', $tenant->id)->sole();
+
+    expect($location->customer_id)->toBe($customer->id)
+        ->and($location->contractual_relationship_reference)->toBe('W123456789012');
+});
+
+it('weigert een ongeldige DDT op het werkadres-formulier', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+    $customer = Customer::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(CustomersIndex::class)
+        ->call('openLocationCreate', $customer->id)
+        ->set('locationFormStreet', 'Kerkstraat')
+        ->set('locationFormPostalCode', '2000')
+        ->set('locationFormCity', 'Antwerpen')
+        ->set('locationFormDdt', 'te-kort')
+        ->call('saveLocation')
+        ->assertHasErrors(['contractual_relationship_reference' => 'regex']);
+
+    expect(Location::where('tenant_id', $tenant->id)->count())->toBe(0);
+});
+
 it('vult werkadres-velden automatisch bij het plakken van een Google Maps-adres', function () {
     $tenant = checkmateTenant();
     $admin = User::factory()->admin()->for($tenant)->create();

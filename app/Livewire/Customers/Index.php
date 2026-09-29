@@ -10,10 +10,12 @@ use App\Actions\Customers\UpdateCustomerAction;
 use App\Actions\Locations\ActivateLocationAction;
 use App\Actions\Locations\CreateLocationAction;
 use App\Actions\Locations\DeactivateLocationAction;
+use App\Actions\Locations\UpdateLocationAction;
 use App\Data\Customers\DeleteCustomerImportBatchData;
 use App\Data\Customers\ImportCustomersData;
 use App\Http\Requests\Customers\ImportCustomersRequest;
 use App\Http\Requests\Locations\StoreLocationRequest;
+use App\Http\Requests\Locations\UpdateLocationRequest;
 use App\Livewire\Concerns\AppliesGpsCoordinatePair;
 use App\Livewire\Concerns\AppliesPastedAddress;
 use App\Models\Customer;
@@ -85,6 +87,8 @@ class Index extends Component
 
     public ?int $locationCustomerId = null;
 
+    public ?int $editingLocationId = null;
+
     public string $locationFormName = '';
 
     public string $locationFormStreet = '';
@@ -95,6 +99,11 @@ class Index extends Component
 
     public string $locationFormCity = '';
 
+    public string $locationFormCountryCode = 'BE';
+
+    public string $locationFormDdt = '';
+
+    public string $locationFormNotes = '';
 
     public string $locationFormLatitude = '';
 
@@ -204,7 +213,29 @@ class Index extends Component
         $this->authorize('update', $customer);
 
         $this->locationCustomerId = (int) $customer->id;
+        $this->editingLocationId = null;
         $this->resetLocationForm();
+        $this->showLocationModal = true;
+    }
+
+    public function openLocationEdit(int $locationId): void
+    {
+        $location = Location::findOrFail($locationId);
+        $this->authorize('update', $location);
+
+        $this->editingLocationId = (int) $location->id;
+        $this->locationCustomerId = $location->customer_id !== null ? (int) $location->customer_id : null;
+        $this->locationFormName = (string) $location->name;
+        $this->locationFormStreet = (string) ($location->street ?? $location->address ?? '');
+        $this->locationFormHouseNumber = (string) ($location->house_number ?? '');
+        $this->locationFormPostalCode = (string) ($location->postal_code ?? '');
+        $this->locationFormCity = (string) ($location->city ?? '');
+        $this->locationFormCountryCode = (string) ($location->country_code ?? 'BE');
+        $this->locationFormDdt = (string) ($location->contractual_relationship_reference ?? '');
+        $this->locationFormNotes = (string) ($location->notes ?? '');
+        $this->locationFormLatitude = $location->latitude !== null ? (string) $location->latitude : '';
+        $this->locationFormLongitude = $location->longitude !== null ? (string) $location->longitude : '';
+        $this->resetErrorBag();
         $this->showLocationModal = true;
     }
 
@@ -212,38 +243,55 @@ class Index extends Component
     {
         $this->showLocationModal = false;
         $this->locationCustomerId = null;
+        $this->editingLocationId = null;
         $this->resetLocationForm();
     }
 
-    public function saveLocation(CreateLocationAction $create): void
+    public function saveLocation(CreateLocationAction $create, UpdateLocationAction $update): void
     {
         $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $payload = [
+            'name' => $this->locationFormName,
+            'street' => $this->locationFormStreet,
+            'house_number' => $this->locationFormHouseNumber,
+            'postal_code' => $this->locationFormPostalCode,
+            'city' => $this->locationFormCity,
+            'country_code' => $this->locationFormCountryCode,
+            'notes' => $this->locationFormNotes,
+            'contractual_relationship_reference' => $this->locationFormDdt,
+            'latitude' => $this->locationFormLatitude !== '' ? $this->locationFormLatitude : null,
+            'longitude' => $this->locationFormLongitude !== '' ? $this->locationFormLongitude : null,
+        ];
+
+        if ($this->editingLocationId !== null) {
+            $location = Location::findOrFail($this->editingLocationId);
+            $this->authorize('update', $location);
+            $validated = UpdateLocationRequest::validatePayload($payload);
+            $update->handle($location, $validated, (int) auth()->id());
+
+            $this->expandedCustomerIds[(int) $location->customer_id] = true;
+            $this->closeLocationModal();
+            session()->flash('success', __('customers.location_saved'));
+
+            return;
+        }
+
         $customer = $this->locationCustomerId !== null ? Customer::find($this->locationCustomerId) : null;
-        if (! $tenant instanceof Tenant || ! $customer instanceof Customer) {
+        if (! $customer instanceof Customer) {
             return;
         }
         $this->authorize('update', $customer);
 
-        $validator = Validator::make(
-            [
-                'name' => $this->locationFormName,
-                'street' => $this->locationFormStreet,
-                'house_number' => $this->locationFormHouseNumber,
-                'postal_code' => $this->locationFormPostalCode,
-                'city' => $this->locationFormCity,
-                'latitude' => $this->locationFormLatitude !== '' ? $this->locationFormLatitude : null,
-                'longitude' => $this->locationFormLongitude !== '' ? $this->locationFormLongitude : null,
-            ],
-            StoreLocationRequest::ruleSet(),
-            StoreLocationRequest::messageSet(),
-        );
-        StoreLocationRequest::applyMinimumIdentityCheck($validator);
-        $validated = $validator->validate();
+        $validated = StoreLocationRequest::validatePayload($payload);
 
         try {
             $create->handle([
                 ...$validated,
-                'country_code' => 'BE',
+                'country_code' => strtoupper((string) ($validated['country_code'] ?? 'BE')),
                 'customer_id' => (int) $customer->id,
                 'with_site_unit' => ! $tenant->checkmateMode(),
             ], (int) $tenant->id, (int) auth()->id());
@@ -489,6 +537,8 @@ class Index extends Component
             'customers' => $customers,
             'tenant' => $tenant,
             'checkmateMode' => $tenant?->checkmateMode() ?? false,
+            'locationDdtVisible' => $tenant !== null
+                && ($tenant->presenceComplianceEnabled() || $tenant->presenceComplianceRequested() || $tenant->checkmateMode()),
             'canImportCustomersCsv' => $tenant?->hasCsvCustomersImport() ?? false,
             'customerImportBatches' => $tenant instanceof Tenant
                 ? CustomerImportBatchRegistry::recentBatchesForTenant((int) $tenant->id)
@@ -542,6 +592,9 @@ class Index extends Component
         $this->locationFormHouseNumber = '';
         $this->locationFormPostalCode = '';
         $this->locationFormCity = '';
+        $this->locationFormCountryCode = 'BE';
+        $this->locationFormDdt = '';
+        $this->locationFormNotes = '';
         $this->locationFormLatitude = '';
         $this->locationFormLongitude = '';
         $this->resetErrorBag();

@@ -14,6 +14,7 @@
     "edit_title": "Modifica cliente",
     "add_location": "Aggiungi indirizzo di lavoro",
     "location_create_title": "Aggiungi indirizzo di lavoro",
+    "location_edit_title": "Modifica indirizzo di lavoro",
     "location_no_pin": "Nessun pin GPS — una visita di lavoro non può ancora iniziare qui.",
     "form": {
         "name": "Nome del cliente",

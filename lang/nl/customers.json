@@ -14,6 +14,7 @@
     "edit_title": "Klant bewerken",
     "add_location": "Werkadres toevoegen",
     "location_create_title": "Werkadres toevoegen",
+    "location_edit_title": "Werkadres bewerken",
     "location_no_pin": "Geen GPS-pin — een werkbezoek kan hier nog niet starten.",
     "form": {
         "name": "Klantnaam",

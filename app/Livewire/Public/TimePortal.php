@@ -69,6 +69,7 @@ use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\Worker;
 use App\Models\WorkerDevice;
+use App\Models\WorkShift;
 use App\Support\Checkmate\CheckmateMode;
 use App\Support\Portal\ClockPointScanGrant;
 use App\Support\Portal\TimePortalData;
@@ -435,6 +436,7 @@ class TimePortal extends Component
         $this->taskBaselineSyncedThisVisit = false;
         app(SyncWorkerOpenTaskBaselineAction::class)->handle($worker);
         $this->taskBaselineSyncedThisVisit = true;
+        $this->punchVerifiedWorkerOnScan();
     }
 
     public function signOut(): void
@@ -795,6 +797,7 @@ class TimePortal extends Component
         $this->taskBaselineSyncedThisVisit = false;
         app(SyncWorkerOpenTaskBaselineAction::class)->handle($worker);
         $this->taskBaselineSyncedThisVisit = true;
+        $this->punchVerifiedWorkerOnScan();
     }
 
     public function completePinSetup(SetWorkerClockPinAction $setPin): void
@@ -831,6 +834,7 @@ class TimePortal extends Component
         $this->taskBaselineSyncedThisVisit = false;
         app(SyncWorkerOpenTaskBaselineAction::class)->handle($deviceWorker);
         $this->taskBaselineSyncedThisVisit = true;
+        $this->punchVerifiedWorkerOnScan();
     }
 
     public function signInWithPin(ConfirmWorkerClockPinAction $confirmPin): void
@@ -881,9 +885,10 @@ class TimePortal extends Component
         $this->taskBaselineSyncedThisVisit = false;
         app(SyncWorkerOpenTaskBaselineAction::class)->handle($worker);
         $this->taskBaselineSyncedThisVisit = true;
+        $this->punchVerifiedWorkerOnScan();
     }
 
-    public function clockIn(ClockInAction $clockIn, FindOpenWorkShiftForWorkerAction $findShift, TransferOpenWorkShiftToClockPointAction $transfer): void
+    public function clockIn(FindOpenWorkShiftForWorkerAction $findShift): void
     {
         $worker = $this->authorizedWorker();
         $clockPoint = $this->activeClockPoint();
@@ -891,24 +896,59 @@ class TimePortal extends Component
             return;
         }
 
+        $openShift = $findShift->handle($worker);
+        if ($openShift !== null && $openShift->currentClockPointId() === (int) $clockPoint->id) {
+            $this->portalFlash('time.portal.errors.already_clocked_in');
+
+            return;
+        }
+
         if (! $this->requirePunchScanGrant()) {
             return;
         }
 
-        $openShift = $findShift->handle($worker);
-        if ($openShift !== null && $openShift->currentClockPointId() !== (int) $clockPoint->id) {
+        $this->punchInOrTransfer($worker, $clockPoint, $openShift);
+    }
+
+    /**
+     * Prikklok: aanmelden is inklokken. Na een geslaagde verificatie binnen een
+     * verse scan meteen prikken — inklokken, of verplaatsen naar dit punt.
+     * Al open op dit punt → status tonen, geen prik (scan blijft voor uitklokken).
+     */
+    private function punchVerifiedWorkerOnScan(): void
+    {
+        if (! ClockPointScanGrant::isValid($this->clockPointId)) {
+            return;
+        }
+
+        $worker = $this->verifiedWorker();
+        $clockPoint = $this->activeClockPoint();
+        if ($worker === null || $clockPoint === null) {
+            return;
+        }
+
+        $openShift = app(FindOpenWorkShiftForWorkerAction::class)->handle($worker);
+        if ($openShift !== null && $openShift->currentClockPointId() === (int) $clockPoint->id) {
+            return;
+        }
+
+        $this->punchInOrTransfer($worker, $clockPoint, $openShift);
+    }
+
+    /**
+     * Voer de prik van deze scan uit: verplaatsen bij een open dienst elders,
+     * anders een nieuwe open dienst starten. Consumeert de scan-grant.
+     */
+    private function punchInOrTransfer(Worker $worker, ClockPoint $clockPoint, ?WorkShift $openShift): void
+    {
+        if ($openShift !== null) {
             try {
                 [$device, $token] = $this->clockDeviceContext($worker);
-                $transfer->handle($worker, $clockPoint, $device, null, true, $token);
+                app(TransferOpenWorkShiftToClockPointAction::class)->handle($worker, $clockPoint, $device, null, true, $token);
                 ClockPointScanGrant::consume((int) $clockPoint->id);
                 $this->portalFlash('time.portal.transferred');
             } catch (InvalidArgumentException $e) {
-                if ($this->flashClockDeviceError($e)) {
-                    return;
-                }
-                if ($e->getMessage() === 'shift_already_open') {
-                    $this->portalFlash('time.portal.errors.already_clocked_in');
-                }
+                $this->flashPunchError($e);
             }
 
             return;
@@ -917,7 +957,7 @@ class TimePortal extends Component
         try {
             [$device, $token] = $this->clockDeviceContext($worker);
             [$lat, $lng] = $this->consumeClockGps();
-            $clockIn->handle(
+            app(ClockInAction::class)->handle(
                 $worker,
                 $clockPoint,
                 $device,
@@ -929,13 +969,22 @@ class TimePortal extends Component
                 $lng,
             );
             ClockPointScanGrant::consume((int) $clockPoint->id);
+            $this->portalFlash('time.portal.clock.clocked_in_at_tenant', [
+                'tenant' => (string) (Tenant::query()->whereKey($this->tenantId)->value('name') ?? ''),
+                'time' => now()->format('H:i'),
+            ]);
         } catch (InvalidArgumentException $e) {
-            if ($this->flashClockDeviceError($e)) {
-                return;
-            }
-            if ($e->getMessage() === 'shift_already_open') {
-                $this->portalFlash('time.portal.errors.already_clocked_in');
-            }
+            $this->flashPunchError($e);
+        }
+    }
+
+    private function flashPunchError(InvalidArgumentException $e): void
+    {
+        if ($this->flashClockDeviceError($e)) {
+            return;
+        }
+        if ($e->getMessage() === 'shift_already_open') {
+            $this->portalFlash('time.portal.errors.already_clocked_in');
         }
     }
 
