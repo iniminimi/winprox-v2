@@ -94,7 +94,7 @@
                 "body": "Alles öffnet im Browser. Kein App Store.",
                 "items": [
                     "Unit-QR: melden, optional Unit-Check und Messwerte.",
-                    "Clock-Point-QR: anmelden (Name + Icon) und Teamaufgaben; stempeln nur mit Time.",
+                    "Clock-Point-QR: anmelden (Name + Icon oder PIN) stempelt mit Time direkt ein; plus Teamaufgaben.",
                     "Druckbar als Aufkleberbogen oder A6/A5/A4.",
                     "Ein geladener Unit-QR bleibt ohne Empfang nutzbar; stempeln braucht einen frischen Scan.",
                     "Optional: Clock-Point-Link auf dem Handy-Startbildschirm."

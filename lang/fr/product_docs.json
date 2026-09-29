@@ -94,7 +94,7 @@
                 "body": "Tout s’ouvre dans le navigateur. Pas d’App Store.",
                 "items": [
                     "QR unité : signaler, contrôle d’unité et mesures facultatifs.",
-                    "QR Clock Point : s’identifier (nom + icône) et tâches d’équipe ; pointer seulement avec Time.",
+                    "QR Clock Point : s’identifier (nom + icône ou PIN) pointe directement avec Time ; tâches d’équipe incluses.",
                     "Imprimable en planche d’autocollants ou A6/A5/A4.",
                     "Un QR unité déjà chargé reste utilisable sans réseau ; pointer exige un nouveau scan.",
                     "Facultatif : lien Clock Point sur l’écran d’accueil du téléphone."

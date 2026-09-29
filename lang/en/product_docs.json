@@ -94,7 +94,7 @@
                 "body": "Everything opens in the browser. No App Store.",
                 "items": [
                     "Unit QR: report issues, optional unit check and measurements.",
-                    "Clock Point QR: sign in (name + icon) and team tasks; clock-in only with Time.",
+                    "Clock Point QR: signing in (name + icon or PIN) clocks you in right away with Time; plus team tasks.",
                     "Printable as sticker sheets or A6/A5/A4.",
                     "A loaded unit QR stays usable offline; clock-in needs a fresh scan.",
                     "Optional: Clock Point link on the phone home screen."

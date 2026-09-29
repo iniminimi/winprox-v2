@@ -10,6 +10,7 @@ use App\Models\InternalTeam;
 use App\Models\Tenant;
 use App\Models\Worker;
 use App\Models\WorkShift;
+use App\Support\Portal\ClockPointScanGrant;
 use App\Support\Tenancy;
 use Livewire\Features\SupportLockedProperties\CannotUpdateLockedPropertyException;
 use Livewire\Livewire;
@@ -142,7 +143,15 @@ it('toont een lege maand en bladert naar vorige maand', function () {
         'status' => WorkShiftStatus::Closed,
     ]);
 
-    signInHoursWorker($clockPoint)
+    $portal = Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token]);
+    ClockPointScanGrant::consume($clockPoint->id);
+
+    $portal
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
         ->call('openHours')
         ->assertSee(__('time.portal.hours.empty'), false)
         ->assertDontSee('07:15', false)

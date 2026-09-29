@@ -318,11 +318,8 @@ it('toont op clock point B dat de worker elders is ingeklokt en laat verplaatsen
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
-        ->assertSee(__('time.portal.clock.transfer_here'), false)
-        ->assertSee('Vestiging A', false)
-        ->assertSee(__('time.portal.clock.open_elsewhere_hint'), false)
-        ->call('transferToThisClockPoint')
-        ->assertSet('flashMessage', __('time.portal.transferred'));
+        ->assertSet('flashMessage', __('time.portal.transferred'))
+        ->assertSee('Ingang A', false);
 
     expect(WorkShift::query()->where('worker_id', $worker->id)->count())->toBe(1);
     $open = WorkShift::query()->where('worker_id', $worker->id)->where('status', WorkShiftStatus::Open)->first();
@@ -360,7 +357,6 @@ it('verplaatst automatisch bij inklokken als er elders al een open shift is', fu
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'star')
         ->call('signInWithIcon')
-        ->call('clockIn')
         ->assertSet('flashMessage', __('time.portal.transferred'));
 
     expect(WorkShift::query()->where('worker_id', $worker->id)->count())->toBe(1);
@@ -501,7 +497,7 @@ it('verbergt de kop Aanmelden na een geslaagde aanmelding', function () {
         ->assertSeeHtml('wp-disclosure-chevron')
         ->assertSee('Janssen Jan', false)
         ->assertSee(__('time.portal.clock.signed_in_since', ['date' => now()->format('d-m-Y'), 'time' => now()->format('H:i')]), false)
-        ->assertSee(__('time.portal.clock.not_clocked_in'), false)
+        ->assertSee(__('time.portal.clock.clocked_in_at_tenant', ['tenant' => $tenant->name, 'time' => now()->format('H:i')]), false)
         ->assertSee(__('portal.worker.sign_out'), false)
         ->assertDontSee(__('portal.worker.different_worker'), false);
 });
@@ -527,7 +523,6 @@ it('sluit Afmelden de portaal-sessie zonder uit te klokken of de gsm los te kopp
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
-        ->call('clockIn')
         ->assertSee(__('portal.worker.sign_out'), false);
 
     $boundDeviceId = (int) $worker->fresh()->clock_device_id;
@@ -536,7 +531,7 @@ it('sluit Afmelden de portaal-sessie zonder uit te klokken of de gsm los te kopp
 
     $portal
         ->call('signOut')
-        ->assertDontSee(__('common.welcome'), false)
+        ->assertDontSeeHtml('wp-portal-now')
         ->assertDontSeeHtml('wire:click="signOut"')
         ->assertSee(__('portal.worker.confirm_icon'), false)
         ->assertDontSee(__('portal.worker.different_worker'), false);
@@ -566,13 +561,15 @@ it('toont het time-portaal en laat een worker inklokken na icoonbevestiging', fu
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
-        ->call('clockIn')
-        ->assertSet('flashMessage', '')
+        ->assertSet('flashMessage', __('time.portal.clock.clocked_in_at_tenant', [
+            'tenant' => $tenant->name,
+            'time' => now()->format('H:i'),
+        ]))
         ->assertSee(__('time.portal.clock.clocked_in_at_tenant', [
             'tenant' => $tenant->name,
             'time' => now()->format('H:i'),
         ]), false)
-        ->assertSee(__('time.portal.clock.no_break'), false);
+        ->assertSee(__('time.portal.clock.start_break'), false);
 
     expect(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeTrue();
 });
@@ -601,9 +598,13 @@ it('laat een claimable worker een icoon kiezen via clock point QR', function () 
         ->assertSet('showRegisterForm', true)
         ->set('selected_icon_slug', 'star')
         ->call('completeOnboarding')
-        ->assertSet('flashMessage', __('portal.team.onboarding_done'));
+        ->assertSet('flashMessage', __('time.portal.clock.clocked_in_at_tenant', [
+            'tenant' => $tenant->name,
+            'time' => now()->format('H:i'),
+        ]));
 
-    expect($worker->fresh()->field_icon_slug)->toBe('star');
+    expect($worker->fresh()->field_icon_slug)->toBe('star')
+        ->and(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeTrue();
 });
 
 it('toont open registratie wanneer er precies één leeg team is', function () {
@@ -620,9 +621,14 @@ it('toont open registratie wanneer er precies één leeg team is', function () {
         ->set('last_name', 'Nieuw')
         ->set('selected_icon_slug', 'bell')
         ->call('completeOnboarding')
-        ->assertSet('flashMessage', __('portal.team.onboarding_done'));
+        ->assertSet('flashMessage', __('time.portal.clock.clocked_in_at_tenant', [
+            'tenant' => $tenant->name,
+            'time' => now()->format('H:i'),
+        ]));
 
-    expect(Worker::query()->where('first_name', 'Nora')->where('last_name', 'Nieuw')->exists())->toBeTrue();
+    $nora = Worker::query()->where('first_name', 'Nora')->where('last_name', 'Nieuw')->first();
+    expect($nora)->not->toBeNull()
+        ->and(WorkShift::query()->where('worker_id', $nora->id)->open()->exists())->toBeTrue();
 });
 
 it('blokkeert het time-portaal bij inactieve tenant', function () {

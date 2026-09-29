@@ -94,7 +94,7 @@
                 "body": "Todo se abre en el navegador. Sin App Store.",
                 "items": [
                     "QR de unidad: avisar, control de unidad y mediciones opcionales.",
-                    "QR Clock Point: identificarse (nombre + icono) y tareas de equipo; fichar solo con Time.",
+                    "QR Clock Point: identificarse (nombre + icono o PIN) ficha directamente con Time; además tareas de equipo.",
                     "Imprimible en hoja de pegatinas o A6/A5/A4.",
                     "Un QR de unidad ya cargado sigue sirviendo sin red; fichar pide un escaneo nuevo.",
                     "Opcional: enlace Clock Point en la pantalla de inicio del teléfono."

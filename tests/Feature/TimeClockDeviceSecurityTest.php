@@ -148,7 +148,7 @@ it('bewaart gps bij inklokken zonder te weigeren als gps ontbreekt', function ()
 });
 
 it('klokt in via het portaal na icoon en toont het icoon niet meer op het welkomstscherm', function () {
-    [, , $clockPoint, $worker] = clockSecurityTenant();
+    [$tenant, , $clockPoint, $worker] = clockSecurityTenant();
 
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->set('first_name', 'Jan')
@@ -157,14 +157,16 @@ it('klokt in via het portaal na icoon en toont het icoon niet meer op het welkom
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
         ->assertDontSeeHtml('wp-icon-tile is-selected')
-        ->call('clockIn')
-        ->assertSet('flashMessage', '');
+        ->assertSet('flashMessage', __('time.portal.clock.clocked_in_at_tenant', [
+            'tenant' => $tenant->name,
+            'time' => now()->format('H:i'),
+        ]));
 
     expect((int) $worker->fresh()->clock_device_id)->toBeGreaterThan(0);
 });
 
 it('weigert aanmelden met dezelfde worker op een tweede toestel', function () {
-    [, , $clockPoint, $worker] = clockSecurityTenant();
+    [$tenant, , $clockPoint, $worker] = clockSecurityTenant();
 
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->set('first_name', 'Jan')
@@ -172,7 +174,10 @@ it('weigert aanmelden met dezelfde worker op een tweede toestel', function () {
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
-        ->assertSet('flashMessage', '');
+        ->assertSet('flashMessage', __('time.portal.clock.clocked_in_at_tenant', [
+            'tenant' => $tenant->name,
+            'time' => now()->format('H:i'),
+        ]));
 
     expect($worker->fresh()->clock_device_id)->not->toBeNull();
 
@@ -191,7 +196,7 @@ it('weigert aanmelden met dezelfde worker op een tweede toestel', function () {
 });
 
 it('gooit een oude sessie op een tweede toestel eruit', function () {
-    [, $team, $clockPoint, $worker] = clockSecurityTenant();
+    [$tenant, $team, $clockPoint, $worker] = clockSecurityTenant();
 
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->set('first_name', 'Jan')
@@ -199,7 +204,10 @@ it('gooit een oude sessie op een tweede toestel eruit', function () {
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
-        ->assertSet('flashMessage', '');
+        ->assertSet('flashMessage', __('time.portal.clock.clocked_in_at_tenant', [
+            'tenant' => $tenant->name,
+            'time' => now()->format('H:i'),
+        ]));
 
     $this->flushSession();
 

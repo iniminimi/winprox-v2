@@ -14,6 +14,7 @@ use App\Models\PlannedShift;
 use App\Models\Tenant;
 use App\Models\Worker;
 use App\Models\WorkShift;
+use App\Support\Portal\ClockPointScanGrant;
 use App\Support\Tenancy;
 use Carbon\Carbon;
 use Livewire\Livewire;
@@ -58,6 +59,19 @@ function publishWorkShift(Tenant $tenant, Worker $worker, string $date, string $
 function signInRosterAlertWorker(ClockPoint $clockPoint): mixed
 {
     return Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon');
+}
+
+function signInRosterAlertWorkerWithoutPunch(ClockPoint $clockPoint): mixed
+{
+    $portal = Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token]);
+    ClockPointScanGrant::consume($clockPoint->id);
+
+    return $portal
         ->set('first_name', 'Jan')
         ->set('last_name', 'Janssen')
         ->call('identifyWorker')
@@ -174,7 +188,7 @@ it('toont de rode driehoek op Clock Point naast niet ingeklokt', function () {
     publishWorkShift($tenant, $worker, '2026-09-22');
     $this->travelTo(Carbon::parse('2026-09-22 10:00:00'));
 
-    signInRosterAlertWorker($clockPoint)
+    signInRosterAlertWorkerWithoutPunch($clockPoint)
         ->assertSee(__('time.portal.clock.not_clocked_in'), false)
         ->assertSee(__('time.portal.clock_alert.absent'), false)
         ->assertSeeHtml('wp-portal-clock-alert');
@@ -185,7 +199,7 @@ it('toont geen driehoek vóór de geplande start op Clock Point', function () {
     publishWorkShift($tenant, $worker, '2026-09-22');
     $this->travelTo(Carbon::parse('2026-09-22 08:00:00'));
 
-    signInRosterAlertWorker($clockPoint)
+    signInRosterAlertWorkerWithoutPunch($clockPoint)
         ->assertSee(__('time.portal.clock.not_clocked_in'), false)
         ->assertDontSee(__('time.portal.clock_alert.absent'), false)
         ->assertDontSeeHtml('wp-portal-clock-alert');
@@ -218,7 +232,7 @@ it('toont de rode driehoek naast de geplande uren in Mijn rooster', function () 
     publishWorkShift($tenant, $worker, '2026-09-22');
     $this->travelTo(Carbon::parse('2026-09-22 10:00:00'));
 
-    signInRosterAlertWorker($clockPoint)
+    signInRosterAlertWorkerWithoutPunch($clockPoint)
         ->call('openSchedule')
         ->assertSee('09:00-17:00', false)
         ->assertSee(__('time.portal.clock_alert.absent'), false)

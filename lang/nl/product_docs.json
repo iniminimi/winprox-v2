@@ -94,7 +94,7 @@
                 "body": "Alles opent in de browser. Geen App Store.",
                 "items": [
                     "Unit-QR: melden, optioneel unit check en unitmetingen.",
-                    "Clock Point-QR: aanmelden (naam + icoon) en teamtaken; inklokken alleen met Time.",
+                    "Clock Point-QR: aanmelden (naam + icoon of PIN) is meteen inklokken bij Time; ook teamtaken.",
                     "Printbaar als stickervel of A6/A5/A4.",
                     "Een geladen unit-QR blijft bruikbaar zonder bereik; inklokken vraagt een verse scan.",
                     "Optioneel: Clock Point-link op het startscherm van de gsm."

@@ -94,7 +94,7 @@
                 "body": "Tutto si apre nel browser. Nessun App Store.",
                 "items": [
                     "QR unità: segnalare, controllo unità e misure facoltativi.",
-                    "QR Clock Point: identificarsi (nome + icona) e compiti di squadra; timbrare solo con Time.",
+                    "QR Clock Point: identificarsi (nome + icona o PIN) timbra subito con Time; più i compiti di squadra.",
                     "Stampabile come foglio adesivi o A6/A5/A4.",
                     "Un QR unità già caricato resta usabile senza rete; timbrare chiede una nuova scansione.",
                     "Facoltativo: link Clock Point sulla schermata iniziale del telefono."
