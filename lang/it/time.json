@@ -313,6 +313,7 @@
         "schedule": {
             "title": "Orari di accensione dello schermo",
             "hint": "Fuori da questa fascia lo schermo resta spento (es. nido 06:00–19:00). Vuoto = sempre acceso; funziona anche a cavallo di mezzanotte (es. 22:00–06:00).",
+            "always_on": "Sempre acceso",
             "from": "Acceso da",
             "until": "Acceso fino a",
             "save": "Salva",

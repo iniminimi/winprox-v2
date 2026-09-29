@@ -313,6 +313,7 @@
         "schedule": {
             "title": "Scherm aan-uren",
             "hint": "Buiten dit venster staat het scherm uit (bv. crèche 06:00–19:00). Leeg = altijd aan; over middernacht (bv. 22:00–06:00) werkt ook.",
+            "always_on": "Altijd aan",
             "from": "Aan vanaf",
             "until": "Aan tot",
             "save": "Opslaan",

@@ -49,15 +49,32 @@
     <div class="wp-card wp-card-pad wp-stack-tight">
         <p class="wp-section-title">{{ __('time.clock_displays.schedule.title') }}</p>
         <p class="wp-muted wp-text-sm">{{ __('time.clock_displays.schedule.hint') }}</p>
-        <div class="wp-cluster wp-cluster--wrap">
+        @php
+            $scheduleSlots = [];
+            for ($h = 0; $h < 24; $h++) {
+                $scheduleSlots[] = sprintf('%02d:00', $h);
+                $scheduleSlots[] = sprintf('%02d:30', $h);
+            }
+        @endphp
+        <div class="wp-measure-field-range">
             <div class="wp-field">
                 <label class="wp-label" for="display-on-from">{{ __('time.clock_displays.schedule.from') }}</label>
-                <input id="display-on-from" type="time" class="wp-input" wire:model="displayOnFrom">
+                <select id="display-on-from" class="wp-input" wire:model="displayOnFrom">
+                    <option value="">{{ __('time.clock_displays.schedule.always_on') }}</option>
+                    @foreach ($scheduleSlots as $slot)
+                        <option value="{{ $slot }}">{{ $slot }}</option>
+                    @endforeach
+                </select>
                 @error('displayOnFrom') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
             <div class="wp-field">
                 <label class="wp-label" for="display-on-until">{{ __('time.clock_displays.schedule.until') }}</label>
-                <input id="display-on-until" type="time" class="wp-input" wire:model="displayOnUntil">
+                <select id="display-on-until" class="wp-input" wire:model="displayOnUntil">
+                    <option value="">{{ __('time.clock_displays.schedule.always_on') }}</option>
+                    @foreach ($scheduleSlots as $slot)
+                        <option value="{{ $slot }}">{{ $slot }}</option>
+                    @endforeach
+                </select>
                 @error('displayOnUntil') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
         </div>

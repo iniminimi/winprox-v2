@@ -313,6 +313,7 @@
         "schedule": {
             "title": "Screen on-hours",
             "hint": "Outside this window the screen stays off (e.g. nursery 06:00–19:00). Empty = always on; overnight (e.g. 22:00–06:00) works too.",
+            "always_on": "Always on",
             "from": "On from",
             "until": "On until",
             "save": "Save",

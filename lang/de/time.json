@@ -313,6 +313,7 @@
         "schedule": {
             "title": "Einschaltzeiten des Bildschirms",
             "hint": "Außerhalb dieses Fensters bleibt der Bildschirm aus (z. B. Kita 06:00–19:00). Leer = immer an; über Mitternacht (z. B. 22:00–06:00) geht auch.",
+            "always_on": "Immer an",
             "from": "An ab",
             "until": "An bis",
             "save": "Speichern",

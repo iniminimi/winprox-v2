@@ -313,6 +313,7 @@
         "schedule": {
             "title": "Horario de encendido de la pantalla",
             "hint": "Fuera de este horario la pantalla permanece apagada (p. ej. guardería 06:00–19:00). Vacío = siempre encendida; también vale de un día para otro (22:00–06:00).",
+            "always_on": "Siempre encendida",
             "from": "Encendida desde",
             "until": "Encendida hasta",
             "save": "Guardar",
