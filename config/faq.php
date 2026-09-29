@@ -13,6 +13,7 @@ return [
         'moderation',
         'photos',
         'time_clock',
+        'ddt_number',
         'unit_checks',
         'unit_measurements',
         'work_menu',

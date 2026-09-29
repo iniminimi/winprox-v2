@@ -34,7 +34,7 @@ class ImportCustomersAction
         'postal_code',
         'city',
         'country_code',
-        'contractual_relationship_reference',
+        'ddt',
         'latitude',
         'longitude',
     ];
@@ -46,7 +46,7 @@ class ImportCustomersAction
         'postal_code',
         'city',
         'country_code',
-        'contractual_relationship_reference',
+        'ddt',
         'latitude',
         'longitude',
     ];
@@ -230,7 +230,7 @@ class ImportCustomersAction
                         'postal_code' => $row['postal_code'],
                         'city' => $row['city'],
                         'country_code' => $row['country_code'],
-                        'contractual_relationship_reference' => $row['contractual_relationship_reference'],
+                        'contractual_relationship_reference' => $row['ddt'],
                         'latitude' => $row['latitude'],
                         'longitude' => $row['longitude'],
                         'customer_id' => (int) $customer->id,
@@ -316,10 +316,12 @@ class ImportCustomersAction
                 'postal_code' => $addressRules['postal_code'],
                 'city' => $addressRules['city'],
                 'country_code' => $addressRules['country_code'],
-                'contractual_relationship_reference' => $addressRules['contractual_relationship_reference'],
+                'ddt' => $addressRules['contractual_relationship_reference'],
                 'latitude' => $addressRules['latitude'],
                 'longitude' => $addressRules['longitude'],
-            ], StoreLocationRequest::messageSet());
+            ], StoreLocationRequest::messageSet() + [
+                'ddt.regex' => __('locations.errors.ddt_invalid'),
+            ]);
 
             if ($addressValidator->fails()) {
                 foreach ($addressValidator->errors()->all() as $error) {

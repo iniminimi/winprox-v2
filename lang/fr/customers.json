@@ -53,7 +53,7 @@
     "customers_csv": {
         "button": "Importer des clients",
         "title": "Importer des clients (CSV / Excel)",
-        "hint": "Importez des clients via CSV ou Excel (.xlsx). Obligatoire : name. Optionnel : contact_name, email, phone et une adresse de travail (street + postal_code + city obligatoires ensemble ; location_name, house_number, country_code (BE par défaut), contractual_relationship_reference (DDT), latitude et longitude (les deux ensemble)). Le même nom de client sur plusieurs lignes = plusieurs adresses ; un client existant du même nom est réutilisé. Colonnes inconnues ou lignes invalides rejettent tout l'import.",
+        "hint": "Importez des clients via CSV ou Excel (.xlsx). Obligatoire : name. Optionnel : contact_name, email, phone et une adresse de travail (street + postal_code + city obligatoires ensemble ; location_name, house_number, country_code (BE par défaut), ddt (déclaration de travaux, 13 caractères), latitude et longitude (les deux ensemble)). Le même nom de client sur plusieurs lignes = plusieurs adresses ; un client existant du même nom est réutilisé. Colonnes inconnues ou lignes invalides rejettent tout l'import.",
         "errors": {
             "file_required": "Choisissez un fichier CSV ou Excel (.xlsx).",
             "file_too_large": "Le fichier ne peut pas dépasser 10 Mo.",

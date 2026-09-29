@@ -53,7 +53,7 @@
     "customers_csv": {
         "button": "Klanten importeren",
         "title": "Klanten importeren (CSV / Excel)",
-        "hint": "Importeer klanten via CSV of Excel (.xlsx). Verplicht: name. Optioneel: contact_name, email, phone en een werkadres (street + postal_code + city samen verplicht; location_name, house_number, country_code (standaard BE), contractual_relationship_reference (DDT), latitude en longitude (beide samen)). Dezelfde klantnaam op meerdere rijen = meerdere werkadressen; een bestaande klant met dezelfde naam wordt hergebruikt. Onbekende kolommen of foutieve rijen weigeren de hele import.",
+        "hint": "Importeer klanten via CSV of Excel (.xlsx). Verplicht: name. Optioneel: contact_name, email, phone en een werkadres (street + postal_code + city samen verplicht; location_name, house_number, country_code (standaard BE), ddt (Aangifte van werken, 13 tekens), latitude en longitude (beide samen)). Dezelfde klantnaam op meerdere rijen = meerdere werkadressen; een bestaande klant met dezelfde naam wordt hergebruikt. Onbekende kolommen of foutieve rijen weigeren de hele import.",
         "errors": {
             "file_required": "Kies een CSV- of Excel-bestand (.xlsx).",
             "file_too_large": "Het bestand mag maximaal 10MB groot zijn.",

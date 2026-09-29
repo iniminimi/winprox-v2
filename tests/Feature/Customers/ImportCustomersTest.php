@@ -174,7 +174,7 @@ it('imports a work address with a DDT reference', function () {
     Tenancy::actAs($tenant->id);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
 
-    $csv = "name,street,postal_code,city,contractual_relationship_reference\n";
+    $csv = "name,street,postal_code,city,ddt\n";
     $csv .= "Bakkerij Peeters,Kerkstraat,2000,Antwerpen,W123456789012\n";
 
     $result = runCustomerImport($tenant, $user, $csv);
@@ -189,7 +189,7 @@ it('fails on an invalid DDT reference', function () {
     Tenancy::actAs($tenant->id);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
 
-    $csv = "name,street,postal_code,city,contractual_relationship_reference\n";
+    $csv = "name,street,postal_code,city,ddt\n";
     $csv .= "Bakkerij Peeters,Kerkstraat,2000,Antwerpen,te-kort\n";
 
     $result = runCustomerImport($tenant, $user, $csv);
