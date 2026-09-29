@@ -256,6 +256,15 @@
             "rotation_months": "Intervallo (mesi)",
             "rotation_saved": "Impostazione rotazione QR salvata.",
             "blocked_attempts": ":count scansione/i QR bloccata/e negli ultimi 7 giorni.",
+            "blocked_attempts_explain": "La scansione è stata rifiutata perché il QR non è più valido — un vecchio adesivo dopo il rinnovo, o una foto scaduta del QR del display.",
+            "blocked_attempts_row": ":name — :count× · :kinds · ultimo :when",
+            "blocked_attempts_action": "È ancora appeso un vecchio adesivo? Stampa o invia il nuovo QR tramite il pulsante QR del Clock Point.",
+            "blocked_attempts_unknown_point": "Clock Point eliminato",
+            "blocked_attempts_kinds": {
+                "sticker": "vecchio adesivo",
+                "display": "foto del display",
+                "unknown": "codice non valido"
+            },
             "pack": {
                 "unavailable": "L'export QR non è disponibile su questo server.",
                 "generating": "Creazione foglio di stampa…",

@@ -767,6 +767,34 @@ it('blokkeert een verlopen QR-token, logt de poging en toont de foutkaart', func
         ->exists())->toBeTrue();
 });
 
+it('toont bij geblokkeerde scans welk clock point en welke oorzaak', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+    $clockPoint = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Poort Noord',
+    ]);
+
+    $history = \App\Models\ClockPointQrToken::query()->create([
+        'tenant_id' => $tenant->id,
+        'clock_point_id' => $clockPoint->id,
+        'qr_token' => str_repeat('a', 40),
+        'grace_ends_at' => now()->subDay(),
+        'blocked_at' => now(),
+    ]);
+
+    $log = app(\App\Actions\Time\LogBlockedClockPointQrAttemptAction::class);
+    $log->handle($clockPoint, $history->qr_token, $history);
+    $log->handle($clockPoint, str_repeat('b', 64));
+
+    Livewire::actingAs($admin)
+        ->test(ClockPointsIndex::class)
+        ->assertSee(__('time.clock_points.qr.blocked_attempts', ['count' => 2]))
+        ->assertSee('Poort Noord')
+        ->assertSee(__('time.clock_points.qr.blocked_attempts_kinds.sticker'))
+        ->assertSee(__('time.clock_points.qr.blocked_attempts_kinds.display'))
+        ->assertSee(__('time.clock_points.qr.blocked_attempts_action'));
+});
+
 it('toont de QR-foutkaart voor een onbekend clock-point-token', function () {
     $this->get('/time/aaaaaaaaaaaaaaaaaaaaaaaa')
         ->assertNotFound()

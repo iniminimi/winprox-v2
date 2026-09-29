@@ -256,6 +256,15 @@
             "rotation_months": "Interval (maanden)",
             "rotation_saved": "QR-rotatie-instelling opgeslagen.",
             "blocked_attempts": ":count geblokkeerde QR-scan(s) in de afgelopen 7 dagen.",
+            "blocked_attempts_explain": "De scan werd geweigerd omdat de QR-code niet meer geldig is — een oude sticker na vernieuwing, of een verlopen foto van een klokscherm-QR.",
+            "blocked_attempts_row": ":name — :count× · :kinds · laatste :when",
+            "blocked_attempts_action": "Hangt er nog een oude sticker? Print of mail de nieuwe QR via de QR-knop bij het clock point.",
+            "blocked_attempts_unknown_point": "Verwijderd clock point",
+            "blocked_attempts_kinds": {
+                "sticker": "oude sticker",
+                "display": "klokscherm-foto",
+                "unknown": "ongeldige code"
+            },
             "pack": {
                 "unavailable": "QR-export is niet beschikbaar op deze server.",
                 "generating": "Afdrukblad wordt aangemaakt…",

@@ -256,6 +256,15 @@
             "rotation_months": "Interval (months)",
             "rotation_saved": "QR rotation setting saved.",
             "blocked_attempts": ":count blocked QR scan(s) in the last 7 days.",
+            "blocked_attempts_explain": "The scan was rejected because the QR code is no longer valid — an old sticker after renewal, or an expired photo of a clock-display QR.",
+            "blocked_attempts_row": ":name — :count× · :kinds · last :when",
+            "blocked_attempts_action": "Is an old sticker still up? Print or mail the new QR via the QR button on the clock point.",
+            "blocked_attempts_unknown_point": "Deleted clock point",
+            "blocked_attempts_kinds": {
+                "sticker": "old sticker",
+                "display": "display photo",
+                "unknown": "invalid code"
+            },
             "pack": {
                 "unavailable": "QR export is not available on this server.",
                 "generating": "Creating print sheet…",

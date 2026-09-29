@@ -19,7 +19,19 @@
     @endif
 
     @if ($blockedQrAttempts > 0)
-        <div class="wp-flash wp-flash--danger">{{ __('time.clock_points.qr.blocked_attempts', ['count' => $blockedQrAttempts]) }}</div>
+        <div class="wp-flash wp-flash--danger wp-stack-tight">
+            <p>{{ __('time.clock_points.qr.blocked_attempts', ['count' => $blockedQrAttempts]) }}</p>
+            <p>{{ __('time.clock_points.qr.blocked_attempts_explain') }}</p>
+            @foreach ($blockedQrSummary as $row)
+                <p wire:key="blocked-qr-{{ $loop->index }}">{{ __('time.clock_points.qr.blocked_attempts_row', [
+                    'name' => $row['name'],
+                    'count' => $row['count'],
+                    'kinds' => $row['kinds_label'],
+                    'when' => $row['last_at']->diffForHumans(),
+                ]) }}</p>
+            @endforeach
+            <p>{{ __('time.clock_points.qr.blocked_attempts_action') }}</p>
+        </div>
     @endif
 
     @can('create', \App\Models\ClockPoint::class)
