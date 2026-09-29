@@ -56,7 +56,7 @@
                 $scheduleSlots[] = sprintf('%02d:30', $h);
             }
         @endphp
-        <div class="wp-measure-field-range">
+        <div class="wp-half-hour-range">
             <div class="wp-field">
                 <label class="wp-label" for="display-on-from">{{ __('time.clock_displays.schedule.from') }}</label>
                 <select id="display-on-from" class="wp-input" wire:model="displayOnFrom">
