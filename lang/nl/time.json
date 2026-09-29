@@ -310,6 +310,14 @@
             "confirm": "Bevestigen",
             "deny": "Weigeren"
         },
+        "schedule": {
+            "title": "Scherm aan-uren",
+            "hint": "Buiten dit venster staat het scherm uit (bv. crèche 06:00–19:00). Leeg = altijd aan; over middernacht (bv. 22:00–06:00) werkt ook.",
+            "from": "Aan vanaf",
+            "until": "Aan tot",
+            "save": "Opslaan",
+            "saved": "Aan-uren opgeslagen."
+        },
         "unlink_modal": {
             "title": "Scherm ontkoppelen?",
             "body": "Het scherm kan daarna geen geldige QR-codes meer tonen en valt terug naar de koppelmodus.",
@@ -325,7 +333,8 @@
             "claim_not_pending": "Deze aanvraag is al afgehandeld.",
             "clock_point_not_found": "Clock point niet gevonden.",
             "display_not_linked": "Er is geen scherm gekoppeld.",
-            "tenant_mismatch": "Clock point hoort niet bij deze organisatie."
+            "tenant_mismatch": "Clock point hoort niet bij deze organisatie.",
+            "schedule_incomplete": "Vul beide uren in of laat beide leeg."
         }
     },
     "duration": {

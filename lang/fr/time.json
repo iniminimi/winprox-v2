@@ -310,6 +310,14 @@
             "confirm": "Confirmer",
             "deny": "Refuser"
         },
+        "schedule": {
+            "title": "Heures d'allumage de l'écran",
+            "hint": "Hors de cette plage, l'écran reste éteint (p. ex. crèche 06:00–19:00). Vide = toujours allumé ; fonctionne aussi à cheval sur minuit (22:00–06:00).",
+            "from": "Allumé de",
+            "until": "Allumé jusqu'à",
+            "save": "Enregistrer",
+            "saved": "Heures d'allumage enregistrées."
+        },
         "unlink_modal": {
             "title": "Dissocier l'écran ?",
             "body": "L'écran ne pourra plus afficher de QR valides et repassera en mode association.",
@@ -325,7 +333,8 @@
             "claim_not_pending": "Cette demande a déjà été traitée.",
             "clock_point_not_found": "Point de badgeage introuvable.",
             "display_not_linked": "Aucun écran n'est associé.",
-            "tenant_mismatch": "Le point de badgeage n'appartient pas à cette organisation."
+            "tenant_mismatch": "Le point de badgeage n'appartient pas à cette organisation.",
+            "schedule_incomplete": "Renseignez les deux heures ou laissez-les vides."
         }
     },
     "duration": {

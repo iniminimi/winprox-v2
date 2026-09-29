@@ -111,6 +111,12 @@ class ClockDisplayController extends Controller
     {
         return [
             'server_time' => now()->toIso8601String(),
+            // Aan-uren van het scherm ("06:00"/null = altijd aan). Firmware
+            // dimt de backlight buiten dit venster; over-middernacht werkt.
+            'display_on_from' => $clockPoint?->display_on_from !== null
+                ? substr((string) $clockPoint->display_on_from, 0, 5) : null,
+            'display_on_until' => $clockPoint?->display_on_until !== null
+                ? substr((string) $clockPoint->display_on_until, 0, 5) : null,
             'rotation_seconds' => (int) config('time.display_window_seconds', 30),
             'offline_warn_hours' => (int) config('time.display_offline_warn_hours', 24),
             'offline_block_hours' => (int) config('time.display_offline_block_hours', 168),

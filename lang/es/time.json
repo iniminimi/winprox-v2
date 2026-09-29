@@ -310,6 +310,14 @@
             "confirm": "Confirmar",
             "deny": "Rechazar"
         },
+        "schedule": {
+            "title": "Horario de encendido de la pantalla",
+            "hint": "Fuera de este horario la pantalla permanece apagada (p. ej. guardería 06:00–19:00). Vacío = siempre encendida; también vale de un día para otro (22:00–06:00).",
+            "from": "Encendida desde",
+            "until": "Encendida hasta",
+            "save": "Guardar",
+            "saved": "Horario de encendido guardado."
+        },
         "unlink_modal": {
             "title": "¿Desvincular pantalla?",
             "body": "La pantalla ya no podrá mostrar QR válidos y volverá al modo de vinculación.",
@@ -325,7 +333,8 @@
             "claim_not_pending": "Esta solicitud ya fue gestionada.",
             "clock_point_not_found": "Punto de fichaje no encontrado.",
             "display_not_linked": "No hay ninguna pantalla vinculada.",
-            "tenant_mismatch": "El punto de fichaje no pertenece a esta organización."
+            "tenant_mismatch": "El punto de fichaje no pertenece a esta organización.",
+            "schedule_incomplete": "Rellena ambas horas o deja ambas vacías."
         }
     },
     "duration": {

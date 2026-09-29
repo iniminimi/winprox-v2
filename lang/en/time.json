@@ -310,6 +310,14 @@
             "confirm": "Confirm",
             "deny": "Deny"
         },
+        "schedule": {
+            "title": "Screen on-hours",
+            "hint": "Outside this window the screen stays off (e.g. nursery 06:00–19:00). Empty = always on; overnight (e.g. 22:00–06:00) works too.",
+            "from": "On from",
+            "until": "On until",
+            "save": "Save",
+            "saved": "On-hours saved."
+        },
         "unlink_modal": {
             "title": "Unlink display?",
             "body": "The display will no longer show valid QR codes and returns to pairing mode.",
@@ -325,7 +333,8 @@
             "claim_not_pending": "This request was already handled.",
             "clock_point_not_found": "Clock point not found.",
             "display_not_linked": "No display is linked.",
-            "tenant_mismatch": "Clock point does not belong to this organisation."
+            "tenant_mismatch": "Clock point does not belong to this organisation.",
+            "schedule_incomplete": "Fill in both times or leave both empty."
         }
     },
     "duration": {

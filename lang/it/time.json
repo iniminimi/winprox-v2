@@ -310,6 +310,14 @@
             "confirm": "Conferma",
             "deny": "Rifiuta"
         },
+        "schedule": {
+            "title": "Orari di accensione dello schermo",
+            "hint": "Fuori da questa fascia lo schermo resta spento (es. nido 06:00–19:00). Vuoto = sempre acceso; funziona anche a cavallo di mezzanotte (es. 22:00–06:00).",
+            "from": "Acceso da",
+            "until": "Acceso fino a",
+            "save": "Salva",
+            "saved": "Orari di accensione salvati."
+        },
         "unlink_modal": {
             "title": "Scollegare lo schermo?",
             "body": "Lo schermo non potrà più mostrare QR validi e tornerà in modalità collegamento.",
@@ -325,7 +333,8 @@
             "claim_not_pending": "Questa richiesta è già stata gestita.",
             "clock_point_not_found": "Punto di timbratura non trovato.",
             "display_not_linked": "Nessuno schermo è collegato.",
-            "tenant_mismatch": "Il punto di timbratura non appartiene a questa organizzazione."
+            "tenant_mismatch": "Il punto di timbratura non appartiene a questa organizzazione.",
+            "schedule_incomplete": "Compila entrambi gli orari o lasciali vuoti."
         }
     },
     "duration": {

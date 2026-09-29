@@ -7,6 +7,7 @@ use App\Actions\Time\DenyClockDisplayClaimAction;
 use App\Actions\Time\IssueClockDisplayPairingCodeAction;
 use App\Actions\Time\RotateClockPointDisplaySecretAction;
 use App\Actions\Time\UnlinkClockPointDisplayAction;
+use App\Actions\Time\UpdateClockDisplayScheduleAction;
 use App\Models\ClockDisplayClaim;
 use App\Models\ClockPoint;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -34,10 +35,20 @@ class ClockDisplayPair extends Component
 
     public bool $confirmRotate = false;
 
+    public ?string $displayOnFrom = null;
+
+    public ?string $displayOnUntil = null;
+
     public function mount(ClockPoint $clockPoint): void
     {
         $this->authorize('update', $clockPoint);
         $this->clockPoint = $clockPoint;
+        $this->displayOnFrom = $clockPoint->display_on_from !== null
+            ? substr((string) $clockPoint->display_on_from, 0, 5)
+            : null;
+        $this->displayOnUntil = $clockPoint->display_on_until !== null
+            ? substr((string) $clockPoint->display_on_until, 0, 5)
+            : null;
     }
 
     public function issueCode(IssueClockDisplayPairingCodeAction $issue): void
@@ -123,6 +134,32 @@ class ClockDisplayPair extends Component
         }
 
         session()->flash('time_flash', __('time.clock_displays.rotated'));
+    }
+
+    public function saveSchedule(UpdateClockDisplayScheduleAction $update): void
+    {
+        $this->authorize('update', $this->clockPoint);
+
+        $validated = $this->validate([
+            'displayOnFrom' => ['nullable', 'date_format:H:i', 'required_with:displayOnUntil'],
+            'displayOnUntil' => ['nullable', 'date_format:H:i', 'required_with:displayOnFrom'],
+        ]);
+
+        try {
+            $update->handle(
+                $this->clockPoint->fresh(),
+                (int) $this->clockPoint->tenant_id,
+                auth()->id(),
+                $validated['displayOnFrom'] ?: null,
+                $validated['displayOnUntil'] ?: null,
+            );
+        } catch (InvalidArgumentException $e) {
+            session()->flash('time_flash', __('time.clock_displays.errors.'.$e->getMessage()));
+
+            return;
+        }
+
+        session()->flash('time_flash', __('time.clock_displays.schedule.saved'));
     }
 
     public function render()

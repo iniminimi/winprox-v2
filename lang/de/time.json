@@ -310,6 +310,14 @@
             "confirm": "Bestätigen",
             "deny": "Ablehnen"
         },
+        "schedule": {
+            "title": "Einschaltzeiten des Bildschirms",
+            "hint": "Außerhalb dieses Fensters bleibt der Bildschirm aus (z. B. Kita 06:00–19:00). Leer = immer an; über Mitternacht (z. B. 22:00–06:00) geht auch.",
+            "from": "An ab",
+            "until": "An bis",
+            "save": "Speichern",
+            "saved": "Einschaltzeiten gespeichert."
+        },
         "unlink_modal": {
             "title": "Display trennen?",
             "body": "Das Display kann danach keine gültigen QR-Codes mehr anzeigen und kehrt in den Kopplungsmodus zurück.",
@@ -325,7 +333,8 @@
             "claim_not_pending": "Diese Anfrage wurde bereits bearbeitet.",
             "clock_point_not_found": "Stempelpunkt nicht gefunden.",
             "display_not_linked": "Es ist kein Display verbunden.",
-            "tenant_mismatch": "Der Stempelpunkt gehört nicht zu dieser Organisation."
+            "tenant_mismatch": "Der Stempelpunkt gehört nicht zu dieser Organisation.",
+            "schedule_incomplete": "Beide Zeiten ausfüllen oder beide leer lassen."
         }
     },
     "duration": {

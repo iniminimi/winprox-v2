@@ -44,6 +44,29 @@
         </div>
     @endif
 
+    {{-- Aan-uren van het scherm --}}
+    <div class="wp-card wp-card-pad wp-stack-tight">
+        <p class="wp-section-title">{{ __('time.clock_displays.schedule.title') }}</p>
+        <p class="wp-muted wp-text-sm">{{ __('time.clock_displays.schedule.hint') }}</p>
+        <div class="wp-cluster wp-cluster--wrap">
+            <div class="wp-field">
+                <label class="wp-label" for="display-on-from">{{ __('time.clock_displays.schedule.from') }}</label>
+                <input id="display-on-from" type="time" class="wp-input" wire:model="displayOnFrom">
+                @error('displayOnFrom') <p class="wp-error">{{ $message }}</p> @enderror
+            </div>
+            <div class="wp-field">
+                <label class="wp-label" for="display-on-until">{{ __('time.clock_displays.schedule.until') }}</label>
+                <input id="display-on-until" type="time" class="wp-input" wire:model="displayOnUntil">
+                @error('displayOnUntil') <p class="wp-error">{{ $message }}</p> @enderror
+            </div>
+        </div>
+        <div class="wp-cluster">
+            <button type="button" class="btn btn--primary btn--sm" wire:click="saveSchedule">
+                {{ __('time.clock_displays.schedule.save') }}
+            </button>
+        </div>
+    </div>
+
     {{-- Pairing-code --}}
     <div class="wp-card wp-card-pad wp-stack-tight">
         <p class="wp-section-title">{{ __('time.clock_displays.code.title') }}</p>

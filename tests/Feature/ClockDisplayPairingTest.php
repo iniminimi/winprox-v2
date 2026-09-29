@@ -346,3 +346,44 @@ it('geeft 404 op de koppelroute voor een Checkmate-tenant', function () {
         ->get(route('time.clock-displays.pair', $point2))
         ->assertOk();
 });
+
+it('bewaart aan-uren en stuurt ze mee in de ping-config', function () {
+    $tenant = displayTenant();
+    Tenancy::actAs($tenant->id);
+    $point = displayPoint($tenant);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    app(App\Actions\Time\UpdateClockDisplayScheduleAction::class)
+        ->handle($point, $tenant->id, $admin->id, '06:00', '19:00');
+
+    $point->refresh();
+    expect(substr((string) $point->display_on_from, 0, 5))->toBe('06:00')
+        ->and(substr((string) $point->display_on_until, 0, 5))->toBe('19:00');
+    expect(AuditLog::where('action', 'clock_point.display_schedule_updated')->exists())->toBeTrue();
+
+    // Één open uiteinde is ongeldig.
+    expect(fn () => app(App\Actions\Time\UpdateClockDisplayScheduleAction::class)
+        ->handle($point, $tenant->id, $admin->id, '06:00', null))
+        ->toThrow(InvalidArgumentException::class, 'schedule_incomplete');
+
+    // Leeg/leeg = weer altijd aan.
+    app(App\Actions\Time\UpdateClockDisplayScheduleAction::class)
+        ->handle($point, $tenant->id, $admin->id, null, null);
+    expect($point->refresh()->display_on_from)->toBeNull();
+
+    // Ping: gekoppeld scherm krijgt de velden mee.
+    $code = app(IssueClockDisplayPairingCodeAction::class)->handle($point, $tenant->id, null);
+    $claim = app(SubmitClockDisplayClaimAction::class)->handle($code, 'esp32-aabbcc', null);
+    app(ConfirmClockDisplayClaimAction::class)->handle($claim, $tenant->id, null);
+    Tenancy::forget();
+
+    app(App\Actions\Time\UpdateClockDisplayScheduleAction::class)
+        ->handle($point->fresh(), $tenant->id, $admin->id, '06:00', '19:00');
+    $token = $claim->fresh()->issued_token;
+
+    $this->getJson('/api/v1/time/clock-displays/ping', [
+        'X-WinProx-Clock-Key' => $token,
+    ])->assertOk()
+        ->assertJsonPath('display_on_from', '06:00')
+        ->assertJsonPath('display_on_until', '19:00');
+});

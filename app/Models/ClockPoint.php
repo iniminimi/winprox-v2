@@ -33,6 +33,8 @@ class ClockPoint extends Model
         'display_device_hint',
         'display_paired_at',
         'display_last_seen_at',
+        'display_on_from',
+        'display_on_until',
     ];
 
     protected $casts = [
