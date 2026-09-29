@@ -160,6 +160,33 @@
             "title": "Wat is WinProx Checkmate?",
             "body": "Checkmate is de kale formule voor schoonmaak- en bouwploegen: uitvoerders klokken in en uit via de Clock Point-QR en starten klantbezoeken met een GPS-check op het werkadres (binnen 100 m). Geen meldingen of taken — wél CIAO (RSZ) op aanvraag. €5 per uitvoerder per maand."
         },
+        "ddt_number": {
+            "slug": "ddt_number",
+            "type": "steps",
+            "title": "Waar vind ik het DDT-nummer?",
+            "intro": "Het DDT-nummer is het officiële nummer van de Aangifte van Werken bij de RSZ.",
+            "summary": "Het DDT-nummer is het officiële nummer van de Aangifte van Werken bij de RSZ. Je vindt het op het portaal van de Sociale Zekerheid onder Aangifte van werken, of via je klant of hoofdaannemer.",
+            "steps": [
+                {
+                    "title": "Aanmelden",
+                    "text": "Meld je aan op het portaal van de Sociale Zekerheid."
+                },
+                {
+                    "title": "Aangifte van werken openen",
+                    "text": "Open de toepassing Aangifte van werken."
+                },
+                {
+                    "title": "Juiste aangifte zoeken",
+                    "text": "Ga naar je aangiften en zoek de aangifte van de betreffende klant of werkplaats."
+                },
+                {
+                    "title": "Nummer overnemen",
+                    "text": "Open de aangifte, neem het nummer van de Aangifte van Werken (DDT-nummer) over en vul dit in bij de klant of werf in WinProx."
+                }
+            ],
+            "box_title": "Handige tip",
+            "box_body": "Heb je geen toegang tot de aangifte? Vraag het DDT-nummer dan even op bij de partij die de Aangifte van Werken heeft ingediend (je klant of hoofdaannemer). Bij een aangifte voor schoonmaakactiviteiten wordt automatisch een specifieke CIaO-QR-code en URL aangemaakt — gebruik je die voor de registratie, dan haalt het systeem het technische nummer van de Aangifte van Werken automatisch op."
+        },
         "esg": {
             "slug": "esg",
             "type": "text",

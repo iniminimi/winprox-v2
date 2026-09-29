@@ -156,6 +156,33 @@
             "title": "Qu'est-ce que WinProx Checkmate ?",
             "body": "Checkmate est la formule épurée pour les équipes de nettoyage et de construction : les exécutants pointent via le QR Clock Point et démarrent les visites clients avec un contrôle GPS à l'adresse de chantier (à moins de 100 m). Pas de signalements ni de tâches — mais CIAO (ONSS) sur demande. 5 € par exécutant et par mois."
         },
+        "ddt_number": {
+            "slug": "ddt_number",
+            "type": "steps",
+            "title": "Où trouver le numéro DDT ?",
+            "intro": "Le numéro DDT est le numéro officiel de la Déclaration de travaux (Aangifte van werken) auprès de l'ONSS.",
+            "summary": "Le numéro DDT est le numéro officiel de la Déclaration de travaux belge (ONSS). Retrouvez-le sur le portail de la Sécurité sociale sous Aangifte van werken, ou demandez-le à votre client ou à l'entrepreneur principal.",
+            "steps": [
+                {
+                    "title": "Connexion",
+                    "text": "Connectez-vous au portail de la Sécurité sociale."
+                },
+                {
+                    "title": "Ouvrir la déclaration de travaux",
+                    "text": "Ouvrez l'application Aangifte van werken (Déclaration de travaux)."
+                },
+                {
+                    "title": "Trouver la bonne déclaration",
+                    "text": "Allez dans vos déclarations et cherchez celle du client ou du chantier concerné."
+                },
+                {
+                    "title": "Reprendre le numéro",
+                    "text": "Ouvrez la déclaration, reprenez le numéro de la Déclaration de travaux (numéro DDT) et encodez-le chez le client ou le chantier dans WinProx."
+                }
+            ],
+            "box_title": "Astuce",
+            "box_body": "Pas d'accès à la déclaration ? Demandez le numéro DDT à la partie qui a introduit la Déclaration de travaux (votre client ou l'entrepreneur principal). Pour une déclaration d'activités de nettoyage, un QR code et une URL CIaO spécifiques sont créés automatiquement — utilisez-les pour l'enregistrement et le système récupère le numéro technique de la Déclaration de travaux automatiquement."
+        },
         "esg": {
             "slug": "esg",
             "type": "text",

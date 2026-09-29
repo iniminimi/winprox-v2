@@ -156,6 +156,33 @@
             "title": "Che cos'è WinProx Checkmate?",
             "body": "Checkmate è la formula ridotta per squadre di pulizia ed edilizia: gli esecutori timbrano tramite il QR Clock Point e avviano le visite ai clienti con verifica GPS all'indirizzo di lavoro (entro 100 m). Nessuna segnalazione o attività — ma CIAO (RSZ) su richiesta. 5 € per esecutore al mese."
         },
+        "ddt_number": {
+            "slug": "ddt_number",
+            "type": "steps",
+            "title": "Dove trovo il numero DDT?",
+            "intro": "Il numero DDT è il numero ufficiale della Dichiarazione di lavori (Aangifte van Werken) presso la sicurezza sociale belga (ONSS/RSZ).",
+            "summary": "Il numero DDT è il numero ufficiale della Dichiarazione di lavori belga (ONSS/RSZ). Lo trovi sul portale della Sicurezza sociale in Aangifte van werken, oppure chiedilo al cliente o all'appaltatore principale.",
+            "steps": [
+                {
+                    "title": "Accedi",
+                    "text": "Accedi al portale della Sicurezza sociale."
+                },
+                {
+                    "title": "Apri la dichiarazione di lavori",
+                    "text": "Apri l'applicazione Aangifte van werken (Dichiarazione di lavori)."
+                },
+                {
+                    "title": "Trova la dichiarazione giusta",
+                    "text": "Vai alle tue dichiarazioni e cerca quella del cliente o del cantiere interessato."
+                },
+                {
+                    "title": "Copia il numero",
+                    "text": "Apri la dichiarazione, copia il numero della Dichiarazione di lavori (numero DDT) e inseriscilo nel cliente o cantiere in WinProx."
+                }
+            ],
+            "box_title": "Consiglio utile",
+            "box_body": "Non hai accesso alla dichiarazione? Chiedi il numero DDT a chi ha presentato la Dichiarazione di lavori (il tuo cliente o l'appaltatore principale). Per una dichiarazione di attività di pulizia vengono generati automaticamente un codice QR e un URL CIaO specifici: usandoli per la registrazione, il sistema recupera automaticamente il numero tecnico della Dichiarazione di lavori."
+        },
         "esg": {
             "slug": "esg",
             "type": "text",

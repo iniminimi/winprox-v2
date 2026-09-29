@@ -322,7 +322,7 @@
                 },
                 {
                     "label": "Import locations",
-                    "text": "Import locations via CSV or Excel (.xlsx). Per row: name or street + postal_code + city. Optional: house_number, country_code (default BE), notes, contractual_relationship_reference (DDT), latitude and longitude (both). Bad headers or missing identity reject the whole import."
+                    "text": "Import locations via CSV or Excel (.xlsx). Per row: name or street + postal_code + city. Optional: house_number, country_code (default BE), notes, contractual_relationship_reference (DDT), latitude and longitude (both). Bad headers or missing identity reject the whole import. Find the number on the Social Security portal under <strong>Aangifte van werken</strong>: go to your declarations and open the one for the work site. No access? Ask whoever filed the declaration (customer or main contractor). For cleaning declarations, the specific CIaO QR code or URL retrieves the number automatically."
                 },
                 {
                     "label": "Recent location imports",
@@ -1883,6 +1883,10 @@
                 {
                     "label": "Work address",
                     "text": "Street, number, postcode, city and the GPS pin (automatic from the address or entered manually as latitude/longitude). For work under declaration of works (30bis) also fill in the DDT reference; for private customers it may stay empty."
+                },
+                {
+                    "label": "Where do I find the DDT number?",
+                    "text": "The DDT number is the official number of the Declaration of Works (NSSO/RSZ). Find it on the Social Security portal: sign in, open <strong>Aangifte van werken</strong>, go to your declarations and open the one for the customer or work site — copy the number. No access? Ask whoever filed the declaration (your customer or the main contractor). For cleaning declarations, the specific CIaO QR code or URL retrieves the number automatically."
                 },
                 {
                     "label": "Edit and deactivate",

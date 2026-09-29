@@ -322,7 +322,7 @@
                 },
                 {
                     "label": "Importar ubicaciones",
-                    "text": "Importe ubicaciones por CSV o Excel (.xlsx). Por fila: name o street + postal_code + city. Opcional: house_number, country_code (BE por defecto), notes, contractual_relationship_reference (DDT), latitude y longitude (juntos). Cabeceras incorrectas o identidad faltante rechazan toda la importación."
+                    "text": "Importe ubicaciones por CSV o Excel (.xlsx). Por fila: name o street + postal_code + city. Opcional: house_number, country_code (BE por defecto), notes, contractual_relationship_reference (DDT), latitude y longitude (juntos). Cabeceras incorrectas o identidad faltante rechazan toda la importación. Encuentra el número en el portal de la Seguridad Social en <strong>Aangifte van werken</strong>: ve a tus declaraciones y abre la de la obra. ¿Sin acceso? Pídelo a quien presentó la declaración (cliente o contratista principal). En declaraciones de limpieza, el código QR o la URL CIaO específicos obtienen el número automáticamente."
                 },
                 {
                     "label": "Importaciones de ubicaciones recientes",
@@ -1883,6 +1883,10 @@
                 {
                     "label": "Dirección de obra",
                     "text": "Calle, número, código postal, localidad y el marcador GPS (automático desde la dirección o introducido a mano como latitud/longitud). Para trabajos bajo declaración de obras (30bis) rellena también la referencia DDT; en clientes particulares puede quedar vacía."
+                },
+                {
+                    "label": "¿Dónde encuentro el número DDT?",
+                    "text": "El número DDT es el número oficial de la Declaración de obras (ONSS/RSZ). Encuéntralo en el portal de la Seguridad Social: inicia sesión, abre <strong>Aangifte van werken</strong>, ve a tus declaraciones y abre la del cliente u obra — copia el número. ¿Sin acceso? Pídelo a quien presentó la declaración (tu cliente o el contratista principal). En declaraciones de limpieza, el código QR o la URL CIaO específicos obtienen el número automáticamente."
                 },
                 {
                     "label": "Editar y desactivar",

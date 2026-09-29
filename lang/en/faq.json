@@ -160,6 +160,33 @@
             "title": "What is WinProx Checkmate?",
             "body": "Checkmate is the stripped-down plan for cleaning and construction crews: workers clock in and out via the Clock Point QR and start customer visits with a GPS check at the work address (within 100 m). No issues or tasks — but CIAO (RSZ) on request. €5 per worker per month."
         },
+        "ddt_number": {
+            "slug": "ddt_number",
+            "type": "steps",
+            "title": "Where do I find the DDT number?",
+            "intro": "The DDT number is the official number of the Declaration of Works (Aangifte van Werken) at the Belgian NSSO (RSZ).",
+            "summary": "The DDT number is the official number of the Belgian Declaration of Works (NSSO/RSZ). Find it on the Social Security portal under Aangifte van werken, or ask your customer or main contractor.",
+            "steps": [
+                {
+                    "title": "Sign in",
+                    "text": "Sign in to the Social Security portal."
+                },
+                {
+                    "title": "Open Declaration of works",
+                    "text": "Open the Aangifte van werken (Declaration of works) application."
+                },
+                {
+                    "title": "Find the right declaration",
+                    "text": "Go to your declarations and find the declaration for the customer or work site in question."
+                },
+                {
+                    "title": "Copy the number",
+                    "text": "Open the declaration, copy the Declaration of Works number (DDT number) and enter it for the customer or site in WinProx."
+                }
+            ],
+            "box_title": "Useful tip",
+            "box_body": "No access to the declaration? Ask the party that filed the Declaration of Works (your customer or the main contractor) for the DDT number. A declaration for cleaning activities automatically generates a specific CIaO QR code and URL — use it for registration and the system retrieves the technical Declaration of Works number automatically."
+        },
         "esg": {
             "slug": "esg",
             "type": "text",

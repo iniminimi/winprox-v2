@@ -156,6 +156,33 @@
             "title": "Was ist WinProx Checkmate?",
             "body": "Checkmate ist die reduzierte Formel für Reinigungs- und Bauteams: Ausführende stempeln über die Clock-Point-QR ein und aus und starten Kundenbesuche mit GPS-Check an der Arbeitsadresse (innerhalb von 100 m). Keine Meldungen oder Aufgaben — dafür CIAO (RSZ) auf Anfrage. 5 € pro Ausführendem und Monat."
         },
+        "ddt_number": {
+            "slug": "ddt_number",
+            "type": "steps",
+            "title": "Wo finde ich die DDT-Nummer?",
+            "intro": "Die DDT-Nummer ist die offizielle Nummer der Werk-Meldung (Aangifte van Werken) beim belgischen LSS (RSZ).",
+            "summary": "Die DDT-Nummer ist die offizielle Nummer der belgischen Werk-Meldung (LSS/RSZ). Zu finden im Portal der sozialen Sicherheit unter Aangifte van werken, oder beim Kunden bzw. Hauptunternehmer erfragen.",
+            "steps": [
+                {
+                    "title": "Anmelden",
+                    "text": "Melden Sie sich im Portal der sozialen Sicherheit an."
+                },
+                {
+                    "title": "Werk-Meldung öffnen",
+                    "text": "Öffnen Sie die Anwendung Aangifte van werken (Werk-Meldung)."
+                },
+                {
+                    "title": "Richtige Meldung suchen",
+                    "text": "Gehen Sie zu Ihren Meldungen und suchen Sie die Meldung des betreffenden Kunden oder der Baustelle."
+                },
+                {
+                    "title": "Nummer übernehmen",
+                    "text": "Öffnen Sie die Meldung, übernehmen Sie die Nummer der Werk-Meldung (DDT-Nummer) und tragen Sie sie beim Kunden oder der Baustelle in WinProx ein."
+                }
+            ],
+            "box_title": "Praktischer Tipp",
+            "box_body": "Kein Zugriff auf die Meldung? Erfragen Sie die DDT-Nummer bei der Partei, die die Werk-Meldung eingereicht hat (Ihr Kunde oder der Hauptunternehmer). Bei einer Meldung für Reinigungstätigkeiten werden automatisch ein spezifischer CIaO-QR-Code und eine URL erstellt — nutzen Sie diese für die Registrierung, ruft das System die technische Nummer der Werk-Meldung automatisch ab."
+        },
         "esg": {
             "slug": "esg",
             "type": "text",

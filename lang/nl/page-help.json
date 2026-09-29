@@ -322,7 +322,7 @@
                 },
                 {
                     "label": "Locaties importeren",
-                    "text": "Importeer locaties via CSV of Excel (.xlsx). Per rij: name óf street + postal_code + city. Optioneel: house_number, country_code (standaard BE), notes, contractual_relationship_reference (DDT), latitude en longitude (beide). Bij foute headers of ontbrekende identiteit wordt de hele import geweigerd."
+                    "text": "Importeer locaties via CSV of Excel (.xlsx). Per rij: name óf street + postal_code + city. Optioneel: house_number, country_code (standaard BE), notes, contractual_relationship_reference (DDT), latitude en longitude (beide). Bij foute headers of ontbrekende identiteit wordt de hele import geweigerd. Het nummer vind je op het portaal van de Sociale Zekerheid onder <strong>Aangifte van werken</strong>: ga naar je aangiften en open die van de werkplaats. Geen toegang? Vraag het bij wie de aangifte indiende (klant of hoofdaannemer). Bij schoonmaakaangiften haalt de specifieke CIaO-QR-code of -URL het nummer automatisch op."
                 },
                 {
                     "label": "Recente locatie-imports",
@@ -1883,6 +1883,10 @@
                 {
                     "label": "Werkadres",
                     "text": "Straat, nummer, postcode, plaats en de GPS-pin (automatisch via het adres of handmatig als breedte- en lengtegraad). Voor werken onder aangifte van werken (30bis) vul je ook de DDT-referentie in; bij particuliere klanten mag die leeg blijven."
+                },
+                {
+                    "label": "Waar vind ik het DDT-nummer?",
+                    "text": "Het DDT-nummer is het officiële nummer van de Aangifte van Werken bij de RSZ. Je vindt het op het portaal van de Sociale Zekerheid: meld aan, open <strong>Aangifte van werken</strong>, ga naar je aangiften en open die van de klant of werkplaats — neem het nummer over. Geen toegang? Vraag het bij wie de aangifte indiende (je klant of hoofdaannemer). Bij schoonmaakaangiften haalt de specifieke CIaO-QR-code of -URL het nummer automatisch op."
                 },
                 {
                     "label": "Bewerken en deactiveren",

@@ -322,7 +322,7 @@
                 },
                 {
                     "label": "Standorte importieren",
-                    "text": "Importieren Sie Standorte per CSV oder Excel (.xlsx). Pro Zeile: name oder street + postal_code + city. Optional: house_number, country_code (Standard BE), notes, contractual_relationship_reference (DDT), latitude und longitude (beide). Falsche Header oder fehlende Identität lehnen den gesamten Import ab."
+                    "text": "Importieren Sie Standorte per CSV oder Excel (.xlsx). Pro Zeile: name oder street + postal_code + city. Optional: house_number, country_code (Standard BE), notes, contractual_relationship_reference (DDT), latitude und longitude (beide). Falsche Header oder fehlende Identität lehnen den gesamten Import ab. Die Nummer finden Sie im Portal der sozialen Sicherheit unter <strong>Aangifte van werken</strong>: gehen Sie zu Ihren Meldungen und öffnen Sie die der Baustelle. Kein Zugriff? Fragen Sie, wer die Meldung eingereicht hat (Kunde oder Hauptunternehmer). Bei Reinigungsmeldungen ruft der spezifische CIaO-QR-Code oder die URL die Nummer automatisch ab."
                 },
                 {
                     "label": "Aktuelle Standort-Importe",
@@ -1883,6 +1883,10 @@
                 {
                     "label": "Einsatzadresse",
                     "text": "Straße, Nummer, PLZ, Ort und die GPS-Markierung (automatisch aus der Adresse oder manuell als Breiten-/Längengrad). Für Arbeiten unter Werkverzeichnis (30bis) füllen Sie auch die DDT-Referenz aus; bei Privatkunden darf sie leer bleiben."
+                },
+                {
+                    "label": "Wo finde ich die DDT-Nummer?",
+                    "text": "Die DDT-Nummer ist die offizielle Nummer der Werk-Meldung (LSS/RSZ). Zu finden im Portal der sozialen Sicherheit: anmelden, <strong>Aangifte van werken</strong> öffnen, zu Ihren Meldungen gehen und die des Kunden oder der Baustelle öffnen — Nummer übernehmen. Kein Zugriff? Fragen Sie, wer die Meldung eingereicht hat (Kunde oder Hauptunternehmer). Bei Reinigungsmeldungen ruft der spezifische CIaO-QR-Code oder die URL die Nummer automatisch ab."
                 },
                 {
                     "label": "Bearbeiten und deaktivieren",

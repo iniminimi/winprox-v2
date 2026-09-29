@@ -45,17 +45,31 @@ function signInPunchScanWorker(ClockPoint $clockPoint): mixed
         ->call('signInWithIcon');
 }
 
-it('klokt in na een verse QR-scan', function () {
-    [, $clockPoint, $worker] = punchScanTenant();
+it('klokt meteen in zodra de worker op een verse QR-scan is aangemeld', function () {
+    [$tenant, $clockPoint, $worker] = punchScanTenant();
 
     signInPunchScanWorker($clockPoint)
-        ->call('clockIn')
-        ->assertSet('flashMessage', '')
+        ->assertSet('flashMessage', __('time.portal.clock.clocked_in_at_tenant', [
+            'tenant' => $tenant->name,
+            'time' => now()->format('H:i'),
+        ]))
         ->assertDontSee(__('time.portal.clock.scan_to_clock_in'), false)
-        ->assertDontSeeHtml('@click="withGps(\'clockOut\')"');
+        ->assertDontSeeHtml('@click="withGps(\'clockIn\')"');
 
     expect(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeTrue()
         ->and(ClockPointScanGrant::isValid($clockPoint->id))->toBeFalse();
+});
+
+it('prikt niet bij alleen identificeren zonder verificatie', function () {
+    [, $clockPoint, $worker] = punchScanTenant();
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker');
+
+    expect(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeFalse()
+        ->and(ClockPointScanGrant::isValid($clockPoint->id))->toBeTrue();
 });
 
 it('weigert een tweede prik op dezelfde open tab zonder nieuwe scan', function () {
@@ -63,7 +77,7 @@ it('weigert een tweede prik op dezelfde open tab zonder nieuwe scan', function (
 
     signInPunchScanWorker($clockPoint)
         ->call('clockIn')
-        ->assertSet('flashMessage', '')
+        ->assertSet('flashMessage', __('time.portal.errors.already_clocked_in'))
         ->call('clockOut')
         ->assertSet('flashMessage', __('time.portal.errors.scan_required'));
 
@@ -73,9 +87,7 @@ it('weigert een tweede prik op dezelfde open tab zonder nieuwe scan', function (
 it('laat uitklokken na een nieuwe QR-scan', function () {
     [, $clockPoint, $worker] = punchScanTenant();
 
-    signInPunchScanWorker($clockPoint)
-        ->call('clockIn')
-        ->assertSet('flashMessage', '');
+    signInPunchScanWorker($clockPoint);
 
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->call('clockOut')
@@ -90,7 +102,7 @@ it('laat uitklokken na een nieuwe QR-scan', function () {
 it('toont na een nieuwe scan opnieuw inklokken bij een afgesloten dienst', function () {
     [, $clockPoint, $worker] = punchScanTenant();
 
-    signInPunchScanWorker($clockPoint)->call('clockIn');
+    signInPunchScanWorker($clockPoint);
 
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->call('clockOut')
@@ -106,27 +118,39 @@ it('toont na een nieuwe scan opnieuw inklokken bij een afgesloten dienst', funct
 });
 
 it('toont een korte scan-hint als de grant opgebruikt is en er nog geen dienst is', function () {
-    [, $clockPoint] = punchScanTenant();
+    [, $clockPoint, $worker] = punchScanTenant();
 
-    $portal = signInPunchScanWorker($clockPoint);
+    $portal = Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token]);
     ClockPointScanGrant::consume($clockPoint->id);
 
     $portal
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
         ->call('$refresh')
         ->assertSee(__('time.portal.clock.not_clocked_in'), false)
         ->assertSee(__('time.portal.clock.scan_to_clock_in'), false)
         ->assertDontSeeHtml('@click="withGps(\'clockIn\')"');
+
+    expect(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeFalse();
 });
 
-it('weigert inklokken wanneer de scan-grant verlopen is', function () {
+it('prikt niet in wanneer de scan-grant verlopen is', function () {
     [, $clockPoint, $worker] = punchScanTenant();
 
-    $portal = signInPunchScanWorker($clockPoint);
-    expect(ClockPointScanGrant::isValid($clockPoint->id))->toBeTrue();
+    $portal = Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token]);
 
     $this->travel(11)->minutes();
 
-    $portal->call('clockIn')
+    $portal
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->call('clockIn')
         ->assertSet('flashMessage', __('time.portal.errors.scan_required'));
 
     expect(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeFalse();
@@ -136,8 +160,10 @@ it('laat pauzes zonder nieuwe scan', function () {
     [, $clockPoint, $worker] = punchScanTenant();
 
     $portal = signInPunchScanWorker($clockPoint)
-        ->call('clockIn')
-        ->assertSet('flashMessage', '');
+        ->assertSet('flashMessage', __('time.portal.clock.clocked_in_at_tenant', [
+            'tenant' => $clockPoint->tenant->name,
+            'time' => now()->format('H:i'),
+        ]));
 
     $portal->call('startBreak')
         ->assertSet('flashMessage', __('time.portal.break_started'));
@@ -145,7 +171,7 @@ it('laat pauzes zonder nieuwe scan', function () {
     expect(WorkShift::query()->where('worker_id', $worker->id)->open()->first()?->openBreak)->not->toBeNull();
 });
 
-it('eist een verse scan om aanwezigheid te verplaatsen', function () {
+it('verplaatst een open dienst meteen bij aanmelden op een andere Clock Point', function () {
     [$tenant, $clockA, $worker] = punchScanTenant();
     $clockB = ClockPoint::factory()->create([
         'tenant_id' => $tenant->id,
@@ -160,7 +186,6 @@ it('eist een verse scan om aanwezigheid te verplaatsen', function () {
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
-        ->call('clockIn')
         ->assertSet('flashMessage', __('time.portal.transferred'));
 
     $portal->call('clockOut')

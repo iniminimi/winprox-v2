@@ -322,7 +322,7 @@
                 },
                 {
                     "label": "Importa sedi",
-                    "text": "Importa sedi via CSV o Excel (.xlsx). Per riga: name oppure street + postal_code + city. Opzionale: house_number, country_code (default BE), notes, contractual_relationship_reference (DDT), latitude e longitude (insieme). Header errati o identità mancante rifiutano l'intero import."
+                    "text": "Importa sedi via CSV o Excel (.xlsx). Per riga: name oppure street + postal_code + city. Opzionale: house_number, country_code (default BE), notes, contractual_relationship_reference (DDT), latitude e longitude (insieme). Header errati o identità mancante rifiutano l'intero import. Il numero si trova sul portale della Sicurezza sociale in <strong>Aangifte van werken</strong>: vai alle tue dichiarazioni e apri quella del cantiere. Nessun accesso? Chiedilo a chi ha presentato la dichiarazione (cliente o appaltatore principale). Per le dichiarazioni di pulizia, il codice QR o l'URL CIaO specifici recuperano il numero automaticamente."
                 },
                 {
                     "label": "Import sedi recenti",
@@ -1883,6 +1883,10 @@
                 {
                     "label": "Indirizzo di lavoro",
                     "text": "Via, numero, CAP, comune e il marker GPS (automatico dall'indirizzo o inserito a mano come latitudine/longitudine). Per lavori con dichiarazione di lavori (30bis) compila anche il riferimento DDT; per i clienti privati può restare vuoto."
+                },
+                {
+                    "label": "Dove trovo il numero DDT?",
+                    "text": "Il numero DDT è il numero ufficiale della Dichiarazione di lavori (ONSS/RSZ). Lo trovi sul portale della Sicurezza sociale: accedi, apri <strong>Aangifte van werken</strong>, vai alle tue dichiarazioni e apri quella del cliente o del cantiere — copia il numero. Nessun accesso? Chiedilo a chi ha presentato la dichiarazione (il cliente o l'appaltatore principale). Per le dichiarazioni di pulizia, il codice QR o l'URL CIaO specifici recuperano il numero automaticamente."
                 },
                 {
                     "label": "Modifica e disattiva",

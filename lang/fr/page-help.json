@@ -322,7 +322,7 @@
                 },
                 {
                     "label": "Importer des lieux",
-                    "text": "Importez des lieux via CSV ou Excel (.xlsx). Par ligne : name ou street + postal_code + city. Optionnel : house_number, country_code (BE par défaut), notes, contractual_relationship_reference (DDT), latitude et longitude (ensemble). En-têtes incorrects ou identité manquante refusent tout l'import."
+                    "text": "Importez des lieux via CSV ou Excel (.xlsx). Par ligne : name ou street + postal_code + city. Optionnel : house_number, country_code (BE par défaut), notes, contractual_relationship_reference (DDT), latitude et longitude (ensemble). En-têtes incorrects ou identité manquante refusent tout l'import. Retrouvez le numéro sur le portail de la Sécurité sociale sous <strong>Aangifte van werken</strong> : allez dans vos déclarations et ouvrez celle du chantier. Pas d'accès ? Demandez-le à qui a introduit la déclaration (client ou entrepreneur principal). Pour les déclarations de nettoyage, le QR code ou l'URL CIaO spécifique récupère le numéro automatiquement."
                 },
                 {
                     "label": "Imports de lieux récents",
@@ -1891,6 +1891,10 @@
                 {
                     "label": "Adresse de chantier",
                     "text": "Rue, numéro, code postal, commune et le repère GPS (automatique via l'adresse ou saisi manuellement en latitude/longitude). Pour les travaux sous déclaration de travaux (30bis), remplissez aussi la référence DDT ; pour les clients particuliers elle peut rester vide."
+                },
+                {
+                    "label": "Où trouver le numéro DDT ?",
+                    "text": "Le numéro DDT est le numéro officiel de la Déclaration de travaux (ONSS). Retrouvez-le sur le portail de la Sécurité sociale : connectez-vous, ouvrez <strong>Aangifte van werken</strong>, allez dans vos déclarations et ouvrez celle du client ou du chantier — reprenez le numéro. Pas d'accès ? Demandez-le à qui a introduit la déclaration (votre client ou l'entrepreneur principal). Pour les déclarations de nettoyage, le QR code ou l'URL CIaO spécifique récupère le numéro automatiquement."
                 },
                 {
                     "label": "Modifier et désactiver",

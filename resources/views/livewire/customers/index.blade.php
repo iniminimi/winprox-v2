@@ -260,23 +260,22 @@
                     </div>
                 </div>
 
-                <div class="wp-form-grid-2">
-                    <div class="wp-field">
-                        <label class="wp-label" for="locationFormCountryCode">{{ __('locations.fields.country_code') }}</label>
-                        <input type="text" id="locationFormCountryCode" class="wp-input" wire:model="locationFormCountryCode" maxlength="2" autocomplete="off">
-                        @error('country_code') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                    @if ($locationDdtVisible)
-                        <div class="wp-field">
-                            <x-wp-tooltip :text="__('locations.fields.ddt_tooltip')" wrap>
-                                <label class="wp-label" for="locationFormDdt">{{ __('locations.fields.ddt') }}</label>
-                            </x-wp-tooltip>
-                            <input type="text" id="locationFormDdt" class="wp-input" wire:model="locationFormDdt" maxlength="13" autocomplete="off">
-                            <p class="wp-hint">{{ __('locations.fields.ddt_hint') }}</p>
-                            @error('contractual_relationship_reference') <p class="wp-error">{{ $message }}</p> @enderror
-                        </div>
-                    @endif
+                <div class="wp-field">
+                    <label class="wp-label" for="locationFormCountryCode">{{ __('locations.fields.country_code') }}</label>
+                    <input type="text" id="locationFormCountryCode" class="wp-input" wire:model="locationFormCountryCode" maxlength="2" autocomplete="off">
+                    @error('country_code') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
+
+                @if ($locationDdtVisible)
+                    <div class="wp-field">
+                        <x-wp-tooltip :text="__('locations.fields.ddt_tooltip')" wrap>
+                            <label class="wp-label" for="locationFormDdt">{{ __('locations.fields.ddt') }}</label>
+                        </x-wp-tooltip>
+                        <input type="text" id="locationFormDdt" class="wp-input" wire:model="locationFormDdt" maxlength="13" autocomplete="off">
+                        <p class="wp-hint">{{ __('locations.fields.ddt_hint') }}</p>
+                        @error('contractual_relationship_reference') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                @endif
 
                 @include('partials.wp-gps-coords-fields', [
                     'latProperty' => 'locationFormLatitude',
