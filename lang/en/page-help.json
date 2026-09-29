@@ -1419,6 +1419,35 @@
                 }
             ]
         },
+        "time.clock_display": {
+            "title": "Help — Clock display",
+            "actions": [
+                {
+                    "label": "What is this display?",
+                    "text": "A physical TFT screen on this clock point that shows a new QR about every 30 seconds. Workers scan the screen with their phone and land on the same sign-in portal as the sticker — a photo of the screen is only valid briefly."
+                },
+                {
+                    "label": "Pairing code",
+                    "text": "<strong>Generate pairing code</strong> creates a one-time code (XXXX-XXXX, valid 10 minutes). Type it on the screen; the request appears here under <strong>Pairing request</strong>. Confirm only when you are sure it is your device. There is at most one display per clock point — confirming a new request replaces the old device."
+                },
+                {
+                    "label": "On-hours",
+                    "text": "Set between which hours the screen is on, e.g. nursery 06:00–19:00. Outside this window the screen is off. Both fields empty = always on; an overnight window (e.g. 22:00–06:00) works too."
+                },
+                {
+                    "label": "Rotate secret",
+                    "text": "Invalidates the current secret and device token — the display must be paired again with a new code. Use this when you suspect misuse."
+                },
+                {
+                    "label": "Unlink",
+                    "text": "Breaks the link: the display can no longer show valid QR codes and returns to pairing mode. The display_id is kept for the audit trail."
+                },
+                {
+                    "label": "Offline behaviour",
+                    "text": "The display checks in every minute. After ±24 hours without server contact it shows a warning; after 7 days offline the QR stops entirely. The on-hours keep working offline."
+                }
+            ]
+        },
         "legal": {
             "title": "Help — Legal documents",
             "actions": [

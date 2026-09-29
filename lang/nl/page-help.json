@@ -1419,6 +1419,35 @@
                 }
             ]
         },
+        "time.clock_display": {
+            "title": "Hulp — Klokscherm",
+            "actions": [
+                {
+                    "label": "Wat is dit scherm?",
+                    "text": "Een fysiek TFT-scherm aan dit clock point dat om de ±30 seconden een nieuwe QR toont. Uitvoerders scannen het scherm met hun gsm en landen op hetzelfde aanmeldportaal als bij de sticker — een foto van het scherm is maar kort geldig."
+                },
+                {
+                    "label": "Koppelcode",
+                    "text": "<strong>Genereer koppelcode</strong> maakt een eenmalige code (XXXX-XXXX, 10 minuten geldig). Tik die in op het scherm; de aanvraag verschijnt hier onder <strong>Koppelaanvraag</strong>. Bevestig pas als u zeker weet dat het uw toestel is. Er is maximaal één scherm per clock point — een nieuwe bevestiging vervangt het oude toestel."
+                },
+                {
+                    "label": "Aan-uren",
+                    "text": "Stel in tussen welke uren het scherm aan staat, bv. crèche 06:00–19:00. Buiten dit venster gaat het scherm uit. Beide velden leeg = altijd aan; een venster over middernacht (bv. 22:00–06:00) werkt ook."
+                },
+                {
+                    "label": "Secret roteren",
+                    "text": "Maakt de huidige secret en device-token ongeldig — het scherm moet daarna opnieuw gekoppeld worden met een nieuwe code. Handig bij vermoed misbruik."
+                },
+                {
+                    "label": "Ontkoppelen",
+                    "text": "Breekt de koppeling: het scherm kan geen geldige QR-codes meer tonen en valt terug naar de koppelmodus. Het display_id blijft bewaard voor het audit-spoor."
+                },
+                {
+                    "label": "Offline-gedrag",
+                    "text": "Het scherm meldt zich elke minuut. Na ±24 uur zonder servercontact toont het een waarschuwing; na 7 dagen offline stopt de QR volledig. De aan-uren blijven offline gewoon werken."
+                }
+            ]
+        },
         "legal": {
             "title": "Hulp — Juridische documenten",
             "actions": [

@@ -1427,6 +1427,35 @@
                 }
             ]
         },
+        "time.clock_display": {
+            "title": "Aide — Écran de pointage",
+            "actions": [
+                {
+                    "label": "Qu'est-ce que cet écran ?",
+                    "text": "Un écran TFT physique sur ce Clock Point qui affiche un nouveau QR environ toutes les 30 secondes. Les exécutants le scannent avec leur téléphone et arrivent sur le même portail d'enregistrement que l'autocollant — une photo de l'écran n'est valable que brièvement."
+                },
+                {
+                    "label": "Code d'association",
+                    "text": "<strong>Générer un code</strong> crée un code à usage unique (XXXX-XXXX, valable 10 minutes). Saisissez-le sur l'écran ; la demande apparaît ici sous <strong>Demande d'association</strong>. Ne confirmez que si vous êtes sûr qu'il s'agit de votre appareil. Un seul écran par Clock Point — confirmer une nouvelle demande remplace l'ancien appareil."
+                },
+                {
+                    "label": "Heures d'allumage",
+                    "text": "Définissez entre quelles heures l'écran est allumé, p. ex. crèche 06:00–19:00. En dehors de cette plage, l'écran est éteint. Les deux champs vides = toujours allumé ; une plage à cheval sur minuit (22:00–06:00) fonctionne aussi."
+                },
+                {
+                    "label": "Rotation du secret",
+                    "text": "Invalide le secret actuel et le jeton de l'appareil — l'écran doit être associé à nouveau avec un nouveau code. Utile en cas d'abus suspecté."
+                },
+                {
+                    "label": "Dissocier",
+                    "text": "Rompt l'association : l'écran ne peut plus afficher de QR valides et repasse en mode association. Le display_id est conservé pour la piste d'audit."
+                },
+                {
+                    "label": "Comportement hors ligne",
+                    "text": "L'écran se signale chaque minute. Après ±24 h sans contact serveur, il affiche un avertissement ; après 7 jours hors ligne, le QR s'arrête complètement. Les heures d'allumage continuent de fonctionner hors ligne."
+                }
+            ]
+        },
         "legal": {
             "title": "Aide — Documents juridiques",
             "actions": [

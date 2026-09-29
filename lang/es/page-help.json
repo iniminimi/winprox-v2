@@ -1419,6 +1419,35 @@
                 }
             ]
         },
+        "time.clock_display": {
+            "title": "Ayuda — Pantalla de fichaje",
+            "actions": [
+                {
+                    "label": "¿Qué es esta pantalla?",
+                    "text": "Una pantalla TFT física en este punto de fichaje que muestra un QR nuevo cada ±30 segundos. Los operarios la escanean con el móvil y llegan al mismo portal de registro que la pegatina — una foto de la pantalla solo es válida brevemente."
+                },
+                {
+                    "label": "Código de vinculación",
+                    "text": "<strong>Generar código</strong> crea un código de un solo uso (XXXX-XXXX, válido 10 minutos). Escríbelo en la pantalla; la solicitud aparece aquí en <strong>Solicitud de vinculación</strong>. Confirma solo cuando estés seguro de que es tu dispositivo. Máximo una pantalla por punto — confirmar una nueva solicitud reemplaza el aparato anterior."
+                },
+                {
+                    "label": "Horario de encendido",
+                    "text": "Define entre qué horas la pantalla está encendida, p. ej. guardería 06:00–19:00. Fuera de ese horario la pantalla está apagada. Ambos campos vacíos = siempre encendida; también vale de un día para otro (22:00–06:00)."
+                },
+                {
+                    "label": "Rotar secret",
+                    "text": "Invalida el secret actual y el token del dispositivo — la pantalla debe vincularse de nuevo con un código nuevo. Útil ante un abuso sospechado."
+                },
+                {
+                    "label": "Desvincular",
+                    "text": "Rompe la vinculación: la pantalla ya no puede mostrar QR válidos y vuelve al modo de vinculación. El display_id se conserva para la traza de auditoría."
+                },
+                {
+                    "label": "Comportamiento sin conexión",
+                    "text": "La pantalla se comunica cada minuto. Tras ±24 h sin contacto con el servidor muestra un aviso; tras 7 días sin conexión el QR se detiene por completo. El horario de encendido sigue funcionando sin conexión."
+                }
+            ]
+        },
         "legal": {
             "title": "Ayuda — Documentos legales",
             "actions": [

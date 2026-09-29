@@ -1419,6 +1419,35 @@
                 }
             ]
         },
+        "time.clock_display": {
+            "title": "Hilfe — Uhrdisplay",
+            "actions": [
+                {
+                    "label": "Was ist dieses Display?",
+                    "text": "Ein physisches TFT-Display an diesem Stempelpunkt, das etwa alle 30 Sekunden einen neuen QR-Code zeigt. Mitarbeitende scannen das Display mit dem Handy und landen auf demselben Anmeldeportal wie beim Aufkleber — ein Foto des Displays ist nur kurz gültig."
+                },
+                {
+                    "label": "Kopplungscode",
+                    "text": "<strong>Kopplungscode erzeugen</strong> erstellt einen Einmal-Code (XXXX-XXXX, 10 Minuten gültig). Am Display eingeben; die Anfrage erscheint hier unter <strong>Kopplungsanfrage</strong>. Erst bestätigen, wenn Sie sicher sind, dass es Ihr Gerät ist. Pro Stempelpunkt ist höchstens ein Display möglich — eine neue Bestätigung ersetzt das alte Gerät."
+                },
+                {
+                    "label": "Einschaltzeiten",
+                    "text": "Legen Sie fest, zwischen welchen Uhrzeiten das Display eingeschaltet ist, z. B. Kita 06:00–19:00. Außerhalb bleibt der Bildschirm aus. Beide Felder leer = immer an; über Mitternacht (z. B. 22:00–06:00) geht auch."
+                },
+                {
+                    "label": "Secret rotieren",
+                    "text": "Macht das aktuelle Secret und das Geräte-Token ungültig — das Display muss mit einem neuen Code erneut gekoppelt werden. Nützlich bei Verdacht auf Missbrauch."
+                },
+                {
+                    "label": "Entkoppeln",
+                    "text": "Löst die Verbindung: das Display kann keine gültigen QR-Codes mehr zeigen und kehrt in den Kopplungsmodus zurück. Die display_id bleibt für die Audit-Spur erhalten."
+                },
+                {
+                    "label": "Offline-Verhalten",
+                    "text": "Das Display meldet sich jede Minute. Nach ±24 Stunden ohne Serverkontakt zeigt es eine Warnung; nach 7 Tagen offline stoppt der QR ganz. Die Einschaltzeiten funktionieren auch offline."
+                }
+            ]
+        },
         "legal": {
             "title": "Hilfe — Rechtliche Dokumente",
             "actions": [

@@ -40,6 +40,7 @@ final class ManualChapters
         'time.shift_types',
         'time.shifts',
         'time.clock_points',
+        'time.clock_display',
         'settings',
         'settings.api',
         'subscription',

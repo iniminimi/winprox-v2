@@ -1419,6 +1419,35 @@
                 }
             ]
         },
+        "time.clock_display": {
+            "title": "Aiuto — Schermo di timbratura",
+            "actions": [
+                {
+                    "label": "Cos’è questo schermo?",
+                    "text": "Uno schermo TFT fisico su questo punto di timbratura che mostra un nuovo QR circa ogni 30 secondi. Gli esecutori lo scansionano con il telefono e arrivano sullo stesso portale di registrazione dell’adesivo — una foto dello schermo è valida solo per poco."
+                },
+                {
+                    "label": "Codice di collegamento",
+                    "text": "<strong>Genera codice</strong> crea un codice monouso (XXXX-XXXX, valido 10 minuti). Digita il codice sullo schermo; la richiesta appare qui sotto <strong>Richiesta di collegamento</strong>. Conferma solo quando sei sicuro che sia il tuo dispositivo. Al massimo uno schermo per punto — confermare una nuova richiesta sostituisce il vecchio."
+                },
+                {
+                    "label": "Orari di accensione",
+                    "text": "Imposta tra quali orari lo schermo è acceso, es. nido 06:00–19:00. Fuori da questa fascia lo schermo è spento. Entrambi i campi vuoti = sempre acceso; funziona anche a cavallo di mezzanotte (22:00–06:00)."
+                },
+                {
+                    "label": "Ruota secret",
+                    "text": "Invalida il secret attuale e il token del dispositivo — lo schermo va ricollegato con un nuovo codice. Utile in caso di abuso sospettato."
+                },
+                {
+                    "label": "Scollega",
+                    "text": "Interrompe il collegamento: lo schermo non può più mostrare QR validi e torna in modalità collegamento. Il display_id resta per la traccia di audit."
+                },
+                {
+                    "label": "Comportamento offline",
+                    "text": "Lo schermo si segnala ogni minuto. Dopo ±24 ore senza contatto col server mostra un avviso; dopo 7 giorni offline il QR si ferma del tutto. Gli orari di accensione continuano a funzionare offline."
+                }
+            ]
+        },
         "legal": {
             "title": "Aiuto — Documenti legali",
             "actions": [

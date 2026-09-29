@@ -4,6 +4,7 @@
             <x-wp-page-head-title
                 :title="__('time.clock_displays.title', ['name' => $point?->name])"
                 :subtitle="__('time.clock_displays.subtitle')"
+                help-page="time.clock_display"
             />
             <p>
                 <a href="{{ route('time.clock-points.index') }}" class="btn btn--ghost btn--sm">
