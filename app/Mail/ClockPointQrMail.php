@@ -2,22 +2,19 @@
 
 namespace App\Mail;
 
-use App\Mail\Marketing\PromoCampaignLetterMail;
 use App\Models\ClockPoint;
 use App\Models\Tenant;
 use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Address;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
-use Illuminate\Mail\Mailables\Headers;
 use Illuminate\Queue\SerializesModels;
 use Symfony\Component\Mime\Email as SymfonyEmail;
 
 /**
- * Worker Clock Point link — same deliverability path as promo test mail:
- * Cloud86 promo mailbox + plain HTML (no marketing template / CTA button).
- * Fancy template + green button + /time|cp tokens was fingerprinting as spam
- * at Telenet/Gmail even when From was correct.
+ * Worker Clock Point sign-in link — transactional golden path:
+ * default mailer + WinProx template + green CTA + text/plain alternative.
+ * The promo mailbox + bare-URL layout fingerprinted as spam at Telenet
+ * (Razor2 cf 100 — shared fingerprint with bulk promo mail).
  */
 class ClockPointQrMail extends Mailable
 {
@@ -36,7 +33,6 @@ class ClockPointQrMail extends Mailable
 
         $this->locale($locale);
         $this->clockPoint->loadMissing('location');
-        $this->mailer((string) config('winprox.promo_mailer', 'municipal_promo'));
         $this->withSymfonyMessage(function (SymfonyEmail $message): void {
             $message->getHeaders()->addTextHeader('X-WinProx-Transactional', '1');
         });
@@ -45,20 +41,7 @@ class ClockPointQrMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address(
-                (string) config('winprox.municipal_promo_email_from.address'),
-                (string) config('winprox.municipal_promo_email_from.name'),
-            ),
             subject: __('mail.clock_point_qr.subject', ['tenant' => $this->tenantName()]),
-        );
-    }
-
-    public function headers(): Headers
-    {
-        return new Headers(
-            text: [
-                PromoCampaignLetterMail::LAYOUT_HEADER => PromoCampaignLetterMail::LAYOUT_PLAIN,
-            ],
         );
     }
 
@@ -70,7 +53,8 @@ class ClockPointQrMail extends Mailable
             ->join(' · ');
 
         return new Content(
-            html: 'emails.marketing.promo-plain',
+            html: 'emails.contact.winprox-template',
+            text: 'emails.time.clock-point-qr-text',
             with: [
                 'bodyHtml' => view('emails.time.clock-point-qr-body', [
                     'tenantName' => $this->tenantName(),
@@ -79,6 +63,9 @@ class ClockPointQrMail extends Mailable
                 ])->render(),
                 'bodyText' => '',
                 'recipientName' => '',
+                'tenantName' => $this->tenantName(),
+                'locationLine' => $locationLine,
+                'portalUrl' => $this->portalUrl,
                 'subject' => __('mail.clock_point_qr.subject', ['tenant' => $this->tenantName()]),
             ],
         );

@@ -66,8 +66,13 @@
         "link_fallback": "Si el botón no funciona, copie este enlace:"
     },
     "clock_point_qr": {
-        "subject": "Enlace de :tenant",
-        "intro": "Aquí tiene el enlace para :tenant:",
+        "subject": ":tenant — tu enlace de acceso a WinProx",
+        "intro": "Un responsable de :tenant te ha enviado este enlace de acceso personal.",
+        "what": "Con este enlace te registras en tu teléfono en el punto de acceso de :tenant. Después podrás fichar la entrada y la salida y ver tus tareas abiertas. No tienes que instalar nada.",
+        "location_label": "Punto de acceso",
+        "cta": "Abrir mi enlace de acceso",
+        "link_fallback": "¿El botón no funciona? Copia este enlace:",
+        "note": "Este enlace es personal y está destinado a ti — no lo compartas con otras personas.",
         "closing": "Un saludo"
     },
     "municipal_promo_letter": {

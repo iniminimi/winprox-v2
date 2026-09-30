@@ -66,8 +66,13 @@
         "link_fallback": "If the button does not work, copy this link:"
     },
     "clock_point_qr": {
-        "subject": "Link from :tenant",
-        "intro": "Here is the link for :tenant:",
+        "subject": ":tenant — your WinProx sign-in link",
+        "intro": "A manager at :tenant has sent you this personal sign-in link.",
+        "what": "Use this link to sign in on your phone at the :tenant sign-in point. You can then clock in and out and see your open tasks. Nothing to install.",
+        "location_label": "Sign-in point",
+        "cta": "Open my sign-in link",
+        "link_fallback": "Button not working? Copy this link:",
+        "note": "This link is personal and meant for you — do not share it with others.",
         "closing": "Kind regards"
     },
     "municipal_promo_letter": {

@@ -62,7 +62,7 @@ class SendClockPointQrMailAction
         $tenant = Tenant::query()->findOrFail($tenantId);
 
         // No QR image embed: Telenet (and similar) treat QR-in-email as phishing.
-        // Sent via promo Cloud86 mailbox (Dominique From): same host, better Telenet score than info@.
+        // Transactional golden path: default mailer, not the promo mailbox (§14.3).
         Mail::to($email)->send(new ClockPointQrMail(
             tenant: $tenant,
             clockPoint: $clockPoint,

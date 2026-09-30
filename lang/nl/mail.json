@@ -66,8 +66,13 @@
         "link_fallback": "Als de knop niet werkt, kopieer dan deze link:"
     },
     "clock_point_qr": {
-        "subject": "Link van :tenant",
-        "intro": "Hier is de link voor :tenant:",
+        "subject": ":tenant — je WinProx-aanmeldlink",
+        "intro": "Een beheerder bij :tenant heeft je deze persoonlijke aanmeldlink gestuurd.",
+        "what": "Met deze link meld je je op je gsm aan bij het aanmeldpunt van :tenant. Daarna klok je in en uit en zie je je open taken. Je hoeft niets te installeren.",
+        "location_label": "Aanmeldpunt",
+        "cta": "Aanmeldlink openen",
+        "link_fallback": "Werkt de knop niet? Kopieer dan deze link:",
+        "note": "Deze link is persoonlijk en bedoeld voor jou — deel hem niet met anderen.",
         "closing": "Met vriendelijke groet"
     },
     "municipal_promo_letter": {

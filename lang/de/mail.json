@@ -66,8 +66,13 @@
         "link_fallback": "Wenn die Schaltfläche nicht funktioniert, kopiere diesen Link:"
     },
     "clock_point_qr": {
-        "subject": "Link von :tenant",
-        "intro": "Hier ist der Link für :tenant:",
+        "subject": ":tenant — Ihr WinProx-Anmeldelink",
+        "intro": "Ein Administrator bei :tenant hat Ihnen diesen persönlichen Anmeldelink geschickt.",
+        "what": "Mit diesem Link melden Sie sich auf Ihrem Handy beim Anmeldepunkt von :tenant an. Danach können Sie ein- und ausstempeln und Ihre offenen Aufgaben sehen. Sie müssen nichts installieren.",
+        "location_label": "Anmeldepunkt",
+        "cta": "Anmeldelink öffnen",
+        "link_fallback": "Funktioniert die Schaltfläche nicht? Kopieren Sie diesen Link:",
+        "note": "Dieser Link ist persönlich und für Sie bestimmt — teilen Sie ihn nicht mit anderen.",
         "closing": "Mit freundlichen Grüßen"
     },
     "municipal_promo_letter": {

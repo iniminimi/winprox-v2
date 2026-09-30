@@ -66,8 +66,13 @@
         "link_fallback": "Si le bouton ne fonctionne pas, copiez ce lien :"
     },
     "clock_point_qr": {
-        "subject": "Lien de :tenant",
-        "intro": "Voici le lien pour :tenant :",
+        "subject": ":tenant — votre lien d'accès WinProx",
+        "intro": "Un responsable de :tenant vous a envoyé ce lien d'accès personnel.",
+        "what": "Ce lien vous permet de vous connecter sur votre téléphone au point d'enregistrement de :tenant. Vous pourrez ensuite pointer vos arrivées et départs et voir vos tâches ouvertes. Rien à installer.",
+        "location_label": "Point d'enregistrement",
+        "cta": "Ouvrir mon lien d'accès",
+        "link_fallback": "Le bouton ne fonctionne pas ? Copiez ce lien :",
+        "note": "Ce lien est personnel et vous est destiné — ne le partagez pas.",
         "closing": "Cordialement"
     },
     "municipal_promo_letter": {
