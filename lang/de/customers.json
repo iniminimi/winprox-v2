@@ -8,7 +8,7 @@
     "inactive": "Inaktiv",
     "saved": "Kunde gespeichert.",
     "location_saved": "Arbeitsadresse gespeichert.",
-    "locations_count": ":count Arbeitsadresse(n)",
+    "locations_count": "{0} Keine Arbeitsadressen|{1} :count Arbeitsadresse|[2,*] :count Arbeitsadressen",
     "no_locations": "Noch keine Arbeitsadressen.",
     "create_title": "Neuer Kunde",
     "edit_title": "Kunde bearbeiten",

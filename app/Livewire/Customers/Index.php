@@ -215,6 +215,7 @@ class Index extends Component
         $this->locationCustomerId = (int) $customer->id;
         $this->editingLocationId = null;
         $this->resetLocationForm();
+        $this->expandedCustomerIds[(int) $customer->id] = true;
         $this->showLocationModal = true;
     }
 

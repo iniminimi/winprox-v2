@@ -8,7 +8,7 @@
     "inactive": "Inactief",
     "saved": "Klant opgeslagen.",
     "location_saved": "Werkadres opgeslagen.",
-    "locations_count": ":count werkadres(sen)",
+    "locations_count": "{0} Geen werkadressen|{1} :count werkadres|[2,*] :count werkadressen",
     "no_locations": "Nog geen werkadressen.",
     "create_title": "Nieuwe klant",
     "edit_title": "Klant bewerken",

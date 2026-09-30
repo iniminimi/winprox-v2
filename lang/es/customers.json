@@ -8,7 +8,7 @@
     "inactive": "Inactivo",
     "saved": "Cliente guardado.",
     "location_saved": "Dirección de trabajo guardada.",
-    "locations_count": ":count dirección(es) de trabajo",
+    "locations_count": "{0} Sin direcciones de trabajo|{1} :count dirección de trabajo|[2,*] :count direcciones de trabajo",
     "no_locations": "Aún no hay direcciones de trabajo.",
     "create_title": "Nuevo cliente",
     "edit_title": "Editar cliente",

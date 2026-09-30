@@ -8,7 +8,7 @@
     "inactive": "Inactif",
     "saved": "Client enregistré.",
     "location_saved": "Adresse de travail enregistrée.",
-    "locations_count": ":count adresse(s) de travail",
+    "locations_count": "{0} Aucune adresse de travail|{1} :count adresse de travail|[2,*] :count adresses de travail",
     "no_locations": "Pas encore d'adresses de travail.",
     "create_title": "Nouveau client",
     "edit_title": "Modifier le client",

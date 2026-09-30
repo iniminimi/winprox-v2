@@ -51,68 +51,79 @@
                 @php
                     $isOpen = (bool) ($expandedCustomerIds[$customer->id] ?? false);
                     $customerLocations = $customer->locations;
-                    $activeLocationCount = $customerLocations->where('is_active', true)->count();
                 @endphp
-                <div class="wp-data-row" wire:key="customer-{{ $customer->id }}">
-                    <div class="wp-data-row-main">
-                        <button type="button" class="wp-issue-row-link wp-stack-tight" wire:click="toggleExpanded({{ $customer->id }})">
-                            <p class="wp-issue-card-title">{{ $customer->name }}</p>
-                            <p class="wp-issue-card-meta">
+                <div class="wp-stack-tight {{ $isOpen ? 'wp-team-row--expanded' : '' }}" wire:key="customer-{{ $customer->id }}">
+                    <div class="wp-data-row {{ $isOpen ? 'wp-team-header--expanded' : '' }}">
+                        <div class="wp-data-row-main">
+                            <button type="button"
+                                    class="wp-team-row-toggle"
+                                    wire:click="toggleExpanded({{ $customer->id }})"
+                                    aria-expanded="{{ $isOpen ? 'true' : 'false' }}"
+                                    aria-controls="customer-panel-{{ $customer->id }}">
+                                <x-wp-icon name="chevron-down" class="wp-disclosure-chevron {{ $isOpen ? 'is-open' : '' }}" />
+                                <span class="wp-data-row-title">{{ $customer->name }}</span>
+                            </button>
+                            <span class="wp-muted">
                                 @if ($customer->contact_name){{ $customer->contact_name }} · @endif
                                 @if ($customer->email){{ $customer->email }} · @endif
-                                {{ __('customers.locations_count', ['count' => $customerLocations->count()]) }}
-                            </p>
-                        </button>
+                                {{ trans_choice('customers.locations_count', $customerLocations->count(), ['count' => $customerLocations->count()]) }}
+                            </span>
+                        </div>
+                        <div class="wp-cluster wp-cluster--tight">
+                            @unless ($customer->is_active)
+                                <span class="wp-pill wp-pill--closed">{{ __('customers.inactive') }}</span>
+                            @endunless
+                            @can('update', $customer)
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="openLocationCreate({{ $customer->id }})">
+                                    {{ __('customers.add_location') }}
+                                </button>
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="openEdit({{ $customer->id }})">{{ __('common.button.edit') }}</button>
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleCustomerActive({{ $customer->id }})">
+                                    {{ $customer->is_active ? __('locations.deactivate') : __('locations.activate') }}
+                                </button>
+                            @endcan
+                        </div>
                     </div>
-                    <div class="wp-cluster wp-cluster--tight">
-                        @unless ($customer->is_active)
-                            <span class="wp-pill wp-pill--closed">{{ __('customers.inactive') }}</span>
-                        @endunless
-                        @can('update', $customer)
-                            <button type="button" class="btn btn--ghost btn--sm" wire:click="openLocationCreate({{ $customer->id }})">
-                                {{ __('customers.add_location') }}
-                            </button>
-                            <button type="button" class="btn btn--ghost btn--sm" wire:click="openEdit({{ $customer->id }})">{{ __('common.button.edit') }}</button>
-                            <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleCustomerActive({{ $customer->id }})">
-                                {{ $customer->is_active ? __('locations.deactivate') : __('locations.activate') }}
-                            </button>
-                        @endcan
-                    </div>
-                </div>
 
-                @if ($isOpen)
-                    <div class="wp-card wp-card-pad wp-stack-tight" wire:key="customer-{{ $customer->id }}-locations">
-                        @forelse ($customerLocations as $location)
-                            <div class="wp-data-row" wire:key="customer-location-{{ $location->id }}">
-                                <div class="wp-data-row-main">
-                                    <span class="wp-data-row-title">{{ $location->name }}</span>
-                                    <p class="wp-issue-card-meta">
-                                        {{ $location->formattedAddress() }}
-                                        @if ($location->contractual_relationship_reference)
-                                            · {{ __('locations.fields.ddt') }}: {{ $location->contractual_relationship_reference }}
-                                        @endif
-                                    </p>
-                                    @if (! $location->hasWorkVisitPin())
-                                        <p class="wp-hint">{{ __('customers.location_no_pin') }}</p>
-                                    @endif
-                                </div>
-                                <div class="wp-cluster wp-cluster--tight">
-                                    @unless ($location->is_active)
-                                        <span class="wp-pill wp-pill--closed">{{ __('customers.inactive') }}</span>
-                                    @endunless
-                                    @can('update', $location)
-                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openLocationEdit({{ $location->id }})">{{ __('common.button.edit') }}</button>
-                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleLocationActive({{ $location->id }})">
-                                            {{ $location->is_active ? __('locations.deactivate') : __('locations.activate') }}
-                                        </button>
-                                    @endcan
-                                </div>
+                    @if ($isOpen)
+                        <div id="customer-panel-{{ $customer->id }}" class="wp-team-workers-panel" wire:key="customer-{{ $customer->id }}-locations">
+                            <div class="wp-list">
+                                @forelse ($customerLocations as $location)
+                                    <div class="wp-data-row" wire:key="customer-location-{{ $location->id }}">
+                                        <div class="wp-data-row-main">
+                                            <span class="wp-data-row-title">{{ $location->name }}</span>
+                                            @php($locationAddress = $location->formattedAddress())
+                                            @if ($locationAddress !== '' || $location->contractual_relationship_reference)
+                                                <p class="wp-issue-card-meta">
+                                                    {{ $locationAddress }}
+                                                    @if ($location->contractual_relationship_reference)
+                                                        · {{ __('locations.fields.ddt') }}: {{ $location->contractual_relationship_reference }}
+                                                    @endif
+                                                </p>
+                                            @endif
+                                            @if (! $location->hasWorkVisitPin())
+                                                <p class="wp-hint">{{ __('customers.location_no_pin') }}</p>
+                                            @endif
+                                        </div>
+                                        <div class="wp-cluster wp-cluster--tight">
+                                            @unless ($location->is_active)
+                                                <span class="wp-pill wp-pill--closed">{{ __('customers.inactive') }}</span>
+                                            @endunless
+                                            @can('update', $location)
+                                                <button type="button" class="btn btn--ghost btn--sm" wire:click="openLocationEdit({{ $location->id }})">{{ __('common.button.edit') }}</button>
+                                                <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleLocationActive({{ $location->id }})">
+                                                    {{ $location->is_active ? __('locations.deactivate') : __('locations.activate') }}
+                                                </button>
+                                            @endcan
+                                        </div>
+                                    </div>
+                                @empty
+                                    <p class="wp-muted">{{ __('customers.no_locations') }}</p>
+                                @endforelse
                             </div>
-                        @empty
-                            <p class="wp-muted">{{ __('customers.no_locations') }}</p>
-                        @endforelse
-                    </div>
-                @endif
+                        </div>
+                    @endif
+                </div>
             @empty
                 <p class="wp-muted">{{ __('customers.empty') }}</p>
             @endforelse
