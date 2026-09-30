@@ -660,6 +660,7 @@
             "actions": [
                 {
                     "label": "Konfigurationsübersicht",
+                    "requires_facility": true,
                     "text": "Ganz oben finden Sie eine aufklappbare Übersicht des Konfigurationsstatus Ihrer Umgebung. Klappen Sie sie auf, um die Vollständigkeitsanzeige, acht Zähler (inaktive Standorte, Units, Teams und Mitarbeiter; Kategorien mit oder ohne GPS; aktive und inaktive Dokumente) und die wichtigsten Maßnahmen mit direktem Link <strong>Beheben</strong> zu sehen. Zeigt das Feld ein Badge, liegen offene Maßnahmen vor. Über <strong>Vollständige Übersicht öffnen</strong> gelangen Sie zur eigenen Konfigurationsseite mit allen Maßnahmen und Filterkarten pro Typ."
                 },
                 {
@@ -696,6 +697,7 @@
                 },
                 {
                     "label": "Arbeitsmenü-Einstellungen",
+                    "requires_facility": true,
                     "text": "Über Organisation → Einstellungen → Arbeitsmenü-Einstellungen kann der Administrator pro Organisation festlegen, welche Arbeitsmenü-Einträge sichtbar sind: Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen. Deaktiviert verschwindet der Eintrag aus der Seitenleiste und Backoffice-Routen sind gesperrt. Bestehende Reservierungs- oder Mess-Einstellungen auf Units und Kategorien funktionieren im QR-Portal weiter; neu aktivieren ist nicht möglich, solange der Menüeintrag aus ist. Unit Checks werden nicht beeinflusst, wenn Inspektionsrunden aus ist."
                 },
                 {

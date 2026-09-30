@@ -40,7 +40,9 @@ final class PageHelp
         }
 
         $actions = [];
-        $hasApiAccess = self::currentTenantHasApiAccess();
+        $tenant = self::currentTenant();
+        $hasApiAccess = $tenant !== null && $tenant->hasApiAccess();
+        $checkmateMode = $tenant !== null && $tenant->checkmateMode();
 
         if (isset($pageData['actions']) && is_array($pageData['actions'])) {
             foreach ($pageData['actions'] as $item) {
@@ -49,6 +51,10 @@ final class PageHelp
                 }
 
                 if (! empty($item['requires_api']) && ! $hasApiAccess) {
+                    continue;
+                }
+
+                if (! empty($item['requires_facility']) && $checkmateMode) {
                     continue;
                 }
 
@@ -134,15 +140,10 @@ final class PageHelp
         ];
     }
 
-    private static function currentTenantHasApiAccess(): bool
+    private static function currentTenant(): ?Tenant
     {
         $tenantId = Tenancy::id();
-        if ($tenantId === null) {
-            return false;
-        }
 
-        $tenant = Tenant::query()->find($tenantId);
-
-        return $tenant !== null && $tenant->hasApiAccess();
+        return $tenantId === null ? null : Tenant::query()->find($tenantId);
     }
 }

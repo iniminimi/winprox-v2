@@ -477,7 +477,9 @@ it('verbergt werkmenu en configuratie-overzicht op instellingen voor checkmate',
         ->assertSee(__('settings.org.title'), false)
         ->assertDontSee('settings-config-overview', false)
         ->assertDontSee('loadConfigOverview', false)
-        ->assertDontSee('saveWorkMenuSettings', false);
+        ->assertDontSee('saveWorkMenuSettings', false)
+        ->assertDontSee(__('settings.config_overview.title'), false)
+        ->assertDontSee(__('settings.work_menu.title'), false);
 
     $facilityTenant = Tenant::factory()->create([
         'checkmate_mode' => false,
@@ -489,7 +491,9 @@ it('verbergt werkmenu en configuratie-overzicht op instellingen voor checkmate',
         ->get('/settings')
         ->assertOk()
         ->assertSee('settings-config-overview', false)
-        ->assertSee('saveWorkMenuSettings', false);
+        ->assertSee('saveWorkMenuSettings', false)
+        ->assertSee(__('settings.config_overview.title'), false)
+        ->assertSee(__('settings.work_menu.title'), false);
 });
 
 it('laat facility-tenants ongemoeid door de checkmate-gate', function () {

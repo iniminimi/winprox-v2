@@ -660,6 +660,7 @@
             "actions": [
                 {
                     "label": "Resumen de configuración",
+                    "requires_facility": true,
                     "text": "En la parte superior hay un resumen plegable del estado de configuración de su entorno. Despliéguelo para ver el indicador de completitud, ocho recuentos (ubicaciones, unidades, equipos y trabajadores inactivos; categorías con o sin GPS; documentos activos e inactivos) y las acciones principales con un enlace directo <strong>Corregir</strong>. Si el panel muestra una insignia, hay acciones pendientes. Mediante <strong>Abrir resumen completo</strong> accede a la página de configuración dedicada con todas las acciones y tarjetas de filtro por tipo."
                 },
                 {
@@ -696,6 +697,7 @@
                 },
                 {
                     "label": "Ajustes del menú Trabajo",
+                    "requires_facility": true,
                     "text": "En Organización → Ajustes → Ajustes del menú Trabajo, el administrador puede elegir por organización qué elementos de Trabajo son visibles: Calendario, Reservas, Rondas de inspección y Mediciones de unidad. Desactivado, el elemento desaparece de la barra lateral y las rutas de backoffice devuelven prohibido. Los ajustes de reserva o medición existentes en unidades y categorías siguen funcionando en el portal QR; no se pueden activar de nuevo mientras el elemento del menú Trabajo esté desactivado. Los unit checks no se ven afectados si Rondas de inspección está desactivado."
                 },
                 {

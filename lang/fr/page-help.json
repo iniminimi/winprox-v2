@@ -668,6 +668,7 @@
             "actions": [
                 {
                     "label": "Aperçu de la configuration",
+                    "requires_facility": true,
                     "text": "Tout en haut se trouve un aperçu repliable de l'état de configuration de votre environnement. Dépliez-le pour voir le indicateur de complétude, huit compteurs (sites, unités, équipes et exécutants inactifs ; catégories avec ou sans GPS ; documents actifs et inactifs) et les principaux points d'action avec un lien <strong>Corriger</strong> direct. Si le panneau affiche un badge, des points d'action sont ouverts. Via <strong>Ouvrir l'aperçu complet</strong>, vous accédez à la page de configuration dédiée avec tous les points d'action et des cartes de filtre par type."
                 },
                 {
@@ -704,6 +705,7 @@
                 },
                 {
                     "label": "Paramètres du menu Travail",
+                    "requires_facility": true,
                     "text": "Via Organisation → Paramètres → Paramètres du menu Travail, l'administrateur peut choisir par organisation quels éléments Travail sont visibles : Calendrier, Réservations, Tournées d'inspection et Mesures d'unité. Désactivé, l'élément disparaît de la barre latérale et les routes back-office renvoient interdit. Les réglages de réservation ou de mesure existants sur unités et catégories restent actifs sur le portail QR ; réactivation impossible tant que l'élément du menu Travail est désactivé. Les unit checks ne sont pas affectés si Tournées d'inspection est désactivé."
                 },
                 {

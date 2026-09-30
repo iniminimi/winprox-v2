@@ -660,6 +660,7 @@
             "actions": [
                 {
                     "label": "Configuration overview",
+                    "requires_facility": true,
                     "text": "At the very top you will find a collapsible overview of your environment's configuration status. Expand it to see the completeness meter, eight counts (inactive locations, units, teams and workers; categories with or without GPS; active and inactive documents) and the most important action items with a direct <strong>Fix</strong> link. If the panel shows a badge, there are open action items. Use <strong>Open full overview</strong> to go to the dedicated configuration page with all action items and filter cards per type."
                 },
                 {
@@ -696,6 +697,7 @@
                 },
                 {
                     "label": "Work menu settings",
+                    "requires_facility": true,
                     "text": "Via Organisation → Settings → Work menu settings, the administrator can choose per organisation which Work items are visible: Calendar, Reservations, Inspection rounds and Unit measurements. When disabled, the item disappears from the sidebar and backoffice routes return forbidden. Existing reservation or measurement settings on units and categories keep working on the QR portal; you cannot newly enable them while the work menu item is off. Unit checks are not affected when Inspection rounds is off."
                 },
                 {
