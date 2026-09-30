@@ -74,9 +74,9 @@
         </header>
     </div>
 
-    <section class="wp-welcome-video-section" aria-label="{{ __('welcome.clock.title') }}">
+    <section class="wp-welcome-clock-section" aria-label="{{ __('welcome.clock.title') }}">
         <div class="wp-welcome-main">
-            <div class="wp-welcome-split">
+            <div class="wp-welcome-split wp-welcome-split--qr">
                 <article class="wp-card wp-card-pad wp-stack">
                     <h2 class="wp-welcome-h3">{{ __('welcome.clock.title') }}</h2>
                     <p class="wp-text-body">{{ __('welcome.clock.lead') }}</p>
