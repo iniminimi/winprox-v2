@@ -59,24 +59,19 @@ final class LocationImportBatchRegistry
      */
     public static function summary(int $tenantId, string $batchId): array
     {
-        $query = Location::query()
+        $locations = Location::query()
             ->where('tenant_id', $tenantId)
-            ->where('import_batch_id', $batchId);
+            ->where('import_batch_id', $batchId)
+            ->get();
 
-        $total = (clone $query)->count();
-
-        $deletable = (clone $query)
-            ->whereDoesntHave('units')
-            ->whereDoesntHave('issues')
-            ->whereDoesntHave('documents')
-            ->whereDoesntHave('announcements')
-            ->whereDoesntHave('bulkBatches')
+        $deletable = $locations
+            ->filter(static fn (Location $location): bool => LocationDeletionGuard::canDelete($location))
             ->count();
 
         return [
-            'total' => $total,
+            'total' => $locations->count(),
             'deletable' => $deletable,
-            'blocked' => max(0, $total - $deletable),
+            'blocked' => max(0, $locations->count() - $deletable),
             'can_delete' => $deletable > 0,
         ];
     }

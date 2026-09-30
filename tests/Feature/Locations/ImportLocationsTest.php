@@ -8,6 +8,7 @@ use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\User;
+use App\Support\Locations\LocationImportBatchRegistry;
 use App\Support\Tenancy;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
@@ -169,6 +170,14 @@ it('can undo a location import batch when locations have no content', function (
     expect($import['success'])->toBeTrue();
     $batchId = $import['batch_id'];
 
+    // De auto "Hele locatie"-site-unit mag de undo niet blokkeren.
+    expect(LocationImportBatchRegistry::summary($tenant->id, $batchId))->toMatchArray([
+        'total' => 2,
+        'deletable' => 2,
+        'blocked' => 0,
+        'can_delete' => true,
+    ]);
+
     $result = app(DeleteLocationImportBatchAction::class)->handle(
         new DeleteLocationImportBatchData(importBatchId: $batchId),
         $tenant->id,
@@ -177,7 +186,8 @@ it('can undo a location import batch when locations have no content', function (
 
     expect($result['success'])->toBeTrue()
         ->and($result['deleted_count'])->toBe(2)
-        ->and(Location::where('tenant_id', $tenant->id)->where('import_batch_id', $batchId)->count())->toBe(0);
+        ->and(Location::where('tenant_id', $tenant->id)->where('import_batch_id', $batchId)->count())->toBe(0)
+        ->and(Unit::where('tenant_id', $tenant->id)->where('is_site_unit', true)->count())->toBe(0);
 });
 
 it('preserves imported locations that already have units when undoing', function () {
@@ -206,6 +216,13 @@ it('preserves imported locations that already have units when undoing', function
     Unit::factory()->create([
         'tenant_id' => $tenant->id,
         'location_id' => $keep->id,
+    ]);
+
+    expect(LocationImportBatchRegistry::summary($tenant->id, $batchId))->toMatchArray([
+        'total' => 2,
+        'deletable' => 1,
+        'blocked' => 1,
+        'can_delete' => true,
     ]);
 
     $result = app(DeleteLocationImportBatchAction::class)->handle(

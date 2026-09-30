@@ -2,12 +2,9 @@
 
 namespace App\Actions\Locations;
 
-use App\Models\EsgMeasurement;
-use App\Models\IssueRoundStop;
 use App\Models\Location;
-use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
-use App\Support\Units\UnitDeletionGuard;
+use App\Support\Locations\LocationDeletionGuard;
 use InvalidArgumentException;
 
 class DeleteLocationAction
@@ -19,22 +16,15 @@ class DeleteLocationAction
 
     public function handle(Location $location, ?int $actorUserId = null): void
     {
-        $this->removePristineSiteUnitsOrFail($location, $actorUserId);
-
-        if ($location->units()->exists()) {
-            throw new InvalidArgumentException('location_has_units');
+        $reason = LocationDeletionGuard::blockReason($location);
+        if ($reason !== null) {
+            throw new InvalidArgumentException($reason);
         }
 
-        if ($location->issues()->exists()) {
-            throw new InvalidArgumentException('location_has_issues');
-        }
-
-        if ($location->documents()->exists() || $location->announcements()->exists() || $location->bulkBatches()->exists()) {
-            throw new InvalidArgumentException('location_has_content');
-        }
-
-        if (EsgMeasurement::query()->where('location_id', $location->id)->exists()) {
-            throw new InvalidArgumentException('location_has_esg_measurements');
+        // Hier hangen hoogstens onaangeroerde site-units — die gaan mee weg
+        // (o.a. import-undo na auto site-unit).
+        foreach ($location->units()->get() as $unit) {
+            $this->deleteUnit->handle($unit, $actorUserId);
         }
 
         $tenantId = (int) $location->tenant_id;
@@ -51,34 +41,5 @@ class DeleteLocationAction
             modelId: $locationId,
             payload: ['id' => $locationId, 'name' => $name],
         );
-    }
-
-    /**
-     * Locaties met enkel onaangeroerde site-units (geen issues/rondes) mogen
-     * mee gewist worden — o.a. import-undo na auto site-unit.
-     */
-    private function removePristineSiteUnitsOrFail(Location $location, ?int $actorUserId): void
-    {
-        $units = $location->units()->get();
-        if ($units->isEmpty()) {
-            return;
-        }
-
-        $onlyPristineSiteUnits = $units->every(
-            fn (Unit $unit): bool => (bool) $unit->is_site_unit
-                && UnitDeletionGuard::canDelete($unit)
-                && ! IssueRoundStop::query()->where('unit_id', $unit->id)->exists()
-                && ! $unit->reservations()->exists()
-                && ! $unit->documents()->exists()
-                && ! $unit->announcements()->exists()
-        );
-
-        if (! $onlyPristineSiteUnits) {
-            throw new InvalidArgumentException('location_has_units');
-        }
-
-        foreach ($units as $unit) {
-            $this->deleteUnit->handle($unit, $actorUserId);
-        }
     }
 }

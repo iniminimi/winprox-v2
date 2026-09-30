@@ -137,7 +137,8 @@ Locatie-lijst → klik op een locatie → **locatie-/unit-detailscherm**.
   `contractual_relationship_reference`, `latitude`, `longitude`. Per rij: **naam** óf
   volledig adres (straat + postcode + plaats). Voorbeeld-CSV/xlsx + **recente imports**
   (30 dagen) met **Import terugdraaien** (alleen locaties zonder *echte* units/meldingen/
-  documenten/mededelingen — een onaangeroerde **Hele locatie**-unit mag mee).
+  documenten/mededelingen/ESG-metingen/werkbezoeken — een onaangeroerde
+  **Hele locatie**-unit mag mee).
   Elke nieuwe/geïmporteerde locatie krijgt automatisch één site-unit **Hele locatie**
   (`is_site_unit`, unit checks aan) zodat QR/unit checks/rondestops meteen kunnen.
   Knop **Hele locatie-units toevoegen** voor bestaande lege locaties (bulk).

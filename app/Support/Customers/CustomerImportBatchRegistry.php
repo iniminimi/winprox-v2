@@ -6,12 +6,8 @@ namespace App\Support\Customers;
 
 use App\Models\AuditLog;
 use App\Models\Customer;
-use App\Models\EsgMeasurement;
-use App\Models\IssueRoundStop;
 use App\Models\Location;
-use App\Models\Unit;
-use App\Models\WorkVisit;
-use App\Support\Units\UnitDeletionGuard;
+use App\Support\Locations\LocationDeletionGuard;
 use Illuminate\Support\Collection;
 
 final class CustomerImportBatchRegistry
@@ -113,39 +109,13 @@ final class CustomerImportBatchRegistry
     }
 
     /**
-     * Spiegelt DeleteLocationAction (onaangeroerde site-units tellen niet als
-     * inhoud) + werkbezoeken: een werkadres met WorkVisits mag een import-undo
-     * nooit wissen (CIAO-bewijs).
+     * Zelfde regels als DeleteLocationAction via LocationDeletionGuard:
+     * onaangeroerde site-units tellen niet als inhoud, een werkadres met
+     * WorkVisits mag een import-undo nooit wissen (CIAO-bewijs).
      */
     public static function locationIsDeletable(Location $location): bool
     {
-        $units = $location->units()->get();
-
-        $onlyPristineSiteUnits = $units->every(
-            static fn (Unit $unit): bool => (bool) $unit->is_site_unit
-                && UnitDeletionGuard::canDelete($unit)
-                && ! IssueRoundStop::query()->where('unit_id', $unit->id)->exists()
-                && ! $unit->reservations()->exists()
-                && ! $unit->documents()->exists()
-                && ! $unit->announcements()->exists()
-        );
-
-        if (! $onlyPristineSiteUnits) {
-            return false;
-        }
-
-        if ($location->issues()->exists()
-            || $location->documents()->exists()
-            || $location->announcements()->exists()
-            || $location->bulkBatches()->exists()) {
-            return false;
-        }
-
-        if (EsgMeasurement::query()->where('location_id', $location->id)->exists()) {
-            return false;
-        }
-
-        return ! WorkVisit::query()->where('location_id', $location->id)->exists();
+        return LocationDeletionGuard::canDelete($location);
     }
 
     /**
