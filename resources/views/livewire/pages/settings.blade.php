@@ -10,6 +10,7 @@
         <div class="wp-flash wp-flash--success">{{ session('success') }}</div>
     @endif
 
+    @if (! ($checkmateMode ?? false))
     <div
         class="wp-card wp-card-pad wp-stack-tight wp-settings-section"
         x-data="{ open: false }"
@@ -40,6 +41,7 @@
             @endif
         </div>
     </div>
+    @endif
 
     @if ($organisationTenant)
         <x-wp-settings-section :title="__('settings.org.title')">
@@ -129,7 +131,7 @@
         </x-wp-settings-section>
     @endif
 
-    @if ($canManageOrganisation)
+    @if ($canManageOrganisation && ! ($checkmateMode ?? false))
         <x-wp-settings-section :title="__('settings.work_menu.title')" titleId="settings-work-menu">
             <form wire:submit="saveWorkMenuSettings" class="wp-stack">
                 <p class="wp-muted wp-text-sm">{{ __('settings.work_menu.hint') }}</p>

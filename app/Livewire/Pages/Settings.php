@@ -148,7 +148,10 @@ class Settings extends Component
         abort_unless($tenant instanceof Tenant, 403);
 
         $this->authorize('viewAny', Location::class);
-        $this->configIssueCount = $healthService->issueCount();
+
+        if (! $tenant->checkmateMode()) {
+            $this->configIssueCount = $healthService->issueCount();
+        }
 
         $user = auth()->user();
         $this->canManageOrganisation = $user->can('manageOrganisation', $tenant);

@@ -467,6 +467,31 @@ it('blokkeert niet-whitelist admin-routes voor checkmate-tenants', function () {
     $this->get('/time/clock-points')->assertOk();
 });
 
+it('verbergt werkmenu en configuratie-overzicht op instellingen voor checkmate', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $this->actingAs($admin)
+        ->get('/settings')
+        ->assertOk()
+        ->assertSee(__('settings.org.title'), false)
+        ->assertDontSee('settings-config-overview', false)
+        ->assertDontSee('loadConfigOverview', false)
+        ->assertDontSee('saveWorkMenuSettings', false);
+
+    $facilityTenant = Tenant::factory()->create([
+        'checkmate_mode' => false,
+        'trial_ends_at' => now()->addDays(14),
+    ]);
+    $facilityAdmin = User::factory()->admin()->for($facilityTenant)->create();
+
+    $this->actingAs($facilityAdmin)
+        ->get('/settings')
+        ->assertOk()
+        ->assertSee('settings-config-overview', false)
+        ->assertSee('saveWorkMenuSettings', false);
+});
+
 it('laat facility-tenants ongemoeid door de checkmate-gate', function () {
     $tenant = Tenant::factory()->create([
         'has_time_module' => true,
