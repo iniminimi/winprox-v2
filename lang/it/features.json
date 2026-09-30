@@ -62,6 +62,18 @@
             "title": "Soluzione",
             "body": "QR Clock Point per accesso e timbratura. I responsabili vedono presenza, allarmi e turni in Time."
         },
+        "clock": {
+            "title": "La timbratrice con codice QR aggiornato",
+            "lead": "Lo schermo-orologio WinProx è sul posto e mostra un codice QR che cambia regolarmente.",
+            "items": [
+                "Timbratura in entrata e uscita con il proprio smartphone — senza app.",
+                "Una foto dello schermo non serve più dopo.",
+                "Gli orari di accensione dello schermo li impostate voi.",
+                "Le registrazioni sono subito nell’amministrazione delle ore.",
+                "Senza schermo, un adesivo QR funziona allo stesso modo."
+            ],
+            "image_alt": "Lo schermo-orologio WinProx con un codice QR aggiornato."
+        },
         "capabilities": {
             "title": "Funzionalità",
             "items": [

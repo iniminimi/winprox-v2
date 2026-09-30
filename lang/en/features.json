@@ -62,6 +62,18 @@
             "title": "Solution",
             "body": "Clock Point QR for sign-in and clock in/out. Managers see presence, alarms and shift overviews in Time."
         },
+        "clock": {
+            "title": "The time clock with a current QR code",
+            "lead": "The WinProx clock screen sits on your site and shows a QR code that changes regularly.",
+            "items": [
+                "Clock in and out with your own smartphone — no app.",
+                "A photo of the screen is useless later.",
+                "You set the on/off hours of the screen yourself.",
+                "Registrations are in the hours administration right away.",
+                "Without a screen, a QR sticker works just the same."
+            ],
+            "image_alt": "The WinProx clock screen with a current QR code."
+        },
         "capabilities": {
             "title": "Capabilities",
             "items": [

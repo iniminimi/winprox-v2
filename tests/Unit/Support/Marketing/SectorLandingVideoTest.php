@@ -51,3 +51,10 @@ it('gebruikt de checkmate-video voor elke taal', function (string $locale) {
     expect($path)->toBe('video/checkmate_checkin.mp4')
         ->and(is_file(public_path($path)))->toBeTrue();
 })->with(['nl', 'en', 'fr', 'de', 'es', 'it']);
+
+it('gebruikt de welcome-video op de prikklok-landing voor elke taal', function (string $locale) {
+    $path = SectorLandingVideo::relativePath(PromoLanding::Prikklok, $locale);
+
+    expect($path)->toBe('video/welcome.mp4')
+        ->and(is_file(public_path($path)))->toBeTrue();
+})->with(['nl', 'en', 'fr', 'de', 'es', 'it']);

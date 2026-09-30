@@ -62,6 +62,18 @@
             "title": "Oplossing",
             "body": "Clock Point-QR voor aanmelden én in-/uitklokken. Beheer ziet aanwezigheid, alarmen en shiftoverzichten in Time."
         },
+        "clock": {
+            "title": "De prikklok met actuele QR-code",
+            "lead": "Het WinProx-klokscherm staat op uw locatie en toont een QR-code die regelmatig verandert.",
+            "items": [
+                "In- en uitklokken met de eigen smartphone — geen app.",
+                "Een foto van het scherm is later niet bruikbaar.",
+                "De aan/uit-uren van het scherm stelt u zelf in.",
+                "Registraties staan meteen in de urenadministratie.",
+                "Zonder scherm werkt een QR-sticker net zo."
+            ],
+            "image_alt": "Het WinProx-klokscherm met actuele QR-code."
+        },
         "capabilities": {
             "title": "Functies",
             "items": [

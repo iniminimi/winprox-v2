@@ -74,6 +74,36 @@
         </header>
     </div>
 
+    <section class="wp-welcome-video-section" aria-label="{{ __('welcome.clock.title') }}">
+        <div class="wp-welcome-main">
+            <div class="wp-welcome-split">
+                <article class="wp-card wp-card-pad wp-stack">
+                    <h2 class="wp-welcome-h3">{{ __('welcome.clock.title') }}</h2>
+                    <p class="wp-text-body">{{ __('welcome.clock.lead') }}</p>
+                    <ul class="wp-welcome-checklist">
+                        @foreach (__('welcome.clock.items') as $item)
+                            <li>{{ $item }}</li>
+                        @endforeach
+                    </ul>
+                    <p class="wp-text-body">{{ __('welcome.clock.price_note', ['price' => config('marketing.clock_rent_monthly_eur')]) }}</p>
+                    <div class="wp-welcome-cta-row">
+                        <a href="{{ route('features.time') }}" class="btn btn--primary">{{ __('welcome.clock.cta_time') }}</a>
+                        <a href="{{ route('prikklok') }}" class="btn btn--ghost">{{ __('welcome.clock.cta_clock') }}</a>
+                    </div>
+                </article>
+                <figure class="wp-welcome-screenshot wp-welcome-screenshot--desktop wp-landing-visual wp-landing-visual--compact">
+                    <img
+                        src="{{ asset('images/landing/LCD.jpg') }}"
+                        alt="{{ __('welcome.clock.image_alt') }}"
+                        class="wp-welcome-screenshot__img"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </figure>
+            </div>
+        </div>
+    </section>
+
     <section id="video" class="wp-welcome-video-section" aria-label="{{ __('welcome.video.title') }}">
         <div class="wp-welcome-main">
             @if ($welcomeVideoAvailable)

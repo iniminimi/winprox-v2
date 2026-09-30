@@ -347,6 +347,7 @@
   "comparison_col_seats": "Posti",
   "payment_notice": "Pagamento mensile tramite Stripe. Corporate su misura (nessun pagamento online).",
   "prices_excl_vat": "Tutti i prezzi visualizzati sono IVA esclusa.",
+  "clock_rent_note": "Timbratrice inclusa in ogni formula. Schermo-orologio (opzionale) a noleggio da €:price al mese per schermo.",
   "seats": {
     "title": "Numero di operatori (posti)",
     "current": "Attivi attualmente: :count",

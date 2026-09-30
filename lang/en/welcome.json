@@ -42,6 +42,21 @@
         "title": "WinProx in action",
         "placeholder": "Video coming soon."
     },
+    "clock": {
+        "title": "A small, elegant time clock for your business",
+        "lead": "Employees clock in and out with their own smartphone. No app, no badge.",
+        "items": [
+            "Clock screen with QR code on site",
+            "Time registration and hours in WinProx",
+            "The QR code changes regularly",
+            "Also works as a QR sticker, no screen",
+            "CIAO/RSZ where applicable"
+        ],
+        "price_note": "Clock screen for rent from €:price per month per screen.",
+        "cta_time": "Discover WinProx Time",
+        "cta_clock": "See the time clock",
+        "image_alt": "The WinProx time clock: a compact white screen with QR code."
+    },
     "footer": {
         "contact": "Contact",
         "rights": "All rights reserved."

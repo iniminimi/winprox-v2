@@ -62,6 +62,18 @@
             "title": "Solution",
             "body": "Clock Point QR pour la connexion et le pointage entrée/sortie. Les responsables voient la présence, les alertes et les aperçus de shifts dans Time."
         },
+        "clock": {
+            "title": "La pointeuse avec code QR actuel",
+            "lead": "L’écran d’horloge WinProx est sur votre site et affiche un code QR qui change régulièrement.",
+            "items": [
+                "Pointer avec son propre smartphone — sans appli.",
+                "Une photo de l’écran ne sert à rien plus tard.",
+                "Les heures de marche de l’écran se règlent par vous.",
+                "Les enregistrements sont aussitôt dans les heures.",
+                "Sans écran, un autocollant QR fonctionne pareil."
+            ],
+            "image_alt": "L’écran d’horloge WinProx avec un code QR actuel."
+        },
         "capabilities": {
             "title": "Fonctionnalités",
             "items": [

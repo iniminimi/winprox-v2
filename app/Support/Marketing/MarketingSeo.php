@@ -23,6 +23,7 @@ final class MarketingSeo
             'realestate',
             'work-on-location',
             'checkmate',
+            'prikklok',
             'pricing',
             'contact.index',
             'faq.public',

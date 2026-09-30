@@ -42,6 +42,21 @@
         "title": "WinProx en acción",
         "placeholder": "Vídeo próximamente."
     },
+    "clock": {
+        "title": "Un reloj de fichar pequeño y elegante para su empresa",
+        "lead": "Los empleados fichan con su propio smartphone. Sin app, sin tarjeta.",
+        "items": [
+            "Pantalla de reloj con código QR en el lugar",
+            "Registro horario y de presencia en WinProx",
+            "El código QR cambia con regularidad",
+            "También posible como pegatina QR, sin pantalla",
+            "CIAO/RSZ cuando corresponda"
+        ],
+        "price_note": "Pantalla de reloj en alquiler desde €:price al mes por pantalla.",
+        "cta_time": "Descubrir WinProx Time",
+        "cta_clock": "Ver el reloj de fichar",
+        "image_alt": "El reloj de fichar WinProx: una pantalla blanca compacta con código QR."
+    },
     "footer": {
         "contact": "Contacto",
         "rights": "Todos los derechos reservados."

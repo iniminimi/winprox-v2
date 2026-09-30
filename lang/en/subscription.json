@@ -347,6 +347,7 @@
   "comparison_col_seats": "Seats",
   "payment_notice": "Billed monthly via Stripe. Corporate is custom (no online checkout).",
   "prices_excl_vat": "All displayed prices are exclusive of VAT.",
+  "clock_rent_note": "Time clock included in every plan. Clock screen (optional) for rent from €:price per month per screen.",
   "seats": {
     "title": "Number of workers (seats)",
     "current": "Currently active: :count",

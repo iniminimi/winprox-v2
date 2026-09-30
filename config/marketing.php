@@ -17,7 +17,14 @@ return [
         'realestate',
         'work-on-location',
         'checkmate',
+        'prikklok',
     ],
+
+    /*
+    | Commerciële huurprijs van het klokscherm (marketing; geen Stripe-plan).
+    | Zelfde bedrag op landing, welcome en pricing via :price-placeholder.
+    */
+    'clock_rent_monthly_eur' => 10,
 
     /*
     | Tijdelijk verborgen promo-video's per locale (basename). Leegmaken na vervanging.

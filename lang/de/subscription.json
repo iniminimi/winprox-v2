@@ -347,6 +347,7 @@
   "comparison_col_seats": "Plätze",
   "payment_notice": "Monatliche Zahlung über Stripe. Corporate individuell (kein Online-Checkout).",
   "prices_excl_vat": "Alle angezeigten Preise verstehen sich zuzüglich MwSt.",
+  "clock_rent_note": "Stempeluhr in jeder Formel inbegriffen. Uhrbildschirm (optional) zu mieten ab €:price pro Monat und Bildschirm.",
   "seats": {
     "title": "Anzahl der Mitarbeiter (Seats)",
     "current": "Derzeit aktiv: :count",

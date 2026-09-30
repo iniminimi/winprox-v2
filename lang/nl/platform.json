@@ -175,7 +175,8 @@
         "page_government": "Overheid-landing",
         "page_realestate": "Vastgoed-landing",
         "page_work_on_location": "Schoonmaak- en bouwlanding",
-        "page_checkmate": "Checkmate-landing"
+        "page_checkmate": "Checkmate-landing",
+        "page_prikklok": "Prikklok-landing"
     },
     "promo_campaigns": {
         "nav": "Promo-campagnes",

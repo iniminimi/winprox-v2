@@ -62,6 +62,18 @@
             "title": "Lösung",
             "body": "Clock Point-QR zum Anmelden und Ein-/Ausstempeln. Verwaltung sieht Anwesenheit, Alarme und Schichtübersichten in Time."
         },
+        "clock": {
+            "title": "Die Stempeluhr mit aktuellem QR-Code",
+            "lead": "Der WinProx-Uhrbildschirm steht vor Ort und zeigt einen QR-Code, der regelmäßig wechselt.",
+            "items": [
+                "Ein- und ausstempeln mit dem eigenen Smartphone — ohne App.",
+                "Ein Foto des Bildschirms ist später nutzlos.",
+                "Die Ein-/Ausschaltzeiten des Bildschirms stellen Sie selbst ein.",
+                "Registrierungen stehen sofort in der Stundenverwaltung.",
+                "Ohne Bildschirm funktioniert ein QR-Aufkleber genauso."
+            ],
+            "image_alt": "Der WinProx-Uhrbildschirm mit aktuellem QR-Code."
+        },
         "capabilities": {
             "title": "Funktionen",
             "items": [

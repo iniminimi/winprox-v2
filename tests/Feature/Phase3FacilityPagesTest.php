@@ -275,6 +275,60 @@ it('linkt de gele post-it op de welcome-pagina naar de checkmate-landing', funct
         ->assertSee('href="'.route('checkmate').'"', false);
 });
 
+it('toont de prikklok-landing met klokscherm en welcome-video', function () {
+    $this->withHeader('Accept-Language', 'xx-XX,xx;q=0.9')
+        ->get('/prikklok')
+        ->assertRedirect(route('prikklok', ['locale' => 'nl']));
+
+    $this->get(route('prikklok', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee(__('landings.prikklok.title', [], 'nl'))
+        ->assertSee(__('landings.prikklok.flow', [], 'nl'))
+        ->assertSee(__('landings.prikklok.problem.title', [], 'nl'))
+        ->assertSee(__('landings.prikklok.sites.title', [], 'nl'))
+        ->assertSee(__('landings.prikklok.start.trial', [], 'nl'))
+        ->assertSee('€10', false)
+        ->assertSee('images/landing/LCD.jpg', false)
+        ->assertSee('id="landing-video"', false)
+        ->assertSee('video/welcome.mp4', false)
+        ->assertDontSee(__('landings.shared.video_placeholder', [], 'nl'))
+        ->assertDontSee(__('landings.shared.clock.title', [], 'nl'));
+
+    $this->get(route('prikklok', ['locale' => 'fr']))
+        ->assertOk()
+        ->assertSee(__('landings.prikklok.title', [], 'fr'))
+        ->assertSee('video/welcome.mp4', false);
+});
+
+it('toont het prikklok-blok op sectorlandings en linkt naar de landing', function () {
+    $this->get(route('hospitality', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee(__('landings.shared.clock.title', [], 'nl'))
+        ->assertSee('href="'.route('prikklok').'"', false);
+});
+
+it('toont het prikklok-blok op de welcome-pagina', function () {
+    $this->get(route('welcome', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee(__('welcome.clock.title', [], 'nl'))
+        ->assertSee('images/landing/LCD.jpg', false)
+        ->assertSee('href="'.route('prikklok').'"', false)
+        ->assertSee('href="'.route('features.time').'"', false);
+});
+
+it('toont het klokscherm op de time-featurepagina', function () {
+    $this->get(route('features.time', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee(__('features.time.clock.title', [], 'nl'))
+        ->assertSee('images/landing/LCD.jpg', false);
+});
+
+it('toont de klokscherm-huurnoot op de pricing-pagina', function () {
+    $this->get(route('pricing', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee('€10', false);
+});
+
 it('toont taalkeuze bovenaan een sectorlanding', function () {
     $this->get(route('government'))
         ->assertOk()

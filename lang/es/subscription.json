@@ -347,6 +347,7 @@
   "comparison_col_seats": "Plazas",
   "payment_notice": "Pago mensual con Stripe. Corporate a medida (sin pago en línea).",
   "prices_excl_vat": "Todos los precios mostrados son sin IVA.",
+  "clock_rent_note": "Reloj de fichar incluido en todas las fórmulas. Pantalla de reloj (opcional) en alquiler desde €:price al mes por pantalla.",
   "seats": {
     "title": "Número de trabajadores (plazas)",
     "current": "Activos actualmente: :count",

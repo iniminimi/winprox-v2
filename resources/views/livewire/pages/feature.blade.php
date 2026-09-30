@@ -30,6 +30,29 @@
             <p class="wp-text-body">{{ __("{$key}.solution.body") }}</p>
         </article>
 
+        @if ($slug === 'time')
+            <div class="wp-welcome-split">
+                <article class="wp-card wp-card-pad wp-stack">
+                    <h2 class="wp-welcome-h3">{{ __('features.time.clock.title') }}</h2>
+                    <p class="wp-text-body">{{ __('features.time.clock.lead') }}</p>
+                    <ul class="wp-welcome-checklist">
+                        @foreach (__('features.time.clock.items') as $item)
+                            <li>{{ $item }}</li>
+                        @endforeach
+                    </ul>
+                </article>
+                <figure class="wp-welcome-screenshot wp-welcome-screenshot--desktop wp-landing-visual wp-landing-visual--compact">
+                    <img
+                        src="{{ asset('images/landing/LCD.jpg') }}"
+                        alt="{{ __('features.time.clock.image_alt') }}"
+                        class="wp-welcome-screenshot__img"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </figure>
+            </div>
+        @endif
+
         <article class="wp-card wp-card-pad wp-stack">
             <h2 class="wp-welcome-h3">{{ __("{$key}.capabilities.title") }}</h2>
             <ul class="wp-welcome-checklist">

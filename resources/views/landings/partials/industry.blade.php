@@ -119,7 +119,7 @@
 @if (\Illuminate\Support\Facades\Lang::has($key.'.sites.title'))
     <article class="wp-card wp-card-pad wp-stack">
         <h2 class="wp-welcome-h3">{{ __("{$key}.sites.title") }}</h2>
-        <p class="wp-text-body">{{ __("{$key}.sites.lead") }}</p>
+        <p class="wp-text-body">{{ __("{$key}.sites.lead", ['price' => config('marketing.clock_rent_monthly_eur')]) }}</p>
         @foreach (__("{$key}.sites.items") as $site)
             <div class="wp-stack-tight">
                 <p class="wp-subhead">{{ $site['title'] }}</p>
@@ -144,6 +144,14 @@
         'modifier' => $visualModifier('why'),
     ])
 </div>
+
+@if ($key !== 'landings.prikklok' && \Illuminate\Support\Facades\Lang::has('landings.shared.clock.title'))
+    <article class="wp-card wp-card-pad wp-stack">
+        <h2 class="wp-welcome-h3">{{ __('landings.shared.clock.title') }}</h2>
+        <p class="wp-text-body">{{ __('landings.shared.clock.body') }}</p>
+        <p class="wp-text-body"><a href="{{ route('prikklok') }}">{{ __('landings.shared.clock.cta') }}</a></p>
+    </article>
+@endif
 
 <article class="wp-card wp-card-pad wp-stack">
     <h2 class="wp-welcome-h3">{{ __("{$key}.start.title") }}</h2>

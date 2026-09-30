@@ -7,7 +7,12 @@
         "recipient_welcome": "Benvenuto",
         "video_title": "WinProx in azione",
         "cta_video": "Guarda come funziona",
-        "video_placeholder": "Il video arriverà presto in questa lingua."
+        "video_placeholder": "Il video arriverà presto in questa lingua.",
+        "clock": {
+            "title": "Timbratrice inclusa in WinProx Time",
+            "body": "Fate timbrare i dipendenti con il proprio smartphone — tramite un codice QR o lo schermo-orologio WinProx sul posto.",
+            "cta": "Più sulla timbratrice"
+        }
     },
     "hospitality": {
         "nav_label": "Hospitality",
@@ -725,7 +730,8 @@
                 "La visita GPS prova il lavoro dal cliente; la timbratura apre solo il turno.",
                 "Il turno è pianificazione; il CIAO resta IN/OUT reali al Clock Point o alla visita.",
                 "Il CIAO pulizie è disponibile su richiesta; l’edilizia segue la stessa pipeline.",
-                "L’ufficio segue presenza e compiti fino alla fine."
+                "L’ufficio segue presenza e compiti fino alla fine.",
+                "I lavoratori timbrano sul posto tramite un codice QR o lo schermo-orologio WinProx."
             ]
         },
         "start": {
@@ -830,7 +836,8 @@
                 "La visita di lavoro GPS presso il cliente è la prova; timbrare da solo non basta.",
                 "Attivazione CIAO tramite il tuo numero d'impresa (BCE); noi confermiamo e da lì l'invio è automatico.",
                 "Le registrazioni valgono dall'attivazione — ciò che è stato timbrato prima non viene mai inviato dopo.",
-                "Niente payroll, niente Dimona, niente dossier doppi — solo presenza corretta."
+                "Niente payroll, niente Dimona, niente dossier doppi — solo presenza corretta.",
+                "Funziona anche con lo schermo-orologio WinProx come timbratrice fissa sul posto."
             ]
         },
         "start": {
@@ -849,6 +856,121 @@
             "places": "Vista aerea di un cantiere con gru e squadre in arancione.",
             "roles": "Operaio in gilet arancione che guarda lo smartphone in cantiere.",
             "why": "Portatile con la panoramica WinProx di presenze e visite cliente.",
+            "close": "Due colleghi guardano WinProx insieme su un tablet."
+        }
+    },
+    "prikklok": {
+        "nav_label": "Timbratrice",
+        "meta_title": "Timbratrice digitale per dipendenti | WinProx",
+        "social": {
+            "og_title": "Timbratrice digitale per dipendenti | WinProx",
+            "og_description": "I dipendenti timbrano in entrata e in uscita con il proprio smartphone tramite un codice QR. Nessuna app, nessun badge."
+        },
+        "eyebrow": "WinProx Time · Timbratrice",
+        "title": "Una timbratrice piccola ed elegante per la vostra azienda.",
+        "lead": "I dipendenti timbrano in entrata e in uscita con il proprio smartphone tramite un codice QR sul posto. Nessuna app, nessun badge — la registrazione è subito in WinProx.",
+        "flow": "Scansione → conferma → timbrato",
+        "cta_register": "Provare WinProx",
+        "video": {
+            "title": "La timbratrice in azione",
+            "lead": "Il lavoratore scansiona il codice QR, conferma il suo nome e ha timbrato."
+        },
+        "problem": {
+            "title": "Timbrare senza complicazioni",
+            "lead": "Ogni lavoratore ha uno smartphone con sé. Eppure molti sistemi di timbratura si bloccano su piccole cose.",
+            "questions": [
+                "Badge che si perdono o restano a casa.",
+                "Un codice QR fisso che viene girato e scansionato da casa.",
+                "Timbratrici con tastiera, cavi e contratto di manutenzione.",
+                "Ore che poi vanno digitate a mano."
+            ]
+        },
+        "steps": {
+            "title": "Come funziona?",
+            "items": [
+                {
+                    "title": "Timbratrice sul posto",
+                    "body": "Posizionate lo schermo-orologio WinProx in un punto fisso dove lavorano i vostri dipendenti."
+                },
+                {
+                    "title": "Scansiona e conferma",
+                    "body": "Il lavoratore scansiona il codice QR con il proprio smartphone e conferma il suo nome. Nessuna app, nessun badge."
+                },
+                {
+                    "title": "Timbrato",
+                    "body": "La registrazione è subito in WinProx. A fine giornata: scansionare di nuovo e timbrare l’uscita."
+                }
+            ]
+        },
+        "places": {
+            "title": "Una vera timbratrice sul posto",
+            "lead": "Lo schermo-orologio WinProx mostra un codice QR aggiornato su cui i dipendenti timbrano.",
+            "items": [
+                "Il codice QR cambia regolarmente — una foto dello schermo non serve più dopo.",
+                "Lo schermo funziona solo nelle fasce orarie che impostate voi.",
+                "WinProx avvisa se lo schermo resta offline."
+            ],
+            "close": "Codice QR aggiornato → scansione → conferma → registrato."
+        },
+        "roles": {
+            "title": "Nessuna app, nessun badge",
+            "items": [
+                {
+                    "title": "Nessuna app",
+                    "body": "I lavoratori usano semplicemente il browser del proprio smartphone."
+                },
+                {
+                    "title": "Nessun badge",
+                    "body": "Niente carte o badge personali da gestire."
+                },
+                {
+                    "title": "Piccola e semplice",
+                    "body": "Uno schermo compatto in un punto fisso — tutto qui."
+                },
+                {
+                    "title": "Gestione semplice",
+                    "body": "Dipendenti, ore e pianificazione si gestiscono in WinProx."
+                }
+            ]
+        },
+        "sites": {
+            "title": "Timbratrice a noleggio — o partire senza schermo",
+            "lead": "Nessun hardware da acquistare: lo schermo-orologio si noleggia con l’abbonamento, da €:price al mese per schermo.",
+            "items": [
+                {
+                    "title": "Noleggiare la timbratrice",
+                    "body": "Lo schermo arriva da WinProx. Lo posizionate in un punto fisso e lo associate in un minuto."
+                },
+                {
+                    "title": "Preferite partire semplice?",
+                    "body": "Va bene anche un semplice codice QR come adesivo o stampa — lo schermo è un’opzione, non un requisito."
+                }
+            ]
+        },
+        "why": {
+            "title": "Dalla timbratura alla pianificazione",
+            "items": [
+                "La timbratrice è solo l’inizio: WinProx collega la registrazione del tempo alla pianificazione e al lavoro sul posto.",
+                "Ore, presenze e pause sono subito in WinProx.",
+                "Anche per CIAO: dove la registrazione delle presenze conta, WinProx può collegarvi la timbratura.",
+                "Timbratura → registrazione del tempo → pianificazione → lavoro sul posto."
+            ]
+        },
+        "start": {
+            "title": "Iniziare con la timbratrice",
+            "lead": "Create un account, aggiungete un Clock Point e posizionate lo schermo o un codice QR sul posto.",
+            "trial": "Preferite prima provare? Avviate una prova gratuita o chiedete una demo via info@winprox.app."
+        },
+        "close": {
+            "title": "Pronti a timbrare più semplicemente?",
+            "lead": "Iniziate con WinProx Time e lasciate che i vostri dipendenti timbrino con il proprio smartphone."
+        },
+        "visuals": {
+            "hero": "La timbratrice WinProx: uno schermo bianco compatto con codice QR su un supporto metallico.",
+            "steps": "Un lavoratore scansiona un codice QR con lo smartphone.",
+            "places": "Lo schermo-orologio WinProx con un codice QR aggiornato.",
+            "roles": "Un lavoratore sul posto timbra con lo smartphone.",
+            "why": "Panoramica WinProx di presenze e registrazione oraria.",
             "close": "Due colleghi guardano WinProx insieme su un tablet."
         }
     }

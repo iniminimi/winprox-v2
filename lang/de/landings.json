@@ -7,7 +7,12 @@
         "recipient_welcome": "Willkommen",
         "video_title": "WinProx in Aktion",
         "cta_video": "So funktioniert es",
-        "video_placeholder": "Video folgt in dieser Sprache in Kürze."
+        "video_placeholder": "Video folgt in dieser Sprache in Kürze.",
+        "clock": {
+            "title": "Stempeluhr in WinProx Time inbegriffen",
+            "body": "Lassen Sie Mitarbeiter einfach mit dem eigenen Smartphone ein- und ausstempeln — über einen QR-Code oder den WinProx-Uhrbildschirm vor Ort.",
+            "cta": "Mehr über die Stempeluhr"
+        }
     },
     "hospitality": {
         "nav_label": "Hospitality",
@@ -725,7 +730,8 @@
                 "Der GPS-Arbeitsbesuch belegt Arbeit am Kundenort; Einstempeln öffnet nur die Schicht.",
                 "Der Dienstplan ist Planung; CIAO bleibt echtes IN/OUT am Clock Point oder Besuch.",
                 "CIAO für Reinigung ist auf Anfrage verfügbar; Bau folgt derselben Pipeline.",
-                "Die Verwaltung folgt Anwesenheit und Aufgaben bis sie fertig sind."
+                "Die Verwaltung folgt Anwesenheit und Aufgaben bis sie fertig sind.",
+                "Mitarbeiter stempeln vor Ort über einen QR-Code oder den WinProx-Uhrbildschirm ein und aus."
             ]
         },
         "start": {
@@ -830,7 +836,8 @@
                 "Der GPS-Arbeitsbesuch beim Kunden ist der Beweis; Einstechen allein ist es nicht.",
                 "CIAO-Aktivierung über Ihre Unternehmensnummer (BCE); wir bestätigen und danach läuft die Meldung automatisch.",
                 "Registrierungen gelten ab Aktivierung — was vorher gestochen wurde, wird nie nachträglich gesendet.",
-                "Keine Payroll, kein Dimona, keine doppelten Akten — nur korrekte Anwesenheit."
+                "Keine Payroll, kein Dimona, keine doppelten Akten — nur korrekte Anwesenheit.",
+                "Funktioniert auch mit dem WinProx-Uhrbildschirm als feste Stempeluhr vor Ort."
             ]
         },
         "start": {
@@ -850,6 +857,121 @@
             "roles": "Bauarbeiter in orangefarbener Weste schaut auf sein Smartphone auf der Baustelle.",
             "why": "Laptop mit der WinProx-Übersicht von Anwesenheit und Kundenbesuchen.",
             "close": "Zwei Kollegen schauen WinProx gemeinsam auf einem Tablet an."
+        }
+    },
+    "prikklok": {
+        "nav_label": "Stempeluhr",
+        "meta_title": "Digitale Stempeluhr für Mitarbeiter | WinProx",
+        "social": {
+            "og_title": "Digitale Stempeluhr für Mitarbeiter | WinProx",
+            "og_description": "Mitarbeiter stempeln mit dem eigenen Smartphone über einen QR-Code ein und aus. Ohne App oder Badge."
+        },
+        "eyebrow": "WinProx Time · Stempeluhr",
+        "title": "Eine kleine, elegante Stempeluhr für Ihr Unternehmen.",
+        "lead": "Mitarbeiter stempeln mit dem eigenen Smartphone über einen QR-Code vor Ort ein und aus. Ohne App, ohne Badge — die Registrierung ist sofort in WinProx.",
+        "flow": "Scannen → bestätigen → eingestempelt",
+        "cta_register": "WinProx ausprobieren",
+        "video": {
+            "title": "Die Stempeluhr in Aktion",
+            "lead": "Der Mitarbeiter scannt den QR-Code, bestätigt seinen Namen und ist eingestempelt."
+        },
+        "problem": {
+            "title": "Stempeln ohne Umstände",
+            "lead": "Jeder Mitarbeiter hat ein Smartphone dabei. Trotzdem scheitern viele Stempelsysteme an Kleinigkeiten.",
+            "questions": [
+                "Badges, die verloren gehen oder zu Hause liegen bleiben.",
+                "Ein fester QR-Code, der weitergeleitet und von zu Hause gescannt wird.",
+                "Stempeluhren mit Tastatur, Kabeln und Wartungsvertrag.",
+                "Stunden, die nachträglich noch manuell abgetippt werden."
+            ]
+        },
+        "steps": {
+            "title": "Wie funktioniert es?",
+            "items": [
+                {
+                    "title": "Stempeluhr vor Ort",
+                    "body": "Stellen Sie den WinProx-Uhrbildschirm an einem festen Platz auf, wo Ihre Mitarbeiter arbeiten."
+                },
+                {
+                    "title": "Scannen und bestätigen",
+                    "body": "Der Mitarbeiter scannt den QR-Code mit dem eigenen Smartphone und bestätigt seinen Namen. Ohne App oder Badge."
+                },
+                {
+                    "title": "Eingestempelt",
+                    "body": "Die Registrierung ist sofort in WinProx. Am Ende des Arbeitstags: erneut scannen und ausstempeln."
+                }
+            ]
+        },
+        "places": {
+            "title": "Eine echte Stempeluhr vor Ort",
+            "lead": "Der WinProx-Uhrbildschirm zeigt einen aktuellen QR-Code, auf den Mitarbeiter einstempeln.",
+            "items": [
+                "Der QR-Code wechselt regelmäßig — ein Foto des Bildschirms ist später nutzlos.",
+                "Der Bildschirm funktioniert nur zu den von Ihnen eingestellten Zeiten.",
+                "WinProx warnt, wenn der Bildschirm zu lange offline ist."
+            ],
+            "close": "Aktueller QR-Code → scannen → bestätigen → registriert."
+        },
+        "roles": {
+            "title": "Keine App, kein Badge",
+            "items": [
+                {
+                    "title": "Keine App",
+                    "body": "Mitarbeiter nutzen einfach den Browser auf dem eigenen Smartphone."
+                },
+                {
+                    "title": "Kein Badge",
+                    "body": "Keine persönlichen Karten oder Badges im Umlauf."
+                },
+                {
+                    "title": "Klein und einfach",
+                    "body": "Ein kompakter Bildschirm an einem festen Platz — mehr ist es nicht."
+                },
+                {
+                    "title": "Einfache Verwaltung",
+                    "body": "Mitarbeiter, Stunden und Planung verwalten Sie in WinProx."
+                }
+            ]
+        },
+        "sites": {
+            "title": "Stempeluhr mieten — oder ohne Bildschirm starten",
+            "lead": "Keine Hardware kaufen: den Uhrbildschirm mieten Sie zu Ihrem Abo, ab €:price pro Monat und Bildschirm.",
+            "items": [
+                {
+                    "title": "Stempeluhr mieten",
+                    "body": "Der Bildschirm kommt von WinProx. Aufstellen, in einer Minute koppeln, fertig."
+                },
+                {
+                    "title": "Lieber einfach starten?",
+                    "body": "Ein einfacher QR-Code als Aufkleber oder Ausdruck reicht auch — der Bildschirm ist eine Option, keine Pflicht."
+                }
+            ]
+        },
+        "why": {
+            "title": "Vom Stempeln zur Planung",
+            "items": [
+                "Die Stempeluhr ist erst der Anfang: WinProx verknüpft Zeiterfassung mit Planung und Arbeit vor Ort.",
+                "Stunden, Anwesenheit und Pausen stehen sofort in WinProx.",
+                "Auch für CIAO: wo Anwesenheitserfassung relevant ist, kann WinProx den Stempelvorgang verknüpfen.",
+                "Stempeln → Zeiterfassung → Planung → Arbeit vor Ort."
+            ]
+        },
+        "start": {
+            "title": "Mit der Stempeluhr starten",
+            "lead": "Konto anlegen, Clock Point anlegen und den Uhrbildschirm oder einen QR-Code vor Ort platzieren.",
+            "trial": "Lieber zuerst testen? Starten Sie eine kostenlose Testphase oder fragen Sie eine Demo an unter info@winprox.app."
+        },
+        "close": {
+            "title": "Bereit für einfacheres Stempeln?",
+            "lead": "Starten Sie mit WinProx Time und lassen Sie Ihre Mitarbeiter mit dem eigenen Smartphone ein- und ausstempeln."
+        },
+        "visuals": {
+            "hero": "Die WinProx-Stempeluhr: ein kompakter weißer Bildschirm mit QR-Code auf einem Metallständer.",
+            "steps": "Ein Mitarbeiter scannt einen QR-Code mit dem Smartphone.",
+            "places": "Der WinProx-Uhrbildschirm mit aktuellem QR-Code.",
+            "roles": "Ein Mitarbeiter vor Ort stempelt mit dem Smartphone.",
+            "why": "WinProx-Übersicht von Anwesenheit und Zeiterfassung.",
+            "close": "Zwei Kollegen schauen gemeinsam WinProx auf einem Tablet an."
         }
     }
 }

@@ -62,6 +62,18 @@
             "title": "Solución",
             "body": "QR Clock Point para inicio de sesión y fichaje. Los responsables ven presencia, alarmas y turnos en Time."
         },
+        "clock": {
+            "title": "El reloj de fichar con código QR actual",
+            "lead": "La pantalla de reloj WinProx está en su local y muestra un código QR que cambia con regularidad.",
+            "items": [
+                "Fichar entrada y salida con el propio smartphone — sin app.",
+                "Una foto de la pantalla no sirve después.",
+                "Las horas de encendido de la pantalla las configura usted.",
+                "Los registros aparecen enseguida en la administración de horas.",
+                "Sin pantalla, una pegatina QR funciona igual."
+            ],
+            "image_alt": "La pantalla de reloj WinProx con un código QR actual."
+        },
         "capabilities": {
             "title": "Funcionalidades",
             "items": [

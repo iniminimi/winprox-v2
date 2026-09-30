@@ -98,3 +98,13 @@ it('levert checkmate-foto’s wanneer de bestanden bestaan', function () {
         ->toHaveKey('places')
         ->and(SectorLandingVisuals::closeStyle(PromoLanding::Checkmate))->toBe('scrim');
 });
+
+it('levert prikklok-foto’s wanneer de bestanden bestaan', function () {
+    $visuals = SectorLandingVisuals::for(PromoLanding::Prikklok);
+
+    expect($visuals)->toHaveKeys(['hero', 'steps', 'places', 'roles', 'why', 'close'])
+        ->and($visuals['hero'])->toBe('images/landing/LCD.jpg')
+        ->and($visuals['places'])->toBe('images/landing/LCD.jpg')
+        ->and(is_file(public_path($visuals['hero'])))->toBeTrue()
+        ->and(SectorLandingVisuals::closeStyle(PromoLanding::Prikklok))->toBe('scrim');
+});

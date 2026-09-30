@@ -347,6 +347,7 @@
   "comparison_col_seats": "Places",
   "payment_notice": "Paiement mensuel via Stripe. Corporate sur mesure (pas de paiement en ligne).",
   "prices_excl_vat": "Tous les prix affichés sont hors TVA.",
+  "clock_rent_note": "Pointeuse incluse dans chaque formule. Écran d’horloge (en option) à louer dès €:price par mois et par écran.",
   "seats": {
     "title": "Nombre d'exécutants (sièges)",
     "current": "Actifs actuellement : :count",

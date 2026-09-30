@@ -175,7 +175,8 @@
         "page_government": "Landing administración",
         "page_realestate": "Landing inmobiliaria",
         "page_work_on_location": "Landing limpieza y construcción",
-        "page_checkmate": "Landing de Checkmate"
+        "page_checkmate": "Landing de Checkmate",
+        "page_prikklok": "Landing de reloj de fichar"
     },
     "promo_campaigns": {
         "nav": "Campañas promo",

@@ -42,6 +42,21 @@
         "title": "WinProx in azione",
         "placeholder": "Video in arrivo."
     },
+    "clock": {
+        "title": "Una timbratrice piccola ed elegante per la vostra azienda",
+        "lead": "I dipendenti timbrano con il proprio smartphone. Nessuna app, nessun badge.",
+        "items": [
+            "Schermo-orologio con codice QR sul posto",
+            "Registrazione di tempo e ore in WinProx",
+            "Il codice QR cambia regolarmente",
+            "Possibile anche come adesivo QR, senza schermo",
+            "CIAO/RSZ dove applicabile"
+        ],
+        "price_note": "Schermo-orologio a noleggio da €:price al mese per schermo.",
+        "cta_time": "Scoprire WinProx Time",
+        "cta_clock": "Vedere la timbratrice",
+        "image_alt": "La timbratrice WinProx: uno schermo bianco compatto con codice QR."
+    },
     "footer": {
         "contact": "Contatto",
         "rights": "Tutti i diritti riservati."

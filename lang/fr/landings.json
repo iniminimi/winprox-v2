@@ -7,7 +7,12 @@
         "recipient_welcome": "Bienvenue",
         "video_title": "WinProx en action",
         "cta_video": "Voir comment ça marche",
-        "video_placeholder": "La vidéo arrive bientôt dans cette langue."
+        "video_placeholder": "La vidéo arrive bientôt dans cette langue.",
+        "clock": {
+            "title": "Pointeuse incluse dans WinProx Time",
+            "body": "Laissez vos employés pointer simplement avec leur propre smartphone — via un code QR ou l’écran d’horloge WinProx sur site.",
+            "cta": "En savoir plus sur la pointeuse"
+        }
     },
     "hospitality": {
         "nav_label": "Horeca",
@@ -725,7 +730,8 @@
                 "La visite GPS prouve le travail chez le client ; le pointage ouvre seulement le service.",
                 "Le planning n’est pas la présence ; le CIAO reste les IN/OUT réels au Clock Point ou à la visite.",
                 "Le CIAO nettoyage est disponible sur demande ; la construction suit le même pipeline.",
-                "Le bureau suit présence et tâches jusqu’à la fin."
+                "Le bureau suit présence et tâches jusqu’à la fin.",
+                "Les travailleurs pointent sur site via un code QR ou l’écran d’horloge WinProx."
             ]
         },
         "start": {
@@ -830,7 +836,8 @@
                 "La visite de travail GPS chez le client fait la preuve ; le seul pointage ne suffit pas.",
                 "Activation CIAO via votre numéro d'entreprise (BCE) ; nous confirmons et la transmission tourne ensuite automatiquement.",
                 "Les registrations valent à partir de l'activation — ce qui a été pointé avant n'est jamais envoyé après coup.",
-                "Pas de payroll, pas de Dimona, pas de dossiers en double — juste une présence correcte."
+                "Pas de payroll, pas de Dimona, pas de dossiers en double — juste une présence correcte.",
+                "Fonctionne aussi avec l’écran d’horloge WinProx comme pointeuse fixe sur site."
             ]
         },
         "start": {
@@ -850,6 +857,121 @@
             "roles": "Ouvrier en gilet orange consultant son smartphone sur le chantier.",
             "why": "Ordinateur portable avec l'aperçu WinProx des présences et visites clients.",
             "close": "Deux collègues regardent WinProx ensemble sur une tablette."
+        }
+    },
+    "prikklok": {
+        "nav_label": "Pointeuse",
+        "meta_title": "Pointeuse digitale pour vos employés | WinProx",
+        "social": {
+            "og_title": "Pointeuse digitale pour vos employés | WinProx",
+            "og_description": "Laissez vos employés pointer avec leur propre smartphone via un code QR. Sans appli ni badge."
+        },
+        "eyebrow": "WinProx Time · Pointeuse",
+        "title": "Une pointeuse petite et élégante pour votre entreprise.",
+        "lead": "Vos employés pointent avec leur propre smartphone via un code QR sur site. Sans appli, sans badge — et l’enregistrement est aussitôt dans WinProx.",
+        "flow": "Scan → confirmation → pointé",
+        "cta_register": "Essayer WinProx",
+        "video": {
+            "title": "La pointeuse en action",
+            "lead": "Le travailleur scanne le code QR, confirme son nom et a pointé."
+        },
+        "problem": {
+            "title": "Pointer sans tracas",
+            "lead": "Chaque travailleur a un smartphone sur lui. Pourtant, beaucoup de systèmes de pointage achoppent sur des détails.",
+            "questions": [
+                "Des badges perdus ou oubliés à la maison.",
+                "Un code QR fixe qui circule et se fait scanner depuis chez soi.",
+                "Des pointeuses avec clavier, câbles et contrat d’entretien.",
+                "Des heures encore retapées à la main après coup."
+            ]
+        },
+        "steps": {
+            "title": "Comment ça marche ?",
+            "items": [
+                {
+                    "title": "La pointeuse sur site",
+                    "body": "Placez l’écran d’horloge WinProx à un endroit fixe où travaillent vos employés."
+                },
+                {
+                    "title": "Scanner et confirmer",
+                    "body": "Le travailleur scanne le code QR avec son propre smartphone et confirme son nom. Sans appli ni badge."
+                },
+                {
+                    "title": "Pointé",
+                    "body": "L’enregistrement est aussitôt dans WinProx. En fin de journée : on rescanne et on pointe la sortie."
+                }
+            ]
+        },
+        "places": {
+            "title": "Une vraie pointeuse sur votre site",
+            "lead": "L’écran d’horloge WinProx affiche un code QR actuel sur lequel les employés pointent.",
+            "items": [
+                "Le code QR change régulièrement — une photo de l’écran ne sert à rien plus tard.",
+                "L’écran ne fonctionne que pendant les heures que vous définissez.",
+                "WinProx vous prévient si l’écran reste hors ligne."
+            ],
+            "close": "Code QR actuel → scan → confirmation → enregistré."
+        },
+        "roles": {
+            "title": "Ni appli, ni badge",
+            "items": [
+                {
+                    "title": "Pas d’appli",
+                    "body": "Les travailleurs utilisent simplement le navigateur de leur smartphone."
+                },
+                {
+                    "title": "Pas de badge",
+                    "body": "Aucune carte ou badge personnel à gérer."
+                },
+                {
+                    "title": "Petit et simple",
+                    "body": "Un écran compact à un endroit fixe — rien de plus."
+                },
+                {
+                    "title": "Gestion simple",
+                    "body": "Employés, heures et planning se gèrent dans WinProx."
+                }
+            ]
+        },
+        "sites": {
+            "title": "Louer la pointeuse — ou démarrer sans écran",
+            "lead": "Pas de matériel à acheter : l’écran d’horloge se loue avec votre abonnement, dès €:price par mois et par écran.",
+            "items": [
+                {
+                    "title": "Louer la pointeuse",
+                    "body": "L’écran vient de WinProx. Posez-le à un endroit fixe et associez-le en une minute."
+                },
+                {
+                    "title": "Envie de démarrer simple ?",
+                    "body": "Un simple code QR en autocollant ou imprimé suffit aussi — l’écran est une option, pas une obligation."
+                }
+            ]
+        },
+        "why": {
+            "title": "Du pointage au planning",
+            "items": [
+                "La pointeuse n’est que le début : WinProx relie l’enregistrement du temps au planning et au travail sur site.",
+                "Heures, présences et pauses sont aussitôt dans WinProx.",
+                "Aussi pour CIAO : là où l’enregistrement de présence compte, WinProx peut y relier le pointage.",
+                "Pointage → temps → planning → travail sur site."
+            ]
+        },
+        "start": {
+            "title": "Démarrer avec la pointeuse",
+            "lead": "Créez un compte, ajoutez un Clock Point et placez l’écran ou un code QR sur votre site.",
+            "trial": "Envie d’essayer d’abord ? Démarrez un essai gratuit ou demandez une démo via info@winprox.app."
+        },
+        "close": {
+            "title": "Prêt à pointer plus simplement ?",
+            "lead": "Démarrez avec WinProx Time et laissez vos employés pointer avec leur propre smartphone."
+        },
+        "visuals": {
+            "hero": "La pointeuse WinProx : un écran blanc compact avec code QR sur un pied métallique.",
+            "steps": "Un travailleur scanne un code QR avec son smartphone.",
+            "places": "L’écran d’horloge WinProx affichant un code QR actuel.",
+            "roles": "Un travailleur sur site pointe avec son smartphone.",
+            "why": "Aperçu WinProx des présences et des heures.",
+            "close": "Deux collègues consultent WinProx ensemble sur une tablette."
         }
     }
 }

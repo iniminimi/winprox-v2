@@ -175,7 +175,8 @@
         "page_government": "Government landing",
         "page_realestate": "Real estate landing",
         "page_work_on_location": "Cleaning and construction landing",
-        "page_checkmate": "Checkmate landing"
+        "page_checkmate": "Checkmate landing",
+        "page_prikklok": "Time clock landing"
     },
     "promo_campaigns": {
         "nav": "Promo campaigns",

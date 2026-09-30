@@ -7,7 +7,12 @@
         "recipient_welcome": "Bienvenido",
         "video_title": "WinProx en acción",
         "cta_video": "Ver cómo funciona",
-        "video_placeholder": "El vídeo estará pronto en este idioma."
+        "video_placeholder": "El vídeo estará pronto en este idioma.",
+        "clock": {
+            "title": "Reloj de fichar incluido en WinProx Time",
+            "body": "Deje que los empleados fichen con su propio smartphone — mediante un código QR o la pantalla de reloj WinProx en el lugar.",
+            "cta": "Más sobre el reloj de fichar"
+        }
     },
     "hospitality": {
         "nav_label": "Hostelería",
@@ -725,7 +730,8 @@
                 "La visita GPS demuestra el trabajo en el cliente; fichar solo abre el turno.",
                 "El cuadrante es planificación; CIAO sigue siendo IN/OUT real en Clock Point o la visita.",
                 "CIAO para limpieza está disponible bajo petición; la construcción sigue el mismo pipeline.",
-                "La oficina sigue presencia y tareas hasta que estén listas."
+                "La oficina sigue presencia y tareas hasta que estén listas.",
+                "Los trabajadores fichan en el lugar mediante un código QR o la pantalla de reloj WinProx."
             ]
         },
         "start": {
@@ -830,7 +836,8 @@
                 "La visita de trabajo GPS en casa del cliente es la prueba; fichar solo no lo es.",
                 "Activación CIAO con su número de empresa (BCE); nosotros confirmamos y a partir de ahí el envío es automático.",
                 "Los registros valen desde la activación — lo fichado antes nunca se envía después.",
-                "Sin nóminas, sin Dimona, sin expedientes duplicados — solo presencia correcta."
+                "Sin nóminas, sin Dimona, sin expedientes duplicados — solo presencia correcta.",
+                "Funciona también con la pantalla de reloj WinProx como reloj de fichar fijo en el lugar."
             ]
         },
         "start": {
@@ -850,6 +857,121 @@
             "roles": "Obrero con chaleco naranja mirando su smartphone en la obra.",
             "why": "Portátil con el resumen WinProx de presencia y visitas a clientes.",
             "close": "Dos compañeros miran WinProx juntos en una tableta."
+        }
+    },
+    "prikklok": {
+        "nav_label": "Reloj de fichar",
+        "meta_title": "Reloj de fichar digital para empleados | WinProx",
+        "social": {
+            "og_title": "Reloj de fichar digital para empleados | WinProx",
+            "og_description": "Sus empleados fichan la entrada y la salida con su propio smartphone mediante un código QR. Sin app ni tarjeta."
+        },
+        "eyebrow": "WinProx Time · Reloj de fichar",
+        "title": "Un reloj de fichar pequeño y elegante para su empresa.",
+        "lead": "Los empleados fichan la entrada y la salida con su propio smartphone mediante un código QR en el lugar. Sin app, sin tarjeta — el registro aparece enseguida en WinProx.",
+        "flow": "Escanear → confirmar → fichado",
+        "cta_register": "Probar WinProx",
+        "video": {
+            "title": "El reloj de fichar en acción",
+            "lead": "El trabajador escanea el código QR, confirma su nombre y ha fichado."
+        },
+        "problem": {
+            "title": "Fichar sin complicaciones",
+            "lead": "Cada trabajador lleva un smartphone encima. Aun así, muchos sistemas de fichaje se atascan en pequeñeces.",
+            "questions": [
+                "Tarjetas que se pierden o se quedan en casa.",
+                "Un código QR fijo que se reenvía y se escanea desde casa.",
+                "Relojes de fichar con teclado, cables y contrato de mantenimiento.",
+                "Horas que luego hay que teclear a mano."
+            ]
+        },
+        "steps": {
+            "title": "¿Cómo funciona?",
+            "items": [
+                {
+                    "title": "Reloj de fichar en el lugar",
+                    "body": "Coloque la pantalla de reloj WinProx en un punto fijo donde trabajen sus empleados."
+                },
+                {
+                    "title": "Escanear y confirmar",
+                    "body": "El trabajador escanea el código QR con su propio smartphone y confirma su nombre. Sin app ni tarjeta."
+                },
+                {
+                    "title": "Fichado",
+                    "body": "El registro aparece enseguida en WinProx. Al final de la jornada: volver a escanear y fichar la salida."
+                }
+            ]
+        },
+        "places": {
+            "title": "Un verdadero reloj de fichar en su local",
+            "lead": "La pantalla de reloj WinProx muestra un código QR actual sobre el que fichan los empleados.",
+            "items": [
+                "El código QR cambia con regularidad — una foto de la pantalla no sirve después.",
+                "La pantalla solo funciona en las horas que usted configura.",
+                "WinProx avisa si la pantalla se queda sin conexión."
+            ],
+            "close": "Código QR actual → escanear → confirmar → registrado."
+        },
+        "roles": {
+            "title": "Sin app, sin tarjeta",
+            "items": [
+                {
+                    "title": "Sin app",
+                    "body": "Los trabajadores usan el navegador de su propio smartphone."
+                },
+                {
+                    "title": "Sin tarjeta",
+                    "body": "No hay tarjetas ni badges personales que gestionar."
+                },
+                {
+                    "title": "Pequeño y sencillo",
+                    "body": "Una pantalla compacta en un punto fijo — nada más."
+                },
+                {
+                    "title": "Gestión sencilla",
+                    "body": "Empleados, horas y planificación se gestionan en WinProx."
+                }
+            ]
+        },
+        "sites": {
+            "title": "Alquilar el reloj — o empezar sin pantalla",
+            "lead": "Sin comprar hardware: la pantalla de reloj se alquila con su suscripción, desde €:price al mes por pantalla.",
+            "items": [
+                {
+                    "title": "Alquilar el reloj",
+                    "body": "La pantalla viene de WinProx. La coloca en un punto fijo y la empareja en un minuto."
+                },
+                {
+                    "title": "¿Prefiere empezar sencillo?",
+                    "body": "También funciona con un código QR normal en pegatina o impreso — la pantalla es una opción, no un requisito."
+                }
+            ]
+        },
+        "why": {
+            "title": "De fichar a planificar",
+            "items": [
+                "El reloj de fichar es solo el principio: WinProx enlaza el registro horario con la planificación y el trabajo en el lugar.",
+                "Horas, presencia y pausas aparecen enseguida en WinProx.",
+                "También para CIAO: donde el registro de presencia es relevante, WinProx puede enlazar el fichaje.",
+                "Fichar → registro horario → planificación → trabajo en el lugar."
+            ]
+        },
+        "start": {
+            "title": "Empezar con el reloj de fichar",
+            "lead": "Cree una cuenta, dé de alta un Clock Point y coloque la pantalla o un código QR en su local.",
+            "trial": "¿Prefiere probar primero? Inicie una prueba gratuita o pida una demo en info@winprox.app."
+        },
+        "close": {
+            "title": "¿Listo para fichar más fácil?",
+            "lead": "Empiece con WinProx Time y deje que sus empleados fichen con su propio smartphone."
+        },
+        "visuals": {
+            "hero": "El reloj de fichar WinProx: una pantalla blanca compacta con código QR sobre un soporte metálico.",
+            "steps": "Un trabajador escanea un código QR con su smartphone.",
+            "places": "La pantalla de reloj WinProx mostrando un código QR actual.",
+            "roles": "Un trabajador en el lugar ficha con su smartphone.",
+            "why": "Resumen WinProx de presencia y registro horario.",
+            "close": "Dos compañeros consultan WinProx juntos en una tablet."
         }
     }
 }

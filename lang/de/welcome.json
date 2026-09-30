@@ -42,6 +42,21 @@
         "title": "WinProx in Aktion",
         "placeholder": "Video folgt in Kürze."
     },
+    "clock": {
+        "title": "Eine kleine, elegante Stempeluhr für Ihr Unternehmen",
+        "lead": "Mitarbeiter stempeln mit dem eigenen Smartphone ein und aus. Ohne App, ohne Badge.",
+        "items": [
+            "Uhrbildschirm mit QR-Code vor Ort",
+            "Zeiterfassung und Stunden in WinProx",
+            "Der QR-Code wechselt regelmäßig",
+            "Auch als QR-Aufkleber möglich, ohne Bildschirm",
+            "CIAO/RSZ wo zutreffend"
+        ],
+        "price_note": "Uhrbildschirm zu mieten ab €:price pro Monat und Bildschirm.",
+        "cta_time": "WinProx Time entdecken",
+        "cta_clock": "Die Stempeluhr ansehen",
+        "image_alt": "Die WinProx-Stempeluhr: ein kompakter weißer Bildschirm mit QR-Code."
+    },
     "footer": {
         "contact": "Kontakt",
         "rights": "Alle Rechte vorbehalten."

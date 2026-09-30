@@ -347,6 +347,7 @@
   "comparison_col_seats": "Licenties",
   "payment_notice": "Maandelijks te betalen via Stripe. Corporate op maat (geen online checkout).",
   "prices_excl_vat": "Alle getoonde prijzen zijn exclusief btw.",
+  "clock_rent_note": "Prikklok inbegrepen in elke formule. Klokscherm (optioneel) te huur vanaf €:price per maand per scherm.",
   "seats": {
     "title": "Aantal uitvoerders (seats)",
     "current": "Actief op dit moment: :count",

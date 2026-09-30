@@ -175,7 +175,8 @@
         "page_government": "Landing enti pubblici",
         "page_realestate": "Landing immobiliare",
         "page_work_on_location": "Landing pulizie ed edilizia",
-        "page_checkmate": "Landing Checkmate"
+        "page_checkmate": "Landing Checkmate",
+        "page_prikklok": "Landing timbratrice"
     },
     "promo_campaigns": {
         "nav": "Campagne promo",

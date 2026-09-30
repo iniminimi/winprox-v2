@@ -42,6 +42,21 @@
         "title": "WinProx en action",
         "placeholder": "Vidéo bientôt disponible."
     },
+    "clock": {
+        "title": "Une pointeuse petite et élégante pour votre entreprise",
+        "lead": "Vos employés pointent avec leur propre smartphone. Sans appli, sans badge.",
+        "items": [
+            "Écran d’horloge avec code QR sur site",
+            "Enregistrement du temps et des heures dans WinProx",
+            "Le code QR change régulièrement",
+            "Possible aussi en autocollant QR, sans écran",
+            "CIAO/RSZ le cas échéant"
+        ],
+        "price_note": "Écran d’horloge à louer dès €:price par mois et par écran.",
+        "cta_time": "Découvrir WinProx Time",
+        "cta_clock": "Voir la pointeuse",
+        "image_alt": "La pointeuse WinProx : un écran blanc compact avec code QR."
+    },
     "footer": {
         "contact": "Contact",
         "rights": "Tous droits réservés."

@@ -42,6 +42,21 @@
         "title": "WinProx in actie",
         "placeholder": "Video volgt binnenkort."
     },
+    "clock": {
+        "title": "Een kleine, elegante prikklok voor uw bedrijf",
+        "lead": "Werknemers prikken in en uit met hun eigen smartphone. Geen app, geen badge.",
+        "items": [
+            "Klokscherm met QR-code op locatie",
+            "Tijdregistratie en uurregistratie in WinProx",
+            "De QR-code verandert regelmatig",
+            "Ook mogelijk als QR-sticker, zonder scherm",
+            "CIAO/RSZ waar van toepassing"
+        ],
+        "price_note": "Klokscherm te huur vanaf €:price per maand per scherm.",
+        "cta_time": "Ontdek WinProx Time",
+        "cta_clock": "Bekijk de prikklok",
+        "image_alt": "De WinProx-prikklok: een compact wit scherm met QR-code."
+    },
     "footer": {
         "contact": "Contact",
         "rights": "Alle rechten voorbehouden."
