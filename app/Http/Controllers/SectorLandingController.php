@@ -8,6 +8,7 @@ use App\Actions\Marketing\RecordPromoVisitAction;
 use App\Enums\PromoLanding;
 use App\Support\Marketing\JsonLd;
 use App\Support\Marketing\PromoLandingRequest;
+use App\Support\Marketing\PromoOgImage;
 use App\Support\Marketing\SectorLandingVideo;
 use App\Support\Marketing\SectorLandingVisuals;
 use App\Support\Translation\LocaleSupport;
@@ -55,6 +56,7 @@ class SectorLandingController extends Controller
             'layoutTitle' => __("{$key}.meta_title"),
             'layoutSocialTitle' => __("{$key}.social.og_title"),
             'layoutSocialDescription' => __("{$key}.social.og_description"),
+            'layoutSocialImage' => PromoOgImage::forLanding($landing),
             'layoutJsonLdGraphs' => [
                 JsonLd::organization(),
                 JsonLd::softwareApplication(),

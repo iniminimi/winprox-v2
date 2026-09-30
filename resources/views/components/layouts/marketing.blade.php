@@ -2,6 +2,7 @@
     'title' => null,
     'socialTitle' => null,
     'socialDescription' => null,
+    'socialImage' => null,
     'socialUrl' => null,
     'jsonLdGraphs' => [],
     'promoEngagePage' => null,
@@ -19,6 +20,10 @@
     @include('partials.social-meta', [
         'title' => $socialTitle ?? __('welcome.social.og_title'),
         'description' => $socialDescription ?? __('welcome.social.og_description'),
+        'image' => $socialImage['url'] ?? null,
+        'imageWidth' => $socialImage['width'] ?? null,
+        'imageHeight' => $socialImage['height'] ?? null,
+        'imageType' => $socialImage['type'] ?? null,
         'url' => $socialUrl ?? url()->current(),
     ])
     @include('partials.wp-json-ld', ['graphs' => $jsonLdGraphs ?? []])

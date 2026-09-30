@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Support\Marketing;
 
+use App\Enums\PromoLanding;
+
 /**
  * OG-afbeeldingen uit public/images/promo/og_*.jpg (Messenger-vriendelijk JPEG).
- * og_1 = site (welcome, promo, …); og_2 = QR-portaal.
+ * og_1 = site (welcome, promo, …); og_2 = QR-portaal + Checkmate-landing.
  */
 final class PromoOgImage
 {
@@ -34,6 +36,17 @@ final class PromoOgImage
     public static function forPortal(): array
     {
         return self::fromNamedFile(self::PORTAL_FILE);
+    }
+
+    /**
+     * @return array{url: string, width: int, height: int, type: string}
+     */
+    public static function forLanding(PromoLanding $landing): array
+    {
+        // De Checkmate-landing deelt het incheck-beeld (CheckMate-logo) met de portalen.
+        $file = $landing === PromoLanding::Checkmate ? self::PORTAL_FILE : self::SITE_FILE;
+
+        return self::fromNamedFile($file);
     }
 
     /**

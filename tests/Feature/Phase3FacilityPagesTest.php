@@ -258,6 +258,7 @@ it('toont de checkmate-landing met eigen video', function () {
         ->assertSee('id="landing-video"', false)
         ->assertSee('video/checkmate_checkin.mp4', false)
         ->assertSee('wp-video--sm', false)
+        ->assertSee('/images/promo/og_2.jpg', false)
         ->assertDontSee(__('landings.shared.video_placeholder', [], 'nl'))
         ->assertDontSee('Bekijk demo', false)
         ->assertDontSee('langdurig contract', false);

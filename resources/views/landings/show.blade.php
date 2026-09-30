@@ -2,6 +2,7 @@
     :title="$layoutTitle"
     :social-title="$layoutSocialTitle"
     :social-description="$layoutSocialDescription"
+    :social-image="$layoutSocialImage ?? null"
     :json-ld-graphs="$layoutJsonLdGraphs"
     :promo-engage-page="$slug"
     :promo-tracking-token="$promoTrackingToken ?? null"
