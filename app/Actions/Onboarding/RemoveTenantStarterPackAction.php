@@ -11,6 +11,7 @@ use App\Actions\Locations\DeleteUnitAction;
 use App\Actions\Team\DeleteTeamAction;
 use App\Data\Categories\SyncCategoryTeamsData;
 use App\Models\Category;
+use App\Models\Customer;
 use App\Models\EsgMeasurement;
 use App\Models\InternalTeam;
 use App\Models\Location;
@@ -49,6 +50,8 @@ class RemoveTenantStarterPackAction
         $locationId = (int) ($payload['location_id'] ?? 0);
         $categoryIds = array_values(array_map('intval', $payload['category_ids'] ?? []));
         $teamIds = array_values(array_map('intval', $payload['team_ids'] ?? []));
+        // Checkmate-pack seedt klanten i.p.v. facility-structuur (docs/CHECKMATE.md).
+        $customerIds = array_values(array_map('intval', $payload['customer_ids'] ?? []));
 
         $blocked = ($unitIds !== [] && (
             Unit::query()->where('tenant_id', $tenant->id)->whereIn('id', $unitIds)->whereHas('issues')->exists()
@@ -77,7 +80,15 @@ class RemoveTenantStarterPackAction
             ->whereIn('id', $teamIds)
             ->get();
 
-        DB::transaction(function () use ($tenant, $actor, $units, $location, $categoryIds, $teams, $payload): void {
+        // Klanten met werkadressen blijven staan (zelfde "has_content"-behoud
+        // als de klantimport-undo); demoklanten zonder adres worden verwijderd.
+        $customers = Customer::query()
+            ->where('tenant_id', $tenant->id)
+            ->whereIn('id', $customerIds)
+            ->whereDoesntHave('locations')
+            ->get();
+
+        DB::transaction(function () use ($tenant, $actor, $units, $location, $categoryIds, $teams, $customers, $payload): void {
             $actorId = (int) $actor->id;
 
             foreach ($units as $unit) {
@@ -104,6 +115,20 @@ class RemoveTenantStarterPackAction
 
             foreach ($teams as $team) {
                 $this->deleteTeam->handle($team, $actorId);
+            }
+
+            foreach ($customers as $customer) {
+                $customerId = (int) $customer->id;
+                $customerName = (string) $customer->name;
+                $customer->delete();
+                $this->audit->record(
+                    userId: $actorId,
+                    tenantId: (int) $tenant->id,
+                    action: 'customer.deleted',
+                    modelType: Customer::class,
+                    modelId: $customerId,
+                    payload: ['id' => $customerId, 'name' => $customerName],
+                );
             }
 
             $tenant->forceFill([

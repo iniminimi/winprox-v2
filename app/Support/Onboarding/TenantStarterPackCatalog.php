@@ -24,9 +24,10 @@ final class TenantStarterPackCatalog
     /**
      * @return array{
      *     work_menu?: mixed,
-     *     teams: array<string, array{categories: list<string>}>,
-     *     categories: list<string>,
-     *     units: list<array{key: string, category: string}>
+     *     teams?: array<string, array{categories: list<string>}>,
+     *     categories?: list<string>,
+     *     units?: list<array{key: string, category: string}>,
+     *     customers?: list<string>
      * }
      */
     public static function definition(TenantStarterPackType $type, ?TenantStarterPackSize $size = null): array
@@ -153,6 +154,11 @@ final class TenantStarterPackCatalog
         return 'starter_pack.packs.'.$type->value.'.units.'.$unitKey;
     }
 
+    public static function customerNameKey(TenantStarterPackType $type, string $customerKey): string
+    {
+        return 'starter_pack.packs.'.$type->value.'.customers.'.$customerKey;
+    }
+
     /**
      * @param  array{
      *     calendar: bool,
@@ -191,8 +197,9 @@ final class TenantStarterPackCatalog
      * @return array{
      *     teams: list<string>,
      *     categories: list<string>,
-     *     location: string,
+     *     location: string|null,
      *     units: list<string>,
+     *     customers: list<string>,
      *     work_menu: list<array{label: string, enabled: bool}>
      * }
      */
@@ -200,27 +207,34 @@ final class TenantStarterPackCatalog
     {
         $definition = self::definition($type, $size);
         $locale = LocaleSupport::normalize($locale);
+        $customerPack = array_key_exists('customers', $definition);
 
         $teams = [];
-        foreach (array_keys($definition['teams']) as $teamKey) {
+        foreach (array_keys($definition['teams'] ?? []) as $teamKey) {
             $teams[] = self::name(self::teamNameKey($type, (string) $teamKey), $locale);
         }
 
         $categories = [];
-        foreach ($definition['categories'] as $categoryKey) {
+        foreach ($definition['categories'] ?? [] as $categoryKey) {
             $categories[] = self::name(self::categoryNameKey($type, (string) $categoryKey), $locale);
         }
 
         $units = [];
-        foreach ($definition['units'] as $unit) {
+        foreach ($definition['units'] ?? [] as $unit) {
             $units[] = self::name(self::unitNameKey($type, (string) $unit['key']), $locale);
+        }
+
+        $customers = [];
+        foreach ($definition['customers'] ?? [] as $customerKey) {
+            $customers[] = self::name(self::customerNameKey($type, (string) $customerKey), $locale);
         }
 
         return [
             'teams' => $teams,
             'categories' => $categories,
-            'location' => self::name(self::locationNameKey($type), $locale),
+            'location' => $customerPack ? null : self::name(self::locationNameKey($type), $locale),
             'units' => $units,
+            'customers' => $customers,
             'work_menu' => self::workMenuItems(self::workMenuFlags($type, $size), $locale),
         ];
     }

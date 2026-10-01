@@ -666,7 +666,12 @@ class Tenant extends Model
         }
 
         if ($this->isTrialActive()) {
-            return config('billing.trial_plan_facility');
+            // Checkmate-proef (starter pack-keuze): het checkmate_trial-preset
+            // bepaalt limieten — billing_plan blijft null zodat de trial-purge
+            // en "dagen resterend"-logica ongewijzigd werken.
+            return $this->checkmate_mode
+                ? config('billing.trial_plan_checkmate', 'checkmate_trial')
+                : config('billing.trial_plan_facility');
         }
 
         return null;

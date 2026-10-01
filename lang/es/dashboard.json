@@ -91,6 +91,7 @@
     "preview_categories": "Categorías",
     "preview_location": "Ubicación",
     "preview_units": "Units",
+    "preview_customers": "Clientes",
     "errors": {
       "type_required": "Elige para qué quieres usar WinProx.",
       "unknown": "Esta plantilla inicial no está disponible.",

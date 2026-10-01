@@ -3,6 +3,7 @@
         "own_sites": "At my own locations",
         "on_site": "At customer sites",
         "fleet": "For vehicles and fleet",
+        "checkmate": "Checkmate — working at customers",
         "hotel": "Hotel",
         "hospital": "Hospital",
         "industry": "Industry",
@@ -144,11 +145,18 @@
                 "vehicle_002": "Vehicle 002",
                 "bay_01": "Bay 01"
             }
+        },
+        "checkmate": {
+            "customers": {
+                "customer_1": "Example customer 1",
+                "customer_2": "Example customer 2"
+            }
         }
     },
     "hints": {
         "own_sites": "For example hotels, care facilities, industry, municipalities, property management, etc.",
         "on_site": "For example cleaning, construction, maintenance and technical service companies.",
-        "fleet": "For vehicles, checks and follow-up."
+        "fleet": "For vehicles, checks and follow-up.",
+        "checkmate": "For teams working at customer sites: report on-site presence to the NSSO (CIAO). One month free trial; then €5 per worker per month."
     }
 }

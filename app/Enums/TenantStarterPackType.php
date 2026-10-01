@@ -9,6 +9,7 @@ enum TenantStarterPackType: string
     case OwnSites = 'own_sites';
     case OnSite = 'on_site';
     case Fleet = 'fleet';
+    case Checkmate = 'checkmate';
     case Hotel = 'hotel';
     case Hospital = 'hospital';
     case Industry = 'industry';
@@ -20,7 +21,7 @@ enum TenantStarterPackType: string
      */
     public static function onboardingChoices(): array
     {
-        return [self::OwnSites, self::OnSite, self::Fleet];
+        return [self::OwnSites, self::OnSite, self::Fleet, self::Checkmate];
     }
 
     public function labelKey(): string

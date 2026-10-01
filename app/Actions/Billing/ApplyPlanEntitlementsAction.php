@@ -66,7 +66,13 @@ class ApplyPlanEntitlementsAction
         }
 
         if ($tenant->isTrialActive()) {
-            return config('billing.trial');
+            // Checkmate-proef: checkmate_mode leidt naar het checkmate_trial-preset
+            // zodat een her-toepassing de mode niet terugzet naar facility.
+            $key = $tenant->effectivePlanKey();
+
+            return $key === config('billing.trial_plan_facility')
+                ? config('billing.trial')
+                : config("billing.plans.{$key}");
         }
 
         if ($tenant->isPaidSubscriptionActive() || $tenant->isInPaidSubscriptionGrace()) {

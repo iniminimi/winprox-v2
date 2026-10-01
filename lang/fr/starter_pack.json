@@ -3,6 +3,7 @@
         "own_sites": "Sur mes propres sites",
         "on_site": "Sur les sites des clients",
         "fleet": "Pour véhicules et flotte",
+        "checkmate": "Checkmate — chez le client",
         "hotel": "Hôtel",
         "hospital": "Hôpital",
         "industry": "Industrie",
@@ -144,11 +145,18 @@
                 "vehicle_002": "Véhicule 002",
                 "bay_01": "Pont 01"
             }
+        },
+        "checkmate": {
+            "customers": {
+                "customer_1": "Client exemple 1",
+                "customer_2": "Client exemple 2"
+            }
         }
     },
     "hints": {
         "own_sites": "Par exemple hôtels, établissements de soin, industrie, communes, gestion immobilière, etc.",
         "on_site": "Par exemple entreprises de nettoyage, de construction, de maintenance et de services techniques.",
-        "fleet": "Pour les véhicules, les contrôles et le suivi."
+        "fleet": "Pour les véhicules, les contrôles et le suivi.",
+        "checkmate": "Pour les équipes chez le client : communiquer la présence sur place à l'ONSS (CIAO). Un mois d'essai gratuit ; ensuite 5 € par ouvrier par mois."
     }
 }

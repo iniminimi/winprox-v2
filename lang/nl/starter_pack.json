@@ -3,6 +3,7 @@
         "own_sites": "Op mijn eigen locaties",
         "on_site": "Op locaties van klanten",
         "fleet": "Voor voertuigen en fleet",
+        "checkmate": "Checkmate — werken bij klanten",
         "hotel": "Hotel",
         "hospital": "Ziekenhuis",
         "industry": "Industrie",
@@ -144,11 +145,18 @@
                 "vehicle_002": "Voertuig 002",
                 "bay_01": "Brug 01"
             }
+        },
+        "checkmate": {
+            "customers": {
+                "customer_1": "Voorbeeldklant 1",
+                "customer_2": "Voorbeeldklant 2"
+            }
         }
     },
     "hints": {
         "own_sites": "Voor bijvoorbeeld hotels, zorginstellingen, industrie, gemeenten, vastgoedbeheer enz.",
         "on_site": "Voor bijvoorbeeld schoonmaakbedrijven, bouwbedrijven, onderhoudsbedrijven en technische dienstverlening.",
-        "fleet": "Voor voertuigen, controles en opvolging."
+        "fleet": "Voor voertuigen, controles en opvolging.",
+        "checkmate": "Voor teams die bij klanten werken: aanwezigheid ter plaatse doorgeven aan de RSZ (CIAO). Eén maand gratis proberen; daarna €5 per uitvoerder per maand."
     }
 }

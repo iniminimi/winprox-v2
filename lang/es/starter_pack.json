@@ -3,6 +3,7 @@
         "own_sites": "En mis propias ubicaciones",
         "on_site": "En ubicaciones de clientes",
         "fleet": "Para vehículos y flotas",
+        "checkmate": "Checkmate — trabajo en clientes",
         "hotel": "Hotel",
         "hospital": "Hospital",
         "industry": "Industria",
@@ -144,11 +145,18 @@
                 "vehicle_002": "Vehículo 002",
                 "bay_01": "Puente 01"
             }
+        },
+        "checkmate": {
+            "customers": {
+                "customer_1": "Cliente de ejemplo 1",
+                "customer_2": "Cliente de ejemplo 2"
+            }
         }
     },
     "hints": {
         "own_sites": "Por ejemplo hoteles, centros sanitarios, industria, ayuntamientos, gestión inmobiliaria, etc.",
         "on_site": "Por ejemplo empresas de limpieza, construcción, mantenimiento y servicios técnicos.",
-        "fleet": "Para vehículos, controles y seguimiento."
+        "fleet": "Para vehículos, controles y seguimiento.",
+        "checkmate": "Para equipos que trabajan en clientes: comunicar la presencia in situ a la ONSS (CIAO). Un mes de prueba gratis; después 5 € por trabajador al mes."
     }
 }

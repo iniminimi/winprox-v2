@@ -3,6 +3,7 @@
         "own_sites": "Nelle mie sedi",
         "on_site": "Sede dei clienti",
         "fleet": "Per veicoli e flotta",
+        "checkmate": "Checkmate — presso i clienti",
         "hotel": "Hotel",
         "hospital": "Ospedale",
         "industry": "Industria",
@@ -144,11 +145,18 @@
                 "vehicle_002": "Veicolo 002",
                 "bay_01": "Ponte 01"
             }
+        },
+        "checkmate": {
+            "customers": {
+                "customer_1": "Cliente di esempio 1",
+                "customer_2": "Cliente di esempio 2"
+            }
         }
     },
     "hints": {
         "own_sites": "Ad esempio hotel, strutture sanitarie, industria, comuni, gestione immobiliare, ecc.",
         "on_site": "Ad esempio imprese di pulizia, edili, di manutenzione e servizi tecnici.",
-        "fleet": "Per veicoli, controlli e follow-up."
+        "fleet": "Per veicoli, controlli e follow-up.",
+        "checkmate": "Per i team che lavorano presso i clienti: comunicare la presenza in loco all'ONSS (CIAO). Un mese di prova gratis; poi 5 € per operatore al mese."
     }
 }

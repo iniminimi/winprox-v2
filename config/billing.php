@@ -126,6 +126,9 @@ $checkmatePreset = static function (int $defaultSeats, bool $qtyEditable): array
 return [
     'trial_days' => (int) env('BILLING_TRIAL_DAYS', 30),
     'trial_plan_facility' => 'trial',
+    // Proef op de Checkmate-formule (starter pack-keuze): zelfde proefperiode,
+    // entitlements uit het checkmate_trial-preset (checkmate_mode, GPS-bezoeken).
+    'trial_plan_checkmate' => 'checkmate_trial',
     'paid_expiry_grace_days' => (int) env('BILLING_PAID_GRACE_DAYS', 7),
     // Tenant kiest formule zelf; Stripe Checkout wanneer geconfigureerd.
     'allow_tenant_self_activation' => (bool) env('BILLING_ALLOW_SELF_ACTIVATION', true),

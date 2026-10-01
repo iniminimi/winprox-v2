@@ -3,6 +3,7 @@
         "own_sites": "An meinen eigenen Standorten",
         "on_site": "An Standorten von Kunden",
         "fleet": "Für Fahrzeuge und Fuhrpark",
+        "checkmate": "Checkmate — Arbeit beim Kunden",
         "hotel": "Hotel",
         "hospital": "Krankenhaus",
         "industry": "Industrie",
@@ -144,11 +145,18 @@
                 "vehicle_002": "Fahrzeug 002",
                 "bay_01": "Hebebühne 01"
             }
+        },
+        "checkmate": {
+            "customers": {
+                "customer_1": "Beispielkunde 1",
+                "customer_2": "Beispielkunde 2"
+            }
         }
     },
     "hints": {
         "own_sites": "Zum Beispiel Hotels, Pflegeeinrichtungen, Industrie, Gemeinden, Immobilienverwaltung usw.",
         "on_site": "Zum Beispiel Reinigungs-, Bau-, Wartungs- und technische Dienstleistungsunternehmen.",
-        "fleet": "Für Fahrzeuge, Kontrollen und Nachverfolgung."
+        "fleet": "Für Fahrzeuge, Kontrollen und Nachverfolgung.",
+        "checkmate": "Für Teams beim Kunden: Anwesenheit vor Ort an die LSS melden (CIAO). Einen Monat kostenlos testen; danach 5 € pro Mitarbeiter pro Monat."
     }
 }

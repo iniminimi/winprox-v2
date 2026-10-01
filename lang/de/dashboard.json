@@ -91,6 +91,7 @@
     "preview_categories": "Kategorien",
     "preview_location": "Standort",
     "preview_units": "Units",
+    "preview_customers": "Kunden",
     "errors": {
       "type_required": "Wählen Sie, wofür Sie WinProx nutzen möchten.",
       "unknown": "Diese Startvorlage ist nicht verfügbar.",

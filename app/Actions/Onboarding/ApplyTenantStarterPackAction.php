@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Actions\Onboarding;
 
+use App\Actions\Billing\ApplyPlanEntitlementsAction;
 use App\Actions\Categories\SyncCategoryTeamsAction;
+use App\Actions\Customers\CreateCustomerAction;
 use App\Actions\Locations\CreateCategoryAction;
 use App\Actions\Locations\CreateLocationAction;
 use App\Actions\Locations\CreateUnitAction;
@@ -22,6 +24,7 @@ use App\Enums\UnitTranslationStatus;
 use App\Mail\TenantStarterPackAppliedMail;
 use App\Models\Category;
 use App\Models\CategoryTranslation;
+use App\Models\Customer;
 use App\Models\InternalTeam;
 use App\Models\InternalTeamTranslation;
 use App\Models\Location;
@@ -49,6 +52,8 @@ class ApplyTenantStarterPackAction
         private SyncCategoryTeamsAction $syncCategoryTeams,
         private EnsureDefaultClockPointAction $ensureDefaultClockPoint,
         private UpdateTenantWorkMenuAction $updateWorkMenu,
+        private ApplyPlanEntitlementsAction $applyEntitlements,
+        private CreateCustomerAction $createCustomer,
         private AuditRecorder $audit,
     ) {}
 
@@ -64,6 +69,13 @@ class ApplyTenantStarterPackAction
     public function handle(Tenant $tenant, ApplyTenantStarterPackData $data, User $actor): array
     {
         $locale = LocaleSupport::normalize($data->locale);
+
+        // Checkmate is een plan-preset, geen facility-structuur (docs/CHECKMATE.md):
+        // proef op de checkmate-formule + demoklanten, geen teams/categorieën/units.
+        if ($data->type === TenantStarterPackType::Checkmate) {
+            return $this->handleCheckmate($tenant, $data, $actor, $locale);
+        }
+
         $this->assertEligible($tenant, $locale);
         $definition = TenantStarterPackCatalog::definition($data->type, $data->size);
 
@@ -188,6 +200,81 @@ class ApplyTenantStarterPackAction
 
         $this->audit->record(
             userId: (int) $actor->id,
+            tenantId: (int) $tenant->id,
+            action: 'starter_pack.applied',
+            modelType: Tenant::class,
+            modelId: (int) $tenant->id,
+            payload: $payload,
+        );
+
+        $this->notifyOps($tenant->fresh(), $actor, $data->type);
+
+        return $payload;
+    }
+
+    /**
+     * Checkmate-keuze: zet de tenant op de checkmate-proef (billing_plan blijft
+     * null; effectivePlanKey() kiest via checkmate_mode het checkmate_trial-preset)
+     * en seed demoklanten. Werkladressen komen later via /klanten of onderweg
+     * (GPS-pin is vereist voor een werkbezoek — dus bewust géén adres seeden).
+     *
+     * @return array{type: string, size: null, locale: string, customer_ids: list<int>}
+     */
+    private function handleCheckmate(Tenant $tenant, ApplyTenantStarterPackData $data, User $actor, string $locale): array
+    {
+        $this->assertEligible($tenant, $locale);
+
+        if (Customer::query()->where('tenant_id', $tenant->id)->exists()) {
+            throw ValidationException::withMessages([
+                'starterPackType' => [trans('dashboard.starter_pack.errors.not_empty', [], $locale)],
+            ]);
+        }
+
+        $definition = TenantStarterPackCatalog::definition($data->type);
+        $actorId = (int) $actor->id;
+
+        $payload = DB::transaction(function () use ($tenant, $data, $actorId, $locale, $definition): array {
+            $tenant->forceFill([
+                'trial_ends_at' => now()->addDays((int) config('billing.trial_days', 30)),
+                'billing_plan' => null,
+                'billing_active_until' => null,
+                'is_active' => true,
+                'checkmate_mode' => true,
+            ])->save();
+
+            // effectivePlanKey() → checkmate_trial: zet Time + GPS-bezoeken + Clock Point.
+            $this->applyEntitlements->handle($tenant->fresh());
+
+            $customerIds = [];
+            foreach ($definition['customers'] ?? [] as $customerKey) {
+                $customer = $this->createCustomer->handle($tenant, [
+                    'name' => TenantStarterPackCatalog::name(
+                        TenantStarterPackCatalog::customerNameKey($data->type, (string) $customerKey),
+                        $locale,
+                    ),
+                ], $actorId);
+                $customerIds[] = (int) $customer->id;
+            }
+
+            $payload = [
+                'type' => $data->type->value,
+                'size' => null,
+                'locale' => $locale,
+                'customer_ids' => $customerIds,
+            ];
+
+            $tenant->forceFill([
+                'starter_pack_key' => $data->type->value,
+                'starter_pack_applied_at' => now(),
+                'starter_pack_payload' => $payload,
+                'starter_pack_result_dismissed_at' => null,
+            ])->save();
+
+            return $payload;
+        });
+
+        $this->audit->record(
+            userId: $actorId,
             tenantId: (int) $tenant->id,
             action: 'starter_pack.applied',
             modelType: Tenant::class,
