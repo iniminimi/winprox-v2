@@ -72,6 +72,7 @@ it('lijst enkel actieve workers op de locatie van het Clock Point, met has_pin',
     [$point, $token] = pairedPinPoint($tenant, $location->id);
 
     $inge = pinWorker($tenant, $location);
+    $inge->forceFill(['photo_path' => 'worker-photos/inge.jpg'])->save();
     pinWorker($tenant, $location, '5678');
     // Geen PIN → wél in de trie (scherm laat PIN instellen), gemarkeerd.
     $noPin = Worker::factory()->create(['tenant_id' => $tenant->id]);
@@ -93,10 +94,13 @@ it('lijst enkel actieve workers op de locatie van het Clock Point, met has_pin',
         ->toContain($noPin->id)
         ->toContain($everywhere->id)
         ->toHaveCount(4)
-        ->and($response[0])->toHaveKeys(['id', 'first_name', 'last_name', 'has_pin'])
-        ->and($response[0])->not->toHaveKey('clock_pin_hash');
+        ->and($response[0])->toHaveKeys(['id', 'first_name', 'last_name', 'has_pin', 'photo_url'])
+        ->and($response[0])->not->toHaveKey('clock_pin_hash')
+        ->not->toHaveKey('photo_path');
     expect(collect($response)->firstWhere('id', $noPin->id)['has_pin'])->toBeFalse();
     expect(collect($response)->firstWhere('id', $inge->id)['has_pin'])->toBeTrue();
+    expect(collect($response)->firstWhere('id', $inge->id)['photo_url'])->toContain('inge.jpg');
+    expect(collect($response)->firstWhere('id', $noPin->id)['photo_url'])->toBeNull();
 });
 
 it('klokt in en uit met een correcte PIN en auditeert de prik', function () {

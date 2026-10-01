@@ -16,7 +16,7 @@ use Illuminate\Support\Collection;
 class ListClockDisplayWorkersAction
 {
     /**
-     * @return Collection<int, array{id: int, first_name: string, last_name: string, has_pin: bool}>
+     * @return Collection<int, array{id: int, first_name: string, last_name: string, has_pin: bool, photo_url: ?string}>
      */
     public function handle(ClockPoint $clockPoint): Collection
     {
@@ -40,12 +40,13 @@ class ListClockDisplayWorkersAction
         return $query
             ->orderBy('first_name')
             ->orderBy('last_name')
-            ->get(['id', 'first_name', 'last_name', 'clock_pin_hash'])
+            ->get(['id', 'first_name', 'last_name', 'clock_pin_hash', 'photo_path'])
             ->map(fn (Worker $w) => [
                 'id' => (int) $w->id,
                 'first_name' => (string) $w->first_name,
                 'last_name' => (string) $w->last_name,
                 'has_pin' => $w->hasClockPin(),
+                'photo_url' => $w->photoPublicUrl(),
             ]);
     }
 }
