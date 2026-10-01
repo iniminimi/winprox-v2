@@ -133,9 +133,12 @@ return [
             ['key' => 'bay_01', 'category' => 'workshop'],
         ],
     ],
-    // Checkmate: geen facility-structuur — alleen demoklanten; de checkmate_trial
-    // plan-preset zet checkmate_mode + Time + GPS-bezoeken (docs/CHECKMATE.md).
+    // Checkmate: geen facility-structuur — één team met één uitvoerder plus
+    // demoklanten; de checkmate_trial plan-preset zet checkmate_mode + Time +
+    // GPS-bezoeken (docs/CHECKMATE.md).
     'checkmate' => [
+        'teams' => ['field' => ['categories' => []]],
+        'workers' => [['key' => 'worker_1', 'team' => 'field']],
         'customers' => ['customer_1', 'customer_2'],
     ],
 ];

@@ -147,6 +147,12 @@
             }
         },
         "checkmate": {
+            "teams": {
+                "field": "Buitendienst"
+            },
+            "workers": {
+                "worker_1": "Demo Uitvoerder"
+            },
             "customers": {
                 "customer_1": "Voorbeeldklant 1",
                 "customer_2": "Voorbeeldklant 2"

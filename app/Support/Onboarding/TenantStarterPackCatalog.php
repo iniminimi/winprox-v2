@@ -27,6 +27,7 @@ final class TenantStarterPackCatalog
      *     teams?: array<string, array{categories: list<string>}>,
      *     categories?: list<string>,
      *     units?: list<array{key: string, category: string}>,
+     *     workers?: list<array{key: string, team: string}>,
      *     customers?: list<string>
      * }
      */
@@ -154,6 +155,11 @@ final class TenantStarterPackCatalog
         return 'starter_pack.packs.'.$type->value.'.units.'.$unitKey;
     }
 
+    public static function workerNameKey(TenantStarterPackType $type, string $workerKey): string
+    {
+        return 'starter_pack.packs.'.$type->value.'.workers.'.$workerKey;
+    }
+
     public static function customerNameKey(TenantStarterPackType $type, string $customerKey): string
     {
         return 'starter_pack.packs.'.$type->value.'.customers.'.$customerKey;
@@ -199,6 +205,7 @@ final class TenantStarterPackCatalog
      *     categories: list<string>,
      *     location: string|null,
      *     units: list<string>,
+     *     workers: list<string>,
      *     customers: list<string>,
      *     work_menu: list<array{label: string, enabled: bool}>
      * }
@@ -224,6 +231,11 @@ final class TenantStarterPackCatalog
             $units[] = self::name(self::unitNameKey($type, (string) $unit['key']), $locale);
         }
 
+        $workers = [];
+        foreach ($definition['workers'] ?? [] as $workerDef) {
+            $workers[] = self::name(self::workerNameKey($type, (string) $workerDef['key']), $locale);
+        }
+
         $customers = [];
         foreach ($definition['customers'] ?? [] as $customerKey) {
             $customers[] = self::name(self::customerNameKey($type, (string) $customerKey), $locale);
@@ -234,6 +246,7 @@ final class TenantStarterPackCatalog
             'categories' => $categories,
             'location' => $customerPack ? null : self::name(self::locationNameKey($type), $locale),
             'units' => $units,
+            'workers' => $workers,
             'customers' => $customers,
             'work_menu' => self::workMenuItems(self::workMenuFlags($type, $size), $locale),
         ];

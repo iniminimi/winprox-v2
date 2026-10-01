@@ -147,6 +147,12 @@
             }
         },
         "checkmate": {
+            "teams": {
+                "field": "Squadra esterna"
+            },
+            "workers": {
+                "worker_1": "Demo Operatore"
+            },
             "customers": {
                 "customer_1": "Cliente di esempio 1",
                 "customer_2": "Cliente di esempio 2"

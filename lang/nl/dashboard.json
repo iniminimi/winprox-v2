@@ -92,6 +92,7 @@
     "preview_location": "Locatie",
     "preview_units": "Units",
     "preview_customers": "Klanten",
+    "preview_workers": "Uitvoerders",
     "errors": {
       "type_required": "Kies waarvoor je WinProx wilt gebruiken.",
       "unknown": "Dit starttemplate is niet beschikbaar.",

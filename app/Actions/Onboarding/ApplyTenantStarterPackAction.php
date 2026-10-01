@@ -12,6 +12,7 @@ use App\Actions\Locations\CreateLocationAction;
 use App\Actions\Locations\CreateUnitAction;
 use App\Actions\Locations\DeleteLocationAction;
 use App\Actions\Team\CreateTeamAction;
+use App\Actions\Team\CreateWorkerAction;
 use App\Actions\Team\UpdateTenantWorkMenuAction;
 use App\Actions\Time\EnsureDefaultClockPointAction;
 use App\Data\Categories\SyncCategoryTeamsData;
@@ -54,6 +55,7 @@ class ApplyTenantStarterPackAction
         private UpdateTenantWorkMenuAction $updateWorkMenu,
         private ApplyPlanEntitlementsAction $applyEntitlements,
         private CreateCustomerAction $createCustomer,
+        private CreateWorkerAction $createWorker,
         private AuditRecorder $audit,
     ) {}
 
@@ -214,11 +216,12 @@ class ApplyTenantStarterPackAction
 
     /**
      * Checkmate-keuze: zet de tenant op de checkmate-proef (billing_plan blijft
-     * null; effectivePlanKey() kiest via checkmate_mode het checkmate_trial-preset)
-     * en seed demoklanten. Werkladressen komen later via /klanten of onderweg
-     * (GPS-pin is vereist voor een werkbezoek — dus bewust géén adres seeden).
+     * null; effectivePlanKey() kiest via checkmate_mode het checkmate_trial-preset),
+     * seed één team met één uitvoerder en demoklanten. Werkladressen komen later
+     * via /klanten of onderweg (GPS-pin is vereist voor een werkbezoek — dus
+     * bewust géén adres seeden).
      *
-     * @return array{type: string, size: null, locale: string, customer_ids: list<int>}
+     * @return array{type: string, size: null, locale: string, team_ids: list<int>, worker_ids: list<int>, customer_ids: list<int>}
      */
     private function handleCheckmate(Tenant $tenant, ApplyTenantStarterPackData $data, User $actor, string $locale): array
     {
@@ -245,6 +248,43 @@ class ApplyTenantStarterPackAction
             // effectivePlanKey() → checkmate_trial: zet Time + GPS-bezoeken + Clock Point.
             $this->applyEntitlements->handle($tenant->fresh());
 
+            $teamsByKey = [];
+            foreach (array_keys($definition['teams'] ?? []) as $teamKey) {
+                $names = TenantStarterPackCatalog::namesByLocale(
+                    TenantStarterPackCatalog::teamNameKey($data->type, (string) $teamKey)
+                );
+                $team = $this->createTeam->handle([
+                    'name' => $names[$locale],
+                    'original_language' => $locale,
+                    'sort_order' => 0,
+                    'is_active' => true,
+                ], (int) $tenant->id, $actorId);
+                $this->fillTeamTranslations($team, $locale, $names);
+                $teamsByKey[(string) $teamKey] = $team;
+            }
+
+            $workerIds = [];
+            foreach ($definition['workers'] ?? [] as $workerDef) {
+                $workerName = TenantStarterPackCatalog::name(
+                    TenantStarterPackCatalog::workerNameKey($data->type, (string) $workerDef['key']),
+                    $locale,
+                );
+                $team = $teamsByKey[(string) ($workerDef['team'] ?? '')] ?? null;
+                if ($team === null) {
+                    continue;
+                }
+                $nameParts = preg_split('/\s+/', $workerName, 2) ?: [];
+                $worker = $this->createWorker->handle(
+                    $team,
+                    [
+                        'first_name' => $nameParts[0],
+                        'last_name' => $nameParts[1] ?? $nameParts[0],
+                    ],
+                    $actorId,
+                );
+                $workerIds[] = (int) $worker->id;
+            }
+
             $customerIds = [];
             foreach ($definition['customers'] ?? [] as $customerKey) {
                 $customer = $this->createCustomer->handle($tenant, [
@@ -260,6 +300,11 @@ class ApplyTenantStarterPackAction
                 'type' => $data->type->value,
                 'size' => null,
                 'locale' => $locale,
+                'team_ids' => array_values(array_map(
+                    fn (InternalTeam $team): int => (int) $team->id,
+                    $teamsByKey,
+                )),
+                'worker_ids' => $workerIds,
                 'customer_ids' => $customerIds,
             ];
 

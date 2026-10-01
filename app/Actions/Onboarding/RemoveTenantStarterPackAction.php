@@ -9,7 +9,9 @@ use App\Actions\Locations\DeleteCategoryAction;
 use App\Actions\Locations\DeleteLocationAction;
 use App\Actions\Locations\DeleteUnitAction;
 use App\Actions\Team\DeleteTeamAction;
+use App\Actions\Team\DeleteWorkerAction;
 use App\Data\Categories\SyncCategoryTeamsData;
+use App\Enums\TenantStarterPackType;
 use App\Models\Category;
 use App\Models\Customer;
 use App\Models\EsgMeasurement;
@@ -18,6 +20,7 @@ use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\User;
+use App\Models\Worker;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Translation\LocaleSupport;
 use Illuminate\Support\Facades\DB;
@@ -30,6 +33,7 @@ class RemoveTenantStarterPackAction
         private DeleteLocationAction $deleteLocation,
         private DeleteCategoryAction $deleteCategory,
         private DeleteTeamAction $deleteTeam,
+        private DeleteWorkerAction $deleteWorker,
         private SyncCategoryTeamsAction $syncCategoryTeams,
         private AuditRecorder $audit,
     ) {}
@@ -50,15 +54,27 @@ class RemoveTenantStarterPackAction
         $locationId = (int) ($payload['location_id'] ?? 0);
         $categoryIds = array_values(array_map('intval', $payload['category_ids'] ?? []));
         $teamIds = array_values(array_map('intval', $payload['team_ids'] ?? []));
-        // Checkmate-pack seedt klanten i.p.v. facility-structuur (docs/CHECKMATE.md).
+        // Checkmate-pack seedt klanten + een team met uitvoerder i.p.v.
+        // facility-structuur (docs/CHECKMATE.md).
         $customerIds = array_values(array_map('intval', $payload['customer_ids'] ?? []));
+        $workerIds = array_values(array_map('intval', $payload['worker_ids'] ?? []));
+        $isCheckmate = ($payload['type'] ?? null) === TenantStarterPackType::Checkmate->value;
+
+        // Geseede uitvoerders met werktijd, bezoeken of planning blijven staan.
+        $workers = Worker::query()
+            ->where('tenant_id', $tenant->id)
+            ->whereIn('id', $workerIds)
+            ->whereDoesntHave('plannedShifts')
+            ->whereDoesntHave('workShifts')
+            ->whereDoesntHave('workVisits')
+            ->get();
 
         $blocked = ($unitIds !== [] && (
             Unit::query()->where('tenant_id', $tenant->id)->whereIn('id', $unitIds)->whereHas('issues')->exists()
             || EsgMeasurement::query()->whereIn('unit_id', $unitIds)->exists()
         ))
             || ($locationId > 0 && Location::query()->where('tenant_id', $tenant->id)->whereKey($locationId)->whereHas('issues')->exists())
-            || ($teamIds !== [] && InternalTeam::query()->where('tenant_id', $tenant->id)->whereIn('id', $teamIds)->whereHas('workers')->exists());
+            || (! $isCheckmate && $teamIds !== [] && InternalTeam::query()->where('tenant_id', $tenant->id)->whereIn('id', $teamIds)->whereHas('workers')->exists());
 
         if ($blocked) {
             throw ValidationException::withMessages([
@@ -88,7 +104,7 @@ class RemoveTenantStarterPackAction
             ->whereDoesntHave('locations')
             ->get();
 
-        DB::transaction(function () use ($tenant, $actor, $units, $location, $categoryIds, $teams, $customers, $payload): void {
+        DB::transaction(function () use ($tenant, $actor, $units, $location, $categoryIds, $teams, $customers, $workers, $isCheckmate, $payload): void {
             $actorId = (int) $actor->id;
 
             foreach ($units as $unit) {
@@ -113,7 +129,16 @@ class RemoveTenantStarterPackAction
                 $this->deleteCategory->handle($category, $actorId);
             }
 
+            foreach ($workers as $worker) {
+                $this->deleteWorker->handle($worker, $actorId);
+            }
+
             foreach ($teams as $team) {
+                // Checkmate: het geseede team kan nog workers bevatten (in gebruik
+                // of later toegevoegd) — dan blijft het team staan.
+                if ($isCheckmate && $team->workers()->exists()) {
+                    continue;
+                }
                 $this->deleteTeam->handle($team, $actorId);
             }
 

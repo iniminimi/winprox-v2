@@ -80,6 +80,16 @@ class Worker extends Model
         return $this->hasMany(PlannedShift::class);
     }
 
+    public function workShifts(): HasMany
+    {
+        return $this->hasMany(WorkShift::class);
+    }
+
+    public function workVisits(): HasMany
+    {
+        return $this->hasMany(WorkVisit::class);
+    }
+
     public function notifications(): HasMany
     {
         return $this->hasMany(WorkerNotification::class);

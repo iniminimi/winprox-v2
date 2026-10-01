@@ -92,6 +92,7 @@
     "preview_location": "Location",
     "preview_units": "Units",
     "preview_customers": "Customers",
+    "preview_workers": "Workers",
     "errors": {
       "type_required": "Choose what you want to use WinProx for.",
       "unknown": "This starter template is not available.",

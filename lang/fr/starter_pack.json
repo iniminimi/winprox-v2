@@ -147,6 +147,12 @@
             }
         },
         "checkmate": {
+            "teams": {
+                "field": "Équipe terrain"
+            },
+            "workers": {
+                "worker_1": "Demo Ouvrier"
+            },
             "customers": {
                 "customer_1": "Client exemple 1",
                 "customer_2": "Client exemple 2"

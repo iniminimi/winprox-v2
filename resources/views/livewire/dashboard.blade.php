@@ -215,6 +215,12 @@
                 @if ($starterPackPreview)
                     <div class="wp-stack-tight">
                         @if (($starterPackPreview['customers'] ?? []) !== [])
+                            @if (($starterPackPreview['teams'] ?? []) !== [])
+                                <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_teams') }}</strong> — {{ implode(', ', $starterPackPreview['teams']) }}</p>
+                            @endif
+                            @if (($starterPackPreview['workers'] ?? []) !== [])
+                                <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_workers') }}</strong> — {{ implode(', ', $starterPackPreview['workers']) }}</p>
+                            @endif
                             <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_customers') }}</strong> — {{ implode(', ', $starterPackPreview['customers']) }}</p>
                         @else
                             <p class="wp-text-body"><strong>{{ __('dashboard.starter_pack.preview_teams') }}</strong> — {{ implode(', ', $starterPackPreview['teams']) }}</p>

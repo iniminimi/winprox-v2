@@ -92,6 +92,7 @@
     "preview_location": "Sede",
     "preview_units": "Unit",
     "preview_customers": "Clienti",
+    "preview_workers": "Operatori",
     "errors": {
       "type_required": "Scegli per cosa vuoi usare WinProx.",
       "unknown": "Questo modello iniziale non è disponibile.",

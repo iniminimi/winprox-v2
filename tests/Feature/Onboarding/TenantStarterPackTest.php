@@ -19,9 +19,11 @@ use App\Models\Customer;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
+use App\Models\PlannedShift;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\User;
+use App\Models\Worker;
 use App\Support\Onboarding\TenantOnboardingState;
 use App\Support\Onboarding\TenantStarterPackCatalog;
 use App\Support\Platform\SupportTenantContext;
@@ -479,7 +481,7 @@ it('laadt een klein werken-op-locatie-starttemplate via het dashboard', function
         ->assertSee(__('dashboard.starter_pack.go_to_units'));
 });
 
-it('zet checkmate-proef met demoklanten zonder facility-structuur', function () {
+it('zet checkmate-proef met team, uitvoerder en demoklanten zonder facility-structuur', function () {
     [$tenant, $admin] = setupStarterPackAdmin('nl');
 
     $payload = app(ApplyTenantStarterPackAction::class)->handle(
@@ -492,6 +494,8 @@ it('zet checkmate-proef met demoklanten zonder facility-structuur', function () 
 
     expect($tenant->starter_pack_key)->toBe('checkmate')
         ->and($payload['customer_ids'])->toHaveCount(2)
+        ->and($payload['team_ids'])->toHaveCount(1)
+        ->and($payload['worker_ids'])->toHaveCount(1)
         ->and($tenant->checkmateMode())->toBeTrue()
         ->and($tenant->hasTimeModule())->toBeTrue()
         ->and((bool) $tenant->time_gps_visits)->toBeTrue()
@@ -501,7 +505,11 @@ it('zet checkmate-proef met demoklanten zonder facility-structuur', function () 
         ->and($tenant->trial_ends_at->gt(now()->addDays(25)))->toBeTrue()
         ->and(Customer::query()->count())->toBe(2)
         ->and(Customer::query()->where('name', 'Voorbeeldklant 1')->exists())->toBeTrue()
-        ->and(InternalTeam::query()->count())->toBe(0)
+        ->and(InternalTeam::query()->count())->toBe(1)
+        ->and(InternalTeam::query()->where('name', 'Buitendienst')->exists())->toBeTrue()
+        ->and(Worker::query()->count())->toBe(1)
+        ->and(Worker::query()->first()->displayName())->toBe('Demo Uitvoerder')
+        ->and(Worker::query()->first()->internal_team_id)->toBe(InternalTeam::query()->first()->id)
         ->and(Category::query()->count())->toBe(0)
         ->and(Unit::query()->count())->toBe(0)
         ->and(ClockPoint::query()->where('tenant_id', $tenant->id)->exists())->toBeTrue();
@@ -530,7 +538,7 @@ it('houdt checkmate-entitlements bij her-toepassing tijdens de proef', function 
         ->and($tenant->maxSeatsLimit())->toBe(3);
 });
 
-it('verwijdert checkmate-demoklanten maar bewaart klanten met werkadres', function () {
+it('verwijdert checkmate-demodata maar bewaart klanten met werkadres', function () {
     [$tenant, $admin] = setupStarterPackAdmin('nl');
 
     app(ApplyTenantStarterPackAction::class)->handle(
@@ -550,7 +558,32 @@ it('verwijdert checkmate-demoklanten maar bewaart klanten met werkadres', functi
     expect($tenant->fresh()->starter_pack_key)->toBeNull()
         ->and(Customer::query()->count())->toBe(1)
         ->and(Customer::query()->whereKey($withAddress->id)->exists())->toBeTrue()
+        ->and(Worker::query()->count())->toBe(0)
+        ->and(InternalTeam::query()->count())->toBe(0)
         ->and($tenant->fresh()->checkmateMode())->toBeTrue();
+});
+
+it('bewaart checkmate-team en -uitvoerder zodra er planning op staat', function () {
+    [$tenant, $admin] = setupStarterPackAdmin('nl');
+
+    app(ApplyTenantStarterPackAction::class)->handle(
+        $tenant,
+        ApplyTenantStarterPackData::fromValidated(['starterPackType' => 'checkmate'], 'nl'),
+        $admin,
+    );
+
+    $worker = Worker::query()->first();
+    PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+    ]);
+
+    app(RemoveTenantStarterPackAction::class)->handle($tenant->fresh(), $admin);
+
+    expect($tenant->fresh()->starter_pack_key)->toBeNull()
+        ->and(Worker::query()->count())->toBe(1)
+        ->and(InternalTeam::query()->count())->toBe(1)
+        ->and(Customer::query()->count())->toBe(0);
 });
 
 it('weigert checkmate-starttemplate wanneer er al klanten zijn', function () {
@@ -564,14 +597,18 @@ it('weigert checkmate-starttemplate wanneer er al klanten zijn', function () {
     );
 })->throws(ValidationException::class);
 
-it('toont de checkmate-keuze met klanten-preview op het dashboard', function () {
+it('toont de checkmate-keuze met team-, uitvoerder- en klanten-preview op het dashboard', function () {
     [, $admin] = setupStarterPackAdmin();
 
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
         ->assertSee(__('starter_pack.types.checkmate'))
         ->set('starterPackType', TenantStarterPackType::Checkmate->value)
+        ->assertSee(__('dashboard.starter_pack.preview_teams'))
+        ->assertSee(__('dashboard.starter_pack.preview_workers'))
         ->assertSee(__('dashboard.starter_pack.preview_customers'))
+        ->assertSee('Buitendienst')
+        ->assertSee('Demo Uitvoerder')
         ->assertSee('Voorbeeldklant 1')
         ->assertDontSee(__('dashboard.starter_pack.preview_units'))
         ->call('applyStarterPack')
