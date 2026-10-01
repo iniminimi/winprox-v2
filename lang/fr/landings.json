@@ -868,7 +868,7 @@
         },
         "eyebrow": "WinProx Time · Pointeuse",
         "title": "Une pointeuse petite et élégante pour votre entreprise.",
-        "lead": "Vos employés pointent avec leur propre smartphone via un code QR sur site. Sans appli, sans badge — et l’enregistrement est aussitôt dans WinProx.",
+        "lead": "Vos employés pointent avec leur propre smartphone associé, à la pointeuse de l’entreprise. Sans appli, sans badge et sans identification biométrique.",
         "flow": "Scan → confirmation → pointé",
         "cta_register": "Essayer WinProx",
         "video": {
@@ -906,11 +906,16 @@
             "title": "Une vraie pointeuse sur votre site",
             "lead": "L’écran d’horloge WinProx affiche un code QR actuel sur lequel les employés pointent.",
             "items": [
-                "Le code QR change régulièrement — une photo de l’écran ne sert à rien plus tard.",
-                "L’écran ne fonctionne que pendant les heures que vous définissez.",
-                "WinProx vous prévient si l’écran reste hors ligne."
+                "Écran d’horloge fixe avec code QR renouvelé — une photo de l’écran ne sert à rien plus tard.",
+                "Enregistrement du temps et des heures dans WinProx.",
+                "Smartphone associé à l’employé.",
+                "Photo de contrôle optionnelle au pointage d’entrée ou de sortie.",
+                "Contrôle renforcé contre les abus, sans identification biométrique.",
+                "Possible aussi en autocollant QR, sans écran.",
+                "Pour le nettoyage et la construction : pointage sur le chantier via QR + GPS.",
+                "CIAO/RSZ le cas échéant."
             ],
-            "close": "Code QR actuel → scan → confirmation → enregistré."
+            "close": "Plus de contrôle sur qui pointe, quand et où — sans badges ni données biométriques."
         },
         "roles": {
             "title": "Ni appli, ni badge",

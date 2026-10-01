@@ -868,7 +868,7 @@
         },
         "eyebrow": "WinProx Time · Time clock",
         "title": "A small, elegant time clock for your business.",
-        "lead": "Employees clock in and out with their own smartphone using a QR code on site. No app, no badge — and the registration is in WinProx right away.",
+        "lead": "Employees clock in and out with their own linked smartphone at the company's time clock. No app, no badge and no biometric identification.",
         "flow": "Scan → confirm → clocked in",
         "cta_register": "Try WinProx",
         "video": {
@@ -906,11 +906,16 @@
             "title": "A real time clock on your site",
             "lead": "The WinProx clock screen shows a current QR code that employees clock in on.",
             "items": [
-                "The QR code changes regularly — a photo of the screen is useless later.",
-                "The screen only works during the hours you set.",
-                "WinProx warns you if the screen is offline for too long."
+                "Fixed clock screen with a rotating QR code — a photo of the screen is useless later.",
+                "Time and attendance registration in WinProx.",
+                "Smartphone linked to the employee.",
+                "Optional verification photo when clocking in or out.",
+                "Extra protection against misuse, without biometric identification.",
+                "Also works as a QR sticker, no screen needed.",
+                "For cleaning and construction: clock in on site with QR + GPS.",
+                "CIAO/RSZ where applicable."
             ],
-            "close": "Current QR code → scan → confirm → registered."
+            "close": "More control over who clocks in, when and where — without badges or biometric data."
         },
         "roles": {
             "title": "No app, no badge",

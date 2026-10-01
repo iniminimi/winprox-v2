@@ -868,7 +868,7 @@
         },
         "eyebrow": "WinProx Time · Stempeluhr",
         "title": "Eine kleine, elegante Stempeluhr für Ihr Unternehmen.",
-        "lead": "Mitarbeiter stempeln mit dem eigenen Smartphone über einen QR-Code vor Ort ein und aus. Ohne App, ohne Badge — die Registrierung ist sofort in WinProx.",
+        "lead": "Mitarbeiter stempeln mit ihrem eigenen gekoppelten Smartphone an der Stempeluhr des Unternehmens ein und aus. Ohne App, ohne Badge und ohne biometrische Identifikation.",
         "flow": "Scannen → bestätigen → eingestempelt",
         "cta_register": "WinProx ausprobieren",
         "video": {
@@ -906,11 +906,16 @@
             "title": "Eine echte Stempeluhr vor Ort",
             "lead": "Der WinProx-Uhrbildschirm zeigt einen aktuellen QR-Code, auf den Mitarbeiter einstempeln.",
             "items": [
-                "Der QR-Code wechselt regelmäßig — ein Foto des Bildschirms ist später nutzlos.",
-                "Der Bildschirm funktioniert nur zu den von Ihnen eingestellten Zeiten.",
-                "WinProx warnt, wenn der Bildschirm zu lange offline ist."
+                "Fester Uhrbildschirm mit wechselndem QR-Code — ein Foto des Bildschirms ist später nutzlos.",
+                "Zeit- und Anwesenheitserfassung in WinProx.",
+                "Smartphone mit dem Mitarbeiter gekoppelt.",
+                "Optional ein Kontrollfoto beim Ein- oder Ausstempeln.",
+                "Zusätzliche Kontrolle gegen Missbrauch, ohne biometrische Identifikation.",
+                "Auch als QR-Aufkleber möglich, ohne Bildschirm.",
+                "Für Reinigung und Bau: Stempeln am Arbeitsplatz mit QR + GPS.",
+                "CIAO/RSZ wo zutreffend."
             ],
-            "close": "Aktueller QR-Code → scannen → bestätigen → registriert."
+            "close": "Mehr Kontrolle darüber, wer wann und wo einstempelt — ohne Badges oder biometrische Daten."
         },
         "roles": {
             "title": "Keine App, kein Badge",

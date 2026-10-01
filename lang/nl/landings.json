@@ -868,7 +868,7 @@
         },
         "eyebrow": "WinProx Time · Prikklok",
         "title": "Een kleine, elegante prikklok voor uw bedrijf.",
-        "lead": "Werknemers prikken in en uit met hun eigen smartphone via een QR-code op locatie. Geen app, geen badge — en de registratie staat meteen in WinProx.",
+        "lead": "Werknemers prikken in en uit met hun eigen gekoppelde smartphone, aan de prikklok van het bedrijf. Geen app, geen badge en geen biometrische identificatie.",
         "flow": "Scan → bevestig → ingeklokt",
         "cta_register": "Probeer WinProx",
         "video": {
@@ -906,11 +906,16 @@
             "title": "Een echte prikklok op uw locatie",
             "lead": "Het WinProx-klokscherm toont een actuele QR-code waarop medewerkers inprikken.",
             "items": [
-                "De QR-code verandert regelmatig — een foto van het scherm is later niet bruikbaar.",
-                "Het scherm werkt alleen tijdens de uren die u zelf instelt.",
-                "WinProx waarschuwt als het scherm te lang offline is."
+                "Vast klokscherm met wisselende QR-code — een foto van het scherm is later niet bruikbaar.",
+                "Tijdregistratie en uurregistratie in WinProx.",
+                "Smartphone gekoppeld aan de werknemer.",
+                "Optioneel een controlefoto bij het in- of uitprikken.",
+                "Extra controle tegen misbruik, zonder biometrische identificatie.",
+                "Ook mogelijk als QR-sticker, zonder scherm.",
+                "Voor schoonmaak en bouw: prikken op de werkplek met QR + GPS.",
+                "CIAO/RSZ waar van toepassing."
             ],
-            "close": "Actuele QR-code → scannen → bevestigen → geregistreerd."
+            "close": "Meer controle over wie, wanneer en waar er wordt ingeprikt — zonder badges of biometrische gegevens."
         },
         "roles": {
             "title": "Geen app, geen badge",

@@ -868,7 +868,7 @@
         },
         "eyebrow": "WinProx Time · Timbratrice",
         "title": "Una timbratrice piccola ed elegante per la vostra azienda.",
-        "lead": "I dipendenti timbrano in entrata e in uscita con il proprio smartphone tramite un codice QR sul posto. Nessuna app, nessun badge — la registrazione è subito in WinProx.",
+        "lead": "I dipendenti timbrano in entrata e in uscita con il proprio smartphone collegato alla timbratrice dell’azienda. Nessuna app, nessun badge e nessuna identificazione biometrica.",
         "flow": "Scansione → conferma → timbrato",
         "cta_register": "Provare WinProx",
         "video": {
@@ -906,11 +906,16 @@
             "title": "Una vera timbratrice sul posto",
             "lead": "Lo schermo-orologio WinProx mostra un codice QR aggiornato su cui i dipendenti timbrano.",
             "items": [
-                "Il codice QR cambia regolarmente — una foto dello schermo non serve più dopo.",
-                "Lo schermo funziona solo nelle fasce orarie che impostate voi.",
-                "WinProx avvisa se lo schermo resta offline."
+                "Schermo-orologio fisso con codice QR rinnovato — una foto dello schermo non serve più dopo.",
+                "Registrazione di tempo e presenza in WinProx.",
+                "Smartphone collegato al dipendente.",
+                "Foto di controllo opzionale in entrata o in uscita.",
+                "Controllo extra contro gli abusi, senza identificazione biometrica.",
+                "Possibile anche come adesivo QR, senza schermo.",
+                "Per pulizie e costruzioni: timbratura sul posto di lavoro con QR + GPS.",
+                "CIAO/RSZ dove applicabile."
             ],
-            "close": "Codice QR aggiornato → scansione → conferma → registrato."
+            "close": "Più controllo su chi timbra, quando e dove — senza badge né dati biometrici."
         },
         "roles": {
             "title": "Nessuna app, nessun badge",

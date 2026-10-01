@@ -44,14 +44,19 @@
     },
     "clock": {
         "title": "Una timbratrice piccola ed elegante per la vostra azienda",
-        "lead": "I dipendenti timbrano con il proprio smartphone. Nessuna app, nessun badge.",
+        "lead": "I dipendenti timbrano in entrata e in uscita con il proprio smartphone collegato alla timbratrice dell’azienda. Nessuna app, nessun badge e nessuna identificazione biometrica.",
         "items": [
-            "Schermo-orologio con codice QR sul posto",
-            "Registrazione di tempo e ore in WinProx",
+            "Schermo-orologio fisso con codice QR rinnovato",
+            "Registrazione di tempo e presenza in WinProx",
+            "Smartphone collegato al dipendente",
             "Il codice QR cambia regolarmente",
+            "Foto di controllo opzionale in entrata o in uscita",
+            "Controllo extra contro gli abusi, senza identificazione biometrica",
             "Possibile anche come adesivo QR, senza schermo",
+            "Per pulizie e costruzioni: timbratura sul posto di lavoro con QR + GPS",
             "CIAO/RSZ dove applicabile"
         ],
+        "close": "Più controllo su chi timbra, quando e dove — senza badge né dati biometrici.",
         "price_note": "Schermo-orologio a noleggio da €:price al mese per schermo.",
         "cta_time": "Scoprire WinProx Time",
         "cta_clock": "Vedere la timbratrice",

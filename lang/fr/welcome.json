@@ -44,14 +44,19 @@
     },
     "clock": {
         "title": "Une pointeuse petite et élégante pour votre entreprise",
-        "lead": "Vos employés pointent avec leur propre smartphone. Sans appli, sans badge.",
+        "lead": "Vos employés pointent avec leur propre smartphone associé, à la pointeuse de l’entreprise. Sans appli, sans badge et sans identification biométrique.",
         "items": [
-            "Écran d’horloge avec code QR sur site",
+            "Écran d’horloge fixe avec code QR renouvelé",
             "Enregistrement du temps et des heures dans WinProx",
+            "Smartphone associé à l’employé",
             "Le code QR change régulièrement",
+            "Photo de contrôle optionnelle au pointage d’entrée ou de sortie",
+            "Contrôle renforcé contre les abus, sans identification biométrique",
             "Possible aussi en autocollant QR, sans écran",
+            "Pour le nettoyage et la construction : pointage sur le chantier via QR + GPS",
             "CIAO/RSZ le cas échéant"
         ],
+        "close": "Plus de contrôle sur qui pointe, quand et où — sans badges ni données biométriques.",
         "price_note": "Écran d’horloge à louer dès €:price par mois et par écran.",
         "cta_time": "Découvrir WinProx Time",
         "cta_clock": "Voir la pointeuse",

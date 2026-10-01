@@ -85,6 +85,7 @@
                             <li>{{ $item }}</li>
                         @endforeach
                     </ul>
+                    <p class="wp-text-body">{{ __('welcome.clock.close') }}</p>
                     <p class="wp-text-body">{{ __('welcome.clock.price_note', ['price' => config('marketing.clock_rent_monthly_eur')]) }}</p>
                     <div class="wp-welcome-cta-row">
                         <a href="{{ route('features.time') }}" class="btn btn--primary">{{ __('welcome.clock.cta_time') }}</a>

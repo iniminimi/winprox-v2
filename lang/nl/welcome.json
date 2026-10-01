@@ -44,14 +44,19 @@
     },
     "clock": {
         "title": "Een kleine, elegante prikklok voor uw bedrijf",
-        "lead": "Werknemers prikken in en uit met hun eigen smartphone. Geen app, geen badge.",
+        "lead": "Werknemers prikken in en uit met hun eigen gekoppelde smartphone, aan de prikklok van het bedrijf. Geen app, geen badge en geen biometrische identificatie.",
         "items": [
-            "Klokscherm met QR-code op locatie",
+            "Vast klokscherm met wisselende QR-code",
             "Tijdregistratie en uurregistratie in WinProx",
-            "De QR-code verandert regelmatig",
+            "Smartphone gekoppeld aan de werknemer",
+            "QR-code verandert regelmatig",
+            "Optioneel een controlefoto bij het in- of uitprikken",
+            "Extra controle tegen misbruik, zonder biometrische identificatie",
             "Ook mogelijk als QR-sticker, zonder scherm",
+            "Voor schoonmaak en bouw: prikken op de werkplek met QR + GPS",
             "CIAO/RSZ waar van toepassing"
         ],
+        "close": "Meer controle over wie, wanneer en waar er wordt ingeprikt — zonder badges of biometrische gegevens.",
         "price_note": "Klokscherm te huur vanaf €:price per maand per scherm.",
         "cta_time": "Ontdek WinProx Time",
         "cta_clock": "Bekijk de prikklok",

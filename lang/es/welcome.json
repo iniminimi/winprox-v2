@@ -44,14 +44,19 @@
     },
     "clock": {
         "title": "Un reloj de fichar pequeño y elegante para su empresa",
-        "lead": "Los empleados fichan con su propio smartphone. Sin app, sin tarjeta.",
+        "lead": "Los empleados fichan la entrada y la salida con su propio smartphone vinculado en el reloj de fichar de la empresa. Sin app, sin tarjeta y sin identificación biométrica.",
         "items": [
-            "Pantalla de reloj con código QR en el lugar",
+            "Pantalla de reloj fija con código QR renovable",
             "Registro horario y de presencia en WinProx",
+            "Smartphone vinculado al empleado",
             "El código QR cambia con regularidad",
+            "Foto de control opcional al fichar la entrada o la salida",
+            "Control adicional contra el uso indebido, sin identificación biométrica",
             "También posible como pegatina QR, sin pantalla",
+            "Para limpieza y construcción: fichaje en el lugar de trabajo con QR + GPS",
             "CIAO/RSZ cuando corresponda"
         ],
+        "close": "Más control sobre quién ficha, cuándo y dónde — sin tarjetas ni datos biométricos.",
         "price_note": "Pantalla de reloj en alquiler desde €:price al mes por pantalla.",
         "cta_time": "Descubrir WinProx Time",
         "cta_clock": "Ver el reloj de fichar",

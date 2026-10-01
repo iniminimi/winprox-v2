@@ -44,14 +44,19 @@
     },
     "clock": {
         "title": "Eine kleine, elegante Stempeluhr für Ihr Unternehmen",
-        "lead": "Mitarbeiter stempeln mit dem eigenen Smartphone ein und aus. Ohne App, ohne Badge.",
+        "lead": "Mitarbeiter stempeln mit ihrem eigenen gekoppelten Smartphone an der Stempeluhr des Unternehmens ein und aus. Ohne App, ohne Badge und ohne biometrische Identifikation.",
         "items": [
-            "Uhrbildschirm mit QR-Code vor Ort",
-            "Zeiterfassung und Stunden in WinProx",
-            "Der QR-Code wechselt regelmäßig",
+            "Fester Uhrbildschirm mit wechselndem QR-Code",
+            "Zeit- und Anwesenheitserfassung in WinProx",
+            "Smartphone mit dem Mitarbeiter gekoppelt",
+            "QR-Code wechselt regelmäßig",
+            "Optional ein Kontrollfoto beim Ein- oder Ausstempeln",
+            "Zusätzliche Kontrolle gegen Missbrauch, ohne biometrische Identifikation",
             "Auch als QR-Aufkleber möglich, ohne Bildschirm",
+            "Für Reinigung und Bau: Stempeln am Arbeitsplatz mit QR + GPS",
             "CIAO/RSZ wo zutreffend"
         ],
+        "close": "Mehr Kontrolle darüber, wer wann und wo einstempelt — ohne Badges oder biometrische Daten.",
         "price_note": "Uhrbildschirm zu mieten ab €:price pro Monat und Bildschirm.",
         "cta_time": "WinProx Time entdecken",
         "cta_clock": "Die Stempeluhr ansehen",
