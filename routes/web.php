@@ -233,7 +233,7 @@ $redirectToLocalized = static function (string $routeName) {
         $query = $request->query();
         unset($query['lang']);
 
-        return redirect()->route($routeName, array_merge($query, ['locale' => $locale]));
+        return redirect()->route($routeName, array_merge($query, ['locale' => $locale]), 301);
     };
 };
 
@@ -256,6 +256,18 @@ Route::get('/promo', $redirectToLocalized('promo'));
 foreach (PromoLanding::cases() as $landing) {
     Route::get('/'.$landing->value, $redirectToLocalized($landing->routeName()));
 }
+
+// V1-legacy URL's die Google nog crawlt: 301 naar de opvolger i.p.v. 404.
+foreach (config('legal.documents', []) as $legalDoc => $legalMeta) {
+    Route::get('/'.$legalDoc, $redirectToLocalized($legalMeta['route']));
+}
+Route::get('/real_estate', $redirectToLocalized('realestate'));
+Route::get('/vastgoed', $redirectToLocalized('realestate'));
+Route::get('/facility', $redirectToLocalized('features.facility'));
+Route::get('/comparison', $redirectToLocalized('welcome'));
+Route::get('/demo/{path?}', $redirectToLocalized('welcome'))->where('path', '.*');
+Route::redirect('/report/{token}', '/melden/{token}', 301);
+Route::redirect('/facility/report/{token}', '/melden/{token}', 301);
 Route::get('/pricing', $redirectToLocalized('pricing'));
 Route::get('/contact', $redirectToLocalized('contact.index'));
 Route::get('/about', $redirectToLocalized('about'));

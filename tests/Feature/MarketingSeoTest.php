@@ -92,6 +92,29 @@ it('plaatst VideoObject JSON-LD op pagina\'s met een video', function () {
         ->assertSee(asset('video/welcome.mp4'), false);
 });
 
+it('redirect v1-legacy-url\'s naar de locale-opvolger', function () {
+    // Flat legal-paden uit V1 → /{locale}/legal/{doc}, permanent en lang-bewust
+    $this->get('/privacy?lang=de')
+        ->assertStatus(301)
+        ->assertRedirect(route('legal.privacy', ['locale' => 'de']));
+    $this->get('/terms?lang=nl')->assertRedirect(route('legal.terms', ['locale' => 'nl']));
+    $this->get('/subprocessors?lang=en')->assertRedirect(route('legal.subprocessors', ['locale' => 'en']));
+
+    // Oude marketing-slugs
+    $this->get('/real_estate?lang=nl')->assertRedirect(route('realestate', ['locale' => 'nl']));
+    $this->get('/vastgoed?lang=fr')->assertRedirect(route('realestate', ['locale' => 'fr']));
+    $this->get('/facility?lang=fr')->assertRedirect(route('features.facility', ['locale' => 'fr']));
+
+    // Verwijderde demo-flow → welcome
+    $this->get('/demo?lang=nl')->assertRedirect(route('welcome', ['locale' => 'nl']));
+    $this->get('/demo/task?lang=de')->assertRedirect(route('welcome', ['locale' => 'de']));
+
+    // Oude report-portal: zelfde qr_token → oude geprinte QR's blijven werken
+    $this->get('/report/abc123')
+        ->assertStatus(301)
+        ->assertRedirect('/melden/abc123');
+});
+
 it('promo-landing-url gebruikt locale in het pad', function () {
     expect(PromoLandingUrl::forRecipientTokenOnBaseUrl('prm_4cfe5ddb16702059', 'https://winprox.app', 'fr'))
         ->toBe('https://winprox.app/fr/government?ref=prm_4cfe5ddb16702059');
