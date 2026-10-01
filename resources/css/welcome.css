@@ -1010,7 +1010,7 @@
     }
 
     [data-theme='standard'] .wp-welcome-split--qr {
-        grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
     }
 
     [data-theme='standard'] .wp-welcome-split--qr > .wp-landing-visual--compact {
@@ -3004,7 +3004,7 @@
 }
 
 [data-theme='standard'] .wp-welcome-clock-section .wp-welcome-main {
-    max-width: 60rem;
+    max-width: 72rem;
     margin-inline: auto;
 }
 
