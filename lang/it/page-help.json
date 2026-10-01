@@ -1429,6 +1429,10 @@
                     "text": "Uno schermo TFT fisico su questo punto di timbratura che mostra un nuovo QR circa ogni 30 secondi. Gli esecutori lo scansionano con il telefono e arrivano sullo stesso portale di registrazione dell’adesivo — una foto dello schermo è valida solo per poco."
                 },
                 {
+                    "label": "Accesso con PIN",
+                    "text": "Niente telefono a portata di mano? Tocca lo schermo, scegli il tuo nome con le lettere e digita il PIN a 4 cifre — timbratura immediata. Chi non ha ancora un PIN lo sceglie sul posto (due volte). Dopo due errori quell'esecutore resta bloccato un minuto. L'admin reimposta il PIN da Persone → Team → Modifica."
+                },
+                {
                     "label": "Codice di collegamento",
                     "text": "<strong>Genera codice</strong> crea un codice monouso (XXXX-XXXX, valido 10 minuti). Digita il codice sullo schermo; la richiesta appare qui sotto <strong>Richiesta di collegamento</strong>. Conferma solo quando sei sicuro che sia il tuo dispositivo. Al massimo uno schermo per punto — confermare una nuova richiesta sostituisce il vecchio."
                 },

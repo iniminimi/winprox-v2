@@ -70,7 +70,8 @@
                 "Una foto de la pantalla no sirve después.",
                 "Las horas de encendido de la pantalla las configura usted.",
                 "Los registros aparecen enseguida en la administración de horas.",
-                "Sin pantalla, una pegatina QR funciona igual."
+                "Sin pantalla, una pegatina QR funciona igual.",
+                "Sin smartphone: nombre + PIN en la pantalla."
             ],
             "image_alt": "La pantalla de reloj WinProx con un código QR actual."
         },

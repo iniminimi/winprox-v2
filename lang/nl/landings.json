@@ -913,7 +913,8 @@
                 "Extra controle tegen misbruik, zonder biometrische identificatie.",
                 "Ook mogelijk als QR-sticker, zonder scherm.",
                 "Voor schoonmaak en bouw: prikken op de werkplek met QR + GPS.",
-                "CIAO/RSZ waar van toepassing."
+                "CIAO/RSZ waar van toepassing.",
+                "Zonder smartphone? Voornaam + pincode volstaat op het scherm."
             ],
             "close": "Meer controle over wie, wanneer en waar er wordt ingeprikt — zonder badges of biometrische gegevens."
         },

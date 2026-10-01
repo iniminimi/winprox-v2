@@ -1429,6 +1429,10 @@
                     "text": "Ein physisches TFT-Display an diesem Stempelpunkt, das etwa alle 30 Sekunden einen neuen QR-Code zeigt. Mitarbeitende scannen das Display mit dem Handy und landen auf demselben Anmeldeportal wie beim Aufkleber — ein Foto des Displays ist nur kurz gültig."
                 },
                 {
+                    "label": "Anmeldung per PIN",
+                    "text": "Kein Handy zur Hand? Tippen Sie auf das Display, wählen Sie Ihren Vornamen über die Buchstaben und geben Sie Ihre 4-stellige PIN ein — sofort ein- oder ausgestempelt. Wer noch keine PIN hat, wählt sie vor Ort (zweimal). Nach zwei Fehlversuchen ist dieser Ausführende eine Minute gesperrt. Der Admin setzt die PIN über Personen → Teams → Bearbeiten zurück."
+                },
+                {
                     "label": "Kopplungscode",
                     "text": "<strong>Kopplungscode erzeugen</strong> erstellt einen Einmal-Code (XXXX-XXXX, 10 Minuten gültig). Am Display eingeben; die Anfrage erscheint hier unter <strong>Kopplungsanfrage</strong>. Erst bestätigen, wenn Sie sicher sind, dass es Ihr Gerät ist. Pro Stempelpunkt ist höchstens ein Display möglich — eine neue Bestätigung ersetzt das alte Gerät."
                 },

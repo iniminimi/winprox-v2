@@ -1437,6 +1437,10 @@
                     "text": "Un écran TFT physique sur ce Clock Point qui affiche un nouveau QR environ toutes les 30 secondes. Les exécutants le scannent avec leur téléphone et arrivent sur le même portail d'enregistrement que l'autocollant — une photo de l'écran n'est valable que brièvement."
                 },
                 {
+                    "label": "Connexion par code PIN",
+                    "text": "Pas de téléphone sous la main ? Touchez l'écran, choisissez votre prénom via les lettres et tapez votre PIN à 4 chiffres — pointage immédiat. Qui n'a pas encore de PIN le choisit sur place (deux fois). Après deux erreurs, cet exécutant est bloqué une minute. L'admin réinitialise le PIN via Personnes → Équipes → Modifier."
+                },
+                {
                     "label": "Code d'association",
                     "text": "<strong>Générer un code</strong> crée un code à usage unique (XXXX-XXXX, valable 10 minutes). Saisissez-le sur l'écran ; la demande apparaît ici sous <strong>Demande d'association</strong>. Ne confirmez que si vous êtes sûr qu'il s'agit de votre appareil. Un seul écran par Clock Point — confirmer une nouvelle demande remplace l'ancien appareil."
                 },

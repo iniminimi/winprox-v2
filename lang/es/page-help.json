@@ -1429,6 +1429,10 @@
                     "text": "Una pantalla TFT física en este punto de fichaje que muestra un QR nuevo cada ±30 segundos. Los operarios la escanean con el móvil y llegan al mismo portal de registro que la pegatina — una foto de la pantalla solo es válida brevemente."
                 },
                 {
+                    "label": "Fichar con PIN",
+                    "text": "¿Sin teléfono a mano? Toque la pantalla, elija su nombre con las letras y teclee su PIN de 4 dígitos — fichaje inmediato. Quien no tenga PIN lo elige allí mismo (dos veces). Tras dos fallos, ese ejecutor queda bloqueado un minuto. El admin restablece el PIN en Personas → Equipos → Editar."
+                },
+                {
                     "label": "Código de vinculación",
                     "text": "<strong>Generar código</strong> crea un código de un solo uso (XXXX-XXXX, válido 10 minutos). Escríbelo en la pantalla; la solicitud aparece aquí en <strong>Solicitud de vinculación</strong>. Confirma solo cuando estés seguro de que es tu dispositivo. Máximo una pantalla por punto — confirmar una nueva solicitud reemplaza el aparato anterior."
                 },

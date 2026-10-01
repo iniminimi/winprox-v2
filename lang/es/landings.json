@@ -913,7 +913,8 @@
                 "Control adicional contra el uso indebido, sin identificación biométrica.",
                 "También posible como pegatina QR, sin pantalla.",
                 "Para limpieza y construcción: fichaje en el lugar de trabajo con QR + GPS.",
-                "CIAO/RSZ cuando corresponda."
+                "CIAO/RSZ cuando corresponda.",
+                "¿Sin smartphone? Nombre + PIN bastan en la pantalla."
             ],
             "close": "Más control sobre quién ficha, cuándo y dónde — sin tarjetas ni datos biométricos."
         },

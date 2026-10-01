@@ -1429,6 +1429,10 @@
                     "text": "A physical TFT screen on this clock point that shows a new QR about every 30 seconds. Workers scan the screen with their phone and land on the same sign-in portal as the sticker — a photo of the screen is only valid briefly."
                 },
                 {
+                    "label": "Sign in with a PIN",
+                    "text": "No phone at hand? Tap the display, pick your first name via the letters and enter your 4-digit PIN — you are clocked in or out right away. Workers without a PIN choose one on the spot (twice). After two wrong attempts that worker is blocked for one minute. Admins reset the PIN via People → Teams → Edit."
+                },
+                {
                     "label": "Pairing code",
                     "text": "<strong>Generate pairing code</strong> creates a one-time code (XXXX-XXXX, valid 10 minutes). Type it on the screen; the request appears here under <strong>Pairing request</strong>. Confirm only when you are sure it is your device. There is at most one display per clock point — confirming a new request replaces the old device."
                 },

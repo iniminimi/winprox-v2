@@ -913,7 +913,8 @@
                 "Extra protection against misuse, without biometric identification.",
                 "Also works as a QR sticker, no screen needed.",
                 "For cleaning and construction: clock in on site with QR + GPS.",
-                "CIAO/RSZ where applicable."
+                "CIAO/RSZ where applicable.",
+                "No smartphone? First name + PIN is enough on the display."
             ],
             "close": "More control over who clocks in, when and where — without badges or biometric data."
         },

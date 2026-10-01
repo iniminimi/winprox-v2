@@ -70,7 +70,8 @@
                 "Une photo de l’écran ne sert à rien plus tard.",
                 "Les heures de marche de l’écran se règlent par vous.",
                 "Les enregistrements sont aussitôt dans les heures.",
-                "Sans écran, un autocollant QR fonctionne pareil."
+                "Sans écran, un autocollant QR fonctionne pareil.",
+                "Sans smartphone : prénom + code PIN sur l'écran."
             ],
             "image_alt": "L’écran d’horloge WinProx avec un code QR actuel."
         },

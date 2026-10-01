@@ -913,7 +913,8 @@
                 "Contrôle renforcé contre les abus, sans identification biométrique.",
                 "Possible aussi en autocollant QR, sans écran.",
                 "Pour le nettoyage et la construction : pointage sur le chantier via QR + GPS.",
-                "CIAO/RSZ le cas échéant."
+                "CIAO/RSZ le cas échéant.",
+                "Pas de smartphone ? Prénom + code PIN suffisent sur l'écran."
             ],
             "close": "Plus de contrôle sur qui pointe, quand et où — sans badges ni données biométriques."
         },

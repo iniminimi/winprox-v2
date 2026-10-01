@@ -1429,6 +1429,10 @@
                     "text": "Een fysiek TFT-scherm aan dit clock point dat om de ±30 seconden een nieuwe QR toont. Uitvoerders scannen het scherm met hun gsm en landen op hetzelfde aanmeldportaal als bij de sticker — een foto van het scherm is maar kort geldig."
                 },
                 {
+                    "label": "Aanmelden met pincode",
+                    "text": "Geen gsm bij de hand? Tik op het scherm, kies je voornaam via de letters en tik je pincode van 4 cijfers — je bent meteen in- of uitgeklokt. Wie nog geen pincode heeft, kiest die ter plaatse (twee keer). Na twee foute pogingen is die uitvoerder één minuut geblokkeerd. Beheer reset de pincode via Personen → Teams → Bewerken."
+                },
+                {
                     "label": "Koppelcode",
                     "text": "<strong>Genereer koppelcode</strong> maakt een eenmalige code (XXXX-XXXX, 10 minuten geldig). Tik die in op het scherm; de aanvraag verschijnt hier onder <strong>Koppelaanvraag</strong>. Bevestig pas als u zeker weet dat het uw toestel is. Er is maximaal één scherm per clock point — een nieuwe bevestiging vervangt het oude toestel."
                 },
