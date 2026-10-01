@@ -2,6 +2,13 @@
     $locale = app()->getLocale();
     $welcomeVideoRel = 'video/welcome.mp4';
     $welcomeVideoAvailable = is_file(public_path($welcomeVideoRel));
+    $welcomeJsonLdGraphs = [
+        \App\Support\Marketing\JsonLd::organization(),
+        \App\Support\Marketing\JsonLd::softwareApplication(),
+    ];
+    foreach (\App\Support\Marketing\SitemapVideo::forRoute('welcome', $locale) as $welcomeVideoEntry) {
+        $welcomeJsonLdGraphs[] = \App\Support\Marketing\JsonLd::videoObject($welcomeVideoEntry);
+    }
 @endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', $locale) }}" translate="no" data-theme="standard">
@@ -15,10 +22,7 @@
         'url' => route('welcome'),
     ])
     @include('partials.wp-json-ld', [
-        'graphs' => [
-            \App\Support\Marketing\JsonLd::organization(),
-            \App\Support\Marketing\JsonLd::softwareApplication(),
-        ],
+        'graphs' => $welcomeJsonLdGraphs,
     ])
     @include('partials.favicon')
     <meta name="csrf-token" content="{{ csrf_token() }}">

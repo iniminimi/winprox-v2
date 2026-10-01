@@ -7,7 +7,7 @@ namespace App\Support\Marketing;
 use App\Support\Faq\FaqSections;
 
 /**
- * Schema.org JSON-LD voor marketingpagina's (Organization, SoftwareApplication, FAQPage).
+ * Schema.org JSON-LD voor marketingpagina's (Organization, SoftwareApplication, FAQPage, VideoObject).
  */
 final class JsonLd
 {
@@ -86,6 +86,26 @@ final class JsonLd
             '@context' => 'https://schema.org',
             '@type' => 'FAQPage',
             'mainEntity' => $entities,
+        ];
+    }
+
+    /**
+     * VideoObject voor pagina's met een <video>-speler — zelfde brondata als
+     * de sitemap-video-entries (SitemapVideo), zodat beide kanalen matchen.
+     *
+     * @param  array{content_loc: string, thumbnail_loc: string, title: string, description: string, upload_date: string}  $video
+     * @return array<string, mixed>
+     */
+    public static function videoObject(array $video): array
+    {
+        return [
+            '@context' => 'https://schema.org',
+            '@type' => 'VideoObject',
+            'name' => $video['title'],
+            'description' => $video['description'],
+            'thumbnailUrl' => $video['thumbnail_loc'],
+            'contentUrl' => $video['content_loc'],
+            'uploadDate' => $video['upload_date'],
         ];
     }
 

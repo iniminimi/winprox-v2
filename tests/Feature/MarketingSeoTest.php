@@ -72,6 +72,26 @@ it('levert sitemap met alle taalvarianten', function () {
     expect(substr_count($body, '<url>'))->toBe($localeCount * $routeCount);
 });
 
+it('levert video-entries in de sitemap op pagina\'s met een video', function () {
+    $response = $this->get(route('sitemap'))->assertOk();
+
+    $body = $response->getContent();
+    expect($body)->toContain('xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"')
+        ->and($body)->toContain('<video:video>')
+        ->and($body)->toContain('<video:thumbnail_loc>')
+        ->and($body)->toContain('<video:content_loc>')
+        ->and($body)->toContain(asset('video/welcome.mp4'))
+        ->and($body)->toContain(asset('video/nl/industry_promo_nl.mp4'))
+        ->and($body)->toContain(asset('video/checkmate_checkin.mp4'));
+});
+
+it('plaatst VideoObject JSON-LD op pagina\'s met een video', function () {
+    $this->get(route('welcome', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee('"@type":"VideoObject"', false)
+        ->assertSee(asset('video/welcome.mp4'), false);
+});
+
 it('promo-landing-url gebruikt locale in het pad', function () {
     expect(PromoLandingUrl::forRecipientTokenOnBaseUrl('prm_4cfe5ddb16702059', 'https://winprox.app', 'fr'))
         ->toBe('https://winprox.app/fr/government?ref=prm_4cfe5ddb16702059');

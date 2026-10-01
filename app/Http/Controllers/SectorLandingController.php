@@ -10,6 +10,7 @@ use App\Support\Marketing\JsonLd;
 use App\Support\Marketing\PromoLandingRequest;
 use App\Support\Marketing\PromoOgImage;
 use App\Support\Marketing\SectorLandingVideo;
+use App\Support\Marketing\SitemapVideo;
 use App\Support\Marketing\SectorLandingVisuals;
 use App\Support\Translation\LocaleSupport;
 use Illuminate\Contracts\View\View;
@@ -60,6 +61,10 @@ class SectorLandingController extends Controller
             'layoutJsonLdGraphs' => [
                 JsonLd::organization(),
                 JsonLd::softwareApplication(),
+                ...array_map(
+                    JsonLd::videoObject(...),
+                    SitemapVideo::forRoute($landing->routeName(), $locale)
+                ),
             ],
         ]);
     }
