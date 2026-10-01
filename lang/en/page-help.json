@@ -1926,6 +1926,10 @@
         {
           "label": "Edit and deactivate",
           "text": "Adjust customer and work address via the row. Deactivating keeps the history: no new visit can start at an inactive address."
+        },
+        {
+          "label": "Statistics",
+          "text": "With the Time module each customer shows the visits, worked time and visited work addresses of the current month. Click it for the statistics screen with a month picker, a per-address breakdown and export (CSV or print)."
         }
       ]
     },

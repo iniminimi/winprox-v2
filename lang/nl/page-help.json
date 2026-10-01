@@ -1926,6 +1926,10 @@
         {
           "label": "Bewerken en deactiveren",
           "text": "Pas klant en werkadres aan via de rij. Deactiveren bewaart de historiek: bij een inactief adres kan geen nieuw bezoek meer starten."
+        },
+        {
+          "label": "Statistieken",
+          "text": "Met de Time-module zie je per klant de bezoeken, de gewerkte tijd en de bezochte werkadressen van de lopende maand. Klik erop voor het statistiekenscherm met maandkiezer, uitsplitsing per werkadres en export (CSV of afdrukken)."
         }
       ]
     },

@@ -1926,6 +1926,10 @@
         {
           "label": "Bearbeiten und deaktivieren",
           "text": "Passen Sie Kunde und Einsatzadresse über die Zeile an. Deaktivieren bewahrt die Historie: an einer inaktiven Adresse kann kein neuer Besuch starten."
+        },
+        {
+          "label": "Statistiken",
+          "text": "Mit dem Time-Modul zeigt jeder Kunde die Besuche, die Arbeitszeit und die besuchten Arbeitsadressen des laufenden Monats. Klicken Sie darauf für den Statistikbildschirm mit Monatsauswahl, Aufschlüsselung pro Adresse und Export (CSV oder Druck)."
         }
       ]
     },

@@ -1926,6 +1926,10 @@
         {
           "label": "Editar y desactivar",
           "text": "Ajusta cliente y dirección desde la fila. Desactivar conserva el historial: en una dirección inactiva no puede empezar una nueva visita."
+        },
+        {
+          "label": "Estadísticas",
+          "text": "Con el módulo Time, cada cliente muestra las visitas, el tiempo trabajado y las direcciones de trabajo visitadas del mes en curso. Púlselo para la pantalla de estadísticas con selector de mes, desglose por dirección y exportación (CSV o impresión)."
         }
       ]
     },

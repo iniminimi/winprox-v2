@@ -1926,6 +1926,10 @@
         {
           "label": "Modifica e disattiva",
           "text": "Modifica cliente e indirizzo dalla riga. Disattivare conserva lo storico: su un indirizzo inattivo non può partire una nuova visita."
+        },
+        {
+          "label": "Statistiche",
+          "text": "Con il modulo Time, ogni cliente mostra le visite, il tempo lavorato e gli indirizzi di lavoro visitati del mese in corso. Cliccatelo per la schermata delle statistiche con selettore di mese, dettaglio per indirizzo ed esportazione (CSV o stampa)."
         }
       ]
     },

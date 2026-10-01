@@ -1934,6 +1934,10 @@
         {
           "label": "Modifier et désactiver",
           "text": "Adaptez client et adresse via la ligne. La désactivation conserve l'historique : aucune nouvelle visite ne peut démarrer sur une adresse inactive."
+        },
+        {
+          "label": "Statistiques",
+          "text": "Avec le module Time, chaque client affiche les visites, le temps travaillé et les adresses de travail visitées du mois en cours. Cliquez dessus pour l'écran de statistiques avec sélecteur de mois, détail par adresse et export (CSV ou impression)."
         }
       ]
     },

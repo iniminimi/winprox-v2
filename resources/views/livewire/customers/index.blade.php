@@ -3,6 +3,7 @@
         <div class="wp-grow wp-stack-tight">
             <x-wp-page-head-title
                 icon="team"
+                help-page="checkmate.customers"
                 :title="__('customers.title')"
                 :subtitle="__('customers.subtitle')"
             />
