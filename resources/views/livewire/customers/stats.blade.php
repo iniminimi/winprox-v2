@@ -2,7 +2,7 @@
     <div class="wp-page-head">
         <div class="wp-grow wp-stack-tight">
             <x-wp-page-head-title
-                icon="team"
+                icon="building-office"
                 help-page="customers.stats"
                 :title="__('customers.stats.title')"
                 :subtitle="__('customers.stats.subtitle', ['customer' => $customer->name])"

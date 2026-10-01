@@ -54,7 +54,7 @@ final class ManualChapterIcons
         'portal.teamleader.workers' => 'team',
         'portal.teamleader.tasks' => 'tasks',
         'checkmate.dashboard' => 'dashboard',
-        'checkmate.customers' => 'locations',
+        'checkmate.customers' => 'building-office',
         'checkmate.workers' => 'team',
         'checkmate.clock_points' => 'map-pin',
         'checkmate.presence' => 'clock',

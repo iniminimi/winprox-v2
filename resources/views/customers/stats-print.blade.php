@@ -8,7 +8,7 @@
         <div class="wp-page-head">
             <div class="wp-grow wp-stack-tight">
                 <x-wp-page-head-title
-                    icon="team"
+                    icon="building-office"
                     :title="__('customers.stats.print.title', ['customer' => $customer->name])"
                 />
                 <p class="wp-muted">{{ __('customers.stats.period', ['period' => $from->translatedFormat('F Y')]) }}</p>

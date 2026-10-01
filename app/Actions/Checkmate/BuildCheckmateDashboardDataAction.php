@@ -55,7 +55,7 @@ class BuildCheckmateDashboardDataAction
             quickTiles: [
                 [
                     'key' => 'add_customer',
-                    'icon' => 'map-pin',
+                    'icon' => 'building-office',
                     'tone' => 'locations',
                     'title' => 'dashboard.checkmate.actions.add_customer_title',
                     'body' => 'dashboard.checkmate.actions.add_customer_body',
@@ -121,7 +121,7 @@ class BuildCheckmateDashboardDataAction
                 ],
                 [
                     'key' => 'customers',
-                    'icon' => 'locations',
+                    'icon' => 'building-office',
                     'tone' => 'units',
                     'label' => 'dashboard.checkmate.kpi.customers',
                     'value' => (string) $activeCustomers,

@@ -191,7 +191,7 @@
                         <a href="{{ route('customers.index') }}"
                            class="wp-nav-link {{ request()->routeIs('customers.*') ? 'is-active' : '' }}"
                            @click="nav = false">
-                            <x-wp-icon name="team" class="wp-nav-icon" />
+                            <x-wp-icon name="building-office" class="wp-nav-icon" />
                             <span>{{ __('customers.title') }}</span>
                         </a>
 
