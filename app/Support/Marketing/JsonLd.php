@@ -88,17 +88,17 @@ final class JsonLd
     }
 
     /**
+     * Zelfde bron als de zichtbare FAQ: render de body-partial en strip de
+     * markup, zodat acceptedAnswer.text 1-op-1 overeenkomt met wat de bezoeker
+     * leest — ook voor rijke types (steps, pricing, portal, roles).
+     *
      * @param  array<string, mixed>  $item
      */
     private static function faqAnswerText(array $item): string
     {
-        foreach (['summary', 'intro', 'body'] as $key) {
-            $value = $item[$key] ?? null;
-            if (is_string($value) && trim($value) !== '') {
-                return trim($value);
-            }
-        }
+        $html = view('partials.wp-faq-item-body', ['item' => $item])->render();
+        $text = html_entity_decode(strip_tags($html), ENT_QUOTES | ENT_HTML5, 'UTF-8');
 
-        return '';
+        return trim(preg_replace('/\s+/u', ' ', $text) ?? '');
     }
 }

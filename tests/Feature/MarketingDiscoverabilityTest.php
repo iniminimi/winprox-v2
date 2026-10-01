@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Support\Faq\FaqSections;
 use App\Support\Marketing\JsonLd;
 
 it('serveert about en feature-pagina\'s met JSON-LD', function () {
@@ -60,6 +61,40 @@ it('bouwt FAQPage JSON-LD met vragen', function () {
     expect($graph['@type'])->toBe('FAQPage')
         ->and($graph['mainEntity'])->not->toBeEmpty()
         ->and($graph['mainEntity'][0]['@type'])->toBe('Question');
+});
+
+it('spiegelt FAQPage JSON-LD de zichtbare FAQ-items (vraag + antwoord + volgorde)', function () {
+    app()->setLocale('en');
+    $graph = JsonLd::faqPage();
+    $items = FaqSections::orderedItems();
+
+    $names = array_map(fn (array $entity): string => $entity['name'], $graph['mainEntity']);
+    $titles = array_map(fn (array $item): string => $item['title'], $items);
+
+    expect($names)->toBe($titles)
+        ->and($graph['mainEntity'])->toHaveCount(count($items));
+});
+
+it('bevat FAQPage-antwoorden de volledige zichtbare body, niet de samenvatting', function () {
+    app()->setLocale('en');
+    $graph = JsonLd::faqPage();
+    $byName = collect($graph['mainEntity'])->keyBy('name');
+
+    $normalize = fn (string $value): string => trim(preg_replace('/\s+/u', ' ', $value) ?? '');
+
+    // text-type: het volledige body-veld moet in het antwoord zitten.
+    $textItem = collect(FaqSections::orderedItems())->firstWhere('slug', 'qr_code');
+    $answer = $normalize($byName[$textItem['title']]['acceptedAnswer']['text']);
+    expect($answer)->toContain($normalize($textItem['body']));
+
+    // steps-type: intro + eerste stap + box horen in het antwoord.
+    $stepsItem = collect(FaqSections::orderedItems())->firstWhere('slug', 'how_it_works');
+    $answer = $normalize($byName[$stepsItem['title']]['acceptedAnswer']['text']);
+    expect($answer)
+        ->toContain($normalize($stepsItem['intro']))
+        ->toContain($normalize($stepsItem['steps'][0]['title']))
+        ->toContain($normalize($stepsItem['steps'][0]['text']))
+        ->toContain($normalize($stepsItem['box_body']));
 });
 
 it('toont FAQPage schema op publieke FAQ', function () {
