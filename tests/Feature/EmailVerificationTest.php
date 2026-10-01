@@ -49,13 +49,14 @@ it('stuurt bij registratie een verificatiemail en laat het account onbevestigd',
 
             expect($mail->hasTo('nieuw@winprox.test'))->toBeTrue()
                 ->and($mail->content()->text)->toBe('emails.auth.verify-email-text')
-                ->and($url)->toMatch('#/issues/[0-9]{8}$#')
+                ->and($url)->toMatch('#/e/[0-9]{8}$#')
+                ->and($url)->not->toContain('/issues/')
                 ->and($url)->not->toContain('/email/verify')
                 ->and($url)->not->toContain('/welkom/')
                 ->and($url)->not->toContain('/dashboard/')
                 ->and($url)->not->toContain('/start/')
                 ->and($url)->not->toContain('signature=')
-                ->and($html)->toContain('/issues/')
+                ->and($html)->toContain('/e/')
                 ->and($html)->toContain(trans('mail.verify_email.cta', [], $locale))
                 ->and($html)->toContain(trans('mail.verify_email.ignore', [], $locale))
                 ->and($html)->not->toContain(trans('mail.new_qr_issue.heading', [], $locale))
@@ -247,10 +248,12 @@ it('weigert een ongeldige token-link', function () {
         ->assertRedirect(route('login'));
 });
 
-it('leidt oude welkom- en dashboard-links door naar de issues-token', function () {
+it('leidt oude welkom-, dashboard- en issues-links door naar de neutrale token-link', function () {
     $this->get('/welkom/00000000')
         ->assertRedirect(route('verification.start', ['token' => '00000000']));
     $this->get('/dashboard/00000000')
+        ->assertRedirect(route('verification.start', ['token' => '00000000']));
+    $this->get('/issues/00000000')
         ->assertRedirect(route('verification.start', ['token' => '00000000']));
 });
 
