@@ -29,7 +29,12 @@
         "plain_link_label": "Uitschrijven"
     },
     "verify_email": {
-        "description": "Onderhoud en taken opvolgen voor locaties."
+        "subject": ":tenant — bevestig je e-mailadres",
+        "intro": "Welkom bij WinProx! Je account voor :tenant is aangemaakt. Bevestig je e-mailadres om aan de slag te gaan.",
+        "cta": "E-mailadres bevestigen",
+        "link_fallback": "Als de knop niet werkt, kopieer dan deze link:",
+        "validity": "Deze link is :minutes minuten geldig.",
+        "ignore": "Heb je geen account aangemaakt? Dan kun je deze e-mail negeren."
     },
     "verify_qr_report_email": {
         "subject": ":tenant — bevestig je melding",

@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Validation\ValidationException;
 
 /**
- * Verstuurt de welkomstmail in dezelfde vorm als NewQrIssueMail (`/issues/{id}`).
+ * Verstuurt de welkomst-/verificatiemail via het golden-path-template
+ * (`emails.contact.winprox-template`, §14.2) met eigen account-copy;
+ * korte neutrale link `/issues/{8 digits}` → `verification.start`.
  */
 class SendUserEmailVerificationAction
 {

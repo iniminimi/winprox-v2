@@ -29,7 +29,12 @@
         "plain_link_label": "Unsubscribe"
     },
     "verify_email": {
-        "description": "Follow up maintenance and tasks for locations."
+        "subject": ":tenant — confirm your email address",
+        "intro": "Welcome to WinProx! Your account for :tenant has been created. Confirm your email address to get started.",
+        "cta": "Confirm email address",
+        "link_fallback": "If the button does not work, copy this link:",
+        "validity": "This link is valid for :minutes minutes.",
+        "ignore": "Did not create an account? You can ignore this email."
     },
     "verify_qr_report_email": {
         "subject": ":tenant — confirm your report",

@@ -29,7 +29,12 @@
         "plain_link_label": "Annulla iscrizione"
     },
     "verify_email": {
-        "description": "Seguire manutenzione e attività per le sedi."
+        "subject": ":tenant — conferma il tuo indirizzo email",
+        "intro": "Benvenuto in WinProx! Il tuo account per :tenant è stato creato. Conferma il tuo indirizzo email per iniziare.",
+        "cta": "Conferma indirizzo email",
+        "link_fallback": "Se il pulsante non funziona, copia questo link:",
+        "validity": "Questo link è valido per :minutes minuti.",
+        "ignore": "Non hai creato un account? Puoi ignorare questa email."
     },
     "verify_qr_report_email": {
         "subject": ":tenant — conferma la segnalazione",

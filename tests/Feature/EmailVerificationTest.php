@@ -45,9 +45,10 @@ it('stuurt bij registratie een verificatiemail en laat het account onbevestigd',
             $html = $mail->render();
             $locale = (string) ($mail->locale ?: app()->getLocale());
 
-            $mail->assertHasSubject(trans('mail.new_qr_issue.subject', ['tenant' => 'Nieuwe Facility'], $locale));
+            $mail->assertHasSubject(trans('mail.verify_email.subject', ['tenant' => 'Nieuwe Facility'], $locale));
 
             expect($mail->hasTo('nieuw@winprox.test'))->toBeTrue()
+                ->and($mail->content()->text)->toBe('emails.auth.verify-email-text')
                 ->and($url)->toMatch('#/issues/[0-9]{8}$#')
                 ->and($url)->not->toContain('/email/verify')
                 ->and($url)->not->toContain('/welkom/')
@@ -55,8 +56,10 @@ it('stuurt bij registratie een verificatiemail en laat het account onbevestigd',
                 ->and($url)->not->toContain('/start/')
                 ->and($url)->not->toContain('signature=')
                 ->and($html)->toContain('/issues/')
-                ->and($html)->toContain(trans('mail.new_qr_issue.field_location', [], $locale))
-                ->and($html)->toContain(trans('mail.new_qr_issue.open_issue', [], $locale))
+                ->and($html)->toContain(trans('mail.verify_email.cta', [], $locale))
+                ->and($html)->toContain(trans('mail.verify_email.ignore', [], $locale))
+                ->and($html)->not->toContain(trans('mail.new_qr_issue.heading', [], $locale))
+                ->and($html)->not->toContain(trans('mail.new_qr_issue.open_issue', [], $locale))
                 ->and($html)->not->toContain('nieuw@winprox.test')
                 ->and($html)->not->toContain('/email/verify')
                 ->and($html)->not->toContain('/welkom/')
