@@ -63,7 +63,7 @@
                     "Optional photo and note when completing.",
                     "Status and history in admin.",
                     "Workers use the unit QR, or Clock Point with an open GPS work visit.",
-                    "Optional: TFT clock display on a Clock Point with rotating QR (pairing via single-use code + confirmation). Configurable on-hours (e.g. nursery 06:00–19:00); outside those the screen is off. No phone? Tap the screen, pick your first name by letters and enter your 4-digit PIN; after two wrong attempts that worker is locked for one minute."
+                    "Optional: TFT clock display on a Clock Point with rotating QR (pairing via single-use code + confirmation). Configurable on-hours (e.g. nursery 06:00–19:00); outside those the screen is off. No phone? Tap the screen, pick your first name by letters and enter your 4-digit PIN (workers without a PIN choose one on the spot, twice); after two wrong attempts that worker is locked for one minute."
                 ]
             },
             {

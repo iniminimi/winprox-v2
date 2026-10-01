@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Api\V1;
 use App\Actions\Time\ListClockDisplayWorkersAction;
 use App\Actions\Time\PinClockFromClockDisplayAction;
 use App\Actions\Time\RecordClockDisplayPingAction;
+use App\Actions\Time\SetupClockDisplayPinAction;
 use App\Actions\Time\SubmitClockDisplayClaimAction;
 use App\Enums\ClockDisplayClaimStatus;
 use App\Enums\ClockDisplayPinStatus;
 use App\Http\Requests\Api\V1\PinClockDisplayRequest;
+use App\Http\Requests\Api\V1\SetupPinClockDisplayRequest;
 use App\Http\Requests\Api\V1\SubmitClockDisplayClaimRequest;
 use App\Models\ClockDisplayClaim;
 use App\Models\ClockPoint;
@@ -165,6 +167,53 @@ class ClockDisplayController extends Controller
                 'retry_after' => $result->retryAfterSeconds,
             ], 429),
             ClockDisplayPinStatus::WorkerNotFound => response()->json(['error' => 'worker_not_found'], 404),
+        };
+    }
+
+    /**
+     * Worker zonder PIN zet zijn code op het scherm zelf (2× ingeven) en
+     * wordt meteen in/uitgeklokt — zelfde resultaat-shape als pinClock.
+     */
+    public function pinSetup(
+        SetupPinClockDisplayRequest $request,
+        SetupClockDisplayPinAction $setup,
+    ): JsonResponse {
+        $clockPoint = $this->linkedPoint($request);
+        if (! $clockPoint instanceof ClockPoint) {
+            return $clockPoint;
+        }
+
+        $validated = $request->validated();
+
+        try {
+            $result = $setup->handle(
+                $clockPoint,
+                (int) $validated['worker_id'],
+                (string) $validated['pin'],
+            );
+        } catch (InvalidArgumentException $e) {
+            return match ($e->getMessage()) {
+                'pin_already_set' => response()->json(['error' => 'pin_already_set'], 409),
+                default => response()->json(['error' => 'worker_not_found'], 404),
+            };
+        }
+
+        return match ($result->status) {
+            ClockDisplayPinStatus::ClockedIn => response()->json([
+                'result' => 'in',
+                'worker' => $result->workerName,
+                'at' => $result->clockedAt,
+            ]),
+            ClockDisplayPinStatus::ClockedOut => response()->json([
+                'result' => 'out',
+                'worker' => $result->workerName,
+                'at' => $result->clockedAt,
+            ]),
+            ClockDisplayPinStatus::WorkerLocked => response()->json([
+                'error' => 'worker_locked',
+                'retry_after' => $result->retryAfterSeconds,
+            ], 429),
+            default => response()->json(['error' => 'worker_not_found'], 404),
         };
     }
 

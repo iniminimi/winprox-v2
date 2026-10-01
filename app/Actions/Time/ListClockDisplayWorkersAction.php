@@ -7,15 +7,16 @@ use App\Models\Worker;
 use Illuminate\Support\Collection;
 
 /**
- * Workers die het klokscherm in de lettertrie mag tonen: actief, met een
- * klok-PIN, en toegelaten op de locatie van dit Clock Point (zelfde regels
- * als Worker::canClockAt). Minimale payload — het scherm heeft enkel id +
- * naam nodig; PIN-hashes verlaten de server nooit.
+ * Workers die het klokscherm in de lettertrie mag tonen: actief en
+ * toegelaten op de locatie van dit Clock Point (zelfde regels als
+ * Worker::canClockAt). `has_pin` bepaalt of het scherm een PIN vraagt
+ * of er één laat instellen. Minimale payload — PIN-hashes verlaten
+ * de server nooit.
  */
 class ListClockDisplayWorkersAction
 {
     /**
-     * @return Collection<int, array{id: int, first_name: string, last_name: string}>
+     * @return Collection<int, array{id: int, first_name: string, last_name: string, has_pin: bool}>
      */
     public function handle(ClockPoint $clockPoint): Collection
     {
@@ -23,9 +24,7 @@ class ListClockDisplayWorkersAction
         $locationId = $clockPoint->location_id !== null ? (int) $clockPoint->location_id : null;
 
         $query = Worker::query()
-            ->where('is_active', true)
-            ->whereNotNull('clock_pin_hash')
-            ->where('clock_pin_hash', '!=', '');
+            ->where('is_active', true);
 
         // Locatiescope zoals canClockAt: checkmate-tenants en punten zonder
         // locatie zijn tenant-breed; anders: pivot-gekoppeld aan deze locatie,
@@ -41,11 +40,12 @@ class ListClockDisplayWorkersAction
         return $query
             ->orderBy('first_name')
             ->orderBy('last_name')
-            ->get(['id', 'first_name', 'last_name'])
+            ->get(['id', 'first_name', 'last_name', 'clock_pin_hash'])
             ->map(fn (Worker $w) => [
                 'id' => (int) $w->id,
                 'first_name' => (string) $w->first_name,
                 'last_name' => (string) $w->last_name,
+                'has_pin' => $w->hasClockPin(),
             ]);
     }
 }

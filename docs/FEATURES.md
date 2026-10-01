@@ -985,9 +985,11 @@ binnen ~30–90 s dood.
   ClockIn/ClockOut-actions met `ClockSource::ClockDisplayPin` en lockt de
   **worker** na `time.display_pin_max_attempts` (2) foute pogingen voor
   `time.display_pin_lockout_seconds` (60s) — per worker, niet per scherm.
-  Workers zonder PIN staan niet in de trie. Audit:
+  `POST .../pin-setup` laat een worker zonder PIN die op het scherm zetten
+  (2× ingeven) en prikt meteen — bestaande PIN's kunnen daar niet overschreven
+  worden. Audit:
   `worker.clock_display_pin_failed`, `worker.clock_display_pin_blocked_attempt`,
-  `worker.clock_display_punched`.
+  `worker.clock_display_pin_set`, `worker.clock_display_punched`.
 - Audit: `clock_point.display_pairing_issued`, `display_claim_confirmed`,
   `display_claim_denied`, `display_unlinked`, `display_secret_rotated`.
 

@@ -64,7 +64,7 @@ it('vereist een device-token voor de workerlijst en pin-klok', function () {
     ])->assertUnauthorized();
 });
 
-it('lijst enkel actieve workers met PIN op de locatie van het Clock Point', function () {
+it('lijst enkel actieve workers op de locatie van het Clock Point, met has_pin', function () {
     $tenant = pinTenant();
     Tenancy::actAs($tenant->id);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
@@ -73,8 +73,8 @@ it('lijst enkel actieve workers met PIN op de locatie van het Clock Point', func
 
     $inge = pinWorker($tenant, $location);
     pinWorker($tenant, $location, '5678');
-    // Geen PIN → niet in de trie.
-    Worker::factory()->create(['tenant_id' => $tenant->id]);
+    // Geen PIN → wél in de trie (scherm laat PIN instellen), gemarkeerd.
+    $noPin = Worker::factory()->create(['tenant_id' => $tenant->id]);
     // Andere locatie → buiten scope.
     pinWorker($tenant, $otherLocation);
     // Inactief → buiten scope.
@@ -90,10 +90,13 @@ it('lijst enkel actieve workers met PIN op de locatie van het Clock Point', func
 
     $ids = array_column($response, 'id');
     expect($ids)->toContain($inge->id)
+        ->toContain($noPin->id)
         ->toContain($everywhere->id)
-        ->toHaveCount(3)
-        ->and($response[0])->toHaveKeys(['id', 'first_name', 'last_name'])
+        ->toHaveCount(4)
+        ->and($response[0])->toHaveKeys(['id', 'first_name', 'last_name', 'has_pin'])
         ->and($response[0])->not->toHaveKey('clock_pin_hash');
+    expect(collect($response)->firstWhere('id', $noPin->id)['has_pin'])->toBeFalse();
+    expect(collect($response)->firstWhere('id', $inge->id)['has_pin'])->toBeTrue();
 });
 
 it('klokt in en uit met een correcte PIN en auditeert de prik', function () {
@@ -202,6 +205,66 @@ it('verbergt workers buiten scope als not_found', function () {
         'worker_id' => 999999,
         'pin' => '1234',
     ], $headers)->assertNotFound();
+});
+
+it('laat een worker zonder PIN zijn code zetten op het scherm en prikt meteen', function () {
+    $tenant = pinTenant();
+    Tenancy::actAs($tenant->id);
+    [$point, $token] = pairedPinPoint($tenant);
+    $worker = Worker::factory()->create(['tenant_id' => $tenant->id]);
+    Tenancy::forget();
+
+    $headers = ['X-WinProx-Clock-Key' => $token];
+
+    // Bevestiging moet overeenkomen.
+    $this->postJson('/api/v1/time/clock-displays/pin-setup', [
+        'worker_id' => $worker->id,
+        'pin' => '1357',
+        'pin_confirm' => '9999',
+    ], $headers)->assertUnprocessable();
+    expect($worker->fresh()->hasClockPin())->toBeFalse();
+
+    $this->postJson('/api/v1/time/clock-displays/pin-setup', [
+        'worker_id' => $worker->id,
+        'pin' => '1357',
+        'pin_confirm' => '1357',
+    ], $headers)->assertOk()->assertJsonPath('result', 'in');
+
+    expect($worker->fresh()->hasClockPin())->toBeTrue();
+    expect(WorkShift::where('worker_id', $worker->id)
+        ->where('status', WorkShiftStatus::Open)->exists())->toBeTrue();
+    expect(AuditLog::where('action', 'worker.clock_display_pin_set')->exists())->toBeTrue();
+
+    // Bestaande PIN kan niet overschreven worden via het scherm.
+    $this->postJson('/api/v1/time/clock-displays/pin-setup', [
+        'worker_id' => $worker->id,
+        'pin' => '0000',
+        'pin_confirm' => '0000',
+    ], $headers)->assertConflict()->assertJsonPath('error', 'pin_already_set');
+
+    // En de nieuwe PIN werkt op de gewone pin-klok.
+    $this->postJson('/api/v1/time/clock-displays/pin-clock', [
+        'worker_id' => $worker->id,
+        'pin' => '1357',
+    ], $headers)->assertOk()->assertJsonPath('result', 'out');
+});
+
+it('verbergt pin-setup voor workers buiten scope', function () {
+    $tenant = pinTenant();
+    Tenancy::actAs($tenant->id);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $otherLocation = Location::factory()->create(['tenant_id' => $tenant->id]);
+    [$point, $token] = pairedPinPoint($tenant, $location->id);
+    $worker = Worker::factory()->create(['tenant_id' => $tenant->id]);
+    $worker->locations()->sync([$otherLocation->id]);
+    Tenancy::forget();
+
+    $this->postJson('/api/v1/time/clock-displays/pin-setup', [
+        'worker_id' => $worker->id,
+        'pin' => '1357',
+        'pin_confirm' => '1357',
+    ], ['X-WinProx-Clock-Key' => $token])
+        ->assertNotFound()->assertJsonPath('error', 'worker_not_found');
 });
 
 it('valideert het PIN-formaat', function () {
