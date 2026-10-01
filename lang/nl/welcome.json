@@ -1,5 +1,5 @@
 {
-    "meta_title": "WinProx — Werk op locatie, goed geregeld",
+    "meta_title": "WinProx — Prikklok, tijdregistratie en werk op locatie",
     "social": {
         "og_title": "WinProx — Een kleine, elegante prikklok voor uw bedrijf",
         "og_description": "Het werk op uw locatie, gewoon goed geregeld. Van melding en planning tot uitvoering en afhandeling — via QR, zonder app."
@@ -20,7 +20,7 @@
     },
     "hero": {
         "brand": "WinProx",
-        "headline": "Het werk op uw locatie, gewoon goed geregeld.",
+        "headline": "Het werk op uw locatie, gewoon goed geregeld — met digitale prikklok en tijdregistratie.",
         "subtitle": "Van melding en planning tot uitvoering en afhandeling.",
         "flow": "Scan → Meld → Werk → Klaar",
         "flow_steps": {

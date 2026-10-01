@@ -1,5 +1,5 @@
 {
-    "meta_title": "WinProx — Arbeit vor Ort, gut geregelt",
+    "meta_title": "WinProx — Stempeluhr, Zeiterfassung und Arbeit vor Ort",
     "social": {
         "og_title": "WinProx — Eine kleine, elegante Stempeluhr für Ihr Unternehmen",
         "og_description": "Die Arbeit an Ihrem Standort, einfach gut geregelt. Von Meldung und Planung bis Ausführung und Abschluss — per QR, ohne App."
@@ -20,7 +20,7 @@
     },
     "hero": {
         "brand": "WinProx",
-        "headline": "Die Arbeit an Ihrem Standort, einfach gut geregelt.",
+        "headline": "Die Arbeit an Ihrem Standort, einfach gut geregelt — mit digitaler Stempeluhr und Zeiterfassung.",
         "subtitle": "Von Meldung und Planung bis Ausführung und Abschluss.",
         "flow": "Scan → Melden → Arbeiten → Fertig",
         "flow_steps": {

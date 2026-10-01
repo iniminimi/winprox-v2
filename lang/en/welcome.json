@@ -1,5 +1,5 @@
 {
-    "meta_title": "WinProx — Work on site, properly organised",
+    "meta_title": "WinProx — Time clock, time tracking and work on site",
     "social": {
         "og_title": "WinProx — A small, elegant time clock for your business",
         "og_description": "Work on your site, simply well organised. From reporting and planning to execution and completion — via QR, no app."
@@ -20,7 +20,7 @@
     },
     "hero": {
         "brand": "WinProx",
-        "headline": "Work on your site, simply well organised.",
+        "headline": "Work on your site, simply well organised — with a digital time clock and time tracking.",
         "subtitle": "From reporting and planning to execution and completion.",
         "flow": "Scan → Report → Work → Done",
         "flow_steps": {

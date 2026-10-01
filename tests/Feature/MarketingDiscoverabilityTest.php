@@ -103,6 +103,31 @@ it('toont FAQPage schema op publieke FAQ', function () {
         ->assertSee('"@type":"FAQPage"', false);
 });
 
+it('promoveert de homepage-headline tot H1 met prikklok-signalen', function () {
+    $this->get(route('welcome', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee('<h1 class="wp-welcome-hero-minimal__headline">', false)
+        ->assertSee('digitale prikklok', false)
+        ->assertSee('<title>WinProx — Prikklok, tijdregistratie en werk op locatie</title>', false);
+});
+
+it('stuurt SoftwareApplication JSON-LD in de pagina-taal', function () {
+    $this->get(route('about', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee('"url":"'.route('welcome', ['locale' => 'nl'], absolute: true).'"', false)
+        ->assertSee('"description":"Het werk op uw locatie', false);
+
+    $this->get(route('about', ['locale' => 'en']))
+        ->assertOk()
+        ->assertSee('"description":"Work on your site', false);
+});
+
+it('linkt het Time-FAQ-item contextueel naar de prikklok-landing', function () {
+    $this->get(route('faq.public', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee('/nl/prikklok', false);
+});
+
 it('llms.txt bevat about, feature-pagina\'s en Markdown-fiches', function () {
     $this->get(route('llms.txt'))
         ->assertOk()

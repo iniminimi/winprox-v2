@@ -1,5 +1,5 @@
 {
-    "meta_title": "WinProx — Le travail sur site, bien organisé",
+    "meta_title": "WinProx — Pointeuse, suivi du temps et travail sur site",
     "social": {
         "og_title": "WinProx — Une petite pointeuse élégante pour votre entreprise",
         "og_description": "Le travail sur votre site, simplement bien organisé. Du signalement et de la planification à l'exécution et au bouclage — via QR, sans app."
@@ -20,7 +20,7 @@
     },
     "hero": {
         "brand": "WinProx",
-        "headline": "Le travail sur votre site, simplement bien organisé.",
+        "headline": "Le travail sur votre site, simplement bien organisé — avec pointeuse digitale et suivi du temps.",
         "subtitle": "Du signalement et de la planification à l'exécution et au bouclage.",
         "flow": "Scan → Signaler → Travailler → Terminé",
         "flow_steps": {

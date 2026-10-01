@@ -1,5 +1,5 @@
 {
-    "meta_title": "WinProx — El trabajo in situ, bien organizado",
+    "meta_title": "WinProx — Reloj de fichar, registro horario y trabajo in situ",
     "social": {
         "og_title": "WinProx — Un pequeño y elegante reloj de fichar para su empresa",
         "og_description": "El trabajo en su ubicación, simplemente bien organizado. Del aviso y la planificación a la ejecución y el cierre — vía QR, sin app."
@@ -20,7 +20,7 @@
     },
     "hero": {
         "brand": "WinProx",
-        "headline": "El trabajo en su ubicación, simplemente bien organizado.",
+        "headline": "El trabajo en su ubicación, simplemente bien organizado — con reloj de fichar digital y registro horario.",
         "subtitle": "Del aviso y la planificación a la ejecución y el cierre.",
         "flow": "Escanear → Informar → Trabajar → Listo",
         "flow_steps": {

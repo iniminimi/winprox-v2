@@ -40,8 +40,8 @@
                         fetchpriority="high"
                     >
                     <div class="wp-welcome-hero-minimal">
-                        <h1 class="wp-welcome-hero-minimal__brand">{{ __('welcome.hero.brand') }}</h1>
-                        <p class="wp-welcome-hero-minimal__headline">{{ __('welcome.hero.headline') }}</p>
+                        <p class="wp-welcome-hero-minimal__brand">{{ __('welcome.hero.brand') }}</p>
+                        <h1 class="wp-welcome-hero-minimal__headline">{{ __('welcome.hero.headline') }}</h1>
                         <p class="wp-welcome-hero-minimal__subtitle">{{ __('welcome.hero.subtitle') }}</p>
                         <ol class="wp-welcome-hero-flow" aria-label="{{ __('welcome.hero.flow') }}">
                             @foreach ([

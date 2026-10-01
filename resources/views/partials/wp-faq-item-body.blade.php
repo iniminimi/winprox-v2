@@ -78,3 +78,7 @@
             <p class="wp-text-body">{{ $item['summary'] }}</p>
         @endif
 @endswitch
+
+@if (! empty($item['link']['route']) && ! empty($item['link']['label']))
+    <p class="wp-text-body"><a href="{{ route($item['link']['route']) }}">{{ $item['link']['label'] }}</a></p>
+@endif

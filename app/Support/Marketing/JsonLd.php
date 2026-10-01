@@ -32,17 +32,19 @@ final class JsonLd
      */
     public static function softwareApplication(): array
     {
+        // Locale-aware: de pagina-taal bepaalt URL en beschrijving, zodat de
+        // markup op /nl/ ook Nederlands spreekt.
         return [
             '@context' => 'https://schema.org',
             '@type' => 'SoftwareApplication',
             'name' => 'WinProx',
             'applicationCategory' => 'BusinessApplication',
             'operatingSystem' => 'Web',
-            'url' => route('welcome', ['locale' => 'en'], absolute: true),
-            'description' => 'Work on your site, simply well organised: from reporting and planning to execution and completion — via QR in the browser, no app.',
+            'url' => route('welcome', absolute: true),
+            'description' => __('welcome.social.og_description'),
             'offers' => [
                 '@type' => 'AggregateOffer',
-                'url' => route('pricing', ['locale' => 'en'], absolute: true),
+                'url' => route('pricing', absolute: true),
                 'priceCurrency' => 'EUR',
                 'lowPrice' => '840',
                 'highPrice' => '3000',
