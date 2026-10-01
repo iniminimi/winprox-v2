@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use App\Listeners\AppendEmailUnsubscribeFooterToMessage;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -27,6 +28,10 @@ class VerifyUserEmailMail extends Mailable
         $this->locale($locale);
         $this->withSymfonyMessage(function (SymfonyEmail $message): void {
             $message->getHeaders()->addTextHeader('X-WinProx-Transactional', '1');
+            $message->getHeaders()->addTextHeader(
+                AppendEmailUnsubscribeFooterToMessage::SKIP_HEADER,
+                '1',
+            );
         });
     }
 
@@ -44,23 +49,19 @@ class VerifyUserEmailMail extends Mailable
 
     public function content(): Content
     {
-        $tenantName = $this->tenantName();
         $minutes = max(1, (int) config('auth.verification.expire', 60));
+        $hours = intdiv($minutes, 60);
+        $validity = $minutes >= 120 && $minutes % 60 === 0
+            ? __('mail.verify_email.validity_hours', ['hours' => $hours])
+            : __('mail.verify_email.validity_minutes', ['minutes' => $minutes]);
 
         return new Content(
-            html: 'emails.contact.winprox-template',
             text: 'emails.auth.verify-email-text',
             with: [
                 'recipientName' => (string) $this->user->name,
-                'tenantName' => $tenantName,
-                'bodyText' => '',
-                'bodyHtml' => view('emails.auth.verify-email-body', [
-                    'tenantName' => $tenantName,
-                    'verifyUrl' => $this->verificationUrl(),
-                    'minutes' => $minutes,
-                ])->render(),
+                'tenantName' => $this->tenantName(),
                 'verifyUrl' => $this->verificationUrl(),
-                'minutes' => $minutes,
+                'validity' => $validity,
             ],
         );
     }

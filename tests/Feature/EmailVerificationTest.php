@@ -42,12 +42,16 @@ it('stuurt bij registratie een verificatiemail en laat het account onbevestigd',
         VerifyUserEmailMail::class,
         function (VerifyUserEmailMail $mail) {
             $url = $mail->verificationUrl();
-            $html = $mail->render();
             $locale = (string) ($mail->locale ?: app()->getLocale());
 
             $mail->assertHasSubject(trans('mail.verify_email.subject', ['tenant' => 'Nieuwe Facility'], $locale));
+            $mail->assertSeeInText(trans('mail.verify_email.cta', [], $locale));
+            $mail->assertSeeInText($url);
+            $mail->assertSeeInText(trans('mail.verify_email.ignore', [], $locale));
+            $mail->assertDontSeeInText(trans('mail.new_qr_issue.heading', [], $locale));
 
             expect($mail->hasTo('nieuw@winprox.test'))->toBeTrue()
+                ->and($mail->content()->html)->toBeNull()
                 ->and($mail->content()->text)->toBe('emails.auth.verify-email-text')
                 ->and($url)->toMatch('#/e/[0-9]{8}$#')
                 ->and($url)->not->toContain('/issues/')
@@ -55,16 +59,7 @@ it('stuurt bij registratie een verificatiemail en laat het account onbevestigd',
                 ->and($url)->not->toContain('/welkom/')
                 ->and($url)->not->toContain('/dashboard/')
                 ->and($url)->not->toContain('/start/')
-                ->and($url)->not->toContain('signature=')
-                ->and($html)->toContain('/e/')
-                ->and($html)->toContain(trans('mail.verify_email.cta', [], $locale))
-                ->and($html)->toContain(trans('mail.verify_email.ignore', [], $locale))
-                ->and($html)->not->toContain(trans('mail.new_qr_issue.heading', [], $locale))
-                ->and($html)->not->toContain(trans('mail.new_qr_issue.open_issue', [], $locale))
-                ->and($html)->not->toContain('nieuw@winprox.test')
-                ->and($html)->not->toContain('/email/verify')
-                ->and($html)->not->toContain('/welkom/')
-                ->and($html)->not->toContain('signature=');
+                ->and($url)->not->toContain('signature=');
 
             return true;
         },

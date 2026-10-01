@@ -12,9 +12,21 @@ use Symfony\Component\Mime\Email;
 
 class AppendEmailUnsubscribeFooterToMessage
 {
+    /**
+     * Mailables mogen de uitschrijf-footer + List-Unsubscribe uitzonderlijk
+     * overslaan via deze header (bv. account-verificatie: inschrijven en
+     * uitschrijven in één mail is tegenstrijdig). Zie §14.2.
+     */
+    public const SKIP_HEADER = 'X-WinProx-No-Unsubscribe';
+
     public function handle(MessageSending $event): void
     {
         $message = $event->message;
+
+        if ($message->getHeaders()->has(self::SKIP_HEADER)) {
+            return;
+        }
+
         $primary = $this->firstRecipientAddress($message);
 
         if ($primary === null) {

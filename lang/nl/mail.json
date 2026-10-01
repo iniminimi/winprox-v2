@@ -30,11 +30,14 @@
     },
     "verify_email": {
         "subject": ":tenant — bevestig je e-mailadres",
-        "intro": "Welkom bij WinProx! Je account voor :tenant is aangemaakt. Bevestig je e-mailadres om aan de slag te gaan.",
+        "greeting": "Beste :name,",
+        "intro": "Je account voor :tenant is aangemaakt.",
+        "confirm": "Bevestig je e-mailadres om aan de slag te gaan:",
         "cta": "E-mailadres bevestigen",
-        "link_fallback": "Als de knop niet werkt, kopieer dan deze link:",
-        "validity": "Deze link is :minutes minuten geldig.",
-        "ignore": "Heb je geen account aangemaakt? Dan kun je deze e-mail negeren."
+        "validity_hours": "Deze link is :hours uur geldig.",
+        "validity_minutes": "Deze link is :minutes minuten geldig.",
+        "ignore": "Heb je dit account niet aangemaakt? Dan hoef je niets te doen.",
+        "closing": "Groeten,"
     },
     "verify_qr_report_email": {
         "subject": ":tenant — bevestig je melding",

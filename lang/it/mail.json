@@ -30,11 +30,14 @@
     },
     "verify_email": {
         "subject": ":tenant — conferma il tuo indirizzo email",
-        "intro": "Benvenuto in WinProx! Il tuo account per :tenant è stato creato. Conferma il tuo indirizzo email per iniziare.",
+        "greeting": "Ciao :name,",
+        "intro": "Il tuo account per :tenant è stato creato.",
+        "confirm": "Conferma il tuo indirizzo email per iniziare:",
         "cta": "Conferma indirizzo email",
-        "link_fallback": "Se il pulsante non funziona, copia questo link:",
-        "validity": "Questo link è valido per :minutes minuti.",
-        "ignore": "Non hai creato un account? Puoi ignorare questa email."
+        "validity_hours": "Questo link è valido per :hours ore.",
+        "validity_minutes": "Questo link è valido per :minutes minuti.",
+        "ignore": "Non hai creato questo account? Allora non devi fare nulla.",
+        "closing": "Cordiali saluti,"
     },
     "verify_qr_report_email": {
         "subject": ":tenant — conferma la segnalazione",

@@ -204,6 +204,21 @@ describe('AppendEmailUnsubscribeFooterToMessage listener', function () {
         expect($text)->toContain('unsubscribe');
     });
 
+    it('skips footer and List-Unsubscribe when the skip header is set', function () {
+        $message = new Email();
+        $message->to('ada@example.com');
+        $message->text('Confirm your account');
+        $message->getHeaders()->addTextHeader(
+            AppendEmailUnsubscribeFooterToMessage::SKIP_HEADER,
+            '1',
+        );
+
+        (new AppendEmailUnsubscribeFooterToMessage())->handle(new MessageSending($message));
+
+        expect($message->getHeaders()->has('List-Unsubscribe'))->toBeFalse()
+            ->and($message->getTextBody())->not->toContain('/u/');
+    });
+
     it('includes user settings hint for winprox users', function () {
         $tenant = Tenant::factory()->create();
         User::factory()->create([
