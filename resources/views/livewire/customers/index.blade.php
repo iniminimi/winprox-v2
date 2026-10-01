@@ -67,6 +67,13 @@
                                 @if ($customer->contact_name){{ $customer->contact_name }} · @endif
                                 @if ($customer->email){{ $customer->email }} · @endif
                                 {{ trans_choice('customers.locations_count', $customerLocations->count(), ['count' => $customerLocations->count()]) }}
+                                @if ($showWorkStats)
+                                    @php($stats = $workStats->get($customer->id))
+                                    · <a href="{{ route('customers.stats', $customer) }}">{{ trans_choice('customers.stats.visits', $stats?->visits ?? 0, ['count' => $stats?->visits ?? 0]) }}
+                                        · {{ \App\Support\Time\WorkDurationFormatter::format($stats?->minutes ?? 0) }}
+                                        · {{ trans_choice('customers.locations_count', $stats?->visitedLocations() ?? 0, ['count' => $stats?->visitedLocations() ?? 0]) }}</a>
+                                    · {{ $statsPeriodLabel }}
+                                @endif
                             </span>
                         </div>
                         <div class="wp-cluster wp-cluster--tight">

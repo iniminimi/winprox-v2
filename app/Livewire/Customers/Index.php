@@ -5,6 +5,7 @@ namespace App\Livewire\Customers;
 use App\Actions\Customers\CreateCustomerAction;
 use App\Actions\Customers\DeleteCustomerImportBatchAction;
 use App\Actions\Customers\ImportCustomersAction;
+use App\Actions\Customers\SummarizeCustomerWorkStatsAction;
 use App\Actions\Customers\SuggestCustomerNameMatchesAction;
 use App\Actions\Customers\UpdateCustomerAction;
 use App\Actions\Locations\ActivateLocationAction;
@@ -24,6 +25,7 @@ use App\Models\Tenant;
 use App\Support\Customers\CustomerImportBatchRegistry;
 use App\Support\Import\MinimalXlsxWriter;
 use App\Support\Platform\SupportTenantContext;
+use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Validator;
 use InvalidArgumentException;
@@ -534,10 +536,23 @@ class Index extends Component
                 ->get()
             : collect();
 
+        $showWorkStats = $tenant?->hasTimeModule() ?? false;
+        $statsPeriodStart = CarbonImmutable::now()->startOfMonth();
+        $workStats = $showWorkStats && $tenant instanceof Tenant
+            ? app(SummarizeCustomerWorkStatsAction::class)->handle(
+                (int) $tenant->id,
+                $statsPeriodStart,
+                $statsPeriodStart->addMonth(),
+            )
+            : collect();
+
         return view('livewire.customers.index', [
             'customers' => $customers,
             'tenant' => $tenant,
             'checkmateMode' => $tenant?->checkmateMode() ?? false,
+            'showWorkStats' => $showWorkStats,
+            'workStats' => $workStats,
+            'statsPeriodLabel' => $statsPeriodStart->translatedFormat('F Y'),
             'locationDdtVisible' => $tenant !== null
                 && ($tenant->presenceComplianceEnabled() || $tenant->presenceComplianceRequested() || $tenant->checkmateMode()),
             'canImportCustomersCsv' => $tenant?->hasCsvCustomersImport() ?? false,

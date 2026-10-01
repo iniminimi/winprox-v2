@@ -87,6 +87,10 @@ Whitelist-schermen:
   hergebruikt. Recente imports (30 dagen) zijn terug te draaien — werkadressen
   en klanten met inhoud (bezoeken, meldingen, documenten) blijven staan.
   Het algemene Locaties-scherm staat **niet** op de whitelist (Facility-concept).
+  Per klant compacte maandstatistieken (bezoeken, gewerkte tijd, bezochte
+  werkadressen) met doorklik naar `/klanten/{customer}/statistieken`: maandkiezer,
+  per-werkadres-uitsplitsing, CSV-export en print — bron is
+  `SummarizeCustomerWorkStatsAction` (FEATURES.md §5g.8).
 - **Uitvoerders** — menu linkt naar `/team` (teams aanmaken + uitvoerder-
   beheer wonen daar). `/workers` blijft whitelisted als alleen-lezen lijst.
 - **Time** — aanwezigheid, uren, CIAO-inzendingen.

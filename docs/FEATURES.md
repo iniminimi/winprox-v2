@@ -993,6 +993,30 @@ binnen ~30–90 s dood.
 - Audit: `clock_point.display_pairing_issued`, `display_claim_confirmed`,
   `display_claim_denied`, `display_unlinked`, `display_secret_rotated`.
 
+### 5g.8 Klantstatistieken (`/klanten`, Time-entitlement)
+
+- Zichtbaar overal waar `hasTimeModule()` geldt — Checkmate én Facility+Time.
+  Facility zonder Time toont geen stats-UI (ook geen lege nul-blokken); met Time
+  maar zonder bezoeken wél, met nulwaarden.
+- **`/klanten`:** compacte stats per klant in de meta-regel — bezoeken, gewerkte
+  tijd (`WorkDurationFormatter`) en bezochte werkadressen voor de lopende maand,
+  met link naar het klantstatistiekenscherm.
+- **`/klanten/{customer}/statistieken`** (`customers.stats`, Checkmate-whitelisted
+  via `customers.*`): maandkiezer (`?month=YYYY-MM`), totale gewerkte tijd, aantal
+  bezoeken, uitsplitsing per werkadres, CSV-export en print (zelfde patroon als
+  `time.shifts.export`/`print`).
+- Één bron: `SummarizeCustomerWorkStatsAction::handle(int $tenantId,
+  CarbonImmutable $from, CarbonImmutable $to)` — de aanroeper vertaalt de gekozen
+  periode naar absolute grenzen in de tenant-tijdzone; de Action vergelijkt enkel
+  absolute tijdstippen. Aggregatie via `WorkVisit → Location.customer_id`.
+- **Definitie (hard):** uren = WorkVisit-**aanwezigheidsduur**; shift-pauzes
+  worden niet afgetrokken. Open bezoeken tellen tot `now()`. Een bezoek dat de
+  periode overlapt telt één keer per periode; minuten worden geclampt op de
+  periodegrenzen (30/09 23:50→01/10 00:20 = 10 min in september, 20 min in
+  oktober). Locaties zonder `customer_id` vallen buiten de stats; gedeactiveerde
+  werkadressen tellen historisch mee (join op tabelniveau, niet via
+  `Customer::locations()` — die filtert `is_active`).
+
 ---
 
 ## 6. Personen (Backoffice + Teams)

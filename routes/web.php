@@ -70,7 +70,10 @@ use App\Livewire\Pages\About;
 use App\Livewire\Pages\ApiDocumentation;
 use App\Livewire\Pages\ApiSettings;
 use App\Livewire\Pages\Calendar;
+use App\Http\Controllers\Customers\CustomerStatsExportController;
+use App\Http\Controllers\Customers\CustomerStatsPrintController;
 use App\Livewire\Customers\Index as CustomersIndex;
+use App\Livewire\Customers\Stats as CustomersStats;
 use App\Livewire\Pages\CheckListsIndex;
 use App\Livewire\Pages\CheckmateManualIndex;
 use App\Livewire\Pages\Contact;
@@ -415,6 +418,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/issues/{issue}', IssueShow::class)->name('issues.show');
 
         Route::get('/klanten', CustomersIndex::class)->name('customers.index');
+        Route::get('/klanten/{customer}/statistieken', CustomersStats::class)->name('customers.stats');
+        Route::get('/klanten/{customer}/statistieken/export', CustomerStatsExportController::class)->name('customers.stats.export');
+        Route::get('/klanten/{customer}/statistieken/print', CustomerStatsPrintController::class)->name('customers.stats.print');
         Route::get('/locations', LocationIndex::class)->name('locations.index');
         Route::get('/locations/{location}', LocationShow::class)->name('locations.show');
         Route::get('/locations/{location}/qr-pack', LocationQrPackDownloadController::class)->name('locations.qr-pack');
