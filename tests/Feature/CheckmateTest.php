@@ -467,6 +467,22 @@ it('blokkeert niet-whitelist admin-routes voor checkmate-tenants', function () {
     $this->get('/time/clock-points')->assertOk();
 });
 
+it('linkt op toegestane time-pagina’s nooit naar gated routes voor checkmate', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+    $this->actingAs($admin);
+
+    $gated = ['/time/schedule', '/time/absence-requests', '/time/shift-types', '/time/alarms'];
+
+    foreach (['/time/presence', '/time/shifts', '/time/ciao', '/time/clock-points'] as $page) {
+        $response = $this->get($page)->assertOk();
+
+        foreach ($gated as $path) {
+            $response->assertDontSee('href="http://localhost'.$path, false);
+        }
+    }
+});
+
 it('verbergt werkmenu en configuratie-overzicht op instellingen voor checkmate', function () {
     $tenant = checkmateTenant();
     $admin = User::factory()->admin()->for($tenant)->create();

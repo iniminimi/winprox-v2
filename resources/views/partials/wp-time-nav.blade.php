@@ -4,11 +4,12 @@
     $tenantId = \App\Support\Tenancy::id();
     $tenant = $tenantId !== null ? \App\Models\Tenant::query()->find($tenantId) : null;
     $ciaoEnabled = $tenant instanceof \App\Models\Tenant && $tenant->presenceComplianceEnabled();
+    $checkmateMode = \App\Support\Checkmate\CheckmateMode::isActive($tenant);
     if ($ciaoEnabled && $ciaoFailCount === null) {
         $ciaoFailCount = app(\App\Actions\Time\CountFailedPresenceSubmissionsAction::class)
             ->handle((int) $tenantId);
     }
-    if ($pendingAbsenceCount === null && $tenant instanceof \App\Models\Tenant && $tenant->hasTimeModule()) {
+    if ($pendingAbsenceCount === null && ! $checkmateMode && $tenant instanceof \App\Models\Tenant && $tenant->hasTimeModule()) {
         $pendingAbsenceCount = app(\App\Actions\Time\CountPendingAbsenceRequestsAction::class)
             ->handle((int) $tenantId);
     }
@@ -18,24 +19,26 @@
     <a href="{{ route('time.presence.index') }}" @class(['btn', 'btn--sm', request()->routeIs('time.presence.index') ? 'btn--primary' : 'btn--surface'])>
         {{ __('time.nav.presence') }}
     </a>
-    <a href="{{ route('time.schedule.index') }}" @class(['btn', 'btn--sm', request()->routeIs('time.schedule.*') ? 'btn--primary' : 'btn--surface'])>
-        {{ __('time.nav.schedule') }}
-    </a>
-    <a href="{{ route('time.absence-requests.index') }}" @class(['btn', 'btn--sm', 'wp-time-nav__alarms', request()->routeIs('time.absence-requests.*') ? 'btn--primary' : 'btn--surface'])>
-        {{ __('time.nav.absence_requests') }}
-        @if (($pendingAbsenceCount ?? 0) > 0)
-            <span class="wp-pill wp-pill--progress wp-time-nav__alarm-count">{{ $pendingAbsenceCount }}</span>
-        @endif
-    </a>
-    <a href="{{ route('time.shift-types.index') }}" @class(['btn', 'btn--sm', request()->routeIs('time.shift-types.*') ? 'btn--primary' : 'btn--surface'])>
-        {{ __('time.nav.shift_types') }}
-    </a>
-    <a href="{{ route('time.alarms.index') }}" @class(['btn', 'btn--sm', 'wp-time-nav__alarms', request()->routeIs('time.alarms.*') ? 'btn--primary' : 'btn--surface'])>
-        {{ __('time.nav.alarms') }}
-        @if (($alarmCount ?? 0) > 0)
-            <span class="wp-pill wp-pill--progress wp-time-nav__alarm-count">{{ $alarmCount }}</span>
-        @endif
-    </a>
+    @if (! $checkmateMode)
+        <a href="{{ route('time.schedule.index') }}" @class(['btn', 'btn--sm', request()->routeIs('time.schedule.*') ? 'btn--primary' : 'btn--surface'])>
+            {{ __('time.nav.schedule') }}
+        </a>
+        <a href="{{ route('time.absence-requests.index') }}" @class(['btn', 'btn--sm', 'wp-time-nav__alarms', request()->routeIs('time.absence-requests.*') ? 'btn--primary' : 'btn--surface'])>
+            {{ __('time.nav.absence_requests') }}
+            @if (($pendingAbsenceCount ?? 0) > 0)
+                <span class="wp-pill wp-pill--progress wp-time-nav__alarm-count">{{ $pendingAbsenceCount }}</span>
+            @endif
+        </a>
+        <a href="{{ route('time.shift-types.index') }}" @class(['btn', 'btn--sm', request()->routeIs('time.shift-types.*') ? 'btn--primary' : 'btn--surface'])>
+            {{ __('time.nav.shift_types') }}
+        </a>
+        <a href="{{ route('time.alarms.index') }}" @class(['btn', 'btn--sm', 'wp-time-nav__alarms', request()->routeIs('time.alarms.*') ? 'btn--primary' : 'btn--surface'])>
+            {{ __('time.nav.alarms') }}
+            @if (($alarmCount ?? 0) > 0)
+                <span class="wp-pill wp-pill--progress wp-time-nav__alarm-count">{{ $alarmCount }}</span>
+            @endif
+        </a>
+    @endif
     <a href="{{ route('time.shifts.index') }}" @class(['btn', 'btn--sm', request()->routeIs('time.shifts.*') ? 'btn--primary' : 'btn--surface'])>
         {{ __('time.nav.shifts') }}
     </a>

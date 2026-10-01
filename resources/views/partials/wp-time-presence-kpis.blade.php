@@ -3,6 +3,10 @@
 @php
     use App\Enums\TimePresenceStatusFilter;
 
+    $kpisTenantId = \App\Support\Tenancy::id();
+    $kpisCheckmateMode = $kpisTenantId !== null
+        && \App\Support\Checkmate\CheckmateMode::isActive(\App\Models\Tenant::query()->find($kpisTenantId));
+
     $tiles = [
         ['key' => 'active', 'value' => $kpis->active, 'filter' => TimePresenceStatusFilter::Active, 'icon' => 'team', 'label' => 'time.presence.kpi.active'],
         ['key' => 'break', 'value' => $kpis->onBreak, 'filter' => TimePresenceStatusFilter::Break, 'icon' => 'hourglass', 'label' => 'time.presence.kpi.break'],
@@ -52,21 +56,44 @@
         </button>
     @endforeach
 
-    <a href="{{ route('time.alarms.index') }}"
-       @class([
-           'wp-kpi wp-kpi--attention',
-           'wp-kpi--alert' => $kpis->attention > 0,
-       ])>
-        <div class="wp-kpi-body">
-            <div class="wp-kpi-main">
-                <p class="wp-kpi-kicker">{{ __('time.presence.kpi.attention') }}</p>
-                <p class="wp-kpi-stats">
-                    <span class="wp-kpi-value wp-tabular">{{ $kpis->attention }}</span>
-                </p>
+    @if ($kpisCheckmateMode)
+        {{-- Checkmate heeft geen time.alarms-route (whitelist) — filter in plaats. --}}
+        <button type="button"
+                wire:click="setStatusFilter('attention')"
+                @class([
+                    'wp-kpi wp-kpi--attention',
+                    'wp-kpi--alert' => $kpis->attention > 0,
+                    'wp-kpi--selected' => $statusFilter === TimePresenceStatusFilter::Attention,
+                ])>
+            <div class="wp-kpi-body">
+                <div class="wp-kpi-main">
+                    <p class="wp-kpi-kicker">{{ __('time.presence.kpi.attention') }}</p>
+                    <p class="wp-kpi-stats">
+                        <span class="wp-kpi-value wp-tabular">{{ $kpis->attention }}</span>
+                    </p>
+                </div>
+                <span class="wp-kpi-icon" aria-hidden="true">
+                    <x-wp-icon name="alert-triangle" />
+                </span>
             </div>
-            <span class="wp-kpi-icon" aria-hidden="true">
-                <x-wp-icon name="alert-triangle" />
-            </span>
-        </div>
-    </a>
+        </button>
+    @else
+        <a href="{{ route('time.alarms.index') }}"
+           @class([
+               'wp-kpi wp-kpi--attention',
+               'wp-kpi--alert' => $kpis->attention > 0,
+           ])>
+            <div class="wp-kpi-body">
+                <div class="wp-kpi-main">
+                    <p class="wp-kpi-kicker">{{ __('time.presence.kpi.attention') }}</p>
+                    <p class="wp-kpi-stats">
+                        <span class="wp-kpi-value wp-tabular">{{ $kpis->attention }}</span>
+                    </p>
+                </div>
+                <span class="wp-kpi-icon" aria-hidden="true">
+                    <x-wp-icon name="alert-triangle" />
+                </span>
+            </div>
+        </a>
+    @endif
 </div>
