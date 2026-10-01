@@ -63,7 +63,7 @@
                     "Photo et note facultatives à la clôture.",
                     "Statut et historique en gestion.",
                     "Les exécutants travaillent via le QR unité, ou Clock Point avec une visite GPS ouverte.",
-                    "En option : écran TFT sur un Clock Point avec QR tournant (association via code unique + confirmation). Heures d'allumage configurables (p. ex. crèche 06:00–19:00) ; en dehors, l'écran reste éteint."
+                    "En option : écran TFT sur un Clock Point avec QR tournant (association via code unique + confirmation). Heures d'allumage configurables (p. ex. crèche 06:00–19:00) ; en dehors, l'écran reste éteint. Sans téléphone : toucher l'écran, choisir son prénom par lettres et taper son PIN à 4 chiffres ; après deux erreurs, cet exécutant est bloqué une minute."
                 ]
             },
             {

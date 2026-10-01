@@ -54,4 +54,10 @@ return [
 
     /** Scherm stopt QR's na zoveel uur zonder succesvolle ping (default 7d). */
     'display_offline_block_hours' => (int) env('TIME_DISPLAY_OFFLINE_BLOCK_HOURS', 168),
+
+    /** Foute PIN-pogingen op het scherm vóór de worker kort geblokkeerd is. */
+    'display_pin_max_attempts' => max(1, (int) env('TIME_DISPLAY_PIN_MAX_ATTEMPTS', 2)),
+
+    /** Zolang (seconden) blijft die worker geblokkeerd na te veel foute PIN's. */
+    'display_pin_lockout_seconds' => max(10, (int) env('TIME_DISPLAY_PIN_LOCKOUT_SECONDS', 60)),
 ];

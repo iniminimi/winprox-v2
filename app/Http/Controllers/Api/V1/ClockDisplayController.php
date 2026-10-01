@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Actions\Time\ListClockDisplayWorkersAction;
+use App\Actions\Time\PinClockFromClockDisplayAction;
 use App\Actions\Time\RecordClockDisplayPingAction;
 use App\Actions\Time\SubmitClockDisplayClaimAction;
 use App\Enums\ClockDisplayClaimStatus;
+use App\Enums\ClockDisplayPinStatus;
+use App\Http\Requests\Api\V1\PinClockDisplayRequest;
 use App\Http\Requests\Api\V1\SubmitClockDisplayClaimRequest;
 use App\Models\ClockDisplayClaim;
 use App\Models\ClockPoint;
@@ -84,11 +88,9 @@ class ClockDisplayController extends Controller
 
     public function ping(Request $request, RecordClockDisplayPingAction $ping): JsonResponse
     {
-        /** @var ClockPoint|null $clockPoint */
-        $clockPoint = $request->attributes->get('clock_display_point');
-
-        if ($clockPoint === null || ! $clockPoint->hasLinkedDisplay()) {
-            return response()->json(['error' => 'unlinked'], 401);
+        $clockPoint = $this->linkedPoint($request);
+        if (! $clockPoint instanceof ClockPoint) {
+            return $clockPoint;
         }
 
         $clockPoint = $ping->handle($clockPoint);
@@ -99,6 +101,87 @@ class ClockDisplayController extends Controller
             'location_name' => $clockPoint->location?->localizedName(),
             ...$this->displayConfig($clockPoint),
         ]);
+    }
+
+    /**
+     * No-phone fallback: minimale workerlijst voor de lettertrie op het
+     * scherm — actief + PIN + locatiescope van dit Clock Point.
+     */
+    public function workers(
+        Request $request,
+        ListClockDisplayWorkersAction $listWorkers,
+    ): JsonResponse {
+        $clockPoint = $this->linkedPoint($request);
+        if (! $clockPoint instanceof ClockPoint) {
+            return $clockPoint;
+        }
+
+        return response()->json([
+            'workers' => $listWorkers->handle($clockPoint),
+        ]);
+    }
+
+    /**
+     * PIN-klok vanaf het scherm: worker_id + 4-cijferige PIN → in/uit.
+     * Server is autoriteit voor PIN-check, worker-lockout en audit.
+     */
+    public function pinClock(
+        PinClockDisplayRequest $request,
+        PinClockFromClockDisplayAction $pinClock,
+    ): JsonResponse {
+        $clockPoint = $this->linkedPoint($request);
+        if (! $clockPoint instanceof ClockPoint) {
+            return $clockPoint;
+        }
+
+        $validated = $request->validated();
+
+        try {
+            $result = $pinClock->handle(
+                $clockPoint,
+                (int) $validated['worker_id'],
+                (string) $validated['pin'],
+            );
+        } catch (InvalidArgumentException $e) {
+            // Race: shift-status of locatie/activiteit veranderde tussen
+            // trie-selectie en submit — device toont de fouttekst.
+            return response()->json(['error' => $e->getMessage()], 409);
+        }
+
+        return match ($result->status) {
+            ClockDisplayPinStatus::ClockedIn => response()->json([
+                'result' => 'in',
+                'worker' => $result->workerName,
+                'at' => $result->clockedAt,
+            ]),
+            ClockDisplayPinStatus::ClockedOut => response()->json([
+                'result' => 'out',
+                'worker' => $result->workerName,
+                'at' => $result->clockedAt,
+            ]),
+            ClockDisplayPinStatus::InvalidPin => response()->json(['error' => 'invalid_pin'], 401),
+            ClockDisplayPinStatus::WorkerLocked => response()->json([
+                'error' => 'worker_locked',
+                'retry_after' => $result->retryAfterSeconds,
+            ], 429),
+            ClockDisplayPinStatus::WorkerNotFound => response()->json(['error' => 'worker_not_found'], 404),
+        };
+    }
+
+    /**
+     * Gekoppeld Clock Point uit de device-middleware of 401 — het scherm
+     * wist dan zijn credentials en valt terug naar pairing-modus.
+     */
+    private function linkedPoint(Request $request): ClockPoint|JsonResponse
+    {
+        /** @var ClockPoint|null $clockPoint */
+        $clockPoint = $request->attributes->get('clock_display_point');
+
+        if ($clockPoint === null || ! $clockPoint->hasLinkedDisplay()) {
+            return response()->json(['error' => 'unlinked'], 401);
+        }
+
+        return $clockPoint;
     }
 
     /**

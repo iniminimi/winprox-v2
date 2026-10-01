@@ -45,6 +45,15 @@ Route::prefix('v1')->group(function () {
         ->middleware(['clock.display', 'throttle:60,1'])
         ->name('api.v1.time.clock-displays.ping');
 
+    // No-phone fallback: lettertrie-lijst + PIN-klok achter dezelfde
+    // wpclk_-token; PIN-verify + worker-lockout leven in de Action.
+    Route::get('time/clock-displays/workers', [ClockDisplayController::class, 'workers'])
+        ->middleware(['clock.display', 'throttle:30,1'])
+        ->name('api.v1.time.clock-displays.workers');
+    Route::post('time/clock-displays/pin-clock', [ClockDisplayController::class, 'pinClock'])
+        ->middleware(['clock.display', 'throttle:20,1'])
+        ->name('api.v1.time.clock-displays.pin-clock');
+
     Route::middleware(['auth:sanctum', SetTenantFromToken::class, 'api.access'])->group(function () {
         // Read endpoints (geen idempotency nodig)
         Route::get('issues', [IssueController::class, 'index'])

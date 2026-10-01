@@ -5,6 +5,7 @@ namespace App\Enums;
 enum ClockSource: string
 {
     case ClockPointQr = 'clock_point_qr';
+    case ClockDisplayPin = 'clock_display_pin';
     case Admin = 'admin';
     case Auto = 'auto';
     case Api = 'api';

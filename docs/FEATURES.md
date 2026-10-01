@@ -977,6 +977,17 @@ binnen ~30–90 s dood.
   amber banner na 24u offline, geen QR meer na 7 dagen. Dreigingsmodel "gestolen
   scherm" = revocatie; worker-gsm-binding (één gsm per uitvoerder) blijft de
   tweede fraude-laag.
+- **PIN-login (no-phone fallback):** tik op het QR-scherm → lettertrie op
+  voornaam → 4-cijferige PIN → in/uitklokken. `GET .../workers` levert enkel
+  actieve workers mét PIN binnen de locatiescope van het Clock Point
+  (zelfde regels als `canClockAt`); `POST .../pin-clock` verifieert server-side
+  (`ConfirmWorkerClockPinAction`), togglet in/uit via de gewone
+  ClockIn/ClockOut-actions met `ClockSource::ClockDisplayPin` en lockt de
+  **worker** na `time.display_pin_max_attempts` (2) foute pogingen voor
+  `time.display_pin_lockout_seconds` (60s) — per worker, niet per scherm.
+  Workers zonder PIN staan niet in de trie. Audit:
+  `worker.clock_display_pin_failed`, `worker.clock_display_pin_blocked_attempt`,
+  `worker.clock_display_punched`.
 - Audit: `clock_point.display_pairing_issued`, `display_claim_confirmed`,
   `display_claim_denied`, `display_unlinked`, `display_secret_rotated`.
 
