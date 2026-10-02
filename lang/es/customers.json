@@ -36,7 +36,7 @@
     "pin_hint": "Se necesita un pin GPS para iniciar una visita de trabajo en esta dirección."
   },
   "video_button": "Abrir el vídeo de instrucciones",
-  "video_modal_title": "Vídeo de instrucciones",
+  "video_title": "Vídeo de instrucciones",
   "imported": ":count cliente(s) y :locations dirección(es) de trabajo importados.",
   "import_file_label": "Archivo CSV o Excel (.xlsx)",
   "import_submit": "Importar",

@@ -819,6 +819,6 @@ it('toont de instructievideo-knop onderaan de klantenpagina en opent de videomod
         ->test(CustomersIndex::class)
         ->assertSee(__('customers.video_button'))
         ->call('openWorkAddressVideo')
-        ->assertSet('showWorkAddressVideoModal', true)
+        ->assertSet('showWorkAddressVideo', true)
         ->assertSee('video/nl/werkadres.mp4');
 });
