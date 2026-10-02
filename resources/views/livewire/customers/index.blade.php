@@ -146,23 +146,11 @@
     @php($workAddressVideoRel = is_file(public_path($workAddressVideoRel)) ? $workAddressVideoRel : 'video/nl/werkadres.mp4')
     @if ($checkmateMode && is_file(public_path($workAddressVideoRel)))
         <div class="wp-cluster wp-cluster--center">
-            <button type="button" class="btn btn--surface" wire:click="openWorkAddressVideo">
+            <a href="{{ asset($workAddressVideoRel) }}" target="_blank" rel="noopener noreferrer" class="btn btn--surface">
                 <x-wp-icon name="video" class="wp-icon" />
                 <span>{{ __('customers.video_button') }}</span>
-            </button>
+            </a>
         </div>
-        @if ($showWorkAddressVideo)
-            <div class="wp-card wp-card-pad wp-stack-tight">
-                <div class="wp-cluster">
-                    <p class="wp-section-title wp-grow">{{ __('customers.video_title') }}</p>
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="closeWorkAddressVideo">{{ __('common.button.close') }}</button>
-                </div>
-                @include('partials.wp-video-player', [
-                    'src' => asset($workAddressVideoRel),
-                    'title' => __('customers.video_title'),
-                ])
-            </div>
-        @endif
     @endif
 
     @if ($showCustomersCsvImportModal)

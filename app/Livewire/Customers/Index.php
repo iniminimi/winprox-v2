@@ -75,8 +75,6 @@ class Index extends Component
 
     public bool $showCustomersCsvImportModal = false;
 
-    public bool $showWorkAddressVideo = false;
-
     /** @var TemporaryUploadedFile|null */
     public $customersCsvImportFile = null;
 
@@ -348,16 +346,6 @@ class Index extends Component
         $this->showCustomersCsvImportModal = false;
         $this->customersCsvImportFile = null;
         $this->customersCsvImportErrors = [];
-    }
-
-    public function openWorkAddressVideo(): void
-    {
-        $this->showWorkAddressVideo = true;
-    }
-
-    public function closeWorkAddressVideo(): void
-    {
-        $this->showWorkAddressVideo = false;
     }
 
     public function importCustomersCsv(ImportCustomersAction $importCustomers): void

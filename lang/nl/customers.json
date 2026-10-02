@@ -36,7 +36,6 @@
     "pin_hint": "GPS-pin is nodig om op dit adres een werkbezoek te starten."
   },
   "video_button": "Open de instructievideo",
-  "video_title": "Instructievideo",
   "imported": ":count klant(en) en :locations werkadres(sen) geïmporteerd.",
   "import_file_label": "CSV- of Excel-bestand (.xlsx)",
   "import_submit": "Importeren",

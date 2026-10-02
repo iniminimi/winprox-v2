@@ -811,14 +811,13 @@ it('parst Google Maps-adresvarianten (land-suffix, bus, NL-postcode) en laat nie
         ->and(GoogleMapsAddressLine::tryParse(''))->toBeNull();
 });
 
-it('toont de instructievideo-knop onderaan de klantenpagina en opent de videomodal', function () {
+it('linkt onderaan de klantenpagina naar de instructievideo in een nieuw tabblad', function () {
     $tenant = checkmateTenant();
     $admin = User::factory()->admin()->for($tenant)->create();
 
     Livewire::actingAs($admin)
         ->test(CustomersIndex::class)
         ->assertSee(__('customers.video_button'))
-        ->call('openWorkAddressVideo')
-        ->assertSet('showWorkAddressVideo', true)
-        ->assertSee('video/nl/werkadres.mp4');
+        ->assertSee('video/nl/werkadres.mp4')
+        ->assertSee('target="_blank"', false);
 });
