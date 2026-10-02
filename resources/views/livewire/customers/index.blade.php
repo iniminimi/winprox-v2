@@ -70,10 +70,12 @@
                                 {{ trans_choice('customers.locations_count', $customerLocations->count(), ['count' => $customerLocations->count()]) }}
                                 @if ($showWorkStats)
                                     @php($stats = $workStats->get($customer->id))
-                                    · <a href="{{ route('customers.stats', $customer) }}">{{ trans_choice('customers.stats.visits', $stats?->visits ?? 0, ['count' => $stats?->visits ?? 0]) }}
-                                        · {{ \App\Support\Time\WorkDurationFormatter::format($stats?->minutes ?? 0) }}
-                                        · {{ trans_choice('customers.locations_count', $stats?->visitedLocations() ?? 0, ['count' => $stats?->visitedLocations() ?? 0]) }}</a>
-                                    · {{ $statsPeriodLabel }}
+                                    @if (($stats?->visits ?? 0) > 0)
+                                        · <a href="{{ route('customers.stats', $customer) }}">{{ trans_choice('customers.stats.visits', $stats->visits, ['count' => $stats->visits]) }}
+                                            · {{ \App\Support\Time\WorkDurationFormatter::format($stats->minutes) }}
+                                            · {{ trans_choice('customers.locations_count', $stats->visitedLocations(), ['count' => $stats->visitedLocations()]) }}</a>
+                                        · {{ $statsPeriodLabel }}
+                                    @endif
                                 @endif
                             </span>
                         </div>
