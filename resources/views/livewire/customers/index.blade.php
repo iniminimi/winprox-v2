@@ -249,7 +249,9 @@
 
                 <div class="wp-modal-body wp-stack">
                     <div class="wp-field">
-                        <label class="wp-label" for="locationFormName">{{ __('customers.location_form.name') }}</label>
+                        <x-wp-tooltip :text="__('customers.location_form.maps_tooltip')" wrap class="wp-tooltip--below">
+                            <label class="wp-label" for="locationFormName">{{ __('customers.location_form.name') }}</label>
+                        </x-wp-tooltip>
                         <div class="wp-row">
                             <input type="text" id="locationFormName" class="wp-input wp-grow" wire:model="locationFormName" autocomplete="off">
                             <a

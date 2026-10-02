@@ -27,6 +27,7 @@
     "name": "Nombre de la dirección de trabajo",
     "name_hint": "Opcional — por defecto se usa el nombre del cliente.",
     "maps_button": "Google Maps",
+    "maps_tooltip": "Escribe aquí el nombre y haz clic en Google Maps para encontrar la dirección.",
     "street": "Calle",
     "house_number": "N.º",
     "postal_code": "Código postal",

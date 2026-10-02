@@ -27,6 +27,7 @@
     "name": "Work address name",
     "name_hint": "Optional — defaults to the customer name.",
     "maps_button": "Google Maps",
+    "maps_tooltip": "Enter the name here and click Google Maps to find the address.",
     "street": "Street",
     "house_number": "No.",
     "postal_code": "Postal code",

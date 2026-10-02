@@ -27,6 +27,7 @@
     "name": "Naam werkadres",
     "name_hint": "Optioneel — anders wordt de klantnaam gebruikt.",
     "maps_button": "Google Maps",
+    "maps_tooltip": "Vul hier de naam in en klik op Google Maps om het adres te vinden.",
     "street": "Straat",
     "house_number": "Nr.",
     "postal_code": "Postcode",

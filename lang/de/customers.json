@@ -27,6 +27,7 @@
     "name": "Name der Arbeitsadresse",
     "name_hint": "Optional — standardmäßig wird der Kundenname verwendet.",
     "maps_button": "Google Maps",
+    "maps_tooltip": "Geben Sie hier den Namen ein und klicken Sie auf Google Maps, um die Adresse zu finden.",
     "street": "Straße",
     "house_number": "Nr.",
     "postal_code": "PLZ",
