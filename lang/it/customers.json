@@ -26,6 +26,7 @@
   "location_form": {
     "name": "Nome dell'indirizzo di lavoro",
     "name_hint": "Facoltativo — per impostazione predefinita viene usato il nome del cliente.",
+    "maps_button": "Google Maps",
     "street": "Via",
     "house_number": "N.",
     "postal_code": "CAP",

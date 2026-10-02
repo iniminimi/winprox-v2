@@ -239,86 +239,89 @@
             'searchProperties' => ['locationFormName', 'locationFormStreet', 'locationFormHouseNumber', 'locationFormPostalCode', 'locationFormCity'],
         ])
         <x-wp-modal closeMethod="closeLocationModal" aria-labelledby="customer-location-modal-title">
-            <form wire:submit="saveLocation" class="wp-card wp-card-pad wp-stack wp-modal-card">
-                <div class="wp-modal-head">
-                    <h2 id="customer-location-modal-title" class="wp-h2">
+            <form wire:submit="saveLocation" class="wp-card wp-modal-card wp-modal-card--form">
+                <div class="wp-modal-head wp-modal-head--bordered">
+                    <h2 id="customer-location-modal-title" class="wp-section-title">
                         {{ $editingLocationId ? __('customers.location_edit_title') : __('customers.location_create_title') }}
                     </h2>
                     <x-wp-modal-close wire:click="closeLocationModal" />
                 </div>
 
-                <div class="wp-field">
-                    <label class="wp-label" for="locationFormName">{{ __('customers.location_form.name') }}</label>
-                    <div class="wp-cluster">
-                        <input type="text" id="locationFormName" class="wp-input wp-grow" wire:model="locationFormName" autocomplete="off">
-                        <a
-                            class="btn btn--ghost"
-                            href="https://www.google.com/maps"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            x-data
-                            :href="window.wpGoogleMapsUrlFor($wire, @js($locationGpsMaps))"
-                        >{{ __('locations.fields.maps_open') }}</a>
+                <div class="wp-modal-body wp-stack">
+                    <div class="wp-field">
+                        <div class="wp-row">
+                            <label class="wp-label" for="locationFormName">{{ __('customers.location_form.name') }}</label>
+                            <a
+                                class="btn btn--ghost btn--sm"
+                                href="https://www.google.com/maps"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                x-data
+                                :href="window.wpGoogleMapsUrlFor($wire, @js($locationGpsMaps))"
+                            >{{ __('customers.location_form.maps_button') }}</a>
+                        </div>
+                        <input type="text" id="locationFormName" class="wp-input" wire:model="locationFormName" autocomplete="off">
+                        <p class="wp-hint">{{ __('customers.location_form.name_hint') }}</p>
+                        @error('locationFormName') <p class="wp-error">{{ $message }}</p> @enderror
+                        @error('name') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
-                    <p class="wp-hint">{{ __('customers.location_form.name_hint') }}</p>
-                    @error('locationFormName') <p class="wp-error">{{ $message }}</p> @enderror
-                    @error('name') <p class="wp-error">{{ $message }}</p> @enderror
+
+                    <div class="wp-form-grid-2">
+                        <div class="wp-field">
+                            <x-wp-tooltip :text="__('customers.location_form.address_paste_hint')" wrap>
+                                <label class="wp-label" for="locationFormStreet">{{ __('customers.location_form.street') }}</label>
+                            </x-wp-tooltip>
+                            <input type="text" id="locationFormStreet" class="wp-input" wire:model="locationFormStreet" autocomplete="off" @paste="$wire.applyLocationAddressPaste($event.clipboardData.getData('text'))">
+                            @error('locationFormStreet') <p class="wp-error">{{ $message }}</p> @enderror
+                            @error('street') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                        <div class="wp-field">
+                            <label class="wp-label" for="locationFormHouseNumber">{{ __('customers.location_form.house_number') }}</label>
+                            <input type="text" id="locationFormHouseNumber" class="wp-input" wire:model="locationFormHouseNumber" autocomplete="off" @paste="$wire.applyLocationAddressPaste($event.clipboardData.getData('text'))">
+                            @error('house_number') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                    </div>
+
+                    <div class="wp-form-grid-2">
+                        <div class="wp-field">
+                            <label class="wp-label" for="locationFormPostalCode">{{ __('customers.location_form.postal_code') }}</label>
+                            <input type="text" id="locationFormPostalCode" class="wp-input" wire:model="locationFormPostalCode" autocomplete="off" @paste="$wire.applyLocationAddressPaste($event.clipboardData.getData('text'))">
+                            @error('postal_code') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                        <div class="wp-field">
+                            <label class="wp-label" for="locationFormCity">{{ __('customers.location_form.city') }}</label>
+                            <input type="text" id="locationFormCity" class="wp-input" wire:model="locationFormCity" autocomplete="off" @paste="$wire.applyLocationAddressPaste($event.clipboardData.getData('text'))">
+                            @error('city') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                    </div>
+
+                    <div class="wp-form-grid-2">
+                        <div class="wp-field wp-field--code">
+                            <label class="wp-label" for="locationFormCountryCode">{{ __('locations.fields.country_code') }}</label>
+                            <input type="text" id="locationFormCountryCode" class="wp-input" wire:model="locationFormCountryCode" maxlength="2" autocomplete="off">
+                            @error('country_code') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                        @if ($locationDdtVisible)
+                            <div class="wp-field">
+                                <x-wp-tooltip :text="__('locations.fields.ddt_tooltip')" wrap>
+                                    <label class="wp-label" for="locationFormDdt">{{ __('locations.fields.ddt') }}</label>
+                                </x-wp-tooltip>
+                                <input type="text" id="locationFormDdt" class="wp-input" wire:model="locationFormDdt" maxlength="13" autocomplete="off">
+                                <p class="wp-hint">{{ __('locations.fields.ddt_hint') }}</p>
+                                @error('contractual_relationship_reference') <p class="wp-error">{{ $message }}</p> @enderror
+                            </div>
+                        @endif
+                    </div>
+
+                    @include('partials.wp-gps-coords-fields', $locationGpsMaps + [
+                        'applyMethod' => 'applyLocationGpsPair',
+                        'hintKey' => 'customers.location_form.pin_hint',
+                        'latError' => 'latitude',
+                        'lngError' => 'longitude',
+                    ])
                 </div>
 
-                <div class="wp-form-grid-2">
-                    <div class="wp-field">
-                        <x-wp-tooltip :text="__('customers.location_form.address_paste_hint')" wrap>
-                            <label class="wp-label" for="locationFormStreet">{{ __('customers.location_form.street') }}</label>
-                        </x-wp-tooltip>
-                        <input type="text" id="locationFormStreet" class="wp-input" wire:model="locationFormStreet" autocomplete="off" @paste="$wire.applyLocationAddressPaste($event.clipboardData.getData('text'))">
-                        @error('locationFormStreet') <p class="wp-error">{{ $message }}</p> @enderror
-                        @error('street') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                    <div class="wp-field">
-                        <label class="wp-label" for="locationFormHouseNumber">{{ __('customers.location_form.house_number') }}</label>
-                        <input type="text" id="locationFormHouseNumber" class="wp-input" wire:model="locationFormHouseNumber" autocomplete="off" @paste="$wire.applyLocationAddressPaste($event.clipboardData.getData('text'))">
-                        @error('house_number') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                </div>
-
-                <div class="wp-form-grid-2">
-                    <div class="wp-field">
-                        <label class="wp-label" for="locationFormPostalCode">{{ __('customers.location_form.postal_code') }}</label>
-                        <input type="text" id="locationFormPostalCode" class="wp-input" wire:model="locationFormPostalCode" autocomplete="off" @paste="$wire.applyLocationAddressPaste($event.clipboardData.getData('text'))">
-                        @error('postal_code') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                    <div class="wp-field">
-                        <label class="wp-label" for="locationFormCity">{{ __('customers.location_form.city') }}</label>
-                        <input type="text" id="locationFormCity" class="wp-input" wire:model="locationFormCity" autocomplete="off" @paste="$wire.applyLocationAddressPaste($event.clipboardData.getData('text'))">
-                        @error('city') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                </div>
-
-                <div class="wp-field">
-                    <label class="wp-label" for="locationFormCountryCode">{{ __('locations.fields.country_code') }}</label>
-                    <input type="text" id="locationFormCountryCode" class="wp-input" wire:model="locationFormCountryCode" maxlength="2" autocomplete="off">
-                    @error('country_code') <p class="wp-error">{{ $message }}</p> @enderror
-                </div>
-
-                @if ($locationDdtVisible)
-                    <div class="wp-field">
-                        <x-wp-tooltip :text="__('locations.fields.ddt_tooltip')" wrap>
-                            <label class="wp-label" for="locationFormDdt">{{ __('locations.fields.ddt') }}</label>
-                        </x-wp-tooltip>
-                        <input type="text" id="locationFormDdt" class="wp-input" wire:model="locationFormDdt" maxlength="13" autocomplete="off">
-                        <p class="wp-hint">{{ __('locations.fields.ddt_hint') }}</p>
-                        @error('contractual_relationship_reference') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                @endif
-
-                @include('partials.wp-gps-coords-fields', $locationGpsMaps + [
-                    'applyMethod' => 'applyLocationGpsPair',
-                    'hintKey' => 'customers.location_form.pin_hint',
-                    'latError' => 'latitude',
-                    'lngError' => 'longitude',
-                ])
-
-                <div class="wp-cluster">
+                <div class="wp-modal-foot">
                     <button type="button" class="btn btn--ghost" wire:click="closeLocationModal">{{ __('common.button.cancel') }}</button>
                     <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
                 </div>

@@ -26,6 +26,7 @@
   "location_form": {
     "name": "Name der Arbeitsadresse",
     "name_hint": "Optional — standardmäßig wird der Kundenname verwendet.",
+    "maps_button": "Google Maps",
     "street": "Straße",
     "house_number": "Nr.",
     "postal_code": "PLZ",

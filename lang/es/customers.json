@@ -26,6 +26,7 @@
   "location_form": {
     "name": "Nombre de la dirección de trabajo",
     "name_hint": "Opcional — por defecto se usa el nombre del cliente.",
+    "maps_button": "Google Maps",
     "street": "Calle",
     "house_number": "N.º",
     "postal_code": "Código postal",
