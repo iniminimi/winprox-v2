@@ -18,9 +18,11 @@
     max-width: 18rem;
 }
 
-/* Klein codeveld (bv. ISO-landcode): niet full-width. */
+/* Klein codeveld (bv. ISO-landcode): niet full-width; in een gridrij top-uitgelijnd
+   zodat de input gelijk staat met het buurveld (dat hint/error onder de input heeft). */
 .wp-field--code {
     max-width: 7rem;
+    align-self: start;
 }
 
 /* Twee formuliervelden naast elkaar (labels + inputs uitgelijnd). */

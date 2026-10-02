@@ -249,10 +249,11 @@
 
                 <div class="wp-modal-body wp-stack">
                     <div class="wp-field">
+                        <label class="wp-label" for="locationFormName">{{ __('customers.location_form.name') }}</label>
                         <div class="wp-row">
-                            <label class="wp-label" for="locationFormName">{{ __('customers.location_form.name') }}</label>
+                            <input type="text" id="locationFormName" class="wp-input wp-grow" wire:model="locationFormName" autocomplete="off">
                             <a
-                                class="btn btn--ghost btn--sm"
+                                class="btn btn--ghost"
                                 href="https://www.google.com/maps"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -260,7 +261,6 @@
                                 :href="window.wpGoogleMapsUrlFor($wire, @js($locationGpsMaps))"
                             >{{ __('customers.location_form.maps_button') }}</a>
                         </div>
-                        <input type="text" id="locationFormName" class="wp-input" wire:model="locationFormName" autocomplete="off">
                         <p class="wp-hint">{{ __('customers.location_form.name_hint') }}</p>
                         @error('locationFormName') <p class="wp-error">{{ $message }}</p> @enderror
                         @error('name') <p class="wp-error">{{ $message }}</p> @enderror
