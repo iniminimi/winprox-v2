@@ -35,6 +35,8 @@
     "address_paste_hint": "Suggerimento: incolla un indirizzo — via, numero, CAP e località vengono compilati automaticamente.",
     "pin_hint": "È necessario un pin GPS per avviare una visita di lavoro a questo indirizzo."
   },
+  "video_button": "Apri il video di istruzioni",
+  "video_modal_title": "Video di istruzioni",
   "imported": ":count cliente/i e :locations indirizzo/i di lavoro importati.",
   "import_file_label": "File CSV o Excel (.xlsx)",
   "import_submit": "Importa",

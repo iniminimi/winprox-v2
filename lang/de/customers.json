@@ -35,6 +35,8 @@
     "address_paste_hint": "Tipp: Adresse einfügen — Straße, Nummer, PLZ und Ort werden automatisch ausgefüllt.",
     "pin_hint": "Ein GPS-Pin ist erforderlich, um an dieser Adresse einen Arbeitsbesuch zu starten."
   },
+  "video_button": "Anleitungsvideo öffnen",
+  "video_modal_title": "Anleitungsvideo",
   "imported": ":count Kunde(n) und :locations Arbeitsadresse(n) importiert.",
   "import_file_label": "CSV- oder Excel-Datei (.xlsx)",
   "import_submit": "Importieren",

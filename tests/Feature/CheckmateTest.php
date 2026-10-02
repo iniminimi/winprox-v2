@@ -810,3 +810,15 @@ it('parst Google Maps-adresvarianten (land-suffix, bus, NL-postcode) en laat nie
         ->and(GoogleMapsAddressLine::tryParse('51.336167, 3.236306'))->toBeNull()
         ->and(GoogleMapsAddressLine::tryParse(''))->toBeNull();
 });
+
+it('toont de instructievideo-knop onderaan de klantenpagina en opent de videomodal', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    Livewire::actingAs($admin)
+        ->test(CustomersIndex::class)
+        ->assertSee(__('customers.video_button'))
+        ->call('openWorkAddressVideo')
+        ->assertSet('showWorkAddressVideoModal', true)
+        ->assertSee('video/nl/werkadres.mp4');
+});

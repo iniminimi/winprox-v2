@@ -35,6 +35,8 @@
     "address_paste_hint": "Astuce : collez une adresse — rue, numéro, code postal et localité sont remplis automatiquement.",
     "pin_hint": "Un pin GPS est requis pour démarrer une visite de travail à cette adresse."
   },
+  "video_button": "Ouvrir la vidéo d'instruction",
+  "video_modal_title": "Vidéo d'instruction",
   "imported": ":count client(s) et :locations adresse(s) de travail importés.",
   "import_file_label": "Fichier CSV ou Excel (.xlsx)",
   "import_submit": "Importer",
