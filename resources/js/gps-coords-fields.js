@@ -5,6 +5,36 @@
 
 const PAIR_PATTERN = /^(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)$/;
 
+function mapsSearchUrl(query) {
+    const trimmed = String(query ?? '').trim();
+    if (trimmed === '') {
+        return 'https://www.google.com/maps';
+    }
+
+    return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(trimmed);
+}
+
+function googleMapsUrlFor($wire, config = {}) {
+    const lat = String($wire.get(config.latProperty) ?? '').trim();
+    const lng = String($wire.get(config.lngProperty) ?? '').trim();
+    if (lat !== '' && lng !== '') {
+        return mapsSearchUrl(`${lat},${lng}`);
+    }
+
+    const searchProperties = Array.isArray(config.searchProperties) ? config.searchProperties : [];
+    const parts = searchProperties
+        .map((name) => String($wire.get(name) ?? '').trim())
+        .filter((value) => value !== '');
+    const searchQuery = String(config.searchQuery ?? '');
+    if (searchQuery !== '') {
+        parts.unshift(searchQuery);
+    }
+
+    return mapsSearchUrl(parts.join(' '));
+}
+
+window.wpGoogleMapsUrlFor = googleMapsUrlFor;
+
 function looksLikeGpsPair(text) {
     const normalized = String(text ?? '').trim().replace(/\s+/g, ' ');
     if (!PAIR_PATTERN.test(normalized)) {
@@ -60,25 +90,7 @@ function registerAlpineComponent() {
         },
 
         mapsUrl() {
-            const lat = String(this.$wire.get(this.latProperty) ?? '').trim();
-            const lng = String(this.$wire.get(this.lngProperty) ?? '').trim();
-            if (lat !== '' && lng !== '') {
-                return 'https://www.google.com/maps/search/?api=1&query='
-                    + encodeURIComponent(`${lat},${lng}`);
-            }
-
-            const parts = this.searchProperties
-                .map((name) => String(this.$wire.get(name) ?? '').trim())
-                .filter((value) => value !== '');
-            if (this.searchQuery !== '') {
-                parts.unshift(this.searchQuery);
-            }
-            const query = parts.join(' ').trim();
-            if (query !== '') {
-                return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(query);
-            }
-
-            return 'https://www.google.com/maps';
+            return googleMapsUrlFor(this.$wire, this);
         },
 
         markMapsOpened() {

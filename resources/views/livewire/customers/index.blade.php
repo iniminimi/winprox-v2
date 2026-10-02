@@ -233,6 +233,11 @@
     @endif
 
     @if ($showLocationModal)
+        @php($locationGpsMaps = [
+            'latProperty' => 'locationFormLatitude',
+            'lngProperty' => 'locationFormLongitude',
+            'searchProperties' => ['locationFormName', 'locationFormStreet', 'locationFormHouseNumber', 'locationFormPostalCode', 'locationFormCity'],
+        ])
         <x-wp-modal closeMethod="closeLocationModal" aria-labelledby="customer-location-modal-title">
             <form wire:submit="saveLocation" class="wp-card wp-card-pad wp-stack wp-modal-card">
                 <div class="wp-modal-head">
@@ -244,7 +249,17 @@
 
                 <div class="wp-field">
                     <label class="wp-label" for="locationFormName">{{ __('customers.location_form.name') }}</label>
-                    <input type="text" id="locationFormName" class="wp-input" wire:model="locationFormName" autocomplete="off">
+                    <div class="wp-cluster">
+                        <input type="text" id="locationFormName" class="wp-input wp-grow" wire:model="locationFormName" autocomplete="off">
+                        <a
+                            class="btn btn--ghost"
+                            href="https://www.google.com/maps"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            x-data
+                            :href="window.wpGoogleMapsUrlFor($wire, @js($locationGpsMaps))"
+                        >{{ __('locations.fields.maps_open') }}</a>
+                    </div>
                     <p class="wp-hint">{{ __('customers.location_form.name_hint') }}</p>
                     @error('locationFormName') <p class="wp-error">{{ $message }}</p> @enderror
                     @error('name') <p class="wp-error">{{ $message }}</p> @enderror
@@ -296,11 +311,8 @@
                     </div>
                 @endif
 
-                @include('partials.wp-gps-coords-fields', [
-                    'latProperty' => 'locationFormLatitude',
-                    'lngProperty' => 'locationFormLongitude',
+                @include('partials.wp-gps-coords-fields', $locationGpsMaps + [
                     'applyMethod' => 'applyLocationGpsPair',
-                    'searchProperties' => ['locationFormStreet', 'locationFormHouseNumber', 'locationFormPostalCode', 'locationFormCity'],
                     'hintKey' => 'customers.location_form.pin_hint',
                     'latError' => 'latitude',
                     'lngError' => 'longitude',

@@ -724,6 +724,7 @@ it('maakt een werkadres met DDT aan via /klanten', function () {
     Livewire::actingAs($admin)
         ->test(CustomersIndex::class)
         ->call('openLocationCreate', $customer->id)
+        ->assertSee('wpGoogleMapsUrlFor', false)
         ->set('locationFormStreet', 'Kerkstraat')
         ->set('locationFormPostalCode', '2000')
         ->set('locationFormCity', 'Antwerpen')
