@@ -767,7 +767,7 @@ it('blokkeert een verlopen QR-token, logt de poging en toont de foutkaart', func
         ->exists())->toBeTrue();
 });
 
-it('toont bij geblokkeerde scans welk clock point en welke oorzaak', function () {
+it('toont alleen scans van een vorige QR-code', function () {
     [$tenant, $admin] = timeTenantWithAdmin();
     $clockPoint = ClockPoint::factory()->create([
         'tenant_id' => $tenant->id,
@@ -788,11 +788,9 @@ it('toont bij geblokkeerde scans welk clock point en welke oorzaak', function ()
 
     Livewire::actingAs($admin)
         ->test(ClockPointsIndex::class)
-        ->assertSee(__('time.clock_points.qr.blocked_attempts', ['count' => 2]))
-        ->assertSee('Poort Noord')
-        ->assertSee(__('time.clock_points.qr.blocked_attempts_kinds.sticker'))
-        ->assertSee(__('time.clock_points.qr.blocked_attempts_kinds.display'))
-        ->assertSee(__('time.clock_points.qr.blocked_attempts_action'));
+        ->assertSee('Poort Noord — the previous QR code was scanned once more, last ')
+        ->assertDontSee('scanned 2 more times')
+        ->assertDontSee('blocked QR scan');
 });
 
 it('toont de QR-foutkaart voor een onbekend clock-point-token', function () {

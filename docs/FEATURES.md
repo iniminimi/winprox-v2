@@ -953,6 +953,9 @@ binnen ~30–90 s dood.
   sleutel; `dyn` = 40 hex van `HMAC-SHA256(display_secret, "wpx:<unix-venster>")`.
   Resolver accepteert het huidige venster ±1; falende dyn → `blocked` + audit
   `clock_point.qr_blocked` (zelfde log als verlopen sticker-tokens). Geen DB-rij per rotatie.
+  Clock Points toont daarvan alleen een vorige sticker-QR waarvan de grace voorbij is:
+  één zin met clock point, aantal en laatste moment (7 dagen). Verlopen schermcodes
+  blijven in het auditlog.
 - **Koppelen** (beheer, Clock Point → **Scherm**, route `time.clock-displays.pair` —
   buiten de Checkmate-whitelist): admin genereert eenmalige code `XXXX-XXXX`
   (Crockford base32, 10 min geldig, max 1 actieve code/punt) → device tikt die in →

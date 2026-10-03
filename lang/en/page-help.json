@@ -1408,8 +1408,8 @@
           "text": "Under <strong>QR rotation</strong> you set an interval (months) and renew the QR per Clock Point (lost sticker or suspected misuse). The system recommends renewal at a random moment within that interval. The old code still works for a few days (grace period), then it is blocked. Until you renew, clocking in still works — the interval is a recommendation, not an automatic swap."
         },
         {
-          "label": "Blocked scans",
-          "text": "When someone uses an expired QR, access is denied and logged. A warning appears here if there were blocked attempts in the last 7 days."
+          "label": "Previous QR code",
+          "text": "After renewal the previous QR still works for a few days. After that a scan is refused. A line here means that previous code was scanned again in the last 7 days."
         },
         {
           "label": "Active / inactive",

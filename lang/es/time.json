@@ -255,16 +255,8 @@
             "rotation_renew_clock_point": "Clock Point",
             "rotation_months": "Intervalo (meses)",
             "rotation_saved": "Ajuste de rotación QR guardado.",
-            "blocked_attempts": ":count escaneo(s) QR bloqueado(s) en los últimos 7 días.",
-            "blocked_attempts_explain": "El escaneo se rechazó porque el código QR ya no es válido — una pegatina antigua tras la renovación, o una foto caducada del QR de la pantalla.",
-            "blocked_attempts_row": ":name — :count× · :kinds · último :when",
-            "blocked_attempts_action": "¿Sigue colgada una pegatina antigua? Imprime o envía el nuevo QR con el botón QR del Clock Point.",
+            "blocked_attempts_row": "{1} :name — el QR anterior se ha escaneado 1 vez más, la última vez :when.|[2,*] :name — el QR anterior se ha escaneado :count veces más, la última vez :when.",
             "blocked_attempts_unknown_point": "Clock Point eliminado",
-            "blocked_attempts_kinds": {
-                "sticker": "pegatina antigua",
-                "display": "foto de la pantalla",
-                "unknown": "código no válido"
-            },
             "pack": {
                 "unavailable": "La exportación QR no está disponible en este servidor.",
                 "generating": "Creando hoja de impresión…",

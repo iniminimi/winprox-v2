@@ -1408,8 +1408,8 @@
           "text": "Unter <strong>QR-Rotation</strong> stellen Sie ein Intervall ein (Monate) und erneuern den QR pro Clock Point (verlorener Aufkleber oder vermuteter Missbrauch). Das System empfiehlt die Erneuerung zu einem zufälligen Zeitpunkt in diesem Intervall. Der alte Code funktioniert noch einige Tage (Grace-Periode), danach wird er gesperrt. Bis zur Erneuerung funktioniert das Einstempeln — das Intervall ist eine Empfehlung, kein automatischer Wechsel."
         },
         {
-          "label": "Gesperrte Scans",
-          "text": "Wenn jemand einen abgelaufenen QR verwendet, wird das abgelehnt und protokolliert. Eine Warnung erscheint hier, wenn es in den letzten 7 Tagen gesperrte Versuche gab."
+          "label": "Vorheriger QR-Code",
+          "text": "Nach der Erneuerung funktioniert der vorherige QR noch einige Tage. Danach wird ein Scan abgelehnt. Eine Zeile hier bedeutet, dass dieser vorherige Code in den letzten 7 Tagen noch gescannt wurde."
         },
         {
           "label": "Aktiv / inaktiv",

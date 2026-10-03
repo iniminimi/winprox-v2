@@ -18,19 +18,15 @@
         <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
     @endif
 
-    @if ($blockedQrAttempts > 0)
+    @if ($blockedQrSummary !== [])
         <div class="wp-flash wp-flash--danger wp-stack-tight">
-            <p>{{ __('time.clock_points.qr.blocked_attempts', ['count' => $blockedQrAttempts]) }}</p>
-            <p>{{ __('time.clock_points.qr.blocked_attempts_explain') }}</p>
             @foreach ($blockedQrSummary as $row)
-                <p wire:key="blocked-qr-{{ $loop->index }}">{{ __('time.clock_points.qr.blocked_attempts_row', [
+                <p wire:key="blocked-qr-{{ $loop->index }}">{{ trans_choice('time.clock_points.qr.blocked_attempts_row', $row['count'], [
                     'name' => $row['name'],
                     'count' => $row['count'],
-                    'kinds' => $row['kinds_label'],
                     'when' => $row['last_at']->diffForHumans(),
                 ]) }}</p>
             @endforeach
-            <p>{{ __('time.clock_points.qr.blocked_attempts_action') }}</p>
         </div>
     @endif
 

@@ -1408,8 +1408,8 @@
           "text": "Onder <strong>QR-rotatie</strong> stelt u een interval in (maanden) én vernieuwt u de QR per Clock Point (verloren sticker of vermoed misbruik). Het systeem beveelt op een willekeurig moment binnen dat interval aan om de sticker te vernieuwen. De oude code werkt nog enkele dagen (grace-periode), daarna wordt die geblokkeerd. Tot u vernieuwt blijft inklokken gewoon werken — het interval is een aanbeveling, geen automatische wissel."
         },
         {
-          "label": "Geblokkeerde scans",
-          "text": "Wanneer iemand een verlopen QR gebruikt, wordt dat geweigerd en gelogd. Een waarschuwing verschijnt hier als er in de laatste 7 dagen geblokkeerde pogingen waren."
+          "label": "Vorige QR-code",
+          "text": "Na vernieuwen werkt de vorige QR nog enkele dagen. Daarna wordt een scan geweigerd. Staat hier een regel, dan is die vorige code in de laatste 7 dagen nog gescand."
         },
         {
           "label": "Actief / inactief",

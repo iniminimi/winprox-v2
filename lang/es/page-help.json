@@ -1408,8 +1408,8 @@
           "text": "En <strong>Rotación QR</strong> configura un intervalo (meses) y renueva el QR por Clock Point (pegatina perdida o sospecha de uso indebido). El sistema recomienda la renovación en un momento aleatorio de ese intervalo. El código antiguo sigue funcionando unos días (periodo de gracia) y luego se bloquea. Hasta renovar, el fichaje sigue — el intervalo es una recomendación, no un cambio automático."
         },
         {
-          "label": "Escaneos bloqueados",
-          "text": "Cuando alguien usa un QR caducado, se rechaza y se registra. Aparece una advertencia aquí si hubo intentos bloqueados en los últimos 7 días."
+          "label": "QR anterior",
+          "text": "Tras renovarlo, el QR anterior sigue funcionando unos días. Después se rechaza el escaneo. Una línea aquí significa que ese código anterior se ha escaneado de nuevo en los últimos 7 días."
         },
         {
           "label": "Activo / inactivo",

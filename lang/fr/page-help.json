@@ -1416,8 +1416,8 @@
           "text": "Sous <strong>Rotation QR</strong> vous définissez un intervalle (mois) et renouvelez le QR par Clock Point (autocollant perdu ou suspicion d’abus). Le système recommande le renouvellement à un moment aléatoire dans cet intervalle. L’ancien code fonctionne encore quelques jours (période de grâce), puis il est bloqué. Jusqu’au renouvellement, le pointage continue — l’intervalle est une recommandation, pas un changement automatique."
         },
         {
-          "label": "Scans bloqués",
-          "text": "Lorsque quelqu'un utilise un QR expiré, c'est refusé et journalisé. Un avertissement apparaît ici s'il y a eu des tentatives bloquées au cours des 7 derniers jours."
+          "label": "Ancien code QR",
+          "text": "Après renouvellement, l’ancien QR fonctionne encore quelques jours. Ensuite un scan est refusé. Une ligne ici signifie que cet ancien code a encore été scanné au cours des 7 derniers jours."
         },
         {
           "label": "Actif / inactif",

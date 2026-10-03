@@ -1408,8 +1408,8 @@
           "text": "In <strong>Rotazione QR</strong> imposti un intervallo (mesi) e rinnovi il QR per Clock Point (adesivo perso o sospetto uso improprio). Il sistema consiglia il rinnovo in un momento casuale di quell’intervallo. Il vecchio codice funziona ancora per alcuni giorni (periodo di grazia), poi viene bloccato. Fino al rinnovo la timbratura continua — l’intervallo è un consiglio, non un cambio automatico."
         },
         {
-          "label": "Scansioni bloccate",
-          "text": "Quando qualcuno usa un QR scaduto, viene rifiutato e registrato. Compare un avviso qui se ci sono stati tentativi bloccati negli ultimi 7 giorni."
+          "label": "QR precedente",
+          "text": "Dopo il rinnovo il QR precedente funziona ancora per alcuni giorni. Poi la scansione viene rifiutata. Una riga qui significa che quel codice precedente è stato scansionato di nuovo negli ultimi 7 giorni."
         },
         {
           "label": "Attivo / inattivo",

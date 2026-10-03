@@ -255,16 +255,8 @@
             "rotation_renew_clock_point": "Clock Point",
             "rotation_months": "Intervall (Monate)",
             "rotation_saved": "QR-Rotations-Einstellung gespeichert.",
-            "blocked_attempts": ":count blockierte QR-Scan(s) in den letzten 7 Tagen.",
-            "blocked_attempts_explain": "Der Scan wurde abgelehnt, weil der QR-Code nicht mehr gültig ist — ein alter Aufkleber nach der Erneuerung oder ein abgelaufenes Foto der Display-QR.",
-            "blocked_attempts_row": ":name — :count× · :kinds · zuletzt :when",
-            "blocked_attempts_action": "Hängt noch ein alter Aufkleber? Drucken oder mailen Sie den neuen QR über die QR-Schaltfläche beim Clock Point.",
+            "blocked_attempts_row": "{1} :name — der vorherige QR-Code wurde noch 1-mal gescannt, zuletzt :when.|[2,*] :name — der vorherige QR-Code wurde noch :count-mal gescannt, zuletzt :when.",
             "blocked_attempts_unknown_point": "Gelöschter Clock Point",
-            "blocked_attempts_kinds": {
-                "sticker": "alter Aufkleber",
-                "display": "Display-Foto",
-                "unknown": "ungültiger Code"
-            },
             "pack": {
                 "unavailable": "QR-Export ist auf diesem Server nicht verfügbar.",
                 "generating": "Druckblatt wird erstellt…",

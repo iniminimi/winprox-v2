@@ -255,16 +255,8 @@
             "rotation_renew_clock_point": "Clock Point",
             "rotation_months": "Intervalle (mois)",
             "rotation_saved": "Paramètre de rotation QR enregistré.",
-            "blocked_attempts": ":count scan(s) QR bloqué(s) au cours des 7 derniers jours.",
-            "blocked_attempts_explain": "Le scan a été refusé car le QR n'est plus valide — un ancien autocollant après renouvellement, ou une photo expirée du QR de l'écran.",
-            "blocked_attempts_row": ":name — :count× · :kinds · dernier :when",
-            "blocked_attempts_action": "Un ancien autocollant est encore affiché ? Imprimez ou envoyez le nouveau QR via le bouton QR du Clock Point.",
+            "blocked_attempts_row": "{1} :name — l’ancien code QR a encore été scanné 1 fois, la dernière fois :when.|[2,*] :name — l’ancien code QR a encore été scanné :count fois, la dernière fois :when.",
             "blocked_attempts_unknown_point": "Clock Point supprimé",
-            "blocked_attempts_kinds": {
-                "sticker": "ancien autocollant",
-                "display": "photo de l'écran",
-                "unknown": "code invalide"
-            },
             "pack": {
                 "unavailable": "L'export QR n'est pas disponible sur ce serveur.",
                 "generating": "Création de la feuille d'impression…",

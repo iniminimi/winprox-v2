@@ -18,7 +18,6 @@ use App\Models\ClockPoint;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Support\Checkmate\CheckmateMode;
-use App\Support\Time\ClockDisplayQr;
 use App\Support\Qr\QrStickerSheetTemplate;
 use App\Support\Tenancy;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -258,7 +257,6 @@ class ClockPointsIndex extends Component
             'checkmateMode' => CheckmateMode::isActive(Tenant::query()->find($tenantId)),
             'selectedRenewClockPoint' => $clockPoints->firstWhere('id', $this->renewQrClockPointId),
             'locations' => Location::query()->where('is_active', true)->orderBy('name')->get(),
-            'blockedQrAttempts' => $blockedQrLogs->count(),
             'blockedQrSummary' => $this->summarizeBlockedQrAttempts($blockedQrLogs, $clockPoints),
             'qrPackClockPoint' => $qrPackClockPoint,
             'qrPackTemplates' => QrStickerSheetTemplate::printableDownloadCases(),
@@ -278,38 +276,21 @@ class ClockPointsIndex extends Component
     /**
      * @param  \Illuminate\Support\Collection<int, AuditLog>  $blockedQrLogs
      * @param  \Illuminate\Support\Collection<int, ClockPoint>  $clockPoints
-     * @return list<array{name: string, count: int, kinds_label: string, last_at: \Illuminate\Support\Carbon}>
+     * @return list<array{name: string, count: int, last_at: \Illuminate\Support\Carbon}>
      */
     private function summarizeBlockedQrAttempts($blockedQrLogs, $clockPoints): array
     {
         return $blockedQrLogs
+            ->filter(fn (AuditLog $log) => (($log->payload ?? [])['history_token_id'] ?? null) !== null)
             ->groupBy(fn (AuditLog $log) => (int) (($log->payload ?? [])['clock_point_id'] ?? $log->model_id ?? 0))
             ->map(fn ($logs, $clockPointId) => [
                 'name' => $clockPoints->firstWhere('id', (int) $clockPointId)?->name
                     ?? __('time.clock_points.qr.blocked_attempts_unknown_point'),
                 'count' => $logs->count(),
-                'kinds_label' => $logs
-                    ->map(fn (AuditLog $log) => $this->blockedQrKind($log))
-                    ->unique()
-                    ->sort()
-                    ->map(fn (string $kind) => __('time.clock_points.qr.blocked_attempts_kinds.'.$kind))
-                    ->implode(', '),
                 'last_at' => $logs->first()->created_at,
             ])
             ->sortByDesc('count')
             ->values()
             ->all();
-    }
-
-    private function blockedQrKind(AuditLog $log): string
-    {
-        $payload = $log->payload ?? [];
-        $token = (string) ($payload['qr_token'] ?? '');
-
-        if (strlen($token) === ClockDisplayQr::TOKEN_LENGTH) {
-            return 'display';
-        }
-
-        return ($payload['history_token_id'] ?? null) !== null ? 'sticker' : 'unknown';
     }
 }
