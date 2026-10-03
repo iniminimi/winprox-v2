@@ -363,7 +363,8 @@
             "all_points": "Mostra su tutti gli schermi",
             "all_points_badge": "Tutti gli schermi",
             "crop_title": "Ritaglia foto (quadrata)",
-            "crop_apply": "Usa"
+            "crop_apply": "Usa",
+            "max_reached": "Massimo raggiunto (12 foto)"
         }
     },
     "duration": {

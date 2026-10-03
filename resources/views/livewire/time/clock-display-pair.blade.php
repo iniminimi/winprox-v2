@@ -140,8 +140,9 @@
             </button>
         </div>
 
-        <div class="wp-cluster wp-cluster--wrap" wire:ignore>
+        <div class="wp-cluster wp-cluster--wrap">
             <input
+                wire:ignore
                 type="file"
                 id="albumPhotoInput"
                 class="wp-file-input-native"
@@ -170,9 +171,15 @@
                     }).finally(() => { input.value = ''; });
                 "
             >
-            <label for="albumPhotoInput" class="btn btn--primary btn--sm wp-file-input-trigger">
-                {{ __('time.clock_displays.album.upload') }}
-            </label>
+            @if ($albumImages->count() >= \App\Models\ClockDisplayImage::MAX_PER_SCOPE)
+                <button type="button" class="btn btn--primary btn--sm" disabled>
+                    {{ __('time.clock_displays.album.max_reached') }}
+                </button>
+            @else
+                <label for="albumPhotoInput" class="btn btn--primary btn--sm wp-file-input-trigger">
+                    {{ __('time.clock_displays.album.upload') }}
+                </label>
+            @endif
             <label class="wp-muted wp-text-sm">
                 <input type="checkbox" wire:model="albumGlobal">
                 {{ __('time.clock_displays.album.all_points') }}

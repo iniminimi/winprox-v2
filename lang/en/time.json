@@ -363,7 +363,8 @@
             "all_points": "Show on all clock displays",
             "all_points_badge": "All displays",
             "crop_title": "Crop photo (square)",
-            "crop_apply": "Use"
+            "crop_apply": "Use",
+            "max_reached": "Maximum reached (12 photos)"
         }
     },
     "duration": {

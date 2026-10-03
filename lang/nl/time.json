@@ -363,7 +363,8 @@
             "all_points": "Toon op alle klokschermen",
             "all_points_badge": "Alle schermen",
             "crop_title": "Foto bijsnijden (vierkant)",
-            "crop_apply": "Gebruiken"
+            "crop_apply": "Gebruiken",
+            "max_reached": "Maximum bereikt (12 foto’s)"
         }
     },
     "duration": {
