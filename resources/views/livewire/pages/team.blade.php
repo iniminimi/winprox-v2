@@ -363,6 +363,7 @@
                                             const crop = typeof window.wpCropImageFile === 'function'
                                                 ? window.wpCropImageFile(file, {
                                                     aspectRatio: 1,
+                                                    circle: true,
                                                     title: @js(__('team.workers.photo_crop_title')),
                                                     applyLabel: @js(__('team.workers.photo_crop_apply')),
                                                     cancelLabel: @js(__('common.button.cancel')),

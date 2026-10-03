@@ -12,6 +12,7 @@ import 'cropperjs/dist/cropper.css';
  *   title?: string,
  *   applyLabel?: string,
  *   cancelLabel?: string,
+ *   circle?: boolean,           // rond crop-masker (worker-avatar); vierkant anders
  * }} [options]
  * @returns {Promise<File|null>} cropped file, or null if cancelled
  */
@@ -33,6 +34,9 @@ export function wpCropImageFile(file, options = {}) {
 
         const root = document.createElement('div');
         root.className = 'wp-worker-photo-crop';
+        if (options.circle) {
+            root.classList.add('wp-worker-photo-crop--round');
+        }
         root.setAttribute('role', 'dialog');
         root.setAttribute('aria-modal', 'true');
         root.innerHTML = `

@@ -3875,8 +3875,10 @@ svg.wp-release-worker-row__icon,
     max-width: 100%;
 }
 
-.wp-worker-photo-crop__stage .cropper-view-box,
-.wp-worker-photo-crop__stage .cropper-face {
+/* Rond crop-masker enkel waar expliciet gevraagd (worker-avatar);
+   vierkant is de default (bv. klokscherm-album). */
+.wp-worker-photo-crop--round .wp-worker-photo-crop__stage .cropper-view-box,
+.wp-worker-photo-crop--round .wp-worker-photo-crop__stage .cropper-face {
     border-radius: 50%;
 }
 
