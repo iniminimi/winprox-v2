@@ -356,7 +356,11 @@
             "all_points_badge": "Alle schermen",
             "crop_title": "Foto bijsnijden (vierkant)",
             "crop_apply": "Gebruiken",
-            "max_reached": "Maximum bereikt (12 foto’s)"
+            "max_reached": "Maximum bereikt (12 foto’s)",
+            "mode_label": "Tijdens de vensters tonen",
+            "mode_photos": "Foto's (slideshow)",
+            "mode_clock": "Wijzerklok",
+            "mode_none": "Niets (gewone QR)"
         }
     },
     "duration": {

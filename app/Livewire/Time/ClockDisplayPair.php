@@ -57,6 +57,8 @@ class ClockDisplayPair extends Component
 
     public ?string $album2Until = null;
 
+    public string $albumMode = 'photos';
+
     public function mount(ClockPoint $clockPoint): void
     {
         $this->authorize('update', $clockPoint);
@@ -68,6 +70,7 @@ class ClockDisplayPair extends Component
         $this->album1Until = $hm($clockPoint->album1_until);
         $this->album2From = $hm($clockPoint->album2_from);
         $this->album2Until = $hm($clockPoint->album2_until);
+        $this->albumMode = $clockPoint->album_mode ?? 'photos';
     }
 
     public function issueCode(IssueClockDisplayPairingCodeAction $issue): void
@@ -238,6 +241,7 @@ class ClockDisplayPair extends Component
             'album1Until' => ['nullable', 'date_format:H:i', 'required_with:album1From'],
             'album2From' => ['nullable', 'date_format:H:i', 'required_with:album2Until'],
             'album2Until' => ['nullable', 'date_format:H:i', 'required_with:album2From'],
+            'albumMode' => ['required', 'in:'.implode(',', UpdateClockDisplayAlbumWindowsAction::MODES)],
         ]);
 
         try {
@@ -249,6 +253,7 @@ class ClockDisplayPair extends Component
                 $validated['album1Until'] ?: null,
                 $validated['album2From'] ?: null,
                 $validated['album2Until'] ?: null,
+                $validated['albumMode'],
             );
         } catch (InvalidArgumentException $e) {
             session()->flash('time_flash', __('time.clock_displays.errors.'.$e->getMessage()));

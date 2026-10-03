@@ -85,11 +85,22 @@
         </div>
     </div>
 
-    {{-- Foto-album (slideshow tijdens album-vensters) --}}
+    {{-- Rust-scherm tijdens de album-vensters: foto's, wijzerklok of niets --}}
     <div class="wp-card wp-card-pad wp-stack-tight">
         <p class="wp-section-title">{{ __('time.clock_displays.album.title') }}</p>
         <p class="wp-muted wp-text-sm">{{ __('time.clock_displays.album.hint') }}</p>
 
+        <div class="wp-field">
+            <label class="wp-label" for="album-mode">{{ __('time.clock_displays.album.mode_label') }}</label>
+            <select id="album-mode" class="wp-input" wire:model.live="albumMode">
+                <option value="photos">{{ __('time.clock_displays.album.mode_photos') }}</option>
+                <option value="clock">{{ __('time.clock_displays.album.mode_clock') }}</option>
+                <option value="none">{{ __('time.clock_displays.album.mode_none') }}</option>
+            </select>
+            @error('albumMode') <p class="wp-error">{{ $message }}</p> @enderror
+        </div>
+
+        @if ($albumMode !== 'none')
         <div class="wp-half-hour-range">
             <div class="wp-field">
                 <label class="wp-label" for="album1-from">{{ __('time.clock_displays.album.window1') }}</label>
@@ -134,12 +145,14 @@
                 @error('album2Until') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
         </div>
+        @endif
         <div class="wp-cluster">
             <button type="button" class="btn btn--primary btn--sm" wire:click="saveAlbumWindows">
                 {{ __('time.clock_displays.album.save') }}
             </button>
         </div>
 
+        @if ($albumMode === 'photos')
         <div class="wp-cluster wp-cluster--wrap">
             <input
                 wire:ignore
@@ -204,6 +217,7 @@
                     </div>
                 @endforeach
             </div>
+        @endif
         @endif
     </div>
 

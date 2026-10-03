@@ -356,7 +356,11 @@
             "all_points_badge": "Alle Bildschirme",
             "crop_title": "Foto zuschneiden (quadratisch)",
             "crop_apply": "Verwenden",
-            "max_reached": "Maximum erreicht (12 Fotos)"
+            "max_reached": "Maximum erreicht (12 Fotos)",
+            "mode_label": "Während der Fenster anzeigen",
+            "mode_photos": "Fotos (Slideshow)",
+            "mode_clock": "Analoge Uhr",
+            "mode_none": "Nichts (normaler QR)"
         }
     },
     "duration": {

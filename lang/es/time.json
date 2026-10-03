@@ -356,7 +356,11 @@
             "all_points_badge": "Todas las pantallas",
             "crop_title": "Recortar foto (cuadrada)",
             "crop_apply": "Usar",
-            "max_reached": "Máximo alcanzado (12 fotos)"
+            "max_reached": "Máximo alcanzado (12 fotos)",
+            "mode_label": "Mostrar durante las franjas",
+            "mode_photos": "Fotos (presentación)",
+            "mode_clock": "Reloj analógico",
+            "mode_none": "Nada (QR normal)"
         }
     },
     "duration": {

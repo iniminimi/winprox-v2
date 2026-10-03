@@ -9,11 +9,14 @@ use InvalidArgumentException;
 
 /**
  * Album-vensters van het klokscherm: max. 2 vanaf/tot-paren. Tijdens een
- * venster toont het scherm de foto-slideshow i.p.v. de QR-klok.
+ * venster toont het scherm het gekozen rust-scherm i.p.v. de QR-klok:
+ * foto-slideshow (photos), wijzerklok (clock) of niets (none).
  * Beide leeg per paar = venster uit; over-middernacht werkt zoals aan-uren.
  */
 class UpdateClockDisplayAlbumWindowsAction
 {
+    public const MODES = ['photos', 'clock', 'none'];
+
     public function __construct(private AuditRecorder $audit) {}
 
     public function handle(
@@ -24,9 +27,14 @@ class UpdateClockDisplayAlbumWindowsAction
         ?string $until1,
         ?string $from2,
         ?string $until2,
+        string $albumMode = 'photos',
     ): ClockPoint {
         if ((int) $clockPoint->tenant_id !== $tenantId) {
             throw new InvalidArgumentException('tenant_mismatch');
+        }
+
+        if (! in_array($albumMode, self::MODES, true)) {
+            throw new InvalidArgumentException('album_mode_invalid');
         }
 
         if (($from1 === null) !== ($until1 === null)
@@ -34,7 +42,7 @@ class UpdateClockDisplayAlbumWindowsAction
             throw new InvalidArgumentException('album_windows_incomplete');
         }
 
-        return DB::transaction(function () use ($clockPoint, $tenantId, $actorUserId, $from1, $until1, $from2, $until2) {
+        return DB::transaction(function () use ($clockPoint, $tenantId, $actorUserId, $from1, $until1, $from2, $until2, $albumMode) {
             $locked = ClockPoint::query()
                 ->whereKey($clockPoint->id)
                 ->lockForUpdate()
@@ -49,6 +57,7 @@ class UpdateClockDisplayAlbumWindowsAction
                 'album1_until' => $until1,
                 'album2_from' => $from2,
                 'album2_until' => $until2,
+                'album_mode' => $albumMode,
             ]);
 
             $this->audit->record(
@@ -61,6 +70,7 @@ class UpdateClockDisplayAlbumWindowsAction
                     'clock_point_id' => $locked->id,
                     'album1' => [$from1, $until1],
                     'album2' => [$from2, $until2],
+                    'album_mode' => $albumMode,
                 ],
             );
 

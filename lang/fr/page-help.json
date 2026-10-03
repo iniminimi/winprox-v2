@@ -1449,8 +1449,8 @@
           "text": "Définissez entre quelles heures l'écran est allumé, p. ex. crèche 06:00–19:00. En dehors de cette plage, l'écran est éteint. Les deux champs vides = toujours allumé ; une plage à cheval sur minuit (22:00–06:00) fonctionne aussi."
         },
         {
-          "label": "Album photo",
-          "text": "Pendant deux plages horaires maximum, l’écran affiche des photos au lieu du code QR — 10 secondes chacune, par exemple en dehors des heures de pointe. Un toucher affiche immédiatement le code QR, un second toucher ouvre le pointage manuel. Ajoutez des photos via <strong>Ajouter une photo</strong> : vous les recadrez en carré et elles sont redimensionnées automatiquement. Cochez <strong>Afficher sur tous les écrans</strong> pour les images visibles sur chaque écran de l’organisation. L’écran télécharge les nouvelles photos lors de son prochain contact (±1 minute) et les conserve localement — les photos supprimées disparaissent aussi de l’écran. Hors ligne, le dernier album téléchargé continue de fonctionner."
+          "label": "Écran de repos",
+          "text": "Pendant deux plages horaires maximum, l’écran affiche un écran de repos au lieu du code QR — par exemple en dehors des heures de pointe. Choisissez ce qui est affiché : des <strong>photos</strong> (10 secondes chacune), une <strong>horloge analogique</strong> à trotteuse rouge, ou <strong>rien</strong> — l’horloge QR normale reste alors visible. Un toucher affiche immédiatement le code QR, un second toucher ouvre le pointage manuel. Ajoutez des photos via <strong>Ajouter une photo</strong> : vous les recadrez en carré et elles sont redimensionnées automatiquement. Cochez <strong>Afficher sur tous les écrans</strong> pour les images visibles sur chaque écran de l’organisation. L’écran télécharge les nouvelles photos lors de son prochain contact (±1 minute) et les conserve localement — les photos supprimées disparaissent aussi de l’écran. Hors ligne, le dernier album téléchargé et l’horloge continuent de fonctionner."
         },
         {
           "label": "Rotation du secret",

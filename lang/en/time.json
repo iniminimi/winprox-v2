@@ -356,7 +356,11 @@
             "all_points_badge": "All displays",
             "crop_title": "Crop photo (square)",
             "crop_apply": "Use",
-            "max_reached": "Maximum reached (12 photos)"
+            "max_reached": "Maximum reached (12 photos)",
+            "mode_label": "Show during the windows",
+            "mode_photos": "Photos (slideshow)",
+            "mode_clock": "Analog clock",
+            "mode_none": "Nothing (regular QR)"
         }
     },
     "duration": {

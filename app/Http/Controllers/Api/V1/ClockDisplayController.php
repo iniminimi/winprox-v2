@@ -293,6 +293,8 @@ class ClockDisplayController extends Controller
 
         return [
             'version' => $version,
+            // Rust-scherm tijdens de vensters: photos | clock | none.
+            'mode' => $clockPoint->album_mode ?? 'photos',
             'windows' => $windows,
             'images' => $images
                 ->map(fn (ClockDisplayImage $i) => ['id' => $i->id, 'url' => $i->publicUrl()])

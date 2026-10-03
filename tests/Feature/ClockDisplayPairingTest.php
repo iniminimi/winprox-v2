@@ -438,6 +438,20 @@ it('bewaart max. 2 album-vensters en weigert een half paar', function () {
     expect($point->refresh()->album1_from)->toBeNull();
 });
 
+it('bewaart de album-modus en weigert een ongeldige', function () {
+    $tenant = displayTenant();
+    Tenancy::actAs($tenant->id);
+    $point = displayPoint($tenant);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    $windows = app(UpdateClockDisplayAlbumWindowsAction::class);
+    $windows->handle($point, $tenant->id, $admin->id, null, null, null, null, 'clock');
+    expect($point->refresh()->album_mode)->toBe('clock');
+
+    expect(fn () => $windows->handle($point, $tenant->id, $admin->id, null, null, null, null, 'banana'))
+        ->toThrow(InvalidArgumentException::class, 'album_mode_invalid');
+});
+
 it('uploadt, ordent en verwijdert album-foto\'s met audit', function () {
     Storage::fake('public');
     $tenant = displayTenant();
@@ -520,9 +534,10 @@ it('stuurt het album-manifest mee in de ping en past de versie aan', function ()
     $album = $this->getJson('/api/v1/time/clock-displays/ping', [
         'X-WinProx-Clock-Key' => $token,
     ])->assertOk()->assertJsonStructure([
-        'album' => ['version', 'windows', 'images'],
+        'album' => ['version', 'mode', 'windows', 'images'],
     ])->json('album');
 
+    expect($album['mode'])->toBe('photos');
     expect($album['windows'])->toBe([['09:00', '12:00']]);
     $ids = collect($album['images'])->pluck('id');
     expect($ids)->toContain($local->id)->toContain($global->id)->toHaveCount(2);

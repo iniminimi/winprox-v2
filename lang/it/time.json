@@ -356,7 +356,11 @@
             "all_points_badge": "Tutti gli schermi",
             "crop_title": "Ritaglia foto (quadrata)",
             "crop_apply": "Usa",
-            "max_reached": "Massimo raggiunto (12 foto)"
+            "max_reached": "Massimo raggiunto (12 foto)",
+            "mode_label": "Mostra durante le fasce",
+            "mode_photos": "Foto (slideshow)",
+            "mode_clock": "Orologio analogico",
+            "mode_none": "Niente (QR normale)"
         }
     },
     "duration": {

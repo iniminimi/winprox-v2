@@ -1441,8 +1441,8 @@
           "text": "Define entre qué horas la pantalla está encendida, p. ej. guardería 06:00–19:00. Fuera de ese horario la pantalla está apagada. Ambos campos vacíos = siempre encendida; también vale de un día para otro (22:00–06:00)."
         },
         {
-          "label": "Álbum de fotos",
-          "text": "Durante un máximo de dos franjas configuradas, la pantalla muestra fotos en lugar del código QR — 10 segundos cada una, por ejemplo fuera de las horas punta. Un toque muestra el código QR inmediatamente; otro toque abre el registro manual. Suba fotos con <strong>Añadir foto</strong>: las recorta en cuadrado y se redimensionan automáticamente. Marque <strong>Mostrar en todas las pantallas</strong> para las imágenes visibles en cada pantalla de la organización. La pantalla descarga las fotos nuevas en su siguiente contacto (±1 minuto) y las guarda localmente — las fotos eliminadas también desaparecen de la pantalla. Sin conexión, el último álbum descargado sigue funcionando."
+          "label": "Pantalla de descanso",
+          "text": "Durante un máximo de dos franjas configuradas, la pantalla muestra una pantalla de descanso en lugar del código QR — por ejemplo fuera de las horas punta. Elija qué se muestra: <strong>fotos</strong> (10 segundos cada una), un <strong>reloj analógico</strong> con segundero rojo, o <strong>nada</strong> — entonces el reloj QR normal sigue visible. Un toque muestra el código QR inmediatamente; otro toque abre el registro manual. Suba fotos con <strong>Añadir foto</strong>: las recorta en cuadrado y se redimensionan automáticamente. Marque <strong>Mostrar en todas las pantallas</strong> para las imágenes visibles en cada pantalla de la organización. La pantalla descarga las fotos nuevas en su siguiente contacto (±1 minuto) y las guarda localmente — las fotos eliminadas también desaparecen de la pantalla. Sin conexión, el último álbum descargado y el reloj siguen funcionando."
         },
         {
           "label": "Rotar secret",

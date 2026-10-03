@@ -39,6 +39,7 @@ class ClockPoint extends Model
         'album1_until',
         'album2_from',
         'album2_until',
+        'album_mode',
     ];
 
     protected $casts = [
