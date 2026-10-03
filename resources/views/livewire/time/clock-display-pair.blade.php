@@ -154,6 +154,7 @@
                     const crop = typeof window.wpCropImageFile === 'function'
                         ? window.wpCropImageFile(file, {
                             aspectRatio: 1,
+                            outputSize: 480,
                             title: @js(__('time.clock_displays.album.crop_title')),
                             applyLabel: @js(__('time.clock_displays.album.crop_apply')),
                             cancelLabel: @js(__('common.button.cancel')),

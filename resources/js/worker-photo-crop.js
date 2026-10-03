@@ -13,6 +13,7 @@ import 'cropperjs/dist/cropper.css';
  *   applyLabel?: string,
  *   cancelLabel?: string,
  *   circle?: boolean,           // rond crop-masker (worker-avatar); vierkant anders
+ *   outputSize?: number,        // grootste dimensie van de uitvoer (default 400)
  * }} [options]
  * @returns {Promise<File|null>} cropped file, or null if cancelled
  */
@@ -87,9 +88,10 @@ export function wpCropImageFile(file, options = {}) {
                 return;
             }
 
+            const out = options.outputSize ?? 400;
             const canvas = cropper.getCroppedCanvas({
-                width: 400,
-                height: 400,
+                width: aspectRatio >= 1 ? out : Math.round(out * aspectRatio),
+                height: aspectRatio >= 1 ? Math.round(out / aspectRatio) : out,
                 imageSmoothingEnabled: true,
                 imageSmoothingQuality: 'high',
             });
