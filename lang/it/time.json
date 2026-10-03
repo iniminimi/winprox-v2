@@ -344,7 +344,26 @@
             "clock_point_not_found": "Punto di timbratura non trovato.",
             "display_not_linked": "Nessuno schermo è collegato.",
             "tenant_mismatch": "Il punto di timbratura non appartiene a questa organizzazione.",
-            "schedule_incomplete": "Compila entrambi gli orari o lasciali vuoti."
+            "schedule_incomplete": "Compila entrambi gli orari o lasciali vuoti.",
+            "album_full": "Massimo di 12 foto raggiunto.",
+            "upload_failed": "Caricamento non riuscito, riprova.",
+            "album_windows_incomplete": "Compila entrambi gli orari per fascia o lasciali vuoti.",
+            "image_not_found": "Foto non trovata."
+        },
+        "album": {
+            "title": "Album fotografico",
+            "hint": "Durante queste fasce lo schermo mostra foto (10 secondi ciascuna) al posto del codice QR. Un tocco mostra il codice QR; un altro tocco apre la timbratura manuale. Vuoto = nessuna presentazione.",
+            "window1": "Fascia 1",
+            "window2": "Fascia 2",
+            "save": "Salva fasce",
+            "saved": "Orari album salvati.",
+            "upload": "Aggiungi foto",
+            "uploaded": "Foto salvata.",
+            "deleted": "Foto eliminata.",
+            "all_points": "Mostra su tutti gli schermi",
+            "all_points_badge": "Tutti gli schermi",
+            "crop_title": "Ritaglia foto (quadrata)",
+            "crop_apply": "Usa"
         }
     },
     "duration": {

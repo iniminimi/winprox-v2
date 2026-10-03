@@ -344,7 +344,26 @@
             "clock_point_not_found": "Clock point not found.",
             "display_not_linked": "No display is linked.",
             "tenant_mismatch": "Clock point does not belong to this organisation.",
-            "schedule_incomplete": "Fill in both times or leave both empty."
+            "schedule_incomplete": "Fill in both times or leave both empty.",
+            "album_full": "Maximum of 12 photos reached.",
+            "upload_failed": "Upload failed, please try again.",
+            "album_windows_incomplete": "Fill in both hours per window or leave both empty.",
+            "image_not_found": "Photo not found."
+        },
+        "album": {
+            "title": "Photo album",
+            "hint": "During these windows the screen shows photos (10 seconds each) instead of the QR code. Tap once for the QR code; tap again for manual clock-in. Empty = no slideshow.",
+            "window1": "Window 1",
+            "window2": "Window 2",
+            "save": "Save windows",
+            "saved": "Album hours saved.",
+            "upload": "Add photo",
+            "uploaded": "Photo saved.",
+            "deleted": "Photo deleted.",
+            "all_points": "Show on all clock displays",
+            "all_points_badge": "All displays",
+            "crop_title": "Crop photo (square)",
+            "crop_apply": "Use"
         }
     },
     "duration": {

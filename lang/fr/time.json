@@ -344,7 +344,26 @@
             "clock_point_not_found": "Point de badgeage introuvable.",
             "display_not_linked": "Aucun écran n'est associé.",
             "tenant_mismatch": "Le point de badgeage n'appartient pas à cette organisation.",
-            "schedule_incomplete": "Renseignez les deux heures ou laissez-les vides."
+            "schedule_incomplete": "Renseignez les deux heures ou laissez-les vides.",
+            "album_full": "Maximum de 12 photos atteint.",
+            "upload_failed": "Échec du téléversement, réessayez.",
+            "album_windows_incomplete": "Remplissez les deux heures par plage ou laissez les deux vides.",
+            "image_not_found": "Photo introuvable."
+        },
+        "album": {
+            "title": "Album photo",
+            "hint": "Pendant ces plages, l’écran affiche des photos (10 secondes chacune) au lieu du code QR. Un toucher affiche le code QR ; un second toucher ouvre le pointage manuel. Vide = pas de diaporama.",
+            "window1": "Plage 1",
+            "window2": "Plage 2",
+            "save": "Enregistrer les plages",
+            "saved": "Plages de l’album enregistrées.",
+            "upload": "Ajouter une photo",
+            "uploaded": "Photo enregistrée.",
+            "deleted": "Photo supprimée.",
+            "all_points": "Afficher sur tous les écrans",
+            "all_points_badge": "Tous les écrans",
+            "crop_title": "Recadrer la photo (carré)",
+            "crop_apply": "Utiliser"
         }
     },
     "duration": {

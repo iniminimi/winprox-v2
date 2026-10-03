@@ -990,8 +990,22 @@ binnen ~30–90 s dood.
   worden. Audit:
   `worker.clock_display_pin_failed`, `worker.clock_display_pin_blocked_attempt`,
   `worker.clock_display_pin_set`, `worker.clock_display_punched`.
+- **Foto-album (slideshow):** per Clock Point max. 2 album-vensters
+  (`album1/2_from|until`, zelfde conventie als aan-uren). Tijdens een venster
+  rouleert het scherm foto's (10 s per beeld) i.p.v. de QR; eerste tik → QR,
+  tweede tik → PIN-login. Upload op de Scherm-pagina met client-side vierkant-
+  crop (`wpCropImageFile`, `aspectRatio: 1`) + compressie naar 480 px — geen
+  server-resize. `clock_display_images.clock_point_id NULL` = "toon op alle
+  klokschermen" van de tenant; het scherm krijgt eigen + globale beelden
+  (`queryForPoint` filtert expliciet op de tenant van het punt — de global
+  scope is inactief zonder sessie, bv. device-API). Sync: ping levert een
+  `album`-blok (`version`, `windows`, `images[{id,url}]`); de versie wijzigt
+  bij elke upload/delete/venster-wijziging → firmware downloadt ontbrekende
+  beelden via HTTPS (public-disk URL's zoals issue-foto's), wist weggevallen
+  en draait offline verder uit flash. Max 12 foto's per scope.
 - Audit: `clock_point.display_pairing_issued`, `display_claim_confirmed`,
-  `display_claim_denied`, `display_unlinked`, `display_secret_rotated`.
+  `display_claim_denied`, `display_unlinked`, `display_secret_rotated`,
+  `album_windows_updated`; `clock_display.image_uploaded`, `image_deleted`.
 
 ### 5g.8 Klantstatistieken (`/klanten`, Time-entitlement)
 

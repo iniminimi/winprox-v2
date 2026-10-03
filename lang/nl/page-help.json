@@ -1441,6 +1441,10 @@
           "text": "Stel in tussen welke uren het scherm aan staat, bv. crèche 06:00–19:00. Buiten dit venster gaat het scherm uit. Beide velden leeg = altijd aan; een venster over middernacht (bv. 22:00–06:00) werkt ook."
         },
         {
+          "label": "Foto-album",
+          "text": "Tijdens maximaal twee ingestelde vensters toont het scherm foto’s i.p.v. de QR-code — elke foto 10 seconden, bv. buiten de piek-klokuren. Een tik op het scherm toont meteen de QR-code, nog een tik opent manueel aanmelden. Upload foto’s via <strong>Foto toevoegen</strong>: u snijdt ze vierkant bij en ze worden automatisch verkleind. Vink <strong>Toon op alle klokschermen</strong> aan voor beelden die op elk scherm van de organisatie mogen. Het scherm downloadt nieuwe foto’s vanzelf bij de eerstvolgende melding (±1 minuut) en bewaart ze lokaal — verwijderde foto’s verdwijnen dan ook van het scherm. Offline blijft het laatst gedownloade album gewoon draaien."
+        },
+        {
           "label": "Secret roteren",
           "text": "Maakt de huidige secret en device-token ongeldig — het scherm moet daarna opnieuw gekoppeld worden met een nieuwe code. Handig bij vermoed misbruik."
         },

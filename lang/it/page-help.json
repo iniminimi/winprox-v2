@@ -1441,6 +1441,10 @@
           "text": "Imposta tra quali orari lo schermo è acceso, es. nido 06:00–19:00. Fuori da questa fascia lo schermo è spento. Entrambi i campi vuoti = sempre acceso; funziona anche a cavallo di mezzanotte (22:00–06:00)."
         },
         {
+          "label": "Album fotografico",
+          "text": "Durante al massimo due fasce orarie configurate, lo schermo mostra foto al posto del codice QR — 10 secondi ciascuna, ad esempio fuori dagli orari di punta. Un tocco mostra subito il codice QR; un secondo tocco apre la timbratura manuale. Carica le foto con <strong>Aggiungi foto</strong>: le ritagli quadrate e vengono ridimensionate automaticamente. Attiva <strong>Mostra su tutti gli schermi</strong> per le immagini visibili su ogni schermo dell’organizzazione. Lo schermo scarica le nuove foto al contatto successivo (±1 minuto) e le conserva in locale — le foto eliminate scompaiono anche dallo schermo. Offline, l’ultimo album scaricato continua a funzionare."
+        },
+        {
           "label": "Ruota secret",
           "text": "Invalida il secret attuale e il token del dispositivo — lo schermo va ricollegato con un nuovo codice. Utile in caso di abuso sospettato."
         },

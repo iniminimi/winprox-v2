@@ -1441,6 +1441,10 @@
           "text": "Legen Sie fest, zwischen welchen Uhrzeiten das Display eingeschaltet ist, z. B. Kita 06:00–19:00. Außerhalb bleibt der Bildschirm aus. Beide Felder leer = immer an; über Mitternacht (z. B. 22:00–06:00) geht auch."
         },
         {
+          "label": "Fotoalbum",
+          "text": "Während maximal zwei eingestellter Zeitfenster zeigt der Bildschirm Fotos statt des QR-Codes — jeweils 10 Sekunden, z. B. außerhalb der Stoßzeiten. Ein Tippen zeigt sofort den QR-Code, ein weiteres Tippen öffnet die manuelle Anmeldung. Fotos über <strong>Foto hinzufügen</strong> hochladen: Sie schneiden sie quadratisch zu und sie werden automatisch verkleinert. <strong>Auf allen Bildschirmen zeigen</strong> aktivieren, damit ein Bild auf jedem Bildschirm der Organisation erscheint. Der Bildschirm lädt neue Fotos beim nächsten Kontakt (±1 Minute) automatisch herunter und speichert sie lokal — gelöschte Fotos verschwinden dann auch vom Bildschirm. Offline läuft das zuletzt geladene Album weiter."
+        },
+        {
           "label": "Secret rotieren",
           "text": "Macht das aktuelle Secret und das Geräte-Token ungültig — das Display muss mit einem neuen Code erneut gekoppelt werden. Nützlich bei Verdacht auf Missbrauch."
         },

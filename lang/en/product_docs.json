@@ -159,7 +159,8 @@
           "Staff can clock someone in by hand if the phone was forgotten.",
           "CIAO (NSSO) on request, at no extra fee.",
           "Optional GPS work visits: Start work on the site pin.",
-          "After clock-in Clock Point shows a dark Welcome card and the round as a timeline."
+          "After clock-in Clock Point shows a dark Welcome card and the round as a timeline.",
+          "Clock display (TFT): rotating QR, on-hours and an optional photo slideshow outside clock-in hours."
         ]
       },
       {

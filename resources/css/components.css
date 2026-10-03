@@ -3481,6 +3481,19 @@ a.wp-pagination__page:active:not(.is-active) {
     background: var(--wp-danger-strong);
 }
 
+/* "Alle clockpoints"-badge op album-thumbnail — zelfde vorm als .wp-photo-remove. */
+.wp-photo-thumb-tag {
+    position: absolute;
+    bottom: 0.125rem;
+    left: 0.125rem;
+    background: var(--wp-accent);
+    color: var(--wp-text-on-accent);
+    border-radius: 9999px;
+    padding: 0.125rem 0.3125rem;
+    line-height: 1;
+    font-size: 0.625rem;
+}
+
 /* ---------------------------------------------------------------------------
  | QR-portaal (publiek, mobiel-first): kop, tegels, taalkeuze, terugknop.
  * ------------------------------------------------------------------------- */

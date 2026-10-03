@@ -13,6 +13,7 @@ use App\Http\Requests\Api\V1\PinClockDisplayRequest;
 use App\Http\Requests\Api\V1\SetupPinClockDisplayRequest;
 use App\Http\Requests\Api\V1\SubmitClockDisplayClaimRequest;
 use App\Models\ClockDisplayClaim;
+use App\Models\ClockDisplayImage;
 use App\Models\ClockPoint;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -249,12 +250,54 @@ class ClockDisplayController extends Controller
                 ? substr((string) $clockPoint->display_on_from, 0, 5) : null,
             'display_on_until' => $clockPoint?->display_on_until !== null
                 ? substr((string) $clockPoint->display_on_until, 0, 5) : null,
+            'album' => $this->albumManifest($clockPoint),
             'rotation_seconds' => (int) config('time.display_window_seconds', 30),
             'offline_warn_hours' => (int) config('time.display_offline_warn_hours', 24),
             'offline_block_hours' => (int) config('time.display_offline_block_hours', 168),
             // Scherm vult hier {display_id}{dyn} in; display_id volgt mee in
             // de claim-status-response (of staat in NVS na provisioning).
             'portal_url_template' => route('public.time-portal', '__TOKEN__'),
+        ];
+    }
+
+    /**
+     * Foto-album-manifest: vensters + beeldlijst voor de slideshow.
+     * `version` wijzigt bij elke wijziging → scherm synchroniseert dan.
+     *
+     * @return array<string, mixed>
+     */
+    private function albumManifest(?ClockPoint $clockPoint): array
+    {
+        if ($clockPoint === null) {
+            return ['version' => null, 'windows' => [], 'images' => []];
+        }
+
+        $windows = [];
+        foreach ([
+            [$clockPoint->album1_from, $clockPoint->album1_until],
+            [$clockPoint->album2_from, $clockPoint->album2_until],
+        ] as [$from, $until]) {
+            if ($from !== null && $until !== null) {
+                $windows[] = [substr((string) $from, 0, 5), substr((string) $until, 0, 5)];
+            }
+        }
+
+        $images = ClockDisplayImage::queryForPoint($clockPoint)
+            ->limit(ClockDisplayImage::MAX_PER_SCOPE)
+            ->get();
+
+        $version = substr(md5(
+            $images->map(fn (ClockDisplayImage $i) => $i->id.'@'.$i->updated_at?->getTimestamp())->implode(',')
+            .'|'.json_encode($windows)
+        ), 0, 12);
+
+        return [
+            'version' => $version,
+            'windows' => $windows,
+            'images' => $images
+                ->map(fn (ClockDisplayImage $i) => ['id' => $i->id, 'url' => $i->publicUrl()])
+                ->values()
+                ->all(),
         ];
     }
 }

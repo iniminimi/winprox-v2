@@ -1441,6 +1441,10 @@
           "text": "Define entre qué horas la pantalla está encendida, p. ej. guardería 06:00–19:00. Fuera de ese horario la pantalla está apagada. Ambos campos vacíos = siempre encendida; también vale de un día para otro (22:00–06:00)."
         },
         {
+          "label": "Álbum de fotos",
+          "text": "Durante un máximo de dos franjas configuradas, la pantalla muestra fotos en lugar del código QR — 10 segundos cada una, por ejemplo fuera de las horas punta. Un toque muestra el código QR inmediatamente; otro toque abre el registro manual. Suba fotos con <strong>Añadir foto</strong>: las recorta en cuadrado y se redimensionan automáticamente. Marque <strong>Mostrar en todas las pantallas</strong> para las imágenes visibles en cada pantalla de la organización. La pantalla descarga las fotos nuevas en su siguiente contacto (±1 minuto) y las guarda localmente — las fotos eliminadas también desaparecen de la pantalla. Sin conexión, el último álbum descargado sigue funcionando."
+        },
+        {
           "label": "Rotar secret",
           "text": "Invalida el secret actual y el token del dispositivo — la pantalla debe vincularse de nuevo con un código nuevo. Útil ante un abuso sospechado."
         },

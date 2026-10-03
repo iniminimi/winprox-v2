@@ -35,6 +35,10 @@ class ClockPoint extends Model
         'display_last_seen_at',
         'display_on_from',
         'display_on_until',
+        'album1_from',
+        'album1_until',
+        'album2_from',
+        'album2_until',
     ];
 
     protected $casts = [
@@ -75,6 +79,11 @@ class ClockPoint extends Model
     public function displayClaims(): HasMany
     {
         return $this->hasMany(ClockDisplayClaim::class);
+    }
+
+    public function displayImages(): HasMany
+    {
+        return $this->hasMany(ClockDisplayImage::class);
     }
 
     public function hasLinkedDisplay(): bool

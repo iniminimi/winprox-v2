@@ -85,6 +85,120 @@
         </div>
     </div>
 
+    {{-- Foto-album (slideshow tijdens album-vensters) --}}
+    <div class="wp-card wp-card-pad wp-stack-tight">
+        <p class="wp-section-title">{{ __('time.clock_displays.album.title') }}</p>
+        <p class="wp-muted wp-text-sm">{{ __('time.clock_displays.album.hint') }}</p>
+
+        <div class="wp-half-hour-range">
+            <div class="wp-field">
+                <label class="wp-label" for="album1-from">{{ __('time.clock_displays.album.window1') }}</label>
+                <select id="album1-from" class="wp-input" wire:model="album1From">
+                    <option value="">—</option>
+                    @foreach ($scheduleSlots as $slot)
+                        <option value="{{ $slot }}">{{ $slot }}</option>
+                    @endforeach
+                </select>
+                @error('album1From') <p class="wp-error">{{ $message }}</p> @enderror
+            </div>
+            <div class="wp-field">
+                <label class="wp-label" for="album1-until">&nbsp;</label>
+                <select id="album1-until" class="wp-input" wire:model="album1Until">
+                    <option value="">—</option>
+                    @foreach ($scheduleSlots as $slot)
+                        <option value="{{ $slot }}">{{ $slot }}</option>
+                    @endforeach
+                </select>
+                @error('album1Until') <p class="wp-error">{{ $message }}</p> @enderror
+            </div>
+        </div>
+        <div class="wp-half-hour-range">
+            <div class="wp-field">
+                <label class="wp-label" for="album2-from">{{ __('time.clock_displays.album.window2') }}</label>
+                <select id="album2-from" class="wp-input" wire:model="album2From">
+                    <option value="">—</option>
+                    @foreach ($scheduleSlots as $slot)
+                        <option value="{{ $slot }}">{{ $slot }}</option>
+                    @endforeach
+                </select>
+                @error('album2From') <p class="wp-error">{{ $message }}</p> @enderror
+            </div>
+            <div class="wp-field">
+                <label class="wp-label" for="album2-until">&nbsp;</label>
+                <select id="album2-until" class="wp-input" wire:model="album2Until">
+                    <option value="">—</option>
+                    @foreach ($scheduleSlots as $slot)
+                        <option value="{{ $slot }}">{{ $slot }}</option>
+                    @endforeach
+                </select>
+                @error('album2Until') <p class="wp-error">{{ $message }}</p> @enderror
+            </div>
+        </div>
+        <div class="wp-cluster">
+            <button type="button" class="btn btn--primary btn--sm" wire:click="saveAlbumWindows">
+                {{ __('time.clock_displays.album.save') }}
+            </button>
+        </div>
+
+        <div class="wp-cluster wp-cluster--wrap" wire:ignore>
+            <input
+                type="file"
+                id="albumPhotoInput"
+                class="wp-file-input-native"
+                accept="image/jpeg,image/png,image/webp,image/*"
+                aria-label="{{ __('time.clock_displays.album.upload') }}"
+                x-on:change="
+                    const input = $event.target;
+                    const file = input.files?.[0];
+                    if (!file) { return; }
+                    const crop = typeof window.wpCropImageFile === 'function'
+                        ? window.wpCropImageFile(file, {
+                            aspectRatio: 1,
+                            title: @js(__('time.clock_displays.album.crop_title')),
+                            applyLabel: @js(__('time.clock_displays.album.crop_apply')),
+                            cancelLabel: @js(__('common.button.cancel')),
+                          })
+                        : Promise.resolve(file);
+                    crop.then((cropped) => {
+                        if (!cropped) { return null; }
+                        if (typeof window.wpCompressImageFile !== 'function') { return cropped; }
+                        return window.wpCompressImageFile(cropped, { maxDimension: 480, quality: 0.8 });
+                    }).then((compressed) => {
+                        if (!compressed) { return; }
+                        $wire.upload('albumPhoto', compressed);
+                    }).finally(() => { input.value = ''; });
+                "
+            >
+            <label for="albumPhotoInput" class="btn btn--primary btn--sm wp-file-input-trigger">
+                {{ __('time.clock_displays.album.upload') }}
+            </label>
+            <label class="wp-muted wp-text-sm">
+                <input type="checkbox" wire:model="albumGlobal">
+                {{ __('time.clock_displays.album.all_points') }}
+            </label>
+        </div>
+        @error('albumPhoto') <p class="wp-error">{{ $message }}</p> @enderror
+
+        @if ($albumImages->isNotEmpty())
+            <div class="wp-photo-grid">
+                @foreach ($albumImages as $img)
+                    <div class="wp-photo-thumb">
+                        <img src="{{ $img->publicUrl() }}" alt="" loading="lazy">
+                        @if ($img->clock_point_id === null)
+                            <span class="wp-photo-thumb-tag">{{ __('time.clock_displays.album.all_points_badge') }}</span>
+                        @endif
+                        <button
+                            type="button"
+                            class="wp-photo-remove"
+                            wire:click="deleteAlbumImage({{ $img->id }})"
+                            aria-label="{{ __('common.button.delete') }}"
+                        >✕</button>
+                    </div>
+                @endforeach
+            </div>
+        @endif
+    </div>
+
     {{-- Pairing-code --}}
     <div class="wp-card wp-card-pad wp-stack-tight">
         <p class="wp-section-title">{{ __('time.clock_displays.code.title') }}</p>

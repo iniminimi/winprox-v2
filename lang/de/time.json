@@ -344,7 +344,26 @@
             "clock_point_not_found": "Stempelpunkt nicht gefunden.",
             "display_not_linked": "Es ist kein Display verbunden.",
             "tenant_mismatch": "Der Stempelpunkt gehört nicht zu dieser Organisation.",
-            "schedule_incomplete": "Beide Zeiten ausfüllen oder beide leer lassen."
+            "schedule_incomplete": "Beide Zeiten ausfüllen oder beide leer lassen.",
+            "album_full": "Maximum von 12 Fotos erreicht.",
+            "upload_failed": "Upload fehlgeschlagen, bitte erneut versuchen.",
+            "album_windows_incomplete": "Pro Fenster beide Zeiten ausfüllen oder beide leer lassen.",
+            "image_not_found": "Foto nicht gefunden."
+        },
+        "album": {
+            "title": "Fotoalbum",
+            "hint": "Während dieser Zeitfenster zeigt der Bildschirm Fotos (je 10 Sekunden) statt des QR-Codes. Einmal tippen zeigt den QR-Code; erneutes Tippen öffnet die manuelle Anmeldung. Leer = kein Diashow.",
+            "window1": "Fenster 1",
+            "window2": "Fenster 2",
+            "save": "Fenster speichern",
+            "saved": "Albumzeiten gespeichert.",
+            "upload": "Foto hinzufügen",
+            "uploaded": "Foto gespeichert.",
+            "deleted": "Foto gelöscht.",
+            "all_points": "Auf allen Bildschirmen zeigen",
+            "all_points_badge": "Alle Bildschirme",
+            "crop_title": "Foto zuschneiden (quadratisch)",
+            "crop_apply": "Verwenden"
         }
     },
     "duration": {

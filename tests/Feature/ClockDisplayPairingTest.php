@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Actions\Time\ConfirmClockDisplayClaimAction;
+use App\Actions\Time\DeleteClockDisplayImageAction;
 use App\Actions\Time\DenyClockDisplayClaimAction;
 use App\Actions\Time\ExpireClockDisplayClaimsAction;
 use App\Actions\Time\IssueClockDisplayPairingCodeAction;
@@ -10,15 +11,20 @@ use App\Actions\Time\ResolveClockPointPortalTokenAction;
 use App\Actions\Time\RotateClockPointDisplaySecretAction;
 use App\Actions\Time\SubmitClockDisplayClaimAction;
 use App\Actions\Time\UnlinkClockPointDisplayAction;
+use App\Actions\Time\UpdateClockDisplayAlbumWindowsAction;
+use App\Actions\Time\UploadClockDisplayImageAction;
 use App\Enums\ClockDisplayClaimStatus;
 use App\Models\AuditLog;
 use App\Models\ClockDisplayClaim;
+use App\Models\ClockDisplayImage;
 use App\Models\ClockPoint;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Tenancy;
 use App\Support\Time\ClockDisplayQr;
 use App\Support\Time\ClockPointPortalTokenResolution;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 afterEach(fn () => Tenancy::forget());
 
@@ -30,6 +36,26 @@ function displayTenant(): Tenant
 function displayPoint(Tenant $tenant): ClockPoint
 {
     return ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+}
+
+/** Koppelt een scherm aan het punt en geeft de device-token terug. */
+function linkDisplay(ClockPoint $point): string
+{
+    $code = app(IssueClockDisplayPairingCodeAction::class)->handle($point, $point->tenant_id, null);
+    $claim = app(SubmitClockDisplayClaimAction::class)->handle($code, 'esp32-aabbcc', null);
+    app(ConfirmClockDisplayClaimAction::class)->handle($claim, $point->tenant_id, null);
+
+    return $claim->fresh()->issued_token;
+}
+
+function fakeAlbumFile(string $name = 'album.jpg'): UploadedFile
+{
+    $jpeg = base64_decode(
+        '/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCwAA8A0AAA/9k=',
+        true,
+    );
+
+    return UploadedFile::fake()->createWithContent($name, $jpeg, 'image/jpeg');
 }
 
 it('geeft een 8-teken Crockford-code met TTL en auditeert de uitgifte', function () {
@@ -386,4 +412,127 @@ it('bewaart aan-uren en stuurt ze mee in de ping-config', function () {
     ])->assertOk()
         ->assertJsonPath('display_on_from', '06:00')
         ->assertJsonPath('display_on_until', '19:00');
+});
+
+it('bewaart max. 2 album-vensters en weigert een half paar', function () {
+    $tenant = displayTenant();
+    Tenancy::actAs($tenant->id);
+    $point = displayPoint($tenant);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    $windows = app(UpdateClockDisplayAlbumWindowsAction::class);
+    $windows->handle($point, $tenant->id, $admin->id, '09:00', '12:00', '14:00', '17:00');
+
+    $point->refresh();
+    expect(substr((string) $point->album1_from, 0, 5))->toBe('09:00')
+        ->and(substr((string) $point->album2_until, 0, 5))->toBe('17:00');
+    expect(AuditLog::where('action', 'clock_point.album_windows_updated')->exists())->toBeTrue();
+
+    expect(fn () => $windows->handle($point, $tenant->id, $admin->id, '09:00', null, null, null))
+        ->toThrow(InvalidArgumentException::class, 'album_windows_incomplete');
+    expect(fn () => $windows->handle($point, $tenant->id, $admin->id, null, null, null, '17:00'))
+        ->toThrow(InvalidArgumentException::class, 'album_windows_incomplete');
+
+    // Venster wissen: beide leeg per paar mag.
+    $windows->handle($point, $tenant->id, $admin->id, null, null, null, null);
+    expect($point->refresh()->album1_from)->toBeNull();
+});
+
+it('uploadt, ordent en verwijdert album-foto\'s met audit', function () {
+    Storage::fake('public');
+    $tenant = displayTenant();
+    Tenancy::actAs($tenant->id);
+    $point = displayPoint($tenant);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    $upload = app(UploadClockDisplayImageAction::class);
+    $local = $upload->handle(fakeAlbumFile(), $point, $tenant->id, $admin->id);
+    $global = $upload->handle(fakeAlbumFile('shared.jpg'), null, $tenant->id, $admin->id);
+
+    expect($local->clock_point_id)->toBe($point->id)
+        ->and($global->clock_point_id)->toBeNull()
+        ->and($local->tenant_id)->toBe($tenant->id)
+        ->and(Storage::disk('public')->exists($local->path))->toBeTrue();
+    expect(AuditLog::where('action', 'clock_display.image_uploaded')->count())->toBe(2);
+
+    // queryForPoint: eigen + globale, niet van andere punten/tenants.
+    $otherPoint = displayPoint($tenant);
+    $otherLocal = $upload->handle(fakeAlbumFile('other.jpg'), $otherPoint, $tenant->id, $admin->id);
+    $foreign = displayTenant();
+    $foreignImg = $upload->handle(fakeAlbumFile('foreign.jpg'), null, $foreign->id, $admin->id);
+
+    $ids = ClockDisplayImage::queryForPoint($point->fresh())->pluck('id');
+    expect($ids)->toContain($local->id)
+        ->toContain($global->id)
+        ->not->toContain($otherLocal->id)
+        ->not->toContain($foreignImg->id);
+
+    // Delete verwijdert rij én bestand.
+    app(DeleteClockDisplayImageAction::class)->handle($local->fresh(), $tenant->id, $admin->id);
+    expect(ClockDisplayImage::find($local->id))->toBeNull()
+        ->and(Storage::disk('public')->exists($local->path))->toBeFalse();
+    expect(AuditLog::where('action', 'clock_display.image_deleted')->exists())->toBeTrue();
+
+    // Tenant-mismatch wordt geweigerd.
+    expect(fn () => app(UploadClockDisplayImageAction::class)
+        ->handle(fakeAlbumFile(), $point, $foreign->id, $admin->id))
+        ->toThrow(InvalidArgumentException::class, 'tenant_mismatch');
+});
+
+it('beperkt het album tot '.ClockDisplayImage::MAX_PER_SCOPE.' foto\'s per scope', function () {
+    Storage::fake('public');
+    $tenant = displayTenant();
+    Tenancy::actAs($tenant->id);
+    $point = displayPoint($tenant);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    $upload = app(UploadClockDisplayImageAction::class);
+    for ($i = 0; $i < ClockDisplayImage::MAX_PER_SCOPE; $i++) {
+        $upload->handle(fakeAlbumFile("p{$i}.jpg"), $point, $tenant->id, $admin->id);
+    }
+
+    expect(fn () => $upload->handle(fakeAlbumFile('overflow.jpg'), $point, $tenant->id, $admin->id))
+        ->toThrow(InvalidArgumentException::class, 'album_full');
+});
+
+it('stuurt het album-manifest mee in de ping en past de versie aan', function () {
+    Storage::fake('public');
+    $tenant = displayTenant();
+    Tenancy::actAs($tenant->id);
+    $point = displayPoint($tenant);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    app(UpdateClockDisplayAlbumWindowsAction::class)
+        ->handle($point, $tenant->id, $admin->id, '09:00', '12:00', null, null);
+    $local = app(UploadClockDisplayImageAction::class)
+        ->handle(fakeAlbumFile(), $point, $tenant->id, $admin->id);
+    $global = app(UploadClockDisplayImageAction::class)
+        ->handle(fakeAlbumFile('shared.jpg'), null, $tenant->id, $admin->id);
+
+    // Andere tenant: globale foto mag NIET lekken.
+    $foreign = displayTenant();
+    app(UploadClockDisplayImageAction::class)
+        ->handle(fakeAlbumFile('foreign.jpg'), null, $foreign->id, $admin->id);
+
+    $token = linkDisplay($point);
+    Tenancy::forget(); // device-context: geen tenant-scope
+
+    $album = $this->getJson('/api/v1/time/clock-displays/ping', [
+        'X-WinProx-Clock-Key' => $token,
+    ])->assertOk()->assertJsonStructure([
+        'album' => ['version', 'windows', 'images'],
+    ])->json('album');
+
+    expect($album['windows'])->toBe([['09:00', '12:00']]);
+    $ids = collect($album['images'])->pluck('id');
+    expect($ids)->toContain($local->id)->toContain($global->id)->toHaveCount(2);
+    expect($album['version'])->not->toBeNull();
+
+    // Wijziging → nieuwe versie.
+    app(DeleteClockDisplayImageAction::class)->handle($local->fresh(), $tenant->id, $admin->id);
+    $album2 = $this->getJson('/api/v1/time/clock-displays/ping', [
+        'X-WinProx-Clock-Key' => $token,
+    ])->assertOk()->json('album');
+    expect($album2['version'])->not->toBe($album['version']);
+    expect(collect($album2['images'])->pluck('id'))->not->toContain($local->id);
 });

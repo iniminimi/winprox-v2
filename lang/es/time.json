@@ -344,7 +344,26 @@
             "clock_point_not_found": "Punto de fichaje no encontrado.",
             "display_not_linked": "No hay ninguna pantalla vinculada.",
             "tenant_mismatch": "El punto de fichaje no pertenece a esta organización.",
-            "schedule_incomplete": "Rellena ambas horas o deja ambas vacías."
+            "schedule_incomplete": "Rellena ambas horas o deja ambas vacías.",
+            "album_full": "Máximo de 12 fotos alcanzado.",
+            "upload_failed": "Error al subir, inténtelo de nuevo.",
+            "album_windows_incomplete": "Rellene las dos horas por franja o deje ambas vacías.",
+            "image_not_found": "Foto no encontrada."
+        },
+        "album": {
+            "title": "Álbum de fotos",
+            "hint": "Durante estas franjas la pantalla muestra fotos (10 segundos cada una) en lugar del código QR. Un toque muestra el código QR; otro toque abre el registro manual. Vacío = sin presentación.",
+            "window1": "Franja 1",
+            "window2": "Franja 2",
+            "save": "Guardar franjas",
+            "saved": "Horarios del álbum guardados.",
+            "upload": "Añadir foto",
+            "uploaded": "Foto guardada.",
+            "deleted": "Foto eliminada.",
+            "all_points": "Mostrar en todas las pantallas",
+            "all_points_badge": "Todas las pantallas",
+            "crop_title": "Recortar foto (cuadrada)",
+            "crop_apply": "Usar"
         }
     },
     "duration": {

@@ -344,7 +344,26 @@
             "clock_point_not_found": "Clock point niet gevonden.",
             "display_not_linked": "Er is geen scherm gekoppeld.",
             "tenant_mismatch": "Clock point hoort niet bij deze organisatie.",
-            "schedule_incomplete": "Vul beide uren in of laat beide leeg."
+            "schedule_incomplete": "Vul beide uren in of laat beide leeg.",
+            "album_full": "Maximaal 12 foto’s bereikt.",
+            "upload_failed": "Upload mislukt, probeer opnieuw.",
+            "album_windows_incomplete": "Vul per venster beide uren in of laat beide leeg.",
+            "image_not_found": "Foto niet gevonden."
+        },
+        "album": {
+            "title": "Foto-album",
+            "hint": "Tijdens deze vensters toont het scherm foto’s (elk 10 seconden) i.p.v. de QR-code. Een tik op het scherm toont de QR-code; nog een tik opent manueel aanmelden. Leeg = geen slideshow.",
+            "window1": "Venster 1",
+            "window2": "Venster 2",
+            "save": "Vensters opslaan",
+            "saved": "Album-uren opgeslagen.",
+            "upload": "Foto toevoegen",
+            "uploaded": "Foto opgeslagen.",
+            "deleted": "Foto verwijderd.",
+            "all_points": "Toon op alle klokschermen",
+            "all_points_badge": "Alle schermen",
+            "crop_title": "Foto bijsnijden (vierkant)",
+            "crop_apply": "Gebruiken"
         }
     },
     "duration": {
