@@ -3,6 +3,7 @@
 namespace App\Actions\Billing;
 
 use App\Actions\Time\EnsureDefaultClockPointAction;
+use App\Enums\PresenceComplianceScope;
 use App\Models\Tenant;
 
 class ApplyPlanEntitlementsAction
@@ -35,6 +36,14 @@ class ApplyPlanEntitlementsAction
             $updates['has_time_module'] = true;
             $updates['time_gps_visits'] = true;
             $updates['time_gps_visit_radius_meters'] = (int) ($config['gps_visit_radius_meters'] ?? 100);
+            // CIAO is de kern van Checkmate: compliance staat meteen aan in
+            // Instellingen. Ondernemingsnummer/btw vult de tenant daar later
+            // in — submissions zonder die data worden lokaal skipped
+            // (SubmitPresenceBatchAction), nooit richting RSZ verstuurd.
+            $updates['presence_compliance_enabled'] = true;
+            if ($tenant->presence_compliance_scope === null) {
+                $updates['presence_compliance_scope'] = PresenceComplianceScope::CiaoCleaning->value;
+            }
         }
 
         $tenant->forceFill($updates)->save();

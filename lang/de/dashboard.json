@@ -187,7 +187,10 @@
     "ciao": {
       "pending_title": "CIAO-Anfrage in Bearbeitung",
       "pending_body": "Ihre LSS-Anfrage wartet auf Bestätigung. Anwesenheitsregistrierungen laufen danach automatisch mit.",
-      "pending_cta": "Zu den Einstellungen"
+      "pending_cta": "Zu den Einstellungen",
+      "missing_employer_title": "Unternehmensnummer eintragen",
+      "missing_employer_body": "CIAO ist aktiv, aber ohne Unternehmensnummer kann WinProx nichts an die LSS senden. Tragen Sie sie ein, um die Übermittlung zu aktivieren.",
+      "missing_employer_cta": "Zu den Einstellungen"
     }
   }
 }

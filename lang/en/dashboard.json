@@ -187,7 +187,10 @@
     "ciao": {
       "pending_title": "CIAO request pending",
       "pending_body": "Your NSSO request is awaiting confirmation. Attendance registrations follow automatically afterwards.",
-      "pending_cta": "Go to settings"
+      "pending_cta": "Go to settings",
+      "missing_employer_title": "Enter your enterprise number",
+      "missing_employer_body": "CIAO is on, but without an enterprise number WinProx cannot send anything to NSSO. Fill it in to activate the feed.",
+      "missing_employer_cta": "Go to settings"
     }
   }
 }

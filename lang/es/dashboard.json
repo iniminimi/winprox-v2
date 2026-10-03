@@ -187,7 +187,10 @@
     "ciao": {
       "pending_title": "Solicitud CIAO pendiente",
       "pending_body": "Tu solicitud NSSO espera confirmación. Después, los registros de presencia se envían automáticamente.",
-      "pending_cta": "Ir a configuración"
+      "pending_cta": "Ir a configuración",
+      "missing_employer_title": "Indicar el número de empresa",
+      "missing_employer_body": "CIAO está activo, pero sin número de empresa WinProx no puede enviar nada a la ONSS. Complételo para activar la transmisión.",
+      "missing_employer_cta": "Ir a configuración"
     }
   }
 }

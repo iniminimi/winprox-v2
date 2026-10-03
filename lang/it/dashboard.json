@@ -187,7 +187,10 @@
     "ciao": {
       "pending_title": "Richiesta CIAO in attesa",
       "pending_body": "La tua richiesta RSZ attende conferma. Le registrazioni delle presenze seguono poi automaticamente.",
-      "pending_cta": "Vai alle impostazioni"
+      "pending_cta": "Vai alle impostazioni",
+      "missing_employer_title": "Inserire il numero d'impresa",
+      "missing_employer_body": "CIAO è attivo, ma senza numero d'impresa WinProx non può inviare nulla all'INPS. Inserirlo per attivare la trasmissione.",
+      "missing_employer_cta": "Vai alle impostazioni"
     }
   }
 }

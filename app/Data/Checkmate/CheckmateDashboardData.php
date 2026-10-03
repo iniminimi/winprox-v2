@@ -25,5 +25,6 @@ final class CheckmateDashboardData
         public bool $needsWorkers,
         public bool $needsCustomers,
         public bool $presencePending,
+        public bool $presenceMissingEmployer,
     ) {}
 }

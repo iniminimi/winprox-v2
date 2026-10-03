@@ -87,6 +87,10 @@ it('provisioneert het checkmate-plan met GPS-bezoeken en een Clock Point', funct
         ->and($fresh->hasTimeModule())->toBeTrue()
         ->and($fresh->allowsGpsWorkVisits())->toBeTrue()
         ->and($fresh->gpsVisitRadiusMeters())->toBe(100)
+        // CIAO staat meteen aan (essentie van Checkmate); tenant vult het
+        // ondernemingsnummer later in via Instellingen.
+        ->and($fresh->presenceComplianceEnabled())->toBeTrue()
+        ->and($fresh->presenceComplianceScope())->toBe(\App\Enums\PresenceComplianceScope::CiaoCleaning)
         ->and($fresh->billing_seats_qty)->toBeGreaterThanOrEqual(1)
         // includes_facility=false maar een Clock Point is er wél (device-linking).
         ->and(ClockPoint::query()->where('tenant_id', $fresh->id)->count())->toBeGreaterThanOrEqual(1);
@@ -420,6 +424,40 @@ it('bevestigt CIAO via de platform-toggle en wist de pending-status', function (
     $fresh = $tenant->fresh();
     expect($fresh->presence_compliance_enabled)->toBeTrue()
         ->and($fresh->presenceComplianceRequested())->toBeFalse();
+});
+
+it('zet CIAO aan bij checkmate-entitlements en toont de BCE-nudge tot het nummer ingevuld is', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+    Tenancy::actAs($tenant->id);
+
+    // Zelfde pad als onboarding/plan-activatie.
+    app(ApplyPlanEntitlementsAction::class)->handle($tenant);
+    $tenant->refresh();
+
+    expect($tenant->presenceComplianceEnabled())->toBeTrue()
+        ->and($tenant->presenceComplianceScope())->toBe(PresenceComplianceScope::CiaoCleaning)
+        ->and($tenant->presenceComplianceRequested())->toBeFalse();
+
+    // Instellingen tonen de actieve CIAO-sectie, niet het aanvraagformulier.
+    $this->actingAs($admin)
+        ->get('/settings')
+        ->assertOk()
+        ->assertSee(__('settings.presence.save'), false)
+        ->assertDontSee(__('settings.presence.request_submit'), false);
+
+    // CIAO aan maar nog geen BCE → nudge op het dashboard.
+    $this->get('/dashboard')
+        ->assertOk()
+        ->assertSee(__('dashboard.checkmate.ciao.missing_employer_title'), false);
+
+    // BCE ingevuld → nudge weg (unsetRelation: de guard-cache houdt de oude
+    // tenant-relatie vast, zelfde patroon als Dashboard-mutaties).
+    $tenant->update(['enterprise_number' => '0123456789']);
+    $admin->unsetRelation('tenant');
+    $this->get('/dashboard')
+        ->assertOk()
+        ->assertDontSee(__('dashboard.checkmate.ciao.missing_employer_title'), false);
 });
 
 it('laat seat-qty wijzigen maar niet onder het actieve aantal', function () {

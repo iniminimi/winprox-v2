@@ -27,6 +27,16 @@
                     </a>
                 </div>
             </div>
+        @elseif ($checkmate->presenceMissingEmployer)
+            <div class="wp-card wp-card-pad wp-stack-tight">
+                <p class="wp-text-body"><strong>{{ __('dashboard.checkmate.ciao.missing_employer_title') }}</strong></p>
+                <p class="wp-muted">{{ __('dashboard.checkmate.ciao.missing_employer_body') }}</p>
+                <div class="wp-cluster wp-cluster--tight">
+                    <a href="{{ route('settings.index') }}" class="btn btn--ghost btn--sm">
+                        {{ __('dashboard.checkmate.ciao.missing_employer_cta') }}
+                    </a>
+                </div>
+            </div>
         @endif
 
         @if ($checkmate->needsWorkers)

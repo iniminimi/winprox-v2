@@ -187,7 +187,10 @@
     "ciao": {
       "pending_title": "CIAO-aanvraag in behandeling",
       "pending_body": "Je RSZ-aanvraag wacht op bevestiging. Daarna lopen de aanwezigheidsregistraties automatisch mee.",
-      "pending_cta": "Naar instellingen"
+      "pending_cta": "Naar instellingen",
+      "missing_employer_title": "Ondernemingsnummer invullen",
+      "missing_employer_body": "CIAO staat aan, maar zonder ondernemingsnummer kan WinProx niets naar de RSZ sturen. Vul je BCE in om de doorgifte te activeren.",
+      "missing_employer_cta": "Naar instellingen"
     }
   }
 }

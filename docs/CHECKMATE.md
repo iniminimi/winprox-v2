@@ -12,9 +12,10 @@ scope (`CiaoCleaning`; bouw volgt via `rsz.construction_scope_enabled`). Het is 
 generiek "lite CRM". Dat betekent:
 
 - `checkmate_mode` forceert bij provisioning: `has_time_module = true`,
-  `time_gps_visits = true`, `time_gps_visit_radius_meters = 100`.
-- CIAO-scope default `CiaoCleaning`; BCE-nummer (`enterprise_number`) is verplicht
-  voor compliance, via self-service onboarding (§6).
+  `time_gps_visits = true`, `time_gps_visit_radius_meters = 100`,
+  `presence_compliance_enabled = true` (CIAO staat aan vanaf de start; zie §6).
+- CIAO-scope default `CiaoCleaning`; BCE-nummer (`enterprise_number`) vult de
+  tenant zelf in via Instellingen.
 - Prijs: **€5 per actieve seat per maand**, tenant kiest het aantal zelf.
 
 ## 2. Architectuur: plan-preset, geen product
@@ -101,10 +102,17 @@ Checklists, Kalender, Reserveringen, Unitmetingen, ESG, IoT, API.
 
 ## 6. CIAO-activatie en pending-state
 
-- Self-service formulier (BCE + scope-keuze) → `presence_compliance_scope` gezet,
-  `presence_compliance_enabled` blijft uit → superuser bevestigt. **Geen nieuwe
-  statuskolom** — scope-gezet + enabled-uit *is* de pending-state; platform-mail naar
-  superuser zoals bij trial-requests.
+- **Checkmate**: `presence_compliance_enabled = true` vanaf plan-activering
+  (`ApplyPlanEntitlementsAction`, checkmate-preset) — CIAO ís het product; de
+  tenant vult alleen BCE/btw in via Instellingen. Submissions zonder geldige
+  BCE/NISS/DDT worden lokaal `skipped` (`SubmitPresenceBatchAction` valideert
+  vóór de RSZ-call), nooit verstuurd.
+- **Facility/legacy pending-flow** (tenant vraagt CIAO aan, of een checkmate-
+  tenant waar compliance nog uit stond): self-service formulier (BCE +
+  scope-keuze) → `presence_compliance_scope` gezet, `presence_compliance_enabled`
+  blijft uit → superuser bevestigt. **Geen nieuwe statuskolom** — scope-gezet +
+  enabled-uit *is* de pending-state; platform-mail naar superuser zoals bij
+  trial-requests.
 - **Dashboard/CIAO-banner** zolang `presence_compliance_enabled === false`:
   "RSZ-doorgifte nog niet actief — BCE-verificatie loopt" (of "BCE nog niet
   ingevuld"). Copy moet eerlijk vermelden: *actief vanaf bevestiging; eerdere
