@@ -836,7 +836,7 @@
                 "La visita de trabajo GPS en casa del cliente es la prueba; fichar solo no lo es.",
                 "Activación CIAO con su número de empresa (BCE); nosotros confirmamos y a partir de ahí el envío es automático.",
                 "Los registros valen desde la activación — lo fichado antes nunca se envía después.",
-                "Sin nóminas, sin Dimona, sin expedientes duplicados — solo presencia correcta.",
+                "Usted pasa las horas a su secretaría social. Sin Dimona y sin un segundo expediente de personal: la secretaría sigue haciendo las nóminas.",
                 "Funciona también con la pantalla de reloj WinProx como reloj de fichar fijo en el lugar."
             ]
         },
@@ -867,8 +867,8 @@
             "og_description": "Sus empleados fichan la entrada y la salida con su propio smartphone mediante un código QR. Sin app ni tarjeta."
         },
         "eyebrow": "WinProx Time · Reloj de fichar",
-        "title": "Un reloj de fichar pequeño y elegante para su empresa.",
-        "lead": "Los empleados fichan la entrada y la salida con su propio smartphone vinculado en el reloj de fichar de la empresa. Sin app, sin tarjeta y sin identificación biométrica.",
+        "title": "Reloj de fichar digital para el registro horario en su empresa.",
+        "lead": "El personal ficha con el teléfono, sin app. Usted compara las horas con el horario y las pasa a su secretaría social.",
         "flow": "Escanear → confirmar → fichado",
         "cta_register": "Probar WinProx",
         "video": {
@@ -954,18 +954,39 @@
             ]
         },
         "why": {
-            "title": "De fichar a planificar",
+            "title": "Registro horario",
             "items": [
-                "El reloj de fichar es solo el principio: WinProx enlaza el registro horario con la planificación y el trabajo en el lugar.",
-                "Horas, presencia y pausas aparecen enseguida en WinProx.",
-                "También para CIAO: donde el registro de presencia es relevante, WinProx puede enlazar el fichaje.",
-                "Fichar → registro horario → planificación → trabajo en el lugar."
+                "El personal ficha con la cámara del teléfono. Sin app.",
+                "Las horas, las pausas y el horario están en WinProx.",
+                "Usted pasa las horas a su secretaría social. La secretaría hace el salario.",
+                "Active CIAO si el equipo trabaja en clientes. Un equipo en su propio sitio lo deja apagado."
+            ]
+        },
+        "faq": {
+            "title": "Preguntas frecuentes",
+            "items": [
+                {
+                    "q": "¿Cómo ficha alguien sin app?",
+                    "a": "Con la cámara del propio teléfono, sobre el QR de la pantalla o de una pegatina. No hay nada que instalar."
+                },
+                {
+                    "q": "¿Cuánto cuesta, y la pantalla es obligatoria?",
+                    "a": "5 € por trabajador activo y mes. La pantalla es una opción, en alquiler desde 10 € al mes. Sin pantalla basta una pegatina QR o un enlace."
+                },
+                {
+                    "q": "¿Para quién vale CIAO, y para quién no?",
+                    "a": "CIAO es la presencia en el cliente para limpieza para terceros, por encima del umbral de la declaración de obras. Un equipo que solo trabaja en su propio sitio, como una guardería, lo deja apagado. La construcción en obras desde 500.000 € sin IVA sigue el 1 de abril de 2027."
+                },
+                {
+                    "q": "¿Qué pasa con las horas?",
+                    "a": "WinProx guarda las horas trabajadas, junto al horario. Usted las pasa a su secretaría social. La secretaría hace el salario. WinProx no lo hace."
+                }
             ]
         },
         "start": {
             "title": "Empezar con el reloj de fichar",
             "lead": "Cree una cuenta, dé de alta un Clock Point y coloque la pantalla o un código QR en su local.",
-            "trial": "¿Prefiere probar primero? Inicie una prueba gratuita o pida una demo en info@winprox.app."
+            "trial": "Prueba: 30 días, 3 plazas, tras su solicitud en info@winprox.app."
         },
         "close": {
             "title": "¿Listo para fichar más fácil?",

@@ -200,6 +200,6 @@ Checklists, Kalender, Reserveringen, Unitmetingen, ESG, IoT, API.
 ## 12. Expliciet buiten scope
 
 - Geen facturen/offertes/CRM-breedte; klant = naam + contact + werkadressen.
-- Geen CAW-webservice, geen Dimona, geen payroll.
+- Geen CAW-webservice, geen Dimona, geen loonberekening. De uren van de dienst geeft de klant door aan het sociaal secretariaat.
 - Geen aparte app/subdomain-hosting, geen `tenant.sector`.
 - Geen soft-fail op de nabijheidscheck; geen backfill van pre-activatie-events.

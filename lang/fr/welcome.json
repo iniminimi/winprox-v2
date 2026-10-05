@@ -1,8 +1,8 @@
 {
-    "meta_title": "WinProx — Pointeuse, suivi du temps et travail sur site",
+    "meta_title": "WinProx — Pointeuse digitale et suivi du temps",
     "social": {
-        "og_title": "WinProx — Une petite pointeuse élégante pour votre entreprise",
-        "og_description": "Le travail sur votre site, simplement bien organisé. Du signalement et de la planification à l'exécution et au bouclage — via QR, sans app."
+        "og_title": "WinProx — Pointeuse digitale pour le suivi du temps",
+        "og_description": "Les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social."
     },
     "login": "Connexion",
     "register": "Inscription",
@@ -20,22 +20,23 @@
     },
     "hero": {
         "brand": "WinProx",
-        "headline": "Le travail sur votre site, simplement bien organisé — avec pointeuse digitale et suivi du temps.",
-        "subtitle": "Du signalement et de la planification à l'exécution et au bouclage.",
-        "flow": "Scan → Signaler → Travailler → Terminé",
+        "headline": "La pointeuse digitale pour le suivi du temps dans votre entreprise.",
+        "subtitle": "Les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social. Si votre équipe travaille chez des clients, vous pouvez activer la présence pour l'ONSS.",
+        "flow": "Scan → Pointer → Heures → Secrétariat",
         "flow_steps": {
             "scan": "Scan",
-            "report": "Signaler",
-            "work": "Travailler",
-            "done": "Terminé"
+            "punch": "Pointer",
+            "hours": "Heures",
+            "secretariat": "Secrétariat"
         },
         "cta_start": "Essai gratuit",
         "cta_how": "Voir comment ça marche",
+        "trial": "Essai : 30 jours, 3 sièges, après votre demande.",
         "feature_board": {
-            "badge": "NOUVEAU",
-            "title": "WinProx CHECKMATE",
-            "text": "Enregistrement RSZ CIAO simple sur site pour le nettoyage & la construction",
-            "price": "Seulement 5 €/employé/mois"
+            "badge": "CIAO",
+            "title": "Travailler chez des clients",
+            "text": "Activez la présence pour l'ONSS si votre équipe travaille chez des clients. Nettoyage pour des tiers dès maintenant. Construction le 1er avril 2027.",
+            "price": "5 € par exécutant et par mois"
         }
     },
     "video": {
@@ -53,8 +54,8 @@
             "Photo de contrôle optionnelle au pointage d’entrée ou de sortie",
             "Contrôle renforcé contre les abus, sans identification biométrique",
             "Possible aussi en autocollant QR, sans écran",
-            "Pour le nettoyage et la construction : pointage sur le chantier via QR + GPS",
-            "CIAO/RSZ le cas échéant"
+            "Vous comparez les heures avec l'horaire.",
+            "Vous transmettez les heures à votre secrétariat social."
         ],
         "close": "Plus de contrôle sur qui pointe, quand et où — sans badges ni données biométriques.",
         "price_note": "Écran d’horloge à louer dès €:price par mois et par écran.",

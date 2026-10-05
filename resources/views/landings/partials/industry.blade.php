@@ -145,6 +145,18 @@
     ])
 </div>
 
+@if (\Illuminate\Support\Facades\Lang::has($key.'.faq'))
+    <article class="wp-card wp-card-pad wp-stack">
+        <h2 class="wp-welcome-h3">{{ __("{$key}.faq.title") }}</h2>
+        @foreach (__("{$key}.faq.items") as $item)
+            <div class="wp-stack-tight">
+                <h3 class="wp-subhead">{{ $item['q'] }}</h3>
+                <p class="wp-text-body">{{ $item['a'] }}</p>
+            </div>
+        @endforeach
+    </article>
+@endif
+
 @if ($key !== 'landings.prikklok' && \Illuminate\Support\Facades\Lang::has('landings.shared.clock.title'))
     <article class="wp-card wp-card-pad wp-stack">
         <h2 class="wp-welcome-h3">{{ __('landings.shared.clock.title') }}</h2>

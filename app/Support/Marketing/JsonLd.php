@@ -43,12 +43,22 @@ final class JsonLd
             'url' => route('welcome', absolute: true),
             'description' => __('welcome.social.og_description'),
             'offers' => [
-                '@type' => 'AggregateOffer',
-                'url' => route('pricing', absolute: true),
-                'priceCurrency' => 'EUR',
-                'lowPrice' => '840',
-                'highPrice' => '3000',
-                'offerCount' => 3,
+                [
+                    '@type' => 'Offer',
+                    'name' => 'Checkmate',
+                    'price' => '5',
+                    'priceCurrency' => 'EUR',
+                    'description' => 'Per active worker per month',
+                    'url' => route('pricing', absolute: true),
+                ],
+                [
+                    '@type' => 'Offer',
+                    'name' => 'Clock screen',
+                    'price' => (string) config('marketing.clock_rent_monthly_eur'),
+                    'priceCurrency' => 'EUR',
+                    'description' => 'Optional clock screen, per month',
+                    'url' => route('prikklok', absolute: true),
+                ],
             ],
             'publisher' => [
                 '@type' => 'Organization',

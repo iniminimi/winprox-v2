@@ -836,7 +836,7 @@
                 "La visite de travail GPS chez le client fait la preuve ; le seul pointage ne suffit pas.",
                 "Activation CIAO via votre numéro d'entreprise (BCE) ; nous confirmons et la transmission tourne ensuite automatiquement.",
                 "Les registrations valent à partir de l'activation — ce qui a été pointé avant n'est jamais envoyé après coup.",
-                "Pas de payroll, pas de Dimona, pas de dossiers en double — juste une présence correcte.",
+                "Vous transmettez les heures à votre secrétariat social. Pas de Dimona, pas de second dossier du personnel : le secrétariat continue à établir les salaires.",
                 "Fonctionne aussi avec l’écran d’horloge WinProx comme pointeuse fixe sur site."
             ]
         },
@@ -867,8 +867,8 @@
             "og_description": "Laissez vos employés pointer avec leur propre smartphone via un code QR. Sans appli ni badge."
         },
         "eyebrow": "WinProx Time · Pointeuse",
-        "title": "Une pointeuse petite et élégante pour votre entreprise.",
-        "lead": "Vos employés pointent avec leur propre smartphone associé, à la pointeuse de l’entreprise. Sans appli, sans badge et sans identification biométrique.",
+        "title": "Pointeuse digitale pour le suivi du temps dans votre entreprise.",
+        "lead": "Les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social.",
         "flow": "Scan → confirmation → pointé",
         "cta_register": "Essayer WinProx",
         "video": {
@@ -954,18 +954,39 @@
             ]
         },
         "why": {
-            "title": "Du pointage au planning",
+            "title": "Suivi du temps",
             "items": [
-                "La pointeuse n’est que le début : WinProx relie l’enregistrement du temps au planning et au travail sur site.",
-                "Heures, présences et pauses sont aussitôt dans WinProx.",
-                "Aussi pour CIAO : là où l’enregistrement de présence compte, WinProx peut y relier le pointage.",
-                "Pointage → temps → planning → travail sur site."
+                "Les employés pointent avec l'appareil photo de leur téléphone. Sans appli.",
+                "Les heures, les pauses et l'horaire sont dans WinProx.",
+                "Vous transmettez les heures à votre secrétariat social. Le secrétariat établit le salaire.",
+                "Activez CIAO si l'équipe travaille chez des clients. Une équipe sur son propre site le laisse éteint."
+            ]
+        },
+        "faq": {
+            "title": "Questions fréquentes",
+            "items": [
+                {
+                    "q": "Comment pointer sans appli ?",
+                    "a": "Avec l'appareil photo du propre téléphone, sur le QR de l'écran ou d'un autocollant. Rien à installer."
+                },
+                {
+                    "q": "Combien ça coûte, et l'écran est-il obligatoire ?",
+                    "a": "5 € par exécutant actif et par mois. L'écran est une option, en location dès 10 € par mois. Sans écran, un autocollant QR ou un lien suffit."
+                },
+                {
+                    "q": "Pour qui CIAO vaut-il, et pour qui pas ?",
+                    "a": "CIAO est la présence chez le client pour le nettoyage pour des tiers, au-dessus du seuil de la déclaration de travaux. Une équipe qui ne travaille que sur son propre site, comme une crèche, le laisse éteint. La construction sur chantier dès 500 000 € hors TVA suit le 1er avril 2027."
+                },
+                {
+                    "q": "Que deviennent les heures ?",
+                    "a": "WinProx conserve les heures prestées, à côté de l'horaire. Vous les transmettez à votre secrétariat social. Le secrétariat établit le salaire. WinProx ne le fait pas."
+                }
             ]
         },
         "start": {
             "title": "Démarrer avec la pointeuse",
             "lead": "Créez un compte, ajoutez un Clock Point et placez l’écran ou un code QR sur votre site.",
-            "trial": "Envie d’essayer d’abord ? Démarrez un essai gratuit ou demandez une démo via info@winprox.app."
+            "trial": "Essai : 30 jours, 3 sièges, après votre demande via info@winprox.app."
         },
         "close": {
             "title": "Prêt à pointer plus simplement ?",

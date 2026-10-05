@@ -855,6 +855,7 @@ productsector op `Tenant`.
   `winprox:retention-prune`; mislukt/wachtrij/overgeslagen blijven. Officiële
   registratie = RSZ.
 - **Niet in golf 1:** Checkinatwork (CAW)-API, Construbadge-hardware, Dimona/payroll, vlees-CAW.
+- **Sociaal secretariaat:** de uren van de dienst geeft de klant door aan het secretariaat. Geen Dimona, geen loonberekening. Het klantbezoek blijft de CIAO-aanwezigheid.
 
 ### 5g.3 Golf 2 — CIAO bouw (`CiaoConstruction`)
 - Zelfde pijplijn/client; scope + UI-optie achter `RSZ_CONSTRUCTION_SCOPE_ENABLED`

@@ -1,8 +1,8 @@
 {
-    "meta_title": "WinProx — Stempeluhr, Zeiterfassung und Arbeit vor Ort",
+    "meta_title": "WinProx — Digitale Stempeluhr und Zeiterfassung",
     "social": {
-        "og_title": "WinProx — Eine kleine, elegante Stempeluhr für Ihr Unternehmen",
-        "og_description": "Die Arbeit an Ihrem Standort, einfach gut geregelt. Von Meldung und Planung bis Ausführung und Abschluss — per QR, ohne App."
+        "og_title": "WinProx — Digitale Stempeluhr für die Zeiterfassung",
+        "og_description": "Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter."
     },
     "login": "Anmelden",
     "register": "Registrieren",
@@ -20,22 +20,23 @@
     },
     "hero": {
         "brand": "WinProx",
-        "headline": "Die Arbeit an Ihrem Standort, einfach gut geregelt — mit digitaler Stempeluhr und Zeiterfassung.",
-        "subtitle": "Von Meldung und Planung bis Ausführung und Abschluss.",
-        "flow": "Scan → Melden → Arbeiten → Fertig",
+        "headline": "Die digitale Stempeluhr für die Zeiterfassung in Ihrem Unternehmen.",
+        "subtitle": "Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter. Arbeitet Ihre Mannschaft bei Kunden, können Sie die Anwesenheit für das LSS einschalten.",
+        "flow": "Scan → Stempeln → Stunden → Sekretariat",
         "flow_steps": {
             "scan": "Scan",
-            "report": "Melden",
-            "work": "Arbeiten",
-            "done": "Fertig"
+            "punch": "Stempeln",
+            "hours": "Stunden",
+            "secretariat": "Sekretariat"
         },
         "cta_start": "Kostenlos testen",
         "cta_how": "So funktioniert es",
+        "trial": "Test: 30 Tage, 3 Plätze, nach Ihrer Anfrage.",
         "feature_board": {
-            "badge": "NEU",
-            "title": "WinProx CHECKMATE",
-            "text": "Einfache RSZ-CIAO-Registrierung vor Ort für Reinigung & Bau",
-            "price": "Nur 5 €/Mitarbeiter/Monat"
+            "badge": "CIAO",
+            "title": "Bei Kunden arbeiten",
+            "text": "Schalten Sie die Anwesenheit für das LSS ein, wenn Ihre Mannschaft bei Kunden arbeitet. Reinigung für Dritte jetzt. Bau am 1. April 2027.",
+            "price": "5 € pro Ausführenden und Monat"
         }
     },
     "video": {
@@ -53,8 +54,8 @@
             "Optional ein Kontrollfoto beim Ein- oder Ausstempeln",
             "Zusätzliche Kontrolle gegen Missbrauch, ohne biometrische Identifikation",
             "Auch als QR-Aufkleber möglich, ohne Bildschirm",
-            "Für Reinigung und Bau: Stempeln am Arbeitsplatz mit QR + GPS",
-            "CIAO/RSZ wo zutreffend"
+            "Sie vergleichen die Stunden mit dem Dienstplan.",
+            "Die Stunden geben Sie an Ihr Sozialsekretariat weiter."
         ],
         "close": "Mehr Kontrolle darüber, wer wann und wo einstempelt — ohne Badges oder biometrische Daten.",
         "price_note": "Uhrbildschirm zu mieten ab €:price pro Monat und Bildschirm.",

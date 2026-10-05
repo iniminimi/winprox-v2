@@ -158,6 +158,7 @@
           "Presence, timesheets and My hours (own shifts only).",
           "Staff can clock someone in by hand if the phone was forgotten.",
           "CIAO (NSSO) on request, at no extra fee.",
+          "You pass the hours to the social secretariat. No Dimona and no payroll calculation.",
           "Optional GPS work visits: Start work on the site pin.",
           "After clock-in Clock Point shows a dark Welcome card and the round as a timeline.",
           "Clock display (TFT): rotating QR, on-hours and an optional idle screen (photo slideshow or analog clock) outside clock-in hours."
@@ -174,6 +175,7 @@
           "Import customers in bulk via CSV or Excel (including work addresses per row).",
           "Presence, hour statements and My hours as in Time.",
           "CIAO (RSZ) is on from the start — enter the enterprise number in the settings.",
+          "You pass the hours to the social secretariat. No Dimona and no payroll calculation.",
           "Its own compact manual instead of the general WinProx manual.",
           "€5 per active worker per month; seat count adjustable.",
           "New organisations pick Checkmate as their starter pack: a one-month trial plus a demo team with a worker and two demo customers to start with.",

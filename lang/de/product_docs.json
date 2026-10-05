@@ -158,6 +158,7 @@
           "Anwesenheit, Stundenblatt und Meine Stunden (nur eigene Dienste).",
           "Die Verwaltung kann manuell einstempeln, wenn das Handy vergessen ist.",
           "CIAO (LSS) auf Anfrage, ohne Aufpreis.",
+          "Die Stunden geben Sie an das Sozialsekretariat weiter. Kein Dimona und keine Lohnberechnung.",
           "Optionale GPS-Arbeitsbesuche: Arbeit starten am Standort-Pin.",
           "Nach dem Einstempeln zeigt Clock Point eine dunkle Willkommen-Karte und die Runde als Zeitlinie.",
           "Stechuhr-Display (TFT): rotierender QR-Code, Einschaltzeiten und optionaler Ruhebildschirm (Foto-Diashow oder Analoguhr) außerhalb der Stempelzeiten."
@@ -174,6 +175,7 @@
           "Kunden per CSV oder Excel in Bulk importieren (inkl. Einsatzadressen pro Zeile).",
           "Anwesenheit, Stundenkonto und Meine Stunden wie in Time.",
           "CIAO (LSS) ist ab Beginn aktiv — Unternehmensnummer in den Einstellungen eintragen.",
+          "Die Stunden geben Sie an das Sozialsekretariat weiter. Kein Dimona und keine Lohnberechnung.",
           "Eigene kompakte Anleitung statt der allgemeinen WinProx-Anleitung.",
           "5 € pro aktivem Mitarbeiter im Monat; Sitzzahl anpassbar.",
           "Neue Organisationen wählen Checkmate als Startvorlage: ein Monat Probezeit plus ein Demo-Team mit Mitarbeiter und zwei Demokunden zum Start.",

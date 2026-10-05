@@ -50,9 +50,9 @@
                         <ol class="wp-welcome-hero-flow" aria-label="{{ __('welcome.hero.flow') }}">
                             @foreach ([
                                 ['icon' => 'qr', 'key' => 'scan'],
-                                ['icon' => 'alert-triangle', 'key' => 'report'],
-                                ['icon' => 'clipboard-check', 'key' => 'work'],
-                                ['icon' => 'check', 'key' => 'done'],
+                                ['icon' => 'clock', 'key' => 'punch'],
+                                ['icon' => 'roster', 'key' => 'hours'],
+                                ['icon' => 'check', 'key' => 'secretariat'],
                             ] as $step)
                                 <li class="wp-welcome-hero-flow__step">
                                     <span class="wp-welcome-hero-flow__icon" aria-hidden="true">
@@ -66,6 +66,7 @@
                             <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __('welcome.hero.cta_start') }}</a>
                             <a href="#video" class="btn btn--ghost btn--lg">{{ __('welcome.hero.cta_how') }}</a>
                         </div>
+                        <p class="wp-text-body">{{ __('welcome.hero.trial') }}</p>
                         <a href="{{ route('checkmate') }}" class="wp-welcome-feature-board" aria-label="{{ __('welcome.hero.feature_board.title') }}">
                             <span class="wp-pill wp-pill--new">{{ __('welcome.hero.feature_board.badge') }}</span>
                             <p class="wp-welcome-feature-board__title">{{ __('welcome.hero.feature_board.title') }}</p>

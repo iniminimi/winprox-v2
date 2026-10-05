@@ -836,7 +836,7 @@
                 "Der GPS-Arbeitsbesuch beim Kunden ist der Beweis; Einstechen allein ist es nicht.",
                 "CIAO-Aktivierung über Ihre Unternehmensnummer (BCE); wir bestätigen und danach läuft die Meldung automatisch.",
                 "Registrierungen gelten ab Aktivierung — was vorher gestochen wurde, wird nie nachträglich gesendet.",
-                "Keine Payroll, kein Dimona, keine doppelten Akten — nur korrekte Anwesenheit.",
+                "Sie geben die Stunden an Ihr Sozialsekretariat weiter. Kein Dimona und keine zweite Personalakte: das Sekretariat bleibt für die Löhne zuständig.",
                 "Funktioniert auch mit dem WinProx-Uhrbildschirm als feste Stempeluhr vor Ort."
             ]
         },
@@ -867,8 +867,8 @@
             "og_description": "Mitarbeiter stempeln mit dem eigenen Smartphone über einen QR-Code ein und aus. Ohne App oder Badge."
         },
         "eyebrow": "WinProx Time · Stempeluhr",
-        "title": "Eine kleine, elegante Stempeluhr für Ihr Unternehmen.",
-        "lead": "Mitarbeiter stempeln mit ihrem eigenen gekoppelten Smartphone an der Stempeluhr des Unternehmens ein und aus. Ohne App, ohne Badge und ohne biometrische Identifikation.",
+        "title": "Digitale Stempeluhr für die Zeiterfassung in Ihrem Unternehmen.",
+        "lead": "Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter.",
         "flow": "Scannen → bestätigen → eingestempelt",
         "cta_register": "WinProx ausprobieren",
         "video": {
@@ -954,18 +954,39 @@
             ]
         },
         "why": {
-            "title": "Vom Stempeln zur Planung",
+            "title": "Zeiterfassung",
             "items": [
-                "Die Stempeluhr ist erst der Anfang: WinProx verknüpft Zeiterfassung mit Planung und Arbeit vor Ort.",
-                "Stunden, Anwesenheit und Pausen stehen sofort in WinProx.",
-                "Auch für CIAO: wo Anwesenheitserfassung relevant ist, kann WinProx den Stempelvorgang verknüpfen.",
-                "Stempeln → Zeiterfassung → Planung → Arbeit vor Ort."
+                "Mitarbeitende stempeln mit der Kamera ihres Telefons. Ohne App.",
+                "Stunden, Pausen und der Dienstplan stehen in WinProx.",
+                "Die Stunden geben Sie an Ihr Sozialsekretariat weiter. Das Sekretariat macht den Lohn.",
+                "Schalten Sie CIAO ein, wenn die Mannschaft bei Kunden arbeitet. Eine Mannschaft auf der eigenen Site lässt es aus."
+            ]
+        },
+        "faq": {
+            "title": "Häufige Fragen",
+            "items": [
+                {
+                    "q": "Wie stempelt jemand ohne App?",
+                    "a": "Mit der Kamera des eigenen Telefons, auf den QR des Bildschirms oder eines Aufklebers. Nichts zu installieren."
+                },
+                {
+                    "q": "Was kostet es, und ist der Bildschirm Pflicht?",
+                    "a": "5 € pro aktivem Ausführenden und Monat. Der Uhrbildschirm ist eine Option, zur Miete ab 10 € pro Monat. Ohne Bildschirm reicht ein QR-Aufkleber oder ein Link."
+                },
+                {
+                    "q": "Für wen gilt CIAO, und für wen nicht?",
+                    "a": "CIAO ist die Anwesenheit beim Kunden für Reinigung für Dritte, über der Schwelle der Arbeitsmeldung. Eine Mannschaft, die nur auf der eigenen Site arbeitet, etwa eine Kita, lässt es aus. Bau auf Baustellen ab 500.000 € ohne MwSt. folgt am 1. April 2027."
+                },
+                {
+                    "q": "Was passiert mit den Stunden?",
+                    "a": "WinProx hält die gearbeiteten Stunden fest, neben dem Dienstplan. Sie geben sie an Ihr Sozialsekretariat weiter. Das Sekretariat macht den Lohn. WinProx tut das nicht."
+                }
             ]
         },
         "start": {
             "title": "Mit der Stempeluhr starten",
             "lead": "Konto anlegen, Clock Point anlegen und den Uhrbildschirm oder einen QR-Code vor Ort platzieren.",
-            "trial": "Lieber zuerst testen? Starten Sie eine kostenlose Testphase oder fragen Sie eine Demo an unter info@winprox.app."
+            "trial": "Test: 30 Tage, 3 Plätze, nach Ihrer Anfrage über info@winprox.app."
         },
         "close": {
             "title": "Bereit für einfacheres Stempeln?",

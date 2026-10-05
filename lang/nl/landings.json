@@ -836,7 +836,7 @@
                 "Het GPS-werkbezoek op de klantlocatie is het bewijs; inklokken alleen is dat niet.",
                 "CIAO-activering via je ondernemingsnummer (BCE); wij bevestigen en vanaf dan loopt de doorgifte automatisch.",
                 "Registraties gelden vanaf activering — wat ervoor werd geklokt, wordt niet achteraf verzonden.",
-                "Geen payroll, geen Dimona, geen dubbele dossiers — alleen correcte aanwezigheid.",
+                "De uren geeft u door aan uw sociaal secretariaat. Geen Dimona en geen tweede personeelsdossier: het secretariaat blijft de lonen doen.",
                 "Werkt ook met het WinProx-klokscherm als vaste prikklok op de locatie."
             ]
         },
@@ -861,14 +861,14 @@
     },
     "prikklok": {
         "nav_label": "Prikklok",
-        "meta_title": "Digitale prikklok voor werknemers | WinProx",
+        "meta_title": "Digitale prikklok voor urenregistratie | WinProx",
         "social": {
-            "og_title": "Digitale prikklok voor werknemers | WinProx",
-            "og_description": "Laat medewerkers in- en uitprikken met hun eigen smartphone via een QR-code. Geen app of badge nodig."
+            "og_title": "Digitale prikklok voor urenregistratie | WinProx",
+            "og_description": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat."
         },
         "eyebrow": "WinProx Time · Prikklok",
-        "title": "Een kleine, elegante prikklok voor uw bedrijf.",
-        "lead": "Werknemers prikken in en uit met hun eigen gekoppelde smartphone, aan de prikklok van het bedrijf. Geen app, geen badge en geen biometrische identificatie.",
+        "title": "Digitale prikklok voor urenregistratie in uw bedrijf.",
+        "lead": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat.",
         "flow": "Scan → bevestig → ingeklokt",
         "cta_register": "Probeer WinProx",
         "video": {
@@ -912,8 +912,8 @@
                 "Optioneel een controlefoto bij het in- of uitprikken.",
                 "Extra controle tegen misbruik, zonder biometrische identificatie.",
                 "Ook mogelijk als QR-sticker, zonder scherm.",
-                "Voor schoonmaak en bouw: prikken op de werkplek met QR + GPS.",
-                "CIAO/RSZ waar van toepassing.",
+                "Uren vergelijkt u met het uurrooster.",
+                "De uren geeft u door aan uw sociaal secretariaat.",
                 "Zonder smartphone? Voornaam + pincode volstaat op het scherm."
             ],
             "close": "Meer controle over wie, wanneer en waar er wordt ingeprikt — zonder badges of biometrische gegevens."
@@ -954,18 +954,39 @@
             ]
         },
         "why": {
-            "title": "Van prikken tot plannen",
+            "title": "Urenregistratie",
             "items": [
-                "De prikklok is slechts het begin: WinProx koppelt tijdregistratie aan planning en werk op locatie.",
-                "Uren, aanwezigheid en pauzes staan meteen in WinProx.",
-                "Ook voor CIAO: waar aanwezigheidsregistratie relevant is, kan WinProx de prik daaraan koppelen.",
-                "Prikken → tijdregistratie → planning → werk op locatie."
+                "Medewerkers prikken met de camera van hun telefoon. Geen app.",
+                "Uren, pauzes en het rooster staan in WinProx.",
+                "De uren geeft u door aan uw sociaal secretariaat. Het secretariaat maakt het loon.",
+                "CIAO zet u aan als de ploeg bij klanten werkt. Een ploeg op de eigen site laat het uit."
+            ]
+        },
+        "faq": {
+            "title": "Veelgestelde vragen",
+            "items": [
+                {
+                    "q": "Hoe prikt een medewerker zonder app?",
+                    "a": "Met de camera van de eigen telefoon, op de QR van het scherm of van een sticker. Er is niets te installeren."
+                },
+                {
+                    "q": "Wat kost het, en is het scherm verplicht?",
+                    "a": "€5 per actieve uitvoerder per maand. Het klokscherm is een optie, te huur vanaf €10 per maand. Zonder scherm volstaat een QR-sticker of een link."
+                },
+                {
+                    "q": "Voor wie geldt CIAO, en voor wie niet?",
+                    "a": "CIAO is de aanwezigheid bij de klant voor schoonmaak voor derden, boven de drempel van de aangifte van werken. Een ploeg die alleen op de eigen site werkt, zoals een crèche, zet dit uit. Bouw op werven vanaf €500.000 exclusief btw volgt op 1 april 2027."
+                },
+                {
+                    "q": "Wat gebeurt er met de uren?",
+                    "a": "WinProx houdt de gewerkte uren bij, naast het rooster. U geeft ze door aan uw sociaal secretariaat. Het secretariaat maakt het loon. WinProx doet dat niet."
+                }
             ]
         },
         "start": {
             "title": "Starten met de prikklok",
             "lead": "Maak een account, maak een Clock Point aan en plaats het klokscherm of een QR-code op uw locatie.",
-            "trial": "Liever eerst proberen? Start een gratis proefperiode of vraag een demo via info@winprox.app."
+            "trial": "Proef: 30 dagen, 3 seats, na uw aanvraag via info@winprox.app."
         },
         "close": {
             "title": "Klaar om eenvoudiger te prikken?",

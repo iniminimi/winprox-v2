@@ -1,8 +1,8 @@
 {
-    "meta_title": "WinProx — Prikklok, tijdregistratie en werk op locatie",
+    "meta_title": "WinProx — Digitale prikklok en urenregistratie",
     "social": {
-        "og_title": "WinProx — Een kleine, elegante prikklok voor uw bedrijf",
-        "og_description": "Het werk op uw locatie, gewoon goed geregeld. Van melding en planning tot uitvoering en afhandeling — via QR, zonder app."
+        "og_title": "WinProx — Digitale prikklok voor urenregistratie",
+        "og_description": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat."
     },
     "login": "Inloggen",
     "register": "Registreren",
@@ -20,22 +20,23 @@
     },
     "hero": {
         "brand": "WinProx",
-        "headline": "Het werk op uw locatie, gewoon goed geregeld — met digitale prikklok en tijdregistratie.",
-        "subtitle": "Van melding en planning tot uitvoering en afhandeling.",
-        "flow": "Scan → Meld → Werk → Klaar",
+        "headline": "De digitale prikklok voor urenregistratie in uw bedrijf.",
+        "subtitle": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat. Werkt uw ploeg bij klanten, dan kunt u de aanwezigheid voor de RSZ aanzetten.",
+        "flow": "Scan → Prik → Uren → Secretariaat",
         "flow_steps": {
             "scan": "Scan",
-            "report": "Meld",
-            "work": "Werk",
-            "done": "Klaar"
+            "punch": "Prik",
+            "hours": "Uren",
+            "secretariat": "Secretariaat"
         },
         "cta_start": "Gratis proberen",
         "cta_how": "Bekijk hoe het werkt",
+        "trial": "Proef: 30 dagen, 3 seats, na uw aanvraag.",
         "feature_board": {
-            "badge": "NIEUW",
-            "title": "WinProx CHECKMATE",
-            "text": "Eenvoudige RSZ CIAO registratie op locatie voor schoonmaak & bouw",
-            "price": "Slechts 5€/werknemer/maand"
+            "badge": "CIAO",
+            "title": "Bij klanten werken",
+            "text": "Zet de aanwezigheid voor de RSZ aan als uw ploeg bij klanten werkt. Schoonmaak voor derden nu. Bouw op 1 april 2027.",
+            "price": "€5 per uitvoerder per maand"
         }
     },
     "video": {
@@ -53,8 +54,8 @@
             "Optioneel een controlefoto bij het in- of uitprikken",
             "Extra controle tegen misbruik, zonder biometrische identificatie",
             "Ook mogelijk als QR-sticker, zonder scherm",
-            "Voor schoonmaak en bouw: prikken op de werkplek met QR + GPS",
-            "CIAO/RSZ waar van toepassing"
+            "Uren vergelijkt u met het uurrooster.",
+            "De uren geeft u door aan uw sociaal secretariaat."
         ],
         "close": "Meer controle over wie, wanneer en waar er wordt ingeprikt — zonder badges of biometrische gegevens.",
         "price_note": "Klokscherm te huur vanaf €:price per maand per scherm.",

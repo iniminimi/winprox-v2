@@ -1,8 +1,8 @@
 {
-    "meta_title": "WinProx — Reloj de fichar, registro horario y trabajo in situ",
+    "meta_title": "WinProx — Reloj de fichar digital y registro horario",
     "social": {
-        "og_title": "WinProx — Un pequeño y elegante reloj de fichar para su empresa",
-        "og_description": "El trabajo en su ubicación, simplemente bien organizado. Del aviso y la planificación a la ejecución y el cierre — vía QR, sin app."
+        "og_title": "WinProx — Reloj de fichar digital para el registro horario",
+        "og_description": "El personal ficha con el teléfono, sin app. Usted compara las horas con el horario y las pasa a su secretaría social."
     },
     "login": "Iniciar sesión",
     "register": "Registrarse",
@@ -20,22 +20,23 @@
     },
     "hero": {
         "brand": "WinProx",
-        "headline": "El trabajo en su ubicación, simplemente bien organizado — con reloj de fichar digital y registro horario.",
-        "subtitle": "Del aviso y la planificación a la ejecución y el cierre.",
-        "flow": "Escanear → Informar → Trabajar → Listo",
+        "headline": "El reloj de fichar digital para el registro horario en su empresa.",
+        "subtitle": "El personal ficha con el teléfono, sin app. Usted compara las horas con el horario y las pasa a su secretaría social. Si su equipo trabaja en clientes, puede activar la presencia para la ONSS.",
+        "flow": "Escanear → Fichar → Horas → Secretaría",
         "flow_steps": {
             "scan": "Escanear",
-            "report": "Informar",
-            "work": "Trabajar",
-            "done": "Listo"
+            "punch": "Fichar",
+            "hours": "Horas",
+            "secretariat": "Secretaría"
         },
         "cta_start": "Probar gratis",
         "cta_how": "Ver cómo funciona",
+        "trial": "Prueba: 30 días, 3 plazas, tras su solicitud.",
         "feature_board": {
-            "badge": "NUEVO",
-            "title": "WinProx CHECKMATE",
-            "text": "Registro RSZ CIAO sencillo en obra para limpieza y construcción",
-            "price": "Solo 5 €/trabajador/mes"
+            "badge": "CIAO",
+            "title": "Trabajar en clientes",
+            "text": "Active la presencia para la ONSS si su equipo trabaja en clientes. Limpieza para terceros ahora. Construcción el 1 de abril de 2027.",
+            "price": "5 € por trabajador y mes"
         }
     },
     "video": {
@@ -53,8 +54,8 @@
             "Foto de control opcional al fichar la entrada o la salida",
             "Control adicional contra el uso indebido, sin identificación biométrica",
             "También posible como pegatina QR, sin pantalla",
-            "Para limpieza y construcción: fichaje en el lugar de trabajo con QR + GPS",
-            "CIAO/RSZ cuando corresponda"
+            "Compare las horas con el horario.",
+            "Pase las horas a su secretaría social."
         ],
         "close": "Más control sobre quién ficha, cuándo y dónde — sin tarjetas ni datos biométricos.",
         "price_note": "Pantalla de reloj en alquiler desde €:price al mes por pantalla.",

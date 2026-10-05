@@ -1,8 +1,8 @@
 {
-    "meta_title": "WinProx — Timbratrice, rilevazione presenze e lavoro in sede",
+    "meta_title": "WinProx — Timbratrice digitale e rilevazione orari",
     "social": {
-        "og_title": "WinProx — Un timbratore piccolo ed elegante per la Sua azienda",
-        "og_description": "Il lavoro nella Sua sede, semplicemente ben organizzato. Dalla segnalazione e pianificazione all'esecuzione e alla chiusura — via QR, senza app."
+        "og_title": "WinProx — Timbratrice digitale per la rilevazione orari",
+        "og_description": "Il personale timbra con il telefono, senza app. Confrontate le ore con il turno e le passate al segretariato sociale."
     },
     "login": "Accedi",
     "register": "Registrati",
@@ -20,22 +20,23 @@
     },
     "hero": {
         "brand": "WinProx",
-        "headline": "Il lavoro nella Sua sede, semplicemente ben organizzato — con timbratrice digitale e rilevazione presenze.",
-        "subtitle": "Dalla segnalazione e pianificazione all'esecuzione e alla chiusura.",
-        "flow": "Scansiona → Segnala → Lavora → Fatto",
+        "headline": "La timbratrice digitale per la rilevazione orari nella vostra azienda.",
+        "subtitle": "Il personale timbra con il telefono, senza app. Confrontate le ore con il turno e le passate al segretariato sociale. Se la squadra lavora dai clienti, potete attivare la presenza per l'ONSS.",
+        "flow": "Scansiona → Timbra → Ore → Segretariato",
         "flow_steps": {
             "scan": "Scansiona",
-            "report": "Segnala",
-            "work": "Lavora",
-            "done": "Fatto"
+            "punch": "Timbra",
+            "hours": "Ore",
+            "secretariat": "Segretariato"
         },
         "cta_start": "Prova gratis",
         "cta_how": "Scopri come funziona",
+        "trial": "Prova: 30 giorni, 3 posti, dopo la vostra richiesta.",
         "feature_board": {
-            "badge": "NUOVO",
-            "title": "WinProx CHECKMATE",
-            "text": "Registrazione RSZ CIAO semplice in loco per pulizie ed edilizia",
-            "price": "Solo 5 €/operaio/mese"
+            "badge": "CIAO",
+            "title": "Lavorare dai clienti",
+            "text": "Attivate la presenza per l'ONSS se la squadra lavora dai clienti. Pulizie per terzi da subito. Edilizia il 1° aprile 2027.",
+            "price": "5 € per operatore al mese"
         }
     },
     "video": {
@@ -53,8 +54,8 @@
             "Foto di controllo opzionale in entrata o in uscita",
             "Controllo extra contro gli abusi, senza identificazione biometrica",
             "Possibile anche come adesivo QR, senza schermo",
-            "Per pulizie e costruzioni: timbratura sul posto di lavoro con QR + GPS",
-            "CIAO/RSZ dove applicabile"
+            "Confrontate le ore con il turno.",
+            "Passate le ore al segretariato sociale."
         ],
         "close": "Più controllo su chi timbra, quando e dove — senza badge né dati biometrici.",
         "price_note": "Schermo-orologio a noleggio da €:price al mese per schermo.",

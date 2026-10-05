@@ -836,7 +836,7 @@
                 "The GPS work visit at the customer site is the proof; clocking in alone is not.",
                 "CIAO activation via your enterprise number (BCE); we confirm and from then on reporting runs automatically.",
                 "Registrations count from activation — anything clocked before that is never sent afterwards.",
-                "No payroll, no Dimona, no duplicate files — just correct presence.",
+                "You pass the hours to your social secretariat. No Dimona and no second personnel file: the secretariat still runs payroll.",
                 "Also works with the WinProx clock screen as a fixed time clock on site."
             ]
         },
@@ -861,14 +861,14 @@
     },
     "prikklok": {
         "nav_label": "Time clock",
-        "meta_title": "Digital time clock for employees | WinProx",
+        "meta_title": "Digital time clock for time tracking | WinProx",
         "social": {
-            "og_title": "Digital time clock for employees | WinProx",
-            "og_description": "Let employees clock in and out with their own smartphone via a QR code. No app or badge needed."
+            "og_title": "Digital time clock for time tracking | WinProx",
+            "og_description": "Staff clock in with their phone, without an app. You compare the hours with the roster and pass them to your social secretariat."
         },
         "eyebrow": "WinProx Time · Time clock",
-        "title": "A small, elegant time clock for your business.",
-        "lead": "Employees clock in and out with their own linked smartphone at the company's time clock. No app, no badge and no biometric identification.",
+        "title": "A digital time clock for time tracking in your company.",
+        "lead": "Staff clock in with their phone, without an app. You compare the hours with the roster and pass them to your social secretariat.",
         "flow": "Scan → confirm → clocked in",
         "cta_register": "Try WinProx",
         "video": {
@@ -954,18 +954,39 @@
             ]
         },
         "why": {
-            "title": "From clocking to planning",
+            "title": "Time tracking",
             "items": [
-                "The time clock is only the start: WinProx links time registration to planning and work on site.",
-                "Hours, presence and breaks show in WinProx right away.",
-                "Also for CIAO: where on-site presence registration matters, WinProx can link the punch to it.",
-                "Clock → time registration → planning → work on site."
+                "Staff clock in with the camera on their phone. No app.",
+                "Hours, breaks and the roster sit in WinProx.",
+                "You pass the hours to your social secretariat. The secretariat prepares the wage.",
+                "Turn CIAO on when the crew works at customer sites. A crew that stays on its own site leaves it off."
+            ]
+        },
+        "faq": {
+            "title": "Frequently asked questions",
+            "items": [
+                {
+                    "q": "How does someone clock in without an app?",
+                    "a": "With the camera on their own phone, on the QR of the screen or of a sticker. Nothing to install."
+                },
+                {
+                    "q": "What does it cost, and is the screen required?",
+                    "a": "€5 per active worker per month. The clock screen is optional, for rent from €10 per month. Without a screen a QR sticker or a link is enough."
+                },
+                {
+                    "q": "Who is CIAO for, and who is it not for?",
+                    "a": "CIAO is presence at the customer for cleaning for third parties, above the declaration-of-works threshold. A crew that only works on its own site, such as a nursery, leaves it off. Construction on sites from €500,000 excluding VAT follows on 1 April 2027."
+                },
+                {
+                    "q": "What happens to the hours?",
+                    "a": "WinProx keeps the worked hours, next to the roster. You pass them to your social secretariat. The secretariat prepares the wage. WinProx does not."
+                }
             ]
         },
         "start": {
             "title": "Getting started with the time clock",
             "lead": "Create an account, add a Clock Point and place the clock screen or a QR code on your site.",
-            "trial": "Prefer to try first? Start a free trial or request a demo via info@winprox.app."
+            "trial": "Trial: 30 days, 3 seats, after you request it via info@winprox.app."
         },
         "close": {
             "title": "Ready for simpler clocking?",

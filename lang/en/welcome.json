@@ -1,8 +1,8 @@
 {
-    "meta_title": "WinProx — Time clock, time tracking and work on site",
+    "meta_title": "WinProx — Digital time clock and time tracking",
     "social": {
-        "og_title": "WinProx — A small, elegant time clock for your business",
-        "og_description": "Work on your site, simply well organised. From reporting and planning to execution and completion — via QR, no app."
+        "og_title": "WinProx — Digital time clock for time tracking",
+        "og_description": "Staff clock in with their phone, without an app. You compare the hours with the roster and pass them to your social secretariat."
     },
     "login": "Log in",
     "register": "Register",
@@ -20,22 +20,23 @@
     },
     "hero": {
         "brand": "WinProx",
-        "headline": "Work on your site, simply well organised — with a digital time clock and time tracking.",
-        "subtitle": "From reporting and planning to execution and completion.",
-        "flow": "Scan → Report → Work → Done",
+        "headline": "The digital time clock for time tracking in your company.",
+        "subtitle": "Staff clock in with their phone, without an app. You compare the hours with the roster and pass them to your social secretariat. If your crew works at customer sites, you can turn on presence reporting to the social security office.",
+        "flow": "Scan → Clock → Hours → Secretariat",
         "flow_steps": {
             "scan": "Scan",
-            "report": "Report",
-            "work": "Work",
-            "done": "Done"
+            "punch": "Clock",
+            "hours": "Hours",
+            "secretariat": "Secretariat"
         },
         "cta_start": "Try for free",
         "cta_how": "See how it works",
+        "trial": "Trial: 30 days, 3 seats, after you request it.",
         "feature_board": {
-            "badge": "NEW",
-            "title": "WinProx CHECKMATE",
-            "text": "Simple RSZ CIAO registration on location for cleaning & construction",
-            "price": "Only €5/worker/month"
+            "badge": "CIAO",
+            "title": "Working at customer sites",
+            "text": "Turn on presence reporting to the social security office when your crew works at customer sites. Cleaning for third parties is available now. Construction follows on 1 April 2027.",
+            "price": "€5 per worker per month"
         }
     },
     "video": {
@@ -53,8 +54,8 @@
             "Optional verification photo when clocking in or out",
             "Extra protection against misuse, without biometric identification",
             "Also works as a QR sticker, no screen needed",
-            "For cleaning and construction: clock in on site with QR + GPS",
-            "CIAO/RSZ where applicable"
+            "Compare the hours with the roster.",
+            "Pass the hours to your social secretariat."
         ],
         "close": "More control over who clocks in, when and where — without badges or biometric data.",
         "price_note": "Clock screen for rent from €:price per month per screen.",

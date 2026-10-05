@@ -158,6 +158,7 @@
           "Présence, relevé d’heures et Mes heures (uniquement ses services).",
           "La gestion peut pointer manuellement si le téléphone est oublié.",
           "CIAO (ONSS) sur demande, sans supplément.",
+          "Vous transmettez les heures au secrétariat social. Pas de Dimona et pas de calcul de paie.",
           "Visites GPS facultatives : Démarrer le travail sur l’épingle du site.",
           "Après le pointage, Clock Point affiche une carte sombre Bienvenue et la tournée en frise.",
           "Écran de pointage (TFT) : QR rotatif, plages d’allumage et écran de repos optionnel (diaporama ou horloge analogique) hors heures de pointe."
@@ -174,6 +175,7 @@
           "Importez les clients en masse via CSV ou Excel (adresses de chantier par ligne incluses).",
           "Présences, décomptes d’heures et Mes heures comme dans Time.",
           "CIAO (ONSS) est activé dès le départ — encodez le numéro d'entreprise dans les paramètres.",
+          "Vous transmettez les heures au secrétariat social. Pas de Dimona et pas de calcul de paie.",
           "Son propre manuel compact au lieu du manuel WinProx général.",
           "5 € par ouvrier actif par mois ; nombre de sièges ajustable.",
           "Les nouvelles organisations choisissent Checkmate comme modèle de départ : un mois d'essai plus une équipe de démonstration avec un ouvrier et deux clients de démonstration.",

@@ -836,7 +836,7 @@
                 "La visita di lavoro GPS presso il cliente è la prova; timbrare da solo non basta.",
                 "Attivazione CIAO tramite il tuo numero d'impresa (BCE); noi confermiamo e da lì l'invio è automatico.",
                 "Le registrazioni valgono dall'attivazione — ciò che è stato timbrato prima non viene mai inviato dopo.",
-                "Niente payroll, niente Dimona, niente dossier doppi — solo presenza corretta.",
+                "Passate le ore al segretariato sociale. Niente Dimona e niente secondo fascicolo del personale: il segretariato continua a elaborare le paghe.",
                 "Funziona anche con lo schermo-orologio WinProx come timbratrice fissa sul posto."
             ]
         },
@@ -867,8 +867,8 @@
             "og_description": "I dipendenti timbrano in entrata e in uscita con il proprio smartphone tramite un codice QR. Nessuna app, nessun badge."
         },
         "eyebrow": "WinProx Time · Timbratrice",
-        "title": "Una timbratrice piccola ed elegante per la vostra azienda.",
-        "lead": "I dipendenti timbrano in entrata e in uscita con il proprio smartphone collegato alla timbratrice dell’azienda. Nessuna app, nessun badge e nessuna identificazione biometrica.",
+        "title": "Timbratrice digitale per la rilevazione orari nella vostra azienda.",
+        "lead": "Il personale timbra con il telefono, senza app. Confrontate le ore con il turno e le passate al segretariato sociale.",
         "flow": "Scansione → conferma → timbrato",
         "cta_register": "Provare WinProx",
         "video": {
@@ -954,18 +954,39 @@
             ]
         },
         "why": {
-            "title": "Dalla timbratura alla pianificazione",
+            "title": "Rilevazione orari",
             "items": [
-                "La timbratrice è solo l’inizio: WinProx collega la registrazione del tempo alla pianificazione e al lavoro sul posto.",
-                "Ore, presenze e pause sono subito in WinProx.",
-                "Anche per CIAO: dove la registrazione delle presenze conta, WinProx può collegarvi la timbratura.",
-                "Timbratura → registrazione del tempo → pianificazione → lavoro sul posto."
+                "Il personale timbra con la fotocamera del telefono. Senza app.",
+                "Ore, pause e turno stanno in WinProx.",
+                "Passate le ore al segretariato sociale. Il segretariato fa la paga.",
+                "Attivate CIAO se la squadra lavora dai clienti. Una squadra sul proprio sito lo lascia spento."
+            ]
+        },
+        "faq": {
+            "title": "Domande frequenti",
+            "items": [
+                {
+                    "q": "Come si timbra senza app?",
+                    "a": "Con la fotocamera del proprio telefono, sul QR dello schermo o di un adesivo. Niente da installare."
+                },
+                {
+                    "q": "Quanto costa, e lo schermo è obbligatorio?",
+                    "a": "5 € per operatore attivo al mese. Lo schermo è un'opzione, a noleggio da 10 € al mese. Senza schermo bastano un adesivo QR o un link."
+                },
+                {
+                    "q": "Per chi vale CIAO, e per chi no?",
+                    "a": "CIAO è la presenza dal cliente per le pulizie per terzi, sopra la soglia della dichiarazione dei lavori. Una squadra che lavora solo sul proprio sito, come un asilo, lo lascia spento. L'edilizia in cantiere da 500.000 € IVA esclusa segue il 1° aprile 2027."
+                },
+                {
+                    "q": "Che fine fanno le ore?",
+                    "a": "WinProx tiene le ore lavorate, accanto al turno. Le passate al segretariato sociale. Il segretariato fa la paga. WinProx non lo fa."
+                }
             ]
         },
         "start": {
             "title": "Iniziare con la timbratrice",
             "lead": "Create un account, aggiungete un Clock Point e posizionate lo schermo o un codice QR sul posto.",
-            "trial": "Preferite prima provare? Avviate una prova gratuita o chiedete una demo via info@winprox.app."
+            "trial": "Prova: 30 giorni, 3 posti, dopo la vostra richiesta via info@winprox.app."
         },
         "close": {
             "title": "Pronti a timbrare più semplicemente?",
