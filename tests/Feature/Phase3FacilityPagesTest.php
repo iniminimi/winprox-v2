@@ -36,9 +36,9 @@ it('serveert llms.txt voor AI-bots', function () {
         ->assertOk()
         ->assertHeader('Content-Type', 'text/plain; charset=utf-8')
         ->assertSee('# WinProx', false)
-        ->assertSee('> Facility management via QR portals', false)
-        ->assertSee(route('faq.public', ['locale' => 'en'], absolute: true), false)
-        ->assertSee(__('faq.items.how_it_works.title', [], 'en'), false)
+        ->assertSee('> Digital time clock for time tracking', false)
+        ->assertSee(route('prikklok', ['locale' => 'en'], absolute: true), false)
+        ->assertDontSee(route('faq.public', ['locale' => 'en'], absolute: true), false)
         ->assertSee(route('product.technical.md', ['locale' => 'en'], absolute: true), false);
 });
 

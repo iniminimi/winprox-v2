@@ -27,6 +27,12 @@
 @endphp
 
 <meta name="description" content="{{ $socialDescription }}">
+@php
+    $routeName = request()->route()?->getName();
+@endphp
+@if (MarketingSeo::isMarketingRoute($routeName) && ! MarketingSeo::isIndexable($routeName))
+    <meta name="robots" content="noindex, follow">
+@endif
 @if ($canonicalUrl)
     <link rel="canonical" href="{{ $canonicalUrl }}">
 @endif

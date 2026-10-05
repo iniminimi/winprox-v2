@@ -1,39 +1,29 @@
 {
-    "meta_title": "Über WinProx | Facility per QR",
+    "meta_title": "Über WinProx | Digitale Stempeluhr",
     "social": {
-        "og_title": "Über WinProx | Facility per QR",
-        "og_description": "WinProx ist eine QR-basierte Facility-Plattform: Meldungen, Aufgaben, Time-Stempeluhr (inklusive) mit GPS-Arbeitsbesuchen, ESG und IoT Connect. WinProx Checkmate ist die reduzierte Variante für Reinigung & Bau: nur vor Ort ein-/auschecken mit CIAO — im Browser, ohne App."
+        "og_title": "Über WinProx | Digitale Stempeluhr",
+        "og_description": "Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter."
     },
     "eyebrow": "Über WinProx",
     "title": "Was ist WinProx?",
-    "lead": "WinProx ist eine QR-basierte Facility-Plattform für Meldungen und Aufgaben. WinProx Checkmate ist die reduzierte Variante für Reinigungs- und Bauteams: nur vor Ort ein- und auschecken mit GPS-Verifikation (100 m) und CIAO-Registrierung bei der RSZ — 5 € pro Mitarbeiter und Monat, ohne Meldungen oder Aufgaben.",
+    "lead": "WinProx ist eine digitale Stempeluhr für die Zeiterfassung. Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter. Arbeitet Ihre Mannschaft bei Kunden, können Sie die Anwesenheit für das LSS einschalten.",
     "what": {
         "title": "Kernidee",
-        "body": "Jeder physische Standort oder jede Unit erhält ein digitales QR-Portal. Bürger und Mitarbeitende melden Defekte über den Unit-QR. Ausführende melden sich über den Clock-Point-QR an, starten und stoppen die Arbeit am Standort- oder Unit-Pin (GPS-Arbeitsbesuche) und erledigen Aufgaben vor Ort. Manager verfolgen alles in einem Workspace: Meldung → Aufgaben → Abschluss. Eine Facility-App als Basis; WinProx Checkmate ist das abgeleitete, reduzierte Produkt für reine Anwesenheit beim Kunden."
+        "body": "Die Person scannt einen QR auf dem Bildschirm, auf einem Aufkleber oder über einen Link und stempelt ein und aus. Sie sehen die Stunden neben dem Dienstplan. Das Sozialsekretariat macht den Lohn. Schalten Sie CIAO ein, wenn die Mannschaft bei Kunden arbeitet. Eine Mannschaft auf der eigenen Site lässt es aus."
     },
     "audience": {
         "title": "Für wen",
         "items": [
-            "Reinigungs- und Wartungskolonnen, die beim Kunden arbeiten",
-            "Bau- und Baustellenkolonnen, die einstempeln, Arbeitsbesuche erfassen und Aufgaben vor Ort abschließen",
-            "Facility- und Wartungsteams, die Meldungen und Aufgaben steuern",
-            "Organisationen mit mehreren Standorten, Units oder Assets",
-            "Teams, die Zeit/Anwesenheit über Clock Point erfassen",
-            "Organisationen, die ESG-Messungen an dieselben Portale koppeln wollen",
-            "Organisationen, die Sensoren und Gateways an dieselben Meldungen und Aufgaben koppeln wollen (IoT Connect)",
-            "Organisationen, die nur die Anwesenheit beim Kunden registrieren möchten — WinProx Checkmate (5 € pro Mitarbeiter/Monat)"
+            "Unternehmen, die Stunden ohne App erfassen wollen",
+            "Mannschaften auf der eigenen Site",
+            "Mannschaften, die bei Kunden arbeiten und die Anwesenheit für das LSS brauchen"
         ]
     },
     "sectors": {
-        "title": "Branchen",
+        "title": "Wo die Mannschaft arbeitet",
         "items": [
-            "Reinigung und Wartung beim Kunden",
-            "Bau und Baustellen",
-            "Krankenhäuser und Pflegecampus",
-            "Fabriken und Lager",
-            "Kommunen und Behördengebäude",
-            "Häfen, Logistik und Büros",
-            "Immobilien und Property Management"
+            "Auf der eigenen Site",
+            "Beim Kunden"
         ]
     },
     "modules": {
@@ -84,14 +74,9 @@
     },
     "related_title": "Weiterführende Seiten",
     "links": {
-        "facility": "Facility",
         "time": "Time",
-        "esg": "ESG",
-        "qr": "QR-Portale",
         "api": "API & Webhooks",
-        "faq": "FAQ",
         "pricing": "Preise",
-        "iot": "IoT Connect",
         "checkmate": "Checkmate"
     }
 }

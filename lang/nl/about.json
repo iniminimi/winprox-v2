@@ -1,39 +1,29 @@
 {
-    "meta_title": "Over WinProx | Facility via QR",
+    "meta_title": "Over WinProx | Digitale prikklok",
     "social": {
-        "og_title": "Over WinProx | Facility via QR",
-        "og_description": "WinProx is een QR-gebaseerd facility-platform: meldingen, taken, Time-prikklok (inbegrepen) met GPS-werkbezoeken, ESG en IoT Connect. WinProx Checkmate is de kale variant voor schoonmaak & bouw: enkel in-/uitchecken op locatie met CIAO — in de browser, zonder app."
+        "og_title": "Over WinProx | Digitale prikklok",
+        "og_description": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat."
     },
     "eyebrow": "Over WinProx",
     "title": "Wat is WinProx?",
-    "lead": "WinProx is een QR-gebaseerd facility-platform voor meldingen en taken. WinProx Checkmate is de kale variant voor schoonmaak- en bouwploegen: enkel inchecken en uitchecken op locatie met GPS-verificatie (100 m) en CIAO-registratie bij de RSZ — €5 per uitvoerder per maand, zonder meldingen of taken.",
+    "lead": "WinProx is een digitale prikklok voor urenregistratie. Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat. Werkt de ploeg bij klanten, dan kunt u de aanwezigheid voor de RSZ aanzetten.",
     "what": {
         "title": "Kernidee",
-        "body": "Elke fysieke locatie of unit krijgt een digitaal QR-portaal. Burgers en medewerkers melden defecten via de unit-QR. Uitvoerders melden zich aan via de Clock Point-QR, starten en stoppen werk op een locatie- of unit-pin (GPS-werkbezoeken) en handelen taken af ter plaatse. Beheerders volgen alles op in één workspace: melding → taken → afhandeling. Eén Facility-app als basis; WinProx Checkmate is het afgeleide, kale product voor pure aanwezigheid op klantlocatie."
+        "body": "De medewerker scant een QR op het scherm, op een sticker of via een link, en prikt in en uit. U ziet de uren naast het rooster. Het sociaal secretariaat maakt het loon. CIAO zet u aan als de ploeg bij klanten werkt. Een ploeg op de eigen site laat het uit."
     },
     "audience": {
         "title": "Voor wie",
         "items": [
-            "Schoonmaak- en onderhoudsploegen die bij klanten werken",
-            "Bouw- en werfploegen die inklokken, werkbezoeken registreren en taken ter plaatse afronden",
-            "Facility- en onderhoudsteams die meldingen en taken willen sturen",
-            "Organisaties met meerdere locaties, units of assets",
-            "Teams die tijd/aanwezigheid willen registreren via Clock Point",
-            "Organisaties die ESG-metingen en opvolging willen koppelen aan hetzelfde portaal",
-            "Organisaties die sensoren en gateways willen koppelen aan dezelfde meldingen en taken (IoT Connect)",
-            "Organisaties die enkel aanwezigheid op klantlocaties willen registreren — WinProx Checkmate (€5 per uitvoerder/maand)"
+            "Bedrijven die uren willen registreren zonder app",
+            "Ploegen op de eigen vestiging",
+            "Ploegen die bij klanten werken en aanwezigheid voor de RSZ nodig hebben"
         ]
     },
     "sectors": {
-        "title": "Sectoren",
+        "title": "Waar de ploeg werkt",
         "items": [
-            "Schoonmaak en onderhoud bij klanten",
-            "Bouw en werven",
-            "Ziekenhuizen en zorgcampussen",
-            "Fabrieken en magazijnen",
-            "Gemeenten en overheidsgebouwen",
-            "Havens, logistiek en kantoren",
-            "Vastgoed en vastgoedbeheer"
+            "Op de eigen vestiging",
+            "Bij de klant"
         ]
     },
     "modules": {
@@ -84,14 +74,9 @@
     },
     "related_title": "Verder lezen",
     "links": {
-        "facility": "Facility",
         "time": "Time",
-        "esg": "ESG",
-        "qr": "QR-portalen",
         "api": "API & Webhooks",
-        "faq": "FAQ",
         "pricing": "Prijzen",
-        "iot": "IoT Connect",
         "checkmate": "Checkmate"
     }
 }

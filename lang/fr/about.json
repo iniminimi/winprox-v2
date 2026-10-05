@@ -1,39 +1,29 @@
 {
-    "meta_title": "À propos de WinProx | Facility via QR",
+    "meta_title": "À propos de WinProx | Pointeuse digitale",
     "social": {
-        "og_title": "À propos de WinProx | Facility via QR",
-        "og_description": "WinProx est une plateforme facility basée sur QR : tickets, tâches, pointeuse Time (incluse) avec visites GPS, ESG et IoT Connect. WinProx Checkmate est la variante épurée pour le nettoyage & la construction : pointer sur site avec CIAO — dans le navigateur, sans app."
+        "og_title": "À propos de WinProx | Pointeuse digitale",
+        "og_description": "Les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social."
     },
     "eyebrow": "À propos de WinProx",
     "title": "Qu'est-ce que WinProx ?",
-    "lead": "WinProx est une plateforme facility basée sur QR pour les tickets et les tâches. WinProx Checkmate est la variante épurée pour les équipes de nettoyage et de construction : pointer l’arrivée et le départ sur site avec vérification GPS (100 m) et enregistrement CIAO auprès de l’ONSS — 5 € par employé par mois, sans tickets ni tâches.",
+    "lead": "WinProx est une pointeuse digitale pour le suivi du temps. Les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social. Si votre équipe travaille chez des clients, vous pouvez activer la présence pour l'ONSS.",
     "what": {
         "title": "Idée centrale",
-        "body": "Chaque site ou unité physique dispose d'un portail QR numérique. Citoyens et collaborateurs signalent des défauts via le QR unité. Les exécutants s'identifient via le QR Clock Point, démarrent et arrêtent le travail sur un pin de site ou d'unité (visites GPS) et traitent les tâches sur place. Les gestionnaires suivent tout dans un workspace : signalement → tâches → clôture. Une seule app Facility comme base ; WinProx Checkmate est le produit dérivé et épuré pour la pure présence chez le client."
+        "body": "L'employé scanne un QR sur l'écran, sur un autocollant ou via un lien, et pointe l'entrée et la sortie. Vous voyez les heures à côté de l'horaire. Le secrétariat social établit le salaire. Activez CIAO si l'équipe travaille chez des clients. Une équipe sur son propre site le laisse éteint."
     },
     "audience": {
         "title": "Pour qui",
         "items": [
-            "Équipes de nettoyage et d'entretien qui travaillent chez les clients",
-            "Équipes de construction et de chantier qui pointent, enregistrent les visites et terminent les tâches sur place",
-            "Équipes facility et maintenance qui pilotent signalements et tâches",
-            "Organisations avec plusieurs sites, unités ou assets",
-            "Équipes qui enregistrent le temps/présence via Clock Point",
-            "Organisations qui lient des mesures ESG aux mêmes portails",
-            "Organisations qui veulent relier capteurs et passerelles aux mêmes signalements et tâches (IoT Connect)",
-            "Organisations qui souhaitent uniquement enregistrer la présence chez le client — WinProx Checkmate (5 € par employé/mois)"
+            "Entreprises qui veulent enregistrer les heures sans appli",
+            "Équipes sur leur propre site",
+            "Équipes qui travaillent chez des clients et ont besoin de la présence pour l'ONSS"
         ]
     },
     "sectors": {
-        "title": "Secteurs",
+        "title": "Où l'équipe travaille",
         "items": [
-            "Nettoyage et entretien chez les clients",
-            "Construction et chantiers",
-            "Hôpitaux et campus de soins",
-            "Usines et entrepôts",
-            "Communes et bâtiments publics",
-            "Ports, logistique et bureaux",
-            "Immobilier et gestion de patrimoine"
+            "Sur son propre site",
+            "Chez le client"
         ]
     },
     "modules": {
@@ -84,14 +74,9 @@
     },
     "related_title": "Pages associées",
     "links": {
-        "facility": "Facility",
         "time": "Time",
-        "esg": "ESG",
-        "qr": "Portails QR",
         "api": "API & Webhooks",
-        "faq": "FAQ",
         "pricing": "Tarifs",
-        "iot": "IoT Connect",
         "checkmate": "Checkmate"
     }
 }

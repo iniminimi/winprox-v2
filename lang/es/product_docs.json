@@ -19,13 +19,13 @@
   "features": {
     "label": "Resumen de funciones",
     "tagline": "Lo que hace WinProx — en lenguaje claro",
-    "highlight": "Una sola app: alguien avisa, un equipo recibe una tarea, el trabajo se cierra. El reloj de fichar va incluido.",
-    "intro": "WinProx es una app Facility para sedes, unidades y equipos. Sin portales aparte de contratistas u hospitalidad. Time (reloj) está en cada fórmula.",
+    "highlight": "Reloj de fichar digital para el registro horario. El personal ficha con el teléfono, sin app.",
+    "intro": "Usted compara las horas con el horario y las pasa a su secretaría social. Si su equipo trabaja en clientes, puede activar la presencia para la ONSS. Los avisos y las tareas están en la misma app.",
     "flow": [
-      "Escaneo QR",
-      "Aviso",
-      "Tareas",
-      "Cierre"
+      "Escanear",
+      "Fichar",
+      "Horas",
+      "Secretaría"
     ],
     "source": "El mismo contenido que el manual y las FAQ de la app.",
     "footer_left": "WinProx · info@winprox.app · Resumen de producto (manual/FAQ)",

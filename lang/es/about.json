@@ -1,39 +1,29 @@
 {
-    "meta_title": "Acerca de WinProx | Facility por QR",
+    "meta_title": "Acerca de WinProx | Reloj de fichar digital",
     "social": {
-        "og_title": "Acerca de WinProx | Facility por QR",
-        "og_description": "WinProx es una plataforma de facility basada en QR: partes, tareas, reloj Time (incluido) con visitas GPS, ESG e IoT Connect. WinProx Checkmate es la variante simplificada para limpieza y construcción: solo fichar en la obra con CIAO — en el navegador, sin app."
+        "og_title": "Acerca de WinProx | Reloj de fichar digital",
+        "og_description": "El personal ficha con el teléfono, sin app. Usted compara las horas con el horario y las pasa a su secretaría social."
     },
     "eyebrow": "Acerca de WinProx",
     "title": "¿Qué es WinProx?",
-    "lead": "WinProx es una plataforma de facility basada en QR para partes y tareas. WinProx Checkmate es la variante simplificada para equipos de limpieza y construcción: fichar la entrada y la salida en la obra con verificación GPS (100 m) y registro CIAO ante la RSZ — 5 € por trabajador al mes, sin partes ni tareas.",
+    "lead": "WinProx es un reloj de fichar digital para el registro horario. El personal ficha con el teléfono, sin app. Usted compara las horas con el horario y las pasa a su secretaría social. Si su equipo trabaja en clientes, puede activar la presencia para la ONSS.",
     "what": {
         "title": "Idea central",
-        "body": "Cada sede o unidad física tiene un portal QR digital. Ciudadanos y personal comunican defectos con el QR de unidad. Los ejecutores se identifican con el QR Clock Point, inician y detienen el trabajo en el pin de la unidad (visitas GPS) y cierran tareas in situ. La gestión sigue todo en un workspace: incidencia → tareas → cierre. Una sola app Facility como base; WinProx Checkmate es el producto derivado y simplificado para la pura presencia en la ubicación del cliente."
+        "body": "La persona escanea un QR en la pantalla, en una pegatina o mediante un enlace, y ficha la entrada y la salida. Usted ve las horas junto al horario. La secretaría social hace el salario. Active CIAO si el equipo trabaja en clientes. Un equipo en su propio sitio lo deja apagado."
     },
     "audience": {
         "title": "Para quién",
         "items": [
-            "Equipos de limpieza y mantenimiento que trabajan en sedes de clientes",
-            "Equipos de construcción y obra que fichan, registran visitas y cierran tareas in situ",
-            "Equipos de facility y mantenimiento que dirigen incidencias y tareas",
-            "Organizaciones con varias sedes, unidades o activos",
-            "Equipos que registran tiempo/presencia con Clock Point",
-            "Organizaciones que quieren mediciones ESG en los mismos portales",
-            "Organizaciones que quieren sensores y pasarelas en las mismas incidencias y tareas (IoT Connect)",
-            "Organizaciones que solo quieren registrar la presencia en la ubicación del cliente — WinProx Checkmate (5 € por trabajador/mes)"
+            "Empresas que quieren registrar horas sin app",
+            "Equipos en su propio sitio",
+            "Equipos que trabajan en clientes y necesitan la presencia para la ONSS"
         ]
     },
     "sectors": {
-        "title": "Sectores",
+        "title": "Dónde trabaja el equipo",
         "items": [
-            "Limpieza y mantenimiento en sedes de clientes",
-            "Construcción y obras",
-            "Hospitales y campus sanitarios",
-            "Fábricas y almacenes",
-            "Ayuntamientos y edificios públicos",
-            "Puertos, logística y oficinas",
-            "Inmobiliaria y gestión de patrimonio"
+            "En su propio sitio",
+            "En el cliente"
         ]
     },
     "modules": {
@@ -84,14 +74,9 @@
     },
     "related_title": "Seguir leyendo",
     "links": {
-        "facility": "Facility",
         "time": "Time",
-        "esg": "ESG",
-        "qr": "Portales QR",
         "api": "API y Webhooks",
-        "faq": "FAQ",
         "pricing": "Precios",
-        "iot": "IoT Connect",
         "checkmate": "Checkmate"
     }
 }

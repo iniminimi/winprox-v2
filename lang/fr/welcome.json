@@ -12,11 +12,9 @@
         "pricing": "Tarifs",
         "more": "Plus",
         "features_overview": "Aperçu des fonctionnalités",
-        "faq": "FAQ",
         "about": "À propos de WinProx",
         "technical_sheet": "Fiche technique",
-        "api_webhooks": "API & Webhooks",
-        "sectors": "Exemples"
+        "api_webhooks": "API & Webhooks"
     },
     "hero": {
         "brand": "WinProx",

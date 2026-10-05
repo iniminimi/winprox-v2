@@ -1,39 +1,29 @@
 {
-    "meta_title": "Informazioni su WinProx | Facility via QR",
+    "meta_title": "Informazioni su WinProx | Timbratrice digitale",
     "social": {
-        "og_title": "Informazioni su WinProx | Facility via QR",
-        "og_description": "WinProx è una piattaforma facility basata su QR: segnalazioni, attività, timbratrice Time (inclusa) con visite GPS, ESG e IoT Connect. WinProx Checkmate è la variante ridotta per pulizie ed edilizia: solo timbratura in loco con CIAO — nel browser, senza app."
+        "og_title": "Informazioni su WinProx | Timbratrice digitale",
+        "og_description": "Il personale timbra con il telefono, senza app. Confrontate le ore con il turno e le passate al segretariato sociale."
     },
     "eyebrow": "Informazioni su WinProx",
     "title": "Che cos'è WinProx?",
-    "lead": "WinProx è una piattaforma facility basata su QR per segnalazioni e attività. WinProx Checkmate è la variante ridotta per squadre di pulizia ed edilizia: timbratura di entrata e uscita in loco con verifica GPS (100 m) e registrazione CIAO presso l’RSZ — 5 € per operaio al mese, senza segnalazioni o attività.",
+    "lead": "WinProx è una timbratrice digitale per la rilevazione orari. Il personale timbra con il telefono, senza app. Confrontate le ore con il turno e le passate al segretariato sociale. Se la squadra lavora dai clienti, potete attivare la presenza per l'ONSS.",
     "what": {
         "title": "Idea centrale",
-        "body": "Ogni sede o unità fisica ha un portale QR digitale. Cittadini e collaboratori segnalano i difetti con il QR dell'unità. Gli esecutori si identificano con il QR Clock Point, avviano e interrompono il lavoro sul pin della sede o dell'unità (visite GPS) e chiudono i compiti in loco. La gestione segue tutto in un workspace: segnalazione → compiti → chiusura. Un’unica app Facility come base; WinProx Checkmate è il prodotto derivato e ridotto per la sola presenza presso il cliente."
+        "body": "La persona scansiona un QR sullo schermo, su un adesivo o tramite un link, e timbra entrata e uscita. Vedete le ore accanto al turno. Il segretariato sociale fa la paga. Attivate CIAO se la squadra lavora dai clienti. Una squadra sul proprio sito lo lascia spento."
     },
     "audience": {
         "title": "Per chi",
         "items": [
-            "Squadre di pulizie e manutenzione che lavorano presso i clienti",
-            "Squadre di cantiere che timbrano, registrano le visite e chiudono i compiti in loco",
-            "Team facility e manutenzione che guidano segnalazioni e compiti",
-            "Organizzazioni con più sedi, unità o asset",
-            "Team che registrano tempo/presenza via Clock Point",
-            "Organizzazioni che vogliono misure ESG sugli stessi portali",
-            "Organizzazioni che vogliono collegare sensori e gateway alle stesse segnalazioni e compiti (IoT Connect)",
-            "Organizzazioni che vogliono solo registrare la presenza presso il cliente — WinProx Checkmate (5 € per operaio/mese)"
+            "Aziende che vogliono registrare le ore senza app",
+            "Squadre sul proprio sito",
+            "Squadre che lavorano dai clienti e hanno bisogno della presenza per l'ONSS"
         ]
     },
     "sectors": {
-        "title": "Settori",
+        "title": "Dove lavora la squadra",
         "items": [
-            "Pulizie e manutenzione presso i clienti",
-            "Edilizia e cantieri",
-            "Ospedali e campus sanitari",
-            "Fabbriche e magazzini",
-            "Comuni ed edifici pubblici",
-            "Porti, logistica e uffici",
-            "Immobiliare e property management"
+            "Sul proprio sito",
+            "Dal cliente"
         ]
     },
     "modules": {
@@ -84,14 +74,9 @@
     },
     "related_title": "Per approfondire",
     "links": {
-        "facility": "Facility",
         "time": "Time",
-        "esg": "ESG",
-        "qr": "Portali QR",
         "api": "API e Webhooks",
-        "faq": "FAQ",
         "pricing": "Prezzi",
-        "iot": "IoT Connect",
         "checkmate": "Checkmate"
     }
 }

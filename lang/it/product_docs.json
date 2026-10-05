@@ -19,13 +19,13 @@
   "features": {
     "label": "Panoramica funzioni",
     "tagline": "Cosa fa WinProx — in linguaggio chiaro",
-    "highlight": "Un’unica app: qualcuno segnala, una squadra riceve un compito, il lavoro si chiude. Il timbratore è compreso.",
-    "intro": "WinProx è un’app Facility per sedi, unità e squadre. Niente portali separati per appaltatori o hospitality. Time (timbratore) è in ogni formula.",
+    "highlight": "Timbratrice digitale per la rilevazione orari. Il personale timbra con il telefono, senza app.",
+    "intro": "Confrontate le ore con il turno e le passate al segretariato sociale. Se la squadra lavora dai clienti, potete attivare la presenza per l'ONSS. Segnalazioni e compiti stanno nella stessa app.",
     "flow": [
-      "Scansione QR",
-      "Segnalazione",
-      "Compiti",
-      "Chiusura"
+      "Scansiona",
+      "Timbra",
+      "Ore",
+      "Segretariato"
     ],
     "source": "Lo stesso contenuto del manuale e delle FAQ nell’app.",
     "footer_left": "WinProx · info@winprox.app · Panoramica prodotto (manuale/FAQ)",

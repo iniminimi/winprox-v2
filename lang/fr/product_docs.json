@@ -19,13 +19,13 @@
   "features": {
     "label": "Aperçu des fonctions",
     "tagline": "Ce que fait WinProx — en langage clair",
-    "highlight": "Une seule appli : quelqu’un signale, une équipe reçoit une tâche, le travail est clôturé. La pointeuse est incluse.",
-    "intro": "WinProx est une appli Facility pour sites, unités et équipes. Pas de portails prestataires ou hospitality à part. Time (pointeuse) est inclus dans chaque formule.",
+    "highlight": "Pointeuse digitale pour le suivi du temps. Les employés pointent avec leur téléphone, sans appli.",
+    "intro": "Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social. Si votre équipe travaille chez des clients, vous pouvez activer la présence pour l'ONSS. Les signalements et les tâches sont dans la même appli.",
     "flow": [
-      "Scan QR",
-      "Signalement",
-      "Tâches",
-      "Clôture"
+      "Scan",
+      "Pointer",
+      "Heures",
+      "Secrétariat"
     ],
     "source": "Le même contenu que le manuel et la FAQ dans l’appli.",
     "footer_left": "WinProx · info@winprox.app · Aperçu produit (manuel/FAQ)",

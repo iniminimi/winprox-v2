@@ -30,14 +30,10 @@ class About extends Component
     private function relatedLinks(): array
     {
         return [
-            ['label' => __('about.links.checkmate'), 'url' => route('work-on-location')],
-            ['label' => __('about.links.facility'), 'url' => route('features.facility')],
+            ['label' => __('landings.prikklok.nav_label'), 'url' => route('prikklok')],
+            ['label' => __('about.links.checkmate'), 'url' => route('checkmate')],
             ['label' => __('about.links.time'), 'url' => route('features.time')],
-            ['label' => __('about.links.esg'), 'url' => route('features.esg')],
-            ['label' => __('about.links.iot'), 'url' => route('features.iot')],
-            ['label' => __('about.links.qr'), 'url' => route('features.qr')],
             ['label' => __('about.links.api'), 'url' => route('product.api_webhooks')],
-            ['label' => __('about.links.faq'), 'url' => route('faq.public')],
             ['label' => __('about.links.pricing'), 'url' => route('pricing')],
         ];
     }

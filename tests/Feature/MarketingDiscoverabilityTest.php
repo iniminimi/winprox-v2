@@ -14,10 +14,10 @@ it('serveert about en feature-pagina\'s met JSON-LD', function () {
 
     $this->get(route('about', ['locale' => 'nl']))
         ->assertOk()
-        ->assertSee('Schoonmaak en onderhoud bij klanten', false)
-        ->assertSee('Bouw en werven', false)
-        ->assertSee('Ziekenhuizen en zorgcampussen', false)
-        ->assertSee('Vastgoed en vastgoedbeheer', false);
+        ->assertSee('Op de eigen vestiging', false)
+        ->assertSee('Bij de klant', false)
+        ->assertDontSee('Ziekenhuizen en zorgcampussen', false)
+        ->assertDontSee('Vastgoed en vastgoedbeheer', false);
 
     foreach (['facility', 'time', 'esg', 'qr'] as $slug) {
         $response = $this->get(route('features.'.$slug, ['locale' => 'en']))
@@ -26,7 +26,10 @@ it('serveert about en feature-pagina\'s met JSON-LD', function () {
 
         if ($slug === 'time') {
             $response->assertSee('images/welcome/winprox_time_module_logo.jpg', false)
-                ->assertSee(__('features.time.logo_alt', [], 'en'));
+                ->assertSee(__('features.time.logo_alt', [], 'en'))
+                ->assertDontSee('name="robots" content="noindex, follow"', false);
+        } else {
+            $response->assertSee('name="robots" content="noindex, follow"', false);
         }
     }
 });
@@ -108,18 +111,18 @@ it('promoveert de homepage-headline tot H1 met prikklok-signalen', function () {
         ->assertOk()
         ->assertSee('<h1 class="wp-welcome-hero-minimal__headline">', false)
         ->assertSee('digitale prikklok', false)
-        ->assertSee('<title>WinProx — Prikklok, tijdregistratie en werk op locatie</title>', false);
+        ->assertSee('<title>WinProx — Digitale prikklok en urenregistratie</title>', false);
 });
 
 it('stuurt SoftwareApplication JSON-LD in de pagina-taal', function () {
     $this->get(route('about', ['locale' => 'nl']))
         ->assertOk()
         ->assertSee('"url":"'.route('welcome', ['locale' => 'nl'], absolute: true).'"', false)
-        ->assertSee('"description":"Het werk op uw locatie', false);
+        ->assertSee('"description":"Medewerkers prikken met hun telefoon', false);
 
     $this->get(route('about', ['locale' => 'en']))
         ->assertOk()
-        ->assertSee('"description":"Work on your site', false);
+        ->assertSee('"description":"Staff clock in with their phone', false);
 });
 
 it('linkt het Time-FAQ-item contextueel naar de prikklok-landing', function () {
@@ -132,8 +135,10 @@ it('llms.txt bevat about, feature-pagina\'s en Markdown-fiches', function () {
     $this->get(route('llms.txt'))
         ->assertOk()
         ->assertSee(route('about', ['locale' => 'en'], absolute: true), false)
-        ->assertSee(route('work-on-location', ['locale' => 'en'], absolute: true), false)
-        ->assertSee(route('features.facility', ['locale' => 'en'], absolute: true), false)
+        ->assertSee(route('prikklok', ['locale' => 'en'], absolute: true), false)
+        ->assertSee(route('features.time', ['locale' => 'en'], absolute: true), false)
+        ->assertDontSee(route('work-on-location', ['locale' => 'en'], absolute: true), false)
+        ->assertDontSee(route('features.facility', ['locale' => 'en'], absolute: true), false)
         ->assertSee(route('product.api_webhooks.md', ['locale' => 'en'], absolute: true), false)
         ->assertSee(route('product.features.md', ['locale' => 'en'], absolute: true), false)
         ->assertSee(route('product.technical.md', ['locale' => 'en'], absolute: true), false)

@@ -21,7 +21,6 @@
                 </a>
             @endforeach
             <span class="wp-legal-topnav-sep" aria-hidden="true">|</span>
-            <a href="{{ route('faq.public') }}" class="wp-legal-topnav-link">{{ __('welcome.nav.faq') }}</a>
             <a href="{{ route('contact.index') }}" class="wp-legal-topnav-link">{{ __('common.nav.contact') }}</a>
         </nav>
         <div class="wp-legal-topbar-lang">

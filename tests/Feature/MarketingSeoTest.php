@@ -61,14 +61,19 @@ it('levert sitemap met alle taalvarianten', function () {
     $body = $response->getContent();
     expect($body)->toContain('<?xml version="1.0"')
         ->and($body)->toContain(route('welcome', ['locale' => 'nl'], absolute: true))
-        ->and($body)->toContain(route('government', ['locale' => 'fr'], absolute: true))
-        ->and($body)->toContain(route('hospitality', ['locale' => 'nl'], absolute: true))
-        ->and($body)->toContain(route('realestate', ['locale' => 'nl'], absolute: true))
-        ->and($body)->toContain(route('work-on-location', ['locale' => 'nl'], absolute: true))
+        ->and($body)->toContain(route('prikklok', ['locale' => 'nl'], absolute: true))
+        ->and($body)->toContain(route('checkmate', ['locale' => 'fr'], absolute: true))
+        ->and($body)->toContain(route('features.time', ['locale' => 'nl'], absolute: true))
+        ->and($body)->not->toContain(route('government', ['locale' => 'fr'], absolute: true))
+        ->and($body)->not->toContain(route('hospitality', ['locale' => 'nl'], absolute: true))
+        ->and($body)->not->toContain(route('realestate', ['locale' => 'nl'], absolute: true))
+        ->and($body)->not->toContain(route('work-on-location', ['locale' => 'nl'], absolute: true))
+        ->and($body)->not->toContain(route('features.facility', ['locale' => 'nl'], absolute: true))
+        ->and($body)->not->toContain(route('faq.public', ['locale' => 'nl'], absolute: true))
         ->and($body)->toContain('hreflang="x-default"');
 
     $localeCount = count(config('locales.supported'));
-    $routeCount = count(MarketingSeo::routeNames());
+    $routeCount = count(MarketingSeo::indexedRouteNames());
     expect(substr_count($body, '<url>'))->toBe($localeCount * $routeCount);
 });
 
@@ -81,8 +86,8 @@ it('levert video-entries in de sitemap op pagina\'s met een video', function () 
         ->and($body)->toContain('<video:thumbnail_loc>')
         ->and($body)->toContain('<video:content_loc>')
         ->and($body)->toContain(asset('video/welcome.mp4'))
-        ->and($body)->toContain(asset('video/nl/industry_promo_nl.mp4'))
-        ->and($body)->toContain(asset('video/checkmate_checkin.mp4'));
+        ->and($body)->toContain(asset('video/checkmate_checkin.mp4'))
+        ->and($body)->not->toContain(asset('video/nl/industry_promo_nl.mp4'));
 });
 
 it('plaatst VideoObject JSON-LD op pagina\'s met een video', function () {

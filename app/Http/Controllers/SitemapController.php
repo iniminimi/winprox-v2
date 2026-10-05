@@ -22,7 +22,7 @@ class SitemapController extends Controller
             .' xmlns:xhtml="http://www.w3.org/1999/xhtml"'
             .' xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">'."\n";
 
-        foreach (MarketingSeo::routeNames() as $routeName) {
+        foreach (MarketingSeo::indexedRouteNames() as $routeName) {
             $alternates = MarketingSeo::alternateLinks($routeName, []);
 
             foreach ($supported as $locale) {

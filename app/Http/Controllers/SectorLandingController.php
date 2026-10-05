@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Actions\Marketing\RecordPromoVisitAction;
 use App\Enums\PromoLanding;
 use App\Support\Marketing\JsonLd;
+use App\Support\Marketing\MarketingSeo;
 use App\Support\Marketing\PromoLandingRequest;
 use App\Support\Marketing\PromoOgImage;
 use App\Support\Marketing\SectorLandingVideo;
@@ -76,7 +77,7 @@ class SectorLandingController extends Controller
     {
         $links = [];
         foreach (PromoLanding::cases() as $landing) {
-            if ($landing === $current) {
+            if ($landing === $current || ! MarketingSeo::isIndexable($landing->routeName())) {
                 continue;
             }
             $links[] = [

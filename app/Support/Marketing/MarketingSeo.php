@@ -50,9 +50,49 @@ final class MarketingSeo
         return $names;
     }
 
+    /**
+     * Publieke URL's die blijven bestaan, maar niet meer in menu, sitemap of index horen.
+     *
+     * @return list<string>
+     */
+    public static function parkedRouteNames(): array
+    {
+        return [
+            'hospitality',
+            'industry',
+            'healthcare',
+            'government',
+            'realestate',
+            'work-on-location',
+            'features.facility',
+            'features.esg',
+            'features.iot',
+            'features.qr',
+            'faq.public',
+        ];
+    }
+
+    /**
+     * @return list<string>
+     */
+    public static function indexedRouteNames(): array
+    {
+        $parked = self::parkedRouteNames();
+
+        return array_values(array_filter(
+            self::routeNames(),
+            fn (string $name): bool => ! in_array($name, $parked, true),
+        ));
+    }
+
     public static function isMarketingRoute(?string $name): bool
     {
         return $name !== null && in_array($name, self::routeNames(), true);
+    }
+
+    public static function isIndexable(?string $name): bool
+    {
+        return $name !== null && in_array($name, self::indexedRouteNames(), true);
     }
 
     /**
@@ -62,7 +102,7 @@ final class MarketingSeo
     public static function alternateLinks(?string $routeName = null, array $parameters = []): array
     {
         $routeName ??= request()->route()?->getName();
-        if (! self::isMarketingRoute($routeName)) {
+        if (! self::isIndexable($routeName)) {
             return [];
         }
 
@@ -137,7 +177,7 @@ final class MarketingSeo
         $urls = [];
         $supported = config('locales.supported', []);
 
-        foreach (self::routeNames() as $routeName) {
+        foreach (self::indexedRouteNames() as $routeName) {
             foreach ($supported as $locale) {
                 $urls[] = route($routeName, ['locale' => $locale], absolute: true);
             }

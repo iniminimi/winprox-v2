@@ -54,7 +54,7 @@ class FeaturePage extends Component
     {
         $links = [];
         foreach (self::SLUGS as $slug) {
-            if ($slug === $this->slug) {
+            if ($slug === $this->slug || ! \App\Support\Marketing\MarketingSeo::isIndexable('features.'.$slug)) {
                 continue;
             }
             $links[] = [
@@ -63,10 +63,10 @@ class FeaturePage extends Component
             ];
         }
 
+        $links[] = ['label' => __('landings.prikklok.nav_label'), 'url' => route('prikklok')];
         $links[] = ['label' => __('features.shared.links.checkmate'), 'url' => route('checkmate')];
         $links[] = ['label' => __('features.shared.links.about'), 'url' => route('about')];
         $links[] = ['label' => __('features.shared.links.api'), 'url' => route('product.api_webhooks')];
-        $links[] = ['label' => __('features.shared.links.faq'), 'url' => route('faq.public')];
         $links[] = ['label' => __('features.shared.links.pricing'), 'url' => route('pricing')];
 
         return $links;

@@ -19,13 +19,13 @@
   "features": {
     "label": "Features-overzicht",
     "tagline": "Wat WinProx doet — in gewone taal",
-    "highlight": "Eén app: iemand meldt iets, een team krijgt een taak, het werk wordt afgehandeld. De prikklok zit erbij.",
-    "intro": "WinProx is een Facility-app voor locaties, units en teams. Geen aparte aannemers- of hospitality-portalen. Time (prikklok) hoort bij elke formule.",
+    "highlight": "Digitale prikklok voor urenregistratie. Medewerkers prikken met hun telefoon, zonder app.",
+    "intro": "U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat. Werkt de ploeg bij klanten, dan kunt u de aanwezigheid voor de RSZ aanzetten. Meldingen en taken zitten in dezelfde app.",
     "flow": [
-      "QR-scan",
-      "Melding",
-      "Taken",
-      "Afhandeling"
+      "Scan",
+      "Prik",
+      "Uren",
+      "Secretariaat"
     ],
     "source": "Zelfde inhoud als de handleiding en de FAQ in de app.",
     "footer_left": "WinProx · info@winprox.app · Productoverzicht (handleiding/FAQ)",

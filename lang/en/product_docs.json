@@ -19,13 +19,13 @@
   "features": {
     "label": "Features overview",
     "tagline": "What WinProx does — in plain language",
-    "highlight": "One app: someone reports an issue, a team gets a task, the work is closed. The punch clock is included.",
-    "intro": "WinProx is a Facility app for locations, units and teams. No separate contractor or hospitality portals. Time (punch clock) is included in every plan.",
+    "highlight": "A digital time clock for time tracking. Staff clock in with their phone, without an app.",
+    "intro": "You compare the hours with the roster and pass them to your social secretariat. If your crew works at customer sites, you can turn on presence reporting to the social security office. Issues and tasks live in the same app.",
     "flow": [
-      "QR scan",
-      "Issue",
-      "Tasks",
-      "Close-out"
+      "Scan",
+      "Clock",
+      "Hours",
+      "Secretariat"
     ],
     "source": "The same content as the in-app manual and FAQ.",
     "footer_left": "WinProx · info@winprox.app · Product overview (manual/FAQ)",

@@ -19,13 +19,13 @@
   "features": {
     "label": "Feature-Übersicht",
     "tagline": "Was WinProx tut — in klarer Sprache",
-    "highlight": "Eine App: jemand meldet etwas, ein Team bekommt eine Aufgabe, die Arbeit wird abgeschlossen. Die Stempeluhr ist dabei.",
-    "intro": "WinProx ist eine Facility-App für Standorte, Units und Teams. Keine getrennten Auftragnehmer- oder Hospitality-Portale. Time (Stempeluhr) gehört zu jeder Formel.",
+    "highlight": "Digitale Stempeluhr für die Zeiterfassung. Mitarbeitende stempeln mit dem Telefon, ohne App.",
+    "intro": "Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter. Arbeitet Ihre Mannschaft bei Kunden, können Sie die Anwesenheit für das LSS einschalten. Meldungen und Aufgaben sitzen in derselben App.",
     "flow": [
-      "QR-Scan",
-      "Meldung",
-      "Aufgaben",
-      "Abschluss"
+      "Scan",
+      "Stempeln",
+      "Stunden",
+      "Sekretariat"
     ],
     "source": "Derselbe Inhalt wie Handbuch und FAQ in der App.",
     "footer_left": "WinProx · info@winprox.app · Produktüberblick (Handbuch/FAQ)",

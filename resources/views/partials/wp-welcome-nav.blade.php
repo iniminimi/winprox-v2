@@ -1,7 +1,3 @@
-@php
-    $sectorLandings = \App\Enums\PromoLanding::cases();
-@endphp
-
 <nav class="wp-welcome-nav" aria-label="{{ __('welcome.meta_title') }}">
     <div class="wp-welcome-nav-inner">
         @include('partials.wp-welcome-brand')
@@ -15,13 +11,8 @@
                 <div class="wp-welcome-nav-links wp-welcome-nav-links--mobile">
                     <a href="{{ route('pricing') }}" @if (request()->routeIs('pricing')) aria-current="page" @endif>{{ __('welcome.nav.pricing') }}</a>
                     <a href="{{ route('product.features') }}" @if (request()->routeIs('product.features')) aria-current="page" @endif>{{ __('welcome.nav.features_overview') }}</a>
-                    <a href="{{ route('faq.public') }}" @if (request()->routeIs('faq.public')) aria-current="page" @endif>{{ __('welcome.nav.faq') }}</a>
-                    @foreach ($sectorLandings as $sectorLanding)
-                        <a
-                            href="{{ route($sectorLanding->routeName()) }}"
-                            @if (request()->routeIs($sectorLanding->routeName())) aria-current="page" @endif
-                        >{{ __($sectorLanding->labelKey()) }}</a>
-                    @endforeach
+                    <a href="{{ route('prikklok') }}" @if (request()->routeIs('prikklok')) aria-current="page" @endif>{{ __('landings.prikklok.nav_label') }}</a>
+                    <a href="{{ route('checkmate') }}" @if (request()->routeIs('checkmate')) aria-current="page" @endif>{{ __('landings.checkmate.nav_label') }}</a>
                     <a href="{{ route('about') }}" @if (request()->routeIs('about')) aria-current="page" @endif>{{ __('welcome.nav.about') }}</a>
                     <a href="{{ route('product.technical') }}" @if (request()->routeIs('product.technical')) aria-current="page" @endif>{{ __('welcome.nav.technical_sheet') }}</a>
                     <a href="{{ route('product.api_webhooks') }}" @if (request()->routeIs('product.api_webhooks')) aria-current="page" @endif>{{ __('welcome.nav.api_webhooks') }}</a>
@@ -30,20 +21,8 @@
                 <div class="wp-welcome-nav-links wp-welcome-nav-links--desktop">
                     <a class="wp-welcome-nav-direct" href="{{ route('pricing') }}" @if (request()->routeIs('pricing')) aria-current="page" @endif>{{ __('welcome.nav.pricing') }}</a>
                     <a class="wp-welcome-nav-direct" href="{{ route('product.features') }}" @if (request()->routeIs('product.features')) aria-current="page" @endif>{{ __('welcome.nav.features_overview') }}</a>
-                    <a class="wp-welcome-nav-direct" href="{{ route('faq.public') }}" @if (request()->routeIs('faq.public')) aria-current="page" @endif>{{ __('welcome.nav.faq') }}</a>
-
-                    <details class="wp-welcome-nav-group">
-                        <summary class="wp-welcome-nav-group__toggle">{{ __('welcome.nav.sectors') }}</summary>
-                        <div class="wp-welcome-nav-group__panel" role="list">
-                            @foreach ($sectorLandings as $sectorLanding)
-                                <a
-                                    href="{{ route($sectorLanding->routeName()) }}"
-                                    role="listitem"
-                                    @if (request()->routeIs($sectorLanding->routeName())) aria-current="page" @endif
-                                >{{ __($sectorLanding->labelKey()) }}</a>
-                            @endforeach
-                        </div>
-                    </details>
+                    <a class="wp-welcome-nav-direct" href="{{ route('prikklok') }}" @if (request()->routeIs('prikklok')) aria-current="page" @endif>{{ __('landings.prikklok.nav_label') }}</a>
+                    <a class="wp-welcome-nav-direct" href="{{ route('checkmate') }}" @if (request()->routeIs('checkmate')) aria-current="page" @endif>{{ __('landings.checkmate.nav_label') }}</a>
 
                     <details class="wp-welcome-nav-group">
                         <summary class="wp-welcome-nav-group__toggle">{{ __('welcome.nav.more') }}</summary>
