@@ -693,6 +693,16 @@ class Show extends Component
 
                 return;
             }
+
+            if (! TenantWorkMenuAccess::mayAssignChecklist(
+                $tenant,
+                $validated['unitCheckListId'] !== null ? (int) $validated['unitCheckListId'] : null,
+                $currentUnit?->unit_check_list_id !== null ? (int) $currentUnit->unit_check_list_id : null,
+            )) {
+                $this->addError('unitCheckListId', __('settings.work_menu.errors.checklists_disabled'));
+
+                return;
+            }
         }
 
         $payload = [
@@ -1162,6 +1172,16 @@ class Show extends Component
 
                 return;
             }
+
+            if (! TenantWorkMenuAccess::mayAssignChecklist(
+                $tenant,
+                $validated['bulkCheckListId'] !== null ? (int) $validated['bulkCheckListId'] : null,
+                null,
+            )) {
+                $this->addError('bulkCheckListId', __('settings.work_menu.errors.checklists_disabled'));
+
+                return;
+            }
         }
 
         $allowUnitChecks = (bool) $validated['bulkAllowUnitChecks'];
@@ -1438,6 +1458,7 @@ class Show extends Component
             'locationTranslationLocales' => $locationTranslationLocales,
             'canImportUnitsCsv' => $this->locationTenant()?->hasCsvUnitsImport() ?? false,
             'workMenuReservationsEnabled' => $this->locationTenant()?->workMenuReservationsEnabled() ?? true,
+            'workMenuChecklistsEnabled' => $this->locationTenant()?->workMenuChecklistsEnabled() ?? true,
             'workMenuUnitMeasurementsEnabled' => $this->locationTenant()?->workMenuUnitMeasurementsEnabled() ?? true,
             'presenceComplianceEnabled' => $this->locationTenant()?->presenceComplianceEnabled() ?? false,
             'gpsWorkVisitsEnabled' => $this->locationTenant()?->allowsGpsWorkVisits() ?? false,

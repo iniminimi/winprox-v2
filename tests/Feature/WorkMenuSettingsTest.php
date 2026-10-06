@@ -8,6 +8,7 @@ use App\Livewire\Pages\Settings;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
+use App\Models\UnitCheckList;
 use App\Models\User;
 use App\Support\Tenancy;
 use Illuminate\Http\UploadedFile;
@@ -108,6 +109,67 @@ it('weigert nieuw inschakelen van reserveringen op een unit wanneer werkmenu uit
         ->assertHasErrors(['unitAllowReservations']);
 
     expect($unit->fresh()->allow_reservations)->toBeFalse();
+});
+
+it('weigert een nieuwe checklist-koppeling aan een unit wanneer werkmenu uit staat', function () {
+    $tenant = Tenant::factory()->create([
+        'work_menu_checklists_enabled' => false,
+    ]);
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $checkList = UnitCheckList::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'allow_unit_checks' => true,
+        'unit_check_list_id' => null,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(Show::class, ['location' => $location])
+        ->call('openEditUnit', $unit->id)
+        ->set('unitCheckListId', $checkList->id)
+        ->call('saveUnit')
+        ->assertHasErrors(['unitCheckListId']);
+
+    expect($unit->fresh()->unit_check_list_id)->toBeNull();
+});
+
+it('laat een gekoppelde checklist gewijzigd of losgekoppeld wanneer werkmenu uit staat', function () {
+    $tenant = Tenant::factory()->create([
+        'work_menu_checklists_enabled' => false,
+    ]);
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $checkList = UnitCheckList::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'allow_unit_checks' => true,
+        'unit_check_list_id' => $checkList->id,
+        'name' => 'Machine A',
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(Show::class, ['location' => $location])
+        ->call('openEditUnit', $unit->id)
+        ->set('unitName', 'Machine A1')
+        ->call('saveUnit')
+        ->assertHasNoErrors();
+
+    expect($unit->fresh()->name)->toBe('Machine A1')
+        ->and($unit->fresh()->unit_check_list_id)->toBe($checkList->id);
+
+    Livewire::actingAs($admin)
+        ->test(Show::class, ['location' => $location])
+        ->call('openEditUnit', $unit->id)
+        ->set('unitCheckListId', null)
+        ->call('saveUnit')
+        ->assertHasNoErrors();
+
+    expect($unit->fresh()->unit_check_list_id)->toBeNull();
 });
 
 it('laat grandfathered reserveringen op een unit toe wanneer werkmenu uit staat', function () {

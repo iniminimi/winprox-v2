@@ -99,7 +99,8 @@
         "confirm": "Conferma",
         "errors": {
             "reservations_disabled": "Le prenotazioni sono disattivate nel menu Lavoro. Non puoi attivarle di nuovo su unità o categorie.",
-            "unit_measurements_disabled": "Le misurazioni unità sono disattivate nel menu Lavoro. Non puoi attivarle di nuovo su unità o categorie."
+            "unit_measurements_disabled": "Le misurazioni unità sono disattivate nel menu Lavoro. Non puoi attivarle di nuovo su unità o categorie.",
+            "checklists_disabled": "Le checklist sono disattivate nel menu Lavoro. Non puoi assegnare una nuova checklist a un'unità."
         }
     },
     "privacy": {

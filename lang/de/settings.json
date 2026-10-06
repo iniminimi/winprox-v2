@@ -99,7 +99,8 @@
         "confirm": "Bestätigen",
         "errors": {
             "reservations_disabled": "Reservierungen sind im Arbeitsmenü deaktiviert. Sie können dies nicht neu für Units oder Kategorien aktivieren.",
-            "unit_measurements_disabled": "Unit-Messungen sind im Arbeitsmenü deaktiviert. Sie können dies nicht neu für Units oder Kategorien aktivieren."
+            "unit_measurements_disabled": "Unit-Messungen sind im Arbeitsmenü deaktiviert. Sie können dies nicht neu für Units oder Kategorien aktivieren.",
+            "checklists_disabled": "Checklisten sind im Werkmenü deaktiviert. Sie können einer Einheit keine neue Checkliste zuweisen."
         }
     },
     "privacy": {

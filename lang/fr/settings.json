@@ -99,7 +99,8 @@
         "confirm": "Confirmer",
         "errors": {
             "reservations_disabled": "Les réservations sont désactivées dans le menu Travail. Vous ne pouvez pas les activer à nouveau sur des unités ou catégories.",
-            "unit_measurements_disabled": "Les mesures d'unité sont désactivées dans le menu Travail. Vous ne pouvez pas les activer à nouveau sur des unités ou catégories."
+            "unit_measurements_disabled": "Les mesures d'unité sont désactivées dans le menu Travail. Vous ne pouvez pas les activer à nouveau sur des unités ou catégories.",
+            "checklists_disabled": "Les checklists sont désactivées dans le menu Travail. Vous ne pouvez pas associer une nouvelle checklist à une unité."
         }
     },
     "privacy": {

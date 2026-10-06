@@ -412,7 +412,7 @@
                                 </label>
                             </x-wp-tooltip>
 
-                            @if ($unitAllowUnitChecks)
+                            @if ($unitAllowUnitChecks && ($workMenuChecklistsEnabled || $unitCheckListId !== null))
                                 <x-wp-tooltip :text="__('locations.units.check_list_hint')" wrap class="wp-tooltip--block">
                                     <label class="wp-field">
                                         <span class="wp-label">{{ __('locations.units.fields.check_list') }}</span>
@@ -766,7 +766,7 @@
                                 </label>
                             </x-wp-tooltip>
 
-                            @if ($bulkAllowUnitChecks)
+                            @if ($bulkAllowUnitChecks && $workMenuChecklistsEnabled)
                                 <x-wp-tooltip :text="__('locations.units.check_list_hint')" wrap class="wp-tooltip--block">
                                     <label class="wp-field">
                                         <span class="wp-label">{{ __('locations.units.fields.check_list') }}</span>
