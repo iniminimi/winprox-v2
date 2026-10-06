@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\TaskStatus;
 use App\Support\Qr\QrCenterLogo;
 use App\Support\Qr\QrStickerSheetTemplate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -366,21 +365,6 @@ class Tenant extends Model
         return WorkVisit::query()->where('tenant_id', $this->id)->exists();
     }
 
-    /**
-     * True zolang er minstens één melding of taak "open" is (nieuw of in uitvoering).
-     * Alles gesloten of afgehandeld => werkmenu-items mogen weg.
-     */
-    public function hasOpenIssuesOrTasks(): bool
-    {
-        return Issue::query()
-            ->where('tenant_id', $this->id)
-            ->whereIn('status', TaskStatus::openValues())
-            ->exists()
-            || Task::query()
-                ->where('tenant_id', $this->id)
-                ->whereIn('status', TaskStatus::openValues())
-                ->exists();
-    }
 
     public function allowsEvacuationList(): bool
     {

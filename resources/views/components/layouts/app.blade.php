@@ -31,7 +31,7 @@
         $showWorkMenuInspectionRounds = $activeTenant instanceof Tenant && $activeTenant->workMenuInspectionRoundsEnabled();
         $showWorkMenuChecklists = $activeTenant instanceof Tenant && $activeTenant->workMenuChecklistsEnabled();
         $workMenuIssuesTasksOn = $activeTenant instanceof Tenant && $activeTenant->workMenuIssuesTasksEnabled();
-        $showWorkMenuIssuesTasks = $workMenuIssuesTasksOn && $activeTenant->hasOpenIssuesOrTasks();
+        $showWorkMenuIssuesTasks = $workMenuIssuesTasksOn;
         $showWorkMenuUnitMeasurements = $activeTenant instanceof Tenant && $activeTenant->workMenuUnitMeasurementsEnabled();
         $showWorkVisitsNav = $activeTenant instanceof Tenant
             && $activeTenant->allowsGpsWorkVisits()

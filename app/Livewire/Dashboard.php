@@ -190,8 +190,7 @@ class Dashboard extends Component
             )
             : null;
 
-        $workMenuIssuesTasksEnabled = $tenant?->workMenuIssuesTasksEnabled() ?? true;
-        $showIssuesTasksUi = $workMenuIssuesTasksEnabled && ($tenant?->hasOpenIssuesOrTasks() ?? false);
+        $showIssuesTasksUi = $tenant?->workMenuIssuesTasksEnabled() ?? true;
         $stats = $isCheckmate ? null : $buildStats->handle($tenantId, $hasTimeModule, $hasIotModule, $showIssuesTasksUi);
         $recent = $isCheckmate || ! $showIssuesTasksUi ? collect() : $listRecentIssues->handle($tenantId);
         $starterPackSummary = ! $isCheckmate

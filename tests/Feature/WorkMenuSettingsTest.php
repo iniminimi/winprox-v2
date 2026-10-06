@@ -121,7 +121,7 @@ it('verbergt meldingen en taken en blokkeert hun routes wanneer uitgeschakeld', 
     $this->actingAs($admin)->get(route('issues.show', $issue))->assertForbidden();
 });
 
-it('verbergt meldingen en taken in de sidebar zolang alles gesloten of afgehandeld is', function () {
+it('toont meldingen en taken zodra de schakelaar aan staat ook als alles gesloten is', function () {
     $tenant = Tenant::factory()->create([
         'work_menu_issues_tasks_enabled' => true,
     ]);
@@ -134,21 +134,6 @@ it('verbergt meldingen en taken in de sidebar zolang alles gesloten of afgehande
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
         'status' => TaskStatus::Closed,
-    ]);
-
-    $this->actingAs($admin)
-        ->get(route('dashboard'))
-        ->assertOk()
-        ->assertDontSee('href="'.route('issues.index').'"', false)
-        ->assertDontSee('href="'.route('tasks.index').'"', false)
-        ->assertDontSee(__('dashboard.add_issue'), false)
-        ->assertDontSeeHtml('wp-kpi wp-kpi--new_issues')
-        ->assertDontSeeHtml('<h2 class="wp-section-title">'.e(__('dashboard.recent.title')).'</h2>');
-
-    Issue::factory()->create([
-        'tenant_id' => $tenant->id,
-        'location_id' => $location->id,
-        'status' => TaskStatus::New,
     ]);
 
     $this->actingAs($admin)
