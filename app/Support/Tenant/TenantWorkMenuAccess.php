@@ -29,6 +29,11 @@ final class TenantWorkMenuAccess
         return $tenant !== null && $tenant->workMenuChecklistsEnabled();
     }
 
+    public static function unitChecksEnabled(?Tenant $tenant): bool
+    {
+        return $tenant !== null && $tenant->workMenuUnitChecksEnabled();
+    }
+
     public static function unitMeasurementsEnabled(?Tenant $tenant): bool
     {
         return $tenant !== null && $tenant->workMenuUnitMeasurementsEnabled();
@@ -52,6 +57,11 @@ final class TenantWorkMenuAccess
     public static function activeTenantChecklistsEnabled(): bool
     {
         return self::checklistsEnabled(self::resolveActiveTenant());
+    }
+
+    public static function activeTenantUnitChecksEnabled(): bool
+    {
+        return self::unitChecksEnabled(self::resolveActiveTenant());
     }
 
     public static function activeTenantUnitMeasurementsEnabled(): bool
@@ -94,6 +104,16 @@ final class TenantWorkMenuAccess
     public static function mayEnableCategoryUnitMeasurements(?Tenant $tenant, bool $newValue, bool $currentValue): bool
     {
         return self::maySetBooleanFlag(self::unitMeasurementsEnabled($tenant), $newValue, $currentValue);
+    }
+
+    public static function mayEnableUnitChecks(?Tenant $tenant, bool $newValue, bool $currentValue): bool
+    {
+        return self::maySetBooleanFlag(self::unitChecksEnabled($tenant), $newValue, $currentValue);
+    }
+
+    public static function mayEnableCategoryUnitChecks(?Tenant $tenant, bool $newValue, bool $currentValue): bool
+    {
+        return self::maySetBooleanFlag(self::unitChecksEnabled($tenant), $newValue, $currentValue);
     }
 
     /**

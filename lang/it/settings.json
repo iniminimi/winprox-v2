@@ -90,6 +90,8 @@
         "inspection_rounds_hint": "Elenco e pianificazione dei giri di ispezione. I unit check restano disponibili separatamente.",
         "checklists_label": "Checklist",
         "checklists_hint": "Gestire i modelli di checklist nel backoffice. I unit check restano disponibili separatamente.",
+        "unit_checks_label": "Unit check",
+        "unit_checks_hint": "Esiti dei controlli sulle unità nel backoffice e via QR. Disattivato, i controlli QR si fermano anche dove erano attivi.",
         "calendar_label": "Calendario",
         "calendar_hint": "Vista calendario per attività, segnalazioni e prenotazioni.",
         "reservations_label": "Prenotazioni",
@@ -100,7 +102,8 @@
         "errors": {
             "reservations_disabled": "Le prenotazioni sono disattivate nel menu Lavoro. Non puoi attivarle di nuovo su unità o categorie.",
             "unit_measurements_disabled": "Le misurazioni unità sono disattivate nel menu Lavoro. Non puoi attivarle di nuovo su unità o categorie.",
-            "checklists_disabled": "Le checklist sono disattivate nel menu Lavoro. Non puoi assegnare una nuova checklist a un'unità."
+            "checklists_disabled": "Le checklist sono disattivate nel menu Lavoro. Non puoi assegnare una nuova checklist a un'unità.",
+            "unit_checks_disabled": "I unit check sono disattivati nel menu Lavoro. Non puoi attivarli su unità o categorie."
         }
     },
     "privacy": {

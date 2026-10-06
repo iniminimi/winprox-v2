@@ -90,6 +90,8 @@
         "inspection_rounds_hint": "Liste et planification des tournées d'inspection. Les unit checks restent disponibles séparément.",
         "checklists_label": "Checklists",
         "checklists_hint": "Gérer les modèles de checklists dans le backoffice. Les unit checks restent disponibles séparément.",
+        "unit_checks_label": "Unit checks",
+        "unit_checks_hint": "Résultats de contrôle sur les unités dans le backoffice et via QR. Désactivé, les unit checks QR s'arrêtent aussi là où ils étaient activés.",
         "calendar_label": "Calendrier",
         "calendar_hint": "Vue calendrier pour tâches, signalements et réservations.",
         "reservations_label": "Réservations",
@@ -100,7 +102,8 @@
         "errors": {
             "reservations_disabled": "Les réservations sont désactivées dans le menu Travail. Vous ne pouvez pas les activer à nouveau sur des unités ou catégories.",
             "unit_measurements_disabled": "Les mesures d'unité sont désactivées dans le menu Travail. Vous ne pouvez pas les activer à nouveau sur des unités ou catégories.",
-            "checklists_disabled": "Les checklists sont désactivées dans le menu Travail. Vous ne pouvez pas associer une nouvelle checklist à une unité."
+            "checklists_disabled": "Les checklists sont désactivées dans le menu Travail. Vous ne pouvez pas associer une nouvelle checklist à une unité.",
+            "unit_checks_disabled": "Les unit checks sont désactivés dans le menu Travail. Vous ne pouvez pas les activer sur des unités ou des catégories."
         }
     },
     "privacy": {

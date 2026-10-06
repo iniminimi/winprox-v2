@@ -90,6 +90,8 @@
         "inspection_rounds_hint": "Liste und Planung von Inspektionsrunden. Unit Checks bleiben separat verfügbar.",
         "checklists_label": "Checklisten",
         "checklists_hint": "Checklisten-Vorlagen im Backoffice verwalten. Unit Checks bleiben separat verfügbar.",
+        "unit_checks_label": "Unit Checks",
+        "unit_checks_hint": "Checkergebnisse an Einheiten im Backoffice und via QR. Deaktiviert stoppen auch QR-Checks auf Einheiten, bei denen sie an waren.",
         "calendar_label": "Kalender",
         "calendar_hint": "Kalenderansicht für Aufgaben, Meldungen und Reservierungen.",
         "reservations_label": "Reservierungen",
@@ -100,7 +102,8 @@
         "errors": {
             "reservations_disabled": "Reservierungen sind im Arbeitsmenü deaktiviert. Sie können dies nicht neu für Units oder Kategorien aktivieren.",
             "unit_measurements_disabled": "Unit-Messungen sind im Arbeitsmenü deaktiviert. Sie können dies nicht neu für Units oder Kategorien aktivieren.",
-            "checklists_disabled": "Checklisten sind im Werkmenü deaktiviert. Sie können einer Einheit keine neue Checkliste zuweisen."
+            "checklists_disabled": "Checklisten sind im Werkmenü deaktiviert. Sie können einer Einheit keine neue Checkliste zuweisen.",
+            "unit_checks_disabled": "Unit Checks sind im Werkmenü deaktiviert. Sie können dies nicht neu auf Einheiten oder Kategorien aktivieren."
         }
     },
     "privacy": {

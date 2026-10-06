@@ -386,15 +386,18 @@
                     </div>
                 @endif
 
-                <div class="wp-field">
-                    <x-wp-tooltip :text="__('locations.categories.allow_unit_checks_hint')" wrap>
-                        <label class="wp-check">
-                            <input type="checkbox" wire:model="categoryAllowUnitChecks" @disabled(! $canMutateOpenedCategory) />
-                            <span>{{ __('locations.categories.fields.allow_unit_checks') }}</span>
-                        </label>
-                    </x-wp-tooltip>
-                    @error('categoryAllowUnitChecks') <p class="wp-error">{{ $message }}</p> @enderror
-                </div>
+                @if ($workMenuUnitChecksEnabled || $categoryAllowUnitChecks)
+                    <div class="wp-field">
+                        <x-wp-tooltip :text="__('locations.categories.allow_unit_checks_hint')" wrap>
+                            <label class="wp-check">
+                                <input type="checkbox" wire:model="categoryAllowUnitChecks"
+                                    @disabled((! $workMenuUnitChecksEnabled && ! $categoryAllowUnitChecks) || ! $canMutateOpenedCategory) />
+                                <span>{{ __('locations.categories.fields.allow_unit_checks') }}</span>
+                            </label>
+                        </x-wp-tooltip>
+                        @error('categoryAllowUnitChecks') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                @endif
 
                 @if ($workMenuUnitMeasurementsEnabled || $categoryAllowUnitMeasurements)
                     <div class="wp-field">

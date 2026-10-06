@@ -41,6 +41,7 @@ it('persisteert werkmenu-wijzigingen via de action met audit', function () {
         'work_menu_reservations_enabled' => false,
         'work_menu_inspection_rounds_enabled' => true,
         'work_menu_checklists_enabled' => false,
+        'work_menu_unit_checks_enabled' => false,
         'work_menu_unit_measurements_enabled' => false,
     ], $admin->id);
 
@@ -49,6 +50,7 @@ it('persisteert werkmenu-wijzigingen via de action met audit', function () {
         ->and($fresh->workMenuReservationsEnabled())->toBeFalse()
         ->and($fresh->workMenuInspectionRoundsEnabled())->toBeTrue()
         ->and($fresh->workMenuChecklistsEnabled())->toBeFalse()
+        ->and($fresh->workMenuUnitChecksEnabled())->toBeFalse()
         ->and($fresh->workMenuUnitMeasurementsEnabled())->toBeFalse();
 
     expect(\DB::table('audit_logs')->where('action', 'tenant.work_menu_updated')->exists())->toBeTrue();
@@ -170,6 +172,62 @@ it('laat een gekoppelde checklist gewijzigd of losgekoppeld wanneer werkmenu uit
         ->assertHasNoErrors();
 
     expect($unit->fresh()->unit_check_list_id)->toBeNull();
+});
+
+it('verbergt unit checks in de sidebar en blokkeert de route wanneer uitgeschakeld', function () {
+    $tenant = Tenant::factory()->create([
+        'work_menu_unit_checks_enabled' => false,
+    ]);
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    $this->actingAs($admin)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertDontSee('href="'.route('unit-checks.index').'"', false);
+
+    $this->actingAs($admin)
+        ->get(route('unit-checks.index'))
+        ->assertForbidden();
+});
+
+it('blokkeert QR-checks op een unit die het aan had wanneer werkmenu uit staat', function () {
+    $tenant = Tenant::factory()->create([
+        'work_menu_unit_checks_enabled' => false,
+    ]);
+    Tenancy::actAs($tenant->id);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'category_id' => null,
+        'allow_unit_checks' => true,
+    ]);
+
+    expect($unit->fresh()->allowsUnitChecks())->toBeFalse();
+});
+
+it('weigert nieuw inschakelen van unit checks op een unit wanneer werkmenu uit staat', function () {
+    $tenant = Tenant::factory()->create([
+        'work_menu_unit_checks_enabled' => false,
+    ]);
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'allow_unit_checks' => false,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(Show::class, ['location' => $location])
+        ->call('openEditUnit', $unit->id)
+        ->set('unitAllowUnitChecks', true)
+        ->call('saveUnit')
+        ->assertHasErrors(['unitAllowUnitChecks']);
+
+    expect($unit->fresh()->allow_unit_checks)->toBeFalse();
 });
 
 it('laat grandfathered reserveringen op een unit toe wanneer werkmenu uit staat', function () {

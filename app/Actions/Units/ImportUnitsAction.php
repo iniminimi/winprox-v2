@@ -347,6 +347,13 @@ class ImportUnitsAction
                     ]);
                 }
 
+                if ($column === 'allow_unit_checks' && ! TenantWorkMenuAccess::unitChecksEnabled($tenant)) {
+                    $errors[] = __('locations.units_csv.errors.row', [
+                        'line' => $line,
+                        'message' => __('settings.work_menu.errors.unit_checks_disabled'),
+                    ]);
+                }
+
                 if ($column === 'allow_unit_measurements' && ! TenantWorkMenuAccess::unitMeasurementsEnabled($tenant)) {
                     $errors[] = __('locations.units_csv.errors.row', [
                         'line' => $line,

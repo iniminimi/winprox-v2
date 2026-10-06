@@ -709,6 +709,16 @@ class Index extends Component
 
                 return;
             }
+
+            if (! TenantWorkMenuAccess::mayEnableCategoryUnitChecks(
+                $tenant,
+                (bool) $validated['categoryAllowUnitChecks'],
+                (bool) ($currentCategory?->allow_unit_checks ?? false),
+            )) {
+                $this->addError('categoryAllowUnitChecks', __('settings.work_menu.errors.unit_checks_disabled'));
+
+                return;
+            }
         }
 
         if ($this->editingCategoryId === null) {
@@ -947,6 +957,7 @@ class Index extends Component
             'onboarding' => TenantOnboardingState::current(),
             'canMutateOpenedCategory' => $this->canMutateOpenedCategory(),
             'workMenuReservationsEnabled' => $viewerTenant?->workMenuReservationsEnabled() ?? true,
+            'workMenuUnitChecksEnabled' => $viewerTenant?->workMenuUnitChecksEnabled() ?? true,
             'workMenuUnitMeasurementsEnabled' => $viewerTenant?->workMenuUnitMeasurementsEnabled() ?? true,
             'presenceComplianceEnabled' => (bool) ($viewerTenant?->presenceComplianceEnabled()),
             'gpsWorkVisitsEnabled' => (bool) ($viewerTenant?->allowsGpsWorkVisits()),

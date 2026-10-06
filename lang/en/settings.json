@@ -90,6 +90,8 @@
         "inspection_rounds_hint": "List and planning of inspection rounds. Unit checks remain available separately.",
         "checklists_label": "Checklists",
         "checklists_hint": "Manage checklist templates in the backoffice. Unit checks remain available separately.",
+        "unit_checks_label": "Unit checks",
+        "unit_checks_hint": "Check results on units in the backoffice and via QR. When off, QR checks also stop on units that had it on.",
         "calendar_label": "Calendar",
         "calendar_hint": "Calendar view for tasks, issues and reservations.",
         "reservations_label": "Reservations",
@@ -100,7 +102,8 @@
         "errors": {
             "reservations_disabled": "Reservations are disabled in the work menu. You cannot newly enable this on units or categories.",
             "unit_measurements_disabled": "Unit measurements are disabled in the work menu. You cannot newly enable this on units or categories.",
-            "checklists_disabled": "Checklists are off in the work menu. You cannot assign a new checklist to a unit."
+            "checklists_disabled": "Checklists are off in the work menu. You cannot assign a new checklist to a unit.",
+            "unit_checks_disabled": "Unit checks are off in the work menu. You cannot enable this on units or categories."
         }
     },
     "privacy": {

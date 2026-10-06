@@ -405,12 +405,15 @@
                                 @error('unitAllowReservations') <span class="wp-error">{{ $message }}</span> @enderror
                             @endif
 
-                            <x-wp-tooltip :text="__('locations.units.allow_unit_checks_hint')" wrap class="wp-tooltip--block">
-                                <label class="wp-check">
-                                    <input type="checkbox" wire:model.live="unitAllowUnitChecks">
-                                    <span>{{ __('locations.units.fields.allow_unit_checks') }}</span>
-                                </label>
-                            </x-wp-tooltip>
+                            @if ($workMenuUnitChecksEnabled || $unitAllowUnitChecks)
+                                <x-wp-tooltip :text="__('locations.units.allow_unit_checks_hint')" wrap class="wp-tooltip--block">
+                                    <label class="wp-check">
+                                        <input type="checkbox" wire:model.live="unitAllowUnitChecks"
+                                            @disabled(! $workMenuUnitChecksEnabled && ! $unitAllowUnitChecks)>
+                                        <span>{{ __('locations.units.fields.allow_unit_checks') }}</span>
+                                    </label>
+                                </x-wp-tooltip>
+                            @endif
 
                             @if ($unitAllowUnitChecks && ($workMenuChecklistsEnabled || $unitCheckListId !== null))
                                 <x-wp-tooltip :text="__('locations.units.check_list_hint')" wrap class="wp-tooltip--block">
@@ -759,12 +762,15 @@
                                 @error('bulkAllowReservations') <span class="wp-error">{{ $message }}</span> @enderror
                             @endif
 
-                            <x-wp-tooltip :text="__('locations.units.allow_unit_checks_hint')" wrap class="wp-tooltip--block">
-                                <label class="wp-check">
-                                    <input type="checkbox" wire:model.live="bulkAllowUnitChecks">
-                                    <span>{{ __('locations.units.fields.allow_unit_checks') }}</span>
-                                </label>
-                            </x-wp-tooltip>
+                            @if ($workMenuUnitChecksEnabled || $bulkAllowUnitChecks)
+                                <x-wp-tooltip :text="__('locations.units.allow_unit_checks_hint')" wrap class="wp-tooltip--block">
+                                    <label class="wp-check">
+                                        <input type="checkbox" wire:model.live="bulkAllowUnitChecks"
+                                            @disabled(! $workMenuUnitChecksEnabled && ! $bulkAllowUnitChecks)>
+                                        <span>{{ __('locations.units.fields.allow_unit_checks') }}</span>
+                                    </label>
+                                </x-wp-tooltip>
+                            @endif
 
                             @if ($bulkAllowUnitChecks && $workMenuChecklistsEnabled)
                                 <x-wp-tooltip :text="__('locations.units.check_list_hint')" wrap class="wp-tooltip--block">

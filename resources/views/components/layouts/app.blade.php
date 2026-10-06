@@ -35,6 +35,7 @@
             && $activeTenant->allowsGpsWorkVisits()
             && $activeTenant->hasRecordedWorkVisits();
         $showUnitChecksNav = $activeTenant instanceof Tenant
+            && $activeTenant->workMenuUnitChecksEnabled()
             && $activeTenant->hasRecordedUnitChecks();
         $checkmateNav = \App\Support\Checkmate\CheckmateMode::isActive($activeTenant);
 
@@ -320,7 +321,7 @@
                             $workGroupActive = request()->routeIs('issues.*')
                                 || request()->routeIs('tasks.*')
                                 || ($showWorkMenuChecklists && request()->routeIs('checklists.*'))
-                                || request()->routeIs('unit-checks.*')
+                                || ($showUnitChecksNav && request()->routeIs('unit-checks.*'))
                                 || ($showWorkMenuCalendar && request()->routeIs('calendar.*'))
                                 || ($showWorkMenuReservations && request()->routeIs('reservations.*'))
                                 || ($showWorkMenuUnitMeasurements && request()->routeIs('unit-measurements.*'))

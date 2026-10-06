@@ -90,6 +90,8 @@
         "inspection_rounds_hint": "Lista y planificación de rondas de inspección. Los unit checks siguen disponibles por separado.",
         "checklists_label": "Checklists",
         "checklists_hint": "Gestionar plantillas de checklists en el backoffice. Los unit checks siguen disponibles por separado.",
+        "unit_checks_label": "Unit checks",
+        "unit_checks_hint": "Resultados de chequeos en unidades en el backoffice y vía QR. Desactivado, los chequeos QR también se detienen donde estaban activos.",
         "calendar_label": "Calendario",
         "calendar_hint": "Vista de calendario para tareas, incidencias y reservas.",
         "reservations_label": "Reservas",
@@ -100,7 +102,8 @@
         "errors": {
             "reservations_disabled": "Las reservas están desactivadas en el menú Trabajo. No puedes activarlas de nuevo en unidades o categorías.",
             "unit_measurements_disabled": "Las mediciones de unidad están desactivadas en el menú Trabajo. No puedes activarlas de nuevo en unidades o categorías.",
-            "checklists_disabled": "Las checklists están desactivadas en el menú Trabajo. No puedes asignar una nueva checklist a una unidad."
+            "checklists_disabled": "Las checklists están desactivadas en el menú Trabajo. No puedes asignar una nueva checklist a una unidad.",
+            "unit_checks_disabled": "Los unit checks están desactivados en el menú Trabajo. No puedes activarlos en unidades o categorías."
         }
     },
     "privacy": {

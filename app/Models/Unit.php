@@ -123,6 +123,11 @@ class Unit extends Model
             return false;
         }
 
+        $this->loadMissing('tenant');
+        if (! ($this->tenant?->workMenuUnitChecksEnabled() ?? true)) {
+            return false;
+        }
+
         // Geen categorie: alleen de unit-vlag telt.
         if ($this->category_id === null) {
             return true;
@@ -163,6 +168,9 @@ class Unit extends Model
     {
         return $query
             ->where('units.allow_unit_checks', true)
+            ->whereHas('tenant', function (Builder $tenant): void {
+                $tenant->where('work_menu_unit_checks_enabled', true);
+            })
             ->where(function (Builder $inner): void {
                 $inner->whereNull('units.category_id')
                     ->orWhereHas('category', function (Builder $category): void {

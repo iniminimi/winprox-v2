@@ -694,6 +694,16 @@ class Show extends Component
                 return;
             }
 
+            if (! TenantWorkMenuAccess::mayEnableUnitChecks(
+                $tenant,
+                (bool) $validated['unitAllowUnitChecks'],
+                (bool) ($currentUnit?->allow_unit_checks ?? false),
+            )) {
+                $this->addError('unitAllowUnitChecks', __('settings.work_menu.errors.unit_checks_disabled'));
+
+                return;
+            }
+
             if (! TenantWorkMenuAccess::mayAssignChecklist(
                 $tenant,
                 $validated['unitCheckListId'] !== null ? (int) $validated['unitCheckListId'] : null,
@@ -1173,6 +1183,16 @@ class Show extends Component
                 return;
             }
 
+            if (! TenantWorkMenuAccess::mayEnableUnitChecks(
+                $tenant,
+                (bool) $validated['bulkAllowUnitChecks'],
+                false,
+            )) {
+                $this->addError('bulkAllowUnitChecks', __('settings.work_menu.errors.unit_checks_disabled'));
+
+                return;
+            }
+
             if (! TenantWorkMenuAccess::mayAssignChecklist(
                 $tenant,
                 $validated['bulkCheckListId'] !== null ? (int) $validated['bulkCheckListId'] : null,
@@ -1459,6 +1479,7 @@ class Show extends Component
             'canImportUnitsCsv' => $this->locationTenant()?->hasCsvUnitsImport() ?? false,
             'workMenuReservationsEnabled' => $this->locationTenant()?->workMenuReservationsEnabled() ?? true,
             'workMenuChecklistsEnabled' => $this->locationTenant()?->workMenuChecklistsEnabled() ?? true,
+            'workMenuUnitChecksEnabled' => $this->locationTenant()?->workMenuUnitChecksEnabled() ?? true,
             'workMenuUnitMeasurementsEnabled' => $this->locationTenant()?->workMenuUnitMeasurementsEnabled() ?? true,
             'presenceComplianceEnabled' => $this->locationTenant()?->presenceComplianceEnabled() ?? false,
             'gpsWorkVisitsEnabled' => $this->locationTenant()?->allowsGpsWorkVisits() ?? false,

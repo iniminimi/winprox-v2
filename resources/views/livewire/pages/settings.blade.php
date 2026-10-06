@@ -151,6 +151,13 @@
                         </span>
                     </label>
                     <label class="wp-check">
+                        <input type="checkbox" wire:model="workMenuUnitChecksEnabled" class="wp-checkbox">
+                        <span>
+                            {{ __('settings.work_menu.unit_checks_label') }}
+                            <br><span class="wp-hint">{{ __('settings.work_menu.unit_checks_hint') }}</span>
+                        </span>
+                    </label>
+                    <label class="wp-check">
                         <input type="checkbox" wire:model="workMenuCalendarEnabled" class="wp-checkbox">
                         <span>
                             {{ __('settings.work_menu.calendar_label') }}

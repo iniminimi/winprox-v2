@@ -90,6 +90,8 @@
         "inspection_rounds_hint": "Lijst en planning van inspectierondes. Unit checks blijven onafhankelijk beschikbaar.",
         "checklists_label": "Checklists",
         "checklists_hint": "Checklisttemplates beheren in backoffice. Unit checks blijven onafhankelijk beschikbaar.",
+        "unit_checks_label": "Unit checks",
+        "unit_checks_hint": "Checkresultaten op units in beheer en via QR. Uitgeschakeld stoppen ook QR-checks op units die het aan hadden.",
         "calendar_label": "Kalender",
         "calendar_hint": "Kalenderweergave voor taken, meldingen en reserveringen.",
         "reservations_label": "Reserveringen",
@@ -100,7 +102,8 @@
         "errors": {
             "reservations_disabled": "Reserveringen staan uit in het werkmenu. Je kunt dit niet nieuw inschakelen op units of categorieën.",
             "unit_measurements_disabled": "Unitmetingen staan uit in het werkmenu. Je kunt dit niet nieuw inschakelen op units of categorieën.",
-            "checklists_disabled": "Checklists staan uit in het werkmenu. Je kunt geen nieuwe checklist aan een unit koppelen."
+            "checklists_disabled": "Checklists staan uit in het werkmenu. Je kunt geen nieuwe checklist aan een unit koppelen.",
+            "unit_checks_disabled": "Unit checks staan uit in het werkmenu. Je kunt dit niet nieuw inschakelen op units of categorieën."
         }
     },
     "privacy": {

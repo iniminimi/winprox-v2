@@ -76,6 +76,7 @@ final class TenantStarterPackCatalog
      *     reservations: bool,
      *     inspection_rounds: bool,
      *     checklists: bool,
+     *     unit_checks: bool,
      *     unit_measurements: bool,
      * }
      */
@@ -97,6 +98,7 @@ final class TenantStarterPackCatalog
             'reservations' => (bool) ($menu['reservations'] ?? true),
             'inspection_rounds' => (bool) ($menu['inspection_rounds'] ?? true),
             'checklists' => (bool) ($menu['checklists'] ?? true),
+            'unit_checks' => (bool) ($menu['unit_checks'] ?? true),
             'unit_measurements' => (bool) ($menu['unit_measurements'] ?? true),
         ];
 
@@ -106,6 +108,7 @@ final class TenantStarterPackCatalog
                 'reservations' => false,
                 'inspection_rounds' => false,
                 'checklists' => false,
+                'unit_checks' => false,
                 'unit_measurements' => false,
             ],
             TenantStarterPackSize::Medium => [
@@ -113,6 +116,7 @@ final class TenantStarterPackCatalog
                 'reservations' => false,
                 'inspection_rounds' => false,
                 'checklists' => false,
+                'unit_checks' => false,
                 'unit_measurements' => false,
             ],
             default => $flags,
@@ -125,6 +129,7 @@ final class TenantStarterPackCatalog
      *     work_menu_reservations_enabled: bool,
      *     work_menu_inspection_rounds_enabled: bool,
      *     work_menu_checklists_enabled: bool,
+     *     work_menu_unit_checks_enabled: bool,
      *     work_menu_unit_measurements_enabled: bool,
      * }
      */
@@ -137,6 +142,7 @@ final class TenantStarterPackCatalog
             'work_menu_reservations_enabled' => $flags['reservations'],
             'work_menu_inspection_rounds_enabled' => $flags['inspection_rounds'],
             'work_menu_checklists_enabled' => $flags['checklists'],
+            'work_menu_unit_checks_enabled' => $flags['unit_checks'],
             'work_menu_unit_measurements_enabled' => $flags['unit_measurements'],
         ];
     }
