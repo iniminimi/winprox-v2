@@ -111,6 +111,8 @@ class Settings extends Component
 
     public bool $workMenuInspectionRoundsEnabled = true;
 
+    public bool $workMenuChecklistsEnabled = true;
+
     public bool $workMenuUnitMeasurementsEnabled = true;
 
     #[Locked]
@@ -322,6 +324,7 @@ class Settings extends Component
                 'work_menu_calendar_enabled' => $this->workMenuCalendarEnabled,
                 'work_menu_reservations_enabled' => $this->workMenuReservationsEnabled,
                 'work_menu_inspection_rounds_enabled' => $this->workMenuInspectionRoundsEnabled,
+                'work_menu_checklists_enabled' => $this->workMenuChecklistsEnabled,
                 'work_menu_unit_measurements_enabled' => $this->workMenuUnitMeasurementsEnabled,
             ],
             UpdateTenantWorkMenuRequest::ruleSet(),
@@ -337,6 +340,7 @@ class Settings extends Component
         $this->workMenuCalendarEnabled = $tenant->workMenuCalendarEnabled();
         $this->workMenuReservationsEnabled = $tenant->workMenuReservationsEnabled();
         $this->workMenuInspectionRoundsEnabled = $tenant->workMenuInspectionRoundsEnabled();
+        $this->workMenuChecklistsEnabled = $tenant->workMenuChecklistsEnabled();
         $this->workMenuUnitMeasurementsEnabled = $tenant->workMenuUnitMeasurementsEnabled();
     }
 

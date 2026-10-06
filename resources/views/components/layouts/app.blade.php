@@ -29,6 +29,7 @@
         $showWorkMenuCalendar = $activeTenant instanceof Tenant && $activeTenant->workMenuCalendarEnabled();
         $showWorkMenuReservations = $activeTenant instanceof Tenant && $activeTenant->workMenuReservationsEnabled();
         $showWorkMenuInspectionRounds = $activeTenant instanceof Tenant && $activeTenant->workMenuInspectionRoundsEnabled();
+        $showWorkMenuChecklists = $activeTenant instanceof Tenant && $activeTenant->workMenuChecklistsEnabled();
         $showWorkMenuUnitMeasurements = $activeTenant instanceof Tenant && $activeTenant->workMenuUnitMeasurementsEnabled();
         $showWorkVisitsNav = $activeTenant instanceof Tenant
             && $activeTenant->allowsGpsWorkVisits()
@@ -318,7 +319,7 @@
 
                             $workGroupActive = request()->routeIs('issues.*')
                                 || request()->routeIs('tasks.*')
-                                || request()->routeIs('checklists.*')
+                                || ($showWorkMenuChecklists && request()->routeIs('checklists.*'))
                                 || request()->routeIs('unit-checks.*')
                                 || ($showWorkMenuCalendar && request()->routeIs('calendar.*'))
                                 || ($showWorkMenuReservations && request()->routeIs('reservations.*'))
@@ -389,13 +390,15 @@
                                             <span>{{ __('issues.list.inspection_rounds') }}</span>
                                         </a>
                                     @endif
-                                    @can('viewAny', \App\Models\UnitCheckList::class)
+                                    @if ($showWorkMenuChecklists)
+                                        @can('viewAny', \App\Models\UnitCheckList::class)
                                         <a href="{{ route('checklists.index') }}"
                                            class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('checklists.*') ? 'is-active' : '' }}"
                                            @click="nav = false">
                                             <span>{{ __('common.nav.checklists') }}</span>
                                         </a>
-                                    @endcan
+                                        @endcan
+                                    @endif
                                     @if ($showUnitChecksNav)
                                         @can('viewAny', \App\Models\UnitCheck::class)
                                             <a href="{{ route('unit-checks.index') }}"

@@ -90,6 +90,8 @@
         "calendar_hint": "Kalenderansicht für Aufgaben, Meldungen und Reservierungen.",
         "reservations_label": "Reservierungen",
         "reservations_hint": "Reservierungsverwaltung in der Verwaltung. QR-Reservierung auf Units, die es bereits hatten, bleibt verfügbar.",
+        "checklists_label": "Checklisten",
+        "checklists_hint": "Checklisten-Vorlagen im Backoffice verwalten. Unit Checks bleiben separat verfügbar.",
         "inspection_rounds_label": "Inspektionsrunden",
         "inspection_rounds_hint": "Liste und Planung von Inspektionsrunden. Unit Checks bleiben separat verfügbar.",
         "unit_measurements_label": "Unit-Messungen",

@@ -39,6 +39,7 @@ it('persisteert werkmenu-wijzigingen via de action met audit', function () {
         'work_menu_calendar_enabled' => false,
         'work_menu_reservations_enabled' => false,
         'work_menu_inspection_rounds_enabled' => true,
+        'work_menu_checklists_enabled' => false,
         'work_menu_unit_measurements_enabled' => false,
     ], $admin->id);
 
@@ -46,6 +47,7 @@ it('persisteert werkmenu-wijzigingen via de action met audit', function () {
     expect($fresh->workMenuCalendarEnabled())->toBeFalse()
         ->and($fresh->workMenuReservationsEnabled())->toBeFalse()
         ->and($fresh->workMenuInspectionRoundsEnabled())->toBeTrue()
+        ->and($fresh->workMenuChecklistsEnabled())->toBeFalse()
         ->and($fresh->workMenuUnitMeasurementsEnabled())->toBeFalse();
 
     expect(\DB::table('audit_logs')->where('action', 'tenant.work_menu_updated')->exists())->toBeTrue();
@@ -65,6 +67,23 @@ it('verbergt reserveringen in de sidebar en blokkeert de route wanneer uitgescha
 
     $this->actingAs($admin)
         ->get(route('reservations.index'))
+        ->assertForbidden();
+});
+
+it('verbergt checklists in de sidebar en blokkeert de route wanneer uitgeschakeld', function () {
+    $tenant = Tenant::factory()->create([
+        'work_menu_checklists_enabled' => false,
+    ]);
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    $this->actingAs($admin)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertDontSee('href="'.route('checklists.index').'"', false);
+
+    $this->actingAs($admin)
+        ->get(route('checklists.index'))
         ->assertForbidden();
 });
 

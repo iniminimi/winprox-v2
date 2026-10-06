@@ -24,6 +24,11 @@ final class TenantWorkMenuAccess
         return $tenant !== null && $tenant->workMenuInspectionRoundsEnabled();
     }
 
+    public static function checklistsEnabled(?Tenant $tenant): bool
+    {
+        return $tenant !== null && $tenant->workMenuChecklistsEnabled();
+    }
+
     public static function unitMeasurementsEnabled(?Tenant $tenant): bool
     {
         return $tenant !== null && $tenant->workMenuUnitMeasurementsEnabled();
@@ -42,6 +47,11 @@ final class TenantWorkMenuAccess
     public static function activeTenantInspectionRoundsEnabled(): bool
     {
         return self::inspectionRoundsEnabled(self::resolveActiveTenant());
+    }
+
+    public static function activeTenantChecklistsEnabled(): bool
+    {
+        return self::checklistsEnabled(self::resolveActiveTenant());
     }
 
     public static function activeTenantUnitMeasurementsEnabled(): bool

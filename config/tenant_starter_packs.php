@@ -9,6 +9,7 @@ return [
         'calendar' => true,
         'reservations' => true,
         'inspection_rounds' => true,
+        'checklists' => true,
         'unit_measurements' => true,
     ],
     'own_sites' => [
@@ -16,6 +17,7 @@ return [
             'calendar' => true,
             'reservations' => false,
             'inspection_rounds' => false,
+            'checklists' => false,
             'unit_measurements' => false,
         ],
         'teams' => [
@@ -33,6 +35,7 @@ return [
             'calendar' => true,
             'reservations' => false,
             'inspection_rounds' => true,
+            'checklists' => true,
             'unit_measurements' => false,
         ],
         'teams' => [
@@ -103,6 +106,7 @@ return [
             'calendar' => true,
             'reservations' => false,
             'inspection_rounds' => true,
+            'checklists' => true,
             'unit_measurements' => false,
         ],
         'teams' => [
@@ -121,6 +125,7 @@ return [
             'calendar' => true,
             'reservations' => false,
             'inspection_rounds' => false,
+            'checklists' => false,
             'unit_measurements' => false,
         ],
         'teams' => [

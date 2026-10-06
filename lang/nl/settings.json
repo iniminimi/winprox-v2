@@ -90,6 +90,8 @@
         "calendar_hint": "Kalenderweergave voor taken, meldingen en reserveringen.",
         "reservations_label": "Reserveringen",
         "reservations_hint": "Reserveringsbeheer in backoffice. QR-reserveren op units die het al hadden blijft beschikbaar.",
+        "checklists_label": "Checklists",
+        "checklists_hint": "Checklisttemplates beheren in backoffice. Unit checks blijven onafhankelijk beschikbaar.",
         "inspection_rounds_label": "Inspectierondes",
         "inspection_rounds_hint": "Lijst en planning van inspectierondes. Unit checks blijven onafhankelijk beschikbaar.",
         "unit_measurements_label": "Unitmetingen",

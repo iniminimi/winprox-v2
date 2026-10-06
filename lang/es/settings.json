@@ -90,6 +90,8 @@
         "calendar_hint": "Vista de calendario para tareas, incidencias y reservas.",
         "reservations_label": "Reservas",
         "reservations_hint": "Gestión de reservas en backoffice. La reserva QR en unidades que ya la tenían sigue disponible.",
+        "checklists_label": "Checklists",
+        "checklists_hint": "Gestionar plantillas de checklists en el backoffice. Los unit checks siguen disponibles por separado.",
         "inspection_rounds_label": "Rondas de inspección",
         "inspection_rounds_hint": "Lista y planificación de rondas de inspección. Los unit checks siguen disponibles por separado.",
         "unit_measurements_label": "Mediciones de unidad",

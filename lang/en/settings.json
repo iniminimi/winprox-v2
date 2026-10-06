@@ -90,6 +90,8 @@
         "calendar_hint": "Calendar view for tasks, issues and reservations.",
         "reservations_label": "Reservations",
         "reservations_hint": "Reservation management in backoffice. QR booking on units that already had it stays available.",
+        "checklists_label": "Checklists",
+        "checklists_hint": "Manage checklist templates in the backoffice. Unit checks remain available separately.",
         "inspection_rounds_label": "Inspection rounds",
         "inspection_rounds_hint": "List and planning of inspection rounds. Unit checks remain available separately.",
         "unit_measurements_label": "Unit measurements",

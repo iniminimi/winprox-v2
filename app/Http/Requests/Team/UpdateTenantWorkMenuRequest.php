@@ -22,6 +22,7 @@ class UpdateTenantWorkMenuRequest extends FormRequest
             'work_menu_calendar_enabled' => ['required', 'boolean'],
             'work_menu_reservations_enabled' => ['required', 'boolean'],
             'work_menu_inspection_rounds_enabled' => ['required', 'boolean'],
+            'work_menu_checklists_enabled' => ['required', 'boolean'],
             'work_menu_unit_measurements_enabled' => ['required', 'boolean'],
         ];
     }

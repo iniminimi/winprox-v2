@@ -90,6 +90,8 @@
         "calendar_hint": "Vista calendario per attività, segnalazioni e prenotazioni.",
         "reservations_label": "Prenotazioni",
         "reservations_hint": "Gestione prenotazioni nel backoffice. La prenotazione QR sulle unità che già la avevano resta disponibile.",
+        "checklists_label": "Checklist",
+        "checklists_hint": "Gestire i modelli di checklist nel backoffice. I unit check restano disponibili separatamente.",
         "inspection_rounds_label": "Giri di ispezione",
         "inspection_rounds_hint": "Elenco e pianificazione dei giri di ispezione. I unit check restano disponibili separatamente.",
         "unit_measurements_label": "Misurazioni unità",

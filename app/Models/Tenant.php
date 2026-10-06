@@ -55,6 +55,7 @@ class Tenant extends Model
         'work_menu_calendar_enabled',
         'work_menu_reservations_enabled',
         'work_menu_inspection_rounds_enabled',
+        'work_menu_checklists_enabled',
         'work_menu_unit_measurements_enabled',
         'starter_pack_key',
         'starter_pack_applied_at',
@@ -86,6 +87,7 @@ class Tenant extends Model
             'work_menu_calendar_enabled' => 'boolean',
             'work_menu_reservations_enabled' => 'boolean',
             'work_menu_inspection_rounds_enabled' => 'boolean',
+            'work_menu_checklists_enabled' => 'boolean',
             'work_menu_unit_measurements_enabled' => 'boolean',
             'starter_pack_applied_at' => 'datetime',
             'starter_pack_payload' => 'array',
@@ -413,6 +415,11 @@ class Tenant extends Model
     public function workMenuInspectionRoundsEnabled(): bool
     {
         return (bool) ($this->work_menu_inspection_rounds_enabled ?? true);
+    }
+
+    public function workMenuChecklistsEnabled(): bool
+    {
+        return (bool) ($this->work_menu_checklists_enabled ?? true);
     }
 
     public function workMenuUnitMeasurementsEnabled(): bool
