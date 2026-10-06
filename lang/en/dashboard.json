@@ -15,7 +15,7 @@
   "briefing_empty": "No tasks scheduled for today.",
   "briefing_no_team": "No team",
   "kpi": {
-    "new_issues": "New issues",
+    "new_issues": "Open issues",
     "open_tasks": "Open tasks",
     "present_now": "Present now",
     "pending_review": "Pending review",

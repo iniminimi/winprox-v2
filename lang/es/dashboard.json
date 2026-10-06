@@ -15,7 +15,7 @@
   "briefing_empty": "No hay tareas programadas para hoy.",
   "briefing_no_team": "Sin equipo",
   "kpi": {
-    "new_issues": "Nuevas incidencias",
+    "new_issues": "Incidencias abiertas",
     "open_tasks": "Tareas abiertas",
     "present_now": "Presentes",
     "pending_review": "Por revisar",

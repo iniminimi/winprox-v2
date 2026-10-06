@@ -15,7 +15,7 @@
   "briefing_empty": "Aucune tâche prévue pour aujourd'hui.",
   "briefing_no_team": "Aucune équipe",
   "kpi": {
-    "new_issues": "Nouveaux signalements",
+    "new_issues": "Signalements ouverts",
     "open_tasks": "Tâches ouvertes",
     "present_now": "Présents",
     "pending_review": "À examiner",

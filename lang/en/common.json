@@ -35,7 +35,7 @@
         "workers": "Workers"
     },
     "status": {
-        "new": "New (Open)",
+        "new": "Open",
         "in_progress": "In progress",
         "done": "Handled",
         "closed": "Closed"

@@ -35,7 +35,7 @@
         "workers": "Ejecutores"
     },
     "status": {
-        "new": "Nueva (Abierta)",
+        "new": "Abierta",
         "in_progress": "En curso",
         "done": "Gestionada",
         "closed": "Cerrada"

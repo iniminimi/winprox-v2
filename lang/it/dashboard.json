@@ -15,7 +15,7 @@
   "briefing_empty": "Nessuna attività programmata per oggi.",
   "briefing_no_team": "Nessun team",
   "kpi": {
-    "new_issues": "Nuove segnalazioni",
+    "new_issues": "Segnalazioni aperte",
     "open_tasks": "Attività aperte",
     "present_now": "Presenti",
     "pending_review": "Da valutare",

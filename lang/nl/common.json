@@ -35,7 +35,7 @@
         "workers": "Uitvoerders"
     },
     "status": {
-        "new": "Nieuw (Open)",
+        "new": "Open",
         "in_progress": "In uitvoering",
         "done": "Afgehandeld",
         "closed": "Gesloten"

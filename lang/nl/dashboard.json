@@ -15,7 +15,7 @@
   "briefing_empty": "Geen taken gepland voor vandaag.",
   "briefing_no_team": "Geen team",
   "kpi": {
-    "new_issues": "Nieuwe meldingen",
+    "new_issues": "Open meldingen",
     "open_tasks": "Open taken",
     "present_now": "Nu aanwezig",
     "pending_review": "Te beoordelen",
