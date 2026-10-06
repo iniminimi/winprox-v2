@@ -1,6 +1,7 @@
 <?php
 
 use App\Actions\Team\UpdateTenantWorkMenuAction;
+use App\Enums\TaskStatus;
 use App\Actions\Units\ImportUnitsAction;
 use App\Data\Units\ImportUnitsData;
 use App\Livewire\Locations\Show;
@@ -117,6 +118,39 @@ it('verbergt meldingen en taken en blokkeert hun routes wanneer uitgeschakeld', 
     $this->actingAs($admin)->get(route('issues.index'))->assertForbidden();
     $this->actingAs($admin)->get(route('tasks.index'))->assertForbidden();
     $this->actingAs($admin)->get(route('issues.show', $issue))->assertForbidden();
+});
+
+it('verbergt meldingen en taken in de sidebar zolang alles gesloten of afgehandeld is', function () {
+    $tenant = Tenant::factory()->create([
+        'work_menu_issues_tasks_enabled' => true,
+    ]);
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'status' => TaskStatus::Closed,
+    ]);
+
+    $this->actingAs($admin)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertDontSee('href="'.route('issues.index').'"', false)
+        ->assertDontSee('href="'.route('tasks.index').'"', false);
+
+    Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'status' => TaskStatus::New,
+    ]);
+
+    $this->actingAs($admin)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertSee('href="'.route('issues.index').'"', false)
+        ->assertSee('href="'.route('tasks.index').'"', false);
 });
 
 it('laat inspectierondes bereikbaar wanneer meldingen en taken uit staan', function () {

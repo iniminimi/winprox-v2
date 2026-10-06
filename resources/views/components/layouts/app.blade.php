@@ -30,7 +30,8 @@
         $showWorkMenuReservations = $activeTenant instanceof Tenant && $activeTenant->workMenuReservationsEnabled();
         $showWorkMenuInspectionRounds = $activeTenant instanceof Tenant && $activeTenant->workMenuInspectionRoundsEnabled();
         $showWorkMenuChecklists = $activeTenant instanceof Tenant && $activeTenant->workMenuChecklistsEnabled();
-        $showWorkMenuIssuesTasks = $activeTenant instanceof Tenant && $activeTenant->workMenuIssuesTasksEnabled();
+        $workMenuIssuesTasksOn = $activeTenant instanceof Tenant && $activeTenant->workMenuIssuesTasksEnabled();
+        $showWorkMenuIssuesTasks = $workMenuIssuesTasksOn && $activeTenant->hasOpenIssuesOrTasks();
         $showWorkMenuUnitMeasurements = $activeTenant instanceof Tenant && $activeTenant->workMenuUnitMeasurementsEnabled();
         $showWorkVisitsNav = $activeTenant instanceof Tenant
             && $activeTenant->allowsGpsWorkVisits()
@@ -317,10 +318,10 @@
                     @else
                         @php
                             $inspectionRoundOnlyActive = request()->routeIs('issues.index') && (int) request()->query('inspection_round', 0) === 1;
-                            $meldingenActive = $showWorkMenuIssuesTasks && request()->routeIs('issues.*') && ! $inspectionRoundOnlyActive;
+                            $meldingenActive = $workMenuIssuesTasksOn && request()->routeIs('issues.*') && ! $inspectionRoundOnlyActive;
 
-                            $workGroupActive = (($showWorkMenuIssuesTasks || $showWorkMenuInspectionRounds) && request()->routeIs('issues.*'))
-                                || (($showWorkMenuIssuesTasks || $showWorkMenuInspectionRounds) && request()->routeIs('tasks.*'))
+                            $workGroupActive = (($workMenuIssuesTasksOn || $showWorkMenuInspectionRounds) && request()->routeIs('issues.*'))
+                                || (($workMenuIssuesTasksOn || $showWorkMenuInspectionRounds) && request()->routeIs('tasks.*'))
                                 || ($showWorkMenuChecklists && request()->routeIs('checklists.*'))
                                 || ($showUnitChecksNav && request()->routeIs('unit-checks.*'))
                                 || ($showWorkMenuCalendar && request()->routeIs('calendar.*'))
