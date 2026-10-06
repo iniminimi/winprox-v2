@@ -99,6 +99,7 @@ it('verbergt meldingen en taken en blokkeert hun routes wanneer uitgeschakeld', 
         'work_menu_issues_tasks_enabled' => false,
         'work_menu_inspection_rounds_enabled' => false,
     ]);
+    seedTenantPastOnboarding($tenant);
     Tenancy::actAs($tenant->id);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
@@ -113,7 +114,7 @@ it('verbergt meldingen en taken en blokkeert hun routes wanneer uitgeschakeld', 
         ->assertOk()
         ->assertDontSee('href="'.route('issues.index').'"', false)
         ->assertDontSee('href="'.route('tasks.index').'"', false)
-        ->assertDontSee(__('dashboard.recent.title'), false);
+        ->assertDontSeeHtml('<h2 class="wp-section-title">'.e(__('dashboard.recent.title')).'</h2>');
 
     $this->actingAs($admin)->get(route('issues.index'))->assertForbidden();
     $this->actingAs($admin)->get(route('tasks.index'))->assertForbidden();
@@ -124,6 +125,7 @@ it('verbergt meldingen en taken in de sidebar zolang alles gesloten of afgehande
     $tenant = Tenant::factory()->create([
         'work_menu_issues_tasks_enabled' => true,
     ]);
+    seedTenantPastOnboarding($tenant);
     Tenancy::actAs($tenant->id);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
@@ -138,7 +140,10 @@ it('verbergt meldingen en taken in de sidebar zolang alles gesloten of afgehande
         ->get(route('dashboard'))
         ->assertOk()
         ->assertDontSee('href="'.route('issues.index').'"', false)
-        ->assertDontSee('href="'.route('tasks.index').'"', false);
+        ->assertDontSee('href="'.route('tasks.index').'"', false)
+        ->assertDontSee(__('dashboard.add_issue'), false)
+        ->assertDontSeeHtml('wp-kpi wp-kpi--new_issues')
+        ->assertDontSeeHtml('<h2 class="wp-section-title">'.e(__('dashboard.recent.title')).'</h2>');
 
     Issue::factory()->create([
         'tenant_id' => $tenant->id,
@@ -150,7 +155,8 @@ it('verbergt meldingen en taken in de sidebar zolang alles gesloten of afgehande
         ->get(route('dashboard'))
         ->assertOk()
         ->assertSee('href="'.route('issues.index').'"', false)
-        ->assertSee('href="'.route('tasks.index').'"', false);
+        ->assertSee('href="'.route('tasks.index').'"', false)
+        ->assertSeeHtml('<h2 class="wp-section-title">'.e(__('dashboard.recent.title')).'</h2>');
 });
 
 it('verbergt de hele Werk-groep wanneer geen enkel werkmenu-item zichtbaar is', function () {

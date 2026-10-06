@@ -337,7 +337,7 @@
                 @if ($portalBatteryState)
                     <x-wp-trial-battery-capsule :state="$portalBatteryState" />
                 @endif
-                @if ($workMenuIssuesTasksEnabled ?? true)
+                @if ($showIssuesTasksUi ?? true)
                     <a href="{{ route('issues.index', ['create' => 1]) }}" class="btn btn--primary btn--sm">
                         {{ __('dashboard.add_issue') }}
                     </a>
@@ -405,7 +405,7 @@
             @endforeach
         </div>
 
-        @if ($workMenuIssuesTasksEnabled ?? true)
+        @if ($showIssuesTasksUi ?? true)
             <div class="wp-card wp-card-pad wp-stack">
                 <div class="wp-row">
                     <h2 class="wp-section-title">{{ __('dashboard.recent.title') }}</h2>

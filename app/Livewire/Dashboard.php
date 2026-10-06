@@ -191,8 +191,9 @@ class Dashboard extends Component
             : null;
 
         $workMenuIssuesTasksEnabled = $tenant?->workMenuIssuesTasksEnabled() ?? true;
-        $stats = $isCheckmate ? null : $buildStats->handle($tenantId, $hasTimeModule, $hasIotModule, $workMenuIssuesTasksEnabled);
-        $recent = $isCheckmate || ! $workMenuIssuesTasksEnabled ? collect() : $listRecentIssues->handle($tenantId);
+        $showIssuesTasksUi = $workMenuIssuesTasksEnabled && ($tenant?->hasOpenIssuesOrTasks() ?? false);
+        $stats = $isCheckmate ? null : $buildStats->handle($tenantId, $hasTimeModule, $hasIotModule, $showIssuesTasksUi);
+        $recent = $isCheckmate || ! $showIssuesTasksUi ? collect() : $listRecentIssues->handle($tenantId);
         $starterPackSummary = ! $isCheckmate
             && $tenant !== null
             && $tenant->shouldShowStarterPackResultCard()
@@ -206,7 +207,7 @@ class Dashboard extends Component
             'checkmate' => $checkmateData,
             'stats' => $stats,
             'recent' => $recent,
-            'workMenuIssuesTasksEnabled' => $workMenuIssuesTasksEnabled,
+            'showIssuesTasksUi' => $showIssuesTasksUi,
             'intentHub' => $intentHub,
             'portalBatteryState' => $tenant?->portalDashboardBatteryState(),
             'onboarding' => $onboarding,

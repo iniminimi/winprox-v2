@@ -321,6 +321,12 @@ it('toont de intent-hub boven de KPI’s met begroeting en snelkoppelingen', fun
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
     ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'status' => TaskStatus::New,
+        'approved_at' => now(),
+    ]);
 
     Livewire::actingAs($user)
         ->test(Dashboard::class)
