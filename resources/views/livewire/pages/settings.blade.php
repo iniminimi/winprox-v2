@@ -137,6 +137,20 @@
                 <p class="wp-muted wp-text-sm">{{ __('settings.work_menu.hint') }}</p>
                 <div class="wp-stack-tight">
                     <label class="wp-check">
+                        <input type="checkbox" wire:model="workMenuInspectionRoundsEnabled" class="wp-checkbox">
+                        <span>
+                            {{ __('settings.work_menu.inspection_rounds_label') }}
+                            <br><span class="wp-hint">{{ __('settings.work_menu.inspection_rounds_hint') }}</span>
+                        </span>
+                    </label>
+                    <label class="wp-check">
+                        <input type="checkbox" wire:model="workMenuChecklistsEnabled" class="wp-checkbox">
+                        <span>
+                            {{ __('settings.work_menu.checklists_label') }}
+                            <br><span class="wp-hint">{{ __('settings.work_menu.checklists_hint') }}</span>
+                        </span>
+                    </label>
+                    <label class="wp-check">
                         <input type="checkbox" wire:model="workMenuCalendarEnabled" class="wp-checkbox">
                         <span>
                             {{ __('settings.work_menu.calendar_label') }}
@@ -148,20 +162,6 @@
                         <span>
                             {{ __('settings.work_menu.reservations_label') }}
                             <br><span class="wp-hint">{{ __('settings.work_menu.reservations_hint') }}</span>
-                        </span>
-                    </label>
-                    <label class="wp-check">
-                        <input type="checkbox" wire:model="workMenuChecklistsEnabled" class="wp-checkbox">
-                        <span>
-                            {{ __('settings.work_menu.checklists_label') }}
-                            <br><span class="wp-hint">{{ __('settings.work_menu.checklists_hint') }}</span>
-                        </span>
-                    </label>
-                    <label class="wp-check">
-                        <input type="checkbox" wire:model="workMenuInspectionRoundsEnabled" class="wp-checkbox">
-                        <span>
-                            {{ __('settings.work_menu.inspection_rounds_label') }}
-                            <br><span class="wp-hint">{{ __('settings.work_menu.inspection_rounds_hint') }}</span>
                         </span>
                     </label>
                     <label class="wp-check">
