@@ -483,22 +483,24 @@
                                 @error('unitRosterCode') <span class="wp-error">{{ $message }}</span> @enderror
                             </label>
 
-                            @include('partials.wp-gps-coords-fields', [
-                                'latProperty' => 'unitLatitude',
-                                'lngProperty' => 'unitLongitude',
-                                'applyMethod' => 'applyUnitGpsPair',
-                                'searchQuery' => trim(implode(' ', array_filter([
-                                    $this->location->street,
-                                    $this->location->house_number,
-                                    $this->location->postal_code,
-                                    $this->location->city,
-                                ]))),
-                                'searchProperties' => ['unitName'],
-                                'labelKey' => 'locations.units.fields.visit_pin',
-                                'hintKey' => 'locations.units.fields.visit_pin_hint',
-                                'latError' => 'unitLatitude',
-                                'lngError' => 'unitLongitude',
-                            ])
+                            @if (($gpsWorkVisitsEnabled ?? false) || $unitLatitude !== '' || $unitLongitude !== '')
+                                @include('partials.wp-gps-coords-fields', [
+                                    'latProperty' => 'unitLatitude',
+                                    'lngProperty' => 'unitLongitude',
+                                    'applyMethod' => 'applyUnitGpsPair',
+                                    'searchQuery' => trim(implode(' ', array_filter([
+                                        $this->location->street,
+                                        $this->location->house_number,
+                                        $this->location->postal_code,
+                                        $this->location->city,
+                                    ]))),
+                                    'searchProperties' => ['unitName'],
+                                    'labelKey' => 'locations.units.fields.visit_pin',
+                                    'hintKey' => 'locations.units.fields.visit_pin_hint',
+                                    'latError' => 'unitLatitude',
+                                    'lngError' => 'unitLongitude',
+                                ])
+                            @endif
                         </div>
                     </div>
                 </div>

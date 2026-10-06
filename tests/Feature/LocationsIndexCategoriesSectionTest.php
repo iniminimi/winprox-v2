@@ -235,8 +235,8 @@ it('toont DDT alleen bij CIAO; GPS-coords bij CIAO of GPS-werkbezoeken', functio
     Livewire::actingAs($admin)
         ->test(Index::class)
         ->call('openCreate')
-        ->assertDontSee(__('locations.fields.ddt'), false)
-        ->assertDontSee(__('locations.fields.coords'), false)
+        ->assertDontSee('wire:model="locationFormDdt"', false)
+        ->assertDontSee("latProperty: 'locationFormLatitude'", false)
         ->assertDontSee(__('locations.fields.coords_hint'), false);
 
     $tenant->update(['time_gps_visits' => true]);
@@ -245,8 +245,8 @@ it('toont DDT alleen bij CIAO; GPS-coords bij CIAO of GPS-werkbezoeken', functio
     Livewire::actingAs($admin)
         ->test(Index::class)
         ->call('openCreate')
-        ->assertDontSee(__('locations.fields.ddt'), false)
-        ->assertSee(__('locations.fields.coords'), false)
+        ->assertDontSee('wire:model="locationFormDdt"', false)
+        ->assertSee("latProperty: 'locationFormLatitude'", false)
         ->assertSee(__('locations.fields.maps_open'), false)
         ->assertSee(__('locations.fields.coords_hint'), false);
 
@@ -259,8 +259,8 @@ it('toont DDT alleen bij CIAO; GPS-coords bij CIAO of GPS-werkbezoeken', functio
     Livewire::actingAs($admin)
         ->test(Index::class)
         ->call('openCreate')
-        ->assertSee(__('locations.fields.ddt'), false)
-        ->assertSee(__('locations.fields.coords'), false)
+        ->assertSee('wire:model="locationFormDdt"', false)
+        ->assertSee("latProperty: 'locationFormLatitude'", false)
         ->assertSee(__('locations.fields.coords_hint'), false);
 });
 
@@ -327,4 +327,55 @@ it('vult unit-GPS uit een Google Maps-paar', function () {
         ->call('applyUnitGpsPair', '51.05, 3.73')
         ->assertSet('unitLatitude', '51.05')
         ->assertSet('unitLongitude', '3.73');
+});
+
+it('verbergt de werkbezoek-pin in het unit-formulier zonder GPS-werkbezoeken', function () {
+    [$tenant, $admin] = setupTenantAdminForLocations();
+    $tenant->update([
+        'has_time_module' => false,
+        'time_gps_visits' => false,
+    ]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'latitude' => null,
+        'longitude' => null,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(LocationShow::class, ['location' => $location])
+        ->call('openEditUnit', $unit->id)
+        ->assertDontSee("latProperty: 'unitLatitude'", false);
+
+    $tenant->update([
+        'has_time_module' => true,
+        'time_gps_visits' => true,
+    ]);
+    $admin->unsetRelation('tenant');
+
+    Livewire::actingAs($admin)
+        ->test(LocationShow::class, ['location' => $location])
+        ->call('openEditUnit', $unit->id)
+        ->assertSee("latProperty: 'unitLatitude'", false);
+});
+
+it('toont de werkbezoek-pin in het unit-formulier wanneer de unit er al een heeft', function () {
+    [$tenant, $admin] = setupTenantAdminForLocations();
+    $tenant->update([
+        'has_time_module' => false,
+        'time_gps_visits' => false,
+    ]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'latitude' => 51.05,
+        'longitude' => 3.73,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(LocationShow::class, ['location' => $location])
+        ->call('openEditUnit', $unit->id)
+        ->assertSee("latProperty: 'unitLatitude'", false);
 });
