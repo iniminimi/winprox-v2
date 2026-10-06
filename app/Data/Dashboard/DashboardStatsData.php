@@ -20,21 +20,24 @@ final class DashboardStatsData
         public int $iotAlarms,
         public bool $hasTimeModule,
         public bool $hasIotModule,
+        public bool $workMenuIssuesTasksEnabled = true,
     ) {}
 
     /** @return list<array{key: string, icon: string, label: string, meta: ?string, alert: bool, href_key: string}> */
     public function kpiTiles(): array
     {
-        $tiles = [
-            ['key' => 'new_issues', 'icon' => 'issues', 'label' => 'dashboard.kpi.new_issues', 'meta' => null, 'alert' => $this->newIssues > 0, 'href_key' => 'new_issues'],
-            ['key' => 'open_tasks', 'icon' => 'tasks', 'label' => 'dashboard.kpi.open_tasks', 'meta' => null, 'alert' => false, 'href_key' => 'open_tasks'],
-        ];
+        $tiles = [];
+
+        if ($this->workMenuIssuesTasksEnabled) {
+            $tiles[] = ['key' => 'new_issues', 'icon' => 'issues', 'label' => 'dashboard.kpi.new_issues', 'meta' => null, 'alert' => $this->newIssues > 0, 'href_key' => 'new_issues'];
+            $tiles[] = ['key' => 'open_tasks', 'icon' => 'tasks', 'label' => 'dashboard.kpi.open_tasks', 'meta' => null, 'alert' => false, 'href_key' => 'open_tasks'];
+        }
 
         if ($this->hasTimeModule && $this->presentNow !== null) {
             $tiles[] = ['key' => 'present_now', 'icon' => 'clock', 'label' => 'dashboard.kpi.present_now', 'meta' => null, 'alert' => false, 'href_key' => 'present_now'];
         }
 
-        if ($this->pendingReview > 0) {
+        if ($this->workMenuIssuesTasksEnabled && $this->pendingReview > 0) {
             $tiles[] = ['key' => 'pending_review', 'icon' => 'hourglass', 'label' => 'dashboard.kpi.pending_review', 'meta' => null, 'alert' => true, 'href_key' => 'pending_review'];
         }
 

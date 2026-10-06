@@ -5,6 +5,7 @@ use App\Actions\Units\ImportUnitsAction;
 use App\Data\Units\ImportUnitsData;
 use App\Livewire\Locations\Show;
 use App\Livewire\Pages\Settings;
+use App\Models\Issue;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
@@ -42,6 +43,7 @@ it('persisteert werkmenu-wijzigingen via de action met audit', function () {
         'work_menu_inspection_rounds_enabled' => true,
         'work_menu_checklists_enabled' => false,
         'work_menu_unit_checks_enabled' => false,
+        'work_menu_issues_tasks_enabled' => false,
         'work_menu_unit_measurements_enabled' => false,
     ], $admin->id);
 
@@ -51,6 +53,7 @@ it('persisteert werkmenu-wijzigingen via de action met audit', function () {
         ->and($fresh->workMenuInspectionRoundsEnabled())->toBeTrue()
         ->and($fresh->workMenuChecklistsEnabled())->toBeFalse()
         ->and($fresh->workMenuUnitChecksEnabled())->toBeFalse()
+        ->and($fresh->workMenuIssuesTasksEnabled())->toBeFalse()
         ->and($fresh->workMenuUnitMeasurementsEnabled())->toBeFalse();
 
     expect(\DB::table('audit_logs')->where('action', 'tenant.work_menu_updated')->exists())->toBeTrue();
@@ -88,6 +91,47 @@ it('verbergt checklists in de sidebar en blokkeert de route wanneer uitgeschakel
     $this->actingAs($admin)
         ->get(route('checklists.index'))
         ->assertForbidden();
+});
+
+it('verbergt meldingen en taken en blokkeert hun routes wanneer uitgeschakeld', function () {
+    $tenant = Tenant::factory()->create([
+        'work_menu_issues_tasks_enabled' => false,
+        'work_menu_inspection_rounds_enabled' => false,
+    ]);
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'approved_at' => now(),
+    ]);
+
+    $this->actingAs($admin)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertDontSee('href="'.route('issues.index').'"', false)
+        ->assertDontSee('href="'.route('tasks.index').'"', false)
+        ->assertDontSee(__('dashboard.recent.title'), false);
+
+    $this->actingAs($admin)->get(route('issues.index'))->assertForbidden();
+    $this->actingAs($admin)->get(route('tasks.index'))->assertForbidden();
+    $this->actingAs($admin)->get(route('issues.show', $issue))->assertForbidden();
+});
+
+it('laat inspectierondes bereikbaar wanneer meldingen en taken uit staan', function () {
+    $tenant = Tenant::factory()->create([
+        'work_menu_issues_tasks_enabled' => false,
+        'work_menu_inspection_rounds_enabled' => true,
+    ]);
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    $this->actingAs($admin)->get(route('issues.index'))->assertForbidden();
+
+    $this->actingAs($admin)
+        ->get(route('issues.index', ['inspection_round' => 1]))
+        ->assertOk();
 });
 
 it('weigert nieuw inschakelen van reserveringen op een unit wanneer werkmenu uit staat', function () {

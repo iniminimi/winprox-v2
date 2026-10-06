@@ -137,6 +137,13 @@
                 <p class="wp-muted wp-text-sm">{{ __('settings.work_menu.hint') }}</p>
                 <div class="wp-stack-tight">
                     <label class="wp-check">
+                        <input type="checkbox" wire:model="workMenuIssuesTasksEnabled" class="wp-checkbox">
+                        <span>
+                            {{ __('settings.work_menu.issues_tasks_label') }}
+                            <br><span class="wp-hint">{{ __('settings.work_menu.issues_tasks_hint') }}</span>
+                        </span>
+                    </label>
+                    <label class="wp-check">
                         <input type="checkbox" wire:model="workMenuInspectionRoundsEnabled" class="wp-checkbox">
                         <span>
                             {{ __('settings.work_menu.inspection_rounds_label') }}

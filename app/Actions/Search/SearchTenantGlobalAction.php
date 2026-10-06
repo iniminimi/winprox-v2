@@ -83,7 +83,7 @@ final class SearchTenantGlobalAction
             }
         }
 
-        $pages = $this->searchPages($terms);
+        $pages = $this->searchPages($terms, $actor);
         if ($pages->isNotEmpty()) {
             $results['pages'] = $pages;
         }
@@ -380,7 +380,7 @@ final class SearchTenantGlobalAction
      * @param  list<string>  $terms
      * @return Collection<int, array{id: string, type: string, title: string, subtitle: string, url: string}>
      */
-    private function searchPages(array $terms): Collection
+    private function searchPages(array $terms, User $actor): Collection
     {
         $pages = [
             ['id' => 'dashboard', 'route' => 'dashboard', 'label' => 'common.nav.dashboard'],
@@ -403,8 +403,16 @@ final class SearchTenantGlobalAction
         ];
 
         return collect($pages)
-            ->filter(static function (array $page) use ($terms): bool {
+            ->filter(static function (array $page) use ($terms, $actor): bool {
                 if (! Route::has($page['route'])) {
+                    return false;
+                }
+
+                if ($page['id'] === 'issues' && ! $actor->can('viewIssues', Issue::class)) {
+                    return false;
+                }
+
+                if ($page['id'] === 'tasks' && ! $actor->can('viewAny', Task::class)) {
                     return false;
                 }
 

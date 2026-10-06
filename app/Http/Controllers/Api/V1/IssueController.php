@@ -15,7 +15,7 @@ class IssueController extends Controller
 {
     public function index(Request $request): JsonResponse
     {
-        $this->authorize('viewAny', Issue::class);
+        $this->authorize('viewIssues', Issue::class);
 
         $query = Issue::query()->with(['tasks', 'translations'])->latest();
 

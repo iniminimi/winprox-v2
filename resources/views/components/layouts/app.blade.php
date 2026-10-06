@@ -30,6 +30,7 @@
         $showWorkMenuReservations = $activeTenant instanceof Tenant && $activeTenant->workMenuReservationsEnabled();
         $showWorkMenuInspectionRounds = $activeTenant instanceof Tenant && $activeTenant->workMenuInspectionRoundsEnabled();
         $showWorkMenuChecklists = $activeTenant instanceof Tenant && $activeTenant->workMenuChecklistsEnabled();
+        $showWorkMenuIssuesTasks = $activeTenant instanceof Tenant && $activeTenant->workMenuIssuesTasksEnabled();
         $showWorkMenuUnitMeasurements = $activeTenant instanceof Tenant && $activeTenant->workMenuUnitMeasurementsEnabled();
         $showWorkVisitsNav = $activeTenant instanceof Tenant
             && $activeTenant->allowsGpsWorkVisits()
@@ -316,10 +317,10 @@
                     @else
                         @php
                             $inspectionRoundOnlyActive = request()->routeIs('issues.index') && (int) request()->query('inspection_round', 0) === 1;
-                            $meldingenActive = request()->routeIs('issues.*') && ! $inspectionRoundOnlyActive;
+                            $meldingenActive = $showWorkMenuIssuesTasks && request()->routeIs('issues.*') && ! $inspectionRoundOnlyActive;
 
-                            $workGroupActive = request()->routeIs('issues.*')
-                                || request()->routeIs('tasks.*')
+                            $workGroupActive = (($showWorkMenuIssuesTasks || $showWorkMenuInspectionRounds) && request()->routeIs('issues.*'))
+                                || (($showWorkMenuIssuesTasks || $showWorkMenuInspectionRounds) && request()->routeIs('tasks.*'))
                                 || ($showWorkMenuChecklists && request()->routeIs('checklists.*'))
                                 || ($showUnitChecksNav && request()->routeIs('unit-checks.*'))
                                 || ($showWorkMenuCalendar && request()->routeIs('calendar.*'))
@@ -374,16 +375,18 @@
                                     <span>{{ __('common.nav.work') }}</span>
                                 </summary>
                                 <div class="wp-sidebar-accordion__panel">
-                                    <a href="{{ route('issues.index') }}"
-                                       class="wp-nav-link wp-nav-link--sub {{ $meldingenActive ? 'is-active' : '' }}"
-                                       @click="nav = false">
-                                        <span>{{ __('common.nav.issues') }}</span>
-                                    </a>
-                                    <a href="{{ route('tasks.index') }}"
-                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('tasks.*') ? 'is-active' : '' }}"
-                                       @click="nav = false">
-                                        <span>{{ __('common.nav.tasks') }}</span>
-                                    </a>
+                                    @if ($showWorkMenuIssuesTasks)
+                                        <a href="{{ route('issues.index') }}"
+                                           class="wp-nav-link wp-nav-link--sub {{ $meldingenActive ? 'is-active' : '' }}"
+                                           @click="nav = false">
+                                            <span>{{ __('common.nav.issues') }}</span>
+                                        </a>
+                                        <a href="{{ route('tasks.index') }}"
+                                           class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('tasks.*') ? 'is-active' : '' }}"
+                                           @click="nav = false">
+                                            <span>{{ __('common.nav.tasks') }}</span>
+                                        </a>
+                                    @endif
                                     @if ($showWorkMenuInspectionRounds)
                                         <a href="{{ route('issues.index', ['inspection_round' => 1]) }}"
                                            class="wp-nav-link wp-nav-link--sub {{ $inspectionRoundOnlyActive ? 'is-active' : '' }}"

@@ -18,6 +18,7 @@ class UpdateTenantWorkMenuAction
      *     work_menu_inspection_rounds_enabled: bool,
      *     work_menu_checklists_enabled: bool,
      *     work_menu_unit_checks_enabled: bool,
+     *     work_menu_issues_tasks_enabled: bool,
      *     work_menu_unit_measurements_enabled: bool,
      * }  $data
      */
@@ -29,6 +30,7 @@ class UpdateTenantWorkMenuAction
             'work_menu_inspection_rounds_enabled' => (bool) $data['work_menu_inspection_rounds_enabled'],
             'work_menu_checklists_enabled' => (bool) $data['work_menu_checklists_enabled'],
             'work_menu_unit_checks_enabled' => (bool) $data['work_menu_unit_checks_enabled'],
+            'work_menu_issues_tasks_enabled' => (bool) $data['work_menu_issues_tasks_enabled'],
             'work_menu_unit_measurements_enabled' => (bool) $data['work_menu_unit_measurements_enabled'],
         ]);
 
@@ -44,6 +46,7 @@ class UpdateTenantWorkMenuAction
                 'work_menu_inspection_rounds_enabled' => (bool) $tenant->work_menu_inspection_rounds_enabled,
                 'work_menu_checklists_enabled' => (bool) $tenant->work_menu_checklists_enabled,
                 'work_menu_unit_checks_enabled' => (bool) $tenant->work_menu_unit_checks_enabled,
+                'work_menu_issues_tasks_enabled' => (bool) $tenant->work_menu_issues_tasks_enabled,
                 'work_menu_unit_measurements_enabled' => (bool) $tenant->work_menu_unit_measurements_enabled,
             ],
         );

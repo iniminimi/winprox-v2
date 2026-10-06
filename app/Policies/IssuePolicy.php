@@ -12,33 +12,46 @@ class IssuePolicy
 {
     public function viewAny(User $user): bool
     {
-        return $this->hasTenantAccess($user);
+        return $this->hasTenantAccess($user)
+            && ($this->workMenuIssuesTasksEnabledFor($user)
+                || $this->workMenuInspectionRoundsEnabledFor($user));
+    }
+
+    public function viewIssues(User $user): bool
+    {
+        return $this->hasTenantAccess($user)
+            && $this->workMenuIssuesTasksEnabledFor($user);
     }
 
     public function view(User $user, Issue $issue): bool
     {
-        return $this->sameTenant($user, $issue->tenant_id);
+        return $this->sameTenant($user, $issue->tenant_id)
+            && $this->mayUseIssue($user, $issue);
     }
 
     public function create(User $user): bool
     {
         if ($user->is_superuser) {
-            return Tenancy::id() !== null;
+            return Tenancy::id() !== null
+                && TenantWorkMenuAccess::activeTenantIssuesTasksEnabled();
         }
 
-        return $user->isAdmin() || $user->isEmployee();
+        return ($user->isAdmin() || $user->isEmployee())
+            && $this->workMenuIssuesTasksEnabledFor($user);
     }
 
     public function approve(User $user, Issue $issue): bool
     {
         return $this->sameTenant($user, $issue->tenant_id)
-            && ($user->isAdmin() || $user->isEmployee());
+            && ($user->isAdmin() || $user->isEmployee())
+            && $this->mayUseIssue($user, $issue);
     }
 
     public function update(User $user, Issue $issue): bool
     {
         return $this->sameTenant($user, $issue->tenant_id)
-            && ($user->isAdmin() || $user->isEmployee());
+            && ($user->isAdmin() || $user->isEmployee())
+            && $this->mayUseIssue($user, $issue);
     }
 
     public function viewInspectionRounds(User $user): bool
@@ -63,6 +76,29 @@ class IssuePolicy
         return $this->update($user, $issue)
             && $issue->isInspectionRound()
             && $this->workMenuInspectionRoundsEnabledFor($user);
+    }
+
+    private function mayUseIssue(User $user, Issue $issue): bool
+    {
+        if ($issue->isInspectionRound()) {
+            return $this->workMenuIssuesTasksEnabledFor($user)
+                || $this->workMenuInspectionRoundsEnabledFor($user);
+        }
+
+        return $this->workMenuIssuesTasksEnabledFor($user);
+    }
+
+    private function workMenuIssuesTasksEnabledFor(User $user): bool
+    {
+        if ($user->tenant_id !== null) {
+            return TenantWorkMenuAccess::issuesTasksEnabled($user->tenant);
+        }
+
+        if ($user->is_superuser) {
+            return TenantWorkMenuAccess::activeTenantIssuesTasksEnabled();
+        }
+
+        return false;
     }
 
     private function workMenuInspectionRoundsEnabledFor(User $user): bool

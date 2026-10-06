@@ -337,10 +337,12 @@
                 @if ($portalBatteryState)
                     <x-wp-trial-battery-capsule :state="$portalBatteryState" />
                 @endif
-                <a href="{{ route('issues.index', ['create' => 1]) }}" class="btn btn--primary btn--sm">
-                    {{ __('dashboard.add_issue') }}
-                </a>
-                <a href="{{ route('briefing.print') }}" target="_blank" class="btn btn--ghost btn--sm">{{ __('dashboard.briefing_print') }}</a>
+                @if ($workMenuIssuesTasksEnabled ?? true)
+                    <a href="{{ route('issues.index', ['create' => 1]) }}" class="btn btn--primary btn--sm">
+                        {{ __('dashboard.add_issue') }}
+                    </a>
+                    <a href="{{ route('briefing.print') }}" target="_blank" class="btn btn--ghost btn--sm">{{ __('dashboard.briefing_print') }}</a>
+                @endif
             </div>
         </div>
 
@@ -403,23 +405,25 @@
             @endforeach
         </div>
 
-        <div class="wp-card wp-card-pad wp-stack">
-            <div class="wp-row">
-                <h2 class="wp-section-title">{{ __('dashboard.recent.title') }}</h2>
-                <a href="{{ route('issues.index') }}" class="btn btn--ghost btn--sm">{{ __('dashboard.recent.open_issues') }}</a>
-            </div>
+        @if ($workMenuIssuesTasksEnabled ?? true)
+            <div class="wp-card wp-card-pad wp-stack">
+                <div class="wp-row">
+                    <h2 class="wp-section-title">{{ __('dashboard.recent.title') }}</h2>
+                    <a href="{{ route('issues.index') }}" class="btn btn--ghost btn--sm">{{ __('dashboard.recent.open_issues') }}</a>
+                </div>
 
-            <div class="wp-list wp-list--entity-rows">
-                @forelse ($recent as $issue)
-                    @include('partials.wp-issue-list-row', [
-                        'issue' => $issue,
-                        'highlight' => $issue->created_at?->gte($highlightCutoff),
-                    ])
-                @empty
-                    <p class="wp-muted">{{ __('dashboard.recent.empty') }}</p>
-                @endforelse
+                <div class="wp-list wp-list--entity-rows">
+                    @forelse ($recent as $issue)
+                        @include('partials.wp-issue-list-row', [
+                            'issue' => $issue,
+                            'highlight' => $issue->created_at?->gte($highlightCutoff),
+                        ])
+                    @empty
+                        <p class="wp-muted">{{ __('dashboard.recent.empty') }}</p>
+                    @endforelse
+                </div>
             </div>
-        </div>
+        @endif
     @endif
 
     @if ($showRemoveStarterPackModal)

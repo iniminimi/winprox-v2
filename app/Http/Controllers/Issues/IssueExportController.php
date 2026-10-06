@@ -18,7 +18,7 @@ class IssueExportController
 {
     public function __invoke(ExportIssuesRequest $request, ExportIssuesAction $export): StreamedResponse
     {
-        Gate::authorize('viewAny', Issue::class);
+        Gate::authorize('viewIssues', Issue::class);
 
         $result = $export->handle((int) Tenancy::id(), $this->filters($request));
         $rows = IssueExportTable::rows($result->rows);

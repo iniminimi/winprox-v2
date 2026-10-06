@@ -11,6 +11,7 @@ return [
         'inspection_rounds' => true,
         'checklists' => true,
         'unit_checks' => true,
+        'issues_tasks' => true,
         'unit_measurements' => true,
     ],
     'own_sites' => [
@@ -20,6 +21,7 @@ return [
             'inspection_rounds' => false,
             'checklists' => false,
             'unit_checks' => false,
+            'issues_tasks' => true,
             'unit_measurements' => false,
         ],
         'teams' => [
@@ -39,6 +41,7 @@ return [
             'inspection_rounds' => true,
             'checklists' => true,
             'unit_checks' => true,
+        'issues_tasks' => true,
             'unit_measurements' => false,
         ],
         'teams' => [
@@ -111,6 +114,7 @@ return [
             'inspection_rounds' => true,
             'checklists' => true,
             'unit_checks' => true,
+        'issues_tasks' => true,
             'unit_measurements' => false,
         ],
         'teams' => [
@@ -131,6 +135,7 @@ return [
             'inspection_rounds' => false,
             'checklists' => false,
             'unit_checks' => false,
+            'issues_tasks' => true,
             'unit_measurements' => false,
         ],
         'teams' => [

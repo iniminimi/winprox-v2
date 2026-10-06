@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Actions\Briefing\BuildMorningBriefingAction;
+use App\Models\Task;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Gate;
 
 final class BriefingPrintController
 {
@@ -13,6 +15,7 @@ final class BriefingPrintController
     {
         $user = $request->user();
         abort_unless($user !== null && $user->tenant !== null, 403);
+        Gate::forUser($user)->authorize('viewAny', Task::class);
 
         $teamId = $request->integer('team') ?: $request->integer('internal_team_id') ?: null;
 

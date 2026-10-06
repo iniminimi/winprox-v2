@@ -86,6 +86,8 @@
     "work_menu": {
         "title": "Paramètres du menu Travail",
         "hint": "Choisissez quels éléments du menu Travail sont visibles dans le back-office. Les éléments désactivés disparaissent de la barre latérale ; les réglages unités/catégories existants sur le portail QR restent actifs.",
+        "issues_tasks_label": "Signalements & tâches",
+        "issues_tasks_hint": "Les listes de signalements et de tâches. Désactivées, elles disparaissent du menu et du tableau de bord ; les rondes d’inspection restent disponibles séparément.",
         "inspection_rounds_label": "Tournées d'inspection",
         "inspection_rounds_hint": "Liste et planification des tournées d'inspection. Les unit checks restent disponibles séparément.",
         "checklists_label": "Checklists",

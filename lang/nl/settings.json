@@ -86,6 +86,8 @@
     "work_menu": {
         "title": "Werkmenu instellingen",
         "hint": "Bepaal welke onderdelen van het Werk-menu zichtbaar zijn in beheer. Uitgeschakelde items verdwijnen uit de sidebar; bestaande unit- en categorie-instellingen op het QR-portaal blijven werken.",
+        "issues_tasks_label": "Meldingen & taken",
+        "issues_tasks_hint": "De meldingen- en takenlijsten. Uitgeschakeld verdwijnen ze uit het menu en dashboard; inspectierondes blijven apart beschikbaar.",
         "inspection_rounds_label": "Inspectierondes",
         "inspection_rounds_hint": "Lijst en planning van inspectierondes. Unit checks blijven onafhankelijk beschikbaar.",
         "checklists_label": "Checklists",

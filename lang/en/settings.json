@@ -86,6 +86,8 @@
     "work_menu": {
         "title": "Work menu settings",
         "hint": "Choose which Work menu items are visible in backoffice. Disabled items disappear from the sidebar; existing unit and category settings on the QR portal keep working.",
+        "issues_tasks_label": "Issues & tasks",
+        "issues_tasks_hint": "The issue and task lists. When off they disappear from the menu and dashboard; inspection rounds stay available separately.",
         "inspection_rounds_label": "Inspection rounds",
         "inspection_rounds_hint": "List and planning of inspection rounds. Unit checks remain available separately.",
         "checklists_label": "Checklists",

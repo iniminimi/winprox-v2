@@ -124,6 +124,7 @@ class Index extends Component
         if ($this->inspectionRoundOnly) {
             $this->authorize('viewInspectionRounds', Issue::class);
         } else {
+            $this->authorize('viewIssues', Issue::class);
             $this->favoriteRoundsOnly = false;
         }
 

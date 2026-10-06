@@ -86,6 +86,8 @@
     "work_menu": {
         "title": "Impostazioni menu Lavoro",
         "hint": "Scegli quali voci del menu Lavoro sono visibili nel backoffice. Le voci disattivate scompaiono dalla barra laterale; le impostazioni unità/categorie esistenti sul portale QR restano attive.",
+        "issues_tasks_label": "Segnalazioni & attività",
+        "issues_tasks_hint": "Gli elenchi di segnalazioni e attività. Disattivati scompaiono dal menu e dalla dashboard; i giri di ispezione restano disponibili separatamente.",
         "inspection_rounds_label": "Giri di ispezione",
         "inspection_rounds_hint": "Elenco e pianificazione dei giri di ispezione. I unit check restano disponibili separatamente.",
         "checklists_label": "Checklist",

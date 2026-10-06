@@ -17,7 +17,7 @@ class IssuePrintController
 {
     public function __invoke(ExportIssuesRequest $request, ExportIssuesAction $export): View
     {
-        Gate::authorize('viewAny', Issue::class);
+        Gate::authorize('viewIssues', Issue::class);
 
         $tenant = Tenant::query()->findOrFail(Tenancy::id());
         $result = $export->handle((int) $tenant->id, new ExportIssuesFilterData(

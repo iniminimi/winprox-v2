@@ -23,7 +23,7 @@ class BuildDashboardStatsAction
         private CountPendingAbsenceRequestsAction $countPendingAbsence,
     ) {}
 
-    public function handle(int $tenantId, bool $hasTimeModule, bool $hasIotModule): DashboardStatsData
+    public function handle(int $tenantId, bool $hasTimeModule, bool $hasIotModule, bool $workMenuIssuesTasksEnabled = true): DashboardStatsData
     {
         $presentNow = null;
         $timeAttention = 0;
@@ -76,6 +76,7 @@ class BuildDashboardStatsAction
             iotAlarms: $iotAlarms,
             hasTimeModule: $hasTimeModule,
             hasIotModule: $hasIotModule,
+            workMenuIssuesTasksEnabled: $workMenuIssuesTasksEnabled,
         );
     }
 }

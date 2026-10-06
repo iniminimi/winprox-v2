@@ -34,6 +34,11 @@ final class TenantWorkMenuAccess
         return $tenant !== null && $tenant->workMenuUnitChecksEnabled();
     }
 
+    public static function issuesTasksEnabled(?Tenant $tenant): bool
+    {
+        return $tenant !== null && $tenant->workMenuIssuesTasksEnabled();
+    }
+
     public static function unitMeasurementsEnabled(?Tenant $tenant): bool
     {
         return $tenant !== null && $tenant->workMenuUnitMeasurementsEnabled();
@@ -62,6 +67,11 @@ final class TenantWorkMenuAccess
     public static function activeTenantUnitChecksEnabled(): bool
     {
         return self::unitChecksEnabled(self::resolveActiveTenant());
+    }
+
+    public static function activeTenantIssuesTasksEnabled(): bool
+    {
+        return self::issuesTasksEnabled(self::resolveActiveTenant());
     }
 
     public static function activeTenantUnitMeasurementsEnabled(): bool

@@ -86,6 +86,8 @@
     "work_menu": {
         "title": "Arbeitsmenü-Einstellungen",
         "hint": "Legen Sie fest, welche Arbeitsmenü-Einträge in der Verwaltung sichtbar sind. Deaktivierte Einträge verschwinden aus der Seitenleiste; bestehende Unit- und Kategorie-Einstellungen im QR-Portal bleiben aktiv.",
+        "issues_tasks_label": "Meldungen & Aufgaben",
+        "issues_tasks_hint": "Die Meldungs- und Aufgabenlisten. Deaktiviert verschwinden sie aus Menü und Dashboard; Inspektionsrunden bleiben separat verfügbar.",
         "inspection_rounds_label": "Inspektionsrunden",
         "inspection_rounds_hint": "Liste und Planung von Inspektionsrunden. Unit Checks bleiben separat verfügbar.",
         "checklists_label": "Checklisten",
