@@ -342,6 +342,19 @@
                             $teamsNavActive = request()->routeIs('team.index') && $peopleSection !== 'backoffice';
                             $workersNavActive = request()->routeIs('workers.index');
 
+                            $showChecklistsNav = $showWorkMenuChecklists
+                                && ($authUser?->can('viewAny', \App\Models\UnitCheckList::class) ?? false);
+                            $showUnitChecksNavItem = $showUnitChecksNav
+                                && ($authUser?->can('viewAny', \App\Models\UnitCheck::class) ?? false);
+                            $showWorkGroup = $showWorkMenuIssuesTasks
+                                || $showWorkMenuInspectionRounds
+                                || $showChecklistsNav
+                                || $showUnitChecksNavItem
+                                || $showWorkVisitsNav
+                                || $showWorkMenuCalendar
+                                || $showWorkMenuReservations
+                                || $showWorkMenuUnitMeasurements;
+
                             $timeGroupActive = request()->routeIs('time.*');
                             $automationGroupActive = request()->routeIs('iot.*') || request()->routeIs('esg.*');
                             $organizationGroupActive = request()->routeIs('settings.*') || request()->routeIs('subscription.*');
@@ -370,6 +383,7 @@
                             }"
                             @toggle.capture="exclusive($event)"
                         >
+                            @if ($showWorkGroup)
                             <details class="wp-sidebar-accordion__group" @if($workGroupActive) open @endif>
                                 <summary class="wp-nav-link {{ $workGroupActive ? 'is-active' : '' }}">
                                     <x-wp-icon name="issues" class="wp-nav-icon" />
@@ -395,23 +409,19 @@
                                             <span>{{ __('issues.list.inspection_rounds') }}</span>
                                         </a>
                                     @endif
-                                    @if ($showWorkMenuChecklists)
-                                        @can('viewAny', \App\Models\UnitCheckList::class)
+                                    @if ($showChecklistsNav)
                                         <a href="{{ route('checklists.index') }}"
                                            class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('checklists.*') ? 'is-active' : '' }}"
                                            @click="nav = false">
                                             <span>{{ __('common.nav.checklists') }}</span>
                                         </a>
-                                        @endcan
                                     @endif
-                                    @if ($showUnitChecksNav)
-                                        @can('viewAny', \App\Models\UnitCheck::class)
-                                            <a href="{{ route('unit-checks.index') }}"
-                                               class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('unit-checks.*') ? 'is-active' : '' }}"
-                                               @click="nav = false">
-                                                <span>{{ __('common.nav.unit_checks') }}</span>
-                                            </a>
-                                        @endcan
+                                    @if ($showUnitChecksNavItem)
+                                        <a href="{{ route('unit-checks.index') }}"
+                                           class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('unit-checks.*') ? 'is-active' : '' }}"
+                                           @click="nav = false">
+                                            <span>{{ __('common.nav.unit_checks') }}</span>
+                                        </a>
                                     @endif
                                     @if ($showWorkVisitsNav)
                                         <a href="{{ route('work-visits.index') }}"
@@ -443,6 +453,7 @@
                                     @endif
                                 </div>
                             </details>
+                            @endif
 
                             <details class="wp-sidebar-accordion__group" @if($placesGroupActive) open @endif>
                                 <summary class="wp-nav-link {{ $placesGroupActive ? 'is-active' : '' }}">

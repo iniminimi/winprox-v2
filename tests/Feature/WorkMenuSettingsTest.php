@@ -153,6 +153,34 @@ it('verbergt meldingen en taken in de sidebar zolang alles gesloten of afgehande
         ->assertSee('href="'.route('tasks.index').'"', false);
 });
 
+it('verbergt de hele Werk-groep wanneer geen enkel werkmenu-item zichtbaar is', function () {
+    $tenant = Tenant::factory()->create([
+        'work_menu_issues_tasks_enabled' => false,
+        'work_menu_inspection_rounds_enabled' => false,
+        'work_menu_checklists_enabled' => false,
+        'work_menu_unit_checks_enabled' => false,
+        'work_menu_calendar_enabled' => false,
+        'work_menu_reservations_enabled' => false,
+        'work_menu_unit_measurements_enabled' => false,
+        'has_time_module' => false,
+    ]);
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    $this->actingAs($admin)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertDontSeeHtml('>Werk</span>');
+
+    $tenant->update(['work_menu_calendar_enabled' => true]);
+    $admin->refresh();
+
+    $this->actingAs($admin)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertSeeHtml('>Werk</span>');
+});
+
 it('laat inspectierondes bereikbaar wanneer meldingen en taken uit staan', function () {
     $tenant = Tenant::factory()->create([
         'work_menu_issues_tasks_enabled' => false,
