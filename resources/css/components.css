@@ -6596,6 +6596,7 @@ a.wp-kpi.wp-kpi--attention {
     border-radius: calc(var(--wp-radius) * 0.6);
     background: transparent;
     font: inherit;
+    font-size: 0.875rem;
     color: var(--wp-text);
     text-align: left;
     cursor: pointer;
