@@ -107,7 +107,7 @@ it('maakt meerdere blokken op één dag via SavePlannedDayAction', function () {
         ->and(PlannedShift::where('worker_id', $worker->id)->whereDate('work_date', $date)->count())->toBe(2);
 });
 
-it('toont multi-blok-dagen regel per blok, met uren op de print', function () {
+it('toont multi-blok-dagen regel per blok, ook op de print', function () {
     [$tenant, $admin, $worker] = multiBlockTenant();
     $date = now()->addWeek()->startOfWeek()->toDateString();
     $type = ShiftType::factory()->create([
@@ -143,8 +143,9 @@ it('toont multi-blok-dagen regel per blok, met uren op de print', function () {
     $this->actingAs($admin)
         ->get(route('time.schedule.print', ['week' => $week, 'view' => 'week']))
         ->assertOk()
-        ->assertSee('D1 08:00-17:00', false)
-        ->assertSee('18:00-20:00', false);
+        ->assertSee("D1\n1800-2000", false)
+        // Uren van type-codes staan in de print-legenda.
+        ->assertSee('08:00–17:00', false);
 });
 
 it('synct blokken id-aware: update, create en delete in één save', function () {

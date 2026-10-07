@@ -138,19 +138,9 @@
                                             $cell = $snapshot->cells[$worker['id'].':'.$date] ?? null;
                                             $rawDisplay = is_array($cell) ? trim((string) ($cell['display'] ?? '')) : '';
                                             if (is_array($cell) && ($cell['multi'] ?? false)) {
-                                                // Multi-blok-dag: elke blok een regel; type-code krijgt de uren erbij.
-                                                $lines = collect($cell['shifts'] ?? [])->map(function ($shift) {
-                                                    $line = trim((string) ($shift['display'] ?? ''));
-                                                    $start = $shift['start'] ?? null;
-                                                    $end = $shift['end'] ?? null;
-
-                                                    return ($shift['code'] ?? null) !== null && $start && $end
-                                                        ? $line.' '.$start.'-'.$end
-                                                        : $line;
-                                                });
-                                                $display = $lines->isNotEmpty()
-                                                    ? $lines->implode("\n")
-                                                    : implode("\n", array_map('trim', explode("\n", $rawDisplay)));
+                                                // Multi-blok-dag: één regel per blok (al newline + colon-loos);
+                                                // uren van type-codes staan in de legenda.
+                                                $display = $rawDisplay;
                                             } else {
                                                 $slash = strpos($rawDisplay, '/');
                                                 $display = ($slash !== false && ! str_contains($rawDisplay, "\n") && substr_count($rawDisplay, '/') === 1)
