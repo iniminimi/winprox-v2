@@ -29,6 +29,7 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -166,6 +167,16 @@ class RosterIndex extends Component
     /**
      * @return array<string, mixed>
      */
+    private function normalizeEditorTime(mixed $value): ?string
+    {
+        $time = trim((string) ($value ?? ''));
+        if ($time === '') {
+            return null;
+        }
+
+        return preg_replace('/^(\d):/', '0\1:', $time);
+    }
+
     private function emptyDayEditorBlock(): array
     {
         return [
@@ -188,16 +199,22 @@ class RosterIndex extends Component
         $blocks = array_map(fn (array $block) => [
             'id' => $block['id'] !== null && $block['id'] !== '' ? (int) $block['id'] : null,
             'shift_type_id' => $block['shift_type_id'] !== null && $block['shift_type_id'] !== '' ? (int) $block['shift_type_id'] : null,
-            'start_time' => $block['start_time'] !== '' ? $block['start_time'] : null,
-            'end_time' => $block['end_time'] !== '' ? $block['end_time'] : null,
+            'start_time' => $this->normalizeEditorTime($block['start_time'] ?? null),
+            'end_time' => $this->normalizeEditorTime($block['end_time'] ?? null),
             'break_minutes' => (int) ($block['break_minutes'] ?? 0),
             'unit_id' => $block['unit_id'] !== null && $block['unit_id'] !== '' ? (int) $block['unit_id'] : null,
         ], $this->dayEditorBlocks);
 
-        Validator::make(
-            ['worker_id' => $workerId, 'date' => $date, 'blocks' => $blocks],
-            SavePlannedDayRequest::rulesFor(),
-        )->validate();
+        try {
+            Validator::make(
+                ['worker_id' => $workerId, 'date' => $date, 'blocks' => $blocks],
+                SavePlannedDayRequest::rulesFor(),
+            )->validate();
+        } catch (ValidationException) {
+            $this->dayEditorError = __('time.schedule.errors.invalid_time');
+
+            return;
+        }
 
         try {
             $save->handle(

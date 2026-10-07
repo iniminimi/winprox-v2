@@ -271,17 +271,25 @@
 
                             @if (! $isAbsence)
                                 <input
-                                    type="time"
+                                    type="text"
                                     class="wp-input"
                                     wire:model="dayEditorBlocks.{{ $i }}.start_time"
                                     aria-label="{{ __('time.schedule.day_editor.start') }}"
+                                    placeholder="08:00"
+                                    maxlength="5"
+                                    inputmode="numeric"
+                                    autocomplete="off"
                                     @disabled(($block['shift_type_id'] ?? null) !== null)
                                 >
                                 <input
-                                    type="time"
+                                    type="text"
                                     class="wp-input"
                                     wire:model="dayEditorBlocks.{{ $i }}.end_time"
                                     aria-label="{{ __('time.schedule.day_editor.end') }}"
+                                    placeholder="17:00"
+                                    maxlength="5"
+                                    inputmode="numeric"
+                                    autocomplete="off"
                                     @disabled(($block['shift_type_id'] ?? null) !== null)
                                 >
                                 <select
