@@ -622,6 +622,7 @@ export function bind(root, wire) {
     let dirty = false;
     let pendingLeave = null;
     let allowRosterNav = false;
+    let lastDaySelection = null;
 
     const setDirty = (value) => {
         dirty = Boolean(value);
@@ -689,6 +690,7 @@ export function bind(root, wire) {
     const mount = async () => {
         destroy();
         payload = await wire.payload();
+        lastDaySelection = null;
         const isMonth = payload.period === 'month';
         const dayCount = payload.dates.length;
         grid.classList.toggle('wp-roster-sheet--month', isMonth);
@@ -733,6 +735,9 @@ export function bind(root, wire) {
             rowDrag: false,
             parseFormulas: false,
             minDimensions: [dayCount + 1, rowCount],
+            onselection: (_instance, x, y) => {
+                lastDaySelection = [Number(x), Number(y)];
+            },
         };
         if (isMonth && payload.month_label) {
             worksheetConfig.nestedHeaders = [[
@@ -875,7 +880,9 @@ export function bind(root, wire) {
             if (!worksheet || !payload || typeof wire.openDayEditor !== 'function') {
                 return;
             }
-            const sel = worksheet.selectedCell;
+            // Jspreadsheet reset selectedCell bij mousedown buiten het grid (o.a.
+            // deze knop) — gebruik de bijgehouden laatste selectie.
+            const sel = lastDaySelection ?? worksheet.selectedCell;
             const colIndex = Array.isArray(sel) ? Number(sel[0]) : NaN;
             const rowIndex = Array.isArray(sel) ? Number(sel[1]) : NaN;
             const rowDef = gridRowDefs(payload)[rowIndex];
