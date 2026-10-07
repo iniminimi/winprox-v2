@@ -7083,8 +7083,8 @@ a.wp-kpi.wp-kpi--attention {
 }
 
 .wp-roster-print__table col.wp-roster-print__name-col {
-    /* Compact (~2 cm): namen wrappen op woordgrenzen; dagen krijgen meer ruimte. */
-    width: 5rem;
+    /* Compact (~2,4 cm): namen wrappen op woordgrenzen; dagen krijgen meer ruimte. */
+    width: 6rem;
 }
 
 .wp-roster-print__table thead th:first-child,
@@ -7226,7 +7226,7 @@ a.wp-kpi.wp-kpi--attention {
     }
 
     .wp-roster-print__table col.wp-roster-print__name-col {
-        width: 2cm;
+        width: 2.4cm;
     }
 
     .wp-roster-print__cell {
