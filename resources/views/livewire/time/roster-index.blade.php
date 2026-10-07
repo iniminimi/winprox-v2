@@ -126,7 +126,7 @@
         </div>
     </div>
 
-    <div @class(['wp-card', 'wp-card-pad', 'wp-roster-month' => $isMonth])>
+    <div @class(['wp-card', 'wp-card-pad', 'wp-roster-month' => $isMonth]) data-wp-roster-payload="{{ json_encode($gridPayload) }}">
         @if ($snapshot->workers === [])
             <p class="wp-muted">{{ __('time.schedule.empty_workers') }}</p>
         @endif

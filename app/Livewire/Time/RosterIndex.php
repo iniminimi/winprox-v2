@@ -313,7 +313,13 @@ class RosterIndex extends Component
     public function payload(ListRosterWeekAction $list): array
     {
         $this->authorize('viewAny', PlannedShift::class);
-        $snapshot = $list->handle(
+
+        return $this->gridPayload($this->snapshot($list));
+    }
+
+    private function snapshot(ListRosterWeekAction $list): RosterWeekSnapshot
+    {
+        return $list->handle(
             (int) Tenancy::id(),
             $this->weekStart,
             $this->teamFilter,
@@ -324,7 +330,10 @@ class RosterIndex extends Component
             $this->locationFilter !== null ? $this->groupUnitIds : null,
             $this->showUngrouped,
         );
+    }
 
+    private function gridPayload(RosterWeekSnapshot $snapshot): array
+    {
         $array = $snapshot->toArray();
         $array['invalid_message'] = __('time.schedule.errors.invalid_cells');
         $array['unsaved_message'] = __('time.schedule.unsaved.save_first');
@@ -466,17 +475,7 @@ class RosterIndex extends Component
 
     public function render(ListShiftTypesAction $listTypes, ListRosterWeekAction $listWeek)
     {
-        $snapshot = $listWeek->handle(
-            (int) Tenancy::id(),
-            $this->weekStart,
-            $this->teamFilter,
-            auth()->user(),
-            $this->period(),
-            $this->includeWeekends(),
-            $this->locationFilter,
-            $this->locationFilter !== null ? $this->groupUnitIds : null,
-            $this->showUngrouped,
-        );
+        $snapshot = $this->snapshot($listWeek);
 
         return view('livewire.time.roster-index', [
             'legendTypes' => $listTypes->handle((int) Tenancy::id(), true),
@@ -485,6 +484,7 @@ class RosterIndex extends Component
             'groupUnits' => $this->locationFilter !== null ? $snapshot->units : [],
             'weekLabel' => $this->periodLabel($snapshot),
             'snapshot' => $snapshot,
+            'gridPayload' => $this->gridPayload($snapshot),
             'isMonth' => $this->isMonth(),
             'alarmCount' => $this->timeNavAlarmCount(),
         ]);

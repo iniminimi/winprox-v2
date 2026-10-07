@@ -368,8 +368,24 @@ function applyCellClasses(worksheet, payload) {
     applyWeekendColumns(worksheet, weekendCols);
     applyTodayColumns(worksheet, todayCols);
     applyWeekStartColumns(worksheet, weekStartCols);
+    const rowDefs = gridRowDefs(payload);
+    const workers = workerById(payload);
+    // Unitcatalogus per worker cachen — niet per cel opnieuw filteren.
+    const catalogs = new Map();
+    const catalogFor = (worker) => {
+        const key = worker?.id ?? 0;
+        if (!catalogs.has(key)) {
+            catalogs.set(key, catalogForWorker(worker, payload.units));
+        }
+
+        return catalogs.get(key);
+    };
     const rows = worksheet.getData() ?? [];
     rows.forEach((row, rowIndex) => {
+        const rowDef = rowDefs[rowIndex];
+        const isSection = rowDef?.type === 'section';
+        const worker = isSection ? null : workers[rowDef?.worker_id];
+        let catalog = null;
         row.forEach((value, colIndex) => {
             const cell = rosterTd(
                 typeof worksheet.getCellFromCoords === 'function'
@@ -380,8 +396,7 @@ function applyCellClasses(worksheet, payload) {
                 return;
             }
             if (colIndex === 0) {
-                const rowDef = gridRowDefs(payload)[rowIndex];
-                cell.classList.toggle('wp-roster-row--section', rowDef?.type === 'section');
+                cell.classList.toggle('wp-roster-row--section', isSection);
 
                 return;
             }
@@ -399,8 +414,7 @@ function applyCellClasses(worksheet, payload) {
             if (split && split[1]) {
                 cell.classList.add('wp-roster-cell--stacked');
             }
-            const rowDef = gridRowDefs(payload)[rowIndex];
-            if (rowDef?.type === 'section') {
+            if (isSection) {
                 cell.classList.add('wp-roster-row--section');
                 cell.removeAttribute('aria-invalid');
                 cell.removeAttribute('title');
@@ -408,7 +422,6 @@ function applyCellClasses(worksheet, payload) {
 
                 return;
             }
-            const worker = workerById(payload)[rowDef?.worker_id];
             const date = payload.dates?.[colIndex - 1];
             const attendanceKey = worker && date ? `${worker.id}:${date}` : '';
             const attendanceEntry = attendanceKey ? payload.attendance?.[attendanceKey] : null;
@@ -419,7 +432,7 @@ function applyCellClasses(worksheet, payload) {
             const isMultiSummary = Boolean(cellDef?.multi) && cellText(value).trim() === cellDef.display;
             const parsed = isMultiSummary
                 ? { kind: 'multi' }
-                : parseRosterCell(value, types, catalogForWorker(worker, payload.units));
+                : parseRosterCell(value, types, (catalog ??= catalogFor(worker)));
             if (isMultiSummary) {
                 cell.classList.add('wp-roster-cell--multi');
             }
@@ -515,14 +528,19 @@ function collectCells(worksheet, payload) {
 
 function hasInvalidCells(worksheet, payload) {
     const byId = workerById(payload);
+    const catalogs = new Map();
 
     return collectCells(worksheet, payload).some((cell) => {
         if (cell.keep) {
             return false;
         }
         const worker = byId[cell.worker_id];
+        const key = worker?.id ?? 0;
+        if (!catalogs.has(key)) {
+            catalogs.set(key, catalogForWorker(worker, payload.units));
+        }
 
-        return parseRosterCell(cell.raw, payload.types ?? [], catalogForWorker(worker, payload.units)).kind === 'invalid';
+        return parseRosterCell(cell.raw, payload.types ?? [], catalogs.get(key)).kind === 'invalid';
     });
 }
 
@@ -613,6 +631,7 @@ export function bind(root, wire) {
 
     const grid = root.querySelector('[data-wp-roster-grid]');
     const banner = root.querySelector('[data-wp-roster-banner]');
+    const payloadHost = root.querySelector('[data-wp-roster-payload]');
     if (!grid) {
         return;
     }
@@ -707,9 +726,21 @@ export function bind(root, wire) {
         grid.querySelectorAll('.jss').forEach((node) => node.remove());
     };
 
+    // Payload zit al in de gerenderde HTML — scheelt een tweede
+    // ListRosterWeekAction-run + AJAX-roundtrip per mount. Livewire morft het
+    // attribuut bij elke render, dus na weekwissel staat de verse data er klaar.
+    const readEmbeddedPayload = () => {
+        try {
+            const raw = payloadHost?.dataset?.wpRosterPayload;
+            return raw ? JSON.parse(raw) : null;
+        } catch {
+            return null;
+        }
+    };
+
     const mount = async () => {
         destroy();
-        payload = await wire.payload();
+        payload = readEmbeddedPayload() ?? await wire.payload();
         lastDaySelection = null;
         lastDayCell = null;
         const isMonth = payload.period === 'month';
@@ -804,23 +835,19 @@ export function bind(root, wire) {
                 paint(instance);
                 setDirty(true);
             },
-            onload: (instance) => {
-                paint(instance, { lockSections: true });
-            },
         });
 
         worksheet = Array.isArray(instances) ? instances[0] : instances;
         paint(worksheet, { lockSections: true });
         shrinkRowHeader(grid);
         requestAnimationFrame(() => {
+            if (worksheet && isMonth) {
+                fitMonthColumns(worksheet, grid, dayCount);
+            }
             if (worksheet) {
                 paint(worksheet);
             }
             shrinkRowHeader(grid);
-            if (isMonth) {
-                fitMonthColumns(worksheet, grid, dayCount);
-                requestAnimationFrame(() => worksheet && paint(worksheet));
-            }
         });
     };
 
