@@ -409,6 +409,97 @@ it('negeert draft-blokken in de attendance-vergelijking', function () {
     expect($result)->not->toHaveKey($worker->id.':'.$date);
 });
 
+it('sla een notitie op bij een blok en behoudt hem bij update', function () {
+    [$tenant, $admin, $worker] = multiBlockTenant();
+    $date = now()->addWeek()->startOfWeek()->toDateString();
+
+    app(SavePlannedDayAction::class)->handle(
+        $tenant,
+        new SavePlannedDayData((int) $worker->id, $date, [
+            ['start_time' => '07:00', 'end_time' => '10:00', 'description' => 'Extra sanitair controleren'],
+        ]),
+        $admin->id,
+    );
+
+    $block = PlannedShift::where('worker_id', $worker->id)->whereDate('work_date', $date)->sole();
+    expect($block->description)->toBe('Extra sanitair controleren');
+
+    app(SavePlannedDayAction::class)->handle(
+        $tenant,
+        new SavePlannedDayData((int) $worker->id, $date, [
+            ['id' => $block->id, 'start_time' => '07:00', 'end_time' => '11:00', 'description' => 'Extra sanitair'],
+        ]),
+        $admin->id,
+    );
+
+    $block->refresh();
+    expect($block->description)->toBe('Extra sanitair')
+        ->and($block->end_time)->toBe('11:00');
+});
+
+it('behoudt id en notitie bij een grid-save van een ongewijzigde cel', function () {
+    [$tenant, $admin, $worker] = multiBlockTenant();
+    $week = Carbon::parse(now())->addWeek()->startOfWeek(Carbon::MONDAY)->toDateString();
+    $day = Carbon::parse($week)->toDateString();
+
+    app(SavePlannedDayAction::class)->handle(
+        $tenant,
+        new SavePlannedDayData((int) $worker->id, $day, [
+            ['start_time' => '07:00', 'end_time' => '10:00', 'description' => 'Sanitair'],
+        ]),
+        $admin->id,
+    );
+    $block = PlannedShift::where('worker_id', $worker->id)->whereDate('work_date', $day)->sole();
+
+    $cells = [];
+    for ($i = 0; $i < 7; $i++) {
+        $cells[] = [
+            'worker_id' => $worker->id,
+            'date' => Carbon::parse($week)->addDays($i)->toDateString(),
+            'raw' => '',
+        ];
+    }
+    foreach ($cells as &$cell) {
+        if ($cell['date'] === $day) {
+            $cell['raw'] = '07:00-10:00';
+        }
+    }
+
+    app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData($week, [$worker->id], $cells),
+        $admin->id,
+    );
+
+    $block->refresh();
+    expect($block->description)->toBe('Sanitair')
+        ->and(PlannedShift::where('worker_id', $worker->id)->whereDate('work_date', $day)->sole()->id)
+        ->toBe($block->id);
+});
+
+it('meldt RosterChanged bij een notitie-wijziging op een published dag', function () {
+    [$tenant, $admin, $worker] = multiBlockTenant();
+    $date = now()->addWeek()->startOfWeek()->toDateString();
+
+    plannedBlock($tenant, $worker, $date, '07:00', '10:00', PlannedShiftStatus::Published);
+    $block = PlannedShift::where('worker_id', $worker->id)->whereDate('work_date', $date)->sole();
+
+    app(SavePlannedDayAction::class)->handle(
+        $tenant,
+        new SavePlannedDayData((int) $worker->id, $date, [
+            ['id' => $block->id, 'start_time' => '07:00', 'end_time' => '10:00', 'description' => 'Sleutel meenemen'],
+        ]),
+        $admin->id,
+    );
+
+    expect(
+        WorkerNotification::where('worker_id', $worker->id)
+            ->where('type', WorkerNotificationType::RosterChanged->value)
+            ->where('reference_id', $date)
+            ->count(),
+    )->toBe(1);
+});
+
 it('meldt RosterChanged bij wijziging van een published dag en dedupliceert', function () {
     [$tenant, $admin, $worker] = multiBlockTenant();
     $date = now()->addWeek()->startOfWeek()->toDateString();

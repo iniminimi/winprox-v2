@@ -475,6 +475,16 @@ function applyCellClasses(worksheet, payload) {
                     applyAttendanceLink(cell, '');
                 }
             }
+            // Notitie-indicator: pennetje in de cel + notitietekst in de tooltip.
+            if (cellDef?.has_note) {
+                cell.classList.add('wp-roster-cell--note');
+                const notes = (cellDef.shifts ?? [])
+                    .map((shift) => cellText(shift?.description).trim())
+                    .filter(Boolean);
+                if (notes.length) {
+                    cell.title = `${cell.title ? `${cell.title}\n` : ''}${notes.join('\n')}`;
+                }
+            }
         });
     });
 }

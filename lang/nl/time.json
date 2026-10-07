@@ -729,7 +729,8 @@
             "no_unit": "Geen unit",
             "remove_block": "Blok verwijderen",
             "add_block": "Blok toevoegen",
-            "unplanned_sessions": "Ongepland geklokt"
+            "unplanned_sessions": "Ongepland geklokt",
+            "description": "Notitie (optioneel)"
         }
     },
     "shift_types": {

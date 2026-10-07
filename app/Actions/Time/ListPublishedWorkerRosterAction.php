@@ -65,6 +65,9 @@ class ListPublishedWorkerRosterAction
                 weekStart: $weekStart,
                 isToday: $date->isToday(),
                 clockAlert: $alerts[$date->toDateString()] ?? null,
+                description: $shift->description !== null && trim($shift->description) !== ''
+                    ? trim($shift->description)
+                    : null,
             );
             $previousDate = $date;
         }

@@ -15,5 +15,6 @@ final class WorkerRosterEntry
         public bool $weekStart = false,
         public bool $isToday = false,
         public ?PortalRosterClockAlert $clockAlert = null,
+        public ?string $description = null,
     ) {}
 }

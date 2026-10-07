@@ -56,6 +56,7 @@ class LoadRosterDayEditorAction
                 'end_time' => ShiftType::formatTime($shift->end_time),
                 'break_minutes' => (int) $shift->break_minutes,
                 'unit_id' => $shift->unit_id !== null ? (int) $shift->unit_id : null,
+                'description' => $shift->description,
                 'display' => $shift->displayValue(),
             ])
             ->values()

@@ -729,7 +729,8 @@
             "no_unit": "No unit",
             "remove_block": "Remove block",
             "add_block": "Add block",
-            "unplanned_sessions": "Clocked outside planning"
+            "unplanned_sessions": "Clocked outside planning",
+            "description": "Note (optional)"
         }
     },
     "shift_types": {

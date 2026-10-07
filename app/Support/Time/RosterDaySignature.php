@@ -25,6 +25,7 @@ class RosterDaySignature
                 $shift->kind->value,
                 (string) $shift->shift_type_id,
                 (string) $shift->unit_id,
+                trim((string) $shift->description),
             ]))
             ->sort()
             ->implode('||');

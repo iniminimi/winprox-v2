@@ -729,7 +729,8 @@
             "no_unit": "Sin unidad",
             "remove_block": "Eliminar bloque",
             "add_block": "Añadir bloque",
-            "unplanned_sessions": "Fichado fuera de la planificación"
+            "unplanned_sessions": "Fichado fuera de la planificación",
+            "description": "Nota (opcional)"
         }
     },
     "shift_types": {

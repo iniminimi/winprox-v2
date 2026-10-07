@@ -3556,6 +3556,12 @@ a.wp-pagination__page:active:not(.is-active) {
     width: 99%;
 }
 
+.wp-portal-schedule__note {
+    display: block;
+    font-size: 0.8125rem;
+    margin-top: 0.125rem;
+}
+
 .wp-portal-schedule__row--week-start > td {
     border-top: 1px solid var(--wp-border);
 }
@@ -6935,6 +6941,25 @@ a.wp-kpi.wp-kpi--attention {
 
 .wp-roster-day-block .wp-input {
     flex: 0 0 7rem;
+}
+
+.wp-roster-day-block .wp-input--description {
+    flex: 1 1 100%;
+}
+
+/* Blok met notitie: klein pennetje in de celhoek (title toont de tekst). */
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--note {
+    position: relative;
+}
+
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--note::before {
+    content: '✎';
+    position: absolute;
+    top: 0.125rem;
+    left: 0.25rem;
+    font-size: 0.625rem;
+    opacity: 0.55;
+    pointer-events: none;
 }
 
 .wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--attendance-link {

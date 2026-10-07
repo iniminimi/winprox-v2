@@ -21,14 +21,19 @@
             <tbody>
                 @foreach ($schedule->entries as $entry)
                     <tr
-                        wire:key="schedule-entry-{{ $entry->date }}-{{ $entry->kind }}"
+                        wire:key="schedule-entry-{{ $entry->date }}-{{ $entry->kind }}-{{ $loop->index }}"
                         @class([
                             'wp-portal-schedule__row--week-start' => $entry->weekStart,
                             'wp-portal-schedule__row--today' => $entry->isToday,
                         ])
                     >
                         <td class="wp-portal-schedule__day">{{ $entry->dayLabel }}</td>
-                        <td class="wp-portal-schedule__duty">{{ $entry->duty !== '' ? $entry->duty : '—' }}</td>
+                        <td class="wp-portal-schedule__duty">
+                            {{ $entry->duty !== '' ? $entry->duty : '—' }}
+                            @if ($entry->description !== null)
+                                <span class="wp-muted wp-portal-schedule__note">{{ $entry->description }}</span>
+                            @endif
+                        </td>
                         <td class="wp-portal-schedule__hours">{{ $entry->hours !== '' ? $entry->hours : '—' }} @include('partials.wp-portal-clock-alert', ['alert' => $entry->clockAlert])</td>
                     </tr>
                 @endforeach

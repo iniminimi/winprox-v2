@@ -61,7 +61,8 @@ it('kopieert een bronweek naar meerdere opeenvolgende weken', function () {
     $week = now()->addWeek()->startOfWeek(Carbon::MONDAY)->toDateString();
     $target = Carbon::parse($week)->addWeek()->toDateString();
 
-    copyRangeBlock($tenant, $worker, $week);
+    $noted = copyRangeBlock($tenant, $worker, $week);
+    $noted->update(['description' => 'Mag niet meekopiëren']);
     copyRangeBlock($tenant, $worker, Carbon::parse($week)->addDays(2)->toDateString(), '18:00', '20:00');
     copyRangeBlock($tenant, $worker, Carbon::parse($week)->addDay()->toDateString(), '00:00', '00:00', ShiftTypeKind::Sick);
 
@@ -94,6 +95,13 @@ it('kopieert een bronweek naar meerdere opeenvolgende weken', function () {
                 ->count(),
         )->toBe(0);
     }
+
+    // Notities zijn datumgebonden en worden niet meegekopieerd.
+    expect(
+        PlannedShift::where('worker_id', $worker->id)
+            ->whereDate('work_date', $target)
+            ->value('description'),
+    )->toBeNull();
 });
 
 it('slaat een niet-lege doelweek over zonder de andere weken te blokkeren', function () {

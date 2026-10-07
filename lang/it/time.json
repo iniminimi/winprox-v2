@@ -729,7 +729,8 @@
             "no_unit": "Nessuna unità",
             "remove_block": "Rimuovi blocco",
             "add_block": "Aggiungi blocco",
-            "unplanned_sessions": "Timbrato fuori pianificazione"
+            "unplanned_sessions": "Timbrato fuori pianificazione",
+            "description": "Nota (opzionale)"
         }
     },
     "shift_types": {

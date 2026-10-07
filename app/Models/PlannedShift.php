@@ -26,6 +26,7 @@ class PlannedShift extends Model
         'start_time',
         'end_time',
         'break_minutes',
+        'description',
         'status',
     ];
 

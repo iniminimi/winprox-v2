@@ -127,6 +127,7 @@ class ListRosterWeekAction
                 'start' => $shift->start_time !== null ? ShiftType::formatTime($shift->start_time) : null,
                 'end' => $shift->end_time !== null ? ShiftType::formatTime($shift->end_time) : null,
                 'break_minutes' => (int) $shift->break_minutes,
+                'description' => $shift->description,
             ];
         }
 
@@ -137,6 +138,9 @@ class ListRosterWeekAction
         foreach ($cellShifts as $key => $blocks) {
             $cells[$key] = [
                 'multi' => count($blocks) > 1,
+                'has_note' => collect($blocks)->contains(
+                    fn (array $block) => trim((string) ($block['description'] ?? '')) !== '',
+                ),
                 'shifts' => $blocks,
                 'display' => count($blocks) > 1
                     ? implode("\n", array_map(

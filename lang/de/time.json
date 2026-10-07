@@ -729,7 +729,8 @@
             "no_unit": "Keine Einheit",
             "remove_block": "Block entfernen",
             "add_block": "Block hinzufügen",
-            "unplanned_sessions": "Ungeplant gestempelt"
+            "unplanned_sessions": "Ungeplant gestempelt",
+            "description": "Notiz (optional)"
         }
     },
     "shift_types": {

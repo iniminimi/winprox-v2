@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Time;
 
+use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Foundation\Http\FormRequest;
 
 class SavePlannedDayRequest extends FormRequest
@@ -31,6 +32,7 @@ class SavePlannedDayRequest extends FormRequest
             'blocks.*.end_time' => ['sometimes', 'nullable', 'date_format:H:i', 'required_without:blocks.*.shift_type_id'],
             'blocks.*.break_minutes' => ['sometimes', 'nullable', 'integer', 'min:0', 'max:480'],
             'blocks.*.unit_id' => ['sometimes', 'nullable', 'integer'],
+            'blocks.*.description' => ['sometimes', 'nullable', 'string', 'max:'.TextDescriptionLimits::MAX],
         ];
     }
 }

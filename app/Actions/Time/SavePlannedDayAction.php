@@ -14,6 +14,7 @@ use App\Models\Unit;
 use App\Models\Worker;
 use App\Support\Time\RosterDaySignature;
 use App\Support\Time\TimeModuleAccess;
+use App\Support\Validation\TextDescriptionLimits;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -137,6 +138,7 @@ class SavePlannedDayAction
                         'start_time' => $block['start_time'],
                         'end_time' => $block['end_time'],
                         'break_minutes' => $block['break_minutes'],
+                        'description' => $block['description'],
                     ]);
                     if ($row->isDirty()) {
                         $row->save();
@@ -160,6 +162,7 @@ class SavePlannedDayAction
                     'start_time' => $block['start_time'],
                     'end_time' => $block['end_time'],
                     'break_minutes' => $block['break_minutes'],
+                    'description' => $block['description'],
                     'status' => $status,
                 ]);
                 $created++;
@@ -201,10 +204,10 @@ class SavePlannedDayAction
     }
 
     /**
-     * @param  array{id?: int|null, shift_type_id?: int|null, start_time?: ?string, end_time?: ?string, break_minutes?: int|null, unit_id?: int|null}  $block
+     * @param  array{id?: int|null, shift_type_id?: int|null, start_time?: ?string, end_time?: ?string, break_minutes?: int|null, unit_id?: int|null, description?: ?string}  $block
      * @param  Collection<int, ShiftType>  $types
      * @param  Collection<int, Unit>  $units
-     * @return array{shift_type_id: ?int, kind: string, unit_id: ?int, unit_code: ?string, unit_name: ?string, location_id: ?int, start_time: ?string, end_time: ?string, break_minutes: int}
+     * @return array{shift_type_id: ?int, kind: string, unit_id: ?int, unit_code: ?string, unit_name: ?string, location_id: ?int, start_time: ?string, end_time: ?string, break_minutes: int, description: ?string}
      */
     private function normalizeBlock(array $block, Collection $types, Collection $units, int $index): array
     {
@@ -217,6 +220,9 @@ class SavePlannedDayAction
             'start_time' => null,
             'end_time' => null,
             'break_minutes' => (int) ($block['break_minutes'] ?? 0),
+            'description' => trim((string) ($block['description'] ?? '')) !== ''
+                ? mb_substr(trim((string) $block['description']), 0, TextDescriptionLimits::MAX)
+                : null,
         ];
 
         if ($typeId !== null) {

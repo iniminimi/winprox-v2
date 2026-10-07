@@ -881,6 +881,11 @@ id, nieuwe aanmaken, weggelaten verwijderen — nooit de hele dag opnieuw). Een 
 een samenvatting (`07:00-10:00 · 18:00-20:00`, bij gedeeltelijke afwezigheid bv.
 `07:00-10:00 · ZIEK`); er overheen typen vervangt de hele dag door één blok (met bevestiging);
 onaangeroerde multi-cellen gaan met `keep: true` mee zodat blok-ids behouden blijven.
+**Notitie per blok** (`planned_shifts.description`, max 500): alleen via de dag-editor;
+een grid-cel kan geen notitie dragen. Een grid-save die een enkelvoudige cel ongewijzigd
+laat, behoudt de bestaande rij — en dus de notitie. Zichtbaar als ✎-markering in de cel
+(tooltip toont de tekst) en onder de dienst in **Mijn rooster**. Week herhalen kopieert
+notities niet mee.
 Week- of **maandweergave**; maandkolommen zijn smaller (dagnummer + weekdag onder de maandnaam).
 In **week- en maandweergave** toont het vinkje **Weekends** zaterdag en zondag;
 uit = alleen maandag–vrijdag. Bij uitgeschakelde weekends staat tussen vrijdag en de

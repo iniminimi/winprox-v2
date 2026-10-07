@@ -153,6 +153,7 @@ class RosterIndex extends Component
             'end_time' => $block['end_time'],
             'break_minutes' => $block['break_minutes'],
             'unit_id' => $block['unit_id'],
+            'description' => $block['description'] ?? '',
         ], $this->dayEditorContext['blocks']);
         if ($this->dayEditorBlocks === []) {
             $this->dayEditorBlocks[] = $this->emptyDayEditorBlock();
@@ -204,6 +205,7 @@ class RosterIndex extends Component
             'end_time' => '',
             'break_minutes' => 0,
             'unit_id' => null,
+            'description' => '',
         ];
     }
 
@@ -221,6 +223,7 @@ class RosterIndex extends Component
             'end_time' => $this->normalizeEditorTime($block['end_time'] ?? null),
             'break_minutes' => (int) ($block['break_minutes'] ?? 0),
             'unit_id' => $block['unit_id'] !== null && $block['unit_id'] !== '' ? (int) $block['unit_id'] : null,
+            'description' => $block['description'] ?? null,
         ], $this->dayEditorBlocks);
 
         try {

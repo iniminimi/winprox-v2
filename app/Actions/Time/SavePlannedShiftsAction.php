@@ -2,6 +2,7 @@
 
 namespace App\Actions\Time;
 
+use App\Data\Time\RosterCellData;
 use App\Data\Time\SavePlannedShiftsData;
 use App\Enums\PlannedShiftStatus;
 use App\Enums\RosterCellKind;
@@ -103,11 +104,32 @@ class SavePlannedShiftsAction
                 fn (PlannedShift $shift) => $shift->worker_id.':'.$shift->work_date->toDateString(),
             );
             $preservedIds = [];
+            $preservedDays = [];
             foreach ($existingByDay as $dayKey => $rows) {
                 if (isset($keepCells[$dayKey])) {
                     foreach ($rows as $row) {
                         $preservedIds[] = $row->id;
                     }
+                    $preservedDays[$dayKey] = true;
+                }
+            }
+
+            // Eén-blok-cel die identiek is aan het bestaande blok behoudt zijn
+            // rij: zo overleeft de notitie (description) een grid-save die de
+            // cel inhoudelijk niet wijzigt.
+            foreach ($parsedCells as $item) {
+                $parsed = $item['parsed'];
+                if ($parsed === null || $parsed->isEmpty()) {
+                    continue;
+                }
+                $dayKey = (int) $item['cell']['worker_id'].':'.(string) $item['cell']['date'];
+                if (isset($preservedDays[$dayKey])) {
+                    continue;
+                }
+                $rows = $existingByDay->get($dayKey);
+                if ($rows !== null && $rows->count() === 1 && $this->parsedMatchesRow($parsed, $rows->first())) {
+                    $preservedIds[] = (int) $rows->first()->id;
+                    $preservedDays[$dayKey] = true;
                 }
             }
 
@@ -120,6 +142,10 @@ class SavePlannedShiftsAction
             foreach ($parsedCells as $item) {
                 $parsed = $item['parsed'];
                 if ($parsed === null || $parsed->isEmpty()) {
+                    continue;
+                }
+                $dayKey = (int) $item['cell']['worker_id'].':'.(string) $item['cell']['date'];
+                if (isset($preservedDays[$dayKey])) {
                     continue;
                 }
 
@@ -154,7 +180,7 @@ class SavePlannedShiftsAction
                 $tenant,
                 $existingByDay,
                 $parsedCells,
-                $keepCells,
+                $preservedDays,
                 $weekPublished,
             );
 
@@ -172,19 +198,34 @@ class SavePlannedShiftsAction
     }
 
     /**
+     * Geparseerde cel == bestaand blok? Vergelijkt de inhoud, zonder de
+     * notitie (description): de cel kan die niet dragen, dus een match
+     * behoudt de rij — inclusief notitie — ongewijzigd.
+     */
+    private function parsedMatchesRow(RosterCellData $parsed, PlannedShift $row): bool
+    {
+        return ShiftType::formatTime($row->start_time) === ShiftType::formatTime($parsed->startTime)
+            && ShiftType::formatTime($row->end_time) === ShiftType::formatTime($parsed->endTime)
+            && $row->kind->value === ($parsed->shiftTypeKind ?? ShiftTypeKind::Work)->value
+            && (int) ($row->shift_type_id ?? 0) === (int) ($parsed->shiftTypeId ?? 0)
+            && (int) ($row->unit_id ?? 0) === (int) ($parsed->unitId ?? 0)
+            && (int) $row->break_minutes === (int) ($parsed->breakMinutes ?? 0);
+    }
+
+    /**
      * RosterChanged-melding per gewijzigde published dag. Vergelijkt de
-     * inhoudelijke dag-signature voor/na; bewaarde (keep) dagen zijn
-     * per definitie ongewijzigd.
+     * inhoudelijke dag-signature voor/na; bewaarde (keep of identieke
+     * enkelvoudige cel) dagen zijn per definitie ongewijzigd.
      *
      * @param  Collection<string, Collection<int, PlannedShift>>  $existingByDay
      * @param  list<array{cell: array<string, mixed>, parsed: ?\App\Data\Time\RosterCellData}>  $parsedCells
-     * @param  array<string, true>  $keepCells
+     * @param  array<string, true>  $preservedDays
      */
     private function notifyChangedPublishedDays(
         Tenant $tenant,
         Collection $existingByDay,
         array $parsedCells,
-        array $keepCells,
+        array $preservedDays,
         bool $weekPublished,
     ): void {
         $afterByDay = [];
@@ -202,7 +243,7 @@ class SavePlannedShiftsAction
 
         $pairs = [];
         foreach ($afterByDay as $key => $afterBlocks) {
-            if (isset($keepCells[$key])) {
+            if (isset($preservedDays[$key])) {
                 continue;
             }
 
@@ -215,6 +256,7 @@ class SavePlannedShiftsAction
                     $block['kind'],
                     (string) $block['type'],
                     (string) $block['unit'],
+                    '',
                 ]))
                 ->sort()
                 ->implode('||');

@@ -318,6 +318,16 @@
                                 wire:click="removeDayEditorBlock({{ $i }})"
                                 aria-label="{{ __('time.schedule.day_editor.remove_block') }}"
                             >×</button>
+
+                            <input
+                                type="text"
+                                class="wp-input wp-input--description"
+                                wire:model="dayEditorBlocks.{{ $i }}.description"
+                                aria-label="{{ __('time.schedule.day_editor.description') }}"
+                                placeholder="{{ __('time.schedule.day_editor.description') }}"
+                                maxlength="500"
+                                autocomplete="off"
+                            >
                         </div>
                     @endforeach
 
