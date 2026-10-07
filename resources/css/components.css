@@ -7083,8 +7083,8 @@ a.wp-kpi.wp-kpi--attention {
 }
 
 .wp-roster-print__table col.wp-roster-print__name-col {
-    /* Smal (~1,5 cm): namen wrappen; dagkolommen krijgen meer ruimte. */
-    width: 3.5rem;
+    /* Compact (~2 cm): namen wrappen op woordgrenzen; dagen krijgen meer ruimte. */
+    width: 5rem;
 }
 
 .wp-roster-print__table thead th:first-child,
@@ -7093,8 +7093,8 @@ a.wp-kpi.wp-kpi--attention {
     font-weight: 500;
     color: var(--wp-text);
     white-space: normal;
-    overflow-wrap: anywhere;
-    word-break: break-word;
+    overflow-wrap: break-word;
+    word-break: normal;
     background: var(--wp-surface);
 }
 
@@ -7226,7 +7226,7 @@ a.wp-kpi.wp-kpi--attention {
     }
 
     .wp-roster-print__table col.wp-roster-print__name-col {
-        width: 1.5cm;
+        width: 2cm;
     }
 
     .wp-roster-print__cell {
