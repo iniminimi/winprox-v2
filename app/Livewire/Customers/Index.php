@@ -546,10 +546,20 @@ class Index extends Component
             )
             : collect();
 
+        $checkmateMode = $tenant?->checkmateMode() ?? false;
+        $workAddressVideoRel = 'video/'.app()->getLocale().'/werkadres.mp4';
+        if (! is_file(public_path($workAddressVideoRel))) {
+            $workAddressVideoRel = 'video/nl/werkadres.mp4';
+        }
+        $workAddressVideoUrl = $checkmateMode && is_file(public_path($workAddressVideoRel))
+            ? asset($workAddressVideoRel)
+            : null;
+
         return view('livewire.customers.index', [
             'customers' => $customers,
             'tenant' => $tenant,
-            'checkmateMode' => $tenant?->checkmateMode() ?? false,
+            'checkmateMode' => $checkmateMode,
+            'workAddressVideoUrl' => $workAddressVideoUrl,
             'showWorkStats' => $showWorkStats,
             'workStats' => $workStats,
             'statsPeriodLabel' => $statsPeriodStart->translatedFormat('F Y'),

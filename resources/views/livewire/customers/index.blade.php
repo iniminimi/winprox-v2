@@ -6,7 +6,18 @@
                 help-page="checkmate.customers"
                 :title="__('customers.title')"
                 :subtitle="__('customers.subtitle')"
-            />
+            >
+                <x-slot:titleActions>
+                    @if ($workAddressVideoUrl)
+                        <a href="{{ $workAddressVideoUrl }}" target="_blank" rel="noopener noreferrer"
+                           class="wp-page-help-trigger"
+                           aria-label="{{ __('customers.video_button') }}"
+                           title="{{ __('customers.video_button') }}">
+                            <x-wp-icon name="video" />
+                        </a>
+                    @endif
+                </x-slot:titleActions>
+            </x-wp-page-head-title>
         </div>
         <div class="wp-cluster">
             @if ($canImportCustomersCsv ?? false)
@@ -142,11 +153,9 @@
 
     @include('livewire.customers.customer-import-history', ['batches' => $customerImportBatches])
 
-    @php($workAddressVideoRel = 'video/'.app()->getLocale().'/werkadres.mp4')
-    @php($workAddressVideoRel = is_file(public_path($workAddressVideoRel)) ? $workAddressVideoRel : 'video/nl/werkadres.mp4')
-    @if ($checkmateMode && is_file(public_path($workAddressVideoRel)))
+    @if ($workAddressVideoUrl)
         <div class="wp-cluster wp-cluster--center">
-            <a href="{{ asset($workAddressVideoRel) }}" target="_blank" rel="noopener noreferrer" class="btn btn--surface">
+            <a href="{{ $workAddressVideoUrl }}" target="_blank" rel="noopener noreferrer" class="btn btn--surface">
                 <x-wp-icon name="video" class="wp-icon" />
                 <span>{{ __('customers.video_button') }}</span>
             </a>

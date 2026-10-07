@@ -40,6 +40,7 @@
                     @if ($helpPage)
                         <x-wp-page-help :page="$helpPage" />
                     @endif
+                    {{ $titleActions ?? '' }}
                 </div>
                 {{ $toolbar }}
             </div>
@@ -49,6 +50,7 @@
                 @if ($helpPage)
                     <x-wp-page-help :page="$helpPage" />
                 @endif
+                {{ $titleActions ?? '' }}
             </div>
         @endif
         @if ($subtitle)
