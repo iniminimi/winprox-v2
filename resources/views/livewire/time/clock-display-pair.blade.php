@@ -70,15 +70,15 @@
     <x-wp-settings-section :title="__('time.clock_displays.album.title')">
         <p class="wp-muted wp-text-sm">{{ __('time.clock_displays.album.hint') }}</p>
 
-        <div class="wp-field">
+        <div class="wp-cluster wp-cluster--wrap">
             <label class="wp-label" for="album-mode">{{ __('time.clock_displays.album.mode_label') }}</label>
             <select id="album-mode" class="wp-input wp-input--auto" wire:model.live="albumMode">
                 <option value="photos">{{ __('time.clock_displays.album.mode_photos') }}</option>
                 <option value="clock">{{ __('time.clock_displays.album.mode_clock') }}</option>
                 <option value="none">{{ __('time.clock_displays.album.mode_none') }}</option>
             </select>
-            @error('albumMode') <p class="wp-error">{{ $message }}</p> @enderror
         </div>
+        @error('albumMode') <p class="wp-error">{{ $message }}</p> @enderror
 
         @if ($albumMode !== 'none')
         @foreach ([1 => 'album1', 2 => 'album2'] as $n => $p)
