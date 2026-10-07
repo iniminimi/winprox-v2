@@ -213,7 +213,10 @@
             <div class="wp-settings-subblock wp-stack-tight">
                 <div class="wp-cluster wp-cluster--wrap">
                     <h3 class="wp-settings-subblock-title">{{ __('time.clock_displays.linked.title') }}</h3>
-                    <span class="wp-pill wp-pill--done">{{ __('time.clock_displays.linked.active') }}</span>
+                    <span class="wp-grow"></span>
+                    <button type="button" class="btn btn--surface btn--sm" wire:click="$set('confirmUnlink', true)">
+                        {{ __('time.clock_displays.linked.unlink') }}
+                    </button>
                 </div>
                 <p class="wp-issue-card-meta">
                     {{ __('time.clock_displays.linked.device') }}: <strong>{{ $point->display_device_hint }}</strong>
@@ -224,11 +227,6 @@
                         — {{ __('time.clock_displays.linked.last_seen') }}: {{ $point->display_last_seen_at->diffForHumans() }}
                     @endif
                 </p>
-                <div class="wp-cluster">
-                    <button type="button" class="btn btn--surface btn--sm" wire:click="$set('confirmUnlink', true)">
-                        {{ __('time.clock_displays.linked.unlink') }}
-                    </button>
-                </div>
             </div>
         @endif
     </div>

@@ -289,14 +289,14 @@
             "title": "Linked display",
             "active": "Linked",
             "device": "Device",
-            "paired_at": "Paired at",
+            "paired_at": "Active since",
             "last_seen": "last seen",
             "unlink": "Unlink display"
         },
         "code": {
             "title": "Pairing code",
             "hint": "Generate a single-use code and enter it on the display. The code is valid for 10 minutes; a request must be confirmed here.",
-            "replace_warning": "Warning: a display is already linked. Confirming a new request replaces it — the old device will stop working.",
+            "replace_warning": "Warning: confirming a new request replaces the current display — the old device will stop working.",
             "valid_until": "Valid until :time — enter the code on the display.",
             "open": "A code is already active; generate a new one to replace it.",
             "issue": "Generate pairing code"

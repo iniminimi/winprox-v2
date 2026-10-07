@@ -289,14 +289,14 @@
             "title": "Pantalla vinculada",
             "active": "Vinculada",
             "device": "Dispositivo",
-            "paired_at": "Vinculada el",
+            "paired_at": "Activa desde",
             "last_seen": "vista por última vez",
             "unlink": "Desvincular pantalla"
         },
         "code": {
             "title": "Código de vinculación",
             "hint": "Genera un código de un solo uso e introdúcelo en la pantalla. El código es válido 10 minutos; una solicitud debe confirmarse aquí.",
-            "replace_warning": "Atención: ya hay una pantalla vinculada. Confirmar una nueva solicitud la reemplaza — el dispositivo anterior dejará de funcionar.",
+            "replace_warning": "Atención: confirmar una nueva solicitud reemplaza la pantalla actual — el dispositivo anterior dejará de funcionar.",
             "valid_until": "Válido hasta :time — introduce el código en la pantalla.",
             "open": "Ya hay un código activo; genera uno nuevo para reemplazarlo.",
             "issue": "Generar código"

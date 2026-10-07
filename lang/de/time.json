@@ -289,14 +289,14 @@
             "title": "Verbundenes Display",
             "active": "Verbunden",
             "device": "Gerät",
-            "paired_at": "Verbunden am",
+            "paired_at": "Aktiv seit",
             "last_seen": "zuletzt gesehen",
             "unlink": "Display trennen"
         },
         "code": {
             "title": "Kopplungscode",
             "hint": "Erzeuge einen Einmal-Code und gib ihn auf dem Display ein. Der Code ist 10 Minuten gültig; eine Anfrage musst du hier bestätigen.",
-            "replace_warning": "Achtung: Es ist bereits ein Display verbunden. Das Bestätigen einer neuen Anfrage ersetzt es — das alte Gerät funktioniert dann nicht mehr.",
+            "replace_warning": "Achtung: Das Bestätigen einer neuen Anfrage ersetzt das aktuelle Display — das alte Gerät funktioniert dann nicht mehr.",
             "valid_until": "Gültig bis :time — gib den Code auf dem Display ein.",
             "open": "Es läuft bereits ein Code; erzeuge einen neuen, um ihn zu ersetzen.",
             "issue": "Kopplungscode erzeugen"

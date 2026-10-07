@@ -289,14 +289,14 @@
             "title": "Gekoppeld scherm",
             "active": "Gekoppeld",
             "device": "Toestel",
-            "paired_at": "Gekoppeld op",
+            "paired_at": "Actief sinds",
             "last_seen": "laatst gezien",
             "unlink": "Scherm ontkoppelen"
         },
         "code": {
             "title": "Koppelcode",
             "hint": "Genereer een eenmalige code en tik die in op het scherm. De code is 10 minuten geldig; een aanvraag moet je hier bevestigen.",
-            "replace_warning": "Let op: er is al een scherm gekoppeld. Bevestiging van een nieuwe aanvraag vervangt dat scherm — het oude toestel werkt dan niet meer.",
+            "replace_warning": "Let op: een nieuwe aanvraag vervangt het huidige scherm — het oude toestel werkt dan niet meer.",
             "valid_until": "Geldig tot :time — tik de code in op het scherm.",
             "open": "Er loopt al een code; genereer een nieuwe om hem te vervangen.",
             "issue": "Genereer koppelcode"

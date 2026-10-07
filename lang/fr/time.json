@@ -289,14 +289,14 @@
             "title": "Écran associé",
             "active": "Associé",
             "device": "Appareil",
-            "paired_at": "Associé le",
+            "paired_at": "Actif depuis",
             "last_seen": "vu pour la dernière fois",
             "unlink": "Dissocier l'écran"
         },
         "code": {
             "title": "Code d'association",
             "hint": "Générez un code à usage unique et saisissez-le sur l'écran. Le code est valable 10 minutes ; une demande doit être confirmée ici.",
-            "replace_warning": "Attention : un écran est déjà associé. Confirmer une nouvelle demande le remplace — l'ancien appareil cessera de fonctionner.",
+            "replace_warning": "Attention : confirmer une nouvelle demande remplace l'écran actuel — l'ancien appareil cessera de fonctionner.",
             "valid_until": "Valide jusqu'à :time — saisissez le code sur l'écran.",
             "open": "Un code est déjà actif ; générez-en un nouveau pour le remplacer.",
             "issue": "Générer un code"

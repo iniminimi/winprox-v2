@@ -289,14 +289,14 @@
             "title": "Schermo collegato",
             "active": "Collegato",
             "device": "Dispositivo",
-            "paired_at": "Collegato il",
+            "paired_at": "Attivo dal",
             "last_seen": "visto l'ultima volta",
             "unlink": "Scollega schermo"
         },
         "code": {
             "title": "Codice di collegamento",
             "hint": "Genera un codice monouso e inseriscilo sullo schermo. Il codice è valido 10 minuti; una richiesta deve essere confermata qui.",
-            "replace_warning": "Attenzione: è già collegato uno schermo. Confermare una nuova richiesta lo sostituisce — il vecchio dispositivo smetterà di funzionare.",
+            "replace_warning": "Attenzione: confermare una nuova richiesta sostituisce lo schermo attuale — il vecchio dispositivo smetterà di funzionare.",
             "valid_until": "Valido fino alle :time — inserisci il codice sullo schermo.",
             "open": "C'è già un codice attivo; generane uno nuovo per sostituirlo.",
             "issue": "Genera codice"
