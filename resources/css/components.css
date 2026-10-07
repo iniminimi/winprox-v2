@@ -6962,6 +6962,18 @@ a.wp-kpi.wp-kpi--attention {
     pointer-events: none;
 }
 
+/* Structurele onbeschikbaarheid (worker_unavailabilities): subtiele
+   schuine arcering. Zachte beperking — de cel blijft bewerkbaar. */
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--unavailable {
+    background-image: repeating-linear-gradient(
+        135deg,
+        transparent,
+        transparent 5px,
+        rgba(17, 24, 39, 0.06) 5px,
+        rgba(17, 24, 39, 0.06) 9px
+    );
+}
+
 .wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--attendance-link {
     position: relative;
     cursor: pointer;

@@ -485,6 +485,14 @@ function applyCellClasses(worksheet, payload) {
                     cell.title = `${cell.title ? `${cell.title}\n` : ''}${notes.join('\n')}`;
                 }
             }
+            // Structurele onbeschikbaarheid: gestreepte cel + tooltip-hint.
+            if (attendanceKey && payload.unavailable?.[attendanceKey]) {
+                cell.classList.add('wp-roster-cell--unavailable');
+                const unavailableHint = payload.unavailable_hint || '';
+                if (unavailableHint) {
+                    cell.title = cell.title ? `${cell.title}\n${unavailableHint}` : unavailableHint;
+                }
+            }
         });
     });
 }

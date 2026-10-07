@@ -238,7 +238,7 @@ class RosterIndex extends Component
         }
 
         try {
-            $save->handle(
+            $result = $save->handle(
                 Tenant::query()->findOrFail(Tenancy::id()),
                 new SavePlannedDayData($workerId, $date, $blocks),
                 auth()->id(),
@@ -252,6 +252,11 @@ class RosterIndex extends Component
 
         $this->closeDayEditor();
         session()->flash('time_flash', __('time.schedule.saved'));
+        if (($result['warnings'] ?? []) !== []) {
+            session()->flash('time_flash_warning', __('time.schedule.unavailable.warn_count', [
+                'count' => count($result['warnings']),
+            ]));
+        }
         $this->dispatch('roster-week-changed');
     }
 
@@ -383,6 +388,7 @@ class RosterIndex extends Component
             $array['hours_url'] = route('time.shifts.index');
         }
         $array['attendance_open_hint'] = __('time.schedule.attendance.open_hours');
+        $array['unavailable_hint'] = __('time.schedule.unavailable.hint');
         $array['multi_replace_confirm'] = __('time.schedule.multi_replace_confirm');
         $array['multi_hint'] = __('time.schedule.multi_hint');
         $array['day_editor_hint'] = __('time.schedule.day_editor.hint');
@@ -422,7 +428,7 @@ class RosterIndex extends Component
         )->validate();
 
         try {
-            $save->handle(
+            $result = $save->handle(
                 Tenant::query()->findOrFail(Tenancy::id()),
                 new SavePlannedShiftsData(
                     $this->weekStart,
@@ -442,6 +448,11 @@ class RosterIndex extends Component
         }
 
         session()->flash('time_flash', __('time.schedule.saved'));
+        if ($result['warnings'] !== []) {
+            session()->flash('time_flash_warning', __('time.schedule.unavailable.warn_count', [
+                'count' => count($result['warnings']),
+            ]));
+        }
         $this->dispatch('roster-week-changed');
     }
 

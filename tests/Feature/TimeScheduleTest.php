@@ -550,6 +550,7 @@ it('slaat een maandgrid op', function () {
         new SavePlannedShiftsData('2026-09-01', [$worker->id], $cells, 'month'),
         $admin->id,
     );
+    $saved = $saved['shifts'];
 
     expect($saved)->toHaveCount(1)
         ->and($saved[0]->work_date->toDateString())->toBe('2026-09-14');
@@ -585,6 +586,7 @@ it('slaat verlof op zonder uren en weigert overlap met werk', function () {
         ])),
         $admin->id,
     );
+    $saved = $saved['shifts'];
 
     expect($saved)->toHaveCount(1)
         ->and($saved[0]->kind)->toBe(ShiftTypeKind::Leave)
@@ -764,6 +766,7 @@ it('parses a unit code in the same cell and snapshots place on save', function (
         ])),
         $admin->id,
     );
+    $saved = $saved['shifts'];
 
     expect($saved)->toHaveCount(1)
         ->and($saved[0]->unit_id)->toBe($unit->id)
@@ -835,7 +838,7 @@ it('weigert afwezigheid met groep en dubbele groepscode zonder locatiefilter', f
         $admin->id,
         null,
     );
-    expect($saved[0]->location_id)->toBe($siteA->id);
+    expect($saved['shifts'][0]->location_id)->toBe($siteA->id);
 });
 
 it('negeert een groepscode op een locatie waar de uitvoerder niet mag prikken', function () {

@@ -15,6 +15,7 @@ final class RosterWeekSnapshot
      * @param  list<array<string, mixed>>  $units
      * @param  list<int>  $dayNumbers
      * @param  array<string, array{status: string, blocks: array<int, string>, gap_minutes: int, unplanned_sessions: int}>  $attendance
+     * @param  array<string, true>  $unavailable
      * @param  array<string, string>  $attendanceMessages
      * @param  list<array<string, mixed>>  $rows
      */
@@ -33,6 +34,7 @@ final class RosterWeekSnapshot
         public string $monthLabel = '',
         public array $dayNumbers = [],
         public array $attendance = [],
+        public array $unavailable = [],
         public array $attendanceMessages = [],
         public array $locations = [],
         public array $units = [],
@@ -65,6 +67,7 @@ final class RosterWeekSnapshot
             'month_label' => $this->monthLabel,
             'day_numbers' => $this->dayNumbers,
             'attendance' => $this->attendance,
+            'unavailable' => $this->unavailable,
             'attendance_messages' => $this->attendanceMessages,
             'error_messages' => [
                 'time.schedule.errors.unknown_code' => __('time.schedule.errors.unknown_code'),

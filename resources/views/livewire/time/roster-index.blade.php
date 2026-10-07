@@ -46,6 +46,9 @@
     @if (session('time_flash'))
         <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
     @endif
+    @if (session('time_flash_warning'))
+        <div class="wp-flash wp-flash--warning">{{ session('time_flash_warning') }}</div>
+    @endif
     @if (session('time_flash_error'))
         <div class="wp-flash wp-flash--danger">{{ session('time_flash_error') }}</div>
     @endif

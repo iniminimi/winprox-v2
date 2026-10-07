@@ -95,6 +95,11 @@ class Worker extends Model
         return $this->hasMany(WorkerNotification::class);
     }
 
+    public function unavailabilities(): HasMany
+    {
+        return $this->hasMany(WorkerUnavailability::class);
+    }
+
     public function clockDevice(): BelongsTo
     {
         return $this->belongsTo(WorkerDevice::class, 'clock_device_id');

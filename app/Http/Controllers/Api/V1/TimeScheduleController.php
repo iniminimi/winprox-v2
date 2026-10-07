@@ -59,7 +59,7 @@ class TimeScheduleController extends Controller
         $validated = $request->validated();
 
         try {
-            $shifts = $save->handle(
+            $result = $save->handle(
                 Tenant::query()->findOrFail(Tenancy::id()),
                 new SavePlannedShiftsData(
                     $validated['week_start'],
@@ -85,7 +85,10 @@ class TimeScheduleController extends Controller
             ], 422);
         }
 
-        return $this->success(['count' => count($shifts)]);
+        return $this->success([
+            'count' => count($result['shifts']),
+            'warnings' => $result['warnings'],
+        ]);
     }
 
     public function copy(CopyWeekRequest $request, CopyWeekAction $copy, CopyRosterWeeksAction $weeks): JsonResponse

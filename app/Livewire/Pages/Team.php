@@ -27,6 +27,7 @@ use App\Actions\Team\UpdateTeamAction;
 use App\Actions\Team\UpdateWorkerAction;
 use App\Actions\Team\UpdateWorkerPhotoAction;
 use App\Actions\Time\EnsureDefaultClockPointAction;
+use App\Actions\Time\SyncWorkerUnavailabilitiesAction;
 use App\Http\Requests\Team\StoreColleagueRequest;
 use App\Http\Requests\Team\StoreTeamRequest;
 use App\Http\Requests\Team\StoreWorkerRequest;
@@ -139,6 +140,9 @@ class Team extends Component
     public bool $workerLocationsPanelOpen = false;
 
     public ?int $workerDefaultUnitId = null;
+
+    /** @var list<int> terugkerende onbeschikbaarheid: weekdagen 1 (ma) t/m 7 (zo) */
+    public array $workerUnavailabilities = [];
 
     // Worker bewerken/aanmaken (modal)
     public bool $showWorkerModal = false;
@@ -732,8 +736,8 @@ class Team extends Component
 
         $this->editingWorkerId = null;
         $this->resetWorkerPhotoState();
-        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerDefaultUnitId']);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerPhoto', 'addingWorkerTeamId']);
+        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerUnavailabilities']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerUnavailabilities', 'workerPhoto', 'addingWorkerTeamId']);
         $this->addingWorkerTeamId = $teamId;
         $this->workerLocationsPanelOpen = false;
         $this->showWorkerModal = true;
@@ -790,6 +794,7 @@ class Team extends Component
         UpdateWorkerAction $updateWorker,
         UpdateWorkerPhotoAction $updateWorkerPhoto,
         DeleteWorkerPhotoAction $deleteWorkerPhoto,
+        SyncWorkerUnavailabilitiesAction $syncUnavailabilities,
     ): void {
         $presenceComplianceEnabled = $this->tenantPresenceComplianceEnabled();
 
@@ -879,6 +884,10 @@ class Team extends Component
             $this->persistWorkerPhoto($worker, $updateWorkerPhoto, $deleteWorkerPhoto);
         }
 
+        if ($this->tenantTimeModuleEnabled()) {
+            $syncUnavailabilities->handle($worker, $this->workerUnavailabilities);
+        }
+
         $this->cancelWorkerModal();
         $this->dispatch('saved');
     }
@@ -956,6 +965,18 @@ class Team extends Component
         return $tenant instanceof Tenant && $tenant->presenceComplianceEnabled();
     }
 
+    private function tenantTimeModuleEnabled(): bool
+    {
+        $tenantId = Tenancy::id();
+        if ($tenantId === null) {
+            return false;
+        }
+
+        $tenant = Tenant::query()->find($tenantId);
+
+        return $tenant instanceof Tenant && $tenant->hasTimeModule();
+    }
+
     public function clearWorkerPhotoSelection(): void
     {
         $this->workerPhoto = null;
@@ -990,6 +1011,10 @@ class Team extends Component
         $this->workerSsin = $worker->ssin ?? '';
         $this->selectedWorkerLocationIds = $worker->locations()->pluck('locations.id')->map(fn ($id) => (int) $id)->all();
         $this->workerDefaultUnitId = $worker->default_unit_id !== null ? (int) $worker->default_unit_id : null;
+        $this->workerUnavailabilities = $worker->unavailabilities()
+            ->pluck('weekday')
+            ->map(fn ($day) => (int) $day)
+            ->all();
         $this->workerLocationsPanelOpen = $this->selectedWorkerLocationIds !== [];
         $this->resetWorkerPhotoState();
         $this->existingWorkerPhotoUrl = $worker->photoPublicUrl();
@@ -1017,11 +1042,12 @@ class Team extends Component
             'selectedWorkerLocationIds',
             'workerLocationsPanelOpen',
             'workerDefaultUnitId',
+            'workerUnavailabilities',
             'workerPhoto',
             'removeWorkerPhoto',
             'existingWorkerPhotoUrl',
         ]);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerPhoto']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerUnavailabilities', 'workerPhoto']);
     }
 
     /**

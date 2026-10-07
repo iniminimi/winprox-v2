@@ -28,7 +28,10 @@ class CopyRosterWeeksAction
 
     public const MAX_WEEKS = 26;
 
-    public function __construct(private ResolveRosterWeekAction $resolveWeek) {}
+    public function __construct(
+        private ResolveRosterWeekAction $resolveWeek,
+        private ListWorkerUnavailableDatesAction $listUnavailableDates,
+    ) {}
 
     /**
      * Kopieer de werkshifts van de bronweek naar N opeenvolgende doelweken.
@@ -162,7 +165,7 @@ class CopyRosterWeeksAction
                             'worker' => $workerNames[(int) $shift->worker_id] ?? (string) $shift->worker_id,
                             'date' => $targetDate,
                             'label' => $this->shiftLabel($shift),
-                            'reason' => 'absence',
+                            'reason' => $absent[(int) $shift->worker_id][$targetDate],
                         ];
                         continue;
                     }
@@ -206,12 +209,12 @@ class CopyRosterWeeksAction
     }
 
     /**
-     * Datums waarop een worker afwezig is via een goedgekeurde aanvraag.
-     * Punt 4 (structurele onbeschikbaarheid) breidt deze kaart uit met
-     * weekdag-matches uit worker_unavailabilities.
+     * Datums waarop een worker niet inzetbaar is: via een goedgekeurde
+     * afwezigheidsaanvraag ('absence') of via terugkerende weekdag-
+     * onbeschikbaarheid uit worker_unavailabilities ('unavailable').
      *
      * @param  list<int>  $workerIds
-     * @return array<int, array<string, true>>
+     * @return array<int, array<string, string>> worker_id => [Y-m-d => reason]
      */
     private function absentDates(int $tenantId, array $workerIds, string $from, string $to): array
     {
@@ -232,8 +235,14 @@ class CopyRosterWeeksAction
             $day = Carbon::parse($request->date_from->toDateString());
             $end = Carbon::parse($request->date_to->toDateString());
             while ($day->lte($end)) {
-                $map[(int) $request->worker_id][$day->toDateString()] = true;
+                $map[(int) $request->worker_id][$day->toDateString()] = 'absence';
                 $day->addDay();
+            }
+        }
+
+        foreach ($this->listUnavailableDates->handle($tenantId, $workerIds, $from, $to) as $workerId => $dateSet) {
+            foreach ($dateSet as $date => $_) {
+                $map[$workerId][$date] ??= 'unavailable';
             }
         }
 

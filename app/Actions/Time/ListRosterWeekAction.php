@@ -22,6 +22,7 @@ class ListRosterWeekAction
         private ResolveRosterPeriodAction $resolvePeriod,
         private ListShiftTypesAction $listShiftTypes,
         private CompareRosterAttendanceAction $compareAttendance,
+        private ListWorkerUnavailableDatesAction $listUnavailableDates,
     ) {}
 
     /**
@@ -171,6 +172,20 @@ class ListRosterWeekAction
             $dates,
         ) : [];
 
+        $unavailable = [];
+        if ($scoped) {
+            foreach ($this->listUnavailableDates->handle(
+                $tenantId,
+                $workerIds,
+                (string) $dates[0],
+                (string) $dates[array_key_last($dates)],
+            ) as $workerId => $dateSet) {
+                foreach ($dateSet as $date => $_) {
+                    $unavailable[$workerId.':'.$date] = true;
+                }
+            }
+        }
+
         $weekPublished = $shifts->contains(fn (PlannedShift $shift) => $shift->status->isPublished());
 
         $locale = app()->getLocale();
@@ -251,6 +266,7 @@ class ListRosterWeekAction
             monthLabel: $monthLabel,
             dayNumbers: $dayNumbers,
             attendance: $attendance,
+            unavailable: $unavailable,
             attendanceMessages: [
                 RosterAttendanceStatus::Missing->value => __('time.schedule.attendance.missing'),
                 RosterAttendanceStatus::Deviation->value => __('time.schedule.attendance.deviation'),

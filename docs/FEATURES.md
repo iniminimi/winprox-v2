@@ -886,6 +886,13 @@ een grid-cel kan geen notitie dragen. Een grid-save die een enkelvoudige cel ong
 laat, behoudt de bestaande rij — en dus de notitie. Zichtbaar als ✎-markering in de cel
 (tooltip toont de tekst) en onder de dienst in **Mijn rooster**. Week herhalen kopieert
 notities niet mee.
+**Structurele onbeschikbaarheid** (`worker_unavailabilities`: `worker_id` + `weekday`,
+1=ma t/m 7=zo): terugkerende hele-dag onbeschikbaarheid, admin-beheerd via de
+worker-bewerkmodal (weekdag-checkboxes, alleen met de Time-module). Het is een **zachte
+beperking**: cellen op onbeschikbare weekdagen krijgen een schuine arcering, en zowel de
+grid-save als de dag-editor geven `warnings[]` naast errors terug (plannen blijft mogelijk;
+afwezigheidsblokken waarschuwen niet). Week herhalen slaat shifts op onbeschikbare
+doeldagen over met reden `unavailable`.
 Week- of **maandweergave**; maandkolommen zijn smaller (dagnummer + weekdag onder de maandnaam).
 In **week- en maandweergave** toont het vinkje **Weekends** zaterdag en zondag;
 uit = alleen maandag–vrijdag. Bij uitgeschakelde weekends staat tussen vrijdag en de
@@ -935,8 +942,10 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
   gekopieerd. Per doelweek een eigen transactie (alles-of-niets binnen een week): een
   niet-lege doelweek wordt overgeslagen én gerapporteerd zonder andere weken te blokkeren;
   de bronweek zelf wordt eveneens overgeslagen. Een shift die op een dag met
-  **goedgekeurde afwezigheid** (`AbsenceRequest`) valt, wordt overgeslagen en in het
-  resultaat per week getoond (`worker · datum · label`). Enkelvoudige `CopyWeekAction`
+  **goedgekeurde afwezigheid** (`AbsenceRequest`, reden `absence`) of **structurele
+  onbeschikbaarheid** (`worker_unavailabilities`, reden `unavailable`) valt, wordt
+  overgeslagen en in het resultaat per week getoond (`worker · datum · label · reden`).
+  Enkelvoudige `CopyWeekAction`
   (API `POST /time/schedule/copy`) delegeert en behoudt zijn weiger-exceptions; optionele
   `weeks`-parameter geeft hetzelfde range-rapport terug.
 - **Golf 2 — Mijn rooster:** Clock Point-tegel, alleen eigen `published` diensten van de
