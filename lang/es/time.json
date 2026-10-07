@@ -312,11 +312,12 @@
             "deny": "Rechazar"
         },
         "schedule": {
-            "title": "Horario de encendido de la pantalla",
+            "title": "Horario de pantalla",
             "hint": "Fuera de este horario la pantalla permanece apagada (p. ej. guardería 06:00–19:00). Vacío = siempre encendida; también vale de un día para otro (22:00–06:00).",
+            "block": "Franja horaria",
             "always_on": "Siempre encendida",
-            "from": "Encendida desde",
-            "until": "Encendida hasta",
+            "from": "encendida desde",
+            "until": "hasta",
             "save": "Guardar",
             "saved": "Horario de encendido guardado."
         },
@@ -346,8 +347,9 @@
         "album": {
             "title": "Salvapantallas",
             "hint": "Durante estos horarios la pantalla muestra este salvapantallas en lugar del código QR — solo en los días marcados. Un toque muestra el código QR; otro toque abre el registro manual. Vacío = sin salvapantallas.",
-            "from": "Desde",
-            "until": "Hasta",
+            "block": "Franja horaria",
+            "from": "desde",
+            "until": "hasta",
             "days_label": "Estos días",
             "days": {
                 "mon": "lu",

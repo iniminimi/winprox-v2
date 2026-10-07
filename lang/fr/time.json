@@ -312,11 +312,12 @@
             "deny": "Refuser"
         },
         "schedule": {
-            "title": "Heures d'allumage de l'écran",
+            "title": "Heures d'écran",
             "hint": "Hors de cette plage, l'écran reste éteint (p. ex. crèche 06:00–19:00). Vide = toujours allumé ; fonctionne aussi à cheval sur minuit (22:00–06:00).",
+            "block": "Plage horaire",
             "always_on": "Toujours allumé",
-            "from": "Allumé de",
-            "until": "Allumé jusqu'à",
+            "from": "allumé de",
+            "until": "à",
             "save": "Enregistrer",
             "saved": "Heures d'allumage enregistrées."
         },
@@ -346,8 +347,9 @@
         "album": {
             "title": "Écran de veille",
             "hint": "Pendant ces plages, l'écran affiche cet écran de veille au lieu du code QR — uniquement les jours cochés. Un toucher affiche le code QR ; un second toucher ouvre le pointage manuel. Vide = pas d'écran de veille.",
-            "from": "De",
-            "until": "À",
+            "block": "Plage horaire",
+            "from": "de",
+            "until": "à",
             "days_label": "Ces jours-ci",
             "days": {
                 "mon": "lun",

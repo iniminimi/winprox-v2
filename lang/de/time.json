@@ -312,11 +312,12 @@
             "deny": "Ablehnen"
         },
         "schedule": {
-            "title": "Einschaltzeiten des Bildschirms",
+            "title": "Bildschirmzeiten",
             "hint": "Außerhalb dieses Zeitblocks bleibt der Bildschirm aus (z. B. Kita 06:00–19:00). Leer = immer an; über Mitternacht (z. B. 22:00–06:00) geht auch.",
+            "block": "Zeitblock",
             "always_on": "Immer an",
-            "from": "An ab",
-            "until": "An bis",
+            "from": "an von",
+            "until": "bis",
             "save": "Speichern",
             "saved": "Einschaltzeiten gespeichert."
         },
@@ -346,8 +347,9 @@
         "album": {
             "title": "Bildschirmschoner",
             "hint": "Während dieser Zeiten zeigt der Bildschirm diesen Ruhebildschirm statt des QR-Codes — nur an den angehakten Tagen. Einmal tippen zeigt den QR-Code; erneutes Tippen öffnet die manuelle Anmeldung. Leer = kein Ruhebildschirm.",
-            "from": "Von",
-            "until": "Bis",
+            "block": "Zeitblock",
+            "from": "von",
+            "until": "bis",
             "days_label": "An diesen Tagen",
             "days": {
                 "mon": "Mo",

@@ -312,11 +312,12 @@
             "deny": "Rifiuta"
         },
         "schedule": {
-            "title": "Orari di accensione dello schermo",
+            "title": "Orari dello schermo",
             "hint": "Fuori da questa fascia lo schermo resta spento (es. nido 06:00–19:00). Vuoto = sempre acceso; funziona anche a cavallo di mezzanotte (es. 22:00–06:00).",
+            "block": "Fascia oraria",
             "always_on": "Sempre acceso",
-            "from": "Acceso da",
-            "until": "Acceso fino a",
+            "from": "acceso da",
+            "until": "a",
             "save": "Salva",
             "saved": "Orari di accensione salvati."
         },
@@ -346,8 +347,9 @@
         "album": {
             "title": "Salvaschermo",
             "hint": "In questi orari lo schermo mostra questo salvaschermo al posto del codice QR — solo nei giorni selezionati. Un tocco mostra il codice QR; un altro tocco apre la timbratura manuale. Vuoto = nessun salvaschermo.",
-            "from": "Da",
-            "until": "A",
+            "block": "Fascia oraria",
+            "from": "da",
+            "until": "a",
             "days_label": "In questi giorni",
             "days": {
                 "mon": "lu",

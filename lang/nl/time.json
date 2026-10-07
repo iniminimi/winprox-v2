@@ -312,11 +312,12 @@
             "deny": "Weigeren"
         },
         "schedule": {
-            "title": "Scherm aan-uren",
+            "title": "Schermuren",
             "hint": "Buiten dit tijdsblok staat het scherm uit (bv. crèche 06:00–19:00). Leeg = altijd aan; over middernacht (bv. 22:00–06:00) werkt ook.",
+            "block": "Tijdsblok",
             "always_on": "Altijd aan",
-            "from": "Aan vanaf",
-            "until": "Aan tot",
+            "from": "aan vanaf",
+            "until": "tot",
             "save": "Opslaan",
             "saved": "Aan-uren opgeslagen."
         },
@@ -346,8 +347,9 @@
         "album": {
             "title": "Screensaver",
             "hint": "Tijdens deze tijden toont het scherm dit rust-scherm i.p.v. de QR-code — alleen op de aangevinkte dagen. Een tik toont de QR-code; nog een tik opent manueel aanmelden. Leeg = geen rust-scherm.",
-            "from": "Vanaf",
-            "until": "Tot",
+            "block": "Tijdsblok",
+            "from": "vanaf",
+            "until": "tot",
             "days_label": "Op deze dagen",
             "days": {
                 "mon": "ma",

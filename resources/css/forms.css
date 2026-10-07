@@ -94,6 +94,11 @@
     line-height: 1.5;
 }
 
+/* Inline/selects die niet scherm-breed mogen (klokscherm tijdsblokken). */
+.wp-input--auto {
+    width: auto;
+}
+
 .wp-input::placeholder,
 .wp-textarea::placeholder {
     color: var(--wp-text-muted);

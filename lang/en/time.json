@@ -312,11 +312,12 @@
             "deny": "Deny"
         },
         "schedule": {
-            "title": "Screen on-hours",
+            "title": "Screen hours",
             "hint": "Outside this time block the screen stays off (e.g. nursery 06:00–19:00). Empty = always on; overnight (e.g. 22:00–06:00) works too.",
+            "block": "Time block",
             "always_on": "Always on",
-            "from": "On from",
-            "until": "On until",
+            "from": "on from",
+            "until": "to",
             "save": "Save",
             "saved": "On-hours saved."
         },
@@ -346,8 +347,9 @@
         "album": {
             "title": "Screensaver",
             "hint": "During these times the screen shows this idle screen instead of the QR code — only on the checked days. Tap once for the QR code; tap again for manual clock-in. Empty = no idle screen.",
-            "from": "From",
-            "until": "To",
+            "block": "Time block",
+            "from": "from",
+            "until": "to",
             "days_label": "On these days",
             "days": {
                 "mon": "Mon",
