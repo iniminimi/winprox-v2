@@ -51,7 +51,7 @@ function splitDutyAndUnit(raw) {
         return [parts[0], parts[1]];
     }
 
-    const timeMatch = raw.match(/^(\d{1,2}:\d{2}\s*-\s*\d{1,2}:\d{2})(?:\s+(\S+))?$/);
+    const timeMatch = raw.match(/^(\d{1,2}:?\d{2}\s*-\s*\d{1,2}:?\d{2})(?:\s+(\S+))?$/);
     if (timeMatch) {
         return [timeMatch[1], timeMatch[2] || null];
     }
@@ -94,7 +94,7 @@ function canonicalizeCellValue(raw) {
 
 function parseDuty(duty, types) {
     if (duty.includes('-')) {
-        const match = duty.match(/^(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})$/);
+        const match = duty.match(/^(\d{1,2}):?(\d{2})\s*-\s*(\d{1,2}):?(\d{2})$/);
         if (!match) {
             return { kind: 'invalid', error: 'time.schedule.errors.invalid_time' };
         }

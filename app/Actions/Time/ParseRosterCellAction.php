@@ -68,7 +68,7 @@ class ParseRosterCellAction
             return [$parts[0], $parts[1]];
         }
 
-        if (preg_match('/^(\d{1,2}:\d{2}\s*-\s*\d{1,2}:\d{2})(?:\s+(\S+))?$/', $raw, $matches)) {
+        if (preg_match('/^(\d{1,2}:?\d{2}\s*-\s*\d{1,2}:?\d{2})(?:\s+(\S+))?$/', $raw, $matches)) {
             $unit = isset($matches[2]) && $matches[2] !== '' ? $matches[2] : null;
 
             return [$matches[1], $unit];
@@ -124,7 +124,7 @@ class ParseRosterCellAction
 
     private function parseFreeTime(string $raw, string $original): RosterCellData
     {
-        if (! preg_match('/^(\d{1,2}):(\d{2})\s*-\s*(\d{1,2}):(\d{2})$/', $raw, $matches)) {
+        if (! preg_match('/^(\d{1,2}):?(\d{2})\s*-\s*(\d{1,2}):?(\d{2})$/', $raw, $matches)) {
             return new RosterCellData(
                 kind: RosterCellKind::Invalid,
                 raw: $original,

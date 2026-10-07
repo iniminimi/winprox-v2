@@ -138,7 +138,7 @@ it('toont multi-blok-dagen regel per blok, met uren op de print', function () {
 
     $cell = $snapshot->cells[$worker->id.':'.$date] ?? null;
     expect($cell['multi'])->toBeTrue()
-        ->and($cell['display'])->toBe("D1\n18:00-20:00");
+        ->and($cell['display'])->toBe("D1\n1800-2000");
 
     $this->actingAs($admin)
         ->get(route('time.schedule.print', ['week' => $week, 'view' => 'week']))
