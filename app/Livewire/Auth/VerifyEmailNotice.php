@@ -46,6 +46,6 @@ class VerifyEmailNotice extends Component
     {
         return view('livewire.auth.verify-email-notice', [
             'email' => (string) (auth()->user()?->email ?? ''),
-        ]);
+        ])->layoutData(['title' => __('auth.verify.title').' — WinProx']);
     }
 }

@@ -131,6 +131,46 @@ it('linkt het Time-FAQ-item contextueel naar de prikklok-landing', function () {
         ->assertSee('/nl/prikklok', false);
 });
 
+it('geeft legal- en productdoc-pagina\'s een eigen meta description', function () {
+    $fallback = __('common.social.og_description', [], 'nl');
+
+    $routes = [
+        'legal.privacy', 'legal.terms', 'legal.cookies', 'legal.dpa', 'legal.subprocessors',
+        'product.features', 'product.technical', 'product.api_webhooks',
+    ];
+
+    $descriptions = [];
+
+    foreach ($routes as $route) {
+        $html = $this->get(route($route, ['locale' => 'nl']))->assertOk()->getContent();
+
+        preg_match('/<meta name="description" content="([^"]*)"/', $html, $m);
+        $descriptions[$route] = $m[1] ?? null;
+
+        expect($descriptions[$route])->not->toBeNull()
+            ->and($descriptions[$route])->not->toBe($fallback);
+    }
+
+    expect(array_unique($descriptions))->toHaveCount(count($descriptions));
+});
+
+it('geeft de contactpagina een eigen title en meta description', function () {
+    $this->get(route('contact.index', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee('<title>'.__('contact.meta_title', [], 'nl').'</title>', false)
+        ->assertSee(__('contact.social.og_description', [], 'nl'), false);
+});
+
+it('geeft auth-pagina\'s een beschrijvende title', function () {
+    $this->get('/login')
+        ->assertOk()
+        ->assertSee('<title>'.e(__('auth.title').' — WinProx').'</title>', false);
+
+    $this->get('/register')
+        ->assertOk()
+        ->assertSee('<title>'.e(__('auth.register.title').' — WinProx').'</title>', false);
+});
+
 it('llms.txt bevat about, feature-pagina\'s en Markdown-fiches', function () {
     $this->get(route('llms.txt'))
         ->assertOk()

@@ -17,5 +17,12 @@
         "cookies": "Política de cookies",
         "dpa": "Acuerdo de tratamiento de datos (DPA)",
         "subprocessors": "Subencargados del tratamiento"
+    },
+    "meta_descriptions": {
+        "privacy": "Cómo WinProx recopila, utiliza y conserva los datos personales y qué derechos te otorga el RGPD.",
+        "terms": "Las condiciones que rigen el uso de la plataforma WinProx: licencias, facturación, responsabilidad y rescisión.",
+        "cookies": "Qué cookies y tecnologías similares utiliza WinProx y cómo gestionar tus preferencias.",
+        "dpa": "El acuerdo de tratamiento de datos entre WinProx y sus clientes: fines, seguridad, subencargados y obligaciones del RGPD.",
+        "subprocessors": "Resumen de los subencargados que WinProx emplea para hosting, correo electrónico y soporte."
     }
 }

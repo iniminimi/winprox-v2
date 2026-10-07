@@ -61,6 +61,6 @@ class Register extends Component
     {
         return view('livewire.auth.register', [
             'countries' => CountryOptions::selectOptions(),
-        ]);
+        ])->layoutData(['title' => __('auth.register.title').' — WinProx']);
     }
 }

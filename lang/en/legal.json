@@ -17,5 +17,12 @@
         "cookies": "Cookie policy",
         "dpa": "Data processing agreement (DPA)",
         "subprocessors": "Subprocessors"
+    },
+    "meta_descriptions": {
+        "privacy": "How WinProx collects, uses and stores personal data, and what rights you have under the GDPR.",
+        "terms": "The terms that govern use of the WinProx platform: licences, billing, liability and termination.",
+        "cookies": "Which cookies and similar technologies WinProx uses and how you manage your preferences.",
+        "dpa": "The data processing agreement between WinProx and customers: purposes, security, subprocessors and GDPR obligations.",
+        "subprocessors": "An overview of the subprocessors WinProx engages for hosting, e-mail and support."
     }
 }

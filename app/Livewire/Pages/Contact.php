@@ -16,6 +16,10 @@ class Contact extends Component
             : 'components.layouts.public';
 
         return view('livewire.pages.contact')
-            ->layout($layout);
+            ->layout($layout, [
+                'title' => __('contact.meta_title'),
+                'socialTitle' => __('contact.social.og_title'),
+                'socialDescription' => __('contact.social.og_description'),
+            ]);
     }
 }

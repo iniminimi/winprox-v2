@@ -5,5 +5,10 @@
     "email": "info@winprox.app",
     "email_cta": "info@winprox.app",
     "assistant_hint": "En la aplicación también puede usar el asistente WinProx (abajo a la derecha) para respuestas rápidas desde la base de conocimiento.",
-    "back_dashboard": "Volver al panel de control"
+    "back_dashboard": "Volver al panel de control",
+    "meta_title": "Contactar con el equipo WinProx — soporte, demo o empresa",
+    "social": {
+        "og_title": "Contactar con el equipo WinProx — soporte, demo o empresa",
+        "og_description": "¿Preguntas sobre WinProx, precios o una demo? Escríbenos — solemos responder en un día laborable."
+    }
 }

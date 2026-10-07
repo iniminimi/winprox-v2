@@ -5,5 +5,10 @@
     "email": "info@winprox.app",
     "email_cta": "info@winprox.app",
     "assistant_hint": "In the app you can also use the WinProx assistant (bottom right) for quick answers from the knowledge base.",
-    "back_dashboard": "Back to dashboard"
+    "back_dashboard": "Back to dashboard",
+    "meta_title": "Contact the WinProx team — support, demo or enterprise",
+    "social": {
+        "og_title": "Contact the WinProx team — support, demo or enterprise",
+        "og_description": "Questions about WinProx, pricing or a demo? Email us — we usually reply within one business day."
+    }
 }

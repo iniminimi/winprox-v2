@@ -17,5 +17,12 @@
         "cookies": "Cookie-Richtlinie",
         "dpa": "Auftragsverarbeitung (AVV)",
         "subprocessors": "Unterauftragsverarbeiter"
+    },
+    "meta_descriptions": {
+        "privacy": "Wie WinProx personenbezogene Daten erhebt, nutzt und speichert und welche Rechte Ihnen die DSGVO einräumt.",
+        "terms": "Die Bedingungen für die Nutzung der WinProx-Plattform: Lizenzen, Abrechnung, Haftung und Kündigung.",
+        "cookies": "Welche Cookies und ähnlichen Technologien WinProx verwendet und wie Sie Ihre Präferenzen verwalten.",
+        "dpa": "Der Auftragsverarbeitungsvertrag zwischen WinProx und Kunden: Zwecke, Sicherheit, Subunternehmer und DSGVO-Pflichten.",
+        "subprocessors": "Übersicht über die Subunternehmer, die WinProx für Hosting, E-Mail und Support einsetzt."
     }
 }

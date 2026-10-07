@@ -5,5 +5,10 @@
     "email": "info@winprox.app",
     "email_cta": "info@winprox.app",
     "assistant_hint": "In de app kun je ook de WinProx-assistent gebruiken (rechtsonder) voor snelle antwoorden uit de kennisbank.",
-    "back_dashboard": "Terug naar dashboard"
+    "back_dashboard": "Terug naar dashboard",
+    "meta_title": "Contacteer het WinProx-team — support, demo of enterprise",
+    "social": {
+        "og_title": "Contacteer het WinProx-team — support, demo of enterprise",
+        "og_description": "Vragen over WinProx, prijzen of een demo? Mail ons — we reageren meestal binnen één werkdag."
+    }
 }

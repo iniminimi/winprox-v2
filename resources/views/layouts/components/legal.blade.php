@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title }} — WinProx</title>
-    @include('partials.social-meta', ['title' => $title . ' — WinProx'])
+    @php($metaDescriptionKey = "legal.meta_descriptions.{$doc}")
+    @include('partials.social-meta', [
+        'title' => $title . ' — WinProx',
+        'description' => \Illuminate\Support\Facades\Lang::has($metaDescriptionKey) ? __($metaDescriptionKey) : null,
+    ])
     <link rel="alternate" type="text/markdown" href="{{ route($meta['route'].'.md') }}">
     @include('partials.favicon')
     @vite(['resources/css/app.css'])

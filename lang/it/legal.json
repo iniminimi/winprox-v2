@@ -17,5 +17,12 @@
         "cookies": "Informativa sui cookie",
         "dpa": "Accordo sul trattamento dei dati (DPA)",
         "subprocessors": "Sub-responsabili del trattamento"
+    },
+    "meta_descriptions": {
+        "privacy": "Come WinProx raccoglie, utilizza e conserva i dati personali e quali diritti ti garantisce il GDPR.",
+        "terms": "I termini che regolano l'uso della piattaforma WinProx: licenze, fatturazione, responsabilità e risoluzione.",
+        "cookies": "Quali cookie e tecnologie simili utilizza WinProx e come gestire le tue preferenze.",
+        "dpa": "L'accordo sul trattamento dei dati tra WinProx e i clienti: finalità, sicurezza, subresponsabili e obblighi GDPR.",
+        "subprocessors": "Panoramica dei subresponsabili che WinProx impiega per hosting, e-mail e supporto."
     }
 }

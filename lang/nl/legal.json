@@ -17,5 +17,12 @@
         "cookies": "Cookiebeleid",
         "dpa": "Verwerkersovereenkomst (DPA)",
         "subprocessors": "Subverwerkers"
+    },
+    "meta_descriptions": {
+        "privacy": "Hoe WinProx persoonsgegevens verzamelt, gebruikt en bewaart, en welke rechten je hebt volgens de GDPR.",
+        "terms": "De voorwaarden voor het gebruik van het WinProx-platform: licenties, betalingen, aansprakelijkheid en beëindiging.",
+        "cookies": "Welke cookies en gelijkaardige technieken WinProx gebruikt en hoe je je voorkeuren beheert.",
+        "dpa": "De verwerkersovereenkomst tussen WinProx en klanten: doelen, beveiliging, subverwerkers en GDPR-verplichtingen.",
+        "subprocessors": "Overzicht van de subverwerkers die WinProx inschakelt voor hosting, e-mail en ondersteuning."
     }
 }

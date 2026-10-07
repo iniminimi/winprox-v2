@@ -61,6 +61,7 @@ class ResetPassword extends Component
 
     public function render()
     {
-        return view('livewire.auth.reset-password');
+        return view('livewire.auth.reset-password')
+            ->layoutData(['title' => __('auth.reset.title').' — WinProx']);
     }
 }

@@ -18,6 +18,19 @@ Allow: /
 
 User-agent: *
 Allow: /
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /email
+Disallow: /melden
+Disallow: /time
+Disallow: /cp
+Disallow: /q
+Disallow: /u
+Disallow: /api
+Disallow: /platform
+Disallow: /dashboard
 
 Sitemap: https://winprox.app/sitemap.xml
 

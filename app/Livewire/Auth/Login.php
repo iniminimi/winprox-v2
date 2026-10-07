@@ -40,6 +40,6 @@ class Login extends Component
     {
         return view('livewire.auth.login', [
             'entraEnabled' => EntraSso::enabled(),
-        ])->layoutData(['hideAuthLogo' => true]);
+        ])->layoutData(['hideAuthLogo' => true, 'title' => __('auth.title').' — WinProx']);
     }
 }
