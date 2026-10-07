@@ -130,17 +130,17 @@ class ListRosterWeekAction
             ];
         }
 
-        // Multi-blok-dag: display = samenvatting "07:00-10:00/G1 · 18:00-20:00".
+        // Multi-blok-dag: display = één regel per blok "07:00-10:00/G1\n18:00-20:00".
         // Top-level velden blijven het eerste blok (backwards-compat single-cell).
         $cells = [];
         foreach ($cellShifts as $key => $blocks) {
-            $cells[$key] = $blocks[0] + [
+            $cells[$key] = [
                 'multi' => count($blocks) > 1,
                 'shifts' => $blocks,
                 'display' => count($blocks) > 1
-                    ? implode(' · ', array_column($blocks, 'display'))
+                    ? implode("\n", array_column($blocks, 'display'))
                     : $blocks[0]['display'],
-            ];
+            ] + $blocks[0];
         }
 
         $types = $this->listShiftTypes->handle($tenantId, false);

@@ -410,7 +410,11 @@ function applyCellClasses(worksheet, payload) {
             cell.classList.toggle('wp-roster-col--week-start', weekStartCols.has(colIndex));
             // Geen DOM-injectie in cellen: Jspreadsheet breekt na de eerste edit.
             // Groep onder dienst via newline + CSS (white-space: pre-line).
-            const split = splitDutyAndUnit(cellText(value).trim());
+            const date = payload.dates?.[colIndex - 1];
+            const attendanceKey = worker && date ? `${worker.id}:${date}` : '';
+            const cellDef = attendanceKey ? payload.cells?.[attendanceKey] : null;
+            const isMultiSummary = Boolean(cellDef?.multi) && cellText(value).trim() === cellDef.display;
+            const split = isMultiSummary ? null : splitDutyAndUnit(cellText(value).trim());
             if (split && split[1]) {
                 cell.classList.add('wp-roster-cell--stacked');
             }
@@ -422,14 +426,10 @@ function applyCellClasses(worksheet, payload) {
 
                 return;
             }
-            const date = payload.dates?.[colIndex - 1];
-            const attendanceKey = worker && date ? `${worker.id}:${date}` : '';
             const attendanceEntry = attendanceKey ? payload.attendance?.[attendanceKey] : null;
             const attendance = typeof attendanceEntry === 'string' ? attendanceEntry : attendanceEntry?.status;
             const actionable = attendance && attendance !== 'none' && attendance !== 'ok';
             const hoursUrl = actionable ? hoursUrlFor(payload, worker?.id, date, attendance) : '';
-            const cellDef = attendanceKey ? payload.cells?.[attendanceKey] : null;
-            const isMultiSummary = Boolean(cellDef?.multi) && cellText(value).trim() === cellDef.display;
             const parsed = isMultiSummary
                 ? { kind: 'multi' }
                 : parseRosterCell(value, types, (catalog ??= catalogFor(worker)));
@@ -443,12 +443,14 @@ function applyCellClasses(worksheet, payload) {
                 applyAttendanceLink(cell, '');
             } else if (parsed.kind === 'multi') {
                 cell.removeAttribute('aria-invalid');
+                const multiTitle = `${cellText(cellDef.display).trim()}\n\n`
+                    + (actionable ? attendanceTitle(payload, attendance) : (payload.multi_hint || ''));
                 if (actionable) {
                     cell.classList.add(`wp-roster-cell--${attendance}`);
-                    cell.title = attendanceTitle(payload, attendance);
+                    cell.title = multiTitle;
                     applyAttendanceLink(cell, hoursUrl);
                 } else {
-                    cell.title = payload.multi_hint || '';
+                    cell.title = multiTitle;
                     applyAttendanceLink(cell, '');
                 }
             } else if (parsed.color && parsed.color !== 'none') {
@@ -819,7 +821,18 @@ export function bind(root, wire) {
         // Hoogte = inhoud: geen vast kader met interne verticale scroll.
         const rowPx = isMonth ? 34 : 38;
         const headerPx = isMonth && payload.month_label ? 72 : 44;
-        const tableHeight = `${headerPx + (rowCount * rowPx) + 12}px`;
+        // Multi-blok-rijen groeien: elke blok krijgt een eigen regel in de cel.
+        const extraRowPx = rowDefs.reduce((extra, row) => {
+            if (row.type === 'section' || !row.worker_id) {
+                return extra;
+            }
+            const maxBlocks = Math.max(1, ...payload.dates.map(
+                (d) => payload.cells?.[`${row.worker_id}:${d}`]?.shifts?.length ?? 1,
+            ));
+
+            return extra + Math.min(Math.max(maxBlocks - 1, 0), 2) * (isMonth ? 10 : 14);
+        }, 0);
+        const tableHeight = `${headerPx + (rowCount * rowPx) + extraRowPx + 12}px`;
         const worksheetConfig = {
             data: buildData(payload),
             columns,

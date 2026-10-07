@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Actions\Time\CompareRosterAttendanceAction;
+use App\Actions\Time\ListRosterWeekAction;
 use App\Actions\Time\SavePlannedDayAction;
 use App\Actions\Time\SavePlannedShiftsAction;
 use App\Actions\Time\SaveShiftTypeAction;
@@ -104,6 +105,46 @@ it('maakt meerdere blokken op één dag via SavePlannedDayAction', function () {
 
     expect($result['created'])->toBe(2)
         ->and(PlannedShift::where('worker_id', $worker->id)->whereDate('work_date', $date)->count())->toBe(2);
+});
+
+it('toont multi-blok-dagen regel per blok, met uren op de print', function () {
+    [$tenant, $admin, $worker] = multiBlockTenant();
+    $date = now()->addWeek()->startOfWeek()->toDateString();
+    $type = ShiftType::factory()->create([
+        'tenant_id' => $tenant->id,
+        'code' => 'D1',
+        'start_time' => '08:00',
+        'end_time' => '17:00',
+        'is_active' => true,
+    ]);
+
+    PlannedShift::query()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => $date,
+        'status' => PlannedShiftStatus::Published,
+        'kind' => ShiftTypeKind::Work,
+        'shift_type_id' => $type->id,
+        'start_time' => '08:00',
+        'end_time' => '17:00',
+        'break_minutes' => 0,
+    ]);
+    plannedBlock($tenant, $worker, $date, '18:00', '20:00');
+
+    $week = Carbon::parse($date)->startOfWeek()->toDateString();
+    $snapshot = app(ListRosterWeekAction::class)->handle(
+        (int) $tenant->id, $week, null, $admin, 'week', true, null, null, true, false,
+    );
+
+    $cell = $snapshot->cells[$worker->id.':'.$date] ?? null;
+    expect($cell['multi'])->toBeTrue()
+        ->and($cell['display'])->toBe("D1\n18:00-20:00");
+
+    $this->actingAs($admin)
+        ->get(route('time.schedule.print', ['week' => $week, 'view' => 'week']))
+        ->assertOk()
+        ->assertSee('D1 08:00-17:00', false)
+        ->assertSee('18:00-20:00', false);
 });
 
 it('synct blokken id-aware: update, create en delete in één save', function () {
