@@ -18,36 +18,8 @@
         <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
     @endif
 
-    {{-- Gekoppeld scherm --}}
-    @if ($point?->hasLinkedDisplay())
-        <div class="wp-card wp-card-pad wp-stack-tight">
-            <div class="wp-cluster wp-cluster--wrap">
-                <p class="wp-section-title">{{ __('time.clock_displays.linked.title') }}</p>
-                <span class="wp-pill wp-pill--done">{{ __('time.clock_displays.linked.active') }}</span>
-            </div>
-            <p class="wp-issue-card-meta">
-                {{ __('time.clock_displays.linked.device') }}: <strong>{{ $point->display_device_hint }}</strong>
-            </p>
-            <p class="wp-issue-card-meta">
-                {{ __('time.clock_displays.linked.paired_at') }}: {{ $point->display_paired_at?->format('d/m/Y H:i') }}
-                @if ($point->display_last_seen_at)
-                    — {{ __('time.clock_displays.linked.last_seen') }}: {{ $point->display_last_seen_at->diffForHumans() }}
-                @endif
-            </p>
-            <div class="wp-cluster">
-                <button type="button" class="btn btn--ghost btn--sm" wire:click="$set('confirmRotate', true)">
-                    {{ __('time.clock_displays.linked.rotate') }}
-                </button>
-                <button type="button" class="btn btn--surface btn--sm" wire:click="$set('confirmUnlink', true)">
-                    {{ __('time.clock_displays.linked.unlink') }}
-                </button>
-            </div>
-        </div>
-    @endif
-
     {{-- Aan-uren van het scherm --}}
-    <div class="wp-card wp-card-pad wp-stack-tight">
-        <p class="wp-section-title">{{ __('time.clock_displays.schedule.title') }}</p>
+    <x-wp-settings-section :title="__('time.clock_displays.schedule.title')">
         <p class="wp-muted wp-text-sm">{{ __('time.clock_displays.schedule.hint') }}</p>
         @php
             $scheduleSlots = [];
@@ -92,11 +64,10 @@
                 {{ __('time.clock_displays.schedule.save') }}
             </button>
         </div>
-    </div>
+    </x-wp-settings-section>
 
     {{-- Rust-scherm tijdens de album-vensters: foto's, wijzerklok of niets --}}
-    <div class="wp-card wp-card-pad wp-stack-tight">
-        <p class="wp-section-title">{{ __('time.clock_displays.album.title') }}</p>
+    <x-wp-settings-section :title="__('time.clock_displays.album.title')">
         <p class="wp-muted wp-text-sm">{{ __('time.clock_displays.album.hint') }}</p>
 
         <div class="wp-field">
@@ -214,7 +185,7 @@
             </div>
         @endif
         @endif
-    </div>
+    </x-wp-settings-section>
 
     {{-- Pairing-code --}}
     <div class="wp-card wp-card-pad wp-stack-tight">
@@ -237,6 +208,33 @@
             </button>
         </div>
     </div>
+
+    {{-- Gekoppeld scherm --}}
+    @if ($point?->hasLinkedDisplay())
+        <div class="wp-card wp-card-pad wp-stack-tight">
+            <div class="wp-cluster wp-cluster--wrap">
+                <p class="wp-section-title">{{ __('time.clock_displays.linked.title') }}</p>
+                <span class="wp-pill wp-pill--done">{{ __('time.clock_displays.linked.active') }}</span>
+            </div>
+            <p class="wp-issue-card-meta">
+                {{ __('time.clock_displays.linked.device') }}: <strong>{{ $point->display_device_hint }}</strong>
+            </p>
+            <p class="wp-issue-card-meta">
+                {{ __('time.clock_displays.linked.paired_at') }}: {{ $point->display_paired_at?->format('d/m/Y H:i') }}
+                @if ($point->display_last_seen_at)
+                    — {{ __('time.clock_displays.linked.last_seen') }}: {{ $point->display_last_seen_at->diffForHumans() }}
+                @endif
+            </p>
+            <div class="wp-cluster">
+                <button type="button" class="btn btn--ghost btn--sm" wire:click="$set('confirmRotate', true)">
+                    {{ __('time.clock_displays.linked.rotate') }}
+                </button>
+                <button type="button" class="btn btn--surface btn--sm" wire:click="$set('confirmUnlink', true)">
+                    {{ __('time.clock_displays.linked.unlink') }}
+                </button>
+            </div>
+        </div>
+    @endif
 
     {{-- Pending claim --}}
     @if ($pendingClaim !== null)
