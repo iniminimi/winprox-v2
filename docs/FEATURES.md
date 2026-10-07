@@ -896,6 +896,10 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
 - **Scope:** opslaan / publiceren = zichtbare periode (week of maand) × zichtbare workers (teamfilter).
   Niet-opgeslagen celwijzigingen: popup bij verlaten van de pagina of wisselen van
   week/maand (eerst opslaan).
+- **Filter eerst vereist:** zonder team- of locatiekeuze toont het scherm een hint en
+  doet `ListRosterWeekAction` geen worker-/cel-werk (`requireScope`; honderden workers
+  tegelijk is traag én onbruikbaar). API (`TimeScheduleController`) en printpagina
+  zijn niet gated.
 - **Publiceren:** periode-scoped; bewerken daarna blijft `published`. Geen RSZ/CIAO.
   Na publiceren: `PublishWeekAction` → `NotifyWorkersRosterPublishedAction` →
   `CreateNotificationAction` (`roster_published`, `reference_id` = periode-start `Y-m-d`).
