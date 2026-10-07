@@ -93,26 +93,28 @@
             @forelse ($clockPoints as $clockPoint)
                 <div class="wp-issue-row" wire:key="clock-point-{{ $clockPoint->id }}">
                     <div class="wp-grow wp-stack-tight">
-                        <p class="wp-issue-card-title">{{ $clockPoint->name }}</p>
+                        <div class="wp-cluster wp-cluster--wrap">
+                            <p class="wp-issue-card-title">{{ $clockPoint->name }}</p>
+                            <span class="wp-pill {{ $clockPoint->is_active ? 'wp-pill--done' : 'wp-pill--closed' }}">
+                                {{ $clockPoint->is_active ? __('time.clock_points.status.active') : __('time.clock_points.status.inactive') }}
+                            </span>
+                            @if ($clockPoint->isRenewalRecommended())
+                                <span class="wp-pill wp-pill--progress">{{ __('time.clock_points.qr.renewal_recommended') }}</span>
+                            @endif
+                            @if (! ($checkmateMode ?? false) && $clockPoint->hasLinkedDisplay())
+                                <span class="wp-pill wp-pill--done" title="{{ __('time.clock_displays.linked.active') }}">{{ __('time.clock_displays.pill') }}</span>
+                            @endif
+                        </div>
                         @if ($clockPoint->location)
                             <p class="wp-issue-card-meta">{{ $clockPoint->location->localizedName() }}</p>
                         @endif
                     </div>
                     <div class="wp-cluster wp-cluster--wrap">
-                        <span class="wp-pill {{ $clockPoint->is_active ? 'wp-pill--done' : 'wp-pill--closed' }}">
-                            {{ $clockPoint->is_active ? __('time.clock_points.status.active') : __('time.clock_points.status.inactive') }}
-                        </span>
-                        @if ($clockPoint->isRenewalRecommended())
-                            <span class="wp-pill wp-pill--progress">{{ __('time.clock_points.qr.renewal_recommended') }}</span>
-                        @endif
                         @can('view', $clockPoint)
                             <button type="button" class="btn btn--surface btn--sm" wire:click="openQrPackModal({{ $clockPoint->id }})">
                                 {{ __('common.qr.button') }}
                             </button>
                         @endcan
-                        @if (! ($checkmateMode ?? false) && $clockPoint->hasLinkedDisplay())
-                            <span class="wp-pill wp-pill--done" title="{{ __('time.clock_displays.linked.active') }}">{{ __('time.clock_displays.pill') }}</span>
-                        @endif
                         @can('update', $clockPoint)
                             @unless ($checkmateMode ?? false)
                                 <a href="{{ route('time.clock-displays.pair', $clockPoint) }}" class="btn btn--ghost btn--sm">
