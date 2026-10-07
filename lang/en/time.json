@@ -285,14 +285,12 @@
         "confirmed": "Display paired.",
         "denied": "Pairing request denied.",
         "unlinked": "Display unlinked.",
-        "rotated": "Secret rotated — the display must be paired again.",
         "linked": {
             "title": "Linked display",
             "active": "Linked",
             "device": "Device",
             "paired_at": "Paired at",
             "last_seen": "last seen",
-            "rotate": "Rotate secret",
             "unlink": "Unlink display"
         },
         "code": {
@@ -325,11 +323,6 @@
             "title": "Unlink display?",
             "body": "The display will no longer show valid QR codes and returns to pairing mode.",
             "confirm": "Unlink"
-        },
-        "rotate_modal": {
-            "title": "Rotate secret?",
-            "body": "The current secret and device token become invalid. The display must be paired again with a new code.",
-            "confirm": "Rotate"
         },
         "errors": {
             "claim_not_found": "Pairing request not found.",

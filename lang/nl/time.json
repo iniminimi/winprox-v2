@@ -285,14 +285,12 @@
         "confirmed": "Scherm gekoppeld.",
         "denied": "Koppelaanvraag geweigerd.",
         "unlinked": "Scherm ontkoppeld.",
-        "rotated": "Secret geroteerd — het scherm moet opnieuw gekoppeld worden.",
         "linked": {
             "title": "Gekoppeld scherm",
             "active": "Gekoppeld",
             "device": "Toestel",
             "paired_at": "Gekoppeld op",
             "last_seen": "laatst gezien",
-            "rotate": "Secret roteren",
             "unlink": "Scherm ontkoppelen"
         },
         "code": {
@@ -325,11 +323,6 @@
             "title": "Scherm ontkoppelen?",
             "body": "Het scherm kan daarna geen geldige QR-codes meer tonen en valt terug naar de koppelmodus.",
             "confirm": "Ontkoppelen"
-        },
-        "rotate_modal": {
-            "title": "Secret roteren?",
-            "body": "De huidige secret en device-token worden ongeldig. Het scherm moet daarna opnieuw gekoppeld worden met een nieuwe code.",
-            "confirm": "Roteren"
         },
         "errors": {
             "claim_not_found": "Koppelaanvraag niet gevonden.",

@@ -285,14 +285,12 @@
         "confirmed": "Schermo collegato.",
         "denied": "Richiesta di collegamento rifiutata.",
         "unlinked": "Schermo scollegato.",
-        "rotated": "Segreto rinnovato — lo schermo deve essere collegato di nuovo.",
         "linked": {
             "title": "Schermo collegato",
             "active": "Collegato",
             "device": "Dispositivo",
             "paired_at": "Collegato il",
             "last_seen": "visto l'ultima volta",
-            "rotate": "Rinnova segreto",
             "unlink": "Scollega schermo"
         },
         "code": {
@@ -325,11 +323,6 @@
             "title": "Scollegare lo schermo?",
             "body": "Lo schermo non potrà più mostrare QR validi e tornerà in modalità collegamento.",
             "confirm": "Scollega"
-        },
-        "rotate_modal": {
-            "title": "Rinnovare il segreto?",
-            "body": "Il segreto attuale e il token del dispositivo diventano invalidi. Lo schermo dovrà essere collegato di nuovo con un nuovo codice.",
-            "confirm": "Rinnova"
         },
         "errors": {
             "claim_not_found": "Richiesta di collegamento non trovata.",

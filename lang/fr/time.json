@@ -285,14 +285,12 @@
         "confirmed": "Écran associé.",
         "denied": "Demande d'association refusée.",
         "unlinked": "Écran dissocié.",
-        "rotated": "Secret renouvelé — l'écran doit être associé à nouveau.",
         "linked": {
             "title": "Écran associé",
             "active": "Associé",
             "device": "Appareil",
             "paired_at": "Associé le",
             "last_seen": "vu pour la dernière fois",
-            "rotate": "Renouveler le secret",
             "unlink": "Dissocier l'écran"
         },
         "code": {
@@ -325,11 +323,6 @@
             "title": "Dissocier l'écran ?",
             "body": "L'écran ne pourra plus afficher de QR valides et repassera en mode association.",
             "confirm": "Dissocier"
-        },
-        "rotate_modal": {
-            "title": "Renouveler le secret ?",
-            "body": "Le secret et le token de l'appareil deviennent invalides. L'écran devra être associé à nouveau avec un nouveau code.",
-            "confirm": "Renouveler"
         },
         "errors": {
             "claim_not_found": "Demande d'association introuvable.",

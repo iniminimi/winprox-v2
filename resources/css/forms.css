@@ -13,9 +13,11 @@
     color: var(--wp-text-muted);
 }
 
-/* Label als inline-item in een flexrij (wp-cluster, bv. tijdsblokken):
-   zonder ondermarge staat hij verticaal gecentreerd t.o.v. de inputs. */
-.wp-cluster > .wp-label {
+/* Label/subtitel als inline-item in een flexrij (wp-cluster, bv. tijdsblokken
+   of een pill naast een subblock-titel): zonder ondermarge staat de tekst
+   verticaal gecentreerd t.o.v. inputs en pills. */
+.wp-cluster > .wp-label,
+.wp-cluster > .wp-settings-subblock-title {
     margin-bottom: 0;
 }
 

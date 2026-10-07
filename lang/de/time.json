@@ -285,14 +285,12 @@
         "confirmed": "Display verbunden.",
         "denied": "Verbindungsanfrage abgelehnt.",
         "unlinked": "Display getrennt.",
-        "rotated": "Secret erneuert — das Display muss neu verbunden werden.",
         "linked": {
             "title": "Verbundenes Display",
             "active": "Verbunden",
             "device": "Gerät",
             "paired_at": "Verbunden am",
             "last_seen": "zuletzt gesehen",
-            "rotate": "Secret erneuern",
             "unlink": "Display trennen"
         },
         "code": {
@@ -325,11 +323,6 @@
             "title": "Display trennen?",
             "body": "Das Display kann danach keine gültigen QR-Codes mehr anzeigen und kehrt in den Kopplungsmodus zurück.",
             "confirm": "Trennen"
-        },
-        "rotate_modal": {
-            "title": "Secret erneuern?",
-            "body": "Das aktuelle Secret und der Geräte-Token werden ungültig. Das Display muss danach mit einem neuen Code verbunden werden.",
-            "confirm": "Erneuern"
         },
         "errors": {
             "claim_not_found": "Verbindungsanfrage nicht gefunden.",

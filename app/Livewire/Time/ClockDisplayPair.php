@@ -6,7 +6,6 @@ use App\Actions\Time\ConfirmClockDisplayClaimAction;
 use App\Actions\Time\DeleteClockDisplayImageAction;
 use App\Actions\Time\DenyClockDisplayClaimAction;
 use App\Actions\Time\IssueClockDisplayPairingCodeAction;
-use App\Actions\Time\RotateClockPointDisplaySecretAction;
 use App\Actions\Time\UnlinkClockPointDisplayAction;
 use App\Actions\Time\UpdateClockDisplayAlbumWindowsAction;
 use App\Actions\Time\UpdateClockDisplayScheduleAction;
@@ -38,8 +37,6 @@ class ClockDisplayPair extends Component
     public ?string $pairingCode = null;
 
     public bool $confirmUnlink = false;
-
-    public bool $confirmRotate = false;
 
     public ?string $displayOnFrom = null;
 
@@ -182,22 +179,6 @@ class ClockDisplayPair extends Component
         }
 
         session()->flash('time_flash', __('time.clock_displays.unlinked'));
-    }
-
-    public function rotateSecret(RotateClockPointDisplaySecretAction $rotate): void
-    {
-        $this->authorize('update', $this->clockPoint);
-        $this->confirmRotate = false;
-
-        try {
-            $rotate->handle($this->clockPoint->fresh(), (int) $this->clockPoint->tenant_id, auth()->id());
-        } catch (InvalidArgumentException $e) {
-            session()->flash('time_flash', __('time.clock_displays.errors.'.$e->getMessage()));
-
-            return;
-        }
-
-        session()->flash('time_flash', __('time.clock_displays.rotated'));
     }
 
     public function saveSchedule(UpdateClockDisplayScheduleAction $update): void

@@ -207,34 +207,31 @@
                 {{ __('time.clock_displays.code.issue') }}
             </button>
         </div>
-    </div>
 
-    {{-- Gekoppeld scherm --}}
-    @if ($point?->hasLinkedDisplay())
-        <div class="wp-card wp-card-pad wp-stack-tight">
-            <div class="wp-cluster wp-cluster--wrap">
-                <p class="wp-section-title">{{ __('time.clock_displays.linked.title') }}</p>
-                <span class="wp-pill wp-pill--done">{{ __('time.clock_displays.linked.active') }}</span>
+        {{-- Gekoppeld scherm: status + beheer in hetzelfde blok als de koppelcode --}}
+        @if ($point?->hasLinkedDisplay())
+            <div class="wp-settings-subblock wp-stack-tight">
+                <div class="wp-cluster wp-cluster--wrap">
+                    <h3 class="wp-settings-subblock-title">{{ __('time.clock_displays.linked.title') }}</h3>
+                    <span class="wp-pill wp-pill--done">{{ __('time.clock_displays.linked.active') }}</span>
+                </div>
+                <p class="wp-issue-card-meta">
+                    {{ __('time.clock_displays.linked.device') }}: <strong>{{ $point->display_device_hint }}</strong>
+                </p>
+                <p class="wp-issue-card-meta">
+                    {{ __('time.clock_displays.linked.paired_at') }}: {{ $point->display_paired_at?->format('d/m/Y H:i') }}
+                    @if ($point->display_last_seen_at)
+                        — {{ __('time.clock_displays.linked.last_seen') }}: {{ $point->display_last_seen_at->diffForHumans() }}
+                    @endif
+                </p>
+                <div class="wp-cluster">
+                    <button type="button" class="btn btn--surface btn--sm" wire:click="$set('confirmUnlink', true)">
+                        {{ __('time.clock_displays.linked.unlink') }}
+                    </button>
+                </div>
             </div>
-            <p class="wp-issue-card-meta">
-                {{ __('time.clock_displays.linked.device') }}: <strong>{{ $point->display_device_hint }}</strong>
-            </p>
-            <p class="wp-issue-card-meta">
-                {{ __('time.clock_displays.linked.paired_at') }}: {{ $point->display_paired_at?->format('d/m/Y H:i') }}
-                @if ($point->display_last_seen_at)
-                    — {{ __('time.clock_displays.linked.last_seen') }}: {{ $point->display_last_seen_at->diffForHumans() }}
-                @endif
-            </p>
-            <div class="wp-cluster">
-                <button type="button" class="btn btn--ghost btn--sm" wire:click="$set('confirmRotate', true)">
-                    {{ __('time.clock_displays.linked.rotate') }}
-                </button>
-                <button type="button" class="btn btn--surface btn--sm" wire:click="$set('confirmUnlink', true)">
-                    {{ __('time.clock_displays.linked.unlink') }}
-                </button>
-            </div>
-        </div>
-    @endif
+        @endif
+    </div>
 
     {{-- Pending claim --}}
     @if ($pendingClaim !== null)
@@ -280,19 +277,5 @@
         </x-wp-modal>
     @endif
 
-    @if ($confirmRotate)
-        <x-wp-modal closeMethod="$set('confirmRotate', false)" aria-labelledby="rotate-title">
-            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
-                <div class="wp-modal-head">
-                    <h2 id="rotate-title" class="wp-h2">{{ __('time.clock_displays.rotate_modal.title') }}</h2>
-                    <x-wp-modal-close wire:click="$set('confirmRotate', false)" />
-                </div>
-                <p class="wp-muted">{{ __('time.clock_displays.rotate_modal.body') }}</p>
-                <div class="wp-cluster">
-                    <button type="button" class="btn btn--surface" wire:click="$set('confirmRotate', false)">{{ __('common.button.cancel') }}</button>
-                    <button type="button" class="btn btn--primary" wire:click="rotateSecret">{{ __('time.clock_displays.rotate_modal.confirm') }}</button>
-                </div>
-            </div>
-        </x-wp-modal>
-    @endif
+
 </div>
