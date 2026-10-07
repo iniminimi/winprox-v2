@@ -356,10 +356,12 @@
             </div>
         </x-wp-settings-section>
 
-        <x-wp-settings-section :title="__('settings.qr_stickers.title')">
-            <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.hint') }}</p>
-            @include('livewire.pages.partials.qr-branding-editor')
-        </x-wp-settings-section>
+        @if (! ($checkmateMode ?? false))
+            <x-wp-settings-section :title="__('settings.qr_stickers.title')">
+                <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.hint') }}</p>
+                @include('livewire.pages.partials.qr-branding-editor')
+            </x-wp-settings-section>
+        @endif
     @endif
 
     <x-wp-settings-section :title="__('settings.style.title')">
