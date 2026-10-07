@@ -874,7 +874,13 @@ productsector op `Tenant`.
 ### 5g.5 Uurrooster (golf 1 + golf 2)
 
 **Doel:** geplande diensten per uitvoerder, los van geklokte `WorkShift`. Excel-achtige grid
-(Jspreadsheet CE): codes (shiftypes) of vrije tijd `07:00-15:00`. Eén cel per uitvoerder per dag.
+(Jspreadsheet CE): codes (shiftypes) of vrije tijd `07:00-15:00`. Eén cel per uitvoerder per dag
+blijft direct typen; **meerdere blokken per dag** (bijv. `07:00-10:00` én `18:00-20:00`) bewerk je
+via de **Dag bewerken**-knop → `SavePlannedDayAction` (id-aware sync: bestaande blokken updaten op
+id, nieuwe aanmaken, weggelaten verwijderen — nooit de hele dag opnieuw). Een multi-blok-cel toont
+een samenvatting (`07:00-10:00 · 18:00-20:00`, bij gedeeltelijke afwezigheid bv.
+`07:00-10:00 · ZIEK`); er overheen typen vervangt de hele dag door één blok (met bevestiging);
+onaangeroerde multi-cellen gaan met `keep: true` mee zodat blok-ids behouden blijven.
 Week- of **maandweergave**; maandkolommen zijn smaller (dagnummer + weekdag onder de maandnaam).
 In **week- en maandweergave** toont het vinkje **Weekends** zaterdag en zondag;
 uit = alleen maandag–vrijdag. Bij uitgeschakelde weekends staat tussen vrijdag en de
@@ -883,6 +889,8 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
 
 - **Overlap:** halfopen interval `[start, eind)` — `07:00–11:00` en `11:00–15:00` is geldig.
   Zelfde worker, echte overlap → harde fout. Nachtshift (`eind <= start`) verboden in golf 1.
+  **Afwezigheidsblokken doen niet mee** aan overlap — een omgezet ziek-blok mag naast de resterende
+  werkblokken van die dag staan (gedeeltelijke afwezigheid).
 - **Snapshot:** code vult start/eind/pauze/`kind` uit het type op dat moment; latere type-wijziging
   raakt bestaande cellen niet. Vrije tijd: `pauze = 0`, `kind = work`.
 - **Scope:** opslaan / publiceren = zichtbare periode (week of maand) × zichtbare workers (teamfilter).
@@ -892,8 +900,11 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
   Na publiceren: `PublishWeekAction` → `NotifyWorkersRosterPublishedAction` →
   `CreateNotificationAction` (`roster_published`, `reference_id` = periode-start `Y-m-d`).
 - **Shiftypes:** eigen scherm onder Time (eenmalig instellen). `kind`: work / leave / recup / sick.
-  Afwezigheid: hele kalenderdag, geen uren, blokkeert werk die dag. Codelegende (werk /
-  afwezigheid / groepen) via knop **Legende** (modal naast Publiceren). Ongeldige cellen: rode rand.
+  Afwezigheid: geen uren; via cel-tekst nog hele dag, via de dag-editor ook als **deelblok naast
+  werkblokken** (bv. vervanging: het blok van de zieke worker wordt op dezelfde rij omgezet naar
+  een absence-kind, unit-snapshot leeggemaakt — `absence_has_unit` verbiedt absence + groep).
+  Codelegende (werk / afwezigheid / groepen) via knop **Legende** (modal naast Publiceren).
+  Ongeldige cellen: rode rand.
 - **Plek (groep/unit):** optioneel in dezelfde cel: `D1/G1` of `07:00-12:00/G1` (spatie mag;
   canonical `/`). In de grid: **groep op de regel onder de dienstcode**, kleiner lettertype.
   Opslaan blijft `D1/G1`. `units.roster_code` uniek per locatie (zetten: Locaties → unit
@@ -913,9 +924,13 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
 - **Copy week:** alles-of-niets; alleen in weekweergave; doelweek met bestaande diensten → weigeren.
 - **Golf 2 — Mijn rooster:** Clock Point-tegel, alleen eigen `published` diensten van de
   **maand**. Beknopte lijst in één kader (`ma 14/09 : Dagdienst - 08:00-17:00`); lege dagen
-  worden overgeslagen. Badge = ongelezen `roster_published` (`wp-pill--new`). Klik opent de
-  maand van de nieuwste ongelezen publicatie en zet `read_at` voor dat type. Geen inbox, geen
-  mail, geen Laravel notifications. Rode driehoek (`alert-triangle`) naast inklok of
+  worden overgeslagen; meerdere blokken op één dag staan als eigen regels onder elkaar.
+  Badge = ongelezen `roster_published` **of `roster_changed`** (`wp-pill--new`). Klik opent de
+  maand van de nieuwste ongelezen melding en zet `read_at` voor beide types. Geen inbox, geen
+  mail, geen Laravel notifications. **`roster_changed`** (`reference_id` = gewijzigde `work_date`):
+  één per worker×dag (dedup via `updateOrCreate`, `read_at` reset), alleen als de inhoudelijke
+  dag-signature van **published** blokken wijzigt, alleen voor dagen **≥ vandaag** — correcties in
+  het verleden en draft-edits melden niets. Rode driehoek (`alert-triangle`) naast inklok of
   geplande uren als een **gepubliceerde werkdienst** ontbreekt (niet ingeklokt vanaf de
   geplande start) of de inklok **≥ 15 min te laat** is (zelfde marge als beheer).
 - **Golf 2 — Verlof / Recup:** Clock Point-tegel. Uitvoerder vraagt `leave` of `recup`
@@ -931,13 +946,18 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
   verlof/recup zolang `date_from` nog niet voorbij is — snapshot zet het rooster terug.
   Geweigerd of al begonnen: niet intrekken.
   Events `time.absence.requested|cancelled|approved|rejected`. Geen REST-schrijf-API.
-- **Golf 2 — gepland vs geklokt:** alleen beheer, **published**. Missing / deviation /
-  unplanned / ok. Prikken blijven altijd geregistreerd. **Deviation** alleen buiten
+- **Golf 2 — gepland vs geklokt:** alleen beheer, **published**. Matching is **per blok**: alle
+  klok-sessies die een blok raken (overlap > 0) tellen mee — eerste in bepaalt de start, laatste uit
+  het einde; gaten binnen het blok zijn geen afwijking. Per blok ok / deviation / missing;
+  een sessie zonder blok is **unplanned**; geklokte tijd buiten alle blokken van een sessie die wél
+  blokken raakt is **gap** (dag-status, "extra tijd tussen blokken", loon/CIAO-relevant) zodra die
+  meer is dan de marge. Een sessie die twee blokken overbrugt laat beide ok; het gat telt als gap.
+  Prikken blijven altijd geregistreerd. **Deviation** alleen buiten
   de marge (`config('time.roster_attendance_tolerance_minutes')`, default **15**):
   tot 15 min te vroeg in of uit telt als ok; **15 min of meer te laat**, of meer dan
   15 min te vroeg, of nog open vanaf einde + 15 min. Meteen, ook **vandaag**.
-  **Missing** pas na het geplande einde (of op vorige dagen).
-  Toekomstige dagen: geen markering. Afwezigheid zonder prik = ok; mét prik = ungepland.
+  **Missing** pas na het geplande einde (of op vorige dagen); omgezette afwezigheidsblokken
+  tellen nooit als missing. Toekomstige dagen: geen markering.
   Markering rechtsboven in de cel opent **Time → Uren** (worker + die dag;
   bij **missing** de hele maand, want die dag heeft geen prik). Geen locatievergelijking.
 - **Print:** knop naast de titel opent een **nieuw venster** (zoals briefing); A4 **liggend**,

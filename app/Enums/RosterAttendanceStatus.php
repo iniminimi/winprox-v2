@@ -9,11 +9,13 @@ enum RosterAttendanceStatus: string
     case Missing = 'missing';
     case Deviation = 'deviation';
     case Unplanned = 'unplanned';
+    case Gap = 'gap';
 
     public function hasMarker(): bool
     {
         return $this === self::Missing
             || $this === self::Deviation
-            || $this === self::Unplanned;
+            || $this === self::Unplanned
+            || $this === self::Gap;
     }
 }

@@ -630,7 +630,8 @@
             "invalid_notification_reference": "Ongeldige notificatie-verwijzing.",
             "unknown_unit": "Onbekende groepscode.",
             "ambiguous_unit": "Deze groepscode komt voor op :count locaties. Kies een locatiefilter.",
-            "absence_has_unit": "Afwezigheid kan geen groep hebben."
+            "absence_has_unit": "Afwezigheid kan geen groep hebben.",
+            "unknown_block": "Onbekend blok. Ververs het rooster en probeer opnieuw."
         },
         "types": {
             "add": "Shiftype toevoegen",
@@ -682,7 +683,8 @@
             "deviation": "Geklokt buiten het geplande venster",
             "unplanned": "Geklokt zonder (of tijdens) afwezigheid",
             "ok": "Komt overeen met de planning",
-            "open_hours": "Klik op de markering rechtsboven om Uren te openen"
+            "open_hours": "Klik op de markering rechtsboven om Uren te openen",
+            "gap": "Geklokte tijd tussen geplande blokken"
         },
         "nav_prev": "Vorige",
         "nav_next": "Volgende",
@@ -701,6 +703,22 @@
             "stay": "Blijven en opslaan",
             "leave": "Toch verlaten",
             "save_first": "Sla het uurrooster eerst op."
+        },
+        "edit_day": "Dag bewerken",
+        "multi_hint": "Meerdere blokken — open de dag om te bewerken",
+        "multi_replace_confirm": "Deze dag heeft meerdere blokken. Door te typen vervang je de hele dag door één blok. Doorgaan?",
+        "day_editor": {
+            "title": "Rooster van :name op :date",
+            "hint": "Meerdere blokken op één dag? Open de dag om blokken toe te voegen, te wijzigen of te verwijderen.",
+            "type": "Diensttype",
+            "custom_time": "Vrije tijden",
+            "start": "Start",
+            "end": "Einde",
+            "unit": "Unit",
+            "no_unit": "Geen unit",
+            "remove_block": "Blok verwijderen",
+            "add_block": "Blok toevoegen",
+            "unplanned_sessions": "Ongepland geklokt"
         }
     },
     "shift_types": {

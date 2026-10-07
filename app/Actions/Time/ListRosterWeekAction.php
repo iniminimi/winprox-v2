@@ -102,20 +102,36 @@ class ListRosterWeekAction
             ->orderBy('start_time')
             ->get();
 
-        $cells = [];
+        $cellShifts = [];
         foreach ($shifts as $shift) {
             $key = $shift->worker_id.':'.$shift->work_date->toDateString();
             $activeType = $shift->shiftType !== null && $shift->shiftType->is_active;
-            $cells[$key] = [
+            $cellShifts[$key][] = [
                 'id' => $shift->id,
                 'display' => $shift->displayValue(),
                 'code' => $activeType ? $shift->shiftType->code : null,
                 'color' => ($activeType ? $shift->shiftType->color : ShiftTypeColor::freeTime())->value,
                 'status' => $shift->status->value,
                 'kind' => $shift->kind->value,
+                'unit_id' => $shift->unit_id !== null ? (int) $shift->unit_id : null,
                 'unit_code' => $shift->unit_code,
+                'shift_type_id' => $shift->shift_type_id !== null ? (int) $shift->shift_type_id : null,
                 'start' => $shift->start_time !== null ? ShiftType::formatTime($shift->start_time) : null,
                 'end' => $shift->end_time !== null ? ShiftType::formatTime($shift->end_time) : null,
+                'break_minutes' => (int) $shift->break_minutes,
+            ];
+        }
+
+        // Multi-blok-dag: display = samenvatting "07:00-10:00/G1 · 18:00-20:00".
+        // Top-level velden blijven het eerste blok (backwards-compat single-cell).
+        $cells = [];
+        foreach ($cellShifts as $key => $blocks) {
+            $cells[$key] = $blocks[0] + [
+                'multi' => count($blocks) > 1,
+                'shifts' => $blocks,
+                'display' => count($blocks) > 1
+                    ? implode(' · ', array_column($blocks, 'display'))
+                    : $blocks[0]['display'],
             ];
         }
 
@@ -224,6 +240,7 @@ class ListRosterWeekAction
                 RosterAttendanceStatus::Deviation->value => __('time.schedule.attendance.deviation'),
                 RosterAttendanceStatus::Unplanned->value => __('time.schedule.attendance.unplanned'),
                 RosterAttendanceStatus::Ok->value => __('time.schedule.attendance.ok'),
+                RosterAttendanceStatus::Gap->value => __('time.schedule.attendance.gap'),
             ],
             locations: $locations,
             units: $unitPayload,

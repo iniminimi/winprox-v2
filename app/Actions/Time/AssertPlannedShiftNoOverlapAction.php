@@ -10,7 +10,8 @@ class AssertPlannedShiftNoOverlapAction
 {
     /**
      * Half-open interval [start, end): touching times (07:00-11:00 and 11:00-15:00) do not overlap.
-     * Absence occupies the whole calendar day and blocks any other row that day.
+     * Absence rows never conflict: a partial-day absence (converted work block) may coexist
+     * with the remaining work blocks of that day.
      *
      * @param  list<array{worker_id: int, date: string, start: ?string, end: ?string, kind?: string}>  $intervals
      */
@@ -45,7 +46,7 @@ class AssertPlannedShiftNoOverlapAction
     public function overlaps(array $a, array $b): bool
     {
         if ($this->isAbsence($a) || $this->isAbsence($b)) {
-            return true;
+            return false;
         }
 
         $aStart = ShiftType::timeToMinutes((string) $a['start']);

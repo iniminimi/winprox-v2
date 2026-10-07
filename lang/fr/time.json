@@ -630,7 +630,8 @@
             "invalid_notification_reference": "Référence de notification invalide.",
             "unknown_unit": "Code de groupe inconnu.",
             "ambiguous_unit": "Ce code de groupe existe sur :count sites. Choisissez un filtre de site.",
-            "absence_has_unit": "Une absence ne peut pas avoir de groupe."
+            "absence_has_unit": "Une absence ne peut pas avoir de groupe.",
+            "unknown_block": "Bloc inconnu. Actualisez l’horaire et réessayez."
         },
         "types": {
             "add": "Ajouter un type",
@@ -682,7 +683,8 @@
             "deviation": "Pointé hors de la plage prévue",
             "unplanned": "Pointé sans planning (ou pendant une absence)",
             "ok": "Correspond au planning",
-            "open_hours": "Cliquez sur le marqueur en haut à droite pour ouvrir Heures"
+            "open_hours": "Cliquez sur le marqueur en haut à droite pour ouvrir Heures",
+            "gap": "Temps pointé entre les blocs planifiés"
         },
         "nav_prev": "Précédent",
         "nav_next": "Suivant",
@@ -701,6 +703,22 @@
             "stay": "Rester et enregistrer",
             "leave": "Quitter quand même",
             "save_first": "Enregistrez d’abord le planning."
+        },
+        "edit_day": "Modifier le jour",
+        "multi_hint": "Plusieurs blocs — ouvrez le jour pour modifier",
+        "multi_replace_confirm": "Ce jour contient plusieurs blocs. La saisie remplace toute la journée par un seul bloc. Continuer ?",
+        "day_editor": {
+            "title": "Planning de :name le :date",
+            "hint": "Plusieurs blocs le même jour ? Ouvrez le jour pour ajouter, modifier ou supprimer des blocs.",
+            "type": "Type de service",
+            "custom_time": "Horaires libres",
+            "start": "Début",
+            "end": "Fin",
+            "unit": "Unité",
+            "no_unit": "Aucune unité",
+            "remove_block": "Supprimer le bloc",
+            "add_block": "Ajouter un bloc",
+            "unplanned_sessions": "Pointé hors planning"
         }
     },
     "shift_types": {

@@ -630,7 +630,8 @@
             "invalid_notification_reference": "Referencia de notificación no válida.",
             "unknown_unit": "Código de grupo desconocido.",
             "ambiguous_unit": "Este código de grupo existe en :count sedes. Elija un filtro de sede.",
-            "absence_has_unit": "Una ausencia no puede incluir un grupo."
+            "absence_has_unit": "Una ausencia no puede incluir un grupo.",
+            "unknown_block": "Bloque desconocido. Actualice el horario e inténtelo de nuevo."
         },
         "types": {
             "add": "Añadir tipo",
@@ -682,7 +683,8 @@
             "deviation": "Fichado fuera de la franja prevista",
             "unplanned": "Fichado sin plan (o durante una ausencia)",
             "ok": "Coincide con lo planificado",
-            "open_hours": "Haga clic en la marca de arriba a la derecha para abrir Horas"
+            "open_hours": "Haga clic en la marca de arriba a la derecha para abrir Horas",
+            "gap": "Tiempo fichado entre bloques planificados"
         },
         "nav_prev": "Anterior",
         "nav_next": "Siguiente",
@@ -701,6 +703,22 @@
             "stay": "Quedarse y guardar",
             "leave": "Salir de todos modos",
             "save_first": "Guarda primero el horario."
+        },
+        "edit_day": "Editar día",
+        "multi_hint": "Varios bloques — abre el día para editar",
+        "multi_replace_confirm": "Este día tiene varios bloques. Al escribir se sustituye todo el día por un solo bloque. ¿Continuar?",
+        "day_editor": {
+            "title": "Horario de :name el :date",
+            "hint": "¿Varios bloques en un día? Abre el día para añadir, cambiar o eliminar bloques.",
+            "type": "Tipo de turno",
+            "custom_time": "Horarios libres",
+            "start": "Inicio",
+            "end": "Fin",
+            "unit": "Unidad",
+            "no_unit": "Sin unidad",
+            "remove_block": "Eliminar bloque",
+            "add_block": "Añadir bloque",
+            "unplanned_sessions": "Fichado fuera de la planificación"
         }
     },
     "shift_types": {

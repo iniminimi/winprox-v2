@@ -39,6 +39,7 @@ class ListPublishedWorkerRosterAction
             ->where('status', PlannedShiftStatus::Published->value)
             ->whereBetween('work_date', [$monthStart, $monthEnd])
             ->orderBy('work_date')
+            ->orderBy('start_time')
             ->orderBy('id')
             ->get();
 

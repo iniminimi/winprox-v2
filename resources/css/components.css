@@ -6867,6 +6867,36 @@ a.wp-kpi.wp-kpi--attention {
     box-shadow: inset 0 0 0 2px var(--wp-accent) !important;
 }
 
+.wp-roster-cell--gap {
+    box-shadow: inset 0 0 0 2px var(--wp-warning, var(--wp-accent)) !important;
+    font-weight: 600 !important;
+}
+
+.wp-roster-cell--multi {
+    font-weight: 600 !important;
+}
+
+.wp-roster-cell--multi::before {
+    content: '⊞ ';
+    opacity: 0.6;
+    font-size: 0.85em;
+}
+
+.wp-roster-day-block {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.wp-roster-day-block .wp-select {
+    flex: 1 1 11rem;
+}
+
+.wp-roster-day-block .wp-input {
+    flex: 0 0 7rem;
+}
+
 .wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--attendance-link {
     position: relative;
     cursor: pointer;

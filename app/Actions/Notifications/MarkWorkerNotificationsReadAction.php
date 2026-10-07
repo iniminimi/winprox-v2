@@ -10,10 +10,13 @@ use InvalidArgumentException;
 
 class MarkWorkerNotificationsReadAction
 {
+    /**
+     * @param  WorkerNotificationType|list<WorkerNotificationType>  $type
+     */
     public function handle(
         Worker $worker,
         int $tenantId,
-        WorkerNotificationType $type,
+        WorkerNotificationType|array $type,
         ?string $referenceId = null,
     ): int {
         TimeModuleAccess::assertEnabledForTenantId($tenantId);
@@ -22,14 +25,18 @@ class MarkWorkerNotificationsReadAction
             throw new InvalidArgumentException('worker_tenant_mismatch');
         }
 
+        $types = is_array($type) ? $type : [$type];
+
         if ($referenceId !== null) {
-            $type->assertReferenceId($referenceId);
+            foreach ($types as $single) {
+                $single->assertReferenceId($referenceId);
+            }
         }
 
         return WorkerNotification::query()
             ->where('tenant_id', $tenantId)
             ->where('worker_id', $worker->id)
-            ->where('type', $type->value)
+            ->whereIn('type', array_map(fn (WorkerNotificationType $t) => $t->value, $types))
             ->whereNull('read_at')
             ->when($referenceId !== null, fn ($q) => $q->where('reference_id', $referenceId))
             ->update(['read_at' => now()]);

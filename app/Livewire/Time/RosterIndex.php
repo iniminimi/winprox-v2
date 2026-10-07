@@ -5,16 +5,20 @@ namespace App\Livewire\Time;
 use App\Actions\Time\CopyWeekAction;
 use App\Actions\Time\ListRosterWeekAction;
 use App\Actions\Time\ListShiftTypesAction;
+use App\Actions\Time\LoadRosterDayEditorAction;
 use App\Actions\Time\PublishWeekAction;
 use App\Actions\Time\ResolveRosterPeriodAction;
+use App\Actions\Time\SavePlannedDayAction;
 use App\Actions\Time\SavePlannedShiftsAction;
 use App\Data\Time\CopyWeekData;
 use App\Data\Time\PublishWeekData;
 use App\Data\Time\RosterWeekSnapshot;
+use App\Data\Time\SavePlannedDayData;
 use App\Data\Time\SavePlannedShiftsData;
 use App\Exceptions\RosterValidationException;
 use App\Http\Requests\Time\CopyWeekRequest;
 use App\Http\Requests\Time\PublishWeekRequest;
+use App\Http\Requests\Time\SavePlannedDayRequest;
 use App\Http\Requests\Time\SavePlannedShiftsRequest;
 use App\Livewire\Concerns\ProvidesTimeNavAlarmCount;
 use App\Models\PlannedShift;
@@ -68,6 +72,16 @@ class RosterIndex extends Component
 
     public bool $showUnsavedLeaveModal = false;
 
+    public bool $showDayEditor = false;
+
+    /** @var array<string, mixed> */
+    public array $dayEditorContext = [];
+
+    /** @var list<array<string, mixed>> */
+    public array $dayEditorBlocks = [];
+
+    public string $dayEditorError = '';
+
     public function mount(ResolveRosterPeriodAction $resolvePeriod): void
     {
         $this->authorize('viewAny', PlannedShift::class);
@@ -104,6 +118,103 @@ class RosterIndex extends Component
     public function closeUnsavedLeaveModal(): void
     {
         $this->showUnsavedLeaveModal = false;
+    }
+
+    public function openDayEditor(int $workerId, string $date, LoadRosterDayEditorAction $load): void
+    {
+        $this->authorize('update', PlannedShift::class);
+        $this->dayEditorContext = $load->handle(
+            (int) Tenancy::id(),
+            $workerId,
+            $date,
+            auth()->user()?->accessibleLocationIds(),
+        );
+        $this->dayEditorBlocks = array_map(fn (array $block) => [
+            'id' => $block['id'],
+            'shift_type_id' => $block['shift_type_id'],
+            'start_time' => $block['start_time'],
+            'end_time' => $block['end_time'],
+            'break_minutes' => $block['break_minutes'],
+            'unit_id' => $block['unit_id'],
+        ], $this->dayEditorContext['blocks']);
+        if ($this->dayEditorBlocks === []) {
+            $this->dayEditorBlocks[] = $this->emptyDayEditorBlock();
+        }
+        $this->dayEditorError = '';
+        $this->showDayEditor = true;
+    }
+
+    public function closeDayEditor(): void
+    {
+        $this->showDayEditor = false;
+        $this->dayEditorContext = [];
+        $this->dayEditorBlocks = [];
+        $this->dayEditorError = '';
+    }
+
+    public function addDayEditorBlock(): void
+    {
+        $this->dayEditorBlocks[] = $this->emptyDayEditorBlock();
+    }
+
+    public function removeDayEditorBlock(int $index): void
+    {
+        unset($this->dayEditorBlocks[$index]);
+        $this->dayEditorBlocks = array_values($this->dayEditorBlocks);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function emptyDayEditorBlock(): array
+    {
+        return [
+            'id' => null,
+            'shift_type_id' => null,
+            'start_time' => '',
+            'end_time' => '',
+            'break_minutes' => 0,
+            'unit_id' => null,
+        ];
+    }
+
+    public function saveDayEditor(SavePlannedDayAction $save): void
+    {
+        $this->authorize('update', PlannedShift::class);
+
+        $workerId = (int) ($this->dayEditorContext['worker']['id'] ?? 0);
+        $date = (string) ($this->dayEditorContext['date'] ?? '');
+
+        $blocks = array_map(fn (array $block) => [
+            'id' => $block['id'] !== null && $block['id'] !== '' ? (int) $block['id'] : null,
+            'shift_type_id' => $block['shift_type_id'] !== null && $block['shift_type_id'] !== '' ? (int) $block['shift_type_id'] : null,
+            'start_time' => $block['start_time'] !== '' ? $block['start_time'] : null,
+            'end_time' => $block['end_time'] !== '' ? $block['end_time'] : null,
+            'break_minutes' => (int) ($block['break_minutes'] ?? 0),
+            'unit_id' => $block['unit_id'] !== null && $block['unit_id'] !== '' ? (int) $block['unit_id'] : null,
+        ], $this->dayEditorBlocks);
+
+        Validator::make(
+            ['worker_id' => $workerId, 'date' => $date, 'blocks' => $blocks],
+            SavePlannedDayRequest::rulesFor(),
+        )->validate();
+
+        try {
+            $save->handle(
+                Tenant::query()->findOrFail(Tenancy::id()),
+                new SavePlannedDayData($workerId, $date, $blocks),
+                auth()->id(),
+                auth()->user()?->accessibleLocationIds(),
+            );
+        } catch (RosterValidationException|InvalidArgumentException $e) {
+            $this->dayEditorError = __($e->getMessage());
+
+            return;
+        }
+
+        $this->closeDayEditor();
+        session()->flash('time_flash', __('time.schedule.saved'));
+        $this->dispatch('roster-week-changed');
     }
 
     public function setView(string $view, ResolveRosterPeriodAction $resolvePeriod): void
@@ -222,6 +333,9 @@ class RosterIndex extends Component
             $array['hours_url'] = route('time.shifts.index');
         }
         $array['attendance_open_hint'] = __('time.schedule.attendance.open_hours');
+        $array['multi_replace_confirm'] = __('time.schedule.multi_replace_confirm');
+        $array['multi_hint'] = __('time.schedule.multi_hint');
+        $array['day_editor_hint'] = __('time.schedule.day_editor.hint');
 
         return $array;
     }
@@ -241,6 +355,7 @@ class RosterIndex extends Component
                 'worker_id' => (int) $cell['worker_id'],
                 'date' => (string) $cell['date'],
                 'raw' => (string) ($cell['raw'] ?? ''),
+                'keep' => ! empty($cell['keep']),
             ];
         }
 

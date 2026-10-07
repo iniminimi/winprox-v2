@@ -630,7 +630,8 @@
             "invalid_notification_reference": "Invalid notification reference.",
             "unknown_unit": "Unknown group code.",
             "ambiguous_unit": "This group code exists at :count locations. Choose a location filter.",
-            "absence_has_unit": "Absence cannot include a group."
+            "absence_has_unit": "Absence cannot include a group.",
+            "unknown_block": "Unknown block. Refresh the roster and try again."
         },
         "types": {
             "add": "Add shift type",
@@ -682,7 +683,8 @@
             "deviation": "Clocked outside the planned window",
             "unplanned": "Clocked with no plan (or during absence)",
             "ok": "Matches the plan",
-            "open_hours": "Click the top-right marker to open Hours"
+            "open_hours": "Click the top-right marker to open Hours",
+            "gap": "Clocked time between planned blocks"
         },
         "nav_prev": "Previous",
         "nav_next": "Next",
@@ -701,6 +703,22 @@
             "stay": "Stay and save",
             "leave": "Leave anyway",
             "save_first": "Save the roster first."
+        },
+        "edit_day": "Edit day",
+        "multi_hint": "Multiple blocks — open the day to edit",
+        "multi_replace_confirm": "This day has multiple blocks. Typing replaces the whole day with one block. Continue?",
+        "day_editor": {
+            "title": "Roster for :name on :date",
+            "hint": "Multiple blocks on one day? Open the day to add, change or remove blocks.",
+            "type": "Shift type",
+            "custom_time": "Custom times",
+            "start": "Start",
+            "end": "End",
+            "unit": "Unit",
+            "no_unit": "No unit",
+            "remove_block": "Remove block",
+            "add_block": "Add block",
+            "unplanned_sessions": "Clocked outside planning"
         }
     },
     "shift_types": {

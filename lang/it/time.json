@@ -630,7 +630,8 @@
             "invalid_notification_reference": "Riferimento notifica non valido.",
             "unknown_unit": "Codice gruppo sconosciuto.",
             "ambiguous_unit": "Questo codice gruppo è presente in :count sedi. Scegli un filtro sede.",
-            "absence_has_unit": "Un’assenza non può avere un gruppo."
+            "absence_has_unit": "Un’assenza non può avere un gruppo.",
+            "unknown_block": "Blocco sconosciuto. Aggiorna il turno e riprova."
         },
         "types": {
             "add": "Aggiungi tipo",
@@ -682,7 +683,8 @@
             "deviation": "Timbrato fuori dalla fascia prevista",
             "unplanned": "Timbrato senza piano (o durante un'assenza)",
             "ok": "Corrisponde alla pianificazione",
-            "open_hours": "Fai clic sul contrassegno in alto a destra per aprire Ore"
+            "open_hours": "Fai clic sul contrassegno in alto a destra per aprire Ore",
+            "gap": "Tempo timbrato tra i blocchi pianificati"
         },
         "nav_prev": "Precedente",
         "nav_next": "Successivo",
@@ -701,6 +703,22 @@
             "stay": "Resta e salva",
             "leave": "Esci comunque",
             "save_first": "Salva prima il turno."
+        },
+        "edit_day": "Modifica giorno",
+        "multi_hint": "Più blocchi — apri il giorno per modificare",
+        "multi_replace_confirm": "Questo giorno ha più blocchi. Digitando sostituisci l'intera giornata con un solo blocco. Continuare?",
+        "day_editor": {
+            "title": "Turni di :name il :date",
+            "hint": "Più blocchi in un giorno? Apri il giorno per aggiungere, modificare o rimuovere blocchi.",
+            "type": "Tipo di turno",
+            "custom_time": "Orari liberi",
+            "start": "Inizio",
+            "end": "Fine",
+            "unit": "Unità",
+            "no_unit": "Nessuna unità",
+            "remove_block": "Rimuovi blocco",
+            "add_block": "Aggiungi blocco",
+            "unplanned_sessions": "Timbrato fuori pianificazione"
         }
     },
     "shift_types": {

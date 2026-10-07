@@ -32,6 +32,7 @@ class SavePlannedShiftsRequest extends FormRequest
             'cells.*.worker_id' => ['required', 'integer'],
             'cells.*.date' => ['required', 'date'],
             'cells.*.raw' => ['nullable', 'string', 'max:32'],
+            'cells.*.keep' => ['sometimes', 'boolean'],
         ];
     }
 }

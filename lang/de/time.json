@@ -630,7 +630,8 @@
             "invalid_notification_reference": "Ungültige Benachrichtigungsreferenz.",
             "unknown_unit": "Unbekannter Gruppencode.",
             "ambiguous_unit": "Dieser Gruppencode kommt an :count Standorten vor. Wählen Sie einen Standortfilter.",
-            "absence_has_unit": "Abwesenheit darf keine Gruppe haben."
+            "absence_has_unit": "Abwesenheit darf keine Gruppe haben.",
+            "unknown_block": "Unbekannter Block. Plan aktualisieren und erneut versuchen."
         },
         "types": {
             "add": "Schichttyp hinzufügen",
@@ -682,7 +683,8 @@
             "deviation": "Außerhalb des geplanten Fensters gestempelt",
             "unplanned": "Gestempelt ohne Plan (oder während Abwesenheit)",
             "ok": "Stimmt mit der Planung überein",
-            "open_hours": "Klicken Sie oben rechts auf die Markierung, um Stunden zu öffnen"
+            "open_hours": "Klicken Sie oben rechts auf die Markierung, um Stunden zu öffnen",
+            "gap": "Gestampelte Zeit zwischen geplanten Blöcken"
         },
         "nav_prev": "Zurück",
         "nav_next": "Weiter",
@@ -701,6 +703,22 @@
             "stay": "Bleiben und speichern",
             "leave": "Trotzdem verlassen",
             "save_first": "Speichern Sie den Dienstplan zuerst."
+        },
+        "edit_day": "Tag bearbeiten",
+        "multi_hint": "Mehrere Blöcke — Tag zum Bearbeiten öffnen",
+        "multi_replace_confirm": "Dieser Tag hat mehrere Blöcke. Die Eingabe ersetzt den ganzen Tag durch einen Block. Fortfahren?",
+        "day_editor": {
+            "title": "Dienstplan von :name am :date",
+            "hint": "Mehrere Blöcke an einem Tag? Öffnen Sie den Tag, um Blöcke hinzuzufügen, zu ändern oder zu löschen.",
+            "type": "Schichttyp",
+            "custom_time": "Freie Zeiten",
+            "start": "Beginn",
+            "end": "Ende",
+            "unit": "Einheit",
+            "no_unit": "Keine Einheit",
+            "remove_block": "Block entfernen",
+            "add_block": "Block hinzufügen",
+            "unplanned_sessions": "Ungeplant gestempelt"
         }
     },
     "shift_types": {

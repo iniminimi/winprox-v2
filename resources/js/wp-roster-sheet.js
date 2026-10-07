@@ -409,17 +409,35 @@ function applyCellClasses(worksheet, payload) {
                 return;
             }
             const worker = workerById(payload)[rowDef?.worker_id];
-            const parsed = parseRosterCell(value, types, catalogForWorker(worker, payload.units));
             const date = payload.dates?.[colIndex - 1];
             const attendanceKey = worker && date ? `${worker.id}:${date}` : '';
-            const attendance = attendanceKey ? payload.attendance?.[attendanceKey] : null;
+            const attendanceEntry = attendanceKey ? payload.attendance?.[attendanceKey] : null;
+            const attendance = typeof attendanceEntry === 'string' ? attendanceEntry : attendanceEntry?.status;
             const actionable = attendance && attendance !== 'none' && attendance !== 'ok';
             const hoursUrl = actionable ? hoursUrlFor(payload, worker?.id, date, attendance) : '';
+            const cellDef = attendanceKey ? payload.cells?.[attendanceKey] : null;
+            const isMultiSummary = Boolean(cellDef?.multi) && cellText(value).trim() === cellDef.display;
+            const parsed = isMultiSummary
+                ? { kind: 'multi' }
+                : parseRosterCell(value, types, catalogForWorker(worker, payload.units));
+            if (isMultiSummary) {
+                cell.classList.add('wp-roster-cell--multi');
+            }
             if (parsed.kind === 'invalid') {
                 cell.classList.add('wp-roster-cell--invalid');
                 cell.title = cellErrorTitle(parsed, payload);
                 cell.setAttribute('aria-invalid', 'true');
                 applyAttendanceLink(cell, '');
+            } else if (parsed.kind === 'multi') {
+                cell.removeAttribute('aria-invalid');
+                if (actionable) {
+                    cell.classList.add(`wp-roster-cell--${attendance}`);
+                    cell.title = attendanceTitle(payload, attendance);
+                    applyAttendanceLink(cell, hoursUrl);
+                } else {
+                    cell.title = payload.multi_hint || '';
+                    applyAttendanceLink(cell, '');
+                }
             } else if (parsed.color && parsed.color !== 'none') {
                 cell.classList.add(`wp-roster-cell--${parsed.color}`);
                 cell.removeAttribute('aria-invalid');
@@ -478,12 +496,17 @@ function collectCells(worksheet, payload) {
             return;
         }
         payload.dates.forEach((date, dayIndex) => {
+            const key = `${worker.id}:${date}`;
+            const cellDef = payload.cells?.[key];
             const raw = worksheet.getValueFromCoords(dayIndex + 1, rowIndex);
-            cells.push({
-                worker_id: worker.id,
-                date,
-                raw: canonicalizeCellValue(raw),
-            });
+            const value = canonicalizeCellValue(raw);
+            if (cellDef?.multi && cellText(raw).trim() === cellDef.display) {
+                // Ongewijzigde multi-blok-samenvatting: dag behouden, niet parsen.
+                cells.push({ worker_id: worker.id, date, raw: '', keep: true });
+
+                return;
+            }
+            cells.push({ worker_id: worker.id, date, raw: value });
         });
     });
 
@@ -494,6 +517,9 @@ function hasInvalidCells(worksheet, payload) {
     const byId = workerById(payload);
 
     return collectCells(worksheet, payload).some((cell) => {
+        if (cell.keep) {
+            return false;
+        }
         const worker = byId[cell.worker_id];
 
         return parseRosterCell(cell.raw, payload.types ?? [], catalogForWorker(worker, payload.units)).kind === 'invalid';
@@ -511,7 +537,9 @@ function buildData(payload) {
         const line = [worker?.name ?? ''];
         payload.dates.forEach((date) => {
             const key = `${row.worker_id}:${date}`;
-            line.push(formatCellDisplay(payload.cells[key]?.display ?? ''));
+            const cell = payload.cells?.[key];
+            // Multi-blok-dag: samenvatting verbatim (geen dienst/groep-split).
+            line.push(cell?.multi ? (cell.display ?? '') : formatCellDisplay(cell?.display ?? ''));
         });
 
         return line;
@@ -726,6 +754,17 @@ export function bind(root, wire) {
                 if (rowDef?.type === 'section' || Number(x) === 0) {
                     return false;
                 }
+                const date = payload.dates?.[Number(x) - 1];
+                const cellDef = rowDef?.worker_id && date
+                    ? payload.cells?.[`${rowDef.worker_id}:${date}`]
+                    : null;
+                if (cellDef?.multi && cellText(worksheet?.getValueFromCoords?.(Number(x), Number(y))).trim() === cellDef.display) {
+                    // Overschrijven van een multi-blok-samenvatting = hele dag
+                    // vervangen door één blok — één bevestiging.
+                    if (!window.confirm(payload.multi_replace_confirm || '')) {
+                        return false;
+                    }
+                }
                 value = cellText(value);
                 if (value.trim().startsWith('=')) {
                     return false;
@@ -829,6 +868,25 @@ export function bind(root, wire) {
             }
             showError('');
             await wire.save(collectCells(worksheet, payload));
+            return;
+        }
+
+        if (event.target.closest('[data-wp-roster-day]')) {
+            if (!worksheet || !payload || typeof wire.openDayEditor !== 'function') {
+                return;
+            }
+            const sel = worksheet.selectedCell;
+            const colIndex = Array.isArray(sel) ? Number(sel[0]) : NaN;
+            const rowIndex = Array.isArray(sel) ? Number(sel[1]) : NaN;
+            const rowDef = gridRowDefs(payload)[rowIndex];
+            const date = payload.dates?.[colIndex - 1];
+            if (!rowDef || rowDef.type !== 'worker' || !date) {
+                showError(payload.day_editor_hint || '');
+
+                return;
+            }
+            showError('');
+            await wire.openDayEditor(rowDef.worker_id, date);
             return;
         }
 

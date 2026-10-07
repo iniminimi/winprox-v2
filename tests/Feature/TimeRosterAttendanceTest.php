@@ -45,7 +45,7 @@ function plannedWork(Tenant $tenant, Worker $worker, string $date): PlannedShift
     ]);
 }
 
-it('toont deviation meteen bij late inklok vandaag', function () {
+it('toont missing en unplanned bij een sessie ver na het geplande blok', function () {
     [$tenant, $worker] = attendanceTenant();
     $today = '2026-09-15';
     $now = Carbon::parse('2026-09-15 20:45:00');
@@ -67,7 +67,9 @@ it('toont deviation meteen bij late inklok vandaag', function () {
         $now,
     );
 
-    expect($result[$worker->id.':'.$today] ?? null)->toBe(RosterAttendanceStatus::Deviation->value);
+    $entry = $result[$worker->id.':'.$today] ?? [];
+    expect($entry['status'] ?? null)->toBe(RosterAttendanceStatus::Missing->value)
+        ->and($entry['unplanned_sessions'] ?? 0)->toBe(1);
 });
 
 it('toont geen missing vandaag vóór het geplande einde', function () {
@@ -101,7 +103,7 @@ it('toont missing vandaag na het geplande einde zonder prik', function () {
         $now,
     );
 
-    expect($result[$worker->id.':'.$today] ?? null)->toBe(RosterAttendanceStatus::Missing->value);
+    expect($result[$worker->id.':'.$today]['status'] ?? null)->toBe(RosterAttendanceStatus::Missing->value);
 });
 
 it('laat een stipt gestarte open dienst vandaag met rust', function () {
@@ -126,7 +128,7 @@ it('laat een stipt gestarte open dienst vandaag met rust', function () {
         $now,
     );
 
-    expect($result[$worker->id.':'.$today] ?? null)->toBe(RosterAttendanceStatus::Ok->value);
+    expect($result[$worker->id.':'.$today]['status'] ?? null)->toBe(RosterAttendanceStatus::Ok->value);
 });
 
 it('toont missing op een vorige dag zonder prik', function () {
@@ -143,7 +145,7 @@ it('toont missing op een vorige dag zonder prik', function () {
         $now,
     );
 
-    expect($result[$worker->id.':'.$date] ?? null)->toBe(RosterAttendanceStatus::Missing->value);
+    expect($result[$worker->id.':'.$date]['status'] ?? null)->toBe(RosterAttendanceStatus::Missing->value);
 });
 
 it('telt inklok binnen de 15-minutenmarge als ok', function (string $clockIn, string $expected) {
@@ -168,7 +170,7 @@ it('telt inklok binnen de 15-minutenmarge als ok', function (string $clockIn, st
         $now,
     );
 
-    expect($result[$worker->id.':'.$today] ?? null)->toBe($expected);
+    expect($result[$worker->id.':'.$today]['status'] ?? null)->toBe($expected);
 })->with([
     'stipt' => ['09:00', RosterAttendanceStatus::Ok->value],
     '5 min te vroeg' => ['08:55', RosterAttendanceStatus::Ok->value],
@@ -200,7 +202,7 @@ it('telt uitklok binnen de 15-minutenmarge als ok', function (string $clockOut, 
         $now,
     );
 
-    expect($result[$worker->id.':'.$today] ?? null)->toBe($expected);
+    expect($result[$worker->id.':'.$today]['status'] ?? null)->toBe($expected);
 })->with([
     'stipt' => ['17:00', RosterAttendanceStatus::Ok->value],
     '15 min te vroeg' => ['16:45', RosterAttendanceStatus::Ok->value],
@@ -231,7 +233,7 @@ it('laat een open dienst tot het einde plus 15 minuten met rust', function () {
         $now,
     );
 
-    expect($result[$worker->id.':'.$today] ?? null)->toBe(RosterAttendanceStatus::Ok->value);
+    expect($result[$worker->id.':'.$today]['status'] ?? null)->toBe(RosterAttendanceStatus::Ok->value);
 });
 
 it('toont deviation als een dienst 15 minuten na het einde nog open is', function () {
@@ -256,5 +258,5 @@ it('toont deviation als een dienst 15 minuten na het einde nog open is', functio
         $now,
     );
 
-    expect($result[$worker->id.':'.$today] ?? null)->toBe(RosterAttendanceStatus::Deviation->value);
+    expect($result[$worker->id.':'.$today]['status'] ?? null)->toBe(RosterAttendanceStatus::Deviation->value);
 });

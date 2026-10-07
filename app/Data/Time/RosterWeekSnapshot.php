@@ -14,7 +14,7 @@ final class RosterWeekSnapshot
      * @param  list<array<string, mixed>>  $locations
      * @param  list<array<string, mixed>>  $units
      * @param  list<int>  $dayNumbers
-     * @param  array<string, string>  $attendance
+     * @param  array<string, array{status: string, blocks: array<int, string>, gap_minutes: int, unplanned_sessions: int}>  $attendance
      * @param  array<string, string>  $attendanceMessages
      * @param  list<array<string, mixed>>  $rows
      */

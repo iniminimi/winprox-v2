@@ -95,6 +95,7 @@
                 <div class="wp-filter-form__actions">
                     @can('update', \App\Models\PlannedShift::class)
                         <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-save>{{ __('common.button.save') }}</button>
+                        <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-day>{{ __('time.schedule.edit_day') }}</button>
                         @unless ($isMonth)
                             <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-copy>{{ __('time.schedule.copy_next') }}</button>
                         @endunless
@@ -210,6 +211,119 @@
 
                 <div class="wp-modal-foot">
                     <button type="button" class="btn btn--ghost" wire:click="closeLegendModal">{{ __('common.button.close') }}</button>
+                </div>
+            </div>
+        </x-wp-modal>
+    @endif
+
+    @if ($showDayEditor)
+        @php
+            $absenceTypeIds = collect($dayEditorContext['types'] ?? [])
+                ->filter(fn (array $type) => ($type['kind'] ?? 'work') !== 'work')
+                ->pluck('id')
+                ->map(fn ($id) => (int) $id)
+                ->all();
+            $dayEditorDateLabel = \Carbon\Carbon::parse($dayEditorContext['date'] ?? now())
+                ->locale(app()->getLocale())
+                ->translatedFormat('l d/m/Y');
+        @endphp
+        <x-wp-modal closeMethod="closeDayEditor" aria-labelledby="roster-day-title">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card wp-modal-card--wide">
+                <div class="wp-modal-head">
+                    <h2 id="roster-day-title" class="wp-section-title">
+                        {{ __('time.schedule.day_editor.title', [
+                            'name' => $dayEditorContext['worker']['name'] ?? '',
+                            'date' => $dayEditorDateLabel,
+                        ]) }}
+                    </h2>
+                    <x-wp-modal-close wire:click="closeDayEditor" />
+                </div>
+
+                @if ($dayEditorError !== '')
+                    <p class="wp-flash wp-flash--danger">{{ $dayEditorError }}</p>
+                @endif
+
+                <div class="wp-stack">
+                    @foreach ($dayEditorBlocks as $i => $block)
+                        @php
+                            $isAbsence = in_array((int) ($block['shift_type_id'] ?? 0), $absenceTypeIds, true);
+                        @endphp
+                        <div class="wp-roster-day-block" wire:key="day-block-{{ $i }}">
+                            <select
+                                class="wp-select"
+                                wire:model.live="dayEditorBlocks.{{ $i }}.shift_type_id"
+                                aria-label="{{ __('time.schedule.day_editor.type') }}"
+                            >
+                                <option value="">{{ __('time.schedule.day_editor.custom_time') }}</option>
+                                @foreach ($dayEditorContext['types'] ?? [] as $type)
+                                    <option value="{{ $type['id'] }}">
+                                        {{ $type['code'] }} — {{ $type['label'] }}
+                                        @if (($type['start'] ?? '') !== '' && ($type['end'] ?? '') !== '')
+                                            ({{ $type['start'] }}–{{ $type['end'] }})
+                                        @endif
+                                    </option>
+                                @endforeach
+                            </select>
+
+                            @if (! $isAbsence)
+                                <input
+                                    type="time"
+                                    class="wp-input"
+                                    wire:model="dayEditorBlocks.{{ $i }}.start_time"
+                                    aria-label="{{ __('time.schedule.day_editor.start') }}"
+                                    @disabled(($block['shift_type_id'] ?? null) !== null)
+                                >
+                                <input
+                                    type="time"
+                                    class="wp-input"
+                                    wire:model="dayEditorBlocks.{{ $i }}.end_time"
+                                    aria-label="{{ __('time.schedule.day_editor.end') }}"
+                                    @disabled(($block['shift_type_id'] ?? null) !== null)
+                                >
+                                <select
+                                    class="wp-select"
+                                    wire:model="dayEditorBlocks.{{ $i }}.unit_id"
+                                    aria-label="{{ __('time.schedule.day_editor.unit') }}"
+                                >
+                                    <option value="">{{ __('time.schedule.day_editor.no_unit') }}</option>
+                                    @foreach ($dayEditorContext['units'] ?? [] as $unit)
+                                        <option value="{{ $unit['id'] }}">{{ $unit['code'] }} — {{ $unit['name'] }}</option>
+                                    @endforeach
+                                </select>
+                            @endif
+
+                            <button
+                                type="button"
+                                class="btn btn--ghost btn--sm"
+                                wire:click="removeDayEditorBlock({{ $i }})"
+                                aria-label="{{ __('time.schedule.day_editor.remove_block') }}"
+                            >×</button>
+                        </div>
+                    @endforeach
+
+                    <div>
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="addDayEditorBlock">
+                            {{ __('time.schedule.day_editor.add_block') }}
+                        </button>
+                    </div>
+
+                    @if (($dayEditorContext['unplanned_sessions'] ?? []) !== [])
+                        <p class="wp-muted">
+                            {{ __('time.schedule.day_editor.unplanned_sessions') }}:
+                            @foreach ($dayEditorContext['unplanned_sessions'] as $session)
+                                <span class="wp-pill">{{ $session['in'] }}–{{ $session['out'] ?? '…' }}</span>
+                            @endforeach
+                        </p>
+                    @endif
+                </div>
+
+                <div class="wp-modal-foot">
+                    <button type="button" class="btn btn--primary" wire:click="saveDayEditor">
+                        {{ __('common.button.save') }}
+                    </button>
+                    <button type="button" class="btn btn--ghost" wire:click="closeDayEditor">
+                        {{ __('common.button.cancel') }}
+                    </button>
                 </div>
             </div>
         </x-wp-modal>

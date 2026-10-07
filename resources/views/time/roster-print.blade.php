@@ -137,10 +137,15 @@
                                         @php
                                             $cell = $snapshot->cells[$worker['id'].':'.$date] ?? null;
                                             $rawDisplay = is_array($cell) ? trim((string) ($cell['display'] ?? '')) : '';
-                                            $slash = strpos($rawDisplay, '/');
-                                            $display = ($slash !== false && ! str_contains($rawDisplay, "\n") && substr_count($rawDisplay, '/') === 1)
-                                                ? substr($rawDisplay, 0, $slash)."\n".strtoupper(substr($rawDisplay, $slash + 1))
-                                                : $rawDisplay;
+                                            if (is_array($cell) && ($cell['multi'] ?? false)) {
+                                                // Multi-blok-dag: elk blok op een eigen regel.
+                                                $display = implode("\n", array_map('trim', explode(' · ', $rawDisplay)));
+                                            } else {
+                                                $slash = strpos($rawDisplay, '/');
+                                                $display = ($slash !== false && ! str_contains($rawDisplay, "\n") && substr_count($rawDisplay, '/') === 1)
+                                                    ? substr($rawDisplay, 0, $slash)."\n".strtoupper(substr($rawDisplay, $slash + 1))
+                                                    : $rawDisplay;
+                                            }
                                             $color = is_array($cell) ? (string) ($cell['color'] ?? 'none') : 'none';
                                         @endphp
                                         <td @class([
