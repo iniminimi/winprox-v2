@@ -668,6 +668,7 @@
             }
         },
         "empty_workers": "Keine Ausführenden in diesem Zeitraum. Legen Sie sie unter Personen → Teams an.",
+        "pick_filter": "Wählen Sie ein Team oder einen Standort, um den Dienstplan zu laden.",
         "legend": "Codes",
         "legend_empty": "Noch keine aktiven Codes.",
         "view_week": "Woche",

@@ -6573,6 +6573,10 @@ a.wp-kpi.wp-kpi--attention {
     background: transparent;
 }
 
+.wp-roster-grid-shell--hidden {
+    display: none;
+}
+
 .wp-roster-sheet {
     min-height: 0;
     font-family: 'Inter', 'Segoe UI Variable', system-ui, sans-serif;

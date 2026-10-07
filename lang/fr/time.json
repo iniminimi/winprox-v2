@@ -668,6 +668,7 @@
             }
         },
         "empty_workers": "Aucun exécutant pour cette période. Ajoutez-les sous Personnes → Équipes.",
+        "pick_filter": "Choisissez une équipe ou un site pour charger le planning.",
         "legend": "Codes",
         "legend_empty": "Pas encore de codes actifs.",
         "view_week": "Semaine",

@@ -315,6 +315,52 @@ it('opent het uurrooster voor een admin', function () {
     expect(ShiftType::query()->where('tenant_id', $tenant->id)->where('code', 'VM')->exists())->toBeTrue();
 });
 
+it('vraagt eerst een team- of locatiekeuze voor het rooster', function () {
+    [$tenant, $admin, $team] = scheduleTenant();
+
+    $this->actingAs($admin)
+        ->get(route('time.schedule.index'))
+        ->assertOk()
+        ->assertSee(__('time.schedule.pick_filter'), false)
+        ->assertSee('wp-roster-grid-shell--hidden', false)
+        ->assertDontSee(__('time.schedule.empty_workers'), false);
+
+    $this->actingAs($admin)
+        ->get(route('time.schedule.index', ['team' => $team->id]))
+        ->assertOk()
+        ->assertDontSee(__('time.schedule.pick_filter'), false)
+        ->assertSee('wp-roster-grid-shell', false)
+        ->assertDontSee('wp-roster-grid-shell--hidden', false);
+
+    $unscoped = app(ListRosterWeekAction::class)->handle(
+        (int) $tenant->id,
+        scheduleWeekStart(),
+        null,
+        $admin,
+        'week',
+        true,
+        null,
+        null,
+        true,
+        true,
+    );
+    $scoped = app(ListRosterWeekAction::class)->handle(
+        (int) $tenant->id,
+        scheduleWeekStart(),
+        $team->id,
+        $admin,
+        'week',
+        true,
+        null,
+        null,
+        true,
+        true,
+    );
+
+    expect($unscoped->workers)->toBe([])
+        ->and($scoped->workers)->toHaveCount(1);
+});
+
 it('slaat een week op via de API', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
     $week = scheduleWeekStart();

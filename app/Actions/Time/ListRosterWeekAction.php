@@ -37,6 +37,7 @@ class ListRosterWeekAction
         ?int $locationId = null,
         ?array $groupUnitIds = null,
         bool $includeUngrouped = true,
+        bool $requireScope = false,
     ): RosterWeekSnapshot {
         TimeModuleAccess::assertEnabledForTenantId($tenantId);
 
@@ -47,8 +48,13 @@ class ListRosterWeekAction
         $visibleStart = $dates[0];
         $visibleEnd = $dates[array_key_last($dates)];
         $actorLocationIds = $actor?->accessibleLocationIds();
+        // requireScope: zonder team/locatie-filter geen worker- of cel-werk
+        // doen — honderden workers tegelijk laden is traag én onbruikbaar.
+        $scoped = ! $requireScope || $teamId !== null || $locationId !== null;
 
-        $workers = $this->workers($tenantId, $teamId, $actorLocationIds, $weekStartDate, $weekEndDate, $locationId);
+        $workers = $scoped
+            ? $this->workers($tenantId, $teamId, $actorLocationIds, $weekStartDate, $weekEndDate, $locationId)
+            : collect();
         $groupMode = $locationId !== null;
 
         $units = Unit::query()
@@ -95,12 +101,14 @@ class ListRosterWeekAction
 
         $workerIds = $workers->pluck('id')->map(fn ($id) => (int) $id)->all();
 
-        $shifts = PlannedShift::query()
-            ->with('shiftType')
-            ->whereIn('worker_id', $workerIds ?: [0])
-            ->whereBetween('work_date', [$visibleStart, $visibleEnd])
-            ->orderBy('start_time')
-            ->get();
+        $shifts = $scoped
+            ? PlannedShift::query()
+                ->with('shiftType')
+                ->whereIn('worker_id', $workerIds ?: [0])
+                ->whereBetween('work_date', [$visibleStart, $visibleEnd])
+                ->orderBy('start_time')
+                ->get()
+            : collect();
 
         $cellShifts = [];
         foreach ($shifts as $shift) {
@@ -148,12 +156,12 @@ class ListRosterWeekAction
             'active' => $type->is_active,
         ], $types);
 
-        $attendance = $this->compareAttendance->handle(
+        $attendance = $scoped ? $this->compareAttendance->handle(
             $tenantId,
             $shifts,
             $workerIds,
             $dates,
-        );
+        ) : [];
 
         $weekPublished = $shifts->contains(fn (PlannedShift $shift) => $shift->status->isPublished());
 

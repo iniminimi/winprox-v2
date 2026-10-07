@@ -668,6 +668,7 @@
             }
         },
         "empty_workers": "Geen uitvoerders in deze periode. Voeg uitvoerders toe onder Personen → Teams.",
+        "pick_filter": "Kies een team of locatie om het rooster te laden.",
         "legend": "Codes",
         "legend_empty": "Nog geen actieve codes.",
         "view_week": "Week",

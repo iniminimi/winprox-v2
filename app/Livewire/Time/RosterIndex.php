@@ -329,6 +329,7 @@ class RosterIndex extends Component
             $this->locationFilter,
             $this->locationFilter !== null ? $this->groupUnitIds : null,
             $this->showUngrouped,
+            true,
         );
     }
 
@@ -485,6 +486,7 @@ class RosterIndex extends Component
             'weekLabel' => $this->periodLabel($snapshot),
             'snapshot' => $snapshot,
             'gridPayload' => $this->gridPayload($snapshot),
+            'hasScope' => $this->teamFilter !== null || $this->locationFilter !== null,
             'isMonth' => $this->isMonth(),
             'alarmCount' => $this->timeNavAlarmCount(),
         ]);

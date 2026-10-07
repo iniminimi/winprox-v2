@@ -668,6 +668,7 @@
             }
         },
         "empty_workers": "No hay operarios en este periodo. Añádalos en Personas → Equipos.",
+        "pick_filter": "Elige un equipo o una ubicación para cargar el horario.",
         "legend": "Códigos",
         "legend_empty": "Aún no hay códigos activos.",
         "view_week": "Semana",

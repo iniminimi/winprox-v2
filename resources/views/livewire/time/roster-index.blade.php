@@ -94,14 +94,14 @@
                 </div>
                 <div class="wp-filter-form__actions">
                     @can('update', \App\Models\PlannedShift::class)
-                        <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-save>{{ __('common.button.save') }}</button>
-                        <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-day>{{ __('time.schedule.edit_day') }}</button>
+                        <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-save @disabled(! $hasScope)>{{ __('common.button.save') }}</button>
+                        <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-day @disabled(! $hasScope)>{{ __('time.schedule.edit_day') }}</button>
                         @unless ($isMonth)
-                            <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-copy>{{ __('time.schedule.copy_next') }}</button>
+                            <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-copy @disabled(! $hasScope)>{{ __('time.schedule.copy_next') }}</button>
                         @endunless
                     @endcan
                     @can('publish', \App\Models\PlannedShift::class)
-                        <button type="button" class="btn btn--primary btn--sm" data-wp-roster-publish data-confirm="{{ $isMonth ? __('time.schedule.publish_confirm_month') : __('time.schedule.publish_confirm') }}">{{ __('time.schedule.publish') }}</button>
+                        <button type="button" class="btn btn--primary btn--sm" data-wp-roster-publish data-confirm="{{ $isMonth ? __('time.schedule.publish_confirm_month') : __('time.schedule.publish_confirm') }}" @disabled(! $hasScope)>{{ __('time.schedule.publish') }}</button>
                     @endcan
                     <button type="button" class="btn btn--ghost btn--sm" wire:click="openLegendModal">{{ __('time.schedule.legend_button') }}</button>
                 </div>
@@ -127,11 +127,15 @@
     </div>
 
     <div @class(['wp-card', 'wp-card-pad', 'wp-roster-month' => $isMonth]) data-wp-roster-payload="{{ json_encode($gridPayload) }}">
-        @if ($snapshot->workers === [])
+        @if (! $hasScope)
+            <p class="wp-muted">{{ __('time.schedule.pick_filter') }}</p>
+        @elseif ($snapshot->workers === [])
             <p class="wp-muted">{{ __('time.schedule.empty_workers') }}</p>
         @endif
         <p class="wp-flash wp-flash--danger" data-wp-roster-banner hidden></p>
-        <div class="wp-roster-sheet" data-wp-roster-grid wire:ignore></div>
+        <div @class(['wp-roster-grid-shell', 'wp-roster-grid-shell--hidden' => ! $hasScope])>
+            <div class="wp-roster-sheet" data-wp-roster-grid wire:ignore></div>
+        </div>
     </div>
 
     @if ($showLegendModal)

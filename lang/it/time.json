@@ -668,6 +668,7 @@
             }
         },
         "empty_workers": "Nessun esecutore in questo periodo. Aggiungili in Persone → Team.",
+        "pick_filter": "Scegli un team o una sede per caricare il turnario.",
         "legend": "Codici",
         "legend_empty": "Nessun codice attivo.",
         "view_week": "Settimana",

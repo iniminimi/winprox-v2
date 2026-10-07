@@ -668,6 +668,7 @@
             }
         },
         "empty_workers": "No workers in this period. Add workers under People → Teams.",
+        "pick_filter": "Choose a team or location to load the roster.",
         "legend": "Codes",
         "legend_empty": "No active codes yet.",
         "view_week": "Week",
