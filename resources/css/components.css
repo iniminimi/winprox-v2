@@ -7111,6 +7111,12 @@ a.wp-kpi.wp-kpi--attention {
     overflow: hidden;
 }
 
+/* Multi-blok-dagen: kleiner zodat elke blok op één regel past. */
+.wp-roster-print__cell--multi {
+    font-size: 0.5rem;
+    line-height: 1.1;
+}
+
 @media print {
     .wp-roster-print.wp-container {
         max-width: none;

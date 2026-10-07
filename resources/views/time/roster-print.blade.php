@@ -151,6 +151,7 @@
                                         @endphp
                                         <td @class([
                                             'wp-roster-print__cell',
+                                            'wp-roster-print__cell--multi' => is_array($cell) && ($cell['multi'] ?? false),
                                             'wp-roster-cell--'.$color => $color !== '' && $color !== 'none',
                                         ])>{{ $display }}</td>
                                     @endforeach
