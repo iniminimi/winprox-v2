@@ -7083,7 +7083,8 @@ a.wp-kpi.wp-kpi--attention {
 }
 
 .wp-roster-print__table col.wp-roster-print__name-col {
-    width: 11rem;
+    /* Smal (~1,5 cm): namen wrappen; dagkolommen krijgen meer ruimte. */
+    width: 3.5rem;
 }
 
 .wp-roster-print__table thead th:first-child,
@@ -7225,7 +7226,7 @@ a.wp-kpi.wp-kpi--attention {
     }
 
     .wp-roster-print__table col.wp-roster-print__name-col {
-        width: 2.6cm;
+        width: 1.5cm;
     }
 
     .wp-roster-print__cell {
