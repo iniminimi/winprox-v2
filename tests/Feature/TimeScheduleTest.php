@@ -688,7 +688,7 @@ it('markeert gepland vs geklokt op een verleden published dag', function () {
     expect($snapshot->attendance[$worker->id.':'.$week]['status'] ?? null)->toBe('missing');
 });
 
-it('kopieert afwezigheid als draft naar de volgende week', function () {
+it('kopieert afwezigheid niet mee naar de volgende week', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
     app(SaveShiftTypeAction::class)->handle(
         $tenant,
@@ -697,10 +697,12 @@ it('kopieert afwezigheid als draft naar de volgende week', function () {
     );
     $week = scheduleWeekStart();
     $next = Carbon::parse($week)->addWeek()->toDateString();
+    $nextTuesday = Carbon::parse($next)->addDay()->toDateString();
     app(SavePlannedShiftsAction::class)->handle(
         $tenant,
         new SavePlannedShiftsData($week, [$worker->id], scheduleCells([$worker], $week, [
             $worker->id.':'.$week => 'VL',
+            $worker->id.':'.Carbon::parse($week)->addDay()->toDateString() => '07:00-15:00',
         ])),
         $admin->id,
     );
@@ -712,9 +714,14 @@ it('kopieert afwezigheid als draft naar de volgende week', function () {
     );
 
     expect($copied)->toHaveCount(1)
-        ->and($copied[0]->kind)->toBe(ShiftTypeKind::Leave)
-        ->and($copied[0]->start_time)->toBeNull()
-        ->and($copied[0]->status)->toBe(PlannedShiftStatus::Draft);
+        ->and($copied[0]->kind)->toBe(ShiftTypeKind::Work)
+        ->and($copied[0]->work_date->toDateString())->toBe($nextTuesday)
+        ->and($copied[0]->status)->toBe(PlannedShiftStatus::Draft)
+        ->and(PlannedShift::query()
+            ->where('worker_id', $worker->id)
+            ->where('kind', ShiftTypeKind::Leave->value)
+            ->whereBetween('work_date', [$next, Carbon::parse($next)->addDays(6)->toDateString()])
+            ->count())->toBe(0);
 });
 
 it('parses a unit code in the same cell and snapshots place on save', function () {

@@ -1022,7 +1022,7 @@ export function bind(root, wire) {
                 showError(payload?.unsaved_message || '');
                 return;
             }
-            await wire.copyToNextWeek();
+            await wire.openCopyModal();
             return;
         }
 

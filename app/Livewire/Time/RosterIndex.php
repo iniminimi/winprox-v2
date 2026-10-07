@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Time;
 
-use App\Actions\Time\CopyWeekAction;
+use App\Actions\Time\CopyRosterWeeksAction;
 use App\Actions\Time\ListRosterWeekAction;
 use App\Actions\Time\ListShiftTypesAction;
 use App\Actions\Time\LoadRosterDayEditorAction;
@@ -10,7 +10,7 @@ use App\Actions\Time\PublishWeekAction;
 use App\Actions\Time\ResolveRosterPeriodAction;
 use App\Actions\Time\SavePlannedDayAction;
 use App\Actions\Time\SavePlannedShiftsAction;
-use App\Data\Time\CopyWeekData;
+use App\Data\Time\CopyRosterWeeksData;
 use App\Data\Time\PublishWeekData;
 use App\Data\Time\RosterWeekSnapshot;
 use App\Data\Time\SavePlannedDayData;
@@ -86,6 +86,17 @@ class RosterIndex extends Component
     public array $dayEditorBlocks = [];
 
     public string $dayEditorError = '';
+
+    public bool $showCopyModal = false;
+
+    public string $copyTargetWeek = '';
+
+    public int $copyWeekCount = 1;
+
+    /** @var list<array<string, mixed>> */
+    public array $copyReport = [];
+
+    public string $copyError = '';
 
     public function mount(ResolveRosterPeriodAction $resolvePeriod): void
     {
@@ -431,41 +442,75 @@ class RosterIndex extends Component
         $this->dispatch('roster-week-changed');
     }
 
-    public function copyToNextWeek(CopyWeekAction $copy, ResolveRosterPeriodAction $resolvePeriod): void
+    public function openCopyModal(ResolveRosterPeriodAction $resolvePeriod): void
     {
         if ($this->isMonth()) {
             return;
         }
 
         $this->authorize('update', PlannedShift::class);
+        [$monday] = $resolvePeriod->handle($this->weekStart, 'week');
+        $this->copyTargetWeek = $monday->copy()->addWeek()->toDateString();
+        $this->copyWeekCount = 1;
+        $this->copyReport = [];
+        $this->copyError = '';
+        $this->showCopyModal = true;
+    }
+
+    public function closeCopyModal(): void
+    {
+        $this->showCopyModal = false;
+        $this->copyReport = [];
+        $this->copyError = '';
+    }
+
+    public function copyWeeks(CopyRosterWeeksAction $copy): void
+    {
+        $this->authorize('update', PlannedShift::class);
         $payload = $this->payload(app(ListRosterWeekAction::class));
         $workerIds = array_map(fn ($worker) => (int) $worker['id'], $payload['workers']);
-        [$monday] = $resolvePeriod->handle($this->weekStart, 'week');
-        $target = $monday->copy()->addWeek()->toDateString();
-
-        Validator::make(
-            [
-                'source_week_start' => $this->weekStart,
-                'target_week_start' => $target,
-                'worker_ids' => $workerIds,
-            ],
-            CopyWeekRequest::rulesFor(),
-        )->validate();
 
         try {
-            $copy->handle(
-                Tenant::query()->findOrFail(Tenancy::id()),
-                new CopyWeekData($this->weekStart, $target, $workerIds),
-                auth()->id(),
-            );
-        } catch (RosterValidationException|InvalidArgumentException $e) {
-            session()->flash('time_flash_error', __($e->getMessage()));
+            Validator::make(
+                [
+                    'source_week_start' => $this->weekStart,
+                    'target_week_start' => $this->copyTargetWeek,
+                    'weeks' => $this->copyWeekCount,
+                    'worker_ids' => $workerIds,
+                ],
+                CopyWeekRequest::rulesFor(),
+            )->validate();
+        } catch (ValidationException $e) {
+            $this->copyError = (string) collect($e->errors())->flatten()->first();
 
             return;
         }
 
-        $this->weekStart = $target;
-        session()->flash('time_flash', __('time.schedule.copied'));
+        try {
+            $report = $copy->handle(
+                Tenant::query()->findOrFail(Tenancy::id()),
+                new CopyRosterWeeksData(
+                    $this->weekStart,
+                    $this->copyTargetWeek,
+                    $this->copyWeekCount,
+                    $workerIds,
+                ),
+                auth()->id(),
+            );
+        } catch (RosterValidationException|InvalidArgumentException $e) {
+            $this->copyError = __($e->getMessage());
+
+            return;
+        }
+
+        $this->copyReport = array_map(fn (array $week) => [
+            'week' => $week['week'],
+            'status' => $week['status'],
+            'created' => $week['created'],
+            'skipped' => $week['skipped'],
+            'message' => $week['message'] !== null ? __($week['message']) : null,
+        ], $report['weeks']);
+        $this->copyError = '';
         $this->dispatch('roster-week-changed');
     }
 

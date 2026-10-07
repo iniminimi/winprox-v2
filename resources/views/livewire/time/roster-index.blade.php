@@ -97,7 +97,7 @@
                         <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-save @disabled(! $hasScope)>{{ __('common.button.save') }}</button>
                         <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-day @disabled(! $hasScope)>{{ __('time.schedule.edit_day') }}</button>
                         @unless ($isMonth)
-                            <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-copy @disabled(! $hasScope)>{{ __('time.schedule.copy_next') }}</button>
+                            <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-copy @disabled(! $hasScope)>{{ __('time.schedule.copy.button') }}</button>
                         @endunless
                     @endcan
                     @can('publish', \App\Models\PlannedShift::class)
@@ -345,6 +345,76 @@
                         {{ __('common.button.cancel') }}
                     </button>
                 </div>
+            </div>
+        </x-wp-modal>
+    @endif
+
+    @if ($showCopyModal)
+        <x-wp-modal closeMethod="closeCopyModal" aria-labelledby="roster-copy-title">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 id="roster-copy-title" class="wp-section-title">{{ __('time.schedule.copy.title') }}</h2>
+                    <x-wp-modal-close wire:click="closeCopyModal" />
+                </div>
+
+                @if ($copyError !== '')
+                    <p class="wp-flash wp-flash--danger">{{ $copyError }}</p>
+                @endif
+
+                @if ($copyReport === [])
+                    <p class="wp-muted">{{ __('time.schedule.copy.hint') }}</p>
+                    <div class="wp-field">
+                        <label class="wp-label" for="roster-copy-target">{{ __('time.schedule.copy_target') }}</label>
+                        <input id="roster-copy-target" type="date" class="wp-input" wire:model="copyTargetWeek">
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="roster-copy-weeks">{{ __('time.schedule.copy.weeks') }}</label>
+                        <input id="roster-copy-weeks" type="number" class="wp-input" wire:model="copyWeekCount" min="1" max="26" inputmode="numeric">
+                    </div>
+                    <div class="wp-modal-foot">
+                        <button type="button" class="btn btn--primary" wire:click="copyWeeks">
+                            {{ __('time.schedule.copy.submit') }}
+                        </button>
+                        <button type="button" class="btn btn--ghost" wire:click="closeCopyModal">
+                            {{ __('common.button.cancel') }}
+                        </button>
+                    </div>
+                @else
+                    <ul class="wp-stack" role="list">
+                        @foreach ($copyReport as $week)
+                            <li>
+                                <strong>{{ \Carbon\Carbon::parse($week['week'])->format('d/m/Y') }}</strong> —
+                                @if ($week['status'] === 'ok')
+                                    {{ __('time.schedule.copy.week_ok', ['count' => $week['created']]) }}
+                                @elseif ($week['status'] === 'occupied')
+                                    {{ __('time.schedule.copy.week_occupied') }}
+                                @elseif ($week['status'] === 'same_week')
+                                    {{ __('time.schedule.copy.week_same') }}
+                                @else
+                                    {{ $week['message'] ?? __('time.schedule.copy.week_failed') }}
+                                @endif
+                                @if ($week['skipped'] !== [])
+                                    <ul role="list">
+                                        @foreach ($week['skipped'] as $skip)
+                                            <li class="wp-muted">
+                                                {{ __('time.schedule.copy.skipped_absence', [
+                                                    'name' => $skip['worker'],
+                                                    'date' => \Carbon\Carbon::parse($skip['date'])->format('d/m'),
+                                                    'label' => $skip['label'],
+                                                ]) }}
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </li>
+                        @endforeach
+                    </ul>
+                    <div class="wp-modal-foot">
+                        <button type="button" class="btn btn--primary" wire:click="closeCopyModal">
+                            {{ __('common.button.close') }}
+                        </button>
+                    </div>
+                @endif
             </div>
         </x-wp-modal>
     @endif

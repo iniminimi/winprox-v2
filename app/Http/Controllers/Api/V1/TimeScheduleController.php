@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1;
 
+use App\Actions\Time\CopyRosterWeeksAction;
 use App\Actions\Time\CopyWeekAction;
 use App\Actions\Time\ListRosterWeekAction;
 use App\Actions\Time\ListShiftTypesAction;
@@ -9,6 +10,7 @@ use App\Actions\Time\PublishWeekAction;
 use App\Actions\Time\SavePlannedShiftsAction;
 use App\Actions\Time\SaveShiftTypeAction;
 use App\Actions\Time\SetShiftTypeActiveAction;
+use App\Data\Time\CopyRosterWeeksData;
 use App\Data\Time\CopyWeekData;
 use App\Data\Time\PublishWeekData;
 use App\Data\Time\SavePlannedShiftsData;
@@ -86,12 +88,36 @@ class TimeScheduleController extends Controller
         return $this->success(['count' => count($shifts)]);
     }
 
-    public function copy(CopyWeekRequest $request, CopyWeekAction $copy): JsonResponse
+    public function copy(CopyWeekRequest $request, CopyWeekAction $copy, CopyRosterWeeksAction $weeks): JsonResponse
     {
         $this->authorize('update', PlannedShift::class);
         $validated = $request->validated();
+        $weekCount = (int) ($validated['weeks'] ?? 1);
 
         try {
+            if ($weekCount > 1) {
+                $report = $weeks->handle(
+                    Tenant::query()->findOrFail(Tenancy::id()),
+                    new CopyRosterWeeksData(
+                        $validated['source_week_start'],
+                        $validated['target_week_start'],
+                        $weekCount,
+                        array_map('intval', $validated['worker_ids']),
+                    ),
+                    $request->user()?->id,
+                );
+
+                return $this->success([
+                    'count' => $report['created_total'],
+                    'weeks' => array_map(fn (array $week) => [
+                        'week' => $week['week'],
+                        'status' => $week['status'],
+                        'created' => $week['created'],
+                        'skipped' => $week['skipped'],
+                    ], $report['weeks']),
+                ]);
+            }
+
             $shifts = $copy->handle(
                 Tenant::query()->findOrFail(Tenancy::id()),
                 new CopyWeekData(

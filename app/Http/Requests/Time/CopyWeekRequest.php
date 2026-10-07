@@ -24,6 +24,7 @@ class CopyWeekRequest extends FormRequest
         return [
             'source_week_start' => ['required', 'date'],
             'target_week_start' => ['required', 'date', 'different:source_week_start'],
+            'weeks' => ['sometimes', 'integer', 'min:1', 'max:26'],
             'worker_ids' => ['required', 'array'],
             'worker_ids.*' => ['integer'],
         ];

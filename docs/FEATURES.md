@@ -925,7 +925,15 @@ staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
   roostercode → voornaam → achternaam (alfabetisch binnen elke groep). Cel-plek `D1/G1`
   blijft onafhankelijk (geen auto-invullen van thuisgroep).
   Locatie leegmaken → platte workerlijst, groepfilters reset.
-- **Copy week:** alles-of-niets; alleen in weekweergave; doelweek met bestaande diensten → weigeren.
+- **Week herhalen:** modal kopieert de zichtbare week naar **1–26 opeenvolgende weken**
+  (`CopyRosterWeeksAction`). Alleen **werkshifts** — verlof, ziekte en recup worden niet
+  gekopieerd. Per doelweek een eigen transactie (alles-of-niets binnen een week): een
+  niet-lege doelweek wordt overgeslagen én gerapporteerd zonder andere weken te blokkeren;
+  de bronweek zelf wordt eveneens overgeslagen. Een shift die op een dag met
+  **goedgekeurde afwezigheid** (`AbsenceRequest`) valt, wordt overgeslagen en in het
+  resultaat per week getoond (`worker · datum · label`). Enkelvoudige `CopyWeekAction`
+  (API `POST /time/schedule/copy`) delegeert en behoudt zijn weiger-exceptions; optionele
+  `weeks`-parameter geeft hetzelfde range-rapport terug.
 - **Golf 2 — Mijn rooster:** Clock Point-tegel, alleen eigen `published` diensten van de
   **maand**. Beknopte lijst in één kader (`ma 14/09 : Dagdienst - 08:00-17:00`); lege dagen
   worden overgeslagen; meerdere blokken op één dag staan als eigen regels onder elkaar.
