@@ -452,6 +452,30 @@ it('bewaart de album-modus en weigert een ongeldige', function () {
         ->toThrow(InvalidArgumentException::class, 'album_mode_invalid');
 });
 
+it('bewaart de album-weekdagen als bitmask en weigert buiten 0-127', function () {
+    $tenant = displayTenant();
+    Tenancy::actAs($tenant->id);
+    $point = displayPoint($tenant);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    // Nieuw punt: default ma–vr (bit 0=ma … bit 6=zo) → 31.
+    expect($point->refresh()->album_days)->toBe(31);
+
+    $windows = app(UpdateClockDisplayAlbumWindowsAction::class);
+    // Alleen ma + wo + vr aan → bits 0,2,4 = 21; weekend + di/do uit.
+    $windows->handle($point, $tenant->id, $admin->id, '09:00', '12:00', null, null, 'photos', 21);
+    expect($point->refresh()->album_days)->toBe(21);
+
+    // Alles afvinken mag expliciet (rust-scherm dan nooit actief).
+    $windows->handle($point, $tenant->id, $admin->id, '09:00', '12:00', null, null, 'photos', 0);
+    expect($point->refresh()->album_days)->toBe(0);
+
+    expect(fn () => $windows->handle($point, $tenant->id, $admin->id, null, null, null, null, 'photos', 128))
+        ->toThrow(InvalidArgumentException::class, 'album_days_invalid');
+    expect(fn () => $windows->handle($point, $tenant->id, $admin->id, null, null, null, null, 'photos', -1))
+        ->toThrow(InvalidArgumentException::class, 'album_days_invalid');
+});
+
 it('uploadt, ordent en verwijdert album-foto\'s met audit', function () {
     Storage::fake('public');
     $tenant = displayTenant();
@@ -534,10 +558,11 @@ it('stuurt het album-manifest mee in de ping en past de versie aan', function ()
     $album = $this->getJson('/api/v1/time/clock-displays/ping', [
         'X-WinProx-Clock-Key' => $token,
     ])->assertOk()->assertJsonStructure([
-        'album' => ['version', 'mode', 'windows', 'images'],
+        'album' => ['version', 'mode', 'windows', 'days', 'images'],
     ])->json('album');
 
     expect($album['mode'])->toBe('photos');
+    expect($album['days'])->toBe(31);
     expect($album['windows'])->toBe([['09:00', '12:00']]);
     $ids = collect($album['images'])->pluck('id');
     expect($ids)->toContain($local->id)->toContain($global->id)->toHaveCount(2);

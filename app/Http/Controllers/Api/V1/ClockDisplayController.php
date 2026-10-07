@@ -286,9 +286,11 @@ class ClockDisplayController extends Controller
             ->limit(ClockDisplayImage::MAX_PER_SCOPE)
             ->get();
 
+        $albumDays = (int) ($clockPoint->album_days ?? 31);
+
         $version = substr(md5(
             $images->map(fn (ClockDisplayImage $i) => $i->id.'@'.$i->updated_at?->getTimestamp())->implode(',')
-            .'|'.json_encode($windows)
+            .'|'.json_encode($windows).'|'.$albumDays
         ), 0, 12);
 
         return [
@@ -296,6 +298,9 @@ class ClockDisplayController extends Controller
             // Rust-scherm tijdens de vensters: photos | clock | none.
             'mode' => $clockPoint->album_mode ?? 'photos',
             'windows' => $windows,
+            // Bitmask weekdagen (bit 0 = ma … bit 6 = zo); geldt voor de
+            // dag waarop een venster begint (relevant over middernacht).
+            'days' => $albumDays,
             'images' => $images
                 ->map(fn (ClockDisplayImage $i) => ['id' => $i->id, 'url' => $i->publicUrl()])
                 ->values()

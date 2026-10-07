@@ -40,6 +40,7 @@ class ClockPoint extends Model
         'album2_from',
         'album2_until',
         'album_mode',
+        'album_days',
     ];
 
     protected $casts = [
@@ -51,6 +52,7 @@ class ClockPoint extends Model
         'display_pairing_expires_at' => 'datetime',
         'display_paired_at' => 'datetime',
         'display_last_seen_at' => 'datetime',
+        'album_days' => 'integer',
     ];
 
     protected static function booted(): void

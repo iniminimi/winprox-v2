@@ -313,7 +313,7 @@
         },
         "schedule": {
             "title": "Scherm aan-uren",
-            "hint": "Buiten dit venster staat het scherm uit (bv. crèche 06:00–19:00). Leeg = altijd aan; over middernacht (bv. 22:00–06:00) werkt ook.",
+            "hint": "Buiten dit tijdsblok staat het scherm uit (bv. crèche 06:00–19:00). Leeg = altijd aan; over middernacht (bv. 22:00–06:00) werkt ook.",
             "always_on": "Altijd aan",
             "from": "Aan vanaf",
             "until": "Aan tot",
@@ -339,16 +339,27 @@
             "schedule_incomplete": "Vul beide uren in of laat beide leeg.",
             "album_full": "Maximaal 12 foto’s bereikt.",
             "upload_failed": "Upload mislukt, probeer opnieuw.",
-            "album_windows_incomplete": "Vul per venster beide uren in of laat beide leeg.",
-            "image_not_found": "Foto niet gevonden."
+            "album_windows_incomplete": "Vul per tijdsblok beide uren in of laat beide leeg.",
+            "image_not_found": "Foto niet gevonden.",
+            "album_days_invalid": "Ongeldige dagkeuze."
         },
         "album": {
-            "title": "Foto-album",
-            "hint": "Tijdens deze vensters toont het scherm foto’s (elk 10 seconden) i.p.v. de QR-code. Een tik op het scherm toont de QR-code; nog een tik opent manueel aanmelden. Leeg = geen slideshow.",
-            "window1": "Venster 1",
-            "window2": "Venster 2",
-            "save": "Vensters opslaan",
-            "saved": "Album-uren opgeslagen.",
+            "title": "Screensaver",
+            "hint": "Tijdens deze tijden toont het scherm dit rust-scherm i.p.v. de QR-code — alleen op de aangevinkte dagen. Een tik toont de QR-code; nog een tik opent manueel aanmelden. Leeg = geen rust-scherm.",
+            "from": "Vanaf",
+            "until": "Tot",
+            "days_label": "Op deze dagen",
+            "days": {
+                "mon": "ma",
+                "tue": "di",
+                "wed": "wo",
+                "thu": "do",
+                "fri": "vr",
+                "sat": "za",
+                "sun": "zo"
+            },
+            "save": "Screensaver opslaan",
+            "saved": "Screensaver opgeslagen.",
             "upload": "Foto toevoegen",
             "uploaded": "Foto opgeslagen.",
             "deleted": "Foto verwijderd.",
@@ -357,7 +368,7 @@
             "crop_title": "Foto bijsnijden (vierkant)",
             "crop_apply": "Gebruiken",
             "max_reached": "Maximum bereikt (12 foto’s)",
-            "mode_label": "Tijdens de vensters tonen",
+            "mode_label": "Tijdens deze tijden tonen",
             "mode_photos": "Foto's (slideshow)",
             "mode_clock": "Wijzerklok",
             "mode_none": "Niets (gewone QR)"

@@ -59,6 +59,9 @@ class ClockDisplayPair extends Component
 
     public string $albumMode = 'photos';
 
+    /** Weekdagen waarop het rust-scherm actief is: index 0 = ma … 6 = zo. */
+    public array $albumDays = [true, true, true, true, true, false, false];
+
     public function mount(ClockPoint $clockPoint): void
     {
         $this->authorize('update', $clockPoint);
@@ -71,6 +74,10 @@ class ClockDisplayPair extends Component
         $this->album2From = $hm($clockPoint->album2_from);
         $this->album2Until = $hm($clockPoint->album2_until);
         $this->albumMode = $clockPoint->album_mode ?? 'photos';
+        $days = $clockPoint->album_days ?? 31;
+        for ($i = 0; $i < 7; $i++) {
+            $this->albumDays[$i] = (bool) ($days & (1 << $i));
+        }
     }
 
     public function issueCode(IssueClockDisplayPairingCodeAction $issue): void
@@ -242,7 +249,16 @@ class ClockDisplayPair extends Component
             'album2From' => ['nullable', 'date_format:H:i', 'required_with:album2Until'],
             'album2Until' => ['nullable', 'date_format:H:i', 'required_with:album2From'],
             'albumMode' => ['required', 'in:'.implode(',', UpdateClockDisplayAlbumWindowsAction::MODES)],
+            'albumDays' => ['array'],
+            'albumDays.*' => ['boolean'],
         ]);
+
+        $albumDayMask = 0;
+        for ($i = 0; $i < 7; $i++) {
+            if ($this->albumDays[$i] ?? false) {
+                $albumDayMask |= 1 << $i;
+            }
+        }
 
         try {
             $update->handle(
@@ -254,6 +270,7 @@ class ClockDisplayPair extends Component
                 $validated['album2From'] ?: null,
                 $validated['album2Until'] ?: null,
                 $validated['albumMode'],
+                $albumDayMask,
             );
         } catch (InvalidArgumentException $e) {
             session()->flash('time_flash', __('time.clock_displays.errors.'.$e->getMessage()));

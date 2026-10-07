@@ -12,6 +12,8 @@ use InvalidArgumentException;
  * venster toont het scherm het gekozen rust-scherm i.p.v. de QR-klok:
  * foto-slideshow (photos), wijzerklok (clock) of niets (none).
  * Beide leeg per paar = venster uit; over-middernacht werkt zoals aan-uren.
+ * `album_days` = bitmask weekdagen (bit 0 = ma … bit 6 = zo) waarop het
+ * rust-scherm actief is; default 31 = ma–vr (weekend uit).
  */
 class UpdateClockDisplayAlbumWindowsAction
 {
@@ -28,6 +30,7 @@ class UpdateClockDisplayAlbumWindowsAction
         ?string $from2,
         ?string $until2,
         string $albumMode = 'photos',
+        int $albumDays = 31,
     ): ClockPoint {
         if ((int) $clockPoint->tenant_id !== $tenantId) {
             throw new InvalidArgumentException('tenant_mismatch');
@@ -37,12 +40,16 @@ class UpdateClockDisplayAlbumWindowsAction
             throw new InvalidArgumentException('album_mode_invalid');
         }
 
+        if ($albumDays < 0 || $albumDays > 0x7F) {
+            throw new InvalidArgumentException('album_days_invalid');
+        }
+
         if (($from1 === null) !== ($until1 === null)
             || ($from2 === null) !== ($until2 === null)) {
             throw new InvalidArgumentException('album_windows_incomplete');
         }
 
-        return DB::transaction(function () use ($clockPoint, $tenantId, $actorUserId, $from1, $until1, $from2, $until2, $albumMode) {
+        return DB::transaction(function () use ($clockPoint, $tenantId, $actorUserId, $from1, $until1, $from2, $until2, $albumMode, $albumDays) {
             $locked = ClockPoint::query()
                 ->whereKey($clockPoint->id)
                 ->lockForUpdate()
@@ -58,6 +65,7 @@ class UpdateClockDisplayAlbumWindowsAction
                 'album2_from' => $from2,
                 'album2_until' => $until2,
                 'album_mode' => $albumMode,
+                'album_days' => $albumDays,
             ]);
 
             $this->audit->record(
@@ -71,6 +79,7 @@ class UpdateClockDisplayAlbumWindowsAction
                     'album1' => [$from1, $until1],
                     'album2' => [$from2, $until2],
                     'album_mode' => $albumMode,
+                    'album_days' => $albumDays,
                 ],
             );
 

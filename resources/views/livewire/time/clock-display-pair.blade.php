@@ -103,7 +103,7 @@
         @if ($albumMode !== 'none')
         <div class="wp-half-hour-range">
             <div class="wp-field">
-                <label class="wp-label" for="album1-from">{{ __('time.clock_displays.album.window1') }}</label>
+                <label class="wp-label" for="album1-from">{{ __('time.clock_displays.album.from') }}</label>
                 <select id="album1-from" class="wp-input" wire:model="album1From">
                     <option value="">—</option>
                     @foreach ($scheduleSlots as $slot)
@@ -113,7 +113,7 @@
                 @error('album1From') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
             <div class="wp-field">
-                <label class="wp-label" for="album1-until">&nbsp;</label>
+                <label class="wp-label" for="album1-until">{{ __('time.clock_displays.album.until') }}</label>
                 <select id="album1-until" class="wp-input" wire:model="album1Until">
                     <option value="">—</option>
                     @foreach ($scheduleSlots as $slot)
@@ -125,7 +125,7 @@
         </div>
         <div class="wp-half-hour-range">
             <div class="wp-field">
-                <label class="wp-label" for="album2-from">{{ __('time.clock_displays.album.window2') }}</label>
+                <label class="wp-label" for="album2-from">{{ __('time.clock_displays.album.from') }}</label>
                 <select id="album2-from" class="wp-input" wire:model="album2From">
                     <option value="">—</option>
                     @foreach ($scheduleSlots as $slot)
@@ -135,7 +135,7 @@
                 @error('album2From') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
             <div class="wp-field">
-                <label class="wp-label" for="album2-until">&nbsp;</label>
+                <label class="wp-label" for="album2-until">{{ __('time.clock_displays.album.until') }}</label>
                 <select id="album2-until" class="wp-input" wire:model="album2Until">
                     <option value="">—</option>
                     @foreach ($scheduleSlots as $slot)
@@ -144,6 +144,15 @@
                 </select>
                 @error('album2Until') <p class="wp-error">{{ $message }}</p> @enderror
             </div>
+        </div>
+        <div class="wp-cluster wp-cluster--wrap">
+            <span class="wp-label">{{ __('time.clock_displays.album.days_label') }}</span>
+            @foreach (['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'] as $i => $dayKey)
+                <label class="wp-muted wp-text-sm">
+                    <input type="checkbox" wire:model="albumDays.{{ $i }}">
+                    {{ __('time.clock_displays.album.days.'.$dayKey) }}
+                </label>
+            @endforeach
         </div>
         @endif
         <div class="wp-cluster">

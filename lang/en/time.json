@@ -313,7 +313,7 @@
         },
         "schedule": {
             "title": "Screen on-hours",
-            "hint": "Outside this window the screen stays off (e.g. nursery 06:00–19:00). Empty = always on; overnight (e.g. 22:00–06:00) works too.",
+            "hint": "Outside this time block the screen stays off (e.g. nursery 06:00–19:00). Empty = always on; overnight (e.g. 22:00–06:00) works too.",
             "always_on": "Always on",
             "from": "On from",
             "until": "On until",
@@ -339,16 +339,27 @@
             "schedule_incomplete": "Fill in both times or leave both empty.",
             "album_full": "Maximum of 12 photos reached.",
             "upload_failed": "Upload failed, please try again.",
-            "album_windows_incomplete": "Fill in both hours per window or leave both empty.",
-            "image_not_found": "Photo not found."
+            "album_windows_incomplete": "Fill in both times per block or leave both empty.",
+            "image_not_found": "Photo not found.",
+            "album_days_invalid": "Invalid day selection."
         },
         "album": {
-            "title": "Photo album",
-            "hint": "During these windows the screen shows photos (10 seconds each) instead of the QR code. Tap once for the QR code; tap again for manual clock-in. Empty = no slideshow.",
-            "window1": "Window 1",
-            "window2": "Window 2",
-            "save": "Save windows",
-            "saved": "Album hours saved.",
+            "title": "Screensaver",
+            "hint": "During these times the screen shows this idle screen instead of the QR code — only on the checked days. Tap once for the QR code; tap again for manual clock-in. Empty = no idle screen.",
+            "from": "From",
+            "until": "To",
+            "days_label": "On these days",
+            "days": {
+                "mon": "Mon",
+                "tue": "Tue",
+                "wed": "Wed",
+                "thu": "Thu",
+                "fri": "Fri",
+                "sat": "Sat",
+                "sun": "Sun"
+            },
+            "save": "Save screensaver",
+            "saved": "Screensaver saved.",
             "upload": "Add photo",
             "uploaded": "Photo saved.",
             "deleted": "Photo deleted.",
@@ -357,7 +368,7 @@
             "crop_title": "Crop photo (square)",
             "crop_apply": "Use",
             "max_reached": "Maximum reached (12 photos)",
-            "mode_label": "Show during the windows",
+            "mode_label": "Show during these times",
             "mode_photos": "Photos (slideshow)",
             "mode_clock": "Analog clock",
             "mode_none": "Nothing (regular QR)"

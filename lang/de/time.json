@@ -313,7 +313,7 @@
         },
         "schedule": {
             "title": "Einschaltzeiten des Bildschirms",
-            "hint": "Außerhalb dieses Fensters bleibt der Bildschirm aus (z. B. Kita 06:00–19:00). Leer = immer an; über Mitternacht (z. B. 22:00–06:00) geht auch.",
+            "hint": "Außerhalb dieses Zeitblocks bleibt der Bildschirm aus (z. B. Kita 06:00–19:00). Leer = immer an; über Mitternacht (z. B. 22:00–06:00) geht auch.",
             "always_on": "Immer an",
             "from": "An ab",
             "until": "An bis",
@@ -339,16 +339,27 @@
             "schedule_incomplete": "Beide Zeiten ausfüllen oder beide leer lassen.",
             "album_full": "Maximum von 12 Fotos erreicht.",
             "upload_failed": "Upload fehlgeschlagen, bitte erneut versuchen.",
-            "album_windows_incomplete": "Pro Fenster beide Zeiten ausfüllen oder beide leer lassen.",
-            "image_not_found": "Foto nicht gefunden."
+            "album_windows_incomplete": "Pro Zeitblock beide Zeiten ausfüllen oder beide leer lassen.",
+            "image_not_found": "Foto nicht gefunden.",
+            "album_days_invalid": "Ungültige Tagesauswahl."
         },
         "album": {
-            "title": "Fotoalbum",
-            "hint": "Während dieser Zeitfenster zeigt der Bildschirm Fotos (je 10 Sekunden) statt des QR-Codes. Einmal tippen zeigt den QR-Code; erneutes Tippen öffnet die manuelle Anmeldung. Leer = kein Diashow.",
-            "window1": "Fenster 1",
-            "window2": "Fenster 2",
-            "save": "Fenster speichern",
-            "saved": "Albumzeiten gespeichert.",
+            "title": "Bildschirmschoner",
+            "hint": "Während dieser Zeiten zeigt der Bildschirm diesen Ruhebildschirm statt des QR-Codes — nur an den angehakten Tagen. Einmal tippen zeigt den QR-Code; erneutes Tippen öffnet die manuelle Anmeldung. Leer = kein Ruhebildschirm.",
+            "from": "Von",
+            "until": "Bis",
+            "days_label": "An diesen Tagen",
+            "days": {
+                "mon": "Mo",
+                "tue": "Di",
+                "wed": "Mi",
+                "thu": "Do",
+                "fri": "Fr",
+                "sat": "Sa",
+                "sun": "So"
+            },
+            "save": "Bildschirmschoner speichern",
+            "saved": "Bildschirmschoner gespeichert.",
             "upload": "Foto hinzufügen",
             "uploaded": "Foto gespeichert.",
             "deleted": "Foto gelöscht.",
@@ -357,7 +368,7 @@
             "crop_title": "Foto zuschneiden (quadratisch)",
             "crop_apply": "Verwenden",
             "max_reached": "Maximum erreicht (12 Fotos)",
-            "mode_label": "Während der Fenster anzeigen",
+            "mode_label": "Während dieser Zeiten anzeigen",
             "mode_photos": "Fotos (Slideshow)",
             "mode_clock": "Analoge Uhr",
             "mode_none": "Nichts (normaler QR)"
