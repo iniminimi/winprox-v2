@@ -623,6 +623,7 @@ export function bind(root, wire) {
     let pendingLeave = null;
     let allowRosterNav = false;
     let lastDaySelection = null;
+    let lastDayCell = null;
 
     const setDirty = (value) => {
         dirty = Boolean(value);
@@ -677,6 +678,25 @@ export function bind(root, wire) {
         event.stopPropagation();
         requestLeave(() => window.location.assign(url));
     };
+    // Dagselectie zelf bijhouden: jspreadsheet reset selectedCell bij mousedown
+    // buiten het grid (o.a. de "Dag bewerken"-knop) en zijn eigen highlight is
+    // hier niet zichtbaar. Cel-coördinaten komen uit data-x/data-y.
+    const trackDaySelection = (event) => {
+        if (event.button !== 0) {
+            return;
+        }
+        const td = event.target?.closest?.('td');
+        if (!td || td.dataset.x == null || td.dataset.y == null) {
+            return;
+        }
+        lastDaySelection = [Number(td.dataset.x), Number(td.dataset.y)];
+        if (lastDayCell && lastDayCell !== td) {
+            lastDayCell.classList.remove('wp-roster-cell--day-selected');
+        }
+        td.classList.add('wp-roster-cell--day-selected');
+        lastDayCell = td;
+    };
+    grid.addEventListener('mousedown', trackDaySelection, true);
     grid.addEventListener('mousedown', openHoursFromAttendance, true);
 
     const destroy = () => {
@@ -691,6 +711,7 @@ export function bind(root, wire) {
         destroy();
         payload = await wire.payload();
         lastDaySelection = null;
+        lastDayCell = null;
         const isMonth = payload.period === 'month';
         const dayCount = payload.dates.length;
         grid.classList.toggle('wp-roster-sheet--month', isMonth);
@@ -735,9 +756,6 @@ export function bind(root, wire) {
             rowDrag: false,
             parseFormulas: false,
             minDimensions: [dayCount + 1, rowCount],
-            onselection: (_instance, x, y) => {
-                lastDaySelection = [Number(x), Number(y)];
-            },
         };
         if (isMonth && payload.month_label) {
             worksheetConfig.nestedHeaders = [[
