@@ -16,9 +16,12 @@ use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\UnitCheck;
 use App\Models\Worker;
+use App\Livewire\Public\TimePortal;
+use App\Support\Portal\ClockPointScanGrant;
 use App\Support\Tenancy;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
 
@@ -436,7 +439,16 @@ it('toont Unit check pas na Start werk en verwart Afmelden niet met inklokken', 
     IssueRoundStop::query()->create(['issue_id' => $issue->id, 'unit_id' => $unitB->id, 'sort_order' => 1]);
     clockPointOpenTask($ctx, $issue, ['status' => TaskStatus::InProgress]);
 
-    $portal = signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
+    // Achtergelaten tab zonder verse scan: mount geeft een eenmalige
+    // prik-grant, maar alleen aanmelden mag niet inklokken — consume 'm.
+    $portal = Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token]);
+    ClockPointScanGrant::consume((int) $clockPoint->id);
+    $portal
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
         ->assertDontSeeHtml('<h1 class="wp-page-title">'.e(__('time.portal.title')).'</h1>')
         ->assertDontSee(__('portal.worker.different_worker'), false)
         ->assertSee(__('portal.worker.sign_out'), false)
