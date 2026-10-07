@@ -135,6 +135,14 @@
         <p class="wp-flash wp-flash--danger" data-wp-roster-banner hidden></p>
         <div @class(['wp-roster-grid-shell', 'wp-roster-grid-shell--hidden' => ! $hasScope])>
             <div class="wp-roster-sheet" data-wp-roster-grid wire:ignore></div>
+            <div class="wp-roster-menu" data-wp-roster-menu hidden>
+                <button type="button" class="wp-roster-menu__item" data-wp-roster-day>
+                    {{ __('time.schedule.edit_day') }}
+                </button>
+                <button type="button" class="wp-roster-menu__item" data-wp-roster-menu-hours hidden>
+                    {{ __('time.schedule.attendance.open_hours') }}
+                </button>
+            </div>
         </div>
     </div>
 

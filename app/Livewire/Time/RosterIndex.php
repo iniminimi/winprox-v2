@@ -173,8 +173,10 @@ class RosterIndex extends Component
         if ($time === '') {
             return null;
         }
+        // "0800"/"800" → "8:00"; "8:00" → "08:00".
+        $time = preg_replace('/^(\d{1,2})(\d{2})$/', '\1:\2', $time) ?? $time;
 
-        return preg_replace('/^(\d):/', '0\1:', $time);
+        return preg_replace('/^(\d):/', '0\1:', $time) ?? $time;
     }
 
     private function emptyDayEditorBlock(): array

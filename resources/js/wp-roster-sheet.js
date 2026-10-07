@@ -700,6 +700,14 @@ export function bind(root, wire) {
     // Dagselectie zelf bijhouden: jspreadsheet reset selectedCell bij mousedown
     // buiten het grid (o.a. de "Dag bewerken"-knop) en zijn eigen highlight is
     // hier niet zichtbaar. Cel-coördinaten komen uit data-x/data-y.
+    const selectDayCell = (td) => {
+        lastDaySelection = [Number(td.dataset.x), Number(td.dataset.y)];
+        if (lastDayCell && lastDayCell !== td) {
+            lastDayCell.classList.remove('wp-roster-cell--day-selected');
+        }
+        td.classList.add('wp-roster-cell--day-selected');
+        lastDayCell = td;
+    };
     const trackDaySelection = (event) => {
         if (event.button !== 0) {
             return;
@@ -708,15 +716,57 @@ export function bind(root, wire) {
         if (!td || td.dataset.x == null || td.dataset.y == null) {
             return;
         }
-        lastDaySelection = [Number(td.dataset.x), Number(td.dataset.y)];
-        if (lastDayCell && lastDayCell !== td) {
-            lastDayCell.classList.remove('wp-roster-cell--day-selected');
-        }
-        td.classList.add('wp-roster-cell--day-selected');
-        lastDayCell = td;
+        selectDayCell(td);
     };
     grid.addEventListener('mousedown', trackDaySelection, true);
     grid.addEventListener('mousedown', openHoursFromAttendance, true);
+
+    // Rechtsklik-menu op een dagcel: "Dag bewerken" (+ "Uren openen" als de cel
+    // een attendance-link heeft). De "Dag bewerken"-knop delegeert naar de
+    // bestaande root click-handler via data-wp-roster-day.
+    const menu = root.querySelector('[data-wp-roster-menu]');
+    const menuHours = menu?.querySelector('[data-wp-roster-menu-hours]');
+    const closeMenu = () => {
+        if (menu) {
+            menu.hidden = true;
+        }
+    };
+    const openGridMenu = (event) => {
+        const td = event.target?.closest?.('td');
+        if (!td) {
+            return;
+        }
+        event.preventDefault();
+        const colIndex = Number(td.dataset.x);
+        const rowIndex = Number(td.dataset.y);
+        const rowDef = payload && td.dataset.x != null && td.dataset.y != null
+            ? gridRowDefs(payload)[rowIndex]
+            : null;
+        if (!menu || !rowDef || rowDef.type !== 'worker' || !payload.dates?.[colIndex - 1]) {
+            closeMenu();
+            return;
+        }
+        selectDayCell(td);
+        const hoursUrl = td.dataset.wpHoursUrl ?? '';
+        if (menuHours) {
+            menuHours.hidden = hoursUrl === '';
+            menuHours.dataset.hoursUrl = hoursUrl;
+        }
+        menu.hidden = false;
+        menu.style.left = `${Math.min(event.clientX, Math.max(0, window.innerWidth - 200))}px`;
+        menu.style.top = `${Math.min(event.clientY, Math.max(0, window.innerHeight - 140))}px`;
+    };
+    grid.addEventListener('contextmenu', openGridMenu);
+    document.addEventListener('click', (event) => {
+        if (menu && !menu.hidden && !menu.contains(event.target)) {
+            closeMenu();
+        }
+    });
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeMenu();
+        }
+    });
 
     const destroy = () => {
         if (worksheet) {
@@ -743,6 +793,7 @@ export function bind(root, wire) {
         payload = readEmbeddedPayload() ?? await wire.payload();
         lastDaySelection = null;
         lastDayCell = null;
+        closeMenu();
         const isMonth = payload.period === 'month';
         const dayCount = payload.dates.length;
         grid.classList.toggle('wp-roster-sheet--month', isMonth);
@@ -921,10 +972,21 @@ export function bind(root, wire) {
             return;
         }
 
+        if (event.target.closest('[data-wp-roster-menu-hours]')) {
+            const url = menuHours?.dataset?.hoursUrl;
+            closeMenu();
+            if (url) {
+                event.preventDefault();
+                requestLeave(() => window.location.assign(url));
+            }
+            return;
+        }
+
         if (event.target.closest('[data-wp-roster-day]')) {
             if (!worksheet || !payload || typeof wire.openDayEditor !== 'function') {
                 return;
             }
+            closeMenu();
             // Jspreadsheet reset selectedCell bij mousedown buiten het grid (o.a.
             // deze knop) — gebruik de bijgehouden laatste selectie.
             const sel = lastDaySelection ?? worksheet.selectedCell;

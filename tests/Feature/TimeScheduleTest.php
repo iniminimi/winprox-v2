@@ -323,6 +323,7 @@ it('vraagt eerst een team- of locatiekeuze voor het rooster', function () {
         ->assertOk()
         ->assertSee(__('time.schedule.pick_filter'), false)
         ->assertSee('wp-roster-grid-shell--hidden', false)
+        ->assertSee('data-wp-roster-menu', false)
         ->assertDontSee(__('time.schedule.empty_workers'), false);
 
     $this->actingAs($admin)
