@@ -1416,8 +1416,8 @@
                     "text": "Deactiveer een clock point tijdelijk (bv. bij werken op locatie). Het portaal toont dan dat inklokken niet beschikbaar is."
                 },
                 {
-                    "label": "Clock Point-link op startscherm gsm",
-                    "text": "Vinkje per Clock Point (standaard uit). Aan = naast Aanmelden een WinProx-icoon: op Android één tik om op het startscherm te zetten, op iPhone via Deel. Alleen voor uitvoerders die geen QR kunnen scannen (thuis of onderweg). Laat dit uit op TFT-schermen met wisselende QR-codes. Geen App Store."
+                    "label": "Link op het startscherm van de gsm",
+                    "text": "Sommige uitvoerders kunnen geen QR-code scannen — bijvoorbeeld omdat ze thuis of onderweg beginnen te werken. Zet het vinkje aan bij het clock point: op de aanmeldpagina verschijnt dan een WinProx-icoon naast <strong>Aanmelden</strong>. De uitvoerder tikt erop om een link naar dit clock point op het startscherm van zijn gsm te zetten. Zo opent hij het clock point voortaan met één tik, net als een app — zonder iets uit een app store te installeren. Op iPhone gaat dat via <strong>Deel</strong>. Laat het vinkje uit bij een TFT-klokscherm: daar verandert de QR-code voortdurend, dus een vaste link heeft geen zin."
                 }
             ]
         },

@@ -1416,8 +1416,8 @@
                     "text": "Deaktivieren Sie einen Clock Point vorübergehend (z. B. bei Arbeiten vor Ort). Das Portal zeigt dann an, dass Einstempeln nicht verfügbar ist."
                 },
                 {
-                    "label": "Clock-Point-Link auf dem Startbildschirm",
-                    "text": "Häkchen je Clock Point (standardmäßig aus). An = neben Anmelden ein WinProx-Symbol: unter Android ein Tipp auf den Startbildschirm, am iPhone über Teilen. Nur für Ausführende, die keinen QR scannen können (zu Hause oder unterwegs). Bei TFT-Bildschirmen mit wechselnden QR-Codes ausgeschaltet lassen. Kein App Store."
+                    "label": "Clock Point auf dem Startbildschirm des Telefons",
+                    "text": "Manche Ausführenden können keinen QR-Code scannen — etwa weil sie zu Hause oder unterwegs beginnen. Aktivieren Sie das Häkchen beim Clock Point: auf der Anmeldeseite erscheint dann ein WinProx-Symbol neben <strong>Anmelden</strong>. Der Ausführende tippt darauf, um einen Link zu diesem Clock Point auf den Startbildschirm seines Telefons zu legen. So öffnet er den Clock Point fortan mit einem Tipp, wie eine App — ohne etwas aus einem App Store zu installieren. Auf dem iPhone geht das über <strong>Teilen</strong>. Lassen Sie das Häkchen bei einem TFT-Klokschirm deaktiviert: dort ändert sich der QR-Code ständig, ein fester Link ist dort sinnlos."
                 }
             ]
         },

@@ -1416,8 +1416,8 @@
                     "text": "Disattivi temporaneamente un clock point (es. per lavori sul posto). Il portale indica che la timbratura non è disponibile."
                 },
                 {
-                    "label": "Collegamento Clock Point sulla schermata iniziale",
-                    "text": "Spunta per Clock Point (disattivata di default). Attiva = un’icona WinProx accanto ad Accesso: su Android un tocco la mette sulla schermata Home, su iPhone tramite Condividi. Solo per esecutori che non possono scansionare un QR (casa o in viaggio). Lasciare disattivato sugli schermi TFT con QR rotanti. Nessun App Store."
+                    "label": "Clock Point sulla schermata iniziale del telefono",
+                    "text": "Alcuni esecutori non possono scansionare un QR code — ad esempio perché iniziano da casa o in viaggio. Attiva la spunta sul clock point: nella pagina di accesso compare un'icona WinProx accanto ad <strong>Accesso</strong>. L'esecutore la tocca per mettere un link a questo clock point sulla schermata iniziale del telefono. Così apre il clock point con un tocco, come un'app — senza installare nulla da uno store. Su iPhone si fa tramite <strong>Condividi</strong>. Lascia la spunta disattivata su uno schermo TFT: il suo QR cambia continuamente, quindi un link fisso non serve."
                 }
             ]
         },

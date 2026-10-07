@@ -1424,8 +1424,8 @@
                     "text": "Désactivez temporairement un clock point (p. ex. lors de travaux sur site). Le portail indique alors que le pointage n'est pas disponible."
                 },
                 {
-                    "label": "Lien Clock Point sur l’écran d’accueil",
-                    "text": "Case par Clock Point (désactivée par défaut). Activée = une icône WinProx à côté de Connexion : sur Android une touche l’ajoute à l’écran d’accueil, sur iPhone via Partager. Uniquement pour les exécutants qui ne peuvent pas scanner un QR (domicile ou déplacement). Laissez ceci désactivé sur les écrans TFT avec QR rotatif. Pas d’App Store."
+                    "label": "Clock Point sur l’écran d’accueil du téléphone",
+                    "text": "Certains exécutants ne peuvent pas scanner un QR code — par exemple parce qu'ils commencent à domicile ou en déplacement. Cochez la case du Clock Point : une icône WinProx apparaît alors à côté de <strong>Connexion</strong> sur la page de connexion. L'exécutant la touche pour placer un lien vers ce Clock Point sur l'écran d'accueil de son téléphone. Il ouvre ensuite le Clock Point d'une seule touche, comme une application — sans rien installer depuis un store. Sur iPhone, cela se fait via <strong>Partager</strong>. Laissez la case décochée pour un écran TFT : son QR change constamment, un lien fixe n'y a donc aucune utilité."
                 }
             ]
         },

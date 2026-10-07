@@ -1416,8 +1416,8 @@
                     "text": "Desactive temporalmente un clock point (p. ej. por trabajos en el lugar). El portal indica entonces que el fichaje no está disponible."
                 },
                 {
-                    "label": "Enlace Clock Point en la pantalla de inicio",
-                    "text": "Casilla por Clock Point (desactivada por defecto). Activada = un icono WinProx junto a Inicio de sesión: en Android un toque lo pone en la pantalla de inicio, en iPhone vía Compartir. Solo para operarios que no pueden escanear un QR (casa o de camino). Déjelo desactivado en pantallas TFT con QR rotativos. Sin App Store."
+                    "label": "Clock Point en la pantalla de inicio del teléfono",
+                    "text": "Algunos operarios no pueden escanear un código QR — por ejemplo porque empiezan en casa o de camino. Marca la casilla del clock point: en la página de acceso aparece entonces un icono WinProx junto a <strong>Inicio de sesión</strong>. El operario lo toca para poner un enlace a este clock point en la pantalla de inicio de su teléfono. Así abre el clock point con un solo toque, como una app — sin instalar nada de una tienda. En iPhone se hace mediante <strong>Compartir</strong>. Deja la casilla desactivada en una pantalla TFT: su QR cambia constantemente, un enlace fijo no tiene sentido ahí."
                 }
             ]
         },
