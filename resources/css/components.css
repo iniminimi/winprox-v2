@@ -6907,7 +6907,7 @@ a.wp-kpi.wp-kpi--attention {
 }
 
 /* Multi-blok-dag: elke blok op een eigen regel (newline in celwaarde). */
-.wp-roster-cell--multi {
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--multi {
     white-space: pre-line;
     vertical-align: middle;
     line-height: 1.15;
