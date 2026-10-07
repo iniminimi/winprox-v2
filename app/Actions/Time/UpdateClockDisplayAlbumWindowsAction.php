@@ -49,6 +49,16 @@ class UpdateClockDisplayAlbumWindowsAction
             throw new InvalidArgumentException('album_windows_incomplete');
         }
 
+        // Rust-vensters mogen niet buiten de schermuren vallen — het scherm
+        // is dan toch uit, dus zo'n venster zou nooit zichtbaar zijn.
+        $onFrom = $this->hm($clockPoint->display_on_from);
+        $onUntil = $this->hm($clockPoint->display_on_until);
+        foreach ([[$from1, $until1], [$from2, $until2]] as [$af, $au]) {
+            if ($af !== null && ! $this->withinDisplayHours($onFrom, $onUntil, $af, $au)) {
+                throw new InvalidArgumentException('album_outside_schedule');
+            }
+        }
+
         return DB::transaction(function () use ($clockPoint, $tenantId, $actorUserId, $from1, $until1, $from2, $until2, $albumMode, $albumDays) {
             $locked = ClockPoint::query()
                 ->whereKey($clockPoint->id)
@@ -85,5 +95,40 @@ class UpdateClockDisplayAlbumWindowsAction
 
             return $locked;
         });
+    }
+
+    private function hm($time): ?string
+    {
+        return $time !== null ? substr((string) $time, 0, 5) : null;
+    }
+
+    /**
+     * Liggen vanaf/tot volledig binnen de aan-uren? Geen aan-uren ingesteld
+     * (altijd aan) = geen grens. Over-middernacht werkt in beide richtingen:
+     * een nachtscherm 22:00–06:00 laat bv. album 23:00–05:00 toe.
+     */
+    private function withinDisplayHours(?string $onFrom, ?string $onUntil, string $from, string $until): bool
+    {
+        if ($onFrom === null || $onUntil === null) {
+            return true;
+        }
+
+        $overnight = $onFrom > $onUntil;
+        $inWindow = fn (string $t) => $overnight
+            ? ($t >= $onFrom || $t <= $onUntil)
+            : ($t >= $onFrom && $t <= $onUntil);
+
+        if (! $inWindow($from) || ! $inWindow($until)) {
+            return false;
+        }
+
+        if ($from > $until) {
+            // Album over middernacht mag enkel als het scherm dat ook is,
+            // en dan binnen hetzelfde nachtvenster.
+            return $overnight && $from >= $onFrom && $until <= $onUntil;
+        }
+
+        // Dagvenster binnen een nachtscherm: volledig in één deel van het venster.
+        return ! $overnight || $from >= $onFrom || $until <= $onUntil;
     }
 }

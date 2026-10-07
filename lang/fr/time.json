@@ -342,7 +342,8 @@
             "upload_failed": "Échec du téléversement, réessayez.",
             "album_windows_incomplete": "Renseignez les deux heures par plage ou laissez vide.",
             "image_not_found": "Photo introuvable.",
-            "album_days_invalid": "Sélection de jours invalide."
+            "album_days_invalid": "Sélection de jours invalide.",
+            "album_outside_schedule": "Une plage de l'écran de veille sort des heures d'écran."
         },
         "album": {
             "title": "Écran de veille",

@@ -438,6 +438,42 @@ it('bewaart max. 2 album-vensters en weigert een half paar', function () {
     expect($point->refresh()->album1_from)->toBeNull();
 });
 
+it('weigert album-vensters buiten de schermuren', function () {
+    $tenant = displayTenant();
+    Tenancy::actAs($tenant->id);
+    $point = displayPoint($tenant);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $windows = app(UpdateClockDisplayAlbumWindowsAction::class);
+    $schedule = app(App\Actions\Time\UpdateClockDisplayScheduleAction::class);
+
+    // Schermuren 08:00–18:00: venster erbinnen mag, erbuiten niet.
+    $schedule->handle($point, $tenant->id, $admin->id, '08:00', '18:00');
+    $windows->handle($point->fresh(), $tenant->id, $admin->id, '08:00', '18:00', null, null);
+    expect(substr((string) $point->fresh()->album1_from, 0, 5))->toBe('08:00');
+
+    expect(fn () => $windows->handle($point->fresh(), $tenant->id, $admin->id, '07:00', '12:00', null, null))
+        ->toThrow(InvalidArgumentException::class, 'album_outside_schedule');
+    expect(fn () => $windows->handle($point->fresh(), $tenant->id, $admin->id, '12:00', '19:00', null, null))
+        ->toThrow(InvalidArgumentException::class, 'album_outside_schedule');
+    // Over middernacht terwijl het scherm niet over middernacht aan is.
+    expect(fn () => $windows->handle($point->fresh(), $tenant->id, $admin->id, '17:00', '09:00', null, null))
+        ->toThrow(InvalidArgumentException::class, 'album_outside_schedule');
+
+    // Nachtscherm 22:00–06:00: nachtalbum 23:00–05:00 mag, dagalbum niet.
+    $schedule->handle($point->fresh(), $tenant->id, $admin->id, '22:00', '06:00');
+    $windows->handle($point->fresh(), $tenant->id, $admin->id, '23:00', '05:00', null, null);
+    expect(substr((string) $point->fresh()->album1_from, 0, 5))->toBe('23:00');
+    expect(fn () => $windows->handle($point->fresh(), $tenant->id, $admin->id, '10:00', '12:00', null, null))
+        ->toThrow(InvalidArgumentException::class, 'album_outside_schedule');
+    expect(fn () => $windows->handle($point->fresh(), $tenant->id, $admin->id, '05:00', '23:00', null, null))
+        ->toThrow(InvalidArgumentException::class, 'album_outside_schedule');
+
+    // Altijd aan = geen grens.
+    $schedule->handle($point->fresh(), $tenant->id, $admin->id, null, null);
+    $windows->handle($point->fresh(), $tenant->id, $admin->id, '22:00', '07:00', null, null);
+    expect(substr((string) $point->fresh()->album1_from, 0, 5))->toBe('22:00');
+});
+
 it('bewaart de album-modus en weigert een ongeldige', function () {
     $tenant = displayTenant();
     Tenancy::actAs($tenant->id);

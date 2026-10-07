@@ -13,6 +13,12 @@
     color: var(--wp-text-muted);
 }
 
+/* Label als inline-item in een flexrij (wp-cluster, bv. tijdsblokken):
+   zonder ondermarge staat hij verticaal gecentreerd t.o.v. de inputs. */
+.wp-cluster > .wp-label {
+    margin-bottom: 0;
+}
+
 /* Bevestigingswachtwoord (bv. gevaarlijke zone): niet full-width. */
 .wp-field--password {
     max-width: 18rem;

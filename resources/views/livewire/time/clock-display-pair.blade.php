@@ -55,18 +55,30 @@
                 $scheduleSlots[] = sprintf('%02d:00', $h);
                 $scheduleSlots[] = sprintf('%02d:30', $h);
             }
+            // Screensaver-tijden mogen enkel binnen de schermuren vallen;
+            // over-middernacht (22:00–06:00) gelden beide dagdelen.
+            $albumSlots = $scheduleSlots;
+            if (filled($displayOnFrom) && filled($displayOnUntil)) {
+                $overnight = $displayOnFrom > $displayOnUntil;
+                $albumSlots = array_values(array_filter(
+                    $scheduleSlots,
+                    fn (string $s) => $overnight
+                        ? ($s >= $displayOnFrom || $s <= $displayOnUntil)
+                        : ($s >= $displayOnFrom && $s <= $displayOnUntil),
+                ));
+            }
         @endphp
         <div class="wp-cluster wp-cluster--wrap">
             <span class="wp-label">{{ __('time.clock_displays.schedule.block') }} :</span>
             <span class="wp-muted wp-text-sm">{{ __('time.clock_displays.schedule.from') }}</span>
-            <select id="display-on-from" class="wp-input wp-input--auto" wire:model="displayOnFrom">
+            <select id="display-on-from" class="wp-input wp-input--auto" wire:model.live="displayOnFrom">
                 <option value="">{{ __('time.clock_displays.schedule.always_on') }}</option>
                 @foreach ($scheduleSlots as $slot)
                     <option value="{{ $slot }}">{{ $slot }}</option>
                 @endforeach
             </select>
             <span class="wp-muted wp-text-sm">{{ __('time.clock_displays.schedule.until') }}</span>
-            <select id="display-on-until" class="wp-input wp-input--auto" wire:model="displayOnUntil">
+            <select id="display-on-until" class="wp-input wp-input--auto" wire:model.live="displayOnUntil">
                 <option value="">{{ __('time.clock_displays.schedule.always_on') }}</option>
                 @foreach ($scheduleSlots as $slot)
                     <option value="{{ $slot }}">{{ $slot }}</option>
@@ -104,14 +116,14 @@
                 <span class="wp-muted wp-text-sm">{{ __('time.clock_displays.album.from') }}</span>
                 <select id="{{ $p }}-from" class="wp-input wp-input--auto" wire:model="{{ $p }}From">
                     <option value="">—</option>
-                    @foreach ($scheduleSlots as $slot)
+                    @foreach ($albumSlots as $slot)
                         <option value="{{ $slot }}">{{ $slot }}</option>
                     @endforeach
                 </select>
                 <span class="wp-muted wp-text-sm">{{ __('time.clock_displays.album.until') }}</span>
                 <select id="{{ $p }}-until" class="wp-input wp-input--auto" wire:model="{{ $p }}Until">
                     <option value="">—</option>
-                    @foreach ($scheduleSlots as $slot)
+                    @foreach ($albumSlots as $slot)
                         <option value="{{ $slot }}">{{ $slot }}</option>
                     @endforeach
                 </select>

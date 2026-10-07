@@ -342,7 +342,8 @@
             "upload_failed": "Upload failed, please try again.",
             "album_windows_incomplete": "Fill in both times per block or leave both empty.",
             "image_not_found": "Photo not found.",
-            "album_days_invalid": "Invalid day selection."
+            "album_days_invalid": "Invalid day selection.",
+            "album_outside_schedule": "A screensaver time block falls outside the screen hours."
         },
         "album": {
             "title": "Screensaver",

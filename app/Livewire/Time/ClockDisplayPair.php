@@ -78,6 +78,41 @@ class ClockDisplayPair extends Component
         for ($i = 0; $i < 7; $i++) {
             $this->albumDays[$i] = (bool) ($days & (1 << $i));
         }
+        $this->clampAlbumToSchedule();
+    }
+
+    /** Schermuren live gewijzigd: album-keuzes buiten de nieuwe grenzen wissen. */
+    public function updatedDisplayOnFrom(): void
+    {
+        $this->clampAlbumToSchedule();
+    }
+
+    public function updatedDisplayOnUntil(): void
+    {
+        $this->clampAlbumToSchedule();
+    }
+
+    /** Album-slots mogen enkel binnen de schermuren liggen; 'altijd aan' = geen grens. */
+    private function clampAlbumToSchedule(): void
+    {
+        foreach (['album1From', 'album1Until', 'album2From', 'album2Until'] as $prop) {
+            if ($this->{$prop} !== null && $this->{$prop} !== '' && ! $this->slotWithinDisplayHours($this->{$prop})) {
+                $this->{$prop} = null;
+            }
+        }
+    }
+
+    private function slotWithinDisplayHours(string $slot): bool
+    {
+        $from = $this->displayOnFrom ?: null;
+        $until = $this->displayOnUntil ?: null;
+        if ($from === null || $until === null) {
+            return true;
+        }
+
+        return $from <= $until
+            ? ($slot >= $from && $slot <= $until)
+            : ($slot >= $from || $slot <= $until);
     }
 
     public function issueCode(IssueClockDisplayPairingCodeAction $issue): void
