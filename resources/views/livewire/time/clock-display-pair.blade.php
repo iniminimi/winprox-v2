@@ -187,9 +187,8 @@
         @endif
     </x-wp-settings-section>
 
-    {{-- Pairing-code --}}
-    <div class="wp-card wp-card-pad wp-stack-tight">
-        <p class="wp-section-title">{{ __('time.clock_displays.code.title') }}</p>
+    {{-- Pairing-code + gekoppeld scherm --}}
+    <x-wp-settings-section :title="__('time.clock_displays.code.title')">
         <p class="wp-muted wp-text-sm">{{ __('time.clock_displays.code.hint') }}</p>
         @if ($point?->hasLinkedDisplay())
             <div class="wp-flash wp-flash--danger">{{ __('time.clock_displays.code.replace_warning') }}</div>
@@ -206,18 +205,17 @@
             <button type="button" class="btn btn--primary btn--sm" wire:click="issueCode">
                 {{ __('time.clock_displays.code.issue') }}
             </button>
+            @if ($point?->hasLinkedDisplay())
+                <button type="button" class="btn btn--surface btn--sm" wire:click="$set('confirmUnlink', true)">
+                    {{ __('time.clock_displays.linked.unlink') }}
+                </button>
+            @endif
         </div>
 
-        {{-- Gekoppeld scherm: status + beheer in hetzelfde blok als de koppelcode --}}
+        {{-- Gekoppeld scherm: status in hetzelfde blok als de koppelcode --}}
         @if ($point?->hasLinkedDisplay())
             <div class="wp-settings-subblock wp-stack-tight">
-                <div class="wp-cluster wp-cluster--wrap">
-                    <h3 class="wp-settings-subblock-title">{{ __('time.clock_displays.linked.title') }}</h3>
-                    <span class="wp-grow"></span>
-                    <button type="button" class="btn btn--surface btn--sm" wire:click="$set('confirmUnlink', true)">
-                        {{ __('time.clock_displays.linked.unlink') }}
-                    </button>
-                </div>
+                <h3 class="wp-settings-subblock-title">{{ __('time.clock_displays.linked.title') }}</h3>
                 <p class="wp-issue-card-meta">
                     {{ __('time.clock_displays.linked.device') }}: <strong>{{ $point->display_device_hint }}</strong>
                 </p>
@@ -229,7 +227,7 @@
                 </p>
             </div>
         @endif
-    </div>
+    </x-wp-settings-section>
 
     {{-- Pending claim --}}
     @if ($pendingClaim !== null)
