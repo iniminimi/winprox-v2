@@ -362,6 +362,32 @@ it('vraagt eerst een team- of locatiekeuze voor het rooster', function () {
         ->and($scoped->workers)->toHaveCount(1);
 });
 
+it('onthoudt de gekozen team- of locatiescope', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $other = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(RosterIndex::class)
+        ->set('teamFilter', (string) $team->id);
+
+    expect(Cookie::queued('roster_scope'))->not->toBeNull();
+
+    $this->actingAs($admin)
+        ->withCookie('roster_scope', json_encode(['team' => $team->id, 'location' => null]))
+        ->get(route('time.schedule.index'))
+        ->assertOk()
+        ->assertSee($worker->last_name, false)
+        ->assertDontSee(__('time.schedule.pick_filter'), false)
+        ->assertDontSee('wp-roster-grid-shell--hidden', false);
+
+    // URL wint van de cookie: team B (leeg) toont geen worker van team A.
+    $this->actingAs($admin)
+        ->withCookie('roster_scope', json_encode(['team' => $team->id, 'location' => null]))
+        ->get(route('time.schedule.index', ['team' => $other->id]))
+        ->assertOk()
+        ->assertDontSee($worker->last_name, false);
+});
+
 it('slaat een week op via de API', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
     $week = scheduleWeekStart();

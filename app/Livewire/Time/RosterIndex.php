@@ -47,6 +47,10 @@ class RosterIndex extends Component
 
     private const VIEW_COOKIE_MINUTES = 60 * 24 * 365;
 
+    private const SCOPE_COOKIE = 'roster_scope';
+
+    private const SCOPE_COOKIE_MINUTES = 60 * 24 * 365;
+
     #[Url(as: 'week')]
     public string $weekStart = '';
 
@@ -88,6 +92,7 @@ class RosterIndex extends Component
         $this->authorize('viewAny', PlannedShift::class);
         $this->normalizeView();
         $this->restoreRememberedView();
+        $this->restoreRememberedScope();
 
         if ($this->weekStart === '') {
             $this->weekStart = $this->isMonth()
@@ -274,12 +279,14 @@ class RosterIndex extends Component
     public function updatedTeamFilter(mixed $value): void
     {
         $this->teamFilter = $value === '' || $value === null ? null : (int) $value;
+        $this->rememberScope();
         $this->dispatch('roster-week-changed');
     }
 
     public function updatedLocationFilter(mixed $value): void
     {
         $this->locationFilter = $value === '' || $value === null ? null : (int) $value;
+        $this->rememberScope();
         $this->syncGroupFiltersFromLocation();
         $this->dispatch('roster-week-changed');
     }
@@ -556,5 +563,28 @@ class RosterIndex extends Component
         if (in_array($remembered, ['week', 'month'], true)) {
             $this->view = $remembered;
         }
+    }
+
+    private function restoreRememberedScope(): void
+    {
+        if (request()->query->has('team') || request()->query->has('location')) {
+            return;
+        }
+
+        $remembered = json_decode((string) request()->cookie(self::SCOPE_COOKIE, ''), true);
+        if (! is_array($remembered)) {
+            return;
+        }
+
+        $this->teamFilter = isset($remembered['team']) ? (int) $remembered['team'] : null;
+        $this->locationFilter = isset($remembered['location']) ? (int) $remembered['location'] : null;
+    }
+
+    private function rememberScope(): void
+    {
+        Cookie::queue(self::SCOPE_COOKIE, json_encode([
+            'team' => $this->teamFilter,
+            'location' => $this->locationFilter,
+        ]), self::SCOPE_COOKIE_MINUTES);
     }
 }
