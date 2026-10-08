@@ -185,6 +185,10 @@
         "worker_deleted": ":name deleted.",
         "no_workers": "There are no workers in this team yet.",
         "badge": "Team leader",
+        "tile": "Team leader",
+        "tile_sub": "Manage icons, phones and teammates",
+        "page_title": "Team leader",
+        "page_subtitle": "Release icons and devices, and manage your teammates.",
         "errors": {
             "icon_wrong": "That is not your icon.",
             "colleague_required": "Choose a blocked colleague.",

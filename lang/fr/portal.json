@@ -185,6 +185,10 @@
         "worker_deleted": ":name supprimé.",
         "no_workers": "Il n'y a pas encore de travailleurs dans cette équipe.",
         "badge": "Chef d'équipe",
+        "tile": "Chef d’équipe",
+        "tile_sub": "Icônes, téléphones et équipiers",
+        "page_title": "Chef d’équipe",
+        "page_subtitle": "Libérez les icônes et appareils et gérez vos équipiers.",
         "errors": {
             "icon_wrong": "Ce n'est pas votre icône.",
             "colleague_required": "Choisissez un collègue bloqué.",

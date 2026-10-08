@@ -185,6 +185,10 @@
         "worker_deleted": ":name eliminato.",
         "no_workers": "Non ci sono ancora lavoratori in questo team.",
         "badge": "Caposquadra",
+        "tile": "Caposquadra",
+        "tile_sub": "Icone, telefoni e membri del team",
+        "page_title": "Caposquadra",
+        "page_subtitle": "Sblocca icone e dispositivi e gestisci i membri del tuo team.",
         "errors": {
             "icon_wrong": "Non è la Sua icona.",
             "colleague_required": "Scelga un collega bloccato.",

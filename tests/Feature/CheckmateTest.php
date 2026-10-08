@@ -312,6 +312,47 @@ it('toont in checkmate geen geplande-bezoekenlijst maar wel de klant-zoekknop', 
     expect($html)->toMatch('/x-data="[^"]*refreshHere\(\)[^"]*geolocation[^"]*"/s');
 });
 
+it('toont geen teamleader-tegel aan een gewone uitvoerder', function () {
+    $tenant = checkmateTenant();
+    Tenancy::actAs($tenant->id);
+    $worker = checkmateWorker($tenant);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $team = $worker->team;
+
+    WorkerVerification::markVerified($team, $worker);
+    WorkerDeviceSession::bindRememberedWorker($team, $worker);
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->assertDontSee('openTeamleader', false)
+        ->call('openTeamleader')
+        ->assertDontSee(__('portal.teamleader.page_title'), false);
+});
+
+it('verbergt teamleader-functies achter een tegel op het checkmate-portaal', function () {
+    $tenant = checkmateTenant();
+    Tenancy::actAs($tenant->id);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $leader = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'is_teamleader' => true,
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    WorkerVerification::markVerified($team, $leader);
+    WorkerDeviceSession::bindRememberedWorker($team, $leader);
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->assertSee('openTeamleader', false)
+        ->assertDontSee('toggleReleasePanel', false)
+        ->assertDontSee(__('portal.teamleader.page_subtitle'), false)
+        ->call('openTeamleader')
+        ->assertSee(__('portal.teamleader.page_subtitle'), false)
+        ->call('closeTeamleader')
+        ->assertDontSee(__('portal.teamleader.page_subtitle'), false)
+        ->assertSee('openTeamleader', false);
+});
+
 it('vindt checkmate-uitvoerders ondanks legacy-locatiebeperking op het clock point', function () {
     $tenant = checkmateTenant();
     Tenancy::actAs($tenant->id);

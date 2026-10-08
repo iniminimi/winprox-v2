@@ -185,6 +185,10 @@
         "worker_deleted": ":name eliminado.",
         "no_workers": "Aún no hay trabajadores en este equipo.",
         "badge": "Jefe de equipo",
+        "tile": "Jefe de equipo",
+        "tile_sub": "Iconos, teléfonos y compañeros",
+        "page_title": "Jefe de equipo",
+        "page_subtitle": "Libera iconos y dispositivos y gestiona a tus compañeros.",
         "errors": {
             "icon_wrong": "Ese no es su icono.",
             "colleague_required": "Elija un colega bloqueado.",

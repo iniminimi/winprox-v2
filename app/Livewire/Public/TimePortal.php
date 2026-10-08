@@ -203,6 +203,9 @@ class TimePortal extends Component
     #[Locked]
     public bool $absenceListOpen = false;
 
+    #[Locked]
+    public bool $teamleaderOpen = false;
+
     public string $absenceKind = 'leave';
 
     public string $absenceDateFrom = '';
@@ -466,7 +469,7 @@ class TimePortal extends Component
     private function forgetPortalSignInState(): void
     {
         $this->taskBaselineSyncedThisVisit = false;
-        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'flashMessageKey', 'flashMessageReplace', 'homescreenHelpOpen']);
+        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'flashMessageKey', 'flashMessageReplace', 'homescreenHelpOpen', 'teamleaderOpen']);
         $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm', 'rosterAcknowledged']);
     }
 
@@ -489,6 +492,7 @@ class TimePortal extends Component
         $this->hoursListOpen = false;
         $this->scheduleListOpen = false;
         $this->absenceListOpen = false;
+        $this->teamleaderOpen = false;
         $this->rosterAckOpen = true;
         $this->rosterListOpen = false;
         $this->rosterAcknowledged = false;
@@ -510,6 +514,7 @@ class TimePortal extends Component
         $this->closeRoster();
         $this->scheduleListOpen = false;
         $this->absenceListOpen = false;
+        $this->teamleaderOpen = false;
         $this->hoursMonth = now()->format('Y-m');
         $this->hoursListOpen = true;
     }
@@ -538,6 +543,7 @@ class TimePortal extends Component
         $this->closeRoster();
         $this->hoursListOpen = false;
         $this->absenceListOpen = false;
+        $this->teamleaderOpen = false;
 
         $unread = $listNotifications->handle(
             $worker,
@@ -573,6 +579,7 @@ class TimePortal extends Component
         $this->closeRoster();
         $this->hoursListOpen = false;
         $this->scheduleListOpen = false;
+        $this->teamleaderOpen = false;
         $today = now()->toDateString();
         $this->absenceKind = ShiftTypeKind::Leave->value;
         $this->absenceDateFrom = $today;
@@ -585,6 +592,25 @@ class TimePortal extends Component
     public function closeAbsence(): void
     {
         $this->absenceListOpen = false;
+    }
+
+    public function openTeamleader(): void
+    {
+        if ($this->portalTeamleaderWorker() === null || $this->activeClockPoint() === null) {
+            return;
+        }
+
+        $this->closeRoster();
+        $this->hoursListOpen = false;
+        $this->scheduleListOpen = false;
+        $this->absenceListOpen = false;
+        $this->customerFormOpen = false;
+        $this->teamleaderOpen = true;
+    }
+
+    public function closeTeamleader(): void
+    {
+        $this->teamleaderOpen = false;
     }
 
     public function submitAbsence(RequestAbsenceAction $requestAbsence): void
@@ -1135,6 +1161,7 @@ class TimePortal extends Component
         }
 
         $this->resetCustomerForm();
+        $this->teamleaderOpen = false;
         $this->customerFormOpen = true;
     }
 
@@ -1791,6 +1818,10 @@ class TimePortal extends Component
             }
             $this->scheduleListOpen = false;
             $this->absenceListOpen = false;
+        }
+
+        if (! $canAct || ! ($verifiedWorker?->is_teamleader)) {
+            $this->teamleaderOpen = false;
         }
 
         if (! $evacuationList) {

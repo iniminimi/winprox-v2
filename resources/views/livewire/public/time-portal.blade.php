@@ -414,11 +414,13 @@
                     @else
                         <p class="wp-muted">{{ __('portal.worker.errors.no_permission') }}</p>
                     @endif
+                @elseif ($teamleaderOpen)
+                    <x-wp-portal-back wire:click="closeTeamleader" />
+                    <x-wp-page-head-title variant="portal" icon="star" :title="__('portal.teamleader.page_title')">
+                        <p class="wp-muted">{{ __('portal.teamleader.page_subtitle') }}</p>
+                    </x-wp-page-head-title>
+                    @include('partials.wp-portal-teamleader-release')
                 @else
-                    @if ($verifiedWorker?->is_teamleader)
-                        @include('partials.wp-portal-teamleader-release')
-                    @endif
-
                     @unless ($hasTimeModule)
                         @include('partials.wp-portal-presence')
                     @endunless
@@ -857,6 +859,18 @@
                                     <span class="wp-tile-sub">{{ __('time.roster.tile_sub') }}</span>
                                 </button>
                             @endif
+                        </div>
+                    @endif
+
+                    @if ($verifiedWorker?->is_teamleader)
+                        <div class="wp-tiles">
+                            <button type="button" class="wp-tile" wire:click="openTeamleader" data-manual-capture-trigger="portal-open-teamleader">
+                                <span class="wp-cluster">
+                                    <x-wp-icon name="star" class="wp-tile-icon" />
+                                    <span class="wp-tile-title">{{ __('portal.teamleader.tile') }}</span>
+                                </span>
+                                <span class="wp-tile-sub">{{ __('portal.teamleader.tile_sub') }}</span>
+                            </button>
                         </div>
                     @endif
                 @endif

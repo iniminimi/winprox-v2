@@ -185,6 +185,10 @@
         "worker_deleted": ":name verwijderd.",
         "no_workers": "Er zijn nog geen workers in dit team.",
         "badge": "Teamleader",
+        "tile": "Teamleader",
+        "tile_sub": "Icoon, gsm en teamleden beheren",
+        "page_title": "Teamleader",
+        "page_subtitle": "Geef iconen en toestellen vrij en beheer je teamleden.",
         "errors": {
             "icon_wrong": "Dat is niet jouw icoon.",
             "colleague_required": "Kies een geblokkeerde collega.",

@@ -185,6 +185,10 @@
         "worker_deleted": ":name gelöscht.",
         "no_workers": "Es gibt noch keine Mitarbeiter in diesem Team.",
         "badge": "Teamleiter",
+        "tile": "Teamleiter",
+        "tile_sub": "Symbole, Handys und Teammitglieder verwalten",
+        "page_title": "Teamleiter",
+        "page_subtitle": "Geben Sie Symbole und Geräte frei und verwalten Sie Ihre Teammitglieder.",
         "errors": {
             "icon_wrong": "Das ist nicht Ihr Icon.",
             "colleague_required": "Wählen Sie einen gesperrten Kollegen.",
