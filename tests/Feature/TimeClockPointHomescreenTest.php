@@ -107,5 +107,10 @@ it('levert een webmanifest voor elk clock point', function () {
         ->assertJsonPath('display', 'standalone')
         ->assertJsonPath('background_color', '#ffffff')
         ->assertJsonPath('start_url', route('public.time-portal.cp', $clockPoint->qr_token))
-        ->assertJsonPath('id', route('public.time-portal.cp', $clockPoint->qr_token));
+        ->assertJsonPath('id', route('public.time-portal.cp', $clockPoint->qr_token))
+        ->assertJsonPath('scope', rtrim(url('/'), '/').'/')
+        ->assertJsonPath('handle_links', 'preferred')
+        ->assertJsonPath('launch_handler.client_mode', 'navigate-existing')
+        ->assertJsonPath('related_applications.0.platform', 'webapp')
+        ->assertJsonPath('related_applications.0.id', route('public.time-portal.cp', $clockPoint->qr_token));
 });

@@ -7335,6 +7335,10 @@ a.wp-kpi.wp-kpi--attention {
     }
 }
 
+html.wp-pwa-installed .wp-homescreen-shortcut-wrap {
+    display: none;
+}
+
 
 
 /* Klokscherm-koppelcode (time.clock-displays) — groot intikbaar op het scherm. */

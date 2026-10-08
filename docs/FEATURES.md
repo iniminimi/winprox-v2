@@ -1141,7 +1141,11 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   om de aanmeldlink op het startscherm van de gsm te zetten. Op Android tikt de uitvoerder
   het icoon: Chrome zet WinProx op het startscherm. Op iPhone via Deel → Zet op beginscherm.
   Het icoon opent de aanmeldlink (`/cp/{token}`), niet de sticker-URL, en blijft zichtbaar
-  na aanmelden. Op een vaste prikklok is er vanuit dat icoon geen inklokknop; Checkmate klokt
+  na aanmelden. De manifest-scope is de site-root, zodat een Android-scan van sticker of
+  klokscherm de geïnstalleerde app opent (bestaand icoon opnieuw zetten, anders houdt
+  Android de oude scope). Op iPhone opent de camera Safari; daar blijft inklokken in die
+  browser. In de browser verdwijnt het installatie-icoon zodra Android de app als
+  geïnstalleerd meldt. Op een vaste prikklok is er vanuit dat icoon geen inklokknop; Checkmate klokt
   daar wel in en uit. Geen App Store. Zonder GPS-werkbezoeken blijven
   taakacties alleen-lezen (afhandelen via unit-QR). Met Time + GPS-werkbezoeken: teamtaken
   starten/afronden op Clock Point zolang er een open werkbezoek is op die klantlocatie;

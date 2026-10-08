@@ -407,7 +407,7 @@
         "title": "Beschikbaarheid",
         "items": [
           "24/7 bereikbaar als SaaS (browser + QR-portalen).",
-          "Unit-QR: een geladen pagina blijft bruikbaar zonder netwerk voor taken, meldingen en unit checks; synchronisatie bij herstel. Clock Point-prik vereist online + verse QR-scan. Het startscherm-icoon op elk Clock Point opent de aanmeldlink zonder prik; sticker en klokscherm-QR geven een scan. Geen extra offline.",
+          "Unit-QR: een geladen pagina blijft bruikbaar zonder netwerk voor taken, meldingen en unit checks; synchronisatie bij herstel. Clock Point-prik vereist online + verse QR-scan. Het startscherm-icoon op elk Clock Point opent de aanmeldlink zonder prik; sticker en klokscherm-QR geven een scan. Op Android opent die scan de geïnstalleerde app; op iPhone opent de camera Safari. Geen extra offline.",
           "Gepland onderhoud: bij voorkeur buiten kantooruren, met aankondiging waar mogelijk.",
           "Formele uptime-SLA: op vraag contractueel af te spreken."
         ]
