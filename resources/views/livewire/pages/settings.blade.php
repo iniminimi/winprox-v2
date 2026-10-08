@@ -229,8 +229,12 @@
                         <p class="wp-hint">{{ __('settings.time_clock.gps_visits_hint') }}</p>
                         <div class="wp-field">
                             <label class="wp-label" for="timeGpsVisitRadius">{{ __('settings.time_clock.gps_visit_radius') }}</label>
-                            <input type="number" id="timeGpsVisitRadius" class="wp-input" wire:model="timeGpsVisitRadiusMeters" min="10" max="2000" step="5">
-                            <p class="wp-hint">{{ __('settings.time_clock.gps_visit_radius_hint') }}</p>
+                            <div class="wp-cluster">
+                                <div class="wp-field--code">
+                                    <input type="number" id="timeGpsVisitRadius" class="wp-input" wire:model="timeGpsVisitRadiusMeters" min="10" max="2000" step="5">
+                                </div>
+                                <p class="wp-muted wp-text-sm">{{ __('settings.time_clock.gps_visit_radius_hint') }}</p>
+                            </div>
                         </div>
                         @error('time_gps_visit_radius_meters') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
