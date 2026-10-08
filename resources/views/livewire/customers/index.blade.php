@@ -103,6 +103,13 @@
                                     {{ $customer->is_active ? __('locations.deactivate') : __('locations.activate') }}
                                 </button>
                             @endcan
+                            @if ($customerLocations->isEmpty())
+                                @can('delete', $customer)
+                                    <button type="button" class="btn btn--danger btn--sm"
+                                            wire:click="deleteCustomer({{ $customer->id }})"
+                                            wire:confirm="{{ __('customers.confirm_delete', ['name' => $customer->name]) }}">{{ __('common.button.delete') }}</button>
+                                @endcan
+                            @endif
                         </div>
                     </div>
 

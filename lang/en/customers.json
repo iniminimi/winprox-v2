@@ -8,6 +8,8 @@
   "inactive": "Inactive",
   "saved": "Customer saved.",
   "location_saved": "Work address saved.",
+  "deleted_customer": "Customer deleted.",
+  "confirm_delete": "Permanently delete customer :name?",
   "locations_count": "{0} No work addresses|{1} :count work address|[2,*] :count work addresses",
   "no_locations": "No work addresses yet.",
   "create_title": "New customer",
@@ -91,6 +93,7 @@
   },
   "errors": {
     "name_required": "Enter a customer name.",
+    "has_locations": "This customer still has work addresses — remove those first.",
     "email_invalid": "Enter a valid email address.",
     "not_found": "Customer not found."
   },

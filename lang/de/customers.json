@@ -8,6 +8,8 @@
   "inactive": "Inaktiv",
   "saved": "Kunde gespeichert.",
   "location_saved": "Arbeitsadresse gespeichert.",
+  "deleted_customer": "Kunde gelöscht.",
+  "confirm_delete": "Kunde :name endgültig löschen?",
   "locations_count": "{0} Keine Arbeitsadressen|{1} :count Arbeitsadresse|[2,*] :count Arbeitsadressen",
   "no_locations": "Noch keine Arbeitsadressen.",
   "create_title": "Neuer Kunde",
@@ -91,6 +93,7 @@
   },
   "errors": {
     "name_required": "Geben Sie einen Kundennamen ein.",
+    "has_locations": "Dieser Kunde hat noch Arbeitsadressen — entfernen Sie diese zuerst.",
     "email_invalid": "Geben Sie eine gültige E-Mail-Adresse ein.",
     "not_found": "Kunde nicht gefunden."
   },

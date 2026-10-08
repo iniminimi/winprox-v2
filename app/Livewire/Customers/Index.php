@@ -3,6 +3,7 @@
 namespace App\Livewire\Customers;
 
 use App\Actions\Customers\CreateCustomerAction;
+use App\Actions\Customers\DeleteCustomerAction;
 use App\Actions\Customers\DeleteCustomerImportBatchAction;
 use App\Actions\Customers\ImportCustomersAction;
 use App\Actions\Customers\SummarizeCustomerWorkStatsAction;
@@ -207,6 +208,22 @@ class Index extends Component
         $this->authorize('update', $customer);
 
         $update->handle($customer, ['is_active' => ! $customer->is_active], (int) auth()->id());
+    }
+
+    public function deleteCustomer(int $customerId, DeleteCustomerAction $delete): void
+    {
+        $customer = Customer::findOrFail($customerId);
+        $this->authorize('delete', $customer);
+
+        try {
+            $delete->handle($customer, (int) auth()->id());
+        } catch (InvalidArgumentException) {
+            session()->flash('error', __('customers.errors.has_locations'));
+
+            return;
+        }
+
+        session()->flash('success', __('customers.deleted_customer'));
     }
 
     public function openLocationCreate(int $customerId): void

@@ -161,6 +161,30 @@ it('toont een zachte dedup-nudge binnen de eigen tenant', function () {
     expect($matches->pluck('name')->all())->toBe(['Bakkerij Peeters']);
 });
 
+it('verwijdert een klant zonder werkadressen, maar niet met werkadressen', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $empty = Customer::factory()->create(['tenant_id' => $tenant->id]);
+    $linked = Customer::factory()->create(['tenant_id' => $tenant->id]);
+    Location::factory()->create(['tenant_id' => $tenant->id, 'customer_id' => $linked->id]);
+
+    Livewire::actingAs($admin)
+        ->test(CustomersIndex::class)
+        ->assertSee('deleteCustomer('.$empty->id.')')
+        ->assertDontSee('deleteCustomer('.$linked->id.')')
+        ->call('deleteCustomer', $empty->id);
+
+    expect(Customer::find($empty->id))->toBeNull()
+        ->and(Customer::find($linked->id))->not->toBeNull();
+
+    Livewire::actingAs($admin)
+        ->test(CustomersIndex::class)
+        ->call('deleteCustomer', $linked->id);
+
+    expect(Customer::find($linked->id))->not->toBeNull();
+});
+
 it('start een werkbezoek op een klantlocatie binnen de straal', function () {
     $tenant = checkmateTenant();
     Tenancy::actAs($tenant->id);

@@ -8,6 +8,8 @@
   "inactive": "Inattivo",
   "saved": "Cliente salvato.",
   "location_saved": "Indirizzo di lavoro salvato.",
+  "deleted_customer": "Cliente eliminato.",
+  "confirm_delete": "Eliminare definitivamente il cliente :name?",
   "locations_count": "{0} Nessun indirizzo di lavoro|{1} :count indirizzo di lavoro|[2,*] :count indirizzi di lavoro",
   "no_locations": "Ancora nessun indirizzo di lavoro.",
   "create_title": "Nuovo cliente",
@@ -91,6 +93,7 @@
   },
   "errors": {
     "name_required": "Inserisci un nome cliente.",
+    "has_locations": "Questo cliente ha ancora indirizzi di lavoro — eliminarli prima.",
     "email_invalid": "Inserisci un indirizzo e-mail valido.",
     "not_found": "Cliente non trovato."
   },

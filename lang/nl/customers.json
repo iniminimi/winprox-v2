@@ -8,6 +8,8 @@
   "inactive": "Inactief",
   "saved": "Klant opgeslagen.",
   "location_saved": "Werkadres opgeslagen.",
+  "deleted_customer": "Klant verwijderd.",
+  "confirm_delete": "Klant :name definitief verwijderen?",
   "locations_count": "{0} Geen werkadressen|{1} :count werkadres|[2,*] :count werkadressen",
   "no_locations": "Nog geen werkadressen.",
   "create_title": "Nieuwe klant",
@@ -91,6 +93,7 @@
   },
   "errors": {
     "name_required": "Vul een klantnaam in.",
+    "has_locations": "Deze klant heeft nog werkadressen — verwijder die eerst.",
     "email_invalid": "Vul een geldig e-mailadres in.",
     "not_found": "Klant niet gevonden."
   },

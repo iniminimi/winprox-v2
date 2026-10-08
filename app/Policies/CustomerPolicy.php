@@ -32,4 +32,9 @@ class CustomerPolicy
     {
         return $this->view($user, $customer);
     }
+
+    public function delete(User $user, Customer $customer): bool
+    {
+        return $this->view($user, $customer);
+    }
 }
