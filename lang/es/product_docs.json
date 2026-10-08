@@ -407,7 +407,7 @@
         "title": "Availability",
         "items": [
           "Available 24/7 as SaaS (browser + QR portals).",
-          "QR de unidad: una página cargada sigue usable sin red para tareas, avisos y controles de unidad; se sincroniza al volver. El fichaje Clock Point sigue en línea y exige un nuevo escaneo QR. El icono de inicio en cada Clock Point abre el enlace de acceso sin fichaje; la pegatina y el QR de la pantalla dan un escaneo. En Android ese escaneo abre la app instalada; en el iPhone la cámara abre Safari. Sin extra sin conexión.",
+          "QR de unidad: una página cargada sigue usable sin red para tareas, avisos y controles de unidad; se sincroniza al volver. El fichaje Clock Point sigue en línea y exige un nuevo escaneo QR. El icono de inicio en cada Clock Point abre el enlace de acceso fijo sin fichaje, también si la app se instaló desde el QR giratorio de la pantalla; la pegatina y el QR de la pantalla dan un escaneo. En Android ese escaneo abre la app instalada; en el iPhone la cámara abre Safari. Sin extra sin conexión.",
           "Planned maintenance preferably outside business hours, with notice where possible.",
           "Formal uptime SLA: available contractually on request."
         ]

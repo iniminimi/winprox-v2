@@ -407,7 +407,7 @@
         "title": "Availability",
         "items": [
           "Available 24/7 as SaaS (browser + QR portals).",
-          "Unit-QR: eine geladene Seite bleibt ohne Netz für Aufgaben, Meldungen und Unit-Checks nutzbar; Sync bei Wiederkehr. Clock-Point-Stempel bleibt online und braucht einen neuen QR-Scan. Das Startbildschirm-Symbol auf jedem Clock Point öffnet den Anmeldelink ohne Stempel; Aufkleber und Uhren-QR geben einen Scan. Unter Android öffnet dieser Scan die installierte App; auf dem iPhone öffnet die Kamera Safari. Kein extra Offline.",
+          "Unit-QR: eine geladene Seite bleibt ohne Netz für Aufgaben, Meldungen und Unit-Checks nutzbar; Sync bei Wiederkehr. Clock-Point-Stempel bleibt online und braucht einen neuen QR-Scan. Das Startbildschirm-Symbol auf jedem Clock Point öffnet den festen Anmeldelink ohne Stempel, auch wenn die App über den wechselnden Bildschirm-QR installiert wurde; Aufkleber und Uhren-QR geben einen Scan. Unter Android öffnet dieser Scan die installierte App; auf dem iPhone öffnet die Kamera Safari. Kein extra Offline.",
           "Planned maintenance preferably outside business hours, with notice where possible.",
           "Formal uptime SLA: available contractually on request."
         ]

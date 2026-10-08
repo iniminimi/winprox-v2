@@ -1,7 +1,7 @@
 <div class="wp-stack" @if ($canAct ?? false) wire:poll.visible.30s @endif>
     @if ($offerHomescreenShortcut ?? false)
         @push('head')
-            <link rel="manifest" href="{{ route('public.time-portal.manifest', $token) }}">
+            <link rel="manifest" href="{{ $homescreenManifestUrl }}">
             <meta name="mobile-web-app-capable" content="yes">
             <meta name="apple-mobile-web-app-capable" content="yes">
             <meta name="apple-mobile-web-app-title" content="WinProx">

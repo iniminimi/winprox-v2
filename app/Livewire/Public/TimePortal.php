@@ -84,6 +84,7 @@ use App\Support\Time\ClockPointPortalTokenResolution;
 use App\Support\Time\TimeModuleAccess;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
+use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -269,6 +270,17 @@ class TimePortal extends Component
         }
 
         if ($resolution->status === ClockPointPortalTokenResolution::STATUS_BLOCKED) {
+            // Een geïnstalleerde app kan nog het verlopen scherm-adres openen.
+            // Alleen de aanmeldroute gaat door naar de vaste link, zonder scan.
+            if ($resolution->historyToken === null && request()->routeIs('public.time-portal.cp')) {
+                $homeToken = (string) $clockPoint->qr_token;
+                if ($homeToken !== '' && $homeToken !== $token) {
+                    throw new HttpResponseException(
+                        response()->redirectToRoute('public.time-portal.cp', ['token' => $homeToken]),
+                    );
+                }
+            }
+
             Tenancy::actAs($clockPoint->tenant_id);
             app(LogBlockedClockPointQrAttemptAction::class)->handle(
                 $clockPoint,
@@ -1887,6 +1899,7 @@ class TimePortal extends Component
         $onSiteGuidance = ($gpsVisits && ! $checkmateMode && $openShift?->openVisit !== null)
             ? TimePortalData::onSiteGuidance($openShift->openVisit, $tasks, $todayDestinations)
             : null;
+        $homescreenPoint = $this->activeClockPoint();
 
         return view('livewire.public.time-portal', [
             'canAct' => $canAct,
@@ -1946,7 +1959,10 @@ class TimePortal extends Component
                     ->get(['id', 'name'])
                 : collect(),
             'showClockPointName' => ! TimePortalData::isGenericClockPointName($this->clockPointName),
-            'offerHomescreenShortcut' => $this->clockPointOffersHomescreenShortcut(),
+            'offerHomescreenShortcut' => $homescreenPoint !== null,
+            'homescreenManifestUrl' => $homescreenPoint !== null
+                ? route('public.time-portal.cp.manifest', $homescreenPoint->qr_token)
+                : null,
             'isTimePortal' => true,
             'isTeamPortal' => false,
         ]);

@@ -1140,7 +1140,9 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   (ook niet bij icoon, PIN of blokkade). Op elk Clock Point-portaal staat het WinProx-icoon
   om de aanmeldlink op het startscherm van de gsm te zetten. Op Android tikt de uitvoerder
   het icoon: Chrome zet WinProx op het startscherm. Op iPhone via Deel → Zet op beginscherm.
-  Het icoon opent de aanmeldlink (`/cp/{token}`), niet de sticker-URL, en blijft zichtbaar
+  Het icoon opent de vaste aanmeldlink (`/cp/{qr_token}`), niet de sticker-URL en niet de
+  draaiende scherm-QR. Die schermcode vervalt na het venster; een app die ermee geïnstalleerd
+  is, gaat bij openen door naar die vaste link, zonder scan. Het icoon blijft zichtbaar
   na aanmelden. De manifest-scope is de site-root, zodat een Android-scan van sticker of
   klokscherm de geïnstalleerde app opent (bestaand icoon opnieuw zetten, anders houdt
   Android de oude scope). Op iPhone opent de camera Safari; daar blijft inklokken in die

@@ -10,6 +10,7 @@ use App\Models\Tenant;
 use App\Models\User;
 use App\Models\Worker;
 use App\Support\Tenancy;
+use App\Support\Time\ClockDisplayQr;
 use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
@@ -112,5 +113,48 @@ it('levert een webmanifest voor elk clock point', function () {
         ->assertJsonPath('handle_links', 'preferred')
         ->assertJsonPath('launch_handler.client_mode', 'navigate-existing')
         ->assertJsonPath('related_applications.0.platform', 'webapp')
+        ->assertJsonPath('related_applications.0.url', route('public.time-portal.cp.manifest', $clockPoint->qr_token))
         ->assertJsonPath('related_applications.0.id', route('public.time-portal.cp', $clockPoint->qr_token));
+});
+
+it('opent het startscherm op de vaste aanmeldlink, ook vanaf een scherm-QR', function () {
+    [, , $clockPoint] = homescreenClockPointSetup();
+    $clockPoint->forceFill([
+        'display_id' => str_repeat('a', 24),
+        'display_secret' => 'display-secret-for-homescreen',
+    ])->save();
+    $clockPoint->refresh();
+
+    $displayToken = ClockDisplayQr::tokenFor($clockPoint, ClockDisplayQr::currentWindow());
+    $staleToken = $clockPoint->display_id.ClockDisplayQr::dynFor(
+        $clockPoint->display_secret,
+        ClockDisplayQr::currentWindow() - 5,
+    );
+    $home = route('public.time-portal.cp', $clockPoint->qr_token);
+    $manifest = route('public.time-portal.cp.manifest', $clockPoint->qr_token);
+
+    expect($displayToken)->not->toBeNull()->and($displayToken)->not->toBe($clockPoint->qr_token);
+
+    $this->get(route('public.time-portal.manifest', $displayToken))
+        ->assertOk()
+        ->assertJsonPath('start_url', $home)
+        ->assertJsonPath('id', $home)
+        ->assertJsonPath('related_applications.0.url', $manifest);
+
+    $this->get('/time/'.$displayToken)
+        ->assertOk()
+        ->assertSee($manifest, false)
+        ->assertDontSee('/time/'.$displayToken.'/manifest.webmanifest', false);
+
+    $this->get('/cp/'.$staleToken)
+        ->assertRedirect($home);
+
+    $this->followingRedirects()
+        ->get('/cp/'.$staleToken)
+        ->assertOk()
+        ->assertDontSee(__('qr.invalid.title'), false);
+
+    $this->get('/time/'.$staleToken)
+        ->assertNotFound()
+        ->assertSee(__('qr.invalid.title'), false);
 });

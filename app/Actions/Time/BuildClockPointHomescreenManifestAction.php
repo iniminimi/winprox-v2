@@ -18,9 +18,12 @@ class BuildClockPointHomescreenManifestAction
             return null;
         }
 
-        $startUrl = route('public.time-portal.cp', $token);
+        // Altijd de vaste QR van het Clock Point. Een scherm-QR roteert en is
+        // na het venster ongeldig; die mag niet het startadres van de app worden.
+        $homeToken = (string) $clockPoint->qr_token;
+        $startUrl = route('public.time-portal.cp', $homeToken);
         $scope = rtrim(url('/'), '/').'/';
-        $manifestUrl = route('public.time-portal.manifest', $token);
+        $manifestUrl = route('public.time-portal.cp.manifest', $homeToken);
         $icon192 = url('/images/pwa/winprox-192.png');
         $icon512 = url('/images/pwa/winprox-512.png');
 

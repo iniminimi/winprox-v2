@@ -191,6 +191,9 @@ Route::get('/reservations/manage/{token}', ReservationManage::class)->name('rese
 Route::get('/time/{token}/manifest.webmanifest', ClockPointHomescreenManifestController::class)
     ->where('token', '[a-z0-9]{20,64}')
     ->name('public.time-portal.manifest');
+Route::get('/cp/{token}/manifest.webmanifest', ClockPointHomescreenManifestController::class)
+    ->where('token', '[a-z0-9]{20,64}')
+    ->name('public.time-portal.cp.manifest');
 Route::get('/time/{token}', TimePortal::class)
     ->where('token', '[a-z0-9]{20,64}')
     ->name('public.time-portal');
