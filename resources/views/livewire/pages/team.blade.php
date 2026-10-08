@@ -460,6 +460,7 @@
                     @php
                         $workerLocationCount = count($selectedWorkerLocationIds);
                     @endphp
+                    @if (! $isCheckmate)
                     <div class="wp-field">
                         <div @class(['wp-field-panel', 'is-open' => $workerLocationsPanelOpen])>
                             <button
@@ -497,6 +498,7 @@
                             @endif
                         </div>
                     </div>
+                    @endif
                     @if ($workerDefaultUnits->isNotEmpty())
                         <div class="wp-field">
                             <x-wp-tooltip :text="__('team.workers.default_unit_hint')" wrap>
@@ -725,11 +727,13 @@
                         {{ __('team.teams.modal.active') }}
                     </label>
                 @endif
-                <label class="wp-check">
-                    <input type="checkbox" wire:model="teamClocksAllLocations">
-                    {{ __('team.teams.modal.clocks_all_locations') }}
-                </label>
-                <p class="wp-hint">{{ __('team.teams.modal.clocks_all_locations_hint') }}</p>
+                @if (! $isCheckmate)
+                    <label class="wp-check">
+                        <input type="checkbox" wire:model="teamClocksAllLocations">
+                        {{ __('team.teams.modal.clocks_all_locations') }}
+                    </label>
+                    <p class="wp-hint">{{ __('team.teams.modal.clocks_all_locations_hint') }}</p>
+                @endif
                 @if ($hasTimeModule)
                     <div class="wp-field">
                         <label class="wp-label" for="teamRequiredBreakMinutes">{{ __('team.teams.modal.required_break_minutes') }}</label>

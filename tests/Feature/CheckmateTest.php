@@ -18,6 +18,7 @@ use App\Livewire\Dashboard;
 use App\Livewire\Locations\Index as LocationsIndex;
 use App\Livewire\Public\TimePortal;
 use App\Livewire\Pages\Subscription;
+use App\Livewire\Pages\Team as TeamPage;
 use App\Livewire\Platform\Tenants as PlatformTenants;
 use App\Models\ClockPoint;
 use App\Models\Customer;
@@ -612,6 +613,42 @@ it('verbergt Manueel inklokken op Time-pagina’s voor checkmate', function () {
             ->assertOk()
             ->assertSee('openManualClockIn', false);
     }
+});
+
+it('verbergt locatiebeperking in uitvoerder- en team-modals voor checkmate', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+    $worker = checkmateWorker($tenant);
+
+    Livewire::actingAs($admin)
+        ->test(TeamPage::class)
+        ->call('openEditWorker', $worker->id)
+        ->assertDontSee('toggleWorkerLocationsPanel', false)
+        ->assertDontSee(__('team.workers.modal.locations_summary_all'), false);
+
+    Livewire::actingAs($admin)
+        ->test(TeamPage::class)
+        ->call('openCreateTeam')
+        ->assertDontSee('teamClocksAllLocations', false)
+        ->assertDontSee(__('team.teams.modal.clocks_all_locations'), false);
+
+    $facilityTenant = Tenant::factory()->create([
+        'checkmate_mode' => false,
+        'has_time_module' => true,
+        'trial_ends_at' => now()->addDays(14),
+    ]);
+    $facilityAdmin = User::factory()->admin()->for($facilityTenant)->create();
+    $facilityWorker = checkmateWorker($facilityTenant);
+
+    Livewire::actingAs($facilityAdmin)
+        ->test(TeamPage::class)
+        ->call('openEditWorker', $facilityWorker->id)
+        ->assertSee('toggleWorkerLocationsPanel', false);
+
+    Livewire::actingAs($facilityAdmin)
+        ->test(TeamPage::class)
+        ->call('openCreateTeam')
+        ->assertSee('teamClocksAllLocations', false);
 });
 
 it('laat facility-tenants ongemoeid door de checkmate-gate', function () {
