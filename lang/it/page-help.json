@@ -1326,6 +1326,7 @@
                 },
                 {
                     "label": "Timbratura manuale",
+                    "requires_facility": true,
                     "text": "Un amministratore o un collaboratore può <strong>timbrare manualmente un esecutore</strong> sul Clock Point corretto (ad es. telefono dimenticato). Nessun dispositivo viene collegato. Il motivo obbligatorio va nel log di audit. Presenza, ore e Clock Point mostrano la pillola <strong>Timbrato manualmente</strong>. Timbrare l’uscita più tardi via QR o Chiudi turno."
                 },
                 {
@@ -1372,6 +1373,7 @@
                 },
                 {
                     "label": "Timbratura manuale",
+                    "requires_facility": true,
                     "text": "Stessa azione di Presenza: timbra un esecutore su un Clock Point senza telefono. Nessun dispositivo collegato; motivo obbligatorio nel log di audit; pillola <strong>Timbrato manualmente</strong>."
                 },
                 {

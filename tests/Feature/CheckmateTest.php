@@ -556,6 +556,33 @@ it('verbergt werkmenu en configuratie-overzicht op instellingen voor checkmate',
         ->assertSee(__('settings.work_menu.title'), false);
 });
 
+it('verbergt Manueel inklokken op Time-pagina’s voor checkmate', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    foreach (['/time/shifts', '/time/presence'] as $page) {
+        $this->actingAs($admin)
+            ->get($page)
+            ->assertOk()
+            ->assertDontSee('openManualClockIn', false)
+            ->assertDontSee(__('time.manual_clock_in.button'), false);
+    }
+
+    $facilityTenant = Tenant::factory()->create([
+        'checkmate_mode' => false,
+        'has_time_module' => true,
+        'trial_ends_at' => now()->addDays(14),
+    ]);
+    $facilityAdmin = User::factory()->admin()->for($facilityTenant)->create();
+
+    foreach (['/time/shifts', '/time/presence'] as $page) {
+        $this->actingAs($facilityAdmin)
+            ->get($page)
+            ->assertOk()
+            ->assertSee('openManualClockIn', false);
+    }
+});
+
 it('laat facility-tenants ongemoeid door de checkmate-gate', function () {
     $tenant = Tenant::factory()->create([
         'has_time_module' => true,

@@ -1326,6 +1326,7 @@
                 },
                 {
                     "label": "Fichar manualmente",
+                    "requires_facility": true,
                     "text": "Un administrador o un empleado puede <strong>fichar a un ejecutor manualmente</strong> en el Clock Point correcto (por ejemplo, si olvidó el teléfono). No se vincula ningún dispositivo. El motivo obligatorio se guarda en la auditoría. Presencia, horas y Clock Point muestran la pastilla <strong>Fichado manualmente</strong>. Fichar la salida más tarde por QR o Cerrar turno."
                 },
                 {
@@ -1372,6 +1373,7 @@
                 },
                 {
                     "label": "Fichar manualmente",
+                    "requires_facility": true,
                     "text": "Misma acción que en Presencia: fiche a un ejecutor en un Clock Point sin teléfono. Sin vincular dispositivo; motivo obligatorio en auditoría; pastilla <strong>Fichado manualmente</strong>."
                 },
                 {

@@ -1326,6 +1326,7 @@
                 },
                 {
                     "label": "Clock in manually",
+                    "requires_facility": true,
                     "text": "An administrator or staff user can <strong>clock a worker in manually</strong> at the correct Clock Point (for example if they forgot their phone). No device is bound. A required reason is stored in the audit log. Presence, hours and Clock Point show the <strong>Clocked in manually</strong> pill. Clock out later via the QR or Close shift."
                 },
                 {
@@ -1372,6 +1373,7 @@
                 },
                 {
                     "label": "Clock in manually",
+                    "requires_facility": true,
                     "text": "Same action as on Presence: clock a worker in at a Clock Point without a phone. No device bind; required reason in the audit log; <strong>Clocked in manually</strong> pill."
                 },
                 {

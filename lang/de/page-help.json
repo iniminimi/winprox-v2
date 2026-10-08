@@ -1326,6 +1326,7 @@
                 },
                 {
                     "label": "Manuell einstempeln",
+                    "requires_facility": true,
                     "text": "Administrator und Mitarbeiter können eine ausführende Person am richtigen Clock Point <strong>manuell einstempeln</strong> (z. B. Handy vergessen). Es wird kein Gerät gekoppelt. Ein Pflichtgrund steht im Audit-Log. Anwesenheit, Stunden und Clock Point zeigen die Pille <strong>Manuell eingestempelt</strong>. Ausstempeln später per QR oder Schicht schließen."
                 },
                 {
@@ -1372,6 +1373,7 @@
                 },
                 {
                     "label": "Manuell einstempeln",
+                    "requires_facility": true,
                     "text": "Gleiche Aktion wie unter Anwesenheit: stempeln Sie eine ausführende Person ohne Handy ein. Keine Gerätekopplung; Pflichtgrund im Audit-Log; Pille <strong>Manuell eingestempelt</strong>."
                 },
                 {

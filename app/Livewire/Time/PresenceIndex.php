@@ -10,7 +10,9 @@ use App\Livewire\Concerns\ManagesWorkShiftForceClose;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Location;
+use App\Models\Tenant;
 use App\Models\WorkShift;
+use App\Support\Checkmate\CheckmateMode;
 use App\Support\Tenancy;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Layout;
@@ -189,6 +191,7 @@ class PresenceIndex extends Component
             'boardLimit' => $this->boardLimit,
             'manualClockInWorkers' => $manualClockInOptions['workers'],
             'manualClockInClockPoints' => $manualClockInOptions['clockPoints'],
+            'checkmateMode' => CheckmateMode::isActive(Tenant::query()->find((int) Tenancy::id())),
         ]);
     }
 }

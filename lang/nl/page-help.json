@@ -1326,6 +1326,7 @@
                 },
                 {
                     "label": "Manueel inklokken",
+                    "requires_facility": true,
                     "text": "Beheerder en medewerker kunnen een uitvoerder <strong>manueel inklokken</strong> op het juiste Clock Point (bijvoorbeeld gsm vergeten). Er wordt geen toestel gekoppeld. Verplichte reden gaat naar het auditlog. Op aanwezigheid, uren en Clock Point verschijnt de pil <strong>Manueel ingeklokt</strong>. Uitklokken later via de QR of via Shift sluiten."
                 },
                 {
@@ -1372,6 +1373,7 @@
                 },
                 {
                     "label": "Manueel inklokken",
+                    "requires_facility": true,
                     "text": "Zelfde actie als op Aanwezigheid: klok een uitvoerder in op een Clock Point zonder gsm. Geen toestelkoppeling; verplichte reden in het auditlog; pil <strong>Manueel ingeklokt</strong>."
                 },
                 {

@@ -9,8 +9,10 @@ use App\Livewire\Concerns\ManagesWorkShiftForceClose;
 use App\Livewire\Concerns\ProvidesTimeNavAlarmCount;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
+use App\Models\Tenant;
 use App\Models\Worker;
 use App\Models\WorkShift;
+use App\Support\Checkmate\CheckmateMode;
 use App\Support\Tenancy;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use InvalidArgumentException;
@@ -195,6 +197,9 @@ class ShiftsIndex extends Component
                 'clock_point' => $this->clockPointFilter,
             ])),
             'alarmCount' => $this->timeNavAlarmCount(),
+            // Manueel inklokken hoort bij facility-beheer; Checkmate klokt
+            // alleen via de eigen gsm — knop weglaten.
+            'checkmateMode' => CheckmateMode::isActive(Tenant::query()->find((int) Tenancy::id())),
         ]);
     }
 }

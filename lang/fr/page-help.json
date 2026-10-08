@@ -1334,6 +1334,7 @@
                 },
                 {
                     "label": "Pointer manuellement",
+                    "requires_facility": true,
                     "text": "Un administrateur ou un collaborateur peut <strong>pointer un exécutant manuellement</strong> sur le bon Clock Point (par ex. téléphone oublié). Aucun appareil n’est lié. Un motif obligatoire est enregistré dans le journal d’audit. Présence, heures et Clock Point affichent la pilule <strong>Pointé manuellement</strong>. Pointer la sortie plus tard via le QR ou Fermer le shift."
                 },
                 {
@@ -1380,6 +1381,7 @@
                 },
                 {
                     "label": "Pointer manuellement",
+                    "requires_facility": true,
                     "text": "Même action que sur Présence : pointez un exécutant sur un Clock Point sans téléphone. Aucun appareil lié ; motif obligatoire dans le journal d’audit ; pilule <strong>Pointé manuellement</strong>."
                 },
                 {
