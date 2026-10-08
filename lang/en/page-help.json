@@ -707,7 +707,12 @@
                 },
                 {
                     "label": "Punch clock security",
-                    "text": "Time only: PIN, GPS at the punch, GPS work visits and the <strong>evacuation list</strong> on Clock Point. The evacuation list is off by default; turn it on here if workers may see who is clocked in after sign-in (each view is logged)."
+                    "text": "Time only: PIN, GPS at the punch and GPS work visits on Clock Point."
+                },
+                {
+                    "label": "Evacuation list",
+                    "requires_facility": true,
+                    "text": "Off by default; turn it on here if workers may see who is clocked in after sign-in (each view is logged)."
                 },
                 {
                     "label": "WinProx style",

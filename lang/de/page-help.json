@@ -707,7 +707,12 @@
                 },
                 {
                     "label": "Stempeluhr-Sicherheit",
-                    "text": "Nur mit Time: PIN, GPS beim Stempeln, GPS-Arbeitsbesuche und die <strong>Evakuierungsliste</strong> am Clock Point. Die Liste ist standardmäßig aus; schalten Sie sie hier ein, wenn Ausführende nach der Anmeldung sehen dürfen, wer eingestempelt ist (jede Einsicht wird protokolliert)."
+                    "text": "Nur mit Time: PIN, GPS beim Stempeln und GPS-Arbeitsbesuche am Clock Point."
+                },
+                {
+                    "label": "Evakuierungsliste",
+                    "requires_facility": true,
+                    "text": "Standardmäßig aus; schalten Sie sie hier ein, wenn Ausführende nach der Anmeldung sehen dürfen, wer eingestempelt ist (jede Einsicht wird protokolliert)."
                 },
                 {
                     "label": "WinProx-Stil",

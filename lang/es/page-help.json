@@ -707,7 +707,12 @@
                 },
                 {
                     "label": "Seguridad del fichaje",
-                    "text": "Solo con Time: PIN, GPS al fichar, visitas GPS y la <strong>lista de evacuación</strong> en Clock Point. La lista está desactivada por defecto; actívela aquí si los ejecutores pueden ver quién está fichado tras identificarse (cada consulta se registra)."
+                    "text": "Solo con Time: PIN, GPS al fichar y visitas GPS en Clock Point."
+                },
+                {
+                    "label": "Lista de evacuación",
+                    "requires_facility": true,
+                    "text": "Desactivada por defecto; actívela aquí si los ejecutores pueden ver quién está fichado tras identificarse (cada consulta se registra)."
                 },
                 {
                     "label": "Estilo WinProx",

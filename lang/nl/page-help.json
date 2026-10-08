@@ -707,7 +707,12 @@
                 },
                 {
                     "label": "Prikklok-beveiliging",
-                    "text": "Alleen bij Time: pincode, GPS bij de prik, GPS-werkbezoeken en de <strong>evacuatielijst</strong> op Clock Point. De evacuatielijst is standaard uit; zet ze hier aan als uitvoerders na aanmelden mogen zien wie is ingeklokt (raadpleging wordt gelogd)."
+                    "text": "Alleen bij Time: pincode, GPS bij de prik en GPS-werkbezoeken op Clock Point."
+                },
+                {
+                    "label": "Evacuatielijst",
+                    "requires_facility": true,
+                    "text": "Standaard uit; zet ze hier aan als uitvoerders na aanmelden mogen zien wie is ingeklokt (elke raadpleging wordt gelogd)."
                 },
                 {
                     "label": "WinProx-stijl",

@@ -541,10 +541,12 @@ it('verbergt werkmenu en configuratie-overzicht op instellingen voor checkmate',
         ->assertDontSee(__('settings.config_overview.title'), false)
         ->assertDontSee(__('settings.work_menu.title'), false)
         ->assertDontSee(__('settings.notifications.title'), false)
-        ->assertDontSee(__('settings.notifications.new_qr_issue_label'), false);
+        ->assertDontSee(__('settings.notifications.new_qr_issue_label'), false)
+        ->assertDontSee(__('settings.time_clock.evacuation_list'), false);
 
     $facilityTenant = Tenant::factory()->create([
         'checkmate_mode' => false,
+        'has_time_module' => true,
         'trial_ends_at' => now()->addDays(14),
     ]);
     $facilityAdmin = User::factory()->admin()->for($facilityTenant)->create();
@@ -557,7 +559,8 @@ it('verbergt werkmenu en configuratie-overzicht op instellingen voor checkmate',
         ->assertSee(__('settings.config_overview.title'), false)
         ->assertSee(__('settings.work_menu.title'), false)
         ->assertSee(__('settings.notifications.title'), false)
-        ->assertSee(__('settings.notifications.new_qr_issue_label'), false);
+        ->assertSee(__('settings.notifications.new_qr_issue_label'), false)
+        ->assertSee(__('settings.time_clock.evacuation_list'), false);
 });
 
 it('verbergt Manueel inklokken op Time-pagina’s voor checkmate', function () {

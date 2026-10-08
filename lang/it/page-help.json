@@ -707,7 +707,12 @@
                 },
                 {
                     "label": "Sicurezza marcatura",
-                    "text": "Solo con Time: PIN, GPS alla timbratura, visite GPS e l’<strong>elenco evacuazione</strong> su Clock Point. L’elenco è disattivato di default; attivalo qui se gli esecutori possono vedere chi è timbrato dopo l’accesso (ogni consultazione è registrata)."
+                    "text": "Solo con Time: PIN, GPS alla timbratura e visite GPS su Clock Point."
+                },
+                {
+                    "label": "Elenco evacuazione",
+                    "requires_facility": true,
+                    "text": "Disattivato di default; attivalo qui se gli esecutori possono vedere chi è timbrato dopo l'accesso (ogni consultazione è registrata)."
                 },
                 {
                     "label": "Stile WinProx",

@@ -715,7 +715,12 @@
                 },
                 {
                     "label": "Sécurité de la pointeuse",
-                    "text": "Uniquement avec Time : PIN, GPS à la pointe, visites GPS et la <strong>liste d’évacuation</strong> sur Clock Point. La liste est désactivée par défaut ; activez-la ici si les exécutants peuvent voir qui est pointé après connexion (chaque consultation est enregistrée)."
+                    "text": "Uniquement avec Time : PIN, GPS à la pointe et visites GPS sur Clock Point."
+                },
+                {
+                    "label": "Liste d'évacuation",
+                    "requires_facility": true,
+                    "text": "Désactivée par défaut ; activez-la ici si les exécutants peuvent voir qui est pointé après connexion (chaque consultation est enregistrée)."
                 },
                 {
                     "label": "Style WinProx",
