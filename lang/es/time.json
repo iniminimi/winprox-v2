@@ -238,9 +238,7 @@
       "name": "Nombre",
       "location": "Ubicación",
       "no_location": "Sin ubicación vinculada",
-      "sort_order": "Orden",
-      "homescreen_shortcut": "Enlace Clock Point en la pantalla de inicio del móvil",
-      "homescreen_shortcut_hint": "Icono de pantalla de inicio para identificarse sin QR. En un reloj fijo, el operario solo ficha la entrada tras escanear la pegatina o la pantalla. En Checkmate ficha desde el icono. Déjelo desactivado en pantallas TFT con códigos QR rotativos."
+      "sort_order": "Orden"
     },
     "qr": {
       "subtitle": "Escanee para fichar entrada o salida",

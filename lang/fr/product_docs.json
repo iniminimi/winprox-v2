@@ -100,7 +100,7 @@
           "QR Clock Point : s’identifier (nom + icône ou PIN) pointe directement avec Time ; tâches d’équipe incluses.",
           "Imprimable en planche d’autocollants ou A6/A5/A4.",
           "Un QR unité déjà chargé reste utilisable sans réseau ; pointer exige un nouveau scan.",
-          "Facultatif : lien Clock Point sur l’écran d’accueil du téléphone."
+          "Lien Clock Point sur l’écran d’accueil du téléphone."
         ]
       },
       {
@@ -309,7 +309,7 @@
         "body": "Tout dans le navigateur. Gestion sur ordinateur ; terrain et QR sur le téléphone.",
         "items": [
           "Pas d’App Store.",
-          "Raccourci Clock Point facultatif sur l’écran d’accueil."
+          "Raccourci Clock Point sur l’écran d’accueil."
         ]
       },
       {
@@ -407,7 +407,7 @@
         "title": "Availability",
         "items": [
           "Available 24/7 as SaaS (browser + QR portals).",
-          "QR unité : une page chargée reste utilisable sans réseau pour tâches, signalements et contrôles unité ; synchro au retour. Le pointage Clock Point reste en ligne et exige un nouveau scan QR. Raccourci d’écran d’accueil optionnel (par Clock Point, désactivé par défaut) ouvre le lien de connexion sans pointage ; l'autocollant et le QR de l'écran donnent un scan. Pas de hors-ligne extra.",
+          "QR unité : une page chargée reste utilisable sans réseau pour tâches, signalements et contrôles unité ; synchro au retour. Le pointage Clock Point reste en ligne et exige un nouveau scan QR. L’icône d’écran d’accueil sur chaque Clock Point ouvre le lien de connexion sans pointage ; l'autocollant et le QR de l'écran donnent un scan. Pas de hors-ligne extra.",
           "Planned maintenance preferably outside business hours, with notice where possible.",
           "Formal uptime SLA: available contractually on request."
         ]
@@ -419,7 +419,7 @@
           "Self-service sign-up requires **email verification**: the account only works after clicking the link in the confirmation mail. The confirmation mail is only sent to a valid address that is not marked undeliverable (bounce). Unsubscribing from marketing mail does not block this confirmation. Unverified sign-ups are automatically and completely deleted after 7 days.",
           "**SSO** (une connexion professionnelle via Microsoft Entra) : pour administrateurs et collaborateurs sur ordinateur (**Se connecter avec Microsoft**). Uniquement des comptes WinProx existants (l’e-mail doit correspondre au compte Microsoft) ; e-mail + mot de passe reste possible. Pas de nouveaux comptes automatiques. Les exécutants restent sur le QR Clock Point (nom + icône). Les liaisons avec d’autres logiciels (Ultimo, IWMS, …) passent par des jetons API, pas par le SSO.",
           "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
-          "Exécutants : **pas de login e-mail** — QR Clock Point + nom + icône personnelle (ou PIN optionnel). Un téléphone par exécutant ; l’icône disparaît après connexion. Case optionnelle Lien Clock Point sur l’écran d’accueil (désactivée par défaut) pour se connecter à domicile. Sur une pointeuse fixe, l'entrée reste un scan ; Checkmate pointe depuis l'icône.",
+          "Exécutants : **pas de login e-mail** — QR Clock Point + nom + icône personnelle (ou PIN optionnel). Un téléphone par exécutant ; l’icône disparaît après connexion. Chaque portail Clock Point montre l’icône d’écran d’accueil pour se connecter à domicile. Sur une pointeuse fixe, l'entrée reste un scan ; Checkmate pointe depuis l'icône.",
           "Offline field actions on the unit QR go through POST /portal/field-sync with the device cookie (no API token). The same client_id does not create a duplicate issue or task change.",
           "Signalants : portail QR public sans compte. Preuve de boîte mail optionnelle (catégorie et unité) : pas de login ; le signalement n’existe qu’après le lien dans le mail.",
           "Collègue avec **équipe pointeuse** reçoit un profil exécutant lié pour Clock Point (nom + icône) ; ne compte pas deux fois dans la licence."

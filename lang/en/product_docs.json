@@ -100,7 +100,7 @@
           "Clock Point QR: signing in (name + icon or PIN) clocks you in right away with Time; plus team tasks.",
           "Printable as sticker sheets or A6/A5/A4.",
           "A loaded unit QR stays usable offline; clock-in needs a fresh scan.",
-          "Optional: Clock Point link on the phone home screen."
+          "Clock Point link on the phone home screen."
         ]
       },
       {
@@ -309,7 +309,7 @@
         "body": "Everything in the browser. Admin on a laptop; field and QR on the phone.",
         "items": [
           "No App Store.",
-          "Optional Clock Point shortcut on the home screen."
+          "Clock Point shortcut on the home screen."
         ]
       },
       {
@@ -407,7 +407,7 @@
         "title": "Availability",
         "items": [
           "Available 24/7 as SaaS (browser + QR portals).",
-          "Unit QR: a loaded page stays usable without network for tasks, reports and unit checks; it syncs when connectivity returns. Clock Point punches stay online and need a fresh QR scan. Optional home-screen shortcut (per Clock Point, off by default) opens the sign-in link without a punch; the sticker and clock-screen QR grant a scan. No extra offline.",
+          "Unit QR: a loaded page stays usable without network for tasks, reports and unit checks; it syncs when connectivity returns. Clock Point punches stay online and need a fresh QR scan. The home-screen icon on every Clock Point opens the sign-in link without a punch; the sticker and clock-screen QR grant a scan. No extra offline.",
           "Planned maintenance preferably outside business hours, with notice where possible.",
           "Formal uptime SLA: available contractually on request."
         ]
@@ -419,7 +419,7 @@
           "Self-service sign-up requires **email verification**: the account only works after clicking the link in the confirmation mail. The confirmation mail is only sent to a valid address that is not marked undeliverable (bounce). Unsubscribing from marketing mail does not block this confirmation. Unverified sign-ups are automatically and completely deleted after 7 days.",
           "**SSO** (one work login via Microsoft Entra): for admins and employees on desktop (**Sign in with Microsoft**). Only existing WinProx accounts (email must match the Microsoft account); email + password still works. No automatic new accounts. Workers stay on Clock Point QR (name + icon). Connecting other software (Ultimo, IWMS, …) uses API tokens, not SSO.",
           "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
-          "Workers: **no email login** — Clock Point QR + name + personal icon (or optional PIN). One phone per worker; the icon is hidden after sign-in. Optional Clock Point link on phone home screen (off by default) to sign in from home. On a fixed clock, clock-in still needs a scan; Checkmate clocks in from the icon.",
+          "Workers: **no email login** — Clock Point QR + name + personal icon (or optional PIN). One phone per worker; the icon is hidden after sign-in. Every Clock Point portal shows the home-screen icon to sign in from home. On a fixed clock, clock-in still needs a scan; Checkmate clocks in from the icon.",
           "Offline field actions on the unit QR go through POST /portal/field-sync with the device cookie (no API token). The same client_id does not create a duplicate issue or task change.",
           "Reporters: public QR portal without an account. Optional mailbox proof (category and unit): no login; the issue is created only after the link in the mail.",
           "Colleague with **punch-clock team** gets a linked worker profile for Clock Point (name + icon); does not count twice towards the licence."

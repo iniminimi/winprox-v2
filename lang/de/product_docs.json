@@ -100,7 +100,7 @@
           "Clock-Point-QR: anmelden (Name + Icon oder PIN) stempelt mit Time direkt ein; plus Teamaufgaben.",
           "Druckbar als Aufkleberbogen oder A6/A5/A4.",
           "Ein geladener Unit-QR bleibt ohne Empfang nutzbar; stempeln braucht einen frischen Scan.",
-          "Optional: Clock-Point-Link auf dem Handy-Startbildschirm."
+          "Clock-Point-Link auf dem Handy-Startbildschirm."
         ]
       },
       {
@@ -309,7 +309,7 @@
         "body": "Alles im Browser. Verwaltung am Laptop; Feld und QR am Handy.",
         "items": [
           "Kein App Store.",
-          "Optional eine Clock-Point-Verknüpfung auf dem Startbildschirm."
+          "Clock-Point-Verknüpfung auf dem Startbildschirm."
         ]
       },
       {
@@ -407,7 +407,7 @@
         "title": "Availability",
         "items": [
           "Available 24/7 as SaaS (browser + QR portals).",
-          "Unit-QR: eine geladene Seite bleibt ohne Netz für Aufgaben, Meldungen und Unit-Checks nutzbar; Sync bei Wiederkehr. Clock-Point-Stempel bleibt online und braucht einen neuen QR-Scan. Optionale Startbildschirm-Verknüpfung (pro Clock Point, standardmäßig aus) öffnet den Anmeldelink ohne Stempel; Aufkleber und Uhren-QR geben einen Scan. Kein extra Offline.",
+          "Unit-QR: eine geladene Seite bleibt ohne Netz für Aufgaben, Meldungen und Unit-Checks nutzbar; Sync bei Wiederkehr. Clock-Point-Stempel bleibt online und braucht einen neuen QR-Scan. Das Startbildschirm-Symbol auf jedem Clock Point öffnet den Anmeldelink ohne Stempel; Aufkleber und Uhren-QR geben einen Scan. Kein extra Offline.",
           "Planned maintenance preferably outside business hours, with notice where possible.",
           "Formal uptime SLA: available contractually on request."
         ]
@@ -419,7 +419,7 @@
           "Self-service sign-up requires **email verification**: the account only works after clicking the link in the confirmation mail. The confirmation mail is only sent to a valid address that is not marked undeliverable (bounce). Unsubscribing from marketing mail does not block this confirmation. Unverified sign-ups are automatically and completely deleted after 7 days.",
           "**SSO** (eine Firmenanmeldung über Microsoft Entra): für Administratoren und Mitarbeiter am Desktop (**Mit Microsoft anmelden**). Nur bestehende WinProx-Konten (E-Mail muss mit dem Microsoft-Konto übereinstimmen); E-Mail + Passwort bleibt möglich. Keine automatischen neuen Konten. Ausführende bleiben beim Clock-Point-QR (Name + Symbol). Anbindung anderer Software (Ultimo, IWMS, …) über API-Token, nicht über SSO.",
           "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
-          "Ausführende: **kein E-Mail-Login** — Clock-Point-QR + Name + persönliches Symbol (oder optionale PIN). Ein Handy pro Person; das Symbol verschwindet nach der Anmeldung. Optionales Häkchen Clock-Point-Link auf dem Startbildschirm (standardmäßig aus) zur Anmeldung von zu Hause. An einer festen Stempeluhr bleibt Einstempeln ein Scan; Checkmate stempelt über das Symbol ein.",
+          "Ausführende: **kein E-Mail-Login** — Clock-Point-QR + Name + persönliches Symbol (oder optionale PIN). Ein Handy pro Person; das Symbol verschwindet nach der Anmeldung. Jedes Clock-Point-Portal zeigt das Startbildschirm-Symbol zur Anmeldung von zu Hause. An einer festen Stempeluhr bleibt Einstempeln ein Scan; Checkmate stempelt über das Symbol ein.",
           "Offline field actions on the unit QR go through POST /portal/field-sync with the device cookie (no API token). The same client_id does not create a duplicate issue or task change.",
           "Melder: öffentliches QR-Portal ohne Konto. Optionaler Postfachnachweis (Kategorie und Unit): kein Login; die Meldung entsteht erst nach dem Link in der Mail.",
           "Kollege mit **Stempeluhr-Team** erhält verknüpftes Ausführenden-Profil für Clock Point (Name + Symbol); zählt nicht doppelt zur Lizenz."

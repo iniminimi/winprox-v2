@@ -238,9 +238,7 @@
       "name": "Nom",
       "location": "Site",
       "no_location": "Aucun site lié",
-      "sort_order": "Ordre de tri",
-      "homescreen_shortcut": "Lien Clock Point sur l’écran d’accueil du téléphone",
-      "homescreen_shortcut_hint": "Icône d'écran d'accueil pour se connecter sans QR. Sur une pointeuse fixe, l'exécutant ne pointe l'entrée qu'après avoir scanné l'autocollant ou l'écran. En Checkmate, il pointe depuis l'icône. Laissez ceci désactivé sur les écrans TFT avec QR rotatif."
+      "sort_order": "Ordre de tri"
     },
     "qr": {
       "subtitle": "Scannez pour pointer l'entrée ou la sortie",

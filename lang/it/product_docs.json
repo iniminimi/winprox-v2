@@ -100,7 +100,7 @@
           "QR Clock Point: identificarsi (nome + icona o PIN) timbra subito con Time; più i compiti di squadra.",
           "Stampabile come foglio adesivi o A6/A5/A4.",
           "Un QR unità già caricato resta usabile senza rete; timbrare chiede una nuova scansione.",
-          "Facoltativo: link Clock Point sulla schermata iniziale del telefono."
+          "Link Clock Point sulla schermata iniziale del telefono."
         ]
       },
       {
@@ -308,7 +308,7 @@
         "body": "Tutto nel browser. Gestione sul portatile; campo e QR sul telefono.",
         "items": [
           "Nessun App Store.",
-          "Scorciatoia Clock Point facoltativa sulla schermata iniziale."
+          "Scorciatoia Clock Point sulla schermata iniziale."
         ]
       },
       {
@@ -406,7 +406,7 @@
         "title": "Availability",
         "items": [
           "Available 24/7 as SaaS (browser + QR portals).",
-          "QR unità: una pagina caricata resta usabile senza rete per attività, segnalazioni e controlli unità; si sincronizza al ritorno. La timbratura Clock Point resta online e richiede una nuova scansione QR. Collegamento opzionale (per Clock Point, disattivato di default) apre il link di accesso senza timbratura; l'adesivo e il QR dello schermo danno una scansione. Nessun extra offline.",
+          "QR unità: una pagina caricata resta usabile senza rete per attività, segnalazioni e controlli unità; si sincronizza al ritorno. La timbratura Clock Point resta online e richiede una nuova scansione QR. L'icona della schermata iniziale su ogni Clock Point apre il link di accesso senza timbratura; l'adesivo e il QR dello schermo danno una scansione. Nessun extra offline.",
           "Planned maintenance preferably outside business hours, with notice where possible.",
           "Formal uptime SLA: available contractually on request."
         ]
@@ -418,7 +418,7 @@
           "Self-service sign-up requires **email verification**: the account only works after clicking the link in the confirmation mail. The confirmation mail is only sent to a valid address that is not marked undeliverable (bounce). Unsubscribing from marketing mail does not block this confirmation. Unverified sign-ups are automatically and completely deleted after 7 days.",
           "**SSO** (un accesso aziendale via Microsoft Entra): per amministratori e dipendenti sul desktop (**Accedi con Microsoft**). Solo account WinProx esistenti (l’e-mail deve corrispondere all’account Microsoft); e-mail + password resta disponibile. Nessun account nuovo automatico. Gli esecutori restano sul QR Clock Point (nome + icona). Il collegamento ad altro software (Ultimo, IWMS, …) usa token API, non SSO.",
           "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
-          "Esecutori: **nessun login e-mail** — QR Clock Point + nome + icona personale (o PIN opzionale). Un telefono per esecutore; l’icona scompare dopo l’accesso. Spunta opzionale Collegamento Clock Point sulla schermata iniziale (disattivata di default) per accedere da casa. Su una timbratrice fissa l'entrata resta una scansione; Checkmate timbra dall'icona.",
+          "Esecutori: **nessun login e-mail** — QR Clock Point + nome + icona personale (o PIN opzionale). Un telefono per esecutore; l’icona scompare dopo l’accesso. Ogni portale Clock Point mostra l'icona della schermata iniziale per accedere da casa. Su una timbratrice fissa l'entrata resta una scansione; Checkmate timbra dall'icona.",
           "Offline field actions on the unit QR go through POST /portal/field-sync with the device cookie (no API token). The same client_id does not create a duplicate issue or task change.",
           "Segnalatori: portale QR pubblico senza account. Prova della casella opzionale (categoria e unità): nessun login; la segnalazione nasce solo dopo il link nella mail.",
           "Collega con **team timbratura** ottiene profilo esecutore collegato per Clock Point (nome + icona); non conta doppio nella licenza."

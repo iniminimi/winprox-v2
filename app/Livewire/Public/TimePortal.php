@@ -2309,7 +2309,7 @@ class TimePortal extends Component
 
     private function clockPointOffersHomescreenShortcut(): bool
     {
-        return (bool) $this->activeClockPoint()?->homescreen_shortcut;
+        return $this->activeClockPoint() !== null;
     }
 
     private function verifiedWorker(): ?Worker

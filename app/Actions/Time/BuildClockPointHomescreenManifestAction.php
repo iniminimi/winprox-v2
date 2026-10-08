@@ -14,7 +14,7 @@ class BuildClockPointHomescreenManifestAction
         $resolution = $this->resolveToken->handle($token);
         $clockPoint = $resolution->clockPoint;
 
-        if ($clockPoint === null || ! $clockPoint->homescreen_shortcut || ! $resolution->isUsable()) {
+        if ($clockPoint === null || ! $resolution->isUsable()) {
             return null;
         }
 

@@ -100,7 +100,7 @@
           "Clock Point-QR: aanmelden (naam + icoon of PIN) is meteen inklokken bij Time; ook teamtaken.",
           "Printbaar als stickervel of A6/A5/A4.",
           "Een geladen unit-QR blijft bruikbaar zonder bereik; inklokken vraagt een verse scan.",
-          "Optioneel: Clock Point-link op het startscherm van de gsm."
+          "Clock Point-link op het startscherm van de gsm."
         ]
       },
       {
@@ -309,7 +309,7 @@
         "body": "Alles in de browser. Beheer op laptop; veld en QR op de gsm.",
         "items": [
           "Geen App Store.",
-          "Optioneel een snelkoppeling naar Clock Point op het startscherm."
+          "Snelkoppeling naar Clock Point op het startscherm."
         ]
       },
       {
@@ -407,7 +407,7 @@
         "title": "Beschikbaarheid",
         "items": [
           "24/7 bereikbaar als SaaS (browser + QR-portalen).",
-          "Unit-QR: een geladen pagina blijft bruikbaar zonder netwerk voor taken, meldingen en unit checks; synchronisatie bij herstel. Clock Point-prik vereist online + verse QR-scan. Optionele startscherm-snelkoppeling (per Clock Point, standaard uit) opent de aanmeldlink zonder prik; sticker en klokscherm-QR geven een scan. Geen extra offline.",
+          "Unit-QR: een geladen pagina blijft bruikbaar zonder netwerk voor taken, meldingen en unit checks; synchronisatie bij herstel. Clock Point-prik vereist online + verse QR-scan. Het startscherm-icoon op elk Clock Point opent de aanmeldlink zonder prik; sticker en klokscherm-QR geven een scan. Geen extra offline.",
           "Gepland onderhoud: bij voorkeur buiten kantooruren, met aankondiging waar mogelijk.",
           "Formele uptime-SLA: op vraag contractueel af te spreken."
         ]
@@ -419,7 +419,7 @@
           "Zelfregistratie vereist **e-mailverificatie**: het account werkt pas na het klikken op de link in de bevestigingsmail. De bevestigingsmail gaat alleen naar een geldig adres dat niet eerder als onbezorgbaar (bounce) is gemarkeerd. Uitschrijven van marketingmails blokkeert deze bevestiging niet. Niet-geverifieerde aanmeldingen worden na 7 dagen automatisch en volledig verwijderd.",
           "**SSO** (één bedrijfs-login via Microsoft Entra): op desktop voor beheerder en medewerker (**Inloggen met Microsoft**). Alleen bestaande WinProx-accounts (e-mail gelijk aan het Microsoft-account); e-mail + wachtwoord blijft werken. Geen automatische nieuwe accounts. Uitvoerders blijven Clock Point-QR (naam + icoon). Koppeling met andere software (Ultimo, IWMS, …) loopt via API-sleutels, niet via SSO.",
           "API: persoonlijke **toegangssleutel** (Bearer-token via Laravel Sanctum). Intrekbaar; met scopes = welke acties de sleutel mag.",
-          "Uitvoerders: **geen e-maillogin** — Clock Point-QR + naam + persoonlijk icoon (of optionele PIN). Eén gsm per uitvoerder; het icoon wordt na aanmelden niet getoond. Optioneel vinkje Clock Point-link op startscherm gsm (standaard uit) om thuis aan te melden. Op een vaste prikklok blijft inklokken een scan; Checkmate klokt in vanuit het icoon.",
+          "Uitvoerders: **geen e-maillogin** — Clock Point-QR + naam + persoonlijk icoon (of optionele PIN). Eén gsm per uitvoerder; het icoon wordt na aanmelden niet getoond. Op elk Clock Point-portaal staat het startscherm-icoon om thuis aan te melden. Op een vaste prikklok blijft inklokken een scan; Checkmate klokt in vanuit het icoon.",
           "Offline veldacties op de unit-QR lopen via POST /portal/field-sync met de toestelcookie (geen API-token). Dezelfde client_id maakt geen dubbele melding of taakwijziging.",
           "Melders: publiek QR-portaal zonder account. Optioneel mailboxbewijs (categorie én unit): geen login; de melding ontstaat pas na de link in de mail.",
           "Collega met **Prikklok-team** krijgt een gekoppeld uitvoerderprofiel voor Clock Point (naam + icoon); telt niet dubbel als licentie."

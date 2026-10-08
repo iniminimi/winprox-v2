@@ -30,7 +30,7 @@ function homescreenClockPointSetup(array $clockPointAttrs = []): array
     return [$tenant, $admin, $clockPoint];
 }
 
-it('laat een nieuw clock point zonder startscherm-link aanmaken', function () {
+it('laat een nieuw clock point aanmaken', function () {
     [, $admin] = homescreenClockPointSetup();
 
     Livewire::actingAs($admin)
@@ -45,57 +45,28 @@ it('laat een nieuw clock point zonder startscherm-link aanmaken', function () {
         ->and($created->homescreen_shortcut)->toBeFalse();
 });
 
-it('slaat het vinkje Clock Point-link op startscherm gsm op', function () {
-    [, $admin, $clockPoint] = homescreenClockPointSetup();
-
-    Livewire::actingAs($admin)
-        ->test(ClockPointsIndex::class)
-        ->call('openEdit', $clockPoint->id)
-        ->assertSet('homescreenShortcut', false)
-        ->set('homescreenShortcut', true)
-        ->call('save')
-        ->assertHasNoErrors();
-
-    expect($clockPoint->fresh()->homescreen_shortcut)->toBeTrue();
-});
-
-it('toont het WinProx-icoon alleen als het clock point het vinkje aan heeft', function () {
+it('toont het WinProx-icoon op elk clock point', function () {
     [, , $clockPoint] = homescreenClockPointSetup();
 
-    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
-        ->assertDontSeeHtml('data-wp-homescreen-install');
+    expect($clockPoint->homescreen_shortcut)->toBeFalse();
 
     $html = $this->get('/time/'.$clockPoint->qr_token)
         ->assertOk()
-        ->assertDontSee('manifest.webmanifest', false)
-        ->assertDontSee('data-wp-homescreen-install', false)
+        ->assertSee('manifest.webmanifest', false)
+        ->assertSee('data-wp-homescreen-install', false)
         ->getContent();
 
     expect($html)->toContain('<div wire:snapshot=')
         ->and($html)->not->toContain('<script wire:snapshot');
 
-    $clockPoint->update(['homescreen_shortcut' => true]);
-
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->assertSeeHtml('data-wp-homescreen-install')
         ->assertSeeHtml('wp-homescreen-shortcut__add')
         ->assertSee(__('time.portal.homescreen.title'), false);
-
-    $this->get('/time/'.$clockPoint->qr_token)
-        ->assertOk()
-        ->assertSee('manifest.webmanifest', false)
-        ->assertSee('data-wp-homescreen-install', false);
 });
 
-it('opent de startscherm-hulp alleen als het vinkje aan staat', function () {
+it('opent de startscherm-hulp op elk clock point', function () {
     [, , $clockPoint] = homescreenClockPointSetup();
-
-    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
-        ->call('openHomescreenHelp')
-        ->assertSet('homescreenHelpOpen', false)
-        ->assertDontSee(__('time.portal.homescreen.help_title'), false);
-
-    $clockPoint->update(['homescreen_shortcut' => true]);
 
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->call('openHomescreenHelp')
@@ -106,9 +77,7 @@ it('opent de startscherm-hulp alleen als het vinkje aan staat', function () {
 });
 
 it('toont het startscherm-icoon ook na aanmelden', function () {
-    [$tenant, , $clockPoint] = homescreenClockPointSetup([
-        'homescreen_shortcut' => true,
-    ]);
+    [$tenant, , $clockPoint] = homescreenClockPointSetup();
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
     Worker::factory()->create([
         'tenant_id' => $tenant->id,
@@ -129,13 +98,8 @@ it('toont het startscherm-icoon ook na aanmelden', function () {
         ->assertDontSeeHtml('<h1 class="wp-page-title">'.e(__('time.portal.title')).'</h1>');
 });
 
-it('levert een webmanifest alleen als het clock point de startscherm-link aanbiedt', function () {
+it('levert een webmanifest voor elk clock point', function () {
     [, , $clockPoint] = homescreenClockPointSetup();
-
-    $this->get(route('public.time-portal.manifest', $clockPoint->qr_token))
-        ->assertNotFound();
-
-    $clockPoint->update(['homescreen_shortcut' => true]);
 
     $this->get(route('public.time-portal.manifest', $clockPoint->qr_token))
         ->assertOk()

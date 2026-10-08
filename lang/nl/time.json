@@ -238,9 +238,7 @@
       "name": "Naam",
       "location": "Locatie",
       "no_location": "Geen locatie gekoppeld",
-      "sort_order": "Sorteervolgorde",
-      "homescreen_shortcut": "Clock Point-link op startscherm gsm",
-      "homescreen_shortcut_hint": "Startscherm-icoon om aan te melden zonder QR. Op een vaste prikklok kan de uitvoerder pas inklokken na een scan van de sticker of het klokscherm. Bij Checkmate klokt die in vanuit het icoon. Laat dit uit op TFT-schermen met wisselende QR-codes."
+      "sort_order": "Sorteervolgorde"
     },
     "qr": {
       "subtitle": "Scan om in of uit te klokken",

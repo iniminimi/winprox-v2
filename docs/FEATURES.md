@@ -1137,13 +1137,12 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   (en een eigen Clock Point-naam); logo, hulp en welkom blijven. **Afmelden** sluit de
   portaal-sessie (opnieuw icoon of PIN); dat is geen uitklokken. De gsm blijft gekoppeld
   tot beheer of teamleader vrijgeeft. Geen knop **Aanmelden als andere medewerker**
-  (ook niet bij icoon, PIN of blokkade). Optioneel vinkje **Clock Point-link op
-  startscherm gsm** (standaard uit): WinProx-icoon naast Aanmelden. Op Android
-  tikt de uitvoerder het icoon: Chrome zet WinProx op het startscherm. Op iPhone
-  via Deel → Zet op beginscherm. Het icoon opent de aanmeldlink (`/cp/{token}`), niet de
-  sticker-URL, en blijft zichtbaar na aanmelden. Op een vaste prikklok is er vanuit dat
-  icoon geen inklokknop; Checkmate klokt daar wel in en uit. TFT-schermen met wisselende QR
-  laten dit uit. Geen App Store. Zonder GPS-werkbezoeken blijven
+  (ook niet bij icoon, PIN of blokkade). Op elk Clock Point-portaal staat het WinProx-icoon
+  om de aanmeldlink op het startscherm van de gsm te zetten. Op Android tikt de uitvoerder
+  het icoon: Chrome zet WinProx op het startscherm. Op iPhone via Deel → Zet op beginscherm.
+  Het icoon opent de aanmeldlink (`/cp/{token}`), niet de sticker-URL, en blijft zichtbaar
+  na aanmelden. Op een vaste prikklok is er vanuit dat icoon geen inklokknop; Checkmate klokt
+  daar wel in en uit. Geen App Store. Zonder GPS-werkbezoeken blijven
   taakacties alleen-lezen (afhandelen via unit-QR). Met Time + GPS-werkbezoeken: teamtaken
   starten/afronden op Clock Point zolang er een open werkbezoek is op die klantlocatie;
   inspectiestops (unit check) ter plaatse op dezelfde bezoek-locatie, in stopvolgorde.
@@ -1537,11 +1536,9 @@ Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `
   stop; knop Unit check alleen na Start werk op die locatie). Ter plaatse opent
   die knop de unit check zonder unit-QR. Zonder GPS-bezoek blijven unit-checks
   via de unit-QR. Na aanmelden geen kop **Aanmelden** en geen wisselknop; de gsm blijft
-  van die uitvoerder tot beheer of teamleader vrijgeeft. Optioneel vinkje
-  **Clock Point-link op startscherm gsm** (standaard uit): icoon naast Aanmelden
-  (Android: één tik zet het op het startscherm; iPhone: Deel);
-  alleen voor veldwerkers zonder QR-scan (niet op TFT met wisselende codes).
-  (Vervangt de oude team-QR `/team/{token}`.)
+  van die uitvoerder tot beheer of teamleader vrijgeeft. Op elk Clock Point-portaal
+  staat het startscherm-icoon (Android: één tik; iPhone: Deel). Dat opent de aanmeldlink,
+  niet de sticker. (Vervangt de oude team-QR `/team/{token}`.)
   Met Time: tegel **Mijn uren** (eigen diensten van de gekozen maand) en optioneel tegel
   **Evacuatielijst** (brandicoon) na aanmelden — alleen als Instellingen → Prikklok-beveiliging
   dat aanzet (**standaard uit**); checkbox dat de raadpleging
@@ -1607,10 +1604,8 @@ Bedoeld voor gedeelde telefoons op de werkvloer:
   starten/afronden, een melding maken (met foto's) en een unit check doen. Acties gaan in een
   IndexedDB-outbox en POST `/portal/field-sync` (toestelcookie + CSRF, bestaande Actions,
   idempotent via `field_sync_receipts`). In-/uitklokken op Clock Point blijft **online** en
-  vraagt een verse QR-scan. Geen Livewire-offline, geen worker-tokens. Optionele
-  startscherm-snelkoppeling alleen als het Clock Point-vinkje **Clock Point-link
-  op startscherm gsm** aan staat (Android-icoon installeert, iPhone via Deel,
-  geen App Store).
+  vraagt een verse QR-scan. Geen Livewire-offline, geen worker-tokens. Elk Clock Point-portaal
+  biedt het startscherm-icoon (Android installeert, iPhone via Deel, geen App Store).
 
 ### Toegang/gating (oud: `ResidentPortalAccess`)
 Portaal **inactief** (alle acties no-op, toon reden) bij o.a.: tenant zonder geldig abonnement,

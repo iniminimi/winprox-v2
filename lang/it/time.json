@@ -238,9 +238,7 @@
       "name": "Nome",
       "location": "Sede",
       "no_location": "Nessuna sede collegata",
-      "sort_order": "Ordine",
-      "homescreen_shortcut": "Collegamento Clock Point sulla schermata iniziale del telefono",
-      "homescreen_shortcut_hint": "Icona della schermata Home per accedere senza QR. Su una timbratrice fissa l'esecutore timbra l'entrata solo dopo la scansione dell'adesivo o dello schermo. In Checkmate timbra dall'icona. Lasciare disattivato sugli schermi TFT con QR rotanti."
+      "sort_order": "Ordine"
     },
     "qr": {
       "subtitle": "Scansiona per timbrare entrata o uscita",

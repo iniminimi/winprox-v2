@@ -238,9 +238,7 @@
       "name": "Name",
       "location": "Standort",
       "no_location": "Kein Standort verknüpft",
-      "sort_order": "Sortierreihenfolge",
-      "homescreen_shortcut": "Clock-Point-Link auf dem Handy-Startbildschirm",
-      "homescreen_shortcut_hint": "Startbildschirm-Symbol zur Anmeldung ohne QR. An einer festen Stempeluhr stempelt die Person erst nach Scan des Aufklebers oder des Uhrenbildschirms ein. Bei Checkmate stempelt sie über das Symbol ein. Bei TFT-Bildschirmen mit wechselnden QR-Codes ausgeschaltet lassen."
+      "sort_order": "Sortierreihenfolge"
     },
     "qr": {
       "subtitle": "Scannen zum Ein- oder Ausstempeln",

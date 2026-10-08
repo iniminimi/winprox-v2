@@ -100,7 +100,7 @@
           "QR Clock Point: identificarse (nombre + icono o PIN) ficha directamente con Time; además tareas de equipo.",
           "Imprimible en hoja de pegatinas o A6/A5/A4.",
           "Un QR de unidad ya cargado sigue sirviendo sin red; fichar pide un escaneo nuevo.",
-          "Opcional: enlace Clock Point en la pantalla de inicio del teléfono."
+          "Enlace Clock Point en la pantalla de inicio del teléfono."
         ]
       },
       {
@@ -309,7 +309,7 @@
         "body": "Todo en el navegador. Gestión en el portátil; campo y QR en el teléfono.",
         "items": [
           "Sin App Store.",
-          "Atajo opcional de Clock Point en la pantalla de inicio."
+          "Atajo de Clock Point en la pantalla de inicio."
         ]
       },
       {
@@ -407,7 +407,7 @@
         "title": "Availability",
         "items": [
           "Available 24/7 as SaaS (browser + QR portals).",
-          "QR de unidad: una página cargada sigue usable sin red para tareas, avisos y controles de unidad; se sincroniza al volver. El fichaje Clock Point sigue en línea y exige un nuevo escaneo QR. Acceso directo opcional (por Clock Point, desactivado por defecto) abre el enlace de acceso sin fichaje; la pegatina y el QR de la pantalla dan un escaneo. Sin extra sin conexión.",
+          "QR de unidad: una página cargada sigue usable sin red para tareas, avisos y controles de unidad; se sincroniza al volver. El fichaje Clock Point sigue en línea y exige un nuevo escaneo QR. El icono de inicio en cada Clock Point abre el enlace de acceso sin fichaje; la pegatina y el QR de la pantalla dan un escaneo. Sin extra sin conexión.",
           "Planned maintenance preferably outside business hours, with notice where possible.",
           "Formal uptime SLA: available contractually on request."
         ]
@@ -419,7 +419,7 @@
           "Self-service sign-up requires **email verification**: the account only works after clicking the link in the confirmation mail. The confirmation mail is only sent to a valid address that is not marked undeliverable (bounce). Unsubscribing from marketing mail does not block this confirmation. Unverified sign-ups are automatically and completely deleted after 7 days.",
           "**SSO** (un inicio de sesión de empresa vía Microsoft Entra): para administradores y empleados en escritorio (**Iniciar sesión con Microsoft**). Solo cuentas WinProx existentes (el correo debe coincidir con la cuenta Microsoft); correo + contraseña sigue funcionando. No se crean cuentas nuevas automáticamente. Los ejecutores siguen con el QR Clock Point (nombre + icono). La conexión con otro software (Ultimo, IWMS, …) usa tokens de API, no SSO.",
           "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
-          "Operarios: **sin inicio de sesión por correo** — QR Clock Point + nombre + icono personal (o PIN opcional). Un móvil por operario; el icono se oculta tras identificarse. Casilla opcional Enlace Clock Point en la pantalla de inicio (desactivada por defecto) para identificarse en casa. En un reloj fijo, la entrada sigue siendo un escaneo; Checkmate ficha desde el icono.",
+          "Operarios: **sin inicio de sesión por correo** — QR Clock Point + nombre + icono personal (o PIN opcional). Un móvil por operario; el icono se oculta tras identificarse. Cada portal Clock Point muestra el icono de inicio para identificarse en casa. En un reloj fijo, la entrada sigue siendo un escaneo; Checkmate ficha desde el icono.",
           "Offline field actions on the unit QR go through POST /portal/field-sync with the device cookie (no API token). The same client_id does not create a duplicate issue or task change.",
           "Avisadores: portal QR público sin cuenta. Prueba de buzón opcional (categoría y unidad): sin inicio de sesión; el aviso solo se crea tras el enlace del correo.",
           "Colega con **equipo de fichaje** obtiene perfil ejecutor vinculado para Clock Point (nombre + icono); no cuenta doble en la licencia."
