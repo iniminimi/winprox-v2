@@ -519,27 +519,38 @@
                                 this.gpsReady = ok;
                             },
                             refreshHere() {
-                                if (!navigator.geolocation) {
+                                try {
+                                    if (!navigator.geolocation) {
+                                        this.markGps(false);
+                                        return;
+                                    }
+                                    // Safari/iOS gooit synchroon op Permissions API "geolocation".
+                                    // Een throw in x-init stopt de rest van de Alpine-init.
+                                    if (navigator.permissions && typeof navigator.permissions.query === 'function') {
+                                        try {
+                                            const pending = navigator.permissions.query({ name: 'geolocation' });
+                                            if (pending && typeof pending.then === 'function') {
+                                                pending.then((status) => {
+                                                    if (status.state === 'denied') {
+                                                        this.markGps(false);
+                                                    }
+                                                    status.onchange = () => this.refreshHere();
+                                                }).catch(() => {});
+                                            }
+                                        } catch (e) {}
+                                    }
+                                    navigator.geolocation.getCurrentPosition(
+                                        (pos) => {
+                                            this.hereLat = pos.coords.latitude;
+                                            this.hereLng = pos.coords.longitude;
+                                            this.markGps(true);
+                                        },
+                                        () => this.markGps(false),
+                                        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+                                    );
+                                } catch (e) {
                                     this.markGps(false);
-                                    return;
                                 }
-                                if (navigator.permissions && navigator.permissions.query) {
-                                    navigator.permissions.query({ name: 'geolocation' }).then((status) => {
-                                        if (status.state === 'denied') {
-                                            this.markGps(false);
-                                        }
-                                        status.onchange = () => this.refreshHere();
-                                    }).catch(() => {});
-                                }
-                                navigator.geolocation.getCurrentPosition(
-                                    (pos) => {
-                                        this.hereLat = pos.coords.latitude;
-                                        this.hereLng = pos.coords.longitude;
-                                        this.markGps(true);
-                                    },
-                                    () => this.markGps(false),
-                                    { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
-                                );
                             }
                         }"
                         x-init="refreshHere(); window.addEventListener('pageshow', () => refreshHere())"
@@ -637,7 +648,7 @@
                                 @endforelse
                                 @endif
                                 @unless ($openShift->openVisit)
-                                    <div x-show="!hasStartWorkInRange()" x-cloak>
+                                    <div x-show="!hasStartWorkInRange()">
                                         @if ($nearbyClockUnits === [])
                                             <button type="button" class="btn btn--surface btn--block" @click="withFreshGps('refreshNearbyClockUnits')" data-manual-capture-trigger="portal-find-nearby">
                                                 {{ ($checkmateMode ?? false) ? __('time.portal.clock.find_nearby_customer') : __('time.portal.clock.find_nearby') }}

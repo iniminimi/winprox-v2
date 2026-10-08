@@ -277,6 +277,7 @@ it('toont in checkmate geen geplande-bezoekenlijst maar wel de klant-zoekknop', 
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->assertSee(__('time.portal.today.title_checkmate'))
         ->assertSee(__('time.portal.clock.find_nearby_customer'))
+        ->assertDontSee('x-show="!hasStartWorkInRange()" x-cloak', false)
         ->assertDontSee(__('time.portal.today.empty'))
         ->assertDontSee(__('time.portal.today.title'));
 });
