@@ -673,7 +673,12 @@
                 },
                 {
                     "label": "Données de l'organisation",
-                    "text": "Sous Votre organisation, trois blocs : Données de l'organisation (nom, e-mail, téléphone et adresse — seul l'administrateur peut modifier via 'Modifier les données de l'organisation'), Logo de l'organisation (téléversement PNG/JPG, max. 2 Mo) et Notifications e-mail (préférence personnelle : e-mail à chaque nouveau signalement QR). En tant qu'employé, vous voyez les données et le logo uniquement à titre informatif ; vous pouvez quand même activer ou désactiver les notifications e-mail. Le logo apparaît au centre de chaque QR code sur les autocollants et dans le portail de signalement. Pour le placement en coin sur les autocollants, voir la rubrique Logo et adresse sous Feuilles d'autocollants QR."
+                    "text": "Sous Votre organisation, deux blocs : Données de l'organisation (nom, e-mail, téléphone et adresse — seul l'administrateur peut modifier via 'Modifier les données de l'organisation') et Logo de l'organisation (téléversement PNG/JPG, max. 2 Mo). En tant qu'employé, vous voyez les données et le logo uniquement à titre informatif. Le logo apparaît au centre de chaque QR code sur les autocollants et dans le portail de signalement. Pour le placement en coin sur les autocollants, voir la rubrique Logo et adresse sous Feuilles d'autocollants QR."
+                },
+                {
+                    "label": "Notifications e-mail",
+                    "requires_facility": true,
+                    "text": "Préférence personnelle par utilisateur : un e-mail à chaque nouveau signalement QR. En tant qu'employé, vous pouvez l'activer ou la désactiver vous-même."
                 },
                 {
                     "label": "Style de portail personnalisé",

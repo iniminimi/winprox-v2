@@ -116,17 +116,19 @@
                     @endif
                 </div>
 
-                <div class="wp-settings-subblock">
-                    <h3 class="wp-settings-subblock-title">{{ __('settings.notifications.title') }}</h3>
-                    <p class="wp-muted wp-text-sm">{{ __('settings.notifications.hint') }}</p>
-                    <label class="wp-check wp-check--boxed">
-                        <input type="checkbox" wire:model.live="notifyOnNewIssueEmail" class="wp-checkbox">
-                        <span>
-                            {{ __('settings.notifications.new_qr_issue_label') }}
-                            <br><span class="wp-hint">{{ __('settings.notifications.new_qr_issue_hint') }}</span>
-                        </span>
-                    </label>
-                </div>
+                @if (! ($checkmateMode ?? false))
+                    <div class="wp-settings-subblock">
+                        <h3 class="wp-settings-subblock-title">{{ __('settings.notifications.title') }}</h3>
+                        <p class="wp-muted wp-text-sm">{{ __('settings.notifications.hint') }}</p>
+                        <label class="wp-check wp-check--boxed">
+                            <input type="checkbox" wire:model.live="notifyOnNewIssueEmail" class="wp-checkbox">
+                            <span>
+                                {{ __('settings.notifications.new_qr_issue_label') }}
+                                <br><span class="wp-hint">{{ __('settings.notifications.new_qr_issue_hint') }}</span>
+                            </span>
+                        </label>
+                    </div>
+                @endif
             </div>
         </x-wp-settings-section>
     @endif

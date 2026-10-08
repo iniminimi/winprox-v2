@@ -665,7 +665,12 @@
                 },
                 {
                     "label": "Organisation details",
-                    "text": "Under Your organisation you will find three blocks: Organisation details (name, email, phone and address — only the administrator can edit via 'Edit organisation details'), Organisation logo (upload PNG/JPG, max. 2 MB) and Email notifications (personal preference: email for each new QR report). As an employee you only see details and logo for reference; you can still toggle email notifications yourself. The logo appears in the centre of every QR code on stickers and in the reporting portal. For corner placement on stickers, see the Logo and address section under QR sticker sheets."
+                    "text": "Under Your organisation you will find two blocks: Organisation details (name, email, phone and address — only the administrator can edit via 'Edit organisation details') and Organisation logo (upload PNG/JPG, max. 2 MB). As an employee you only see details and logo for reference. The logo appears in the centre of every QR code on stickers and in the reporting portal. For corner placement on stickers, see the Logo and address section under QR sticker sheets."
+                },
+                {
+                    "label": "Email notifications",
+                    "requires_facility": true,
+                    "text": "Personal preference per user: an email for each new QR report. As an employee you can toggle this yourself."
                 },
                 {
                     "label": "Custom portal style",

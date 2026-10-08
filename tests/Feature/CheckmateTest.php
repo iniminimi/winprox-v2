@@ -539,7 +539,9 @@ it('verbergt werkmenu en configuratie-overzicht op instellingen voor checkmate',
         ->assertDontSee('loadConfigOverview', false)
         ->assertDontSee('saveWorkMenuSettings', false)
         ->assertDontSee(__('settings.config_overview.title'), false)
-        ->assertDontSee(__('settings.work_menu.title'), false);
+        ->assertDontSee(__('settings.work_menu.title'), false)
+        ->assertDontSee(__('settings.notifications.title'), false)
+        ->assertDontSee(__('settings.notifications.new_qr_issue_label'), false);
 
     $facilityTenant = Tenant::factory()->create([
         'checkmate_mode' => false,
@@ -553,7 +555,9 @@ it('verbergt werkmenu en configuratie-overzicht op instellingen voor checkmate',
         ->assertSee('settings-config-overview', false)
         ->assertSee('saveWorkMenuSettings', false)
         ->assertSee(__('settings.config_overview.title'), false)
-        ->assertSee(__('settings.work_menu.title'), false);
+        ->assertSee(__('settings.work_menu.title'), false)
+        ->assertSee(__('settings.notifications.title'), false)
+        ->assertSee(__('settings.notifications.new_qr_issue_label'), false);
 });
 
 it('verbergt Manueel inklokken op Time-pagina’s voor checkmate', function () {

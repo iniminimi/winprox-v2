@@ -665,7 +665,12 @@
                 },
                 {
                     "label": "Datos de la organización",
-                    "text": "En Su organización hay tres bloques: Datos de la organización (nombre, correo, teléfono y dirección — solo el administrador puede editar mediante «Editar datos de la organización»), Logotipo de la organización (subida PNG/JPG, máx. 2 MB) y Notificaciones por correo (preferencia personal: correo por cada nuevo informe QR). Como empleado solo ve datos y logotipo como referencia; las notificaciones por correo puede activarlas o desactivarlas usted mismo. El logotipo aparece en el centro de cada código QR en las pegatinas y en el portal de informes. Para la colocación en esquina en las pegatinas, consulte la sección Logotipo y dirección bajo Hojas de pegatinas QR."
+                    "text": "En Su organización hay dos bloques: Datos de la organización (nombre, correo, teléfono y dirección — solo el administrador puede editar mediante «Editar datos de la organización») y Logotipo de la organización (subida PNG/JPG, máx. 2 MB). Como empleado solo ve datos y logotipo como referencia. El logotipo aparece en el centro de cada código QR en las pegatinas y en el portal de informes. Para la colocación en esquina en las pegatinas, consulte la sección Logotipo y dirección bajo Hojas de pegatinas QR."
+                },
+                {
+                    "label": "Notificaciones por correo",
+                    "requires_facility": true,
+                    "text": "Preferencia personal por usuario: un correo por cada nuevo informe QR. Como empleado puede activarlo o desactivarlo usted mismo."
                 },
                 {
                     "label": "Estilo personalizado del portal",
