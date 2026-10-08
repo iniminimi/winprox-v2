@@ -85,6 +85,7 @@ use App\Support\Time\TimeModuleAccess;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Exceptions\HttpResponseException;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -275,9 +276,9 @@ class TimePortal extends Component
             if ($resolution->historyToken === null && request()->routeIs('public.time-portal.cp')) {
                 $homeToken = (string) $clockPoint->qr_token;
                 if ($homeToken !== '' && $homeToken !== $token) {
-                    throw new HttpResponseException(
-                        response()->redirectToRoute('public.time-portal.cp', ['token' => $homeToken]),
-                    );
+                    throw new HttpResponseException(new RedirectResponse(
+                        route('public.time-portal.cp', ['token' => $homeToken]),
+                    ));
                 }
             }
 
