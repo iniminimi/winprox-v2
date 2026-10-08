@@ -525,7 +525,7 @@
 .wp-page-help-modal {
     position: fixed;
     inset: 0;
-    z-index: 50;
+    z-index: 80;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -539,7 +539,9 @@
     background-color: rgb(17 24 39 / 0.45);
 }
 
-.wp-page-help-dialog {
+.wp-page-help-dialog,
+[data-theme='modern'] .wp-page-help-dialog,
+[data-theme='modern'] .wp-portal .wp-page-help-dialog {
     position: relative;
     z-index: 1;
     width: min(100%, 40rem);
@@ -551,10 +553,6 @@
     background-color: #ffffff;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-}
-
-.wp-portal .wp-page-help-dialog {
-    background-color: #ffffff;
 }
 
 .wp-page-help-dialog-head {

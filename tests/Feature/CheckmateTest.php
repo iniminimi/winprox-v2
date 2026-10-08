@@ -278,6 +278,7 @@ it('toont in checkmate geen geplande-bezoekenlijst maar wel de klant-zoekknop', 
         ->assertSee(__('time.portal.today.title_checkmate'))
         ->assertSee(__('time.portal.clock.find_nearby_customer'))
         ->assertDontSee('x-show="!hasStartWorkInRange()" x-cloak', false)
+        ->assertSee('x-teleport="body"', false)
         ->assertDontSee(__('time.portal.today.empty'))
         ->assertDontSee(__('time.portal.today.title'))
         ->html();

@@ -32,6 +32,8 @@
             title="{{ __('page-help.button_label') }}"
         >?</button>
 
+        {{-- Safari op Mac maakt van backdrop-filter een kader voor position:fixed. Zonder teleport blijft de popup in het vak van de hulpknop. --}}
+        @teleport('body')
         <div class="wp-page-help-modal" x-show="open" x-cloak x-transition.opacity>
             <div class="wp-page-help-backdrop" @click="open = false" aria-hidden="true"></div>
             <div
@@ -104,5 +106,6 @@
                 </div>
             </div>
         </div>
+        @endteleport
     </div>
 @endif
