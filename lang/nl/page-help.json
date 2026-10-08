@@ -1017,7 +1017,7 @@
                 },
                 {
                     "label": "Verwijderen",
-                    "text": "Verwijder workers die niet meer bij het team horen. Je kunt jezelf niet verwijderen."
+                    "text": "Verwijder alleen een worker die je zelf net hebt aangemaakt (binnen 24 uur). Andere teamleden verwijdert de beheerder. Jezelf verwijderen kan niet."
                 }
             ]
         },

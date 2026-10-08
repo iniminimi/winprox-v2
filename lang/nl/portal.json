@@ -171,7 +171,7 @@
         "released_ok": ":name is vrijgegeven en kan opnieuw een icoon kiezen.",
         "manage_workers_title": "Workers beheren",
         "manage_workers_open": "Beheren",
-        "manage_workers_hint": "Voeg workers toe of verwijder ze uit het team.",
+        "manage_workers_hint": "Voeg workers toe. Verwijderen kan alleen bij een worker die je zelf net hebt aangemaakt.",
         "worker_first_name": "Voornaam",
         "worker_last_name": "Achternaam",
         "add_worker_title": "Uitvoerder toevoegen",
@@ -195,6 +195,7 @@
             "colleague_not_found": "Deze collega is niet geblokkeerd of hoort niet bij je team.",
             "cannot_release": "Deze collega kan niet worden vrijgegeven.",
             "cannot_delete_self": "Je kunt jezelf niet verwijderen.",
+            "cannot_delete_worker": "Alleen een worker die je zelf net hebt aangemaakt kan je verwijderen.",
             "device_colleague_required": "Kies een collega.",
             "device_colleague_not_found": "Deze collega heeft geen gekoppeld toestel of hoort niet bij je team."
         },

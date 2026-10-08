@@ -1017,7 +1017,7 @@
                 },
                 {
                     "label": "Remove",
-                    "text": "Remove workers who no longer belong to the team. You cannot remove yourself."
+                    "text": "Only remove a worker you just created yourself (within 24 hours). Other team members are removed by the administrator. You cannot remove yourself."
                 }
             ]
         },

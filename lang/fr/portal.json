@@ -171,7 +171,7 @@
         "released_ok": ":name a été libéré et peut choisir à nouveau une icône.",
         "manage_workers_title": "Gérer les travailleurs",
         "manage_workers_open": "Gérer",
-        "manage_workers_hint": "Ajouter ou retirer des travailleurs de l'équipe.",
+        "manage_workers_hint": "Ajoutez des travailleurs. Vous ne pouvez supprimer que ceux que vous venez de créer.",
         "worker_first_name": "Prénom",
         "worker_last_name": "Nom",
         "add_worker_title": "Ajouter un travailleur",
@@ -195,6 +195,7 @@
             "colleague_not_found": "Ce collègue n'est pas bloqué ou n'appartient pas à votre équipe.",
             "cannot_release": "Ce collègue ne peut pas être libéré.",
             "cannot_delete_self": "Vous ne pouvez pas vous supprimer.",
+            "cannot_delete_worker": "Vous ne pouvez supprimer qu'un travailleur que vous venez de créer.",
             "device_colleague_required": "Choisissez un collègue.",
             "device_colleague_not_found": "Ce collègue n'a pas d'appareil lié ou n'appartient pas à votre équipe."
         },

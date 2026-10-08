@@ -1017,7 +1017,7 @@
                 },
                 {
                     "label": "Entfernen",
-                    "text": "Entfernen Sie Mitarbeiter, die nicht mehr zum Team gehören. Sie können sich nicht selbst entfernen."
+                    "text": "Entfernen Sie nur Mitarbeiter, die Sie gerade selbst angelegt haben (innerhalb von 24 Stunden). Andere Teammitglieder entfernt die Verwaltung. Sich selbst entfernen ist nicht möglich."
                 }
             ]
         },

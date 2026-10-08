@@ -1017,7 +1017,7 @@
                 },
                 {
                     "label": "Eliminar",
-                    "text": "Elimine trabajadores que ya no pertenezcan al equipo. No puede eliminarse a sí mismo."
+                    "text": "Elimine solo trabajadores que acabe de crear usted mismo (dentro de las 24 horas). Los demás miembros los elimina el administrador. No puede eliminarse a sí mismo."
                 }
             ]
         },

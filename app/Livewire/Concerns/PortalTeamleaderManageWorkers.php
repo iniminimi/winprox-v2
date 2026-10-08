@@ -109,12 +109,23 @@ trait PortalTeamleaderManageWorkers
         } catch (\InvalidArgumentException $e) {
             if ($e->getMessage() === 'cannot_delete_self') {
                 $this->portalManageWorkersFlash('portal.teamleader.errors.cannot_delete_self');
+            } elseif ($e->getMessage() === 'teamleader_cannot_delete_worker') {
+                $this->portalManageWorkersFlash('portal.teamleader.errors.cannot_delete_worker');
             }
 
             return;
         }
 
         $this->portalManageWorkersFlash('portal.teamleader.worker_deleted', ['name' => $worker->displayName()]);
+    }
+
+    /** Delete-knop alleen voor workers die deze teamleader zelf net aanmaakte. */
+    public function teamleaderCanRemoveWorker(Worker $worker): bool
+    {
+        $teamleader = $this->portalTeamleaderWorker();
+
+        return $teamleader !== null
+            && DeleteWorkerAction::teamleaderCanDelete($worker, $teamleader);
     }
 
     abstract protected function portalManageWorkersTeam(): ?InternalTeam;

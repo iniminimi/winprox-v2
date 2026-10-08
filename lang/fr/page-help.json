@@ -1025,7 +1025,7 @@
                 },
                 {
                     "label": "Supprimer",
-                    "text": "Supprimez les exécutants qui ne font plus partie de l'équipe. Vous ne pouvez pas vous supprimer vous-même."
+                    "text": "Ne supprimez qu'un exécutant que vous venez de créer vous-même (moins de 24 h). Les autres membres sont supprimés par l'administrateur. Vous ne pouvez pas vous supprimer vous-même."
                 }
             ]
         },

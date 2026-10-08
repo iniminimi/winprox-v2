@@ -353,6 +353,71 @@ it('verbergt teamleader-functies achter een tegel op het checkmate-portaal', fun
         ->assertSee('openTeamleader', false);
 });
 
+it('laat een teamleader enkel een zelf net aangemaakte uitvoerder verwijderen', function () {
+    $tenant = checkmateTenant(['billing_seats_qty' => 10]);
+    Tenancy::actAs($tenant->id);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $leader = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'is_teamleader' => true,
+    ]);
+    $otherLeader = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'is_teamleader' => true,
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    WorkerVerification::markVerified($team, $leader);
+    WorkerDeviceSession::bindRememberedWorker($team, $leader);
+
+    // Door admin aangemaakt (created_by_worker_id = null) → niet verwijderbaar.
+    $adminWorker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    // Door een andere teamleader aangemaakt → niet verwijderbaar.
+    $otherLeaderWorker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'created_by_worker_id' => $otherLeader->id,
+    ]);
+
+    // Zelf aangemaakt, maar ouder dan 24 uur → niet verwijderbaar.
+    $oldWorker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'created_by_worker_id' => $leader->id,
+        'created_at' => now()->subDays(2),
+    ]);
+
+    $component = Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->call('removeWorker', $adminWorker->id)
+        ->call('removeWorker', $otherLeaderWorker->id)
+        ->call('removeWorker', $oldWorker->id);
+
+    expect(Worker::find($adminWorker->id))->not->toBeNull()
+        ->and(Worker::find($otherLeaderWorker->id))->not->toBeNull()
+        ->and(Worker::find($oldWorker->id))->not->toBeNull();
+
+    // Zelf net aangemaakt via het portaal → wél verwijderbaar.
+    $component
+        ->set('newWorkerFirstName', 'Nieuwe')
+        ->set('newWorkerLastName', 'Collega')
+        ->call('addWorker');
+
+    $newWorker = Worker::where('internal_team_id', $team->id)
+        ->where('first_name', 'Nieuwe')
+        ->firstOrFail();
+    expect((int) $newWorker->created_by_worker_id)->toBe($leader->id);
+
+    $component->call('removeWorker', $newWorker->id);
+
+    expect(Worker::find($newWorker->id))->toBeNull();
+});
+
 it('vindt checkmate-uitvoerders ondanks legacy-locatiebeperking op het clock point', function () {
     $tenant = checkmateTenant();
     Tenancy::actAs($tenant->id);

@@ -29,6 +29,7 @@ class Worker extends Model
         'is_external',
         'company_name',
         'import_batch_id',
+        'created_by_worker_id',
         'email',
         'phone',
         'ssin',

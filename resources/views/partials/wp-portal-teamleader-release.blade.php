@@ -160,13 +160,14 @@
                                     <span class="wp-pill wp-pill--progress">{{ __('portal.teamleader.badge') }}</span>
                                 @endif
                             </span>
-                            <button type="button"
-                                    class="btn btn--danger btn--sm"
-                                    wire:click="removeWorker({{ $tw->id }})"
-                                    wire:confirm="{{ __('portal.teamleader.delete_confirm', ['name' => $tw->displayName()]) }}"
-                                    @disabled($verifiedWorker && (int) $verifiedWorker->id === (int) $tw->id)>
-                                {{ __('portal.teamleader.delete') }}
-                            </button>
+                            @if ($this->teamleaderCanRemoveWorker($tw))
+                                <button type="button"
+                                        class="btn btn--danger btn--sm"
+                                        wire:click="removeWorker({{ $tw->id }})"
+                                        wire:confirm="{{ __('portal.teamleader.delete_confirm', ['name' => $tw->displayName()]) }}">
+                                    {{ __('portal.teamleader.delete') }}
+                                </button>
+                            @endif
                         </div>
                     @endforeach
                 </div>

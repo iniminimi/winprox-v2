@@ -71,6 +71,7 @@ class CreateWorkerAction
             'is_external' => $isExternal,
             'company_name' => $companyName,
             'is_active' => true,
+            'created_by_worker_id' => $actorWorker?->id,
         ]);
 
         if (array_key_exists('location_ids', $data)) {

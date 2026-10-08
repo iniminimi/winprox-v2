@@ -171,7 +171,7 @@
         "released_ok": ":name has been released and can choose an icon again.",
         "manage_workers_title": "Manage workers",
         "manage_workers_open": "Manage",
-        "manage_workers_hint": "Add or remove workers from the team.",
+        "manage_workers_hint": "Add workers. You can only delete a worker you just created yourself.",
         "worker_first_name": "First name",
         "worker_last_name": "Last name",
         "add_worker_title": "Add worker",
@@ -195,6 +195,7 @@
             "colleague_not_found": "This colleague is not blocked or is not on your team.",
             "cannot_release": "This colleague cannot be released.",
             "cannot_delete_self": "You cannot delete yourself.",
+            "cannot_delete_worker": "You can only delete a worker you just created yourself.",
             "device_colleague_required": "Choose a colleague.",
             "device_colleague_not_found": "This colleague has no linked device or is not on your team."
         },

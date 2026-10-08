@@ -171,7 +171,7 @@
         "released_ok": ":name è stato rilasciato e può scegliere di nuovo un'icona.",
         "manage_workers_title": "Gestisci lavoratori",
         "manage_workers_open": "Gestisci",
-        "manage_workers_hint": "Aggiunga o rimuova lavoratori dal team.",
+        "manage_workers_hint": "Aggiunga lavoratori. Può eliminare solo quelli appena creati da lei.",
         "worker_first_name": "Nome",
         "worker_last_name": "Cognome",
         "add_worker_title": "Aggiungi lavoratore",
@@ -195,6 +195,7 @@
             "colleague_not_found": "Questo collega non è bloccato o non è nel Suo team.",
             "cannot_release": "Questo collega non può essere rilasciato.",
             "cannot_delete_self": "Non può eliminare se stesso.",
+            "cannot_delete_worker": "Può eliminare solo un lavoratore appena creato da lei.",
             "device_colleague_required": "Scegli un collega.",
             "device_colleague_not_found": "Questo collega non ha un dispositivo collegato o non appartiene al tuo team."
         },

@@ -1017,7 +1017,7 @@
                 },
                 {
                     "label": "Rimuovi",
-                    "text": "Rimuova lavoratori che non appartengono più al team. Non può rimuovere se stesso."
+                    "text": "Rimuova solo lavoratori appena creati da lei (entro 24 ore). Gli altri membri del team li rimuove l'amministratore. Non può rimuovere se stesso."
                 }
             ]
         },

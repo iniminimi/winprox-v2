@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Storage;
 
 class DeleteWorkerAction
 {
+    /** Venster waarin een teamleader een zelf aangemaakte worker mag terugtrekken. */
+    public const TEAMLEADER_DELETE_WINDOW_HOURS = 24;
+
     public function __construct(private AuditRecorder $audit) {}
 
     public function handle(Worker $worker, ?int $actorUserId = null, ?Worker $actorWorker = null): void
@@ -23,6 +26,10 @@ class DeleteWorkerAction
 
             if ((int) $actorWorker->id === (int) $worker->id) {
                 throw new \InvalidArgumentException('cannot_delete_self');
+            }
+
+            if (! self::teamleaderCanDelete($worker, $actorWorker)) {
+                throw new \InvalidArgumentException('teamleader_cannot_delete_worker');
             }
         }
 
@@ -48,5 +55,19 @@ class DeleteWorkerAction
                 $actorWorker !== null ? ['actor_worker_id' => $actorWorker->id] : []
             ),
         );
+    }
+
+    /**
+     * Eén bron voor "mag deze teamleader deze worker weg": alleen workers die
+     * de teamleader zélf recent aanmaakte (bv. foutje op de werkvloer herstellen).
+     */
+    public static function teamleaderCanDelete(Worker $worker, Worker $teamleader): bool
+    {
+        if ((int) $worker->created_by_worker_id !== (int) $teamleader->id) {
+            return false;
+        }
+
+        return $worker->created_at !== null
+            && $worker->created_at->gte(now()->subHours(self::TEAMLEADER_DELETE_WINDOW_HOURS));
     }
 }
