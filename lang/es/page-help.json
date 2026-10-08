@@ -1040,7 +1040,7 @@
                 },
                 {
                     "label": "Acceso directo en la pantalla de inicio",
-                    "text": "Solo si administración lo activó en este Clock Point: a la derecha de Inicio de sesión hay un icono WinProx. Tócalo: en Android Chrome lo añade a la pantalla de inicio; en iPhone, Compartir → Añadir a pantalla de inicio. Sin App Store. No es para pantallas con QR rotativos."
+                    "text": "Solo si administración lo activó en este Clock Point: a la derecha de Inicio de sesión hay un icono WinProx. Tócalo: en Android Chrome lo añade a la pantalla de inicio; en iPhone: ⋯ abajo → Compartir → Mostrar más → desliza → + Añadir a pantalla de inicio. Sin App Store. No es para pantallas con QR rotativos."
                 },
                 {
                     "label": "Cerrar sesión",
@@ -1417,7 +1417,7 @@
                 },
                 {
                     "label": "Clock Point en la pantalla de inicio del teléfono",
-                    "text": "Algunos operarios no pueden escanear un código QR — por ejemplo porque empiezan en casa o de camino. Marca la casilla del clock point: en la página de acceso aparece entonces un icono WinProx junto a <strong>Inicio de sesión</strong>. El operario lo toca para poner un enlace a este clock point en la pantalla de inicio de su teléfono. Así abre el clock point con un solo toque, como una app — sin instalar nada de una tienda. En iPhone se hace mediante <strong>Compartir</strong>. Deja la casilla desactivada en una pantalla TFT: su QR cambia constantemente, un enlace fijo no tiene sentido ahí."
+                    "text": "Algunos operarios no pueden escanear un código QR — por ejemplo porque empiezan en casa o de camino. Marca la casilla del clock point: en la página de acceso aparece entonces un icono WinProx junto a <strong>Inicio de sesión</strong>. El operario lo toca para poner un enlace a este clock point en la pantalla de inicio de su teléfono. Así abre el clock point con un solo toque, como una app — sin instalar nada de una tienda. En iPhone mediante ⋯ (abajo) → <strong>Compartir</strong> → Mostrar más → + Añadir a pantalla de inicio. Deja la casilla desactivada en una pantalla TFT: su QR cambia constantemente, un enlace fijo no tiene sentido ahí."
                 }
             ]
         },
@@ -2065,7 +2065,7 @@
                 },
                 {
                     "label": "Pantalla de inicio",
-                    "text": "Después basta el icono WinProx en la pantalla de inicio (Android: un toque; iPhone: Compartir → Añadir a pantalla de inicio). Sin app store, sin contraseña."
+                    "text": "Después basta el icono WinProx en la pantalla de inicio (Android: un toque; iPhone: ⋯ → Compartir → Mostrar más → desliza → + Añadir a pantalla de inicio). Sin app store, sin contraseña."
                 },
                 {
                     "label": "Otro dispositivo",

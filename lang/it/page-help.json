@@ -1040,7 +1040,7 @@
                 },
                 {
                     "label": "Collegamento sulla schermata iniziale",
-                    "text": "Solo se l’admin l’ha attivato su questo Clock Point: a destra di Accesso c’è un’icona WinProx. Tocca: su Android Chrome la mette sulla schermata Home; su iPhone Condividi → Aggiungi a schermata Home. Nessun App Store. Non per schermi con QR rotanti."
+                    "text": "Solo se l’admin l’ha attivato su questo Clock Point: a destra di Accesso c’è un’icona WinProx. Tocca: su Android Chrome la mette sulla schermata Home; su iPhone: ⋯ in basso → Condividi → Mostra altro → scorri → + Aggiungi a schermata Home. Nessun App Store. Non per schermi con QR rotanti."
                 },
                 {
                     "label": "Esci",
@@ -1417,7 +1417,7 @@
                 },
                 {
                     "label": "Clock Point sulla schermata iniziale del telefono",
-                    "text": "Alcuni esecutori non possono scansionare un QR code — ad esempio perché iniziano da casa o in viaggio. Attiva la spunta sul clock point: nella pagina di accesso compare un'icona WinProx accanto ad <strong>Accesso</strong>. L'esecutore la tocca per mettere un link a questo clock point sulla schermata iniziale del telefono. Così apre il clock point con un tocco, come un'app — senza installare nulla da uno store. Su iPhone si fa tramite <strong>Condividi</strong>. Lascia la spunta disattivata su uno schermo TFT: il suo QR cambia continuamente, quindi un link fisso non serve."
+                    "text": "Alcuni esecutori non possono scansionare un QR code — ad esempio perché iniziano da casa o in viaggio. Attiva la spunta sul clock point: nella pagina di accesso compare un'icona WinProx accanto ad <strong>Accesso</strong>. L'esecutore la tocca per mettere un link a questo clock point sulla schermata iniziale del telefono. Così apre il clock point con un tocco, come un'app — senza installare nulla da uno store. Su iPhone tramite ⋯ (in basso) → <strong>Condividi</strong> → Mostra altro → + Aggiungi a Home. Lascia la spunta disattivata su uno schermo TFT: il suo QR cambia continuamente, quindi un link fisso non serve."
                 }
             ]
         },
@@ -2065,7 +2065,7 @@
                 },
                 {
                     "label": "Schermata home",
-                    "text": "Poi basta l'icona WinProx sulla schermata home (Android: un tocco; iPhone: Condividi → Aggiungi a Home). Niente app store, niente password."
+                    "text": "Poi basta l'icona WinProx sulla schermata home (Android: un tocco; iPhone: ⋯ → Condividi → Mostra altro → scorri → + Aggiungi a Home). Niente app store, niente password."
                 },
                 {
                     "label": "Altro dispositivo",

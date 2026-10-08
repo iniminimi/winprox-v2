@@ -1040,7 +1040,7 @@
                 },
                 {
                     "label": "Snelkoppeling op startscherm",
-                    "text": "Alleen als beheer dit Clock Point zo heeft ingesteld: rechts van Aanmelden staat een WinProx-icoon. Tik: op Android zet Chrome het meteen op het startscherm; op iPhone volg je Deel → Zet op beginscherm. Geen App Store. Niet bedoeld voor schermen met wisselende QR-codes."
+                    "text": "Alleen als beheer dit Clock Point zo heeft ingesteld: rechts van Aanmelden staat een WinProx-icoon. Tik: op Android zet Chrome het meteen op het startscherm; op iPhone: ⋯ onderaan → Deel → Toon meer → scroll naar beneden → + Zet op beginscherm. Geen App Store. Niet bedoeld voor schermen met wisselende QR-codes."
                 },
                 {
                     "label": "Afmelden",
@@ -1417,7 +1417,7 @@
                 },
                 {
                     "label": "Link op het startscherm van de gsm",
-                    "text": "Sommige uitvoerders kunnen geen QR-code scannen — bijvoorbeeld omdat ze thuis of onderweg beginnen te werken. Zet het vinkje aan bij het clock point: op de aanmeldpagina verschijnt dan een WinProx-icoon naast <strong>Aanmelden</strong>. De uitvoerder tikt erop om een link naar dit clock point op het startscherm van zijn gsm te zetten. Zo opent hij het clock point voortaan met één tik, net als een app — zonder iets uit een app store te installeren. Op iPhone gaat dat via <strong>Deel</strong>. Laat het vinkje uit bij een TFT-klokscherm: daar verandert de QR-code voortdurend, dus een vaste link heeft geen zin."
+                    "text": "Sommige uitvoerders kunnen geen QR-code scannen — bijvoorbeeld omdat ze thuis of onderweg beginnen te werken. Zet het vinkje aan bij het clock point: op de aanmeldpagina verschijnt dan een WinProx-icoon naast <strong>Aanmelden</strong>. De uitvoerder tikt erop om een link naar dit clock point op het startscherm van zijn gsm te zetten. Zo opent hij het clock point voortaan met één tik, net als een app — zonder iets uit een app store te installeren. Op iPhone gaat dat via ⋯ (onderaan) → <strong>Deel</strong> → Toon meer → + Zet op beginscherm. Laat het vinkje uit bij een TFT-klokscherm: daar verandert de QR-code voortdurend, dus een vaste link heeft geen zin."
                 }
             ]
         },
@@ -2065,7 +2065,7 @@
                 },
                 {
                     "label": "Startscherm",
-                    "text": "Daarna volstaat het WinProx-icoon op het startscherm (Android: één tik; iPhone: Deel → Zet op beginscherm). Geen app-store, geen wachtwoord."
+                    "text": "Daarna volstaat het WinProx-icoon op het startscherm (Android: één tik; iPhone: ⋯ onderaan → Deel → Toon meer → scroll → + Zet op beginscherm). Geen app-store, geen wachtwoord."
                 },
                 {
                     "label": "Ander toestel",

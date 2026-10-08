@@ -1040,7 +1040,7 @@
                 },
                 {
                     "label": "Verknüpfung auf dem Startbildschirm",
-                    "text": "Nur wenn die Verwaltung dies am Clock Point eingeschaltet hat: rechts von Anmelden steht ein WinProx-Symbol. Tippen: unter Android legt Chrome es auf den Startbildschirm; am iPhone Teilen → Zum Home-Bildschirm. Kein App Store. Nicht für Bildschirme mit wechselnden QR-Codes."
+                    "text": "Nur wenn die Verwaltung dies am Clock Point eingeschaltet hat: rechts von Anmelden steht ein WinProx-Symbol. Tippen: unter Android legt Chrome es auf den Startbildschirm; am iPhone: ⋯ unten → Teilen → Mehr anzeigen → nach unten scrollen → + Zum Home-Bildschirm. Kein App Store. Nicht für Bildschirme mit wechselnden QR-Codes."
                 },
                 {
                     "label": "Abmelden",
@@ -1417,7 +1417,7 @@
                 },
                 {
                     "label": "Clock Point auf dem Startbildschirm des Telefons",
-                    "text": "Manche Ausführenden können keinen QR-Code scannen — etwa weil sie zu Hause oder unterwegs beginnen. Aktivieren Sie das Häkchen beim Clock Point: auf der Anmeldeseite erscheint dann ein WinProx-Symbol neben <strong>Anmelden</strong>. Der Ausführende tippt darauf, um einen Link zu diesem Clock Point auf den Startbildschirm seines Telefons zu legen. So öffnet er den Clock Point fortan mit einem Tipp, wie eine App — ohne etwas aus einem App Store zu installieren. Auf dem iPhone geht das über <strong>Teilen</strong>. Lassen Sie das Häkchen bei einem TFT-Klokschirm deaktiviert: dort ändert sich der QR-Code ständig, ein fester Link ist dort sinnlos."
+                    "text": "Manche Ausführenden können keinen QR-Code scannen — etwa weil sie zu Hause oder unterwegs beginnen. Aktivieren Sie das Häkchen beim Clock Point: auf der Anmeldeseite erscheint dann ein WinProx-Symbol neben <strong>Anmelden</strong>. Der Ausführende tippt darauf, um einen Link zu diesem Clock Point auf den Startbildschirm seines Telefons zu legen. So öffnet er den Clock Point fortan mit einem Tipp, wie eine App — ohne etwas aus einem App Store zu installieren. Auf dem iPhone über ⋯ (unten) → <strong>Teilen</strong> → Mehr anzeigen → + Zum Home-Bildschirm. Lassen Sie das Häkchen bei einem TFT-Klokschirm deaktiviert: dort ändert sich der QR-Code ständig, ein fester Link ist dort sinnlos."
                 }
             ]
         },
@@ -2065,7 +2065,7 @@
                 },
                 {
                     "label": "Startbildschirm",
-                    "text": "Danach genügt das WinProx-Symbol auf dem Startbildschirm (Android: ein Tipp; iPhone: Teilen → Zum Home-Bildschirm). Kein App-Store, kein Passwort."
+                    "text": "Danach genügt das WinProx-Symbol auf dem Startbildschirm (Android: ein Tipp; iPhone: ⋯ → Teilen → Mehr anzeigen → scrollen → + Zum Home-Bildschirm). Kein App-Store, kein Passwort."
                 },
                 {
                     "label": "Anderes Gerät",

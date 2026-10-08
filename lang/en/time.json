@@ -470,7 +470,7 @@
       "help_title": "Clock Point on your home screen",
       "help_intro": "Tap the WinProx icon: on Android, Chrome asks to add WinProx to the home screen. After that you open the same Clock Point without a QR. No App Store.",
       "help_android": "Android (Chrome): one tap on the icon. Confirm “Add to Home screen”. Sign in then works in that shortcut.",
-      "help_ios": "iPhone (Safari): Apple does not allow automatic install. Tap the icon, then Share → Add to Home Screen.",
+      "help_ios": "iPhone (Safari): Apple does not allow automatic install. Tap the icon; then in Safari: three dots (⋯) at the bottom → Share → Show more → scroll down → “+ Add to Home Screen”.",
       "help_existing": "Still have an old icon where Sign in did nothing? Delete that icon, refresh this page and tap the plus icon again."
     },
     "absence": {

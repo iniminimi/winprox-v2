@@ -1040,7 +1040,7 @@
                 },
                 {
                     "label": "Home screen shortcut",
-                    "text": "Only if admin enabled it on this Clock Point: a WinProx icon sits to the right of Sign in. Tap: on Android Chrome adds it to the home screen; on iPhone use Share → Add to Home Screen. No App Store. Not for screens with rotating QR codes."
+                    "text": "Only if admin enabled it on this Clock Point: a WinProx icon sits to the right of Sign in. Tap: on Android Chrome adds it to the home screen; on iPhone: ⋯ at the bottom → Share → Show more → scroll down → + Add to Home Screen. No App Store. Not for screens with rotating QR codes."
                 },
                 {
                     "label": "Sign out",
@@ -1417,7 +1417,7 @@
                 },
                 {
                     "label": "Clock Point on the phone’s home screen",
-                    "text": "Some workers cannot scan a QR code — for example because they start work at home or on the road. Tick the checkbox on the clock point: a WinProx icon then appears next to <strong>Sign in</strong> on the sign-in page. The worker taps it to put a link to this clock point on their phone's home screen. From then on they open the clock point with one tap, like an app — without installing anything from an app store. On iPhone this works via <strong>Share</strong>. Leave the checkbox off for a TFT clock screen: its QR code changes constantly, so a fixed link is pointless there."
+                    "text": "Some workers cannot scan a QR code — for example because they start work at home or on the road. Tick the checkbox on the clock point: a WinProx icon then appears next to <strong>Sign in</strong> on the sign-in page. The worker taps it to put a link to this clock point on their phone's home screen. From then on they open the clock point with one tap, like an app — without installing anything from an app store. On iPhone this works via ⋯ (at the bottom) → <strong>Share</strong> → Show more → + Add to Home Screen. Leave the checkbox off for a TFT clock screen: its QR code changes constantly, so a fixed link is pointless there."
                 }
             ]
         },
@@ -2065,7 +2065,7 @@
                 },
                 {
                     "label": "Home screen",
-                    "text": "Afterwards the WinProx icon on the home screen is enough (Android: one tap; iPhone: Share → Add to Home Screen). No app store, no password."
+                    "text": "Afterwards the WinProx icon on the home screen is enough (Android: one tap; iPhone: ⋯ → Share → Show more → scroll → + Add to Home Screen). No app store, no password."
                 },
                 {
                     "label": "Other device",

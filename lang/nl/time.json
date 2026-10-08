@@ -470,7 +470,7 @@
       "help_title": "Clock Point op je startscherm",
       "help_intro": "Tik het WinProx-icoon: op Android opent Chrome de vraag om WinProx op het startscherm te zetten. Daarna open je dezelfde Clock Point zonder QR. Geen App Store.",
       "help_android": "Android (Chrome): één tik op het icoon. Bevestig “Toevoegen aan startscherm”. Daarna werkt Aanmelden in die snelkoppeling.",
-      "help_ios": "iPhone (Safari): Apple laat geen automatische installatie toe. Tik het icoon, daarna Deel → Zet op beginscherm.",
+      "help_ios": "iPhone (Safari): Apple laat geen automatische installatie toe. Tik het icoon; daarna in Safari: drie puntjes (⋯) onderaan → Deel → Toon meer → scroll naar beneden → “+ Zet op beginscherm”.",
       "help_existing": "Heb je nog een oud icoon waarop Aanmelden vastliep? Verwijder dat icoon, ververs deze pagina en tik opnieuw op het plus-icoon."
     },
     "absence": {

@@ -470,7 +470,7 @@
       "help_title": "Clock Point sur l’écran d’accueil",
       "help_intro": "Touchez l’icône WinProx : sur Android, Chrome propose d’ajouter WinProx à l’écran d’accueil. Ensuite vous ouvrez le même Clock Point sans QR. Pas d’App Store.",
       "help_android": "Android (Chrome) : une touche sur l’icône. Confirmez « Ajouter à l’écran d’accueil ». La connexion fonctionne ensuite dans ce raccourci.",
-      "help_ios": "iPhone (Safari) : Apple n’autorise pas l’installation automatique. Touchez l’icône, puis Partager → Sur l’écran d’accueil.",
+      "help_ios": "iPhone (Safari) : Apple n’autorise pas l’installation automatique. Touchez l’icône ; puis dans Safari : trois points (⋯) en bas → Partager → Afficher plus → faites défiler → “+ Sur l’écran d’accueil”.",
       "help_existing": "Vous avez encore une ancienne icône où la connexion ne faisait rien ? Supprimez-la, actualisez cette page et touchez à nouveau l’icône plus."
     },
     "absence": {
