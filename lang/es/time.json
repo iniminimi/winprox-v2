@@ -411,6 +411,7 @@
       "device_mismatch": "Este dispositivo no está vinculado a tu fichaje. Pide a tu responsable o administrador que autorice un dispositivo nuevo.",
       "scan_required": "Escanea el QR de Clock Point para fichar la entrada o la salida. Así sabemos que estás en el sitio.",
       "visit_gps_required": "El GPS es obligatorio para iniciar o detener el trabajo. Permita la ubicación e inténtelo de nuevo.",
+      "clock_gps_required": "El GPS es obligatorio para fichar la entrada. Permita la ubicación e inténtelo de nuevo.",
       "visit_unit_out_of_range": "No está lo bastante cerca de este lugar de trabajo.",
       "visit_requires_customer_location": "El trabajo solo puede iniciarse en una dirección de trabajo de cliente.",
       "visit_already_open": "Ya está trabajando en este lugar.",

@@ -7,6 +7,7 @@ use App\Enums\PresenceSourceEvent;
 use App\Enums\WorkShiftStatus;
 use App\Events\Time\TimeShiftStarted;
 use App\Models\ClockPoint;
+use App\Models\Tenant;
 use App\Models\Worker;
 use App\Models\WorkerDevice;
 use App\Models\WorkShift;
@@ -15,9 +16,10 @@ use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
 
 /**
- * Opens paid/workday time (WorkShift). Not location proof.
- * GPS is optional metadata and must never gate clock-in.
- * WorkVisit = verified work at a customer location, or a unit with its own pin (see StartWorkVisitAction).
+ * Opens paid/workday time (WorkShift). Not a radius check against a customer pin.
+ * With the tenant flag GPS-on-clock, a Clock Point portal punch requires a GPS fix
+ * (where the worker was). Clock-out, breaks, manual, API and display-PIN do not.
+ * WorkVisit = verified work at a customer location, or a unit with its own pin.
  */
 class ClockInAction
 {
@@ -60,6 +62,13 @@ class ClockInAction
         }
 
         TimeModuleAccess::assertEnabledForTenantId((int) $worker->tenant_id);
+
+        if ($source === ClockSource::ClockPointQr) {
+            $tenant = Tenant::query()->find($worker->tenant_id);
+            if ($tenant?->requestsClockGps() && ! self::hasClockFix($latitude, $longitude)) {
+                throw new InvalidArgumentException('clock_gps_required');
+            }
+        }
 
         if ($enforceClockDevice) {
             $device = $this->assertClockDevice->handle(
@@ -104,5 +113,14 @@ class ClockInAction
 
             return $shift;
         });
+    }
+
+    private static function hasClockFix(?float $latitude, ?float $longitude): bool
+    {
+        if ($latitude === null || $longitude === null) {
+            return false;
+        }
+
+        return $latitude >= -90 && $latitude <= 90 && $longitude >= -180 && $longitude <= 180;
     }
 }

@@ -763,8 +763,10 @@ productsector op `Tenant`.
   op Clock Point vereisen een **verse QR-scan** (volle page-load, één prik, ~10 min);
   een open tab of `wire:poll` volstaat niet. Pauzes en uren blijven na aanmelden mogelijk
   zonder nieuwe scan; de evacuatielijst ook, maar alleen als die in Instellingen aanstaat.
-  Optioneel GPS bij de prik
-  (geen weigering zonder signaal). API `POST /time/clock-in` (bron API) koppelt **geen** gsm.
+  **GPS vragen bij in- en uitklokken** (standaard uit): aan = portaal-inklok alleen
+  met een GPS-positie (controle waar de uitvoerder was). Zonder signaal geen inklok.
+  Uitklokken blijft zonder die poort; coördinaten worden bewaard als ze er zijn.
+  API `POST /time/clock-in` (bron API) koppelt **geen** gsm en eist deze positie niet.
   Beheerder en medewerker kunnen een uitvoerder **manueel inklokken** op een Clock Point
   (`ClockSource::Admin`, `POST /api/v1/time/manual-clock-in`): geen gsm-koppeling, verplichte
   reden in het auditlog (`work_shift.manual_clock_in`), pil **Manueel ingeklokt**. Uitklokken
@@ -785,8 +787,8 @@ productsector op `Tenant`.
   (zelfde Maps-icoon en plakveld).
 - Tenant-vlag `time_gps_visits` (alleen met Time). Straal default `config('time.gps_visit_radius_meters')` (50 m; min 10, max 2000).
 - **Inklokken:** opent `WorkShift` via de Clock Point-QR (algemeen aanmeldpunt). Geen
-  `unit_id`, geen `WorkVisit`. GPS optioneel als metadata, **geen weigering** zonder signaal
-  of zonder nabije pin. Een dienst met nul bezoeken is geldig.
+  `unit_id`, geen `WorkVisit`, geen straalcontrole. Staat GPS-bij-inklokken aan, dan
+  weigert de portaal-inklok zonder GPS-positie. Een dienst met nul bezoeken is geldig.
 - **Werk starten:** GPS **verplicht**; controle in `StartWorkVisitAction` op het klikmoment
   (niet de eerder getoonde lijst). Doel is een locatie-pin of een unit-pin; uitvoerder
   `canClockAt` die klant-locatie, afstand ≤ straal. Bezoek op locatie-pin slaat

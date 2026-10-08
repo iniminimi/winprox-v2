@@ -437,7 +437,12 @@
                             openVisitLocationId: @js($openVisitLocationId ?? null),
                             async withGps(method) {
                                 const run = () => $wire[method]();
+                                const clockInNeedsGps = this.gpsOn && method === 'clockIn';
                                 if (!this.gpsOn || !navigator.geolocation) {
+                                    if (clockInNeedsGps) {
+                                        $wire.reportMissingClockGps();
+                                        return;
+                                    }
                                     run();
                                     return;
                                 }
@@ -447,7 +452,13 @@
                                         $wire.clockGpsLongitude = String(pos.coords.longitude);
                                         run();
                                     },
-                                    () => run(),
+                                    () => {
+                                        if (clockInNeedsGps) {
+                                            $wire.reportMissingClockGps();
+                                            return;
+                                        }
+                                        run();
+                                    },
                                     { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 }
                                 );
                             },

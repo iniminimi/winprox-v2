@@ -411,6 +411,7 @@
       "device_mismatch": "Dieses Gerät ist nicht mit deiner Stempeluhr verknüpft. Bitte Teamleiter oder Verwaltung, ein neues Gerät zuzulassen.",
       "scan_required": "Scannen Sie den Clock-Point-QR zum Ein- oder Ausstempeln. So sehen wir, dass Sie vor Ort sind.",
       "visit_gps_required": "GPS ist nötig, um die Arbeit zu starten oder zu beenden. Standort zulassen und erneut versuchen.",
+      "clock_gps_required": "GPS ist nötig zum Einstempeln. Standort zulassen und erneut versuchen.",
       "visit_unit_out_of_range": "Sie sind nicht nah genug an diesem Arbeitsort.",
       "visit_requires_customer_location": "Arbeit kann nur an einer Kunden-Arbeitsadresse gestartet werden.",
       "visit_already_open": "Sie arbeiten bereits an diesem Ort.",

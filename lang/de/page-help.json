@@ -1723,7 +1723,7 @@
                 },
                 {
                     "label": "Feld",
-                    "text": "Ausführende starten und stoppen die Arbeit im Clock-Point-Portal im Radius des Standort-Pins (Kunde) oder einer Unit mit festem Pin. Einstempeln öffnet nur die bezahlte Schicht, ohne Standortnachweis."
+                    "text": "Ausführende starten und stoppen die Arbeit im Clock-Point-Portal im Radius des Standort-Pins (Kunde) oder einer Unit mit festem Pin. Einstempeln öffnet die bezahlte Schicht. Ist GPS beim Einstempeln an, ist eine Position Pflicht."
                 }
             ]
         },

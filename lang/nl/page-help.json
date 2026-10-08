@@ -1723,7 +1723,7 @@
                 },
                 {
                     "label": "Veld",
-                    "text": "Uitvoerders starten en stoppen werk op het Clock Point-portaal binnen de straal van de locatie-pin (klant) of een unit met vaste pin. Inklokken opent alleen de betaalde dienst, zonder locatiebewijs."
+                    "text": "Uitvoerders starten en stoppen werk op het Clock Point-portaal binnen de straal van de locatie-pin (klant) of een unit met vaste pin. Inklokken opent de betaalde dienst. Staat GPS bij inklokken aan, dan is een positie verplicht."
                 }
             ]
         },

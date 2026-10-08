@@ -911,13 +911,17 @@ class TimePortal extends Component
     }
 
     /**
-     * Prikklok: aanmelden is inklokken. Na een geslaagde verificatie binnen een
-     * verse scan meteen prikken — inklokken, of verplaatsen naar dit punt.
+     * Prikklok: aanmelden is inklokken, behalve als GPS bij inklokken verplicht is.
+     * Dan blijft de scan geldig tot de uitvoerder zelf inklokt met een positie.
      * Al open op dit punt → status tonen, geen prik (scan blijft voor uitklokken).
      */
     private function punchVerifiedWorkerOnScan(): void
     {
         if (! ClockPointScanGrant::isValid($this->clockPointId)) {
+            return;
+        }
+
+        if (TimePortalData::tenantRequestsClockGps($this->tenantId)) {
             return;
         }
 
@@ -985,7 +989,17 @@ class TimePortal extends Component
         }
         if ($e->getMessage() === 'shift_already_open') {
             $this->portalFlash('time.portal.errors.already_clocked_in');
+
+            return;
         }
+        if ($e->getMessage() === 'clock_gps_required') {
+            $this->portalFlash('time.portal.errors.clock_gps_required');
+        }
+    }
+
+    public function reportMissingClockGps(): void
+    {
+        $this->portalFlash('time.portal.errors.clock_gps_required');
     }
 
     public function transferToThisClockPoint(TransferOpenWorkShiftToClockPointAction $transfer, FindOpenWorkShiftForWorkerAction $findShift): void

@@ -1723,7 +1723,7 @@
                 },
                 {
                     "label": "Campo",
-                    "text": "Los ejecutores inician y detienen el trabajo en el portal Clock Point dentro del radio del pin de sede (cliente) o de una unidad con pin fijo. El fichaje de entrada solo abre el tiempo pagado, sin prueba de lugar."
+                    "text": "Los ejecutores inician y detienen el trabajo en el portal Clock Point dentro del radio del pin de sede (cliente) o de una unidad con pin fijo. El fichaje de entrada abre el tiempo pagado. Si el GPS al fichar está activo, una posición es obligatoria."
                 }
             ]
         },

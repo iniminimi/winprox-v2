@@ -1731,7 +1731,7 @@
                 },
                 {
                     "label": "Terrain",
-                    "text": "Les exécutants démarrent et arrêtent le travail sur le portail Clock Point dans le rayon du pin du site (client) ou d’une unité avec pin fixe. L’entrée ouvre seulement le temps payé, sans preuve de lieu."
+                    "text": "Les exécutants démarrent et arrêtent le travail sur le portail Clock Point dans le rayon du pin du site (client) ou d’une unité avec pin fixe. L’entrée ouvre le temps payé. Si le GPS à l’entrée est activé, une position est obligatoire."
                 }
             ]
         },

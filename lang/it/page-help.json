@@ -1723,7 +1723,7 @@
                 },
                 {
                     "label": "Campo",
-                    "text": "Gli esecutori avviano e interrompono il lavoro sul portale Clock Point nel raggio del pin della sede (cliente) o di un’unità con pin fisso. L’entrata apre solo il tempo retribuito, senza prova di luogo."
+                    "text": "Gli esecutori avviano e interrompono il lavoro sul portale Clock Point nel raggio del pin della sede (cliente) o di un’unità con pin fisso. L’entrata apre il tempo retribuito. Se il GPS in entrata è attivo, una posizione è obbligatoria."
                 }
             ]
         },

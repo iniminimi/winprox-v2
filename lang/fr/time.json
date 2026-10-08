@@ -411,6 +411,7 @@
       "device_mismatch": "Cet appareil n'est pas lié à votre pointeuse. Demandez à votre chef d'équipe ou à l'admin d'autoriser un nouvel appareil.",
       "scan_required": "Scannez le QR Clock Point pour pointer l'entrée ou la sortie. Cela prouve que vous êtes sur place.",
       "visit_gps_required": "Le GPS est obligatoire pour démarrer ou arrêter le travail. Autorisez la localisation et réessayez.",
+      "clock_gps_required": "Le GPS est obligatoire pour pointer l'entrée. Autorisez la localisation et réessayez.",
       "visit_unit_out_of_range": "Vous n'êtes pas assez proche de ce lieu de travail.",
       "visit_requires_customer_location": "Le travail ne peut démarrer que sur une adresse de travail client.",
       "visit_already_open": "Vous travaillez déjà à cet endroit.",

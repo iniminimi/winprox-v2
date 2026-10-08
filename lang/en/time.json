@@ -411,6 +411,7 @@
       "device_mismatch": "This device is not linked to your punch clock. Ask your team leader or admin to allow a new device.",
       "scan_required": "Scan the Clock Point QR to clock in or out. That shows you are on site.",
       "visit_gps_required": "GPS is required to start or stop work. Allow location and try again.",
+      "clock_gps_required": "GPS is required to clock in. Allow location and try again.",
       "visit_unit_out_of_range": "You are not close enough to this workplace.",
       "visit_requires_customer_location": "Work can only be started at a customer work address.",
       "visit_already_open": "You are already working at this place.",

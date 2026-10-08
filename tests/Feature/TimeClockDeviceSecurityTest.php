@@ -16,6 +16,7 @@ use App\Models\InternalTeam;
 use App\Models\Tenant;
 use App\Models\Worker;
 use App\Models\WorkerDevice;
+use App\Models\WorkShift;
 use App\Support\Tenancy;
 use App\Support\Time\TimePresenceAttentionRules;
 use Illuminate\Support\Facades\DB;
@@ -125,7 +126,7 @@ it('toont een alarm bij een hop binnen 5 minuten', function () {
         ->and($items->first()->type)->toBe(TimePresenceAttentionType::RapidHop);
 });
 
-it('bewaart gps bij inklokken zonder te weigeren als gps ontbreekt', function () {
+it('bewaart gps bij inklokken en laat de prik door als de vlag uit staat', function () {
     [, , $clockPoint, $worker] = clockSecurityTenant();
 
     $withGps = app(ClockInAction::class)->handle(
@@ -145,6 +146,57 @@ it('bewaart gps bij inklokken zonder te weigeren als gps ontbreekt', function ()
     ]);
     $withoutGps = app(ClockInAction::class)->handle($workerB, $clockPoint);
     expect($withoutGps->clock_in_latitude)->toBeNull();
+});
+
+it('weigert portaal-inklokken zonder gps wanneer de vlag aan staat', function () {
+    [$tenant, , $clockPoint, $worker] = clockSecurityTenant();
+    $tenant->update(['time_gps_on_clock' => true]);
+
+    expect(fn () => app(ClockInAction::class)->handle($worker, $clockPoint))
+        ->toThrow(InvalidArgumentException::class, 'clock_gps_required');
+
+    $shift = app(ClockInAction::class)->handle(
+        $worker,
+        $clockPoint,
+        latitude: 51.2,
+        longitude: 3.2,
+    );
+    expect($shift->clock_in_latitude)->toEqual(51.2)
+        ->and($shift->clock_in_longitude)->toEqual(3.2);
+
+    app(\App\Actions\Time\ClockOutAction::class)->handle($worker, $clockPoint);
+
+    $manual = app(ClockInAction::class)->handle(
+        $worker,
+        $clockPoint,
+        source: \App\Enums\ClockSource::Admin,
+    );
+    expect($manual->clock_in_latitude)->toBeNull();
+});
+
+it('klokt niet automatisch in als gps verplicht is en weigert inklokken zonder positie', function () {
+    [$tenant, , $clockPoint, $worker] = clockSecurityTenant();
+    $tenant->update(['time_gps_on_clock' => true]);
+
+    $portal = Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon');
+
+    expect(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeFalse();
+
+    $portal->call('clockIn')
+        ->assertSet('flashMessage', __('time.portal.errors.clock_gps_required'));
+
+    $portal->set('clockGpsLatitude', '51.21')
+        ->set('clockGpsLongitude', '3.22')
+        ->call('clockIn')
+        ->assertSet('flashMessage', __('time.portal.clock.clocked_in_at_tenant', [
+            'tenant' => $tenant->name,
+            'time' => now()->format('H:i'),
+        ]));
 });
 
 it('klokt in via het portaal na icoon en toont het icoon niet meer op het welkomstscherm', function () {

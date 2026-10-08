@@ -411,6 +411,7 @@
       "device_mismatch": "Questo dispositivo non è collegato alla tua marcatura. Chiedi al team leader o all'amministratore di autorizzare un nuovo dispositivo.",
       "scan_required": "Scansiona il QR Clock Point per timbrare entrata o uscita. Così sappiamo che sei in sede.",
       "visit_gps_required": "Il GPS è obbligatorio per avviare o interrompere il lavoro. Consenti la posizione e riprova.",
+      "clock_gps_required": "Il GPS è obbligatorio per timbrare l'entrata. Consenti la posizione e riprova.",
       "visit_unit_out_of_range": "Non sei abbastanza vicino a questo luogo di lavoro.",
       "visit_requires_customer_location": "Il lavoro può iniziare solo su un indirizzo di lavoro del cliente.",
       "visit_already_open": "Stai già lavorando in questo luogo.",

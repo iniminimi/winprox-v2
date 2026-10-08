@@ -1723,7 +1723,7 @@
                 },
                 {
                     "label": "Field",
-                    "text": "Workers start and stop work on the Clock Point portal within range of the location pin (customer) or a unit with a fixed pin. Clock-in only opens paid time, without location proof."
+                    "text": "Workers start and stop work on the Clock Point portal within range of the location pin (customer) or a unit with a fixed pin. Clock-in opens paid time. When GPS on clock-in is on, a position is required."
                 }
             ]
         },

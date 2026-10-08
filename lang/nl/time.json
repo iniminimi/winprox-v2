@@ -411,6 +411,7 @@
       "device_mismatch": "Dit toestel is niet gekoppeld aan jouw prikklok. Vraag je teamleader of beheerder om een nieuw toestel toe te staan.",
       "scan_required": "Scan de Clock Point-QR om in of uit te klokken. Zo weten we dat je ter plaatse bent.",
       "visit_gps_required": "GPS is verplicht om werk te starten of te stoppen. Sta locatie toe en probeer opnieuw.",
+      "clock_gps_required": "GPS is verplicht om in te klokken. Sta locatie toe en probeer opnieuw.",
       "visit_unit_out_of_range": "Je bent niet dicht genoeg bij deze werkplek.",
       "visit_requires_customer_location": "Start werk kan alleen op een klant-werkadres.",
       "visit_already_open": "Je werkt al op deze plek.",
