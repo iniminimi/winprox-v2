@@ -11,6 +11,7 @@ use App\Actions\Tasks\CompleteTaskAction;
 use App\Actions\Tasks\RoundTaskCompletionAction;
 use App\Actions\Tasks\SkipRoundStopAction;
 use App\Actions\Tasks\StartTaskAction;
+use App\Actions\Team\DeleteWorkerAction;
 use App\Actions\Time\AcknowledgeTimeRosterViewAction;
 use App\Actions\Time\CancelAbsenceRequestAction;
 use App\Actions\Time\AssertClockPointTaskVisitAction;
@@ -1814,10 +1815,12 @@ class TimePortal extends Component
                 $this->checkingUnitId = null;
             }
         }
-        $teamWorkers = ($team !== null && $verifiedWorker !== null && $verifiedWorker->is_teamleader && ! $checkmateMode)
+        $teamWorkers = ($team !== null && $verifiedWorker !== null && $verifiedWorker->is_teamleader)
             ? Worker::query()
                 ->where('internal_team_id', $team->id)
                 ->where('is_active', true)
+                ->where('created_by_worker_id', $verifiedWorker->id)
+                ->where('created_at', '>=', now()->subHours(DeleteWorkerAction::TEAMLEADER_DELETE_WINDOW_HOURS))
                 ->orderBy('last_name')
                 ->orderBy('first_name')
                 ->get()

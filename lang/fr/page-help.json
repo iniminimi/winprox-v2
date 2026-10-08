@@ -1017,7 +1017,7 @@
             "actions": [
                 {
                     "label": "Vue d'ensemble",
-                    "text": "Ouvrez «Gérer» pour voir tous les exécutants de votre équipe, y compris le badge chef d'équipe."
+                    "text": "Ouvrez «Gérer» pour voir les exécutants que vous venez de créer, ou pour en ajouter un."
                 },
                 {
                     "label": "Ajouter",

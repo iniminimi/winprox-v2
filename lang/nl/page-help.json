@@ -1005,11 +1005,11 @@
             ]
         },
         "portal.teamleader.workers": {
-            "title": "Hulp — Workers beheren",
+            "title": "Hulp — Uitvoerders beheren",
             "actions": [
                 {
                     "label": "Overzicht",
-                    "text": "Open «Beheren» om alle workers van je team te zien, inclusief teamleader-badge."
+                    "text": "Open «Beheren» om uitvoerders te zien die je zelf net hebt aangemaakt, of om er een toe te voegen."
                 },
                 {
                     "label": "Toevoegen",

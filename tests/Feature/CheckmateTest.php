@@ -396,7 +396,9 @@ it('laat een teamleader enkel een zelf net aangemaakte uitvoerder verwijderen', 
     $component = Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->call('removeWorker', $adminWorker->id)
         ->call('removeWorker', $otherLeaderWorker->id)
-        ->call('removeWorker', $oldWorker->id);
+        ->call('removeWorker', $oldWorker->id)
+        // De lijst toont enkel uitvoerders die de teamleader ook mag verwijderen.
+        ->assertViewHas('teamWorkers', fn ($list) => $list->isEmpty());
 
     expect(Worker::find($adminWorker->id))->not->toBeNull()
         ->and(Worker::find($otherLeaderWorker->id))->not->toBeNull()
@@ -413,7 +415,8 @@ it('laat een teamleader enkel een zelf net aangemaakte uitvoerder verwijderen', 
         ->firstOrFail();
     expect((int) $newWorker->created_by_worker_id)->toBe($leader->id);
 
-    $component->call('removeWorker', $newWorker->id);
+    $component->assertViewHas('teamWorkers', fn ($list) => $list->pluck('id')->all() === [$newWorker->id])
+        ->call('removeWorker', $newWorker->id);
 
     expect(Worker::find($newWorker->id))->toBeNull();
 });

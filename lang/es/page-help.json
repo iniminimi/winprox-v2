@@ -1009,7 +1009,7 @@
             "actions": [
                 {
                     "label": "Resumen",
-                    "text": "Abra «Gestionar» para ver todos los trabajadores de su equipo, incluida la insignia de jefe de equipo."
+                    "text": "Abra «Gestionar» para ver los trabajadores que acaba de crear, o para añadir uno."
                 },
                 {
                     "label": "Añadir",

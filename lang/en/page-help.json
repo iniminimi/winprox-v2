@@ -1009,7 +1009,7 @@
             "actions": [
                 {
                     "label": "Overview",
-                    "text": "Open «Manage» to see all workers on your team, including the team leader badge."
+                    "text": "Open «Manage» to see workers you just created yourself, or to add one."
                 },
                 {
                     "label": "Add",

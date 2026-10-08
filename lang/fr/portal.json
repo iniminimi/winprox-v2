@@ -96,7 +96,7 @@
         "attempts_left": ":count tentative(s) restante(s).",
         "confirm_icon": "Confirmer",
         "different_worker": "Se connecter en tant qu'autre employé",
-        "no_workers": "Il n'y a pas encore d'employés. Ajoutez-les via Équipe dans WinProx ; ils choisissent leur icône via ce QR Clock Point.",
+        "no_workers": "Aucun exécutant que vous venez de créer.",
         "wrong_team": "Cet appareil appartient à une autre équipe.",
         "sign_out": "Se déconnecter",
         "open_tasks": "Tâches ouvertes",

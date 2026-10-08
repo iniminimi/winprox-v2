@@ -96,7 +96,7 @@
         "attempts_left": ":count attempt(s) left.",
         "confirm_icon": "Confirm",
         "different_worker": "Sign in as a different worker",
-        "no_workers": "There are no workers yet. Add them via Team in WinProx; they choose their icon via this Clock Point QR.",
+        "no_workers": "No workers you just created yourself.",
         "wrong_team": "This device belongs to a different team.",
         "sign_out": "Sign out",
         "open_tasks": "Open tasks",

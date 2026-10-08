@@ -96,7 +96,7 @@
         "attempts_left": "Noch :count Versuch(e).",
         "confirm_icon": "Bestätigen",
         "different_worker": "Als anderer Mitarbeiter anmelden",
-        "no_workers": "Es gibt noch keine Mitarbeiter. Fügen Sie sie unter Team in WinProx hinzu; sie wählen ihr Symbol über diesen Clock-Point-QR.",
+        "no_workers": "Keine Mitarbeiter, die Sie gerade selbst angelegt haben.",
         "wrong_team": "Dieses Gerät gehört zu einem anderen Team.",
         "sign_out": "Abmelden",
         "open_tasks": "Offene Aufgaben",

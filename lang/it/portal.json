@@ -96,7 +96,7 @@
         "attempts_left": ":count tentativo/i rimanente/i.",
         "confirm_icon": "Conferma",
         "different_worker": "Accedi come altro lavoratore",
-        "no_workers": "Non ci sono ancora lavoratori. Aggiungili tramite Team in WinProx; scelgono l'icona con questo QR Clock Point.",
+        "no_workers": "Nessun lavoratore appena creato da lei.",
         "wrong_team": "Questo dispositivo appartiene a un altro team.",
         "sign_out": "Esci",
         "open_tasks": "Attività aperte",

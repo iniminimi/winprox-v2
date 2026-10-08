@@ -1009,7 +1009,7 @@
             "actions": [
                 {
                     "label": "Übersicht",
-                    "text": "Öffnen Sie «Verwalten», um alle Mitarbeiter Ihres Teams zu sehen, einschließlich Teamleiter-Badge."
+                    "text": "Öffnen Sie «Verwalten», um Mitarbeiter zu sehen, die Sie gerade selbst angelegt haben, oder einen hinzuzufügen."
                 },
                 {
                     "label": "Hinzufügen",

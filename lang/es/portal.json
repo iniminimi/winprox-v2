@@ -96,7 +96,7 @@
         "attempts_left": "Quedan :count intento(s).",
         "confirm_icon": "Confirmar",
         "different_worker": "Iniciar sesión como otro trabajador",
-        "no_workers": "Aún no hay trabajadores. Añádalos en Equipo en WinProx; eligen su icono con este QR de Clock Point.",
+        "no_workers": "Ningún trabajador que acabe de crear.",
         "wrong_team": "Este dispositivo pertenece a otro equipo.",
         "sign_out": "Cerrar sesión",
         "open_tasks": "Tareas abiertas",

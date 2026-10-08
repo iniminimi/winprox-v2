@@ -1009,7 +1009,7 @@
             "actions": [
                 {
                     "label": "Panoramica",
-                    "text": "Apri «Gestisci» per vedere tutti i lavoratori del Suo team, incluso il badge caposquadra."
+                    "text": "Apri «Gestisci» per vedere i lavoratori appena creati da lei, o per aggiungerne uno."
                 },
                 {
                     "label": "Aggiungi",
