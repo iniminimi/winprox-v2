@@ -274,12 +274,16 @@ it('toont in checkmate geen geplande-bezoekenlijst maar wel de klant-zoekknop', 
     WorkerDeviceSession::bindRememberedWorker($team, $worker);
     app(ClockInAction::class)->handle($worker, $clockPoint);
 
-    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+    $html = Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->assertSee(__('time.portal.today.title_checkmate'))
         ->assertSee(__('time.portal.clock.find_nearby_customer'))
         ->assertDontSee('x-show="!hasStartWorkInRange()" x-cloak', false)
         ->assertDontSee(__('time.portal.today.empty'))
-        ->assertDontSee(__('time.portal.today.title'));
+        ->assertDontSee(__('time.portal.today.title'))
+        ->html();
+
+    // Dubbele quotes in x-data breken het attribuut; Safari toont de JS dan als tekst.
+    expect($html)->toMatch('/x-data="[^"]*refreshHere\(\)[^"]*geolocation[^"]*"/s');
 });
 
 it('vindt checkmate-uitvoerders ondanks legacy-locatiebeperking op het clock point', function () {

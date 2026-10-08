@@ -524,8 +524,6 @@
                                         this.markGps(false);
                                         return;
                                     }
-                                    // Safari/iOS gooit synchroon op Permissions API "geolocation".
-                                    // Een throw in x-init stopt de rest van de Alpine-init.
                                     if (navigator.permissions && typeof navigator.permissions.query === 'function') {
                                         try {
                                             const pending = navigator.permissions.query({ name: 'geolocation' });
