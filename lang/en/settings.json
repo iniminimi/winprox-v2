@@ -247,6 +247,8 @@
         "require_pin_hint": "Clock Point asks for a PIN instead of the icon. The icon still applies on the unit QR.",
         "gps_on_clock": "Ask for GPS when clocking in or out",
         "gps_on_clock_hint": "Clock-in is only possible when the phone provides a GPS position. That shows where the worker was. Without a signal, clock-in does not go through. Clock-out still works.",
+        "work_on_location_title": "Working on location (GPS)",
+        "work_on_location_hint": "For workers who work on location: GPS proof when clocking in and work visits on a location pin. Not needed with a fixed clock in one building.",
         "save": "Save punch clock security",
         "saved": "Punch clock security saved.",
         "gps_visits": "GPS work visits (start/stop work on a location or unit pin)",

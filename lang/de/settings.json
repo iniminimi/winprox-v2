@@ -247,6 +247,8 @@
         "require_pin_hint": "Clock Point fragt nach einer PIN statt nach dem Symbol. Das Symbol gilt weiter beim Unit-QR.",
         "gps_on_clock": "GPS beim Ein- und Ausstempeln anfragen",
         "gps_on_clock_hint": "Einstempeln geht nur, wenn das Handy eine GPS-Position liefert. So sehen Sie, wo die Person war. Ohne Signal gelingt das Einstempeln nicht. Ausstempeln bleibt möglich.",
+        "work_on_location_title": "Arbeiten vor Ort (GPS)",
+        "work_on_location_hint": "Für Ausführende, die vor Ort arbeiten: GPS-Nachweis beim Stempeln und Arbeitsbesuche an einem Standort-Pin. Nicht nötig bei einer festen Stechuhr in einem Gebäude.",
         "save": "Stempeluhr-Sicherheit speichern",
         "saved": "Stempeluhr-Sicherheit gespeichert.",
         "gps_visits": "GPS-Arbeitsbesuche (Arbeit an Standort- oder Unit-Pin starten/beenden)",

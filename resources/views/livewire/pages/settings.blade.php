@@ -204,12 +204,6 @@
                 <p class="wp-hint">{{ __('settings.time_clock.require_pin_hint') }}</p>
                 @error('timeRequireWorkerPin') <p class="wp-error">{{ $message }}</p> @enderror
 
-                <label class="wp-check">
-                    <input type="checkbox" wire:model="timeGpsOnClock">
-                    <span>{{ __('settings.time_clock.gps_on_clock') }}</span>
-                </label>
-                <p class="wp-hint">{{ __('settings.time_clock.gps_on_clock_hint') }}</p>
-
                 @if (! ($checkmateMode ?? false))
                     <label class="wp-check">
                         <input type="checkbox" wire:model="timeEvacuationList">
@@ -218,17 +212,29 @@
                     <p class="wp-hint">{{ __('settings.time_clock.evacuation_list_hint') }}</p>
                 @endif
 
-                <label class="wp-check">
-                    <input type="checkbox" wire:model="timeGpsVisits">
-                    <span>{{ __('settings.time_clock.gps_visits') }}</span>
-                </label>
-                <p class="wp-hint">{{ __('settings.time_clock.gps_visits_hint') }}</p>
-                <div class="wp-field">
-                    <label class="wp-label" for="timeGpsVisitRadius">{{ __('settings.time_clock.gps_visit_radius') }}</label>
-                    <input type="number" id="timeGpsVisitRadius" class="wp-input" wire:model="timeGpsVisitRadiusMeters" min="10" max="2000" step="5">
-                    <p class="wp-hint">{{ __('settings.time_clock.gps_visit_radius_hint') }}</p>
+                <div class="wp-settings-subblock">
+                    <h3 class="wp-settings-subblock-title">{{ __('settings.time_clock.work_on_location_title') }}</h3>
+                    <p class="wp-muted wp-text-sm">{{ __('settings.time_clock.work_on_location_hint') }}</p>
+                    <div class="wp-stack">
+                        <label class="wp-check">
+                            <input type="checkbox" wire:model="timeGpsOnClock">
+                            <span>{{ __('settings.time_clock.gps_on_clock') }}</span>
+                        </label>
+                        <p class="wp-hint">{{ __('settings.time_clock.gps_on_clock_hint') }}</p>
+
+                        <label class="wp-check">
+                            <input type="checkbox" wire:model="timeGpsVisits">
+                            <span>{{ __('settings.time_clock.gps_visits') }}</span>
+                        </label>
+                        <p class="wp-hint">{{ __('settings.time_clock.gps_visits_hint') }}</p>
+                        <div class="wp-field">
+                            <label class="wp-label" for="timeGpsVisitRadius">{{ __('settings.time_clock.gps_visit_radius') }}</label>
+                            <input type="number" id="timeGpsVisitRadius" class="wp-input" wire:model="timeGpsVisitRadiusMeters" min="10" max="2000" step="5">
+                            <p class="wp-hint">{{ __('settings.time_clock.gps_visit_radius_hint') }}</p>
+                        </div>
+                        @error('time_gps_visit_radius_meters') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
                 </div>
-                @error('time_gps_visit_radius_meters') <p class="wp-error">{{ $message }}</p> @enderror
 
                 <button type="submit" class="btn btn--primary btn--sm">{{ __('settings.time_clock.save') }}</button>
             </form>

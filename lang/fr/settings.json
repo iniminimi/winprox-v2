@@ -247,6 +247,8 @@
         "require_pin_hint": "Clock Point demande un PIN au lieu de l'icône. L'icône reste valable sur le QR d'unité.",
         "gps_on_clock": "Demander le GPS à l'entrée et à la sortie",
         "gps_on_clock_hint": "Le pointage d'entrée n'est possible que si le téléphone fournit une position GPS. Cela montre où se trouvait l'exécutant. Sans signal, l'entrée est refusée. La sortie reste possible.",
+        "work_on_location_title": "Travail sur site (GPS)",
+        "work_on_location_hint": "Pour les exécutants qui travaillent sur site : preuve GPS au pointage et visites de travail sur une épingle de lieu. Inutile avec une pointeuse fixe dans un seul bâtiment.",
         "save": "Enregistrer la sécurité pointeuse",
         "saved": "Sécurité pointeuse enregistrée.",
         "gps_visits": "Visites GPS (démarrer/arrêter le travail sur le pin du site ou d'une unité)",

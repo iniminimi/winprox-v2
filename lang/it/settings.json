@@ -247,6 +247,8 @@
         "require_pin_hint": "Clock Point chiede un PIN al posto dell'icona. L'icona resta valida sul QR dell'unità.",
         "gps_on_clock": "Chiedi il GPS in ingresso e in uscita",
         "gps_on_clock_hint": "La timbratura in entrata è possibile solo se il telefono fornisce una posizione GPS. Così si vede dov'era l'esecutore. Senza segnale l'entrata non riesce. L'uscita resta possibile.",
+        "work_on_location_title": "Lavoro sul posto (GPS)",
+        "work_on_location_hint": "Per gli operatori che lavorano sul posto: prova GPS alla timbratura e visite di lavoro su una posizione fissata. Non necessario con un orologio fisso in un solo edificio.",
         "save": "Salva sicurezza marcatura",
         "saved": "Sicurezza marcatura salvata.",
         "gps_visits": "Visite GPS (avvia/interrompi il lavoro sul pin della sede o dell'unità)",

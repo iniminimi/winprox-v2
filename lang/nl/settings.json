@@ -247,6 +247,8 @@
         "require_pin_hint": "In plaats van het icoon vraagt Clock Point een pincode. Icoon blijft gelden voor de unit-QR.",
         "gps_on_clock": "GPS vragen bij in- en uitklokken",
         "gps_on_clock_hint": "Inklokken kan alleen als de gsm een GPS-positie doorgeeft. Zo controleer je waar de uitvoerder was. Zonder signaal lukt inklokken niet. Uitklokken blijft mogelijk.",
+        "work_on_location_title": "Werken op locatie (GPS)",
+        "work_on_location_hint": "Voor uitvoerders die op locatie werken: GPS-bewijs bij het klokken en werkbezoeken op een locatie-pin. Niet nodig bij een vaste prikklok in één gebouw.",
         "save": "Prikklok-beveiliging opslaan",
         "saved": "Prikklok-beveiliging opgeslagen.",
         "gps_visits": "GPS-werkbezoeken (werk starten/stoppen op locatie- of unit-pin)",

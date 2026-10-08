@@ -247,6 +247,8 @@
         "require_pin_hint": "Clock Point pide un PIN en lugar del icono. El icono sigue valiendo en el QR de unidad.",
         "gps_on_clock": "Pedir GPS al fichar entrada o salida",
         "gps_on_clock_hint": "Fichar la entrada solo es posible si el móvil da una posición GPS. Así se ve dónde estaba el ejecutor. Sin señal no se puede fichar la entrada. La salida sigue siendo posible.",
+        "work_on_location_title": "Trabajo en ubicación (GPS)",
+        "work_on_location_hint": "Para operarios que trabajan en ubicación: prueba GPS al fichar y visitas de trabajo en una ubicación fijada. No necesario con un reloj de fichar fijo en un solo edificio.",
         "save": "Guardar seguridad del fichaje",
         "saved": "Seguridad del fichaje guardada.",
         "gps_visits": "Visitas GPS (iniciar/detener trabajo en el pin de sede o unidad)",
