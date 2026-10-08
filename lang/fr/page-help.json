@@ -1058,7 +1058,7 @@
                 },
                 {
                     "label": "Raccourci sur l’écran d’accueil",
-                    "text": "Uniquement si l’admin l’a activé sur ce Clock Point : une icône WinProx à droite de Connexion. Touchez : sur Android, Chrome l’ajoute à l’écran d’accueil ; sur iPhone : ⋯ en bas → Partager → Afficher plus → faites défiler → + Sur l’écran d’accueil. Pas d’App Store. Pas pour les écrans avec QR rotatif."
+                    "text": "Une icône WinProx se trouve à droite de Connexion. Touchez : sur Android, Chrome l’ajoute à l’écran d’accueil ; sur iPhone : ⋯ en bas → Partager → Afficher plus → faites défiler → + Sur l’écran d’accueil. Pas d’App Store."
                 },
                 {
                     "label": "Se déconnecter",
@@ -1437,7 +1437,7 @@
                 },
                 {
                     "label": "Clock Point sur l’écran d’accueil du téléphone",
-                    "text": "Certains exécutants ne peuvent pas scanner un QR code — par exemple parce qu'ils commencent à domicile ou en déplacement. Cochez la case du Clock Point : une icône WinProx apparaît alors à côté de <strong>Connexion</strong> sur la page de connexion. L'exécutant la touche pour placer un lien vers ce Clock Point sur l'écran d'accueil de son téléphone. Il ouvre ensuite le Clock Point d'une seule touche, comme une application — sans rien installer depuis un store. Sur iPhone : ⋯ (en bas) → <strong>Partager</strong> → Afficher plus → + Sur l’écran d’accueil. Laissez la case décochée pour un écran TFT : son QR change constamment, un lien fixe n'y a donc aucune utilité."
+                    "text": "Chaque portail Clock Point affiche une icône WinProx à droite de <strong>Connexion</strong>. L'exécutant la touche pour placer le lien de connexion sur l'écran d'accueil de son téléphone. Il ouvre ensuite le portail d'une seule touche, comme une application — sans rien installer depuis un store. Sur iPhone : ⋯ (en bas) → <strong>Partager</strong> → Afficher plus → + Sur l’écran d’accueil."
                 }
             ]
         },
@@ -2059,7 +2059,7 @@
                 },
                 {
                     "label": "Pointeuse",
-                    "text": "Optionnel : exiger un code PIN lors de la connexion des exécutants, et proposer un lien vers le Clock Point sur l'écran d'accueil du GSM."
+                    "text": "Optionnel : exiger un code PIN lors de la connexion des exécutants. L'icône d'écran d'accueil est sur chaque portail Clock Point."
                 }
             ]
         },

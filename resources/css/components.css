@@ -3502,6 +3502,11 @@ a.wp-pagination__page:active:not(.is-active) {
     gap: 1rem;
 }
 
+.wp-portal-head-install {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .wp-portal-head-top .wp-lang-select,
 .wp-portal-head-top .wp-theme,
 .wp-portal-head-tools .wp-lang-select,

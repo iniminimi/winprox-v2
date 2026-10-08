@@ -1050,7 +1050,7 @@
                 },
                 {
                     "label": "Acceso directo en la pantalla de inicio",
-                    "text": "Solo si administración lo activó en este Clock Point: a la derecha de Inicio de sesión hay un icono WinProx. Tócalo: en Android Chrome lo añade a la pantalla de inicio; en iPhone: ⋯ abajo → Compartir → Mostrar más → desliza → + Añadir a pantalla de inicio. Sin App Store. No es para pantallas con QR rotativos."
+                    "text": "A la derecha de Inicio de sesión hay un icono WinProx. Tócalo: en Android Chrome lo añade a la pantalla de inicio; en iPhone: ⋯ abajo → Compartir → Mostrar más → desliza → + Añadir a pantalla de inicio. Sin App Store."
                 },
                 {
                     "label": "Cerrar sesión",
@@ -1429,7 +1429,7 @@
                 },
                 {
                     "label": "Clock Point en la pantalla de inicio del teléfono",
-                    "text": "Algunos operarios no pueden escanear un código QR — por ejemplo porque empiezan en casa o de camino. Marca la casilla del clock point: en la página de acceso aparece entonces un icono WinProx junto a <strong>Inicio de sesión</strong>. El operario lo toca para poner un enlace a este clock point en la pantalla de inicio de su teléfono. Así abre el clock point con un solo toque, como una app — sin instalar nada de una tienda. En iPhone mediante ⋯ (abajo) → <strong>Compartir</strong> → Mostrar más → + Añadir a pantalla de inicio. Deja la casilla desactivada en una pantalla TFT: su QR cambia constantemente, un enlace fijo no tiene sentido ahí."
+                    "text": "Cada portal Clock Point muestra un icono WinProx a la derecha de <strong>Inicio de sesión</strong>. El operario lo toca para poner el enlace de acceso en la pantalla de inicio de su teléfono. Así abre el portal con un solo toque, como una app — sin instalar nada de una tienda. En iPhone mediante ⋯ (abajo) → <strong>Compartir</strong> → Mostrar más → + Añadir a pantalla de inicio."
                 }
             ]
         },
@@ -2051,7 +2051,7 @@
                 },
                 {
                     "label": "Reloj de fichar",
-                    "text": "Opcional: exigir un PIN al registrarse los operarios, y ofrecer un enlace al Clock Point en la pantalla de inicio del móvil."
+                    "text": "Opcional: exigir un PIN al registrarse los operarios. El icono de inicio está en cada portal Clock Point."
                 }
             ]
         },

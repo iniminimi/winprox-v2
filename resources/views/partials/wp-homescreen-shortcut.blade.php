@@ -1,4 +1,4 @@
-{{-- Clock Point-snelkoppeling (alleen als het vinkje aan staat). --}}
+{{-- Startscherm-snelkoppeling op het Clock Point-portaal. --}}
 <x-wp-tooltip class="wp-homescreen-shortcut-wrap wp-tooltip--end" :text="__('time.portal.homescreen.title')" wrap>
     <button
         type="button"
