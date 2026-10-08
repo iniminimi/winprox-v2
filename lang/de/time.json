@@ -470,7 +470,7 @@
       "help_title": "Clock Point auf dem Startbildschirm",
       "help_intro": "Tippen Sie das WinProx-Symbol: unter Android fragt Chrome, ob WinProx auf den Startbildschirm soll. Danach öffnen Sie denselben Clock Point ohne QR. Kein App Store.",
       "help_android": "Android (Chrome): ein Tipp auf das Symbol. „Zum Startbildschirm hinzufügen“ bestätigen. Anmelden funktioniert danach in dieser Verknüpfung.",
-      "help_ios": "iPhone (Safari): Apple erlaubt keine automatische Installation. Tippen Sie das Symbol; dann in Safari: drei Punkte (⋯) unten → Teilen → Mehr anzeigen → nach unten scrollen → „+ Zum Home-Bildschirm“.",
+      "help_ios": "iPhone: Apple erlaubt keine automatische Installation. Tippen Sie das Symbol; dann auf Ihrem iPhone: drei Punkte (⋯) unten → Teilen → Mehr anzeigen → nach unten scrollen → „+ Zum Home-Bildschirm“.",
       "help_existing": "Haben Sie noch ein altes Symbol, bei dem Anmelden nichts tat? Symbol löschen, diese Seite neu laden und erneut auf das Plus tippen."
     },
     "absence": {

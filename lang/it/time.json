@@ -470,7 +470,7 @@
       "help_title": "Clock Point sulla schermata Home",
       "help_intro": "Tocca l’icona WinProx: su Android Chrome chiede di aggiungere WinProx alla schermata Home. Poi apri lo stesso Clock Point senza QR. Nessun App Store.",
       "help_android": "Android (Chrome): un tocco sull’icona. Conferma «Aggiungi a schermata Home». L’accesso funziona poi in quel collegamento.",
-      "help_ios": "iPhone (Safari): Apple non consente l’installazione automatica. Tocca l’icona; poi in Safari: tre puntini (⋯) in basso → Condividi → Mostra altro → scorri verso il basso → “+ Aggiungi a schermata Home”.",
+      "help_ios": "iPhone: Apple non consente l’installazione automatica. Tocca l’icona; poi sul tuo iPhone: tre puntini (⋯) in basso → Condividi → Mostra altro → scorri verso il basso → “+ Aggiungi a schermata Home”.",
       "help_existing": "Hai ancora un’icona vecchia con cui Accesso non faceva nulla? Eliminala, aggiorna questa pagina e tocca di nuovo l’icona più."
     },
     "absence": {

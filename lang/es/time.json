@@ -470,7 +470,7 @@
       "help_title": "Clock Point en la pantalla de inicio",
       "help_intro": "Toca el icono WinProx: en Android, Chrome pide añadir WinProx a la pantalla de inicio. Luego abres el mismo Clock Point sin QR. Sin App Store.",
       "help_android": "Android (Chrome): un toque en el icono. Confirma «Añadir a pantalla de inicio». El inicio de sesión funciona después en ese acceso.",
-      "help_ios": "iPhone (Safari): Apple no permite la instalación automática. Toca el icono; luego en Safari: tres puntos (⋯) abajo → Compartir → Mostrar más → desliza hacia abajo → “+ Añadir a pantalla de inicio”.",
+      "help_ios": "iPhone: Apple no permite la instalación automática. Toca el icono; luego en tu iPhone: tres puntos (⋯) abajo → Compartir → Mostrar más → desliza hacia abajo → “+ Añadir a pantalla de inicio”.",
       "help_existing": "¿Aún tienes un icono antiguo con el que Inicio de sesión no hacía nada? Bórralo, actualiza esta página y vuelve a tocar el icono más."
     },
     "absence": {
