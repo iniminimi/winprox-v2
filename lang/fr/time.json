@@ -240,7 +240,7 @@
       "no_location": "Aucun site lié",
       "sort_order": "Ordre de tri",
       "homescreen_shortcut": "Lien Clock Point sur l’écran d’accueil du téléphone",
-      "homescreen_shortcut_hint": "Uniquement pour les exécutants qui ne peuvent pas scanner un QR (départ à domicile ou en déplacement). Laissez ceci désactivé sur les écrans TFT avec QR rotatif."
+      "homescreen_shortcut_hint": "Icône d'écran d'accueil pour se connecter sans QR. Sur une pointeuse fixe, l'exécutant ne pointe l'entrée qu'après avoir scanné l'autocollant ou l'écran. En Checkmate, il pointe depuis l'icône. Laissez ceci désactivé sur les écrans TFT avec QR rotatif."
     },
     "qr": {
       "subtitle": "Scannez pour pointer l'entrée ou la sortie",
@@ -264,7 +264,7 @@
       },
       "email": {
         "heading": "E-mail",
-        "hint": "Envoyez le lien de connexion à un exécutant sur site (même page que l’autocollant QR).",
+        "hint": "Envoyez le lien de connexion. Il connecte sans pointer. Sur une pointeuse fixe, l'entrée demande un scan de l'autocollant ou de l'écran.",
         "label": "Adresse e-mail",
         "placeholder": "nom@entreprise.be",
         "send": "Envoyer",
@@ -398,7 +398,8 @@
       "no_nearby_units": "Aucune unité épinglée à portée.",
       "no_nearby_customer": "Aucune adresse de travail client à portée.",
       "clocked_out_at": "Dépointé à :time",
-      "scan_to_clock_in": "Scannez le QR Clock Point pour pointer l'entrée."
+      "scan_to_clock_in": "Scannez l'autocollant ou l'écran de pointage pour pointer l'entrée.",
+      "scan_to_clock_out": "Scannez l'autocollant ou l'écran de pointage pour pointer la sortie ou vous déplacer."
     },
     "break_started": "Pause commencée.",
     "break_ended": "Pause terminée.",
@@ -469,7 +470,7 @@
     "homescreen": {
       "title": "Ajouter WinProx à l’écran d’accueil",
       "help_title": "Clock Point sur l’écran d’accueil",
-      "help_intro": "Touchez l’icône WinProx : sur Android, Chrome propose d’ajouter WinProx à l’écran d’accueil. Ensuite vous ouvrez le même Clock Point sans QR. Pas d’App Store.",
+      "help_intro": "Touchez l'icône WinProx : sur Android, Chrome propose d'ajouter WinProx à l'écran d'accueil. Ensuite vous vous connectez sans QR. Sur une pointeuse fixe, vous pointez l'entrée en scannant l'autocollant ou l'écran. Pas d'App Store.",
       "help_android": "Android (Chrome) : une touche sur l’icône. Confirmez « Ajouter à l’écran d’accueil ». La connexion fonctionne ensuite dans ce raccourci.",
       "help_ios": "iPhone : Apple n’autorise pas l’installation automatique. Touchez l’icône ; puis sur votre iPhone : trois points (⋯) en bas → Partager → Afficher plus → faites défiler → “+ Sur l’écran d’accueil”.",
       "help_existing": "Vous avez encore une ancienne icône où la connexion ne faisait rien ? Supprimez-la, actualisez cette page et touchez à nouveau l’icône plus."

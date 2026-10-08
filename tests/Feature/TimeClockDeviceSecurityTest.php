@@ -209,6 +209,7 @@ it('klokt in via het portaal na icoon en toont het icoon niet meer op het welkom
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
         ->assertDontSeeHtml('wp-icon-tile is-selected')
+        ->call('clockIn')
         ->assertSet('flashMessage', __('time.portal.clock.clocked_in_at_tenant', [
             'tenant' => $tenant->name,
             'time' => now()->format('H:i'),
@@ -226,6 +227,7 @@ it('weigert aanmelden met dezelfde worker op een tweede toestel', function () {
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
+        ->call('clockIn')
         ->assertSet('flashMessage', __('time.portal.clock.clocked_in_at_tenant', [
             'tenant' => $tenant->name,
             'time' => now()->format('H:i'),
@@ -256,6 +258,7 @@ it('gooit een oude sessie op een tweede toestel eruit', function () {
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
+        ->call('clockIn')
         ->assertSet('flashMessage', __('time.portal.clock.clocked_in_at_tenant', [
             'tenant' => $tenant->name,
             'time' => now()->format('H:i'),

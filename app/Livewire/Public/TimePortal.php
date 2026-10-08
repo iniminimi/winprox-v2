@@ -286,7 +286,7 @@ class TimePortal extends Component
 
         $this->syncLocaleFromRequest();
 
-        if ($this->inactiveReasonKey === null) {
+        if ($this->inactiveReasonKey === null && $this->entryGrantsPunchScan()) {
             ClockPointScanGrant::grant($this->clockPointId);
         }
     }
@@ -436,7 +436,6 @@ class TimePortal extends Component
         $this->taskBaselineSyncedThisVisit = false;
         app(SyncWorkerOpenTaskBaselineAction::class)->handle($worker);
         $this->taskBaselineSyncedThisVisit = true;
-        $this->punchVerifiedWorkerOnScan();
     }
 
     public function signOut(): void
@@ -797,7 +796,6 @@ class TimePortal extends Component
         $this->taskBaselineSyncedThisVisit = false;
         app(SyncWorkerOpenTaskBaselineAction::class)->handle($worker);
         $this->taskBaselineSyncedThisVisit = true;
-        $this->punchVerifiedWorkerOnScan();
     }
 
     public function completePinSetup(SetWorkerClockPinAction $setPin): void
@@ -834,7 +832,6 @@ class TimePortal extends Component
         $this->taskBaselineSyncedThisVisit = false;
         app(SyncWorkerOpenTaskBaselineAction::class)->handle($deviceWorker);
         $this->taskBaselineSyncedThisVisit = true;
-        $this->punchVerifiedWorkerOnScan();
     }
 
     public function signInWithPin(ConfirmWorkerClockPinAction $confirmPin): void
@@ -885,7 +882,6 @@ class TimePortal extends Component
         $this->taskBaselineSyncedThisVisit = false;
         app(SyncWorkerOpenTaskBaselineAction::class)->handle($worker);
         $this->taskBaselineSyncedThisVisit = true;
-        $this->punchVerifiedWorkerOnScan();
     }
 
     public function clockIn(FindOpenWorkShiftForWorkerAction $findShift): void
@@ -904,35 +900,6 @@ class TimePortal extends Component
         }
 
         if (! $this->requirePunchScanGrant()) {
-            return;
-        }
-
-        $this->punchInOrTransfer($worker, $clockPoint, $openShift);
-    }
-
-    /**
-     * Prikklok: aanmelden is inklokken, behalve als GPS bij inklokken verplicht is.
-     * Dan blijft de scan geldig tot de uitvoerder zelf inklokt met een positie.
-     * Al open op dit punt → status tonen, geen prik (scan blijft voor uitklokken).
-     */
-    private function punchVerifiedWorkerOnScan(): void
-    {
-        if (! ClockPointScanGrant::isValid($this->clockPointId)) {
-            return;
-        }
-
-        if (TimePortalData::tenantRequestsClockGps($this->tenantId)) {
-            return;
-        }
-
-        $worker = $this->verifiedWorker();
-        $clockPoint = $this->activeClockPoint();
-        if ($worker === null || $clockPoint === null) {
-            return;
-        }
-
-        $openShift = app(FindOpenWorkShiftForWorkerAction::class)->handle($worker);
-        if ($openShift !== null && $openShift->currentClockPointId() === (int) $clockPoint->id) {
             return;
         }
 
@@ -1928,7 +1895,7 @@ class TimePortal extends Component
             'evacuationList' => $evacuationList,
             'gpsOnClock' => $this->tenantRequestsClockGps(),
             'gpsVisits' => $gpsVisits,
-            'canPunch' => ClockPointScanGrant::isValid($this->clockPointId),
+            'canPunch' => $this->canPunchNow(),
             'teamWorkers' => $teamWorkers,
             'manageWorkersMessage' => $this->manageWorkersMessage,
             'roster' => $roster,
@@ -1954,9 +1921,23 @@ class TimePortal extends Component
         ]);
     }
 
+    /**
+     * Sticker en klokscherm-QR (/time) geven één scan. Aanmeldlink en startscherm (/cp) niet.
+     * Livewire-tests zonder die route tellen als scan, dezelfde default als de sticker.
+     */
+    private function entryGrantsPunchScan(): bool
+    {
+        return request()->route()?->getName() !== 'public.time-portal.cp';
+    }
+
+    private function canPunchNow(): bool
+    {
+        return $this->checkmateModeActive() || ClockPointScanGrant::isValid($this->clockPointId);
+    }
+
     private function requirePunchScanGrant(): bool
     {
-        if (ClockPointScanGrant::isValid($this->clockPointId)) {
+        if ($this->canPunchNow()) {
             return true;
         }
 

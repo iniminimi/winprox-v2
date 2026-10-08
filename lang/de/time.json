@@ -240,7 +240,7 @@
       "no_location": "Kein Standort verknüpft",
       "sort_order": "Sortierreihenfolge",
       "homescreen_shortcut": "Clock-Point-Link auf dem Handy-Startbildschirm",
-      "homescreen_shortcut_hint": "Nur für Ausführende, die keinen QR scannen können (Start zu Hause oder unterwegs). Bei TFT-Bildschirmen mit wechselnden QR-Codes ausgeschaltet lassen."
+      "homescreen_shortcut_hint": "Startbildschirm-Symbol zur Anmeldung ohne QR. An einer festen Stempeluhr stempelt die Person erst nach Scan des Aufklebers oder des Uhrenbildschirms ein. Bei Checkmate stempelt sie über das Symbol ein. Bei TFT-Bildschirmen mit wechselnden QR-Codes ausgeschaltet lassen."
     },
     "qr": {
       "subtitle": "Scannen zum Ein- oder Ausstempeln",
@@ -264,7 +264,7 @@
       },
       "email": {
         "heading": "E-Mail",
-        "hint": "Senden Sie den Anmeldelink an eine ausführende Person vor Ort (gleiche Seite wie der QR-Aufkleber).",
+        "hint": "Senden Sie den Anmeldelink. Er meldet an, ohne einzustempeln. An einer festen Stempeluhr braucht das Einstempeln einen Scan des Aufklebers oder des Uhrenbildschirms.",
         "label": "E-Mail-Adresse",
         "placeholder": "name@firma.de",
         "send": "Senden",
@@ -398,7 +398,8 @@
       "no_nearby_units": "Keine gepinnte Unit in Reichweite.",
       "no_nearby_customer": "Keine Kunden-Arbeitsadresse in Reichweite.",
       "clocked_out_at": "Ausgestempelt um :time",
-      "scan_to_clock_in": "Scannen Sie den Clock-Point-QR zum Einstempeln."
+      "scan_to_clock_in": "Scannen Sie den Aufkleber oder den Uhrenbildschirm zum Einstempeln.",
+      "scan_to_clock_out": "Scannen Sie den Aufkleber oder den Uhrenbildschirm zum Ausstempeln oder Verschieben."
     },
     "break_started": "Pause gestartet.",
     "break_ended": "Pause beendet.",
@@ -469,7 +470,7 @@
     "homescreen": {
       "title": "WinProx auf den Startbildschirm legen",
       "help_title": "Clock Point auf dem Startbildschirm",
-      "help_intro": "Tippen Sie das WinProx-Symbol: unter Android fragt Chrome, ob WinProx auf den Startbildschirm soll. Danach öffnen Sie denselben Clock Point ohne QR. Kein App Store.",
+      "help_intro": "Tippen Sie das WinProx-Symbol: unter Android fragt Chrome, ob WinProx auf den Startbildschirm soll. Danach melden Sie sich ohne QR an. An einer festen Stempeluhr stempeln Sie durch Scan des Aufklebers oder des Uhrenbildschirms ein. Kein App Store.",
       "help_android": "Android (Chrome): ein Tipp auf das Symbol. „Zum Startbildschirm hinzufügen“ bestätigen. Anmelden funktioniert danach in dieser Verknüpfung.",
       "help_ios": "iPhone: Apple erlaubt keine automatische Installation. Tippen Sie das Symbol; dann auf Ihrem iPhone: drei Punkte (⋯) unten → Teilen → Mehr anzeigen → nach unten scrollen → „+ Zum Home-Bildschirm“.",
       "help_existing": "Haben Sie noch ein altes Symbol, bei dem Anmelden nichts tat? Symbol löschen, diese Seite neu laden und erneut auf das Plus tippen."

@@ -105,7 +105,7 @@ it('opent de startscherm-hulp alleen als het vinkje aan staat', function () {
         ->assertSet('homescreenHelpOpen', false);
 });
 
-it('verbergt het startscherm-icoon na aanmelden', function () {
+it('toont het startscherm-icoon ook na aanmelden', function () {
     [$tenant, , $clockPoint] = homescreenClockPointSetup([
         'homescreen_shortcut' => true,
     ]);
@@ -125,7 +125,7 @@ it('verbergt het startscherm-icoon na aanmelden', function () {
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
-        ->assertDontSeeHtml('data-wp-homescreen-install')
+        ->assertSeeHtml('data-wp-homescreen-install')
         ->assertDontSeeHtml('<h1 class="wp-page-title">'.e(__('time.portal.title')).'</h1>');
 });
 
@@ -142,5 +142,6 @@ it('levert een webmanifest alleen als het clock point de startscherm-link aanbie
         ->assertJsonPath('name', 'WinProx')
         ->assertJsonPath('display', 'standalone')
         ->assertJsonPath('background_color', '#ffffff')
-        ->assertJsonPath('start_url', route('public.time-portal', $clockPoint->qr_token));
+        ->assertJsonPath('start_url', route('public.time-portal.cp', $clockPoint->qr_token))
+        ->assertJsonPath('id', route('public.time-portal.cp', $clockPoint->qr_token));
 });

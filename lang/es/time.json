@@ -240,7 +240,7 @@
       "no_location": "Sin ubicación vinculada",
       "sort_order": "Orden",
       "homescreen_shortcut": "Enlace Clock Point en la pantalla de inicio del móvil",
-      "homescreen_shortcut_hint": "Solo para operarios que no pueden escanear un QR (empiezan en casa o de camino). Déjelo desactivado en pantallas TFT con códigos QR rotativos."
+      "homescreen_shortcut_hint": "Icono de pantalla de inicio para identificarse sin QR. En un reloj fijo, el operario solo ficha la entrada tras escanear la pegatina o la pantalla. En Checkmate ficha desde el icono. Déjelo desactivado en pantallas TFT con códigos QR rotativos."
     },
     "qr": {
       "subtitle": "Escanee para fichar entrada o salida",
@@ -264,7 +264,7 @@
       },
       "email": {
         "heading": "Correo",
-        "hint": "Envíe el enlace de acceso a un operario en la ubicación (misma página que la pegatina QR).",
+        "hint": "Envíe el enlace de acceso. Identifica sin fichar la entrada. En un reloj fijo, fichar la entrada exige escanear la pegatina o la pantalla.",
         "label": "Correo electrónico",
         "placeholder": "nombre@empresa.es",
         "send": "Enviar",
@@ -398,7 +398,8 @@
       "no_nearby_units": "Ninguna unidad con pin dentro del alcance.",
       "no_nearby_customer": "Ninguna dirección de trabajo de cliente dentro del alcance.",
       "clocked_out_at": "Ha fichado la salida a las :time",
-      "scan_to_clock_in": "Escanea el QR de Clock Point para fichar la entrada."
+      "scan_to_clock_in": "Escanea la pegatina o la pantalla del reloj para fichar la entrada.",
+      "scan_to_clock_out": "Escanea la pegatina o la pantalla del reloj para fichar la salida o trasladarte."
     },
     "break_started": "Pausa iniciada.",
     "break_ended": "Pausa finalizada.",
@@ -469,7 +470,7 @@
     "homescreen": {
       "title": "Poner WinProx en la pantalla de inicio",
       "help_title": "Clock Point en la pantalla de inicio",
-      "help_intro": "Toca el icono WinProx: en Android, Chrome pide añadir WinProx a la pantalla de inicio. Luego abres el mismo Clock Point sin QR. Sin App Store.",
+      "help_intro": "Toca el icono WinProx: en Android, Chrome pide añadir WinProx a la pantalla de inicio. Después te identificas sin QR. En un reloj fijo fichas la entrada escaneando la pegatina o la pantalla. Sin App Store.",
       "help_android": "Android (Chrome): un toque en el icono. Confirma «Añadir a pantalla de inicio». El inicio de sesión funciona después en ese acceso.",
       "help_ios": "iPhone: Apple no permite la instalación automática. Toca el icono; luego en tu iPhone: tres puntos (⋯) abajo → Compartir → Mostrar más → desliza hacia abajo → “+ Añadir a pantalla de inicio”.",
       "help_existing": "¿Aún tienes un icono antiguo con el que Inicio de sesión no hacía nada? Bórralo, actualiza esta página y vuelve a tocar el icono más."

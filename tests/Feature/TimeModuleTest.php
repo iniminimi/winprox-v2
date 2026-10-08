@@ -318,6 +318,7 @@ it('toont op clock point B dat de worker elders is ingeklokt en laat verplaatsen
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
+        ->call('transferToThisClockPoint')
         ->assertSet('flashMessage', __('time.portal.transferred'))
         ->assertSee('Ingang A', false);
 
@@ -357,6 +358,7 @@ it('verplaatst automatisch bij inklokken als er elders al een open shift is', fu
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'star')
         ->call('signInWithIcon')
+        ->call('clockIn')
         ->assertSet('flashMessage', __('time.portal.transferred'));
 
     expect(WorkShift::query()->where('worker_id', $worker->id)->count())->toBe(1);
@@ -497,7 +499,7 @@ it('verbergt de kop Aanmelden na een geslaagde aanmelding', function () {
         ->assertSeeHtml('wp-disclosure-chevron')
         ->assertSee('Janssen Jan', false)
         ->assertSee(__('time.portal.clock.signed_in_since', ['date' => now()->format('d-m-Y'), 'time' => now()->format('H:i')]), false)
-        ->assertSee(__('time.portal.clock.clocked_in_at_tenant', ['tenant' => $tenant->name, 'time' => now()->format('H:i')]), false)
+        ->assertSee(__('time.portal.clock.not_clocked_in'), false)
         ->assertSee(__('portal.worker.sign_out'), false)
         ->assertDontSee(__('portal.worker.different_worker'), false);
 });
@@ -523,6 +525,7 @@ it('sluit Afmelden de portaal-sessie zonder uit te klokken of de gsm los te kopp
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
+        ->call('clockIn')
         ->assertSee(__('portal.worker.sign_out'), false);
 
     $boundDeviceId = (int) $worker->fresh()->clock_device_id;
@@ -561,6 +564,7 @@ it('toont het time-portaal en laat een worker inklokken na icoonbevestiging', fu
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
+        ->call('clockIn')
         ->assertSet('flashMessage', __('time.portal.clock.clocked_in_at_tenant', [
             'tenant' => $tenant->name,
             'time' => now()->format('H:i'),
@@ -598,6 +602,7 @@ it('laat een claimable worker een icoon kiezen via clock point QR', function () 
         ->assertSet('showRegisterForm', true)
         ->set('selected_icon_slug', 'star')
         ->call('completeOnboarding')
+        ->call('clockIn')
         ->assertSet('flashMessage', __('time.portal.clock.clocked_in_at_tenant', [
             'tenant' => $tenant->name,
             'time' => now()->format('H:i'),
@@ -621,6 +626,7 @@ it('toont open registratie wanneer er precies één leeg team is', function () {
         ->set('last_name', 'Nieuw')
         ->set('selected_icon_slug', 'bell')
         ->call('completeOnboarding')
+        ->call('clockIn')
         ->assertSet('flashMessage', __('time.portal.clock.clocked_in_at_tenant', [
             'tenant' => $tenant->name,
             'time' => now()->format('H:i'),
@@ -928,17 +934,19 @@ it('toont in- en uitklokken als tijden met locatie, niet Aanmelden', function ()
 
     $shift = app(ClockInAction::class)->handle($worker, $clockPoint);
     app(ClockOutAction::class)->handle($worker, $clockPoint);
+    $clockInAt = now()->startOfDay()->setTime(8, 15);
+    $clockOutAt = now()->startOfDay()->setTime(12, 0);
     $shift->fresh()->update([
-        'clock_in_at' => Carbon::parse('2026-09-17 21:49:00'),
-        'clock_out_at' => Carbon::parse('2026-09-18 12:00:00'),
+        'clock_in_at' => $clockInAt,
+        'clock_out_at' => $clockOutAt,
     ]);
 
     Livewire::actingAs($admin)
         ->test(ShiftsIndex::class)
         ->assertSee(__('time.shifts.punches_heading'), false)
         ->assertSee(__('time.shifts.worked_label'), false)
-        ->assertSee('17-09-2026', false)
-        ->assertSee(__('time.shifts.punch_in', ['time' => '21:49', 'place' => 'Depot Noord']), false)
+        ->assertSee($clockInAt->format('d-m-Y'), false)
+        ->assertSee(__('time.shifts.punch_in', ['time' => '08:15', 'place' => 'Depot Noord']), false)
         ->assertSee(__('time.shifts.punch_out', ['time' => '12:00', 'place' => 'Depot Noord']), false)
         ->assertDontSee('Ingeklokt bij Aanmelden', false);
 });

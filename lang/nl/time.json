@@ -240,7 +240,7 @@
       "no_location": "Geen locatie gekoppeld",
       "sort_order": "Sorteervolgorde",
       "homescreen_shortcut": "Clock Point-link op startscherm gsm",
-      "homescreen_shortcut_hint": "Alleen voor uitvoerders die geen QR kunnen scannen (thuis of onderweg starten). Laat dit uit op TFT-schermen met wisselende QR-codes."
+      "homescreen_shortcut_hint": "Startscherm-icoon om aan te melden zonder QR. Op een vaste prikklok kan de uitvoerder pas inklokken na een scan van de sticker of het klokscherm. Bij Checkmate klokt die in vanuit het icoon. Laat dit uit op TFT-schermen met wisselende QR-codes."
     },
     "qr": {
       "subtitle": "Scan om in of uit te klokken",
@@ -264,7 +264,7 @@
       },
       "email": {
         "heading": "E-mail",
-        "hint": "Stuur de aanmeldlink naar een uitvoerder op locatie (zelfde pagina als de QR-sticker).",
+        "hint": "Stuur de aanmeldlink. Die meldt aan zonder inklokken. Op een vaste prikklok kan inklokken pas na een scan van de sticker of het klokscherm.",
         "label": "E-mailadres",
         "placeholder": "naam@bedrijf.be",
         "send": "Versturen",
@@ -398,7 +398,8 @@
       "no_nearby_units": "Geen gepinde unit binnen bereik.",
       "no_nearby_customer": "Geen klant-werkadres binnen bereik.",
       "clocked_out_at": "Uitgeklokt om :time",
-      "scan_to_clock_in": "Scan de Clock Point-QR om in te klokken."
+      "scan_to_clock_in": "Scan de sticker of het klokscherm om in te klokken.",
+      "scan_to_clock_out": "Scan de sticker of het klokscherm om uit te klokken of te verplaatsen."
     },
     "break_started": "Pauze gestart.",
     "break_ended": "Pauze beëindigd.",
@@ -469,7 +470,7 @@
     "homescreen": {
       "title": "Zet WinProx op je startscherm",
       "help_title": "Clock Point op je startscherm",
-      "help_intro": "Tik het WinProx-icoon: op Android opent Chrome de vraag om WinProx op het startscherm te zetten. Daarna open je dezelfde Clock Point zonder QR. Geen App Store.",
+      "help_intro": "Tik het WinProx-icoon: op Android opent Chrome de vraag om WinProx op het startscherm te zetten. Daarna meld je je aan zonder QR. Op een vaste prikklok klok je in door de sticker of het klokscherm te scannen. Geen App Store.",
       "help_android": "Android (Chrome): één tik op het icoon. Bevestig “Toevoegen aan startscherm”. Daarna werkt Aanmelden in die snelkoppeling.",
       "help_ios": "iPhone: Apple laat geen automatische installatie toe. Tik het icoon; daarna op je iPhone: drie puntjes (⋯) onderaan → Deel → Toon meer → scroll naar beneden → “+ Zet op beginscherm”.",
       "help_existing": "Heb je nog een oud icoon waarop Aanmelden vastliep? Verwijder dat icoon, ververs deze pagina en tik opnieuw op het plus-icoon."

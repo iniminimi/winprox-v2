@@ -240,7 +240,7 @@
       "no_location": "No location linked",
       "sort_order": "Sort order",
       "homescreen_shortcut": "Clock Point link on phone home screen",
-      "homescreen_shortcut_hint": "Only for workers who cannot scan a QR (start at home or on the road). Leave this off on TFT screens with rotating QR codes."
+      "homescreen_shortcut_hint": "Home-screen icon to sign in without a QR. On a fixed clock the worker can clock in only after scanning the sticker or the clock screen. In Checkmate they clock in from the icon. Leave this off on TFT screens with rotating QR codes."
     },
     "qr": {
       "subtitle": "Scan to clock in or out",
@@ -264,7 +264,7 @@
       },
       "email": {
         "heading": "Email",
-        "hint": "Send the sign-in link to a worker on site (same page as the QR sticker).",
+        "hint": "Send the sign-in link. It signs the worker in without clocking in. On a fixed clock, clock-in needs a scan of the sticker or the clock screen.",
         "label": "Email address",
         "placeholder": "name@company.com",
         "send": "Send",
@@ -398,7 +398,8 @@
       "no_nearby_units": "No pinned unit within range.",
       "no_nearby_customer": "No customer work address in range.",
       "clocked_out_at": "Clocked out at :time",
-      "scan_to_clock_in": "Scan the Clock Point QR to clock in."
+      "scan_to_clock_in": "Scan the sticker or the clock screen to clock in.",
+      "scan_to_clock_out": "Scan the sticker or the clock screen to clock out or move."
     },
     "break_started": "Break started.",
     "break_ended": "Break ended.",
@@ -469,7 +470,7 @@
     "homescreen": {
       "title": "Add WinProx to your home screen",
       "help_title": "Clock Point on your home screen",
-      "help_intro": "Tap the WinProx icon: on Android, Chrome asks to add WinProx to the home screen. After that you open the same Clock Point without a QR. No App Store.",
+      "help_intro": "Tap the WinProx icon: on Android, Chrome asks to add WinProx to the home screen. After that you sign in without a QR. On a fixed clock you clock in by scanning the sticker or the clock screen. No App Store.",
       "help_android": "Android (Chrome): one tap on the icon. Confirm “Add to Home screen”. Sign in then works in that shortcut.",
       "help_ios": "iPhone: Apple does not allow automatic install. Tap the icon; then on your iPhone: three dots (⋯) at the bottom → Share → Show more → scroll down → “+ Add to Home Screen”.",
       "help_existing": "Still have an old icon where Sign in did nothing? Delete that icon, refresh this page and tap the plus icon again."

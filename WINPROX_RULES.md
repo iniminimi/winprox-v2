@@ -213,7 +213,12 @@ betaalde dag en is geen straalcontrole rond een klant. Staat **GPS vragen bij in
 uitklokken** aan, dan weigert de portaal-inklok (`ClockPointQr`) zonder GPS-positie:
 die coördinaten zijn de controle waar de uitvoerder was. Uitklokken, pauzes, manueel
 inkloken, API en het klokscherm-PIN blijven zonder die poort. Werk starten blijft de
-straalcontrole.
+straalcontrole. **Aanmelden en inklokken zijn gescheiden.** Sticker en wisselende
+klokscherm-QR (`/time/{token}`) geven één scan-grant. Aanmeldlink en startscherm-icoon
+(`/cp/{token}`) geven die niet. Op een vaste prikklok kan in-/uitklokken en verplaatsen
+pas met die scan. Checkmate klokt in en uit vanuit het icoon zonder scan; een scan blijft
+ook daar een prik. Pauzes vragen nooit een scan. Een bladwijzer van de sticker-URL telt
+nog als scan.
 
 **Mapping (golf 1 — schoonmaak, bekend):** zonder GPS-bezoeken: clock in → IN; break start →
 OUT; break end → IN; clock out → OUT. Met `time_gps_visits`: clock in/out sturen **geen**

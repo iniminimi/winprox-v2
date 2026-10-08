@@ -1413,7 +1413,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Über <strong>QR</strong> öffnen Sie ein Fenster: Ansehen/Drucken im Browser, oder ein Word-Druckblatt (A6, A5 oder A4) mit derselben Marke wie unter Einstellungen → QR-Druckblatt. Über <strong>E-Mail</strong> senden Sie den Anmeldelink (gleiche Seite wie der Aufkleber) an eine ausführende Person vor Ort. Jeder Clock Point hat einen einzigartigen Code."
+                    "text": "Über <strong>QR</strong> öffnen Sie ein Fenster: Ansehen/Drucken im Browser, oder ein Word-Druckblatt (A6, A5 oder A4) mit derselben Marke wie unter Einstellungen → QR-Druckblatt. Über <strong>E-Mail</strong> senden Sie den Anmeldelink (Anmeldung ohne Einstempeln) an eine ausführende Person vor Ort. Jeder Clock Point hat einen einzigartigen Code."
                 },
                 {
                     "label": "QR-Rotation",
@@ -1983,7 +1983,7 @@
                 },
                 {
                     "label": "Mehrere Clock Points",
-                    "text": "Arbeiten Sie an mehreren festen Orten (Lager, Büro)? Legen Sie pro Ort einen Clock Point an. Ein-/Ausstempeln und Wechseln erfordern einen frischen QR-Scan; Pausen und Kundenbesuche nicht."
+                    "text": "Arbeiten Sie an mehreren festen Orten (Lager, Büro)? Legen Sie pro Ort einen Clock Point an. Ein- und Ausstempeln geht über das Startbildschirm-Symbol, ohne Scan. Ein Aufkleber oder der QR des Uhrenbildschirms bleibt auch ein Stempel. Pausen und Kundenbesuche brauchen keinen Scan."
                 }
             ]
         },

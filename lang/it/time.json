@@ -240,7 +240,7 @@
       "no_location": "Nessuna sede collegata",
       "sort_order": "Ordine",
       "homescreen_shortcut": "Collegamento Clock Point sulla schermata iniziale del telefono",
-      "homescreen_shortcut_hint": "Solo per gli esecutori che non possono scansionare un QR (partenza da casa o in viaggio). Lasciare disattivato sugli schermi TFT con QR rotanti."
+      "homescreen_shortcut_hint": "Icona della schermata Home per accedere senza QR. Su una timbratrice fissa l'esecutore timbra l'entrata solo dopo la scansione dell'adesivo o dello schermo. In Checkmate timbra dall'icona. Lasciare disattivato sugli schermi TFT con QR rotanti."
     },
     "qr": {
       "subtitle": "Scansiona per timbrare entrata o uscita",
@@ -264,7 +264,7 @@
       },
       "email": {
         "heading": "E-mail",
-        "hint": "Invia il link di accesso a un esecutore in sede (stessa pagina dell’adesivo QR).",
+        "hint": "Invia il link di accesso. Fa accedere senza timbrare l'entrata. Su una timbratrice fissa l'entrata richiede la scansione dell'adesivo o dello schermo.",
         "label": "Indirizzo e-mail",
         "placeholder": "nome@azienda.it",
         "send": "Invia",
@@ -398,7 +398,8 @@
       "no_nearby_units": "Nessuna unit con pin nel raggio.",
       "no_nearby_customer": "Nessun indirizzo di lavoro cliente nel raggio.",
       "clocked_out_at": "Uscita timbrata alle :time",
-      "scan_to_clock_in": "Scansiona il QR Clock Point per timbrare l'entrata."
+      "scan_to_clock_in": "Scansiona l'adesivo o lo schermo orologio per timbrare l'entrata.",
+      "scan_to_clock_out": "Scansiona l'adesivo o lo schermo orologio per timbrare l'uscita o spostarti."
     },
     "break_started": "Pausa iniziata.",
     "break_ended": "Pausa terminata.",
@@ -469,7 +470,7 @@
     "homescreen": {
       "title": "Metti WinProx sulla schermata Home",
       "help_title": "Clock Point sulla schermata Home",
-      "help_intro": "Tocca l’icona WinProx: su Android Chrome chiede di aggiungere WinProx alla schermata Home. Poi apri lo stesso Clock Point senza QR. Nessun App Store.",
+      "help_intro": "Tocca l'icona WinProx: su Android Chrome chiede di aggiungere WinProx alla schermata Home. Poi accedi senza QR. Su una timbratrice fissa timbri l'entrata scansionando l'adesivo o lo schermo. Nessun App Store.",
       "help_android": "Android (Chrome): un tocco sull’icona. Conferma «Aggiungi a schermata Home». L’accesso funziona poi in quel collegamento.",
       "help_ios": "iPhone: Apple non consente l’installazione automatica. Tocca l’icona; poi sul tuo iPhone: tre puntini (⋯) in basso → Condividi → Mostra altro → scorri verso il basso → “+ Aggiungi a schermata Home”.",
       "help_existing": "Hai ancora un’icona vecchia con cui Accesso non faceva nulla? Eliminala, aggiorna questa pagina e tocca di nuovo l’icona più."

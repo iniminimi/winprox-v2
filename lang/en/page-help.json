@@ -1413,7 +1413,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Use <strong>QR</strong> to open a dialog: view/print in the browser, or download a Word print sheet (A6, A5 or A4) with the same branding as Settings → QR print sheet. Use <strong>Email</strong> to send the sign-in link (same page as the sticker) to a worker on site. Each clock point has a unique code."
+                    "text": "Use <strong>QR</strong> to open a dialog: view/print in the browser, or download a Word print sheet (A6, A5 or A4) with the same branding as Settings → QR print sheet. Use <strong>Email</strong> to send the sign-in link (sign-in without clocking in) to a worker on site. Each clock point has a unique code."
                 },
                 {
                     "label": "QR rotation",
@@ -1983,7 +1983,7 @@
                 },
                 {
                     "label": "Multiple Clock Points",
-                    "text": "Working at several fixed spots (warehouse, office)? Create a Clock Point per spot. Clocking in/out and moving require a fresh QR scan; breaks and customer visits do not."
+                    "text": "Working at several fixed spots (warehouse, office)? Create a Clock Point per spot. Clocking in and out works from the home-screen icon, without a scan. A sticker or clock-screen QR is still a punch. Breaks and customer visits do not need a scan."
                 }
             ]
         },

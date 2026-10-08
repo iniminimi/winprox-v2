@@ -1421,7 +1421,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Via <strong>QR</strong>, vous ouvrez une fenêtre : afficher/imprimer dans le navigateur, ou une feuille Word (A6, A5 ou A4) avec la même charte que Paramètres → Feuille d'impression QR. Via <strong>E-mail</strong>, vous envoyez le lien de connexion (même page que l’autocollant) à un exécutant sur site. Chaque clock point a un code unique."
+                    "text": "Via <strong>QR</strong>, vous ouvrez une fenêtre : afficher/imprimer dans le navigateur, ou une feuille Word (A6, A5 ou A4) avec la même charte que Paramètres → Feuille d'impression QR. Via <strong>E-mail</strong>, vous envoyez le lien de connexion (connexion sans pointage) à un exécutant sur site. Chaque clock point a un code unique."
                 },
                 {
                     "label": "Rotation QR",
@@ -1991,7 +1991,7 @@
                 },
                 {
                     "label": "Plusieurs Clock Points",
-                    "text": "Vous travaillez sur plusieurs endroits fixes (magasin, bureau) ? Créez un Clock Point par endroit. Pointer et se déplacer demandent un nouveau scan du QR ; les pauses et visites clients non."
+                    "text": "Vous travaillez sur plusieurs endroits fixes (magasin, bureau) ? Créez un Clock Point par endroit. Pointer l'entrée et la sortie se fait depuis l'icône d'écran d'accueil, sans scan. Un autocollant ou le QR de l'écran reste aussi un pointage. Pauses et visites clients ne demandent pas de scan."
                 }
             ]
         },

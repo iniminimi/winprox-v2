@@ -1413,7 +1413,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Con <strong>QR</strong> abre un diálogo: ver/imprimir en el navegador, o una hoja Word (A6, A5 o A4) con la misma marca que Ajustes → Hoja de impresión QR. Con <strong>Correo</strong> envía el enlace de acceso (misma página que la pegatina) a un operario en la ubicación. Cada clock point tiene un código único."
+                    "text": "Con <strong>QR</strong> abre un diálogo: ver/imprimir en el navegador, o una hoja Word (A6, A5 o A4) con la misma marca que Ajustes → Hoja de impresión QR. Con <strong>Correo</strong> envía el enlace de acceso (acceso sin fichar la entrada) a un operario en la ubicación. Cada clock point tiene un código único."
                 },
                 {
                     "label": "Rotación QR",
@@ -1983,7 +1983,7 @@
                 },
                 {
                     "label": "Varios Clock Points",
-                    "text": "¿Trabajas en varios lugares fijos (almacén, oficina)? Crea un Clock Point por lugar. Fichar y desplazarse piden un nuevo escaneo del QR; las pausas y las visitas a clientes no."
+                    "text": "¿Trabajas en varios lugares fijos (almacén, oficina)? Crea un Clock Point por lugar. Fichar la entrada y la salida se hace desde el icono de la pantalla de inicio, sin escaneo. Una pegatina o el QR de la pantalla sigue siendo un fichaje. Las pausas y las visitas a clientes no piden escaneo."
                 }
             ]
         },

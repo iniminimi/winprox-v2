@@ -29,6 +29,9 @@
             </span>
             <div class="wp-portal-head-tools">
                 <div class="wp-cluster wp-cluster--tight">
+                    @if ($offerHomescreenShortcut ?? false)
+                        @include('partials.wp-homescreen-shortcut')
+                    @endif
                     <x-wp-page-help page="portal.time" />
                     @include('partials.wp-portal-theme')
                     @include('partials.wp-portal-lang')
@@ -37,11 +40,6 @@
         </div>
         @unless ($canAct ?? false)
             <x-wp-page-head-title variant="portal" icon="clock" :title="__('time.portal.title')">
-                <x-slot:toolbar>
-                    @if ($offerHomescreenShortcut ?? false)
-                        @include('partials.wp-homescreen-shortcut')
-                    @endif
-                </x-slot:toolbar>
                 @if ($showClockPointName ?? false)
                     <p class="wp-muted">{{ $clockPointName }}</p>
                 @endif

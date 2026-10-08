@@ -759,9 +759,13 @@ productsector op `Tenant`.
 - Worker zonder login (naam + icoon of optionele PIN); **één gsm per uitvoerder**
   (koppeling bij eerste geslaagde Clock Point-aanmelding; ander toestel weigeren + audit
   tot beheer/teamleader vrijgeeft); één open shift;
-  hops tussen Clock Points (alarm bij hop < 5 min). **In-/uitklokken en verplaatsen**
-  op Clock Point vereisen een **verse QR-scan** (volle page-load, één prik, ~10 min);
-  een open tab of `wire:poll` volstaat niet. Pauzes en uren blijven na aanmelden mogelijk
+  hops tussen Clock Points (alarm bij hop < 5 min). **Aanmelden klokt niet vanzelf in.**
+  **In-/uitklokken en verplaatsen** op een vaste prikklok vereisen een **verse QR-scan**
+  (volle page-load van de sticker of de wisselende klokscherm-QR, één prik, ~10 min).
+  De aanmeldlink (`/cp/{token}`) en het startscherm-icoon openen hetzelfde portaal
+  zonder die scan. Checkmate klokt in en uit vanuit dat icoon zonder scan; een scan
+  blijft ook daar een prik. Een open tab of `wire:poll` volstaat niet. Een bladwijzer
+  van de sticker-URL telt nog als scan. Pauzes en uren blijven na aanmelden mogelijk
   zonder nieuwe scan; de evacuatielijst ook, maar alleen als die in Instellingen aanstaat.
   **GPS vragen bij in- en uitklokken** (standaard uit): aan = portaal-inklok alleen
   met een GPS-positie (controle waar de uitvoerder was). Zonder signaal geen inklok.
@@ -1123,11 +1127,11 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 - Lijst: teamnaam, aantal actieve workers, actief/inactief.
 - Aanmaken/bewerken (naam, `sort_order`, actief, **`clocks_all_locations`** voor invallers) — **aanmaken/deactiveren = admin**; inhoud
   bewerken = admin of medewerker. Geen sectorcopy.
-- **Clock Point-QR** (Time-module, standaard aan): printbare QR → `/time/{token}` voor aanmelden
-  (naam + icoon), in-/uitklokken en teamtaken-overzicht. Vanuit het QR-venster kun je die
-  aanmeldlink per e-mail sturen naar een uitvoerder op locatie (transactionele golden
-  path: default-mailer + WinProx-template + groene CTA, §14.2; link `/cp/{token}`,
-  geen QR-afbeelding). Standaardnaam van het eerste
+- **Clock Point-QR** (Time-module, standaard aan): printbare QR → `/time/{token}` geeft een
+  scan om in of uit te klokken. De e-mail-aanmeldlink is `/cp/{token}` (transactionele golden
+  path: default-mailer + WinProx-template + groene CTA, §14.2; geen QR-afbeelding) en geeft
+  **geen** scan: aanmelden, rooster, uren en verlof wel, inklokken op een vaste prikklok niet.
+  Standaardnaam van het eerste
   Clock Point: **Aanmelden** (niet Inloggen/Inklokken); die generieke naam blijft op het
   portaal verborgen. Na een geslaagde aanmelding verdwijnt ook de kop **Aanmelden**
   (en een eigen Clock Point-naam); logo, hulp en welkom blijven. **Afmelden** sluit de
@@ -1136,9 +1140,10 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   (ook niet bij icoon, PIN of blokkade). Optioneel vinkje **Clock Point-link op
   startscherm gsm** (standaard uit): WinProx-icoon naast Aanmelden. Op Android
   tikt de uitvoerder het icoon: Chrome zet WinProx op het startscherm. Op iPhone
-  via Deel → Zet op beginscherm. Dezelfde Clock Point-pagina (geen extra offline).
-  Alleen voor uitvoerders die geen QR kunnen scannen (thuis of
-  onderweg). TFT-schermen met wisselende QR laten dit uit. Geen App Store. Zonder GPS-werkbezoeken blijven
+  via Deel → Zet op beginscherm. Het icoon opent de aanmeldlink (`/cp/{token}`), niet de
+  sticker-URL, en blijft zichtbaar na aanmelden. Op een vaste prikklok is er vanuit dat
+  icoon geen inklokknop; Checkmate klokt daar wel in en uit. TFT-schermen met wisselende QR
+  laten dit uit. Geen App Store. Zonder GPS-werkbezoeken blijven
   taakacties alleen-lezen (afhandelen via unit-QR). Met Time + GPS-werkbezoeken: teamtaken
   starten/afronden op Clock Point zolang er een open werkbezoek is op die klantlocatie;
   inspectiestops (unit check) ter plaatse op dezelfde bezoek-locatie, in stopvolgorde.

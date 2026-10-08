@@ -83,6 +83,9 @@
                 {{ __('time.portal.clock.clocked_in_at_tenant', ['tenant' => $tenantName, 'time' => $clockedInTime ?? '—']) }}
                 @include('partials.wp-portal-clock-alert', ['alert' => $todayClockAlert ?? null])
             </p>
+            @unless ($canPunch ?? false)
+                <p class="wp-portal-now__meta">{{ __('time.portal.clock.scan_to_clock_out') }}</p>
+            @endunless
             @if ($openShift->isManuallyClockedIn())
                 <p class="wp-portal-now__meta">{{ __('time.manual_clock_in.badge') }}</p>
             @endif

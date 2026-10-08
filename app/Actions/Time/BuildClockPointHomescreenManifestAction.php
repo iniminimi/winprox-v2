@@ -18,7 +18,7 @@ class BuildClockPointHomescreenManifestAction
             return null;
         }
 
-        $startUrl = route('public.time-portal', $token);
+        $startUrl = route('public.time-portal.cp', $token);
         $icon192 = url('/images/pwa/winprox-192.png');
         $icon512 = url('/images/pwa/winprox-512.png');
 

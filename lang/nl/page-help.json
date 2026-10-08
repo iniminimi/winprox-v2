@@ -1413,7 +1413,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Via <strong>QR</strong> opent u een venster: bekijken/afdrukken in de browser, of een Word-afdrukblad (A6, A5 of A4) met dezelfde branding als bij Instellingen → QR-afdrukblad. Via <strong>E-mail</strong> stuurt u de aanmeldlink (zelfde pagina als de sticker) naar een uitvoerder op locatie. Elke clock point heeft een unieke code."
+                    "text": "Via <strong>QR</strong> opent u een venster: bekijken/afdrukken in de browser, of een Word-afdrukblad (A6, A5 of A4) met dezelfde branding als bij Instellingen → QR-afdrukblad. Via <strong>E-mail</strong> stuurt u de aanmeldlink (aanmelden zonder inklokken) naar een uitvoerder op locatie. Elke clock point heeft een unieke code."
                 },
                 {
                     "label": "QR-rotatie",
@@ -1983,7 +1983,7 @@
                 },
                 {
                     "label": "Meerdere Clock Points",
-                    "text": "Werk je op meerdere vaste plekken (magazijn, kantoor)? Maak per plek een Clock Point. In- en uitklokken en verplaatsen vragen een verse QR-scan; pauzes en klantbezoeken niet."
+                    "text": "Werk je op meerdere vaste plekken (magazijn, kantoor)? Maak per plek een Clock Point. In- en uitklokken kan vanuit het startscherm-icoon, zonder scan. Een sticker of klokscherm-QR blijft ook een prik. Pauzes en klantbezoeken vragen geen scan."
                 }
             ]
         },

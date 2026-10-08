@@ -50,9 +50,10 @@ persoonlijke link per bedrijf:
 
 1. **Eénmalig koppelen**: admin mailt `/cp/{token}` (of worker scant eenmalig een QR)
    → naam + icoon/PIN → gsm gekoppeld (`AssertWorkerClockDeviceAction`,
-   `WorkerDeviceSession`). Startscherm-icoon daarna voldoende; elke page-load geeft
-   `ClockPointScanGrant` — geen verse fysieke scan nodig.
-2. **Inklokken** aan begin van de dag.
+   `WorkerDeviceSession`). Startscherm-icoon daarna voldoende om aan te melden én in
+   en uit te klokken, zonder verse scan. Aanmelden klokt niet vanzelf in. Sticker en
+   klokscherm-QR (`/time/{token}`) geven ook een prik.
+2. **Inklokken** aan begin van de dag, vanuit het icoon.
 3. **Klantbezoek**: klantlocaties gesorteerd op afstand (`SuggestNearbyClockUnitsAction`
    — bestaat al) → "Beginnen werken bij [klant]" → `StartWorkVisitAction` → CIAO IN.
    Nabijheidscheck is **blocking**: buiten straal → `visit_unit_out_of_range` —
