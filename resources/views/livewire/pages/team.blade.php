@@ -511,7 +511,7 @@
                             @error('workerDefaultUnitId') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
                     @endif
-                    @if ($hasTimeModule)
+                    @if ($hasTimeModule && ! $isCheckmate)
                         <div class="wp-modal-section">
                             <x-wp-tooltip :text="__('time.schedule.unavailable.section_hint')" wrap>
                                 <h3 class="wp-label">{{ __('time.schedule.unavailable.section_title') }}</h3>

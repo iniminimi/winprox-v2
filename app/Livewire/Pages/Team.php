@@ -884,7 +884,7 @@ class Team extends Component
             $this->persistWorkerPhoto($worker, $updateWorkerPhoto, $deleteWorkerPhoto);
         }
 
-        if ($this->tenantTimeModuleEnabled()) {
+        if ($this->workerUnavailabilityFieldEnabled()) {
             $syncUnavailabilities->handle($worker, $this->workerUnavailabilities);
         }
 
@@ -975,6 +975,23 @@ class Team extends Component
         $tenant = Tenant::query()->find($tenantId);
 
         return $tenant instanceof Tenant && $tenant->hasTimeModule();
+    }
+
+    /**
+     * Checkmate heeft geen klassieke roostercellen met weekdagen —
+     * daar is structurele onbeschikbaarheid niet relevant en blijft
+     * het veld (en de sync) buiten beeld.
+     */
+    private function workerUnavailabilityFieldEnabled(): bool
+    {
+        $tenantId = Tenancy::id();
+        if ($tenantId === null) {
+            return false;
+        }
+
+        $tenant = Tenant::query()->find($tenantId);
+
+        return $tenant instanceof Tenant && $tenant->hasTimeModule() && ! $tenant->checkmateMode();
     }
 
     public function clearWorkerPhotoSelection(): void
