@@ -156,7 +156,7 @@
         "badge": "included",
         "body": "Time is the punch clock. Workers clock in and out on the same Clock Point QR they use for field work.",
         "items": [
-          "On a fixed clock, each clock-in and clock-out needs a scan of the sticker or the clock screen. The home-screen icon and the sign-in link do not clock in. Checkmate clocks in and out from the icon.",
+          "On a fixed clock, each clock-in and clock-out needs a scan of the sticker or the clock screen. The home-screen icon and the sign-in link do not clock in. Checkmate clocks in and out from the icon. Note: a photo of the static sticker can punch from anywhere; the rotating screen QR expires and proves real presence.",
           "Included in the trial and in every plan.",
           "Presence, timesheets and My hours (own shifts only).",
           "Staff can clock someone in by hand if the phone was forgotten.",
@@ -407,7 +407,7 @@
         "title": "Availability",
         "items": [
           "Available 24/7 as SaaS (browser + QR portals).",
-          "Unit QR: a loaded page stays usable without network for tasks, reports and unit checks; it syncs when connectivity returns. Clock Point punches stay online and need a fresh QR scan. The home-screen icon on every Clock Point opens the fixed sign-in link without a punch, including when the app was installed from the rotating screen QR; the sticker and clock-screen QR grant a scan. On Android that scan opens the installed app; on iPhone the camera opens Safari. No extra offline.",
+          "Unit QR: a loaded page stays usable without network for tasks, reports and unit checks; it syncs when connectivity returns. Clock Point punches stay online and need a fresh QR scan. The home-screen icon on every Clock Point opens the fixed sign-in link without a punch, including when the app was installed from the rotating screen QR; the sticker and clock-screen QR grant a scan. On Android that scan opens the installed app; on iPhone the camera opens Safari. No extra offline. The static sticker is a fixed link: a photo of it can clock in or out from anywhere. Only the rotating clock-screen QR expires and is fraud-resistant proof of being on site.",
           "Planned maintenance preferably outside business hours, with notice where possible.",
           "Formal uptime SLA: available contractually on request."
         ]

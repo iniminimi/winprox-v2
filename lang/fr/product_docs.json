@@ -156,7 +156,7 @@
         "badge": "inclus",
         "body": "Time est la pointeuse. Les exécutants pointent sur le même QR Clock Point que le travail de terrain.",
         "items": [
-          "Sur une pointeuse fixe, chaque entrée et sortie demande un scan de l'autocollant ou de l'écran. L'icône d'accueil et le lien de connexion ne pointent pas. Checkmate pointe depuis l'icône.",
+          "Sur une pointeuse fixe, chaque entrée et sortie demande un scan de l'autocollant ou de l'écran. L'icône d'accueil et le lien de connexion ne pointent pas. Checkmate pointe depuis l'icône. Attention : une photo de l'autocollant fixe permet de pointer à distance ; le QR rotatif de l'écran expire et prouve une présence réelle.",
           "Inclus dans l’essai et dans chaque formule.",
           "Présence, relevé d’heures et Mes heures (uniquement ses services).",
           "La gestion peut pointer manuellement si le téléphone est oublié.",
@@ -407,7 +407,7 @@
         "title": "Availability",
         "items": [
           "Available 24/7 as SaaS (browser + QR portals).",
-          "QR unité : une page chargée reste utilisable sans réseau pour tâches, signalements et contrôles unité ; synchro au retour. Le pointage Clock Point reste en ligne et exige un nouveau scan QR. L’icône d’écran d’accueil sur chaque Clock Point ouvre le lien de connexion fixe sans pointage, même si l’app a été installée depuis le QR tournant de l’écran ; l'autocollant et le QR de l'écran donnent un scan. Sur Android ce scan ouvre l’app installée ; sur iPhone l’appareil photo ouvre Safari. Pas de hors-ligne extra.",
+          "QR unité : une page chargée reste utilisable sans réseau pour tâches, signalements et contrôles unité ; synchro au retour. Le pointage Clock Point reste en ligne et exige un nouveau scan QR. L’icône d’écran d’accueil sur chaque Clock Point ouvre le lien de connexion fixe sans pointage, même si l’app a été installée depuis le QR tournant de l’écran ; l'autocollant et le QR de l'écran donnent un scan. Sur Android ce scan ouvre l’app installée ; sur iPhone l’appareil photo ouvre Safari. Pas de hors-ligne extra. L'autocollant statique est un lien fixe : une photo permet de pointer partout. Seul le QR rotatif de l'écran expire et prouve de façon fiable la présence sur site.",
           "Planned maintenance preferably outside business hours, with notice where possible.",
           "Formal uptime SLA: available contractually on request."
         ]

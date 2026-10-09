@@ -156,7 +156,7 @@
         "badge": "inklusive",
         "body": "Time ist die Stempeluhr. Ausführende stempeln über denselben Clock-Point-QR wie die Feldarbeit.",
         "items": [
-          "An einer festen Stempeluhr verlangt jedes Ein- und Ausstempeln einen Scan des Aufklebers oder des Uhrenbildschirms. Startbildschirm-Symbol und Anmeldelink stempeln nicht ein. Checkmate stempelt über das Symbol.",
+          "An einer festen Stempeluhr verlangt jedes Ein- und Ausstempeln einen Scan des Aufklebers oder des Uhrenbildschirms. Startbildschirm-Symbol und Anmeldelink stempeln nicht ein. Checkmate stempelt über das Symbol. Achtung: ein Foto des festen Aufklebers kann überall stempeln; der wechselnde Bildschirm-QR läuft ab und beweist echte Anwesenheit.",
           "Inklusiv in der Probe und in jeder Formel.",
           "Anwesenheit, Stundenblatt und Meine Stunden (nur eigene Dienste).",
           "Die Verwaltung kann manuell einstempeln, wenn das Handy vergessen ist.",
@@ -407,7 +407,7 @@
         "title": "Availability",
         "items": [
           "Available 24/7 as SaaS (browser + QR portals).",
-          "Unit-QR: eine geladene Seite bleibt ohne Netz für Aufgaben, Meldungen und Unit-Checks nutzbar; Sync bei Wiederkehr. Clock-Point-Stempel bleibt online und braucht einen neuen QR-Scan. Das Startbildschirm-Symbol auf jedem Clock Point öffnet den festen Anmeldelink ohne Stempel, auch wenn die App über den wechselnden Bildschirm-QR installiert wurde; Aufkleber und Uhren-QR geben einen Scan. Unter Android öffnet dieser Scan die installierte App; auf dem iPhone öffnet die Kamera Safari. Kein extra Offline.",
+          "Unit-QR: eine geladene Seite bleibt ohne Netz für Aufgaben, Meldungen und Unit-Checks nutzbar; Sync bei Wiederkehr. Clock-Point-Stempel bleibt online und braucht einen neuen QR-Scan. Das Startbildschirm-Symbol auf jedem Clock Point öffnet den festen Anmeldelink ohne Stempel, auch wenn die App über den wechselnden Bildschirm-QR installiert wurde; Aufkleber und Uhren-QR geben einen Scan. Unter Android öffnet dieser Scan die installierte App; auf dem iPhone öffnet die Kamera Safari. Kein extra Offline. Der statische Aufkleber ist ein fester Link: ein Foto erlaubt Stempeln von überall. Nur der wechselnde Uhren-QR läuft ab und ist fälschungssicherer Nachweis der Anwesenheit vor Ort.",
           "Planned maintenance preferably outside business hours, with notice where possible.",
           "Formal uptime SLA: available contractually on request."
         ]

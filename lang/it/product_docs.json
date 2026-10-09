@@ -156,7 +156,7 @@
         "badge": "incluso",
         "body": "Time è il timbratore. Gli esecutori timbrano sullo stesso QR Clock Point del lavoro sul campo.",
         "items": [
-          "Su una timbratrice fissa, ogni ingresso e uscita chiede la scansione dell'adesivo o dello schermo. L'icona Home e il link di accesso non timbrano. Checkmate timbra dall'icona.",
+          "Su una timbratrice fissa, ogni ingresso e uscita chiede la scansione dell'adesivo o dello schermo. L'icona Home e il link di accesso non timbrano. Checkmate timbra dall'icona. Attenzione: una foto dell'adesivo fisso può timbrare ovunque; il QR rotante dello schermo scade e prova la presenza reale.",
           "Incluso nella prova e in ogni formula.",
           "Presenza, cartellino e Le mie ore (solo i propri turni).",
           "La gestione può timbrare a mano se il telefono è stato dimenticato.",
@@ -406,7 +406,7 @@
         "title": "Availability",
         "items": [
           "Available 24/7 as SaaS (browser + QR portals).",
-          "QR unità: una pagina caricata resta usabile senza rete per attività, segnalazioni e controlli unità; si sincronizza al ritorno. La timbratura Clock Point resta online e richiede una nuova scansione QR. L'icona della schermata iniziale su ogni Clock Point apre il link di accesso fisso senza timbratura, anche se l'app è stata installata dal QR rotante dello schermo; l'adesivo e il QR dello schermo danno una scansione. Su Android quella scansione apre l'app installata; su iPhone la fotocamera apre Safari. Nessun extra offline.",
+          "QR unità: una pagina caricata resta usabile senza rete per attività, segnalazioni e controlli unità; si sincronizza al ritorno. La timbratura Clock Point resta online e richiede una nuova scansione QR. L'icona della schermata iniziale su ogni Clock Point apre il link di accesso fisso senza timbratura, anche se l'app è stata installata dal QR rotante dello schermo; l'adesivo e il QR dello schermo danno una scansione. Su Android quella scansione apre l'app installata; su iPhone la fotocamera apre Safari. Nessun extra offline. L'adesivo statico è un link fisso: una foto permette di timbrare ovunque. Solo il QR rotante dello schermo scade ed è prova antifrode della presenza in loco.",
           "Planned maintenance preferably outside business hours, with notice where possible.",
           "Formal uptime SLA: available contractually on request."
         ]

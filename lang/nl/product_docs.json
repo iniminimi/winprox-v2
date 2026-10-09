@@ -156,7 +156,7 @@
         "badge": "inbegrepen",
         "body": "Time is de prikklok. Uitvoerders klokken in en uit via dezelfde Clock Point-QR als het veldwerk.",
         "items": [
-          "Op een vaste prikklok vraagt elke in- en uitklok een scan van de sticker of het klokscherm. Het startscherm-icoon en de aanmeldlink klokken niet in. Checkmate klokt in en uit vanuit het icoon.",
+          "Op een vaste prikklok vraagt elke in- en uitklok een scan van de sticker of het klokscherm. Het startscherm-icoon en de aanmeldlink klokken niet in. Checkmate klokt in en uit vanuit het icoon. Let op: een foto van de statische sticker kan overal prikken; de roterende scherm-QR verloopt en bewijst echte aanwezigheid.",
           "Inbegrepen in de proef en in elke formule.",
           "Aanwezigheid, urenstaat en Mijn uren (alleen eigen diensten).",
           "Beheer kan manueel inklokken als de gsm vergeten is.",
@@ -407,7 +407,7 @@
         "title": "Beschikbaarheid",
         "items": [
           "24/7 bereikbaar als SaaS (browser + QR-portalen).",
-          "Unit-QR: een geladen pagina blijft bruikbaar zonder netwerk voor taken, meldingen en unit checks; synchronisatie bij herstel. Clock Point-prik vereist online + verse QR-scan. Het startscherm-icoon op elk Clock Point opent de vaste aanmeldlink zonder prik, ook als de app vanaf de draaiende scherm-QR is gezet; sticker en klokscherm-QR geven een scan. Op Android opent die scan de geïnstalleerde app; op iPhone opent de camera Safari. Geen extra offline.",
+          "Unit-QR: een geladen pagina blijft bruikbaar zonder netwerk voor taken, meldingen en unit checks; synchronisatie bij herstel. Clock Point-prik vereist online + verse QR-scan. Het startscherm-icoon op elk Clock Point opent de vaste aanmeldlink zonder prik, ook als de app vanaf de draaiende scherm-QR is gezet; sticker en klokscherm-QR geven een scan. Op Android opent die scan de geïnstalleerde app; op iPhone opent de camera Safari. Geen extra offline. De statische sticker is een vaste link: een foto ervan kan overal in- of uitklokken. Alleen de roterende klokscherm-QR verloopt en vormt fraudebestendig bewijs van ter plaatse zijn.",
           "Gepland onderhoud: bij voorkeur buiten kantooruren, met aankondiging waar mogelijk.",
           "Formele uptime-SLA: op vraag contractueel af te spreken."
         ]
