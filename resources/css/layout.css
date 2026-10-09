@@ -1334,6 +1334,11 @@
     gap: 0.4rem;
 }
 
+.wp-portal-now__divider {
+    height: 1px;
+    background: color-mix(in srgb, var(--wp-portal-now-fg) 22%, transparent);
+}
+
 .wp-portal-now .btn--surface {
     background: color-mix(in srgb, var(--wp-portal-now-fg) 10%, transparent);
     color: var(--wp-portal-now-fg);

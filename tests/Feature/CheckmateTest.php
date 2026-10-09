@@ -324,14 +324,33 @@ it('kleurt het statusblok groen met ingeklokt-icoon na inklokken', function () {
 
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->assertSee('data-clock-state="out"', false)
-        ->assertDontSee('wp-portal-now--clocked', false);
+        ->assertSee('wp-portal-now__divider', false)
+        ->assertDontSee('wp-portal-now--clocked', false)
+        ->assertDontSee(__('time.portal.now.kicker_in'));
 
     app(ClockInAction::class)->handle($worker, $clockPoint);
 
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->assertSee('wp-portal-now--clocked', false)
         ->assertSee('data-clock-state="in"', false)
+        ->assertSee(__('time.portal.now.kicker_in'))
         ->assertDontSee('data-clock-state="out"', false);
+});
+
+it('laat de ingeklokt-flash na twee seconden automatisch verdwijnen', function () {
+    $tenant = checkmateTenant();
+    Tenancy::actAs($tenant->id);
+    $worker = checkmateWorker($tenant);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $team = $worker->team;
+
+    WorkerVerification::markVerified($team, $worker);
+    WorkerDeviceSession::bindRememberedWorker($team, $worker);
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->call('clockIn')
+        ->assertSet('flashMessageKey', 'time.portal.clock.clocked_in_at_tenant')
+        ->assertSee('setTimeout(() => hide = true, 2000)', false);
 });
 
 it('toont geen teamleader-tegel aan een gewone uitvoerder', function () {

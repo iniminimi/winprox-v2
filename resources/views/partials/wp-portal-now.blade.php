@@ -33,7 +33,7 @@
     }
 @endphp
 <div @class(['wp-portal-now', 'wp-portal-now--clocked' => $openShift !== null]) x-data="{ open: false }">
-    <p class="wp-portal-now__kicker">{{ __('time.portal.now.kicker') }}</p>
+    <p class="wp-portal-now__kicker">{{ $openShift === null ? __('time.portal.now.kicker') : __('time.portal.now.kicker_in') }}</p>
     <div class="wp-portal-now__head">
         <button
             type="button"
@@ -66,6 +66,8 @@
             </p>
             @include('partials.wp-portal-sign-out', ['signOutMethod' => 'signOut'])
         </div>
+
+        <div class="wp-portal-now__divider" role="separator"></div>
 
         @if ($openShift === null)
             <p class="wp-portal-now__meta">
@@ -121,15 +123,21 @@
                     {{ __('time.portal.clock.stop_work') }}
                 </button>
             @endif
-            @if ($openShift !== null && ! $onBreak && ! $openElsewhere)
-                <button type="button" class="btn btn--surface btn--sm" wire:click="startBreak">
-                    {{ __('time.portal.clock.start_break') }}
-                </button>
-            @endif
         </div>
 
-        @if ($onBreak)
-            <p class="wp-portal-now__state">{{ __('time.portal.clock.on_break_since', ['time' => $breakSince ?? '—']) }}</p>
+        @if ($openShift !== null && ($onBreak || ! $openElsewhere))
+            <div class="wp-portal-now__divider" role="separator"></div>
+
+            @if (! $onBreak)
+                <div class="wp-portal-now__more-actions">
+                    <button type="button" class="btn btn--surface btn--sm" wire:click="startBreak">
+                        {{ __('time.portal.clock.start_break') }}
+                    </button>
+                </div>
+            @endif
+            @if ($onBreak)
+                <p class="wp-portal-now__state">{{ __('time.portal.clock.on_break_since', ['time' => $breakSince ?? '—']) }}</p>
+            @endif
         @endif
     </div>
 </div>

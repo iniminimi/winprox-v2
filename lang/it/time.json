@@ -495,6 +495,7 @@
     },
     "now": {
       "kicker": "Benvenuto",
+"kicker_in": "Benvenuto, ha timbrato",
       "next_stop": "Prossima sosta: :name",
       "here_done": "Il lavoro qui è finito.",
       "toggle": "Dettagli"

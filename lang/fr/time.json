@@ -495,6 +495,7 @@
     },
     "now": {
       "kicker": "Bienvenue",
+"kicker_in": "Bienvenue, vous avez pointé",
       "next_stop": "Prochain arrêt : :name",
       "here_done": "Le travail ici est terminé.",
       "toggle": "Détails"

@@ -495,6 +495,7 @@
     },
     "now": {
       "kicker": "Bienvenido",
+"kicker_in": "Bienvenido, está fichado",
       "next_stop": "Siguiente parada: :name",
       "here_done": "El trabajo aquí está listo.",
       "toggle": "Detalles"

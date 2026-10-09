@@ -77,7 +77,11 @@
                 && ($flashMessageKey ?? '') === $taskHintKey;
         @endphp
         @if ($flashMessage !== '' && ! $hideDuplicateTaskHint && ! $hideVisitStartedFlash)
-            <div class="wp-flash">{{ $flashMessage }}</div>
+            <div class="wp-flash"
+                @if (($flashMessageKey ?? '') === 'time.portal.clock.clocked_in_at_tenant')
+                    x-data="{ hide: false }" x-init="setTimeout(() => hide = true, 2000)" x-show="! hide"
+                @endif
+            >{{ $flashMessage }}</div>
         @endif
 
         @if ($registerOnly || $showRegisterForm)
