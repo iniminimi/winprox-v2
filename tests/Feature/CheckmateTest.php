@@ -312,6 +312,28 @@ it('toont in checkmate geen geplande-bezoekenlijst maar wel de klant-zoekknop', 
     expect($html)->toMatch('/x-data="[^"]*refreshHere\(\)[^"]*geolocation[^"]*"/s');
 });
 
+it('kleurt het statusblok groen met ingeklokt-icoon na inklokken', function () {
+    $tenant = checkmateTenant();
+    Tenancy::actAs($tenant->id);
+    $worker = checkmateWorker($tenant);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $team = $worker->team;
+
+    WorkerVerification::markVerified($team, $worker);
+    WorkerDeviceSession::bindRememberedWorker($team, $worker);
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->assertSee('data-clock-state="out"', false)
+        ->assertDontSee('wp-portal-now--clocked', false);
+
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->assertSee('wp-portal-now--clocked', false)
+        ->assertSee('data-clock-state="in"', false)
+        ->assertDontSee('data-clock-state="out"', false);
+});
+
 it('toont geen teamleader-tegel aan een gewone uitvoerder', function () {
     $tenant = checkmateTenant();
     Tenancy::actAs($tenant->id);

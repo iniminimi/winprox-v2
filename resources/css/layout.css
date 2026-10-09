@@ -1236,6 +1236,21 @@
     box-shadow: var(--wp-shadow);
 }
 
+.wp-portal-now--clocked {
+    --wp-portal-now-bg: #064e3b;
+    --wp-portal-now-muted: #a3cbb9;
+}
+
+.wp-portal-now__status-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    color: #fbbf24;
+}
+
+.wp-portal-now--clocked .wp-portal-now__status-icon {
+    color: #34d399;
+}
+
 .wp-portal-now__kicker {
     margin: 0;
     font-size: 0.75rem;
