@@ -63,7 +63,7 @@
                             @endforeach
                         </ol>
                         <div class="wp-welcome-cta-row">
-                            <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __('welcome.hero.cta_start') }}</a>
+                            <a href="{{ \App\Support\Marketing\MarketingDomain::authUrl('/register') }}" class="btn btn--primary btn--lg">{{ __('welcome.hero.cta_start') }}</a>
                             <a href="#video" class="btn btn--ghost btn--lg">{{ __('welcome.hero.cta_how') }}</a>
                         </div>
                         <p class="wp-text-body">{{ __('welcome.hero.trial') }}</p>

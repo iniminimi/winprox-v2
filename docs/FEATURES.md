@@ -1450,6 +1450,12 @@ Perplexity-User expliciet toe.
 **IndexNow** (Bing e.a.): key-bestand in site-root +
 `php artisan marketing:indexnow-submit` na deploy/content-wijziging (`config/indexnow.php`).
 App/QR-portals blijven cookie/`?lang=` (geen SEO-prefix).
+**Marktdomeinen:** `winprox.be` (nl + fr) en later `winprox.nl` (nl) naast `winprox.app`.
+Standaard uit (`MARKETING_BE_LIVE` / `MARKETING_NL_LIVE` in `config/marketing.php`).
+Uit: apex én www 302 naar `.app`, geen hreflang. Aan: marketing, juridisch en fiches
+blijven op het domein; hreflang `nl-BE` / `fr-BE`; app-paden 302 naar `.app`.
+`MARKETING_*_PERMANENT=true` maakt die redirects en `www` → apex 301.
+Login, mail en `APP_URL` blijven op `.app`. `.nl` verschijnt pas in hreflang als het live is.
 
 ### 11.1 Structuur (minimaal — eerste gesprek)
 - **Nav:** WinProx-logo, **taal-pillen**, **Prijzen**, **Features-overzicht**, **FAQ**,

@@ -27,6 +27,7 @@ use App\Http\Controllers\PromoQrDownloadController;
 use App\Http\Controllers\PromoRecipientQrDownloadController;
 use App\Http\Controllers\PromoVideoTrackController;
 use App\Http\Controllers\QrController;
+use App\Http\Controllers\RobotsTxtController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\StopSupportViewController;
 use App\Http\Controllers\TenantPurgeConfirmController;
@@ -127,6 +128,7 @@ use App\Livewire\Time\RosterIndex;
 use App\Livewire\Time\ShiftTypesIndex;
 use App\Livewire\Time\ShiftsIndex;
 use App\Support\Platform\SupportTenantContext;
+use App\Support\Marketing\MarketingDomain;
 use App\Support\Marketing\StatelessPublicWeb;
 use App\Support\ResolveAppLocale;
 use Illuminate\Http\Request;
@@ -143,6 +145,7 @@ Route::get('/welcome-1995', function () {
 
 Route::withoutMiddleware(StatelessPublicWeb::sessionCookieMiddleware())->group(function () {
     Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
+    Route::get('/robots.txt', RobotsTxtController::class)->name('robots');
     Route::get('/llms.txt', LlmsTxtController::class)->name('llms.txt');
     Route::get('/llms-full.txt', LlmsFullTxtController::class)->name('llms.full');
 });
@@ -241,7 +244,7 @@ $redirectToLocalized = static function (string $routeName) {
 };
 
 Route::get('/', function () {
-    if (Auth::check()) {
+    if (Auth::check() && ! MarketingDomain::isLiveMarketRequest(request())) {
         $user = Auth::user();
         if ($user->is_superuser && $user->tenant_id === null && ! SupportTenantContext::isActive()) {
             return redirect()->route('platform.tenants');
@@ -252,7 +255,7 @@ Route::get('/', function () {
 
     $locale = ResolveAppLocale::resolve(request());
 
-    return redirect()->route('welcome', ['locale' => $locale]);
+    return redirect()->route('welcome', ['locale' => $locale], 302);
 })->name('home');
 
 Route::get('/promo', $redirectToLocalized('promo'));

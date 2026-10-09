@@ -8,6 +8,7 @@ use App\Actions\Marketing\RecordPromoVisitAction;
 use App\Actions\Marketing\RecordWelcomeVisitAction;
 use App\Enums\PromoVisitPage;
 use App\Models\PromoRecipient;
+use App\Support\Marketing\MarketingDomain;
 use App\Support\Marketing\PromoRecipientSession;
 use App\Support\Marketing\PromoRecipientToken;
 use App\Support\Marketing\PromoVisitScannerDetector;
@@ -25,7 +26,7 @@ class WelcomeController extends Controller
         RecordWelcomeVisitAction $recordVisit,
         RecordPromoVisitAction $recordPromoVisit,
     ): View|RedirectResponse {
-        if (Auth::check()) {
+        if (Auth::check() && ! MarketingDomain::isLiveMarketRequest($request)) {
             $user = Auth::user();
             if ($user !== null && $user->is_superuser && $user->tenant_id === null && ! SupportTenantContext::isActive()) {
                 return redirect()->route('platform.tenants');

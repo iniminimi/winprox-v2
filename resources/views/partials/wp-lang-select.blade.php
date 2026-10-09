@@ -10,6 +10,12 @@
     $driver = $driver ?? 'route';
     $livewireMethod = $livewireMethod ?? 'switchLocale';
     $labels = config('locales.labels', []);
+    if ($driver === 'route') {
+        $labels = array_intersect_key(
+            $labels,
+            array_flip(\App\Support\Marketing\MarketingDomain::localesFor(request())),
+        );
+    }
     $current = ($driver === 'livewire' && isset($locale) && is_string($locale) && isset($labels[$locale]))
         ? $locale
         : app()->getLocale();

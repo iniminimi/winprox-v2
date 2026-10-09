@@ -52,7 +52,7 @@
 @endif
 <meta property="og:url" content="{{ $socialUrl }}">
 <meta property="og:type" content="{{ $type }}">
-<meta property="og:locale" content="{{ str_replace('_', '-', app()->getLocale()) }}">
+<meta property="og:locale" content="{{ \App\Support\Marketing\MarketingDomain::openGraphLocale() }}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ $socialTitle }}">
 <meta name="twitter:description" content="{{ $socialDescription }}">

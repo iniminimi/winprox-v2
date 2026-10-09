@@ -109,18 +109,47 @@ final class MarketingSeo
         $parameters = $parameters !== [] ? $parameters : self::routeParametersWithoutLocale();
         $supported = config('locales.supported', []);
         $default = (string) config('locales.default', 'nl');
+        $appOrigin = MarketingDomain::hreflangAppOrigin();
         $links = [];
 
         foreach ($supported as $locale) {
             $links[] = [
                 'hreflang' => $locale,
-                'href' => route($routeName, array_merge($parameters, ['locale' => $locale]), absolute: true),
+                'href' => MarketingDomain::absoluteRoute(
+                    $appOrigin,
+                    $routeName,
+                    array_merge($parameters, ['locale' => $locale]),
+                ),
             ];
+        }
+
+        foreach (MarketingDomain::liveMarkets() as $market) {
+            foreach ($market['locales'] as $locale) {
+                $region = $market['regions'][$locale] ?? null;
+                if (! is_string($region) || $region === '') {
+                    continue;
+                }
+                if (! in_array($locale, $supported, true)) {
+                    continue;
+                }
+                $links[] = [
+                    'hreflang' => $locale.'-'.$region,
+                    'href' => MarketingDomain::absoluteRoute(
+                        'https://'.$market['host'],
+                        $routeName,
+                        array_merge($parameters, ['locale' => $locale]),
+                    ),
+                ];
+            }
         }
 
         $links[] = [
             'hreflang' => 'x-default',
-            'href' => route($routeName, array_merge($parameters, ['locale' => $default]), absolute: true),
+            'href' => MarketingDomain::absoluteRoute(
+                $appOrigin,
+                $routeName,
+                array_merge($parameters, ['locale' => $default]),
+            ),
         ];
 
         return $links;
@@ -150,7 +179,7 @@ final class MarketingSeo
             return null;
         }
 
-        $supported = config('locales.supported', []);
+        $supported = MarketingDomain::localesFor(request());
         if (! in_array($targetLocale, $supported, true)) {
             return null;
         }

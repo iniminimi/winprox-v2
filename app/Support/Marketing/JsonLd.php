@@ -16,7 +16,7 @@ final class JsonLd
      */
     public static function organization(): array
     {
-        return [
+        return self::withMarketLanguage([
             '@context' => 'https://schema.org',
             '@type' => 'Organization',
             'name' => 'WinProx',
@@ -24,7 +24,7 @@ final class JsonLd
             'logo' => asset('images/Winprox_logo_100.png'),
             'description' => __('welcome.social.og_description', [], 'en'),
             'sameAs' => [],
-        ];
+        ]);
     }
 
     /**
@@ -34,7 +34,7 @@ final class JsonLd
     {
         // Locale-aware: de pagina-taal bepaalt URL en beschrijving, zodat de
         // markup op /nl/ ook Nederlands spreekt.
-        return [
+        return self::withMarketLanguage([
             '@context' => 'https://schema.org',
             '@type' => 'SoftwareApplication',
             'name' => 'WinProx',
@@ -65,7 +65,7 @@ final class JsonLd
                 'name' => 'WinProx',
                 'url' => url('/'),
             ],
-        ];
+        ]);
     }
 
     /**
@@ -92,11 +92,11 @@ final class JsonLd
             ];
         }
 
-        return [
+        return self::withMarketLanguage([
             '@context' => 'https://schema.org',
             '@type' => 'FAQPage',
             'mainEntity' => $entities,
-        ];
+        ]);
     }
 
     /**
@@ -108,7 +108,7 @@ final class JsonLd
      */
     public static function videoObject(array $video): array
     {
-        return [
+        return self::withMarketLanguage([
             '@context' => 'https://schema.org',
             '@type' => 'VideoObject',
             'name' => $video['title'],
@@ -116,7 +116,21 @@ final class JsonLd
             'thumbnailUrl' => $video['thumbnail_loc'],
             'contentUrl' => $video['content_loc'],
             'uploadDate' => $video['upload_date'],
-        ];
+        ]);
+    }
+
+    /**
+     * @param  array<string, mixed>  $graph
+     * @return array<string, mixed>
+     */
+    private static function withMarketLanguage(array $graph): array
+    {
+        $language = MarketingDomain::inLanguage();
+        if ($language !== null) {
+            $graph['inLanguage'] = $language;
+        }
+
+        return $graph;
     }
 
     /**

@@ -5,6 +5,7 @@ use App\Support\ResolveAppLocale;
 use App\Http\Middleware\AuthenticateClockDisplay;
 use App\Http\Middleware\AuthenticateIotGateway;
 use App\Http\Middleware\CheckApiAccess;
+use App\Http\Middleware\ConfineMarketHost;
 use App\Http\Middleware\EnsureCheckmateRouteAllowed;
 use App\Http\Middleware\EnsureRequestIdempotency;
 use App\Http\Middleware\EnsureSuperuser;
@@ -32,6 +33,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->prepend(ConfineMarketHost::class);
+
         $middleware->validateCsrfTokens(except: [
             'stripe/webhook',
             'unit-portal/tasks/sync-status',

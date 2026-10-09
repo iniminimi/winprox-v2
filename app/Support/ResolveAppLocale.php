@@ -2,10 +2,12 @@
 
 namespace App\Support;
 
+use App\Support\Marketing\MarketingDomain;
 use Illuminate\Http\Request;
 
 /**
- * Bepaalt de app-locale (sessie → gebruiker → cookie → config/locales.default).
+ * Bepaalt de app-locale (host → sessie → gebruiker → cookie → browsertaal).
+ * Een live marktdomein beperkt de talen vóór de rest van de keten.
  * Gedeeld door SetLocale-middleware, exception handler en publieke portalen.
  */
 final class ResolveAppLocale
@@ -24,8 +26,8 @@ final class ResolveAppLocale
 
     public static function resolve(Request $request): string
     {
-        $supported = config('locales.supported', []);
-        $default = config('locales.default', config('app.locale'));
+        $supported = MarketingDomain::localesFor($request);
+        $default = MarketingDomain::defaultLocaleFor($request);
 
         $sessionLocale = $request->hasSession() ? $request->session()->get('locale') : null;
         $userLocale = $request->user()?->locale;

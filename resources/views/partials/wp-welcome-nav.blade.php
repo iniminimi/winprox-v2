@@ -1,3 +1,7 @@
+@php
+    $wpAuthLogin = \App\Support\Marketing\MarketingDomain::authUrl('/login');
+    $wpAuthRegister = \App\Support\Marketing\MarketingDomain::authUrl('/register');
+@endphp
 <nav class="wp-welcome-nav" aria-label="{{ __('welcome.meta_title') }}">
     <div class="wp-welcome-nav-inner">
         @include('partials.wp-welcome-brand')
@@ -35,16 +39,16 @@
                 </div>
 
                 <div class="wp-welcome-nav-menu__auth wp-cluster">
-                    <a href="{{ route('login') }}" class="btn btn--ghost btn--sm">{{ __('welcome.login') }}</a>
-                    <a href="{{ route('register') }}" class="btn btn--primary btn--sm">{{ __('welcome.hero.cta_start') }}</a>
+                    <a href="{{ $wpAuthLogin }}" class="btn btn--ghost btn--sm">{{ __('welcome.login') }}</a>
+                    <a href="{{ $wpAuthRegister }}" class="btn btn--primary btn--sm">{{ __('welcome.hero.cta_start') }}</a>
                 </div>
             </div>
         </details>
 
         <div class="wp-welcome-nav-actions">
             @include('partials.wp-lang-switch', ['variant' => 'inline'])
-            <a href="{{ route('login') }}" class="btn btn--ghost btn--sm wp-welcome-nav-actions__auth">{{ __('welcome.login') }}</a>
-            <a href="{{ route('register') }}" class="btn btn--primary btn--sm wp-welcome-nav-actions__auth">{{ __('welcome.hero.cta_start') }}</a>
+            <a href="{{ $wpAuthLogin }}" class="btn btn--ghost btn--sm wp-welcome-nav-actions__auth">{{ __('welcome.login') }}</a>
+            <a href="{{ $wpAuthRegister }}" class="btn btn--primary btn--sm wp-welcome-nav-actions__auth">{{ __('welcome.hero.cta_start') }}</a>
         </div>
     </div>
 </nav>

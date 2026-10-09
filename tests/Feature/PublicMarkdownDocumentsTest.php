@@ -54,6 +54,7 @@ it('zet geen sessiecookies op crawler-documenten', function (string $path) {
     expect($response->headers->getCookies())->toBeEmpty()
         ->and($response->headers->get('Cache-Control'))->toContain('public');
 })->with([
+    'robots' => '/robots.txt',
     'llms' => '/llms.txt',
     'llms-full' => '/llms-full.txt',
     'technical-md' => '/en/docs/technical.md',
@@ -63,10 +64,12 @@ it('zet geen sessiecookies op crawler-documenten', function (string $path) {
 ]);
 
 it('laat Perplexity-crawlers toe in robots.txt', function () {
-    $robots = (string) file_get_contents(public_path('robots.txt'));
+    expect(is_file(public_path('robots.txt')))->toBeFalse();
 
-    expect($robots)
-        ->toContain('User-agent: PerplexityBot')
-        ->toContain('User-agent: Perplexity-User')
-        ->toContain('Allow: /');
+    $this->get('/robots.txt')
+        ->assertOk()
+        ->assertHeader('Content-Type', 'text/plain; charset=UTF-8')
+        ->assertSee('User-agent: PerplexityBot', false)
+        ->assertSee('User-agent: Perplexity-User', false)
+        ->assertSee('Allow: /', false);
 });

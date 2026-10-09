@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Support\Marketing\MarketingDomain;
 use App\Support\Marketing\MarketingSeo;
 use App\Support\Marketing\SitemapVideo;
 use Illuminate\Http\Response;
@@ -12,7 +13,7 @@ class SitemapController extends Controller
 {
     public function __invoke(): Response
     {
-        $supported = config('locales.supported', []);
+        $supported = MarketingDomain::localesFor(request());
         // lastmod = curated content-datum (rules §10a verplicht deze bij te houden
         // bij content-wijzigingen); now() zou Google leren lastmod te negeren.
         $lastmod = (string) config('product_docs.documents_last_updated', '2026-01-01');
