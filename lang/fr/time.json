@@ -384,7 +384,7 @@
       "in": "Pointer l'entrée",
       "out": "Pointer la sortie",
       "start_break": "Commencer la pause",
-      "break_hint": "La pause est déduite de votre temps de travail. Sans enregistrement, :min min sont déduites dès 4 h de service.",
+      "break_hint": "N'oubliez pas votre pause — sur les longues journées, :min min de pause sont enregistrées automatiquement.",
       "end_break": "Arrêter la pause",
       "open_elsewhere_hint": "Vous êtes déjà pointé sur un autre site. Déplacez votre présence ici, ou pointez la sortie.",
       "transfer_here": "Déplacer ici",

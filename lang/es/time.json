@@ -384,7 +384,7 @@
       "in": "Fichar entrada",
       "out": "Fichar salida",
       "start_break": "Iniciar pausa",
-      "break_hint": "El descanso se descuenta del tiempo trabajado. Sin registro, descontamos :min min automáticamente en jornadas de 4 h o más.",
+      "break_hint": "No olvide su pausa — en jornadas largas registramos :min min de pausa automáticamente.",
       "end_break": "Terminar pausa",
       "open_elsewhere_hint": "Ya has fichado en otra sede. Traslada tu presencia aquí o ficha la salida.",
       "transfer_here": "Trasladar aquí",

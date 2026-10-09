@@ -384,7 +384,7 @@
       "in": "Clock in",
       "out": "Clock out",
       "start_break": "Start break",
-      "break_hint": "Break time is deducted from your working time. Register none and we automatically deduct :min min on shifts of 4 h or more.",
+      "break_hint": "Don't forget your break — on long shifts we automatically record :min min of break.",
       "end_break": "Stop break",
       "open_elsewhere_hint": "You are already clocked in at another location. Move your presence here, or clock out.",
       "transfer_here": "Move here",
