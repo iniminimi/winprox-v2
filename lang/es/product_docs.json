@@ -168,6 +168,7 @@
         ]
       },
       {
+        "key": "checkmate",
         "title": "Checkmate",
         "badge": "RSZ/CIAO",
         "body": "Checkmate es la fórmula de campo para equipos que trabajan en clientes.",
@@ -448,6 +449,7 @@
         ]
       },
       {
+        "key": "checkmate",
         "title": "Checkmate",
         "items": [
           "Checkmate no es una app aparte: la misma plataforma con una whitelist por plan para rutas admin y tarjetas del portal.",

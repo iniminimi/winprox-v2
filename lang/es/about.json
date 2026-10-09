@@ -1,82 +1,83 @@
 {
-    "meta_title": "Acerca de WinProx | Reloj de fichar digital",
-    "social": {
-        "og_title": "Acerca de WinProx | Reloj de fichar digital",
-        "og_description": "El personal ficha con el teléfono, sin app. Usted compara las horas con el horario y las pasa a su secretaría social."
-    },
-    "eyebrow": "Acerca de WinProx",
-    "title": "¿Qué es WinProx?",
-    "lead": "WinProx es un reloj de fichar digital para el registro horario. El personal ficha con el teléfono, sin app. Usted compara las horas con el horario y las pasa a su secretaría social. Si su equipo trabaja en clientes, puede activar la presencia para la ONSS.",
-    "what": {
-        "title": "Idea central",
-        "body": "La persona escanea un QR en la pantalla, en una pegatina o mediante un enlace, y ficha la entrada y la salida. Usted ve las horas junto al horario. La secretaría social hace el salario. Active CIAO si el equipo trabaja en clientes. Un equipo en su propio sitio lo deja apagado."
-    },
-    "audience": {
-        "title": "Para quién",
-        "items": [
-            "Empresas que quieren registrar horas sin app",
-            "Equipos en su propio sitio",
-            "Equipos que trabajan en clientes y necesitan la presencia para la ONSS"
-        ]
-    },
-    "sectors": {
-        "title": "Dónde trabaja el equipo",
-        "items": [
-            "En su propio sitio",
-            "En el cliente"
-        ]
-    },
-    "modules": {
-        "title": "Módulos",
-        "items": [
-            {
-                "name": "Facility",
-                "text": "Incidencias, moderación en portales públicos, tareas por equipo, calendario y briefing."
-            },
-            {
-                "name": "Checkmate",
-                "text": "Plan derivado para trabajo en campo (limpieza y construcción): los operarios fichan con el QR de Clock Point, inician y terminan las visitas a clientes en la dirección de trabajo con verificación GPS en un radio de 100 m, toman pausas y consultan Mis horas — sin partes, tareas ni turnos. Gestión desde un back office reducido (clientes, operarios, horas); activación CIAO por autoservicio. 5 € por trabajador al mes."
-            },
-            {
-                "name": "Time",
-                "text": "Fichaje de entrada/salida y pausas por QR Clock Point, visitas GPS en el pin de sede o unidad, presencia, parte de horas, Mis horas y pausa mínima opcional por equipo. CIAO opcional (Check In and Out ONSS) para limpieza; el alcance de construcción está listo detrás de un feature-flag hasta que las specs de la ONSS estén en vivo."
-            },
-            {
-                "name": "ESG",
-                "text": "Mediciones e indicadores opcionales, ligados a unidades y tareas de seguimiento."
-            },
-            {
-                "name": "IoT Connect",
-                "text": "Pasarelas de sensores opcionales: las alarmas se convierten en incidencias y tareas; en Corporate también mediciones ESG."
-            },
-            {
-                "name": "API y webhooks",
-                "text": "API REST (Sanctum) y webhooks salientes en Corporate — para integraciones."
-            }
-        ]
-    },
-    "tech": {
-        "title": "Tecnología",
-        "body": "Aplicación web (Laravel + Livewire). Los portales QR públicos funcionan en el móvil sin instalación. Multilingüe (NL, EN, FR, DE, ES, IT) con traducción IA opcional de los textos de incidencia."
-    },
-    "compliance": {
-        "title": "Privacidad y cumplimiento",
-        "items": [
-            "Diseño orientado al RGPD con documentos públicos de privacidad y DPA",
-            "Fotos y texto en páginas QR públicas permanecen difuminados hasta la aprobación",
-            "Aislamiento por tenant: datos por organización, sin sector de producto en el tenant",
-            "Envío CIAO opcional (NISS, presencia) a la ONSS belga — solo si lo activa"
-        ]
-    },
-    "languages": {
-        "title": "Idiomas",
-        "body": "Interfaz y marketing en neerlandés, inglés, francés, alemán, español e italiano."
-    },
-    "related_title": "Seguir leyendo",
-    "links": {
-        "time": "Time",
-        "api": "API y Webhooks",
-        "pricing": "Precios",
-        "checkmate": "Checkmate"
-    }
+  "meta_title": "Acerca de WinProx | Reloj de fichar digital",
+  "social": {
+    "og_title": "Acerca de WinProx | Reloj de fichar digital",
+    "og_description": "El personal ficha con el teléfono, sin app. Usted compara las horas con el horario y las pasa a su secretaría social."
+  },
+  "eyebrow": "Acerca de WinProx",
+  "title": "¿Qué es WinProx?",
+  "lead": "WinProx es un reloj de fichar digital para el registro horario. El personal ficha con el teléfono, sin app. Usted compara las horas con el horario y las pasa a su secretaría social. Si su equipo trabaja en clientes, puede activar la presencia para la ONSS.",
+  "what": {
+    "title": "Idea central",
+    "body": "La persona escanea un QR en la pantalla, en una pegatina o mediante un enlace, y ficha la entrada y la salida. Usted ve las horas junto al horario. La secretaría social hace el salario. Active CIAO si el equipo trabaja en clientes. Un equipo en su propio sitio lo deja apagado."
+  },
+  "audience": {
+    "title": "Para quién",
+    "items": [
+      "Empresas que quieren registrar horas sin app",
+      "Equipos en su propio sitio",
+      "Equipos que trabajan en clientes y necesitan la presencia para la ONSS"
+    ]
+  },
+  "sectors": {
+    "title": "Dónde trabaja el equipo",
+    "items": [
+      "En su propio sitio",
+      "En el cliente"
+    ]
+  },
+  "modules": {
+    "title": "Módulos",
+    "items": [
+      {
+        "name": "Facility",
+        "text": "Incidencias, moderación en portales públicos, tareas por equipo, calendario y briefing."
+      },
+      {
+        "key": "checkmate",
+        "name": "Checkmate",
+        "text": "Plan derivado para trabajo en campo (limpieza y construcción): los operarios fichan con el QR de Clock Point, inician y terminan las visitas a clientes en la dirección de trabajo con verificación GPS en un radio de 100 m, toman pausas y consultan Mis horas — sin partes, tareas ni turnos. Gestión desde un back office reducido (clientes, operarios, horas); activación CIAO por autoservicio. 5 € por trabajador al mes."
+      },
+      {
+        "name": "Time",
+        "text": "Fichaje de entrada/salida y pausas por QR Clock Point, visitas GPS en el pin de sede o unidad, presencia, parte de horas, Mis horas y pausa mínima opcional por equipo. CIAO opcional (Check In and Out ONSS) para limpieza; el alcance de construcción está listo detrás de un feature-flag hasta que las specs de la ONSS estén en vivo."
+      },
+      {
+        "name": "ESG",
+        "text": "Mediciones e indicadores opcionales, ligados a unidades y tareas de seguimiento."
+      },
+      {
+        "name": "IoT Connect",
+        "text": "Pasarelas de sensores opcionales: las alarmas se convierten en incidencias y tareas; en Corporate también mediciones ESG."
+      },
+      {
+        "name": "API y webhooks",
+        "text": "API REST (Sanctum) y webhooks salientes en Corporate — para integraciones."
+      }
+    ]
+  },
+  "tech": {
+    "title": "Tecnología",
+    "body": "Aplicación web (Laravel + Livewire). Los portales QR públicos funcionan en el móvil sin instalación. Multilingüe (NL, EN, FR, DE, ES, IT) con traducción IA opcional de los textos de incidencia."
+  },
+  "compliance": {
+    "title": "Privacidad y cumplimiento",
+    "items": [
+      "Diseño orientado al RGPD con documentos públicos de privacidad y DPA",
+      "Fotos y texto en páginas QR públicas permanecen difuminados hasta la aprobación",
+      "Aislamiento por tenant: datos por organización, sin sector de producto en el tenant",
+      "Envío CIAO opcional (NISS, presencia) a la ONSS belga — solo si lo activa"
+    ]
+  },
+  "languages": {
+    "title": "Idiomas",
+    "body": "Interfaz y marketing en neerlandés, inglés, francés, alemán, español e italiano."
+  },
+  "related_title": "Seguir leyendo",
+  "links": {
+    "time": "Time",
+    "api": "API y Webhooks",
+    "pricing": "Precios",
+    "checkmate": "Checkmate"
+  }
 }

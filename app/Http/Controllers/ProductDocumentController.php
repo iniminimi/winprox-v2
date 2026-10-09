@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Actions\Marketing\BuildProductDocumentMarkdownAction;
+use App\Support\Marketing\MarketingDomain;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -29,6 +30,8 @@ class ProductDocumentController extends Controller
         $content = __('product_docs.'.$contentKey);
 
         abort_unless(is_array($content) && isset($content['label']), 404);
+
+        $content = MarketingDomain::filterDocSections($content, $request);
 
         return response()
             ->view('layouts.components.product-doc', [

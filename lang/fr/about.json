@@ -1,82 +1,83 @@
 {
-    "meta_title": "À propos de WinProx | Pointeuse digitale",
-    "social": {
-        "og_title": "À propos de WinProx | Pointeuse digitale",
-        "og_description": "Les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social."
-    },
-    "eyebrow": "À propos de WinProx",
-    "title": "Qu'est-ce que WinProx ?",
-    "lead": "WinProx est une pointeuse digitale pour le suivi du temps. Les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social. Si votre équipe travaille chez des clients, vous pouvez activer la présence pour l'ONSS.",
-    "what": {
-        "title": "Idée centrale",
-        "body": "L'employé scanne un QR sur l'écran, sur un autocollant ou via un lien, et pointe l'entrée et la sortie. Vous voyez les heures à côté de l'horaire. Le secrétariat social établit le salaire. Activez CIAO si l'équipe travaille chez des clients. Une équipe sur son propre site le laisse éteint."
-    },
-    "audience": {
-        "title": "Pour qui",
-        "items": [
-            "Entreprises qui veulent enregistrer les heures sans appli",
-            "Équipes sur leur propre site",
-            "Équipes qui travaillent chez des clients et ont besoin de la présence pour l'ONSS"
-        ]
-    },
-    "sectors": {
-        "title": "Où l'équipe travaille",
-        "items": [
-            "Sur son propre site",
-            "Chez le client"
-        ]
-    },
-    "modules": {
-        "title": "Modules",
-        "items": [
-            {
-                "name": "Facility",
-                "text": "Signalements, modération sur portails publics, tâches par équipe, calendrier et briefing."
-            },
-            {
-                "name": "Checkmate",
-                "text": "Plan dérivé pour le travail sur site (nettoyage & construction) : les ouvriers pointent via le QR Clock Point, démarrent et terminent les visites clients à l’adresse de travail avec vérification GPS dans un rayon de 100 m, prennent des pauses et consultent Mes heures — pas de tickets, tâches ou plannings. Gestion via un back-office réduit (clients, ouvriers, heures) ; activation CIAO en self-service. 5 € par employé par mois."
-            },
-            {
-                "name": "Time",
-                "text": "Pointage entrée/sortie et pauses via QR Clock Point, visites GPS sur pin de site ou d'unité, présence, feuille d’heures, Mes heures et pause minimale optionnelle par équipe. CIAO optionnel (Check In and Out ONSS) pour le nettoyage ; le périmètre construction est prêt derrière un feature-flag jusqu’aux specs ONSS."
-            },
-            {
-                "name": "ESG",
-                "text": "Mesures et indicateurs optionnels liés aux unités et tâches de suivi."
-            },
-            {
-                "name": "IoT Connect",
-                "text": "Passerelles capteurs optionnelles : les alarmes deviennent signalements et tâches ; sur Corporate aussi des mesures ESG."
-            },
-            {
-                "name": "API & webhooks",
-                "text": "API REST (Sanctum) et webhooks sortants sur Corporate — pour les intégrations."
-            }
-        ]
-    },
-    "tech": {
-        "title": "Technologie",
-        "body": "Application web (Laravel + Livewire). Les portails QR publics fonctionnent sur smartphone sans installation. Multilingue (NL, EN, FR, DE, ES, IT) avec traductions IA optionnelles des textes de signalement."
-    },
-    "compliance": {
-        "title": "Confidentialité & conformité",
-        "items": [
-            "Conception orientée RGPD avec documents privacy et DPA publics",
-            "Photos et textes des pages QR publiques restent floutés jusqu'à approbation",
-            "Isolation multi-tenant : données par organisation, pas de secteur produit sur le tenant",
-            "Transmission CIAO optionnelle (NISS, présence) vers l'ONSS belge — seulement si vous l'activez"
-        ]
-    },
-    "languages": {
-        "title": "Langues",
-        "body": "Interface et marketing en néerlandais, anglais, français, allemand, espagnol et italien."
-    },
-    "related_title": "Pages associées",
-    "links": {
-        "time": "Time",
-        "api": "API & Webhooks",
-        "pricing": "Tarifs",
-        "checkmate": "Checkmate"
-    }
+  "meta_title": "À propos de WinProx | Pointeuse digitale",
+  "social": {
+    "og_title": "À propos de WinProx | Pointeuse digitale",
+    "og_description": "Les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social."
+  },
+  "eyebrow": "À propos de WinProx",
+  "title": "Qu'est-ce que WinProx ?",
+  "lead": "WinProx est une pointeuse digitale pour le suivi du temps. Les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social. Si votre équipe travaille chez des clients, vous pouvez activer la présence pour l'ONSS.",
+  "what": {
+    "title": "Idée centrale",
+    "body": "L'employé scanne un QR sur l'écran, sur un autocollant ou via un lien, et pointe l'entrée et la sortie. Vous voyez les heures à côté de l'horaire. Le secrétariat social établit le salaire. Activez CIAO si l'équipe travaille chez des clients. Une équipe sur son propre site le laisse éteint."
+  },
+  "audience": {
+    "title": "Pour qui",
+    "items": [
+      "Entreprises qui veulent enregistrer les heures sans appli",
+      "Équipes sur leur propre site",
+      "Équipes qui travaillent chez des clients et ont besoin de la présence pour l'ONSS"
+    ]
+  },
+  "sectors": {
+    "title": "Où l'équipe travaille",
+    "items": [
+      "Sur son propre site",
+      "Chez le client"
+    ]
+  },
+  "modules": {
+    "title": "Modules",
+    "items": [
+      {
+        "name": "Facility",
+        "text": "Signalements, modération sur portails publics, tâches par équipe, calendrier et briefing."
+      },
+      {
+        "key": "checkmate",
+        "name": "Checkmate",
+        "text": "Plan dérivé pour le travail sur site (nettoyage & construction) : les ouvriers pointent via le QR Clock Point, démarrent et terminent les visites clients à l’adresse de travail avec vérification GPS dans un rayon de 100 m, prennent des pauses et consultent Mes heures — pas de tickets, tâches ou plannings. Gestion via un back-office réduit (clients, ouvriers, heures) ; activation CIAO en self-service. 5 € par employé par mois."
+      },
+      {
+        "name": "Time",
+        "text": "Pointage entrée/sortie et pauses via QR Clock Point, visites GPS sur pin de site ou d'unité, présence, feuille d’heures, Mes heures et pause minimale optionnelle par équipe. CIAO optionnel (Check In and Out ONSS) pour le nettoyage ; le périmètre construction est prêt derrière un feature-flag jusqu’aux specs ONSS."
+      },
+      {
+        "name": "ESG",
+        "text": "Mesures et indicateurs optionnels liés aux unités et tâches de suivi."
+      },
+      {
+        "name": "IoT Connect",
+        "text": "Passerelles capteurs optionnelles : les alarmes deviennent signalements et tâches ; sur Corporate aussi des mesures ESG."
+      },
+      {
+        "name": "API & webhooks",
+        "text": "API REST (Sanctum) et webhooks sortants sur Corporate — pour les intégrations."
+      }
+    ]
+  },
+  "tech": {
+    "title": "Technologie",
+    "body": "Application web (Laravel + Livewire). Les portails QR publics fonctionnent sur smartphone sans installation. Multilingue (NL, EN, FR, DE, ES, IT) avec traductions IA optionnelles des textes de signalement."
+  },
+  "compliance": {
+    "title": "Confidentialité & conformité",
+    "items": [
+      "Conception orientée RGPD avec documents privacy et DPA publics",
+      "Photos et textes des pages QR publiques restent floutés jusqu'à approbation",
+      "Isolation multi-tenant : données par organisation, pas de secteur produit sur le tenant",
+      "Transmission CIAO optionnelle (NISS, présence) vers l'ONSS belge — seulement si vous l'activez"
+    ]
+  },
+  "languages": {
+    "title": "Langues",
+    "body": "Interface et marketing en néerlandais, anglais, français, allemand, espagnol et italien."
+  },
+  "related_title": "Pages associées",
+  "links": {
+    "time": "Time",
+    "api": "API & Webhooks",
+    "pricing": "Tarifs",
+    "checkmate": "Checkmate"
+  }
 }

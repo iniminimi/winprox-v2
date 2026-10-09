@@ -1,82 +1,83 @@
 {
-    "meta_title": "Over WinProx | Digitale prikklok",
-    "social": {
-        "og_title": "Over WinProx | Digitale prikklok",
-        "og_description": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat."
-    },
-    "eyebrow": "Over WinProx",
-    "title": "Wat is WinProx?",
-    "lead": "WinProx is een digitale prikklok voor urenregistratie. Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat. Werkt de ploeg bij klanten, dan kunt u de aanwezigheid voor de RSZ aanzetten.",
-    "what": {
-        "title": "Kernidee",
-        "body": "De medewerker scant een QR op het scherm, op een sticker of via een link, en prikt in en uit. U ziet de uren naast het rooster. Het sociaal secretariaat maakt het loon. CIAO zet u aan als de ploeg bij klanten werkt. Een ploeg op de eigen site laat het uit."
-    },
-    "audience": {
-        "title": "Voor wie",
-        "items": [
-            "Bedrijven die uren willen registreren zonder app",
-            "Ploegen op de eigen vestiging",
-            "Ploegen die bij klanten werken en aanwezigheid voor de RSZ nodig hebben"
-        ]
-    },
-    "sectors": {
-        "title": "Waar de ploeg werkt",
-        "items": [
-            "Op de eigen vestiging",
-            "Bij de klant"
-        ]
-    },
-    "modules": {
-        "title": "Modules",
-        "items": [
-            {
-                "name": "Facility",
-                "text": "Meldingen, goedkeuring/moderatie op publieke portalen, taken per team, kalender en briefing."
-            },
-            {
-                "name": "Checkmate",
-                "text": "Afgeleid abonnement voor veldwerk (schoonmaak & bouw): uitvoerders prikken in en uit via de Clock Point-QR, starten en stoppen klantbezoeken op het werkadres met GPS-verificatie binnen 100 m, nemen pauzes en bekijken Mijn uren — geen meldingen, taken of roosters. Beheer via een ingekorte backoffice (klanten, uitvoerders, uren); CIAO-aanvraag via selfservice. €5 per uitvoerder per maand."
-            },
-            {
-                "name": "Time",
-                "text": "In-/uitklokken en pauzes via Clock Point-QR, GPS-werkbezoeken op locatie- of unit-pin, aanwezigheid, urenstaat, Mijn uren en optionele minimumpauze per team. Optioneel CIAO (RSZ Check In and Out) voor schoonmaak; bouw-scope zit klaar achter feature-flag tot de RSZ-specs live zijn."
-            },
-            {
-                "name": "ESG",
-                "text": "Optionele metingen en indicatoren, gekoppeld aan units en opvolgtaken."
-            },
-            {
-                "name": "IoT Connect",
-                "text": "Optionele sensorgateways: alarmen worden meldingen en taken; op Corporate ook ESG-metingen."
-            },
-            {
-                "name": "API & webhooks",
-                "text": "REST API (Sanctum) en uitgaande webhooks op Corporate — voor integraties."
-            }
-        ]
-    },
-    "tech": {
-        "title": "Technologie",
-        "body": "Webapplicatie (Laravel + Livewire). Publieke QR-portalen werken op smartphone zonder installatie. Meertalig (NL, EN, FR, DE, ES, IT) met optionele AI-vertalingen van meldteksten."
-    },
-    "compliance": {
-        "title": "Privacy & compliance",
-        "items": [
-            "GDPR-gericht ontwerp met publieke privacy- en DPA-documenten",
-            "Foto's en tekst op publieke QR-pagina's blijven geblurd tot goedkeuring",
-            "Tenant-isolatie: data per organisatie, geen productsector op de tenant",
-            "Optionele CIAO-doorgifte (NISS, aanwezigheid) naar de Belgische RSZ — alleen als u dat aanzet"
-        ]
-    },
-    "languages": {
-        "title": "Talen",
-        "body": "Interface en marketing in het Nederlands, Engels, Frans, Duits, Spaans en Italiaans."
-    },
-    "related_title": "Verder lezen",
-    "links": {
-        "time": "Time",
-        "api": "API & Webhooks",
-        "pricing": "Prijzen",
-        "checkmate": "Checkmate"
-    }
+  "meta_title": "Over WinProx | Digitale prikklok",
+  "social": {
+    "og_title": "Over WinProx | Digitale prikklok",
+    "og_description": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat."
+  },
+  "eyebrow": "Over WinProx",
+  "title": "Wat is WinProx?",
+  "lead": "WinProx is een digitale prikklok voor urenregistratie. Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat. Werkt de ploeg bij klanten, dan kunt u de aanwezigheid voor de RSZ aanzetten.",
+  "what": {
+    "title": "Kernidee",
+    "body": "De medewerker scant een QR op het scherm, op een sticker of via een link, en prikt in en uit. U ziet de uren naast het rooster. Het sociaal secretariaat maakt het loon. CIAO zet u aan als de ploeg bij klanten werkt. Een ploeg op de eigen site laat het uit."
+  },
+  "audience": {
+    "title": "Voor wie",
+    "items": [
+      "Bedrijven die uren willen registreren zonder app",
+      "Ploegen op de eigen vestiging",
+      "Ploegen die bij klanten werken en aanwezigheid voor de RSZ nodig hebben"
+    ]
+  },
+  "sectors": {
+    "title": "Waar de ploeg werkt",
+    "items": [
+      "Op de eigen vestiging",
+      "Bij de klant"
+    ]
+  },
+  "modules": {
+    "title": "Modules",
+    "items": [
+      {
+        "name": "Facility",
+        "text": "Meldingen, goedkeuring/moderatie op publieke portalen, taken per team, kalender en briefing."
+      },
+      {
+        "key": "checkmate",
+        "name": "Checkmate",
+        "text": "Afgeleid abonnement voor veldwerk (schoonmaak & bouw): uitvoerders prikken in en uit via de Clock Point-QR, starten en stoppen klantbezoeken op het werkadres met GPS-verificatie binnen 100 m, nemen pauzes en bekijken Mijn uren — geen meldingen, taken of roosters. Beheer via een ingekorte backoffice (klanten, uitvoerders, uren); CIAO-aanvraag via selfservice. €5 per uitvoerder per maand."
+      },
+      {
+        "name": "Time",
+        "text": "In-/uitklokken en pauzes via Clock Point-QR, GPS-werkbezoeken op locatie- of unit-pin, aanwezigheid, urenstaat, Mijn uren en optionele minimumpauze per team. Optioneel CIAO (RSZ Check In and Out) voor schoonmaak; bouw-scope zit klaar achter feature-flag tot de RSZ-specs live zijn."
+      },
+      {
+        "name": "ESG",
+        "text": "Optionele metingen en indicatoren, gekoppeld aan units en opvolgtaken."
+      },
+      {
+        "name": "IoT Connect",
+        "text": "Optionele sensorgateways: alarmen worden meldingen en taken; op Corporate ook ESG-metingen."
+      },
+      {
+        "name": "API & webhooks",
+        "text": "REST API (Sanctum) en uitgaande webhooks op Corporate — voor integraties."
+      }
+    ]
+  },
+  "tech": {
+    "title": "Technologie",
+    "body": "Webapplicatie (Laravel + Livewire). Publieke QR-portalen werken op smartphone zonder installatie. Meertalig (NL, EN, FR, DE, ES, IT) met optionele AI-vertalingen van meldteksten."
+  },
+  "compliance": {
+    "title": "Privacy & compliance",
+    "items": [
+      "GDPR-gericht ontwerp met publieke privacy- en DPA-documenten",
+      "Foto's en tekst op publieke QR-pagina's blijven geblurd tot goedkeuring",
+      "Tenant-isolatie: data per organisatie, geen productsector op de tenant",
+      "Optionele CIAO-doorgifte (NISS, aanwezigheid) naar de Belgische RSZ — alleen als u dat aanzet"
+    ]
+  },
+  "languages": {
+    "title": "Talen",
+    "body": "Interface en marketing in het Nederlands, Engels, Frans, Duits, Spaans en Italiaans."
+  },
+  "related_title": "Verder lezen",
+  "links": {
+    "time": "Time",
+    "api": "API & Webhooks",
+    "pricing": "Prijzen",
+    "checkmate": "Checkmate"
+  }
 }

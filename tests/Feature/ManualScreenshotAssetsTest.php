@@ -19,13 +19,13 @@ it('geeft een public url wanneer het screenshot-bestand bestaat', function () {
         mkdir($dir, 0777, true);
     }
 
-    $file = $dir.'/dashboard.png';
+    $file = $dir.'/test-screenshot-exists.png';
     file_put_contents($file, 'png');
 
-    $url = ManualScreenshotAssets::publicUrl('dashboard', 'nl');
+    $url = ManualScreenshotAssets::publicUrl('test.screenshot.exists', 'nl');
 
     expect($url)->not->toBeNull()
-        ->and($url)->toContain('images/manual/nl/dashboard.png');
+        ->and($url)->toContain('images/manual/nl/test-screenshot-exists.png');
 
     unlink($file);
 });

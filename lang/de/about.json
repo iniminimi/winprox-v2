@@ -1,82 +1,83 @@
 {
-    "meta_title": "Über WinProx | Digitale Stempeluhr",
-    "social": {
-        "og_title": "Über WinProx | Digitale Stempeluhr",
-        "og_description": "Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter."
-    },
-    "eyebrow": "Über WinProx",
-    "title": "Was ist WinProx?",
-    "lead": "WinProx ist eine digitale Stempeluhr für die Zeiterfassung. Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter. Arbeitet Ihre Mannschaft bei Kunden, können Sie die Anwesenheit für das LSS einschalten.",
-    "what": {
-        "title": "Kernidee",
-        "body": "Die Person scannt einen QR auf dem Bildschirm, auf einem Aufkleber oder über einen Link und stempelt ein und aus. Sie sehen die Stunden neben dem Dienstplan. Das Sozialsekretariat macht den Lohn. Schalten Sie CIAO ein, wenn die Mannschaft bei Kunden arbeitet. Eine Mannschaft auf der eigenen Site lässt es aus."
-    },
-    "audience": {
-        "title": "Für wen",
-        "items": [
-            "Unternehmen, die Stunden ohne App erfassen wollen",
-            "Mannschaften auf der eigenen Site",
-            "Mannschaften, die bei Kunden arbeiten und die Anwesenheit für das LSS brauchen"
-        ]
-    },
-    "sectors": {
-        "title": "Wo die Mannschaft arbeitet",
-        "items": [
-            "Auf der eigenen Site",
-            "Beim Kunden"
-        ]
-    },
-    "modules": {
-        "title": "Module",
-        "items": [
-            {
-                "name": "Facility",
-                "text": "Meldungen, Moderation auf öffentlichen Portalen, Aufgaben pro Team, Kalender und Briefing."
-            },
-            {
-                "name": "Checkmate",
-                "text": "Abgeleiteter Plan für Außendienst (Reinigung & Bau): Mitarbeiter stempeln über die Clock-Point-QR ein und aus, starten und beenden Kundenbesuche an der Arbeitsadresse mit GPS-Verifikation innerhalb von 100 m, machen Pausen und sehen Meine Stunden — ohne Meldungen, Aufgaben oder Schichtpläne. Verwaltung über ein reduziertes Backoffice (Kunden, Mitarbeiter, Stunden); CIAO-Aktivierung per Self-Service. 5 € pro Mitarbeiter und Monat."
-            },
-            {
-                "name": "Time",
-                "text": "Ein-/Ausstempeln und Pausen per Clock-Point-QR, GPS-Arbeitsbesuche am Standort- oder Unit-Pin, Anwesenheit, Stundenliste, Meine Stunden und optionale Mindestpause pro Team. Optionales CIAO (RSZ Check In and Out) für Reinigung; der Bau-Scope liegt hinter einem Feature-Flag, bis die LSS-Specs live sind."
-            },
-            {
-                "name": "ESG",
-                "text": "Optionale Messungen und Indikatoren, verknüpft mit Units und Folgetasks."
-            },
-            {
-                "name": "IoT Connect",
-                "text": "Optionale Sensor-Gateways: Alarme werden zu Meldungen und Aufgaben; auf Corporate auch ESG-Messungen."
-            },
-            {
-                "name": "API & Webhooks",
-                "text": "REST-API (Sanctum) und ausgehende Webhooks auf Corporate — für Integrationen."
-            }
-        ]
-    },
-    "tech": {
-        "title": "Technologie",
-        "body": "Webanwendung (Laravel + Livewire). Öffentliche QR-Portale funktionieren am Smartphone ohne Installation. Mehrsprachig (NL, EN, FR, DE, ES, IT) mit optionaler KI-Übersetzung von Meldetexten."
-    },
-    "compliance": {
-        "title": "Datenschutz & Compliance",
-        "items": [
-            "DSGVO-orientiertes Design mit öffentlichen Privacy- und DPA-Dokumenten",
-            "Fotos und Texte auf öffentlichen QR-Seiten bleiben bis zur Freigabe unscharf",
-            "Tenant-Isolation: Daten pro Organisation, kein Produktsektor auf dem Tenant",
-            "Optionale CIAO-Weitergabe (NISS, Anwesenheit) an das belgische LSS — nur wenn Sie es einschalten"
-        ]
-    },
-    "languages": {
-        "title": "Sprachen",
-        "body": "Oberfläche und Marketing auf Niederländisch, Englisch, Französisch, Deutsch, Spanisch und Italienisch."
-    },
-    "related_title": "Weiterführende Seiten",
-    "links": {
-        "time": "Time",
-        "api": "API & Webhooks",
-        "pricing": "Preise",
-        "checkmate": "Checkmate"
-    }
+  "meta_title": "Über WinProx | Digitale Stempeluhr",
+  "social": {
+    "og_title": "Über WinProx | Digitale Stempeluhr",
+    "og_description": "Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter."
+  },
+  "eyebrow": "Über WinProx",
+  "title": "Was ist WinProx?",
+  "lead": "WinProx ist eine digitale Stempeluhr für die Zeiterfassung. Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter. Arbeitet Ihre Mannschaft bei Kunden, können Sie die Anwesenheit für das LSS einschalten.",
+  "what": {
+    "title": "Kernidee",
+    "body": "Die Person scannt einen QR auf dem Bildschirm, auf einem Aufkleber oder über einen Link und stempelt ein und aus. Sie sehen die Stunden neben dem Dienstplan. Das Sozialsekretariat macht den Lohn. Schalten Sie CIAO ein, wenn die Mannschaft bei Kunden arbeitet. Eine Mannschaft auf der eigenen Site lässt es aus."
+  },
+  "audience": {
+    "title": "Für wen",
+    "items": [
+      "Unternehmen, die Stunden ohne App erfassen wollen",
+      "Mannschaften auf der eigenen Site",
+      "Mannschaften, die bei Kunden arbeiten und die Anwesenheit für das LSS brauchen"
+    ]
+  },
+  "sectors": {
+    "title": "Wo die Mannschaft arbeitet",
+    "items": [
+      "Auf der eigenen Site",
+      "Beim Kunden"
+    ]
+  },
+  "modules": {
+    "title": "Module",
+    "items": [
+      {
+        "name": "Facility",
+        "text": "Meldungen, Moderation auf öffentlichen Portalen, Aufgaben pro Team, Kalender und Briefing."
+      },
+      {
+        "key": "checkmate",
+        "name": "Checkmate",
+        "text": "Abgeleiteter Plan für Außendienst (Reinigung & Bau): Mitarbeiter stempeln über die Clock-Point-QR ein und aus, starten und beenden Kundenbesuche an der Arbeitsadresse mit GPS-Verifikation innerhalb von 100 m, machen Pausen und sehen Meine Stunden — ohne Meldungen, Aufgaben oder Schichtpläne. Verwaltung über ein reduziertes Backoffice (Kunden, Mitarbeiter, Stunden); CIAO-Aktivierung per Self-Service. 5 € pro Mitarbeiter und Monat."
+      },
+      {
+        "name": "Time",
+        "text": "Ein-/Ausstempeln und Pausen per Clock-Point-QR, GPS-Arbeitsbesuche am Standort- oder Unit-Pin, Anwesenheit, Stundenliste, Meine Stunden und optionale Mindestpause pro Team. Optionales CIAO (RSZ Check In and Out) für Reinigung; der Bau-Scope liegt hinter einem Feature-Flag, bis die LSS-Specs live sind."
+      },
+      {
+        "name": "ESG",
+        "text": "Optionale Messungen und Indikatoren, verknüpft mit Units und Folgetasks."
+      },
+      {
+        "name": "IoT Connect",
+        "text": "Optionale Sensor-Gateways: Alarme werden zu Meldungen und Aufgaben; auf Corporate auch ESG-Messungen."
+      },
+      {
+        "name": "API & Webhooks",
+        "text": "REST-API (Sanctum) und ausgehende Webhooks auf Corporate — für Integrationen."
+      }
+    ]
+  },
+  "tech": {
+    "title": "Technologie",
+    "body": "Webanwendung (Laravel + Livewire). Öffentliche QR-Portale funktionieren am Smartphone ohne Installation. Mehrsprachig (NL, EN, FR, DE, ES, IT) mit optionaler KI-Übersetzung von Meldetexten."
+  },
+  "compliance": {
+    "title": "Datenschutz & Compliance",
+    "items": [
+      "DSGVO-orientiertes Design mit öffentlichen Privacy- und DPA-Dokumenten",
+      "Fotos und Texte auf öffentlichen QR-Seiten bleiben bis zur Freigabe unscharf",
+      "Tenant-Isolation: Daten pro Organisation, kein Produktsektor auf dem Tenant",
+      "Optionale CIAO-Weitergabe (NISS, Anwesenheit) an das belgische LSS — nur wenn Sie es einschalten"
+    ]
+  },
+  "languages": {
+    "title": "Sprachen",
+    "body": "Oberfläche und Marketing auf Niederländisch, Englisch, Französisch, Deutsch, Spanisch und Italienisch."
+  },
+  "related_title": "Weiterführende Seiten",
+  "links": {
+    "time": "Time",
+    "api": "API & Webhooks",
+    "pricing": "Preise",
+    "checkmate": "Checkmate"
+  }
 }

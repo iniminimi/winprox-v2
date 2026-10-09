@@ -1,6 +1,7 @@
 @php
     $wpAuthLogin = \App\Support\Marketing\MarketingDomain::authUrl('/login');
     $wpAuthRegister = \App\Support\Marketing\MarketingDomain::authUrl('/register');
+    $wpCheckmateHidden = \App\Support\Marketing\MarketingDomain::routeHidden('checkmate');
 @endphp
 <nav class="wp-welcome-nav" aria-label="{{ __('welcome.meta_title') }}">
     <div class="wp-welcome-nav-inner">
@@ -16,7 +17,9 @@
                     <a href="{{ route('pricing') }}" @if (request()->routeIs('pricing')) aria-current="page" @endif>{{ __('welcome.nav.pricing') }}</a>
                     <a href="{{ route('product.features') }}" @if (request()->routeIs('product.features')) aria-current="page" @endif>{{ __('welcome.nav.features_overview') }}</a>
                     <a href="{{ route('prikklok') }}" @if (request()->routeIs('prikklok')) aria-current="page" @endif>{{ __('landings.prikklok.nav_label') }}</a>
+                    @unless ($wpCheckmateHidden)
                     <a href="{{ route('checkmate') }}" @if (request()->routeIs('checkmate')) aria-current="page" @endif>{{ __('landings.checkmate.nav_label') }}</a>
+                    @endunless
                     <a href="{{ route('about') }}" @if (request()->routeIs('about')) aria-current="page" @endif>{{ __('welcome.nav.about') }}</a>
                     <a href="{{ route('product.technical') }}" @if (request()->routeIs('product.technical')) aria-current="page" @endif>{{ __('welcome.nav.technical_sheet') }}</a>
                     <a href="{{ route('product.api_webhooks') }}" @if (request()->routeIs('product.api_webhooks')) aria-current="page" @endif>{{ __('welcome.nav.api_webhooks') }}</a>
@@ -26,7 +29,9 @@
                     <a class="wp-welcome-nav-direct" href="{{ route('pricing') }}" @if (request()->routeIs('pricing')) aria-current="page" @endif>{{ __('welcome.nav.pricing') }}</a>
                     <a class="wp-welcome-nav-direct" href="{{ route('product.features') }}" @if (request()->routeIs('product.features')) aria-current="page" @endif>{{ __('welcome.nav.features_overview') }}</a>
                     <a class="wp-welcome-nav-direct" href="{{ route('prikklok') }}" @if (request()->routeIs('prikklok')) aria-current="page" @endif>{{ __('landings.prikklok.nav_label') }}</a>
+                    @unless ($wpCheckmateHidden)
                     <a class="wp-welcome-nav-direct" href="{{ route('checkmate') }}" @if (request()->routeIs('checkmate')) aria-current="page" @endif>{{ __('landings.checkmate.nav_label') }}</a>
+                    @endunless
 
                     <details class="wp-welcome-nav-group">
                         <summary class="wp-welcome-nav-group__toggle">{{ __('welcome.nav.more') }}</summary>

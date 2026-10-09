@@ -3,6 +3,7 @@
 namespace App\Livewire\Pages;
 
 use App\Support\Marketing\JsonLd;
+use App\Support\Marketing\MarketingDomain;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
@@ -29,12 +30,18 @@ class About extends Component
      */
     private function relatedLinks(): array
     {
-        return [
+        $links = [
             ['label' => __('landings.prikklok.nav_label'), 'url' => route('prikklok')],
-            ['label' => __('about.links.checkmate'), 'url' => route('checkmate')],
-            ['label' => __('about.links.time'), 'url' => route('features.time')],
-            ['label' => __('about.links.api'), 'url' => route('product.api_webhooks')],
-            ['label' => __('about.links.pricing'), 'url' => route('pricing')],
         ];
+
+        if (! MarketingDomain::routeHidden('checkmate')) {
+            $links[] = ['label' => __('about.links.checkmate'), 'url' => route('checkmate')];
+        }
+
+        $links[] = ['label' => __('about.links.time'), 'url' => route('features.time')];
+        $links[] = ['label' => __('about.links.api'), 'url' => route('product.api_webhooks')];
+        $links[] = ['label' => __('about.links.pricing'), 'url' => route('pricing')];
+
+        return $links;
     }
 }

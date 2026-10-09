@@ -1,0 +1,67 @@
+{
+  "work-on-location": {
+    "social": {
+      "og_description": "Inklokken, ter plaatse werken en afhandelen — met QR en GPS-werkbezoeken. Eén facility-app."
+    },
+    "lead": "Schoonmaak- en bouwploegen werken bij de klant, niet op één eigen vestiging. WinProx is dezelfde facility-app: inklokken via Clock Point, zien waar je vandaag naartoe moet, een GPS-werkbezoek starten en taken afhandelen tot ze klaar zijn.",
+    "schedule": {
+      "items": {
+        "3": "Planning en prikklok blijven gescheiden: geregistreerde uren volgen echte IN/OUT."
+      }
+    },
+    "roles": {
+      "items": {
+        "0": {
+          "body": "Inklokken, zien waar je vandaag naartoe moet, een werkbezoek starten en taken afhandelen op je eigen mobiel. Geen app, geen login, geen gedoe."
+        },
+        "2": {
+          "body": "Rooster, aanwezigheid en afhandeling in één facility-app."
+        }
+      }
+    },
+    "sites": {
+      "items": {
+        "0": {
+          "body": "Ploegen op meerdere klantadressen: Clock Point, GPS-werkbezoek, taken en unit checks."
+        },
+        "1": {
+          "body": "Zelfde werkwijze op de bouwplaats: aanwezigheid, taken en meldingen."
+        }
+      }
+    },
+    "why": {
+      "items": {
+        "3": "Uurrooster is planning; geregistreerde uren volgen echte IN/OUT op Clock Point of bezoek.",
+        "4": "GPS-werkbezoeken op klantlocatie zijn beschikbaar in elke formule."
+      }
+    }
+  },
+  "prikklok": {
+    "social": {
+      "og_description": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw salarisadministratie."
+    },
+    "lead": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw salarisadministratie.",
+    "places": {
+      "items": {
+        "7": "De uren geeft u door aan uw salarisadministratie."
+      }
+    },
+    "why": {
+      "items": {
+        "2": "De uren geeft u door aan uw salarisadministratie. Die maakt het loon.",
+        "3": "GPS-werkbezoeken zet u aan als de ploeg bij klanten werkt. Een ploeg op de eigen site laat het uit."
+      }
+    },
+    "faq": {
+      "items": {
+        "2": {
+          "q": "Kan WinProx ook aanwezigheid op klantlocatie registreren?",
+          "a": "Ja. Met GPS-werkbezoeken start en stopt de uitvoerder werk op een klant- of unit-pin; de bezoekduur staat naast de prikklok-uren. Zo heeft u voor elke klantlocatie een correcte urenregistratie."
+        },
+        "3": {
+          "a": "WinProx houdt de gewerkte uren bij, naast het rooster. U geeft ze door aan uw salarisadministratie. Die maakt het loon. WinProx doet dat niet."
+        }
+      }
+    }
+  }
+}

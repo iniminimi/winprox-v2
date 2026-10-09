@@ -1457,6 +1457,24 @@ blijven op het domein; hreflang `nl-BE` / `fr-BE`; app-paden 302 naar `.app`.
 `MARKETING_*_PERMANENT=true` maakt die redirects en `www` → apex 301.
 Login, mail en `APP_URL` blijven op `.app`. `.nl` verschijnt pas in hreflang als het live is.
 
+**Markt-specifieke zichtbaarheid** (per marktrij in `config/marketing.php`):
+- `hidden_paths` — publieke paden die op die markt 404 geven (`.nl`: `/checkmate`;
+  Checkmate/CIAO is een Belgisch product). `MarketingDomain::routeHidden()` deelt dezelfde
+  beslissing met nav, hero-tegel, related links, sitemap, video-entries, hreflang en
+  `llms.txt`. Bare `/checkmate` zonder locale redirect naar `.app`.
+- `hidden_doc_sections` — productdocs-kaarten met `"key"` (bv. `checkmate` in
+  `features.full` en `technical.right`) die op die markt uit HTML én Markdown verdwijnen
+  (`MarketingDomain::filterDocSections`). Alleen kaartniveau, geen zinsfiltering.
+- `hidden_faq_items` — FAQ-slugs uit `config/faq.php` die op die markt wegvallen
+  (`.nl`: `checkmate`, `ddt_number` — Belgische RSZ). `FaqSections::orderedItems()`
+  filtert, dus FAQ-pagina én FAQPage-JSON-LD blijven automatisch gelijk.
+- **Vertaal-overlay:** `lang/markets/{market}/{locale}/{page}.json` merged bovenop
+  `lang/{locale}/{page}.json` (`JsonTranslationLoader`, markt via `MarketingDomain::marketKey`).
+  Alleen verschillende keys; `.nl` bevat nl-NL-woordkeuze (mobiel i.p.v. gsm,
+  salarisadministratie i.p.v. sociaal secretariaat) en CIAO-loze varianten van
+  overgebleven marketingteksten. `lang/markets` is géén locale (parity-script filtert
+  op tweeletters). Console/queue hebben geen markt → basis-nl.
+
 ### 11.1 Structuur (minimaal — eerste gesprek)
 - **Nav:** WinProx-logo, **taal-pillen**, **Prijzen**, **Features-overzicht**, **FAQ**,
   **Voorbeelden** (sectorlandings), **Meer** (about, technical, API & Webhooks),

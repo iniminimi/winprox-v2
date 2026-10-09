@@ -168,6 +168,7 @@
         ]
       },
       {
+        "key": "checkmate",
         "title": "Checkmate",
         "badge": "RSZ/CIAO",
         "body": "Checkmate ist die Außendienst-Formel für Teams beim Kunden.",
@@ -448,6 +449,7 @@
         ]
       },
       {
+        "key": "checkmate",
         "title": "Checkmate",
         "items": [
           "Checkmate ist keine eigene App: dieselbe Plattform mit einer per-Plan-Whitelist für Admin-Routen und Portal-Kacheln.",

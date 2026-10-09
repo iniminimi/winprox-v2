@@ -327,6 +327,109 @@ it('geeft een gast op .be geen livewire-data terug', function () {
         ->and($response->getContent())->not->toContain('notify_on_new_issue_email');
 });
 
+it('verbergt Checkmate volledig op een live .nl-markt', function () {
+    winproxEnableMarket('winprox.nl', true);
+
+    // Gelokaliseerde route → echte 404, geen verborgen render
+    $this->get('https://winprox.nl/nl/checkmate')->assertNotFound();
+
+    // Bare legacy-pad → door naar het app-domein (die redirecteert verder)
+    $this->get('https://winprox.nl/checkmate')
+        ->assertStatus(302)
+        ->assertRedirect('https://winprox.app/checkmate');
+
+    // Nav + hero-tegel zonder Checkmate
+    $home = $this->get('https://winprox.nl/nl')->assertOk()->getContent();
+    expect($home)->not->toContain('/nl/checkmate')
+        ->and($home)->not->toContain('Checkmate')
+        ->and($home)->not->toContain('CIAO');
+
+    // Sitemap: geen checkmate-URL en geen checkmate-video
+    $sitemap = $this->get('https://winprox.nl/sitemap.xml')->assertOk()->getContent();
+    expect($sitemap)->not->toContain('/checkmate')
+        ->and($sitemap)->not->toContain('checkmate_checkin');
+
+    // FAQ: geen Checkmate/DDT-item, geen CIAO/RSZ-sporen (pagina + JSON-LD)
+    $faq = $this->get('https://winprox.nl/nl/faq')->assertOk()->getContent();
+    expect($faq)->not->toContain('CIAO')
+        ->and($faq)->not->toContain('RSZ')
+        ->and($faq)->not->toContain('DDT');
+
+    // Hreflang op de .app-checkmatepagina wijst niet naar de .nl-404
+    $map = winproxHreflangMap(
+        $this->get('https://winprox.app/nl/checkmate')->assertOk()->getContent()
+    );
+    expect($map)->not->toHaveKey('nl-NL');
+
+    // llms.txt: geen Checkmate-entry, geen CIAO
+    $llms = $this->get('https://winprox.nl/llms.txt')->assertOk()->getContent();
+    expect($llms)->not->toContain('Checkmate')
+        ->and($llms)->not->toContain('CIAO');
+
+    // Related links op andere landings linken niet naar de 404
+    $landing = $this->get('https://winprox.nl/nl/prikklok')->assertOk()->getContent();
+    expect($landing)->not->toContain('/nl/checkmate');
+});
+
+it('filtert CIAO/RSZ-secties uit productdocs op .nl maar behoudt de rest', function () {
+    winproxEnableMarket('winprox.nl', true);
+
+    $html = $this->get('https://winprox.nl/nl/docs/features')->assertOk()->getContent();
+    expect($html)->not->toContain('RSZ/CIAO')
+        ->and($html)->toContain('Time')
+        ->and($html)->toContain('Uurrooster');
+
+    $markdown = $this->get('https://winprox.nl/nl/docs/features.md')->assertOk()->getContent();
+    expect($markdown)->not->toContain('Checkmate')
+        ->and($markdown)->toContain('Time');
+
+    // llms-full bevat ook juridische teksten; de productdoc-kaart moet weg zijn
+    $full = $this->get('https://winprox.nl/llms-full.txt')->assertOk()->getContent();
+    expect($full)->not->toContain('## Checkmate');
+});
+
+it('laat Checkmate ongewijzigd op een live .be-markt', function () {
+    winproxEnableMarket('winprox.be', true);
+
+    $this->get('https://winprox.be/nl/checkmate')->assertOk();
+
+    $home = $this->get('https://winprox.be/nl')->assertOk()->getContent();
+    expect($home)->toContain('/nl/checkmate');
+
+    $sitemap = $this->get('https://winprox.be/sitemap.xml')->assertOk()->getContent();
+    expect($sitemap)->toContain('/checkmate')
+        ->and($sitemap)->toContain('checkmate_checkin');
+
+    $faq = $this->get('https://winprox.be/nl/faq')->assertOk()->getContent();
+    expect($faq)->toContain('DDT');
+
+    $docs = $this->get('https://winprox.be/nl/docs/features')->assertOk()->getContent();
+    expect($docs)->toContain('RSZ/CIAO');
+
+    $llms = $this->get('https://winprox.be/llms.txt')->assertOk()->getContent();
+    expect($llms)->toContain('Checkmate');
+});
+
+it('gebruikt op .nl de markt-overlay en valt terug op de basis', function () {
+    winproxEnableMarket('winprox.nl', true);
+
+    // Overlay-keys: gsm → mobiel (faq), sociaal secretariaat → salarisadministratie (welcome)
+    $nl = $this->get('https://winprox.nl/nl/faq')->assertOk()->getContent();
+    expect($nl)->toContain('één mobiel');
+
+    $home = $this->get('https://winprox.nl/nl')->assertOk()->getContent();
+    expect($home)->toContain('salarisadministratie')
+        ->and($home)->not->toContain('sociaal secretariaat');
+});
+
+it('laat de .nl-overlay onaangeroerd op het app-domein', function () {
+    winproxEnableMarket('winprox.nl', true);
+
+    $app = $this->get('https://winprox.app/nl')->assertOk()->getContent();
+    expect($app)->toContain('sociaal secretariaat')
+        ->and($app)->toContain('/nl/checkmate');
+});
+
 it('laat op een live .be alleen de allowlist door en stuurt de rest weg', function () {
     winproxEnableMarket('winprox.be', true);
 

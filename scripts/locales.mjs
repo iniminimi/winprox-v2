@@ -1,5 +1,7 @@
 // Locale-tooling voor per-page JSON: lang/[locale]/[page].json
 // Commando's: fix | check | parity  (zie npm-scripts)
+// NB: lang/markets/** bevat markt-overlays (winprox.nl / winprox.be) —
+// geen eigen locale; alleen tweeletterige dirs tellen als taal.
 import { readdirSync, readFileSync, writeFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -7,7 +9,9 @@ const LANG_DIR = 'lang';
 const cmd = process.argv[2] ?? 'check';
 
 function locales() {
-    return readdirSync(LANG_DIR).filter((e) => statSync(join(LANG_DIR, e)).isDirectory());
+    return readdirSync(LANG_DIR).filter(
+        (e) => statSync(join(LANG_DIR, e)).isDirectory() && /^[a-z]{2}$/.test(e),
+    );
 }
 
 function jsonFiles(locale) {

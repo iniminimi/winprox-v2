@@ -33,6 +33,7 @@
             <h2 class="wp-welcome-h3">{{ __('about.modules.title') }}</h2>
             <div class="wp-stack">
                 @foreach (__('about.modules.items') as $module)
+                    @continue(in_array($module['key'] ?? null, \App\Support\Marketing\MarketingDomain::hiddenDocSections(), true))
                     <div class="wp-stack-tight">
                         <p class="wp-subhead">{{ $module['name'] }}</p>
                         <p class="wp-muted">{{ $module['text'] }}</p>

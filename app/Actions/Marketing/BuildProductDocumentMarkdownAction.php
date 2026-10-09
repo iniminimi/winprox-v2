@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Actions\Marketing;
 
+use App\Support\Marketing\MarketingDomain;
+
 /**
  * Zet een publieke productfiche (JSON) om naar Markdown voor AI-crawlers.
  */
@@ -22,6 +24,8 @@ class BuildProductDocumentMarkdownAction
         if (! is_array($content) || ! isset($content['label'])) {
             return null;
         }
+
+        $content = MarketingDomain::filterDocSections($content);
 
         $updatedRaw = config('product_docs.documents_last_updated', '2026-07-30');
         $updatedAt = \Illuminate\Support\Carbon::parse($updatedRaw)->format('d/m/Y');

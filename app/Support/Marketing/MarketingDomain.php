@@ -34,6 +34,120 @@ final class MarketingDomain
     }
 
     /**
+     * Marktsleutel ('be', 'nl', …) van het huidige live marktdomein, of null
+     * op het app-domein, een inactief domein, www of een onbekende host.
+     */
+    public static function marketKey(?Request $request = null): ?string
+    {
+        $request ??= request();
+        $row = self::marketRow(self::normalizeHost($request->getHost()));
+        if ($row === null || ! $row['live'] || $row['www']) {
+            return null;
+        }
+
+        return $row['key'];
+    }
+
+    /**
+     * Is deze route verborgen op de markt van het huidige request?
+     */
+    public static function routeHidden(string $routeName, ?Request $request = null): bool
+    {
+        $request ??= request();
+
+        return self::routeHiddenOnHost($routeName, self::normalizeHost($request->getHost()));
+    }
+
+    /**
+     * Is deze route verborgen op de markt van de gegeven host?
+     * Wordt gebruikt door sitemap, hreflang en gerelateerde links.
+     */
+    public static function routeHiddenOnHost(string $routeName, string $host): bool
+    {
+        $row = self::marketRow(self::normalizeHost($host));
+        if ($row === null || ! $row['live'] || $row['www'] || $row['hidden_paths'] === []) {
+            return false;
+        }
+
+        $suffix = self::routeSuffix($routeName);
+        if ($suffix === null) {
+            return false;
+        }
+
+        return in_array($suffix, $row['hidden_paths'], true);
+    }
+
+    /**
+     * Productdocs-secties (config/product_docs.php kaarten met 'key') die op
+     * deze markt niet getoond worden — bv. de Checkmate/CIAO-kaart op .nl.
+     *
+     * @return list<string>
+     */
+    public static function hiddenDocSections(?Request $request = null): array
+    {
+        $request ??= request();
+        $row = self::marketRow(self::normalizeHost($request->getHost()));
+        if ($row === null || ! $row['live'] || $row['www']) {
+            return [];
+        }
+
+        return $row['hidden_doc_sections'];
+    }
+
+    /**
+     * FAQ-slugs (config/faq.php section_order) die op deze markt verborgen zijn.
+     *
+     * @return list<string>
+     */
+    public static function hiddenFaqItems(?Request $request = null): array
+    {
+        $request ??= request();
+        $row = self::marketRow(self::normalizeHost($request->getHost()));
+        if ($row === null || ! $row['live'] || $row['www']) {
+            return [];
+        }
+
+        return $row['hidden_faq_items'];
+    }
+
+    /**
+     * Vertaal-overlay voor de markt van het huidige request
+     * ('nl' → lang/markets/nl/…), of null als er geen overlay geldt.
+     */
+    public static function marketOverlay(?Request $request = null): ?string
+    {
+        return self::marketKey($request);
+    }
+
+    /**
+     * Verwijdert kaarten met een 'key' uit hidden_doc_sections uit een
+     * geladen product_docs-content-array (left/right/full kolommen).
+     *
+     * @param  array<string, mixed>  $content
+     * @return array<string, mixed>
+     */
+    public static function filterDocSections(array $content, ?Request $request = null): array
+    {
+        $hidden = self::hiddenDocSections($request);
+        if ($hidden === []) {
+            return $content;
+        }
+
+        foreach (['left', 'right', 'full'] as $column) {
+            if (! isset($content[$column]) || ! is_array($content[$column])) {
+                continue;
+            }
+            $content[$column] = array_values(array_filter(
+                $content[$column],
+                static fn ($card) => ! is_array($card)
+                    || ! in_array($card['key'] ?? null, $hidden, true),
+            ));
+        }
+
+        return $content;
+    }
+
+    /**
      * @return list<string>
      */
     public static function localesFor(?Request $request = null): array
@@ -209,10 +323,13 @@ final class MarketingDomain
             if (! in_array($code, $row['locales'], true)) {
                 return ['action' => 'missing'];
             }
+            if (in_array($suffix, $row['hidden_paths'], true)) {
+                return ['action' => 'missing'];
+            }
             if (self::suffixAllowed($suffix)) {
                 return $readable ? ['action' => 'pass'] : ['action' => 'missing'];
             }
-        } elseif ($readable && self::isLegacyMarketing($path)) {
+        } elseif ($readable && self::isLegacyMarketing($path) && ! in_array($path, $row['hidden_paths'], true)) {
             return ['action' => 'pass'];
         }
 
@@ -388,7 +505,30 @@ final class MarketingDomain
     }
 
     /**
-     * @return array{host: string, www: bool, live: bool, permanent_redirects: bool, locales: list<string>, regions: array<string, string>, default_locale: string}|null
+     * URI-suffix van een named route (bv. 'checkmate' → '/checkmate'),
+     * of null voor routes zonder vaste suffix (parameters, geen {locale}-prefix).
+     */
+    private static function routeSuffix(string $routeName): ?string
+    {
+        $route = Route::getRoutes()->getByName($routeName);
+        if ($route === null) {
+            return null;
+        }
+
+        $uri = $route->uri();
+        if (str_starts_with($uri, '{locale}/')) {
+            $uri = substr($uri, strlen('{locale}/'));
+        }
+
+        if ($uri === '' || str_contains($uri, '{')) {
+            return null;
+        }
+
+        return '/'.ltrim($uri, '/');
+    }
+
+    /**
+     * @return array{host: string, www: bool, key: string|null, live: bool, permanent_redirects: bool, locales: list<string>, regions: array<string, string>, default_locale: string, hidden_paths: list<string>, hidden_doc_sections: list<string>, hidden_faq_items: list<string>}|null
      */
     private static function marketRow(string $host): ?array
     {
@@ -405,11 +545,15 @@ final class MarketingDomain
         return [
             'host' => $apex,
             'www' => $host !== $apex,
+            'key' => is_string($row['key'] ?? null) ? $row['key'] : null,
             'live' => (bool) ($row['live'] ?? false),
             'permanent_redirects' => (bool) ($row['permanent_redirects'] ?? false),
             'locales' => $locales,
             'regions' => $regions,
             'default_locale' => (string) ($row['default_locale'] ?? 'nl'),
+            'hidden_paths' => is_array($row['hidden_paths'] ?? null) ? array_values($row['hidden_paths']) : [],
+            'hidden_doc_sections' => is_array($row['hidden_doc_sections'] ?? null) ? array_values($row['hidden_doc_sections']) : [],
+            'hidden_faq_items' => is_array($row['hidden_faq_items'] ?? null) ? array_values($row['hidden_faq_items']) : [],
         ];
     }
 

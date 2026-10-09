@@ -168,6 +168,7 @@
         ]
       },
       {
+        "key": "checkmate",
         "title": "Checkmate",
         "badge": "RSZ/CIAO",
         "body": "Checkmate is the field-work plan for teams working at customer sites.",
@@ -448,6 +449,7 @@
         ]
       },
       {
+        "key": "checkmate",
         "title": "Checkmate",
         "items": [
           "Checkmate is not a separate app: the same platform with a per-plan whitelist for admin routes and portal tiles.",

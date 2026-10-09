@@ -168,6 +168,7 @@
         ]
       },
       {
+        "key": "checkmate",
         "title": "Checkmate",
         "badge": "RSZ/CIAO",
         "body": "Checkmate is de veldwerk-formule voor teams die bij klanten werken.",
@@ -448,6 +449,7 @@
         ]
       },
       {
+        "key": "checkmate",
         "title": "Checkmate",
         "items": [
           "Checkmate is geen aparte app: hetzelfde platform met een per-plan whitelist voor admin-routes en portaal-tegels.",

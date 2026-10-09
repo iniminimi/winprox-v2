@@ -11,10 +11,14 @@ class BuildLlmsTxtAction
 {
     public function handle(): string
     {
+        $checkmateHidden = MarketingDomain::routeHidden('checkmate');
+
         $lines = [
             '# WinProx',
             '',
-            '> Digital time clock for time tracking. Staff clock in with their phone, without an app. Hours sit next to the roster and are passed to the social secretariat. Presence reporting to the social security office (CIAO) is optional, for crews that work at customer sites.',
+            $checkmateHidden
+                ? '> Digital time clock for time tracking. Staff clock in with their phone, without an app. Hours sit next to the roster and are passed to payroll administration.'
+                : '> Digital time clock for time tracking. Staff clock in with their phone, without an app. Hours sit next to the roster and are passed to the social secretariat. Presence reporting to the social security office (CIAO) is optional, for crews that work at customer sites.',
             '',
             'Languages: Dutch, English, French, German, Spanish, Italian.',
             '',
@@ -27,13 +31,16 @@ class BuildLlmsTxtAction
             $label = strtoupper((string) $locale);
             $home = $this->pageUrl('welcome', $locale);
             $about = $this->pageUrl('about', $locale);
-            $checkmate = $this->pageUrl('checkmate', $locale);
             $prikklok = $this->pageUrl('prikklok', $locale);
             $lines[] = '- [Homepage ('.$label.')]('.$home.'): Digital time clock for time tracking. Staff clock in with their phone, without an app. Hours are compared with the roster and passed to the social secretariat.';
             $lines[] = '- [Time clock ('.$label.')]('.$prikklok.'): Digital punch clock — workers clock in with their own phone via a QR code; optional clock screen shows a rotating QR.';
-            $lines[] = '- [Checkmate ('.$label.')]('.$checkmate.'): Optional presence at the customer for the social security office (CIAO). Cleaning for third parties now. Construction on site from 1 April 2027.';
+            if (! $checkmateHidden) {
+                $checkmate = $this->pageUrl('checkmate', $locale);
+                $lines[] = '- [Checkmate ('.$label.')]('.$checkmate.'): Optional presence at the customer for the social security office (CIAO). Cleaning for third parties now. Construction on site from 1 April 2027.';
+            }
             $lines[] = '- [Time ('.$label.')]('.$this->pageUrl('features.time', $locale).'): Clock Point presence, breaks and shifts.';
-            $lines[] = '- [About ('.$label.')]('.$about.'): What WinProx is: a digital time clock, hours next to the roster, and optional CIAO.';
+            $lines[] = '- [About ('.$label.')]('.$about.'): What WinProx is: a digital time clock, hours next to the roster'
+                .($checkmateHidden ? '.' : ', and optional CIAO.');
         }
 
         $lines[] = '';

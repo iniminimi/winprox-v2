@@ -124,6 +124,9 @@ final class MarketingSeo
         }
 
         foreach (MarketingDomain::liveMarkets() as $market) {
+            if (MarketingDomain::routeHiddenOnHost($routeName, $market['host'])) {
+                continue;
+            }
             foreach ($market['locales'] as $locale) {
                 $region = $market['regions'][$locale] ?? null;
                 if (! is_string($region) || $region === '') {

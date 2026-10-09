@@ -1,0 +1,10 @@
+{
+  "time": {
+    "capabilities": {
+      "items": {
+        "5": "Eén mobiel per uitvoerder, optionele PIN en GPS",
+        "9": "Minimumpauze per team op de urenstaat"
+      }
+    }
+  }
+}

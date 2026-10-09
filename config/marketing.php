@@ -43,18 +43,27 @@ return [
         'app_host' => env('MARKETING_APP_HOST', 'winprox.app'),
         'markets' => [
             env('MARKETING_BE_HOST', 'winprox.be') => [
+                'key' => 'be',
                 'live' => filter_var(env('MARKETING_BE_LIVE', false), FILTER_VALIDATE_BOOLEAN),
                 'permanent_redirects' => filter_var(env('MARKETING_BE_PERMANENT', false), FILTER_VALIDATE_BOOLEAN),
                 'locales' => ['nl', 'fr'],
                 'default_locale' => 'nl',
                 'regions' => ['nl' => 'BE', 'fr' => 'BE'],
+                'hidden_paths' => [],
+                'hidden_doc_sections' => [],
+                'hidden_faq_items' => [],
             ],
             env('MARKETING_NL_HOST', 'winprox.nl') => [
+                'key' => 'nl',
                 'live' => filter_var(env('MARKETING_NL_LIVE', false), FILTER_VALIDATE_BOOLEAN),
                 'permanent_redirects' => filter_var(env('MARKETING_NL_PERMANENT', false), FILTER_VALIDATE_BOOLEAN),
                 'locales' => ['nl'],
                 'default_locale' => 'nl',
                 'regions' => ['nl' => 'NL'],
+                // Checkmate (CIAO/RSZ) is een Belgisch product: niet op .nl aanbieden.
+                'hidden_paths' => ['/checkmate'],
+                'hidden_doc_sections' => ['checkmate'],
+                'hidden_faq_items' => ['checkmate', 'ddt_number'],
             ],
         ],
     ],

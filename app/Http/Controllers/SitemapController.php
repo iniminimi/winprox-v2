@@ -23,7 +23,12 @@ class SitemapController extends Controller
             .' xmlns:xhtml="http://www.w3.org/1999/xhtml"'
             .' xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">'."\n";
 
+        $host = MarketingDomain::normalizeHost(request()->getHost());
+
         foreach (MarketingSeo::indexedRouteNames() as $routeName) {
+            if (MarketingDomain::routeHiddenOnHost($routeName, $host)) {
+                continue;
+            }
             $alternates = MarketingSeo::alternateLinks($routeName, []);
 
             foreach ($supported as $locale) {

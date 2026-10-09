@@ -64,7 +64,9 @@ class FeaturePage extends Component
         }
 
         $links[] = ['label' => __('landings.prikklok.nav_label'), 'url' => route('prikklok')];
-        $links[] = ['label' => __('features.shared.links.checkmate'), 'url' => route('checkmate')];
+        if (! \App\Support\Marketing\MarketingDomain::routeHidden('checkmate')) {
+            $links[] = ['label' => __('features.shared.links.checkmate'), 'url' => route('checkmate')];
+        }
         $links[] = ['label' => __('features.shared.links.about'), 'url' => route('about')];
         $links[] = ['label' => __('features.shared.links.api'), 'url' => route('product.api_webhooks')];
         $links[] = ['label' => __('features.shared.links.pricing'), 'url' => route('pricing')];

@@ -2,6 +2,8 @@
 
 namespace App\Support\Faq;
 
+use App\Support\Marketing\MarketingDomain;
+
 class FaqSections
 {
     /**
@@ -11,6 +13,7 @@ class FaqSections
     {
         $order = config('faq.section_order', []);
         $raw = __('faq.items');
+        $hidden = MarketingDomain::hiddenFaqItems();
 
         if (! is_array($order) || ! is_array($raw)) {
             return [];
@@ -19,7 +22,7 @@ class FaqSections
         $items = [];
 
         foreach ($order as $slug) {
-            if (! is_string($slug)) {
+            if (! is_string($slug) || in_array($slug, $hidden, true)) {
                 continue;
             }
 

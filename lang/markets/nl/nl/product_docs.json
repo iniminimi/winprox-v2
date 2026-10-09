@@ -1,0 +1,50 @@
+{
+  "features": {
+    "intro": "U vergelijkt de uren met het rooster en geeft ze door aan uw salarisadministratie. Meldingen en taken zitten in dezelfde app.",
+    "full": {
+      "11": {
+        "items": {
+          "4": "GPS-werkbezoeken op klant- of unitlocatie, zonder extra prijs.",
+          "5": "De uren geeft u door aan uw salarisadministratie. Geen loonberekening.",
+          "0": "Op een vaste prikklok vraagt elke in- en uitklok een scan van de sticker of het klokscherm. Het startscherm-icoon en de aanmeldlink klokken niet in. Let op: een foto van de statische sticker kan overal prikken; de roterende scherm-QR verloopt en bewijst echte aanwezigheid."
+        }
+      },
+      "13": {
+        "body": "Beheer plant diensten in Time → Uurrooster. Publiceren toont ze op Clock Point."
+      }
+    }
+  },
+  "technical": {
+    "right": {
+      "0": {
+        "items": {
+          "6": "Optionele aanwezigheidsdoorgifte naar de Belgische RSZ (CIAO): alleen beschikbaar voor Belgische klanten, niet in Nederland."
+        }
+      },
+      "4": {
+        "items": {
+          "0": "Uitgaande HTTP POST bij events (o.a. issue/task-status, unit check, unitmeting, ESG, GPS, Time). time.visit.started / time.visit.ended."
+        }
+      },
+      "2": {
+        "items": {
+          "4": "Uitvoerders: **geen e-maillogin** — Clock Point-QR + naam + persoonlijk icoon (of optionele PIN). Eén mobiel per uitvoerder; het icoon wordt na aanmelden niet getoond. Op elk Clock Point-portaal staat het startscherm-icoon om thuis aan te melden. Op een vaste prikklok blijft inklokken een scan."
+        }
+      },
+      "3": {
+        "items": {
+          "6": "Time Clock Point: sticker en klokscherm-QR geven één scan voor in-/uitklok of verplaatsing. Aanmeldlink en startscherm geven die niet. Aanmelden klokt niet vanzelf in (open tab/poll volstaat niet). Eén mobiel per uitvoerder (weigeren + audit bij ander toestel). Geen knop om van uitvoerder te wisselen (ook niet bij icoon of PIN) en na aanmelden geen kop Aanmelden; wel Afmelden (opnieuw icoon/PIN, geen uitklokken, mobiel blijft gekoppeld tot beheer of teamleader vrijgeeft). Optionele PIN (gehasht). GPS bij inklokken: aan betekent een positie verplicht, anders geen inklok. API-inklokken bindt geen mobiel. Manueel inklokken in beheer (beheerder/medewerker) bindt geen mobiel. Mijn uren (tegel na aanmelden): alleen de eigen diensten van de aangemelde uitvoerder. Mijn rooster: alleen het eigen gepubliceerde uurrooster van de maand. Rode driehoek bij niet of minstens 15 minuten te laat inklokken. Waarschuwing als GPS uitstaat op de mobiel, alleen als er bestemmingen zijn. Evacuatielijst (optioneel in Instellingen, standaard uit; tegel na aanmelden): namen pas na bevestiging dat de raadpleging uitzonderlijk is; elke raadpleging wordt gelogd (voornaam, naam, datum en uur). Raadplegingen van vandaag lichten Time-aandacht op (dashboard en aanwezigheid). Time → Alarmen houdt de volledige lijst (datum en uur, nieuwste bovenaan). Beheer geeft mobiel, PIN en icoon vrij via Personen → Teams → Bewerken. Clock Point bewaart een noodzakelijke toestelcookie (circa 1 jaar). Tijdens een open werkbezoek toont Clock Point bovenaan de huidige locatie en de volgende stop. Vandaag-locaties volgen de inspectieronde-volgorde. GPS-werkbezoeken: verse GPS op het klikmoment (maximumAge 0) om werk te starten/stoppen op een locatie-pin of unit-pin; inklokken blijft zonder GPS-gate. Na inklokken (GPS-werkbezoeken aan): donkere Welkom-kaart plus Vandaag als tijdlijn (hier / volgende / geweest / later) met Navigeer op de volgende stop; Start werk pas ter plaatse. Met open werkbezoek: teamtaken starten/afronden op Clock Point; volgende inspectiestop (unit check) ter plaatse. Optionele startscherm-snelkoppeling alleen als het Clock Point-vinkje aan staat (standaard uit; niet voor TFT met wisselende QR). Op het klokscherm prikt een uitvoerder zonder mobiel met voornaam + 4-cijferige PIN (dezelfde gehashte PIN; na 2 foute pogingen 60 s geblokkeerd; instellen op het scherm kan alleen als er nog geen PIN is; elke poging wordt geaudit)."
+        }
+      }
+    }
+  },
+  "api_webhooks": {
+    "right": {
+      "2": {
+        "items": {
+          "3": "**Andere events o.a.:** melding aangemaakt / goedgekeurd / status gewijzigd · taak aangemaakt / gestart / afgerond · Time · GPS · ESG · reserveringen · testknop · unit check geregistreerd. Bij e-mailbevestiging: **melding aangemaakt** pas na de link. time.visit.started / time.visit.ended."
+        }
+      }
+    }
+  }
+}

@@ -168,6 +168,7 @@
         ]
       },
       {
+        "key": "checkmate",
         "title": "Checkmate",
         "badge": "RSZ/CIAO",
         "body": "Checkmate est la formule terrain pour les équipes qui travaillent chez le client.",
@@ -448,6 +449,7 @@
         ]
       },
       {
+        "key": "checkmate",
         "title": "Checkmate",
         "items": [
           "Checkmate n'est pas une app séparée : la même plateforme avec une whitelist par plan pour les routes admin et les tuiles du portail.",

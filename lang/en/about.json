@@ -1,82 +1,83 @@
 {
-    "meta_title": "About WinProx | Digital time clock",
-    "social": {
-        "og_title": "About WinProx | Digital time clock",
-        "og_description": "Staff clock in with their phone, without an app. You compare the hours with the roster and pass them to your social secretariat."
-    },
-    "eyebrow": "About WinProx",
-    "title": "What is WinProx?",
-    "lead": "WinProx is a digital time clock for time tracking. Staff clock in with their phone, without an app. You compare the hours with the roster and pass them to your social secretariat. If your crew works at customer sites, you can turn on presence reporting to the social security office.",
-    "what": {
-        "title": "Core idea",
-        "body": "A worker scans a QR on the screen, on a sticker or via a link, and clocks in and out. You see the hours next to the roster. The social secretariat prepares the wage. Turn CIAO on when the crew works at customer sites. A crew on its own site leaves it off."
-    },
-    "audience": {
-        "title": "Who it is for",
-        "items": [
-            "Companies that want to record hours without an app",
-            "Crews on their own site",
-            "Crews that work at customer sites and need presence reporting to the social security office"
-        ]
-    },
-    "sectors": {
-        "title": "Where the crew works",
-        "items": [
-            "On their own site",
-            "At the customer"
-        ]
-    },
-    "modules": {
-        "title": "Modules",
-        "items": [
-            {
-                "name": "Facility",
-                "text": "Issues, public-portal moderation, tasks per team, calendar and briefing."
-            },
-            {
-                "name": "Checkmate",
-                "text": "A derived plan for field work (cleaning & construction): workers clock in and out via the Clock Point QR, start and stop customer visits at the work address with GPS verification within 100 m, take breaks and view My hours — no issues, tasks or schedules. Managed via a reduced back office (customers, workers, hours); CIAO activation via self-service. €5 per worker per month."
-            },
-            {
-                "name": "Time",
-                "text": "Clock in/out and breaks via Clock Point QR, GPS work visits on a location or unit pin, presence, timesheets, My hours and an optional per-team minimum break. Optional CIAO (RSZ Check In and Out) for cleaning; the construction scope is ready behind a feature flag until NSSO specs go live."
-            },
-            {
-                "name": "ESG",
-                "text": "Optional measurements and indicators linked to units and follow-up tasks."
-            },
-            {
-                "name": "IoT Connect",
-                "text": "Optional sensor gateways: alarms become issues and tasks; on Corporate also ESG measurements."
-            },
-            {
-                "name": "API & webhooks",
-                "text": "REST API (Sanctum) and outbound webhooks on Corporate — for integrations."
-            }
-        ]
-    },
-    "tech": {
-        "title": "Technology",
-        "body": "Web application (Laravel + Livewire). Public QR portals work on phones without install. Multilingual (NL, EN, FR, DE, ES, IT) with optional AI translation of report text."
-    },
-    "compliance": {
-        "title": "Privacy & compliance",
-        "items": [
-            "GDPR-oriented design with public privacy and DPA documents",
-            "Photos and text on public QR pages stay blurred until approval",
-            "Tenant isolation: data per organisation, no product sector on the tenant",
-            "Optional CIAO transfer (NISS, presence) to the Belgian NSSO — only if you turn it on"
-        ]
-    },
-    "languages": {
-        "title": "Languages",
-        "body": "Interface and marketing in Dutch, English, French, German, Spanish and Italian."
-    },
-    "related_title": "Related pages",
-    "links": {
-        "time": "Time",
-        "api": "API & Webhooks",
-        "pricing": "Pricing",
-        "checkmate": "Checkmate"
-    }
+  "meta_title": "About WinProx | Digital time clock",
+  "social": {
+    "og_title": "About WinProx | Digital time clock",
+    "og_description": "Staff clock in with their phone, without an app. You compare the hours with the roster and pass them to your social secretariat."
+  },
+  "eyebrow": "About WinProx",
+  "title": "What is WinProx?",
+  "lead": "WinProx is a digital time clock for time tracking. Staff clock in with their phone, without an app. You compare the hours with the roster and pass them to your social secretariat. If your crew works at customer sites, you can turn on presence reporting to the social security office.",
+  "what": {
+    "title": "Core idea",
+    "body": "A worker scans a QR on the screen, on a sticker or via a link, and clocks in and out. You see the hours next to the roster. The social secretariat prepares the wage. Turn CIAO on when the crew works at customer sites. A crew on its own site leaves it off."
+  },
+  "audience": {
+    "title": "Who it is for",
+    "items": [
+      "Companies that want to record hours without an app",
+      "Crews on their own site",
+      "Crews that work at customer sites and need presence reporting to the social security office"
+    ]
+  },
+  "sectors": {
+    "title": "Where the crew works",
+    "items": [
+      "On their own site",
+      "At the customer"
+    ]
+  },
+  "modules": {
+    "title": "Modules",
+    "items": [
+      {
+        "name": "Facility",
+        "text": "Issues, public-portal moderation, tasks per team, calendar and briefing."
+      },
+      {
+        "key": "checkmate",
+        "name": "Checkmate",
+        "text": "A derived plan for field work (cleaning & construction): workers clock in and out via the Clock Point QR, start and stop customer visits at the work address with GPS verification within 100 m, take breaks and view My hours — no issues, tasks or schedules. Managed via a reduced back office (customers, workers, hours); CIAO activation via self-service. €5 per worker per month."
+      },
+      {
+        "name": "Time",
+        "text": "Clock in/out and breaks via Clock Point QR, GPS work visits on a location or unit pin, presence, timesheets, My hours and an optional per-team minimum break. Optional CIAO (RSZ Check In and Out) for cleaning; the construction scope is ready behind a feature flag until NSSO specs go live."
+      },
+      {
+        "name": "ESG",
+        "text": "Optional measurements and indicators linked to units and follow-up tasks."
+      },
+      {
+        "name": "IoT Connect",
+        "text": "Optional sensor gateways: alarms become issues and tasks; on Corporate also ESG measurements."
+      },
+      {
+        "name": "API & webhooks",
+        "text": "REST API (Sanctum) and outbound webhooks on Corporate — for integrations."
+      }
+    ]
+  },
+  "tech": {
+    "title": "Technology",
+    "body": "Web application (Laravel + Livewire). Public QR portals work on phones without install. Multilingual (NL, EN, FR, DE, ES, IT) with optional AI translation of report text."
+  },
+  "compliance": {
+    "title": "Privacy & compliance",
+    "items": [
+      "GDPR-oriented design with public privacy and DPA documents",
+      "Photos and text on public QR pages stay blurred until approval",
+      "Tenant isolation: data per organisation, no product sector on the tenant",
+      "Optional CIAO transfer (NISS, presence) to the Belgian NSSO — only if you turn it on"
+    ]
+  },
+  "languages": {
+    "title": "Languages",
+    "body": "Interface and marketing in Dutch, English, French, German, Spanish and Italian."
+  },
+  "related_title": "Related pages",
+  "links": {
+    "time": "Time",
+    "api": "API & Webhooks",
+    "pricing": "Pricing",
+    "checkmate": "Checkmate"
+  }
 }

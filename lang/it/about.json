@@ -1,82 +1,83 @@
 {
-    "meta_title": "Informazioni su WinProx | Timbratrice digitale",
-    "social": {
-        "og_title": "Informazioni su WinProx | Timbratrice digitale",
-        "og_description": "Il personale timbra con il telefono, senza app. Confrontate le ore con il turno e le passate al segretariato sociale."
-    },
-    "eyebrow": "Informazioni su WinProx",
-    "title": "Che cos'è WinProx?",
-    "lead": "WinProx è una timbratrice digitale per la rilevazione orari. Il personale timbra con il telefono, senza app. Confrontate le ore con il turno e le passate al segretariato sociale. Se la squadra lavora dai clienti, potete attivare la presenza per l'ONSS.",
-    "what": {
-        "title": "Idea centrale",
-        "body": "La persona scansiona un QR sullo schermo, su un adesivo o tramite un link, e timbra entrata e uscita. Vedete le ore accanto al turno. Il segretariato sociale fa la paga. Attivate CIAO se la squadra lavora dai clienti. Una squadra sul proprio sito lo lascia spento."
-    },
-    "audience": {
-        "title": "Per chi",
-        "items": [
-            "Aziende che vogliono registrare le ore senza app",
-            "Squadre sul proprio sito",
-            "Squadre che lavorano dai clienti e hanno bisogno della presenza per l'ONSS"
-        ]
-    },
-    "sectors": {
-        "title": "Dove lavora la squadra",
-        "items": [
-            "Sul proprio sito",
-            "Dal cliente"
-        ]
-    },
-    "modules": {
-        "title": "Moduli",
-        "items": [
-            {
-                "name": "Facility",
-                "text": "Segnalazioni, moderazione sui portali pubblici, compiti per team, calendario e briefing."
-            },
-            {
-                "name": "Checkmate",
-                "text": "Piano derivato per il lavoro in campo (pulizie ed edilizia): gli operai timbrano tramite il QR Clock Point, avviano e chiudono le visite clienti all’indirizzo di lavoro con verifica GPS entro 100 m, fanno pause e consultano Le mie ore — niente segnalazioni, attività o turni. Gestione tramite un back office ridotto (clienti, operai, ore); attivazione CIAO in self-service. 5 € per operaio al mese."
-            },
-            {
-                "name": "Time",
-                "text": "Timbratura ingresso/uscita e pause via QR Clock Point, visite GPS sul pin della sede o dell'unità, presenza, foglio ore, Le mie ore e pausa minima opzionale per team. CIAO opzionale (Check In and Out ONSS) per le pulizie; lo scope edilizia è pronto dietro feature-flag fino alle spec ONSS live."
-            },
-            {
-                "name": "ESG",
-                "text": "Misure e indicatori opzionali, collegati a unità e compiti di follow-up."
-            },
-            {
-                "name": "IoT Connect",
-                "text": "Gateway sensori opzionali: gli allarmi diventano segnalazioni e compiti; su Corporate anche misure ESG."
-            },
-            {
-                "name": "API e webhook",
-                "text": "API REST (Sanctum) e webhook in uscita su Corporate — per le integrazioni."
-            }
-        ]
-    },
-    "tech": {
-        "title": "Tecnologia",
-        "body": "Applicazione web (Laravel + Livewire). I portali QR pubblici funzionano sullo smartphone senza installazione. Multilingue (NL, EN, FR, DE, ES, IT) con traduzione IA opzionale dei testi di segnalazione."
-    },
-    "compliance": {
-        "title": "Privacy e conformità",
-        "items": [
-            "Progettazione orientata al GDPR con documenti pubblici di privacy e DPA",
-            "Foto e testo sulle pagine QR pubbliche restano sfocati fino all'approvazione",
-            "Isolamento per tenant: dati per organizzazione, niente settore prodotto sul tenant",
-            "Invio CIAO opzionale (NISS, presenza) all'ONSS belga — solo se lo attivate"
-        ]
-    },
-    "languages": {
-        "title": "Lingue",
-        "body": "Interfaccia e marketing in olandese, inglese, francese, tedesco, spagnolo e italiano."
-    },
-    "related_title": "Per approfondire",
-    "links": {
-        "time": "Time",
-        "api": "API e Webhooks",
-        "pricing": "Prezzi",
-        "checkmate": "Checkmate"
-    }
+  "meta_title": "Informazioni su WinProx | Timbratrice digitale",
+  "social": {
+    "og_title": "Informazioni su WinProx | Timbratrice digitale",
+    "og_description": "Il personale timbra con il telefono, senza app. Confrontate le ore con il turno e le passate al segretariato sociale."
+  },
+  "eyebrow": "Informazioni su WinProx",
+  "title": "Che cos'è WinProx?",
+  "lead": "WinProx è una timbratrice digitale per la rilevazione orari. Il personale timbra con il telefono, senza app. Confrontate le ore con il turno e le passate al segretariato sociale. Se la squadra lavora dai clienti, potete attivare la presenza per l'ONSS.",
+  "what": {
+    "title": "Idea centrale",
+    "body": "La persona scansiona un QR sullo schermo, su un adesivo o tramite un link, e timbra entrata e uscita. Vedete le ore accanto al turno. Il segretariato sociale fa la paga. Attivate CIAO se la squadra lavora dai clienti. Una squadra sul proprio sito lo lascia spento."
+  },
+  "audience": {
+    "title": "Per chi",
+    "items": [
+      "Aziende che vogliono registrare le ore senza app",
+      "Squadre sul proprio sito",
+      "Squadre che lavorano dai clienti e hanno bisogno della presenza per l'ONSS"
+    ]
+  },
+  "sectors": {
+    "title": "Dove lavora la squadra",
+    "items": [
+      "Sul proprio sito",
+      "Dal cliente"
+    ]
+  },
+  "modules": {
+    "title": "Moduli",
+    "items": [
+      {
+        "name": "Facility",
+        "text": "Segnalazioni, moderazione sui portali pubblici, compiti per team, calendario e briefing."
+      },
+      {
+        "key": "checkmate",
+        "name": "Checkmate",
+        "text": "Piano derivato per il lavoro in campo (pulizie ed edilizia): gli operai timbrano tramite il QR Clock Point, avviano e chiudono le visite clienti all’indirizzo di lavoro con verifica GPS entro 100 m, fanno pause e consultano Le mie ore — niente segnalazioni, attività o turni. Gestione tramite un back office ridotto (clienti, operai, ore); attivazione CIAO in self-service. 5 € per operaio al mese."
+      },
+      {
+        "name": "Time",
+        "text": "Timbratura ingresso/uscita e pause via QR Clock Point, visite GPS sul pin della sede o dell'unità, presenza, foglio ore, Le mie ore e pausa minima opzionale per team. CIAO opzionale (Check In and Out ONSS) per le pulizie; lo scope edilizia è pronto dietro feature-flag fino alle spec ONSS live."
+      },
+      {
+        "name": "ESG",
+        "text": "Misure e indicatori opzionali, collegati a unità e compiti di follow-up."
+      },
+      {
+        "name": "IoT Connect",
+        "text": "Gateway sensori opzionali: gli allarmi diventano segnalazioni e compiti; su Corporate anche misure ESG."
+      },
+      {
+        "name": "API e webhook",
+        "text": "API REST (Sanctum) e webhook in uscita su Corporate — per le integrazioni."
+      }
+    ]
+  },
+  "tech": {
+    "title": "Tecnologia",
+    "body": "Applicazione web (Laravel + Livewire). I portali QR pubblici funzionano sullo smartphone senza installazione. Multilingue (NL, EN, FR, DE, ES, IT) con traduzione IA opzionale dei testi di segnalazione."
+  },
+  "compliance": {
+    "title": "Privacy e conformità",
+    "items": [
+      "Progettazione orientata al GDPR con documenti pubblici di privacy e DPA",
+      "Foto e testo sulle pagine QR pubbliche restano sfocati fino all'approvazione",
+      "Isolamento per tenant: dati per organizzazione, niente settore prodotto sul tenant",
+      "Invio CIAO opzionale (NISS, presenza) all'ONSS belga — solo se lo attivate"
+    ]
+  },
+  "languages": {
+    "title": "Lingue",
+    "body": "Interfaccia e marketing in olandese, inglese, francese, tedesco, spagnolo e italiano."
+  },
+  "related_title": "Per approfondire",
+  "links": {
+    "time": "Time",
+    "api": "API e Webhooks",
+    "pricing": "Prezzi",
+    "checkmate": "Checkmate"
+  }
 }

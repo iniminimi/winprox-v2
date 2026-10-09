@@ -34,6 +34,26 @@ final class JsonLd
     {
         // Locale-aware: de pagina-taal bepaalt URL en beschrijving, zodat de
         // markup op /nl/ ook Nederlands spreekt.
+        $offers = [];
+        if (! MarketingDomain::routeHidden('checkmate')) {
+            $offers[] = [
+                '@type' => 'Offer',
+                'name' => 'Checkmate',
+                'price' => '5',
+                'priceCurrency' => 'EUR',
+                'description' => 'Per active worker per month',
+                'url' => route('pricing', absolute: true),
+            ];
+        }
+        $offers[] = [
+            '@type' => 'Offer',
+            'name' => 'Clock screen',
+            'price' => (string) config('marketing.clock_rent_monthly_eur'),
+            'priceCurrency' => 'EUR',
+            'description' => 'Optional clock screen, per month',
+            'url' => route('prikklok', absolute: true),
+        ];
+
         return self::withMarketLanguage([
             '@context' => 'https://schema.org',
             '@type' => 'SoftwareApplication',
@@ -42,24 +62,7 @@ final class JsonLd
             'operatingSystem' => 'Web',
             'url' => route('welcome', absolute: true),
             'description' => __('welcome.social.og_description'),
-            'offers' => [
-                [
-                    '@type' => 'Offer',
-                    'name' => 'Checkmate',
-                    'price' => '5',
-                    'priceCurrency' => 'EUR',
-                    'description' => 'Per active worker per month',
-                    'url' => route('pricing', absolute: true),
-                ],
-                [
-                    '@type' => 'Offer',
-                    'name' => 'Clock screen',
-                    'price' => (string) config('marketing.clock_rent_monthly_eur'),
-                    'priceCurrency' => 'EUR',
-                    'description' => 'Optional clock screen, per month',
-                    'url' => route('prikklok', absolute: true),
-                ],
-            ],
+            'offers' => $offers,
             'publisher' => [
                 '@type' => 'Organization',
                 'name' => 'WinProx',
