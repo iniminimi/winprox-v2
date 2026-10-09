@@ -35,7 +35,6 @@
 <div @class(['wp-portal-now', 'wp-portal-now--clocked' => $openShift !== null]) x-data="{ open: false }">
     <p class="wp-portal-now__kicker">{{ __('time.portal.now.kicker') }}</p>
     <div class="wp-portal-now__head">
-        <x-wp-icon :name="$openShift === null ? 'clock' : 'check-circle'" class="wp-portal-now__status-icon" data-clock-state="{{ $openShift === null ? 'out' : 'in' }}" />
         <button
             type="button"
             class="wp-settings-section-toggle wp-portal-now__disclosure-toggle"
@@ -54,6 +53,7 @@
                 <button type="button" class="btn btn--primary btn--sm" @click="withGps('{{ $primary[0] }}')" data-manual-capture-trigger="portal-primary-action">{{ $primary[1] }}</button>
             @endif
         @endif
+        <x-wp-icon :name="$openShift === null ? 'clock' : 'check-circle'" class="wp-portal-now__status-icon" data-clock-state="{{ $openShift === null ? 'out' : 'in' }}" />
     </div>
 
     <div class="wp-disclosure-panel wp-portal-now__more-panel" x-show="open" x-cloak>
