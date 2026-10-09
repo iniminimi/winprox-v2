@@ -384,6 +384,7 @@
       "in": "Timbra entrata",
       "out": "Timbra uscita",
       "start_break": "Inizia pausa",
+      "break_hint": "La pausa viene detratta dall'orario di lavoro. Senza registrazione, detraiamo automaticamente :min min sui turni da 4 h o più.",
       "end_break": "Termina pausa",
       "open_elsewhere_hint": "Hai già timbrato in un'altra sede. Sposta la presenza qui oppure timbra l'uscita.",
       "transfer_here": "Sposta qui",

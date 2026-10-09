@@ -337,6 +337,27 @@ it('kleurt het statusblok groen met ingeklokt-icoon na inklokken', function () {
         ->assertDontSee('data-clock-state="out"', false);
 });
 
+it('legt bij Pauze starten uit hoeveel pauze automatisch wordt afgetrokken', function () {
+    $tenant = checkmateTenant();
+    Tenancy::actAs($tenant->id);
+    $worker = checkmateWorker($tenant);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $team = $worker->team;
+    $team->update(['required_break_minutes' => 30]);
+
+    WorkerVerification::markVerified($team, $worker);
+    WorkerDeviceSession::bindRememberedWorker($team, $worker);
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->assertSee(__('time.portal.clock.break_hint', ['min' => 30]));
+
+    $team->update(['required_break_minutes' => 0]);
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->assertDontSee(__('time.portal.clock.break_hint', ['min' => 30]));
+});
+
 it('laat de ingeklokt-flash na twee seconden automatisch verdwijnen', function () {
     $tenant = checkmateTenant();
     Tenancy::actAs($tenant->id);

@@ -15,6 +15,7 @@
         && (int) $openShift->clock_in_clock_point_id !== (int) ($presencePoint?->id ?? 0);
     $clockedOutTime = $openShift === null ? $lastClosedShift?->clock_out_at?->format('H:i') : null;
     $onBreak = $openShift?->openBreak !== null;
+    $requiredBreak = (int) ($openShift?->team?->required_break_minutes ?? 0);
     $hasVisit = ($gpsVisits ?? false) && $openShift?->openVisit;
     $visitPlace = $hasVisit
         ? trim(($openShift->openVisit->location?->name ?? '').' · '.($openShift->openVisit->unit?->name ?? ''), ' ·')
@@ -129,6 +130,9 @@
             <div class="wp-portal-now__divider" role="separator"></div>
 
             @if (! $onBreak)
+                @if ($requiredBreak > 0)
+                    <p class="wp-portal-now__meta">{{ __('time.portal.clock.break_hint', ['min' => $requiredBreak]) }}</p>
+                @endif
                 <div class="wp-portal-now__more-actions">
                     <button type="button" class="btn btn--surface btn--sm" wire:click="startBreak">
                         {{ __('time.portal.clock.start_break') }}

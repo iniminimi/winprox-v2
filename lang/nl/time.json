@@ -384,6 +384,7 @@
       "in": "Inklokken",
       "out": "Uitklokken",
       "start_break": "Pauze starten",
+      "break_hint": "Pauze trekt af van je werktijd. Registreer je niets, dan trekken we automatisch :min min af bij diensten vanaf 4 u.",
       "end_break": "Pauze stoppen",
       "open_elsewhere_hint": "Je bent al ingeklokt op een andere vestiging. Verplaats je aanwezigheid naar hier, of klok uit.",
       "transfer_here": "Verplaats naar hier",
