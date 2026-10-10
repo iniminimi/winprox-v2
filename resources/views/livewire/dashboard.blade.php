@@ -190,21 +190,49 @@
                 <p class="wp-muted">{{ __('dashboard.starter_pack.intro_detail') }}</p>
 
                 <fieldset class="wp-stack-tight">
-                    <legend class="wp-label">{{ __('dashboard.starter_pack.choose_type') }}</legend>
-                    @foreach ($starterPackTypes as $type)
-                        <label class="wp-check wp-check--boxed">
-                            <input type="radio"
-                                   name="starterPackType"
-                                   value="{{ $type->value }}"
-                                   wire:model.live="starterPackType">
-                            <span class="wp-grow wp-stack-tight">
-                                <p class="wp-text-body"><strong>{{ __($type->labelKey()) }}</strong></p>
-                                <p class="wp-muted">{{ __($type->hintKey()) }}</p>
-                            </span>
-                        </label>
-                    @endforeach
-                    @error('starterPackType') <p class="wp-error">{{ $message }}</p> @enderror
+                    <legend class="wp-label">{{ __('dashboard.starter_pack.choose_intent') }}</legend>
+                    <label class="wp-check wp-check--boxed">
+                        <input type="radio" name="starterPackIntent" value="own_sites" wire:model.live="starterPackIntent">
+                        <span class="wp-grow wp-stack-tight">
+                            <p class="wp-text-body"><strong>{{ __('starter_pack.intents.own_sites') }}</strong></p>
+                            <p class="wp-muted">{{ __('starter_pack.intent_hints.own_sites') }}</p>
+                        </span>
+                    </label>
+                    <label class="wp-check wp-check--boxed">
+                        <input type="radio" name="starterPackIntent" value="at_customers" wire:model.live="starterPackIntent">
+                        <span class="wp-grow wp-stack-tight">
+                            <p class="wp-text-body"><strong>{{ __('starter_pack.intents.at_customers') }}</strong></p>
+                            <p class="wp-muted">{{ __('starter_pack.intent_hints.at_customers') }}</p>
+                        </span>
+                    </label>
+                    <label class="wp-check wp-check--boxed">
+                        <input type="radio" name="starterPackIntent" value="fleet" wire:model.live="starterPackIntent">
+                        <span class="wp-grow wp-stack-tight">
+                            <p class="wp-text-body"><strong>{{ __('starter_pack.intents.fleet') }}</strong></p>
+                            <p class="wp-muted">{{ __('starter_pack.intent_hints.fleet') }}</p>
+                        </span>
+                    </label>
+                    @error('starterPackIntent') <p class="wp-error">{{ $message }}</p> @enderror
                 </fieldset>
+
+                @if ($starterPackIntent === 'at_customers')
+                    <fieldset class="wp-stack-tight">
+                        <legend class="wp-label">{{ __('dashboard.starter_pack.choose_at_customers') }}</legend>
+                        @foreach ($starterPackAtCustomerTypes as $type)
+                            <label class="wp-check wp-check--boxed">
+                                <input type="radio"
+                                       name="starterPackType"
+                                       value="{{ $type->value }}"
+                                       wire:model.live="starterPackType">
+                                <span class="wp-grow wp-stack-tight">
+                                    <p class="wp-text-body"><strong>{{ __($type->labelKey()) }}</strong></p>
+                                    <p class="wp-muted">{{ __($type->hintKey()) }}</p>
+                                </span>
+                            </label>
+                        @endforeach
+                        @error('starterPackType') <p class="wp-error">{{ $message }}</p> @enderror
+                    </fieldset>
+                @endif
 
                 @if ($starterPackAsksSize)
                     <fieldset class="wp-stack-tight">

@@ -104,7 +104,9 @@
     },
     "result_body": "We hebben een kleine voorbeeldomgeving voor je klaargezet. Kijk rustig rond en probeer zelf een melding te maken.",
     "result_own_later": "Wil je meteen met je eigen omgeving beginnen? Je kunt later altijd locaties, teams en units toevoegen.",
-    "self_start": "Liever zelf beginnen"
+    "self_start": "Liever zelf beginnen",
+    "choose_intent": "Waar werkt je team vooral?",
+    "choose_at_customers": "Wat is nu het belangrijkst?"
   },
   "intent": {
     "title": "Wat wil je doen?",

@@ -1,9 +1,9 @@
 {
     "types": {
         "own_sites": "En mis propias ubicaciones",
-        "on_site": "En ubicaciones de clientes",
+        "on_site": "Facility — avisos, tareas y rondas en clientes",
         "fleet": "Para vehículos y flotas",
-        "checkmate": "Checkmate — trabajo en clientes",
+        "checkmate": "Checkmate — presencia / RSZ",
         "hotel": "Hotel",
         "hospital": "Hospital",
         "industry": "Industria",
@@ -161,8 +161,18 @@
     },
     "hints": {
         "own_sites": "Por ejemplo hoteles, centros sanitarios, industria, ayuntamientos, gestión inmobiliaria, etc.",
-        "on_site": "Por ejemplo empresas de limpieza, construcción, mantenimiento y servicios técnicos.",
+        "on_site": "Entorno de ejemplo con ubicaciones, units y vínculo de cliente — apto para rondas e incidencias.",
         "fleet": "Para vehículos, controles y seguimiento.",
-        "checkmate": "Para equipos que trabajan en clientes: comunicar la presencia in situ a la ONSS (CIAO). Un mes de prueba gratis; después 5 € por trabajador al mes."
+        "checkmate": "Comunicar la presencia en sitio a la RSZ (CIAO). Un mes gratis; luego 5€ por operario al mes."
+    },
+    "intents": {
+        "own_sites": "En mis propias ubicaciones",
+        "at_customers": "En ubicaciones de clientes",
+        "fleet": "Para vehículos y flota"
+    },
+    "intent_hints": {
+        "own_sites": "Guardería, escuela, fábrica, hotel… — edificios propios. Reloj y avisos internos opcionales.",
+        "at_customers": "Limpieza, construcción, mantenimiento… — luego Checkmate (presencia/RSZ) o Facility (rondas y avisos).",
+        "fleet": "Para vehículos, controles y seguimiento."
     }
 }

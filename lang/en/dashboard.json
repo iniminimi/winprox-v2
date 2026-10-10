@@ -104,7 +104,9 @@
     },
     "result_body": "We have set up a small sample environment for you. Look around and try creating an issue yourself.",
     "result_own_later": "Want to start with your own setup right away? You can always add locations, teams and units later.",
-    "self_start": "Start on my own"
+    "self_start": "Start on my own",
+    "choose_intent": "Where does your team mostly work?",
+    "choose_at_customers": "What matters most right now?"
   },
   "intent": {
     "title": "What do you want to do?",

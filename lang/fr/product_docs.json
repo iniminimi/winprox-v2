@@ -175,15 +175,15 @@
         "items": [
           "Les ouvriers pointent via le même QR Clock Point.",
           "Une visite client démarre par un contrôle GPS dans le rayon convenu.",
-          "Clients et adresses de chantier se gèrent dans un seul écran.",
-          "Importez les clients en masse via CSV ou Excel (adresses de chantier par ligne incluses).",
+          "Clients et lieux liés (avec une unité « site entier ») se gèrent sous Clients et Lieux.",
+          "Importez les clients en masse via CSV ou Excel (données de lieu par ligne incluses).",
           "Présences, décomptes d’heures et Mes heures comme dans Time.",
           "CIAO (ONSS) est activé dès le départ — encodez le numéro d'entreprise dans les paramètres.",
           "Vous transmettez les heures au secrétariat social. Pas de Dimona et pas de calcul de paie.",
           "Son propre manuel compact au lieu du manuel WinProx général.",
           "5 € par ouvrier actif par mois ; nombre de sièges ajustable.",
-          "Les nouvelles organisations choisissent Checkmate comme modèle de départ : un mois d'essai plus une équipe de démonstration avec un ouvrier et deux clients de démonstration.",
-          "Statistiques mensuelles par client : visites, temps travaillé et heures par adresse de travail — exportables en CSV ou à imprimer."
+          "Les nouvelles organisations choisissent Chez des clients → Checkmate comme parcours de démarrage : un mois d’essai plus équipe démo, ouvrier et clients démo.",
+          "Statistiques mensuelles par client : visites, temps travaillé et heures par lieu lié — exportables en CSV ou à imprimer."
         ]
       },
       {
@@ -452,8 +452,8 @@
         "key": "checkmate",
         "title": "Checkmate",
         "items": [
-          "Checkmate n'est pas une app séparée : la même plateforme avec une whitelist par plan pour les routes admin et les tuiles du portail.",
-          "Même isolation des tenants, infrastructure Time et portail Clock Point ; les routes facility renvoient 404.",
+          "Checkmate n’est pas une app séparée : preset de plan avec whitelist (Clients, Lieux/Units, Time, …) sur le même modèle Location/Unit ; les routes facility comme les signalements renvoient 404.",
+          "Même isolation des tenants, infrastructure Time et portail Clock Point ; les lieux reçoivent une unité site par défaut pour un chemin d’upgrade Facility sûr.",
           "5 € par exécutant actif et par mois (par siège via Stripe)."
         ]
       }

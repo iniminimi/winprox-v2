@@ -284,8 +284,10 @@ it('toont de voorbeeldomgeving-keuze op het dashboard van een lege werkruimte', 
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
         ->assertSee(__('dashboard.starter_pack.offer_title'))
-        ->assertSee(__('dashboard.starter_pack.choose_type'))
-        ->assertSee(__('starter_pack.types.on_site'))
+        ->assertSee(__('dashboard.starter_pack.choose_intent'))
+        ->assertSee(__('starter_pack.intents.own_sites'))
+        ->assertSee(__('starter_pack.intents.at_customers'))
+        ->assertSee(__('starter_pack.intents.fleet'))
         ->assertSee(__('dashboard.starter_pack.create'))
         ->assertDontSee(__('dashboard.onboarding.teams.button'));
 });
@@ -299,7 +301,7 @@ it('toont het zelf-beginnen-pad na overslaan van de voorbeeldomgeving', function
         ->assertSee(__('dashboard.onboarding.teams.title'))
         ->assertSee(__('dashboard.onboarding.teams.button'))
         ->assertSee(__('dashboard.starter_pack.help_button'))
-        ->assertDontSee(__('dashboard.starter_pack.choose_type'));
+        ->assertDontSee(__('dashboard.starter_pack.choose_intent'));
 });
 
 it('laadt een starttemplate via het dashboard en toont het resultaat', function () {
@@ -341,7 +343,8 @@ it('toont de starttemplate-knop voor een superuser in support view', function ()
 
     Livewire::actingAs($super)
         ->test(Dashboard::class)
-        ->assertSee(__('dashboard.starter_pack.choose_type'))
+        ->assertSee(__('dashboard.starter_pack.choose_intent'))
+        ->set('starterPackIntent', 'own_sites')
         ->set('starterPackType', TenantStarterPackType::OwnSites->value)
         ->call('applyStarterPack')
         ->assertHasNoErrors()
@@ -446,9 +449,10 @@ it('toont de grootte-vraag alleen bij werken bij klanten', function () {
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
         ->call('openStarterPackModal')
+        ->set('starterPackIntent', 'at_customers')
         ->set('starterPackType', TenantStarterPackType::OnSite->value)
         ->assertSee(__('dashboard.starter_pack.choose_size'))
-        ->set('starterPackType', TenantStarterPackType::OwnSites->value)
+        ->set('starterPackIntent', 'own_sites')
         ->assertDontSee(__('dashboard.starter_pack.choose_size'))
         ->assertSee(__('dashboard.starter_pack.preview_teams'));
 });
@@ -497,6 +501,7 @@ it('zet checkmate-proef met team, uitvoerder en demoklanten zonder facility-stru
         ->and($payload['team_ids'])->toHaveCount(1)
         ->and($payload['worker_ids'])->toHaveCount(1)
         ->and($tenant->checkmateMode())->toBeTrue()
+        ->and($tenant->customersOnLocation())->toBeTrue()
         ->and($tenant->hasTimeModule())->toBeTrue()
         ->and($tenant->presenceComplianceEnabled())->toBeTrue()
         ->and($tenant->presenceComplianceScope())->toBe(\App\Enums\PresenceComplianceScope::CiaoCleaning)
@@ -605,6 +610,8 @@ it('toont de checkmate-keuze met team-, uitvoerder- en klanten-preview op het da
 
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
+        ->set('starterPackIntent', 'at_customers')
+        ->assertSee(__('dashboard.starter_pack.choose_at_customers'))
         ->assertSee(__('starter_pack.types.checkmate'))
         ->set('starterPackType', TenantStarterPackType::Checkmate->value)
         ->assertSee(__('dashboard.starter_pack.preview_teams'))

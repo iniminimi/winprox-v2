@@ -104,7 +104,9 @@
     },
     "result_body": "Abbiamo preparato un piccolo ambiente di esempio. Guardati intorno e prova a creare una segnalazione.",
     "result_own_later": "Vuoi iniziare subito con il tuo ambiente? Puoi sempre aggiungere sedi, team e unit più tardi.",
-    "self_start": "Inizia da solo"
+    "self_start": "Inizia da solo",
+    "choose_intent": "Dove lavora soprattutto il team?",
+    "choose_at_customers": "Cosa conta di più adesso?"
   },
   "intent": {
     "title": "Cosa vuoi fare?",

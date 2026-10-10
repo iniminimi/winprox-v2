@@ -1,9 +1,9 @@
 {
     "types": {
         "own_sites": "Nelle mie sedi",
-        "on_site": "Sede dei clienti",
+        "on_site": "Facility — segnalazioni, compiti e giri presso i clienti",
         "fleet": "Per veicoli e flotta",
-        "checkmate": "Checkmate — presso i clienti",
+        "checkmate": "Checkmate — presenza / RSZ",
         "hotel": "Hotel",
         "hospital": "Ospedale",
         "industry": "Industria",
@@ -161,8 +161,18 @@
     },
     "hints": {
         "own_sites": "Ad esempio hotel, strutture sanitarie, industria, comuni, gestione immobiliare, ecc.",
-        "on_site": "Ad esempio imprese di pulizia, edili, di manutenzione e servizi tecnici.",
+        "on_site": "Ambiente di esempio con sedi, unit e collegamento cliente — adatto a giri ispettivi e segnalazioni.",
         "fleet": "Per veicoli, controlli e follow-up.",
-        "checkmate": "Per i team che lavorano presso i clienti: comunicare la presenza in loco all'ONSS (CIAO). Un mese di prova gratis; poi 5 € per operatore al mese."
+        "checkmate": "Comunicare la presenza sul posto alla RSZ (CIAO). Un mese gratis; poi 5€ per esecutore al mese."
+    },
+    "intents": {
+        "own_sites": "Nelle mie sedi",
+        "at_customers": "Presso i clienti",
+        "fleet": "Per veicoli e flotta"
+    },
+    "intent_hints": {
+        "own_sites": "Asilo, scuola, fabbrica, hotel… — edifici propri. Timbratura e segnalazioni interne opzionali.",
+        "at_customers": "Pulizie, edilizia, manutenzione… — poi Checkmate (presenza/INPS) o Facility (giri e segnalazioni).",
+        "fleet": "Per veicoli, controlli e follow-up."
     }
 }

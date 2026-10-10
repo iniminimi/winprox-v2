@@ -104,7 +104,9 @@
     },
     "result_body": "Wir haben eine kleine Beispielumgebung für Sie angelegt. Schauen Sie sich um und versuchen Sie, selbst eine Meldung zu erstellen.",
     "result_own_later": "Möchten Sie gleich mit Ihrer eigenen Umgebung starten? Standorte, Teams und Units können Sie später jederzeit hinzufügen.",
-    "self_start": "Lieber selbst starten"
+    "self_start": "Lieber selbst starten",
+    "choose_intent": "Wo arbeitet Ihr Team vor allem?",
+    "choose_at_customers": "Was ist jetzt am wichtigsten?"
   },
   "intent": {
     "title": "Was möchten Sie tun?",

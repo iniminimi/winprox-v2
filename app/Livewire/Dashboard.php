@@ -36,6 +36,8 @@ class Dashboard extends Component
 
     public bool $skipStarterPack = false;
 
+    public string $starterPackIntent = '';
+
     public string $starterPackType = '';
 
     public string $starterPackSize = '';
@@ -45,6 +47,7 @@ class Dashboard extends Component
         $this->authorize('applyStarterPack', $this->starterPackTenant());
 
         $this->resetValidation();
+        $this->starterPackIntent = '';
         $this->starterPackType = '';
         $this->starterPackSize = '';
         $this->skipStarterPack = false;
@@ -55,6 +58,7 @@ class Dashboard extends Component
         $this->authorize('applyStarterPack', $this->starterPackTenant());
 
         $this->skipStarterPack = true;
+        $this->starterPackIntent = '';
         $this->starterPackType = '';
         $this->starterPackSize = '';
         $this->resetValidation();
@@ -63,6 +67,17 @@ class Dashboard extends Component
     public function closeStarterPackModal(): void
     {
         $this->skipStarterPackChooser();
+    }
+
+    public function updatedStarterPackIntent(): void
+    {
+        $this->starterPackType = match ($this->starterPackIntent) {
+            'own_sites' => TenantStarterPackType::OwnSites->value,
+            'fleet' => TenantStarterPackType::Fleet->value,
+            default => '',
+        };
+        $this->starterPackSize = '';
+        $this->resetValidation(['starterPackType', 'starterPackSize']);
     }
 
     public function updatedStarterPackType(): void
@@ -92,6 +107,7 @@ class Dashboard extends Component
         );
 
         $user->unsetRelation('tenant');
+        $this->starterPackIntent = '';
         $this->starterPackType = '';
         $this->starterPackSize = '';
         $this->skipStarterPack = false;
@@ -217,6 +233,7 @@ class Dashboard extends Component
             'canDismissStarterPackResult' => $canDismissStarterPackResult,
             'starterPackSummary' => $starterPackSummary,
             'starterPackTypes' => TenantStarterPackType::onboardingChoices(),
+            'starterPackAtCustomerTypes' => TenantStarterPackType::atCustomerFollowUpChoices(),
             'starterPackSizes' => TenantStarterPackSize::cases(),
             'starterPackAsksSize' => $starterPackAsksSize,
             'starterPackPreview' => $starterPackPreview,

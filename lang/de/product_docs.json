@@ -175,15 +175,15 @@
         "items": [
           "Mitarbeiter stechen über denselben Clock-Point-QR ein.",
           "Ein Kundenbesuch startet mit einer GPS-Prüfung innerhalb des Radius.",
-          "Kunden und Einsatzadressen in einem Bildschirm verwalten.",
-          "Kunden per CSV oder Excel in Bulk importieren (inkl. Einsatzadressen pro Zeile).",
+          "Kunden und verknüpfte Standorte (mit Ganz-Standort-Unit) verwalten Sie unter Kunden und Standorte.",
+          "Kunden per CSV oder Excel in Bulk importieren (inkl. Standortdaten pro Zeile).",
           "Anwesenheit, Stundenkonto und Meine Stunden wie in Time.",
           "CIAO (LSS) ist ab Beginn aktiv — Unternehmensnummer in den Einstellungen eintragen.",
           "Die Stunden geben Sie an das Sozialsekretariat weiter. Kein Dimona und keine Lohnberechnung.",
           "Eigene kompakte Anleitung statt der allgemeinen WinProx-Anleitung.",
           "5 € pro aktivem Mitarbeiter im Monat; Sitzzahl anpassbar.",
-          "Neue Organisationen wählen Checkmate als Startvorlage: ein Monat Probezeit plus ein Demo-Team mit Mitarbeiter und zwei Demokunden zum Start.",
-          "Monatsstatistiken pro Kunde: Besuche, Arbeitszeit und Stunden pro Arbeitsadresse — exportierbar als CSV oder Druck."
+          "Neue Organisationen wählen Bei Kunden → Checkmate als Startweg: ein Monat Probezeit plus Demo-Team, Mitarbeiter und Demokunden.",
+          "Monatsstatistiken pro Kunde: Besuche, Arbeitszeit und Stunden pro verknüpftem Standort — exportierbar als CSV oder Druck."
         ]
       },
       {
@@ -452,8 +452,8 @@
         "key": "checkmate",
         "title": "Checkmate",
         "items": [
-          "Checkmate ist keine eigene App: dieselbe Plattform mit einer per-Plan-Whitelist für Admin-Routen und Portal-Kacheln.",
-          "Gleiche Mandantenisolation, Time-Infrastruktur und Clock-Point-Portal; Facility-Routen liefern 404.",
+          "Checkmate ist keine eigene App: Plan-Preset mit Whitelist (Kunden, Standorte/Units, Time, …) auf demselben Location/Unit-Modell; Facility-Routen wie Meldungen liefern 404.",
+          "Gleiche Mandantenisolation, Time-Infrastruktur und Clock-Point-Portal; Standorte erhalten standardmäßig eine Site-Unit für einen sicheren Facility-Upgrade-Pfad.",
           "5 € pro aktivem Ausführenden und Monat (per Seat über Stripe)."
         ]
       }

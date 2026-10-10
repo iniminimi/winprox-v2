@@ -1,9 +1,9 @@
 {
     "types": {
         "own_sites": "Op mijn eigen locaties",
-        "on_site": "Op locaties van klanten",
+        "on_site": "Facility — meldingen, taken en rondes bij klanten",
         "fleet": "Voor voertuigen en fleet",
-        "checkmate": "Checkmate — werken bij klanten",
+        "checkmate": "Checkmate — aanwezigheid / RSZ",
         "hotel": "Hotel",
         "hospital": "Ziekenhuis",
         "industry": "Industrie",
@@ -161,8 +161,18 @@
     },
     "hints": {
         "own_sites": "Voor bijvoorbeeld hotels, zorginstellingen, industrie, gemeenten, vastgoedbeheer enz.",
-        "on_site": "Voor bijvoorbeeld schoonmaakbedrijven, bouwbedrijven, onderhoudsbedrijven en technische dienstverlening.",
+        "on_site": "Voorbeeldomgeving met locaties, units en klantkoppeling — geschikt voor inspectierondes en meldingen.",
         "fleet": "Voor voertuigen, controles en opvolging.",
-        "checkmate": "Voor teams die bij klanten werken: aanwezigheid ter plaatse doorgeven aan de RSZ (CIAO). Eén maand gratis proberen; daarna €5 per uitvoerder per maand."
+        "checkmate": "Aanwezigheid ter plaatse doorgeven aan de RSZ (CIAO). Eén maand gratis; daarna €5 per uitvoerder per maand."
+    },
+    "intents": {
+        "own_sites": "Op mijn eigen locaties",
+        "at_customers": "Bij klanten op locatie",
+        "fleet": "Voor voertuigen en fleet"
+    },
+    "intent_hints": {
+        "own_sites": "Crèche, school, fabriek, hotel… — eigen gebouwen. Prikklok en eventueel interne meldingen.",
+        "at_customers": "Schoonmaak, bouw, onderhoud… — daarna kies je Checkmate (aanwezigheid/RSZ) of Facility (rondes en meldingen).",
+        "fleet": "Voor voertuigen, controles en opvolging."
     }
 }

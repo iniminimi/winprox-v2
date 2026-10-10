@@ -56,6 +56,9 @@ final class PrepareManualCaptureTenantAction
             if (! $tenant->checkmateMode()) {
                 $updates['checkmate_mode'] = true;
             }
+            if (! $tenant->customersOnLocation()) {
+                $updates['customers_on_location'] = true;
+            }
         } elseif (! $tenant->hasEsgModule()) {
             $updates['has_esg_module'] = true;
         }

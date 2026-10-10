@@ -175,15 +175,15 @@
         "items": [
           "Los operarios fichan con el mismo QR del Clock Point.",
           "La visita al cliente empieza con un control GPS dentro del radio acordado.",
-          "Clientes y direcciones de trabajo en una sola pantalla.",
-          "Importa clientes en masa mediante CSV o Excel (direcciones de trabajo por fila incluidas).",
+          "Clientes y ubicaciones vinculadas (con unidad «toda la sede») en Clientes y Ubicaciones.",
+          "Importa clientes en masa mediante CSV o Excel (datos de ubicación por fila incluidos).",
           "Presencia, parte de horas y Mis horas como en Time.",
           "CIAO (ONSS) está activo desde el inicio — indique el número de empresa en los ajustes.",
           "Usted pasa las horas a la secretaría social. Sin Dimona y sin cálculo de nómina.",
           "Su propio manual compacto en lugar del manual general de WinProx.",
           "5 € por operario activo al mes; plazas ajustables.",
-          "Las organizaciones nuevas eligen Checkmate como plantilla inicial: un mes de prueba más un equipo de demostración con un trabajador y dos clientes de demostración.",
-          "Estadísticas mensuales por cliente: visitas, tiempo trabajado y horas por dirección de trabajo — exportables en CSV o imprimibles."
+          "Las organizaciones nuevas eligen En clientes → Checkmate como ruta de inicio: un mes de prueba más equipo demo, trabajador y clientes demo.",
+          "Estadísticas mensuales por cliente: visitas, tiempo trabajado y horas por ubicación vinculada — exportables en CSV o imprimibles."
         ]
       },
       {
@@ -452,8 +452,8 @@
         "key": "checkmate",
         "title": "Checkmate",
         "items": [
-          "Checkmate no es una app aparte: la misma plataforma con una whitelist por plan para rutas admin y tarjetas del portal.",
-          "Mismo aislamiento de inquilinos, infraestructura Time y portal Clock Point; las rutas de facility devuelven 404.",
+          "Checkmate no es una app aparte: preset de plan con whitelist (Clientes, Ubicaciones/Units, Time, …) sobre el mismo modelo Location/Unit; las rutas de facility como avisos dan 404.",
+          "Mismo aislamiento de inquilinos, infraestructura Time y portal Clock Point; las ubicaciones reciben una unidad de sede por defecto para un camino de upgrade Facility seguro.",
           "5 € por trabajador activo al mes (por puesto vía Stripe)."
         ]
       }

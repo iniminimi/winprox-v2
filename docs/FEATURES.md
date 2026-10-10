@@ -59,7 +59,14 @@ Een starttemplate toont de keuze in preview en op
 - Extra ruimte tussen intent-sectie en **Dashboard**-kop; daaronder KPI’s, recente meldingen, briefing en starttemplate.
 
 **Starttemplate (optioneel, nieuwe organisaties)**
-- Op het dashboard zolang er nog geen teams/categorieën/units zijn: **welkomkaart** met drie keuzes (eigen locaties, locaties van klanten, voertuigen en fleet). Bij **op locaties van klanten** ook de **grootte** (1–5 / 6–20 / 21+). Preview van teams, categorieën, locatie en units. Knop **Voorbeeldomgeving maken**, of **Liever zelf beginnen**. Een bestaande locatie zonder units wordt bij het laden van het template vervangen.
+- Op het dashboard zolang er nog geen teams/categorieën/units zijn: **welkomkaart**
+  met intent **Waar werkt je team?** → **Eigen sites** · **Bij klanten** · **Fleet**
+  (+ zelf beginnen). Bij **Bij klanten** follow-up: **Checkmate** (aanwezigheid/RSZ)
+  of **Facility** (`on_site`, met grootte 1–5 / 6–20 / 21+). Eigen sites / fleet zetten
+  `customers_on_location` uit; Checkmate / Facility-bij-klanten zetten die aan.
+  Preview van teams/categorieën/locatie/units (of Checkmate-demo klanten). Knop
+  **Voorbeeldomgeving maken**. Een bestaande locatie zonder units wordt bij het laden
+  van het template vervangen.
 - Na aanmaken: kaart **Je omgeving is klaar** met een korte uitleg, knop **Bekijk mijn omgeving** en optioneel **Verwijder starttemplate**. De kaart verdwijnt automatisch na 7 dagen (of eerder via **Sluiten**).
 - Stelt een beperkt **werkmenu** in (sidebar): meldingen en taken centraal; extra’s (reserveringen, unitmetingen, …) later zelf aanzetten via **Organisatie → Instellingen → Werkmenu instellingen**. Kleine ploegen bij klanten: één team, extra-werkmenu uit.
 - Namen van teams/categorieën/locatie/units worden in **alle talen** in de DB gezet. Hernoemen blijft altijd mogelijk. Zodra er meldingen zijn, kunnen units alleen nog **gedeactiveerd** worden; het template blijft dan bestaan.
@@ -1293,19 +1300,15 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
   (zelfde plan-kiezer). **Jaarlijks** (365 dagen) of op maat; niet via Stripe Checkout.
   Time + IoT + ESG + API. Prijs op maat (geen Stripe price_id).
 - **Checkmate** (`checkmate` / `checkmate_trial`): veldwerk-preset op hetzelfde product —
-  geen Facility-module, wél Time + GPS-klantbezoeken (blokkerende straal, default 100 m).
-  **5€ per actieve uitvoerder per maand**; seat-aantal instelbaar op het betaalde plan
-  (`tenants.billing_seats_qty`, nooit onder het actieve aantal). Tenantvlag
-  `checkmate_mode` volgt de plan-entitlement en activeert de whitelist-gating:
-  niet-vrijgegeven admin-routes → 404, sidebar beperkt tot Klanten (`/klanten`),
-  Uitvoerders, Time (aanwezigheid/uren/CIAO/Clock Points), Instellingen en Abonnement.
-  Zelfde Clock Point-portaal voor klokken, pauzes, klantbezoeken (klant kiezen of
-  onderweg aanmaken met zachte dedup-nudge) en Mijn uren. **Klanten importeren**
-  via CSV/Excel op `/klanten` (zelfde patroon als locatie-import: `name` verplicht,
-  optioneel werkadres per rij, dedup op naam, recente imports terug te draaien).
-  CIAO (RSZ) via
-  self-service aanvraag op Instellingen → pending → superuser-bevestiging
-  (`presence_compliance_requested_at`). Volledige spec: `docs/CHECKMATE.md`.
+  Time + GPS-klantbezoeken (blokkerende straal, default 100 m) + `customers_on_location`.
+  Locaties krijgen «Hele locatie»-units (upgrade naar Facility zonder data-kloof).
+  **5€ per actieve uitvoerder per maand**; seats via `billing_seats_qty`.
+  `checkmate_mode` whitelist: Dashboard, Klanten, Locaties/Units, Uitvoerders, Time,
+  Instellingen, Abonnement. Portaal: klok, klantbezoek, pauze, Mijn uren.
+  Volledige spec: `docs/CHECKMATE.md`.
+- **Instellingen — klanten op locatie** (`tenants.customers_on_location`): toont
+  **Klanten** in het menu (Facility) of forceert aan op Checkmate. Locaties koppelen
+  aan een klant (DDT/GPS op de locatie). Uit = eigen sites (bv. crèche).
 - **Legacy `facility_*` en `winprox_100`:** blijven in config (niet in catalogus).
 - Plankaarten + vergelijkingstabel op publieke `/pricing` (informatief + trial-registratie).
   In de app: status + limieten + **formule activeren** (Stripe Checkout indien geconfigureerd;

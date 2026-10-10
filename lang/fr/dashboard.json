@@ -104,7 +104,9 @@
     },
     "result_body": "Nous avons préparé un petit environnement d’exemple. Explorez-le et essayez de créer un signalement.",
     "result_own_later": "Vous préférez commencer tout de suite avec votre propre environnement ? Vous pourrez toujours ajouter des lieux, équipes et units plus tard.",
-    "self_start": "Commencer seul"
+    "self_start": "Commencer seul",
+    "choose_intent": "Où travaille surtout votre équipe ?",
+    "choose_at_customers": "Qu’est-ce qui compte le plus maintenant ?"
   },
   "intent": {
     "title": "Que voulez-vous faire ?",

@@ -1,9 +1,9 @@
 {
     "types": {
         "own_sites": "Sur mes propres sites",
-        "on_site": "Sur les sites des clients",
+        "on_site": "Facility — signalements, tâches et rondes chez les clients",
         "fleet": "Pour véhicules et flotte",
-        "checkmate": "Checkmate — chez le client",
+        "checkmate": "Checkmate — présence / ONSS",
         "hotel": "Hôtel",
         "hospital": "Hôpital",
         "industry": "Industrie",
@@ -161,8 +161,18 @@
     },
     "hints": {
         "own_sites": "Par exemple hôtels, établissements de soin, industrie, communes, gestion immobilière, etc.",
-        "on_site": "Par exemple entreprises de nettoyage, de construction, de maintenance et de services techniques.",
+        "on_site": "Environnement d’exemple avec lieux, units et lien client — adapté aux rondes et signalements.",
         "fleet": "Pour les véhicules, les contrôles et le suivi.",
-        "checkmate": "Pour les équipes chez le client : communiquer la présence sur place à l'ONSS (CIAO). Un mois d'essai gratuit ; ensuite 5 € par ouvrier par mois."
+        "checkmate": "Transmettre la présence sur site à l’ONSS (CIAO). Un mois gratuit ; puis 5€ par exécutant et par mois."
+    },
+    "intents": {
+        "own_sites": "Sur mes propres sites",
+        "at_customers": "Chez des clients",
+        "fleet": "Pour véhicules et flotte"
+    },
+    "intent_hints": {
+        "own_sites": "Crèche, école, usine, hôtel… — vos bâtiments. Pointeuse et signalements internes optionnels.",
+        "at_customers": "Nettoyage, construction, maintenance… — puis Checkmate (présence/ONSS) ou Facility (rondes et signalements).",
+        "fleet": "Pour véhicules, contrôles et suivi."
     }
 }

@@ -134,6 +134,15 @@ class ApplyTenantStarterPackAction
             $locationNames = TenantStarterPackCatalog::namesByLocale(
                 TenantStarterPackCatalog::locationNameKey($data->type)
             );
+
+            $customerId = null;
+            if ($data->type === TenantStarterPackType::OnSite) {
+                $customer = $this->createCustomer->handle($tenant, [
+                    'name' => $locationNames[$locale],
+                ], $actorId);
+                $customerId = (int) $customer->id;
+            }
+
             $location = $this->createLocation->handle([
                 'name' => $locationNames[$locale],
                 'original_language' => $locale,
@@ -142,6 +151,7 @@ class ApplyTenantStarterPackAction
                 'postal_code' => $tenant->postal_code,
                 'city' => $tenant->city,
                 'country_code' => $tenant->country_code,
+                'customer_id' => $customerId,
                 'with_site_unit' => false,
             ], $tenantId, $actorId);
             $this->fillLocationTranslations($location, $locale, $locationNames);
@@ -195,6 +205,7 @@ class ApplyTenantStarterPackAction
                 'starter_pack_applied_at' => now(),
                 'starter_pack_payload' => $payload,
                 'starter_pack_result_dismissed_at' => null,
+                'customers_on_location' => $data->type->enablesCustomersOnLocation(),
             ])->save();
 
             return $payload;
@@ -217,7 +228,7 @@ class ApplyTenantStarterPackAction
     /**
      * Checkmate-keuze: zet de tenant op de checkmate-proef (billing_plan blijft
      * null; effectivePlanKey() kiest via checkmate_mode het checkmate_trial-preset),
-     * seed één team met één uitvoerder en demoklanten. Werkladressen komen later
+     * seed één team met één uitvoerder en demoklanten. Locaties/adressen komen later
      * via /klanten of onderweg (GPS-pin is vereist voor een werkbezoek — dus
      * bewust géén adres seeden).
      *

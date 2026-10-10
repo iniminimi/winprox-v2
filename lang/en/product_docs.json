@@ -175,15 +175,15 @@
         "items": [
           "Workers clock in via the same Clock Point QR.",
           "A customer visit starts with a GPS check inside the agreed radius.",
-          "Manage customers and work addresses in one screen.",
-          "Import customers in bulk via CSV or Excel (including work addresses per row).",
+          "Manage customers and linked locations (with a whole-site unit) under Customers and Locations.",
+          "Import customers in bulk via CSV or Excel (including location fields per row).",
           "Presence, hour statements and My hours as in Time.",
           "CIAO (RSZ) is on from the start — enter the enterprise number in the settings.",
           "You pass the hours to the social secretariat. No Dimona and no payroll calculation.",
           "Its own compact manual instead of the general WinProx manual.",
           "€5 per active worker per month; seat count adjustable.",
-          "New organisations pick Checkmate as their starter pack: a one-month trial plus a demo team with a worker and two demo customers to start with.",
-          "Per-customer monthly statistics: visits, worked time and hours per work address — exportable as CSV or print."
+          "New organisations pick At customers → Checkmate as their start path: a one-month trial plus a demo team, worker and demo customers.",
+          "Per-customer monthly statistics: visits, worked time and hours per linked location — exportable as CSV or print."
         ]
       },
       {
@@ -452,8 +452,8 @@
         "key": "checkmate",
         "title": "Checkmate",
         "items": [
-          "Checkmate is not a separate app: the same platform with a per-plan whitelist for admin routes and portal tiles.",
-          "Same tenant isolation, Time infrastructure and Clock Point portal; facility routes return 404.",
+          "Checkmate is not a separate app: a plan preset with a whitelist (Customers, Locations/Units, Time, …) on the same Location/Unit model; facility routes such as issues return 404.",
+          "Same tenant isolation, Time infrastructure and Clock Point portal; locations get a default site unit for a safe Facility upgrade path.",
           "€5 per active worker per month (per-seat via Stripe)."
         ]
       }

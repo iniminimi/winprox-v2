@@ -1,9 +1,9 @@
 {
     "types": {
         "own_sites": "An meinen eigenen Standorten",
-        "on_site": "An Standorten von Kunden",
+        "on_site": "Facility — Meldungen, Aufgaben und Runden bei Kunden",
         "fleet": "Für Fahrzeuge und Fuhrpark",
-        "checkmate": "Checkmate — Arbeit beim Kunden",
+        "checkmate": "Checkmate — Anwesenheit / LSS",
         "hotel": "Hotel",
         "hospital": "Krankenhaus",
         "industry": "Industrie",
@@ -161,8 +161,18 @@
     },
     "hints": {
         "own_sites": "Zum Beispiel Hotels, Pflegeeinrichtungen, Industrie, Gemeinden, Immobilienverwaltung usw.",
-        "on_site": "Zum Beispiel Reinigungs-, Bau-, Wartungs- und technische Dienstleistungsunternehmen.",
+        "on_site": "Beispielumgebung mit Standorten, Units und Kundenkopplung — geeignet für Inspektionsrunden und Meldungen.",
         "fleet": "Für Fahrzeuge, Kontrollen und Nachverfolgung.",
-        "checkmate": "Für Teams beim Kunden: Anwesenheit vor Ort an die LSS melden (CIAO). Einen Monat kostenlos testen; danach 5 € pro Mitarbeiter pro Monat."
+        "checkmate": "Anwesenheit vor Ort an die LSS (CIAO) melden. Einen Monat gratis; danach 5€ pro Ausführendem und Monat."
+    },
+    "intents": {
+        "own_sites": "An meinen eigenen Standorten",
+        "at_customers": "Bei Kunden vor Ort",
+        "fleet": "Für Fahrzeuge und Flotte"
+    },
+    "intent_hints": {
+        "own_sites": "Kita, Schule, Fabrik, Hotel… — eigene Gebäude. Stechuhr und optional interne Meldungen.",
+        "at_customers": "Reinigung, Bau, Wartung… — danach Checkmate (Anwesenheit/LSS) oder Facility (Runden und Meldungen).",
+        "fleet": "Für Fahrzeuge, Kontrollen und Nachverfolgung."
     }
 }

@@ -1,9 +1,9 @@
 {
     "types": {
         "own_sites": "At my own locations",
-        "on_site": "At customer sites",
+        "on_site": "Facility — issues, tasks and rounds at customers",
         "fleet": "For vehicles and fleet",
-        "checkmate": "Checkmate — working at customers",
+        "checkmate": "Checkmate — presence / RSZ",
         "hotel": "Hotel",
         "hospital": "Hospital",
         "industry": "Industry",
@@ -161,8 +161,18 @@
     },
     "hints": {
         "own_sites": "For example hotels, care facilities, industry, municipalities, property management, etc.",
-        "on_site": "For example cleaning, construction, maintenance and technical service companies.",
+        "on_site": "Sample setup with locations, units and customer links — suited for inspection rounds and issues.",
         "fleet": "For vehicles, checks and follow-up.",
-        "checkmate": "For teams working at customer sites: report on-site presence to the NSSO (CIAO). One month free trial; then €5 per worker per month."
+        "checkmate": "Report presence on site to the RSZ (CIAO). One month free; then €5 per worker per month."
+    },
+    "intents": {
+        "own_sites": "At my own sites",
+        "at_customers": "At customer sites",
+        "fleet": "For vehicles and fleet"
+    },
+    "intent_hints": {
+        "own_sites": "Daycare, school, factory, hotel… — your own buildings. Time clock and optional internal issues.",
+        "at_customers": "Cleaning, construction, maintenance… — then choose Checkmate (presence/RSZ) or Facility (rounds and issues).",
+        "fleet": "For vehicles, checks and follow-up."
     }
 }

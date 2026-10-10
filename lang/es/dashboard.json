@@ -104,7 +104,9 @@
     },
     "result_body": "Hemos preparado un entorno de ejemplo pequeño. Mira alrededor e intenta crear una incidencia.",
     "result_own_later": "¿Quieres empezar ya con tu propio entorno? Siempre puedes añadir ubicaciones, equipos y units más adelante.",
-    "self_start": "Empezar por mi cuenta"
+    "self_start": "Empezar por mi cuenta",
+    "choose_intent": "¿Dónde trabaja sobre todo su equipo?",
+    "choose_at_customers": "¿Qué importa más ahora?"
   },
   "intent": {
     "title": "¿Qué quieres hacer?",
