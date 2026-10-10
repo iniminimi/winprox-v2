@@ -721,12 +721,7 @@
                         @error('teamSessionLifespanCustomHours') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                 @endif
-                @if ($canManageTeams)
-                    <label class="wp-check">
-                        <input type="checkbox" wire:model="teamIsActive">
-                        {{ __('team.teams.modal.active') }}
-                    </label>
-                @endif
+                {{-- Actief/inactief: knoppen op de teamlijst, niet in dit modal. --}}
                 @if (! $isCheckmate)
                     <label class="wp-check">
                         <input type="checkbox" wire:model="teamClocksAllLocations">

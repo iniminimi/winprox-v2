@@ -927,7 +927,8 @@ it('verbergt locatiebeperking in uitvoerder- en team-modals voor checkmate', fun
         ->assertDontSee('teamClocksAllLocations', false)
         ->assertDontSee(__('team.teams.modal.clocks_all_locations'), false)
         ->assertDontSee(__('team.teams.modal.categories_title'), false)
-        ->assertDontSee(__('team.teams.modal.categories_subtitle'), false);
+        ->assertDontSee(__('team.teams.modal.categories_subtitle'), false)
+        ->assertDontSee(__('team.teams.modal.active'), false);
 
     $facilityTenant = Tenant::factory()->create([
         'checkmate_mode' => false,
