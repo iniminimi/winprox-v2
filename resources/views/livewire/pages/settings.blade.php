@@ -426,8 +426,10 @@
 
     @if ($canManageOrganisation && $hasTimeModule)
         <x-wp-settings-section
+            id="settings-presence"
             :title="__('settings.presence.title')"
             class="{{ $presenceComplianceEnabled ? '' : 'wp-settings-section--locked' }}"
+            :open-by-default="request()->query('open') === 'presence'"
         >
             @if (! $presenceComplianceEnabled)
                 @if ($presenceComplianceRequested ?? false)

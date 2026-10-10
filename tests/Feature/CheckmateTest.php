@@ -713,10 +713,16 @@ it('zet CIAO aan bij checkmate-entitlements en toont de BCE-nudge tot het nummer
         ->assertSee(__('settings.presence.save'), false)
         ->assertDontSee(__('settings.presence.request_submit'), false);
 
-    // CIAO aan maar nog geen BCE → nudge op het dashboard.
+    // CIAO aan maar nog geen BCE → nudge op het dashboard, CTA opent CIAO-sectie.
     $this->get('/dashboard')
         ->assertOk()
-        ->assertSee(__('dashboard.checkmate.ciao.missing_employer_title'), false);
+        ->assertSee(__('dashboard.checkmate.ciao.missing_employer_title'), false)
+        ->assertSee(route('settings.index', ['open' => 'presence']), false);
+
+    $this->get(route('settings.index', ['open' => 'presence']))
+        ->assertOk()
+        ->assertSee('id="settings-presence"', false)
+        ->assertSee('open: true', false);
 
     // BCE ingevuld → nudge weg (unsetRelation: de guard-cache houdt de oude
     // tenant-relatie vast, zelfde patroon als Dashboard-mutaties).
