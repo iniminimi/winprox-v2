@@ -564,9 +564,9 @@ class Index extends Component
             : collect();
 
         $checkmateMode = $tenant?->checkmateMode() ?? false;
-        $workAddressVideoRel = 'video/'.app()->getLocale().'/werkadres.mp4';
+        $workAddressVideoRel = 'video/'.app()->getLocale().'/klant_toevoegen.mp4';
         if (! is_file(public_path($workAddressVideoRel))) {
-            $workAddressVideoRel = 'video/nl/werkadres.mp4';
+            $workAddressVideoRel = 'video/nl/klant_toevoegen.mp4';
         }
         $workAddressVideoUrl = $checkmateMode && is_file(public_path($workAddressVideoRel))
             ? asset($workAddressVideoRel)
