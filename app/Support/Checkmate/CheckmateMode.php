@@ -26,7 +26,7 @@ final class CheckmateMode
             'dashboard',
             'customers.*',          // Plaatsen → Klanten
             'locations.*',          // Plaatsen → Categorieën + Locaties
-            'units.*',              // Plaatsen → Units (o.a. Hele locatie)
+            'units.*',              // Route OK (site-units); niet in Checkmate-menu
             'workers.*',            // Uitvoerders (lijst)
             'team.index',           // Uitvoerder-beheer (aanmaken/bewerken)
             'time.presence.*',      // Time: aanwezigheid

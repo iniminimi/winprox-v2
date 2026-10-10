@@ -785,15 +785,14 @@ it('blokkeert niet-whitelist admin-routes voor checkmate-tenants', function () {
     $this->get('/time/ciao')->assertOk();
     $this->get('/time/clock-points')->assertOk();
 
-    // Sidebar: Plaatsen zonder Categorieën (die zijn stil op de achtergrond).
+    // Sidebar: Plaatsen = Klanten + Locaties (geen Units/Categorieën in menu).
     $this->get('/dashboard')
         ->assertOk()
         ->assertSee(__('common.nav.places'), false)
         ->assertSee(__('locations.title'), false)
-        ->assertSee(__('units.title'), false)
         ->assertDontSee(__('locations.categories.title'), false)
         ->assertDontSee('section=categories', false)
-        ->assertSee('href="'.url('/units'), false);
+        ->assertDontSee('href="'.url('/units').'"', false);
 });
 
 it('linkt op toegestane time-pagina’s nooit naar gated routes voor checkmate', function () {

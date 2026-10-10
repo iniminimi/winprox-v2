@@ -189,7 +189,7 @@
                         @endforeach
                     @elseif ($checkmateNav)
                         {{-- Checkmate-whitelist (docs/CHECKMATE.md §5): Plaatsen
-                             (Klanten/Locaties/Units — categorieën stil op de achtergrond),
+                             (Klanten/Locaties — Units/categorieën niet in menu),
                              Mensen, Time, Instellingen, Abonnement. --}}
                         <hr class="wp-nav-divider" role="presentation" aria-hidden="true">
 
@@ -221,11 +221,6 @@
                                    class="wp-nav-link wp-nav-link--sub {{ $cmLocationsActive && ! $cmUnitsActive ? 'is-active' : '' }}"
                                    @click="nav = false">
                                     <span>{{ __('locations.title') }}</span>
-                                </a>
-                                <a href="{{ route('units.index') }}"
-                                   class="wp-nav-link wp-nav-link--sub {{ $cmUnitsActive ? 'is-active' : '' }}"
-                                   @click="nav = false">
-                                    <span>{{ __('units.title') }}</span>
                                 </a>
                             </div>
                         </details>

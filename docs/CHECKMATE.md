@@ -28,10 +28,11 @@ generiek "lite CRM". Dat betekent:
   admin-routes en portaal-tegels zichtbaar zijn. Nieuwe features zijn voor
   Checkmate-tenants **standaard onzichtbaar** — een feature verschijnt pas na
   expliciete toevoeging aan de whitelist.
-- Whitelist admin: Dashboard, Plaatsen (Klanten, Locaties, Units), Uitvoerders,
-  Time (aanwezigheid/uren/CIAO), Instellingen, Abonnement. Categorieën bestaan
-  stil op de achtergrond (default «Klantlocatie») — niet in het menu.
-  Whitelist portaal: klok, klantbezoek, pauze, mijn uren.
+- Whitelist admin: Dashboard, Plaatsen (Klanten, Locaties), Uitvoerders, Time
+  (aanwezigheid/uren/CIAO), Instellingen, Abonnement. Units-route blijft
+  whitelisted maar staat niet in het menu (alleen «Hele locatie»-units).
+  Categorieën stil op de achtergrond (default «Klantlocatie»). Whitelist
+  portaal: klok, klantbezoek, pauze, mijn uren.
 
 ## 3. Datamodel
 
@@ -84,10 +85,10 @@ Whitelist-schermen:
   Clock Point-QR), KPI's (nu aanwezig, bezoeken vandaag, seats, actieve klanten)
   en de laatste klantbezoeken. Geen facility-tegels, starter packs of
   meldingen-feed.
-- **Plaatsen** — **Klanten**, **Locaties**, **Units** (geen Categorieën in het
-  menu). Bij plan-activatie/site-unit wordt stil een defaultcategorie
-  «Klantlocatie» gezet zodat Facility-gates niet blokkeren. Locatieformulier
-  kan een klant koppelen. Op locatie-detail: **geen** documenten/mededelingen
+- **Plaatsen** — **Klanten**, **Locaties** (geen Units/Categorieën in het menu).
+  Bij plan-activatie/site-unit wordt stil een defaultcategorie «Klantlocatie»
+  gezet zodat Facility-gates niet blokkeren. Locatieformulier kan een klant
+  koppelen. Op locatie-detail: **geen** documenten/mededelingen
   (Facility-portaalcontent). CSV-import op `/klanten` maakt altijd een
   «Hele locatie»-unit. Per klant maandstatistieken →
   `/klanten/{customer}/statistieken` (`SummarizeCustomerWorkStatsAction`).
