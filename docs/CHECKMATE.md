@@ -94,7 +94,9 @@ Whitelist-schermen:
   `/klanten/{customer}/statistieken` (`SummarizeCustomerWorkStatsAction`).
 - **Uitvoerders** — menu linkt naar `/team` (teams aanmaken + uitvoerder-
   beheer wonen daar). `/workers` blijft whitelisted als alleen-lezen lijst.
-- **Time** — aanwezigheid, uren, CIAO-inzendingen.
+- **Time** — aanwezigheid, uren, CIAO-inzendingen. **Clock Points:** precies één
+  («Aanmelden») — geen extra aanmaken, niet deactiveren, geen locatie-koppeling
+  (klantbezoek = GPS op klantlocatie). QR printen/mailen/vernieuwen mag wel.
 - **Instellingen / Abonnement** — BCE, bedrijfsgegevens, seats, Clock Point-links.
 
 Niet op de whitelist: Meldingen, Taken, Inspectierondes, Checklists, Kalender,

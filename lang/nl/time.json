@@ -272,6 +272,11 @@
         "invalid": "Vul een geldig e-mailadres in.",
         "rate_limited": "Te veel e-mails. Probeer over :seconds seconden opnieuw."
       }
+    },
+    "errors": {
+      "checkmate_single": "Checkmate heeft één Clock Point (Aanmelden). Extra aanmaken kan niet.",
+      "checkmate_cannot_deactivate": "Het Checkmate-Clock Point (Aanmelden) mag niet worden gedeactiveerd.",
+      "generic": "Clock Point kon niet worden bijgewerkt."
     }
   },
   "clock_displays": {

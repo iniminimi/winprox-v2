@@ -3,7 +3,9 @@
 namespace App\Actions\Time;
 
 use App\Models\ClockPoint;
+use App\Models\Tenant;
 use App\Support\Audit\AuditRecorder;
+use InvalidArgumentException;
 
 class SetClockPointActiveAction
 {
@@ -11,6 +13,13 @@ class SetClockPointActiveAction
 
     public function handle(ClockPoint $clockPoint, bool $isActive, ?int $actorUserId): ClockPoint
     {
+        if (! $isActive) {
+            $tenant = Tenant::query()->find((int) $clockPoint->tenant_id);
+            if ($tenant?->checkmateMode()) {
+                throw new InvalidArgumentException('checkmate_cannot_deactivate_clock_point');
+            }
+        }
+
         $clockPoint->update(['is_active' => $isActive]);
 
         $this->audit->record(

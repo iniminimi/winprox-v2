@@ -22,6 +22,7 @@ use App\Support\Qr\QrStickerSheetTemplate;
 use App\Support\Tenancy;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Validation\ValidationException;
+use InvalidArgumentException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -97,19 +98,29 @@ class ClockPointsIndex extends Component
             'sortOrder' => __('time.clock_points.fields.sort_order'),
         ]);
 
+        $checkmate = $tenant->checkmateMode();
         $payload = [
             'name' => $validated['name'],
-            'location_id' => $validated['locationId'] ?: null,
-            'sort_order' => (int) ($validated['sortOrder'] ?? 0),
+            'location_id' => $checkmate ? null : ($validated['locationId'] ?: null),
+            'sort_order' => $checkmate ? 0 : (int) ($validated['sortOrder'] ?? 0),
         ];
 
-        if ($this->editingClockPointId) {
-            $clockPoint = ClockPoint::query()->findOrFail($this->editingClockPointId);
-            $this->authorize('update', $clockPoint);
-            $update->handle($clockPoint, $payload, auth()->id());
-        } else {
-            $this->authorize('create', ClockPoint::class);
-            $create->handle($tenant, $payload + ['is_active' => true], auth()->id());
+        try {
+            if ($this->editingClockPointId) {
+                $clockPoint = ClockPoint::query()->findOrFail($this->editingClockPointId);
+                $this->authorize('update', $clockPoint);
+                $update->handle($clockPoint, $payload, auth()->id());
+            } else {
+                $this->authorize('create', ClockPoint::class);
+                $create->handle($tenant, $payload + ['is_active' => true], auth()->id());
+            }
+        } catch (InvalidArgumentException $e) {
+            session()->flash('error', match ($e->getMessage()) {
+                'checkmate_single_clock_point' => __('time.clock_points.errors.checkmate_single'),
+                default => __('time.clock_points.errors.generic'),
+            });
+
+            return;
         }
 
         $this->showModal = false;
@@ -121,7 +132,15 @@ class ClockPointsIndex extends Component
     {
         $clockPoint = ClockPoint::query()->findOrFail($clockPointId);
         $this->authorize('update', $clockPoint);
-        $setActive->handle($clockPoint, ! $clockPoint->is_active, auth()->id());
+
+        try {
+            $setActive->handle($clockPoint, ! $clockPoint->is_active, auth()->id());
+        } catch (InvalidArgumentException $e) {
+            session()->flash('error', match ($e->getMessage()) {
+                'checkmate_cannot_deactivate_clock_point' => __('time.clock_points.errors.checkmate_cannot_deactivate'),
+                default => __('time.clock_points.errors.generic'),
+            });
+        }
     }
 
     public function renewQr(int $clockPointId, RenewClockPointQrAction $renew): void

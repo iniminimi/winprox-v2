@@ -272,6 +272,11 @@
         "invalid": "Introduzca una dirección de correo válida.",
         "rate_limited": "Demasiados correos. Inténtelo de nuevo en :seconds segundos."
       }
+    },
+    "errors": {
+      "checkmate_single": "Checkmate tiene un Clock Point (Iniciar sesión). No se pueden crear más.",
+      "checkmate_cannot_deactivate": "El Clock Point de Checkmate (Iniciar sesión) no se puede desactivar.",
+      "generic": "No se pudo actualizar el Clock Point."
     }
   },
   "clock_displays": {

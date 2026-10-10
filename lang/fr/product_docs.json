@@ -453,7 +453,7 @@
         "title": "Checkmate",
         "items": [
           "Checkmate n’est pas une app séparée : preset de plan avec whitelist (Clients, Lieux/Units, Time, …) sur le même modèle Location/Unit ; les catégories restent silencieuses (défaut « Site client ») ; les routes facility comme les signalements renvoient 404.",
-          "Même isolation des tenants, infrastructure Time et portail Clock Point ; les lieux reçoivent une unité site par défaut pour un chemin d’upgrade Facility sûr.",
+          "Même isolation des tenants, infrastructure Time et portail Clock Point ; exactement un Clock Point (Connexion) — pas d’extra, pas de désactivation, pas de lieu de site ; les lieux reçoivent une unité site par défaut pour un chemin d’upgrade Facility sûr.",
           "5 € par exécutant actif et par mois (par siège via Stripe)."
         ]
       }

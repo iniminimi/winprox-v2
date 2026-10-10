@@ -25,7 +25,14 @@ class ClockPointPolicy
 
     public function create(User $user): bool
     {
-        return $this->viewAny($user);
+        if (! $this->viewAny($user)) {
+            return false;
+        }
+
+        // Checkmate: één vaste Clock Point via EnsureDefault — geen extra aanmaken.
+        $tenant = $this->resolveTenant($user);
+
+        return $tenant === null || ! $tenant->checkmateMode();
     }
 
     public function update(User $user, ClockPoint $clockPoint): bool

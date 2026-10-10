@@ -17,6 +17,9 @@
     @if (session('time_flash'))
         <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
     @endif
+    @if (session('error'))
+        <div class="wp-flash wp-flash--danger">{{ session('error') }}</div>
+    @endif
 
     @if ($blockedQrSummary !== [])
         <div class="wp-flash wp-flash--danger wp-stack-tight">
@@ -30,7 +33,8 @@
         </div>
     @endif
 
-    @can('create', \App\Models\ClockPoint::class)
+    {{-- QR-rotatie: ook bij Checkmate (één Clock Point vernieuwen) — niet achter create-gate. --}}
+    @can('viewAny', \App\Models\ClockPoint::class)
         <div class="wp-card wp-card-pad wp-time-qr-rotation" x-data="{ open: false }">
             <button
                 type="button"
@@ -122,9 +126,11 @@
                                 </a>
                             @endunless
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="openEdit({{ $clockPoint->id }})">{{ __('common.button.edit') }}</button>
-                            <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleActive({{ $clockPoint->id }})">
-                                {{ $clockPoint->is_active ? __('time.clock_points.deactivate') : __('time.clock_points.activate') }}
-                            </button>
+                            @unless ($checkmateMode ?? false)
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleActive({{ $clockPoint->id }})">
+                                    {{ $clockPoint->is_active ? __('time.clock_points.deactivate') : __('time.clock_points.activate') }}
+                                </button>
+                            @endunless
                         @endcan
                     </div>
                 </div>
@@ -148,21 +154,23 @@
                     <input id="cp-name" type="text" class="wp-input" wire:model="name">
                     @error('name') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
-                <div class="wp-field">
-                    <label class="wp-label" for="cp-location">{{ __('time.clock_points.fields.location') }}</label>
-                    <select id="cp-location" class="wp-select" wire:model="locationId">
-                        <option value="">{{ __('time.clock_points.fields.no_location') }}</option>
-                        @foreach ($locations as $location)
-                            <option value="{{ $location->id }}">{{ $location->localizedName() }}</option>
-                        @endforeach
-                    </select>
-                    @error('locationId') <p class="wp-error">{{ $message }}</p> @enderror
-                </div>
-                <div class="wp-field">
-                    <label class="wp-label" for="cp-sort">{{ __('time.clock_points.fields.sort_order') }}</label>
-                    <input id="cp-sort" type="number" min="0" class="wp-input" wire:model="sortOrder">
-                    @error('sortOrder') <p class="wp-error">{{ $message }}</p> @enderror
-                </div>
+                @unless ($checkmateMode ?? false)
+                    <div class="wp-field">
+                        <label class="wp-label" for="cp-location">{{ __('time.clock_points.fields.location') }}</label>
+                        <select id="cp-location" class="wp-select" wire:model="locationId">
+                            <option value="">{{ __('time.clock_points.fields.no_location') }}</option>
+                            @foreach ($locations as $location)
+                                <option value="{{ $location->id }}">{{ $location->localizedName() }}</option>
+                            @endforeach
+                        </select>
+                        @error('locationId') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="wp-field">
+                        <label class="wp-label" for="cp-sort">{{ __('time.clock_points.fields.sort_order') }}</label>
+                        <input id="cp-sort" type="number" min="0" class="wp-input" wire:model="sortOrder">
+                        @error('sortOrder') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                @endunless
                 <div class="wp-cluster">
                     <button type="button" class="btn btn--surface" wire:click="closeModal">{{ __('common.button.cancel') }}</button>
                     <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>

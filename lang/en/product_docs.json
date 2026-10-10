@@ -453,7 +453,7 @@
         "title": "Checkmate",
         "items": [
           "Checkmate is not a separate app: a plan preset with a whitelist (Customers, Locations/Units, Time, …) on the same Location/Unit model; categories stay silent (default «Customer site»); facility routes such as issues return 404.",
-          "Same tenant isolation, Time infrastructure and Clock Point portal; locations get a default site unit for a safe Facility upgrade path.",
+          "Same tenant isolation, Time infrastructure and Clock Point portal; exactly one Clock Point (Sign in) — no extras, no deactivation, no site location; locations get a default site unit for a safe Facility upgrade path.",
           "€5 per active worker per month (per-seat via Stripe)."
         ]
       }

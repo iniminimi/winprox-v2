@@ -272,6 +272,11 @@
         "invalid": "Geben Sie eine gültige E-Mail-Adresse ein.",
         "rate_limited": "Zu viele E-Mails. Versuchen Sie es in :seconds Sekunden erneut."
       }
+    },
+    "errors": {
+      "checkmate_single": "Checkmate hat einen Clock Point (Anmelden). Weitere können nicht angelegt werden.",
+      "checkmate_cannot_deactivate": "Der Checkmate-Clock Point (Anmelden) darf nicht deaktiviert werden.",
+      "generic": "Clock Point konnte nicht aktualisiert werden."
     }
   },
   "clock_displays": {

@@ -453,7 +453,7 @@
         "title": "Checkmate",
         "items": [
           "Checkmate is geen aparte app: plan-preset met whitelist (Klanten, Locaties/Units, Time, …) op hetzelfde Location/Unit-model; categorieën blijven stil (default «Klantlocatie»); facility-routes zoals meldingen geven 404.",
-          "Zelfde tenant-isolatie, Time-infrastructuur en Clock Point-portaal; locaties krijgen standaard een site-unit voor een veilig Facility-upgrade-pad.",
+          "Zelfde tenant-isolatie, Time-infrastructuur en Clock Point-portaal; precies één Clock Point («Aanmelden») — geen extra, geen deactiveren, geen vestigingslocatie; locaties krijgen standaard een site-unit voor een veilig Facility-upgrade-pad.",
           "€5 per actieve uitvoerder per maand (per-seat via Stripe)."
         ]
       }

@@ -453,7 +453,7 @@
         "title": "Checkmate",
         "items": [
           "Checkmate non è un'app separata: preset di piano con whitelist (Clienti, Sedi/Units, Time, …) sullo stesso modello Location/Unit; le categorie restano silenziose (default «Sede cliente»); le rotte facility come segnalazioni restituiscono 404.",
-          "Stessa isolazione dei tenant, infrastruttura Time e portale Clock Point; le sedi ricevono un’unità site di default per un percorso di upgrade Facility sicuro.",
+          "Stessa isolazione dei tenant, infrastruttura Time e portale Clock Point; esattamente un Clock Point (Accedi) — niente extra, niente disattivazione, niente sede; le sedi ricevono un’unità site di default per un percorso di upgrade Facility sicuro.",
           "5 € per esecutore attivo al mese (per posto via Stripe)."
         ]
       }

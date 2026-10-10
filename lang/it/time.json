@@ -272,6 +272,11 @@
         "invalid": "Inserisci un indirizzo e-mail valido.",
         "rate_limited": "Troppe e-mail. Riprova tra :seconds secondi."
       }
+    },
+    "errors": {
+      "checkmate_single": "Checkmate ha un solo Clock Point (Accedi). Non se ne possono creare altri.",
+      "checkmate_cannot_deactivate": "Il Clock Point Checkmate (Accedi) non può essere disattivato.",
+      "generic": "Impossibile aggiornare il Clock Point."
     }
   },
   "clock_displays": {

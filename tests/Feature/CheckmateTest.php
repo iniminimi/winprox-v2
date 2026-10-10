@@ -7,9 +7,13 @@ use App\Actions\Customers\CreateCustomerWithLocationAction;
 use App\Actions\Customers\SuggestCustomerNameMatchesAction;
 use App\Actions\Portal\ResolveWorkerIdentityForTenantAction;
 use App\Actions\Time\ClockInAction;
+use App\Actions\Time\CreateClockPointAction;
 use App\Actions\Time\RequestPresenceComplianceAction;
+use App\Actions\Time\SetClockPointActiveAction;
 use App\Actions\Time\StartWorkVisitAction;
 use App\Actions\Time\SuggestNearbyClockUnitsAction;
+use App\Actions\Time\UpdateClockPointAction;
+use App\Livewire\Time\ClockPointsIndex;
 use App\Enums\PresenceComplianceScope;
 use App\Enums\PresenceSourceEvent;
 use App\Enums\WorkerIdentityStatus;
@@ -883,6 +887,50 @@ it('verbergt werkmenu en configuratie-overzicht op instellingen voor checkmate',
         ->assertSee(__('settings.time_clock.evacuation_list'), false);
 });
 
+it('houdt bij checkmate één Clock Point zonder locatie, aanmaken of deactiveren', function () {
+    $tenant = checkmateTenant();
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    app(\App\Actions\Time\EnsureDefaultClockPointAction::class)->handle(
+        $tenant,
+        __('team.clock_point_qr.default_name'),
+        (int) $admin->id,
+    );
+
+    $clockPoint = ClockPoint::query()->where('tenant_id', $tenant->id)->firstOrFail();
+    expect($clockPoint->is_active)->toBeTrue()
+        ->and($clockPoint->location_id)->toBeNull();
+
+    expect(fn () => app(CreateClockPointAction::class)->handle($tenant, [
+        'name' => 'Extra',
+        'is_active' => true,
+    ], (int) $admin->id))->toThrow(InvalidArgumentException::class, 'checkmate_single_clock_point');
+
+    expect(fn () => app(SetClockPointActiveAction::class)->handle($clockPoint, false, (int) $admin->id))
+        ->toThrow(InvalidArgumentException::class, 'checkmate_cannot_deactivate_clock_point');
+
+    $location = checkmateCustomerLocation($tenant);
+    $updated = app(UpdateClockPointAction::class)->handle($clockPoint, [
+        'name' => $clockPoint->name,
+        'location_id' => $location->id,
+        'sort_order' => 5,
+    ], (int) $admin->id);
+
+    expect($updated->location_id)->toBeNull()
+        ->and($updated->sort_order)->toBe((int) $clockPoint->sort_order);
+
+    Livewire::actingAs($admin)
+        ->test(ClockPointsIndex::class)
+        ->assertDontSee('wire:click="openCreate"', false)
+        ->assertDontSee('wire:click="setActive('.$clockPoint->id.', false)"', false)
+        ->call('openEdit', $clockPoint->id)
+        ->assertDontSee('id="cp-location"', false)
+        ->assertDontSee('id="cp-sort"', false)
+        ->call('openCreate')
+        ->assertForbidden();
+});
+
 it('verbergt Manueel inklokken op Time-pagina’s voor checkmate', function () {
     $tenant = checkmateTenant();
     $admin = User::factory()->admin()->for($tenant)->create();
@@ -1257,6 +1305,6 @@ it('linkt onderaan de klantenpagina naar de instructievideo in een nieuw tabblad
     Livewire::actingAs($admin)
         ->test(CustomersIndex::class)
         ->assertSee(__('customers.video_button'))
-        ->assertSee('video/nl/werkadres.mp4')
+        ->assertSee('video/nl/klant_toevoegen.mp4')
         ->assertSee('target="_blank"', false);
 });

@@ -272,6 +272,11 @@
         "invalid": "Enter a valid email address.",
         "rate_limited": "Too many emails. Try again in :seconds seconds."
       }
+    },
+    "errors": {
+      "checkmate_single": "Checkmate has one Clock Point (Sign in). Extra ones cannot be created.",
+      "checkmate_cannot_deactivate": "The Checkmate Clock Point (Sign in) cannot be deactivated.",
+      "generic": "The Clock Point could not be updated."
     }
   },
   "clock_displays": {

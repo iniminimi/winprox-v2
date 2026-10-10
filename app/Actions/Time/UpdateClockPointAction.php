@@ -4,6 +4,7 @@ namespace App\Actions\Time;
 
 use App\Models\ClockPoint;
 use App\Models\Location;
+use App\Models\Tenant;
 use App\Support\Audit\AuditRecorder;
 
 class UpdateClockPointAction
@@ -12,7 +13,11 @@ class UpdateClockPointAction
 
     public function handle(ClockPoint $clockPoint, array $data, ?int $actorUserId): ClockPoint
     {
-        $locationId = $data['location_id'] ?? $clockPoint->location_id;
+        $tenant = Tenant::query()->find((int) $clockPoint->tenant_id);
+        $checkmate = $tenant?->checkmateMode() ?? false;
+
+        // Checkmate: geen vestiging op Clock Point (klantlocaties ≠ prikklok-vestiging).
+        $locationId = $checkmate ? null : ($data['location_id'] ?? $clockPoint->location_id);
         if ($locationId !== null) {
             Location::query()
                 ->where('tenant_id', $clockPoint->tenant_id)
@@ -23,7 +28,9 @@ class UpdateClockPointAction
         $clockPoint->update([
             'name' => trim((string) ($data['name'] ?? $clockPoint->name)),
             'location_id' => $locationId,
-            'sort_order' => (int) ($data['sort_order'] ?? $clockPoint->sort_order),
+            'sort_order' => $checkmate
+                ? (int) $clockPoint->sort_order
+                : (int) ($data['sort_order'] ?? $clockPoint->sort_order),
             'homescreen_shortcut' => (bool) ($data['homescreen_shortcut'] ?? $clockPoint->homescreen_shortcut),
         ]);
 

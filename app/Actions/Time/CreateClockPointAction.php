@@ -6,6 +6,7 @@ use App\Models\ClockPoint;
 use App\Models\Location;
 use App\Models\Tenant;
 use Illuminate\Support\Str;
+use InvalidArgumentException;
 
 class CreateClockPointAction
 {
@@ -15,7 +16,14 @@ class CreateClockPointAction
 
     public function handle(Tenant $tenant, array $data, ?int $actorUserId): ClockPoint
     {
-        $locationId = $data['location_id'] ?? null;
+        // Checkmate: max. één Clock Point («Aanmelden»). EnsureDefault mag de eerste
+        // aanmaken; extra via UI/API wordt geweigerd.
+        if ($tenant->checkmateMode()
+            && ClockPoint::query()->where('tenant_id', $tenant->id)->exists()) {
+            throw new InvalidArgumentException('checkmate_single_clock_point');
+        }
+
+        $locationId = $tenant->checkmateMode() ? null : ($data['location_id'] ?? null);
         if ($locationId !== null) {
             Location::query()
                 ->where('tenant_id', $tenant->id)
