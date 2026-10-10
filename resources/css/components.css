@@ -834,11 +834,20 @@
         border-color var(--wp-transition);
 }
 
-a.wp-kpi:hover {
+a.wp-kpi:hover,
+button.wp-kpi:hover {
     transform: translateY(-2px);
     box-shadow: var(--wp-shadow);
     border-color: var(--wp-border-strong);
     text-decoration: none;
+}
+
+button.wp-kpi {
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+    width: 100%;
 }
 
 .wp-kpi--alert {

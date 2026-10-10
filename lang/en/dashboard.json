@@ -169,7 +169,7 @@
       "presence_title": "Presence",
       "presence_body": "Who is at work right now.",
       "clock_point_title": "Clock Point QR",
-      "clock_point_body": "Show or print the QR for workers."
+      "clock_point_body": "Email or print the QR — workers sign in on their phone."
     },
     "kpi": {
       "visits_today": "Visits today",

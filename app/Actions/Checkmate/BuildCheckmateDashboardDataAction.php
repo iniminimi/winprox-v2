@@ -51,8 +51,21 @@ class BuildCheckmateDashboardDataAction
             ? $tenant->currentSeatsCount().' / '.(int) $seatsQty
             : (string) $tenant->currentSeatsCount();
 
+        // Pulse tot de eerste dienst: nieuwe tenants zien meteen dat ze de
+        // Clock Point-QR moeten mailen/afdrukken vóór uitvoerders kunnen inklokken.
+        $pulseClockPointQr = ! WorkShift::query()->where('tenant_id', $tenantId)->exists();
+
         return new CheckmateDashboardData(
             quickTiles: [
+                [
+                    'key' => 'clock_point',
+                    'icon' => 'qr',
+                    'tone' => 'new_issues',
+                    'title' => 'dashboard.checkmate.actions.clock_point_title',
+                    'body' => 'dashboard.checkmate.actions.clock_point_body',
+                    'action' => 'open_clock_point_qr',
+                    'pulse' => $pulseClockPointQr,
+                ],
                 [
                     'key' => 'add_customer',
                     'icon' => 'building-office',
@@ -76,14 +89,6 @@ class BuildCheckmateDashboardDataAction
                     'title' => 'dashboard.checkmate.actions.presence_title',
                     'body' => 'dashboard.checkmate.actions.presence_body',
                     'href' => route('time.presence.index'),
-                ],
-                [
-                    'key' => 'clock_point',
-                    'icon' => 'qr',
-                    'tone' => 'new_issues',
-                    'title' => 'dashboard.checkmate.actions.clock_point_title',
-                    'body' => 'dashboard.checkmate.actions.clock_point_body',
-                    'href' => route('time.clock-points.index'),
                 ],
             ],
             kpis: [

@@ -169,7 +169,7 @@
       "presence_title": "Presencia",
       "presence_body": "Quién está trabajando ahora.",
       "clock_point_title": "QR del Clock Point",
-      "clock_point_body": "Mostrar o imprimir el QR para operarios."
+      "clock_point_body": "Envía o imprime el QR — los operarios se identifican en su móvil."
     },
     "kpi": {
       "visits_today": "Visitas hoy",

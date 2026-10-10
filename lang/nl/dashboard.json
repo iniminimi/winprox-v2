@@ -169,7 +169,7 @@
       "presence_title": "Aanwezigheid",
       "presence_body": "Wie is nu aan het werk.",
       "clock_point_title": "Clock Point QR",
-      "clock_point_body": "Toon of print de QR voor uitvoerders."
+      "clock_point_body": "Mail of print de QR — zo melden uitvoerders zich aan op hun gsm."
     },
     "kpi": {
       "visits_today": "Bezoeken vandaag",

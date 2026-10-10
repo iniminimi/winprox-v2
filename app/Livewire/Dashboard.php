@@ -11,10 +11,15 @@ use App\Actions\Dashboard\ListDashboardRecentIssuesAction;
 use App\Actions\Onboarding\ApplyTenantStarterPackAction;
 use App\Actions\Onboarding\DismissTenantStarterPackResultAction;
 use App\Actions\Onboarding\RemoveTenantStarterPackAction;
+use App\Actions\Time\EnsureDefaultClockPointAction;
+use App\Actions\Time\SendClockPointQrMailAction;
 use App\Data\Onboarding\ApplyTenantStarterPackData;
+use App\Data\Time\SendClockPointQrMailData;
 use App\Enums\TenantStarterPackSize;
 use App\Enums\TenantStarterPackType;
 use App\Http\Requests\Onboarding\ApplyTenantStarterPackRequest;
+use App\Http\Requests\Time\SendClockPointQrMailRequest;
+use App\Models\ClockPoint;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Checkmate\CheckmateMode;
@@ -22,8 +27,11 @@ use App\Support\Onboarding\TenantOnboardingState;
 use App\Support\Onboarding\TenantStarterPackCatalog;
 use App\Support\Onboarding\TenantStarterPackSummary;
 use App\Support\Platform\SupportTenantContext;
+use App\Support\Qr\QrStickerSheetTemplate;
 use App\Support\Tenancy;
 use App\Support\Translation\LocaleSupport;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -32,6 +40,8 @@ use Livewire\Component;
 #[Title('WinProx')]
 class Dashboard extends Component
 {
+    use AuthorizesRequests;
+
     public bool $showRemoveStarterPackModal = false;
 
     public bool $skipStarterPack = false;
@@ -41,6 +51,87 @@ class Dashboard extends Component
     public string $starterPackType = '';
 
     public string $starterPackSize = '';
+
+    public bool $showCheckmateClockPointQrModal = false;
+
+    public ?int $checkmateQrClockPointId = null;
+
+    public string $checkmateQrMailEmail = '';
+
+    public ?string $checkmateQrMailFlash = null;
+
+    public function openCheckmateClockPointQr(EnsureDefaultClockPointAction $ensureDefault): void
+    {
+        $tenant = $this->resolveTenant();
+        abort_unless($tenant instanceof Tenant && CheckmateMode::isActive($tenant), 403);
+        $this->authorize('viewAny', ClockPoint::class);
+
+        $clockPoint = $ensureDefault->handle(
+            $tenant,
+            __('team.clock_point_qr.default_name'),
+            auth()->id(),
+        );
+        $this->authorize('view', $clockPoint);
+
+        $this->checkmateQrClockPointId = (int) $clockPoint->id;
+        $this->checkmateQrMailEmail = '';
+        $this->checkmateQrMailFlash = null;
+        $this->resetErrorBag('checkmateQrMailEmail');
+        $this->showCheckmateClockPointQrModal = true;
+    }
+
+    public function closeCheckmateClockPointQr(): void
+    {
+        $this->showCheckmateClockPointQrModal = false;
+        $this->checkmateQrClockPointId = null;
+        $this->checkmateQrMailEmail = '';
+        $this->checkmateQrMailFlash = null;
+        $this->resetErrorBag('checkmateQrMailEmail');
+    }
+
+    public function sendCheckmateClockPointQrMail(SendClockPointQrMailAction $send): void
+    {
+        $tenant = $this->resolveTenant();
+        abort_unless($tenant instanceof Tenant && CheckmateMode::isActive($tenant), 403);
+        abort_unless($this->checkmateQrClockPointId !== null, 404);
+
+        $clockPoint = ClockPoint::query()->findOrFail($this->checkmateQrClockPointId);
+        $this->authorize('view', $clockPoint);
+
+        $validated = $this->validate([
+            'checkmateQrMailEmail' => SendClockPointQrMailRequest::rulesFor()['email'],
+        ], [], [
+            'checkmateQrMailEmail' => __('time.clock_points.qr.email.label'),
+        ]);
+
+        $actor = auth()->user();
+        $supported = config('locales.supported', []);
+        $locale = in_array((string) ($actor?->locale), $supported, true)
+            ? (string) $actor->locale
+            : (string) app()->getLocale();
+
+        try {
+            $send->handle(
+                $clockPoint,
+                new SendClockPointQrMailData((string) $validated['checkmateQrMailEmail']),
+                (int) $tenant->id,
+                $actor?->id,
+                $locale,
+            );
+        } catch (ValidationException $exception) {
+            $emailErrors = $exception->errors()['email'] ?? null;
+            if ($emailErrors !== null) {
+                throw ValidationException::withMessages([
+                    'checkmateQrMailEmail' => $emailErrors,
+                ]);
+            }
+
+            throw $exception;
+        }
+
+        $this->checkmateQrMailEmail = '';
+        $this->checkmateQrMailFlash = __('time.clock_points.qr.email.sent');
+    }
 
     public function openStarterPackModal(): void
     {
@@ -218,8 +309,16 @@ class Dashboard extends Component
             ? $buildIntentHub->handle($tenant, $user)
             : null;
 
+        $checkmateQrClockPoint = $this->showCheckmateClockPointQrModal && $this->checkmateQrClockPointId !== null
+            ? ClockPoint::query()
+                ->where('tenant_id', $tenantId)
+                ->find($this->checkmateQrClockPointId)
+            : null;
+
         return view('livewire.dashboard', [
             'checkmate' => $checkmateData,
+            'checkmateQrClockPoint' => $checkmateQrClockPoint,
+            'checkmateQrPackTemplates' => QrStickerSheetTemplate::printableDownloadCases(),
             'stats' => $stats,
             'recent' => $recent,
             'showIssuesTasksUi' => $showIssuesTasksUi,

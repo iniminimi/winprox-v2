@@ -63,19 +63,42 @@
 
         <div class="wp-kpis">
             @foreach ($checkmate->quickTiles as $tile)
-                <a href="{{ $tile['href'] }}"
-                   @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
-                   wire:key="cm-action-{{ $tile['key'] }}">
-                    <div class="wp-kpi-body">
-                        <span class="wp-kpi-icon" aria-hidden="true">
-                            <x-wp-icon :name="$tile['icon']" />
-                        </span>
-                        <div class="wp-kpi-main">
-                            <p class="wp-kpi-kicker">{{ __($tile['title']) }}</p>
-                            <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ __($tile['body']) }}</p>
+                @if (($tile['action'] ?? null) === 'open_clock_point_qr')
+                    <button
+                        type="button"
+                        wire:click="openCheckmateClockPointQr"
+                        @class([
+                            'wp-kpi',
+                            'wp-kpi--'.$tile['tone'],
+                            'wp-btn--prio-pulse' => $tile['pulse'] ?? false,
+                        ])
+                        wire:key="cm-action-{{ $tile['key'] }}"
+                    >
+                        <div class="wp-kpi-body">
+                            <span class="wp-kpi-icon" aria-hidden="true">
+                                <x-wp-icon :name="$tile['icon']" />
+                            </span>
+                            <div class="wp-kpi-main">
+                                <p class="wp-kpi-kicker">{{ __($tile['title']) }}</p>
+                                <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ __($tile['body']) }}</p>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </button>
+                @else
+                    <a href="{{ $tile['href'] }}"
+                       @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
+                       wire:key="cm-action-{{ $tile['key'] }}">
+                        <div class="wp-kpi-body">
+                            <span class="wp-kpi-icon" aria-hidden="true">
+                                <x-wp-icon :name="$tile['icon']" />
+                            </span>
+                            <div class="wp-kpi-main">
+                                <p class="wp-kpi-kicker">{{ __($tile['title']) }}</p>
+                                <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ __($tile['body']) }}</p>
+                            </div>
+                        </div>
+                    </a>
+                @endif
             @endforeach
         </div>
 
@@ -143,6 +166,62 @@
                 @endforelse
             </div>
         </div>
+
+        @if ($showCheckmateClockPointQrModal && $checkmateQrClockPoint)
+            <x-wp-qr-cluster-modal
+                closeMethod="closeCheckmateClockPointQr"
+                title-id="checkmate-dashboard-clock-point-qr-modal-title"
+                :title="__('common.qr.modal_title')"
+                :subtitle="$checkmateQrClockPoint->name"
+                :print-url="route('time.clock-points.qr', $checkmateQrClockPoint)"
+                :print-label="__('common.qr.print')"
+                :formats="collect($checkmateQrPackTemplates)->map(fn ($template) => [
+                    'key' => 'cm-dash-'.$checkmateQrClockPoint->id.'-'.$template->value,
+                    'title' => __('common.qr.formats.'.$template->value.'.title'),
+                    'size' => __('common.qr.formats.'.$template->value.'.size'),
+                    'url' => route('time.clock-points.qr-pack', [
+                        'clockPoint' => $checkmateQrClockPoint,
+                        'template' => $template->value,
+                    ]),
+                ])->all()"
+                :generating="__('time.clock_points.qr.pack.generating')"
+                :download-failed="__('time.clock_points.qr.pack.download_failed')"
+            >
+                <x-slot:email>
+                    <div class="wp-modal-section">
+                        <div class="wp-stack-tight">
+                            <h3 class="wp-label">{{ __('time.clock_points.qr.email.heading') }}</h3>
+                            <p class="wp-muted">{{ __('time.clock_points.qr.email.hint') }}</p>
+                        </div>
+                        @if ($checkmateQrMailFlash)
+                            <div class="wp-flash wp-flash--success">{{ $checkmateQrMailFlash }}</div>
+                        @endif
+                        <div class="wp-field">
+                            <label class="wp-label" for="checkmate-dash-qr-mail-email">{{ __('time.clock_points.qr.email.label') }}</label>
+                            <div class="wp-cluster wp-cluster--wrap">
+                                <input
+                                    id="checkmate-dash-qr-mail-email"
+                                    type="email"
+                                    class="wp-input"
+                                    wire:model="checkmateQrMailEmail"
+                                    autocomplete="email"
+                                    placeholder="{{ __('time.clock_points.qr.email.placeholder') }}"
+                                >
+                                <button
+                                    type="button"
+                                    class="btn btn--primary"
+                                    wire:click="sendCheckmateClockPointQrMail"
+                                    wire:loading.attr="disabled"
+                                >
+                                    {{ __('time.clock_points.qr.email.send') }}
+                                </button>
+                            </div>
+                            @error('checkmateQrMailEmail') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                    </div>
+                </x-slot:email>
+            </x-wp-qr-cluster-modal>
+        @endif
     @else
     @if ($starterPackSummary)
         <div class="wp-card wp-card-pad">

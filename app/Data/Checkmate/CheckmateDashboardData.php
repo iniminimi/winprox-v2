@@ -14,7 +14,7 @@ use Illuminate\Support\Collection;
 final class CheckmateDashboardData
 {
     /**
-     * @param  list<array{key: string, icon: string, tone: string, title: string, body: string, href: string}>  $quickTiles
+     * @param  list<array{key: string, icon: string, tone: string, title: string, body: string, href?: string|null, action?: string|null, pulse?: bool}>  $quickTiles
      * @param  list<array{key: string, icon: string, tone: string, label: string, value: string, href: string}>  $kpis
      * @param  Collection<int, WorkVisit>  $recentVisits
      */
