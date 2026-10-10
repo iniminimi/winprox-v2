@@ -14,10 +14,16 @@ use App\Mail\TenantPurgeExpiredTrialWarningMail;
 use App\Mail\TenantPurgeReminderMail;
 use App\Mail\TenantPurgeScheduledMail;
 use App\Mail\TenantPurgeScheduledToOpsMail;
+use App\Models\EsgIndicator;
+use App\Models\EsgMeasurement;
 use App\Models\Issue;
 use App\Models\Location;
+use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\TenantPurgeRequest;
+use App\Models\Unit;
+use App\Models\UnitMeasureField;
+use App\Models\UnitMeasurement;
 use App\Models\User;
 use App\Support\Platform\SupportTenantContext;
 use App\Support\Tenancy;
@@ -87,6 +93,72 @@ it('trial purge: e-mailbevestiging dan uitvoeren met backup en resultaatmail', f
 
     Storage::disk('local')->assertExists($done->backup_path);
     Mail::assertSent(TenantPurgeCompletedMail::class, 1);
+});
+
+it('wist een tenant met esg-metingen en unitmetingen', function () {
+    Mail::fake();
+    Storage::fake('local');
+    Storage::fake('public');
+
+    $tenant = Tenant::factory()->create(['name' => 'ESG Co']);
+    $super = User::factory()->superuser()->create();
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+    ]);
+    $indicator = EsgIndicator::factory()->numeric('m3')->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Gas',
+    ]);
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
+        'esg_indicator_id' => $indicator->id,
+    ]);
+    $task = Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+    ]);
+    $original = EsgMeasurement::factory()->create([
+        'tenant_id' => $tenant->id,
+        'unit_id' => $unit->id,
+        'location_id' => $location->id,
+        'task_id' => $task->id,
+        'esg_indicator_id' => $indicator->id,
+    ]);
+    EsgMeasurement::factory()->create([
+        'tenant_id' => $tenant->id,
+        'unit_id' => $unit->id,
+        'location_id' => $location->id,
+        'task_id' => $task->id,
+        'esg_indicator_id' => $indicator->id,
+        'corrects_measurement_id' => $original->id,
+    ]);
+    $field = UnitMeasureField::factory()->create(['tenant_id' => $tenant->id]);
+    UnitMeasurement::factory()->create([
+        'tenant_id' => $tenant->id,
+        'unit_id' => $unit->id,
+        'location_id' => $location->id,
+        'unit_measure_field_id' => $field->id,
+    ]);
+
+    $purge = TenantPurgeRequest::query()->create([
+        'tenant_id' => $tenant->id,
+        'tenant_name' => $tenant->name,
+        'track' => TenantPurgeTrack::Unused,
+        'status' => TenantPurgeStatus::Scheduled,
+        'initiated_by_user_id' => $super->id,
+        'scheduled_purge_at' => now(),
+    ]);
+
+    app(ExecuteTenantPurgeAction::class)->handle($purge, $super);
+
+    expect(Tenant::query()->whereKey($tenant->id)->exists())->toBeFalse()
+        ->and(EsgMeasurement::query()->withoutGlobalScopes()->where('tenant_id', $tenant->id)->exists())->toBeFalse()
+        ->and(EsgIndicator::query()->withoutGlobalScopes()->where('tenant_id', $tenant->id)->exists())->toBeFalse()
+        ->and(UnitMeasurement::query()->withoutGlobalScopes()->where('tenant_id', $tenant->id)->exists())->toBeFalse();
 });
 
 it('paid purge: plant cool-down, reminder, alleen superuser voert uit', function () {

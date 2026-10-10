@@ -91,6 +91,7 @@ final class ExecuteTenantPurgeAction
         $tenantName = $tenant->name;
 
         // Mark complete before tenant delete: user/tenant FKs on this row are nullOnDelete.
+        // Same transaction as the delete, so a constraint failure does not leave the request completed.
         $request->status = TenantPurgeStatus::Completed;
         $request->executed_at = now();
         $request->executed_by_user_id = $actor?->id;
@@ -98,9 +99,10 @@ final class ExecuteTenantPurgeAction
         $request->backup_expires_at = $backupExpiresAt;
         $request->deleted_counts = $counts;
         $request->confirmation_token_hash = null;
-        $request->save();
 
-        DB::transaction(function () use ($tenant): void {
+        DB::transaction(function () use ($tenant, $request): void {
+            $request->save();
+            $this->deleteRestrictChildren((int) $tenant->id);
             $tenant->delete();
         });
 
@@ -280,5 +282,22 @@ final class ExecuteTenantPurgeAction
         // These tables use tenant_id -> nullOnDelete; strict purge requires hard delete.
         DB::table('audit_logs')->where('tenant_id', $tenantId)->delete();
         DB::table('contact_messages')->where('tenant_id', $tenantId)->delete();
+    }
+
+    /**
+     * Tenant-delete cascaded kinderen in een onbepaalde volgorde. Restrict-FK's
+     * tussen die tabellen blokkeren dat (meting → indicator, meting → unit,
+     * issue → indicator, unitmeting → meetveld).
+     */
+    private function deleteRestrictChildren(int $tenantId): void
+    {
+        DB::table('esg_measurements')->where('tenant_id', $tenantId)->update([
+            'corrects_measurement_id' => null,
+        ]);
+        DB::table('esg_measurements')->where('tenant_id', $tenantId)->delete();
+        DB::table('issues')->where('tenant_id', $tenantId)->whereNotNull('esg_indicator_id')->update([
+            'esg_indicator_id' => null,
+        ]);
+        DB::table('unit_measurements')->where('tenant_id', $tenantId)->delete();
     }
 }
