@@ -496,7 +496,7 @@
     },
     "now": {
       "kicker": "Willkommen",
-"kicker_in": "Willkommen, Sie sind eingestempelt",
+      "kicker_in": "Willkommen, Sie sind eingestempelt",
       "next_stop": "Nächster Stopp: :name",
       "here_done": "Die Arbeit hier ist fertig.",
       "toggle": "Details"
@@ -643,7 +643,10 @@
       "unknown_unit": "Unbekannter Gruppencode.",
       "ambiguous_unit": "Dieser Gruppencode kommt an :count Standorten vor. Wählen Sie einen Standortfilter.",
       "absence_has_unit": "Abwesenheit darf keine Gruppe haben.",
-      "unknown_block": "Unbekannter Block. Plan aktualisieren und erneut versuchen."
+      "unknown_block": "Unbekannter Block. Plan aktualisieren und erneut versuchen.",
+      "replacement_not_eligible": "Dieser Mitarbeiter ist für diese Vertretung nicht verfügbar.",
+      "replacement_no_absence_type": "Wählen Sie einen gültigen Abwesenheitstyp.",
+      "mixed_replacement_blocks": "Nur Arbeitsblöcke desselben Tages und Mitarbeiters können ersetzt werden."
     },
     "types": {
       "add": "Schichttyp hinzufügen",
@@ -748,6 +751,21 @@
         "6": "Sa",
         "7": "So"
       }
+    },
+    "replacement": {
+      "title": "Vertretung suchen — :name",
+      "hint": "Der Block wird in Abwesenheit umgewandelt; die Vertretung erhält denselben Zeitslot, Standort und dieselbe Einheit.",
+      "find": "Vertretung…",
+      "find_day": "Ganzen Tag ersetzen…",
+      "candidate": "Vertretung",
+      "choose_candidate": "Mitarbeiter wählen",
+      "absence_type": "Abwesenheitstyp",
+      "confirm": "Ersetzen",
+      "none": "Keine geeigneten Mitarbeiter für diesen Zeitslot",
+      "tier_unit": "Gleiche Einheit",
+      "tier_location": "Gleicher Standort",
+      "tier_other": "Andere Mitarbeiter",
+      "done": "Vertretung gespeichert."
     }
   },
   "shift_types": {

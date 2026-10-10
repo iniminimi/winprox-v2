@@ -315,6 +315,15 @@
                                 </select>
                             @endif
 
+                            @if (! $isAbsence && ($block['id'] ?? null) !== null)
+                                <button
+                                    type="button"
+                                    class="btn btn--ghost btn--sm"
+                                    wire:click="openReplacement([{{ (int) $block['id'] }}])"
+                                    title="{{ __('time.schedule.replacement.find') }}"
+                                    aria-label="{{ __('time.schedule.replacement.find') }}"
+                                >⇄</button>
+                            @endif
                             <button
                                 type="button"
                                 class="btn btn--ghost btn--sm"
@@ -334,10 +343,24 @@
                         </div>
                     @endforeach
 
-                    <div>
+                    @php
+                        $savedWorkBlockIds = collect($dayEditorContext['blocks'] ?? [])
+                            ->filter(fn (array $b) => ($b['kind'] ?? 'work') === 'work')
+                            ->pluck('id')
+                            ->map(fn ($id) => (int) $id)
+                            ->all();
+                    @endphp
+                    <div class="wp-cluster wp-cluster--tight">
                         <button type="button" class="btn btn--ghost btn--sm" wire:click="addDayEditorBlock">
                             {{ __('time.schedule.day_editor.add_block') }}
                         </button>
+                        @if (count($savedWorkBlockIds) > 1)
+                            <button
+                                type="button"
+                                class="btn btn--ghost btn--sm"
+                                wire:click="openReplacement(@js($savedWorkBlockIds))"
+                            >{{ __('time.schedule.replacement.find_day') }}</button>
+                        @endif
                     </div>
 
                     @if (($dayEditorContext['unplanned_sessions'] ?? []) !== [])
@@ -355,6 +378,78 @@
                         {{ __('common.button.save') }}
                     </button>
                     <button type="button" class="btn btn--ghost" wire:click="closeDayEditor">
+                        {{ __('common.button.cancel') }}
+                    </button>
+                </div>
+            </div>
+        </x-wp-modal>
+    @endif
+
+    @if ($showReplacementModal)
+        <x-wp-modal closeMethod="closeReplacement" aria-labelledby="roster-replacement-title">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 id="roster-replacement-title" class="wp-section-title">
+                        {{ __('time.schedule.replacement.title', [
+                            'name' => $dayEditorContext['worker']['name'] ?? '',
+                        ]) }}
+                    </h2>
+                    <x-wp-modal-close wire:click="closeReplacement" />
+                </div>
+
+                @if ($replacementError !== '')
+                    <p class="wp-flash wp-flash--danger">{{ $replacementError }}</p>
+                @endif
+
+                <p class="wp-muted">{{ __('time.schedule.replacement.hint') }}</p>
+                @if ($replacementBlockLabels !== [])
+                    <p class="wp-cluster wp-cluster--tight">
+                        @foreach ($replacementBlockLabels as $label)
+                            <span class="wp-pill">{{ $label }}</span>
+                        @endforeach
+                    </p>
+                @endif
+
+                @if ($replacementCandidates === [])
+                    <p class="wp-muted">{{ __('time.schedule.replacement.none') }}</p>
+                @else
+                    <div class="wp-field">
+                        <label class="wp-label" for="roster-replacement-worker">{{ __('time.schedule.replacement.candidate') }}</label>
+                        <select id="roster-replacement-worker" class="wp-select" wire:model="replacementWorkerId">
+                            <option value="">{{ __('time.schedule.replacement.choose_candidate') }}</option>
+                            @foreach ([1 => 'tier_unit', 2 => 'tier_location', 3 => 'tier_other'] as $tier => $labelKey)
+                                @php $tiered = collect($replacementCandidates)->where('tier', $tier); @endphp
+                                @if ($tiered->isNotEmpty())
+                                    <optgroup label="{{ __('time.schedule.replacement.'.$labelKey) }}">
+                                        @foreach ($tiered as $candidate)
+                                            <option value="{{ $candidate['worker_id'] }}">
+                                                {{ $candidate['name'] }}@if ($candidate['unit_code'] ?? null) ({{ $candidate['unit_code'] }})@endif
+                                            </option>
+                                        @endforeach
+                                    </optgroup>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                @endif
+
+                <div class="wp-field">
+                    <label class="wp-label" for="roster-replacement-absence">{{ __('time.schedule.replacement.absence_type') }}</label>
+                    <select id="roster-replacement-absence" class="wp-select" wire:model="replacementAbsenceTypeId">
+                        @foreach (collect($dayEditorContext['types'] ?? [])->filter(fn (array $t) => ($t['kind'] ?? 'work') !== 'work') as $type)
+                            <option value="{{ $type['id'] }}">{{ $type['code'] }} — {{ $type['label'] }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <div class="wp-modal-foot">
+                    <button
+                        type="button"
+                        class="btn btn--primary"
+                        wire:click="confirmReplacement"
+                        @disabled($replacementWorkerId === null || $replacementCandidates === [])
+                    >{{ __('time.schedule.replacement.confirm') }}</button>
+                    <button type="button" class="btn btn--ghost" wire:click="closeReplacement">
                         {{ __('common.button.cancel') }}
                     </button>
                 </div>

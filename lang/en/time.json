@@ -496,7 +496,7 @@
     },
     "now": {
       "kicker": "Welcome",
-"kicker_in": "Welcome, you are clocked in",
+      "kicker_in": "Welcome, you are clocked in",
       "next_stop": "Next stop: :name",
       "here_done": "Work here is done.",
       "toggle": "Details"
@@ -643,7 +643,10 @@
       "unknown_unit": "Unknown group code.",
       "ambiguous_unit": "This group code exists at :count locations. Choose a location filter.",
       "absence_has_unit": "Absence cannot include a group.",
-      "unknown_block": "Unknown block. Refresh the roster and try again."
+      "unknown_block": "Unknown block. Refresh the roster and try again.",
+      "replacement_not_eligible": "This worker is not available for this replacement.",
+      "replacement_no_absence_type": "Choose a valid absence type.",
+      "mixed_replacement_blocks": "Only work blocks of the same day and worker can be replaced."
     },
     "types": {
       "add": "Add shift type",
@@ -748,6 +751,21 @@
         "6": "Sat",
         "7": "Sun"
       }
+    },
+    "replacement": {
+      "title": "Find replacement — :name",
+      "hint": "The block is converted to absence; the replacement gets the same time slot, location and unit.",
+      "find": "Replacement…",
+      "find_day": "Replace whole day…",
+      "candidate": "Replacement",
+      "choose_candidate": "Choose a worker",
+      "absence_type": "Absence type",
+      "confirm": "Replace",
+      "none": "No suitable workers for this time slot",
+      "tier_unit": "Same unit",
+      "tier_location": "Same location",
+      "tier_other": "Other workers",
+      "done": "Replacement saved."
     }
   },
   "shift_types": {

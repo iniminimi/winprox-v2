@@ -496,7 +496,7 @@
     },
     "now": {
       "kicker": "Bienvenue",
-"kicker_in": "Bienvenue, vous avez pointé",
+      "kicker_in": "Bienvenue, vous avez pointé",
       "next_stop": "Prochain arrêt : :name",
       "here_done": "Le travail ici est terminé.",
       "toggle": "Détails"
@@ -643,7 +643,10 @@
       "unknown_unit": "Code de groupe inconnu.",
       "ambiguous_unit": "Ce code de groupe existe sur :count sites. Choisissez un filtre de site.",
       "absence_has_unit": "Une absence ne peut pas avoir de groupe.",
-      "unknown_block": "Bloc inconnu. Actualisez l’horaire et réessayez."
+      "unknown_block": "Bloc inconnu. Actualisez l’horaire et réessayez.",
+      "replacement_not_eligible": "Ce travailleur n'est pas disponible pour ce remplacement.",
+      "replacement_no_absence_type": "Choisissez un type d'absence valide.",
+      "mixed_replacement_blocks": "Seuls les blocs de travail du même jour et du même travailleur peuvent être remplacés."
     },
     "types": {
       "add": "Ajouter un type",
@@ -748,6 +751,21 @@
         "6": "sa",
         "7": "di"
       }
+    },
+    "replacement": {
+      "title": "Chercher un remplaçant — :name",
+      "hint": "Le bloc est converti en absence; le remplaçant obtient le même créneau, lieu et unité.",
+      "find": "Remplaçant…",
+      "find_day": "Remplacer toute la journée…",
+      "candidate": "Remplaçant",
+      "choose_candidate": "Choisir un travailleur",
+      "absence_type": "Type d'absence",
+      "confirm": "Remplacer",
+      "none": "Aucun travailleur disponible pour ce créneau",
+      "tier_unit": "Même unité",
+      "tier_location": "Même lieu",
+      "tier_other": "Autres travailleurs",
+      "done": "Remplacement enregistré."
     }
   },
   "shift_types": {

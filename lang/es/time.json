@@ -496,7 +496,7 @@
     },
     "now": {
       "kicker": "Bienvenido",
-"kicker_in": "Bienvenido, está fichado",
+      "kicker_in": "Bienvenido, está fichado",
       "next_stop": "Siguiente parada: :name",
       "here_done": "El trabajo aquí está listo.",
       "toggle": "Detalles"
@@ -643,7 +643,10 @@
       "unknown_unit": "Código de grupo desconocido.",
       "ambiguous_unit": "Este código de grupo existe en :count sedes. Elija un filtro de sede.",
       "absence_has_unit": "Una ausencia no puede incluir un grupo.",
-      "unknown_block": "Bloque desconocido. Actualice el horario e inténtelo de nuevo."
+      "unknown_block": "Bloque desconocido. Actualice el horario e inténtelo de nuevo.",
+      "replacement_not_eligible": "Este trabajador no está disponible para esta sustitución.",
+      "replacement_no_absence_type": "Elige un tipo de ausencia válido.",
+      "mixed_replacement_blocks": "Solo se pueden sustituir bloques de trabajo del mismo día y trabajador."
     },
     "types": {
       "add": "Añadir tipo",
@@ -748,6 +751,21 @@
         "6": "sá",
         "7": "do"
       }
+    },
+    "replacement": {
+      "title": "Buscar sustituto — :name",
+      "hint": "El bloque se convierte en ausencia; el sustituto recibe el mismo horario, ubicación y unidad.",
+      "find": "Sustituto…",
+      "find_day": "Sustituir todo el día…",
+      "candidate": "Sustituto",
+      "choose_candidate": "Elegir un trabajador",
+      "absence_type": "Tipo de ausencia",
+      "confirm": "Sustituir",
+      "none": "No hay trabajadores disponibles para este horario",
+      "tier_unit": "Misma unidad",
+      "tier_location": "Misma ubicación",
+      "tier_other": "Otros trabajadores",
+      "done": "Sustitución guardada."
     }
   },
   "shift_types": {

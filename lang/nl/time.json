@@ -496,7 +496,7 @@
     },
     "now": {
       "kicker": "Welkom",
-"kicker_in": "Welkom, je bent ingeklokt",
+      "kicker_in": "Welkom, je bent ingeklokt",
       "next_stop": "Volgende stop: :name",
       "here_done": "Werk hier is klaar.",
       "toggle": "Details"
@@ -643,7 +643,10 @@
       "unknown_unit": "Onbekende groepscode.",
       "ambiguous_unit": "Deze groepscode komt voor op :count locaties. Kies een locatiefilter.",
       "absence_has_unit": "Afwezigheid kan geen groep hebben.",
-      "unknown_block": "Onbekend blok. Ververs het rooster en probeer opnieuw."
+      "unknown_block": "Onbekend blok. Ververs het rooster en probeer opnieuw.",
+      "replacement_not_eligible": "Deze uitvoerder is niet beschikbaar voor deze vervanging.",
+      "replacement_no_absence_type": "Kies een geldig afwezigheidstype.",
+      "mixed_replacement_blocks": "Alleen werkblokken van dezelfde dag en uitvoerder kunnen vervangen worden."
     },
     "types": {
       "add": "Shiftype toevoegen",
@@ -748,6 +751,21 @@
         "6": "za",
         "7": "zo"
       }
+    },
+    "replacement": {
+      "title": "Vervanger zoeken — :name",
+      "hint": "Het blok wordt omgezet naar afwezigheid; de vervanger krijgt hetzelfde tijdslot, locatie en unit.",
+      "find": "Vervanger…",
+      "find_day": "Hele dag vervangen…",
+      "candidate": "Vervanger",
+      "choose_candidate": "Kies een uitvoerder",
+      "absence_type": "Afwezigheidstype",
+      "confirm": "Vervangen",
+      "none": "Geen geschikte uitvoerders voor dit tijdslot",
+      "tier_unit": "Zelfde unit",
+      "tier_location": "Zelfde locatie",
+      "tier_other": "Andere uitvoerders",
+      "done": "Vervanging opgeslagen."
     }
   },
   "shift_types": {

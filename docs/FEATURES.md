@@ -899,6 +899,15 @@ beperking**: cellen op onbeschikbare weekdagen krijgen een schuine arcering, en 
 grid-save als de dag-editor geven `warnings[]` naast errors terug (plannen blijft mogelijk;
 afwezigheidsblokken waarschuwen niet). Week herhalen slaat shifts op onbeschikbare
 doeldagen over met reden `unavailable`.
+**Vervanger zoeken** (`SuggestReplacementAction` + `ReplacePlannedShiftAction`, vanuit de
+dag-editor per blok of voor de hele dag): kandidaten moeten elk tijdslot kunnen overnemen —
+actief, `canClockAt` op de blok-locatie, geen overlappend blok, geen afwezigheid
+(aanvraag goedgekeurd **of** lopend, én omgezet absence-blok), niet structureel
+onbeschikbaar. Rang: zelfde unit → toegewezen op de locatie → rest. Bij vervanging wordt
+het originele blok op dezelfde rij omgezet naar het gekozen afwezigheidstype (unit-snapshot
+leeg, identiteit blijft → geen `missing`) en krijgt de vervanger een spiegelblok met
+hetzelfde slot, locatie en unit; published dagen geven `RosterChanged` aan beide workers.
+Geen link-kolom en geen impliciete `AbsenceRequest` in v1.
 Week- of **maandweergave**; maandkolommen zijn smaller (dagnummer + weekdag onder de maandnaam).
 In **week- en maandweergave** toont het vinkje **Weekends** zaterdag en zondag;
 uit = alleen maandag–vrijdag. Bij uitgeschakelde weekends staat tussen vrijdag en de

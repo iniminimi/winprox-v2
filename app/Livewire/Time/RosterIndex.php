@@ -7,9 +7,11 @@ use App\Actions\Time\ListRosterWeekAction;
 use App\Actions\Time\ListShiftTypesAction;
 use App\Actions\Time\LoadRosterDayEditorAction;
 use App\Actions\Time\PublishWeekAction;
+use App\Actions\Time\ReplacePlannedShiftAction;
 use App\Actions\Time\ResolveRosterPeriodAction;
 use App\Actions\Time\SavePlannedDayAction;
 use App\Actions\Time\SavePlannedShiftsAction;
+use App\Actions\Time\SuggestReplacementAction;
 use App\Data\Time\CopyRosterWeeksData;
 use App\Data\Time\PublishWeekData;
 use App\Data\Time\RosterWeekSnapshot;
@@ -86,6 +88,23 @@ class RosterIndex extends Component
     public array $dayEditorBlocks = [];
 
     public string $dayEditorError = '';
+
+    public bool $showReplacementModal = false;
+
+    /** @var list<int> */
+    public array $replacementBlockIds = [];
+
+    /** @var list<array{worker_id: int, name: string, tier: int, unit_code: ?string}> */
+    public array $replacementCandidates = [];
+
+    /** @var list<string> blok-labels voor de modal-kop */
+    public array $replacementBlockLabels = [];
+
+    public ?int $replacementWorkerId = null;
+
+    public ?int $replacementAbsenceTypeId = null;
+
+    public string $replacementError = '';
 
     public bool $showCopyModal = false;
 
@@ -257,6 +276,89 @@ class RosterIndex extends Component
                 'count' => count($result['warnings']),
             ]));
         }
+        $this->dispatch('roster-week-changed');
+    }
+
+    /**
+     * @param  list<int>  $blockIds  werkblok-id's van dezelfde worker×dag
+     */
+    public function openReplacement(array $blockIds, SuggestReplacementAction $suggest): void
+    {
+        $this->authorize('update', PlannedShift::class);
+        $this->replacementError = '';
+        $ids = array_values(array_unique(array_map('intval', $blockIds)));
+
+        try {
+            $this->replacementCandidates = $suggest->handle(
+                Tenant::query()->findOrFail(Tenancy::id()),
+                $ids,
+            );
+        } catch (InvalidArgumentException $e) {
+            $this->replacementError = __($e->getMessage());
+
+            return;
+        }
+
+        $this->replacementBlockIds = $ids;
+        $this->replacementBlockLabels = collect($this->dayEditorContext['blocks'] ?? [])
+            ->filter(fn (array $block) => in_array((int) $block['id'], $ids, true))
+            ->pluck('display')
+            ->all();
+        $this->replacementWorkerId = null;
+
+        $absenceTypes = collect($this->dayEditorContext['types'] ?? [])
+            ->filter(fn (array $type) => ($type['kind'] ?? 'work') !== 'work')
+            ->values();
+        $preferred = $absenceTypes->firstWhere('kind', 'sick') ?? $absenceTypes->first();
+        $this->replacementAbsenceTypeId = $preferred !== null ? (int) $preferred['id'] : null;
+
+        $this->showReplacementModal = true;
+    }
+
+    public function closeReplacement(): void
+    {
+        $this->reset([
+            'showReplacementModal',
+            'replacementBlockIds',
+            'replacementCandidates',
+            'replacementBlockLabels',
+            'replacementWorkerId',
+            'replacementAbsenceTypeId',
+            'replacementError',
+        ]);
+    }
+
+    public function confirmReplacement(ReplacePlannedShiftAction $replace, LoadRosterDayEditorAction $load): void
+    {
+        $this->authorize('update', PlannedShift::class);
+
+        if ($this->replacementWorkerId === null || $this->replacementAbsenceTypeId === null) {
+            $this->replacementError = __('time.schedule.errors.replacement_not_eligible');
+
+            return;
+        }
+
+        try {
+            $replace->handle(
+                Tenant::query()->findOrFail(Tenancy::id()),
+                $this->replacementBlockIds,
+                $this->replacementWorkerId,
+                $this->replacementAbsenceTypeId,
+                auth()->id(),
+            );
+        } catch (RosterValidationException|InvalidArgumentException $e) {
+            $this->replacementError = __($e->getMessage());
+
+            return;
+        }
+
+        $workerId = (int) ($this->dayEditorContext['worker']['id'] ?? 0);
+        $date = (string) ($this->dayEditorContext['date'] ?? '');
+        $this->closeReplacement();
+        if ($workerId !== 0 && $date !== '') {
+            $this->openDayEditor($workerId, $date, $load);
+        }
+        session()->flash('time_flash', __('time.schedule.replacement.done'));
         $this->dispatch('roster-week-changed');
     }
 
