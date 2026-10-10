@@ -103,7 +103,7 @@
                                     {{ $customer->is_active ? __('locations.deactivate') : __('locations.activate') }}
                                 </button>
                             @endcan
-                            @if ($customerLocations->isEmpty())
+                            @if (\App\Support\Customers\CustomerDeletionGuard::canDelete($customer))
                                 @can('delete', $customer)
                                     <button type="button" class="btn btn--danger btn--sm"
                                             wire:click="deleteCustomer({{ $customer->id }})"

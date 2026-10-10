@@ -9,7 +9,7 @@
   "saved": "Klant opgeslagen.",
   "location_saved": "Locatie opgeslagen.",
   "deleted_customer": "Klant verwijderd.",
-  "confirm_delete": "Klant :name definitief verwijderen?",
+  "confirm_delete": "Klant :name (en lege gekoppelde locaties) definitief verwijderen?",
   "locations_count": "{0} Geen locaties|{1} :count locatie|[2,*] :count locaties",
   "no_locations": "Nog geen gekoppelde locaties.",
   "create_title": "Nieuwe klant",
@@ -93,7 +93,7 @@
   },
   "errors": {
     "name_required": "Vul een klantnaam in.",
-    "has_locations": "Deze klant heeft nog locaties — verwijder die eerst.",
+    "has_locations": "Deze klant heeft nog locaties met inhoud (bezoeken, meldingen, …) en kan niet worden verwijderd.",
     "email_invalid": "Vul een geldig e-mailadres in.",
     "not_found": "Klant niet gevonden."
   },

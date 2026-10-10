@@ -9,7 +9,7 @@
   "saved": "Cliente salvato.",
   "location_saved": "Sede salvata.",
   "deleted_customer": "Cliente eliminato.",
-  "confirm_delete": "Eliminare definitivamente il cliente :name?",
+  "confirm_delete": "Eliminare definitivamente il cliente :name (e le sedi collegate vuote)?",
   "locations_count": "{0} Nessuna sede|{1} :count sede|[2,*] :count sedi",
   "no_locations": "Ancora nessuna sede collegata.",
   "create_title": "Nuovo cliente",
@@ -93,7 +93,7 @@
   },
   "errors": {
     "name_required": "Inserisci un nome cliente.",
-    "has_locations": "Questo cliente ha ancora sedi — eliminarli prima.",
+    "has_locations": "Questo cliente ha ancora sedi con contenuto (visite, segnalazioni, …) e non può essere eliminato.",
     "email_invalid": "Inserisci un indirizzo e-mail valido.",
     "not_found": "Cliente non trovato."
   },

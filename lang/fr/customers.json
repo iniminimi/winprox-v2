@@ -9,7 +9,7 @@
   "saved": "Client enregistré.",
   "location_saved": "Lieu enregistré.",
   "deleted_customer": "Client supprimé.",
-  "confirm_delete": "Supprimer définitivement le client :name ?",
+  "confirm_delete": "Supprimer définitivement le client :name (et les lieux liés vides) ?",
   "locations_count": "{0} Aucun lieu|{1} :count lieu|[2,*] :count lieux",
   "no_locations": "Pas encore de lieux liés.",
   "create_title": "Nouveau client",
@@ -93,7 +93,7 @@
   },
   "errors": {
     "name_required": "Saisissez un nom de client.",
-    "has_locations": "Ce client a encore des lieux — supprimez-les d’abord.",
+    "has_locations": "Ce client a encore des lieux avec du contenu (visites, signalements, …) et ne peut pas être supprimé.",
     "email_invalid": "Saisissez une adresse e-mail valide.",
     "not_found": "Client introuvable."
   },

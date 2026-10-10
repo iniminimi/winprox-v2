@@ -9,7 +9,7 @@
   "saved": "Kunde gespeichert.",
   "location_saved": "Standort gespeichert.",
   "deleted_customer": "Kunde gelöscht.",
-  "confirm_delete": "Kunde :name endgültig löschen?",
+  "confirm_delete": "Kunde :name (und leere verknüpfte Standorte) endgültig löschen?",
   "locations_count": "{0} Keine Standorte|{1} :count Standort|[2,*] :count Standorte",
   "no_locations": "Noch keine verknüpften Standorte.",
   "create_title": "Neuer Kunde",
@@ -93,7 +93,7 @@
   },
   "errors": {
     "name_required": "Geben Sie einen Kundennamen ein.",
-    "has_locations": "Dieser Kunde hat noch Standorte — entfernen Sie diese zuerst.",
+    "has_locations": "Dieser Kunde hat noch Standorte mit Inhalt (Besuche, Meldungen, …) und kann nicht gelöscht werden.",
     "email_invalid": "Geben Sie eine gültige E-Mail-Adresse ein.",
     "not_found": "Kunde nicht gefunden."
   },

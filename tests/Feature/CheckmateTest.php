@@ -190,28 +190,61 @@ it('toont een zachte dedup-nudge binnen de eigen tenant', function () {
     expect($matches->pluck('name')->all())->toBe(['Bakkerij Peeters']);
 });
 
-it('verwijdert een klant zonder werkadressen, maar niet met werkadressen', function () {
+it('verwijdert een klant met lege locatie, maar niet met bezoeken', function () {
     $tenant = checkmateTenant();
+    Tenancy::actAs($tenant->id);
     $admin = User::factory()->admin()->for($tenant)->create();
+    $worker = checkmateWorker($tenant);
 
     $empty = Customer::factory()->create(['tenant_id' => $tenant->id]);
-    $linked = Customer::factory()->create(['tenant_id' => $tenant->id]);
-    Location::factory()->create(['tenant_id' => $tenant->id, 'customer_id' => $linked->id]);
+    $withEmptyLocation = Customer::factory()->create(['tenant_id' => $tenant->id]);
+    $emptyLocation = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'customer_id' => $withEmptyLocation->id,
+    ]);
+    app(\App\Actions\Locations\EnsureSiteUnitForLocationAction::class)->handle(
+        $emptyLocation,
+        (int) $tenant->id,
+        (int) $admin->id,
+    );
+
+    $withVisit = Customer::factory()->create(['tenant_id' => $tenant->id]);
+    $visitedLocation = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'customer_id' => $withVisit->id,
+        'latitude' => 51.05,
+        'longitude' => 3.73,
+    ]);
+    WorkVisit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_shift_id' => WorkShift::factory()->create([
+            'tenant_id' => $tenant->id,
+            'worker_id' => $worker->id,
+        ])->id,
+        'unit_id' => null,
+        'location_id' => $visitedLocation->id,
+    ]);
 
     Livewire::actingAs($admin)
         ->test(CustomersIndex::class)
         ->assertSee('deleteCustomer('.$empty->id.')')
-        ->assertDontSee('deleteCustomer('.$linked->id.')')
-        ->call('deleteCustomer', $empty->id);
+        ->assertSee('deleteCustomer('.$withEmptyLocation->id.')')
+        ->assertDontSee('deleteCustomer('.$withVisit->id.')')
+        ->call('deleteCustomer', $empty->id)
+        ->call('deleteCustomer', $withEmptyLocation->id);
 
     expect(Customer::find($empty->id))->toBeNull()
-        ->and(Customer::find($linked->id))->not->toBeNull();
+        ->and(Customer::find($withEmptyLocation->id))->toBeNull()
+        ->and(Location::find($emptyLocation->id))->toBeNull()
+        ->and(Customer::find($withVisit->id))->not->toBeNull()
+        ->and(Location::find($visitedLocation->id))->not->toBeNull();
 
     Livewire::actingAs($admin)
         ->test(CustomersIndex::class)
-        ->call('deleteCustomer', $linked->id);
+        ->call('deleteCustomer', $withVisit->id);
 
-    expect(Customer::find($linked->id))->not->toBeNull();
+    expect(Customer::find($withVisit->id))->not->toBeNull();
 });
 
 it('start een werkbezoek op een klantlocatie binnen de straal', function () {

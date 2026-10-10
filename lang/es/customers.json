@@ -9,7 +9,7 @@
   "saved": "Cliente guardado.",
   "location_saved": "Ubicación guardada.",
   "deleted_customer": "Cliente eliminado.",
-  "confirm_delete": "¿Eliminar definitivamente el cliente :name?",
+  "confirm_delete": "¿Eliminar definitivamente el cliente :name (y ubicaciones vinculadas vacías)?",
   "locations_count": "{0} Sin ubicaciones|{1} :count ubicación|[2,*] :count ubicaciones",
   "no_locations": "Aún no hay ubicaciones vinculadas.",
   "create_title": "Nuevo cliente",
@@ -93,7 +93,7 @@
   },
   "errors": {
     "name_required": "Introduce un nombre de cliente.",
-    "has_locations": "Este cliente aún tiene ubicaciones — elimínelas primero.",
+    "has_locations": "Este cliente aún tiene ubicaciones con contenido (visitas, avisos, …) y no se puede eliminar.",
     "email_invalid": "Introduce un correo electrónico válido.",
     "not_found": "Cliente no encontrado."
   },

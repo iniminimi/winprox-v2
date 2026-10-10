@@ -9,7 +9,7 @@
   "saved": "Customer saved.",
   "location_saved": "Location saved.",
   "deleted_customer": "Customer deleted.",
-  "confirm_delete": "Permanently delete customer :name?",
+  "confirm_delete": "Permanently delete customer :name (and empty linked locations)?",
   "locations_count": "{0} No locations|{1} :count location|[2,*] :count locations",
   "no_locations": "No linked locations yet.",
   "create_title": "New customer",
@@ -93,7 +93,7 @@
   },
   "errors": {
     "name_required": "Enter a customer name.",
-    "has_locations": "This customer still has locations — remove those first.",
+    "has_locations": "This customer still has locations with content (visits, issues, …) and cannot be deleted.",
     "email_invalid": "Enter a valid email address.",
     "not_found": "Customer not found."
   },
