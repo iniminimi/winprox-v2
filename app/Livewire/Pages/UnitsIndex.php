@@ -89,6 +89,7 @@ class UnitsIndex extends Component
             'units' => $units,
             'locations' => $locations,
             'categories' => $categories,
+            'checkmateMode' => $tenant instanceof Tenant && $tenant->checkmateMode(),
         ]);
     }
 }

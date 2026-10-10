@@ -106,17 +106,19 @@
             </div>
         </div>
         <p class="wp-muted">{{ __('locations.units_subtitle') }}</p>
-        <div class="wp-filter-row">
-            <label class="wp-field">
-                <span class="wp-label">{{ __('locations.units.filters.category') }}</span>
-                <select class="wp-input" wire:model.live="unitCategoryFilter">
-                    <option value="">{{ __('locations.units.filters.all_categories') }}</option>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->localizedName() }}</option>
-                    @endforeach
-                </select>
-            </label>
-        </div>
+        @unless ($checkmateMode ?? false)
+            <div class="wp-filter-row">
+                <label class="wp-field">
+                    <span class="wp-label">{{ __('locations.units.filters.category') }}</span>
+                    <select class="wp-input" wire:model.live="unitCategoryFilter">
+                        <option value="">{{ __('locations.units.filters.all_categories') }}</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->localizedName() }}</option>
+                        @endforeach
+                    </select>
+                </label>
+            </div>
+        @endunless
         <div class="wp-filter-row">
             <label class="wp-field">
                 <span class="wp-label">{{ __('locations.units.filters.search') }}</span>

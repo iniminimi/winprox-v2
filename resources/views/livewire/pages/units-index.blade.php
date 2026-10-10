@@ -35,12 +35,14 @@
                     <option value="{{ $location->id }}">{{ $location->name ?: $location->address }}</option>
                 @endforeach
             </select>
-            <select id="units-category-filter" class="wp-select wp-select--compact" wire:model.live="categoryFilter" aria-label="{{ __('units.filters.category') }}">
-                <option value="">{{ __('units.filters.all_categories') }}</option>
-                @foreach ($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->localizedName() }}</option>
-                @endforeach
-            </select>
+            @unless ($checkmateMode ?? false)
+                <select id="units-category-filter" class="wp-select wp-select--compact" wire:model.live="categoryFilter" aria-label="{{ __('units.filters.category') }}">
+                    <option value="">{{ __('units.filters.all_categories') }}</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->localizedName() }}</option>
+                    @endforeach
+                </select>
+            @endunless
             <span class="wp-pill wp-pill--closed">{{ __('units.filters.count', ['count' => $units->total()]) }}</span>
         </div>
 
