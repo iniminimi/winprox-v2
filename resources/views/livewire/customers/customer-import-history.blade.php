@@ -1,8 +1,13 @@
+@php
+    $importHistory = ($checkmateMode ?? false)
+        ? 'customers.checkmate.customers_import_history'
+        : 'customers.customers_import_history';
+@endphp
 <div>
     @if ($batches->isNotEmpty())
         <x-wp-disclosure-card
             :title="__('customers.customers_import_history.title')"
-            :subtitle="__('customers.customers_import_history.hint')"
+            :subtitle="__($importHistory.'.hint')"
             :count="$batches->count()"
         >
             <div class="wp-list wp-list--entity-rows">
@@ -15,13 +20,13 @@
                             <p class="wp-issue-card-meta">
                                 {{ $batch['created_at']->format('d-m-Y H:i') }}
                                 &middot; {{ __('customers.customers_import_history.customer_count', ['count' => $batch['customer_count']]) }}
-                                &middot; {{ __('customers.customers_import_history.location_count', ['count' => $batch['location_count']]) }}
+                                &middot; {{ __($importHistory.'.location_count', ['count' => $batch['location_count']]) }}
                             </p>
                         </div>
                         <div class="wp-issue-row-meta">
                             @if ($batch['can_delete'])
                                 <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteCustomerImportBatch('{{ $batch['batch_id'] }}')"
-                                        wire:confirm="{{ __('customers.customers_import_history.confirm_delete', ['customers' => $batch['deletable_customers'], 'locations' => $batch['deletable_locations']]) }}">
+                                        wire:confirm="{{ __($importHistory.'.confirm_delete', ['customers' => $batch['deletable_customers'], 'locations' => $batch['deletable_locations']]) }}">
                                     {{ __('customers.customers_import_history.delete_button', ['count' => $batch['deletable_customers'] + $batch['deletable_locations']]) }}
                                 </button>
                             @elseif ($batch['blocked'] > 0)

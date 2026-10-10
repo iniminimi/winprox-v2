@@ -1936,6 +1936,14 @@
                     "text": "Créez un client avec un nom et éventuellement une personne de contact, e-mail et téléphone. Ajoutez ensuite une ou plusieurs adresses de chantier."
                 },
                 {
+                    "label": "Importer des clients",
+                    "text": "Importez des clients via CSV ou Excel (.xlsx). Obligatoire : <strong>name</strong>. Optionnel : coordonnées et une adresse de travail (<strong>street</strong> + <strong>postal_code</strong> + <strong>city</strong> ensemble ; optionnel <strong>location_name</strong>, numéro, code pays, DDT, GPS). Le même nom sur plusieurs lignes = plusieurs adresses. Téléchargez le fichier exemple comme modèle. Colonnes inconnues ou lignes invalides rejettent tout l’import."
+                },
+                {
+                    "label": "Imports récents",
+                    "text": "Après un import vous voyez les imports récents (30 jours). Par import : nom de fichier, date, nombre de clients et d’adresses. <strong>Annuler l’import</strong> supprime les clients et adresses sans visites. Les adresses avec visites restent."
+                },
+                {
                     "label": "Adresse de chantier",
                     "text": "Rue, numéro, code postal, commune et le repère GPS (automatique via l'adresse ou saisi manuellement en latitude/longitude). Pour les travaux sous déclaration de travaux (30bis), remplissez aussi la référence DDT ; pour les clients particuliers elle peut rester vide."
                 },

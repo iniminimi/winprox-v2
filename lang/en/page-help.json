@@ -1928,6 +1928,14 @@
                     "text": "Create a customer with a name and optionally a contact person, e-mail and phone. Then add one or more work addresses."
                 },
                 {
+                    "label": "Import customers",
+                    "text": "Import customers via CSV or Excel (.xlsx). Required: <strong>name</strong>. Optional contact fields and a work address (<strong>street</strong> + <strong>postal_code</strong> + <strong>city</strong> together; optional <strong>location_name</strong>, house number, country code, DDT, GPS). The same customer name on multiple rows = multiple work addresses. Download the sample file as a template. Unknown columns or invalid rows reject the whole import."
+                },
+                {
+                    "label": "Recent imports",
+                    "text": "After an import you see recent imports (30 days). Per import: file name, date, customer and work-address counts. <strong>Undo import</strong> removes customers and work addresses without visits. Addresses with visits are kept."
+                },
+                {
                     "label": "Work address",
                     "text": "Street, number, postcode, city and the GPS pin (automatic from the address or entered manually as latitude/longitude). For work under declaration of works (30bis) also fill in the DDT reference; for private customers it may stay empty."
                 },

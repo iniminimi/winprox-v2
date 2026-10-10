@@ -119,5 +119,25 @@
       "document_title": "Estadísticas del cliente — :customer",
       "title": "Estadísticas del cliente — :customer"
     }
+  },
+  "checkmate": {
+    "imported": ":count cliente(s) y :locations dirección(es) de trabajo importados.",
+    "import_sample": {
+      "sample_location_name": "Dirección de trabajo"
+    },
+    "customers_csv": {
+      "hint": "Importe clientes mediante CSV o Excel (.xlsx). Obligatorio: name. Opcional: contact_name, email, phone y una dirección de trabajo (street + postal_code + city obligatorios juntos; location_name = nombre opcional de la dirección, house_number, country_code (BE por defecto), ddt (declaración de obras, 13 caracteres), latitude y longitude (ambas juntas)). El mismo nombre de cliente en varias filas = varias direcciones de trabajo; un cliente existente con el mismo nombre se reutiliza. Por dirección Checkmate crea en silencio una unidad «Toda la sede» (no visible en el menú). Columnas desconocidas o filas no válidas rechazan toda la importación.",
+      "errors": {
+        "incomplete_address": "Dirección de trabajo incompleta — street, postal_code y city son obligatorios juntos."
+      }
+    },
+    "customers_import_history": {
+      "hint": "Deshacer elimina direcciones de trabajo y clientes importados sin contenido (visitas). Las direcciones con visitas se conservan.",
+      "location_count": ":count dirección(es) de trabajo",
+      "confirm_delete": "¿Eliminar :customers cliente(s) y :locations dirección(es) de trabajo sin contenido?",
+      "nothing_deletable": "Ningún cliente ni dirección de trabajo de esta importación se puede eliminar.",
+      "partially_deleted": ":customers cliente(s) y :locations dirección(es) de trabajo eliminados. :preserved elemento(s) con contenido se conservaron.",
+      "fully_deleted": ":customers cliente(s) y :locations dirección(es) de trabajo eliminados."
+    }
   }
 }

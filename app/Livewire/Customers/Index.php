@@ -399,7 +399,10 @@ class Index extends Component
         );
 
         if ($result['success']) {
-            session()->flash('success', __('customers.imported', [
+            $importedKey = $tenant->checkmateMode()
+                ? 'customers.checkmate.imported'
+                : 'customers.imported';
+            session()->flash('success', __($importedKey, [
                 'count' => $result['count'],
                 'locations' => $result['locations_count'] ?? 0,
             ]));
@@ -417,21 +420,7 @@ class Index extends Component
         abort_unless($this->resolveTenant()?->hasCsvCustomersImport() ?? false, 403);
 
         $headers = ImportCustomersAction::allHeaders();
-        $sampleRow = [
-            __('customers.import_sample.sample_customer_name'),
-            __('customers.import_sample.sample_contact_name'),
-            __('customers.import_sample.sample_email'),
-            __('customers.import_sample.sample_phone'),
-            __('customers.import_sample.sample_location_name'),
-            __('customers.import_sample.sample_street'),
-            __('customers.import_sample.sample_house_number'),
-            __('customers.import_sample.sample_postal_code'),
-            __('customers.import_sample.sample_city'),
-            'BE',
-            '',
-            '',
-            '',
-        ];
+        $sampleRow = $this->customersImportSampleRow();
 
         return response()->streamDownload(function () use ($headers, $sampleRow) {
             echo "\xEF\xBB\xBF";
@@ -451,21 +440,7 @@ class Index extends Component
 
         $rows = [
             ImportCustomersAction::allHeaders(),
-            [
-                __('customers.import_sample.sample_customer_name'),
-                __('customers.import_sample.sample_contact_name'),
-                __('customers.import_sample.sample_email'),
-                __('customers.import_sample.sample_phone'),
-                __('customers.import_sample.sample_location_name'),
-                __('customers.import_sample.sample_street'),
-                __('customers.import_sample.sample_house_number'),
-                __('customers.import_sample.sample_postal_code'),
-                __('customers.import_sample.sample_city'),
-                'BE',
-                '',
-                '',
-                '',
-            ],
+            $this->customersImportSampleRow(),
         ];
 
         return response()->streamDownload(function () use ($rows) {
@@ -492,8 +467,12 @@ class Index extends Component
 
         $summary = CustomerImportBatchRegistry::summary((int) $tenant->id, $batchId);
 
+        $historyPrefix = $tenant->checkmateMode()
+            ? 'customers.checkmate.customers_import_history'
+            : 'customers.customers_import_history';
+
         if (! $summary['can_delete']) {
-            $this->customersImportNotice = __('customers.customers_import_history.nothing_deletable');
+            $this->customersImportNotice = __($historyPrefix.'.nothing_deletable');
             $this->customersImportNoticeType = 'error';
 
             return;
@@ -518,13 +497,13 @@ class Index extends Component
         $preserved = (int) ($result['preserved_count'] ?? 0);
 
         if ($preserved > 0) {
-            $this->customersImportNotice = __('customers.customers_import_history.partially_deleted', [
+            $this->customersImportNotice = __($historyPrefix.'.partially_deleted', [
                 'customers' => $deletedCustomers,
                 'locations' => $deletedLocations,
                 'preserved' => $preserved,
             ]);
         } else {
-            $this->customersImportNotice = __('customers.customers_import_history.fully_deleted', [
+            $this->customersImportNotice = __($historyPrefix.'.fully_deleted', [
                 'customers' => $deletedCustomers,
                 'locations' => $deletedLocations,
             ]);
@@ -641,6 +620,32 @@ class Index extends Component
         $this->locationFormLatitude = '';
         $this->locationFormLongitude = '';
         $this->resetErrorBag();
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function customersImportSampleRow(): array
+    {
+        $locationNameKey = ($this->resolveTenant()?->checkmateMode() ?? false)
+            ? 'customers.checkmate.import_sample.sample_location_name'
+            : 'customers.import_sample.sample_location_name';
+
+        return [
+            __('customers.import_sample.sample_customer_name'),
+            __('customers.import_sample.sample_contact_name'),
+            __('customers.import_sample.sample_email'),
+            __('customers.import_sample.sample_phone'),
+            __($locationNameKey),
+            __('customers.import_sample.sample_street'),
+            __('customers.import_sample.sample_house_number'),
+            __('customers.import_sample.sample_postal_code'),
+            __('customers.import_sample.sample_city'),
+            'BE',
+            '',
+            '',
+            '',
+        ];
     }
 
     private function resolveTenant(): ?Tenant

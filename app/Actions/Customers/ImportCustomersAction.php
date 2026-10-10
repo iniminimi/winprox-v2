@@ -18,6 +18,8 @@ use RuntimeException;
 
 class ImportCustomersAction
 {
+    private bool $checkmateMode = false;
+
     /** @var list<string> */
     public const REQUIRED_HEADERS = [
         'name',
@@ -72,6 +74,7 @@ class ImportCustomersAction
     public function handle(ImportCustomersData $data, int $tenantId, ?int $actorUserId = null): array
     {
         $tenant = Tenant::query()->findOrFail($tenantId);
+        $this->checkmateMode = $tenant->checkmateMode();
         if (! $tenant->hasCsvCustomersImport()) {
             return [
                 'success' => false,
@@ -329,9 +332,12 @@ class ImportCustomersAction
             }
 
             if ($payload['street'] === null || $payload['postal_code'] === null || $payload['city'] === null) {
+                $incompleteKey = $this->checkmateMode
+                    ? 'customers.checkmate.customers_csv.errors.incomplete_address'
+                    : 'customers.customers_csv.errors.incomplete_address';
                 $errors[] = __('customers.customers_csv.errors.row', [
                     'line' => $line,
-                    'message' => __('customers.customers_csv.errors.incomplete_address'),
+                    'message' => __($incompleteKey),
                 ]);
             }
 

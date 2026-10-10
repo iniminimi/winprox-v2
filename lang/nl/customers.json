@@ -119,5 +119,25 @@
       "document_title": "Klantstatistieken — :customer",
       "title": "Klantstatistieken — :customer"
     }
+  },
+  "checkmate": {
+    "imported": ":count klant(en) en :locations werkadres(sen) geïmporteerd.",
+    "import_sample": {
+      "sample_location_name": "Werkadres"
+    },
+    "customers_csv": {
+      "hint": "Importeer klanten via CSV of Excel (.xlsx). Verplicht: name. Optioneel: contact_name, email, phone en een werkadres (street + postal_code + city samen verplicht; location_name = optionele naam van het werkadres, house_number, country_code (standaard BE), ddt (Aangifte van werken, 13 tekens), latitude en longitude (beide samen)). Dezelfde klantnaam op meerdere rijen = meerdere werkadressen; een bestaande klant met dezelfde naam wordt hergebruikt. Per werkadres maakt Checkmate stil een «Hele locatie»-unit aan (niet zichtbaar in het menu). Onbekende kolommen of foutieve rijen weigeren de hele import.",
+      "errors": {
+        "incomplete_address": "Werkadres onvolledig — street, postal_code en city zijn samen verplicht."
+      }
+    },
+    "customers_import_history": {
+      "hint": "Ongedaan maken verwijdert geïmporteerde werkadressen en klanten zonder inhoud (bezoeken). Werkadressen met bezoeken blijven staan.",
+      "location_count": ":count werkadres(sen)",
+      "confirm_delete": ":customers klant(en) en :locations werkadres(sen) zonder inhoud verwijderen?",
+      "nothing_deletable": "Geen klanten of werkadressen in deze import kunnen worden verwijderd.",
+      "partially_deleted": ":customers klant(en) en :locations werkadres(sen) verwijderd. :preserved item(s) met inhoud bleven staan.",
+      "fully_deleted": ":customers klant(en) en :locations werkadres(sen) verwijderd."
+    }
   }
 }

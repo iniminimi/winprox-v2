@@ -119,5 +119,25 @@
       "document_title": "Kundenstatistiken — :customer",
       "title": "Kundenstatistiken — :customer"
     }
+  },
+  "checkmate": {
+    "imported": ":count Kunde(n) und :locations Arbeitsadresse(n) importiert.",
+    "import_sample": {
+      "sample_location_name": "Arbeitsadresse"
+    },
+    "customers_csv": {
+      "hint": "Kunden per CSV oder Excel (.xlsx) importieren. Pflicht: name. Optional: contact_name, email, phone und eine Arbeitsadresse (street + postal_code + city gemeinsam erforderlich; location_name = optionaler Name der Arbeitsadresse, house_number, country_code (Standard BE), ddt (Werkmeldung, 13 Zeichen), latitude und longitude (beide zusammen)). Gleicher Kundenname in mehreren Zeilen = mehrere Arbeitsadressen; ein bestehender Kunde mit gleichem Namen wird wiederverwendet. Pro Arbeitsadresse legt Checkmate still eine «Ganzer Standort»-Unit an (nicht im Menü sichtbar). Unbekannte Spalten oder ungültige Zeilen verweigern den gesamten Import.",
+      "errors": {
+        "incomplete_address": "Arbeitsadresse unvollständig — street, postal_code und city sind gemeinsam erforderlich."
+      }
+    },
+    "customers_import_history": {
+      "hint": "Rückgängig machen entfernt importierte Arbeitsadressen und Kunden ohne Inhalt (Besuche). Arbeitsadressen mit Besuchen bleiben.",
+      "location_count": ":count Arbeitsadresse(n)",
+      "confirm_delete": ":customers Kunde(n) und :locations Arbeitsadresse(n) ohne Inhalt löschen?",
+      "nothing_deletable": "Keine Kunden oder Arbeitsadressen in diesem Import können gelöscht werden.",
+      "partially_deleted": ":customers Kunde(n) und :locations Arbeitsadresse(n) gelöscht. :preserved Element(e) mit Inhalt blieben bestehen.",
+      "fully_deleted": ":customers Kunde(n) und :locations Arbeitsadresse(n) gelöscht."
+    }
   }
 }

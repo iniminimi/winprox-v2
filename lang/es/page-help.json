@@ -1928,6 +1928,14 @@
                     "text": "Crea un cliente con nombre y opcionalmente persona de contacto, e-mail y teléfono. Añade después una o más direcciones de obra."
                 },
                 {
+                    "label": "Importar clientes",
+                    "text": "Importe clientes mediante CSV o Excel (.xlsx). Obligatorio: <strong>name</strong>. Opcional: contacto y una dirección de trabajo (<strong>street</strong> + <strong>postal_code</strong> + <strong>city</strong> juntos; opcional <strong>location_name</strong>, número, país, DDT, GPS). El mismo nombre en varias filas = varias direcciones. Descargue el archivo de ejemplo como plantilla. Columnas desconocidas o filas no válidas rechazan toda la importación."
+                },
+                {
+                    "label": "Importaciones recientes",
+                    "text": "Tras una importación ve importaciones recientes (30 días). Por importación: archivo, fecha, clientes y direcciones. <strong>Deshacer importación</strong> elimina clientes y direcciones sin visitas. Las direcciones con visitas se conservan."
+                },
+                {
                     "label": "Dirección de obra",
                     "text": "Calle, número, código postal, localidad y el marcador GPS (automático desde la dirección o introducido a mano como latitud/longitud). Para trabajos bajo declaración de obras (30bis) rellena también la referencia DDT; en clientes particulares puede quedar vacía."
                 },

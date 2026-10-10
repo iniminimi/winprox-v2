@@ -1928,6 +1928,14 @@
                     "text": "Maak een klant aan met naam en optioneel contactpersoon, e-mail en telefoon. Voeg er daarna een of meer werkadressen aan toe."
                 },
                 {
+                    "label": "Klanten importeren",
+                    "text": "Importeer klanten via CSV of Excel (.xlsx). Verplicht: <strong>name</strong>. Optioneel contactgegevens én een werkadres (<strong>street</strong> + <strong>postal_code</strong> + <strong>city</strong> samen; optioneel <strong>location_name</strong>, huisnummer, landcode, DDT, GPS). Dezelfde klantnaam op meerdere rijen = meerdere werkadressen. Download het voorbeeldbestand als sjabloon. Onbekende kolommen of foutieve rijen weigeren de hele import."
+                },
+                {
+                    "label": "Recente imports",
+                    "text": "Na een import zie je recente imports (30 dagen). Per import: bestandsnaam, datum, aantal klanten en werkadressen. <strong>Import terugdraaien</strong> verwijdert klanten en werkadressen zonder bezoeken. Adressen met bezoeken blijven staan."
+                },
+                {
                     "label": "Werkadres",
                     "text": "Straat, nummer, postcode, plaats en de GPS-pin (automatisch via het adres of handmatig als breedte- en lengtegraad). Voor werken onder aangifte van werken (30bis) vul je ook de DDT-referentie in; bij particuliere klanten mag die leeg blijven."
                 },

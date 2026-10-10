@@ -119,5 +119,25 @@
       "document_title": "Statistiche cliente — :customer",
       "title": "Statistiche cliente — :customer"
     }
+  },
+  "checkmate": {
+    "imported": ":count cliente/i e :locations indirizzo/i di lavoro importati.",
+    "import_sample": {
+      "sample_location_name": "Indirizzo di lavoro"
+    },
+    "customers_csv": {
+      "hint": "Importa clienti tramite CSV o Excel (.xlsx). Obbligatorio: name. Opzionale: contact_name, email, phone e un indirizzo di lavoro (street + postal_code + city obbligatori insieme; location_name = nome opzionale dell’indirizzo, house_number, country_code (BE predefinito), ddt (dichiarazione di lavori, 13 caratteri), latitude e longitude (entrambe insieme)). Lo stesso nome cliente su più righe = più indirizzi di lavoro; un cliente esistente con lo stesso nome viene riutilizzato. Per indirizzo Checkmate crea in silenzio un’unità «Intera sede» (non visibile nel menu). Colonne sconosciute o righe non valide rifiutano l’intera importazione.",
+      "errors": {
+        "incomplete_address": "Indirizzo di lavoro incompleto — street, postal_code e city sono obbligatori insieme."
+      }
+    },
+    "customers_import_history": {
+      "hint": "Annullare rimuove indirizzi di lavoro e clienti importati senza contenuto (visite). Gli indirizzi con visite restano.",
+      "location_count": ":count indirizzo/i di lavoro",
+      "confirm_delete": "Eliminare :customers cliente/i e :locations indirizzo/i di lavoro senza contenuto?",
+      "nothing_deletable": "Nessun cliente o indirizzo di lavoro di questa importazione può essere eliminato.",
+      "partially_deleted": ":customers cliente/i e :locations indirizzo/i di lavoro eliminati. :preserved elemento/i con contenuto sono rimasti.",
+      "fully_deleted": ":customers cliente/i e :locations indirizzo/i di lavoro eliminati."
+    }
   }
 }

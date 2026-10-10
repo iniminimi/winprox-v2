@@ -1928,6 +1928,14 @@
                     "text": "Crea un cliente con nome ed eventualmente referente, e-mail e telefono. Aggiungi poi uno o più indirizzi di lavoro."
                 },
                 {
+                    "label": "Importa clienti",
+                    "text": "Importa clienti tramite CSV o Excel (.xlsx). Obbligatorio: <strong>name</strong>. Opzionale: contatti e un indirizzo di lavoro (<strong>street</strong> + <strong>postal_code</strong> + <strong>city</strong> insieme; opzionale <strong>location_name</strong>, civico, paese, DDT, GPS). Lo stesso nome su più righe = più indirizzi. Scarica il file di esempio come modello. Colonne sconosciute o righe non valide rifiutano l’intera importazione."
+                },
+                {
+                    "label": "Import recenti",
+                    "text": "Dopo un import vedi gli import recenti (30 giorni). Per import: file, data, clienti e indirizzi. <strong>Annulla import</strong> elimina clienti e indirizzi senza visite. Gli indirizzi con visite restano."
+                },
+                {
                     "label": "Indirizzo di lavoro",
                     "text": "Via, numero, CAP, comune e il marker GPS (automatico dall'indirizzo o inserito a mano come latitudine/longitudine). Per lavori con dichiarazione di lavori (30bis) compila anche il riferimento DDT; per i clienti privati può restare vuoto."
                 },

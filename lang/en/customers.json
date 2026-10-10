@@ -119,5 +119,25 @@
       "document_title": "Customer statistics — :customer",
       "title": "Customer statistics — :customer"
     }
+  },
+  "checkmate": {
+    "imported": ":count customer(s) and :locations work address(es) imported.",
+    "import_sample": {
+      "sample_location_name": "Work address"
+    },
+    "customers_csv": {
+      "hint": "Import customers via CSV or Excel (.xlsx). Required: name. Optional: contact_name, email, phone and a work address (street + postal_code + city required together; location_name = optional work-address name, house_number, country_code (default BE), ddt (works declaration, 13 characters), latitude and longitude (both together)). The same customer name on multiple rows = multiple work addresses; an existing customer with the same name is reused. Per work address Checkmate silently creates a «Whole site» unit (not shown in the menu). Unknown columns or invalid rows reject the whole import.",
+      "errors": {
+        "incomplete_address": "Work address incomplete — street, postal_code and city are required together."
+      }
+    },
+    "customers_import_history": {
+      "hint": "Undo removes imported work addresses and customers without content (visits). Work addresses with visits are kept.",
+      "location_count": ":count work address(es)",
+      "confirm_delete": "Delete :customers customer(s) and :locations work address(es) without content?",
+      "nothing_deletable": "No customers or work addresses in this import can be deleted.",
+      "partially_deleted": ":customers customer(s) and :locations work address(es) deleted. :preserved item(s) with content were kept.",
+      "fully_deleted": ":customers customer(s) and :locations work address(es) deleted."
+    }
   }
 }

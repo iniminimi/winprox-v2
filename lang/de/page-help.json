@@ -1928,6 +1928,14 @@
                     "text": "Legen Sie einen Kunden mit Namen und optional Ansprechpartner, E-Mail und Telefon an. Fügen Sie dann eine oder mehrere Einsatzadressen hinzu."
                 },
                 {
+                    "label": "Kunden importieren",
+                    "text": "Kunden per CSV oder Excel (.xlsx) importieren. Pflicht: <strong>name</strong>. Optional Kontaktdaten und eine Arbeitsadresse (<strong>street</strong> + <strong>postal_code</strong> + <strong>city</strong> gemeinsam; optional <strong>location_name</strong>, Hausnummer, Ländercode, DDT, GPS). Gleicher Kundenname in mehreren Zeilen = mehrere Arbeitsadressen. Laden Sie die Beispieldatei als Vorlage herunter. Unbekannte Spalten oder ungültige Zeilen verweigern den gesamten Import."
+                },
+                {
+                    "label": "Letzte Imports",
+                    "text": "Nach einem Import sehen Sie letzte Imports (30 Tage). Pro Import: Dateiname, Datum, Anzahl Kunden und Arbeitsadressen. <strong>Import rückgängig</strong> löscht Kunden und Arbeitsadressen ohne Besuche. Adressen mit Besuchen bleiben."
+                },
+                {
                     "label": "Einsatzadresse",
                     "text": "Straße, Nummer, PLZ, Ort und die GPS-Markierung (automatisch aus der Adresse oder manuell als Breiten-/Längengrad). Für Arbeiten unter Werkverzeichnis (30bis) füllen Sie auch die DDT-Referenz aus; bei Privatkunden darf sie leer bleiben."
                 },

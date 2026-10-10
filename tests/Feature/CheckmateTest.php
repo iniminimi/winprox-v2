@@ -1310,3 +1310,42 @@ it('linkt onderaan de klantenpagina naar de instructievideo in een nieuw tabblad
         ->assertSee('video/nl/klant_toevoegen.mp4')
         ->assertSee('target="_blank"', false);
 });
+
+it('toont checkmate-importcopy met werkadressen i.p.v. facility-locaties', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    Livewire::actingAs($admin)
+        ->test(CustomersIndex::class)
+        ->assertSee(__('customers.customers_csv.button'), false)
+        ->call('openCustomersCsvImportModal')
+        ->assertSee(__('customers.checkmate.customers_csv.hint'), false)
+        ->assertDontSee(__('customers.customers_csv.hint'), false)
+        ->assertSee(\App\Support\PageHelp::for('checkmate.customers')['actions'][2]['label'], false)
+        ->assertDontSee('issues, units, documents', false);
+});
+
+it('gebruikt checkmate-fouttekst bij onvolledig werkadres in import', function () {
+    $tenant = checkmateTenant();
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    $file = \Illuminate\Http\UploadedFile::fake()->createWithContent(
+        'customers.csv',
+        "name,street\nBakkerij Peeters,Kerkstraat\n",
+    );
+
+    $result = app(\App\Actions\Customers\ImportCustomersAction::class)->handle(
+        new \App\Data\Customers\ImportCustomersData(
+            filePath: $file->getRealPath(),
+            originalName: $file->getClientOriginalName(),
+        ),
+        (int) $tenant->id,
+        (int) $admin->id,
+    );
+
+    expect($result['success'])->toBeFalse()
+        ->and(implode(' ', $result['errors'] ?? []))->toContain(
+            __('customers.checkmate.customers_csv.errors.incomplete_address')
+        );
+});

@@ -6,6 +6,7 @@ use App\Actions\Locations\DeleteLocationAction;
 use App\Data\Customers\DeleteCustomerImportBatchData;
 use App\Models\Customer;
 use App\Models\Location;
+use App\Models\Tenant;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Customers\CustomerImportBatchRegistry;
 use Illuminate\Support\Facades\DB;
@@ -38,9 +39,13 @@ class DeleteCustomerImportBatchAction
             if ($locations->isEmpty() && $customers->isEmpty()) {
                 DB::rollBack();
 
+                $nothingKey = Tenant::query()->find($tenantId)?->checkmateMode()
+                    ? 'customers.checkmate.customers_import_history.nothing_deletable'
+                    : 'customers.customers_import_history.nothing_deletable';
+
                 return [
                     'success' => false,
-                    'errors' => [__('customers.customers_import_history.nothing_deletable')],
+                    'errors' => [__($nothingKey)],
                 ];
             }
 

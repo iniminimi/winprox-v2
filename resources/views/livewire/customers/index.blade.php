@@ -158,7 +158,10 @@
         </div>
     </div>
 
-    @include('livewire.customers.customer-import-history', ['batches' => $customerImportBatches])
+    @include('livewire.customers.customer-import-history', [
+        'batches' => $customerImportBatches,
+        'checkmateMode' => $checkmateMode ?? false,
+    ])
 
     @if ($workAddressVideoUrl)
         <div class="wp-cluster wp-cluster--center">
@@ -177,7 +180,7 @@
                     <x-wp-modal-close wire:click="closeCustomersCsvImportModal" />
                 </div>
                 <div class="wp-modal-body wp-stack">
-                    <p class="wp-muted">{{ __('customers.customers_csv.hint') }}</p>
+                    <p class="wp-muted">{{ ($checkmateMode ?? false) ? __('customers.checkmate.customers_csv.hint') : __('customers.customers_csv.hint') }}</p>
                     <div class="wp-field">
                         <label class="wp-label" for="customers-csv-file">{{ __('customers.import_file_label') }}</label>
                         <div class="wp-cluster">
