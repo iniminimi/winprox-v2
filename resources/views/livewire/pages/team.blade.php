@@ -701,11 +701,7 @@
                     </div>
                 @endif
 
-                <div class="wp-field">
-                    <label class="wp-label" for="teamSortOrder">{{ __('team.teams.modal.sort_order') }}</label>
-                    <input type="number" id="teamSortOrder" class="wp-input" wire:model="teamSortOrder" min="0">
-                    @error('teamSortOrder') <p class="wp-error">{{ $message }}</p> @enderror
-                </div>
+                {{-- sort_order blijft in DB (default 0); geen UI meer — lijsten sorteren op naam. --}}
                 <div class="wp-field">
                     <label class="wp-label" for="teamSessionLifespanType">{{ __('team.teams.modal.session_lifespan_label') }}</label>
                     <select id="teamSessionLifespanType" class="wp-input" wire:model.live="teamSessionLifespanType">
