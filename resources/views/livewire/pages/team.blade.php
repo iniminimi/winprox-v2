@@ -751,25 +751,27 @@
                     </div>
                 @endif
 
-                <div class="wp-field">
-                    <h3 class="wp-label">{{ __('team.teams.modal.categories_title') }}</h3>
-                    <p class="wp-hint">{{ __('team.teams.modal.categories_subtitle') }}</p>
-                </div>
-
-                @if ($categories->isNotEmpty())
-                    <div class="wp-form-grid-2">
-                        @foreach ($categories as $category)
-                            <label class="wp-check">
-                                <input type="checkbox"
-                                       wire:model.live="selectedCategoryIds"
-                                       value="{{ $category->id }}">
-                                <span>{{ $category->localizedName() }}</span>
-                            </label>
-                        @endforeach
+                @unless ($isCheckmate ?? false)
+                    <div class="wp-field">
+                        <h3 class="wp-label">{{ __('team.teams.modal.categories_title') }}</h3>
+                        <p class="wp-hint">{{ __('team.teams.modal.categories_subtitle') }}</p>
                     </div>
-                @else
-                    <p class="wp-muted">{{ __('team.teams.modal.categories_empty') }}</p>
-                @endif
+
+                    @if ($categories->isNotEmpty())
+                        <div class="wp-form-grid-2">
+                            @foreach ($categories as $category)
+                                <label class="wp-check">
+                                    <input type="checkbox"
+                                           wire:model.live="selectedCategoryIds"
+                                           value="{{ $category->id }}">
+                                    <span>{{ $category->localizedName() }}</span>
+                                </label>
+                            @endforeach
+                        </div>
+                    @else
+                        <p class="wp-muted">{{ __('team.teams.modal.categories_empty') }}</p>
+                    @endif
+                @endunless
 
                 <div class="wp-cluster wp-cluster--tight">
                     <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
