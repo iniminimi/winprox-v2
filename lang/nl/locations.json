@@ -490,7 +490,7 @@
     "site_units": {
         "button": "Hele locatie-units toevoegen",
         "none_needed": "Alle locaties hebben al minstens één unit.",
-        "created": "{count} Hele locatie-unit toegevoegd.|{count} Hele locatie-units toegevoegd."
+        "created": "{1} :count Hele locatie-unit toegevoegd.|[2,*] :count Hele locatie-units toegevoegd."
     },
     "site_unit": {
         "default_name": "Hele locatie",

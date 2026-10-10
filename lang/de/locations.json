@@ -490,7 +490,7 @@
     "site_units": {
         "button": "Standort-Einheiten hinzufügen",
         "none_needed": "Alle Standorte haben bereits mindestens eine Einheit.",
-        "created": "{count} Standort-Einheit hinzugefügt.|{count} Standort-Einheiten hinzugefügt."
+        "created": "{1} :count Ganz-Standort-Unit hinzugefügt.|[2,*] :count Ganz-Standort-Units hinzugefügt."
     },
     "site_unit": {
         "default_name": "Gesamter Standort",

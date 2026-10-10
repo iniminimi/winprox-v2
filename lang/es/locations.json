@@ -490,7 +490,7 @@
     "site_units": {
         "button": "Añadir unidades de ubicación completa",
         "none_needed": "Todas las ubicaciones ya tienen al menos una unidad.",
-        "created": "{count} unidad de ubicación completa añadida.|{count} unidades de ubicación completa añadidas."
+        "created": "{1} :count unidad «toda la sede» añadida.|[2,*] :count unidades «toda la sede» añadidas."
     },
     "site_unit": {
         "default_name": "Ubicación completa",

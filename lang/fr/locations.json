@@ -490,7 +490,7 @@
     "site_units": {
         "button": "Ajouter des unités site entier",
         "none_needed": "Tous les sites ont déjà au moins une unité.",
-        "created": "{count} unité site entier ajoutée.|{count} unités site entier ajoutées."
+        "created": "{1} :count unité « site entier » ajoutée.|[2,*] :count unités « site entier » ajoutées."
     },
     "site_unit": {
         "default_name": "Site entier",

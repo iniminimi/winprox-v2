@@ -490,7 +490,7 @@
     "site_units": {
         "button": "Add whole-location units",
         "none_needed": "All locations already have at least one unit.",
-        "created": "{count} whole-location unit added.|{count} whole-location units added."
+        "created": "{1} :count whole-location unit added.|[2,*] :count whole-location units added."
     },
     "site_unit": {
         "default_name": "Whole location",
