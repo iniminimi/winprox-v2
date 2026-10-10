@@ -88,9 +88,9 @@ Whitelist-schermen:
 - **Plaatsen** — **Klanten**, **Locaties** (geen Units/Categorieën in het menu).
   Bij plan-activatie/site-unit wordt stil een defaultcategorie «Klantlocatie»
   gezet zodat Facility-gates niet blokkeren. Locatieformulier kan een klant
-  koppelen. Op locatie-detail: **geen** documenten/mededelingen
-  (Facility-portaalcontent). CSV-import op `/klanten` maakt altijd een
-  «Hele locatie»-unit. Per klant maandstatistieken →
+  koppelen. Op locatie-detail: **geen** units-lijst, documenten of
+  mededelingen (site-unit blijft stil in DB). CSV-import op `/klanten`
+  maakt altijd een «Hele locatie»-unit. Per klant maandstatistieken →
   `/klanten/{customer}/statistieken` (`SummarizeCustomerWorkStatsAction`).
 - **Uitvoerders** — menu linkt naar `/team` (teams aanmaken + uitvoerder-
   beheer wonen daar). `/workers` blijft whitelisted als alleen-lezen lijst.

@@ -1305,8 +1305,8 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
   **5€ per actieve uitvoerder per maand**; seats via `billing_seats_qty`.
   `checkmate_mode` whitelist: Dashboard, Plaatsen (Klanten/Locaties; Units niet
   in menu), Uitvoerders, Time, Instellingen, Abonnement. Categorieën stil
-  (default «Klantlocatie»). Locatie-detail zonder documenten/mededelingen.
-  Portaal: klok, klantbezoek, pauze, Mijn uren.
+  (default «Klantlocatie»). Locatie-detail zonder units-lijst,
+  documenten/mededelingen. Portaal: klok, klantbezoek, pauze, Mijn uren.
   Volledige spec: `docs/CHECKMATE.md`.
 - **Instellingen — klanten op locatie** (`tenants.customers_on_location`): toont
   **Klanten** in het menu (Facility) of forceert aan op Checkmate. Locaties koppelen

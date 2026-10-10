@@ -710,7 +710,7 @@ it('laat seat-qty wijzigen maar niet onder het actieve aantal', function () {
         ->toThrow(InvalidArgumentException::class, 'seats_qty_below_active');
 });
 
-it('verbergt categoriefilter op units voor checkmate', function () {
+it('verbergt units-sectie en categoriefilter voor checkmate', function () {
     $tenant = checkmateTenant();
     Tenancy::actAs($tenant->id);
     $admin = User::factory()->admin()->for($tenant)->create();
@@ -729,6 +729,9 @@ it('verbergt categoriefilter op units voor checkmate', function () {
     $this->actingAs($admin)
         ->get(route('locations.show', $location))
         ->assertOk()
+        ->assertDontSee(__('locations.units_subtitle'), false)
+        ->assertDontSee(__('locations.units_add'), false)
+        ->assertDontSee(__('locations.bulk_add'), false)
         ->assertDontSee(__('locations.units.filters.category'), false);
 });
 

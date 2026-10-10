@@ -57,56 +57,56 @@
         <livewire:locations.announcements :location="$location" />
     @endunless
 
-    @if ($bulkSummaries->isNotEmpty())
-        <x-wp-disclosure-card
-            :title="__('locations.bulk.recent_title')"
-            :subtitle="__('locations.bulk.recent_hint')"
-            :count="$bulkSummaries->count()"
-        >
-            @foreach ($bulkSummaries as $summary)
-                @php $batch = $summary['batch']; @endphp
-                <div class="wp-row" wire:key="batch-{{ $batch->id }}">
-                    <div class="wp-grow">
-                        <p>
-                            {{ $batch->created_at?->format('d-m-Y H:i') }}
-                            &middot; {{ __('locations.bulk.batch_count', ['count' => $summary['total']]) }}
-                            @if ($summary['first_name'] && $summary['last_name'])
-                                &middot; {{ $summary['first_name'] }} – {{ $summary['last_name'] }}
-                            @endif
-                        </p>
+    @unless ($checkmateMode ?? false)
+        @if ($bulkSummaries->isNotEmpty())
+            <x-wp-disclosure-card
+                :title="__('locations.bulk.recent_title')"
+                :subtitle="__('locations.bulk.recent_hint')"
+                :count="$bulkSummaries->count()"
+            >
+                @foreach ($bulkSummaries as $summary)
+                    @php $batch = $summary['batch']; @endphp
+                    <div class="wp-row" wire:key="batch-{{ $batch->id }}">
+                        <div class="wp-grow">
+                            <p>
+                                {{ $batch->created_at?->format('d-m-Y H:i') }}
+                                &middot; {{ __('locations.bulk.batch_count', ['count' => $summary['total']]) }}
+                                @if ($summary['first_name'] && $summary['last_name'])
+                                    &middot; {{ $summary['first_name'] }} – {{ $summary['last_name'] }}
+                                @endif
+                            </p>
+                        </div>
+                        @if ($summary['can_delete'])
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteBulkBatch({{ $batch->id }})"
+                                    wire:confirm="{{ __('locations.bulk.confirm_delete', ['count' => $summary['deletable']]) }}">
+                                {{ __('locations.bulk.delete_batch', ['count' => $summary['deletable']]) }}
+                            </button>
+                        @endif
                     </div>
-                    @if ($summary['can_delete'])
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteBulkBatch({{ $batch->id }})"
-                                wire:confirm="{{ __('locations.bulk.confirm_delete', ['count' => $summary['deletable']]) }}">
-                            {{ __('locations.bulk.delete_batch', ['count' => $summary['deletable']]) }}
-                        </button>
-                    @endif
+                @endforeach
+            </x-wp-disclosure-card>
+        @endif
+
+        @include('livewire.locations.import-history', ['batches' => $unitImportBatches])
+
+        <div class="wp-card wp-card-pad wp-stack">
+            <div class="wp-row">
+                <div class="wp-cluster">
+                    <h2 class="wp-section-title">{{ __('locations.units_title') }}</h2>
+                    <span class="wp-pill wp-pill--closed">{{ __('locations.units_total', ['count' => $units->total()]) }}</span>
                 </div>
-            @endforeach
-        </x-wp-disclosure-card>
-    @endif
-
-    @include('livewire.locations.import-history', ['batches' => $unitImportBatches])
-
-    <div class="wp-card wp-card-pad wp-stack">
-        <div class="wp-row">
-            <div class="wp-cluster">
-                <h2 class="wp-section-title">{{ __('locations.units_title') }}</h2>
-                <span class="wp-pill wp-pill--closed">{{ __('locations.units_total', ['count' => $units->total()]) }}</span>
+                <div class="wp-cluster">
+                    @if ($units->total() > 0)
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openQrPackModal">{{ __('locations.qr_pack_download') }}</button>
+                    @endif
+                    @if ($canImportUnitsCsv)
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openCsvImportModal">{{ __('locations.units_csv.button') }}</button>
+                    @endif
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openBulkModal">{{ __('locations.bulk_add') }}</button>
+                    <button type="button" @class(['btn', 'btn--primary', 'btn--sm', 'wp-btn--prio-pulse' => $units->total() === 0]) wire:click="openCreateUnit">{{ __('locations.units_add') }}</button>
+                </div>
             </div>
-            <div class="wp-cluster">
-                @if ($units->total() > 0)
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openQrPackModal">{{ __('locations.qr_pack_download') }}</button>
-                @endif
-                @if ($canImportUnitsCsv)
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openCsvImportModal">{{ __('locations.units_csv.button') }}</button>
-                @endif
-                <button type="button" class="btn btn--ghost btn--sm" wire:click="openBulkModal">{{ __('locations.bulk_add') }}</button>
-                <button type="button" @class(['btn', 'btn--primary', 'btn--sm', 'wp-btn--prio-pulse' => $units->total() === 0]) wire:click="openCreateUnit">{{ __('locations.units_add') }}</button>
-            </div>
-        </div>
-        <p class="wp-muted">{{ __('locations.units_subtitle') }}</p>
-        @unless ($checkmateMode ?? false)
+            <p class="wp-muted">{{ __('locations.units_subtitle') }}</p>
             <div class="wp-filter-row">
                 <label class="wp-field">
                     <span class="wp-label">{{ __('locations.units.filters.category') }}</span>
@@ -118,83 +118,83 @@
                     </select>
                 </label>
             </div>
-        @endunless
-        <div class="wp-filter-row">
-            <label class="wp-field">
-                <span class="wp-label">{{ __('locations.units.filters.search') }}</span>
-                <input type="search" class="wp-input" wire:model.live.debounce.300ms="unitSearch"
-                       placeholder="{{ __('locations.units.filters.search_placeholder') }}" />
-            </label>
+            <div class="wp-filter-row">
+                <label class="wp-field">
+                    <span class="wp-label">{{ __('locations.units.filters.search') }}</span>
+                    <input type="search" class="wp-input" wire:model.live.debounce.300ms="unitSearch"
+                           placeholder="{{ __('locations.units.filters.search_placeholder') }}" />
+                </label>
+            </div>
+
+            <div class="wp-list wp-list--entity-rows">
+                @forelse ($units as $unit)
+                    @php
+                        $canDelete = \App\Support\Units\UnitDeletionGuard::canDelete($unit);
+                    @endphp
+                    <div @class(['wp-issue-row', 'wp-issue-row--focus' => $focusUnitId === $unit->id]) id="unit-row-{{ $unit->id }}" wire:key="unit-{{ $unit->id }}">
+                        <div class="wp-grow wp-stack-tight">
+                            <p class="wp-issue-card-title wp-unit-title-row">
+                                <span>{{ $unit->localizedName() }}</span>
+                                @include('livewire.locations.partials.unit-gps-trigger', ['unit' => $unit, 'inline' => true])
+                            </p>
+                            @if ($unit->category || ($unit->category?->teams && $unit->category->teams->isNotEmpty()))
+                                <p class="wp-issue-card-meta">
+                                    @if ($unit->category)
+                                        {{ __('locations.units.meta_category', ['category' => $unit->category->localizedName()]) }}@if ($unit->category->teams && $unit->category->teams->isNotEmpty()), {{ __('locations.units.meta_team', ['team' => $unit->category->teams->first()->localizedName()]) }}@endif
+                                    @endif
+                                </p>
+                            @endif
+                            @if ($unit->qrCodes && $unit->qrCodes->isNotEmpty())
+                                <p class="wp-issue-card-meta">
+                                    {{ __('locations.units.meta_qr_linked', ['sticker' => $unit->qrCodes->first()->display_sticker_number]) }}
+                                </p>
+                            @endif
+                        </div>
+                        <div class="wp-issue-row-meta">
+                            @if ($unit->hasOpenIssues())
+                                <span class="wp-pill wp-pill--new">{{ __('locations.units.open_issue') }}</span>
+                            @endif
+                            @if (! $unit->is_active)
+                                <span class="wp-pill wp-pill--closed">{{ __('locations.inactive') }}</span>
+                            @endif
+                        </div>
+                        <div class="wp-cluster">
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditUnit({{ $unit->id }})">{{ __('common.button.edit') }}</button>
+                            @if ($unit->is_active)
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="deactivateUnit({{ $unit->id }})">{{ __('locations.deactivate') }}</button>
+                            @else
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="activateUnit({{ $unit->id }})">{{ __('locations.activate') }}</button>
+                            @endif
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteUnit({{ $unit->id }})"
+                                    @disabled(! $canDelete)>{{ __('common.button.delete') }}</button>
+                            <a href="{{ route('units.qr', $unit) }}" target="_blank" class="btn btn--ghost btn--sm">{{ __('locations.unit_qr') }}</a>
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="openUnitQrPackModal({{ $unit->id }})">{{ __('locations.unit_qr_pack.button') }}</button>
+                            @if ($hasEsgModule && in_array($unit->id, $unitIdsWithEsgMeasurements, true))
+                                <a href="{{ route('esg.point.history', ['unit' => $unit->id]) }}" class="btn btn--ghost btn--sm">{{ __('esg.point.link') }}</a>
+                            @endif
+                        </div>
+                    </div>
+                @empty
+                    <p class="wp-muted">{{ __('locations.no_units') }}</p>
+                @endforelse
+            </div>
+
+            @if ($units->hasPages())
+                {{ $units->links() }}
+            @endif
+
+            @if ($focusUnitId)
+                <div
+                    hidden
+                    x-data
+                    x-init="$nextTick(() => document.getElementById('unit-row-{{ $focusUnitId }}')?.scrollIntoView({ block: 'center', behavior: 'smooth' }))"
+                    aria-hidden="true"
+                ></div>
+            @endif
         </div>
 
-        <div class="wp-list wp-list--entity-rows">
-            @forelse ($units as $unit)
-                @php
-                    $canDelete = \App\Support\Units\UnitDeletionGuard::canDelete($unit);
-                @endphp
-                <div @class(['wp-issue-row', 'wp-issue-row--focus' => $focusUnitId === $unit->id]) id="unit-row-{{ $unit->id }}" wire:key="unit-{{ $unit->id }}">
-                    <div class="wp-grow wp-stack-tight">
-                        <p class="wp-issue-card-title wp-unit-title-row">
-                            <span>{{ $unit->localizedName() }}</span>
-                            @include('livewire.locations.partials.unit-gps-trigger', ['unit' => $unit, 'inline' => true])
-                        </p>
-                        @if ($unit->category || ($unit->category?->teams && $unit->category->teams->isNotEmpty()))
-                            <p class="wp-issue-card-meta">
-                                @if ($unit->category)
-                                    {{ __('locations.units.meta_category', ['category' => $unit->category->localizedName()]) }}@if ($unit->category->teams && $unit->category->teams->isNotEmpty()), {{ __('locations.units.meta_team', ['team' => $unit->category->teams->first()->localizedName()]) }}@endif
-                                @endif
-                            </p>
-                        @endif
-                        @if ($unit->qrCodes && $unit->qrCodes->isNotEmpty())
-                            <p class="wp-issue-card-meta">
-                                {{ __('locations.units.meta_qr_linked', ['sticker' => $unit->qrCodes->first()->display_sticker_number]) }}
-                            </p>
-                        @endif
-                    </div>
-                    <div class="wp-issue-row-meta">
-                        @if ($unit->hasOpenIssues())
-                            <span class="wp-pill wp-pill--new">{{ __('locations.units.open_issue') }}</span>
-                        @endif
-                        @if (! $unit->is_active)
-                            <span class="wp-pill wp-pill--closed">{{ __('locations.inactive') }}</span>
-                        @endif
-                    </div>
-                    <div class="wp-cluster">
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditUnit({{ $unit->id }})">{{ __('common.button.edit') }}</button>
-                        @if ($unit->is_active)
-                            <button type="button" class="btn btn--ghost btn--sm" wire:click="deactivateUnit({{ $unit->id }})">{{ __('locations.deactivate') }}</button>
-                        @else
-                            <button type="button" class="btn btn--ghost btn--sm" wire:click="activateUnit({{ $unit->id }})">{{ __('locations.activate') }}</button>
-                        @endif
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteUnit({{ $unit->id }})"
-                                @disabled(! $canDelete)>{{ __('common.button.delete') }}</button>
-                        <a href="{{ route('units.qr', $unit) }}" target="_blank" class="btn btn--ghost btn--sm">{{ __('locations.unit_qr') }}</a>
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openUnitQrPackModal({{ $unit->id }})">{{ __('locations.unit_qr_pack.button') }}</button>
-                        @if ($hasEsgModule && in_array($unit->id, $unitIdsWithEsgMeasurements, true))
-                            <a href="{{ route('esg.point.history', ['unit' => $unit->id]) }}" class="btn btn--ghost btn--sm">{{ __('esg.point.link') }}</a>
-                        @endif
-                    </div>
-                </div>
-            @empty
-                <p class="wp-muted">{{ __('locations.no_units') }}</p>
-            @endforelse
-        </div>
-
-        @if ($units->hasPages())
-            {{ $units->links() }}
-        @endif
-
-        @if ($focusUnitId)
-            <div
-                hidden
-                x-data
-                x-init="$nextTick(() => document.getElementById('unit-row-{{ $focusUnitId }}')?.scrollIntoView({ block: 'center', behavior: 'smooth' }))"
-                aria-hidden="true"
-            ></div>
-        @endif
-    </div>
-
-    <livewire:locations.unit-gps-history-modal />
+        <livewire:locations.unit-gps-history-modal />
+    @endunless
 
     @if ($showLocationModal)
         <x-wp-modal closeMethod="closeLocationModal" aria-labelledby="location-edit-title">
