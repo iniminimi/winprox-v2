@@ -710,6 +710,35 @@ it('laat seat-qty wijzigen maar niet onder het actieve aantal', function () {
         ->toThrow(InvalidArgumentException::class, 'seats_qty_below_active');
 });
 
+it('verbergt documenten en mededelingen op locatie-detail voor checkmate', function () {
+    $tenant = checkmateTenant();
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->for($tenant)->create();
+    $location = checkmateCustomerLocation($tenant);
+
+    $this->actingAs($admin)
+        ->get(route('locations.show', $location))
+        ->assertOk()
+        ->assertDontSee(__('locations.documents.subtitle'), false)
+        ->assertDontSee(__('locations.announcements.subtitle'), false)
+        ->assertDontSee(__('locations.documents.add'), false)
+        ->assertDontSee(__('locations.announcements.add'), false);
+
+    $facility = Tenant::factory()->create([
+        'checkmate_mode' => false,
+        'trial_ends_at' => now()->addDays(14),
+    ]);
+    Tenancy::actAs($facility->id);
+    $facilityAdmin = User::factory()->admin()->for($facility)->create();
+    $facilityLocation = Location::factory()->create(['tenant_id' => $facility->id]);
+
+    $this->actingAs($facilityAdmin)
+        ->get(route('locations.show', $facilityLocation))
+        ->assertOk()
+        ->assertSee(__('locations.documents.subtitle'), false)
+        ->assertSee(__('locations.announcements.subtitle'), false);
+});
+
 it('blokkeert niet-whitelist admin-routes voor checkmate-tenants', function () {
     $tenant = checkmateTenant();
     $admin = User::factory()->admin()->for($tenant)->create();

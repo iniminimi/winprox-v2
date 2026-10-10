@@ -1489,6 +1489,7 @@ class Show extends Component
             'workMenuUnitMeasurementsEnabled' => $this->locationTenant()?->workMenuUnitMeasurementsEnabled() ?? true,
             'presenceComplianceEnabled' => $this->locationTenant()?->presenceComplianceEnabled() ?? false,
             'gpsWorkVisitsEnabled' => $this->locationTenant()?->allowsGpsWorkVisits() ?? false,
+            'checkmateMode' => $this->locationTenant()?->checkmateMode() ?? false,
             'customersOnLocation' => $this->locationTenant()?->customersOnLocation() ?? false,
             'customerOptions' => ($this->locationTenant()?->customersOnLocation() ?? false)
                 ? Customer::query()

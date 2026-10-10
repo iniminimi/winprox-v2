@@ -52,8 +52,10 @@
         </div>
     </x-wp-disclosure-card>
 
-    <livewire:locations.documents :location="$location" />
-    <livewire:locations.announcements :location="$location" />
+    @unless ($checkmateMode ?? false)
+        <livewire:locations.documents :location="$location" />
+        <livewire:locations.announcements :location="$location" />
+    @endunless
 
     @if ($bulkSummaries->isNotEmpty())
         <x-wp-disclosure-card
