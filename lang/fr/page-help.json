@@ -1982,16 +1982,28 @@
             "title": "Aide — Clock Points",
             "actions": [
                 {
-                    "label": "Objectif",
-                    "text": "Un Clock Point est le point de connexion de votre organisation. Le lien ou le QR amène les exécutants vers le portail où ils pointent, prennent des pauses et enregistrent des visites clients."
+                    "label": "Qu’est-ce qu’un Clock Point ?",
+                    "text": "Checkmate a exactement un Clock Point (Connexion). Les exécutants s’y connectent (nom + icône), pointent l’entrée ou la sortie, prennent une pause et démarrent des visites clients avec GPS. Le Clock Point est créé automatiquement ; impossible d’en ajouter ou de le désactiver."
                 },
                 {
-                    "label": "Envoyer le lien",
-                    "text": "Envoyez le lien de connexion directement à un exécutant, ou imprimez le QR pour un endroit fixe. Une fois connecté, l'exécutant ouvre le portail via l'icône de l'écran d'accueil — pas besoin de rescanner."
+                    "label": "QR",
+                    "text": "Via <strong>QR</strong> vous ouvrez une fenêtre : afficher/imprimer dans le navigateur, ou une feuille Word (A6, A5 ou A4). Via <strong>E-mail</strong> vous envoyez le lien de connexion à un exécutant. Une fois connecté, il ouvre le portail via l’icône d’écran d’accueil — pas besoin de rescanner. Chez Checkmate, pointer l’entrée et la sortie se fait aussi depuis cette icône, sans scan."
                 },
                 {
-                    "label": "Plusieurs Clock Points",
-                    "text": "Vous travaillez sur plusieurs endroits fixes (magasin, bureau) ? Créez un Clock Point par endroit. Pointer l'entrée et la sortie se fait depuis l'icône d'écran d'accueil, sans scan. Un autocollant ou le QR de l'écran reste aussi un pointage. Pauses et visites clients ne demandent pas de scan."
+                    "label": "Rotation QR",
+                    "text": "Sous <strong>Rotation QR</strong> vous définissez un intervalle (mois) et renouvelez le QR (autocollant perdu ou soupçon d’abus). Le système recommande le renouvellement à un moment aléatoire dans cet intervalle. L’ancien code fonctionne encore quelques jours (période de grâce), puis il est bloqué."
+                },
+                {
+                    "label": "QR précédent",
+                    "text": "Après renouvellement, le QR précédent fonctionne encore quelques jours. Ensuite un scan est refusé. Une ligne ici signifie que ce code a encore été scanné dans les 7 derniers jours."
+                },
+                {
+                    "label": "Modifier",
+                    "text": "Vous pouvez changer le nom du Clock Point. Il n’y a ni lieu de site ni ordre de tri — les visites clients passent par le GPS sur le lieu client, pas via ce Clock Point."
+                },
+                {
+                    "label": "Lien sur l’écran d’accueil du téléphone",
+                    "text": "Sur le portail Clock Point, une icône WinProx se trouve à droite de <strong>Connexion</strong>. L’exécutant appuie dessus pour mettre le lien sur l’écran d’accueil. Ensuite le portail s’ouvre d’un tap. Sur iPhone : ⋯ → <strong>Partager</strong> → Afficher plus → + Sur l’écran d’accueil."
                 }
             ]
         },

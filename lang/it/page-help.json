@@ -1974,16 +1974,28 @@
             "title": "Aiuto — Clock Point",
             "actions": [
                 {
-                    "label": "Scopo",
-                    "text": "Un Clock Point è il punto di registrazione della tua organizzazione. Il link o il QR porta gli operatori al portale dove timbrano, fanno pausa e registrano le visite ai clienti."
+                    "label": "Cos’è un Clock Point?",
+                    "text": "Checkmate ha esattamente un Clock Point (Accedi). Gli operatori si registrano lì (nome + icona), timbrano entrata o uscita, fanno pausa e avviano visite ai clienti con GPS. Il Clock Point viene creato automaticamente; non si possono aggiungere altri né disattivarlo."
                 },
                 {
-                    "label": "Invia il link",
-                    "text": "Invia per mail il link di registrazione direttamente a un operatore, o stampa il QR per un posto fisso. Chi si è già registrato apre poi il portale dall'icona della schermata home — non serve una nuova scansione."
+                    "label": "QR",
+                    "text": "Con <strong>QR</strong> apri una finestra: visualizza/stampa nel browser, o un foglio Word (A6, A5 o A4). Con <strong>E-mail</strong> invii il link di accesso a un operatore. Chi si è già registrato apre il portale dall’icona della schermata Home — non serve una nuova scansione. Su Checkmate, timbrare entrata e uscita funziona anche da quell’icona, senza scansione."
                 },
                 {
-                    "label": "Più Clock Point",
-                    "text": "Lavori in più posti fissi (magazzino, ufficio)? Crea un Clock Point per posto. Timbrare entrata e uscita si fa dall'icona della schermata Home, senza scansione. Un adesivo o il QR dello schermo resta comunque una timbratura. Pause e visite ai clienti non richiedono una scansione."
+                    "label": "Rotazione QR",
+                    "text": "In <strong>Rotazione QR</strong> imposti un intervallo (mesi) e rinnovi il QR (adesivo perso o sospetto abuso). Il sistema consiglia il rinnovo in un momento casuale entro quell’intervallo. Il codice precedente resta valido alcuni giorni (periodo di grazia), poi viene bloccato."
+                },
+                {
+                    "label": "QR precedente",
+                    "text": "Dopo il rinnovo il QR precedente resta valido alcuni giorni. Poi una scansione viene rifiutata. Una riga qui significa che quel codice è stato scansionato di nuovo negli ultimi 7 giorni."
+                },
+                {
+                    "label": "Modifica",
+                    "text": "Puoi cambiare il nome del Clock Point. Non c’è sede né ordine — le visite ai clienti usano il GPS sulla sede del cliente, non questo Clock Point."
+                },
+                {
+                    "label": "Link sulla schermata Home del telefono",
+                    "text": "Sul portale Clock Point, a destra di <strong>Accedi</strong> c’è un’icona WinProx. L’operatore la tocca per mettere il link sulla schermata Home. Poi apre il portale con un tocco. Su iPhone: ⋯ → <strong>Condividi</strong> → Mostra altro → + Aggiungi a Home."
                 }
             ]
         },

@@ -1974,16 +1974,28 @@
             "title": "Ayuda — Clock Points",
             "actions": [
                 {
-                    "label": "Objetivo",
-                    "text": "Un Clock Point es el punto de registro de tu organización. El enlace o el QR lleva a los operarios al portal donde fichan, hacen pausas y registran visitas a clientes."
+                    "label": "¿Qué es un Clock Point?",
+                    "text": "Checkmate tiene exactamente un Clock Point (Iniciar sesión). Los operarios se identifican allí (nombre + icono), fichan la entrada o salida, hacen pausas y empiezan visitas a clientes con GPS. El Clock Point se crea automáticamente; no se pueden añadir extras ni desactivarlo."
                 },
                 {
-                    "label": "Enviar el enlace",
-                    "text": "Envía por mail el enlace de registro directamente a un operario, o imprime el QR para un lugar fijo. Quien ya se registró abre el portal desde el icono de la pantalla de inicio — no hace falta volver a escanear."
+                    "label": "QR",
+                    "text": "Con <strong>QR</strong> abre un diálogo: ver/imprimir en el navegador, o una hoja Word (A6, A5 o A4). Con <strong>Correo</strong> envía el enlace de acceso a un operario. Quien ya se identificó abre el portal con el icono de la pantalla de inicio — no hace falta escanear de nuevo. En Checkmate, fichar entrada y salida también funciona desde ese icono, sin escaneo."
                 },
                 {
-                    "label": "Varios Clock Points",
-                    "text": "¿Trabajas en varios lugares fijos (almacén, oficina)? Crea un Clock Point por lugar. Fichar la entrada y la salida se hace desde el icono de la pantalla de inicio, sin escaneo. Una pegatina o el QR de la pantalla sigue siendo un fichaje. Las pausas y las visitas a clientes no piden escaneo."
+                    "label": "Rotación QR",
+                    "text": "En <strong>Rotación QR</strong> defines un intervalo (meses) y renuevas el QR (pegatina perdida o sospecha de uso indebido). El sistema recomienda renovar en un momento aleatorio dentro de ese intervalo. El código antiguo sigue válido unos días (periodo de gracia) y luego se bloquea."
+                },
+                {
+                    "label": "Código QR anterior",
+                    "text": "Tras renovar, el QR anterior sigue válido unos días. Después se rechaza el escaneo. Una línea aquí significa que ese código se escaneó de nuevo en los últimos 7 días."
+                },
+                {
+                    "label": "Editar",
+                    "text": "Puedes cambiar el nombre del Clock Point. No hay ubicación de sede ni orden — las visitas a clientes usan GPS en la ubicación del cliente, no este Clock Point."
+                },
+                {
+                    "label": "Enlace en la pantalla de inicio del móvil",
+                    "text": "En el portal Clock Point, a la derecha de <strong>Iniciar sesión</strong> hay un icono WinProx. El operario lo pulsa para poner el enlace en la pantalla de inicio. Después abre el portal con un toque. En iPhone: ⋯ → <strong>Compartir</strong> → Mostrar más → + Añadir a pantalla de inicio."
                 }
             ]
         },

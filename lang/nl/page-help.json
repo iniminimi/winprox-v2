@@ -1974,16 +1974,28 @@
             "title": "Hulp — Clock Points",
             "actions": [
                 {
-                    "label": "Doel",
-                    "text": "Een Clock Point is het aanmeldpunt van je organisatie. De link of QR brengt uitvoerders naar het portaal waar ze inklokken, pauzeren en klantbezoeken registreren."
+                    "label": "Wat is een Clock Point?",
+                    "text": "Checkmate heeft precies één Clock Point («Aanmelden»). Uitvoerders melden zich daar aan (naam + icoon), klokken in of uit, pauzeren en starten klantbezoeken met GPS. Het Clock Point wordt automatisch aangemaakt; extra aanmaken of deactiveren kan niet."
                 },
                 {
-                    "label": "Link versturen",
-                    "text": "Mail de aanmeldlink rechtstreeks naar een uitvoerder, of druk de QR af voor een vaste plek. Wie zich eenmaal aanmeldde, opent het portaal daarna via het startscherm-icoon — opnieuw scannen is niet nodig."
+                    "label": "QR",
+                    "text": "Via <strong>QR</strong> opent u een venster: bekijken/afdrukken in de browser, of een Word-afdrukblad (A6, A5 of A4). Via <strong>E-mail</strong> stuurt u de aanmeldlink naar een uitvoerder. Wie zich eenmaal aanmeldde, opent het portaal daarna via het startscherm-icoon — opnieuw scannen is niet nodig. In- en uitklokken kan bij Checkmate ook vanuit dat icoon, zonder scan."
                 },
                 {
-                    "label": "Meerdere Clock Points",
-                    "text": "Werk je op meerdere vaste plekken (magazijn, kantoor)? Maak per plek een Clock Point. In- en uitklokken kan vanuit het startscherm-icoon, zonder scan. Een sticker of klokscherm-QR blijft ook een prik. Pauzes en klantbezoeken vragen geen scan."
+                    "label": "QR-rotatie",
+                    "text": "Onder <strong>QR-rotatie</strong> stelt u een interval in (maanden) én vernieuwt u de QR (verloren sticker of vermoed misbruik). Het systeem beveelt op een willekeurig moment binnen dat interval aan om te vernieuwen. De oude code werkt nog enkele dagen (grace-periode), daarna wordt die geblokkeerd."
+                },
+                {
+                    "label": "Vorige QR-code",
+                    "text": "Na vernieuwen werkt de vorige QR nog enkele dagen. Daarna wordt een scan geweigerd. Staat hier een regel, dan is die vorige code in de laatste 7 dagen nog gescand."
+                },
+                {
+                    "label": "Bewerken",
+                    "text": "U kunt de naam van het Clock Point wijzigen. Er is geen vestiging of sorteervolgorde — klantbezoeken lopen via GPS op de klantlocatie, niet via dit Clock Point."
+                },
+                {
+                    "label": "Link op het startscherm van de gsm",
+                    "text": "Op het Clock Point-portaal staat rechts van <strong>Aanmelden</strong> een WinProx-icoon. De uitvoerder tikt erop om de aanmeldlink op het startscherm te zetten. Zo opent hij het portaal voortaan met één tik. Op iPhone: ⋯ → <strong>Deel</strong> → Toon meer → + Zet op beginscherm."
                 }
             ]
         },

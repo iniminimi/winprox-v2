@@ -924,6 +924,8 @@ it('houdt bij checkmate één Clock Point zonder locatie, aanmaken of deactivere
         ->test(ClockPointsIndex::class)
         ->assertDontSee('wire:click="openCreate"', false)
         ->assertDontSee('wire:click="setActive('.$clockPoint->id.', false)"', false)
+        ->assertSee(\App\Support\PageHelp::for('checkmate.clock_points')['actions'][0]['label'], false)
+        ->assertDontSee(\App\Support\PageHelp::for('time.clock_points')['actions'][4]['label'], false)
         ->call('openEdit', $clockPoint->id)
         ->assertDontSee('id="cp-location"', false)
         ->assertDontSee('id="cp-sort"', false)
