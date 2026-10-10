@@ -452,7 +452,7 @@
         "key": "checkmate",
         "title": "Checkmate",
         "items": [
-          "Checkmate no es una app aparte: preset de plan con whitelist (Clientes, Ubicaciones/Units, Time, …) sobre el mismo modelo Location/Unit; las rutas de facility como avisos dan 404.",
+          "Checkmate no es una app aparte: preset de plan con whitelist (Clientes, Ubicaciones/Units, Time, …) sobre el mismo modelo Location/Unit; las categorías quedan en silencio (por defecto «Sede del cliente»); las rutas de facility como avisos dan 404.",
           "Mismo aislamiento de inquilinos, infraestructura Time y portal Clock Point; las ubicaciones reciben una unidad de sede por defecto para un camino de upgrade Facility seguro.",
           "5 € por trabajador activo al mes (por puesto vía Stripe)."
         ]

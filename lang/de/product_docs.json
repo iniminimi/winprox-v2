@@ -452,7 +452,7 @@
         "key": "checkmate",
         "title": "Checkmate",
         "items": [
-          "Checkmate ist keine eigene App: Plan-Preset mit Whitelist (Kunden, Standorte/Units, Time, …) auf demselben Location/Unit-Modell; Facility-Routen wie Meldungen liefern 404.",
+          "Checkmate ist keine eigene App: Plan-Preset mit Whitelist (Kunden, Standorte/Units, Time, …) auf demselben Location/Unit-Modell; Kategorien bleiben still (Default «Kundenstandort»); Facility-Routen wie Meldungen liefern 404.",
           "Gleiche Mandantenisolation, Time-Infrastruktur und Clock-Point-Portal; Standorte erhalten standardmäßig eine Site-Unit für einen sicheren Facility-Upgrade-Pfad.",
           "5 € pro aktivem Ausführenden und Monat (per Seat über Stripe)."
         ]

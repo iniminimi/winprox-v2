@@ -101,6 +101,24 @@ it('provisioneert het checkmate-plan met GPS-bezoeken en een Clock Point', funct
         ->and(ClockPoint::query()->where('tenant_id', $fresh->id)->count())->toBeGreaterThanOrEqual(1)
         // Stille defaultcategorie — geen categorie-onboarding in Checkmate-UI.
         ->and(Category::query()->where('tenant_id', $fresh->id)->where('name', CheckmateDefaultCategoryCatalog::SOURCE_NAME)->exists())->toBeTrue();
+
+    $category = Category::query()
+        ->where('tenant_id', $fresh->id)
+        ->where('name', CheckmateDefaultCategoryCatalog::SOURCE_NAME)
+        ->with('translations')
+        ->firstOrFail();
+
+    expect($category->original_language)->toBe(CheckmateDefaultCategoryCatalog::SOURCE_LOCALE);
+
+    foreach (CheckmateDefaultCategoryCatalog::namesByLocale() as $locale => $name) {
+        if ($locale === CheckmateDefaultCategoryCatalog::SOURCE_LOCALE) {
+            continue;
+        }
+        $row = $category->translations->firstWhere('locale', $locale);
+        expect($row)->not->toBeNull()
+            ->and($row->name)->toBe($name)
+            ->and($row->status)->toBe(\App\Enums\CategoryTranslationStatus::Completed);
+    }
 });
 
 it('maakt klant + werkadres aan voor een worker en isoleert per tenant', function () {
