@@ -169,13 +169,15 @@
       "presence_title": "Presenza",
       "presence_body": "Chi sta lavorando adesso.",
       "clock_point_title": "QR del Clock Point",
-      "clock_point_body": "Invia o stampa il QR — gli operatori accedono sul telefono."
+      "clock_point_body": "Mostra o stampa il QR per gli operatori."
     },
     "kpi": {
       "visits_today": "Visite oggi",
       "seats": "Licenze in uso",
       "customers": "Clienti attivi",
-      "workers": "Operatori"
+      "workers": "Operatori",
+      "clock_point_qr": "QR del Clock Point",
+      "clock_point_qr_value": "E-mail / stampa"
     },
     "recent": {
       "title": "Ultima attività",

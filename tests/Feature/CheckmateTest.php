@@ -1102,19 +1102,21 @@ it('toont het checkmate-dashboard met veldwerk-tegels en zonder facility-links',
         ->assertSee(__('dashboard.checkmate.recent.title'))
         ->assertSee($customer->name)
         ->assertSee(__('dashboard.checkmate.actions.clock_point_title'))
+        ->assertSee(__('dashboard.checkmate.kpi.clock_point_qr'))
         ->assertDontSee(__('dashboard.add_issue'))
         ->assertDontSee(__('dashboard.recent.title'))
         ->assertDontSee(route('issues.index'));
 });
 
-it('opent de Clock Point-QR-popup vanaf het checkmate-dashboard met pulse tot de eerste dienst', function () {
+it('opent de Clock Point-QR-popup vanaf de KPI-tegel met pulse tot de eerste dienst', function () {
     $tenant = checkmateTenant();
     Tenancy::actAs($tenant->id);
     $admin = User::factory()->admin()->for($tenant)->create();
 
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
-        ->assertSee(__('dashboard.checkmate.actions.clock_point_title'), false)
+        ->assertSee(__('dashboard.checkmate.kpi.clock_point_qr'), false)
+        ->assertSee(route('time.clock-points.index'), false)
         ->assertSee('wp-btn--prio-pulse', false)
         ->assertSee('wire:click="openCheckmateClockPointQr"', false)
         ->call('openCheckmateClockPointQr')

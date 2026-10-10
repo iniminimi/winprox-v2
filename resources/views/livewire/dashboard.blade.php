@@ -63,62 +63,64 @@
 
         <div class="wp-kpis">
             @foreach ($checkmate->quickTiles as $tile)
-                @if (($tile['action'] ?? null) === 'open_clock_point_qr')
-                    <button
-                        type="button"
-                        wire:click="openCheckmateClockPointQr"
-                        @class([
-                            'wp-kpi',
-                            'wp-kpi--'.$tile['tone'],
-                            'wp-btn--prio-pulse' => $tile['pulse'] ?? false,
-                        ])
-                        wire:key="cm-action-{{ $tile['key'] }}"
-                    >
-                        <div class="wp-kpi-body">
-                            <span class="wp-kpi-icon" aria-hidden="true">
-                                <x-wp-icon :name="$tile['icon']" />
-                            </span>
-                            <div class="wp-kpi-main">
-                                <p class="wp-kpi-kicker">{{ __($tile['title']) }}</p>
-                                <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ __($tile['body']) }}</p>
-                            </div>
+                <a href="{{ $tile['href'] }}"
+                   @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
+                   wire:key="cm-action-{{ $tile['key'] }}">
+                    <div class="wp-kpi-body">
+                        <span class="wp-kpi-icon" aria-hidden="true">
+                            <x-wp-icon :name="$tile['icon']" />
+                        </span>
+                        <div class="wp-kpi-main">
+                            <p class="wp-kpi-kicker">{{ __($tile['title']) }}</p>
+                            <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ __($tile['body']) }}</p>
                         </div>
-                    </button>
-                @else
-                    <a href="{{ $tile['href'] }}"
-                       @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
-                       wire:key="cm-action-{{ $tile['key'] }}">
-                        <div class="wp-kpi-body">
-                            <span class="wp-kpi-icon" aria-hidden="true">
-                                <x-wp-icon :name="$tile['icon']" />
-                            </span>
-                            <div class="wp-kpi-main">
-                                <p class="wp-kpi-kicker">{{ __($tile['title']) }}</p>
-                                <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ __($tile['body']) }}</p>
-                            </div>
-                        </div>
-                    </a>
-                @endif
+                    </div>
+                </a>
             @endforeach
         </div>
 
         <div class="wp-kpis">
             @foreach ($checkmate->kpis as $kpi)
-                <a href="{{ $kpi['href'] }}"
-                   @class(['wp-kpi', 'wp-kpi--'.$kpi['tone']])
-                   wire:key="cm-kpi-{{ $kpi['key'] }}">
-                    <div class="wp-kpi-body">
-                        <span class="wp-kpi-icon" aria-hidden="true">
-                            <x-wp-icon :name="$kpi['icon']" />
-                        </span>
-                        <div class="wp-kpi-main">
-                            <p class="wp-kpi-kicker">{{ __($kpi['label']) }}</p>
-                            <p class="wp-kpi-stats">
-                                <span class="wp-kpi-value wp-tabular">{{ $kpi['value'] }}</span>
-                            </p>
+                @if (($kpi['action'] ?? null) === 'open_clock_point_qr')
+                    <button
+                        type="button"
+                        wire:click="openCheckmateClockPointQr"
+                        @class([
+                            'wp-kpi',
+                            'wp-kpi--'.$kpi['tone'],
+                            'wp-btn--prio-pulse' => $kpi['pulse'] ?? false,
+                        ])
+                        wire:key="cm-kpi-{{ $kpi['key'] }}"
+                    >
+                        <div class="wp-kpi-body">
+                            <span class="wp-kpi-icon" aria-hidden="true">
+                                <x-wp-icon :name="$kpi['icon']" />
+                            </span>
+                            <div class="wp-kpi-main">
+                                <p class="wp-kpi-kicker">{{ __($kpi['label']) }}</p>
+                                <p class="wp-kpi-stats">
+                                    <span class="wp-kpi-value wp-kpi-value--phrase">{{ $kpi['value'] }}</span>
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                </a>
+                    </button>
+                @else
+                    <a href="{{ $kpi['href'] }}"
+                       @class(['wp-kpi', 'wp-kpi--'.$kpi['tone']])
+                       wire:key="cm-kpi-{{ $kpi['key'] }}">
+                        <div class="wp-kpi-body">
+                            <span class="wp-kpi-icon" aria-hidden="true">
+                                <x-wp-icon :name="$kpi['icon']" />
+                            </span>
+                            <div class="wp-kpi-main">
+                                <p class="wp-kpi-kicker">{{ __($kpi['label']) }}</p>
+                                <p class="wp-kpi-stats">
+                                    <span class="wp-kpi-value wp-tabular">{{ $kpi['value'] }}</span>
+                                </p>
+                            </div>
+                        </div>
+                    </a>
+                @endif
             @endforeach
         </div>
 

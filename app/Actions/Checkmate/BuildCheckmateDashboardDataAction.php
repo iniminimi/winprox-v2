@@ -58,15 +58,6 @@ class BuildCheckmateDashboardDataAction
         return new CheckmateDashboardData(
             quickTiles: [
                 [
-                    'key' => 'clock_point',
-                    'icon' => 'qr',
-                    'tone' => 'new_issues',
-                    'title' => 'dashboard.checkmate.actions.clock_point_title',
-                    'body' => 'dashboard.checkmate.actions.clock_point_body',
-                    'action' => 'open_clock_point_qr',
-                    'pulse' => $pulseClockPointQr,
-                ],
-                [
                     'key' => 'add_customer',
                     'icon' => 'building-office',
                     'tone' => 'locations',
@@ -89,6 +80,14 @@ class BuildCheckmateDashboardDataAction
                     'title' => 'dashboard.checkmate.actions.presence_title',
                     'body' => 'dashboard.checkmate.actions.presence_body',
                     'href' => route('time.presence.index'),
+                ],
+                [
+                    'key' => 'clock_point',
+                    'icon' => 'qr',
+                    'tone' => 'new_issues',
+                    'title' => 'dashboard.checkmate.actions.clock_point_title',
+                    'body' => 'dashboard.checkmate.actions.clock_point_body',
+                    'href' => route('time.clock-points.index'),
                 ],
             ],
             kpis: [
@@ -131,6 +130,15 @@ class BuildCheckmateDashboardDataAction
                     'label' => 'dashboard.checkmate.kpi.customers',
                     'value' => (string) $activeCustomers,
                     'href' => route('customers.index'),
+                ],
+                [
+                    'key' => 'clock_point_qr',
+                    'icon' => 'qr',
+                    'tone' => 'new_issues',
+                    'label' => 'dashboard.checkmate.kpi.clock_point_qr',
+                    'value' => __('dashboard.checkmate.kpi.clock_point_qr_value'),
+                    'action' => 'open_clock_point_qr',
+                    'pulse' => $pulseClockPointQr,
                 ],
             ],
             recentVisits: WorkVisit::query()

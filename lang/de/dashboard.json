@@ -169,13 +169,15 @@
       "presence_title": "Anwesenheit",
       "presence_body": "Wer gerade arbeitet.",
       "clock_point_title": "Clock-Point-QR",
-      "clock_point_body": "QR per E-Mail oder Druck — Ausführende melden sich auf dem Handy an."
+      "clock_point_body": "QR für Mitarbeiter anzeigen oder drucken."
     },
     "kpi": {
       "visits_today": "Besuche heute",
       "seats": "Lizenzen in Gebrauch",
       "customers": "Aktive Kunden",
-      "workers": "Mitarbeiter"
+      "workers": "Mitarbeiter",
+      "clock_point_qr": "Clock-Point-QR",
+      "clock_point_qr_value": "Mail / Druck"
     },
     "recent": {
       "title": "Letzte Aktivität",
