@@ -20,6 +20,7 @@ use App\Livewire\Public\TimePortal;
 use App\Livewire\Pages\Subscription;
 use App\Livewire\Pages\Team as TeamPage;
 use App\Livewire\Platform\Tenants as PlatformTenants;
+use App\Models\Category;
 use App\Models\ClockPoint;
 use App\Models\Customer;
 use App\Models\InternalTeam;
@@ -27,6 +28,7 @@ use App\Models\Location;
 use App\Models\PresenceSubmission;
 use App\Models\Tenant;
 use App\Models\Unit;
+use App\Support\Checkmate\CheckmateDefaultCategoryCatalog;
 use App\Models\User;
 use App\Models\Worker;
 use App\Models\WorkShift;
@@ -96,7 +98,9 @@ it('provisioneert het checkmate-plan met GPS-bezoeken en een Clock Point', funct
         ->and($fresh->presenceComplianceScope())->toBe(\App\Enums\PresenceComplianceScope::CiaoCleaning)
         ->and($fresh->billing_seats_qty)->toBeGreaterThanOrEqual(1)
         // includes_facility=false maar een Clock Point is er wél (device-linking).
-        ->and(ClockPoint::query()->where('tenant_id', $fresh->id)->count())->toBeGreaterThanOrEqual(1);
+        ->and(ClockPoint::query()->where('tenant_id', $fresh->id)->count())->toBeGreaterThanOrEqual(1)
+        // Stille defaultcategorie — geen categorie-onboarding in Checkmate-UI.
+        ->and(Category::query()->where('tenant_id', $fresh->id)->where('name', CheckmateDefaultCategoryCatalog::SOURCE_NAME)->exists())->toBeTrue();
 });
 
 it('maakt klant + werkadres aan voor een worker en isoleert per tenant', function () {
@@ -114,12 +118,16 @@ it('maakt klant + werkadres aan voor een worker en isoleert per tenant', functio
         'longitude' => 4.40,
     ]);
 
+    $siteUnit = $result['location']->units()->first();
+
     expect($result['customer']->tenant_id)->toBe($tenant->id)
         ->and($result['location']->customer_id)->toBe($result['customer']->id)
         ->and($result['location']->tenant_id)->toBe($tenant->id)
         ->and($result['location']->hasWorkVisitPin())->toBeTrue()
         ->and($result['location']->units()->count())->toBe(1)
-        ->and($result['location']->units()->first()?->is_site_unit)->toBeTrue();
+        ->and($siteUnit?->is_site_unit)->toBeTrue()
+        ->and($siteUnit?->category_id)->not->toBeNull()
+        ->and(Category::query()->where('tenant_id', $tenant->id)->where('name', CheckmateDefaultCategoryCatalog::SOURCE_NAME)->exists())->toBeTrue();
 });
 
 it('weigert worker-flow met klant van een andere tenant', function () {
@@ -694,10 +702,9 @@ it('blokkeert niet-whitelist admin-routes voor checkmate-tenants', function () {
     $this->get('/time/schedule')->assertNotFound();
     $this->get('/time/absence-requests')->assertNotFound();
 
-    // Whitelist blijft bereikbaar (incl. Plaatsen: klanten/categorieën/locaties/units).
+    // Whitelist blijft bereikbaar (incl. Plaatsen: klanten/locaties/units).
     $this->get('/klanten')->assertOk();
     $this->get('/locations')->assertOk();
-    $this->get('/locations?section=categories')->assertOk();
     $this->get('/units')->assertOk();
     $this->get('/workers')->assertOk();
     // Uitvoerder-rij linkt naar het beheer op /team (whitelisted).
@@ -709,13 +716,14 @@ it('blokkeert niet-whitelist admin-routes voor checkmate-tenants', function () {
     $this->get('/time/ciao')->assertOk();
     $this->get('/time/clock-points')->assertOk();
 
-    // Sidebar toont Plaatsen-accordion (zelfde hiërarchie als Facility).
+    // Sidebar: Plaatsen zonder Categorieën (die zijn stil op de achtergrond).
     $this->get('/dashboard')
         ->assertOk()
         ->assertSee(__('common.nav.places'), false)
-        ->assertSee(__('locations.categories.title'), false)
+        ->assertSee(__('locations.title'), false)
         ->assertSee(__('units.title'), false)
-        ->assertSee('section=categories', false)
+        ->assertDontSee(__('locations.categories.title'), false)
+        ->assertDontSee('section=categories', false)
         ->assertSee('href="'.url('/units'), false);
 });
 

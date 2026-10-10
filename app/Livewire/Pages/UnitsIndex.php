@@ -4,9 +4,12 @@ declare(strict_types=1);
 
 namespace App\Livewire\Pages;
 
+use App\Actions\Checkmate\EnsureCheckmateDefaultCategoryAction;
 use App\Models\Category;
 use App\Models\Location;
+use App\Models\Tenant;
 use App\Models\Unit;
+use App\Support\Tenancy;
 use Illuminate\Contracts\View\View;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -45,6 +48,14 @@ class UnitsIndex extends Component
 
     public function render(): View
     {
+        $tenant = Tenant::query()->find(Tenancy::id());
+        if ($tenant instanceof Tenant && $tenant->checkmateMode()) {
+            app(EnsureCheckmateDefaultCategoryAction::class)->handle(
+                $tenant,
+                auth()->id() !== null ? (int) auth()->id() : null,
+            );
+        }
+
         $locations = Location::query()
             ->orderBy('name')
             ->get(['id', 'name', 'address']);

@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Actions\Locations;
 
+use App\Actions\Checkmate\EnsureCheckmateDefaultCategoryAction;
 use App\Enums\UnitTranslationStatus;
 use App\Models\Location;
+use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\UnitTranslation;
 use App\Support\Locations\SiteUnitCatalog;
@@ -20,6 +22,7 @@ class EnsureSiteUnitForLocationAction
 {
     public function __construct(
         private CreateUnitAction $createUnit,
+        private EnsureCheckmateDefaultCategoryAction $ensureCheckmateDefaultCategory,
     ) {}
 
     public function handle(Location $location, int $tenantId, ?int $actorUserId = null): ?Unit
@@ -47,6 +50,14 @@ class EnsureSiteUnitForLocationAction
             'require_reporter_contact' => false,
             'require_reporter_email_verification' => false,
         ];
+
+        $tenant = Tenant::query()->find($tenantId);
+        if ($tenant instanceof Tenant && $tenant->checkmateMode()) {
+            $category = $this->ensureCheckmateDefaultCategory->handle($tenant, $actorUserId);
+            if ($category !== null) {
+                $payload['category_id'] = (int) $category->id;
+            }
+        }
 
         if (Schema::hasColumn('units', 'is_site_unit')) {
             $payload['is_site_unit'] = true;

@@ -189,17 +189,15 @@
                         @endforeach
                     @elseif ($checkmateNav)
                         {{-- Checkmate-whitelist (docs/CHECKMATE.md §5): Plaatsen
-                             (Klanten/Categorieën/Locaties/Units), Mensen, Time,
-                             Instellingen, Abonnement. --}}
+                             (Klanten/Locaties/Units — categorieën stil op de achtergrond),
+                             Mensen, Time, Instellingen, Abonnement. --}}
                         <hr class="wp-nav-divider" role="presentation" aria-hidden="true">
 
                         @php
-                            $cmCategoriesActive = request()->routeIs('locations.index')
-                                && (request()->query('section') === 'categories' || request()->filled('edit_category'));
-                            $cmLocationsActive = request()->routeIs('locations.index') && ! $cmCategoriesActive;
+                            $cmLocationsActive = request()->routeIs('locations.*');
                             $cmUnitsActive = request()->routeIs('units.index');
                             $cmPlacesGroupActive = request()->routeIs('customers.*')
-                                || request()->routeIs('locations.*')
+                                || $cmLocationsActive
                                 || $cmUnitsActive;
                             $cmPeopleGroupActive = request()->routeIs('team.index') || request()->routeIs('workers.index');
                             $cmPeopleSection = request()->routeIs('team.index') ? (string) request()->query('section', '') : '';
@@ -219,13 +217,8 @@
                                    @click="nav = false">
                                     <span>{{ __('customers.title') }}</span>
                                 </a>
-                                <a href="{{ route('locations.index', ['section' => 'categories']) }}"
-                                   class="wp-nav-link wp-nav-link--sub {{ $cmCategoriesActive ? 'is-active' : '' }}"
-                                   @click="nav = false">
-                                    <span>{{ __('locations.categories.title') }}</span>
-                                </a>
                                 <a href="{{ route('locations.index') }}"
-                                   class="wp-nav-link wp-nav-link--sub {{ $cmLocationsActive ? 'is-active' : '' }}"
+                                   class="wp-nav-link wp-nav-link--sub {{ $cmLocationsActive && ! $cmUnitsActive ? 'is-active' : '' }}"
                                    @click="nav = false">
                                     <span>{{ __('locations.title') }}</span>
                                 </a>

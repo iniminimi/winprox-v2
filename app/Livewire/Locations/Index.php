@@ -3,6 +3,7 @@
 namespace App\Livewire\Locations;
 
 use App\Actions\Categories\SyncCategoryTeamsAction;
+use App\Actions\Checkmate\EnsureCheckmateDefaultCategoryAction;
 use App\Actions\Communication\ImportCategoryTranslationsAction;
 use App\Actions\Communication\ImportLocationTranslationsAction;
 use App\Actions\Locations\ActivateLocationAction;
@@ -906,6 +907,13 @@ class Index extends Component
             : Location::query()->exists();
 
         $categoriesEnabled = Schema::hasTable('categories');
+        $viewerTenantEarly = $this->viewerTenant();
+        if ($categoriesEnabled && $viewerTenantEarly?->checkmateMode()) {
+            app(EnsureCheckmateDefaultCategoryAction::class)->handle(
+                $viewerTenantEarly,
+                auth()->id() !== null ? (int) auth()->id() : null,
+            );
+        }
 
         $teams = $isCategories
             ? InternalTeam::query()

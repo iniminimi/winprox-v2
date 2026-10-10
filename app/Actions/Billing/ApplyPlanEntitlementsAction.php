@@ -2,13 +2,17 @@
 
 namespace App\Actions\Billing;
 
+use App\Actions\Checkmate\EnsureCheckmateDefaultCategoryAction;
 use App\Actions\Time\EnsureDefaultClockPointAction;
 use App\Enums\PresenceComplianceScope;
 use App\Models\Tenant;
 
 class ApplyPlanEntitlementsAction
 {
-    public function __construct(private EnsureDefaultClockPointAction $ensureDefaultClockPoint) {}
+    public function __construct(
+        private EnsureDefaultClockPointAction $ensureDefaultClockPoint,
+        private EnsureCheckmateDefaultCategoryAction $ensureCheckmateDefaultCategory,
+    ) {}
 
     public function handle(Tenant $tenant, ?string $planKey = null): Tenant
     {
@@ -52,12 +56,18 @@ class ApplyPlanEntitlementsAction
 
         // Worker-aanmelden loopt via Clock Point QR, ook zonder Time (prikklok).
         // Checkmate heeft geen Facility maar wél een Clock Point (/cp/{token}).
+        $fresh = $tenant->fresh();
+
         if ((bool) ($config['includes_facility'] ?? false) || $checkmateMode) {
             $this->ensureDefaultClockPoint->handle(
-                $tenant->fresh(),
+                $fresh,
                 __('team.clock_point_qr.default_name'),
                 null,
             );
+        }
+
+        if ($checkmateMode) {
+            $this->ensureCheckmateDefaultCategory->handle($fresh);
         }
 
         return $tenant->fresh();

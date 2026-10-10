@@ -28,8 +28,9 @@ generiek "lite CRM". Dat betekent:
   admin-routes en portaal-tegels zichtbaar zijn. Nieuwe features zijn voor
   Checkmate-tenants **standaard onzichtbaar** — een feature verschijnt pas na
   expliciete toevoeging aan de whitelist.
-- Whitelist admin: Dashboard, Plaatsen (Klanten, Categorieën, Locaties, Units),
-  Uitvoerders, Time (aanwezigheid/uren/CIAO), Instellingen, Abonnement.
+- Whitelist admin: Dashboard, Plaatsen (Klanten, Locaties, Units), Uitvoerders,
+  Time (aanwezigheid/uren/CIAO), Instellingen, Abonnement. Categorieën bestaan
+  stil op de achtergrond (default «Klantlocatie») — niet in het menu.
   Whitelist portaal: klok, klantbezoek, pauze, mijn uren.
 
 ## 3. Datamodel
@@ -83,10 +84,10 @@ Whitelist-schermen:
   Clock Point-QR), KPI's (nu aanwezig, bezoeken vandaag, seats, actieve klanten)
   en de laatste klantbezoeken. Geen facility-tegels, starter packs of
   meldingen-feed.
-- **Plaatsen** — zelfde accordion als Facility: **Klanten** (`/klanten`),
-  **Categorieën** (`/locations?section=categories`), **Locaties**, **Units**.
-  Locatieformulier kan een klant koppelen; categorieën zijn nodig vóór units
-  (zelfde gate als Facility). CSV/Excel-import op `/klanten` maakt altijd een
+- **Plaatsen** — **Klanten**, **Locaties**, **Units** (geen Categorieën in het
+  menu). Bij plan-activatie/site-unit wordt stil een defaultcategorie
+  «Klantlocatie» gezet zodat Facility-gates niet blokkeren. Locatieformulier
+  kan een klant koppelen. CSV-import op `/klanten` maakt altijd een
   «Hele locatie»-unit. Per klant maandstatistieken →
   `/klanten/{customer}/statistieken` (`SummarizeCustomerWorkStatsAction`).
 - **Uitvoerders** — menu linkt naar `/team` (teams aanmaken + uitvoerder-
