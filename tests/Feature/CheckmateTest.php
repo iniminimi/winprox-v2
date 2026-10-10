@@ -45,6 +45,7 @@ function checkmateTenant(array $attrs = []): Tenant
 {
     return Tenant::factory()->create(array_merge([
         'checkmate_mode' => true,
+        'customers_on_location' => true,
         'has_time_module' => true,
         'time_gps_visits' => true,
         'time_gps_visit_radius_meters' => 100,
@@ -85,6 +86,7 @@ it('provisioneert het checkmate-plan met GPS-bezoeken en een Clock Point', funct
         ->fresh();
 
     expect($fresh->checkmateMode())->toBeTrue()
+        ->and($fresh->customersOnLocation())->toBeTrue()
         ->and($fresh->hasTimeModule())->toBeTrue()
         ->and($fresh->allowsGpsWorkVisits())->toBeTrue()
         ->and($fresh->gpsVisitRadiusMeters())->toBe(100)
@@ -116,8 +118,8 @@ it('maakt klant + werkadres aan voor een worker en isoleert per tenant', functio
         ->and($result['location']->customer_id)->toBe($result['customer']->id)
         ->and($result['location']->tenant_id)->toBe($tenant->id)
         ->and($result['location']->hasWorkVisitPin())->toBeTrue()
-        // Geen Facility site-unit voor Checkmate-werkadressen.
-        ->and($result['location']->units()->count())->toBe(0);
+        ->and($result['location']->units()->count())->toBe(1)
+        ->and($result['location']->units()->first()?->is_site_unit)->toBeTrue();
 });
 
 it('weigert worker-flow met klant van een andere tenant', function () {
@@ -688,14 +690,14 @@ it('blokkeert niet-whitelist admin-routes voor checkmate-tenants', function () {
     $this->actingAs($admin);
 
     $this->get('/issues')->assertNotFound();
-    $this->get('/units')->assertNotFound();
     $this->get('/esg')->assertNotFound();
-    $this->get('/locations')->assertNotFound();
     $this->get('/time/schedule')->assertNotFound();
     $this->get('/time/absence-requests')->assertNotFound();
 
-    // Whitelist blijft bereikbaar.
+    // Whitelist blijft bereikbaar (incl. locaties/units = gekoppelde werkplekken).
     $this->get('/klanten')->assertOk();
+    $this->get('/locations')->assertOk();
+    $this->get('/units')->assertOk();
     $this->get('/workers')->assertOk();
     // Uitvoerder-rij linkt naar het beheer op /team (whitelisted).
     $this->get('/team?section=teams&worker='.checkmateWorker($tenant)->id)->assertOk();

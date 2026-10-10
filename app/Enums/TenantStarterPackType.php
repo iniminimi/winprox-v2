@@ -17,11 +17,22 @@ enum TenantStarterPackType: string
     case RealEstate = 'realestate';
 
     /**
+     * Primaire onboarding-keuzes (waar werkt het team?).
+     * "Bij klanten" is een intent in de UI; daarna Checkmate of OnSite.
+     *
      * @return list<self>
      */
     public static function onboardingChoices(): array
     {
         return [self::OwnSites, self::OnSite, self::Fleet, self::Checkmate];
+    }
+
+    /**
+     * @return list<self>
+     */
+    public static function atCustomerFollowUpChoices(): array
+    {
+        return [self::Checkmate, self::OnSite];
     }
 
     public function labelKey(): string
@@ -37,5 +48,10 @@ enum TenantStarterPackType: string
     public function asksCompanySize(): bool
     {
         return $this === self::OnSite;
+    }
+
+    public function enablesCustomersOnLocation(): bool
+    {
+        return $this === self::OnSite || $this === self::Checkmate;
     }
 }

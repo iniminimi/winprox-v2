@@ -156,12 +156,12 @@
       "workers_body": "Los operarios fichan con el QR del Clock Point en su móvil.",
       "workers_cta": "Añadir operario",
       "customers_title": "Añade tu primer cliente",
-      "customers_body": "Los clientes tienen direcciones de trabajo donde los operarios fichan por GPS.",
+      "customers_body": "Los clientes tienen ubicaciones vinculadas donde los operarios fichan por GPS.",
       "customers_cta": "Añadir cliente"
     },
     "actions": {
       "add_customer_title": "Añadir cliente",
-      "add_customer_body": "Nuevo cliente con dirección de trabajo.",
+      "add_customer_body": "Nuevo cliente con ubicación vinculada.",
       "add_worker_title": "Añadir operario",
       "add_worker_body": "Alguien que ficha en obra.",
       "presence_title": "Presencia",

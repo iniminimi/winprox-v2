@@ -313,7 +313,7 @@ class Index extends Component
                 ...$validated,
                 'country_code' => strtoupper((string) ($validated['country_code'] ?? 'BE')),
                 'customer_id' => (int) $customer->id,
-                'with_site_unit' => ! $tenant->checkmateMode(),
+                'with_site_unit' => true,
             ], (int) $tenant->id, (int) auth()->id());
         } catch (InvalidArgumentException $e) {
             $key = match ($e->getMessage()) {

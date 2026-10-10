@@ -25,6 +25,8 @@ final class CheckmateMode
         return [
             'dashboard',
             'customers.*',          // Klanten
+            'locations.*',          // Locaties (gekoppeld aan klanten)
+            'units.*',              // Units (o.a. Hele locatie)
             'workers.*',            // Uitvoerders (lijst)
             'team.index',           // Uitvoerder-beheer (aanmaken/bewerken)
             'time.presence.*',      // Time: aanwezigheid

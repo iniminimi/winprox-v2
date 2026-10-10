@@ -108,7 +108,10 @@
         "maps_open": "Google Maps öffnen",
         "coords_placeholder": "51.336167, 3.236306",
         "coords_hint": "Optional: GPS des Kundenstandorts für Arbeitsbesuche (und CIAO placeOfWork). Rotes Symbol klicken, Ort in Google Maps suchen, roten Pin klicken und kopieren. Hier einfügen als 51.336167, 3.236306.",
-        "ddt_tooltip": "DDT = LSS-Werkmeldung: die technische Nummer (13 Zeichen) der Meldung für diese Baustelle/diesen Kunden. Zu finden im Sozialversicherungsportal (Werkmeldung), in e-Box Enterprise oder auf dem QR/Aushang vor Ort. WinProx erzeugt diese Nummer nicht."
+        "ddt_tooltip": "DDT = LSS-Werkmeldung: die technische Nummer (13 Zeichen) der Meldung für diese Baustelle/diesen Kunden. Zu finden im Sozialversicherungsportal (Werkmeldung), in e-Box Enterprise oder auf dem QR/Aushang vor Ort. WinProx erzeugt diese Nummer nicht.",
+        "customer": "Kunde",
+        "customer_none": "Kein Kunde",
+        "customer_hint": "Verknüpfen Sie diesen Standort mit einem Kunden, wenn Sie bei Kunden vor Ort arbeiten."
     },
     "flash": {
         "created": "Standort angelegt.",

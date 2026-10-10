@@ -30,6 +30,7 @@ class StoreLocationRequest extends FormRequest
             'contractual_relationship_reference' => ['nullable', 'regex:/^[A-HJ-NP-Z0-9]{13}$/'],
             'latitude' => ['nullable', 'numeric', 'between:-90,90'],
             'longitude' => ['nullable', 'numeric', 'between:-180,180'],
+            'customer_id' => ['nullable', 'integer', 'min:1'],
         ];
     }
 

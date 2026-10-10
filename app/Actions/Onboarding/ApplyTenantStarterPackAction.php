@@ -243,6 +243,7 @@ class ApplyTenantStarterPackAction
                 'billing_active_until' => null,
                 'is_active' => true,
                 'checkmate_mode' => true,
+                'customers_on_location' => true,
             ])->save();
 
             // effectivePlanKey() → checkmate_trial: zet Time + GPS-bezoeken + Clock Point.

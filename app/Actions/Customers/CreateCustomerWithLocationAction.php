@@ -14,7 +14,8 @@ use InvalidArgumentException;
  * Worker-flow "nieuwe klant onderweg" (docs/CHECKMATE.md §4.4): één scherm —
  * bestaande klant kiezen óf nieuwe aanmaken + werkadres. GPS-pin van de gsm is
  * verplicht: zonder pin kan geen werkbezoek gestart worden (nabijheidscheck).
- * Checkmate-werkadres krijgt bewust géén site-unit (geen Facility-QR).
+ * Locatie krijgt altijd een «Hele locatie»-unit (zelfde basis als Facility;
+ * QR/rondes kunnen later zonder data-migratie).
  */
 class CreateCustomerWithLocationAction
 {
@@ -56,7 +57,7 @@ class CreateCustomerWithLocationAction
                 'latitude' => $latitude,
                 'longitude' => $longitude,
                 'customer_id' => (int) $customer->id,
-                'with_site_unit' => false,
+                'with_site_unit' => true,
             ], (int) $tenant->id);
 
             return ['customer' => $customer, 'location' => $location];

@@ -257,5 +257,15 @@
         "evacuation_list": "Lista de evacuación en Clock Point",
         "evacuation_list_hint": "Tras identificarse, los ejecutores ven una ficha para ver quién está fichado. Confirman que la consulta es excepcional; cada consulta se registra. Desactivada por defecto.",
         "gps_visit_radius_hint": "Por defecto 50 m. Mínimo 10 m, máximo 2000 m."
+    },
+    "customers_on_location": {
+        "title": "Clientes en ubicación",
+        "lead": "Actívelo si su equipo trabaja en sitios de clientes (limpieza, construcción). Déjelo apagado para sitios propios como una guardería.",
+        "label": "Trabaja con clientes en ubicación",
+        "hint": "Muestra Clientes en el menú. Vincule ubicaciones a un cliente (DDT y GPS en la ubicación). Desactivar oculta el menú; los datos se conservan.",
+        "checkmate_hint": "En Checkmate esto permanece activado: el trabajo en clientes es el núcleo del plan.",
+        "checkmate_locked": "En Checkmate no puede desactivar clientes en ubicación.",
+        "save": "Guardar",
+        "saved": "Ajuste de clientes en ubicación guardado."
     }
 }

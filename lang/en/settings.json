@@ -257,5 +257,15 @@
         "evacuation_list": "Evacuation list on Clock Point",
         "evacuation_list_hint": "After sign-in, workers see a tile to view who is clocked in. They confirm that the consultation is exceptional; each view is logged. Off by default.",
         "gps_visit_radius_hint": "Default 50 m. Minimum 10 m, maximum 2000 m."
+    },
+    "customers_on_location": {
+        "title": "Customers on location",
+        "lead": "Turn this on if your team works at customer sites (cleaning, construction). Leave off for your own sites such as a daycare.",
+        "label": "Works with customers on location",
+        "hint": "Shows Customers in the menu. Link locations to a customer (DDT and GPS on the location). Turning off hides the menu; existing data is kept.",
+        "checkmate_hint": "On Checkmate this stays on: field work at customers is the core of the plan.",
+        "checkmate_locked": "On Checkmate you cannot turn off customers on location.",
+        "save": "Save",
+        "saved": "Customers on location setting saved."
     }
 }

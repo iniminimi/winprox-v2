@@ -25,6 +25,7 @@ use App\Http\Requests\Locations\UpdateLocationRequest;
 use App\Livewire\Concerns\AppliesGpsCoordinatePair;
 use App\Livewire\Concerns\AppliesPastedAddress;
 use App\Models\Category;
+use App\Models\Customer;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\Tenant;
@@ -94,6 +95,8 @@ class Index extends Component
     public string $locationFormLatitude = '';
 
     public string $locationFormLongitude = '';
+
+    public string $locationFormCustomerId = '';
 
     public string $locationPreviewLocale = '';
 
@@ -182,6 +185,7 @@ class Index extends Component
         $this->locationFormDdt = (string) ($location->contractual_relationship_reference ?? '');
         $this->locationFormLatitude = $location->latitude !== null ? (string) $location->latitude : '';
         $this->locationFormLongitude = $location->longitude !== null ? (string) $location->longitude : '';
+        $this->locationFormCustomerId = $location->customer_id !== null ? (string) $location->customer_id : '';
         $this->locationPreviewLocale = $this->defaultTranslationLocaleForLocation($location);
         $this->hydrateLocationTranslationInput($location->fresh('translations'));
         $this->resetErrorBag();
@@ -540,13 +544,14 @@ class Index extends Component
             'contractual_relationship_reference' => $this->locationFormDdt,
             'latitude' => $this->locationFormLatitude,
             'longitude' => $this->locationFormLongitude,
+            'customer_id' => $this->locationFormCustomerId !== '' ? (int) $this->locationFormCustomerId : null,
         ];
     }
 
     private function resetForm(): void
     {
         $this->reset([
-            'locationFormName', 'locationFormStreet', 'locationFormHouseNumber', 'locationFormPostalCode', 'locationFormCity', 'locationFormNotes', 'locationFormDdt', 'locationFormLatitude', 'locationFormLongitude', 'editingLocationId',
+            'locationFormName', 'locationFormStreet', 'locationFormHouseNumber', 'locationFormPostalCode', 'locationFormCity', 'locationFormNotes', 'locationFormDdt', 'locationFormLatitude', 'locationFormLongitude', 'locationFormCustomerId', 'editingLocationId',
             'locationPreviewLocale', 'locationTranslationName',
         ]);
         $this->editingLocationId = null;
@@ -961,6 +966,16 @@ class Index extends Component
             'workMenuUnitMeasurementsEnabled' => $viewerTenant?->workMenuUnitMeasurementsEnabled() ?? true,
             'presenceComplianceEnabled' => (bool) ($viewerTenant?->presenceComplianceEnabled()),
             'gpsWorkVisitsEnabled' => (bool) ($viewerTenant?->allowsGpsWorkVisits()),
+            'customersOnLocation' => (bool) ($viewerTenant?->customersOnLocation()),
+            'customerOptions' => ($viewerTenant?->customersOnLocation() ?? false)
+                ? Customer::query()
+                    ->where('tenant_id', (int) $viewerTenant->id)
+                    ->where('is_active', true)
+                    ->orderBy('name')
+                    ->get(['id', 'name'])
+                    ->map(fn (Customer $c): array => ['id' => (int) $c->id, 'name' => (string) $c->name])
+                    ->all()
+                : [],
             'canImportLocationsCsv' => $viewerTenant?->hasCsvLocationsImport() ?? false,
             'emptyLocationsWithoutUnits' => $isCategories
                 ? 0

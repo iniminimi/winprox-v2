@@ -26,6 +26,7 @@
         $showEsgNav = $activeTenant instanceof Tenant && $activeTenant->hasEsgModule();
         $showIotNav = $activeTenant instanceof Tenant && $activeTenant->hasIotModule();
         $showTimeNav = $activeTenant instanceof Tenant && $activeTenant->hasTimeModule();
+        $showCustomersNav = $activeTenant instanceof Tenant && $activeTenant->customersOnLocation();
         $showWorkMenuCalendar = $activeTenant instanceof Tenant && $activeTenant->workMenuCalendarEnabled();
         $showWorkMenuReservations = $activeTenant instanceof Tenant && $activeTenant->workMenuReservationsEnabled();
         $showWorkMenuInspectionRounds = $activeTenant instanceof Tenant && $activeTenant->workMenuInspectionRoundsEnabled();
@@ -199,6 +200,13 @@
                             <span>{{ __('customers.title') }}</span>
                         </a>
 
+                        <a href="{{ route('locations.index') }}"
+                           class="wp-nav-link {{ request()->routeIs('locations.*') ? 'is-active' : '' }}"
+                           @click="nav = false">
+                            <x-wp-icon name="locations" class="wp-nav-icon" />
+                            <span>{{ __('locations.title') }}</span>
+                        </a>
+
                         @php
                             $cmPeopleGroupActive = request()->routeIs('team.index') || request()->routeIs('workers.index');
                             $cmPeopleSection = request()->routeIs('team.index') ? (string) request()->query('section', '') : '';
@@ -334,7 +342,9 @@
                                 && (request()->query('section') === 'categories' || request()->filled('edit_category'));
                             $locationsActive = request()->routeIs('locations.index') && ! $categoriesActive;
                             $unitsActive = request()->routeIs('units.index');
-                            $placesGroupActive = request()->routeIs('locations.*') || $unitsActive;
+                            $placesGroupActive = request()->routeIs('locations.*')
+                                || $unitsActive
+                                || ($showCustomersNav && request()->routeIs('customers.*'));
 
                             $peopleGroupActive = request()->routeIs('team.index') || request()->routeIs('workers.index');
                             $peopleSection = request()->routeIs('team.index') ? (string) request()->query('section', '') : '';
@@ -461,6 +471,13 @@
                                     <span>{{ __('common.nav.places') }}</span>
                                 </summary>
                                 <div class="wp-sidebar-accordion__panel">
+                                    @if ($showCustomersNav)
+                                        <a href="{{ route('customers.index') }}"
+                                           class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('customers.*') ? 'is-active' : '' }}"
+                                           @click="nav = false">
+                                            <span>{{ __('customers.title') }}</span>
+                                        </a>
+                                    @endif
                                     <a href="{{ route('locations.index', ['section' => 'categories']) }}"
                                        class="wp-nav-link wp-nav-link--sub {{ $categoriesActive ? 'is-active' : '' }}"
                                        @click="nav = false">

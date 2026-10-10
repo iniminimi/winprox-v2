@@ -156,12 +156,12 @@
       "workers_body": "Mitarbeiter stempeln über den Clock-Point-QR auf ihrem Smartphone.",
       "workers_cta": "Mitarbeiter hinzufügen",
       "customers_title": "Ersten Kunden hinzufügen",
-      "customers_body": "Kunden haben Einsatzadressen, an denen Mitarbeiter per GPS einchecken.",
+      "customers_body": "Kunden haben verknüpfte Standorte, an denen Ausführende per GPS einchecken.",
       "customers_cta": "Kunde hinzufügen"
     },
     "actions": {
       "add_customer_title": "Kunde hinzufügen",
-      "add_customer_body": "Neuer Kunde mit Einsatzadresse.",
+      "add_customer_body": "Neuer Kunde mit verknüpftem Standort.",
       "add_worker_title": "Mitarbeiter hinzufügen",
       "add_worker_body": "Jemand, der vor Ort einstempelt.",
       "presence_title": "Anwesenheit",

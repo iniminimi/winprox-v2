@@ -156,12 +156,12 @@
       "workers_body": "Les exécutants pointent via le QR du Clock Point sur leur smartphone.",
       "workers_cta": "Ajouter un exécutant",
       "customers_title": "Ajoutez votre premier client",
-      "customers_body": "Les clients ont des adresses de chantier où les exécutants pointent via GPS.",
+      "customers_body": "Les clients ont des lieux liés où les exécutants pointent via GPS.",
       "customers_cta": "Ajouter un client"
     },
     "actions": {
       "add_customer_title": "Ajouter un client",
-      "add_customer_body": "Nouveau client avec adresse de chantier.",
+      "add_customer_body": "Nouveau client avec un lieu lié.",
       "add_worker_title": "Ajouter un exécutant",
       "add_worker_body": "Quelqu’un qui pointe sur site.",
       "presence_title": "Présence",

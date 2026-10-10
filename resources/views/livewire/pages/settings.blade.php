@@ -193,6 +193,33 @@
         </x-wp-settings-section>
     @endif
 
+    @if ($canManageOrganisation)
+        <x-wp-settings-section :title="__('settings.customers_on_location.title')">
+            <p class="wp-muted wp-text-sm">{{ __('settings.customers_on_location.lead') }}</p>
+            <form wire:submit="saveCustomersOnLocation" class="wp-stack">
+                <label class="wp-check">
+                    <input
+                        type="checkbox"
+                        wire:model="customersOnLocation"
+                        @disabled($checkmateMode ?? false)
+                    >
+                    <span>{{ __('settings.customers_on_location.label') }}</span>
+                </label>
+                <p class="wp-hint">
+                    @if ($checkmateMode ?? false)
+                        {{ __('settings.customers_on_location.checkmate_hint') }}
+                    @else
+                        {{ __('settings.customers_on_location.hint') }}
+                    @endif
+                </p>
+                @error('customersOnLocation') <p class="wp-error">{{ $message }}</p> @enderror
+                @unless ($checkmateMode ?? false)
+                    <button type="submit" class="btn btn--primary btn--sm">{{ __('settings.customers_on_location.save') }}</button>
+                @endunless
+            </form>
+        </x-wp-settings-section>
+    @endif
+
     @if ($canManageOrganisation && $hasTimeModule)
         <x-wp-settings-section :title="__('settings.time_clock.title')">
             <p class="wp-muted wp-text-sm">{{ __('settings.time_clock.lead') }}</p>

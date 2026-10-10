@@ -257,5 +257,15 @@
         "evacuation_list": "Liste d’évacuation sur Clock Point",
         "evacuation_list_hint": "Après connexion, les exécutants voient une tuile pour voir qui est pointé. Ils confirment que la consultation est exceptionnelle ; chaque consultation est enregistrée. Désactivé par défaut.",
         "gps_visit_radius_hint": "Par défaut 50 m. Minimum 10 m, maximum 2000 m."
+    },
+    "customers_on_location": {
+        "title": "Clients sur site",
+        "lead": "Activez si votre équipe travaille chez des clients (nettoyage, construction). Laissez désactivé pour vos propres sites, comme une crèche.",
+        "label": "Travaille avec des clients sur site",
+        "hint": "Affiche Clients dans le menu. Liez les lieux à un client (DDT et GPS sur le lieu). Désactiver masque le menu ; les données restent.",
+        "checkmate_hint": "Avec Checkmate, ceci reste activé : le travail sur site client est le cœur du forfait.",
+        "checkmate_locked": "Avec Checkmate, vous ne pouvez pas désactiver clients sur site.",
+        "save": "Enregistrer",
+        "saved": "Paramètre clients sur site enregistré."
     }
 }

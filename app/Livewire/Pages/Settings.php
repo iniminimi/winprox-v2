@@ -9,7 +9,9 @@ use App\Data\Qr\BrandedQrStickerPreviewData;
 use App\Actions\Team\UpdateOrganisationAction;
 use App\Actions\Team\UpdateOrganisationLogoAction;
 use App\Actions\Team\UpdateOrganisationPortalBackgroundAction;
+use App\Actions\Team\UpdateTenantCustomersOnLocationAction;
 use App\Actions\Team\UpdateTenantWorkMenuAction;
+use App\Http\Requests\Team\UpdateTenantCustomersOnLocationRequest;
 use App\Actions\Time\RequestPresenceComplianceAction;
 use App\Actions\Time\UpdatePresenceComplianceSettingsAction;
 use App\Actions\Time\UpdateTenantTimeClockSecurityAction;
@@ -130,6 +132,8 @@ class Settings extends Component
 
     public bool $timeEvacuationList = false;
 
+    public bool $customersOnLocation = false;
+
     public string $timeGpsVisitRadiusMeters = '250';
 
     public string $presenceComplianceScope = 'ciao_cleaning';
@@ -171,7 +175,45 @@ class Settings extends Component
 
         if ($this->canManageOrganisation) {
             $this->fillWorkMenuFromTenant($tenant);
+            $this->customersOnLocation = $tenant->customersOnLocation();
         }
+    }
+
+    public function saveCustomersOnLocation(UpdateTenantCustomersOnLocationAction $update): void
+    {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('manageOrganisation', $tenant);
+
+        $validated = Validator::make(
+            ['customers_on_location' => $this->customersOnLocation],
+            UpdateTenantCustomersOnLocationRequest::ruleSet(),
+        )->validate();
+
+        try {
+            $updated = $update->handle(
+                $tenant,
+                (int) $tenant->id,
+                (bool) $validated['customers_on_location'],
+                (int) auth()->id(),
+            );
+        } catch (\InvalidArgumentException $e) {
+            if ($e->getMessage() === 'checkmate_requires_customers_on_location') {
+                $this->customersOnLocation = true;
+                $this->addError('customersOnLocation', __('settings.customers_on_location.checkmate_locked'));
+
+                return;
+            }
+
+            throw $e;
+        }
+
+        $this->customersOnLocation = $updated->customersOnLocation();
+        $this->dispatch('saved');
+        session()->flash('success', __('settings.customers_on_location.saved'));
     }
 
     public function saveWorkMenuSettings(): void
@@ -902,6 +944,7 @@ class Settings extends Component
         $this->timeGpsOnClock = (bool) $tenant->time_gps_on_clock;
         $this->timeGpsVisits = (bool) $tenant->time_gps_visits;
         $this->timeEvacuationList = (bool) $tenant->time_evacuation_list;
+        $this->customersOnLocation = $tenant->customersOnLocation();
         $this->timeGpsVisitRadiusMeters = $tenant->time_gps_visit_radius_meters
             ? (string) $tenant->time_gps_visit_radius_meters
             : (string) config('time.gps_visit_radius_meters', 50);

@@ -162,8 +162,6 @@ class ImportCustomersAction
             ];
         }
 
-        $withSiteUnit = ! $tenant->checkmateMode();
-
         $locationsToCreate = count(array_filter(
             $validatedRows,
             static fn (array $row): bool => $row['has_address'],
@@ -178,15 +176,13 @@ class ImportCustomersAction
             ];
         }
 
-        if ($withSiteUnit) {
-            try {
-                $tenant->assertCanAddUnits($locationsToCreate);
-            } catch (\InvalidArgumentException) {
-                return [
-                    'success' => false,
-                    'errors' => [__('locations.errors.unit_limit')],
-                ];
-            }
+        try {
+            $tenant->assertCanAddUnits($locationsToCreate);
+        } catch (\InvalidArgumentException) {
+            return [
+                'success' => false,
+                'errors' => [__('locations.errors.unit_limit')],
+            ];
         }
 
         $batchId = (string) Str::uuid();
@@ -235,7 +231,7 @@ class ImportCustomersAction
                         'longitude' => $row['longitude'],
                         'customer_id' => (int) $customer->id,
                         'import_batch_id' => $batchId,
-                        'with_site_unit' => $withSiteUnit,
+                        'with_site_unit' => true,
                     ], $tenantId, $actorUserId);
                     $customer->load('locations');
                     $locationsCount++;

@@ -156,12 +156,12 @@
       "workers_body": "Gli operatori timbrano tramite il QR del Clock Point sullo smartphone.",
       "workers_cta": "Aggiungi operatore",
       "customers_title": "Aggiungi il primo cliente",
-      "customers_body": "I clienti hanno indirizzi di lavoro dove gli operatori timbrano via GPS.",
+      "customers_body": "I clienti hanno sedi collegate dove gli esecutori timbrano via GPS.",
       "customers_cta": "Aggiungi cliente"
     },
     "actions": {
       "add_customer_title": "Aggiungi cliente",
-      "add_customer_body": "Nuovo cliente con indirizzo di lavoro.",
+      "add_customer_body": "Nuovo cliente con sede collegata.",
       "add_worker_title": "Aggiungi operatore",
       "add_worker_body": "Chi timbra sul posto.",
       "presence_title": "Presenza",

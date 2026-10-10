@@ -355,9 +355,10 @@ it('blocks customer import when the plan does not allow it', function () {
         ->and(Customer::where('tenant_id', $tenant->id)->count())->toBe(0);
 });
 
-it('allows customer import on the checkmate plan without site units', function () {
+it('creates site units on customer import for the checkmate plan', function () {
     $tenant = Tenant::factory()->create([
         'checkmate_mode' => true,
+        'customers_on_location' => true,
         'has_time_module' => true,
         'billing_plan' => 'checkmate',
         'billing_active_until' => now()->addMonth(),
@@ -373,5 +374,6 @@ it('allows customer import on the checkmate plan without site units', function (
     expect($result['success'])->toBeTrue()
         ->and($result['count'])->toBe(1)
         ->and($result['locations_count'])->toBe(1)
-        ->and(Unit::where('tenant_id', $tenant->id)->count())->toBe(0);
+        ->and(Unit::where('tenant_id', $tenant->id)->count())->toBe(1)
+        ->and(Unit::where('tenant_id', $tenant->id)->first()?->is_site_unit)->toBeTrue();
 });

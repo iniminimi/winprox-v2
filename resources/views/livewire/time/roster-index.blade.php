@@ -415,7 +415,7 @@
                 @else
                     <div class="wp-field">
                         <label class="wp-label" for="roster-replacement-worker">{{ __('time.schedule.replacement.candidate') }}</label>
-                        <select id="roster-replacement-worker" class="wp-select" wire:model="replacementWorkerId">
+                        <select id="roster-replacement-worker" class="wp-select" wire:model.live="replacementWorkerId">
                             <option value="">{{ __('time.schedule.replacement.choose_candidate') }}</option>
                             @foreach ([1 => 'tier_unit', 2 => 'tier_location', 3 => 'tier_other'] as $tier => $labelKey)
                                 @php $tiered = collect($replacementCandidates)->where('tier', $tier); @endphp

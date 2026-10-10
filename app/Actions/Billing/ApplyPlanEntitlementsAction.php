@@ -36,6 +36,7 @@ class ApplyPlanEntitlementsAction
             $updates['has_time_module'] = true;
             $updates['time_gps_visits'] = true;
             $updates['time_gps_visit_radius_meters'] = (int) ($config['gps_visit_radius_meters'] ?? 100);
+            $updates['customers_on_location'] = true;
             // CIAO is de kern van Checkmate: compliance staat meteen aan in
             // Instellingen. Ondernemingsnummer/btw vult de tenant daar later
             // in — submissions zonder die data worden lokaal skipped
@@ -45,6 +46,7 @@ class ApplyPlanEntitlementsAction
                 $updates['presence_compliance_scope'] = PresenceComplianceScope::CiaoCleaning->value;
             }
         }
+        // Bij leave-checkmate customers_on_location niet uitzetten: upgrade behoudt klanten.
 
         $tenant->forceFill($updates)->save();
 

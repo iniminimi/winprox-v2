@@ -1,22 +1,22 @@
 {
   "title": "Clients",
-  "subtitle": "Clients et leurs adresses de travail.",
+  "subtitle": "Clients et leurs lieux liés.",
   "add": "Nouveau client",
   "search_placeholder": "Rechercher par nom, contact ou e-mail",
   "show_inactive": "Afficher les inactifs",
   "empty": "Pas encore de clients.",
   "inactive": "Inactif",
   "saved": "Client enregistré.",
-  "location_saved": "Adresse de travail enregistrée.",
+  "location_saved": "Lieu enregistré.",
   "deleted_customer": "Client supprimé.",
   "confirm_delete": "Supprimer définitivement le client :name ?",
-  "locations_count": "{0} Aucune adresse de travail|{1} :count adresse de travail|[2,*] :count adresses de travail",
-  "no_locations": "Pas encore d'adresses de travail.",
+  "locations_count": "{0} Aucun lieu|{1} :count lieu|[2,*] :count lieux",
+  "no_locations": "Pas encore de lieux liés.",
   "create_title": "Nouveau client",
   "edit_title": "Modifier le client",
-  "add_location": "Ajouter une adresse de travail",
-  "location_create_title": "Ajouter une adresse de travail",
-  "location_edit_title": "Modifier l'adresse de travail",
+  "add_location": "Lier un lieu",
+  "location_create_title": "Lier un lieu",
+  "location_edit_title": "Modifier le lieu",
   "location_no_pin": "Pas de pin GPS — une visite de travail ne peut pas encore démarrer ici.",
   "form": {
     "name": "Nom du client",
@@ -26,7 +26,7 @@
     "name_matches": "Ressemble à :"
   },
   "location_form": {
-    "name": "Nom de l'adresse de travail",
+    "name": "Nom du lieu",
     "name_hint": "Optionnel — le nom du client est utilisé par défaut.",
     "maps_button": "Google Maps",
     "maps_tooltip": "Saisissez le nom ici, puis cliquez sur Google Maps pour trouver l'adresse.",
@@ -58,7 +58,7 @@
   "customers_csv": {
     "button": "Importer des clients",
     "title": "Importer des clients (CSV / Excel)",
-    "hint": "Importez des clients via CSV ou Excel (.xlsx). Obligatoire : name. Optionnel : contact_name, email, phone et une adresse de travail (street + postal_code + city obligatoires ensemble ; location_name, house_number, country_code (BE par défaut), ddt (déclaration de travaux, 13 caractères), latitude et longitude (les deux ensemble)). Le même nom de client sur plusieurs lignes = plusieurs adresses ; un client existant du même nom est réutilisé. Colonnes inconnues ou lignes invalides rejettent tout l'import.",
+    "hint": "Importez des clients via CSV ou Excel (.xlsx). Obligatoire : name. Optionnel : contact_name, email, phone et une lieu (street + postal_code + city obligatoires ensemble ; location_name, house_number, country_code (BE par défaut), ddt (déclaration de travaux, 13 caractères), latitude et longitude (les deux ensemble)). Le même nom de client sur plusieurs lignes = plusieurs adresses ; un client existant du même nom est réutilisé. Colonnes inconnues ou lignes invalides rejettent tout l'import.",
     "errors": {
       "file_required": "Choisissez un fichier CSV ou Excel (.xlsx).",
       "file_too_large": "Le fichier ne peut pas dépasser 10 Mo.",
@@ -72,13 +72,13 @@
       "database": "Erreur de base de données : :message",
       "unsupported_format": "Format de fichier invalide. Utilisez CSV ou Excel (.xlsx).",
       "duplicate_row": "Client en double dans ce fichier.",
-      "incomplete_address": "Adresse de travail incomplète — street, postal_code et city sont obligatoires ensemble.",
+      "incomplete_address": "Lieu incomplète — street, postal_code et city sont obligatoires ensemble.",
       "coords_pair_required": "latitude et longitude doivent être renseignées ensemble."
     }
   },
   "customers_import_history": {
     "title": "Imports de clients récents",
-    "hint": "L'annulation supprime les adresses de travail et les clients importés sans contenu (visites, signalements, unités, documents ou annonces).",
+    "hint": "L'annulation supprime les lieux et les clients importés sans contenu (visites, signalements, unités, documents ou annonces).",
     "unknown_file": "Fichier inconnu",
     "customer_count": ":count client(s)",
     "location_count": ":count adresse(s) de travail",
@@ -86,14 +86,14 @@
     "delete_button": "Annuler l'import (:count)",
     "has_content": "A du contenu",
     "deleted": "Supprimé",
-    "nothing_deletable": "Aucun client ni adresse de travail de cet import ne peut être supprimé.",
+    "nothing_deletable": "Aucun client ni lieu de cet import ne peut être supprimé.",
     "partially_deleted": ":customers client(s) et :locations adresse(s) de travail supprimés. :preserved élément(s) avec contenu conservé(s).",
     "fully_deleted": ":customers client(s) et :locations adresse(s) de travail supprimés.",
     "delete_failed": "Une erreur est survenue lors de la suppression."
   },
   "errors": {
     "name_required": "Saisissez un nom de client.",
-    "has_locations": "Ce client a encore des adresses de travail — supprimez-les d’abord.",
+    "has_locations": "Ce client a encore des lieux — supprimez-les d’abord.",
     "email_invalid": "Saisissez une adresse e-mail valide.",
     "not_found": "Client introuvable."
   },
@@ -105,12 +105,12 @@
     "worked_time": "Temps travaillé",
     "visits_label": "Visites",
     "visits": "{0} Aucune visite|{1} :count visite|[2,*] :count visites",
-    "locations_label": "Adresses de travail visitées",
-    "per_location": "Par adresse de travail",
+    "locations_label": "Lieux visitées",
+    "per_location": "Par lieu",
     "empty": "Aucune visite sur cette période.",
     "presence_note": "Durée de présence sur le lieu de travail ; les pauses des prestations ne sont pas déduites.",
     "export_columns": {
-      "location": "Adresse de travail",
+      "location": "Lieu",
       "visits": "Visites",
       "worked": "Temps travaillé",
       "total": "Total — :customer"

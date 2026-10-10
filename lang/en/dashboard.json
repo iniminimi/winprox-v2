@@ -156,12 +156,12 @@
       "workers_body": "Workers clock in and out via the Clock Point QR on their phone.",
       "workers_cta": "Add worker",
       "customers_title": "Add your first customer",
-      "customers_body": "Customers have work addresses where workers check in via GPS.",
+      "customers_body": "Customers have linked locations where workers check in via GPS.",
       "customers_cta": "Add customer"
     },
     "actions": {
       "add_customer_title": "Add customer",
-      "add_customer_body": "New customer with a work address.",
+      "add_customer_body": "New customer with a linked location.",
       "add_worker_title": "Add worker",
       "add_worker_body": "Someone who clocks in on location.",
       "presence_title": "Presence",

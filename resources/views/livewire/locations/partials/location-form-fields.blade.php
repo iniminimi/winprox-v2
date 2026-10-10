@@ -1,3 +1,17 @@
+@if ($customersOnLocation ?? false)
+    <label class="wp-field">
+        <span class="wp-label">{{ __('locations.fields.customer') }}</span>
+        <select class="wp-select" wire:model="locationFormCustomerId">
+            <option value="">{{ __('locations.fields.customer_none') }}</option>
+            @foreach (($customerOptions ?? []) as $customerOption)
+                <option value="{{ $customerOption['id'] }}">{{ $customerOption['name'] }}</option>
+            @endforeach
+        </select>
+        <span class="wp-hint">{{ __('locations.fields.customer_hint') }}</span>
+        @error('customer_id') <span class="wp-error">{{ $message }}</span> @enderror
+    </label>
+@endif
+
 <label class="wp-field">
     <span class="wp-label">
         {{ __('locations.fields.name') }}

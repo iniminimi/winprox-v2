@@ -257,5 +257,15 @@
         "evacuation_list": "Evacuatielijst op Clock Point",
         "evacuation_list_hint": "Na aanmelden zien uitvoerders een tegel om te zien wie is ingeklokt. Ze bevestigen dat de raadpleging uitzonderlijk is; elke raadpleging wordt gelogd. Standaard uit.",
         "gps_visit_radius_hint": "Standaard 50 m. Minimum 10 m, maximum 2000 m."
+    },
+    "customers_on_location": {
+        "title": "Klanten op locatie",
+        "lead": "Schakel dit in als je team bij klanten werkt (schoonmaak, bouw). Uit laten voor eigen sites zoals een crèche.",
+        "label": "Werkt met klanten op locatie",
+        "hint": "Toont Klanten in het menu. Locaties koppel je aan een klant (DDT en GPS op de locatie). Uitzetten verbergt het menu; bestaande data blijft bewaard.",
+        "checkmate_hint": "Op Checkmate staat dit vast aan: veldwerk bij klanten is de kern van het plan.",
+        "checkmate_locked": "Op Checkmate kun je klanten op locatie niet uitzetten.",
+        "save": "Opslaan",
+        "saved": "Instelling klanten op locatie opgeslagen."
     }
 }

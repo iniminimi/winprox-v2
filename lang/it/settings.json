@@ -257,5 +257,15 @@
         "evacuation_list": "Elenco evacuazione su Clock Point",
         "evacuation_list_hint": "Dopo l’accesso gli esecutori vedono un riquadro per chi è timbrato. Confermano che la consultazione è eccezionale; ogni consultazione è registrata. Disattivato di default.",
         "gps_visit_radius_hint": "Predefinito 50 m. Minimo 10 m, massimo 2000 m."
+    },
+    "customers_on_location": {
+        "title": "Clienti sul posto",
+        "lead": "Attivare se il team lavora presso i clienti (pulizie, edilizia). Lasciare spento per sedi proprie come un asilo.",
+        "label": "Lavora con clienti sul posto",
+        "hint": "Mostra Clienti nel menu. Collega le sedi a un cliente (DDT e GPS sulla sede). Disattivare nasconde il menu; i dati restano.",
+        "checkmate_hint": "Con Checkmate resta attivo: il lavoro presso i clienti è il cuore del piano.",
+        "checkmate_locked": "Con Checkmate non puoi disattivare clienti sul posto.",
+        "save": "Salva",
+        "saved": "Impostazione clienti sul posto salvata."
     }
 }

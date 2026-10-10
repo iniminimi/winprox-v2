@@ -156,12 +156,12 @@
       "workers_body": "Uitvoerders klokken in en uit via de Clock Point-QR op hun gsm.",
       "workers_cta": "Uitvoerder toevoegen",
       "customers_title": "Voeg je eerste klant toe",
-      "customers_body": "Klanten hebben werkadressen waar uitvoerders via GPS inchecken.",
+      "customers_body": "Klanten hebben gekoppelde locaties waar uitvoerders via GPS inchecken.",
       "customers_cta": "Klant toevoegen"
     },
     "actions": {
       "add_customer_title": "Klant toevoegen",
-      "add_customer_body": "Nieuwe klant met werkadres.",
+      "add_customer_body": "Nieuwe klant met gekoppelde locatie.",
       "add_worker_title": "Uitvoerder toevoegen",
       "add_worker_body": "Iemand die meeklokt op locatie.",
       "presence_title": "Aanwezigheid",

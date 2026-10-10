@@ -257,5 +257,15 @@
         "evacuation_list": "Evakuierungsliste am Clock Point",
         "evacuation_list_hint": "Nach der Anmeldung sehen Ausführende eine Kachel, wer eingestempelt ist. Sie bestätigen, dass die Einsicht außergewöhnlich ist; jede Einsicht wird protokolliert. Standardmäßig aus.",
         "gps_visit_radius_hint": "Standard 50 m. Minimum 10 m, Maximum 2000 m."
+    },
+    "customers_on_location": {
+        "title": "Kunden vor Ort",
+        "lead": "Aktivieren, wenn Ihr Team bei Kunden arbeitet (Reinigung, Bau). Aus lassen für eigene Standorte wie eine Kita.",
+        "label": "Arbeitet mit Kunden vor Ort",
+        "hint": "Zeigt Kunden im Menü. Standorte einem Kunden zuordnen (DDT und GPS am Standort). Ausschalten blendet das Menü aus; Daten bleiben.",
+        "checkmate_hint": "Bei Checkmate bleibt dies an: Arbeit bei Kunden ist der Kern des Plans.",
+        "checkmate_locked": "Bei Checkmate können Sie Kunden vor Ort nicht ausschalten.",
+        "save": "Speichern",
+        "saved": "Einstellung Kunden vor Ort gespeichert."
     }
 }

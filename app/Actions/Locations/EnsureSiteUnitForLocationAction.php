@@ -52,6 +52,12 @@ class EnsureSiteUnitForLocationAction
             $payload['is_site_unit'] = true;
         }
 
+        // Kopieer locatie-pin zodat nabijheid/upgrade via unit-GPS werkt.
+        if ($location->hasWorkVisitPin()) {
+            $payload['latitude'] = $location->latitude;
+            $payload['longitude'] = $location->longitude;
+        }
+
         $unit = $this->createUnit->handle($location, $payload, $tenantId, $actorUserId);
 
         if (Schema::hasColumn('units', 'is_site_unit') && ! $unit->is_site_unit) {

@@ -34,6 +34,7 @@ class Tenant extends Model
         'billing_units_cap',
         'billing_seats_qty',
         'checkmate_mode',
+        'customers_on_location',
         'is_active',
         'stripe_customer_id',
         'allow_trial_api',
@@ -76,6 +77,7 @@ class Tenant extends Model
             'has_esg_module' => 'boolean',
             'has_iot_module' => 'boolean',
             'checkmate_mode' => 'boolean',
+            'customers_on_location' => 'boolean',
             'billing_seats_qty' => 'integer',
             'has_time_module' => 'boolean',
             'time_require_worker_pin' => 'boolean',
@@ -338,6 +340,15 @@ class Tenant extends Model
     public function checkmateMode(): bool
     {
         return (bool) $this->checkmate_mode;
+    }
+
+    /**
+     * Tenant beheert klantrelaties gekoppeld aan locaties (schoonmaak/bouw).
+     * Checkmate forceert dit via plan-entitlements; Facility zet het in Instellingen.
+     */
+    public function customersOnLocation(): bool
+    {
+        return (bool) $this->customers_on_location;
     }
 
     public function requiresWorkerPin(): bool

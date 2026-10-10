@@ -27,6 +27,7 @@ use App\Http\Requests\Units\ImportUnitsRequest;
 use App\Livewire\Concerns\AppliesGpsCoordinatePair;
 use App\Livewire\Concerns\AppliesPastedAddress;
 use App\Models\Category;
+use App\Models\Customer;
 use App\Models\EsgMeasurement;
 use App\Models\InternalTeam;
 use App\Models\Location;
@@ -122,6 +123,8 @@ class Show extends Component
     public string $locationFormLatitude = '';
 
     public string $locationFormLongitude = '';
+
+    public string $locationFormCustomerId = '';
 
     public string $unitName = '';
 
@@ -338,6 +341,7 @@ class Show extends Component
             'contractual_relationship_reference' => $this->locationFormDdt,
             'latitude' => $this->locationFormLatitude,
             'longitude' => $this->locationFormLongitude,
+            'customer_id' => $this->locationFormCustomerId !== '' ? (int) $this->locationFormCustomerId : null,
         ];
     }
 
@@ -353,6 +357,7 @@ class Show extends Component
         $this->locationFormDdt = (string) ($this->location->contractual_relationship_reference ?? '');
         $this->locationFormLatitude = $this->location->latitude !== null ? (string) $this->location->latitude : '';
         $this->locationFormLongitude = $this->location->longitude !== null ? (string) $this->location->longitude : '';
+        $this->locationFormCustomerId = $this->location->customer_id !== null ? (string) $this->location->customer_id : '';
     }
 
     private function resetLocationForm(): void
@@ -367,6 +372,7 @@ class Show extends Component
             'locationFormDdt',
             'locationFormLatitude',
             'locationFormLongitude',
+            'locationFormCustomerId',
             'locationPreviewLocale',
             'locationTranslationName',
         ]);
@@ -1483,6 +1489,16 @@ class Show extends Component
             'workMenuUnitMeasurementsEnabled' => $this->locationTenant()?->workMenuUnitMeasurementsEnabled() ?? true,
             'presenceComplianceEnabled' => $this->locationTenant()?->presenceComplianceEnabled() ?? false,
             'gpsWorkVisitsEnabled' => $this->locationTenant()?->allowsGpsWorkVisits() ?? false,
+            'customersOnLocation' => $this->locationTenant()?->customersOnLocation() ?? false,
+            'customerOptions' => ($this->locationTenant()?->customersOnLocation() ?? false)
+                ? Customer::query()
+                    ->where('tenant_id', (int) $this->locationTenant()->id)
+                    ->where('is_active', true)
+                    ->orderBy('name')
+                    ->get(['id', 'name'])
+                    ->map(fn (Customer $c): array => ['id' => (int) $c->id, 'name' => (string) $c->name])
+                    ->all()
+                : [],
             'unitPortalCategory' => $unitPortalCategory,
             'unitPortalFlagsMatchCategory' => $unitPortalFlagsMatchCategory,
             'unitCategoryPortalTooltip' => $unitCategoryPortalTooltip,
