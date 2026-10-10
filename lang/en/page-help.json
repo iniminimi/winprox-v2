@@ -322,11 +322,13 @@
                 },
                 {
                     "label": "Import locations",
-                    "text": "Import locations via CSV or Excel (.xlsx). Per row: name or street + postal_code + city. Optional: house_number, country_code (default BE), notes, contractual_relationship_reference (DDT), latitude and longitude (both). Bad headers or missing identity reject the whole import. Find the number on the Social Security portal under <strong>Aangifte van werken</strong>: go to your declarations and open the one for the work site. No access? Ask whoever filed the declaration (customer or main contractor). For cleaning declarations, the specific CIaO QR code or URL retrieves the number automatically."
+                    "text": "Import locations via CSV or Excel (.xlsx). Per row: name or street + postal_code + city. Optional: house_number, country_code (default BE), notes, contractual_relationship_reference (DDT), latitude and longitude (both). Bad headers or missing identity reject the whole import. Find the number on the Social Security portal under <strong>Aangifte van werken</strong>: go to your declarations and open the one for the work site. No access? Ask whoever filed the declaration (customer or main contractor). For cleaning declarations, the specific CIaO QR code or URL retrieves the number automatically.",
+                    "requires_facility": true
                 },
                 {
                     "label": "Recent location imports",
-                    "text": "After an import you see recent imports (30 days). Per import: file name, date and location count. Undo removes locations without units, issues, documents or announcements."
+                    "text": "After an import you see recent imports (30 days). Per import: file name, date and location count. Undo removes locations without units, issues, documents or announcements.",
+                    "requires_facility": true
                 },
                 {
                     "label": "GPS pin",

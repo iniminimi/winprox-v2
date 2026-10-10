@@ -1311,6 +1311,18 @@ it('linkt onderaan de klantenpagina naar de instructievideo in een nieuw tabblad
         ->assertSee('target="_blank"', false);
 });
 
+it('verbergt Facility-locatie-import op Locaties bij checkmate (klant-import dekt werkadressen)', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    Livewire::actingAs($admin)
+        ->test(LocationsIndex::class)
+        ->assertDontSee(__('locations.locations_csv.button'), false)
+        ->assertDontSee('wire:click="openLocationsCsvImportModal"', false)
+        ->call('openLocationsCsvImportModal')
+        ->assertForbidden();
+});
+
 it('toont checkmate-importcopy met werkadressen i.p.v. facility-locaties', function () {
     $tenant = checkmateTenant();
     $admin = User::factory()->admin()->for($tenant)->create();

@@ -322,11 +322,13 @@
                 },
                 {
                     "label": "Importar ubicaciones",
-                    "text": "Importe ubicaciones por CSV o Excel (.xlsx). Por fila: name o street + postal_code + city. Opcional: house_number, country_code (BE por defecto), notes, contractual_relationship_reference (DDT), latitude y longitude (juntos). Cabeceras incorrectas o identidad faltante rechazan toda la importación. Encuentra el número en el portal de la Seguridad Social en <strong>Aangifte van werken</strong>: ve a tus declaraciones y abre la de la obra. ¿Sin acceso? Pídelo a quien presentó la declaración (cliente o contratista principal). En declaraciones de limpieza, el código QR o la URL CIaO específicos obtienen el número automáticamente."
+                    "text": "Importe ubicaciones por CSV o Excel (.xlsx). Por fila: name o street + postal_code + city. Opcional: house_number, country_code (BE por defecto), notes, contractual_relationship_reference (DDT), latitude y longitude (juntos). Cabeceras incorrectas o identidad faltante rechazan toda la importación. Encuentra el número en el portal de la Seguridad Social en <strong>Aangifte van werken</strong>: ve a tus declaraciones y abre la de la obra. ¿Sin acceso? Pídelo a quien presentó la declaración (cliente o contratista principal). En declaraciones de limpieza, el código QR o la URL CIaO específicos obtienen el número automáticamente.",
+                    "requires_facility": true
                 },
                 {
                     "label": "Importaciones de ubicaciones recientes",
-                    "text": "Tras una importación verá imports recientes (30 días). Por import: nombre de archivo, fecha y número de ubicaciones. Deshacer elimina ubicaciones sin units, avisos, documentos ni anuncios."
+                    "text": "Tras una importación verá imports recientes (30 días). Por import: nombre de archivo, fecha y número de ubicaciones. Deshacer elimina ubicaciones sin units, avisos, documentos ni anuncios.",
+                    "requires_facility": true
                 },
                 {
                     "label": "Pin GPS",

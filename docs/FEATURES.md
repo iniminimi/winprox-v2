@@ -1306,8 +1306,10 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
   `checkmate_mode` whitelist: Dashboard, Plaatsen (Klanten/Locaties; Units niet
   in menu), Uitvoerders, Time, Instellingen, Abonnement. Categorieën stil
   (default «Klantlocatie»). Locatie-detail zonder units-lijst,
-  documenten/mededelingen. Eén Clock Point («Aanmelden»): geen extra, geen
-  deactiveren, geen vestigingslocatie. Portaal: klok, klantbezoek, pauze, Mijn uren.
+  documenten/mededelingen. Klant-CSV maakt werkadressen (+ stille site-unit);
+  Facility-locatie-import op Locaties verborgen. Eén Clock Point («Aanmelden»):
+  geen extra, geen deactiveren, geen vestigingslocatie. Portaal: klok,
+  klantbezoek, pauze, Mijn uren.
   Volledige spec: `docs/CHECKMATE.md`.
 - **Instellingen — klanten op locatie** (`tenants.customers_on_location`): toont
   **Klanten** in het menu (Facility) of forceert aan op Checkmate. Locaties koppelen

@@ -365,7 +365,8 @@ class Index extends Component
     public function openLocationsCsvImportModal(): void
     {
         $this->authorize('create', Location::class);
-        abort_unless($this->viewerTenant()?->hasCsvLocationsImport() ?? false, 403);
+        $tenant = $this->viewerTenant();
+        abort_unless(($tenant?->hasCsvLocationsImport() ?? false) && ! ($tenant?->checkmateMode() ?? false), 403);
 
         $this->locationsCsvImportFile = null;
         $this->locationsCsvImportErrors = [];
@@ -382,7 +383,8 @@ class Index extends Component
     public function importLocationsCsv(ImportLocationsAction $importLocations): void
     {
         $this->authorize('create', Location::class);
-        abort_unless($this->viewerTenant()?->hasCsvLocationsImport() ?? false, 403);
+        $tenant = $this->viewerTenant();
+        abort_unless(($tenant?->hasCsvLocationsImport() ?? false) && ! ($tenant?->checkmateMode() ?? false), 403);
 
         if ($this->locationsCsvImportFile === null) {
             $this->locationsCsvImportErrors = [__('locations.locations_csv.errors.file_required')];
@@ -424,7 +426,8 @@ class Index extends Component
     public function downloadLocationsSampleCsv(): StreamedResponse
     {
         $this->authorize('create', Location::class);
-        abort_unless($this->viewerTenant()?->hasCsvLocationsImport() ?? false, 403);
+        $tenant = $this->viewerTenant();
+        abort_unless(($tenant?->hasCsvLocationsImport() ?? false) && ! ($tenant?->checkmateMode() ?? false), 403);
 
         $headers = ImportLocationsAction::allHeaders();
         $sampleRow = [
@@ -454,7 +457,8 @@ class Index extends Component
     public function downloadLocationsSampleXlsx(): StreamedResponse
     {
         $this->authorize('create', Location::class);
-        abort_unless($this->viewerTenant()?->hasCsvLocationsImport() ?? false, 403);
+        $tenant = $this->viewerTenant();
+        abort_unless(($tenant?->hasCsvLocationsImport() ?? false) && ! ($tenant?->checkmateMode() ?? false), 403);
 
         $rows = [
             ImportLocationsAction::allHeaders(),
@@ -488,6 +492,7 @@ class Index extends Component
     public function deleteLocationImportBatch(string $batchId, DeleteLocationImportBatchAction $deleteBatch): void
     {
         $this->authorize('create', Location::class);
+        abort_unless(! ($this->viewerTenant()?->checkmateMode() ?? false), 403);
 
         $tenantId = (int) Tenancy::id();
         $summary = LocationImportBatchRegistry::summary($tenantId, $batchId);
@@ -984,11 +989,15 @@ class Index extends Component
                     ->map(fn (Customer $c): array => ['id' => (int) $c->id, 'name' => (string) $c->name])
                     ->all()
                 : [],
-            'canImportLocationsCsv' => $viewerTenant?->hasCsvLocationsImport() ?? false,
+            // Checkmate: werkadressen komen via klant-import (/klanten), niet via
+            // Facility-locatie-CSV (die maakt locaties zonder klant).
+            'canImportLocationsCsv' => ($viewerTenant?->hasCsvLocationsImport() ?? false)
+                && ! ($viewerTenant?->checkmateMode() ?? false),
+            'checkmateMode' => $viewerTenant?->checkmateMode() ?? false,
             'emptyLocationsWithoutUnits' => $isCategories
                 ? 0
                 : Location::query()->whereDoesntHave('units')->count(),
-            'locationImportBatches' => $isCategories
+            'locationImportBatches' => ($isCategories || ($viewerTenant?->checkmateMode() ?? false))
                 ? collect()
                 : LocationImportBatchRegistry::recentBatchesForTenant((int) Tenancy::id())
                     ->map(fn (array $batch) => array_merge(

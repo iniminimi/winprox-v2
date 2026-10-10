@@ -322,11 +322,13 @@
                 },
                 {
                     "label": "Locaties importeren",
-                    "text": "Importeer locaties via CSV of Excel (.xlsx). Per rij: name óf street + postal_code + city. Optioneel: house_number, country_code (standaard BE), notes, contractual_relationship_reference (DDT), latitude en longitude (beide). Bij foute headers of ontbrekende identiteit wordt de hele import geweigerd. Het nummer vind je op het portaal van de Sociale Zekerheid onder <strong>Aangifte van werken</strong>: ga naar je aangiften en open die van de werkplaats. Geen toegang? Vraag het bij wie de aangifte indiende (klant of hoofdaannemer). Bij schoonmaakaangiften haalt de specifieke CIaO-QR-code of -URL het nummer automatisch op."
+                    "text": "Importeer locaties via CSV of Excel (.xlsx). Per rij: name óf street + postal_code + city. Optioneel: house_number, country_code (standaard BE), notes, contractual_relationship_reference (DDT), latitude en longitude (beide). Bij foute headers of ontbrekende identiteit wordt de hele import geweigerd. Het nummer vind je op het portaal van de Sociale Zekerheid onder <strong>Aangifte van werken</strong>: ga naar je aangiften en open die van de werkplaats. Geen toegang? Vraag het bij wie de aangifte indiende (klant of hoofdaannemer). Bij schoonmaakaangiften haalt de specifieke CIaO-QR-code of -URL het nummer automatisch op.",
+                    "requires_facility": true
                 },
                 {
                     "label": "Recente locatie-imports",
-                    "text": "Na een import zie je recente imports (30 dagen). Per import: bestandsnaam, datum en aantal locaties. Import terugdraaien verwijdert locaties zonder units, meldingen, documenten of mededelingen."
+                    "text": "Na een import zie je recente imports (30 dagen). Per import: bestandsnaam, datum en aantal locaties. Import terugdraaien verwijdert locaties zonder units, meldingen, documenten of mededelingen.",
+                    "requires_facility": true
                 },
                 {
                     "label": "GPS-pin",

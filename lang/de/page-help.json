@@ -322,11 +322,13 @@
                 },
                 {
                     "label": "Standorte importieren",
-                    "text": "Importieren Sie Standorte per CSV oder Excel (.xlsx). Pro Zeile: name oder street + postal_code + city. Optional: house_number, country_code (Standard BE), notes, contractual_relationship_reference (DDT), latitude und longitude (beide). Falsche Header oder fehlende Identität lehnen den gesamten Import ab. Die Nummer finden Sie im Portal der sozialen Sicherheit unter <strong>Aangifte van werken</strong>: gehen Sie zu Ihren Meldungen und öffnen Sie die der Baustelle. Kein Zugriff? Fragen Sie, wer die Meldung eingereicht hat (Kunde oder Hauptunternehmer). Bei Reinigungsmeldungen ruft der spezifische CIaO-QR-Code oder die URL die Nummer automatisch ab."
+                    "text": "Importieren Sie Standorte per CSV oder Excel (.xlsx). Pro Zeile: name oder street + postal_code + city. Optional: house_number, country_code (Standard BE), notes, contractual_relationship_reference (DDT), latitude und longitude (beide). Falsche Header oder fehlende Identität lehnen den gesamten Import ab. Die Nummer finden Sie im Portal der sozialen Sicherheit unter <strong>Aangifte van werken</strong>: gehen Sie zu Ihren Meldungen und öffnen Sie die der Baustelle. Kein Zugriff? Fragen Sie, wer die Meldung eingereicht hat (Kunde oder Hauptunternehmer). Bei Reinigungsmeldungen ruft der spezifische CIaO-QR-Code oder die URL die Nummer automatisch ab.",
+                    "requires_facility": true
                 },
                 {
                     "label": "Aktuelle Standort-Importe",
-                    "text": "Nach einem Import sehen Sie aktuelle Importe (30 Tage). Pro Import: Dateiname, Datum und Anzahl Standorte. Rückgängig machen entfernt Standorte ohne Units, Meldungen, Dokumente oder Mitteilungen."
+                    "text": "Nach einem Import sehen Sie aktuelle Importe (30 Tage). Pro Import: Dateiname, Datum und Anzahl Standorte. Rückgängig machen entfernt Standorte ohne Units, Meldungen, Dokumente oder Mitteilungen.",
+                    "requires_facility": true
                 },
                 {
                     "label": "GPS-Pin",

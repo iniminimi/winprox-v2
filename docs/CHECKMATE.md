@@ -90,8 +90,10 @@ Whitelist-schermen:
   gezet zodat Facility-gates niet blokkeren. Locatieformulier kan een klant
   koppelen. Op locatie-detail: **geen** units-lijst, documenten of
   mededelingen (site-unit blijft stil in DB). CSV-import op `/klanten`
-  maakt altijd een «Hele locatie»-unit. Per klant maandstatistieken →
-  `/klanten/{customer}/statistieken` (`SummarizeCustomerWorkStatsAction`).
+  maakt meteen werkadressen (locaties) + stil een «Hele locatie»-unit;
+  Facility-locatie-import op `/locaties` is verborgen. Per klant
+  maandstatistieken → `/klanten/{customer}/statistieken`
+  (`SummarizeCustomerWorkStatsAction`).
 - **Uitvoerders** — menu linkt naar `/team` (teams aanmaken + uitvoerder-
   beheer wonen daar). `/workers` blijft whitelisted als alleen-lezen lijst.
 - **Time** — aanwezigheid, uren, CIAO-inzendingen. **Clock Points:** precies één
