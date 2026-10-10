@@ -188,32 +188,55 @@
                             </a>
                         @endforeach
                     @elseif ($checkmateNav)
-                        {{-- Checkmate-whitelist (docs/CHECKMATE.md §5): Klanten, Mensen
-                             (backoffice/teams/uitvoerders zoals andere plannen), Time
-                             (aanwezigheid/uren/CIAO/clock points), Instellingen, Abonnement. --}}
+                        {{-- Checkmate-whitelist (docs/CHECKMATE.md §5): Plaatsen
+                             (Klanten/Categorieën/Locaties/Units), Mensen, Time,
+                             Instellingen, Abonnement. --}}
                         <hr class="wp-nav-divider" role="presentation" aria-hidden="true">
 
-                        <a href="{{ route('customers.index') }}"
-                           class="wp-nav-link {{ request()->routeIs('customers.*') ? 'is-active' : '' }}"
-                           @click="nav = false">
-                            <x-wp-icon name="building-office" class="wp-nav-icon" />
-                            <span>{{ __('customers.title') }}</span>
-                        </a>
-
-                        <a href="{{ route('locations.index') }}"
-                           class="wp-nav-link {{ request()->routeIs('locations.*') ? 'is-active' : '' }}"
-                           @click="nav = false">
-                            <x-wp-icon name="locations" class="wp-nav-icon" />
-                            <span>{{ __('locations.title') }}</span>
-                        </a>
-
                         @php
+                            $cmCategoriesActive = request()->routeIs('locations.index')
+                                && (request()->query('section') === 'categories' || request()->filled('edit_category'));
+                            $cmLocationsActive = request()->routeIs('locations.index') && ! $cmCategoriesActive;
+                            $cmUnitsActive = request()->routeIs('units.index');
+                            $cmPlacesGroupActive = request()->routeIs('customers.*')
+                                || request()->routeIs('locations.*')
+                                || $cmUnitsActive;
                             $cmPeopleGroupActive = request()->routeIs('team.index') || request()->routeIs('workers.index');
                             $cmPeopleSection = request()->routeIs('team.index') ? (string) request()->query('section', '') : '';
                             $cmBackofficeNavActive = request()->routeIs('team.index') && $cmPeopleSection === 'backoffice';
                             $cmTeamsNavActive = request()->routeIs('team.index') && $cmPeopleSection !== 'backoffice';
                             $cmWorkersNavActive = request()->routeIs('workers.index');
                         @endphp
+
+                        <details class="wp-sidebar-accordion__group" @if($cmPlacesGroupActive) open @endif>
+                            <summary class="wp-nav-link {{ $cmPlacesGroupActive ? 'is-active' : '' }}">
+                                <x-wp-icon name="locations" class="wp-nav-icon" />
+                                <span>{{ __('common.nav.places') }}</span>
+                            </summary>
+                            <div class="wp-sidebar-accordion__panel">
+                                <a href="{{ route('customers.index') }}"
+                                   class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('customers.*') ? 'is-active' : '' }}"
+                                   @click="nav = false">
+                                    <span>{{ __('customers.title') }}</span>
+                                </a>
+                                <a href="{{ route('locations.index', ['section' => 'categories']) }}"
+                                   class="wp-nav-link wp-nav-link--sub {{ $cmCategoriesActive ? 'is-active' : '' }}"
+                                   @click="nav = false">
+                                    <span>{{ __('locations.categories.title') }}</span>
+                                </a>
+                                <a href="{{ route('locations.index') }}"
+                                   class="wp-nav-link wp-nav-link--sub {{ $cmLocationsActive ? 'is-active' : '' }}"
+                                   @click="nav = false">
+                                    <span>{{ __('locations.title') }}</span>
+                                </a>
+                                <a href="{{ route('units.index') }}"
+                                   class="wp-nav-link wp-nav-link--sub {{ $cmUnitsActive ? 'is-active' : '' }}"
+                                   @click="nav = false">
+                                    <span>{{ __('units.title') }}</span>
+                                </a>
+                            </div>
+                        </details>
+
                         <details class="wp-sidebar-accordion__group" @if($cmPeopleGroupActive) open @endif>
                             <summary class="wp-nav-link {{ $cmPeopleGroupActive ? 'is-active' : '' }}">
                                 <x-wp-icon name="team" class="wp-nav-icon" />

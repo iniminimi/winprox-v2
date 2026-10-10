@@ -28,9 +28,9 @@ generiek "lite CRM". Dat betekent:
   admin-routes en portaal-tegels zichtbaar zijn. Nieuwe features zijn voor
   Checkmate-tenants **standaard onzichtbaar** — een feature verschijnt pas na
   expliciete toevoeging aan de whitelist.
-- Whitelist admin: Dashboard, Klanten, Locaties/Units, Uitvoerders, Time
-  (aanwezigheid/uren/CIAO), Instellingen, Abonnement. Whitelist portaal: klok,
-  klantbezoek, pauze, mijn uren.
+- Whitelist admin: Dashboard, Plaatsen (Klanten, Categorieën, Locaties, Units),
+  Uitvoerders, Time (aanwezigheid/uren/CIAO), Instellingen, Abonnement.
+  Whitelist portaal: klok, klantbezoek, pauze, mijn uren.
 
 ## 3. Datamodel
 
@@ -83,23 +83,19 @@ Whitelist-schermen:
   Clock Point-QR), KPI's (nu aanwezig, bezoeken vandaag, seats, actieve klanten)
   en de laatste klantbezoeken. Geen facility-tegels, starter packs of
   meldingen-feed.
-- **Klanten** (`/klanten`) — klantrelaties; gekoppelde locaties (DDT + GPS).
-  **Locaties** (`/locations`) staat op de whitelist: zelfde Location/Unit-model
-  als Facility. Locatieformulier kan een klant koppelen.
-  **CSV/Excel-import** op `/klanten`: `name` verplicht; optioneel contact +
-  locatiekolommen; import maakt altijd een «Hele locatie»-unit. Recente imports
-  (30 dagen) zijn terug te draaien.
-  Per klant compacte maandstatistieken met doorklik naar
-  `/klanten/{customer}/statistieken` — bron
-  `SummarizeCustomerWorkStatsAction` (FEATURES.md §5g.8).
+- **Plaatsen** — zelfde accordion als Facility: **Klanten** (`/klanten`),
+  **Categorieën** (`/locations?section=categories`), **Locaties**, **Units**.
+  Locatieformulier kan een klant koppelen; categorieën zijn nodig vóór units
+  (zelfde gate als Facility). CSV/Excel-import op `/klanten` maakt altijd een
+  «Hele locatie»-unit. Per klant maandstatistieken →
+  `/klanten/{customer}/statistieken` (`SummarizeCustomerWorkStatsAction`).
 - **Uitvoerders** — menu linkt naar `/team` (teams aanmaken + uitvoerder-
   beheer wonen daar). `/workers` blijft whitelisted als alleen-lezen lijst.
 - **Time** — aanwezigheid, uren, CIAO-inzendingen.
 - **Instellingen / Abonnement** — BCE, bedrijfsgegevens, seats, Clock Point-links.
 
-Niet op de whitelist: Meldingen, Taken, Categorieën, Inspectierondes,
-Checklists, Kalender, Reserveringen, Unitmetingen, ESG, IoT, API.
-(Locaties/Units wél — zelfde Location/Unit-model als Facility.)
+Niet op de whitelist: Meldingen, Taken, Inspectierondes, Checklists, Kalender,
+Reserveringen, Unitmetingen, ESG, IoT, API.
 
 ## 6. CIAO-activatie en pending-state
 

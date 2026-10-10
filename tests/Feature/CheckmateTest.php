@@ -694,9 +694,10 @@ it('blokkeert niet-whitelist admin-routes voor checkmate-tenants', function () {
     $this->get('/time/schedule')->assertNotFound();
     $this->get('/time/absence-requests')->assertNotFound();
 
-    // Whitelist blijft bereikbaar (incl. locaties/units = gekoppelde werkplekken).
+    // Whitelist blijft bereikbaar (incl. Plaatsen: klanten/categorieën/locaties/units).
     $this->get('/klanten')->assertOk();
     $this->get('/locations')->assertOk();
+    $this->get('/locations?section=categories')->assertOk();
     $this->get('/units')->assertOk();
     $this->get('/workers')->assertOk();
     // Uitvoerder-rij linkt naar het beheer op /team (whitelisted).
@@ -707,6 +708,15 @@ it('blokkeert niet-whitelist admin-routes voor checkmate-tenants', function () {
     $this->get('/time/shifts')->assertOk();
     $this->get('/time/ciao')->assertOk();
     $this->get('/time/clock-points')->assertOk();
+
+    // Sidebar toont Plaatsen-accordion (zelfde hiërarchie als Facility).
+    $this->get('/dashboard')
+        ->assertOk()
+        ->assertSee(__('common.nav.places'), false)
+        ->assertSee(__('locations.categories.title'), false)
+        ->assertSee(__('units.title'), false)
+        ->assertSee('section=categories', false)
+        ->assertSee('href="'.url('/units'), false);
 });
 
 it('linkt op toegestane time-pagina’s nooit naar gated routes voor checkmate', function () {
