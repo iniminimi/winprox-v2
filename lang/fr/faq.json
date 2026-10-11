@@ -158,7 +158,8 @@
             "slug": "checkmate",
             "type": "text",
             "title": "Qu'est-ce que WinProx Checkmate ?",
-            "body": "Checkmate est la formule allégée pour équipes de nettoyage et de construction : les exécutants pointent sur Clock Point — via l’icône de l’écran d’accueil ou le lien d’identification, sans scan QR — et démarrent les visites clients avec un contrôle GPS à l'adresse de chantier (dans les 100 m). Pas de signalements ni de tâches — mais CIAO (ONSS). La gestion voit par client le temps travaillé et les visites (statistiques clients). Essai : 30 jours avec 25 licences pour bien tester ; ensuite 5 € par exécutant actif par mois. Pas de limites units ni documents."
+            "body": "Checkmate est la formule allégée pour équipes de nettoyage et de construction : les exécutants pointent sur Clock Point — via l’icône de l’écran d’accueil ou le lien d’identification, sans scan QR — et démarrent les visites clients avec un contrôle GPS à l'adresse de chantier (dans les 100 m). Pas de signalements ni de tâches — mais CIAO (ONSS). La gestion voit par client le temps travaillé et les visites (statistiques clients). Essai : 30 jours avec 25 licences pour bien tester ; ensuite 5 € par exécutant actif par mois. Pas de limites units ni documents.",
+            "summary": "Formule allégée nettoyage/construction : pointage sur Clock Point sans scan (icône d’accueil ou lien), visites clients GPS et CIAO (ONSS). 5 € par exécutant actif ; essai 30 jours / 25 licences."
         },
         "ddt_number": {
             "slug": "ddt_number",

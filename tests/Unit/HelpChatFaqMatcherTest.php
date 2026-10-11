@@ -86,6 +86,28 @@ it('doorzoekt de handleiding zonder config-patroon', function (): void {
         ->and($matcher->match('status', 'nl'))->toBeNull();
 });
 
+it('beantwoordt checkmate via FAQ-summary', function (): void {
+    $matcher = app(HelpChatFaqMatcher::class);
+
+    expect($matcher->match('checkmate', 'nl'))
+        ->toBe(__('faq.items.checkmate.summary'));
+});
+
+it('doorzoekt voor checkmate-tenants de checkmate-handleiding', function (): void {
+    $tenant = Tenant::factory()->create(['checkmate_mode' => true]);
+    \App\Support\Tenancy::actAs($tenant->id);
+
+    try {
+        $matcher = app(\App\Support\HelpChat\HelpChatPageHelpMatcher::class);
+
+        $answer = $matcher->searchManual('klantbezoek werkadres', 'nl');
+        expect($answer)->not->toBeNull()
+            ->and($answer)->toContain('Clock Point');
+    } finally {
+        \App\Support\Tenancy::forget();
+    }
+});
+
 it('beantwoordt pricing via FAQ met nieuwe tier-structuur', function (): void {
     $matcher = app(HelpChatFaqMatcher::class);
 

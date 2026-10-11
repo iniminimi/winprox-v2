@@ -158,7 +158,8 @@
             "slug": "checkmate",
             "type": "text",
             "title": "Che cos'è WinProx Checkmate?",
-            "body": "Checkmate è la formula essenziale per squadre di pulizia e costruzione: gli operatori timbrano su Clock Point — tramite l'icona sulla home o il link di accesso, senza scansione QR — e avviano le visite cliente con controllo GPS all'indirizzo di lavoro (entro 100 m). Niente segnalazioni o compiti — sì CIAO (ONSS). Il back office vede per cliente il tempo lavorato e le visite (statistiche clienti). Prova: 30 giorni con 25 licenze per testare bene; poi 5 € per operatore attivo al mese. Nessun limite di unit o documenti."
+            "body": "Checkmate è la formula essenziale per squadre di pulizia e costruzione: gli operatori timbrano su Clock Point — tramite l'icona sulla home o il link di accesso, senza scansione QR — e avviano le visite cliente con controllo GPS all'indirizzo di lavoro (entro 100 m). Niente segnalazioni o compiti — sì CIAO (ONSS). Il back office vede per cliente il tempo lavorato e le visite (statistiche clienti). Prova: 30 giorni con 25 licenze per testare bene; poi 5 € per operatore attivo al mese. Nessun limite di unit o documenti.",
+            "summary": "Formula essenziale pulizie/costruzioni: timbratura su Clock Point senza scansione (icona home o link di accesso), visite cliente GPS e CIAO (ONSS). 5 € per operatore attivo; prova 30 giorni / 25 licenze."
         },
         "ddt_number": {
             "slug": "ddt_number",

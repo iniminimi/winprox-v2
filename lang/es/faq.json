@@ -158,7 +158,8 @@
             "slug": "checkmate",
             "type": "text",
             "title": "¿Qué es WinProx Checkmate?",
-            "body": "Checkmate es la fórmula mínima para equipos de limpieza y construcción: los operarios fichan en Clock Point — con el icono de la pantalla de inicio o el enlace de acceso, sin escanear QR — e inician visitas a clientes con control GPS en la dirección de obra (dentro de 100 m). Sin incidencias ni tareas — sí CIAO (ONSS). El back office ve por cliente el tiempo trabajado y las visitas (estadísticas de clientes). Prueba: 30 días con 25 licencias para probar bien; después 5 € por operario activo al mes. Sin límites de units ni documentos."
+            "body": "Checkmate es la fórmula mínima para equipos de limpieza y construcción: los operarios fichan en Clock Point — con el icono de la pantalla de inicio o el enlace de acceso, sin escanear QR — e inician visitas a clientes con control GPS en la dirección de obra (dentro de 100 m). Sin incidencias ni tareas — sí CIAO (ONSS). El back office ve por cliente el tiempo trabajado y las visitas (estadísticas de clientes). Prueba: 30 días con 25 licencias para probar bien; después 5 € por operario activo al mes. Sin límites de units ni documentos.",
+            "summary": "Fórmula mínima limpieza/construcción: fichaje en Clock Point sin escanear (icono de inicio o enlace), visitas GPS a clientes y CIAO (ONSS). 5 € por operario activo; prueba 30 días / 25 licencias."
         },
         "ddt_number": {
             "slug": "ddt_number",

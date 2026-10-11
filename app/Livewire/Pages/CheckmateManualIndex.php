@@ -18,24 +18,7 @@ class CheckmateManualIndex extends Component
 {
     use HasManualLocale;
 
-    private const ADMIN_CHAPTER_KEYS = [
-        'checkmate.dashboard',
-        'checkmate.customers',
-        'checkmate.workers',
-        'checkmate.clock_points',
-        'checkmate.presence',
-        'checkmate.shifts',
-        'checkmate.ciao',
-        'checkmate.settings',
-        'checkmate.subscription',
-    ];
 
-    private const PORTAL_CHAPTER_KEYS = [
-        'checkmate.portal.signin',
-        'checkmate.portal.day',
-        'checkmate.portal.visit',
-        'checkmate.portal.hours',
-    ];
 
     public function mount(): void
     {
@@ -65,8 +48,8 @@ class CheckmateManualIndex extends Component
 
     public function render(): \Illuminate\View\View
     {
-        $adminChapters = $this->chaptersFor(self::ADMIN_CHAPTER_KEYS);
-        $portalChapters = $this->chaptersFor(self::PORTAL_CHAPTER_KEYS);
+        $adminChapters = $this->chaptersFor(ManualChapters::checkmateAdminPageHelpKeys());
+        $portalChapters = $this->chaptersFor(ManualChapters::checkmatePortalPageHelpKeys());
 
         return view('livewire.pages.manual-index', [
             'chapters' => [...$adminChapters, ...$portalChapters],

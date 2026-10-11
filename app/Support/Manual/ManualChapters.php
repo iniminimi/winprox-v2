@@ -59,12 +59,57 @@ final class ManualChapters
         'portal.teamleader.tasks',
     ];
 
+    /** @var list<string> */
+    private const CHECKMATE_ADMIN_PAGE_HELP_KEYS = [
+        'checkmate.dashboard',
+        'checkmate.customers',
+        'checkmate.workers',
+        'checkmate.clock_points',
+        'checkmate.presence',
+        'checkmate.shifts',
+        'checkmate.ciao',
+        'checkmate.settings',
+        'checkmate.subscription',
+    ];
+
+    /** @var list<string> */
+    private const CHECKMATE_PORTAL_PAGE_HELP_KEYS = [
+        'checkmate.portal.signin',
+        'checkmate.portal.day',
+        'checkmate.portal.visit',
+        'checkmate.portal.hours',
+    ];
+
     /**
      * @return list<string>
      */
     public static function pageHelpKeys(): array
     {
         return [...self::ADMIN_PAGE_HELP_KEYS, ...self::INTERNET_PORTAL_PAGE_HELP_KEYS];
+    }
+
+    /**
+     * @return list<string>
+     */
+    public static function checkmateAdminPageHelpKeys(): array
+    {
+        return self::CHECKMATE_ADMIN_PAGE_HELP_KEYS;
+    }
+
+    /**
+     * @return list<string>
+     */
+    public static function checkmatePortalPageHelpKeys(): array
+    {
+        return self::CHECKMATE_PORTAL_PAGE_HELP_KEYS;
+    }
+
+    /**
+     * @return list<string>
+     */
+    public static function checkmatePageHelpKeys(): array
+    {
+        return [...self::CHECKMATE_ADMIN_PAGE_HELP_KEYS, ...self::CHECKMATE_PORTAL_PAGE_HELP_KEYS];
     }
 
     public static function adminPageHelpKeyCount(): int

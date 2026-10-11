@@ -64,6 +64,10 @@ return [
             'body_key' => 'faq.items.unit_measurements.summary',
         ],
         [
+            'patterns' => ['checkmate', 'check mate'],
+            'body_key' => 'faq.items.checkmate.summary',
+        ],
+        [
             'patterns' => ['melding', 'issue', 'report', 'signalement', 'inciden'],
             'body_key' => 'faq.items.how_it_works.summary',
         ],

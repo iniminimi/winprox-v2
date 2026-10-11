@@ -2,8 +2,11 @@
 
 namespace App\Support\HelpChat;
 
+use App\Models\Tenant;
+use App\Support\Checkmate\CheckmateMode;
 use App\Support\Manual\ManualChapters;
 use App\Support\PageHelp;
+use App\Support\Tenancy;
 use Illuminate\Support\Str;
 
 /**
@@ -191,7 +194,14 @@ class HelpChatPageHelpMatcher
             }
         }
 
-        foreach (ManualChapters::pageHelpKeys() as $pageKey) {
+        $pageHelpKeys = ManualChapters::pageHelpKeys();
+
+        $tenantId = Tenancy::id();
+        if ($tenantId !== null && CheckmateMode::isActive(Tenant::query()->find($tenantId))) {
+            $pageHelpKeys = ManualChapters::checkmatePageHelpKeys();
+        }
+
+        foreach ($pageHelpKeys as $pageKey) {
             $help = PageHelp::for($pageKey);
             if ($help === null || $help['actions'] === []) {
                 continue;

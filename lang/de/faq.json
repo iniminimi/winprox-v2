@@ -158,7 +158,8 @@
             "slug": "checkmate",
             "type": "text",
             "title": "Was ist WinProx Checkmate?",
-            "body": "Checkmate ist die schlanke Formel für Reinigungs- und Bauteams: Ausführende stempeln auf Clock Point — über das Startbildschirm-Icon oder den Anmeldelink, ohne QR-Scan — und starten Kundenbesuche mit GPS-Prüfung an der Einsatzadresse (innerhalb 100 m). Keine Meldungen oder Aufgaben — dafür CIAO (LSS). Die Verwaltung sieht pro Kunde gearbeitete Zeit und Besuche (Kundenstatistiken). Probe: 30 Tage mit 25 Lizenzen zum gründlichen Testen; danach 5 € pro aktivem Ausführer pro Monat. Keine Unit- oder Dokumentenlimits."
+            "body": "Checkmate ist die schlanke Formel für Reinigungs- und Bauteams: Ausführende stempeln auf Clock Point — über das Startbildschirm-Icon oder den Anmeldelink, ohne QR-Scan — und starten Kundenbesuche mit GPS-Prüfung an der Einsatzadresse (innerhalb 100 m). Keine Meldungen oder Aufgaben — dafür CIAO (LSS). Die Verwaltung sieht pro Kunde gearbeitete Zeit und Besuche (Kundenstatistiken). Probe: 30 Tage mit 25 Lizenzen zum gründlichen Testen; danach 5 € pro aktivem Ausführer pro Monat. Keine Unit- oder Dokumentenlimits.",
+            "summary": "Schlanke Formel für Reinigung/Bau: Stempeln auf Clock Point ohne Scan (Startbildschirm-Icon oder Anmeldelink), GPS-Kundenbesuche und CIAO (LSS). 5 € pro aktivem Ausführer; Probe 30 Tage / 25 Lizenzen."
         },
         "ddt_number": {
             "slug": "ddt_number",
