@@ -276,7 +276,9 @@
 /* Paginatitel leesbaar op foto-achtergrond (zelfde glass als kaarten). */
 [data-theme='modern'] .wp-page-head,
 [data-theme='modern'] .wp-stack > .wp-page-head-main:not(.wp-card),
-[data-theme='modern'] .wp-main > .wp-page-head-main:not(.wp-card) {
+[data-theme='modern'] .wp-main > .wp-page-head-main:not(.wp-card),
+[data-theme='modern'] .wp-faq-wrap > .wp-page-head-main:not(.wp-card),
+[data-theme='modern'] .wp-contact-view__content > .wp-page-head-main:not(.wp-card) {
     padding: 0.85rem 1rem;
     border-radius: var(--wp-radius-lg);
     border: 1px solid var(--wp-border);
@@ -294,7 +296,9 @@
 
 [data-theme='modern'] .wp-page-head .wp-muted,
 [data-theme='modern'] .wp-stack > .wp-page-head-main:not(.wp-card) .wp-muted,
-[data-theme='modern'] .wp-main > .wp-page-head-main:not(.wp-card) .wp-muted {
+[data-theme='modern'] .wp-main > .wp-page-head-main:not(.wp-card) .wp-muted,
+[data-theme='modern'] .wp-faq-wrap > .wp-page-head-main:not(.wp-card) .wp-muted,
+[data-theme='modern'] .wp-contact-view__content > .wp-page-head-main:not(.wp-card) .wp-muted {
     color: var(--wp-text-body);
 }
 

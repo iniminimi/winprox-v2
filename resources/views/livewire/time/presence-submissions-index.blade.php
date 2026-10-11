@@ -16,7 +16,7 @@
     @enderror
 
     @unless ($complianceEnabled)
-        <p class="wp-muted">{{ __('time.ciao.compliance_off') }}</p>
+        <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('time.ciao.compliance_off') }}</p></div>
     @else
         <div class="wp-card wp-filter-panel">
             <div class="wp-filter-form">
@@ -61,7 +61,7 @@
         </div>
 
         @if ($submissions->isEmpty())
-            <p class="wp-muted">{{ __('time.ciao.empty') }}</p>
+            <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('time.ciao.empty') }}</p></div>
         @else
             @php
                 $tz = config('app.timezone');
