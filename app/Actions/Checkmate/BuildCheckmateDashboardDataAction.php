@@ -136,7 +136,10 @@ class BuildCheckmateDashboardDataAction
                     'icon' => 'qr',
                     'tone' => 'new_issues',
                     'label' => 'dashboard.checkmate.kpi.clock_point_qr',
+                    // body = locale-key voor meta-tekst; value =zelfde tekst voor
+                    // oudere Blade die nog $kpi['value'] in de action-tak las.
                     'body' => 'dashboard.checkmate.kpi.clock_point_qr_body',
+                    'value' => __('dashboard.checkmate.kpi.clock_point_qr_body'),
                     'action' => 'open_clock_point_qr',
                     'pulse' => $pulseClockPointQr,
                 ],
