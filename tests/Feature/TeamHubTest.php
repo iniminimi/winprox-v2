@@ -627,6 +627,7 @@ it('verplaatst een worker naar een ander team via de bewerk-modal', function () 
         ->call('openEditWorker', $worker->id)
         ->assertSet('addingWorkerTeamId', $teamA->id)
         ->assertSee(__('team.workers.modal.team'), false)
+        ->assertSeeHtml('value="'.$teamB->id.'"')
         ->set('addingWorkerTeamId', $teamB->id)
         ->call('saveWorker')
         ->assertHasNoErrors();

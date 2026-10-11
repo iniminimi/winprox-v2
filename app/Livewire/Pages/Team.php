@@ -781,6 +781,28 @@ class Team extends Component
             ->get();
     }
 
+    /**
+     * Actieve teams voor de worker-modal; bij bewerken komt het huidige
+     * (eventueel inactieve) team van de worker erbij zodat de select niet
+     * leeg lijkt.
+     *
+     * @return \Illuminate\Support\Collection<int, InternalTeam>
+     */
+    private function workerModalTeams()
+    {
+        $teams = $this->selectableWorkerTeams();
+
+        $currentId = $this->editingWorkerRecord()?->internal_team_id;
+        if ($currentId !== null && $teams->where('id', (int) $currentId)->isEmpty()) {
+            $current = InternalTeam::query()->find((int) $currentId);
+            if ($current !== null) {
+                $teams->push($current);
+            }
+        }
+
+        return $teams;
+    }
+
     public function updatedWorkerIsExternal(bool $value): void
     {
         if (! $value) {
@@ -1481,8 +1503,8 @@ class Team extends Component
             'teamTranslationLocales' => $teamTranslationLocales,
             'allLocations' => Location::query()->orderBy('name')->get(['id', 'name', 'address']),
             'workerDefaultUnits' => $this->showWorkerModal ? $this->availableWorkerDefaultUnits() : collect(),
-            'workerModalTeams' => ($this->showWorkerModal && $this->editingWorkerId === null)
-                ? $this->selectableWorkerTeams()
+            'workerModalTeams' => $this->showWorkerModal
+                ? $this->workerModalTeams()
                 : collect(),
             'punchClockTeams' => InternalTeam::query()
                 ->where('is_active', true)
