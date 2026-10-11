@@ -10,7 +10,9 @@ return new class extends Migration
         // DELETE geeft InnoDB-ruimte niet terug aan het OS; een rebuild wel.
         // OPTIMIZE TABLE bestaat niet op SQLite (tests) — alleen op MySQL/MariaDB.
         if (DB::getDriverName() === 'mysql') {
-            DB::unprepared('OPTIMIZE TABLE geoname_places');
+            // OPTIMIZE TABLE levert een resultaatset — select() buffert die;
+            // unprepared() laat hem open en breekt de migrations-insert (PDO 2014).
+            DB::select('OPTIMIZE TABLE geoname_places');
         }
     }
 
