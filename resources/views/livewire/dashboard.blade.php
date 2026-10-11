@@ -23,7 +23,7 @@
                 <p class="wp-text-body"><strong>{{ __('dashboard.checkmate.ciao.pending_title') }}</strong></p>
                 <p class="wp-muted">{{ __('dashboard.checkmate.ciao.pending_body') }}</p>
                 <div class="wp-cluster wp-cluster--tight">
-                    <a href="{{ route('settings.index', ['open' => 'presence']) }}" class="btn btn--ghost btn--sm">
+                    <a href="{{ route('settings.index', ['open' => 'presence']) }}#settings-presence" class="btn btn--ghost btn--sm">
                         {{ __('dashboard.checkmate.ciao.pending_cta') }}
                     </a>
                 </div>
@@ -33,7 +33,7 @@
                 <p class="wp-text-body"><strong>{{ __('dashboard.checkmate.ciao.missing_employer_title') }}</strong></p>
                 <p class="wp-muted">{{ __('dashboard.checkmate.ciao.missing_employer_body') }}</p>
                 <div class="wp-cluster wp-cluster--tight">
-                    <a href="{{ route('settings.index', ['open' => 'presence']) }}" class="btn btn--ghost btn--sm">
+                    <a href="{{ route('settings.index', ['open' => 'presence']) }}#settings-presence" class="btn btn--ghost btn--sm">
                         {{ __('dashboard.checkmate.ciao.missing_employer_cta') }}
                     </a>
                 </div>

@@ -5284,6 +5284,10 @@ svg.wp-release-worker-row__icon,
 }
 
 /* Instellingen — inklapbare rubrieken. */
+.wp-settings-section {
+    scroll-margin-top: 1rem;
+}
+
 .wp-settings-section-toggle {
     display: flex;
     align-items: center;
