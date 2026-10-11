@@ -13,16 +13,13 @@
 @endif
 
 <label class="wp-field">
-    <span class="wp-label">
-        {{ __('locations.fields.name') }}
-        <span class="wp-label-hint">({{ __('locations.fields.name_optional') }})</span>
-    </span>
+    <span class="wp-label">{{ __('locations.fields.name') }}</span>
     <input type="text" class="wp-input" wire:model="locationFormName" placeholder="{{ __('locations.fields.name_placeholder') }}" />
     @error('name') <span class="wp-error">{{ $message }}</span> @enderror
 </label>
 <p class="wp-hint">{{ __('locations.form.identity_hint') }}</p>
 
-<div class="wp-form-grid-2">
+<div class="wp-form-grid-street">
     <label class="wp-field">
         <x-wp-tooltip :text="__('locations.fields.address_paste_hint')" wrap>
             <span class="wp-label">{{ __('locations.fields.street') }}</span>
@@ -37,7 +34,12 @@
     </label>
 </div>
 
-<div class="wp-form-grid-2">
+<div class="wp-form-grid-city">
+    <label class="wp-field">
+        <span class="wp-label">{{ __('locations.fields.country_code') }}</span>
+        <input type="text" class="wp-input" wire:model="locationFormCountryCode" maxlength="2" />
+        @error('country_code') <span class="wp-error">{{ $message }}</span> @enderror
+    </label>
     <label class="wp-field">
         <span class="wp-label">{{ __('locations.fields.postal_code') }}</span>
         <input type="text" class="wp-input" wire:model="locationFormPostalCode" @paste="$wire.applyLocationAddressPaste($event.clipboardData.getData('text'))" />
@@ -49,12 +51,6 @@
         @error('city') <span class="wp-error">{{ $message }}</span> @enderror
     </label>
 </div>
-
-<label class="wp-field">
-    <span class="wp-label">{{ __('locations.fields.country_code') }}</span>
-    <input type="text" class="wp-input" wire:model="locationFormCountryCode" maxlength="2" />
-    @error('country_code') <span class="wp-error">{{ $message }}</span> @enderror
-</label>
 
 <label class="wp-field">
     <span class="wp-label">{{ __('locations.fields.notes') }}</span>

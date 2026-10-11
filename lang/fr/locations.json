@@ -89,18 +89,17 @@
     "prev": "Site précédent",
     "next": "Site suivant",
     "form": {
-        "identity_hint": "Saisissez un nom de site, ou remplissez rue, code postal et ville."
+        "identity_hint": "Le nom est obligatoire ; rue, code postal et ville sont facultatifs."
     },
     "fields": {
         "name": "Nom du site",
-        "name_optional": "facultatif",
         "name_placeholder": "p. ex. Entrepôt Sud",
         "street": "Rue",
         "house_number": "Numéro",
         "postal_code": "Code postal",
         "city": "Ville",
         "address_paste_hint": "Astuce : collez une adresse — rue, numéro, code postal et localité sont remplis automatiquement.",
-        "country_code": "Code pays ISO",
+        "country_code": "Code pays",
         "notes": "Notes internes",
         "ddt": "Déclaration de travaux (DDT)",
         "ddt_hint": "13 caractères — requis pour CIAO sur ce lieu.",
@@ -321,7 +320,8 @@
     },
     "errors": {
         "name_or_address_required": "Saisissez un nom de site, ou remplissez rue, code postal et ville.",
-        "country_code_invalid": "Saisissez un code pays ISO valide à 2 lettres.",
+        "name_required": "Le nom du site est obligatoire.",
+        "country_code_invalid": "Saisissez un code pays valide à 2 lettres.",
         "unit_limit": "La limite d'unités de votre forfait est atteinte. Passez à un abonnement supérieur pour en ajouter.",
         "location_limit": "La limite de sites de votre forfait est atteinte. Passez à un abonnement supérieur pour en ajouter.",
         "translation_import_missing": "Site introuvable ou inactif.",

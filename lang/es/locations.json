@@ -89,18 +89,17 @@
     "prev": "Ubicación anterior",
     "next": "Ubicación siguiente",
     "form": {
-        "identity_hint": "Introduzca un nombre de ubicación, o complete calle, código postal y ciudad."
+        "identity_hint": "El nombre es obligatorio; calle, código postal y ciudad son opcionales."
     },
     "fields": {
         "name": "Nombre de la ubicación",
-        "name_optional": "opcional",
         "name_placeholder": "p. ej. Almacén sur",
         "street": "Calle",
         "house_number": "Número",
         "postal_code": "Código postal",
         "city": "Ciudad",
         "address_paste_hint": "Consejo: pega una dirección — calle, número, código postal y localidad se rellenan automáticamente.",
-        "country_code": "Código de país ISO",
+        "country_code": "Código de país",
         "notes": "Notas internas",
         "ddt": "Declaración de obras (DDT)",
         "ddt_hint": "13 caracteres — obligatorio para CIAO en esta sede.",
@@ -321,7 +320,8 @@
     },
     "errors": {
         "name_or_address_required": "Introduzca un nombre de ubicación, o complete calle, código postal y ciudad.",
-        "country_code_invalid": "Introduzca un código de país ISO válido de 2 letras.",
+        "name_required": "El nombre de la ubicación es obligatorio.",
+        "country_code_invalid": "Introduzca un código de país válido de 2 letras.",
         "unit_limit": "Ha alcanzado el límite de unidades de su plan. Actualice su suscripción para añadir más unidades.",
         "location_limit": "Ha alcanzado el límite de ubicaciones de su plan. Actualice su suscripción para añadir más ubicaciones.",
         "translation_import_missing": "Ubicación no encontrada o no activa.",

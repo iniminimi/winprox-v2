@@ -89,18 +89,17 @@
     "prev": "Sede precedente",
     "next": "Sede successiva",
     "form": {
-        "identity_hint": "Inserisca un nome sede, oppure compili via, CAP e città."
+        "identity_hint": "Il nome è obbligatorio; via, CAP e città sono facoltativi."
     },
     "fields": {
         "name": "Nome sede",
-        "name_optional": "facoltativo",
         "name_placeholder": "es. Magazzino sud",
         "street": "Via",
         "house_number": "Numero civico",
         "postal_code": "CAP",
         "city": "Città",
         "address_paste_hint": "Suggerimento: incolla un indirizzo — via, numero, CAP e località vengono compilati automaticamente.",
-        "country_code": "Codice paese ISO",
+        "country_code": "Codice paese",
         "notes": "Note interne",
         "ddt": "Dichiarazione di lavori (DDT)",
         "ddt_hint": "13 caratteri — obbligatorio per CIAO in questa sede.",
@@ -321,7 +320,8 @@
     },
     "errors": {
         "name_or_address_required": "Inserisca un nome sede, oppure compili via, CAP e città.",
-        "country_code_invalid": "Inserisca un codice paese ISO a 2 lettere valido.",
+        "name_required": "Il nome sede è obbligatorio.",
+        "country_code_invalid": "Inserisci un codice paese valido di 2 lettere.",
         "unit_limit": "Ha raggiunto il limite unità del Suo piano. Aggiorni l'abbonamento per aggiungere altre unità.",
         "location_limit": "Ha raggiunto il limite sedi del Suo piano. Aggiorni l'abbonamento per aggiungere altre sedi.",
         "translation_import_missing": "Sede non trovata o non attiva.",

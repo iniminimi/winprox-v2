@@ -316,7 +316,7 @@ class Index extends Component
 
         if ($this->editingLocationId === null) {
             $this->authorize('create', Location::class);
-            $validated = StoreLocationRequest::validatePayload($payload);
+            $validated = StoreLocationRequest::validatePayload($payload, requireName: true);
             $validated['original_language'] = auth()->user()?->locale;
             try {
                 $createLocation->handle($validated, (int) auth()->user()->tenant_id, (int) auth()->id());
@@ -338,7 +338,7 @@ class Index extends Component
         } else {
             $location = Location::findOrFail($this->editingLocationId);
             $this->authorize('update', $location);
-            $validated = UpdateLocationRequest::validatePayload($payload);
+            $validated = UpdateLocationRequest::validatePayload($payload, requireName: true);
             $updateLocation->handle($location, $validated, (int) auth()->id());
             session()->flash('success', __('locations.flash.updated'));
         }

@@ -52,7 +52,7 @@ class StoreLocationRequest extends FormRequest
      * @param  array<string, mixed>  $attributes
      * @return array<string, mixed>
      */
-    public static function validatePayload(array $attributes): array
+    public static function validatePayload(array $attributes, bool $requireName = false): array
     {
         $validator = Validator::make(
             $attributes,
@@ -60,9 +60,22 @@ class StoreLocationRequest extends FormRequest
             self::messageSet(),
         );
 
-        self::applyMinimumIdentityCheck($validator);
+        if ($requireName) {
+            self::applyRequiredNameCheck($validator);
+        } else {
+            self::applyMinimumIdentityCheck($validator);
+        }
 
         return $validator->validate();
+    }
+
+    public static function applyRequiredNameCheck(IlluminateValidator $validator): void
+    {
+        $validator->after(function (IlluminateValidator $validator): void {
+            if (trim((string) ($validator->getData()['name'] ?? '')) === '') {
+                $validator->errors()->add('name', __('locations.errors.name_required'));
+            }
+        });
     }
 
     public static function applyMinimumIdentityCheck(IlluminateValidator $validator): void

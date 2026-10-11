@@ -61,6 +61,47 @@
     }
 }
 
+/* Adresregels locatieformulier: straat breed + huisnummer smal;
+   landcode + postcode smal + stad breed. */
+.wp-form-grid-street,
+.wp-form-grid-city {
+    display: grid;
+    gap: 1rem;
+    align-items: stretch;
+}
+
+.wp-form-grid-street {
+    grid-template-columns: minmax(0, 1fr) minmax(4.5rem, 7rem);
+}
+
+.wp-form-grid-city {
+    grid-template-columns: minmax(3.5rem, 5.5rem) minmax(5rem, 7.5rem) minmax(0, 1fr);
+}
+
+.wp-form-grid-street > .wp-field,
+.wp-form-grid-city > .wp-field {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.wp-form-grid-street > .wp-field > .wp-input,
+.wp-form-grid-city > .wp-field > .wp-input {
+    margin-top: auto;
+}
+
+.wp-form-grid-street > .wp-field + .wp-field,
+.wp-form-grid-city > .wp-field + .wp-field {
+    margin-top: 0;
+}
+
+@media (max-width: 29.99rem) {
+    .wp-form-grid-street,
+    .wp-form-grid-city {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Datum + halfuur-tijdselect (reserveringen); step op datetime-local is onbetrouwbaar. */
 .wp-half-hour-datetime {
     display: grid;

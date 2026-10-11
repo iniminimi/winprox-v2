@@ -89,18 +89,17 @@
     "prev": "Vorige locatie",
     "next": "Volgende locatie",
     "form": {
-        "identity_hint": "Vul een locatienaam in, of vul straat, postcode en plaats volledig in."
+        "identity_hint": "Naam is verplicht; straat, postcode en plaats zijn optioneel."
     },
     "fields": {
         "name": "Locatienaam",
-        "name_optional": "optioneel",
         "name_placeholder": "Bijv. Magazijn Zuid",
         "street": "Straat",
         "house_number": "Huisnummer",
         "postal_code": "Postcode",
         "city": "Stad",
         "address_paste_hint": "Tip: plak een adres — straat, nummer, postcode en plaats worden automatisch ingevuld.",
-        "country_code": "ISO-landcode",
+        "country_code": "Landcode",
         "notes": "Interne notities",
         "ddt": "Aangifte van werken (DDT)",
         "ddt_hint": "13 tekens — verplicht voor CIAO op deze locatie.",
@@ -321,7 +320,8 @@
     },
     "errors": {
         "name_or_address_required": "Vul een locatienaam in, of vul straat, postcode en plaats volledig in.",
-        "country_code_invalid": "Geef een geldige ISO-landcode van 2 letters op.",
+        "name_required": "Locatienaam is verplicht.",
+        "country_code_invalid": "Geef een geldige landcode van 2 letters op.",
         "unit_limit": "Je planlimiet voor units is bereikt. Upgrade je abonnement om meer units toe te voegen.",
         "location_limit": "Je planlimiet voor locaties is bereikt. Upgrade je abonnement om meer locaties toe te voegen.",
         "translation_import_missing": "Locatie niet gevonden of niet actief.",

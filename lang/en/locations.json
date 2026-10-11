@@ -89,18 +89,17 @@
     "prev": "Previous location",
     "next": "Next location",
     "form": {
-        "identity_hint": "Enter a location name, or fill in street, postal code and city."
+        "identity_hint": "Name is required; street, postal code and city are optional."
     },
     "fields": {
         "name": "Location name",
-        "name_optional": "optional",
         "name_placeholder": "e.g. South warehouse",
         "street": "Street",
         "house_number": "House number",
         "postal_code": "Postal code",
         "city": "City",
         "address_paste_hint": "Tip: paste an address — street, number, postal code and city are filled in automatically.",
-        "country_code": "ISO country code",
+        "country_code": "Country code",
         "notes": "Internal notes",
         "ddt": "Works declaration (DDT)",
         "ddt_hint": "13 characters — required for CIAO at this location.",
@@ -321,7 +320,8 @@
     },
     "errors": {
         "name_or_address_required": "Enter a location name, or fill in street, postal code and city.",
-        "country_code_invalid": "Enter a valid 2-letter ISO country code.",
+        "name_required": "Location name is required.",
+        "country_code_invalid": "Enter a valid 2-letter country code.",
         "unit_limit": "Your plan unit limit has been reached. Upgrade your subscription to add more units.",
         "location_limit": "Your plan location limit has been reached. Upgrade your subscription to add more locations.",
         "translation_import_missing": "Location not found or not active.",

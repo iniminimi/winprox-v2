@@ -318,7 +318,7 @@ class Show extends Component
     public function saveLocation(UpdateLocationAction $updateLocation): void
     {
         $this->authorize('update', $this->location);
-        $validated = UpdateLocationRequest::validatePayload($this->locationFormPayload());
+        $validated = UpdateLocationRequest::validatePayload($this->locationFormPayload(), requireName: true);
         $this->location = $updateLocation->handle($this->location, $validated, (int) auth()->id());
         $this->showLocationModal = false;
         $this->resetLocationForm();

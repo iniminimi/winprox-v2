@@ -80,7 +80,7 @@ it('weigert een locatie zonder naam en zonder volledig adres', function () {
     expect(Location::count())->toBe(0);
 });
 
-it('maakt een locatie aan met alleen straat postcode en plaats', function () {
+it('weigert een locatie zonder naam ook met volledig adres', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->create(['tenant_id' => $tenant->id]);
 
@@ -93,13 +93,9 @@ it('maakt een locatie aan met alleen straat postcode en plaats', function () {
         ->set('locationFormCity', 'Gent')
         ->set('locationFormCountryCode', '')
         ->call('save')
-        ->assertHasNoErrors();
+        ->assertHasErrors(['name']);
 
-    $location = Location::where('street', 'Industrieweg')->first();
-
-    expect($location)->not->toBeNull()
-        ->and($location->name)->toBe('Industrieweg')
-        ->and($location->country_code)->toBe('BE');
+    expect(Location::count())->toBe(0);
 });
 
 it('pulst unit-toevoegen wanneer de locatie nog geen units heeft', function () {
