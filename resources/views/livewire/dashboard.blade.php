@@ -6,6 +6,7 @@
             <div class="wp-grow wp-stack-tight">
                 <x-wp-page-head-title
                     icon="dashboard"
+                    help-page="checkmate.dashboard"
                     :title="__('dashboard.title')"
                     :subtitle="__('dashboard.checkmate.subtitle')"
                 />
