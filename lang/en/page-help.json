@@ -2108,7 +2108,7 @@
             "actions": [
                 {
                     "label": "Plan",
-                    "text": "Checkmate bills per active worker per month. You set the number of seats yourself; lowering below the number of active seats is not possible — deactivate workers first."
+                    "text": "Checkmate charges €5 per active seat (colleague or field worker) per month. During the trial you get 25 licences to test properly — no unit or document limits. After the trial you set the seat quantity yourself; you cannot go below active seats — deactivate workers first."
                 },
                 {
                     "label": "Delete data",

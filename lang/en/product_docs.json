@@ -182,7 +182,7 @@
           "You pass the hours to the social secretariat. No Dimona and no payroll calculation.",
           "Its own compact manual instead of the general WinProx manual.",
           "€5 per active worker per month; seat count adjustable.",
-          "New organisations pick At customers → Checkmate as their start path: a one-month trial plus a demo team, worker and demo customers.",
+          "New organisations pick At customers → Checkmate as their start path: a one-month trial with 25 licences plus a demo team, worker and demo customers. No unit or document limits.",
           "Per-customer monthly statistics: visits, worked time and hours per linked location — exportable as CSV or print."
         ]
       },
@@ -454,7 +454,8 @@
         "items": [
           "Checkmate is not a separate app: a plan preset with a whitelist (Customers, Locations/Units, Time, …) on the same Location/Unit model; categories stay silent (default «Customer site»); facility routes such as issues return 404.",
           "Same tenant isolation, Time infrastructure and Clock Point portal; exactly one Clock Point (Sign in) — no extras, no deactivation, no site location; locations get a default site unit for a safe Facility upgrade path.",
-          "€5 per active worker per month (per-seat via Stripe)."
+          "€5 per active worker per month (per-seat via Stripe).",
+          "Trial plan checkmate_trial: 25 seats, 30 days; afterwards €5 per active seat per month (billing_seats_qty)."
         ]
       }
     ],

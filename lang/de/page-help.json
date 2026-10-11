@@ -2108,7 +2108,7 @@
             "actions": [
                 {
                     "label": "Formel",
-                    "text": "Checkmate rechnet pro aktivem Ausführer pro Monat ab. Sie legen die Seat-Anzahl selbst fest; unter die Zahl aktiver Seats senken geht nicht — deaktivieren Sie zuerst Ausführer."
+                    "text": "Checkmate berechnet 5 € pro aktivem Seat (Kollege oder Ausführer) pro Monat. In der Probe haben Sie 25 Lizenzen zum gründlichen Testen — keine Unit- oder Dokumentenlimits. Nach der Probe stellen Sie die Seat-Anzahl selbst ein; nicht unter die aktiven Seats — deaktivieren Sie zuerst Ausführende."
                 },
                 {
                     "label": "Daten löschen",

@@ -182,7 +182,7 @@
           "De uren geeft u door aan het sociaal secretariaat. Geen Dimona en geen loonberekening.",
           "Eigen beknopte handleiding in plaats van de algemene WinProx-handleiding.",
           "5€ per actieve uitvoerder per maand; aantal seats zelf instelbaar.",
-          "Nieuwe organisaties kiezen Bij klanten → Checkmate als startpad: een maand proef plus demoteam, uitvoerder en demoklanten.",
+          "Nieuwe organisaties kiezen Bij klanten → Checkmate als startpad: een maand proef met 25 licenties plus demoteam, uitvoerder en demoklanten. Geen units- of documentenlimieten.",
           "Per klant maandstatistieken: bezoeken, gewerkte tijd en uren per gekoppelde locatie — exporteerbaar als CSV of print."
         ]
       },
@@ -454,7 +454,8 @@
         "items": [
           "Checkmate is geen aparte app: plan-preset met whitelist (Klanten, Locaties/Units, Time, …) op hetzelfde Location/Unit-model; categorieën blijven stil (default «Klantlocatie»); facility-routes zoals meldingen geven 404.",
           "Zelfde tenant-isolatie, Time-infrastructuur en Clock Point-portaal; precies één Clock Point («Aanmelden») — geen extra, geen deactiveren, geen vestigingslocatie; locaties krijgen standaard een site-unit voor een veilig Facility-upgrade-pad.",
-          "€5 per actieve uitvoerder per maand (per-seat via Stripe)."
+          "€5 per actieve uitvoerder per maand (per-seat via Stripe).",
+          "Proefplan checkmate_trial: 25 seats, 30 dagen; daarna €5 per actieve seat per maand (billing_seats_qty)."
         ]
       }
     ],

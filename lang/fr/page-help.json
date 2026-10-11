@@ -2116,7 +2116,7 @@
             "actions": [
                 {
                     "label": "Formule",
-                    "text": "Checkmate facture par exécutant actif par mois. Vous définissez vous-même le nombre de sièges ; descendre sous le nombre de sièges actifs n'est pas possible — désactivez d'abord des exécutants."
+                    "text": "Checkmate facture 5 € par siège actif (collègue ou exécutant) par mois. Pendant l'essai vous avez 25 licences pour bien tester — pas de limites units ni documents. Après l'essai vous réglez le nombre de sièges ; pas en dessous des sièges actifs — désactivez d'abord des exécutants."
                 },
                 {
                     "label": "Effacer les données",

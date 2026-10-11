@@ -2108,7 +2108,7 @@
             "actions": [
                 {
                     "label": "Fórmula",
-                    "text": "Checkmate factura por operario activo al mes. Tú mismo defines el número de plazas; bajar por debajo del número de plazas activas no es posible — desactiva primero operarios."
+                    "text": "Checkmate cobra 5 € por plaza activa (compañero u operario) al mes. En la prueba tienes 25 licencias para probar bien — sin límites de units ni documentos. Tras la prueba configuras el número de plazas; no por debajo de las plazas activas — desactiva primero operarios."
                 },
                 {
                     "label": "Borrar datos",

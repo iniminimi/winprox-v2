@@ -2108,7 +2108,7 @@
             "actions": [
                 {
                     "label": "Formule",
-                    "text": "Checkmate rekent per actieve uitvoerder per maand. Je stelt het aantal seats zelf in; verlagen kan niet onder het aantal actieve seats — deactiveer dan eerst uitvoerders."
+                    "text": "Checkmate rekent €5 per actieve seat (collega of uitvoerder) per maand. Tijdens de proef heb je 25 licenties om goed te testen — geen units- of documentenlimieten. Na de proef stel je het aantal seats zelf in; verlagen kan niet onder het aantal actieve seats — deactiveer dan eerst uitvoerders."
                 },
                 {
                     "label": "Gegevens wissen",

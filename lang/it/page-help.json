@@ -2108,7 +2108,7 @@
             "actions": [
                 {
                     "label": "Formula",
-                    "text": "Checkmate fattura per operatore attivo al mese. Il numero di seat lo definisci tu; scendere sotto il numero di seat attivi non è possibile — disattiva prima degli operatori."
+                    "text": "Checkmate costa 5 € per posto attivo (collega o operatore) al mese. Nella prova hai 25 licenze per testare bene — nessun limite di unit o documenti. Dopo la prova imposti il numero di posti; non sotto i posti attivi — disattiva prima gli operatori."
                 },
                 {
                     "label": "Cancella dati",

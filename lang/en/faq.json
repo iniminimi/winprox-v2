@@ -162,7 +162,7 @@
             "slug": "checkmate",
             "type": "text",
             "title": "What is WinProx Checkmate?",
-            "body": "Checkmate is the stripped-down plan for cleaning and construction crews: workers clock in and out via the Clock Point QR and start customer visits with a GPS check at the work address (within 100 m). No issues or tasks — but CIAO (RSZ) on request. €5 per worker per month."
+            "body": "Checkmate is the stripped-down plan for cleaning and construction crews: workers clock in and out via the Clock Point QR and start customer visits with a GPS check at the work address (within 100 m). No issues or tasks — but CIAO (NSSO). Trial: 30 days with 25 licences so you can test properly; afterwards €5 per active worker per month. No unit or document limits."
         },
         "ddt_number": {
             "slug": "ddt_number",

@@ -182,7 +182,7 @@
           "Passate le ore al segretariato sociale. Niente Dimona e niente calcolo delle paghe.",
           "Un proprio manuale compatto invece del manuale WinProx generale.",
           "5 € per operatore attivo al mese; posti regolabili.",
-          "Le nuove organizzazioni scelgono Presso clienti → Checkmate come percorso iniziale: un mese di prova più team demo, operatore e clienti demo.",
+          "Le nuove organizzazioni scelgono Presso clienti → Checkmate come percorso iniziale: un mese di prova con 25 licenze più team demo, operatore e clienti demo. Nessun limite di unit o documenti.",
           "Statistiche mensili per cliente: visite, tempo lavorato e ore per sede collegata — esportabili come CSV o stampa."
         ]
       },
@@ -454,7 +454,8 @@
         "items": [
           "Checkmate non è un'app separata: preset di piano con whitelist (Clienti, Sedi/Units, Time, …) sullo stesso modello Location/Unit; le categorie restano silenziose (default «Sede cliente»); le rotte facility come segnalazioni restituiscono 404.",
           "Stessa isolazione dei tenant, infrastruttura Time e portale Clock Point; esattamente un Clock Point (Accedi) — niente extra, niente disattivazione, niente sede; le sedi ricevono un’unità site di default per un percorso di upgrade Facility sicuro.",
-          "5 € per esecutore attivo al mese (per posto via Stripe)."
+          "5 € per esecutore attivo al mese (per posto via Stripe).",
+          "Piano prova checkmate_trial: 25 posti, 30 giorni; poi 5 € per posto attivo al mese (billing_seats_qty)."
         ]
       }
     ],
