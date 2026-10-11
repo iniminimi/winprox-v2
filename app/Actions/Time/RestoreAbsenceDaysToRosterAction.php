@@ -6,7 +6,6 @@ use App\Enums\PlannedShiftStatus;
 use App\Enums\ShiftTypeKind;
 use App\Models\AbsenceRequest;
 use App\Models\PlannedShift;
-use App\Models\ShiftType;
 use App\Models\Tenant;
 use App\Support\Time\TimeModuleAccess;
 use Illuminate\Support\Facades\DB;
@@ -21,12 +20,7 @@ class RestoreAbsenceDaysToRosterAction
         $to = $request->date_to->toDateString();
         $snapshot = is_array($request->replaced_shifts) ? $request->replaced_shifts : [];
 
-        $types = ShiftType::query()
-            ->where('tenant_id', $tenant->id)
-            ->get()
-            ->keyBy('code');
-
-        DB::transaction(function () use ($tenant, $request, $from, $to, $snapshot, $types): void {
+        DB::transaction(function () use ($tenant, $request, $from, $to, $snapshot): void {
             PlannedShift::query()
                 ->where('tenant_id', $tenant->id)
                 ->where('worker_id', $request->worker_id)
@@ -39,8 +33,6 @@ class RestoreAbsenceDaysToRosterAction
                     continue;
                 }
 
-                $code = is_string($row['code'] ?? null) ? $row['code'] : null;
-                $type = $code !== null && $code !== '' ? $types->get($code) : null;
                 $kind = ShiftTypeKind::tryFrom((string) ($row['kind'] ?? '')) ?? ShiftTypeKind::Work;
                 $status = PlannedShiftStatus::tryFrom((string) ($row['status'] ?? ''))
                     ?? PlannedShiftStatus::Published;
@@ -49,15 +41,16 @@ class RestoreAbsenceDaysToRosterAction
                     'tenant_id' => $tenant->id,
                     'worker_id' => $request->worker_id,
                     'work_date' => $row['date'],
-                    'shift_type_id' => $type?->id,
+                    'shift_type_id' => $row['shift_type_id'] ?? null,
                     'kind' => $kind,
-                    'unit_id' => null,
+                    'unit_id' => $row['unit_id'] ?? null,
                     'unit_code' => $row['unit_code'] ?? null,
                     'unit_name' => $row['unit_name'] ?? null,
-                    'location_id' => null,
+                    'location_id' => $row['location_id'] ?? null,
                     'start_time' => $row['start'] ?? null,
                     'end_time' => $row['end'] ?? null,
-                    'break_minutes' => $type?->break_minutes ?? 0,
+                    'break_minutes' => (int) ($row['break_minutes'] ?? 0),
+                    'description' => $row['description'] ?? null,
                     'status' => $status,
                 ]);
             }

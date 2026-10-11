@@ -147,17 +147,36 @@ it('trekt een eigen open aanvraag in', function () {
 
 it('zet het rooster terug bij intrekken van goedgekeurd verlof', function () {
     [$tenant, $admin, , $worker] = absenceTenant();
+    $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = \App\Models\Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Groep 1',
+        'roster_code' => 'G1',
+    ]);
+    $workType = \App\Models\ShiftType::factory()->create([
+        'tenant_id' => $tenant->id,
+        'kind' => ShiftTypeKind::Work,
+        'start_time' => '09:00',
+        'end_time' => '17:00',
+        'break_minutes' => 45,
+        'is_active' => true,
+    ]);
     PlannedShift::query()->create([
         'tenant_id' => $tenant->id,
         'worker_id' => $worker->id,
         'work_date' => '2026-09-23',
         'status' => PlannedShiftStatus::Published,
         'kind' => ShiftTypeKind::Work,
+        'shift_type_id' => $workType->id,
         'start_time' => '09:00',
         'end_time' => '17:00',
-        'break_minutes' => 0,
+        'break_minutes' => 45,
+        'unit_id' => $unit->id,
         'unit_code' => 'G1',
         'unit_name' => 'Groep 1',
+        'location_id' => $location->id,
+        'description' => 'Vergeet niet de sleutel mee te nemen',
     ]);
     $request = app(RequestAbsenceAction::class)->handle(
         $tenant,
@@ -180,10 +199,18 @@ it('zet het rooster terug bij intrekken van goedgekeurd verlof', function () {
         ->whereDate('work_date', '2026-09-23')
         ->first();
 
+    // Volledige snapshot-restore: elk veld van het oorspronkelijke blok.
     expect($restored)->not->toBeNull()
         ->and($restored->kind)->toBe(ShiftTypeKind::Work)
+        ->and((int) $restored->shift_type_id)->toBe((int) $workType->id)
         ->and($restored->start_time)->toBe('09:00')
-        ->and($restored->unit_code)->toBe('G1');
+        ->and($restored->end_time)->toBe('17:00')
+        ->and((int) $restored->break_minutes)->toBe(45)
+        ->and((int) $restored->unit_id)->toBe((int) $unit->id)
+        ->and($restored->unit_code)->toBe('G1')
+        ->and((int) $restored->location_id)->toBe((int) $location->id)
+        ->and($restored->description)->toBe('Vergeet niet de sleutel mee te nemen')
+        ->and($restored->status)->toBe(PlannedShiftStatus::Published);
 });
 
 it('weigert intrekken van al begonnen goedgekeurd verlof', function () {

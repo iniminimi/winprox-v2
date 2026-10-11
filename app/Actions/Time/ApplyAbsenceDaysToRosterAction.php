@@ -23,8 +23,13 @@ class ApplyAbsenceDaysToRosterAction
      *     label: ?string,
      *     start: ?string,
      *     end: ?string,
+     *     shift_type_id: ?int,
+     *     unit_id: ?int,
      *     unit_code: ?string,
      *     unit_name: ?string,
+     *     location_id: ?int,
+     *     break_minutes: int,
+     *     description: ?string,
      *     status: string
      * }>
      */
@@ -66,8 +71,13 @@ class ApplyAbsenceDaysToRosterAction
                     'label' => $shift->shiftType?->label,
                     'start' => $shift->start_time,
                     'end' => $shift->end_time,
+                    'shift_type_id' => $shift->shift_type_id !== null ? (int) $shift->shift_type_id : null,
+                    'unit_id' => $shift->unit_id !== null ? (int) $shift->unit_id : null,
                     'unit_code' => $shift->unit_code,
                     'unit_name' => $shift->unit_name,
+                    'location_id' => $shift->location_id !== null ? (int) $shift->location_id : null,
+                    'break_minutes' => (int) $shift->break_minutes,
+                    'description' => $shift->description,
                     'status' => $shift->status->value,
                 ];
             }
