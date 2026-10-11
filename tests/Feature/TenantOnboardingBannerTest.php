@@ -27,15 +27,15 @@ function setupOnboardingAdmin(): array
     return [$tenant, $admin];
 }
 
-it('toont teams-onboarding met pulserende knop op het dashboard zonder teams', function () {
+it('toont het starter-pack-aanbod op het dashboard bij een lege tenant', function () {
     [, $admin] = setupOnboardingAdmin();
 
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
         ->assertSee(__('dashboard.welcome'))
         ->assertSee(__('dashboard.starter_pack.offer_title'))
-        ->assertSee(__('dashboard.starter_pack.choose_type'))
-        ->assertSee(__('starter_pack.types.own_sites'))
+        ->assertSee(__('dashboard.starter_pack.choose_intent'))
+        ->assertSee(__('starter_pack.intents.own_sites'))
         ->assertSee(__('dashboard.starter_pack.create'))
         ->assertDontSee(__('dashboard.onboarding.teams.title'))
         ->assertDontSee(__('manual.getting_started.label'))

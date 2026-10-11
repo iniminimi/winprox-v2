@@ -71,7 +71,6 @@
     "offer_title": "Would you like to see how WinProx works first?",
     "intro_detail": "You get a sample with teams, categories, a location and a few units.",
     "issues_note": "Once a unit has issues, it can only be deactivated (not deleted). The starter template then remains.",
-    "choose_type": "What do you want to use WinProx for?",
     "choose_size": "How large is your organisation?",
     "sizes": {
       "small": "1–5",

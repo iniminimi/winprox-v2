@@ -71,7 +71,6 @@
     "offer_title": "Voulez-vous d’abord voir comment WinProx fonctionne ?",
     "intro_detail": "Vous obtenez un exemple avec des équipes, des catégories, un lieu et quelques units.",
     "issues_note": "Dès qu’un unit a des signalements, il ne peut plus qu’être désactivé (pas supprimé). Le modèle de départ reste alors en place.",
-    "choose_type": "À quoi voulez-vous utiliser WinProx ?",
     "choose_size": "Quelle est la taille de votre organisation ?",
     "sizes": {
       "small": "1–5",
