@@ -213,6 +213,53 @@ it('zet het rooster terug bij intrekken van goedgekeurd verlof', function () {
         ->and($restored->status)->toBe(PlannedShiftStatus::Published);
 });
 
+it('keurt een aanvraag goed waarvan de range deels in het verleden ligt', function () {
+    [$tenant, $admin, , $worker] = absenceTenant();
+    PlannedShift::query()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-09-23',
+        'status' => PlannedShiftStatus::Published,
+        'kind' => ShiftTypeKind::Work,
+        'start_time' => '09:00',
+        'end_time' => '17:00',
+        'break_minutes' => 0,
+    ]);
+
+    $request = app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Leave, '2026-09-23', '2026-09-25'),
+    );
+
+    // Tussen aanvraag en beslissing zijn 23 en 24 september verstreken;
+    // de geautoriseerde afwezigheidsflow schrijft de volledige range.
+    Carbon::setTestNow(Carbon::parse('2026-09-25 10:00:00'));
+
+    $decided = app(DecideAbsenceRequestAction::class)->handle(
+        $tenant,
+        $request,
+        new DecideAbsenceRequestData(true, ''),
+        $admin,
+    );
+
+    expect($decided->status)->toBe(AbsenceRequestStatus::Approved)
+        ->and($decided->replaced_shifts)->toHaveCount(1)
+        ->and($decided->replaced_shifts[0]['date'])->toBe('2026-09-23');
+
+    $rows = PlannedShift::query()
+        ->where('worker_id', $worker->id)
+        ->whereDate('work_date', '>=', '2026-09-23')
+        ->whereDate('work_date', '<=', '2026-09-25')
+        ->orderBy('work_date')
+        ->get();
+
+    expect($rows)->toHaveCount(3);
+    foreach ($rows as $row) {
+        expect($row->kind)->toBe(ShiftTypeKind::Leave);
+    }
+});
+
 it('weigert intrekken van al begonnen goedgekeurd verlof', function () {
     [$tenant, $admin, , $worker] = absenceTenant();
     $request = app(RequestAbsenceAction::class)->handle(
