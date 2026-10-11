@@ -98,9 +98,7 @@
                             </span>
                             <div class="wp-kpi-main">
                                 <p class="wp-kpi-kicker">{{ __($kpi['label']) }}</p>
-                                <p class="wp-kpi-stats">
-                                    <span class="wp-kpi-value wp-kpi-value--phrase">{{ $kpi['value'] }}</span>
-                                </p>
+                                <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ __($kpi['body']) }}</p>
                             </div>
                         </div>
                     </button>

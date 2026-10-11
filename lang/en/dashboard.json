@@ -177,7 +177,7 @@
       "customers": "Active customers",
       "workers": "Workers",
       "clock_point_qr": "Clock Point QR",
-      "clock_point_qr_value": "Email / print"
+      "clock_point_qr_body": "Let your workers get started with the QR code."
     },
     "recent": {
       "title": "Recent activity",

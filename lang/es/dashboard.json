@@ -177,7 +177,7 @@
       "customers": "Clientes activos",
       "workers": "Operarios",
       "clock_point_qr": "QR del Clock Point",
-      "clock_point_qr_value": "Correo / imprimir"
+      "clock_point_qr_body": "Deje que sus operarios empiecen con el código QR."
     },
     "recent": {
       "title": "Última actividad",

@@ -136,7 +136,7 @@ class BuildCheckmateDashboardDataAction
                     'icon' => 'qr',
                     'tone' => 'new_issues',
                     'label' => 'dashboard.checkmate.kpi.clock_point_qr',
-                    'value' => __('dashboard.checkmate.kpi.clock_point_qr_value'),
+                    'body' => 'dashboard.checkmate.kpi.clock_point_qr_body',
                     'action' => 'open_clock_point_qr',
                     'pulse' => $pulseClockPointQr,
                 ],

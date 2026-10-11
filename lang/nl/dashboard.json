@@ -177,7 +177,7 @@
       "customers": "Actieve klanten",
       "workers": "Uitvoerders",
       "clock_point_qr": "Clock Point QR",
-      "clock_point_qr_value": "Mail / print"
+      "clock_point_qr_body": "Laat uw werknemers beginnen met de QR-code."
     },
     "recent": {
       "title": "Laatste activiteit",

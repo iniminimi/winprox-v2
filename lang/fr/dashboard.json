@@ -177,7 +177,7 @@
       "customers": "Clients actifs",
       "workers": "Exécutants",
       "clock_point_qr": "QR Clock Point",
-      "clock_point_qr_value": "E-mail / imprimer"
+      "clock_point_qr_body": "Faites démarrer vos exécutants avec le code QR."
     },
     "recent": {
       "title": "Dernière activité",

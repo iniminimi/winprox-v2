@@ -1116,6 +1116,7 @@ it('opent de Clock Point-QR-popup vanaf de KPI-tegel met pulse tot de eerste die
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
         ->assertSee(__('dashboard.checkmate.kpi.clock_point_qr'), false)
+        ->assertSee(__('dashboard.checkmate.kpi.clock_point_qr_body'), false)
         ->assertSee(route('time.clock-points.index'), false)
         ->assertSee('wp-btn--prio-pulse', false)
         ->assertSee('wire:click="openCheckmateClockPointQr"', false)
