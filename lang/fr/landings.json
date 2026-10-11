@@ -843,7 +843,7 @@
         "start": {
             "title": "Démarrer avec Checkmate",
             "lead": "Créez un compte, encodez votre numéro d'entreprise (BCE) et demandez le périmètre CIAO. Nous confirmons la liaison — à partir de là, chaque registration part en temps réel vers l'ONSS.",
-            "trial": "Vous préférez d'abord tester ? Demandez une place d'essai via info@winprox.app — 3 sièges, 30 jours."
+            "trial": "Vous préférez d'abord tester ? Demandez une place d'essai via info@winprox.app — 25 sièges, 30 jours."
         },
         "close": {
             "title": "Prêt pour une présence correcte ?",
@@ -986,7 +986,7 @@
         "start": {
             "title": "Démarrer avec la pointeuse",
             "lead": "Créez un compte, ajoutez un Clock Point et placez l’écran ou un code QR sur votre site.",
-            "trial": "Essai : 30 jours, 3 sièges, après votre demande via info@winprox.app."
+            "trial": "Essai : 30 jours, 25 sièges, après votre demande via info@winprox.app."
         },
         "close": {
             "title": "Prêt à pointer plus simplement ?",

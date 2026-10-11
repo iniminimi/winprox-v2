@@ -543,7 +543,7 @@ it('houdt checkmate-entitlements bij her-toepassing tijdens de proef', function 
     $tenant->refresh();
     expect($tenant->checkmateMode())->toBeTrue()
         ->and($tenant->hasTimeModule())->toBeTrue()
-        ->and($tenant->maxSeatsLimit())->toBe(3);
+        ->and($tenant->maxSeatsLimit())->toBe(25);
 });
 
 it('verwijdert checkmate-demodata maar bewaart klanten met werkadres', function () {

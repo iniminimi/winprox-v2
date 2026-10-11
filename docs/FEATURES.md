@@ -1303,6 +1303,8 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
   Time + GPS-klantbezoeken (blokkerende straal, default 100 m) + `customers_on_location`.
   Locaties krijgen «Hele locatie»-units (upgrade naar Facility zonder data-kloof).
   **5€ per actieve uitvoerder per maand**; seats via `billing_seats_qty`.
+  Proef (`checkmate_trial`): **25 seats**, 30 dagen — Abonnement toont Checkmate-copy
+  (geen Facility-units/documenten).
   `checkmate_mode` whitelist: Dashboard, Plaatsen (Klanten/Locaties; Units niet
   in menu), Uitvoerders, Time, Instellingen, Abonnement. Categorieën stil
   (default «Klantlocatie»). Locatie-detail zonder units-lijst,

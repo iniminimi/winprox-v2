@@ -843,7 +843,7 @@
         "start": {
             "title": "Mit Checkmate starten",
             "lead": "Konto anlegen, Unternehmensnummer (KBO) eintragen und den CIAO-Scope anfragen. Wir bestätigen die Verknüpfung — ab dann geht jede Registrierung in Echtzeit an die LSS.",
-            "trial": "Lieber erst testen? Fragen Sie einen Probesitz über info@winprox.app an — 3 Seats, 30 Tage."
+            "trial": "Lieber erst testen? Fragen Sie einen Probesitz über info@winprox.app an — 25 Seats, 30 Tage."
         },
         "close": {
             "title": "Bereit für korrekte Anwesenheit?",
@@ -986,7 +986,7 @@
         "start": {
             "title": "Mit der Stempeluhr starten",
             "lead": "Konto anlegen, Clock Point anlegen und den Uhrbildschirm oder einen QR-Code vor Ort platzieren.",
-            "trial": "Test: 30 Tage, 3 Plätze, nach Ihrer Anfrage über info@winprox.app."
+            "trial": "Test: 30 Tage, 25 Plätze, nach Ihrer Anfrage über info@winprox.app."
         },
         "close": {
             "title": "Bereit für einfacheres Stempeln?",

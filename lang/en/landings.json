@@ -843,7 +843,7 @@
         "start": {
             "title": "Getting started with Checkmate",
             "lead": "Create an account, enter your enterprise number (CBE) and request the CIAO scope. We confirm the link — from then on every registration is sent to the RSZ in real time.",
-            "trial": "Prefer to try first? Request a trial seat via info@winprox.app — 3 seats, 30 days."
+            "trial": "Prefer to try first? Request a trial seat via info@winprox.app — 25 seats, 30 days."
         },
         "close": {
             "title": "Ready for correct presence registration?",
@@ -986,7 +986,7 @@
         "start": {
             "title": "Getting started with the time clock",
             "lead": "Create an account, add a Clock Point and place the clock screen or a QR code on your site.",
-            "trial": "Trial: 30 days, 3 seats, after you request it via info@winprox.app."
+            "trial": "Trial: 30 days, 25 seats, after you request it via info@winprox.app."
         },
         "close": {
             "title": "Ready for simpler clocking?",

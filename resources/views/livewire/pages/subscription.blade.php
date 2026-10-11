@@ -3,6 +3,7 @@
     $allowSelfActivation = (bool) config('billing.allow_tenant_self_activation', false);
     $showManageActions = ($canManage ?? false) && ! $publicMode;
     $showPlanActivation = $showManageActions && $allowSelfActivation;
+    $checkmateMode = ! $publicMode && ($tenant?->checkmateMode() ?? false);
 @endphp
 
 <div class="wp-stack" data-manual-capture="subscription">
@@ -19,7 +20,7 @@
                     icon="subscription"
                     :title="__('subscription.title')"
                     help-page="subscription"
-                    :subtitle="$billingStatus === 'paid' ? null : __('subscription.subtitle')"
+                    :subtitle="$billingStatus === 'paid' ? null : __($checkmateMode ? 'subscription.checkmate_page.subtitle' : 'subscription.subtitle')"
                 />
             @endif
         </div>
@@ -100,7 +101,7 @@
                     @endif
                 </ul>
                 @if (! in_array($billingStatus, ['paid', 'grace'], true))
-                    <p class="wp-muted">{{ __('subscription.pricing_intro') }}</p>
+                    <p class="wp-muted">{{ __($checkmateMode ? 'subscription.checkmate_page.pricing_intro' : 'subscription.pricing_intro') }}</p>
                 @endif
             </div>
 
@@ -289,17 +290,27 @@
         </div>
 
         <div class="wp-billing-plan-details wp-stack-tight">
-            <p class="wp-muted">{{ __('subscription.plans_intro') }}</p>
+            <p class="wp-muted">{{ __($checkmateMode ? 'subscription.checkmate_page.plans_intro' : 'subscription.plans_intro') }}</p>
             <p class="wp-muted">{{ __('subscription.payment_notice') }}</p>
             <p class="wp-muted">{{ __('subscription.prices_excl_vat') }}</p>
-            <p class="wp-muted">{{ __('subscription.clock_rent_note', ['price' => config('marketing.clock_rent_monthly_eur')]) }}</p>
-            <h3 class="wp-subhead">{{ __('subscription.glossary.heading') }}</h3>
-            <ul class="wp-billing-status-list">
-                <li>{{ __('subscription.glossary.unit') }}</li>
-                <li>{{ __('subscription.glossary.document') }}</li>
-                <li>{{ __('subscription.glossary.seat') }}</li>
-                <li>{{ __('subscription.glossary.photo') }}</li>
-            </ul>
+            @unless ($checkmateMode)
+                <p class="wp-muted">{{ __('subscription.clock_rent_note', ['price' => config('marketing.clock_rent_monthly_eur')]) }}</p>
+            @endunless
+            @if ($checkmateMode)
+                <h3 class="wp-subhead">{{ __('subscription.checkmate_page.glossary.heading') }}</h3>
+                <ul class="wp-billing-status-list">
+                    <li>{{ __('subscription.checkmate_page.glossary.seat') }}</li>
+                    <li>{{ __('subscription.checkmate_page.glossary.billing') }}</li>
+                </ul>
+            @else
+                <h3 class="wp-subhead">{{ __('subscription.glossary.heading') }}</h3>
+                <ul class="wp-billing-status-list">
+                    <li>{{ __('subscription.glossary.unit') }}</li>
+                    <li>{{ __('subscription.glossary.document') }}</li>
+                    <li>{{ __('subscription.glossary.seat') }}</li>
+                    <li>{{ __('subscription.glossary.photo') }}</li>
+                </ul>
+            @endif
 
             @if ($publicMode)
                 <div class="wp-billing-comparison wp-stack-tight">

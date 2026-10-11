@@ -138,9 +138,10 @@ Reserveringen, Unitmetingen, ESG, IoT, API.
   `includes_facility = false`, `time_module = true`, `checkmate_mode = true`,
   `self_activate = true`, `public_catalog = true`, `subscription_period_days = 30`.
   De tenant kiest het plan dus zélf op Abonnement (en het staat op `/pricing`).
-  Plan `checkmate_trial` met zelfde preset + beperkte seats (bv. 3, 30 dagen):
-  `platform_assignable = true` — enkel toewijsbaar door een superuser via
-  Platform → Organisaties, niet zichtbaar in de catalogus.
+  Plan `checkmate_trial` met zelfde preset + **25 seats** (30 dagen) om goed te
+  kunnen testen: `platform_assignable = true` — enkel toewijsbaar door een
+  superuser via Platform → Organisaties, niet zichtbaar in de catalogus.
+  Abonnementspagina toont Checkmate-copy (geen Facility units/documenten).
 - **Eén nieuwe kolom**: `tenants.billing_seats_qty` (nullable → plan-default).
   `seats_limit` leest uit qty indien gezet. Bestaande seat-telling
   (`currentSeatsCount()`: collega's + uitvoerders) blijft de licentie-basis.

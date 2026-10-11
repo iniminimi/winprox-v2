@@ -1064,7 +1064,7 @@ it('laat een superuser checkmate_trial toewijzen via Platform', function () {
 
     expect($fresh->billing_plan)->toBe('checkmate_trial')
         ->and($fresh->checkmateMode())->toBeTrue()
-        ->and($fresh->maxSeatsLimit())->toBe(3);
+        ->and($fresh->maxSeatsLimit())->toBe(25);
 });
 
 it('verbergt checkmate_trial uit de publieke catalogus maar niet uit Platform', function () {
@@ -1075,6 +1075,26 @@ it('verbergt checkmate_trial uit de publieke catalogus maar niet uit Platform', 
     expect(BillingCatalogViewData::platformPlanKeys())
         ->toContain('checkmate')
         ->toContain('checkmate_trial');
+});
+
+it('toont Checkmate-abonnementscopy en 25 proef-seats i.p.v. Facility-limieten', function () {
+    $tenant = checkmateTenant([
+        'billing_plan' => null,
+        'billing_active_until' => null,
+        'trial_ends_at' => now()->addDays(29),
+    ]);
+    $admin = User::factory()->admin()->for($tenant)->create();
+
+    expect($tenant->maxSeatsLimit())->toBe(25);
+
+    $this->actingAs($admin)
+        ->get(route('subscription.index'))
+        ->assertOk()
+        ->assertSee(__('subscription.checkmate_page.pricing_intro'), false)
+        ->assertSee(__('subscription.checkmate_page.subtitle'), false)
+        ->assertSee(__('subscription.checkmate_page.glossary.heading'), false)
+        ->assertDontSee(__('subscription.pricing_intro'), false)
+        ->assertDontSee(__('subscription.glossary.unit'), false);
 });
 
 it('toont het checkmate-dashboard met veldwerk-tegels en zonder facility-links', function () {

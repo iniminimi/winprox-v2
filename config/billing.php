@@ -226,11 +226,11 @@ return [
                 'public_catalog'         => true,
             ],
 
-            // Checkmate-proef — enkel platform-assignable.
+            // Checkmate-proef — enkel platform-assignable; 25 seats om goed te testen.
             'checkmate_trial' => [
                 'label_key'           => 'subscription.plans.checkmate_trial.name',
                 'platform_assignable' => true,
-            ] + $checkmatePreset(3, false),
+            ] + $checkmatePreset(25, false),
         ],
     ),
 ];
