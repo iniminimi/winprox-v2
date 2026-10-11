@@ -264,7 +264,6 @@
                 "heading": "E-mail",
                 "hint": "Invia il link di accesso. Fa accedere senza timbrare l'entrata. Su una timbratrice fissa l'entrata richiede la scansione dell'adesivo o dello schermo.",
                 "label": "Indirizzo e-mail",
-                "placeholder": "nome@azienda.it",
                 "send": "Invia",
                 "sent": "Link di accesso inviato.",
                 "inactive": "Questo clock point è inattivo. Attivalo prima.",

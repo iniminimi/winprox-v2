@@ -264,7 +264,6 @@
                 "heading": "Correo",
                 "hint": "Envíe el enlace de acceso. Identifica sin fichar la entrada. En un reloj fijo, fichar la entrada exige escanear la pegatina o la pantalla.",
                 "label": "Correo electrónico",
-                "placeholder": "nombre@empresa.es",
                 "send": "Enviar",
                 "sent": "Enlace de acceso enviado.",
                 "inactive": "Este clock point está inactivo. Actívelo primero.",

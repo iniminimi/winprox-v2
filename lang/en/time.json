@@ -264,7 +264,6 @@
                 "heading": "Email",
                 "hint": "Send the sign-in link. It signs the worker in without clocking in. On a fixed clock, clock-in needs a scan of the sticker or the clock screen.",
                 "label": "Email address",
-                "placeholder": "name@company.com",
                 "send": "Send",
                 "sent": "Sign-in link sent.",
                 "inactive": "This clock point is inactive. Activate it first.",

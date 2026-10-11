@@ -209,7 +209,6 @@
                         <div class="wp-flash wp-flash--success">{{ $qrMailFlash }}</div>
                     @endif
                     <div class="wp-field">
-                        <label class="wp-label" for="clock-point-qr-mail-email">{{ __('time.clock_points.qr.email.label') }}</label>
                         <div class="wp-cluster wp-cluster--wrap">
                             <input
                                 id="clock-point-qr-mail-email"
@@ -217,7 +216,8 @@
                                 class="wp-input"
                                 wire:model="qrMailEmail"
                                 autocomplete="email"
-                                placeholder="{{ __('time.clock_points.qr.email.placeholder') }}"
+                                aria-label="{{ __('time.clock_points.qr.email.label') }}"
+                                placeholder="{{ __('time.clock_points.qr.email.label') }}"
                             >
                             <button
                                 type="button"

@@ -264,7 +264,6 @@
                 "heading": "E-mail",
                 "hint": "Stuur de aanmeldlink. Die meldt aan zonder inklokken. Op een vaste prikklok kan inklokken pas na een scan van de sticker of het klokscherm.",
                 "label": "E-mailadres",
-                "placeholder": "naam@bedrijf.be",
                 "send": "Versturen",
                 "sent": "Aanmeldlink verzonden.",
                 "inactive": "Dit clock point is inactief. Activeer het eerst.",

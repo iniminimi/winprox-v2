@@ -264,7 +264,6 @@
                 "heading": "E-Mail",
                 "hint": "Senden Sie den Anmeldelink. Er meldet an, ohne einzustempeln. An einer festen Stempeluhr braucht das Einstempeln einen Scan des Aufklebers oder des Uhrenbildschirms.",
                 "label": "E-Mail-Adresse",
-                "placeholder": "name@firma.de",
                 "send": "Senden",
                 "sent": "Anmeldelink gesendet.",
                 "inactive": "Dieser Clock Point ist inaktiv. Aktivieren Sie ihn zuerst.",

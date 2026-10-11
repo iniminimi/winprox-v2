@@ -264,7 +264,6 @@
                 "heading": "E-mail",
                 "hint": "Envoyez le lien de connexion. Il connecte sans pointer. Sur une pointeuse fixe, l'entrée demande un scan de l'autocollant ou de l'écran.",
                 "label": "Adresse e-mail",
-                "placeholder": "nom@entreprise.be",
                 "send": "Envoyer",
                 "sent": "Lien de connexion envoyé.",
                 "inactive": "Ce clock point est inactif. Activez-le d’abord.",
