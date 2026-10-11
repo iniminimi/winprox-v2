@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Actions\Time\CompareRosterAttendanceAction;
+use App\Actions\Time\CorrectPlannedShiftAction;
 use App\Actions\Time\ListRosterWeekAction;
 use App\Actions\Time\SavePlannedDayAction;
 use App\Actions\Time\SavePlannedShiftsAction;
@@ -532,18 +533,23 @@ it('meldt RosterChanged bij wijziging van een published dag en dedupliceert', fu
         ->and($notifications->first()->read_at)->toBeNull();
 });
 
-it('meldt niets bij een correctie op een verleden dag of draft-wijziging', function () {
+it('meldt geen RosterChanged bij een correctie op een verleden dag of draft-wijziging', function () {
     [$tenant, $admin, $worker] = multiBlockTenant();
     $past = now()->subWeek()->startOfWeek()->toDateString();
     $pastRow = plannedBlock($tenant, $worker, $past, '07:00', '10:00', PlannedShiftStatus::Published);
     $futureDraft = now()->addWeek()->startOfWeek()->addDay()->toDateString();
     $draftRow = plannedBlock($tenant, $worker, $futureDraft, '07:00', '10:00', PlannedShiftStatus::Draft);
 
-    app(SavePlannedDayAction::class)->handle(
+    // Vergrendelde dag: gewone save is verboden; correctie loopt via pad B
+    // en levert RosterCorrected op, nooit RosterChanged.
+    app(CorrectPlannedShiftAction::class)->handle(
         $tenant,
-        new SavePlannedDayData((int) $worker->id, $past, [
-            ['id' => $pastRow->id, 'start_time' => '07:00', 'end_time' => '11:00'],
-        ]),
+        [[
+            'type' => 'update',
+            'planned_shift_id' => $pastRow->id,
+            'block' => ['start_time' => '07:00', 'end_time' => '11:00'],
+        ]],
+        'Correctie verleden dag',
         $admin->id,
     );
     app(SavePlannedDayAction::class)->handle(
@@ -556,7 +562,10 @@ it('meldt niets bij een correctie op een verleden dag of draft-wijziging', funct
 
     expect(
         WorkerNotification::where('type', WorkerNotificationType::RosterChanged->value)->count(),
-    )->toBe(0);
+    )->toBe(0)
+        ->and(WorkerNotification::where('type', WorkerNotificationType::RosterCorrected->value)
+            ->where('reference_id', $past.':'.$pastRow->id)
+            ->count())->toBe(1);
 });
 
 it('meldt RosterChanged via grid-save bij gewijzigde published dag', function () {

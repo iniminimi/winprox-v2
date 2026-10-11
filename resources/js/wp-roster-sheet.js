@@ -217,6 +217,15 @@ function todayColumnIndexes(payload) {
     );
 }
 
+/** Vergrendelde datums komen server-side uit RosterHistoryLock (app-tijdzone). */
+function lockedColumnIndexes(payload) {
+    const locked = new Set(payload.locked_dates ?? []);
+
+    return new Set(
+        (payload.dates ?? []).flatMap((date, index) => (locked.has(date) ? [index + 1] : [])),
+    );
+}
+
 /** Kolommen die een nieuwe week starten na een gap (vrijdag → maandag zonder weekends). */
 function weekStartColumnIndexes(payload) {
     const dates = payload.dates ?? [];
@@ -270,6 +279,19 @@ function applyWeekStartColumns(worksheet, weekStartCols) {
     if (Array.isArray(worksheet.cols)) {
         worksheet.cols.forEach((col, colIndex) => {
             col?.colElement?.classList.toggle('wp-roster-col--week-start', weekStartCols.has(colIndex));
+        });
+    }
+}
+
+function applyLockedColumns(worksheet, lockedCols) {
+    if (Array.isArray(worksheet.headers)) {
+        worksheet.headers.forEach((header, colIndex) => {
+            header?.classList.toggle('wp-roster-col--locked', lockedCols.has(colIndex));
+        });
+    }
+    if (Array.isArray(worksheet.cols)) {
+        worksheet.cols.forEach((col, colIndex) => {
+            col?.colElement?.classList.toggle('wp-roster-col--locked', lockedCols.has(colIndex));
         });
     }
 }
@@ -364,10 +386,12 @@ function applyCellClasses(worksheet, payload) {
     const types = payload.types ?? [];
     const weekendCols = weekendColumnIndexes(payload);
     const todayCols = todayColumnIndexes(payload);
+    const lockedCols = lockedColumnIndexes(payload);
     const weekStartCols = weekStartColumnIndexes(payload);
     applyWeekendColumns(worksheet, weekendCols);
     applyTodayColumns(worksheet, todayCols);
     applyWeekStartColumns(worksheet, weekStartCols);
+    applyLockedColumns(worksheet, lockedCols);
     const rowDefs = gridRowDefs(payload);
     const workers = workerById(payload);
     // Unitcatalogus per worker cachen — niet per cel opnieuw filteren.
@@ -408,6 +432,8 @@ function applyCellClasses(worksheet, payload) {
             cell.classList.toggle('wp-roster-col--weekend', weekendCols.has(colIndex));
             cell.classList.toggle('wp-roster-col--today', todayCols.has(colIndex));
             cell.classList.toggle('wp-roster-col--week-start', weekStartCols.has(colIndex));
+            const isLocked = lockedCols.has(colIndex);
+            cell.classList.toggle('wp-roster-col--locked', isLocked);
             // Geen DOM-injectie in cellen: Jspreadsheet breekt na de eerste edit.
             // Groep onder dienst via newline + CSS (white-space: pre-line).
             const date = payload.dates?.[colIndex - 1];
@@ -493,7 +519,40 @@ function applyCellClasses(worksheet, payload) {
                     cell.title = cell.title ? `${cell.title}\n${unavailableHint}` : unavailableHint;
                 }
             }
+            // Vergrendelde dag (verleden): cel is readOnly; tooltip legt uit waarom.
+            if (isLocked && payload.locked_hint) {
+                cell.title = cell.title ? `${cell.title}\n${payload.locked_hint}` : payload.locked_hint;
+            }
         });
+    });
+}
+
+/** Markeert geflagde cellen (worker_id + date) als ongeldig na een geweigerde save. */
+function markFlaggedCells(worksheet, payload, cells) {
+    if (!worksheet || !Array.isArray(cells) || cells.length === 0) {
+        return;
+    }
+    const rowDefs = gridRowDefs(payload);
+    cells.forEach((flag) => {
+        const date = cellText(flag?.date).trim();
+        const workerId = Number(flag?.worker_id ?? 0);
+        const colIndex = (payload.dates ?? []).indexOf(date) + 1;
+        const rowIndex = rowDefs.findIndex(
+            (row) => row.type !== 'section' && Number(row.worker_id) === workerId,
+        );
+        if (colIndex < 1 || rowIndex < 0) {
+            return;
+        }
+        const cell = rosterTd(
+            typeof worksheet.getCellFromCoords === 'function'
+                ? worksheet.getCellFromCoords(colIndex, rowIndex)
+                : null,
+        );
+        if (!cell) {
+            return;
+        }
+        cell.classList.add('wp-roster-cell--invalid');
+        cell.setAttribute('aria-invalid', 'true');
     });
 }
 
@@ -816,6 +875,7 @@ export function bind(root, wire) {
         closeMenu();
         const isMonth = payload.period === 'month';
         const dayCount = payload.dates.length;
+        const lockedDates = new Set(payload.locked_dates ?? []);
         grid.classList.toggle('wp-roster-sheet--month', isMonth);
         const columns = [
             {
@@ -825,12 +885,13 @@ export function bind(root, wire) {
                 readOnly: true,
                 align: 'left',
             },
-            ...payload.dates.map((_date, index) => ({
+            ...payload.dates.map((date, index) => ({
                 type: 'text',
                 title: isMonth
                     ? `${payload.day_numbers[index]}\n${payload.day_labels[index]}`
                     : payload.day_labels[index],
                 width: isMonth ? 40 : 110,
+                readOnly: lockedDates.has(date),
             })),
         ];
 
@@ -891,6 +952,9 @@ export function bind(root, wire) {
                     return false;
                 }
                 const date = payload.dates?.[Number(x) - 1];
+                if (date && lockedDates.has(date)) {
+                    return false;
+                }
                 const cellDef = rowDef?.worker_id && date
                     ? payload.cells?.[`${rowDef.worker_id}:${date}`]
                     : null;
@@ -1120,6 +1184,7 @@ export function bind(root, wire) {
         wire.on('roster-save-failed', (event) => {
             showError(event.message || '');
             applyCellClasses(worksheet, payload);
+            markFlaggedCells(worksheet, payload, event.cells ?? []);
         });
     }
 

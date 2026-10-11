@@ -636,6 +636,8 @@
             "invalid_code": "Ungültiger Code. Nur Buchstaben oder Ziffern.",
             "code_taken": "Dieser Code existiert bereits.",
             "invalid_cells": "Es gibt ungültige Zellen im Plan. Korrigieren Sie diese vor dem Speichern.",
+            "locked_day": "Dieser Tag liegt in der Vergangenheit und ist gesperrt.",
+            "locked_days": "Einige Tage liegen in der Vergangenheit und sind gesperrt.",
             "overlap": "Dieser Mitarbeiter hat überlappende Dienste.",
             "unknown_worker": "Unbekannter Mitarbeiter.",
             "cell_out_of_scope": "Zelle liegt außerhalb des sichtbaren Plans.",
@@ -650,7 +652,12 @@
             "unknown_block": "Unbekannter Block. Plan aktualisieren und erneut versuchen.",
             "replacement_not_eligible": "Dieser Mitarbeiter ist für diese Vertretung nicht verfügbar.",
             "replacement_no_absence_type": "Wählen Sie einen gültigen Abwesenheitstyp.",
-            "mixed_replacement_blocks": "Nur Arbeitsblöcke desselben Tages und Mitarbeiters können ersetzt werden."
+            "mixed_replacement_blocks": "Nur Arbeitsblöcke desselben Tages und Mitarbeiters können ersetzt werden.",
+            "correction_reason_required": "Eine Korrekturbegründung ist erforderlich.",
+            "correction_empty": "Keine Korrekturoperationen angegeben.",
+            "correction_unknown_op": "Unbekannte Korrekturoperation.",
+            "correction_missing_block": "Fehlende Blockdaten.",
+            "correction_invalid_date": "Ungültiges Datum."
         },
         "types": {
             "add": "Schichttyp hinzufügen",
@@ -739,7 +746,20 @@
             "remove_block": "Block entfernen",
             "add_block": "Block hinzufügen",
             "unplanned_sessions": "Ungeplant gestempelt",
-            "description": "Notiz (optional)"
+            "description": "Notiz (optional)",
+            "locked_hint": "Dieser Tag liegt in der Vergangenheit und ist gesperrt. Änderungen sind nur über eine auditierte Korrektur möglich."
+        },
+        "correction": {
+            "open": "Korrigieren",
+            "add_block": "Block über Korrektur hinzufügen",
+            "title": "Korrektur — :name",
+            "hint": "Diese Änderung betrifft einen gesperrten Tag und wird mit Grund und Alt-/Neu-Werten protokolliert.",
+            "date": "Datum",
+            "reason": "Grund (erforderlich)",
+            "reason_placeholder": "Warum korrigieren Sie diesen Block?",
+            "delete": "Löschen",
+            "delete_confirm": "Diesen Block endgültig löschen? Die Korrektur wird protokolliert.",
+            "done": "Korrektur gespeichert."
         },
         "unavailable": {
             "section_title": "Strukturelle Nichtverfügbarkeit",

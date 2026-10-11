@@ -9,6 +9,7 @@ use App\Models\PlannedShift;
 use App\Models\ShiftType;
 use App\Models\Tenant;
 use App\Models\Worker;
+use App\Support\Time\RosterHistoryLock;
 use App\Support\Time\TimeModuleAccess;
 use Illuminate\Support\Facades\DB;
 
@@ -78,6 +79,7 @@ class ReplacePlannedShiftAction
             $first = $blocks->first();
             $workerId = (int) $first->worker_id;
             $date = $first->work_date->toDateString();
+            RosterHistoryLock::assertWritableDate($date);
             $published = $blocks->contains(
                 fn (PlannedShift $shift) => $shift->status->isPublished(),
             );

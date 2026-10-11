@@ -63,6 +63,8 @@ it('toont de tegel Mijn rooster na aanmelden', function () {
 });
 
 it('toont alleen published eigen diensten en zet de badge weg', function () {
+    // Vaste "nu" tijdens de rooster-writes: de vaste testweek is vergrendeld.
+    $this->travelTo(Carbon::parse('2026-09-14 12:00:00'));
     [$tenant, $team, $clockPoint, $worker] = schedulePortalTenant();
     $week = Carbon::parse('2026-09-14')->startOfWeek(Carbon::MONDAY)->toDateString();
     app(SaveShiftTypeAction::class)->handle(
@@ -100,6 +102,8 @@ it('toont alleen published eigen diensten en zet de badge weg', function () {
         null,
     );
 
+    $this->travelBack();
+
     expect(WorkerNotification::query()->where('worker_id', $worker->id)->whereNull('read_at')->count())->toBe(1);
 
     signInScheduleWorker($clockPoint)
@@ -123,6 +127,7 @@ it('weigert de roosterlijst via Livewire-state', function () {
 });
 
 it('toont de groepsnaam uit de snapshot op Mijn rooster', function () {
+    $this->travelTo(Carbon::parse('2026-09-14 12:00:00'));
     [$tenant, $team, $clockPoint, $worker] = schedulePortalTenant();
     $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id]);
     \App\Models\Unit::factory()->create([
@@ -160,6 +165,8 @@ it('toont de groepsnaam uit de snapshot op Mijn rooster', function () {
         null,
     );
 
+    $this->travelBack();
+
     signInScheduleWorker($clockPoint)
         ->call('openSchedule')
         ->assertSee('Groep 1', false)
@@ -172,6 +179,7 @@ it('toont de groepsnaam uit de snapshot op Mijn rooster', function () {
 });
 
 it('slaagt lege dagen over in het maandoverzicht van Mijn rooster', function () {
+    $this->travelTo(Carbon::parse('2026-09-14 12:00:00'));
     [$tenant, $team, $clockPoint, $worker] = schedulePortalTenant();
     $week = Carbon::parse('2026-09-14')->startOfWeek(Carbon::MONDAY)->toDateString();
     app(SaveShiftTypeAction::class)->handle(

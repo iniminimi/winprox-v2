@@ -3,6 +3,7 @@
 namespace App\Livewire\Time;
 
 use App\Actions\Time\CopyRosterWeeksAction;
+use App\Actions\Time\CorrectPlannedShiftAction;
 use App\Actions\Time\ListRosterWeekAction;
 use App\Actions\Time\ListShiftTypesAction;
 use App\Actions\Time\LoadRosterDayEditorAction;
@@ -27,6 +28,7 @@ use App\Models\PlannedShift;
 use App\Models\Tenant;
 use App\Models\WorkShift;
 use App\Support\Tenancy;
+use App\Support\Time\RosterHistoryLock;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Cookie;
@@ -88,6 +90,21 @@ class RosterIndex extends Component
     public array $dayEditorBlocks = [];
 
     public string $dayEditorError = '';
+
+    public bool $dayEditorLocked = false;
+
+    public bool $showCorrectionModal = false;
+
+    public ?int $correctionShiftId = null;
+
+    public bool $correctionIsNew = false;
+
+    /** @var array<string, mixed> */
+    public array $correctionBlock = [];
+
+    public string $correctionReason = '';
+
+    public string $correctionError = '';
 
     public bool $showReplacementModal = false;
 
@@ -174,7 +191,12 @@ class RosterIndex extends Component
             'unit_id' => $block['unit_id'],
             'description' => $block['description'] ?? '',
         ], $this->dayEditorContext['blocks']);
-        if ($this->dayEditorBlocks === []) {
+        $this->dayEditorLocked = RosterHistoryLock::isLockedDate(
+            Carbon::parse($date)->toDateString(),
+        );
+        // Op een vergrendelde dag is de editor readonly — geen leeg
+        // seed-blok tonen alsof er gepland kan worden.
+        if ($this->dayEditorBlocks === [] && ! $this->dayEditorLocked) {
             $this->dayEditorBlocks[] = $this->emptyDayEditorBlock();
         }
         $this->dayEditorError = '';
@@ -184,6 +206,7 @@ class RosterIndex extends Component
     public function closeDayEditor(): void
     {
         $this->showDayEditor = false;
+        $this->dayEditorLocked = false;
         $this->dayEditorContext = [];
         $this->dayEditorBlocks = [];
         $this->dayEditorError = '';
@@ -362,6 +385,142 @@ class RosterIndex extends Component
         $this->dispatch('roster-week-changed');
     }
 
+    public function openCorrection(int $shiftId): void
+    {
+        $this->authorize('correct', PlannedShift::class);
+
+        $block = collect($this->dayEditorContext['blocks'] ?? [])
+            ->first(fn (array $candidate) => (int) $candidate['id'] === $shiftId);
+        if ($block === null) {
+            return;
+        }
+
+        $this->correctionShiftId = $shiftId;
+        $this->correctionIsNew = false;
+        $this->correctionBlock = [
+            'work_date' => (string) ($this->dayEditorContext['date'] ?? ''),
+            'shift_type_id' => $block['shift_type_id'],
+            'start_time' => $block['start_time'],
+            'end_time' => $block['end_time'],
+            'break_minutes' => $block['break_minutes'],
+            'unit_id' => $block['unit_id'],
+            'description' => $block['description'] ?? '',
+        ];
+        $this->correctionReason = '';
+        $this->correctionError = '';
+        $this->showCorrectionModal = true;
+    }
+
+    public function openCorrectionCreate(): void
+    {
+        $this->authorize('correct', PlannedShift::class);
+
+        $this->correctionShiftId = null;
+        $this->correctionIsNew = true;
+        $this->correctionBlock = [
+            'work_date' => (string) ($this->dayEditorContext['date'] ?? ''),
+            'shift_type_id' => null,
+            'start_time' => '',
+            'end_time' => '',
+            'break_minutes' => 0,
+            'unit_id' => null,
+            'description' => '',
+        ];
+        $this->correctionReason = '';
+        $this->correctionError = '';
+        $this->showCorrectionModal = true;
+    }
+
+    public function closeCorrection(): void
+    {
+        $this->reset([
+            'showCorrectionModal',
+            'correctionShiftId',
+            'correctionIsNew',
+            'correctionBlock',
+            'correctionReason',
+            'correctionError',
+        ]);
+    }
+
+    public function saveCorrection(CorrectPlannedShiftAction $correct, LoadRosterDayEditorAction $load): void
+    {
+        $this->authorize('correct', PlannedShift::class);
+
+        $block = [
+            'work_date' => (string) ($this->correctionBlock['work_date'] ?? ''),
+            'shift_type_id' => $this->correctionBlock['shift_type_id'] !== null && $this->correctionBlock['shift_type_id'] !== ''
+                ? (int) $this->correctionBlock['shift_type_id']
+                : null,
+            'start_time' => $this->normalizeEditorTime($this->correctionBlock['start_time'] ?? null),
+            'end_time' => $this->normalizeEditorTime($this->correctionBlock['end_time'] ?? null),
+            'break_minutes' => (int) ($this->correctionBlock['break_minutes'] ?? 0),
+            'unit_id' => $this->correctionBlock['unit_id'] !== null && $this->correctionBlock['unit_id'] !== ''
+                ? (int) $this->correctionBlock['unit_id']
+                : null,
+            'description' => $this->correctionBlock['description'] ?? null,
+        ];
+
+        $op = $this->correctionIsNew
+            ? [
+                'type' => 'create',
+                'worker_id' => (int) ($this->dayEditorContext['worker']['id'] ?? 0),
+                'block' => $block,
+            ]
+            : [
+                'type' => 'update',
+                'planned_shift_id' => (int) $this->correctionShiftId,
+                'block' => $block,
+            ];
+
+        $this->runCorrection($correct, $load, [$op]);
+    }
+
+    public function deleteCorrection(CorrectPlannedShiftAction $correct, LoadRosterDayEditorAction $load): void
+    {
+        $this->authorize('correct', PlannedShift::class);
+
+        if ($this->correctionIsNew || $this->correctionShiftId === null) {
+            return;
+        }
+
+        $this->runCorrection($correct, $load, [[
+            'type' => 'delete',
+            'planned_shift_id' => (int) $this->correctionShiftId,
+        ]]);
+    }
+
+    /**
+     * @param  list<array<string, mixed>>  $ops
+     */
+    private function runCorrection(
+        CorrectPlannedShiftAction $correct,
+        LoadRosterDayEditorAction $load,
+        array $ops,
+    ): void {
+        try {
+            $correct->handle(
+                Tenant::query()->findOrFail(Tenancy::id()),
+                $ops,
+                $this->correctionReason,
+                auth()->id(),
+            );
+        } catch (RosterValidationException|InvalidArgumentException $e) {
+            $this->correctionError = __($e->getMessage());
+
+            return;
+        }
+
+        $workerId = (int) ($this->dayEditorContext['worker']['id'] ?? 0);
+        $date = (string) ($this->dayEditorContext['date'] ?? '');
+        $this->closeCorrection();
+        if ($workerId !== 0 && $date !== '') {
+            $this->openDayEditor($workerId, $date, $load);
+        }
+        session()->flash('time_flash', __('time.schedule.correction.done'));
+        $this->dispatch('roster-week-changed');
+    }
+
     public function setView(string $view, ResolveRosterPeriodAction $resolvePeriod): void
     {
         $this->view = $view === 'month' ? 'month' : 'week';
@@ -494,6 +653,11 @@ class RosterIndex extends Component
         $array['multi_replace_confirm'] = __('time.schedule.multi_replace_confirm');
         $array['multi_hint'] = __('time.schedule.multi_hint');
         $array['day_editor_hint'] = __('time.schedule.day_editor.hint');
+        $array['locked_dates'] = array_values(array_filter(
+            $array['dates'] ?? [],
+            fn (string $date) => RosterHistoryLock::isLockedDate($date),
+        ));
+        $array['locked_hint'] = __('time.schedule.errors.locked_day');
 
         return $array;
     }

@@ -37,6 +37,24 @@ class PlannedShiftPolicy
         return $this->staffWithModule($user);
     }
 
+    /**
+     * Historische correctie (pad B): bewust beperkt tot de tenant-admin.
+     * Superusers en employees kunnen niet corrigeren — tenant-isolatie geldt
+     * ook voor platformbeheerders.
+     */
+    public function correct(User $user, PlannedShift|string|null $plannedShift = null): bool
+    {
+        if (! $user->isAdmin() || ! TimeModuleAccess::tenantHasModule($this->resolveTenant($user))) {
+            return false;
+        }
+
+        if ($plannedShift instanceof PlannedShift) {
+            return (int) $user->tenant_id === (int) $plannedShift->tenant_id;
+        }
+
+        return true;
+    }
+
     private function staffWithModule(User $user): bool
     {
         if (! TimeModuleAccess::tenantHasModule($this->resolveTenant($user))) {

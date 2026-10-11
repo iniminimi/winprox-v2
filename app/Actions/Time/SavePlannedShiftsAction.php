@@ -15,6 +15,7 @@ use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\Worker;
 use App\Support\Time\RosterDaySignature;
+use App\Support\Time\RosterHistoryLock;
 use App\Support\Time\TimeModuleAccess;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -160,6 +161,51 @@ class SavePlannedShiftsAction
                     $preservedIds[] = (int) $rows->first()->id;
                     $preservedDays[$dayKey] = true;
                 }
+            }
+
+            // Historische dagen (< vandaag, app-tijdzone) zijn vergrendeld.
+            // Een keep-cel of een cel die identiek is aan de bestaande rij
+            // telt als "ongewijzigd"; elke andere inhoud op zo'n dag —
+            // wijzigen, legen of op een lege dag plannen — is een
+            // wijzigingspoging en wordt als cel geflagd. Rijen op vergrendelde
+            // dagen die niet in de payload zitten, worden nooit verwijderd.
+            $lockedErrors = [];
+            foreach ($existingByDay as $dayKey => $rows) {
+                $date = (string) str($dayKey)->after(':');
+                if (! RosterHistoryLock::isLockedDate($date) || isset($preservedDays[$dayKey])) {
+                    continue;
+                }
+                $lockedErrors[] = [
+                    'worker_id' => (int) str($dayKey)->before(':')->toString(),
+                    'date' => $date,
+                    'raw' => '',
+                    'error' => 'time.schedule.errors.locked_days',
+                ];
+            }
+            foreach ($parsedCells as $item) {
+                $parsed = $item['parsed'];
+                if ($parsed === null) {
+                    continue;
+                }
+                $date = (string) $item['cell']['date'];
+                if (! RosterHistoryLock::isLockedDate($date)) {
+                    continue;
+                }
+                $dayKey = (int) $item['cell']['worker_id'].':'.$date;
+                if (isset($preservedDays[$dayKey]) || isset($existingByDay[$dayKey])) {
+                    continue;
+                }
+                if (! $parsed->isEmpty()) {
+                    $lockedErrors[] = [
+                        'worker_id' => (int) $item['cell']['worker_id'],
+                        'date' => $date,
+                        'raw' => (string) $item['cell']['raw'],
+                        'error' => 'time.schedule.errors.locked_days',
+                    ];
+                }
+            }
+            if ($lockedErrors !== []) {
+                throw new RosterValidationException('time.schedule.errors.locked_days', $lockedErrors);
             }
 
             PlannedShift::query()

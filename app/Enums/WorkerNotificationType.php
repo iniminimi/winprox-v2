@@ -16,11 +16,13 @@ use InvalidArgumentException;
  * |-------------------|---------------------------------------------------|------------------------------|------------------------------------------------|
  * | roster_published  | ISO-datum Y-m-d van periode-start ($dates[0])     | planned_shifts.id, worker-id | Clock Point → Mijn rooster, week van die datum |
  * | roster_changed    | ISO-datum Y-m-d van de gewijzigde werkdag         | planned_shifts.id, worker-id | Clock Point → Mijn rooster, dag in die maand   |
+ * | roster_corrected  | Y-m-d:planned_shift_id van het gecorrigeerde blok | willekeurige string          | Clock Point → Mijn rooster, dag in die maand   |
  */
 enum WorkerNotificationType: string
 {
     case RosterPublished = 'roster_published';
     case RosterChanged = 'roster_changed';
+    case RosterCorrected = 'roster_corrected';
 
     public function assertReferenceId(string $referenceId): void
     {
@@ -31,6 +33,16 @@ enum WorkerNotificationType: string
 
             $parsed = Carbon::createFromFormat('Y-m-d', $referenceId);
             if ($parsed === false || $parsed->toDateString() !== $referenceId) {
+                throw new InvalidArgumentException('time.schedule.errors.invalid_notification_reference');
+            }
+
+            return;
+        }
+
+        if ($this === self::RosterCorrected) {
+            // Datum bepaalt de portaal-navigatie; het blok-id houdt afzonderlijke
+            // correcties voor dezelfde worker uit elkaar (dedup-sleutel).
+            if (! preg_match('/^\d{4}-\d{2}-\d{2}:\d+$/', $referenceId)) {
                 throw new InvalidArgumentException('time.schedule.errors.invalid_notification_reference');
             }
 
@@ -48,6 +60,10 @@ enum WorkerNotificationType: string
             self::RosterPublished, self::RosterChanged => new WorkerNotificationPortalTarget(
                 screen: 'schedule',
                 cursor: $referenceId,
+            ),
+            self::RosterCorrected => new WorkerNotificationPortalTarget(
+                screen: 'schedule',
+                cursor: str($referenceId)->before(':')->toString(),
             ),
         };
     }

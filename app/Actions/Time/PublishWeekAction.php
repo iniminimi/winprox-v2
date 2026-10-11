@@ -10,6 +10,7 @@ use App\Exceptions\RosterValidationException;
 use App\Models\PlannedShift;
 use App\Models\Tenant;
 use App\Models\Worker;
+use App\Support\Time\RosterHistoryLock;
 use App\Support\Time\TimeModuleAccess;
 use Illuminate\Support\Facades\DB;
 
@@ -29,18 +30,32 @@ class PublishWeekAction
         $workerIds = array_values(array_unique(array_map('intval', $data->workerIds)));
         $this->assertWorkersBelongToTenant((int) $tenant->id, $workerIds);
 
-        $count = DB::transaction(function () use ($tenant, $workerIds, $dates, $actorUserId) {
+        $result = DB::transaction(function () use ($tenant, $workerIds, $dates, $actorUserId) {
             $shifts = PlannedShift::query()
                 ->whereIn('worker_id', $workerIds ?: [0])
                 ->whereBetween('work_date', [$dates[0], $dates[array_key_last($dates)]])
                 ->lockForUpdate()
                 ->get();
 
+            // Historische dagen worden overgeslagen: "gepubliceerd" claimt
+            // communicatie die voor verleden dagen niet meer kan kloppen.
+            $writable = $shifts->reject(
+                fn (PlannedShift $shift) => RosterHistoryLock::isLocked($shift),
+            );
+
             PlannedShift::query()
-                ->whereIn('id', $shifts->pluck('id')->all() ?: [0])
+                ->whereIn('id', $writable->pluck('id')->all() ?: [0])
                 ->update(['status' => PlannedShiftStatus::Published->value]);
 
-            $count = $shifts->count();
+            $count = $writable->count();
+            // Alleen workers met minstens één beschrijfbare rij worden
+            // genotificeerd: voor wie enkel vergrendelde (verleden) rijen heeft
+            // verandert er zichtbaar niets.
+            $notifiedWorkerIds = $writable->pluck('worker_id')
+                ->map(fn ($id) => (int) $id)
+                ->unique()
+                ->values()
+                ->all();
 
             event(new SchedulePublished(
                 tenantId: (int) $tenant->id,
@@ -50,12 +65,12 @@ class PublishWeekAction
                 count: $count,
             ));
 
-            return $count;
+            return ['count' => $count, 'notified_worker_ids' => $notifiedWorkerIds];
         });
 
-        $this->notifyPublished->handle($tenant, $workerIds, $dates[0]);
+        $this->notifyPublished->handle($tenant, $result['notified_worker_ids'], $dates[0]);
 
-        return $count;
+        return $result['count'];
     }
 
     /**

@@ -636,6 +636,8 @@
             "invalid_code": "Código no válido. Use letras o números.",
             "code_taken": "Este código ya existe.",
             "invalid_cells": "Hay celdas no válidas en el horario. Corríjalas antes de guardar.",
+            "locked_day": "Este día está en el pasado y está bloqueado.",
+            "locked_days": "Algunos días están en el pasado y están bloqueados.",
             "overlap": "Este trabajador tiene turnos solapados.",
             "unknown_worker": "Trabajador desconocido.",
             "cell_out_of_scope": "La celda está fuera del horario visible.",
@@ -650,7 +652,12 @@
             "unknown_block": "Bloque desconocido. Actualice el horario e inténtelo de nuevo.",
             "replacement_not_eligible": "Este trabajador no está disponible para esta sustitución.",
             "replacement_no_absence_type": "Elige un tipo de ausencia válido.",
-            "mixed_replacement_blocks": "Solo se pueden sustituir bloques de trabajo del mismo día y trabajador."
+            "mixed_replacement_blocks": "Solo se pueden sustituir bloques de trabajo del mismo día y trabajador.",
+            "correction_reason_required": "Se requiere un motivo de corrección.",
+            "correction_empty": "No se indicaron operaciones de corrección.",
+            "correction_unknown_op": "Operación de corrección desconocida.",
+            "correction_missing_block": "Faltan datos del bloque.",
+            "correction_invalid_date": "Fecha no válida."
         },
         "types": {
             "add": "Añadir tipo",
@@ -739,7 +746,20 @@
             "remove_block": "Eliminar bloque",
             "add_block": "Añadir bloque",
             "unplanned_sessions": "Fichado fuera de la planificación",
-            "description": "Nota (opcional)"
+            "description": "Nota (opcional)",
+            "locked_hint": "Este día está en el pasado y está bloqueado. Los cambios solo son posibles mediante una corrección auditada."
+        },
+        "correction": {
+            "open": "Corregir",
+            "add_block": "Añadir bloque mediante corrección",
+            "title": "Corrección — :name",
+            "hint": "Este cambio afecta a un día bloqueado y se registra con motivo y valores antiguos/nuevos.",
+            "date": "Fecha",
+            "reason": "Motivo (obligatorio)",
+            "reason_placeholder": "¿Por qué corrige este bloque?",
+            "delete": "Eliminar",
+            "delete_confirm": "¿Eliminar definitivamente este bloque? La corrección queda registrada.",
+            "done": "Corrección guardada."
         },
         "unavailable": {
             "section_title": "Indisponibilidad estructural",

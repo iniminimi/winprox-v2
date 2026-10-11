@@ -5,13 +5,17 @@ use App\Actions\Notifications\ListWorkerNotificationsAction;
 use App\Actions\Notifications\MarkWorkerNotificationsReadAction;
 use App\Actions\Time\AssertPlannedShiftNoOverlapAction;
 use App\Actions\Time\CopyWeekAction;
+use App\Actions\Time\CorrectPlannedShiftAction;
 use App\Actions\Time\ListRosterWeekAction;
 use App\Actions\Time\ParseRosterCellAction;
 use App\Actions\Time\PublishWeekAction;
+use App\Actions\Time\ReplacePlannedShiftAction;
+use App\Actions\Time\SavePlannedDayAction;
 use App\Actions\Time\SavePlannedShiftsAction;
 use App\Actions\Time\SaveShiftTypeAction;
 use App\Data\Time\CopyWeekData;
 use App\Data\Time\PublishWeekData;
+use App\Data\Time\SavePlannedDayData;
 use App\Data\Time\SavePlannedShiftsData;
 use App\Data\Time\SaveShiftTypeData;
 use App\Enums\PlannedShiftStatus;
@@ -22,6 +26,7 @@ use App\Enums\WorkerNotificationType;
 use App\Exceptions\RosterValidationException;
 use App\Livewire\Time\RosterIndex;
 use App\Livewire\Time\ShiftTypesIndex;
+use App\Models\AuditLog;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\PlannedShift;
@@ -33,6 +38,7 @@ use App\Models\WebhookEndpoint;
 use App\Models\Worker;
 use App\Models\WorkerNotification;
 use App\Support\Tenancy;
+use App\Support\Time\RosterHistoryLock;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cookie;
 use Livewire\Livewire;
@@ -147,6 +153,7 @@ it('weigert een minuut overlap en identieke vensters', function () {
 
 it('slaat een week op en houdt published na correctie', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-09-13'));
     app(SaveShiftTypeAction::class)->handle(
         $tenant,
         new SaveShiftTypeData('V', 'Vroeg', '07:00', '15:00', 30, ShiftTypeColor::Emerald),
@@ -191,6 +198,7 @@ it('slaat een week op en houdt published na correctie', function () {
 
 it('toont een inactieve code als vrije tijd zodat opslaan blijft werken', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-09-13'));
     $type = app(SaveShiftTypeAction::class)->handle(
         $tenant,
         new SaveShiftTypeData('V', 'Vroeg', '07:00', '15:00', 30, ShiftTypeColor::Emerald),
@@ -213,6 +221,7 @@ it('toont een inactieve code als vrije tijd zodat opslaan blijft werken', functi
 
 it('weigert copy naar een week die al shiften heeft', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-09-13'));
     $week = scheduleWeekStart();
     $next = Carbon::parse($week)->addWeek()->toDateString();
     $save = app(SavePlannedShiftsAction::class);
@@ -240,6 +249,7 @@ it('weigert copy naar een week die al shiften heeft', function () {
 
 it('kopieert een lege doelweek als draft', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-09-13'));
     $week = scheduleWeekStart();
     $next = Carbon::parse($week)->addWeek()->toDateString();
     app(SavePlannedShiftsAction::class)->handle(
@@ -390,6 +400,7 @@ it('onthoudt de gekozen team- of locatiescope', function () {
 
 it('slaat een week op via de API', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-09-13'));
     $week = scheduleWeekStart();
     $token = $admin->createToken('test', ['time:write'])->plainTextToken;
 
@@ -504,6 +515,7 @@ it('toont geen weekendkolommen als weekends uit staan', function () {
 
 it('laat weekenddiensten staan als weekends uit staan bij opslaan', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-09-13'));
     $week = scheduleWeekStart();
     $saturday = Carbon::parse($week)->addDays(5)->toDateString();
 
@@ -535,6 +547,7 @@ it('laat weekenddiensten staan als weekends uit staan bij opslaan', function () 
 
 it('slaat een maandgrid op', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-08-30'));
     $cells = [];
     for ($day = 1; $day <= 30; $day++) {
         $date = sprintf('2026-09-%02d', $day);
@@ -565,6 +578,7 @@ it('bevat schedule-webhook-events', function () {
 
 it('slaat verlof op zonder uren en weigert overlap met werk', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-09-13'));
     $leave = app(SaveShiftTypeAction::class)->handle(
         $tenant,
         new SaveShiftTypeData('VL', 'Verlof', null, null, 0, ShiftTypeColor::Rose, true, ShiftTypeKind::Leave),
@@ -606,6 +620,7 @@ it('slaat verlof op zonder uren en weigert overlap met werk', function () {
 
 it('maakt bij publiceren één notificatie per uitvoerder en reset read_at bij republish', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-09-13'));
     $week = scheduleWeekStart();
     app(SavePlannedShiftsAction::class)->handle(
         $tenant,
@@ -665,6 +680,7 @@ it('weigert een planned_shift-id als roster_published reference_id', function ()
 
 it('markeert gepland vs geklokt op een verleden published dag', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-09-13'));
     $week = scheduleWeekStart();
     app(SavePlannedShiftsAction::class)->handle(
         $tenant,
@@ -679,6 +695,8 @@ it('markeert gepland vs geklokt op een verleden published dag', function () {
         $admin->id,
     );
 
+    $this->travelBack();
+
     $snapshot = app(ListRosterWeekAction::class)->handle(
         (int) $tenant->id,
         $week,
@@ -692,6 +710,7 @@ it('markeert gepland vs geklokt op een verleden published dag', function () {
 
 it('kopieert afwezigheid niet mee naar de volgende week', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-09-13'));
     app(SaveShiftTypeAction::class)->handle(
         $tenant,
         new SaveShiftTypeData('VL', 'Verlof', null, null, 0, ShiftTypeColor::Rose, true, ShiftTypeKind::Leave),
@@ -728,6 +747,7 @@ it('kopieert afwezigheid niet mee naar de volgende week', function () {
 
 it('parses a unit code in the same cell and snapshots place on save', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-09-13'));
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Site Noord']);
     $unit = Unit::factory()->create([
         'tenant_id' => $tenant->id,
@@ -787,6 +807,7 @@ it('parses a unit code in the same cell and snapshots place on save', function (
 
 it('weigert afwezigheid met groep en dubbele groepscode zonder locatiefilter', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-09-13'));
     $siteA = Location::factory()->create(['tenant_id' => $tenant->id]);
     $siteB = Location::factory()->create(['tenant_id' => $tenant->id]);
     Unit::factory()->create([
@@ -1124,3 +1145,735 @@ it('opent de uurrooster-printpagina in een apart venster-patroon', function () {
         ->assertSee('07:00–15:00', false);
 });
 
+
+// ---- Historische roostervergrendeling (RosterHistoryLock) ----
+
+it('beoordeelt vergrendeling op de app-tijdzone, niet op UTC', function () {
+    // UTC 23:30 op 14 okt = Brussel 15 okt 01:30 (CEST): "vandaag" = de 15e.
+    Carbon::setTestNow(Carbon::parse('2026-10-14 23:30', 'UTC'));
+
+    expect(RosterHistoryLock::today())->toBe('2026-10-15')
+        ->and(RosterHistoryLock::isLockedDate('2026-10-14'))->toBeTrue()
+        ->and(RosterHistoryLock::isLockedDate('2026-10-15'))->toBeFalse()
+        ->and(RosterHistoryLock::isLockedDate('2026-10-16'))->toBeFalse();
+
+    // Een blok tot 23:59 op dag D is op D+1 vergrendeld.
+    $shift = new PlannedShift(['work_date' => '2026-10-14', 'start_time' => '16:00', 'end_time' => '23:59']);
+    expect(RosterHistoryLock::isLocked($shift))->toBeTrue();
+});
+
+it('houdt een gemengde week bewerkbaar: identiek verleden blijft en toekomst schrijft', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-10-15')); // donderdag
+
+    $locked = PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-14',
+        'start_time' => '07:00',
+        'end_time' => '15:00',
+        'description' => 'Vaste notitie',
+        'status' => PlannedShiftStatus::Published,
+    ]);
+
+    $result = app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData('2026-10-12', [$worker->id], scheduleCells([$worker], '2026-10-12', [
+            $worker->id.':2026-10-14' => '07:00-15:00',
+            $worker->id.':2026-10-16' => '09:00-17:00',
+        ])),
+        $admin->id,
+    );
+
+    $fresh = $locked->fresh();
+    expect($result['shifts'])->toHaveCount(1)
+        ->and($result['shifts'][0]->work_date->toDateString())->toBe('2026-10-16')
+        ->and($fresh->id)->toBe($locked->id)
+        ->and($fresh->description)->toBe('Vaste notitie')
+        ->and($fresh->start_time)->toBe('07:00');
+});
+
+it('vlagt wijzigen, legen en aanmaken op vergrendelde dagen in de grid', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-10-15'));
+
+    PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-14',
+        'start_time' => '07:00',
+        'end_time' => '15:00',
+        'status' => PlannedShiftStatus::Published,
+    ]);
+
+    // Wijzigen van een bestaand blok.
+    expect(fn () => app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData('2026-10-12', [$worker->id], scheduleCells([$worker], '2026-10-12', [
+            $worker->id.':2026-10-14' => '08:00-16:00',
+        ])),
+        $admin->id,
+    ))->toThrow(RosterValidationException::class, 'locked_days');
+
+    // Legen van de cel = verwijderpoging.
+    expect(fn () => app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData('2026-10-12', [$worker->id], scheduleCells([$worker], '2026-10-12')),
+        $admin->id,
+    ))->toThrow(RosterValidationException::class, 'locked_days');
+
+    // Nieuw blok op een lege vergrendelde dag van een andere worker.
+    $colleague = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'is_active' => true,
+    ]);
+    expect(fn () => app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData('2026-10-12', [$colleague->id], scheduleCells([$colleague], '2026-10-12', [
+            $colleague->id.':2026-10-14' => '07:00-15:00',
+        ])),
+        $admin->id,
+    ))->toThrow(RosterValidationException::class, 'locked_days');
+
+    // Niets is aangeraakt; de rij van de eerste worker overleeft saves voor
+    // andere workers die hem niet in de payload hebben.
+    $block = PlannedShift::query()->first();
+    expect(PlannedShift::query()->count())->toBe(1)
+        ->and($block->start_time)->toBe('07:00')
+        ->and($block->worker_id)->toBe($worker->id);
+});
+
+it('weigert de dag-editor op een vergrendelde dag, vandaag blijft bewerkbaar', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-10-15'));
+
+    $today = PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-15',
+        'start_time' => '07:00',
+        'end_time' => '15:00',
+        'status' => PlannedShiftStatus::Published,
+    ]);
+
+    expect(fn () => app(SavePlannedDayAction::class)->handle(
+        $tenant,
+        new SavePlannedDayData($worker->id, '2026-10-14', [[
+            'id' => null,
+            'shift_type_id' => null,
+            'start_time' => '07:00',
+            'end_time' => '15:00',
+            'break_minutes' => 0,
+            'unit_id' => null,
+            'description' => null,
+        ]]),
+        $admin->id,
+    ))->toThrow(RosterValidationException::class, 'locked_day');
+
+    app(SavePlannedDayAction::class)->handle(
+        $tenant,
+        new SavePlannedDayData($worker->id, '2026-10-15', [[
+            'id' => $today->id,
+            'shift_type_id' => null,
+            'start_time' => '08:00',
+            'end_time' => '16:00',
+            'break_minutes' => 0,
+            'unit_id' => null,
+            'description' => 'Aangepast',
+        ]]),
+        $admin->id,
+    );
+
+    expect($today->fresh()->start_time)->toBe('08:00');
+});
+
+it('weigert een vervanging op een vergrendelde dag', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-10-15'));
+
+    $leave = app(SaveShiftTypeAction::class)->handle(
+        $tenant,
+        new SaveShiftTypeData('VL', 'Verlof', null, null, 0, ShiftTypeColor::Rose, true, ShiftTypeKind::Leave),
+        $admin->id,
+    );
+    $shift = PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-14',
+        'start_time' => '07:00',
+        'end_time' => '15:00',
+        'status' => PlannedShiftStatus::Published,
+    ]);
+    $replacement = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'is_active' => true,
+    ]);
+
+    expect(fn () => app(ReplacePlannedShiftAction::class)->handle(
+        $tenant,
+        [$shift->id],
+        $replacement->id,
+        $leave->id,
+        $admin->id,
+    ))->toThrow(RosterValidationException::class, 'locked_day');
+});
+
+it('weigert kopiëren naar een verleden week en staat verleden-bron naar toekomst toe', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-10-15'));
+
+    PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-05',
+        'start_time' => '07:00',
+        'end_time' => '15:00',
+    ]);
+
+    expect(fn () => app(CopyWeekAction::class)->handle(
+        $tenant,
+        new CopyWeekData('2026-10-05', '2026-10-12', [$worker->id]),
+        $admin->id,
+    ))->toThrow(RosterValidationException::class, 'locked_day');
+
+    $copied = app(CopyWeekAction::class)->handle(
+        $tenant,
+        new CopyWeekData('2026-10-05', '2026-10-19', [$worker->id]),
+        $admin->id,
+    );
+
+    expect($copied)->toHaveCount(1)
+        ->and($copied[0]->work_date->toDateString())->toBe('2026-10-19')
+        ->and($copied[0]->status)->toBe(PlannedShiftStatus::Draft);
+});
+
+it('publiceert enkel niet-vergrendelde dagen en notificeert enkel geflipte workers', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-10-15'));
+
+    $past = PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-14',
+        'status' => PlannedShiftStatus::Draft,
+    ]);
+    $colleague = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'is_active' => true,
+    ]);
+    $future = PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $colleague->id,
+        'work_date' => '2026-10-16',
+        'status' => PlannedShiftStatus::Draft,
+    ]);
+
+    $count = app(PublishWeekAction::class)->handle(
+        $tenant,
+        new PublishWeekData('2026-10-12', [$worker->id, $colleague->id]),
+        $admin->id,
+    );
+
+    expect($count)->toBe(1)
+        ->and($past->fresh()->status)->toBe(PlannedShiftStatus::Draft)
+        ->and($future->fresh()->status)->toBe(PlannedShiftStatus::Published)
+        ->and(WorkerNotification::query()
+            ->where('worker_id', $colleague->id)
+            ->where('type', WorkerNotificationType::RosterPublished->value)
+            ->count())->toBe(1)
+        ->and(WorkerNotification::query()
+            ->where('worker_id', $worker->id)
+            ->where('type', WorkerNotificationType::RosterPublished->value)
+            ->count())->toBe(0);
+});
+
+// ---- Geauditeerde historische correctie (CorrectPlannedShiftAction) ----
+
+it('corrigeert een vergrendeld blok met reden, audit en notificatie', function () {
+    $this->travelTo(Carbon::parse('2026-10-15 12:00:00'));
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+
+    $shift = PlannedShift::create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-13',
+        'start_time' => '09:00',
+        'end_time' => '17:00',
+        'kind' => ShiftTypeKind::Work,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+
+    $results = app(CorrectPlannedShiftAction::class)->handle(
+        $tenant,
+        [[
+            'type' => 'update',
+            'planned_shift_id' => $shift->id,
+            'block' => ['start_time' => '10:00', 'end_time' => '18:00', 'break_minutes' => 30, 'description' => 'Typefout hersteld'],
+        ]],
+        'Verkeerde tijden ingepland',
+        $admin->id,
+    );
+
+    $fresh = $shift->fresh();
+    expect($fresh->start_time)->toBe('10:00')
+        ->and($fresh->end_time)->toBe('18:00')
+        ->and((int) $fresh->break_minutes)->toBe(30)
+        ->and($fresh->description)->toBe('Typefout hersteld')
+        ->and($fresh->work_date->toDateString())->toBe('2026-10-13')
+        ->and($fresh->status)->toBe(PlannedShiftStatus::Published)
+        ->and($results)->toHaveCount(1);
+
+    $audit = AuditLog::query()->where('action', 'planned_shift.corrected')->latest('id')->first();
+    expect($audit)->not->toBeNull();
+    $payload = $audit->payload;
+    expect($payload['operation'])->toBe('update')
+        ->and($payload['reason'])->toBe('Verkeerde tijden ingepland')
+        ->and($payload['before']['start_time'])->toBe('09:00')
+        ->and($payload['after']['start_time'])->toBe('10:00')
+        ->and($payload['before']['work_date'])->toBe('2026-10-13')
+        ->and($payload['after']['work_date'])->toBe('2026-10-13')
+        ->and((int) $audit->user_id)->toBe($admin->id);
+
+    $note = WorkerNotification::query()
+        ->where('worker_id', $worker->id)
+        ->where('type', WorkerNotificationType::RosterCorrected->value)
+        ->first();
+    expect($note)->not->toBeNull()
+        ->and($note->reference_id)->toBe('2026-10-13:'.$shift->id);
+});
+
+it('weigert correctie zonder reden', function () {
+    $this->travelTo(Carbon::parse('2026-10-15 12:00:00'));
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+
+    $shift = PlannedShift::create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-13',
+        'start_time' => '09:00',
+        'end_time' => '17:00',
+        'kind' => ShiftTypeKind::Work,
+        'status' => PlannedShiftStatus::Draft,
+    ]);
+
+    app(CorrectPlannedShiftAction::class)->handle(
+        $tenant,
+        [['type' => 'update', 'planned_shift_id' => $shift->id, 'block' => ['start_time' => '10:00', 'end_time' => '18:00']]],
+        '   ',
+        $admin->id,
+    );
+})->throws(InvalidArgumentException::class);
+
+it('verwijdert een vergrendeld blok via de correctieroute', function () {
+    $this->travelTo(Carbon::parse('2026-10-15 12:00:00'));
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+
+    $shift = PlannedShift::create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-13',
+        'start_time' => '09:00',
+        'end_time' => '17:00',
+        'kind' => ShiftTypeKind::Work,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+
+    app(CorrectPlannedShiftAction::class)->handle(
+        $tenant,
+        [['type' => 'delete', 'planned_shift_id' => $shift->id]],
+        'Ten onrechte ingepland',
+        $admin->id,
+    );
+
+    expect(PlannedShift::query()->whereKey($shift->id)->exists())->toBeFalse();
+
+    $audit = AuditLog::query()->where('action', 'planned_shift.corrected')->latest('id')->first();
+    expect($audit->payload['operation'])->toBe('delete')
+        ->and($audit->payload['before']['work_date'])->toBe('2026-10-13')
+        ->and($audit->payload['after'])->toBeNull();
+
+    expect(WorkerNotification::query()
+        ->where('worker_id', $worker->id)
+        ->where('type', WorkerNotificationType::RosterCorrected->value)
+        ->where('reference_id', '2026-10-13:'.$shift->id)
+        ->exists())->toBeTrue();
+});
+
+it('maakt een retro-blok aan op een verleden datum via de correctieroute', function () {
+    $this->travelTo(Carbon::parse('2026-10-15 12:00:00'));
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+
+    // Published blok in dezelfde week → nieuw blok erft published-status.
+    PlannedShift::create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-12',
+        'start_time' => '09:00',
+        'end_time' => '17:00',
+        'kind' => ShiftTypeKind::Work,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+
+    $results = app(CorrectPlannedShiftAction::class)->handle(
+        $tenant,
+        [[
+            'type' => 'create',
+            'worker_id' => $worker->id,
+            'block' => ['work_date' => '2026-10-13', 'start_time' => '20:00', 'end_time' => '22:00'],
+        ]],
+        'Avonddienst vergeten in te plannen',
+        $admin->id,
+    );
+
+    $created = PlannedShift::query()
+        ->where('worker_id', $worker->id)
+        ->whereDate('work_date', '2026-10-13')
+        ->first();
+    expect($created)->not->toBeNull()
+        ->and($created->start_time)->toBe('20:00')
+        ->and($created->status)->toBe(PlannedShiftStatus::Published)
+        ->and($results[0]['type'])->toBe('create');
+
+    $audit = AuditLog::query()->where('action', 'planned_shift.corrected')->latest('id')->first();
+    expect($audit->payload['operation'])->toBe('create')
+        ->and($audit->payload['before'])->toBeNull()
+        ->and($audit->payload['after']['work_date'])->toBe('2026-10-13');
+});
+
+it('verplaatst een blok van work_date via de correctieroute en logt beide datums', function () {
+    $this->travelTo(Carbon::parse('2026-10-15 12:00:00'));
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+
+    $shift = PlannedShift::create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-13',
+        'start_time' => '09:00',
+        'end_time' => '12:00',
+        'kind' => ShiftTypeKind::Work,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+
+    app(CorrectPlannedShiftAction::class)->handle(
+        $tenant,
+        [[
+            'type' => 'update',
+            'planned_shift_id' => $shift->id,
+            'block' => ['work_date' => '2026-10-20', 'start_time' => '09:00', 'end_time' => '12:00'],
+        ]],
+        'Dienst stond op de verkeerde dag',
+        $admin->id,
+    );
+
+    expect($shift->fresh()->work_date->toDateString())->toBe('2026-10-20');
+
+    $audit = AuditLog::query()->where('action', 'planned_shift.corrected')->latest('id')->first();
+    expect($audit->payload['before']['work_date'])->toBe('2026-10-13')
+        ->and($audit->payload['after']['work_date'])->toBe('2026-10-20');
+});
+
+it('voert een retro-vervanging atomair uit en notificeert beide workers', function () {
+    $this->travelTo(Carbon::parse('2026-10-15 12:00:00'));
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $colleague = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'is_active' => true,
+    ]);
+
+    $shift = PlannedShift::create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-13',
+        'start_time' => '09:00',
+        'end_time' => '17:00',
+        'kind' => ShiftTypeKind::Work,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+
+    app(CorrectPlannedShiftAction::class)->handle(
+        $tenant,
+        [
+            ['type' => 'delete', 'planned_shift_id' => $shift->id],
+            [
+                'type' => 'create',
+                'worker_id' => $colleague->id,
+                'block' => ['work_date' => '2026-10-13', 'start_time' => '09:00', 'end_time' => '17:00'],
+            ],
+        ],
+        'Vervanging was nooit in het rooster gezet',
+        $admin->id,
+    );
+
+    expect(PlannedShift::query()->whereKey($shift->id)->exists())->toBeFalse()
+        ->and(PlannedShift::query()
+            ->where('worker_id', $colleague->id)
+            ->whereDate('work_date', '2026-10-13')
+            ->exists())->toBeTrue()
+        ->and(WorkerNotification::query()
+            ->where('worker_id', $worker->id)
+            ->where('type', WorkerNotificationType::RosterCorrected->value)
+            ->where('reference_id', '2026-10-13:'.$shift->id)
+            ->exists())->toBeTrue();
+
+    $replacementId = (int) PlannedShift::query()
+        ->where('worker_id', $colleague->id)
+        ->whereDate('work_date', '2026-10-13')
+        ->value('id');
+    expect(WorkerNotification::query()
+        ->where('worker_id', $colleague->id)
+        ->where('type', WorkerNotificationType::RosterCorrected->value)
+        ->where('reference_id', '2026-10-13:'.$replacementId)
+        ->exists())->toBeTrue();
+
+    expect(AuditLog::query()->where('action', 'planned_shift.corrected')->count())->toBe(2);
+});
+
+it('notificeert niet als een latere op in dezelfde call faalt', function () {
+    $this->travelTo(Carbon::parse('2026-10-15 12:00:00'));
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+
+    $shift = PlannedShift::create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-13',
+        'start_time' => '09:00',
+        'end_time' => '17:00',
+        'kind' => ShiftTypeKind::Work,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+
+    try {
+        app(CorrectPlannedShiftAction::class)->handle(
+            $tenant,
+            [
+                ['type' => 'delete', 'planned_shift_id' => $shift->id],
+                ['type' => 'bogus_op', 'planned_shift_id' => 999999],
+            ],
+            'Tweede op faalt',
+            $admin->id,
+        );
+        $this->fail('Verwachte een exceptie');
+    } catch (InvalidArgumentException $e) {
+        expect($e->getMessage())->toBe('time.schedule.errors.correction_unknown_op');
+    }
+
+    // Alles teruggedraaid: blok bestaat nog, geen audit, geen notificatie.
+    expect(PlannedShift::query()->whereKey($shift->id)->exists())->toBeTrue()
+        ->and(AuditLog::query()->where('action', 'planned_shift.corrected')->count())->toBe(0)
+        ->and(WorkerNotification::query()
+            ->where('type', WorkerNotificationType::RosterCorrected->value)
+            ->count())->toBe(0);
+});
+
+it('weigert overlap bij een correctie-create', function () {
+    $this->travelTo(Carbon::parse('2026-10-15 12:00:00'));
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+
+    PlannedShift::create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-13',
+        'start_time' => '09:00',
+        'end_time' => '17:00',
+        'kind' => ShiftTypeKind::Work,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+
+    app(CorrectPlannedShiftAction::class)->handle(
+        $tenant,
+        [[
+            'type' => 'create',
+            'worker_id' => $worker->id,
+            'block' => ['work_date' => '2026-10-13', 'start_time' => '16:00', 'end_time' => '20:00'],
+        ]],
+        'Overlap-test',
+        $admin->id,
+    );
+})->throws(RosterValidationException::class, 'overlap');
+
+it('blijft binnen de eigen tenant', function () {
+    $this->travelTo(Carbon::parse('2026-10-15 12:00:00'));
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $other = Tenant::factory()->create(['has_time_module' => true]);
+    $otherWorker = Worker::factory()->create(['tenant_id' => $other->id, 'is_active' => true]);
+    $foreign = PlannedShift::create([
+        'tenant_id' => $other->id,
+        'worker_id' => $otherWorker->id,
+        'work_date' => '2026-10-13',
+        'start_time' => '09:00',
+        'end_time' => '17:00',
+        'kind' => ShiftTypeKind::Work,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+
+    app(CorrectPlannedShiftAction::class)->handle(
+        $tenant,
+        [['type' => 'delete', 'planned_shift_id' => $foreign->id]],
+        'Tenant-isolatie test',
+        $admin->id,
+    );
+})->throws(RosterValidationException::class, 'unknown_block');
+
+it('laat enkel tenant-admins corrigeren via de policy', function () {
+    $this->travelTo(Carbon::parse('2026-10-15 12:00:00'));
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $employee = User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'role' => User::ROLE_EMPLOYEE,
+    ]);
+    $superuser = User::factory()->create([
+        'tenant_id' => null,
+        'role' => User::ROLE_ADMIN,
+        'is_superuser' => true,
+    ]);
+    $otherAdmin = User::factory()->create([
+        'tenant_id' => Tenant::factory()->create(['has_time_module' => true])->id,
+        'role' => User::ROLE_ADMIN,
+    ]);
+
+    $shift = PlannedShift::create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-13',
+        'start_time' => '09:00',
+        'end_time' => '17:00',
+        'kind' => ShiftTypeKind::Work,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+
+    expect($admin->can('correct', $shift))->toBeTrue()
+        ->and($employee->can('correct', $shift))->toBeFalse()
+        ->and($superuser->can('correct', $shift))->toBeFalse()
+        ->and($otherAdmin->can('correct', $shift))->toBeFalse();
+});
+
+it('toont de dag-editor readonly op een vergrendelde dag en blokkeert opslaan', function () {
+    $this->travelTo(Carbon::parse('2026-10-15 12:00:00'));
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+
+    PlannedShift::create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-13',
+        'start_time' => '09:00',
+        'end_time' => '17:00',
+        'kind' => ShiftTypeKind::Work,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(RosterIndex::class)
+        ->call('openDayEditor', $worker->id, '2026-10-13')
+        ->assertSet('dayEditorLocked', true)
+        ->assertSee(__('time.schedule.day_editor.locked_hint'), false)
+        ->call('saveDayEditor')
+        ->assertSet('dayEditorError', __('time.schedule.errors.locked_day'));
+});
+
+it('laat een tenant-admin een vergrendeld blok corrigeren via de modal', function () {
+    $this->travelTo(Carbon::parse('2026-10-15 12:00:00'));
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+
+    $shift = PlannedShift::create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-13',
+        'start_time' => '09:00',
+        'end_time' => '17:00',
+        'kind' => ShiftTypeKind::Work,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(RosterIndex::class)
+        ->call('openDayEditor', $worker->id, '2026-10-13')
+        ->call('openCorrection', $shift->id)
+        ->set('correctionBlock.start_time', '10:00')
+        ->set('correctionBlock.end_time', '18:00')
+        ->set('correctionReason', 'Tijden klopten niet')
+        ->call('saveCorrection')
+        ->assertSet('correctionError', '')
+        ->assertSet('showCorrectionModal', false);
+
+    expect($shift->fresh()->start_time)->toBe('10:00')
+        ->and(AuditLog::query()->where('action', 'planned_shift.corrected')->count())->toBe(1);
+});
+
+it('weigert niet-admins de correctie-ingang in de UI', function () {
+    $this->travelTo(Carbon::parse('2026-10-15 12:00:00'));
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $employee = User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'role' => User::ROLE_EMPLOYEE,
+    ]);
+
+    $shift = PlannedShift::create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-13',
+        'start_time' => '09:00',
+        'end_time' => '17:00',
+        'kind' => ShiftTypeKind::Work,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+
+    Livewire::actingAs($employee)
+        ->test(RosterIndex::class)
+        ->call('openDayEditor', $worker->id, '2026-10-13')
+        ->assertSet('dayEditorLocked', true)
+        ->call('openCorrection', $shift->id)
+        ->assertForbidden();
+});
+
+it('beoordeelt vergrendeling rond middernacht en DST-overgangen op de app-tijdzone', function () {
+    // Middernacht: gisteren vergrendeld, vandaag bewerkbaar.
+    $this->travelTo(Carbon::parse('2026-10-15 00:30:00', 'Europe/Brussels'));
+    expect(RosterHistoryLock::today())->toBe('2026-10-15')
+        ->and(RosterHistoryLock::isLockedDate('2026-10-14'))->toBeTrue()
+        ->and(RosterHistoryLock::isLockedDate('2026-10-15'))->toBeFalse();
+
+    // Zomertijd→wintertijd (25 okt 2026, klok terug): datumsgrens blijft zuiver.
+    $this->travelTo(Carbon::parse('2026-10-25 10:00:00', 'Europe/Brussels'));
+    expect(RosterHistoryLock::today())->toBe('2026-10-25')
+        ->and(RosterHistoryLock::isLockedDate('2026-10-24'))->toBeTrue()
+        ->and(RosterHistoryLock::isLockedDate('2026-10-25'))->toBeFalse();
+
+    // Wintertijd→zomertijd (29 mrt 2026, klok vooruit): idem.
+    $this->travelTo(Carbon::parse('2026-03-29 10:00:00', 'Europe/Brussels'));
+    expect(RosterHistoryLock::today())->toBe('2026-03-29')
+        ->and(RosterHistoryLock::isLockedDate('2026-03-28'))->toBeTrue()
+        ->and(RosterHistoryLock::isLockedDate('2026-03-29'))->toBeFalse();
+});
+
+it('laat de shift van vandaag bewerkbaar, ook als er al geprikt is', function () {
+    $this->travelTo(Carbon::parse('2026-10-15 12:00:00'));
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $today = '2026-10-15';
+
+    // Bestaande prik op vandaag vergrendelt niets (punch-lock is buiten scope).
+    \App\Models\WorkShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $worker->internal_team_id,
+        'clock_in_at' => Carbon::parse($today.' 07:05:00'),
+        'clock_out_at' => null,
+    ]);
+
+    $result = app(SavePlannedDayAction::class)->handle(
+        $tenant,
+        new SavePlannedDayData((int) $worker->id, $today, [
+            ['start_time' => '07:00', 'end_time' => '15:00'],
+        ]),
+        $admin->id,
+    );
+
+    expect($result['created'])->toBe(1)
+        ->and(PlannedShift::query()
+            ->where('worker_id', $worker->id)
+            ->whereDate('work_date', $today)
+            ->exists())->toBeTrue();
+});

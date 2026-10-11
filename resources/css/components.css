@@ -6765,6 +6765,21 @@ a.wp-kpi.wp-kpi--attention {
     border-left: 2px solid var(--wp-text) !important;
 }
 
+/* Vergrendelde (historische) dagkolom: zacht gestreept + gedempte tekst. */
+.wp-roster-sheet col.wp-roster-col--locked,
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-col--locked {
+    background: repeating-linear-gradient(
+        -45deg,
+        color-mix(in srgb, var(--wp-text) 6%, var(--wp-surface) 94%) 0 6px,
+        color-mix(in srgb, var(--wp-text) 10%, var(--wp-surface) 90%) 6px 12px
+    );
+    color: var(--wp-text-muted, #6b7280);
+}
+
+.wp-roster-sheet .jss_worksheet > thead > tr > td.wp-roster-col--locked {
+    background: color-mix(in srgb, var(--wp-text) 14%, var(--wp-surface-2) 86%);
+}
+
 .wp-roster-sheet--month {
     width: 100%;
 }

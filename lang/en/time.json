@@ -636,6 +636,8 @@
             "invalid_code": "Invalid code. Use letters or digits.",
             "code_taken": "This code already exists.",
             "invalid_cells": "There are invalid cells in the roster. Fix them before saving.",
+            "locked_day": "This day is in the past and locked.",
+            "locked_days": "Some days are in the past and locked.",
             "overlap": "This worker has overlapping shifts.",
             "unknown_worker": "Unknown worker.",
             "cell_out_of_scope": "Cell is outside the visible roster.",
@@ -650,7 +652,12 @@
             "unknown_block": "Unknown block. Refresh the roster and try again.",
             "replacement_not_eligible": "This worker is not available for this replacement.",
             "replacement_no_absence_type": "Choose a valid absence type.",
-            "mixed_replacement_blocks": "Only work blocks of the same day and worker can be replaced."
+            "mixed_replacement_blocks": "Only work blocks of the same day and worker can be replaced.",
+            "correction_reason_required": "A correction reason is required.",
+            "correction_empty": "No correction operations provided.",
+            "correction_unknown_op": "Unknown correction operation.",
+            "correction_missing_block": "Missing block data.",
+            "correction_invalid_date": "Invalid date."
         },
         "types": {
             "add": "Add shift type",
@@ -739,7 +746,20 @@
             "remove_block": "Remove block",
             "add_block": "Add block",
             "unplanned_sessions": "Clocked outside planning",
-            "description": "Note (optional)"
+            "description": "Note (optional)",
+            "locked_hint": "This day is in the past and is locked. Changes are only possible via an audited correction."
+        },
+        "correction": {
+            "open": "Correct",
+            "add_block": "Add block via correction",
+            "title": "Correction — :name",
+            "hint": "This change touches a locked day and is recorded with a reason and old/new values.",
+            "date": "Date",
+            "reason": "Reason (required)",
+            "reason_placeholder": "Why are you correcting this block?",
+            "delete": "Delete",
+            "delete_confirm": "Permanently delete this block? The correction is recorded.",
+            "done": "Correction saved."
         },
         "unavailable": {
             "section_title": "Structural unavailability",

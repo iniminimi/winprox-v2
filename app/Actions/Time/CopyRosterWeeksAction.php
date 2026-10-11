@@ -12,6 +12,7 @@ use App\Models\AbsenceRequest;
 use App\Models\PlannedShift;
 use App\Models\Tenant;
 use App\Models\Worker;
+use App\Support\Time\RosterHistoryLock;
 use App\Support\Time\TimeModuleAccess;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -137,6 +138,13 @@ class CopyRosterWeeksAction
         $targetDates = [];
         for ($i = 0; $i < 7; $i++) {
             $targetDates[] = $targetMonday->copy()->addDays($i)->toDateString();
+        }
+
+        // Historische doeldatums zijn vergrendeld — bron mag wél verleden zijn.
+        foreach ($targetDates as $targetDate) {
+            if (RosterHistoryLock::isLockedDate($targetDate)) {
+                return array_merge($empty, ['message' => 'time.schedule.errors.locked_day']);
+            }
         }
 
         try {

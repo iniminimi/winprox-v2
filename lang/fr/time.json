@@ -636,6 +636,8 @@
             "invalid_code": "Code invalide. Utilisez des lettres ou des chiffres.",
             "code_taken": "Ce code existe déjà.",
             "invalid_cells": "Il y a des cellules invalides. Corrigez-les avant d’enregistrer.",
+            "locked_day": "Ce jour est dans le passé et verrouillé.",
+            "locked_days": "Certains jours sont dans le passé et verrouillés.",
             "overlap": "Cet exécutant a des services qui se chevauchent.",
             "unknown_worker": "Exécutant inconnu.",
             "cell_out_of_scope": "La cellule est hors de l’horaire visible.",
@@ -650,7 +652,12 @@
             "unknown_block": "Bloc inconnu. Actualisez l’horaire et réessayez.",
             "replacement_not_eligible": "Ce travailleur n'est pas disponible pour ce remplacement.",
             "replacement_no_absence_type": "Choisissez un type d'absence valide.",
-            "mixed_replacement_blocks": "Seuls les blocs de travail du même jour et du même travailleur peuvent être remplacés."
+            "mixed_replacement_blocks": "Seuls les blocs de travail du même jour et du même travailleur peuvent être remplacés.",
+            "correction_reason_required": "Un motif de correction est obligatoire.",
+            "correction_empty": "Aucune opération de correction fournie.",
+            "correction_unknown_op": "Opération de correction inconnue.",
+            "correction_missing_block": "Données de bloc manquantes.",
+            "correction_invalid_date": "Date invalide."
         },
         "types": {
             "add": "Ajouter un type",
@@ -739,7 +746,20 @@
             "remove_block": "Supprimer le bloc",
             "add_block": "Ajouter un bloc",
             "unplanned_sessions": "Pointé hors planning",
-            "description": "Note (optionnel)"
+            "description": "Note (optionnel)",
+            "locked_hint": "Ce jour est dans le passé et est verrouillé. Les modifications ne sont possibles que via une correction auditée."
+        },
+        "correction": {
+            "open": "Corriger",
+            "add_block": "Ajouter un bloc via correction",
+            "title": "Correction — :name",
+            "hint": "Cette modification touche un jour verrouillé et est consignée avec un motif et les anciennes/nouvelles valeurs.",
+            "date": "Date",
+            "reason": "Motif (obligatoire)",
+            "reason_placeholder": "Pourquoi corrigez-vous ce bloc ?",
+            "delete": "Supprimer",
+            "delete_confirm": "Supprimer définitivement ce bloc ? La correction est consignée.",
+            "done": "Correction enregistrée."
         },
         "unavailable": {
             "section_title": "Indisponibilité structurelle",

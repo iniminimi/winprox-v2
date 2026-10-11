@@ -258,6 +258,10 @@
                     <p class="wp-flash wp-flash--danger">{{ $dayEditorError }}</p>
                 @endif
 
+                @if ($dayEditorLocked)
+                    <p class="wp-muted">{{ __('time.schedule.day_editor.locked_hint') }}</p>
+                @endif
+
                 <div class="wp-stack">
                     @foreach ($dayEditorBlocks as $i => $block)
                         @php
@@ -268,6 +272,7 @@
                                 class="wp-select"
                                 wire:model.live="dayEditorBlocks.{{ $i }}.shift_type_id"
                                 aria-label="{{ __('time.schedule.day_editor.type') }}"
+                                @disabled($dayEditorLocked)
                             >
                                 <option value="">{{ __('time.schedule.day_editor.custom_time') }}</option>
                                 @foreach ($dayEditorContext['types'] ?? [] as $type)
@@ -290,7 +295,7 @@
                                     maxlength="5"
                                     inputmode="numeric"
                                     autocomplete="off"
-                                    @disabled(($block['shift_type_id'] ?? null) !== null)
+                                    @disabled($dayEditorLocked || ($block['shift_type_id'] ?? null) !== null)
                                 >
                                 <input
                                     type="text"
@@ -301,12 +306,13 @@
                                     maxlength="5"
                                     inputmode="numeric"
                                     autocomplete="off"
-                                    @disabled(($block['shift_type_id'] ?? null) !== null)
+                                    @disabled($dayEditorLocked || ($block['shift_type_id'] ?? null) !== null)
                                 >
                                 <select
                                     class="wp-select"
                                     wire:model="dayEditorBlocks.{{ $i }}.unit_id"
                                     aria-label="{{ __('time.schedule.day_editor.unit') }}"
+                                    @disabled($dayEditorLocked)
                                 >
                                     <option value="">{{ __('time.schedule.day_editor.no_unit') }}</option>
                                     @foreach ($dayEditorContext['units'] ?? [] as $unit)
@@ -315,7 +321,7 @@
                                 </select>
                             @endif
 
-                            @if (! $isAbsence && ($block['id'] ?? null) !== null)
+                            @if (! $dayEditorLocked && ! $isAbsence && ($block['id'] ?? null) !== null)
                                 <button
                                     type="button"
                                     class="btn btn--ghost btn--sm"
@@ -324,12 +330,22 @@
                                     aria-label="{{ __('time.schedule.replacement.find') }}"
                                 >⇄</button>
                             @endif
-                            <button
-                                type="button"
-                                class="btn btn--ghost btn--sm"
-                                wire:click="removeDayEditorBlock({{ $i }})"
-                                aria-label="{{ __('time.schedule.day_editor.remove_block') }}"
-                            >×</button>
+                            @if ($dayEditorLocked && ($block['id'] ?? null) !== null)
+                                @can('correct', \App\Models\PlannedShift::class)
+                                    <button
+                                        type="button"
+                                        class="btn btn--ghost btn--sm"
+                                        wire:click="openCorrection({{ (int) $block['id'] }})"
+                                    >{{ __('time.schedule.correction.open') }}</button>
+                                @endcan
+                            @else
+                                <button
+                                    type="button"
+                                    class="btn btn--ghost btn--sm"
+                                    wire:click="removeDayEditorBlock({{ $i }})"
+                                    aria-label="{{ __('time.schedule.day_editor.remove_block') }}"
+                                >×</button>
+                            @endif
 
                             <input
                                 type="text"
@@ -339,6 +355,7 @@
                                 placeholder="{{ __('time.schedule.day_editor.description') }}"
                                 maxlength="500"
                                 autocomplete="off"
+                                @disabled($dayEditorLocked)
                             >
                         </div>
                     @endforeach
@@ -351,15 +368,23 @@
                             ->all();
                     @endphp
                     <div class="wp-cluster wp-cluster--tight">
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="addDayEditorBlock">
-                            {{ __('time.schedule.day_editor.add_block') }}
-                        </button>
-                        @if (count($savedWorkBlockIds) > 1)
-                            <button
-                                type="button"
-                                class="btn btn--ghost btn--sm"
-                                wire:click="openReplacement(@js($savedWorkBlockIds))"
-                            >{{ __('time.schedule.replacement.find_day') }}</button>
+                        @if ($dayEditorLocked)
+                            @can('correct', \App\Models\PlannedShift::class)
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="openCorrectionCreate">
+                                    {{ __('time.schedule.correction.add_block') }}
+                                </button>
+                            @endcan
+                        @else
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="addDayEditorBlock">
+                                {{ __('time.schedule.day_editor.add_block') }}
+                            </button>
+                            @if (count($savedWorkBlockIds) > 1)
+                                <button
+                                    type="button"
+                                    class="btn btn--ghost btn--sm"
+                                    wire:click="openReplacement(@js($savedWorkBlockIds))"
+                                >{{ __('time.schedule.replacement.find_day') }}</button>
+                            @endif
                         @endif
                     </div>
 
@@ -374,10 +399,143 @@
                 </div>
 
                 <div class="wp-modal-foot">
-                    <button type="button" class="btn btn--primary" wire:click="saveDayEditor">
+                    @if ($dayEditorLocked)
+                        <button type="button" class="btn btn--ghost" wire:click="closeDayEditor">
+                            {{ __('common.button.close') }}
+                        </button>
+                    @else
+                        <button type="button" class="btn btn--primary" wire:click="saveDayEditor">
+                            {{ __('common.button.save') }}
+                        </button>
+                        <button type="button" class="btn btn--ghost" wire:click="closeDayEditor">
+                            {{ __('common.button.cancel') }}
+                        </button>
+                    @endif
+                </div>
+            </div>
+        </x-wp-modal>
+    @endif
+
+    @if ($showCorrectionModal)
+        @php
+            $correctionAbsenceTypeIds = collect($dayEditorContext['types'] ?? [])
+                ->filter(fn (array $type) => ($type['kind'] ?? 'work') !== 'work')
+                ->pluck('id')
+                ->map(fn ($id) => (int) $id)
+                ->all();
+            $correctionIsAbsence = in_array((int) ($correctionBlock['shift_type_id'] ?? 0), $correctionAbsenceTypeIds, true);
+        @endphp
+        <x-wp-modal closeMethod="closeCorrection" aria-labelledby="roster-correction-title">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 id="roster-correction-title" class="wp-section-title">
+                        {{ __('time.schedule.correction.title', [
+                            'name' => $dayEditorContext['worker']['name'] ?? '',
+                        ]) }}
+                    </h2>
+                    <x-wp-modal-close wire:click="closeCorrection" />
+                </div>
+
+                @if ($correctionError !== '')
+                    <p class="wp-flash wp-flash--danger">{{ $correctionError }}</p>
+                @endif
+
+                <p class="wp-muted">{{ __('time.schedule.correction.hint') }}</p>
+
+                <div class="wp-field">
+                    <label class="wp-label" for="roster-correction-date">{{ __('time.schedule.correction.date') }}</label>
+                    <input id="roster-correction-date" type="date" class="wp-input" wire:model="correctionBlock.work_date">
+                </div>
+
+                <div class="wp-roster-day-block">
+                    <select
+                        class="wp-select"
+                        wire:model.live="correctionBlock.shift_type_id"
+                        aria-label="{{ __('time.schedule.day_editor.type') }}"
+                    >
+                        <option value="">{{ __('time.schedule.day_editor.custom_time') }}</option>
+                        @foreach ($dayEditorContext['types'] ?? [] as $type)
+                            <option value="{{ $type['id'] }}">
+                                {{ $type['code'] }} — {{ $type['label'] }}
+                                @if (($type['start'] ?? '') !== '' && ($type['end'] ?? '') !== '')
+                                    ({{ $type['start'] }}–{{ $type['end'] }})
+                                @endif
+                            </option>
+                        @endforeach
+                    </select>
+
+                    @if (! $correctionIsAbsence)
+                        <input
+                            type="text"
+                            class="wp-input"
+                            wire:model="correctionBlock.start_time"
+                            aria-label="{{ __('time.schedule.day_editor.start') }}"
+                            placeholder="08:00"
+                            maxlength="5"
+                            inputmode="numeric"
+                            autocomplete="off"
+                            @disabled(($correctionBlock['shift_type_id'] ?? null) !== null)
+                        >
+                        <input
+                            type="text"
+                            class="wp-input"
+                            wire:model="correctionBlock.end_time"
+                            aria-label="{{ __('time.schedule.day_editor.end') }}"
+                            placeholder="17:00"
+                            maxlength="5"
+                            inputmode="numeric"
+                            autocomplete="off"
+                            @disabled(($correctionBlock['shift_type_id'] ?? null) !== null)
+                        >
+                        <select
+                            class="wp-select"
+                            wire:model="correctionBlock.unit_id"
+                            aria-label="{{ __('time.schedule.day_editor.unit') }}"
+                        >
+                            <option value="">{{ __('time.schedule.day_editor.no_unit') }}</option>
+                            @foreach ($dayEditorContext['units'] ?? [] as $unit)
+                                <option value="{{ $unit['id'] }}">{{ $unit['code'] }} — {{ $unit['name'] }}</option>
+                            @endforeach
+                        </select>
+                    @endif
+
+                    <input
+                        type="text"
+                        class="wp-input wp-input--description"
+                        wire:model="correctionBlock.description"
+                        aria-label="{{ __('time.schedule.day_editor.description') }}"
+                        placeholder="{{ __('time.schedule.day_editor.description') }}"
+                        maxlength="500"
+                        autocomplete="off"
+                    >
+                </div>
+
+                <div class="wp-field">
+                    <label class="wp-label" for="roster-correction-reason">{{ __('time.schedule.correction.reason') }}</label>
+                    <input
+                        id="roster-correction-reason"
+                        type="text"
+                        class="wp-input"
+                        wire:model="correctionReason"
+                        placeholder="{{ __('time.schedule.correction.reason_placeholder') }}"
+                        maxlength="500"
+                        autocomplete="off"
+                    >
+                </div>
+
+                <div class="wp-modal-foot">
+                    <button type="button" class="btn btn--primary" wire:click="saveCorrection">
                         {{ __('common.button.save') }}
                     </button>
-                    <button type="button" class="btn btn--ghost" wire:click="closeDayEditor">
+                    @if (! $correctionIsNew)
+                        <button
+                            type="button"
+                            class="btn btn--ghost"
+                            wire:click="deleteCorrection"
+                            wire:confirm="{{ __('time.schedule.correction.delete_confirm') }}"
+                        >{{ __('time.schedule.correction.delete') }}</button>
+                    @endif
+                    <button type="button" class="btn btn--ghost" wire:click="closeCorrection">
                         {{ __('common.button.cancel') }}
                     </button>
                 </div>

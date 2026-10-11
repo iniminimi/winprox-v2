@@ -636,6 +636,8 @@
             "invalid_code": "Ongeldige code. Gebruik letters of cijfers.",
             "code_taken": "Deze code bestaat al.",
             "invalid_cells": "Er staan ongeldige cellen in het rooster. Corrigeer die vóór opslaan.",
+            "locked_day": "Deze dag ligt in het verleden en is vergrendeld.",
+            "locked_days": "Sommige dagen liggen in het verleden en zijn vergrendeld.",
             "overlap": "Deze uitvoerder heeft overlappende diensten.",
             "unknown_worker": "Onbekende uitvoerder.",
             "cell_out_of_scope": "Cel valt buiten het zichtbare rooster.",
@@ -650,7 +652,12 @@
             "unknown_block": "Onbekend blok. Ververs het rooster en probeer opnieuw.",
             "replacement_not_eligible": "Deze uitvoerder is niet beschikbaar voor deze vervanging.",
             "replacement_no_absence_type": "Kies een geldig afwezigheidstype.",
-            "mixed_replacement_blocks": "Alleen werkblokken van dezelfde dag en uitvoerder kunnen vervangen worden."
+            "mixed_replacement_blocks": "Alleen werkblokken van dezelfde dag en uitvoerder kunnen vervangen worden.",
+            "correction_reason_required": "Een correctiereden is verplicht.",
+            "correction_empty": "Geen correctiebewerkingen opgegeven.",
+            "correction_unknown_op": "Onbekende correctiebewerking.",
+            "correction_missing_block": "Ontbrekende blokgegevens.",
+            "correction_invalid_date": "Ongeldige datum."
         },
         "types": {
             "add": "Shiftype toevoegen",
@@ -739,7 +746,20 @@
             "remove_block": "Blok verwijderen",
             "add_block": "Blok toevoegen",
             "unplanned_sessions": "Ongepland geklokt",
-            "description": "Notitie (optioneel)"
+            "description": "Notitie (optioneel)",
+            "locked_hint": "Deze dag ligt in het verleden en is vergrendeld. Wijzigen kan alleen via een geauditeerde correctie."
+        },
+        "correction": {
+            "open": "Corrigeren",
+            "add_block": "Blok toevoegen via correctie",
+            "title": "Correctie — :name",
+            "hint": "Deze wijziging raakt een vergrendelde dag en wordt vastgelegd met reden en oude/nieuwe waarden.",
+            "date": "Datum",
+            "reason": "Reden (verplicht)",
+            "reason_placeholder": "Waarom corrigeert u dit blok?",
+            "delete": "Verwijderen",
+            "delete_confirm": "Dit blok definitief verwijderen? De correctie wordt vastgelegd.",
+            "done": "Correctie opgeslagen."
         },
         "unavailable": {
             "section_title": "Structurele onbeschikbaarheid",

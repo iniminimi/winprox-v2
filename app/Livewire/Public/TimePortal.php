@@ -562,14 +562,14 @@ class TimePortal extends Component
         $unread = $listNotifications->handle(
             $worker,
             $this->tenantId,
-            [WorkerNotificationType::RosterPublished, WorkerNotificationType::RosterChanged],
+            [WorkerNotificationType::RosterPublished, WorkerNotificationType::RosterChanged, WorkerNotificationType::RosterCorrected],
             true,
         );
         $newest = $unread[0] ?? null;
         $cursor = $newest?->target->cursor ?? now()->toDateString();
         [$monthStart] = $resolveMonth->handle($cursor);
         $this->scheduleMonth = $monthStart->toDateString();
-        $markRead->handle($worker, $this->tenantId, [WorkerNotificationType::RosterPublished, WorkerNotificationType::RosterChanged]);
+        $markRead->handle($worker, $this->tenantId, [WorkerNotificationType::RosterPublished, WorkerNotificationType::RosterChanged, WorkerNotificationType::RosterCorrected]);
         $this->scheduleListOpen = true;
     }
 
@@ -1868,7 +1868,7 @@ class TimePortal extends Component
             $scheduleUnreadCount = count($listNotifications->handle(
                 $verifiedWorker,
                 $this->tenantId,
-                [WorkerNotificationType::RosterPublished, WorkerNotificationType::RosterChanged],
+                [WorkerNotificationType::RosterPublished, WorkerNotificationType::RosterChanged, WorkerNotificationType::RosterCorrected],
                 true,
             ));
             if ($this->scheduleListOpen) {
