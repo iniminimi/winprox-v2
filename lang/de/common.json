@@ -76,6 +76,7 @@
     "qr": {
         "button": "QR",
         "modal_title": "QR",
+        "modal_subtitle": ":name — Dies ist der QR-Code zum Anmelden",
         "print_heading": "Ansehen",
         "print": "Ansehen / drucken",
         "print_hint": "Öffnen Sie den QR im Browser, um ihn sofort zu drucken.",

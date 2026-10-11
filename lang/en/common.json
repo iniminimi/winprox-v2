@@ -76,6 +76,7 @@
     "qr": {
         "button": "QR",
         "modal_title": "QR",
+        "modal_subtitle": ":name — This is the QR code to sign in",
         "print_heading": "View",
         "print": "View / print",
         "print_hint": "Open the QR in the browser to print it right away.",

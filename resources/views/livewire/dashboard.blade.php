@@ -173,7 +173,7 @@
                 closeMethod="closeCheckmateClockPointQr"
                 title-id="checkmate-dashboard-clock-point-qr-modal-title"
                 :title="__('common.qr.modal_title')"
-                :subtitle="$checkmateQrClockPoint->name"
+                :subtitle="__('common.qr.modal_subtitle', ['name' => $checkmateQrClockPoint->name])"
                 :print-url="route('time.clock-points.qr', $checkmateQrClockPoint)"
                 :print-label="__('common.qr.print')"
                 :formats="collect($checkmateQrPackTemplates)->map(fn ($template) => [

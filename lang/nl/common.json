@@ -76,6 +76,7 @@
     "qr": {
         "button": "QR",
         "modal_title": "QR",
+        "modal_subtitle": ":name — Dit is de QR-code om aan te melden",
         "print_heading": "Bekijken",
         "print": "Bekijken / afdrukken",
         "print_hint": "Open de QR in de browser om meteen af te drukken.",

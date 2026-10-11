@@ -76,6 +76,7 @@
     "qr": {
         "button": "QR",
         "modal_title": "QR",
+        "modal_subtitle": ":name — Ceci est le QR code pour vous identifier",
         "print_heading": "Afficher",
         "print": "Afficher / imprimer",
         "print_hint": "Ouvrez le QR dans le navigateur pour l'imprimer tout de suite.",

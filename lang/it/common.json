@@ -76,6 +76,7 @@
     "qr": {
         "button": "QR",
         "modal_title": "QR",
+        "modal_subtitle": ":name — Questo è il codice QR per accedere",
         "print_heading": "Visualizza",
         "print": "Visualizza / stampa",
         "print_hint": "Apri il QR nel browser per stamparlo subito.",

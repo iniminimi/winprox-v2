@@ -15,7 +15,7 @@
 ])
 
 <x-wp-modal :closeMethod="$closeMethod" :aria-labelledby="$titleId">
-    <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+    <div class="wp-card wp-card-pad wp-stack wp-modal-card wp-modal-card--wide">
         <div class="wp-modal-head">
             <h2 id="{{ $titleId }}" class="wp-section-title">{{ $title }}</h2>
             <x-wp-modal-close wire:click="{{ $closeMethod }}" />
@@ -24,6 +24,8 @@
         @if ($subtitle)
             <p class="wp-muted">{{ $subtitle }}</p>
         @endif
+
+        {{ $email ?? '' }}
 
         @if ($printUrl)
             <div class="wp-modal-section">
@@ -38,8 +40,6 @@
                 </div>
             </div>
         @endif
-
-        {{ $email ?? '' }}
 
         @if ($formats !== [])
             <div class="wp-modal-section">
