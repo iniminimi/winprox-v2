@@ -206,7 +206,7 @@
             "slug": "user_roles",
             "type": "roles",
             "title": "Comment fonctionnent les différents utilisateurs ?",
-            "summary": "Administrateur : contrôle total et abonnement. Collaborateur : suivi quotidien. Exécutant : travail terrain via Clock Point et QR sans connexion.",
+            "summary": "Administrateur : contrôle total et abonnement. Collaborateur : suivi quotidien. Exécutant : travail terrain via Clock Point et QR sans connexion. Chef d’équipe (optionnel) : gère icônes et appareils sur Clock Point.",
             "roles": [
                 {
                     "title": "Administrateur",
@@ -219,6 +219,10 @@
                 {
                     "title": "Exécutant",
                     "text": "Travaille sans connexion WinProx. Identification via QR Clock Point (nom + icône, PIN optionnel) sur un téléphone ; démarre/termine les tâches via le QR unité, avec photos et notes. Un QR d’unité déjà ouvert reste utilisable sans réseau ; le pointage Clock Point non."
+                },
+                {
+                    "title": "Chef d’équipe",
+                    "text": "Marque optionnelle sur un exécutant (Personnes → Équipes → Modifier). Sur Clock Point apparaît la tuile Chef d’équipe : libérer l’icône d’un collègue bloqué, ajouter des exécutants et autoriser un téléphone nouveau ou temporaire. Il ne peut supprimer que les exécutants qu’il a lui-même créés."
                 }
             ]
         },
@@ -310,7 +314,7 @@
             "slug": "stickers",
             "type": "text",
             "title": "Quels stickers puis-je utiliser ?",
-            "body": "Pour l'impression, nous recommandons Avery ou Herma (A4). Dans Sites, téléchargez une feuille d'étiquettes (Word) au bon format. Définissez éventuellement un fond d'étiquette ou logo organisation sous Paramètres.",
+            "body": "Pour l'impression, choisissez dans Sites une feuille d'étiquettes (Word) : étiquettes Avery 55×55 ou Herma 70×50, Avery 62×89 personnalisée (logo/fond), ou une page imprimable A6, A5 ou A4. Définissez éventuellement un fond d'étiquette ou logo organisation sous Paramètres.",
             "summary": "Avery/Herma A4 ; feuille d'étiquettes depuis Sites ; logo/fond optionnel dans Paramètres."
         },
         "style": {

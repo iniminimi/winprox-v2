@@ -206,7 +206,7 @@
             "slug": "user_roles",
             "type": "roles",
             "title": "Come funzionano i diversi utenti?",
-            "summary": "Amministratore: controllo completo e abbonamento. Collaboratore: follow-up quotidiano. Esecutore: lavoro sul campo via Clock Point e QR senza login.",
+            "summary": "Amministratore: controllo completo e abbonamento. Collaboratore: follow-up quotidiano. Esecutore: lavoro sul campo via Clock Point e QR senza login. Caposquadra (opzionale): gestisce icone e dispositivi sul Clock Point.",
             "roles": [
                 {
                     "title": "Amministratore",
@@ -219,6 +219,10 @@
                 {
                     "title": "Esecutore",
                     "text": "Lavora senza login WinProx. Accesso tramite QR Clock Point (nome + icona, PIN opzionale) su un telefono; avvia/chiude attività tramite QR unità, con foto e note. Un QR unità già aperto resta usabile senza rete; la timbratura Clock Point no."
+                },
+                {
+                    "title": "Caposquadra",
+                    "text": "Contrassegno opzionale su un esecutore (Persone → Team → Modifica). Sul Clock Point compare la scheda Caposquadra: sbloccare l'icona di un collega bloccato, aggiungere esecutori e consentire un telefono nuovo o temporaneo. Può eliminare solo gli esecutori creati da lui."
                 }
             ]
         },
@@ -310,7 +314,7 @@
             "slug": "stickers",
             "type": "text",
             "title": "Quali adesivi posso usare?",
-            "body": "Per la stampa consigliamo etichette Avery o Herma (A4). In Sedi scarichi un foglio adesivi (Word) nel formato corretto. Opzionalmente imposti sfondo adesivo o logo organizzazione in Impostazioni.",
+            "body": "Per la stampa scegli in Sedi un foglio adesivi (Word): etichette Avery 55×55 o Herma 70×50, Avery 62×89 personalizzata (con logo/sfondo) o una pagina stampabile A6, A5 o A4. Opzionalmente imposti sfondo adesivo o logo organizzazione in Impostazioni.",
             "summary": "Avery/Herma A4; foglio adesivi da Sedi; logo/sfondo opzionale in Impostazioni."
         },
         "style": {

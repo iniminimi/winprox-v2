@@ -210,7 +210,7 @@
             "slug": "user_roles",
             "type": "roles",
             "title": "Hoe werken de verschillende gebruikers?",
-            "summary": "Beheerder: volledige controle en abonnement. Medewerker: dagelijkse opvolging. Uitvoerder: veldwerk via Clock Point en QR zonder login.",
+            "summary": "Beheerder: volledige controle en abonnement. Medewerker: dagelijkse opvolging. Uitvoerder: veldwerk via Clock Point en QR zonder login. Teamleader (optioneel): beheert iconen en toestellen op Clock Point.",
             "roles": [
                 {
                     "title": "Beheerder",
@@ -223,6 +223,10 @@
                 {
                     "title": "Uitvoerder",
                     "text": "Werkt zonder WinProx-login. Aanmelden via Clock Point-QR (naam + icoon, optioneel pincode) op één gsm; taken starten/afronden via de unit-QR, met foto's en notities. Een geladen unit-QR blijft bruikbaar zonder bereik; in-/uitklokken op Clock Point niet."
+                },
+                {
+                    "title": "Teamleader",
+                    "text": "Optionele vlag op een uitvoerder (Personen → Teams → Bewerken). Op Clock Point verschijnt de tegel Teamleader: icoon van een geblokkeerde collega vrijgeven, uitvoerders toevoegen en een nieuw of tijdelijk toestel toestaan. Verwijderen kan alleen bij uitvoerders die hij zelf heeft aangemaakt."
                 }
             ]
         },
@@ -314,7 +318,7 @@
             "slug": "stickers",
             "type": "text",
             "title": "Welke stickers kan ik gebruiken?",
-            "body": "Voor printen adviseren we Avery- of Herma-labels (A4). In Locaties downloadt u een stickerblad (Word) met het juiste formaat. Optioneel stelt u onder Instellingen een stickerachtergrond of organisatielogo in.",
+            "body": "Voor printen kiest u in Locaties een stickerblad (Word): Avery-55×55- of Herma-70×50-labels, een gelabelde Avery 62×89 (met logo/achtergrond) of een afdrukbare pagina A6, A5 of A4. Optioneel stelt u onder Instellingen een stickerachtergrond of organisatielogo in.",
             "summary": "Avery/Herma A4; stickerblad vanuit Locaties; optioneel logo/achtergrond in Instellingen."
         },
         "style": {

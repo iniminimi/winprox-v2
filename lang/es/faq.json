@@ -206,7 +206,7 @@
             "slug": "user_roles",
             "type": "roles",
             "title": "¿Cómo funcionan los distintos usuarios?",
-            "summary": "Administrador: control total y suscripción. Personal: seguimiento diario. Operario: trabajo de campo vía Clock Point y QR sin login.",
+            "summary": "Administrador: control total y suscripción. Personal: seguimiento diario. Operario: trabajo de campo vía Clock Point y QR sin login. Jefe de equipo (opcional): gestiona iconos y dispositivos en Clock Point.",
             "roles": [
                 {
                     "title": "Administrador",
@@ -219,6 +219,10 @@
                 {
                     "title": "Operario",
                     "text": "Trabaja sin inicio de sesión WinProx. Se identifica con el QR Clock Point (nombre + icono, PIN opcional) en un móvil; inicia/cierra tareas con el QR de unidad, con fotos y notas. Un QR de unidad ya abierto sigue usable sin cobertura; fichar en Clock Point no."
+                },
+                {
+                    "title": "Jefe de equipo",
+                    "text": "Marca opcional en un operario (Personas → Equipos → Editar). En Clock Point aparece la ficha Jefe de equipo: liberar el icono de un compañero bloqueado, añadir operarios y permitir un móvil nuevo o temporal. Solo puede eliminar operarios creados por él mismo."
                 }
             ]
         },
@@ -310,7 +314,7 @@
             "slug": "stickers",
             "type": "text",
             "title": "¿Qué pegatinas puedo usar?",
-            "body": "Para imprimir recomendamos etiquetas Avery o Herma (A4). En Sitios descargue una hoja de pegatinas (Word) en el formato correcto. Opcionalmente configure fondo de pegatina o logo de organización en Ajustes.",
+            "body": "Para imprimir, elige en Sitios una hoja de pegatinas (Word): etiquetas Avery 55×55 o Herma 70×50, Avery 62×89 personalizada (con logo/fondo) o una página imprimible A6, A5 o A4. Opcionalmente configure fondo de pegatina o logo de organización en Ajustes.",
             "summary": "Avery/Herma A4; hoja de pegatinas desde Sitios; logo/fondo opcional en Ajustes."
         },
         "style": {

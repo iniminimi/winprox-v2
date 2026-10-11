@@ -206,7 +206,7 @@
             "slug": "user_roles",
             "type": "roles",
             "title": "Wie funktionieren die verschiedenen Benutzer?",
-            "summary": "Administrator: volle Kontrolle und Abonnement. Mitarbeiter: tägliche Nachverfolgung. Ausführender: Außendienst über Clock Point und QR ohne Login.",
+            "summary": "Administrator: volle Kontrolle und Abonnement. Mitarbeiter: tägliche Nachverfolgung. Ausführender: Außendienst über Clock Point und QR ohne Login. Teamleiter (optional): verwaltet Symbole und Geräte am Clock Point.",
             "roles": [
                 {
                     "title": "Administrator",
@@ -219,6 +219,10 @@
                 {
                     "title": "Ausführender",
                     "text": "Arbeitet ohne WinProx-Login. Anmeldung über Clock-Point-QR (Name + Symbol, optionale PIN) auf einem Handy; Aufgaben starten/abschließen über den Unit-QR, mit Fotos und Notizen. Ein geladener Unit-QR bleibt ohne Empfang nutzbar; Ein-/Ausstempeln am Clock Point nicht."
+                },
+                {
+                    "title": "Teamleiter",
+                    "text": "Optionale Markierung auf einem Ausführenden (Personen → Teams → Bearbeiten). Am Clock Point erscheint die Kachel Teamleiter: Symbol eines gesperrten Kollegen freigeben, Ausführende hinzufügen und ein neues oder vorübergehendes Gerät zulassen. Löschen kann er nur Ausführende, die er selbst angelegt hat."
                 }
             ]
         },
@@ -310,7 +314,7 @@
             "slug": "stickers",
             "type": "text",
             "title": "Welche Aufkleber kann ich verwenden?",
-            "body": "Zum Drucken empfehlen wir Avery- oder Herma-Etiketten (A4). Unter Standorte laden Sie ein Etikettenblatt (Word) im passenden Format herunter. Optional stellen Sie unter Einstellungen einen Etikettenhintergrund oder Organisationslogo ein.",
+            "body": "Zum Drucken wählen Sie unter Standorte ein Etikettenblatt (Word): Avery-55×55- oder Herma-70×50-Etiketten, gebrandete Avery 62×89 (mit Logo/Hintergrund) oder eine druckbare Seite A6, A5 oder A4. Optional stellen Sie unter Einstellungen einen Etikettenhintergrund oder Organisationslogo ein.",
             "summary": "Avery/Herma A4; Etikettenblatt aus Standorte; optionales Logo/Hintergrund in Einstellungen."
         },
         "style": {

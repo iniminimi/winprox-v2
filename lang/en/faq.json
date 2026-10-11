@@ -210,7 +210,7 @@
             "slug": "user_roles",
             "type": "roles",
             "title": "How do the different users work?",
-            "summary": "Administrator: full control and subscription. Staff member: daily follow-up. Field worker: field work via Clock Point and QR without login.",
+            "summary": "Administrator: full control and subscription. Staff member: daily follow-up. Field worker: field work via Clock Point and QR without login. Team leader (optional): manages icons and devices on Clock Point.",
             "roles": [
                 {
                     "title": "Administrator",
@@ -223,6 +223,10 @@
                 {
                     "title": "Field worker",
                     "text": "Works without a WinProx login. Signs in via Clock Point QR (name + icon, optional PIN) on one phone; starts/completes tasks via the unit QR, with photos and notes. A loaded unit QR stays usable without coverage; clock in/out at Clock Point does not."
+                },
+                {
+                    "title": "Team leader",
+                    "text": "Optional flag on a worker (People → Teams → Edit). On Clock Point the Team leader tile appears: release a blocked colleague's icon, add workers and allow a new or temporary phone. They can only delete workers they created themselves."
                 }
             ]
         },
@@ -314,7 +318,7 @@
             "slug": "stickers",
             "type": "text",
             "title": "Which stickers can I use?",
-            "body": "For printing we recommend Avery or Herma labels (A4). In Sites, download a sticker sheet (Word) in the correct format. Optionally set a sticker background or organisation logo under Settings.",
+            "body": "For printing, pick a sticker sheet (Word) in Sites: Avery 55×55 or Herma 70×50 labels, a branded Avery 62×89 (with logo/background), or a printable A6, A5 or A4 page. Optionally set a sticker background or organisation logo under Settings.",
             "summary": "Avery/Herma A4; sticker sheet from Sites; optional logo/background in Settings."
         },
         "style": {

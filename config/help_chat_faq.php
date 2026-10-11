@@ -68,6 +68,25 @@ return [
             'body_key' => 'faq.items.checkmate.summary',
         ],
         [
+            'patterns' => [
+                'ddt', 'aangifte van werken', 'declaration of works',
+                'déclaration de travaux', 'declaración de obras', 'dichiarazione di lavori',
+                'werkmeldung', 'werk-meldung',
+            ],
+            'body_key' => 'faq.items.ddt_number.summary',
+        ],
+        [
+            'patterns' => ['ciao', 'rsz', 'onss', 'nsso', 'lss', 'sociale zekerheid'],
+            'body_key' => 'faq.items.time_clock.summary',
+        ],
+        [
+            'patterns' => [
+                'klokscherm', 'clock display', 'klok scherm', 'uhrdisplay',
+                'werkbezoek', 'klantbezoek', 'work visit',
+            ],
+            'body_key' => 'faq.items.time_clock.summary',
+        ],
+        [
             'patterns' => ['melding', 'issue', 'report', 'signalement', 'inciden'],
             'body_key' => 'faq.items.how_it_works.summary',
         ],
