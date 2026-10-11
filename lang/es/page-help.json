@@ -1921,7 +1921,7 @@
                 {
                     "label": "Operarios",
                     "nested": true,
-                    "text": "Número de operarios activos. Abre la lista de equipos y operarios."
+                    "text": "Número de operarios activos. Abre la lista de equipos y operarios. Si aparece “(x sin NISS)”, esos operarios no tienen número de registro nacional (necesario para CIAO)."
                 },
                 {
                     "label": "Plazas en uso",

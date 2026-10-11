@@ -1929,7 +1929,7 @@
                 {
                     "label": "Exécutants",
                     "nested": true,
-                    "text": "Nombre d'exécutants actifs. Ouvre la liste des équipes et exécutants."
+                    "text": "Nombre d'exécutants actifs. Ouvre la liste des équipes et exécutants. Si « (x sans NISS) » s’affiche, ces exécutants n’ont pas de numéro national (requis pour CIAO)."
                 },
                 {
                     "label": "Sièges utilisés",

@@ -1921,7 +1921,7 @@
                 {
                     "label": "Workers",
                     "nested": true,
-                    "text": "Number of active workers. Opens the teams and workers list."
+                    "text": "Number of active workers. Opens the teams and workers list. If “(x without NISS)” appears, those workers lack a national register number (needed for CIAO)."
                 },
                 {
                     "label": "Seats in use",

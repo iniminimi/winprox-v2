@@ -175,6 +175,7 @@
       "seats": "Plazas en uso",
       "customers": "Clientes activos",
       "workers": "Operarios",
+      "workers_missing_ssin": "(:count sin NISS)",
       "clock_point_qr": "QR del Clock Point",
       "clock_point_qr_body": "Deje que sus operarios empiecen con el código QR."
     },

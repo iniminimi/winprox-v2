@@ -175,6 +175,7 @@
       "seats": "Licenze in uso",
       "customers": "Clienti attivi",
       "workers": "Operatori",
+      "workers_missing_ssin": "(:count senza NISS)",
       "clock_point_qr": "QR del Clock Point",
       "clock_point_qr_body": "Fate iniziare i vostri operatori con il codice QR."
     },

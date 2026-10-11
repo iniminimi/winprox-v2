@@ -44,6 +44,12 @@ class BuildCheckmateDashboardDataAction
             ->where('is_active', true)
             ->count();
 
+        $workersMissingSsin = Worker::query()
+            ->where('tenant_id', $tenantId)
+            ->where('is_active', true)
+            ->where(fn ($query) => $query->whereNull('ssin')->orWhere('ssin', ''))
+            ->count();
+
         // Seats = collega's (admin/medewerker) + uitvoerders — billing-basis.
         // Los van het aantal uitvoerders zelf (kpi 'workers').
         $seatsQty = $tenant->billing_seats_qty ?? $tenant->maxSeatsLimit();
@@ -113,6 +119,9 @@ class BuildCheckmateDashboardDataAction
                     'tone' => 'open_tasks',
                     'label' => 'dashboard.checkmate.kpi.workers',
                     'value' => (string) $activeWorkers,
+                    'meta' => $workersMissingSsin > 0
+                        ? __('dashboard.checkmate.kpi.workers_missing_ssin', ['count' => $workersMissingSsin])
+                        : null,
                     'href' => route('team.index', ['section' => 'teams']),
                 ],
                 [

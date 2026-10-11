@@ -115,6 +115,9 @@
                                 <p class="wp-kpi-kicker">{{ __($kpi['label']) }}</p>
                                 <p class="wp-kpi-stats">
                                     <span class="wp-kpi-value wp-tabular">{{ $kpi['value'] ?? '' }}</span>
+                                    @if (! empty($kpi['meta']))
+                                        <span class="wp-kpi-meta">{{ $kpi['meta'] }}</span>
+                                    @endif
                                 </p>
                             </div>
                         </div>

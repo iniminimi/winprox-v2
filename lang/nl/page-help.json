@@ -1921,7 +1921,7 @@
                 {
                     "label": "Uitvoerders",
                     "nested": true,
-                    "text": "Aantal actieve uitvoerders. Opent de teams- en uitvoerderlijst."
+                    "text": "Aantal actieve uitvoerders. Opent de teams- en uitvoerderlijst. Staat er “(x zonder RRN)” bij, dan missen die uitvoerders hun rijksregisternummer (nodig voor CIAO)."
                 },
                 {
                     "label": "Seats in gebruik",

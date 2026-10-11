@@ -175,6 +175,7 @@
       "seats": "Seats in use",
       "customers": "Active customers",
       "workers": "Workers",
+      "workers_missing_ssin": "(:count without NISS)",
       "clock_point_qr": "Clock Point QR",
       "clock_point_qr_body": "Let your workers get started with the QR code."
     },

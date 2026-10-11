@@ -1921,7 +1921,7 @@
                 {
                     "label": "Operatori",
                     "nested": true,
-                    "text": "Numero di operatori attivi. Apre l’elenco di team e operatori."
+                    "text": "Numero di operatori attivi. Apre l’elenco di team e operatori. Se compare “(x senza NISS)”, a quegli operatori manca il numero di registro nazionale (necessario per CIAO)."
                 },
                 {
                     "label": "Licenze in uso",

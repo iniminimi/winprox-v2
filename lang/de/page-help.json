@@ -1921,7 +1921,7 @@
                 {
                     "label": "Mitarbeiter",
                     "nested": true,
-                    "text": "Anzahl aktiver Mitarbeiter. Öffnet die Team- und Mitarbeiterliste."
+                    "text": "Anzahl aktiver Mitarbeiter. Öffnet die Team- und Mitarbeiterliste. Steht dort „(x ohne NISS)“, fehlt diesen Mitarbeitern die Nationalregisternummer (für CIAO erforderlich)."
                 },
                 {
                     "label": "Lizenzen in Gebrauch",

@@ -175,6 +175,7 @@
       "seats": "Seats in gebruik",
       "customers": "Actieve klanten",
       "workers": "Uitvoerders",
+      "workers_missing_ssin": "(:count zonder RRN)",
       "clock_point_qr": "Clock Point QR",
       "clock_point_qr_body": "Laat uw werknemers beginnen met de QR-code."
     },

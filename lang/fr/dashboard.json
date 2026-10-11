@@ -175,6 +175,7 @@
       "seats": "Sièges utilisés",
       "customers": "Clients actifs",
       "workers": "Exécutants",
+      "workers_missing_ssin": "(:count sans NISS)",
       "clock_point_qr": "QR Clock Point",
       "clock_point_qr_body": "Faites démarrer vos exécutants avec le code QR."
     },

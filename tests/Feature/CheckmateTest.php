@@ -1129,6 +1129,22 @@ it('toont het checkmate-dashboard met veldwerk-tegels en zonder facility-links',
         ->assertDontSee(route('issues.index'));
 });
 
+it('toont op de uitvoerders-tegel hoeveel actieve uitvoerders geen RRN hebben', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+    $worker = checkmateWorker($tenant);
+
+    $this->actingAs($admin)->get('/dashboard')
+        ->assertOk()
+        ->assertSee(__('dashboard.checkmate.kpi.workers_missing_ssin', ['count' => 1]));
+
+    $worker->update(['ssin' => '85010112345']);
+
+    $this->actingAs($admin)->get('/dashboard')
+        ->assertOk()
+        ->assertDontSee(__('dashboard.checkmate.kpi.workers_missing_ssin', ['count' => 1]));
+});
+
 it('opent de Clock Point-QR-popup vanaf de KPI-tegel met pulse tot de eerste dienst', function () {
     $tenant = checkmateTenant();
     Tenancy::actAs($tenant->id);

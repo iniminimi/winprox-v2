@@ -175,6 +175,7 @@
       "seats": "Lizenzen in Gebrauch",
       "customers": "Aktive Kunden",
       "workers": "Mitarbeiter",
+      "workers_missing_ssin": "(:count ohne NISS)",
       "clock_point_qr": "Clock-Point-QR",
       "clock_point_qr_body": "Lassen Sie Ihre Mitarbeiter mit dem QR-Code starten."
     },
