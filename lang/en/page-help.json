@@ -1905,16 +1905,42 @@
                     "text": "Your day starts here: shortcuts to a new customer or worker, the Clock Point link and today's presence. Below that, the latest customer visits."
                 },
                 {
-                    "label": "KPIs",
-                    "text": "Tiles showing who is present now, today's visits, your seats and the number of active customers. Each tile links to the matching screen."
+                    "label": "Tiles",
+                    "text": "Each tile shows a count or status; clicking it opens the matching screen."
                 },
                 {
-                    "label": "CIAO banner",
-                    "text": "As long as NSSO submission is not active yet, a banner shows the status of your request. Registrations only start after confirmation; punches from before that are not sent to the NSSO."
+                    "label": "Present now",
+                    "nested": true,
+                    "text": "Workers with an open shift who are not on a break. Opens the presence board."
                 },
                 {
-                    "label": "Getting started",
-                    "text": "As long as there are no workers or customers yet, cards guide you to the first worker and the first customer."
+                    "label": "Visits today",
+                    "nested": true,
+                    "text": "Customer visits started today. Opens the shifts list."
+                },
+                {
+                    "label": "Workers",
+                    "nested": true,
+                    "text": "Number of active workers. Opens the teams and workers list."
+                },
+                {
+                    "label": "Seats in use",
+                    "nested": true,
+                    "text": "Occupied seats versus your limit. Opens the subscription screen."
+                },
+                {
+                    "label": "Active customers",
+                    "nested": true,
+                    "text": "Number of active customers. Opens the customer list."
+                },
+                {
+                    "label": "Clock Point QR",
+                    "nested": true,
+                    "text": "Not a counter but a button: opens the Clock Point QR to show, print or email. Pulses until the first shift has run."
+                },
+                {
+                    "label": "Recent activity",
+                    "text": "The eight most recent customer visits, newest first: worker, customer and work address, with start and end time — or just the start time while the visit is still running. 'Running' links to the presence list, 'Done' to the shifts list. The 'Open presence' button top right opens the live board."
                 }
             ]
         },

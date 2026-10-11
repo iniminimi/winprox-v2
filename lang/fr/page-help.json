@@ -1913,16 +1913,42 @@
                     "text": "Votre journée commence ici : raccourcis vers un nouveau client ou exécutant, le lien Clock Point et la présence du jour. En dessous, les dernières visites clients."
                 },
                 {
-                    "label": "KPI",
-                    "text": "Tuiles avec qui est présent maintenant, les visites du jour, vos sièges et le nombre de clients actifs. Chaque tuile mène vers l'écran correspondant."
+                    "label": "Tuiles",
+                    "text": "Chaque tuile affiche un nombre ou un statut ; un clic ouvre l'écran correspondant."
                 },
                 {
-                    "label": "Bannière CIAO",
-                    "text": "Tant que la transmission ONSS n'est pas active, une bannière montre l'état de votre demande. Les enregistrements ne démarrent qu'après confirmation ; les pointages antérieurs ne partent pas vers l'ONSS."
+                    "label": "Présents",
+                    "nested": true,
+                    "text": "Exécutants avec une intervention ouverte qui ne sont pas en pause. Ouvre le tableau de présence."
                 },
                 {
-                    "label": "Pour commencer",
-                    "text": "Tant qu'il n'y a pas encore d'exécutants ni de clients, des cartes vous guident vers le premier exécutant et le premier client."
+                    "label": "Visites aujourd’hui",
+                    "nested": true,
+                    "text": "Visites clients commencées aujourd'hui. Ouvre la liste des interventions."
+                },
+                {
+                    "label": "Exécutants",
+                    "nested": true,
+                    "text": "Nombre d'exécutants actifs. Ouvre la liste des équipes et exécutants."
+                },
+                {
+                    "label": "Sièges utilisés",
+                    "nested": true,
+                    "text": "Sièges occupés par rapport à votre limite. Ouvre l'écran d'abonnement."
+                },
+                {
+                    "label": "Clients actifs",
+                    "nested": true,
+                    "text": "Nombre de clients actifs. Ouvre la liste des clients."
+                },
+                {
+                    "label": "QR Clock Point",
+                    "nested": true,
+                    "text": "Pas un compteur mais un bouton : affiche le QR du Clock Point à montrer, imprimer ou envoyer par e-mail. Pulse tant qu'aucune intervention n'a eu lieu."
+                },
+                {
+                    "label": "Dernière activité",
+                    "text": "Les huit dernières visites clients, la plus récente d'abord : exécutant, client et adresse de chantier, avec heure de début et de fin — ou seulement l'heure de début si la visite est en cours. 'En cours' mène à la liste de présence, 'Terminé' à la liste des interventions. Le bouton 'Ouvrir la présence' en haut à droite ouvre le tableau en direct."
                 }
             ]
         },

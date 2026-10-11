@@ -1905,16 +1905,42 @@
                     "text": "Je dag begint hier: snelkoppelingen naar een nieuwe klant of uitvoerder, de Clock Point-link en de aanwezigheid van vandaag. Daaronder de laatste klantbezoeken."
                 },
                 {
-                    "label": "KPI's",
-                    "text": "Tegels met wie nu aanwezig is, de bezoeken van vandaag, je seats en het aantal actieve klanten. Elke tegel linkt naar het bijbehorende scherm."
+                    "label": "Tegels",
+                    "text": "Elke tegel toont een aantal of status; klikken opent het bijbehorende scherm."
                 },
                 {
-                    "label": "CIAO-banner",
-                    "text": "Zolang de RSZ-doorgifte nog niet actief is, toont een banner de stand van je aanvraag. Registraties starten pas na bevestiging; prikken van daarvoor gaan niet naar de RSZ."
+                    "label": "Nu aanwezig",
+                    "nested": true,
+                    "text": "Aantal uitvoerders met een open dienst die niet in pauze zijn. Opent het aanwezigheidsbord."
                 },
                 {
-                    "label": "Aan de slag",
-                    "text": "Zolang er nog geen uitvoerders of klanten zijn, leiden kaarten je naar de eerste uitvoerder en de eerste klant."
+                    "label": "Bezoeken vandaag",
+                    "nested": true,
+                    "text": "Klantbezoeken die vandaag gestart zijn. Opent de dienstenlijst."
+                },
+                {
+                    "label": "Uitvoerders",
+                    "nested": true,
+                    "text": "Aantal actieve uitvoerders. Opent de teams- en uitvoerderlijst."
+                },
+                {
+                    "label": "Seats in gebruik",
+                    "nested": true,
+                    "text": "Bezette seats tegenover je limiet. Opent het abonnementsscherm."
+                },
+                {
+                    "label": "Actieve klanten",
+                    "nested": true,
+                    "text": "Aantal actieve klanten. Opent de klantenlijst."
+                },
+                {
+                    "label": "Clock Point QR",
+                    "nested": true,
+                    "text": "Geen teller maar een knop: opent de Clock Point-QR om te tonen, printen of mailen. Pulseert zolang er nog geen dienst is geweest."
+                },
+                {
+                    "label": "Laatste activiteit",
+                    "text": "De laatste acht klantbezoeken, nieuwste eerst: uitvoerder, klant en werkadres, met begin- en eindtijd — of enkel de begintijd als het bezoek nog loopt. 'Loopt' linkt naar de aanwezigheidslijst, 'Klaar' naar de dienstenlijst. De knop 'Aanwezigheid openen' rechtsboven opent het live overzicht."
                 }
             ]
         },

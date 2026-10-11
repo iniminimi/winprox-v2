@@ -1905,16 +1905,42 @@
                     "text": "Ihr Tag beginnt hier: Schnellzugriffe auf einen neuen Kunden oder Ausführer, den Clock-Point-Link und die heutige Anwesenheit. Darunter die letzten Kundenbesuche."
                 },
                 {
-                    "label": "KPIs",
-                    "text": "Kacheln mit wer gerade anwesend ist, den heutigen Besuchen, Ihren Seats und der Zahl aktiver Kunden. Jede Kachel verlinkt zum passenden Bildschirm."
+                    "label": "Kacheln",
+                    "text": "Jede Kachel zeigt eine Anzahl oder einen Status; ein Klick öffnet den passenden Bildschirm."
                 },
                 {
-                    "label": "CIAO-Banner",
-                    "text": "Solange die LSS-Übermittlung noch nicht aktiv ist, zeigt ein Banner den Stand Ihrer Anfrage. Registrierungen starten erst nach Bestätigung; Stempelungen davor gehen nicht an den LSS."
+                    "label": "Anwesend",
+                    "nested": true,
+                    "text": "Mitarbeiter mit offener Schicht, die nicht in Pause sind. Öffnet die Anwesenheitsübersicht."
                 },
                 {
-                    "label": "Loslegen",
-                    "text": "Solange es noch keine Ausführer oder Kunden gibt, führen Karten Sie zum ersten Ausführer und ersten Kunden."
+                    "label": "Besuche heute",
+                    "nested": true,
+                    "text": "Heute gestartete Kundenbesuche. Öffnet die Schichtliste."
+                },
+                {
+                    "label": "Mitarbeiter",
+                    "nested": true,
+                    "text": "Anzahl aktiver Mitarbeiter. Öffnet die Team- und Mitarbeiterliste."
+                },
+                {
+                    "label": "Lizenzen in Gebrauch",
+                    "nested": true,
+                    "text": "Belegte Lizenzen im Verhältnis zu Ihrem Limit. Öffnet den Abonnement-Bildschirm."
+                },
+                {
+                    "label": "Aktive Kunden",
+                    "nested": true,
+                    "text": "Anzahl aktiver Kunden. Öffnet die Kundenliste."
+                },
+                {
+                    "label": "Clock-Point-QR",
+                    "nested": true,
+                    "text": "Kein Zähler, sondern ein Button: öffnet den Clock-Point-QR zum Anzeigen, Drucken oder Mailen. Pulsiert, solange noch keine Schicht gelaufen ist."
+                },
+                {
+                    "label": "Letzte Aktivität",
+                    "text": "Die acht letzten Kundenbesuche, neueste zuerst: Mitarbeiter, Kunde und Einsatzadresse, mit Start- und Endzeit — oder nur der Startzeit, solange der Besuch läuft. 'Läuft' führt zur Anwesenheit, 'Fertig' zur Schichtliste. Der Button 'Anwesenheit öffnen' oben rechts öffnet die Live-Übersicht."
                 }
             ]
         },

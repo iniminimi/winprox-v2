@@ -1905,16 +1905,42 @@
                     "text": "La tua giornata inizia qui: scorciatoie verso un nuovo cliente o operatore, il link Clock Point e le presenze di oggi. Sotto, le ultime visite ai clienti."
                 },
                 {
-                    "label": "KPI",
-                    "text": "Riquadri con chi è presente ora, le visite di oggi, i tuoi seat e il numero di clienti attivi. Ogni riquadro porta alla schermata corrispondente."
+                    "label": "Riquadri",
+                    "text": "Ogni riquadro mostra un numero o uno stato; il clic apre la schermata corrispondente."
                 },
                 {
-                    "label": "Banner CIAO",
-                    "text": "Finché l'invio all'RSZ non è attivo, un banner mostra lo stato della tua richiesta. Le registrazioni partono solo dopo la conferma; le timbrature precedenti non vanno all'RSZ."
+                    "label": "Presenti",
+                    "nested": true,
+                    "text": "Operatori con un turno aperto che non sono in pausa. Apre il quadro presenze."
                 },
                 {
-                    "label": "Per iniziare",
-                    "text": "Finché non ci sono operatori o clienti, le schede ti guidano verso il primo operatore e il primo cliente."
+                    "label": "Visite oggi",
+                    "nested": true,
+                    "text": "Visite ai clienti iniziate oggi. Apre l’elenco dei turni."
+                },
+                {
+                    "label": "Operatori",
+                    "nested": true,
+                    "text": "Numero di operatori attivi. Apre l’elenco di team e operatori."
+                },
+                {
+                    "label": "Licenze in uso",
+                    "nested": true,
+                    "text": "Licenze occupate rispetto al tuo limite. Apre la schermata dell’abbonamento."
+                },
+                {
+                    "label": "Clienti attivi",
+                    "nested": true,
+                    "text": "Numero di clienti attivi. Apre l’elenco dei clienti."
+                },
+                {
+                    "label": "QR del Clock Point",
+                    "nested": true,
+                    "text": "Non un contatore ma un pulsante: apre il QR del Clock Point da mostrare, stampare o inviare via e-mail. Lampeggia finché non c’è stato ancora nessun turno."
+                },
+                {
+                    "label": "Ultima attività",
+                    "text": "Le ultime otto visite ai clienti, la più recente prima: operatore, cliente e indirizzo di lavoro, con ora di inizio e fine — o solo l’ora di inizio se la visita è ancora in corso. 'In corso' porta all’elenco presenze, 'Fatto' all’elenco dei turni. Il pulsante 'Apri presenza' in alto a destra apre il quadro live."
                 }
             ]
         },
