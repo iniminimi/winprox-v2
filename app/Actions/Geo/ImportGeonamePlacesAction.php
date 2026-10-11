@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Actions\Geo;
 
 use App\Models\GeonamePlace;
-use App\Support\Geo\GeonameEuropeNorthAmericaCountryCodes;
+use App\Support\Geo\GeonameEuropeCountryCodes;
 use Illuminate\Support\Facades\DB;
 
 class ImportGeonamePlacesAction
@@ -80,7 +80,7 @@ class ImportGeonamePlacesAction
         }
 
         $countryCode = strtoupper($parts[8]);
-        if (! GeonameEuropeNorthAmericaCountryCodes::allows($countryCode)) {
+        if (! GeonameEuropeCountryCodes::allows($countryCode)) {
             return null;
         }
 

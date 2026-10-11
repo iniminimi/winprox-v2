@@ -11,7 +11,7 @@ class ImportGeonamePlacesCommand extends Command
                             {path : Pad naar allCountries.txt}
                             {--truncate : Leeg de tabel vóór import}';
 
-    protected $description = 'Importeer GeoNames-plaatsen (Europa + Noord-Amerika) uit allCountries.txt';
+    protected $description = 'Importeer GeoNames-plaatsen (Europa) uit allCountries.txt';
 
     public function handle(ImportGeonamePlacesAction $importGeonamePlaces): int
     {

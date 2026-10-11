@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace App\Support\Geo;
 
 /**
- * GeoNames ISO-3166 country codes for Europe and North America (continent EU + NA).
+ * GeoNames ISO-3166 country codes for Europe (continent EU).
  *
  * @see https://www.geonames.org/export/
  */
-final class GeonameEuropeNorthAmericaCountryCodes
+final class GeonameEuropeCountryCodes
 {
     /** @var list<string> */
     private const EUROPE = [
@@ -18,21 +18,14 @@ final class GeonameEuropeNorthAmericaCountryCodes
         'MD', 'ME', 'MK', 'MT', 'NL', 'NO', 'PL', 'PT', 'RO', 'RS', 'RU', 'SE', 'SI', 'SK', 'SM', 'UA', 'VA', 'XK',
     ];
 
-    /** @var list<string> */
-    private const NORTH_AMERICA = [
-        'AG', 'AI', 'AW', 'BB', 'BL', 'BM', 'BQ', 'BS', 'BZ', 'CA', 'CR', 'CU', 'CW', 'DM', 'DO', 'GD', 'GL', 'GP',
-        'GT', 'HN', 'HT', 'JM', 'KN', 'KY', 'LC', 'MF', 'MQ', 'MS', 'MX', 'NI', 'PA', 'PM', 'PR', 'SV', 'SX', 'TC',
-        'TT', 'US', 'VC', 'VG', 'VI',
-    ];
-
     /** @return list<string> */
     public static function all(): array
     {
-        return array_values(array_unique(array_merge(self::EUROPE, self::NORTH_AMERICA)));
+        return self::EUROPE;
     }
 
     public static function allows(string $countryCode): bool
     {
-        return in_array(strtoupper($countryCode), self::all(), true);
+        return in_array(strtoupper($countryCode), self::EUROPE, true);
     }
 }
