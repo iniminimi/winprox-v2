@@ -14,8 +14,8 @@ generiek "lite CRM". Dat betekent:
 - `checkmate_mode` forceert bij provisioning: `has_time_module = true`,
   `time_gps_visits = true`, `time_gps_visit_radius_meters = 100`,
   `presence_compliance_enabled = true` (CIAO staat aan vanaf de start; zie §6).
-- CIAO-scope default `CiaoCleaning`; BCE-nummer (`enterprise_number`) vult de
-  tenant zelf in via Instellingen.
+- CIAO-scope default `CiaoCleaning`; KBO-nummer (`enterprise_number`; FR: BCE,
+  EN: CBE) vult de tenant zelf in via Instellingen.
 - Prijs: **€5 per actieve seat per maand**, tenant kiest het aantal zelf.
 
 ## 2. Architectuur: plan-preset, geen product
@@ -100,7 +100,7 @@ Whitelist-schermen:
 - **Time** — aanwezigheid, uren, CIAO-inzendingen. **Clock Points:** precies één
   («Aanmelden») — geen extra aanmaken, niet deactiveren, geen locatie-koppeling
   (klantbezoek = GPS op klantlocatie). QR printen/mailen/vernieuwen mag wel.
-- **Instellingen / Abonnement** — BCE, bedrijfsgegevens, seats, Clock Point-links.
+- **Instellingen / Abonnement** — KBO-nummer, bedrijfsgegevens, seats, Clock Point-links.
 
 Niet op de whitelist: Meldingen, Taken, Inspectierondes, Checklists, Kalender,
 Reserveringen, Unitmetingen, ESG, IoT, API.
@@ -109,19 +109,20 @@ Reserveringen, Unitmetingen, ESG, IoT, API.
 
 - **Checkmate**: `presence_compliance_enabled = true` vanaf plan-activering
   (`ApplyPlanEntitlementsAction`, checkmate-preset) — CIAO ís het product; de
-  tenant vult alleen BCE/btw in via Instellingen. Submissions zonder geldige
-  BCE/NISS/DDT worden lokaal `skipped` (`SubmitPresenceBatchAction` valideert
-  vóór de RSZ-call), nooit verstuurd.
+  tenant vult alleen KBO-nummer/btw in via Instellingen. Submissions zonder
+  geldige KBO/NISS/DDT worden lokaal `skipped` (`SubmitPresenceBatchAction`
+  valideert vóór de RSZ-call), nooit verstuurd.
 - **Facility/legacy pending-flow** (tenant vraagt CIAO aan, of een checkmate-
-  tenant waar compliance nog uit stond): self-service formulier (BCE +
+  tenant waar compliance nog uit stond): self-service formulier (KBO +
   scope-keuze) → `presence_compliance_scope` gezet, `presence_compliance_enabled`
   blijft uit → superuser bevestigt. **Geen nieuwe statuskolom** — scope-gezet +
   enabled-uit *is* de pending-state; platform-mail naar superuser zoals bij
   trial-requests.
 - **Dashboard/CIAO-banner** zolang `presence_compliance_enabled === false`:
-  "RSZ-doorgifte nog niet actief — BCE-verificatie loopt" (of "BCE nog niet
+  "RSZ-doorgifte nog niet actief — KBO-verificatie loopt" (of "KBO nog niet
   ingevuld"). Copy moet eerlijk vermelden: *actief vanaf bevestiging; eerdere
-  registraties worden niet ingediend.*
+  registraties worden niet ingediend.* Met CIAO aan zonder KBO: pulserende
+  nudge die Instellingen opent op de CIAO-sectie (`?open=presence`).
 - **Semantiek (geverifieerd, `EnqueuePresenceFromTimeEventAction`)**: de
   compliance-check is **synchroon op event-tijdstip** (regel 36-38: disabled →
   `return null`, geen submission aangemaakt). Er is **geen backfill**: prikken vóór
@@ -129,7 +130,7 @@ Reserveringen, Unitmetingen, ESG, IoT, API.
   aangemaakt, blijven geldig en worden verzonden zelfs als compliance later uitgaat
   (de queue-job hervraagt de flag niet — bewust, geen bug).
 - DDT is **optioneel** per locatie (particulieren werken buiten 30bis); inzendingen
-  vereisen wel worker-NISS + tenant-BCE.
+  vereisen wel worker-NISS + tenant-KBO (`enterprise_number`).
 
 ## 7. Billing
 

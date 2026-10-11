@@ -178,7 +178,7 @@
           "Klanten en gekoppelde locaties (met «Hele locatie»-unit) beheer je in Klanten en Locaties.",
           "Klanten importeer je in bulk via CSV of Excel (inclusief locatiegegevens per rij).",
           "Aanwezigheid, urenstaat en Mijn uren zoals in Time.",
-          "CIAO (RSZ) staat aan vanaf de start — vul het ondernemingsnummer in via de instellingen.",
+          "CIAO (RSZ) staat aan vanaf de start — vul het KBO-nummer in via de instellingen.",
           "De uren geeft u door aan het sociaal secretariaat. Geen Dimona en geen loonberekening.",
           "Eigen beknopte handleiding in plaats van de algemene WinProx-handleiding.",
           "5€ per actieve uitvoerder per maand; aantal seats zelf instelbaar.",
@@ -400,7 +400,7 @@
           "Data-export (account), self-service organisatieverwijdering, bewaartermijnen vastgelegd.",
           "Gegevens blijven in de **EU** (hosting/e-mail). Stripe EU/US indien betalend. Bij **Inloggen met Microsoft** gaat de gebruiker naar Microsoft Entra ID (Microsoft, EU/US); WinProx ontvangt e-mail (en eventueel naam) om het bestaande account te herkennen.",
           "Optionele e-mailbevestiging bij QR-meldingen: tijdelijke conceptopslag tot de link; onbevestigd automatisch verwijderd (standaard 60 minuten, inclusief foto’s). De bevestigingsmail gaat alleen naar een geldig adres dat niet eerder als onbezorgbaar (bounce) is gemarkeerd. Uitschrijven van marketingmails blokkeert deze bevestiging niet. Geen gebruikersaccount.",
-          "Optionele **CIAO**-doorgifte (RSZ Check In and Out): bij inschakeling bewaart WinProx NISS (encrypted) en stuurt aanwezigheidsregistraties naar de **Belgische RSZ** (overheid / wettelijke verplichting van de klant). RSZ is geen WinProx-subverwerker voor marketing; doorgifte is functioneel voor compliance. WinProx gebruikt de eigen Chaman-credentials; de klant vult alleen het ondernemingsnummer in. Een toegepaste teampauze op de urenstaat is geen extra RSZ IN/OUT. Met GPS-werkbezoeken: clock in/out gaan niet naar de RSZ; visit start = IN, visit end = OUT. Pauzes tijdens een bezoek blijven OUT/IN. Geslaagde inzendingen ouder dan 12 maanden (configureerbaar) worden automatisch verwijderd; Time → CIAO biedt CSV/print-export (zonder NISS).",
+          "Optionele **CIAO**-doorgifte (RSZ Check In and Out): bij inschakeling bewaart WinProx NISS (encrypted) en stuurt aanwezigheidsregistraties naar de **Belgische RSZ** (overheid / wettelijke verplichting van de klant). RSZ is geen WinProx-subverwerker voor marketing; doorgifte is functioneel voor compliance. WinProx gebruikt de eigen Chaman-credentials; de klant vult alleen het KBO-nummer (ondernemingsnummer) in. Een toegepaste teampauze op de urenstaat is geen extra RSZ IN/OUT. Met GPS-werkbezoeken: clock in/out gaan niet naar de RSZ; visit start = IN, visit end = OUT. Pauzes tijdens een bezoek blijven OUT/IN. Geslaagde inzendingen ouder dan 12 maanden (configureerbaar) worden automatisch verwijderd; Time → CIAO biedt CSV/print-export (zonder NISS).",
           "Gepland uurrooster (optioneel): diensten en afwezigheden (verlof, recup, ziek) die de klant invoert; Clock Point toont alleen het eigen gepubliceerde rooster. Ziektecodes zijn een keuze van de klant; WinProx bewaart ze als verwerker."
         ]
       },

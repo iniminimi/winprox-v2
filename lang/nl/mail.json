@@ -196,6 +196,6 @@
     },
     "presence_request": {
         "subject": "WinProx: CIAO-activering aangevraagd — :tenant",
-        "body": "Een tenant vraagt CIAO-activering aan.\n\nOrganisatie: :tenant\nTenant-ID: :tenant_id\nOndernemingsnummer: :enterprise_number\n\nBevestig via het platform (CIAO-toggle bij de tenant)."
+        "body": "Een tenant vraagt CIAO-activering aan.\n\nOrganisatie: :tenant\nTenant-ID: :tenant_id\nKBO-nummer: :enterprise_number\n\nBevestig via het platform (CIAO-toggle bij de tenant)."
     }
 }

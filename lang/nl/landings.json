@@ -834,7 +834,7 @@
                 "€5 per actieve uitvoerder per maand — je kiest zelf het aantal seats.",
                 "Geen app-installatie: een persoonlijke link of eenmalige QR volstaat.",
                 "Het GPS-werkbezoek op de klantlocatie is het bewijs; inklokken alleen is dat niet.",
-                "CIAO-activering via je ondernemingsnummer (BCE); wij bevestigen en vanaf dan loopt de doorgifte automatisch.",
+                "CIAO-activering via je ondernemingsnummer (KBO); wij bevestigen en vanaf dan loopt de doorgifte automatisch.",
                 "Registraties gelden vanaf activering — wat ervoor werd geklokt, wordt niet achteraf verzonden.",
                 "De uren geeft u door aan uw sociaal secretariaat. Geen Dimona en geen tweede personeelsdossier: het secretariaat blijft de lonen doen.",
                 "Werkt ook met het WinProx-klokscherm als vaste prikklok op de locatie."
@@ -842,7 +842,7 @@
         },
         "start": {
             "title": "Starten met Checkmate",
-            "lead": "Maak een account, vul je ondernemingsnummer (BCE) in en vraag de CIAO-scope aan. Wij bevestigen de koppeling — vanaf dan wordt elke registratie realtime naar de RSZ gestuurd.",
+            "lead": "Maak een account, vul je ondernemingsnummer (KBO) in en vraag de CIAO-scope aan. Wij bevestigen de koppeling — vanaf dan wordt elke registratie realtime naar de RSZ gestuurd.",
             "trial": "Liever eerst proberen? Vraag een proefplaats aan via info@winprox.app — 3 seats, 30 dagen."
         },
         "close": {

@@ -722,7 +722,7 @@
                 },
                 {
                     "label": "Presencia ONSS (CIAO)",
-                    "text": "Esta sección está abajo, encima de Privacidad. En gris por defecto: CIAO es excepcional y no se activa aquí. Solicítelo en <strong>info@winprox.app</strong>; un superusuario lo activa después. Luego solo indica el <strong>número de empresa (BCE)</strong>. WinProx gestiona el enlace técnico con la ONSS."
+                    "text": "Esta sección está abajo, encima de Privacidad. En gris por defecto: CIAO es excepcional y no se activa aquí. Solicítelo en <strong>info@winprox.app</strong>; un superusuario lo activa después. Luego solo indica el <strong>número de empresa (CBE)</strong>. WinProx gestiona el enlace técnico con la ONSS."
                 },
                 {
                     "label": "Privacidad y exportación de datos",
@@ -1767,7 +1767,7 @@
                 },
                 {
                     "label": "Reintentar",
-                    "text": "En <strong>Fallido</strong> u <strong>Omitido</strong>, vuelve a poner el envío en cola tras corregir NISS, DDT o número de empresa."
+                    "text": "En <strong>Fallido</strong> u <strong>Omitido</strong>, vuelve a poner el envío en cola tras corregir NISS, DDT o número CBE."
                 },
                 {
                     "label": "Descargar informe",
@@ -2048,11 +2048,11 @@
                 },
                 {
                     "label": "Estados",
-                    "text": "En cola (se está enviando), Enviado, Fallido y Omitido. Para Fallido u Omitido puedes reenviar tras corregir NISS, DDT o número de empresa."
+                    "text": "En cola (se está enviando), Enviado, Fallido y Omitido. Para Fallido u Omitido puedes reenviar tras corregir NISS, DDT o número CBE."
                 },
                 {
                     "label": "Requisitos",
-                    "text": "Para los envíos necesitas el número de empresa (BCE) de tu organización y el NISS del operario. La referencia DDT es opcional por dirección de obra."
+                    "text": "Para los envíos necesitas el número de empresa (CBE) de tu organización y el NISS del operario. La referencia DDT es opcional por dirección de obra."
                 },
                 {
                     "label": "Conservación",
@@ -2069,7 +2069,7 @@
                 },
                 {
                     "label": "Solicitar CIAO",
-                    "text": "Solicita el registro de presencia RSZ con tu número de empresa (o número de IVA extranjero). WinProx confirma la activación; desde entonces las visitas a clientes y las pausas van en tiempo real a la RSZ. Los fichajes anteriores a la activación no se envían."
+                    "text": "Solicita el registro de presencia RSZ con tu número CBE (o número de IVA extranjero). WinProx confirma la activación; desde entonces las visitas a clientes y las pausas van en tiempo real a la RSZ. Los fichajes anteriores a la activación no se envían."
                 },
                 {
                     "label": "Reloj de fichar",

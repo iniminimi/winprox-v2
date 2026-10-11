@@ -722,7 +722,7 @@
                 },
                 {
                     "label": "RSZ-Anwesenheit (CIAO)",
-                    "text": "Dieser Bereich steht unten, vor Datenschutz. Standardmäßig grau: CIAO ist ausnahmsweise und hier nicht selbst einschaltbar. Beantragen Sie es über <strong>info@winprox.app</strong>; ein Superuser schaltet es danach ein. Danach tragen Sie nur die <strong>Unternehmensnummer (BCE)</strong> ein. WinProx übernimmt die technische Anbindung an das LSS."
+                    "text": "Dieser Bereich steht unten, vor Datenschutz. Standardmäßig grau: CIAO ist ausnahmsweise und hier nicht selbst einschaltbar. Beantragen Sie es über <strong>info@winprox.app</strong>; ein Superuser schaltet es danach ein. Danach tragen Sie nur die <strong>Unternehmensnummer (KBO)</strong> ein. WinProx übernimmt die technische Anbindung an das LSS."
                 },
                 {
                     "label": "Datenschutz & Datenexport",
@@ -1767,7 +1767,7 @@
                 },
                 {
                     "label": "Erneut",
-                    "text": "Bei <strong>Fehlgeschlagen</strong> oder <strong>Übersprungen</strong> erneut einreihen, nachdem NISS, DDT oder Unternehmensnummer korrigiert wurden."
+                    "text": "Bei <strong>Fehlgeschlagen</strong> oder <strong>Übersprungen</strong> erneut einreihen, nachdem NISS, DDT oder KBO-Nummer korrigiert wurden."
                 },
                 {
                     "label": "Bericht herunterladen",
@@ -2048,11 +2048,11 @@
                 },
                 {
                     "label": "Status",
-                    "text": "Warteschlange (wird gesendet), Gesendet, Fehlgeschlagen und Übersprungen. Bei Fehlgeschlagen oder Übersprungen können Sie nach Korrektur von NISS, DDT oder Unternehmensnummer erneut übermitteln."
+                    "text": "Warteschlange (wird gesendet), Gesendet, Fehlgeschlagen und Übersprungen. Bei Fehlgeschlagen oder Übersprungen können Sie nach Korrektur von NISS, DDT oder KBO-Nummer erneut übermitteln."
                 },
                 {
                     "label": "Voraussetzungen",
-                    "text": "Für Übermittlungen brauchen Sie die Unternehmensnummer (BCE) Ihrer Organisation und die NISS des Ausführers. Die DDT-Referenz ist optional pro Einsatzadresse."
+                    "text": "Für Übermittlungen brauchen Sie die Unternehmensnummer (KBO) Ihrer Organisation und die NISS des Ausführers. Die DDT-Referenz ist optional pro Einsatzadresse."
                 },
                 {
                     "label": "Aufbewahrung",
@@ -2069,7 +2069,7 @@
                 },
                 {
                     "label": "CIAO anfragen",
-                    "text": "Beantragen Sie die LSS-Anwesenheitsregistrierung mit Ihrer Unternehmensnummer (oder ausländischer USt-Nummer). WinProx bestätigt die Aktivierung; ab dann gehen Kundenbesuche und Pausen in Echtzeit an den LSS. Stempelungen vor der Aktivierung werden nicht übermittelt."
+                    "text": "Beantragen Sie die LSS-Anwesenheitsregistrierung mit Ihrer KBO-Nummer (oder ausländischer USt-Nummer). WinProx bestätigt die Aktivierung; ab dann gehen Kundenbesuche und Pausen in Echtzeit an den LSS. Stempelungen vor der Aktivierung werden nicht übermittelt."
                 },
                 {
                     "label": "Stempeluhr",

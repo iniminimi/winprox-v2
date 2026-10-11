@@ -28,7 +28,7 @@
                 </div>
             </div>
         @elseif ($checkmate->presenceMissingEmployer)
-            <div class="wp-card wp-card-pad wp-stack-tight">
+            <div class="wp-card wp-card-pad wp-stack-tight wp-card--prio-pulse">
                 <p class="wp-text-body"><strong>{{ __('dashboard.checkmate.ciao.missing_employer_title') }}</strong></p>
                 <p class="wp-muted">{{ __('dashboard.checkmate.ciao.missing_employer_body') }}</p>
                 <div class="wp-cluster wp-cluster--tight">

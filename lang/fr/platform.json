@@ -460,5 +460,5 @@
     "plan_assign_hint": "Le Superuser peut attribuer une formule (aussi sans Stripe). Les tenants peuvent choisir eux-mêmes via Stripe. Corporate exige un plafond d'units. CIAO (ONSS) peut être activé séparément sans Corporate ; Time s'active avec.",
     "plan_assigned": "Formule :plan attribuée.",
     "ciao_requested": "CIAO demandé",
-    "ciao_requested_hint": "Numéro d'entreprise : :number — confirmez via le toggle CIAO."
+    "ciao_requested_hint": "Numéro BCE : :number — confirmez via le toggle CIAO."
 }

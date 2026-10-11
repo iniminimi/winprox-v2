@@ -9,7 +9,7 @@
     "updated": "Zuletzt aktualisiert: :date",
     "applicable_law_notice": "WinProx wird aus Belgien angeboten. Diese rechtlichen Seiten und die Verarbeitung personenbezogener Daten unterliegen der Verordnung (EU) 2016/679 (DSGVO) und dem belgischen Gesetz vom 30. Juli 2018 zum Schutz natürlicher Personen bei der Verarbeitung personenbezogener Daten sowie weiteren relevanten belgischen und EU-Vorschriften. Für Cookies und ähnliche Technologien gelten die anwendbaren EU- und belgischen Regeln.",
     "operator_vat": "USt-IdNr.: :value",
-    "operator_enterprise": "Unternehmensnummer: :value",
+    "operator_enterprise": "KBO-Nummer: :value",
     "operator_email_label": "E-Mail:",
     "documents": {
         "privacy": "Datenschutzerklärung",

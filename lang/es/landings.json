@@ -834,7 +834,7 @@
                 "5 € por trabajador activo al mes — usted elige el número de plazas.",
                 "Sin app que instalar: basta un enlace personal o un QR único.",
                 "La visita de trabajo GPS en casa del cliente es la prueba; fichar solo no lo es.",
-                "Activación CIAO con su número de empresa (BCE); nosotros confirmamos y a partir de ahí el envío es automático.",
+                "Activación CIAO con su número de empresa (CBE); nosotros confirmamos y a partir de ahí el envío es automático.",
                 "Los registros valen desde la activación — lo fichado antes nunca se envía después.",
                 "Usted pasa las horas a su secretaría social. Sin Dimona y sin un segundo expediente de personal: la secretaría sigue haciendo las nóminas.",
                 "Funciona también con la pantalla de reloj WinProx como reloj de fichar fijo en el lugar."
@@ -842,7 +842,7 @@
         },
         "start": {
             "title": "Empezar con Checkmate",
-            "lead": "Cree una cuenta, introduzca su número de empresa (BCE) y solicite el ámbito CIAO. Confirmamos el enlace — a partir de ahí, cada registro se envía a la ONSS en tiempo real.",
+            "lead": "Cree una cuenta, introduzca su número de empresa (CBE) y solicite el ámbito CIAO. Confirmamos el enlace — a partir de ahí, cada registro se envía a la ONSS en tiempo real.",
             "trial": "¿Prefiere probar primero? Pida una plaza de prueba en info@winprox.app — 3 plazas, 30 días."
         },
         "close": {

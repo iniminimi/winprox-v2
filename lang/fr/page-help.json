@@ -1775,7 +1775,7 @@
                 },
                 {
                     "label": "Réessayer",
-                    "text": "Pour <strong>Échoué</strong> ou <strong>Ignoré</strong>, remettez l’envoi en file après correction du NISS, DDT ou du numéro d’entreprise."
+                    "text": "Pour <strong>Échoué</strong> ou <strong>Ignoré</strong>, remettez l’envoi en file après correction du NISS, DDT ou du numéro BCE."
                 },
                 {
                     "label": "Télécharger le rapport",
@@ -2056,7 +2056,7 @@
                 },
                 {
                     "label": "Statuts",
-                    "text": "File d'attente (envoi en cours), Envoyé, Échoué et Ignoré. Pour Échoué ou Ignoré vous pouvez renvoyer après correction du NISS, du DDT ou du numéro d'entreprise."
+                    "text": "File d'attente (envoi en cours), Envoyé, Échoué et Ignoré. Pour Échoué ou Ignoré vous pouvez renvoyer après correction du NISS, du DDT ou du numéro BCE."
                 },
                 {
                     "label": "Conditions",
@@ -2077,7 +2077,7 @@
                 },
                 {
                     "label": "Demander CIAO",
-                    "text": "Demandez l'enregistrement de présence ONSS avec votre numéro d'entreprise (ou numéro de TVA étranger). WinProx confirme l'activation ; dès lors, visites clients et pauses partent en temps réel vers l'ONSS. Les pointages antérieurs à l'activation ne sont pas envoyés."
+                    "text": "Demandez l'enregistrement de présence ONSS avec votre numéro BCE (ou numéro de TVA étranger). WinProx confirme l'activation ; dès lors, visites clients et pauses partent en temps réel vers l'ONSS. Les pointages antérieurs à l'activation ne sont pas envoyés."
                 },
                 {
                     "label": "Pointeuse",

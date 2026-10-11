@@ -693,7 +693,7 @@ it('bevestigt CIAO via de platform-toggle en wist de pending-status', function (
         ->and($fresh->presenceComplianceRequested())->toBeFalse();
 });
 
-it('zet CIAO aan bij checkmate-entitlements en toont de BCE-nudge tot het nummer ingevuld is', function () {
+it('zet CIAO aan bij checkmate-entitlements en toont de KBO-nudge tot het nummer ingevuld is', function () {
     $tenant = checkmateTenant();
     $admin = User::factory()->admin()->for($tenant)->create();
     Tenancy::actAs($tenant->id);
@@ -713,10 +713,11 @@ it('zet CIAO aan bij checkmate-entitlements en toont de BCE-nudge tot het nummer
         ->assertSee(__('settings.presence.save'), false)
         ->assertDontSee(__('settings.presence.request_submit'), false);
 
-    // CIAO aan maar nog geen BCE → nudge op het dashboard, CTA opent CIAO-sectie.
+    // CIAO aan maar nog geen KBO → pulserende nudge op het dashboard, CTA opent CIAO-sectie.
     $this->get('/dashboard')
         ->assertOk()
         ->assertSee(__('dashboard.checkmate.ciao.missing_employer_title'), false)
+        ->assertSee('wp-card--prio-pulse', false)
         ->assertSee(route('settings.index', ['open' => 'presence']), false);
 
     $this->get(route('settings.index', ['open' => 'presence']))
@@ -724,7 +725,7 @@ it('zet CIAO aan bij checkmate-entitlements en toont de BCE-nudge tot het nummer
         ->assertSee('id="settings-presence"', false)
         ->assertSee('open: true', false);
 
-    // BCE ingevuld → nudge weg (unsetRelation: de guard-cache houdt de oude
+    // KBO ingevuld → nudge weg (unsetRelation: de guard-cache houdt de oude
     // tenant-relatie vast, zelfde patroon als Dashboard-mutaties).
     $tenant->update(['enterprise_number' => '0123456789']);
     $admin->unsetRelation('tenant');

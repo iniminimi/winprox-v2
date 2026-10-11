@@ -287,7 +287,7 @@ class Settings extends Component
 
         $validated = Validator::make(
             [
-                // Punten/spaties uit de BCE-weergave strippen vóór validatie.
+                // Punten/spaties uit de KBO/CBE/BCE-weergave strippen vóór validatie.
                 'enterprise_number' => preg_replace('/\D+/', '', $this->enterpriseNumber) ?? '',
                 'foreign_vat_number' => $this->foreignVatNumber,
             ],

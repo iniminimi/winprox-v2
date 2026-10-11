@@ -722,7 +722,7 @@
                 },
                 {
                     "label": "Presenza ONSS (CIAO)",
-                    "text": "Questa sezione è in fondo, sopra Privacy. Grigio di default: CIAO è eccezionale e non si attiva da qui. Richiedilo via <strong>info@winprox.app</strong>; un superuser lo attiva dopo. Poi inserisci solo il <strong>numero d'impresa (BCE)</strong>. WinProx gestisce il collegamento tecnico con l'ONSS."
+                    "text": "Questa sezione è in fondo, sopra Privacy. Grigio di default: CIAO è eccezionale e non si attiva da qui. Richiedilo via <strong>info@winprox.app</strong>; un superuser lo attiva dopo. Poi inserisci solo il <strong>numero d'impresa (CBE)</strong>. WinProx gestisce il collegamento tecnico con l'ONSS."
                 },
                 {
                     "label": "Privacy ed esportazione dati",
@@ -1767,7 +1767,7 @@
                 },
                 {
                     "label": "Riprova",
-                    "text": "Per <strong>Non riuscito</strong> o <strong>Saltato</strong>, rimetti in coda dopo aver corretto NISS, DDT o numero d'impresa."
+                    "text": "Per <strong>Non riuscito</strong> o <strong>Saltato</strong>, rimetti in coda dopo aver corretto NISS, DDT o numero CBE."
                 },
                 {
                     "label": "Scarica report",
@@ -2048,11 +2048,11 @@
                 },
                 {
                     "label": "Stati",
-                    "text": "In coda (invio in corso), Inviato, Fallito e Saltato. Per Fallito o Saltato puoi reinviare dopo aver corretto NISS, DDT o numero d'impresa."
+                    "text": "In coda (invio in corso), Inviato, Fallito e Saltato. Per Fallito o Saltato puoi reinviare dopo aver corretto NISS, DDT o numero CBE."
                 },
                 {
                     "label": "Requisiti",
-                    "text": "Per gli invii servono il numero d'impresa (BCE) della tua organizzazione e il NISS dell'operatore. Il riferimento DDT è opzionale per indirizzo di lavoro."
+                    "text": "Per gli invii servono il numero d'impresa (CBE) della tua organizzazione e il NISS dell'operatore. Il riferimento DDT è opzionale per indirizzo di lavoro."
                 },
                 {
                     "label": "Conservazione",
@@ -2069,7 +2069,7 @@
                 },
                 {
                     "label": "Richiedi CIAO",
-                    "text": "Richiedi la registrazione presenze RSZ con il tuo numero d'impresa (o numero di partita IVA estero). WinProx conferma l'attivazione; da allora visite ai clienti e pause vanno in tempo reale all'RSZ. Le timbrature precedenti all'attivazione non vengono inviate."
+                    "text": "Richiedi la registrazione presenze RSZ con il tuo numero CBE (o numero di partita IVA estero). WinProx conferma l'attivazione; da allora visite ai clienti e pause vanno in tempo reale all'RSZ. Le timbrature precedenti all'attivazione non vengono inviate."
                 },
                 {
                     "label": "Timbratrice",

@@ -192,8 +192,8 @@
       "pending_title": "Demande CIAO en attente",
       "pending_body": "Votre demande ONSS attend une confirmation. Les enregistrements de présence suivent ensuite automatiquement.",
       "pending_cta": "Vers les paramètres",
-      "missing_employer_title": "Encoder le numéro d'entreprise",
-      "missing_employer_body": "CIAO est activé, mais sans numéro d'entreprise WinProx ne peut rien envoyer à l'ONSS. Complétez-le pour activer la transmission.",
+      "missing_employer_title": "Encoder le numéro BCE",
+      "missing_employer_body": "CIAO est activé, mais sans numéro BCE WinProx ne peut rien envoyer à l'ONSS. Encodez votre numéro BCE pour activer la transmission.",
       "missing_employer_cta": "Vers les paramètres"
     }
   }

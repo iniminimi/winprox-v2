@@ -834,7 +834,7 @@
                 "5 € per operatore attivo al mese — scegli tu il numero di seat.",
                 "Nessuna app da installare: basta un link personale o un QR una tantum.",
                 "La visita di lavoro GPS presso il cliente è la prova; timbrare da solo non basta.",
-                "Attivazione CIAO tramite il tuo numero d'impresa (BCE); noi confermiamo e da lì l'invio è automatico.",
+                "Attivazione CIAO tramite il tuo numero d'impresa (CBE); noi confermiamo e da lì l'invio è automatico.",
                 "Le registrazioni valgono dall'attivazione — ciò che è stato timbrato prima non viene mai inviato dopo.",
                 "Passate le ore al segretariato sociale. Niente Dimona e niente secondo fascicolo del personale: il segretariato continua a elaborare le paghe.",
                 "Funziona anche con lo schermo-orologio WinProx come timbratrice fissa sul posto."
@@ -842,7 +842,7 @@
         },
         "start": {
             "title": "Iniziare con Checkmate",
-            "lead": "Crea un account, inserisci il tuo numero d'impresa (BCE) e richiedi lo scope CIAO. Confermiamo noi il collegamento — da lì ogni registrazione parte in tempo reale verso l'ONSS.",
+            "lead": "Crea un account, inserisci il tuo numero d'impresa (CBE) e richiedi lo scope CIAO. Confermiamo noi il collegamento — da lì ogni registrazione parte in tempo reale verso l'ONSS.",
             "trial": "Preferisci prima provare? Richiedi una prova via info@winprox.app — 3 seat, 30 giorni."
         },
         "close": {

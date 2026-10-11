@@ -834,7 +834,7 @@
                 "€5 per active worker per month — you choose the number of seats yourself.",
                 "No app install: a personal link or a one-time QR is enough.",
                 "The GPS work visit at the customer site is the proof; clocking in alone is not.",
-                "CIAO activation via your enterprise number (BCE); we confirm and from then on reporting runs automatically.",
+                "CIAO activation via your enterprise number (CBE); we confirm and from then on reporting runs automatically.",
                 "Registrations count from activation — anything clocked before that is never sent afterwards.",
                 "You pass the hours to your social secretariat. No Dimona and no second personnel file: the secretariat still runs payroll.",
                 "Also works with the WinProx clock screen as a fixed time clock on site."
@@ -842,7 +842,7 @@
         },
         "start": {
             "title": "Getting started with Checkmate",
-            "lead": "Create an account, enter your enterprise number (BCE) and request the CIAO scope. We confirm the link — from then on every registration is sent to the RSZ in real time.",
+            "lead": "Create an account, enter your enterprise number (CBE) and request the CIAO scope. We confirm the link — from then on every registration is sent to the RSZ in real time.",
             "trial": "Prefer to try first? Request a trial seat via info@winprox.app — 3 seats, 30 days."
         },
         "close": {

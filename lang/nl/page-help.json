@@ -722,7 +722,7 @@
                 },
                 {
                     "label": "Aanwezigheid RSZ (CIAO)",
-                    "text": "Dit kader staat onderaan, boven Privacy. Standaard grijs: CIAO is uitzonderlijk en niet zelf in te schakelen. Vraag het aan via <strong>info@winprox.app</strong>; een superuser zet het daarna aan. Daarna vult u alleen het <strong>ondernemingsnummer (BCE)</strong> in. WinProx regelt de technische koppeling met de RSZ."
+                    "text": "Dit kader staat onderaan, boven Privacy. Standaard grijs: CIAO is uitzonderlijk en niet zelf in te schakelen. Vraag het aan via <strong>info@winprox.app</strong>; een superuser zet het daarna aan. Daarna vult u alleen het <strong>ondernemingsnummer (KBO)</strong> in. WinProx regelt de technische koppeling met de RSZ."
                 },
                 {
                     "label": "Privacy & export van gegevens",
@@ -1767,7 +1767,7 @@
                 },
                 {
                     "label": "Opnieuw",
-                    "text": "Bij <strong>Mislukt</strong> of <strong>Overgeslagen</strong> kun je de inzending opnieuw in de wachtrij zetten na het corrigeren van NISS, DDT of ondernemingsnummer."
+                    "text": "Bij <strong>Mislukt</strong> of <strong>Overgeslagen</strong> kun je de inzending opnieuw in de wachtrij zetten na het corrigeren van NISS, DDT of KBO-nummer."
                 },
                 {
                     "label": "Download rapport",
@@ -2048,11 +2048,11 @@
                 },
                 {
                     "label": "Statussen",
-                    "text": "Wachtrij (wordt verstuurd), Verstuurd, Mislukt en Overgeslagen. Bij Mislukt of Overgeslagen kun je opnieuw indienen na correctie van NISS, DDT of ondernemingsnummer."
+                    "text": "Wachtrij (wordt verstuurd), Verstuurd, Mislukt en Overgeslagen. Bij Mislukt of Overgeslagen kun je opnieuw indienen na correctie van NISS, DDT of KBO-nummer."
                 },
                 {
                     "label": "Voorwaarden",
-                    "text": "Voor inzendingen heb je het ondernemingsnummer (BCE) van je organisatie nodig en het NISS van de uitvoerder. De DDT-referentie is optioneel per werkadres."
+                    "text": "Voor inzendingen heb je het ondernemingsnummer (KBO) van je organisatie nodig en het NISS van de uitvoerder. De DDT-referentie is optioneel per werkadres."
                 },
                 {
                     "label": "Bewaartermijn",
@@ -2069,7 +2069,7 @@
                 },
                 {
                     "label": "CIAO aanvragen",
-                    "text": "Vraag RSZ-aanwezigheidsregistratie aan met je ondernemingsnummer (of buitenlands btw-nummer). WinProx bevestigt de activering; vanaf dan gaan klantbezoeken en pauzes realtime naar de RSZ. Prikken van vóór de activering worden niet ingediend."
+                    "text": "Vraag RSZ-aanwezigheidsregistratie aan met je KBO-nummer (of buitenlands btw-nummer). WinProx bevestigt de activering; vanaf dan gaan klantbezoeken en pauzes realtime naar de RSZ. Prikken van vóór de activering worden niet ingediend."
                 },
                 {
                     "label": "Prikklok",

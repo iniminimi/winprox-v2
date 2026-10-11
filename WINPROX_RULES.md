@@ -202,7 +202,7 @@ ClockIn / ClockOut / StartBreak / EndBreak / VisitStart / VisitEnd
 
 | Entiteit | Velden (richting) | Opmerking |
 |----------|-------------------|-----------|
-| `Tenant` | `enterprise_number` *of* `foreign_vat_number`; `presence_compliance_enabled`; actieve `PresenceComplianceScope` | BCE/VAT; OAuth/certificaat = **platform** (WinProx Chaman), niet per tenant |
+| `Tenant` | `enterprise_number` *of* `foreign_vat_number`; `presence_compliance_enabled`; actieve `PresenceComplianceScope` | KBO/CBE/BCE (zelfde Belgische nummer; UI per taal) of foreign VAT; OAuth/certificaat = **platform** (WinProx Chaman), niet per tenant |
 | `Worker` | `ssin` (11 cijfers, encrypted at rest) | NISS/INSZ; least-privilege UI; GDPR/DPA |
 | `Location` en/of `ClockPoint` | `contractual_relationship_reference` (DDT, 13 chars); placeOfWork via bestaand adres **of** coords | Één bron per prikpunt; geen duplicatie zonder reden |
 | `presence_submissions` (nieuw) | tenant, worker, shift/break-ref, type IN/OUT, payload-meta, rsz_id, validity, remarks JSON, submitted_at | Audit + herprobeer; geen business logic in model |
@@ -227,8 +227,8 @@ zelfde events, verplichtingen bevestigen tegen RSZ-bouwspecs.
 
 **UI:** settings (CIAO-kader onderaan, grijs tot superuser inschakelt op Platform → Tenants
 na aanvraag via info@winprox.app; Checkmate-tenants vragen aan via een self-service
-formulier (BCE + scope) — superuser-bevestiging blijft vereist, zie `docs/CHECKMATE.md` §6; CIAO = Time-add-on — bij aanzetten gaat Time mee aan,
-**geen** Corporate-eis; daarna enkel **BCE** / optioneel buitenlands btw — Chaman-
+formulier (KBO-nummer + scope) — superuser-bevestiging blijft vereist, zie `docs/CHECKMATE.md` §6; CIAO = Time-add-on — bij aanzetten gaat Time mee aan,
+**geen** Corporate-eis; daarna enkel **KBO-nummer** (FR BCE / EN CBE) / optioneel buitenlands btw — Chaman-
 credentials liggen op het WinProx-platform). Location (DDT + werkplaats), Worker (NISS),
 Time → CIAO (submission-status/remarks + opnieuw). Geen nieuwe sidebar-producten buiten
 Time/Instellingen.

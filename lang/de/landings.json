@@ -834,7 +834,7 @@
                 "5 € pro aktivem Mitarbeiter pro Monat — Sie wählen die Zahl der Seats selbst.",
                 "Keine App-Installation: ein persönlicher Link oder einmaliger QR genügt.",
                 "Der GPS-Arbeitsbesuch beim Kunden ist der Beweis; Einstechen allein ist es nicht.",
-                "CIAO-Aktivierung über Ihre Unternehmensnummer (BCE); wir bestätigen und danach läuft die Meldung automatisch.",
+                "CIAO-Aktivierung über Ihre Unternehmensnummer (KBO); wir bestätigen und danach läuft die Meldung automatisch.",
                 "Registrierungen gelten ab Aktivierung — was vorher gestochen wurde, wird nie nachträglich gesendet.",
                 "Sie geben die Stunden an Ihr Sozialsekretariat weiter. Kein Dimona und keine zweite Personalakte: das Sekretariat bleibt für die Löhne zuständig.",
                 "Funktioniert auch mit dem WinProx-Uhrbildschirm als feste Stempeluhr vor Ort."
@@ -842,7 +842,7 @@
         },
         "start": {
             "title": "Mit Checkmate starten",
-            "lead": "Konto anlegen, Unternehmensnummer (BCE) eintragen und den CIAO-Scope anfragen. Wir bestätigen die Verknüpfung — ab dann geht jede Registrierung in Echtzeit an die LSS.",
+            "lead": "Konto anlegen, Unternehmensnummer (KBO) eintragen und den CIAO-Scope anfragen. Wir bestätigen die Verknüpfung — ab dann geht jede Registrierung in Echtzeit an die LSS.",
             "trial": "Lieber erst testen? Fragen Sie einen Probesitz über info@winprox.app an — 3 Seats, 30 Tage."
         },
         "close": {

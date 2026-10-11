@@ -150,7 +150,7 @@ class BuildCheckmateDashboardDataAction
             needsWorkers: Worker::query()->where('tenant_id', $tenantId)->count() === 0,
             needsCustomers: Customer::query()->where('tenant_id', $tenantId)->count() === 0,
             presencePending: $tenant->presenceComplianceRequested(),
-            // CIAO is bij checkmate standaard aan: zonder BCE/btw worden
+            // CIAO is bij checkmate standaard aan: zonder KBO/btw worden
             // submissions lokaal skipped — nudge richting Instellingen.
             presenceMissingEmployer: $tenant->presenceComplianceEnabled()
                 && ! filled($tenant->enterprise_number)

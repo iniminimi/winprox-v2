@@ -853,15 +853,15 @@ productsector op `Tenant`.
 ### 5g.2 Golf 1 — CIAO schoonmaak (`CiaoCleaning`)
 - Voor organisaties die schoonmaak/onderhoud **onroerend voor derden** doen onder Aangifte van
   werken / 30bis-drempels (wettelijke scope; copy in product_docs, niet als `tenant.sector`).
-- Vereiste data: tenant **BCE** (of foreign VAT); worker **NISS/SSIN**; per werkplaats
-  **DDT-ref** (`contractual_relationship_reference`) + placeOfWork (adres of coords) op
-  Location en/of Clock Point.
+- Vereiste data: tenant **KBO-nummer** (FR: BCE, EN: CBE; of foreign VAT); worker
+  **NISS/SSIN**; per werkplaats **DDT-ref** (`contractual_relationship_reference`) +
+  placeOfWork (adres of coords) op Location en/of Clock Point.
 - Events: zonder GPS-bezoeken: clock in → IN; break start → OUT; break end → IN; clock out →
   OUT. Met GPS-bezoeken: visit start → IN; visit end → OUT (clock in/out geen CIAO). Realtime
   queue; submission-log + validity/remarks raadplegen.
 - UI: Instellingen (CIAO-kader onderaan, grijs tot aanvraag via info@winprox.app;
   superuser zet aan op Platform → Tenants — Time gaat mee aan, **geen** Corporate-eis;
-  daarna enkel **BCE** — technische RSZ-credentials op het WinProx-platform), Time → **CIAO**
+  daarna enkel **KBO-nummer** — technische RSZ-credentials op het WinProx-platform), Time → **CIAO**
   (status/fouten + opnieuw), Personen/Locaties (NISS, DDT). **Download rapport** (CSV/print)
   op Time → CIAO. Geslaagde inzendingen ouder dan **12 maanden** (config
   `RETENTION_PRESENCE_SUBMISSIONS_MONTHS`) worden dagelijks mee opgeruimd via

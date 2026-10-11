@@ -722,7 +722,7 @@
                 },
                 {
                     "label": "RSZ presence (CIAO)",
-                    "text": "This section sits at the bottom, above Privacy. It is grey by default: CIAO is exceptional and cannot be turned on here. Request it via <strong>info@winprox.app</strong>; a superuser then enables it. After that you only enter the <strong>enterprise number (BCE)</strong>. WinProx handles the technical link to the NSSO."
+                    "text": "This section sits at the bottom, above Privacy. It is grey by default: CIAO is exceptional and cannot be turned on here. Request it via <strong>info@winprox.app</strong>; a superuser then enables it. After that you only enter the <strong>enterprise number (CBE)</strong>. WinProx handles the technical link to the NSSO."
                 },
                 {
                     "label": "Privacy & data export",
@@ -1767,7 +1767,7 @@
                 },
                 {
                     "label": "Retry",
-                    "text": "For <strong>Failed</strong> or <strong>Skipped</strong>, queue the submission again after fixing NISS, DDT or enterprise number."
+                    "text": "For <strong>Failed</strong> or <strong>Skipped</strong>, queue the submission again after fixing NISS, DDT or CBE number."
                 },
                 {
                     "label": "Download report",
@@ -2048,11 +2048,11 @@
                 },
                 {
                     "label": "Statuses",
-                    "text": "Queued (being sent), Sent, Failed and Skipped. For Failed or Skipped you can resubmit after correcting NISS, DDT or enterprise number."
+                    "text": "Queued (being sent), Sent, Failed and Skipped. For Failed or Skipped you can resubmit after correcting NISS, DDT or CBE number."
                 },
                 {
                     "label": "Requirements",
-                    "text": "For submissions you need your organisation's enterprise number (BCE) and the worker's NISS. The DDT reference is optional per work address."
+                    "text": "For submissions you need your organisation's enterprise number (CBE) and the worker's NISS. The DDT reference is optional per work address."
                 },
                 {
                     "label": "Retention",
@@ -2069,7 +2069,7 @@
                 },
                 {
                     "label": "Request CIAO",
-                    "text": "Request NSSO presence registration with your enterprise number (or foreign VAT number). WinProx confirms activation; from then on customer visits and breaks go to the NSSO in real time. Punches from before activation are not submitted."
+                    "text": "Request NSSO presence registration with your CBE (enterprise number) (or foreign VAT number). WinProx confirms activation; from then on customer visits and breaks go to the NSSO in real time. Punches from before activation are not submitted."
                 },
                 {
                     "label": "Time clock",

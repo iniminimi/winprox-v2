@@ -196,6 +196,6 @@
     },
     "presence_request": {
         "subject": "WinProx: attivazione CIAO richiesta — :tenant",
-        "body": "Un tenant richiede l'attivazione CIAO.\n\nOrganizzazione: :tenant\nID tenant: :tenant_id\nNumero di impresa: :enterprise_number\n\nConferma dalla piattaforma (interruttore CIAO del tenant)."
+        "body": "Un tenant richiede l'attivazione CIAO.\n\nOrganizzazione: :tenant\nID tenant: :tenant_id\nNumero CBE: :enterprise_number\n\nConferma dalla piattaforma (interruttore CIAO del tenant)."
     }
 }

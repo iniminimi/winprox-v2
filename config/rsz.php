@@ -40,7 +40,7 @@ return [
 
     /**
      * WinProx-platform Chaman REST-credentials (softwareleverancier).
-     * Tenants vullen alleen BCE; OAuth loopt via dit account.
+     * Tenants vullen alleen KBO/CBE/BCE; OAuth loopt via dit account.
      * Private key: RSZ_PLATFORM_PRIVATE_KEY (PEM, \n toegestaan) of pad via RSZ_PLATFORM_PRIVATE_KEY_PATH.
      */
     'platform_client_id' => env('RSZ_PLATFORM_CLIENT_ID'),
