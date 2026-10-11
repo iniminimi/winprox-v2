@@ -745,7 +745,7 @@ class Team extends Component
 
     public function updatedAddingWorkerTeamId(mixed $value): void
     {
-        if ($this->editingWorkerId !== null || $this->showWorkerModal !== true) {
+        if ($this->showWorkerModal !== true) {
             return;
         }
 
@@ -802,6 +802,18 @@ class Team extends Component
             // Edit mode
             $worker = $this->authorizedWorker((int) $this->editingWorkerId);
 
+            $this->validate(
+                [
+                    'addingWorkerTeamId' => ['required', 'integer'],
+                ],
+                [
+                    'addingWorkerTeamId.required' => __('team.workers.modal.team_required'),
+                ],
+            );
+
+            $team = InternalTeam::findOrFail((int) $this->addingWorkerTeamId);
+            Gate::authorize('update', $team);
+
             $request = new UpdateWorkerRequest;
             $validated = $this->validate(
                 $this->workerModalValidationRules($request->rules(), $presenceComplianceEnabled),
@@ -815,6 +827,7 @@ class Team extends Component
                 'phone' => $validated['workerPhone'] ?? null,
                 'is_external' => (bool) ($validated['workerIsExternal'] ?? false),
                 'company_name' => $validated['workerCompanyName'] ?? null,
+                'internal_team_id' => (int) $team->id,
                 'location_ids' => $this->selectedWorkerLocationIds,
                 'default_unit_id' => $validated['workerDefaultUnitId'] ?? null,
             ];
@@ -830,6 +843,7 @@ class Team extends Component
                 return;
             }
 
+            $this->expandTeam((int) $team->id);
             $this->persistWorkerPhoto($worker, $updateWorkerPhoto, $deleteWorkerPhoto);
         } else {
             // Create mode
@@ -1019,6 +1033,7 @@ class Team extends Component
     {
         $worker = $this->authorizedWorker($workerId);
         $this->editingWorkerId = $workerId;
+        $this->addingWorkerTeamId = (int) $worker->internal_team_id;
         $this->workerFirstName = $worker->first_name;
         $this->workerLastName = $worker->last_name;
         $this->workerEmail = $worker->email ?? '';

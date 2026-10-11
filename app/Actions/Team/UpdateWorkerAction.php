@@ -35,12 +35,20 @@ class UpdateWorkerAction
             $updates['ssin'] = self::normalizedSsin($data['ssin'] ?? null);
         }
 
+        $teamChanged = array_key_exists('internal_team_id', $data)
+            && (int) $data['internal_team_id'] !== (int) $worker->internal_team_id;
+        if ($teamChanged) {
+            $updates['internal_team_id'] = (int) $data['internal_team_id'];
+            $worker->internal_team_id = (int) $data['internal_team_id'];
+            $worker->unsetRelation('team');
+        }
+
         if (array_key_exists('location_ids', $data)) {
             $this->syncLocations->handleForWorker($worker, $data['location_ids'] ?? [], $actorUserId);
             $worker->unsetRelation('locations');
         }
 
-        if (array_key_exists('default_unit_id', $data) || array_key_exists('location_ids', $data)) {
+        if (array_key_exists('default_unit_id', $data) || array_key_exists('location_ids', $data) || $teamChanged) {
             $worker->loadMissing(['team', 'locations']);
             $locationIds = $worker->locations->pluck('id')->map(fn ($id) => (int) $id)->all();
             $rawDefault = array_key_exists('default_unit_id', $data)

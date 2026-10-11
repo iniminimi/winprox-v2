@@ -616,6 +616,42 @@ it('laat via create_worker een team kiezen bij het aanmaken van een uitvoerder',
         ->and($worker->internal_team_id)->toBe($teamB->id);
 });
 
+it('verplaatst een worker naar een ander team via de bewerk-modal', function () {
+    [$tenant, $admin] = tenantWithAdmin();
+    $teamA = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Ploeg A']);
+    $teamB = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Ploeg B']);
+    $worker = Worker::factory()->create(['tenant_id' => $tenant->id, 'internal_team_id' => $teamA->id]);
+
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->call('openEditWorker', $worker->id)
+        ->assertSet('addingWorkerTeamId', $teamA->id)
+        ->assertSee(__('team.workers.modal.team'), false)
+        ->set('addingWorkerTeamId', $teamB->id)
+        ->call('saveWorker')
+        ->assertHasNoErrors();
+
+    expect($worker->fresh()->internal_team_id)->toBe($teamB->id);
+});
+
+it('wijst een team van een andere tenant af bij team-wissel van een worker', function () {
+    [$tenant, $admin] = tenantWithAdmin();
+    $ownTeam = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $foreignTeam = InternalTeam::factory()->create();
+    $worker = Worker::factory()->create(['tenant_id' => $tenant->id, 'internal_team_id' => $ownTeam->id]);
+
+    // Tenant-scope maakt het vreemde team onvindbaar → selectie valt weg → validatiefout.
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->call('openEditWorker', $worker->id)
+        ->set('addingWorkerTeamId', $foreignTeam->id)
+        ->assertSet('addingWorkerTeamId', null)
+        ->call('saveWorker')
+        ->assertHasErrors(['addingWorkerTeamId']);
+
+    expect($worker->fresh()->internal_team_id)->toBe($ownTeam->id);
+});
+
 it('wisselt de teamleader-vlag van een worker', function () {
     [$tenant, $admin] = tenantWithAdmin();
     $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
@@ -691,7 +727,7 @@ it('houdt zeldzame worker-acties in de bewerk-modal, niet in de lijst', function
 
     $page
         ->call('openAddWorker', $team->id)
-        ->assertDontSee(__('team.workers.modal.clock_hint'), false)
+        ->assertDontSeeHtml('wire:click="resetWorkerIcon(')
         ->call('cancelWorkerModal');
 
     $page
