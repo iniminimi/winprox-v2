@@ -5,6 +5,7 @@
     },
     "nav": {
         "label": "Navigation principale",
+        "collapse": "Replier le menu",
         "dashboard": "Accueil",
         "locations": "Sites",
         "issues": "Signalements",

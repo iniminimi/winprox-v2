@@ -5,6 +5,7 @@
     },
     "nav": {
         "label": "Navegación principal",
+        "collapse": "Contraer el menú",
         "dashboard": "Inicio",
         "locations": "Ubicaciones",
         "issues": "Incidencias",

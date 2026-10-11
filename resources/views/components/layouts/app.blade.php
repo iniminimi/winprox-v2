@@ -92,14 +92,18 @@
 
     <div
         class="wp-app"
+        :class="{ 'wp-app--sidebar-collapsed': collapsed }"
         x-data="{
             nav: false,
+            collapsed: false,
             help: false,
             helpFabShowQuestion: false,
             helpVideoUrl: @js(asset('video/assistant_small.mp4')),
             helpVideoReady: false,
             init() {
+                this.$el.classList.add('wp-app--boot');
                 try {
+                    this.collapsed = localStorage.getItem('wp_sidebar_collapsed') === '1';
                     const key = 'wp_help_fab_page_count';
                     const next = (parseInt(sessionStorage.getItem(key) || '0', 10) || 0) + 1;
                     sessionStorage.setItem(key, String(next));
@@ -107,6 +111,19 @@
                 } catch (e) {
                     this.helpFabShowQuestion = false;
                 }
+                requestAnimationFrame(() => requestAnimationFrame(() => {
+                    this.$el.classList.remove('wp-app--boot');
+                }));
+            },
+            toggleSidebar() {
+                if (window.matchMedia('(min-width: 60rem)').matches) {
+                    this.collapsed = ! this.collapsed;
+                    try {
+                        localStorage.setItem('wp_sidebar_collapsed', this.collapsed ? '1' : '0');
+                    } catch (e) {}
+                    return;
+                }
+                this.nav = ! this.nav;
             },
             preloadHelpVideo() {
                 if (this.helpVideoReady) {
@@ -162,6 +179,9 @@
                         <img src="{{ asset('images/winprox_logo_wide.jpg') }}" alt="WinProx">
                     @endif
                 </div>
+                <button type="button" class="wp-sidebar-collapse btn btn--ghost btn--sm" @click="toggleSidebar()" aria-label="{{ __('common.nav.collapse') }}">
+                    <x-wp-icon name="chevron-left" class="wp-icon" />
+                </button>
             </div>
             <div class="wp-sidebar-body">
                 <nav class="wp-sidebar-menu" aria-label="{{ __('common.nav.label') }}">
@@ -679,7 +699,7 @@
 
         <div class="wp-sidebar-scrim" :class="{ 'is-open': nav }" @click="nav = false" aria-hidden="true"></div>
 
-        <button type="button" class="wp-nav-toggle-fixed btn btn--ghost btn--sm" @click="nav = !nav" aria-label="{{ __('common.nav.label') }}">
+        <button type="button" class="wp-nav-toggle-fixed btn btn--ghost btn--sm" @click="toggleSidebar()" aria-label="{{ __('common.nav.label') }}">
             <x-wp-icon name="menu" class="wp-icon" />
         </button>
 

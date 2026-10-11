@@ -5,6 +5,7 @@
     },
     "nav": {
         "label": "Navigazione principale",
+        "collapse": "Comprimi il menu",
         "dashboard": "Home",
         "locations": "Sedi",
         "issues": "Segnalazioni",

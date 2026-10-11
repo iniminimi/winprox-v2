@@ -5,6 +5,7 @@
     },
     "nav": {
         "label": "Hauptnavigation",
+        "collapse": "Menü einklappen",
         "dashboard": "Startseite",
         "locations": "Standorte",
         "issues": "Meldungen",

@@ -5,6 +5,7 @@
     },
     "nav": {
         "label": "Hoofdnavigatie",
+        "collapse": "Menu inklappen",
         "dashboard": "Home",
         "locations": "Locaties",
         "issues": "Meldingen",

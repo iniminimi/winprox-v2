@@ -5,6 +5,7 @@
     },
     "nav": {
         "label": "Main navigation",
+        "collapse": "Collapse menu",
         "dashboard": "Home",
         "locations": "Locations",
         "issues": "Issues",
