@@ -740,6 +740,21 @@
             "incomplete_blocks": "{1} :count blok onvolledig|[2,*] :count blokken onvolledig",
             "registration_incomplete": "Registratie onvolledig"
         },
+        "month_norm": {
+            "errors": {
+                "worker_tenant": "Deze uitvoerder hoort niet bij de organisatie.",
+                "pattern_no_norm": "Een werkregeling vraagt een weeknorm.",
+                "pattern_weekdays": "De werkregeling moet voor elke weekdag minuten hebben.",
+                "pattern_sum": "De werkregeling moet gelijk zijn aan de weeknorm.",
+                "agreement_holiday": "Kies een wettelijke feestdag.",
+                "agreement_replacement_required": "Een vervangingsdag heeft een datum nodig.",
+                "agreement_replacement_forbidden": "Deze uitkomst heeft geen vervangingsdatum.",
+                "agreement_replacement_same": "De vervangingsdag moet een andere datum zijn.",
+                "agreement_replacement_holiday": "Een vervangingsdag kan zelf geen wettelijke feestdag zijn.",
+                "agreement_replacement_uncovered": "De kalender dekt deze vervangingsdatum niet.",
+                "agreement_replacement_taken": "Die vervangingsdatum is al gebruikt."
+            }
+        },
         "groups_filter": "Groepen",
         "group_ungrouped": "Zonder groep",
         "unsaved": {

@@ -740,6 +740,21 @@
             "incomplete_blocks": "{1} :count Block unvollständig|[2,*] :count Blöcke unvollständig",
             "registration_incomplete": "Zeiterfassung unvollständig"
         },
+        "month_norm": {
+            "errors": {
+                "worker_tenant": "Diese Person gehört nicht zur Organisation.",
+                "pattern_no_norm": "Eine Arbeitsregelung braucht eine Wochennorm.",
+                "pattern_weekdays": "Die Arbeitsregelung braucht Minuten für jeden Wochentag.",
+                "pattern_sum": "Die Arbeitsregelung muss der Wochennorm entsprechen.",
+                "agreement_holiday": "Wählen Sie einen gesetzlichen Feiertag.",
+                "agreement_replacement_required": "Ein Ersatztag braucht ein Datum.",
+                "agreement_replacement_forbidden": "Diese Wahl hat kein Ersatzdatum.",
+                "agreement_replacement_same": "Der Ersatztag muss ein anderes Datum sein.",
+                "agreement_replacement_holiday": "Ein Ersatztag darf selbst kein gesetzlicher Feiertag sein.",
+                "agreement_replacement_uncovered": "Der Kalender deckt dieses Ersatzdatum nicht ab.",
+                "agreement_replacement_taken": "Dieses Ersatzdatum wird bereits verwendet."
+            }
+        },
         "groups_filter": "Gruppen",
         "group_ungrouped": "Ohne Gruppe",
         "unsaved": {

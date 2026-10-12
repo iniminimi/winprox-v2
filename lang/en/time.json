@@ -740,6 +740,21 @@
             "incomplete_blocks": "{1} :count block incomplete|[2,*] :count blocks incomplete",
             "registration_incomplete": "Time record incomplete"
         },
+        "month_norm": {
+            "errors": {
+                "worker_tenant": "This worker does not belong to the organisation.",
+                "pattern_no_norm": "A work pattern needs a weekly norm.",
+                "pattern_weekdays": "The work pattern needs minutes for every weekday.",
+                "pattern_sum": "The work pattern must equal the weekly norm.",
+                "agreement_holiday": "Choose a statutory public holiday.",
+                "agreement_replacement_required": "A replacement day needs a date.",
+                "agreement_replacement_forbidden": "This outcome has no replacement date.",
+                "agreement_replacement_same": "The replacement day must be a different date.",
+                "agreement_replacement_holiday": "A replacement day cannot itself be a statutory public holiday.",
+                "agreement_replacement_uncovered": "The calendar does not cover this replacement date.",
+                "agreement_replacement_taken": "That replacement date is already used."
+            }
+        },
         "groups_filter": "Groups",
         "group_ungrouped": "Ungrouped",
         "unsaved": {

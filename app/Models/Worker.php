@@ -106,6 +106,16 @@ class Worker extends Model
         return $this->hasMany(WorkerUnavailability::class);
     }
 
+    public function weekdayMinutes(): HasMany
+    {
+        return $this->hasMany(WorkerWeekdayMinute::class);
+    }
+
+    public function holidayAgreements(): HasMany
+    {
+        return $this->hasMany(WorkerHolidayAgreement::class);
+    }
+
     public function clockDevice(): BelongsTo
     {
         return $this->belongsTo(WorkerDevice::class, 'clock_device_id');

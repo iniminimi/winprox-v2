@@ -740,6 +740,21 @@
             "incomplete_blocks": "{1} :count blocco incompleto|[2,*] :count blocchi incompleti",
             "registration_incomplete": "Registrazione ore incompleta"
         },
+        "month_norm": {
+            "errors": {
+                "worker_tenant": "Questo esecutore non appartiene all’organizzazione.",
+                "pattern_no_norm": "Un regime di lavoro richiede una norma settimanale.",
+                "pattern_weekdays": "Il regime di lavoro deve avere minuti per ogni giorno.",
+                "pattern_sum": "Il regime di lavoro deve essere uguale alla norma settimanale.",
+                "agreement_holiday": "Scegli un giorno festivo legale.",
+                "agreement_replacement_required": "Un giorno di sostituzione richiede una data.",
+                "agreement_replacement_forbidden": "Questo esito non ha una data di sostituzione.",
+                "agreement_replacement_same": "Il giorno di sostituzione deve essere un’altra data.",
+                "agreement_replacement_holiday": "Un giorno di sostituzione non può essere a sua volta un festivo legale.",
+                "agreement_replacement_uncovered": "Il calendario non copre questa data di sostituzione.",
+                "agreement_replacement_taken": "Quella data di sostituzione è già usata."
+            }
+        },
         "groups_filter": "Gruppi",
         "group_ungrouped": "Senza gruppo",
         "unsaved": {

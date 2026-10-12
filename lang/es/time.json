@@ -740,6 +740,21 @@
             "incomplete_blocks": "{1} :count bloque incompleto|[2,*] :count bloques incompletos",
             "registration_incomplete": "Registro de tiempo incompleto"
         },
+        "month_norm": {
+            "errors": {
+                "worker_tenant": "Este operario no pertenece a la organización.",
+                "pattern_no_norm": "Un régimen de trabajo exige una norma semanal.",
+                "pattern_weekdays": "El régimen de trabajo necesita minutos para cada día.",
+                "pattern_sum": "El régimen de trabajo debe ser igual a la norma semanal.",
+                "agreement_holiday": "Elige un festivo legal.",
+                "agreement_replacement_required": "Un día de sustitución necesita una fecha.",
+                "agreement_replacement_forbidden": "Este resultado no tiene fecha de sustitución.",
+                "agreement_replacement_same": "El día de sustitución debe ser otra fecha.",
+                "agreement_replacement_holiday": "Un día de sustitución no puede ser a su vez un festivo legal.",
+                "agreement_replacement_uncovered": "El calendario no cubre esta fecha de sustitución.",
+                "agreement_replacement_taken": "Esa fecha de sustitución ya está usada."
+            }
+        },
         "groups_filter": "Grupos",
         "group_ungrouped": "Sin grupo",
         "unsaved": {

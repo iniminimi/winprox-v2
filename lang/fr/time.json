@@ -740,6 +740,21 @@
             "incomplete_blocks": "{1} :count bloc incomplet|[2,*] :count blocs incomplets",
             "registration_incomplete": "Pointage incomplet"
         },
+        "month_norm": {
+            "errors": {
+                "worker_tenant": "Cet intervenant n’appartient pas à l’organisation.",
+                "pattern_no_norm": "Un régime de travail exige une norme hebdomadaire.",
+                "pattern_weekdays": "Le régime de travail doit avoir des minutes pour chaque jour.",
+                "pattern_sum": "Le régime de travail doit être égal à la norme hebdomadaire.",
+                "agreement_holiday": "Choisissez un jour férié légal.",
+                "agreement_replacement_required": "Un jour de remplacement exige une date.",
+                "agreement_replacement_forbidden": "Ce choix n’a pas de date de remplacement.",
+                "agreement_replacement_same": "Le jour de remplacement doit être une autre date.",
+                "agreement_replacement_holiday": "Un jour de remplacement ne peut pas être lui-même un jour férié légal.",
+                "agreement_replacement_uncovered": "Le calendrier ne couvre pas cette date de remplacement.",
+                "agreement_replacement_taken": "Cette date de remplacement est déjà utilisée."
+            }
+        },
         "groups_filter": "Groupes",
         "group_ungrouped": "Sans groupe",
         "unsaved": {

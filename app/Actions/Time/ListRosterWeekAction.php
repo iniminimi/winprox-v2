@@ -3,7 +3,10 @@
 namespace App\Actions\Time;
 
 use App\Data\Time\RosterWeekSnapshot;
+use App\Data\Time\WorkerMonthFacts;
+use App\Data\Time\WorkerMonthNorm;
 use App\Data\Time\WorkerWeekHours;
+use App\Enums\MonthNormStatus;
 use App\Enums\RosterAttendanceStatus;
 use App\Enums\ShiftTypeColor;
 use App\Enums\ShiftTypeKind;
@@ -27,6 +30,8 @@ class ListRosterWeekAction
         private CompareRosterAttendanceAction $compareAttendance,
         private ListWorkerUnavailableDatesAction $listUnavailableDates,
         private SummarizeWorkerWeekHoursAction $summarizeWeekHours,
+        private SummarizeWorkerMonthFactsAction $summarizeMonthFacts,
+        private ResolveWorkerMonthNormAction $resolveMonthNorm,
     ) {}
 
     /**
@@ -236,13 +241,20 @@ class ListRosterWeekAction
             ->all();
 
         $weekHours = [];
+        $monthFacts = [];
+        $monthNorms = [];
         $contractVisible = false;
         if ($period === 'week' && $workerIds !== []) {
             $contractVisible = $this->contractNormVisible($actor, $tenantId);
             $weekHours = $this->summarizeWeekHours->handle($tenantId, $workerIds, $weekStartDate);
         }
+        if ($period === 'month' && $workerIds !== []) {
+            $contractVisible = $this->contractNormVisible($actor, $tenantId);
+            $monthFacts = $this->summarizeMonthFacts->handle($tenantId, $workerIds, $weekStartDate);
+            $monthNorms = $this->resolveMonthNorm->handle($tenantId, $workerIds, $weekStartDate);
+        }
 
-        $workerPayload = $workers->map(function (Worker $worker) use ($weekHours, $contractVisible, $period) {
+        $workerPayload = $workers->map(function (Worker $worker) use ($weekHours, $monthFacts, $monthNorms, $contractVisible, $period) {
             $payload = [
                 'id' => $worker->id,
                 'name' => $worker->displayName(),
@@ -260,6 +272,14 @@ class ListRosterWeekAction
             if ($period === 'week' && isset($weekHours[(int) $worker->id])) {
                 $payload['week_hours'] = $this->weekHoursPayload(
                     $weekHours[(int) $worker->id],
+                    $contractVisible,
+                );
+            }
+
+            if ($period === 'month' && isset($monthFacts[(int) $worker->id])) {
+                $payload['month_hours'] = $this->monthHoursPayload(
+                    $monthFacts[(int) $worker->id],
+                    $monthNorms[(int) $worker->id] ?? null,
                     $contractVisible,
                 );
             }
@@ -309,6 +329,33 @@ class ListRosterWeekAction
         return $actor !== null
             && (int) $actor->tenant_id === $tenantId
             && ($actor->isAdmin() || $actor->isEmployee());
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function monthHoursPayload(WorkerMonthFacts $facts, ?WorkerMonthNorm $norm, bool $contractVisible): array
+    {
+        $payload = [
+            'planned_minutes' => $facts->plannedMinutes,
+            'worked_minutes' => $facts->workedMinutes,
+            'registration_incomplete' => $facts->registrationIncomplete,
+            'incomplete_blocks' => $facts->incompleteBlocks,
+            'absences' => $facts->absences,
+        ];
+
+        if (! $contractVisible) {
+            return $payload;
+        }
+
+        $status = $norm?->status ?? MonthNormStatus::Incomplete;
+        $payload['norm_status'] = $status->value;
+        if ($status === MonthNormStatus::Available && $norm?->minutes !== null) {
+            $payload['contract_minutes'] = $norm->minutes;
+            $payload['difference_minutes'] = $facts->plannedMinutes - $norm->minutes;
+        }
+
+        return $payload;
     }
 
     /**
