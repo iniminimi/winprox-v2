@@ -12,7 +12,8 @@
         "ciao": "CIAO",
         "schedule": "Horaire",
         "shift_types": "Types de service",
-        "absence_requests": "Demandes"
+        "absence_requests": "Demandes",
+        "more": "Plus"
     },
     "presence": {
         "title": "Présence",

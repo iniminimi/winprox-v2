@@ -12,7 +12,8 @@
         "ciao": "CIAO",
         "schedule": "Dienstplan",
         "shift_types": "Schichttypen",
-        "absence_requests": "Anträge"
+        "absence_requests": "Anträge",
+        "more": "Mehr"
     },
     "presence": {
         "title": "Anwesenheit",

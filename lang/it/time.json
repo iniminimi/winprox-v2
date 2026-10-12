@@ -12,7 +12,8 @@
         "ciao": "CIAO",
         "schedule": "Turni",
         "shift_types": "Tipi di turno",
-        "absence_requests": "Richieste"
+        "absence_requests": "Richieste",
+        "more": "Altro"
     },
     "presence": {
         "title": "Presenza",

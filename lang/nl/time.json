@@ -12,7 +12,8 @@
         "ciao": "CIAO",
         "schedule": "Uurrooster",
         "shift_types": "Shiftypes",
-        "absence_requests": "Aanvragen"
+        "absence_requests": "Aanvragen",
+        "more": "Meer"
     },
     "presence": {
         "title": "Aanwezigheid",
