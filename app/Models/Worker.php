@@ -14,6 +14,9 @@ class Worker extends Model
 {
     use BelongsToTenant, HasFactory;
 
+    /** Standaard contractuele weeknorm: 38 uur. Null blijft “geen norm”. */
+    public const DEFAULT_WEEKLY_CONTRACT_MINUTES = 2280;
+
     protected $fillable = [
         'tenant_id',
         'user_id',

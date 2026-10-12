@@ -72,7 +72,7 @@ class CreateWorkerAction
             'company_name' => $companyName,
             'weekly_contract_minutes' => array_key_exists('weekly_contract_minutes', $data)
                 ? $data['weekly_contract_minutes']
-                : null,
+                : Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES,
             'is_active' => true,
             'created_by_worker_id' => $actorWorker?->id,
         ]);

@@ -743,6 +743,8 @@ class Team extends Component
         $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'workerContractHours', 'workerContractMinutes', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerUnavailabilities']);
         $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'workerContractHours', 'workerContractMinutes', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerUnavailabilities', 'workerPhoto', 'addingWorkerTeamId']);
         $this->addingWorkerTeamId = $teamId;
+        $this->workerContractHours = intdiv(Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES, 60);
+        $this->workerContractMinutes = Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES % 60;
         $this->workerLocationsPanelOpen = false;
         $this->showWorkerModal = true;
     }
@@ -1058,7 +1060,14 @@ class Team extends Component
 
     private function workerContractFieldEnabled(): bool
     {
-        return $this->workerUnavailabilityFieldEnabled();
+        $tenantId = Tenancy::id();
+        if ($tenantId === null) {
+            return false;
+        }
+
+        $tenant = Tenant::query()->find($tenantId);
+
+        return $tenant instanceof Tenant && $tenant->hasTimeModule();
     }
 
     private function normalizeContractInputs(): void

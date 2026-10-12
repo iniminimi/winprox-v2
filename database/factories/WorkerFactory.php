@@ -27,6 +27,8 @@ class WorkerFactory extends Factory
             'is_teamleader' => false,
             'is_external' => false,
             'company_name' => null,
+            // Tests kiezen zelf een norm. De productiestandaard is 38 uur.
+            'weekly_contract_minutes' => null,
         ];
     }
 

@@ -928,8 +928,10 @@ uit = alleen maandag–vrijdag. Bij uitgeschakelde weekends staat tussen vrijdag
 volgende maandag een **zware verticale streep** (zichtbaar in de maandgrid). Standaard
 staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
 
-**Weekoverzicht** (`SummarizeWorkerWeekHoursAction`, alleen weekweergave, onder de naam):
-contractuele weeknorm (`workers.weekly_contract_minutes`, nullable, max 10080), geplande
+**Weekoverzicht** (`SummarizeWorkerWeekHoursAction`, alleen weekweergave, rechts naast de dagen):
+contractuele weeknorm (`workers.weekly_contract_minutes`, nullable, max 10080; standaard 38 uur /
+2280 minuten voor bestaande lege waarden en voor nieuwe uitvoerders, per persoon aanpasbaar,
+leeg = geen norm), geplande
 werkuren (concept én gepubliceerd, maandag–zondag ook als za/zo verborgen zijn), verschil
 tegenover de norm, gesloten geklokte uren (`WorkShift::netWorkMinutes()`, inklok in
 `[maandag 00:00, volgende maandag 00:00)` lokale tijd) en afwezigheid uit `PlannedShift`

@@ -196,7 +196,7 @@
           "Clock Point mostra Il mio turno (solo i servizi pubblicati propri).",
           "Triangolo rosso se non hai timbrato o sei in ritardo.",
           "La gestione vede pianificato contro timbrato (margine di 15 minuti).",
-          "La vista settimana mostra per esecutore la norma settimanale contrattuale, le ore pianificate, lo scarto, le ore lavorate e l’assenza registrata. È un conteggio, non un giudizio sulla durata del lavoro."
+          "La vista settimana mostra per esecutore la norma settimanale contrattuale, le ore pianificate, lo scarto, le ore lavorate e l’assenza registrata. Quella norma è di 38 ore per impostazione predefinita e resta modificabile per persona. È un conteggio, non un giudizio sulla durata del lavoro."
         ]
       },
       {

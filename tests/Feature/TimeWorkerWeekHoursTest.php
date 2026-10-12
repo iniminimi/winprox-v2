@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Actions\Team\CreateWorkerAction;
 use App\Actions\Team\UpdateWorkerAction;
 use App\Actions\Time\ListRosterWeekAction;
 use App\Actions\Time\PublishWeekAction;
@@ -94,6 +95,25 @@ function weekSummary(Tenant $tenant, Worker $worker, string $weekStart): WorkerW
 
     return $rows[(int) $worker->id];
 }
+
+it('zet 38 uur als standaard en laat een lege norm toe', function () {
+    [$tenant, $admin, $team] = weekHoursTenant();
+
+    $created = app(CreateWorkerAction::class)->handle($team, [
+        'first_name' => 'Nieuw',
+        'last_name' => 'Persoon',
+    ], $admin->id);
+
+    expect($created->weekly_contract_minutes)->toBe(Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES);
+
+    $cleared = app(CreateWorkerAction::class)->handle($team, [
+        'first_name' => 'Zonder',
+        'last_name' => 'Norm',
+        'weekly_contract_minutes' => null,
+    ], $admin->id);
+
+    expect($cleared->weekly_contract_minutes)->toBeNull();
+});
 
 it('bewaart de weeknorm als minuten, inclusief 0 en null', function () {
     [$tenant, $admin, , $worker] = weekHoursTenant();

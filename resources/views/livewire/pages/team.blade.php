@@ -511,7 +511,7 @@
                             @error('workerDefaultUnitId') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
                     @endif
-                    @if ($hasTimeModule && ! $isCheckmate)
+                    @if ($hasTimeModule)
                         <div class="wp-modal-section">
                             <x-wp-tooltip :text="__('team.workers.contract_week_hint')" wrap>
                                 <h3 class="wp-label">{{ __('team.workers.contract_week') }}</h3>
@@ -530,6 +530,8 @@
                             @error('workerContractHours') <p class="wp-error">{{ $message }}</p> @enderror
                             @error('workerContractMinutes') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
+                    @endif
+                    @if ($hasTimeModule && ! $isCheckmate)
                         <div class="wp-modal-section">
                             <x-wp-tooltip :text="__('time.schedule.unavailable.section_hint')" wrap>
                                 <h3 class="wp-label">{{ __('time.schedule.unavailable.section_title') }}</h3>
