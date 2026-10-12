@@ -69,13 +69,13 @@ class DatabaseSeeder extends Seeder
         ClockPoint::create([
             'name' => 'Hoofdingang',
             'location_id' => $locationA->id,
-            'qr_token' => 'clock-hoofdingang',
+            'qr_token' => 'clockhoofdingang1234567890abcdef',
             'sort_order' => 0,
         ]);
         ClockPoint::create([
             'name' => 'Magazijn',
             'location_id' => $locationB->id,
-            'qr_token' => 'clock-magazijn',
+            'qr_token' => 'clockmagazijn1234567890123456',
             'sort_order' => 1,
         ]);
 
