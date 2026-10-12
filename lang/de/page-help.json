@@ -851,11 +851,11 @@
             "actions": [
                 {
                     "label": "Unit-QR",
-                    "text": "An einer Maschine, einem Raum oder einer Anlage angebracht. Bürger können hier Meldungen erstellen. Als Ausführender melden Sie sich zuerst über die Clock Point QR an; danach scannen Sie die Unit-QR, um offene Aufgaben an dieser Unit zu starten oder abzuschließen. Sind Unit-Checks aktiv, können angemeldete Ausführer auch OK/Nicht OK erfassen (optional mit Checkliste)."
+                    "text": "An einer Maschine, einem Raum oder einer Anlage angebracht. Bürger können hier Meldungen erstellen. Als Ausführender melden Sie sich zuerst im Clock-Point-Portal an; danach scannen Sie die Unit-QR, um offene Aufgaben an dieser Unit zu starten oder abzuschließen. Sind Unit-Checks aktiv, können angemeldete Ausführer auch OK/Nicht OK erfassen (optional mit Checkliste)."
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "An Eingang, Lager oder Werkstatt angebracht. Hier melden sich Ausführende an (Name + Icon). Ein-/Ausstempeln braucht Time (Stechuhr). Mit GPS-Arbeitsbesuchen können sie Teamaufgaben und den nächsten Inspektionsstopp (Unit-Check) am Clock Point abschließen."
+                    "text": "An Eingang, Lager oder Werkstatt angebracht — als Aufkleber oder als Uhrenbildschirm mit wechselndem QR. Hier melden sich Ausführende an (Name + Icon); über den Anmeldelink oder das Startbildschirm-Symbol geht das auch. Ein-/Ausstempeln braucht Time (Stechuhr) und auf einer festen Stechuhr jedes Mal einen frischen Scan (bei Checkmate genügt das Symbol). Mit GPS-Arbeitsbesuchen können sie Teamaufgaben und den nächsten Inspektionsstopp (Unit-Check) am Clock Point abschließen."
                 }
             ]
         },
@@ -929,7 +929,7 @@
             "actions": [
                 {
                     "label": "Name und Symbol",
-                    "text": "Nachdem Sie die Clock Point QR gescannt haben, geben Sie Ihren Vor- und Nachnamen ein und wählen Sie ein persönliches Symbol. Merken Sie sich dieses Symbol gut, denn beim nächsten Mal müssen Sie es erneut auswählen. Sie haben zwei Versuche, sich mit dem richtigen Symbol anzumelden; danach ist Ihr Konto gesperrt. Ein Teamleiter oder Administrator kann Ihr Konto in diesem Fall wieder freigeben."
+                    "text": "Nachdem Sie das Clock-Point-Portal geöffnet haben — per QR-Scan, Anmeldelink oder Startbildschirm-Symbol — geben Sie Ihren Vor- und Nachnamen ein und wählen Sie ein persönliches Symbol. Merken Sie sich dieses Symbol gut, denn beim nächsten Mal müssen Sie es erneut auswählen. Sie haben zwei Versuche, sich mit dem richtigen Symbol anzumelden; danach ist Ihr Konto gesperrt. Ein Teamleiter oder Administrator kann Ihr Konto in diesem Fall wieder freigeben."
                 },
                 {
                     "label": "Erstes Mal",
@@ -941,11 +941,11 @@
                 },
                 {
                     "label": "Offene Aufgaben",
-                    "text": "Nach der Anmeldung über die Clock Point QR sehen Sie im Unit-Portal die offenen Aufgaben Ihres Teams. Scannen Sie die Unit-QR vor Ort, um eine Aufgabe zu starten oder abzuschließen."
+                    "text": "Nach der Anmeldung sehen Sie im Unit-Portal die offenen Aufgaben Ihres Teams. Scannen Sie die Unit-QR vor Ort, um eine Aufgabe zu starten oder abzuschließen."
                 },
                 {
                     "label": "Neue Teamaufgaben",
-                    "text": "Wenn seit Ihrer Anmeldung über Clock Point neue Aufgaben für Ihr Team eingetroffen sind, zeigt das Unit-Portal ein auffälliges Sticky-Banner. Öffnen Sie die Aufgabenübersicht über den Clock-Point-Link oder schließen Sie das Banner."
+                    "text": "Wenn seit Ihrer Anmeldung neue Aufgaben für Ihr Team eingetroffen sind, zeigt das Unit-Portal ein auffälliges Sticky-Banner. Öffnen Sie die Aufgabenübersicht über den Clock-Point-Link oder schließen Sie das Banner."
                 },
                 {
                     "label": "Starten",
@@ -1048,11 +1048,11 @@
             "actions": [
                 {
                     "label": "Name und Symbol",
-                    "text": "Scannen Sie den Clock-Point-QR und wählen Sie Vor- und Nachname sowie Ihr persönliches Symbol (optional PIN) auf Ihrem eigenen Handy. Das sagt, wer Sie sind — das ist noch kein Einstempeln. Keine Schaltfläche für einen anderen Mitarbeiter: das Handy bleibt Ihres, bis Verwaltung oder Teamleiter es freigeben. Nach der Anmeldung verschwindet die Überschrift Anmeldung. Zwei falsche Versuche sperren Ihr Konto vorübergehend; ein Teamleiter oder Administrator kann das freigeben."
+                    "text": "Öffnen Sie das Clock-Point-Portal durch einen Scan des Aufklebers oder des Uhrenbildschirms, über den Anmeldelink aus einer E-Mail oder über das Startbildschirm-Symbol, und wählen Sie Vor- und Nachname sowie Ihr persönliches Symbol (optional PIN) auf Ihrem eigenen Handy. Das sagt, wer Sie sind — das ist noch kein Einstempeln. Keine Schaltfläche für einen anderen Mitarbeiter: das Handy bleibt Ihres, bis Verwaltung oder Teamleiter es freigeben. Nach der Anmeldung verschwindet die Überschrift Anmeldung. Zwei falsche Versuche sperren Ihr Konto vorübergehend; ein Teamleiter oder Administrator kann das freigeben."
                 },
                 {
                     "label": "Verknüpfung auf dem Startbildschirm",
-                    "text": "Rechts von Anmelden steht ein WinProx-Symbol. Tippen: unter Android legt Chrome es auf den Startbildschirm; am iPhone: ⋯ unten → Teilen → Mehr anzeigen → nach unten scrollen → + Zum Home-Bildschirm. Kein App Store."
+                    "text": "Rechts von Anmelden steht ein WinProx-Symbol. Tippen: unter Android legt Chrome es auf den Startbildschirm; am iPhone: ⋯ unten → Teilen → Mehr anzeigen → nach unten scrollen → + Zum Home-Bildschirm. Kein App Store. Über dieses Symbol melden Sie sich künftig ohne QR an; auf einer festen Stechuhr stempeln Sie erst nach einem Scan des Aufklebers oder des Uhrenbildschirms ein oder aus."
                 },
                 {
                     "label": "Abmelden",
@@ -1064,7 +1064,11 @@
                 },
                 {
                     "label": "Ein- und Ausstempeln",
-                    "text": "Jedes Ein-/Ausstempeln oder Verschieben braucht einen frischen Scan des Clock-Point-QR vor Ort — ein offener Tab reicht nicht. Pausen können am selben Handy ohne neuen Scan starten. Ein anderes Gerät wird abgelehnt, bis Teamleiter oder Verwaltung ein neues Gerät zulassen. Du hast eine offene Schicht. An einem anderen Clock Point siehst du, wo du eingestempelt bist, und kannst die Anwesenheit hierher verlegen (ein Wechsel innerhalb von 5 Min. löst einen Alarm aus). Mit GPS-Arbeitsbesuchen: Arbeit vor Ort starten, danach Teamaufgaben und den nächsten Inspektionsstopp am Clock Point. Ein rotes Dreieck neben der Einstempelzeit erscheint, wenn du eine veröffentlichte Schicht hast und nicht eingestempelt hast, oder mindestens 15 Minuten zu spät eingestempelt hast."
+                    "text": "Jedes Ein-/Ausstempeln oder Verschieben braucht einen frischen Scan des Aufklebers oder des Uhrenbildschirms vor Ort — der Anmeldelink, das Startbildschirm-Symbol oder ein offener Tab reicht nicht (bei Checkmate funktioniert das Symbol). Ein Scan gibt einen Stempel und läuft schnell ab. Pausen können am selben Handy ohne neuen Scan starten. Ist die Einstellung GPS beim Einstempeln an, ist Ihr Standort beim Einstempeln Pflicht; Ausstempeln und Pausen brauchen keine Position. Ein anderes Gerät wird abgelehnt, bis Teamleiter oder Verwaltung ein neues Gerät zulassen. Du hast eine offene Schicht. An einem anderen Clock Point siehst du, wo du eingestempelt bist, und kannst die Anwesenheit hierher verlegen (ein Wechsel innerhalb von 5 Min. löst einen Alarm aus). Mit GPS-Arbeitsbesuchen: Arbeit vor Ort starten, danach Teamaufgaben und den nächsten Inspektionsstopp am Clock Point. Ein rotes Dreieck neben der Einstempelzeit erscheint, wenn du eine veröffentlichte Schicht hast und nicht eingestempelt hast, oder mindestens 15 Minuten zu spät eingestempelt hast."
+                },
+                {
+                    "label": "Uhrenbildschirm",
+                    "text": "Hängt ein Uhrenbildschirm an der Stechuhr, erneuert sich der QR darauf laufend — mit dem Handy scannen zählt als frischer Scan. Kein Handy dabei? Tippen Sie auf dem Bildschirm Ihren Namen und stempeln Sie mit Ihrem PIN ein oder aus; zwei Fehlversuche sperren das kurz. Ohne PIN stempeln Sie über einen Scan auf dem Handy."
                 },
                 {
                     "label": "Wohin muss ich heute",
@@ -2138,7 +2142,7 @@
             "actions": [
                 {
                     "label": "Einstempeln",
-                    "text": "Zu Arbeitsbeginn: ein Tipp auf Einstempeln. Der Dienst läuft bis zum Ausstempeln."
+                    "text": "Zu Arbeitsbeginn: ein Tipp auf Einstempeln — über das Startbildschirm-Symbol, ohne QR-Scan. Ein Scan des Clock-Point-Aufklebers oder des Uhrenbildschirms stempelt ebenfalls ein. Ist GPS beim Einstempeln an, ist Ihr Standort Pflicht. Der Dienst läuft bis zum Ausstempeln."
                 },
                 {
                     "label": "Pause",
@@ -2146,7 +2150,7 @@
                 },
                 {
                     "label": "Ausstempeln",
-                    "text": "Am Tagesende ausstempeln: das schließt den Dienst und einen eventuell offenen Kundenbesuch. Abmelden vom Portal ist nicht dasselbe wie Ausstempeln."
+                    "text": "Am Tagesende ausstempeln — auch das geht über das Symbol, ohne Scan. Das schließt den Dienst und einen eventuell offenen Kundenbesuch. Abmelden vom Portal ist nicht dasselbe wie Ausstempeln."
                 }
             ]
         },

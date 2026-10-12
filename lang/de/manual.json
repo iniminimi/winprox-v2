@@ -67,7 +67,7 @@
         "general": "Allgemeines Handbuch",
         "general_desc": "Vollständige WinProx-App für Administratoren und Mitarbeiter, inkl. Reservierungen, Time (enthalten) und optionalen ESG-/IoT-Modulen, Abonnement und QR-Portal-Hilfe — drucken oder als PDF speichern.",
         "workers": "Mitarbeiter-Handbuch",
-        "workers_desc": "Clock-Point-QR und Unit-QR auf der Fläche — Anmeldung, Unit-Check, Aufgaben, Fotos und Arbeit ohne Empfang.",
+        "workers_desc": "Clock Point (Aufkleber oder Uhrenbildschirm) und Unit-QR auf der Fläche — Anmeldung, Ein-/Ausstempeln, Unit-Check, Aufgaben, Fotos und Arbeit ohne Empfang.",
         "teamleaders": "Teamleiter-Handbuch",
         "teamleaders_desc": "Symbole freigeben, Mitarbeiter verwalten und Aufgaben über das Clock Point-Portal koordinieren.",
         "features_overview": "Feature-Übersicht",
@@ -82,7 +82,7 @@
     "workers": {
         "cover": {
             "title": "Mitarbeiter-Handbuch",
-            "subtitle": "Clock Point QR und Unit-QR — Aufgaben vor Ort, auch ohne Empfang"
+            "subtitle": "Clock Point und Unit-QR — Anmeldung, Stempeln und Aufgaben vor Ort, auch ohne Empfang"
         }
     },
     "teamleaders": {

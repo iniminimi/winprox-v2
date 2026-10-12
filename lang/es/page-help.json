@@ -851,11 +851,11 @@
             "actions": [
                 {
                     "label": "QR de unidad",
-                    "text": "Colocado en una máquina, sala o activo. Los ciudadanos pueden informar de problemas aquí. Como trabajador, inicie sesión primero mediante el QR Clock Point; luego escanee el QR de unidad para iniciar o completar tareas abiertas en esa unidad. Con comprobaciones activadas, los ejecutores con sesión también pueden registrar OK/No OK (checklist opcional)."
+                    "text": "Colocado en una máquina, sala o activo. Los ciudadanos pueden informar de problemas aquí. Como trabajador, identifíquese primero en el portal Clock Point; luego escanee el QR de unidad para iniciar o completar tareas abiertas en esa unidad. Con comprobaciones activadas, los ejecutores con sesión también pueden registrar OK/No OK (checklist opcional)."
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Colocado en la entrada, almacén o taller. Aquí los operarios se identifican (nombre + icono). Fichar requiere Time (reloj de fichar). Con visitas GPS pueden cerrar tareas de equipo y la siguiente parada de inspección (control de unidad) en Clock Point."
+                    "text": "Colocado en la entrada, almacén o taller — como pegatina o como pantalla del reloj con QR cambiante. Aquí los operarios se identifican (nombre + icono); el enlace de acceso o el icono de inicio también sirve. Fichar requiere Time (reloj de fichar) y, en un reloj fijo, un escaneo nuevo cada vez (con Checkmate basta el icono). Con visitas GPS pueden cerrar tareas de equipo y la siguiente parada de inspección (control de unidad) en Clock Point."
                 }
             ]
         },
@@ -929,7 +929,7 @@
             "actions": [
                 {
                     "label": "Nombre e icono",
-                    "text": "Tras escanear el QR Clock Point, introduzca su nombre y apellidos y elija un icono personal. Recuerde bien este icono, porque la próxima vez debe seleccionarlo de nuevo. Tiene dos intentos para iniciar sesión con el icono correcto; después su cuenta queda bloqueada. Un jefe de equipo o administrador puede desbloquear su cuenta en ese caso."
+                    "text": "Tras abrir el portal Clock Point — mediante un escaneo QR, el enlace de acceso o el icono de inicio — introduzca su nombre y apellidos y elija un icono personal. Recuerde bien este icono, porque la próxima vez debe seleccionarlo de nuevo. Tiene dos intentos para iniciar sesión con el icono correcto; después su cuenta queda bloqueada. Un jefe de equipo o administrador puede desbloquear su cuenta en ese caso."
                 },
                 {
                     "label": "Primera vez",
@@ -941,11 +941,11 @@
                 },
                 {
                     "label": "Tareas abiertas",
-                    "text": "Tras iniciar sesión mediante el QR Clock Point ve en el portal de unidad las tareas abiertas de su equipo. Escanee el QR de unidad en el lugar para iniciar o completar una tarea."
+                    "text": "Tras iniciar sesión, ve en el portal de unidad las tareas abiertas de su equipo. Escanee el QR de unidad en el lugar para iniciar o completar una tarea."
                 },
                 {
                     "label": "Nuevas tareas del equipo",
-                    "text": "Si desde su inicio de sesión vía Clock Point han llegado nuevas tareas para su equipo, el portal de unidad muestra un banner de atención fijo. Abra el resumen de tareas mediante el enlace Clock Point o cierre el banner."
+                    "text": "Si desde su inicio de sesión han llegado nuevas tareas para su equipo, el portal de unidad muestra un banner de atención fijo. Abra el resumen de tareas mediante el enlace Clock Point o cierre el banner."
                 },
                 {
                     "label": "Iniciar",
@@ -1048,11 +1048,11 @@
             "actions": [
                 {
                     "label": "Nombre e icono",
-                    "text": "Escanee el QR Clock Point y elija su nombre, apellidos e icono personal (PIN opcional) en su propio móvil. Eso indica quién es — aún no es fichar. No hay botón para otro ejecutor: el móvil sigue siendo suyo hasta que un admin o un jefe de equipo lo libere. Tras identificarse desaparece el título Inicio de sesión. Dos intentos incorrectos bloquean temporalmente su cuenta; un jefe de equipo o administrador puede desbloquearla."
+                    "text": "Abra el portal Clock Point escaneando la pegatina o la pantalla del reloj, mediante el enlace de acceso de un correo o con el icono de inicio, y elija su nombre, apellidos e icono personal (PIN opcional) en su propio móvil. Eso indica quién es — aún no es fichar. No hay botón para otro ejecutor: el móvil sigue siendo suyo hasta que un admin o un jefe de equipo lo libere. Tras identificarse desaparece el título Inicio de sesión. Dos intentos incorrectos bloquean temporalmente su cuenta; un jefe de equipo o administrador puede desbloquearla."
                 },
                 {
                     "label": "Acceso directo en la pantalla de inicio",
-                    "text": "A la derecha de Inicio de sesión hay un icono WinProx. Tócalo: en Android Chrome lo añade a la pantalla de inicio; en iPhone: ⋯ abajo → Compartir → Mostrar más → desliza → + Añadir a pantalla de inicio. Sin App Store."
+                    "text": "A la derecha de Inicio de sesión hay un icono WinProx. Tócalo: en Android Chrome lo añade a la pantalla de inicio; en iPhone: ⋯ abajo → Compartir → Mostrar más → desliza → + Añadir a pantalla de inicio. Sin App Store. Ese icono le identifica en adelante sin QR; en un reloj fijo solo ficha tras escanear la pegatina o la pantalla del reloj."
                 },
                 {
                     "label": "Cerrar sesión",
@@ -1064,7 +1064,11 @@
                 },
                 {
                     "label": "Fichar entrada y salida",
-                    "text": "Cada entrada, salida o traslado exige un escaneo nuevo del QR de Clock Point en la sede: una pestaña abierta no basta. Las pausas se pueden iniciar en el mismo móvil sin un nuevo escaneo. Otro dispositivo se rechaza hasta que un responsable o admin lo autorice. Tienes un turno abierto. En otro Clock Point ves dónde estás fichado y puedes mover la presencia aquí (un salto en 5 min genera una alarma). Con visitas GPS: empieza el trabajo in situ y luego las tareas de equipo y la siguiente parada de inspección en Clock Point. Un triángulo rojo junto a la hora de entrada aparece si tienes un turno publicado y no has fichado, o has fichado con al menos 15 minutos de retraso."
+                    "text": "Cada entrada, salida o traslado exige un escaneo nuevo de la pegatina o de la pantalla del reloj en la sede: el enlace de acceso, el icono de inicio o una pestaña abierta no basta (con Checkmate el icono sí funciona). Un escaneo da un fichaje y caduca rápido. Las pausas se pueden iniciar en el mismo móvil sin un nuevo escaneo. Si el ajuste GPS al fichar la entrada está activo, su ubicación es obligatoria para fichar la entrada; la salida y las pausas no exigen posición. Otro dispositivo se rechaza hasta que un responsable o admin lo autorice. Tienes un turno abierto. En otro Clock Point ves dónde estás fichado y puedes mover la presencia aquí (un salto en 5 min genera una alarma). Con visitas GPS: empieza el trabajo in situ y luego las tareas de equipo y la siguiente parada de inspección en Clock Point. Un triángulo rojo junto a la hora de entrada aparece si tienes un turno publicado y no has fichado, o has fichado con al menos 15 minutos de retraso."
+                },
+                {
+                    "label": "Pantalla del reloj",
+                    "text": "Si hay una pantalla del reloj en el fichero, el QR de esa pantalla se renueva sin parar — escanearla con el móvil cuenta como escaneo nuevo. ¿Sin móvil a mano? Toque su nombre en la pantalla y fiche con su PIN; dos intentos fallidos lo bloquean un rato. Sin PIN, fiche mediante un escaneo en su móvil."
                 },
                 {
                     "label": "Adónde debo ir hoy",
@@ -2138,7 +2142,7 @@
             "actions": [
                 {
                     "label": "Fichar entrada",
-                    "text": "Al empezar la jornada: un toque en fichar. El servicio corre hasta que fichas la salida."
+                    "text": "Al empezar la jornada: un toque en Fichar entrada — desde el icono de inicio, sin escaneo QR. Un escaneo de la pegatina Clock Point o de la pantalla del reloj también ficha la entrada. Si el GPS al fichar está activo, su ubicación es obligatoria. El servicio corre hasta que fichas la salida."
                 },
                 {
                     "label": "Pausa",
@@ -2146,7 +2150,7 @@
                 },
                 {
                     "label": "Fichar salida",
-                    "text": "Ficha la salida al final del día: cierra el servicio y una posible visita a cliente abierta. Cerrar sesión en el portal no es lo mismo que fichar la salida."
+                    "text": "Ficha la salida al final del día — también desde el icono, sin escaneo. Cierra el servicio y una posible visita a cliente abierta. Cerrar sesión en el portal no es lo mismo que fichar la salida."
                 }
             ]
         },

@@ -67,7 +67,7 @@
         "general": "Algemene handleiding",
         "general_desc": "Volledige WinProx-app voor beheerders en medewerkers, inclusief reserveringen, unitmetingen, Time (inbegrepen) en optionele ESG-/IoT-modules, abonnement en QR-portaalhulp — afdrukken of opslaan als PDF.",
         "workers": "Handleiding uitvoerders",
-        "workers_desc": "Clock Point QR en unit-QR op de werkvloer — inloggen, unit check, unitmetingen, taken, foto's en werken zonder bereik.",
+        "workers_desc": "Clock Point (sticker of klokscherm) en unit-QR op de werkvloer — aanmelden, in- en uitklokken, unit check, unitmetingen, taken, foto's en werken zonder bereik.",
         "teamleaders": "Handleiding teamleaders",
         "teamleaders_desc": "Icoon vrijgeven, workers beheren en taken coördineren via het Clock Point-portaal.",
         "features_overview": "Features-overzicht",
@@ -82,7 +82,7 @@
     "workers": {
         "cover": {
             "title": "Handleiding uitvoerders",
-            "subtitle": "Clock Point QR en unit-QR — taken op locatie, ook zonder bereik"
+            "subtitle": "Clock Point en unit-QR — aanmelden, klokken en taken op locatie, ook zonder bereik"
         }
     },
     "teamleaders": {

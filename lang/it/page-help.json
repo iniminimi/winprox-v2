@@ -851,11 +851,11 @@
             "actions": [
                 {
                     "label": "QR unità",
-                    "text": "Applicato a una macchina, stanza o asset. I cittadini possono segnalare problemi qui. Come lavoratore, acceda prima tramite il QR Clock Point; poi scansioni il QR unità per avviare o completare attività aperte su quell'unità. Con i controlli unità attivi, gli esecutori con accesso possono anche registrare OK/Non OK (checklist opzionale)."
+                    "text": "Applicato a una macchina, stanza o asset. I cittadini possono segnalare problemi qui. Come lavoratore, acceda prima sul portale Clock Point; poi scansioni il QR unità per avviare o completare attività aperte su quell'unità. Con i controlli unità attivi, gli esecutori con accesso possono anche registrare OK/Non OK (checklist opzionale)."
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Si trova all’ingresso, magazzino o officina. Qui gli esecutori si identificano (nome + icona). Timbrare richiede Time (timbratrice). Con visite GPS possono chiudere le attività di squadra e la prossima fermata di ispezione (controllo unità) su Clock Point."
+                    "text": "Si trova all’ingresso, magazzino o officina — come adesivo o come schermo orologio con QR variabile. Qui gli esecutori si identificano (nome + icona); il link di accesso o l'icona home funziona ugualmente. Timbrare richiede Time (timbratrice) e, su una timbratrice fissa, ogni volta una nuova scansione (con Checkmate basta l'icona). Con visite GPS possono chiudere le attività di squadra e la prossima fermata di ispezione (controllo unità) su Clock Point."
                 }
             ]
         },
@@ -929,7 +929,7 @@
             "actions": [
                 {
                     "label": "Nome e icona",
-                    "text": "Dopo la scansione del QR Clock Point, inserisca nome e cognome e scelga un'icona personale. La ricordi bene, perché la prossima volta dovrà selezionarla di nuovo. Ha due tentativi per accedere con l'icona corretta; dopo il Suo account viene bloccato. Un caposquadra o amministratore può sbloccare il Suo account in quel caso."
+                    "text": "Dopo aver aperto il portale Clock Point — tramite scansione QR, link di accesso o icona home — inserisca nome e cognome e scelga un'icona personale. La ricordi bene, perché la prossima volta dovrà selezionarla di nuovo. Ha due tentativi per accedere con l'icona corretta; dopo il Suo account viene bloccato. Un caposquadra o amministratore può sbloccare il Suo account in quel caso."
                 },
                 {
                     "label": "Prima volta",
@@ -941,11 +941,11 @@
                 },
                 {
                     "label": "Attività aperte",
-                    "text": "Dopo l'accesso tramite il QR Clock Point vede nel portale unità le attività aperte del Suo team. Scansioni il QR unità sul posto per avviare o completare un'attività."
+                    "text": "Dopo l'accesso vede nel portale unità le attività aperte del Suo team. Scansioni il QR unità sul posto per avviare o completare un'attività."
                 },
                 {
                     "label": "Nuove attività del team",
-                    "text": "Se dall'accesso tramite Clock Point sono arrivate nuove attività per il Suo team, il portale unità mostra un banner di attenzione sticky. Apra il riepilogo attività tramite il link Clock Point o chiuda il banner."
+                    "text": "Se dall'accesso sono arrivate nuove attività per il Suo team, il portale unità mostra un banner di attenzione sticky. Apra il riepilogo attività tramite il link Clock Point o chiuda il banner."
                 },
                 {
                     "label": "Avvia",
@@ -1048,11 +1048,11 @@
             "actions": [
                 {
                     "label": "Nome e icona",
-                    "text": "Scansiona il QR Clock Point e scegli nome, cognome e icona personale (PIN opzionale) sul tuo telefono. Questo dice chi sei — non è ancora timbrare. Nessun pulsante per un altro esecutore: il telefono resta tuo finché un admin o un caposquadra lo sblocca. Dopo l’accesso scompare il titolo Accesso. Due tentativi errati bloccano temporaneamente l'account; un caposquadra o un amministratore può sbloccarlo."
+                    "text": "Apri il portale Clock Point scansionando l'adesivo o lo schermo orologio, tramite il link di accesso di un'e-mail o tramite l'icona sulla schermata home, e scegli nome, cognome e icona personale (PIN opzionale) sul tuo telefono. Questo dice chi sei — non è ancora timbrare. Nessun pulsante per un altro esecutore: il telefono resta tuo finché un admin o un caposquadra lo sblocca. Dopo l’accesso scompare il titolo Accesso. Due tentativi errati bloccano temporaneamente l'account; un caposquadra o un amministratore può sbloccarlo."
                 },
                 {
                     "label": "Collegamento sulla schermata iniziale",
-                    "text": "A destra di Accesso c’è un’icona WinProx. Tocca: su Android Chrome la mette sulla schermata Home; su iPhone: ⋯ in basso → Condividi → Mostra altro → scorri → + Aggiungi a schermata Home. Nessun App Store."
+                    "text": "A destra di Accesso c’è un’icona WinProx. Tocca: su Android Chrome la mette sulla schermata Home; su iPhone: ⋯ in basso → Condividi → Mostra altro → scorri → + Aggiungi a schermata Home. Nessun App Store. Con quell'icona accedi d'ora in poi senza QR; su una timbratrice fissa timbri solo dopo una scansione dell'adesivo o dello schermo orologio."
                 },
                 {
                     "label": "Esci",
@@ -1064,7 +1064,11 @@
                 },
                 {
                     "label": "Timbra entrata e uscita",
-                    "text": "Ogni ingresso, uscita o spostamento richiede una nuova scansione del QR Clock Point in sede: una scheda aperta non basta. Le pause si possono avviare sullo stesso telefono senza nuova scansione. Un altro dispositivo è rifiutato finché team leader o admin non autorizzano. Hai un solo turno aperto. Su un altro Clock Point vedi dove sei timbrato e puoi spostare la presenza qui (un salto entro 5 min genera un allarme). Con visite GPS: avvia il lavoro sul posto, poi le attività di squadra e la prossima fermata di ispezione su Clock Point. Un triangolo rosso accanto all’orario di ingresso appare se hai un turno pubblicato e non hai timbrato, o hai timbrato con almeno 15 minuti di ritardo."
+                    "text": "Ogni ingresso, uscita o spostamento richiede una nuova scansione dell'adesivo o dello schermo orologio in sede: il link di accesso, l'icona home o una scheda aperta non basta (con Checkmate l'icona funziona). Una scansione dà una timbratura e scade in fretta. Le pause si possono avviare sullo stesso telefono senza nuova scansione. Se l'impostazione GPS in entrata è attiva, la tua posizione è obbligatoria per timbrare l'entrata; uscita e pause non chiedono posizione. Un altro dispositivo è rifiutato finché team leader o admin non autorizzano. Hai un solo turno aperto. Su un altro Clock Point vedi dove sei timbrato e puoi spostare la presenza qui (un salto entro 5 min genera un allarme). Con visite GPS: avvia il lavoro sul posto, poi le attività di squadra e la prossima fermata di ispezione su Clock Point. Un triangolo rosso accanto all’orario di ingresso appare se hai un turno pubblicato e non hai timbrato, o hai timbrato con almeno 15 minuti di ritardo."
+                },
+                {
+                    "label": "Schermo orologio",
+                    "text": "Se alla timbratrice c'è uno schermo orologio, il QR su quello schermo si rinnova di continuo — scansionarlo col telefono vale come nuova scansione. Senza telefono a portata? Tocca il tuo nome sullo schermo e timbra con il tuo PIN; due tentativi sbagliati lo bloccano per poco. Senza PIN timbri tramite una scansione sul telefono."
                 },
                 {
                     "label": "Dove devo andare oggi",
@@ -2138,7 +2142,7 @@
             "actions": [
                 {
                     "label": "Timbratura entrata",
-                    "text": "All'inizio della giornata: un tocco su timbra. Il servizio corre finché timbri l'uscita."
+                    "text": "All'inizio della giornata: un tocco su Timbratura entrata — dall'icona home, senza scansione QR. Una scansione dell'adesivo Clock Point o dello schermo orologio timbra comunque l'entrata. Se il GPS in entrata è attivo, la tua posizione è obbligatoria. Il servizio corre finché timbri l'uscita."
                 },
                 {
                     "label": "Pausa",
@@ -2146,7 +2150,7 @@
                 },
                 {
                     "label": "Timbratura uscita",
-                    "text": "Timbra l'uscita a fine giornata: chiude il servizio e un'eventuale visita al cliente aperta. Uscire dal portale non è la stessa cosa di timbrare l'uscita."
+                    "text": "Timbra l'uscita a fine giornata — anche dall'icona, senza scansione. Chiude il servizio e un'eventuale visita al cliente aperta. Uscire dal portale non è la stessa cosa di timbrare l'uscita."
                 }
             ]
         },

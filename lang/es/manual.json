@@ -67,7 +67,7 @@
         "general": "Manual general",
         "general_desc": "Aplicación WinProx completa para administradores y personal, con reservas, Time (incluido) y módulos ESG/IoT opcionales, suscripción y ayuda del portal QR — imprimir o guardar como PDF.",
         "workers": "Manual de trabajadores",
-        "workers_desc": "QR Clock Point y QR de unit en planta — acceso, comprobación de unit, tareas y fotos. Incluye trabajo sin cobertura.",
+        "workers_desc": "Clock Point (pegatina o pantalla del reloj) y QR de unidad en planta — acceso, fichaje, comprobación de unidad, tareas y fotos. Incluye trabajo sin cobertura.",
         "teamleaders": "Manual de jefe de equipo",
         "teamleaders_desc": "Liberar iconos, gestionar trabajadores y coordinar tareas mediante el portal Clock Point.",
         "features_overview": "Resumen de funciones",
@@ -82,7 +82,7 @@
     "workers": {
         "cover": {
             "title": "Manual de trabajadores",
-            "subtitle": "QR Clock Point y QR de unidad — tareas en el lugar, también sin cobertura"
+            "subtitle": "Clock Point y QR de unidad — acceso, fichaje y tareas en el lugar, también sin cobertura"
         }
     },
     "teamleaders": {

@@ -851,11 +851,11 @@
             "actions": [
                 {
                     "label": "Unit-QR",
-                    "text": "Hangt op een machine, ruimte of asset. Burgers kunnen hier meldingen doen. Als uitvoerder meld je je eerst aan via de Clock Point QR; daarna scan je de unit-QR om open taken op die unit te starten of af te ronden. Wanneer Unit checks aanstaan, kunnen ingelogde uitvoerders ook OK/Niet OK registreren (met optionele checklist)."
+                    "text": "Hangt op een machine, ruimte of asset. Burgers kunnen hier meldingen doen. Als uitvoerder meld je je eerst aan op het Clock Point-portaal; daarna scan je de unit-QR om open taken op die unit te starten of af te ronden. Wanneer Unit checks aanstaan, kunnen ingelogde uitvoerders ook OK/Niet OK registreren (met optionele checklist)."
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Hangt bij de ingang, magazijn of werkplaats. Hier melden uitvoerders zich aan (naam + icoon). In- en uitklokken kan alleen met Time (prikklok). Met GPS-werkbezoeken kunnen ze teamtaken en de volgende inspectiestop (unit check) op Clock Point afhandelen."
+                    "text": "Hangt bij de ingang, magazijn of werkplaats — als sticker of als klokscherm met wisselende QR. Hier melden uitvoerders zich aan (naam + icoon); via de aanmeldlink of het startscherm-icoon kan dat ook. In- en uitklokken kan alleen met Time (prikklok) en vraagt op een vaste prikklok telkens een verse scan (bij Checkmate volstaat het icoon). Met GPS-werkbezoeken kunnen ze teamtaken en de volgende inspectiestop (unit check) op Clock Point afhandelen."
                 }
             ]
         },
@@ -929,7 +929,7 @@
             "actions": [
                 {
                     "label": "Naam en icoon",
-                    "text": "Nadat je de Clock Point QR hebt gescand, vul je je voor- en achternaam in en kies je een persoonlijk icoon. Onthoud dit icoon goed, want de volgende keer moet je dit opnieuw selecteren. Je krijgt twee pogingen om je aan te melden met het juiste icoon; daarna wordt je account geblokkeerd. Een teamleider of beheerder kan je account in dat geval weer vrijgeven."
+                    "text": "Nadat je het Clock Point-portaal hebt geopend — via een QR-scan, de aanmeldlink of het startscherm-icoon — vul je je voor- en achternaam in en kies je een persoonlijk icoon. Onthoud dit icoon goed, want de volgende keer moet je dit opnieuw selecteren. Je krijgt twee pogingen om je aan te melden met het juiste icoon; daarna wordt je account geblokkeerd. Een teamleider of beheerder kan je account in dat geval weer vrijgeven."
                 },
                 {
                     "label": "Eerste keer",
@@ -941,11 +941,11 @@
                 },
                 {
                     "label": "Open taken",
-                    "text": "Na het aanmelden via Clock Point QR zie je op het unit-portaal de open taken van je team. Scan de unit-QR op locatie om een taak te starten of af te ronden."
+                    "text": "Na het aanmelden zie je op het unit-portaal de open taken van je team. Scan de unit-QR op locatie om een taak te starten of af te ronden."
                 },
                 {
                     "label": "Nieuwe teamtaken",
-                    "text": "Als er sinds je aanmelding via Clock Point nieuwe taken voor je team zijn, toont het unit-portaal een opvallende sticky banner. Open het takenoverzicht via de Clock Point-link of sluit de banner."
+                    "text": "Als er sinds je aanmelding nieuwe taken voor je team zijn, toont het unit-portaal een opvallende sticky banner. Open het takenoverzicht via de Clock Point-link of sluit de banner."
                 },
                 {
                     "label": "Starten",
@@ -1048,11 +1048,11 @@
             "actions": [
                 {
                     "label": "Naam en icoon",
-                    "text": "Scan de Clock Point-QR en kies je voor- en achternaam plus je persoonlijke icoon (optioneel pincode) op je eigen gsm. Dat zegt wie je bent — het is nog geen inklokken. Geen knop om als andere medewerker aan te melden: de gsm blijft van jou tot beheer of teamleader vrijgeeft. Na aanmelden verdwijnt de kop Aanmelden. Twee foute pogingen blokkeren je account tijdelijk; een teamleider of beheerder kan dat vrijgeven."
+                    "text": "Open het Clock Point-portaal via een scan van de sticker of het klokscherm, via de aanmeldlink uit een e-mail of via het startscherm-icoon, en kies je voor- en achternaam plus je persoonlijke icoon (optioneel pincode) op je eigen gsm. Dat zegt wie je bent — het is nog geen inklokken. Geen knop om als andere medewerker aan te melden: de gsm blijft van jou tot beheer of teamleader vrijgeeft. Na aanmelden verdwijnt de kop Aanmelden. Twee foute pogingen blokkeren je account tijdelijk; een teamleider of beheerder kan dat vrijgeven."
                 },
                 {
                     "label": "Snelkoppeling op startscherm",
-                    "text": "Rechts van Aanmelden staat een WinProx-icoon. Tik: op Android zet Chrome het meteen op het startscherm; op iPhone: ⋯ onderaan → Deel → Toon meer → scroll naar beneden → + Zet op beginscherm. Geen App Store."
+                    "text": "Rechts van Aanmelden staat een WinProx-icoon. Tik: op Android zet Chrome het meteen op het startscherm; op iPhone: ⋯ onderaan → Deel → Toon meer → scroll naar beneden → + Zet op beginscherm. Geen App Store. Via dat icoon meld je je voortaan aan zonder QR; op een vaste prikklok klok je pas in of uit na een scan van de sticker of het klokscherm."
                 },
                 {
                     "label": "Afmelden",
@@ -1064,7 +1064,11 @@
                 },
                 {
                     "label": "In- en uitklokken",
-                    "text": "Elke in-/uitklok of verplaatsing vraagt een verse scan van de Clock Point-QR op de vestiging — een open tab volstaat niet. Pauzes kan je op dezelfde gsm starten zonder nieuwe scan. Een ander toestel wordt geweigerd tot teamleader of beheer een nieuw toestel toestaat. Je hebt één open dienst tegelijk. Op een andere Clock Point zie je bij welke vestiging je bent ingeklokt en kun je aanwezigheid verplaatsen naar hier (een hop binnen 5 minuten geeft een alarm). Met GPS-werkbezoeken: start werk ter plaatse, daarna teamtaken en de volgende inspectiestop op Clock Point. Een rood driehoekje naast de inkloktijd verschijnt als je een gepubliceerde dienst hebt en niet of minstens 15 minuten te laat inklokt."
+                    "text": "Elke in-/uitklok of verplaatsing vraagt een verse scan van de sticker of het klokscherm op de vestiging — de aanmeldlink, het startscherm-icoon of een open tab volstaan niet (bij Checkmate werkt het icoon wel). Eén scan geeft één prik en vervalt snel. Pauzes kan je op dezelfde gsm starten zonder nieuwe scan. Staat de instelling GPS bij inklokken aan, dan is je locatie verplicht bij het inklokken; uitklokken en pauzes vragen geen positie. Een ander toestel wordt geweigerd tot teamleader of beheer een nieuw toestel toestaat. Je hebt één open dienst tegelijk. Op een andere Clock Point zie je bij welke vestiging je bent ingeklokt en kun je aanwezigheid verplaatsen naar hier (een hop binnen 5 minuten geeft een alarm). Met GPS-werkbezoeken: start werk ter plaatse, daarna teamtaken en de volgende inspectiestop op Clock Point. Een rood driehoekje naast de inkloktijd verschijnt als je een gepubliceerde dienst hebt en niet of minstens 15 minuten te laat inklokt."
+                },
+                {
+                    "label": "Klokscherm",
+                    "text": "Hangt er een klokscherm bij de prikklok, dan ververst de QR op dat scherm voortdurend — scannen met je gsm telt als verse scan. Geen gsm bij de hand? Tik op het scherm je naam aan en klok in of uit met je pincode; twee foute pogingen blokkeren dat even. Zonder pincode klok je via een scan op je gsm."
                 },
                 {
                     "label": "Waar moet ik vandaag naartoe",
@@ -2138,7 +2142,7 @@
             "actions": [
                 {
                     "label": "Inklokken",
-                    "text": "Aan het begin van de werkdag: één tik op inklokken. De dienst loopt tot je uitklokt."
+                    "text": "Aan het begin van de werkdag: één tik op Inklokken — via het startscherm-icoon, zonder QR-scan. Een scan van de Clock Point-sticker of het klokscherm klokt ook in. Staat GPS bij inklokken aan, dan is je locatie verplicht. De dienst loopt tot je uitklokt."
                 },
                 {
                     "label": "Pauze",
@@ -2146,7 +2150,7 @@
                 },
                 {
                     "label": "Uitklokken",
-                    "text": "Aan het einde van de dag uitklokken: dat sluit de dienst én een eventueel open klantbezoek. Afmelden van het portaal is iets anders dan uitklokken."
+                    "text": "Aan het einde van de dag uitklokken — dat kan ook vanuit het icoon, zonder scan. Uitklokken sluit de dienst én een eventueel open klantbezoek. Afmelden van het portaal is iets anders dan uitklokken."
                 }
             ]
         },

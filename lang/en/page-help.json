@@ -851,11 +851,11 @@
             "actions": [
                 {
                     "label": "Unit QR",
-                    "text": "Attached to a machine, room or asset. Citizens can report issues here. As a worker, sign in first via the Clock Point QR; then scan the unit QR to start or complete open tasks on that unit. When unit checks are enabled, signed-in workers can also record OK/Not OK (with an optional checklist)."
+                    "text": "Attached to a machine, room or asset. Citizens can report issues here. As a worker, sign in first on the Clock Point portal; then scan the unit QR to start or complete open tasks on that unit. When unit checks are enabled, signed-in workers can also record OK/Not OK (with an optional checklist)."
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Placed at the entrance, warehouse or workshop. Workers sign in here (name + icon). Clocking in/out requires Time (punch clock). With GPS work visits they can complete team tasks and the next inspection stop (unit check) on Clock Point."
+                    "text": "Placed at the entrance, warehouse or workshop — as a sticker or as a clock screen with a rotating QR. Workers sign in here (name + icon); the sign-in link or the home screen icon works too. Clocking in/out requires Time (punch clock) and, on a fixed punch clock, a fresh scan each time (with Checkmate the icon is enough). With GPS work visits they can complete team tasks and the next inspection stop (unit check) on Clock Point."
                 }
             ]
         },
@@ -929,7 +929,7 @@
             "actions": [
                 {
                     "label": "Name and icon",
-                    "text": "After scanning the Clock Point QR, enter your first and last name and choose a personal icon. Remember this icon well, because next time you must select it again. You get two attempts to sign in with the correct icon; after that your account is blocked. A team leader or administrator can unblock your account in that case."
+                    "text": "After opening the Clock Point portal — via a QR scan, the sign-in link or the home screen icon — enter your first and last name and choose a personal icon. Remember this icon well, because next time you must select it again. You get two attempts to sign in with the correct icon; after that your account is blocked. A team leader or administrator can unblock your account in that case."
                 },
                 {
                     "label": "First time",
@@ -941,11 +941,11 @@
                 },
                 {
                     "label": "Open tasks",
-                    "text": "After signing in via Clock Point QR you see open tasks for your team on the unit portal. Scan the unit QR on site to start or complete a task."
+                    "text": "After signing in you see open tasks for your team on the unit portal. Scan the unit QR on site to start or complete a task."
                 },
                 {
                     "label": "New team tasks",
-                    "text": "If new tasks for your team arrived since you signed in via Clock Point, the unit portal shows a sticky attention banner. Open the task overview via the Clock Point link or dismiss the banner."
+                    "text": "If new tasks for your team arrived since you signed in, the unit portal shows a sticky attention banner. Open the task overview via the Clock Point link or dismiss the banner."
                 },
                 {
                     "label": "Start",
@@ -1048,11 +1048,11 @@
             "actions": [
                 {
                     "label": "Name and icon",
-                    "text": "Scan the Clock Point QR and choose your first and last name plus your personal icon (optional PIN) on your own phone. That is who you are — it is not clocking in yet. There is no button to sign in as a different worker: the phone stays yours until an admin or team leader releases it. After sign-in the Sign in heading disappears. Two wrong attempts temporarily block your account; a team leader or administrator can release it."
+                    "text": "Open the Clock Point portal by scanning the sticker or the clock screen, via the sign-in link from an email or via the home screen icon, and choose your first and last name plus your personal icon (optional PIN) on your own phone. That is who you are — it is not clocking in yet. There is no button to sign in as a different worker: the phone stays yours until an admin or team leader releases it. After sign-in the Sign in heading disappears. Two wrong attempts temporarily block your account; a team leader or administrator can release it."
                 },
                 {
                     "label": "Home screen shortcut",
-                    "text": "A WinProx icon sits to the right of Sign in. Tap: on Android Chrome adds it to the home screen; on iPhone: ⋯ at the bottom → Share → Show more → scroll down → + Add to Home Screen. No App Store."
+                    "text": "A WinProx icon sits to the right of Sign in. Tap: on Android Chrome adds it to the home screen; on iPhone: ⋯ at the bottom → Share → Show more → scroll down → + Add to Home Screen. No App Store. That icon signs you in without a QR; on a fixed punch clock you can only clock in or out after scanning the sticker or the clock screen."
                 },
                 {
                     "label": "Sign out",
@@ -1064,7 +1064,11 @@
                 },
                 {
                     "label": "Clock in and out",
-                    "text": "Each clock-in, clock-out or move needs a fresh scan of the Clock Point QR on site — an open tab is not enough. You can start breaks on the same phone without a new scan. Another device is refused until a team leader or admin allows a new device. You have one open shift at a time. At another Clock Point you see where you are clocked in and can move presence here (a hop within 5 minutes raises an alarm). With GPS work visits: start work on site, then team tasks and the next inspection stop on Clock Point. A red triangle next to the clock-in time appears when you have a published shift and have not clocked in, or clocked in at least 15 minutes late."
+                    "text": "Each clock-in, clock-out or move needs a fresh scan of the sticker or the clock screen on site — the sign-in link, the home screen icon or an open tab is not enough (with Checkmate the icon does work). One scan gives one punch and expires quickly. You can start breaks on the same phone without a new scan. If the GPS-on-clock-in setting is on, your location is required to clock in; clock-out and breaks need no position. Another device is refused until a team leader or admin allows a new device. You have one open shift at a time. At another Clock Point you see where you are clocked in and can move presence here (a hop within 5 minutes raises an alarm). With GPS work visits: start work on site, then team tasks and the next inspection stop on Clock Point. A red triangle next to the clock-in time appears when you have a published shift and have not clocked in, or clocked in at least 15 minutes late."
+                },
+                {
+                    "label": "Clock screen",
+                    "text": "If a clock screen hangs at the punch clock, the QR on that screen keeps refreshing — scanning it with your phone counts as a fresh scan. No phone at hand? Tap your name on the screen and clock in or out with your PIN; two wrong attempts block that briefly. Without a PIN you clock in via a scan on your phone."
                 },
                 {
                     "label": "Where do I need to go today",
@@ -2138,7 +2142,7 @@
             "actions": [
                 {
                     "label": "Clock in",
-                    "text": "At the start of the workday: one tap on clock in. The shift runs until you clock out."
+                    "text": "At the start of the workday: one tap on Clock in — via the home screen icon, no QR scan needed. Scanning the Clock Point sticker or the clock screen clocks in too. If GPS on clock-in is on, your location is required. The shift runs until you clock out."
                 },
                 {
                     "label": "Break",
@@ -2146,7 +2150,7 @@
                 },
                 {
                     "label": "Clock out",
-                    "text": "Clock out at the end of the day: it closes the shift and any open customer visit. Signing out of the portal is not the same as clocking out."
+                    "text": "Clock out at the end of the day — also possible from the icon, without a scan. Clock-out closes the shift and any open customer visit. Signing out of the portal is not the same as clocking out."
                 }
             ]
         },

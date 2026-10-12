@@ -859,11 +859,11 @@
             "actions": [
                 {
                     "label": "QR unité",
-                    "text": "Fixé sur une machine, une pièce ou un équipement. Les citoyens peuvent signaler un problème ici. En tant qu'exécutant, connectez-vous d'abord via le QR Clock Point ; puis scannez le QR unité pour démarrer ou terminer les tâches ouvertes sur cette unité. Si les contrôles d'unité sont activés, les exécutants connectés peuvent aussi enregistrer OK/Non OK (checklist optionnelle)."
+                    "text": "Fixé sur une machine, une pièce ou un équipement. Les citoyens peuvent signaler un problème ici. En tant qu'exécutant, identifiez-vous d'abord sur le portail Clock Point ; puis scannez le QR unité pour démarrer ou terminer les tâches ouvertes sur cette unité. Si les contrôles d'unité sont activés, les exécutants connectés peuvent aussi enregistrer OK/Non OK (checklist optionnelle)."
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Placé à l’entrée, à l’entrepôt ou à l’atelier. Les exécutants s’identifient ici (nom + icône). Pointer nécessite Time (pointeuse). Avec visites GPS ils peuvent clôturer les tâches d’équipe et le prochain arrêt d’inspection (contrôle d’unité) sur Clock Point."
+                    "text": "Placé à l’entrée, à l’entrepôt ou à l’atelier — comme autocollant ou comme écran de pointage à QR changeant. Les exécutants s’identifient ici (nom + icône) ; le lien de connexion ou l’icône d’accueil fonctionne aussi. Pointer nécessite Time (pointeuse) et, sur une pointeuse fixe, un nouveau scan à chaque fois (avec Checkmate, l’icône suffit). Avec visites GPS ils peuvent clôturer les tâches d’équipe et le prochain arrêt d’inspection (contrôle d’unité) sur Clock Point."
                 }
             ]
         },
@@ -937,7 +937,7 @@
             "actions": [
                 {
                     "label": "Nom et icône",
-                    "text": "Après avoir scanné le QR Clock Point, entrez votre nom et prénom et choisissez une icône personnelle. Mémorisez bien cette icône, car la prochaine fois vous devez la sélectionner à nouveau. Vous avez deux tentatives pour vous connecter avec la bonne icône ; après cela votre compte est bloqué. Un chef d'équipe ou administrateur peut débloquer votre compte dans ce cas."
+                    "text": "Après avoir ouvert le portail Clock Point — via un scan QR, le lien de connexion ou l'icône d'accueil — entrez votre nom et prénom et choisissez une icône personnelle. Mémorisez bien cette icône, car la prochaine fois vous devez la sélectionner à nouveau. Vous avez deux tentatives pour vous connecter avec la bonne icône ; après cela votre compte est bloqué. Un chef d'équipe ou administrateur peut débloquer votre compte dans ce cas."
                 },
                 {
                     "label": "Première fois",
@@ -949,11 +949,11 @@
                 },
                 {
                     "label": "Tâches ouvertes",
-                    "text": "Après connexion via le QR Clock Point, vous voyez sur le portail unité les tâches ouvertes de votre équipe. Scannez le QR unité sur place pour démarrer ou terminer une tâche."
+                    "text": "Après connexion, vous voyez sur le portail unité les tâches ouvertes de votre équipe. Scannez le QR unité sur place pour démarrer ou terminer une tâche."
                 },
                 {
                     "label": "Nouvelles tâches d'équipe",
-                    "text": "Si de nouvelles tâches pour votre équipe sont arrivées depuis votre connexion via Clock Point, le portail unité affiche une bannière d'attention sticky. Ouvrez l'aperçu des tâches via le lien Clock Point ou fermez la bannière."
+                    "text": "Si de nouvelles tâches pour votre équipe sont arrivées depuis votre connexion, le portail unité affiche une bannière d'attention sticky. Ouvrez l'aperçu des tâches via le lien Clock Point ou fermez la bannière."
                 },
                 {
                     "label": "Démarrer",
@@ -1056,11 +1056,11 @@
             "actions": [
                 {
                     "label": "Nom et icône",
-                    "text": "Scannez le QR Clock Point et choisissez votre prénom, nom et icône personnelle (PIN optionnel) sur votre propre téléphone. Cela indique qui vous êtes — ce n'est pas encore pointer. Pas de bouton pour un autre exécutant : le téléphone reste le vôtre jusqu’à libération par l’admin ou le chef d’équipe. Après connexion, le titre Connexion disparaît. Deux tentatives incorrectes bloquent temporairement votre compte ; un chef d'équipe ou un administrateur peut le débloquer."
+                    "text": "Ouvrez le portail Clock Point en scannant l'autocollant ou l'écran de pointage, via le lien de connexion d'un e-mail ou via l'icône d'accueil, puis choisissez votre prénom, nom et icône personnelle (PIN optionnel) sur votre propre téléphone. Cela indique qui vous êtes — ce n'est pas encore pointer. Pas de bouton pour un autre exécutant : le téléphone reste le vôtre jusqu’à libération par l’admin ou le chef d’équipe. Après connexion, le titre Connexion disparaît. Deux tentatives incorrectes bloquent temporairement votre compte ; un chef d'équipe ou un administrateur peut le débloquer."
                 },
                 {
                     "label": "Raccourci sur l’écran d’accueil",
-                    "text": "Une icône WinProx se trouve à droite de Connexion. Touchez : sur Android, Chrome l’ajoute à l’écran d’accueil ; sur iPhone : ⋯ en bas → Partager → Afficher plus → faites défiler → + Sur l’écran d’accueil. Pas d’App Store."
+                    "text": "Une icône WinProx se trouve à droite de Connexion. Touchez : sur Android, Chrome l’ajoute à l’écran d’accueil ; sur iPhone : ⋯ en bas → Partager → Afficher plus → faites défiler → + Sur l’écran d’accueil. Pas d’App Store. Cette icône vous identifie désormais sans QR ; sur une pointeuse fixe, vous ne pointez qu'après un scan de l'autocollant ou de l'écran de pointage."
                 },
                 {
                     "label": "Se déconnecter",
@@ -1072,7 +1072,11 @@
                 },
                 {
                     "label": "Pointer entrée et sortie",
-                    "text": "Chaque entrée, sortie ou déplacement exige un nouveau scan du QR Clock Point sur site — un onglet ouvert ne suffit pas. Les pauses peuvent démarrer sur le même téléphone sans nouveau scan. Un autre appareil est refusé jusqu'à autorisation. Vous n'avez qu'un service ouvert. Sur un autre Clock Point vous voyez où vous êtes pointé et pouvez déplacer la présence ici (un saut en moins de 5 min déclenche une alarme). Avec visites GPS : commencez le travail sur place, puis les tâches d'équipe et le prochain arrêt d'inspection sur Clock Point. Un triangle rouge à côté de l’heure d’entrée apparaît si vous avez un service publié et n’avez pas pointé, ou avez pointé avec au moins 15 minutes de retard."
+                    "text": "Chaque entrée, sortie ou déplacement exige un nouveau scan de l'autocollant ou de l'écran de pointage sur site — le lien de connexion, l'icône d'accueil ou un onglet ouvert ne suffit pas (avec Checkmate, l'icône fonctionne). Un scan donne un pointage et expire vite. Les pauses peuvent démarrer sur le même téléphone sans nouveau scan. Si le réglage GPS à l'entrée est actif, votre position est obligatoire pour pointer l'entrée ; la sortie et les pauses n'exigent pas de position. Un autre appareil est refusé jusqu'à autorisation. Vous n'avez qu'un service ouvert. Sur un autre Clock Point vous voyez où vous êtes pointé et pouvez déplacer la présence ici (un saut en moins de 5 min déclenche une alarme). Avec visites GPS : commencez le travail sur place, puis les tâches d'équipe et le prochain arrêt d'inspection sur Clock Point. Un triangle rouge à côté de l’heure d’entrée apparaît si vous avez un service publié et n’avez pas pointé, ou avez pointé avec au moins 15 minutes de retard."
+                },
+                {
+                    "label": "Écran de pointage",
+                    "text": "Si un écran de pointage est installé, son QR se rafraîchit en continu — le scanner avec votre téléphone compte comme nouveau scan. Pas de téléphone sous la main ? Touchez votre nom sur l'écran et pointez avec votre code PIN ; deux mauvaises tentatives bloquent cela un instant. Sans code PIN, pointez via un scan sur votre téléphone."
                 },
                 {
                     "label": "Où dois-je aller aujourd'hui",
@@ -2146,7 +2150,7 @@
             "actions": [
                 {
                     "label": "Pointer l'entrée",
-                    "text": "Au début de la journée de travail : un appui sur pointer. Le service court jusqu'à ce que vous pointiez la sortie."
+                    "text": "Au début de la journée de travail : un appui sur Pointer l'entrée — via l'icône d'accueil, sans scan QR. Un scan de l'autocollant Clock Point ou de l'écran de pointage pointe aussi l'entrée. Si le GPS à l'entrée est actif, votre position est obligatoire. Le service court jusqu'à ce que vous pointiez la sortie."
                 },
                 {
                     "label": "Pause",
@@ -2154,7 +2158,7 @@
                 },
                 {
                     "label": "Pointer la sortie",
-                    "text": "Pointez la sortie en fin de journée : cela clôt le service et une éventuelle visite client ouverte. Se déconnecter du portail n'est pas la même chose que pointer la sortie."
+                    "text": "Pointez la sortie en fin de journée — possible aussi depuis l'icône, sans scan. Cela clôt le service et une éventuelle visite client ouverte. Se déconnecter du portail n'est pas la même chose que pointer la sortie."
                 }
             ]
         },
