@@ -881,8 +881,11 @@ function applySectionRowStyles(worksheet, payload, { lockSections = false } = {}
                 continue;
             }
             cell.classList.toggle('wp-roster-row--section', isSection);
+            // jspreadsheet-ce 5: setReadOnly(cel-element | 'A1', boolean) — geen
+            // (x, y, boolean). Een getal gooit een TypeError die mount() afbreekt
+            // vóór markHoursHeaders/fitMonthColumns (alleen met sectierijen).
             if (lockSections && isSection && typeof worksheet.setReadOnly === 'function') {
-                worksheet.setReadOnly(colIndex, rowIndex, true);
+                worksheet.setReadOnly(cell, true);
             }
         }
     });
