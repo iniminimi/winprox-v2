@@ -60,7 +60,7 @@
                     <div class="wp-filter-cell">
                         <div class="wp-cluster wp-cluster--tight">
                             <button type="button" @class(['btn', 'btn--sm', $isMonth ? 'btn--surface' : 'btn--primary']) wire:click="setView('week')" data-wp-roster-nav>{{ __('time.schedule.view_week') }}</button>
-                            <button type="button" @class(['btn', 'btn--sm', $isMonth ? 'btn--primary' : 'btn--surface']) wire:click="setView('month')" @click="$dispatch('wp-sidebar-collapse')" data-wp-roster-nav>{{ __('time.schedule.view_month') }}</button>
+                            <button type="button" @class(['btn', 'btn--sm', $isMonth ? 'btn--primary' : 'btn--surface']) wire:click="setView('month')" data-wp-roster-nav>{{ __('time.schedule.view_month') }}</button>
                         </div>
                     </div>
                     <div class="wp-filter-cell">

@@ -93,7 +93,6 @@
     <div
         class="wp-app"
         :class="{ 'wp-app--sidebar-collapsed': collapsed }"
-        @wp-sidebar-collapse.window="collapseSidebar()"
         x-data="{
             nav: false,
             collapsed: false,
@@ -125,15 +124,6 @@
                     return;
                 }
                 this.nav = ! this.nav;
-            },
-            collapseSidebar() {
-                if (! window.matchMedia('(min-width: 60rem)').matches || this.collapsed) {
-                    return;
-                }
-                this.collapsed = true;
-                try {
-                    localStorage.setItem('wp_sidebar_collapsed', '1');
-                } catch (e) {}
             },
             preloadHelpVideo() {
                 if (this.helpVideoReady) {

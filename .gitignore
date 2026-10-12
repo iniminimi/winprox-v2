@@ -40,3 +40,6 @@ yarn-error.log
 /scripts/marketing/__pycache__/
 /public/images/test/
 /public/video/assistant_*.mp4
+
+# Lokale MySQL-datadir (per ongeluk gecommit, 127M)
+/mysql-data/
