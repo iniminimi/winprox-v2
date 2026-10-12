@@ -753,6 +753,31 @@
                 "agreement_replacement_holiday": "A replacement day cannot itself be a statutory public holiday.",
                 "agreement_replacement_uncovered": "The calendar does not cover this replacement date.",
                 "agreement_replacement_taken": "That replacement date is already used."
+            },
+            "pattern_title": "Normal working days",
+            "pattern_hint": "Minutes per weekday. The total must equal the weekly norm. Leave all fields empty when the pattern is not set yet.",
+            "holidays_title": "Public holidays",
+            "holidays_hint": "For each holiday, record what happens to the normal minutes. Without a choice that day is left out of the monthly difference.",
+            "previous_year": "Previous year",
+            "next_year": "Next year",
+            "effect_unset": "Not set",
+            "replacement_date": "Replacement date",
+            "effects": {
+                "none": "No effect",
+                "dropped": "Working day dropped",
+                "replaced": "Replacement day"
+            },
+            "holidays": {
+                "new_year": "New Year's Day",
+                "easter_monday": "Easter Monday",
+                "labour_day": "Labour Day",
+                "ascension": "Ascension",
+                "whit_monday": "Whit Monday",
+                "national_day": "National Day",
+                "assumption": "Assumption",
+                "all_saints": "All Saints' Day",
+                "armistice": "Armistice Day",
+                "christmas": "Christmas"
             }
         },
         "groups_filter": "Groups",

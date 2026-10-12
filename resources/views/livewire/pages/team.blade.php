@@ -530,6 +530,42 @@
                             @error('workerContractHours') <p class="wp-error">{{ $message }}</p> @enderror
                             @error('workerContractMinutes') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
+                        <div class="wp-modal-section">
+                            <h3 class="wp-label">{{ __('time.schedule.month_norm.pattern_title') }}</h3>
+                            <p class="wp-hint">{{ __('time.schedule.month_norm.pattern_hint') }}</p>
+                            <div class="wp-form-grid-2">
+                                @for ($day = 1; $day <= 7; $day++)
+                                    <div class="wp-field">
+                                        <label class="wp-label" for="workerWeekdayMinutes{{ $day }}">{{ __('time.schedule.unavailable.weekdays.'.$day) }}</label>
+                                        <input id="workerWeekdayMinutes{{ $day }}" class="wp-input" type="number" min="0" max="10080" inputmode="numeric" wire:model="workerWeekdayMinutes.{{ $day }}">
+                                    </div>
+                                @endfor
+                            </div>
+                            @error('workerWeekdayMinutes') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                        <div class="wp-modal-section">
+                            <h3 class="wp-label">{{ __('time.schedule.month_norm.holidays_title') }}</h3>
+                            <p class="wp-hint">{{ __('time.schedule.month_norm.holidays_hint') }}</p>
+                            <div class="wp-cluster wp-cluster--tight">
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerHolidayYear({{ $workerHolidayYear - 1 }})" @disabled($workerHolidayYear <= 2020)>{{ __('time.schedule.month_norm.previous_year') }}</button>
+                                <span class="wp-label">{{ $workerHolidayYear }}</span>
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="setWorkerHolidayYear({{ $workerHolidayYear + 1 }})" @disabled($workerHolidayYear >= 2040)>{{ __('time.schedule.month_norm.next_year') }}</button>
+                            </div>
+                            @foreach ($workerHolidayAgreements as $index => $holiday)
+                                <div class="wp-field">
+                                    <label class="wp-label" for="workerHolidayEffect{{ $index }}">{{ __('time.schedule.month_norm.holidays.'.$holiday['code']) }} · {{ $holiday['date'] }}</label>
+                                    <select id="workerHolidayEffect{{ $index }}" class="wp-select" wire:model.live="workerHolidayAgreements.{{ $index }}.effect">
+                                        <option value="">{{ __('time.schedule.month_norm.effect_unset') }}</option>
+                                        <option value="none">{{ __('time.schedule.month_norm.effects.none') }}</option>
+                                        <option value="dropped">{{ __('time.schedule.month_norm.effects.dropped') }}</option>
+                                        <option value="replaced">{{ __('time.schedule.month_norm.effects.replaced') }}</option>
+                                    </select>
+                                    @if (($holiday['effect'] ?? '') === 'replaced')
+                                        <input class="wp-input" type="date" wire:model="workerHolidayAgreements.{{ $index }}.replacement_date" aria-label="{{ __('time.schedule.month_norm.replacement_date') }}">
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
                     @endif
                     @if ($hasTimeModule && ! $isCheckmate)
                         <div class="wp-modal-section">

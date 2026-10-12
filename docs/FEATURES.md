@@ -943,7 +943,7 @@ of halfgevulde rij van hetzelfde type op dezelfde datum blijft 1 dag. Een open d
 De norm is de actuele kolom, ook voor oudere weken. Admin en medewerker zien norm en
 verschil; een superuser niet. Een afwijking blokkeert opslaan of publiceren niet.
 
-**Maandnorm** (nog zonder kolom in het rooster): `ResolveWorkerMonthNormAction` telt eerst de
+**Maandnorm** (`ResolveWorkerMonthNormAction`, rechts in de maandweergave): telt eerst de
 normale minuten van `worker_weekday_minutes` op elke kalenderdatum. Daarna overschrijven
 expliciete feestdagafspraken (`none` / `dropped` / `replaced`) die waarden; een vervangingsdatum
 vervangt de minuten, ze worden er niet bij opgeteld. De afspraken van de maand worden als één
@@ -952,7 +952,9 @@ minuten. `SummarizeWorkerMonthFactsAction` blijft daar los van en levert altijd 
 afwezigheid en onvolledige registratie. De nationale kalender `belgian_public_holidays` heeft geen
 tenant en dekt 2020–2040; een datum daarbuiten maakt de afspraak ongeldig. De weekpayload en de
 weekkolom blijven ongewijzigd. Norm, verschil en status zitten alleen in de snapshot voor een
-admin of medewerker van dezelfde tenant.
+admin of medewerker van dezelfde tenant. In de maandweergave staat dezelfde telling rechts. Norm en
+verschil verschijnen alleen bij status `available`. De werkregeling en de feestdagafspraken staan
+in de uitvoerdersmodal, los van de structurele onbeschikbaarheid.
 
 - **Overlap:** halfopen interval `[start, eind)` — `07:00–11:00` en `11:00–15:00` is geldig.
   Zelfde worker, echte overlap → harde fout. Nachtshift (`eind <= start`) verboden in golf 1.

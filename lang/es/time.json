@@ -753,6 +753,31 @@
                 "agreement_replacement_holiday": "Un día de sustitución no puede ser a su vez un festivo legal.",
                 "agreement_replacement_uncovered": "El calendario no cubre esta fecha de sustitución.",
                 "agreement_replacement_taken": "Esa fecha de sustitución ya está usada."
+            },
+            "pattern_title": "Días de trabajo habituales",
+            "pattern_hint": "Minutos por día de la semana. La suma debe ser igual a la norma semanal. Déjalo todo vacío si el régimen aún no está fijado.",
+            "holidays_title": "Festivos",
+            "holidays_hint": "Para cada festivo, indica qué ocurre con los minutos habituales. Sin elección, ese día no entra en la diferencia mensual.",
+            "previous_year": "Año anterior",
+            "next_year": "Año siguiente",
+            "effect_unset": "Aún sin fijar",
+            "replacement_date": "Fecha de sustitución",
+            "effects": {
+                "none": "Sin efecto",
+                "dropped": "El día laborable se anula",
+                "replaced": "Día de sustitución"
+            },
+            "holidays": {
+                "new_year": "Año Nuevo",
+                "easter_monday": "Lunes de Pascua",
+                "labour_day": "Día del Trabajo",
+                "ascension": "Ascensión",
+                "whit_monday": "Lunes de Pentecostés",
+                "national_day": "Fiesta nacional",
+                "assumption": "Asunción",
+                "all_saints": "Todos los Santos",
+                "armistice": "Armisticio",
+                "christmas": "Navidad"
             }
         },
         "groups_filter": "Grupos",

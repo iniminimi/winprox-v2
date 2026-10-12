@@ -506,7 +506,7 @@ function applyCellClasses(worksheet, payload) {
 
                 return;
             }
-            if (payload.period === 'week' && colIndex === payload.dates.length + 1) {
+            if ((payload.period === 'week' || payload.period === 'month') && colIndex === payload.dates.length + 1) {
                 cell.classList.toggle('wp-roster-row--section', isSection);
                 cell.classList.add('wp-roster-cell--week-summary');
                 const summary = cellText(value).trim();
@@ -738,9 +738,10 @@ function buildData(payload) {
     const byId = workerById(payload);
 
     return gridRowDefs(payload).map((row) => {
-        const summary = payload.period === 'week'
-            ? (byId[row.worker_id]?.week_hours?.lines ?? []).join(' · ')
-            : null;
+        const hourLines = payload.period === 'week'
+            ? (byId[row.worker_id]?.week_hours?.lines ?? [])
+            : (payload.period === 'month' ? (byId[row.worker_id]?.month_hours?.lines ?? []) : null);
+        const summary = hourLines === null ? null : hourLines.join(' · ');
         if (row.type === 'section') {
             const section = [row.label || '', ...payload.dates.map(() => '')];
             if (summary !== null) {
@@ -758,7 +759,7 @@ function buildData(payload) {
             line.push(cell?.multi ? (cell.display ?? '') : formatCellDisplay(cell?.display ?? ''));
         });
         if (summary !== null) {
-            line.push((worker?.week_hours?.lines ?? []).join(' · '));
+            line.push(summary);
         }
 
         return line;
@@ -782,7 +783,7 @@ function rowTitleOptions(payload) {
 
 function applySectionRowStyles(worksheet, payload, { lockSections = false } = {}) {
     const dayCount = payload.dates?.length ?? 0;
-    const lastCol = dayCount + (payload.period === 'week' ? 1 : 0);
+    const lastCol = dayCount + 1;
     let personNo = 0;
     gridRowDefs(payload).forEach((row, rowIndex) => {
         const isSection = row.type === 'section';
@@ -1017,15 +1018,13 @@ export function bind(root, wire) {
                 readOnly: lockedDates.has(date),
             })),
         ];
-        if (!isMonth) {
-            columns.push({
-                type: 'text',
-                title: payload.week_hours_column || '',
-                width: 460,
-                readOnly: true,
-                align: 'left',
-            });
-        }
+        columns.push({
+            type: 'text',
+            title: payload.week_hours_column || '',
+            width: isMonth ? 320 : 460,
+            readOnly: true,
+            align: 'left',
+        });
 
         const rowDefs = gridRowDefs(payload);
         const rowCount = Math.max(rowDefs.length, 1);
@@ -1061,12 +1060,13 @@ export function bind(root, wire) {
             columnDrag: false,
             rowDrag: false,
             parseFormulas: false,
-            minDimensions: [dayCount + (isMonth ? 1 : 2), rowCount],
+            minDimensions: [dayCount + 2, rowCount],
         };
         if (isMonth && payload.month_label) {
             worksheetConfig.nestedHeaders = [[
                 { title: '', colspan: 1 },
                 { title: payload.month_label, colspan: dayCount },
+                { title: '', colspan: 1 },
             ]];
         }
 

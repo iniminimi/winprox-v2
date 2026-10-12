@@ -196,7 +196,7 @@
           "Clock Point shows My roster (own published shifts only).",
           "A red triangle if you have not clocked in or are late.",
           "Admin sees planned versus clocked (15-minute window).",
-          "Week view shows each worker’s contractual weekly hours, planned hours, the difference, worked hours and recorded absence. The norm defaults to 38 hours and stays adjustable per worker. That is a count, not a judgement on working time."
+          "Week view shows each worker’s contractual weekly hours, planned hours, the difference, worked hours and recorded absence. Month view shows the same facts on the right. The monthly difference appears only when the normal working days and the holiday agreements are complete. The weekly norm defaults to 38 hours and stays adjustable per worker. That is a count, not a judgement on working time."
         ]
       },
       {

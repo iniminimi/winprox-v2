@@ -196,7 +196,7 @@
           "Clock Point montre Mon planning (uniquement ses services publiés).",
           "Triangle rouge si vous n’avez pas pointé ou si vous êtes en retard.",
           "La gestion voit prévu versus pointé (marge de 15 minutes).",
-          "La vue semaine montre par intervenant la norme hebdomadaire contractuelle, les heures planifiées, l’écart, les heures travaillées et les absences enregistrées. Cette norme est de 38 heures par défaut et reste modifiable par intervenant. C’est un décompte, pas un jugement sur la durée du travail."
+          "La vue semaine montre par intervenant la norme hebdomadaire contractuelle, les heures planifiées, l’écart, les heures travaillées et les absences enregistrées. La vue mois montre les mêmes faits à droite. L’écart mensuel n’apparaît que si les jours habituels et les accords sur les jours fériés sont complets. Cette norme est de 38 heures par défaut et reste modifiable par intervenant. C’est un décompte, pas un jugement sur la durée du travail."
         ]
       },
       {

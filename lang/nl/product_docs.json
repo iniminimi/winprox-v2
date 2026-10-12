@@ -196,7 +196,7 @@
           "Clock Point toont Mijn rooster (alleen eigen gepubliceerde diensten).",
           "Rode driehoek als je niet of te laat inklokt.",
           "Beheer ziet gepland versus geklokt (15 minutenmarge).",
-          "In de weekweergave staat per uitvoerder de contractuele weeknorm, geplande uren, het verschil, gewerkte uren en geregistreerde afwezigheid. Standaard is die norm 38 uur en blijft ze per uitvoerder aanpasbaar. Dat is een telling, geen oordeel over arbeidsduur."
+          "In de weekweergave staat per uitvoerder de contractuele weeknorm, geplande uren, het verschil, gewerkte uren en geregistreerde afwezigheid. In de maandweergave staan dezelfde feiten rechts. Het maandverschil verschijnt alleen als de normale werkdagen en de feestdagafspraken volledig vastliggen. Standaard is de weeknorm 38 uur en blijft ze per uitvoerder aanpasbaar. Dat is een telling, geen oordeel over arbeidsduur."
         ]
       },
       {

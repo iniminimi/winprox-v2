@@ -753,6 +753,31 @@
                 "agreement_replacement_holiday": "Un jour de remplacement ne peut pas être lui-même un jour férié légal.",
                 "agreement_replacement_uncovered": "Le calendrier ne couvre pas cette date de remplacement.",
                 "agreement_replacement_taken": "Cette date de remplacement est déjà utilisée."
+            },
+            "pattern_title": "Jours de travail habituels",
+            "pattern_hint": "Minutes par jour de la semaine. La somme doit être égale à la norme hebdomadaire. Laissez tout vide si le régime n’est pas encore fixé.",
+            "holidays_title": "Jours fériés",
+            "holidays_hint": "Pour chaque jour férié, indiquez ce qu’il advient des minutes habituelles. Sans choix, ce jour ne compte pas dans l’écart mensuel.",
+            "previous_year": "Année précédente",
+            "next_year": "Année suivante",
+            "effect_unset": "Pas encore fixé",
+            "replacement_date": "Date de remplacement",
+            "effects": {
+                "none": "Aucun effet",
+                "dropped": "Jour de travail annulé",
+                "replaced": "Jour de remplacement"
+            },
+            "holidays": {
+                "new_year": "Nouvel An",
+                "easter_monday": "Lundi de Pâques",
+                "labour_day": "Fête du Travail",
+                "ascension": "Ascension",
+                "whit_monday": "Lundi de Pentecôte",
+                "national_day": "Fête nationale",
+                "assumption": "Assomption",
+                "all_saints": "Toussaint",
+                "armistice": "Armistice",
+                "christmas": "Noël"
             }
         },
         "groups_filter": "Groupes",

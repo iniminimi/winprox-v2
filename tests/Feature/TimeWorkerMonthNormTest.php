@@ -28,6 +28,7 @@ use App\Models\WorkShift;
 use App\Support\Tenancy;
 use App\Support\Time\BelgianPublicHolidayCalendar;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Validation\ValidationException;
@@ -347,6 +348,9 @@ it('houdt norm en status uit de superuser-payload en laat de weekpayload met rus
     expect($forAdmin['month_hours']['norm_status'])->toBe(MonthNormStatus::Available->value)
         ->and($forAdmin['month_hours']['contract_minutes'])->toBe($minutes)
         ->and($forAdmin['month_hours']['difference_minutes'])->toBe(-$minutes)
+        ->and($forSuper['month_hours']['planned_minutes'])->toBe(0)
+        ->and($forSuper['month_hours'])->toHaveKey('worked_minutes')
+        ->and($forSuper['month_hours'])->toHaveKey('absences')
         ->and($forSuper['month_hours'])->not->toHaveKey('norm_status')
         ->and($forSuper['month_hours'])->not->toHaveKey('contract_minutes')
         ->and($forSuper['month_hours'])->not->toHaveKey('difference_minutes')
@@ -357,6 +361,37 @@ it('houdt norm en status uit de superuser-payload en laat de weekpayload met rus
     expect($week)->not->toHaveKey('month_hours')
         ->and($week['week_hours'])->toHaveKey('contract_minutes')
         ->and($week['week_hours']['contract_minutes'])->toBe(2220);
+});
+
+it('bewaart een feestdag als kalenderdatum zonder tijdstip', function () {
+    [, , , $worker] = monthNormTenant();
+    monthNormAgree($worker, '2026-05-01', HolidayAgreementEffect::Replaced, '2026-05-04');
+
+    $raw = DB::table('worker_holiday_agreements')->where('worker_id', $worker->id)->first();
+
+    expect($raw->holiday_date)->toBe('2026-05-01')
+        ->and($raw->replacement_date)->toBe('2026-05-04')
+        ->and(WorkerHolidayAgreement::query()->where('worker_id', $worker->id)->whereDate('holiday_date', '2026-05-01')->exists())
+        ->toBeTrue();
+});
+
+it('toont bij een onbetrouwbare maandnorm alleen de feiten', function () {
+    [$tenant, $admin, $team, $worker] = monthNormTenant();
+    monthNormSync($worker, monthNormFiveDayPattern());
+
+    $row = collect(app(ListRosterWeekAction::class)->handle(
+        (int) $tenant->id,
+        '2026-05-01',
+        (int) $team->id,
+        $admin,
+        'month',
+    )->workers)->firstWhere('id', $worker->id);
+
+    expect($row['month_hours']['norm_status'])->toBe(MonthNormStatus::Incomplete->value)
+        ->and($row['month_hours'])->toHaveKey('planned_minutes')
+        ->and($row['month_hours'])->not->toHaveKey('contract_minutes')
+        ->and($row['month_hours'])->not->toHaveKey('difference_minutes')
+        ->and(implode(' ', $row['month_hours']['lines']))->not->toContain((string) monthNormExpected('2026-05-01', monthNormFiveDayPattern()));
 });
 
 it('telt maandfeiten over de hele kalendermaand, ook als de norm ontbreekt', function () {

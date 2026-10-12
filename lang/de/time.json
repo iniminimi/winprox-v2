@@ -753,6 +753,31 @@
                 "agreement_replacement_holiday": "Ein Ersatztag darf selbst kein gesetzlicher Feiertag sein.",
                 "agreement_replacement_uncovered": "Der Kalender deckt dieses Ersatzdatum nicht ab.",
                 "agreement_replacement_taken": "Dieses Ersatzdatum wird bereits verwendet."
+            },
+            "pattern_title": "Normale Arbeitstage",
+            "pattern_hint": "Minuten je Wochentag. Die Summe muss der Wochennorm entsprechen. Alles leer lassen, wenn die Regelung noch nicht festliegt.",
+            "holidays_title": "Feiertage",
+            "holidays_hint": "Je Feiertag festhalten, was mit den normalen Minuten geschieht. Ohne Wahl zählt der Tag nicht in der Monatsdifferenz.",
+            "previous_year": "Vorjahr",
+            "next_year": "Nächstes Jahr",
+            "effect_unset": "Noch nicht festgelegt",
+            "replacement_date": "Ersatzdatum",
+            "effects": {
+                "none": "Keine Auswirkung",
+                "dropped": "Arbeitstag entfällt",
+                "replaced": "Ersatztag"
+            },
+            "holidays": {
+                "new_year": "Neujahr",
+                "easter_monday": "Ostermontag",
+                "labour_day": "Tag der Arbeit",
+                "ascension": "Christi Himmelfahrt",
+                "whit_monday": "Pfingstmontag",
+                "national_day": "Nationalfeiertag",
+                "assumption": "Mariä Himmelfahrt",
+                "all_saints": "Allerheiligen",
+                "armistice": "Waffenstillstand",
+                "christmas": "Weihnachten"
             }
         },
         "groups_filter": "Gruppen",

@@ -753,6 +753,31 @@
                 "agreement_replacement_holiday": "Un giorno di sostituzione non può essere a sua volta un festivo legale.",
                 "agreement_replacement_uncovered": "Il calendario non copre questa data di sostituzione.",
                 "agreement_replacement_taken": "Quella data di sostituzione è già usata."
+            },
+            "pattern_title": "Giorni di lavoro abituali",
+            "pattern_hint": "Minuti per giorno della settimana. La somma deve essere uguale alla norma settimanale. Lascia tutto vuoto se il regime non è ancora fissato.",
+            "holidays_title": "Festività",
+            "holidays_hint": "Per ogni festività indica che cosa succede ai minuti abituali. Senza scelta quel giorno non entra nello scarto mensile.",
+            "previous_year": "Anno precedente",
+            "next_year": "Anno successivo",
+            "effect_unset": "Non ancora fissato",
+            "replacement_date": "Data di sostituzione",
+            "effects": {
+                "none": "Nessun effetto",
+                "dropped": "Il giorno lavorativo decade",
+                "replaced": "Giorno di sostituzione"
+            },
+            "holidays": {
+                "new_year": "Capodanno",
+                "easter_monday": "Lunedì di Pasqua",
+                "labour_day": "Festa del Lavoro",
+                "ascension": "Ascensione",
+                "whit_monday": "Lunedì di Pentecoste",
+                "national_day": "Festa nazionale",
+                "assumption": "Assunzione",
+                "all_saints": "Ognissanti",
+                "armistice": "Armistizio",
+                "christmas": "Natale"
             }
         },
         "groups_filter": "Gruppi",

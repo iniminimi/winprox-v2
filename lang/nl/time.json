@@ -753,6 +753,31 @@
                 "agreement_replacement_holiday": "Een vervangingsdag kan zelf geen wettelijke feestdag zijn.",
                 "agreement_replacement_uncovered": "De kalender dekt deze vervangingsdatum niet.",
                 "agreement_replacement_taken": "Die vervangingsdatum is al gebruikt."
+            },
+            "pattern_title": "Normale werkdagen",
+            "pattern_hint": "Minuten per weekdag. De som moet gelijk zijn aan de weeknorm. Laat alles leeg als de regeling nog niet vastligt.",
+            "holidays_title": "Feestdagen",
+            "holidays_hint": "Per feestdag vastleggen wat er met de normale minuten gebeurt. Zonder keuze telt die dag niet mee in het maandverschil.",
+            "previous_year": "Vorig jaar",
+            "next_year": "Volgend jaar",
+            "effect_unset": "Nog niet vastgelegd",
+            "replacement_date": "Vervangingsdatum",
+            "effects": {
+                "none": "Geen effect",
+                "dropped": "Werkdag vervalt",
+                "replaced": "Vervangingsdag"
+            },
+            "holidays": {
+                "new_year": "Nieuwjaar",
+                "easter_monday": "Paasmaandag",
+                "labour_day": "Dag van de Arbeid",
+                "ascension": "Hemelvaart",
+                "whit_monday": "Pinkstermaandag",
+                "national_day": "Nationale Feestdag",
+                "assumption": "Onze-Lieve-Vrouw-Hemelvaart",
+                "all_saints": "Allerheiligen",
+                "armistice": "Wapenstilstand",
+                "christmas": "Kerstmis"
             }
         },
         "groups_filter": "Groepen",

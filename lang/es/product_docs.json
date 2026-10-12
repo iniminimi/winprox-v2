@@ -196,7 +196,7 @@
           "Clock Point muestra Mi cuadrante (solo turnos publicados propios).",
           "Triángulo rojo si no ha fichado o llega tarde.",
           "La gestión ve planificado frente a fichado (margen de 15 minutos).",
-          "La vista semanal muestra por operario la norma semanal contractual, las horas planificadas, la diferencia, las horas trabajadas y la ausencia registrada. Esa norma es de 38 horas por defecto y sigue siendo ajustable por operario. Es un recuento, no un juicio sobre la duración del trabajo."
+          "La vista semanal muestra por operario la norma semanal contractual, las horas planificadas, la diferencia, las horas trabajadas y la ausencia registrada. La vista mensual muestra los mismos hechos a la derecha. La diferencia mensual solo aparece si los días habituales y los acuerdos de festivos están completos. Esa norma es de 38 horas por defecto y sigue siendo ajustable por operario. Es un recuento, no un juicio sobre la duración del trabajo."
         ]
       },
       {

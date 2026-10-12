@@ -344,18 +344,83 @@ class ListRosterWeekAction
             'absences' => $facts->absences,
         ];
 
-        if (! $contractVisible) {
-            return $payload;
-        }
-
         $status = $norm?->status ?? MonthNormStatus::Incomplete;
-        $payload['norm_status'] = $status->value;
-        if ($status === MonthNormStatus::Available && $norm?->minutes !== null) {
+        $includeNorm = $contractVisible
+            && $status === MonthNormStatus::Available
+            && $norm?->minutes !== null;
+
+        if ($contractVisible) {
+            $payload['norm_status'] = $status->value;
+        }
+        if ($includeNorm) {
             $payload['contract_minutes'] = $norm->minutes;
             $payload['difference_minutes'] = $facts->plannedMinutes - $norm->minutes;
         }
 
+        $payload['lines'] = $this->monthHoursLines($facts, $includeNorm ? $norm->minutes : null);
+
         return $payload;
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function monthHoursLines(WorkerMonthFacts $facts, ?int $normMinutes): array
+    {
+        $lines = [];
+
+        if ($normMinutes !== null) {
+            $lines[] = __('time.schedule.week_hours.norm', [
+                'value' => $this->formatMinutes($normMinutes),
+            ]);
+        }
+
+        $lines[] = __('time.schedule.week_hours.planned', [
+            'value' => $this->formatMinutes($facts->plannedMinutes),
+        ]);
+
+        if ($normMinutes !== null) {
+            $lines[] = __('time.schedule.week_hours.difference', [
+                'value' => $this->formatSignedMinutes($facts->plannedMinutes - $normMinutes),
+            ]);
+        }
+
+        $lines[] = __('time.schedule.week_hours.worked', [
+            'value' => $this->formatMinutes($facts->workedMinutes),
+        ]);
+
+        foreach ([ShiftTypeKind::Leave, ShiftTypeKind::Recup, ShiftTypeKind::Sick] as $kind) {
+            $entry = $facts->absences[$kind->value] ?? null;
+            if ($entry === null) {
+                continue;
+            }
+            $label = __('time.schedule.types.kinds.'.$kind->value);
+            if (($entry['days'] ?? 0) > 0) {
+                $count = (int) $entry['days'];
+                $lines[] = trans_choice('time.schedule.week_hours.absence_days', $count, [
+                    'kind' => $label,
+                    'count' => $count,
+                ]);
+            }
+            if (($entry['minutes'] ?? 0) > 0) {
+                $lines[] = __('time.schedule.week_hours.absence_duration', [
+                    'kind' => $label,
+                    'value' => $this->formatMinutes((int) $entry['minutes']),
+                ]);
+            }
+        }
+
+        if ($facts->incompleteBlocks > 0) {
+            $lines[] = trans_choice('time.schedule.week_hours.incomplete_blocks', $facts->incompleteBlocks, [
+                'count' => $facts->incompleteBlocks,
+            ]);
+        }
+
+        if ($facts->registrationIncomplete) {
+            $lines[] = __('time.schedule.week_hours.registration_incomplete');
+        }
+
+        return $lines;
     }
 
     /**

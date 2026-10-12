@@ -8,15 +8,19 @@ use App\Actions\Workers\ImportWorkersAction;
 use App\Data\Workers\DeleteWorkerImportBatchData;
 use App\Data\Workers\ImportWorkersData;
 use App\Http\Requests\Workers\ImportWorkersRequest;
+use App\Actions\Team\ClearWorkerWeekdayMinutesAction;
 use App\Actions\Team\CreateColleagueAction;
 use App\Actions\Team\CreateTeamAction;
 use App\Actions\Team\CreateWorkerAction;
 use App\Actions\Team\DeleteTeamAction;
 use App\Actions\Team\DeleteWorkerAction;
+use App\Actions\Team\DeleteWorkerHolidayAgreementAction;
 use App\Actions\Team\DeleteWorkerPhotoAction;
 use App\Actions\Team\ResetWorkerIconAction;
+use App\Actions\Team\SyncWorkerWeekdayMinutesAction;
 use App\Actions\Time\ClearWorkerClockDeviceAction;
 use App\Actions\Time\ClearWorkerClockPinAction;
+use App\Actions\Team\SaveWorkerHolidayAgreementAction;
 use App\Actions\Team\SetColleagueActiveAction;
 use App\Actions\Team\SetTeamActiveAction;
 use App\Actions\Team\SetWorkerActiveAction;
@@ -44,6 +48,9 @@ use App\Support\Translation\LocaleSupport;
 use App\Support\Workers\WorkerImportBatchRegistry;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Gate;
+use App\Enums\HolidayAgreementEffect;
+use App\Models\BelgianPublicHoliday;
+use App\Support\Time\BelgianPublicHolidayCalendar;
 use Illuminate\Validation\ValidationException;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
@@ -147,6 +154,17 @@ class Team extends Component
 
     /** @var list<int> terugkerende onbeschikbaarheid: weekdagen 1 (ma) t/m 7 (zo) */
     public array $workerUnavailabilities = [];
+
+    /** @var array<string, string|int|null> normale minuten per weekdag, sleutel 1–7 */
+    public array $workerWeekdayMinutes = [];
+
+    public int $workerHolidayYear = 2026;
+
+    /** @var list<array{date: string, code: string, effect: string, replacement_date: string}> */
+    public array $workerHolidayAgreements = [];
+
+    /** @var array<string, array{effect: string, replacement_date: string}> */
+    public array $holidayDraftsByDate = [];
 
     // Worker bewerken/aanmaken (modal)
     public bool $showWorkerModal = false;
@@ -745,6 +763,8 @@ class Team extends Component
         $this->addingWorkerTeamId = $teamId;
         $this->workerContractHours = intdiv(Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES, 60);
         $this->workerContractMinutes = Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES % 60;
+        $this->resetWorkPatternInputs();
+        $this->presentHolidayYear();
         $this->workerLocationsPanelOpen = false;
         $this->showWorkerModal = true;
     }
@@ -823,6 +843,10 @@ class Team extends Component
         UpdateWorkerPhotoAction $updateWorkerPhoto,
         DeleteWorkerPhotoAction $deleteWorkerPhoto,
         SyncWorkerUnavailabilitiesAction $syncUnavailabilities,
+        SyncWorkerWeekdayMinutesAction $syncWeekPattern,
+        ClearWorkerWeekdayMinutesAction $clearWeekPattern,
+        SaveWorkerHolidayAgreementAction $saveHolidayAgreement,
+        DeleteWorkerHolidayAgreementAction $deleteHolidayAgreement,
     ): void {
         $presenceComplianceEnabled = $this->tenantPresenceComplianceEnabled();
 
@@ -875,8 +899,8 @@ class Team extends Component
                 return;
             }
 
-            $this->expandTeam((int) $team->id);
             $this->persistWorkerPhoto($worker, $updateWorkerPhoto, $deleteWorkerPhoto);
+            $this->expandTeam((int) $team->id);
         } else {
             // Create mode
             $this->validate(
@@ -936,6 +960,19 @@ class Team extends Component
 
         if ($this->workerUnavailabilityFieldEnabled()) {
             $syncUnavailabilities->handle($worker, $this->workerUnavailabilities);
+        }
+
+        if ($this->workerContractFieldEnabled()) {
+            try {
+                $this->persistWeekPattern($syncWeekPattern, $clearWeekPattern, $worker->fresh());
+                $this->persistHolidayAgreements($saveHolidayAgreement, $deleteHolidayAgreement, $worker);
+            } catch (ValidationException $e) {
+                $this->editingWorkerId = (int) $worker->id;
+                $message = collect($e->errors())->flatten()->first();
+                $this->addError('workerWeekdayMinutes', (string) $message);
+
+                return;
+            }
         }
 
         $this->cancelWorkerModal();
@@ -1070,6 +1107,136 @@ class Team extends Component
         return $tenant instanceof Tenant && $tenant->hasTimeModule();
     }
 
+    private function persistWeekPattern(
+        SyncWorkerWeekdayMinutesAction $sync,
+        ClearWorkerWeekdayMinutesAction $clear,
+        Worker $worker,
+    ): void {
+        $minutes = [];
+        $blank = false;
+        foreach (range(1, 7) as $day) {
+            $value = $this->workerWeekdayMinutes[(string) $day] ?? $this->workerWeekdayMinutes[$day] ?? '';
+            if ($value === '' || $value === null) {
+                $blank = true;
+
+                continue;
+            }
+            $minutes[$day] = $value;
+        }
+
+        if ($minutes === []) {
+            $clear->handle((int) $worker->tenant_id, $worker, (int) auth()->id());
+
+            return;
+        }
+
+        if ($blank) {
+            throw ValidationException::withMessages([
+                'minutes' => __('time.schedule.month_norm.errors.pattern_weekdays'),
+            ]);
+        }
+
+        $sync->handle((int) $worker->tenant_id, $worker, $minutes, (int) auth()->id());
+    }
+
+    private function persistHolidayAgreements(
+        SaveWorkerHolidayAgreementAction $save,
+        DeleteWorkerHolidayAgreementAction $delete,
+        Worker $worker,
+    ): void {
+        $this->rememberHolidayDrafts();
+        foreach ($this->holidayDraftsByDate as $date => $draft) {
+            $effect = (string) ($draft['effect'] ?? '');
+            $replacement = $effect === HolidayAgreementEffect::Replaced->value
+                && ($draft['replacement_date'] ?? '') !== ''
+                ? (string) $draft['replacement_date']
+                : null;
+            if ($effect === '') {
+                $delete->handle((int) $worker->tenant_id, $worker, $date, (int) auth()->id());
+
+                continue;
+            }
+            $save->handle(
+                (int) $worker->tenant_id,
+                $worker,
+                $date,
+                HolidayAgreementEffect::from($effect),
+                $replacement,
+                (int) auth()->id(),
+            );
+        }
+    }
+
+    public function setWorkerHolidayYear(int $year): void
+    {
+        $this->rememberHolidayDrafts();
+        $this->workerHolidayYear = max(
+            BelgianPublicHolidayCalendar::FIRST_YEAR,
+            min(BelgianPublicHolidayCalendar::LAST_YEAR, $year),
+        );
+        $this->presentHolidayYear();
+    }
+
+    private function resetWorkPatternInputs(): void
+    {
+        $this->workerWeekdayMinutes = [];
+        foreach (range(1, 7) as $day) {
+            $this->workerWeekdayMinutes[(string) $day] = '';
+        }
+        $this->holidayDraftsByDate = [];
+        $this->workerHolidayAgreements = [];
+        $this->workerHolidayYear = (int) now()->year;
+    }
+
+    private function loadWorkPattern(Worker $worker): void
+    {
+        $this->resetWorkPatternInputs();
+        foreach ($worker->weekdayMinutes as $row) {
+            $this->workerWeekdayMinutes[(string) $row->weekday] = (string) $row->minutes;
+        }
+        foreach ($worker->holidayAgreements as $agreement) {
+            $this->holidayDraftsByDate[$agreement->holiday_date->toDateString()] = [
+                'effect' => $agreement->effect->value,
+                'replacement_date' => $agreement->replacement_date?->toDateString() ?? '',
+            ];
+        }
+        $this->presentHolidayYear();
+    }
+
+    private function rememberHolidayDrafts(): void
+    {
+        foreach ($this->workerHolidayAgreements as $row) {
+            $date = (string) ($row['date'] ?? '');
+            if ($date === '') {
+                continue;
+            }
+            $this->holidayDraftsByDate[$date] = [
+                'effect' => (string) ($row['effect'] ?? ''),
+                'replacement_date' => (string) ($row['replacement_date'] ?? ''),
+            ];
+        }
+    }
+
+    private function presentHolidayYear(): void
+    {
+        $rows = [];
+        $holidays = BelgianPublicHoliday::query()
+            ->where('year', $this->workerHolidayYear)
+            ->orderBy('date')
+            ->get();
+        foreach ($holidays as $holiday) {
+            $date = $holiday->date->toDateString();
+            $draft = $this->holidayDraftsByDate[$date] ?? ['effect' => '', 'replacement_date' => ''];
+            $rows[] = [
+                'date' => $date,
+                'code' => $holiday->code,
+                'effect' => $draft['effect'],
+                'replacement_date' => $draft['replacement_date'],
+            ];
+        }
+        $this->workerHolidayAgreements = $rows;
+    }
+
     private function normalizeContractInputs(): void
     {
         if ($this->workerContractHours === '') {
@@ -1160,6 +1327,7 @@ class Team extends Component
             ->pluck('weekday')
             ->map(fn ($day) => (int) $day)
             ->all();
+        $this->loadWorkPattern($worker);
         $this->workerLocationsPanelOpen = $this->selectedWorkerLocationIds !== [];
         $this->resetWorkerPhotoState();
         $this->existingWorkerPhotoUrl = $worker->photoPublicUrl();
@@ -1190,6 +1358,10 @@ class Team extends Component
             'workerContractHours',
             'workerContractMinutes',
             'workerUnavailabilities',
+            'workerWeekdayMinutes',
+            'workerHolidayYear',
+            'workerHolidayAgreements',
+            'holidayDraftsByDate',
             'workerPhoto',
             'removeWorkerPhoto',
             'existingWorkerPhotoUrl',
