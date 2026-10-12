@@ -76,6 +76,32 @@ it('toont alarm-badge in time-nav op urenscherm', function () {
         ->assertSee('wp-time-nav__alarm-count', false);
 });
 
+it('time-nav toont alleen unieke links zonder Meer-dropdown', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    Tenancy::actAs($tenant->id);
+    $admin = \App\Models\User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'role' => \App\Models\User::ROLE_ADMIN,
+    ]);
+
+    $html = $this->actingAs($admin)
+        ->get(route('time.absence-requests.index'))
+        ->assertOk()
+        ->assertSee(__('time.nav.shifts'), false)
+        ->assertSee(__('time.nav.shift_types'), false)
+        ->assertSee(__('time.nav.alarms'), false)
+        ->assertDontSee('wp-time-nav-more', false)
+        ->getContent();
+
+    expect(preg_match('/class="[^"]*wp-time-nav[^"]*"[^>]*>(.*?)<\/nav>/s', $html, $matches))->toBe(1);
+    $nav = $matches[1];
+    expect($nav)->not->toContain(route('time.presence.index'))
+        ->and($nav)->not->toContain(route('time.schedule.index'))
+        ->and($nav)->not->toContain(route('time.clock-points.index'))
+        ->and($nav)->not->toContain(route('time.absence-requests.index'))
+        ->and($nav)->toContain(route('time.shifts.index'));
+});
+
 it('toont alarmen met load-more bij grote lijsten', function () {
     config(['time.presence_team_page_size' => 3, 'time.stale_shift_hours' => 16]);
 

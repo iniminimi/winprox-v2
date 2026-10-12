@@ -12,8 +12,7 @@
         "ciao": "CIAO",
         "schedule": "Roster",
         "shift_types": "Shift types",
-        "absence_requests": "Requests",
-        "more": "More"
+        "absence_requests": "Requests"
     },
     "presence": {
         "title": "Presence",

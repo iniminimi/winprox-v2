@@ -5899,65 +5899,6 @@ svg.wp-release-worker-row__icon,
     font-size: 0.6875rem;
 }
 
-/* "Meer"-dropdown: inrichtingslinks (zelfde patroon als .wp-lang-select). */
-.wp-time-nav-more {
-    position: relative;
-}
-
-.wp-time-nav-more > summary {
-    list-style: none;
-    cursor: pointer;
-}
-
-.wp-time-nav-more > summary::-webkit-details-marker {
-    display: none;
-}
-
-.wp-time-nav-more__chevron {
-    width: 1rem;
-    height: 1rem;
-    color: var(--wp-text-muted);
-    transition: transform var(--wp-transition);
-}
-
-.wp-time-nav-more[open] > summary .wp-time-nav-more__chevron {
-    transform: rotate(180deg);
-}
-
-.wp-time-nav-more__menu {
-    position: absolute;
-    top: calc(100% + 0.35rem);
-    left: 0;
-    z-index: 50;
-    min-width: 11rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-    padding: 0.35rem;
-    border: 1px solid var(--wp-border);
-    border-radius: var(--wp-radius-sm);
-    background-color: var(--wp-surface);
-    box-shadow: var(--wp-shadow-md);
-}
-
-.wp-time-nav-more__link {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    padding: 0.5rem 0.65rem;
-    border-radius: calc(var(--wp-radius-sm) - 2px);
-    color: var(--wp-text-body);
-    font-size: 0.8125rem;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.wp-time-nav-more__link:hover {
-    background-color: var(--wp-surface-hover);
-    color: var(--wp-text);
-}
-
 .wp-time-alarms-groups {
     gap: 0.75rem;
 }
