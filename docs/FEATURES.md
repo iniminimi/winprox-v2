@@ -891,9 +891,11 @@ productsector op `Tenant`.
 blijft direct typen; **meerdere blokken per dag** (bijv. `07:00-10:00` én `18:00-20:00`) bewerk je
 via de **Dag bewerken**-knop → `SavePlannedDayAction` (id-aware sync: bestaande blokken updaten op
 id, nieuwe aanmaken, weggelaten verwijderen — nooit de hele dag opnieuw). Een multi-blok-cel toont
-een samenvatting (`07:00-10:00 · 18:00-20:00`, bij gedeeltelijke afwezigheid bv.
-`07:00-10:00 · ZIEK`); er overheen typen vervangt de hele dag door één blok (met bevestiging);
-onaangeroerde multi-cellen gaan met `keep: true` mee zodat blok-ids behouden blijven.
+een samenvatting (`0700-1000 · 1800-2000`, bij gedeeltelijke afwezigheid bv.
+`0700-1000 · ZIEK`) — scheiding met ` · ` zodat kopiëren/plakken één cel blijft en de
+grid-save de blokken opnieuw aanmaakt; er overheen typen (één blok) vervangt de hele dag
+(met bevestiging); onaangeroerde multi-cellen gaan met `keep: true` mee zodat blok-ids
+behouden blijven.
 **Notitie per blok** (`planned_shifts.description`, max 500): alleen via de dag-editor;
 een grid-cel kan geen notitie dragen. Een grid-save die een enkelvoudige cel ongewijzigd
 laat, behoudt de bestaande rij — en dus de notitie. Zichtbaar als ✎-markering in de cel

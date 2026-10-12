@@ -132,8 +132,9 @@ class ListRosterWeekAction
             ];
         }
 
-        // Multi-blok-dag: display = één regel per blok, zonder dubbelepunten
-        // ("D1/G1\n1800-2000") zodat twee blokken in de smalle cel passen.
+        // Multi-blok-dag: display = blokken gescheiden door " · " (kopieerbaar;
+        // newline zou bij plakken als extra grid-rijen uiteenvallen). Zonder
+        // dubbelepunten ("D1 · 1800-2000") zodat het in smalle cellen past.
         // Top-level velden blijven het eerste blok (backwards-compat single-cell).
         $cells = [];
         foreach ($cellShifts as $key => $blocks) {
@@ -144,7 +145,7 @@ class ListRosterWeekAction
                 ),
                 'shifts' => $blocks,
                 'display' => count($blocks) > 1
-                    ? implode("\n", array_map(
+                    ? implode(' · ', array_map(
                         fn (array $block) => str_replace(':', '', $block['display']),
                         $blocks,
                     ))

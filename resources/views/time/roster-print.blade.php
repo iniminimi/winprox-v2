@@ -138,9 +138,9 @@
                                             $cell = $snapshot->cells[$worker['id'].':'.$date] ?? null;
                                             $rawDisplay = is_array($cell) ? trim((string) ($cell['display'] ?? '')) : '';
                                             if (is_array($cell) && ($cell['multi'] ?? false)) {
-                                                // Multi-blok-dag: één regel per blok (al newline + colon-loos);
+                                                // Multi-blok-dag: " · " in de grid-waarde → regels op print;
                                                 // uren van type-codes staan in de legenda.
-                                                $display = $rawDisplay;
+                                                $display = str_replace(' · ', "\n", $rawDisplay);
                                             } else {
                                                 $slash = strpos($rawDisplay, '/');
                                                 $display = ($slash !== false && ! str_contains($rawDisplay, "\n") && substr_count($rawDisplay, '/') === 1)

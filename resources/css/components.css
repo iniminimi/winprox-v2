@@ -6978,9 +6978,9 @@ a.wp-kpi.wp-kpi--attention {
     font-weight: 600 !important;
 }
 
-/* Multi-blok-dag: elke blok op een eigen regel (newline in celwaarde). */
+/* Multi-blok-dag: samenvatting met " · " (kopieerbaar); iets kleiner lettertype. */
 .wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--multi {
-    white-space: pre-line;
+    white-space: normal;
     vertical-align: middle;
     line-height: 1.15;
     font-size: 0.75rem;

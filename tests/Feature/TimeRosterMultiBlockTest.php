@@ -139,7 +139,7 @@ it('toont multi-blok-dagen regel per blok, ook op de print', function () {
 
     $cell = $snapshot->cells[$worker->id.':'.$date] ?? null;
     expect($cell['multi'])->toBeTrue()
-        ->and($cell['display'])->toBe("D1\n1800-2000");
+        ->and($cell['display'])->toBe('D1 · 1800-2000');
 
     $this->actingAs($admin)
         ->get(route('time.schedule.print', ['week' => $week, 'view' => 'week']))
@@ -147,6 +147,40 @@ it('toont multi-blok-dagen regel per blok, ook op de print', function () {
         ->assertSee("D1\n1800-2000", false)
         // Uren van type-codes staan in de print-legenda.
         ->assertSee('08:00–17:00', false);
+});
+
+it('maakt multi-blokken aan via grid-save van een · -samenvatting (plakken)', function () {
+    [$tenant, $admin, $worker] = multiBlockTenant();
+    $week = Carbon::parse(now())->addWeek()->startOfWeek(Carbon::MONDAY)->toDateString();
+    $day = Carbon::parse($week)->toDateString();
+
+    $cells = [];
+    for ($i = 0; $i < 7; $i++) {
+        $date = Carbon::parse($week)->addDays($i)->toDateString();
+        $cells[] = [
+            'worker_id' => $worker->id,
+            'date' => $date,
+            'raw' => $date === $day ? '08:00-12:00 · 13:00-17:00' : '',
+        ];
+    }
+
+    app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData($week, [$worker->id], $cells),
+        $admin->id,
+    );
+
+    $rows = PlannedShift::query()
+        ->where('worker_id', $worker->id)
+        ->whereDate('work_date', $day)
+        ->orderBy('start_time')
+        ->get();
+
+    expect($rows)->toHaveCount(2)
+        ->and(ShiftType::formatTime($rows[0]->start_time))->toBe('08:00')
+        ->and(ShiftType::formatTime($rows[0]->end_time))->toBe('12:00')
+        ->and(ShiftType::formatTime($rows[1]->start_time))->toBe('13:00')
+        ->and(ShiftType::formatTime($rows[1]->end_time))->toBe('17:00');
 });
 
 it('synct blokken id-aware: update, create en delete in één save', function () {

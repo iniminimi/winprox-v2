@@ -67,7 +67,7 @@ class SavePlannedShiftsAction
                 // Ongewijzigde multi-blok-dag: rijen behouden hun ids
                 // (notities/attendance blijven hangen); cel niet parsen.
                 $keepCells[$cellKey] = true;
-                $parsedCells[] = ['cell' => $cell, 'parsed' => null];
+                $parsedCells[] = ['cell' => $cell, 'blocks' => null];
 
                 continue;
             }
@@ -75,17 +75,20 @@ class SavePlannedShiftsAction
             $catalog = $units->filter(
                 fn (Unit $unit) => $worker instanceof Worker && $worker->canClockAt((int) $unit->location_id),
             );
-            $parsed = $this->parseCell->handle((string) $cell['raw'], $types, $catalog);
-            if ($parsed->kind === RosterCellKind::Invalid) {
-                $invalid[] = [
-                    'worker_id' => (int) $cell['worker_id'],
-                    'date' => (string) $cell['date'],
-                    'raw' => (string) $cell['raw'],
-                    'error' => $parsed->errorKey,
-                    'count' => $parsed->ambiguousCount,
-                ];
+            $blocks = $this->parseCell->handleAll((string) $cell['raw'], $types, $catalog);
+            foreach ($blocks as $parsed) {
+                if ($parsed->kind === RosterCellKind::Invalid) {
+                    $invalid[] = [
+                        'worker_id' => (int) $cell['worker_id'],
+                        'date' => (string) $cell['date'],
+                        'raw' => (string) $cell['raw'],
+                        'error' => $parsed->errorKey,
+                        'count' => $parsed->ambiguousCount,
+                    ];
+                    break;
+                }
             }
-            $parsedCells[] = ['cell' => $cell, 'parsed' => $parsed];
+            $parsedCells[] = ['cell' => $cell, 'blocks' => $blocks];
         }
 
         if ($invalid !== []) {
@@ -102,11 +105,15 @@ class SavePlannedShiftsAction
         );
         $warnings = [];
         foreach ($parsedCells as $item) {
-            $parsed = $item['parsed'];
-            if ($parsed === null || $parsed->isEmpty()) {
+            $blocks = $item['blocks'];
+            if ($blocks === null) {
                 continue;
             }
-            if (($parsed->shiftTypeKind ?? ShiftTypeKind::Work) !== ShiftTypeKind::Work) {
+            $hasWork = collect($blocks)->contains(
+                fn (RosterCellData $parsed) => ! $parsed->isEmpty()
+                    && ($parsed->shiftTypeKind ?? ShiftTypeKind::Work) === ShiftTypeKind::Work,
+            );
+            if (! $hasWork) {
                 continue;
             }
             $workerId = (int) $item['cell']['worker_id'];
@@ -148,8 +155,8 @@ class SavePlannedShiftsAction
             // rij: zo overleeft de notitie (description) een grid-save die de
             // cel inhoudelijk niet wijzigt.
             foreach ($parsedCells as $item) {
-                $parsed = $item['parsed'];
-                if ($parsed === null || $parsed->isEmpty()) {
+                $blocks = $item['blocks'];
+                if ($blocks === null || count($blocks) !== 1 || $blocks[0]->isEmpty()) {
                     continue;
                 }
                 $dayKey = (int) $item['cell']['worker_id'].':'.(string) $item['cell']['date'];
@@ -157,7 +164,7 @@ class SavePlannedShiftsAction
                     continue;
                 }
                 $rows = $existingByDay->get($dayKey);
-                if ($rows !== null && $rows->count() === 1 && $this->parsedMatchesRow($parsed, $rows->first())) {
+                if ($rows !== null && $rows->count() === 1 && $this->parsedMatchesRow($blocks[0], $rows->first())) {
                     $preservedIds[] = (int) $rows->first()->id;
                     $preservedDays[$dayKey] = true;
                 }
@@ -183,8 +190,8 @@ class SavePlannedShiftsAction
                 ];
             }
             foreach ($parsedCells as $item) {
-                $parsed = $item['parsed'];
-                if ($parsed === null) {
+                $blocks = $item['blocks'];
+                if ($blocks === null) {
                     continue;
                 }
                 $date = (string) $item['cell']['date'];
@@ -195,7 +202,10 @@ class SavePlannedShiftsAction
                 if (isset($preservedDays[$dayKey]) || isset($existingByDay[$dayKey])) {
                     continue;
                 }
-                if (! $parsed->isEmpty()) {
+                $hasContent = collect($blocks)->contains(
+                    fn (RosterCellData $parsed) => ! $parsed->isEmpty(),
+                );
+                if ($hasContent) {
                     $lockedErrors[] = [
                         'worker_id' => (int) $item['cell']['worker_id'],
                         'date' => $date,
@@ -215,8 +225,8 @@ class SavePlannedShiftsAction
             $created = [];
             $intervals = [];
             foreach ($parsedCells as $item) {
-                $parsed = $item['parsed'];
-                if ($parsed === null || $parsed->isEmpty()) {
+                $blocks = $item['blocks'];
+                if ($blocks === null) {
                     continue;
                 }
                 $dayKey = (int) $item['cell']['worker_id'].':'.(string) $item['cell']['date'];
@@ -224,29 +234,35 @@ class SavePlannedShiftsAction
                     continue;
                 }
 
-                $shift = PlannedShift::create([
-                    'tenant_id' => $tenant->id,
-                    'worker_id' => (int) $item['cell']['worker_id'],
-                    'work_date' => $item['cell']['date'],
-                    'shift_type_id' => $parsed->shiftTypeId,
-                    'kind' => $parsed->shiftTypeKind ?? ShiftTypeKind::Work,
-                    'unit_id' => $parsed->unitId,
-                    'unit_code' => $parsed->unitCode,
-                    'unit_name' => $parsed->unitName,
-                    'location_id' => $parsed->locationId,
-                    'start_time' => $parsed->startTime,
-                    'end_time' => $parsed->endTime,
-                    'break_minutes' => $parsed->breakMinutes,
-                    'status' => $status,
-                ]);
-                $created[] = $shift;
-                $intervals[] = [
-                    'worker_id' => (int) $shift->worker_id,
-                    'date' => $shift->work_date->toDateString(),
-                    'start' => $shift->start_time,
-                    'end' => $shift->end_time,
-                    'kind' => $shift->kind->value,
-                ];
+                foreach ($blocks as $parsed) {
+                    if ($parsed->isEmpty()) {
+                        continue;
+                    }
+
+                    $shift = PlannedShift::create([
+                        'tenant_id' => $tenant->id,
+                        'worker_id' => (int) $item['cell']['worker_id'],
+                        'work_date' => $item['cell']['date'],
+                        'shift_type_id' => $parsed->shiftTypeId,
+                        'kind' => $parsed->shiftTypeKind ?? ShiftTypeKind::Work,
+                        'unit_id' => $parsed->unitId,
+                        'unit_code' => $parsed->unitCode,
+                        'unit_name' => $parsed->unitName,
+                        'location_id' => $parsed->locationId,
+                        'start_time' => $parsed->startTime,
+                        'end_time' => $parsed->endTime,
+                        'break_minutes' => $parsed->breakMinutes,
+                        'status' => $status,
+                    ]);
+                    $created[] = $shift;
+                    $intervals[] = [
+                        'worker_id' => (int) $shift->worker_id,
+                        'date' => $shift->work_date->toDateString(),
+                        'start' => $shift->start_time,
+                        'end' => $shift->end_time,
+                        'kind' => $shift->kind->value,
+                    ];
+                }
             }
 
             $this->assertNoOverlap->handle($intervals);
@@ -293,7 +309,7 @@ class SavePlannedShiftsAction
      * enkelvoudige cel) dagen zijn per definitie ongewijzigd.
      *
      * @param  Collection<string, Collection<int, PlannedShift>>  $existingByDay
-     * @param  list<array{cell: array<string, mixed>, parsed: ?\App\Data\Time\RosterCellData}>  $parsedCells
+     * @param  list<array{cell: array<string, mixed>, blocks: ?list<\App\Data\Time\RosterCellData>}>  $parsedCells
      * @param  array<string, true>  $preservedDays
      */
     private function notifyChangedPublishedDays(
@@ -306,14 +322,23 @@ class SavePlannedShiftsAction
         $afterByDay = [];
         foreach ($parsedCells as $item) {
             $key = (int) $item['cell']['worker_id'].':'.(string) $item['cell']['date'];
-            $parsed = $item['parsed'];
-            $afterByDay[$key] = $parsed === null || $parsed->isEmpty() ? [] : [[
-                'start' => $parsed->startTime,
-                'end' => $parsed->endTime,
-                'kind' => ($parsed->shiftTypeKind ?? ShiftTypeKind::Work)->value,
-                'type' => $parsed->shiftTypeId,
-                'unit' => $parsed->unitId,
-            ]];
+            $blocks = $item['blocks'];
+            if ($blocks === null) {
+                $afterByDay[$key] = [];
+
+                continue;
+            }
+            $afterByDay[$key] = collect($blocks)
+                ->reject(fn (RosterCellData $parsed) => $parsed->isEmpty())
+                ->map(fn (RosterCellData $parsed) => [
+                    'start' => $parsed->startTime,
+                    'end' => $parsed->endTime,
+                    'kind' => ($parsed->shiftTypeKind ?? ShiftTypeKind::Work)->value,
+                    'type' => $parsed->shiftTypeId,
+                    'unit' => $parsed->unitId,
+                ])
+                ->values()
+                ->all();
         }
 
         $pairs = [];

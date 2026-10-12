@@ -40,6 +40,42 @@ function pasteGrid(data) {
     });
 }
 
+/** Multi-blok scheiding (kopieerbaar; newline zou bij plakken als rijen uiteenvallen). */
+const MULTI_BLOCK_SEP = ' · ';
+
+function splitRosterBlocks(raw) {
+    const text = cellText(raw).trim().replace(/\r\n|\r/g, '\n');
+    if (text === '') {
+        return [];
+    }
+
+    if (text.includes('·')) {
+        return text.split(/\s*·\s*/).map((part) => part.trim()).filter(Boolean);
+    }
+
+    if (text.includes('\n')) {
+        const lines = text.split('\n').map((part) => part.trim()).filter(Boolean);
+        if (lines.length > 1 && linesAreSeparateBlocks(lines)) {
+            return lines;
+        }
+    }
+
+    return [text];
+}
+
+/** duty\\nunit (één stacked cel) vs echte multi-blok-regels. */
+function linesAreSeparateBlocks(lines) {
+    if (lines.length === 2
+        && !lines[0].includes('/')
+        && !lines[1].includes('-')
+        && /^[A-Za-z0-9]{1,8}$/.test(lines[1])
+    ) {
+        return false;
+    }
+
+    return true;
+}
+
 function splitDutyAndUnit(raw) {
     const normalized = raw.replace(/\r\n|\r|\n/g, '/');
     if (normalized.includes('/')) {
@@ -64,8 +100,7 @@ function splitDutyAndUnit(raw) {
     return [raw, null];
 }
 
-/** Celwaarde voor de grid: dienst + newline + groep (smalle kolommen). */
-function formatCellDisplay(raw) {
+function formatSingleBlockDisplay(raw) {
     const text = cellText(raw).trim();
     if (text === '') {
         return '';
@@ -78,9 +113,38 @@ function formatCellDisplay(raw) {
     return `${split[0]}\n${split[1].toUpperCase()}`;
 }
 
-/** Terug naar canonical D1/G1 voor opslaan/API. */
+/** Celwaarde voor de grid: multi = " · "; single = dienst + newline + groep. */
+function formatCellDisplay(raw) {
+    const blocks = splitRosterBlocks(raw);
+    if (blocks.length > 1) {
+        return blocks.map((block) => {
+            const split = splitDutyAndUnit(block.trim());
+            if (!split || !split[1]) {
+                return block.trim().replace(/\r\n|\r|\n/g, ' ');
+            }
+
+            return `${split[0]}/${split[1].toUpperCase()}`;
+        }).join(MULTI_BLOCK_SEP);
+    }
+
+    return formatSingleBlockDisplay(blocks[0] ?? raw);
+}
+
+/** Terug naar canonical D1/G1 of "blok · blok" voor opslaan/API. */
 function canonicalizeCellValue(raw) {
-    const text = cellText(raw).trim();
+    const blocks = splitRosterBlocks(raw);
+    if (blocks.length > 1) {
+        return blocks.map((block) => {
+            const split = splitDutyAndUnit(block.trim());
+            if (!split || !split[1]) {
+                return block.trim().replace(/\r\n|\r|\n/g, ' ');
+            }
+
+            return `${split[0]}/${split[1].toUpperCase()}`;
+        }).join(MULTI_BLOCK_SEP);
+    }
+
+    const text = (blocks[0] ?? cellText(raw)).trim();
     if (text === '') {
         return '';
     }
@@ -139,7 +203,7 @@ function catalogForWorker(worker, units) {
     return all.filter((unit) => ids.includes(unit.location_id));
 }
 
-function parseRosterCell(raw, types, units) {
+function parseRosterCellSingle(raw, types, units) {
     const trimmed = cellText(raw).trim();
     if (trimmed === '') {
         return { kind: 'empty' };
@@ -176,6 +240,24 @@ function parseRosterCell(raw, types, units) {
     }
 
     return { ...parsed, unit: code };
+}
+
+function parseRosterCell(raw, types, units) {
+    const blocks = splitRosterBlocks(raw);
+    if (blocks.length === 0) {
+        return { kind: 'empty' };
+    }
+    if (blocks.length > 1) {
+        const parsed = blocks.map((block) => parseRosterCellSingle(block, types, units));
+        const invalid = parsed.find((item) => item.kind === 'invalid');
+        if (invalid) {
+            return invalid;
+        }
+
+        return { kind: 'multi', blocks: parsed };
+    }
+
+    return parseRosterCellSingle(blocks[0], types, units);
 }
 
 function cellErrorTitle(parsed, payload) {
@@ -439,8 +521,12 @@ function applyCellClasses(worksheet, payload) {
             const date = payload.dates?.[colIndex - 1];
             const attendanceKey = worker && date ? `${worker.id}:${date}` : '';
             const cellDef = attendanceKey ? payload.cells?.[attendanceKey] : null;
-            const isMultiSummary = Boolean(cellDef?.multi) && cellText(value).trim() === cellDef.display;
-            const split = isMultiSummary ? null : splitDutyAndUnit(cellText(value).trim());
+            const valueText = cellText(value).trim();
+            const isMultiSummary = Boolean(cellDef?.multi) && valueText === cellDef.display;
+            const blockParts = splitRosterBlocks(valueText);
+            const split = (isMultiSummary || blockParts.length > 1)
+                ? null
+                : splitDutyAndUnit(valueText);
             if (split && split[1]) {
                 cell.classList.add('wp-roster-cell--stacked');
             }
@@ -459,7 +545,7 @@ function applyCellClasses(worksheet, payload) {
             const parsed = isMultiSummary
                 ? { kind: 'multi' }
                 : parseRosterCell(value, types, (catalog ??= catalogFor(worker)));
-            if (isMultiSummary) {
+            if (parsed.kind === 'multi') {
                 cell.classList.add('wp-roster-cell--multi');
             }
             if (parsed.kind === 'invalid') {
@@ -469,7 +555,10 @@ function applyCellClasses(worksheet, payload) {
                 applyAttendanceLink(cell, '');
             } else if (parsed.kind === 'multi') {
                 cell.removeAttribute('aria-invalid');
-                const multiTitle = `${cellText(cellDef.display).trim()}\n\n`
+                const summary = isMultiSummary
+                    ? cellText(cellDef.display).trim()
+                    : valueText;
+                const multiTitle = `${summary}\n\n`
                     + (actionable ? attendanceTitle(payload, attendance) : (payload.multi_hint || ''));
                 if (actionable) {
                     cell.classList.add(`wp-roster-cell--${attendance}`);
@@ -973,18 +1062,19 @@ export function bind(root, wire) {
                 const cellDef = rowDef?.worker_id && date
                     ? payload.cells?.[`${rowDef.worker_id}:${date}`]
                     : null;
+                value = cellText(value);
                 if (cellDef?.multi && current().trim() === cellDef.display) {
-                    // Overschrijven van een multi-blok-samenvatting = hele dag
-                    // vervangen door één blok — één bevestiging.
-                    if (!window.confirm(payload.multi_replace_confirm || '')) {
+                    // Overschrijven met één blok = hele dag vervangen — bevestigen.
+                    // Plakken van een multi-samenvatting mag zonder die waarschuwing.
+                    const incomingMulti = splitRosterBlocks(value).length > 1;
+                    if (!incomingMulti && !window.confirm(payload.multi_replace_confirm || '')) {
                         return current();
                     }
                 }
-                value = cellText(value);
                 if (value.trim().startsWith('=')) {
                     return current();
                 }
-                if (!value.includes('-')) {
+                if (splitRosterBlocks(value).length === 1 && !value.includes('-')) {
                     value = value.trim().toUpperCase();
                 }
 

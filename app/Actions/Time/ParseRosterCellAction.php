@@ -12,6 +12,28 @@ use Illuminate\Support\Collection;
 class ParseRosterCellAction
 {
     /**
+     * Parse één of meer blokken uit een grid-cel.
+     * Scheiding: " · " (canonical, kopieerbaar) of legacy newlines tussen
+     * volledige blokken — niet duty\\nunit (dat blijft één stacked cel).
+     *
+     * @param  Collection<int, ShiftType>|list<ShiftType>  $shiftTypes
+     * @param  Collection<int, Unit>|list<Unit>  $units
+     * @return list<RosterCellData>
+     */
+    public function handleAll(string $raw, Collection|array $shiftTypes, Collection|array $units = []): array
+    {
+        $parts = $this->splitBlocks($raw);
+        if ($parts === ['']) {
+            return [new RosterCellData(RosterCellKind::Empty, '')];
+        }
+
+        return array_map(
+            fn (string $part) => $this->handle($part, $shiftTypes, $units),
+            $parts,
+        );
+    }
+
+    /**
      * @param  Collection<int, ShiftType>|list<ShiftType>  $shiftTypes
      * @param  Collection<int, Unit>|list<Unit>  $units
      */
@@ -50,6 +72,56 @@ class ParseRosterCellAction
         }
 
         return $this->withUnit($parsed, $unitToken, Collection::make($units), $raw);
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function splitBlocks(string $raw): array
+    {
+        $trimmed = trim(str_replace(["\r\n", "\r"], "\n", $raw));
+        if ($trimmed === '') {
+            return [''];
+        }
+
+        if (str_contains($trimmed, '·')) {
+            $parts = preg_split('/\s*·\s*/u', $trimmed) ?: [];
+            $parts = array_values(array_filter(
+                array_map('trim', $parts),
+                fn (string $part) => $part !== '',
+            ));
+
+            return $parts !== [] ? $parts : [''];
+        }
+
+        if (str_contains($trimmed, "\n")) {
+            $lines = array_values(array_filter(
+                array_map('trim', explode("\n", $trimmed)),
+                fn (string $part) => $part !== '',
+            ));
+            if (count($lines) > 1 && $this->linesAreSeparateBlocks($lines)) {
+                return $lines;
+            }
+        }
+
+        return [$trimmed];
+    }
+
+    /**
+     * @param  list<string>  $lines
+     */
+    private function linesAreSeparateBlocks(array $lines): bool
+    {
+        // duty\\nunit (één stacked cel): tweede regel is alleen een groepscode.
+        if (count($lines) === 2
+            && ! str_contains($lines[0], '/')
+            && ! str_contains($lines[1], '-')
+            && (bool) preg_match('/^[A-Za-z0-9]{1,8}$/', $lines[1])
+        ) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
