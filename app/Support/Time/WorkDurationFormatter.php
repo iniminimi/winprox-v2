@@ -23,4 +23,19 @@ final class WorkDurationFormatter
 
         return $hours.__('time.duration.hour_short').$remaining.__('time.duration.minute_short');
     }
+
+    /** Smalle cijferkolommen (rooster): 15u32, 8u05, 0u45, 15u. */
+    public static function compact(int $minutes): string
+    {
+        $minutes = max(0, $minutes);
+        $hours = intdiv($minutes, 60);
+        $remaining = $minutes % 60;
+        $hour = __('time.duration.hour_short');
+
+        if ($remaining === 0) {
+            return $hours.$hour;
+        }
+
+        return $hours.$hour.str_pad((string) $remaining, 2, '0', STR_PAD_LEFT);
+    }
 }

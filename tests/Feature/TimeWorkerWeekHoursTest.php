@@ -376,6 +376,28 @@ it('zet de uren in vaste cijferkolommen', function () {
         ->and($figure('attention')['title'])->toContain(__('time.schedule.week_hours.registration_incomplete'));
 });
 
+it('toont minuten compact in de cijferkolommen (15u32, geen 15u32min)', function () {
+    [$tenant, $admin, $team, $worker] = weekHoursTenant();
+    $worker->update(['weekly_contract_minutes' => 125]);
+    weekBlock($tenant, $worker, '2026-10-13', ShiftTypeKind::Work, '08:00', '23:32');
+
+    $snapshot = app(ListRosterWeekAction::class)->handle(
+        (int) $tenant->id,
+        '2026-10-12',
+        (int) $team->id,
+        $admin,
+    );
+    $row = collect($snapshot->workers)->firstWhere('id', $worker->id);
+    $keys = array_column($snapshot->hoursColumns, 'key');
+    $figure = fn (string $key): ?array => $row['week_hours']['figures'][array_search($key, $keys, true)];
+    $hour = __('time.duration.hour_short');
+
+    expect($figure('norm')['value'])->toBe('2'.$hour.'05')
+        ->and($figure('planned')['value'])->toBe('15'.$hour.'32')
+        ->and($figure('difference')['value'])->toBe('+13'.$hour.'27')
+        ->and($figure('planned')['value'])->not->toContain(__('time.duration.minute_short'));
+});
+
 it('mengt geen uren van een andere tenant', function () {
     [$tenant, , , $worker] = weekHoursTenant();
     $other = Tenant::factory()->create(['has_time_module' => true]);

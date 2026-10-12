@@ -6756,8 +6756,8 @@ a.wp-kpi.wp-kpi--attention {
 
 .wp-roster-sheet .jss_worksheet td.wp-roster-cell--hours {
     color: var(--wp-text);
-    font-size: 0.6875rem;
-    font-weight: 600;
+    font-size: 0.625rem;
+    font-weight: 400;
     font-variant-numeric: tabular-nums;
     text-align: center !important;
     white-space: nowrap;

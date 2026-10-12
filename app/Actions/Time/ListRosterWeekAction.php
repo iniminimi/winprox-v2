@@ -540,7 +540,7 @@ class ListRosterWeekAction
             return '0';
         }
 
-        return WorkDurationFormatter::format($minutes);
+        return WorkDurationFormatter::compact($minutes);
     }
 
     private function formatSignedMinutes(int $minutes): string
