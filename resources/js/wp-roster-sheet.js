@@ -1099,7 +1099,8 @@ export function bind(root, wire) {
         const rowCount = Math.max(rowDefs.length, 1);
         // Hoogte = inhoud: geen vast kader met interne verticale scroll.
         const rowPx = isMonth ? 34 : 38;
-        const titleRowPx = hourColumns.length > 0 ? 132 : 36;
+        // Verticale urentitels: 5rem (zie .wp-roster-hours-head).
+        const titleRowPx = hourColumns.length > 0 ? 80 : 36;
         const nestedPx = isMonth && payload.month_label ? 28 : 0;
         const headerPx = nestedPx + titleRowPx;
         // Multi-blok-rijen groeien: elke blok krijgt een eigen regel in de cel.

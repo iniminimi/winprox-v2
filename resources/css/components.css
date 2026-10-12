@@ -6771,7 +6771,8 @@ a.wp-kpi.wp-kpi--attention {
 }
 
 .wp-roster-sheet .jss_worksheet > thead > tr > td.wp-roster-hours-head {
-    height: 8.25rem !important;
+    /* Langste titel (11 tekens, 0.6875rem) ≈ 62px + padding; JS titleRowPx = 80. */
+    height: 5rem !important;
     padding: 0.35rem 0.05rem !important;
     vertical-align: bottom !important;
     text-align: center !important;
@@ -6789,7 +6790,7 @@ a.wp-kpi.wp-kpi--attention {
     font-weight: 600;
     line-height: 1;
     letter-spacing: 0.01em;
-    max-height: 7.6rem;
+    max-height: 4.5rem;
 }
 
 .wp-roster-sheet .jss_worksheet > thead > tr > td.wp-roster-hours-head-start,
