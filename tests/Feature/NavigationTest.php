@@ -27,13 +27,15 @@ it('maakt alle beheers-navigatie bereikbaar via de app-shell', function () {
     $this->actingAs($user)
         ->get(route('dashboard'))
         ->assertOk()
-        ->assertSee(__('common.nav.settings'), false);
+        ->assertSee(__('common.nav.settings'), false)
+        ->assertSee('wp-sidebar-search', false)
+        ->assertDontSee('wp-header-search', false);
 
     foreach ($routes as $route) {
         $this->actingAs($user)
             ->get(route($route))
             ->assertOk()
-            ->assertSee('Demo Facility');
+            ->assertSee('wp-sidebar-menu', false);
     }
 });
 

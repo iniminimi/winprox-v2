@@ -5130,18 +5130,36 @@ svg.wp-release-worker-row__icon,
     border-radius: var(--wp-radius-sm);
 }
 
+/* De zoekbalk zit in de zijbalk; de resultaten renderen als fixed paneel
+   naast de sidebar (.wp-sidebar-body scrollt — absolute zou afgeknipt worden).
+   `top` wordt per open via JS gezet (onderkant invoerveld + 6px). */
 .wp-search-results {
-    position: absolute;
-    top: calc(100% + 0.5rem);
-    left: 0;
-    right: 0;
-    z-index: 50;
+    position: fixed;
+    top: 8rem;
+    left: calc(18rem + 0.75rem);
+    width: min(26rem, calc(100vw - 19.5rem));
+    z-index: 60;
     background-color: var(--wp-surface);
     border: 1px solid var(--wp-border);
     border-radius: var(--wp-radius-lg);
     box-shadow: var(--wp-shadow-lg);
-    max-height: 24rem;
+    max-height: min(24rem, calc(100dvh - 7rem));
     overflow-y: auto;
+}
+
+/* Sidebar weggeklapt: zoekveld is onzichtbaar — paneel ook. */
+.wp-app--sidebar-collapsed .wp-search-results {
+    display: none;
+}
+
+/* Mobiele drawer: paneel binnen de drawer (die transformeert, dus fixed
+   verankert aan de zijbalk i.p.v. de viewport). */
+@media (max-width: 59.99rem) {
+    .wp-search-results {
+        left: 0.75rem;
+        right: 0.75rem;
+        width: auto;
+    }
 }
 
 .wp-search-results--empty {

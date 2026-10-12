@@ -81,10 +81,6 @@
         display: inline-flex;
     }
 
-    .wp-app--sidebar-collapsed .wp-header-search {
-        padding-left: 3.5rem;
-    }
-
     .wp-app--sidebar-collapsed .wp-sidebar-collapse.btn {
         display: none;
     }
@@ -559,10 +555,9 @@
     flex-direction: column;
 }
 
-.wp-header-search {
-    padding: 0.75rem 1.75rem;
-    max-width: var(--wp-content-max);
-    width: 100%;
+/* Zoekveld in de zijbalk, direct onder de primaire navigatie (Home). */
+.wp-sidebar-search {
+    margin: 0.125rem 0.75rem 0.5rem;
 }
 
 .wp-main {
@@ -836,10 +831,6 @@
 
     .wp-nav-toggle-fixed.btn {
         display: inline-flex;
-    }
-
-    .wp-header-search {
-        padding-left: 3.5rem;
     }
 
     .wp-main {

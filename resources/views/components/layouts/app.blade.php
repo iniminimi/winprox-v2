@@ -195,6 +195,12 @@
                         </a>
                     @endforeach
 
+                    @if (! $isPlatformOnlySuperuser)
+                        <div class="wp-sidebar-search">
+                            <livewire:global-search />
+                        </div>
+                    @endif
+
                     @if ($isPlatformOnlySuperuser)
                         <hr class="wp-nav-divider" role="presentation" aria-hidden="true">
 
@@ -742,10 +748,6 @@
                     ) }}</span>
                 </div>
             @endif
-
-            <div class="wp-header-search">
-                <livewire:global-search />
-            </div>
 
             <main class="wp-main">
                 {{ $slot }}

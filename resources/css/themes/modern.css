@@ -221,7 +221,7 @@
     border-color: transparent;
 }
 
-[data-theme='modern'] .wp-header-search .wp-input,
+[data-theme='modern'] .wp-sidebar-search .wp-search-bar,
 [data-theme='modern'] .wp-filter-cell .wp-input,
 [data-theme='modern'] .wp-filter-cell .wp-select,
 [data-theme='modern'] .wp-input,
