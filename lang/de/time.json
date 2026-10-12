@@ -611,6 +611,7 @@
         "cells": "Zellen",
         "prev_week": "Vorherige Woche",
         "this_week": "Diese Woche",
+        "goto_current_week": "Zur aktuellen Woche",
         "next_week": "Nächste Woche",
         "copy_target": "Zielwoche",
         "copy": {
@@ -702,6 +703,7 @@
         "month": "Monat",
         "prev_month": "Voriger Monat",
         "this_month": "Dieser Monat",
+        "goto_current_month": "Zum aktuellen Monat",
         "next_month": "Nächster Monat",
         "publish_confirm_month": "Diesen Monat für die sichtbaren Ausführenden veröffentlichen?",
         "legend_absence": "Abwesenheit",

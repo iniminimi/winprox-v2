@@ -611,6 +611,7 @@
         "cells": "Cells",
         "prev_week": "Previous week",
         "this_week": "This week",
+        "goto_current_week": "Go to current week",
         "next_week": "Next week",
         "copy_target": "Target week",
         "copy": {
@@ -702,6 +703,7 @@
         "month": "Month",
         "prev_month": "Previous month",
         "this_month": "This month",
+        "goto_current_month": "Go to current month",
         "next_month": "Next month",
         "publish_confirm_month": "Publish this month for the visible workers?",
         "legend_absence": "Absence",

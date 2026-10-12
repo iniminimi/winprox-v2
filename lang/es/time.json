@@ -611,6 +611,7 @@
         "cells": "Celdas",
         "prev_week": "Semana anterior",
         "this_week": "Esta semana",
+        "goto_current_week": "Ir a la semana actual",
         "next_week": "Semana siguiente",
         "copy_target": "Semana de destino",
         "copy": {
@@ -702,6 +703,7 @@
         "month": "Mes",
         "prev_month": "Mes anterior",
         "this_month": "Este mes",
+        "goto_current_month": "Ir al mes actual",
         "next_month": "Mes siguiente",
         "publish_confirm_month": "¿Publicar este mes para los operarios visibles?",
         "legend_absence": "Ausencia",

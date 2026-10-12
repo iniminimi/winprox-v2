@@ -87,9 +87,20 @@
                     </div>
                     <div class="wp-filter-cell">
                         <nav class="wp-pagination" aria-label="{{ $isMonth ? __('time.schedule.month') : __('time.schedule.week') }}">
+                            @php
+                                $onCurrentPeriod = $isMonth
+                                    ? \Carbon\Carbon::parse($weekStart)->format('Y-m') === now()->format('Y-m')
+                                    : $weekStart === now()->startOfWeek(\Carbon\Carbon::MONDAY)->toDateString();
+                            @endphp
                             <div class="wp-pagination__pages">
                                 <button type="button" class="wp-pagination__control" wire:click="previousWeek" data-wp-roster-nav aria-label="{{ $isMonth ? __('time.schedule.prev_month') : __('time.schedule.prev_week') }}">{{ __('time.schedule.nav_prev') }}</button>
-                                <button type="button" class="wp-pagination__page is-active" wire:click="thisWeek" data-wp-roster-nav aria-label="{{ $isMonth ? __('time.schedule.this_month') : __('time.schedule.this_week') }}">{{ $weekLabel }}</button>
+                                @if ($onCurrentPeriod)
+                                    <button type="button" class="wp-pagination__page wp-pagination__page--action is-active" wire:click="thisWeek" data-wp-roster-nav aria-label="{{ $isMonth ? __('time.schedule.this_month') : __('time.schedule.this_week') }}">{{ $weekLabel }}</button>
+                                @else
+                                    <x-wp-tooltip :text="$isMonth ? __('time.schedule.goto_current_month') : __('time.schedule.goto_current_week')">
+                                        <button type="button" class="wp-pagination__page wp-pagination__page--action is-active" wire:click="thisWeek" data-wp-roster-nav aria-label="{{ $isMonth ? __('time.schedule.this_month') : __('time.schedule.this_week') }}">{{ $weekLabel }}</button>
+                                    </x-wp-tooltip>
+                                @endif
                                 <button type="button" class="wp-pagination__control" wire:click="nextWeek" data-wp-roster-nav aria-label="{{ $isMonth ? __('time.schedule.next_month') : __('time.schedule.next_week') }}">{{ __('time.schedule.nav_next') }}</button>
                             </div>
                         </nav>

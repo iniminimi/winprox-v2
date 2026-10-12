@@ -3113,6 +3113,11 @@ button.wp-issue-row:disabled {
     cursor: default;
 }
 
+/* Actieve pagina die tóch klikbaar is (uurrooster "huidige week"-knop). */
+button.wp-pagination__page--action.is-active {
+    cursor: pointer;
+}
+
 button.wp-pagination__control,
 button.wp-pagination__page {
     cursor: pointer;

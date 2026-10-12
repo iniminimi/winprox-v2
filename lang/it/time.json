@@ -611,6 +611,7 @@
         "cells": "Celle",
         "prev_week": "Settimana precedente",
         "this_week": "Questa settimana",
+        "goto_current_week": "Vai alla settimana corrente",
         "next_week": "Settimana successiva",
         "copy_target": "Settimana di destinazione",
         "copy": {
@@ -702,6 +703,7 @@
         "month": "Mese",
         "prev_month": "Mese precedente",
         "this_month": "Questo mese",
+        "goto_current_month": "Vai al mese corrente",
         "next_month": "Mese successivo",
         "publish_confirm_month": "Pubblicare questo mese per gli esecutori visibili?",
         "legend_absence": "Assenza",

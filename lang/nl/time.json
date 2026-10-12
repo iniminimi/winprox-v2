@@ -611,6 +611,7 @@
         "cells": "Cellen",
         "prev_week": "Vorige week",
         "this_week": "Deze week",
+        "goto_current_week": "Ga naar huidige week",
         "next_week": "Volgende week",
         "copy_target": "Doelweek",
         "copy": {
@@ -702,6 +703,7 @@
         "month": "Maand",
         "prev_month": "Vorige maand",
         "this_month": "Deze maand",
+        "goto_current_month": "Ga naar huidige maand",
         "next_month": "Volgende maand",
         "publish_confirm_month": "Deze maand publiceren voor de zichtbare uitvoerders?",
         "legend_absence": "Afwezigheid",
