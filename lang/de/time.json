@@ -729,6 +729,7 @@
         "legend_title": "Dienstplan-Legende",
         "column_name": "Name",
         "week_hours": {
+            "column": "Stunden",
             "norm": "Norm :value",
             "missing": "—",
             "planned": "Geplant :value",

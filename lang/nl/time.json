@@ -729,6 +729,7 @@
         "legend_title": "Legende uurrooster",
         "column_name": "Naam",
         "week_hours": {
+            "column": "Uren",
             "norm": "Norm :value",
             "missing": "—",
             "planned": "Gepland :value",

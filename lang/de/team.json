@@ -182,6 +182,7 @@
         "contract_week_hint": "Referenz für die Wochenübersicht im Dienstplan. WinProx prüft hier keine Arbeitszeit.",
         "contract_week_hours": "Stunden",
         "contract_week_minutes": "Minuten",
+        "contract_week_minutes_hint": "Leer lassen zählt als 0 Minuten.",
         "default_unit": "Stammgruppe (Dienstplan)",
         "default_unit_none": "Keine Stammgruppe",
         "default_unit_hint": "Optional. Wo sehen Sie das? Unter Time → Dienstplan, nach Standortfilter: Ausführende stehen unter Gruppen (z. B. G1). Gruppen legen Sie an einer Unit an (Standorte → Unit bearbeiten → Dienstplancode). Hier wählen Sie die Gruppe dieser Person. Leer lassen, wenn Sie keine Gruppierung brauchen. Das plant keine Dienste; der Platz in einer Zelle (D1/G1) wird separat eingetragen.",

@@ -182,6 +182,7 @@
         "contract_week_hint": "Reference for the week overview on the roster. WinProx does not check working time here.",
         "contract_week_hours": "Hours",
         "contract_week_minutes": "Minutes",
+        "contract_week_minutes_hint": "Leave empty to count as 0 minutes.",
         "default_unit": "Home group (schedule)",
         "default_unit_none": "No home group",
         "default_unit_hint": "Optional. Where do you see it? On Time → Schedule, after you filter by location: workers are listed under groups (e.g. G1). You create those groups on a unit (Locations → edit unit → roster code). Here you choose which group this person belongs to. Leave empty if you don’t need grouping. This does not plan shifts; the place in a cell (D1/G1) is filled in separately.",

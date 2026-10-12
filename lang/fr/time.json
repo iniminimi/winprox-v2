@@ -729,6 +729,7 @@
         "legend_title": "Légende du planning",
         "column_name": "Nom",
         "week_hours": {
+            "column": "Heures",
             "norm": "Norme :value",
             "missing": "—",
             "planned": "Planifié :value",

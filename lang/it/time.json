@@ -729,6 +729,7 @@
         "legend_title": "Legenda turni",
         "column_name": "Nome",
         "week_hours": {
+            "column": "Ore",
             "norm": "Norma :value",
             "missing": "—",
             "planned": "Pianificato :value",

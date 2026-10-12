@@ -182,6 +182,7 @@
         "contract_week_hint": "Referencia para el resumen semanal del horario. WinProx no controla aquí la duración del trabajo.",
         "contract_week_hours": "Horas",
         "contract_week_minutes": "Minutos",
+        "contract_week_minutes_hint": "Vacío cuenta como 0 minutos.",
         "default_unit": "Grupo base (horario)",
         "default_unit_none": "Sin grupo base",
         "default_unit_hint": "Opcional. ¿Dónde se ve? En Time → Horario, tras filtrar por sede: los operarios aparecen bajo grupos (p. ej. G1). Esos grupos se crean en una unit (Ubicaciones → editar unit → código de cuadrante). Aquí elige el grupo de esta persona. Déjelo vacío si no necesita agrupar. No planifica turnos; el lugar en una celda (D1/G1) se rellena aparte.",

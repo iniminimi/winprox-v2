@@ -645,6 +645,7 @@ class RosterIndex extends Component
         $array['invalid_message'] = __('time.schedule.errors.invalid_cells');
         $array['unsaved_message'] = __('time.schedule.unsaved.save_first');
         $array['name_column'] = __('time.schedule.column_name');
+        $array['week_hours_column'] = __('time.schedule.week_hours.column');
         if (auth()->user()?->can('viewAny', WorkShift::class)) {
             $array['hours_url'] = route('time.shifts.index');
         }

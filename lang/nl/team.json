@@ -182,6 +182,7 @@
         "contract_week_hint": "Referentie voor het weekoverzicht in het uurrooster. WinProx controleert hier geen arbeidsduur.",
         "contract_week_hours": "Uren",
         "contract_week_minutes": "Minuten",
+        "contract_week_minutes_hint": "Leeg laten telt als 0 minuten.",
         "default_unit": "Thuisgroep (uurrooster)",
         "default_unit_none": "Geen thuisgroep",
         "default_unit_hint": "Optioneel. Waar zie je dit? Op Time → Uurrooster, nadat je een locatie filtert: uitvoerders staan dan onder groepen (bijv. G1). Die groepen maak je aan op een unit (Locaties → unit bewerken → roostercode). Hier kies je onder welke groep deze persoon hoort. Laat leeg als je geen groepering nodig hebt. Dit plant geen diensten; de plek in een cel (D1/G1) vul je apart in.",

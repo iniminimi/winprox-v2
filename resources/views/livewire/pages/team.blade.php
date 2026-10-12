@@ -516,16 +516,17 @@
                             <x-wp-tooltip :text="__('team.workers.contract_week_hint')" wrap>
                                 <h3 class="wp-label">{{ __('team.workers.contract_week') }}</h3>
                             </x-wp-tooltip>
-                            <div class="wp-cluster wp-cluster--tight">
+                            <div class="wp-form-grid-2">
                                 <div class="wp-field">
                                     <label class="wp-label" for="workerContractHours">{{ __('team.workers.contract_week_hours') }}</label>
-                                    <input id="workerContractHours" class="wp-input" type="number" min="0" max="168" inputmode="numeric" wire:model="workerContractHours">
+                                    <input id="workerContractHours" class="wp-input" type="number" min="0" max="168" inputmode="numeric" placeholder="0" wire:model="workerContractHours">
                                 </div>
                                 <div class="wp-field">
                                     <label class="wp-label" for="workerContractMinutes">{{ __('team.workers.contract_week_minutes') }}</label>
-                                    <input id="workerContractMinutes" class="wp-input" type="number" min="0" max="59" inputmode="numeric" wire:model="workerContractMinutes">
+                                    <input id="workerContractMinutes" class="wp-input" type="number" min="0" max="59" inputmode="numeric" placeholder="0" wire:model="workerContractMinutes">
                                 </div>
                             </div>
+                            <p class="wp-hint">{{ __('team.workers.contract_week_minutes_hint') }}</p>
                             @error('workerContractHours') <p class="wp-error">{{ $message }}</p> @enderror
                             @error('workerContractMinutes') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>

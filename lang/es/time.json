@@ -729,6 +729,7 @@
         "legend_title": "Leyenda del horario",
         "column_name": "Nombre",
         "week_hours": {
+            "column": "Horas",
             "norm": "Norma :value",
             "missing": "—",
             "planned": "Planificado :value",

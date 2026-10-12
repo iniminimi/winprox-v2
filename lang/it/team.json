@@ -182,6 +182,7 @@
         "contract_week_hint": "Riferimento per il riepilogo settimanale nel turno. WinProx non controlla qui la durata del lavoro.",
         "contract_week_hours": "Ore",
         "contract_week_minutes": "Minuti",
+        "contract_week_minutes_hint": "Vuoto vale 0 minuti.",
         "default_unit": "Gruppo di appartenenza (orario)",
         "default_unit_none": "Senza gruppo",
         "default_unit_hint": "Opzionale. Dove lo vedi? In Time → Orario, dopo un filtro sede: gli esecutori compaiono sotto gruppi (es. G1). Quei gruppi si creano su una unit (Sedi → modifica unit → codice turno). Qui scegli il gruppo di questa persona. Lascia vuoto se non serve raggruppare. Non pianifica i turni; il posto in una cella (D1/G1) si compila a parte.",

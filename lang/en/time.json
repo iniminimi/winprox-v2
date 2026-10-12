@@ -729,6 +729,7 @@
         "legend_title": "Roster legend",
         "column_name": "Name",
         "week_hours": {
+            "column": "Hours",
             "norm": "Norm :value",
             "missing": "—",
             "planned": "Planned :value",
