@@ -263,6 +263,10 @@
             "email": {
                 "heading": "E-mail",
                 "hint": "Stuur de aanmeldlink. Die meldt aan zonder inklokken. Op een vaste prikklok kan inklokken pas na een scan van de sticker of het klokscherm.",
+                "link_label": "Aanmeldlink",
+                "link_hint": "Kopieer de link om hem zelf te delen, bv. via je bedrijfsmail.",
+                "link_copy": "Kopiëren",
+                "link_copied": "Gekopieerd",
                 "label": "E-mailadres",
                 "send": "Versturen",
                 "sent": "Aanmeldlink verzonden.",

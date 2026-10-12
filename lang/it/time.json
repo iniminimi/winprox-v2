@@ -263,6 +263,10 @@
             "email": {
                 "heading": "E-mail",
                 "hint": "Invia il link di accesso. Fa accedere senza timbrare l'entrata. Su una timbratrice fissa l'entrata richiede la scansione dell'adesivo o dello schermo.",
+                "link_label": "Link di accesso",
+                "link_hint": "Copia il link per condividerlo tu stesso, ad es. via e-mail aziendale.",
+                "link_copy": "Copia",
+                "link_copied": "Copiato",
                 "label": "Indirizzo e-mail",
                 "send": "Invia",
                 "sent": "Link di accesso inviato.",

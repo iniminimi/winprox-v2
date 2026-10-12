@@ -263,6 +263,10 @@
             "email": {
                 "heading": "E-Mail",
                 "hint": "Senden Sie den Anmeldelink. Er meldet an, ohne einzustempeln. An einer festen Stempeluhr braucht das Einstempeln einen Scan des Aufklebers oder des Uhrenbildschirms.",
+                "link_label": "Anmeldelink",
+                "link_hint": "Kopieren Sie den Link, um ihn selbst zu teilen, z. B. über Ihre Firmen-E-Mail.",
+                "link_copy": "Kopieren",
+                "link_copied": "Kopiert",
                 "label": "E-Mail-Adresse",
                 "send": "Senden",
                 "sent": "Anmeldelink gesendet.",

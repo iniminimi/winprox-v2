@@ -263,6 +263,10 @@
             "email": {
                 "heading": "E-mail",
                 "hint": "Envoyez le lien de connexion. Il connecte sans pointer. Sur une pointeuse fixe, l'entrée demande un scan de l'autocollant ou de l'écran.",
+                "link_label": "Lien de connexion",
+                "link_hint": "Copiez le lien pour le transmettre vous-même, p. ex. via votre e-mail d’entreprise.",
+                "link_copy": "Copier",
+                "link_copied": "Copié",
                 "label": "Adresse e-mail",
                 "send": "Envoyer",
                 "sent": "Lien de connexion envoyé.",

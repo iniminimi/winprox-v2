@@ -263,6 +263,10 @@
             "email": {
                 "heading": "Email",
                 "hint": "Send the sign-in link. It signs the worker in without clocking in. On a fixed clock, clock-in needs a scan of the sticker or the clock screen.",
+                "link_label": "Sign-in link",
+                "link_hint": "Copy the link to share it yourself, e.g. via your company mail.",
+                "link_copy": "Copy",
+                "link_copied": "Copied",
                 "label": "Email address",
                 "send": "Send",
                 "sent": "Sign-in link sent.",

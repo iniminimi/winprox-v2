@@ -263,6 +263,10 @@
             "email": {
                 "heading": "Correo",
                 "hint": "Envíe el enlace de acceso. Identifica sin fichar la entrada. En un reloj fijo, fichar la entrada exige escanear la pegatina o la pantalla.",
+                "link_label": "Enlace de acceso",
+                "link_hint": "Copie el enlace para compartirlo usted mismo, p. ej. por su correo de empresa.",
+                "link_copy": "Copiar",
+                "link_copied": "Copiado",
                 "label": "Correo electrónico",
                 "send": "Enviar",
                 "sent": "Enlace de acceso enviado.",

@@ -205,6 +205,37 @@
                         <h3 class="wp-label">{{ __('time.clock_points.qr.email.heading') }}</h3>
                         <p class="wp-muted">{{ __('time.clock_points.qr.email.hint') }}</p>
                     </div>
+                    <div class="wp-field" x-data="{ copied: false }">
+                        <label class="wp-filter-inline-label" for="clock-point-signin-link">{{ __('time.clock_points.qr.email.link_label') }}</label>
+                        <div class="wp-cluster wp-cluster--wrap">
+                            <input
+                                id="clock-point-signin-link"
+                                type="text"
+                                class="wp-input"
+                                value="{{ $qrPackClockPoint->emailPortalUrl() }}"
+                                readonly
+                                aria-label="{{ __('time.clock_points.qr.email.link_label') }}"
+                                @focus="$el.select()"
+                            >
+                            <button
+                                type="button"
+                                class="btn btn--ghost"
+                                @click="
+                                    const linkInput = document.getElementById('clock-point-signin-link');
+                                    linkInput.select();
+                                    linkInput.setSelectionRange(0, linkInput.value.length);
+                                    if (window.isSecureContext && navigator.clipboard) {
+                                        navigator.clipboard.writeText(linkInput.value).then(() => copied = true).catch(() => {});
+                                    } else {
+                                        copied = document.execCommand('copy');
+                                    }
+                                    setTimeout(() => copied = false, 1500);
+                                "
+                                x-text="copied ? @js(__('time.clock_points.qr.email.link_copied')) : @js(__('time.clock_points.qr.email.link_copy'))"
+                            ></button>
+                        </div>
+                        <p class="wp-muted wp-text-sm">{{ __('time.clock_points.qr.email.link_hint') }}</p>
+                    </div>
                     @if ($qrMailFlash)
                         <div class="wp-flash wp-flash--success">{{ $qrMailFlash }}</div>
                     @endif
