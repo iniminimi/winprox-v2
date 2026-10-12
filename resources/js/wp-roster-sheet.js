@@ -758,20 +758,34 @@ function appendHourCells(line, payload, byId, workerId) {
     });
 }
 
-function markHoursHeaders(worksheet, payload) {
-    const headers = worksheet?.headers;
-    if (!headers) {
+function markHoursHeaders(host, payload) {
+    if (!host) {
         return;
     }
     const start = payload.dates.length + 1;
     const columns = hoursColumns(payload);
-    headers.forEach((cell, index) => {
+    host.querySelectorAll('.jss_worksheet thead td[data-x]').forEach((cell) => {
+        const index = Number(cell.getAttribute('data-x'));
         const column = columns[index - start];
         const isHours = Boolean(column);
         cell.classList.toggle('wp-roster-hours-head', isHours);
         cell.classList.toggle('wp-roster-hours-head-start', isHours && index === start);
+        const existing = cell.querySelector(':scope > .wp-roster-hours-label');
         if (!isHours) {
+            if (existing) {
+                const plain = existing.textContent;
+                existing.remove();
+                cell.textContent = plain;
+            }
+
             return;
+        }
+        const label = existing ?? document.createElement('span');
+        label.className = 'wp-roster-hours-label';
+        label.textContent = column.title || '';
+        if (!existing) {
+            cell.textContent = '';
+            cell.appendChild(label);
         }
         const hint = column.hint || column.title || '';
         if (hint) {
@@ -1120,7 +1134,7 @@ export function bind(root, wire) {
         const paint = (instance, { lockSections = false } = {}) => {
             applyCellClasses(instance, payload);
             applySectionRowStyles(instance, payload, { lockSections });
-            markHoursHeaders(instance, payload);
+            markHoursHeaders(grid, payload);
         };
 
         const instances = jspreadsheet(grid, {
