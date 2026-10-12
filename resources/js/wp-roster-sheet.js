@@ -758,18 +758,22 @@ function appendHourCells(line, payload, byId, workerId) {
     });
 }
 
-function markHoursHeaders(host, payload) {
-    if (!host) {
+function markHoursHeaders(worksheet, payload) {
+    if (!worksheet || !Array.isArray(worksheet.headers)) {
         return;
     }
     const start = payload.dates.length + 1;
     const columns = hoursColumns(payload);
-    host.querySelectorAll('.jss_worksheet thead td[data-x]').forEach((cell) => {
-        const index = Number(cell.getAttribute('data-x'));
-        const column = columns[index - start];
+
+    worksheet.headers.forEach((cell, index) => {
+        if (!cell) {
+            return;
+        }
+        const column = index >= start ? columns[index - start] : null;
         const isHours = Boolean(column);
         cell.classList.toggle('wp-roster-hours-head', isHours);
         cell.classList.toggle('wp-roster-hours-head-start', isHours && index === start);
+
         const existing = cell.querySelector(':scope > .wp-roster-hours-label');
         if (!isHours) {
             if (existing) {
@@ -780,13 +784,30 @@ function markHoursHeaders(host, payload) {
 
             return;
         }
+
         const label = existing ?? document.createElement('span');
         label.className = 'wp-roster-hours-label';
         label.textContent = column.title || '';
+        label.style.cssText = [
+            'display:inline-block',
+            'writing-mode:vertical-rl',
+            'transform:rotate(180deg)',
+            'white-space:nowrap',
+            'line-height:1',
+            'max-height:7.6rem',
+        ].join(';');
         if (!existing) {
             cell.textContent = '';
             cell.appendChild(label);
         }
+
+        cell.style.setProperty('height', '8.25rem', 'important');
+        cell.style.setProperty('vertical-align', 'bottom', 'important');
+        cell.style.setProperty('text-align', 'center', 'important');
+        cell.style.setProperty('white-space', 'normal', 'important');
+        cell.style.setProperty('padding', '0.35rem 0.05rem', 'important');
+        cell.style.setProperty('overflow', 'hidden', 'important');
+
         const hint = column.hint || column.title || '';
         if (hint) {
             cell.title = hint;
@@ -1134,7 +1155,7 @@ export function bind(root, wire) {
         const paint = (instance, { lockSections = false } = {}) => {
             applyCellClasses(instance, payload);
             applySectionRowStyles(instance, payload, { lockSections });
-            markHoursHeaders(grid, payload);
+            markHoursHeaders(instance, payload);
         };
 
         const instances = jspreadsheet(grid, {
