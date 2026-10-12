@@ -1193,6 +1193,44 @@ it('houdt een gemengde week bewerkbaar: identiek verleden blijft en toekomst sch
         ->and($fresh->start_time)->toBe('07:00');
 });
 
+it('behoudt vergrendelde dagen via keep-cellen zelfs zonder exacte round-trip', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-10-15')); // donderdag
+
+    // Vrije dienst met pauze: de gridcel "07:00-15:00" kan break_minutes niet
+    // dragen — zonder keep zou dit als wijziging gelockt falen.
+    $locked = PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-14',
+        'start_time' => '07:00',
+        'end_time' => '15:00',
+        'break_minutes' => 30,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+
+    $cells = array_map(
+        fn (array $cell) => $cell['date'] === '2026-10-14'
+            ? ['worker_id' => $cell['worker_id'], 'date' => $cell['date'], 'raw' => '', 'keep' => true]
+            : $cell,
+        scheduleCells([$worker], '2026-10-12', [
+            $worker->id.':2026-10-16' => '09:00-17:00',
+        ]),
+    );
+
+    $result = app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData('2026-10-12', [$worker->id], $cells),
+        $admin->id,
+    );
+
+    $fresh = $locked->fresh();
+    expect($result['shifts'])->toHaveCount(1)
+        ->and($result['shifts'][0]->work_date->toDateString())->toBe('2026-10-16')
+        ->and($fresh->id)->toBe($locked->id)
+        ->and($fresh->break_minutes)->toBe(30);
+});
+
 it('vlagt wijzigen, legen en aanmaken op vergrendelde dagen in de grid', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
     $this->travelTo(Carbon::parse('2026-10-15'));

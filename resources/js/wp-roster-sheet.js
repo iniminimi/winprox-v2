@@ -579,6 +579,7 @@ function gridRowDefs(payload) {
 function collectCells(worksheet, payload) {
     const cells = [];
     const byId = workerById(payload);
+    const lockedDates = new Set(payload.locked_dates ?? []);
     gridRowDefs(payload).forEach((row, rowIndex) => {
         if (row.type !== 'worker') {
             return;
@@ -590,6 +591,15 @@ function collectCells(worksheet, payload) {
         payload.dates.forEach((date, dayIndex) => {
             const key = `${worker.id}:${date}`;
             const cellDef = payload.cells?.[key];
+            // Vergrendelde dag kan via de UI onmogelijk gewijzigd zijn: keep
+            // zonder round-trip, zodat bv. pauzes of notities de save niet ten
+            // onrechte laten falen (kopiëren/plakken naar deels vergrendelde
+            // periodes blijft zo werken).
+            if (lockedDates.has(date)) {
+                cells.push({ worker_id: worker.id, date, raw: '', keep: true });
+
+                return;
+            }
             const raw = worksheet.getValueFromCoords(dayIndex + 1, rowIndex);
             const value = canonicalizeCellValue(raw);
             if (cellDef?.multi && cellText(raw).trim() === cellDef.display) {
@@ -948,26 +958,31 @@ export function bind(root, wire) {
             contextMenu: () => false,
             onbeforechange: (_instance, _cell, x, y, value) => {
                 const rowDef = gridRowDefs(payload)[Number(y)];
+                // false-waardes worden door jspreadsheet letterlijk als "false"
+                // gezet — de bestaande celwaarde teruggeven is de echte no-op.
+                const current = () => cellText(
+                    worksheet?.getValueFromCoords?.(Number(x), Number(y)) ?? '',
+                );
                 if (rowDef?.type === 'section' || Number(x) === 0) {
-                    return false;
+                    return current();
                 }
                 const date = payload.dates?.[Number(x) - 1];
                 if (date && lockedDates.has(date)) {
-                    return false;
+                    return current();
                 }
                 const cellDef = rowDef?.worker_id && date
                     ? payload.cells?.[`${rowDef.worker_id}:${date}`]
                     : null;
-                if (cellDef?.multi && cellText(worksheet?.getValueFromCoords?.(Number(x), Number(y))).trim() === cellDef.display) {
+                if (cellDef?.multi && current().trim() === cellDef.display) {
                     // Overschrijven van een multi-blok-samenvatting = hele dag
                     // vervangen door één blok — één bevestiging.
                     if (!window.confirm(payload.multi_replace_confirm || '')) {
-                        return false;
+                        return current();
                     }
                 }
                 value = cellText(value);
                 if (value.trim().startsWith('=')) {
-                    return false;
+                    return current();
                 }
                 if (!value.includes('-')) {
                     value = value.trim().toUpperCase();
