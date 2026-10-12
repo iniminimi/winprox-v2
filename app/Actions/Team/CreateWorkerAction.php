@@ -70,6 +70,9 @@ class CreateWorkerAction
             'ssin' => self::normalizedSsin($data['ssin'] ?? null),
             'is_external' => $isExternal,
             'company_name' => $companyName,
+            'weekly_contract_minutes' => array_key_exists('weekly_contract_minutes', $data)
+                ? $data['weekly_contract_minutes']
+                : null,
             'is_active' => true,
             'created_by_worker_id' => $actorWorker?->id,
         ]);

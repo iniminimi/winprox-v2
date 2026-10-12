@@ -195,7 +195,8 @@
           "Week or month view; weekends can be hidden.",
           "Clock Point shows My roster (own published shifts only).",
           "A red triangle if you have not clocked in or are late.",
-          "Admin sees planned versus clocked (15-minute window)."
+          "Admin sees planned versus clocked (15-minute window).",
+          "Week view shows each worker’s contractual weekly hours, planned hours, the difference, worked hours and recorded absence. That is a count, not a judgement on working time."
         ]
       },
       {

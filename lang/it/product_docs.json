@@ -195,7 +195,8 @@
           "Vista settimana o mese; i weekend si possono nascondere.",
           "Clock Point mostra Il mio turno (solo i servizi pubblicati propri).",
           "Triangolo rosso se non hai timbrato o sei in ritardo.",
-          "La gestione vede pianificato contro timbrato (margine di 15 minuti)."
+          "La gestione vede pianificato contro timbrato (margine di 15 minuti).",
+          "La vista settimana mostra per esecutore la norma settimanale contrattuale, le ore pianificate, lo scarto, le ore lavorate e l’assenza registrata. È un conteggio, non un giudizio sulla durata del lavoro."
         ]
       },
       {

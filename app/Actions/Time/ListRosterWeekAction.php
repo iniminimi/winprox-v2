@@ -3,8 +3,10 @@
 namespace App\Actions\Time;
 
 use App\Data\Time\RosterWeekSnapshot;
+use App\Data\Time\WorkerWeekHours;
 use App\Enums\RosterAttendanceStatus;
 use App\Enums\ShiftTypeColor;
+use App\Enums\ShiftTypeKind;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\PlannedShift;
@@ -13,6 +15,7 @@ use App\Models\Unit;
 use App\Models\User;
 use App\Models\Worker;
 use App\Support\Time\TimeModuleAccess;
+use App\Support\Time\WorkDurationFormatter;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
@@ -23,6 +26,7 @@ class ListRosterWeekAction
         private ListShiftTypesAction $listShiftTypes,
         private CompareRosterAttendanceAction $compareAttendance,
         private ListWorkerUnavailableDatesAction $listUnavailableDates,
+        private SummarizeWorkerWeekHoursAction $summarizeWeekHours,
     ) {}
 
     /**
@@ -231,19 +235,37 @@ class ListRosterWeekAction
             ->values()
             ->all();
 
-        $workerPayload = $workers->map(fn (Worker $worker) => [
-            'id' => $worker->id,
-            'name' => $worker->displayName(),
-            'team_id' => $worker->internal_team_id,
-            'team_name' => $worker->team?->localizedName(),
-            'location_ids' => $worker->clocksAllLocations()
-                ? []
-                : $worker->locations->pluck('id')->map(fn ($id) => (int) $id)->values()->all(),
-            'clocks_all_locations' => $worker->clocksAllLocations(),
-            'default_unit_id' => $worker->default_unit_id !== null ? (int) $worker->default_unit_id : null,
-            'group_code' => $worker->defaultUnit?->roster_code,
-            'group_name' => $worker->defaultUnit?->name,
-        ])->values()->all();
+        $weekHours = [];
+        $contractVisible = false;
+        if ($period === 'week' && $workerIds !== []) {
+            $contractVisible = $this->contractNormVisible($actor, $tenantId);
+            $weekHours = $this->summarizeWeekHours->handle($tenantId, $workerIds, $weekStartDate);
+        }
+
+        $workerPayload = $workers->map(function (Worker $worker) use ($weekHours, $contractVisible, $period) {
+            $payload = [
+                'id' => $worker->id,
+                'name' => $worker->displayName(),
+                'team_id' => $worker->internal_team_id,
+                'team_name' => $worker->team?->localizedName(),
+                'location_ids' => $worker->clocksAllLocations()
+                    ? []
+                    : $worker->locations->pluck('id')->map(fn ($id) => (int) $id)->values()->all(),
+                'clocks_all_locations' => $worker->clocksAllLocations(),
+                'default_unit_id' => $worker->default_unit_id !== null ? (int) $worker->default_unit_id : null,
+                'group_code' => $worker->defaultUnit?->roster_code,
+                'group_name' => $worker->defaultUnit?->name,
+            ];
+
+            if ($period === 'week' && isset($weekHours[(int) $worker->id])) {
+                $payload['week_hours'] = $this->weekHoursPayload(
+                    $weekHours[(int) $worker->id],
+                    $contractVisible,
+                );
+            }
+
+            return $payload;
+        })->values()->all();
 
         $rows = $groupMode
             ? $this->buildGroupedRows($workers, $units, $includeUngrouped, $groupUnitIds)
@@ -280,6 +302,118 @@ class ListRosterWeekAction
             rows: $rows,
             groupMode: $groupMode,
         );
+    }
+
+    private function contractNormVisible(?User $actor, int $tenantId): bool
+    {
+        return $actor !== null
+            && (int) $actor->tenant_id === $tenantId
+            && ($actor->isAdmin() || $actor->isEmployee());
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function weekHoursPayload(WorkerWeekHours $hours, bool $contractVisible): array
+    {
+        $payload = [
+            'planned_minutes' => $hours->plannedMinutes,
+            'worked_minutes' => $hours->workedMinutes,
+            'registration_incomplete' => $hours->registrationIncomplete,
+            'incomplete_blocks' => $hours->incompleteBlocks,
+            'absences' => $hours->absences,
+            'lines' => $this->weekHoursLines($hours, $contractVisible),
+        ];
+
+        if ($contractVisible) {
+            $payload['contract_minutes'] = $hours->contractMinutes;
+            $payload['difference_minutes'] = $hours->differenceMinutes();
+        }
+
+        return $payload;
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function weekHoursLines(WorkerWeekHours $hours, bool $contractVisible): array
+    {
+        $lines = [];
+
+        if ($contractVisible) {
+            $lines[] = __('time.schedule.week_hours.norm', [
+                'value' => $hours->contractMinutes === null
+                    ? __('time.schedule.week_hours.missing')
+                    : $this->formatMinutes($hours->contractMinutes),
+            ]);
+        }
+
+        $lines[] = __('time.schedule.week_hours.planned', [
+            'value' => $this->formatMinutes($hours->plannedMinutes),
+        ]);
+
+        if ($contractVisible && $hours->differenceMinutes() !== null) {
+            $lines[] = __('time.schedule.week_hours.difference', [
+                'value' => $this->formatSignedMinutes($hours->differenceMinutes()),
+            ]);
+        }
+
+        $lines[] = __('time.schedule.week_hours.worked', [
+            'value' => $this->formatMinutes($hours->workedMinutes),
+        ]);
+
+        foreach ([ShiftTypeKind::Leave, ShiftTypeKind::Recup, ShiftTypeKind::Sick] as $kind) {
+            $entry = $hours->absences[$kind->value] ?? null;
+            if ($entry === null) {
+                continue;
+            }
+            $label = __('time.schedule.types.kinds.'.$kind->value);
+            if (($entry['days'] ?? 0) > 0) {
+                $count = (int) $entry['days'];
+                $lines[] = trans_choice('time.schedule.week_hours.absence_days', $count, [
+                    'kind' => $label,
+                    'count' => $count,
+                ]);
+            }
+            if (($entry['minutes'] ?? 0) > 0) {
+                $lines[] = __('time.schedule.week_hours.absence_duration', [
+                    'kind' => $label,
+                    'value' => $this->formatMinutes((int) $entry['minutes']),
+                ]);
+            }
+        }
+
+        if ($hours->incompleteBlocks > 0) {
+            $lines[] = trans_choice('time.schedule.week_hours.incomplete_blocks', $hours->incompleteBlocks, [
+                'count' => $hours->incompleteBlocks,
+            ]);
+        }
+
+        if ($hours->registrationIncomplete) {
+            $lines[] = __('time.schedule.week_hours.registration_incomplete');
+        }
+
+        return $lines;
+    }
+
+    private function formatMinutes(int $minutes): string
+    {
+        if ($minutes === 0) {
+            return '0';
+        }
+
+        return WorkDurationFormatter::format($minutes);
+    }
+
+    private function formatSignedMinutes(int $minutes): string
+    {
+        if ($minutes === 0) {
+            return '0';
+        }
+
+        $sign = $minutes > 0 ? '+' : '−';
+
+        return $sign.$this->formatMinutes(abs($minutes));
     }
 
     /**

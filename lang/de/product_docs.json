@@ -195,7 +195,8 @@
           "Wochen- oder Monatsansicht; Wochenenden können Sie ausblenden.",
           "Clock Point zeigt Mein Dienstplan (nur eigene veröffentlichte Schichten).",
           "Rotes Dreieck, wenn Sie nicht oder zu spät stempeln.",
-          "Die Verwaltung sieht geplant versus gestempelt (15-Minuten-Spielraum)."
+          "Die Verwaltung sieht geplant versus gestempelt (15-Minuten-Spielraum).",
+          "Die Wochenansicht zeigt je Ausführendem die vertragliche Wochennorm, geplante Stunden, die Differenz, gearbeitete Stunden und erfasste Abwesenheit. Das ist eine Zählung, kein Urteil über die Arbeitszeit."
         ]
       },
       {

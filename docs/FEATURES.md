@@ -928,6 +928,19 @@ uit = alleen maandag–vrijdag. Bij uitgeschakelde weekends staat tussen vrijdag
 volgende maandag een **zware verticale streep** (zichtbaar in de maandgrid). Standaard
 staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
 
+**Weekoverzicht** (`SummarizeWorkerWeekHoursAction`, alleen weekweergave, onder de naam):
+contractuele weeknorm (`workers.weekly_contract_minutes`, nullable, max 10080), geplande
+werkuren (concept én gepubliceerd, maandag–zondag ook als za/zo verborgen zijn), verschil
+tegenover de norm, gesloten geklokte uren (`WorkShift::netWorkMinutes()`, inklok in
+`[maandag 00:00, volgende maandag 00:00)` lokale tijd) en afwezigheid uit `PlannedShift`
+(`leave` / `recup` / `sick`). Hele dag = beide tijden leeg (1 dag per datum en type).
+Beide tijden gezet = opgeslagen duur, niet bij gepland. Precies één tijd, of een ongeldige
+duur, telt in `incomplete_blocks` en levert geen minuten. Een hele dag naast een getimede
+of halfgevulde rij van hetzelfde type op dezelfde datum blijft 1 dag. Een open dienst
+(ook met inklok vóór deze week) zet “registratie onvolledig” zonder minuten te verzinnen.
+De norm is de actuele kolom, ook voor oudere weken. Admin en medewerker zien norm en
+verschil; een superuser niet. Een afwijking blokkeert opslaan of publiceren niet.
+
 - **Overlap:** halfopen interval `[start, eind)` — `07:00–11:00` en `11:00–15:00` is geldig.
   Zelfde worker, echte overlap → harde fout. Nachtshift (`eind <= start`) verboden in golf 1.
   **Afwezigheidsblokken doen niet mee** aan overlap — een omgezet ziek-blok mag naast de resterende

@@ -728,6 +728,17 @@
         "legend_button": "Legend",
         "legend_title": "Roster legend",
         "column_name": "Name",
+        "week_hours": {
+            "norm": "Norm :value",
+            "missing": "—",
+            "planned": "Planned :value",
+            "difference": "Difference :value",
+            "worked": "Worked :value",
+            "absence_days": "{1} :kind · :count day|[2,*] :kind · :count days",
+            "absence_duration": ":kind · :value",
+            "incomplete_blocks": "{1} :count block incomplete|[2,*] :count blocks incomplete",
+            "registration_incomplete": "Time record incomplete"
+        },
         "groups_filter": "Groups",
         "group_ungrouped": "Ungrouped",
         "unsaved": {

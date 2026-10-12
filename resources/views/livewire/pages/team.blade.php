@@ -513,6 +513,23 @@
                     @endif
                     @if ($hasTimeModule && ! $isCheckmate)
                         <div class="wp-modal-section">
+                            <x-wp-tooltip :text="__('team.workers.contract_week_hint')" wrap>
+                                <h3 class="wp-label">{{ __('team.workers.contract_week') }}</h3>
+                            </x-wp-tooltip>
+                            <div class="wp-cluster wp-cluster--tight">
+                                <div class="wp-field">
+                                    <label class="wp-label" for="workerContractHours">{{ __('team.workers.contract_week_hours') }}</label>
+                                    <input id="workerContractHours" class="wp-input" type="number" min="0" max="168" inputmode="numeric" wire:model="workerContractHours">
+                                </div>
+                                <div class="wp-field">
+                                    <label class="wp-label" for="workerContractMinutes">{{ __('team.workers.contract_week_minutes') }}</label>
+                                    <input id="workerContractMinutes" class="wp-input" type="number" min="0" max="59" inputmode="numeric" wire:model="workerContractMinutes">
+                                </div>
+                            </div>
+                            @error('workerContractHours') <p class="wp-error">{{ $message }}</p> @enderror
+                            @error('workerContractMinutes') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                        <div class="wp-modal-section">
                             <x-wp-tooltip :text="__('time.schedule.unavailable.section_hint')" wrap>
                                 <h3 class="wp-label">{{ __('time.schedule.unavailable.section_title') }}</h3>
                             </x-wp-tooltip>

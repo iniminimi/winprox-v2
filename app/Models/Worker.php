@@ -32,6 +32,7 @@ class Worker extends Model
         'created_by_worker_id',
         'email',
         'phone',
+        'weekly_contract_minutes',
         'ssin',
         'photo_path',
         'clock_pin_hash',
@@ -48,6 +49,7 @@ class Worker extends Model
         'is_active' => 'boolean',
         'is_teamleader' => 'boolean',
         'is_external' => 'boolean',
+        'weekly_contract_minutes' => 'integer',
         'ssin' => 'encrypted',
     ];
 

@@ -178,6 +178,10 @@
         "device_bound": "Téléphone lié",
         "clear_clock_device": "Autoriser un nouvel appareil",
         "clear_clock_pin": "Réinitialiser le PIN",
+        "contract_week": "Norme hebdomadaire contractuelle",
+        "contract_week_hint": "Référence pour l’aperçu de la semaine dans le planning. WinProx ne contrôle pas ici la durée du travail.",
+        "contract_week_hours": "Heures",
+        "contract_week_minutes": "Minutes",
         "default_unit": "Groupe d’appartenance (planning)",
         "default_unit_none": "Sans groupe",
         "default_unit_hint": "Facultatif. Où le voir ? Sur Time → Planning, après un filtre de lieu : les intervenants sont listés sous des groupes (ex. G1). Ces groupes se créent sur une unité (Lieux → modifier l’unité → code planning). Ici vous choisissez le groupe de cette personne. Laissez vide si vous n’avez pas besoin de regroupement. Cela ne planifie pas les services ; la place dans une cellule (D1/G1) se remplit à part.",
@@ -230,6 +234,7 @@
         "worker_photo_max": "La photo peut faire au maximum 2 Mo.",
         "worker_ssin_invalid": "Indiquez un NISS valide de 11 chiffres ou laissez vide.",
         "worker_default_unit_invalid": "Choisissez un groupe d’appartenance valide avec code planning, ou laissez vide.",
+        "worker_contract_minutes_max": "La norme hebdomadaire est de 168 heures au plus.",
         "worker_default_unit_location": "Le groupe d’appartenance doit être sur un lieu assigné."
     },
     "workers_index": {

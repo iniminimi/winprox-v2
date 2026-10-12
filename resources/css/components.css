@@ -6754,6 +6754,22 @@ a.wp-kpi.wp-kpi--attention {
     white-space: nowrap;
 }
 
+.wp-roster-sheet:not(.wp-roster-sheet--month) .jss_worksheet td.wp-roster-cell--week-hours {
+    white-space: pre-line;
+    text-overflow: clip;
+    vertical-align: top;
+    line-height: 1.25;
+    font-size: 0.75rem;
+    font-weight: 400;
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
+}
+
+.wp-roster-sheet:not(.wp-roster-sheet--month) .jss_worksheet td.wp-roster-cell--week-hours::first-line {
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
 .wp-roster-sheet .jss_worksheet > thead > tr > td:nth-child(2) {
     color: var(--wp-text);
     font-weight: 700;

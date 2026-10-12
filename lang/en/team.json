@@ -178,6 +178,10 @@
         "device_bound": "Phone linked",
         "clear_clock_device": "Allow new device",
         "clear_clock_pin": "Reset PIN",
+        "contract_week": "Contractual weekly hours",
+        "contract_week_hint": "Reference for the week overview on the roster. WinProx does not check working time here.",
+        "contract_week_hours": "Hours",
+        "contract_week_minutes": "Minutes",
         "default_unit": "Home group (schedule)",
         "default_unit_none": "No home group",
         "default_unit_hint": "Optional. Where do you see it? On Time → Schedule, after you filter by location: workers are listed under groups (e.g. G1). You create those groups on a unit (Locations → edit unit → roster code). Here you choose which group this person belongs to. Leave empty if you don’t need grouping. This does not plan shifts; the place in a cell (D1/G1) is filled in separately.",
@@ -230,6 +234,7 @@
         "worker_photo_max": "The photo may be at most 2 MB.",
         "worker_ssin_invalid": "Enter a valid 11-digit NISS or leave blank.",
         "worker_default_unit_invalid": "Choose a valid home group with a roster code, or leave empty.",
+        "worker_contract_minutes_max": "The weekly norm is at most 168 hours.",
         "worker_default_unit_location": "The home group must be on an assigned location."
     },
     "workers_index": {

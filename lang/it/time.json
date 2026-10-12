@@ -728,6 +728,17 @@
         "legend_button": "Legenda",
         "legend_title": "Legenda turni",
         "column_name": "Nome",
+        "week_hours": {
+            "norm": "Norma :value",
+            "missing": "—",
+            "planned": "Pianificato :value",
+            "difference": "Scarto :value",
+            "worked": "Lavorato :value",
+            "absence_days": "{1} :kind · :count giorno|[2,*] :kind · :count giorni",
+            "absence_duration": ":kind · :value",
+            "incomplete_blocks": "{1} :count blocco incompleto|[2,*] :count blocchi incompleti",
+            "registration_incomplete": "Registrazione ore incompleta"
+        },
         "groups_filter": "Gruppi",
         "group_ungrouped": "Senza gruppo",
         "unsaved": {

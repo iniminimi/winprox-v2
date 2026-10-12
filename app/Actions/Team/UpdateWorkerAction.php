@@ -31,6 +31,10 @@ class UpdateWorkerAction
             'company_name' => $companyName,
         ];
 
+        if (array_key_exists('weekly_contract_minutes', $data)) {
+            $updates['weekly_contract_minutes'] = $data['weekly_contract_minutes'];
+        }
+
         if (array_key_exists('ssin', $data)) {
             $updates['ssin'] = self::normalizedSsin($data['ssin'] ?? null);
         }
@@ -74,6 +78,7 @@ class UpdateWorkerAction
                 'id' => $worker->id,
                 'internal_team_id' => $worker->internal_team_id,
                 'default_unit_id' => $worker->default_unit_id,
+                'weekly_contract_minutes' => $worker->weekly_contract_minutes,
             ],
         );
 

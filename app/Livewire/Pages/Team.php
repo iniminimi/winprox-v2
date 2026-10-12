@@ -127,6 +127,10 @@ class Team extends Component
     public string $workerCompanyName = '';
     public string $workerSsin = '';
 
+    public string|int|null $workerContractHours = null;
+
+    public string|int|null $workerContractMinutes = null;
+
     /** @var TemporaryUploadedFile|null */
     public $workerPhoto = null;
 
@@ -736,8 +740,8 @@ class Team extends Component
 
         $this->editingWorkerId = null;
         $this->resetWorkerPhotoState();
-        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerUnavailabilities']);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerUnavailabilities', 'workerPhoto', 'addingWorkerTeamId']);
+        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'workerContractHours', 'workerContractMinutes', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerUnavailabilities']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'workerContractHours', 'workerContractMinutes', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerUnavailabilities', 'workerPhoto', 'addingWorkerTeamId']);
         $this->addingWorkerTeamId = $teamId;
         $this->workerLocationsPanelOpen = false;
         $this->showWorkerModal = true;
@@ -837,6 +841,7 @@ class Team extends Component
             Gate::authorize('update', $team);
 
             $request = new UpdateWorkerRequest;
+            $this->normalizeContractInputs();
             $validated = $this->validate(
                 $this->workerModalValidationRules($request->rules(), $presenceComplianceEnabled),
                 $this->workerModalValidationMessages($presenceComplianceEnabled),
@@ -853,6 +858,9 @@ class Team extends Component
                 'location_ids' => $this->selectedWorkerLocationIds,
                 'default_unit_id' => $validated['workerDefaultUnitId'] ?? null,
             ];
+            if (! $this->appendContractMinutes($payload)) {
+                return;
+            }
             if ($presenceComplianceEnabled) {
                 $payload['ssin'] = preg_replace('/\D+/', '', (string) ($validated['workerSsin'] ?? '')) ?: null;
             }
@@ -882,6 +890,7 @@ class Team extends Component
             Gate::authorize('update', $team);
 
             $request = new StoreWorkerRequest;
+            $this->normalizeContractInputs();
             $validated = $this->validate(
                 $this->workerModalValidationRules($request->rules(), $presenceComplianceEnabled),
                 $this->workerModalValidationMessages($presenceComplianceEnabled),
@@ -898,6 +907,9 @@ class Team extends Component
                     'location_ids' => $this->selectedWorkerLocationIds,
                     'default_unit_id' => $validated['workerDefaultUnitId'] ?? null,
                 ];
+                if (! $this->appendContractMinutes($payload)) {
+                    return;
+                }
                 if ($presenceComplianceEnabled) {
                     $payload['ssin'] = preg_replace('/\D+/', '', (string) ($validated['workerSsin'] ?? '')) ?: null;
                 }
@@ -961,6 +973,11 @@ class Team extends Component
             $rules['workerSsin'] = $requestRules['ssin'];
         }
 
+        if ($this->workerContractFieldEnabled()) {
+            $rules['workerContractHours'] = ['nullable', 'integer', 'min:0', 'max:168'];
+            $rules['workerContractMinutes'] = ['nullable', 'integer', 'min:0', 'max:59'];
+        }
+
         return $rules;
     }
 
@@ -984,6 +1001,15 @@ class Team extends Component
 
         if ($presenceComplianceEnabled) {
             $messages['workerSsin.regex'] = __('team.errors.worker_ssin_invalid');
+        }
+
+        if ($this->workerContractFieldEnabled()) {
+            $messages['workerContractHours.integer'] = __('team.errors.worker_contract_minutes_max');
+            $messages['workerContractHours.min'] = __('team.errors.worker_contract_minutes_max');
+            $messages['workerContractHours.max'] = __('team.errors.worker_contract_minutes_max');
+            $messages['workerContractMinutes.integer'] = __('team.errors.worker_contract_minutes_max');
+            $messages['workerContractMinutes.min'] = __('team.errors.worker_contract_minutes_max');
+            $messages['workerContractMinutes.max'] = __('team.errors.worker_contract_minutes_max');
         }
 
         return $messages;
@@ -1030,6 +1056,55 @@ class Team extends Component
         return $tenant instanceof Tenant && $tenant->hasTimeModule() && ! $tenant->checkmateMode();
     }
 
+    private function workerContractFieldEnabled(): bool
+    {
+        return $this->workerUnavailabilityFieldEnabled();
+    }
+
+    private function normalizeContractInputs(): void
+    {
+        if ($this->workerContractHours === '') {
+            $this->workerContractHours = null;
+        }
+        if ($this->workerContractMinutes === '') {
+            $this->workerContractMinutes = null;
+        }
+    }
+
+    /**
+     * @param  array<string, mixed>  $payload
+     */
+    private function appendContractMinutes(array &$payload): bool
+    {
+        if (! $this->workerContractFieldEnabled()) {
+            return true;
+        }
+
+        $hours = $this->workerContractHours;
+        $minutes = $this->workerContractMinutes;
+        if ($hours === null && $minutes === null) {
+            $payload['weekly_contract_minutes'] = null;
+
+            return true;
+        }
+
+        $total = ((int) $hours * 60) + (int) $minutes;
+        $validator = validator(
+            ['weekly_contract_minutes' => $total],
+            ['weekly_contract_minutes' => UpdateWorkerRequest::weeklyContractMinuteRules()],
+            (new UpdateWorkerRequest)->messages(),
+        );
+        if ($validator->fails()) {
+            $this->addError('workerContractHours', __('team.errors.worker_contract_minutes_max'));
+
+            return false;
+        }
+
+        $payload['weekly_contract_minutes'] = $total;
+
+        return true;
+    }
+
     public function clearWorkerPhotoSelection(): void
     {
         $this->workerPhoto = null;
@@ -1065,6 +1140,13 @@ class Team extends Component
         $this->workerSsin = $worker->ssin ?? '';
         $this->selectedWorkerLocationIds = $worker->locations()->pluck('locations.id')->map(fn ($id) => (int) $id)->all();
         $this->workerDefaultUnitId = $worker->default_unit_id !== null ? (int) $worker->default_unit_id : null;
+        if ($worker->weekly_contract_minutes === null) {
+            $this->workerContractHours = null;
+            $this->workerContractMinutes = null;
+        } else {
+            $this->workerContractHours = intdiv((int) $worker->weekly_contract_minutes, 60);
+            $this->workerContractMinutes = ((int) $worker->weekly_contract_minutes) % 60;
+        }
         $this->workerUnavailabilities = $worker->unavailabilities()
             ->pluck('weekday')
             ->map(fn ($day) => (int) $day)
@@ -1096,12 +1178,14 @@ class Team extends Component
             'selectedWorkerLocationIds',
             'workerLocationsPanelOpen',
             'workerDefaultUnitId',
+            'workerContractHours',
+            'workerContractMinutes',
             'workerUnavailabilities',
             'workerPhoto',
             'removeWorkerPhoto',
             'existingWorkerPhotoUrl',
         ]);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerUnavailabilities', 'workerPhoto']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'workerContractHours', 'workerContractMinutes', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerUnavailabilities', 'workerPhoto']);
     }
 
     /**

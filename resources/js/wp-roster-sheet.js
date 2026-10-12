@@ -503,6 +503,8 @@ function applyCellClasses(worksheet, payload) {
             }
             if (colIndex === 0) {
                 cell.classList.toggle('wp-roster-row--section', isSection);
+                const hourLines = payload.period === 'week' ? (worker?.week_hours?.lines ?? []) : [];
+                cell.classList.toggle('wp-roster-cell--week-hours', hourLines.length > 0);
 
                 return;
             }
@@ -730,7 +732,10 @@ function buildData(payload) {
             return [row.label || '', ...payload.dates.map(() => '')];
         }
         const worker = byId[row.worker_id];
-        const line = [worker?.name ?? ''];
+        const hourLines = payload.period === 'week' ? (worker?.week_hours?.lines ?? []) : [];
+        const line = [hourLines.length > 0
+            ? `${worker?.name ?? ''}\n${hourLines.join('\n')}`
+            : (worker?.name ?? '')];
         payload.dates.forEach((date) => {
             const key = `${row.worker_id}:${date}`;
             const cell = payload.cells?.[key];
@@ -759,6 +764,7 @@ function rowTitleOptions(payload) {
 
 function applySectionRowStyles(worksheet, payload, { lockSections = false } = {}) {
     const dayCount = payload.dates?.length ?? 0;
+    const workers = workerById(payload);
     let personNo = 0;
     gridRowDefs(payload).forEach((row, rowIndex) => {
         const isSection = row.type === 'section';
@@ -769,6 +775,10 @@ function applySectionRowStyles(worksheet, payload, { lockSections = false } = {}
             ?? null;
         if (tr) {
             tr.classList.toggle('wp-roster-row--section', isSection);
+            const hourLines = payload.period === 'week' && !isSection
+                ? (workers[row.worker_id]?.week_hours?.lines?.length ?? 0)
+                : 0;
+            tr.style.height = hourLines > 0 ? `${38 + (hourLines * 16)}px` : '';
             const indexTd = tr.children[0];
             if (indexTd) {
                 indexTd.classList.toggle('wp-roster-row--section', isSection);
@@ -980,7 +990,7 @@ export function bind(root, wire) {
             {
                 type: 'text',
                 title: payload.name_column || 'Name',
-                width: isMonth ? 168 : 180,
+                width: isMonth ? 168 : 220,
                 readOnly: true,
                 align: 'left',
             },
@@ -1000,6 +1010,7 @@ export function bind(root, wire) {
         const rowPx = isMonth ? 34 : 38;
         const headerPx = isMonth && payload.month_label ? 72 : 44;
         // Multi-blok-rijen groeien: elke blok krijgt een eigen regel in de cel.
+        const workersById = workerById(payload);
         const extraRowPx = rowDefs.reduce((extra, row) => {
             if (row.type === 'section' || !row.worker_id) {
                 return extra;
@@ -1007,8 +1018,11 @@ export function bind(root, wire) {
             const maxBlocks = Math.max(1, ...payload.dates.map(
                 (d) => payload.cells?.[`${row.worker_id}:${d}`]?.shifts?.length ?? 1,
             ));
+            const hourLines = isMonth ? 0 : (workersById[row.worker_id]?.week_hours?.lines?.length ?? 0);
 
-            return extra + Math.min(Math.max(maxBlocks - 1, 0), 2) * (isMonth ? 10 : 14);
+            return extra
+                + Math.min(Math.max(maxBlocks - 1, 0), 2) * (isMonth ? 10 : 14)
+                + (hourLines * 16);
         }, 0);
         const tableHeight = `${headerPx + (rowCount * rowPx) + extraRowPx + 12}px`;
         const worksheetConfig = {

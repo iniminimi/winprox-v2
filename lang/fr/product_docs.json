@@ -195,7 +195,8 @@
           "Vue semaine ou mois ; les week-ends peuvent être masqués.",
           "Clock Point montre Mon planning (uniquement ses services publiés).",
           "Triangle rouge si vous n’avez pas pointé ou si vous êtes en retard.",
-          "La gestion voit prévu versus pointé (marge de 15 minutes)."
+          "La gestion voit prévu versus pointé (marge de 15 minutes).",
+          "La vue semaine montre par intervenant la norme hebdomadaire contractuelle, les heures planifiées, l’écart, les heures travaillées et les absences enregistrées. C’est un décompte, pas un jugement sur la durée du travail."
         ]
       },
       {

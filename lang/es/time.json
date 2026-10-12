@@ -728,6 +728,17 @@
         "legend_button": "Leyenda",
         "legend_title": "Leyenda del horario",
         "column_name": "Nombre",
+        "week_hours": {
+            "norm": "Norma :value",
+            "missing": "—",
+            "planned": "Planificado :value",
+            "difference": "Diferencia :value",
+            "worked": "Trabajado :value",
+            "absence_days": "{1} :kind · :count día|[2,*] :kind · :count días",
+            "absence_duration": ":kind · :value",
+            "incomplete_blocks": "{1} :count bloque incompleto|[2,*] :count bloques incompletos",
+            "registration_incomplete": "Registro de tiempo incompleto"
+        },
         "groups_filter": "Grupos",
         "group_ungrouped": "Sin grupo",
         "unsaved": {

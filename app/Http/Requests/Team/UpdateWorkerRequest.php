@@ -6,9 +6,19 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateWorkerRequest extends FormRequest
 {
+    public const WEEKLY_CONTRACT_MINUTES_MAX = 10080;
+
     public function authorize(): bool
     {
         return true;
+    }
+
+    /**
+     * @return list<string>
+     */
+    public static function weeklyContractMinuteRules(): array
+    {
+        return ['nullable', 'integer', 'min:0', 'max:'.self::WEEKLY_CONTRACT_MINUTES_MAX];
     }
 
     /**
@@ -26,6 +36,7 @@ class UpdateWorkerRequest extends FormRequest
             'ssin' => ['nullable', 'regex:/^\d{11}$/'],
             'photo' => ['nullable', 'image', 'mimes:jpeg,jpg,png,webp', 'max:2048'],
             'default_unit_id' => ['nullable', 'integer'],
+            'weekly_contract_minutes' => self::weeklyContractMinuteRules(),
         ];
     }
 
@@ -46,6 +57,9 @@ class UpdateWorkerRequest extends FormRequest
             'photo.mimes' => __('team.errors.worker_photo_invalid'),
             'photo.max' => __('team.errors.worker_photo_max'),
             'default_unit_id.integer' => __('team.errors.worker_default_unit_invalid'),
+            'weekly_contract_minutes.max' => __('team.errors.worker_contract_minutes_max'),
+            'weekly_contract_minutes.min' => __('team.errors.worker_contract_minutes_max'),
+            'weekly_contract_minutes.integer' => __('team.errors.worker_contract_minutes_max'),
         ];
     }
 }

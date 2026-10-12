@@ -728,6 +728,17 @@
         "legend_button": "Legende",
         "legend_title": "Legende uurrooster",
         "column_name": "Naam",
+        "week_hours": {
+            "norm": "Norm :value",
+            "missing": "—",
+            "planned": "Gepland :value",
+            "difference": "Verschil :value",
+            "worked": "Gewerkt :value",
+            "absence_days": "{1} :kind · :count dag|[2,*] :kind · :count dagen",
+            "absence_duration": ":kind · :value",
+            "incomplete_blocks": "{1} :count blok onvolledig|[2,*] :count blokken onvolledig",
+            "registration_incomplete": "Registratie onvolledig"
+        },
         "groups_filter": "Groepen",
         "group_ungrouped": "Zonder groep",
         "unsaved": {

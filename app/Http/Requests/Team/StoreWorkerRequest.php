@@ -26,6 +26,7 @@ class StoreWorkerRequest extends FormRequest
             'ssin' => ['nullable', 'regex:/^\d{11}$/'],
             'photo' => ['nullable', 'image', 'mimes:jpeg,jpg,png,webp', 'max:2048'],
             'default_unit_id' => ['nullable', 'integer'],
+            'weekly_contract_minutes' => UpdateWorkerRequest::weeklyContractMinuteRules(),
         ];
     }
 
@@ -46,6 +47,9 @@ class StoreWorkerRequest extends FormRequest
             'photo.mimes' => __('team.errors.worker_photo_invalid'),
             'photo.max' => __('team.errors.worker_photo_max'),
             'default_unit_id.integer' => __('team.errors.worker_default_unit_invalid'),
+            'weekly_contract_minutes.max' => __('team.errors.worker_contract_minutes_max'),
+            'weekly_contract_minutes.min' => __('team.errors.worker_contract_minutes_max'),
+            'weekly_contract_minutes.integer' => __('team.errors.worker_contract_minutes_max'),
         ];
     }
 }

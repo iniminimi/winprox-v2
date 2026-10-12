@@ -178,6 +178,10 @@
         "device_bound": "Gsm gekoppeld",
         "clear_clock_device": "Nieuw toestel toestaan",
         "clear_clock_pin": "Pincode resetten",
+        "contract_week": "Contractuele weeknorm",
+        "contract_week_hint": "Referentie voor het weekoverzicht in het uurrooster. WinProx controleert hier geen arbeidsduur.",
+        "contract_week_hours": "Uren",
+        "contract_week_minutes": "Minuten",
         "default_unit": "Thuisgroep (uurrooster)",
         "default_unit_none": "Geen thuisgroep",
         "default_unit_hint": "Optioneel. Waar zie je dit? Op Time → Uurrooster, nadat je een locatie filtert: uitvoerders staan dan onder groepen (bijv. G1). Die groepen maak je aan op een unit (Locaties → unit bewerken → roostercode). Hier kies je onder welke groep deze persoon hoort. Laat leeg als je geen groepering nodig hebt. Dit plant geen diensten; de plek in een cel (D1/G1) vul je apart in.",
@@ -230,6 +234,7 @@
         "worker_photo_max": "De foto mag maximaal 2 MB groot zijn.",
         "worker_ssin_invalid": "Geef een geldig NISS van 11 cijfers of laat leeg.",
         "worker_default_unit_invalid": "Kies een geldige thuisgroep met roostercode, of laat leeg.",
+        "worker_contract_minutes_max": "De weeknorm is hoogstens 168 uur.",
         "worker_default_unit_location": "De thuisgroep moet op een toegewezen locatie liggen."
     },
     "workers_index": {
