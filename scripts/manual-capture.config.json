@@ -55,6 +55,7 @@
             "selector": "[data-manual-capture=\"locations-gps-history\"]",
             "viewport": { "width": 1280, "height": 800 },
             "auth": true,
+            "optional": true,
             "prepareClick": "[data-manual-capture-trigger=\"unit-gps-open\"]"
         },
         {

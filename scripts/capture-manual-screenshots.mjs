@@ -212,9 +212,13 @@ try {
                     await trigger.click();
                     await page.waitForLoadState('networkidle');
                 } catch {
+                    const hint = target.id.includes('teamleader')
+                        ? 'Controleer of de capture-worker teamleader is (prepare-manual-capture) en of de teamleader-tegel zichtbaar is.'
+                        : target.id.includes('gps')
+                            ? 'Op deze locatie ontbreekt een unit met GPS-pin (unit-gps-open).'
+                            : 'Zie docs/MANUAL_SCREENSHOTS.md.';
                     console.warn(
-                        `Skip ${target.id}: prepareClick not visible (${target.prepareClick}). `
-                        + 'Controleer of de teamleader is ingelogd en of worker-beheer op het Clock Point-portaal beschikbaar is.',
+                        `Skip ${target.id}: prepareClick not visible (${target.prepareClick}). ${hint}`,
                     );
                     skipped++;
                     continue;
@@ -248,11 +252,14 @@ try {
                 const softFail = target.optional === true || target.checkmate === true;
 
                 if (softFail) {
+                    let hint = 'Zie docs/MANUAL_SCREENSHOTS.md — ESG/IoT/Time vereisen modules + trial/abonnement op de capture-tenant.';
+                    if (currentPath.includes('/email/verify')) {
+                        hint = 'Account niet e-mailgeverifieerd — prepare-manual-capture markeert MANUAL_CAPTURE_*_EMAIL nu als verified.';
+                    } else if (target.checkmate === true) {
+                        hint = 'Controleer MANUAL_CAPTURE_CHECKMATE_* + prepare-manual-capture (trial/checkmate_mode/email verified).';
+                    }
                     console.warn(
-                        `Skip ${target.id}: selector not visible (${target.selector}) op ${currentUrl}. `
-                        + (target.checkmate === true
-                            ? 'Controleer MANUAL_CAPTURE_CHECKMATE_* + prepare-manual-capture (trial/checkmate_mode).'
-                            : 'Zie docs/MANUAL_SCREENSHOTS.md — ESG/IoT/Time vereisen modules + trial/abonnement op de capture-tenant.'),
+                        `Skip ${target.id}: selector not visible (${target.selector}) op ${currentUrl}. ${hint}`,
                     );
                     skipped++;
                     continue;

@@ -18,6 +18,21 @@ it('zet has_esg_module aan voor de capture-tenant', function () {
         ->and($tenant->fresh()->has_esg_module)->toBeTrue();
 });
 
+it('markeert de capture-user als e-mailgeverifieerd', function () {
+    $tenant = Tenant::factory()->create(['has_esg_module' => true, 'has_iot_module' => true]);
+    $user = User::factory()->admin()->for($tenant)->create([
+        'email' => 'capture@example.com',
+        'email_verified_at' => null,
+    ]);
+    config(['manual_capture.email' => 'capture@example.com']);
+
+    expect($user->fresh()->hasVerifiedEmail())->toBeFalse();
+
+    app(PrepareManualCaptureTenantAction::class)->handle();
+
+    expect($user->fresh()->hasVerifiedEmail())->toBeTrue();
+});
+
 it('zet has_iot_module aan voor de capture-tenant', function () {
     $tenant = Tenant::factory()->create(['has_iot_module' => false]);
     User::factory()->admin()->for($tenant)->create(['email' => 'capture@example.com']);

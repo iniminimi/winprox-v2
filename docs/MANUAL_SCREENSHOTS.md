@@ -76,8 +76,10 @@ php artisan config:clear
 .\scripts\capture-manual-local.ps1
 ```
 
-Stap **2b** (`php artisan winprox:prepare-manual-capture`) voor de tenant van `MANUAL_CAPTURE_EMAIL`:
+Stap **2b** (`php artisan winprox:prepare-manual-capture`) voor de tenant van `MANUAL_CAPTURE_EMAIL`
+(én checkmate-tenant als `MANUAL_CAPTURE_CHECKMATE_EMAIL` gezet is):
 
+- markeert de capture-user(s) als **e-mailgeverifieerd** (anders redirect `/email/verify`)
 - vernieuwt de **trial** als die verlopen is (anders redirect naar `/subscription` → selector-timeout)
 - zet `has_esg_module`, `has_time_module` en `has_iot_module` aan
 - maakt zonodig een Clock Point aan

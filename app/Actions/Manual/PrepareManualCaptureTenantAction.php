@@ -43,6 +43,11 @@ final class PrepareManualCaptureTenantAction
             throw new InvalidArgumentException('manual_capture_user_has_no_tenant');
         }
 
+        // MustVerifyEmail: na login anders redirect naar /email/verify → geen shots.
+        if ($user->email_verified_at === null) {
+            $user->forceFill(['email_verified_at' => now()])->save();
+        }
+
         $updates = [];
 
         // Verlopen trial → redirect naar /subscription; capture-selectors verschijnen nooit.
