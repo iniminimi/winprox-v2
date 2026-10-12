@@ -89,17 +89,16 @@ final class PrepareManualCaptureTenantAction
             $user->id,
         );
 
-        $this->releaseCaptureWorkerClockDevice($tenant, $user, $checkmate);
+        $this->prepareCaptureWorker($tenant, $user, $checkmate);
 
         return $tenant->refresh();
     }
 
     /**
-     * De capture-browser is per run een "nieuw toestel"; Time koppelt max. één
-     * gsm per uitvoerder. Zonder vrijgave weigert elke verse browser-sessie de
-     * worker-sign-in (device niet gekoppeld), ook al klopt het icoon.
+     * Capture-worker: toestel vrijgeven, teamleader-flag, en (facility) een
+     * collega met geblokkeerd icoon voor de release-screenshot.
      */
-    private function releaseCaptureWorkerClockDevice(Tenant $tenant, User $user, bool $checkmate): void
+    private function prepareCaptureWorker(Tenant $tenant, User $user, bool $checkmate): void
     {
         $prefix = $checkmate ? 'checkmate_worker' : 'worker';
         $first = trim((string) config("manual_capture.{$prefix}_first_name"));
@@ -119,7 +118,62 @@ final class PrepareManualCaptureTenantAction
             return;
         }
 
+        // De capture-browser is per run een "nieuw toestel"; Time koppelt max.
+        // één gsm per uitvoerder. Zonder vrijgave weigert elke verse sessie.
         $this->clearClockDevice->handle($worker, (int) $tenant->id, (int) $user->id);
+
+        if (! $checkmate) {
+            $this->ensureFacilityTeamleaderCaptureState($worker);
+        }
+    }
+
+    /**
+     * Teamleader-shots: tile + release/workers-paneel vereisen is_teamleader;
+     * release-shot vereist een tweede worker met field_icon_locked_at.
+     */
+    private function ensureFacilityTeamleaderCaptureState(Worker $worker): void
+    {
+        $updates = [];
+        if (! $worker->is_teamleader) {
+            $updates['is_teamleader'] = true;
+        }
+        if (! $worker->is_active) {
+            $updates['is_active'] = true;
+        }
+        if ($updates !== []) {
+            $worker->forceFill($updates)->save();
+        }
+
+        $teamId = $worker->internal_team_id !== null ? (int) $worker->internal_team_id : null;
+        if ($teamId === null) {
+            return;
+        }
+
+        $blockedExists = Worker::query()
+            ->where('tenant_id', $worker->tenant_id)
+            ->where('internal_team_id', $teamId)
+            ->where('id', '!=', $worker->id)
+            ->whereNotNull('field_icon_locked_at')
+            ->where('is_active', true)
+            ->exists();
+
+        if ($blockedExists) {
+            return;
+        }
+
+        $icon = trim((string) config('manual_capture.worker_icon'));
+        $blockedIcon = ($icon !== '' && $icon !== 'heart') ? 'heart' : 'star';
+
+        Worker::query()->create([
+            'tenant_id' => $worker->tenant_id,
+            'internal_team_id' => $teamId,
+            'first_name' => 'Capture',
+            'last_name' => 'Blocked',
+            'field_icon_slug' => $blockedIcon,
+            'field_icon_locked_at' => now(),
+            'is_active' => true,
+            'is_teamleader' => false,
+        ]);
     }
 
     public function clockPointQrToken(Tenant $tenant): ?string

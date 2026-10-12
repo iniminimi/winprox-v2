@@ -294,7 +294,11 @@
             "viewport": { "width": 390, "height": 844 },
             "auth": false,
             "workerSignIn": true,
-            "prepareClick": "[data-manual-capture-trigger=\"teamleader-release\"]"
+            "optional": true,
+            "steps": [
+                { "click": "[data-manual-capture-trigger=\"portal-open-teamleader\"]", "waitFor": "[data-manual-capture-trigger=\"teamleader-release\"]" },
+                { "click": "[data-manual-capture-trigger=\"teamleader-release\"]", "waitFor": "[data-manual-capture=\"portal-teamleader-release\"]" }
+            ]
         },
         {
             "id": "portal-teamleader-workers",
@@ -303,7 +307,11 @@
             "viewport": { "width": 390, "height": 844 },
             "auth": false,
             "workerSignIn": true,
-            "prepareClick": "[data-manual-capture-trigger=\"teamleader-workers\"]"
+            "optional": true,
+            "steps": [
+                { "click": "[data-manual-capture-trigger=\"portal-open-teamleader\"]", "waitFor": "[data-manual-capture-trigger=\"teamleader-workers\"]" },
+                { "click": "[data-manual-capture-trigger=\"teamleader-workers\"]", "waitFor": "[data-manual-capture=\"portal-teamleader-workers\"]" }
+            ]
         },
         {
             "id": "portal-teamleader-tasks",

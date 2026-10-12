@@ -106,6 +106,40 @@ it('geeft het kloktoestel van de capture-worker vrij', function () {
         ->and(WorkerDevice::withoutGlobalScope('tenant')->where('worker_id', $worker->id)->count())->toBe(0);
 });
 
+it('zet de capture-worker op teamleader en maakt een geblokkeerde collega', function () {
+    $tenant = Tenant::factory()->create(['has_esg_module' => true, 'has_iot_module' => true]);
+    User::factory()->admin()->for($tenant)->create(['email' => 'capture@example.com']);
+    config([
+        'manual_capture.email' => 'capture@example.com',
+        'manual_capture.worker_first_name' => 'John',
+        'manual_capture.worker_last_name' => 'Workman',
+        'manual_capture.worker_icon' => 'star',
+    ]);
+
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'first_name' => 'John',
+        'last_name' => 'Workman',
+        'is_teamleader' => false,
+        'field_icon_slug' => 'star',
+    ]);
+
+    app(PrepareManualCaptureTenantAction::class)->handle();
+
+    expect($worker->fresh()->is_teamleader)->toBeTrue();
+
+    $blocked = Worker::query()
+        ->where('tenant_id', $tenant->id)
+        ->where('internal_team_id', $worker->internal_team_id)
+        ->where('first_name', 'Capture')
+        ->where('last_name', 'Blocked')
+        ->first();
+
+    expect($blocked)->not->toBeNull()
+        ->and($blocked->field_icon_locked_at)->not->toBeNull()
+        ->and($blocked->field_icon_slug)->toBe('heart');
+});
+
 it('weigert voorbereiden zonder capture-email', function () {
     config(['manual_capture.email' => null]);
 

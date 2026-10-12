@@ -43,23 +43,11 @@ MANUAL_CAPTURE_WORKER_ICON=star    # field_icon_slug van die worker
 
 - `MANUAL_CAPTURE_CLOCK_POINT_TOKEN` → Clock Point van het team van John Workman.
 - `MANUAL_CAPTURE_WORKER_ICON=star` (of het echte icoon van die worker).
-- **`portal-teamleader-release`:** het team moet een **tweede worker** hebben met
-  `field_icon_locked_at` gezet (geblokkeerd icoon). Anders wordt die ene target overgeslagen.
-
-  Eenmalig in tinker (pas team/worker-id aan):
-
-  ```php
-  $teamId = 2; // zelfde team als MANUAL_CAPTURE_CLOCK_POINT_TOKEN
-  $colleague = \App\Models\Worker::factory()->create([
-      'tenant_id' => 1,
-      'internal_team_id' => $teamId,
-      'first_name' => 'Capture',
-      'last_name' => 'Blocked',
-      'field_icon_slug' => 'heart',
-      'field_icon_locked_at' => now(),
-      'is_active' => true,
-  ]);
-  ```
+- Stap **2b** (`prepare-manual-capture`) zet de capture-worker op **`is_teamleader`**
+  en maakt zonodig een collega **Capture Blocked** met `field_icon_locked_at`
+  (nodig voor `portal-teamleader-release`). De release/workers-shots openen eerst
+  de teamleader-tegel (`portal-open-teamleader`); zonder teamleader-flag of
+  geblokkeerde collega worden die targets overgeslagen (geen harde crash).
 
 **Checkmate-shots (`checkmate-*` targets):**
 
@@ -67,6 +55,8 @@ MANUAL_CAPTURE_WORKER_ICON=star    # field_icon_slug van die worker
   + `MANUAL_CAPTURE_CHECKMATE_PASSWORD`. `winprox:prepare-manual-capture` bereidt die tenant mee
   voor (checkmate_mode, Time, GPS-bezoeken, Clock Point) en print `MANUAL_CAPTURE_CHECKMATE_CLOCK_POINT_TOKEN`.
   Zonder deze vars worden alle `checkmate: true` targets overgeslagen (waarschuwing, geen fout).
+  Met vars maar mislukte checkmate-pagina (trial/login/selector): die shot wordt **overslagen**
+  i.p.v. de hele multi-locale facility-run te crashen — fix credentials/tenant en herdraai.
 - **Portaal:** `MANUAL_CAPTURE_CHECKMATE_WORKER_FIRST_NAME/LAST_NAME/ICON` — een uitvoerder van de
   checkmate-tenant mét `field_icon_slug` (icoon-signin), bereikbaar via het checkmate Clock Point-token.
 - **`checkmate-portal-visit`:** mocked geolocation (`MANUAL_CAPTURE_GEO_LATITUDE/LONGITUDE`, default

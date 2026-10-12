@@ -241,16 +241,23 @@ try {
                     await runSteps(page, target.cleanup, { ignoreErrors: true });
                 }
 
-                if (target.optional === true) {
+                const currentUrl = page.url();
+                const currentPath = new URL(currentUrl).pathname;
+                // Checkmate-shots zijn add-on: een mislukte checkmate-tenant
+                // mag de hele multi-locale facility-run niet afbreken.
+                const softFail = target.optional === true || target.checkmate === true;
+
+                if (softFail) {
                     console.warn(
-                        `Skip ${target.id}: selector not visible (${target.selector}). `
-                        + 'Zie docs/MANUAL_SCREENSHOTS.md — ESG/IoT/Time vereisen modules + trial/abonnement op de capture-tenant.',
+                        `Skip ${target.id}: selector not visible (${target.selector}) op ${currentUrl}. `
+                        + (target.checkmate === true
+                            ? 'Controleer MANUAL_CAPTURE_CHECKMATE_* + prepare-manual-capture (trial/checkmate_mode).'
+                            : 'Zie docs/MANUAL_SCREENSHOTS.md — ESG/IoT/Time vereisen modules + trial/abonnement op de capture-tenant.'),
                     );
                     skipped++;
                     continue;
                 }
 
-                const currentPath = new URL(page.url()).pathname;
                 if (currentPath.includes('/subscription')) {
                     throw new Error(
                         `Capture ${target.id}: redirect naar /subscription (trial/abonnement verlopen). `
@@ -259,7 +266,10 @@ try {
                     );
                 }
 
-                throw error;
+                throw new Error(
+                    `Capture ${target.id}: selector not visible (${target.selector}) op ${currentUrl}. `
+                    + (error instanceof Error ? error.message : String(error)),
+                );
             }
 
             const localeDir = join(outputDir, locale);
