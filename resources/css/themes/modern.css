@@ -56,7 +56,7 @@
     --wp-sidebar-glass: rgba(15, 23, 42, 0.94);
 }
 
-[data-theme='modern'] body.wp-shell:not(.wp-public-body) {
+[data-theme='modern'] body.wp-shell:not(.wp-public-body):not(.wp-legal-doc) {
     background-color: var(--wp-bg);
     background-image: var(--wp-shell-gradient), var(--wp-shell-bg-image);
     background-size: cover, cover;

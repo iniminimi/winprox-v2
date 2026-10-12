@@ -1,10 +1,5 @@
 .wp-legal-doc {
-    background: linear-gradient(
-        to bottom,
-        var(--wp-surface) 0%,
-        var(--wp-accent-soft) 40%,
-        var(--wp-surface) 100%
-    );
+    background: var(--wp-surface);
 }
 
 .wp-legal-topbar {
