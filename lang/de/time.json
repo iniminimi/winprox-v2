@@ -729,14 +729,17 @@
         "legend_title": "Dienstplan-Legende",
         "column_name": "Name",
         "week_hours": {
-            "column": "Stunden",
-            "norm": "Norm :value",
-            "missing": "—",
-            "planned": "Geplant :value",
-            "difference": "Differenz :value",
-            "worked": "Gearbeitet :value",
-            "absence_days": "{1} :kind · :count Tag|[2,*] :kind · :count Tage",
-            "absence_duration": ":kind · :value",
+            "headers": {
+                "norm": "Norm",
+                "difference": "Differenz",
+                "planned": "Geplant",
+                "worked": "Gearbeitet",
+                "leave": "Urlaub",
+                "recup": "Ausgleich",
+                "sick": "Krank",
+                "attention": "Hinweis",
+                "attention_hint": "Unvollständige Blöcke oder eine offene Zeiterfassung"
+            },
             "incomplete_blocks": "{1} :count Block unvollständig|[2,*] :count Blöcke unvollständig",
             "registration_incomplete": "Zeiterfassung unvollständig"
         },

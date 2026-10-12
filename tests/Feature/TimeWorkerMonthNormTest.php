@@ -339,11 +339,12 @@ it('houdt norm en status uit de superuser-payload en laat de weekpayload met rus
         ->and(Gate::forUser($outsider)->allows('update', $worker))->toBeFalse();
 
     $list = app(ListRosterWeekAction::class);
-    $forAdmin = collect($list->handle((int) $tenant->id, '2026-02-01', (int) $team->id, $admin, 'month')->workers)
-        ->firstWhere('id', $worker->id);
-    $forSuper = collect($list->handle((int) $tenant->id, '2026-02-01', (int) $team->id, $super, 'month')->workers)
-        ->firstWhere('id', $worker->id);
+    $forAdminSnapshot = $list->handle((int) $tenant->id, '2026-02-01', (int) $team->id, $admin, 'month');
+    $forSuperSnapshot = $list->handle((int) $tenant->id, '2026-02-01', (int) $team->id, $super, 'month');
+    $forAdmin = collect($forAdminSnapshot->workers)->firstWhere('id', $worker->id);
+    $forSuper = collect($forSuperSnapshot->workers)->firstWhere('id', $worker->id);
     $minutes = monthNormExpected('2026-02-01', $pattern);
+    $superKeys = array_column($forSuperSnapshot->hoursColumns, 'key');
 
     expect($forAdmin['month_hours']['norm_status'])->toBe(MonthNormStatus::Available->value)
         ->and($forAdmin['month_hours']['contract_minutes'])->toBe($minutes)
@@ -354,6 +355,9 @@ it('houdt norm en status uit de superuser-payload en laat de weekpayload met rus
         ->and($forSuper['month_hours'])->not->toHaveKey('norm_status')
         ->and($forSuper['month_hours'])->not->toHaveKey('contract_minutes')
         ->and($forSuper['month_hours'])->not->toHaveKey('difference_minutes')
+        ->and($superKeys)->not->toContain('norm')
+        ->and($superKeys)->not->toContain('difference')
+        ->and($forSuper['month_hours']['figures'])->toHaveCount(count($superKeys))
         ->and(json_encode($forSuper['month_hours']))->not->toContain((string) $minutes);
 
     $week = collect($list->handle((int) $tenant->id, '2026-02-02', (int) $team->id, $admin)->workers)
@@ -379,19 +383,25 @@ it('toont bij een onbetrouwbare maandnorm alleen de feiten', function () {
     [$tenant, $admin, $team, $worker] = monthNormTenant();
     monthNormSync($worker, monthNormFiveDayPattern());
 
-    $row = collect(app(ListRosterWeekAction::class)->handle(
+    $snapshot = app(ListRosterWeekAction::class)->handle(
         (int) $tenant->id,
         '2026-05-01',
         (int) $team->id,
         $admin,
         'month',
-    )->workers)->firstWhere('id', $worker->id);
+    );
+    $row = collect($snapshot->workers)->firstWhere('id', $worker->id);
+    $keys = array_column($snapshot->hoursColumns, 'key');
+    $figures = $row['month_hours']['figures'];
 
     expect($row['month_hours']['norm_status'])->toBe(MonthNormStatus::Incomplete->value)
         ->and($row['month_hours'])->toHaveKey('planned_minutes')
         ->and($row['month_hours'])->not->toHaveKey('contract_minutes')
         ->and($row['month_hours'])->not->toHaveKey('difference_minutes')
-        ->and(implode(' ', $row['month_hours']['lines']))->not->toContain((string) monthNormExpected('2026-05-01', monthNormFiveDayPattern()));
+        ->and($figures[array_search('norm', $keys, true)])->toBeNull()
+        ->and($figures[array_search('difference', $keys, true)])->toBeNull()
+        ->and($figures[array_search('planned', $keys, true)]['value'])->toBe('0')
+        ->and(json_encode($figures))->not->toContain((string) monthNormExpected('2026-05-01', monthNormFiveDayPattern()));
 });
 
 it('telt maandfeiten over de hele kalendermaand, ook als de norm ontbreekt', function () {

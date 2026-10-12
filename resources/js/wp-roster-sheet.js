@@ -506,12 +506,19 @@ function applyCellClasses(worksheet, payload) {
 
                 return;
             }
-            if ((payload.period === 'week' || payload.period === 'month') && colIndex === payload.dates.length + 1) {
+            if (hoursColumns(payload).length > 0 && colIndex >= payload.dates.length + 1) {
+                const hoursIndex = colIndex - payload.dates.length - 1;
+                const column = hoursColumns(payload)[hoursIndex];
+                if (!column) {
+                    return;
+                }
                 cell.classList.toggle('wp-roster-row--section', isSection);
-                cell.classList.add('wp-roster-cell--week-summary');
-                const summary = cellText(value).trim();
-                if (summary) {
-                    cell.title = summary;
+                cell.classList.add('wp-roster-cell--hours');
+                cell.classList.toggle('wp-roster-cell--hours-start', hoursIndex === 0);
+                const bag = payload.period === 'month' ? worker?.month_hours : worker?.week_hours;
+                const title = bag?.figures?.[hoursIndex]?.title || '';
+                if (title) {
+                    cell.title = title;
                 } else {
                     cell.removeAttribute('title');
                 }
@@ -734,19 +741,52 @@ function hasInvalidCells(worksheet, payload) {
     });
 }
 
+function hoursColumns(payload) {
+    return Array.isArray(payload.hours_columns) ? payload.hours_columns : [];
+}
+
+function appendHourCells(line, payload, byId, workerId) {
+    const columns = hoursColumns(payload);
+    if (columns.length === 0) {
+        return;
+    }
+    const worker = workerId ? byId[workerId] : null;
+    const bag = payload.period === 'month' ? worker?.month_hours : worker?.week_hours;
+    const figures = bag?.figures ?? [];
+    columns.forEach((_, index) => {
+        line.push(figures[index]?.value ?? '');
+    });
+}
+
+function markHoursHeaders(worksheet, payload) {
+    const headers = worksheet?.headers;
+    if (!headers) {
+        return;
+    }
+    const start = payload.dates.length + 1;
+    const columns = hoursColumns(payload);
+    headers.forEach((cell, index) => {
+        const column = columns[index - start];
+        const isHours = Boolean(column);
+        cell.classList.toggle('wp-roster-hours-head', isHours);
+        cell.classList.toggle('wp-roster-hours-head-start', isHours && index === start);
+        if (!isHours) {
+            return;
+        }
+        const hint = column.hint || column.title || '';
+        if (hint) {
+            cell.title = hint;
+        }
+    });
+}
+
 function buildData(payload) {
     const byId = workerById(payload);
 
     return gridRowDefs(payload).map((row) => {
-        const hourLines = payload.period === 'week'
-            ? (byId[row.worker_id]?.week_hours?.lines ?? [])
-            : (payload.period === 'month' ? (byId[row.worker_id]?.month_hours?.lines ?? []) : null);
-        const summary = hourLines === null ? null : hourLines.join(' · ');
         if (row.type === 'section') {
             const section = [row.label || '', ...payload.dates.map(() => '')];
-            if (summary !== null) {
-                section.push('');
-            }
+            appendHourCells(section, payload, byId, null);
 
             return section;
         }
@@ -758,9 +798,7 @@ function buildData(payload) {
             // Multi-blok-dag: samenvatting verbatim (geen dienst/groep-split).
             line.push(cell?.multi ? (cell.display ?? '') : formatCellDisplay(cell?.display ?? ''));
         });
-        if (summary !== null) {
-            line.push(summary);
-        }
+        appendHourCells(line, payload, byId, row.worker_id);
 
         return line;
     });
@@ -783,7 +821,7 @@ function rowTitleOptions(payload) {
 
 function applySectionRowStyles(worksheet, payload, { lockSections = false } = {}) {
     const dayCount = payload.dates?.length ?? 0;
-    const lastCol = dayCount + 1;
+    const lastCol = dayCount + hoursColumns(payload).length;
     let personNo = 0;
     gridRowDefs(payload).forEach((row, rowIndex) => {
         const isSection = row.type === 'section';
@@ -999,8 +1037,10 @@ export function bind(root, wire) {
         closeMenu();
         const isMonth = payload.period === 'month';
         const dayCount = payload.dates.length;
+        const hourColumns = hoursColumns(payload);
         const lockedDates = new Set(payload.locked_dates ?? []);
         grid.classList.toggle('wp-roster-sheet--month', isMonth);
+        grid.classList.toggle('wp-roster-sheet--hours', hourColumns.length > 0);
         const columns = [
             {
                 type: 'text',
@@ -1018,19 +1058,23 @@ export function bind(root, wire) {
                 readOnly: lockedDates.has(date),
             })),
         ];
-        columns.push({
-            type: 'text',
-            title: payload.week_hours_column || '',
-            width: isMonth ? 320 : 460,
-            readOnly: true,
-            align: 'left',
+        hourColumns.forEach((column) => {
+            columns.push({
+                type: 'text',
+                title: column.title || '',
+                width: column.width || 44,
+                readOnly: true,
+                align: 'center',
+            });
         });
 
         const rowDefs = gridRowDefs(payload);
         const rowCount = Math.max(rowDefs.length, 1);
         // Hoogte = inhoud: geen vast kader met interne verticale scroll.
         const rowPx = isMonth ? 34 : 38;
-        const headerPx = isMonth && payload.month_label ? 72 : 44;
+        const titleRowPx = hourColumns.length > 0 ? 132 : 36;
+        const nestedPx = isMonth && payload.month_label ? 28 : 0;
+        const headerPx = nestedPx + titleRowPx;
         // Multi-blok-rijen groeien: elke blok krijgt een eigen regel in de cel.
         const extraRowPx = rowDefs.reduce((extra, row) => {
             if (row.type === 'section' || !row.worker_id) {
@@ -1060,19 +1104,23 @@ export function bind(root, wire) {
             columnDrag: false,
             rowDrag: false,
             parseFormulas: false,
-            minDimensions: [dayCount + 2, rowCount],
+            minDimensions: [columns.length, rowCount],
         };
         if (isMonth && payload.month_label) {
-            worksheetConfig.nestedHeaders = [[
+            const nested = [
                 { title: '', colspan: 1 },
                 { title: payload.month_label, colspan: dayCount },
-                { title: '', colspan: 1 },
-            ]];
+            ];
+            if (hourColumns.length > 0) {
+                nested.push({ title: '', colspan: hourColumns.length });
+            }
+            worksheetConfig.nestedHeaders = [nested];
         }
 
         const paint = (instance, { lockSections = false } = {}) => {
             applyCellClasses(instance, payload);
             applySectionRowStyles(instance, payload, { lockSections });
+            markHoursHeaders(instance, payload);
         };
 
         const instances = jspreadsheet(grid, {

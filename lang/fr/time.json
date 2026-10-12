@@ -729,14 +729,17 @@
         "legend_title": "Légende du planning",
         "column_name": "Nom",
         "week_hours": {
-            "column": "Heures",
-            "norm": "Norme :value",
-            "missing": "—",
-            "planned": "Planifié :value",
-            "difference": "Écart :value",
-            "worked": "Travaillé :value",
-            "absence_days": "{1} :kind · :count jour|[2,*] :kind · :count jours",
-            "absence_duration": ":kind · :value",
+            "headers": {
+                "norm": "Norme",
+                "difference": "Écart",
+                "planned": "Planifié",
+                "worked": "Travaillé",
+                "leave": "Congé",
+                "recup": "Récup",
+                "sick": "Maladie",
+                "attention": "Signal",
+                "attention_hint": "Blocs incomplets ou un pointage ouvert"
+            },
             "incomplete_blocks": "{1} :count bloc incomplet|[2,*] :count blocs incomplets",
             "registration_incomplete": "Pointage incomplet"
         },

@@ -18,6 +18,7 @@ final class RosterWeekSnapshot
      * @param  array<string, true>  $unavailable
      * @param  array<string, string>  $attendanceMessages
      * @param  list<array<string, mixed>>  $rows
+     * @param  list<array{key: string, title: string, hint: string, width: int}>  $hoursColumns
      */
     public function __construct(
         public string $weekStart,
@@ -40,6 +41,7 @@ final class RosterWeekSnapshot
         public array $units = [],
         public array $rows = [],
         public bool $groupMode = false,
+        public array $hoursColumns = [],
     ) {}
 
     /**
@@ -69,6 +71,7 @@ final class RosterWeekSnapshot
             'attendance' => $this->attendance,
             'unavailable' => $this->unavailable,
             'attendance_messages' => $this->attendanceMessages,
+            'hours_columns' => $this->hoursColumns,
             'error_messages' => [
                 'time.schedule.errors.unknown_code' => __('time.schedule.errors.unknown_code'),
                 'time.schedule.errors.unknown_unit' => __('time.schedule.errors.unknown_unit'),

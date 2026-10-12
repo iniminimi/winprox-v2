@@ -729,14 +729,17 @@
         "legend_title": "Legenda turni",
         "column_name": "Nome",
         "week_hours": {
-            "column": "Ore",
-            "norm": "Norma :value",
-            "missing": "—",
-            "planned": "Pianificato :value",
-            "difference": "Scarto :value",
-            "worked": "Lavorato :value",
-            "absence_days": "{1} :kind · :count giorno|[2,*] :kind · :count giorni",
-            "absence_duration": ":kind · :value",
+            "headers": {
+                "norm": "Norma",
+                "difference": "Scarto",
+                "planned": "Pianificato",
+                "worked": "Lavorato",
+                "leave": "Ferie",
+                "recup": "Recupero",
+                "sick": "Malattia",
+                "attention": "Segnale",
+                "attention_hint": "Blocchi incompleti o una registrazione aperta"
+            },
             "incomplete_blocks": "{1} :count blocco incompleto|[2,*] :count blocchi incompleti",
             "registration_incomplete": "Registrazione ore incompleta"
         },

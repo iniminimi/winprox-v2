@@ -243,13 +243,13 @@ class ListRosterWeekAction
         $weekHours = [];
         $monthFacts = [];
         $monthNorms = [];
-        $contractVisible = false;
+        $showsHours = $period === 'week' || $period === 'month';
+        $contractVisible = $showsHours && $this->contractNormVisible($actor, $tenantId);
+        $hoursColumns = $showsHours ? $this->hoursColumns($contractVisible) : [];
         if ($period === 'week' && $workerIds !== []) {
-            $contractVisible = $this->contractNormVisible($actor, $tenantId);
             $weekHours = $this->summarizeWeekHours->handle($tenantId, $workerIds, $weekStartDate);
         }
         if ($period === 'month' && $workerIds !== []) {
-            $contractVisible = $this->contractNormVisible($actor, $tenantId);
             $monthFacts = $this->summarizeMonthFacts->handle($tenantId, $workerIds, $weekStartDate);
             $monthNorms = $this->resolveMonthNorm->handle($tenantId, $workerIds, $weekStartDate);
         }
@@ -321,6 +321,7 @@ class ListRosterWeekAction
             units: $unitPayload,
             rows: $rows,
             groupMode: $groupMode,
+            hoursColumns: $hoursColumns,
         );
     }
 
@@ -357,70 +358,17 @@ class ListRosterWeekAction
             $payload['difference_minutes'] = $facts->plannedMinutes - $norm->minutes;
         }
 
-        $payload['lines'] = $this->monthHoursLines($facts, $includeNorm ? $norm->minutes : null);
+        $payload['figures'] = $this->hourFigures(
+            $contractVisible,
+            $includeNorm ? $norm->minutes : null,
+            $facts->plannedMinutes,
+            $facts->workedMinutes,
+            $facts->absences,
+            $facts->incompleteBlocks,
+            $facts->registrationIncomplete,
+        );
 
         return $payload;
-    }
-
-    /**
-     * @return list<string>
-     */
-    private function monthHoursLines(WorkerMonthFacts $facts, ?int $normMinutes): array
-    {
-        $lines = [];
-
-        if ($normMinutes !== null) {
-            $lines[] = __('time.schedule.week_hours.norm', [
-                'value' => $this->formatMinutes($normMinutes),
-            ]);
-        }
-
-        $lines[] = __('time.schedule.week_hours.planned', [
-            'value' => $this->formatMinutes($facts->plannedMinutes),
-        ]);
-
-        if ($normMinutes !== null) {
-            $lines[] = __('time.schedule.week_hours.difference', [
-                'value' => $this->formatSignedMinutes($facts->plannedMinutes - $normMinutes),
-            ]);
-        }
-
-        $lines[] = __('time.schedule.week_hours.worked', [
-            'value' => $this->formatMinutes($facts->workedMinutes),
-        ]);
-
-        foreach ([ShiftTypeKind::Leave, ShiftTypeKind::Recup, ShiftTypeKind::Sick] as $kind) {
-            $entry = $facts->absences[$kind->value] ?? null;
-            if ($entry === null) {
-                continue;
-            }
-            $label = __('time.schedule.types.kinds.'.$kind->value);
-            if (($entry['days'] ?? 0) > 0) {
-                $count = (int) $entry['days'];
-                $lines[] = trans_choice('time.schedule.week_hours.absence_days', $count, [
-                    'kind' => $label,
-                    'count' => $count,
-                ]);
-            }
-            if (($entry['minutes'] ?? 0) > 0) {
-                $lines[] = __('time.schedule.week_hours.absence_duration', [
-                    'kind' => $label,
-                    'value' => $this->formatMinutes((int) $entry['minutes']),
-                ]);
-            }
-        }
-
-        if ($facts->incompleteBlocks > 0) {
-            $lines[] = trans_choice('time.schedule.week_hours.incomplete_blocks', $facts->incompleteBlocks, [
-                'count' => $facts->incompleteBlocks,
-            ]);
-        }
-
-        if ($facts->registrationIncomplete) {
-            $lines[] = __('time.schedule.week_hours.registration_incomplete');
-        }
-
-        return $lines;
     }
 
     /**
@@ -434,7 +382,15 @@ class ListRosterWeekAction
             'registration_incomplete' => $hours->registrationIncomplete,
             'incomplete_blocks' => $hours->incompleteBlocks,
             'absences' => $hours->absences,
-            'lines' => $this->weekHoursLines($hours, $contractVisible),
+            'figures' => $this->hourFigures(
+                $contractVisible,
+                $contractVisible ? $hours->contractMinutes : null,
+                $hours->plannedMinutes,
+                $hours->workedMinutes,
+                $hours->absences,
+                $hours->incompleteBlocks,
+                $hours->registrationIncomplete,
+            ),
         ];
 
         if ($contractVisible) {
@@ -446,66 +402,136 @@ class ListRosterWeekAction
     }
 
     /**
-     * @return list<string>
+     * @return list<array{key: string, title: string, hint: string, width: int}>
      */
-    private function weekHoursLines(WorkerWeekHours $hours, bool $contractVisible): array
+    private function hoursColumns(bool $contractVisible): array
     {
-        $lines = [];
-
+        $columns = [];
         if ($contractVisible) {
-            $lines[] = __('time.schedule.week_hours.norm', [
-                'value' => $hours->contractMinutes === null
-                    ? __('time.schedule.week_hours.missing')
-                    : $this->formatMinutes($hours->contractMinutes),
-            ]);
+            $columns[] = $this->hoursColumn('norm', 46);
+            $columns[] = $this->hoursColumn('difference', 52);
         }
-
-        $lines[] = __('time.schedule.week_hours.planned', [
-            'value' => $this->formatMinutes($hours->plannedMinutes),
-        ]);
-
-        if ($contractVisible && $hours->differenceMinutes() !== null) {
-            $lines[] = __('time.schedule.week_hours.difference', [
-                'value' => $this->formatSignedMinutes($hours->differenceMinutes()),
-            ]);
-        }
-
-        $lines[] = __('time.schedule.week_hours.worked', [
-            'value' => $this->formatMinutes($hours->workedMinutes),
-        ]);
-
+        $columns[] = $this->hoursColumn('planned', 46);
+        $columns[] = $this->hoursColumn('worked', 46);
         foreach ([ShiftTypeKind::Leave, ShiftTypeKind::Recup, ShiftTypeKind::Sick] as $kind) {
-            $entry = $hours->absences[$kind->value] ?? null;
-            if ($entry === null) {
-                continue;
-            }
-            $label = __('time.schedule.types.kinds.'.$kind->value);
-            if (($entry['days'] ?? 0) > 0) {
-                $count = (int) $entry['days'];
-                $lines[] = trans_choice('time.schedule.week_hours.absence_days', $count, [
-                    'kind' => $label,
-                    'count' => $count,
-                ]);
-            }
-            if (($entry['minutes'] ?? 0) > 0) {
-                $lines[] = __('time.schedule.week_hours.absence_duration', [
-                    'kind' => $label,
-                    'value' => $this->formatMinutes((int) $entry['minutes']),
-                ]);
-            }
+            $columns[] = [
+                'key' => $kind->value,
+                'title' => __('time.schedule.week_hours.headers.'.$kind->value),
+                'hint' => __('time.schedule.types.kinds.'.$kind->value),
+                'width' => 44,
+            ];
+        }
+        $columns[] = $this->hoursColumn('attention', 36, __('time.schedule.week_hours.headers.attention_hint'));
+
+        return $columns;
+    }
+
+    /**
+     * @return array{key: string, title: string, hint: string, width: int}
+     */
+    private function hoursColumn(string $key, int $width, ?string $hint = null): array
+    {
+        $title = __('time.schedule.week_hours.headers.'.$key);
+
+        return [
+            'key' => $key,
+            'title' => $title,
+            'hint' => $hint ?? $title,
+            'width' => $width,
+        ];
+    }
+
+    /**
+     * @param  array<string, array{days: int, minutes: int}>  $absences
+     * @return list<array{value: string, title: string}|null>
+     */
+    private function hourFigures(
+        bool $contractVisible,
+        ?int $normMinutes,
+        int $plannedMinutes,
+        int $workedMinutes,
+        array $absences,
+        int $incompleteBlocks,
+        bool $registrationIncomplete,
+    ): array {
+        $figures = [];
+        if ($contractVisible) {
+            $figures[] = $normMinutes === null ? null : $this->figure($this->formatMinutes($normMinutes));
+            $figures[] = $normMinutes === null
+                ? null
+                : $this->figure($this->formatSignedMinutes($plannedMinutes - $normMinutes));
+        }
+        $figures[] = $this->figure($this->formatMinutes($plannedMinutes));
+        $figures[] = $this->figure($this->formatMinutes($workedMinutes));
+        foreach ([ShiftTypeKind::Leave, ShiftTypeKind::Recup, ShiftTypeKind::Sick] as $kind) {
+            $figures[] = $this->figure($this->absenceFigure($absences[$kind->value] ?? null));
+        }
+        $figures[] = $this->attentionFigure($incompleteBlocks, $registrationIncomplete);
+
+        return $figures;
+    }
+
+    /**
+     * @param  array{days?: int, minutes?: int}|null  $entry
+     */
+    private function absenceFigure(?array $entry): ?string
+    {
+        if ($entry === null) {
+            return null;
+        }
+        $parts = [];
+        $days = (int) ($entry['days'] ?? 0);
+        $minutes = (int) ($entry['minutes'] ?? 0);
+        if ($days > 0) {
+            $parts[] = (string) $days;
+        }
+        if ($minutes > 0) {
+            $parts[] = $this->formatMinutes($minutes);
         }
 
-        if ($hours->incompleteBlocks > 0) {
-            $lines[] = trans_choice('time.schedule.week_hours.incomplete_blocks', $hours->incompleteBlocks, [
-                'count' => $hours->incompleteBlocks,
+        return $parts === [] ? null : implode(' · ', $parts);
+    }
+
+    /**
+     * @return array{value: string, title: string}|null
+     */
+    private function attentionFigure(int $incompleteBlocks, bool $registrationIncomplete): ?array
+    {
+        if ($incompleteBlocks < 1 && ! $registrationIncomplete) {
+            return null;
+        }
+        $parts = [];
+        $titles = [];
+        if ($incompleteBlocks > 0) {
+            $parts[] = (string) $incompleteBlocks;
+            $titles[] = trans_choice('time.schedule.week_hours.incomplete_blocks', $incompleteBlocks, [
+                'count' => $incompleteBlocks,
             ]);
         }
-
-        if ($hours->registrationIncomplete) {
-            $lines[] = __('time.schedule.week_hours.registration_incomplete');
+        if ($registrationIncomplete) {
+            $parts[] = '!';
+            $titles[] = __('time.schedule.week_hours.registration_incomplete');
         }
 
-        return $lines;
+        return [
+            'value' => implode(' · ', $parts),
+            'title' => implode(' · ', $titles),
+        ];
+    }
+
+    /**
+     * @return array{value: string, title: string}|null
+     */
+    private function figure(?string $value): ?array
+    {
+        if ($value === null || $value === '') {
+            return null;
+        }
+
+        return [
+            'value' => $value,
+            'title' => $value,
+        ];
     }
 
     private function formatMinutes(int $minutes): string

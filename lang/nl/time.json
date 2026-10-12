@@ -729,14 +729,17 @@
         "legend_title": "Legende uurrooster",
         "column_name": "Naam",
         "week_hours": {
-            "column": "Uren",
-            "norm": "Norm :value",
-            "missing": "—",
-            "planned": "Gepland :value",
-            "difference": "Verschil :value",
-            "worked": "Gewerkt :value",
-            "absence_days": "{1} :kind · :count dag|[2,*] :kind · :count dagen",
-            "absence_duration": ":kind · :value",
+            "headers": {
+                "norm": "Norm",
+                "difference": "Verschil",
+                "planned": "Gepland",
+                "worked": "Gewerkt",
+                "leave": "Verlof",
+                "recup": "Recup",
+                "sick": "Ziek",
+                "attention": "Sein",
+                "attention_hint": "Onvolledige blokken of een open registratie"
+            },
             "incomplete_blocks": "{1} :count blok onvolledig|[2,*] :count blokken onvolledig",
             "registration_incomplete": "Registratie onvolledig"
         },

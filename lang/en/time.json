@@ -729,14 +729,17 @@
         "legend_title": "Roster legend",
         "column_name": "Name",
         "week_hours": {
-            "column": "Hours",
-            "norm": "Norm :value",
-            "missing": "—",
-            "planned": "Planned :value",
-            "difference": "Difference :value",
-            "worked": "Worked :value",
-            "absence_days": "{1} :kind · :count day|[2,*] :kind · :count days",
-            "absence_duration": ":kind · :value",
+            "headers": {
+                "norm": "Norm",
+                "difference": "Difference",
+                "planned": "Planned",
+                "worked": "Worked",
+                "leave": "Leave",
+                "recup": "Lieu",
+                "sick": "Sick",
+                "attention": "Flag",
+                "attention_hint": "Incomplete blocks or an open time record"
+            },
             "incomplete_blocks": "{1} :count block incomplete|[2,*] :count blocks incomplete",
             "registration_incomplete": "Time record incomplete"
         },

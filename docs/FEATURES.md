@@ -950,10 +950,10 @@ vervangt de minuten, ze worden er niet bij opgeteld. De afspraken van de maand w
 geheel gecontroleerd. Status `available`, `incomplete` of `conflict`. Alleen `available` levert
 minuten. `SummarizeWorkerMonthFactsAction` blijft daar los van en levert altijd gepland, gewerkt,
 afwezigheid en onvolledige registratie. De nationale kalender `belgian_public_holidays` heeft geen
-tenant en dekt 2020–2040; een datum daarbuiten maakt de afspraak ongeldig. De weekpayload en de
-weekkolom blijven ongewijzigd. Norm, verschil en status zitten alleen in de snapshot voor een
-admin of medewerker van dezelfde tenant. In de maandweergave staat dezelfde telling rechts. Norm en
-verschil verschijnen alleen bij status `available`. De werkregeling en de feestdagafspraken staan
+tenant en dekt 2020–2040; een datum daarbuiten maakt de afspraak ongeldig. De weektelling blijft dezelfde.
+Week en maand tonen die cijfers in vaste kolommen met een verticale titel; in de rij staat alleen het cijfer. Norm, verschil en status zitten alleen in de snapshot voor een
+admin of medewerker van dezelfde tenant. Norm en
+verschil blijven leeg bij status `incomplete` of `conflict`. De werkregeling en de feestdagafspraken staan
 in de uitvoerdersmodal, los van de structurele onbeschikbaarheid.
 
 - **Overlap:** halfopen interval `[start, eind)` — `07:00–11:00` en `11:00–15:00` is geldig.

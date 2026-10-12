@@ -196,7 +196,7 @@
           "Clock Point zeigt Mein Dienstplan (nur eigene veröffentlichte Schichten).",
           "Rotes Dreieck, wenn Sie nicht oder zu spät stempeln.",
           "Die Verwaltung sieht geplant versus gestempelt (15-Minuten-Spielraum).",
-          "Die Wochenansicht zeigt je Ausführendem die vertragliche Wochennorm, geplante Stunden, die Differenz, gearbeitete Stunden und erfasste Abwesenheit. Die Monatsansicht zeigt dieselben Fakten rechts. Die Monatsdifferenz erscheint nur, wenn die normalen Arbeitstage und die Feiertagsabsprachen vollständig sind. Die Norm steht standardmäßig auf 38 Stunden und bleibt je Person anpassbar. Das ist eine Zählung, kein Urteil über die Arbeitszeit."
+          "Wochen- und Monatsansicht zeigen je Ausführendem feste Spalten mit senkrechtem Titel und in der Zeile nur die Zahl: Norm, Differenz, geplant, gearbeitet, Urlaub, Ausgleich und krank. Norm und Differenz bleiben leer, solange diese Norm nicht verlässlich ist. Die Norm steht standardmäßig auf 38 Stunden und bleibt je Person anpassbar. Das ist eine Zählung, kein Urteil über die Arbeitszeit."
         ]
       },
       {

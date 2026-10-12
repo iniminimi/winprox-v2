@@ -6754,14 +6754,41 @@ a.wp-kpi.wp-kpi--attention {
     white-space: nowrap;
 }
 
-.wp-roster-sheet .jss_worksheet td.wp-roster-cell--week-summary {
-    color: var(--wp-text-muted);
-    font-size: 0.75rem;
-    font-weight: 500;
+.wp-roster-sheet .jss_worksheet td.wp-roster-cell--hours {
+    color: var(--wp-text);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+    text-align: center !important;
     white-space: nowrap;
-    text-align: left !important;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding-inline: 0.1rem;
+}
+
+.wp-roster-sheet.wp-roster-sheet--hours .jss_worksheet > thead > tr:last-child > td {
+    vertical-align: bottom;
+}
+
+.wp-roster-sheet .jss_worksheet > thead > tr > td.wp-roster-hours-head {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    text-orientation: mixed;
+    white-space: nowrap;
+    text-align: left !important;
+    vertical-align: bottom !important;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    line-height: 1;
+    height: 8.25rem;
+    padding: 0.35rem 0.05rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.wp-roster-sheet .jss_worksheet > thead > tr > td.wp-roster-hours-head-start,
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--hours-start {
+    border-left: 2px solid var(--wp-border) !important;
 }
 
 .wp-roster-sheet .jss_worksheet > thead > tr > td:nth-child(2) {

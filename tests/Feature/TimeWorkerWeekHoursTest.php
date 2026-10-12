@@ -322,20 +322,58 @@ it('laat de norm alleen door aan admin en medewerker van dezelfde tenant', funct
     ]);
     $super = User::factory()->superuser()->create();
     $list = app(ListRosterWeekAction::class);
-
-    $forAdmin = collect($list->handle((int) $tenant->id, '2026-10-13', (int) $team->id, $admin)->workers)
-        ->firstWhere('id', $worker->id);
-    $forEmployee = collect($list->handle((int) $tenant->id, '2026-10-13', (int) $team->id, $employee)->workers)
-        ->firstWhere('id', $worker->id);
-    $forSuper = collect($list->handle((int) $tenant->id, '2026-10-13', (int) $team->id, $super)->workers)
-        ->firstWhere('id', $worker->id);
+    $forAdminSnapshot = $list->handle((int) $tenant->id, '2026-10-13', (int) $team->id, $admin);
+    $forEmployeeSnapshot = $list->handle((int) $tenant->id, '2026-10-13', (int) $team->id, $employee);
+    $forSuperSnapshot = $list->handle((int) $tenant->id, '2026-10-13', (int) $team->id, $super);
+    $forAdmin = collect($forAdminSnapshot->workers)->firstWhere('id', $worker->id);
+    $forEmployee = collect($forEmployeeSnapshot->workers)->firstWhere('id', $worker->id);
+    $forSuper = collect($forSuperSnapshot->workers)->firstWhere('id', $worker->id);
+    $superKeys = array_column($forSuperSnapshot->hoursColumns, 'key');
 
     expect($forAdmin['week_hours']['contract_minutes'])->toBe(2220)
         ->and($forAdmin['week_hours']['difference_minutes'])->toBe(-2220)
         ->and($forEmployee['week_hours']['contract_minutes'])->toBe(2220)
+        ->and(array_column($forAdminSnapshot->hoursColumns, 'key'))->toContain('norm')
         ->and($forSuper['week_hours'])->not->toHaveKey('contract_minutes')
         ->and($forSuper['week_hours'])->not->toHaveKey('difference_minutes')
+        ->and($superKeys)->not->toContain('norm')
+        ->and($superKeys)->not->toContain('difference')
+        ->and($forSuper['week_hours']['figures'])->toHaveCount(count($superKeys))
         ->and(json_encode($forSuper['week_hours']))->not->toContain('2220');
+});
+
+it('zet de uren in vaste cijferkolommen', function () {
+    [$tenant, $admin, $team, $worker] = weekHoursTenant();
+    $worker->update(['weekly_contract_minutes' => 120]);
+    weekBlock($tenant, $worker, '2026-10-13', ShiftTypeKind::Work, '13:00', '17:00');
+    weekBlock($tenant, $worker, '2026-10-14', ShiftTypeKind::Leave, null, null);
+    weekBlock($tenant, $worker, '2026-10-15', ShiftTypeKind::Sick, '08:00', '10:00');
+    weekBlock($tenant, $worker, '2026-10-16', ShiftTypeKind::Leave, '08:00', null);
+    weekPunch($tenant, $worker, '2026-10-12 08:00:00', null);
+
+    $snapshot = app(ListRosterWeekAction::class)->handle(
+        (int) $tenant->id,
+        '2026-10-12',
+        (int) $team->id,
+        $admin,
+    );
+    $row = collect($snapshot->workers)->firstWhere('id', $worker->id);
+    $keys = array_column($snapshot->hoursColumns, 'key');
+    $figure = function (string $key) use ($keys, $row): ?array {
+        return $row['week_hours']['figures'][array_search($key, $keys, true)];
+    };
+    $hour = __('time.duration.hour_short');
+
+    expect($keys)->toBe(['norm', 'difference', 'planned', 'worked', 'leave', 'recup', 'sick', 'attention'])
+        ->and($figure('norm')['value'])->toBe('2'.$hour)
+        ->and($figure('difference')['value'])->toBe('+2'.$hour)
+        ->and($figure('planned')['value'])->toBe('4'.$hour)
+        ->and($figure('worked')['value'])->toBe('0')
+        ->and($figure('leave')['value'])->toBe('1')
+        ->and($figure('recup'))->toBeNull()
+        ->and($figure('sick')['value'])->toBe('2'.$hour)
+        ->and($figure('attention')['value'])->toBe('1 · !')
+        ->and($figure('attention')['title'])->toContain(__('time.schedule.week_hours.registration_incomplete'));
 });
 
 it('mengt geen uren van een andere tenant', function () {

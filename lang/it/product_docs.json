@@ -196,7 +196,7 @@
           "Clock Point mostra Il mio turno (solo i servizi pubblicati propri).",
           "Triangolo rosso se non hai timbrato o sei in ritardo.",
           "La gestione vede pianificato contro timbrato (margine di 15 minuti).",
-          "La vista settimana mostra per esecutore la norma settimanale contrattuale, le ore pianificate, lo scarto, le ore lavorate e l’assenza registrata. La vista mese mostra gli stessi fatti a destra. Lo scarto mensile compare solo se i giorni abituali e gli accordi sulle festività sono completi. Quella norma è di 38 ore per impostazione predefinita e resta modificabile per persona. È un conteggio, non un giudizio sulla durata del lavoro."
+          "Le viste settimana e mese mostrano colonne fisse per esecutore, con il titolo in verticale e solo la cifra nella riga: norma, scarto, pianificato, lavorato, ferie, recupero e malattia. Norma e scarto restano vuoti finché quella norma non è affidabile. Quella norma è di 38 ore per impostazione predefinita e resta modificabile per persona. È un conteggio, non un giudizio sulla durata del lavoro."
         ]
       },
       {
