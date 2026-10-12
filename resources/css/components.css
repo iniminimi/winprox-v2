@@ -6785,6 +6785,36 @@ a.wp-kpi.wp-kpi--attention {
     background: color-mix(in srgb, var(--wp-text) 14%, var(--wp-surface-2) 86%);
 }
 
+/* Geselecteerde cellen (Excel-stijl): donkere tint + donkere rand rond het
+   blok. De tint komt via een inset-overlay zodat weekend-, today- en locked-
+   achtergronden zichtbaar donkerder worden i.p.v. vervangen. */
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.highlight,
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.selection {
+    box-shadow: inset 0 0 0 1000px color-mix(in srgb, var(--wp-text) 18%, transparent);
+}
+
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.highlight-top {
+    border-top: 2px solid var(--wp-text) !important;
+}
+
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.highlight-left {
+    border-left: 2px solid var(--wp-text) !important;
+}
+
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.highlight-right {
+    border-right: 2px solid var(--wp-text) !important;
+}
+
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.highlight-bottom {
+    border-bottom: 2px solid var(--wp-text) !important;
+}
+
+/* Kolom-/rijkoppen van de selectie ook donkerder markeren. */
+.wp-roster-sheet .jss_worksheet > thead > tr > td.selected,
+.wp-roster-sheet .jss_worksheet > tbody > tr.selected > td:first-child {
+    background-color: color-mix(in srgb, var(--wp-text) 18%, var(--wp-surface-2) 82%);
+}
+
 .wp-roster-sheet--month {
     width: 100%;
 }
