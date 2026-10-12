@@ -410,6 +410,22 @@
     white-space: nowrap;
 }
 
+.wp-sidebar-clock {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.875rem;
+}
+
+.wp-sidebar-clock .btn {
+    flex: 1 1 0;
+    min-width: 0;
+    padding-inline: 0.35rem;
+}
+
+.wp-sidebar-clock-error {
+    margin: 0.75rem 0 0;
+}
+
 .wp-sidebar-logout-form {
     margin: 0.875rem 0 0;
 }

@@ -2103,7 +2103,7 @@
                 },
                 {
                     "label": "Stempeluhr",
-                    "text": "Optional: PIN bei der Anmeldung der Ausführer verlangen. Das Startbildschirm-Symbol steht auf jedem Clock-Point-Portal."
+                    "text": "Optional: PIN bei der Anmeldung der Ausführer verlangen. Das Startbildschirm-Symbol steht auf jedem Clock-Point-Portal. Optional stempeln Kollegen mit Stempeluhr-Team aus der Seitenleiste ein (standardmäßig aus)."
                 }
             ]
         },

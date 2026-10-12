@@ -225,6 +225,13 @@
             <p class="wp-muted wp-text-sm">{{ __('settings.time_clock.lead') }}</p>
             <form wire:submit="saveTimeClockSecurity" class="wp-stack">
                 <label class="wp-check">
+                    <input type="checkbox" wire:model="timeBackofficeClock">
+                    <span>{{ __('settings.time_clock.backoffice_clock') }}</span>
+                </label>
+                <p class="wp-hint">{{ __('settings.time_clock.backoffice_clock_hint') }}</p>
+                @error('time_backoffice_clock') <p class="wp-error">{{ $message }}</p> @enderror
+
+                <label class="wp-check">
                     <input type="checkbox" wire:model="timeRequireWorkerPin">
                     <span>{{ __('settings.time_clock.require_pin') }}</span>
                 </label>

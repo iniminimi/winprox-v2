@@ -850,5 +850,18 @@
             "already_started": "This leave or TOIL has already started. You can no longer withdraw it.",
             "not_cancellable": "You cannot withdraw this request."
         }
+    },
+    "backoffice_clock": {
+        "start_break": "Take a break",
+        "end_break": "End break",
+        "errors": {
+            "disabled": "Clock-in from back office is off.",
+            "no_worker": "No punch-clock team is linked to this account.",
+            "no_clock_point": "No active Clock Point where you can clock in.",
+            "already_in": "You are already clocked in.",
+            "not_in": "You are not clocked in.",
+            "break_open": "A break is already open.",
+            "break_closed": "No break is open."
+        }
     }
 }

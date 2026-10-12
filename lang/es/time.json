@@ -850,5 +850,18 @@
             "already_started": "Este permiso o compensación ya ha empezado. Ya no se puede retirar.",
             "not_cancellable": "No puede retirar esta solicitud."
         }
+    },
+    "backoffice_clock": {
+        "start_break": "Tomar un descanso",
+        "end_break": "Terminar el descanso",
+        "errors": {
+            "disabled": "Fichar desde el back office está desactivado.",
+            "no_worker": "No hay un equipo de fichaje vinculado a esta cuenta.",
+            "no_clock_point": "No hay un Clock Point activo donde pueda fichar.",
+            "already_in": "Ya está fichado.",
+            "not_in": "No está fichado.",
+            "break_open": "Ya hay una pausa en curso.",
+            "break_closed": "No hay una pausa en curso."
+        }
     }
 }

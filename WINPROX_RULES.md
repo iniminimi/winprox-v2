@@ -212,7 +212,7 @@ customer location (location pin), or at a unit with its own pin. Inklokken opent
 betaalde dag en is geen straalcontrole rond een klant. Staat **GPS vragen bij in- en
 uitklokken** aan, dan weigert de portaal-inklok (`ClockPointQr`) zonder GPS-positie:
 die coördinaten zijn de controle waar de uitvoerder was. Uitklokken, pauzes, manueel
-inkloken, API en het klokscherm-PIN blijven zonder die poort. Werk starten blijft de
+inkloken, API, het klokscherm-PIN en inklokken vanuit beheer (zijbalk, bron `backoffice`) blijven zonder die poort. Werk starten blijft de
 straalcontrole. **Aanmelden en inklokken zijn gescheiden.** Sticker en wisselende
 klokscherm-QR (`/time/{token}`) geven één scan-grant. Aanmeldlink en startscherm-icoon
 (`/cp/{token}`) geven die niet. Op een vaste prikklok kan in-/uitklokken en verplaatsen

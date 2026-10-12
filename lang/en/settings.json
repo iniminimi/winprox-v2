@@ -256,6 +256,8 @@
         "gps_visit_radius": "Radius (metres)",
         "evacuation_list": "Evacuation list on Clock Point",
         "evacuation_list_hint": "After sign-in, workers see a tile to view who is clocked in. They confirm that the consultation is exceptional; each view is logged. Off by default.",
+        "backoffice_clock": "Clock in from back office",
+        "backoffice_clock_hint": "Admins and staff with a punch-clock team clock themselves in from the sidebar after signing in with email and password. Off by default. No GPS requirement and no phone binding.",
         "gps_visit_radius_hint": "Default 50 m. Minimum 10 m, maximum 2000 m."
     },
     "customers_on_location": {

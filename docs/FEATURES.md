@@ -782,6 +782,11 @@ productsector op `Tenant`.
   (`ClockSource::Admin`, `POST /api/v1/time/manual-clock-in`): geen gsm-koppeling, verplichte
   reden in het auditlog (`work_shift.manual_clock_in`), pil **Manueel ingeklokt**. Uitklokken
   later via Clock Point-QR of Shift sluiten. Geen terugwerkende gesloten dienst in deze slice.
+  **Inklokken vanuit beheer** (Instellingen → Prikklok-beveiliging, standaard uit): beheerder
+  en medewerker met een prikklok-team klokken zichzelf in vanuit de zijbalk na e-mail en
+  wachtwoord (`ClockSource::Backoffice`). Geen gsm-koppeling en geen GPS-poort. Naast
+  Inklokken/Uitklokken staat Pauze nemen / Pauze eindigen. De sessieknop in de zijbalk heet
+  Afmelden.
 
 ### 5g.6 GPS-werkbezoeken (veld, optioneel)
 

@@ -132,6 +132,8 @@ class Settings extends Component
 
     public bool $timeEvacuationList = false;
 
+    public bool $timeBackofficeClock = false;
+
     public bool $customersOnLocation = false;
 
     public string $timeGpsVisitRadiusMeters = '250';
@@ -335,6 +337,7 @@ class Settings extends Component
                     ? (int) $this->timeGpsVisitRadiusMeters
                     : null,
                 'time_evacuation_list' => $this->timeEvacuationList,
+                'time_backoffice_clock' => $this->timeBackofficeClock,
             ],
             UpdateTenantTimeClockSecurityRequest::ruleSet(),
         )->validate();
@@ -944,6 +947,7 @@ class Settings extends Component
         $this->timeGpsOnClock = (bool) $tenant->time_gps_on_clock;
         $this->timeGpsVisits = (bool) $tenant->time_gps_visits;
         $this->timeEvacuationList = (bool) $tenant->time_evacuation_list;
+        $this->timeBackofficeClock = (bool) $tenant->time_backoffice_clock;
         $this->customersOnLocation = $tenant->customersOnLocation();
         $this->timeGpsVisitRadiusMeters = $tenant->time_gps_visit_radius_meters
             ? (string) $tenant->time_gps_visit_radius_meters

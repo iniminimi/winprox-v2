@@ -709,7 +709,7 @@
                 },
                 {
                     "label": "Punch clock security",
-                    "text": "Time only: PIN, GPS at the punch and GPS work visits on Clock Point."
+                    "text": "Time only: PIN, GPS at the punch, GPS work visits on Clock Point, and optionally clock-in from the sidebar for colleagues with a punch-clock team (off by default)."
                 },
                 {
                     "label": "Evacuation list",

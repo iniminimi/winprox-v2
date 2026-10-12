@@ -47,6 +47,7 @@ class Tenant extends Model
         'time_gps_visits',
         'time_gps_visit_radius_meters',
         'time_evacuation_list',
+        'time_backoffice_clock',
         'enterprise_number',
         'foreign_vat_number',
         'presence_compliance_enabled',
@@ -85,6 +86,7 @@ class Tenant extends Model
             'time_gps_visits' => 'boolean',
             'time_gps_visit_radius_meters' => 'integer',
             'time_evacuation_list' => 'boolean',
+            'time_backoffice_clock' => 'boolean',
             'presence_compliance_enabled' => 'boolean',
             'presence_rsz_client_id' => 'encrypted',
             'presence_rsz_private_key' => 'encrypted',
@@ -354,6 +356,12 @@ class Tenant extends Model
     public function requiresWorkerPin(): bool
     {
         return $this->hasTimeModule() && (bool) $this->time_require_worker_pin;
+    }
+
+    /** Zijbalk-inklok voor collega’s met een prikklok-team. Standaard uit. */
+    public function allowsBackofficeClock(): bool
+    {
+        return $this->hasTimeModule() && (bool) $this->time_backoffice_clock;
     }
 
     public function requestsClockGps(): bool

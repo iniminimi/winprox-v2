@@ -256,6 +256,8 @@
         "gps_visit_radius": "Rayon (mètres)",
         "evacuation_list": "Liste d’évacuation sur Clock Point",
         "evacuation_list_hint": "Après connexion, les exécutants voient une tuile pour voir qui est pointé. Ils confirment que la consultation est exceptionnelle ; chaque consultation est enregistrée. Désactivé par défaut.",
+        "backoffice_clock": "Pointer depuis le back-office",
+        "backoffice_clock_hint": "Administrateurs et collaborateurs avec une équipe de pointage se pointent depuis la barre latérale, après connexion par e-mail et mot de passe. Désactivé par défaut. Pas d'exigence GPS et pas de liaison du téléphone.",
         "gps_visit_radius_hint": "Par défaut 50 m. Minimum 10 m, maximum 2000 m."
     },
     "customers_on_location": {

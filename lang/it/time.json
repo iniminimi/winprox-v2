@@ -850,5 +850,18 @@
             "already_started": "Queste ferie o questo recupero sono già iniziati. Non si può più ritirare.",
             "not_cancellable": "Non puoi ritirare questa richiesta."
         }
+    },
+    "backoffice_clock": {
+        "start_break": "Fare una pausa",
+        "end_break": "Terminare la pausa",
+        "errors": {
+            "disabled": "La timbratura dal back office è disattivata.",
+            "no_worker": "Nessun team di timbratura è collegato a questo account.",
+            "no_clock_point": "Nessun Clock Point attivo in cui puoi timbrare.",
+            "already_in": "Sei già timbrato.",
+            "not_in": "Non sei timbrato.",
+            "break_open": "Una pausa è già aperta.",
+            "break_closed": "Nessuna pausa è aperta."
+        }
     }
 }

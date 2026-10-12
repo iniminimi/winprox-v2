@@ -850,5 +850,18 @@
             "already_started": "Dieser Urlaub oder Ausgleich hat bereits begonnen. Zurückziehen ist nicht mehr möglich.",
             "not_cancellable": "Diesen Antrag können Sie nicht zurückziehen."
         }
+    },
+    "backoffice_clock": {
+        "start_break": "Pause nehmen",
+        "end_break": "Pause beenden",
+        "errors": {
+            "disabled": "Einstempeln aus dem Backoffice ist aus.",
+            "no_worker": "Diesem Konto ist kein Stempeluhr-Team zugeordnet.",
+            "no_clock_point": "Kein aktiver Clock Point, an dem Sie einstempeln können.",
+            "already_in": "Sie sind bereits eingestempelt.",
+            "not_in": "Sie sind nicht eingestempelt.",
+            "break_open": "Eine Pause läuft bereits.",
+            "break_closed": "Es läuft keine Pause."
+        }
     }
 }

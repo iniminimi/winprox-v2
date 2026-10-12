@@ -693,6 +693,7 @@
                     @auth
                         <div class="wp-sidebar-user">
                             <p class="wp-sidebar-user-name">{{ __('common.welcome') }} {{ auth()->user()->name }}</p>
+                            <livewire:time.backoffice-clock />
                             <form method="POST" action="{{ route('logout') }}" class="wp-sidebar-logout-form">
                                 @csrf
                                 <button type="submit" class="wp-sidebar-logout">{{ __('common.button.logout') }}</button>

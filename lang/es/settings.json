@@ -256,6 +256,8 @@
         "gps_visit_radius": "Radio (metros)",
         "evacuation_list": "Lista de evacuación en Clock Point",
         "evacuation_list_hint": "Tras identificarse, los ejecutores ven una ficha para ver quién está fichado. Confirman que la consulta es excepcional; cada consulta se registra. Desactivada por defecto.",
+        "backoffice_clock": "Fichar desde el back office",
+        "backoffice_clock_hint": "Administradores y empleados con un equipo de fichaje fichan ellos mismos desde la barra lateral, tras iniciar sesión con correo y contraseña. Desactivado por defecto. Sin requisito de GPS y sin vincular el teléfono.",
         "gps_visit_radius_hint": "Por defecto 50 m. Mínimo 10 m, máximo 2000 m."
     },
     "customers_on_location": {

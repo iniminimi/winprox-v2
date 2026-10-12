@@ -19,6 +19,21 @@ class TenantPolicy
         return $this->isTenantAdminFor($user, $tenant);
     }
 
+    public function clockFromBackoffice(User $user, Tenant $tenant): bool
+    {
+        if (! $this->isTenantMemberFor($user, $tenant) || ! $tenant->allowsBackofficeClock()) {
+            return false;
+        }
+
+        $worker = $user->relationLoaded('linkedWorker')
+            ? $user->linkedWorker
+            : $user->linkedWorker()->first();
+
+        return $worker !== null
+            && (bool) $worker->is_active
+            && (int) $worker->tenant_id === (int) $tenant->id;
+    }
+
     public function manageWorkMenu(User $user, Tenant $tenant): bool
     {
         return $this->isTenantAdminFor($user, $tenant);

@@ -709,7 +709,7 @@
                 },
                 {
                     "label": "Sicurezza marcatura",
-                    "text": "Solo con Time: PIN, GPS alla timbratura e visite GPS su Clock Point."
+                    "text": "Solo con Time: PIN, GPS alla timbratura, visite GPS su Clock Point e, in opzione, timbrare dalla barra laterale per i colleghi con un team di timbratura (disattivato di default)."
                 },
                 {
                     "label": "Elenco evacuazione",

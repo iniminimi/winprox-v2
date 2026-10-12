@@ -709,7 +709,7 @@
                 },
                 {
                     "label": "Prikklok-beveiliging",
-                    "text": "Alleen bij Time: pincode, GPS bij de prik en GPS-werkbezoeken op Clock Point."
+                    "text": "Alleen bij Time: pincode, GPS bij de prik, GPS-werkbezoeken op Clock Point, en optioneel inklokken vanuit de zijbalk voor collega's met een prikklok-team (standaard uit)."
                 },
                 {
                     "label": "Evacuatielijst",

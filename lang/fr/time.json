@@ -850,5 +850,18 @@
             "already_started": "Ce congé ou cette récup a déjà commencé. Le retrait n’est plus possible.",
             "not_cancellable": "Vous ne pouvez pas retirer cette demande."
         }
+    },
+    "backoffice_clock": {
+        "start_break": "Prendre une pause",
+        "end_break": "Terminer la pause",
+        "errors": {
+            "disabled": "Le pointage depuis le back-office est désactivé.",
+            "no_worker": "Aucune équipe de pointage n'est liée à ce compte.",
+            "no_clock_point": "Aucun Clock Point actif où vous pouvez pointer.",
+            "already_in": "Vous êtes déjà pointé.",
+            "not_in": "Vous n'êtes pas pointé.",
+            "break_open": "Une pause est déjà en cours.",
+            "break_closed": "Aucune pause en cours."
+        }
     }
 }

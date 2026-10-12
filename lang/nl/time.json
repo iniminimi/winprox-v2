@@ -850,5 +850,18 @@
             "already_started": "Dit verlof of recup is al begonnen. Intrekken kan niet meer.",
             "not_cancellable": "Deze aanvraag kun je niet intrekken."
         }
+    },
+    "backoffice_clock": {
+        "start_break": "Pauze nemen",
+        "end_break": "Pauze eindigen",
+        "errors": {
+            "disabled": "Inklokken vanuit beheer staat uit.",
+            "no_worker": "Geen prikklok-team gekoppeld aan dit account.",
+            "no_clock_point": "Geen actief Clock Point waar je kunt inklokken.",
+            "already_in": "Je bent al ingeklokt.",
+            "not_in": "Je bent niet ingeklokt.",
+            "break_open": "Er loopt al een pauze.",
+            "break_closed": "Er loopt geen pauze."
+        }
     }
 }

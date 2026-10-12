@@ -256,6 +256,8 @@
         "gps_visit_radius": "Radius (Meter)",
         "evacuation_list": "Evakuierungsliste am Clock Point",
         "evacuation_list_hint": "Nach der Anmeldung sehen Ausführende eine Kachel, wer eingestempelt ist. Sie bestätigen, dass die Einsicht außergewöhnlich ist; jede Einsicht wird protokolliert. Standardmäßig aus.",
+        "backoffice_clock": "Einstempeln aus dem Backoffice",
+        "backoffice_clock_hint": "Admins und Mitarbeitende mit einem Stempeluhr-Team stempeln sich über die Seitenleiste ein, nachdem sie sich mit E-Mail und Passwort angemeldet haben. Standardmäßig aus. Keine GPS-Pflicht und keine Handy-Kopplung.",
         "gps_visit_radius_hint": "Standard 50 m. Minimum 10 m, Maximum 2000 m."
     },
     "customers_on_location": {

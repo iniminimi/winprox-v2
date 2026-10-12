@@ -256,6 +256,8 @@
         "gps_visit_radius": "Straal (meter)",
         "evacuation_list": "Evacuatielijst op Clock Point",
         "evacuation_list_hint": "Na aanmelden zien uitvoerders een tegel om te zien wie is ingeklokt. Ze bevestigen dat de raadpleging uitzonderlijk is; elke raadpleging wordt gelogd. Standaard uit.",
+        "backoffice_clock": "Inklokken vanuit beheer",
+        "backoffice_clock_hint": "Beheerders en medewerkers met een prikklok-team klokken zichzelf in via de zijbalk, nadat ze zijn aangemeld met e-mail en wachtwoord. Standaard uit. Geen GPS-plicht en geen gsm-koppeling.",
         "gps_visit_radius_hint": "Standaard 50 m. Minimum 10 m, maximum 2000 m."
     },
     "customers_on_location": {
