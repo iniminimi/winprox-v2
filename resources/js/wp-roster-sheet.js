@@ -789,18 +789,22 @@ function markHoursHeaders(worksheet, payload) {
         label.className = 'wp-roster-hours-label';
         label.textContent = column.title || '';
         label.style.cssText = [
-            'display:inline-block',
-            'writing-mode:vertical-rl',
-            'transform:rotate(180deg)',
+            'position:absolute',
+            'left:calc(50% + 0.5em)',
+            'bottom:0.35rem',
+            'transform-origin:left bottom',
+            'transform:rotate(-90deg)',
             'white-space:nowrap',
             'line-height:1',
-            'max-height:7.6rem',
+            'font-size:0.6875rem',
+            'font-weight:600',
         ].join(';');
         if (!existing) {
             cell.textContent = '';
             cell.appendChild(label);
         }
 
+        cell.style.setProperty('position', 'relative', 'important');
         cell.style.setProperty('height', '8.25rem', 'important');
         cell.style.setProperty('vertical-align', 'bottom', 'important');
         cell.style.setProperty('text-align', 'center', 'important');
