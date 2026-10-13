@@ -764,6 +764,14 @@ function markHoursHeaders(worksheet, payload) {
     }
     const start = payload.dates.length + 1;
     const columns = hoursColumns(payload);
+    // Maandweergave: de verticale stat-titels staan in de nested (maand-)rij en
+    // spannen met rowSpan=2 óók de dagtitel-rij — die blijft daardoor kort.
+    const nestedCells = payload.period === 'month'
+        ? [...(worksheet.table?.querySelectorAll('thead tr.jss_nested td[data-column]') ?? [])]
+        : [];
+    const nestedCellFor = (colIndex) => nestedCells.find(
+        (td) => String(td.getAttribute('data-column') ?? '').split(',').includes(String(colIndex)),
+    );
 
     worksheet.headers.forEach((cell, index) => {
         if (!cell) {
@@ -771,15 +779,25 @@ function markHoursHeaders(worksheet, payload) {
         }
         const column = index >= start ? columns[index - start] : null;
         const isHours = Boolean(column);
-        cell.classList.toggle('wp-roster-hours-head', isHours);
-        cell.classList.toggle('wp-roster-hours-head-start', isHours && index === start);
+        // Zichtbare kopcel: bij maand de nested-cel (rowspan), anders de titelrij.
+        let head = cell;
+        if (isHours && nestedCells.length > 0) {
+            const nested = nestedCellFor(index);
+            if (nested) {
+                nested.rowSpan = 2;
+                cell.style.display = 'none';
+                head = nested;
+            }
+        }
+        head.classList.toggle('wp-roster-hours-head', isHours);
+        head.classList.toggle('wp-roster-hours-head-start', isHours && index === start);
 
-        const existing = cell.querySelector(':scope > .wp-roster-hours-label');
+        const existing = head.querySelector(':scope > .wp-roster-hours-label');
         if (!isHours) {
             if (existing) {
                 const plain = existing.textContent;
                 existing.remove();
-                cell.textContent = plain;
+                head.textContent = plain;
             }
 
             return;
@@ -793,13 +811,13 @@ function markHoursHeaders(worksheet, payload) {
         label.className = 'wp-roster-hours-label';
         label.textContent = column.title || '';
         if (!existing) {
-            cell.textContent = '';
-            cell.appendChild(label);
+            head.textContent = '';
+            head.appendChild(label);
         }
 
         const hint = column.hint || column.title || '';
         if (hint) {
-            cell.title = hint;
+            head.title = hint;
         }
     });
 }
@@ -1099,8 +1117,9 @@ export function bind(root, wire) {
         const rowCount = Math.max(rowDefs.length, 1);
         // Hoogte = inhoud: geen vast kader met interne verticale scroll.
         const rowPx = isMonth ? 34 : 38;
-        // Verticale urentitels: 5rem (zie .wp-roster-hours-head).
-        const titleRowPx = hourColumns.length > 0 ? 80 : 36;
+        // Week: verticale urentitels staan in de enige koprij (5rem).
+        // Maand: stat-titels spannen beide koprijen (rowspan) — dagrij blijft kort.
+        const titleRowPx = isMonth ? 36 : (hourColumns.length > 0 ? 80 : 36);
         const nestedPx = isMonth && payload.month_label ? 28 : 0;
         const headerPx = nestedPx + titleRowPx;
         // Multi-blok-rijen groeien: elke blok krijgt een eigen regel in de cel.
@@ -1139,9 +1158,9 @@ export function bind(root, wire) {
                 { title: '', colspan: 1 },
                 { title: payload.month_label, colspan: dayCount },
             ];
-            if (hourColumns.length > 0) {
-                nested.push({ title: '', colspan: hourColumns.length });
-            }
+            // Per uurkolom een eigen cel: die krijgen rowSpan=2 zodat de
+            // verticale stat-titels beide koprijen beslaan (zie markHoursHeaders).
+            hourColumns.forEach(() => nested.push({ title: '', colspan: 1 }));
             worksheetConfig.nestedHeaders = [nested];
         }
 

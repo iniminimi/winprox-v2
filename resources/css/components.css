@@ -6771,14 +6771,19 @@ a.wp-kpi.wp-kpi--attention {
 }
 
 .wp-roster-sheet .jss_worksheet > thead > tr > td.wp-roster-hours-head {
-    /* Langste titel (11 tekens, 0.6875rem) ≈ 62px + padding; JS titleRowPx = 80. */
-    height: 5rem !important;
     padding: 0.35rem 0.05rem !important;
     vertical-align: bottom !important;
     text-align: center !important;
     white-space: normal !important;
     overflow: hidden;
     line-height: 1;
+}
+
+/* Week: de enige koprij moet hoog genoeg zijn voor de verticale titels.
+   Maand: de stat-cellen spannen maand- én dagrij (rowspan) — geen vaste hoogte. */
+.wp-roster-sheet:not(.wp-roster-sheet--month) .jss_worksheet > thead > tr > td.wp-roster-hours-head {
+    /* Langste titel (11 tekens, 0.6875rem) ≈ 62px + padding; JS titleRowPx = 80. */
+    height: 5rem !important;
 }
 
 .wp-roster-sheet .wp-roster-hours-label {
