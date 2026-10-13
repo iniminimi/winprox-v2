@@ -2,9 +2,9 @@
   "social": {
     "og_description": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw salarisadministratie."
   },
-  "lead": "WinProx is een digitale prikklok voor urenregistratie. Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw salarisadministratie.",
+  "lead": "WinProx is de digitale prikklok voor urenregistratie, verbonden met planning en werkorganisatie. Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw salarisadministratie. Meldingen, taken en inspectierondes horen bij dezelfde ervaring.",
   "what": {
-    "body": "De medewerker scant een QR op het scherm, op een sticker of via een link, en prikt in en uit. U ziet de uren naast het rooster. Uw salarisadministratie maakt het loon. GPS-werkbezoeken zet u aan als de ploeg bij klanten werkt; een ploeg op de eigen site laat het uit."
+    "body": "De medewerker scant een QR op het scherm, op een sticker of via een link, en prikt in en uit. U ziet de uren naast het rooster. Uw salarisadministratie maakt het loon. Meldingen, taken en inspectierondes lopen in dezelfde app. GPS-werkbezoeken zet u aan als de ploeg bij klanten werkt; een ploeg op de eigen site laat het uit."
   },
   "audience": {
     "items": {
@@ -14,10 +14,15 @@
   "modules": {
     "items": {
       "1": {
-        "text": "Afgeleid abonnement voor veldwerk (schoonmaak & bouw): uitvoerders prikken in en uit via de Clock Point-QR, starten en stoppen klantbezoeken op het werkadres met GPS-verificatie binnen 100 m, nemen pauzes en bekijken Mijn uren — geen meldingen, taken of roosters. Beheer via een ingekorte backoffice (klanten, uitvoerders, uren). €5 per uitvoerder per maand."
+        "text": "Beperkte formule voor in- en uitchecken op locatie: klantbezoeken met GPS, pauzes en Mijn uren — geen roosters, meldingen of taken. €5 per uitvoerder per maand."
       },
       "2": {
-        "text": "In-/uitklokken en pauzes via Clock Point-QR, GPS-werkbezoeken op locatie- of unit-pin, aanwezigheid, urenstaat, Mijn uren en optionele minimumpauze per team."
+        "name": "WinProx Time",
+        "text": "De herkenbare naam voor prikklok, urenregistratie en uurrooster. In-/uitklokken via Clock Point, aanwezigheid, urenstaat en planning — inbegrepen in elke gewone formule."
+      },
+      "0": {
+        "name": "Werkorganisatie",
+        "text": "Meldingen, taken, inspectierondes, kalender en briefing horen bij de gewone WinProx-pakketten. Geen apart product boven op Time."
       }
     }
   },

@@ -621,11 +621,11 @@
         "meta_title": "WinProx per pulizie ed edilizia | Lavoro in sede",
         "social": {
             "og_title": "WinProx per pulizie ed edilizia | Lavoro in sede",
-            "og_description": "Timbrare, lavorare dal cliente e chiudere — con QR, visite GPS e CIAO opzionale per le pulizie. Una sola app facility."
+            "og_description": "Timbrare, lavorare dal cliente e chiudere — con QR, visite GPS, giri di ispezione e attività. Attivate il CIAO nelle Impostazioni."
         },
         "eyebrow": "Pulizie ed edilizia",
         "title": "Il lavoro nella sede del cliente, ben organizzato.",
-        "lead": "Le squadre di pulizie e di cantiere lavorano dal cliente, non in un’unica sede propria. WinProx è la stessa app facility: timbrare al Clock Point, vedere dove andare oggi, avviare una visita GPS, chiudere i compiti e finire. CIAO opzionale per le pulizie.",
+        "lead": "Le squadre di pulizie e di cantiere lavorano dal cliente, non in un'unica sede propria. WinProx collega timbratrice, giri di ispezione, segnalazioni e attività: timbrare al Clock Point, vedere dove andare oggi, avviare una visita GPS e chiudere il lavoro. Attivate il CIAO nelle Impostazioni.",
         "flow": "Timbrare → sul posto → lavoro → fatto",
         "video": {
             "title": "Scopri come funziona WinProx",
@@ -700,7 +700,7 @@
                 },
                 {
                     "title": "Per l’ufficio",
-                    "body": "Turno, presenza e chiusura in un’unica app facility. CIAO opzionale per le pulizie; l’edilizia segue la stessa pipeline quando lo scope RSZ è live."
+                    "body": "Turno, presenza e chiusura in un'unica piattaforma. Attivate il CIAO nelle Impostazioni; il collegamento ONSS viene confermato prima dell'invio. Il CIAO edilizia segue quando lo scope ONSS è live."
                 },
                 {
                     "title": "Per la sede del cliente",
@@ -710,11 +710,11 @@
         },
         "sites": {
             "title": "Stessa app, due squadre tipiche",
-            "lead": "WinProx non è un’app pulizie o edilizia separata. È Facility più Time (timbratrice inclusa), con le stesse segnalazioni, compiti e Clock Point.",
+            "lead": "WinProx non è un'app pulizie o edilizia separata. Nei pacchetti ordinari timbratrice, giri di ispezione, segnalazioni e attività fanno parte della stessa esperienza.",
             "items": [
                 {
                     "title": "Pulizie",
-                    "body": "Squadre su più indirizzi cliente: Clock Point, visita GPS, compiti e unit check. Invio CIAO opzionale all’ONSS (richiesta via info@winprox.app)."
+                    "body": "Squadre su più indirizzi cliente: Clock Point, visita GPS, compiti e unit check. Attivate il CIAO nelle Impostazioni; il collegamento ONSS viene confermato prima dell'invio."
                 },
                 {
                     "title": "Edilizia",
@@ -725,11 +725,11 @@
         "why": {
             "title": "Perché WinProx",
             "items": [
-                "Un’app facility: segnalazione → compiti → chiusura, più Time (timbratrice inclusa).",
+                "Un'unica piattaforma: timbratrice, turno, segnalazioni, attività e giri di ispezione.",
                 "Niente app per gli esecutori: bastano smartphone e QR.",
                 "La visita GPS prova il lavoro dal cliente; la timbratura apre solo il turno.",
                 "Il turno è pianificazione; il CIAO resta IN/OUT reali al Clock Point o alla visita.",
-                "Il CIAO pulizie è disponibile su richiesta; l’edilizia segue la stessa pipeline.",
+                "Attivate il CIAO nelle Impostazioni nei pacchetti belgi ordinari; il collegamento ONSS viene confermato prima dell'invio. L'edilizia segue la stessa pipeline quando lo scope è live.",
                 "L’ufficio segue presenza e compiti fino alla fine.",
                 "I lavoratori timbrano sul posto tramite un codice QR o lo schermo-orologio WinProx."
             ]
@@ -760,9 +760,9 @@
             "og_title": "WinProx Checkmate | Presenza sul posto comunicata all'ONSS",
             "og_description": "Timbratura, visita cliente GPS e invio CIAO automatico all'ONSS — 5 € per operatore attivo al mese, senza app."
         },
-        "eyebrow": "ONSS · Check In and Out at Work",
+        "eyebrow": "WinProx Checkmate · Check in and out @ work",
         "title": "Presenza presso il cliente, comunicata correttamente all'ONSS.",
-        "lead": "WinProx Checkmate è per le squadre che lavorano presso il cliente. L'operatore timbra, avvia la visita cliente sul posto e Checkmate comunica la presenza a Check In and Out at Work (CIAO). Pulizie ora; l'edilizia segue con lo scope ONSS ufficiale.",
+        "lead": "WinProx Checkmate è la formula limitata per timbrare sul posto. L'operatore timbra, avvia la visita cliente in loco e Checkmate comunica la presenza al CIAO. Le pulizie sono l'uso attuale; l'edilizia non è ancora generalmente disponibile. Turno, segnalazioni e attività appartengono ai pacchetti WinProx ordinari, non a Checkmate.",
         "flow": "Timbrare → visita cliente → CIAO a posto",
         "video": {
             "title": "Checkmate in un minuto",
@@ -842,7 +842,7 @@
         },
         "start": {
             "title": "Iniziare con Checkmate",
-            "lead": "Crea un account, inserisci il tuo numero d'impresa (CBE) e richiedi lo scope CIAO. Confermiamo noi il collegamento — da lì ogni registrazione parte in tempo reale verso l'ONSS.",
+            "lead": "Crea un account e inserisci il numero d'impresa (CBE) nelle Impostazioni. Il CIAO è attivo fin dall'inizio; il collegamento ONSS viene confermato prima dell'invio.",
             "trial": "Preferisci prima provare? Richiedi una prova via info@winprox.app — 25 seat, 30 giorni."
         },
         "close": {
@@ -868,7 +868,7 @@
         },
         "eyebrow": "WinProx Time · Timbratrice",
         "title": "Timbratrice digitale per la rilevazione orari nella vostra azienda.",
-        "lead": "Il personale timbra con il telefono, senza app. Confrontate le ore con il turno e le passate al segretariato sociale.",
+        "lead": "WinProx Time: il personale timbra con il telefono, senza app. Confrontate le ore con il turno e le passate al segretariato sociale.",
         "flow": "Scansione → conferma → timbrato",
         "cta_register": "Provare WinProx",
         "video": {
@@ -958,7 +958,7 @@
                 "Il personale timbra con la fotocamera del telefono. Senza app.",
                 "Ore, pause e turno stanno in WinProx.",
                 "Passate le ore al segretariato sociale. Il segretariato fa la paga.",
-                "Attivate CIAO se la squadra lavora dai clienti. Una squadra sul proprio sito lo lascia spento."
+                "Attivate il CIAO nelle Impostazioni se la squadra lavora dai clienti. Il collegamento ONSS (numero d'impresa) viene confermato prima dell'invio. Una squadra sulla propria sede lo lascia spento."
             ]
         },
         "faq": {
@@ -970,7 +970,7 @@
                 },
                 {
                     "q": "Quanto costa, e lo schermo è obbligatorio?",
-                    "a": "5 € per operatore attivo al mese. Lo schermo è un'opzione, a noleggio da 10 € al mese. Senza schermo bastano un adesivo QR o un link."
+                    "a": "I pacchetti WinProx ordinari partono da 59 € al mese. Lo schermo della timbratrice è opzionale, a noleggio da 10 € al mese per schermo. Senza schermo bastano un adesivo QR o un link."
                 },
                 {
                     "q": "Per chi vale CIAO, e per chi no?",

@@ -1,11 +1,11 @@
 {
     "title": "Abonnement, limieten & facturatie",
     "public_title": "Prijzen & formules",
-    "public_subtitle": "Kies het aantal licenties. Maandelijks te betalen via Stripe. Prikklok, uurrooster en CIAO (RSZ) inbegrepen.",
+    "public_subtitle": "Kies het aantal licenties. Maandelijks te betalen via Stripe. Prikklok, uurrooster, meldingen en CIAO (RSZ, via Instellingen) inbegrepen.",
     "public_register_cta": "Start gratis proefperiode",
     "subtitle": "Na je gratis maand kies je een formule. Licenties 5/10/25/50; units = 10× (50/100/250/500); documenten 10/20/30/40. Locaties en foto's onbeperkt.",
     "plans_heading": "Formules",
-    "plans_intro": "Betaal maandelijks. 5, 10, 25 of 50 licenties (collega's + uitvoerders); units = 10× dat aantal; documenten 10/20/30/40. Locaties en foto's onbeperkt. Prikklok, uurrooster en CIAO (RSZ) inbegrepen.",
+    "plans_intro": "Betaal maandelijks. 5, 10, 25 of 50 licenties (collega's + uitvoerders); units = 10× dat aantal; documenten 10/20/30/40. Locaties en foto's onbeperkt. Prikklok, uurrooster, meldingen en CIAO (RSZ, via Instellingen) inbegrepen.",
     "glossary": {
         "heading": "Licenties, units en foto's",
         "unit": "Unit — een object of plaats met een QR-code (machine, ruimte, vestiging). Elke nieuwe locatie krijgt automatisch een unit «Hele locatie». Units = 10× je licenties: 50 / 100 / 250 / 500.",
@@ -72,7 +72,7 @@
             "scale": "59€ per maand. Maandelijks te betalen via Stripe.",
             "features": [
                 "50 units en 10 documenten. Locaties en foto's onbeperkt.",
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+                "Prikklok, uurrooster en CIAO (RSZ) inbegrepen; CIAO zet u aan via Instellingen."
             ]
         },
         "winprox_5_time": {
@@ -81,7 +81,7 @@
             "scale": "59€ per maand. Maandelijks te betalen via Stripe.",
             "features": [
                 "50 units en 10 documenten. Locaties en foto's onbeperkt.",
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+                "Prikklok, uurrooster en CIAO (RSZ) inbegrepen; CIAO zet u aan via Instellingen."
             ]
         },
         "winprox_10": {
@@ -90,7 +90,7 @@
             "scale": "99€ per maand. Maandelijks te betalen via Stripe.",
             "features": [
                 "100 units en 20 documenten. Locaties en foto's onbeperkt.",
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+                "Prikklok, uurrooster en CIAO (RSZ) inbegrepen; CIAO zet u aan via Instellingen."
             ]
         },
         "winprox_10_time": {
@@ -99,7 +99,7 @@
             "scale": "99€ per maand. Maandelijks te betalen via Stripe.",
             "features": [
                 "100 units en 20 documenten. Locaties en foto's onbeperkt.",
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+                "Prikklok, uurrooster en CIAO (RSZ) inbegrepen; CIAO zet u aan via Instellingen."
             ]
         },
         "winprox_25": {
@@ -108,7 +108,7 @@
             "scale": "199€ per maand. Maandelijks te betalen via Stripe.",
             "features": [
                 "250 units en 30 documenten. Locaties en foto's onbeperkt.",
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+                "Prikklok, uurrooster en CIAO (RSZ) inbegrepen; CIAO zet u aan via Instellingen."
             ]
         },
         "winprox_25_time": {
@@ -117,7 +117,7 @@
             "scale": "199€ per maand. Maandelijks te betalen via Stripe.",
             "features": [
                 "250 units en 30 documenten. Locaties en foto's onbeperkt.",
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+                "Prikklok, uurrooster en CIAO (RSZ) inbegrepen; CIAO zet u aan via Instellingen."
             ]
         },
         "winprox_50": {
@@ -126,7 +126,7 @@
             "scale": "349€ per maand. Maandelijks te betalen via Stripe.",
             "features": [
                 "500 units en 40 documenten. Locaties en foto's onbeperkt.",
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+                "Prikklok, uurrooster en CIAO (RSZ) inbegrepen; CIAO zet u aan via Instellingen."
             ]
         },
         "winprox_50_time": {
@@ -135,7 +135,7 @@
             "scale": "349€ per maand. Maandelijks te betalen via Stripe.",
             "features": [
                 "500 units en 40 documenten. Locaties en foto's onbeperkt.",
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+                "Prikklok, uurrooster en CIAO (RSZ) inbegrepen; CIAO zet u aan via Instellingen."
             ]
         },
         "winprox_100": {
@@ -143,7 +143,7 @@
             "price": "Op maat",
             "scale": "Vanaf 100 licenties: WinProx Corporate.",
             "features": [
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+                "Prikklok, uurrooster en CIAO (RSZ) inbegrepen; CIAO zet u aan via Instellingen."
             ]
         },
         "winprox_100_time": {
@@ -151,7 +151,7 @@
             "price": "Op maat",
             "scale": "Vanaf 100 licenties: WinProx Corporate.",
             "features": [
-                "Prikklok, uurrooster, CIAO (RSZ) inbegrepen."
+                "Prikklok, uurrooster en CIAO (RSZ) inbegrepen; CIAO zet u aan via Instellingen."
             ]
         },
         "facility_10": {
@@ -223,10 +223,10 @@
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Prijs op maat",
-            "scale": "Vanaf 100 licenties, of API/webhooks/integraties nodig.",
+            "scale": "Contractueel aanbod voor grotere organisaties. Prijs op maat.",
             "features": [
-                "Prikklok, uurrooster, CIAO (RSZ), IoT Connect, ESG en API inbegrepen.",
-                "Volledige REST API en webhooks.",
+                "Voor grotere organisaties, met contractuele prijsafspraken.",
+                "Prikklok, uurrooster, CIAO (RSZ), ESG, IoT Connect en API mogelijk volgens afspraak.",
                 "Integraties, SLA en support op maat."
             ]
         },
@@ -331,7 +331,7 @@
     "comparison_notes": {
         "trial": "Proefperiode: 5 licenties, 50 units en 10 documenten (zelfde als de 5-licentiesformule). Daarna maandelijks via Stripe.",
         "unlimited": "Units = 10× je licenties (50 / 100 / 250 / 500). Documenten 10 / 20 / 30 / 40. Locaties en foto's onbeperkt.",
-        "corporate": "IoT, ESG en API: uitsluitend WinProx Corporate (vanaf 100 licenties)."
+        "corporate": "WinProx Corporate is een contractueel aanbod voor grotere organisaties. ESG, IoT en API zijn mogelijke onderdelen, niet de enige reden om Corporate te kiezen."
     },
     "contact_sales_cta": "Neem contact op",
     "public_contact_cta": "Vraag offerte aan",

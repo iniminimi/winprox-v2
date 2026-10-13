@@ -1,11 +1,11 @@
 {
     "title": "Abonnement, Limits & Abrechnung",
     "public_title": "Preise & Pakete",
-    "public_subtitle": "Wählen Sie die Anzahl der Lizenzen. Monatliche Zahlung über Stripe. Zeiterfassung, Dienstplan und CIAO (LSZ) inklusive.",
+    "public_subtitle": "Wählen Sie die Anzahl der Lizenzen. Monatliche Zahlung über Stripe. Stempeluhr, Dienstplan, Meldungen und CIAO (LSS, über Einstellungen) inklusive.",
     "public_register_cta": "Kostenlose Testphase starten",
     "subtitle": "Nach dem kostenlosen Monat wählen Sie eine Formel. Lizenzen 5/10/25/50; Units = 10× (50/100/250/500); Dokumente 10/20/30/40. Standorte und Fotos unbegrenzt.",
     "plans_heading": "Tarife",
-    "plans_intro": "Monatliche Zahlung. 5, 10, 25 oder 50 Lizenzen (Kollegen + Ausführende); Units = 10× diese Zahl; Dokumente 10/20/30/40. Standorte und Fotos unbegrenzt. Zeiterfassung, Dienstplan und CIAO (LSZ) inklusive.",
+    "plans_intro": "Monatliche Zahlung. 5, 10, 25 oder 50 Lizenzen (Kollegen + Ausführende); Units = 10× diese Zahl; Dokumente 10/20/30/40. Standorte und Fotos unbegrenzt. Stempeluhr, Dienstplan, Meldungen und CIAO (LSS, über Einstellungen) inklusive.",
     "glossary": {
         "heading": "Lizenzen, Units und Fotos",
         "unit": "Unit — Objekt oder Ort mit QR-Code (Maschine, Raum, Standort). Jeder neue Standort erhält automatisch eine Unit «Gesamter Standort». Units = 10× Ihre Lizenzen: 50 / 100 / 250 / 500.",
@@ -72,7 +72,7 @@
             "scale": "59€ pro Monat. Monatliche Zahlung über Stripe.",
             "features": [
                 "50 Units und 10 Dokumente. Standorte und Fotos unbegrenzt.",
-                "Zeiterfassung, Dienstplan und CIAO (LSZ) inklusive."
+                "Zeiterfassung, Dienstplan und CIAO (LSS) inklusive; CIAO schalten Sie in den Einstellungen ein."
             ]
         },
         "winprox_5_time": {
@@ -81,7 +81,7 @@
             "scale": "59€ pro Monat. Monatliche Zahlung über Stripe.",
             "features": [
                 "50 Units und 10 Dokumente. Standorte und Fotos unbegrenzt.",
-                "Zeiterfassung, Dienstplan und CIAO (LSZ) inklusive."
+                "Zeiterfassung, Dienstplan und CIAO (LSS) inklusive; CIAO schalten Sie in den Einstellungen ein."
             ]
         },
         "winprox_10": {
@@ -90,7 +90,7 @@
             "scale": "99€ pro Monat. Monatliche Zahlung über Stripe.",
             "features": [
                 "100 Units und 20 Dokumente. Standorte und Fotos unbegrenzt.",
-                "Zeiterfassung, Dienstplan und CIAO (LSZ) inklusive."
+                "Zeiterfassung, Dienstplan und CIAO (LSS) inklusive; CIAO schalten Sie in den Einstellungen ein."
             ]
         },
         "winprox_10_time": {
@@ -99,7 +99,7 @@
             "scale": "99€ pro Monat. Monatliche Zahlung über Stripe.",
             "features": [
                 "100 Units und 20 Dokumente. Standorte und Fotos unbegrenzt.",
-                "Zeiterfassung, Dienstplan und CIAO (LSZ) inklusive."
+                "Zeiterfassung, Dienstplan und CIAO (LSS) inklusive; CIAO schalten Sie in den Einstellungen ein."
             ]
         },
         "winprox_25": {
@@ -108,7 +108,7 @@
             "scale": "199€ pro Monat. Monatliche Zahlung über Stripe.",
             "features": [
                 "250 Units und 30 Dokumente. Standorte und Fotos unbegrenzt.",
-                "Zeiterfassung, Dienstplan und CIAO (LSZ) inklusive."
+                "Zeiterfassung, Dienstplan und CIAO (LSS) inklusive; CIAO schalten Sie in den Einstellungen ein."
             ]
         },
         "winprox_25_time": {
@@ -117,7 +117,7 @@
             "scale": "199€ pro Monat. Monatliche Zahlung über Stripe.",
             "features": [
                 "250 Units und 30 Dokumente. Standorte und Fotos unbegrenzt.",
-                "Zeiterfassung, Dienstplan und CIAO (LSZ) inklusive."
+                "Zeiterfassung, Dienstplan und CIAO (LSS) inklusive; CIAO schalten Sie in den Einstellungen ein."
             ]
         },
         "winprox_50": {
@@ -126,7 +126,7 @@
             "scale": "349€ pro Monat. Monatliche Zahlung über Stripe.",
             "features": [
                 "500 Units und 40 Dokumente. Standorte und Fotos unbegrenzt.",
-                "Zeiterfassung, Dienstplan und CIAO (LSZ) inklusive."
+                "Zeiterfassung, Dienstplan und CIAO (LSS) inklusive; CIAO schalten Sie in den Einstellungen ein."
             ]
         },
         "winprox_50_time": {
@@ -135,7 +135,7 @@
             "scale": "349€ pro Monat. Monatliche Zahlung über Stripe.",
             "features": [
                 "500 Units und 40 Dokumente. Standorte und Fotos unbegrenzt.",
-                "Zeiterfassung, Dienstplan und CIAO (LSZ) inklusive."
+                "Zeiterfassung, Dienstplan und CIAO (LSS) inklusive; CIAO schalten Sie in den Einstellungen ein."
             ]
         },
         "winprox_100": {
@@ -143,7 +143,7 @@
             "price": "Individuell",
             "scale": "Ab 100 Lizenzen: WinProx Corporate.",
             "features": [
-                "Stechuhr, Dienstplan, CIAO (LSS) inklusive."
+                "Stempeluhr, Dienstplan und CIAO (LSS) inklusive; CIAO schalten Sie in den Einstellungen ein."
             ]
         },
         "winprox_100_time": {
@@ -151,7 +151,7 @@
             "price": "Individuell",
             "scale": "Ab 100 Lizenzen: WinProx Corporate.",
             "features": [
-                "Stechuhr, Dienstplan, CIAO (LSS) inklusive."
+                "Stempeluhr, Dienstplan und CIAO (LSS) inklusive; CIAO schalten Sie in den Einstellungen ein."
             ]
         },
         "facility_10": {
@@ -223,10 +223,10 @@
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Individueller Preis",
-            "scale": "Ab 100 Lizenzen oder wenn API/Webhooks/Integrationen nötig sind.",
+            "scale": "Vertragliches Angebot für größere Organisationen. Individueller Preis.",
             "features": [
-                "Stechuhr, Dienstplan, CIAO (LSS), IoT Connect, ESG und API inklusive.",
-                "Vollständige REST-API und Webhooks.",
+                "Für größere Organisationen, mit vertraglicher Preisvereinbarung.",
+                "Stempeluhr, Dienstplan, CIAO (LSS), ESG, IoT Connect und API gemäß Vereinbarung.",
                 "Integrationen, SLA und Support nach Maß."
             ]
         },
@@ -331,7 +331,7 @@
     "comparison_notes": {
         "trial": "Testphase: 5 Lizenzen, 50 Units und 10 Dokumente (wie die 5-Lizenzen-Formel). Danach monatlich über Stripe.",
         "unlimited": "Units = 10× Ihre Lizenzen (50 / 100 / 250 / 500). Dokumente 10 / 20 / 30 / 40. Standorte und Fotos unbegrenzt.",
-        "corporate": "IoT, ESG und API: nur WinProx Corporate (ab 100 Lizenzen)."
+        "corporate": "WinProx Corporate ist ein vertragliches Angebot für größere Organisationen. ESG, IoT und API sind mögliche Bestandteile, nicht der einzige Grund für Corporate."
     },
     "contact_sales_cta": "Kontakt aufnehmen",
     "public_contact_cta": "Angebot anfragen",

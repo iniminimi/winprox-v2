@@ -1,11 +1,11 @@
 {
     "title": "Suscripción, límites y facturación",
     "public_title": "Precios y planes",
-    "public_subtitle": "Elija el número de licencias. Pago mensual con Stripe. Fichaje, planificación y CIAO incluidos.",
+    "public_subtitle": "Elija el número de licencias. Pago mensual con Stripe. Reloj, planificación, avisos y CIAO (ONSS, vía Ajustes) incluidos.",
     "public_register_cta": "Iniciar prueba gratuita",
     "subtitle": "Tras el mes gratis, elija una fórmula. Licencias 5/10/25/50; unidades = 10× (50/100/250/500); documentos 10/20/30/40. Ubicaciones y fotos ilimitadas.",
     "plans_heading": "Planes",
-    "plans_intro": "Pago mensual. 5, 10, 25 o 50 licencias (colegas + ejecutores); unidades = 10× ese número; documentos 10/20/30/40. Ubicaciones y fotos ilimitadas. Fichaje, planificación y CIAO incluidos.",
+    "plans_intro": "Pago mensual. 5, 10, 25 o 50 licencias (colegas + ejecutores); unidades = 10× ese número; documentos 10/20/30/40. Ubicaciones y fotos ilimitadas. Reloj, planificación, avisos y CIAO (ONSS, vía Ajustes) incluidos.",
     "glossary": {
         "heading": "Licencias, unidades y fotos",
         "unit": "Unidad — objeto o lugar con código QR. Cada ubicación nueva recibe automáticamente una unidad «Toda la ubicación». Unidades = 10× sus licencias: 50 / 100 / 250 / 500.",
@@ -72,7 +72,7 @@
             "scale": "59€ al mes. Pago mensual con Stripe.",
             "features": [
                 "50 unidades y 10 documentos. Ubicaciones y fotos ilimitadas.",
-                "Fichaje, planificación y CIAO (SS) incluidos."
+                "Fichaje, planificación y CIAO (ONSS) incluidos; active CIAO en Ajustes."
             ]
         },
         "winprox_5_time": {
@@ -81,7 +81,7 @@
             "scale": "59€ al mes. Pago mensual con Stripe.",
             "features": [
                 "50 unidades y 10 documentos. Ubicaciones y fotos ilimitadas.",
-                "Fichaje, planificación y CIAO (SS) incluidos."
+                "Fichaje, planificación y CIAO (ONSS) incluidos; active CIAO en Ajustes."
             ]
         },
         "winprox_10": {
@@ -90,7 +90,7 @@
             "scale": "99€ al mes. Pago mensual con Stripe.",
             "features": [
                 "100 unidades y 20 documentos. Ubicaciones y fotos ilimitadas.",
-                "Fichaje, planificación y CIAO (SS) incluidos."
+                "Fichaje, planificación y CIAO (ONSS) incluidos; active CIAO en Ajustes."
             ]
         },
         "winprox_10_time": {
@@ -99,7 +99,7 @@
             "scale": "99€ al mes. Pago mensual con Stripe.",
             "features": [
                 "100 unidades y 20 documentos. Ubicaciones y fotos ilimitadas.",
-                "Fichaje, planificación y CIAO (SS) incluidos."
+                "Fichaje, planificación y CIAO (ONSS) incluidos; active CIAO en Ajustes."
             ]
         },
         "winprox_25": {
@@ -108,7 +108,7 @@
             "scale": "199€ al mes. Pago mensual con Stripe.",
             "features": [
                 "250 unidades y 30 documentos. Ubicaciones y fotos ilimitadas.",
-                "Fichaje, planificación y CIAO (SS) incluidos."
+                "Fichaje, planificación y CIAO (ONSS) incluidos; active CIAO en Ajustes."
             ]
         },
         "winprox_25_time": {
@@ -117,7 +117,7 @@
             "scale": "199€ al mes. Pago mensual con Stripe.",
             "features": [
                 "250 unidades y 30 documentos. Ubicaciones y fotos ilimitadas.",
-                "Fichaje, planificación y CIAO (SS) incluidos."
+                "Fichaje, planificación y CIAO (ONSS) incluidos; active CIAO en Ajustes."
             ]
         },
         "winprox_50": {
@@ -126,7 +126,7 @@
             "scale": "349€ al mes. Pago mensual con Stripe.",
             "features": [
                 "500 unidades y 40 documentos. Ubicaciones y fotos ilimitadas.",
-                "Fichaje, planificación y CIAO (SS) incluidos."
+                "Fichaje, planificación y CIAO (ONSS) incluidos; active CIAO en Ajustes."
             ]
         },
         "winprox_50_time": {
@@ -135,7 +135,7 @@
             "scale": "349€ al mes. Pago mensual con Stripe.",
             "features": [
                 "500 unidades y 40 documentos. Ubicaciones y fotos ilimitadas.",
-                "Fichaje, planificación y CIAO (SS) incluidos."
+                "Fichaje, planificación y CIAO (ONSS) incluidos; active CIAO en Ajustes."
             ]
         },
         "winprox_100": {
@@ -143,7 +143,7 @@
             "price": "A medida",
             "scale": "Desde 100 licencias: WinProx Corporate.",
             "features": [
-                "Reloj, cuadrante, CIAO (ONSS) incluidos."
+                "Reloj, cuadrante y CIAO (ONSS) incluidos; active CIAO en Ajustes."
             ]
         },
         "winprox_100_time": {
@@ -151,7 +151,7 @@
             "price": "A medida",
             "scale": "Desde 100 licencias: WinProx Corporate.",
             "features": [
-                "Reloj, cuadrante, CIAO (ONSS) incluidos."
+                "Reloj, cuadrante y CIAO (ONSS) incluidos; active CIAO en Ajustes."
             ]
         },
         "facility_10": {
@@ -223,10 +223,10 @@
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Precio personalizado",
-            "scale": "Desde 100 licencias, o cuando se necesitan API/webhooks/integraciones.",
+            "scale": "Oferta contractual para organizaciones mayores. Precio a medida.",
             "features": [
-                "Reloj, cuadrante, CIAO (ONSS), IoT Connect, ESG y API incluidos.",
-                "API REST completa y webhooks.",
+                "Para organizaciones mayores, con precio contractual.",
+                "Reloj, cuadrante, CIAO (ONSS), ESG, IoT Connect y API según el acuerdo.",
                 "Integraciones, SLA y soporte a medida."
             ]
         },
@@ -331,7 +331,7 @@
     "comparison_notes": {
         "trial": "Prueba: 5 licencias, 50 unidades y 10 documentos (igual que la fórmula de 5). Luego pago mensual con Stripe.",
         "unlimited": "Unidades = 10× sus licencias (50 / 100 / 250 / 500). Documentos 10 / 20 / 30 / 40. Ubicaciones y fotos ilimitadas.",
-        "corporate": "IoT, ESG y API: solo WinProx Corporate (desde 100 licencias)."
+        "corporate": "WinProx Corporate es una oferta contractual para organizaciones mayores. ESG, IoT y API son componentes posibles, no la única razón para elegir Corporate."
     },
     "contact_sales_cta": "Contactar",
     "public_contact_cta": "Solicitar presupuesto",

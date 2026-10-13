@@ -6,14 +6,14 @@
     },
     "eyebrow": "FAQ",
     "title": "Veelgestelde vragen",
-    "subtitle": "Korte uitleg voor beheerders, medewerkers en veldteams — afgestemd op de huidige WinProx Facility-app.",
+    "subtitle": "Korte uitleg voor beheerders, medewerkers en veldteams — afgestemd op het huidige WinProx-platform.",
     "items": {
         "how_it_works": {
             "slug": "how_it_works",
             "type": "steps",
             "title": "Hoe werkt WinProx?",
-            "intro": "WinProx volgt één kernflow: melding → taken → afhandeling. Time (prikklok) is inbegrepen; ESG (metingen) is optioneel (Corporate). Optioneel unitmetingen via de unit-QR.",
-            "summary": "Locaties en units, melding via QR of beheer, goedkeuring op het publieke portaal, taken per team, opvolging via dashboard, briefing en kalender. Time (prikklok) inbegrepen; ESG op Corporate.",
+            "intro": "WinProx verbindt tijdregistratie met werkorganisatie: prikklok, rooster, meldingen, taken en inspectierondes. ESG is optioneel op Corporate. Optioneel unitmetingen via de unit-QR.",
+            "summary": "Locaties en units, melding via QR of beheer, taken per team, prikklok en rooster, inspectierondes. ESG op Corporate.",
             "steps": [
                 {
                     "title": "Locaties en units",
@@ -48,43 +48,43 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Hoeveel kost WinProx?",
-            "intro": "U start met een gratis proefmaand (5 licenties, 50 units, 10 documenten). IoT, ESG en API zitten niet in de proef. Daarna 5/10/25/50 licenties met 50/100/250/500 units. Maandelijks te betalen via Stripe. Corporate is op maat (vanaf 100 licenties of wanneer API/webhooks nodig zijn).",
-            "summary": "Proefperiode = formule 5. Daarna 5/10/25/50 licenties met 10× units. Maandelijks via Stripe. IoT, ESG en API op Corporate.",
+            "intro": "U start met een gratis proefmaand (5 licenties, 50 units, 10 documenten). IoT, ESG en API zitten niet in de proef. Daarna 5/10/25/50 licenties met 50/100/250/500 units. Maandelijks te betalen via Stripe. Corporate is een contractueel aanbod voor grotere organisaties, met prijs op maat.",
+            "summary": "Proefperiode = formule 5. Daarna 5/10/25/50 licenties met 10× units. Maandelijks via Stripe. Corporate op maat voor grotere organisaties; ESG, IoT en API mogelijk.",
             "content_note": "Licentie = collega met login of uitvoerder (Clock Point). Units = 10× licenties; documenten 10/20/30/40. Locaties en foto's onbeperkt. Exacte prijzen staan onder Abonnement.",
             "plans": {
                 "winprox_5": {
                     "units": "Tot 50 units. Locaties onbeperkt.",
                     "announcements": "59€ per maand",
-                    "documents": "Prikklok, uurrooster, CIAO (RSZ) inbegrepen.",
+                    "documents": "Prikklok, uurrooster en CIAO (RSZ) inbegrepen; CIAO zet u aan via Instellingen.",
                     "description": "Melden, taken en prikklok. Maandelijks via Stripe.",
                     "users": "Tot 5 licenties (collega's + uitvoerders)"
                 },
                 "winprox_10": {
                     "units": "Tot 100 units. Locaties onbeperkt.",
                     "announcements": "99€ per maand",
-                    "documents": "Prikklok, uurrooster, CIAO (RSZ) inbegrepen.",
+                    "documents": "Prikklok, uurrooster en CIAO (RSZ) inbegrepen; CIAO zet u aan via Instellingen.",
                     "description": "Melden, taken en prikklok. Maandelijks via Stripe.",
                     "users": "Tot 10 licenties (collega's + uitvoerders)"
                 },
                 "winprox_25": {
                     "units": "Tot 250 units. Locaties onbeperkt.",
                     "announcements": "199€ per maand",
-                    "documents": "Prikklok, uurrooster, CIAO (RSZ) inbegrepen.",
+                    "documents": "Prikklok, uurrooster en CIAO (RSZ) inbegrepen; CIAO zet u aan via Instellingen.",
                     "description": "Melden, taken en prikklok. Maandelijks via Stripe.",
                     "users": "Tot 25 licenties (collega's + uitvoerders)"
                 },
                 "winprox_50": {
                     "units": "Tot 500 units. Locaties onbeperkt.",
                     "announcements": "349€ per maand",
-                    "documents": "Prikklok, uurrooster, CIAO (RSZ) inbegrepen.",
+                    "documents": "Prikklok, uurrooster en CIAO (RSZ) inbegrepen; CIAO zet u aan via Instellingen.",
                     "description": "Melden, taken en prikklok. Maandelijks via Stripe.",
                     "users": "Tot 50 licenties (collega's + uitvoerders)"
                 },
                 "corporate": {
-                    "units": "Vanaf 100 licenties, of API/webhooks/integraties nodig.",
+                    "units": "Contractueel aanbod voor grotere organisaties.",
                     "announcements": "Prijs op maat",
                     "documents": "Prikklok, uurrooster, CIAO (RSZ), IoT Connect, ESG en API inbegrepen.",
-                    "description": "Voor 100+ licenties of wanneer API/webhooks nodig zijn.",
+                    "description": "Voor grotere organisaties, met prijs op maat. ESG, IoT en API mogelijk volgens afspraak.",
                     "users": "Licenties op maat; onbeperkt locaties en foto's"
                 }
             }
@@ -162,8 +162,8 @@
             "slug": "checkmate",
             "type": "text",
             "title": "Wat is WinProx Checkmate?",
-            "body": "Checkmate is de kale formule voor schoonmaak- en bouwploegen: uitvoerders klokken in en uit op Clock Point — via het startscherm-icoon of de aanmeldlink, zonder QR-scan — en starten klantbezoeken met een GPS-check op het werkadres (binnen 100 m). Geen meldingen of taken — wél CIAO (RSZ). Beheer ziet per klant gewerkte tijd en bezoeken (klantstatistieken). Proef: 30 dagen met 25 licenties om goed te testen; daarna €5 per actieve uitvoerder per maand. Geen units- of documentenlimieten.",
-            "summary": "Kale formule voor schoonmaak/bouw: klokken op Clock Point zonder scan (startscherm-icoon of aanmeldlink), GPS-klantbezoeken en CIAO (RSZ). €5 per actieve uitvoerder; proef 30 dagen / 25 licenties."
+            "body": "Checkmate is de beperkte formule voor in- en uitchecken op locatie, vooral voor schoonmaakploegen: uitvoerders klokken in en uit op Clock Point — via het startscherm-icoon of de aanmeldlink, zonder QR-scan — en starten klantbezoeken met een GPS-check op het werkadres (binnen 100 m). Geen roosters, meldingen of taken — wél CIAO (RSZ) vanaf de start. Bouw is nog niet algemeen beschikbaar. Beheer ziet per klant gewerkte tijd en bezoeken. Proef: 30 dagen met 25 licenties; daarna €5 per actieve uitvoerder per maand. Geen units- of documentenlimieten.",
+            "summary": "Beperkte formule voor werk op locatie (schoonmaak nu): klokken op Clock Point zonder scan, GPS-klantbezoeken en CIAO (RSZ). €5 per actieve uitvoerder; proef 30 dagen / 25 licenties."
         },
         "ddt_number": {
             "slug": "ddt_number",

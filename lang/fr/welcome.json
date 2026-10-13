@@ -19,7 +19,7 @@
     "hero": {
         "brand": "WinProx",
         "headline": "La pointeuse digitale pour le suivi du temps dans votre entreprise.",
-        "subtitle": "Les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social. Si votre équipe travaille chez des clients, vous pouvez activer la présence pour l'ONSS.",
+        "subtitle": "Les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social. Planning, signalements et tâches font partie de la même expérience WinProx. Activez le CIAO dans les Paramètres.",
         "flow": "Scan → Pointer → Heures → Secrétariat",
         "flow_steps": {
             "scan": "Scan",
@@ -31,9 +31,9 @@
         "cta_how": "Voir comment ça marche",
         "trial": "Essai : 30 jours, 25 sièges, après votre demande.",
         "feature_board": {
-            "badge": "CIAO",
-            "title": "Travailler chez des clients",
-            "text": "Activez la présence pour l'ONSS si votre équipe travaille chez des clients. Nettoyage pour des tiers dès maintenant. Construction le 1er avril 2027.",
+            "badge": "Checkmate",
+            "title": "Check in and out @ work",
+            "text": "WinProx Checkmate : la formule limitée pour pointer sur site. Nettoyage dès maintenant. CIAO inclus dès le départ.",
             "price": "5 € par exécutant et par mois"
         }
     },
@@ -43,7 +43,7 @@
     },
     "clock": {
         "title": "Une pointeuse petite et élégante pour votre entreprise",
-        "lead": "Vos employés pointent avec leur propre smartphone associé, à la pointeuse de l’entreprise. Sans appli, sans badge et sans identification biométrique.",
+        "lead": "WinProx Time : les employés pointent avec leur propre smartphone lié, à la pointeuse de l'entreprise. Pas d'appli, pas de badge et pas d'identification biométrique.",
         "items": [
             "Écran d’horloge fixe avec code QR renouvelé",
             "Enregistrement du temps et des heures dans WinProx",

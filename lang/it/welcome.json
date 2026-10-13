@@ -19,7 +19,7 @@
     "hero": {
         "brand": "WinProx",
         "headline": "La timbratrice digitale per la rilevazione orari nella vostra azienda.",
-        "subtitle": "Il personale timbra con il telefono, senza app. Confrontate le ore con il turno e le passate al segretariato sociale. Se la squadra lavora dai clienti, potete attivare la presenza per l'ONSS.",
+        "subtitle": "Il personale timbra con il telefono, senza app. Confrontate le ore con il turno e le passate al segretariato sociale. Pianificazione, segnalazioni e attività fanno parte della stessa esperienza WinProx. Attivate il CIAO nelle Impostazioni.",
         "flow": "Scansiona → Timbra → Ore → Segretariato",
         "flow_steps": {
             "scan": "Scansiona",
@@ -31,9 +31,9 @@
         "cta_how": "Scopri come funziona",
         "trial": "Prova: 30 giorni, 25 posti, dopo la vostra richiesta.",
         "feature_board": {
-            "badge": "CIAO",
-            "title": "Lavorare dai clienti",
-            "text": "Attivate la presenza per l'ONSS se la squadra lavora dai clienti. Pulizie per terzi da subito. Edilizia il 1° aprile 2027.",
+            "badge": "Checkmate",
+            "title": "Check in and out @ work",
+            "text": "WinProx Checkmate: la formula limitata per timbrare sul posto. Pulizie da subito. CIAO incluso fin dall'inizio.",
             "price": "5 € per operatore al mese"
         }
     },
@@ -43,7 +43,7 @@
     },
     "clock": {
         "title": "Una timbratrice piccola ed elegante per la vostra azienda",
-        "lead": "I dipendenti timbrano in entrata e in uscita con il proprio smartphone collegato alla timbratrice dell’azienda. Nessuna app, nessun badge e nessuna identificazione biometrica.",
+        "lead": "WinProx Time: i dipendenti timbrano con il proprio smartphone collegato, alla timbratrice dell'azienda. Niente app, niente badge e nessuna identificazione biometrica.",
         "items": [
             "Schermo-orologio fisso con codice QR rinnovato",
             "Registrazione di tempo e presenza in WinProx",

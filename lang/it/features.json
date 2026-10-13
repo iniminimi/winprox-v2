@@ -17,7 +17,7 @@
         },
         "eyebrow": "Facility",
         "title": "Gestione Facility via portali QR",
-        "lead": "WinProx Facility collega ogni unità a un portale digitale: segnalare, approvare, assegnare attività e completare il lavoro in un unico flusso.",
+        "lead": "Segnalazioni, attività e giri di ispezione fanno parte dei pacchetti WinProx ordinari. Non sono un prodotto separato sopra Time: ogni unit ha un portale digitale per segnalare, approvare, assegnare attività e chiudere.",
         "problem": {
             "title": "Quale problema risolve?",
             "body": "Difetti e richieste si disperdono tra telefono, Excel ed e-mail. I team sul campo mancano di contesto; ai responsabili manca la panoramica. WinProx centralizza segnalazione → attività → completamento."
@@ -50,9 +50,9 @@
             "og_description": "Timbratura ingresso/uscita e pause via QR Clock Point, presenza, foglio ore, Le mie ore e pausa minima per team — collegati ai flussi facility."
         },
         "eyebrow": "Time",
-        "logo_alt": "Modulo Time — parte di WinProx Facility",
+        "logo_alt": "WinProx Time — timbratrice, rilevazione orari e turno",
         "title": "Rilevazione presenze via Clock Point",
-        "lead": "Time è la timbratrice di WinProx: inclusa in ogni formula. Ingresso/uscita con lo stesso QR Clock Point del lavoro sul campo.",
+        "lead": "WinProx Time è la timbratrice, la rilevazione orari e il turno di WinProx — incluso in ogni formula ordinaria. Timbratura tramite lo stesso QR Clock Point del lavoro sul campo.",
         "problem": {
             "title": "Quale problema risolve?",
             "body": "Presenze e turni spesso vivono in uno strumento separato, scollegato da segnalazioni e attività — rendendo difficile vedere chi era in loco e quando."

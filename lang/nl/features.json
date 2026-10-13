@@ -17,7 +17,7 @@
         },
         "eyebrow": "Facility",
         "title": "Facility management via QR-portalen",
-        "lead": "WinProx Facility koppelt elke unit aan een digitaal portaal: melden, goedkeuren, taken toewijzen en afhandelen in één flow.",
+        "lead": "Meldingen, taken en inspectierondes horen bij de gewone WinProx-pakketten. Ze zijn geen apart product boven op Time: elke unit krijgt een digitaal portaal om te melden, goed te keuren, taken toe te wijzen en af te handelen.",
         "problem": {
             "title": "Welk probleem lost het op?",
             "body": "Defecten en verzoeken raken verspreid over telefoon, Excel en e-mail. Veldteams missen context; beheerders missen overzicht. WinProx centraliseert de keten melding → taken → afhandeling."
@@ -50,9 +50,9 @@
             "og_description": "In-/uitklokken en pauzes via Clock Point-QR, aanwezigheid, urenstaat, Mijn uren en minimumpauze per team — gekoppeld aan facility-workflows."
         },
         "eyebrow": "Time",
-        "logo_alt": "Module Time — onderdeel van WinProx Facility",
+        "logo_alt": "WinProx Time — prikklok, urenregistratie en uurrooster",
         "title": "Tijdregistratie via Clock Point",
-        "lead": "Time is de prikklok van WinProx: inbegrepen in elke formule. In-/uitklokken via dezelfde Clock Point-QR als het veldwerk.",
+        "lead": "WinProx Time is de prikklok, urenregistratie en het uurrooster van WinProx — inbegrepen in elke gewone formule. In-/uitklokken via dezelfde Clock Point-QR als het veldwerk.",
         "problem": {
             "title": "Welk probleem lost het op?",
             "body": "Aanwezigheid en shifts zitten vaak in een aparte tool, los van meldingen en taken. Dat bemoeilijkt opvolging wie wanneer op locatie was."

@@ -6,14 +6,14 @@
     },
     "eyebrow": "FAQ",
     "title": "Preguntas frecuentes",
-    "subtitle": "Guía breve para administradores, personal y equipos de campo — alineada con la app WinProx Facility actual.",
+    "subtitle": "Guía breve para administradores, personal y equipos de campo — alineada con la plataforma WinProx actual.",
     "items": {
         "how_it_works": {
             "slug": "how_it_works",
             "type": "steps",
             "title": "¿Cómo funciona WinProx?",
-            "intro": "WinProx sigue un flujo central: aviso → tareas → cierre. Time (reloj de fichar) está incluido; ESG (mediciones) es opcional (Corporate). Mediciones de unidad opcionales vía el QR de unidad.",
-            "summary": "Ubicaciones y unidades, aviso por QR o administración, aprobación en el portal público, tareas por equipo, seguimiento en el panel, briefing y calendario. Time (reloj de fichar) incluido; ESG en Corporate.",
+            "intro": "WinProx une el registro horario con la organización del trabajo: reloj, horario, avisos, tareas y rondas de inspección. ESG es opcional en Corporate. Mediciones de unidad opcionales vía el QR de unidad.",
+            "summary": "Ubicaciones y unidades, aviso por QR o administración, tareas por equipo, reloj y horario, rondas de inspección. ESG en Corporate.",
             "steps": [
                 {
                     "title": "Sitios y units",
@@ -48,43 +48,43 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "¿Cuánto cuesta WinProx?",
-            "intro": "Empieza con un mes de prueba gratis (5 licencias, 50 unidades, 10 documentos). IoT, ESG y API no están en la prueba. Luego 5/10/25/50 licencias con 50/100/250/500 unidades. Pago mensual con Stripe. Corporate a medida (desde 100 licencias o cuando se necesitan API/webhooks).",
-            "summary": "Prueba = fórmula 5. Luego 5/10/25/50 licencias con 10× unidades. Pago mensual con Stripe. IoT, ESG y API en Corporate.",
+            "intro": "Empieza con un mes de prueba gratuito (5 licencias, 50 units, 10 documentos). IoT, ESG y API no están en la prueba. Luego 5/10/25/50 licencias con 50/100/250/500 units. Pago mensual con Stripe. Corporate es una oferta contractual para organizaciones mayores, con precio a medida.",
+            "summary": "Prueba = fórmula 5. Luego 5/10/25/50 licencias con 10× units. Pago mensual con Stripe. Corporate a medida para organizaciones mayores; ESG, IoT y API posibles.",
             "content_note": "Licencia = colega con login o ejecutor (Clock Point). Unidades = 10× licencias; documentos 10/20/30/40. Ubicaciones y fotos ilimitadas. Precios exactos en Suscripción.",
             "plans": {
                 "winprox_5": {
                     "units": "Hasta 50 unidades. Ubicaciones ilimitadas.",
                     "announcements": "59€ al mes",
-                    "documents": "Fichaje, planificación y CIAO incluidos.",
+                    "documents": "Fichaje, planificación y CIAO (ONSS) incluidos; active CIAO en Ajustes.",
                     "description": "Avisos, tareas y fichaje. Pago mensual con Stripe.",
                     "users": "Hasta 5 licencias (colegas + ejecutores)"
                 },
                 "winprox_10": {
                     "units": "Hasta 100 unidades. Ubicaciones ilimitadas.",
                     "announcements": "99€ al mes",
-                    "documents": "Fichaje, planificación y CIAO incluidos.",
+                    "documents": "Fichaje, planificación y CIAO (ONSS) incluidos; active CIAO en Ajustes.",
                     "description": "Avisos, tareas y fichaje. Pago mensual con Stripe.",
                     "users": "Hasta 10 licencias (colegas + ejecutores)"
                 },
                 "winprox_25": {
                     "units": "Hasta 250 unidades. Ubicaciones ilimitadas.",
                     "announcements": "199€ al mes",
-                    "documents": "Fichaje, planificación y CIAO incluidos.",
+                    "documents": "Fichaje, planificación y CIAO (ONSS) incluidos; active CIAO en Ajustes.",
                     "description": "Avisos, tareas y fichaje. Pago mensual con Stripe.",
                     "users": "Hasta 25 licencias (colegas + ejecutores)"
                 },
                 "winprox_50": {
                     "units": "Hasta 500 unidades. Ubicaciones ilimitadas.",
                     "announcements": "349€ al mes",
-                    "documents": "Fichaje, planificación y CIAO incluidos.",
+                    "documents": "Fichaje, planificación y CIAO (ONSS) incluidos; active CIAO en Ajustes.",
                     "description": "Avisos, tareas y fichaje. Pago mensual con Stripe.",
                     "users": "Hasta 50 licencias (colegas + ejecutores)"
                 },
                 "corporate": {
-                    "units": "Desde 100 licencias, o si se necesitan API/webhooks/integraciones.",
+                    "units": "Oferta contractual para organizaciones mayores.",
                     "announcements": "Precio a medida",
                     "documents": "Reloj, cuadrante, CIAO (ONSS), IoT Connect, ESG y API incluidos.",
-                    "description": "Para 100+ licencias o cuando se necesitan API/webhooks.",
+                    "description": "Para organizaciones mayores, con precio a medida. ESG, IoT y API según el acuerdo.",
                     "users": "Licencias a medida; ubicaciones y fotos ilimitadas"
                 }
             }
@@ -158,8 +158,8 @@
             "slug": "checkmate",
             "type": "text",
             "title": "¿Qué es WinProx Checkmate?",
-            "body": "Checkmate es la fórmula mínima para equipos de limpieza y construcción: los operarios fichan en Clock Point — con el icono de la pantalla de inicio o el enlace de acceso, sin escanear QR — e inician visitas a clientes con control GPS en la dirección de obra (dentro de 100 m). Sin incidencias ni tareas — sí CIAO (ONSS). El back office ve por cliente el tiempo trabajado y las visitas (estadísticas de clientes). Prueba: 30 días con 25 licencias para probar bien; después 5 € por operario activo al mes. Sin límites de units ni documentos.",
-            "summary": "Fórmula mínima limpieza/construcción: fichaje en Clock Point sin escanear (icono de inicio o enlace), visitas GPS a clientes y CIAO (ONSS). 5 € por operario activo; prueba 30 días / 25 licencias."
+            "body": "Checkmate es la fórmula limitada para fichar in situ, sobre todo para equipos de limpieza: los ejecutores fichan en Clock Point — vía el icono de inicio o el enlace de identificación, sin escaneo QR — y empiezan visitas al cliente con control GPS en la dirección (dentro de 100 m). Sin horarios, avisos ni tareas — pero sí CIAO (ONSS) desde el inicio. La construcción aún no está generalmente disponible. Prueba: 30 días con 25 licencias; después 5 € por trabajador activo al mes. Sin límites de units ni documentos.",
+            "summary": "Fórmula limitada para trabajo in situ (limpieza ahora): fichaje en Clock Point sin escaneo, visitas GPS y CIAO (ONSS). 5 € por trabajador activo; prueba 30 días / 25 licencias."
         },
         "ddt_number": {
             "slug": "ddt_number",

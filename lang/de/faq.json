@@ -6,14 +6,14 @@
     },
     "eyebrow": "FAQ",
     "title": "Häufig gestellte Fragen",
-    "subtitle": "Kurze Erklärung für Administratoren, Mitarbeiter und Außendienstteams — abgestimmt auf die aktuelle WinProx Facility-App.",
+    "subtitle": "Kurze Erklärung für Administratoren, Mitarbeitende und Außendienst — abgestimmt auf die aktuelle WinProx-Plattform.",
     "items": {
         "how_it_works": {
             "slug": "how_it_works",
             "type": "steps",
             "title": "Wie funktioniert WinProx?",
-            "intro": "WinProx folgt einem Kernablauf: Meldung → Aufgaben → Abschluss. Time (Stechuhr) ist enthalten; ESG (Messungen) ist optional (Corporate). Optionale Unit-Messungen über den Unit-QR.",
-            "summary": "Standorte und Units, Meldung per QR oder Verwaltung, Freigabe im öffentlichen Portal, Aufgaben pro Team, Nachverfolgung über Dashboard, Briefing und Kalender. Time (Stechuhr) enthalten; ESG bei Corporate.",
+            "intro": "WinProx verbindet Zeiterfassung mit Arbeitsorganisation: Stempeluhr, Dienstplan, Meldungen, Aufgaben und Prüfrunden. ESG ist auf Corporate optional. Optionale Unit-Messungen über den Unit-QR.",
+            "summary": "Standorte und Units, Meldung per QR oder Verwaltung, Aufgaben pro Team, Stempeluhr und Dienstplan, Prüfrunden. ESG auf Corporate.",
             "steps": [
                 {
                     "title": "Standorte und Units",
@@ -48,43 +48,43 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Was kostet WinProx?",
-            "intro": "Sie starten mit einem kostenlosen Testmonat (5 Lizenzen, 50 Units, 10 Dokumente). IoT, ESG und API sind nicht in der Testphase. Danach 5/10/25/50 Lizenzen mit 50/100/250/500 Units. Monatliche Zahlung über Stripe. Corporate individuell (ab 100 Lizenzen oder wenn API/Webhooks nötig).",
-            "summary": "Testphase = Formel 5. Danach 5/10/25/50 Lizenzen mit 10× Units. Monatlich über Stripe. IoT, ESG und API auf Corporate.",
+            "intro": "Sie starten mit einem kostenlosen Testmonat (5 Lizenzen, 50 Units, 10 Dokumente). IoT, ESG und API sind nicht in der Testphase. Dann 5/10/25/50 Lizenzen mit 50/100/250/500 Units. Monatliche Zahlung über Stripe. Corporate ist ein vertragliches Angebot für größere Organisationen, zum individuellen Preis.",
+            "summary": "Test = Formel 5. Dann 5/10/25/50 Lizenzen mit 10× Units. Monatlich über Stripe. Corporate individuell für größere Organisationen; ESG, IoT und API möglich.",
             "content_note": "Lizenz = Kollege mit Login oder Ausführender (Clock Point). Units = 10× Lizenzen; Dokumente 10/20/30/40. Standorte und Fotos unbegrenzt. Genaue Preise unter Abonnement.",
             "plans": {
                 "winprox_5": {
                     "units": "Bis 50 Units. Standorte unbegrenzt.",
                     "announcements": "59€ pro Monat",
-                    "documents": "Zeiterfassung, Dienstplan und CIAO (LSZ) inklusive.",
+                    "documents": "Zeiterfassung, Dienstplan und CIAO (LSS) inklusive; CIAO schalten Sie in den Einstellungen ein.",
                     "description": "Meldungen, Aufgaben und Zeiterfassung. Monatlich über Stripe.",
                     "users": "Bis 5 Lizenzen (Kollegen + Ausführende)"
                 },
                 "winprox_10": {
                     "units": "Bis 100 Units. Standorte unbegrenzt.",
                     "announcements": "99€ pro Monat",
-                    "documents": "Zeiterfassung, Dienstplan und CIAO (LSZ) inklusive.",
+                    "documents": "Zeiterfassung, Dienstplan und CIAO (LSS) inklusive; CIAO schalten Sie in den Einstellungen ein.",
                     "description": "Meldungen, Aufgaben und Zeiterfassung. Monatlich über Stripe.",
                     "users": "Bis 10 Lizenzen (Kollegen + Ausführende)"
                 },
                 "winprox_25": {
                     "units": "Bis 250 Units. Standorte unbegrenzt.",
                     "announcements": "199€ pro Monat",
-                    "documents": "Zeiterfassung, Dienstplan und CIAO (LSZ) inklusive.",
+                    "documents": "Zeiterfassung, Dienstplan und CIAO (LSS) inklusive; CIAO schalten Sie in den Einstellungen ein.",
                     "description": "Meldungen, Aufgaben und Zeiterfassung. Monatlich über Stripe.",
                     "users": "Bis 25 Lizenzen (Kollegen + Ausführende)"
                 },
                 "winprox_50": {
                     "units": "Bis 500 Units. Standorte unbegrenzt.",
                     "announcements": "349€ pro Monat",
-                    "documents": "Zeiterfassung, Dienstplan und CIAO (LSZ) inklusive.",
+                    "documents": "Zeiterfassung, Dienstplan und CIAO (LSS) inklusive; CIAO schalten Sie in den Einstellungen ein.",
                     "description": "Meldungen, Aufgaben und Zeiterfassung. Monatlich über Stripe.",
                     "users": "Bis 50 Lizenzen (Kollegen + Ausführende)"
                 },
                 "corporate": {
-                    "units": "Ab 100 Lizenzen, oder wenn API/Webhooks/Integrationen nötig sind.",
+                    "units": "Vertragliches Angebot für größere Organisationen.",
                     "announcements": "Individueller Preis",
                     "documents": "Stechuhr, Dienstplan, CIAO (LSS), IoT Connect, ESG und API inklusive.",
-                    "description": "Für 100+ Lizenzen oder wenn API/Webhooks nötig sind.",
+                    "description": "Für größere Organisationen, zum individuellen Preis. ESG, IoT und API gemäß Vereinbarung.",
                     "users": "Lizenzen nach Maß; unbegrenzte Standorte und Fotos"
                 }
             }
@@ -158,8 +158,8 @@
             "slug": "checkmate",
             "type": "text",
             "title": "Was ist WinProx Checkmate?",
-            "body": "Checkmate ist die schlanke Formel für Reinigungs- und Bauteams: Ausführende stempeln auf Clock Point — über das Startbildschirm-Icon oder den Anmeldelink, ohne QR-Scan — und starten Kundenbesuche mit GPS-Prüfung an der Einsatzadresse (innerhalb 100 m). Keine Meldungen oder Aufgaben — dafür CIAO (LSS). Die Verwaltung sieht pro Kunde gearbeitete Zeit und Besuche (Kundenstatistiken). Probe: 30 Tage mit 25 Lizenzen zum gründlichen Testen; danach 5 € pro aktivem Ausführer pro Monat. Keine Unit- oder Dokumentenlimits.",
-            "summary": "Schlanke Formel für Reinigung/Bau: Stempeln auf Clock Point ohne Scan (Startbildschirm-Icon oder Anmeldelink), GPS-Kundenbesuche und CIAO (LSS). 5 € pro aktivem Ausführer; Probe 30 Tage / 25 Lizenzen."
+            "body": "Checkmate ist die schlanke Formel zum Ein- und Ausstempeln vor Ort, vor allem für Reinigungstrupps: Ausführende stempeln am Clock Point — über das Startbildschirm-Symbol oder den Anmeldelink, ohne QR-Scan — und starten Kundenbesuche mit GPS-Prüfung an der Arbeitsadresse (innerhalb von 100 m). Keine Dienstpläne, Meldungen oder Aufgaben — aber CIAO (LSS) von Beginn an. Bau ist noch nicht allgemein verfügbar. Test: 30 Tage mit 25 Lizenzen; danach 5 € pro aktivem Ausführenden und Monat. Keine Unit- oder Dokumentenlimits.",
+            "summary": "Schlanke Formel für Arbeit vor Ort (Reinigung jetzt): Stempeln am Clock Point ohne Scan, GPS-Kundenbesuche und CIAO (LSS). 5 € pro aktivem Ausführenden; Test 30 Tage / 25 Lizenzen."
         },
         "ddt_number": {
             "slug": "ddt_number",

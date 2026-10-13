@@ -6,14 +6,14 @@
     },
     "eyebrow": "FAQ",
     "title": "Questions fréquentes",
-    "subtitle": "Guide court pour administrateurs, collaborateurs et équipes terrain — aligné sur l'application WinProx Facility actuelle.",
+    "subtitle": "Guide court pour administrateurs, collaborateurs et équipes de terrain — aligné sur la plateforme WinProx actuelle.",
     "items": {
         "how_it_works": {
             "slug": "how_it_works",
             "type": "steps",
             "title": "Comment fonctionne WinProx ?",
-            "intro": "WinProx suit un flux unique : signalement → tâches → clôture. Time (pointeuse) est inclus ; ESG (mesures) est optionnel (Corporate). Mesures d’unité optionnelles via le QR d’unité.",
-            "summary": "Lieux et unités, signalement via QR ou back-office, approbation sur le portail public, tâches par équipe, suivi via tableau de bord, briefing et calendrier. Time (pointeuse) inclus ; ESG en Corporate.",
+            "intro": "WinProx relie le suivi du temps à l'organisation du travail : pointeuse, horaire, signalements, tâches et tournées d'inspection. L'ESG est optionnel sur Corporate. Mesures d'unité optionnelles via le QR d'unité.",
+            "summary": "Sites et units, signalement via QR ou back-office, tâches par équipe, pointeuse et horaire, tournées d'inspection. ESG sur Corporate.",
             "steps": [
                 {
                     "title": "Sites et units",
@@ -48,43 +48,43 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Combien coûte WinProx ?",
-            "intro": "Vous commencez par un mois d'essai gratuit (5 licences, 50 units, 10 documents). IoT, ESG et API ne sont pas dans l'essai. Puis 5/10/25/50 licences avec 50/100/250/500 units. Paiement mensuel via Stripe. Corporate sur mesure (à partir de 100 licences ou si API/webhooks nécessaires).",
-            "summary": "Essai = formule 5. Puis 5/10/25/50 licences avec 10× units. Paiement mensuel via Stripe. IoT, ESG et API sur Corporate.",
+            "intro": "Vous commencez par un mois d'essai gratuit (5 licences, 50 units, 10 documents). IoT, ESG et API ne sont pas dans l'essai. Puis 5/10/25/50 licences avec 50/100/250/500 units. Paiement mensuel via Stripe. Corporate est une offre contractuelle pour les plus grandes organisations, au tarif sur mesure.",
+            "summary": "Essai = formule 5. Puis 5/10/25/50 licences avec 10× units. Paiement mensuel via Stripe. Corporate sur mesure pour les plus grandes organisations ; ESG, IoT et API possibles.",
             "content_note": "Licence = collègue avec login ou exécutant (Clock Point). Units = 10× licences ; documents 10/20/30/40. Sites et photos illimités. Prix exacts sous Abonnement.",
             "plans": {
                 "winprox_5": {
                     "units": "Jusqu'à 50 units. Sites illimités.",
                     "announcements": "59€ par mois",
-                    "documents": "Pointeuse, planning et CIAO (ONSS) inclus.",
+                    "documents": "Pointeuse, planning et CIAO (ONSS) inclus ; activez le CIAO dans les Paramètres.",
                     "description": "Signalements, tâches et pointeuse. Paiement mensuel via Stripe.",
                     "users": "Jusqu'à 5 licences (collègues + exécutants)"
                 },
                 "winprox_10": {
                     "units": "Jusqu'à 100 units. Sites illimités.",
                     "announcements": "99€ par mois",
-                    "documents": "Pointeuse, planning et CIAO (ONSS) inclus.",
+                    "documents": "Pointeuse, planning et CIAO (ONSS) inclus ; activez le CIAO dans les Paramètres.",
                     "description": "Signalements, tâches et pointeuse. Paiement mensuel via Stripe.",
                     "users": "Jusqu'à 10 licences (collègues + exécutants)"
                 },
                 "winprox_25": {
                     "units": "Jusqu'à 250 units. Sites illimités.",
                     "announcements": "199€ par mois",
-                    "documents": "Pointeuse, planning et CIAO (ONSS) inclus.",
+                    "documents": "Pointeuse, planning et CIAO (ONSS) inclus ; activez le CIAO dans les Paramètres.",
                     "description": "Signalements, tâches et pointeuse. Paiement mensuel via Stripe.",
                     "users": "Jusqu'à 25 licences (collègues + exécutants)"
                 },
                 "winprox_50": {
                     "units": "Jusqu'à 500 units. Sites illimités.",
                     "announcements": "349€ par mois",
-                    "documents": "Pointeuse, planning et CIAO (ONSS) inclus.",
+                    "documents": "Pointeuse, planning et CIAO (ONSS) inclus ; activez le CIAO dans les Paramètres.",
                     "description": "Signalements, tâches et pointeuse. Paiement mensuel via Stripe.",
                     "users": "Jusqu'à 50 licences (collègues + exécutants)"
                 },
                 "corporate": {
-                    "units": "À partir de 100 licences, ou si API/webhooks/intégrations sont nécessaires.",
+                    "units": "Offre contractuelle pour les plus grandes organisations.",
                     "announcements": "Prix sur mesure",
                     "documents": "Pointeuse, planning, CIAO (ONSS), IoT Connect, ESG et API inclus.",
-                    "description": "Pour 100+ licences ou lorsque API/webhooks sont nécessaires.",
+                    "description": "Pour les plus grandes organisations, au tarif sur mesure. ESG, IoT et API selon l'accord.",
                     "users": "Licences sur mesure ; lieux et photos illimités"
                 }
             }
@@ -158,8 +158,8 @@
             "slug": "checkmate",
             "type": "text",
             "title": "Qu'est-ce que WinProx Checkmate ?",
-            "body": "Checkmate est la formule allégée pour équipes de nettoyage et de construction : les exécutants pointent sur Clock Point — via l’icône de l’écran d’accueil ou le lien d’identification, sans scan QR — et démarrent les visites clients avec un contrôle GPS à l'adresse de chantier (dans les 100 m). Pas de signalements ni de tâches — mais CIAO (ONSS). La gestion voit par client le temps travaillé et les visites (statistiques clients). Essai : 30 jours avec 25 licences pour bien tester ; ensuite 5 € par exécutant actif par mois. Pas de limites units ni documents.",
-            "summary": "Formule allégée nettoyage/construction : pointage sur Clock Point sans scan (icône d’accueil ou lien), visites clients GPS et CIAO (ONSS). 5 € par exécutant actif ; essai 30 jours / 25 licences."
+            "body": "Checkmate est la formule limitée pour pointer sur site, surtout pour les équipes de nettoyage : les exécutants pointent sur Clock Point — via l'icône d'accueil ou le lien d'identification, sans scan QR — et démarrent les visites clients avec un contrôle GPS à l'adresse (dans les 100 m). Pas d'horaires, de signalements ni de tâches — mais CIAO (ONSS) dès le départ. La construction n'est pas encore généralement disponible. Essai : 30 jours avec 25 licences ; ensuite 5 € par exécutant actif par mois. Pas de limites units ni documents.",
+            "summary": "Formule limitée pour le travail sur site (nettoyage aujourd'hui) : pointage Clock Point sans scan, visites clients GPS et CIAO (ONSS). 5 € par exécutant actif ; essai 30 jours / 25 licences."
         },
         "ddt_number": {
             "slug": "ddt_number",

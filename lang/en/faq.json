@@ -6,14 +6,14 @@
     },
     "eyebrow": "FAQ",
     "title": "Frequently asked questions",
-    "subtitle": "Short guide for administrators, staff, and field teams — aligned with the current WinProx Facility app.",
+    "subtitle": "Short guide for administrators, staff, and field teams — aligned with the current WinProx platform.",
     "items": {
         "how_it_works": {
             "slug": "how_it_works",
             "type": "steps",
             "title": "How does WinProx work?",
-            "intro": "WinProx follows one core flow: issue → tasks → completion. Time (punch clock) is included; ESG (measurements) is optional (Corporate). Optional unit measurements via the unit QR.",
-            "summary": "Locations and units, reporting via QR or back office, approval on the public portal, tasks per team, follow-up via dashboard, briefing and calendar. Time (punch clock) included; ESG on Corporate.",
+            "intro": "WinProx connects time tracking with work organisation: punch clock, roster, issues, tasks and inspection rounds. ESG is optional on Corporate. Optional unit measurements via the unit QR.",
+            "summary": "Locations and units, reporting via QR or back office, tasks per team, punch clock and roster, inspection rounds. ESG on Corporate.",
             "steps": [
                 {
                     "title": "Sites and units",
@@ -48,43 +48,43 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "How much does WinProx cost?",
-            "intro": "You start with a free trial month (5 seats, 50 units, 10 documents). IoT, ESG and API are not in the trial. Then 5/10/25/50 seats with 50/100/250/500 units. Billed monthly via Stripe. Corporate is custom (from 100 seats or when API/webhooks are needed).",
-            "summary": "Trial = 5-seat plan. Then 5/10/25/50 seats with 10× units. Billed monthly via Stripe. IoT, ESG and API on Corporate.",
+            "intro": "You start with a free trial month (5 seats, 50 units, 10 documents). IoT, ESG and API are not in the trial. Then 5/10/25/50 seats with 50/100/250/500 units. Billed monthly via Stripe. Corporate is a contractual offer for larger organisations, with custom pricing.",
+            "summary": "Trial = 5-seat plan. Then 5/10/25/50 seats with 10× units. Billed monthly via Stripe. Corporate custom for larger organisations; ESG, IoT and API possible.",
             "content_note": "Seat = colleague with login or worker (Clock Point). Units = 10× seats; documents 10/20/30/40. Locations and photos unlimited. Exact prices under Subscription.",
             "plans": {
                 "winprox_5": {
                     "units": "Up to 50 units. Locations unlimited.",
                     "announcements": "€59 per month",
-                    "documents": "Punch clock, roster and CIAO (NSSO) included.",
+                    "documents": "Punch clock, roster and CIAO (NSSO) included; turn CIAO on in Settings.",
                     "description": "Issues, tasks and punch clock. Billed monthly via Stripe.",
                     "users": "Up to 5 seats (colleagues + workers)"
                 },
                 "winprox_10": {
                     "units": "Up to 100 units. Locations unlimited.",
                     "announcements": "€99 per month",
-                    "documents": "Punch clock, roster and CIAO (NSSO) included.",
+                    "documents": "Punch clock, roster and CIAO (NSSO) included; turn CIAO on in Settings.",
                     "description": "Issues, tasks and punch clock. Billed monthly via Stripe.",
                     "users": "Up to 10 seats (colleagues + workers)"
                 },
                 "winprox_25": {
                     "units": "Up to 250 units. Locations unlimited.",
                     "announcements": "€199 per month",
-                    "documents": "Punch clock, roster and CIAO (NSSO) included.",
+                    "documents": "Punch clock, roster and CIAO (NSSO) included; turn CIAO on in Settings.",
                     "description": "Issues, tasks and punch clock. Billed monthly via Stripe.",
                     "users": "Up to 25 seats (colleagues + workers)"
                 },
                 "winprox_50": {
                     "units": "Up to 500 units. Locations unlimited.",
                     "announcements": "€349 per month",
-                    "documents": "Punch clock, roster and CIAO (NSSO) included.",
+                    "documents": "Punch clock, roster and CIAO (NSSO) included; turn CIAO on in Settings.",
                     "description": "Issues, tasks and punch clock. Billed monthly via Stripe.",
                     "users": "Up to 50 seats (colleagues + workers)"
                 },
                 "corporate": {
-                    "units": "From 100 seats, or when API/webhooks/integrations are needed.",
+                    "units": "Contractual offer for larger organisations.",
                     "announcements": "Custom price",
                     "documents": "Punch clock, roster, CIAO (NSSO), IoT Connect, ESG and API included.",
-                    "description": "For 100+ seats or when API/webhooks are needed.",
+                    "description": "For larger organisations, with custom pricing. ESG, IoT and API according to the agreement.",
                     "users": "Custom seats; unlimited locations and photos"
                 }
             }
@@ -162,8 +162,8 @@
             "slug": "checkmate",
             "type": "text",
             "title": "What is WinProx Checkmate?",
-            "body": "Checkmate is the stripped-down plan for cleaning and construction crews: workers clock in and out on Clock Point — via the home-screen icon or the sign-in link, no QR scan — and start customer visits with a GPS check at the work address (within 100 m). No issues or tasks — but CIAO (NSSO). Back office sees worked time and visits per customer (customer statistics). Trial: 30 days with 25 licences so you can test properly; afterwards €5 per active worker per month. No unit or document limits.",
-            "summary": "Stripped-down plan for cleaning/construction: clock in/out on Clock Point without a scan (home-screen icon or sign-in link), GPS customer visits and CIAO (NSSO). €5 per active worker; trial 30 days / 25 licences."
+            "body": "Checkmate is the limited plan for clocking in and out on site, mainly for cleaning crews: workers clock in and out on Clock Point — via the home-screen icon or the sign-in link, no QR scan — and start customer visits with a GPS check at the work address (within 100 m). No rosters, issues or tasks — but CIAO (NSSO) from the start. Construction is not generally available yet. Back office sees worked time and visits per customer. Trial: 30 days with 25 licences; afterwards €5 per active worker per month. No unit or document limits.",
+            "summary": "Limited plan for on-site work (cleaning now): clock in/out on Clock Point without a scan, GPS customer visits and CIAO (NSSO). €5 per active worker; trial 30 days / 25 licences."
         },
         "ddt_number": {
             "slug": "ddt_number",

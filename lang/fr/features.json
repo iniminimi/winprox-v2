@@ -17,7 +17,7 @@
         },
         "eyebrow": "Facility",
         "title": "Gestion Facility via portails QR",
-        "lead": "WinProx Facility relie chaque unité à un portail numérique : signaler, approuver, assigner des tâches et finaliser le travail en un seul flux.",
+        "lead": "Signalements, tâches et tournées d'inspection font partie des formules WinProx ordinaires. Ce n'est pas un produit séparé au-dessus de Time : chaque unit a un portail digital pour signaler, approuver, assigner des tâches et clôturer.",
         "problem": {
             "title": "Quel problème résout-il ?",
             "body": "Les défauts et demandes se dispersent entre téléphone, Excel et e-mail. Les équipes sur le terrain manquent de contexte ; les responsables manquent de vue d'ensemble. WinProx centralise signalement → tâches → finalisation."
@@ -50,9 +50,9 @@
             "og_description": "Pointage entrée/sortie et pauses via QR Clock Point, présence, feuille d’heures, Mes heures et pause minimale par équipe — liés aux flux facility."
         },
         "eyebrow": "Time",
-        "logo_alt": "Module Time — composant de WinProx Facility",
+        "logo_alt": "WinProx Time — pointeuse, suivi des heures et horaire",
         "title": "Suivi du temps via Clock Point",
-        "lead": "Time est la pointeuse de WinProx : incluse dans chaque formule. Pointer via le même QR Clock Point que le travail sur le terrain.",
+        "lead": "WinProx Time est la pointeuse, le suivi des heures et l'horaire de WinProx — inclus dans chaque formule ordinaire. Pointage via le même QR Clock Point que le travail de terrain.",
         "problem": {
             "title": "Quel problème résout-il ?",
             "body": "La présence et les shifts vivent souvent dans un outil séparé, déconnecté des signalements et tâches — ce qui complique de voir qui était sur site et quand."

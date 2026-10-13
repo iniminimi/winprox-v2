@@ -6,10 +6,10 @@
   },
   "eyebrow": "À propos de WinProx",
   "title": "Qu'est-ce que WinProx ?",
-  "lead": "WinProx est une pointeuse digitale pour le suivi du temps. Les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social. Si votre équipe travaille chez des clients, vous pouvez activer la présence pour l'ONSS.",
+  "lead": "WinProx est la pointeuse digitale pour le suivi du temps, liée au planning et à l'organisation du travail. Les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social. Signalements, tâches et tournées d'inspection font partie de la même expérience. Activez le CIAO dans les Paramètres.",
   "what": {
     "title": "Idée centrale",
-    "body": "L'employé scanne un QR sur l'écran, sur un autocollant ou via un lien, et pointe l'entrée et la sortie. Vous voyez les heures à côté de l'horaire. Le secrétariat social établit le salaire. Activez CIAO si l'équipe travaille chez des clients. Une équipe sur son propre site le laisse éteint."
+    "body": "L'ouvrier scanne un QR sur l'écran, un autocollant ou un lien, et pointe. Vous voyez les heures à côté de l'horaire. Le secrétariat social établit le salaire. Signalements, tâches et tournées d'inspection tournent dans la même appli. Activez le CIAO dans les Paramètres si l'équipe travaille chez des clients ; la liaison ONSS (numéro d'entreprise) est confirmée avant l'envoi. Une équipe sur son propre site le laisse éteint."
   },
   "audience": {
     "title": "Pour qui",
@@ -30,29 +30,29 @@
     "title": "Modules",
     "items": [
       {
-        "name": "Facility",
-        "text": "Signalements, modération sur portails publics, tâches par équipe, calendrier et briefing."
+        "name": "Organisation du travail",
+        "text": "Signalements, tâches, tournées d'inspection, calendrier et briefing font partie des formules WinProx ordinaires. Pas un produit séparé au-dessus de Time."
       },
       {
         "key": "checkmate",
         "name": "Checkmate",
-        "text": "Plan dérivé pour le travail sur site (nettoyage & construction) : les ouvriers pointent via le QR Clock Point, démarrent et terminent les visites clients à l’adresse de travail avec vérification GPS dans un rayon de 100 m, prennent des pauses et consultent Mes heures — pas de tickets, tâches ou plannings. Gestion via un back-office réduit (clients, ouvriers, heures) ; activation CIAO en self-service. 5 € par employé par mois."
+        "text": "Formule limitée pour pointer sur site : visites client GPS, pauses et Mes heures — pas d'horaires, de signalements ni de tâches. Le nettoyage est l'usage actuel ; la construction n'est pas encore généralement disponible. CIAO dès le départ ; numéro d'entreprise dans les Paramètres. 5 € par exécutant et par mois."
       },
       {
-        "name": "Time",
-        "text": "Pointage entrée/sortie et pauses via QR Clock Point, visites GPS sur pin de site ou d'unité, présence, feuille d’heures, Mes heures et pause minimale optionnelle par équipe. CIAO optionnel (Check In and Out ONSS) pour le nettoyage ; le périmètre construction est prêt derrière un feature-flag jusqu’aux specs ONSS."
+        "name": "WinProx Time",
+        "text": "Le nom reconnaissable de la pointeuse, du suivi des heures et de l'horaire. Pointage via Clock Point, présence, feuille d'heures et planning — inclus dans chaque formule ordinaire. Activez le CIAO dans les Paramètres."
       },
       {
         "name": "ESG",
-        "text": "Mesures et indicateurs optionnels liés aux unités et tâches de suivi."
+        "text": "Mesures et indicateurs liés aux units et aux tâches de suivi. Possible sur WinProx Corporate selon l'accord contractuel."
       },
       {
         "name": "IoT Connect",
-        "text": "Passerelles capteurs optionnelles : les alarmes deviennent signalements et tâches ; sur Corporate aussi des mesures ESG."
+        "text": "Passerelles capteurs : les alarmes deviennent signalements et tâches. Possible sur WinProx Corporate selon l'accord contractuel."
       },
       {
         "name": "API & webhooks",
-        "text": "API REST (Sanctum) et webhooks sortants sur Corporate — pour les intégrations."
+        "text": "API REST et webhooks sortants pour les intégrations. Possible sur WinProx Corporate selon l'accord contractuel."
       }
     ]
   },

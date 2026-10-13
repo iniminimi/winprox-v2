@@ -6,10 +6,10 @@
   },
   "eyebrow": "Über WinProx",
   "title": "Was ist WinProx?",
-  "lead": "WinProx ist eine digitale Stempeluhr für die Zeiterfassung. Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter. Arbeitet Ihre Mannschaft bei Kunden, können Sie die Anwesenheit für das LSS einschalten.",
+  "lead": "WinProx ist die digitale Stempeluhr für die Zeiterfassung, verbunden mit Planung und Arbeitsorganisation. Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter. Meldungen, Aufgaben und Prüfrunden gehören zur selben Erfahrung. CIAO schalten Sie in den Einstellungen ein.",
   "what": {
     "title": "Kernidee",
-    "body": "Die Person scannt einen QR auf dem Bildschirm, auf einem Aufkleber oder über einen Link und stempelt ein und aus. Sie sehen die Stunden neben dem Dienstplan. Das Sozialsekretariat macht den Lohn. Schalten Sie CIAO ein, wenn die Mannschaft bei Kunden arbeitet. Eine Mannschaft auf der eigenen Site lässt es aus."
+    "body": "Die Mitarbeiterin scannt einen QR auf dem Bildschirm, einem Aufkleber oder über einen Link und stempelt. Sie sehen die Stunden neben dem Dienstplan. Das Sozialsekretariat macht den Lohn. Meldungen, Aufgaben und Prüfrunden laufen in derselben App. CIAO schalten Sie in den Einstellungen ein, wenn die Mannschaft bei Kunden arbeitet; die LSS-Kopplung (Unternehmensnummer) wird bestätigt, bevor die Meldung startet. Eine Mannschaft auf dem eigenen Standort lässt es aus."
   },
   "audience": {
     "title": "Für wen",
@@ -30,29 +30,29 @@
     "title": "Module",
     "items": [
       {
-        "name": "Facility",
-        "text": "Meldungen, Moderation auf öffentlichen Portalen, Aufgaben pro Team, Kalender und Briefing."
+        "name": "Arbeitsorganisation",
+        "text": "Meldungen, Aufgaben, Prüfrunden, Kalender und Briefing gehören zu den normalen WinProx-Paketen. Kein getrenntes Produkt oberhalb von Time."
       },
       {
         "key": "checkmate",
         "name": "Checkmate",
-        "text": "Abgeleiteter Plan für Außendienst (Reinigung & Bau): Mitarbeiter stempeln über die Clock-Point-QR ein und aus, starten und beenden Kundenbesuche an der Arbeitsadresse mit GPS-Verifikation innerhalb von 100 m, machen Pausen und sehen Meine Stunden — ohne Meldungen, Aufgaben oder Schichtpläne. Verwaltung über ein reduziertes Backoffice (Kunden, Mitarbeiter, Stunden); CIAO-Aktivierung per Self-Service. 5 € pro Mitarbeiter und Monat."
+        "text": "Schlanke Formel zum Ein- und Ausstempeln vor Ort: GPS-Kundenbesuche, Pausen und Meine Stunden — keine Dienstpläne, Meldungen oder Aufgaben. Reinigung ist der aktuelle Einsatz; Bau ist noch nicht allgemein verfügbar. CIAO von Beginn an; Unternehmensnummer in den Einstellungen. 5 € pro Ausführenden und Monat."
       },
       {
-        "name": "Time",
-        "text": "Ein-/Ausstempeln und Pausen per Clock-Point-QR, GPS-Arbeitsbesuche am Standort- oder Unit-Pin, Anwesenheit, Stundenliste, Meine Stunden und optionale Mindestpause pro Team. Optionales CIAO (RSZ Check In and Out) für Reinigung; der Bau-Scope liegt hinter einem Feature-Flag, bis die LSS-Specs live sind."
+        "name": "WinProx Time",
+        "text": "Der erkennbare Name für Stempeluhr, Zeiterfassung und Dienstplan. Ein-/Ausstempeln über Clock Point, Anwesenheit, Stundenliste und Planung — in jeder normalen Formel enthalten. CIAO schalten Sie in den Einstellungen ein."
       },
       {
         "name": "ESG",
-        "text": "Optionale Messungen und Indikatoren, verknüpft mit Units und Folgetasks."
+        "text": "Messungen und Indikatoren, verknüpft mit Units und Folgeaufgaben. Möglich auf WinProx Corporate gemäß der vertraglichen Vereinbarung."
       },
       {
         "name": "IoT Connect",
-        "text": "Optionale Sensor-Gateways: Alarme werden zu Meldungen und Aufgaben; auf Corporate auch ESG-Messungen."
+        "text": "Sensor-Gateways: Alarme werden Meldungen und Aufgaben. Möglich auf WinProx Corporate gemäß der vertraglichen Vereinbarung."
       },
       {
         "name": "API & Webhooks",
-        "text": "REST-API (Sanctum) und ausgehende Webhooks auf Corporate — für Integrationen."
+        "text": "REST-API und ausgehende Webhooks für Systemintegrationen. Möglich auf WinProx Corporate gemäß der vertraglichen Vereinbarung."
       }
     ]
   },

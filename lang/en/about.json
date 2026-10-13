@@ -6,10 +6,10 @@
   },
   "eyebrow": "About WinProx",
   "title": "What is WinProx?",
-  "lead": "WinProx is a digital time clock for time tracking. Staff clock in with their phone, without an app. You compare the hours with the roster and pass them to your social secretariat. If your crew works at customer sites, you can turn on presence reporting to the social security office.",
+  "lead": "WinProx is the digital time clock for time tracking, connected with planning and work organisation. Staff clock in with their phone, without an app. You compare the hours with the roster and pass them to your social secretariat. Issues, tasks and inspection rounds belong to the same experience. Turn CIAO on in Settings.",
   "what": {
     "title": "Core idea",
-    "body": "A worker scans a QR on the screen, on a sticker or via a link, and clocks in and out. You see the hours next to the roster. The social secretariat prepares the wage. Turn CIAO on when the crew works at customer sites. A crew on its own site leaves it off."
+    "body": "A worker scans a QR on the screen, on a sticker or via a link, and clocks in and out. You see the hours next to the roster. The social secretariat prepares the wage. Issues, tasks and inspection rounds run in the same app. Turn CIAO on in Settings when the crew works at customer sites; the NSSO link (enterprise number) is confirmed before filing starts. A crew on its own site leaves it off."
   },
   "audience": {
     "title": "Who it is for",
@@ -30,29 +30,29 @@
     "title": "Modules",
     "items": [
       {
-        "name": "Facility",
-        "text": "Issues, public-portal moderation, tasks per team, calendar and briefing."
+        "name": "Work organisation",
+        "text": "Issues, tasks, inspection rounds, calendar and briefing belong to the regular WinProx plans. Not a separate product on top of Time."
       },
       {
         "key": "checkmate",
         "name": "Checkmate",
-        "text": "A derived plan for field work (cleaning & construction): workers clock in and out via the Clock Point QR, start and stop customer visits at the work address with GPS verification within 100 m, take breaks and view My hours — no issues, tasks or schedules. Managed via a reduced back office (customers, workers, hours); CIAO activation via self-service. €5 per worker per month."
+        "text": "Limited plan for clocking in and out on site: GPS customer visits, breaks and My hours — no rosters, issues or tasks. Cleaning is the current use; construction is not generally available yet. CIAO from the start; enterprise number in Settings. €5 per worker per month."
       },
       {
-        "name": "Time",
-        "text": "Clock in/out and breaks via Clock Point QR, GPS work visits on a location or unit pin, presence, timesheets, My hours and an optional per-team minimum break. Optional CIAO (RSZ Check In and Out) for cleaning; the construction scope is ready behind a feature flag until NSSO specs go live."
+        "name": "WinProx Time",
+        "text": "The recognisable name for the punch clock, time tracking and roster. Clock in/out via Clock Point, presence, timesheets and planning — included in every regular plan. Turn CIAO on in Settings."
       },
       {
         "name": "ESG",
-        "text": "Optional measurements and indicators linked to units and follow-up tasks."
+        "text": "Measurements and indicators linked to units and follow-up tasks. Available on WinProx Corporate according to the contractual agreement."
       },
       {
         "name": "IoT Connect",
-        "text": "Optional sensor gateways: alarms become issues and tasks; on Corporate also ESG measurements."
+        "text": "Sensor gateways: alarms become issues and tasks. Available on WinProx Corporate according to the contractual agreement."
       },
       {
         "name": "API & webhooks",
-        "text": "REST API (Sanctum) and outbound webhooks on Corporate — for integrations."
+        "text": "REST API and outbound webhooks for system integrations. Available on WinProx Corporate according to the contractual agreement."
       }
     ]
   },

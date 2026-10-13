@@ -6,10 +6,10 @@
   },
   "eyebrow": "Informazioni su WinProx",
   "title": "Che cos'è WinProx?",
-  "lead": "WinProx è una timbratrice digitale per la rilevazione orari. Il personale timbra con il telefono, senza app. Confrontate le ore con il turno e le passate al segretariato sociale. Se la squadra lavora dai clienti, potete attivare la presenza per l'ONSS.",
+  "lead": "WinProx è la timbratrice digitale per la rilevazione orari, collegata a pianificazione e organizzazione del lavoro. Il personale timbra con il telefono, senza app. Confrontate le ore con il turno e le passate al segretariato sociale. Segnalazioni, attività e giri di ispezione fanno parte della stessa esperienza. Attivate il CIAO nelle Impostazioni.",
   "what": {
     "title": "Idea centrale",
-    "body": "La persona scansiona un QR sullo schermo, su un adesivo o tramite un link, e timbra entrata e uscita. Vedete le ore accanto al turno. Il segretariato sociale fa la paga. Attivate CIAO se la squadra lavora dai clienti. Una squadra sul proprio sito lo lascia spento."
+    "body": "L'operatore scansiona un QR sullo schermo, su un adesivo o tramite un link, e timbra. Vedete le ore accanto al turno. Il segretariato sociale prepara la retribuzione. Segnalazioni, attività e giri di ispezione girano nella stessa app. Attivate il CIAO nelle Impostazioni se la squadra lavora dai clienti; il collegamento ONSS (numero d'impresa) viene confermato prima dell'invio. Una squadra sulla propria sede lo lascia spento."
   },
   "audience": {
     "title": "Per chi",
@@ -30,29 +30,29 @@
     "title": "Moduli",
     "items": [
       {
-        "name": "Facility",
-        "text": "Segnalazioni, moderazione sui portali pubblici, compiti per team, calendario e briefing."
+        "name": "Organizzazione del lavoro",
+        "text": "Segnalazioni, attività, giri di ispezione, calendario e briefing fanno parte dei pacchetti WinProx ordinari. Non è un prodotto separato sopra Time."
       },
       {
         "key": "checkmate",
         "name": "Checkmate",
-        "text": "Piano derivato per il lavoro in campo (pulizie ed edilizia): gli operai timbrano tramite il QR Clock Point, avviano e chiudono le visite clienti all’indirizzo di lavoro con verifica GPS entro 100 m, fanno pause e consultano Le mie ore — niente segnalazioni, attività o turni. Gestione tramite un back office ridotto (clienti, operai, ore); attivazione CIAO in self-service. 5 € per operaio al mese."
+        "text": "Formula limitata per timbrare sul posto: visite cliente GPS, pause e Le mie ore — niente turni, segnalazioni o attività. Le pulizie sono l'uso attuale; l'edilizia non è ancora generalmente disponibile. CIAO fin dall'inizio; numero d'impresa nelle Impostazioni. 5 € per operatore al mese."
       },
       {
-        "name": "Time",
-        "text": "Timbratura ingresso/uscita e pause via QR Clock Point, visite GPS sul pin della sede o dell'unità, presenza, foglio ore, Le mie ore e pausa minima opzionale per team. CIAO opzionale (Check In and Out ONSS) per le pulizie; lo scope edilizia è pronto dietro feature-flag fino alle spec ONSS live."
+        "name": "WinProx Time",
+        "text": "Il nome riconoscibile della timbratrice, della rilevazione orari e del turno. Timbratura via Clock Point, presenza, foglio ore e pianificazione — incluso in ogni formula ordinaria. Attivate il CIAO nelle Impostazioni."
       },
       {
         "name": "ESG",
-        "text": "Misure e indicatori opzionali, collegati a unità e compiti di follow-up."
+        "text": "Misure e indicatori collegati a unit e attività di follow-up. Possibile su WinProx Corporate secondo l'accordo contrattuale."
       },
       {
         "name": "IoT Connect",
-        "text": "Gateway sensori opzionali: gli allarmi diventano segnalazioni e compiti; su Corporate anche misure ESG."
+        "text": "Gateway sensori: gli allarmi diventano segnalazioni e attività. Possibile su WinProx Corporate secondo l'accordo contrattuale."
       },
       {
         "name": "API e webhook",
-        "text": "API REST (Sanctum) e webhook in uscita su Corporate — per le integrazioni."
+        "text": "API REST e webhook in uscita per le integrazioni. Possibile su WinProx Corporate secondo l'accordo contrattuale."
       }
     ]
   },

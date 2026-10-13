@@ -19,7 +19,7 @@
     "hero": {
         "brand": "WinProx",
         "headline": "De digitale prikklok voor urenregistratie in uw bedrijf.",
-        "subtitle": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat. Werkt uw ploeg bij klanten, dan kunt u de aanwezigheid voor de RSZ aanzetten.",
+        "subtitle": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat. Planning, meldingen en taken horen bij dezelfde WinProx-ervaring. CIAO zet u aan via Instellingen.",
         "flow": "Scan → Prik → Uren → Secretariaat",
         "flow_steps": {
             "scan": "Scan",
@@ -31,9 +31,9 @@
         "cta_how": "Bekijk hoe het werkt",
         "trial": "Proef: 30 dagen, 25 seats, na uw aanvraag.",
         "feature_board": {
-            "badge": "CIAO",
-            "title": "Bij klanten werken",
-            "text": "Zet de aanwezigheid voor de RSZ aan als uw ploeg bij klanten werkt. Schoonmaak voor derden nu. Bouw op 1 april 2027.",
+            "badge": "Checkmate",
+            "title": "Check in and out @ work",
+            "text": "WinProx Checkmate: de beperkte formule voor in- en uitchecken op locatie. Schoonmaak nu. CIAO inbegrepen vanaf de start.",
             "price": "€5 per uitvoerder per maand"
         }
     },
@@ -43,7 +43,7 @@
     },
     "clock": {
         "title": "Een kleine, elegante prikklok voor uw bedrijf",
-        "lead": "Werknemers prikken in en uit met hun eigen gekoppelde smartphone, aan de prikklok van het bedrijf. Geen app, geen badge en geen biometrische identificatie.",
+        "lead": "WinProx Time: werknemers prikken in en uit met hun eigen gekoppelde smartphone, aan de prikklok van het bedrijf. Geen app, geen badge en geen biometrische identificatie.",
         "items": [
             "Vast klokscherm met wisselende QR-code",
             "Tijdregistratie en uurregistratie in WinProx",

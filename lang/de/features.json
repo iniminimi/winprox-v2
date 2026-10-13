@@ -17,7 +17,7 @@
         },
         "eyebrow": "Facility",
         "title": "Facility-Management über QR-Portale",
-        "lead": "WinProx Facility verknüpft jede Einheit mit einem digitalen Portal: melden, genehmigen, Aufgaben zuweisen und Arbeit in einem Ablauf abschließen.",
+        "lead": "Meldungen, Aufgaben und Prüfrunden gehören zu den normalen WinProx-Paketen. Sie sind kein getrenntes Produkt oberhalb von Time: jede Unit erhält ein digitales Portal zum Melden, Genehmigen, Zuweisen und Abschließen.",
         "problem": {
             "title": "Welches Problem löst es?",
             "body": "Mängel und Anfragen verteilen sich über Telefon, Excel und E-Mail. Außendienstteams fehlt der Kontext; Managern fehlt der Überblick. WinProx bündelt Meldung → Aufgaben → Abschluss."
@@ -50,9 +50,9 @@
             "og_description": "Ein-/Ausstempeln und Pausen per Clock-Point-QR, Anwesenheit, Stundenliste, Meine Stunden und Mindestpause pro Team — gekoppelt an Facility-Abläufe."
         },
         "eyebrow": "Time",
-        "logo_alt": "Modul Time — Teil von WinProx Facility",
+        "logo_alt": "WinProx Time — Stempeluhr, Zeiterfassung und Dienstplan",
         "title": "Zeiterfassung per Clock Point",
-        "lead": "Time ist die Stechuhr von WinProx: in jedem Tarif enthalten. Ein-/Ausstempeln über denselben Clock-Point-QR wie die Feldarbeit.",
+        "lead": "WinProx Time ist die Stempeluhr, Zeiterfassung und der Dienstplan von WinProx — in jeder normalen Formel enthalten. Ein-/Ausstempeln über denselben Clock-Point-QR wie die Feldarbeit.",
         "problem": {
             "title": "Welches Problem löst es?",
             "body": "Anwesenheit und Schichten liegen oft in einem separaten Tool, getrennt von Meldungen und Aufgaben — was es schwer macht zu sehen, wer wann vor Ort war."

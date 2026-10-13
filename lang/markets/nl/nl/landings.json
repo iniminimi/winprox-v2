@@ -3,7 +3,7 @@
     "social": {
       "og_description": "Inklokken, ter plaatse werken en afhandelen — met QR en GPS-werkbezoeken. Eén facility-app."
     },
-    "lead": "Schoonmaak- en bouwploegen werken bij de klant, niet op één eigen vestiging. WinProx is dezelfde facility-app: inklokken via Clock Point, zien waar je vandaag naartoe moet, een GPS-werkbezoek starten en taken afhandelen tot ze klaar zijn.",
+    "lead": "Schoonmaak- en bouwploegen werken bij de klant, niet op één eigen vestiging. WinProx verbindt prikklok, inspectierondes, meldingen en taken: inklokken via Clock Point, zien waar je vandaag naartoe moet, een GPS-werkbezoek starten en werk afhandelen.",
     "schedule": {
       "items": {
         "3": "Planning en prikklok blijven gescheiden: geregistreerde uren volgen echte IN/OUT."
@@ -15,7 +15,7 @@
           "body": "Inklokken, zien waar je vandaag naartoe moet, een werkbezoek starten en taken afhandelen op je eigen mobiel. Geen app, geen login, geen gedoe."
         },
         "2": {
-          "body": "Rooster, aanwezigheid en afhandeling in één facility-app."
+          "body": "Rooster, aanwezigheid en afhandeling in één platform."
         }
       }
     },
@@ -27,12 +27,14 @@
         "1": {
           "body": "Zelfde werkwijze op de bouwplaats: aanwezigheid, taken en meldingen."
         }
-      }
+      },
+      "lead": "WinProx is geen aparte schoonmaak- of bouwapp. In de gewone pakketten horen prikklok, inspectierondes, meldingen en taken bij dezelfde ervaring."
     },
     "why": {
       "items": {
         "3": "Uurrooster is planning; geregistreerde uren volgen echte IN/OUT op Clock Point of bezoek.",
-        "4": "GPS-werkbezoeken op klantlocatie zijn beschikbaar in elke formule."
+        "4": "GPS-werkbezoeken op klantlocatie zijn beschikbaar in elke formule.",
+        "0": "Eén platform: prikklok, rooster, meldingen, taken en inspectierondes."
       }
     }
   },
@@ -40,7 +42,7 @@
     "social": {
       "og_description": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw salarisadministratie."
     },
-    "lead": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw salarisadministratie.",
+    "lead": "WinProx Time: medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw salarisadministratie.",
     "places": {
       "items": {
         "7": "De uren geeft u door aan uw salarisadministratie."
@@ -60,6 +62,9 @@
         },
         "3": {
           "a": "WinProx houdt de gewerkte uren bij, naast het rooster. U geeft ze door aan uw salarisadministratie. Die maakt het loon. WinProx doet dat niet."
+        },
+        "1": {
+          "a": "Gewone WinProx-pakketten starten vanaf 59€ per maand. Het klokscherm is optioneel, te huur vanaf €10 per maand per scherm. Zonder scherm volstaat een QR-sticker of een link."
         }
       }
     }

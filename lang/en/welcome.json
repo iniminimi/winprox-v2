@@ -19,7 +19,7 @@
     "hero": {
         "brand": "WinProx",
         "headline": "The digital time clock for time tracking in your company.",
-        "subtitle": "Staff clock in with their phone, without an app. You compare the hours with the roster and pass them to your social secretariat. If your crew works at customer sites, you can turn on presence reporting to the social security office.",
+        "subtitle": "Staff clock in with their phone, without an app. You compare the hours with the roster and pass them to your social secretariat. Planning, issues and tasks belong to the same WinProx experience. Turn CIAO on in Settings.",
         "flow": "Scan → Clock → Hours → Secretariat",
         "flow_steps": {
             "scan": "Scan",
@@ -31,9 +31,9 @@
         "cta_how": "See how it works",
         "trial": "Trial: 30 days, 25 seats, after you request it.",
         "feature_board": {
-            "badge": "CIAO",
-            "title": "Working at customer sites",
-            "text": "Turn on presence reporting to the social security office when your crew works at customer sites. Cleaning for third parties is available now. Construction follows on 1 April 2027.",
+            "badge": "Checkmate",
+            "title": "Check in and out @ work",
+            "text": "WinProx Checkmate: the limited plan for clocking in and out on site. Cleaning now. CIAO included from the start.",
             "price": "€5 per worker per month"
         }
     },
@@ -43,7 +43,7 @@
     },
     "clock": {
         "title": "A small, elegant time clock for your business",
-        "lead": "Employees clock in and out with their own linked smartphone at the company's time clock. No app, no badge and no biometric identification.",
+        "lead": "WinProx Time: employees clock in and out with their own linked smartphone at the company's time clock. No app, no badge and no biometric identification.",
         "items": [
             "Fixed clock screen with a rotating QR code",
             "Time and attendance registration in WinProx",

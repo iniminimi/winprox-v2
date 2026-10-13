@@ -1,0 +1,67 @@
+{
+  "public_subtitle": "Kies het aantal licenties. Maandelijks te betalen via Stripe. Prikklok, uurrooster, meldingen en taken inbegrepen.",
+  "plans_intro": "Betaal maandelijks. 5, 10, 25 of 50 licenties (collega's + uitvoerders); units = 10× dat aantal; documenten 10/20/30/40. Locaties en foto's onbeperkt. Prikklok, uurrooster, meldingen en taken inbegrepen.",
+  "plans": {
+    "winprox_5": {
+      "features": {
+        "1": "Prikklok, uurrooster, meldingen en taken inbegrepen."
+      }
+    },
+    "winprox_5_time": {
+      "features": {
+        "1": "Prikklok, uurrooster, meldingen en taken inbegrepen."
+      }
+    },
+    "winprox_10": {
+      "features": {
+        "1": "Prikklok, uurrooster, meldingen en taken inbegrepen."
+      }
+    },
+    "winprox_10_time": {
+      "features": {
+        "1": "Prikklok, uurrooster, meldingen en taken inbegrepen."
+      }
+    },
+    "winprox_25": {
+      "features": {
+        "1": "Prikklok, uurrooster, meldingen en taken inbegrepen."
+      }
+    },
+    "winprox_25_time": {
+      "features": {
+        "1": "Prikklok, uurrooster, meldingen en taken inbegrepen."
+      }
+    },
+    "winprox_50": {
+      "features": {
+        "1": "Prikklok, uurrooster, meldingen en taken inbegrepen."
+      }
+    },
+    "winprox_50_time": {
+      "features": {
+        "1": "Prikklok, uurrooster, meldingen en taken inbegrepen."
+      }
+    },
+    "winprox_100": {
+      "features": {
+        "0": "Prikklok, uurrooster, meldingen en taken inbegrepen."
+      }
+    },
+    "winprox_100_time": {
+      "features": {
+        "0": "Prikklok, uurrooster, meldingen en taken inbegrepen."
+      }
+    },
+    "corporate": {
+      "scale": "Contractueel aanbod voor grotere organisaties. Prijs op maat.",
+      "features": [
+        "Voor grotere organisaties, met contractuele prijsafspraken.",
+        "Prikklok, uurrooster, ESG, IoT Connect en API mogelijk volgens afspraak.",
+        "Integraties, SLA en support op maat."
+      ]
+    }
+  },
+  "comparison_notes": {
+    "corporate": "WinProx Corporate is een contractueel aanbod voor grotere organisaties. ESG, IoT en API zijn mogelijke onderdelen, niet de enige reden om Corporate te kiezen."
+  }
+}

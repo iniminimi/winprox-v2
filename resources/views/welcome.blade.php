@@ -85,6 +85,14 @@
         <div class="wp-welcome-main">
             <div class="wp-welcome-split wp-welcome-split--qr">
                 <article class="wp-card wp-card-pad wp-stack">
+                    <figure class="wp-welcome-feature-hero-logo wp-welcome-feature-hero-logo--wide">
+                        <img
+                            src="{{ asset('images/welcome/winprox_time_module_logo.jpg') }}"
+                            alt="{{ __('features.time.logo_alt') }}"
+                            class="wp-welcome-feature-hero-logo-img"
+                            decoding="async"
+                        >
+                    </figure>
                     <h2 class="wp-welcome-h3">{{ __('welcome.clock.title') }}</h2>
                     <p class="wp-text-body">{{ __('welcome.clock.lead') }}</p>
                     <ul class="wp-welcome-checklist">

@@ -621,11 +621,11 @@
         "meta_title": "WinProx für Reinigung und Bau | Arbeit vor Ort",
         "social": {
             "og_title": "WinProx für Reinigung und Bau | Arbeit vor Ort",
-            "og_description": "Einstempeln, beim Kunden arbeiten und abschließen — per QR, GPS-Arbeitsbesuchen und optionalem CIAO für Reinigung. Eine Facility-App."
+            "og_description": "Einstempeln, beim Kunden arbeiten und abschließen — per QR, GPS-Arbeitsbesuchen, Prüfrunden und Aufgaben. CIAO schalten Sie in den Einstellungen ein."
         },
         "eyebrow": "Reinigung & Bau",
         "title": "Die Arbeit am Kundenstandort, einfach gut geregelt.",
-        "lead": "Reinigungs- und Bautrupps arbeiten beim Kunden, nicht an einem eigenen Stammsitz. WinProx ist dieselbe Facility-App: am Clock Point einstempeln, sehen wohin es heute geht, einen GPS-Arbeitsbesuch starten, Aufgaben erledigen und abschließen. Optional CIAO für Reinigung.",
+        "lead": "Reinigungs- und Bautrupps arbeiten beim Kunden, nicht an einem eigenen Stammsitz. WinProx verbindet Stempeluhr, Prüfrunden, Meldungen und Aufgaben: am Clock Point einstempeln, sehen wohin es heute geht, einen GPS-Arbeitsbesuch starten und die Arbeit abschließen. CIAO schalten Sie in den Einstellungen ein.",
         "flow": "Einstempeln → vor Ort → Arbeit → fertig",
         "video": {
             "title": "So funktioniert WinProx",
@@ -700,7 +700,7 @@
                 },
                 {
                     "title": "Für die Verwaltung",
-                    "body": "Dienstplan, Anwesenheit und Abschluss in einer Facility-App. Optionales CIAO für Reinigung; Bau folgt derselben Pipeline, wenn der RSZ-Scope live ist."
+                    "body": "Dienstplan, Anwesenheit und Abschluss in einer Plattform. CIAO schalten Sie in den Einstellungen ein; die LSS-Kopplung wird bestätigt, bevor die Meldung startet. Bau-CIAO folgt, wenn der LSS-Scope live ist."
                 },
                 {
                     "title": "Für den Kundenstandort",
@@ -710,11 +710,11 @@
         },
         "sites": {
             "title": "Dieselbe App, zwei typische Trupps",
-            "lead": "WinProx ist keine separate Reinigungs- oder Bau-App. Es ist Facility plus Time (Stechuhr enthalten), mit denselben Meldungen, Aufgaben und Clock Point.",
+            "lead": "WinProx ist keine separate Reinigungs- oder Bau-App. In den normalen Paketen gehören Stempeluhr, Prüfrunden, Meldungen und Aufgaben zur selben Erfahrung.",
             "items": [
                 {
                     "title": "Reinigung",
-                    "body": "Trupps an mehreren Kundenadressen: Clock Point, GPS-Arbeitsbesuch, Aufgaben und Unit-Checks. Optionale CIAO-Meldung an den LSS (Antrag über info@winprox.app)."
+                    "body": "Trupps an mehreren Kundenadressen: Clock Point, GPS-Arbeitsbesuch, Aufgaben und Unit-Checks. CIAO schalten Sie in den Einstellungen ein; die LSS-Kopplung wird bestätigt, bevor die Meldung startet."
                 },
                 {
                     "title": "Bau",
@@ -725,11 +725,11 @@
         "why": {
             "title": "Warum WinProx",
             "items": [
-                "Eine Facility-App: Meldung → Aufgaben → Abschluss, plus Time (Stechuhr enthalten).",
+                "Eine Plattform: Stempeluhr, Dienstplan, Meldungen, Aufgaben und Prüfrunden.",
                 "Keine App für Ausführende: Smartphone und QR reichen.",
                 "Der GPS-Arbeitsbesuch belegt Arbeit am Kundenort; Einstempeln öffnet nur die Schicht.",
                 "Der Dienstplan ist Planung; CIAO bleibt echtes IN/OUT am Clock Point oder Besuch.",
-                "CIAO für Reinigung ist auf Anfrage verfügbar; Bau folgt derselben Pipeline.",
+                "CIAO schalten Sie in den Einstellungen in den normalen belgischen Paketen ein; die LSS-Kopplung wird bestätigt, bevor die Meldung startet. Bau folgt derselben Pipeline, wenn der Scope live ist.",
                 "Die Verwaltung folgt Anwesenheit und Aufgaben bis sie fertig sind.",
                 "Mitarbeiter stempeln vor Ort über einen QR-Code oder den WinProx-Uhrbildschirm ein und aus."
             ]
@@ -760,9 +760,9 @@
             "og_title": "WinProx Checkmate | Anwesenheit vor Ort an die LSS melden",
             "og_description": "Einstechen, GPS-Kundenbesuch und automatische CIAO-Meldung an die LSS — 5 € pro aktivem Mitarbeiter pro Monat, ohne App."
         },
-        "eyebrow": "LSS · Check In and Out at Work",
+        "eyebrow": "WinProx Checkmate · Check in and out @ work",
         "title": "Anwesenheit beim Kunden, korrekt an die LSS gemeldet.",
-        "lead": "WinProx Checkmate ist für Teams, die beim Kunden arbeiten. Der Mitarbeiter sticht ein, startet den Kundenbesuch vor Ort und Checkmate meldet die Anwesenheit an Check In and Out at Work (CIAO). Reinigung jetzt; Bau folgt mit dem offiziellen LSS-Scope.",
+        "lead": "WinProx Checkmate ist die schlanke Formel zum Ein- und Ausstempeln vor Ort. Die Mitarbeiterin stempelt ein, startet den Kundenbesuch vor Ort und Checkmate meldet die Anwesenheit an CIAO. Reinigung ist der aktuelle Einsatz; Bau ist noch nicht allgemein verfügbar. Dienstplan, Meldungen und Aufgaben gehören zu den normalen WinProx-Paketen, nicht zu Checkmate.",
         "flow": "Einstechen → Kundenbesuch → CIAO geregelt",
         "video": {
             "title": "Checkmate in einer Minute",
@@ -842,7 +842,7 @@
         },
         "start": {
             "title": "Mit Checkmate starten",
-            "lead": "Konto anlegen, Unternehmensnummer (KBO) eintragen und den CIAO-Scope anfragen. Wir bestätigen die Verknüpfung — ab dann geht jede Registrierung in Echtzeit an die LSS.",
+            "lead": "Konto anlegen und die Unternehmensnummer (KBO) in den Einstellungen eintragen. CIAO ist von Beginn an aktiv; die LSS-Kopplung wird bestätigt, bevor die Meldung startet.",
             "trial": "Lieber erst testen? Fragen Sie einen Probesitz über info@winprox.app an — 25 Seats, 30 Tage."
         },
         "close": {
@@ -868,7 +868,7 @@
         },
         "eyebrow": "WinProx Time · Stempeluhr",
         "title": "Digitale Stempeluhr für die Zeiterfassung in Ihrem Unternehmen.",
-        "lead": "Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter.",
+        "lead": "WinProx Time: Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter.",
         "flow": "Scannen → bestätigen → eingestempelt",
         "cta_register": "WinProx ausprobieren",
         "video": {
@@ -958,7 +958,7 @@
                 "Mitarbeitende stempeln mit der Kamera ihres Telefons. Ohne App.",
                 "Stunden, Pausen und der Dienstplan stehen in WinProx.",
                 "Die Stunden geben Sie an Ihr Sozialsekretariat weiter. Das Sekretariat macht den Lohn.",
-                "Schalten Sie CIAO ein, wenn die Mannschaft bei Kunden arbeitet. Eine Mannschaft auf der eigenen Site lässt es aus."
+                "CIAO schalten Sie in den Einstellungen ein, wenn die Mannschaft bei Kunden arbeitet. Die LSS-Kopplung (Unternehmensnummer) wird bestätigt, bevor die Meldung startet. Eine Mannschaft auf dem eigenen Standort lässt es aus."
             ]
         },
         "faq": {
@@ -970,7 +970,7 @@
                 },
                 {
                     "q": "Was kostet es, und ist der Bildschirm Pflicht?",
-                    "a": "5 € pro aktivem Ausführenden und Monat. Der Uhrbildschirm ist eine Option, zur Miete ab 10 € pro Monat. Ohne Bildschirm reicht ein QR-Aufkleber oder ein Link."
+                    "a": "Normale WinProx-Pakete beginnen bei 59 € pro Monat. Der Uhrbildschirm ist optional, zur Miete ab 10 € pro Monat und Bildschirm. Ohne Bildschirm reicht ein QR-Aufkleber oder ein Link."
                 },
                 {
                     "q": "Für wen gilt CIAO, und für wen nicht?",

@@ -5,6 +5,11 @@
         "5": "Eén mobiel per uitvoerder, optionele PIN en GPS",
         "9": "Minimumpauze per team op de urenstaat"
       }
-    }
+    },
+    "lead": "WinProx Time is de prikklok, urenregistratie en het uurrooster van WinProx — inbegrepen in elke gewone formule.",
+    "logo_alt": "WinProx Time — prikklok, urenregistratie en uurrooster"
+  },
+  "facility": {
+    "lead": "Meldingen, taken en inspectierondes horen bij de gewone WinProx-pakketten. Ze zijn geen apart product boven op Time."
   }
 }

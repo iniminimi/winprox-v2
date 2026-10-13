@@ -621,11 +621,11 @@
         "meta_title": "WinProx para limpieza y construcción | Trabajo in situ",
         "social": {
             "og_title": "WinProx para limpieza y construcción | Trabajo in situ",
-            "og_description": "Fichar, trabajar en el cliente y cerrar — con QR, visitas GPS y CIAO opcional para limpieza. Una sola app facility."
+            "og_description": "Fichar, trabajar en el cliente y cerrar — con QR, visitas GPS, rondas de inspección y tareas. Active CIAO en Ajustes."
         },
         "eyebrow": "Limpieza y construcción",
         "title": "El trabajo en el sitio del cliente, bien organizado.",
-        "lead": "Las cuadrillas de limpieza y construcción trabajan en el cliente, no en una sola sede propia. WinProx es la misma app facility: fichar en Clock Point, ver a dónde ir hoy, iniciar una visita GPS, completar tareas y terminar. CIAO opcional para limpieza.",
+        "lead": "Las cuadrillas de limpieza y construcción trabajan en el cliente, no en una sola sede propia. WinProx une reloj, rondas de inspección, avisos y tareas: fichar en Clock Point, ver a dónde ir hoy, iniciar una visita GPS y cerrar el trabajo. Active CIAO en Ajustes.",
         "flow": "Fichar → in situ → trabajo → listo",
         "video": {
             "title": "Vea cómo funciona WinProx",
@@ -700,7 +700,7 @@
                 },
                 {
                     "title": "Para la oficina",
-                    "body": "Cuadrante, presencia y cierre en una sola app facility. CIAO opcional para limpieza; la construcción sigue el mismo pipeline cuando el alcance RSZ esté en vivo."
+                    "body": "Cuadrante, presencia y cierre en una sola plataforma. Active CIAO en Ajustes; el enlace ONSS se confirma antes de enviar. El CIAO de construcción sigue cuando el alcance ONSS esté en vivo."
                 },
                 {
                     "title": "Para el sitio del cliente",
@@ -710,11 +710,11 @@
         },
         "sites": {
             "title": "Misma app, dos cuadrillas típicas",
-            "lead": "WinProx no es una app aparte de limpieza o construcción. Es Facility más Time (reloj de fichar incluido), con los mismos avisos, tareas y Clock Point.",
+            "lead": "WinProx no es una app aparte de limpieza o construcción. En los paquetes habituales, el reloj, las rondas de inspección, los avisos y las tareas forman parte de la misma experiencia.",
             "items": [
                 {
                     "title": "Limpieza",
-                    "body": "Cuadrillas en varias direcciones de cliente: Clock Point, visita GPS, tareas y unit checks. Envío CIAO opcional a la ONSS (solicitud vía info@winprox.app)."
+                    "body": "Cuadrillas en varias direcciones de cliente: Clock Point, visita GPS, tareas y unit checks. Active CIAO en Ajustes; el enlace ONSS se confirma antes de enviar."
                 },
                 {
                     "title": "Construcción",
@@ -725,11 +725,11 @@
         "why": {
             "title": "Por qué WinProx",
             "items": [
-                "Una app facility: aviso → tareas → cierre, más Time (reloj de fichar incluido).",
+                "Una sola plataforma: reloj, horario, avisos, tareas y rondas de inspección.",
                 "Sin app para ejecutantes: bastan el smartphone y el QR.",
                 "La visita GPS demuestra el trabajo en el cliente; fichar solo abre el turno.",
                 "El cuadrante es planificación; CIAO sigue siendo IN/OUT real en Clock Point o la visita.",
-                "CIAO para limpieza está disponible bajo petición; la construcción sigue el mismo pipeline.",
+                "Active CIAO en Ajustes en los paquetes belgas habituales; el enlace ONSS se confirma antes de enviar. La construcción sigue el mismo pipeline cuando el alcance esté en vivo.",
                 "La oficina sigue presencia y tareas hasta que estén listas.",
                 "Los trabajadores fichan en el lugar mediante un código QR o la pantalla de reloj WinProx."
             ]
@@ -760,9 +760,9 @@
             "og_title": "WinProx Checkmate | Presencia en el lugar declarada a la ONSS",
             "og_description": "Fichar, visita al cliente con GPS y envío CIAO automático a la ONSS — 5 € por trabajador activo al mes, sin app."
         },
-        "eyebrow": "ONSS · Check In and Out at Work",
+        "eyebrow": "WinProx Checkmate · Check in and out @ work",
         "title": "Presencia en el lugar del cliente, comunicada correctamente a la ONSS.",
-        "lead": "WinProx Checkmate es para equipos que trabajan en casa del cliente. El trabajador ficha, inicia la visita al cliente in situ y Checkmate comunica la presencia a Check In and Out at Work (CIAO). Limpieza ahora; construcción cuando entre en vigor el ámbito oficial de la ONSS.",
+        "lead": "WinProx Checkmate es la fórmula limitada para fichar in situ. El trabajador ficha, inicia la visita al cliente en el lugar y Checkmate comunica la presencia a CIAO. La limpieza es el uso actual; la construcción aún no está generalmente disponible. Horario, avisos y tareas pertenecen a los paquetes WinProx habituales, no a Checkmate.",
         "flow": "Fichar → visita al cliente → CIAO resuelto",
         "video": {
             "title": "Checkmate en un minuto",
@@ -842,7 +842,7 @@
         },
         "start": {
             "title": "Empezar con Checkmate",
-            "lead": "Cree una cuenta, introduzca su número de empresa (CBE) y solicite el ámbito CIAO. Confirmamos el enlace — a partir de ahí, cada registro se envía a la ONSS en tiempo real.",
+            "lead": "Cree una cuenta e introduzca su número de empresa (CBE) en Ajustes. CIAO está activo desde el inicio; el enlace ONSS se confirma antes de enviar.",
             "trial": "¿Prefiere probar primero? Pida una plaza de prueba en info@winprox.app — 25 plazas, 30 días."
         },
         "close": {
@@ -868,7 +868,7 @@
         },
         "eyebrow": "WinProx Time · Reloj de fichar",
         "title": "Reloj de fichar digital para el registro horario en su empresa.",
-        "lead": "El personal ficha con el teléfono, sin app. Usted compara las horas con el horario y las pasa a su secretaría social.",
+        "lead": "WinProx Time: el personal ficha con el teléfono, sin app. Usted compara las horas con el horario y las pasa a su secretaría social.",
         "flow": "Escanear → confirmar → fichado",
         "cta_register": "Probar WinProx",
         "video": {
@@ -958,7 +958,7 @@
                 "El personal ficha con la cámara del teléfono. Sin app.",
                 "Las horas, las pausas y el horario están en WinProx.",
                 "Usted pasa las horas a su secretaría social. La secretaría hace el salario.",
-                "Active CIAO si el equipo trabaja en clientes. Un equipo en su propio sitio lo deja apagado."
+                "Active CIAO en Ajustes si el equipo trabaja en clientes. El enlace ONSS (número de empresa) se confirma antes de enviar. Un equipo en su propio sitio lo deja apagado."
             ]
         },
         "faq": {
@@ -970,7 +970,7 @@
                 },
                 {
                     "q": "¿Cuánto cuesta, y la pantalla es obligatoria?",
-                    "a": "5 € por trabajador activo y mes. La pantalla es una opción, en alquiler desde 10 € al mes. Sin pantalla basta una pegatina QR o un enlace."
+                    "a": "Los paquetes WinProx habituales empiezan en 59 € al mes. La pantalla del reloj es opcional, en alquiler desde 10 € al mes por pantalla. Sin pantalla basta una pegatina QR o un enlace."
                 },
                 {
                     "q": "¿Para quién vale CIAO, y para quién no?",

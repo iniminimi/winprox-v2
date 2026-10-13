@@ -621,11 +621,11 @@
         "meta_title": "WinProx pour le nettoyage et la construction | Travail sur site",
         "social": {
             "og_title": "WinProx pour le nettoyage et la construction | Travail sur site",
-            "og_description": "Pointer, travailler chez le client et clôturer — via QR, visites GPS et CIAO optionnel pour le nettoyage. Une seule app facility."
+            "og_description": "Pointer, travailler chez le client et clôturer — via QR, visites GPS, tournées d'inspection et tâches. Activez le CIAO dans les Paramètres."
         },
         "eyebrow": "Nettoyage & construction",
         "title": "Le travail chez le client, simplement bien organisé.",
-        "lead": "Les équipes de nettoyage et de construction travaillent chez le client, pas sur un seul site propre. WinProx est la même app facility : pointer au Clock Point, voir où aller aujourd’hui, démarrer une visite GPS, traiter les tâches et terminer. CIAO optionnel pour le nettoyage.",
+        "lead": "Les équipes de nettoyage et de construction travaillent chez le client, pas sur un seul site propre. WinProx relie pointeuse, tournées d'inspection, signalements et tâches : pointer au Clock Point, voir où aller aujourd'hui, démarrer une visite GPS et clôturer le travail. Activez le CIAO dans les Paramètres.",
         "flow": "Pointer → sur place → travail → terminé",
         "video": {
             "title": "Voir comment WinProx fonctionne",
@@ -700,7 +700,7 @@
                 },
                 {
                     "title": "Pour le bureau",
-                    "body": "Planning, présence et clôture dans une seule app facility. CIAO optionnel pour le nettoyage ; la construction suit le même pipeline quand le périmètre RSZ est en ligne."
+                    "body": "Planning, présence et clôture dans une seule plateforme. Activez le CIAO dans les Paramètres ; la liaison ONSS est confirmée avant l'envoi. Le CIAO construction suivra lorsque le périmètre ONSS sera en ligne."
                 },
                 {
                     "title": "Pour le site client",
@@ -710,11 +710,11 @@
         },
         "sites": {
             "title": "Même app, deux équipes types",
-            "lead": "WinProx n’est pas une app nettoyage ou construction séparée. C’est Facility plus Time (pointeuse incluse), avec les mêmes signalements, tâches et Clock Point.",
+            "lead": "WinProx n'est pas une appli nettoyage ou construction séparée. Dans les formules ordinaires, pointeuse, tournées d'inspection, signalements et tâches font partie de la même expérience.",
             "items": [
                 {
                     "title": "Nettoyage",
-                    "body": "Équipes sur plusieurs adresses clients : Clock Point, visite GPS, tâches et unit checks. Transmission CIAO optionnelle vers l’ONSS (demande via info@winprox.app)."
+                    "body": "Équipes sur plusieurs adresses clients : Clock Point, visite GPS, tâches et unit checks. Activez le CIAO dans les Paramètres ; la liaison ONSS est confirmée avant l'envoi."
                 },
                 {
                     "title": "Construction",
@@ -725,11 +725,11 @@
         "why": {
             "title": "Pourquoi WinProx",
             "items": [
-                "Une app facility : signalement → tâches → clôture, plus Time (pointeuse incluse).",
+                "Une seule plateforme : pointeuse, horaire, signalements, tâches et tournées d'inspection.",
                 "Pas d’app pour les exécutants : smartphone et QR suffisent.",
                 "La visite GPS prouve le travail chez le client ; le pointage ouvre seulement le service.",
                 "Le planning n’est pas la présence ; le CIAO reste les IN/OUT réels au Clock Point ou à la visite.",
-                "Le CIAO nettoyage est disponible sur demande ; la construction suit le même pipeline.",
+                "Activez le CIAO dans les Paramètres dans les formules belges ordinaires ; la liaison ONSS est confirmée avant l'envoi. La construction suit le même pipeline lorsque le périmètre est en ligne.",
                 "Le bureau suit présence et tâches jusqu’à la fin.",
                 "Les travailleurs pointent sur site via un code QR ou l’écran d’horloge WinProx."
             ]
@@ -760,9 +760,9 @@
             "og_title": "WinProx Checkmate | Présence sur site déclarée à l'ONSS",
             "og_description": "Pointage, visite client GPS et transmission CIAO automatique à l'ONSS — 5 € par ouvrier actif par mois, sans application."
         },
-        "eyebrow": "ONSS · Check In and Out at Work",
+        "eyebrow": "WinProx Checkmate · Check in and out @ work",
         "title": "La présence chez le client, transmise correctement à l'ONSS.",
-        "lead": "WinProx Checkmate est fait pour les équipes qui travaillent chez le client. L'ouvrier pointe, démarre la visite client sur place et Checkmate transmet la présence à Check In and Out at Work (CIAO). Nettoyage aujourd'hui ; la construction suivra avec le périmètre ONSS officiel.",
+        "lead": "WinProx Checkmate est la formule limitée pour pointer sur le chantier. L'ouvrier pointe, démarre la visite client sur place et Checkmate transmet la présence au CIAO. Le nettoyage est l'usage actuel ; la construction n'est pas encore généralement disponible. Horaire, signalements et tâches font partie des formules WinProx ordinaires, pas de Checkmate.",
         "flow": "Pointer → visite client → CIAO réglé",
         "video": {
             "title": "Checkmate en une minute",
@@ -842,7 +842,7 @@
         },
         "start": {
             "title": "Démarrer avec Checkmate",
-            "lead": "Créez un compte, encodez votre numéro d'entreprise (BCE) et demandez le périmètre CIAO. Nous confirmons la liaison — à partir de là, chaque registration part en temps réel vers l'ONSS.",
+            "lead": "Créez un compte et encodez votre numéro d'entreprise (BCE) dans les Paramètres. Le CIAO est actif dès le départ ; la liaison ONSS est confirmée avant l'envoi.",
             "trial": "Vous préférez d'abord tester ? Demandez une place d'essai via info@winprox.app — 25 sièges, 30 jours."
         },
         "close": {
@@ -868,7 +868,7 @@
         },
         "eyebrow": "WinProx Time · Pointeuse",
         "title": "Pointeuse digitale pour le suivi du temps dans votre entreprise.",
-        "lead": "Les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social.",
+        "lead": "WinProx Time : les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social.",
         "flow": "Scan → confirmation → pointé",
         "cta_register": "Essayer WinProx",
         "video": {
@@ -958,7 +958,7 @@
                 "Les employés pointent avec l'appareil photo de leur téléphone. Sans appli.",
                 "Les heures, les pauses et l'horaire sont dans WinProx.",
                 "Vous transmettez les heures à votre secrétariat social. Le secrétariat établit le salaire.",
-                "Activez CIAO si l'équipe travaille chez des clients. Une équipe sur son propre site le laisse éteint."
+                "Activez le CIAO dans les Paramètres si l'équipe travaille chez des clients. La liaison ONSS (numéro d'entreprise) est confirmée avant l'envoi. Une équipe sur son propre site le laisse éteint."
             ]
         },
         "faq": {
@@ -970,7 +970,7 @@
                 },
                 {
                     "q": "Combien ça coûte, et l'écran est-il obligatoire ?",
-                    "a": "5 € par exécutant actif et par mois. L'écran est une option, en location dès 10 € par mois. Sans écran, un autocollant QR ou un lien suffit."
+                    "a": "Les formules WinProx ordinaires commencent à 59 € par mois. L'écran de pointage est optionnel, en location dès 10 € par mois et par écran. Sans écran, un autocollant QR ou un lien suffit."
                 },
                 {
                     "q": "Pour qui CIAO vaut-il, et pour qui pas ?",

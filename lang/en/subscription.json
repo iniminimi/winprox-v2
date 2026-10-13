@@ -1,11 +1,11 @@
 {
     "title": "Subscription, limits & billing",
     "public_title": "Pricing & plans",
-    "public_subtitle": "Choose your seat count. Billed monthly via Stripe. Punch clock, roster and CIAO (NSSO) included.",
+    "public_subtitle": "Choose your seat count. Billed monthly via Stripe. Punch clock, roster, issues and CIAO (NSSO, via Settings) included.",
     "public_register_cta": "Start free trial",
     "subtitle": "After your free month, pick a plan. Seats 5/10/25/50; units = 10× (50/100/250/500); documents 10/20/30/40. Locations and photos unlimited.",
     "plans_heading": "Plans",
-    "plans_intro": "Pay monthly. 5, 10, 25 or 50 seats (colleagues + workers); units = 10× that number; documents 10/20/30/40. Locations and photos unlimited. Punch clock, roster and CIAO (NSSO) included.",
+    "plans_intro": "Pay monthly. 5, 10, 25 or 50 seats (colleagues + workers); units = 10× that number; documents 10/20/30/40. Locations and photos unlimited. Punch clock, roster, issues and CIAO (NSSO, via Settings) included.",
     "glossary": {
         "heading": "Seats, units and photos",
         "unit": "Unit — an object or place with a QR code (machine, room, site). Each new location automatically gets a «whole location» unit. Units = 10× your seats: 50 / 100 / 250 / 500.",
@@ -72,7 +72,7 @@
             "scale": "€59 per month. Billed monthly via Stripe.",
             "features": [
                 "50 units and 10 documents. Locations and photos unlimited.",
-                "Punch clock, roster and CIAO (NSSO) included."
+                "Punch clock, roster and CIAO (NSSO) included; turn CIAO on in Settings."
             ]
         },
         "winprox_5_time": {
@@ -81,7 +81,7 @@
             "scale": "€59 per month. Billed monthly via Stripe.",
             "features": [
                 "50 units and 10 documents. Locations and photos unlimited.",
-                "Punch clock, roster and CIAO (NSSO) included."
+                "Punch clock, roster and CIAO (NSSO) included; turn CIAO on in Settings."
             ]
         },
         "winprox_10": {
@@ -90,7 +90,7 @@
             "scale": "€99 per month. Billed monthly via Stripe.",
             "features": [
                 "100 units and 20 documents. Locations and photos unlimited.",
-                "Punch clock, roster and CIAO (NSSO) included."
+                "Punch clock, roster and CIAO (NSSO) included; turn CIAO on in Settings."
             ]
         },
         "winprox_10_time": {
@@ -99,7 +99,7 @@
             "scale": "€99 per month. Billed monthly via Stripe.",
             "features": [
                 "100 units and 20 documents. Locations and photos unlimited.",
-                "Punch clock, roster and CIAO (NSSO) included."
+                "Punch clock, roster and CIAO (NSSO) included; turn CIAO on in Settings."
             ]
         },
         "winprox_25": {
@@ -108,7 +108,7 @@
             "scale": "€199 per month. Billed monthly via Stripe.",
             "features": [
                 "250 units and 30 documents. Locations and photos unlimited.",
-                "Punch clock, roster and CIAO (NSSO) included."
+                "Punch clock, roster and CIAO (NSSO) included; turn CIAO on in Settings."
             ]
         },
         "winprox_25_time": {
@@ -117,7 +117,7 @@
             "scale": "€199 per month. Billed monthly via Stripe.",
             "features": [
                 "250 units and 30 documents. Locations and photos unlimited.",
-                "Punch clock, roster and CIAO (NSSO) included."
+                "Punch clock, roster and CIAO (NSSO) included; turn CIAO on in Settings."
             ]
         },
         "winprox_50": {
@@ -126,7 +126,7 @@
             "scale": "€349 per month. Billed monthly via Stripe.",
             "features": [
                 "500 units and 40 documents. Locations and photos unlimited.",
-                "Punch clock, roster and CIAO (NSSO) included."
+                "Punch clock, roster and CIAO (NSSO) included; turn CIAO on in Settings."
             ]
         },
         "winprox_50_time": {
@@ -135,7 +135,7 @@
             "scale": "€349 per month. Billed monthly via Stripe.",
             "features": [
                 "500 units and 40 documents. Locations and photos unlimited.",
-                "Punch clock, roster and CIAO (NSSO) included."
+                "Punch clock, roster and CIAO (NSSO) included; turn CIAO on in Settings."
             ]
         },
         "winprox_100": {
@@ -143,7 +143,7 @@
             "price": "Custom",
             "scale": "From 100 seats: WinProx Corporate.",
             "features": [
-                "Punch clock, roster, CIAO (NSSO) included."
+                "Punch clock, roster and CIAO (NSSO) included; turn CIAO on in Settings."
             ]
         },
         "winprox_100_time": {
@@ -151,7 +151,7 @@
             "price": "Custom",
             "scale": "From 100 seats: WinProx Corporate.",
             "features": [
-                "Punch clock, roster, CIAO (NSSO) included."
+                "Punch clock, roster and CIAO (NSSO) included; turn CIAO on in Settings."
             ]
         },
         "facility_10": {
@@ -223,10 +223,10 @@
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Custom pricing",
-            "scale": "From 100 seats, or when API/webhooks/integrations are needed.",
+            "scale": "Contractual offer for larger organisations. Custom pricing.",
             "features": [
-                "Punch clock, roster, CIAO (NSSO), IoT Connect, ESG and API included.",
-                "Full REST API and webhooks.",
+                "For larger organisations, with contractual pricing.",
+                "Punch clock, roster, CIAO (NSSO), ESG, IoT Connect and API according to the agreement.",
                 "Integrations, SLA and support tailored to you."
             ]
         },
@@ -331,7 +331,7 @@
     "comparison_notes": {
         "trial": "Trial: 5 seats, 50 units and 10 documents (same as the 5-seat plan). Then billed monthly via Stripe.",
         "unlimited": "Units = 10× your seats (50 / 100 / 250 / 500). Documents 10 / 20 / 30 / 40. Locations and photos unlimited.",
-        "corporate": "IoT, ESG and API: WinProx Corporate only (from 100 seats)."
+        "corporate": "WinProx Corporate is a contractual offer for larger organisations. ESG, IoT and API are possible components, not the only reason to choose Corporate."
     },
     "contact_sales_cta": "Contact us",
     "public_contact_cta": "Request a quote",

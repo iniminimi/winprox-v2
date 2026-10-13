@@ -621,11 +621,11 @@
         "meta_title": "WinProx voor schoonmaak en bouw | Werk op locatie",
         "social": {
             "og_title": "WinProx voor schoonmaak en bouw | Werk op locatie",
-            "og_description": "Inklokken, ter plaatse werken en afhandelen — met QR, GPS-werkbezoeken en optioneel CIAO voor schoonmaak. Eén facility-app."
+            "og_description": "Inklokken, ter plaatse werken en afhandelen — met QR, GPS-werkbezoeken, inspectierondes en taken. CIAO zet u aan via Instellingen."
         },
         "eyebrow": "Schoonmaak & bouw",
         "title": "Het werk op de locatie van de klant, goed geregeld.",
-        "lead": "Schoonmaak- en bouwploegen werken bij de klant, niet op één eigen vestiging. WinProx is dezelfde facility-app: inklokken via Clock Point, zien waar je vandaag naartoe moet, een GPS-werkbezoek starten en taken afhandelen tot ze klaar zijn. Optioneel CIAO voor schoonmaak.",
+        "lead": "Schoonmaak- en bouwploegen werken bij de klant, niet op één eigen vestiging. WinProx verbindt prikklok, inspectierondes, meldingen en taken: inklokken via Clock Point, zien waar je vandaag naartoe moet, een GPS-werkbezoek starten en werk afhandelen. CIAO zet u aan via Instellingen.",
         "flow": "Inklokken → ter plaatse → werk → klaar",
         "video": {
             "title": "Zie hoe WinProx werkt",
@@ -700,7 +700,7 @@
                 },
                 {
                     "title": "Voor beheer",
-                    "body": "Rooster, aanwezigheid en afhandeling in één facility-app. Optioneel CIAO voor schoonmaak; bouw volgt dezelfde pijplijn wanneer de RSZ-scope live is."
+                    "body": "Rooster, aanwezigheid en afhandeling in één platform. CIAO zet u aan via Instellingen; de RSZ-koppeling wordt bevestigd voordat de doorgifte start. Bouw-CIAO volgt wanneer de RSZ-scope live is."
                 },
                 {
                     "title": "Voor de klantlocatie",
@@ -710,11 +710,11 @@
         },
         "sites": {
             "title": "Zelfde app, twee typische ploegen",
-            "lead": "WinProx is geen aparte schoonmaak- of bouwapp. Het is Facility + Time (prikklok inbegrepen), met dezelfde meldingen, taken en Clock Point.",
+            "lead": "WinProx is geen aparte schoonmaak- of bouwapp. In de gewone pakketten horen prikklok, inspectierondes, meldingen en taken bij dezelfde ervaring.",
             "items": [
                 {
                     "title": "Schoonmaak",
-                    "body": "Ploegen op meerdere klantadressen: Clock Point, GPS-werkbezoek, taken en unit checks. Optionele CIAO-doorgifte naar de RSZ (aanvragen via info@winprox.app)."
+                    "body": "Ploegen op meerdere klantadressen: Clock Point, GPS-werkbezoek, taken en unit checks. CIAO zet u aan via Instellingen; de RSZ-koppeling wordt bevestigd voordat de doorgifte start."
                 },
                 {
                     "title": "Bouw",
@@ -725,11 +725,11 @@
         "why": {
             "title": "Waarom WinProx",
             "items": [
-                "Eén facility-app: melding → taken → afhandeling, plus Time (prikklok inbegrepen).",
+                "Eén platform: prikklok, rooster, meldingen, taken en inspectierondes.",
                 "Geen app voor uitvoerders: smartphone en QR volstaan.",
                 "GPS-werkbezoek bewijst werk op de klantlocatie; inklokken alleen opent de dienst.",
                 "Uurrooster is planning; CIAO blijft echte IN/OUT op Clock Point of bezoek.",
-                "CIAO voor schoonmaak is beschikbaar op aanvraag; bouw volgt dezelfde pijplijn.",
+                "CIAO zet u aan via Instellingen in de gewone Belgische pakketten; de RSZ-koppeling wordt bevestigd voordat de doorgifte start. Bouw volgt dezelfde pijplijn wanneer de scope live is.",
                 "Beheer volgt aanwezigheid en taken tot ze klaar zijn.",
                 "Werknemers prikken op locatie in en uit via een QR-code of het WinProx-klokscherm."
             ]
@@ -760,9 +760,9 @@
             "og_title": "WinProx Checkmate | RSZ-aanwezigheid op locatie",
             "og_description": "Inklokken, GPS-klantbezoek en automatische CIAO-doorgifte naar de RSZ — €5 per actieve uitvoerder per maand, zonder app."
         },
-        "eyebrow": "RSZ · Check In and Out at Work",
+        "eyebrow": "WinProx Checkmate · Check in and out @ work",
         "title": "Aanwezigheid op de klantlocatie, correct doorgegeven aan de RSZ.",
-        "lead": "WinProx Checkmate is voor ploegen die bij de klant werken. De uitvoerder klokt in, start het klantbezoek op locatie en Checkmate stuurt de aanwezigheid door naar Check In and Out at Work (CIAO). Schoonmaak nu; bouw volgt met de officiële RSZ-scope.",
+        "lead": "WinProx Checkmate is de beperkte formule voor in- en uitchecken op de werklocatie. De uitvoerder klokt in, start het klantbezoek ter plaatse en Checkmate geeft de aanwezigheid door aan CIAO. Schoonmaak is de huidige toepassing; bouw is nog niet algemeen beschikbaar. Uurrooster, meldingen en taken horen bij de gewone WinProx-pakketten, niet bij Checkmate.",
         "flow": "Inklokken → klantbezoek → CIAO geregeld",
         "video": {
             "title": "Checkmate in één minuut",
@@ -842,7 +842,7 @@
         },
         "start": {
             "title": "Starten met Checkmate",
-            "lead": "Maak een account, vul je ondernemingsnummer (KBO) in en vraag de CIAO-scope aan. Wij bevestigen de koppeling — vanaf dan wordt elke registratie realtime naar de RSZ gestuurd.",
+            "lead": "Maak een account en vul je ondernemingsnummer (KBO) in via Instellingen. CIAO staat aan vanaf de start; de RSZ-koppeling wordt bevestigd voordat de doorgifte begint.",
             "trial": "Liever eerst proberen? Vraag een proefplaats aan via info@winprox.app — 25 seats, 30 dagen."
         },
         "close": {
@@ -868,7 +868,7 @@
         },
         "eyebrow": "WinProx Time · Prikklok",
         "title": "Digitale prikklok voor urenregistratie in uw bedrijf.",
-        "lead": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat.",
+        "lead": "WinProx Time: medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat.",
         "flow": "Scan → bevestig → ingeklokt",
         "cta_register": "Probeer WinProx",
         "video": {
@@ -958,7 +958,7 @@
                 "Medewerkers prikken met de camera van hun telefoon. Geen app.",
                 "Uren, pauzes en het rooster staan in WinProx.",
                 "De uren geeft u door aan uw sociaal secretariaat. Het secretariaat maakt het loon.",
-                "CIAO zet u aan als de ploeg bij klanten werkt. Een ploeg op de eigen site laat het uit."
+                "CIAO zet u aan via Instellingen als de ploeg bij klanten werkt. De RSZ-koppeling (ondernemingsnummer) wordt bevestigd voordat de doorgifte start. Een ploeg op de eigen site laat het uit."
             ]
         },
         "faq": {
@@ -970,7 +970,7 @@
                 },
                 {
                     "q": "Wat kost het, en is het scherm verplicht?",
-                    "a": "€5 per actieve uitvoerder per maand. Het klokscherm is een optie, te huur vanaf €10 per maand. Zonder scherm volstaat een QR-sticker of een link."
+                    "a": "Gewone WinProx-pakketten starten vanaf 59€ per maand. Het klokscherm is optioneel, te huur vanaf €10 per maand per scherm. Zonder scherm volstaat een QR-sticker of een link."
                 },
                 {
                     "q": "Voor wie geldt CIAO, en voor wie niet?",

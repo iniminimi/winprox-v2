@@ -19,7 +19,7 @@
     "hero": {
         "brand": "WinProx",
         "headline": "El reloj de fichar digital para el registro horario en su empresa.",
-        "subtitle": "El personal ficha con el teléfono, sin app. Usted compara las horas con el horario y las pasa a su secretaría social. Si su equipo trabaja en clientes, puede activar la presencia para la ONSS.",
+        "subtitle": "El personal ficha con el teléfono, sin app. Usted compara las horas con el horario y las pasa a su secretaría social. Planificación, avisos y tareas forman parte de la misma experiencia WinProx. Active CIAO en Ajustes.",
         "flow": "Escanear → Fichar → Horas → Secretaría",
         "flow_steps": {
             "scan": "Escanear",
@@ -31,9 +31,9 @@
         "cta_how": "Ver cómo funciona",
         "trial": "Prueba: 30 días, 25 plazas, tras su solicitud.",
         "feature_board": {
-            "badge": "CIAO",
-            "title": "Trabajar en clientes",
-            "text": "Active la presencia para la ONSS si su equipo trabaja en clientes. Limpieza para terceros ahora. Construcción el 1 de abril de 2027.",
+            "badge": "Checkmate",
+            "title": "Check in and out @ work",
+            "text": "WinProx Checkmate: la fórmula limitada para fichar in situ. Limpieza ahora. CIAO incluido desde el inicio.",
             "price": "5 € por trabajador y mes"
         }
     },
@@ -43,7 +43,7 @@
     },
     "clock": {
         "title": "Un reloj de fichar pequeño y elegante para su empresa",
-        "lead": "Los empleados fichan la entrada y la salida con su propio smartphone vinculado en el reloj de fichar de la empresa. Sin app, sin tarjeta y sin identificación biométrica.",
+        "lead": "WinProx Time: los empleados fichan con su propio smartphone vinculado, en el reloj de la empresa. Sin app, sin credencial y sin identificación biométrica.",
         "items": [
             "Pantalla de reloj fija con código QR renovable",
             "Registro horario y de presencia en WinProx",

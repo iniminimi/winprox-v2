@@ -1598,24 +1598,36 @@ Login, mail en `APP_URL` blijven op `.app`. `.nl` verschijnt pas in hreflang als
   op tweeletters). Console/queue hebben geen markt → basis-nl.
 
 ### 11.1 Structuur (minimaal — eerste gesprek)
-- **Nav:** WinProx-logo, **taal-pillen**, **Prijzen**, **Features-overzicht**, **FAQ**,
-  **Voorbeelden** (sectorlandings), **Meer** (about, technical, API & Webhooks),
-  **Inloggen**, **Gratis proberen**. Geen module-badges (Facility/Time/ESG/IoT) in de nav.
+- **Nav:** WinProx-logo, **taal-pillen**, **Prijzen**, **Features-overzicht**, **Prikklok**
+  (`/{locale}/prikklok`, WinProx Time), **Checkmate (CIAO)** (`/{locale}/checkmate`, verborgen
+  op winprox.nl), **Meer** (about, technical, API & Webhooks), **Inloggen**, **Gratis proberen**.
+  Geen module-badges (Facility/Time/ESG/IoT) in de nav. Navlabel **Prikklok** blijft het zoekwoord;
+  de pagina en het bestaande Time-logo dragen de naam **WinProx Time**.
 - **Hero (één viewport):** foto `images/welcome/welcome_reception.jpg` in een afgerond kader
   (niet pagina-breed); copy-kader (80% dekkend beige) **op** de foto, links, zodat de
   receptie rechts zichtbaar blijft.
-  WinProx · *Het werk op uw locatie, gewoon goed geregeld.* ·
-  *Van melding en planning tot uitvoering en afhandeling.* · **Scan → Meld → Werk → Klaar**
+  WinProx · *De digitale prikklok voor urenregistratie in uw bedrijf.* ·
+  *Medewerkers prikken met hun telefoon, zonder app. Planning, meldingen en taken horen bij
+  dezelfde WinProx-ervaring.* · **Scan → Prik → Uren → Secretariaat**
   (met iconen) · CTA's **Gratis proberen** / **Bekijk hoe het werkt**.
-  Over de kaders een vierkante gele **post-it** (Nieuw): *Ook voor schoonmaak & bouw* /
-  *CIAO (RSZ) beschikbaar* / *Vanaf 59€ / maand* — linkt naar `/{locale}/work-on-location`.
-  Geen GPS-claim; schoonmaak-CIAO is beschikbaar (op aanvraag); bouw-RSZ blijft achter scope, niet live.
+  Over de kaders een vierkant geel **Checkmate-bord**: badge *Checkmate* ·
+  *Check in and out @ work* · beperkte formule voor in-/uitchecken op locatie
+  (schoonmaak nu; bouw niet algemeen beschikbaar) · **€5 per uitvoerder per maand**
+  (Checkmate-prijs, niet de prijs van CIAO in gewone pakketten) — linkt naar
+  `/{locale}/checkmate`. Verborgen op winprox.nl.
+  Geen GPS-claim. CIAO in gewone Belgische pakketten via Instellingen (RSZ-koppeling met
+  ondernemingsnummer wordt bevestigd vóór doorgifte). Bouw-RSZ blijft achter scope, niet live.
+- **Klokblok:** bestaand Time-logo (`images/welcome/winprox_time_module_logo.jpg`, zelfde asset
+  als de Time-featurepagina) in het bestaande klokblok; CTA's Ontdek WinProx Time / Bekijk de prikklok.
 - **Video:** korte demo (`video/welcome.mp4`, alle talen) onder de hero, met ruimte erboven.
   Geen assistent-clip in de topnav.
 - **Footer:** productfiches, juridisch, contact.
 - **Facility, Time, ESG, IoT, CIAO** blijven in productfiches, pricing, sectorlandings en handleiding —
-  niet als module-secties op de homepage. Uitzondering: het hero-Nieuw-bord mag CIAO/RSZ
-  als *beschikbaar* aankondigen (geen 100 %-bouwclaim).
+  niet als module-secties op de homepage. Time is de herkenbare naam voor prikklok, uren en rooster
+  binnen WinProx. Facility-werkorganisatie (meldingen, taken, inspectierondes) hoort bij de gewone
+  licentiepakketten, geen extra SKU. Corporate is een contractueel aanbod voor grotere organisaties;
+  ESG, IoT en API zijn mogelijke onderdelen. Uitzondering: het hero-Checkmate-bord mag de beperkte
+  formule aankondigen (geen 100 %-bouwclaim).
 
 ### 11.2 Zonder demo (voorlopig)
 - **Verwijderen:** alle "Probeer demo"-CTA's, `demo.index`-links en de flow-stap "demo".
@@ -1659,9 +1671,10 @@ Schoonmaak/bouw (`work-on-location`) gebruikt `images/landing/work_on_location/`
 `screenshot_cleaning.jpg` naast “Wie is waar”, `image02` links van de workflow-stappen,
 plaatsen, rollen) plus `images/landing/general/` voor waarom en sluitbanner met scrim.
 Vroeg op de pagina: blok uurrooster (publiceren, verlof/recup via Clock Point).
-Copy: Clock Point, GPS-werkbezoek, taken/unit checks; CIAO optioneel voor schoonmaak (aanvraag);
-bouw-CIAO voorbereid achter RSZ-scope, geen 100 %-compliance-claim. Dit blijft **geen**
-tenant-productsector.
+Copy: Clock Point, GPS-werkbezoek, taken/unit checks en inspectierondes. CIAO in gewone Belgische
+pakketten via Instellingen (RSZ-koppeling bevestigen vóór doorgifte); bouw-CIAO voorbereid achter
+RSZ-scope, geen 100 %-compliance-claim. Checkmate is de beperkte formule (niet deze landing).
+Dit blijft **geen** tenant-productsector.
 Campagnes hebben een **verplichte landing**; `{{promo_url}}` bouwt die URL met `?ref=`. Dit is
 **geen** V1-sectorhub en **geen** productvariant.
 

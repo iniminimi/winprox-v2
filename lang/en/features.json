@@ -17,7 +17,7 @@
         },
         "eyebrow": "Facility",
         "title": "Facility management via QR portals",
-        "lead": "WinProx Facility links every unit to a digital portal: report, approve, assign tasks and complete work in one flow.",
+        "lead": "Issues, tasks and inspection rounds belong to the regular WinProx plans. They are not a separate product on top of Time: every unit gets a digital portal to report, approve, assign tasks and complete work.",
         "problem": {
             "title": "What problem does it solve?",
             "body": "Defects and requests scatter across phone, Excel and email. Field teams lack context; managers lack overview. WinProx centralises issue → tasks → completion."
@@ -50,9 +50,9 @@
             "og_description": "Clock in/out and breaks via Clock Point QR, presence, timesheets, My hours and a per-team minimum break — tied to facility workflows."
         },
         "eyebrow": "Time",
-        "logo_alt": "Module Time — part of WinProx Facility",
+        "logo_alt": "WinProx Time — punch clock, time tracking and roster",
         "title": "Time tracking via Clock Point",
-        "lead": "Time is WinProx’s punch clock: included in every plan. Clock in/out via the same Clock Point QR as field work.",
+        "lead": "WinProx Time is the punch clock, time tracking and roster of WinProx — included in every regular plan. Clock in/out via the same Clock Point QR as field work.",
         "problem": {
             "title": "What problem does it solve?",
             "body": "Presence and shifts often live in a separate tool, disconnected from issues and tasks — making it hard to see who was on site when."

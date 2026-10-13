@@ -6,14 +6,14 @@
     },
     "eyebrow": "FAQ",
     "title": "Domande frequenti",
-    "subtitle": "Guida breve per amministratori, collaboratori e team sul campo — allineata all'app WinProx Facility attuale.",
+    "subtitle": "Guida breve per amministratori, personale e squadre sul campo — allineata alla piattaforma WinProx attuale.",
     "items": {
         "how_it_works": {
             "slug": "how_it_works",
             "type": "steps",
             "title": "Come funziona WinProx?",
-            "intro": "WinProx segue un flusso unico: segnalazione → attività → chiusura. Time (timbratrice) è incluso; ESG (misurazioni) è opzionale (Corporate). Misurazioni unità opzionali tramite QR unità.",
-            "summary": "Sedi e unità, segnalazione via QR o back office, approvazione sul portale pubblico, attività per squadra, follow-up dalla dashboard, briefing e calendario. Time (timbratrice) incluso; ESG su Corporate.",
+            "intro": "WinProx collega la rilevazione orari all'organizzazione del lavoro: timbratrice, turno, segnalazioni, attività e giri di ispezione. ESG è opzionale su Corporate. Misurazioni unità opzionali tramite il QR unità.",
+            "summary": "Sedi e unità, segnalazione via QR o back office, attività per squadra, timbratrice e turno, giri di ispezione. ESG su Corporate.",
             "steps": [
                 {
                     "title": "Sedi e unit",
@@ -48,43 +48,43 @@
             "slug": "pricing",
             "type": "pricing",
             "title": "Quanto costa WinProx?",
-            "intro": "Inizi con un mese di prova gratuito (5 licenze, 50 unità, 10 documenti). IoT, ESG e API non sono nella prova. Poi 5/10/25/50 licenze con 50/100/250/500 unità. Pagamento mensile tramite Stripe. Corporate su misura (da 100 licenze o quando servono API/webhook).",
-            "summary": "Prova = formula 5. Poi 5/10/25/50 licenze con 10× unità. Pagamento mensile tramite Stripe. IoT, ESG e API su Corporate.",
+            "intro": "Inizi con un mese di prova gratuito (5 licenze, 50 unità, 10 documenti). IoT, ESG e API non sono nella prova. Poi 5/10/25/50 licenze con 50/100/250/500 unità. Pagamento mensile tramite Stripe. Corporate è un'offerta contrattuale per organizzazioni più grandi, a prezzo personalizzato.",
+            "summary": "Prova = formula 5. Poi 5/10/25/50 licenze con 10× unità. Pagamento mensile tramite Stripe. Corporate su misura per organizzazioni più grandi; ESG, IoT e API possibili.",
             "content_note": "Licenza = collega con login o esecutore (Clock Point). Unità = 10× licenze; documenti 10/20/30/40. Sedi e foto illimitate. Prezzi esatti in Abbonamento.",
             "plans": {
                 "winprox_5": {
                     "units": "Fino a 50 unità. Sedi illimitate.",
                     "announcements": "59€ al mese",
-                    "documents": "Timbratura, pianificazione e CIAO inclusi.",
+                    "documents": "Timbratura, pianificazione e CIAO (ONSS) inclusi; attivate il CIAO nelle Impostazioni.",
                     "description": "Segnalazioni, compiti e timbratura. Pagamento mensile tramite Stripe.",
                     "users": "Fino a 5 licenze (colleghi + esecutori)"
                 },
                 "winprox_10": {
                     "units": "Fino a 100 unità. Sedi illimitate.",
                     "announcements": "99€ al mese",
-                    "documents": "Timbratura, pianificazione e CIAO inclusi.",
+                    "documents": "Timbratura, pianificazione e CIAO (ONSS) inclusi; attivate il CIAO nelle Impostazioni.",
                     "description": "Segnalazioni, compiti e timbratura. Pagamento mensile tramite Stripe.",
                     "users": "Fino a 10 licenze (colleghi + esecutori)"
                 },
                 "winprox_25": {
                     "units": "Fino a 250 unità. Sedi illimitate.",
                     "announcements": "199€ al mese",
-                    "documents": "Timbratura, pianificazione e CIAO inclusi.",
+                    "documents": "Timbratura, pianificazione e CIAO (ONSS) inclusi; attivate il CIAO nelle Impostazioni.",
                     "description": "Segnalazioni, compiti e timbratura. Pagamento mensile tramite Stripe.",
                     "users": "Fino a 25 licenze (colleghi + esecutori)"
                 },
                 "winprox_50": {
                     "units": "Fino a 500 unità. Sedi illimitate.",
                     "announcements": "349€ al mese",
-                    "documents": "Timbratura, pianificazione e CIAO inclusi.",
+                    "documents": "Timbratura, pianificazione e CIAO (ONSS) inclusi; attivate il CIAO nelle Impostazioni.",
                     "description": "Segnalazioni, compiti e timbratura. Pagamento mensile tramite Stripe.",
                     "users": "Fino a 50 licenze (colleghi + esecutori)"
                 },
                 "corporate": {
-                    "units": "Da 100 licenze, o se servono API/webhook/integrazioni.",
+                    "units": "Offerta contrattuale per organizzazioni più grandi.",
                     "announcements": "Prezzo su misura",
                     "documents": "Timbratrice, turno, CIAO (ONSS), IoT Connect, ESG e API inclusi.",
-                    "description": "Per 100+ licenze o quando servono API/webhook.",
+                    "description": "Per organizzazioni più grandi, a prezzo personalizzato. ESG, IoT e API secondo l'accordo.",
                     "users": "Licenze su misura; sedi e foto illimitate"
                 }
             }
@@ -158,8 +158,8 @@
             "slug": "checkmate",
             "type": "text",
             "title": "Che cos'è WinProx Checkmate?",
-            "body": "Checkmate è la formula essenziale per squadre di pulizia e costruzione: gli operatori timbrano su Clock Point — tramite l'icona sulla home o il link di accesso, senza scansione QR — e avviano le visite cliente con controllo GPS all'indirizzo di lavoro (entro 100 m). Niente segnalazioni o compiti — sì CIAO (ONSS). Il back office vede per cliente il tempo lavorato e le visite (statistiche clienti). Prova: 30 giorni con 25 licenze per testare bene; poi 5 € per operatore attivo al mese. Nessun limite di unit o documenti.",
-            "summary": "Formula essenziale pulizie/costruzioni: timbratura su Clock Point senza scansione (icona home o link di accesso), visite cliente GPS e CIAO (ONSS). 5 € per operatore attivo; prova 30 giorni / 25 licenze."
+            "body": "Checkmate è la formula limitata per timbrare sul posto, soprattutto per squadre di pulizie: gli esecutori timbrano su Clock Point — tramite l'icona della home o il link di accesso, senza scansione QR — e avviano le visite cliente con controllo GPS all'indirizzo (entro 100 m). Niente turni, segnalazioni o attività — ma CIAO (ONSS) fin dall'inizio. L'edilizia non è ancora generalmente disponibile. Prova: 30 giorni con 25 licenze; poi 5 € per operatore attivo al mese. Nessun limite di unit o documenti.",
+            "summary": "Formula limitata per il lavoro sul posto (pulizie ora): timbratura Clock Point senza scansione, visite GPS e CIAO (ONSS). 5 € per operatore attivo; prova 30 giorni / 25 licenze."
         },
         "ddt_number": {
             "slug": "ddt_number",

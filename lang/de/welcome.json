@@ -19,7 +19,7 @@
     "hero": {
         "brand": "WinProx",
         "headline": "Die digitale Stempeluhr für die Zeiterfassung in Ihrem Unternehmen.",
-        "subtitle": "Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter. Arbeitet Ihre Mannschaft bei Kunden, können Sie die Anwesenheit für das LSS einschalten.",
+        "subtitle": "Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter. Planung, Meldungen und Aufgaben gehören zur selben WinProx-Erfahrung. CIAO schalten Sie in den Einstellungen ein.",
         "flow": "Scan → Stempeln → Stunden → Sekretariat",
         "flow_steps": {
             "scan": "Scan",
@@ -31,9 +31,9 @@
         "cta_how": "So funktioniert es",
         "trial": "Test: 30 Tage, 25 Plätze, nach Ihrer Anfrage.",
         "feature_board": {
-            "badge": "CIAO",
-            "title": "Bei Kunden arbeiten",
-            "text": "Schalten Sie die Anwesenheit für das LSS ein, wenn Ihre Mannschaft bei Kunden arbeitet. Reinigung für Dritte jetzt. Bau am 1. April 2027.",
+            "badge": "Checkmate",
+            "title": "Check in and out @ work",
+            "text": "WinProx Checkmate: die schlanke Formel zum Ein- und Ausstempeln vor Ort. Reinigung jetzt. CIAO von Beginn an enthalten.",
             "price": "5 € pro Ausführenden und Monat"
         }
     },
@@ -43,7 +43,7 @@
     },
     "clock": {
         "title": "Eine kleine, elegante Stempeluhr für Ihr Unternehmen",
-        "lead": "Mitarbeiter stempeln mit ihrem eigenen gekoppelten Smartphone an der Stempeluhr des Unternehmens ein und aus. Ohne App, ohne Badge und ohne biometrische Identifikation.",
+        "lead": "WinProx Time: Mitarbeitende stempeln mit dem eigenen gekoppelten Smartphone an der Stempeluhr des Unternehmens ein und aus. Keine App, kein Badge und keine biometrische Identifikation.",
         "items": [
             "Fester Uhrbildschirm mit wechselndem QR-Code",
             "Zeit- und Anwesenheitserfassung in WinProx",

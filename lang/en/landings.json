@@ -621,11 +621,11 @@
         "meta_title": "WinProx for cleaning and construction | Work on site",
         "social": {
             "og_title": "WinProx for cleaning and construction | Work on site",
-            "og_description": "Clock in, work on the customer site and close it out — with QR, GPS work visits and optional CIAO for cleaning. One facility app."
+            "og_description": "Clock in, work on the customer site and close it out — with QR, GPS work visits, inspection rounds and tasks. Turn CIAO on in Settings."
         },
         "eyebrow": "Cleaning & construction",
         "title": "Work at the customer site, properly organised.",
-        "lead": "Cleaning and construction crews work at the customer site, not on one home base. WinProx is the same facility app: clock in at Clock Point, see where to go today, start a GPS work visit, complete tasks and finish. Optional CIAO for cleaning.",
+        "lead": "Cleaning and construction crews work at the customer site, not on one home base. WinProx connects the punch clock, inspection rounds, issues and tasks: clock in at Clock Point, see where to go today, start a GPS work visit and complete the work. Turn CIAO on in Settings.",
         "flow": "Clock in → on site → work → done",
         "video": {
             "title": "See how WinProx works",
@@ -700,7 +700,7 @@
                 },
                 {
                     "title": "For the office",
-                    "body": "Roster, presence and completion in one facility app. Optional CIAO for cleaning; construction follows the same pipeline when the RSZ scope is live."
+                    "body": "Roster, presence and completion in one platform. Turn CIAO on in Settings; the NSSO link is confirmed before filing starts. Construction CIAO follows when the RSZ scope is live."
                 },
                 {
                     "title": "For the customer site",
@@ -710,11 +710,11 @@
         },
         "sites": {
             "title": "Same app, two typical crews",
-            "lead": "WinProx is not a separate cleaning or construction app. It is Facility plus Time (punch clock included), with the same issues, tasks and Clock Point.",
+            "lead": "WinProx is not a separate cleaning or construction app. In the regular plans the punch clock, inspection rounds, issues and tasks belong to the same experience.",
             "items": [
                 {
                     "title": "Cleaning",
-                    "body": "Crews at several customer addresses: Clock Point, GPS work visit, tasks and unit checks. Optional CIAO filing to the RSZ (request via info@winprox.app)."
+                    "body": "Crews at several customer addresses: Clock Point, GPS work visit, tasks and unit checks. Turn CIAO on in Settings; the NSSO link is confirmed before filing starts."
                 },
                 {
                     "title": "Construction",
@@ -725,11 +725,11 @@
         "why": {
             "title": "Why WinProx",
             "items": [
-                "One facility app: issue → tasks → completion, plus Time (punch clock included).",
+                "One platform: punch clock, roster, issues, tasks and inspection rounds.",
                 "No app for workers: a smartphone and QR are enough.",
                 "A GPS work visit proves work at the customer location; clock-in only opens the shift.",
                 "The roster is planning; CIAO stays real IN/OUT at Clock Point or the visit.",
-                "CIAO for cleaning is available on request; construction follows the same pipeline.",
+                "Turn CIAO on in Settings in the regular Belgian plans; the NSSO link is confirmed before filing starts. Construction follows the same pipeline when the scope is live.",
                 "The office follows presence and tasks until they are done.",
                 "Workers clock in and out on site via a QR code or the WinProx clock screen."
             ]
@@ -760,9 +760,9 @@
             "og_title": "WinProx Checkmate | On-site presence for the RSZ",
             "og_description": "Clock in, GPS customer visit and automatic CIAO reporting to the RSZ — €5 per active worker per month, no app needed."
         },
-        "eyebrow": "RSZ · Check In and Out at Work",
+        "eyebrow": "WinProx Checkmate · Check in and out @ work",
         "title": "Presence at the customer site, reported correctly to the RSZ.",
-        "lead": "WinProx Checkmate is for crews working at customer sites. The worker clocks in, starts the customer visit on location and Checkmate reports the presence to Check In and Out at Work (CIAO). Cleaning now; construction follows with the official RSZ scope.",
+        "lead": "WinProx Checkmate is the limited plan for clocking in and out on site. The worker clocks in, starts the customer visit on location and Checkmate reports presence to CIAO. Cleaning is the current use; construction is not generally available yet. Roster, issues and tasks belong to the regular WinProx plans, not to Checkmate.",
         "flow": "Clock in → customer visit → CIAO handled",
         "video": {
             "title": "Checkmate in one minute",
@@ -842,7 +842,7 @@
         },
         "start": {
             "title": "Getting started with Checkmate",
-            "lead": "Create an account, enter your enterprise number (CBE) and request the CIAO scope. We confirm the link — from then on every registration is sent to the RSZ in real time.",
+            "lead": "Create an account and enter your enterprise number (CBE) in Settings. CIAO is on from the start; the NSSO link is confirmed before filing begins.",
             "trial": "Prefer to try first? Request a trial seat via info@winprox.app — 25 seats, 30 days."
         },
         "close": {
@@ -868,7 +868,7 @@
         },
         "eyebrow": "WinProx Time · Time clock",
         "title": "A digital time clock for time tracking in your company.",
-        "lead": "Staff clock in with their phone, without an app. You compare the hours with the roster and pass them to your social secretariat.",
+        "lead": "WinProx Time: staff clock in with their phone, without an app. You compare the hours with the roster and pass them to your social secretariat.",
         "flow": "Scan → confirm → clocked in",
         "cta_register": "Try WinProx",
         "video": {
@@ -958,7 +958,7 @@
                 "Staff clock in with the camera on their phone. No app.",
                 "Hours, breaks and the roster sit in WinProx.",
                 "You pass the hours to your social secretariat. The secretariat prepares the wage.",
-                "Turn CIAO on when the crew works at customer sites. A crew that stays on its own site leaves it off."
+                "Turn CIAO on in Settings when the crew works at customer sites. The NSSO link (enterprise number) is confirmed before filing starts. A crew that stays on its own site leaves it off."
             ]
         },
         "faq": {
@@ -970,7 +970,7 @@
                 },
                 {
                     "q": "What does it cost, and is the screen required?",
-                    "a": "€5 per active worker per month. The clock screen is optional, for rent from €10 per month. Without a screen a QR sticker or a link is enough."
+                    "a": "Regular WinProx plans start from €59 per month. The clock screen is optional, for rent from €10 per month per screen. Without a screen a QR sticker or a link is enough."
                 },
                 {
                     "q": "Who is CIAO for, and who is it not for?",

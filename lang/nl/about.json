@@ -6,10 +6,10 @@
   },
   "eyebrow": "Over WinProx",
   "title": "Wat is WinProx?",
-  "lead": "WinProx is een digitale prikklok voor urenregistratie. Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat. Werkt de ploeg bij klanten, dan kunt u de aanwezigheid voor de RSZ aanzetten.",
+  "lead": "WinProx is de digitale prikklok voor urenregistratie, verbonden met planning en werkorganisatie. Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat. Meldingen, taken en inspectierondes horen bij dezelfde ervaring. CIAO zet u aan via Instellingen.",
   "what": {
     "title": "Kernidee",
-    "body": "De medewerker scant een QR op het scherm, op een sticker of via een link, en prikt in en uit. U ziet de uren naast het rooster. Het sociaal secretariaat maakt het loon. CIAO zet u aan als de ploeg bij klanten werkt. Een ploeg op de eigen site laat het uit."
+    "body": "De medewerker scant een QR op het scherm, op een sticker of via een link, en prikt in en uit. U ziet de uren naast het rooster. Het sociaal secretariaat maakt het loon. Meldingen, taken en inspectierondes lopen in dezelfde app. CIAO zet u aan via Instellingen als de ploeg bij klanten werkt; de RSZ-koppeling (ondernemingsnummer) wordt bevestigd voordat de doorgifte start. Een ploeg op de eigen site laat het uit."
   },
   "audience": {
     "title": "Voor wie",
@@ -30,29 +30,29 @@
     "title": "Modules",
     "items": [
       {
-        "name": "Facility",
-        "text": "Meldingen, goedkeuring/moderatie op publieke portalen, taken per team, kalender en briefing."
+        "name": "Werkorganisatie",
+        "text": "Meldingen, taken, inspectierondes, kalender en briefing horen bij de gewone WinProx-pakketten. Geen apart product boven op Time."
       },
       {
         "key": "checkmate",
         "name": "Checkmate",
-        "text": "Afgeleid abonnement voor veldwerk (schoonmaak & bouw): uitvoerders prikken in en uit via de Clock Point-QR, starten en stoppen klantbezoeken op het werkadres met GPS-verificatie binnen 100 m, nemen pauzes en bekijken Mijn uren — geen meldingen, taken of roosters. Beheer via een ingekorte backoffice (klanten, uitvoerders, uren); CIAO-aanvraag via selfservice. €5 per uitvoerder per maand."
+        "text": "Beperkte formule voor in- en uitchecken op locatie: klantbezoeken met GPS, pauzes en Mijn uren — geen roosters, meldingen of taken. Schoonmaak is de huidige toepassing; bouw is nog niet algemeen beschikbaar. CIAO vanaf de start; KBO via Instellingen. €5 per uitvoerder per maand."
       },
       {
-        "name": "Time",
-        "text": "In-/uitklokken en pauzes via Clock Point-QR, GPS-werkbezoeken op locatie- of unit-pin, aanwezigheid, urenstaat, Mijn uren en optionele minimumpauze per team. Optioneel CIAO (RSZ Check In and Out) voor schoonmaak; bouw-scope zit klaar achter feature-flag tot de RSZ-specs live zijn."
+        "name": "WinProx Time",
+        "text": "De herkenbare naam voor prikklok, urenregistratie en uurrooster. In-/uitklokken via Clock Point, aanwezigheid, urenstaat en planning — inbegrepen in elke gewone formule. CIAO zet u aan via Instellingen."
       },
       {
         "name": "ESG",
-        "text": "Optionele metingen en indicatoren, gekoppeld aan units en opvolgtaken."
+        "text": "Metingen en indicatoren, gekoppeld aan units en opvolgtaken. Mogelijk op WinProx Corporate, naar gelang de contractuele afspraak."
       },
       {
         "name": "IoT Connect",
-        "text": "Optionele sensorgateways: alarmen worden meldingen en taken; op Corporate ook ESG-metingen."
+        "text": "Sensorgateways: alarmen worden meldingen en taken. Mogelijk op WinProx Corporate, naar gelang de contractuele afspraak."
       },
       {
         "name": "API & webhooks",
-        "text": "REST API (Sanctum) en uitgaande webhooks op Corporate — voor integraties."
+        "text": "REST API en uitgaande webhooks voor systeemintegraties. Mogelijk op WinProx Corporate, naar gelang de contractuele afspraak."
       }
     ]
   },

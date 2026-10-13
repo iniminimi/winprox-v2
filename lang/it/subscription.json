@@ -1,11 +1,11 @@
 {
     "title": "Abbonamento, limiti e fatturazione",
     "public_title": "Prezzi e piani",
-    "public_subtitle": "Scegli il numero di licenze. Pagamento mensile tramite Stripe. Timbratura, pianificazione e CIAO inclusi.",
+    "public_subtitle": "Scegli il numero di licenze. Pagamento mensile tramite Stripe. Timbratura, pianificazione, segnalazioni e CIAO (ONSS, via Impostazioni) inclusi.",
     "public_register_cta": "Inizia prova gratuita",
     "subtitle": "Dopo il mese gratuito scegli una formula. Licenze 5/10/25/50; unità = 10× (50/100/250/500); documenti 10/20/30/40. Sedi e foto illimitate.",
     "plans_heading": "Piani",
-    "plans_intro": "Pagamento mensile. 5, 10, 25 o 50 licenze (colleghi + esecutori); unità = 10× quel numero; documenti 10/20/30/40. Sedi e foto illimitate. Timbratura, pianificazione e CIAO inclusi.",
+    "plans_intro": "Pagamento mensile. 5, 10, 25 o 50 licenze (colleghi + esecutori); unità = 10× quel numero; documenti 10/20/30/40. Sedi e foto illimitate. Timbratura, pianificazione, segnalazioni e CIAO (ONSS, via Impostazioni) inclusi.",
     "glossary": {
         "heading": "Licenze, unità e foto",
         "unit": "Unità — oggetto o luogo con QR. Ogni nuova sede riceve automaticamente un'unità «Intera sede». Unità = 10× le tue licenze: 50 / 100 / 250 / 500.",
@@ -72,7 +72,7 @@
             "scale": "59€ al mese. Pagamento mensile tramite Stripe.",
             "features": [
                 "50 unità e 10 documenti. Sedi e foto illimitate.",
-                "Timbratura, pianificazione e CIAO (INPS) inclusi."
+                "Timbratura, pianificazione e CIAO (ONSS) inclusi; attivate il CIAO nelle Impostazioni."
             ]
         },
         "winprox_5_time": {
@@ -81,7 +81,7 @@
             "scale": "59€ al mese. Pagamento mensile tramite Stripe.",
             "features": [
                 "50 unità e 10 documenti. Sedi e foto illimitate.",
-                "Timbratura, pianificazione e CIAO (INPS) inclusi."
+                "Timbratura, pianificazione e CIAO (ONSS) inclusi; attivate il CIAO nelle Impostazioni."
             ]
         },
         "winprox_10": {
@@ -90,7 +90,7 @@
             "scale": "99€ al mese. Pagamento mensile tramite Stripe.",
             "features": [
                 "100 unità e 20 documenti. Sedi e foto illimitate.",
-                "Timbratura, pianificazione e CIAO (INPS) inclusi."
+                "Timbratura, pianificazione e CIAO (ONSS) inclusi; attivate il CIAO nelle Impostazioni."
             ]
         },
         "winprox_10_time": {
@@ -99,7 +99,7 @@
             "scale": "99€ al mese. Pagamento mensile tramite Stripe.",
             "features": [
                 "100 unità e 20 documenti. Sedi e foto illimitate.",
-                "Timbratura, pianificazione e CIAO (INPS) inclusi."
+                "Timbratura, pianificazione e CIAO (ONSS) inclusi; attivate il CIAO nelle Impostazioni."
             ]
         },
         "winprox_25": {
@@ -108,7 +108,7 @@
             "scale": "199€ al mese. Pagamento mensile tramite Stripe.",
             "features": [
                 "250 unità e 30 documenti. Sedi e foto illimitate.",
-                "Timbratura, pianificazione e CIAO (INPS) inclusi."
+                "Timbratura, pianificazione e CIAO (ONSS) inclusi; attivate il CIAO nelle Impostazioni."
             ]
         },
         "winprox_25_time": {
@@ -117,7 +117,7 @@
             "scale": "199€ al mese. Pagamento mensile tramite Stripe.",
             "features": [
                 "250 unità e 30 documenti. Sedi e foto illimitate.",
-                "Timbratura, pianificazione e CIAO (INPS) inclusi."
+                "Timbratura, pianificazione e CIAO (ONSS) inclusi; attivate il CIAO nelle Impostazioni."
             ]
         },
         "winprox_50": {
@@ -126,7 +126,7 @@
             "scale": "349€ al mese. Pagamento mensile tramite Stripe.",
             "features": [
                 "500 unità e 40 documenti. Sedi e foto illimitate.",
-                "Timbratura, pianificazione e CIAO (INPS) inclusi."
+                "Timbratura, pianificazione e CIAO (ONSS) inclusi; attivate il CIAO nelle Impostazioni."
             ]
         },
         "winprox_50_time": {
@@ -135,7 +135,7 @@
             "scale": "349€ al mese. Pagamento mensile tramite Stripe.",
             "features": [
                 "500 unità e 40 documenti. Sedi e foto illimitate.",
-                "Timbratura, pianificazione e CIAO (INPS) inclusi."
+                "Timbratura, pianificazione e CIAO (ONSS) inclusi; attivate il CIAO nelle Impostazioni."
             ]
         },
         "winprox_100": {
@@ -143,7 +143,7 @@
             "price": "Su misura",
             "scale": "Da 100 licenze: WinProx Corporate.",
             "features": [
-                "Timbratrice, turno, CIAO (ONSS) inclusi."
+                "Timbratrice, turno e CIAO (ONSS) inclusi; attivate il CIAO nelle Impostazioni."
             ]
         },
         "winprox_100_time": {
@@ -151,7 +151,7 @@
             "price": "Su misura",
             "scale": "Da 100 licenze: WinProx Corporate.",
             "features": [
-                "Timbratrice, turno, CIAO (ONSS) inclusi."
+                "Timbratrice, turno e CIAO (ONSS) inclusi; attivate il CIAO nelle Impostazioni."
             ]
         },
         "facility_10": {
@@ -223,10 +223,10 @@
         "corporate": {
             "name": "WinProx Corporate",
             "price": "Prezzo personalizzato",
-            "scale": "Da 100 licenze, o quando servono API/webhook/integrazioni.",
+            "scale": "Offerta contrattuale per organizzazioni più grandi. Prezzo personalizzato.",
             "features": [
-                "Timbratrice, turno, CIAO (ONSS), IoT Connect, ESG e API inclusi.",
-                "API REST completa e webhook.",
+                "Per organizzazioni più grandi, con prezzo contrattuale.",
+                "Timbratrice, turno, CIAO (ONSS), ESG, IoT Connect e API secondo l'accordo.",
                 "Integrazioni, SLA e supporto su misura."
             ]
         },
@@ -331,7 +331,7 @@
     "comparison_notes": {
         "trial": "Prova: 5 licenze, 50 unità e 10 documenti (come la formula da 5). Poi pagamento mensile tramite Stripe.",
         "unlimited": "Unità = 10× le tue licenze (50 / 100 / 250 / 500). Documenti 10 / 20 / 30 / 40. Sedi e foto illimitate.",
-        "corporate": "IoT, ESG e API: solo WinProx Corporate (da 100 licenze)."
+        "corporate": "WinProx Corporate è un'offerta contrattuale per organizzazioni più grandi. ESG, IoT e API sono componenti possibili, non l'unico motivo per scegliere Corporate."
     },
     "contact_sales_cta": "Contattaci",
     "public_contact_cta": "Richiedi preventivo",
