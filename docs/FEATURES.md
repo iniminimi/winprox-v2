@@ -85,6 +85,8 @@ linkt naar zijn lijst):
 - **Conditioneel** (alleen tonen als telling **> 0** — geen vaste nullen / geen lege grid-gaten):
   - Te beoordelen — QR-wachtlijst → meldingen
   - Time-aandacht — open shifts met uitzondering (ook inklokken tijdens verlof, recup, ziekte of feestdag), of evacuatielijst-raadpleging vandaag → Time-alarmen
+  - Nieuwe uitvoerder — aangemaakt door een teamleader (alleen naam), tot beheer die persoon
+    opslaat of deactiveert → Personen → Uitvoerders, gefilterd op te controleren.
   - Aanvragen — open verlof-/recupaanvragen, geteld per soort (1 Verlof, 1 Recup, of beide) → Time → Aanvragen (Time-module).
     Features-fiche, FAQ en handleiding beschrijven dezelfde flow.
   - IoT-alarmen — open IoT-meldingen → IoT Connect (alleen bij IoT-module)
@@ -1262,7 +1264,11 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   Inklokken blijft onder Aanwezigheid (verse QR-scan).
 
 ### 6.3 Workers
-- Sidebar **Personen → Uitvoerders** (`/workers`): zoek/filter op naam, team, locatie, status.
+- Sidebar **Personen → Uitvoerders** (`/workers`): zoek/filter op naam, team, locatie, status,
+  plus **Te controleren** voor uitvoerders die een teamleader net aanmaakte.
+- Een teamleader maakt op Clock Point alleen voor- en achternaam. Die uitvoerder blijft
+  als dashboardtegel **Nieuwe uitvoerder** tot beheer de persoon opslaat of deactiveert.
+  Aanmaken in beheer zet die tegel niet.
 - Per team: workers toevoegen (voor-/achternaam), **locatie-multi-select** (leeg = overal inklokken
   behalve Clock Point-filter op naam), lijst met **status-pills** + **Bewerken**; **teamleader-vlag**,
   icoon/gsm/PIN-reset, actief/inactief en verwijderen zitten in de bewerk-modal.

@@ -76,6 +76,7 @@ class CreateWorkerAction
                 : Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES,
             'is_active' => true,
             'created_by_worker_id' => $actorWorker?->id,
+            'needs_admin_follow_up' => $actorWorker !== null,
         ]);
 
         if (array_key_exists('location_ids', $data)) {

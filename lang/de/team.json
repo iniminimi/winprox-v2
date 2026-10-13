@@ -250,6 +250,7 @@
             "all_locations": "Alle Standorte",
             "status": "Status",
             "all_statuses": "Alle Status",
+            "follow_up": "Zu prüfen",
             "count": ":count Mitarbeiter"
         },
         "row": {
@@ -257,6 +258,7 @@
             "all_locations": "Alle Standorte"
         },
         "linked_user": "Kollegen-Login",
+        "follow_up": "Zu prüfen",
         "empty": "Keine Mitarbeiter gefunden."
     }
 }

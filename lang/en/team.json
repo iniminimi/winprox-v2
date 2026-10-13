@@ -250,6 +250,7 @@
             "all_locations": "All locations",
             "status": "Status",
             "all_statuses": "All statuses",
+            "follow_up": "To review",
             "count": ":count workers"
         },
         "row": {
@@ -257,6 +258,7 @@
             "all_locations": "All locations"
         },
         "linked_user": "Colleague login",
+        "follow_up": "To review",
         "empty": "No workers found."
     }
 }

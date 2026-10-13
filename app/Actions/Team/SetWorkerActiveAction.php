@@ -22,7 +22,10 @@ class SetWorkerActiveAction
             }
         }
 
-        $worker->update(['is_active' => $active]);
+        $worker->update([
+            'is_active' => $active,
+            'needs_admin_follow_up' => false,
+        ]);
 
         $fresh = $worker->fresh();
 

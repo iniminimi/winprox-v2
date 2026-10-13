@@ -78,6 +78,7 @@
           "Avec Time : qui est présent maintenant.",
           "Quelqu’un qui pointe pendant un congé, une récupération, un jour férié ou une maladie compte dans Attention Time, avec un point d’exclamation et un message à côté de cette personne dans la présence.",
           "Congé ou recup ouvert en carte extra : 1 Congé, 1 Recup, ou les deux.",
+          "Un exécutant ajouté par un team leader apparaît comme carte Nouvel exécutant jusqu'à ce que l'administration enregistre ou désactive cette personne.",
           "Les nouvelles organisations peuvent choisir un modèle de départ ici.",
           "Le briefing et les rapports sont accessibles depuis le tableau de bord."
         ]

@@ -78,6 +78,7 @@
           "With Time: who is present now.",
           "Someone who clocks in during leave, time off in lieu, a public holiday or sick leave counts in Time attention, with an exclamation and a message next to that person in presence.",
           "Open leave or TOIL as an extra card: 1 Leave, 1 TOIL, or both.",
+          "A worker added by a team leader shows as a New worker card until an administrator saves or deactivates that person.",
           "New organisations can choose a starter template here.",
           "Briefing and reports are available from the dashboard."
         ]

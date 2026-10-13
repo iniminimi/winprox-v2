@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions\Dashboard;
 
+use App\Actions\Team\CountWorkerAdminFollowUpAction;
 use App\Actions\Time\CountPendingAbsenceRequestsAction;
 use App\Actions\Time\CountTimePresenceAttentionAction;
 use App\Data\Dashboard\DashboardStatsData;
@@ -21,6 +22,7 @@ class BuildDashboardStatsAction
     public function __construct(
         private CountTimePresenceAttentionAction $countTimeAttention,
         private CountPendingAbsenceRequestsAction $countPendingAbsence,
+        private CountWorkerAdminFollowUpAction $countWorkerFollowUp,
     ) {}
 
     public function handle(int $tenantId, bool $hasTimeModule, bool $hasIotModule, bool $workMenuIssuesTasksEnabled = true): DashboardStatsData
@@ -73,6 +75,7 @@ class BuildDashboardStatsAction
             pendingAbsenceRequests: $pendingAbsenceLeave + $pendingAbsenceRecup,
             pendingAbsenceLeave: $pendingAbsenceLeave,
             pendingAbsenceRecup: $pendingAbsenceRecup,
+            workerFollowUp: $this->countWorkerFollowUp->handle($tenantId),
             iotAlarms: $iotAlarms,
             hasTimeModule: $hasTimeModule,
             hasIotModule: $hasIotModule,

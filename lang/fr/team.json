@@ -250,6 +250,7 @@
             "all_locations": "Tous les sites",
             "status": "Statut",
             "all_statuses": "Tous les statuts",
+            "follow_up": "À contrôler",
             "count": ":count exécutants"
         },
         "row": {
@@ -257,6 +258,7 @@
             "all_locations": "Tous les sites"
         },
         "linked_user": "Connexion collègue",
+        "follow_up": "À contrôler",
         "empty": "Aucun exécutant trouvé."
     }
 }

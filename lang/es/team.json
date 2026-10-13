@@ -250,6 +250,7 @@
             "all_locations": "Todas las ubicaciones",
             "status": "Estado",
             "all_statuses": "Todos los estados",
+            "follow_up": "Por revisar",
             "count": ":count ejecutores"
         },
         "row": {
@@ -257,6 +258,7 @@
             "all_locations": "Todas las ubicaciones"
         },
         "linked_user": "Inicio de sesión colega",
+        "follow_up": "Por revisar",
         "empty": "No se encontraron ejecutores."
     }
 }

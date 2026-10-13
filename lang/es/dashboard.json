@@ -21,6 +21,7 @@
     "pending_review": "Por revisar",
     "time_attention": "Atención Time",
     "pending_absence": "Solicitudes",
+    "worker_follow_up": "Nuevo ejecutor",
     "pending_absence_leave": ":count Permiso",
     "pending_absence_recup": ":count Compensación",
     "iot_alarms": "Alarmas IoT"

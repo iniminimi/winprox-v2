@@ -36,6 +36,9 @@ class WorkersIndex extends Component
     #[Url(as: 'active')]
     public string $activeFilter = 'all';
 
+    #[Url(as: 'review')]
+    public bool $followUpOnly = false;
+
     public function mount(): void
     {
         $this->authorize('viewAny', Worker::class);
@@ -57,6 +60,11 @@ class WorkersIndex extends Component
     }
 
     public function updatedActiveFilter(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatedFollowUpOnly(): void
     {
         $this->resetPage();
     }
@@ -90,6 +98,7 @@ class WorkersIndex extends Component
             ->when($this->teamFilter !== null, fn ($builder) => $builder->where('internal_team_id', $this->teamFilter))
             ->when($this->activeFilter === 'active', fn ($builder) => $builder->where('is_active', true))
             ->when($this->activeFilter === 'inactive', fn ($builder) => $builder->where('is_active', false))
+            ->when($this->followUpOnly, fn ($builder) => $builder->where('is_active', true)->where('needs_admin_follow_up', true))
             ->when($this->locationFilter !== null, function ($builder) {
                 $locationId = $this->locationFilter;
                 $builder->where(function ($inner) use ($locationId) {

@@ -29,6 +29,7 @@ class UpdateWorkerAction
             'phone' => $data['phone'] ?? null,
             'is_external' => $isExternal,
             'company_name' => $companyName,
+            'needs_admin_follow_up' => false,
         ];
 
         if (array_key_exists('weekly_contract_minutes', $data)) {

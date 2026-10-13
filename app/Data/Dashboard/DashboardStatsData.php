@@ -17,6 +17,7 @@ final class DashboardStatsData
         public int $pendingAbsenceRequests,
         public int $pendingAbsenceLeave,
         public int $pendingAbsenceRecup,
+        public int $workerFollowUp,
         public int $iotAlarms,
         public bool $hasTimeModule,
         public bool $hasIotModule,
@@ -39,6 +40,10 @@ final class DashboardStatsData
 
         if ($this->workMenuIssuesTasksEnabled && $this->pendingReview > 0) {
             $tiles[] = ['key' => 'pending_review', 'icon' => 'hourglass', 'label' => 'dashboard.kpi.pending_review', 'meta' => null, 'alert' => true, 'href_key' => 'pending_review'];
+        }
+
+        if ($this->workerFollowUp > 0) {
+            $tiles[] = ['key' => 'worker_follow_up', 'icon' => 'team', 'label' => 'dashboard.kpi.worker_follow_up', 'meta' => null, 'alert' => true, 'href_key' => 'worker_follow_up'];
         }
 
         if ($this->hasTimeModule && $this->timeAttention > 0) {
@@ -67,6 +72,7 @@ final class DashboardStatsData
             'pending_review' => $this->pendingReview,
             'time_attention' => $this->timeAttention,
             'pending_absence' => $this->pendingAbsenceRequests,
+            'worker_follow_up' => $this->workerFollowUp,
             'iot_alarms' => $this->iotAlarms,
             default => 0,
         };

@@ -250,6 +250,7 @@
             "all_locations": "Alle locaties",
             "status": "Status",
             "all_statuses": "Alle statussen",
+            "follow_up": "Te controleren",
             "count": ":count uitvoerders"
         },
         "row": {
@@ -257,6 +258,7 @@
             "all_locations": "Alle locaties"
         },
         "linked_user": "Collega-login",
+        "follow_up": "Te controleren",
         "empty": "Geen uitvoerders gevonden."
     }
 }

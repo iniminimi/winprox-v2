@@ -250,6 +250,7 @@
             "all_locations": "Tutte le sedi",
             "status": "Stato",
             "all_statuses": "Tutti gli stati",
+            "follow_up": "Da controllare",
             "count": ":count esecutori"
         },
         "row": {
@@ -257,6 +258,7 @@
             "all_locations": "Tutte le sedi"
         },
         "linked_user": "Login collega",
+        "follow_up": "Da controllare",
         "empty": "Nessun esecutore trovato."
     }
 }

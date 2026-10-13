@@ -465,6 +465,7 @@
                 'pending_review' => route('issues.index'),
                 'time_attention' => route('time.alarms.index'),
                 'pending_absence' => route('time.absence-requests.index'),
+                'worker_follow_up' => route('workers.index', ['review' => 1]),
                 'iot_alarms' => route('iot.index'),
             ];
             $highlightCutoff = now()->subHours(3);

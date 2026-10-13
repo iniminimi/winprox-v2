@@ -78,6 +78,7 @@
           "Con Time: quién está presente ahora.",
           "Quien ficha durante vacaciones, recupero, un festivo o una baja cuenta en Atención Time, con un signo de exclamación y un aviso junto a esa persona en presencia.",
           "Vacaciones o TOIL abiertos como tarjeta extra: 1 Vacaciones, 1 TOIL, o ambos.",
+          "Un ejecutor creado por un team leader aparece como tarjeta Nuevo ejecutor hasta que la administración guarda o desactiva a esa persona.",
           "Las organizaciones nuevas pueden elegir aquí una plantilla inicial.",
           "El briefing y los informes están disponibles desde el panel."
         ]

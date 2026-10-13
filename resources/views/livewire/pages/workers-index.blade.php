@@ -32,6 +32,14 @@
                     <option value="{{ $location->id }}">{{ $location->name ?: $location->address }}</option>
                 @endforeach
             </select>
+            <button
+                type="button"
+                wire:click="$toggle('followUpOnly')"
+                @class(['btn', 'btn--ghost', 'btn--sm'])
+                aria-pressed="{{ $followUpOnly ? 'true' : 'false' }}"
+            >
+                {{ __('team.workers_index.filters.follow_up') }}
+            </button>
             <select class="wp-select wp-select--compact" wire:model.live="activeFilter" aria-label="{{ __('team.workers_index.filters.status') }}">
                 <option value="all">{{ __('team.workers_index.filters.all_statuses') }}</option>
                 <option value="active">{{ __('team.workers.active') }}</option>
@@ -64,6 +72,9 @@
                     </div>
 
                     <div class="wp-cluster wp-cluster--tight">
+                        @if ($worker->needs_admin_follow_up)
+                            <span class="wp-pill wp-pill--new">{{ __('team.workers_index.follow_up') }}</span>
+                        @endif
                         @if ($worker->user_id)
                             <span class="wp-pill wp-pill--progress">{{ __('team.workers_index.linked_user') }}</span>
                         @endif
