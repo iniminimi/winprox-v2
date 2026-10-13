@@ -43,7 +43,7 @@
             </div>
         @else
             <div class="wp-card wp-card-pad">
-                <table>
+                <table class="wp-print-table">
                     <thead>
                         <tr>
                             <th>{{ __('time.export.columns.date') }}</th>

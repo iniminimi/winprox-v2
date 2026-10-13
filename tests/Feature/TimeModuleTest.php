@@ -238,7 +238,8 @@ it('laat een admin een urenstaat afdrukken', function () {
             'to' => now()->format('Y-m-d'),
         ]))
         ->assertOk()
-        ->assertSee(__('time.print.title'), false);
+        ->assertSee(__('time.print.title'), false)
+        ->assertSee('wp-print-table', false);
 });
 
 it('klokt in met lockForUpdate en weigert dubbele open shift', function () {

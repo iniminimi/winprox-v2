@@ -4354,6 +4354,37 @@ svg.wp-release-worker-row__icon,
     }
 }
 
+.wp-print-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.wp-print-table th,
+.wp-print-table td {
+    padding: 0.4rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+}
+
+.wp-print-table th:first-child,
+.wp-print-table td:first-child {
+    padding-left: 0;
+}
+
+.wp-print-table th:last-child,
+.wp-print-table td:last-child {
+    padding-right: 0;
+}
+
+.wp-print-table th {
+    font-weight: 600;
+    color: var(--wp-text);
+}
+
+.wp-print-table tbody td {
+    border-top: 1px solid var(--wp-border);
+}
+
 .wp-issue-row--static {
     cursor: default;
     text-decoration: none;
