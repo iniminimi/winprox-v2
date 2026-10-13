@@ -276,6 +276,45 @@ it('zet vervangingsuren alleen in de maand van de vervangingsdatum', function ()
         ->and($december->minutes)->toBe(monthNormExpected('2026-12-01', $pattern) - $pattern[6] + $pattern[3]);
 });
 
+it('past een vervangingsdag ook toe op de impliciete ma–vr-aanname', function () {
+    [, , , $worker] = monthNormTenant();
+
+    // Geen monthNormSync → impliciet patroon; de vervangingsdag moet de
+    // minuten van de feestdag-weekdag via het effectieve patroon krijgen.
+    monthNormAgree($worker, '2026-11-11', HolidayAgreementEffect::Replaced, '2026-11-14');
+
+    $norm = app(ResolveWorkerMonthNormAction::class)->handle((int) $worker->tenant_id, [(int) $worker->id], '2026-11-01')[(int) $worker->id];
+
+    // 11 nov (wo, 456 impliciet) valt weg; 14 nov (za) krijgt die 456.
+    expect($norm->status)->toBe(MonthNormStatus::Incomplete)
+        ->and($norm->minutes)->toBe(monthNormExpected('2026-11-01', monthNormFiveDayPattern()));
+});
+
+it('laat het normgetal weg in de maandweergave bij een stale patroon, maar toont de impliciete aanname', function () {
+    [$tenant, $admin, $team, $worker] = monthNormTenant();
+    monthNormSync($worker, monthNormFiveDayPattern());
+    $worker->update(['weekly_contract_minutes' => 1800]);
+
+    $implicitWorker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'weekly_contract_minutes' => 2280,
+    ]);
+
+    $snapshot = app(ListRosterWeekAction::class)->handle((int) $tenant->id, '2026-02-01', (int) $team->id, $admin, 'month');
+    $rows = collect($snapshot->workers);
+    $stale = $rows->firstWhere('id', $worker->id);
+    $implicit = $rows->firstWhere('id', $implicitWorker->id);
+    $implicitMinutes = monthNormExpected('2026-02-01', monthNormFiveDayPattern());
+
+    expect($stale['month_hours']['norm_status'])->toBe(MonthNormStatus::Incomplete->value)
+        ->and($stale['month_hours'])->not->toHaveKey('contract_minutes')
+        ->and($stale['month_hours'])->not->toHaveKey('difference_minutes')
+        ->and($implicit['month_hours']['norm_status'])->toBe(MonthNormStatus::Incomplete->value)
+        ->and($implicit['month_hours']['contract_minutes'])->toBe($implicitMinutes)
+        ->and($implicit['month_hours']['difference_minutes'])->toBe(-$implicitMinutes);
+});
+
 it('weigert een ongedekte of botsende vervangingsdag en past geen deelcorrectie toe', function () {
     [$tenant, , , $worker] = monthNormTenant();
     monthNormSync($worker, monthNormFiveDayPattern());

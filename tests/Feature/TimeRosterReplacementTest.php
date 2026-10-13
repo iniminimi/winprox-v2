@@ -153,6 +153,33 @@ it('filtert kandidaten: overlap, afwezigheid, patroon-nuldag en locatie', functi
         ->and($ids)->not->toContain((int) $restrictedWorker->id);
 });
 
+it('houdt een kandidaat met een expliciet patroon zonder nulminuten op die weekdag wel voor', function () {
+    [$tenant, , $team] = replacementTenant();
+    $date = now()->addWeek()->startOfWeek(Carbon::MONDAY)->toDateString();
+    $original = replacementWorker($tenant, $team, 'Origineel');
+    $block = replacementBlock($tenant, $original, $date);
+
+    // Expliciete werkregeling, maar mét minuten op de blok-weekdag (ma = 456):
+    // alleen een rij met 0 minuten mag uitsluiten.
+    $patternWorker = replacementWorker($tenant, $team, 'Patroon');
+    $patternWorker->update(['weekly_contract_minutes' => 2280]);
+    foreach (range(1, 7) as $weekday) {
+        WorkerWeekdayMinute::query()->create([
+            'tenant_id' => $tenant->id,
+            'worker_id' => $patternWorker->id,
+            'weekday' => $weekday,
+            'minutes' => $weekday <= 5 ? 456 : 0,
+        ]);
+    }
+
+    $ids = array_column(
+        app(SuggestReplacementAction::class)->handle($tenant, [$block->id]),
+        'worker_id',
+    );
+
+    expect($ids)->toContain((int) $patternWorker->id);
+});
+
 it('rangschikt: zelfde unit, dan zelfde locatie, dan de rest', function () {
     [$tenant, , $team] = replacementTenant();
     $date = now()->addWeek()->startOfWeek(Carbon::MONDAY)->toDateString();
