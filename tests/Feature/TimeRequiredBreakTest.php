@@ -5,6 +5,7 @@ use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
 use App\Actions\Time\ForceCloseWorkShiftAction;
 use App\Enums\BreakType;
+use App\Enums\ClockSource;
 use App\Enums\PresenceComplianceScope;
 use App\Enums\PresenceSourceEvent;
 use App\Enums\WorkShiftStatus;
@@ -367,4 +368,37 @@ it('past het teamminimum toe via de API', function () {
         ->postJson('/api/v1/time/work-shifts/'.$shift->id.'/apply-required-break')
         ->assertOk()
         ->assertJsonPath('data.total_break_minutes', 30);
+});
+
+it('toont elke gesloten status in dezelfde pil', function () {
+    [$tenant] = requiredBreakTenant();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    foreach ([
+        [WorkShiftStatus::Closed, ClockSource::ClockPointQr, 'time.status.closed'],
+        [WorkShiftStatus::ForceClosed, ClockSource::Admin, 'time.status.force_closed'],
+        [WorkShiftStatus::ForceClosed, ClockSource::Auto, 'time.status.auto_closed'],
+    ] as [$status, $source, $label]) {
+        $shift = WorkShift::factory()->closed()->create([
+            'tenant_id' => $tenant->id,
+            'worker_id' => $worker->id,
+            'internal_team_id' => $team->id,
+            'clock_in_clock_point_id' => $clockPoint->id,
+            'clock_out_clock_point_id' => $clockPoint->id,
+            'status' => $status,
+            'clock_out_source' => $source,
+        ]);
+
+        $html = view('partials.wp-time-shift-card', ['shift' => $shift])->render();
+
+        expect($html)
+            ->toContain('wp-pill wp-pill--closed')
+            ->toContain(__($label))
+            ->not->toContain('wp-time-shift-card__extra');
+    }
 });

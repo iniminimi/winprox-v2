@@ -11,6 +11,9 @@
         && (int) $shift->total_break_minutes > $clockedBreakMinutes;
     $workedDuration = \App\Support\Time\WorkDurationFormatter::format($shift->netWorkMinutes());
     $breakDuration = \App\Support\Time\WorkDurationFormatter::format($shift->visibleBreakMinutes());
+    $statusLabel = $shift->status === \App\Enums\WorkShiftStatus::ForceClosed && $shift->clock_out_source === \App\Enums\ClockSource::Auto
+        ? __('time.status.auto_closed')
+        : __('time.status.'.$shift->status->value);
 @endphp
 <div class="wp-card wp-card-pad wp-time-shift-card" wire:key="shift-{{ $shift->id }}">
     <div class="wp-time-shift-card__who">
@@ -55,7 +58,8 @@
         @endif
     </div>
 
-    <div class="wp-time-shift-card__col">
+    @if ($shift->visits->isNotEmpty() || $shift->taskLogs->isNotEmpty())
+    <div class="wp-time-shift-card__col wp-time-shift-card__extra">
         @if ($shift->visits->isNotEmpty())
             <p class="wp-subhead">{{ __('time.shifts.visits_heading') }}</p>
             <ul class="wp-muted wp-text-sm wp-time-shift-card__list">
@@ -90,15 +94,12 @@
             </ul>
         @endif
     </div>
+    @endif
 
     <div class="wp-time-shift-card__actions">
-        @if ($shift->status === \App\Enums\WorkShiftStatus::ForceClosed && $shift->clock_out_source === \App\Enums\ClockSource::Auto)
-            <span class="wp-pill wp-pill--closed">{{ __('time.status.auto_closed') }}</span>
-        @else
-            <span class="wp-pill">{{ __('time.status.'.$shift->status->value) }}</span>
-        @endif
+        <span class="wp-pill {{ $shift->status->isOpen() ? 'wp-pill--progress' : 'wp-pill--closed' }}">{{ $statusLabel }}</span>
         @if ($shift->isManuallyClockedIn())
-            <span class="wp-pill">{{ __('time.manual_clock_in.badge') }}</span>
+            <span class="wp-pill wp-pill--closed">{{ __('time.manual_clock_in.badge') }}</span>
         @endif
         @if ($shift->status->isOpen())
             <button type="button" class="btn btn--ghost btn--sm" wire:click="openForceClose({{ $shift->id }})">
