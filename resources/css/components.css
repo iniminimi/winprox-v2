@@ -3564,6 +3564,7 @@ a.wp-pagination__page:active:not(.is-active) {
 .wp-portal-schedule__table th:first-child,
 .wp-portal-schedule__table td:first-child {
     padding-left: 0;
+    text-align: right;
 }
 
 .wp-portal-schedule__table th:last-child,
