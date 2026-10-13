@@ -535,8 +535,17 @@
                                 <h3 class="wp-label">{{ __('time.schedule.month_norm.pattern_title') }}</h3>
                             </x-wp-tooltip>
                             <div class="wp-minutes-row">
-                                @for ($day = 1; $day <= 7; $day++)
+                                @for ($day = 1; $day <= 5; $day++)
                                     @if ($day > 1)<span class="wp-minutes-sep" aria-hidden="true">|</span>@endif<label class="wp-minutes-field">
+                                        <span class="wp-minutes-field__text">{{ __('time.schedule.weekdays.'.$day) }}</span>
+                                        <input id="workerWeekdayMinutes{{ $day }}" class="wp-input" type="number" min="0" max="999" inputmode="numeric" wire:model="workerWeekdayMinutes.{{ $day }}">
+                                        <span class="wp-minutes-field__unit">{{ __('time.duration.minute_short') }}</span>
+                                    </label>
+                                @endfor
+                            </div>
+                            <div class="wp-minutes-row">
+                                @for ($day = 6; $day <= 7; $day++)
+                                    @if ($day > 6)<span class="wp-minutes-sep" aria-hidden="true">|</span>@endif<label class="wp-minutes-field">
                                         <span class="wp-minutes-field__text">{{ __('time.schedule.weekdays.'.$day) }}</span>
                                         <input id="workerWeekdayMinutes{{ $day }}" class="wp-input" type="number" min="0" max="999" inputmode="numeric" wire:model="workerWeekdayMinutes.{{ $day }}">
                                         <span class="wp-minutes-field__unit">{{ __('time.duration.minute_short') }}</span>
