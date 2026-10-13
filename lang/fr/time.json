@@ -607,8 +607,8 @@
         }
     },
     "required_break": {
-        "apply": "Appliquer la pause minimale",
-        "applied_badge": "Pause équipe",
+        "apply": "Compléter jusqu'à :duration",
+        "applied_badge": "Complétée jusqu'à :duration (règle d'équipe).",
         "saved": "Pause minimale appliquée.",
         "errors": {
             "already_applied": "Ce service a déjà au moins la pause d’équipe.",

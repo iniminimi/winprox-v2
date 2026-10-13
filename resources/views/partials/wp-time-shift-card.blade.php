@@ -1,14 +1,14 @@
 @php
     $clockedBreakMinutes = (int) $shift->breaks->sum(fn ($break) => $break->durationMinutes());
     $requiredBreakMinutes = (int) ($shift->team?->required_break_minutes ?? 0);
-    $shiftDurationMinutes = $shift->clock_out_at !== null
-        ? max(0, (int) $shift->clock_in_at->diffInMinutes($shift->clock_out_at))
-        : 0;
-    $needsRequiredBreak = ! $shift->status->isOpen()
-        && $requiredBreakMinutes > 0
-        && (int) $shift->total_break_minutes < $requiredBreakMinutes
-        && $shiftDurationMinutes > $requiredBreakMinutes;
-    $appliedTeamBreak = (int) $shift->total_break_minutes > $clockedBreakMinutes;
+    $qualifiesForTeamBreak = $shift->clock_out_at !== null
+        && app(\App\Actions\Time\ResolveWorkShiftBreakMinutesAction::class)
+            ->qualifiesForRequiredBreak($shift, $shift->clock_out_at);
+    $needsRequiredBreak = $qualifiesForTeamBreak
+        && (int) $shift->total_break_minutes < $requiredBreakMinutes;
+    $appliedTeamBreak = $qualifiesForTeamBreak
+        && (int) $shift->total_break_minutes >= $requiredBreakMinutes
+        && (int) $shift->total_break_minutes > $clockedBreakMinutes;
     $workedDuration = \App\Support\Time\WorkDurationFormatter::format($shift->netWorkMinutes());
     $breakDuration = \App\Support\Time\WorkDurationFormatter::format($shift->visibleBreakMinutes());
 @endphp
@@ -20,6 +20,9 @@
             <p class="wp-time-shift-card__worked wp-tabular">{{ $workedDuration }}</p>
             <p class="wp-muted wp-text-sm">{{ __('time.shifts.worked_label') }}</p>
             <p class="wp-muted wp-text-sm">{{ __('time.shifts.break_minutes', ['duration' => $breakDuration]) }}</p>
+            @if ($appliedTeamBreak)
+                <p class="wp-muted wp-text-sm">{{ __('time.required_break.applied_badge', ['duration' => $breakDuration]) }}</p>
+            @endif
         </div>
     </div>
 
@@ -94,9 +97,6 @@
         @else
             <span class="wp-pill">{{ __('time.status.'.$shift->status->value) }}</span>
         @endif
-        @if ($appliedTeamBreak)
-            <span class="wp-pill">{{ __('time.required_break.applied_badge') }}</span>
-        @endif
         @if ($shift->isManuallyClockedIn())
             <span class="wp-pill">{{ __('time.manual_clock_in.badge') }}</span>
         @endif
@@ -107,7 +107,7 @@
         @elseif (auth()->user()?->can('correct', $shift))
             @if ($needsRequiredBreak)
                 <button type="button" class="btn btn--ghost btn--sm" wire:click="applyRequiredBreak({{ $shift->id }})">
-                    {{ __('time.required_break.apply') }}
+                    {{ __('time.required_break.apply', ['duration' => \App\Support\Time\WorkDurationFormatter::format($requiredBreakMinutes)]) }}
                 </button>
             @endif
             <button type="button" class="btn btn--ghost btn--sm" wire:click="openCorrection({{ $shift->id }})">

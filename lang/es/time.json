@@ -607,8 +607,8 @@
         }
     },
     "required_break": {
-        "apply": "Aplicar pausa mínima",
-        "applied_badge": "Pausa de equipo",
+        "apply": "Completar hasta :duration",
+        "applied_badge": "Completada hasta :duration (regla del equipo).",
         "saved": "Pausa mínima aplicada.",
         "errors": {
             "already_applied": "Este turno ya tiene al menos la pausa de equipo.",

@@ -607,8 +607,8 @@
         }
     },
     "required_break": {
-        "apply": "Mindestpause anwenden",
-        "applied_badge": "Team-Pause",
+        "apply": "Auffüllen auf :duration",
+        "applied_badge": "Aufgefüllt auf :duration (Teamregel).",
         "saved": "Mindestpause angewendet.",
         "errors": {
             "already_applied": "Diese Schicht hat bereits mindestens die Team-Pause.",

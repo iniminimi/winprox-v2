@@ -607,8 +607,8 @@
         }
     },
     "required_break": {
-        "apply": "Applica pausa minima",
-        "applied_badge": "Pausa team",
+        "apply": "Completare fino a :duration",
+        "applied_badge": "Completata fino a :duration (regola del team).",
         "saved": "Pausa minima applicata.",
         "errors": {
             "already_applied": "Questo turno ha già almeno la pausa del team.",

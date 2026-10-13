@@ -607,8 +607,8 @@
         }
     },
     "required_break": {
-        "apply": "Apply minimum break",
-        "applied_badge": "Team break",
+        "apply": "Fill up to :duration",
+        "applied_badge": "Filled up to :duration (team rule).",
         "saved": "Minimum break applied.",
         "errors": {
             "already_applied": "This shift already has at least the team break.",

@@ -192,6 +192,12 @@ it('weigert manueel teamminimum onder 4 uur', function () {
         (int) $tenant->id,
         $admin->id,
     ))->toThrow(InvalidArgumentException::class, 'shift_too_short');
+
+    Livewire::actingAs($admin)
+        ->test(ShiftsIndex::class)
+        ->assertDontSee(__('time.required_break.apply', [
+            'duration' => \App\Support\Time\WorkDurationFormatter::format(30),
+        ]), false);
 });
 
 it('laat pauzeminuten ongewijzigd als het team geen minimum heeft', function () {
@@ -310,10 +316,19 @@ it('laat een admin het teamminimum manueel toepassen met auditlog', function () 
         'total_break_minutes' => 0,
     ]);
 
+    $applyLabel = __('time.required_break.apply', [
+        'duration' => \App\Support\Time\WorkDurationFormatter::format(30),
+    ]);
+
     Livewire::actingAs($admin)
         ->test(ShiftsIndex::class)
+        ->assertSee($applyLabel, false)
         ->call('applyRequiredBreak', $shift->id)
-        ->assertHasNoErrors();
+        ->assertHasNoErrors()
+        ->assertSee(__('time.required_break.applied_badge', [
+            'duration' => \App\Support\Time\WorkDurationFormatter::format(30),
+        ]), false)
+        ->assertDontSee($applyLabel, false);
 
     expect($shift->fresh()->total_break_minutes)->toBe(30);
 

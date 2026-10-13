@@ -607,8 +607,8 @@
         }
     },
     "required_break": {
-        "apply": "Minimumpauze toepassen",
-        "applied_badge": "Teampauze",
+        "apply": "Aanvullen tot :duration",
+        "applied_badge": "Aangevuld tot :duration (teamregel).",
         "saved": "Minimumpauze toegepast.",
         "errors": {
             "already_applied": "Deze dienst heeft al minstens de teampauze.",
