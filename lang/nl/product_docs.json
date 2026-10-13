@@ -196,7 +196,7 @@
           "Clock Point toont Mijn rooster (alleen eigen gepubliceerde diensten).",
           "Rode driehoek als je niet of te laat inklokt.",
           "Beheer ziet gepland versus geklokt (15 minutenmarge).",
-          "In de week- en maandweergave staan per uitvoerder vaste kolommen met een verticale titel en in de rij alleen het cijfer: norm, verschil, gepland, gewerkt, verlof, recup en ziek. Norm en verschil blijven leeg zolang die norm niet betrouwbaar is. Standaard is de weeknorm 38 uur en blijft ze per uitvoerder aanpasbaar. Dat is een telling, geen oordeel over arbeidsduur."
+          "In de week- en maandweergave staan per uitvoerder vaste kolommen met een verticale titel en in de rij alleen het cijfer: norm, verschil, gepland, gewerkt, verlof, recup en ziek. De kolom sein signaleert onvolledige blokken of een openstaande registratie. Norm en verschil blijven leeg zolang die norm niet betrouwbaar is. Standaard is de weeknorm 38 uur en blijft ze per uitvoerder aanpasbaar. Dat is een telling, geen oordeel over arbeidsduur."
         ]
       },
       {

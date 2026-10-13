@@ -1817,6 +1817,10 @@
                 {
                     "label": "Gepland vs geklokt",
                     "text": "Op een <strong>gepubliceerde</strong> periode markeert het rooster afwijkingen (te laat/te vroeg) meteen, ook <strong>vandaag</strong>. Tot 15 minuten te vroeg telt als correct; 15 minuten of meer te laat (of meer dan 15 minuten te vroeg) is een afwijking. Prikken blijven altijd geregistreerd. Ontbrekende prikken pas na het geplande einde (of op vorige dagen). Ongeplande prikken en afwezigheid zonder prik blijven zoals eerder. Klik op de markering rechtsboven in de cel om <strong>Uren</strong> van die uitvoerder die dag te openen. <strong>Afdrukken</strong> (naast de titel) opent een nieuw venster (A4 liggend). Publiceren stuurt niets naar de RSZ."
+                },
+                {
+                    "label": "Urenkolommen rechts",
+                    "text": "Rechts van het rooster staan per uitvoerder cijferkolommen met verticale titel: <strong>Norm</strong> (contractnorm), <strong>Verschil</strong> (gepland min norm, met teken), <strong>Gepland</strong>, <strong>Gewerkt</strong> en per afwezigheid <strong>Verlof</strong>, <strong>Recup</strong> en <strong>Ziek</strong> (dagen en resturen). <strong>Sein</strong> toont een aantal en/of een uitroepteken bij onvolledige blokken of een openstaande klokregistratie. Norm en verschil blijven leeg zolang de norm niet betrouwbaar is. De weeknorm (standaard 38u) stelt u in bij de uitvoerder; de maandnorm volgt uit de werkregeling. Dit is een telling, geen oordeel over arbeidsduur."
                 }
             ]
         },

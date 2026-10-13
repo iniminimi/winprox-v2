@@ -1825,6 +1825,10 @@
                 {
                     "label": "Planifié vs pointé",
                     "text": "Sur une période <strong>publiée</strong>, la grille marque les écarts (en retard/en avance) immédiatement, y compris <strong>aujourd’hui</strong>. Jusqu’à 15 minutes d’avance compte comme à l’heure ; 15 minutes ou plus de retard (ou plus de 15 minutes d’avance) est un écart. Les pointages restent toujours enregistrés. Pointages manquants seulement après la fin prévue (ou les jours passés). Pointages non prévus et absence sans pointage restent comme avant. Cliquez sur le marqueur en haut à droite pour ouvrir <strong>Heures</strong> de cet exécutant ce jour-là. <strong>Imprimer</strong> (à côté du titre) ouvre une nouvelle fenêtre (A4 paysage)."
+                },
+                {
+                    "label": "Colonnes d’heures à droite",
+                    "text": "À droite de la grille, chaque exécutant a des colonnes de chiffres à titre vertical : <strong>Norme</strong> (norme de contrat), <strong>Écart</strong> (planifié moins la norme, signé), <strong>Planifié</strong>, <strong>Travaillé</strong> et par absence <strong>Congé</strong>, <strong>Récup</strong> et <strong>Maladie</strong> (jours plus heures restantes). <strong>Signal</strong> montre un nombre et/ou un point d’exclamation pour des blocs incomplets ou un pointage ouvert. Norme et écart restent vides tant que la norme n’est pas fiable. La norme hebdomadaire (38 h par défaut) se règle sur l’exécutant ; la norme mensuelle suit le régime de travail. C’est un décompte, pas un jugement sur la durée du travail."
                 }
             ]
         },

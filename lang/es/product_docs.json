@@ -196,7 +196,7 @@
           "Clock Point muestra Mi cuadrante (solo turnos publicados propios).",
           "Triángulo rojo si no ha fichado o llega tarde.",
           "La gestión ve planificado frente a fichado (margen de 15 minutos).",
-          "Las vistas semanal y mensual muestran columnas fijas por operario, con el título en vertical y solo la cifra en la fila: norma, diferencia, planificado, trabajado, vacaciones, descanso compensatorio y baja. Norma y diferencia quedan vacías mientras esa norma no sea fiable. Esa norma es de 38 horas por defecto y sigue siendo ajustable por operario. Es un recuento, no un juicio sobre la duración del trabajo."
+          "Las vistas semanal y mensual muestran columnas fijas por operario, con el título en vertical y solo la cifra en la fila: norma, diferencia, planificado, trabajado, vacaciones, descanso compensatorio y baja. La columna aviso señala bloques incompletos o un fichaje abierto. Norma y diferencia quedan vacías mientras esa norma no sea fiable. Esa norma es de 38 horas por defecto y sigue siendo ajustable por operario. Es un recuento, no un juicio sobre la duración del trabajo."
         ]
       },
       {

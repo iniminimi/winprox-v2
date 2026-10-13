@@ -1817,6 +1817,10 @@
                 {
                     "label": "Planificado vs fichado",
                     "text": "En un periodo <strong>publicado</strong>, la cuadrícula marca desviaciones (tarde/temprano) de inmediato, también <strong>hoy</strong>. Hasta 15 minutos de antelación cuenta como puntual; 15 minutos o más de retraso (o más de 15 minutos de antelación) es una desviación. Los fichajes siempre se registran. Fichajes faltantes solo después del fin previsto (o en días pasados). Fichajes no previstos y ausencia sin fichaje siguen igual. Haga clic en la marca de arriba a la derecha para abrir <strong>Horas</strong> de ese ejecutor ese día. <strong>Imprimir</strong> (junto al título) abre una ventana nueva (A4 apaisado)."
+                },
+                {
+                    "label": "Columnas de horas a la derecha",
+                    "text": "A la derecha de la cuadrícula, cada ejecutor tiene columnas de cifras con título vertical: <strong>Norma</strong> (norma de contrato), <strong>Diferencia</strong> (planificado menos norma, con signo), <strong>Planificado</strong>, <strong>Trabajado</strong> y por ausencia <strong>Vacaciones</strong>, <strong>Recup</strong> y <strong>Baja</strong> (días más horas restantes). <strong>Aviso</strong> muestra un número y/o un signo de exclamación por bloques incompletos o un fichaje abierto. Norma y diferencia quedan vacías mientras la norma no sea fiable. La norma semanal (38 h por defecto) se define en el ejecutor; la norma mensual sigue la pauta de trabajo. Es un recuento, no un juicio sobre la jornada."
                 }
             ]
         },

@@ -1817,6 +1817,10 @@
                 {
                     "label": "Pianificato vs timbrato",
                     "text": "In un periodo <strong>pubblicato</strong> la griglia marca gli scostamenti (in ritardo/in anticipo) subito, anche <strong>oggi</strong>. Fino a 15 minuti in anticipo conta come puntuale; 15 minuti o più in ritardo (o più di 15 minuti in anticipo) è uno scostamento. Le timbrature restano sempre registrate. Timbrature mancanti solo dopo la fine prevista (o nei giorni passati). Timbrature non previste e assenza senza timbratura restano come prima. Fai clic sul contrassegno in alto a destra per aprire <strong>Ore</strong> di quell’esecutore in quel giorno. <strong>Stampa</strong> (accanto al titolo) apre una nuova finestra (A4 orizzontale)."
+                },
+                {
+                    "label": "Colonne delle ore a destra",
+                    "text": "A destra della griglia, ogni esecutore ha colonne di cifre con titolo verticale: <strong>Norma</strong> (norma contrattuale), <strong>Scarto</strong> (pianificato meno norma, con segno), <strong>Pianificato</strong>, <strong>Lavorato</strong> e per assenza <strong>Ferie</strong>, <strong>Recupero</strong> e <strong>Malattia</strong> (giorni più ore residue). <strong>Segnale</strong> mostra un numero e/o un punto esclamativo per blocchi incompleti o una timbratura aperta. Norma e scarto restano vuoti finché la norma non è affidabile. La norma settimanale (38 ore predefinita) si imposta sull’esecutore; la norma mensile segue la regola di lavoro. È un conteggio, non un giudizio sull’orario di lavoro."
                 }
             ]
         },

@@ -196,7 +196,7 @@
           "Clock Point shows My roster (own published shifts only).",
           "A red triangle if you have not clocked in or are late.",
           "Admin sees planned versus clocked (15-minute window).",
-          "Week and month view show fixed columns per worker, with a vertical title and only the figure in the row: norm, difference, planned, worked, leave, time off in lieu and sick. Norm and difference stay empty while that norm is not reliable. The weekly norm defaults to 38 hours and stays adjustable per worker. That is a count, not a judgement on working time."
+          "Week and month view show fixed columns per worker, with a vertical title and only the figure in the row: norm, difference, planned, worked, leave, time off in lieu and sick. The flag column signals incomplete blocks or an open time record. Norm and difference stay empty while that norm is not reliable. The weekly norm defaults to 38 hours and stays adjustable per worker. That is a count, not a judgement on working time."
         ]
       },
       {

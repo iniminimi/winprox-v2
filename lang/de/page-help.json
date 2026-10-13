@@ -1817,6 +1817,10 @@
                 {
                     "label": "Geplant vs. gestempelt",
                     "text": "In einer <strong>veröffentlichten</strong> Periode markiert der Plan Abweichungen (zu spät/zu früh) sofort, auch <strong>heute</strong>. Bis 15 Minuten zu früh zählt als pünktlich; 15 Minuten oder mehr zu spät (oder mehr als 15 Minuten zu früh) ist eine Abweichung. Stempelungen werden immer gespeichert. Fehlende Stempelungen erst nach dem geplanten Ende (oder an vergangenen Tagen). Ungeplante Stempelungen und Abwesenheit ohne Stempelung bleiben wie zuvor. Klicken Sie oben rechts auf die Markierung, um <strong>Stunden</strong> für diesen Ausführenden an diesem Tag zu öffnen. <strong>Drucken</strong> (neben dem Titel) öffnet ein neues Fenster (A4 quer)."
+                },
+                {
+                    "label": "Stundenspalten rechts",
+                    "text": "Rechts neben dem Plan stehen je Ausführendem Zahlenspalten mit senkrechtem Titel: <strong>Norm</strong> (Vertragsnorm), <strong>Differenz</strong> (geplant minus Norm, mit Vorzeichen), <strong>Geplant</strong>, <strong>Gearbeitet</strong> und je Abwesenheit <strong>Urlaub</strong>, <strong>Ausgleich</strong> und <strong>Krank</strong> (Tage plus Reststunden). <strong>Hinweis</strong> zeigt eine Zahl und/oder ein Ausrufezeichen bei unvollständigen Blöcken oder einer offenen Stempelung. Norm und Differenz bleiben leer, solange die Norm nicht verlässlich ist. Die Wochennorm (standardmäßig 38 h) stellen Sie beim Ausführenden ein; die Monatsnorm folgt aus der Arbeitsregelung. Das ist eine Zählung, kein Urteil über die Arbeitszeit."
                 }
             ]
         },

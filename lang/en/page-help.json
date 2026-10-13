@@ -1817,6 +1817,10 @@
                 {
                     "label": "Planned vs clocked",
                     "text": "On a <strong>published</strong> period the grid marks deviations (late/early) immediately, including <strong>today</strong>. Up to 15 minutes early still counts as on time; 15 minutes or more late (or more than 15 minutes early) is a deviation. Punches are always stored. Missing punches only after the planned end (or on past days). Unplanned punches and absence without a punch stay as before. Click the top-right marker in the cell to open <strong>Hours</strong> for that worker on that day. <strong>Print</strong> (next to the title) opens a new window (A4 landscape). Publishing does not send anything to the NSSO."
+                },
+                {
+                    "label": "Hours columns on the right",
+                    "text": "To the right of the grid each worker has figure columns with a vertical title: <strong>Norm</strong> (contract norm), <strong>Difference</strong> (planned minus norm, signed), <strong>Planned</strong>, <strong>Worked</strong> and per absence <strong>Leave</strong>, <strong>Lieu</strong> and <strong>Sick</strong> (days plus remaining hours). <strong>Flag</strong> shows a count and/or an exclamation mark for incomplete blocks or an open clock registration. Norm and difference stay empty while the norm is not reliable. The weekly norm (38 hours by default) is set on the worker; the monthly norm follows the work pattern. This is a count, not a judgement on working time."
                 }
             ]
         },
