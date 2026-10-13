@@ -397,6 +397,7 @@
             "signed_in_at": "Signed in on WinProx at :time",
             "signed_in_since": "Signed in since :date - :time",
             "clocked_in_at_tenant": "Clocked in at :tenant at :time",
+            "absence_clock_in": "You clocked in during :kind",
             "no_break": "No break taken yet",
             "on_break_since": "On break since :time",
             "in": "Clock in",

@@ -397,6 +397,7 @@
             "signed_in_at": "Sesión iniciada en WinProx a las :time",
             "signed_in_since": "Sesión iniciada desde :date - :time",
             "clocked_in_at_tenant": "Fichado en :tenant a las :time",
+            "absence_clock_in": "Has fichado durante :kind",
             "no_break": "Aún no ha hecho pausa",
             "on_break_since": "En pausa desde :time",
             "in": "Fichar entrada",

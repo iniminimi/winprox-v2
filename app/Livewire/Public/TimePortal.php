@@ -32,6 +32,7 @@ use App\Actions\Time\RequestAbsenceAction;
 use App\Actions\Time\LogBlockedClockPointQrAttemptAction;
 use App\Actions\Time\ResolveClockPointPortalTokenAction;
 use App\Actions\Time\ResolveRosterMonthAction;
+use App\Actions\Time\CollectAbsenceClockInAttentionAction;
 use App\Actions\Time\ResolveWorkerPortalRosterAlertsAction;
 use App\Actions\Time\SetWorkerClockPinAction;
 use App\Actions\Time\StartWorkBreakAction;
@@ -1716,7 +1717,7 @@ class TimePortal extends Component
         }
     }
 
-    public function render(FindOpenWorkShiftForWorkerAction $findShift, SyncWorkerOpenTaskBaselineAction $syncBaseline, ListOpenTimeRosterAction $listRoster, ListWorkerHoursAction $listHours, ListPublishedWorkerRosterAction $listSchedule, ListWorkerNotificationsAction $listNotifications, ListWorkDestinationsForWorkerAction $listDestinations, ResolveWorkerPortalRosterAlertsAction $rosterAlerts, ListWorkerAbsenceRequestsAction $listAbsenceRequests)
+    public function render(FindOpenWorkShiftForWorkerAction $findShift, SyncWorkerOpenTaskBaselineAction $syncBaseline, ListOpenTimeRosterAction $listRoster, ListWorkerHoursAction $listHours, ListPublishedWorkerRosterAction $listSchedule, ListWorkerNotificationsAction $listNotifications, ListWorkDestinationsForWorkerAction $listDestinations, ResolveWorkerPortalRosterAlertsAction $rosterAlerts, ListWorkerAbsenceRequestsAction $listAbsenceRequests, CollectAbsenceClockInAttentionAction $absenceClockIns)
     {
         app()->setLocale($this->locale);
         $this->refreshPortalFlash();
@@ -1775,8 +1776,14 @@ class TimePortal extends Component
             && ! $registerOnly && ! $showRegisterForm && ! $iconBlocked;
 
         $openShift = null;
+        $absenceClockInKind = null;
         if ($canAct && $verifiedWorker !== null && TimeModuleAccess::tenantHasModule(Tenant::query()->find($this->tenantId))) {
             $openShift = $findShift->handle($verifiedWorker);
+            if ($openShift !== null) {
+                $absenceClockInKind = $absenceClockIns->handle((int) $this->tenantId, collect([$openShift]))
+                    ->first()
+                    ?->absenceKind;
+            }
         }
         $hasTimeModule = TimeModuleAccess::tenantHasModule(Tenant::query()->find($this->tenantId));
         $checkmateMode = CheckmateMode::isActive(Tenant::query()->find($this->tenantId));
@@ -1925,6 +1932,7 @@ class TimePortal extends Component
                 ? WorkerIconGuard::remainingAttempts($deviceWorker->team)
                 : WorkerIconGuard::MAX_FAILED_ATTEMPTS,
             'openShift' => $openShift,
+            'absenceClockInKind' => $absenceClockInKind,
             'lastClosedShift' => $lastClosedShift,
             'todayClockAlert' => $todayClockAlert,
             'todayDestinations' => $todayDestinations,

@@ -397,6 +397,7 @@
             "signed_in_at": "Aangemeld op WinProx om :time",
             "signed_in_since": "Aangemeld sinds :date - :time",
             "clocked_in_at_tenant": "Ingeklokt bij :tenant om :time",
+            "absence_clock_in": "Je bent ingeklokt tijdens :kind",
             "no_break": "Nog geen pauze genomen",
             "on_break_since": "In pauze sinds :time",
             "in": "Inklokken",

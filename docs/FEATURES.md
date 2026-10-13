@@ -769,7 +769,8 @@ productsector op `Tenant`.
   (afgeleide standaard of opgeslagen afspraak; effect `none` telt niet, een vervangingsdag
   telt niet). Dat telt mee in de bestaande tegel **Time-aandacht** (geen tweede tegel) en
   in Time → Alarmen, filter Afwezigheid. Time → Aanwezigheid zet een uitroepteken en de
-  melding (verlof, recup, ziekte of feestdag) bij die uitvoerder. Na uitklokken valt de
+  melding (verlof, recup, ziekte of feestdag) bij die uitvoerder. Op het gsm-portaal
+  kleurt het groene inklokblok rood, met die melding zichtbaar. Na uitklokken valt de
   melding weg.
 - Worker zonder login (naam + icoon of optionele PIN); **één gsm per uitvoerder**
   (koppeling bij eerste geslaagde Clock Point-aanmelding; ander toestel weigeren + audit

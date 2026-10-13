@@ -9,6 +9,7 @@ use App\Enums\HolidayAgreementEffect;
 use App\Enums\ShiftTypeKind;
 use App\Enums\TimePresenceAttentionType;
 use App\Enums\WorkShiftStatus;
+use App\Livewire\Public\TimePortal;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\PlannedShift;
@@ -17,6 +18,7 @@ use App\Models\TenantHolidayAgreement;
 use App\Models\Worker;
 use App\Support\Tenancy;
 use Carbon\Carbon;
+use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
 
@@ -133,4 +135,35 @@ it('telt een gewone werkplanning niet als afwezigheid', function () {
 
     $stats = app(BuildDashboardStatsAction::class)->handle($tenant->id, true, false);
     expect(collect($stats->kpiTiles())->pluck('key')->all())->not->toContain('absence_clock_in');
+});
+
+it('kleurt het gsm-portaal rood bij inklokken tijdens verlof', function () {
+    [$tenant, $clockPoint, $worker] = absenceClockInSetup();
+    $worker->update([
+        'first_name' => 'Jan',
+        'last_name' => 'Janssen',
+        'field_icon_slug' => 'heart',
+    ]);
+    $clockPoint->update(['qr_token' => 'absence-clock-'.$tenant->id]);
+    $shift = app(ClockInAction::class)->handle($worker, $clockPoint);
+    PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => $shift->clock_in_at->timezone((string) config('app.timezone'))->toDateString(),
+        'kind' => ShiftTypeKind::Leave,
+        'start_time' => null,
+        'end_time' => null,
+    ]);
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->assertSeeHtml('wp-portal-now--absence')
+        ->assertDontSeeHtml('wp-portal-now--clocked')
+        ->assertSee(__('time.portal.clock.absence_clock_in', [
+            'kind' => __('time.presence.attention.absence_kinds.leave'),
+        ]));
 });

@@ -397,6 +397,7 @@
             "signed_in_at": "Connecté sur WinProx à :time",
             "signed_in_since": "Connecté depuis :date - :time",
             "clocked_in_at_tenant": "Pointé chez :tenant à :time",
+            "absence_clock_in": "Vous avez pointé pendant :kind",
             "no_break": "Pas encore de pause",
             "on_break_since": "En pause depuis :time",
             "in": "Pointer l'entrée",

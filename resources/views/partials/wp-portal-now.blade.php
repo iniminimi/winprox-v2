@@ -22,6 +22,7 @@
         : '';
     $nextStop = filled($onSiteGuidance['next'] ?? null) ? $onSiteGuidance['next'] : null;
     $hereDone = ($onSiteGuidance['remaining_here'] ?? true) === false && $nextStop !== null;
+    $absenceClockInKind = filled($absenceClockInKind ?? null) ? (string) $absenceClockInKind : null;
     $primary = null;
     if ($openShift === null && ($canPunch ?? false)) {
         $primary = ['clockIn', __('time.portal.clock.in')];
@@ -33,7 +34,11 @@
         $primary = ['clockOut', __('time.portal.clock.out')];
     }
 @endphp
-<div @class(['wp-portal-now', 'wp-portal-now--clocked' => $openShift !== null]) x-data="{ open: false }">
+<div @class([
+    'wp-portal-now',
+    'wp-portal-now--clocked' => $openShift !== null && $absenceClockInKind === null,
+    'wp-portal-now--absence' => $absenceClockInKind !== null,
+]) x-data="{ open: false }">
     <p class="wp-portal-now__kicker">{{ $openShift === null ? __('time.portal.now.kicker') : __('time.portal.now.kicker_in') }}</p>
     <div class="wp-portal-now__head">
         <button
@@ -54,8 +59,11 @@
                 <button type="button" class="btn btn--primary btn--sm" @click="withGps('{{ $primary[0] }}')" data-manual-capture-trigger="portal-primary-action">{{ $primary[1] }}</button>
             @endif
         @endif
-        <x-wp-icon :name="$openShift === null ? 'clock' : 'check-circle'" class="wp-portal-now__status-icon" data-clock-state="{{ $openShift === null ? 'out' : 'in' }}" />
+        <x-wp-icon :name="$openShift === null ? 'clock' : ($absenceClockInKind !== null ? 'alert-triangle' : 'check-circle')" class="wp-portal-now__status-icon" data-clock-state="{{ $openShift === null ? 'out' : 'in' }}" />
     </div>
+    @if ($absenceClockInKind !== null)
+        <p class="wp-portal-now__alert">{{ __('time.portal.clock.absence_clock_in', ['kind' => __('time.presence.attention.absence_kinds.'.$absenceClockInKind)]) }}</p>
+    @endif
 
     <div class="wp-disclosure-panel wp-portal-now__more-panel" x-show="open" x-cloak>
         <div class="wp-portal-now__sign-out-row">
