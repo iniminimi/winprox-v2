@@ -197,7 +197,7 @@
           "Ungespeicherte Änderungen bitten zuerst um Speichern, wenn Sie die Seite verlassen oder Woche/Monat wechseln.",
           "Wochen- oder Monatsansicht; Wochenenden können Sie ausblenden.",
           "Clock Point zeigt Mein Dienstplan (nur eigene veröffentlichte Schichten).",
-          "Rotes Dreieck, wenn Sie nicht, zu früh oder zu spät stempeln. Meine Stunden nennt den Grund.",
+          "Rotes Dreieck, wenn Sie nicht, zu früh oder zu spät einstempeln oder zu spät ausstempeln. Meine Stunden nennt jeden Grund.",
           "Die Verwaltung sieht geplant versus gestempelt (15-Minuten-Spielraum).",
           "Wochen- und Monatsansicht zeigen je Ausführendem feste Spalten mit senkrechtem Titel und in der Zeile nur die Zahl: Norm, Differenz, geplant, gearbeitet, Urlaub, Ausgleich und krank. Die Spalte Hinweis zeigt unvollständige Blöcke oder eine offene Stempelung. Norm und Differenz bleiben leer, solange diese Norm nicht verlässlich ist. Die Norm steht standardmäßig auf 38 Stunden und bleibt je Person anpassbar. Ohne Arbeitsregelung zählt der Monat Montag–Freitag nach dieser Norm; Feiertage folgen der vereinbarten Regelung oder, ohne Vereinbarung, dem belgischen Standard (Arbeitstag entfällt; ein Feiertag am Wochenende erhält einen vorgeschlagenen Ersatztag). Das ist eine Zählung, kein Urteil über die Arbeitszeit.",
           "Feiertage färben die Datumsspalte blau, Ersatztage grün; eine graue Zelle ist ein fester freier Tag (0 Minuten im Wochenmuster) und bleibt ausfüllbar."

@@ -1088,7 +1088,7 @@
                 },
                 {
                     "label": "Mes heures",
-                    "text": "Après connexion, la tuile Mes heures affiche vos jours du mois choisi, regroupés : première entrée, dernière sortie, temps travaillé et pause. Mois précédent/suivant. La pause affiche « aucune » s’il n’y a pas de pause. Le minimum d’équipe ne compte que pour les services d’au moins 4 heures. Un triangle rouge à côté de l’heure d’entrée indique la raison : plus de 15 minutes trop tôt, ou au moins 15 minutes de retard par rapport au planning publié."
+                    "text": "Après connexion, la tuile Mes heures affiche vos jours du mois choisi, regroupés : première entrée, dernière sortie, temps travaillé et pause. Mois précédent/suivant. La pause affiche « aucune » s’il n’y a pas de pause. Le minimum d’équipe ne compte que pour les services d’au moins 4 heures. Un triangle rouge indique la raison : pointé plus de 15 minutes trop tôt, au moins 15 minutes de retard à l’entrée, ou au moins 15 minutes de retard à la sortie par rapport au planning publié."
                 },
                 {
                     "label": "Mon planning",

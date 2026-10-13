@@ -90,7 +90,7 @@ it('markeert niet-ingeklokt vanaf de geplande start', function () {
         Carbon::parse('2026-09-22 09:00:00'),
     );
 
-    expect($alerts['2026-09-22'] ?? null)->toBe(PortalRosterClockAlert::Absent);
+    expect($alerts['2026-09-22'] ?? [])->toBe([PortalRosterClockAlert::Absent]);
 });
 
 it('toont geen alert vóór de geplande start', function () {
@@ -125,7 +125,7 @@ it('markeert te laat vanaf 15 minuten na de start', function () {
         Carbon::parse('2026-09-22 10:00:00'),
     );
 
-    expect($alerts['2026-09-22'] ?? null)->toBe(PortalRosterClockAlert::Late);
+    expect($alerts['2026-09-22'] ?? [])->toBe([PortalRosterClockAlert::Late]);
 });
 
 it('markeert te vroeg vanaf meer dan 15 minuten voor de start', function () {
@@ -146,7 +146,7 @@ it('markeert te vroeg vanaf meer dan 15 minuten voor de start', function () {
         Carbon::parse('2026-09-22 10:00:00'),
     );
 
-    expect($alerts['2026-09-22'] ?? null)->toBe(PortalRosterClockAlert::Early);
+    expect($alerts['2026-09-22'] ?? [])->toBe([PortalRosterClockAlert::Early]);
 });
 
 it('telt 15 minuten te vroeg nog als ok', function () {
@@ -269,6 +269,75 @@ it('toont de rode driehoek bij te late inklok in Mijn uren', function () {
         ->assertSeeHtml('wp-portal-clock-alert');
 });
 
+it('toont te laat uitgeklokt naast een te late inklok', function () {
+    [$tenant, $team, , $worker] = rosterAlertTenant();
+    publishWorkShift($tenant, $worker, '2026-09-22', '08:00', '16:00');
+    WorkShift::factory()->closed()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_at' => Carbon::parse('2026-09-22 08:20:00'),
+        'clock_out_at' => Carbon::parse('2026-09-22 16:20:00'),
+        'status' => WorkShiftStatus::Closed,
+    ]);
+
+    $alerts = app(ResolveWorkerPortalRosterAlertsAction::class)->handle(
+        $worker,
+        (int) $tenant->id,
+        ['2026-09-22'],
+        Carbon::parse('2026-09-22 17:00:00'),
+    );
+
+    expect($alerts['2026-09-22'] ?? [])->toBe([
+        PortalRosterClockAlert::Late,
+        PortalRosterClockAlert::LateOut,
+    ]);
+});
+
+it('toont alleen te laat uitgeklokt als de inklok op tijd was', function () {
+    [$tenant, $team, , $worker] = rosterAlertTenant();
+    publishWorkShift($tenant, $worker, '2026-09-22', '08:00', '16:00');
+    WorkShift::factory()->closed()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_at' => Carbon::parse('2026-09-22 08:00:00'),
+        'clock_out_at' => Carbon::parse('2026-09-22 16:15:00'),
+        'status' => WorkShiftStatus::Closed,
+    ]);
+
+    $alerts = app(ResolveWorkerPortalRosterAlertsAction::class)->handle(
+        $worker,
+        (int) $tenant->id,
+        ['2026-09-22'],
+        Carbon::parse('2026-09-22 17:00:00'),
+    );
+
+    expect($alerts['2026-09-22'] ?? [])->toBe([PortalRosterClockAlert::LateOut]);
+});
+
+it('telt 14 minuten te laat uitklokken nog als ok', function () {
+    [$tenant, $team, , $worker] = rosterAlertTenant();
+    publishWorkShift($tenant, $worker, '2026-09-22', '08:00', '16:00');
+    WorkShift::factory()->closed()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_at' => Carbon::parse('2026-09-22 08:00:00'),
+        'clock_out_at' => Carbon::parse('2026-09-22 16:14:00'),
+        'status' => WorkShiftStatus::Closed,
+    ]);
+
+    $alerts = app(ResolveWorkerPortalRosterAlertsAction::class)->handle(
+        $worker,
+        (int) $tenant->id,
+        ['2026-09-22'],
+        Carbon::parse('2026-09-22 17:00:00'),
+    );
+
+    expect($alerts)->toBe([]);
+});
+
 it('toont te vroeg ingeklokt in tekst op Mijn uren', function () {
     [$tenant, $team, $clockPoint, $worker] = rosterAlertTenant();
     publishWorkShift($tenant, $worker, '2026-09-22', '08:00', '16:00');
@@ -289,6 +358,27 @@ it('toont te vroeg ingeklokt in tekst op Mijn uren', function () {
         ->assertSee('07:40', false)
         ->assertSee(__('time.portal.clock_alert.early'), false)
         ->assertSeeHtml('wp-portal-clock-alert');
+});
+
+it('toont te laat in- en uitgeklokt samen op Mijn uren', function () {
+    [$tenant, $team, $clockPoint, $worker] = rosterAlertTenant();
+    publishWorkShift($tenant, $worker, '2026-09-22', '08:00', '16:00');
+    WorkShift::factory()->closed()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_clock_point_id' => $clockPoint->id,
+        'clock_out_clock_point_id' => $clockPoint->id,
+        'clock_in_at' => Carbon::parse('2026-09-22 08:20:00'),
+        'clock_out_at' => Carbon::parse('2026-09-22 16:20:00'),
+        'status' => WorkShiftStatus::Closed,
+    ]);
+    $this->travelTo(Carbon::parse('2026-09-22 17:00:00'));
+
+    signInRosterAlertWorker($clockPoint)
+        ->call('openHours')
+        ->assertSee(__('time.portal.clock_alert.late'), false)
+        ->assertSee(__('time.portal.clock_alert.late_out'), false);
 });
 
 it('toont de rode driehoek naast de geplande uren in Mijn rooster', function () {

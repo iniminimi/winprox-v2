@@ -1080,7 +1080,7 @@
                 },
                 {
                     "label": "Mijn uren",
-                    "text": "Na aanmelden zie je de tegel Mijn uren. Daar staan jouw dagen van de gekozen maand, samengevoegd: eerste inklok, laatste uitklok, gewerkte tijd en pauze. Blader met vorige/volgende maand. Pauze toont «geen» als er geen pauze is. Het teamminimum telt alleen bij diensten van minstens 4 uur. Een rood driehoekje naast de inkloktijd toont de reden: meer dan 15 minuten te vroeg, of minstens 15 minuten te laat t.o.v. het gepubliceerde rooster."
+                    "text": "Na aanmelden zie je de tegel Mijn uren. Daar staan jouw dagen van de gekozen maand, samengevoegd: eerste inklok, laatste uitklok, gewerkte tijd en pauze. Blader met vorige/volgende maand. Pauze toont «geen» als er geen pauze is. Het teamminimum telt alleen bij diensten van minstens 4 uur. Een rood driehoekje toont de reden: meer dan 15 minuten te vroeg ingeklokt, minstens 15 minuten te laat ingeklokt, of minstens 15 minuten te laat uitgeklokt t.o.v. het gepubliceerde rooster."
                 },
                 {
                     "label": "Mijn rooster",

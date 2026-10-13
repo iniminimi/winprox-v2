@@ -459,7 +459,8 @@
         "clock_alert": {
             "absent": "Scheduled, but not clocked in",
             "early": "Clocked in early",
-            "late": "Clocked in late"
+            "late": "Clocked in late",
+            "late_out": "Clocked out late"
         },
         "schedule": {
             "tile": "My roster",

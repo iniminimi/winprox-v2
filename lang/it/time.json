@@ -459,7 +459,8 @@
         "clock_alert": {
             "absent": "Pianificato, ma non timbrato",
             "early": "Timbrato troppo presto",
-            "late": "Timbrato in ritardo"
+            "late": "Timbrato in ritardo",
+            "late_out": "Timbrato in ritardo in uscita"
         },
         "schedule": {
             "tile": "Il mio turno",

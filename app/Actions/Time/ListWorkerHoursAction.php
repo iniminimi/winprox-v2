@@ -46,7 +46,7 @@ class ListWorkerHoursAction
             ->map(fn (Collection $dayShifts, string $dateKey) => $this->dayFromShifts(
                 $dateKey,
                 $dayShifts,
-                $alerts[$dateKey] ?? null,
+                $alerts[$dateKey] ?? [],
             ))
             ->sortByDesc(fn (WorkerHoursDay $day) => $day->dateKey)
             ->values();
@@ -62,8 +62,9 @@ class ListWorkerHoursAction
 
     /**
      * @param  Collection<int, WorkShift>  $dayShifts
+     * @param  list<PortalRosterClockAlert>  $clockAlerts
      */
-    private function dayFromShifts(string $dateKey, Collection $dayShifts, ?PortalRosterClockAlert $clockAlert): WorkerHoursDay
+    private function dayFromShifts(string $dateKey, Collection $dayShifts, array $clockAlerts): WorkerHoursDay
     {
         $sorted = $dayShifts->sortBy([
             fn (WorkShift $shift) => $shift->clock_in_at->timestamp,
@@ -95,7 +96,7 @@ class ListWorkerHoursAction
                     ? $this->formatPortalDuration($break)
                     : __('time.portal.hours.break_none'),
             ]),
-            clockAlert: $clockAlert,
+            clockAlerts: $clockAlerts,
         );
     }
 

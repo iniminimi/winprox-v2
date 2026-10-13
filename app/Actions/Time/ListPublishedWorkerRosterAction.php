@@ -64,7 +64,7 @@ class ListPublishedWorkerRosterAction
                 kind: $shift->kind->value,
                 weekStart: $weekStart,
                 isToday: $date->isToday(),
-                clockAlert: $alerts[$date->toDateString()] ?? null,
+                clockAlert: ($alerts[$date->toDateString()] ?? [])[0] ?? null,
                 description: $shift->description !== null && trim($shift->description) !== ''
                     ? trim($shift->description)
                     : null,

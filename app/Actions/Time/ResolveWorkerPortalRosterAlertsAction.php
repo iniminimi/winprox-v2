@@ -10,13 +10,14 @@ use App\Models\WorkShift;
 use App\Models\Worker;
 use App\Support\Time\TimeModuleAccess;
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use InvalidArgumentException;
 
 class ResolveWorkerPortalRosterAlertsAction
 {
     /**
      * @param  list<string>  $dates
-     * @return array<string, PortalRosterClockAlert>
+     * @return array<string, list<PortalRosterClockAlert>>
      */
     public function handle(Worker $worker, int $tenantId, array $dates, ?Carbon $now = null): array
     {
@@ -68,19 +69,83 @@ class ResolveWorkerPortalRosterAlertsAction
                 continue;
             }
 
-            $dayPlan = $planned->get($date)?->first();
+            $dayPlans = $planned->get($date) ?? collect();
+            $dayPlan = $dayPlans->first();
             if (! $dayPlan instanceof PlannedShift) {
                 continue;
             }
 
-            $firstIn = $punches->get($date)?->first()?->clock_in_at;
-            $alert = $this->alertForDay($dayPlan, $firstIn, $date, $now, $tolerance);
-            if ($alert instanceof PortalRosterClockAlert) {
-                $alerts[$date] = $alert;
+            $dayPunches = $punches->get($date) ?? collect();
+            $dayAlerts = $this->alertsForDay($dayPlan, $dayPlans, $dayPunches, $date, $now, $tolerance);
+            if ($dayAlerts !== []) {
+                $alerts[$date] = $dayAlerts;
             }
         }
 
         return $alerts;
+    }
+
+    /**
+     * @param  Collection<int, PlannedShift>  $dayPlans
+     * @param  Collection<int, WorkShift>  $dayPunches
+     * @return list<PortalRosterClockAlert>
+     */
+    private function alertsForDay(
+        PlannedShift $dayPlan,
+        Collection $dayPlans,
+        Collection $dayPunches,
+        string $date,
+        Carbon $now,
+        int $tolerance,
+    ): array {
+        $alerts = [];
+        $clockIn = $this->alertForDay($dayPlan, $dayPunches->first()?->clock_in_at, $date, $now, $tolerance);
+        if ($clockIn instanceof PortalRosterClockAlert) {
+            $alerts[] = $clockIn;
+        }
+
+        $clockOut = $this->lateOutAlert($dayPlans, $dayPunches, $date, $tolerance);
+        if ($clockOut instanceof PortalRosterClockAlert) {
+            $alerts[] = $clockOut;
+        }
+
+        return $alerts;
+    }
+
+    /**
+     * @param  Collection<int, PlannedShift>  $dayPlans
+     * @param  Collection<int, WorkShift>  $dayPunches
+     */
+    private function lateOutAlert(Collection $dayPlans, Collection $dayPunches, string $date, int $tolerance): ?PortalRosterClockAlert
+    {
+        if ($dayPunches->isEmpty()) {
+            return null;
+        }
+
+        $stillOpen = $dayPunches->contains(
+            fn (WorkShift $shift) => $shift->clock_out_at === null || $shift->status->isOpen()
+        );
+        if ($stillOpen) {
+            return null;
+        }
+
+        $endPlan = $dayPlans->reverse()->first(
+            fn (PlannedShift $plan) => $plan->end_time !== null
+        );
+        $lastOut = $dayPunches->max('clock_out_at');
+        if (! $endPlan instanceof PlannedShift || ! $lastOut instanceof Carbon) {
+            return null;
+        }
+
+        $endMinutes = ShiftType::timeToMinutes($endPlan->end_time);
+        $plannedEnd = Carbon::parse($date)->startOfDay()->addMinutes($endMinutes);
+        if ($endPlan->start_time !== null && $endMinutes <= ShiftType::timeToMinutes($endPlan->start_time)) {
+            $plannedEnd->addDay();
+        }
+
+        return $lastOut->greaterThanOrEqualTo($plannedEnd->addMinutes($tolerance))
+            ? PortalRosterClockAlert::LateOut
+            : null;
     }
 
     private function alertForDay(

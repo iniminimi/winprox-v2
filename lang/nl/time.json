@@ -459,7 +459,8 @@
         "clock_alert": {
             "absent": "Ingepland, maar niet ingeklokt",
             "early": "Te vroeg ingeklokt",
-            "late": "Te laat ingeklokt"
+            "late": "Te laat ingeklokt",
+            "late_out": "Te laat uitgeklokt"
         },
         "schedule": {
             "tile": "Mijn rooster",

@@ -197,7 +197,7 @@
           "Los cambios sin guardar piden guardar primero si sale de la página o cambia de semana/mes.",
           "Vista semanal o mensual; los fines de semana se pueden ocultar.",
           "Clock Point muestra Mi cuadrante (solo turnos publicados propios).",
-          "Triángulo rojo si no ha fichado, o si ficha demasiado pronto o tarde. Mis horas indica el motivo.",
+          "Triángulo rojo si no ha fichado, si ficha demasiado pronto o tarde, o si sale tarde. Mis horas indica cada motivo.",
           "La gestión ve planificado frente a fichado (margen de 15 minutos).",
           "Las vistas semanal y mensual muestran columnas fijas por operario, con el título en vertical y solo la cifra en la fila: norma, diferencia, planificado, trabajado, vacaciones, descanso compensatorio y baja. La columna aviso señala bloques incompletos o un fichaje abierto. Norma y diferencia quedan vacías mientras esa norma no sea fiable. Esa norma es de 38 horas por defecto y sigue siendo ajustable por operario. Sin pauta de trabajo, el mes cuenta lunes–viernes según esa norma; los festivos siguen el régimen acordado o, sin acuerdo, el estándar belga (el día laborable se anula; un festivo en fin de semana recibe un día de sustitución propuesto). Es un recuento, no un juicio sobre la duración del trabajo.",
           "Los festivos tiñen la columna de azul, los días de sustitución de verde; una celda gris es un día libre fijo (0 minutos en el patrón) y sigue editable."

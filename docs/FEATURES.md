@@ -1078,7 +1078,7 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   dag-signature van **published** blokken wijzigt, alleen voor dagen **≥ vandaag** — correcties in
   het verleden en draft-edits melden niets. Rode driehoek (`alert-triangle`) naast inklok of
   geplande uren als een **gepubliceerde werkdienst** ontbreekt (niet ingeklokt vanaf de
-  geplande start), de inklok **meer dan 15 min te vroeg** is, of de inklok **≥ 15 min te laat** is (zelfde marge als beheer). Op **Mijn uren** staat die reden in tekst naast de driehoek.
+  geplande start), de inklok **meer dan 15 min te vroeg** is, of de inklok **≥ 15 min te laat** is, of de uitklok **≥ 15 min te laat** is (zelfde marge als beheer). Op **Mijn uren** staat elke reden in tekst naast een driehoek.
 - **Golf 2 — Verlof / Recup:** Clock Point-tegel. Uitvoerder vraagt `leave` of `recup`
   (van–tot, max. 31 dagen, niet in het verleden, optionele toelichting ≤ 500). Overlappende
   open aanvragen worden geweigerd. Eerste actieve shifttype van dat `kind`, anders fout.

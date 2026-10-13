@@ -1080,7 +1080,7 @@
                 },
                 {
                     "label": "My hours",
-                    "text": "After sign-in you see the My hours tile. It lists your days for the selected month, merged: first clock-in, last clock-out, time worked and break. Browse previous/next month. Break shows “none” when there is no break. The team minimum only applies on shifts of at least 4 hours. A red triangle next to the clock-in time shows the reason: more than 15 minutes early, or at least 15 minutes late versus the published roster."
+                    "text": "After sign-in you see the My hours tile. It lists your days for the selected month, merged: first clock-in, last clock-out, time worked and break. Browse previous/next month. Break shows “none” when there is no break. The team minimum only applies on shifts of at least 4 hours. A red triangle shows the reason: clocked in more than 15 minutes early, clocked in at least 15 minutes late, or clocked out at least 15 minutes late versus the published roster."
                 },
                 {
                     "label": "My roster",

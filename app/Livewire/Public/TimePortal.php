@@ -1908,11 +1908,11 @@ class TimePortal extends Component
 
         $todayClockAlert = null;
         if ($canAct && $verifiedWorker !== null && $hasTimeModule && ! $checkmateMode && ! $this->hoursListOpen && ! $this->scheduleListOpen && ! $this->absenceListOpen) {
-            $todayClockAlert = $rosterAlerts->handle(
+            $todayClockAlert = ($rosterAlerts->handle(
                 $verifiedWorker,
                 $this->tenantId,
                 [now()->toDateString()],
-            )[now()->toDateString()] ?? null;
+            )[now()->toDateString()] ?? [])[0] ?? null;
         }
 
         $todayDestinations = $checkmateMode

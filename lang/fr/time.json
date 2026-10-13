@@ -459,7 +459,8 @@
         "clock_alert": {
             "absent": "Planifié, mais pas pointé",
             "early": "Pointé trop tôt",
-            "late": "Pointé en retard"
+            "late": "Pointé en retard",
+            "late_out": "Sorti en retard"
         },
         "schedule": {
             "tile": "Mon planning",

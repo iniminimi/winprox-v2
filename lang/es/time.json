@@ -459,7 +459,8 @@
         "clock_alert": {
             "absent": "Planificado, pero sin fichar",
             "early": "Fichado demasiado pronto",
-            "late": "Fichado tarde"
+            "late": "Fichado tarde",
+            "late_out": "Fichado tarde al salir"
         },
         "schedule": {
             "tile": "Mi cuadrante",

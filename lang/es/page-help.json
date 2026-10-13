@@ -1080,7 +1080,7 @@
                 },
                 {
                     "label": "Mis horas",
-                    "text": "Tras identificarte ves la ficha Mis horas. Tus días del mes elegido, agrupados: primer fichaje de entrada, último de salida, tiempo trabajado y pausa. Mes anterior/siguiente. La pausa muestra «ninguna» si no hay pausa. El mínimo del equipo solo cuenta en turnos de al menos 4 horas. Un triángulo rojo junto a la hora de entrada indica el motivo: más de 15 minutos pronto, o al menos 15 minutos tarde respecto al cuadrante publicado."
+                    "text": "Tras identificarte ves la ficha Mis horas. Tus días del mes elegido, agrupados: primer fichaje de entrada, último de salida, tiempo trabajado y pausa. Mes anterior/siguiente. La pausa muestra «ninguna» si no hay pausa. El mínimo del equipo solo cuenta en turnos de al menos 4 horas. Un triángulo rojo indica el motivo: fichaje de entrada más de 15 minutos pronto, al menos 15 minutos tarde, o fichaje de salida al menos 15 minutos tarde respecto al cuadrante publicado."
                 },
                 {
                     "label": "Mi cuadrante",

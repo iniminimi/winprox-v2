@@ -1080,7 +1080,7 @@
                 },
                 {
                     "label": "Meine Stunden",
-                    "text": "Nach der Anmeldung sehen Sie die Kachel Meine Stunden. Dort stehen Ihre Tage des gewählten Monats, zusammengefasst: erstes Einstempeln, letztes Ausstempeln, Arbeitszeit und Pause. Vorheriger/nächster Monat. Pause zeigt „keine“, wenn es keine Pause gibt. Das Teamminimum gilt nur bei Schichten von mindestens 4 Stunden. Ein rotes Dreieck neben der Einstempelzeit nennt den Grund: mehr als 15 Minuten zu früh oder mindestens 15 Minuten zu spät gegenüber dem veröffentlichten Plan."
+                    "text": "Nach der Anmeldung sehen Sie die Kachel Meine Stunden. Dort stehen Ihre Tage des gewählten Monats, zusammengefasst: erstes Einstempeln, letztes Ausstempeln, Arbeitszeit und Pause. Vorheriger/nächster Monat. Pause zeigt „keine“, wenn es keine Pause gibt. Das Teamminimum gilt nur bei Schichten von mindestens 4 Stunden. Ein rotes Dreieck nennt den Grund: mehr als 15 Minuten zu früh eingestempelt, mindestens 15 Minuten zu spät eingestempelt oder mindestens 15 Minuten zu spät ausgestempelt gegenüber dem veröffentlichten Plan."
                 },
                 {
                     "label": "Mein Dienstplan",
