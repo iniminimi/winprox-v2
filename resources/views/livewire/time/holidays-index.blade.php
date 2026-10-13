@@ -7,16 +7,9 @@
                 :subtitle="__('time.holidays.subtitle')"
             />
         </div>
-        @can('create', \App\Models\TenantHolidayAgreement::class)
-            <button type="button" class="btn btn--primary" wire:click="save">{{ __('time.holidays.save') }}</button>
-        @endcan
     </div>
 
     @include('partials.wp-time-nav', ['alarmCount' => $alarmCount])
-
-    @if (session('time_flash'))
-        <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
-    @endif
 
     <div class="wp-card wp-card-pad wp-stack">
         <div class="wp-stack-tight">
@@ -43,5 +36,13 @@
                 @endif
             </div>
         @endforeach
+        @if (session('time_flash'))
+            <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
+        @endif
+        @can('create', \App\Models\TenantHolidayAgreement::class)
+            <div class="wp-cluster wp-cluster--end">
+                <button type="button" class="btn btn--primary" wire:click="save">{{ __('time.holidays.save') }}</button>
+            </div>
+        @endcan
     </div>
 </div>

@@ -715,6 +715,10 @@
     justify-content: center;
 }
 
+.wp-cluster--end {
+    justify-content: flex-end;
+}
+
 /* ---------------------------------------------------------------------------
  | KPI-tegels (dashboard) — compact V1-layout, V2-tokens (geen regenboogvlakken).
  * ------------------------------------------------------------------------- */

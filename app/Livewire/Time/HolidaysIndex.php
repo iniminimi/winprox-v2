@@ -101,7 +101,7 @@ class HolidaysIndex extends Component
         }
 
         $this->resetErrorBag();
-        session()->flash('time_flash', __('time.holidays.saved'));
+        session()->now('time_flash', __('time.holidays.saved'));
     }
 
     public function render()
