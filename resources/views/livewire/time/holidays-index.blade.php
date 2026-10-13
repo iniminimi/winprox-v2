@@ -2,6 +2,7 @@
     <div class="wp-page-head">
         <div class="wp-grow wp-stack-tight">
             <x-wp-page-head-title
+                icon="time"
                 :title="__('time.holidays.title')"
                 help-page="time.holidays"
                 :subtitle="__('time.holidays.subtitle')"

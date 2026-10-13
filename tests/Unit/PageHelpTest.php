@@ -103,7 +103,7 @@ it('laadt paginahulp voor Time-schermen', function (): void {
         ->and(PageHelp::for('time.schedule'))->not->toBeNull()
         ->and(PageHelp::for('time.schedule')['title'])->toBe('Hulp — Uurrooster')
         ->and(PageHelp::for('time.shift_types'))->not->toBeNull()
-        ->and(PageHelp::for('time.shift_types')['title'])->toBe('Hulp — Shiftypes')
+        ->and(PageHelp::for('time.shift_types')['title'])->toBe('Hulp — Shifttypes')
         ->and($presenceLabels)->toContain('Manueel inklokken')
         ->and($shiftLabels)->toContain('Manueel inklokken')
         ->and($shiftLabels)->toContain('Minimumpauze')

@@ -2,6 +2,7 @@
     <div class="wp-page-head">
         <div class="wp-grow wp-stack-tight">
             <x-wp-page-head-title
+                icon="time"
                 :title="__('time.shift_types.title')"
                 help-page="time.shift_types"
                 :subtitle="__('time.shift_types.subtitle')"

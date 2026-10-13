@@ -81,11 +81,11 @@ return [
         ],
         [
             'patterns' => [
-                'shift types', 'shiftypes', 'shiftype', 'schichttyp', 'types de service',
+                'shift types', 'shifttypes', 'shifttype', 'shiftypes', 'shiftype', 'schichttyp', 'types de service',
                 'tipos de turno', 'tipi di turno',
             ],
             'page' => 'time.shift_types',
-            'prefer' => ['shiftype', 'shift types', 'schichttyp'],
+            'prefer' => ['shifttype', 'shift types', 'schichttyp'],
         ],
         [
             'patterns' => [

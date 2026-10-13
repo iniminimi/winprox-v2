@@ -3,6 +3,7 @@
         $activeAttentionType = \App\Enums\TimePresenceAttentionType::tryFrom((string) $attentionType);
     @endphp
     <x-wp-page-head-title
+        icon="time"
         :title="__('time.alarms.title')"
         help-page="time.alarms"
         :subtitle="__('time.alarms.subtitle')"

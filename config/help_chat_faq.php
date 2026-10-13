@@ -128,7 +128,7 @@ return [
         ],
         [
             'patterns' => [
-                'uurrooster', 'dienstplan', 'shift types', 'shiftypes', 'planned shift',
+                'uurrooster', 'dienstplan', 'shift types', 'shifttypes', 'shiftypes', 'planned shift',
                 'horaire', 'roster', 'orario', 'horario',
             ],
             'body_key' => 'faq.items.time_schedule.summary',

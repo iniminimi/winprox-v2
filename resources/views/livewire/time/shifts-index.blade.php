@@ -1,5 +1,6 @@
 <div class="wp-stack" data-manual-capture="time-shifts">
     <x-wp-page-head-title
+        icon="time"
         :title="__('time.title')"
         help-page="time.shifts"
         :subtitle="__('time.shifts.subtitle')"

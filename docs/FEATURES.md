@@ -910,7 +910,7 @@ productsector op `Tenant`.
 ### 5g.5 Uurrooster (golf 1 + golf 2)
 
 **Doel:** geplande diensten per uitvoerder, los van geklokte `WorkShift`. Excel-achtige grid
-(Jspreadsheet CE): codes (shiftypes) of vrije tijd `07:00-15:00`. Eén cel per uitvoerder per dag
+(Jspreadsheet CE): codes (shifttypes) of vrije tijd `07:00-15:00`. Eén cel per uitvoerder per dag
 blijft direct typen; **meerdere blokken per dag** (bijv. `07:00-10:00` én `18:00-20:00`) bewerk je
 via de **Dag bewerken**-knop → `SavePlannedDayAction` (id-aware sync: bestaande blokken updaten op
 id, nieuwe aanmaken, weggelaten verwijderen — nooit de hele dag opnieuw). Een multi-blok-cel toont
@@ -1032,7 +1032,7 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
 - **Publiceren:** periode-scoped; bewerken daarna blijft `published`. Geen RSZ/CIAO.
   Na publiceren: `PublishWeekAction` → `NotifyWorkersRosterPublishedAction` →
   `CreateNotificationAction` (`roster_published`, `reference_id` = periode-start `Y-m-d`).
-- **Shiftypes:** eigen scherm onder Time (eenmalig instellen). `kind`: work / leave / recup / sick.
+- **Shifttypes:** eigen scherm onder Time (eenmalig instellen). `kind`: work / leave / recup / sick.
   Afwezigheid: geen uren; via cel-tekst nog hele dag, via de dag-editor ook als **deelblok naast
   werkblokken** (bv. vervanging: het blok van de zieke worker wordt op dezelfde rij omgezet naar
   een absence-kind, unit-snapshot leeggemaakt — `absence_has_unit` verbiedt absence + groep).
@@ -1077,7 +1077,7 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   geplande start) of de inklok **≥ 15 min te laat** is (zelfde marge als beheer).
 - **Golf 2 — Verlof / Recup:** Clock Point-tegel. Uitvoerder vraagt `leave` of `recup`
   (van–tot, max. 31 dagen, niet in het verleden, optionele toelichting ≤ 500). Overlappende
-  open aanvragen worden geweigerd. Eerste actieve shiftype van dat `kind`, anders fout.
+  open aanvragen worden geweigerd. Eerste actieve shifttype van dat `kind`, anders fout.
   Geen ziek, geen saldo, geen e-mail. Beheer: Time → **Aanvragen** (badge = open);
   dashboardtegel alleen als er open aanvragen zijn; toont het aantal per soort
   (1 Verlof, 1 Recup, of 1 Verlof - 1 Recup).

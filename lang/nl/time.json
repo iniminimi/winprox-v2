@@ -11,7 +11,7 @@
         "clock_points": "Clock Points",
         "ciao": "CIAO",
         "schedule": "Uurrooster",
-        "shift_types": "Shiftypes",
+        "shift_types": "Shifttypes",
         "holidays": "Feestdagen",
         "absence_requests": "Aanvragen"
     },
@@ -676,8 +676,8 @@
             "correction_invalid_date": "Ongeldige datum."
         },
         "types": {
-            "add": "Shiftype toevoegen",
-            "edit": "Shiftype bewerken",
+            "add": "Shifttype toevoegen",
+            "edit": "Shifttype bewerken",
             "code": "Code",
             "label": "Naam",
             "start": "Start",
@@ -686,7 +686,7 @@
             "color": "Kleur",
             "deactivate": "Deactiveren",
             "activate": "Activeren",
-            "saved": "Shiftype opgeslagen.",
+            "saved": "Shifttype opgeslagen.",
             "colors": {
                 "none": "Neutraal",
                 "emerald": "Groen",
@@ -864,9 +864,9 @@
         }
     },
     "shift_types": {
-        "title": "Shiftypes",
+        "title": "Shifttypes",
         "subtitle": "Codes voor het uurrooster. Meestal één keer instellen.",
-        "empty": "Nog geen shiftypes. Voeg er één toe — dat doe je meestal één keer.",
+        "empty": "Nog geen shifttypes. Voeg er één toe — dat doe je meestal één keer.",
         "status": {
             "active": "Actief",
             "inactive": "Inactief"
@@ -917,7 +917,7 @@
             "range_inverted": "De einddatum moet op of na de startdatum liggen.",
             "range_too_long": "Maximaal 31 dagen per aanvraag.",
             "date_in_past": "De startdatum mag niet in het verleden liggen.",
-            "no_shift_type": "Er is geen actief shiftype voor dit soort afwezigheid.",
+            "no_shift_type": "Er is geen actief shifttype voor dit soort afwezigheid.",
             "overlapping_pending": "Er loopt al een aanvraag die deze dagen overlapt.",
             "not_pending": "Deze aanvraag is al afgehandeld.",
             "not_owner": "Je kunt alleen je eigen aanvraag intrekken.",

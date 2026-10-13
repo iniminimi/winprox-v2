@@ -1811,12 +1811,12 @@
                     "text": "<strong>Kopieer naar volgende week</strong> kopieert alles-of-niets. Als de doelweek al diensten heeft, wordt de kopie geweigerd."
                 },
                 {
-                    "label": "Shiftypes",
-                    "text": "Via de knop <strong>Legende</strong> (naast Publiceren) opent u een overzicht van codes, afwezigheid en groepen. Types beheert u onder Time → <strong>Shiftypes</strong> (meestal één keer)."
+                    "label": "Shifttypes",
+                    "text": "Via de knop <strong>Legende</strong> (naast Publiceren) opent u een overzicht van codes, afwezigheid en groepen. Types beheert u onder Time → <strong>Shifttypes</strong> (meestal één keer)."
                 },
                 {
                     "label": "Afwezigheid",
-                    "text": "Shiftypes kunnen <strong>verlof</strong>, <strong>recup</strong> of <strong>ziek</strong> zijn. Die codes vullen de hele dag, tellen geen uren en mogen niet samen met werk die dag. Halve dagen zitten niet in deze slice. Uitvoerders kunnen verlof of recup aanvragen via Clock Point (tegel Verlof / Recup); beheer beslist onder Time → Aanvragen."
+                    "text": "Shifttypes kunnen <strong>verlof</strong>, <strong>recup</strong> of <strong>ziek</strong> zijn. Die codes vullen de hele dag, tellen geen uren en mogen niet samen met werk die dag. Halve dagen zitten niet in deze slice. Uitvoerders kunnen verlof of recup aanvragen via Clock Point (tegel Verlof / Recup); beheer beslist onder Time → Aanvragen."
                 },
                 {
                     "label": "Gepland vs geklokt",
@@ -1829,7 +1829,7 @@
             ]
         },
         "time.shift_types": {
-            "title": "Hulp — Shiftypes",
+            "title": "Hulp — Shifttypes",
             "actions": [
                 {
                     "label": "Soort",
@@ -1837,7 +1837,7 @@
                 },
                 {
                     "label": "Toevoegen",
-                    "text": "Een shiftype is een <strong>code</strong> met start, einde, pauze en kleur. Dat stelt u meestal één keer in. Bestaande cellen in het uurrooster wijzigen niet als u later een type aanpast."
+                    "text": "Een shifttype is een <strong>code</strong> met start, einde, pauze en kleur. Dat stelt u meestal één keer in. Bestaande cellen in het uurrooster wijzigen niet als u later een type aanpast."
                 },
                 {
                     "label": "Deactiveren",
