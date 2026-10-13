@@ -1221,6 +1221,23 @@ export function bind(root, wire) {
         const instances = jspreadsheet(grid, {
             worksheets: [worksheetConfig],
             contextMenu: () => false,
+            onbeforeselection: (_el, x1, y1, x2, y2) => {
+                // Enkel echte datumcellen zijn selecteerbaar: naamkolom (0)
+                // en de statistiekkolommen (> dayCount) niet. Selecties die
+                // er deels overheen lopen klemmen naar de datumkolommen.
+                if (x2 < 1 || x1 > dayCount) {
+                    return false;
+                }
+                if (x1 < 1 || x2 > dayCount) {
+                    const cx1 = Math.max(1, x1);
+                    const cx2 = Math.min(dayCount, x2);
+                    requestAnimationFrame(() => {
+                        worksheet?.updateSelectionFromCoords(cx1, y1, cx2, y2);
+                    });
+
+                    return false;
+                }
+            },
             onbeforechange: (_instance, _cell, x, y, value) => {
                 const rowDef = gridRowDefs(payload)[Number(y)];
                 // false-waardes worden door jspreadsheet letterlijk als "false"
