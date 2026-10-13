@@ -796,6 +796,9 @@
         "edit_day": "Tag bearbeiten",
         "multi_hint": "Mehrere Blöcke — Tag zum Bearbeiten öffnen",
         "multi_replace_confirm": "Dieser Tag hat mehrere Blöcke. Die Eingabe ersetzt den ganzen Tag durch einen Block. Fortfahren?",
+        "day_flag": {
+            "replacement": "Ersatztag · :name"
+        },
         "day_editor": {
             "title": "Dienstplan von :name am :date",
             "hint": "Mehrere Blöcke an einem Tag? Öffnen Sie den Tag, um Blöcke hinzuzufügen, zu ändern oder zu löschen.",

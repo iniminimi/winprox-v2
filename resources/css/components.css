@@ -6856,6 +6856,25 @@ a.wp-kpi.wp-kpi--attention {
     background: color-mix(in srgb, var(--wp-text) 14%, var(--wp-surface-2) 86%);
 }
 
+/* Feestdag (werkdag vervalt/afspraak) — info-tint; vervangingsdag — accent-tint. */
+.wp-roster-sheet col.wp-roster-col--holiday,
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-col--holiday {
+    background: var(--wp-info-soft);
+}
+
+.wp-roster-sheet .jss_worksheet > thead > tr > td.wp-roster-col--holiday {
+    background: color-mix(in srgb, var(--wp-info) 18%, var(--wp-surface-2) 82%);
+}
+
+.wp-roster-sheet col.wp-roster-col--replacement,
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-col--replacement {
+    background: var(--wp-accent-soft);
+}
+
+.wp-roster-sheet .jss_worksheet > thead > tr > td.wp-roster-col--replacement {
+    background: color-mix(in srgb, var(--wp-accent) 16%, var(--wp-surface-2) 84%);
+}
+
 /* Geselecteerde cellen (Excel-stijl): donkere tint + donkere rand rond het
    blok. De tint komt via een inset-overlay zodat weekend-, today- en locked-
    achtergronden zichtbaar donkerder worden i.p.v. vervangen. */

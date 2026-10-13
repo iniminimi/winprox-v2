@@ -80,7 +80,7 @@ class ResolveWorkerMonthNormAction
         // Bedrijfsbrede feestdagafspraken: opgeslagen afwijkingen plus de
         // afgeleide Belgische standaard voor feestdagen zonder afspraak
         // (ma–vr vervalt; za/zo krijgt een voorgestelde vervangingsdag).
-        $agreements = $this->effectiveAgreements(
+        $agreements = BelgianHolidayStandardScheme::effectiveFor(
             TenantHolidayAgreement::query()->where('tenant_id', $tenantId)->get(),
             $holidayRows,
             $holidayDates,
@@ -105,62 +105,6 @@ class ResolveWorkerMonthNormAction
         }
 
         return $result;
-    }
-
-    /**
-     * Effectieve afspraken voor de maand: stored overrides winnen; feestdagen
-     * zonder afspraak volgen de afgeleide standaard. Alleen feestdagen die de
-     * maand kunnen raken (eigen datum of voorgestelde vervangingsdag) worden
-     * afgeleid. Voorgestelde data die met opgeslagen afspraken of eerdere
-     * voorstellen botsen, schuiven door naar de eerstvolgende vrije werkdag.
-     *
-     * @param  \Illuminate\Support\Collection<int, TenantHolidayAgreement>  $stored
-     * @param  \Illuminate\Support\Collection<int, BelgianPublicHoliday>  $holidayRows
-     * @param  array<string, true>  $holidayDates
-     * @return list<TenantHolidayAgreement>
-     */
-    private function effectiveAgreements(
-        $stored,
-        $holidayRows,
-        array $holidayDates,
-        string $monthStart,
-        string $monthEnd,
-    ): array {
-        $storedByDate = [];
-        $taken = [];
-        foreach ($stored as $agreement) {
-            $storedByDate[$agreement->holiday_date->toDateString()] = true;
-            $replacement = $agreement->replacement_date?->toDateString();
-            if ($replacement !== null) {
-                $taken[$replacement] = true;
-            }
-        }
-
-        $effective = $stored->all();
-        $windowStart = Carbon::parse($monthStart)->subDays(15)->toDateString();
-        foreach ($holidayRows->sortBy('date') as $holiday) {
-            $date = $holiday->date->toDateString();
-            if ($date < $windowStart || $date > $monthEnd || isset($storedByDate[$date])) {
-                continue;
-            }
-            $effect = BelgianHolidayStandardScheme::effectFor($date);
-            $replacement = $effect === HolidayAgreementEffect::Replaced
-                ? BelgianHolidayStandardScheme::proposedReplacement($date, $holidayDates, $taken)
-                : null;
-            if ($effect === HolidayAgreementEffect::Replaced && $replacement === null) {
-                continue;
-            }
-            if ($replacement !== null) {
-                $taken[$replacement] = true;
-            }
-            $effective[] = new TenantHolidayAgreement([
-                'holiday_date' => $date,
-                'effect' => $effect,
-                'replacement_date' => $replacement,
-            ]);
-        }
-
-        return $effective;
     }
 
     /**

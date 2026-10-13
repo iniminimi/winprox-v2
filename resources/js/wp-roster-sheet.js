@@ -378,6 +378,57 @@ function applyLockedColumns(worksheet, lockedCols) {
     }
 }
 
+/** Kolomindex → feestdag-/vervangingsvlag ({kind, label}) uit payload.day_flags. */
+function dayFlagColumnMap(payload) {
+    const flags = payload.day_flags ?? {};
+    const map = new Map();
+    (payload.dates ?? []).forEach((date, index) => {
+        const flag = flags[date];
+        if (flag && flag.kind) {
+            map.set(index + 1, flag);
+        }
+    });
+
+    return map;
+}
+
+function dayFlagTitle(flag, existingTitle) {
+    const label = flag?.label || '';
+    const base = existingTitle || '';
+
+    if (!label) {
+        return base;
+    }
+
+    return base ? `${label} — ${base}` : label;
+}
+
+function applyDayFlagColumns(worksheet, dayFlags) {
+    if (Array.isArray(worksheet.headers)) {
+        worksheet.headers.forEach((header, colIndex) => {
+            if (!header) {
+                return;
+            }
+            const flag = dayFlags.get(colIndex);
+            header.classList.toggle('wp-roster-col--holiday', flag?.kind === 'holiday');
+            header.classList.toggle('wp-roster-col--replacement', flag?.kind === 'replacement');
+            const title = dayFlagTitle(flag, '');
+            if (title) {
+                header.title = title;
+            } else {
+                header.removeAttribute('title');
+            }
+        });
+    }
+    if (Array.isArray(worksheet.cols)) {
+        worksheet.cols.forEach((col, colIndex) => {
+            const flag = dayFlags.get(colIndex);
+            col?.colElement?.classList.toggle('wp-roster-col--holiday', flag?.kind === 'holiday');
+            col?.colElement?.classList.toggle('wp-roster-col--replacement', flag?.kind === 'replacement');
+        });
+    }
+}
+
 function rosterTd(cell) {
     if (!cell) {
         return null;
@@ -470,10 +521,12 @@ function applyCellClasses(worksheet, payload) {
     const todayCols = todayColumnIndexes(payload);
     const lockedCols = lockedColumnIndexes(payload);
     const weekStartCols = weekStartColumnIndexes(payload);
+    const dayFlags = dayFlagColumnMap(payload);
     applyWeekendColumns(worksheet, weekendCols);
     applyTodayColumns(worksheet, todayCols);
     applyWeekStartColumns(worksheet, weekStartCols);
     applyLockedColumns(worksheet, lockedCols);
+    applyDayFlagColumns(worksheet, dayFlags);
     const rowDefs = gridRowDefs(payload);
     const workers = workerById(payload);
     // Unitcatalogus per worker cachen — niet per cel opnieuw filteren.
@@ -533,6 +586,9 @@ function applyCellClasses(worksheet, payload) {
             cell.classList.toggle('wp-roster-col--weekend', weekendCols.has(colIndex));
             cell.classList.toggle('wp-roster-col--today', todayCols.has(colIndex));
             cell.classList.toggle('wp-roster-col--week-start', weekStartCols.has(colIndex));
+            const flag = dayFlags.get(colIndex);
+            cell.classList.toggle('wp-roster-col--holiday', flag?.kind === 'holiday');
+            cell.classList.toggle('wp-roster-col--replacement', flag?.kind === 'replacement');
             const isLocked = lockedCols.has(colIndex);
             cell.classList.toggle('wp-roster-col--locked', isLocked);
             // Geen DOM-injectie in cellen: Jspreadsheet breekt na de eerste edit.

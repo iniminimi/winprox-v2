@@ -796,6 +796,9 @@
         "edit_day": "Modifier le jour",
         "multi_hint": "Plusieurs blocs — ouvrez le jour pour modifier",
         "multi_replace_confirm": "Ce jour contient plusieurs blocs. La saisie remplace toute la journée par un seul bloc. Continuer ?",
+        "day_flag": {
+            "replacement": "Jour de remplacement · :name"
+        },
         "day_editor": {
             "title": "Planning de :name le :date",
             "hint": "Plusieurs blocs le même jour ? Ouvrez le jour pour ajouter, modifier ou supprimer des blocs.",

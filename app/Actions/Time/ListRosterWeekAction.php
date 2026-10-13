@@ -10,13 +10,16 @@ use App\Enums\MonthNormStatus;
 use App\Enums\RosterAttendanceStatus;
 use App\Enums\ShiftTypeColor;
 use App\Enums\ShiftTypeKind;
+use App\Models\BelgianPublicHoliday;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\PlannedShift;
 use App\Models\ShiftType;
+use App\Models\TenantHolidayAgreement;
 use App\Models\Unit;
 use App\Models\User;
 use App\Models\Worker;
+use App\Support\Time\BelgianHolidayStandardScheme;
 use App\Support\Time\TimeModuleAccess;
 use App\Support\Time\WorkDurationFormatter;
 use Carbon\Carbon;
@@ -281,6 +284,8 @@ class ListRosterWeekAction
                 'worker_id' => $worker['id'],
             ], $workerPayload);
 
+        $dayFlags = $this->dayFlags($tenantId, $dates, $visibleStart, $visibleEnd);
+
         return new RosterWeekSnapshot(
             weekStart: $weekStartDate,
             weekEnd: $weekEndDate,
@@ -308,7 +313,60 @@ class ListRosterWeekAction
             rows: $rows,
             groupMode: $groupMode,
             hoursColumns: $hoursColumns,
+            dayFlags: $dayFlags,
         );
+    }
+
+    /**
+     * Feestdagen en vervangingsdagen op zichtbare datums (effectieve regeling:
+     * opgeslagen tenant-afwijking plus afgeleide Belgische standaard).
+     *
+     * @param  list<string>  $dates
+     * @return array<string, array{kind: string, label: string}>
+     */
+    private function dayFlags(int $tenantId, array $dates, string $windowStart, string $windowEnd): array
+    {
+        if ($dates === []) {
+            return [];
+        }
+        $visible = array_fill_keys($dates, true);
+        $holidayRows = BelgianPublicHoliday::query()->get(['date', 'code']);
+        $holidayDates = [];
+        $codeByDate = [];
+        foreach ($holidayRows as $holiday) {
+            $date = $holiday->date->toDateString();
+            $holidayDates[$date] = true;
+            $codeByDate[$date] = $holiday->code;
+        }
+        $effective = BelgianHolidayStandardScheme::effectiveFor(
+            TenantHolidayAgreement::query()->where('tenant_id', $tenantId)->get(),
+            $holidayRows,
+            $holidayDates,
+            $windowStart,
+            $windowEnd,
+        );
+
+        $flags = [];
+        foreach ($effective as $agreement) {
+            $holidayDate = $agreement->holiday_date->toDateString();
+            $code = $codeByDate[$holidayDate] ?? null;
+            $name = $code !== null ? __('time.schedule.month_norm.holidays.'.$code) : $holidayDate;
+            if (isset($visible[$holidayDate])) {
+                $flags[$holidayDate] = [
+                    'kind' => 'holiday',
+                    'label' => $name.' · '.__('time.schedule.month_norm.effects.'.$agreement->effect->value),
+                ];
+            }
+            $replacement = $agreement->replacement_date?->toDateString();
+            if ($replacement !== null && isset($visible[$replacement])) {
+                $flags[$replacement] = [
+                    'kind' => 'replacement',
+                    'label' => __('time.schedule.day_flag.replacement', ['name' => $name]),
+                ];
+            }
+        }
+
+        return $flags;
     }
 
     /**

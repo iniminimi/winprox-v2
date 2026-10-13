@@ -796,6 +796,9 @@
         "edit_day": "Edit day",
         "multi_hint": "Multiple blocks — open the day to edit",
         "multi_replace_confirm": "This day has multiple blocks. Typing replaces the whole day with one block. Continue?",
+        "day_flag": {
+            "replacement": "Replacement day · :name"
+        },
         "day_editor": {
             "title": "Roster for :name on :date",
             "hint": "Multiple blocks on one day? Open the day to add, change or remove blocks.",
