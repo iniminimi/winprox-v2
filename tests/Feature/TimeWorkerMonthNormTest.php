@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use App\Actions\Team\SaveWorkerHolidayAgreementAction;
 use App\Actions\Team\SyncWorkerWeekdayMinutesAction;
 use App\Actions\Time\ListRosterWeekAction;
 use App\Actions\Time\ResolveWorkerMonthNormAction;
 use App\Actions\Time\SavePlannedDayAction;
+use App\Actions\Time\SaveTenantHolidayAgreementAction;
 use App\Actions\Time\SummarizeWorkerMonthFactsAction;
 use App\Actions\Time\SummarizeWorkerWeekHoursAction;
 use App\Data\Time\SavePlannedDayData;
@@ -22,7 +22,7 @@ use App\Models\PlannedShift;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Models\Worker;
-use App\Models\WorkerHolidayAgreement;
+use App\Models\TenantHolidayAgreement;
 use App\Models\WorkShift;
 use App\Support\Tenancy;
 use App\Support\Time\BelgianPublicHolidayCalendar;
@@ -82,11 +82,10 @@ function monthNormFiveDayPattern(int $dayMinutes = 456): array
     return [1 => $dayMinutes, 2 => $dayMinutes, 3 => $dayMinutes, 4 => $dayMinutes, 5 => $dayMinutes, 6 => 0, 7 => 0];
 }
 
-function monthNormAgree(Worker $worker, string $date, HolidayAgreementEffect $effect, ?string $replacement = null): void
+function monthNormAgree(Tenant $tenant, string $date, HolidayAgreementEffect $effect, ?string $replacement = null): void
 {
-    app(SaveWorkerHolidayAgreementAction::class)->handle(
-        (int) $worker->tenant_id,
-        $worker,
+    app(SaveTenantHolidayAgreementAction::class)->handle(
+        $tenant,
         $date,
         $effect,
         $replacement,
@@ -193,23 +192,23 @@ it('telt een feestdag zonder afspraak als niet gewerkt in de norm', function () 
 });
 
 it('past none en dropped toe zonder de andere dagen te wijzigen', function () {
-    [, , , $worker] = monthNormTenant();
+    [$tenant, , , $worker] = monthNormTenant();
     $pattern = monthNormFiveDayPattern();
     monthNormSync($worker, $pattern);
     foreach (['2026-05-01', '2026-05-14', '2026-05-25'] as $date) {
-        monthNormAgree($worker, $date, HolidayAgreementEffect::None);
+        monthNormAgree($tenant, $date, HolidayAgreementEffect::None);
     }
 
     $kept = app(ResolveWorkerMonthNormAction::class)->handle((int) $worker->tenant_id, [(int) $worker->id], '2026-05-01')[(int) $worker->id];
     expect($kept->status)->toBe(MonthNormStatus::Available)
         ->and($kept->minutes)->toBe(monthNormExpected('2026-05-01', $pattern));
 
-    monthNormAgree($worker, '2026-05-01', HolidayAgreementEffect::Dropped);
+    monthNormAgree($tenant, '2026-05-01', HolidayAgreementEffect::Dropped);
     $dropped = app(ResolveWorkerMonthNormAction::class)->handle((int) $worker->tenant_id, [(int) $worker->id], '2026-05-01')[(int) $worker->id];
     expect($dropped->minutes)->toBe(monthNormExpected('2026-05-01', $pattern) - $pattern[5]);
 });
 
-it('overschrijft een vervangingsdag binnen de maand, ongeacht de invoegvolgorde', function () {
+it('past één tenantafspraak toe op alle uitvoerders', function () {
     [$tenant, , $team, $first] = monthNormTenant();
     $second = Worker::factory()->create([
         'tenant_id' => $tenant->id,
@@ -220,22 +219,8 @@ it('overschrijft een vervangingsdag binnen de maand, ongeacht de invoegvolgorde'
     monthNormSync($first, $pattern);
     monthNormSync($second, $pattern);
 
-    $pairs = [
-        $first->id => [
-            ['2026-11-01', '2026-11-02'],
-            ['2026-11-11', '2026-11-14'],
-        ],
-        $second->id => [
-            ['2026-11-11', '2026-11-14'],
-            ['2026-11-01', '2026-11-02'],
-        ],
-    ];
-    foreach ($pairs as $workerId => $agreements) {
-        $worker = Worker::query()->findOrFail($workerId);
-        foreach ($agreements as [$holiday, $replacement]) {
-            monthNormAgree($worker, $holiday, HolidayAgreementEffect::Replaced, $replacement);
-        }
-    }
+    monthNormAgree($tenant, '2026-11-01', HolidayAgreementEffect::Replaced, '2026-11-02');
+    monthNormAgree($tenant, '2026-11-11', HolidayAgreementEffect::Replaced, '2026-11-14');
 
     $rows = app(ResolveWorkerMonthNormAction::class)->handle(
         (int) $tenant->id,
@@ -251,14 +236,27 @@ it('overschrijft een vervangingsdag binnen de maand, ongeacht de invoegvolgorde'
     expect($rows[(int) $first->id]->status)->toBe(MonthNormStatus::Available)
         ->and($rows[(int) $first->id]->minutes)->toBe($expected)
         ->and($rows[(int) $second->id]->minutes)->toBe($expected);
+
+    // Een andere tenant deelt de afspraken niet: daar tellen beide
+    // feestdagen zonder afspraak als niet gewerkt.
+    [$otherTenant, , , $otherWorker] = monthNormTenant();
+    monthNormSync($otherWorker, $pattern);
+    $otherNorm = app(ResolveWorkerMonthNormAction::class)->handle(
+        (int) $otherTenant->id,
+        [(int) $otherWorker->id],
+        '2026-11-01',
+    )[(int) $otherWorker->id];
+    expect($otherNorm->minutes)->toBe(
+        monthNormExpected('2026-11-01', $pattern) - $pattern[7] - $pattern[3]
+    );
 });
 
 it('zet vervangingsuren alleen in de maand van de vervangingsdatum', function () {
-    [, , , $worker] = monthNormTenant();
+    [$tenant, , , $worker] = monthNormTenant();
     $pattern = [1 => 600, 2 => 480, 3 => 400, 4 => 400, 5 => 400, 6 => 0, 7 => 0];
     monthNormSync($worker, $pattern);
-    monthNormAgree($worker, '2026-11-01', HolidayAgreementEffect::None);
-    monthNormAgree($worker, '2026-11-11', HolidayAgreementEffect::Replaced, '2026-12-05');
+    monthNormAgree($tenant, '2026-11-01', HolidayAgreementEffect::None);
+    monthNormAgree($tenant, '2026-11-11', HolidayAgreementEffect::Replaced, '2026-12-05');
 
     $november = app(ResolveWorkerMonthNormAction::class)->handle((int) $worker->tenant_id, [(int) $worker->id], '2026-11-01')[(int) $worker->id];
     expect($november->status)->toBe(MonthNormStatus::Available)
@@ -270,18 +268,18 @@ it('zet vervangingsuren alleen in de maand van de vervangingsdatum', function ()
             monthNormExpected('2026-12-01', $pattern) - $pattern[5] - $pattern[6] + $pattern[3]
         );
 
-    monthNormAgree($worker, '2026-12-25', HolidayAgreementEffect::None);
+    monthNormAgree($tenant, '2026-12-25', HolidayAgreementEffect::None);
     $december = app(ResolveWorkerMonthNormAction::class)->handle((int) $worker->tenant_id, [(int) $worker->id], '2026-12-01')[(int) $worker->id];
     expect($december->status)->toBe(MonthNormStatus::Available)
         ->and($december->minutes)->toBe(monthNormExpected('2026-12-01', $pattern) - $pattern[6] + $pattern[3]);
 });
 
 it('past een vervangingsdag ook toe op de impliciete ma–vr-aanname', function () {
-    [, , , $worker] = monthNormTenant();
+    [$tenant, , , $worker] = monthNormTenant();
 
     // Geen monthNormSync → impliciet patroon; de vervangingsdag moet de
     // minuten van de feestdag-weekdag via het effectieve patroon krijgen.
-    monthNormAgree($worker, '2026-11-11', HolidayAgreementEffect::Replaced, '2026-11-14');
+    monthNormAgree($tenant, '2026-11-11', HolidayAgreementEffect::Replaced, '2026-11-14');
 
     $norm = app(ResolveWorkerMonthNormAction::class)->handle((int) $worker->tenant_id, [(int) $worker->id], '2026-11-01')[(int) $worker->id];
 
@@ -318,13 +316,13 @@ it('laat het normgetal weg in de maandweergave bij een stale patroon, maar toont
 it('weigert een ongedekte of botsende vervangingsdag en past geen deelcorrectie toe', function () {
     [$tenant, , , $worker] = monthNormTenant();
     monthNormSync($worker, monthNormFiveDayPattern());
-    monthNormAgree($worker, '2026-11-01', HolidayAgreementEffect::None);
+    monthNormAgree($tenant, '2026-11-01', HolidayAgreementEffect::None);
 
-    expect(fn () => monthNormAgree($worker, '2026-11-11', HolidayAgreementEffect::Replaced, '2041-03-03'))
+    expect(fn () => monthNormAgree($tenant, '2026-11-11', HolidayAgreementEffect::Replaced, '2041-03-03'))
         ->toThrow(ValidationException::class);
 
-    monthNormAgree($worker, '2026-11-11', HolidayAgreementEffect::Replaced, '2026-11-14');
-    $agreement = WorkerHolidayAgreement::query()->where('worker_id', $worker->id)->whereDate('holiday_date', '2026-11-11')->first();
+    monthNormAgree($tenant, '2026-11-11', HolidayAgreementEffect::Replaced, '2026-11-14');
+    $agreement = TenantHolidayAgreement::query()->where('tenant_id', $tenant->id)->whereDate('holiday_date', '2026-11-11')->first();
     $agreement->update(['replacement_date' => '2041-03-03']);
 
     $uncovered = app(ResolveWorkerMonthNormAction::class)->handle((int) $tenant->id, [(int) $worker->id], '2026-11-01')[(int) $worker->id];
@@ -332,7 +330,7 @@ it('weigert een ongedekte of botsende vervangingsdag en past geen deelcorrectie 
         ->and($uncovered->minutes)->toBeNull();
 
     $agreement->update(['replacement_date' => '2026-11-14']);
-    WorkerHolidayAgreement::query()->where('worker_id', $worker->id)->whereDate('holiday_date', '2026-11-01')->update([
+    TenantHolidayAgreement::query()->where('tenant_id', $tenant->id)->whereDate('holiday_date', '2026-11-01')->update([
         'effect' => HolidayAgreementEffect::Replaced,
         'replacement_date' => '2026-11-14',
     ]);
@@ -404,14 +402,14 @@ it('toont norm en status ook aan superusers en laat de weekpayload met rust', fu
 });
 
 it('bewaart een feestdag als kalenderdatum zonder tijdstip', function () {
-    [, , , $worker] = monthNormTenant();
-    monthNormAgree($worker, '2026-05-01', HolidayAgreementEffect::Replaced, '2026-05-04');
+    [$tenant] = monthNormTenant();
+    monthNormAgree($tenant, '2026-05-01', HolidayAgreementEffect::Replaced, '2026-05-04');
 
-    $raw = DB::table('worker_holiday_agreements')->where('worker_id', $worker->id)->first();
+    $raw = DB::table('tenant_holiday_agreements')->where('tenant_id', $tenant->id)->first();
 
     expect($raw->holiday_date)->toBe('2026-05-01')
         ->and($raw->replacement_date)->toBe('2026-05-04')
-        ->and(WorkerHolidayAgreement::query()->where('worker_id', $worker->id)->whereDate('holiday_date', '2026-05-01')->exists())
+        ->and(TenantHolidayAgreement::query()->where('tenant_id', $tenant->id)->whereDate('holiday_date', '2026-05-01')->exists())
         ->toBeTrue();
 });
 

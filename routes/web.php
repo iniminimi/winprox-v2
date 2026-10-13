@@ -122,6 +122,7 @@ use App\Livewire\Time\AbsenceRequestsIndex;
 use App\Livewire\Time\AlarmsIndex;
 use App\Livewire\Time\ClockDisplayPair;
 use App\Livewire\Time\ClockPointsIndex;
+use App\Livewire\Time\HolidaysIndex;
 use App\Livewire\Time\PresenceIndex;
 use App\Livewire\Time\PresenceSubmissionsIndex;
 use App\Livewire\Time\RosterIndex;
@@ -479,6 +480,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/time/schedule/print', RosterPrintController::class)->name('time.schedule.print');
         Route::get('/time/absence-requests', AbsenceRequestsIndex::class)->name('time.absence-requests.index');
         Route::get('/time/shift-types', ShiftTypesIndex::class)->name('time.shift-types.index');
+        Route::get('/time/holidays', HolidaysIndex::class)->name('time.holidays.index');
         Route::get('/time/alarms', AlarmsIndex::class)->name('time.alarms.index');
         Route::get('/time/shifts', ShiftsIndex::class)->name('time.shifts.index');
         Route::get('/time/ciao', PresenceSubmissionsIndex::class)->name('time.ciao.index');

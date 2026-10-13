@@ -1841,6 +1841,23 @@
                 }
             ]
         },
+        "time.holidays": {
+            "title": "Hulp — Feestdagen",
+            "actions": [
+                {
+                    "label": "Regeling",
+                    "text": "Eén feestdagenregeling voor het hele bedrijf. De maandnorm in het uurrooster gebruikt deze keuzes voor <strong>alle uitvoerders</strong> — u hoeft niets per persoon in te stellen."
+                },
+                {
+                    "label": "Effect",
+                    "text": "Kies per feestdag: <strong>Geen effect</strong> (normale minuten blijven), <strong>Werkdag vervalt</strong> (geen norm die dag) of <strong>Vervangingsdag</strong> (de minuten schuiven naar een andere datum). Zonder keuze telt de feestdag niet mee in het maandverschil."
+                },
+                {
+                    "label": "Jaar",
+                    "text": "Blader met de knoppen naar een ander jaar en klik daarna op <strong>Opslaan</strong>. De keuzes gelden per feestdagdatum."
+                }
+            ]
+        },
         "time.absence_requests": {
             "title": "Hulp — Aanvragen",
             "actions": [

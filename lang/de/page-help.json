@@ -1841,6 +1841,23 @@
                 }
             ]
         },
+        "time.holidays": {
+            "title": "Hilfe — Feiertage",
+            "actions": [
+                {
+                    "label": "Regelung",
+                    "text": "Eine Feiertagsregelung für den ganzen Betrieb. Die Monatsnorm im Stundenplan wendet diese Wahl auf <strong>alle Mitarbeiter</strong> an — nichts wird pro Person eingestellt."
+                },
+                {
+                    "label": "Auswirkung",
+                    "text": "Pro Feiertag wählen: <strong>Keine Auswirkung</strong> (normale Minuten bleiben), <strong>Arbeitstag entfällt</strong> (keine Norm an diesem Tag) oder <strong>Ersatztag</strong> (die Minuten verschieben auf ein anderes Datum). Ohne Wahl zählt der Feiertag nicht in der Monatsdifferenz."
+                },
+                {
+                    "label": "Jahr",
+                    "text": "Mit den Schaltflächen zu einem anderen Jahr blättern und danach auf <strong>Speichern</strong> klicken. Die Wahl gilt pro Feiertagsdatum."
+                }
+            ]
+        },
         "time.absence_requests": {
             "title": "Hilfe — Anträge",
             "actions": [

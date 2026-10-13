@@ -12,6 +12,7 @@
         "ciao": "CIAO",
         "schedule": "Uurrooster",
         "shift_types": "Shiftypes",
+        "holidays": "Feestdagen",
         "absence_requests": "Aanvragen"
     },
     "presence": {
@@ -855,6 +856,12 @@
             "active": "Actief",
             "inactive": "Inactief"
         }
+    },
+    "holidays": {
+        "title": "Feestdagen",
+        "subtitle": "Bedrijfsbrede feestdagenregeling voor de maandnorm.",
+        "save": "Opslaan",
+        "saved": "Feestdagen opgeslagen."
     },
     "absence": {
         "title": "Aanvragen",

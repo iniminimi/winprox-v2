@@ -6,8 +6,8 @@ use App\Data\Time\WorkerMonthNorm;
 use App\Enums\HolidayAgreementEffect;
 use App\Enums\MonthNormStatus;
 use App\Models\BelgianPublicHoliday;
+use App\Models\TenantHolidayAgreement;
 use App\Models\Worker;
-use App\Models\WorkerHolidayAgreement;
 use App\Models\WorkerWeekdayMinute;
 use App\Support\Time\BelgianPublicHolidayCalendar;
 use App\Support\Time\TimeModuleAccess;
@@ -75,11 +75,11 @@ class ResolveWorkerMonthNormAction
             fn (string $date) => $date >= $monthStart && $date <= $monthEnd,
         ));
 
-        $agreements = WorkerHolidayAgreement::query()
+        // Bedrijfsbrede feestdagafspraken: één set per tenant, voor iedere
+        // uitvoerder identiek toegepast.
+        $agreements = TenantHolidayAgreement::query()
             ->where('tenant_id', $tenantId)
-            ->whereIn('worker_id', $contracts->keys())
-            ->get()
-            ->groupBy(fn (WorkerHolidayAgreement $agreement) => (int) $agreement->worker_id);
+            ->get();
 
         $result = [];
         foreach ($contracts as $workerId => $contractMinutes) {
@@ -89,7 +89,7 @@ class ResolveWorkerMonthNormAction
                 $patterns[$workerId] ?? [],
                 $dates,
                 $holidaysInMonth,
-                $agreements->get($workerId, collect())->all(),
+                $agreements->all(),
                 $holidayDates,
                 $codesByYear,
                 $monthStart,
@@ -104,7 +104,7 @@ class ResolveWorkerMonthNormAction
      * @param  array<int, int>  $pattern
      * @param  list<string>  $dates
      * @param  list<string>  $holidaysInMonth
-     * @param  list<WorkerHolidayAgreement>  $agreements
+     * @param  list<TenantHolidayAgreement>  $agreements
      * @param  array<string, true>  $holidayDates
      * @param  array<int, array<string, true>>  $codesByYear
      */
@@ -262,7 +262,7 @@ class ResolveWorkerMonthNormAction
      * @param  array<string, list<string>>  $replacementOwners
      */
     private function agreementIssue(
-        WorkerHolidayAgreement $agreement,
+        TenantHolidayAgreement $agreement,
         array $holidayDates,
         array $codesByYear,
         array $replacementOwners,

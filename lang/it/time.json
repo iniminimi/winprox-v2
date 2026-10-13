@@ -12,6 +12,7 @@
         "ciao": "CIAO",
         "schedule": "Turni",
         "shift_types": "Tipi di turno",
+        "holidays": "Festività",
         "absence_requests": "Richieste"
     },
     "presence": {
@@ -855,6 +856,12 @@
             "active": "Attivo",
             "inactive": "Inattivo"
         }
+    },
+    "holidays": {
+        "title": "Festività",
+        "subtitle": "Regime delle festività a livello aziendale per la norma mensile.",
+        "save": "Salva",
+        "saved": "Festività salvate."
     },
     "absence": {
         "title": "Richieste",

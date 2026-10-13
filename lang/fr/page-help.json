@@ -1849,6 +1849,23 @@
                 }
             ]
         },
+        "time.holidays": {
+            "title": "Aide — Jours fériés",
+            "actions": [
+                {
+                    "label": "Règlement",
+                    "text": "Un seul règlement des jours fériés pour toute l’entreprise. La norme mensuelle du planning applique ces choix à <strong>tous les ouvriers</strong> — rien ne se règle par personne."
+                },
+                {
+                    "label": "Effet",
+                    "text": "Choisissez par jour férié : <strong>Aucun effet</strong> (les minutes habituelles restent), <strong>Jour de travail annulé</strong> (pas de norme ce jour) ou <strong>Jour de remplacement</strong> (les minutes basculent sur une autre date). Sans choix, le jour férié ne compte pas dans l’écart mensuel."
+                },
+                {
+                    "label": "Année",
+                    "text": "Utilisez les boutons pour changer d’année puis cliquez sur <strong>Enregistrer</strong>. Les choix valent par date de jour férié."
+                }
+            ]
+        },
         "time.absence_requests": {
             "title": "Aide — Demandes",
             "actions": [

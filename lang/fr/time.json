@@ -12,6 +12,7 @@
         "ciao": "CIAO",
         "schedule": "Horaire",
         "shift_types": "Types de service",
+        "holidays": "Jours fériés",
         "absence_requests": "Demandes"
     },
     "presence": {
@@ -855,6 +856,12 @@
             "active": "Actif",
             "inactive": "Inactif"
         }
+    },
+    "holidays": {
+        "title": "Jours fériés",
+        "subtitle": "Règlement des jours fériés à l’échelle de l’entreprise pour la norme mensuelle.",
+        "save": "Enregistrer",
+        "saved": "Jours fériés enregistrés."
     },
     "absence": {
         "title": "Demandes",

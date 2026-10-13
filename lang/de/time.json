@@ -12,6 +12,7 @@
         "ciao": "CIAO",
         "schedule": "Dienstplan",
         "shift_types": "Schichttypen",
+        "holidays": "Feiertage",
         "absence_requests": "Anträge"
     },
     "presence": {
@@ -855,6 +856,12 @@
             "active": "Aktiv",
             "inactive": "Inaktiv"
         }
+    },
+    "holidays": {
+        "title": "Feiertage",
+        "subtitle": "Betriebsweite Feiertagsregelung für die Monatsnorm.",
+        "save": "Speichern",
+        "saved": "Feiertage gespeichert."
     },
     "absence": {
         "title": "Anträge",

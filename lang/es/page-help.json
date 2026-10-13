@@ -1841,6 +1841,23 @@
                 }
             ]
         },
+        "time.holidays": {
+            "title": "Ayuda — Festivos",
+            "actions": [
+                {
+                    "label": "Régimen",
+                    "text": "Un solo régimen de festivos para toda la empresa. La norma mensual del horario aplica estas opciones a <strong>todos los operarios</strong> — no hay que configurar nada por persona."
+                },
+                {
+                    "label": "Efecto",
+                    "text": "Elija por festivo: <strong>Sin efecto</strong> (los minutos habituales se mantienen), <strong>El día laborable se anula</strong> (sin norma ese día) o <strong>Día de sustitución</strong> (los minutos se trasladan a otra fecha). Sin elección, el festivo no cuenta en la diferencia mensual."
+                },
+                {
+                    "label": "Año",
+                    "text": "Use los botones para cambiar de año y pulse <strong>Guardar</strong> después. Las opciones valen por fecha de festivo."
+                }
+            ]
+        },
         "time.absence_requests": {
             "title": "Ayuda — Solicitudes",
             "actions": [

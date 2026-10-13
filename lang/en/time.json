@@ -12,6 +12,7 @@
         "ciao": "CIAO",
         "schedule": "Roster",
         "shift_types": "Shift types",
+        "holidays": "Public holidays",
         "absence_requests": "Requests"
     },
     "presence": {
@@ -855,6 +856,12 @@
             "active": "Active",
             "inactive": "Inactive"
         }
+    },
+    "holidays": {
+        "title": "Public holidays",
+        "subtitle": "Company-wide public holiday scheme for the monthly norm.",
+        "save": "Save",
+        "saved": "Holidays saved."
     },
     "absence": {
         "title": "Requests",

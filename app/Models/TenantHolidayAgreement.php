@@ -7,13 +7,17 @@ use App\Models\Concerns\BelongsToTenant;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class WorkerHolidayAgreement extends Model
+/**
+ * Bedrijfsbrede feestdagafspraak: één regeling per tenant die voor alle
+ * uitvoerders geldt in de maandnorm. De kalender zelf (datums/codes)
+ * blijft globaal in belgian_public_holidays.
+ */
+class TenantHolidayAgreement extends Model
 {
     use BelongsToTenant;
 
     protected $fillable = [
         'tenant_id',
-        'worker_id',
         'holiday_date',
         'effect',
         'replacement_date',
@@ -24,11 +28,6 @@ class WorkerHolidayAgreement extends Model
         'replacement_date' => 'date:Y-m-d',
         'effect' => HolidayAgreementEffect::class,
     ];
-
-    public function worker(): BelongsTo
-    {
-        return $this->belongsTo(Worker::class);
-    }
 
     public function holiday(): BelongsTo
     {

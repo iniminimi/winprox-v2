@@ -1841,6 +1841,23 @@
                 }
             ]
         },
+        "time.holidays": {
+            "title": "Aiuto — Festività",
+            "actions": [
+                {
+                    "label": "Regime",
+                    "text": "Un solo regime delle festività per tutta l’azienda. La norma mensile dell’orario applica queste scelte a <strong>tutti gli operai</strong> — niente va impostato per persona."
+                },
+                {
+                    "label": "Effetto",
+                    "text": "Scegliete per ogni festività: <strong>Nessun effetto</strong> (i minuti abituali restano), <strong>Il giorno lavorativo decade</strong> (nessuna norma quel giorno) o <strong>Giorno di sostituzione</strong> (i minuti slittano a un’altra data). Senza scelta la festività non conta nello scarto mensile."
+                },
+                {
+                    "label": "Anno",
+                    "text": "Usate i pulsanti per passare a un altro anno e poi cliccate <strong>Salva</strong>. Le scelte valgono per singola data festiva."
+                }
+            ]
+        },
         "time.absence_requests": {
             "title": "Guida — Richieste",
             "actions": [

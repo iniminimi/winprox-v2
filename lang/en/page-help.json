@@ -1841,6 +1841,23 @@
                 }
             ]
         },
+        "time.holidays": {
+            "title": "Help — Public holidays",
+            "actions": [
+                {
+                    "label": "Scheme",
+                    "text": "One holiday scheme for the whole company. The monthly norm in the roster applies these choices to <strong>all workers</strong> — nothing is set per person."
+                },
+                {
+                    "label": "Effect",
+                    "text": "Choose per holiday: <strong>No effect</strong> (normal minutes stay), <strong>Working day dropped</strong> (no norm that day) or <strong>Replacement day</strong> (the minutes move to another date). Without a choice the holiday does not count in the monthly difference."
+                },
+                {
+                    "label": "Year",
+                    "text": "Use the buttons to browse to another year, then click <strong>Save</strong>. The choices apply per holiday date."
+                }
+            ]
+        },
         "time.absence_requests": {
             "title": "Help — Requests",
             "actions": [

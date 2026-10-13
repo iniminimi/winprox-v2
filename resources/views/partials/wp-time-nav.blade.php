@@ -19,9 +19,10 @@
     // Checkmate: alles zit al in de zijbalk → geen balk.
     $showShifts = ! $checkmateMode && ! request()->routeIs('time.shifts.*');
     $showShiftTypes = ! $checkmateMode && ! request()->routeIs('time.shift-types.*');
+    $showHolidays = ! $checkmateMode && ! request()->routeIs('time.holidays.*');
     $showAlarms = ! $checkmateMode && ! request()->routeIs('time.alarms.*');
     $showCiao = $ciaoEnabled && ! $checkmateMode && ! request()->routeIs('time.ciao.*');
-    $hasLinks = $showShifts || $showShiftTypes || $showAlarms || $showCiao;
+    $hasLinks = $showShifts || $showShiftTypes || $showHolidays || $showAlarms || $showCiao;
 @endphp
 
 @if ($hasLinks)
@@ -34,6 +35,11 @@
         @if ($showShiftTypes)
             <a href="{{ route('time.shift-types.index') }}" class="btn btn--sm btn--surface">
                 {{ __('time.nav.shift_types') }}
+            </a>
+        @endif
+        @if ($showHolidays)
+            <a href="{{ route('time.holidays.index') }}" class="btn btn--sm btn--surface">
+                {{ __('time.nav.holidays') }}
             </a>
         @endif
         @if ($showAlarms)

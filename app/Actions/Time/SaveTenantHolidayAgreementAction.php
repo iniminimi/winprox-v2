@@ -1,38 +1,32 @@
 <?php
 
-namespace App\Actions\Team;
+namespace App\Actions\Time;
 
 use App\Enums\HolidayAgreementEffect;
 use App\Models\BelgianPublicHoliday;
-use App\Models\Worker;
-use App\Models\WorkerHolidayAgreement;
+use App\Models\Tenant;
+use App\Models\TenantHolidayAgreement;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Time\BelgianPublicHolidayCalendar;
 use Carbon\Carbon;
 use Illuminate\Validation\ValidationException;
 
 /**
- * Bewaart één feestdagafspraak. Conflicten met andere afspraken van dezelfde
- * uitvoerder worden geweigerd. Een datum buiten de kalenderdekking is geen geldige afspraak.
+ * Bewaart één bedrijfsbrede feestdagafspraak. Conflicten met andere afspraken
+ * van dezelfde tenant worden geweigerd. Een datum buiten de kalenderdekking
+ * is geen geldige afspraak.
  */
-class SaveWorkerHolidayAgreementAction
+class SaveTenantHolidayAgreementAction
 {
     public function __construct(private AuditRecorder $audit) {}
 
     public function handle(
-        int $tenantId,
-        Worker $worker,
+        Tenant $tenant,
         string $holidayDate,
         HolidayAgreementEffect $effect,
         ?string $replacementDate,
         ?int $actorUserId = null,
-    ): WorkerHolidayAgreement {
-        if ((int) $worker->tenant_id !== $tenantId) {
-            throw ValidationException::withMessages([
-                'worker' => __('time.schedule.month_norm.errors.worker_tenant'),
-            ]);
-        }
-
+    ): TenantHolidayAgreement {
         $holidayDate = Carbon::parse($holidayDate)->toDateString();
         $replacementDate = $replacementDate !== null && trim($replacementDate) !== ''
             ? Carbon::parse($replacementDate)->toDateString()
@@ -69,8 +63,8 @@ class SaveWorkerHolidayAgreementAction
                     'replacement_date' => __('time.schedule.month_norm.errors.agreement_replacement_holiday'),
                 ]);
             }
-            $taken = WorkerHolidayAgreement::query()
-                ->where('worker_id', $worker->id)
+            $taken = TenantHolidayAgreement::query()
+                ->where('tenant_id', $tenant->id)
                 ->where('holiday_date', '!=', $holidayDate)
                 ->whereDate('replacement_date', $replacementDate)
                 ->exists();
@@ -85,13 +79,12 @@ class SaveWorkerHolidayAgreementAction
             ]);
         }
 
-        $agreement = WorkerHolidayAgreement::query()->updateOrCreate(
+        $agreement = TenantHolidayAgreement::query()->updateOrCreate(
             [
-                'worker_id' => $worker->id,
+                'tenant_id' => $tenant->id,
                 'holiday_date' => $holidayDate,
             ],
             [
-                'tenant_id' => $tenantId,
                 'effect' => $effect,
                 'replacement_date' => $replacementDate,
             ],
@@ -99,10 +92,10 @@ class SaveWorkerHolidayAgreementAction
 
         $this->audit->record(
             userId: $actorUserId,
-            tenantId: $tenantId,
-            action: 'worker.holiday_agreement_saved',
-            modelType: Worker::class,
-            modelId: (int) $worker->id,
+            tenantId: (int) $tenant->id,
+            action: 'tenant.holiday_agreement_saved',
+            modelType: Tenant::class,
+            modelId: (int) $tenant->id,
             payload: [
                 'holiday_date' => $holidayDate,
                 'effect' => $effect->value,

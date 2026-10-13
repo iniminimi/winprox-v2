@@ -572,7 +572,7 @@ it('toont het time-portaal en laat een worker inklokken na icoonbevestiging', fu
         ->assertSee(__('time.portal.clock.clocked_in_at_tenant', [
             'tenant' => $tenant->name,
             'time' => now()->format('H:i'),
-        ]), false)
+        ]))
         ->assertSee(__('time.portal.clock.start_break'), false);
 
     expect(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeTrue();

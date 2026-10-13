@@ -952,8 +952,16 @@ Week en maand tonen die cijfers in vaste kolommen met een verticale titel; in de
 admin of medewerker van dezelfde tenant. Norm en
 verschil blijven leeg zodra er geen normgetal is (stale patroon of conflict). De werkregeling
 (normale minuten per weekdag) is de enige bron voor de contractuele verdeling; een dag op
-0 minuten is geen normale werkdag maar blokkeert plannen niet. De werkregeling en de
-feestdagafspraken staan in de uitvoerdersmodal.
+0 minuten is geen normale werkdag maar blokkeert plannen niet. De werkregeling staat in de
+uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**.
+
+- **Feestdagen** (`/time/holidays`): één bedrijfsbrede regeling per tenant
+  (`tenant_holiday_agreements`, uniek op `tenant_id` + `holiday_date`). Per Belgische
+  feestdag één keuze — `none` (normale minuten blijven), `dropped` (werkdag vervalt) of
+  `replaced` (minuten schuiven naar een vervangingsdatum). Zonder keuze telt de feestdag
+  niet mee in het maandverschil. De ene set geldt voor álle uitvoerders; validatie van
+  vervangingsdagen kijkt naar alle afspraken van de tenant. Jaarkiezer bladert 2020–2040,
+  met hetzelfde conditionele datumveld als voorheen. Verborgen in Checkmate-modus.
 
 - **Overlap:** halfopen interval `[start, eind)` — `07:00–11:00` en `11:00–15:00` is geldig.
   Zelfde worker, echte overlap → harde fout. Nachtshift (`eind <= start`) verboden in golf 1.
