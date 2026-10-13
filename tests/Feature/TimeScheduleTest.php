@@ -471,6 +471,22 @@ it('onthoudt de laatst gekozen weergave via een cookie', function () {
         ->and($queued->getValue())->toBe('month');
 });
 
+it('springt met de weergaveknoppen naar de huidige week of maand', function () {
+    [$tenant, $admin] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-09-16'));
+
+    Livewire::actingAs($admin)
+        ->test(RosterIndex::class)
+        ->set('weekStart', '2026-11-02')
+        ->call('setView', 'week')
+        ->assertSet('weekStart', '2026-09-14')
+        ->set('weekStart', '2026-09-14')
+        ->call('setView', 'month')
+        ->assertSet('weekStart', '2026-09-01')
+        ->call('setView', 'week')
+        ->assertSet('weekStart', '2026-09-14');
+});
+
 it('toont geen weekendkolommen in maandweergave als weekends uit staan', function () {
     [$tenant, $admin] = scheduleTenant();
 

@@ -516,12 +516,15 @@ class RosterIndex extends Component
         $this->dispatch('roster-week-changed');
     }
 
-    public function setView(string $view, ResolveRosterPeriodAction $resolvePeriod): void
+    public function setView(string $view): void
     {
         $this->view = $view === 'month' ? 'month' : 'week';
         Cookie::queue(self::VIEW_COOKIE, $this->view, self::VIEW_COOKIE_MINUTES);
-        [$start] = $resolvePeriod->handle($this->weekStart !== '' ? $this->weekStart : now()->toDateString(), $this->period());
-        $this->weekStart = $start->toDateString();
+        // Weergaveknoppen landen op de huidige periode: "Week" → deze week,
+        // "Maand" → deze maand.
+        $this->weekStart = $this->isMonth()
+            ? now()->startOfMonth()->toDateString()
+            : now()->startOfWeek(Carbon::MONDAY)->toDateString();
         $this->dispatch('roster-week-changed');
     }
 
