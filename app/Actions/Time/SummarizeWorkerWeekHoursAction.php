@@ -49,7 +49,7 @@ class SummarizeWorkerWeekHoursAction
                 'incomplete' => 0,
                 'full' => [],
                 'timed' => [],
-                'contract' => $minutes === null ? null : (int) $minutes,
+                'contract' => $minutes === null ? Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES : (int) $minutes,
             ];
         }
 

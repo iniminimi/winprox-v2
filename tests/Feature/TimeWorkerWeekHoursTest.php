@@ -267,11 +267,12 @@ it('telt een getimede rij niet nog eens op een datum die al een hele dag is', fu
         ->and($summary->incompleteBlocks)->toBe(0);
 });
 
-it('geeft geen verschil zonder weeknorm en wel bij 0, positief en negatief', function () {
+it('valt terug op de standaardnorm zonder weeknorm en toont verschil bij 0, positief en negatief', function () {
     [$tenant, , , $worker] = weekHoursTenant();
     weekBlock($tenant, $worker, '2026-10-13', ShiftTypeKind::Work, '08:00', '12:00');
 
-    expect(weekSummary($tenant, $worker, '2026-10-12')->differenceMinutes())->toBeNull();
+    expect(weekSummary($tenant, $worker, '2026-10-12')->contractMinutes)->toBe(Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES);
+    expect(weekSummary($tenant, $worker, '2026-10-12')->differenceMinutes())->toBe((4 * 60) - Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES);
 
     $worker->update(['weekly_contract_minutes' => 0]);
     expect(weekSummary($tenant, $worker, '2026-10-12')->differenceMinutes())->toBe(4 * 60);
@@ -419,7 +420,7 @@ it('mengt geen uren van een andere tenant', function () {
     expect($rows)->toHaveKey((int) $worker->id)
         ->and($rows)->not->toHaveKey((int) $otherWorker->id)
         ->and($rows[(int) $worker->id]->plannedMinutes)->toBe(0)
-        ->and($rows[(int) $worker->id]->contractMinutes)->toBeNull();
+        ->and($rows[(int) $worker->id]->contractMinutes)->toBe(Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES);
 });
 
 it('blokkeert opslaan en publiceren niet bij een afwijking van de norm', function () {

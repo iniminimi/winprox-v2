@@ -82,7 +82,7 @@ class ResolveWorkerMonthNormAction
         foreach ($contracts as $workerId => $contractMinutes) {
             $workerId = (int) $workerId;
             $result[$workerId] = $this->resolveWorker(
-                $contractMinutes === null ? null : (int) $contractMinutes,
+                $contractMinutes === null ? Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES : (int) $contractMinutes,
                 $patterns[$workerId] ?? [],
                 $dates,
                 $holidaysInMonth,
