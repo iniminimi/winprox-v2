@@ -1046,6 +1046,7 @@ button.wp-kpi {
 }
 
 .wp-kpi--has-assistant .wp-kpi-icon {
+    align-self: center;
     width: 80px;
     height: 80px;
     padding: 0;
@@ -1060,8 +1061,11 @@ button.wp-kpi {
 }
 
 .wp-kpi--has-assistant .wp-kpi-body {
-    align-items: center;
     gap: 0.5rem;
+}
+
+.wp-kpi--has-assistant .wp-kpi-main {
+    padding-top: calc(1.125rem - 0.35rem);
 }
 
 /* ---------------------------------------------------------------------------
