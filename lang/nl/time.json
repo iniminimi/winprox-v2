@@ -797,7 +797,8 @@
         "multi_hint": "Meerdere blokken — open de dag om te bewerken",
         "multi_replace_confirm": "Deze dag heeft meerdere blokken. Door te typen vervang je de hele dag door één blok. Doorgaan?",
         "day_flag": {
-            "replacement": "Vervangingsdag · :name"
+            "holiday": "Feestdag: :name · :effect",
+            "replacement": "Vervangingsdag voor :name (:date)"
         },
         "day_editor": {
             "title": "Rooster van :name op :date",

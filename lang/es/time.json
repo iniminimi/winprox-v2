@@ -797,7 +797,8 @@
         "multi_hint": "Varios bloques — abre el día para editar",
         "multi_replace_confirm": "Este día tiene varios bloques. Al escribir se sustituye todo el día por un solo bloque. ¿Continuar?",
         "day_flag": {
-            "replacement": "Día de sustitución · :name"
+            "holiday": "Día festivo: :name · :effect",
+            "replacement": "Día de sustitución de :name (:date)"
         },
         "day_editor": {
             "title": "Horario de :name el :date",

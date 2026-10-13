@@ -354,14 +354,20 @@ class ListRosterWeekAction
             if (isset($visible[$holidayDate])) {
                 $flags[$holidayDate] = [
                     'kind' => 'holiday',
-                    'label' => $name.' · '.__('time.schedule.month_norm.effects.'.$agreement->effect->value),
+                    'label' => __('time.schedule.day_flag.holiday', [
+                        'name' => $name,
+                        'effect' => __('time.schedule.month_norm.effects.'.$agreement->effect->value),
+                    ]),
                 ];
             }
             $replacement = $agreement->replacement_date?->toDateString();
             if ($replacement !== null && isset($visible[$replacement])) {
                 $flags[$replacement] = [
                     'kind' => 'replacement',
-                    'label' => __('time.schedule.day_flag.replacement', ['name' => $name]),
+                    'label' => __('time.schedule.day_flag.replacement', [
+                        'name' => $name,
+                        'date' => Carbon::parse($holidayDate)->format('d/m/Y'),
+                    ]),
                 ];
             }
         }

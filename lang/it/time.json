@@ -797,7 +797,8 @@
         "multi_hint": "Più blocchi — apri il giorno per modificare",
         "multi_replace_confirm": "Questo giorno ha più blocchi. Digitando sostituisci l'intera giornata con un solo blocco. Continuare?",
         "day_flag": {
-            "replacement": "Giorno sostitutivo · :name"
+            "holiday": "Giorno festivo: :name · :effect",
+            "replacement": "Giorno sostitutivo di :name (:date)"
         },
         "day_editor": {
             "title": "Turni di :name il :date",

@@ -51,7 +51,10 @@ it('markeert de afgeleide vervangingsdag van een weekendfeestdag', function () {
     expect($flags['2026-11-02']['kind'])->toBe('replacement')
         ->and($flags['2026-11-02']['label'])->toBe(__(
             'time.schedule.day_flag.replacement',
-            ['name' => __('time.schedule.month_norm.holidays.all_saints')],
+            [
+                'name' => __('time.schedule.month_norm.holidays.all_saints'),
+                'date' => '01/11/2026',
+            ],
         ));
 });
 
