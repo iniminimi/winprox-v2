@@ -772,7 +772,10 @@ productsector op `Tenant`.
   melding (verlof, recup, ziekte of feestdag) bij die uitvoerder. Op het gsm-portaal
   kleurt het groene inklokblok rood, met die melding zichtbaar. Na uitklokken valt de
   melding weg.
-- Worker zonder login (naam + icoon of optionele PIN); **één gsm per uitvoerder**
+- Worker zonder login (naam + icoon, of PIN als die in Instellingen aan staat).
+  Staat PIN aan, dan vraagt een nieuwe gsm **geen icoon**: naam, daarna pincode
+  (twee keer als die nog niet bestaat), ook als de uitvoerder nog geen icoon heeft.
+  **één gsm per uitvoerder**
   (koppeling bij eerste geslaagde Clock Point-aanmelding; ander toestel weigeren + audit
   tot beheer/teamleader vrijgeeft); één open shift;
   hops tussen Clock Points (alarm bij hop < 5 min). **Aanmelden klokt niet vanzelf in.**
@@ -785,6 +788,8 @@ productsector op `Tenant`.
   zonder nieuwe scan; de evacuatielijst ook, maar alleen als die in Instellingen aanstaat.
   **GPS vragen bij in- en uitklokken** (standaard uit): aan = portaal-inklok alleen
   met een GPS-positie (controle waar de uitvoerder was). Zonder signaal geen inklok.
+  Uit = het portaal vraagt geen locatietoestemming bij openen of aanmelden.
+  GPS-werkbezoeken vragen de positie wel, omdat Start werk die nodig heeft.
   Uitklokken blijft zonder die poort; coördinaten worden bewaard als ze er zijn.
   API `POST /time/clock-in` (bron API) koppelt **geen** gsm en eist deze positie niet.
   Beheerder en medewerker kunnen een uitvoerder **manueel inklokken** op een Clock Point

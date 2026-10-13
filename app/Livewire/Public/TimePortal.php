@@ -363,6 +363,18 @@ class TimePortal extends Component
         }
 
         if ($identity['status'] === 'claimable') {
+            $worker = $identity['worker'] ?? null;
+            if ($this->tenantRequiresPin() && $worker instanceof Worker) {
+                WorkerDeviceSession::bindRememberedWorkerForTenant($worker);
+                $this->showRegisterForm = false;
+                $this->sign_in_icon_slug = '';
+                $this->pin_code = '';
+                $this->pin_code_confirm = '';
+                $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm']);
+
+                return;
+            }
+
             $this->showRegisterForm = true;
             $this->selected_icon_slug = '';
             $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug']);

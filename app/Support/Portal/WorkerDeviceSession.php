@@ -143,11 +143,17 @@ final class WorkerDeviceSession
 
         $worker = Worker::where('internal_team_id', $team->id)
             ->where('is_active', true)
-            ->whereNotNull('field_icon_slug')
-            ->where('field_icon_slug', '!=', '')
             ->find($workerId);
 
         if ($worker === null) {
+            self::clearRememberedWorkerForTeam((int) $team->id);
+
+            return null;
+        }
+
+        $pinMode = (bool) $worker->tenant?->requiresWorkerPin();
+        $icon = trim((string) $worker->field_icon_slug);
+        if (! $pinMode && ($icon === '' || ! WorkerIcon::isValidSlug($icon))) {
             self::clearRememberedWorkerForTeam((int) $team->id);
 
             return null;

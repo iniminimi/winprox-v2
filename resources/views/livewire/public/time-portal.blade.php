@@ -543,6 +543,10 @@
                             },
                             refreshHere() {
                                 try {
+                                    if (!this.gpsOn && !this.gpsVisits) {
+                                        this.markGps(null);
+                                        return;
+                                    }
                                     if (!navigator.geolocation) {
                                         this.markGps(false);
                                         return;

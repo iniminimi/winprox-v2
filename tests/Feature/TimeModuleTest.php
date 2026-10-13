@@ -612,6 +612,39 @@ it('laat een claimable worker een icoon kiezen via clock point QR', function () 
         ->and(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeTrue();
 });
 
+it('slaat het icoon over en vraagt geen gps als pin aan staat en gps uit', function () {
+    [$tenant] = timeTenantWithAdmin();
+    $tenant->update([
+        'time_require_worker_pin' => true,
+        'time_gps_on_clock' => false,
+        'time_gps_visits' => false,
+    ]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Crèche']);
+    Worker::factory()->claimable()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Piet',
+        'last_name' => 'Peters',
+    ]);
+    ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'qr_token' => 'pin-no-icon-clock',
+    ]);
+
+    Livewire::test(TimePortal::class, ['token' => 'pin-no-icon-clock'])
+        ->set('first_name', 'Piet')
+        ->set('last_name', 'Peters')
+        ->call('identifyWorker')
+        ->assertSet('showRegisterForm', false)
+        ->assertDontSee(__('portal.team.register.choose_icon'), false)
+        ->assertSee(__('portal.worker.pin_setup_title'), false)
+        ->set('pin_code', '1234')
+        ->set('pin_code_confirm', '1234')
+        ->call('completePinSetup')
+        ->assertSee('if (!this.gpsOn && !this.gpsVisits)', false)
+        ->assertDontSee(__('portal.team.register.choose_icon'), false);
+});
+
 it('toont open registratie wanneer er precies één leeg team is', function () {
     [$tenant] = timeTenantWithAdmin();
     InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Techniek']);
