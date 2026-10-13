@@ -14,14 +14,10 @@
 
     <div class="wp-time-presence-attention__list">
         @foreach ($items as $item)
-            @php
-                $hours = $item->type->thresholdValue();
-                $labelKey = 'time.presence.attention.'.$item->type->value;
-            @endphp
             <div class="wp-time-presence-attention__item" wire:key="presence-attention-{{ $item->type->value }}-{{ $item->listKey() }}">
                 <p class="wp-time-presence-attention__reason">
                     <x-wp-icon name="alert-triangle" class="wp-time-presence-attention__reason-icon" />
-                    <span>{{ __($labelKey, ['hours' => $hours]) }}</span>
+                    <span>{{ $item->message() }}</span>
                 </p>
                 @if ($item->rosterView !== null)
                     @include('partials.wp-time-roster-view-row', [

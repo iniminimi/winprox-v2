@@ -93,6 +93,7 @@
         @include('partials.wp-time-presence-search-results', [
             'shifts' => $dashboard->searchShifts,
             'absentWorkers' => $dashboard->searchAbsentWorkers,
+            'attentionItems' => $dashboard->attentionItems,
             'showForceClose' => true,
             'staleHours' => $staleHours,
         ])
@@ -109,10 +110,12 @@
     @elseif ($presenceView === \App\Enums\TimePresenceViewMode::Locations)
         @include('partials.wp-time-presence-location-cards', [
             'locationBuckets' => $dashboard->locationBuckets,
+            'attentionItems' => $dashboard->attentionItems,
         ])
     @else
         @include('partials.wp-time-presence-teams', [
             'teamBuckets' => $dashboard->teamBuckets,
+            'attentionItems' => $dashboard->attentionItems,
             'expandedTeams' => $expandedTeams,
             'statusFilter' => $presenceStatusFilter,
             'teamShiftLimits' => $teamShiftLimits,

@@ -3,7 +3,16 @@
     'absentWorkers',
     'showForceClose' => false,
     'staleHours' => 16,
+    'attentionItems' => null,
 ])
+
+@php
+    use App\Enums\TimePresenceAttentionType;
+
+    $absenceMessageByShiftId = collect($attentionItems ?? [])
+        ->filter(fn ($item) => $item->shift !== null && $item->type === TimePresenceAttentionType::AbsenceClockIn)
+        ->mapWithKeys(fn ($item) => [$item->shift->id => $item->message()]);
+@endphp
 
 <section class="wp-card wp-card-pad wp-stack">
     <h2 class="wp-section-title">{{ __('time.presence.search_results') }}</h2>
@@ -19,6 +28,7 @@
                         'showForceClose' => $showForceClose,
                         'showTeam' => true,
                         'variant' => $shift->isOnBreak() ? 'break' : 'active',
+                        'attentionMessage' => $absenceMessageByShiftId->get($shift->id),
                     ])
                 @endforeach
             </div>

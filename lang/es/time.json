@@ -57,7 +57,15 @@
             "stale_shift": "Sin fichar salida (> :hours h)",
             "no_break": "Sin pausa tras :hours horas",
             "rapid_hop": "Traslado en menos de :hours min",
-            "roster_viewed": "Lista de evacuación consultada"
+            "roster_viewed": "Lista de evacuación consultada",
+            "absence_clock_in": "Fichado durante una ausencia",
+            "absence_clock_in_detail": "Fichado durante :kind",
+            "absence_kinds": {
+                "leave": "vacaciones",
+                "recup": "horas de recupero",
+                "sick": "una baja",
+                "holiday": "un festivo"
+            }
         },
         "view_modes": "Vista",
         "board_absent_title": "Ausente / Acción extra",
@@ -103,7 +111,8 @@
         "type_no_break": "Sin pausa",
         "shown": ":shown de :total alarmas mostradas",
         "type_rapid_hop": "Salto rápido",
-        "type_roster_viewed": "Lista de evacuación"
+        "type_roster_viewed": "Lista de evacuación",
+        "type_absence_clock_in": "Ausencia"
     },
     "manual_clock_in": {
         "button": "Fichar manualmente",

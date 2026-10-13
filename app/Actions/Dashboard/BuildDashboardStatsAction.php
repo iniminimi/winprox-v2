@@ -27,6 +27,7 @@ class BuildDashboardStatsAction
     {
         $presentNow = null;
         $timeAttention = 0;
+        $absenceClockIns = 0;
         $pendingAbsenceLeave = 0;
         $pendingAbsenceRecup = 0;
 
@@ -37,7 +38,9 @@ class BuildDashboardStatsAction
                 ->whereDoesntHave('breaks', fn ($query) => $query->whereNull('ended_at'))
                 ->count();
 
-            $timeAttention = $this->countTimeAttention->handle($tenantId);
+            $attention = $this->countTimeAttention->snapshot($tenantId);
+            $timeAttention = $attention['attention'];
+            $absenceClockIns = $attention['absence_clock_in'];
             $pendingByKind = $this->countPendingAbsence->byKind($tenantId);
             $pendingAbsenceLeave = $pendingByKind['leave'];
             $pendingAbsenceRecup = $pendingByKind['recup'];
@@ -70,6 +73,7 @@ class BuildDashboardStatsAction
                 ->pendingReview()
                 ->count(),
             timeAttention: $timeAttention,
+            absenceClockIns: $absenceClockIns,
             pendingAbsenceRequests: $pendingAbsenceLeave + $pendingAbsenceRecup,
             pendingAbsenceLeave: $pendingAbsenceLeave,
             pendingAbsenceRecup: $pendingAbsenceRecup,

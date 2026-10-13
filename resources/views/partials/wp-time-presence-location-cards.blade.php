@@ -1,4 +1,15 @@
-@props(['locationBuckets'])
+@props([
+    'locationBuckets',
+    'attentionItems' => null,
+])
+
+@php
+    use App\Enums\TimePresenceAttentionType;
+
+    $absenceMessageByShiftId = collect($attentionItems ?? [])
+        ->filter(fn ($item) => $item->shift !== null && $item->type === TimePresenceAttentionType::AbsenceClockIn)
+        ->mapWithKeys(fn ($item) => [$item->shift->id => $item->message()]);
+@endphp
 
 @if ($locationBuckets->isEmpty())
     <p class="wp-muted">{{ __('time.presence.empty_locations') }}</p>
@@ -32,7 +43,15 @@
                     <ul class="wp-stack-tight">
                         @foreach ($bucket->shifts as $shift)
                             <li class="wp-stack-tight" wire:key="presence-location-{{ $bucket->location?->id ?? 'unknown' }}-shift-{{ $shift->id }}">
-                                <span>{{ $shift->worker?->displayName() }}</span>
+                                <span>
+                                    @if ($absenceMessageByShiftId->has($shift->id))
+                                        <span class="wp-time-presence-card__bang" title="{{ $absenceMessageByShiftId->get($shift->id) }}" aria-hidden="true">!</span>
+                                    @endif
+                                    {{ $shift->worker?->displayName() }}
+                                </span>
+                                @if ($absenceMessageByShiftId->has($shift->id))
+                                    <span class="wp-muted wp-text-sm">{{ $absenceMessageByShiftId->get($shift->id) }}</span>
+                                @endif
                                 @include('partials.wp-time-presence-visit-pill', ['shift' => $shift])
                             </li>
                         @endforeach

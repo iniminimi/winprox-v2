@@ -21,7 +21,10 @@ use Illuminate\Support\Collection;
 
 class BuildTimePresenceDashboardAction
 {
-    public function __construct(private ListTimeRosterViewsAction $listRosterViews) {}
+    public function __construct(
+        private ListTimeRosterViewsAction $listRosterViews,
+        private CollectAbsenceClockInAttentionAction $absenceClockIns,
+    ) {}
 
     public function handle(
         int $tenantId,
@@ -67,6 +70,7 @@ class BuildTimePresenceDashboardAction
         $onBreak = $openShifts->filter(fn (WorkShift $shift) => $shift->openBreak !== null)->values();
         $active = $openShifts->filter(fn (WorkShift $shift) => $shift->openBreak === null)->values();
         $attentionItems = TimePresenceAttentionRules::collect($openShifts)
+            ->concat($this->absenceClockIns->handle($tenantId, $openShifts))
             ->concat($this->rosterViewItems($tenantId, $teamId, $needle, $includeHistoricalRosterViews))
             ->values();
 
@@ -455,6 +459,8 @@ class BuildTimePresenceDashboardAction
             return $items->values();
         }
 
-        return collect();
+        return $items
+            ->filter(fn (TimePresenceAttentionItem $item) => $item->type === TimePresenceAttentionType::AbsenceClockIn)
+            ->values();
     }
 }

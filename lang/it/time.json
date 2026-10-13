@@ -57,7 +57,15 @@
             "stale_shift": "Uscita non timbrata (> :hours ore)",
             "no_break": "Nessuna pausa dopo :hours ore",
             "rapid_hop": "Spostato entro :hours min",
-            "roster_viewed": "Elenco evacuazione consultato"
+            "roster_viewed": "Elenco evacuazione consultato",
+            "absence_clock_in": "Timbrato durante un'assenza",
+            "absence_clock_in_detail": "Timbrato durante :kind",
+            "absence_kinds": {
+                "leave": "ferie",
+                "recup": "recupero",
+                "sick": "malattia",
+                "holiday": "un giorno festivo"
+            }
         },
         "view_modes": "Vista",
         "board_absent_title": "Assente / Azione extra",
@@ -103,7 +111,8 @@
         "type_no_break": "Nessuna pausa",
         "shown": ":shown di :total allarmi mostrati",
         "type_rapid_hop": "Salto rapido",
-        "type_roster_viewed": "Elenco evacuazione"
+        "type_roster_viewed": "Elenco evacuazione",
+        "type_absence_clock_in": "Assenza"
     },
     "manual_clock_in": {
         "button": "Timbratura manuale",

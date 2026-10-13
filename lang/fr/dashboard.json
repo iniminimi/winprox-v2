@@ -20,6 +20,7 @@
     "present_now": "Présents",
     "pending_review": "À examiner",
     "time_attention": "Attention Time",
+    "absence_clock_in": "Pointé pendant une absence",
     "pending_absence": "Demandes",
     "pending_absence_leave": ":count Congé",
     "pending_absence_recup": ":count Récup",

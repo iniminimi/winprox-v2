@@ -9,6 +9,7 @@ enum TimePresenceAttentionType: string
     case NoBreak = 'no_break';
     case RapidHop = 'rapid_hop';
     case RosterViewed = 'roster_viewed';
+    case AbsenceClockIn = 'absence_clock_in';
 
     public function thresholdValue(): int
     {
@@ -17,7 +18,7 @@ enum TimePresenceAttentionType: string
             self::LongShift => max(1, (int) config('time.long_shift_hours', 10)),
             self::NoBreak => max(1, (int) config('time.break_reminder_hours', 6)),
             self::RapidHop => max(1, (int) config('time.rapid_hop_minutes', 5)),
-            self::RosterViewed => 0,
+            self::RosterViewed, self::AbsenceClockIn => 0,
         };
     }
 }

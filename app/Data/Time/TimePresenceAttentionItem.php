@@ -11,7 +11,21 @@ final class TimePresenceAttentionItem
         public TimePresenceAttentionType $type,
         public ?WorkShift $shift = null,
         public ?TimeRosterViewAttention $rosterView = null,
+        public ?string $absenceKind = null,
     ) {}
+
+    public function message(): string
+    {
+        if ($this->type === TimePresenceAttentionType::AbsenceClockIn && $this->absenceKind !== null) {
+            return __('time.presence.attention.absence_clock_in_detail', [
+                'kind' => __('time.presence.attention.absence_kinds.'.$this->absenceKind),
+            ]);
+        }
+
+        return __('time.presence.attention.'.$this->type->value, [
+            'hours' => $this->type->thresholdValue(),
+        ]);
+    }
 
     public function listKey(): string
     {

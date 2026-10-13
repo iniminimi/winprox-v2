@@ -3,6 +3,7 @@
     'showForceClose' => false,
     'showTeam' => false,
     'variant' => 'active',
+    'attentionMessage' => null,
 ])
 
 @php
@@ -20,7 +21,15 @@
             class="wp-time-presence-row__initial"
         />
         <div class="wp-time-presence-row__copy">
-            <span class="wp-time-presence-row__name">{{ $shift->worker?->displayName() }}</span>
+            <span class="wp-time-presence-row__name">
+                @if ($attentionMessage)
+                    <span class="wp-time-presence-card__bang" title="{{ $attentionMessage }}" aria-hidden="true">!</span>
+                @endif
+                {{ $shift->worker?->displayName() }}
+            </span>
+            @if ($attentionMessage)
+                <span class="wp-muted wp-text-sm">{{ $attentionMessage }}</span>
+            @endif
             @if ($shift->isManuallyClockedIn())
                 <span class="wp-pill">{{ __('time.manual_clock_in.badge') }}</span>
             @endif

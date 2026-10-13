@@ -76,6 +76,7 @@
           "Raccourcis : planning, présence, nouvelle tâche du jour (tournée d'inspection), site et exécutant.",
           "Nouveaux signalements et tâches ouvertes.",
           "Avec Time : qui est présent maintenant.",
+          "Quelqu’un qui pointe pendant un congé, une récupération, un jour férié ou une maladie : une carte en plus, et un point d’exclamation avec un message à côté de cette personne dans la présence.",
           "Congé ou recup ouvert en carte extra : 1 Congé, 1 Recup, ou les deux.",
           "Les nouvelles organisations peuvent choisir un modèle de départ ici.",
           "Le briefing et les rapports sont accessibles depuis le tableau de bord."
@@ -159,6 +160,7 @@
           "Sur une pointeuse fixe, chaque entrée et sortie demande un scan de l'autocollant ou de l'écran. L'icône d'accueil et le lien de connexion ne pointent pas. Checkmate pointe depuis l'icône. Attention : une photo de l'autocollant fixe permet de pointer à distance ; le QR rotatif de l'écran expire et prouve une présence réelle.",
           "Inclus dans l’essai et dans chaque formule.",
           "Présence, relevé d’heures et Mes heures (uniquement ses services).",
+          "Pointer pendant un congé, une récupération, un jour férié ou une maladie apparaît sur le tableau de bord et à côté de cette personne dans la présence.",
           "La gestion peut pointer manuellement si le téléphone est oublié.",
           "CIAO (ONSS) sur demande, sans supplément.",
           "Vous transmettez les heures au secrétariat social. Pas de Dimona et pas de calcul de paie.",

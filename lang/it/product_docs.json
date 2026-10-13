@@ -76,6 +76,7 @@
           "Scorciatoie: turno, presenza, nuova attività del giorno (giro di ispezione), sede ed esecutore.",
           "Nuove segnalazioni e attività aperte.",
           "Con Time: chi è presente ora.",
+          "Chi timbra durante ferie, recupero, un giorno festivo o malattia: una scheda in più, e un punto esclamativo con un avviso accanto a quella persona in presenza.",
           "Ferie o TOIL aperti come scheda extra: 1 Ferie, 1 TOIL, o entrambi.",
           "Le nuove organizzazioni possono scegliere qui un modello iniziale.",
           "Briefing e report sono raggiungibili dal cruscotto."
@@ -159,6 +160,7 @@
           "Su una timbratrice fissa, ogni ingresso e uscita chiede la scansione dell'adesivo o dello schermo. L'icona Home e il link di accesso non timbrano. Checkmate timbra dall'icona. Attenzione: una foto dell'adesivo fisso può timbrare ovunque; il QR rotante dello schermo scade e prova la presenza reale.",
           "Incluso nella prova e in ogni formula.",
           "Presenza, cartellino e Le mie ore (solo i propri turni).",
+          "Timbrare durante ferie, recupero, un giorno festivo o malattia compare sulla dashboard e accanto a quella persona in presenza.",
           "La gestione può timbrare a mano se il telefono è stato dimenticato.",
           "CIAO (ONSS) su richiesta, senza extra.",
           "Passate le ore al segretariato sociale. Niente Dimona e niente calcolo delle paghe.",

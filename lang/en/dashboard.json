@@ -20,6 +20,7 @@
     "present_now": "Present now",
     "pending_review": "Pending review",
     "time_attention": "Time attention",
+    "absence_clock_in": "Clocked in while absent",
     "pending_absence": "Requests",
     "pending_absence_leave": ":count Leave",
     "pending_absence_recup": ":count TOIL",

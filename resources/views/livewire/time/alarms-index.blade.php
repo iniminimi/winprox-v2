@@ -90,6 +90,7 @@
                                         'showForceClose' => true,
                                         'showTeam' => true,
                                         'variant' => $item->shift->isOnBreak() ? 'break' : 'active',
+                                        'attentionMessage' => $item->type === \App\Enums\TimePresenceAttentionType::AbsenceClockIn ? $item->message() : null,
                                     ])
                                 @endif
                             </div>

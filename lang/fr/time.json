@@ -57,7 +57,15 @@
             "stale_shift": "Non dépointé (> :hours h)",
             "no_break": "Pas de pause après :hours heures",
             "rapid_hop": "Déplacé en moins de :hours min",
-            "roster_viewed": "Liste d’évacuation consultée"
+            "roster_viewed": "Liste d’évacuation consultée",
+            "absence_clock_in": "Pointé pendant une absence",
+            "absence_clock_in_detail": "Pointé pendant :kind",
+            "absence_kinds": {
+                "leave": "un congé",
+                "recup": "une récupération",
+                "sick": "une maladie",
+                "holiday": "un jour férié"
+            }
         },
         "view_modes": "Affichage",
         "board_absent_title": "Absent / Action extra",
@@ -103,7 +111,8 @@
         "type_no_break": "Pas de pause",
         "shown": ":shown sur :total alarmes affichées",
         "type_rapid_hop": "Saut rapide",
-        "type_roster_viewed": "Liste d’évacuation"
+        "type_roster_viewed": "Liste d’évacuation",
+        "type_absence_clock_in": "Absence"
     },
     "manual_clock_in": {
         "button": "Pointer manuellement",

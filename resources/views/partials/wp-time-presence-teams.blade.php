@@ -1,5 +1,6 @@
 @props([
     'teamBuckets',
+    'attentionItems' => null,
     'expandedTeams',
     'statusFilter',
     'teamShiftLimits' => [],
@@ -8,7 +9,12 @@
 ])
 
 @php
+    use App\Enums\TimePresenceAttentionType;
     use App\Enums\TimePresenceStatusFilter;
+
+    $absenceMessageByShiftId = collect($attentionItems ?? [])
+        ->filter(fn ($item) => $item->shift !== null && $item->type === TimePresenceAttentionType::AbsenceClockIn)
+        ->mapWithKeys(fn ($item) => [$item->shift->id => $item->message()]);
 @endphp
 
 @if ($teamBuckets->isEmpty())
@@ -59,6 +65,7 @@
                                         'shift' => $shift,
                                         'showForceClose' => $showForceClose,
                                         'variant' => 'active',
+                                        'attentionMessage' => $absenceMessageByShiftId->get($shift->id),
                                     ])
                                 @endforeach
                                 @if ($bucket->activeCount > $visibleActive->count())
@@ -75,6 +82,7 @@
                                         'shift' => $shift,
                                         'showForceClose' => $showForceClose,
                                         'variant' => 'break',
+                                        'attentionMessage' => $absenceMessageByShiftId->get($shift->id),
                                     ])
                                 @endforeach
                                 @if ($bucket->breakCount > $visibleBreak->count())

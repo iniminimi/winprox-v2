@@ -76,6 +76,7 @@
           "Atajos: horario, presencia, nueva tarea del día (ronda de inspección), ubicación y ejecutor.",
           "Nuevas incidencias y tareas abiertas.",
           "Con Time: quién está presente ahora.",
+          "Quien ficha durante vacaciones, recupero, un festivo o una baja: una tarjeta extra, y un signo de exclamación con aviso junto a esa persona en presencia.",
           "Vacaciones o TOIL abiertos como tarjeta extra: 1 Vacaciones, 1 TOIL, o ambos.",
           "Las organizaciones nuevas pueden elegir aquí una plantilla inicial.",
           "El briefing y los informes están disponibles desde el panel."
@@ -159,6 +160,7 @@
           "En un reloj fijo, cada entrada y salida pide escanear la pegatina o la pantalla. El icono de inicio y el enlace de acceso no fichan. Checkmate ficha desde el icono. Ojo: una foto de la pegatina fija permite fichar desde cualquier lugar; el QR rotativo de la pantalla caduca y prueba la presencia real.",
           "Incluido en la prueba y en cada fórmula.",
           "Presencia, hoja de horas y Mis horas (solo turnos propios).",
+          "Fichar durante vacaciones, recupero, un festivo o una baja aparece en el panel y junto a esa persona en presencia.",
           "La gestión puede fichar a mano si se olvidó el teléfono.",
           "CIAO (ONSS) bajo petición, sin recargo.",
           "Usted pasa las horas a la secretaría social. Sin Dimona y sin cálculo de nómina.",

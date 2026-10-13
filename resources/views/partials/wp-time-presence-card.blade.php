@@ -10,12 +10,12 @@
     use App\Support\Time\WorkDurationFormatter;
 
     $isOnBreak = $variant === 'break' || $shift->isOnBreak();
-    $attentionHours = null;
     $attentionLabel = null;
 
+    $absenceClockIn = $attentionItem?->type === \App\Enums\TimePresenceAttentionType::AbsenceClockIn;
+
     if ($attentionItem !== null) {
-        $attentionHours = $attentionItem->type->thresholdValue();
-        $attentionLabel = __('time.presence.attention.'.$attentionItem->type->value, ['hours' => $attentionHours]);
+        $attentionLabel = $attentionItem->message();
     }
 
     $avatarTone = match (true) {
@@ -57,7 +57,12 @@
 
     <div class="wp-time-presence-card__content">
         <div class="wp-cluster">
-            <h3 class="wp-time-presence-card__name">{{ $shift->worker?->displayName() }}</h3>
+            <h3 class="wp-time-presence-card__name">
+                @if ($absenceClockIn)
+                    <span class="wp-time-presence-card__bang" title="{{ $attentionLabel }}" aria-hidden="true">!</span>
+                @endif
+                {{ $shift->worker?->displayName() }}
+            </h3>
             @if ($shift->isManuallyClockedIn())
                 <span class="wp-pill">{{ __('time.manual_clock_in.badge') }}</span>
             @endif

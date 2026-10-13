@@ -20,6 +20,7 @@
     "present_now": "Anwesend",
     "pending_review": "Zur Prüfung",
     "time_attention": "Time-Aufmerksamkeit",
+    "absence_clock_in": "Eingestempelt trotz Abwesenheit",
     "pending_absence": "Anträge",
     "pending_absence_leave": ":count Urlaub",
     "pending_absence_recup": ":count Ausgleich",

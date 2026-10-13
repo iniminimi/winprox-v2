@@ -57,7 +57,15 @@
             "stale_shift": "Nicht ausgestempelt (> :hours Std.)",
             "no_break": "Keine Pause nach :hours Stunden",
             "rapid_hop": "Wechsel innerhalb von :hours Min.",
-            "roster_viewed": "Evakuierungsliste eingesehen"
+            "roster_viewed": "Evakuierungsliste eingesehen",
+            "absence_clock_in": "Eingestempelt trotz Abwesenheit",
+            "absence_clock_in_detail": "Eingestempelt während :kind",
+            "absence_kinds": {
+                "leave": "Urlaub",
+                "recup": "Zeitausgleich",
+                "sick": "Krankheit",
+                "holiday": "einen Feiertag"
+            }
         },
         "view_modes": "Ansicht",
         "board_absent_title": "Abwesend / Extra Aktion",
@@ -103,7 +111,8 @@
         "type_no_break": "Keine Pause",
         "shown": ":shown von :total Alarmen angezeigt",
         "type_rapid_hop": "Schneller Wechsel",
-        "type_roster_viewed": "Evakuierungsliste"
+        "type_roster_viewed": "Evakuierungsliste",
+        "type_absence_clock_in": "Abwesenheit"
     },
     "manual_clock_in": {
         "button": "Manuell einstempeln",

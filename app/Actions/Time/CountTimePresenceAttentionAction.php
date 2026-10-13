@@ -8,9 +8,20 @@ use App\Support\Time\TimePresenceAttentionRules;
 
 class CountTimePresenceAttentionAction
 {
-    public function __construct(private ListTimeRosterViewsAction $listRosterViews) {}
+    public function __construct(
+        private ListTimeRosterViewsAction $listRosterViews,
+        private CollectAbsenceClockInAttentionAction $absenceClockIns,
+    ) {}
 
     public function handle(int $tenantId): int
+    {
+        return $this->snapshot($tenantId)['attention'];
+    }
+
+    /**
+     * @return array{attention: int, absence_clock_in: int}
+     */
+    public function snapshot(int $tenantId): array
     {
         $openShifts = WorkShift::query()
             ->where('tenant_id', $tenantId)
@@ -18,7 +29,13 @@ class CountTimePresenceAttentionAction
             ->with(['openBreak', 'breaks'])
             ->get();
 
-        return TimePresenceAttentionRules::collect($openShifts)->count()
-            + $this->listRosterViews->handle($tenantId)->count();
+        $absence = $this->absenceClockIns->handle($tenantId, $openShifts);
+
+        return [
+            'attention' => TimePresenceAttentionRules::collect($openShifts)->count()
+                + $absence->count()
+                + $this->listRosterViews->handle($tenantId)->count(),
+            'absence_clock_in' => $absence->count(),
+        ];
     }
 }

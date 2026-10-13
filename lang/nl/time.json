@@ -57,7 +57,15 @@
             "stale_shift": "Niet uitgeklokt (> :hours uur)",
             "no_break": "Geen pauze na :hours uur",
             "rapid_hop": "Verplaatst binnen :hours min",
-            "roster_viewed": "Evacuatielijst geraadpleegd"
+            "roster_viewed": "Evacuatielijst geraadpleegd",
+            "absence_clock_in": "Ingeklokt tijdens afwezigheid",
+            "absence_clock_in_detail": "Ingeklokt tijdens :kind",
+            "absence_kinds": {
+                "leave": "verlof",
+                "recup": "recup",
+                "sick": "ziekte",
+                "holiday": "een feestdag"
+            }
         },
         "view_modes": "Weergave",
         "board_absent_title": "Afwezig / Extra actie",
@@ -103,7 +111,8 @@
         "type_no_break": "Geen pauze",
         "shown": ":shown van :total alarmen getoond",
         "type_rapid_hop": "Snelle hop",
-        "type_roster_viewed": "Evacuatielijst"
+        "type_roster_viewed": "Evacuatielijst",
+        "type_absence_clock_in": "Afwezigheid"
     },
     "manual_clock_in": {
         "button": "Manueel inklokken",

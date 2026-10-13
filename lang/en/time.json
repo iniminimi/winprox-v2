@@ -57,7 +57,15 @@
             "stale_shift": "Not clocked out (> :hours hours)",
             "no_break": "No break after :hours hours",
             "rapid_hop": "Moved within :hours min",
-            "roster_viewed": "Evacuation list viewed"
+            "roster_viewed": "Evacuation list viewed",
+            "absence_clock_in": "Clocked in while absent",
+            "absence_clock_in_detail": "Clocked in during :kind",
+            "absence_kinds": {
+                "leave": "leave",
+                "recup": "time off in lieu",
+                "sick": "sick leave",
+                "holiday": "a public holiday"
+            }
         },
         "view_modes": "View",
         "board_absent_title": "Absent / Extra action",
@@ -103,7 +111,8 @@
         "type_no_break": "No break",
         "shown": ":shown of :total alarms shown",
         "type_rapid_hop": "Rapid hop",
-        "type_roster_viewed": "Evacuation list"
+        "type_roster_viewed": "Evacuation list",
+        "type_absence_clock_in": "Absence"
     },
     "manual_clock_in": {
         "button": "Clock in manually",

@@ -8,6 +8,7 @@
         TimePresenceAttentionType::NoBreak->value => __('time.alarms.type_no_break'),
         TimePresenceAttentionType::RapidHop->value => __('time.alarms.type_rapid_hop'),
         TimePresenceAttentionType::RosterViewed->value => __('time.alarms.type_roster_viewed'),
+        TimePresenceAttentionType::AbsenceClockIn->value => __('time.alarms.type_absence_clock_in'),
     ];
 @endphp
 

@@ -6068,6 +6068,12 @@ a.wp-kpi.wp-kpi--attention {
     white-space: nowrap;
 }
 
+.wp-time-presence-card__bang {
+    color: var(--wp-danger-text);
+    font-weight: 800;
+    margin-right: 0.15rem;
+}
+
 .wp-time-presence-card__aside {
     display: flex;
     flex-direction: column;
