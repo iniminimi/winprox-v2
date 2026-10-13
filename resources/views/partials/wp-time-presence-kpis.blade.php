@@ -22,15 +22,15 @@
                 'wp-kpi--selected' => $statusFilter === TimePresenceStatusFilter::All,
             ])>
         <div class="wp-kpi-body">
+            <span class="wp-kpi-icon" aria-hidden="true">
+                <x-wp-icon name="clock" />
+            </span>
             <div class="wp-kpi-main">
                 <p class="wp-kpi-kicker">{{ __('time.presence.kpi.clocked_in') }}</p>
                 <p class="wp-kpi-stats">
                     <span class="wp-kpi-value wp-tabular">{{ $kpis->clockedIn }}</span>
                 </p>
             </div>
-            <span class="wp-kpi-icon" aria-hidden="true">
-                <x-wp-icon name="time" />
-            </span>
         </div>
     </button>
 
@@ -43,15 +43,15 @@
                     'wp-kpi--selected' => $statusFilter === $tile['filter'],
                 ])>
             <div class="wp-kpi-body">
+                <span class="wp-kpi-icon" aria-hidden="true">
+                    <x-wp-icon :name="$tile['icon']" />
+                </span>
                 <div class="wp-kpi-main">
                     <p class="wp-kpi-kicker">{{ __($tile['label']) }}</p>
                     <p class="wp-kpi-stats">
                         <span class="wp-kpi-value wp-tabular">{{ $tile['value'] }}</span>
                     </p>
                 </div>
-                <span class="wp-kpi-icon" aria-hidden="true">
-                    <x-wp-icon :name="$tile['icon']" />
-                </span>
             </div>
         </button>
     @endforeach
@@ -66,15 +66,15 @@
                     'wp-kpi--selected' => $statusFilter === TimePresenceStatusFilter::Attention,
                 ])>
             <div class="wp-kpi-body">
+                <span class="wp-kpi-icon" aria-hidden="true">
+                    <x-wp-icon name="alert-triangle" />
+                </span>
                 <div class="wp-kpi-main">
                     <p class="wp-kpi-kicker">{{ __('time.presence.kpi.attention') }}</p>
                     <p class="wp-kpi-stats">
                         <span class="wp-kpi-value wp-tabular">{{ $kpis->attention }}</span>
                     </p>
                 </div>
-                <span class="wp-kpi-icon" aria-hidden="true">
-                    <x-wp-icon name="alert-triangle" />
-                </span>
             </div>
         </button>
     @else
@@ -84,15 +84,15 @@
                'wp-kpi--alert' => $kpis->attention > 0,
            ])>
             <div class="wp-kpi-body">
+                <span class="wp-kpi-icon" aria-hidden="true">
+                    <x-wp-icon name="alert-triangle" />
+                </span>
                 <div class="wp-kpi-main">
                     <p class="wp-kpi-kicker">{{ __('time.presence.kpi.attention') }}</p>
                     <p class="wp-kpi-stats">
                         <span class="wp-kpi-value wp-tabular">{{ $kpis->attention }}</span>
                     </p>
                 </div>
-                <span class="wp-kpi-icon" aria-hidden="true">
-                    <x-wp-icon name="alert-triangle" />
-                </span>
             </div>
         </a>
     @endif

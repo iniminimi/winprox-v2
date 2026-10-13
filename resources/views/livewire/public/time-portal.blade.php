@@ -832,7 +832,7 @@
                             @unless ($checkmateMode ?? false)
                                 <button type="button" class="wp-tile" wire:click="openSchedule">
                                     <span class="wp-cluster">
-                                        <x-wp-icon name="time" class="wp-tile-icon" />
+                                        <x-wp-icon name="calendar" class="wp-tile-icon" />
                                         <span class="wp-tile-title">{{ __('time.portal.schedule.tile') }}</span>
                                         @if (($scheduleUnreadCount ?? 0) > 0)
                                             <span class="wp-pill wp-pill--new">{{ $scheduleUnreadCount }}</span>
@@ -843,7 +843,7 @@
                             @endunless
                             <button type="button" class="wp-tile" wire:click="openHours" data-manual-capture-trigger="portal-open-hours">
                                 <span class="wp-cluster">
-                                    <x-wp-icon name="time" class="wp-tile-icon" />
+                                    <x-wp-icon name="clock" class="wp-tile-icon" />
                                     <span class="wp-tile-title">{{ __('time.portal.hours.tile') }}</span>
                                 </span>
                                 <span class="wp-tile-sub">{{ __('time.portal.hours.tile_sub') }}</span>
@@ -860,7 +860,7 @@
                             @unless ($checkmateMode ?? false)
                                 <button type="button" class="wp-tile" wire:click="openAbsence">
                                     <span class="wp-cluster">
-                                        <x-wp-icon name="time" class="wp-tile-icon" />
+                                        <x-wp-icon name="calendar" class="wp-tile-icon" />
                                         <span class="wp-tile-title">{{ __('time.portal.absence.tile') }}</span>
                                     </span>
                                     <span class="wp-tile-sub">{{ __('time.portal.absence.tile_sub') }}</span>

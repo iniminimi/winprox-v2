@@ -81,7 +81,7 @@ class BuildCheckmateDashboardDataAction
                 ],
                 [
                     'key' => 'presence',
-                    'icon' => 'time',
+                    'icon' => 'clock',
                     'tone' => 'units',
                     'title' => 'dashboard.checkmate.actions.presence_title',
                     'body' => 'dashboard.checkmate.actions.presence_body',
@@ -99,7 +99,7 @@ class BuildCheckmateDashboardDataAction
             kpis: [
                 [
                     'key' => 'present_now',
-                    'icon' => 'time',
+                    'icon' => 'clock',
                     'tone' => 'present_now',
                     'label' => 'dashboard.kpi.present_now',
                     'value' => (string) $presentNow,
