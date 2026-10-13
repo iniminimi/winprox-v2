@@ -173,7 +173,7 @@
    regel staat. */
 .wp-minutes-row {
     display: block;
-    line-height: 2.75;
+    line-height: 2.25;
 }
 
 .wp-minutes-field {
@@ -202,9 +202,9 @@
 }
 
 .wp-minutes-field > .wp-input {
-    width: 4.5rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    width: 4rem;
+    min-height: 0;
+    padding: 0.2rem 0.5rem;
     text-align: right;
     appearance: textfield;
     -moz-appearance: textfield;
