@@ -167,6 +167,41 @@
     color: var(--wp-text-muted);
 }
 
+/* Compacte minutenvelden (bv. contractuele weeknorm en normale werkdagen in de
+   uitvoerdersmodal): label + smalle numerieke input + eenheid op één regel. */
+.wp-minutes-row {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 1.25rem;
+    row-gap: 0.625rem;
+    align-items: center;
+}
+
+.wp-minutes-field {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0;
+}
+
+.wp-minutes-field__text,
+.wp-minutes-field__unit {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--wp-text-muted);
+}
+
+.wp-minutes-field > .wp-input {
+    width: 4.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    text-align: right;
+}
+
+.wp-minutes-row > .wp-hint {
+    margin-top: 0;
+}
+
 .wp-error {
     margin-top: 0.375rem;
     font-size: 0.8125rem;
