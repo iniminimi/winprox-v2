@@ -822,20 +822,14 @@
             "delete_confirm": "Permanently delete this block? The correction is recorded.",
             "done": "Correction saved."
         },
-        "unavailable": {
-            "section_title": "Structural unavailability",
-            "section_hint": "Weekdays on which this worker structurally cannot work. The planner gets a warning but can still schedule.",
-            "hint": "Structurally unavailable",
-            "warn_count": ":count shift(s) scheduled on structurally unavailable days.",
-            "weekdays": {
-                "1": "Mon",
-                "2": "Tue",
-                "3": "Wed",
-                "4": "Thu",
-                "5": "Fri",
-                "6": "Sat",
-                "7": "Sun"
-            }
+        "weekdays": {
+            "1": "Mon",
+            "2": "Tue",
+            "3": "Wed",
+            "4": "Thu",
+            "5": "Fri",
+            "6": "Sat",
+            "7": "Sun"
         },
         "replacement": {
             "title": "Find replacement — :name",

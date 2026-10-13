@@ -822,20 +822,14 @@
             "delete_confirm": "Eliminare definitivamente questo blocco? La correzione viene registrata.",
             "done": "Correzione salvata."
         },
-        "unavailable": {
-            "section_title": "Indisponibilità strutturale",
-            "section_hint": "Giorni della settimana in cui questo lavoratore non può lavorare strutturalmente. Il pianificatore riceve un avviso ma può comunque pianificare.",
-            "hint": "Non disponibile strutturalmente",
-            "warn_count": ":count turno/i pianificato/i in giorni strutturalmente non disponibili.",
-            "weekdays": {
-                "1": "lu",
-                "2": "ma",
-                "3": "me",
-                "4": "gi",
-                "5": "ve",
-                "6": "sa",
-                "7": "do"
-            }
+        "weekdays": {
+            "1": "lu",
+            "2": "ma",
+            "3": "me",
+            "4": "gi",
+            "5": "ve",
+            "6": "sa",
+            "7": "do"
         },
         "replacement": {
             "title": "Cerca sostituto — :name",

@@ -23,7 +23,6 @@ use App\Models\Tenant;
 use App\Models\User;
 use App\Models\Worker;
 use App\Models\WorkerHolidayAgreement;
-use App\Models\WorkerUnavailability;
 use App\Models\WorkShift;
 use App\Support\Tenancy;
 use App\Support\Time\BelgianPublicHolidayCalendar;
@@ -118,12 +117,14 @@ it('telt een maand zonder feestdag als som van de werkregeling', function () {
         ->and($norm->minutes)->toBe(monthNormExpected('2026-02-01', $pattern));
 });
 
-it('gebruikt ma–vr als norm zonder patroon en blijft incomplete na een normwijziging', function () {
+it('toont de impliciete ma–vr-aanname als incomplete en blijft incomplete na een normwijziging', function () {
     [$tenant, $admin, $team, $worker] = monthNormTenant();
     $pattern = monthNormFiveDayPattern();
 
+    // Zonder werkregeling: impliciete ma–vr-aanname met minuten,
+    // maar status incomplete — geen bevestigde regeling.
     $missing = app(ResolveWorkerMonthNormAction::class)->handle((int) $tenant->id, [(int) $worker->id], '2026-02-01')[(int) $worker->id];
-    expect($missing->status)->toBe(MonthNormStatus::Available)
+    expect($missing->status)->toBe(MonthNormStatus::Incomplete)
         ->and($missing->minutes)->toBe(monthNormExpected('2026-02-01', $pattern));
 
     expect(fn () => monthNormSync($worker, [1 => 456, 2 => 456, 3 => 456, 4 => 456, 5 => 456, 6 => 0]))
@@ -147,15 +148,10 @@ it('gebruikt ma–vr als norm zonder patroon en blijft incomplete na een normwij
         ->and($row['week_hours']['difference_minutes'])->toBe(-1800);
 });
 
-it('leidt de maandnorm niet af uit onbeschikbaarheid of ingeplande diensten', function () {
+it('leidt de maandnorm niet af uit ingeplande diensten', function () {
     [$tenant, , , $worker] = monthNormTenant();
     $pattern = monthNormFiveDayPattern();
     monthNormSync($worker, $pattern);
-    WorkerUnavailability::query()->create([
-        'tenant_id' => $tenant->id,
-        'worker_id' => $worker->id,
-        'weekday' => 1,
-    ]);
     PlannedShift::query()->create([
         'tenant_id' => $tenant->id,
         'worker_id' => $worker->id,
@@ -443,7 +439,7 @@ it('telt maandfeiten over de hele kalendermaand, ook als de norm ontbreekt', fun
     expect($facts->absences['leave']['days'])->toBe(1)
         ->and($facts->workedMinutes)->toBe(0)
         ->and($facts->registrationIncomplete)->toBeTrue()
-        ->and($norm->status)->toBe(MonthNormStatus::Available)
+        ->and($norm->status)->toBe(MonthNormStatus::Incomplete)
         ->and($norm->minutes)->toBe(monthNormExpected('2026-02-01', monthNormFiveDayPattern()));
 
     $day = Carbon::parse('2026-12-10')->toDateString();

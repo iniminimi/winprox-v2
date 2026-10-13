@@ -28,12 +28,11 @@ class SavePlannedShiftsAction
         private AssertPlannedShiftNoOverlapAction $assertNoOverlap,
         private ListShiftTypesAction $listShiftTypes,
         private NotifyWorkersRosterChangedAction $notifyChanged,
-        private ListWorkerUnavailableDatesAction $listUnavailableDates,
     ) {}
 
     /**
      * @param  list<int>|null  $actorLocationIds
-     * @return array{shifts: list<PlannedShift>, warnings: list<array{worker_id: int, worker: string, date: string}>}
+     * @return array{shifts: list<PlannedShift>}
      */
     public function handle(Tenant $tenant, SavePlannedShiftsData $data, ?int $actorUserId, ?array $actorLocationIds = null): array
     {
@@ -95,39 +94,7 @@ class SavePlannedShiftsAction
             throw new RosterValidationException('time.schedule.errors.invalid_cells', $invalid);
         }
 
-        // Zachte waarschuwingen: werkblokken op structureel onbeschikbare
-        // weekdagen blokkeren de save niet maar worden gerapporteerd.
-        $unavailable = $this->listUnavailableDates->handle(
-            (int) $tenant->id,
-            $workerIds,
-            $weekStart,
-            $weekEnd,
-        );
-        $warnings = [];
-        foreach ($parsedCells as $item) {
-            $blocks = $item['blocks'];
-            if ($blocks === null) {
-                continue;
-            }
-            $hasWork = collect($blocks)->contains(
-                fn (RosterCellData $parsed) => ! $parsed->isEmpty()
-                    && ($parsed->shiftTypeKind ?? ShiftTypeKind::Work) === ShiftTypeKind::Work,
-            );
-            if (! $hasWork) {
-                continue;
-            }
-            $workerId = (int) $item['cell']['worker_id'];
-            $date = (string) $item['cell']['date'];
-            if (isset($unavailable[$workerId][$date])) {
-                $warnings[] = [
-                    'worker_id' => $workerId,
-                    'worker' => $workers->get($workerId)?->displayName() ?? '',
-                    'date' => $date,
-                ];
-            }
-        }
-
-        return DB::transaction(function () use ($tenant, $workerIds, $weekStart, $weekEnd, $parsedCells, $keepCells, $actorUserId, $dates, $warnings) {
+        return DB::transaction(function () use ($tenant, $workerIds, $weekStart, $weekEnd, $parsedCells, $keepCells, $actorUserId, $dates) {
             $existing = PlannedShift::query()
                 ->whereIn('worker_id', $workerIds ?: [0])
                 ->whereBetween('work_date', [$weekStart, $weekEnd])
@@ -284,7 +251,7 @@ class SavePlannedShiftsAction
                 count: count($created),
             ));
 
-            return ['shifts' => $created, 'warnings' => $warnings];
+            return ['shifts' => $created];
         });
     }
 

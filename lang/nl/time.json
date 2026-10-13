@@ -822,20 +822,14 @@
             "delete_confirm": "Dit blok definitief verwijderen? De correctie wordt vastgelegd.",
             "done": "Correctie opgeslagen."
         },
-        "unavailable": {
-            "section_title": "Structurele onbeschikbaarheid",
-            "section_hint": "Weekdagen waarop deze uitvoerder structureel niet kan werken. De planner krijgt een waarschuwing maar kan toch plannen.",
-            "hint": "Structureel niet beschikbaar",
-            "warn_count": ":count dienst(en) gepland op structureel onbeschikbare dagen.",
-            "weekdays": {
-                "1": "ma",
-                "2": "di",
-                "3": "wo",
-                "4": "do",
-                "5": "vr",
-                "6": "za",
-                "7": "zo"
-            }
+        "weekdays": {
+            "1": "ma",
+            "2": "di",
+            "3": "wo",
+            "4": "do",
+            "5": "vr",
+            "6": "za",
+            "7": "zo"
         },
         "replacement": {
             "title": "Vervanger zoeken — :name",

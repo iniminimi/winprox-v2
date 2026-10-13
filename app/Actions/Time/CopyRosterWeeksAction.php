@@ -31,7 +31,6 @@ class CopyRosterWeeksAction
 
     public function __construct(
         private ResolveRosterWeekAction $resolveWeek,
-        private ListWorkerUnavailableDatesAction $listUnavailableDates,
     ) {}
 
     /**
@@ -41,8 +40,7 @@ class CopyRosterWeeksAction
      * een niet-lege doelweek wordt overgeslagen en gerapporteerd zonder de
      * andere weken te blokkeren. Afwezigheidsblokken en notities worden
      * niet meegekopieerd. Een werkshift die op een dag valt waarop de
-     * worker goedgekeurd verlof heeft (of structureel onbeschikbaar is —
-     * punt 4 hakt hier in via absentDates()) wordt overgeslagen en
+     * worker goedgekeurd verlof heeft wordt overgeslagen en
      * gerapporteerd.
      *
      * @return array{
@@ -217,9 +215,8 @@ class CopyRosterWeeksAction
     }
 
     /**
-     * Datums waarop een worker niet inzetbaar is: via een goedgekeurde
-     * afwezigheidsaanvraag ('absence') of via terugkerende weekdag-
-     * onbeschikbaarheid uit worker_unavailabilities ('unavailable').
+     * Datums waarop een worker niet inzetbaar is via een goedgekeurde
+     * afwezigheidsaanvraag (reden 'absence').
      *
      * @param  list<int>  $workerIds
      * @return array<int, array<string, string>> worker_id => [Y-m-d => reason]
@@ -245,12 +242,6 @@ class CopyRosterWeeksAction
             while ($day->lte($end)) {
                 $map[(int) $request->worker_id][$day->toDateString()] = 'absence';
                 $day->addDay();
-            }
-        }
-
-        foreach ($this->listUnavailableDates->handle($tenantId, $workerIds, $from, $to) as $workerId => $dateSet) {
-            foreach ($dateSet as $date => $_) {
-                $map[$workerId][$date] ??= 'unavailable';
             }
         }
 

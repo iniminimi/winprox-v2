@@ -28,7 +28,6 @@ class ListRosterWeekAction
         private ResolveRosterPeriodAction $resolvePeriod,
         private ListShiftTypesAction $listShiftTypes,
         private CompareRosterAttendanceAction $compareAttendance,
-        private ListWorkerUnavailableDatesAction $listUnavailableDates,
         private SummarizeWorkerWeekHoursAction $summarizeWeekHours,
         private SummarizeWorkerMonthFactsAction $summarizeMonthFacts,
         private ResolveWorkerMonthNormAction $resolveMonthNorm,
@@ -182,20 +181,6 @@ class ListRosterWeekAction
             $dates,
         ) : [];
 
-        $unavailable = [];
-        if ($scoped) {
-            foreach ($this->listUnavailableDates->handle(
-                $tenantId,
-                $workerIds,
-                (string) $dates[0],
-                (string) $dates[array_key_last($dates)],
-            ) as $workerId => $dateSet) {
-                foreach ($dateSet as $date => $_) {
-                    $unavailable[$workerId.':'.$date] = true;
-                }
-            }
-        }
-
         $weekPublished = $shifts->contains(fn (PlannedShift $shift) => $shift->status->isPublished());
 
         $locale = app()->getLocale();
@@ -311,7 +296,6 @@ class ListRosterWeekAction
             monthLabel: $monthLabel,
             dayNumbers: $dayNumbers,
             attendance: $attendance,
-            unavailable: $unavailable,
             attendanceMessages: [
                 RosterAttendanceStatus::Missing->value => __('time.schedule.attendance.missing'),
                 RosterAttendanceStatus::Deviation->value => __('time.schedule.attendance.deviation'),
@@ -341,9 +325,7 @@ class ListRosterWeekAction
         ];
 
         $status = $norm?->status ?? MonthNormStatus::Incomplete;
-        $includeNorm = $contractVisible
-            && $status === MonthNormStatus::Available
-            && $norm?->minutes !== null;
+        $includeNorm = $contractVisible && $norm?->minutes !== null;
 
         if ($contractVisible) {
             $payload['norm_status'] = $status->value;

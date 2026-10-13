@@ -822,20 +822,14 @@
             "delete_confirm": "¿Eliminar definitivamente este bloque? La corrección queda registrada.",
             "done": "Corrección guardada."
         },
-        "unavailable": {
-            "section_title": "Indisponibilidad estructural",
-            "section_hint": "Días de la semana en que este trabajador no puede trabajar estructuralmente. El planificador recibe un aviso pero puede planificar igualmente.",
-            "hint": "No disponible estructuralmente",
-            "warn_count": ":count turno(s) planificado(s) en días estructuralmente no disponibles.",
-            "weekdays": {
-                "1": "lu",
-                "2": "ma",
-                "3": "mi",
-                "4": "ju",
-                "5": "vi",
-                "6": "sá",
-                "7": "do"
-            }
+        "weekdays": {
+            "1": "lu",
+            "2": "ma",
+            "3": "mi",
+            "4": "ju",
+            "5": "vi",
+            "6": "sá",
+            "7": "do"
         },
         "replacement": {
             "title": "Buscar sustituto — :name",

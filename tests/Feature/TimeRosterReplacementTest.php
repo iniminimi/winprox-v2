@@ -21,7 +21,7 @@ use App\Models\Unit;
 use App\Models\User;
 use App\Models\Worker;
 use App\Models\WorkerNotification;
-use App\Models\WorkerUnavailability;
+use App\Models\WorkerWeekdayMinute;
 use App\Support\Tenancy;
 use Carbon\Carbon;
 
@@ -80,7 +80,7 @@ function replacementBlock(
     ]);
 }
 
-it('filtert kandidaten: overlap, afwezigheid, onbeschikbaarheid en locatie', function () {
+it('filtert kandidaten: overlap, afwezigheid, patroon-nuldag en locatie', function () {
     [$tenant, , $team, $sick] = replacementTenant();
     $date = now()->addWeek()->startOfWeek(Carbon::MONDAY)->toDateString();
     $original = replacementWorker($tenant, $team, 'Origineel');
@@ -122,12 +122,19 @@ it('filtert kandidaten: overlap, afwezigheid, onbeschikbaarheid en locatie', fun
         'status' => AbsenceRequestStatus::Pending,
     ]);
 
-    $unavailableWorker = replacementWorker($tenant, $team, 'Onbeschikbaar');
-    WorkerUnavailability::factory()->create([
-        'tenant_id' => $tenant->id,
-        'worker_id' => $unavailableWorker->id,
-        'weekday' => Carbon::parse($date)->dayOfWeekIso,
-    ]);
+    // Expliciete werkregeling met 0 minuten op de weekdag van het blok:
+    // enkel zo'n rij sluit de worker uit — zonder patroon valt niemand af.
+    $offDayWorker = replacementWorker($tenant, $team, 'Nuldag');
+    $offDayWorker->update(['weekly_contract_minutes' => 2280]);
+    $blockWeekday = (int) Carbon::parse($date)->dayOfWeekIso;
+    foreach (range(1, 7) as $weekday) {
+        WorkerWeekdayMinute::query()->create([
+            'tenant_id' => $tenant->id,
+            'worker_id' => $offDayWorker->id,
+            'weekday' => $weekday,
+            'minutes' => $weekday === $blockWeekday ? 0 : ($weekday <= 5 ? 570 : 0),
+        ]);
+    }
 
     $restrictedWorker = replacementWorker($tenant, $team, 'Beperkt');
     $restrictedWorker->locations()->sync([Location::factory()->create(['tenant_id' => $tenant->id])->id]);
@@ -142,7 +149,7 @@ it('filtert kandidaten: overlap, afwezigheid, onbeschikbaarheid en locatie', fun
         ->and($ids)->not->toContain((int) $sickWorker->id)
         ->and($ids)->not->toContain((int) $leaveWorker->id)
         ->and($ids)->not->toContain((int) $pendingWorker->id)
-        ->and($ids)->not->toContain((int) $unavailableWorker->id)
+        ->and($ids)->not->toContain((int) $offDayWorker->id)
         ->and($ids)->not->toContain((int) $restrictedWorker->id);
 });
 

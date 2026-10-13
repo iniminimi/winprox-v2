@@ -822,20 +822,14 @@
             "delete_confirm": "Diesen Block endgültig löschen? Die Korrektur wird protokolliert.",
             "done": "Korrektur gespeichert."
         },
-        "unavailable": {
-            "section_title": "Strukturelle Nichtverfügbarkeit",
-            "section_hint": "Wochentage, an denen dieser Mitarbeiter strukturell nicht arbeiten kann. Der Planer erhält eine Warnung, kann aber trotzdem einplanen.",
-            "hint": "Strukturell nicht verfügbar",
-            "warn_count": ":count Dienst(e) an strukturell nicht verfügbaren Tagen geplant.",
-            "weekdays": {
-                "1": "Mo",
-                "2": "Di",
-                "3": "Mi",
-                "4": "Do",
-                "5": "Fr",
-                "6": "Sa",
-                "7": "So"
-            }
+        "weekdays": {
+            "1": "Mo",
+            "2": "Di",
+            "3": "Mi",
+            "4": "Do",
+            "5": "Fr",
+            "6": "Sa",
+            "7": "So"
         },
         "replacement": {
             "title": "Vertretung suchen — :name",

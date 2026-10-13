@@ -101,11 +101,6 @@ class Worker extends Model
         return $this->hasMany(WorkerNotification::class);
     }
 
-    public function unavailabilities(): HasMany
-    {
-        return $this->hasMany(WorkerUnavailability::class);
-    }
-
     public function weekdayMinutes(): HasMany
     {
         return $this->hasMany(WorkerWeekdayMinute::class);

@@ -4,7 +4,6 @@ namespace App\Actions\Time;
 
 use App\Data\Time\SavePlannedDayData;
 use App\Enums\PlannedShiftStatus;
-use App\Enums\ShiftTypeKind;
 use App\Events\Time\ScheduleSaved;
 use App\Exceptions\RosterValidationException;
 use App\Models\PlannedShift;
@@ -31,12 +30,11 @@ class SavePlannedDayAction
         private AssertPlannedShiftNoOverlapAction $assertNoOverlap,
         private NotifyWorkersRosterChangedAction $notifyChanged,
         private ListShiftTypesAction $listShiftTypes,
-        private ListWorkerUnavailableDatesAction $listUnavailableDates,
     ) {}
 
     /**
      * @param  list<int>|null  $actorLocationIds
-     * @return array{created: int, updated: int, deleted: int, warnings: list<array{worker_id: int, worker: string, date: string}>}
+     * @return array{created: int, updated: int, deleted: int}
      */
     public function handle(Tenant $tenant, SavePlannedDayData $data, ?int $actorUserId, ?array $actorLocationIds = null): array
     {
@@ -72,24 +70,6 @@ class SavePlannedDayAction
             $normalized[] = RosterBlockNormalizer::normalize($block, $types, $catalog, $index);
         }
 
-        // Zachte waarschuwing: werkblok op een structureel onbeschikbare
-        // weekdag blokkeert de save niet maar wordt gerapporteerd.
-        $unavailable = $this->listUnavailableDates->handle(
-            (int) $tenant->id,
-            [(int) $worker->id],
-            $date,
-            $date,
-        );
-        $warnings = [];
-        if (isset($unavailable[(int) $worker->id][$date])
-            && collect($normalized)->contains(fn (array $block) => $block['kind'] === ShiftTypeKind::Work->value)) {
-            $warnings[] = [
-                'worker_id' => (int) $worker->id,
-                'worker' => $worker->displayName(),
-                'date' => $date,
-            ];
-        }
-
         $this->assertNoOverlap->handle(array_map(
             fn (array $block) => [
                 'worker_id' => (int) $worker->id,
@@ -101,7 +81,7 @@ class SavePlannedDayAction
             $normalized,
         ));
 
-        return DB::transaction(function () use ($tenant, $worker, $date, $normalized, $data, $actorUserId, $warnings) {
+        return DB::transaction(function () use ($tenant, $worker, $date, $normalized, $data, $actorUserId) {
             $existing = PlannedShift::query()
                 ->where('worker_id', $worker->id)
                 ->whereDate('work_date', $date)
@@ -217,7 +197,6 @@ class SavePlannedDayAction
                 'created' => $created,
                 'updated' => $updated,
                 'deleted' => (int) $deleted,
-                'warnings' => $warnings,
             ];
         });
     }

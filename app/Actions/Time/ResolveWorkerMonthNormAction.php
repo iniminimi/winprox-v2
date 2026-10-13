@@ -15,9 +15,10 @@ use Carbon\Carbon;
 
 /**
  * Read-only maandnorm. Eerst de normale minuten per kalenderdatum, daarna
- * feestdagafspraken als één geheel. Zonder werkregeling geldt ma–vr; een
- * feestdag zonder afspraak telt als niet gewerkt. Bij incomplete of conflict
- * zijn er geen minuten.
+ * feestdagafspraken als één geheel. Zonder werkregeling geldt de impliciete
+ * ma–vr-aanname: de berekende minuten worden getoond met status `incomplete`.
+ * Een feestdag zonder afspraak telt als niet gewerkt. Een stale patroon of
+ * conflict levert geen minuten.
  */
 class ResolveWorkerMonthNormAction
 {
@@ -119,7 +120,8 @@ class ResolveWorkerMonthNormAction
         string $monthEnd,
     ): WorkerMonthNorm {
         $issues = [];
-        $effectivePattern = $pattern === [] ? $this->defaultPattern($contractMinutes) : $pattern;
+        $implicit = $pattern === [];
+        $effectivePattern = $implicit ? $this->defaultPattern($contractMinutes) : $pattern;
         if (! $this->patternMatches($effectivePattern, $contractMinutes)) {
             $issues[] = MonthNormStatus::Incomplete;
         }
@@ -175,7 +177,7 @@ class ResolveWorkerMonthNormAction
             }
             if ($effect === HolidayAgreementEffect::Replaced) {
                 $replacement = $agreement->replacement_date?->toDateString();
-                $moved = $pattern[(int) Carbon::parse($holidayDate)->dayOfWeekIso];
+                $moved = $effectivePattern[(int) Carbon::parse($holidayDate)->dayOfWeekIso];
                 if ($replacement === null || ! $this->instruct($instructions, $replacement, $moved)) {
                     return new WorkerMonthNorm(MonthNormStatus::Conflict, null);
                 }
@@ -195,7 +197,10 @@ class ResolveWorkerMonthNormAction
             }
         }
 
-        return new WorkerMonthNorm(MonthNormStatus::Available, array_sum($map));
+        return new WorkerMonthNorm(
+            $implicit ? MonthNormStatus::Incomplete : MonthNormStatus::Available,
+            array_sum($map),
+        );
     }
 
     /**

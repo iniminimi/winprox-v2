@@ -31,7 +31,6 @@ use App\Actions\Team\UpdateTeamAction;
 use App\Actions\Team\UpdateWorkerAction;
 use App\Actions\Team\UpdateWorkerPhotoAction;
 use App\Actions\Time\EnsureDefaultClockPointAction;
-use App\Actions\Time\SyncWorkerUnavailabilitiesAction;
 use App\Http\Requests\Team\StoreColleagueRequest;
 use App\Http\Requests\Team\StoreTeamRequest;
 use App\Http\Requests\Team\StoreWorkerRequest;
@@ -151,9 +150,6 @@ class Team extends Component
     public bool $workerLocationsPanelOpen = false;
 
     public ?int $workerDefaultUnitId = null;
-
-    /** @var list<int> terugkerende onbeschikbaarheid: weekdagen 1 (ma) t/m 7 (zo) */
-    public array $workerUnavailabilities = [];
 
     /** @var array<string, string|int|null> normale minuten per weekdag, sleutel 1–7 */
     public array $workerWeekdayMinutes = [];
@@ -758,8 +754,8 @@ class Team extends Component
 
         $this->editingWorkerId = null;
         $this->resetWorkerPhotoState();
-        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'workerContractHours', 'workerContractMinutes', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerUnavailabilities']);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'workerContractHours', 'workerContractMinutes', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerUnavailabilities', 'workerPhoto', 'addingWorkerTeamId']);
+        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'workerContractHours', 'workerContractMinutes', 'selectedWorkerLocationIds', 'workerDefaultUnitId']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'workerContractHours', 'workerContractMinutes', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerPhoto', 'addingWorkerTeamId']);
         $this->addingWorkerTeamId = $teamId;
         $this->workerContractHours = intdiv(Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES, 60);
         $this->workerContractMinutes = Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES % 60;
@@ -842,7 +838,6 @@ class Team extends Component
         UpdateWorkerAction $updateWorker,
         UpdateWorkerPhotoAction $updateWorkerPhoto,
         DeleteWorkerPhotoAction $deleteWorkerPhoto,
-        SyncWorkerUnavailabilitiesAction $syncUnavailabilities,
         SyncWorkerWeekdayMinutesAction $syncWeekPattern,
         ClearWorkerWeekdayMinutesAction $clearWeekPattern,
         SaveWorkerHolidayAgreementAction $saveHolidayAgreement,
@@ -956,10 +951,6 @@ class Team extends Component
             }
 
             $this->persistWorkerPhoto($worker, $updateWorkerPhoto, $deleteWorkerPhoto);
-        }
-
-        if ($this->workerUnavailabilityFieldEnabled()) {
-            $syncUnavailabilities->handle($worker, $this->workerUnavailabilities);
         }
 
         if ($this->workerContractFieldEnabled()) {
@@ -1076,23 +1067,6 @@ class Team extends Component
         $tenant = Tenant::query()->find($tenantId);
 
         return $tenant instanceof Tenant && $tenant->hasTimeModule();
-    }
-
-    /**
-     * Checkmate heeft geen klassieke roostercellen met weekdagen —
-     * daar is structurele onbeschikbaarheid niet relevant en blijft
-     * het veld (en de sync) buiten beeld.
-     */
-    private function workerUnavailabilityFieldEnabled(): bool
-    {
-        $tenantId = Tenancy::id();
-        if ($tenantId === null) {
-            return false;
-        }
-
-        $tenant = Tenant::query()->find($tenantId);
-
-        return $tenant instanceof Tenant && $tenant->hasTimeModule() && ! $tenant->checkmateMode();
     }
 
     private function workerContractFieldEnabled(): bool
@@ -1323,10 +1297,6 @@ class Team extends Component
             $this->workerContractHours = intdiv((int) $worker->weekly_contract_minutes, 60);
             $this->workerContractMinutes = ((int) $worker->weekly_contract_minutes) % 60;
         }
-        $this->workerUnavailabilities = $worker->unavailabilities()
-            ->pluck('weekday')
-            ->map(fn ($day) => (int) $day)
-            ->all();
         $this->loadWorkPattern($worker);
         $this->workerLocationsPanelOpen = $this->selectedWorkerLocationIds !== [];
         $this->resetWorkerPhotoState();
@@ -1357,7 +1327,6 @@ class Team extends Component
             'workerDefaultUnitId',
             'workerContractHours',
             'workerContractMinutes',
-            'workerUnavailabilities',
             'workerWeekdayMinutes',
             'workerHolidayYear',
             'workerHolidayAgreements',
@@ -1366,7 +1335,7 @@ class Team extends Component
             'removeWorkerPhoto',
             'existingWorkerPhotoUrl',
         ]);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'workerContractHours', 'workerContractMinutes', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerUnavailabilities', 'workerPhoto']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'workerContractHours', 'workerContractMinutes', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerPhoto']);
     }
 
     /**

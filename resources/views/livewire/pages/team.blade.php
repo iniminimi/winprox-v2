@@ -536,7 +536,7 @@
                             <div class="wp-form-grid-2">
                                 @for ($day = 1; $day <= 7; $day++)
                                     <div class="wp-field">
-                                        <label class="wp-label" for="workerWeekdayMinutes{{ $day }}">{{ __('time.schedule.unavailable.weekdays.'.$day) }}</label>
+                                        <label class="wp-label" for="workerWeekdayMinutes{{ $day }}">{{ __('time.schedule.weekdays.'.$day) }}</label>
                                         <input id="workerWeekdayMinutes{{ $day }}" class="wp-input" type="number" min="0" max="10080" inputmode="numeric" wire:model="workerWeekdayMinutes.{{ $day }}">
                                     </div>
                                 @endfor
@@ -565,21 +565,6 @@
                                     @endif
                                 </div>
                             @endforeach
-                        </div>
-                    @endif
-                    @if ($hasTimeModule && ! $isCheckmate)
-                        <div class="wp-modal-section">
-                            <x-wp-tooltip :text="__('time.schedule.unavailable.section_hint')" wrap>
-                                <h3 class="wp-label">{{ __('time.schedule.unavailable.section_title') }}</h3>
-                            </x-wp-tooltip>
-                            <div class="wp-cluster wp-cluster--tight">
-                                @for ($day = 1; $day <= 7; $day++)
-                                    <label class="wp-check">
-                                        <input type="checkbox" wire:model="workerUnavailabilities" value="{{ $day }}">
-                                        <span>{{ __('time.schedule.unavailable.weekdays.'.$day) }}</span>
-                                    </label>
-                                @endfor
-                            </div>
                         </div>
                     @endif
                     @if ($editingWorkerId)

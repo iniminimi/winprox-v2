@@ -87,7 +87,6 @@ class TimeScheduleController extends Controller
 
         return $this->success([
             'count' => count($result['shifts']),
-            'warnings' => $result['warnings'],
         ]);
     }
 

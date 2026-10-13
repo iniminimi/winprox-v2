@@ -906,18 +906,12 @@ een grid-cel kan geen notitie dragen. Een grid-save die een enkelvoudige cel ong
 laat, behoudt de bestaande rij — en dus de notitie. Zichtbaar als ✎-markering in de cel
 (tooltip toont de tekst) en onder de dienst in **Mijn rooster**. Week herhalen kopieert
 notities niet mee.
-**Structurele onbeschikbaarheid** (`worker_unavailabilities`: `worker_id` + `weekday`,
-1=ma t/m 7=zo): terugkerende hele-dag onbeschikbaarheid, admin-beheerd via de
-worker-bewerkmodal (weekdag-checkboxes, alleen met de Time-module). Het is een **zachte
-beperking**: cellen op onbeschikbare weekdagen krijgen een schuine arcering, en zowel de
-grid-save als de dag-editor geven `warnings[]` naast errors terug (plannen blijft mogelijk;
-afwezigheidsblokken waarschuwen niet). Week herhalen slaat shifts op onbeschikbare
-doeldagen over met reden `unavailable`.
 **Vervanger zoeken** (`SuggestReplacementAction` + `ReplacePlannedShiftAction`, vanuit de
 dag-editor per blok of voor de hele dag): kandidaten moeten elk tijdslot kunnen overnemen —
 actief, `canClockAt` op de blok-locatie, geen overlappend blok, geen afwezigheid
-(aanvraag goedgekeurd **of** lopend, én omgezet absence-blok), niet structureel
-onbeschikbaar. Rang: zelfde unit → toegewezen op de locatie → rest. Bij vervanging wordt
+(aanvraag goedgekeurd **of** lopend, én omgezet absence-blok), en geen expliciete
+werkregelingsrij met 0 minuten op die weekdag (wie geen werkregeling heeft, valt op
+die grond nooit af). Rang: zelfde unit → toegewezen op de locatie → rest. Bij vervanging wordt
 het originele blok op dezelfde rij omgezet naar het gekozen afwezigheidstype (unit-snapshot
 leeg, identiteit blijft → geen `missing`) en krijgt de vervanger een spiegelblok met
 hetzelfde slot, locatie en unit; published dagen geven `RosterChanged` aan beide workers.
@@ -947,14 +941,19 @@ verschil; een superuser niet. Een afwijking blokkeert opslaan of publiceren niet
 normale minuten van `worker_weekday_minutes` op elke kalenderdatum. Daarna overschrijven
 expliciete feestdagafspraken (`none` / `dropped` / `replaced`) die waarden; een vervangingsdatum
 vervangt de minuten, ze worden er niet bij opgeteld. De afspraken van de maand worden als één
-geheel gecontroleerd. Status `available`, `incomplete` of `conflict`. Alleen `available` levert
-minuten. `SummarizeWorkerMonthFactsAction` blijft daar los van en levert altijd gepland, gewerkt,
+geheel gecontroleerd. Status `available`, `incomplete` of `conflict`. Zonder werkregeling
+geldt de impliciete ma–vr-aanname: de berekende minuten worden getoond met status
+`incomplete` — een aannemelijke verdeling, geen bevestigde regeling. Een stale patroon
+(som ≠ weeknorm) of conflict levert geen minuten. `SummarizeWorkerMonthFactsAction`
+blijft daar los van en levert altijd gepland, gewerkt,
 afwezigheid en onvolledige registratie. De nationale kalender `belgian_public_holidays` heeft geen
 tenant en dekt 2020–2040; een datum daarbuiten maakt de afspraak ongeldig. De weektelling blijft dezelfde.
 Week en maand tonen die cijfers in vaste kolommen met een verticale titel; in de rij staat alleen het cijfer. Norm, verschil en status zitten alleen in de snapshot voor een
 admin of medewerker van dezelfde tenant. Norm en
-verschil blijven leeg bij status `incomplete` of `conflict`. De werkregeling en de feestdagafspraken staan
-in de uitvoerdersmodal, los van de structurele onbeschikbaarheid.
+verschil blijven leeg zodra er geen normgetal is (stale patroon of conflict). De werkregeling
+(normale minuten per weekdag) is de enige bron voor de contractuele verdeling; een dag op
+0 minuten is geen normale werkdag maar blokkeert plannen niet. De werkregeling en de
+feestdagafspraken staan in de uitvoerdersmodal.
 
 - **Overlap:** halfopen interval `[start, eind)` — `07:00–11:00` en `11:00–15:00` is geldig.
   Zelfde worker, echte overlap → harde fout. Nachtshift (`eind <= start`) verboden in golf 1.
@@ -999,8 +998,7 @@ in de uitvoerdersmodal, los van de structurele onbeschikbaarheid.
   gekopieerd. Per doelweek een eigen transactie (alles-of-niets binnen een week): een
   niet-lege doelweek wordt overgeslagen én gerapporteerd zonder andere weken te blokkeren;
   de bronweek zelf wordt eveneens overgeslagen. Een shift die op een dag met
-  **goedgekeurde afwezigheid** (`AbsenceRequest`, reden `absence`) of **structurele
-  onbeschikbaarheid** (`worker_unavailabilities`, reden `unavailable`) valt, wordt
+  **goedgekeurde afwezigheid** (`AbsenceRequest`, reden `absence`) valt, wordt
   overgeslagen en in het resultaat per week getoond (`worker · datum · label · reden`).
   Enkelvoudige `CopyWeekAction`
   (API `POST /time/schedule/copy`) delegeert en behoudt zijn weiger-exceptions; optionele

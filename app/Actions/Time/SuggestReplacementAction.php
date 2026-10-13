@@ -8,7 +8,9 @@ use App\Models\PlannedShift;
 use App\Models\ShiftType;
 use App\Models\Tenant;
 use App\Models\Worker;
+use App\Models\WorkerWeekdayMinute;
 use App\Support\Time\TimeModuleAccess;
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
 /**
@@ -17,14 +19,12 @@ use Illuminate\Support\Collection;
  * - actief, andere worker, kan klokken op elke blok-locatie
  * - geen overlappend gepland blok en geen absence-blok die dag
  * - geen lopende/goedgekeurde afwezigheidsaanvraag die dag
- * - niet structureel onbeschikbaar op die weekdag
+ * - geen expliciete werkregelingsrij met 0 minuten op die weekdag
+ *   (zonder werkregeling valt een kandidaat nooit af op deze grond)
  * Rang: 1) zelfde unit (default_unit) → 2) toegewezen op de blok-locatie → 3) rest.
  */
 class SuggestReplacementAction
 {
-    public function __construct(
-        private ListWorkerUnavailableDatesAction $listUnavailableDates,
-    ) {}
 
     /**
      * @param  list<int>  $plannedShiftIds  werkblokken van dezelfde worker×dag
@@ -95,14 +95,19 @@ class SuggestReplacementAction
             ->map(fn ($id) => (int) $id)
             ->all();
 
-        $unavailableWorkerIds = array_keys($this->listUnavailableDates->handle(
-            (int) $tenant->id,
-            $candidateIds,
-            $date,
-            $date,
-        ));
+        // Alleen een expliciete werkregelingsrij met 0 minuten op de ISO-
+        // weekdag van de datum sluit een kandidaat uit; zonder patroon
+        // (geen rijen) is er geen uitsluiting.
+        $offDayWorkerIds = WorkerWeekdayMinute::query()
+            ->where('tenant_id', $tenant->id)
+            ->whereIn('worker_id', $candidateIds ?: [0])
+            ->where('weekday', (int) Carbon::parse($date)->dayOfWeekIso)
+            ->where('minutes', 0)
+            ->pluck('worker_id')
+            ->map(fn ($id) => (int) $id)
+            ->all();
 
-        $excluded = array_flip(array_merge($busyWorkerIds, $absentWorkerIds, $unavailableWorkerIds, [$workerId]));
+        $excluded = array_flip(array_merge($busyWorkerIds, $absentWorkerIds, $offDayWorkerIds, [$workerId]));
 
         return Worker::query()
             ->with(['locations', 'defaultUnit', 'tenant'])

@@ -822,20 +822,14 @@
             "delete_confirm": "Supprimer définitivement ce bloc ? La correction est consignée.",
             "done": "Correction enregistrée."
         },
-        "unavailable": {
-            "section_title": "Indisponibilité structurelle",
-            "section_hint": "Jours de la semaine où ce travailleur ne peut structurellement pas travailler. Le planificateur reçoit un avertissement mais peut quand même planifier.",
-            "hint": "Indisponible de manière structurelle",
-            "warn_count": ":count service(s) planifié(s) sur des jours structurellement indisponibles.",
-            "weekdays": {
-                "1": "lu",
-                "2": "ma",
-                "3": "me",
-                "4": "je",
-                "5": "ve",
-                "6": "sa",
-                "7": "di"
-            }
+        "weekdays": {
+            "1": "lu",
+            "2": "ma",
+            "3": "me",
+            "4": "je",
+            "5": "ve",
+            "6": "sa",
+            "7": "di"
         },
         "replacement": {
             "title": "Chercher un remplaçant — :name",
