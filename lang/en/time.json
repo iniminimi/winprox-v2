@@ -156,6 +156,8 @@
         "punches_heading": "Clock in and out",
         "punch_in": ":time In · :place",
         "punch_out": ":time Out · :place",
+        "break_range": ":start–:end Break",
+        "break_open": ":start–now Break",
         "clock_point_fallback": "Clock Point",
         "tasks_heading": "Tasks during this shift:",
         "task_unknown": "Task",

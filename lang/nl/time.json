@@ -156,6 +156,8 @@
         "punches_heading": "In- en uitklokken",
         "punch_in": ":time In · :place",
         "punch_out": ":time Uit · :place",
+        "break_range": ":start–:end Pauze",
+        "break_open": ":start–nu Pauze",
         "clock_point_fallback": "Clock Point",
         "tasks_heading": "Taken tijdens deze shift:",
         "task_unknown": "Taak",

@@ -7,6 +7,8 @@ use App\Actions\Time\BuildTimePresenceDashboardAction;
 use App\Enums\TimePresenceStatusFilter;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
+use App\Actions\Time\EndWorkBreakAction;
+use App\Actions\Time\StartWorkBreakAction;
 use App\Actions\Time\ManualClockInWorkShiftAction;
 use App\Enums\ClockSource;
 use App\Enums\WorkShiftStatus;
@@ -127,6 +129,31 @@ it('toont Uren als paginatitel in plaats van Time', function () {
         ->test(ShiftsIndex::class)
         ->assertSeeHtml('>'.e(__('time.nav.shifts')).'</h1>')
         ->assertDontSeeHtml('>'.e(__('time.title')).'</h1>');
+});
+
+it('toont een pauze op een nog open dienst', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $start = Carbon::parse('2026-10-13 10:00:00');
+    $this->travelTo($start);
+
+    $shift = app(ClockInAction::class)->handle($worker, $clockPoint);
+    $this->travelTo($start->copy()->addHour());
+    app(StartWorkBreakAction::class)->handle($worker, $shift);
+    $this->travelTo($start->copy()->addHour()->addMinutes(15));
+    app(EndWorkBreakAction::class)->handle($worker, $shift);
+
+    expect($shift->fresh()->total_break_minutes)->toBe(0);
+
+    Livewire::actingAs($admin)
+        ->test(ShiftsIndex::class)
+        ->assertSee(__('time.shifts.break_minutes', ['duration' => '15'.__('time.duration.minute_short')]), false)
+        ->assertSee(__('time.shifts.break_range', ['start' => '11:00', 'end' => '11:15']), false);
 });
 
 it('toont Clock Points als paginatitel en QR-rotatie standaard ingeklapt', function () {

@@ -59,7 +59,7 @@ class WorkShiftExportController
                 $shift->team?->name ?? '',
                 $shift->clock_in_at->format('H:i'),
                 $shift->clock_out_at?->format('H:i') ?? '',
-                $shift->total_break_minutes,
+                $shift->visibleBreakMinutes(),
                 WorkDurationFormatter::format($shift->netWorkMinutes()),
                 $shift->clockInClockPoint?->name ?? '',
                 $shift->clockOutClockPoint?->name ?? '',

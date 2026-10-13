@@ -156,6 +156,8 @@
         "punches_heading": "Ein- und Ausstempeln",
         "punch_in": ":time In · :place",
         "punch_out": ":time Out · :place",
+        "break_range": ":start–:end Pause",
+        "break_open": ":start–jetzt Pause",
         "clock_point_fallback": "Clock Point",
         "tasks_heading": "Aufgaben während dieser Schicht:",
         "task_unknown": "Aufgabe",

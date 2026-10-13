@@ -750,7 +750,9 @@ productsector op `Tenant`.
   Geen `WorkBreak`-rij en **geen** CIAO IN/OUT voor het toegepaste minimum (alleen
   urenstaat). Live pauze die al ≥ het minimum is blijft staan. Op Time → Uren:
   beheerder kan het minimum één klik toepassen (audit `work_shift.required_break_applied`)
-  of pauzeminuten corrigeren. API: `POST /api/v1/time/work-shifts/{id}/apply-required-break`;
+  of pauzeminuten corrigeren. Een geklokte pauze staat op Uren zodra ze start,
+  ook bij een nog open dienst (tijden en minuten). `total_break_minutes` wordt
+  pas bij sluiten vastgezet. API: `POST /api/v1/time/work-shifts/{id}/apply-required-break`;
   `GET /api/v1/teams` bevat `required_break_minutes`.
 - **Shift corrigeren** (Time → Uren, admin): inklok, uitklok en pauze met verplichte
   reden (`work_shift.corrected`). Uitklok **leeg** laten heropent de dienst (foutieve

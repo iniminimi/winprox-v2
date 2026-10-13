@@ -10,7 +10,7 @@
         && $shiftDurationMinutes > $requiredBreakMinutes;
     $appliedTeamBreak = (int) $shift->total_break_minutes > $clockedBreakMinutes;
     $workedDuration = \App\Support\Time\WorkDurationFormatter::format($shift->netWorkMinutes());
-    $breakDuration = \App\Support\Time\WorkDurationFormatter::format($shift->total_break_minutes);
+    $breakDuration = \App\Support\Time\WorkDurationFormatter::format($shift->visibleBreakMinutes());
 @endphp
 <div class="wp-card wp-card-pad wp-time-shift-card" wire:key="shift-{{ $shift->id }}">
     <div class="wp-time-shift-card__who">

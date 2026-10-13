@@ -64,7 +64,7 @@
                                 <td>{{ $shift->team?->localizedName() }}</td>
                                 <td>{{ $shift->clock_in_at->format('H:i') }}</td>
                                 <td>{{ $shift->clock_out_at?->format('H:i') ?? '—' }}</td>
-                                <td>{{ \App\Support\Time\WorkDurationFormatter::format($shift->total_break_minutes) }}</td>
+                                <td>{{ \App\Support\Time\WorkDurationFormatter::format($shift->visibleBreakMinutes()) }}</td>
                                 <td>{{ \App\Support\Time\WorkDurationFormatter::format($shift->netWorkMinutes()) }}</td>
                                 <td>
                                     @if ($shift->status === \App\Enums\WorkShiftStatus::ForceClosed && $shift->clock_out_source === \App\Enums\ClockSource::Auto)

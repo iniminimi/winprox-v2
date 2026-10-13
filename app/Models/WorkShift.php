@@ -145,13 +145,26 @@ class WorkShift extends Model
         return $query->where('status', WorkShiftStatus::Open);
     }
 
-    public function netWorkMinutes(): int
+    /**
+     * Gesloten dienst: vastgelegd totaal (inclusief toegepast teamminimum).
+     * Open dienst: geklokte pauzes, ook vóór het uitklokken.
+     */
+    public function visibleBreakMinutes(): int
     {
-        if ($this->clock_out_at === null) {
-            return max(0, (int) $this->clock_in_at->diffInMinutes(now()) - (int) $this->total_break_minutes);
+        if ($this->clock_out_at !== null) {
+            return (int) $this->total_break_minutes;
         }
 
-        return max(0, (int) $this->clock_in_at->diffInMinutes($this->clock_out_at) - (int) $this->total_break_minutes);
+        $this->loadMissing('breaks');
+
+        return (int) $this->breaks->sum(fn (WorkBreak $break) => $break->durationMinutes());
+    }
+
+    public function netWorkMinutes(): int
+    {
+        $end = $this->clock_out_at ?? now();
+
+        return max(0, (int) $this->clock_in_at->diffInMinutes($end) - $this->visibleBreakMinutes());
     }
 
     public function isManuallyClockedIn(): bool
