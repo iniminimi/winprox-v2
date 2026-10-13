@@ -218,6 +218,45 @@ it('klokt in via het portaal na icoon en toont het icoon niet meer op het welkom
     expect((int) $worker->fresh()->clock_device_id)->toBeGreaterThan(0);
 });
 
+it('laat opnieuw aanmelden nadat de gsm is vrijgegeven, zonder de oude sessie te herkoppelen', function () {
+    [$tenant, $team, $clockPoint, $worker] = clockSecurityTenant();
+
+    $first = Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->call('clockIn');
+
+    $token = \App\Support\Portal\WorkerDeviceSession::deviceTokenFromRequest();
+    expect($token)->not->toBe('');
+
+    app(ClearWorkerClockDeviceAction::class)->handle($worker->fresh(), (int) $tenant->id);
+    expect($worker->fresh()->clock_device_id)->toBeNull();
+
+    Livewire::withCookie(\App\Support\Portal\WorkerDeviceSession::DEVICE_TOKEN_COOKIE, $token)
+        ->test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->assertSet('flashMessage', '')
+        ->assertDontSee(__('time.portal.errors.device_mismatch'), false);
+
+    expect($worker->fresh()->clock_device_id)->toBeNull();
+
+    $this->flushSession();
+
+    Livewire::withCookie(\App\Support\Portal\WorkerDeviceSession::DEVICE_TOKEN_COOKIE, 'released-new-phone')
+        ->test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->assertSet('flashMessage', '')
+        ->assertDontSee(__('time.portal.errors.device_mismatch'), false);
+
+    expect($worker->fresh()->clock_device_id)->not->toBeNull();
+});
+
 it('weigert aanmelden met dezelfde worker op een tweede toestel', function () {
     [$tenant, , $clockPoint, $worker] = clockSecurityTenant();
 

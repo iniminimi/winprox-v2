@@ -2406,6 +2406,15 @@ class TimePortal extends Component
             return;
         }
 
+        if ($boundId === null) {
+            $team = $worker->team;
+            if ($team !== null) {
+                WorkerVerification::clearForTeam((int) $team->id);
+            }
+
+            return;
+        }
+
         $this->bindClockDeviceAfterVerify($worker);
     }
 

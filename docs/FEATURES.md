@@ -779,7 +779,9 @@ productsector op `Tenant`.
   (twee keer als die nog niet bestaat), ook als de uitvoerder nog geen icoon heeft.
   **één gsm per uitvoerder**
   (koppeling bij eerste geslaagde Clock Point-aanmelding; ander toestel weigeren + audit
-  tot beheer/teamleader vrijgeeft); één open shift;
+  tot beheer/teamleader vrijgeeft). Na vrijgave claimt een nog open sessie die gsm
+  niet opnieuw; de volgende aanmelding koppelt het toestel waarmee wordt aangemeld.
+  één open shift;
   hops tussen Clock Points (alarm bij hop < 5 min). **Aanmelden klokt niet vanzelf in.**
   **In-/uitklokken en verplaatsen** op een vaste prikklok vereisen een **verse QR-scan**
   (volle page-load van de sticker of de wisselende klokscherm-QR, één prik, ~10 min).
