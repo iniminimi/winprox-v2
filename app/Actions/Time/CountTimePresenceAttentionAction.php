@@ -15,27 +15,14 @@ class CountTimePresenceAttentionAction
 
     public function handle(int $tenantId): int
     {
-        return $this->snapshot($tenantId)['attention'];
-    }
-
-    /**
-     * @return array{attention: int, absence_clock_in: int}
-     */
-    public function snapshot(int $tenantId): array
-    {
         $openShifts = WorkShift::query()
             ->where('tenant_id', $tenantId)
             ->where('status', WorkShiftStatus::Open)
             ->with(['openBreak', 'breaks'])
             ->get();
 
-        $absence = $this->absenceClockIns->handle($tenantId, $openShifts);
-
-        return [
-            'attention' => TimePresenceAttentionRules::collect($openShifts)->count()
-                + $absence->count()
-                + $this->listRosterViews->handle($tenantId)->count(),
-            'absence_clock_in' => $absence->count(),
-        ];
+        return TimePresenceAttentionRules::collect($openShifts)->count()
+            + $this->absenceClockIns->handle($tenantId, $openShifts)->count()
+            + $this->listRosterViews->handle($tenantId)->count();
     }
 }

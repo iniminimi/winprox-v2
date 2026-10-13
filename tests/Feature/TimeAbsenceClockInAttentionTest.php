@@ -61,8 +61,10 @@ it('merkt een open shift op een volledige verlofdag', function () {
         ]));
 
     $stats = app(BuildDashboardStatsAction::class)->handle($tenant->id, true, false);
-    expect($stats->absenceClockIns)->toBe(1)
-        ->and(collect($stats->kpiTiles())->pluck('key')->all())->toContain('absence_clock_in');
+    $tileKeys = collect($stats->kpiTiles())->pluck('key')->all();
+    expect($stats->timeAttention)->toBe(1)
+        ->and($tileKeys)->toContain('time_attention')
+        ->and($tileKeys)->not->toContain('absence_clock_in');
 });
 
 it('merkt een getimed ziekteblok alleen als de inklok erin valt', function () {

@@ -76,7 +76,7 @@
           "Shortcuts: roster, presence, new day task (inspection round), location and worker.",
           "New issues and open tasks.",
           "With Time: who is present now.",
-          "Someone who clocks in during leave, time off in lieu, a public holiday or sick leave: an extra card, and an exclamation with a message next to that person in presence.",
+          "Someone who clocks in during leave, time off in lieu, a public holiday or sick leave counts in Time attention, with an exclamation and a message next to that person in presence.",
           "Open leave or TOIL as an extra card: 1 Leave, 1 TOIL, or both.",
           "New organisations can choose a starter template here.",
           "Briefing and reports are available from the dashboard."
@@ -160,7 +160,7 @@
           "On a fixed clock, each clock-in and clock-out needs a scan of the sticker or the clock screen. The home-screen icon and the sign-in link do not clock in. Checkmate clocks in and out from the icon. Note: a photo of the static sticker can punch from anywhere; the rotating screen QR expires and proves real presence.",
           "Included in the trial and in every plan.",
           "Presence, timesheets and My hours (own shifts only).",
-          "Clocking in during leave, time off in lieu, a public holiday or sick leave shows on the dashboard and next to that person in presence.",
+          "Clocking in during leave, time off in lieu, a public holiday or sick leave counts in Time attention, with an exclamation and a message next to that person in presence.",
           "Staff can clock someone in by hand if the phone was forgotten.",
           "CIAO (NSSO) on request, at no extra fee.",
           "You pass the hours to the social secretariat. No Dimona and no payroll calculation.",

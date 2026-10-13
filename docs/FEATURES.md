@@ -84,8 +84,7 @@ linkt naar zijn lijst):
 - Nu aanwezig — open shifts zonder pauze → Time-aanwezigheid (Time-module; inbegrepen in elke WinProx-formule).
 - **Conditioneel** (alleen tonen als telling **> 0** — geen vaste nullen / geen lege grid-gaten):
   - Te beoordelen — QR-wachtlijst → meldingen
-  - Time-aandacht — open shifts met uitzondering, of evacuatielijst-raadpleging vandaag → Time-alarmen
-  - Ingeklokt tijdens afwezigheid — open shift op verlof, recup, ziekte of een feestdag (niet op een vervangingsdag, en niet als de feestdag als gewone werkdag geldt) → Time-alarmen, gefilterd op dat type
+  - Time-aandacht — open shifts met uitzondering (ook inklokken tijdens verlof, recup, ziekte of feestdag), of evacuatielijst-raadpleging vandaag → Time-alarmen
   - Aanvragen — open verlof-/recupaanvragen, geteld per soort (1 Verlof, 1 Recup, of beide) → Time → Aanvragen (Time-module).
     Features-fiche, FAQ en handleiding beschrijven dezelfde flow.
   - IoT-alarmen — open IoT-meldingen → IoT Connect (alleen bij IoT-module)
@@ -768,9 +767,10 @@ productsector op `Tenant`.
   een volledige verlof-, recup- of ziektedag valt, of binnen een getimed blok van die soort
   (`[start, einde)`), of op een Belgische feestdag die voor de tenant geen gewone werkdag is
   (afgeleide standaard of opgeslagen afspraak; effect `none` telt niet, een vervangingsdag
-  telt niet). Dashboard toont dan een tegel (alleen als de telling > 0) naar Time → Alarmen
-  gefilterd op dat type. Time → Aanwezigheid zet een uitroepteken en de melding (verlof,
-  recup, ziekte of feestdag) bij die uitvoerder. Na uitklokken valt de melding weg.
+  telt niet). Dat telt mee in de bestaande tegel **Time-aandacht** (geen tweede tegel) en
+  in Time → Alarmen, filter Afwezigheid. Time → Aanwezigheid zet een uitroepteken en de
+  melding (verlof, recup, ziekte of feestdag) bij die uitvoerder. Na uitklokken valt de
+  melding weg.
 - Worker zonder login (naam + icoon of optionele PIN); **één gsm per uitvoerder**
   (koppeling bij eerste geslaagde Clock Point-aanmelding; ander toestel weigeren + audit
   tot beheer/teamleader vrijgeeft); één open shift;

@@ -76,7 +76,7 @@
           "Kurzbefehle: Dienstplan, Anwesenheit, neue Tagesaufgabe (Inspektionsrunde), Standort und Ausführender.",
           "Neue Meldungen und offene Aufgaben.",
           "Mit Time: wer gerade anwesend ist.",
-          "Wer während Urlaub, Zeitausgleich, einem Feiertag oder Krankheit einstempelt: eine extra Karte, und ein Ausrufezeichen mit Hinweis bei dieser Person in der Anwesenheit.",
+          "Wer während Urlaub, Zeitausgleich, einem Feiertag oder Krankheit einstempelt, zählt bei Time-Aufmerksamkeit mit, mit Ausrufezeichen und Hinweis bei dieser Person in der Anwesenheit.",
           "Offener Urlaub oder TOIL als Extra-Karte: 1 Urlaub, 1 TOIL oder beides.",
           "Neue Organisationen können hier eine Startvorlage wählen.",
           "Briefing und Berichte sind vom Dashboard aus erreichbar."
@@ -160,7 +160,7 @@
           "An einer festen Stempeluhr verlangt jedes Ein- und Ausstempeln einen Scan des Aufklebers oder des Uhrenbildschirms. Startbildschirm-Symbol und Anmeldelink stempeln nicht ein. Checkmate stempelt über das Symbol. Achtung: ein Foto des festen Aufklebers kann überall stempeln; der wechselnde Bildschirm-QR läuft ab und beweist echte Anwesenheit.",
           "Inklusiv in der Probe und in jeder Formel.",
           "Anwesenheit, Stundenblatt und Meine Stunden (nur eigene Dienste).",
-          "Einstempeln während Urlaub, Zeitausgleich, Feiertag oder Krankheit erscheint auf dem Dashboard und bei dieser Person in der Anwesenheit.",
+          "Einstempeln während Urlaub, Zeitausgleich, Feiertag oder Krankheit zählt bei Time-Aufmerksamkeit mit, mit Ausrufezeichen und Hinweis bei dieser Person in der Anwesenheit.",
           "Die Verwaltung kann manuell einstempeln, wenn das Handy vergessen ist.",
           "CIAO (LSS) auf Anfrage, ohne Aufpreis.",
           "Die Stunden geben Sie an das Sozialsekretariat weiter. Kein Dimona und keine Lohnberechnung.",

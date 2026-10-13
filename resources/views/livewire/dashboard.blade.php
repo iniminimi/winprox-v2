@@ -464,7 +464,6 @@
                 'present_now' => route('time.presence.index'),
                 'pending_review' => route('issues.index'),
                 'time_attention' => route('time.alarms.index'),
-                'absence_clock_in' => route('time.alarms.index', ['type' => 'absence_clock_in']),
                 'pending_absence' => route('time.absence-requests.index'),
                 'iot_alarms' => route('iot.index'),
             ];
