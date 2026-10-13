@@ -47,9 +47,9 @@ class BackfillWorkerWeekPatternsAction
 
         $rowCounts = WorkerWeekdayMinute::query()
             ->where('tenant_id', $tenant->id)
-            ->selectRaw('worker_id, count(*) as rows')
+            ->selectRaw('worker_id, count(*) as row_count')
             ->groupBy('worker_id')
-            ->pluck('rows', 'worker_id');
+            ->pluck('row_count', 'worker_id');
 
         $workers = Worker::query()
             ->where('tenant_id', $tenant->id)
