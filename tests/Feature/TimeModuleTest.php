@@ -120,6 +120,15 @@ it('toont Aanwezigheid als paginatitel in plaats van Time', function () {
         ->assertDontSeeHtml('>'.e(__('time.title')).'</h1>');
 });
 
+it('toont Uren als paginatitel in plaats van Time', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+
+    Livewire::actingAs($admin)
+        ->test(ShiftsIndex::class)
+        ->assertSeeHtml('>'.e(__('time.nav.shifts')).'</h1>')
+        ->assertDontSeeHtml('>'.e(__('time.title')).'</h1>');
+});
+
 it('toont Clock Points als paginatitel en QR-rotatie standaard ingeklapt', function () {
     [$tenant, $admin] = timeTenantWithAdmin();
 
