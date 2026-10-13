@@ -118,13 +118,13 @@ it('telt een maand zonder feestdag als som van de werkregeling', function () {
         ->and($norm->minutes)->toBe(monthNormExpected('2026-02-01', $pattern));
 });
 
-it('geeft incomplete zonder volledig patroon of na een normwijziging', function () {
+it('gebruikt ma–vr als norm zonder patroon en blijft incomplete na een normwijziging', function () {
     [$tenant, $admin, $team, $worker] = monthNormTenant();
     $pattern = monthNormFiveDayPattern();
 
     $missing = app(ResolveWorkerMonthNormAction::class)->handle((int) $tenant->id, [(int) $worker->id], '2026-02-01')[(int) $worker->id];
-    expect($missing->status)->toBe(MonthNormStatus::Incomplete)
-        ->and($missing->minutes)->toBeNull();
+    expect($missing->status)->toBe(MonthNormStatus::Available)
+        ->and($missing->minutes)->toBe(monthNormExpected('2026-02-01', $pattern));
 
     expect(fn () => monthNormSync($worker, [1 => 456, 2 => 456, 3 => 456, 4 => 456, 5 => 456, 6 => 0]))
         ->toThrow(ValidationException::class);
@@ -174,7 +174,7 @@ it('leidt de maandnorm niet af uit onbeschikbaarheid of ingeplande diensten', fu
         ->and($facts->plannedMinutes)->toBe(4 * 60);
 });
 
-it('laat een feestdag zonder afspraak de norm weg en houdt de feiten', function () {
+it('telt een feestdag zonder afspraak als niet gewerkt in de norm', function () {
     [$tenant, , , $worker] = monthNormTenant();
     monthNormSync($worker, monthNormFiveDayPattern());
     PlannedShift::query()->create([
@@ -191,8 +191,8 @@ it('laat een feestdag zonder afspraak de norm weg en houdt de feiten', function 
     $norm = app(ResolveWorkerMonthNormAction::class)->handle((int) $tenant->id, [(int) $worker->id], '2026-05-01')[(int) $worker->id];
     $facts = app(SummarizeWorkerMonthFactsAction::class)->handle((int) $tenant->id, [(int) $worker->id], '2026-05-01')[(int) $worker->id];
 
-    expect($norm->status)->toBe(MonthNormStatus::Incomplete)
-        ->and($norm->minutes)->toBeNull()
+    expect($norm->status)->toBe(MonthNormStatus::Available)
+        ->and($norm->minutes)->toBe(monthNormExpected('2026-05-01', monthNormFiveDayPattern()) - 3 * 456)
         ->and($facts->plannedMinutes)->toBe(4 * 60);
 });
 
@@ -269,8 +269,10 @@ it('zet vervangingsuren alleen in de maand van de vervangingsdatum', function ()
         ->and($november->minutes)->toBe(monthNormExpected('2026-11-01', $pattern) - $pattern[3]);
 
     $decemberWithoutChristmas = app(ResolveWorkerMonthNormAction::class)->handle((int) $worker->tenant_id, [(int) $worker->id], '2026-12-01')[(int) $worker->id];
-    expect($decemberWithoutChristmas->status)->toBe(MonthNormStatus::Incomplete)
-        ->and($decemberWithoutChristmas->minutes)->toBeNull();
+    expect($decemberWithoutChristmas->status)->toBe(MonthNormStatus::Available)
+        ->and($decemberWithoutChristmas->minutes)->toBe(
+            monthNormExpected('2026-12-01', $pattern) - $pattern[5] - $pattern[6] + $pattern[3]
+        );
 
     monthNormAgree($worker, '2026-12-25', HolidayAgreementEffect::None);
     $december = app(ResolveWorkerMonthNormAction::class)->handle((int) $worker->tenant_id, [(int) $worker->id], '2026-12-01')[(int) $worker->id];
@@ -378,9 +380,10 @@ it('bewaart een feestdag als kalenderdatum zonder tijdstip', function () {
         ->toBeTrue();
 });
 
-it('toont bij een onbetrouwbare maandnorm alleen de feiten', function () {
+it('toont de maandnorm met feestdagen als niet gewerkt zonder afspraak', function () {
     [$tenant, $admin, $team, $worker] = monthNormTenant();
     monthNormSync($worker, monthNormFiveDayPattern());
+    $expected = monthNormExpected('2026-05-01', monthNormFiveDayPattern()) - 3 * 456;
 
     $snapshot = app(ListRosterWeekAction::class)->handle(
         (int) $tenant->id,
@@ -393,14 +396,11 @@ it('toont bij een onbetrouwbare maandnorm alleen de feiten', function () {
     $keys = array_column($snapshot->hoursColumns, 'key');
     $figures = $row['month_hours']['figures'];
 
-    expect($row['month_hours']['norm_status'])->toBe(MonthNormStatus::Incomplete->value)
-        ->and($row['month_hours'])->toHaveKey('planned_minutes')
-        ->and($row['month_hours'])->not->toHaveKey('contract_minutes')
-        ->and($row['month_hours'])->not->toHaveKey('difference_minutes')
-        ->and($figures[array_search('norm', $keys, true)])->toBeNull()
-        ->and($figures[array_search('difference', $keys, true)])->toBeNull()
-        ->and($figures[array_search('planned', $keys, true)]['value'])->toBe('0')
-        ->and(json_encode($figures))->not->toContain((string) monthNormExpected('2026-05-01', monthNormFiveDayPattern()));
+    expect($row['month_hours']['norm_status'])->toBe(MonthNormStatus::Available->value)
+        ->and($row['month_hours']['contract_minutes'])->toBe($expected)
+        ->and($row['month_hours']['difference_minutes'])->toBe(-$expected)
+        ->and($figures[array_search('norm', $keys, true)]['value'])->not->toBeNull()
+        ->and($figures[array_search('planned', $keys, true)]['value'])->toBe('0');
 });
 
 it('telt maandfeiten over de hele kalendermaand, ook als de norm ontbreekt', function () {
@@ -443,7 +443,8 @@ it('telt maandfeiten over de hele kalendermaand, ook als de norm ontbreekt', fun
     expect($facts->absences['leave']['days'])->toBe(1)
         ->and($facts->workedMinutes)->toBe(0)
         ->and($facts->registrationIncomplete)->toBeTrue()
-        ->and($norm->status)->toBe(MonthNormStatus::Incomplete);
+        ->and($norm->status)->toBe(MonthNormStatus::Available)
+        ->and($norm->minutes)->toBe(monthNormExpected('2026-02-01', monthNormFiveDayPattern()));
 
     $day = Carbon::parse('2026-12-10')->toDateString();
     app(SavePlannedDayAction::class)->handle(

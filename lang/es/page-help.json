@@ -1820,7 +1820,7 @@
                 },
                 {
                     "label": "Columnas de horas a la derecha",
-                    "text": "A la derecha de la cuadrícula, cada ejecutor tiene columnas de cifras con título vertical: <strong>Norma</strong> (norma de contrato), <strong>Diferencia</strong> (planificado menos norma, con signo), <strong>Planificado</strong>, <strong>Trabajado</strong> y por ausencia <strong>Vacaciones</strong>, <strong>Recup</strong> y <strong>Baja</strong> (días más horas restantes). <strong>Aviso</strong> muestra un número y/o un signo de exclamación por bloques incompletos o un fichaje abierto. Norma y diferencia quedan vacías mientras la norma no sea fiable. La norma semanal (38 h por defecto) se define en el ejecutor; la norma mensual sigue la pauta de trabajo. Es un recuento, no un juicio sobre la jornada."
+                    "text": "A la derecha de la cuadrícula, cada ejecutor tiene columnas de cifras con título vertical: <strong>Norma</strong> (norma de contrato), <strong>Diferencia</strong> (planificado menos norma, con signo), <strong>Planificado</strong>, <strong>Trabajado</strong> y por ausencia <strong>Vacaciones</strong>, <strong>Recup</strong> y <strong>Baja</strong> (días más horas restantes). <strong>Aviso</strong> muestra un número y/o un signo de exclamación por bloques incompletos o un fichaje abierto. Norma y diferencia quedan vacías mientras la norma no sea fiable. La norma semanal (38 h por defecto) se define en el ejecutor; la norma mensual sigue la pauta de trabajo — sin pauta, lun–vie cuentan según la norma semanal y un festivo sin acuerdo cuenta como no trabajado. Es un recuento, no un juicio sobre la jornada."
                 }
             ]
         },

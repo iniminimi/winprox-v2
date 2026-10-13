@@ -1828,7 +1828,7 @@
                 },
                 {
                     "label": "Colonnes d’heures à droite",
-                    "text": "À droite de la grille, chaque exécutant a des colonnes de chiffres à titre vertical : <strong>Norme</strong> (norme de contrat), <strong>Écart</strong> (planifié moins la norme, signé), <strong>Planifié</strong>, <strong>Travaillé</strong> et par absence <strong>Congé</strong>, <strong>Récup</strong> et <strong>Maladie</strong> (jours plus heures restantes). <strong>Signal</strong> montre un nombre et/ou un point d’exclamation pour des blocs incomplets ou un pointage ouvert. Norme et écart restent vides tant que la norme n’est pas fiable. La norme hebdomadaire (38 h par défaut) se règle sur l’exécutant ; la norme mensuelle suit le régime de travail. C’est un décompte, pas un jugement sur la durée du travail."
+                    "text": "À droite de la grille, chaque exécutant a des colonnes de chiffres à titre vertical : <strong>Norme</strong> (norme de contrat), <strong>Écart</strong> (planifié moins la norme, signé), <strong>Planifié</strong>, <strong>Travaillé</strong> et par absence <strong>Congé</strong>, <strong>Récup</strong> et <strong>Maladie</strong> (jours plus heures restantes). <strong>Signal</strong> montre un nombre et/ou un point d’exclamation pour des blocs incomplets ou un pointage ouvert. Norme et écart restent vides tant que la norme n’est pas fiable. La norme hebdomadaire (38 h par défaut) se règle sur l’exécutant ; la norme mensuelle suit le régime de travail — sans régime, lun–ven comptent selon la norme hebdomadaire et un jour férié sans accord compte comme non travaillé. C’est un décompte, pas un jugement sur la durée du travail."
                 }
             ]
         },

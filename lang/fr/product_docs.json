@@ -196,7 +196,7 @@
           "Clock Point montre Mon planning (uniquement ses services publiés).",
           "Triangle rouge si vous n’avez pas pointé ou si vous êtes en retard.",
           "La gestion voit prévu versus pointé (marge de 15 minutes).",
-          "Les vues semaine et mois montrent des colonnes fixes par intervenant, avec un titre vertical et seulement le chiffre dans la ligne : norme, écart, planifié, travaillé, congé, récup et maladie. La colonne signal indique les blocs incomplets ou un pointage ouvert. Norme et écart restent vides tant que cette norme n’est pas fiable. Cette norme est de 38 heures par défaut et reste modifiable par intervenant. C’est un décompte, pas un jugement sur la durée du travail."
+          "Les vues semaine et mois montrent des colonnes fixes par intervenant, avec un titre vertical et seulement le chiffre dans la ligne : norme, écart, planifié, travaillé, congé, récup et maladie. La colonne signal indique les blocs incomplets ou un pointage ouvert. Norme et écart restent vides tant que cette norme n’est pas fiable. Cette norme est de 38 heures par défaut et reste modifiable par intervenant. Sans régime de travail, le mois compte lundi–vendredi selon cette norme et les jours fériés sans accord ne comptent pas. C’est un décompte, pas un jugement sur la durée du travail."
         ]
       },
       {

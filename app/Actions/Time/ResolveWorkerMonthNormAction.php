@@ -15,7 +15,9 @@ use Carbon\Carbon;
 
 /**
  * Read-only maandnorm. Eerst de normale minuten per kalenderdatum, daarna
- * feestdagafspraken als één geheel. Bij incomplete of conflict zijn er geen minuten.
+ * feestdagafspraken als één geheel. Zonder werkregeling geldt ma–vr; een
+ * feestdag zonder afspraak telt als niet gewerkt. Bij incomplete of conflict
+ * zijn er geen minuten.
  */
 class ResolveWorkerMonthNormAction
 {
@@ -106,7 +108,7 @@ class ResolveWorkerMonthNormAction
      * @param  array<int, array<string, true>>  $codesByYear
      */
     private function resolveWorker(
-        ?int $contractMinutes,
+        int $contractMinutes,
         array $pattern,
         array $dates,
         array $holidaysInMonth,
@@ -117,7 +119,8 @@ class ResolveWorkerMonthNormAction
         string $monthEnd,
     ): WorkerMonthNorm {
         $issues = [];
-        if ($contractMinutes === null || ! $this->patternMatches($pattern, $contractMinutes)) {
+        $effectivePattern = $pattern === [] ? $this->defaultPattern($contractMinutes) : $pattern;
+        if (! $this->patternMatches($effectivePattern, $contractMinutes)) {
             $issues[] = MonthNormStatus::Incomplete;
         }
         if (! $this->yearCovered((int) substr($monthStart, 0, 4), $codesByYear)) {
@@ -128,12 +131,6 @@ class ResolveWorkerMonthNormAction
         foreach ($agreements as $agreement) {
             $byHoliday[$agreement->holiday_date->toDateString()] = $agreement;
         }
-        foreach ($holidaysInMonth as $holidayDate) {
-            if (! isset($byHoliday[$holidayDate])) {
-                $issues[] = MonthNormStatus::Incomplete;
-            }
-        }
-
         $replacementOwners = [];
         foreach ($agreements as $agreement) {
             $replacement = $agreement->replacement_date?->toDateString();
@@ -164,7 +161,7 @@ class ResolveWorkerMonthNormAction
         $map = [];
         foreach ($dates as $date) {
             $weekday = (int) Carbon::parse($date)->dayOfWeekIso;
-            $map[$date] = $pattern[$weekday];
+            $map[$date] = $effectivePattern[$weekday];
         }
 
         $instructions = [];
@@ -185,6 +182,13 @@ class ResolveWorkerMonthNormAction
             }
         }
 
+        // Feestdag zonder afspraak telt als niet gewerkt in de norm.
+        foreach ($holidaysInMonth as $holidayDate) {
+            if (! isset($byHoliday[$holidayDate]) && ! $this->instruct($instructions, $holidayDate, 0)) {
+                return new WorkerMonthNorm(MonthNormStatus::Conflict, null);
+            }
+        }
+
         foreach ($instructions as $date => $minutes) {
             if (array_key_exists($date, $map)) {
                 $map[$date] = $minutes;
@@ -192,6 +196,27 @@ class ResolveWorkerMonthNormAction
         }
 
         return new WorkerMonthNorm(MonthNormStatus::Available, array_sum($map));
+    }
+
+    /**
+     * Zonder bewaarde werkregeling geldt maandag t/m vrijdag verdeeld
+     * over de contractnorm; de rest gaat op vrijdag zodat de som klopt.
+     *
+     * @return array<int, int>
+     */
+    private function defaultPattern(int $contractMinutes): array
+    {
+        $perDay = intdiv($contractMinutes, 5);
+
+        return [
+            1 => $perDay,
+            2 => $perDay,
+            3 => $perDay,
+            4 => $perDay,
+            5 => $contractMinutes - ($perDay * 4),
+            6 => 0,
+            7 => 0,
+        ];
     }
 
     /**

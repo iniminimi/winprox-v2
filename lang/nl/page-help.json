@@ -1820,7 +1820,7 @@
                 },
                 {
                     "label": "Urenkolommen rechts",
-                    "text": "Rechts van het rooster staan per uitvoerder cijferkolommen met verticale titel: <strong>Norm</strong> (contractnorm), <strong>Verschil</strong> (gepland min norm, met teken), <strong>Gepland</strong>, <strong>Gewerkt</strong> en per afwezigheid <strong>Verlof</strong>, <strong>Recup</strong> en <strong>Ziek</strong> (dagen en resturen). <strong>Sein</strong> toont een aantal en/of een uitroepteken bij onvolledige blokken of een openstaande klokregistratie. Norm en verschil blijven leeg zolang de norm niet betrouwbaar is. De weeknorm (standaard 38u) stelt u in bij de uitvoerder; de maandnorm volgt uit de werkregeling. Dit is een telling, geen oordeel over arbeidsduur."
+                    "text": "Rechts van het rooster staan per uitvoerder cijferkolommen met verticale titel: <strong>Norm</strong> (contractnorm), <strong>Verschil</strong> (gepland min norm, met teken), <strong>Gepland</strong>, <strong>Gewerkt</strong> en per afwezigheid <strong>Verlof</strong>, <strong>Recup</strong> en <strong>Ziek</strong> (dagen en resturen). <strong>Sein</strong> toont een aantal en/of een uitroepteken bij onvolledige blokken of een openstaande klokregistratie. Norm en verschil blijven leeg zolang de norm niet betrouwbaar is. De weeknorm (standaard 38u) stelt u in bij de uitvoerder; de maandnorm volgt uit de werkregeling — zonder werkregeling telt ma–vr volgens de weeknorm en een feestdag zonder afspraak als niet gewerkt. Dit is een telling, geen oordeel over arbeidsduur."
                 }
             ]
         },

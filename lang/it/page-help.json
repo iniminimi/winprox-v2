@@ -1820,7 +1820,7 @@
                 },
                 {
                     "label": "Colonne delle ore a destra",
-                    "text": "A destra della griglia, ogni esecutore ha colonne di cifre con titolo verticale: <strong>Norma</strong> (norma contrattuale), <strong>Scarto</strong> (pianificato meno norma, con segno), <strong>Pianificato</strong>, <strong>Lavorato</strong> e per assenza <strong>Ferie</strong>, <strong>Recupero</strong> e <strong>Malattia</strong> (giorni più ore residue). <strong>Segnale</strong> mostra un numero e/o un punto esclamativo per blocchi incompleti o una timbratura aperta. Norma e scarto restano vuoti finché la norma non è affidabile. La norma settimanale (38 ore predefinita) si imposta sull’esecutore; la norma mensile segue la regola di lavoro. È un conteggio, non un giudizio sull’orario di lavoro."
+                    "text": "A destra della griglia, ogni esecutore ha colonne di cifre con titolo verticale: <strong>Norma</strong> (norma contrattuale), <strong>Scarto</strong> (pianificato meno norma, con segno), <strong>Pianificato</strong>, <strong>Lavorato</strong> e per assenza <strong>Ferie</strong>, <strong>Recupero</strong> e <strong>Malattia</strong> (giorni più ore residue). <strong>Segnale</strong> mostra un numero e/o un punto esclamativo per blocchi incompleti o una timbratura aperta. Norma e scarto restano vuoti finché la norma non è affidabile. La norma settimanale (38 ore predefinita) si imposta sull’esecutore; la norma mensile segue la regola di lavoro — senza regola, lun–ven contano secondo la norma settimanale e un festivo senza accordo conta come non lavorato. È un conteggio, non un giudizio sull’orario di lavoro."
                 }
             ]
         },

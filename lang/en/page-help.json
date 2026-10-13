@@ -1820,7 +1820,7 @@
                 },
                 {
                     "label": "Hours columns on the right",
-                    "text": "To the right of the grid each worker has figure columns with a vertical title: <strong>Norm</strong> (contract norm), <strong>Difference</strong> (planned minus norm, signed), <strong>Planned</strong>, <strong>Worked</strong> and per absence <strong>Leave</strong>, <strong>Lieu</strong> and <strong>Sick</strong> (days plus remaining hours). <strong>Flag</strong> shows a count and/or an exclamation mark for incomplete blocks or an open clock registration. Norm and difference stay empty while the norm is not reliable. The weekly norm (38 hours by default) is set on the worker; the monthly norm follows the work pattern. This is a count, not a judgement on working time."
+                    "text": "To the right of the grid each worker has figure columns with a vertical title: <strong>Norm</strong> (contract norm), <strong>Difference</strong> (planned minus norm, signed), <strong>Planned</strong>, <strong>Worked</strong> and per absence <strong>Leave</strong>, <strong>Lieu</strong> and <strong>Sick</strong> (days plus remaining hours). <strong>Flag</strong> shows a count and/or an exclamation mark for incomplete blocks or an open clock registration. Norm and difference stay empty while the norm is not reliable. The weekly norm (38 hours by default) is set on the worker; the monthly norm follows the work pattern — without one, Mon–Fri count per the weekly norm and a holiday without an agreement counts as not worked. This is a count, not a judgement on working time."
                 }
             ]
         },
