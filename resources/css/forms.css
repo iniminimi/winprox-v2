@@ -222,11 +222,7 @@
 }
 
 /* Feestdagenlijst: feestdagnaam + effectkeuze (+ vervangingsdatum) op één
-   compacte regel; breekt onder elkaar op smalle schermen via wp-row--wrap. */
-.wp-holiday-row > .wp-label {
-    margin-bottom: 0;
-}
-
+   compacte regel (wp-cluster); breekt onder elkaar op smalle schermen. */
 .wp-holiday-row__select {
     width: 12.5rem;
     flex: 0 0 auto;

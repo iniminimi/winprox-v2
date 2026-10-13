@@ -23,19 +23,17 @@
         </div>
         @error('agreements') <p class="wp-error">{{ $message }}</p> @enderror
         @foreach ($agreements as $index => $holiday)
-            <div class="wp-row wp-row--wrap wp-holiday-row">
+            <div class="wp-cluster">
                 <label class="wp-label" for="holidayEffect{{ $index }}">{{ __('time.schedule.month_norm.holidays.'.$holiday['code']) }} · {{ $holiday['date'] }}</label>
-                <span class="wp-cluster wp-cluster--tight">
-                    <select id="holidayEffect{{ $index }}" class="wp-select wp-holiday-row__select" wire:model.live="agreements.{{ $index }}.effect">
-                        <option value="">{{ __('time.schedule.month_norm.effect_unset') }}</option>
-                        <option value="none">{{ __('time.schedule.month_norm.effects.none') }}</option>
-                        <option value="dropped">{{ __('time.schedule.month_norm.effects.dropped') }}</option>
-                        <option value="replaced">{{ __('time.schedule.month_norm.effects.replaced') }}</option>
-                    </select>
-                    @if (($holiday['effect'] ?? '') === 'replaced')
-                        <input class="wp-input wp-holiday-row__date" type="date" wire:model="agreements.{{ $index }}.replacement_date" aria-label="{{ __('time.schedule.month_norm.replacement_date') }}">
-                    @endif
-                </span>
+                <select id="holidayEffect{{ $index }}" class="wp-select wp-holiday-row__select" wire:model.live="agreements.{{ $index }}.effect">
+                    <option value="">{{ __('time.schedule.month_norm.effect_unset') }}</option>
+                    <option value="none">{{ __('time.schedule.month_norm.effects.none') }}</option>
+                    <option value="dropped">{{ __('time.schedule.month_norm.effects.dropped') }}</option>
+                    <option value="replaced">{{ __('time.schedule.month_norm.effects.replaced') }}</option>
+                </select>
+                @if (($holiday['effect'] ?? '') === 'replaced')
+                    <input class="wp-input wp-holiday-row__date" type="date" wire:model="agreements.{{ $index }}.replacement_date" aria-label="{{ __('time.schedule.month_norm.replacement_date') }}">
+                @endif
             </div>
         @endforeach
         @if (session('time_flash'))
