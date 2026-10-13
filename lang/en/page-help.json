@@ -1788,7 +1788,11 @@
             "actions": [
                 {
                     "label": "View",
-                    "text": "Switch between <strong>week</strong> and <strong>month</strong>. <strong>Weekends</strong> shows Saturday and Sunday (off by default); off = Monday to Friday only. In the month grid a heavy vertical line then separates Friday from Monday. Saving with weekends off leaves Sat/Sun unchanged. Copying a week is week view only."
+                    "text": "Switch between <strong>week</strong> and <strong>month</strong>. <strong>Weekends</strong> shows Saturday and Sunday (off by default); off = Monday to Friday only. In the month grid a heavy vertical line then separates Friday from Monday. Saving with weekends off leaves Sat/Sun unchanged. Copying a week is week view only. The <strong>Week</strong> and <strong>Month</strong> buttons always go to the current week or month."
+                },
+                {
+                    "label": "Colours and selection",
+                    "text": "Public holidays tint the date column <strong>blue</strong>, replacement days <strong>green</strong> — the column-header tooltip says which holiday and which effect. A <strong>grey cell</strong> is a fixed day off for that worker (0 minutes in their week pattern); the cell stays editable. Weekend, today and locked days have their own tint. Only the date cells can be selected — names and figure columns cannot."
                 },
                 {
                     "label": "Codes and free times",
@@ -1820,7 +1824,7 @@
                 },
                 {
                     "label": "Hours columns on the right",
-                    "text": "To the right of the grid each worker has figure columns with a vertical title: <strong>Norm</strong> (contract norm), <strong>Difference</strong> (planned minus norm, signed), <strong>Planned</strong>, <strong>Worked</strong> and per absence <strong>Leave</strong>, <strong>Lieu</strong> and <strong>Sick</strong> (days plus remaining hours). <strong>Flag</strong> shows a count and/or an exclamation mark for incomplete blocks or an open clock registration. Norm and difference stay empty while the norm is not reliable. The weekly norm (38 hours by default) is set on the worker; the monthly norm follows the work pattern — without one, Mon–Fri count per the weekly norm and a holiday without an agreement counts as not worked. This is a count, not a judgement on working time."
+                    "text": "To the right of the grid each worker has figure columns with a vertical title: <strong>Norm</strong> (contract norm), <strong>Difference</strong> (planned minus norm, signed), <strong>Planned</strong>, <strong>Worked</strong> and per absence <strong>Leave</strong>, <strong>Lieu</strong> and <strong>Sick</strong> (days plus remaining hours). <strong>Flag</strong> shows a count and/or an exclamation mark for incomplete blocks or an open clock registration. Norm and difference stay empty while the norm is not reliable. The weekly norm (38 hours by default) is set on the worker; the monthly norm follows the work pattern — without one, Mon–Fri count per the weekly norm and holidays follow the holiday scheme — without an agreement, the Belgian standard. This is a count, not a judgement on working time."
                 }
             ]
         },
@@ -1846,11 +1850,11 @@
             "actions": [
                 {
                     "label": "Scheme",
-                    "text": "One holiday scheme for the whole company. The monthly norm in the roster applies these choices to <strong>all workers</strong> — nothing is set per person."
+                    "text": "One holiday scheme for the whole company. The monthly norm in the roster applies these choices to <strong>all workers</strong> — nothing is set per person. In the roster a holiday column is tinted blue and a replacement day green."
                 },
                 {
                     "label": "Effect",
-                    "text": "Choose per holiday: <strong>No effect</strong> (normal minutes stay), <strong>Working day dropped</strong> (no norm that day) or <strong>Replacement day</strong> (the minutes move to another date). Without a choice the holiday does not count in the monthly difference."
+                    "text": "The Belgian standard is already filled in: a holiday on Monday–Friday is dropped, a holiday in the weekend gets a proposed replacement day (badge <strong>Standard</strong>, to be confirmed). You only record deviations: <strong>No effect</strong>, <strong>Working day dropped</strong> or <strong>Replacement day</strong> with your own date — those rows show <strong>Recorded</strong>. Choose <strong>Standard</strong> to remove a deviation. The proposed date is a calculation proposal, not a recorded agreement — confirm it if it applies."
                 },
                 {
                     "label": "Year",

@@ -1788,7 +1788,11 @@
             "actions": [
                 {
                     "label": "Vista",
-                    "text": "Cambie entre <strong>semana</strong> y <strong>mes</strong>. <strong>Fines de semana</strong> muestra sábado y domingo (desactivado por defecto); desactivado = solo lunes a viernes. En la cuadrícula mensual una línea vertical gruesa separa entonces viernes y lunes. Guardar sin fines de semana deja sáb/dom sin cambios. Copiar una semana solo en vista semanal."
+                    "text": "Cambie entre <strong>semana</strong> y <strong>mes</strong>. <strong>Fines de semana</strong> muestra sábado y domingo (desactivado por defecto); desactivado = solo lunes a viernes. En la cuadrícula mensual una línea vertical gruesa separa entonces viernes y lunes. Guardar sin fines de semana deja sáb/dom sin cambios. Copiar una semana solo en vista semanal. Los botones <strong>Semana</strong> y <strong>Mes</strong> llevan siempre a la semana o al mes actual."
+                },
+                {
+                    "label": "Colores y selección",
+                    "text": "Los festivos tiñen la columna de fecha de <strong>azul</strong> y los días de sustitución de <strong>verde</strong> — la información del encabezado indica el festivo y su efecto. Una <strong>celda gris</strong> es un día libre fijo de ese operario (0 minutos en su patrón semanal); la celda sigue editable. Fin de semana, hoy y días bloqueados tienen su propio tono. Solo se pueden seleccionar las celdas de fecha — nombres y columnas de cifras no."
                 },
                 {
                     "label": "Códigos y horas libres",
@@ -1820,7 +1824,7 @@
                 },
                 {
                     "label": "Columnas de horas a la derecha",
-                    "text": "A la derecha de la cuadrícula, cada ejecutor tiene columnas de cifras con título vertical: <strong>Norma</strong> (norma de contrato), <strong>Diferencia</strong> (planificado menos norma, con signo), <strong>Planificado</strong>, <strong>Trabajado</strong> y por ausencia <strong>Vacaciones</strong>, <strong>Recup</strong> y <strong>Baja</strong> (días más horas restantes). <strong>Aviso</strong> muestra un número y/o un signo de exclamación por bloques incompletos o un fichaje abierto. Norma y diferencia quedan vacías mientras la norma no sea fiable. La norma semanal (38 h por defecto) se define en el ejecutor; la norma mensual sigue la pauta de trabajo — sin pauta, lun–vie cuentan según la norma semanal y un festivo sin acuerdo cuenta como no trabajado. Es un recuento, no un juicio sobre la jornada."
+                    "text": "A la derecha de la cuadrícula, cada ejecutor tiene columnas de cifras con título vertical: <strong>Norma</strong> (norma de contrato), <strong>Diferencia</strong> (planificado menos norma, con signo), <strong>Planificado</strong>, <strong>Trabajado</strong> y por ausencia <strong>Vacaciones</strong>, <strong>Recup</strong> y <strong>Baja</strong> (días más horas restantes). <strong>Aviso</strong> muestra un número y/o un signo de exclamación por bloques incompletos o un fichaje abierto. Norma y diferencia quedan vacías mientras la norma no sea fiable. La norma semanal (38 h por defecto) se define en el ejecutor; la norma mensual sigue la pauta de trabajo — sin pauta, lun–vie cuentan según la norma semanal y los festivos siguen el régimen de festivos — sin acuerdo, el estándar belga. Es un recuento, no un juicio sobre la jornada."
                 }
             ]
         },
@@ -1846,11 +1850,11 @@
             "actions": [
                 {
                     "label": "Régimen",
-                    "text": "Un solo régimen de festivos para toda la empresa. La norma mensual del horario aplica estas opciones a <strong>todos los operarios</strong> — no hay que configurar nada por persona."
+                    "text": "Un solo régimen de festivos para toda la empresa. La norma mensual del horario aplica estas opciones a <strong>todos los operarios</strong> — no hay que configurar nada por persona. En el cuadrante la columna de un festivo se tiñe de azul y la de un día de sustitución de verde."
                 },
                 {
                     "label": "Efecto",
-                    "text": "Elija por festivo: <strong>Sin efecto</strong> (los minutos habituales se mantienen), <strong>El día laborable se anula</strong> (sin norma ese día) o <strong>Día de sustitución</strong> (los minutos se trasladan a otra fecha). Sin elección, el festivo no cuenta en la diferencia mensual."
+                    "text": "El régimen belga estándar ya está rellenado: un festivo de lunes a viernes se anula, un festivo en fin de semana recibe un día de sustitución propuesto (insignia <strong>Estándar</strong>, por confirmar). Solo registras desviaciones: <strong>Sin efecto</strong>, <strong>El día laborable se anula</strong> o <strong>Día de sustitución</strong> con tu propia fecha — esas filas muestran <strong>Definido</strong>. Elige <strong>Estándar</strong> para quitar una desviación. La fecha propuesta es una propuesta de cálculo, no un acuerdo registrado — confírmala si aplica."
                 },
                 {
                     "label": "Año",

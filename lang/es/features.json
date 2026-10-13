@@ -87,7 +87,8 @@
                 "Alarma al saltar entre Clock Points en menos de 5 min",
                 "Mis horas en Clock Point (solo tus turnos)",
                 "Pausa mínima por equipo en el parte (sin evento CIAO extra)",
-                "Pedir permiso o compensación en Clock Point; la gestión decide en Time → Solicitudes"
+                "Pedir permiso o compensación en Clock Point; la gestión decide en Time → Solicitudes",
+                "Cuadrante en vista semanal o mensual — festivos, días de sustitución y días libres fijos coloreados"
             ]
         },
         "audience": {

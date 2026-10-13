@@ -1788,7 +1788,11 @@
             "actions": [
                 {
                     "label": "Weergave",
-                    "text": "Schakel tussen <strong>week</strong> en <strong>maand</strong>. <strong>Weekends</strong> toont zaterdag en zondag (standaard uit); uit = alleen maandag tot vrijdag. In de maandgrid staat dan een zware verticale streep tussen vrijdag en maandag. Opslaan zonder weekends laat za/zo ongewijzigd. Een week kopiëren kan alleen in weekweergave."
+                    "text": "Schakel tussen <strong>week</strong> en <strong>maand</strong>. <strong>Weekends</strong> toont zaterdag en zondag (standaard uit); uit = alleen maandag tot vrijdag. In de maandgrid staat dan een zware verticale streep tussen vrijdag en maandag. Opslaan zonder weekends laat za/zo ongewijzigd. Een week kopiëren kan alleen in weekweergave. De knoppen <strong>Week</strong> en <strong>Maand</strong> gaan altijd naar de huidige week of maand."
+                },
+                {
+                    "label": "Kleuren en selectie",
+                    "text": "Feestdagen kleuren de datumkolom <strong>blauw</strong>, vervangingsdagen <strong>groen</strong> — de tooltip op de kolomkop zegt welke feestdag en welk effect. Een <strong>grijze cel</strong> is een vaste vrije dag van die uitvoerder (0 minuten in zijn weekpatroon); de cel blijft gewoon invulbaar. Weekend, vandaag en vergrendelde dagen hebben een eigen tint. Alleen de datumcellen kun je selecteren — namen en cijferkolommen niet."
                 },
                 {
                     "label": "Codes en vrije tijden",
@@ -1820,7 +1824,7 @@
                 },
                 {
                     "label": "Urenkolommen rechts",
-                    "text": "Rechts van het rooster staan per uitvoerder cijferkolommen met verticale titel: <strong>Norm</strong> (contractnorm), <strong>Verschil</strong> (gepland min norm, met teken), <strong>Gepland</strong>, <strong>Gewerkt</strong> en per afwezigheid <strong>Verlof</strong>, <strong>Recup</strong> en <strong>Ziek</strong> (dagen en resturen). <strong>Sein</strong> toont een aantal en/of een uitroepteken bij onvolledige blokken of een openstaande klokregistratie. Norm en verschil blijven leeg zolang de norm niet betrouwbaar is. De weeknorm (standaard 38u) stelt u in bij de uitvoerder; de maandnorm volgt uit de werkregeling — zonder werkregeling telt ma–vr volgens de weeknorm en een feestdag zonder afspraak als niet gewerkt. Dit is een telling, geen oordeel over arbeidsduur."
+                    "text": "Rechts van het rooster staan per uitvoerder cijferkolommen met verticale titel: <strong>Norm</strong> (contractnorm), <strong>Verschil</strong> (gepland min norm, met teken), <strong>Gepland</strong>, <strong>Gewerkt</strong> en per afwezigheid <strong>Verlof</strong>, <strong>Recup</strong> en <strong>Ziek</strong> (dagen en resturen). <strong>Sein</strong> toont een aantal en/of een uitroepteken bij onvolledige blokken of een openstaande klokregistratie. Norm en verschil blijven leeg zolang de norm niet betrouwbaar is. De weeknorm (standaard 38u) stelt u in bij de uitvoerder; de maandnorm volgt uit de werkregeling — zonder werkregeling telt ma–vr volgens de weeknorm en volgen feestdagen de feestdagenregeling — zonder afspraak de Belgische standaard. Dit is een telling, geen oordeel over arbeidsduur."
                 }
             ]
         },
@@ -1846,11 +1850,11 @@
             "actions": [
                 {
                     "label": "Regeling",
-                    "text": "Eén feestdagenregeling voor het hele bedrijf. De maandnorm in het uurrooster gebruikt deze keuzes voor <strong>alle uitvoerders</strong> — u hoeft niets per persoon in te stellen."
+                    "text": "Eén feestdagenregeling voor het hele bedrijf. De maandnorm in het uurrooster gebruikt deze keuzes voor <strong>alle uitvoerders</strong> — u hoeft niets per persoon in te stellen. In het uurrooster kleurt een feestdagkolom blauw en een vervangingsdag groen."
                 },
                 {
                     "label": "Effect",
-                    "text": "Kies per feestdag: <strong>Geen effect</strong> (normale minuten blijven), <strong>Werkdag vervalt</strong> (geen norm die dag) of <strong>Vervangingsdag</strong> (de minuten schuiven naar een andere datum). Zonder keuze telt de feestdag niet mee in het maandverschil."
+                    "text": "De Belgische standaard is al ingevuld: een feestdag op maandag–vrijdag vervalt, een feestdag in het weekend krijgt een voorgestelde vervangingsdag (badge <strong>Standaard</strong>, nog te bevestigen). U legt alleen afwijkingen vast: <strong>Geen effect</strong>, <strong>Werkdag vervalt</strong> of <strong>Vervangingsdag</strong> met eigen datum — die rijen tonen <strong>Vastgelegd</strong>. Kies <strong>Standaard</strong> om een afwijking te verwijderen. De voorgestelde vervangingsdatum is een rekenvoorstel, geen vastgelegde afspraak — bevestig hem als die geldt."
                 },
                 {
                     "label": "Jaar",

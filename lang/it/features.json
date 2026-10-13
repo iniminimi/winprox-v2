@@ -87,7 +87,8 @@
                 "Allarme se si salta tra Clock Point entro 5 min",
                 "Le mie ore su Clock Point (solo i propri turni)",
                 "Pausa minima per team sul foglio ore (nessun evento CIAO extra)",
-                "Chiedere ferie o recupero sul Clock Point; la gestione decide in Time → Richieste"
+                "Chiedere ferie o recupero sul Clock Point; la gestione decide in Time → Richieste",
+                "Turni in vista settimanale o mensile — festivi, giorni sostitutivi e giorni liberi fissi colorati"
             ]
         },
         "audience": {

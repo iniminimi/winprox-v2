@@ -87,7 +87,8 @@
                 "Alarm when hopping Clock Points within 5 min",
                 "My hours on Clock Point (own shifts only)",
                 "Per-team minimum break on the timesheet (no extra CIAO event)",
-                "Request leave or TOIL on Clock Point; staff decide under Time → Requests"
+                "Request leave or TOIL on Clock Point; staff decide under Time → Requests",
+                "Roster in week or month view — holidays, replacement days and fixed days off tinted"
             ]
         },
         "audience": {

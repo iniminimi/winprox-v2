@@ -1788,7 +1788,11 @@
             "actions": [
                 {
                     "label": "Vista",
-                    "text": "Passa tra <strong>settimana</strong> e <strong>mese</strong>. <strong>Weekend</strong> mostra sabato e domenica (disattivati di default); disattivati = solo lunedì–venerdì. Nella griglia mensile una linea verticale marcata separa allora venerdì e lunedì. Salvare senza weekend lascia sab/dom invariati. Copiare una settimana solo in vista settimana."
+                    "text": "Passa tra <strong>settimana</strong> e <strong>mese</strong>. <strong>Weekend</strong> mostra sabato e domenica (disattivati di default); disattivati = solo lunedì–venerdì. Nella griglia mensile una linea verticale marcata separa allora venerdì e lunedì. Salvare senza weekend lascia sab/dom invariati. Copiare una settimana solo in vista settimana. I pulsanti <strong>Settimana</strong> e <strong>Mese</strong> portano sempre alla settimana o al mese corrente."
+                },
+                {
+                    "label": "Colori e selezione",
+                    "text": "I festivi colorano la colonna della data di <strong>blu</strong>, i giorni sostitutivi di <strong>verde</strong> — il tooltip dell’intestazione indica la festa e il suo effetto. Una <strong>cella grigia</strong> è un giorno libero fisso di quell’esecutore (0 minuti nel suo schema settimanale); la cella resta modificabile. Weekend, oggi e giorni bloccati hanno una tinta propria. Solo le celle delle date si possono selezionare — nomi e colonne di cifre no."
                 },
                 {
                     "label": "Codici e orari liberi",
@@ -1820,7 +1824,7 @@
                 },
                 {
                     "label": "Colonne delle ore a destra",
-                    "text": "A destra della griglia, ogni esecutore ha colonne di cifre con titolo verticale: <strong>Norma</strong> (norma contrattuale), <strong>Scarto</strong> (pianificato meno norma, con segno), <strong>Pianificato</strong>, <strong>Lavorato</strong> e per assenza <strong>Ferie</strong>, <strong>Recupero</strong> e <strong>Malattia</strong> (giorni più ore residue). <strong>Segnale</strong> mostra un numero e/o un punto esclamativo per blocchi incompleti o una timbratura aperta. Norma e scarto restano vuoti finché la norma non è affidabile. La norma settimanale (38 ore predefinita) si imposta sull’esecutore; la norma mensile segue la regola di lavoro — senza regola, lun–ven contano secondo la norma settimanale e un festivo senza accordo conta come non lavorato. È un conteggio, non un giudizio sull’orario di lavoro."
+                    "text": "A destra della griglia, ogni esecutore ha colonne di cifre con titolo verticale: <strong>Norma</strong> (norma contrattuale), <strong>Scarto</strong> (pianificato meno norma, con segno), <strong>Pianificato</strong>, <strong>Lavorato</strong> e per assenza <strong>Ferie</strong>, <strong>Recupero</strong> e <strong>Malattia</strong> (giorni più ore residue). <strong>Segnale</strong> mostra un numero e/o un punto esclamativo per blocchi incompleti o una timbratura aperta. Norma e scarto restano vuoti finché la norma non è affidabile. La norma settimanale (38 ore predefinita) si imposta sull’esecutore; la norma mensile segue la regola di lavoro — senza regola, lun–ven contano secondo la norma settimanale e i festivi seguono il regime delle festività — senza accordo, lo standard belga. È un conteggio, non un giudizio sull’orario di lavoro."
                 }
             ]
         },
@@ -1846,11 +1850,11 @@
             "actions": [
                 {
                     "label": "Regime",
-                    "text": "Un solo regime delle festività per tutta l’azienda. La norma mensile dell’orario applica queste scelte a <strong>tutti gli operai</strong> — niente va impostato per persona."
+                    "text": "Un solo regime delle festività per tutta l’azienda. La norma mensile dell’orario applica queste scelte a <strong>tutti gli operai</strong> — niente va impostato per persona. Nei turni la colonna di un festivo è blu e quella di un giorno sostitutivo verde."
                 },
                 {
                     "label": "Effetto",
-                    "text": "Scegliete per ogni festività: <strong>Nessun effetto</strong> (i minuti abituali restano), <strong>Il giorno lavorativo decade</strong> (nessuna norma quel giorno) o <strong>Giorno di sostituzione</strong> (i minuti slittano a un’altra data). Senza scelta la festività non conta nello scarto mensile."
+                    "text": "Il regime belga standard è già compilato: una festività lunedì–venerdì decade, una festività nel weekend riceve un giorno sostitutivo proposto (badge <strong>Standard</strong>, da confermare). Registrare solo le deroghe: <strong>Nessun effetto</strong>, <strong>Il giorno lavorativo decade</strong> o <strong>Giorno di sostituzione</strong> con data propria — quelle righe mostrano <strong>Definito</strong>. Scegliere <strong>Standard</strong> per rimuovere una deroga. La data proposta è una proposta di calcolo, non un accordo registrato — confermarla se vale."
                 },
                 {
                     "label": "Anno",

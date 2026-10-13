@@ -1796,7 +1796,11 @@
             "actions": [
                 {
                     "label": "Affichage",
-                    "text": "Basculez entre <strong>semaine</strong> et <strong>mois</strong>. <strong>Week-ends</strong> affiche samedi et dimanche (désactivé par défaut) ; désactivé = lundi à vendredi. Dans la grille mensuelle, une ligne verticale marquée sépare alors vendredi et lundi. Enregistrer sans week-ends laisse sam./dim. inchangés. Copier une semaine n’est possible qu’en vue semaine."
+                    "text": "Basculez entre <strong>semaine</strong> et <strong>mois</strong>. <strong>Week-ends</strong> affiche samedi et dimanche (désactivé par défaut) ; désactivé = lundi à vendredi. Dans la grille mensuelle, une ligne verticale marquée sépare alors vendredi et lundi. Enregistrer sans week-ends laisse sam./dim. inchangés. Copier une semaine n’est possible qu’en vue semaine. Les boutons <strong>Semaine</strong> et <strong>Mois</strong> mènent toujours à la semaine ou au mois en cours."
+                },
+                {
+                    "label": "Couleurs et sélection",
+                    "text": "Les jours fériés colorent la colonne de date en <strong>bleu</strong>, les jours de remplacement en <strong>vert</strong> — l’infobulle de l’en-tête indique le jour férié et son effet. Une <strong>cellule grise</strong> est un jour de repos fixe de cet intervenant (0 minute dans son rythme hebdomadaire); la cellule reste modifiable. Week-end, aujourd’hui et jours verrouillés ont leur propre teinte. Seules les cellules de date sont sélectionnables — ni les noms ni les colonnes de chiffres."
                 },
                 {
                     "label": "Codes et heures libres",
@@ -1828,7 +1832,7 @@
                 },
                 {
                     "label": "Colonnes d’heures à droite",
-                    "text": "À droite de la grille, chaque exécutant a des colonnes de chiffres à titre vertical : <strong>Norme</strong> (norme de contrat), <strong>Écart</strong> (planifié moins la norme, signé), <strong>Planifié</strong>, <strong>Travaillé</strong> et par absence <strong>Congé</strong>, <strong>Récup</strong> et <strong>Maladie</strong> (jours plus heures restantes). <strong>Signal</strong> montre un nombre et/ou un point d’exclamation pour des blocs incomplets ou un pointage ouvert. Norme et écart restent vides tant que la norme n’est pas fiable. La norme hebdomadaire (38 h par défaut) se règle sur l’exécutant ; la norme mensuelle suit le régime de travail — sans régime, lun–ven comptent selon la norme hebdomadaire et un jour férié sans accord compte comme non travaillé. C’est un décompte, pas un jugement sur la durée du travail."
+                    "text": "À droite de la grille, chaque exécutant a des colonnes de chiffres à titre vertical : <strong>Norme</strong> (norme de contrat), <strong>Écart</strong> (planifié moins la norme, signé), <strong>Planifié</strong>, <strong>Travaillé</strong> et par absence <strong>Congé</strong>, <strong>Récup</strong> et <strong>Maladie</strong> (jours plus heures restantes). <strong>Signal</strong> montre un nombre et/ou un point d’exclamation pour des blocs incomplets ou un pointage ouvert. Norme et écart restent vides tant que la norme n’est pas fiable. La norme hebdomadaire (38 h par défaut) se règle sur l’exécutant ; la norme mensuelle suit le régime de travail — sans régime, lun–ven comptent selon la norme hebdomadaire et les jours fériés suivent le régime des fériés — sans accord, le standard belge. C’est un décompte, pas un jugement sur la durée du travail."
                 }
             ]
         },
@@ -1854,11 +1858,11 @@
             "actions": [
                 {
                     "label": "Règlement",
-                    "text": "Un seul règlement des jours fériés pour toute l’entreprise. La norme mensuelle du planning applique ces choix à <strong>tous les ouvriers</strong> — rien ne se règle par personne."
+                    "text": "Un seul règlement des jours fériés pour toute l’entreprise. La norme mensuelle du planning applique ces choix à <strong>tous les ouvriers</strong> — rien ne se règle par personne. Dans le planning, la colonne d’un jour férié est bleue et celle d’un jour de remplacement verte."
                 },
                 {
                     "label": "Effet",
-                    "text": "Choisissez par jour férié : <strong>Aucun effet</strong> (les minutes habituelles restent), <strong>Jour de travail annulé</strong> (pas de norme ce jour) ou <strong>Jour de remplacement</strong> (les minutes basculent sur une autre date). Sans choix, le jour férié ne compte pas dans l’écart mensuel."
+                    "text": "Le régime belge standard est déjà rempli : un jour férié lundi–vendredi est annulé, un jour férié le week-end obtient un jour de remplacement proposé (badge <strong>Standard</strong>, à confirmer). Vous ne consignez que les écarts : <strong>Aucun effet</strong>, <strong>Jour de travail annulé</strong> ou <strong>Jour de remplacement</strong> avec votre propre date — ces lignes affichent <strong>Défini</strong>. Choisissez <strong>Standard</strong> pour supprimer un écart. La date proposée est une proposition de calcul, pas un accord consigné — confirmez-la si elle vaut."
                 },
                 {
                     "label": "Année",

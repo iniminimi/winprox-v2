@@ -920,7 +920,21 @@ Week- of **maandweergave**; maandkolommen zijn smaller (dagnummer + weekdag onde
 In **week- en maandweergave** toont het vinkje **Weekends** zaterdag en zondag;
 uit = alleen maandag–vrijdag. Bij uitgeschakelde weekends staat tussen vrijdag en de
 volgende maandag een **zware verticale streep** (zichtbaar in de maandgrid). Standaard
-staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet.
+staat weekends **uit**. Opslaan zonder weekends raakt za/zo niet. De knoppen **Week** en
+**Maand** springen altijd naar de huidige periode (`RosterIndex::setView`, naast ‹ › en
+het weeklabel). Selectie is beperkt tot de datumkolommen: `onbeforeselection` annuleert
+of knipt elke selectie die de naam- of cijferkolommen raakt.
+
+**Dag- en celmarkering** (`day_flags` + `off_weekdays` in de snapshot, week én maand):
+een feestdag tint de hele datumkolom **blauw** (`--wp-info`), een vervangingsdag **groen**
+(`--wp-accent`); de tooltip op de kolomkop verklaart het — "Feestdag: naam · effect" of
+"Vervangingsdag voor naam (dd/mm/jjjj)" — via dezelfde effectieve regeling als de
+maandnorm (`BelgianHolidayStandardScheme::effectiveFor`, overrides + afgeleide standaard).
+Een **grijze cel** is een vaste vrije dag van die uitvoerder: een expliciete
+`worker_weekday_minutes`-rij met 0 minuten op die weekdag (ontbrekend of onvolledig
+patroon markeert nooit). De cel blijft bewerkbaar; ingevulde uren tellen gewoon mee.
+Volgorde: feestdag/vervangingsdag/vandaag/vergrendeld winnen van off-day — za/zo met een
+0-patroon houden de neutrale weekendtint.
 
 **Weekoverzicht** (`SummarizeWorkerWeekHoursAction`, alleen weekweergave, rechts naast de dagen):
 contractuele weeknorm (`workers.weekly_contract_minutes`, nullable, max 10080; standaard 38 uur /
