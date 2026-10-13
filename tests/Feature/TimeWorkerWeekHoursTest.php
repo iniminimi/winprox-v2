@@ -313,7 +313,7 @@ it('houdt de weekgrens in lokale tijd, ook rond zomer- en wintertijd', function 
         ->and(weekSummary($tenant, $worker, '2026-03-30')->workedMinutes)->toBe(8 * 60);
 });
 
-it('laat de norm alleen door aan admin en medewerker van dezelfde tenant', function () {
+it('laat de norm door aan iedere actor met roostertoegang', function () {
     [$tenant, $admin, $team, $worker] = weekHoursTenant();
     $worker->update(['weekly_contract_minutes' => 2220]);
     $employee = User::factory()->create([
@@ -334,12 +334,11 @@ it('laat de norm alleen door aan admin en medewerker van dezelfde tenant', funct
         ->and($forAdmin['week_hours']['difference_minutes'])->toBe(-2220)
         ->and($forEmployee['week_hours']['contract_minutes'])->toBe(2220)
         ->and(array_column($forAdminSnapshot->hoursColumns, 'key'))->toContain('norm')
-        ->and($forSuper['week_hours'])->not->toHaveKey('contract_minutes')
-        ->and($forSuper['week_hours'])->not->toHaveKey('difference_minutes')
-        ->and($superKeys)->not->toContain('norm')
-        ->and($superKeys)->not->toContain('difference')
-        ->and($forSuper['week_hours']['figures'])->toHaveCount(count($superKeys))
-        ->and(json_encode($forSuper['week_hours']))->not->toContain('2220');
+        ->and($forSuper['week_hours']['contract_minutes'])->toBe(2220)
+        ->and($forSuper['week_hours']['difference_minutes'])->toBe(-2220)
+        ->and($superKeys)->toContain('norm')
+        ->and($superKeys)->toContain('difference')
+        ->and($forSuper['week_hours']['figures'])->toHaveCount(count($superKeys));
 });
 
 it('zet de uren in vaste cijferkolommen', function () {

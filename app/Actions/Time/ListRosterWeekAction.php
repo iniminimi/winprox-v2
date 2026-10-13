@@ -244,7 +244,9 @@ class ListRosterWeekAction
         $monthFacts = [];
         $monthNorms = [];
         $showsHours = $period === 'week' || $period === 'month';
-        $contractVisible = $showsHours && $this->contractNormVisible($actor, $tenantId);
+        // De contractnorm wordt altijd getoond (ook voor superusers) — de
+        // planner heeft Norm/Verschil nodig om het rooster te sturen.
+        $contractVisible = $showsHours;
         $hoursColumns = $showsHours ? $this->hoursColumns($contractVisible) : [];
         if ($period === 'week' && $workerIds !== []) {
             $weekHours = $this->summarizeWeekHours->handle($tenantId, $workerIds, $weekStartDate);
@@ -323,13 +325,6 @@ class ListRosterWeekAction
             groupMode: $groupMode,
             hoursColumns: $hoursColumns,
         );
-    }
-
-    private function contractNormVisible(?User $actor, int $tenantId): bool
-    {
-        return $actor !== null
-            && (int) $actor->tenant_id === $tenantId
-            && ($actor->isAdmin() || $actor->isEmployee());
     }
 
     /**

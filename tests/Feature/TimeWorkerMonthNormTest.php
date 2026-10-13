@@ -319,7 +319,7 @@ it('weigert een ongedekte of botsende vervangingsdag en past geen deelcorrectie 
         ->and($facts->plannedMinutes)->toBe(4 * 60);
 });
 
-it('houdt norm en status uit de superuser-payload en laat de weekpayload met rust', function () {
+it('toont norm en status ook aan superusers en laat de weekpayload met rust', function () {
     [$tenant, $admin, $team, $worker] = monthNormTenant(2220);
     $pattern = monthNormFiveDayPattern(444);
     monthNormSync($worker, $pattern);
@@ -352,13 +352,12 @@ it('houdt norm en status uit de superuser-payload en laat de weekpayload met rus
         ->and($forSuper['month_hours']['planned_minutes'])->toBe(0)
         ->and($forSuper['month_hours'])->toHaveKey('worked_minutes')
         ->and($forSuper['month_hours'])->toHaveKey('absences')
-        ->and($forSuper['month_hours'])->not->toHaveKey('norm_status')
-        ->and($forSuper['month_hours'])->not->toHaveKey('contract_minutes')
-        ->and($forSuper['month_hours'])->not->toHaveKey('difference_minutes')
-        ->and($superKeys)->not->toContain('norm')
-        ->and($superKeys)->not->toContain('difference')
-        ->and($forSuper['month_hours']['figures'])->toHaveCount(count($superKeys))
-        ->and(json_encode($forSuper['month_hours']))->not->toContain((string) $minutes);
+        ->and($forSuper['month_hours']['norm_status'])->toBe(MonthNormStatus::Available->value)
+        ->and($forSuper['month_hours']['contract_minutes'])->toBe($minutes)
+        ->and($forSuper['month_hours']['difference_minutes'])->toBe(-$minutes)
+        ->and($superKeys)->toContain('norm')
+        ->and($superKeys)->toContain('difference')
+        ->and($forSuper['month_hours']['figures'])->toHaveCount(count($superKeys));
 
     $week = collect($list->handle((int) $tenant->id, '2026-02-02', (int) $team->id, $admin)->workers)
         ->firstWhere('id', $worker->id);
