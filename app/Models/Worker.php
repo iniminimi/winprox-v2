@@ -17,6 +17,28 @@ class Worker extends Model
     /** Standaard contractuele weeknorm: 38 uur. Null blijft “geen norm”. */
     public const DEFAULT_WEEKLY_CONTRACT_MINUTES = 2280;
 
+    /**
+     * Standaardwerkregeling: het contract gelijk verdeeld over ma–vr,
+     * de rest op vrijdag zodat de som exact de weeknorm is. Za/zo = 0.
+     * 2280 → [456, 456, 456, 456, 456, 0, 0].
+     *
+     * @return array<int, int>
+     */
+    public static function defaultWeekPattern(int $contractMinutes): array
+    {
+        $perDay = intdiv($contractMinutes, 5);
+
+        return [
+            1 => $perDay,
+            2 => $perDay,
+            3 => $perDay,
+            4 => $perDay,
+            5 => $contractMinutes - ($perDay * 4),
+            6 => 0,
+            7 => 0,
+        ];
+    }
+
     protected $fillable = [
         'tenant_id',
         'user_id',

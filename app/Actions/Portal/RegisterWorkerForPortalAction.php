@@ -2,6 +2,7 @@
 
 namespace App\Actions\Portal;
 
+use App\Actions\Team\SeedWorkerWeekPatternAction;
 use App\Models\InternalTeam;
 use App\Models\Tenant;
 use App\Models\Worker;
@@ -9,7 +10,10 @@ use App\Support\Portal\WorkerIcon;
 
 class RegisterWorkerForPortalAction
 {
-    public function __construct(private AttachWorkerDeviceAction $attachDevice) {}
+    public function __construct(
+        private AttachWorkerDeviceAction $attachDevice,
+        private SeedWorkerWeekPatternAction $seedWeekPattern,
+    ) {}
     /**
      * @return array{worker: Worker, device_token: string}
      */
@@ -41,6 +45,8 @@ class RegisterWorkerForPortalAction
             'field_icon_slug' => $iconSlug,
             'is_active' => true,
         ]);
+
+        $this->seedWeekPattern->handle($worker);
 
         return $this->attachDevice->handle($worker);
     }

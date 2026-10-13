@@ -14,6 +14,7 @@ class CreateLinkedWorkerForUserAction
     public function __construct(
         private AuditRecorder $audit,
         private SyncUserLocationsAction $syncLocations,
+        private SeedWorkerWeekPatternAction $seedWeekPattern,
     ) {}
 
     /**
@@ -51,6 +52,8 @@ class CreateLinkedWorkerForUserAction
         if ($locationIds !== []) {
             $this->syncLocations->handleForWorker($worker, $locationIds, $actorUserId);
         }
+
+        $this->seedWeekPattern->handle($worker, $actorUserId);
 
         $this->audit->record(
             userId: $actorUserId,

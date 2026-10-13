@@ -3,6 +3,7 @@
 namespace App\Actions\Workers;
 
 use App\Actions\Locations\SyncUserLocationsAction;
+use App\Actions\Team\SeedWorkerWeekPatternAction;
 use App\Data\Workers\ImportWorkersData;
 use App\Models\InternalTeam;
 use App\Models\Location;
@@ -20,6 +21,7 @@ class ImportWorkersAction
         private AuditRecorder $audit,
         private TabularImportReader $tabularReader,
         private SyncUserLocationsAction $syncLocations,
+        private SeedWorkerWeekPatternAction $seedWeekPattern,
     ) {}
 
     /** @var list<string> */
@@ -188,6 +190,8 @@ class ImportWorkersAction
                 if ($locationIds !== []) {
                     $this->syncLocations->handleForWorker($worker, $locationIds, $actorUserId);
                 }
+
+                $this->seedWeekPattern->handle($worker, $actorUserId);
 
                 $importedCount++;
             }

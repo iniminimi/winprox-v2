@@ -955,6 +955,19 @@ verschil blijven leeg zodra er geen normgetal is (stale patroon of conflict). De
 0 minuten is geen normale werkdag maar blokkeert plannen niet. De werkregeling staat in de
 uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**.
 
+- **Standaardwerkregeling:** een nieuwe uitvoerder (modal, CSV-import, gekoppelde
+  gebruiker, portaalregistratie, starterpack) krijgt — als de tenant de Time-module
+  heeft — meteen de zeven standaarddagen: de contractnorm verdeeld over ma–vr
+  (`Worker::defaultWeekPattern()`, 2280 → 5 × 456 minuten). Die rijen zijn een
+  échte werkregeling: de maandnorm toont ze als `available`, niet als impliciete
+  aanname. Expliciet leeg contract blijft patroonloos ("geen norm"). De
+  create-modal vult de weekdagvelden voor; onaangeraakt laten staan volgt de
+  gekozen contractnorm, aanpassen blijft mogelijk (som = weeknorm blijft gelden).
+- **Bestaande uitvoerders:** `php artisan workers:seed-week-pattern`
+  (`--tenant=<id>`, `--dry-run`) vult alleen uitvoerders zonder enig patroon aan;
+  bestaande of onvolledige patronen blijven ongemoeid. Afwijkende contractnormen
+  worden volgens dezelfde ma–vr-regel verdeeld en in de uitvoer opgesomd.
+
 - **Feestdagen** (`/time/holidays`): één bedrijfsbrede regeling per tenant
   (`tenant_holiday_agreements`, uniek op `tenant_id` + `holiday_date`). Per Belgische
   feestdag één keuze — `none` (normale minuten blijven), `dropped` (werkdag vervalt) of

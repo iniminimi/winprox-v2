@@ -121,7 +121,7 @@ class ResolveWorkerMonthNormAction
     ): WorkerMonthNorm {
         $issues = [];
         $implicit = $pattern === [];
-        $effectivePattern = $implicit ? $this->defaultPattern($contractMinutes) : $pattern;
+        $effectivePattern = $implicit ? Worker::defaultWeekPattern($contractMinutes) : $pattern;
         if (! $this->patternMatches($effectivePattern, $contractMinutes)) {
             $issues[] = MonthNormStatus::Incomplete;
         }
@@ -201,27 +201,6 @@ class ResolveWorkerMonthNormAction
             $implicit ? MonthNormStatus::Incomplete : MonthNormStatus::Available,
             array_sum($map),
         );
-    }
-
-    /**
-     * Zonder bewaarde werkregeling geldt maandag t/m vrijdag verdeeld
-     * over de contractnorm; de rest gaat op vrijdag zodat de som klopt.
-     *
-     * @return array<int, int>
-     */
-    private function defaultPattern(int $contractMinutes): array
-    {
-        $perDay = intdiv($contractMinutes, 5);
-
-        return [
-            1 => $perDay,
-            2 => $perDay,
-            3 => $perDay,
-            4 => $perDay,
-            5 => $contractMinutes - ($perDay * 4),
-            6 => 0,
-            7 => 0,
-        ];
     }
 
     /**

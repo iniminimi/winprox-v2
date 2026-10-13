@@ -19,6 +19,7 @@ class CreateWorkerAction
     public function __construct(
         private AuditRecorder $audit,
         private SyncUserLocationsAction $syncLocations,
+        private SeedWorkerWeekPatternAction $seedWeekPattern,
     ) {}
 
     /**
@@ -79,6 +80,12 @@ class CreateWorkerAction
 
         if (array_key_exists('location_ids', $data)) {
             $this->syncLocations->handleForWorker($worker, $data['location_ids'] ?? [], $actorUserId);
+        }
+
+        // Expliciet leeg contract ("geen norm") krijgt geen patroon; een
+        // contractnorm — al dan niet de standaard 2280 — wel de standaardweek.
+        if ($worker->weekly_contract_minutes !== null) {
+            $this->seedWeekPattern->handle($worker, $actorUserId);
         }
 
         $this->audit->record(

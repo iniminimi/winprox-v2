@@ -747,6 +747,11 @@ class Team extends Component
         $this->workerContractHours = intdiv(Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES, 60);
         $this->workerContractMinutes = Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES % 60;
         $this->resetWorkPatternInputs();
+        if ($this->workerContractFieldEnabled()) {
+            foreach (Worker::defaultWeekPattern(Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES) as $day => $mins) {
+                $this->workerWeekdayMinutes[(string) $day] = (string) $mins;
+            }
+        }
         $this->workerLocationsPanelOpen = false;
         $this->showWorkerModal = true;
     }
@@ -937,7 +942,12 @@ class Team extends Component
             $this->persistWorkerPhoto($worker, $updateWorkerPhoto, $deleteWorkerPhoto);
         }
 
-        if ($this->workerContractFieldEnabled()) {
+        // Create-modus met onaangeraakte voorinvulling: de seed in
+        // CreateWorkerAction heeft de standaardverdeling al correct gezet.
+        $skipWeekPattern = $this->editingWorkerId === null
+            && $this->workerWeekdayInputsAreDefault();
+
+        if ($this->workerContractFieldEnabled() && ! $skipWeekPattern) {
             try {
                 $this->persistWeekPattern($syncWeekPattern, $clearWeekPattern, $worker->fresh());
             } catch (ValidationException $e) {
@@ -1094,6 +1104,19 @@ class Team extends Component
         }
 
         $sync->handle((int) $worker->tenant_id, $worker, $minutes, (int) auth()->id());
+    }
+
+    private function workerWeekdayInputsAreDefault(): bool
+    {
+        $default = Worker::defaultWeekPattern(Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES);
+        foreach (range(1, 7) as $day) {
+            $value = $this->workerWeekdayMinutes[(string) $day] ?? $this->workerWeekdayMinutes[$day] ?? '';
+            if ($value === '' || (int) $value !== $default[$day]) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     private function resetWorkPatternInputs(): void
