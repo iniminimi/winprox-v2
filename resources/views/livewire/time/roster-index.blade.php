@@ -5,7 +5,7 @@
     x-init="window.wpRosterSheet && window.wpRosterSheet.bind($el, $wire)"
 >
     <x-wp-page-head-title
-        icon="roster"
+        icon="time"
         :title="__('time.schedule.title')"
         help-page="time.schedule"
         :subtitle="__('time.schedule.subtitle')"

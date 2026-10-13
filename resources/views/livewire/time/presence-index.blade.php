@@ -6,7 +6,7 @@
     <div class="wp-page-head">
         <div class="wp-grow wp-stack-tight">
             <x-wp-page-head-title
-                icon="clock"
+                icon="time"
                 :title="__('time.presence.title')"
                 help-page="time.presence"
                 :subtitle="__('time.presence.subtitle')"

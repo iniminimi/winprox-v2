@@ -35,7 +35,7 @@ final class DashboardStatsData
         }
 
         if ($this->hasTimeModule && $this->presentNow !== null) {
-            $tiles[] = ['key' => 'present_now', 'icon' => 'clock', 'label' => 'dashboard.kpi.present_now', 'meta' => null, 'alert' => false, 'href_key' => 'present_now'];
+            $tiles[] = ['key' => 'present_now', 'icon' => 'time', 'label' => 'dashboard.kpi.present_now', 'meta' => null, 'alert' => false, 'href_key' => 'present_now'];
         }
 
         if ($this->workMenuIssuesTasksEnabled && $this->pendingReview > 0) {
@@ -51,7 +51,7 @@ final class DashboardStatsData
         }
 
         if ($this->hasTimeModule && $this->pendingAbsenceRequests > 0) {
-            $tiles[] = ['key' => 'pending_absence', 'icon' => 'calendar', 'label' => 'dashboard.kpi.pending_absence', 'meta' => null, 'alert' => true, 'href_key' => 'pending_absence'];
+            $tiles[] = ['key' => 'pending_absence', 'icon' => 'time', 'label' => 'dashboard.kpi.pending_absence', 'meta' => null, 'alert' => true, 'href_key' => 'pending_absence'];
         }
 
         if ($this->hasIotModule && $this->iotAlarms > 0) {

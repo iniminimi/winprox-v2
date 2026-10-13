@@ -36,7 +36,7 @@
         <div class="wp-page-head wp-roster-print__head">
             <div class="wp-roster-print__head-start wp-stack-tight">
                 <x-wp-page-head-title
-                    icon="calendar"
+                    icon="time"
                     :title="__('time.schedule.title')"
                 />
                 <p class="wp-muted">{{ $periodLabel }}</p>

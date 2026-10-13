@@ -29,7 +29,7 @@
                 </p>
             </div>
             <span class="wp-kpi-icon" aria-hidden="true">
-                <x-wp-icon name="clock" />
+                <x-wp-icon name="time" />
             </span>
         </div>
     </button>

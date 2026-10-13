@@ -50,8 +50,8 @@
                         <ol class="wp-welcome-hero-flow" aria-label="{{ __('welcome.hero.flow') }}">
                             @foreach ([
                                 ['icon' => 'qr', 'key' => 'scan'],
-                                ['icon' => 'clock', 'key' => 'punch'],
-                                ['icon' => 'roster', 'key' => 'hours'],
+                                ['icon' => 'time', 'key' => 'punch'],
+                                ['icon' => 'time', 'key' => 'hours'],
                                 ['icon' => 'check', 'key' => 'secretariat'],
                             ] as $step)
                                 <li class="wp-welcome-hero-flow__step">

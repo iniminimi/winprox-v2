@@ -280,7 +280,7 @@
                         @if ($showTimeNav)
                             <details class="wp-sidebar-accordion__group" @if(request()->routeIs('time.*')) open @endif>
                                 <summary class="wp-nav-link {{ request()->routeIs('time.*') ? 'is-active' : '' }}">
-                                    <x-wp-icon name="clock" class="wp-nav-icon" />
+                                    <x-wp-icon name="time" class="wp-nav-icon" />
                                     <span>{{ __('common.nav.time') }}</span>
                                 </summary>
                                 <div class="wp-sidebar-accordion__panel">
@@ -562,7 +562,7 @@
                             @if ($showTimeNav)
                                 <details class="wp-sidebar-accordion__group" @if($timeGroupActive) open @endif>
                                     <summary class="wp-nav-link {{ $timeGroupActive ? 'is-active' : '' }}">
-                                        <x-wp-icon name="clock" class="wp-nav-icon" />
+                                        <x-wp-icon name="time" class="wp-nav-icon" />
                                         <span>{{ __('common.nav.time') }}</span>
                                     </summary>
                                     <div class="wp-sidebar-accordion__panel">

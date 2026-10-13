@@ -8,7 +8,7 @@
         <div class="wp-page-head">
             <div class="wp-grow wp-stack-tight">
                 <x-wp-page-head-title
-                    icon="clock"
+                    icon="time"
                     :title="__('time.print.title')"
                 />
                 <p class="wp-muted">{{ __('time.print.period', ['from' => $from->format('d-m-Y'), 'to' => $to->format('d-m-Y')]) }}</p>

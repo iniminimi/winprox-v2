@@ -78,7 +78,7 @@ class BuildDashboardIntentHubAction
         if ($tenant->hasTimeModule()) {
             $tiles[] = [
                 'key' => 'presence',
-                'icon' => 'clock',
+                'icon' => 'time',
                 'tone' => 'units',
                 'title' => 'dashboard.intent.tiles.presence.title',
                 'body' => 'dashboard.intent.tiles.presence.body',
@@ -104,7 +104,7 @@ class BuildDashboardIntentHubAction
         if ($tenant->hasTimeModule()) {
             $tiles[] = [
                 'key' => 'roster',
-                'icon' => 'roster',
+                'icon' => 'time',
                 'tone' => 'new_issues',
                 'title' => 'dashboard.intent.tiles.roster.title',
                 'body' => 'dashboard.intent.tiles.roster.body',

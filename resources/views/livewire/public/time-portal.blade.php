@@ -36,7 +36,7 @@
             </div>
         </div>
         @unless ($canAct ?? false)
-            <x-wp-page-head-title variant="portal" icon="clock" :title="__('time.portal.title')">
+            <x-wp-page-head-title variant="portal" icon="time" :title="__('time.portal.title')">
                 @if ($offerHomescreenShortcut ?? false)
                     <x-slot:toolbar>
                         @include('partials.wp-homescreen-shortcut')
@@ -225,7 +225,7 @@
             <div class="wp-stack" data-manual-capture="portal-team-signed-in">
                 @if ($hoursListOpen && $hours !== null)
                     <x-wp-portal-back wire:click="closeHours" />
-                    <x-wp-page-head-title variant="portal" icon="clock" :title="__('time.portal.hours.title')">
+                    <x-wp-page-head-title variant="portal" icon="time" :title="__('time.portal.hours.title')">
                         <p class="wp-muted">{{ __('time.portal.hours.subtitle') }}</p>
                     </x-wp-page-head-title>
                     @include('partials.wp-portal-worker-hours', [
@@ -235,7 +235,7 @@
                     ])
                 @elseif ($scheduleListOpen && $schedule !== null)
                     <x-wp-portal-back wire:click="closeSchedule" />
-                    <x-wp-page-head-title variant="portal" icon="calendar" :title="__('time.portal.schedule.title')">
+                    <x-wp-page-head-title variant="portal" icon="time" :title="__('time.portal.schedule.title')">
                         <p class="wp-muted">{{ __('time.portal.schedule.subtitle') }}</p>
                     </x-wp-page-head-title>
                     @include('partials.wp-portal-worker-schedule', [
@@ -244,7 +244,7 @@
                     ])
                 @elseif ($absenceListOpen)
                     <x-wp-portal-back wire:click="closeAbsence" />
-                    <x-wp-page-head-title variant="portal" icon="calendar" :title="__('time.portal.absence.title')">
+                    <x-wp-page-head-title variant="portal" icon="time" :title="__('time.portal.absence.title')">
                         <p class="wp-muted">{{ __('time.portal.absence.subtitle') }}</p>
                     </x-wp-page-head-title>
                     @include('partials.wp-portal-absence-requests', [
@@ -832,7 +832,7 @@
                             @unless ($checkmateMode ?? false)
                                 <button type="button" class="wp-tile" wire:click="openSchedule">
                                     <span class="wp-cluster">
-                                        <x-wp-icon name="calendar" class="wp-tile-icon" />
+                                        <x-wp-icon name="time" class="wp-tile-icon" />
                                         <span class="wp-tile-title">{{ __('time.portal.schedule.tile') }}</span>
                                         @if (($scheduleUnreadCount ?? 0) > 0)
                                             <span class="wp-pill wp-pill--new">{{ $scheduleUnreadCount }}</span>
@@ -843,7 +843,7 @@
                             @endunless
                             <button type="button" class="wp-tile" wire:click="openHours" data-manual-capture-trigger="portal-open-hours">
                                 <span class="wp-cluster">
-                                    <x-wp-icon name="clock" class="wp-tile-icon" />
+                                    <x-wp-icon name="time" class="wp-tile-icon" />
                                     <span class="wp-tile-title">{{ __('time.portal.hours.tile') }}</span>
                                 </span>
                                 <span class="wp-tile-sub">{{ __('time.portal.hours.tile_sub') }}</span>
@@ -860,7 +860,7 @@
                             @unless ($checkmateMode ?? false)
                                 <button type="button" class="wp-tile" wire:click="openAbsence">
                                     <span class="wp-cluster">
-                                        <x-wp-icon name="calendar" class="wp-tile-icon" />
+                                        <x-wp-icon name="time" class="wp-tile-icon" />
                                         <span class="wp-tile-title">{{ __('time.portal.absence.tile') }}</span>
                                     </span>
                                     <span class="wp-tile-sub">{{ __('time.portal.absence.tile_sub') }}</span>

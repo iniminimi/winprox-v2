@@ -472,6 +472,24 @@
     height: 1.125rem;
 }
 
+.wp-icon--time {
+    object-fit: contain;
+}
+
+.wp-page-icon .wp-icon--time,
+.wp-icon-frame .wp-icon--time,
+.wp-kpi-icon .wp-icon--time,
+.wp-tile-icon.wp-icon--time,
+.wp-manual-chapter__icon .wp-icon--time,
+.wp-welcome-hero-flow__icon .wp-icon--time {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.wp-nav-link .wp-nav-icon.wp-icon--time {
+    padding: 0.5rem;
+}
+
 .wp-page-icon--assistant {
     width: 80px;
     height: 80px;
