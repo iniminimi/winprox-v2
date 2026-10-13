@@ -1698,6 +1698,9 @@ class TimePortal extends Component
             if ($e->getMessage() === 'break_already_open') {
                 $this->portalFlash('time.portal.errors.break_already_open');
             }
+            if ($e->getMessage() === 'break_already_taken') {
+                $this->portalFlash('time.portal.errors.break_already_taken');
+            }
         }
     }
 

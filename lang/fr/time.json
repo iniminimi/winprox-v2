@@ -427,6 +427,7 @@
             "already_clocked_in": "Vous êtes déjà pointé. Voir ci-dessus où, ou déplacer vers ce site.",
             "not_clocked_in": "Vous n'êtes pas pointé.",
             "break_already_open": "Votre pause est déjà en cours.",
+            "break_already_taken": "Vous avez déjà pris une pause pour ce service.",
             "break_not_open": "Vous n'êtes pas en pause.",
             "icon_not_configured": "Votre compte n'est pas encore entièrement configuré. Contactez l'administrateur.",
             "device_mismatch": "Cet appareil n'est pas lié à votre pointeuse. Demandez à votre chef d'équipe ou à l'admin d'autoriser un nouvel appareil.",

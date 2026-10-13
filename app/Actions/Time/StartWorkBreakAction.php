@@ -64,6 +64,14 @@ class StartWorkBreakAction
                 throw new InvalidArgumentException('break_already_open');
             }
 
+            $alreadyTookBreak = WorkBreak::query()
+                ->where('work_shift_id', $shift->id)
+                ->exists();
+
+            if ($alreadyTookBreak) {
+                throw new InvalidArgumentException('break_already_taken');
+            }
+
             $break = WorkBreak::create([
                 'tenant_id' => $shift->tenant_id,
                 'work_shift_id' => $shift->id,

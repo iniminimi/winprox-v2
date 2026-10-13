@@ -427,6 +427,7 @@
             "already_clocked_in": "Hai già timbrato. Vedi sopra dove, oppure sposta in questa sede.",
             "not_clocked_in": "Non hai timbrato l'entrata.",
             "break_already_open": "La pausa è già in corso.",
+            "break_already_taken": "Ha già fatto una pausa in questo turno.",
             "break_not_open": "Non sei in pausa.",
             "icon_not_configured": "Il tuo account non è ancora completamente configurato. Contatta l'amministratore.",
             "device_mismatch": "Questo dispositivo non è collegato alla tua marcatura. Chiedi al team leader o all'amministratore di autorizzare un nuovo dispositivo.",

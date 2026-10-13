@@ -427,6 +427,7 @@
             "already_clocked_in": "Sie sind bereits eingestempelt. Siehe oben wo, oder hierher verschieben.",
             "not_clocked_in": "Sie sind nicht eingestempelt.",
             "break_already_open": "Ihre Pause läuft bereits.",
+            "break_already_taken": "Sie haben in dieser Schicht bereits eine Pause gemacht.",
             "break_not_open": "Sie sind nicht in Pause.",
             "icon_not_configured": "Ihr Konto ist noch nicht vollständig eingerichtet. Bitte wenden Sie sich an den Administrator.",
             "device_mismatch": "Dieses Gerät ist nicht mit deiner Stempeluhr verknüpft. Bitte Teamleiter oder Verwaltung, ein neues Gerät zuzulassen.",

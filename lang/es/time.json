@@ -427,6 +427,7 @@
             "already_clocked_in": "Ya estás fichado. Mira arriba dónde, o trasládalo a esta sede.",
             "not_clocked_in": "No ha fichado la entrada.",
             "break_already_open": "Su pausa ya está en curso.",
+            "break_already_taken": "Ya ha tomado una pausa en este turno.",
             "break_not_open": "No está en pausa.",
             "icon_not_configured": "Su cuenta aún no está completamente configurada. Contacte al administrador.",
             "device_mismatch": "Este dispositivo no está vinculado a tu fichaje. Pide a tu responsable o administrador que autorice un dispositivo nuevo.",

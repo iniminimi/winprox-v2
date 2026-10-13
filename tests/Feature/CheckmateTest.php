@@ -7,6 +7,8 @@ use App\Actions\Customers\CreateCustomerWithLocationAction;
 use App\Actions\Customers\SuggestCustomerNameMatchesAction;
 use App\Actions\Portal\ResolveWorkerIdentityForTenantAction;
 use App\Actions\Time\ClockInAction;
+use App\Actions\Time\EndWorkBreakAction;
+use App\Actions\Time\StartWorkBreakAction;
 use App\Actions\Time\CreateClockPointAction;
 use App\Actions\Time\RequestPresenceComplianceAction;
 use App\Actions\Time\SetClockPointActiveAction;
@@ -421,6 +423,39 @@ it('legt bij Pauze starten uit hoeveel pauze automatisch wordt afgetrokken', fun
 
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->assertDontSee(__('time.portal.clock.break_hint', ['min' => 30]));
+});
+
+it('verbergt de pauzeherinnering nadat er één pauze is genomen', function () {
+    $tenant = checkmateTenant();
+    Tenancy::actAs($tenant->id);
+    $worker = checkmateWorker($tenant);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $worker->team->update(['required_break_minutes' => 30]);
+
+    $shift = app(ClockInAction::class)->handle($worker, $clockPoint);
+    app(StartWorkBreakAction::class)->handle($worker, $shift);
+    app(EndWorkBreakAction::class)->handle($worker, $shift);
+
+    $open = $shift->fresh(['openBreak', 'breaks', 'team']);
+    $html = view('partials.wp-portal-now', [
+        'verifiedWorker' => $worker,
+        'signedInAt' => now(),
+        'openShift' => $open,
+        'lastClosedShift' => null,
+        'clockPointId' => $clockPoint->id,
+        'canPunch' => true,
+        'tenantName' => $tenant->name,
+        'gpsVisits' => false,
+        'onSiteGuidance' => [],
+        'absenceClockInKind' => 'leave',
+        'todayClockAlert' => null,
+    ])->render();
+
+    expect($html)
+        ->not->toContain(__('time.portal.clock.break_hint', ['min' => 30]))
+        ->not->toContain(__('time.portal.clock.start_break'))
+        ->and(fn () => app(StartWorkBreakAction::class)->handle($worker, $open))
+        ->toThrow(\InvalidArgumentException::class, 'break_already_taken');
 });
 
 it('laat de ingeklokt-flash na twee seconden automatisch verdwijnen', function () {

@@ -752,7 +752,9 @@ productsector op `Tenant`.
   beheerder kan het minimum één klik toepassen (audit `work_shift.required_break_applied`)
   of pauzeminuten corrigeren. Een geklokte pauze staat op Uren zodra ze start,
   ook bij een nog open dienst (tijden en minuten). `total_break_minutes` wordt
-  pas bij sluiten vastgezet. API: `POST /api/v1/time/work-shifts/{id}/apply-required-break`;
+  pas bij sluiten vastgezet. Per dienst één pauze: na start (ook als die al
+  gestopt is, ook bij inklokken op verlof) verdwijnt op het portaal
+  "Vergeet je pauze niet" en de knop voor een tweede pauze. API: `POST /api/v1/time/work-shifts/{id}/apply-required-break`;
   `GET /api/v1/teams` bevat `required_break_minutes`.
 - **Shift corrigeren** (Time → Uren, admin): inklok, uitklok en pauze met verplichte
   reden (`work_shift.corrected`). Uitklok **leeg** laten heropent de dienst (foutieve

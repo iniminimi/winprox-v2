@@ -427,6 +427,7 @@
             "already_clocked_in": "Je bent al ingeklokt. Zie hierboven waar, of verplaats naar deze vestiging.",
             "not_clocked_in": "Je bent niet ingeklokt.",
             "break_already_open": "Je pauze loopt al.",
+            "break_already_taken": "Je hebt deze dienst al een pauze genomen.",
             "break_not_open": "Je bent niet op pauze.",
             "icon_not_configured": "Je account is nog niet volledig ingesteld. Neem contact op met de beheerder.",
             "device_mismatch": "Dit toestel is niet gekoppeld aan jouw prikklok. Vraag je teamleader of beheerder om een nieuw toestel toe te staan.",

@@ -15,6 +15,7 @@
         && (int) $openShift->clock_in_clock_point_id !== (int) ($presencePoint?->id ?? 0);
     $clockedOutTime = $openShift === null ? $lastClosedShift?->clock_out_at?->format('H:i') : null;
     $onBreak = $openShift?->openBreak !== null;
+    $breakTaken = $openShift !== null && $openShift->breaks->isNotEmpty();
     $requiredBreak = (int) ($openShift?->team?->required_break_minutes ?? 0);
     $hasVisit = ($gpsVisits ?? false) && $openShift?->openVisit;
     $visitPlace = $hasVisit
@@ -134,10 +135,10 @@
             @endif
         </div>
 
-        @if ($openShift !== null && ($onBreak || ! $openElsewhere))
+        @if ($openShift !== null && ($onBreak || (! $breakTaken && ! $openElsewhere)))
             <div class="wp-portal-now__divider" role="separator"></div>
 
-            @if (! $onBreak)
+            @if (! $onBreak && ! $breakTaken)
                 @if ($requiredBreak > 0)
                     <p class="wp-portal-now__meta">{{ __('time.portal.clock.break_hint', ['min' => $requiredBreak]) }}</p>
                 @endif

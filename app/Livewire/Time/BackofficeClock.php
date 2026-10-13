@@ -73,6 +73,7 @@ class BackofficeClock extends Component
                 'shift_already_open' => __('time.backoffice_clock.errors.already_in'),
                 'shift_not_open' => __('time.backoffice_clock.errors.not_in'),
                 'break_already_open' => __('time.backoffice_clock.errors.break_open'),
+                'break_already_taken' => __('time.portal.errors.break_already_taken'),
                 'break_not_open' => __('time.backoffice_clock.errors.break_closed'),
                 default => throw $e,
             };

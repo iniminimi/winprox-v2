@@ -427,6 +427,7 @@
             "already_clocked_in": "You are already clocked in. See above where, or move to this location.",
             "not_clocked_in": "You are not clocked in.",
             "break_already_open": "Your break is already running.",
+            "break_already_taken": "You already took a break on this shift.",
             "break_not_open": "You are not on break.",
             "icon_not_configured": "Your account is not fully set up yet. Please contact the administrator.",
             "device_mismatch": "This device is not linked to your punch clock. Ask your team leader or admin to allow a new device.",
