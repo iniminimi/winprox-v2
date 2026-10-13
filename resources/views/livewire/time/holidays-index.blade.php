@@ -24,15 +24,22 @@
         @error('agreements') <p class="wp-error">{{ $message }}</p> @enderror
         @foreach ($agreements as $index => $holiday)
             <div class="wp-cluster">
-                <label class="wp-label" for="holidayEffect{{ $index }}">{{ __('time.schedule.month_norm.holidays.'.$holiday['code']) }} · {{ $holiday['date'] }}</label>
+                <label class="wp-label" for="holidayEffect{{ $index }}">
+                    {{ __('time.schedule.month_norm.holidays.'.$holiday['code']) }} · {{ __('time.schedule.weekdays.'.$holiday['weekday']) }} {{ $holiday['date'] }}
+                    <span class="wp-pill {{ ($holiday['effect'] ?? '') === '' ? '' : 'wp-pill--done' }}">
+                        {{ ($holiday['effect'] ?? '') === '' ? __('time.holidays.standard_badge') : __('time.holidays.override_badge') }}
+                    </span>
+                </label>
                 <select id="holidayEffect{{ $index }}" class="wp-select wp-holiday-row__select" wire:model.live="agreements.{{ $index }}.effect">
-                    <option value="">{{ __('time.schedule.month_norm.effect_unset') }}</option>
+                    <option value="">{{ __('time.holidays.standard_option', ['effect' => __('time.schedule.month_norm.effects.'.$holiday['standard_effect'])]) }}</option>
                     <option value="none">{{ __('time.schedule.month_norm.effects.none') }}</option>
                     <option value="dropped">{{ __('time.schedule.month_norm.effects.dropped') }}</option>
                     <option value="replaced">{{ __('time.schedule.month_norm.effects.replaced') }}</option>
                 </select>
                 @if (($holiday['effect'] ?? '') === 'replaced')
                     <input class="wp-input wp-holiday-row__date" type="date" wire:model="agreements.{{ $index }}.replacement_date" aria-label="{{ __('time.schedule.month_norm.replacement_date') }}">
+                @elseif (($holiday['effect'] ?? '') === '' && ($holiday['standard_effect'] ?? '') === 'replaced' && ! empty($holiday['standard_replacement']))
+                    <span class="wp-label-hint">{{ __('time.holidays.replacement_proposal', ['date' => $holiday['standard_replacement']]) }}</span>
                 @endif
             </div>
         @endforeach

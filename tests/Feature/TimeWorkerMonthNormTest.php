@@ -237,8 +237,9 @@ it('past één tenantafspraak toe op alle uitvoerders', function () {
         ->and($rows[(int) $first->id]->minutes)->toBe($expected)
         ->and($rows[(int) $second->id]->minutes)->toBe($expected);
 
-    // Een andere tenant deelt de afspraken niet: daar tellen beide
-    // feestdagen zonder afspraak als niet gewerkt.
+    // Een andere tenant deelt de afspraken niet: daar geldt de afgeleide
+    // standaard — 1 nov (zo) krijgt een voorgestelde vervangingsdag op
+    // ma 2 nov en 11 nov (wo) vervalt.
     [$otherTenant, , , $otherWorker] = monthNormTenant();
     monthNormSync($otherWorker, $pattern);
     $otherNorm = app(ResolveWorkerMonthNormAction::class)->handle(
@@ -247,8 +248,45 @@ it('past één tenantafspraak toe op alle uitvoerders', function () {
         '2026-11-01',
     )[(int) $otherWorker->id];
     expect($otherNorm->minutes)->toBe(
-        monthNormExpected('2026-11-01', $pattern) - $pattern[7] - $pattern[3]
+        monthNormExpected('2026-11-01', $pattern) - $pattern[1] - $pattern[3]
     );
+});
+
+it('leidt voor een weekendfeestdag zonder afspraak een vervangingsdag af', function () {
+    [$tenant, , , $worker] = monthNormTenant();
+    $pattern = monthNormFiveDayPattern();
+    monthNormSync($worker, $pattern);
+
+    // 15 aug 2026 is zaterdag: de afgeleide standaard stelt ma 17 aug voor
+    // als vervangingsdag → die werkdag valt weg in de norm, zonder opslag.
+    $norm = app(ResolveWorkerMonthNormAction::class)->handle(
+        (int) $tenant->id,
+        [(int) $worker->id],
+        '2026-08-01',
+    )[(int) $worker->id];
+
+    expect($norm->status)->toBe(MonthNormStatus::Available)
+        ->and($norm->minutes)->toBe(monthNormExpected('2026-08-01', $pattern) - 456)
+        ->and(TenantHolidayAgreement::query()->where('tenant_id', $tenant->id)->count())->toBe(0);
+});
+
+it('laat een opgeslagen afwijking winnen over de afgeleide standaard', function () {
+    [$tenant, , , $worker] = monthNormTenant();
+    $pattern = monthNormFiveDayPattern();
+    monthNormSync($worker, $pattern);
+
+    // 'Geen effect' op 1 nov (zo): geen afgeleide vervangingsdag, dus
+    // ma 2 nov blijft gewerkt. 11 nov (wo) vervalt via de standaard.
+    monthNormAgree($tenant, '2026-11-01', HolidayAgreementEffect::None);
+
+    $norm = app(ResolveWorkerMonthNormAction::class)->handle(
+        (int) $tenant->id,
+        [(int) $worker->id],
+        '2026-11-01',
+    )[(int) $worker->id];
+
+    expect($norm->status)->toBe(MonthNormStatus::Available)
+        ->and($norm->minutes)->toBe(monthNormExpected('2026-11-01', $pattern) - 456);
 });
 
 it('zet vervangingsuren alleen in de maand van de vervangingsdatum', function () {
@@ -284,8 +322,10 @@ it('past een vervangingsdag ook toe op de impliciete ma–vr-aanname', function 
     $norm = app(ResolveWorkerMonthNormAction::class)->handle((int) $worker->tenant_id, [(int) $worker->id], '2026-11-01')[(int) $worker->id];
 
     // 11 nov (wo, 456 impliciet) valt weg; 14 nov (za) krijgt die 456.
+    // De afgeleide standaard legt 1 nov (zo) voor op ma 2 nov als
+    // vervangingsdag → die maandag valt ook weg (−456).
     expect($norm->status)->toBe(MonthNormStatus::Incomplete)
-        ->and($norm->minutes)->toBe(monthNormExpected('2026-11-01', monthNormFiveDayPattern()));
+        ->and($norm->minutes)->toBe(monthNormExpected('2026-11-01', monthNormFiveDayPattern()) - 456);
 });
 
 it('laat het normgetal weg in de maandweergave bij een stale patroon, maar toont de impliciete aanname', function () {

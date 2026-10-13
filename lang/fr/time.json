@@ -859,9 +859,13 @@
     },
     "holidays": {
         "title": "Jours fériés",
-        "subtitle": "Règlement des jours fériés à l’échelle de l’entreprise pour la norme mensuelle.",
+        "subtitle": "Le régime belge standard (lun–ven) est déjà rempli ; ne consigner que les écarts.",
         "save": "Enregistrer",
-        "saved": "Jours fériés enregistrés."
+        "saved": "Jours fériés enregistrés.",
+        "standard_badge": "Standard",
+        "override_badge": "Défini",
+        "standard_option": "Standard : :effect",
+        "replacement_proposal": "Proposition : :date · à confirmer"
     },
     "absence": {
         "title": "Demandes",

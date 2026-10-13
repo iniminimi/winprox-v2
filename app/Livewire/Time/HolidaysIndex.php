@@ -10,6 +10,7 @@ use App\Models\BelgianPublicHoliday;
 use App\Models\Tenant;
 use App\Models\TenantHolidayAgreement;
 use App\Support\Tenancy;
+use App\Support\Time\BelgianHolidayStandardScheme;
 use App\Support\Time\BelgianPublicHolidayCalendar;
 use App\Support\Time\TimeModuleAccess;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -125,8 +126,32 @@ class HolidaysIndex extends Component
         }
     }
 
+    public function updatedAgreements(mixed $value, string $key): void
+    {
+        [$index, $field] = explode('.', (string) $key);
+        if ($field !== 'effect' || $value !== HolidayAgreementEffect::Replaced->value) {
+            return;
+        }
+        $row = $this->agreements[(int) $index] ?? null;
+        if ($row !== null && ($row['replacement_date'] ?? '') === '') {
+            $this->agreements[(int) $index]['replacement_date'] = $row['standard_replacement'] ?? '';
+        }
+    }
+
     private function presentYear(): void
     {
+        $holidayDates = [];
+        foreach (BelgianPublicHoliday::query()->get(['date']) as $row) {
+            $holidayDates[$row->date->toDateString()] = true;
+        }
+        $taken = [];
+        foreach ($this->draftsByDate as $draft) {
+            $replacement = (string) ($draft['replacement_date'] ?? '');
+            if ($replacement !== '') {
+                $taken[$replacement] = true;
+            }
+        }
+
         $rows = [];
         $holidays = BelgianPublicHoliday::query()
             ->where('year', $this->holidayYear)
@@ -135,11 +160,21 @@ class HolidaysIndex extends Component
         foreach ($holidays as $holiday) {
             $date = $holiday->date->toDateString();
             $draft = $this->draftsByDate[$date] ?? ['effect' => '', 'replacement_date' => ''];
+            $standardEffect = BelgianHolidayStandardScheme::effectFor($date);
+            $standardReplacement = $standardEffect === HolidayAgreementEffect::Replaced
+                ? BelgianHolidayStandardScheme::proposedReplacement($date, $holidayDates, $taken)
+                : null;
+            if ($draft['effect'] === '' && $standardReplacement !== null) {
+                $taken[$standardReplacement] = true;
+            }
             $rows[] = [
                 'date' => $date,
                 'code' => $holiday->code,
                 'effect' => $draft['effect'],
                 'replacement_date' => $draft['replacement_date'],
+                'standard_effect' => $standardEffect->value,
+                'standard_replacement' => $standardReplacement,
+                'weekday' => $holiday->date->dayOfWeekIso,
             ];
         }
         $this->agreements = $rows;

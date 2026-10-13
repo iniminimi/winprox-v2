@@ -938,11 +938,15 @@ De norm is de actuele kolom, ook voor oudere weken. Admin en medewerker zien nor
 verschil; een superuser niet. Een afwijking blokkeert opslaan of publiceren niet.
 
 **Maandnorm** (`ResolveWorkerMonthNormAction`, rechts in de maandweergave): telt eerst de
-normale minuten van `worker_weekday_minutes` op elke kalenderdatum. Daarna overschrijven
-expliciete feestdagafspraken (`none` / `dropped` / `replaced`) die waarden; een vervangingsdatum
-vervangt de minuten, ze worden er niet bij opgeteld. De afspraken van de maand worden als één
-geheel gecontroleerd. Status `available`, `incomplete` of `conflict`. Zonder werkregeling
-geldt de impliciete ma–vr-aanname: de berekende minuten worden getoond met status
+normale minuten van `worker_weekday_minutes` op elke kalenderdatum. Daarna overschrijven de
+effectieve feestdagafspraken (`none` / `dropped` / `replaced`) die waarden; een vervangingsdatum
+vervangt de minuten, ze worden er niet bij opgeteld. Effectief = opgeslagen tenant-afspraak,
+of anders de afgeleide Belgische standaard (`BelgianHolidayStandardScheme`): een feestdag op
+ma–vr vervalt, een feestdag op za/zo krijgt een voorgestelde vervangingsdag (eerstvolgende
+vrije werkdag — voorstel voor de berekening, geen vastgelegde bedrijfsafspraak). De afspraken
+van de maand worden als één geheel gecontroleerd. Status `available`, `incomplete` of
+`conflict`. Zonder werkregeling geldt de impliciete ma–vr-aanname: de berekende minuten
+worden getoond met status
 `incomplete` — een aannemelijke verdeling, geen bevestigde regeling. Een stale patroon
 (som ≠ weeknorm) of conflict levert geen minuten. `SummarizeWorkerMonthFactsAction`
 blijft daar los van en levert altijd gepland, gewerkt,
@@ -969,12 +973,16 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   worden volgens dezelfde ma–vr-regel verdeeld en in de uitvoer opgesomd.
 
 - **Feestdagen** (`/time/holidays`): één bedrijfsbrede regeling per tenant
-  (`tenant_holiday_agreements`, uniek op `tenant_id` + `holiday_date`). Per Belgische
-  feestdag één keuze — `none` (normale minuten blijven), `dropped` (werkdag vervalt) of
-  `replaced` (minuten schuiven naar een vervangingsdatum). Zonder keuze telt de feestdag
-  niet mee in het maandverschil. De ene set geldt voor álle uitvoerders; validatie van
-  vervangingsdagen kijkt naar alle afspraken van de tenant. Jaarkiezer bladert 2020–2040,
-  met hetzelfde conditionele datumveld als voorheen. Verborgen in Checkmate-modus.
+  (`tenant_holiday_agreements`, uniek op `tenant_id` + `holiday_date`) die **alleen
+  afwijkingen** bewaart. Zonder afspraak geldt de afgeleide Belgische standaard: feestdag
+  op ma–vr → werkdag vervalt; feestdag op za/zo → vervangingsdag met voorgestelde datum
+  (zichtbaar gemarkeerd als "nog te bevestigen", niet als vastgelegd akkoord). Elke rij
+  toont badge **Standaard** of **Vastgelegd**. Expliciete keuzes zijn `none` (normale
+  minuten blijven), `dropped` (werkdag vervalt) of `replaced` (minuten schuiven naar een
+  vervangingsdatum); "Standaard" kiezen verwijdert de afwijking weer. De ene set geldt
+  voor álle uitvoerders; validatie van vervangingsdagen kijkt naar alle afspraken van de
+  tenant. Jaarkiezer bladert 2020–2040, met hetzelfde conditionele datumveld als voorheen.
+  Verborgen in Checkmate-modus.
 
 - **Overlap:** halfopen interval `[start, eind)` — `07:00–11:00` en `11:00–15:00` is geldig.
   Zelfde worker, echte overlap → harde fout. Nachtshift (`eind <= start`) verboden in golf 1.

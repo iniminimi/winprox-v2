@@ -859,9 +859,13 @@
     },
     "holidays": {
         "title": "Feiertage",
-        "subtitle": "Betriebsweite Feiertagsregelung für die Monatsnorm.",
+        "subtitle": "Die belgische Standardregelung (Mo–Fr) ist bereits ausgefüllt; nur Abweichungen festlegen.",
         "save": "Speichern",
-        "saved": "Feiertage gespeichert."
+        "saved": "Feiertage gespeichert.",
+        "standard_badge": "Standard",
+        "override_badge": "Festgelegt",
+        "standard_option": "Standard: :effect",
+        "replacement_proposal": "Vorschlag: :date · noch zu bestätigen"
     },
     "absence": {
         "title": "Anträge",

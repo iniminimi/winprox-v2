@@ -859,9 +859,13 @@
     },
     "holidays": {
         "title": "Festività",
-        "subtitle": "Regime delle festività a livello aziendale per la norma mensile.",
+        "subtitle": "Il regime belga standard (lun–ven) è già compilato; registra solo le deroghe.",
         "save": "Salva",
-        "saved": "Festività salvate."
+        "saved": "Festività salvate.",
+        "standard_badge": "Standard",
+        "override_badge": "Definito",
+        "standard_option": "Standard: :effect",
+        "replacement_proposal": "Proposta: :date · da confermare"
     },
     "absence": {
         "title": "Richieste",

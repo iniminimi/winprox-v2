@@ -859,9 +859,13 @@
     },
     "holidays": {
         "title": "Festivos",
-        "subtitle": "Régimen de festivos para toda la empresa para la norma mensual.",
+        "subtitle": "El régimen belga estándar (lun–vie) ya está rellenado; solo registra las desviaciones.",
         "save": "Guardar",
-        "saved": "Festivos guardados."
+        "saved": "Festivos guardados.",
+        "standard_badge": "Estándar",
+        "override_badge": "Definido",
+        "standard_option": "Estándar: :effect",
+        "replacement_proposal": "Propuesta: :date · por confirmar"
     },
     "absence": {
         "title": "Solicitudes",

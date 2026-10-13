@@ -859,9 +859,13 @@
     },
     "holidays": {
         "title": "Feestdagen",
-        "subtitle": "Bedrijfsbrede feestdagenregeling voor de maandnorm.",
+        "subtitle": "Belgische standaardregeling (ma–vr) is al ingevuld; leg alleen afwijkingen vast.",
         "save": "Opslaan",
-        "saved": "Feestdagen opgeslagen."
+        "saved": "Feestdagen opgeslagen.",
+        "standard_badge": "Standaard",
+        "override_badge": "Vastgelegd",
+        "standard_option": "Standaard: :effect",
+        "replacement_proposal": "Voorstel: :date · nog te bevestigen"
     },
     "absence": {
         "title": "Aanvragen",

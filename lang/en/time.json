@@ -859,9 +859,13 @@
     },
     "holidays": {
         "title": "Public holidays",
-        "subtitle": "Company-wide public holiday scheme for the monthly norm.",
+        "subtitle": "The Belgian standard scheme (Mon–Fri) is already filled in; only record deviations.",
         "save": "Save",
-        "saved": "Holidays saved."
+        "saved": "Holidays saved.",
+        "standard_badge": "Standard",
+        "override_badge": "Recorded",
+        "standard_option": "Standard: :effect",
+        "replacement_proposal": "Proposal: :date · to be confirmed"
     },
     "absence": {
         "title": "Requests",
