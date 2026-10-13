@@ -81,22 +81,30 @@
             <p class="wp-muted">{{ __('portal.teamleader.device_hint') }}</p>
             @if ($showDeviceReleasePanel)
                 <form wire:submit="releaseColleagueClockDevice" class="wp-stack">
-                    <div class="wp-field">
-                        <label class="wp-label">{{ __('portal.teamleader.confirm_own_icon') }}</label>
-                        <div class="wp-icon-grid">
-                            @foreach (\App\Support\Portal\WorkerIcon::SLUGS as $slug)
-                                <button type="button"
-                                        wire:key="release-device-tl-icon-{{ $slug }}"
-                                        wire:click="$set('release_device_teamleader_icon_slug', '{{ $slug }}')"
-                                        @class(['wp-icon-tile', 'is-selected' => $release_device_teamleader_icon_slug === $slug])
-                                        title="{{ \App\Support\Portal\WorkerIcon::label($slug) }}"
-                                        aria-label="{{ \App\Support\Portal\WorkerIcon::label($slug) }}">
-                                    <x-wp-worker-icon :slug="$slug" />
-                                </button>
-                            @endforeach
+                    @if ($this->portalReleaseConfirmsWithPin())
+                        <div class="wp-field">
+                            <label class="wp-label" for="release_device_pin">{{ __('portal.teamleader.confirm_own_pin') }}</label>
+                            <input id="release_device_pin" type="password" inputmode="numeric" autocomplete="one-time-code" maxlength="4" class="wp-input" wire:model.live="release_device_pin">
+                            @error('release_device_pin') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
-                        @error('release_device_teamleader_icon_slug') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
+                    @else
+                        <div class="wp-field">
+                            <label class="wp-label">{{ __('portal.teamleader.confirm_own_icon') }}</label>
+                            <div class="wp-icon-grid">
+                                @foreach (\App\Support\Portal\WorkerIcon::SLUGS as $slug)
+                                    <button type="button"
+                                            wire:key="release-device-tl-icon-{{ $slug }}"
+                                            wire:click="$set('release_device_teamleader_icon_slug', '{{ $slug }}')"
+                                            @class(['wp-icon-tile', 'is-selected' => $release_device_teamleader_icon_slug === $slug])
+                                            title="{{ \App\Support\Portal\WorkerIcon::label($slug) }}"
+                                            aria-label="{{ \App\Support\Portal\WorkerIcon::label($slug) }}">
+                                        <x-wp-worker-icon :slug="$slug" />
+                                    </button>
+                                @endforeach
+                            </div>
+                            @error('release_device_teamleader_icon_slug') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                    @endif
                     <div class="wp-field">
                         <label class="wp-label">{{ __('portal.teamleader.choose_device_colleague') }}</label>
                         <div class="wp-list wp-list--entity-rows">
@@ -116,7 +124,7 @@
                     @error('release_device_worker_id') <p class="wp-error">{{ $message }}</p> @enderror
                     <button type="submit"
                             class="btn btn--warning btn--block"
-                            @disabled($release_device_teamleader_icon_slug === '' || $release_device_worker_id === null)>
+                            @disabled(($this->portalReleaseConfirmsWithPin() ? $release_device_pin === '' : $release_device_teamleader_icon_slug === '') || $release_device_worker_id === null)>
                         {{ __('portal.teamleader.device_submit') }}
                     </button>
                 </form>

@@ -374,3 +374,50 @@ it('geeft een gekoppeld toestel vrij via de API met time:write', function () {
 
     expect($worker->fresh()->clock_device_id)->toBeNull();
 });
+
+it('vraagt een pincode om een gsm vrij te geven als pin aan staat', function () {
+    $tenant = Tenant::factory()->create([
+        'has_time_module' => true,
+        'time_require_worker_pin' => true,
+    ]);
+    Tenancy::actAs($tenant->id);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $leader = Worker::factory()->claimable()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Lea',
+        'last_name' => 'Leider',
+        'is_teamleader' => true,
+    ]);
+    app(SetWorkerClockPinAction::class)->handle($leader, '2580', (int) $tenant->id);
+    $colleague = Worker::factory()->claimable()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Piet',
+        'last_name' => 'Peters',
+    ]);
+    $attached = app(AttachWorkerDeviceAction::class)->handle($colleague);
+    $device = WorkerDevice::query()->where('device_token', $attached['device_token'])->first();
+    $colleague->forceFill(['clock_device_id' => $device->id])->save();
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Lea')
+        ->set('last_name', 'Leider')
+        ->call('identifyWorker')
+        ->set('pin_code', '2580')
+        ->call('signInWithPin')
+        ->call('openTeamleader')
+        ->call('toggleDeviceReleasePanel')
+        ->assertSee(__('portal.teamleader.confirm_own_pin'), false)
+        ->assertDontSee(__('portal.teamleader.confirm_own_icon'), false)
+        ->set('release_device_worker_id', $colleague->id)
+        ->set('release_device_pin', '0000')
+        ->call('releaseColleagueClockDevice')
+        ->assertHasErrors(['release_device_pin'])
+        ->set('release_device_pin', '2580')
+        ->call('releaseColleagueClockDevice')
+        ->assertSee(__('portal.teamleader.device_released_ok', ['name' => $colleague->displayName()]), false);
+
+    expect($colleague->fresh()->clock_device_id)->toBeNull();
+});

@@ -165,6 +165,7 @@
         "open": "Freigeben",
         "hint": "Nur für Teamleiter: Wählen Sie einen gesperrten Kollegen und geben Sie das Icon frei.",
         "confirm_own_icon": "Bestätigen Sie zuerst Ihr eigenes Icon",
+        "confirm_own_pin": "Bestätigen Sie zuerst Ihre PIN",
         "choose_blocked_colleague": "Gesperrten Kollegen wählen",
         "no_blocked_colleagues": "In diesem Team gibt es keine gesperrten Kollegen.",
         "submit": "Kollege freigeben",

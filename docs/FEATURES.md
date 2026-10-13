@@ -1217,7 +1217,8 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 - **Worker** — veldmedewerker **zonder login** (identificatie via naam + persoonlijk icoon op het
   QR-portaal). **Handelt taken af.** Elke worker kan **teamleader** zijn.
 - **Teamleader** = een worker met vlag `is_teamleader`. Mag **iconen vrijgeven** (lockout + icoon van
-  een collega-worker resetten) en **een gekoppelde gsm vrijgeven** — in het **veld-portaal** (teamleader bevestigt eerst eigen icoon).
+  een collega-worker resetten) en **een gekoppelde gsm vrijgeven** — in het **veld-portaal**.
+  Gsm vrijgeven: teamleader bevestigt eerst het eigen icoon, of de eigen pincode als PIN aan staat.
 - Implementatie: `users.role` (`admin`|`employee`), `workers.is_teamleader` (bool). Géén losse
   "team-manager"-user-pivot meer (RBAC verloopt via `role`).
 

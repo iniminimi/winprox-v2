@@ -165,6 +165,7 @@
         "open": "Rilascia",
         "hint": "Solo capisquadra: scelga un collega bloccato e rilasci la sua icona dopo il blocco.",
         "confirm_own_icon": "Confermi prima la Sua icona",
+        "confirm_own_pin": "Confermi prima il Suo codice PIN",
         "choose_blocked_colleague": "Scelga un collega bloccato",
         "no_blocked_colleagues": "Non ci sono colleghi bloccati in questo team.",
         "submit": "Rilascia collega",

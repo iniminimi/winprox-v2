@@ -165,6 +165,7 @@
         "open": "Liberar",
         "hint": "Solo jefes de equipo: elija un colega bloqueado y libere su icono tras el bloqueo.",
         "confirm_own_icon": "Confirme primero su propio icono",
+        "confirm_own_pin": "Confirme primero su código PIN",
         "choose_blocked_colleague": "Elija un colega bloqueado",
         "no_blocked_colleagues": "No hay colegas bloqueados en este equipo.",
         "submit": "Liberar colega",

@@ -165,6 +165,7 @@
         "open": "Release",
         "hint": "Team leaders only: choose a blocked colleague and release their icon after lockout.",
         "confirm_own_icon": "Confirm your own icon first",
+        "confirm_own_pin": "Confirm your PIN first",
         "choose_blocked_colleague": "Choose a blocked colleague",
         "no_blocked_colleagues": "There are no blocked colleagues on this team.",
         "submit": "Release colleague",

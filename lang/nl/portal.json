@@ -165,6 +165,7 @@
         "open": "Vrijgeven",
         "hint": "Alleen voor teamleaders: kies een geblokkeerde collega en geef het icoon vrij na lockout.",
         "confirm_own_icon": "Bevestig eerst je eigen icoon",
+        "confirm_own_pin": "Bevestig eerst je pincode",
         "choose_blocked_colleague": "Kies een geblokkeerde collega",
         "no_blocked_colleagues": "Er zijn geen geblokkeerde collega's op dit team.",
         "submit": "Collega vrijgeven",

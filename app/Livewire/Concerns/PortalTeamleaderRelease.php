@@ -4,6 +4,8 @@ namespace App\Livewire\Concerns;
 
 use App\Actions\Portal\TeamleaderReleaseWorkerClockDeviceAction;
 use App\Actions\Portal\TeamleaderReleaseWorkerIconAction;
+use App\Actions\Time\ConfirmWorkerClockPinAction;
+use App\Http\Requests\Time\WorkerClockPinRequest;
 use App\Models\InternalTeam;
 use App\Models\Worker;
 use App\Support\Portal\WorkerIcon;
@@ -27,6 +29,14 @@ trait PortalTeamleaderRelease
     public ?int $release_device_worker_id = null;
 
     public string $release_device_teamleader_icon_slug = '';
+
+    public string $release_device_pin = '';
+
+    /** PIN-tenant: gsm vrijgeven bevestigt met pincode, niet met een icoon. */
+    public function portalReleaseConfirmsWithPin(): bool
+    {
+        return false;
+    }
 
     public function toggleReleasePanel(): void
     {
@@ -136,7 +146,8 @@ trait PortalTeamleaderRelease
         if (! $this->showDeviceReleasePanel) {
             $this->release_device_worker_id = null;
             $this->release_device_teamleader_icon_slug = '';
-            $this->resetErrorBag(['release_device_teamleader_icon_slug', 'release_device_worker_id']);
+            $this->release_device_pin = '';
+            $this->resetErrorBag(['release_device_teamleader_icon_slug', 'release_device_pin', 'release_device_worker_id']);
         }
     }
 
@@ -149,19 +160,42 @@ trait PortalTeamleaderRelease
             return;
         }
 
-        $this->validate([
-            'release_device_teamleader_icon_slug' => ['required', 'string', Rule::in(WorkerIcon::SLUGS)],
-            'release_device_worker_id' => ['required', 'integer'],
-        ], [
-            'release_device_teamleader_icon_slug.required' => __('portal.worker.errors.icon_required'),
-            'release_device_worker_id.required' => __('portal.teamleader.errors.device_colleague_required'),
-        ]);
+        if ($this->portalReleaseConfirmsWithPin()) {
+            $this->validate([
+                'release_device_pin' => WorkerClockPinRequest::verifyRulesFor()['pin_code'],
+                'release_device_worker_id' => ['required', 'integer'],
+            ], [
+                'release_device_pin.required' => __('portal.worker.errors.pin_required'),
+                'release_device_pin.regex' => __('portal.worker.errors.pin_invalid'),
+                'release_device_worker_id.required' => __('portal.teamleader.errors.device_colleague_required'),
+            ]);
 
-        $expected = trim((string) $teamleader->field_icon_slug);
-        if ($expected === '' || $this->release_device_teamleader_icon_slug !== $expected) {
-            $this->addError('release_device_teamleader_icon_slug', __('portal.teamleader.errors.icon_wrong'));
+            $confirmed = app(ConfirmWorkerClockPinAction::class)->handle(
+                $teamleader,
+                $this->release_device_pin,
+                (int) $teamleader->tenant_id,
+            );
+            if ($confirmed === null) {
+                $this->release_device_pin = '';
+                $this->addError('release_device_pin', __('portal.worker.errors.pin_wrong'));
 
-            return;
+                return;
+            }
+        } else {
+            $this->validate([
+                'release_device_teamleader_icon_slug' => ['required', 'string', Rule::in(WorkerIcon::SLUGS)],
+                'release_device_worker_id' => ['required', 'integer'],
+            ], [
+                'release_device_teamleader_icon_slug.required' => __('portal.worker.errors.icon_required'),
+                'release_device_worker_id.required' => __('portal.teamleader.errors.device_colleague_required'),
+            ]);
+
+            $expected = trim((string) $teamleader->field_icon_slug);
+            if ($expected === '' || $this->release_device_teamleader_icon_slug !== $expected) {
+                $this->addError('release_device_teamleader_icon_slug', __('portal.teamleader.errors.icon_wrong'));
+
+                return;
+            }
         }
 
         $target = Worker::query()
@@ -185,6 +219,7 @@ trait PortalTeamleaderRelease
 
         $this->release_device_worker_id = null;
         $this->release_device_teamleader_icon_slug = '';
+        $this->release_device_pin = '';
         $this->showDeviceReleasePanel = false;
         $this->portalReleaseFlash('portal.teamleader.device_released_ok', ['name' => $target->displayName()]);
     }

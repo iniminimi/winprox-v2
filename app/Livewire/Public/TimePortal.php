@@ -2494,6 +2494,11 @@ class TimePortal extends Component
         app()->setLocale($this->locale);
     }
 
+    public function portalReleaseConfirmsWithPin(): bool
+    {
+        return $this->tenantRequiresPin();
+    }
+
     protected function portalTeamleaderWorker(): ?Worker
     {
         $worker = $this->verifiedWorker();

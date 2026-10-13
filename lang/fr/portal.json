@@ -165,6 +165,7 @@
         "open": "Libérer",
         "hint": "Réservé aux chefs d'équipe : choisissez un collègue bloqué et libérez son icône.",
         "confirm_own_icon": "Confirmez d'abord votre propre icône",
+        "confirm_own_pin": "Confirmez d'abord votre code PIN",
         "choose_blocked_colleague": "Choisissez un collègue bloqué",
         "no_blocked_colleagues": "Il n'y a aucun collègue bloqué dans cette équipe.",
         "submit": "Libérer le collègue",
