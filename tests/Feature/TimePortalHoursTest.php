@@ -119,6 +119,7 @@ it('toont alleen de eigen diensten van de aangemelde uitvoerder', function () {
         ->assertSet('hoursListOpen', true)
         ->assertDontSeeHtml('wire:click="signOut"')
         ->assertSee(__('time.portal.hours.title'), false)
+        ->assertSeeHtml('wp-portal-hours-total')
         ->assertSee($day->format('d-m-Y'), false)
         ->assertSee(__('time.status.closed'), false)
         ->assertSeeHtml('wp-pill--done')

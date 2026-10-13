@@ -3597,6 +3597,15 @@ a.wp-pagination__page:active:not(.is-active) {
     background-color: var(--wp-warning-soft);
 }
 
+/* Maandtotaal op de portaal-foto: ondoorzichtig wit, anders verdwijnt de tekst. */
+.wp-portal-hours-total {
+    padding: 0.625rem 0.75rem;
+    background-color: #ffffff;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius);
+    color: #1f2937;
+}
+
 .wp-portal-hours-list {
     gap: 0.5rem;
 }

@@ -10,7 +10,7 @@
     </div>
 </nav>
 
-<p class="wp-muted">{{ __('time.portal.hours.total', ['duration' => \App\Support\Time\WorkDurationFormatter::format($hours->totalNetMinutes)]) }}</p>
+<p class="wp-muted wp-portal-hours-total">{{ __('time.portal.hours.total', ['duration' => \App\Support\Time\WorkDurationFormatter::format($hours->totalNetMinutes)]) }}</p>
 
 @if ($hours->days->isEmpty())
     <div class="wp-card wp-card-pad">
