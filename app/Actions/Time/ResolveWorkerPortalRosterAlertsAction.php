@@ -107,6 +107,11 @@ class ResolveWorkerPortalRosterAlertsAction
                 : null;
         }
 
+        $earlyBefore = $plannedStart->copy()->subMinutes($tolerance);
+        if ($firstIn->lessThan($earlyBefore)) {
+            return PortalRosterClockAlert::Early;
+        }
+
         $lateFrom = $plannedStart->copy()->addMinutes($tolerance);
 
         return $firstIn->greaterThanOrEqualTo($lateFrom)

@@ -458,6 +458,7 @@
         },
         "clock_alert": {
             "absent": "Planificado, pero sin fichar",
+            "early": "Fichado demasiado pronto",
             "late": "Fichado tarde"
         },
         "schedule": {

@@ -197,7 +197,7 @@
           "Les modifications non enregistrées demandent d’enregistrer d’abord si vous quittez la page ou changez de semaine/mois.",
           "Vue semaine ou mois ; les week-ends peuvent être masqués.",
           "Clock Point montre Mon planning (uniquement ses services publiés).",
-          "Triangle rouge si vous n’avez pas pointé ou si vous êtes en retard.",
+          "Triangle rouge si vous n’avez pas pointé, ou si vous êtes trop tôt ou en retard. Mes heures indique la raison.",
           "La gestion voit prévu versus pointé (marge de 15 minutes).",
           "Les vues semaine et mois montrent des colonnes fixes par intervenant, avec un titre vertical et seulement le chiffre dans la ligne : norme, écart, planifié, travaillé, congé, récup et maladie. La colonne signal indique les blocs incomplets ou un pointage ouvert. Norme et écart restent vides tant que cette norme n’est pas fiable. Cette norme est de 38 heures par défaut et reste modifiable par intervenant. Sans régime de travail, le mois compte lundi–vendredi selon cette norme ; les jours fériés suivent le régime convenu ou, sans accord, le standard belge (jour de travail annulé ; un férié le week-end obtient un jour de remplacement proposé). C’est un décompte, pas un jugement sur la durée du travail.",
           "Les jours fériés colorent la colonne de date en bleu, les jours de remplacement en vert ; une cellule grise est un jour de repos fixe (0 minute dans le rythme) et reste modifiable."

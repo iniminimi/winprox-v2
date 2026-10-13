@@ -458,6 +458,7 @@
         },
         "clock_alert": {
             "absent": "Geplant, aber nicht eingestempelt",
+            "early": "Zu früh eingestempelt",
             "late": "Zu spät eingestempelt"
         },
         "schedule": {

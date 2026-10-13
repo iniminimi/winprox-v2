@@ -1,5 +1,9 @@
 @if (($alert ?? null) instanceof \App\Enums\PortalRosterClockAlert)
-    <span class="wp-portal-clock-alert" title="{{ __('time.portal.clock_alert.'.$alert->value) }}" aria-label="{{ __('time.portal.clock_alert.'.$alert->value) }}">
+    @php $alertLabel = __('time.portal.clock_alert.'.$alert->value); @endphp
+    <span class="wp-portal-clock-alert" title="{{ $alertLabel }}" aria-label="{{ $alertLabel }}">
         <x-wp-icon name="alert-triangle" />
+        @if ($showLabel ?? false)
+            <span>{{ $alertLabel }}</span>
+        @endif
     </span>
 @endif

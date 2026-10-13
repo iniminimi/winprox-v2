@@ -458,6 +458,7 @@
         },
         "clock_alert": {
             "absent": "Planifié, mais pas pointé",
+            "early": "Pointé trop tôt",
             "late": "Pointé en retard"
         },
         "schedule": {

@@ -458,6 +458,7 @@
         },
         "clock_alert": {
             "absent": "Ingepland, maar niet ingeklokt",
+            "early": "Te vroeg ingeklokt",
             "late": "Te laat ingeklokt"
         },
         "schedule": {
