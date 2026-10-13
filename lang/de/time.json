@@ -798,7 +798,8 @@
         "multi_replace_confirm": "Dieser Tag hat mehrere Blöcke. Die Eingabe ersetzt den ganzen Tag durch einen Block. Fortfahren?",
         "day_flag": {
             "holiday": "Feiertag: :name · :effect",
-            "replacement": "Ersatztag für :name (:date)"
+            "replacement": "Ersatztag für :name (:date)",
+            "off_day": "Fester freier Tag"
         },
         "day_editor": {
             "title": "Dienstplan von :name am :date",

@@ -276,6 +276,17 @@ function isWeekendIso(isoDate) {
     return weekday === 0 || weekday === 6;
 }
 
+/** ISO-weekdag (ma=1 … zo=7) van een Y-m-d datum; null bij ongeldige input. */
+function isoWeekdayOfDate(isoDate) {
+    const match = String(isoDate).match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) {
+        return null;
+    }
+    const weekday = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3])).getDay();
+
+    return weekday === 0 ? 7 : weekday;
+}
+
 function weekendColumnIndexes(payload) {
     return new Set(
         (payload.dates ?? []).flatMap((date, index) => (isWeekendIso(date) ? [index + 1] : [])),
@@ -591,9 +602,14 @@ function applyCellClasses(worksheet, payload) {
             cell.classList.toggle('wp-roster-col--replacement', flag?.kind === 'replacement');
             const isLocked = lockedCols.has(colIndex);
             cell.classList.toggle('wp-roster-col--locked', isLocked);
+            // Vaste vrije dag: expliciete 0-minuten-rij in het weekpatroon
+            // van dít persoon (niet kolombreed — verschilt per worker).
+            const date = payload.dates?.[colIndex - 1];
+            const isOffDay = Boolean(worker && date && Array.isArray(worker.off_weekdays)
+                && worker.off_weekdays.includes(isoWeekdayOfDate(date)));
+            cell.classList.toggle('wp-roster-cell--off-day', isOffDay);
             // Geen DOM-injectie in cellen: Jspreadsheet breekt na de eerste edit.
             // Groep onder dienst via newline + CSS (white-space: pre-line).
-            const date = payload.dates?.[colIndex - 1];
             const attendanceKey = worker && date ? `${worker.id}:${date}` : '';
             const cellDef = attendanceKey ? payload.cells?.[attendanceKey] : null;
             const valueText = cellText(value).trim();
@@ -678,6 +694,10 @@ function applyCellClasses(worksheet, payload) {
             // Vergrendelde dag (verleden): cel is readOnly; tooltip legt uit waarom.
             if (isLocked && payload.locked_hint) {
                 cell.title = cell.title ? `${cell.title}\n${payload.locked_hint}` : payload.locked_hint;
+            }
+            // Vaste vrije dag: cel blijft bewerkbaar; tooltip markeert haar.
+            if (isOffDay && payload.off_day_label) {
+                cell.title = cell.title ? `${cell.title}\n${payload.off_day_label}` : payload.off_day_label;
             }
         });
     });

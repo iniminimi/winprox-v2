@@ -37,6 +37,7 @@ use App\Models\User;
 use App\Models\WebhookEndpoint;
 use App\Models\Worker;
 use App\Models\WorkerNotification;
+use App\Models\WorkerWeekdayMinute;
 use App\Support\Tenancy;
 use App\Support\Time\RosterHistoryLock;
 use Carbon\Carbon;
@@ -485,6 +486,61 @@ it('springt met de weergaveknoppen naar de huidige week of maand', function () {
         ->assertSet('weekStart', '2026-09-01')
         ->call('setView', 'week')
         ->assertSet('weekStart', '2026-09-14');
+});
+
+it('markeert expliciete 0-minutendagen als vaste vrije dag in de worker-payload', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+
+    // 4/5-patroon: vrijdag + weekend expliciet op 0 minuten.
+    foreach ([1 => 456, 2 => 456, 3 => 456, 4 => 456, 5 => 0, 6 => 0, 7 => 0] as $day => $minutes) {
+        WorkerWeekdayMinute::query()->create([
+            'tenant_id' => $tenant->id,
+            'worker_id' => $worker->id,
+            'weekday' => $day,
+            'minutes' => $minutes,
+        ]);
+    }
+
+    // Collega zonder patroon → geen vaste vrije dagen.
+    $noPattern = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'is_active' => true,
+    ]);
+
+    // Collega met onvolledig patroon (alleen ma–wo, geen 0-rijen) → niets
+    // wordt als vrije dag geïnterpreteerd.
+    $partial = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'is_active' => true,
+    ]);
+    foreach ([1 => 456, 2 => 456, 3 => 456] as $day => $minutes) {
+        WorkerWeekdayMinute::query()->create([
+            'tenant_id' => $tenant->id,
+            'worker_id' => $partial->id,
+            'weekday' => $day,
+            'minutes' => $minutes,
+        ]);
+    }
+
+    $snapshot = app(ListRosterWeekAction::class)->handle(
+        (int) $tenant->id,
+        scheduleWeekStart(),
+        $team->id,
+        $admin,
+        'week',
+        true,
+        null,
+        null,
+        true,
+        true,
+    );
+    $byId = collect($snapshot->workers)->keyBy('id');
+
+    expect($byId[$worker->id]['off_weekdays'])->toBe([5, 6, 7])
+        ->and($byId[$noPattern->id]['off_weekdays'])->toBe([])
+        ->and($byId[$partial->id]['off_weekdays'])->toBe([]);
 });
 
 it('toont geen weekendkolommen in maandweergave als weekends uit staan', function () {

@@ -72,6 +72,7 @@ final class RosterWeekSnapshot
             'attendance_messages' => $this->attendanceMessages,
             'hours_columns' => $this->hoursColumns,
             'day_flags' => $this->dayFlags,
+            'off_day_label' => __('time.schedule.day_flag.off_day'),
             'error_messages' => [
                 'time.schedule.errors.unknown_code' => __('time.schedule.errors.unknown_code'),
                 'time.schedule.errors.unknown_unit' => __('time.schedule.errors.unknown_unit'),

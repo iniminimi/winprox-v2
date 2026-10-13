@@ -6817,6 +6817,13 @@ a.wp-kpi.wp-kpi--attention {
     white-space: nowrap;
 }
 
+/* Vaste vrije dag (weekpatroon 0 minuten, per worker) — subtiele grijze
+   tint. Staat vóór de weekendkleur: za/zo van een standaardpatroon houden
+   zo de gewone weekendtint. */
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--off-day {
+    background: color-mix(in srgb, var(--wp-text) 5%, var(--wp-surface) 95%);
+}
+
 .wp-roster-sheet col.wp-roster-col--weekend,
 .wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-col--weekend {
     background: color-mix(in srgb, var(--wp-text) 8%, var(--wp-surface) 92%);

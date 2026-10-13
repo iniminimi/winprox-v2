@@ -19,6 +19,7 @@ use App\Models\TenantHolidayAgreement;
 use App\Models\Unit;
 use App\Models\User;
 use App\Models\Worker;
+use App\Models\WorkerWeekdayMinute;
 use App\Support\Time\BelgianHolidayStandardScheme;
 use App\Support\Time\TimeModuleAccess;
 use App\Support\Time\WorkDurationFormatter;
@@ -244,7 +245,18 @@ class ListRosterWeekAction
             $monthNorms = $this->resolveMonthNorm->handle($tenantId, $workerIds, $weekStartDate);
         }
 
-        $workerPayload = $workers->map(function (Worker $worker) use ($weekHours, $monthFacts, $monthNorms, $contractVisible, $period) {
+        // Vaste vrije dagen: enkel weekdagen waar het expliciete patroon
+        // 0 minuten vermeldt — ontbrekende/onvolledige patronen markeren
+        // nooit een dag als vrij.
+        $offWeekdaysByWorker = WorkerWeekdayMinute::query()
+            ->where('tenant_id', $tenantId)
+            ->whereIn('worker_id', $workerIds ?: [0])
+            ->where('minutes', 0)
+            ->get(['worker_id', 'weekday'])
+            ->groupBy('worker_id')
+            ->map(fn ($rows) => $rows->pluck('weekday')->map(fn ($w) => (int) $w)->sort()->values()->all());
+
+        $workerPayload = $workers->map(function (Worker $worker) use ($weekHours, $monthFacts, $monthNorms, $contractVisible, $period, $offWeekdaysByWorker) {
             $payload = [
                 'id' => $worker->id,
                 'name' => $worker->displayName(),
@@ -257,6 +269,7 @@ class ListRosterWeekAction
                 'default_unit_id' => $worker->default_unit_id !== null ? (int) $worker->default_unit_id : null,
                 'group_code' => $worker->defaultUnit?->roster_code,
                 'group_name' => $worker->defaultUnit?->name,
+                'off_weekdays' => $offWeekdaysByWorker[$worker->id] ?? [],
             ];
 
             if ($period === 'week' && isset($weekHours[(int) $worker->id])) {

@@ -798,7 +798,8 @@
         "multi_replace_confirm": "This day has multiple blocks. Typing replaces the whole day with one block. Continue?",
         "day_flag": {
             "holiday": "Public holiday: :name · :effect",
-            "replacement": "Replacement day for :name (:date)"
+            "replacement": "Replacement day for :name (:date)",
+            "off_day": "Fixed day off"
         },
         "day_editor": {
             "title": "Roster for :name on :date",
