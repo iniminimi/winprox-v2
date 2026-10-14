@@ -325,7 +325,7 @@
           "Administrateur : tout, y compris l’abonnement.",
           "Collaborateur : suivi quotidien, pas de facturation.",
           "Exécutant : travail de terrain via Clock Point et QR unité, sans connexion.",
-          "Chef d’équipe : libérer l’icône et coordonner via Clock Point."
+          "Chef d’équipe : libérer l’icône, gérer les exécutants et prendre des photos via Clock Point."
         ]
       },
       {

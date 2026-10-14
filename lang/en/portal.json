@@ -172,7 +172,7 @@
         "released_ok": ":name has been released and can choose an icon again.",
         "manage_workers_title": "Manage workers",
         "manage_workers_open": "Manage",
-        "manage_workers_hint": "Add workers. You can only delete a worker you just created yourself.",
+        "manage_workers_hint": "Add workers or take a photo. You can only delete a worker you just created yourself.",
         "worker_first_name": "First name",
         "worker_last_name": "Last name",
         "add_worker_title": "Add worker",
@@ -184,7 +184,7 @@
         "delete_confirm": "Delete :name?",
         "worker_added": "Worker added.",
         "worker_deleted": ":name deleted.",
-        "no_workers": "There are no workers in this team yet.",
+        "no_workers": "No active workers on this team.",
         "badge": "Team leader",
         "tile": "Team leader",
         "tile_sub": "Manage icons, phones and teammates",
@@ -198,14 +198,20 @@
             "cannot_delete_self": "You cannot delete yourself.",
             "cannot_delete_worker": "You can only delete a worker you just created yourself.",
             "device_colleague_required": "Choose a colleague.",
-            "device_colleague_not_found": "This colleague has no linked device or is not on your team."
+            "device_colleague_not_found": "This colleague has no linked device or is not on your team.",
+            "photo_not_allowed": "You can only change the photo of an active worker in your own team."
         },
         "device_title": "Allow a new device",
         "device_open": "Release device",
         "device_hint": "If a colleague has a new or temporary phone, release the linked device. They can then clock in on the new phone.",
         "choose_device_colleague": "Choose a colleague with a linked device",
         "device_submit": "Allow new device",
-        "device_released_ok": ":name may clock in again with another device."
+        "device_released_ok": ":name may clock in again with another device.",
+        "photo_take": "Take photo",
+        "photo_update": "Update photo",
+        "photo_remove_confirm": "Remove :name's photo?",
+        "photo_updated": "Photo updated for :name.",
+        "photo_deleted": "Photo removed for :name."
     },
     "documents": {
         "download": "Download",

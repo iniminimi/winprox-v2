@@ -52,6 +52,10 @@
         rgba(255, 255, 255, 0.28) 45%,
         rgba(219, 228, 240, 0.5) 100%
     );
+    --wp-portal-bg-default:
+        radial-gradient(120% 70% at 85% -10%, rgba(16, 185, 129, 0.16) 0%, transparent 60%),
+        radial-gradient(110% 60% at -5% 105%, rgba(37, 99, 235, 0.12) 0%, transparent 55%),
+        linear-gradient(165deg, #e6edf6 0%, #dbe4f0 55%, #d3dcea 100%);
     --wp-card-backdrop: blur(16px) saturate(1.35);
     --wp-sidebar-glass: rgba(15, 23, 42, 0.94);
 }
@@ -65,8 +69,9 @@
     background-repeat: no-repeat, no-repeat;
 }
 
+/* Zonder tenant-foto: eigen zachte gradient, anders lijkt Modern op Standaard. */
 [data-theme='modern'] body.wp-public-body {
-    background-image: var(--wp-portal-bg, none);
+    background-image: var(--wp-portal-bg, var(--wp-portal-bg-default));
 }
 
 [data-theme='modern'] .wp-sidebar {

@@ -172,7 +172,7 @@
         "released_ok": ":name wurde freigegeben und kann erneut ein Icon wählen.",
         "manage_workers_title": "Mitarbeiter verwalten",
         "manage_workers_open": "Verwalten",
-        "manage_workers_hint": "Fügen Sie Mitarbeiter hinzu. Löschen können Sie nur Mitarbeiter, die Sie gerade selbst angelegt haben.",
+        "manage_workers_hint": "Fügen Sie Ausführende hinzu oder machen Sie ein Foto. Löschen können Sie nur einen Ausführenden, den Sie gerade selbst angelegt haben.",
         "worker_first_name": "Vorname",
         "worker_last_name": "Nachname",
         "add_worker_title": "Mitarbeiter hinzufügen",
@@ -184,7 +184,7 @@
         "delete_confirm": ":name löschen?",
         "worker_added": "Mitarbeiter hinzugefügt.",
         "worker_deleted": ":name gelöscht.",
-        "no_workers": "Es gibt noch keine Mitarbeiter in diesem Team.",
+        "no_workers": "Keine aktiven Ausführenden in diesem Team.",
         "badge": "Teamleiter",
         "tile": "Teamleiter",
         "tile_sub": "Symbole, Handys und Teammitglieder verwalten",
@@ -198,14 +198,20 @@
             "cannot_delete_self": "Sie können sich nicht selbst löschen.",
             "cannot_delete_worker": "Sie können nur einen Mitarbeiter löschen, den Sie gerade selbst angelegt haben.",
             "device_colleague_required": "Wähle einen Kollegen.",
-            "device_colleague_not_found": "Dieser Kollege hat kein verknüpftes Gerät oder gehört nicht zu deinem Team."
+            "device_colleague_not_found": "Dieser Kollege hat kein verknüpftes Gerät oder gehört nicht zu deinem Team.",
+            "photo_not_allowed": "Sie können nur das Foto eines aktiven Ausführenden Ihres eigenen Teams ändern."
         },
         "device_title": "Neues Gerät zulassen",
         "device_open": "Gerät freigeben",
         "device_hint": "Hat ein Kollege ein neues oder vorübergehendes Handy, gib das verknüpfte Gerät frei. Danach kann er mit dem neuen Gerät einstempeln.",
         "choose_device_colleague": "Kollegen mit verknüpftem Gerät wählen",
         "device_submit": "Neues Gerät zulassen",
-        "device_released_ok": ":name darf wieder mit einem anderen Gerät einstempeln."
+        "device_released_ok": ":name darf wieder mit einem anderen Gerät einstempeln.",
+        "photo_take": "Foto aufnehmen",
+        "photo_update": "Foto aktualisieren",
+        "photo_remove_confirm": "Foto von :name entfernen?",
+        "photo_updated": "Foto für :name aktualisiert.",
+        "photo_deleted": "Foto für :name entfernt."
     },
     "documents": {
         "download": "Herunterladen",

@@ -325,7 +325,7 @@
           "Administrador: todo, incluido el abono.",
           "Colaborador: seguimiento diario, sin facturación.",
           "Operario: trabajo de campo por Clock Point y QR de unidad, sin acceso.",
-          "Líder de equipo: liberar el icono y coordinar por Clock Point."
+          "Líder de equipo: liberar el icono, gestionar operarios y tomar fotos por Clock Point."
         ]
       },
       {

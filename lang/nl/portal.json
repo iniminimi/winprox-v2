@@ -172,7 +172,7 @@
         "released_ok": ":name is vrijgegeven en kan opnieuw een icoon kiezen.",
         "manage_workers_title": "Uitvoerders beheren",
         "manage_workers_open": "Beheren",
-        "manage_workers_hint": "Voeg uitvoerders toe. Verwijderen kan alleen bij een uitvoerder die je zelf net hebt aangemaakt.",
+        "manage_workers_hint": "Voeg uitvoerders toe of neem een foto. Verwijderen kan alleen bij een uitvoerder die je zelf net hebt aangemaakt.",
         "worker_first_name": "Voornaam",
         "worker_last_name": "Achternaam",
         "add_worker_title": "Uitvoerder toevoegen",
@@ -184,7 +184,7 @@
         "delete_confirm": ":name verwijderen?",
         "worker_added": "Uitvoerder toegevoegd.",
         "worker_deleted": ":name verwijderd.",
-        "no_workers": "Geen uitvoerders die je zelf net hebt aangemaakt.",
+        "no_workers": "Geen actieve uitvoerders op dit team.",
         "badge": "Teamleader",
         "tile": "Teamleader",
         "tile_sub": "Icoon, gsm en teamleden beheren",
@@ -198,14 +198,20 @@
             "cannot_delete_self": "Je kunt jezelf niet verwijderen.",
             "cannot_delete_worker": "Alleen een uitvoerder die je zelf net hebt aangemaakt kan je verwijderen.",
             "device_colleague_required": "Kies een collega.",
-            "device_colleague_not_found": "Deze collega heeft geen gekoppeld toestel of hoort niet bij je team."
+            "device_colleague_not_found": "Deze collega heeft geen gekoppeld toestel of hoort niet bij je team.",
+            "photo_not_allowed": "Je kunt alleen de foto van een actieve uitvoerder van je eigen team wijzigen."
         },
         "device_title": "Nieuw toestel toestaan",
         "device_open": "Toestel vrijgeven",
         "device_hint": "Als een collega een nieuwe of tijdelijke gsm heeft, geef je het gekoppelde toestel vrij. Daarna kan die persoon opnieuw inklokken op het nieuwe toestel.",
         "choose_device_colleague": "Kies een collega met gekoppeld toestel",
         "device_submit": "Nieuw toestel toestaan",
-        "device_released_ok": ":name mag opnieuw inklokken met een ander toestel."
+        "device_released_ok": ":name mag opnieuw inklokken met een ander toestel.",
+        "photo_take": "Foto nemen",
+        "photo_update": "Foto bijwerken",
+        "photo_remove_confirm": "Foto van :name verwijderen?",
+        "photo_updated": "Foto bijgewerkt voor :name.",
+        "photo_deleted": "Foto verwijderd voor :name."
     },
     "documents": {
         "download": "Downloaden",

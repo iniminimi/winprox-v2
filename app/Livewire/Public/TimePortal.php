@@ -11,7 +11,6 @@ use App\Actions\Tasks\CompleteTaskAction;
 use App\Actions\Tasks\RoundTaskCompletionAction;
 use App\Actions\Tasks\SkipRoundStopAction;
 use App\Actions\Tasks\StartTaskAction;
-use App\Actions\Team\DeleteWorkerAction;
 use App\Actions\Time\AcknowledgeTimeRosterViewAction;
 use App\Actions\Time\CancelAbsenceRequestAction;
 use App\Actions\Time\AssertClockPointTaskVisitAction;
@@ -946,7 +945,7 @@ class TimePortal extends Component
         }
 
         $openShift = $findShift->handle($worker);
-        if ($openShift !== null && $openShift->currentClockPointId() === (int) $clockPoint->id) {
+        if ($openShift !== null && $openShift->isPresentAtSamePlace($clockPoint)) {
             $this->portalFlash('time.portal.errors.already_clocked_in');
 
             return;
@@ -1041,7 +1040,7 @@ class TimePortal extends Component
             return;
         }
 
-        if ($openShift->currentClockPointId() === (int) $clockPoint->id) {
+        if ($openShift->isPresentAtSamePlace($clockPoint)) {
             $this->portalFlash('time.portal.errors.already_clocked_in');
 
             return;
@@ -1841,8 +1840,6 @@ class TimePortal extends Component
             ? Worker::query()
                 ->where('internal_team_id', $team->id)
                 ->where('is_active', true)
-                ->where('created_by_worker_id', $verifiedWorker->id)
-                ->where('created_at', '>=', now()->subHours(DeleteWorkerAction::TEAMLEADER_DELETE_WINDOW_HOURS))
                 ->orderBy('last_name')
                 ->orderBy('first_name')
                 ->get()
@@ -1947,6 +1944,7 @@ class TimePortal extends Component
                 ? WorkerIconGuard::remainingAttempts($deviceWorker->team)
                 : WorkerIconGuard::MAX_FAILED_ATTEMPTS,
             'openShift' => $openShift,
+            'portalClockPoint' => $homescreenPoint,
             'absenceClockInKind' => $absenceClockInKind,
             'lastClosedShift' => $lastClosedShift,
             'todayClockAlert' => $todayClockAlert,

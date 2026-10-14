@@ -325,7 +325,7 @@
           "Administrator: everything, including billing.",
           "Staff: day-to-day follow-up, no billing.",
           "Worker: field work via Clock Point and unit QR, no login.",
-          "Team leader: release icons and coordinate via Clock Point."
+          "Team leader: release icons, manage workers and take photos via Clock Point."
         ]
       },
       {

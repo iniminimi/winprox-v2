@@ -1011,7 +1011,7 @@
             "actions": [
                 {
                     "label": "Overview",
-                    "text": "Open «Manage» to see workers you just created yourself, or to add one."
+                    "text": "Open «Manage» to see the workers of your team, to add one, or to take or update a photo."
                 },
                 {
                     "label": "Add",
@@ -1020,6 +1020,10 @@
                 {
                     "label": "Remove",
                     "text": "Only remove a worker you just created yourself (within 24 hours). Other team members are removed by the administrator. You cannot remove yourself."
+                },
+                {
+                    "label": "Photo",
+                    "text": "Click a colleague's photo to take or choose a photo. The photo is cropped on the phone and then visible in the back office. Click the cross to remove the photo."
                 }
             ]
         },

@@ -172,7 +172,7 @@
         "released_ok": ":name ha sido liberado y puede elegir un icono de nuevo.",
         "manage_workers_title": "Gestionar trabajadores",
         "manage_workers_open": "Gestionar",
-        "manage_workers_hint": "Añade trabajadores. Solo puedes eliminar los que acabas de crear.",
+        "manage_workers_hint": "Añada ejecutores o haga una foto. Solo puede eliminar a un ejecutor que acabe de crear usted mismo.",
         "worker_first_name": "Nombre",
         "worker_last_name": "Apellidos",
         "add_worker_title": "Añadir trabajador",
@@ -184,7 +184,7 @@
         "delete_confirm": "¿Eliminar a :name?",
         "worker_added": "Trabajador añadido.",
         "worker_deleted": ":name eliminado.",
-        "no_workers": "Aún no hay trabajadores en este equipo.",
+        "no_workers": "No hay ejecutores activos en este equipo.",
         "badge": "Jefe de equipo",
         "tile": "Jefe de equipo",
         "tile_sub": "Iconos, teléfonos y compañeros",
@@ -198,14 +198,20 @@
             "cannot_delete_self": "No puede eliminarse a sí mismo.",
             "cannot_delete_worker": "Solo puedes eliminar un trabajador que acabas de crear.",
             "device_colleague_required": "Elige un compañero.",
-            "device_colleague_not_found": "Este compañero no tiene dispositivo vinculado o no pertenece a tu equipo."
+            "device_colleague_not_found": "Este compañero no tiene dispositivo vinculado o no pertenece a tu equipo.",
+            "photo_not_allowed": "Solo puede cambiar la foto de un ejecutor activo de su propio equipo."
         },
         "device_title": "Permitir un dispositivo nuevo",
         "device_open": "Liberar dispositivo",
         "device_hint": "Si un compañero tiene un móvil nuevo o temporal, libera el dispositivo vinculado. Después podrá fichar en el nuevo dispositivo.",
         "choose_device_colleague": "Elige un compañero con dispositivo vinculado",
         "device_submit": "Permitir dispositivo nuevo",
-        "device_released_ok": ":name puede volver a fichar con otro dispositivo."
+        "device_released_ok": ":name puede volver a fichar con otro dispositivo.",
+        "photo_take": "Hacer foto",
+        "photo_update": "Actualizar foto",
+        "photo_remove_confirm": "¿Eliminar la foto de :name?",
+        "photo_updated": "Foto actualizada para :name.",
+        "photo_deleted": "Foto eliminada para :name."
     },
     "documents": {
         "download": "Descargar",

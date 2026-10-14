@@ -1011,7 +1011,7 @@
             "actions": [
                 {
                     "label": "Resumen",
-                    "text": "Abra «Gestionar» para ver los trabajadores que acaba de crear, o para añadir uno."
+                    "text": "Abra «Gestionar» para ver los trabajadores de su equipo, para añadir uno o para tomar o actualizar una foto."
                 },
                 {
                     "label": "Añadir",
@@ -1020,6 +1020,10 @@
                 {
                     "label": "Eliminar",
                     "text": "Elimine solo trabajadores que acabe de crear usted mismo (dentro de las 24 horas). Los demás miembros los elimina el administrador. No puede eliminarse a sí mismo."
+                },
+                {
+                    "label": "Foto",
+                    "text": "Pulse la foto de un colega para tomar o elegir una foto. La foto se recorta en el teléfono y luego es visible en la administración. Pulse la cruz para eliminarla."
                 }
             ]
         },

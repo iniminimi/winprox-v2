@@ -1011,7 +1011,7 @@
             "actions": [
                 {
                     "label": "Übersicht",
-                    "text": "Öffnen Sie «Verwalten», um Mitarbeiter zu sehen, die Sie gerade selbst angelegt haben, oder einen hinzuzufügen."
+                    "text": "Öffnen Sie «Verwalten», um die Mitarbeiter Ihres Teams zu sehen, einen hinzuzufügen oder ein Foto aufzunehmen oder zu aktualisieren."
                 },
                 {
                     "label": "Hinzufügen",
@@ -1020,6 +1020,10 @@
                 {
                     "label": "Entfernen",
                     "text": "Entfernen Sie nur Mitarbeiter, die Sie gerade selbst angelegt haben (innerhalb von 24 Stunden). Andere Teammitglieder entfernt die Verwaltung. Sich selbst entfernen ist nicht möglich."
+                },
+                {
+                    "label": "Foto",
+                    "text": "Klicken Sie auf das Foto eines Kollegen, um ein Foto aufzunehmen oder zu wählen. Das Foto wird auf dem Handy zugeschnitten und ist danach in der Verwaltung sichtbar. Klicken Sie auf das Kreuz, um das Foto zu entfernen."
                 }
             ]
         },

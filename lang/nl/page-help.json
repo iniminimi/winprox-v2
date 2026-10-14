@@ -1011,7 +1011,7 @@
             "actions": [
                 {
                     "label": "Overzicht",
-                    "text": "Open «Beheren» om uitvoerders te zien die je zelf net hebt aangemaakt, of om er een toe te voegen."
+                    "text": "Open «Beheren» om de uitvoerders van je team te zien, om er een toe te voegen of om een foto te nemen of bij te werken."
                 },
                 {
                     "label": "Toevoegen",
@@ -1020,6 +1020,10 @@
                 {
                     "label": "Verwijderen",
                     "text": "Verwijder alleen een worker die je zelf net hebt aangemaakt (binnen 24 uur). Andere teamleden verwijdert de beheerder. Jezelf verwijderen kan niet."
+                },
+                {
+                    "label": "Foto",
+                    "text": "Klik op de foto van een collega om een foto te nemen of te kiezen. De foto wordt op de gsm bijgesneden en is daarna zichtbaar in de backoffice. Klik op het kruisje om de foto te verwijderen."
                 }
             ]
         },

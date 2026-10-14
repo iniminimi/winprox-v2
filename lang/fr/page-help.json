@@ -1019,7 +1019,7 @@
             "actions": [
                 {
                     "label": "Vue d'ensemble",
-                    "text": "Ouvrez «Gérer» pour voir les exécutants que vous venez de créer, ou pour en ajouter un."
+                    "text": "Ouvrez «Gérer» pour voir les exécutants de votre équipe, pour en ajouter un ou pour prendre ou mettre à jour une photo."
                 },
                 {
                     "label": "Ajouter",
@@ -1028,6 +1028,10 @@
                 {
                     "label": "Supprimer",
                     "text": "Ne supprimez qu'un exécutant que vous venez de créer vous-même (moins de 24 h). Les autres membres sont supprimés par l'administrateur. Vous ne pouvez pas vous supprimer vous-même."
+                },
+                {
+                    "label": "Photo",
+                    "text": "Cliquez sur la photo d'un collègue pour prendre ou choisir une photo. La photo est recadrée sur le téléphone puis visible dans le back-office. Cliquez sur la croix pour la supprimer."
                 }
             ]
         },

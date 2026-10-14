@@ -1011,7 +1011,7 @@
             "actions": [
                 {
                     "label": "Panoramica",
-                    "text": "Apri «Gestisci» per vedere i lavoratori appena creati da lei, o per aggiungerne uno."
+                    "text": "Apri «Gestisci» per vedere i lavoratori del suo team, per aggiungerne uno o per scattare o aggiornare una foto."
                 },
                 {
                     "label": "Aggiungi",
@@ -1020,6 +1020,10 @@
                 {
                     "label": "Rimuovi",
                     "text": "Rimuova solo lavoratori appena creati da lei (entro 24 ore). Gli altri membri del team li rimuove l'amministratore. Non può rimuovere se stesso."
+                },
+                {
+                    "label": "Foto",
+                    "text": "Clicchi sulla foto di un collega per scattare o scegliere una foto. La foto viene ritagliata sul telefono ed è poi visibile nel back-office. Clicchi sulla croce per rimuoverla."
                 }
             ]
         },

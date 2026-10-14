@@ -4,9 +4,12 @@ namespace App\Livewire\Concerns;
 
 use App\Actions\Team\CreateWorkerAction;
 use App\Actions\Team\DeleteWorkerAction;
+use App\Actions\Team\DeleteWorkerPhotoAction;
+use App\Actions\Team\UpdateWorkerPhotoAction;
 use App\Http\Requests\Team\StoreWorkerRequest;
 use App\Models\InternalTeam;
 use App\Models\Worker;
+use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 /**
  * Teamleader: workers beheren op het Clock Point-portaal.
@@ -25,6 +28,11 @@ trait PortalTeamleaderManageWorkers
 
     public bool $showAddWorkerForm = false;
 
+    public ?int $photoTargetWorkerId = null;
+
+    /** @var TemporaryUploadedFile|null */
+    public $teamleaderPhoto = null;
+
     public function openManageWorkers(): void
     {
         $this->showManageWorkers = true;
@@ -42,6 +50,8 @@ trait PortalTeamleaderManageWorkers
         $this->newWorkerFirstName = '';
         $this->newWorkerLastName = '';
         $this->manageWorkersMessage = '';
+        $this->photoTargetWorkerId = null;
+        $this->teamleaderPhoto = null;
         $this->resetErrorBag();
     }
 
@@ -117,6 +127,97 @@ trait PortalTeamleaderManageWorkers
         }
 
         $this->portalManageWorkersFlash('portal.teamleader.worker_deleted', ['name' => $worker->displayName()]);
+    }
+
+    public function startWorkerPhoto(int $workerId): void
+    {
+        if ($this->portalTeamleaderWorker() === null || $this->teamleaderPhotoWorker($workerId) === null) {
+            return;
+        }
+
+        $this->photoTargetWorkerId = $workerId;
+        $this->teamleaderPhoto = null;
+        $this->resetErrorBag(['teamleaderPhoto']);
+    }
+
+    public function cancelWorkerPhoto(): void
+    {
+        $this->reset(['photoTargetWorkerId', 'teamleaderPhoto']);
+        $this->resetErrorBag(['teamleaderPhoto']);
+    }
+
+    public function updatedTeamleaderPhoto(): void
+    {
+        $this->saveWorkerPhoto(app(UpdateWorkerPhotoAction::class));
+    }
+
+    public function saveWorkerPhoto(UpdateWorkerPhotoAction $updateWorkerPhoto): void
+    {
+        $teamleader = $this->portalTeamleaderWorker();
+        if ($teamleader === null || $this->photoTargetWorkerId === null || $this->teamleaderPhoto === null) {
+            return;
+        }
+
+        $this->validate(
+            ['teamleaderPhoto' => ['required', 'image', 'mimes:jpeg,jpg,png,webp', 'max:2048']],
+            [
+                'teamleaderPhoto.image' => __('team.errors.worker_photo_invalid'),
+                'teamleaderPhoto.mimes' => __('team.errors.worker_photo_invalid'),
+                'teamleaderPhoto.max' => __('team.errors.worker_photo_max'),
+            ],
+        );
+
+        $worker = $this->teamleaderPhotoWorker($this->photoTargetWorkerId);
+        if ($worker === null) {
+            $this->cancelWorkerPhoto();
+
+            return;
+        }
+
+        try {
+            $updateWorkerPhoto->handle($worker, $this->teamleaderPhoto, null, $teamleader);
+        } catch (\InvalidArgumentException) {
+            $this->cancelWorkerPhoto();
+            $this->portalManageWorkersFlash('portal.teamleader.errors.photo_not_allowed');
+
+            return;
+        }
+
+        $this->reset(['photoTargetWorkerId', 'teamleaderPhoto']);
+        $this->portalManageWorkersFlash('portal.teamleader.photo_updated', ['name' => $worker->displayName()]);
+    }
+
+    public function removeWorkerPhoto(int $workerId, DeleteWorkerPhotoAction $deleteWorkerPhoto): void
+    {
+        $teamleader = $this->portalTeamleaderWorker();
+        $worker = $this->teamleaderPhotoWorker($workerId);
+        if ($teamleader === null || $worker === null) {
+            return;
+        }
+
+        try {
+            $deleteWorkerPhoto->handle($worker, null, $teamleader);
+        } catch (\InvalidArgumentException) {
+            $this->portalManageWorkersFlash('portal.teamleader.errors.photo_not_allowed');
+
+            return;
+        }
+
+        $this->portalManageWorkersFlash('portal.teamleader.photo_deleted', ['name' => $worker->displayName()]);
+    }
+
+    /** Actieve collega op het eigen team; de teamleader mag ook zichzelf fotograferen. */
+    private function teamleaderPhotoWorker(int $workerId): ?Worker
+    {
+        $team = $this->portalManageWorkersTeam();
+
+        return $team === null
+            ? null
+            : Worker::query()
+                ->where('internal_team_id', $team->id)
+                ->where('is_active', true)
+                ->whereKey($workerId)
+                ->first();
     }
 
     /** Delete-knop alleen voor workers die deze teamleader zelf net aanmaakte. */

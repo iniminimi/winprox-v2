@@ -149,18 +149,51 @@
             <p class="wp-muted">{{ __('portal.teamleader.manage_workers_hint') }}</p>
         @else
             <div data-manual-capture="portal-teamleader-workers">
+            {{-- Werknemerfoto: crop + compress client-side, daarna Livewire-upload (§7). --}}
+            <input type="file"
+                   id="tl-worker-photo-input"
+                   class="sr-only"
+                   accept="image/jpeg,image/png,image/webp"
+                   wire:ignore
+                   x-on:change="
+                       const input = $event.target;
+                       const file = input.files?.[0];
+                       if (!file) { return; }
+                       const crop = typeof window.wpCropImageFile === 'function'
+                           ? window.wpCropImageFile(file, {
+                                 aspectRatio: 1,
+                                 circle: true,
+                                 title: @js(__('team.workers.photo_crop_title')),
+                                 applyLabel: @js(__('team.workers.photo_crop_apply')),
+                                 cancelLabel: @js(__('common.button.cancel')),
+                             })
+                           : Promise.resolve(file);
+                       crop.then((cropped) => {
+                           if (!cropped) { return null; }
+                           return typeof window.wpCompressImageFile === 'function'
+                               ? window.wpCompressImageFile(cropped, { maxDimension: 400, quality: 0.8 })
+                               : cropped;
+                       }).then((compressed) => {
+                           if (!compressed) { return; }
+                           $wire.upload('teamleaderPhoto', compressed);
+                       }).finally(() => { input.value = ''; });
+                   ">
+            @error('teamleaderPhoto') <p class="wp-error">{{ $message }}</p> @enderror
+
             {{-- Current workers list --}}
             @if ($teamWorkers->isEmpty())
                 <p class="wp-muted">{{ __('portal.teamleader.no_workers') }}</p>
             @else
                 <div class="wp-list wp-list--entity-rows">
                     @foreach ($teamWorkers as $tw)
-                        @if ($verifiedWorker && (int) $tw->id === (int) $verifiedWorker->id)
-                            @continue
-                        @endif
+                        @php($twPhotoUrl = $tw->photoPublicUrl())
                         <div class="wp-cluster wp-cluster--tight wp-release-worker-row" wire:key="manage-worker-{{ $tw->id }}">
                             <span class="wp-cluster wp-cluster--tight">
-                                @if ($tw->field_icon_slug)
+                                @if ($twPhotoUrl !== null)
+                                    <span class="wp-worker-avatar wp-worker-avatar--photo" aria-hidden="true">
+                                        <img src="{{ $twPhotoUrl }}" alt="" class="wp-worker-avatar__img">
+                                    </span>
+                                @elseif ($tw->field_icon_slug)
                                     <x-wp-worker-icon :slug="$tw->field_icon_slug" class="wp-release-worker-row__icon" />
                                 @endif
                                 <span class="wp-release-worker-row__name">{{ $tw->displayName() }}</span>
@@ -168,14 +201,29 @@
                                     <span class="wp-pill wp-pill--progress">{{ __('portal.teamleader.badge') }}</span>
                                 @endif
                             </span>
-                            @if ($this->teamleaderCanRemoveWorker($tw))
+                            <span class="wp-cluster wp-cluster--tight">
                                 <button type="button"
-                                        class="btn btn--danger btn--sm"
-                                        wire:click="removeWorker({{ $tw->id }})"
-                                        wire:confirm="{{ __('portal.teamleader.delete_confirm', ['name' => $tw->displayName()]) }}">
-                                    {{ __('portal.teamleader.delete') }}
+                                        class="btn btn--surface btn--sm"
+                                        x-on:click="$wire.set('photoTargetWorkerId', {{ $tw->id }}); document.getElementById('tl-worker-photo-input')?.click()">
+                                    {{ $twPhotoUrl !== null ? __('portal.teamleader.photo_update') : __('portal.teamleader.photo_take') }}
                                 </button>
-                            @endif
+                                @if ($twPhotoUrl !== null)
+                                    <button type="button"
+                                            class="btn btn--ghost btn--sm"
+                                            wire:click="removeWorkerPhoto({{ $tw->id }})"
+                                            wire:confirm="{{ __('portal.teamleader.photo_remove_confirm', ['name' => $tw->displayName()]) }}">
+                                        {{ __('team.workers.photo_remove') }}
+                                    </button>
+                                @endif
+                                @if ($this->teamleaderCanRemoveWorker($tw))
+                                    <button type="button"
+                                            class="btn btn--danger btn--sm"
+                                            wire:click="removeWorker({{ $tw->id }})"
+                                            wire:confirm="{{ __('portal.teamleader.delete_confirm', ['name' => $tw->displayName()]) }}">
+                                        {{ __('portal.teamleader.delete') }}
+                                    </button>
+                                @endif
+                            </span>
                         </div>
                     @endforeach
                 </div>
