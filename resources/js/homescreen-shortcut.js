@@ -7,17 +7,32 @@
 
 let deferredPrompt = null;
 
+const INSTALLED_KEY = 'wp-pwa-installed';
+
 function isStandaloneDisplay() {
     return window.matchMedia('(display-mode: standalone)').matches
         || window.navigator.standalone === true;
 }
 
+function readInstalledFlag() {
+    try {
+        return window.localStorage.getItem(INSTALLED_KEY) === '1';
+    } catch {
+        return false;
+    }
+}
+
 function markHomescreenInstalled() {
+    try {
+        window.localStorage.setItem(INSTALLED_KEY, '1');
+    } catch {
+        // Private mode or storage denied: class-only fallback still applies.
+    }
     document.documentElement.classList.add('wp-pwa-installed');
 }
 
 async function hideShortcutWhenInstalled() {
-    if (isStandaloneDisplay()) {
+    if (isStandaloneDisplay() || readInstalledFlag()) {
         markHomescreenInstalled();
         return;
     }
@@ -42,12 +57,15 @@ window.addEventListener('beforeinstallprompt', (event) => {
     }
 
     event.preventDefault();
+    if (readInstalledFlag()) {
+        return;
+    }
     deferredPrompt = event;
 });
 
 document.addEventListener('click', (event) => {
     const trigger = event.target.closest('[data-wp-homescreen-install]');
-    if (!trigger || isStandaloneDisplay() || !deferredPrompt) {
+    if (!trigger || isStandaloneDisplay() || readInstalledFlag() || !deferredPrompt) {
         return;
     }
 

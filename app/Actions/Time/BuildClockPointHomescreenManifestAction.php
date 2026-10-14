@@ -2,32 +2,32 @@
 
 namespace App\Actions\Time;
 
+use App\Models\ClockPoint;
+
 class BuildClockPointHomescreenManifestAction
 {
-    public function __construct(private ResolveClockPointPortalTokenAction $resolveToken) {}
-
     /**
+     * Eén canoniek manifest per tenant: dezelfde manifest-URL, id en start_url
+     * op elk Clock Point. Oudere browsers dedupliceren installs op URL i.p.v.
+     * het id-veld — per-token URL's lieten daar telkens een "nieuwe" app
+     * installeren (en na QR-vernieuwing opnieuw een icoon).
+     *
      * @return array<string, mixed>|null
      */
-    public function handle(string $token): ?array
+    public function handle(int $tenantId): ?array
     {
-        $resolution = $this->resolveToken->handle($token);
-        $clockPoint = $resolution->clockPoint;
+        $hasUsablePoint = ClockPoint::withoutGlobalScope('tenant')
+            ->where('tenant_id', $tenantId)
+            ->where('is_active', true)
+            ->exists();
 
-        if ($clockPoint === null || ! $resolution->isUsable()) {
+        if (! $hasUsablePoint) {
             return null;
         }
 
-        // Altijd de vaste QR van het Clock Point. Een scherm-QR roteert en is
-        // na het venster ongeldig; die mag niet het startadres van de app worden.
-        $homeToken = (string) $clockPoint->qr_token;
-        $startUrl = route('public.time-portal.cp', $homeToken);
+        $appId = url('/time-portal/'.$tenantId);
+        $manifestUrl = route('public.time-portal.tenant.manifest', $tenantId);
         $scope = rtrim(url('/'), '/').'/';
-        // Eén app per tenant: de token verandert bij QR-vernieuwing, maar het id
-        // blijft stabiel. Anders ziet Android de vernieuwde app als een nieuwe
-        // installatie en komt er een tweede startscherm-icoon bij.
-        $appId = url('/time-portal/'.$clockPoint->tenant_id);
-        $manifestUrl = route('public.time-portal.cp.manifest', $homeToken);
         $icon192 = url('/images/pwa/winprox-192.png');
         $icon512 = url('/images/pwa/winprox-512.png');
         $maskable192 = url('/images/pwa/winprox-maskable-192.png');
@@ -37,7 +37,8 @@ class BuildClockPointHomescreenManifestAction
             'id' => $appId,
             'name' => 'WinProx',
             'short_name' => 'WinProx',
-            'start_url' => $startUrl,
+            // Stabiele startpagina die doorverwijst naar een live Clock Point.
+            'start_url' => $appId,
             // Sticker en klokscherm zitten op /time/, het icoon op /cp/. Alleen de
             // site-root dekt beide, zodat een scan op Android de geïnstalleerde app opent.
             'scope' => $scope,

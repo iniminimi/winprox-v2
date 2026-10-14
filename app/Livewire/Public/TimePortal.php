@@ -2080,8 +2080,10 @@ class TimePortal extends Component
                 : collect(),
             'showClockPointName' => ! TimePortalData::isGenericClockPointName($this->clockPointName),
             'offerHomescreenShortcut' => $homescreenPoint !== null,
+            // Canoniek tenant-manifest: identiek op elk Clock Point, zodat
+            // elke installatie dezelfde app is — ook op oudere Android.
             'homescreenManifestUrl' => $homescreenPoint !== null
-                ? route('public.time-portal.cp.manifest', $homescreenPoint->qr_token)
+                ? route('public.time-portal.tenant.manifest', $this->tenantId)
                 : null,
             'isTimePortal' => true,
             'isTeamPortal' => false,

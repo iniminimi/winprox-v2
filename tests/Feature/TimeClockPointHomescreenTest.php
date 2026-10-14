@@ -99,26 +99,53 @@ it('toont het startscherm-icoon ook na aanmelden', function () {
         ->assertDontSeeHtml('<h1 class="wp-page-title">'.e(__('time.portal.title')).'</h1>');
 });
 
-it('levert een webmanifest voor elk clock point', function () {
+it('levert een canoniek webmanifest per tenant', function () {
     [, , $clockPoint] = homescreenClockPointSetup();
-    $appId = url('/time-portal/'.$clockPoint->tenant_id);
+    $home = route('public.time-portal.home', $clockPoint->tenant_id);
+    $manifest = route('public.time-portal.tenant.manifest', $clockPoint->tenant_id);
 
-    $this->get(route('public.time-portal.manifest', $clockPoint->qr_token))
+    $this->get($manifest)
         ->assertOk()
         ->assertJsonPath('name', 'WinProx')
         ->assertJsonPath('display', 'standalone')
         ->assertJsonPath('background_color', '#ffffff')
-        ->assertJsonPath('start_url', route('public.time-portal.cp', $clockPoint->qr_token))
-        ->assertJsonPath('id', $appId)
+        ->assertJsonPath('start_url', $home)
+        ->assertJsonPath('id', $home)
         ->assertJsonPath('scope', rtrim(url('/'), '/').'/')
         ->assertJsonPath('handle_links', 'preferred')
         ->assertJsonPath('launch_handler.client_mode', 'navigate-existing')
         ->assertJsonPath('related_applications.0.platform', 'webapp')
-        ->assertJsonPath('related_applications.0.url', route('public.time-portal.cp.manifest', $clockPoint->qr_token))
-        ->assertJsonPath('related_applications.0.id', $appId)
+        ->assertJsonPath('related_applications.0.url', $manifest)
+        ->assertJsonPath('related_applications.0.id', $home)
         ->assertJsonPath('icons.0.purpose', 'any')
         ->assertJsonPath('icons.2.purpose', 'maskable')
         ->assertJsonPath('icons.3.purpose', 'maskable');
+
+    // Per-token manifest-URL's verwijzen naar hetzelfde canonieke manifest.
+    $this->get(route('public.time-portal.cp.manifest', $clockPoint->qr_token))
+        ->assertRedirect($manifest);
+    $this->get(route('public.time-portal.manifest', $clockPoint->qr_token))
+        ->assertRedirect($manifest);
+
+    // De vaste startpagina landt op een live Clock Point van de tenant.
+    $this->get($home)->assertRedirect(route('public.time-portal.cp', $clockPoint->qr_token));
+});
+
+it('kiest een locatie-loos clock point als app-startpagina', function () {
+    [$tenant, , $clockPoint] = homescreenClockPointSetup();
+
+    $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id]);
+    $clockPoint->forceFill(['location_id' => $location->id])->save();
+    $free = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    $this->get(route('public.time-portal.home', $tenant->id))
+        ->assertRedirect(route('public.time-portal.cp', $free->qr_token));
+
+    // Zonder actief Clock Point is er geen manifest en geen startpagina.
+    ClockPoint::withoutGlobalScope('tenant')->update(['is_active' => false]);
+
+    $this->get(route('public.time-portal.home', $tenant->id))->assertNotFound();
+    $this->get(route('public.time-portal.tenant.manifest', $tenant->id))->assertNotFound();
 });
 
 it('opent het startscherm op de vaste aanmeldlink, ook vanaf een scherm-QR', function () {
@@ -135,15 +162,13 @@ it('opent het startscherm op de vaste aanmeldlink, ook vanaf een scherm-QR', fun
         ClockDisplayQr::currentWindow() - 5,
     );
     $home = route('public.time-portal.cp', $clockPoint->qr_token);
-    $manifest = route('public.time-portal.cp.manifest', $clockPoint->qr_token);
+    $manifest = route('public.time-portal.tenant.manifest', $clockPoint->tenant_id);
 
     expect($displayToken)->not->toBeNull()->and($displayToken)->not->toBe($clockPoint->qr_token);
 
+    // Ook een scherm-token verwijst naar het canonieke tenant-manifest.
     $this->get(route('public.time-portal.manifest', $displayToken))
-        ->assertOk()
-        ->assertJsonPath('start_url', $home)
-        ->assertJsonPath('id', url('/time-portal/'.$clockPoint->tenant_id))
-        ->assertJsonPath('related_applications.0.url', $manifest);
+        ->assertRedirect($manifest);
 
     $this->get('/time/'.$displayToken)
         ->assertOk()

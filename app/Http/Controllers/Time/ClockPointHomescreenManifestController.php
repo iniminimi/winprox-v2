@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers\Time;
 
-use App\Actions\Time\BuildClockPointHomescreenManifestAction;
-use Illuminate\Http\JsonResponse;
+use App\Actions\Time\ResolveClockPointPortalTokenAction;
+use Illuminate\Http\RedirectResponse;
 
+/**
+ * Per-token manifest-URL's (legacy): doorverwijzen naar het canonieke
+ * tenant-manifest zodat alle pagina's en oude links op één app-identiteit
+ * uitkomen.
+ */
 class ClockPointHomescreenManifestController
 {
-    public function __invoke(string $token, BuildClockPointHomescreenManifestAction $action): JsonResponse
+    public function __invoke(string $token, ResolveClockPointPortalTokenAction $resolveToken): RedirectResponse
     {
-        $manifest = $action->handle($token);
-        if ($manifest === null) {
-            abort(404);
-        }
+        $resolution = $resolveToken->handle($token);
+        $clockPoint = $resolution->clockPoint;
 
-        return response()->json($manifest, 200, [
-            'Content-Type' => 'application/manifest+json',
-        ]);
+        abort_if($clockPoint === null || ! $resolution->isUsable(), 404);
+
+        return redirect()->route('public.time-portal.tenant.manifest', $clockPoint->tenant_id);
     }
 }
