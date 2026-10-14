@@ -188,8 +188,8 @@
                 <div class="wp-list wp-list--entity-rows">
                     @foreach ($teamWorkers as $tw)
                         @php($twPhotoUrl = $tw->photoPublicUrl())
-                        <div class="wp-cluster wp-cluster--tight wp-release-worker-row" wire:key="manage-worker-{{ $tw->id }}">
-                            <span class="wp-cluster wp-cluster--tight">
+                        <div class="wp-data-row" wire:key="manage-worker-{{ $tw->id }}">
+                            <span class="wp-data-row-identity">
                                 @if ($twPhotoUrl !== null)
                                     <span class="wp-worker-avatar wp-worker-avatar--photo" aria-hidden="true">
                                         <img src="{{ $twPhotoUrl }}" alt="" class="wp-worker-avatar__img">
