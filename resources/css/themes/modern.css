@@ -238,8 +238,9 @@
 }
 
 /*
- | Portaal: layout.css mixt 85% + transparent over surface — te glasig op foto.
- | Één dekking voor cards/tiles/muted/actions; flash stevig groen (wint van .wp-portal .wp-flash).
+ | Portaal: layout.css mixt 85% + transparent over surface.
+ | Subtiel glas (~82% wit + blur) — zichtbaar op foto/gradient, leesbaarheid blijft.
+ | Flash stevig groen (wint van .wp-portal .wp-flash).
  */
 [data-theme='modern'] .wp-portal .wp-card,
 [data-theme='modern'] .wp-portal .wp-tile:not(.wp-tile--primary),
@@ -247,7 +248,7 @@
 [data-theme='modern'] .wp-portal .wp-surface-muted,
 [data-theme='modern'] .wp-portal-head,
 [data-theme='modern'] .wp-portal-actions {
-    background-color: rgba(255, 255, 255, 0.96);
+    background-color: rgba(255, 255, 255, 0.82);
     backdrop-filter: var(--wp-card-backdrop);
     -webkit-backdrop-filter: var(--wp-card-backdrop);
 }
