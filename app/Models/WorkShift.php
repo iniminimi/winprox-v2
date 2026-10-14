@@ -96,6 +96,28 @@ class WorkShift extends Model
             : $this->clockInClockPoint()->first();
     }
 
+    /**
+     * Aanwezigheid op dezelfde plek als dit clock point: hetzelfde punt, of een
+     * ander punt op dezelfde vestiging. Twee punten met een vestiging die gelijk
+     * is tellen als één plek — een hop is tussen vestigingen, niet binnen.
+     * Punten zonder vestiging vallen terug op de punt-vergelijking.
+     */
+    public function isPresentAtSamePlace(ClockPoint $clockPoint): bool
+    {
+        $presencePoint = $this->currentClockPoint();
+        if ($presencePoint === null) {
+            return false;
+        }
+
+        if ((int) $presencePoint->id === (int) $clockPoint->id) {
+            return true;
+        }
+
+        return $presencePoint->location_id !== null
+            && $clockPoint->location_id !== null
+            && (int) $presencePoint->location_id === (int) $clockPoint->location_id;
+    }
+
     /** @return list<array<string, mixed>> */
     public function locationHops(): array
     {

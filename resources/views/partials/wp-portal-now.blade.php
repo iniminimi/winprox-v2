@@ -9,7 +9,8 @@
         ? $presencePoint->location->name.($presencePoint->name ? ' · '.$presencePoint->name : '')
         : ($presencePoint?->name ?? '');
     $openElsewhere = $openShift !== null && $presencePoint !== null
-        && (int) $presencePoint->id !== (int) $clockPointId;
+        && ($portalClockPoint ?? null) !== null
+        && ! $openShift->isPresentAtSamePlace($portalClockPoint);
     $startedElsewhere = $openShift !== null
         && $openShift->hasLocationHops()
         && (int) $openShift->clock_in_clock_point_id !== (int) ($presencePoint?->id ?? 0);

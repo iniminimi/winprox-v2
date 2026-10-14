@@ -6,6 +6,7 @@ use App\Actions\Time\ClockInAction;
 use App\Livewire\Public\TimePortal;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
+use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Worker;
 use App\Models\WorkShift;
@@ -202,6 +203,77 @@ it('verplaatst een open dienst na een scan op een andere Clock Point', function 
 
     expect((int) WorkShift::query()->where('worker_id', $worker->id)->open()->value('presence_clock_point_id'))
         ->toBe($clockB->id);
+});
+
+it('behandelt een tweede Clock Point op dezelfde vestiging niet als elders', function () {
+    [$tenant, , $worker] = punchScanTenant();
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $clockA = ClockPoint::factory()->forLocation($location)->create([
+        'qr_token' => 'same-site-a-'.$tenant->id,
+    ]);
+    $clockB = ClockPoint::factory()->forLocation($location)->create([
+        'qr_token' => 'same-site-b-'.$tenant->id,
+    ]);
+
+    app(ClockInAction::class)->handle($worker, $clockA);
+
+    Livewire::test(TimePortal::class, ['token' => $clockB->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->assertDontSee(__('time.portal.clock.open_elsewhere_hint'), false)
+        ->call('clockIn')
+        ->assertSet('flashMessage', __('time.portal.errors.already_clocked_in'));
+
+    $shift = WorkShift::query()->where('worker_id', $worker->id)->open()->first();
+    expect((int) $shift->presence_clock_point_id)->toBe($clockA->id)
+        ->and($shift->location_hops)->toBeEmpty();
+});
+
+it('blijft een open dienst op een andere vestiging als elders markeren', function () {
+    [$tenant, , $worker] = punchScanTenant();
+    $locA = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $locB = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $clockA = ClockPoint::factory()->forLocation($locA)->create([
+        'qr_token' => 'diff-site-a-'.$tenant->id,
+    ]);
+    $clockB = ClockPoint::factory()->forLocation($locB)->create([
+        'qr_token' => 'diff-site-b-'.$tenant->id,
+    ]);
+
+    app(ClockInAction::class)->handle($worker, $clockA);
+
+    Livewire::test(TimePortal::class, ['token' => $clockB->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->assertSee(__('time.portal.clock.open_elsewhere_hint'), false);
+});
+
+it('behandelt een Clock Point zonder vestiging via de punt-vergelijking', function () {
+    [$tenant, , $worker] = punchScanTenant();
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $clockLocated = ClockPoint::factory()->forLocation($location)->create([
+        'qr_token' => 'located-'.$tenant->id,
+    ]);
+    $clockUnlocated = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'qr_token' => 'unlocated-'.$tenant->id,
+    ]);
+
+    app(ClockInAction::class)->handle($worker, $clockLocated);
+
+    Livewire::test(TimePortal::class, ['token' => $clockUnlocated->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->assertSee(__('time.portal.clock.open_elsewhere_hint'), false);
 });
 
 it('geeft een scan op de sticker en niet op de aanmeldlink', function () {
