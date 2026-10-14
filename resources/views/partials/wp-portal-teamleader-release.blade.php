@@ -154,6 +154,7 @@
                    id="tl-worker-photo-input"
                    class="sr-only"
                    accept="image/jpeg,image/png,image/webp"
+                   capture="environment"
                    wire:ignore
                    x-on:change="
                        const input = $event.target;
