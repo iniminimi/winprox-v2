@@ -42,6 +42,7 @@ function clockInAt(Worker $worker, ClockPoint $clockPoint, string $local): void
 }
 
 it('merkt een open shift op een volledige verlofdag', function () {
+    $this->travelTo(Carbon::parse('2026-10-14 10:00:00', 'Europe/Brussels'));
     [$tenant, $clockPoint, $worker] = absenceClockInSetup();
     clockInAt($worker, $clockPoint, '2026-10-14 09:15:00');
     PlannedShift::factory()->create([

@@ -460,7 +460,11 @@
             "absent": "Ingepland, maar niet ingeklokt",
             "early": "Te vroeg ingeklokt",
             "late": "Te laat ingeklokt",
-            "late_out": "Te laat uitgeklokt"
+            "late_out": "Te laat uitgeklokt",
+            "absence_leave": "Ingeklokt op een verlofdag",
+            "absence_recup": "Ingeklokt op een recupdag",
+            "absence_sick": "Ingeklokt op een ziektedag",
+            "absence_holiday": "Ingeklokt op een feestdag"
         },
         "schedule": {
             "tile": "Mijn rooster",

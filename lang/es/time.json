@@ -460,7 +460,11 @@
             "absent": "Planificado, pero sin fichar",
             "early": "Fichado demasiado pronto",
             "late": "Fichado tarde",
-            "late_out": "Fichado tarde al salir"
+            "late_out": "Fichado tarde al salir",
+            "absence_leave": "Fichado en un día de vacaciones",
+            "absence_recup": "Fichado en un día de recupero",
+            "absence_sick": "Fichado en un día de baja",
+            "absence_holiday": "Fichado en un festivo"
         },
         "schedule": {
             "tile": "Mi cuadrante",

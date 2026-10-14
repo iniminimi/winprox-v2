@@ -460,7 +460,11 @@
             "absent": "Scheduled, but not clocked in",
             "early": "Clocked in early",
             "late": "Clocked in late",
-            "late_out": "Clocked out late"
+            "late_out": "Clocked out late",
+            "absence_leave": "Clocked in on a leave day",
+            "absence_recup": "Clocked in on a TOIL day",
+            "absence_sick": "Clocked in on a sick day",
+            "absence_holiday": "Clocked in on a public holiday"
         },
         "schedule": {
             "tile": "My roster",

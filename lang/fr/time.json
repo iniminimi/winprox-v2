@@ -460,7 +460,11 @@
             "absent": "Planifié, mais pas pointé",
             "early": "Pointé trop tôt",
             "late": "Pointé en retard",
-            "late_out": "Sorti en retard"
+            "late_out": "Sorti en retard",
+            "absence_leave": "Pointé un jour de congé",
+            "absence_recup": "Pointé un jour de récup",
+            "absence_sick": "Pointé un jour de maladie",
+            "absence_holiday": "Pointé un jour férié"
         },
         "schedule": {
             "tile": "Mon planning",

@@ -15,6 +15,10 @@ use InvalidArgumentException;
 
 class ResolveWorkerPortalRosterAlertsAction
 {
+    public function __construct(
+        private CollectAbsenceClockInAttentionAction $absenceClockIns,
+    ) {}
+
     /**
      * @param  list<string>  $dates
      * @return array<string, list<PortalRosterClockAlert>>
@@ -62,6 +66,7 @@ class ResolveWorkerPortalRosterAlertsAction
             ->groupBy(fn (WorkShift $shift) => $shift->clock_in_at->toDateString());
 
         $tolerance = max(0, (int) config('time.roster_attendance_tolerance_minutes', 15));
+        $absenceByDate = $this->absenceKindsByDate($tenantId, $punches->collapse());
         $alerts = [];
 
         foreach ($dates as $date) {
@@ -69,20 +74,60 @@ class ResolveWorkerPortalRosterAlertsAction
                 continue;
             }
 
+            $dayPunches = $punches->get($date) ?? collect();
+            $dayAlerts = [];
+
             $dayPlans = $planned->get($date) ?? collect();
             $dayPlan = $dayPlans->first();
-            if (! $dayPlan instanceof PlannedShift) {
-                continue;
+            if ($dayPlan instanceof PlannedShift) {
+                $dayAlerts = $this->alertsForDay($dayPlan, $dayPlans, $dayPunches, $date, $now, $tolerance);
             }
 
-            $dayPunches = $punches->get($date) ?? collect();
-            $dayAlerts = $this->alertsForDay($dayPlan, $dayPlans, $dayPunches, $date, $now, $tolerance);
+            $absenceKind = $absenceByDate[$date] ?? null;
+            if ($absenceKind !== null) {
+                $dayAlerts[] = match ($absenceKind) {
+                    'sick' => PortalRosterClockAlert::AbsenceSick,
+                    'leave' => PortalRosterClockAlert::AbsenceLeave,
+                    'recup' => PortalRosterClockAlert::AbsenceRecup,
+                    default => PortalRosterClockAlert::AbsenceHoliday,
+                };
+            }
+
             if ($dayAlerts !== []) {
                 $alerts[$date] = $dayAlerts;
             }
         }
 
         return $alerts;
+    }
+
+    /**
+     * Prik op een gepubliceerde afwezigheidsdag (verlof/recup/ziek) of op een
+     * feestdag die niet 'geen effect' telt → hoogst gerankte soort per datum.
+     *
+     * @param  Collection<int, WorkShift>  $punches
+     * @return array<string, string>
+     */
+    private function absenceKindsByDate(int $tenantId, Collection $punches): array
+    {
+        if ($punches->isEmpty()) {
+            return [];
+        }
+
+        $rank = ['sick' => 0, 'leave' => 1, 'recup' => 2, 'holiday' => 3];
+        $byDate = [];
+        foreach ($this->absenceClockIns->handle($tenantId, $punches, PlannedShiftStatus::Published) as $item) {
+            $date = $item->shift?->clock_in_at?->toDateString();
+            $kind = $item->absenceKind;
+            if ($date === null || ! is_string($kind)) {
+                continue;
+            }
+            if (! isset($byDate[$date]) || ($rank[$kind] ?? 9) < ($rank[$byDate[$date]] ?? 9)) {
+                $byDate[$date] = $kind;
+            }
+        }
+
+        return $byDate;
     }
 
     /**

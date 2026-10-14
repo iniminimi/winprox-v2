@@ -4,6 +4,7 @@ namespace App\Actions\Time;
 
 use App\Data\Time\TimePresenceAttentionItem;
 use App\Enums\HolidayAgreementEffect;
+use App\Enums\PlannedShiftStatus;
 use App\Enums\ShiftTypeKind;
 use App\Enums\TimePresenceAttentionType;
 use App\Models\BelgianPublicHoliday;
@@ -18,12 +19,12 @@ use Illuminate\Support\Collection;
 class CollectAbsenceClockInAttentionAction
 {
     /**
-     * Open shifts whose clock-in falls on leave, recup, sick leave, or a public holiday that is not a normal workday.
+     * Shifts whose clock-in falls on leave, recup, sick leave, or a public holiday that is not a normal workday.
      *
      * @param  Collection<int, WorkShift>  $openShifts
      * @return Collection<int, TimePresenceAttentionItem>
      */
-    public function handle(int $tenantId, Collection $openShifts): Collection
+    public function handle(int $tenantId, Collection $openShifts, ?PlannedShiftStatus $plannedStatus = null): Collection
     {
         if ($openShifts->isEmpty()) {
             return collect();
@@ -52,6 +53,7 @@ class CollectAbsenceClockInAttentionAction
                     $query->orWhereDate('work_date', $date);
                 }
             })
+            ->when($plannedStatus instanceof PlannedShiftStatus, fn ($query) => $query->where('status', $plannedStatus))
             ->whereIn('kind', [ShiftTypeKind::Leave, ShiftTypeKind::Recup, ShiftTypeKind::Sick])
             ->get()
             ->groupBy(fn (PlannedShift $row) => $row->worker_id.'|'.$row->work_date->toDateString());

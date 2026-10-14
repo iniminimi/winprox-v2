@@ -460,7 +460,11 @@
             "absent": "Geplant, aber nicht eingestempelt",
             "early": "Zu früh eingestempelt",
             "late": "Zu spät eingestempelt",
-            "late_out": "Zu spät ausgestempelt"
+            "late_out": "Zu spät ausgestempelt",
+            "absence_leave": "An einem Urlaubstag eingestempelt",
+            "absence_recup": "An einem Ausgleichstag eingestempelt",
+            "absence_sick": "An einem Kranktag eingestempelt",
+            "absence_holiday": "An einem Feiertag eingestempelt"
         },
         "schedule": {
             "tile": "Mein Dienstplan",

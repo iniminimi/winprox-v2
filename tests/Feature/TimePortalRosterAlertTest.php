@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Actions\Time\ResolveWorkerPortalRosterAlertsAction;
+use App\Enums\HolidayAgreementEffect;
 use App\Enums\PlannedShiftStatus;
 use App\Enums\PortalRosterClockAlert;
 use App\Enums\ShiftTypeKind;
@@ -390,5 +391,183 @@ it('toont de rode driehoek naast de geplande uren in Mijn rooster', function () 
         ->call('openSchedule')
         ->assertSee('09:00-17:00', false)
         ->assertSee(__('time.portal.clock_alert.absent'), false)
+        ->assertSeeHtml('wp-portal-clock-alert');
+});
+
+it('markeert een gesloten prik op een verlofdag', function () {
+    [$tenant, $team, , $worker] = rosterAlertTenant();
+    PlannedShift::query()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-09-22',
+        'status' => PlannedShiftStatus::Published,
+        'kind' => ShiftTypeKind::Leave,
+        'start_time' => null,
+        'end_time' => null,
+        'break_minutes' => 0,
+    ]);
+    WorkShift::factory()->closed()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_at' => Carbon::parse('2026-09-22 08:00:00'),
+        'clock_out_at' => Carbon::parse('2026-09-22 12:00:00'),
+        'status' => WorkShiftStatus::Closed,
+    ]);
+
+    $alerts = app(ResolveWorkerPortalRosterAlertsAction::class)->handle(
+        $worker,
+        (int) $tenant->id,
+        ['2026-09-22'],
+        Carbon::parse('2026-09-22 17:00:00'),
+    );
+
+    expect($alerts['2026-09-22'] ?? [])->toBe([PortalRosterClockAlert::AbsenceLeave]);
+});
+
+it('markeert een prik binnen een getimede recupblok maar niet erbuiten', function () {
+    [$tenant, $team, , $worker] = rosterAlertTenant();
+    PlannedShift::query()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-09-22',
+        'status' => PlannedShiftStatus::Published,
+        'kind' => ShiftTypeKind::Recup,
+        'start_time' => '13:00',
+        'end_time' => '17:00',
+        'break_minutes' => 0,
+    ]);
+    WorkShift::factory()->closed()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_at' => Carbon::parse('2026-09-22 13:30:00'),
+        'clock_out_at' => Carbon::parse('2026-09-22 16:30:00'),
+        'status' => WorkShiftStatus::Closed,
+    ]);
+    WorkShift::factory()->closed()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_at' => Carbon::parse('2026-09-23 13:30:00'),
+        'clock_out_at' => Carbon::parse('2026-09-23 16:30:00'),
+        'status' => WorkShiftStatus::Closed,
+    ]);
+
+    $alerts = app(ResolveWorkerPortalRosterAlertsAction::class)->handle(
+        $worker,
+        (int) $tenant->id,
+        ['2026-09-22', '2026-09-23'],
+        Carbon::parse('2026-09-23 17:00:00'),
+    );
+
+    expect($alerts['2026-09-22'] ?? [])->toBe([PortalRosterClockAlert::AbsenceRecup]);
+    expect($alerts['2026-09-23'] ?? [])->toBe([]);
+});
+
+it('negeert een concept-afwezigheid op het portaal', function () {
+    [$tenant, $team, , $worker] = rosterAlertTenant();
+    PlannedShift::query()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-09-22',
+        'status' => PlannedShiftStatus::Draft,
+        'kind' => ShiftTypeKind::Sick,
+        'start_time' => null,
+        'end_time' => null,
+        'break_minutes' => 0,
+    ]);
+    WorkShift::factory()->closed()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_at' => Carbon::parse('2026-09-22 08:00:00'),
+        'clock_out_at' => Carbon::parse('2026-09-22 12:00:00'),
+        'status' => WorkShiftStatus::Closed,
+    ]);
+
+    $alerts = app(ResolveWorkerPortalRosterAlertsAction::class)->handle(
+        $worker,
+        (int) $tenant->id,
+        ['2026-09-22'],
+        Carbon::parse('2026-09-22 17:00:00'),
+    );
+
+    expect($alerts)->toBe([]);
+});
+
+it('markeert een prik op een feestdag die vervalt', function () {
+    [$tenant, $team, , $worker] = rosterAlertTenant();
+    WorkShift::factory()->closed()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_at' => Carbon::parse('2026-11-11 08:00:00'),
+        'clock_out_at' => Carbon::parse('2026-11-11 12:00:00'),
+        'status' => WorkShiftStatus::Closed,
+    ]);
+
+    $alerts = app(ResolveWorkerPortalRosterAlertsAction::class)->handle(
+        $worker,
+        (int) $tenant->id,
+        ['2026-11-11'],
+        Carbon::parse('2026-11-12 10:00:00'),
+    );
+
+    expect($alerts['2026-11-11'] ?? [])->toBe([PortalRosterClockAlert::AbsenceHoliday]);
+});
+
+it('markeert geen feestdag met een geen-effect-afspraak', function () {
+    [$tenant, $team, , $worker] = rosterAlertTenant();
+    \App\Models\TenantHolidayAgreement::query()->create([
+        'tenant_id' => $tenant->id,
+        'holiday_date' => '2026-11-11',
+        'effect' => HolidayAgreementEffect::None,
+    ]);
+    WorkShift::factory()->closed()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_at' => Carbon::parse('2026-11-11 08:00:00'),
+        'clock_out_at' => Carbon::parse('2026-11-11 12:00:00'),
+        'status' => WorkShiftStatus::Closed,
+    ]);
+
+    $alerts = app(ResolveWorkerPortalRosterAlertsAction::class)->handle(
+        $worker,
+        (int) $tenant->id,
+        ['2026-11-11'],
+        Carbon::parse('2026-11-12 10:00:00'),
+    );
+
+    expect($alerts)->toBe([]);
+});
+
+it('toont de verlofdag-alert in Mijn uren', function () {
+    [$tenant, $team, $clockPoint, $worker] = rosterAlertTenant();
+    PlannedShift::query()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-09-21',
+        'status' => PlannedShiftStatus::Published,
+        'kind' => ShiftTypeKind::Leave,
+        'start_time' => null,
+        'end_time' => null,
+        'break_minutes' => 0,
+    ]);
+    WorkShift::factory()->closed()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_at' => Carbon::parse('2026-09-21 08:00:00'),
+        'clock_out_at' => Carbon::parse('2026-09-21 12:00:00'),
+        'status' => WorkShiftStatus::Closed,
+    ]);
+    $this->travelTo(Carbon::parse('2026-09-22 10:00:00'));
+
+    signInRosterAlertWorker($clockPoint)
+        ->call('openHours')
+        ->assertSee('08:00', false)
+        ->assertSee(__('time.portal.clock_alert.absence_leave'), false)
         ->assertSeeHtml('wp-portal-clock-alert');
 });
