@@ -211,7 +211,10 @@
         "photo_update": "Update photo",
         "photo_remove_confirm": "Remove :name's photo?",
         "photo_updated": "Photo updated for :name.",
-        "photo_deleted": "Photo removed for :name."
+        "photo_deleted": "Photo removed for :name.",
+        "device_self_hint": "This device is not linked — your previous phone is still bound to your account. Confirm again to release that link.",
+        "device_self_submit": "Release my previous phone and sign in",
+        "device_self_released": "Your previous phone was released; this device is now linked."
     },
     "documents": {
         "download": "Download",

@@ -211,7 +211,10 @@
         "photo_update": "Foto aktualisieren",
         "photo_remove_confirm": "Foto von :name entfernen?",
         "photo_updated": "Foto für :name aktualisiert.",
-        "photo_deleted": "Foto für :name entfernt."
+        "photo_deleted": "Foto für :name entfernt.",
+        "device_self_hint": "Dieses Gerät ist nicht verknüpft — Ihr vorheriges Telefon ist noch mit Ihrem Konto verbunden. Bestätigen Sie erneut, um die Verknüpfung zu lösen.",
+        "device_self_submit": "Mein vorheriges Telefon freigeben und anmelden",
+        "device_self_released": "Ihr vorheriges Telefon wurde freigegeben; dieses Gerät ist jetzt verknüpft."
     },
     "documents": {
         "download": "Herunterladen",

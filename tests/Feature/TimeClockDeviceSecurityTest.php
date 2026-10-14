@@ -460,3 +460,129 @@ it('vraagt een pincode om een gsm vrij te geven als pin aan staat', function () 
 
     expect($colleague->fresh()->clock_device_id)->toBeNull();
 });
+
+it('laat een teamleader de eigen gsm vrijgeven na gewiste browserdata', function () {
+    [$tenant, $team, $clockPoint] = clockSecurityTenant();
+    $leader = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Lea',
+        'last_name' => 'Leider',
+        'field_icon_slug' => 'heart',
+        'is_teamleader' => true,
+    ]);
+
+    // Oude gsm was gekoppeld; browserdata gewist → geen device-cookie meer.
+    $attached = app(AttachWorkerDeviceAction::class)->handle($leader);
+    $oldDevice = WorkerDevice::query()->where('device_token', $attached['device_token'])->first();
+    $leader->forceFill(['clock_device_id' => $oldDevice->id])->save();
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Lea')
+        ->set('last_name', 'Leider')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->assertSet('flashMessage', __('time.portal.errors.device_mismatch'))
+        ->assertSet('ownDeviceReleaseOffered', true)
+        ->set('sign_in_icon_slug', 'star')
+        ->call('releaseOwnClockDevice')
+        ->assertHasErrors(['sign_in_icon_slug'])
+        ->assertSet('ownDeviceReleaseOffered', false)
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->assertSet('ownDeviceReleaseOffered', true)
+        ->call('releaseOwnClockDevice')
+        ->assertSet('ownDeviceReleaseOffered', false)
+        ->assertSee(__('portal.teamleader.device_self_released'), false);
+
+    $fresh = $leader->fresh();
+    expect($fresh->clock_device_id)->not->toBeNull()
+        ->and((int) $fresh->clock_device_id)->not->toBe((int) $oldDevice->id)
+        ->and(WorkerDevice::query()->whereKey($oldDevice->id)->exists())->toBeFalse();
+});
+
+it('biedt geen eigen-vrijgave aan een gewone uitvoerder', function () {
+    [, , $clockPoint, $worker] = clockSecurityTenant();
+
+    $attached = app(AttachWorkerDeviceAction::class)->handle($worker);
+    $oldDevice = WorkerDevice::query()->where('device_token', $attached['device_token'])->first();
+    $worker->forceFill(['clock_device_id' => $oldDevice->id])->save();
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->assertSet('flashMessage', __('time.portal.errors.device_mismatch'))
+        ->assertSet('ownDeviceReleaseOffered', false)
+        ->call('releaseOwnClockDevice');
+
+    expect((int) $worker->fresh()->clock_device_id)->toBe((int) $oldDevice->id);
+});
+
+it('laat een teamleader met pincode de eigen gsm vrijgeven', function () {
+    $tenant = Tenant::factory()->create([
+        'has_time_module' => true,
+        'time_require_worker_pin' => true,
+    ]);
+    Tenancy::actAs($tenant->id);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $leader = Worker::factory()->claimable()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Lea',
+        'last_name' => 'Leider',
+        'is_teamleader' => true,
+    ]);
+    app(SetWorkerClockPinAction::class)->handle($leader, '2580', (int) $tenant->id);
+
+    $attached = app(AttachWorkerDeviceAction::class)->handle($leader);
+    $oldDevice = WorkerDevice::query()->where('device_token', $attached['device_token'])->first();
+    $leader->forceFill(['clock_device_id' => $oldDevice->id])->save();
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Lea')
+        ->set('last_name', 'Leider')
+        ->call('identifyWorker')
+        ->set('pin_code', '2580')
+        ->call('signInWithPin')
+        ->assertSet('flashMessage', __('time.portal.errors.device_mismatch'))
+        ->assertSet('ownDeviceReleaseOffered', true)
+        ->call('releaseOwnClockDevice')
+        ->assertSee(__('portal.teamleader.device_self_released'), false);
+
+    $fresh = $leader->fresh();
+    expect($fresh->clock_device_id)->not->toBeNull()
+        ->and((int) $fresh->clock_device_id)->not->toBe((int) $oldDevice->id);
+});
+
+it('laat een ingelogde teamleader de eigen gsm vrijgeven via het paneel', function () {
+    [$tenant, $team, $clockPoint] = clockSecurityTenant();
+    $leader = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Lea',
+        'last_name' => 'Leider',
+        'field_icon_slug' => 'heart',
+        'is_teamleader' => true,
+    ]);
+
+    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Lea')
+        ->set('last_name', 'Leider')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->call('openTeamleader')
+        ->call('toggleDeviceReleasePanel')
+        ->assertSee('Lea Leider')
+        ->set('release_device_worker_id', $leader->id)
+        ->set('release_device_teamleader_icon_slug', 'heart')
+        ->call('releaseColleagueClockDevice')
+        ->assertSee(__('portal.teamleader.device_released_ok', ['name' => $leader->displayName()]), false);
+
+    expect($leader->fresh()->clock_device_id)->toBeNull();
+});

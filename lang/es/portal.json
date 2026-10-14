@@ -211,7 +211,10 @@
         "photo_update": "Actualizar foto",
         "photo_remove_confirm": "¿Eliminar la foto de :name?",
         "photo_updated": "Foto actualizada para :name.",
-        "photo_deleted": "Foto eliminada para :name."
+        "photo_deleted": "Foto eliminada para :name.",
+        "device_self_hint": "Este dispositivo no está vinculado: tu teléfono anterior sigue asociado a tu cuenta. Confirma de nuevo para liberarlo.",
+        "device_self_submit": "Liberar mi teléfono anterior e iniciar sesión",
+        "device_self_released": "Tu teléfono anterior se ha liberado; este dispositivo ahora está vinculado."
     },
     "documents": {
         "download": "Descargar",

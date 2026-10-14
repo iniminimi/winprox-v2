@@ -185,6 +185,12 @@
                     <p class="wp-hint">{{ __('portal.worker.attempts_left', ['count' => $remainingAttempts]) }}</p>
                     <button type="submit" class="btn btn--primary btn--block">{{ __('portal.worker.confirm_pin') }}</button>
                 </form>
+                @if ($ownDeviceReleaseOffered ?? false)
+                    <p class="wp-muted">{{ __('portal.teamleader.device_self_hint') }}</p>
+                    <button type="button" class="btn btn--warning btn--block" wire:click="releaseOwnClockDevice">
+                        {{ __('portal.teamleader.device_self_submit') }}
+                    </button>
+                @endif
             </div>
         @elseif ($showVerify)
             <div class="wp-card wp-card-pad wp-stack">
@@ -210,6 +216,12 @@
                 <button type="button" class="btn btn--primary btn--block" wire:click="signInWithIcon" @disabled($sign_in_icon_slug === '')>
                     {{ __('portal.worker.confirm_icon') }}
                 </button>
+                @if ($ownDeviceReleaseOffered ?? false)
+                    <p class="wp-muted">{{ __('portal.teamleader.device_self_hint') }}</p>
+                    <button type="button" class="btn btn--warning btn--block" wire:click="releaseOwnClockDevice">
+                        {{ __('portal.teamleader.device_self_submit') }}
+                    </button>
+                @endif
             </div>
         @elseif ($iconBlocked)
             <div class="wp-card wp-card-pad wp-stack">

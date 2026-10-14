@@ -211,7 +211,10 @@
         "photo_update": "Aggiorna foto",
         "photo_remove_confirm": "Rimuovere la foto di :name?",
         "photo_updated": "Foto aggiornata per :name.",
-        "photo_deleted": "Foto rimossa per :name."
+        "photo_deleted": "Foto rimossa per :name.",
+        "device_self_hint": "Questo dispositivo non è collegato: il tuo telefono precedente è ancora associato al tuo account. Conferma di nuovo per liberarlo.",
+        "device_self_submit": "Libera il mio telefono precedente e accedi",
+        "device_self_released": "Il tuo telefono precedente è stato liberato; questo dispositivo è ora collegato."
     },
     "documents": {
         "download": "Scarica",

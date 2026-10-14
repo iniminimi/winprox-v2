@@ -124,17 +124,17 @@ trait PortalTeamleaderRelease
     public function clockDeviceReleaseCandidates()
     {
         $team = $this->portalReleaseTeam();
-        $teamleader = $this->portalTeamleaderWorker();
 
         if ($team === null) {
             return collect();
         }
 
+        // De teamleader staat ook in de lijst: na gewiste browserdata of een
+        // nieuwe gsm moet de eigen koppeling vrijgegeven kunnen worden.
         return Worker::query()
             ->where('internal_team_id', $team->id)
             ->where('is_active', true)
             ->whereNotNull('clock_device_id')
-            ->when($teamleader !== null, fn ($query) => $query->where('id', '!=', $teamleader->id))
             ->orderBy('last_name')
             ->orderBy('first_name')
             ->get();

@@ -22,10 +22,6 @@ class TeamleaderReleaseWorkerClockDeviceAction
             throw new InvalidArgumentException('wrong_team');
         }
 
-        if ((int) $actingTeamleader->id === (int) $target->id) {
-            throw new InvalidArgumentException('cannot_release_self');
-        }
-
         return $this->clearDevice->handle($target, (int) $team->tenant_id);
     }
 }

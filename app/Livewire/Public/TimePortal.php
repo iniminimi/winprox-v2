@@ -6,7 +6,9 @@ use App\Actions\Customers\CreateCustomerWithLocationAction;
 use App\Actions\Customers\SuggestCustomerNameMatchesAction;
 use App\Actions\Notifications\ListWorkerNotificationsAction;
 use App\Actions\Notifications\MarkWorkerNotificationsReadAction;
+use App\Actions\Portal\ConfirmWorkerIconAction;
 use App\Actions\Portal\SyncWorkerOpenTaskBaselineAction;
+use App\Actions\Portal\TeamleaderReleaseWorkerClockDeviceAction;
 use App\Actions\Tasks\CompleteTaskAction;
 use App\Actions\Tasks\RoundTaskCompletionAction;
 use App\Actions\Tasks\SkipRoundStopAction;
@@ -137,6 +139,8 @@ class TimePortal extends Component
 
 
     public string $pin_code = '';
+
+    public bool $ownDeviceReleaseOffered = false;
 
     public string $pin_code_confirm = '';
 
@@ -369,6 +373,7 @@ class TimePortal extends Component
                 $this->sign_in_icon_slug = '';
                 $this->pin_code = '';
                 $this->pin_code_confirm = '';
+                $this->ownDeviceReleaseOffered = false;
                 $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm']);
 
                 return;
@@ -393,6 +398,7 @@ class TimePortal extends Component
         $this->sign_in_icon_slug = '';
         $this->pin_code = '';
         $this->pin_code_confirm = '';
+        $this->ownDeviceReleaseOffered = false;
         $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm']);
     }
 
@@ -495,7 +501,7 @@ class TimePortal extends Component
     private function forgetPortalSignInState(): void
     {
         $this->taskBaselineSyncedThisVisit = false;
-        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'flashMessageKey', 'flashMessageReplace', 'homescreenHelpOpen', 'teamleaderOpen']);
+        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'ownDeviceReleaseOffered', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'flashMessageKey', 'flashMessageReplace', 'homescreenHelpOpen', 'teamleaderOpen']);
         $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm', 'rosterAcknowledged']);
     }
 
@@ -839,7 +845,13 @@ class TimePortal extends Component
         }
 
         if (! $this->bindClockDeviceAfterVerify($worker)) {
-            $this->sign_in_icon_slug = '';
+            // Teamleader met vastzittende gsm (bv. browserdata gewist) mag de
+            // eigen koppeling vrijgeven — icoon blijft staan als bevestiging.
+            if ($worker->is_teamleader && $worker->clock_device_id !== null) {
+                $this->ownDeviceReleaseOffered = true;
+            } else {
+                $this->sign_in_icon_slug = '';
+            }
 
             return;
         }
@@ -925,7 +937,13 @@ class TimePortal extends Component
         }
 
         if (! $this->markPortalVerified($worker)) {
-            $this->pin_code = '';
+            // Zie signInWithIcon: eigen gsm vrijgeven is voorbehouden aan de
+            // teamleader; de correcte pin blijft staan als bevestiging.
+            if ($worker->is_teamleader && $worker->clock_device_id !== null) {
+                $this->ownDeviceReleaseOffered = true;
+            } else {
+                $this->pin_code = '';
+            }
 
             return;
         }
@@ -933,6 +951,83 @@ class TimePortal extends Component
         $this->pin_code = '';
         $this->taskBaselineSyncedThisVisit = false;
         app(SyncWorkerOpenTaskBaselineAction::class)->handle($worker);
+        $this->taskBaselineSyncedThisVisit = true;
+    }
+
+    /**
+     * Gewiste browserdata of nieuwe gsm: de teamleader is geïdentificeerd en heeft
+     * icoon/pin juist bevestigd, maar dit toestel is niet gekoppeld. Na een tweede
+     * bevestiging wordt de oude koppeling vrijgegeven en dit toestel gebonden.
+     */
+    public function releaseOwnClockDevice(TeamleaderReleaseWorkerClockDeviceAction $releaseDevice): void
+    {
+        $worker = $this->rememberedWorkerForTenant();
+        $team = $worker?->team;
+
+        if (! $this->ownDeviceReleaseOffered
+            || $worker === null
+            || $team === null
+            || ! $worker->is_teamleader
+            || $worker->clock_device_id === null) {
+            return;
+        }
+
+        $pinMode = $this->tenantRequiresPin();
+        $field = $pinMode ? 'pin_code' : 'sign_in_icon_slug';
+
+        if (WorkerIconGuard::isBlocked($team)) {
+            $this->ownDeviceReleaseOffered = false;
+            $this->addError($field, __('portal.worker.errors.blocked'));
+
+            return;
+        }
+
+        if ($pinMode) {
+            $this->validate(WorkerClockPinRequest::verifyRulesFor(), WorkerClockPinRequest::messagesFor());
+            $confirmed = app(ConfirmWorkerClockPinAction::class)->handle($worker, $this->pin_code, $this->tenantId);
+        } else {
+            $this->validate(
+                ['sign_in_icon_slug' => ['required', 'string', Rule::in(WorkerIcon::SLUGS)]],
+                ['sign_in_icon_slug.required' => __('portal.worker.errors.icon_required'), 'sign_in_icon_slug.in' => __('portal.worker.errors.icon_required')],
+            );
+            $confirmed = app(ConfirmWorkerIconAction::class)->handle($team, $worker, $this->sign_in_icon_slug);
+        }
+
+        if ($confirmed === null) {
+            WorkerIconGuard::recordFailedAttempt($team);
+            $this->ownDeviceReleaseOffered = false;
+            $this->sign_in_icon_slug = '';
+            $this->pin_code = '';
+            $this->addError($field, WorkerIconGuard::isBlocked($team)
+                ? __('portal.worker.errors.blocked')
+                : __($pinMode ? 'portal.worker.errors.pin_wrong' : 'portal.worker.errors.icon_wrong'));
+
+            return;
+        }
+
+        try {
+            $releaseDevice->handle($team, $confirmed, $confirmed);
+        } catch (InvalidArgumentException) {
+            $this->ownDeviceReleaseOffered = false;
+            $this->addError($field, __('portal.teamleader.errors.cannot_release'));
+
+            return;
+        }
+
+        if (! $this->markPortalVerified($confirmed->fresh())) {
+            $this->ownDeviceReleaseOffered = false;
+            $this->sign_in_icon_slug = '';
+            $this->pin_code = '';
+
+            return;
+        }
+
+        $this->ownDeviceReleaseOffered = false;
+        $this->sign_in_icon_slug = '';
+        $this->pin_code = '';
+        $this->portalFlash('portal.teamleader.device_self_released');
+        $this->taskBaselineSyncedThisVisit = false;
+        app(SyncWorkerOpenTaskBaselineAction::class)->handle($confirmed);
         $this->taskBaselineSyncedThisVisit = true;
     }
 

@@ -211,7 +211,10 @@
         "photo_update": "Foto bijwerken",
         "photo_remove_confirm": "Foto van :name verwijderen?",
         "photo_updated": "Foto bijgewerkt voor :name.",
-        "photo_deleted": "Foto verwijderd voor :name."
+        "photo_deleted": "Foto verwijderd voor :name.",
+        "device_self_hint": "Dit toestel is niet gekoppeld — je vorige gsm is nog vast aan je account. Bevestig nogmaals om die koppeling vrij te geven.",
+        "device_self_submit": "Geef mijn vorige gsm vrij en meld aan",
+        "device_self_released": "Je vorige gsm is vrijgegeven; dit toestel is nu gekoppeld."
     },
     "documents": {
         "download": "Downloaden",

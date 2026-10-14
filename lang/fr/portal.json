@@ -211,7 +211,10 @@
         "photo_update": "Mettre à jour la photo",
         "photo_remove_confirm": "Supprimer la photo de :name ?",
         "photo_updated": "Photo mise à jour pour :name.",
-        "photo_deleted": "Photo supprimée pour :name."
+        "photo_deleted": "Photo supprimée pour :name.",
+        "device_self_hint": "Cet appareil n'est pas lié — votre ancien téléphone est encore associé à votre compte. Confirmez à nouveau pour libérer cette liaison.",
+        "device_self_submit": "Libérer mon ancien téléphone et me connecter",
+        "device_self_released": "Votre ancien téléphone a été libéré ; cet appareil est maintenant lié."
     },
     "documents": {
         "download": "Télécharger",
