@@ -2,6 +2,9 @@
 
 return [
     'required' => 'Questo campo è obbligatorio.',
+    'required_if' => 'Questo campo è obbligatorio quando :other è :value.',
+    'required_with' => 'Questo campo è obbligatorio quando :values è compilato.',
+    'required_without' => 'Questo campo è obbligatorio quando :values non è compilato.',
     'email' => 'Inserisca un indirizzo e-mail valido.',
     'date' => 'Inserisca una data/ora valida.',
     'after' => ':attribute deve essere una data successiva a :date.',

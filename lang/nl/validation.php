@@ -2,6 +2,9 @@
 
 return [
     'required' => 'Dit veld is verplicht.',
+    'required_if' => 'Dit veld is verplicht als :other :value is.',
+    'required_with' => 'Dit veld is verplicht als :values ingevuld is.',
+    'required_without' => 'Dit veld is verplicht als :values niet ingevuld is.',
     'email' => 'Geef een geldig e-mailadres op.',
     'date' => 'Geef een geldige datum/tijd op.',
     'after' => ':attribute moet na :date liggen.',

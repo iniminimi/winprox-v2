@@ -2,6 +2,9 @@
 
 return [
     'required' => 'This field is required.',
+    'required_if' => 'This field is required when :other is :value.',
+    'required_with' => 'This field is required when :values is filled in.',
+    'required_without' => 'This field is required when :values is not filled in.',
     'email' => 'Enter a valid email address.',
     'date' => 'Enter a valid date/time.',
     'after' => 'The :attribute must be a date after :date.',

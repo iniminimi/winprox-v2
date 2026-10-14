@@ -2,6 +2,9 @@
 
 return [
     'required' => 'Dieses Feld ist erforderlich.',
+    'required_if' => 'Dieses Feld ist erforderlich, wenn :other :value ist.',
+    'required_with' => 'Dieses Feld ist erforderlich, wenn :values ausgefüllt ist.',
+    'required_without' => 'Dieses Feld ist erforderlich, wenn :values nicht ausgefüllt ist.',
     'email' => 'Geben Sie eine gültige E-Mail-Adresse ein.',
     'date' => 'Geben Sie ein gültiges Datum/Uhrzeit ein.',
     'after' => ':attribute muss nach :date liegen.',

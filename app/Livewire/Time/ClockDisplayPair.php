@@ -188,6 +188,9 @@ class ClockDisplayPair extends Component
         $validated = $this->validate([
             'displayOnFrom' => ['nullable', 'date_format:H:i', 'required_with:displayOnUntil'],
             'displayOnUntil' => ['nullable', 'date_format:H:i', 'required_with:displayOnFrom'],
+        ], [], [
+            'displayOnFrom' => __('time.clock_displays.schedule.from'),
+            'displayOnUntil' => __('time.clock_displays.schedule.until'),
         ]);
 
         try {
@@ -267,6 +270,12 @@ class ClockDisplayPair extends Component
             'albumMode' => ['required', 'in:'.implode(',', UpdateClockDisplayAlbumWindowsAction::MODES)],
             'albumDays' => ['array'],
             'albumDays.*' => ['boolean'],
+        ], [], [
+            'album1From' => __('time.clock_displays.album.block').' 1 '.__('time.clock_displays.album.from'),
+            'album1Until' => __('time.clock_displays.album.block').' 1 '.__('time.clock_displays.album.until'),
+            'album2From' => __('time.clock_displays.album.block').' 2 '.__('time.clock_displays.album.from'),
+            'album2Until' => __('time.clock_displays.album.block').' 2 '.__('time.clock_displays.album.until'),
+            'albumMode' => __('time.clock_displays.album.mode_label'),
         ]);
 
         $albumDayMask = 0;

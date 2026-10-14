@@ -2,6 +2,9 @@
 
 return [
     'required' => 'Ce champ est obligatoire.',
+    'required_if' => 'Ce champ est obligatoire quand :other vaut :value.',
+    'required_with' => 'Ce champ est obligatoire quand :values est rempli.',
+    'required_without' => 'Ce champ est obligatoire quand :values n\'est pas rempli.',
     'email' => 'Saisissez une adresse e-mail valide.',
     'date' => 'Saisissez une date/heure valide.',
     'after' => 'Le champ :attribute doit être une date postérieure à :date.',

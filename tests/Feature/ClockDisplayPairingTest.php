@@ -25,6 +25,7 @@ use App\Support\Time\ClockDisplayQr;
 use App\Support\Time\ClockPointPortalTokenResolution;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
 
@@ -412,6 +413,23 @@ it('bewaart aan-uren en stuurt ze mee in de ping-config', function () {
     ])->assertOk()
         ->assertJsonPath('display_on_from', '06:00')
         ->assertJsonPath('display_on_until', '19:00');
+});
+
+it('toont een vertaalde melding bij een half ingevuld schermuren-paar', function () {
+    $tenant = displayTenant();
+    Tenancy::actAs($tenant->id);
+    $point = displayPoint($tenant);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    $expected = str_replace(':values', __('time.clock_displays.schedule.until'), __('validation.required_with'));
+
+    Livewire::actingAs($admin)
+        ->test(\App\Livewire\Time\ClockDisplayPair::class, ['clockPoint' => $point])
+        ->set('displayOnUntil', '19:00')
+        ->call('saveSchedule')
+        ->assertHasErrors('displayOnFrom')
+        ->assertSee($expected)
+        ->assertDontSee('validation.required_with', false);
 });
 
 it('bewaart max. 2 album-vensters en weigert een half paar', function () {
