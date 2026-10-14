@@ -484,6 +484,9 @@ it('bewaart de album-modus en weigert een ongeldige', function () {
     $windows->handle($point, $tenant->id, $admin->id, null, null, null, null, 'clock');
     expect($point->refresh()->album_mode)->toBe('clock');
 
+    $windows->handle($point, $tenant->id, $admin->id, null, null, null, null, 'flipclock');
+    expect($point->refresh()->album_mode)->toBe('flipclock');
+
     expect(fn () => $windows->handle($point, $tenant->id, $admin->id, null, null, null, null, 'banana'))
         ->toThrow(InvalidArgumentException::class, 'album_mode_invalid');
 });

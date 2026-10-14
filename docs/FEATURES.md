@@ -1162,9 +1162,11 @@ binnen ~30–90 s dood.
   `worker.clock_display_pin_set`, `worker.clock_display_punched`.
 - **Rust-scherm / foto-album (slideshow):** per Clock Point max. 2 vensters
   (`album1/2_from|until`, zelfde conventie als aan-uren) plus één modus
-  (`album_mode`: `photos` | `clock` | `none`). Tijdens een venster toont het
-  scherm foto's (10 s per beeld), een donkere wijzerklok (lv_meter, rode
-  secondewijzer) of gewoon de QR; eerste tik → QR, tweede tik → PIN-login.
+  (`album_mode`: `photos` | `clock` | `flipclock` | `none`). Tijdens een
+  venster toont het scherm foto's (10 s per beeld), een donkere wijzerklok
+  (lv_meter, rode secondewijzer), een digitale flipklok (twee flap-tegels,
+  knipperende dubbele punt) of gewoon de QR; eerste tik → QR, tweede tik →
+  PIN-login.
   Upload op de Scherm-pagina met client-side vierkant-
   crop (`wpCropImageFile`, `aspectRatio: 1`) + compressie naar 480 px — geen
   server-resize. `clock_display_images.clock_point_id NULL` = "toon op alle
@@ -1175,7 +1177,7 @@ binnen ~30–90 s dood.
   wijzigt bij elke upload/delete/venster-wijziging → firmware downloadt
   ontbrekende beelden via HTTPS (public-disk URL's zoals issue-foto's), wist
   weggevallen en draait offline verder uit flash. Max 12 foto's per scope.
-  De wijzerklok is puur lokaal (RTC) — geen downloads, altijd offline.
+  De klokken zijn puur lokaal (RTC) — geen downloads, altijd offline.
 - Audit: `clock_point.display_pairing_issued`, `display_claim_confirmed`,
   `display_claim_denied`, `display_unlinked`, `display_secret_rotated`,
   `album_windows_updated`; `clock_display.image_uploaded`, `image_deleted`.

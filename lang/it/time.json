@@ -385,6 +385,7 @@
             "mode_label": "Mostra in questi orari",
             "mode_photos": "Foto (slideshow)",
             "mode_clock": "Orologio analogico",
+            "mode_flipclock": "Orologio flip",
             "mode_none": "Niente (QR normale)"
         }
     },

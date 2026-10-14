@@ -385,6 +385,7 @@
             "mode_label": "Während dieser Zeiten anzeigen",
             "mode_photos": "Fotos (Slideshow)",
             "mode_clock": "Analoge Uhr",
+            "mode_flipclock": "Flip-Uhr",
             "mode_none": "Nichts (normaler QR)"
         }
     },

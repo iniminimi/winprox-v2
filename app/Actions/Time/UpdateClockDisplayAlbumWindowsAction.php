@@ -10,14 +10,15 @@ use InvalidArgumentException;
 /**
  * Album-vensters van het klokscherm: max. 2 vanaf/tot-paren. Tijdens een
  * venster toont het scherm het gekozen rust-scherm i.p.v. de QR-klok:
- * foto-slideshow (photos), wijzerklok (clock) of niets (none).
+ * foto-slideshow (photos), wijzerklok (clock), flipklok (flipclock)
+ * of niets (none).
  * Beide leeg per paar = venster uit; over-middernacht werkt zoals aan-uren.
  * `album_days` = bitmask weekdagen (bit 0 = ma … bit 6 = zo) waarop het
  * rust-scherm actief is; default 31 = ma–vr (weekend uit).
  */
 class UpdateClockDisplayAlbumWindowsAction
 {
-    public const MODES = ['photos', 'clock', 'none'];
+    public const MODES = ['photos', 'clock', 'flipclock', 'none'];
 
     public function __construct(private AuditRecorder $audit) {}
 
