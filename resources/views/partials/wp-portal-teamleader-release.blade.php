@@ -45,9 +45,6 @@
                                     ])
                                     aria-pressed="{{ $release_worker_id === $colleague->id ? 'true' : 'false' }}">
                                 <span class="wp-cluster">
-                                    @if ($colleague->field_icon_slug)
-                                        <x-wp-worker-icon :slug="$colleague->field_icon_slug" class="wp-release-worker-row__icon" />
-                                    @endif
                                     <span class="wp-release-worker-row__name">{{ $colleague->displayName() }}</span>
                                 </span>
                             </button>
@@ -190,13 +187,7 @@
                         @php($twPhotoUrl = $tw->photoPublicUrl())
                         <div class="wp-data-row" wire:key="manage-worker-{{ $tw->id }}">
                             <span class="wp-data-row-identity">
-                                @if ($twPhotoUrl !== null)
-                                    <span class="wp-worker-avatar wp-worker-avatar--photo" aria-hidden="true">
-                                        <img src="{{ $twPhotoUrl }}" alt="" class="wp-worker-avatar__img">
-                                    </span>
-                                @elseif ($tw->field_icon_slug)
-                                    <x-wp-worker-icon :slug="$tw->field_icon_slug" class="wp-release-worker-row__icon" />
-                                @endif
+                                <x-wp-worker-avatar :worker="$tw" />
                                 <span class="wp-release-worker-row__name">{{ $tw->displayName() }}</span>
                                 @if ($tw->is_teamleader)
                                     <span class="wp-pill wp-pill--progress">{{ __('portal.teamleader.badge') }}</span>
