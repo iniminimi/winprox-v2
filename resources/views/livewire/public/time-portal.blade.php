@@ -860,7 +860,7 @@
                             @unless ($checkmateMode ?? false)
                                 <button type="button" class="wp-tile" wire:click="openAbsence">
                                     <span class="wp-cluster">
-                                        <x-wp-icon name="calendar" class="wp-tile-icon" />
+                                        <x-wp-icon name="calendar-off" class="wp-tile-icon" />
                                         <span class="wp-tile-title">{{ __('time.portal.absence.tile') }}</span>
                                     </span>
                                     <span class="wp-tile-sub">{{ __('time.portal.absence.tile_sub') }}</span>
