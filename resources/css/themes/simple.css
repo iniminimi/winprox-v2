@@ -49,3 +49,9 @@
     --wp-card-backdrop: none;
     --wp-sidebar-glass: transparent;
 }
+
+/* Portaal: geen achtergrondfoto — Standaard blijft vlak en eenvoudig. */
+[data-theme='simple'] body.wp-public-body,
+[data-theme='standard'] body.wp-public-body {
+    background-image: none;
+}
