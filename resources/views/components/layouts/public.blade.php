@@ -103,7 +103,7 @@
         });
         if ('serviceWorker' in navigator) {
             const path = window.location.pathname;
-            if (path.startsWith('/melden') || path.startsWith('/time')) {
+            if (path.startsWith('/melden') || path.startsWith('/time') || path.startsWith('/cp/')) {
                 navigator.serviceWorker.register('/sw-portal.js', { scope: '/' }).catch(() => {});
             }
         }

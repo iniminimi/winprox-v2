@@ -57,6 +57,11 @@ document.addEventListener('click', (event) => {
     const promptEvent = deferredPrompt;
     deferredPrompt = null;
     promptEvent.prompt();
+    promptEvent.userChoice.then((choice) => {
+        if (choice.outcome === 'accepted') {
+            markHomescreenInstalled();
+        }
+    }).catch(() => {});
 }, true);
 
 window.addEventListener('appinstalled', markHomescreenInstalled);

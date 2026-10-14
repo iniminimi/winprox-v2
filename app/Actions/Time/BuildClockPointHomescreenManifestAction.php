@@ -23,12 +23,18 @@ class BuildClockPointHomescreenManifestAction
         $homeToken = (string) $clockPoint->qr_token;
         $startUrl = route('public.time-portal.cp', $homeToken);
         $scope = rtrim(url('/'), '/').'/';
+        // Eén app per tenant: de token verandert bij QR-vernieuwing, maar het id
+        // blijft stabiel. Anders ziet Android de vernieuwde app als een nieuwe
+        // installatie en komt er een tweede startscherm-icoon bij.
+        $appId = url('/time-portal/'.$clockPoint->tenant_id);
         $manifestUrl = route('public.time-portal.cp.manifest', $homeToken);
         $icon192 = url('/images/pwa/winprox-192.png');
         $icon512 = url('/images/pwa/winprox-512.png');
+        $maskable192 = url('/images/pwa/winprox-maskable-192.png');
+        $maskable512 = url('/images/pwa/winprox-maskable-512.png');
 
         return [
-            'id' => $startUrl,
+            'id' => $appId,
             'name' => 'WinProx',
             'short_name' => 'WinProx',
             'start_url' => $startUrl,
@@ -43,7 +49,7 @@ class BuildClockPointHomescreenManifestAction
                 [
                     'platform' => 'webapp',
                     'url' => $manifestUrl,
-                    'id' => $startUrl,
+                    'id' => $appId,
                 ],
             ],
             'display' => 'standalone',
@@ -61,6 +67,18 @@ class BuildClockPointHomescreenManifestAction
                     'sizes' => '512x512',
                     'type' => 'image/png',
                     'purpose' => 'any',
+                ],
+                [
+                    'src' => $maskable192,
+                    'sizes' => '192x192',
+                    'type' => 'image/png',
+                    'purpose' => 'maskable',
+                ],
+                [
+                    'src' => $maskable512,
+                    'sizes' => '512x512',
+                    'type' => 'image/png',
+                    'purpose' => 'maskable',
                 ],
             ],
         ];

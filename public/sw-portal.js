@@ -41,7 +41,7 @@ self.addEventListener('fetch', (event) => {
     }
 
     if (request.mode === 'navigate') {
-        const isPortal = url.pathname.startsWith('/melden') || url.pathname.startsWith('/time');
+        const isPortal = url.pathname.startsWith('/melden') || url.pathname.startsWith('/time') || url.pathname.startsWith('/cp/');
         if (!isPortal) {
             return;
         }

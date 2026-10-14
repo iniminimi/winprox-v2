@@ -101,6 +101,7 @@ it('toont het startscherm-icoon ook na aanmelden', function () {
 
 it('levert een webmanifest voor elk clock point', function () {
     [, , $clockPoint] = homescreenClockPointSetup();
+    $appId = url('/time-portal/'.$clockPoint->tenant_id);
 
     $this->get(route('public.time-portal.manifest', $clockPoint->qr_token))
         ->assertOk()
@@ -108,13 +109,16 @@ it('levert een webmanifest voor elk clock point', function () {
         ->assertJsonPath('display', 'standalone')
         ->assertJsonPath('background_color', '#ffffff')
         ->assertJsonPath('start_url', route('public.time-portal.cp', $clockPoint->qr_token))
-        ->assertJsonPath('id', route('public.time-portal.cp', $clockPoint->qr_token))
+        ->assertJsonPath('id', $appId)
         ->assertJsonPath('scope', rtrim(url('/'), '/').'/')
         ->assertJsonPath('handle_links', 'preferred')
         ->assertJsonPath('launch_handler.client_mode', 'navigate-existing')
         ->assertJsonPath('related_applications.0.platform', 'webapp')
         ->assertJsonPath('related_applications.0.url', route('public.time-portal.cp.manifest', $clockPoint->qr_token))
-        ->assertJsonPath('related_applications.0.id', route('public.time-portal.cp', $clockPoint->qr_token));
+        ->assertJsonPath('related_applications.0.id', $appId)
+        ->assertJsonPath('icons.0.purpose', 'any')
+        ->assertJsonPath('icons.2.purpose', 'maskable')
+        ->assertJsonPath('icons.3.purpose', 'maskable');
 });
 
 it('opent het startscherm op de vaste aanmeldlink, ook vanaf een scherm-QR', function () {
@@ -138,7 +142,7 @@ it('opent het startscherm op de vaste aanmeldlink, ook vanaf een scherm-QR', fun
     $this->get(route('public.time-portal.manifest', $displayToken))
         ->assertOk()
         ->assertJsonPath('start_url', $home)
-        ->assertJsonPath('id', $home)
+        ->assertJsonPath('id', url('/time-portal/'.$clockPoint->tenant_id))
         ->assertJsonPath('related_applications.0.url', $manifest);
 
     $this->get('/time/'.$displayToken)
