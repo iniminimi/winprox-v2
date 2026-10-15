@@ -53,8 +53,8 @@ function registerAlpineComponent() {
                 this._stream = await navigator.mediaDevices.getUserMedia({
                     video: {
                         facingMode: 'environment',
-                        width: { ideal: 1280 },
-                        height: { ideal: 720 },
+                        width: { ideal: 1920 },
+                        height: { ideal: 1080 },
                     },
                     audio: false,
                 });
@@ -66,6 +66,17 @@ function registerAlpineComponent() {
                     return;
                 }
             }
+
+            // Continue autofocus — zonder dit blijft de camera op veel
+            // Android-toestellen op oneindig staan en wordt een kleine
+            // scherm-QR (dot-rendering) onscherp en onleesbaar.
+            const track = this._stream.getVideoTracks()[0];
+            try {
+                const caps = track?.getCapabilities ? track.getCapabilities() : {};
+                if (Array.isArray(caps.focusMode) && caps.focusMode.includes('continuous')) {
+                    await track.applyConstraints({ advanced: [{ focusMode: 'continuous' }] });
+                }
+            } catch (e) {}
 
             const video = this.$refs.scanVideo;
             if (!video) {
