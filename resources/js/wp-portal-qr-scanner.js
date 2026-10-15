@@ -8,9 +8,9 @@
  */
 
 const CLOCK_POINT_TOKEN_PATTERN = /\/time\/([a-z0-9]{20,})/i;
-// Volle resolutie: de dynamische klokscherm-QR is dichter (64 tekens) en
-// staat als losse pixels op een LCD — 640px gaf te weinig px per module.
-const DECODE_WIDTH = 1280;
+// Multi-scale: volle resolutie voor kleine/dichte codes, lagere resoluties
+// smeren LCD-moiré en dot-rendering uit tot massieve modules.
+const DECODE_WIDTHS = [1280, 768, 512];
 const DECODE_EVERY_NTH_FRAME = 3;
 
 function registerAlpineComponent() {
@@ -97,7 +97,8 @@ function registerAlpineComponent() {
             }
             this._frameNo += 1;
             if (video.readyState >= 2 && video.videoWidth > 0 && this._frameNo % DECODE_EVERY_NTH_FRAME === 0) {
-                const scale = Math.min(1, DECODE_WIDTH / video.videoWidth);
+                const pass = Math.floor(this._frameNo / DECODE_EVERY_NTH_FRAME) % DECODE_WIDTHS.length;
+                const scale = Math.min(1, DECODE_WIDTHS[pass] / video.videoWidth);
                 this._canvas.width = Math.round(video.videoWidth * scale);
                 this._canvas.height = Math.round(video.videoHeight * scale);
                 this._ctx.drawImage(video, 0, 0, this._canvas.width, this._canvas.height);
