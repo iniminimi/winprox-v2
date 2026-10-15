@@ -6,6 +6,7 @@ use App\Models\Tenant;
 use App\Models\WebhookDelivery;
 use App\Support\Webhook\PublicUrlGuard;
 use Illuminate\Support\Facades\Http;
+use InvalidArgumentException;
 
 class DeliverWebhookAction
 {
@@ -31,6 +32,19 @@ class DeliverWebhookAction
         }
 
         $endpoint = $delivery->endpoint;
+
+        // CURLOPT_RESOLVE werkt alleen met de curl-handler. Zonder curl-extensie
+        // valt Guzzle terug op de stream-handler en doet de pin niets.
+        if (! extension_loaded('curl')) {
+            $delivery->forceFill([
+                'status' => WebhookDelivery::STATUS_FAILED,
+                'error' => 'webhook_curl_required',
+                'attempts' => $delivery->attempts + 1,
+            ])->save();
+
+            return ['success' => false, 'should_retry' => false];
+        }
+
         $body = json_encode([
             'event' => $delivery->event,
             'payload' => $delivery->payload,
@@ -46,11 +60,9 @@ class DeliverWebhookAction
         ])->save();
 
         try {
-            // SSRF: endpoint-URL's zijn tenant-input; DNS opnieuw checken per
-            // delivery (records kunnen na het opslaan wijzigen).
-            PublicUrlGuard::assertAllowed($endpoint->url);
+            $target = PublicUrlGuard::deliveryOptions($endpoint->url);
 
-            $response = Http::timeout(15)
+            $response = Http::withOptions($target['options'])
                 ->withHeaders([
                     'Content-Type' => 'application/json',
                     'X-WinProx-Event' => $delivery->event,
@@ -59,12 +71,15 @@ class DeliverWebhookAction
                     'X-WinProx-Signature' => 'sha256='.$signature,
                 ])
                 ->withBody($body, 'application/json')
-                ->post($endpoint->url);
+                ->post($target['url']);
 
-            if ($response->successful()) {
+            $status = $response->status();
+            $response->close();
+
+            if ($status >= 200 && $status < 300) {
                 $delivery->forceFill([
                     'status' => WebhookDelivery::STATUS_SUCCESS,
-                    'response_status' => $response->status(),
+                    'response_status' => $status,
                     'delivered_at' => now(),
                     'error' => null,
                 ])->save();
@@ -73,9 +88,16 @@ class DeliverWebhookAction
             }
 
             $delivery->forceFill([
-                'response_status' => $response->status(),
-                'error' => 'HTTP '.$response->status(),
+                'response_status' => $status,
+                'error' => 'HTTP '.$status,
             ])->save();
+        } catch (InvalidArgumentException $e) {
+            $delivery->forceFill([
+                'status' => WebhookDelivery::STATUS_FAILED,
+                'error' => $e->getMessage(),
+            ])->save();
+
+            return ['success' => false, 'should_retry' => false];
         } catch (\Throwable $e) {
             $delivery->forceFill([
                 'error' => $e->getMessage(),
