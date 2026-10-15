@@ -51,6 +51,20 @@
         "note": "The available features depend on your WinProx plan.",
         "image_alt": "Worker checking roster and hours on a phone in WinProx."
     },
+    "backoffice": {
+        "title": "More overview for you. Less administration for your company.",
+        "lead": "With the WinProx back office you manage time tracking, rosters and daily work follow-up from one central environment.",
+        "items": [
+            { "label": "Follow up time tracking", "text": "compare registered hours with the rosters." },
+            { "label": "Manage rosters", "text": "plan your staff's working hours." },
+            { "label": "Follow up issues and tasks", "text": "from a report to its resolution." },
+            { "label": "Manage inspection rounds", "text": "organise checks with stops and checklists." },
+            { "label": "Centralise work and information", "text": "documents, briefings and calendar in one place." }
+        ],
+        "closing": "That is how WinProx brings time tracking and daily work follow-up together in one platform.",
+        "note": "The available features depend on your WinProx plan.",
+        "image_alt": "The WinProx back office showing hours and planning."
+    },
     "video": {
         "title": "WinProx in action",
         "placeholder": "Video coming soon."

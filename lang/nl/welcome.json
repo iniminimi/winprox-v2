@@ -51,6 +51,20 @@
         "note": "De beschikbare functionaliteiten zijn afhankelijk van uw WinProx-formule.",
         "image_alt": "Medewerker raadpleegt uurrooster en uren op de gsm in WinProx."
     },
+    "backoffice": {
+        "title": "Meer overzicht voor u. Minder administratie voor uw bedrijf.",
+        "lead": "Met de WinProx-backoffice beheert u urenregistratie, uurroosters en dagelijkse werkopvolging vanuit één centrale omgeving.",
+        "items": [
+            { "label": "Urenregistratie opvolgen", "text": "vergelijk geregistreerde uren met de uurroosters." },
+            { "label": "Uurroosters beheren", "text": "plan de werkuren van uw medewerkers." },
+            { "label": "Meldingen en taken opvolgen", "text": "van melding tot afhandeling." },
+            { "label": "Inspectierondes beheren", "text": "organiseer controles met stops en checklists." },
+            { "label": "Werk en informatie centraliseren", "text": "documenten, briefings en kalender op één plek." }
+        ],
+        "closing": "Zo brengt WinProx urenregistratie en dagelijkse werkopvolging samen in één platform.",
+        "note": "De beschikbare functionaliteiten zijn afhankelijk van uw WinProx-formule.",
+        "image_alt": "De WinProx-backoffice met overzicht van uren en planning."
+    },
     "video": {
         "title": "WinProx in actie",
         "placeholder": "Video volgt binnenkort."

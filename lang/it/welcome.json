@@ -51,6 +51,20 @@
         "note": "Le funzionalità disponibili dipendono dalla vostra formula WinProx.",
         "image_alt": "Dipendente che consulta turno e ore sul telefono in WinProx."
     },
+    "backoffice": {
+        "title": "Più panoramica per voi. Meno amministrazione per la vostra azienda.",
+        "lead": "Con il back office di WinProx gestite rilevazione orari, turni e monitoraggio quotidiano del lavoro da un unico ambiente centrale.",
+        "items": [
+            { "label": "Seguire la rilevazione orari", "text": "confrontate le ore registrate con i turni." },
+            { "label": "Gestire i turni", "text": "pianificate gli orari dei vostri dipendenti." },
+            { "label": "Seguire segnalazioni e attività", "text": "da una segnalazione alla sua chiusura." },
+            { "label": "Gestire i giri di ispezione", "text": "organizzate controlli con fermate e checklist." },
+            { "label": "Centralizzare lavoro e informazioni", "text": "documenti, briefing e calendario in un unico posto." }
+        ],
+        "closing": "Così WinProx riunisce rilevazione orari e monitoraggio quotidiano del lavoro in un'unica piattaforma.",
+        "note": "Le funzionalità disponibili dipendono dalla vostra formula WinProx.",
+        "image_alt": "Il back office di WinProx con la panoramica di ore e pianificazione."
+    },
     "video": {
         "title": "WinProx in azione",
         "placeholder": "Video in arrivo."

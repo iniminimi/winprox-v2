@@ -51,6 +51,20 @@
         "note": "Die verfügbaren Funktionen hängen von Ihrer WinProx-Formel ab.",
         "image_alt": "Mitarbeitender sieht Dienstplan und Stunden auf dem Telefon in WinProx."
     },
+    "backoffice": {
+        "title": "Mehr Überblick für Sie. Weniger Verwaltung für Ihr Unternehmen.",
+        "lead": "Mit dem WinProx-Backoffice verwalten Sie Zeiterfassung, Dienstpläne und die tägliche Arbeitsverfolgung aus einer zentralen Umgebung.",
+        "items": [
+            { "label": "Zeiterfassung verfolgen", "text": "registrierte Stunden mit den Dienstplänen vergleichen." },
+            { "label": "Dienstpläne verwalten", "text": "Arbeitszeiten Ihrer Mitarbeitenden planen." },
+            { "label": "Meldungen und Aufgaben verfolgen", "text": "von der Meldung bis zur Abwicklung." },
+            { "label": "Inspektionsrunden verwalten", "text": "Kontrollen mit Stopps und Checklisten organisieren." },
+            { "label": "Arbeit und Informationen zentralisieren", "text": "Dokumente, Briefings und Kalender an einem Ort." }
+        ],
+        "closing": "So bringt WinProx Zeiterfassung und tägliche Arbeitsverfolgung in einer Plattform zusammen.",
+        "note": "Die verfügbaren Funktionen hängen von Ihrer WinProx-Formel ab.",
+        "image_alt": "Das WinProx-Backoffice mit Stunden- und Planungsübersicht."
+    },
     "video": {
         "title": "WinProx in Aktion",
         "placeholder": "Video folgt in Kürze."

@@ -98,11 +98,38 @@
                     <p class="wp-text-body">{{ __('welcome.employees.lead') }}</p>
                     <ul class="wp-welcome-checklist">
                         @foreach (__('welcome.employees.items') as $item)
-                            <li><strong>{{ $item['label'] }}</strong> — {{ $item['text'] }}</li>
+                            <li><span><strong>{{ $item['label'] }}</strong> — {{ $item['text'] }}</span></li>
                         @endforeach
                     </ul>
                     <p class="wp-muted">{{ __('welcome.employees.note') }}</p>
                 </article>
+            </div>
+        </div>
+    </section>
+
+    <section class="wp-welcome-section wp-welcome-backoffice" aria-label="{{ __('welcome.backoffice.title') }}">
+        <div class="wp-welcome-main">
+            <div class="wp-welcome-split">
+                <article class="wp-card wp-card-pad wp-stack">
+                    <h2 class="wp-welcome-h3">{{ __('welcome.backoffice.title') }}</h2>
+                    <p class="wp-text-body">{{ __('welcome.backoffice.lead') }}</p>
+                    <ul class="wp-welcome-checklist">
+                        @foreach (__('welcome.backoffice.items') as $item)
+                            <li><span><strong>{{ $item['label'] }}</strong> — {{ $item['text'] }}</span></li>
+                        @endforeach
+                    </ul>
+                    <p class="wp-text-body">{{ __('welcome.backoffice.closing') }}</p>
+                    <p class="wp-muted">{{ __('welcome.backoffice.note') }}</p>
+                </article>
+                <figure class="wp-landing-visual wp-welcome-screenshot wp-welcome-screenshot--desktop">
+                    <img
+                        src="{{ asset('images/welcome/screenshot_backoffice.jpg') }}"
+                        alt="{{ __('welcome.backoffice.image_alt') }}"
+                        class="wp-welcome-screenshot__img"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </figure>
             </div>
         </div>
     </section>

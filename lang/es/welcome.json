@@ -51,6 +51,20 @@
         "note": "Las funciones disponibles dependen de su fórmula WinProx.",
         "image_alt": "Trabajador consultando su horario y sus horas en el móvil en WinProx."
     },
+    "backoffice": {
+        "title": "Más visión general para usted. Menos administración para su empresa.",
+        "lead": "Con el back office de WinProx gestiona el registro horario, los horarios y el seguimiento diario del trabajo desde un entorno central.",
+        "items": [
+            { "label": "Seguir el registro horario", "text": "compare las horas registradas con los horarios." },
+            { "label": "Gestionar los horarios", "text": "planifique las horas de trabajo de su personal." },
+            { "label": "Seguir avisos y tareas", "text": "de un aviso a su resolución." },
+            { "label": "Gestionar las rondas de inspección", "text": "organice controles con paradas y listas." },
+            { "label": "Centralizar trabajo e información", "text": "documentos, briefings y calendario en un solo lugar." }
+        ],
+        "closing": "Así WinProx reúne el registro horario y el seguimiento diario del trabajo en una sola plataforma.",
+        "note": "Las funciones disponibles dependen de su fórmula WinProx.",
+        "image_alt": "El back office de WinProx con el resumen de horas y planificación."
+    },
     "video": {
         "title": "WinProx en acción",
         "placeholder": "Vídeo próximamente."
