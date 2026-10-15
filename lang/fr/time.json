@@ -544,7 +544,7 @@
         },
         "customer_saved": "Client et adresse de travail enregistrés.",
         "scan": {
-            "button": "Scanner pour pointer",
+            "button": "Scannez le code QR",
             "title": "Scannez le QR du Clock Point",
             "hint": "Pointez la caméra vers l’autocollant ou l’écran de pointage.",
             "error_unsupported": "Ce navigateur ne peut pas ouvrir la caméra. Scannez avec l’appareil photo.",

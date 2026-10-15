@@ -544,7 +544,7 @@
         },
         "customer_saved": "Customer and work address saved.",
         "scan": {
-            "button": "Scan to clock",
+            "button": "Scan the QR code",
             "title": "Scan the Clock Point QR",
             "hint": "Point the camera at the sticker or the clock screen.",
             "error_unsupported": "This browser cannot open the camera. Scan with your camera app.",

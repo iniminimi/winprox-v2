@@ -544,7 +544,7 @@
         },
         "customer_saved": "Klant en werkadres opgeslagen.",
         "scan": {
-            "button": "Scan om te klokken",
+            "button": "Scan de QR-code",
             "title": "Scan de Clock Point-QR",
             "hint": "Richt de camera op de sticker of het klokscherm.",
             "error_unsupported": "Deze browser kan de camera niet openen. Scan met je camera-app.",

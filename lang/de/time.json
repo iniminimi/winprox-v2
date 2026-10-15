@@ -544,7 +544,7 @@
         },
         "customer_saved": "Kunde und Arbeitsadresse gespeichert.",
         "scan": {
-            "button": "Zum Stempeln scannen",
+            "button": "QR-Code scannen",
             "title": "Clock-Point-QR scannen",
             "hint": "Richten Sie die Kamera auf den Aufkleber oder den Uhrenbildschirm.",
             "error_unsupported": "Dieser Browser kann die Kamera nicht öffnen. Scannen Sie mit der Kamera-App.",

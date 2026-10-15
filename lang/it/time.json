@@ -544,7 +544,7 @@
         },
         "customer_saved": "Cliente e indirizzo di lavoro salvati.",
         "scan": {
-            "button": "Scansiona per timbrare",
+            "button": "Scansiona il codice QR",
             "title": "Scansiona il QR del Clock Point",
             "hint": "Inquadra l’adesivo o lo schermo orologio con la fotocamera.",
             "error_unsupported": "Questo browser non può aprire la fotocamera. Scansiona con l’app fotocamera.",
