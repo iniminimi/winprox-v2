@@ -16,9 +16,10 @@ class ResolveClockPointPortalTokenAction
             return ClockPointPortalTokenResolution::notFound();
         }
 
-        // Dynamische scherm-token {display_id:24}{dyn:40} — enige 64-teken
-        // variant; statische/history QR's zijn altijd 40 tekens.
-        if (strlen($token) === ClockDisplayQr::TOKEN_LENGTH) {
+        // Legacy scherm-token {display_id:24}{dyn:40} = 64 tekens (firmware
+        // van vóór okt 2026) — langer dan elke statische token, dus meteen
+        // als scherm-token proberen.
+        if (strlen($token) === ClockDisplayQr::LEGACY_TOKEN_LENGTH) {
             return $this->resolveDisplayToken($token);
         }
 
@@ -35,15 +36,21 @@ class ResolveClockPointPortalTokenAction
             ->with('clockPoint')
             ->first();
 
-        if ($historyToken === null || $historyToken->clockPoint === null) {
-            return ClockPointPortalTokenResolution::notFound();
+        if ($historyToken !== null && $historyToken->clockPoint !== null) {
+            if ($historyToken->isInGrace()) {
+                return ClockPointPortalTokenResolution::grace($historyToken->clockPoint, $historyToken);
+            }
+
+            return ClockPointPortalTokenResolution::blocked($historyToken->clockPoint, $historyToken);
         }
 
-        if ($historyToken->isInGrace()) {
-            return ClockPointPortalTokenResolution::grace($historyToken->clockPoint, $historyToken);
+        // Scherm-token {display_id:24}{dyn:16} = 40 tekens — zelfde lengte
+        // als statische/history QR's, dus pas ná de DB-lookups proberen.
+        if (strlen($token) === ClockDisplayQr::TOKEN_LENGTH) {
+            return $this->resolveDisplayToken($token);
         }
 
-        return ClockPointPortalTokenResolution::blocked($historyToken->clockPoint, $historyToken);
+        return ClockPointPortalTokenResolution::notFound();
     }
 
     private function resolveDisplayToken(string $token): ClockPointPortalTokenResolution

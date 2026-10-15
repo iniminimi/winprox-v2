@@ -276,8 +276,13 @@ it('lost een dynamische display-token op binnen het venster en blokkeert een ver
     $window = ClockDisplayQr::currentWindow();
 
     $valid = $point->display_id.ClockDisplayQr::dynFor($point->display_secret, $window);
-    expect(strlen($valid))->toBe(64);
-    expect($resolver->handle($valid)->status)->toBe(ClockPointPortalTokenResolution::STATUS_CURRENT);
+    expect(strlen($valid))->toBe(ClockDisplayQr::TOKEN_LENGTH)
+        ->and($resolver->handle($valid)->status)->toBe(ClockPointPortalTokenResolution::STATUS_CURRENT);
+
+    // Oude firmware toont nog {display_id}{dyn:40} = 64 tekens.
+    $legacy = $point->display_id.substr(
+        hash_hmac('sha256', 'wpx:'.$window, $point->display_secret), 0, 40);
+    expect($resolver->handle($legacy)->status)->toBe(ClockPointPortalTokenResolution::STATUS_CURRENT);
 
     // ±1 venster binnen tolerantie.
     $prev = $point->display_id.ClockDisplayQr::dynFor($point->display_secret, $window - 1);
@@ -289,8 +294,10 @@ it('lost een dynamische display-token op binnen het venster en blokkeert een ver
     expect($resolution->status)->toBe(ClockPointPortalTokenResolution::STATUS_BLOCKED)
         ->and($resolution->clockPoint->id)->toBe($point->id);
 
-    // Onbekende display_id → notFound.
-    expect($resolver->handle(str_repeat('a', 64))->status)
+    // Onbekende display_id → notFound (nieuw én legacy formaat).
+    expect($resolver->handle(str_repeat('a', 40))->status)
+        ->toBe(ClockPointPortalTokenResolution::STATUS_NOT_FOUND)
+        ->and($resolver->handle(str_repeat('a', 64))->status)
         ->toBe(ClockPointPortalTokenResolution::STATUS_NOT_FOUND);
 
     // Statische QR blijft gewoon werken.
