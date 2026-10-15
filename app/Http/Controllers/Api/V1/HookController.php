@@ -22,6 +22,11 @@ class HookController extends Controller
             return response()->json(['message' => 'Unauthorized'], 401);
         }
 
+        // Replay-bescherming: timestamp is ondertekend maar moet ook vers zijn.
+        if (! ctype_digit($timestamp) || abs(time() - (int) $timestamp) > 300) {
+            return response()->json(['message' => 'Stale signature'], 401);
+        }
+
         $expected = 'sha256='.hash_hmac('sha256', $timestamp.'.'.$body, $secret);
         if (! hash_equals($expected, $signature)) {
             return response()->json(['message' => 'Invalid signature'], 401);

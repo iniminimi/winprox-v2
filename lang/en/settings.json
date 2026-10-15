@@ -164,6 +164,7 @@
         "token_created": "New token (shown once):",
         "tokens_empty": "No tokens yet.",
         "webhooks_heading": "Webhook endpoints",
+        "endpoint_url_invalid": "This URL is not allowed as a webhook destination. Use a public http(s) URL.",
         "endpoint_url": "https://…",
         "endpoint_description": "Description (optional)",
         "endpoint_save": "Save endpoint",

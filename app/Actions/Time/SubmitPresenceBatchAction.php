@@ -84,9 +84,9 @@ class SubmitPresenceBatchAction
                 PresenceSubmissionStatus::Failed,
                 null,
                 null,
-                is_array($notCreated) ? $notCreated : null,
+                is_array($notCreated) ? $this->maskInsz($notCreated) : null,
                 'rsz_not_created',
-                ['item' => $this->safeMeta($item), 'response' => $response],
+                ['item' => $this->safeMeta($item), 'response' => $this->maskInsz($response)],
             );
         }
 
@@ -95,7 +95,9 @@ class SubmitPresenceBatchAction
             PresenceSubmissionStatus::Submitted,
             isset($created['id']) ? (int) $created['id'] : null,
             isset($created['validity']) ? (string) $created['validity'] : 'pending',
-            $created['remarks'] ?? [],
+            isset($created['remarks']) && is_array($created['remarks'])
+                ? $this->maskInsz($created['remarks'])
+                : [],
             null,
             ['item' => $this->safeMeta($item)],
         );
@@ -103,6 +105,15 @@ class SubmitPresenceBatchAction
 
     private function validationError(Tenant $tenant, Worker $worker, ?Location $location, PresenceSubmission $submission, ?WorkVisit $visit): ?string
     {
+        // Tenant-consistentie van de gerelateerde modellen: een vergiftigde rij
+        // mag nooit een vreemde worker-SSIN onder andermans KBO versturen.
+        if ((int) $worker->tenant_id !== (int) $tenant->id
+            || (int) $worker->id !== (int) $submission->worker_id
+            || ($location !== null && (int) $location->tenant_id !== (int) $tenant->id)
+            || ($visit !== null && (int) $visit->worker_id !== (int) $worker->id)) {
+            return 'related_tenant_mismatch';
+        }
+
         $ssin = preg_replace('/\D+/', '', (string) $worker->ssin) ?? '';
         if (strlen($ssin) !== 11) {
             return 'ssin_missing_or_invalid';
@@ -299,6 +310,31 @@ class SubmitPresenceBatchAction
         }
 
         return $copy;
+    }
+
+    /**
+     * RSZ-responses kunnen het ingediende INSZ terug-echoën (error bodies,
+     * remarks, notCreated-blokken). Alles wat we persistieren eerst maskeren —
+     * zowel 11-cijfer als de officiële JJ.MM.DD-XXX.XX-schrijfwijze.
+     *
+     * @param  array<mixed>|string|mixed  $value
+     * @return mixed
+     */
+    private function maskInsz(mixed $value): mixed
+    {
+        if (is_string($value)) {
+            $value = preg_replace('/\b\d{2}\.\d{2}\.\d{2}-\d{3}\.\d{2}\b/', '**INSZ**', $value) ?? $value;
+
+            return preg_replace('/\b\d{11}\b/', '**INSZ**', $value) ?? $value;
+        }
+
+        if (is_array($value)) {
+            foreach ($value as $key => $item) {
+                $value[$key] = $this->maskInsz($item);
+            }
+        }
+
+        return $value;
     }
 
     /**

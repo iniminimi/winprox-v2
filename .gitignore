@@ -12,8 +12,8 @@
 /storage/app/municipal-promo-letters.zip
 /vendor
 .env
-.env.backup
-.env.production
+.env.*
+!.env.example
 .phpactor.json
 .phpunit.result.cache
 Homestead.json
@@ -43,3 +43,9 @@ yarn-error.log
 
 # Lokale MySQL-datadir (per ongeluk gecommit, 127M)
 /mysql-data/
+
+# Secrets en sleutels horen nooit in git (bv. RSZ/Chaman private key)
+*.pem
+*.key
+/database/*.sqlite
+/database/*.sqlite-journal

@@ -216,6 +216,7 @@ Route::get('/cp/{token}', TimePortal::class)
 
 Route::get('/u/{token}', [EmailUnsubscribeController::class, 'confirm'])
     ->where('token', '[0-9]{8}')
+    ->middleware('throttle:20,1')
     ->name('email.unsubscribe');
 
 Route::get('/email/unsubscribe', [EmailUnsubscribeController::class, 'confirmLegacy'])

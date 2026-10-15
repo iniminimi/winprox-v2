@@ -25,9 +25,15 @@ final class PrunePresenceSubmissionsAction
 
         $stats = ['scanned' => 0, 'removed' => 0];
 
+        // Ook Failed/Skipped prunen: die rijen dragen masked request_meta
+        // en zijn na de submit-deadline toch niet meer herstelbaar.
         PresenceSubmission::query()
             ->withoutGlobalScopes()
-            ->where('status', PresenceSubmissionStatus::Submitted)
+            ->whereIn('status', [
+                PresenceSubmissionStatus::Submitted,
+                PresenceSubmissionStatus::Failed,
+                PresenceSubmissionStatus::Skipped,
+            ])
             ->where('registration_at', '<', $cutoff)
             ->orderBy('id')
             ->chunkById(200, function ($rows) use ($dryRun, &$stats): void {

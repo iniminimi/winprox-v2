@@ -190,6 +190,21 @@ class UnitPortal extends Component
 
     public function booted(): void
     {
+        // Identiteit elke request server-side opnieuw afleiden van de QR-token
+        // (het enige bewijs van toegang). Livewire public props zijn
+        // client-muteerbaar en mogen nooit zelf de tenant-scope bepalen.
+        $unit = Unit::withoutGlobalScope('tenant')
+            ->where('qr_token', $this->token)
+            ->first();
+
+        if (! $unit) {
+            InvalidQrResponse::abort();
+        }
+
+        $this->unitId = $unit->id;
+        $this->tenantId = $unit->tenant_id;
+        $this->teamId = $unit->category?->teams()->first()?->id;
+
         Tenancy::actAs($this->tenantId);
         app()->setLocale($this->locale);
     }

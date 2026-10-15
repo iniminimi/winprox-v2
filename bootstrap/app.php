@@ -37,7 +37,6 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->validateCsrfTokens(except: [
             'stripe/webhook',
-            'unit-portal/tasks/sync-status',
         ]);
 
         $middleware->alias([

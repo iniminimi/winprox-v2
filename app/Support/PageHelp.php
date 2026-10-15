@@ -60,7 +60,9 @@ final class PageHelp
 
                 $text = (string) $item['text'];
                 foreach ($replace as $key => $value) {
-                    $text = str_replace(':'.$key, (string) $value, $text);
+                    // Waarden kunnen user-gecontroleerd zijn (bv. tenantnaam);
+                    // escapen omdat de tekst ontsnapt gerenderd wordt ({!! !!}).
+                    $text = str_replace(':'.$key, e((string) $value), $text);
                 }
 
                 $labelIcon = $item['label_icon'] ?? null;

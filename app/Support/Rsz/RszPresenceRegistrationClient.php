@@ -47,7 +47,7 @@ final class RszPresenceRegistrationClient
 
         if (! $response->successful()) {
             throw new RuntimeException(
-                'rsz_register_failed:'.$response->status().':'.$response->body()
+                'rsz_register_failed:'.$response->status().':'.$this->sanitizeBody($response->body())
             );
         }
 
@@ -75,7 +75,7 @@ final class RszPresenceRegistrationClient
 
         if (! $response->successful()) {
             throw new RuntimeException(
-                'rsz_token_failed:'.$response->status().':'.$response->body()
+                'rsz_token_failed:'.$response->status().':'.$this->sanitizeBody($response->body())
             );
         }
 
@@ -142,6 +142,19 @@ final class RszPresenceRegistrationClient
         }
 
         return trim(str_replace('\\n', "\n", $raw));
+    }
+
+    /**
+     * RSZ-foutbodies kunnen de ingediende INSZ terug-echoën. De exception
+     * belandt in presence_submissions.error_message, de audit log en
+     * outbound webhooks — nooit een RRN meegeven, en begrensd houden.
+     */
+    private function sanitizeBody(string $body): string
+    {
+        $body = preg_replace('/\b\d{2}\.\d{2}\.\d{2}-\d{3}\.\d{2}\b/', '**INSZ**', $body) ?? $body;
+        $body = preg_replace('/\b\d{11}\b/', '**INSZ**', $body) ?? $body;
+
+        return mb_substr($body, 0, 500);
     }
 
     private function http(string $token): PendingRequest

@@ -159,6 +159,11 @@ class StripeWebhookController
             return false;
         }
 
+        // Replay-bescherming: Stripe-advies is een tolerantie van 5 minuten.
+        if (! ctype_digit($timestamp) || abs(time() - (int) $timestamp) > 300) {
+            return false;
+        }
+
         $signedPayload = $timestamp.'.'.$request->getContent();
         $expected = hash_hmac('sha256', $signedPayload, $secret);
 

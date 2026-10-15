@@ -52,11 +52,17 @@ class ApiSettings extends Component
             'endpointDescription' => ['nullable', 'string', 'max:255'],
         ]);
 
-        $store->handle([
-            'url' => $validated['endpointUrl'],
-            'events' => $validated['endpointEvents'],
-            'description' => $validated['endpointDescription'] ?: null,
-        ], (int) Tenancy::id(), (int) auth()->id());
+        try {
+            $store->handle([
+                'url' => $validated['endpointUrl'],
+                'events' => $validated['endpointEvents'],
+                'description' => $validated['endpointDescription'] ?: null,
+            ], (int) Tenancy::id(), (int) auth()->id());
+        } catch (\InvalidArgumentException) {
+            $this->addError('endpointUrl', __('settings.api.endpoint_url_invalid'));
+
+            return;
+        }
 
         $this->reset(['endpointUrl', 'endpointEvents', 'endpointDescription']);
     }

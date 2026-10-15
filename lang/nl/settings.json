@@ -164,6 +164,7 @@
         "token_created": "Nieuw token (eenmalig zichtbaar):",
         "tokens_empty": "Nog geen tokens.",
         "webhooks_heading": "Webhook-endpoints",
+        "endpoint_url_invalid": "Deze URL is niet toegestaan als webhook-bestemming. Gebruik een publieke http(s)-URL.",
         "endpoint_url": "https://…",
         "endpoint_description": "Omschrijving (optioneel)",
         "endpoint_save": "Endpoint opslaan",

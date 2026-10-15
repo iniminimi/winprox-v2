@@ -164,6 +164,7 @@
         "token_created": "Nouveau jeton (affiché une fois) :",
         "tokens_empty": "Aucun jeton pour l'instant.",
         "webhooks_heading": "Points de terminaison webhook",
+        "endpoint_url_invalid": "Cette URL n’est pas autorisée comme destination de webhook. Utilisez une URL http(s) publique.",
         "endpoint_url": "https://…",
         "endpoint_description": "Description (facultatif)",
         "endpoint_save": "Enregistrer",

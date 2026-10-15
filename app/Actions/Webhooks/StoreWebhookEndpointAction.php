@@ -6,6 +6,7 @@ use App\Models\Tenant;
 use App\Models\WebhookEndpoint;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Tenancy;
+use App\Support\Webhook\PublicUrlGuard;
 
 class StoreWebhookEndpointAction
 {
@@ -21,6 +22,8 @@ class StoreWebhookEndpointAction
         if (! $tenant->hasApiAccess()) {
             throw new \Illuminate\Auth\Access\AuthorizationException('API-toegang en webhooks zijn niet beschikbaar tijdens de proefperiode.');
         }
+
+        PublicUrlGuard::assertAllowed((string) $data['url']);
 
         $events = array_values(array_intersect(
             $data['events'] ?? [],

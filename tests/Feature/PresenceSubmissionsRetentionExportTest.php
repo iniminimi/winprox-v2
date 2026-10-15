@@ -94,7 +94,7 @@ it('toont print-rapport voor CIAO-inzendingen', function () {
         ->assertSee('RSZ #99', false);
 });
 
-it('verwijdert oude submitted CIAO-inzendingen maar laat failed staan', function () {
+it('verwijdert oude submitted en failed CIAO-inzendingen maar laat pending staan', function () {
     config(['data_retention.presence_submissions_months' => 12]);
 
     $tenant = Tenant::factory()->create(['has_time_module' => true]);
@@ -130,13 +130,23 @@ it('verwijdert oude submitted CIAO-inzendingen maar laat failed staan', function
         'status' => PresenceSubmissionStatus::Failed,
         'error_message' => 'rsz_not_created',
     ]);
+    $pending = PresenceSubmission::create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'source_event' => PresenceSourceEvent::ClockIn,
+        'presence_type' => PresenceType::In,
+        'scope' => PresenceComplianceScope::CiaoCleaning,
+        'registration_at' => now()->subMonths(18),
+        'status' => PresenceSubmissionStatus::Pending,
+    ]);
 
     $stats = app(PrunePresenceSubmissionsAction::class)->handle(dryRun: false);
 
-    expect($stats['removed'])->toBe(1)
+    expect($stats['removed'])->toBe(2)
         ->and(PresenceSubmission::query()->find($old->id))->toBeNull()
         ->and(PresenceSubmission::query()->find($recent->id))->not->toBeNull()
-        ->and(PresenceSubmission::query()->find($failed->id))->not->toBeNull();
+        ->and(PresenceSubmission::query()->find($failed->id))->toBeNull()
+        ->and(PresenceSubmission::query()->find($pending->id))->not->toBeNull();
 });
 
 it('export-action respecteert statusfilter', function () {

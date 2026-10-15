@@ -46,9 +46,11 @@ class ApiDocumentation extends Component
     public function render(ParseMarkdownAction $parseMarkdown)
     {
         $docsPath = base_path('docs/api');
-        $filePath = $docsPath . '/' . $this->current . '.md';
-        
-        if (! File::exists($filePath) || ! str_ends_with($filePath, '.md')) {
+        // $current is een Livewire public property (client-muteerbaar) —
+        // altijd basenamen, nooit een pad van de client vertrouwen.
+        $filePath = $docsPath . '/' . basename($this->current) . '.md';
+
+        if (! File::exists($filePath)) {
             abort(404);
         }
 

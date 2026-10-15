@@ -314,6 +314,19 @@ class TimePortal extends Component
 
     public function booted(): void
     {
+        // Identiteit elke request opnieuw afleiden van de portal-token (het
+        // enige bewijs van toegang). Livewire public props zijn
+        // client-muteerbaar en mogen nooit zelf de tenant-scope bepalen.
+        $resolution = app(ResolveClockPointPortalTokenAction::class)->handle($this->token);
+        $clockPoint = $resolution->clockPoint;
+
+        if ($clockPoint === null || ! $resolution->isUsable()) {
+            InvalidQrResponse::abort();
+        }
+
+        $this->clockPointId = $clockPoint->id;
+        $this->tenantId = $clockPoint->tenant_id;
+
         Tenancy::actAs($this->tenantId);
         app()->setLocale($this->locale);
         $this->enforceClockDeviceForVerifiedSession();
@@ -1294,6 +1307,14 @@ class TimePortal extends Component
 
     public function updatedCustomerName(SuggestCustomerNameMatchesAction $suggest): void
     {
+        // updated*-hooks vuren op elke property-sync — zelfde gate als het
+        // openen van het klantformulier, anders is dit een naam-oracle.
+        if ($this->authorizedWorker() === null || ! $this->customerFormOpen) {
+            $this->customerNameMatches = [];
+
+            return;
+        }
+
         $this->customerNameMatches = (int) $this->customerId > 0
             ? []
             : $suggest->handle($this->tenantId, $this->customerName)

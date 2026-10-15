@@ -12,6 +12,7 @@ use App\Models\Tenant;
 use App\Models\TenantPurgeRequest;
 use App\Models\UnitCheckPhoto;
 use App\Models\User;
+use App\Models\Worker;
 use App\Support\Audit\AuditRecorder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -256,6 +257,19 @@ final class ExecuteTenantPurgeAction
             ->chunkById(100, function ($docs) use ($disk): void {
                 foreach ($docs as $doc) {
                     $path = $doc->file_path ?? null;
+                    if (is_string($path) && $path !== '') {
+                        $disk->delete($path);
+                    }
+                }
+            });
+
+        Worker::query()
+            ->withoutGlobalScopes()
+            ->where('tenant_id', $tenant->id)
+            ->orderBy('id')
+            ->chunkById(100, function ($workers) use ($disk): void {
+                foreach ($workers as $worker) {
+                    $path = $worker->photo_path ?? null;
                     if (is_string($path) && $path !== '') {
                         $disk->delete($path);
                     }

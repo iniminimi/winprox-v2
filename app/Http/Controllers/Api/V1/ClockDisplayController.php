@@ -77,6 +77,16 @@ class ClockDisplayController extends Controller
             ]);
         }
 
+        // Device-credentials zijn een eenmalige handoff: na een korte window
+        // vervalt de claim (het device heeft ze dan al opgeslagen; recovery =
+        // opnieuw pairen). Zo blijft claim_token geen eeuwige cred-fetcher.
+        $confirmedAt = $claim->confirmed_at;
+        if ($confirmedAt === null || $confirmedAt->lt(now()->subMinutes(10))) {
+            $claim->delete();
+
+            return response()->json(['error' => 'claim_not_found'], 404);
+        }
+
         $clockPoint = $claim->clockPoint;
 
         return response()->json([

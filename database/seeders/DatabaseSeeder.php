@@ -26,6 +26,13 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        // Demo-accounts met 'password' mogen nooit op productie terechtkomen.
+        if (app()->environment('production')) {
+            $this->command?->warn('DatabaseSeeder wordt overgeslagen op productie.');
+
+            return;
+        }
+
         $tenant = Tenant::create(['name' => 'Demo Facility']);
 
         $admin = User::create([

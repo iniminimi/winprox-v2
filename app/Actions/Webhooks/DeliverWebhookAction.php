@@ -4,6 +4,7 @@ namespace App\Actions\Webhooks;
 
 use App\Models\Tenant;
 use App\Models\WebhookDelivery;
+use App\Support\Webhook\PublicUrlGuard;
 use Illuminate\Support\Facades\Http;
 
 class DeliverWebhookAction
@@ -45,6 +46,10 @@ class DeliverWebhookAction
         ])->save();
 
         try {
+            // SSRF: endpoint-URL's zijn tenant-input; DNS opnieuw checken per
+            // delivery (records kunnen na het opslaan wijzigen).
+            PublicUrlGuard::assertAllowed($endpoint->url);
+
             $response = Http::timeout(15)
                 ->withHeaders([
                     'Content-Type' => 'application/json',

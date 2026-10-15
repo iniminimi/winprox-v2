@@ -99,6 +99,18 @@ class UnassignedQrPortal extends Component
 
     public function booted(): void
     {
+        // Tenant-context elke request opnieuw uit de QR-token afleiden —
+        // public props (tenantId, showLogin, worker, team) zijn
+        // client-muteerbaar en mogen geen autorisatie of scope dragen.
+        $qrCode = QrCode::withoutGlobalScopes()->where('token', $this->token)->first();
+
+        if ($qrCode === null) {
+            InvalidQrResponse::abort();
+        }
+
+        $this->qrCode = $qrCode;
+        $this->tenantId = $qrCode->tenant_id;
+
         Tenancy::actAs($this->tenantId);
     }
 
@@ -110,6 +122,39 @@ class UnassignedQrPortal extends Component
 
         // Worker can link if they belong to the same tenant as the QR code
         return (int) $this->worker->tenant_id === $this->tenantId;
+    }
+
+    /**
+     * Worker-identiteit komt uit de device-session (server-side), nooit uit
+     * de (muteerbare) component-props.
+     */
+    private function sessionWorker(): ?Worker
+    {
+        $worker = WorkerDeviceSession::workerFromDeviceCookie();
+
+        if ($worker === null || (int) $worker->tenant_id !== $this->tenantId) {
+            return null;
+        }
+
+        return $worker;
+    }
+
+    private function sessionWorkerTeam(?Worker $worker): ?InternalTeam
+    {
+        if ($worker === null) {
+            return null;
+        }
+
+        return InternalTeam::withoutGlobalScope('tenant')->find($worker->internal_team_id);
+    }
+
+    private function linkAuthorized(): bool
+    {
+        if (Auth::check() && Auth::user()->can('link', $this->qrCode)) {
+            return true;
+        }
+
+        return $this->sessionWorker() !== null;
     }
 
     public function login(): void
@@ -149,6 +194,14 @@ class UnassignedQrPortal extends Component
 
     public function link(): void
     {
+        // Autorisatie server-side: ingelogde user met 'link'-recht of een
+        // worker met device-session op deze tenant — nooit de UI-vlag.
+        $worker = $this->sessionWorker();
+        if (! $this->linkAuthorized()) {
+            abort(403);
+        }
+        $team = $worker !== null ? $this->sessionWorkerTeam($worker) : null;
+
         $this->validate([
             'selectedUnitId' => 'required|exists:units,id',
             'photos' => ['nullable', 'array', 'max:4'],
@@ -168,14 +221,14 @@ class UnassignedQrPortal extends Component
         }
 
         // For team workers, verify unit belongs to their team via category
-        if ($this->worker && $this->team) {
+        if ($worker && $team) {
             if ($unit->category === null) {
                 $this->addError('selectedUnitId', 'Unit has no category');
                 return;
             }
 
             $categoryTeamIds = $unit->category->teams()->pluck('internal_teams.id')->toArray();
-            if (!in_array($this->team->id, $categoryTeamIds, true)) {
+            if (!in_array($team->id, $categoryTeamIds, true)) {
                 $this->addError('selectedUnitId', 'Unit not assigned to your team');
                 return;
             }
@@ -187,7 +240,7 @@ class UnassignedQrPortal extends Component
 
             // linked_by must be a user ID (foreign key to users table)
             // Workers are not users, so set to null for worker actions
-            $actorId = $this->worker ? null : Auth::id();
+            $actorId = $worker ? null : Auth::id();
 
             app(LinkQrCodeToUnitAction::class)->handle(
                 $this->qrCode,
@@ -227,12 +280,13 @@ class UnassignedQrPortal extends Component
             return;
         }
 
-        if (! $this->linkedUnit) {
+        if (! $this->linkedUnit || ! $this->linkAuthorized()) {
             return;
         }
 
-        $actorId = $this->worker ? null : Auth::id();
-        $workerId = $this->worker?->id;
+        $worker = $this->sessionWorker();
+        $actorId = $worker ? null : Auth::id();
+        $workerId = $worker?->id;
 
         app(RecordUnitGpsReportAction::class)->handle(
             $this->linkedUnit,
@@ -268,15 +322,18 @@ class UnassignedQrPortal extends Component
 
     public function getUnitsProperty()
     {
+        $worker = $this->sessionWorker();
+        $team = $worker !== null ? $this->sessionWorkerTeam($worker) : null;
+
         $query = Unit::withoutGlobalScope('tenant')
             ->where('tenant_id', $this->tenantId)
             ->where('is_active', true);
 
         // For team workers, filter by their team via category
-        if ($this->worker && $this->team) {
-            $query->whereHas('category', function ($q) {
-                $q->whereHas('teams', function ($teamQuery) {
-                    $teamQuery->where('internal_teams.id', $this->team->id);
+        if ($worker && $team) {
+            $query->whereHas('category', function ($q) use ($team) {
+                $q->whereHas('teams', function ($teamQuery) use ($team) {
+                    $teamQuery->where('internal_teams.id', $team->id);
                 });
             });
         }
@@ -295,6 +352,11 @@ class UnassignedQrPortal extends Component
     public function render()
     {
         Tenancy::actAs($this->tenantId);
+
+        $worker = $this->sessionWorker();
+        $this->showLogin = ! $this->linkAuthorized();
+        $this->worker = $worker;
+        $this->team = $worker !== null ? $this->sessionWorkerTeam($worker) : null;
 
         return view('livewire.public.unassigned-qr-portal', [
             'qrCode' => $this->qrCode,
