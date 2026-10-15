@@ -1,4 +1,12 @@
 {
+  "_jsQR-Dqnttk4c.js": {
+    "file": "assets/jsQR-Dqnttk4c.js",
+    "name": "jsQR",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.js"
+    ]
+  },
   "node_modules/@fontsource/inter/files/inter-latin-400-normal.woff": {
     "file": "assets/inter-latin-400-normal-CyCys3Eg.woff",
     "src": "node_modules/@fontsource/inter/files/inter-latin-400-normal.woff"
@@ -32,15 +40,18 @@
     "src": "node_modules/@fontsource/inter/files/inter-latin-700-normal.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-Cx5GPVLW.css",
+    "file": "assets/app-DTb5gTeX.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-BFsvYs45.js",
+    "file": "assets/app-DKDEEtai.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
+    "dynamicImports": [
+      "_jsQR-Dqnttk4c.js"
+    ],
     "css": [
       "assets/app-C2Xlxaxh.css"
     ]

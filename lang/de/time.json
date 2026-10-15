@@ -542,7 +542,15 @@
             "gps_hint": "Ihre aktuelle GPS-Position wird als Pin dieser Arbeitsadresse gespeichert.",
             "submit": "Kunde und Arbeitsadresse speichern"
         },
-        "customer_saved": "Kunde und Arbeitsadresse gespeichert."
+        "customer_saved": "Kunde und Arbeitsadresse gespeichert.",
+        "scan": {
+            "button": "Zum Stempeln scannen",
+            "title": "Clock-Point-QR scannen",
+            "hint": "Richten Sie die Kamera auf den Aufkleber oder den Uhrenbildschirm.",
+            "error_unsupported": "Dieser Browser kann die Kamera nicht öffnen. Scannen Sie mit der Kamera-App.",
+            "error_denied": "Kein Kamerazugriff. Erlauben Sie die Kamera oder scannen Sie mit der Kamera-App.",
+            "error_invalid": "Das ist kein Clock-Point-QR. Scannen Sie den Aufkleber oder den Uhrenbildschirm."
+        }
     },
     "ciao": {
         "title": "CIAO-Meldungen",

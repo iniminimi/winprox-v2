@@ -542,7 +542,15 @@
             "gps_hint": "Je huidige GPS-positie wordt als pin van het werkadres opgeslagen.",
             "submit": "Klant en werkadres opslaan"
         },
-        "customer_saved": "Klant en werkadres opgeslagen."
+        "customer_saved": "Klant en werkadres opgeslagen.",
+        "scan": {
+            "button": "Scan om te klokken",
+            "title": "Scan de Clock Point-QR",
+            "hint": "Richt de camera op de sticker of het klokscherm.",
+            "error_unsupported": "Deze browser kan de camera niet openen. Scan met je camera-app.",
+            "error_denied": "Geen camera-toegang. Sta de camera toe of scan met je camera-app.",
+            "error_invalid": "Dit is geen Clock Point-QR. Scan de sticker of het klokscherm."
+        }
     },
     "ciao": {
         "title": "CIAO-inzendingen",

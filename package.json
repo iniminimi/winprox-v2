@@ -24,6 +24,7 @@
         "@fontsource/inter": "^5.2.8",
         "cropperjs": "^1.6.2",
         "jspreadsheet-ce": "^5.0.4",
+        "jsqr": "^1.4.0",
         "jsuites": "^6.4.3",
         "quill": "^2.0.2"
     }

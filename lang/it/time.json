@@ -542,7 +542,15 @@
             "gps_hint": "La tua posizione GPS attuale viene salvata come pin di questo indirizzo di lavoro.",
             "submit": "Salva cliente e indirizzo di lavoro"
         },
-        "customer_saved": "Cliente e indirizzo di lavoro salvati."
+        "customer_saved": "Cliente e indirizzo di lavoro salvati.",
+        "scan": {
+            "button": "Scansiona per timbrare",
+            "title": "Scansiona il QR del Clock Point",
+            "hint": "Inquadra l’adesivo o lo schermo orologio con la fotocamera.",
+            "error_unsupported": "Questo browser non può aprire la fotocamera. Scansiona con l’app fotocamera.",
+            "error_denied": "Nessun accesso alla fotocamera. Consenti la fotocamera o scansiona con l’app fotocamera.",
+            "error_invalid": "Non è un QR Clock Point. Scansiona l’adesivo o lo schermo orologio."
+        }
     },
     "ciao": {
         "title": "Invii CIAO",

@@ -60,6 +60,32 @@
             @else
                 <button type="button" class="btn btn--primary btn--sm" @click="withGps('{{ $primary[0] }}')" data-manual-capture-trigger="portal-primary-action">{{ $primary[1] }}</button>
             @endif
+        @elseif (! ($canPunch ?? false))
+            <div x-data="wpPortalQrScanner({
+                    i18n: {
+                        unsupported: @js(__('time.portal.scan.error_unsupported')),
+                        denied: @js(__('time.portal.scan.error_denied')),
+                        invalid: @js(__('time.portal.scan.error_invalid')),
+                    },
+                })" wire:ignore>
+                <button type="button" class="btn btn--primary btn--sm" @click="openScanner()" data-manual-capture-trigger="portal-scan-qr">
+                    {{ __('time.portal.scan.button') }}
+                </button>
+                <template x-teleport="body">
+                    <div class="wp-scan-overlay" x-show="scannerOpen" x-cloak @keydown.escape.window="closeScanner()">
+                        <div class="wp-scan-dialog" role="dialog" aria-modal="true" aria-label="{{ __('time.portal.scan.title') }}">
+                            <p class="wp-scan-title">{{ __('time.portal.scan.title') }}</p>
+                            <div class="wp-scan-viewport">
+                                <video x-ref="scanVideo" playsinline muted autoplay></video>
+                                <span class="wp-scan-frame" aria-hidden="true"></span>
+                            </div>
+                            <p class="wp-scan-hint">{{ __('time.portal.scan.hint') }}</p>
+                            <p class="wp-scan-error" x-show="errorKey !== null" x-text="errorText" x-cloak></p>
+                            <button type="button" class="btn btn--ghost btn--sm" @click="closeScanner()">{{ __('common.cancel') }}</button>
+                        </div>
+                    </div>
+                </template>
+            </div>
         @endif
         <x-wp-icon :name="$openShift === null ? 'clock' : ($absenceClockInKind !== null ? 'alert-triangle' : 'check-circle')" class="wp-portal-now__status-icon" data-clock-state="{{ $openShift === null ? 'out' : 'in' }}" />
     </div>

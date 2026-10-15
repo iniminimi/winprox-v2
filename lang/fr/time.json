@@ -542,7 +542,15 @@
             "gps_hint": "Votre position GPS actuelle est enregistrée comme pin de cette adresse de travail.",
             "submit": "Enregistrer le client et l'adresse de travail"
         },
-        "customer_saved": "Client et adresse de travail enregistrés."
+        "customer_saved": "Client et adresse de travail enregistrés.",
+        "scan": {
+            "button": "Scanner pour pointer",
+            "title": "Scannez le QR du Clock Point",
+            "hint": "Pointez la caméra vers l’autocollant ou l’écran de pointage.",
+            "error_unsupported": "Ce navigateur ne peut pas ouvrir la caméra. Scannez avec l’appareil photo.",
+            "error_denied": "Pas d’accès à la caméra. Autorisez la caméra ou scannez avec l’appareil photo.",
+            "error_invalid": "Ce n’est pas un QR Clock Point. Scannez l’autocollant ou l’écran de pointage."
+        }
     },
     "ciao": {
         "title": "Envois CIAO",

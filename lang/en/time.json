@@ -542,7 +542,15 @@
             "gps_hint": "Your current GPS position is saved as the pin for this work address.",
             "submit": "Save customer and work address"
         },
-        "customer_saved": "Customer and work address saved."
+        "customer_saved": "Customer and work address saved.",
+        "scan": {
+            "button": "Scan to clock",
+            "title": "Scan the Clock Point QR",
+            "hint": "Point the camera at the sticker or the clock screen.",
+            "error_unsupported": "This browser cannot open the camera. Scan with your camera app.",
+            "error_denied": "No camera access. Allow the camera or scan with your camera app.",
+            "error_invalid": "This is not a Clock Point QR. Scan the sticker or the clock screen."
+        }
     },
     "ciao": {
         "title": "CIAO submissions",

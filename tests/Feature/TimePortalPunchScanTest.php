@@ -145,6 +145,31 @@ it('toont een korte scan-hint als de grant opgebruikt is en er nog geen dienst i
     expect(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeFalse();
 });
 
+it('toont de in-portal scan-knop wanneer er geen scan-grant is', function () {
+    [, $clockPoint, $worker] = punchScanTenant();
+
+    $portal = Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token]);
+    ClockPointScanGrant::consume($clockPoint->id);
+
+    $portal
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->call('$refresh')
+        ->assertSee(__('time.portal.scan.button'), false)
+        ->assertSeeHtml('wpPortalQrScanner');
+});
+
+it('verbergt de scan-knop zolang er een geldige scan-grant is', function () {
+    [, $clockPoint] = punchScanTenant();
+
+    signInPunchScanWorker($clockPoint)
+        ->assertSee(__('time.portal.clock.in'), false)
+        ->assertDontSeeHtml('wpPortalQrScanner');
+});
+
 it('prikt niet in wanneer de scan-grant verlopen is', function () {
     [, $clockPoint, $worker] = punchScanTenant();
 
