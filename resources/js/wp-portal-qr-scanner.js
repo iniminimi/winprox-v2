@@ -8,7 +8,10 @@
  */
 
 const CLOCK_POINT_TOKEN_PATTERN = /\/time\/([a-z0-9]{20,})/i;
-const DECODE_WIDTH = 640;
+// Volle resolutie: de dynamische klokscherm-QR is dichter (64 tekens) en
+// staat als losse pixels op een LCD — 640px gaf te weinig px per module.
+const DECODE_WIDTH = 1280;
+const DECODE_EVERY_NTH_FRAME = 3;
 
 function registerAlpineComponent() {
     if (!window.Alpine || window.Alpine.__wpPortalQrScanner) {
@@ -25,6 +28,7 @@ function registerAlpineComponent() {
         _jsqr: null,
         _canvas: null,
         _ctx: null,
+        _frameNo: 0,
 
         get supported() {
             return !!(navigator.mediaDevices && typeof navigator.mediaDevices.getUserMedia === 'function');
@@ -91,14 +95,17 @@ function registerAlpineComponent() {
             if (!this.scannerOpen || this._stream === null) {
                 return;
             }
-            if (video.readyState >= 2 && video.videoWidth > 0) {
+            this._frameNo += 1;
+            if (video.readyState >= 2 && video.videoWidth > 0 && this._frameNo % DECODE_EVERY_NTH_FRAME === 0) {
                 const scale = Math.min(1, DECODE_WIDTH / video.videoWidth);
                 this._canvas.width = Math.round(video.videoWidth * scale);
                 this._canvas.height = Math.round(video.videoHeight * scale);
                 this._ctx.drawImage(video, 0, 0, this._canvas.width, this._canvas.height);
                 try {
                     const frame = this._ctx.getImageData(0, 0, this._canvas.width, this._canvas.height);
-                    const hit = this._jsqr(frame.data, frame.width, frame.height);
+                    const hit = this._jsqr(frame.data, frame.width, frame.height, {
+                        inversionAttempts: 'attemptBoth',
+                    });
                     if (hit && hit.data) {
                         this.handleDecoded(hit.data);
                     }
