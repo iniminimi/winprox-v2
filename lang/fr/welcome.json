@@ -19,7 +19,7 @@
     "hero": {
         "brand": "WinProx",
         "headline": "La pointeuse digitale pour le suivi du temps dans votre entreprise.",
-        "subtitle": "Les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social. Planning, signalements et tâches font partie de la même expérience WinProx. Activez le CIAO dans les Paramètres.",
+        "subtitle": "Les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social. Activez le CIAO dans les Paramètres.",
         "flow": "Scan → Pointer → Heures → Secrétariat",
         "flow_steps": {
             "scan": "Scan",
@@ -36,6 +36,11 @@
             "text": "WinProx Checkmate : la formule limitée pour pointer sur site. Nettoyage dès maintenant. CIAO inclus dès le départ.",
             "price": "5 € par exécutant et par mois"
         }
+    },
+    "employees": {
+        "title": "Plus de confort pour vos employés. Des heures correctes pour votre secrétariat social.",
+        "body": "À la maison, vos employés consultent leur horaire et leurs heures enregistrées et demandent facilement un congé ou une récupération via leur téléphone. Au travail, ils utilisent WinProx pour pointer et accéder aux fonctionnalités disponibles, comme les signalements, les tâches et les tournées d'inspection.",
+        "note": "Les fonctionnalités disponibles dépendent de votre formule WinProx."
     },
     "video": {
         "title": "WinProx en action",

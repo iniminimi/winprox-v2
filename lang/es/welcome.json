@@ -19,7 +19,7 @@
     "hero": {
         "brand": "WinProx",
         "headline": "El reloj de fichar digital para el registro horario en su empresa.",
-        "subtitle": "El personal ficha con el teléfono, sin app. Usted compara las horas con el horario y las pasa a su secretaría social. Planificación, avisos y tareas forman parte de la misma experiencia WinProx. Active CIAO en Ajustes.",
+        "subtitle": "El personal ficha con el teléfono, sin app. Usted compara las horas con el horario y las pasa a su secretaría social. Active CIAO en Ajustes.",
         "flow": "Escanear → Fichar → Horas → Secretaría",
         "flow_steps": {
             "scan": "Escanear",
@@ -36,6 +36,11 @@
             "text": "WinProx Checkmate: la fórmula limitada para fichar in situ. Limpieza ahora. CIAO incluido desde el inicio.",
             "price": "5 € por trabajador y mes"
         }
+    },
+    "employees": {
+        "title": "Más comodidad para su personal. Horas correctas para su secretaría social.",
+        "body": "En casa, su personal consulta su horario y sus horas registradas y solicita fácilmente vacaciones u horas de recupero desde su móvil. En el trabajo usan WinProx para fichar y acceder a las funciones disponibles, como avisos, tareas y rondas de inspección.",
+        "note": "Las funciones disponibles dependen de su fórmula WinProx."
     },
     "video": {
         "title": "WinProx en acción",

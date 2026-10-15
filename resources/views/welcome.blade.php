@@ -81,6 +81,16 @@
         </header>
     </div>
 
+    <section class="wp-welcome-section wp-welcome-section--alt wp-welcome-section--center" aria-label="{{ __('welcome.employees.title') }}">
+        <div class="wp-welcome-section-inner">
+            <div class="wp-stack">
+                <h2 class="wp-welcome-h3">{{ __('welcome.employees.title') }}</h2>
+                <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.employees.body') }}</p>
+                <p class="wp-muted">{{ __('welcome.employees.note') }}</p>
+            </div>
+        </div>
+    </section>
+
     <section class="wp-welcome-clock-section" aria-label="{{ __('welcome.clock.title') }}">
         <div class="wp-welcome-main">
             <div class="wp-welcome-split wp-welcome-split--qr">

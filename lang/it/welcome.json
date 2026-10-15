@@ -19,7 +19,7 @@
     "hero": {
         "brand": "WinProx",
         "headline": "La timbratrice digitale per la rilevazione orari nella vostra azienda.",
-        "subtitle": "Il personale timbra con il telefono, senza app. Confrontate le ore con il turno e le passate al segretariato sociale. Pianificazione, segnalazioni e attività fanno parte della stessa esperienza WinProx. Attivate il CIAO nelle Impostazioni.",
+        "subtitle": "Il personale timbra con il telefono, senza app. Confrontate le ore con il turno e le passate al segretariato sociale. Attivate il CIAO nelle Impostazioni.",
         "flow": "Scansiona → Timbra → Ore → Segretariato",
         "flow_steps": {
             "scan": "Scansiona",
@@ -36,6 +36,11 @@
             "text": "WinProx Checkmate: la formula limitata per timbrare sul posto. Pulizie da subito. CIAO incluso fin dall'inizio.",
             "price": "5 € per operatore al mese"
         }
+    },
+    "employees": {
+        "title": "Più comodità per i vostri dipendenti. Ore corrette per il vostro segretariato sociale.",
+        "body": "A casa, i vostri dipendenti consultano il turno e le ore registrate e richiedono facilmente ferie o recuperi dal loro telefono. Al lavoro usano WinProx per timbrare e accedere alle funzionalità disponibili, come segnalazioni, attività e giri di ispezione.",
+        "note": "Le funzionalità disponibili dipendono dalla vostra formula WinProx."
     },
     "video": {
         "title": "WinProx in azione",

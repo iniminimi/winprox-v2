@@ -19,7 +19,7 @@
     "hero": {
         "brand": "WinProx",
         "headline": "De digitale prikklok voor urenregistratie in uw bedrijf.",
-        "subtitle": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat. Planning, meldingen en taken horen bij dezelfde WinProx-ervaring. CIAO zet u aan via Instellingen.",
+        "subtitle": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat. CIAO zet u aan via Instellingen.",
         "flow": "Scan → Prik → Uren → Secretariaat",
         "flow_steps": {
             "scan": "Scan",
@@ -36,6 +36,11 @@
             "text": "WinProx Checkmate: de beperkte formule voor in- en uitchecken op locatie. Schoonmaak nu. CIAO inbegrepen vanaf de start.",
             "price": "€5 per uitvoerder per maand"
         }
+    },
+    "employees": {
+        "title": "Meer gemak voor uw medewerkers. Correcte uren voor uw secretariaat.",
+        "body": "Uw medewerkers raadplegen thuis hun uurrooster en geregistreerde uren en vragen eenvoudig verlof of recup aan via hun gsm. Op het werk gebruiken ze WinProx om te prikken en toegang te krijgen tot de beschikbare functionaliteiten, zoals meldingen, taken en inspectierondes.",
+        "note": "De beschikbare functionaliteiten zijn afhankelijk van uw WinProx-formule."
     },
     "video": {
         "title": "WinProx in actie",

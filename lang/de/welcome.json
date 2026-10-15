@@ -19,7 +19,7 @@
     "hero": {
         "brand": "WinProx",
         "headline": "Die digitale Stempeluhr für die Zeiterfassung in Ihrem Unternehmen.",
-        "subtitle": "Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter. Planung, Meldungen und Aufgaben gehören zur selben WinProx-Erfahrung. CIAO schalten Sie in den Einstellungen ein.",
+        "subtitle": "Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter. CIAO schalten Sie in den Einstellungen ein.",
         "flow": "Scan → Stempeln → Stunden → Sekretariat",
         "flow_steps": {
             "scan": "Scan",
@@ -36,6 +36,11 @@
             "text": "WinProx Checkmate: die schlanke Formel zum Ein- und Ausstempeln vor Ort. Reinigung jetzt. CIAO von Beginn an enthalten.",
             "price": "5 € pro Ausführenden und Monat"
         }
+    },
+    "employees": {
+        "title": "Mehr Komfort für Ihre Mitarbeitenden. Korrekte Stunden für Ihr Sozialsekretariat.",
+        "body": "Ihre Mitarbeitenden sehen zu Hause ihren Dienstplan und ihre erfassten Stunden ein und beantragen bequem Urlaub oder Zeitausgleich über ihr Telefon. Bei der Arbeit nutzen sie WinProx zum Stempeln und für den Zugriff auf die verfügbaren Funktionen wie Meldungen, Aufgaben und Inspektionsrunden.",
+        "note": "Die verfügbaren Funktionen hängen von Ihrer WinProx-Formel ab."
     },
     "video": {
         "title": "WinProx in Aktion",
