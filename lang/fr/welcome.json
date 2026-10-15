@@ -39,7 +39,15 @@
     },
     "employees": {
         "title": "Plus de confort pour vos employés. Des heures correctes pour votre secrétariat social.",
-        "body": "À la maison, vos employés consultent leur horaire et leurs heures enregistrées et demandent facilement un congé ou une récupération via leur téléphone. Au travail, ils utilisent WinProx pour pointer et accéder aux fonctionnalités disponibles, comme les signalements, les tâches et les tournées d'inspection.",
+        "lead": "Avec WinProx, vos employés ont leurs données de travail et leurs fonctionnalités pratiques à portée de main, directement sur leur téléphone. À la maison comme sur le terrain.",
+        "items": [
+            { "label": "Pointer en entrée et en sortie", "text": "via leur téléphone, sans appli ni badge." },
+            { "label": "Consulter leur horaire", "text": "savoir quand ils doivent travailler." },
+            { "label": "Voir leurs heures travaillées", "text": "un aperçu de leurs heures enregistrées." },
+            { "label": "Demander un congé ou une récupération", "text": "facilement via leur téléphone." },
+            { "label": "Faire des signalements et exécuter des tâches", "text": "directement sur le terrain." },
+            { "label": "Parcourir des tournées d'inspection", "text": "avec des contrôles et checklists digitales." }
+        ],
         "note": "Les fonctionnalités disponibles dépendent de votre formule WinProx.",
         "image_alt": "Employé consultant son horaire et ses heures sur téléphone dans WinProx."
     },

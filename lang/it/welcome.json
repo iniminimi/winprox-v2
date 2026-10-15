@@ -39,7 +39,15 @@
     },
     "employees": {
         "title": "Più comodità per i vostri dipendenti. Ore corrette per il vostro segretariato sociale.",
-        "body": "A casa, i vostri dipendenti consultano il turno e le ore registrate e richiedono facilmente ferie o recuperi dal loro telefono. Al lavoro usano WinProx per timbrare e accedere alle funzionalità disponibili, come segnalazioni, attività e giri di ispezione.",
+        "lead": "Con WinProx i vostri dipendenti hanno i loro dati di lavoro e le funzionalità pratiche a portata di mano, direttamente sul telefono. A casa come sul posto di lavoro.",
+        "items": [
+            { "label": "Timbrare entrata e uscita", "text": "dal loro telefono, senza app né badge." },
+            { "label": "Consultare il loro turno", "text": "sapere quando devono lavorare." },
+            { "label": "Vedere le loro ore lavorate", "text": "visione delle ore registrate." },
+            { "label": "Richiedere ferie o recuperi", "text": "facilmente dal telefono." },
+            { "label": "Inviare segnalazioni ed eseguire attività", "text": "direttamente sul posto di lavoro." },
+            { "label": "Svolgere giri di ispezione", "text": "con controlli e checklist digitali." }
+        ],
         "note": "Le funzionalità disponibili dipendono dalla vostra formula WinProx.",
         "image_alt": "Dipendente che consulta turno e ore sul telefono in WinProx."
     },

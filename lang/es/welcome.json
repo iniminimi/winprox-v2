@@ -39,7 +39,15 @@
     },
     "employees": {
         "title": "Más comodidad para su personal. Horas correctas para su secretaría social.",
-        "body": "En casa, su personal consulta su horario y sus horas registradas y solicita fácilmente vacaciones u horas de recupero desde su móvil. En el trabajo usan WinProx para fichar y acceder a las funciones disponibles, como avisos, tareas y rondas de inspección.",
+        "lead": "Con WinProx, su personal tiene sus datos de trabajo y funciones prácticas a mano, directamente en su móvil. En casa y en el trabajo.",
+        "items": [
+            { "label": "Fichar la entrada y la salida", "text": "desde su móvil, sin app ni credencial." },
+            { "label": "Consultar su horario", "text": "saber cuándo deben trabajar." },
+            { "label": "Ver sus horas trabajadas", "text": "visión de sus horas registradas." },
+            { "label": "Solicitar vacaciones u horas de recupero", "text": "fácilmente desde su móvil." },
+            { "label": "Enviar avisos y ejecutar tareas", "text": "directamente en el trabajo." },
+            { "label": "Realizar rondas de inspección", "text": "con controles y listas digitales." }
+        ],
         "note": "Las funciones disponibles dependen de su fórmula WinProx.",
         "image_alt": "Trabajador consultando su horario y sus horas en el móvil en WinProx."
     },

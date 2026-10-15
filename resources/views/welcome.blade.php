@@ -95,7 +95,12 @@
                 </figure>
                 <article class="wp-card wp-card-pad wp-stack">
                     <h2 class="wp-welcome-h3">{{ __('welcome.employees.title') }}</h2>
-                    <p class="wp-text-body">{{ __('welcome.employees.body') }}</p>
+                    <p class="wp-text-body">{{ __('welcome.employees.lead') }}</p>
+                    <ul class="wp-welcome-checklist">
+                        @foreach (__('welcome.employees.items') as $item)
+                            <li><strong>{{ $item['label'] }}</strong> — {{ $item['text'] }}</li>
+                        @endforeach
+                    </ul>
                     <p class="wp-muted">{{ __('welcome.employees.note') }}</p>
                 </article>
             </div>

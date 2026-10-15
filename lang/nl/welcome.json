@@ -39,7 +39,15 @@
     },
     "employees": {
         "title": "Meer gemak voor uw medewerkers. Correcte uren voor uw secretariaat.",
-        "body": "Uw medewerkers raadplegen thuis hun uurrooster en geregistreerde uren en vragen eenvoudig verlof of recup aan via hun gsm. Op het werk gebruiken ze WinProx om te prikken en toegang te krijgen tot de beschikbare functionaliteiten, zoals meldingen, taken en inspectierondes.",
+        "lead": "Met WinProx hebben uw medewerkers hun werkgegevens en praktische werkfunctionaliteiten bij de hand, rechtstreeks op hun gsm. Thuis én op de werkvloer.",
+        "items": [
+            { "label": "In- en uitprikken", "text": "via hun gsm, zonder app of badge." },
+            { "label": "Hun uurrooster raadplegen", "text": "weten wanneer ze moeten werken." },
+            { "label": "Hun gewerkte uren bekijken", "text": "inzicht in hun geregistreerde uren." },
+            { "label": "Verlof of recup aanvragen", "text": "eenvoudig via hun gsm." },
+            { "label": "Meldingen doorgeven en taken uitvoeren", "text": "rechtstreeks op de werkvloer." },
+            { "label": "Inspectierondes doorlopen", "text": "met digitale controles en checklists." }
+        ],
         "note": "De beschikbare functionaliteiten zijn afhankelijk van uw WinProx-formule.",
         "image_alt": "Medewerker raadpleegt uurrooster en uren op de gsm in WinProx."
     },

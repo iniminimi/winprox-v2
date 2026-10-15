@@ -39,7 +39,15 @@
     },
     "employees": {
         "title": "Mehr Komfort für Ihre Mitarbeitenden. Korrekte Stunden für Ihr Sozialsekretariat.",
-        "body": "Ihre Mitarbeitenden sehen zu Hause ihren Dienstplan und ihre erfassten Stunden ein und beantragen bequem Urlaub oder Zeitausgleich über ihr Telefon. Bei der Arbeit nutzen sie WinProx zum Stempeln und für den Zugriff auf die verfügbaren Funktionen wie Meldungen, Aufgaben und Inspektionsrunden.",
+        "lead": "Mit WinProx haben Ihre Mitarbeitenden ihre Arbeitsdaten und praktischen Arbeitsfunktionen griffbereit, direkt auf ihrem Telefon. Zu Hause wie am Arbeitsplatz.",
+        "items": [
+            { "label": "Ein- und Ausstempeln", "text": "über ihr Telefon, ohne App oder Badge." },
+            { "label": "Ihren Dienstplan einsehen", "text": "wissen, wann sie arbeiten müssen." },
+            { "label": "Ihre geleisteten Stunden ansehen", "text": "Einblick in ihre erfassten Stunden." },
+            { "label": "Urlaub oder Zeitausgleich beantragen", "text": "einfach über ihr Telefon." },
+            { "label": "Meldungen weitergeben und Aufgaben ausführen", "text": "direkt am Arbeitsplatz." },
+            { "label": "Inspektionsrunden durchführen", "text": "mit digitalen Kontrollen und Checklisten." }
+        ],
         "note": "Die verfügbaren Funktionen hängen von Ihrer WinProx-Formel ab.",
         "image_alt": "Mitarbeitender sieht Dienstplan und Stunden auf dem Telefon in WinProx."
     },
