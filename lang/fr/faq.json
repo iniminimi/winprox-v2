@@ -206,7 +206,7 @@
             "slug": "user_roles",
             "type": "roles",
             "title": "Comment fonctionnent les différents utilisateurs ?",
-            "summary": "Administrateur : contrôle total et abonnement. Collaborateur : suivi quotidien. Exécutant : travail terrain via Clock Point et QR sans connexion. Chef d’équipe (optionnel) : gère icônes et appareils sur Clock Point.",
+            "summary": "Administrateur : contrôle total et abonnement. Collaborateur : suivi quotidien. Exécutant : travail terrain via Clock Point et QR sans connexion. Chef d’équipe (optionnel) : gère icônes, appareils et exécutants (photos comprises) sur Clock Point.",
             "roles": [
                 {
                     "title": "Administrateur",
@@ -222,7 +222,7 @@
                 },
                 {
                     "title": "Chef d’équipe",
-                    "text": "Marque optionnelle sur un exécutant (Personnes → Équipes → Modifier). Sur Clock Point apparaît la tuile Chef d’équipe : libérer l’icône d’un collègue bloqué, ajouter des exécutants et autoriser un téléphone nouveau ou temporaire. Il ne peut supprimer que les exécutants qu’il a lui-même créés."
+                    "text": "Marque optionnelle sur un exécutant (Personnes → Équipes → Modifier). Sur Clock Point apparaît la tuile Chef d’équipe : libérer l’icône d’un collègue bloqué, ajouter des exécutants, prendre des photos des membres de l’équipe et autoriser un téléphone nouveau ou temporaire. Il ne peut supprimer que les exécutants qu’il a lui-même créés."
                 }
             ]
         },

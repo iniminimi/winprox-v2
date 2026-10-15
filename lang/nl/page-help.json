@@ -629,7 +629,7 @@
                 },
                 {
                     "label": "Teamleader",
-                    "text": "Wijs teamleader toe of trek in via **Bewerken**. Teamleaders kunnen in het Clock Point-portaal iconen van teamgenoten vrijgeven."
+                    "text": "Wijs teamleader toe of trek in via **Bewerken**. Teamleaders kunnen in het Clock Point-portaal iconen van teamgenoten vrijgeven, uitvoerders beheren en foto's nemen."
                 },
                 {
                     "label": "Team deactiveren",
@@ -989,7 +989,7 @@
                 },
                 {
                     "label": "Extra panelen",
-                    "text": "Na aanmelden zie je extra secties: icoon collega vrijgeven en workers beheren."
+                    "text": "Na aanmelden zie je extra secties: icoon collega vrijgeven en workers beheren (ook foto's nemen)."
                 }
             ]
         },
@@ -2035,7 +2035,7 @@
                 },
                 {
                     "label": "Teamleader",
-                    "text": "Een uitvoerder met de teamleader-vlag kan in het portaal iconen en toestellen van teamgenoten vrijgeven."
+                    "text": "Een uitvoerder met de teamleader-vlag kan in het portaal iconen en toestellen van teamgenoten vrijgeven, uitvoerders beheren en foto's nemen."
                 }
             ]
         },

@@ -206,7 +206,7 @@
             "slug": "user_roles",
             "type": "roles",
             "title": "¿Cómo funcionan los distintos usuarios?",
-            "summary": "Administrador: control total y suscripción. Personal: seguimiento diario. Operario: trabajo de campo vía Clock Point y QR sin login. Jefe de equipo (opcional): gestiona iconos y dispositivos en Clock Point.",
+            "summary": "Administrador: control total y suscripción. Personal: seguimiento diario. Operario: trabajo de campo vía Clock Point y QR sin login. Jefe de equipo (opcional): gestiona iconos, dispositivos y operarios (fotos incluidas) en Clock Point.",
             "roles": [
                 {
                     "title": "Administrador",
@@ -222,7 +222,7 @@
                 },
                 {
                     "title": "Jefe de equipo",
-                    "text": "Marca opcional en un operario (Personas → Equipos → Editar). En Clock Point aparece la ficha Jefe de equipo: liberar el icono de un compañero bloqueado, añadir operarios y permitir un móvil nuevo o temporal. Solo puede eliminar operarios creados por él mismo."
+                    "text": "Marca opcional en un operario (Personas → Equipos → Editar). En Clock Point aparece la ficha Jefe de equipo: liberar el icono de un compañero bloqueado, añadir operarios, tomar fotos de los miembros del equipo y permitir un móvil nuevo o temporal. Solo puede eliminar operarios creados por él mismo."
                 }
             ]
         },

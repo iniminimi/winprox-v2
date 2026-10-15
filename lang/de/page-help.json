@@ -629,7 +629,7 @@
                 },
                 {
                     "label": "Teamleiter",
-                    "text": "Teamleiter zuweisen oder entziehen über **Bearbeiten**. Teamleiter können im Clock-Point-Portal auch Symbole von Teammitgliedern freigeben."
+                    "text": "Teamleiter zuweisen oder entziehen über **Bearbeiten**. Teamleiter können im Clock-Point-Portal auch Symbole von Teammitgliedern freigeben, Mitarbeiter verwalten und Fotos aufnehmen."
                 },
                 {
                     "label": "Team deaktivieren",
@@ -989,7 +989,7 @@
                 },
                 {
                     "label": "Zusätzliche Bereiche",
-                    "text": "Nach der Anmeldung sehen Sie zusätzliche Bereiche: Kollegen-Symbol freigeben und Mitarbeiter verwalten."
+                    "text": "Nach der Anmeldung sehen Sie zusätzliche Bereiche: Kollegen-Symbol freigeben und Mitarbeiter verwalten (inkl. Fotos aufnehmen)."
                 }
             ]
         },
@@ -2035,7 +2035,7 @@
                 },
                 {
                     "label": "Teamleiter",
-                    "text": "Ein Ausführer mit Teamleiter-Flag kann im Portal Symbole und Geräte von Teamkollegen freigeben."
+                    "text": "Ein Ausführer mit Teamleiter-Flag kann im Portal Symbole und Geräte von Teamkollegen freigeben, Mitarbeiter verwalten und Fotos aufnehmen."
                 }
             ]
         },

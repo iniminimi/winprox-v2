@@ -69,7 +69,7 @@
         "workers": "Workers manual",
         "workers_desc": "Clock Point (sticker or clock screen) and unit QR on the shop floor — sign-in, clocking in/out, unit check, tasks, photos and work without coverage.",
         "teamleaders": "Team leader manual",
-        "teamleaders_desc": "Release icons, manage workers and coordinate tasks via the Clock Point portal.",
+        "teamleaders_desc": "Release icons, manage workers (including taking photos) and coordinate tasks via the Clock Point portal.",
         "features_overview": "Features overview",
         "features_overview_desc": "Key capabilities at a glance (public + printable).",
         "technical_sheet": "Technical fact sheet",

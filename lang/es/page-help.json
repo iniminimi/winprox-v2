@@ -629,7 +629,7 @@
                 },
                 {
                     "label": "Jefe de equipo",
-                    "text": "Asigne o quite el rol de jefe de equipo en **Editar**. Los jefes de equipo también pueden liberar iconos de compañeros en el portal Clock Point."
+                    "text": "Asigne o quite el rol de jefe de equipo en **Editar**. Los jefes de equipo también pueden liberar iconos de compañeros, gestionar trabajadores y tomar fotos en el portal Clock Point."
                 },
                 {
                     "label": "Desactivar equipo",
@@ -989,7 +989,7 @@
                 },
                 {
                     "label": "Paneles adicionales",
-                    "text": "Tras iniciar sesión ve secciones adicionales: liberar icono de colega y gestionar trabajadores."
+                    "text": "Tras iniciar sesión ve secciones adicionales: liberar icono de colega y gestionar trabajadores (incluido tomar fotos)."
                 }
             ]
         },
@@ -2035,7 +2035,7 @@
                 },
                 {
                     "label": "Jefe de equipo",
-                    "text": "Un operario con la marca de jefe de equipo puede liberar en el portal iconos y dispositivos de sus compañeros."
+                    "text": "Un operario con la marca de jefe de equipo puede liberar en el portal iconos y dispositivos de sus compañeros, gestionar trabajadores y tomar fotos."
                 }
             ]
         },

@@ -69,7 +69,7 @@
         "workers": "Manual de trabajadores",
         "workers_desc": "Clock Point (pegatina o pantalla del reloj) y QR de unidad en planta — acceso, fichaje, comprobación de unidad, tareas y fotos. Incluye trabajo sin cobertura.",
         "teamleaders": "Manual de jefe de equipo",
-        "teamleaders_desc": "Liberar iconos, gestionar trabajadores y coordinar tareas mediante el portal Clock Point.",
+        "teamleaders_desc": "Liberar iconos, gestionar trabajadores (incluido tomar fotos) y coordinar tareas mediante el portal Clock Point.",
         "features_overview": "Resumen de funciones",
         "features_overview_desc": "Funciones clave de un vistazo (público + imprimible).",
         "technical_sheet": "Ficha técnica",

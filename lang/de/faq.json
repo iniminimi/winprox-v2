@@ -206,7 +206,7 @@
             "slug": "user_roles",
             "type": "roles",
             "title": "Wie funktionieren die verschiedenen Benutzer?",
-            "summary": "Administrator: volle Kontrolle und Abonnement. Mitarbeiter: tägliche Nachverfolgung. Ausführender: Außendienst über Clock Point und QR ohne Login. Teamleiter (optional): verwaltet Symbole und Geräte am Clock Point.",
+            "summary": "Administrator: volle Kontrolle und Abonnement. Mitarbeiter: tägliche Nachverfolgung. Ausführender: Außendienst über Clock Point und QR ohne Login. Teamleiter (optional): verwaltet Symbole, Geräte und Ausführende (inkl. Fotos) am Clock Point.",
             "roles": [
                 {
                     "title": "Administrator",
@@ -222,7 +222,7 @@
                 },
                 {
                     "title": "Teamleiter",
-                    "text": "Optionale Markierung auf einem Ausführenden (Personen → Teams → Bearbeiten). Am Clock Point erscheint die Kachel Teamleiter: Symbol eines gesperrten Kollegen freigeben, Ausführende hinzufügen und ein neues oder vorübergehendes Gerät zulassen. Löschen kann er nur Ausführende, die er selbst angelegt hat."
+                    "text": "Optionale Markierung auf einem Ausführenden (Personen → Teams → Bearbeiten). Am Clock Point erscheint die Kachel Teamleiter: Symbol eines gesperrten Kollegen freigeben, Ausführende hinzufügen, Fotos von Teammitgliedern aufnehmen und ein neues oder vorübergehendes Gerät zulassen. Löschen kann er nur Ausführende, die er selbst angelegt hat."
                 }
             ]
         },

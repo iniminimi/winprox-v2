@@ -210,7 +210,7 @@
             "slug": "user_roles",
             "type": "roles",
             "title": "Hoe werken de verschillende gebruikers?",
-            "summary": "Beheerder: volledige controle en abonnement. Medewerker: dagelijkse opvolging. Uitvoerder: veldwerk via Clock Point en QR zonder login. Teamleader (optioneel): beheert iconen en toestellen op Clock Point.",
+            "summary": "Beheerder: volledige controle en abonnement. Medewerker: dagelijkse opvolging. Uitvoerder: veldwerk via Clock Point en QR zonder login. Teamleader (optioneel): beheert iconen, toestellen en uitvoerders (ook foto's) op Clock Point.",
             "roles": [
                 {
                     "title": "Beheerder",
@@ -226,7 +226,7 @@
                 },
                 {
                     "title": "Teamleader",
-                    "text": "Optionele vlag op een uitvoerder (Personen → Teams → Bewerken). Op Clock Point verschijnt de tegel Teamleader: icoon van een geblokkeerde collega vrijgeven, uitvoerders toevoegen en een nieuw of tijdelijk toestel toestaan. Verwijderen kan alleen bij uitvoerders die hij zelf heeft aangemaakt."
+                    "text": "Optionele vlag op een uitvoerder (Personen → Teams → Bewerken). Op Clock Point verschijnt de tegel Teamleader: icoon van een geblokkeerde collega vrijgeven, uitvoerders toevoegen, foto's van teamleden nemen en een nieuw of tijdelijk toestel toestaan. Verwijderen kan alleen bij uitvoerders die hij zelf heeft aangemaakt."
                 }
             ]
         },

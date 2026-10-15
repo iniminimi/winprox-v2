@@ -206,7 +206,7 @@
             "slug": "user_roles",
             "type": "roles",
             "title": "Come funzionano i diversi utenti?",
-            "summary": "Amministratore: controllo completo e abbonamento. Collaboratore: follow-up quotidiano. Esecutore: lavoro sul campo via Clock Point e QR senza login. Caposquadra (opzionale): gestisce icone e dispositivi sul Clock Point.",
+            "summary": "Amministratore: controllo completo e abbonamento. Collaboratore: follow-up quotidiano. Esecutore: lavoro sul campo via Clock Point e QR senza login. Caposquadra (opzionale): gestisce icone, dispositivi ed esecutori (foto incluse) sul Clock Point.",
             "roles": [
                 {
                     "title": "Amministratore",
@@ -222,7 +222,7 @@
                 },
                 {
                     "title": "Caposquadra",
-                    "text": "Contrassegno opzionale su un esecutore (Persone → Team → Modifica). Sul Clock Point compare la scheda Caposquadra: sbloccare l'icona di un collega bloccato, aggiungere esecutori e consentire un telefono nuovo o temporaneo. Può eliminare solo gli esecutori creati da lui."
+                    "text": "Contrassegno opzionale su un esecutore (Persone → Team → Modifica). Sul Clock Point compare la scheda Caposquadra: sbloccare l'icona di un collega bloccato, aggiungere esecutori, scattare foto ai membri del team e consentire un telefono nuovo o temporaneo. Può eliminare solo gli esecutori creati da lui."
                 }
             ]
         },

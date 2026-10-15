@@ -69,7 +69,7 @@
         "workers": "Manuel exécutants",
         "workers_desc": "Clock Point (autocollant ou écran de pointage) et QR unité sur le terrain — connexion, pointage, contrôle d'unité, tâches, photos et travail hors réseau.",
         "teamleaders": "Manuel chefs d'équipe",
-        "teamleaders_desc": "Libérer des icônes, gérer les exécutants et coordonner les tâches via le portail Clock Point.",
+        "teamleaders_desc": "Libérer des icônes, gérer les exécutants (y compris prendre des photos) et coordonner les tâches via le portail Clock Point.",
         "features_overview": "Aperçu des fonctionnalités",
         "features_overview_desc": "Fonctions principales en un coup d’œil (public + imprimable).",
         "technical_sheet": "Fiche technique",

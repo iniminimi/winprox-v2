@@ -210,7 +210,7 @@
             "slug": "user_roles",
             "type": "roles",
             "title": "How do the different users work?",
-            "summary": "Administrator: full control and subscription. Staff member: daily follow-up. Field worker: field work via Clock Point and QR without login. Team leader (optional): manages icons and devices on Clock Point.",
+            "summary": "Administrator: full control and subscription. Staff member: daily follow-up. Field worker: field work via Clock Point and QR without login. Team leader (optional): manages icons, devices and workers (including photos) on Clock Point.",
             "roles": [
                 {
                     "title": "Administrator",
@@ -226,7 +226,7 @@
                 },
                 {
                     "title": "Team leader",
-                    "text": "Optional flag on a worker (People → Teams → Edit). On Clock Point the Team leader tile appears: release a blocked colleague's icon, add workers and allow a new or temporary phone. They can only delete workers they created themselves."
+                    "text": "Optional flag on a worker (People → Teams → Edit). On Clock Point the Team leader tile appears: release a blocked colleague's icon, add workers, take photos of team members and allow a new or temporary phone. They can only delete workers they created themselves."
                 }
             ]
         },

@@ -629,7 +629,7 @@
                 },
                 {
                     "label": "Caposquadra",
-                    "text": "Assegna o togli il ruolo da **Modifica**. I capisquadra possono anche sbloccare le icone dei colleghi nel portale Clock Point."
+                    "text": "Assegna o togli il ruolo da **Modifica**. I capisquadra possono anche sbloccare le icone dei colleghi, gestire i lavoratori e scattare foto nel portale Clock Point."
                 },
                 {
                     "label": "Disattiva team",
@@ -989,7 +989,7 @@
                 },
                 {
                     "label": "Pannelli extra",
-                    "text": "Dopo l'accesso vede sezioni extra: rilascia icona collega e gestisci lavoratori."
+                    "text": "Dopo l'accesso vede sezioni extra: rilascia icona collega e gestisci lavoratori (anche scattare foto)."
                 }
             ]
         },
@@ -2035,7 +2035,7 @@
                 },
                 {
                     "label": "Capo squadra",
-                    "text": "Un operatore con il flag capo squadra può liberare nel portale icone e dispositivi dei colleghi."
+                    "text": "Un operatore con il flag capo squadra può liberare nel portale icone e dispositivi dei colleghi, gestire i lavoratori e scattare foto."
                 }
             ]
         },

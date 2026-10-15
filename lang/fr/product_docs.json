@@ -379,7 +379,7 @@
         "items": [
           "**Admin**: everything (users, company, subscription, teams).",
           "**Employee**: operational (issues, tasks, locations) — no account/billing management.",
-          "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons and a bound phone.",
+          "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons and a bound phone, manage workers and take photos.",
           "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
           "Rapports opérationnels : CSV ou impression filtrés sur signalements, tâches, Time, réservations, contrôles unit, mesures unit et ESG — pour qui peut voir ces listes. L'impression suit la mise en page de la liste quand c'est pertinent ; Time = feuille d'heures. Distinct de l'export compte RGPD (Paramètres → Confidentialité et export).",
           "Menu Travail : colonnes tenant work_menu_*_enabled ; barre latérale et routes back-office via TenantWorkMenuAccess ; modèle de départ applique les defaults via UpdateTenantWorkMenuAction (supprimer le modèle ne rétablit pas le menu)."

@@ -629,7 +629,7 @@
                 },
                 {
                     "label": "Team leader",
-                    "text": "Assign or remove team leader via **Edit**. Team leaders can also release icons of teammates in the Clock Point portal."
+                    "text": "Assign or remove team leader via **Edit**. Team leaders can also release icons of teammates, manage workers and take photos in the Clock Point portal."
                 },
                 {
                     "label": "Deactivate team",
@@ -989,7 +989,7 @@
                 },
                 {
                     "label": "Extra panels",
-                    "text": "After signing in you see extra sections: release colleague icon and manage workers."
+                    "text": "After signing in you see extra sections: release colleague icon and manage workers (including taking photos)."
                 }
             ]
         },
@@ -2035,7 +2035,7 @@
                 },
                 {
                     "label": "Team leader",
-                    "text": "A worker with the team leader flag can release icons and devices of teammates in the portal."
+                    "text": "A worker with the team leader flag can release icons and devices of teammates, manage workers and take photos in the portal."
                 }
             ]
         },

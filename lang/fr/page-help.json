@@ -637,7 +637,7 @@
                 },
                 {
                     "label": "Chef d’équipe",
-                    "text": "Attribuez ou retirez le rôle via **Modifier**. Les chefs d’équipe peuvent aussi libérer les icônes de leurs coéquipiers dans le portail Clock Point."
+                    "text": "Attribuez ou retirez le rôle via **Modifier**. Les chefs d’équipe peuvent aussi libérer les icônes de leurs coéquipiers, gérer les exécutants et prendre des photos dans le portail Clock Point."
                 },
                 {
                     "label": "Désactiver l'équipe",
@@ -997,7 +997,7 @@
                 },
                 {
                     "label": "Panneaux supplémentaires",
-                    "text": "Après connexion, vous voyez des sections supplémentaires : libérer l'icône d'un collègue et gérer les exécutants."
+                    "text": "Après connexion, vous voyez des sections supplémentaires : libérer l'icône d'un collègue et gérer les exécutants (y compris prendre des photos)."
                 }
             ]
         },
@@ -2043,7 +2043,7 @@
                 },
                 {
                     "label": "Chef d'équipe",
-                    "text": "Un exécutant avec le statut chef d'équipe peut libérer dans le portail les icônes et appareils de ses collègues."
+                    "text": "Un exécutant avec le statut chef d'équipe peut libérer dans le portail les icônes et appareils de ses collègues, gérer les exécutants et prendre des photos."
                 }
             ]
         },
