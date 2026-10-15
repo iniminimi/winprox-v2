@@ -81,12 +81,23 @@
         </header>
     </div>
 
-    <section class="wp-welcome-section wp-welcome-section--alt wp-welcome-section--center" aria-label="{{ __('welcome.employees.title') }}">
-        <div class="wp-welcome-section-inner">
-            <div class="wp-stack">
-                <h2 class="wp-welcome-h3">{{ __('welcome.employees.title') }}</h2>
-                <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __('welcome.employees.body') }}</p>
-                <p class="wp-muted">{{ __('welcome.employees.note') }}</p>
+    <section class="wp-welcome-section wp-welcome-section--alt wp-welcome-employees" aria-label="{{ __('welcome.employees.title') }}">
+        <div class="wp-welcome-main">
+            <div class="wp-welcome-split">
+                <figure class="wp-landing-visual wp-landing-visual--compact wp-welcome-screenshot wp-welcome-screenshot--phone">
+                    <img
+                        src="{{ asset('images/welcome/screenshot_worker.jpg') }}"
+                        alt="{{ __('welcome.employees.image_alt') }}"
+                        class="wp-welcome-screenshot__img"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </figure>
+                <article class="wp-card wp-card-pad wp-stack">
+                    <h2 class="wp-welcome-h3">{{ __('welcome.employees.title') }}</h2>
+                    <p class="wp-text-body">{{ __('welcome.employees.body') }}</p>
+                    <p class="wp-muted">{{ __('welcome.employees.note') }}</p>
+                </article>
             </div>
         </div>
     </section>

@@ -40,7 +40,8 @@
     "employees": {
         "title": "More convenience for your staff. Correct hours for your social secretariat.",
         "body": "At home, your staff check their roster and registered hours and easily request leave or time off in lieu on their phone. At work, they use WinProx to clock in and to access the available features, such as issues, tasks and inspection rounds.",
-        "note": "The available features depend on your WinProx plan."
+        "note": "The available features depend on your WinProx plan.",
+        "image_alt": "Worker checking roster and hours on a phone in WinProx."
     },
     "video": {
         "title": "WinProx in action",

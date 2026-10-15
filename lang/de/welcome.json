@@ -40,7 +40,8 @@
     "employees": {
         "title": "Mehr Komfort für Ihre Mitarbeitenden. Korrekte Stunden für Ihr Sozialsekretariat.",
         "body": "Ihre Mitarbeitenden sehen zu Hause ihren Dienstplan und ihre erfassten Stunden ein und beantragen bequem Urlaub oder Zeitausgleich über ihr Telefon. Bei der Arbeit nutzen sie WinProx zum Stempeln und für den Zugriff auf die verfügbaren Funktionen wie Meldungen, Aufgaben und Inspektionsrunden.",
-        "note": "Die verfügbaren Funktionen hängen von Ihrer WinProx-Formel ab."
+        "note": "Die verfügbaren Funktionen hängen von Ihrer WinProx-Formel ab.",
+        "image_alt": "Mitarbeitender sieht Dienstplan und Stunden auf dem Telefon in WinProx."
     },
     "video": {
         "title": "WinProx in Aktion",
