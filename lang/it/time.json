@@ -549,7 +549,8 @@
             "hint": "Inquadra l’adesivo o lo schermo orologio con la fotocamera.",
             "error_unsupported": "Questo browser non può aprire la fotocamera. Scansiona con l’app fotocamera.",
             "error_denied": "Nessun accesso alla fotocamera. Consenti la fotocamera o scansiona con l’app fotocamera.",
-            "error_invalid": "Non è un QR Clock Point. Scansiona l’adesivo o lo schermo orologio."
+            "error_invalid": "Non è un QR Clock Point. Scansiona l’adesivo o lo schermo orologio.",
+            "slow_hint": "La scansione non funziona? Apri l'app fotocamera e inquadra il codice QR."
         }
     },
     "ciao": {

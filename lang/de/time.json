@@ -549,7 +549,8 @@
             "hint": "Richten Sie die Kamera auf den Aufkleber oder den Uhrenbildschirm.",
             "error_unsupported": "Dieser Browser kann die Kamera nicht öffnen. Scannen Sie mit der Kamera-App.",
             "error_denied": "Kein Kamerazugriff. Erlauben Sie die Kamera oder scannen Sie mit der Kamera-App.",
-            "error_invalid": "Das ist kein Clock-Point-QR. Scannen Sie den Aufkleber oder den Uhrenbildschirm."
+            "error_invalid": "Das ist kein Clock-Point-QR. Scannen Sie den Aufkleber oder den Uhrenbildschirm.",
+            "slow_hint": "Funktioniert das Scannen nicht? Oeffnen Sie die Kamera-App und scannen Sie den QR-Code damit."
         }
     },
     "ciao": {

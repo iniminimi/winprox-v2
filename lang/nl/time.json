@@ -549,7 +549,8 @@
             "hint": "Richt de camera op de sticker of het klokscherm.",
             "error_unsupported": "Deze browser kan de camera niet openen. Scan met je camera-app.",
             "error_denied": "Geen camera-toegang. Sta de camera toe of scan met je camera-app.",
-            "error_invalid": "Dit is geen Clock Point-QR. Scan de sticker of het klokscherm."
+            "error_invalid": "Dit is geen Clock Point-QR. Scan de sticker of het klokscherm.",
+            "slow_hint": "Lukt het scannen niet? Open je camera-app en scan daarmee de QR-code."
         }
     },
     "ciao": {

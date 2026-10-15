@@ -66,6 +66,7 @@
                         unsupported: @js(__('time.portal.scan.error_unsupported')),
                         denied: @js(__('time.portal.scan.error_denied')),
                         invalid: @js(__('time.portal.scan.error_invalid')),
+                        slow: @js(__('time.portal.scan.slow_hint')),
                     },
                 })" wire:ignore>
                 <button type="button" class="btn btn--primary btn--sm" @click="openScanner()" data-manual-capture-trigger="portal-scan-qr">
@@ -80,6 +81,7 @@
                                 <span class="wp-scan-frame" aria-hidden="true"></span>
                             </div>
                             <p class="wp-scan-hint">{{ __('time.portal.scan.hint') }}</p>
+                            <p class="wp-scan-hint" x-show="slowHint" x-text="i18n.slow" x-cloak></p>
                             <p class="wp-scan-error" x-show="errorKey !== null" x-text="errorText" x-cloak></p>
                             <button type="button" class="btn btn--ghost btn--sm" @click="closeScanner()">{{ __('common.cancel') }}</button>
                         </div>

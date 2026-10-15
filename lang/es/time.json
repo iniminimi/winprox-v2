@@ -549,7 +549,8 @@
             "hint": "Apunta la cámara a la pegatina o a la pantalla del reloj.",
             "error_unsupported": "Este navegador no puede abrir la cámara. Escanea con la app de cámara.",
             "error_denied": "Sin acceso a la cámara. Permite la cámara o escanea con la app de cámara.",
-            "error_invalid": "No es un QR de Clock Point. Escanea la pegatina o la pantalla del reloj."
+            "error_invalid": "No es un QR de Clock Point. Escanea la pegatina o la pantalla del reloj.",
+            "slow_hint": "No funciona el escaneo? Abre la app de camara y escanea el codigo QR con ella."
         }
     },
     "ciao": {

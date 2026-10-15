@@ -549,7 +549,8 @@
             "hint": "Pointez la caméra vers l’autocollant ou l’écran de pointage.",
             "error_unsupported": "Ce navigateur ne peut pas ouvrir la caméra. Scannez avec l’appareil photo.",
             "error_denied": "Pas d’accès à la caméra. Autorisez la caméra ou scannez avec l’appareil photo.",
-            "error_invalid": "Ce n’est pas un QR Clock Point. Scannez l’autocollant ou l’écran de pointage."
+            "error_invalid": "Ce n’est pas un QR Clock Point. Scannez l’autocollant ou l’écran de pointage.",
+            "slow_hint": "Le scan ne fonctionne pas ? Ouvrez votre appareil photo et scannez le code QR avec."
         }
     },
     "ciao": {

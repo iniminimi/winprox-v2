@@ -23,12 +23,16 @@ function registerAlpineComponent() {
         i18n: config.i18n ?? {},
         scannerOpen: false,
         errorKey: null,
+        slowHint: false,
         _stream: null,
         _frame: null,
         _jsqr: null,
+        _detector: null,
+        _detectBusy: false,
         _canvas: null,
         _ctx: null,
         _frameNo: 0,
+        _openAt: 0,
 
         get supported() {
             return !!(navigator.mediaDevices && typeof navigator.mediaDevices.getUserMedia === 'function');
@@ -40,6 +44,8 @@ function registerAlpineComponent() {
 
         openScanner() {
             this.errorKey = null;
+            this.slowHint = false;
+            this._openAt = Date.now();
             this.scannerOpen = true;
             if (!this.supported) {
                 this.errorKey = 'unsupported';
@@ -88,13 +94,28 @@ function registerAlpineComponent() {
                 await video.play();
             } catch (e) {}
 
+            // BarcodeDetector gebruikt op Android de ML-decoder van het OS —
+            // die leest scherm-QR's (dot-rendering, inversie, moiré) waar pure
+            // JS-decoders zoals jsQR op vastlopen. Ontbreekt hij (o.a. iOS),
+            // dan blijft jsQR het decode-pad.
+            try {
+                if (typeof window.BarcodeDetector === 'function') {
+                    const formats = await window.BarcodeDetector.getSupportedFormats();
+                    if (Array.isArray(formats) && formats.includes('qr_code')) {
+                        this._detector = new window.BarcodeDetector({ formats: ['qr_code'] });
+                    }
+                }
+            } catch (e) {}
+
             try {
                 const mod = await import('jsqr');
                 this._jsqr = mod.default ?? mod;
             } catch (e) {
-                this.errorKey = 'unsupported';
-                this.stopStream();
-                return;
+                if (!this._detector) {
+                    this.errorKey = 'unsupported';
+                    this.stopStream();
+                    return;
+                }
             }
 
             this._canvas = document.createElement('canvas');
@@ -107,7 +128,22 @@ function registerAlpineComponent() {
                 return;
             }
             this._frameNo += 1;
-            if (video.readyState >= 2 && video.videoWidth > 0 && this._frameNo % DECODE_EVERY_NTH_FRAME === 0) {
+            if (!this.slowHint && Date.now() - this._openAt > 12000) {
+                this.slowHint = true;
+            }
+            if (this._detector && !this._detectBusy && video.readyState >= 2) {
+                this._detectBusy = true;
+                this._detector.detect(video).then((hits) => {
+                    this._detectBusy = false;
+                    const hit = Array.isArray(hits) ? hits.find((h) => h && h.rawValue) : null;
+                    if (hit && this.scannerOpen) {
+                        this.handleDecoded(hit.rawValue);
+                    }
+                }).catch(() => {
+                    this._detectBusy = false;
+                });
+            }
+            if (this._jsqr && video.readyState >= 2 && video.videoWidth > 0 && this._frameNo % DECODE_EVERY_NTH_FRAME === 0) {
                 const pass = Math.floor(this._frameNo / DECODE_EVERY_NTH_FRAME) % DECODE_WIDTHS.length;
                 const scale = Math.min(1, DECODE_WIDTHS[pass] / video.videoWidth);
                 this._canvas.width = Math.round(video.videoWidth * scale);
@@ -151,6 +187,7 @@ function registerAlpineComponent() {
         closeScanner() {
             this.scannerOpen = false;
             this.errorKey = null;
+            this.slowHint = false;
             if (this._frame !== null) {
                 window.cancelAnimationFrame(this._frame);
                 this._frame = null;

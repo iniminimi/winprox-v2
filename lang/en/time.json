@@ -549,7 +549,8 @@
             "hint": "Point the camera at the sticker or the clock screen.",
             "error_unsupported": "This browser cannot open the camera. Scan with your camera app.",
             "error_denied": "No camera access. Allow the camera or scan with your camera app.",
-            "error_invalid": "This is not a Clock Point QR. Scan the sticker or the clock screen."
+            "error_invalid": "This is not a Clock Point QR. Scan the sticker or the clock screen.",
+            "slow_hint": "Scanning not working? Open your camera app and scan the QR code with it."
         }
     },
     "ciao": {
