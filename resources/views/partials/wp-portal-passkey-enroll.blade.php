@@ -1,4 +1,4 @@
-<div class="wp-card wp-card-pad wp-stack"
+<div class="wp-card wp-card-pad wp-stack wp-card--passkey"
      x-data="wpPortalPasskey({
          urls: {
              registerOptions: @js(route('public.time-portal.passkey.register-options', $passkeyTenantId)),

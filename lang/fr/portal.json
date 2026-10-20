@@ -372,10 +372,9 @@
         "report_saved": "Signalement enregistré."
     },
     "passkey": {
-        "sign_in": "Se connecter avec l'empreinte ou le visage",
-        "or_pin": "ou confirmez avec votre PIN",
-        "or_icon": "ou choisissez votre icône",
-        "or_fallback": "ou utilisez votre connexion habituelle",
+        "sign_in": "Se connecter avec la biométrie",
+        "verify_subtitle": "Confirmez que c’est bien vous,",
+        "or": "ou",
         "enroll_title": "Connexion plus rapide ?",
         "enroll_hint": "Sécurisez cet appareil avec votre empreinte, votre visage ou le code de l'appareil. Votre PIN ou icône reste utilisable.",
         "enroll_cta": "Activer",

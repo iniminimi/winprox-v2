@@ -372,10 +372,9 @@
         "report_saved": "Segnalazione salvata."
     },
     "passkey": {
-        "sign_in": "Accedi con impronta o volto",
-        "or_pin": "oppure conferma con il PIN",
-        "or_icon": "oppure scegli la tua icona",
-        "or_fallback": "oppure usa l'accesso abituale",
+        "sign_in": "Accedi con la biometria",
+        "verify_subtitle": "Conferma che sei tu,",
+        "or": "o",
         "enroll_title": "Accesso più veloce?",
         "enroll_hint": "Proteggi questo dispositivo con impronta, volto o codice del dispositivo. Il PIN o l'icona restano attivi.",
         "enroll_cta": "Attiva",

@@ -372,10 +372,9 @@
         "report_saved": "Melding bewaard."
     },
     "passkey": {
-        "sign_in": "Aanmelden met vingerafdruk of gezicht",
-        "or_pin": "of bevestig met je PIN",
-        "or_icon": "of kies je icoon",
-        "or_fallback": "of gebruik je gewone aanmelding",
+        "sign_in": "Aanmelden met biometrie",
+        "verify_subtitle": "Bevestig dat jij het bent,",
+        "or": "of",
         "enroll_title": "Sneller aanmelden?",
         "enroll_hint": "Beveilig dit toestel met je vingerafdruk, gezicht of toestelcode. Je PIN of icoon blijft werken.",
         "enroll_cta": "Inschakelen",

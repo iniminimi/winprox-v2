@@ -372,10 +372,9 @@
         "report_saved": "Aviso guardado."
     },
     "passkey": {
-        "sign_in": "Iniciar sesión con huella o cara",
-        "or_pin": "o confirma con tu PIN",
-        "or_icon": "o elige tu icono",
-        "or_fallback": "o usa tu inicio de sesión habitual",
+        "sign_in": "Iniciar sesión con biometría",
+        "verify_subtitle": "Confirma que eres tú,",
+        "or": "o",
         "enroll_title": "¿Iniciar sesión más rápido?",
         "enroll_hint": "Protege este dispositivo con tu huella, cara o código del dispositivo. Tu PIN o icono sigue funcionando.",
         "enroll_cta": "Activar",

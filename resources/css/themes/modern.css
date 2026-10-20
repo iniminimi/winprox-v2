@@ -222,7 +222,7 @@
 }
 
 [data-theme='modern'] .btn--primary:not(.wp-theme-preview-btn) {
-    background: linear-gradient(135deg, var(--wp-accent) 0%, #10b981 55%, var(--wp-accent-strong) 100%);
+    background-color: var(--wp-accent);
     border-color: transparent;
 }
 

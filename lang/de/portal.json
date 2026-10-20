@@ -372,10 +372,9 @@
         "report_saved": "Meldung gespeichert."
     },
     "passkey": {
-        "sign_in": "Mit Fingerabdruck oder Gesicht anmelden",
-        "or_pin": "oder mit PIN bestätigen",
-        "or_icon": "oder wählen Sie Ihr Symbol",
-        "or_fallback": "oder nutzen Sie Ihre normale Anmeldung",
+        "sign_in": "Mit Biometrie anmelden",
+        "verify_subtitle": "Bestätige, dass du es bist,",
+        "or": "oder",
         "enroll_title": "Schneller anmelden?",
         "enroll_hint": "Sichern Sie dieses Gerät mit Fingerabdruck, Gesicht oder Gerätecode. Ihre PIN oder Ihr Symbol bleibt nutzbar.",
         "enroll_cta": "Aktivieren",

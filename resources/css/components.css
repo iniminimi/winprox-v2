@@ -1574,6 +1574,28 @@ button.wp-config-overview-kpi--filter.is-active .wp-config-overview-kpi__value {
     height: 1.375rem;
 }
 
+.wp-card--passkey .wp-section-title,
+.wp-card--passkey > .wp-muted {
+    text-align: center;
+}
+
+.wp-or-divider {
+    display: flex;
+    justify-content: center;
+}
+
+.wp-or-divider > span {
+    padding: 0.25rem 0.875rem;
+    border: 1px solid var(--wp-border);
+    border-radius: 0.5rem;
+    background-color: var(--wp-surface);
+    color: var(--wp-text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
 .wp-icon-frame:has(.wp-icon--time) {
     width: 5rem;
     height: 5rem;

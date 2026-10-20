@@ -170,14 +170,34 @@
                 </form>
             </div>
         @elseif ($showPinVerify)
-            <div class="wp-card wp-card-pad wp-stack">
+            <div class="wp-card wp-card-pad wp-stack @if ($deviceWorkerHasPasskey ?? false) wp-card--passkey @endif"
+                @if ($deviceWorkerHasPasskey ?? false)
+                    x-data="wpPortalPasskey({
+                        urls: {
+                            assertOptions: @js(route('public.time-portal.passkey.assert-options', $passkeyTenantId)),
+                            assert: @js(route('public.time-portal.passkey.assert', $passkeyTenantId)),
+                        },
+                        i18n: {
+                            error_cancelled: @js(__('portal.passkey.error_cancelled')),
+                            error_failed: @js(__('portal.passkey.error_failed')),
+                            error_device: @js(__('portal.passkey.error_device')),
+                        },
+                    })"
+                @endif
+            >
+                @if ($deviceWorkerHasPasskey ?? false)
+                    <div class="wp-passkey-badge" :class="{ 'is-busy': busy }" x-show="supported" x-cloak aria-hidden="true">
+                        <x-wp-icon name="fingerprint" />
+                    </div>
+                @endif
                 <h2 class="wp-section-title">{{ __('portal.worker.title') }}</h2>
                 <p class="wp-muted">
-                    {{ __('portal.worker.pin_verify_hint') }}
+                    {{ ($deviceWorkerHasPasskey ?? false) ? __('portal.passkey.verify_subtitle') : __('portal.worker.pin_verify_hint') }}
                     @if ($deviceWorker) <strong>{{ $deviceWorker->displayName() }}</strong>@endif
                 </p>
                 @if ($deviceWorkerHasPasskey ?? false)
-                    @include('partials.wp-portal-passkey-verify', ['fallbackHint' => __('portal.passkey.or_pin')])
+                    @include('partials.wp-portal-passkey-verify')
+                    <p class="wp-or-divider" x-show="supported" x-cloak><span>{{ __('portal.passkey.or') }}</span></p>
                 @endif
                 <form wire:submit="signInWithPin" class="wp-stack">
                     <div class="wp-field">
@@ -186,7 +206,7 @@
                         @error('pin_code') <p class="wp-error">{{ $message }}</p> @enderror
                     </div>
                     <p class="wp-hint">{{ __('portal.worker.attempts_left', ['count' => $remainingAttempts]) }}</p>
-                    <button type="submit" class="btn btn--primary btn--block">{{ __('portal.worker.confirm_pin') }}</button>
+                    <button type="submit" class="btn {{ ($deviceWorkerHasPasskey ?? false) ? 'btn--ghost' : 'btn--primary' }} btn--block">{{ __('portal.worker.confirm_pin') }}</button>
                 </form>
                 @if ($ownDeviceReleaseOffered ?? false)
                     <p class="wp-muted">{{ __('portal.teamleader.device_self_hint') }}</p>
@@ -196,14 +216,34 @@
                 @endif
             </div>
         @elseif ($showVerify)
-            <div class="wp-card wp-card-pad wp-stack">
+            <div class="wp-card wp-card-pad wp-stack @if ($deviceWorkerHasPasskey ?? false) wp-card--passkey @endif"
+                @if ($deviceWorkerHasPasskey ?? false)
+                    x-data="wpPortalPasskey({
+                        urls: {
+                            assertOptions: @js(route('public.time-portal.passkey.assert-options', $passkeyTenantId)),
+                            assert: @js(route('public.time-portal.passkey.assert', $passkeyTenantId)),
+                        },
+                        i18n: {
+                            error_cancelled: @js(__('portal.passkey.error_cancelled')),
+                            error_failed: @js(__('portal.passkey.error_failed')),
+                            error_device: @js(__('portal.passkey.error_device')),
+                        },
+                    })"
+                @endif
+            >
+                @if ($deviceWorkerHasPasskey ?? false)
+                    <div class="wp-passkey-badge" :class="{ 'is-busy': busy }" x-show="supported" x-cloak aria-hidden="true">
+                        <x-wp-icon name="fingerprint" />
+                    </div>
+                @endif
                 <h2 class="wp-section-title">{{ __('portal.worker.title') }}</h2>
                 <p class="wp-muted">
-                    {{ __('portal.worker.verify_hint') }}
+                    {{ ($deviceWorkerHasPasskey ?? false) ? __('portal.passkey.verify_subtitle') : __('portal.worker.verify_hint') }}
                     @if ($deviceWorker) <strong>{{ $deviceWorker->displayName() }}</strong>@endif
                 </p>
                 @if ($deviceWorkerHasPasskey ?? false)
-                    @include('partials.wp-portal-passkey-verify', ['fallbackHint' => __('portal.passkey.or_icon')])
+                    @include('partials.wp-portal-passkey-verify')
+                    <p class="wp-or-divider" x-show="supported" x-cloak><span>{{ __('portal.passkey.or') }}</span></p>
                 @endif
                 <div class="wp-icon-grid">
                     @foreach (\App\Support\Portal\WorkerIcon::SLUGS as $slug)
@@ -219,7 +259,7 @@
                 </div>
                 @error('sign_in_icon_slug') <p class="wp-error">{{ $message }}</p> @enderror
                 <p class="wp-hint">{{ __('portal.worker.attempts_left', ['count' => $remainingAttempts]) }}</p>
-                <button type="button" class="btn btn--primary btn--block" wire:click="signInWithIcon" @disabled($sign_in_icon_slug === '')>
+                <button type="button" class="btn {{ ($deviceWorkerHasPasskey ?? false) ? 'btn--ghost' : 'btn--primary' }} btn--block" wire:click="signInWithIcon" @disabled($sign_in_icon_slug === '')>
                     {{ __('portal.worker.confirm_icon') }}
                 </button>
                 @if ($ownDeviceReleaseOffered ?? false)

@@ -372,10 +372,9 @@
         "report_saved": "Report saved."
     },
     "passkey": {
-        "sign_in": "Sign in with fingerprint or face",
-        "or_pin": "or confirm with your PIN",
-        "or_icon": "or pick your icon",
-        "or_fallback": "or use your regular sign-in",
+        "sign_in": "Sign in with biometrics",
+        "verify_subtitle": "Confirm it is you,",
+        "or": "or",
         "enroll_title": "Faster sign-in?",
         "enroll_hint": "Secure this device with your fingerprint, face or device code. Your PIN or icon keeps working.",
         "enroll_cta": "Enable",
