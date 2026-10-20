@@ -1367,29 +1367,27 @@
     hyphenate-limit-chars: 6 3 3;
 }
 
-.wp-portal-now__actions {
+.wp-portal-now__head {
     display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.45rem;
-    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
 }
 
 .wp-portal-now__punch,
 .wp-portal-now__punch > div {
     display: flex;
-    width: 100%;
+    flex: 0 0 auto;
 }
 
-.wp-portal-now .btn--sm {
-    flex: 1 1 auto;
-    width: 100%;
-    min-width: 0;
+.wp-portal .wp-portal-now__head .btn--sm,
+.wp-portal .wp-portal-now__more-actions .btn--sm {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: max-content;
     height: auto;
     min-height: 2.75rem;
-    justify-content: center;
     padding-inline: 0.85rem;
-    text-align: center;
 }
 
 .wp-portal-now__name {
@@ -1415,7 +1413,8 @@
 }
 
 .wp-portal-now__disclosure-toggle {
-    width: 100%;
+    flex: 1 1 auto;
+    width: auto;
     min-width: 0;
     min-height: 2.75rem;
     align-items: center;
@@ -1462,18 +1461,6 @@
     background: color-mix(in srgb, var(--wp-portal-now-fg) 10%, transparent);
     color: var(--wp-portal-now-fg);
     border-color: color-mix(in srgb, var(--wp-portal-now-fg) 22%, transparent);
-}
-
-.wp-portal-now__sign-out {
-    align-self: flex-start;
-    min-height: 2.75rem;
-    padding: 0;
-    border: 0;
-    background: none;
-    color: var(--wp-portal-now-muted);
-    font-size: 0.875rem;
-    text-decoration: underline;
-    cursor: pointer;
 }
 
 .wp-today-route > .wp-section-title {

@@ -1064,7 +1064,7 @@
                 },
                 {
                     "label": "Open tasks",
-                    "text": "After name and icon you see the clock card at the top with your status (not clocked in, clocked in, on break, another site, or leave). The place sits underneath, and the main action spans the full width. Start break sits under that action while you are clocked in. Sign out sits behind the arrow. Open tasks sit below, with a count; extra tasks via More tasks. With Time + GPS work visits you start or complete team tasks on Clock Point while an open work visit is on that customer location (optional note and photos). An inspection round shows description, priority, status and the next stop. The Unit check button appears only after Start work at that location; the full check (OK / Not OK / skip) opens after that."
+                    "text": "After name and icon you see the clock card at the top with your status (not clocked in, clocked in, on break, another site, or leave). The place sits underneath, and the main action sits next to your name. Start break and Sign out are buttons behind the arrow. Open tasks sit below, with a count; extra tasks via More tasks. With Time + GPS work visits you start or complete team tasks on Clock Point while an open work visit is on that customer location (optional note and photos). An inspection round shows description, priority, status and the next stop. The Unit check button appears only after Start work at that location; the full check (OK / Not OK / skip) opens after that."
                 },
                 {
                     "label": "Clock in and out",

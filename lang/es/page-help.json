@@ -1064,7 +1064,7 @@
                 },
                 {
                     "label": "Tareas abiertas",
-                    "text": "Tras nombre e icono ves arriba la tarjeta de fichaje con tu estado (sin fichar, fichado, pausa, otra sede o vacaciones). El lugar va debajo y la acción principal a todo el ancho. Iniciar pausa va bajo esa acción mientras estás fichado. Cerrar sesión está tras la flecha. Las tareas abiertas van debajo, con recuento; las demás vía Más tareas. Con Time + visitas GPS inicia o cierra tareas de equipo en Clock Point mientras hay una visita de trabajo abierta en esa sede de cliente (nota y fotos opcionales). Una ronda de inspección muestra descripción, prioridad, estado y la siguiente parada. El botón Unit check aparece solo después de Empezar el trabajo en esa sede; el control completo (OK / No OK / omitir) se abre después."
+                    "text": "Tras nombre e icono ves arriba la tarjeta de fichaje con tu estado (sin fichar, fichado, pausa, otra sede o vacaciones). El lugar va debajo y la acción principal junto a tu nombre. Iniciar pausa y Cerrar sesión son botones tras la flecha. Las tareas abiertas van debajo, con recuento; las demás vía Más tareas. Con Time + visitas GPS inicia o cierra tareas de equipo en Clock Point mientras hay una visita de trabajo abierta en esa sede de cliente (nota y fotos opcionales). Una ronda de inspección muestra descripción, prioridad, estado y la siguiente parada. El botón Unit check aparece solo después de Empezar el trabajo en esa sede; el control completo (OK / No OK / omitir) se abre después."
                 },
                 {
                     "label": "Fichar entrada y salida",

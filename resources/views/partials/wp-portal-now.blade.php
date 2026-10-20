@@ -80,7 +80,18 @@
     @if ($placeLine !== '')
         <p class="wp-portal-now__place">{{ $placeLine }}</p>
     @endif
-    <div class="wp-portal-now__actions">
+    <div class="wp-portal-now__head">
+        <button
+            type="button"
+            class="wp-settings-section-toggle wp-portal-now__disclosure-toggle"
+            @click="open = !open"
+            :aria-expanded="open"
+            aria-label="{{ __('time.portal.now.toggle') }}"
+            data-manual-capture-trigger="portal-now-toggle"
+        >
+            <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
+            <strong class="wp-portal-now__name">{{ $workerName }}</strong>
+        </button>
         @if (! $action['needsScan'])
             <button type="button" class="btn btn--primary btn--sm" wire:click="endBreak" data-manual-capture-trigger="portal-primary-action">{{ $action['label'] }}</button>
         @else
@@ -131,27 +142,7 @@
                 </div>
             </div>
         @endif
-        @if ($openShift !== null && ! $onBreak && ! $breakTaken && ! $openElsewhere)
-            @if ($requiredBreak > 0 && $clockedInLongEnough)
-                <p class="wp-portal-now__meta">{{ __('time.portal.clock.break_hint', ['min' => $requiredBreak]) }}</p>
-            @endif
-            <button type="button" class="btn btn--surface btn--sm" wire:click="startBreak">
-                {{ __('time.portal.clock.start_break') }}
-            </button>
-        @endif
     </div>
-
-    <button
-        type="button"
-        class="wp-settings-section-toggle wp-portal-now__disclosure-toggle"
-        @click="open = !open"
-        :aria-expanded="open"
-        aria-label="{{ __('time.portal.now.toggle') }}"
-        data-manual-capture-trigger="portal-now-toggle"
-    >
-        <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
-        <strong class="wp-portal-now__name">{{ $workerName }}</strong>
-    </button>
 
     <div class="wp-disclosure-panel wp-portal-now__more-panel" x-show="open" x-cloak>
         @if ($openShift !== null)
@@ -187,11 +178,21 @@
         @endif
 
         <div class="wp-portal-now__divider" role="separator"></div>
-        <button
-            type="button"
-            class="wp-portal-now__sign-out"
-            x-data='@json(['clocked' => $openShift !== null, 'message' => __('time.portal.clock.sign_out_while_clocked')])'
-            @click="window.wpFieldFlush?.(); if (!clocked || confirm(message)) { $wire.signOut() }"
-        >{{ __('portal.worker.sign_out') }}</button>
+        @if ($openShift !== null && ! $onBreak && ! $breakTaken && ! $openElsewhere && $requiredBreak > 0 && $clockedInLongEnough)
+            <p class="wp-portal-now__meta">{{ __('time.portal.clock.break_hint', ['min' => $requiredBreak]) }}</p>
+        @endif
+        <div class="wp-portal-now__more-actions">
+            @if ($openShift !== null && ! $onBreak && ! $breakTaken && ! $openElsewhere)
+                <button type="button" class="btn btn--surface btn--sm" wire:click="startBreak">
+                    {{ __('time.portal.clock.start_break') }}
+                </button>
+            @endif
+            <button
+                type="button"
+                class="btn btn--surface btn--sm"
+                x-data='@json(['clocked' => $openShift !== null, 'message' => __('time.portal.clock.sign_out_while_clocked')])'
+                @click="window.wpFieldFlush?.(); if (!clocked || confirm(message)) { $wire.signOut() }"
+            >{{ __('portal.worker.sign_out') }}</button>
+        </div>
     </div>
 </div>
