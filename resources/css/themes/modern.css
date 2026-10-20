@@ -274,9 +274,9 @@
 
 [data-theme='modern'] .wp-portal .wp-flash,
 [data-theme='modern'] .wp-portal .wp-flash--success {
-    background-color: color-mix(in srgb, var(--wp-accent) 32%, #ffffff 68%);
-    border-color: var(--wp-accent-border);
-    color: var(--wp-accent-text);
+    background-color: var(--wp-surface);
+    border-color: var(--wp-border);
+    color: var(--wp-text);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
 }

@@ -532,11 +532,10 @@ it('verbergt de kop Aanmelden na een geslaagde aanmelding', function () {
         ->call('signInWithIcon')
         ->assertDontSeeHtml('<h1 class="wp-page-title">'.e(__('time.portal.title')).'</h1>')
         ->assertDontSeeHtml('<p class="wp-muted">Magazijn</p>')
-        ->assertSee(__('time.portal.now.kicker'), false)
+        ->assertSee(__('time.portal.now.status_out'), false)
         ->assertSeeHtml('wp-disclosure-chevron')
         ->assertSee('Janssen Jan', false)
-        ->assertSee(__('time.portal.clock.signed_in_since', ['date' => now()->format('d-m-Y'), 'time' => now()->format('H:i')]), false)
-        ->assertSee(__('time.portal.clock.not_clocked_in'), false)
+        ->assertSee(__('time.portal.clock.in'), false)
         ->assertSee(__('portal.worker.sign_out'), false)
         ->assertDontSee(__('portal.worker.different_worker'), false);
 });

@@ -398,7 +398,6 @@
         "clock": {
             "not_clocked_in": "Nog niet ingeklokt",
             "signed_in_at": "Aangemeld op WinProx om :time",
-            "signed_in_since": "Aangemeld sinds :date - :time",
             "clocked_in_at_tenant": "Ingeklokt bij :tenant om :time",
             "absence_clock_in": "Je bent ingeklokt tijdens :kind",
             "no_break": "Nog geen pauze genomen",
@@ -409,6 +408,8 @@
             "break_hint": "Vergeet je pauze niet — anders wordt er bij lange diensten automatisch :min min pauze ingegeven.",
             "end_break": "Pauze stoppen",
             "open_elsewhere_hint": "Je bent al ingeklokt op een andere vestiging. Verplaats je aanwezigheid naar hier, of klok uit.",
+            "elsewhere_body": "Je bent ingeklokt bij een andere vestiging.",
+            "sign_out_while_clocked": "Je bent nog ingeklokt. Afmelden klokt je niet uit.",
             "transfer_here": "Verplaats naar hier",
             "started_at": "Gestart bij :place (zelfde dienst).",
             "working_at": "Aan het werk bij :place",
@@ -524,8 +525,10 @@
             "decision": "Beslissing"
         },
         "now": {
-            "kicker": "Welkom",
-            "kicker_in": "Welkom, je bent ingeklokt",
+            "status_out": "Niet ingeklokt",
+            "status_in": "Ingeklokt sinds :time",
+            "status_in_at": "Ingeklokt sinds :time · :place",
+            "status_elsewhere": "Ingeklokt bij een andere vestiging",
             "next_stop": "Volgende stop: :name",
             "here_done": "Werk hier is klaar.",
             "toggle": "Details"

@@ -80,7 +80,7 @@
         <div class="wp-portal-footer">
             <a
                 href="{{ $winproxSiteUrl }}"
-                class="btn btn--primary"
+                class="wp-portal-footer__link"
                 target="_blank"
                 rel="noopener noreferrer"
             >{{ __('portal.powered_by') }}</a>

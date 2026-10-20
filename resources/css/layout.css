@@ -1299,14 +1299,25 @@
     --wp-portal-now-muted: #a3cbb9;
 }
 
+.wp-portal-now--break {
+    --wp-portal-now-bg: var(--wp-warning-strong);
+    --wp-portal-now-fg: var(--wp-text-on-accent);
+    --wp-portal-now-muted: color-mix(in srgb, var(--wp-text-on-accent) 78%, transparent);
+}
+
 .wp-portal-now__status-icon {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    flex: none;
     color: #fbbf24;
 }
 
 .wp-portal-now--clocked .wp-portal-now__status-icon {
     color: #34d399;
+}
+
+.wp-portal-now--break .wp-portal-now__status-icon {
+    color: var(--wp-text-on-accent);
 }
 
 .wp-portal-now--absence {
@@ -1334,18 +1345,32 @@
 
 .wp-portal-now__kicker {
     margin: 0;
-    font-size: 0.75rem;
+    font-size: 0.9375rem;
     font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--wp-portal-now-muted);
+    line-height: 1.35;
+    color: var(--wp-portal-now-fg);
 }
 
 .wp-portal-now__head {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: 0.75rem;
+}
+
+.wp-portal-now__punch {
+    display: flex;
+    flex: 0 0 auto;
+}
+
+.wp-portal-now .btn--sm {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: max-content;
+    height: auto;
+    min-height: 2.75rem;
+    padding-inline: 0.85rem;
 }
 
 .wp-portal-now__name {
@@ -1404,14 +1429,6 @@
     padding: 0.35rem 0 0;
 }
 
-.wp-portal-now__sign-out-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem 0.75rem;
-}
-
 .wp-portal-now__more-actions {
     display: flex;
     flex-wrap: wrap;
@@ -1427,6 +1444,18 @@
     background: color-mix(in srgb, var(--wp-portal-now-fg) 10%, transparent);
     color: var(--wp-portal-now-fg);
     border-color: color-mix(in srgb, var(--wp-portal-now-fg) 22%, transparent);
+}
+
+.wp-portal-now__sign-out {
+    align-self: flex-start;
+    min-height: 2.75rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--wp-portal-now-muted);
+    font-size: 0.875rem;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .wp-today-route > .wp-section-title {
@@ -1558,6 +1587,16 @@
 .wp-portal-footer {
     text-align: center;
     padding: 2rem 1rem 1rem;
+}
+
+.wp-portal-footer__link {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--wp-radius);
+    background-color: var(--wp-surface);
+    color: var(--wp-text);
+    font-size: 0.8125rem;
+    text-decoration: none;
 }
 
 /* ---------------------------------------------------------------------------

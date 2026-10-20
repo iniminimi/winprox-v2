@@ -1185,6 +1185,9 @@ class TimePortal extends Component
             [$device, $token] = $this->clockDeviceContext($worker);
             $clockOut->handle($worker, $clockPoint, null, ClockSource::ClockPointQr, true, $device, $token);
             ClockPointScanGrant::consume((int) $clockPoint->id);
+            $this->portalFlash('time.portal.clock.clocked_out_at', [
+                'time' => now()->format('H:i'),
+            ]);
         } catch (InvalidArgumentException $e) {
             if ($this->flashClockDeviceError($e)) {
                 return;
@@ -2081,6 +2084,7 @@ class TimePortal extends Component
             'gpsOnClock' => $this->tenantRequestsClockGps(),
             'gpsVisits' => $gpsVisits,
             'canPunch' => $this->canPunchNow(),
+            'punchGrantSeconds' => ClockPointScanGrant::remainingSeconds((int) $this->clockPointId),
             'teamWorkers' => $teamWorkers,
             'manageWorkersMessage' => $this->manageWorkersMessage,
             'roster' => $roster,

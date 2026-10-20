@@ -1,7 +1,5 @@
 @php
     $workerName = trim(($verifiedWorker?->last_name ?? '').' '.($verifiedWorker?->first_name ?? ''));
-    $signedInDate = $signedInAt?->format('d-m-Y');
-    $signedInTime = $signedInAt?->format('H:i');
     $clockedInTime = $openShift?->clock_in_at?->format('H:i');
     $breakSince = $openShift?->openBreak?->started_at?->format('H:i');
     $presencePoint = $openShift?->currentClockPoint();
@@ -18,6 +16,9 @@
     $onBreak = $openShift?->openBreak !== null;
     $breakTaken = $openShift !== null && $openShift->breaks->isNotEmpty();
     $requiredBreak = (int) ($openShift?->team?->required_break_minutes ?? 0);
+    $breakReminderHours = (int) config('time.break_reminder_hours', 6);
+    $clockedInLongEnough = $openShift?->clock_in_at !== null
+        && $openShift->clock_in_at->lte(now()->subHours($breakReminderHours));
     $hasVisit = ($gpsVisits ?? false) && $openShift?->openVisit;
     $visitPlace = $hasVisit
         ? trim(($openShift->openVisit->location?->name ?? '').' · '.($openShift->openVisit->unit?->name ?? ''), ' ·')
@@ -25,23 +26,56 @@
     $nextStop = filled($onSiteGuidance['next'] ?? null) ? $onSiteGuidance['next'] : null;
     $hereDone = ($onSiteGuidance['remaining_here'] ?? true) === false && $nextStop !== null;
     $absenceClockInKind = filled($absenceClockInKind ?? null) ? (string) $absenceClockInKind : null;
-    $primary = null;
-    if ($openShift === null && ($canPunch ?? false)) {
-        $primary = ['clockIn', __('time.portal.clock.in')];
+    $directForever = (bool) ($checkmateMode ?? false);
+    $grantSeconds = $directForever ? 0 : (int) ($punchGrantSeconds ?? 0);
+
+    if ($absenceClockInKind !== null) {
+        $cardState = 'absence';
+        $statusIcon = 'alert-triangle';
+        $statusLine = __('time.portal.clock.absence_clock_in', [
+            'kind' => __('time.presence.attention.absence_kinds.'.$absenceClockInKind),
+        ]);
     } elseif ($onBreak) {
-        $primary = ['endBreak', __('time.portal.clock.end_break')];
-    } elseif ($openElsewhere && ($canPunch ?? false)) {
-        $primary = ['transferToThisClockPoint', __('time.portal.clock.transfer_here')];
-    } elseif ($openShift !== null && ($canPunch ?? false)) {
-        $primary = ['clockOut', __('time.portal.clock.out')];
+        $cardState = 'break';
+        $statusIcon = 'hourglass';
+        $statusLine = __('time.portal.clock.on_break_since', ['time' => $breakSince ?? '—']);
+    } elseif ($openElsewhere) {
+        $cardState = 'in';
+        $statusIcon = 'map-pin';
+        $statusLine = __('time.portal.now.status_elsewhere');
+    } elseif ($openShift !== null) {
+        $cardState = 'in';
+        $statusIcon = 'check';
+        $statusLine = $clockInPlace !== ''
+            ? __('time.portal.now.status_in_at', ['time' => $clockedInTime ?? '—', 'place' => $clockInPlace])
+            : __('time.portal.now.status_in', ['time' => $clockedInTime ?? '—']);
+    } elseif ($clockedOutTime) {
+        $cardState = 'out';
+        $statusIcon = 'clock';
+        $statusLine = __('time.portal.clock.clocked_out_at', ['time' => $clockedOutTime]);
+    } else {
+        $cardState = 'out';
+        $statusIcon = 'clock';
+        $statusLine = __('time.portal.now.status_out');
+    }
+
+    if ($onBreak) {
+        $action = ['method' => 'endBreak', 'label' => __('time.portal.clock.end_break'), 'needsScan' => false];
+    } elseif ($openShift === null) {
+        $action = ['method' => 'clockIn', 'label' => __('time.portal.clock.in'), 'needsScan' => true];
+    } elseif ($openElsewhere) {
+        $action = ['method' => 'transferToThisClockPoint', 'label' => __('time.portal.clock.transfer_here'), 'needsScan' => true];
+    } else {
+        $action = ['method' => 'clockOut', 'label' => __('time.portal.clock.out'), 'needsScan' => true];
     }
 @endphp
 <div @class([
     'wp-portal-now',
-    'wp-portal-now--clocked' => $openShift !== null && $absenceClockInKind === null,
-    'wp-portal-now--absence' => $absenceClockInKind !== null,
+    'wp-portal-now--clocked' => $cardState === 'in',
+    'wp-portal-now--break' => $cardState === 'break',
+    'wp-portal-now--absence' => $cardState === 'absence',
 ]) x-data="{ open: false }">
-    <p class="wp-portal-now__kicker">{{ $openShift === null ? __('time.portal.now.kicker') : __('time.portal.now.kicker_in') }}</p>
+    <p class="wp-portal-now__kicker">{{ $statusLine }}</p>
     <div class="wp-portal-now__head">
         <button
             type="button"
@@ -54,80 +88,61 @@
             <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
             <strong class="wp-portal-now__name">{{ $workerName }}</strong>
         </button>
-        @if ($primary !== null)
-            @if ($primary[0] === 'endBreak')
-                <button type="button" class="btn btn--primary btn--sm" wire:click="endBreak">{{ $primary[1] }}</button>
-            @else
-                <button type="button" class="btn btn--primary btn--sm" @click="withGps('{{ $primary[0] }}')" data-manual-capture-trigger="portal-primary-action">{{ $primary[1] }}</button>
-            @endif
-        @elseif (! ($canPunch ?? false))
-            <div x-data="wpPortalQrScanner({
-                    i18n: {
-                        unsupported: @js(__('time.portal.scan.error_unsupported')),
-                        denied: @js(__('time.portal.scan.error_denied')),
-                        invalid: @js(__('time.portal.scan.error_invalid')),
-                        slow: @js(__('time.portal.scan.slow_hint')),
-                    },
-                })" wire:ignore>
-                <button type="button" class="btn btn--primary btn--sm" @click="openScanner()" data-manual-capture-trigger="portal-scan-qr">
-                    {{ __('time.portal.scan.button') }}
-                </button>
-                <template x-teleport="body">
-                    <div class="wp-scan-overlay" x-show="scannerOpen" x-cloak @keydown.escape.window="closeScanner()">
-                        <div class="wp-scan-dialog" role="dialog" aria-modal="true" aria-label="{{ __('time.portal.scan.title') }}">
-                            <p class="wp-scan-title">{{ __('time.portal.scan.title') }}</p>
-                            <div class="wp-scan-viewport">
-                                <video x-ref="scanVideo" playsinline muted autoplay></video>
-                                <span class="wp-scan-frame" aria-hidden="true"></span>
+        @if (! $action['needsScan'])
+            <button type="button" class="btn btn--primary btn--sm" wire:click="endBreak" data-manual-capture-trigger="portal-primary-action">{{ $action['label'] }}</button>
+        @else
+            <div
+                class="wp-portal-now__punch"
+                x-data="{ direct: @js($directForever), left: @js($grantSeconds) }"
+                x-init="if (!direct && left > 0) { const id = setInterval(() => { left -= 1; if (left <= 0) { left = 0; clearInterval(id) } }, 1000) }"
+            >
+                <button
+                    type="button"
+                    class="btn btn--primary btn--sm"
+                    x-show="direct || left > 0"
+                    x-cloak
+                    @click="withGps('{{ $action['method'] }}')"
+                    data-manual-capture-trigger="portal-primary-action"
+                >{{ $action['label'] }}</button>
+                <div
+                    x-show="!direct && left <= 0"
+                    x-cloak
+                    x-data="wpPortalQrScanner({
+                        i18n: {
+                            unsupported: @js(__('time.portal.scan.error_unsupported')),
+                            denied: @js(__('time.portal.scan.error_denied')),
+                            invalid: @js(__('time.portal.scan.error_invalid')),
+                            slow: @js(__('time.portal.scan.slow_hint')),
+                        },
+                    })"
+                >
+                    <button type="button" class="btn btn--primary btn--sm" @click="openScanner()" data-manual-capture-trigger="portal-scan-qr">
+                        <x-wp-icon name="qr" class="wp-icon" />
+                        <span>{{ $action['label'] }}</span>
+                    </button>
+                    <template x-teleport="body">
+                        <div class="wp-scan-overlay" x-show="scannerOpen" x-cloak @keydown.escape.window="closeScanner()">
+                            <div class="wp-scan-dialog" role="dialog" aria-modal="true" aria-label="{{ __('time.portal.scan.title') }}">
+                                <p class="wp-scan-title">{{ __('time.portal.scan.title') }}</p>
+                                <div class="wp-scan-viewport">
+                                    <video x-ref="scanVideo" playsinline muted autoplay></video>
+                                    <span class="wp-scan-frame" aria-hidden="true"></span>
+                                </div>
+                                <p class="wp-scan-hint">{{ __('time.portal.scan.hint') }}</p>
+                                <p class="wp-scan-hint" x-show="slowHint" x-text="i18n.slow" x-cloak></p>
+                                <p class="wp-scan-error" x-show="errorKey !== null" x-text="errorText" x-cloak></p>
+                                <button type="button" class="btn btn--ghost btn--sm" @click="closeScanner()">{{ __('common.button.cancel') }}</button>
                             </div>
-                            <p class="wp-scan-hint">{{ __('time.portal.scan.hint') }}</p>
-                            <p class="wp-scan-hint" x-show="slowHint" x-text="i18n.slow" x-cloak></p>
-                            <p class="wp-scan-error" x-show="errorKey !== null" x-text="errorText" x-cloak></p>
-                            <button type="button" class="btn btn--ghost btn--sm" @click="closeScanner()">{{ __('common.cancel') }}</button>
                         </div>
-                    </div>
-                </template>
+                    </template>
+                </div>
             </div>
         @endif
-        <x-wp-icon :name="$openShift === null ? 'clock' : ($absenceClockInKind !== null ? 'alert-triangle' : 'check-circle')" class="wp-portal-now__status-icon" data-clock-state="{{ $openShift === null ? 'out' : 'in' }}" />
+        <x-wp-icon :name="$statusIcon" class="wp-portal-now__status-icon" data-clock-state="{{ $openShift === null ? 'out' : 'in' }}" />
     </div>
-    @if ($absenceClockInKind !== null)
-        <p class="wp-portal-now__alert">{{ __('time.portal.clock.absence_clock_in', ['kind' => __('time.presence.attention.absence_kinds.'.$absenceClockInKind)]) }}</p>
-    @endif
 
     <div class="wp-disclosure-panel wp-portal-now__more-panel" x-show="open" x-cloak>
-        <div class="wp-portal-now__sign-out-row">
-            <p class="wp-portal-now__meta">
-                {{ __('time.portal.clock.signed_in_since', [
-                    'date' => $signedInDate ?? '—',
-                    'time' => $signedInTime ?? '—',
-                ]) }}
-            </p>
-            @include('partials.wp-portal-sign-out', ['signOutMethod' => 'signOut'])
-        </div>
-
-        <div class="wp-portal-now__divider" role="separator"></div>
-
-        @if ($openShift === null)
-            <p class="wp-portal-now__meta">
-                @if ($clockedOutTime)
-                    {{ __('time.portal.clock.clocked_out_at', ['time' => $clockedOutTime]) }}
-                @else
-                    {{ __('time.portal.clock.not_clocked_in') }}
-                @endif
-                @include('partials.wp-portal-clock-alert', ['alert' => $todayClockAlert ?? null])
-            </p>
-            @unless (($canPunch ?? false) || $clockedOutTime)
-                <p class="wp-portal-now__meta">{{ __('time.portal.clock.scan_to_clock_in') }}</p>
-            @endunless
-        @else
-            <p class="wp-portal-now__meta">
-                {{ __('time.portal.clock.clocked_in_at_tenant', ['tenant' => $tenantName, 'time' => $clockedInTime ?? '—']) }}
-                @include('partials.wp-portal-clock-alert', ['alert' => $todayClockAlert ?? null])
-            </p>
-            @unless ($canPunch ?? false)
-                <p class="wp-portal-now__meta">{{ __('time.portal.clock.scan_to_clock_out') }}</p>
-            @endunless
+        @if ($openShift !== null)
             @if ($openShift->isManuallyClockedIn())
                 <p class="wp-portal-now__meta">{{ __('time.manual_clock_in.badge') }}</p>
             @endif
@@ -144,42 +159,39 @@
                 <p class="wp-portal-now__meta">{{ __('time.portal.clock.started_at', ['place' => $openShift->clockInClockPoint->name]) }}</p>
             @endif
             @if ($openElsewhere)
-                @if ($clockInPlace !== '')
-                    <p class="wp-portal-now__meta">{{ __('time.portal.clock.started_at', ['place' => $clockInPlace]) }}</p>
-                @endif
-                <p class="wp-portal-now__meta">{{ __('time.portal.clock.open_elsewhere_hint') }}</p>
+                <p class="wp-portal-now__meta">{{ __('time.portal.clock.elsewhere_body') }}</p>
             @endif
+            @include('partials.wp-portal-clock-alert', ['alert' => $todayClockAlert ?? null])
+        @else
+            @include('partials.wp-portal-clock-alert', ['alert' => $todayClockAlert ?? null])
         @endif
 
-        <div class="wp-portal-now__more-actions">
-            @if ($openShift !== null && ($canPunch ?? false))
-                <button type="button" class="btn btn--surface btn--sm" @click="withGps('clockOut')" data-manual-capture-trigger="portal-clock-out">
-                    {{ __('time.portal.clock.out') }}
-                </button>
-            @endif
-            @if ($hasVisit)
+        @if ($hasVisit)
+            <div class="wp-portal-now__more-actions">
                 <button type="button" class="btn btn--surface btn--sm" @click="withFreshGps('endWorkVisit')">
                     {{ __('time.portal.clock.stop_work') }}
                 </button>
-            @endif
-        </div>
-
-        @if ($openShift !== null && ($onBreak || (! $breakTaken && ! $openElsewhere)))
-            <div class="wp-portal-now__divider" role="separator"></div>
-
-            @if (! $onBreak && ! $breakTaken)
-                @if ($requiredBreak > 0)
-                    <p class="wp-portal-now__meta">{{ __('time.portal.clock.break_hint', ['min' => $requiredBreak]) }}</p>
-                @endif
-                <div class="wp-portal-now__more-actions">
-                    <button type="button" class="btn btn--surface btn--sm" wire:click="startBreak">
-                        {{ __('time.portal.clock.start_break') }}
-                    </button>
-                </div>
-            @endif
-            @if ($onBreak)
-                <p class="wp-portal-now__state">{{ __('time.portal.clock.on_break_since', ['time' => $breakSince ?? '—']) }}</p>
-            @endif
+            </div>
         @endif
+
+        @if ($openShift !== null && ! $onBreak && ! $breakTaken && ! $openElsewhere)
+            <div class="wp-portal-now__divider" role="separator"></div>
+            @if ($requiredBreak > 0 && $clockedInLongEnough)
+                <p class="wp-portal-now__meta">{{ __('time.portal.clock.break_hint', ['min' => $requiredBreak]) }}</p>
+            @endif
+            <div class="wp-portal-now__more-actions">
+                <button type="button" class="btn btn--surface btn--sm" wire:click="startBreak">
+                    {{ __('time.portal.clock.start_break') }}
+                </button>
+            </div>
+        @endif
+
+        <div class="wp-portal-now__divider" role="separator"></div>
+        <button
+            type="button"
+            class="wp-portal-now__sign-out"
+            x-data='@json(['clocked' => $openShift !== null, 'message' => __('time.portal.clock.sign_out_while_clocked')])'
+            @click="window.wpFieldFlush?.(); if (!clocked || confirm(message)) { $wire.signOut() }"
+        >{{ __('portal.worker.sign_out') }}</button>
     </div>
 </div>

@@ -17,7 +17,7 @@ final class ClockPointScanGrant
 
     public static function ttlSeconds(): int
     {
-        return max(30, (int) config('time.punch_scan_seconds', 600));
+        return max(30, (int) config('time.punch_scan_seconds', 120));
     }
 
     public static function grant(int $clockPointId): void
@@ -47,6 +47,18 @@ final class ClockPointScanGrant
         }
 
         return (now()->timestamp - $grantedAt) <= self::ttlSeconds();
+    }
+
+    public static function remainingSeconds(int $clockPointId): int
+    {
+        if (! self::isValid($clockPointId)) {
+            return 0;
+        }
+
+        $payload = session(self::sessionKey($clockPointId));
+        $grantedAt = (int) ($payload['granted_at'] ?? 0);
+
+        return max(0, self::ttlSeconds() - (now()->timestamp - $grantedAt));
     }
 
     public static function consume(int $clockPointId): void

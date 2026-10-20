@@ -232,7 +232,7 @@ it('toont de rode driehoek op Clock Point naast niet ingeklokt', function () {
     $this->travelTo(Carbon::parse('2026-09-22 10:00:00'));
 
     signInRosterAlertWorkerWithoutPunch($clockPoint)
-        ->assertSee(__('time.portal.clock.not_clocked_in'), false)
+        ->assertSee(__('time.portal.now.status_out'), false)
         ->assertSee(__('time.portal.clock_alert.absent'), false)
         ->assertSeeHtml('wp-portal-clock-alert');
 });
@@ -243,7 +243,7 @@ it('toont geen driehoek vóór de geplande start op Clock Point', function () {
     $this->travelTo(Carbon::parse('2026-09-22 08:00:00'));
 
     signInRosterAlertWorkerWithoutPunch($clockPoint)
-        ->assertSee(__('time.portal.clock.not_clocked_in'), false)
+        ->assertSee(__('time.portal.now.status_out'), false)
         ->assertDontSee(__('time.portal.clock_alert.absent'), false)
         ->assertDontSeeHtml('wp-portal-clock-alert');
 });

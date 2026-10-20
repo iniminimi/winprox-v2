@@ -393,14 +393,14 @@ it('kleurt het statusblok groen met ingeklokt-icoon na inklokken', function () {
         ->assertSee('data-clock-state="out"', false)
         ->assertSee('wp-portal-now__divider', false)
         ->assertDontSee('wp-portal-now--clocked', false)
-        ->assertDontSee(__('time.portal.now.kicker_in'));
+        ->assertSee(__('time.portal.now.status_out'), false);
 
     app(ClockInAction::class)->handle($worker, $clockPoint);
 
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->assertSee('wp-portal-now--clocked', false)
         ->assertSee('data-clock-state="in"', false)
-        ->assertSee(__('time.portal.now.kicker_in'))
+        ->assertSee(__('time.portal.now.status_in', ['time' => now()->format('H:i')]), false)
         ->assertDontSee('data-clock-state="out"', false);
 });
 
@@ -409,20 +409,38 @@ it('legt bij Pauze starten uit hoeveel pauze automatisch wordt afgetrokken', fun
     Tenancy::actAs($tenant->id);
     $worker = checkmateWorker($tenant);
     $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
-    $team = $worker->team;
-    $team->update(['required_break_minutes' => 30]);
+    $worker->team->update(['required_break_minutes' => 30]);
 
-    WorkerVerification::markVerified($team, $worker);
-    WorkerDeviceSession::bindRememberedWorker($team, $worker);
-    app(ClockInAction::class)->handle($worker, $clockPoint);
+    $shift = app(ClockInAction::class)->handle($worker, $clockPoint);
+    $view = function (mixed $open) use ($worker, $clockPoint, $tenant) {
+        return view('partials.wp-portal-now', [
+            'verifiedWorker' => $worker,
+            'openShift' => $open,
+            'lastClosedShift' => null,
+            'portalClockPoint' => $clockPoint,
+            'canPunch' => true,
+            'checkmateMode' => true,
+            'punchGrantSeconds' => 0,
+            'tenantName' => $tenant->name,
+            'gpsVisits' => false,
+            'onSiteGuidance' => [],
+            'absenceClockInKind' => null,
+            'todayClockAlert' => null,
+        ])->render();
+    };
 
-    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
-        ->assertSee(__('time.portal.clock.break_hint', ['min' => 30]));
+    $hint = e(__('time.portal.clock.break_hint', ['min' => 30]));
+    expect($view($shift->fresh(['openBreak', 'breaks', 'team'])))->not->toContain($hint);
 
-    $team->update(['required_break_minutes' => 0]);
+    $shift->forceFill([
+        'clock_in_at' => now()->subHours((int) config('time.break_reminder_hours')),
+    ])->save();
 
-    Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
-        ->assertDontSee(__('time.portal.clock.break_hint', ['min' => 30]));
+    expect($view($shift->fresh(['openBreak', 'breaks', 'team'])))->toContain($hint);
+
+    $worker->team->update(['required_break_minutes' => 0]);
+
+    expect($view($shift->fresh(['openBreak', 'breaks', 'team'])))->not->toContain($hint);
 });
 
 it('verbergt de pauzeherinnering nadat er één pauze is genomen', function () {
@@ -471,7 +489,7 @@ it('laat de ingeklokt-flash na twee seconden automatisch verdwijnen', function (
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->call('clockIn')
         ->assertSet('flashMessageKey', 'time.portal.clock.clocked_in_at_tenant')
-        ->assertSee('setTimeout(() => hide = true, 2000)', false);
+        ->assertSee('setTimeout(() => hide = true, 3000)', false);
 });
 
 it('toont geen teamleader-tegel aan een gewone uitvoerder', function () {

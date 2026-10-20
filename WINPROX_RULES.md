@@ -214,7 +214,7 @@ uitklokken** aan, dan weigert de portaal-inklok (`ClockPointQr`) zonder GPS-posi
 die coördinaten zijn de controle waar de uitvoerder was. Uitklokken, pauzes, manueel
 inkloken, API, het klokscherm-PIN en inklokken vanuit beheer (zijbalk, bron `backoffice`) blijven zonder die poort. Werk starten blijft de
 straalcontrole. **Aanmelden en inklokken zijn gescheiden.** Sticker en wisselende
-klokscherm-QR (`/time/{token}`) geven één scan-grant. Aanmeldlink en startscherm-icoon
+klokscherm-QR (`/time/{token}`) geven één scan-grant, twee minuten geldig. Aanmeldlink en startscherm-icoon
 (`/cp/{token}`) geven die niet. Op een vaste prikklok kan in-/uitklokken en verplaatsen
 pas met die scan. Checkmate klokt in en uit vanuit het icoon zonder scan; een scan blijft
 ook daar een prik. Pauzes vragen nooit een scan. Een bladwijzer van de sticker-URL telt

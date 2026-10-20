@@ -398,7 +398,6 @@
         "clock": {
             "not_clocked_in": "Aún no ha fichado",
             "signed_in_at": "Sesión iniciada en WinProx a las :time",
-            "signed_in_since": "Sesión iniciada desde :date - :time",
             "clocked_in_at_tenant": "Fichado en :tenant a las :time",
             "absence_clock_in": "Has fichado durante :kind",
             "no_break": "Aún no ha hecho pausa",
@@ -409,6 +408,8 @@
             "break_hint": "No olvide su pausa — en jornadas largas registramos :min min de pausa automáticamente.",
             "end_break": "Terminar pausa",
             "open_elsewhere_hint": "Ya has fichado en otra sede. Traslada tu presencia aquí o ficha la salida.",
+            "elsewhere_body": "Estás fichado en otra sede.",
+            "sign_out_while_clocked": "Sigues fichado. Cerrar sesión no ficha la salida.",
             "transfer_here": "Trasladar aquí",
             "started_at": "Iniciado en :place (mismo turno).",
             "working_at": "Trabajando en :place",
@@ -524,8 +525,10 @@
             "decision": "Decisión"
         },
         "now": {
-            "kicker": "Bienvenido",
-            "kicker_in": "Bienvenido, está fichado",
+            "status_out": "Sin fichar",
+            "status_in": "Fichado desde :time",
+            "status_in_at": "Fichado desde :time · :place",
+            "status_elsewhere": "Fichado en otra sede",
             "next_stop": "Siguiente parada: :name",
             "here_done": "El trabajo aquí está listo.",
             "toggle": "Detalles"

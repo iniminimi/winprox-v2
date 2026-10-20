@@ -398,7 +398,6 @@
         "clock": {
             "not_clocked_in": "Non ancora timbrato",
             "signed_in_at": "Accesso a WinProx alle :time",
-            "signed_in_since": "Accesso dal :date - :time",
             "clocked_in_at_tenant": "Timbrato presso :tenant alle :time",
             "absence_clock_in": "Hai timbrato durante :kind",
             "no_break": "Nessuna pausa ancora",
@@ -409,6 +408,8 @@
             "break_hint": "Non dimenticare la pausa — nei turni lunghi registriamo automaticamente :min min di pausa.",
             "end_break": "Termina pausa",
             "open_elsewhere_hint": "Hai già timbrato in un'altra sede. Sposta la presenza qui oppure timbra l'uscita.",
+            "elsewhere_body": "Sei timbrato in un'altra sede.",
+            "sign_out_while_clocked": "Sei ancora timbrato. Uscire non timbra l'uscita.",
             "transfer_here": "Sposta qui",
             "started_at": "Iniziato presso :place (stesso turno).",
             "working_at": "Al lavoro presso :place",
@@ -524,8 +525,10 @@
             "decision": "Decisione"
         },
         "now": {
-            "kicker": "Benvenuto",
-            "kicker_in": "Benvenuto, ha timbrato",
+            "status_out": "Non timbrato",
+            "status_in": "Timbrato dalle :time",
+            "status_in_at": "Timbrato dalle :time · :place",
+            "status_elsewhere": "Timbrato in un'altra sede",
             "next_stop": "Prossima sosta: :name",
             "here_done": "Il lavoro qui è finito.",
             "toggle": "Dettagli"

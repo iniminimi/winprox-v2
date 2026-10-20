@@ -398,7 +398,6 @@
         "clock": {
             "not_clocked_in": "Not clocked in yet",
             "signed_in_at": "Signed in on WinProx at :time",
-            "signed_in_since": "Signed in since :date - :time",
             "clocked_in_at_tenant": "Clocked in at :tenant at :time",
             "absence_clock_in": "You clocked in during :kind",
             "no_break": "No break taken yet",
@@ -409,6 +408,8 @@
             "break_hint": "Don't forget your break — on long shifts we automatically record :min min of break.",
             "end_break": "Stop break",
             "open_elsewhere_hint": "You are already clocked in at another location. Move your presence here, or clock out.",
+            "elsewhere_body": "You are clocked in at another location.",
+            "sign_out_while_clocked": "You are still clocked in. Signing out does not clock you out.",
             "transfer_here": "Move here",
             "started_at": "Started at :place (same shift).",
             "working_at": "Working at :place",
@@ -524,8 +525,10 @@
             "decision": "Decision"
         },
         "now": {
-            "kicker": "Welcome",
-            "kicker_in": "Welcome, you are clocked in",
+            "status_out": "Not clocked in",
+            "status_in": "Clocked in since :time",
+            "status_in_at": "Clocked in since :time · :place",
+            "status_elsewhere": "Clocked in at another location",
             "next_stop": "Next stop: :name",
             "here_done": "Work here is done.",
             "toggle": "Details"

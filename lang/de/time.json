@@ -398,7 +398,6 @@
         "clock": {
             "not_clocked_in": "Noch nicht eingestempelt",
             "signed_in_at": "Angemeldet bei WinProx um :time",
-            "signed_in_since": "Angemeldet seit :date - :time",
             "clocked_in_at_tenant": "Eingestempelt bei :tenant um :time",
             "absence_clock_in": "Sie haben während :kind eingestempelt",
             "no_break": "Noch keine Pause genommen",
@@ -409,6 +408,8 @@
             "break_hint": "Vergessen Sie Ihre Pause nicht — bei langen Schichten tragen wir automatisch :min Min. Pause ein.",
             "end_break": "Pause beenden",
             "open_elsewhere_hint": "Sie sind bereits an einem anderen Standort eingestempelt. Verschieben Sie die Anwesenheit hierher oder stempeln Sie aus.",
+            "elsewhere_body": "Sie sind an einem anderen Standort eingestempelt.",
+            "sign_out_while_clocked": "Sie sind noch eingestempelt. Abmelden stempelt Sie nicht aus.",
             "transfer_here": "Hierher verschieben",
             "started_at": "Gestartet bei :place (gleiche Schicht).",
             "working_at": "Bei der Arbeit in :place",
@@ -524,8 +525,10 @@
             "decision": "Entscheidung"
         },
         "now": {
-            "kicker": "Willkommen",
-            "kicker_in": "Willkommen, Sie sind eingestempelt",
+            "status_out": "Nicht eingestempelt",
+            "status_in": "Eingestempelt seit :time",
+            "status_in_at": "Eingestempelt seit :time · :place",
+            "status_elsewhere": "An einem anderen Standort eingestempelt",
             "next_stop": "Nächster Stopp: :name",
             "here_done": "Die Arbeit hier ist fertig.",
             "toggle": "Details"

@@ -50,7 +50,7 @@ it('klokt niet in bij aanmelden en wel na een tik op inklokken', function () {
     [$tenant, $clockPoint, $worker] = punchScanTenant();
 
     $portal = signInPunchScanWorker($clockPoint)
-        ->assertSee(__('time.portal.clock.not_clocked_in'), false)
+        ->assertSee(__('time.portal.now.status_out'), false)
         ->assertDontSee(__('time.portal.clock.scan_to_clock_in'), false);
 
     expect(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeFalse()
@@ -99,7 +99,7 @@ it('laat uitklokken na een nieuwe QR-scan', function () {
 
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->call('clockOut')
-        ->assertSet('flashMessage', '')
+        ->assertSet('flashMessage', __('time.portal.clock.clocked_out_at', ['time' => now()->format('H:i')]))
         ->assertSee(__('time.portal.clock.clocked_out_at', ['time' => now()->format('H:i')]), false)
         ->assertDontSee(__('time.portal.clock.not_clocked_in'), false)
         ->assertDontSee(__('time.portal.clock.scan_to_clock_in'), false);
@@ -114,7 +114,7 @@ it('toont na een nieuwe scan opnieuw inklokken bij een afgesloten dienst', funct
 
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->call('clockOut')
-        ->assertSet('flashMessage', '');
+        ->assertSet('flashMessage', __('time.portal.clock.clocked_out_at', ['time' => now()->format('H:i')]));
 
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->assertSee(__('time.portal.clock.clocked_out_at', ['time' => now()->format('H:i')]), false)
@@ -138,9 +138,10 @@ it('toont een korte scan-hint als de grant opgebruikt is en er nog geen dienst i
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
         ->call('$refresh')
-        ->assertSee(__('time.portal.clock.not_clocked_in'), false)
-        ->assertSee(__('time.portal.clock.scan_to_clock_in'), false)
-        ->assertDontSeeHtml('@click="withGps(\'clockIn\')"');
+        ->assertSee(__('time.portal.now.status_out'), false)
+        ->assertSee(__('time.portal.clock.in'), false)
+        ->assertSeeHtml('wpPortalQrScanner')
+        ->assertSeeHtml('left: 0', false);
 
     expect(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeFalse();
 });
@@ -158,7 +159,7 @@ it('toont de in-portal scan-knop wanneer er geen scan-grant is', function () {
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
         ->call('$refresh')
-        ->assertSee(__('time.portal.scan.button'), false)
+        ->assertSee(__('time.portal.clock.in'), false)
         ->assertSeeHtml('wpPortalQrScanner');
 });
 
@@ -167,7 +168,21 @@ it('verbergt de scan-knop zolang er een geldige scan-grant is', function () {
 
     signInPunchScanWorker($clockPoint)
         ->assertSee(__('time.portal.clock.in'), false)
-        ->assertDontSeeHtml('wpPortalQrScanner');
+        ->assertSeeHtml('x-show="direct || left > 0"', false)
+        ->assertSeeHtml('x-show="!direct && left <= 0"', false);
+});
+
+it('laat een prik nog toe binnen twee minuten na de scan', function () {
+    [, $clockPoint, $worker] = punchScanTenant();
+
+    $portal = signInPunchScanWorker($clockPoint);
+
+    $this->travel(90)->seconds();
+
+    $portal->call('clockIn');
+
+    expect(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeTrue()
+        ->and(ClockPointScanGrant::isValid($clockPoint->id))->toBeFalse();
 });
 
 it('prikt niet in wanneer de scan-grant verlopen is', function () {
@@ -175,7 +190,7 @@ it('prikt niet in wanneer de scan-grant verlopen is', function () {
 
     $portal = Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token]);
 
-    $this->travel(11)->minutes();
+    $this->travel(3)->minutes();
 
     $portal
         ->set('first_name', 'Jan')
@@ -248,7 +263,7 @@ it('behandelt een tweede Clock Point op dezelfde vestiging niet als elders', fun
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
-        ->assertDontSee(__('time.portal.clock.open_elsewhere_hint'), false)
+        ->assertDontSee(__('time.portal.clock.elsewhere_body'), false)
         ->call('clockIn')
         ->assertSet('flashMessage', __('time.portal.errors.already_clocked_in'));
 
@@ -276,7 +291,7 @@ it('blijft een open dienst op een andere vestiging als elders markeren', functio
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
-        ->assertSee(__('time.portal.clock.open_elsewhere_hint'), false);
+        ->assertSee(__('time.portal.clock.elsewhere_body'), false);
 });
 
 it('behandelt een Clock Point zonder vestiging via de punt-vergelijking', function () {
@@ -298,7 +313,7 @@ it('behandelt een Clock Point zonder vestiging via de punt-vergelijking', functi
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
-        ->assertSee(__('time.portal.clock.open_elsewhere_hint'), false);
+        ->assertSee(__('time.portal.clock.elsewhere_body'), false);
 });
 
 it('geeft een scan op de sticker en niet op de aanmeldlink', function () {
