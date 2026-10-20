@@ -1538,7 +1538,7 @@ button.wp-config-overview-kpi--filter.is-active .wp-config-overview-kpi__value {
 }
 
 .wp-passkey-badge {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 4rem;
