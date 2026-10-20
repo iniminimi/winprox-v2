@@ -316,6 +316,55 @@ it('behandelt een Clock Point zonder vestiging via de punt-vergelijking', functi
         ->assertSee(__('time.portal.clock.elsewhere_body'), false);
 });
 
+it('vuurt na een in-portal scan meteen de pendende prik af', function () {
+    [, $clockPoint] = punchScanTenant();
+    $clockPoint->update(['qr_token' => str_repeat('c', 40)]);
+
+    signInPunchScanWorker($clockPoint);
+
+    $this->get(route('public.time-portal', $clockPoint->qr_token).'?scan_punch=clockIn')
+        ->assertOk()
+        ->assertSeeHtml('autoPunch: true');
+});
+
+it('vuurt zonder de scan-markering van de in-portal scanner niet automatisch', function () {
+    [, $clockPoint] = punchScanTenant();
+    $clockPoint->update(['qr_token' => str_repeat('c', 40)]);
+
+    signInPunchScanWorker($clockPoint);
+
+    $this->get(route('public.time-portal', $clockPoint->qr_token))
+        ->assertOk()
+        ->assertSeeHtml('autoPunch: false');
+});
+
+it('vuurt geen andere prik af dan de gescande intentie', function () {
+    [, $clockPoint, $worker] = punchScanTenant();
+    $clockPoint->update(['qr_token' => str_repeat('c', 40)]);
+
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+    signInPunchScanWorker($clockPoint);
+
+    $this->get(route('public.time-portal', $clockPoint->qr_token).'?scan_punch=clockIn')
+        ->assertOk()
+        ->assertSeeHtml('autoPunch: false');
+
+    $this->get(route('public.time-portal', $clockPoint->qr_token).'?scan_punch=clockOut')
+        ->assertOk()
+        ->assertSeeHtml('autoPunch: true');
+});
+
+it('negeert een ongeldige scan-markering', function () {
+    [, $clockPoint] = punchScanTenant();
+    $clockPoint->update(['qr_token' => str_repeat('c', 40)]);
+
+    signInPunchScanWorker($clockPoint);
+
+    $this->get(route('public.time-portal', $clockPoint->qr_token).'?scan_punch=signOut')
+        ->assertOk()
+        ->assertSeeHtml('autoPunch: false');
+});
+
 it('geeft een scan op de sticker en niet op de aanmeldlink', function () {
     [, $clockPoint] = punchScanTenant();
     $clockPoint->update(['qr_token' => str_repeat('b', 32)]);

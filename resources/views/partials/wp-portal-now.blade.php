@@ -97,8 +97,8 @@
         @else
             <div
                 class="wp-portal-now__punch"
-                x-data="{ direct: @js($directForever), left: @js($grantSeconds) }"
-                x-init="if (!direct && left > 0) { const id = setInterval(() => { left -= 1; if (left <= 0) { left = 0; clearInterval(id) } }, 1000) }"
+                x-data="{ direct: @js($directForever), left: @js($grantSeconds), autoPunch: @js(($scanPunchMethod ?? null) === $action['method']) }"
+                x-init="if (!direct && left > 0) { const id = setInterval(() => { left -= 1; if (left <= 0) { left = 0; clearInterval(id) } }, 1000) } if (autoPunch && left > 0) { $nextTick(() => withGps('{{ $action['method'] }}')) }"
             >
                 <button
                     type="button"
@@ -118,6 +118,7 @@
                             invalid: @js(__('time.portal.scan.error_invalid')),
                             slow: @js(__('time.portal.scan.slow_hint')),
                         },
+                        punch: @js($action['method']),
                     })"
                 >
                     <button type="button" class="btn btn--primary btn--sm" @click="openScanner()" data-manual-capture-trigger="portal-scan-qr">

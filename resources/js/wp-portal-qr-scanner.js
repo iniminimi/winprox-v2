@@ -21,6 +21,7 @@ function registerAlpineComponent() {
 
     window.Alpine.data('wpPortalQrScanner', (config = {}) => ({
         i18n: config.i18n ?? {},
+        punch: config.punch ?? null,
         scannerOpen: false,
         errorKey: null,
         slowHint: false,
@@ -170,7 +171,14 @@ function registerAlpineComponent() {
                 this.errorKey = 'invalid';
                 return;
             }
-            window.location.assign('/time/' + match[1]);
+            // De scan-knop droeg al de intentie (Inklokken/Uitklokken/
+            // Verplaatsen). De landingspagina vuurt die prik meteen af —
+            // geen tweede tik op dezelfde knop na een positieve scan.
+            let url = '/time/' + match[1];
+            if (this.punch) {
+                url += '?scan_punch=' + encodeURIComponent(this.punch);
+            }
+            window.location.assign(url);
         },
 
         stopStream() {

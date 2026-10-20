@@ -2104,6 +2104,7 @@ class TimePortal extends Component
             'gpsVisits' => $gpsVisits,
             'canPunch' => $this->canPunchNow(),
             'punchGrantSeconds' => ClockPointScanGrant::remainingSeconds((int) $this->clockPointId),
+            'scanPunchMethod' => $this->scanPunchMethod(),
             'teamWorkers' => $teamWorkers,
             'manageWorkersMessage' => $this->manageWorkersMessage,
             'roster' => $roster,
@@ -2146,6 +2147,25 @@ class TimePortal extends Component
     private function canPunchNow(): bool
     {
         return $this->checkmateModeActive() || ClockPointScanGrant::isValid($this->clockPointId);
+    }
+
+    /**
+     * De in-portal QR-scanner markeert zijn navigatie met ?scan_punch={methode};
+     * de landingspagina vuurt die prik dan meteen af — de knop droeg de intentie
+     * al en de scan is het bewijs. Whitelist voorkomt willekeurige method-calls
+     * via een gefabuleerde URL. Op Livewire-updates ontbreekt de query — de
+     * auto-prik geldt alleen voor de eerste render na de scan.
+     */
+    private function scanPunchMethod(): ?string
+    {
+        $method = request()->query('scan_punch');
+        if (! is_string($method)) {
+            return null;
+        }
+
+        return in_array($method, ['clockIn', 'clockOut', 'transferToThisClockPoint'], true)
+            ? $method
+            : null;
     }
 
     private function requirePunchScanGrant(): bool

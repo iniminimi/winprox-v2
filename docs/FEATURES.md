@@ -798,6 +798,8 @@ productsector op `Tenant`.
   hops tussen Clock Points (alarm bij hop < 5 min). **Aanmelden klokt niet vanzelf in.**
   **In-/uitklokken en verplaatsen** op een vaste prikklok vereisen een **verse QR-scan**
   (volle page-load van de sticker of de wisselende klokscherm-QR, één prik, ~10 min).
+  De in-portal scan-knop markeert haar navigatie (`?scan_punch=`); na een positieve
+  scan voert het portaal die prik meteen uit — geen tweede tik op dezelfde knop.
   De aanmeldlink (`/cp/{token}`) en het startscherm-icoon openen hetzelfde portaal
   zonder die scan. Checkmate klokt in en uit vanuit dat icoon zonder scan; een scan
   blijft ook daar een prik. Een open tab of `wire:poll` volstaat niet. Een bladwijzer
