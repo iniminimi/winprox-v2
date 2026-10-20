@@ -176,6 +176,9 @@
                     {{ __('portal.worker.pin_verify_hint') }}
                     @if ($deviceWorker) <strong>{{ $deviceWorker->displayName() }}</strong>@endif
                 </p>
+                @if ($deviceWorkerHasPasskey ?? false)
+                    @include('partials.wp-portal-passkey-verify', ['fallbackHint' => __('portal.passkey.or_pin')])
+                @endif
                 <form wire:submit="signInWithPin" class="wp-stack">
                     <div class="wp-field">
                         <label class="wp-label" for="pin_code_verify">{{ __('portal.worker.pin') }}</label>
@@ -199,6 +202,9 @@
                     {{ __('portal.worker.verify_hint') }}
                     @if ($deviceWorker) <strong>{{ $deviceWorker->displayName() }}</strong>@endif
                 </p>
+                @if ($deviceWorkerHasPasskey ?? false)
+                    @include('partials.wp-portal-passkey-verify', ['fallbackHint' => __('portal.passkey.or_icon')])
+                @endif
                 <div class="wp-icon-grid">
                     @foreach (\App\Support\Portal\WorkerIcon::SLUGS as $slug)
                         <button type="button"
@@ -445,6 +451,10 @@
                     </x-wp-page-head-title>
                     @include('partials.wp-portal-teamleader-release')
                 @else
+                    @if ($showPasskeyEnroll ?? false)
+                        @include('partials.wp-portal-passkey-enroll')
+                    @endif
+
                     @unless ($hasTimeModule)
                         @include('partials.wp-portal-presence')
                     @endunless

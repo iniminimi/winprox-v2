@@ -497,6 +497,14 @@ class TimePortal extends Component
         $this->forgetPortalSignInState();
     }
 
+    public function dismissPasskeyOffer(): void
+    {
+        $worker = $this->verifiedWorker();
+        if ($worker !== null) {
+            session()->put('wp_passkey_offer_dismissed_'.(int) $worker->id, true);
+        }
+    }
+
     public function openHomescreenHelp(): void
     {
         if (! $this->clockPointOffersHomescreenShortcut()) {
@@ -1908,6 +1916,12 @@ class TimePortal extends Component
         $showNoWorkers = $this->activeClockPoint() !== null && ! $canAct && ! $hasAnyWorkers
             && ! $registerOnly && ! $showRegisterForm && ! $iconBlocked;
 
+        $deviceWorkerHasPasskey = $deviceWorker?->passkeyCredentials()->exists() ?? false;
+        $showPasskeyEnroll = $canAct
+            && $verifiedWorker !== null
+            && ! $verifiedWorker->passkeyCredentials()->exists()
+            && ! session()->has('wp_passkey_offer_dismissed_'.(int) $verifiedWorker->id);
+
         $openShift = null;
         $absenceClockInKind = null;
         if ($canAct && $verifiedWorker !== null && TimeModuleAccess::tenantHasModule(Tenant::query()->find($this->tenantId))) {
@@ -2059,6 +2073,9 @@ class TimePortal extends Component
             'showNoWorkers' => $showNoWorkers,
             'iconBlocked' => $iconBlocked,
             'deviceWorker' => $deviceWorker,
+            'deviceWorkerHasPasskey' => $deviceWorkerHasPasskey,
+            'showPasskeyEnroll' => $showPasskeyEnroll,
+            'passkeyTenantId' => $this->tenantId,
             'remainingAttempts' => $deviceWorker?->team !== null
                 ? WorkerIconGuard::remainingAttempts($deviceWorker->team)
                 : WorkerIconGuard::MAX_FAILED_ATTEMPTS,
@@ -2551,25 +2568,7 @@ class TimePortal extends Component
 
     private function rememberedWorkerForTenant(): ?Worker
     {
-        $fromCookie = WorkerDeviceSession::workerFromDeviceCookie();
-        if ($fromCookie !== null && (int) $fromCookie->tenant_id === $this->tenantId) {
-            return $fromCookie;
-        }
-
-        return Worker::query()
-            ->where('tenant_id', $this->tenantId)
-            ->where('is_active', true)
-            ->get()
-            ->first(function (Worker $worker) {
-                $team = $worker->team;
-                if ($team === null) {
-                    return false;
-                }
-
-                $remembered = WorkerDeviceSession::rememberedWorkerOnTeam($team);
-
-                return $remembered !== null && (int) $remembered->id === (int) $worker->id;
-            });
+        return WorkerDeviceSession::rememberedWorkerForTenant($this->tenantId);
     }
 
     private function authorizedWorker(): ?Worker

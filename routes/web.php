@@ -31,6 +31,7 @@ use App\Http\Controllers\RobotsTxtController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\StopSupportViewController;
 use App\Http\Controllers\TenantPurgeConfirmController;
+use App\Http\Controllers\Portal\WorkerPasskeyController;
 use App\Http\Controllers\Time\ClockPointHomescreenManifestController;
 use App\Http\Controllers\Time\TenantHomescreenManifestController;
 use App\Http\Controllers\Time\TimePortalHomeController;
@@ -206,6 +207,22 @@ Route::get('/time/{token}/manifest.webmanifest', ClockPointHomescreenManifestCon
 Route::get('/cp/{token}/manifest.webmanifest', ClockPointHomescreenManifestController::class)
     ->where('token', '[a-z0-9]{20,64}')
     ->name('public.time-portal.cp.manifest');
+Route::post('/time-portal/{tenant}/passkey/register-options', [WorkerPasskeyController::class, 'registerOptions'])
+    ->whereNumber('tenant')
+    ->middleware('throttle:30,1')
+    ->name('public.time-portal.passkey.register-options');
+Route::post('/time-portal/{tenant}/passkey/register', [WorkerPasskeyController::class, 'register'])
+    ->whereNumber('tenant')
+    ->middleware('throttle:30,1')
+    ->name('public.time-portal.passkey.register');
+Route::post('/time-portal/{tenant}/passkey/assert-options', [WorkerPasskeyController::class, 'assertOptions'])
+    ->whereNumber('tenant')
+    ->middleware('throttle:30,1')
+    ->name('public.time-portal.passkey.assert-options');
+Route::post('/time-portal/{tenant}/passkey/assert', [WorkerPasskeyController::class, 'assert'])
+    ->whereNumber('tenant')
+    ->middleware('throttle:20,1')
+    ->name('public.time-portal.passkey.assert');
 Route::get('/time/{token}', TimePortal::class)
     ->where('token', '[a-z0-9]{20,64}')
     ->name('public.time-portal');

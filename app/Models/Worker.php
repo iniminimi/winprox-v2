@@ -105,6 +105,11 @@ class Worker extends Model
         return $this->hasMany(WorkerDevice::class);
     }
 
+    public function passkeyCredentials(): HasMany
+    {
+        return $this->hasMany(WorkerPasskeyCredential::class);
+    }
+
     public function plannedShifts(): HasMany
     {
         return $this->hasMany(PlannedShift::class);

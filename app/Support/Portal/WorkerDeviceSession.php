@@ -217,6 +217,32 @@ final class WorkerDeviceSession
     }
 
     /**
+     * Onthouden worker van dit toestel binnen een tenant (cookie, met sessie-fallback).
+     */
+    public static function rememberedWorkerForTenant(int $tenantId): ?Worker
+    {
+        $fromCookie = self::workerFromDeviceCookie();
+        if ($fromCookie !== null && (int) $fromCookie->tenant_id === $tenantId) {
+            return $fromCookie;
+        }
+
+        return Worker::query()
+            ->where('tenant_id', $tenantId)
+            ->where('is_active', true)
+            ->get()
+            ->first(function (Worker $worker) {
+                $team = $worker->team;
+                if ($team === null) {
+                    return false;
+                }
+
+                $remembered = self::rememberedWorkerOnTeam($team);
+
+                return $remembered !== null && (int) $remembered->id === (int) $worker->id;
+            });
+    }
+
+    /**
      * Koppel deze browser los van de onthouden worker ("aanmelden als andere medewerker").
      */
     public static function revokeDeviceSessionFromRequest(?InternalTeam $team = null): void

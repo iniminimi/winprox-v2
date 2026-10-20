@@ -370,5 +370,18 @@
         "photo_missing": "No se pudo guardar una foto. Inténtelo de nuevo.",
         "check_recorded": "Comprobación guardada.",
         "report_saved": "Aviso guardado."
+    },
+    "passkey": {
+        "sign_in": "Iniciar sesión con huella o cara",
+        "or_pin": "o confirma con tu PIN",
+        "or_icon": "o elige tu icono",
+        "or_fallback": "o usa tu inicio de sesión habitual",
+        "enroll_title": "¿Iniciar sesión más rápido?",
+        "enroll_hint": "Protege este dispositivo con tu huella, cara o código del dispositivo. Tu PIN o icono sigue funcionando.",
+        "enroll_cta": "Activar",
+        "enroll_skip": "Ahora no",
+        "error_cancelled": "Verificación cancelada — inténtalo de nuevo o usa tu PIN o icono.",
+        "error_failed": "La verificación del dispositivo falló — usa tu PIN o icono.",
+        "error_device": "Este dispositivo no está vinculado a tu cuenta — usa tu PIN o icono."
     }
 }

@@ -370,5 +370,18 @@
         "photo_missing": "Een foto kon niet worden bewaard. Probeer het opnieuw.",
         "check_recorded": "Check bewaard.",
         "report_saved": "Melding bewaard."
+    },
+    "passkey": {
+        "sign_in": "Aanmelden met vingerafdruk of gezicht",
+        "or_pin": "of bevestig met je PIN",
+        "or_icon": "of kies je icoon",
+        "or_fallback": "of gebruik je gewone aanmelding",
+        "enroll_title": "Sneller aanmelden?",
+        "enroll_hint": "Beveilig dit toestel met je vingerafdruk, gezicht of toestelcode. Je PIN of icoon blijft werken.",
+        "enroll_cta": "Inschakelen",
+        "enroll_skip": "Nu niet",
+        "error_cancelled": "Verificatie afgebroken — probeer opnieuw of gebruik je PIN of icoon.",
+        "error_failed": "Toestelverificatie mislukt — gebruik je PIN of icoon.",
+        "error_device": "Dit toestel is niet gekoppeld aan je account — gebruik je PIN of icoon."
     }
 }

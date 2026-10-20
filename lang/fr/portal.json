@@ -370,5 +370,18 @@
         "photo_missing": "Une photo n'a pas pu être enregistrée. Réessayez.",
         "check_recorded": "Contrôle enregistré.",
         "report_saved": "Signalement enregistré."
+    },
+    "passkey": {
+        "sign_in": "Se connecter avec l'empreinte ou le visage",
+        "or_pin": "ou confirmez avec votre PIN",
+        "or_icon": "ou choisissez votre icône",
+        "or_fallback": "ou utilisez votre connexion habituelle",
+        "enroll_title": "Connexion plus rapide ?",
+        "enroll_hint": "Sécurisez cet appareil avec votre empreinte, votre visage ou le code de l'appareil. Votre PIN ou icône reste utilisable.",
+        "enroll_cta": "Activer",
+        "enroll_skip": "Plus tard",
+        "error_cancelled": "Vérification annulée — réessayez ou utilisez votre PIN ou icône.",
+        "error_failed": "Échec de la vérification de l'appareil — utilisez votre PIN ou icône.",
+        "error_device": "Cet appareil n'est pas lié à votre compte — utilisez votre PIN ou icône."
     }
 }

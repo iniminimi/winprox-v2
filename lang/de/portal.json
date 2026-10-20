@@ -370,5 +370,18 @@
         "photo_missing": "Ein Foto konnte nicht gespeichert werden. Bitte erneut versuchen.",
         "check_recorded": "Check gespeichert.",
         "report_saved": "Meldung gespeichert."
+    },
+    "passkey": {
+        "sign_in": "Mit Fingerabdruck oder Gesicht anmelden",
+        "or_pin": "oder mit PIN bestätigen",
+        "or_icon": "oder wählen Sie Ihr Symbol",
+        "or_fallback": "oder nutzen Sie Ihre normale Anmeldung",
+        "enroll_title": "Schneller anmelden?",
+        "enroll_hint": "Sichern Sie dieses Gerät mit Fingerabdruck, Gesicht oder Gerätecode. Ihre PIN oder Ihr Symbol bleibt nutzbar.",
+        "enroll_cta": "Aktivieren",
+        "enroll_skip": "Jetzt nicht",
+        "error_cancelled": "Verifizierung abgebrochen — erneut versuchen oder PIN bzw. Symbol verwenden.",
+        "error_failed": "Geräteverifizierung fehlgeschlagen — verwenden Sie PIN oder Symbol.",
+        "error_device": "Dieses Gerät ist nicht mit Ihrem Konto verknüpft — verwenden Sie PIN oder Symbol."
     }
 }

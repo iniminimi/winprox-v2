@@ -370,5 +370,18 @@
         "photo_missing": "A photo could not be saved. Please try again.",
         "check_recorded": "Check saved.",
         "report_saved": "Report saved."
+    },
+    "passkey": {
+        "sign_in": "Sign in with fingerprint or face",
+        "or_pin": "or confirm with your PIN",
+        "or_icon": "or pick your icon",
+        "or_fallback": "or use your regular sign-in",
+        "enroll_title": "Faster sign-in?",
+        "enroll_hint": "Secure this device with your fingerprint, face or device code. Your PIN or icon keeps working.",
+        "enroll_cta": "Enable",
+        "enroll_skip": "Not now",
+        "error_cancelled": "Verification cancelled — try again or use your PIN or icon.",
+        "error_failed": "Device verification failed — use your PIN or icon.",
+        "error_device": "This device is not linked to your account — use your PIN or icon."
     }
 }

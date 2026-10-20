@@ -15,6 +15,7 @@
         "phpoffice/phpword": "^1.1",
         "socialiteproviders/manager": "^4.9",
         "socialiteproviders/microsoft-azure": "^5.2",
+        "web-auth/webauthn-lib": "^5.3",
         "webklex/laravel-imap": "^6.2"
     },
     "require-dev": {

@@ -370,5 +370,18 @@
         "photo_missing": "Impossibile salvare una foto. Riprovare.",
         "check_recorded": "Check salvato.",
         "report_saved": "Segnalazione salvata."
+    },
+    "passkey": {
+        "sign_in": "Accedi con impronta o volto",
+        "or_pin": "oppure conferma con il PIN",
+        "or_icon": "oppure scegli la tua icona",
+        "or_fallback": "oppure usa l'accesso abituale",
+        "enroll_title": "Accesso più veloce?",
+        "enroll_hint": "Proteggi questo dispositivo con impronta, volto o codice del dispositivo. Il PIN o l'icona restano attivi.",
+        "enroll_cta": "Attiva",
+        "enroll_skip": "Non ora",
+        "error_cancelled": "Verifica annullata — riprova o usa PIN o icona.",
+        "error_failed": "Verifica del dispositivo non riuscita — usa PIN o icona.",
+        "error_device": "Questo dispositivo non è collegato al tuo account — usa PIN o icona."
     }
 }
