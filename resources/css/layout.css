@@ -1451,11 +1451,6 @@
     padding: 0.875rem;
 }
 
-.wp-portal .wp-tile:not(.wp-tile--static):not(.wp-tile--scroll),
-.wp-portal .wp-tile--scroll {
-    padding-right: 1.75rem;
-}
-
 .wp-portal button.wp-row {
     touch-action: manipulation;
     min-height: 2.75rem;
