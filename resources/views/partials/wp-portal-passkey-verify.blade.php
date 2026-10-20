@@ -11,8 +11,12 @@
          },
      })"
      x-show="supported" x-cloak>
-    <button type="button" class="btn btn--primary btn--block" @click="verify" :disabled="busy">
-        {{ __('portal.passkey.sign_in') }}
+    <div class="wp-passkey-badge" :class="{ 'is-busy': busy }" aria-hidden="true">
+        <x-wp-icon name="fingerprint" />
+    </div>
+    <button type="button" class="btn btn--primary btn--block wp-passkey-btn" @click="verify" :disabled="busy">
+        <x-wp-icon name="fingerprint" />
+        <span>{{ __('portal.passkey.sign_in') }}</span>
     </button>
     <p class="wp-error" x-show="error !== ''" x-text="error"></p>
     <p class="wp-hint">{{ $fallbackHint ?? __('portal.passkey.or_fallback') }}</p>
