@@ -3725,21 +3725,88 @@ a.wp-pagination__page:active:not(.is-active) {
     border-radius: var(--wp-radius-lg);
     box-shadow: var(--wp-shadow-sm);
     cursor: pointer;
-    transition: transform var(--wp-transition), border-color var(--wp-transition);
+    transition: transform var(--wp-transition), border-color var(--wp-transition), background-color var(--wp-transition);
 }
 
-.wp-tile:hover {
-    transform: translateY(-2px);
-    border-color: var(--wp-border-strong);
+.wp-tile:not(.wp-tile--static) {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.wp-tile:not(.wp-tile--static):not(.wp-tile--scroll) {
+    position: relative;
+}
+
+.wp-tile:not(.wp-tile--static):not(.wp-tile--scroll)::after {
+    content: "›";
+    content: "›" / "";
+    position: absolute;
+    top: 50%;
+    right: 0.65rem;
+    transform: translateY(-50%);
+    color: var(--wp-text-muted);
+    font-size: 1.35rem;
+    font-weight: 400;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.wp-tile--primary:not(.wp-tile--static):not(.wp-tile--scroll)::after {
+    color: currentColor;
+    opacity: 0.85;
+}
+
+.wp-tile--scroll {
+    position: relative;
+}
+
+.wp-tile--scroll::after {
+    content: "⌄";
+    content: "⌄" / "";
+    position: absolute;
+    top: 50%;
+    right: 0.65rem;
+    transform: translateY(-50%);
+    color: var(--wp-text-muted);
+    font-size: 1.15rem;
+    line-height: 1;
+    pointer-events: none;
+}
+
+.wp-tile:not(.wp-tile--static):active {
+    background-color: color-mix(in srgb, var(--wp-surface) 86%, var(--wp-text) 14%);
+}
+
+.wp-tile--primary:not(.wp-tile--static):active {
+    background-color: var(--wp-accent-strong);
 }
 
 .wp-tile--static {
     cursor: default;
+    background-color: var(--wp-surface-2);
+    border-color: transparent;
+    box-shadow: none;
 }
 
-.wp-tile--static:hover {
-    transform: none;
-    border-color: var(--wp-border);
+@media (hover: hover) and (pointer: fine) {
+    .wp-tile:not(.wp-tile--static):hover {
+        transform: translateY(-2px);
+        border-color: var(--wp-border-strong);
+    }
+
+    .wp-issue-link:hover {
+        border-color: var(--wp-border-strong);
+    }
+
+    button.wp-icon-tile:hover {
+        border-color: var(--wp-border-strong);
+        color: var(--wp-text);
+    }
+
+    .wp-release-worker-row:hover {
+        border-color: var(--wp-accent-border);
+        background: var(--wp-surface-hover);
+    }
 }
 
 .wp-tile--primary {
@@ -3782,10 +3849,33 @@ a.wp-pagination__page:active:not(.is-active) {
     text-align: left;
     cursor: pointer;
     width: 100%;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.wp-issue-link:hover {
-    border-color: var(--wp-border-strong);
+.wp-portal button.wp-card.wp-issue-link {
+    position: relative;
+    padding-right: 2.25rem;
+}
+
+.wp-portal button.wp-card.wp-issue-link::after {
+    content: "›";
+    content: "›" / "";
+    position: absolute;
+    top: 50%;
+    right: 0.85rem;
+    transform: translateY(-50%);
+    color: var(--wp-text-muted);
+    font-size: 1.35rem;
+    font-weight: 400;
+    line-height: 1;
+    pointer-events: none;
+}
+
+button.wp-card.wp-issue-link:active {
+    box-shadow:
+        var(--wp-shadow-sm),
+        inset 0 0 0 999px color-mix(in srgb, var(--wp-text) 12%, transparent);
 }
 
 .wp-issue-card--pending {
@@ -3815,9 +3905,13 @@ a.wp-pagination__page:active:not(.is-active) {
     transition: border-color var(--wp-transition), color var(--wp-transition), background-color var(--wp-transition);
 }
 
-.wp-icon-tile:hover {
-    border-color: var(--wp-border-strong);
-    color: var(--wp-text);
+button.wp-icon-tile {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+button.wp-icon-tile:active {
+    box-shadow: inset 0 0 0 999px color-mix(in srgb, var(--wp-text) 12%, transparent);
 }
 
 .wp-icon-tile.is-selected {
@@ -3851,11 +3945,18 @@ a.wp-pagination__page:active:not(.is-active) {
         border-color var(--wp-transition),
         background-color var(--wp-transition),
         box-shadow var(--wp-transition);
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.wp-release-worker-row:hover {
-    border-color: var(--wp-accent-border);
-    background: var(--wp-surface-hover);
+.wp-release-worker-row:active {
+    box-shadow: inset 0 0 0 999px color-mix(in srgb, var(--wp-text) 12%, transparent);
+}
+
+.wp-release-worker-row.is-selected:active {
+    box-shadow:
+        0 0 0 1px var(--wp-accent-border),
+        inset 0 0 0 999px color-mix(in srgb, var(--wp-text) 12%, transparent);
 }
 
 .wp-release-worker-row.is-selected {

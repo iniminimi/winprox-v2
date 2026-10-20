@@ -316,7 +316,7 @@
                 @endif
                 @if ($canAct)
                     <button type="button"
-                            class="wp-tile"
+                            class="wp-tile wp-tile--scroll"
                             @click="document.getElementById('portal-open-tasks')?.scrollIntoView({ behavior: 'smooth', block: 'start' })">
                         <span class="wp-tile-title">{{ __('portal.tiles.open_tasks') }} : {{ $openTaskCount }}</span>
                     </button>

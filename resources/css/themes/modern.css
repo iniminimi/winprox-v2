@@ -243,14 +243,29 @@
  | Flash stevig groen (wint van .wp-portal .wp-flash).
  */
 [data-theme='modern'] .wp-portal .wp-card,
-[data-theme='modern'] .wp-portal .wp-tile:not(.wp-tile--primary),
-[data-theme='modern'] .wp-portal .wp-tile--static,
+[data-theme='modern'] .wp-portal .wp-tile:not(.wp-tile--primary):not(.wp-tile--static),
 [data-theme='modern'] .wp-portal .wp-surface-muted,
 [data-theme='modern'] .wp-portal-head,
 [data-theme='modern'] .wp-portal-actions {
     background-color: rgba(255, 255, 255, 0.82);
     backdrop-filter: var(--wp-card-backdrop);
     -webkit-backdrop-filter: var(--wp-card-backdrop);
+}
+
+[data-theme='modern'] .wp-portal .wp-tile:not(.wp-tile--primary):not(.wp-tile--static):active {
+    background-color: rgba(226, 232, 240, 0.94);
+}
+
+[data-theme='modern'] .wp-portal .wp-tile--primary:active {
+    background-color: var(--wp-accent-strong);
+}
+
+[data-theme='modern'] .wp-portal .wp-tile--static {
+    background-color: color-mix(in srgb, var(--wp-surface-2) 72%, transparent);
+    border-color: transparent;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 
 [data-theme='modern'] .wp-portal-actions {

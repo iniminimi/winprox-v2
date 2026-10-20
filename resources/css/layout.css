@@ -1234,7 +1234,9 @@
 }
 
 .wp-portal .wp-tile--static {
-    background-color: color-mix(in srgb, var(--wp-surface) 85%, transparent);
+    background-color: var(--wp-surface-2);
+    border-color: transparent;
+    box-shadow: none;
 }
 
 .wp-portal .wp-flash {
@@ -1312,8 +1314,10 @@
     color: #fecaca;
 }
 
-.wp-portal-now--absence .wp-portal-now__disclosure-toggle:hover .wp-portal-now__name {
-    color: color-mix(in srgb, var(--wp-portal-now-fg) 80%, #fecaca);
+@media (hover: hover) and (pointer: fine) {
+    .wp-portal-now--absence .wp-portal-now__disclosure-toggle:hover .wp-portal-now__name {
+        color: color-mix(in srgb, var(--wp-portal-now-fg) 80%, #fecaca);
+    }
 }
 
 .wp-portal-now__alert {
@@ -1366,22 +1370,25 @@
     flex: 1 1 auto;
     min-width: 0;
     width: auto;
-    min-height: 2.5rem;
+    min-height: 2.75rem;
     align-items: center;
     color: inherit;
+    touch-action: manipulation;
 }
 
-.wp-portal-now__disclosure-toggle:hover .wp-portal-now__name {
-    color: color-mix(in srgb, var(--wp-portal-now-fg) 80%, #10b981);
+@media (hover: hover) and (pointer: fine) {
+    .wp-portal-now__disclosure-toggle:hover .wp-portal-now__name {
+        color: color-mix(in srgb, var(--wp-portal-now-fg) 80%, #10b981);
+    }
+
+    .wp-portal-now__disclosure-toggle:hover .wp-disclosure-chevron {
+        color: var(--wp-portal-now-fg);
+    }
 }
 
 .wp-portal-now .wp-disclosure-chevron {
     color: var(--wp-portal-now-muted);
     flex: none;
-}
-
-.wp-portal-now__disclosure-toggle:hover .wp-disclosure-chevron {
-    color: var(--wp-portal-now-fg);
 }
 
 .wp-portal-now__more-panel {
@@ -1442,6 +1449,43 @@
 
 .wp-portal .wp-tile {
     padding: 0.875rem;
+}
+
+.wp-portal .wp-tile:not(.wp-tile--static):not(.wp-tile--scroll),
+.wp-portal .wp-tile--scroll {
+    padding-right: 1.75rem;
+}
+
+.wp-portal button.wp-row {
+    touch-action: manipulation;
+    min-height: 2.75rem;
+}
+
+.wp-portal .btn--sm,
+.wp-portal .wp-today-destination__nav,
+.wp-portal .wp-lang-select-trigger,
+.wp-portal .wp-lang-select-option,
+.wp-portal .wp-page-help-trigger,
+.wp-portal .wp-photo-remove {
+    min-height: 2.75rem;
+    min-width: 2.75rem;
+}
+
+.wp-portal .btn--sm {
+    height: 2.75rem;
+}
+
+.wp-portal .wp-page-help-trigger {
+    width: 2.75rem;
+    height: 2.75rem;
+}
+
+.wp-portal .wp-photo-remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 0.875rem;
 }
 
 .wp-portal-welcome-title {
