@@ -28,10 +28,12 @@ class BuildClockPointHomescreenManifestAction
         $appId = url('/time-portal/'.$tenantId);
         $manifestUrl = route('public.time-portal.tenant.manifest', $tenantId);
         $scope = rtrim(url('/'), '/').'/';
-        $icon192 = url('/images/pwa/winprox-192.png');
-        $icon512 = url('/images/pwa/winprox-512.png');
-        $maskable192 = url('/images/pwa/winprox-maskable-192.png');
-        $maskable512 = url('/images/pwa/winprox-maskable-512.png');
+        // ?v=2 bust Chrome's icoon-cache bij herinstall — gelijke URL's
+        // zouden anders de oude (kleinere) PNG's blijven tonen.
+        $icon192 = url('/images/pwa/winprox-192.png').'?v=2';
+        $icon512 = url('/images/pwa/winprox-512.png').'?v=2';
+        $maskable192 = url('/images/pwa/winprox-maskable-192.png').'?v=2';
+        $maskable512 = url('/images/pwa/winprox-maskable-512.png').'?v=2';
 
         return [
             'id' => $appId,
