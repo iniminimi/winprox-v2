@@ -597,7 +597,7 @@
                 },
                 {
                     "label": "Lavoratori",
-                    "text": "I lavoratori non hanno login e-mail; accedono con il QR Clock Point (nome + icona, PIN opzionale) su un telefono. L’elenco del team mostra pillole di stato e **Modifica**: caposquadra, timbratrice (icona/telefono/PIN) e stato sono in quella finestra. Sedi opzionali (vuoto = ovunque). Elenchi grandi: **Persone → Lavoratori**."
+                    "text": "I lavoratori non hanno login e-mail; accedono con il QR Clock Point (nome + icona, PIN o biometria opzionali) su un telefono. L’elenco del team mostra pillole di stato e **Modifica**: caposquadra, timbratrice (icona/telefono/PIN/passkey) e stato sono in quella finestra. Sedi opzionali (vuoto = ovunque). Elenchi grandi: **Persone → Lavoratori**."
                 },
                 {
                     "label": "Sedi per esecutore",
@@ -621,11 +621,11 @@
                 },
                 {
                     "label": "Reimposta icona",
-                    "text": "Apri **Modifica** sul lavoratore in Persone → Team. Il reset cancella icona, PIN e telefono associato, così può accedere di nuovo. Utile in caso di dispositivo perso, blocco o icona sbagliata. I capisquadra possono anche rimuovere icone dai membri del team nel proprio portale."
+                    "text": "Apri **Modifica** sul lavoratore in Persone → Team. Il reset cancella icona, PIN, eventuali passkey e telefono associato, così può accedere di nuovo. Utile in caso di dispositivo perso, blocco o icona sbagliata. I capisquadra possono anche rimuovere icone dai membri del team nel proprio portale."
                 },
                 {
                     "label": "Nuovo dispositivo o PIN",
-                    "text": "Apri **Modifica**. **Consenti nuovo dispositivo** compare se c’è un telefono associato; **Reimposta PIN** se c’è un PIN. Serve solo in caso di telefono perso, blocco o nuova icona."
+                    "text": "Apri **Modifica**. **Consenti nuovo dispositivo** compare se c’è un telefono associato; **Reimposta PIN** se c’è un PIN; **Rimuovi passkey** se ce n’è una. Serve solo in caso di telefono perso, blocco o nuova icona."
                 },
                 {
                     "label": "Caposquadra",
@@ -709,7 +709,7 @@
                 },
                 {
                     "label": "Sicurezza marcatura",
-                    "text": "Solo con Time: PIN, GPS alla timbratura, visite GPS su Clock Point e, in opzione, timbrare dalla barra laterale per i colleghi con un team di timbratura (disattivato di default)."
+                    "text": "Solo con Time: PIN, biometria (passkey), GPS alla timbratura, visite GPS su Clock Point e, in opzione, timbrare dalla barra laterale per i colleghi con un team di timbratura (disattivato di default)."
                 },
                 {
                     "label": "Elenco evacuazione",
@@ -1052,7 +1052,11 @@
             "actions": [
                 {
                     "label": "Nome e icona",
-                    "text": "Apri il portale Clock Point scansionando l'adesivo o lo schermo orologio, tramite il link di accesso di un'e-mail o tramite l'icona sulla schermata home, e scegli nome, cognome e icona personale (PIN opzionale) sul tuo telefono. Questo dice chi sei — non è ancora timbrare. Nessun pulsante per un altro esecutore: il telefono resta tuo finché un admin o un caposquadra lo sblocca. Dopo l’accesso scompare il titolo Accesso. Due tentativi errati bloccano temporaneamente l'account; un caposquadra o un amministratore può sbloccarlo."
+                    "text": "Apri il portale Clock Point scansionando l'adesivo o lo schermo orologio, tramite il link di accesso di un'e-mail o tramite l'icona sulla schermata home, e scegli nome, cognome e icona personale (PIN o biometria opzionali) sul tuo telefono. Questo dice chi sei — non è ancora timbrare. Nessun pulsante per un altro esecutore: il telefono resta tuo finché un admin o un caposquadra lo sblocca. Dopo l’accesso scompare il titolo Accesso. Due tentativi errati bloccano temporaneamente l'account; un caposquadra o un amministratore può sbloccarlo."
+                },
+                {
+                    "label": "Impronta o volto",
+                    "text": "Dopo il primo accesso con icona o PIN, il portale propone «Accesso più veloce?» — tocchi Attiva e confermi con l'impronta o il volto del suo telefono (o il codice del dispositivo). Da quel momento il pulsante Accedi con la biometria compare in alto; icona o PIN funziona sempre. La sua impronta o il suo volto non lascia mai il telefono — WinProx conserva solo una chiave pubblica. Non vede la proposta? Il suo amministratore ha disattivato l'opzione o il dispositivo non la supporta. L'amministrazione può rimuovere la sua passkey in Persone → Team → Modifica."
                 },
                 {
                     "label": "Collegamento sulla schermata iniziale",
@@ -1060,7 +1064,7 @@
                 },
                 {
                     "label": "Esci",
-                    "text": "Dopo l’accesso puoi Esci: il portale chiede di nuovo l’icona (o il PIN). Non è un’uscita e non scollega il telefono; solo un admin o un caposquadra sblocca il dispositivo. L’uscita è sulla riga di timbratura."
+                    "text": "Dopo l’accesso puoi Esci: il portale chiede di nuovo l’icona, il PIN o la biometria. Non è un’uscita e non scollega il telefono; solo un admin o un caposquadra sblocca il dispositivo. L’uscita è sulla riga di timbratura."
                 },
                 {
                     "label": "Attività aperte",
@@ -1342,7 +1346,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Gli esecutori timbrano tramite l'adesivo QR su un clock point (<code>/time/…</code>). Identificazione con nome e icona (PIN opzionale) su un solo telefono — nessun accesso separato."
+                    "text": "Gli esecutori timbrano tramite l'adesivo QR su un clock point (<code>/time/…</code>). Identificazione con nome e icona (PIN o biometria opzionali) su un solo telefono — nessun accesso separato."
                 },
                 {
                     "label": "Timbratura manuale",
@@ -1758,7 +1762,7 @@
                 },
                 {
                     "label": "Modifica",
-                    "text": "Aggiungi, modifica o disattiva lavoratori da Persone → Team → **Modifica**. Icona, telefono, PIN, caposquadra ed eliminazione sono in quella finestra. Questa schermata serve a cercare e filtrare in fretta."
+                    "text": "Aggiungi, modifica o disattiva lavoratori da Persone → Team → **Modifica**. Icona, telefono, PIN, passkey, caposquadra ed eliminazione sono in quella finestra. Questa schermata serve a cercare e filtrare in fretta."
                 }
             ]
         },
@@ -2019,7 +2023,7 @@
             "actions": [
                 {
                     "label": "Scopo",
-                    "text": "Gli operatori sono lavoratori sul campo senza login. Si registrano tramite il link o il QR del Clock Point con nome e un'icona personale (o PIN), e usano un solo cellulare fisso."
+                    "text": "Gli operatori sono lavoratori sul campo senza login. Si registrano tramite il link o il QR del Clock Point con nome e un'icona personale (o PIN o biometria), e usano un solo cellulare fisso."
                 },
                 {
                     "label": "Aggiungi",
@@ -2030,8 +2034,8 @@
                     "text": "Compila il numero NISS/INSZ quando l'operatore partecipa alla registrazione presenze RSZ. Senza NISS nessun invio è possibile per quell'operatore."
                 },
                 {
-                    "label": "Icona, cellulare e PIN",
-                    "text": "Dispositivo perso, blocco o icona sbagliata: apri Modifica e libera icona, cellulare o PIN. L'operatore si registra di nuovo."
+                    "label": "Icona, cellulare, PIN e passkey",
+                    "text": "Dispositivo perso, blocco o icona sbagliata: apri Modifica e libera icona, cellulare, PIN o passkey. L'operatore si registra di nuovo."
                 },
                 {
                     "label": "Capo squadra",
@@ -2154,7 +2158,7 @@
             "actions": [
                 {
                     "label": "Scopo",
-                    "text": "L'operatore apre una volta il link Clock Point dalla mail o scansiona il QR, sceglie il suo nome e conferma con un'icona personale o un PIN. Quel cellulare resta collegato da quel momento."
+                    "text": "L'operatore apre una volta il link Clock Point dalla mail o scansiona il QR, sceglie il suo nome e conferma con un'icona personale, un PIN o la biometria. Quel cellulare resta collegato da quel momento."
                 },
                 {
                     "label": "Schermata home",

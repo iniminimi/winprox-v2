@@ -81,7 +81,7 @@
     <li>contact details (such as email address), where entered by the customer</li>
     <li>assignment to tasks within internal teams</li>
     <li>personal icon for Clock Point sign-in</li>
-    <li>bound device (one phone per worker) and, if set, a hashed PIN</li>
+    <li>bound device (one phone per worker) and, if set, a hashed PIN and/or a passkey credential (public key — no biometric data is stored)</li>
 </ul>
 <p>
     If a worker already opened the unit QR, the browser can temporarily store tasks, reports (including photos) and unit checks on the device until connectivity returns. Those data then go to the customer’s environment. Signing in as another worker clears that local queue.
@@ -91,7 +91,7 @@
 </p>
 <p><strong>Time (punch clock) and Clock Point</strong></p>
 <p>
-    Workers sign in via the Clock Point QR (name + icon, optional PIN). WinProx binds one phone per worker.
+    Workers sign in via the Clock Point QR (name + icon, optional PIN or biometrics). WinProx binds one phone per worker.
     Another device is refused until the customer releases it (admin or team leader).
     With Time, WinProx stores clock-in/out times, breaks and presence; optional GPS at the punch
     (without a signal indoors the punch still goes through). If the customer turns the evacuation list on

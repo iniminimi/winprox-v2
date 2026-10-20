@@ -597,7 +597,7 @@
                 },
                 {
                     "label": "Trabajadores",
-                    "text": "Los trabajadores no tienen inicio de sesión por correo; se identifican con el QR Clock Point (nombre + icono, PIN opcional) en un móvil. La lista del equipo muestra pastillas de estado y **Editar**: jefe de equipo, reloj (icono/móvil/PIN) y estado están en esa ventana. Sedes opcionales (vacío = en todas). Listas grandes: **Personas → Trabajadores**."
+                    "text": "Los trabajadores no tienen inicio de sesión por correo; se identifican con el QR Clock Point (nombre + icono, PIN o biometría opcionales) en un móvil. La lista del equipo muestra pastillas de estado y **Editar**: jefe de equipo, reloj (icono/móvil/PIN/passkey) y estado están en esa ventana. Sedes opcionales (vacío = en todas). Listas grandes: **Personas → Trabajadores**."
                 },
                 {
                     "label": "Sedes por ejecutor",
@@ -621,11 +621,11 @@
                 },
                 {
                     "label": "Restablecer icono",
-                    "text": "Abra **Editar** en el trabajador en Personas → Equipos. Restablecer borra el icono, el PIN y el móvil vinculado para que pueda identificarse de nuevo. Útil si se pierde el dispositivo, hay bloqueo o el icono es incorrecto. Los jefes de equipo también pueden eliminar iconos de sus compañeros en su portal."
+                    "text": "Abra **Editar** en el trabajador en Personas → Equipos. Restablecer borra el icono, el PIN, las claves de acceso y el móvil vinculado para que pueda identificarse de nuevo. Útil si se pierde el dispositivo, hay bloqueo o el icono es incorrecto. Los jefes de equipo también pueden eliminar iconos de sus compañeros en su portal."
                 },
                 {
                     "label": "Dispositivo nuevo o PIN",
-                    "text": "Abra **Editar**. **Permitir dispositivo nuevo** aparece si hay un móvil vinculado; **Restablecer PIN** si hay un PIN. Solo hace falta si se pierde el móvil, hay bloqueo o se necesita un icono nuevo."
+                    "text": "Abra **Editar**. **Permitir dispositivo nuevo** aparece si hay un móvil vinculado; **Restablecer PIN** si hay un PIN; **Eliminar clave de acceso** si existe una. Solo hace falta si se pierde el móvil, hay bloqueo o se necesita un icono nuevo."
                 },
                 {
                     "label": "Jefe de equipo",
@@ -709,7 +709,7 @@
                 },
                 {
                     "label": "Seguridad del fichaje",
-                    "text": "Solo con Time: PIN, GPS al fichar, visitas GPS en Clock Point y, opcionalmente, fichar desde la barra lateral para colegas con un equipo de fichaje (desactivado por defecto)."
+                    "text": "Solo con Time: PIN, biometría (clave de acceso), GPS al fichar, visitas GPS en Clock Point y, opcionalmente, fichar desde la barra lateral para colegas con un equipo de fichaje (desactivado por defecto)."
                 },
                 {
                     "label": "Lista de evacuación",
@@ -1052,7 +1052,11 @@
             "actions": [
                 {
                     "label": "Nombre e icono",
-                    "text": "Abra el portal Clock Point escaneando la pegatina o la pantalla del reloj, mediante el enlace de acceso de un correo o con el icono de inicio, y elija su nombre, apellidos e icono personal (PIN opcional) en su propio móvil. Eso indica quién es — aún no es fichar. No hay botón para otro ejecutor: el móvil sigue siendo suyo hasta que un admin o un jefe de equipo lo libere. Tras identificarse desaparece el título Inicio de sesión. Dos intentos incorrectos bloquean temporalmente su cuenta; un jefe de equipo o administrador puede desbloquearla."
+                    "text": "Abra el portal Clock Point escaneando la pegatina o la pantalla del reloj, mediante el enlace de acceso de un correo o con el icono de inicio, y elija su nombre, apellidos e icono personal (PIN o biometría opcionales) en su propio móvil. Eso indica quién es — aún no es fichar. No hay botón para otro ejecutor: el móvil sigue siendo suyo hasta que un admin o un jefe de equipo lo libere. Tras identificarse desaparece el título Inicio de sesión. Dos intentos incorrectos bloquean temporalmente su cuenta; un jefe de equipo o administrador puede desbloquearla."
+                },
+                {
+                    "label": "Huella o cara",
+                    "text": "Tras su primera identificación con icono o PIN, el portal ofrece «¿Iniciar sesión más rápido?» — toque Activar y confirme con la huella o la cara de su móvil (o el código del dispositivo). A partir de entonces el botón Iniciar sesión con biometría aparece arriba; el icono o el PIN sigue funcionando siempre. Su huella o cara nunca sale de su móvil — WinProx solo conserva una clave pública. ¿No ve la oferta? Su administrador ha desactivado la opción o su dispositivo no la admite. La administración puede eliminar su clave de acceso en Personas → Equipos → Editar."
                 },
                 {
                     "label": "Acceso directo en la pantalla de inicio",
@@ -1060,7 +1064,7 @@
                 },
                 {
                     "label": "Cerrar sesión",
-                    "text": "Tras identificarte puedes Cerrar sesión: el portal vuelve a pedir tu icono (o PIN). No es una salida y no desvincula el móvil; solo un admin o un jefe de equipo libera el dispositivo. La salida está en tu línea de fichaje."
+                    "text": "Tras identificarte puedes Cerrar sesión: el portal vuelve a pedir tu icono, PIN o biometría. No es una salida y no desvincula el móvil; solo un admin o un jefe de equipo libera el dispositivo. La salida está en tu línea de fichaje."
                 },
                 {
                     "label": "Tareas abiertas",
@@ -1342,7 +1346,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Los operarios fichan mediante la pegatina QR en un clock point (<code>/time/…</code>). Identificación con nombre e icono (PIN opcional) en un solo móvil — sin inicio de sesión aparte."
+                    "text": "Los operarios fichan mediante la pegatina QR en un clock point (<code>/time/…</code>). Identificación con nombre e icono (PIN o biometría opcionales) en un solo móvil — sin inicio de sesión aparte."
                 },
                 {
                     "label": "Fichar manualmente",
@@ -1758,7 +1762,7 @@
                 },
                 {
                     "label": "Editar",
-                    "text": "Añada, edite o desactive trabajadores en Personas → Equipos → **Editar**. Icono, móvil, PIN, jefe de equipo y eliminar están en esa ventana. Esta pantalla sirve para buscar y filtrar rápido."
+                    "text": "Añada, edite o desactive trabajadores en Personas → Equipos → **Editar**. Icono, móvil, PIN, clave de acceso, jefe de equipo y eliminar están en esa ventana. Esta pantalla sirve para buscar y filtrar rápido."
                 }
             ]
         },
@@ -2019,7 +2023,7 @@
             "actions": [
                 {
                     "label": "Objetivo",
-                    "text": "Los operarios son trabajadores de campo sin login. Se registran mediante el enlace o QR del Clock Point con su nombre y un icono personal (o PIN), y usan un solo móvil fijo."
+                    "text": "Los operarios son trabajadores de campo sin login. Se registran mediante el enlace o QR del Clock Point con su nombre y un icono personal (o PIN o biometría), y usan un solo móvil fijo."
                 },
                 {
                     "label": "Añadir",
@@ -2030,8 +2034,8 @@
                     "text": "Rellena el número NISS/INSZ cuando el operario participa en el registro de presencia de la RSZ. Sin NISS no hay envío posible para ese operario."
                 },
                 {
-                    "label": "Icono, móvil y PIN",
-                    "text": "Móvil perdido, bloqueo o icono equivocado: abre Editar y libera icono, móvil o PIN. El operario se registra de nuevo después."
+                    "label": "Icono, móvil, PIN y clave de acceso",
+                    "text": "Móvil perdido, bloqueo o icono equivocado: abre Editar y libera icono, móvil, PIN o clave de acceso. El operario se registra de nuevo después."
                 },
                 {
                     "label": "Jefe de equipo",
@@ -2154,7 +2158,7 @@
             "actions": [
                 {
                     "label": "Objetivo",
-                    "text": "El operario abre una vez el enlace Clock Point del mail o escanea el QR, elige su nombre y confirma con un icono personal o PIN. Ese móvil queda vinculado desde entonces."
+                    "text": "El operario abre una vez el enlace Clock Point del mail o escanea el QR, elige su nombre y confirma con un icono personal, PIN o biometría. Ese móvil queda vinculado desde entonces."
                 },
                 {
                     "label": "Pantalla de inicio",

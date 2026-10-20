@@ -81,7 +81,7 @@
     <li>Kontaktdaten (z. B. E-Mail-Adresse), soweit vom Kunden eingegeben.</li>
     <li>Zuweisung zu Aufgaben innerhalb interner Teams.</li>
     <li>persönliches Symbol für die Clock-Point-Anmeldung.</li>
-    <li>gekoppeltes Gerät (ein Handy pro Ausführendem) und, falls gesetzt, eine gehashte PIN.</li>
+    <li>gekoppeltes Gerät (ein Handy pro Ausführendem) und, falls gesetzt, eine gehashte PIN und/oder eine Passkey-Berechtigung (öffentlicher Schlüssel — es werden keine biometrischen Daten gespeichert).</li>
 </ul>
 <p>
     Hat ein Ausführender den Unit-QR schon geöffnet, kann der Browser Aufgaben, Meldungen (einschließlich Fotos) und Unit-Checks vorübergehend auf dem Gerät speichern, bis wieder Verbindung besteht. Diese Daten gehen danach in die Umgebung des Kunden. Die Anmeldung als anderer Ausführender löscht diese lokale Warteschlange.
@@ -91,7 +91,7 @@
 </p>
 <p><strong>Time (Stechuhr) und Clock Point</strong></p>
 <p>
-    Ausführende melden sich über den Clock-Point-QR an (Name + Symbol, optionale PIN). WinProx koppelt ein Handy
+    Ausführende melden sich über den Clock-Point-QR an (Name + Symbol, optionale PIN oder Biometrie). WinProx koppelt ein Handy
     pro Ausführendem. Ein anderes Gerät wird abgelehnt, bis der Kunde es freigibt (Verwaltung oder Teamleiter).
     Mit Time speichert WinProx Ein-/Ausstempelzeiten, Pausen und Anwesenheit; optional GPS beim Stempeln
     (ohne Signal indoor geht der Stempel durch). Wenn der Kunde die Evakuierungsliste einschaltet (Einstellungen, standardmäßig aus),

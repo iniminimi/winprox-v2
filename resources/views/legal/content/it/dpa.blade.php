@@ -51,7 +51,7 @@
     <li>dati di problematiche e attività (inclusi foto e descrizioni).</li>
     <li>dati di controllo unità (risultato, orario, unità, GPS opzionale, esecutore).</li>
     <li>dati di lavoratori e segnalanti QR, nella misura in cui raccolti dal cliente (incluse bozze temporanee in attesa di conferma e-mail).</li>
-    <li>dati Time/Clock Point (presenza, dispositivo associato, PIN con hash se impostato, GPS opzionale alla timbratura, minuti di pausa sul foglio ore incluso il minimo team applicato — nessun evento CIAO extra, turno pianificato e assenze inseriti dal cliente, audit delle consultazioni dell’elenco evacuazione).</li>
+    <li>dati Time/Clock Point (presenza, dispositivo associato, PIN con hash se impostato, passkey se attivata (chiave pubblica, nessun dato biometrico), GPS opzionale alla timbratura, minuti di pausa sul foglio ore incluso il minimo team applicato — nessun evento CIAO extra, turno pianificato e assenze inseriti dal cliente, audit delle consultazioni dell’elenco evacuazione).</li>
     <li>dati di accesso e sessione.</li>
     <li>metadati di abbonamento e accesso.</li>
     <li>dati ESG/conformità (definizioni degli indicatori, valori di misurazione, collegamenti, follow-up soglie e attribuzione opzionale ai lavoratori).</li>

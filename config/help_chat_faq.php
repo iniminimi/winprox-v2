@@ -135,6 +135,15 @@ return [
         ],
         [
             'patterns' => [
+                'vingerafdruk', 'fingerprint', 'touch id', 'face id', 'gezichtsherkenning',
+                'biometr', 'passkey', 'empreinte', 'biométrie', 'visage',
+                'fingerabdruck', 'gesicht', 'huella', 'cara', 'biometría',
+                'impronta', 'volto', 'biometria', 'face unlock',
+            ],
+            'body_key' => 'faq.items.worker_biometric.summary',
+        ],
+        [
+            'patterns' => [
                 'time', 'klokken', 'inchecken', 'uitchecken', 'clock', 'pauze', 'shift', 'stempeln', 'fichaje', 'pointage',
                 'evacuatie', 'evacuation', 'évacuation', 'evakuierung', 'evacuación',
                 'pincode', 'pin code', 'nieuw toestel', 'new device',

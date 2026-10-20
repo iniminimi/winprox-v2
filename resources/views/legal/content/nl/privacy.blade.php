@@ -81,7 +81,7 @@
     <li>contactgegevens (zoals e-mailadres), indien door de klant ingevoerd.</li>
     <li>toewijzing aan taken binnen interne teams.</li>
     <li>persoonlijk icoon voor Clock Point-aanmelding.</li>
-    <li>gekoppeld toestel (één gsm per uitvoerder) en, indien ingesteld, een gehashte pincode.</li>
+    <li>gekoppeld toestel (één gsm per uitvoerder) en, indien ingesteld, een gehashte pincode en/of een passkey-credential (publieke sleutel — er worden geen biometrische gegevens bewaard).</li>
 </ul>
 <p>
     Als een uitvoerder de unit-QR al heeft geopend, kan de browser taken, meldingen (inclusief foto’s) en unit checks tijdelijk op het toestel bewaren tot er weer verbinding is. Die gegevens gaan daarna naar de omgeving van de klant. Bij afmelden als andere medewerker wordt die lokale wachtrij gewist.
@@ -91,7 +91,7 @@
 </p>
 <p><strong>Time (prikklok) en Clock Point</strong></p>
 <p>
-    Uitvoerders melden zich aan via de Clock Point-QR (naam + icoon, optioneel pincode). WinProx koppelt één gsm
+    Uitvoerders melden zich aan via de Clock Point-QR (naam + icoon, optioneel pincode of biometrie). WinProx koppelt één gsm
     per uitvoerder. Een ander toestel wordt geweigerd tot de klant het vrijgeeft (beheer of teamleader).
     Met Time bewaart WinProx in- en uitkloktijden, pauzes en aanwezigheid; optioneel GPS-coördinaten bij de prik
     (zonder signaal indoor gaat de prik door). Als de klant de evacuatielijst inschakelt (Instellingen, standaard uit),

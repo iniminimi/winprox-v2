@@ -81,7 +81,7 @@
     <li>dati di contatto (come l'indirizzo e-mail), ove inseriti dal cliente</li>
     <li>assegnazione ad attività all'interno dei team interni</li>
     <li>icona personale per l’accesso Clock Point</li>
-    <li>dispositivo associato (un telefono per esecutore) e, se impostato, un PIN con hash</li>
+    <li>dispositivo associato (un telefono per esecutore) e, se impostato, un PIN con hash e/o una passkey (chiave pubblica — nessun dato biometrico viene conservato)</li>
 </ul>
 <p>
     Se un esecutore ha già aperto il QR unità, il browser può conservare temporaneamente sul dispositivo attività, segnalazioni (incluse foto) e controlli unità fino al ritorno della connessione. Quei dati vanno poi nell’ambiente del cliente. Accedere come un altro esecutore cancella quella coda locale.
@@ -91,7 +91,7 @@
 </p>
 <p><strong>Time (timbratrice) e Clock Point</strong></p>
 <p>
-    Gli esecutori accedono con il QR Clock Point (nome + icona, PIN opzionale). WinProx associa un telefono
+    Gli esecutori accedono con il QR Clock Point (nome + icona, PIN o biometria opzionali). WinProx associa un telefono
     per esecutore. Un altro dispositivo è rifiutato finché il cliente non lo sblocca (admin o caposquadra).
     Con Time, WinProx conserva orari di ingresso/uscita, pause e presenza; GPS opzionale alla timbratura
     (senza segnale al chiuso la timbratura passa). Se il cliente attiva l’elenco evacuazione (Impostazioni, disattivato di default),

@@ -348,7 +348,11 @@ return [
             'page' => 'settings',
         ],
         [
-            'patterns' => ['clock point portaal', 'aanmelden uitvoerder', 'icoon', 'mijn uren', 'my hours'],
+            'patterns' => [
+                'clock point portaal', 'aanmelden uitvoerder', 'icoon', 'mijn uren', 'my hours',
+                'vingerafdruk', 'gezicht', 'biometr', 'passkey', 'fingerprint', 'face id',
+                'empreinte', 'visage', 'fingerabdruck', 'gesicht', 'huella', 'impronta', 'volto',
+            ],
             'page' => 'portal.time',
         ],
         [

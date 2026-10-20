@@ -14,6 +14,7 @@ return [
         'moderation',
         'photos',
         'time_clock',
+        'worker_biometric',
         'time_schedule',
         'time_absence',
         'ddt_number',

@@ -597,7 +597,7 @@
                 },
                 {
                     "label": "Workers",
-                    "text": "Workers have no email login; they sign in via the Clock Point QR with name and icon (optional PIN) on one phone. The team list shows status pills and **Edit** — team leader, time clock (icon/phone/PIN) and status live in that modal. Optionally link sites (empty = anywhere). Large lists: **People → Workers**."
+                    "text": "Workers have no email login; they sign in via the Clock Point QR with name and icon (optional PIN or biometrics) on one phone. The team list shows status pills and **Edit** — team leader, time clock (icon/phone/PIN/passkey) and status live in that modal. Optionally link sites (empty = anywhere). Large lists: **People → Workers**."
                 },
                 {
                     "label": "Locations per worker",
@@ -621,11 +621,11 @@
                 },
                 {
                     "label": "Reset icon",
-                    "text": "Open **Edit** on the worker in People → Teams. Resetting clears the icon, PIN and bound phone so the worker can sign in again. Useful for a lost device, lockout, or a mistaken icon. Team leaders can also remove icons from their team members in their portal."
+                    "text": "Open **Edit** on the worker in People → Teams. Resetting clears the icon, PIN, any passkeys and bound phone so the worker can sign in again. Useful for a lost device, lockout, or a mistaken icon. Team leaders can also remove icons from their team members in their portal."
                 },
                 {
                     "label": "New device or PIN",
-                    "text": "Open **Edit**. **Allow new device** appears if a phone is bound; **Reset PIN** if a PIN is set. Only needed for a lost phone, lockout, or a new icon."
+                    "text": "Open **Edit**. **Allow new device** appears if a phone is bound; **Reset PIN** if a PIN is set; **Remove passkey** if a passkey exists. Only needed for a lost phone, lockout, or a new icon."
                 },
                 {
                     "label": "Team leader",
@@ -709,7 +709,7 @@
                 },
                 {
                     "label": "Punch clock security",
-                    "text": "Time only: PIN, GPS at the punch, GPS work visits on Clock Point, and optionally clock-in from the sidebar for colleagues with a punch-clock team (off by default)."
+                    "text": "Time only: PIN, biometrics (passkey), GPS at the punch, GPS work visits on Clock Point, and optionally clock-in from the sidebar for colleagues with a punch-clock team (off by default)."
                 },
                 {
                     "label": "Evacuation list",
@@ -1052,7 +1052,11 @@
             "actions": [
                 {
                     "label": "Name and icon",
-                    "text": "Open the Clock Point portal by scanning the sticker or the clock screen, via the sign-in link from an email or via the home screen icon, and choose your first and last name plus your personal icon (optional PIN) on your own phone. That is who you are — it is not clocking in yet. There is no button to sign in as a different worker: the phone stays yours until an admin or team leader releases it. After sign-in the Sign in heading disappears. Two wrong attempts temporarily block your account; a team leader or administrator can release it."
+                    "text": "Open the Clock Point portal by scanning the sticker or the clock screen, via the sign-in link from an email or via the home screen icon, and choose your first and last name plus your personal icon (optional PIN or biometrics) on your own phone. That is who you are — it is not clocking in yet. There is no button to sign in as a different worker: the phone stays yours until an admin or team leader releases it. After sign-in the Sign in heading disappears. Two wrong attempts temporarily block your account; a team leader or administrator can release it."
+                },
+                {
+                    "label": "Fingerprint or face",
+                    "text": "After your first sign-in with icon or PIN, the portal offers «Faster sign-in?» — tap Enable and confirm with your phone’s fingerprint or face (or device code). From then on the Sign in with biometrics button sits on top; icon or PIN always still works. Your fingerprint or face never leaves your phone — WinProx only stores a public key. No offer? Then your admin has disabled the option or your device does not support it. Admins can remove your passkey via People → Teams → Edit."
                 },
                 {
                     "label": "Home screen shortcut",
@@ -1060,7 +1064,7 @@
                 },
                 {
                     "label": "Sign out",
-                    "text": "After sign-in you can Sign out: the portal then asks for your icon (or PIN) again. That is not clock-out and does not unbind the phone; only an admin or team leader releases the device. Clock-out is on your clock-in line."
+                    "text": "After sign-in you can Sign out: the portal then asks for your icon, PIN or biometrics again. That is not clock-out and does not unbind the phone; only an admin or team leader releases the device. Clock-out is on your clock-in line."
                 },
                 {
                     "label": "Open tasks",
@@ -1342,7 +1346,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Field workers clock in and out via the QR sticker on a clock point (<code>/time/…</code>). Identification uses name and icon (optional PIN) on one phone — no separate login."
+                    "text": "Field workers clock in and out via the QR sticker on a clock point (<code>/time/…</code>). Identification uses name and icon (optional PIN or biometrics) on one phone — no separate login."
                 },
                 {
                     "label": "Clock in manually",
@@ -1758,7 +1762,7 @@
                 },
                 {
                     "label": "Edit",
-                    "text": "Add, edit or deactivate workers via People → Teams → **Edit**. Icon, phone, PIN, team leader and delete live in that modal. This screen is for quick search and filtering."
+                    "text": "Add, edit or deactivate workers via People → Teams → **Edit**. Icon, phone, PIN, passkey, team leader and delete live in that modal. This screen is for quick search and filtering."
                 }
             ]
         },
@@ -2019,7 +2023,7 @@
             "actions": [
                 {
                     "label": "Purpose",
-                    "text": "Workers are field staff without a login. They sign in via the Clock Point link or QR with their name and a personal icon (or PIN), and use one fixed phone."
+                    "text": "Workers are field staff without a login. They sign in via the Clock Point link or QR with their name and a personal icon (or PIN or biometrics), and use one fixed phone."
                 },
                 {
                     "label": "Add",
@@ -2030,8 +2034,8 @@
                     "text": "Fill in the NISS/INSZ number when the worker takes part in NSSO presence registration. Without NISS no submission is possible for that worker."
                 },
                 {
-                    "label": "Icon, phone and PIN",
-                    "text": "Lost device, lockout or wrong icon: open Edit and release the icon, phone or PIN. The worker then signs in again."
+                    "label": "Icon, phone, PIN and passkey",
+                    "text": "Lost device, lockout or wrong icon: open Edit and release the icon, phone, PIN or passkey. The worker then signs in again."
                 },
                 {
                     "label": "Team leader",
@@ -2154,7 +2158,7 @@
             "actions": [
                 {
                     "label": "Purpose",
-                    "text": "The worker opens the Clock Point link from the mail once or scans the QR, picks their name and confirms with a personal icon or PIN. That phone is linked from then on."
+                    "text": "The worker opens the Clock Point link from the mail once or scans the QR, picks their name and confirms with a personal icon, PIN or biometrics. That phone is linked from then on."
                 },
                 {
                     "label": "Home screen",

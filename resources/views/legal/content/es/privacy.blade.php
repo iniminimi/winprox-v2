@@ -81,7 +81,7 @@
     <li>datos de contacto (como la dirección de correo electrónico), cuando los introduce el cliente</li>
     <li>asignación a tareas dentro de equipos internos</li>
     <li>icono personal para identificarse en Clock Point</li>
-    <li>dispositivo vinculado (un móvil por trabajador) y, si se configura, un PIN hasheado</li>
+    <li>dispositivo vinculado (un móvil por trabajador) y, si se configura, un PIN hasheado y/o una clave de acceso (clave pública — no se guardan datos biométricos)</li>
 </ul>
 <p>
     Si un ejecutor ya abrió el QR de unidad, el navegador puede guardar temporalmente en el dispositivo tareas, avisos (incluidas fotos) y controles de unidad hasta que vuelva la conexión. Esos datos pasan después al entorno del cliente. Identificarse como otro ejecutor borra esa cola local.
@@ -91,7 +91,7 @@
 </p>
 <p><strong>Time (reloj de fichar) y Clock Point</strong></p>
 <p>
-    Los trabajadores se identifican con el QR Clock Point (nombre + icono, PIN opcional). WinProx vincula un móvil
+    Los trabajadores se identifican con el QR Clock Point (nombre + icono, PIN o biometría opcionales). WinProx vincula un móvil
     por trabajador. Otro dispositivo se rechaza hasta que el cliente lo libere (admin o jefe de equipo).
     Con Time, WinProx guarda horas de entrada/salida, pausas y presencia; GPS opcional al fichar
     (sin señal en interior, el fichaje sigue). Si el cliente activa la lista de evacuación (Ajustes, desactivada por defecto),

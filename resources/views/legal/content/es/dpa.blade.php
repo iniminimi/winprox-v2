@@ -53,7 +53,7 @@
     <li>datos de comprobación de unidad (resultado, marca de tiempo, unidad, GPS opcional, ejecutor).</li>
     <li>datos de mediciones de unidad (campo, valor, fecha/hora, unidad, origen, ejecutor o usuario opcional).</li>
     <li>datos de trabajadores e informantes QR, en la medida en que los recopile el cliente (incluidos borradores temporales a la espera de confirmación por correo).</li>
-    <li>datos Time/Clock Point (presencia, dispositivo vinculado, PIN hasheado si se configura, GPS opcional al fichar, minutos de pausa en el parte incluido el mínimo de equipo aplicado — sin evento CIAO extra, cuadrante y ausencias que introduce el cliente, auditoría de consultas de la lista de evacuación).</li>
+    <li>datos Time/Clock Point (presencia, dispositivo vinculado, PIN hasheado si se configura, clave de acceso si está activada (clave pública, sin datos biométricos), GPS opcional al fichar, minutos de pausa en el parte incluido el mínimo de equipo aplicado — sin evento CIAO extra, cuadrante y ausencias que introduce el cliente, auditoría de consultas de la lista de evacuación).</li>
     <li>datos de acceso y sesión.</li>
     <li>metadatos de suscripción y acceso.</li>
     <li>datos ESG/cumplimiento (definiciones de indicadores, valores de medición, vínculos, seguimiento de umbrales y atribución opcional a trabajadores).</li>

@@ -605,7 +605,7 @@
                 },
                 {
                     "label": "Exécutants",
-                    "text": "Les exécutants n’ont pas de login e-mail ; ils s’identifient via la QR Clock Point avec nom et icône (PIN optionnel) sur un téléphone. La liste d’équipe montre des pastilles de statut et **Modifier** — rôle, pointeuse (icône/téléphone/PIN) et statut sont dans cette fenêtre. Sites optionnels (vide = partout). Grandes listes : **Personnes → Exécutants**."
+                    "text": "Les exécutants n’ont pas de login e-mail ; ils s’identifient via la QR Clock Point avec nom et icône (PIN ou biométrie optionnels) sur un téléphone. La liste d’équipe montre des pastilles de statut et **Modifier** — rôle, pointeuse (icône/téléphone/PIN/passkey) et statut sont dans cette fenêtre. Sites optionnels (vide = partout). Grandes listes : **Personnes → Exécutants**."
                 },
                 {
                     "label": "Sites par exécutant",
@@ -629,11 +629,11 @@
                 },
                 {
                     "label": "Réinitialiser l'icône",
-                    "text": "Ouvrez **Modifier** sur l’exécutant dans Personnes → Équipes. La réinitialisation efface l’icône, le code PIN et le téléphone lié, pour qu’il puisse se reconnecter. Utile en cas d’appareil perdu, de verrouillage ou d’icône erronée. Les chefs d’équipe peuvent aussi supprimer des icônes de leurs coéquipiers dans leur portail."
+                    "text": "Ouvrez **Modifier** sur l’exécutant dans Personnes → Équipes. La réinitialisation efface l’icône, le code PIN, les clés d’accès éventuelles et le téléphone lié, pour qu’il puisse se reconnecter. Utile en cas d’appareil perdu, de verrouillage ou d’icône erronée. Les chefs d’équipe peuvent aussi supprimer des icônes de leurs coéquipiers dans leur portail."
                 },
                 {
                     "label": "Nouvel appareil ou code PIN",
-                    "text": "Ouvrez **Modifier**. **Autoriser un nouvel appareil** apparaît s’il y a un téléphone lié ; **Réinitialiser le PIN** s’il y a un code. Uniquement en cas d’appareil perdu, de verrouillage ou d’une nouvelle icône."
+                    "text": "Ouvrez **Modifier**. **Autoriser un nouvel appareil** apparaît s’il y a un téléphone lié ; **Réinitialiser le PIN** s’il y a un code ; **Supprimer la clé d’accès** s’il y en a une. Uniquement en cas d’appareil perdu, de verrouillage ou d’une nouvelle icône."
                 },
                 {
                     "label": "Chef d’équipe",
@@ -717,7 +717,7 @@
                 },
                 {
                     "label": "Sécurité de la pointeuse",
-                    "text": "Uniquement avec Time : PIN, GPS à la pointe, visites GPS sur Clock Point, et en option le pointage depuis la barre latérale pour les collègues avec une équipe de pointage (désactivé par défaut)."
+                    "text": "Uniquement avec Time : PIN, biométrie (clé d’accès), GPS à la pointe, visites GPS sur Clock Point, et en option le pointage depuis la barre latérale pour les collègues avec une équipe de pointage (désactivé par défaut)."
                 },
                 {
                     "label": "Liste d'évacuation",
@@ -1060,7 +1060,11 @@
             "actions": [
                 {
                     "label": "Nom et icône",
-                    "text": "Ouvrez le portail Clock Point en scannant l'autocollant ou l'écran de pointage, via le lien de connexion d'un e-mail ou via l'icône d'accueil, puis choisissez votre prénom, nom et icône personnelle (PIN optionnel) sur votre propre téléphone. Cela indique qui vous êtes — ce n'est pas encore pointer. Pas de bouton pour un autre exécutant : le téléphone reste le vôtre jusqu’à libération par l’admin ou le chef d’équipe. Après connexion, le titre Connexion disparaît. Deux tentatives incorrectes bloquent temporairement votre compte ; un chef d'équipe ou un administrateur peut le débloquer."
+                    "text": "Ouvrez le portail Clock Point en scannant l'autocollant ou l'écran de pointage, via le lien de connexion d'un e-mail ou via l'icône d'accueil, puis choisissez votre prénom, nom et icône personnelle (PIN ou biométrie optionnels) sur votre propre téléphone. Cela indique qui vous êtes — ce n'est pas encore pointer. Pas de bouton pour un autre exécutant : le téléphone reste le vôtre jusqu’à libération par l’admin ou le chef d’équipe. Après connexion, le titre Connexion disparaît. Deux tentatives incorrectes bloquent temporairement votre compte ; un chef d'équipe ou un administrateur peut le débloquer."
+                },
+                {
+                    "label": "Empreinte ou visage",
+                    "text": "Après votre première identification avec icône ou code PIN, le portail propose « Connexion plus rapide ? » — touchez Activer et confirmez avec l'empreinte ou le visage de votre téléphone (ou le code de l'appareil). Ensuite le bouton Se connecter avec la biométrie apparaît en haut ; l'icône ou le code PIN fonctionne toujours. Votre empreinte ou votre visage ne quitte jamais votre téléphone — WinProx ne conserve qu'une clé publique. Pas de proposition ? Votre administrateur a désactivé l'option ou votre appareil ne la prend pas en charge. L'admin peut supprimer votre clé d'accès via Personnes → Équipes → Modifier."
                 },
                 {
                     "label": "Raccourci sur l’écran d’accueil",
@@ -1068,7 +1072,7 @@
                 },
                 {
                     "label": "Se déconnecter",
-                    "text": "Après connexion vous pouvez Se déconnecter : le portail redemande alors votre icône (ou PIN). Ce n’est pas une sortie et cela ne détache pas le téléphone ; seul un admin ou un chef d’équipe libère l’appareil. La sortie se trouve sur votre ligne de pointage."
+                    "text": "Après connexion vous pouvez Se déconnecter : le portail redemande alors votre icône, le PIN ou la biométrie. Ce n’est pas une sortie et cela ne détache pas le téléphone ; seul un admin ou un chef d’équipe libère l’appareil. La sortie se trouve sur votre ligne de pointage."
                 },
                 {
                     "label": "Tâches ouvertes",
@@ -1350,7 +1354,7 @@
                 },
                 {
                     "label": "QR Clock Point",
-                    "text": "Les exécutants pointent via l'autocollant QR sur un clock point (<code>/time/…</code>). Identification par nom et icône (PIN optionnel) sur un seul téléphone — pas de connexion séparée."
+                    "text": "Les exécutants pointent via l'autocollant QR sur un clock point (<code>/time/…</code>). Identification par nom et icône (PIN ou biométrie optionnels) sur un seul téléphone — pas de connexion séparée."
                 },
                 {
                     "label": "Pointer manuellement",
@@ -1766,7 +1770,7 @@
                 },
                 {
                     "label": "Modifier",
-                    "text": "Ajoutez, modifiez ou désactivez des exécutants via Personnes → Équipes → **Modifier**. Icône, téléphone, PIN, chef d’équipe et suppression sont dans cette fenêtre. Cet écran sert à chercher et filtrer rapidement."
+                    "text": "Ajoutez, modifiez ou désactivez des exécutants via Personnes → Équipes → **Modifier**. Icône, téléphone, PIN, clé d’accès, chef d’équipe et suppression sont dans cette fenêtre. Cet écran sert à chercher et filtrer rapidement."
                 }
             ]
         },
@@ -2027,7 +2031,7 @@
             "actions": [
                 {
                     "label": "Objectif",
-                    "text": "Les exécutants sont des travailleurs de terrain sans login. Ils se connectent via le lien ou le QR du Clock Point avec leur nom et une icône personnelle (ou code PIN), et utilisent un seul GSM fixe."
+                    "text": "Les exécutants sont des travailleurs de terrain sans login. Ils se connectent via le lien ou le QR du Clock Point avec leur nom et une icône personnelle (ou code PIN ou biométrie), et utilisent un seul GSM fixe."
                 },
                 {
                     "label": "Ajouter",
@@ -2038,8 +2042,8 @@
                     "text": "Renseignez le numéro NISS/INSZ lorsque l'exécutant participe à l'enregistrement de présence ONSS. Sans NISS, aucun envoi n'est possible pour cet exécutant."
                 },
                 {
-                    "label": "Icône, GSM et code PIN",
-                    "text": "Appareil perdu, blocage ou mauvaise icône : ouvrez Modifier et libérez l'icône, le GSM ou le code PIN. L'exécutant se reconnecte ensuite."
+                    "label": "Icône, GSM, code PIN et clé d'accès",
+                    "text": "Appareil perdu, blocage ou mauvaise icône : ouvrez Modifier et libérez l'icône, le GSM, le code PIN ou la clé d'accès. L'exécutant se reconnecte ensuite."
                 },
                 {
                     "label": "Chef d'équipe",
@@ -2162,7 +2166,7 @@
             "actions": [
                 {
                     "label": "Objectif",
-                    "text": "L'exécutant ouvre une fois le lien Clock Point reçu par mail ou scanne le QR, choisit son nom et confirme avec une icône personnelle ou un code PIN. Ce GSM est dès lors lié."
+                    "text": "L'exécutant ouvre une fois le lien Clock Point reçu par mail ou scanne le QR, choisit son nom et confirme avec une icône personnelle, un code PIN ou la biométrie. Ce GSM est dès lors lié."
                 },
                 {
                     "label": "Écran d'accueil",

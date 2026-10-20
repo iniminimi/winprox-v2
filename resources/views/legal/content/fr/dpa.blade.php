@@ -53,7 +53,7 @@
     <li>données d’issues et de tâches (y compris photos et descriptions).</li>
     <li>données de contrôle d’unité (résultat, horodatage, unité, GPS optionnel, exécutant).</li>
     <li>données des exécutants et des personnes signalant via QR, dans la mesure collectées par le client (y compris les brouillons temporaires en attente de confirmation e-mail).</li>
-    <li>données Time/Clock Point (présence, appareil lié, PIN haché le cas échéant, GPS optionnel à la pointe, minutes de pause sur la feuille d’heures y compris le minimum d’équipe appliqué — pas d’événement CIAO extra, planning et absences saisis par le client, audit des consultations de la liste d’évacuation).</li>
+    <li>données Time/Clock Point (présence, appareil lié, PIN haché le cas échéant, clé d’accès si activée (clé publique, aucune donnée biométrique), GPS optionnel à la pointe, minutes de pause sur la feuille d’heures y compris le minimum d’équipe appliqué — pas d’événement CIAO extra, planning et absences saisis par le client, audit des consultations de la liste d’évacuation).</li>
     <li>données d’accès et de session.</li>
     <li>métadonnées d’abonnement et d’accès.</li>
     <li>données ESG/conformité (définitions d’indicateurs, valeurs de mesure, liens, suivi des seuils et attribution optionnelle aux exécutants).</li>

@@ -781,6 +781,15 @@ productsector op `Tenant`.
 - Worker zonder login (naam + icoon, of PIN als die in Instellingen aan staat).
   Staat PIN aan, dan vraagt een nieuwe gsm **geen icoon**: naam, daarna pincode
   (twee keer als die nog niet bestaat), ook als de uitvoerder nog geen icoon heeft.
+  **Passkey/biometrie (optioneel; per tenant aan/uit via Instellingen →
+  Prikklok-beveiliging, standaard aan):** na een geslaagde icoon/PIN-aanmelding
+  biedt het portaal op die gsm een passkey aan (WebAuthn — vingerafdruk, gezicht
+  of toestelcode; de gsm kiest). Daarna staat **Aanmelden met biometrie** bovenaan
+  de verificatie; icoon/PIN blijft de fallback. De credential bewijst controle
+  over de eigen gsm en vervangt de QR-scan niet als aanwezigheidsbewijs; enkel
+  de publieke sleutel wordt bewaard, geen biometrische data. Beheer trekt alle
+  passkeys van een uitvoerder in via Personen → Teams → Bewerken →
+  **Passkey verwijderen**; daarna kan opnieuw worden ingeschreven na icoon/PIN.
   **één gsm per uitvoerder**
   (koppeling bij eerste geslaagde Clock Point-aanmelding; ander toestel weigeren + audit
   tot beheer/teamleader vrijgeeft). Na vrijgave claimt een nog open sessie die gsm

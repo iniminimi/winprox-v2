@@ -597,7 +597,7 @@
                 },
                 {
                     "label": "Uitvoerders",
-                    "text": "Uitvoerders hebben geen e-mail-login; zij melden zich aan via de Clock Point-QR met naam en icoon (optioneel pincode) op één gsm. In de teamlijst zie je statuspills en **Bewerken** — teamleader, prikklok (icoon/gsm/PIN) en status staan in die modal. Optioneel vestigingen koppelen (leeg = overal). Grote lijsten beheer je onder **Personen → Uitvoerders**."
+                    "text": "Uitvoerders hebben geen e-mail-login; zij melden zich aan via de Clock Point-QR met naam en icoon (optioneel pincode of biometrie) op één gsm. In de teamlijst zie je statuspills en **Bewerken** — teamleader, prikklok (icoon/gsm/PIN/passkey) en status staan in die modal. Optioneel vestigingen koppelen (leeg = overal). Grote lijsten beheer je onder **Personen → Uitvoerders**."
                 },
                 {
                     "label": "Vestigingen per uitvoerder",
@@ -621,11 +621,11 @@
                 },
                 {
                     "label": "Icoon resetten",
-                    "text": "Open **Bewerken** bij de uitvoerder in Personen → Teams. Resetten wist het icoon, de pincode en de gekoppelde gsm, zodat de uitvoerder zich opnieuw kan aanmelden. Handig bij verloren toestel, lockout of een verkeerd icoon. Teamleaders kunnen in hun portal ook iconen verwijderen van hun teamgenoten."
+                    "text": "Open **Bewerken** bij de uitvoerder in Personen → Teams. Resetten wist het icoon, de pincode, eventuele passkeys en de gekoppelde gsm, zodat de uitvoerder zich opnieuw kan aanmelden. Handig bij verloren toestel, lockout of een verkeerd icoon. Teamleaders kunnen in hun portal ook iconen verwijderen van hun teamgenoten."
                 },
                 {
                     "label": "Nieuw toestel of pincode",
-                    "text": "Open **Bewerken**. **Nieuw toestel toestaan** verschijnt als er een gsm gekoppeld is; **Pincode resetten** als er een pincode staat. Alleen nodig bij verloren gsm, lockout of een nieuw icoon."
+                    "text": "Open **Bewerken**. **Nieuw toestel toestaan** verschijnt als er een gsm gekoppeld is; **Pincode resetten** als er een pincode staat; **Passkey verwijderen** als er een passkey is. Alleen nodig bij verloren gsm, lockout of een nieuw icoon."
                 },
                 {
                     "label": "Teamleader",
@@ -709,7 +709,7 @@
                 },
                 {
                     "label": "Prikklok-beveiliging",
-                    "text": "Alleen bij Time: pincode, GPS bij de prik, GPS-werkbezoeken op Clock Point, en optioneel inklokken vanuit de zijbalk voor collega's met een prikklok-team (standaard uit)."
+                    "text": "Alleen bij Time: pincode, biometrie (passkey), GPS bij de prik, GPS-werkbezoeken op Clock Point, en optioneel inklokken vanuit de zijbalk voor collega's met een prikklok-team (standaard uit)."
                 },
                 {
                     "label": "Evacuatielijst",
@@ -1052,7 +1052,11 @@
             "actions": [
                 {
                     "label": "Naam en icoon",
-                    "text": "Open het Clock Point-portaal via een scan van de sticker of het klokscherm, via de aanmeldlink uit een e-mail of via het startscherm-icoon, en kies je voor- en achternaam plus je persoonlijke icoon (optioneel pincode) op je eigen gsm. Dat zegt wie je bent — het is nog geen inklokken. Geen knop om als andere medewerker aan te melden: de gsm blijft van jou tot beheer of teamleader vrijgeeft. Na aanmelden verdwijnt de kop Aanmelden. Twee foute pogingen blokkeren je account tijdelijk; een teamleider of beheerder kan dat vrijgeven."
+                    "text": "Open het Clock Point-portaal via een scan van de sticker of het klokscherm, via de aanmeldlink uit een e-mail of via het startscherm-icoon, en kies je voor- en achternaam plus je persoonlijke icoon (optioneel pincode of biometrie) op je eigen gsm. Dat zegt wie je bent — het is nog geen inklokken. Geen knop om als andere medewerker aan te melden: de gsm blijft van jou tot beheer of teamleader vrijgeeft. Na aanmelden verdwijnt de kop Aanmelden. Twee foute pogingen blokkeren je account tijdelijk; een teamleider of beheerder kan dat vrijgeven."
+                },
+                {
+                    "label": "Vingerafdruk of gezicht",
+                    "text": "Na je eerste aanmelding met icoon of pincode biedt het portaal «Sneller aanmelden?» aan — tik Inschakelen en bevestig met de vingerafdruk of het gezicht van je gsm (of je toestelcode). Daarna staat de knop Aanmelden met biometrie bovenaan; icoon of pincode werkt altijd nog. Je vingerafdruk of gezicht verlaat je gsm nooit — WinProx bewaart enkel een publieke sleutel. Geen aanbod? Dan staat je beheerder de optie niet toe of kan je toestel het niet. Beheer kan je passkey verwijderen via Personen → Teams → Bewerken."
                 },
                 {
                     "label": "Snelkoppeling op startscherm",
@@ -1060,7 +1064,7 @@
                 },
                 {
                     "label": "Afmelden",
-                    "text": "Na aanmelden kun je Afmelden: het portaal vraagt daarna opnieuw je icoon (of PIN). Dat is geen uitklokken en koppelt de gsm niet los; alleen beheer of een teamleader geeft het toestel vrij. Uitklokken staat bij je inklokregel."
+                    "text": "Na aanmelden kun je Afmelden: het portaal vraagt daarna opnieuw je icoon, PIN of biometrie. Dat is geen uitklokken en koppelt de gsm niet los; alleen beheer of een teamleader geeft het toestel vrij. Uitklokken staat bij je inklokregel."
                 },
                 {
                     "label": "Open taken",
@@ -1342,7 +1346,7 @@
                 },
                 {
                     "label": "Clock Point QR",
-                    "text": "Uitvoerders klokken in en uit via de QR-sticker op een clock point (<code>/time/…</code>). Identificatie gebeurt met naam en icoon (optioneel pincode) op één gsm — geen aparte login."
+                    "text": "Uitvoerders klokken in en uit via de QR-sticker op een clock point (<code>/time/…</code>). Identificatie gebeurt met naam en icoon (optioneel pincode of biometrie) op één gsm — geen aparte login."
                 },
                 {
                     "label": "Manueel inklokken",
@@ -1758,7 +1762,7 @@
                 },
                 {
                     "label": "Bewerken",
-                    "text": "Voeg uitvoerders toe, wijzig of deactiveer via Personen → Teams → **Bewerken**. Icoon, gsm, pincode, teamleader en verwijderen zitten in die modal. Dit scherm is bedoeld om snel te zoeken en te filteren."
+                    "text": "Voeg uitvoerders toe, wijzig of deactiveer via Personen → Teams → **Bewerken**. Icoon, gsm, pincode, passkey, teamleader en verwijderen zitten in die modal. Dit scherm is bedoeld om snel te zoeken en te filteren."
                 }
             ]
         },
@@ -2019,7 +2023,7 @@
             "actions": [
                 {
                     "label": "Doel",
-                    "text": "Uitvoerders zijn veldwerkers zonder login. Ze melden zich aan via de Clock Point-link of QR met hun naam en een persoonlijk icoon (of pincode), en gebruiken één vaste gsm."
+                    "text": "Uitvoerders zijn veldwerkers zonder login. Ze melden zich aan via de Clock Point-link of QR met hun naam en een persoonlijk icoon (of pincode of biometrie), en gebruiken één vaste gsm."
                 },
                 {
                     "label": "Toevoegen",
@@ -2030,8 +2034,8 @@
                     "text": "Vul het NISS/INSZ-nummer in wanneer de uitvoerder meedoet aan de RSZ-aanwezigheidsregistratie. Zonder NISS kan er geen inzending voor die uitvoerder."
                 },
                 {
-                    "label": "Icoon, gsm en pincode",
-                    "text": "Bij een verloren toestel, lockout of verkeerd icoon: open Bewerken en geef icoon, gsm of pincode vrij. De uitvoerder meldt zich daarna opnieuw aan."
+                    "label": "Icoon, gsm, pincode en passkey",
+                    "text": "Bij een verloren toestel, lockout of verkeerd icoon: open Bewerken en geef icoon, gsm, pincode of passkey vrij. De uitvoerder meldt zich daarna opnieuw aan."
                 },
                 {
                     "label": "Teamleader",
@@ -2154,7 +2158,7 @@
             "actions": [
                 {
                     "label": "Doel",
-                    "text": "De uitvoerder opent eenmalig de Clock Point-link uit de mail of scant de QR, kiest zijn naam en bevestigt met een persoonlijk icoon of pincode. Die gsm is vanaf dan gekoppeld."
+                    "text": "De uitvoerder opent eenmalig de Clock Point-link uit de mail of scant de QR, kiest zijn naam en bevestigt met een persoonlijk icoon, pincode of biometrie. Die gsm is vanaf dan gekoppeld."
                 },
                 {
                     "label": "Startscherm",

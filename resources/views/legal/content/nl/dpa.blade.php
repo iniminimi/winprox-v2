@@ -53,7 +53,7 @@
     <li>unit-checkgegevens (resultaat, tijdstip, unit, optioneel GPS, uitvoerder).</li>
     <li>unitmetinggegevens (meetveld, waarde, tijdstip, unit, bron, optioneel uitvoerder of beheerder).</li>
     <li>gegevens van uitvoerders en QR-melders, voor zover door de klant verzameld (inclusief tijdelijke conceptmeldingen in afwachting van e-mailbevestiging).</li>
-    <li>Time-/Clock Point-gegevens (aanwezigheid, gekoppeld toestel, gehashte pincode indien ingesteld, optionele GPS bij de prik, pauzeminuten op de urenstaat inclusief toegepast teamminimum — geen extra CIAO-event, gepland uurrooster en afwezigheden die de klant invoert, audit van evacuatielijst-raadplegingen).</li>
+    <li>Time-/Clock Point-gegevens (aanwezigheid, gekoppeld toestel, gehashte pincode indien ingesteld, passkey-credential indien ingeschakeld (publieke sleutel, geen biometrische gegevens), optionele GPS bij de prik, pauzeminuten op de urenstaat inclusief toegepast teamminimum — geen extra CIAO-event, gepland uurrooster en afwezigheden die de klant invoert, audit van evacuatielijst-raadplegingen).</li>
     <li>toegangs- en sessiegegevens.</li>
     <li>abonnements- en toegangsmetadata.</li>
     <li>ESG-/compliance-gegevens (indicatordefinities, meetwaarden, koppelingen, drempelopvolging en optionele toeschrijving aan uitvoerders).</li>

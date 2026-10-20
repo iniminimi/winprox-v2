@@ -53,7 +53,7 @@
     <li>unit check data (result, timestamp, unit, optional GPS, worker).</li>
     <li>unit measurement data (measure field, value, timestamp, unit, source, optional worker or staff user).</li>
     <li>data of workers and QR reporters, to the extent collected by the customer (including temporary draft reports pending email confirmation).</li>
-    <li>Time/Clock Point data (presence, bound device, hashed PIN if set, optional GPS at the punch, timesheet break minutes including an applied team minimum — not an extra CIAO event, planned roster and absences entered by the customer, audit of evacuation-list consultations).</li>
+    <li>Time/Clock Point data (presence, bound device, hashed PIN if set, passkey credential if enabled (public key, no biometric data), optional GPS at the punch, timesheet break minutes including an applied team minimum — not an extra CIAO event, planned roster and absences entered by the customer, audit of evacuation-list consultations).</li>
     <li>access and session data.</li>
     <li>subscription and access metadata.</li>
     <li>ESG/compliance data (indicator definitions, measurement values, links, threshold follow-up and optional attribution to workers).</li>

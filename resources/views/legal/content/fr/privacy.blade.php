@@ -81,7 +81,7 @@
     <li>coordonnées (par ex. adresse e-mail), si saisies par le client.</li>
     <li>affectation aux tâches au sein des équipes internes.</li>
     <li>icône personnelle pour l’identification Clock Point.</li>
-    <li>appareil lié (un téléphone par exécutant) et, le cas échéant, un code PIN haché.</li>
+    <li>appareil lié (un téléphone par exécutant) et, le cas échéant, un code PIN haché et/ou une clé d’accès (clé publique — aucune donnée biométrique n’est conservée).</li>
 </ul>
 <p>
     Si un exécutant a déjà ouvert le QR d’unité, le navigateur peut conserver temporairement sur l’appareil les tâches, signalements (y compris photos) et contrôles d’unité jusqu’au retour de la connexion. Ces données vont ensuite dans l’environnement du client. Se connecter comme un autre exécutant efface cette file locale.
@@ -91,7 +91,7 @@
 </p>
 <p><strong>Time (pointeuse) et Clock Point</strong></p>
 <p>
-    Les exécutants s’identifient via la QR Clock Point (nom + icône, PIN optionnel). WinProx lie un téléphone par exécutant.
+    Les exécutants s’identifient via la QR Clock Point (nom + icône, PIN ou biométrie en option). WinProx lie un téléphone par exécutant.
     Un autre appareil est refusé jusqu’à libération par le client (admin ou chef d’équipe).
     Avec Time, WinProx conserve les heures d’entrée/sortie, les pauses et la présence ; GPS optionnel à la pointe
     (sans signal en intérieur, la pointe passe). Si le client active la liste d’évacuation (Paramètres, désactivée par défaut),
