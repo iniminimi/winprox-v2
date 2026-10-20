@@ -293,7 +293,22 @@ class TimePortal extends Component
                 $token,
                 $resolution->historyToken,
             );
-            InvalidQrResponse::abort();
+
+            if ($resolution->historyToken !== null) {
+                // Oude sticker na vernieuwing — die blijft dood; de worker
+                // scant de actuele sticker ter plaatse.
+                InvalidQrResponse::abort(['messageKey' => 'qr.invalid.message_sticker']);
+            }
+
+            // Verlopen scherm-QR (oude foto/screenshot): wel een uitweg naar
+            // het portaal op de vaste link — dezelfde toegang als /cp geeft.
+            $homeToken = (string) $clockPoint->qr_token;
+            InvalidQrResponse::abort([
+                'messageKey' => 'qr.invalid.message_display',
+                'portalHomeUrl' => $homeToken !== ''
+                    ? route('public.time-portal.cp', ['token' => $homeToken])
+                    : null,
+            ]);
         }
 
         $this->token = $token;

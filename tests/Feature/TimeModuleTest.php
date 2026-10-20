@@ -29,6 +29,7 @@ use App\Models\WorkShift;
 use App\Models\WorkShiftTaskLog;
 use App\Support\Portal\WorkerVerification;
 use App\Support\Tenancy;
+use App\Support\Time\ClockDisplayQr;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Livewire\Livewire;
@@ -833,6 +834,8 @@ it('blokkeert een verlopen QR-token, logt de poging en toont de foutkaart', func
     $this->get('/time/'.$history->qr_token)
         ->assertNotFound()
         ->assertSee(__('qr.invalid.title'))
+        ->assertSee(__('qr.invalid.message_sticker'))
+        ->assertSee(__('qr.invalid.back'))
         ->assertSee(__('qr.invalid.welcome'))
         ->assertDontSee(__('error.404.title'));
 
@@ -840,6 +843,32 @@ it('blokkeert een verlopen QR-token, logt de poging en toont de foutkaart', func
         ->where('action', 'clock_point.qr_blocked')
         ->where('model_id', $clockPoint->id)
         ->exists())->toBeTrue();
+});
+
+it('biedt een weg naar het portaal bij een verlopen scherm-QR', function () {
+    [$tenant] = timeTenantWithAdmin();
+    $clockPoint = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'qr_token' => 'homeportaltokenabcdefghijklmnop',
+    ]);
+    $clockPoint->forceFill([
+        'display_id' => str_repeat('d', 24),
+        'display_secret' => 'display-secret-for-invalid-card',
+    ])->save();
+    $clockPoint->refresh();
+
+    $staleToken = $clockPoint->display_id.ClockDisplayQr::dynFor(
+        $clockPoint->display_secret,
+        ClockDisplayQr::currentWindow() - 5,
+    );
+
+    $this->get('/time/'.$staleToken)
+        ->assertNotFound()
+        ->assertSee(__('qr.invalid.message_display'))
+        ->assertSee(__('qr.invalid.portal_home'))
+        ->assertSee(route('public.time-portal.cp', $clockPoint->qr_token), false)
+        ->assertSee(__('qr.invalid.welcome'))
+        ->assertDontSee(__('error.404.title'));
 });
 
 it('toont alleen scans van een vorige QR-code', function () {

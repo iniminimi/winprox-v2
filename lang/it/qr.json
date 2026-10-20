@@ -56,7 +56,11 @@
     },
     "invalid": {
         "title": "Codice QR non valido",
-        "message": "Questo codice QR non è (più) valido.",
+        "message": "Questo codice QR non è (più) valido. Scansiona il codice attuale sul posto.",
+        "message_sticker": "Questo adesivo QR è stato sostituito. Scansiona l'adesivo attuale sul posto.",
+        "message_display": "Questo codice QR dello schermo dell'orologio è scaduto — il codice cambia ogni ±30 secondi. Apri il portale e scansiona il codice attuale.",
+        "portal_home": "Apri il portale",
+        "back": "Indietro",
         "welcome": "Vai alla home"
     }
 }

@@ -6,10 +6,19 @@
             </div>
 
             <h1>{{ __('qr.invalid.title') }}</h1>
-            <p>{{ __('qr.invalid.message') }}</p>
+            <p>{{ __($messageKey ?? 'qr.invalid.message') }}</p>
 
             <div class="wp-card-actions">
-                <a href="{{ route('welcome') }}" class="btn btn--primary">
+                @if ($portalHomeUrl ?? null)
+                    <a href="{{ $portalHomeUrl }}" class="btn btn--primary">
+                        {{ __('qr.invalid.portal_home') }}
+                    </a>
+                @else
+                    <a href="#" onclick="history.back(); return false;" class="btn btn--primary">
+                        {{ __('qr.invalid.back') }}
+                    </a>
+                @endif
+                <a href="{{ route('welcome') }}" class="btn btn--ghost">
                     {{ __('qr.invalid.welcome') }}
                 </a>
             </div>

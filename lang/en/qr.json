@@ -56,7 +56,11 @@
     },
     "invalid": {
         "title": "QR code not valid",
-        "message": "This QR code is not valid (anymore).",
+        "message": "This QR code is not valid (anymore). Scan the current code on site.",
+        "message_sticker": "This QR sticker has been replaced. Scan the current sticker on site.",
+        "message_display": "This clock-screen QR code has expired — the code rotates every ±30 seconds. Open the portal and scan the current code.",
+        "portal_home": "Open the portal",
+        "back": "Back",
         "welcome": "Go to the homepage"
     }
 }

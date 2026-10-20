@@ -56,7 +56,11 @@
     },
     "invalid": {
         "title": "Código QR no válido",
-        "message": "Este código QR ya no es válido.",
+        "message": "Este código QR ya no es válido. Escanea el código actual in situ.",
+        "message_sticker": "Esta pegatina QR ha sido sustituida. Escanea la pegatina actual in situ.",
+        "message_display": "Este código QR de la pantalla del reloj ha caducado — el código cambia cada ±30 segundos. Abre el portal y escanea el código actual.",
+        "portal_home": "Abrir el portal",
+        "back": "Volver",
         "welcome": "Ir a la página de inicio"
     }
 }

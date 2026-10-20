@@ -56,7 +56,11 @@
     },
     "invalid": {
         "title": "QR-code niet geldig",
-        "message": "Deze QR-code is niet (meer) geldig.",
+        "message": "Deze QR-code is niet (meer) geldig. Scan de actuele QR-code ter plaatse.",
+        "message_sticker": "Deze QR-sticker is vervangen. Scan de actuele sticker die ter plaatse hangt.",
+        "message_display": "Deze QR-code van het klokscherm is verlopen — de code wisselt om de ±30 seconden. Open het portaal en scan de actuele code.",
+        "portal_home": "Open het portaal",
+        "back": "Terug",
         "welcome": "Naar de startpagina"
     }
 }

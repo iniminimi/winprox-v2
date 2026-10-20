@@ -56,7 +56,11 @@
     },
     "invalid": {
         "title": "Code QR non valide",
-        "message": "Ce code QR n'est plus valide.",
+        "message": "Ce code QR n'est plus valide. Scannez le code actuel sur place.",
+        "message_sticker": "Cet autocollant QR a été remplacé. Scannez l'autocollant actuel sur place.",
+        "message_display": "Ce code QR de l'écran d'horloge a expiré — le code change toutes les ±30 secondes. Ouvrez le portail et scannez le code actuel.",
+        "portal_home": "Ouvrir le portail",
+        "back": "Retour",
         "welcome": "Aller à l'accueil"
     }
 }

@@ -56,7 +56,11 @@
     },
     "invalid": {
         "title": "QR-Code ungültig",
-        "message": "Dieser QR-Code ist nicht (mehr) gültig.",
+        "message": "Dieser QR-Code ist nicht (mehr) gültig. Scannen Sie den aktuellen Code vor Ort.",
+        "message_sticker": "Dieser QR-Aufkleber wurde ersetzt. Scannen Sie den aktuellen Aufkleber vor Ort.",
+        "message_display": "Dieser QR-Code des Uhrenbildschirms ist abgelaufen — der Code wechselt etwa alle 30 Sekunden. Öffnen Sie das Portal und scannen Sie den aktuellen Code.",
+        "portal_home": "Portal öffnen",
+        "back": "Zurück",
         "welcome": "Zur Startseite"
     }
 }
