@@ -126,6 +126,8 @@ class Settings extends Component
 
     public bool $timeRequireWorkerPin = false;
 
+    public bool $timeWorkerPasskeys = true;
+
     public bool $timeGpsOnClock = false;
 
     public bool $timeGpsVisits = false;
@@ -331,6 +333,7 @@ class Settings extends Component
         $validated = Validator::make(
             [
                 'time_require_worker_pin' => $this->timeRequireWorkerPin,
+                'time_worker_passkeys' => $this->timeWorkerPasskeys,
                 'time_gps_on_clock' => $this->timeGpsOnClock,
                 'time_gps_visits' => $this->timeGpsVisits,
                 'time_gps_visit_radius_meters' => $this->timeGpsVisitRadiusMeters !== ''
@@ -944,6 +947,7 @@ class Settings extends Component
         $this->customThemeBtn = $tenant->custom_theme_btn ?? '#059669';
         $this->presenceComplianceEnabled = (bool) $tenant->presence_compliance_enabled;
         $this->timeRequireWorkerPin = (bool) $tenant->time_require_worker_pin;
+        $this->timeWorkerPasskeys = (bool) ($tenant->time_worker_passkeys ?? true);
         $this->timeGpsOnClock = (bool) $tenant->time_gps_on_clock;
         $this->timeGpsVisits = (bool) $tenant->time_gps_visits;
         $this->timeEvacuationList = (bool) $tenant->time_evacuation_list;

@@ -152,7 +152,8 @@
             "locations_summary_selected": ":count site(s) selected",
             "team": "Team",
             "team_placeholder": "Choose a team",
-            "team_required": "Choose a team."
+            "team_required": "Choose a team.",
+            "confirm_clear_worker_passkeys": "Remove passkey? The worker signs in again with PIN or icon and can enable a new passkey afterwards."
         },
         "import_download_sample_csv": "Download sample CSV",
         "import_download_sample_xlsx": "Download sample XLSX",
@@ -186,7 +187,8 @@
         "default_unit": "Home group (schedule)",
         "default_unit_none": "No home group",
         "default_unit_hint": "Optional. Where do you see it? On Time → Schedule, after you filter by location: workers are listed under groups (e.g. G1). You create those groups on a unit (Locations → edit unit → roster code). Here you choose which group this person belongs to. Leave empty if you don’t need grouping. This does not plan shifts; the place in a cell (D1/G1) is filled in separately.",
-        "is_external_hint": "Tick if this person works for another company (subcontractor, agency staff, …). You can then enter a company name; it shows as an Ext badge."
+        "is_external_hint": "Tick if this person works for another company (subcontractor, agency staff, …). You can then enter a company name; it shows as an Ext badge.",
+        "clear_worker_passkeys": "Remove passkey"
     },
     "import_history": {
         "title": "Recent imports",

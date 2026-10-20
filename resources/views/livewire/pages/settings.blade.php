@@ -238,6 +238,13 @@
                 <p class="wp-hint">{{ __('settings.time_clock.require_pin_hint') }}</p>
                 @error('timeRequireWorkerPin') <p class="wp-error">{{ $message }}</p> @enderror
 
+                <label class="wp-check">
+                    <input type="checkbox" wire:model="timeWorkerPasskeys">
+                    <span>{{ __('settings.time_clock.worker_passkeys') }}</span>
+                </label>
+                <p class="wp-hint">{{ __('settings.time_clock.worker_passkeys_hint') }}</p>
+                @error('timeWorkerPasskeys') <p class="wp-error">{{ $message }}</p> @enderror
+
                 @if (! ($checkmateMode ?? false))
                     <label class="wp-check">
                         <input type="checkbox" wire:model="timeEvacuationList">

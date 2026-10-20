@@ -265,6 +265,65 @@ it('gebruikt een challenge maar één keer', function () {
         ->assertStatus(422);
 });
 
+it('weigert alle endpoints als de tenant passkeys uit heeft', function () {
+    [$tenant, , $worker, $device] = passkeySetup();
+    $tenant->update(['time_worker_passkeys' => false]);
+    [, $cose] = fakePasskeyKeypair();
+    WorkerPasskeyCredential::query()->create([
+        'tenant_id' => $worker->tenant_id,
+        'worker_id' => $worker->id,
+        'credential_id' => passkeyB64(random_bytes(32)),
+        'credential_public_key' => $cose,
+        'user_handle' => 'wp-worker-'.$worker->id,
+        'transports' => ['internal'],
+        'sign_count' => 0,
+    ]);
+
+    $this->withSession(passkeySession($worker, $device, verified: true))
+        ->postJson(route('public.time-portal.passkey.register-options', $tenant->id))
+        ->assertForbidden();
+    $this->withSession(passkeySession($worker, $device, verified: true))
+        ->postJson(route('public.time-portal.passkey.register', $tenant->id), ['credential' => '{}'])
+        ->assertForbidden();
+    $this->withSession(passkeySession($worker, $device))
+        ->postJson(route('public.time-portal.passkey.assert-options', $tenant->id))
+        ->assertForbidden();
+    $this->withSession(passkeySession($worker, $device))
+        ->postJson(route('public.time-portal.passkey.assert', $tenant->id), ['credential' => '{}'])
+        ->assertForbidden();
+});
+
+it('trekt alle passkeys van een worker in via beheer', function () {
+    [$tenant, , $worker] = passkeySetup();
+    [, $cose] = fakePasskeyKeypair();
+    foreach ([passkeyB64(random_bytes(32)), passkeyB64(random_bytes(32))] as $id) {
+        WorkerPasskeyCredential::query()->create([
+            'tenant_id' => $tenant->id,
+            'worker_id' => $worker->id,
+            'credential_id' => $id,
+            'credential_public_key' => $cose,
+            'user_handle' => 'wp-worker-'.$worker->id,
+            'transports' => ['internal'],
+            'sign_count' => 0,
+        ]);
+    }
+
+    $revoked = app(\App\Actions\Portal\RevokeWorkerPasskeysAction::class)
+        ->handle($worker, (int) $tenant->id, null);
+
+    expect($revoked)->toBe(2)
+        ->and($worker->passkeyCredentials()->exists())->toBeFalse();
+});
+
+it('weigert intrekking voor een worker van een andere tenant', function () {
+    [, , $worker] = passkeySetup();
+    $other = Tenant::factory()->create();
+
+    expect(fn () => app(\App\Actions\Portal\RevokeWorkerPasskeysAction::class)
+        ->handle($worker, (int) $other->id, null))
+        ->toThrow(InvalidArgumentException::class);
+});
+
 it('weigert een assertion voor een credential van een andere worker', function () {
     [$tenant, , $worker, $device] = passkeySetup();
     [$key, $cose] = fakePasskeyKeypair();

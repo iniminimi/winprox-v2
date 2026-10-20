@@ -43,6 +43,7 @@ class Tenant extends Model
         'time_qr_rotation_months',
         'has_time_module',
         'time_require_worker_pin',
+        'time_worker_passkeys',
         'time_gps_on_clock',
         'time_gps_visits',
         'time_gps_visit_radius_meters',
@@ -82,6 +83,7 @@ class Tenant extends Model
             'billing_seats_qty' => 'integer',
             'has_time_module' => 'boolean',
             'time_require_worker_pin' => 'boolean',
+            'time_worker_passkeys' => 'boolean',
             'time_gps_on_clock' => 'boolean',
             'time_gps_visits' => 'boolean',
             'time_gps_visit_radius_meters' => 'integer',
@@ -356,6 +358,12 @@ class Tenant extends Model
     public function requiresWorkerPin(): bool
     {
         return $this->hasTimeModule() && (bool) $this->time_require_worker_pin;
+    }
+
+    /** Passkey/toestelverificatie op het time-portaal (naast icoon/PIN). */
+    public function allowsWorkerPasskeys(): bool
+    {
+        return $this->hasTimeModule() && (bool) $this->time_worker_passkeys;
     }
 
     /** Zijbalk-inklok voor collega’s met een prikklok-team. Standaard uit. */

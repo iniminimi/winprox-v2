@@ -103,6 +103,13 @@ final class TimePortalData
         return $tenant !== null && $tenant->requiresWorkerPin();
     }
 
+    public static function tenantAllowsPasskeys(int $tenantId): bool
+    {
+        $tenant = Tenant::query()->find($tenantId);
+
+        return $tenant !== null && $tenant->allowsWorkerPasskeys();
+    }
+
     public static function tenantRequestsClockGps(int $tenantId): bool
     {
         $tenant = Tenant::query()->find($tenantId);

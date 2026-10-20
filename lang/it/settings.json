@@ -259,7 +259,9 @@
         "evacuation_list_hint": "Dopo l’accesso gli esecutori vedono un riquadro per chi è timbrato. Confermano che la consultazione è eccezionale; ogni consultazione è registrata. Disattivato di default.",
         "backoffice_clock": "Timbrare dal back office",
         "backoffice_clock_hint": "Amministratori e collaboratori con un team di timbratura timbrano dalla barra laterale, dopo l’accesso con e-mail e password. Disattivato di default. Nessun obbligo GPS e nessun collegamento del telefono.",
-        "gps_visit_radius_hint": "Predefinito 50 m. Minimo 10 m, massimo 2000 m."
+        "gps_visit_radius_hint": "Predefinito 50 m. Minimo 10 m, massimo 2000 m.",
+        "worker_passkeys": "Accesso con impronta o volto (passkey)",
+        "worker_passkeys_hint": "Gli esecutori possono proteggere il proprio telefono e poi accedere con lo sblocco del dispositivo. PIN o icona restano disponibili."
     },
     "customers_on_location": {
         "title": "Clienti sul posto",

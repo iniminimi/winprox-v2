@@ -1916,8 +1916,10 @@ class TimePortal extends Component
         $showNoWorkers = $this->activeClockPoint() !== null && ! $canAct && ! $hasAnyWorkers
             && ! $registerOnly && ! $showRegisterForm && ! $iconBlocked;
 
-        $deviceWorkerHasPasskey = $deviceWorker?->passkeyCredentials()->exists() ?? false;
-        $showPasskeyEnroll = $canAct
+        $tenantPasskeys = TimePortalData::tenantAllowsPasskeys($this->tenantId);
+        $deviceWorkerHasPasskey = $tenantPasskeys && ($deviceWorker?->passkeyCredentials()->exists() ?? false);
+        $showPasskeyEnroll = $tenantPasskeys
+            && $canAct
             && $verifiedWorker !== null
             && ! $verifiedWorker->passkeyCredentials()->exists()
             && ! session()->has('wp_passkey_offer_dismissed_'.(int) $verifiedWorker->id);

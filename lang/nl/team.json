@@ -152,7 +152,8 @@
             "locations_summary_selected": ":count vestiging(en) gekozen",
             "team": "Team",
             "team_placeholder": "Kies een team",
-            "team_required": "Kies een team."
+            "team_required": "Kies een team.",
+            "confirm_clear_worker_passkeys": "Passkey verwijderen? De uitvoerder meldt zich daarna weer met pincode of icoon aan en kan opnieuw een passkey inschakelen."
         },
         "import_download_sample_csv": "Download voorbeeld-CSV",
         "import_download_sample_xlsx": "Download voorbeeld-xlsx",
@@ -186,7 +187,8 @@
         "default_unit": "Thuisgroep (uurrooster)",
         "default_unit_none": "Geen thuisgroep",
         "default_unit_hint": "Optioneel. Waar zie je dit? Op Time → Uurrooster, nadat je een locatie filtert: uitvoerders staan dan onder groepen (bijv. G1). Die groepen maak je aan op een unit (Locaties → unit bewerken → roostercode). Hier kies je onder welke groep deze persoon hoort. Laat leeg als je geen groepering nodig hebt. Dit plant geen diensten; de plek in een cel (D1/G1) vul je apart in.",
-        "is_external_hint": "Vink aan als deze persoon voor een ander bedrijf werkt (onderaannemer, uitzendkracht, …). Je kunt dan een bedrijfsnaam invullen; die verschijnt als Ext-badge."
+        "is_external_hint": "Vink aan als deze persoon voor een ander bedrijf werkt (onderaannemer, uitzendkracht, …). Je kunt dan een bedrijfsnaam invullen; die verschijnt als Ext-badge.",
+        "clear_worker_passkeys": "Passkey verwijderen"
     },
     "import_history": {
         "title": "Recente imports",

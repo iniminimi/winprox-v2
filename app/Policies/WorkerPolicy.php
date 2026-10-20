@@ -33,4 +33,9 @@ class WorkerPolicy
     {
         return $this->update($user, $worker);
     }
+
+    public function clearWorkerPasskeys(User $user, Worker $worker): bool
+    {
+        return $this->update($user, $worker);
+    }
 }

@@ -17,6 +17,7 @@ use App\Actions\Team\DeleteWorkerAction;
 use App\Actions\Team\DeleteWorkerPhotoAction;
 use App\Actions\Team\ResetWorkerIconAction;
 use App\Actions\Team\SyncWorkerWeekdayMinutesAction;
+use App\Actions\Portal\RevokeWorkerPasskeysAction;
 use App\Actions\Time\ClearWorkerClockDeviceAction;
 use App\Actions\Time\ClearWorkerClockPinAction;
 use App\Actions\Team\SetColleagueActiveAction;
@@ -1327,6 +1328,13 @@ class Team extends Component
         $worker = $this->authorizedWorker($workerId);
         $this->authorize('clearClockPin', $worker);
         $clearPin->handle($worker, (int) Tenancy::id(), (int) auth()->id());
+    }
+
+    public function clearWorkerPasskeys(int $workerId, RevokeWorkerPasskeysAction $revokePasskeys): void
+    {
+        $worker = $this->authorizedWorker($workerId);
+        $this->authorize('clearWorkerPasskeys', $worker);
+        $revokePasskeys->handle($worker, (int) Tenancy::id(), (int) auth()->id());
     }
 
     public function setWorkerActive(int $workerId, bool $active, SetWorkerActiveAction $setActive): void

@@ -152,7 +152,8 @@
             "locations_summary_selected": ":count Standort(e) gewählt",
             "team": "Team",
             "team_placeholder": "Team wählen",
-            "team_required": "Bitte ein Team wählen."
+            "team_required": "Bitte ein Team wählen.",
+            "confirm_clear_worker_passkeys": "Passkey entfernen? Der Ausführer meldet sich danach wieder mit PIN oder Symbol an und kann einen neuen Passkey aktivieren."
         },
         "import_download_sample_csv": "Beispiel-CSV herunterladen",
         "import_download_sample_xlsx": "Beispiel-XLSX herunterladen",
@@ -186,7 +187,8 @@
         "default_unit": "Stammgruppe (Dienstplan)",
         "default_unit_none": "Keine Stammgruppe",
         "default_unit_hint": "Optional. Wo sehen Sie das? Unter Time → Dienstplan, nach Standortfilter: Ausführende stehen unter Gruppen (z. B. G1). Gruppen legen Sie an einer Unit an (Standorte → Unit bearbeiten → Dienstplancode). Hier wählen Sie die Gruppe dieser Person. Leer lassen, wenn Sie keine Gruppierung brauchen. Das plant keine Dienste; der Platz in einer Zelle (D1/G1) wird separat eingetragen.",
-        "is_external_hint": "Aktivieren, wenn diese Person für ein anderes Unternehmen arbeitet (Subunternehmer, Zeitarbeit, …). Dann können Sie einen Firmennamen eingeben; er erscheint als Ext-Badge."
+        "is_external_hint": "Aktivieren, wenn diese Person für ein anderes Unternehmen arbeitet (Subunternehmer, Zeitarbeit, …). Dann können Sie einen Firmennamen eingeben; er erscheint als Ext-Badge.",
+        "clear_worker_passkeys": "Passkey entfernen"
     },
     "import_history": {
         "title": "Letzte Imports",

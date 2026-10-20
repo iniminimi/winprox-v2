@@ -579,6 +579,9 @@
                                     @if ($editingWorker->hasClockPin())
                                         <button type="button" class="btn btn--ghost btn--sm" wire:click="clearWorkerClockPin({{ $editingWorker->id }})" wire:confirm="{{ __('team.workers.modal.confirm_clear_clock_pin') }}">{{ __('team.workers.clear_clock_pin') }}</button>
                                     @endif
+                                    @if ($editingWorker->passkeyCredentials()->exists())
+                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="clearWorkerPasskeys({{ $editingWorker->id }})" wire:confirm="{{ __('team.workers.modal.confirm_clear_worker_passkeys') }}">{{ __('team.workers.clear_worker_passkeys') }}</button>
+                                    @endif
                                 </div>
                             </div>
                             <div class="wp-modal-section">

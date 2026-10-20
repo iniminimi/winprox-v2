@@ -6,6 +6,7 @@ use App\Actions\Portal\StoreWorkerPasskeyCredentialAction;
 use App\Actions\Portal\TouchWorkerPasskeyCredentialAction;
 use App\Actions\Time\AssertWorkerClockDeviceAction;
 use App\Models\Worker;
+use App\Support\Portal\TimePortalData;
 use App\Support\Portal\WorkerDeviceSession;
 use App\Support\Portal\WorkerPasskeyCeremony;
 use App\Support\Portal\WorkerVerification;
@@ -24,6 +25,7 @@ class WorkerPasskeyController
     public function registerOptions(Request $request, int $tenant): JsonResponse
     {
         Tenancy::actAs($tenant);
+        abort_if(! TimePortalData::tenantAllowsPasskeys($tenant), 403);
 
         $worker = $this->verifiedPortalWorker($tenant);
         abort_if($worker === null, 403);
@@ -34,6 +36,7 @@ class WorkerPasskeyController
     public function register(Request $request, int $tenant): JsonResponse
     {
         Tenancy::actAs($tenant);
+        abort_if(! TimePortalData::tenantAllowsPasskeys($tenant), 403);
 
         $worker = $this->verifiedPortalWorker($tenant);
         abort_if($worker === null, 403);
@@ -54,6 +57,7 @@ class WorkerPasskeyController
     public function assertOptions(Request $request, int $tenant): JsonResponse
     {
         Tenancy::actAs($tenant);
+        abort_if(! TimePortalData::tenantAllowsPasskeys($tenant), 403);
 
         $worker = $this->rememberedPortalWorker($tenant);
         abort_if($worker === null, 403);
@@ -65,6 +69,7 @@ class WorkerPasskeyController
     public function assert(Request $request, int $tenant): JsonResponse
     {
         Tenancy::actAs($tenant);
+        abort_if(! TimePortalData::tenantAllowsPasskeys($tenant), 403);
 
         $worker = $this->rememberedPortalWorker($tenant);
         abort_if($worker === null, 403);
