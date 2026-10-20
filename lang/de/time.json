@@ -527,7 +527,6 @@
         "now": {
             "status_out": "Nicht eingestempelt",
             "status_in": "Eingestempelt seit :time",
-            "status_in_at": "Eingestempelt seit :time · :place",
             "status_elsewhere": "An einem anderen Standort eingestempelt",
             "next_stop": "Nächster Stopp: :name",
             "here_done": "Die Arbeit hier ist fertig.",

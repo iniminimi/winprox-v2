@@ -527,7 +527,6 @@
         "now": {
             "status_out": "Niet ingeklokt",
             "status_in": "Ingeklokt sinds :time",
-            "status_in_at": "Ingeklokt sinds :time · :place",
             "status_elsewhere": "Ingeklokt bij een andere vestiging",
             "next_stop": "Volgende stop: :name",
             "here_done": "Werk hier is klaar.",

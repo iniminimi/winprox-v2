@@ -527,7 +527,6 @@
         "now": {
             "status_out": "Non timbrato",
             "status_in": "Timbrato dalle :time",
-            "status_in_at": "Timbrato dalle :time · :place",
             "status_elsewhere": "Timbrato in un'altra sede",
             "next_stop": "Prossima sosta: :name",
             "here_done": "Il lavoro qui è finito.",

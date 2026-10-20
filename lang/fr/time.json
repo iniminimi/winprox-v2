@@ -527,7 +527,6 @@
         "now": {
             "status_out": "Pas pointé",
             "status_in": "Pointé depuis :time",
-            "status_in_at": "Pointé depuis :time · :place",
             "status_elsewhere": "Pointé sur un autre site",
             "next_stop": "Prochain arrêt : :name",
             "here_done": "Le travail ici est terminé.",

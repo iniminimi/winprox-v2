@@ -3,9 +3,9 @@
     $clockedInTime = $openShift?->clock_in_at?->format('H:i');
     $breakSince = $openShift?->openBreak?->started_at?->format('H:i');
     $presencePoint = $openShift?->currentClockPoint();
-    $clockInPlace = $presencePoint?->location?->name
-        ? $presencePoint->location->name.($presencePoint->name ? ' · '.$presencePoint->name : '')
-        : ($presencePoint?->name ?? '');
+    $placeLine = $openShift === null
+        ? ''
+        : trim((string) ($presencePoint?->name ?: ($presencePoint?->location?->name ?? '')));
     $openElsewhere = $openShift !== null && $presencePoint !== null
         && ($portalClockPoint ?? null) !== null
         && ! $openShift->isPresentAtSamePlace($portalClockPoint);
@@ -46,9 +46,7 @@
     } elseif ($openShift !== null) {
         $cardState = 'in';
         $statusIcon = 'check';
-        $statusLine = $clockInPlace !== ''
-            ? __('time.portal.now.status_in_at', ['time' => $clockedInTime ?? '—', 'place' => $clockInPlace])
-            : __('time.portal.now.status_in', ['time' => $clockedInTime ?? '—']);
+        $statusLine = __('time.portal.now.status_in', ['time' => $clockedInTime ?? '—']);
     } elseif ($clockedOutTime) {
         $cardState = 'out';
         $statusIcon = 'clock';
@@ -75,19 +73,14 @@
     'wp-portal-now--break' => $cardState === 'break',
     'wp-portal-now--absence' => $cardState === 'absence',
 ]) x-data="{ open: false }">
-    <p class="wp-portal-now__kicker">{{ $statusLine }}</p>
-    <div class="wp-portal-now__head">
-        <button
-            type="button"
-            class="wp-settings-section-toggle wp-portal-now__disclosure-toggle"
-            @click="open = !open"
-            :aria-expanded="open"
-            aria-label="{{ __('time.portal.now.toggle') }}"
-            data-manual-capture-trigger="portal-now-toggle"
-        >
-            <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
-            <strong class="wp-portal-now__name">{{ $workerName }}</strong>
-        </button>
+    <p class="wp-portal-now__kicker">
+        <x-wp-icon :name="$statusIcon" class="wp-portal-now__status-icon" data-clock-state="{{ $openShift === null ? 'out' : 'in' }}" />
+        <span>{{ $statusLine }}</span>
+    </p>
+    @if ($placeLine !== '')
+        <p class="wp-portal-now__place">{{ $placeLine }}</p>
+    @endif
+    <div class="wp-portal-now__actions">
         @if (! $action['needsScan'])
             <button type="button" class="btn btn--primary btn--sm" wire:click="endBreak" data-manual-capture-trigger="portal-primary-action">{{ $action['label'] }}</button>
         @else
@@ -138,8 +131,27 @@
                 </div>
             </div>
         @endif
-        <x-wp-icon :name="$statusIcon" class="wp-portal-now__status-icon" data-clock-state="{{ $openShift === null ? 'out' : 'in' }}" />
+        @if ($openShift !== null && ! $onBreak && ! $breakTaken && ! $openElsewhere)
+            @if ($requiredBreak > 0 && $clockedInLongEnough)
+                <p class="wp-portal-now__meta">{{ __('time.portal.clock.break_hint', ['min' => $requiredBreak]) }}</p>
+            @endif
+            <button type="button" class="btn btn--surface btn--sm" wire:click="startBreak">
+                {{ __('time.portal.clock.start_break') }}
+            </button>
+        @endif
     </div>
+
+    <button
+        type="button"
+        class="wp-settings-section-toggle wp-portal-now__disclosure-toggle"
+        @click="open = !open"
+        :aria-expanded="open"
+        aria-label="{{ __('time.portal.now.toggle') }}"
+        data-manual-capture-trigger="portal-now-toggle"
+    >
+        <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
+        <strong class="wp-portal-now__name">{{ $workerName }}</strong>
+    </button>
 
     <div class="wp-disclosure-panel wp-portal-now__more-panel" x-show="open" x-cloak>
         @if ($openShift !== null)
@@ -170,18 +182,6 @@
             <div class="wp-portal-now__more-actions">
                 <button type="button" class="btn btn--surface btn--sm" @click="withFreshGps('endWorkVisit')">
                     {{ __('time.portal.clock.stop_work') }}
-                </button>
-            </div>
-        @endif
-
-        @if ($openShift !== null && ! $onBreak && ! $breakTaken && ! $openElsewhere)
-            <div class="wp-portal-now__divider" role="separator"></div>
-            @if ($requiredBreak > 0 && $clockedInLongEnough)
-                <p class="wp-portal-now__meta">{{ __('time.portal.clock.break_hint', ['min' => $requiredBreak]) }}</p>
-            @endif
-            <div class="wp-portal-now__more-actions">
-                <button type="button" class="btn btn--surface btn--sm" wire:click="startBreak">
-                    {{ __('time.portal.clock.start_break') }}
                 </button>
             </div>
         @endif

@@ -1064,7 +1064,7 @@
                 },
                 {
                     "label": "Attività aperte",
-                    "text": "Dopo nome e icona vedi in alto la scheda di timbratura con il tuo stato (non timbrato, timbrato, pausa, altra sede o ferie) e un’azione principale. Esci sta dietro la freccia. Le attività aperte stanno sotto, con il conteggio; le altre via Altre attività. Con Time + visite GPS avvii o chiudi le attività di squadra su Clock Point finché c'è una visita di lavoro aperta in quella sede cliente (nota e foto opzionali). Un giro di ispezione mostra descrizione, priorità, stato e la prossima fermata. Il pulsante Controllo unità compare solo dopo Avvia lavoro in quella sede; il controllo completo (OK / Non OK / salta) si apre dopo."
+                    "text": "Dopo nome e icona vedi in alto la scheda di timbratura con il tuo stato (non timbrato, timbrato, pausa, altra sede o ferie). Il luogo sta sotto e l'azione principale a tutta larghezza. Inizia pausa sta sotto quell'azione finché sei timbrato. Esci sta dietro la freccia. Le attività aperte stanno sotto, con il conteggio; le altre via Altre attività. Con Time + visite GPS avvii o chiudi le attività di squadra su Clock Point finché c'è una visita di lavoro aperta in quella sede cliente (nota e foto opzionali). Un giro di ispezione mostra descrizione, priorità, stato e la prossima fermata. Il pulsante Controllo unità compare solo dopo Avvia lavoro in quella sede; il controllo completo (OK / Non OK / salta) si apre dopo."
                 },
                 {
                     "label": "Timbra entrata e uscita",

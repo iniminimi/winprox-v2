@@ -527,7 +527,6 @@
         "now": {
             "status_out": "Sin fichar",
             "status_in": "Fichado desde :time",
-            "status_in_at": "Fichado desde :time · :place",
             "status_elsewhere": "Fichado en otra sede",
             "next_stop": "Siguiente parada: :name",
             "here_done": "El trabajo aquí está listo.",

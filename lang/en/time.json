@@ -527,7 +527,6 @@
         "now": {
             "status_out": "Not clocked in",
             "status_in": "Clocked in since :time",
-            "status_in_at": "Clocked in since :time · :place",
             "status_elsewhere": "Clocked in at another location",
             "next_stop": "Next stop: :name",
             "here_done": "Work here is done.",
