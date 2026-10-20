@@ -165,9 +165,9 @@
             @if ($openElsewhere)
                 <p class="wp-portal-now__meta">{{ __('time.portal.clock.elsewhere_body') }}</p>
             @endif
-            @include('partials.wp-portal-clock-alert', ['alert' => $todayClockAlert ?? null])
+            @include('partials.wp-portal-clock-alert', ['alert' => $todayClockAlert ?? null, 'showLabel' => true])
         @else
-            @include('partials.wp-portal-clock-alert', ['alert' => $todayClockAlert ?? null])
+            @include('partials.wp-portal-clock-alert', ['alert' => $todayClockAlert ?? null, 'showLabel' => true])
         @endif
 
         @if ($hasVisit)

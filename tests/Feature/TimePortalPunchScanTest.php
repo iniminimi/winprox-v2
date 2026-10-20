@@ -12,6 +12,7 @@ use App\Models\Worker;
 use App\Models\WorkShift;
 use App\Support\Portal\ClockPointScanGrant;
 use App\Support\Tenancy;
+use App\Support\Time\ClockDisplayQr;
 use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
@@ -363,6 +364,30 @@ it('negeert een ongeldige scan-markering', function () {
     $this->get(route('public.time-portal', $clockPoint->qr_token).'?scan_punch=signOut')
         ->assertOk()
         ->assertSeeHtml('autoPunch: false');
+});
+
+it('houdt het portaal bruikbaar nadat de roterende scherm-token is verlopen', function () {
+    [, $clockPoint] = punchScanTenant();
+    $clockPoint->forceFill([
+        'display_id' => str_repeat('a', 24),
+        'display_secret' => 'entry-grant-display-secret',
+    ])->save();
+    $clockPoint->refresh();
+
+    $displayToken = ClockDisplayQr::tokenFor($clockPoint, ClockDisplayQr::currentWindow());
+    expect($displayToken)->not->toBeNull();
+
+    $portal = Livewire::test(TimePortal::class, ['token' => $displayToken])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon');
+
+    $this->travel(5)->minutes();
+
+    $portal->call('$refresh')
+        ->assertSee(__('time.portal.now.status_out'), false);
 });
 
 it('geeft een scan op de sticker en niet op de aanmeldlink', function () {

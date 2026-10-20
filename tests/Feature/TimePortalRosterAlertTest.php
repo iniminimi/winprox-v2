@@ -361,6 +361,26 @@ it('toont te vroeg ingeklokt in tekst op Mijn uren', function () {
         ->assertSeeHtml('wp-portal-clock-alert');
 });
 
+it('toont de klok-waarschuwing met tekst op de statuskaart', function () {
+    [$tenant, $team, $clockPoint, $worker] = rosterAlertTenant();
+    publishWorkShift($tenant, $worker, '2026-09-22', '08:00', '16:00');
+    WorkShift::factory()->closed()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_clock_point_id' => $clockPoint->id,
+        'clock_out_clock_point_id' => $clockPoint->id,
+        'clock_in_at' => Carbon::parse('2026-09-22 08:00:00'),
+        'clock_out_at' => Carbon::parse('2026-09-22 19:40:00'),
+        'status' => WorkShiftStatus::Closed,
+    ]);
+    $this->travelTo(Carbon::parse('2026-09-22 20:00:00'));
+
+    signInRosterAlertWorker($clockPoint)
+        ->assertSee(__('time.portal.clock_alert.late_out'), false)
+        ->assertSeeHtml('wp-portal-clock-alert');
+});
+
 it('toont te laat in- en uitgeklokt samen op Mijn uren', function () {
     [$tenant, $team, $clockPoint, $worker] = rosterAlertTenant();
     publishWorkShift($tenant, $worker, '2026-09-22', '08:00', '16:00');

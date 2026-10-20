@@ -75,6 +75,7 @@ use App\Models\WorkerDevice;
 use App\Models\WorkShift;
 use App\Support\Checkmate\CheckmateMode;
 use App\Support\Portal\ClockPointScanGrant;
+use App\Support\Portal\PortalEntryToken;
 use App\Support\Portal\TimePortalData;
 use App\Support\Portal\WorkerDeviceSession;
 use App\Support\Portal\WorkerIcon;
@@ -322,6 +323,10 @@ class TimePortal extends Component
 
         $this->syncLocaleFromRequest();
 
+        // De entry-token kan een roterende scherm-QR zijn die na ~30s verloopt
+        // terwijl het portaal openstaat. Deze marker houdt die sessie bruikbaar.
+        PortalEntryToken::grant($token, $clockPoint->id);
+
         if ($this->inactiveReasonKey === null && $this->entryGrantsPunchScan()) {
             ClockPointScanGrant::grant($this->clockPointId);
         }
@@ -336,7 +341,16 @@ class TimePortal extends Component
         $clockPoint = $resolution->clockPoint;
 
         if ($clockPoint === null || ! $resolution->isUsable()) {
-            InvalidQrResponse::abort();
+            // Roterende scherm-QR's verlopen terwijl de pagina openstaat
+            // (wire:poll om de 30s). Een eerder geldige entry houdt dan over.
+            $entryPointId = PortalEntryToken::clockPointId($this->token);
+            $clockPoint = $entryPointId !== null
+                ? ClockPoint::withoutGlobalScope('tenant')->find($entryPointId)
+                : null;
+
+            if ($clockPoint === null) {
+                InvalidQrResponse::abort();
+            }
         }
 
         $this->clockPointId = $clockPoint->id;
