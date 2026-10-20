@@ -1219,6 +1219,10 @@
     padding: 0 0.75rem 3.5rem;
 }
 
+.wp-portal .wp-tiles {
+    grid-template-columns: 1fr;
+}
+
 .wp-portal .wp-card {
     background-color: color-mix(in srgb, var(--wp-surface) 85%, transparent);
 }
