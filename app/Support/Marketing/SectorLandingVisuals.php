@@ -248,10 +248,7 @@ final class SectorLandingVisuals
             ],
             PromoLanding::Prikklok => [
                 'hero' => 'images/landing/LCD.jpg',
-                'steps' => [
-                    'src' => 'images/landing/work_on_location/image02.jpg',
-                    'modifier' => 'wp-landing-visual--compact',
-                ],
+                'steps' => 'images/landing/work_on_location/image02.jpg',
                 'places' => [
                     'src' => 'images/landing/LCD.jpg',
                     'modifier' => 'wp-landing-visual--feature',
