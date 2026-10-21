@@ -566,7 +566,7 @@ class ListRosterWeekAction
             ]);
         }
         if ($openRegistrations > 0) {
-            $parts[] = '!';
+            $parts[] = "\u{26A0}\u{FE0E}";
             $titles[] = trans_choice('time.schedule.week_hours.open_registration', $openRegistrations, [
                 'count' => $openRegistrations,
                 'datetime' => $oldestOpenClockInAt?->setTimezone((string) config('app.timezone'))->format('d/m/Y H:i') ?? '',

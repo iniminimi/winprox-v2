@@ -384,7 +384,7 @@ it('zet de uren in vaste cijferkolommen', function () {
         ->and($figure('leave')['value'])->toBe('1')
         ->and($figure('recup'))->toBeNull()
         ->and($figure('sick')['value'])->toBe('2'.$hour)
-        ->and($figure('attention')['value'])->toBe('1 · !')
+        ->and($figure('attention')['value'])->toBe('1 · '."\u{26A0}\u{FE0E}")
         ->and($figure('attention')['title'])->toContain(trans_choice('time.schedule.week_hours.open_registration', 1, [
             'count' => 1,
             'datetime' => '12/10/2026 08:00',
