@@ -194,6 +194,15 @@
                         <a href="{{ route('demo') }}" class="btn btn--primary">{{ __('welcome.guidance.cta') }}</a>
                     </div>
                 </article>
+                <figure class="wp-landing-visual wp-welcome-screenshot wp-welcome-screenshot--desktop">
+                    <img
+                        src="{{ asset('images/landing/general/welcome_01.jpg') }}"
+                        alt="{{ __('welcome.guidance.image_alt') }}"
+                        class="wp-welcome-screenshot__img"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </figure>
             </div>
         </div>
     </section>
