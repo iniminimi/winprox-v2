@@ -37,42 +37,44 @@
     'wp-time-presence-card--break' => $isOnBreak,
     'wp-time-presence-card--attention' => $attentionItem !== null,
 ]) wire:key="presence-card-{{ $shift->id }}">
-    <div class="wp-time-presence-card__avatar-wrap">
-        <x-wp-worker-avatar
-            :worker="$shift->worker"
-            size="md"
-            :tone="$avatarTone"
-            @class([
-                'wp-time-presence-card__avatar',
-                'wp-time-presence-card__avatar--break' => $isOnBreak,
-                'wp-time-presence-card__avatar--attention' => $attentionItem !== null && ! $isOnBreak,
-            ])
-        />
-        <span @class([
-            'wp-time-presence-card__status-dot',
-            'wp-time-presence-card__status-dot--break' => $isOnBreak,
-            'wp-time-presence-card__status-dot--attention' => $attentionItem !== null,
-        ]) aria-hidden="true"></span>
-    </div>
-
-    <div class="wp-time-presence-card__content">
-        <div class="wp-cluster">
-            <h3 class="wp-time-presence-card__name">
-                @if ($absenceClockIn)
-                    <span class="wp-time-presence-card__bang" title="{{ $attentionLabel }}" aria-hidden="true">!</span>
-                @endif
-                {{ $shift->worker?->displayName() }}
-            </h3>
-            @if ($shift->isManuallyClockedIn())
-                <span class="wp-pill">{{ __('time.manual_clock_in.badge') }}</span>
-            @endif
-            @if ($isOnBreak)
-                <span class="wp-pill wp-pill--progress">{{ __('time.presence.on_break') }}</span>
-            @endif
+    <x-wp-worker-hours-link :worker="$shift->worker" class="wp-time-presence-card__person">
+        <div class="wp-time-presence-card__avatar-wrap">
+            <x-wp-worker-avatar
+                :worker="$shift->worker"
+                size="md"
+                :tone="$avatarTone"
+                @class([
+                    'wp-time-presence-card__avatar',
+                    'wp-time-presence-card__avatar--break' => $isOnBreak,
+                    'wp-time-presence-card__avatar--attention' => $attentionItem !== null && ! $isOnBreak,
+                ])
+            />
+            <span @class([
+                'wp-time-presence-card__status-dot',
+                'wp-time-presence-card__status-dot--break' => $isOnBreak,
+                'wp-time-presence-card__status-dot--attention' => $attentionItem !== null,
+            ]) aria-hidden="true"></span>
         </div>
-        <p class="wp-issue-card-meta">{{ implode(' · ', $metaParts) }}</p>
-        @include('partials.wp-time-presence-visit-pill', ['shift' => $shift])
-    </div>
+
+        <div class="wp-time-presence-card__content">
+            <div class="wp-cluster">
+                <h3 class="wp-time-presence-card__name">
+                    @if ($absenceClockIn)
+                        <span class="wp-time-presence-card__bang" title="{{ $attentionLabel }}" aria-hidden="true">!</span>
+                    @endif
+                    {{ $shift->worker?->displayName() }}
+                </h3>
+                @if ($shift->isManuallyClockedIn())
+                    <span class="wp-pill">{{ __('time.manual_clock_in.badge') }}</span>
+                @endif
+                @if ($isOnBreak)
+                    <span class="wp-pill wp-pill--progress">{{ __('time.presence.on_break') }}</span>
+                @endif
+            </div>
+            <p class="wp-issue-card-meta">{{ implode(' · ', $metaParts) }}</p>
+            @include('partials.wp-time-presence-visit-pill', ['shift' => $shift])
+        </div>
+    </x-wp-worker-hours-link>
 
     <div class="wp-time-presence-card__aside">
         @if ($showForceClose)

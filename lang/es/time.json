@@ -35,6 +35,7 @@
         "search_placeholder": "Nombre…",
         "search_results": "Resultados de búsqueda",
         "search_empty": "No se encontraron trabajadores.",
+        "open_worker_hours": "Resumen de horas (últimas 3 semanas)",
         "location": "Ubicación",
         "all_locations": "Todas las ubicaciones",
         "no_attention": "No hay excepciones en este momento.",

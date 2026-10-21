@@ -1349,6 +1349,10 @@
                     "text": "Affinez par équipe, site, clock point ou recherchez un nom. Le statut se filtre via les tuiles en haut."
                 },
                 {
+                    "label": "Aperçu des heures",
+                    "text": "Cliquez un exécutant pour ouvrir Time → Heures, filtré sur cette personne pour les <strong>trois dernières semaines</strong>."
+                },
+                {
                     "label": "Fermer le shift",
                     "text": "Fermez un shift ouvert à l’heure actuelle si quelqu’un a oublié de pointer la sortie. Le motif va au journal d’audit. Si l’équipe a une pause minimale et que le service dure au moins 4 heures, elle compte sur la feuille d’heures (pas d’événement CIAO extra)."
                 },

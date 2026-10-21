@@ -1341,6 +1341,10 @@
                     "text": "Filtre por equipo, sede, clock point o busque por nombre. El estado se filtra con las tarjetas de arriba."
                 },
                 {
+                    "label": "Resumen de horas",
+                    "text": "Haga clic en un operario para abrir Time → Horas, filtrado a esa persona en las <strong>últimas tres semanas</strong>."
+                },
+                {
                     "label": "Cerrar turno",
                     "text": "Cierre un turno abierto con la hora actual si alguien olvidó fichar la salida. El motivo va al registro de auditoría. Si el equipo tiene pausa mínima y el turno dura al menos 4 horas, cuenta en el parte (sin evento CIAO extra)."
                 },

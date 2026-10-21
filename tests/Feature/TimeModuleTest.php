@@ -117,6 +117,42 @@ it('toont afwezige werknemers in board-weergave', function () {
         ->assertSee('Piet Afwezig', false);
 });
 
+it('opent uren van de uitvoerder voor de laatste drie weken vanuit aanwezigheid', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Lina',
+        'last_name' => 'Uren',
+    ]);
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+
+    $from = now()->subWeeks(3)->format('Y-m-d');
+    $to = now()->format('Y-m-d');
+    $hoursUrl = route('time.shifts.index', [
+        'worker' => $worker->id,
+        'from' => $from,
+        'to' => $to,
+    ], false);
+
+    Livewire::actingAs($admin)
+        ->test(PresenceIndex::class)
+        ->assertSee(e($hoursUrl), false);
+
+    Livewire::actingAs($admin)
+        ->withQueryParams([
+            'worker' => $worker->id,
+            'from' => $from,
+            'to' => $to,
+        ])
+        ->test(ShiftsIndex::class)
+        ->assertSet('workerFilter', $worker->id)
+        ->assertSet('from', $from)
+        ->assertSet('to', $to);
+});
+
 it('toont Aanwezigheid als paginatitel in plaats van Time', function () {
     [$tenant, $admin] = timeTenantWithAdmin();
 

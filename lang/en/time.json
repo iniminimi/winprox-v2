@@ -35,6 +35,7 @@
         "search_placeholder": "Name…",
         "search_results": "Search results",
         "search_empty": "No workers found.",
+        "open_worker_hours": "Hours overview (last 3 weeks)",
         "location": "Location",
         "all_locations": "All locations",
         "no_attention": "No exceptions at the moment.",

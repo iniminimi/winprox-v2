@@ -43,12 +43,12 @@
                     <ul class="wp-stack-tight">
                         @foreach ($bucket->shifts as $shift)
                             <li class="wp-stack-tight" wire:key="presence-location-{{ $bucket->location?->id ?? 'unknown' }}-shift-{{ $shift->id }}">
-                                <span>
+                                <x-wp-worker-hours-link :worker="$shift->worker">
                                     @if ($absenceMessageByShiftId->has($shift->id))
                                         <span class="wp-time-presence-card__bang" title="{{ $absenceMessageByShiftId->get($shift->id) }}" aria-hidden="true">!</span>
                                     @endif
                                     {{ $shift->worker?->displayName() }}
-                                </span>
+                                </x-wp-worker-hours-link>
                                 @if ($absenceMessageByShiftId->has($shift->id))
                                     <span class="wp-muted wp-text-sm">{{ $absenceMessageByShiftId->get($shift->id) }}</span>
                                 @endif

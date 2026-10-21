@@ -1341,6 +1341,10 @@
                     "text": "Filtra per squadra, sede, clock point o cerca per nome. Lo stato si filtra dalle tessere in alto."
                 },
                 {
+                    "label": "Riepilogo ore",
+                    "text": "Fai clic su un esecutore per aprire Time → Ore, filtrato su quella persona per le <strong>ultime tre settimane</strong>."
+                },
+                {
                     "label": "Chiudi turno",
                     "text": "Chiuda un turno aperto all’ora attuale se qualcuno ha dimenticato di timbrare l’uscita. Il motivo va nel log di audit. Se il team ha una pausa minima e il turno dura almeno 4 ore, conta sul foglio ore (nessun evento CIAO extra)."
                 },

@@ -1341,6 +1341,10 @@
                     "text": "Narrow by team, location, clock point or search by name. Filter status via the tiles at the top."
                 },
                 {
+                    "label": "Hours overview",
+                    "text": "Click a worker to open Time → Hours, filtered to that person for the <strong>last three weeks</strong>."
+                },
+                {
                     "label": "Close shift",
                     "text": "Close an open shift at the current time when someone forgot to clock out. The reason goes in the audit log. If the team has a minimum break and the shift lasts at least 4 hours, it is counted on the timesheet (no extra CIAO event)."
                 },

@@ -13,7 +13,7 @@
 @endphp
 
 <div class="wp-time-presence-row @if ($isOnBreak) wp-time-presence-row--break @endif" wire:key="presence-shift-{{ $shift->id }}">
-    <div class="wp-time-presence-row__identity">
+    <x-wp-worker-hours-link :worker="$shift->worker" class="wp-time-presence-row__identity">
         <x-wp-worker-avatar
             :worker="$shift->worker"
             size="sm"
@@ -38,7 +38,7 @@
             @endif
             @include('partials.wp-time-presence-visit-pill', ['shift' => $shift])
         </div>
-    </div>
+    </x-wp-worker-hours-link>
 
     <span class="wp-time-presence-row__clock wp-tabular">{{ $shift->clock_in_at->format('H:i') }}</span>
 

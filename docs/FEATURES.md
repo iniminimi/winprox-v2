@@ -763,6 +763,8 @@ productsector op `Tenant`.
 - **Urenkaart:** Time → Uren toont per dienst vijf kolommen (medewerker+team,
   gewerkt+pauze, datum+gepland, in/uit-registraties, status+Corrigeren).
   Verplaatsingen, werkbezoeken en taken staan onder die rij.
+- **Aanwezigheid → Uren:** klik op een uitvoerder (board, teams, locaties, zoek,
+  alarmen) opent Time → Uren gefilterd op die persoon, laatste drie weken.
 - **Evacuatielijst** (optioneel, Instellingen → Prikklok-beveiliging, **standaard uit**)
   op het Clock Point-portaal (na aanmelden, tegel met brandicoon).
   Toont alle open shifts (uitvoerders én collega's/admin met prikklok-profiel), per
