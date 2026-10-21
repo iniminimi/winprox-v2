@@ -61,7 +61,8 @@ return [
                 'default_locale' => 'nl',
                 'regions' => ['nl' => 'NL'],
                 // Checkmate (CIAO/RSZ) is een Belgisch product: niet op .nl aanbieden.
-                'hidden_paths' => ['/checkmate'],
+                // De tijdsregistratie-2027-kennispagina is Belgische wetgeving: enkel .be/.app.
+                'hidden_paths' => ['/checkmate', '/tijdsregistratie-2027'],
                 'hidden_doc_sections' => ['checkmate'],
                 'hidden_faq_items' => ['checkmate', 'ddt_number'],
             ],

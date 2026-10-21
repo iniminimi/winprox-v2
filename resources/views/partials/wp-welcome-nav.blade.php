@@ -2,6 +2,7 @@
     $wpAuthLogin = \App\Support\Marketing\MarketingDomain::authUrl('/login');
     $wpAuthRegister = \App\Support\Marketing\MarketingDomain::authUrl('/register');
     $wpCheckmateHidden = \App\Support\Marketing\MarketingDomain::routeHidden('checkmate');
+    $wpArticleHidden = \App\Support\Marketing\MarketingDomain::routeHidden('article.tijdsregistratie-2027');
 @endphp
 <nav class="wp-welcome-nav" aria-label="{{ __('welcome.meta_title') }}">
     <div class="wp-welcome-nav-inner">
@@ -23,7 +24,9 @@
                     <a href="{{ route('about') }}" @if (request()->routeIs('about')) aria-current="page" @endif>{{ __('welcome.nav.about') }}</a>
                     <a href="{{ route('product.technical') }}" @if (request()->routeIs('product.technical')) aria-current="page" @endif>{{ __('welcome.nav.technical_sheet') }}</a>
                     <a href="{{ route('product.api_webhooks') }}" @if (request()->routeIs('product.api_webhooks')) aria-current="page" @endif>{{ __('welcome.nav.api_webhooks') }}</a>
+                    @unless ($wpArticleHidden)
                     <a href="{{ route('article.tijdsregistratie-2027') }}" @if (request()->routeIs('article.tijdsregistratie-2027')) aria-current="page" @endif>{{ __('articles.tijdsregistratie_2027.nav_label') }}</a>
+                    @endunless
                 </div>
 
                 <div class="wp-welcome-nav-links wp-welcome-nav-links--desktop">
@@ -40,7 +43,9 @@
                             <a href="{{ route('about') }}" role="listitem" @if (request()->routeIs('about')) aria-current="page" @endif>{{ __('welcome.nav.about') }}</a>
                             <a href="{{ route('product.technical') }}" role="listitem" @if (request()->routeIs('product.technical')) aria-current="page" @endif>{{ __('welcome.nav.technical_sheet') }}</a>
                             <a href="{{ route('product.api_webhooks') }}" role="listitem" @if (request()->routeIs('product.api_webhooks')) aria-current="page" @endif>{{ __('welcome.nav.api_webhooks') }}</a>
+                            @unless ($wpArticleHidden)
                             <a href="{{ route('article.tijdsregistratie-2027') }}" role="listitem" @if (request()->routeIs('article.tijdsregistratie-2027')) aria-current="page" @endif>{{ __('articles.tijdsregistratie_2027.nav_label') }}</a>
+                            @endunless
                         </div>
                     </details>
                 </div>
