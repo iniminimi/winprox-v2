@@ -910,6 +910,7 @@
 @media (min-width: 40rem) {
     [data-theme='standard'] .wp-welcome-cta-row {
         flex-direction: row;
+        flex-wrap: wrap;
         justify-content: center;
     }
 }
@@ -1111,6 +1112,11 @@
     flex-shrink: 0;
     font-weight: 700;
     color: var(--wp-accent-text);
+}
+
+[data-theme='standard'] .wp-landing-step__title {
+    display: block;
+    margin-bottom: 0.125rem;
 }
 
 [data-theme='standard'] .wp-welcome-checklist--dark li {

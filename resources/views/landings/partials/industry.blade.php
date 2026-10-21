@@ -46,8 +46,10 @@
         <ul class="wp-welcome-checklist">
             @foreach (__("{$key}.steps.items") as $step)
                 <li>
-                    <strong>{{ $step['title'] }}</strong>
-                    {{ $step['body'] }}
+                    <span>
+                        <strong class="wp-landing-step__title">{{ $step['title'] }}</strong>
+                        {{ $step['body'] }}
+                    </span>
                 </li>
             @endforeach
         </ul>
