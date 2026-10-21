@@ -910,6 +910,7 @@
                 "Fixed clock screen with a rotating QR code — a photo of the screen is useless later.",
                 "Time and attendance registration in WinProx.",
                 "Smartphone linked to the employee.",
+                "Optional verification photo when clocking in or out.",
                 "Extra protection against misuse — WinProx collects no biometric data.",
                 "Quick sign-in with fingerprint, face or device code on the worker's own phone.",
                 "Also works as a QR sticker, no screen needed.",
