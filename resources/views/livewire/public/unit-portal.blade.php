@@ -314,16 +314,18 @@
                         <span class="wp-tile-title">{{ __('portal.tiles.issues') }} : {{ $issues->count() }}</span>
                     </button>
                 @endif
-                @if ($canAct)
-                    <button type="button"
-                            class="wp-tile wp-tile--scroll"
-                            @click="document.getElementById('portal-open-tasks')?.scrollIntoView({ behavior: 'smooth', block: 'start' })">
-                        <span class="wp-tile-title">{{ __('portal.tiles.open_tasks') }} : {{ $openTaskCount }}</span>
-                    </button>
-                @else
-                    <div class="wp-tile wp-tile--static" aria-disabled="true">
-                        <span class="wp-tile-title">{{ __('portal.tiles.open_tasks') }} : {{ $openTaskCount }}</span>
-                    </div>
+                @if ($tasksPortalEnabled ?? true)
+                    @if ($canAct)
+                        <button type="button"
+                                class="wp-tile wp-tile--scroll"
+                                @click="document.getElementById('portal-open-tasks')?.scrollIntoView({ behavior: 'smooth', block: 'start' })">
+                            <span class="wp-tile-title">{{ __('portal.tiles.open_tasks') }} : {{ $openTaskCount }}</span>
+                        </button>
+                    @else
+                        <div class="wp-tile wp-tile--static" aria-disabled="true">
+                            <span class="wp-tile-title">{{ __('portal.tiles.open_tasks') }} : {{ $openTaskCount }}</span>
+                        </div>
+                    @endif
                 @endif
                 <button type="button" class="wp-tile" wire:click="openSection('announcements')">
                     <span class="wp-tile-title">{{ __('portal.tiles.announcements') }} : {{ $announcements->count() }}</span>
@@ -364,6 +366,7 @@
                         @include('partials.wp-portal-teamleader-release')
                     @endif
 
+                    @if ($tasksPortalEnabled ?? true)
                     <div
                         class="wp-card wp-card-pad wp-stack"
                         wire:key="portal-open-tasks-card"
@@ -392,6 +395,7 @@
                             @endforelse
                         </div>
                     </div>
+                    @endif
                 @endif
             @endif
             </div>

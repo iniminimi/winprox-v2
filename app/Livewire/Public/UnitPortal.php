@@ -1366,6 +1366,8 @@ class UnitPortal extends Component
             'unitCheckListItems' => $unitCheckListItems,
             'showNewReportSection' => $this->showNewReportSection(),
             'showPreviousIssues' => $showPreviousIssues,
+            'tasksPortalEnabled' => ($unit->tenant?->workMenuIssuesTasksEnabled() ?? true)
+                || ($unit->tenant?->workMenuInspectionRoundsEnabled() ?? true),
             'requiresReporterContact' => $canAct ? false : $unit->requiresReporterContact(),
             'requiresReporterEmailVerification' => $canAct ? false : $unit->requiresReporterEmailVerification(),
             'worker' => $worker,
@@ -1455,6 +1457,11 @@ class UnitPortal extends Component
     {
         $unit = $this->unit();
 
+        // Tenant heeft "Meldingen & taken" uitgeschakeld in het werkmenu.
+        if (! ($unit->tenant?->workMenuIssuesTasksEnabled() ?? true)) {
+            return false;
+        }
+
         if ($unit->public_reports_enabled) {
             return true;
         }
@@ -1496,6 +1503,7 @@ class UnitPortal extends Component
         }
 
         return Task::query()
+            ->allowedByWorkMenu($this->unit()->tenant)
             ->when(
                 $this->authorizedWorker() !== null,
                 fn ($q) => $q->visibleToWorker($this->authorizedWorker()),

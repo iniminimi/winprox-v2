@@ -26,6 +26,7 @@ class ResolveOpenUnitTaskForCheckAction
         }
 
         $base = Task::query()
+            ->allowedByWorkMenu($unit->tenant)
             ->visibleToWorker($worker)
             ->where('tenant_id', $unit->tenant_id)
             ->whereIn('status', TaskStatus::openValues())
@@ -77,6 +78,7 @@ class ResolveOpenUnitTaskForCheckAction
         }
 
         $round = Task::query()
+            ->allowedByWorkMenu($unit->tenant)
             ->visibleToWorker($worker)
             ->where('tenant_id', $unit->tenant_id)
             ->whereIn('status', TaskStatus::openValues())

@@ -331,6 +331,10 @@ class SyncFieldOutboxItemAction
      */
     private function createIssue(Worker $worker, Unit $unit, array $payload, array $photos): array
     {
+        if (! ($unit->tenant?->workMenuIssuesTasksEnabled() ?? true)) {
+            throw new FieldSyncException(__('portal.worker.errors.no_permission'), 403);
+        }
+
         $input = [
             'description' => trim((string) ($payload['description'] ?? '')),
             'original_language' => $payload['original_language'] ?? null,
@@ -445,6 +449,7 @@ class SyncFieldOutboxItemAction
         }
 
         $task = Task::query()
+            ->allowedByWorkMenu($unit->tenant)
             ->where('internal_team_id', $worker->internal_team_id)
             ->whereHas('issue', fn ($q) => $q->belongsToUnit($unit))
             ->with(['issue.esgIndicator.translations', 'issue.roundStops', 'roundStopSkips'])

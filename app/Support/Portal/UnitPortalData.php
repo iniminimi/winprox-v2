@@ -138,6 +138,7 @@ final class UnitPortalData
     public static function openTeamTasksForIssue(Issue $issue, int $teamId, ?Worker $worker = null): Collection
     {
         $query = Task::where('issue_id', $issue->id)
+            ->allowedByWorkMenu($issue->tenant)
             ->whereIn('status', TaskStatus::openValues())
             ->whereHas('issue', fn ($q) => $q->whereNotNull('approved_at'));
 
@@ -161,6 +162,7 @@ final class UnitPortalData
     public static function allOpenUnitTasks(Unit $unit, int $teamId, ?Worker $worker = null): Collection
     {
         $query = Task::query()
+            ->allowedByWorkMenu($unit->tenant)
             ->whereIn('status', TaskStatus::openValues())
             ->whereHas('issue', fn ($q) => $q
                 ->belongsToUnit($unit)
@@ -186,6 +188,7 @@ final class UnitPortalData
     public static function openUnitTaskCount(Unit $unit, int $teamId, ?Worker $worker = null): int
     {
         $query = Task::query()
+            ->allowedByWorkMenu($unit->tenant)
             ->whereIn('status', TaskStatus::openValues())
             ->whereHas('issue', fn ($q) => $q
                 ->belongsToUnit($unit)

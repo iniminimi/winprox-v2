@@ -2447,6 +2447,7 @@ class TimePortal extends Component
     private function findClockPointTask(Worker $worker, int $taskId): ?Task
     {
         $task = Task::query()
+            ->allowedByWorkMenu($worker->tenant)
             ->visibleToWorker($worker)
             ->where('tenant_id', $worker->tenant_id)
             ->whereIn('status', TaskStatus::openValues())
@@ -2463,6 +2464,7 @@ class TimePortal extends Component
     private function findClockPointRoundTask(Worker $worker, int $taskId): ?Task
     {
         $task = Task::query()
+            ->allowedByWorkMenu($worker->tenant)
             ->visibleToWorker($worker)
             ->where('tenant_id', $worker->tenant_id)
             ->whereIn('status', TaskStatus::openValues())

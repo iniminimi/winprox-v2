@@ -42,6 +42,7 @@ final class TimePortalData
     public static function openTasksForWorker(Worker $worker): Collection
     {
         return Task::query()
+            ->allowedByWorkMenu($worker->tenant)
             ->visibleToWorker($worker)
             ->whereIn('status', TaskStatus::openValues())
             ->whereHas('issue', fn ($q) => $q->whereNotNull('approved_at'))
@@ -58,6 +59,7 @@ final class TimePortalData
     public static function openTasksForTeam(InternalTeam $team): Collection
     {
         return Task::where('internal_team_id', $team->id)
+            ->allowedByWorkMenu($team->tenant)
             ->whereIn('status', TaskStatus::openValues())
             ->whereHas('issue', fn ($q) => $q->whereNotNull('approved_at'))
             ->with(['issue', 'issue.location', 'issue.unit.location', 'issue.unit.translations', 'issue.esgIndicator.translations', 'issue.roundStops.unit.location', 'issue.translations', 'translations', 'issue.photos', 'issue.updates'])

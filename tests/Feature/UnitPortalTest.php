@@ -1626,3 +1626,158 @@ it('telt cooldown-geblokkeerde meldingen niet mee voor het venster', function ()
 
     expect(\Illuminate\Support\Facades\RateLimiter::attempts($unitKey))->toBe(1);
 });
+
+it('verbergt meldingen en taken op het unit-portaal als het werkmenu-item uit staat', function () {
+    ['unit' => $unit, 'team' => $team, 'location' => $location, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
+        'approved_at' => now(),
+    ]);
+    Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+        'status' => TaskStatus::New,
+        'description' => 'Gewone taak die niet mag.',
+    ]);
+
+    $tenant->update(['work_menu_issues_tasks_enabled' => false]);
+    WorkerVerification::markVerified($team, $worker);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertDontSee(__('portal.tiles.new'))
+        ->assertDontSee(__('portal.tiles.issues'))
+        ->assertDontSee('Gewone taak die niet mag.')
+        // Inspectierondes staan aan: de takenkaart blijft bestaan (leeg).
+        ->assertSee('id="portal-open-tasks"', false)
+        ->assertSee('wp-tile-title">'.__('portal.tiles.open_tasks'), false);
+});
+
+it('blokkeert melding maken en taakacties server-side als het werkmenu-item uit staat', function () {
+    ['unit' => $unit, 'team' => $team, 'location' => $location, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    $issue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'unit_id' => $unit->id,
+        'approved_at' => now(),
+    ]);
+    $task = Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+        'status' => TaskStatus::New,
+        'description' => 'Verwijder het karton.',
+    ]);
+
+    $tenant->update(['work_menu_issues_tasks_enabled' => false]);
+    WorkerVerification::markVerified($team, $worker);
+
+    $component = Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('description', 'Een melding die niet mag.')
+        ->call('submitReport')
+        ->call('openSection', 'new')
+        ->call('openSection', 'issues')
+        ->call('startTask', $task->id)
+        ->call('beginCompleteTask', $task->id);
+
+    expect($component->get('portalSection'))->not->toBe('new')
+        ->and($component->get('portalSection'))->not->toBe('issues')
+        ->and($task->fresh()->status)->toBe(TaskStatus::New)
+        ->and(Issue::query()->where('description', 'Een melding die niet mag.')->count())->toBe(0);
+});
+
+it('houdt inspectieronde-taken zichtbaar als enkel meldingen en taken uit staan', function () {
+    ['unit' => $unit, 'team' => $team, 'location' => $location, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    $secondUnit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'is_active' => true,
+    ]);
+
+    $roundIssue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => null,
+        'unit_id' => null,
+        'approved_at' => now(),
+        'description' => 'Inspectieronde gebouw',
+    ]);
+    \App\Models\IssueRoundStop::query()->create(['issue_id' => $roundIssue->id, 'unit_id' => $unit->id, 'sort_order' => 0]);
+    \App\Models\IssueRoundStop::query()->create(['issue_id' => $roundIssue->id, 'unit_id' => $secondUnit->id, 'sort_order' => 1]);
+    Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $roundIssue->id,
+        'internal_team_id' => $team->id,
+        'status' => TaskStatus::New,
+        'description' => 'Ronde-taak gebouw',
+    ]);
+
+    $tenant->update(['work_menu_issues_tasks_enabled' => false]);
+    WorkerVerification::markVerified($team, $worker);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertSee('id="portal-open-tasks"', false)
+        ->assertSee('Ronde-taak gebouw');
+});
+
+it('verbergt ook ronde-taken als meldingen, taken én inspectierondes uit staan', function () {
+    ['unit' => $unit, 'team' => $team, 'location' => $location, 'tenant' => $tenant] = unitPortalScaffold();
+
+    $worker = Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    $secondUnit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'is_active' => true,
+    ]);
+
+    $roundIssue = Issue::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => null,
+        'unit_id' => null,
+        'approved_at' => now(),
+        'description' => 'Inspectieronde gebouw',
+    ]);
+    \App\Models\IssueRoundStop::query()->create(['issue_id' => $roundIssue->id, 'unit_id' => $unit->id, 'sort_order' => 0]);
+    \App\Models\IssueRoundStop::query()->create(['issue_id' => $roundIssue->id, 'unit_id' => $secondUnit->id, 'sort_order' => 1]);
+    Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $roundIssue->id,
+        'internal_team_id' => $team->id,
+        'status' => TaskStatus::New,
+        'description' => 'Ronde-taak gebouw',
+    ]);
+
+    $tenant->update([
+        'work_menu_issues_tasks_enabled' => false,
+        'work_menu_inspection_rounds_enabled' => false,
+    ]);
+    WorkerVerification::markVerified($team, $worker);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertDontSee('wp-tile-title">'.__('portal.tiles.open_tasks'), false)
+        ->assertDontSee('id="portal-open-tasks"', false)
+        ->assertDontSee('Ronde-taak gebouw');
+});

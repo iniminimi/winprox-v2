@@ -120,6 +120,31 @@ class Task extends Model
             });
     }
 
+    /**
+     * Werkmenu-gates voor worker-portalen: "Meldingen & taken" uit → enkel
+     * inspectieronde-taken (aparte toggle); "Inspectierondes" uit → geen
+     * ronde-taken. Beide uit → geen taken zichtbaar of muteerbaar.
+     */
+    public function scopeAllowedByWorkMenu(Builder $query, ?Tenant $tenant): Builder
+    {
+        $issuesTasks = $tenant?->workMenuIssuesTasksEnabled() ?? true;
+        $rounds = $tenant?->workMenuInspectionRoundsEnabled() ?? true;
+
+        if ($issuesTasks && $rounds) {
+            return $query;
+        }
+
+        return $query->whereHas('issue', function (Builder $issueQuery) use ($issuesTasks, $rounds): void {
+            if (! $issuesTasks && ! $rounds) {
+                $issueQuery->whereRaw('1 = 0');
+
+                return;
+            }
+
+            $issueQuery->has('roundStops', $issuesTasks ? '<' : '>=', 2);
+        });
+    }
+
     public function isAssignedToWorker(Worker $worker): bool
     {
         if ((int) $this->internal_team_id !== (int) $worker->internal_team_id) {

@@ -204,6 +204,11 @@ class Unit extends Model
 
     public function showsPreviousIssues(): bool
     {
+        $this->loadMissing('tenant');
+        if (! ($this->tenant?->workMenuIssuesTasksEnabled() ?? true)) {
+            return false;
+        }
+
         $this->loadMissing('category');
 
         if ($this->category_id === null || $this->category === null) {
