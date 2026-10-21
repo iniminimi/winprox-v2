@@ -32,6 +32,20 @@
     <div class="wp-time-shift-card__facts">
         <p class="wp-time-shift-card__date">{{ $shift->clock_in_at->format('d-m-Y') }}</p>
         <p class="wp-muted wp-text-sm">{{ $shift->team?->localizedName() }}</p>
+        @php
+            $plannedLabels = collect($planned ?? [])->map(function (\App\Models\PlannedShift $planned): string {
+                $label = $planned->shiftType?->code ?: __('time.schedule.types.kinds.'.$planned->kind->value);
+                $start = \App\Models\ShiftType::formatTime($planned->start_time);
+                $end = \App\Models\ShiftType::formatTime($planned->end_time);
+
+                return $start !== '' && $end !== '' ? $label.' '.$start.'–'.$end : $label;
+            });
+        @endphp
+        @if ($plannedLabels->isNotEmpty())
+            <p class="wp-muted wp-text-sm">
+                {{ __('time.shifts.planned_label') }}: {{ $plannedLabels->implode(' · ') }}
+            </p>
+        @endif
     </div>
 
     <div class="wp-time-shift-card__col">

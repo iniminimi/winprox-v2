@@ -153,6 +153,7 @@
         "break_minutes": "Pausa: :duration",
         "worked": "Lavorato: :duration",
         "worked_label": "Lavorato",
+        "planned_label": "Pianificato",
         "punches_heading": "Entrata e uscita",
         "punch_in": ":time In · :place",
         "punch_out": ":time Out · :place",

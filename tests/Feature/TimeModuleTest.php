@@ -11,6 +11,7 @@ use App\Actions\Time\EndWorkBreakAction;
 use App\Actions\Time\StartWorkBreakAction;
 use App\Actions\Time\ManualClockInWorkShiftAction;
 use App\Enums\ClockSource;
+use App\Enums\ShiftTypeKind;
 use App\Enums\WorkShiftStatus;
 use App\Livewire\Public\TimePortal;
 use App\Livewire\Time\ClockPointsIndex;
@@ -20,6 +21,8 @@ use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
+use App\Models\PlannedShift;
+use App\Models\ShiftType;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\User;
@@ -155,6 +158,40 @@ it('toont een pauze op een nog open dienst', function () {
         ->test(ShiftsIndex::class)
         ->assertSee(__('time.shifts.break_minutes', ['duration' => '15'.__('time.duration.minute_short')]), false)
         ->assertSee(__('time.shifts.break_range', ['start' => '11:00', 'end' => '11:15']), false);
+});
+
+it('toont de geplande dienst (code en uren) op de shiftkaart', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    $type = ShiftType::factory()->create([
+        'tenant_id' => $tenant->id,
+        'kind' => ShiftTypeKind::Work,
+        'code' => 'AV',
+        'is_active' => true,
+    ]);
+    PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-13',
+        'kind' => ShiftTypeKind::Work,
+        'shift_type_id' => $type->id,
+        'start_time' => '18:00',
+        'end_time' => '20:00',
+    ]);
+
+    $this->travelTo(Carbon::parse('2026-10-13 18:05:00'));
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+
+    Livewire::actingAs($admin)
+        ->test(ShiftsIndex::class)
+        ->assertSee(__('time.shifts.planned_label'), false)
+        ->assertSee('AV 18:00–20:00', false);
 });
 
 it('toont Clock Points als paginatitel en QR-rotatie standaard ingeklapt', function () {

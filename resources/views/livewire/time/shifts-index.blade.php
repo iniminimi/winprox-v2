@@ -72,7 +72,10 @@
 
     <div class="wp-list">
         @forelse ($shifts as $shift)
-            @include('partials.wp-time-shift-card', ['shift' => $shift])
+            @include('partials.wp-time-shift-card', [
+                'shift' => $shift,
+                'planned' => $plannedMap[$shift->worker_id.':'.$shift->clock_in_at->toDateString()] ?? [],
+            ])
         @empty
             <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('time.shifts.empty') }}</p></div>
         @endforelse

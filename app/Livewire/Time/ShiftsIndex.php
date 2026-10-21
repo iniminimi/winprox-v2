@@ -9,12 +9,14 @@ use App\Livewire\Concerns\ManagesWorkShiftForceClose;
 use App\Livewire\Concerns\ProvidesTimeNavAlarmCount;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
+use App\Models\PlannedShift;
 use App\Models\Tenant;
 use App\Models\Worker;
 use App\Models\WorkShift;
 use App\Support\Checkmate\CheckmateMode;
 use App\Support\Tenancy;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Support\Collection;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -171,12 +173,15 @@ class ShiftsIndex extends Component
             ->when($this->clockPointFilter, fn ($q) => $q->where('clock_in_clock_point_id', $this->clockPointFilter))
             ->orderByDesc('clock_in_at');
 
+        $shifts = $query->paginate(25);
+
         $manualClockInOptions = $this->showManualClockInModal
             ? $this->manualClockInFormOptions(auth()->user()?->accessibleLocationIds())
             : ['workers' => collect(), 'clockPoints' => collect()];
 
         return view('livewire.time.shifts-index', [
-            'shifts' => $query->paginate(25),
+            'shifts' => $shifts,
+            'plannedMap' => $this->plannedShiftsMap($shifts->getCollection()),
             'teams' => InternalTeam::query()->with('translations')->orderBy('sort_order')->orderBy('name')->get(),
             'workers' => Worker::query()->where('is_active', true)->orderBy('last_name')->orderBy('first_name')->get(),
             'clockPoints' => ClockPoint::query()->orderBy('sort_order')->orderBy('name')->get(),
@@ -201,5 +206,31 @@ class ShiftsIndex extends Component
             // alleen via de eigen gsm — knop weglaten.
             'checkmateMode' => CheckmateMode::isActive(Tenant::query()->find((int) Tenancy::id())),
         ]);
+    }
+
+    /**
+     * @param  Collection<int, WorkShift>  $shifts
+     * @return array<string, list<PlannedShift>>
+     */
+    private function plannedShiftsMap(Collection $shifts): array
+    {
+        $workerIds = $shifts->pluck('worker_id')->filter()->unique()->map(fn ($id) => (int) $id)->all();
+        $dates = $shifts->pluck('clock_in_at')->filter()->map(fn ($at) => $at->toDateString())->unique()->sort()->values();
+        if ($workerIds === [] || $dates->isEmpty()) {
+            return [];
+        }
+
+        $map = [];
+        PlannedShift::query()
+            ->whereIn('worker_id', $workerIds)
+            ->whereBetween('work_date', [$dates->first().' 00:00:00', $dates->last().' 23:59:59'])
+            ->with('shiftType')
+            ->orderBy('start_time')
+            ->get()
+            ->each(function (PlannedShift $planned) use (&$map): void {
+                $map[(int) $planned->worker_id.':'.$planned->work_date->toDateString()][] = $planned;
+            });
+
+        return $map;
     }
 }
