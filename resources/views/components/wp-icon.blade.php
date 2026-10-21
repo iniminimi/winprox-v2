@@ -39,6 +39,8 @@
         'chevron-down' => '<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />',
         'chevron-up' => '<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />',
         'chevron-left' => '<path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />',
+        'arrow-up-right' => '<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 19.5 19.5 4.5m0 0H8.25m11.25 0v11.25" />',
+        'arrow-down-left' => '<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 4.5 4.5 19.5m0 0h11.25m-11.25 0V8.25" />',
         'minus' => '<path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />',
         'circle' => '<circle cx="12" cy="12" r="4" />',
         'alert-triangle' => '<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />',

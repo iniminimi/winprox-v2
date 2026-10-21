@@ -760,6 +760,9 @@ productsector op `Tenant`.
   reden (`work_shift.corrected`). Uitklok **leeg** laten heropent de dienst (foutieve
   uitklok). Geweigerd als die uitvoerder al een andere open dienst heeft. Geen extra
   CIAO IN/OUT.
+- **Urenkaart:** Time → Uren toont per dienst vijf kolommen (medewerker+team,
+  gewerkt+pauze, datum+gepland, in/uit-registraties, status+Corrigeren).
+  Verplaatsingen, werkbezoeken en taken staan onder die rij.
 - **Evacuatielijst** (optioneel, Instellingen → Prikklok-beveiliging, **standaard uit**)
   op het Clock Point-portaal (na aanmelden, tegel met brandicoon).
   Toont alle open shifts (uitvoerders én collega's/admin met prikklok-profiel), per

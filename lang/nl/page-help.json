@@ -1405,8 +1405,8 @@
                     "text": "<strong>Open</strong> — nog ingeklokt. <strong>Gesloten</strong> — normaal uitgeklokt. <strong>Gesloten (admin)</strong> — handmatig gesloten door beheerder. <strong>Gesloten (automatisch)</strong> — systeem sloot een vergeten shift na de drempel."
                 },
                 {
-                    "label": "In- en uitklokken",
-                    "text": "Onder <strong>In- en uitklokken</strong> staan de priktijden, net zoals werkbezoeken: uur + In of Uit + plek. De generieke Clock Point-naam Aanmelden wordt niet getoond; u ziet de locatie (of Clock Point als er geen locatie is)."
+                    "label": "Registraties",
+                    "text": "Onder <strong>Registraties</strong> staan de priktijden: uur + In of Uit, met de plek eronder. De generieke Clock Point-naam Aanmelden wordt niet getoond; u ziet de locatie (of Clock Point als er geen locatie is)."
                 },
                 {
                     "label": "Taken koppelen",

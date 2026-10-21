@@ -1405,8 +1405,8 @@
                     "text": "<strong>Aperto</strong> — ancora timbrato. <strong>Chiuso</strong> — uscita normale. <strong>Chiuso (admin)</strong> — chiuso manualmente dall'amministratore. <strong>Chiuso (automatico)</strong> — il sistema chiude un turno dimenticato dopo la soglia."
                 },
                 {
-                    "label": "Entrata e uscita",
-                    "text": "In <strong>Entrata e uscita</strong> le timbrature sono elencate come le visite: ora + In o Out + luogo. Il nome generico Accedi non viene mostrato; vedi la sede (o Clock Point se non c’è una sede)."
+                    "label": "Registrazioni",
+                    "text": "In <strong>Registrazioni</strong> le timbrature sono elencate: ora + Entrata o Uscita, con il luogo sotto. Il nome generico Accedi non viene mostrato; vedi la sede (o Clock Point se non c’è una sede)."
                 },
                 {
                     "label": "Collega attività",

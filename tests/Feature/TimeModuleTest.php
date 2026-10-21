@@ -1080,9 +1080,12 @@ it('toont in- en uitklokken als tijden met locatie, niet Aanmelden', function ()
         ->test(ShiftsIndex::class)
         ->assertSee(__('time.shifts.punches_heading'), false)
         ->assertSee(__('time.shifts.worked_label'), false)
+        ->assertSee(__('time.export.columns.date'), false)
+        ->assertSee(__('time.export.columns.status'), false)
         ->assertSee($clockInAt->format('d-m-Y'), false)
-        ->assertSee(__('time.shifts.punch_in', ['time' => '08:15', 'place' => 'Depot Noord']), false)
-        ->assertSee(__('time.shifts.punch_out', ['time' => '12:00', 'place' => 'Depot Noord']), false)
+        ->assertSee(__('time.shifts.punch_in', ['time' => '08:15']), false)
+        ->assertSee(__('time.shifts.punch_out', ['time' => '12:00']), false)
+        ->assertSee('Depot Noord', false)
         ->assertDontSee('Ingeklokt bij Aanmelden', false);
 });
 
