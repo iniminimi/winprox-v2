@@ -124,6 +124,33 @@
         </div>
     </section>
 
+    <section class="wp-welcome-section" aria-label="{{ __('welcome.roster.title') }}">
+        <div class="wp-welcome-main">
+            <div class="wp-welcome-split">
+                <figure class="wp-landing-visual wp-welcome-screenshot wp-welcome-screenshot--desktop">
+                    <img
+                        src="{{ asset('images/welcome/screenshot_excel.jpg') }}"
+                        alt="{{ __('welcome.roster.image_alt') }}"
+                        class="wp-welcome-screenshot__img"
+                        loading="lazy"
+                        decoding="async"
+                    >
+                </figure>
+                <article class="wp-card wp-card-pad wp-stack">
+                    <h2 class="wp-welcome-h3">{{ __('welcome.roster.title') }}</h2>
+                    <p class="wp-text-body">{{ __('welcome.roster.lead') }}</p>
+                    <ul class="wp-welcome-checklist">
+                        @foreach (__('welcome.roster.items') as $item)
+                            <li><span><strong>{{ $item['label'] }}</strong> — {{ $item['text'] }}</span></li>
+                        @endforeach
+                    </ul>
+                    <p class="wp-text-body">{{ __('welcome.roster.closing') }}</p>
+                    <p class="wp-muted">{{ __('welcome.roster.note') }}</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <section class="wp-welcome-section wp-welcome-section--alt wp-welcome-employees" aria-label="{{ __('welcome.employees.title') }}">
         <div class="wp-welcome-main">
             <div class="wp-welcome-split">

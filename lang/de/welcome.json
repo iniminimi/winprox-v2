@@ -1,145 +1,170 @@
 {
-    "meta_title": "WinProx — Digitale Stempeluhr und Zeiterfassung",
-    "social": {
-        "og_title": "WinProx — Digitale Stempeluhr für die Zeiterfassung",
-        "og_description": "Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter."
+  "meta_title": "WinProx — Digitale Stempeluhr und Zeiterfassung",
+  "social": {
+    "og_title": "WinProx — Digitale Stempeluhr für die Zeiterfassung",
+    "og_description": "Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter."
+  },
+  "login": "Anmelden",
+  "register": "Registrieren",
+  "back_home": "Zur Startseite",
+  "nav": {
+    "menu": "Menü",
+    "pricing": "Preise",
+    "more": "Mehr",
+    "features_overview": "Feature-Übersicht",
+    "about": "Über WinProx",
+    "technical_sheet": "Technisches Datenblatt",
+    "api_webhooks": "API & Webhooks"
+  },
+  "hero": {
+    "brand": "WinProx",
+    "headline": "Die digitale Stempeluhr für die Zeiterfassung in Ihrem Unternehmen.",
+    "subtitle": "Mitarbeitende stempeln ein und aus mit ihrem Smartphone – ohne App oder Badge. Sie verwalten die Dienstpläne einfach, erfassen die geleisteten Stunden und geben sie an Ihr Sozialsekretariat weiter.",
+    "flow": "Scan → Stempeln → Stunden → Sekretariat",
+    "flow_steps": {
+      "scan": "Scan",
+      "punch": "Stempeln",
+      "hours": "Stunden",
+      "secretariat": "Sekretariat"
     },
-    "login": "Anmelden",
-    "register": "Registrieren",
-    "back_home": "Zur Startseite",
-    "nav": {
-        "menu": "Menü",
-        "pricing": "Preise",
-        "more": "Mehr",
-        "features_overview": "Feature-Übersicht",
-        "about": "Über WinProx",
-        "technical_sheet": "Technisches Datenblatt",
-        "api_webhooks": "API & Webhooks"
+    "cta_start": "Kostenlos testen",
+    "cta_how": "So funktioniert es",
+    "trial": "Test: 30 Tage, 25 Plätze, nach Ihrer Anfrage.",
+    "feature_board": {
+      "badge": "Checkmate",
+      "title": "Check in and out @ work",
+      "text": "WinProx Checkmate: die schlanke Formel zum Ein- und Ausstempeln vor Ort. Reinigung jetzt. CIAO von Beginn an enthalten.",
+      "price": "5 € pro Ausführenden und Monat"
     },
-    "hero": {
-        "brand": "WinProx",
-        "headline": "Die digitale Stempeluhr für die Zeiterfassung in Ihrem Unternehmen.",
-        "subtitle": "Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter. CIAO schalten Sie in den Einstellungen ein.",
-        "flow": "Scan → Stempeln → Stunden → Sekretariat",
-        "flow_steps": {
-            "scan": "Scan",
-            "punch": "Stempeln",
-            "hours": "Stunden",
-            "secretariat": "Sekretariat"
-        },
-        "cta_start": "Kostenlos testen",
-        "cta_how": "So funktioniert es",
-        "trial": "Test: 30 Tage, 25 Plätze, nach Ihrer Anfrage.",
-        "feature_board": {
-            "badge": "Checkmate",
-            "title": "Check in and out @ work",
-            "text": "WinProx Checkmate: die schlanke Formel zum Ein- und Ausstempeln vor Ort. Reinigung jetzt. CIAO von Beginn an enthalten.",
-            "price": "5 € pro Ausführenden und Monat"
-        },
-        "cta_demo": "Persönliche Demo vereinbaren",
-        "cta_self": "oder legen Sie sofort ein Konto an."
-    },
-    "employees": {
-        "title": "Mehr Komfort für Ihre Mitarbeitenden. Korrekte Stunden für Ihr Sozialsekretariat.",
-        "lead": "Mit WinProx haben Ihre Mitarbeitenden ihre Arbeitsdaten und praktischen Arbeitsfunktionen griffbereit, direkt auf ihrem Telefon. Zu Hause wie am Arbeitsplatz.",
-        "items": [
-            {
-                "label": "Ein- und Ausstempeln",
-                "text": "über ihr Telefon, ohne App oder Badge."
-            },
-            {
-                "label": "Ihren Dienstplan einsehen",
-                "text": "wissen, wann sie arbeiten müssen."
-            },
-            {
-                "label": "Ihre geleisteten Stunden ansehen",
-                "text": "Einblick in ihre erfassten Stunden."
-            },
-            {
-                "label": "Urlaub oder Zeitausgleich beantragen",
-                "text": "einfach über ihr Telefon."
-            },
-            {
-                "label": "Meldungen weitergeben und Aufgaben ausführen",
-                "text": "direkt am Arbeitsplatz."
-            },
-            {
-                "label": "Inspektionsrunden durchführen",
-                "text": "mit digitalen Kontrollen und Checklisten."
-            }
-        ],
-        "note": "Die verfügbaren Funktionen hängen von Ihrer WinProx-Formel ab.",
-        "image_alt": "Mitarbeitender sieht Dienstplan und Stunden auf dem Telefon in WinProx."
-    },
-    "backoffice": {
-        "title": "Mehr Überblick für Sie. Weniger Verwaltung für Ihr Unternehmen.",
-        "lead": "Mit dem WinProx-Backoffice verwalten Sie Zeiterfassung, Dienstpläne und die tägliche Arbeitsverfolgung aus einer zentralen Umgebung.",
-        "items": [
-            {
-                "label": "Zeiterfassung verfolgen",
-                "text": "registrierte Stunden mit den Dienstplänen vergleichen."
-            },
-            {
-                "label": "Dienstpläne verwalten",
-                "text": "Arbeitszeiten Ihrer Mitarbeitenden planen."
-            },
-            {
-                "label": "Meldungen und Aufgaben verfolgen",
-                "text": "von der Meldung bis zur Abwicklung."
-            },
-            {
-                "label": "Inspektionsrunden verwalten",
-                "text": "Kontrollen mit Stopps und Checklisten organisieren."
-            },
-            {
-                "label": "Arbeit und Informationen zentralisieren",
-                "text": "Dokumente, Briefings und Kalender an einem Ort."
-            }
-        ],
-        "closing": "So bringt WinProx Zeiterfassung und tägliche Arbeitsverfolgung in einer Plattform zusammen.",
-        "note": "Die verfügbaren Funktionen hängen von Ihrer WinProx-Formel ab.",
-        "image_alt": "Das WinProx-Backoffice mit Stunden- und Planungsübersicht."
-    },
-    "guidance": {
-        "eyebrow": "Persönliche Betreuung",
-        "title": "Möchten Sie WinProx lieber zuerst in Aktion sehen?",
-        "lead": "Wir erklären WinProx bei Ihnen vor Ort oder gehen es gemeinsam per Videoanruf durch. Wir gehen von Ihrem Unternehmen aus und zeigen, wie Ihre Mitarbeiter einstempeln, ihren Dienstplan einsehen und wie Sie die erfassten Stunden verwalten.",
-        "items": [
-            "Wir gehen von Ihrer bisherigen Arbeitsweise aus.",
-            "Wir zeigen die Stempeluhr und die Funktionen, die zu Ihrer Formel passen.",
-            "Wir besprechen, wie Ihre Mitarbeiter und Ihre Verwaltung damit arbeiten.",
-            "Sie erhalten ein klares Bild der Möglichkeiten und des Preises."
-        ],
-        "note": "Unverbindlich — vor Ort bei Ihnen oder per Videoanruf. Sie müssen kein IT-Spezialist sein.",
-        "cta": "Persönliche Demo vereinbaren",
-        "image_alt": "WinProx-Beraterin mit Tablet — persönliche Betreuung für Ihr Unternehmen."
-    },
-    "video": {
-        "title": "WinProx in Aktion",
-        "placeholder": "Video folgt in Kürze."
-    },
-    "clock": {
-        "title": "Eine kleine, elegante Stempeluhr für Ihr Unternehmen",
-        "lead": "WinProx Time: Mitarbeitende stempeln mit dem eigenen gekoppelten Smartphone an der Stempeluhr des Unternehmens ein und aus. Keine App, kein Badge und keine biometrische Identifikation.",
-        "items": [
-            "Fester Uhrbildschirm mit wechselndem QR-Code",
-            "Zeit- und Anwesenheitserfassung in WinProx",
-            "Smartphone mit dem Mitarbeiter gekoppelt",
-            "QR-Code wechselt regelmäßig",
-            "Zusätzliche Kontrolle gegen Missbrauch, ohne biometrische Identifikation",
-            "Auch als QR-Aufkleber möglich, ohne Bildschirm",
-            "Sie vergleichen die Stunden mit dem Dienstplan.",
-            "Die Stunden geben Sie an Ihr Sozialsekretariat weiter."
-        ],
-        "close": "Mehr Kontrolle darüber, wer wann und wo einstempelt — ohne Badges oder biometrische Daten.",
-        "price_note": "Uhrbildschirm zu mieten ab €:price pro Monat und Bildschirm.",
-        "cta_time": "WinProx Time entdecken",
-        "cta_clock": "Die Stempeluhr ansehen",
-        "image_alt": "Die WinProx-Stempeluhr: ein kompakter weißer Bildschirm mit QR-Code.",
-        "cta_demo": "Demo vereinbaren"
-    },
-    "footer": {
-        "contact": "Kontakt",
-        "rights": "Alle Rechte vorbehalten."
-    }
+    "cta_demo": "Persönliche Demo vereinbaren",
+    "cta_self": "oder legen Sie sofort ein Konto an."
+  },
+  "roster": {
+    "title": "Dienstplan erstellen? So einfach wie in Excel.",
+    "lead": "Planen Sie Ihre Mitarbeitenden in einer übersichtlichen Tabelle mit Mitarbeitenden und Tagen in Zeilen und Spalten. Füllen Sie die Planung aus, passen Sie Stunden an und behalten Sie den Überblick.",
+    "items": [
+      {
+        "label": "Eine vertraute Tabellenstruktur",
+        "text": "arbeiten, wie Sie es aus Excel kennen."
+      },
+      {
+        "label": "Arbeitszeiten eintragen und anpassen",
+        "text": "pro Mitarbeiter und Tag."
+      },
+      {
+        "label": "Eine Woche planen, dann wiederholen",
+        "text": "kopieren Sie Ihren Dienstplan in die Folgewochen."
+      },
+      {
+        "label": "Geplant mit gestempelt vergleichen",
+        "text": "sehen Sie die Abweichung zwischen Dienstplan und erfassten Stunden."
+      }
+    ],
+    "closing": "Kein kompliziertes Planungssystem zum Erlernen.",
+    "image_alt": "Der WinProx-Dienstplan: Mitarbeitende und Arbeitstage in einer übersichtlichen Tabelle, wie in Excel.",
+    "note": "Die verfügbaren Funktionen hängen von Ihrer WinProx-Formel ab."
+  },
+  "employees": {
+    "title": "Mehr Komfort für Ihre Mitarbeitenden. Korrekte Stunden für Ihr Sozialsekretariat.",
+    "lead": "Mit WinProx haben Ihre Mitarbeitenden ihre Arbeitsdaten und praktischen Arbeitsfunktionen griffbereit, direkt auf ihrem Telefon. Zu Hause wie am Arbeitsplatz.",
+    "items": [
+      {
+        "label": "Ein- und Ausstempeln",
+        "text": "über ihr Telefon, ohne App oder Badge."
+      },
+      {
+        "label": "Ihren Dienstplan einsehen",
+        "text": "wissen, wann sie arbeiten müssen."
+      },
+      {
+        "label": "Ihre geleisteten Stunden ansehen",
+        "text": "Einblick in ihre erfassten Stunden."
+      },
+      {
+        "label": "Urlaub oder Zeitausgleich beantragen",
+        "text": "einfach über ihr Telefon."
+      },
+      {
+        "label": "Meldungen weitergeben und Aufgaben ausführen",
+        "text": "direkt am Arbeitsplatz."
+      },
+      {
+        "label": "Inspektionsrunden durchführen",
+        "text": "mit digitalen Kontrollen und Checklisten."
+      }
+    ],
+    "note": "Die verfügbaren Funktionen hängen von Ihrer WinProx-Formel ab.",
+    "image_alt": "Mitarbeitender sieht Dienstplan und Stunden auf dem Telefon in WinProx."
+  },
+  "backoffice": {
+    "title": "Mehr Überblick für Sie. Weniger Verwaltung für Ihr Unternehmen.",
+    "lead": "Mit dem WinProx-Backoffice verwalten Sie Zeiterfassung, Dienstpläne und die tägliche Arbeitsverfolgung aus einer zentralen Umgebung.",
+    "items": [
+      {
+        "label": "Zeiterfassung verfolgen",
+        "text": "registrierte Stunden mit den Dienstplänen vergleichen."
+      },
+      {
+        "label": "Dienstpläne verwalten",
+        "text": "Arbeitszeiten Ihrer Mitarbeitenden planen."
+      },
+      {
+        "label": "Meldungen und Aufgaben verfolgen",
+        "text": "von der Meldung bis zur Abwicklung."
+      },
+      {
+        "label": "Inspektionsrunden verwalten",
+        "text": "Kontrollen mit Stopps und Checklisten organisieren."
+      },
+      {
+        "label": "Arbeit und Informationen zentralisieren",
+        "text": "Dokumente, Briefings und Kalender an einem Ort."
+      }
+    ],
+    "closing": "So bringt WinProx Zeiterfassung und tägliche Arbeitsverfolgung in einer Plattform zusammen.",
+    "note": "Die verfügbaren Funktionen hängen von Ihrer WinProx-Formel ab.",
+    "image_alt": "Das WinProx-Backoffice mit Stunden- und Planungsübersicht."
+  },
+  "guidance": {
+    "eyebrow": "Persönliche Betreuung",
+    "title": "Möchten Sie WinProx lieber zuerst in Aktion sehen?",
+    "lead": "Wir erklären WinProx bei Ihnen vor Ort oder gehen es gemeinsam per Videoanruf durch. Wir gehen von Ihrem Unternehmen aus und zeigen, wie Ihre Mitarbeiter einstempeln, ihren Dienstplan einsehen und wie Sie die erfassten Stunden verwalten.",
+    "items": [
+      "Wir gehen von Ihrer bisherigen Arbeitsweise aus.",
+      "Wir zeigen die Stempeluhr und die Funktionen, die zu Ihrer Formel passen.",
+      "Wir besprechen, wie Ihre Mitarbeiter und Ihre Verwaltung damit arbeiten.",
+      "Sie erhalten ein klares Bild der Möglichkeiten und des Preises."
+    ],
+    "note": "Unverbindlich — vor Ort bei Ihnen oder per Videoanruf. Sie müssen kein IT-Spezialist sein.",
+    "cta": "Persönliche Demo vereinbaren",
+    "image_alt": "WinProx-Beraterin mit Tablet — persönliche Betreuung für Ihr Unternehmen."
+  },
+  "video": {
+    "title": "WinProx in Aktion",
+    "placeholder": "Video folgt in Kürze."
+  },
+  "clock": {
+    "title": "Eine kleine, elegante Stempeluhr für Ihr Unternehmen",
+    "lead": "WinProx Time: Mitarbeitende stempeln mit dem eigenen gekoppelten Smartphone an der Stempeluhr des Unternehmens ein und aus. Keine App, kein Badge und keine biometrische Identifikation.",
+    "items": [
+      "Fester Uhrbildschirm mit wechselndem QR-Code",
+      "Zeit- und Anwesenheitserfassung in WinProx",
+      "Smartphone mit dem Mitarbeiter gekoppelt",
+      "QR-Code wechselt regelmäßig",
+      "Zusätzliche Kontrolle gegen Missbrauch, ohne biometrische Identifikation",
+      "Auch als QR-Aufkleber möglich, ohne Bildschirm",
+      "Sie vergleichen die Stunden mit dem Dienstplan.",
+      "Die Stunden geben Sie an Ihr Sozialsekretariat weiter."
+    ],
+    "close": "Mehr Kontrolle darüber, wer wann und wo einstempelt — ohne Badges oder biometrische Daten.",
+    "price_note": "Uhrbildschirm zu mieten ab €:price pro Monat und Bildschirm.",
+    "cta_time": "WinProx Time entdecken",
+    "cta_clock": "Die Stempeluhr ansehen",
+    "image_alt": "Die WinProx-Stempeluhr: ein kompakter weißer Bildschirm mit QR-Code.",
+    "cta_demo": "Demo vereinbaren"
+  },
+  "footer": {
+    "contact": "Kontakt",
+    "rights": "Alle Rechte vorbehalten."
+  }
 }

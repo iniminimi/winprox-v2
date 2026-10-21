@@ -1,145 +1,170 @@
 {
-    "meta_title": "WinProx — Digitale prikklok en urenregistratie",
-    "social": {
-        "og_title": "WinProx — Digitale prikklok voor urenregistratie",
-        "og_description": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat."
+  "meta_title": "WinProx — Digitale prikklok en urenregistratie",
+  "social": {
+    "og_title": "WinProx — Digitale prikklok voor urenregistratie",
+    "og_description": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat."
+  },
+  "login": "Inloggen",
+  "register": "Registreren",
+  "back_home": "Terug naar startpagina",
+  "nav": {
+    "menu": "Menu",
+    "pricing": "Prijzen",
+    "more": "Meer",
+    "features_overview": "Features-overzicht",
+    "about": "Over WinProx",
+    "technical_sheet": "Technische fiche",
+    "api_webhooks": "API & Webhooks"
+  },
+  "hero": {
+    "brand": "WinProx",
+    "headline": "De digitale prikklok voor urenregistratie in uw bedrijf.",
+    "subtitle": "Medewerkers prikken in en uit met hun smartphone, zonder app of badge. U beheert de uurroosters eenvoudig, registreert de gewerkte uren en geeft ze door aan uw sociaal secretariaat.",
+    "flow": "Scan → Prik → Uren → Secretariaat",
+    "flow_steps": {
+      "scan": "Scan",
+      "punch": "Prik",
+      "hours": "Uren",
+      "secretariat": "Secretariaat"
     },
-    "login": "Inloggen",
-    "register": "Registreren",
-    "back_home": "Terug naar startpagina",
-    "nav": {
-        "menu": "Menu",
-        "pricing": "Prijzen",
-        "more": "Meer",
-        "features_overview": "Features-overzicht",
-        "about": "Over WinProx",
-        "technical_sheet": "Technische fiche",
-        "api_webhooks": "API & Webhooks"
+    "cta_start": "Gratis proberen",
+    "cta_how": "Bekijk hoe het werkt",
+    "trial": "Proef: 30 dagen, 25 seats, na uw aanvraag.",
+    "feature_board": {
+      "badge": "Checkmate",
+      "title": "Check in and out @ work",
+      "text": "WinProx Checkmate: de beperkte formule voor in- en uitchecken op locatie. Schoonmaak nu. CIAO inbegrepen vanaf de start.",
+      "price": "€5 per uitvoerder per maand"
     },
-    "hero": {
-        "brand": "WinProx",
-        "headline": "De digitale prikklok voor urenregistratie in uw bedrijf.",
-        "subtitle": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat. CIAO zet u aan via Instellingen.",
-        "flow": "Scan → Prik → Uren → Secretariaat",
-        "flow_steps": {
-            "scan": "Scan",
-            "punch": "Prik",
-            "hours": "Uren",
-            "secretariat": "Secretariaat"
-        },
-        "cta_start": "Gratis proberen",
-        "cta_how": "Bekijk hoe het werkt",
-        "trial": "Proef: 30 dagen, 25 seats, na uw aanvraag.",
-        "feature_board": {
-            "badge": "Checkmate",
-            "title": "Check in and out @ work",
-            "text": "WinProx Checkmate: de beperkte formule voor in- en uitchecken op locatie. Schoonmaak nu. CIAO inbegrepen vanaf de start.",
-            "price": "€5 per uitvoerder per maand"
-        },
-        "cta_demo": "Plan een persoonlijke demonstratie",
-        "cta_self": "of maak meteen een account aan."
-    },
-    "employees": {
-        "title": "Meer gemak voor uw medewerkers. Correcte uren voor uw secretariaat.",
-        "lead": "Met WinProx hebben uw medewerkers hun werkgegevens en praktische werkfunctionaliteiten bij de hand, rechtstreeks op hun gsm. Thuis én op de werkvloer.",
-        "items": [
-            {
-                "label": "In- en uitprikken",
-                "text": "via hun gsm, zonder app of badge."
-            },
-            {
-                "label": "Hun uurrooster raadplegen",
-                "text": "weten wanneer ze moeten werken."
-            },
-            {
-                "label": "Hun gewerkte uren bekijken",
-                "text": "inzicht in hun geregistreerde uren."
-            },
-            {
-                "label": "Verlof of recup aanvragen",
-                "text": "eenvoudig via hun gsm."
-            },
-            {
-                "label": "Meldingen doorgeven en taken uitvoeren",
-                "text": "rechtstreeks op de werkvloer."
-            },
-            {
-                "label": "Inspectierondes doorlopen",
-                "text": "met digitale controles en checklists."
-            }
-        ],
-        "note": "De beschikbare functionaliteiten zijn afhankelijk van uw WinProx-formule.",
-        "image_alt": "Medewerker raadpleegt uurrooster en uren op de gsm in WinProx."
-    },
-    "backoffice": {
-        "title": "Meer overzicht voor u. Minder administratie voor uw bedrijf.",
-        "lead": "Met de WinProx-backoffice beheert u urenregistratie, uurroosters en dagelijkse werkopvolging vanuit één centrale omgeving.",
-        "items": [
-            {
-                "label": "Urenregistratie opvolgen",
-                "text": "vergelijk geregistreerde uren met de uurroosters."
-            },
-            {
-                "label": "Uurroosters beheren",
-                "text": "plan de werkuren van uw medewerkers."
-            },
-            {
-                "label": "Meldingen en taken opvolgen",
-                "text": "van melding tot afhandeling."
-            },
-            {
-                "label": "Inspectierondes beheren",
-                "text": "organiseer controles met stops en checklists."
-            },
-            {
-                "label": "Werk en informatie centraliseren",
-                "text": "documenten, briefings en kalender op één plek."
-            }
-        ],
-        "closing": "Zo brengt WinProx urenregistratie en dagelijkse werkopvolging samen in één platform.",
-        "note": "De beschikbare functionaliteiten zijn afhankelijk van uw WinProx-formule.",
-        "image_alt": "De WinProx-backoffice met overzicht van uren en planning."
-    },
-    "guidance": {
-        "eyebrow": "Persoonlijke begeleiding",
-        "title": "Liever eerst zien hoe WinProx werkt?",
-        "lead": "Wij komen WinProx bij u uitleggen of nemen het samen via videocall door. We vertrekken vanuit uw bedrijf en tonen hoe uw medewerkers inklokken, hun uurrooster raadplegen en hoe u de geregistreerde uren beheert.",
-        "items": [
-            "We vertrekken vanuit uw huidige werkwijze.",
-            "We tonen de prikklok en de functies die bij uw formule passen.",
-            "We bespreken hoe uw medewerkers en administratie ermee werken.",
-            "U krijgt een duidelijk beeld van de mogelijkheden en de prijs."
-        ],
-        "note": "Vrijblijvend — bij u op locatie of via videocall. U hoeft geen ICT-specialist te zijn.",
-        "cta": "Plan een persoonlijke demonstratie",
-        "image_alt": "WinProx-adviseur met tablet — persoonlijke begeleiding voor uw bedrijf."
-    },
-    "video": {
-        "title": "WinProx in actie",
-        "placeholder": "Video volgt binnenkort."
-    },
-    "clock": {
-        "title": "Een kleine, elegante prikklok voor uw bedrijf",
-        "lead": "WinProx Time: werknemers prikken in en uit met hun eigen gekoppelde smartphone, aan de prikklok van het bedrijf. Geen app, geen badge en geen biometrische identificatie.",
-        "items": [
-            "Vast klokscherm met wisselende QR-code",
-            "Tijdregistratie en uurregistratie in WinProx",
-            "Smartphone gekoppeld aan de werknemer",
-            "QR-code verandert regelmatig",
-            "Extra controle tegen misbruik, zonder biometrische identificatie",
-            "Ook mogelijk als QR-sticker, zonder scherm",
-            "Uren vergelijkt u met het uurrooster.",
-            "De uren geeft u door aan uw sociaal secretariaat."
-        ],
-        "close": "Meer controle over wie, wanneer en waar er wordt ingeprikt — zonder badges of biometrische gegevens.",
-        "price_note": "Klokscherm te huur vanaf €:price per maand per scherm.",
-        "cta_time": "Ontdek WinProx Time",
-        "cta_clock": "Bekijk de prikklok",
-        "image_alt": "De WinProx-prikklok: een compact wit scherm met QR-code.",
-        "cta_demo": "Plan een demonstratie"
-    },
-    "footer": {
-        "contact": "Contact",
-        "rights": "Alle rechten voorbehouden."
-    }
+    "cta_demo": "Plan een persoonlijke demonstratie",
+    "cta_self": "of maak meteen een account aan."
+  },
+  "roster": {
+    "title": "Een uurrooster opmaken? Zo eenvoudig als in Excel.",
+    "lead": "Plan uw medewerkers in een overzichtelijk rooster met medewerkers en dagen in rijen en kolommen. Vul de planning aan, pas uren aan en behoud het overzicht.",
+    "items": [
+      {
+        "label": "Een vertrouwde tabelstructuur",
+        "text": "werken zoals u het uit Excel kent."
+      },
+      {
+        "label": "Werkuren invullen en aanpassen",
+        "text": "per medewerker en per dag."
+      },
+      {
+        "label": "Eén week plannen, daarna herhalen",
+        "text": "kopieer uw rooster naar volgende weken."
+      },
+      {
+        "label": "Gepland vergelijken met geprikt",
+        "text": "zie de afwijking tussen rooster en geregistreerde uren."
+      }
+    ],
+    "closing": "Geen ingewikkeld planningssysteem om onder de knie te krijgen.",
+    "image_alt": "Het WinProx-uurrooster: medewerkers en werkdagen in een overzichtelijke tabel, zoals in Excel.",
+    "note": "De beschikbare functionaliteiten zijn afhankelijk van uw WinProx-formule."
+  },
+  "employees": {
+    "title": "Meer gemak voor uw medewerkers. Correcte uren voor uw secretariaat.",
+    "lead": "Met WinProx hebben uw medewerkers hun werkgegevens en praktische werkfunctionaliteiten bij de hand, rechtstreeks op hun gsm. Thuis én op de werkvloer.",
+    "items": [
+      {
+        "label": "In- en uitprikken",
+        "text": "via hun gsm, zonder app of badge."
+      },
+      {
+        "label": "Hun uurrooster raadplegen",
+        "text": "weten wanneer ze moeten werken."
+      },
+      {
+        "label": "Hun gewerkte uren bekijken",
+        "text": "inzicht in hun geregistreerde uren."
+      },
+      {
+        "label": "Verlof of recup aanvragen",
+        "text": "eenvoudig via hun gsm."
+      },
+      {
+        "label": "Meldingen doorgeven en taken uitvoeren",
+        "text": "rechtstreeks op de werkvloer."
+      },
+      {
+        "label": "Inspectierondes doorlopen",
+        "text": "met digitale controles en checklists."
+      }
+    ],
+    "note": "De beschikbare functionaliteiten zijn afhankelijk van uw WinProx-formule.",
+    "image_alt": "Medewerker raadpleegt uurrooster en uren op de gsm in WinProx."
+  },
+  "backoffice": {
+    "title": "Meer overzicht voor u. Minder administratie voor uw bedrijf.",
+    "lead": "Met de WinProx-backoffice beheert u urenregistratie, uurroosters en dagelijkse werkopvolging vanuit één centrale omgeving.",
+    "items": [
+      {
+        "label": "Urenregistratie opvolgen",
+        "text": "vergelijk geregistreerde uren met de uurroosters."
+      },
+      {
+        "label": "Uurroosters beheren",
+        "text": "plan de werkuren van uw medewerkers."
+      },
+      {
+        "label": "Meldingen en taken opvolgen",
+        "text": "van melding tot afhandeling."
+      },
+      {
+        "label": "Inspectierondes beheren",
+        "text": "organiseer controles met stops en checklists."
+      },
+      {
+        "label": "Werk en informatie centraliseren",
+        "text": "documenten, briefings en kalender op één plek."
+      }
+    ],
+    "closing": "Zo brengt WinProx urenregistratie en dagelijkse werkopvolging samen in één platform.",
+    "note": "De beschikbare functionaliteiten zijn afhankelijk van uw WinProx-formule.",
+    "image_alt": "De WinProx-backoffice met overzicht van uren en planning."
+  },
+  "guidance": {
+    "eyebrow": "Persoonlijke begeleiding",
+    "title": "Liever eerst zien hoe WinProx werkt?",
+    "lead": "Wij komen WinProx bij u uitleggen of nemen het samen via videocall door. We vertrekken vanuit uw bedrijf en tonen hoe uw medewerkers inklokken, hun uurrooster raadplegen en hoe u de geregistreerde uren beheert.",
+    "items": [
+      "We vertrekken vanuit uw huidige werkwijze.",
+      "We tonen de prikklok en de functies die bij uw formule passen.",
+      "We bespreken hoe uw medewerkers en administratie ermee werken.",
+      "U krijgt een duidelijk beeld van de mogelijkheden en de prijs."
+    ],
+    "note": "Vrijblijvend — bij u op locatie of via videocall. U hoeft geen ICT-specialist te zijn.",
+    "cta": "Plan een persoonlijke demonstratie",
+    "image_alt": "WinProx-adviseur met tablet — persoonlijke begeleiding voor uw bedrijf."
+  },
+  "video": {
+    "title": "WinProx in actie",
+    "placeholder": "Video volgt binnenkort."
+  },
+  "clock": {
+    "title": "Een kleine, elegante prikklok voor uw bedrijf",
+    "lead": "WinProx Time: werknemers prikken in en uit met hun eigen gekoppelde smartphone, aan de prikklok van het bedrijf. Geen app, geen badge en geen biometrische identificatie.",
+    "items": [
+      "Vast klokscherm met wisselende QR-code",
+      "Tijdregistratie en uurregistratie in WinProx",
+      "Smartphone gekoppeld aan de werknemer",
+      "QR-code verandert regelmatig",
+      "Extra controle tegen misbruik, zonder biometrische identificatie",
+      "Ook mogelijk als QR-sticker, zonder scherm",
+      "Uren vergelijkt u met het uurrooster.",
+      "De uren geeft u door aan uw sociaal secretariaat."
+    ],
+    "close": "Meer controle over wie, wanneer en waar er wordt ingeprikt — zonder badges of biometrische gegevens.",
+    "price_note": "Klokscherm te huur vanaf €:price per maand per scherm.",
+    "cta_time": "Ontdek WinProx Time",
+    "cta_clock": "Bekijk de prikklok",
+    "image_alt": "De WinProx-prikklok: een compact wit scherm met QR-code.",
+    "cta_demo": "Plan een demonstratie"
+  },
+  "footer": {
+    "contact": "Contact",
+    "rights": "Alle rechten voorbehouden."
+  }
 }

@@ -1,145 +1,170 @@
 {
-    "meta_title": "WinProx — Pointeuse digitale et suivi du temps",
-    "social": {
-        "og_title": "WinProx — Pointeuse digitale pour le suivi du temps",
-        "og_description": "Les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social."
+  "meta_title": "WinProx — Pointeuse digitale et suivi du temps",
+  "social": {
+    "og_title": "WinProx — Pointeuse digitale pour le suivi du temps",
+    "og_description": "Les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social."
+  },
+  "login": "Connexion",
+  "register": "Inscription",
+  "back_home": "Retour à l'accueil",
+  "nav": {
+    "menu": "Menu",
+    "pricing": "Tarifs",
+    "more": "Plus",
+    "features_overview": "Aperçu des fonctionnalités",
+    "about": "À propos de WinProx",
+    "technical_sheet": "Fiche technique",
+    "api_webhooks": "API & Webhooks"
+  },
+  "hero": {
+    "brand": "WinProx",
+    "headline": "La pointeuse digitale pour le suivi du temps dans votre entreprise.",
+    "subtitle": "Les employés pointent avec leur smartphone, sans appli ni badge. Vous gérez facilement les horaires, enregistrez les heures prestées et les transmettez à votre secrétariat social.",
+    "flow": "Scan → Pointer → Heures → Secrétariat",
+    "flow_steps": {
+      "scan": "Scan",
+      "punch": "Pointer",
+      "hours": "Heures",
+      "secretariat": "Secrétariat"
     },
-    "login": "Connexion",
-    "register": "Inscription",
-    "back_home": "Retour à l'accueil",
-    "nav": {
-        "menu": "Menu",
-        "pricing": "Tarifs",
-        "more": "Plus",
-        "features_overview": "Aperçu des fonctionnalités",
-        "about": "À propos de WinProx",
-        "technical_sheet": "Fiche technique",
-        "api_webhooks": "API & Webhooks"
+    "cta_start": "Essai gratuit",
+    "cta_how": "Voir comment ça marche",
+    "trial": "Essai : 30 jours, 25 sièges, après votre demande.",
+    "feature_board": {
+      "badge": "Checkmate",
+      "title": "Check in and out @ work",
+      "text": "WinProx Checkmate : la formule limitée pour pointer sur site. Nettoyage dès maintenant. CIAO inclus dès le départ.",
+      "price": "5 € par exécutant et par mois"
     },
-    "hero": {
-        "brand": "WinProx",
-        "headline": "La pointeuse digitale pour le suivi du temps dans votre entreprise.",
-        "subtitle": "Les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social. Activez le CIAO dans les Paramètres.",
-        "flow": "Scan → Pointer → Heures → Secrétariat",
-        "flow_steps": {
-            "scan": "Scan",
-            "punch": "Pointer",
-            "hours": "Heures",
-            "secretariat": "Secrétariat"
-        },
-        "cta_start": "Essai gratuit",
-        "cta_how": "Voir comment ça marche",
-        "trial": "Essai : 30 jours, 25 sièges, après votre demande.",
-        "feature_board": {
-            "badge": "Checkmate",
-            "title": "Check in and out @ work",
-            "text": "WinProx Checkmate : la formule limitée pour pointer sur site. Nettoyage dès maintenant. CIAO inclus dès le départ.",
-            "price": "5 € par exécutant et par mois"
-        },
-        "cta_demo": "Planifier une démonstration personnalisée",
-        "cta_self": "ou créez un compte tout de suite."
-    },
-    "employees": {
-        "title": "Plus de confort pour vos employés. Des heures correctes pour votre secrétariat social.",
-        "lead": "Avec WinProx, vos employés ont leurs données de travail et leurs fonctionnalités pratiques à portée de main, directement sur leur téléphone. À la maison comme sur le terrain.",
-        "items": [
-            {
-                "label": "Pointer en entrée et en sortie",
-                "text": "via leur téléphone, sans appli ni badge."
-            },
-            {
-                "label": "Consulter leur horaire",
-                "text": "savoir quand ils doivent travailler."
-            },
-            {
-                "label": "Voir leurs heures travaillées",
-                "text": "un aperçu de leurs heures enregistrées."
-            },
-            {
-                "label": "Demander un congé ou une récupération",
-                "text": "facilement via leur téléphone."
-            },
-            {
-                "label": "Faire des signalements et exécuter des tâches",
-                "text": "directement sur le terrain."
-            },
-            {
-                "label": "Parcourir des tournées d'inspection",
-                "text": "avec des contrôles et checklists digitales."
-            }
-        ],
-        "note": "Les fonctionnalités disponibles dépendent de votre formule WinProx.",
-        "image_alt": "Employé consultant son horaire et ses heures sur téléphone dans WinProx."
-    },
-    "backoffice": {
-        "title": "Plus de vue d'ensemble pour vous. Moins d'administration pour votre entreprise.",
-        "lead": "Avec le back-office WinProx, vous gérez le suivi du temps, les horaires et le suivi quotidien du travail depuis un environnement central.",
-        "items": [
-            {
-                "label": "Suivre l'enregistrement des heures",
-                "text": "comparez les heures enregistrées avec les horaires."
-            },
-            {
-                "label": "Gérer les horaires",
-                "text": "planifiez les heures de travail de vos employés."
-            },
-            {
-                "label": "Suivre signalements et tâches",
-                "text": "d'un signalement à son traitement."
-            },
-            {
-                "label": "Gérer les tournées d'inspection",
-                "text": "organisez des contrôles avec arrêts et checklists."
-            },
-            {
-                "label": "Centraliser travail et informations",
-                "text": "documents, briefings et calendrier au même endroit."
-            }
-        ],
-        "closing": "WinProx réunit ainsi suivi du temps et suivi quotidien du travail dans une seule plateforme.",
-        "note": "Les fonctionnalités disponibles dépendent de votre formule WinProx.",
-        "image_alt": "Le back-office WinProx avec l'aperçu des heures et du planning."
-    },
-    "guidance": {
-        "eyebrow": "Accompagnement personnalisé",
-        "title": "Vous préférez d'abord voir comment WinProx fonctionne ?",
-        "lead": "Nous venons vous expliquer WinProx sur place ou le parcourons ensemble en visioconférence. Nous partons de votre entreprise et vous montrons comment vos employés pointent, consultent leur horaire et comment vous gérez les heures enregistrées.",
-        "items": [
-            "Nous partons de votre façon de travailler actuelle.",
-            "Nous montrons la badgeuse et les fonctions adaptées à votre formule.",
-            "Nous voyons ensemble comment vos employés et votre administration l'utiliseront.",
-            "Vous obtenez une image claire des possibilités et du prix."
-        ],
-        "note": "Sans engagement — sur place chez vous ou en visioconférence. Inutile d'être un spécialiste informatique.",
-        "cta": "Planifier une démonstration personnalisée",
-        "image_alt": "Conseillère WinProx avec tablette — accompagnement personnalisé pour votre entreprise."
-    },
-    "video": {
-        "title": "WinProx en action",
-        "placeholder": "Vidéo bientôt disponible."
-    },
-    "clock": {
-        "title": "Une pointeuse petite et élégante pour votre entreprise",
-        "lead": "WinProx Time : les employés pointent avec leur propre smartphone lié, à la pointeuse de l'entreprise. Pas d'appli, pas de badge et pas d'identification biométrique.",
-        "items": [
-            "Écran d’horloge fixe avec code QR renouvelé",
-            "Enregistrement du temps et des heures dans WinProx",
-            "Smartphone associé à l’employé",
-            "Le code QR change régulièrement",
-            "Contrôle renforcé contre les abus, sans identification biométrique",
-            "Possible aussi en autocollant QR, sans écran",
-            "Vous comparez les heures avec l'horaire.",
-            "Vous transmettez les heures à votre secrétariat social."
-        ],
-        "close": "Plus de contrôle sur qui pointe, quand et où — sans badges ni données biométriques.",
-        "price_note": "Écran d’horloge à louer dès €:price par mois et par écran.",
-        "cta_time": "Découvrir WinProx Time",
-        "cta_clock": "Voir la pointeuse",
-        "image_alt": "La pointeuse WinProx : un écran blanc compact avec code QR.",
-        "cta_demo": "Planifier une démonstration"
-    },
-    "footer": {
-        "contact": "Contact",
-        "rights": "Tous droits réservés."
-    }
+    "cta_demo": "Planifier une démonstration personnalisée",
+    "cta_self": "ou créez un compte tout de suite."
+  },
+  "roster": {
+    "title": "Créer un horaire ? Aussi simple que dans Excel.",
+    "lead": "Planifiez vos employés dans un tableau clair avec collaborateurs et jours en lignes et colonnes. Remplissez le planning, ajustez les heures et gardez la vue d’ensemble.",
+    "items": [
+      {
+        "label": "Une structure de tableau familière",
+        "text": "travaillez comme dans Excel."
+      },
+      {
+        "label": "Remplir et ajuster les heures",
+        "text": "par employé et par jour."
+      },
+      {
+        "label": "Planifier une semaine, puis répéter",
+        "text": "copiez votre horaire vers les semaines suivantes."
+      },
+      {
+        "label": "Comparer le prévu au pointé",
+        "text": "voyez l’écart entre l’horaire et les heures enregistrées."
+      }
+    ],
+    "closing": "Pas de système de planification compliqué à maîtriser.",
+    "image_alt": "L’horaire WinProx : employés et jours dans un tableau clair, comme dans Excel.",
+    "note": "Les fonctionnalités disponibles dépendent de votre formule WinProx."
+  },
+  "employees": {
+    "title": "Plus de confort pour vos employés. Des heures correctes pour votre secrétariat social.",
+    "lead": "Avec WinProx, vos employés ont leurs données de travail et leurs fonctionnalités pratiques à portée de main, directement sur leur téléphone. À la maison comme sur le terrain.",
+    "items": [
+      {
+        "label": "Pointer en entrée et en sortie",
+        "text": "via leur téléphone, sans appli ni badge."
+      },
+      {
+        "label": "Consulter leur horaire",
+        "text": "savoir quand ils doivent travailler."
+      },
+      {
+        "label": "Voir leurs heures travaillées",
+        "text": "un aperçu de leurs heures enregistrées."
+      },
+      {
+        "label": "Demander un congé ou une récupération",
+        "text": "facilement via leur téléphone."
+      },
+      {
+        "label": "Faire des signalements et exécuter des tâches",
+        "text": "directement sur le terrain."
+      },
+      {
+        "label": "Parcourir des tournées d'inspection",
+        "text": "avec des contrôles et checklists digitales."
+      }
+    ],
+    "note": "Les fonctionnalités disponibles dépendent de votre formule WinProx.",
+    "image_alt": "Employé consultant son horaire et ses heures sur téléphone dans WinProx."
+  },
+  "backoffice": {
+    "title": "Plus de vue d'ensemble pour vous. Moins d'administration pour votre entreprise.",
+    "lead": "Avec le back-office WinProx, vous gérez le suivi du temps, les horaires et le suivi quotidien du travail depuis un environnement central.",
+    "items": [
+      {
+        "label": "Suivre l'enregistrement des heures",
+        "text": "comparez les heures enregistrées avec les horaires."
+      },
+      {
+        "label": "Gérer les horaires",
+        "text": "planifiez les heures de travail de vos employés."
+      },
+      {
+        "label": "Suivre signalements et tâches",
+        "text": "d'un signalement à son traitement."
+      },
+      {
+        "label": "Gérer les tournées d'inspection",
+        "text": "organisez des contrôles avec arrêts et checklists."
+      },
+      {
+        "label": "Centraliser travail et informations",
+        "text": "documents, briefings et calendrier au même endroit."
+      }
+    ],
+    "closing": "WinProx réunit ainsi suivi du temps et suivi quotidien du travail dans une seule plateforme.",
+    "note": "Les fonctionnalités disponibles dépendent de votre formule WinProx.",
+    "image_alt": "Le back-office WinProx avec l'aperçu des heures et du planning."
+  },
+  "guidance": {
+    "eyebrow": "Accompagnement personnalisé",
+    "title": "Vous préférez d'abord voir comment WinProx fonctionne ?",
+    "lead": "Nous venons vous expliquer WinProx sur place ou le parcourons ensemble en visioconférence. Nous partons de votre entreprise et vous montrons comment vos employés pointent, consultent leur horaire et comment vous gérez les heures enregistrées.",
+    "items": [
+      "Nous partons de votre façon de travailler actuelle.",
+      "Nous montrons la badgeuse et les fonctions adaptées à votre formule.",
+      "Nous voyons ensemble comment vos employés et votre administration l'utiliseront.",
+      "Vous obtenez une image claire des possibilités et du prix."
+    ],
+    "note": "Sans engagement — sur place chez vous ou en visioconférence. Inutile d'être un spécialiste informatique.",
+    "cta": "Planifier une démonstration personnalisée",
+    "image_alt": "Conseillère WinProx avec tablette — accompagnement personnalisé pour votre entreprise."
+  },
+  "video": {
+    "title": "WinProx en action",
+    "placeholder": "Vidéo bientôt disponible."
+  },
+  "clock": {
+    "title": "Une pointeuse petite et élégante pour votre entreprise",
+    "lead": "WinProx Time : les employés pointent avec leur propre smartphone lié, à la pointeuse de l'entreprise. Pas d'appli, pas de badge et pas d'identification biométrique.",
+    "items": [
+      "Écran d’horloge fixe avec code QR renouvelé",
+      "Enregistrement du temps et des heures dans WinProx",
+      "Smartphone associé à l’employé",
+      "Le code QR change régulièrement",
+      "Contrôle renforcé contre les abus, sans identification biométrique",
+      "Possible aussi en autocollant QR, sans écran",
+      "Vous comparez les heures avec l'horaire.",
+      "Vous transmettez les heures à votre secrétariat social."
+    ],
+    "close": "Plus de contrôle sur qui pointe, quand et où — sans badges ni données biométriques.",
+    "price_note": "Écran d’horloge à louer dès €:price par mois et par écran.",
+    "cta_time": "Découvrir WinProx Time",
+    "cta_clock": "Voir la pointeuse",
+    "image_alt": "La pointeuse WinProx : un écran blanc compact avec code QR.",
+    "cta_demo": "Planifier une démonstration"
+  },
+  "footer": {
+    "contact": "Contact",
+    "rights": "Tous droits réservés."
+  }
 }
