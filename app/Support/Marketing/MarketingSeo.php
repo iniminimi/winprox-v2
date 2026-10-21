@@ -29,6 +29,7 @@ final class MarketingSeo
             'demo',
             'faq.public',
             'about',
+            'article.tijdsregistratie-2027',
             'features.facility',
             'features.time',
             'features.esg',

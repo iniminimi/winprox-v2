@@ -1,0 +1,231 @@
+{
+  "tijdsregistratie_2027": {
+    "meta_title": "¿Registro de jornada obligatorio en Bélgica desde 2027? Lo que deben saber los empleadores | WinProx",
+    "social": {
+      "og_title": "¿Registro de jornada obligatorio en Bélgica desde 2027?",
+      "og_description": "Qué significa la obligación belga anunciada de registro de la jornada laboral desde 2027: a quién se aplica, qué datos registrar y cómo prepararse."
+    },
+    "eyebrow": "Legislación · Bélgica",
+    "title": "¿Registro de jornada obligatorio en Bélgica desde 2027? Lo que deben saber los empleadores",
+    "lead": "El Gobierno federal quiere que los empleadores registren el tiempo de trabajo efectivamente prestado por sus trabajadores a partir del 1 de enero de 2027. La ley aún no existe. Esta página explica qué se aplica ya hoy, qué se ha anunciado y qué falta por confirmar.",
+    "updated": "Última comprobación el 21 de octubre de 2026 · Esta página se actualizará en cuanto se publique la ley definitiva.",
+    "summary": {
+      "title": "En resumen",
+      "items": [
+        "A finales de noviembre de 2025, el Gobierno federal anunció una obligación general de registrar el tiempo de trabajo de los trabajadores, con fecha objetivo del 1 de enero de 2027.",
+        "Todavía no hay una ley aprobada. Existe un anteproyecto sobre el que el Consejo Nacional del Trabajo emitió un dictamen dividido el 30 de septiembre de 2026. El ámbito, las exenciones y el calendario aún pueden cambiar.",
+        "No se exige un reloj de fichar clásico: la elección del sistema es libre, siempre que el tiempo de trabajo realmente prestado pueda determinarse de forma objetiva y fiable.",
+        "Ya existen hoy obligaciones concretas de registro, entre otras para los horarios móviles y las desviaciones de los horarios de los trabajadores a tiempo parcial."
+      ]
+    },
+    "status": {
+      "title": "¿Qué se aplica hoy, qué está anunciado y qué sigue siendo incierto?",
+      "intro": "La distinción más importante: lo que ya figura en la ley, lo que el Gobierno anunció para 2027 y lo que solo será definitivo una vez aprobada la ley.",
+      "col_topic": "Tema",
+      "col_state": "Estado",
+      "col_detail": "Qué significa",
+      "state_now": "En vigor",
+      "state_announced": "Anunciado para 2027",
+      "state_pending": "Por confirmar",
+      "rows": [
+        {
+          "topic": "Registro en horarios móviles",
+          "state": "now",
+          "detail": "Los empleadores que aplican horarios móviles ya deben registrar las prestaciones de sus trabajadores."
+        },
+        {
+          "topic": "Desviaciones del horario de los trabajadores a tiempo parcial",
+          "state": "now",
+          "detail": "Todas las desviaciones del horario fijo o variable de los trabajadores a tiempo parcial deben constar en un documento de control (registro de desviaciones)."
+        },
+        {
+          "topic": "Registro de presencia sectorial",
+          "state": "now",
+          "detail": "Varios sectores ya conocen una obligación de registro, como Checkin@work en las obras de construcción y el registro de presencia en la limpieza."
+        },
+        {
+          "topic": "Registro general del tiempo de trabajo real",
+          "state": "announced",
+          "detail": "El anteproyecto obliga a los empleadores a registrar la jornada diaria y semanal de cada trabajador de forma objetiva y fiable; entrada en vigor prevista el 1 de enero de 2027, con aplicación práctica a más tardar el 1 de abril de 2027."
+        },
+        {
+          "topic": "Libre elección del sistema — sin reloj de fichar obligatorio",
+          "state": "announced",
+          "detail": "El anteproyecto no impone ninguna tecnología. Un sistema que solo registra las desviaciones del horario puede ser suficiente si determina el tiempo real trabajado de forma objetiva y fiable."
+        },
+        {
+          "topic": "Exenciones para determinados trabajadores",
+          "state": "pending",
+          "detail": "El anteproyecto excluye, entre otros, al personal directivo y de confianza, los representantes de comercio, los trabajadores a domicilio y teletrabajadores, el personal móvil y los trabajadores de empresas familiares. Los interlocutores sociales están divididos al respecto; la lista definitiva solo figurará en la ley aprobada."
+        },
+        {
+          "topic": "Plazo de conservación de 5 años",
+          "state": "pending",
+          "detail": "El Gobierno anunció una obligación de conservación de cinco años, pero aún no está fijada en una ley aprobada."
+        },
+        {
+          "topic": "Sanciones y control",
+          "state": "pending",
+          "detail": "Aún no publicados. Se conocerán con la legislación definitiva."
+        }
+      ]
+    },
+    "changes": {
+      "title": "¿Qué cambia en 2027?",
+      "paras": [
+        "En el acuerdo presupuestario de finales de noviembre de 2025, el Gobierno federal anunció que todos los empleadores deberán registrar el tiempo de trabajo efectivamente prestado por sus trabajadores. La medida no es una iniciativa puramente belga: responde a la Directiva europea sobre la ordenación del tiempo de trabajo (2003/88/CE) y a las sentencias del Tribunal de Justicia (C-55/18 de 2019 y C-531/23 de 2024), que exigen que los Estados miembros obliguen a los empleadores a establecer un sistema de registro objetivo, fiable y accesible.",
+        "Un anteproyecto de ley prevé insertar para ello un nuevo artículo 38quinquies en la Ley del Trabajo. Fue sometido al Consejo Nacional del Trabajo, que emitió un dictamen dividido el 30 de septiembre de 2026: las organizaciones de trabajadores consideran que la propuesta no llega suficientemente lejos y las organizaciones de empleadores estiman innecesaria una obligación general. El Gobierno debe ahora elaborar un texto definitivo que se votará en la Cámara.",
+        "Hasta esa votación, el contenido puede seguir cambiando. Considere este artículo como un estado de la cuestión, no como legislación definitiva."
+      ]
+    },
+    "who": {
+      "title": "¿A qué empleadores y trabajadores se aplica la obligación?",
+      "intro": "Según el anteproyecto, la obligación se aplica a los empleadores del sector privado y del sector público, sin distinción por sector ni por tamaño de empresa. El anteproyecto sí excluye varias categorías de trabajadores:",
+      "items": [
+        "los trabajadores de empresas familiares que trabajan bajo la autoridad de consanguíneos o afines;",
+        "el personal directivo y los trabajadores en puestos de confianza;",
+        "los representantes de comercio;",
+        "los trabajadores a domicilio y los teletrabajadores;",
+        "el personal móvil, como comerciales y conductores."
+      ],
+      "note": "Otras categorías pueden ser excluidas posteriormente por real decreto. No dé por sentado que sus trabajadores están exentos: la lista definitiva solo queda fijada en la ley aprobada."
+    },
+    "what": {
+      "title": "¿Qué datos debe registrar un empleador?",
+      "intro": "El anteproyecto obliga a registrar, por trabajador, la duración de la jornada diaria y semanal. En la práctica significa:",
+      "items": [
+        "o bien un registro completo de las horas de inicio y fin de cada jornada;",
+        "o bien — según el anteproyecto — el registro de las desviaciones del horario fijo o variable aplicable, siempre que el tiempo efectivamente prestado pueda determinarse así de forma objetiva y fiable;",
+        "los datos no pueden ser modificables unilateralmente (objetivos y fiables);",
+        "los trabajadores y los servicios de inspección deben poder consultar los datos (accesibles) — un punto que los interlocutores sociales aún discuten en el proyecto;",
+        "los datos registrados deberían conservarse durante cinco años."
+      ]
+    },
+    "system": {
+      "title": "¿Es obligatorio un reloj de fichar digital?",
+      "paras": [
+        "No. El Gobierno ha indicado repetidamente que un reloj de fichar clásico no es la intención, y el anteproyecto no impone ninguna tecnología. Los empleadores pueden elegir cómo registrar — sistema digital de fichaje, software, registro de desviaciones — siempre que el resultado sea objetivo y fiable.",
+        "Eso no significa que una hoja de Excel o una lista en papel baste automáticamente. Quien elige el sistema debe poder demostrar que el tiempo registrado refleja el tiempo realmente trabajado y que los trabajadores y la inspección tienen acceso a él. Un sistema digital con marcas de tiempo y acceso por roles lo hace más fácil de defender en la práctica."
+      ]
+    },
+    "already": {
+      "title": "¿Qué obligaciones de registro se aplican ya hoy?",
+      "intro": "Hoy no existe una obligación general de registro, pero sí una serie de obligaciones específicas ya exigibles:",
+      "items": [
+        "horarios móviles: quien aplica un horario móvil debe registrar las prestaciones reales;",
+        "trabajo a tiempo parcial: todas las desviaciones del horario fijo o variable deben constar en un documento de control (registro de desviaciones) que se conserva cinco años;",
+        "registro de presencia por sector: entre otros, Checkin@work en las obras y el registro de presencia en la limpieza;",
+        "flexi-jobs y estudiantes: los convenios y el horario de trabajo real deben llevarse por vía electrónica;",
+        "horarios divergentes en general: quien se desvía del horario normal debe poder documentarlo."
+      ],
+      "note": "Quien ya utiliza uno de estos sistemas suele estar cerca de lo que exigirá la futura obligación general."
+    },
+    "sectors": {
+      "title": "¿Qué significa esto para su sector?",
+      "intro": "La obligación pretende ser transversal, pero el impacto práctico difiere:",
+      "items": [
+        {
+          "name": "Limpieza y facility",
+          "body": "Los trabajadores suelen trabajar en varias ubicaciones al día. El sector ya conoce obligaciones de presencia; un sistema que funciona in situ (teléfono o QR) se acerca más a la práctica diaria."
+        },
+        {
+          "name": "Construcción",
+          "body": "Checkin@work ya es obligatorio en las obras más grandes. El registro general se suma para quienes no registran nada más allá de la obligación de obra."
+        },
+        {
+          "name": "Pymes y pequeñas empresas",
+          "body": "Sin departamento de RR. HH., la carga administrativa pesa relativamente más. Un sistema sencillo y asequible, junto con una comunicación clara al personal, marca la diferencia."
+        },
+        {
+          "name": "Personal que trabaja en el terreno",
+          "body": "Quienes trabajan en lugares cambiantes pueden entrar, según el anteproyecto, dentro del «personal móvil» excluido — pero la lista definitiva solo llegará con la ley. El registro in situ sigue siendo útil para el seguimiento del trabajo y la facturación."
+        }
+      ]
+    },
+    "prepare": {
+      "title": "¿Cómo prepararse en la práctica?",
+      "intro": "No hace falta esperar a la ley definitiva para dar pasos útiles:",
+      "items": [
+        "Determine qué trabajadores quedarían presumiblemente cubiertos por la obligación y cuáles podrían quedar excluidos.",
+        "Compruebe si su enfoque actual (horarios, desviaciones, hojas de horas) es objetivo y fiable y si los trabajadores pueden comunicar las desviaciones por sí mismos.",
+        "Defina quién aprueba las desviaciones y cómo llegan a la nómina.",
+        "Examine si el registro puede vincularse a su secretaría social o a su administración de horas.",
+        "Adapte el reglamento de trabajo cuando sea necesario — los horarios y los métodos de medición ya tienen cabida ahí.",
+        "Informe a los trabajadores sobre el objetivo y el funcionamiento del registro: una comunicación clara evita resistencias.",
+        "Siga la publicación de la ley definitiva; ajuste su sistema cuando los detalles queden fijados."
+      ]
+    },
+    "faq": {
+      "title": "Preguntas frecuentes",
+      "items": [
+        {
+          "q": "¿Es ya obligatorio el registro de la jornada en Bélgica hoy?",
+          "a": "No existe una obligación general, pero sí obligaciones específicas — entre otras para horarios móviles, desviaciones de horarios a tiempo parcial y registro de presencia sectorial. La obligación general está anunciada para el 1 de enero de 2027 pero aún no está aprobada."
+        },
+        {
+          "q": "¿Desde cuándo se aplica la obligación general?",
+          "a": "El anteproyecto prevé la entrada en vigor el 1 de enero de 2027, con el plazo práctico de que los empleadores tengan su sistema operativo a más tardar el 1 de abril de 2027. Las fechas solo serán definitivas tras la aprobación de la ley."
+        },
+        {
+          "q": "¿Es obligatorio un reloj de fichar?",
+          "a": "No. El anteproyecto es neutro tecnológicamente: cada empleador elige su sistema, siempre que registre el tiempo de trabajo real de forma objetiva y fiable."
+        },
+        {
+          "q": "¿Basta con registrar solo las desviaciones del horario?",
+          "a": "Según el anteproyecto, sí — siempre que el sistema pueda determinar el tiempo de trabajo real de forma objetiva y fiable. Las organizaciones de trabajadores aún disputan este punto en su dictamen."
+        },
+        {
+          "q": "¿La obligación se aplica también al sector público?",
+          "a": "Sí, esa es la intención. Sin embargo, el texto para el sector público no formaba parte del anteproyecto sometido al Consejo Nacional del Trabajo; seguirá su propio procedimiento."
+        },
+        {
+          "q": "¿Están excluidos los teletrabajadores y los directivos?",
+          "a": "El anteproyecto excluye, entre otros, a teletrabajadores, personal directivo y de confianza, representantes de comercio y personal móvil, pero esa lista aún no es definitiva. No dé por sentado que un trabajador queda fuera de la obligación."
+        },
+        {
+          "q": "¿Cuánto tiempo deben conservarse los datos?",
+          "a": "El Gobierno anunció cinco años. El plazo de conservación definitivo solo constará en la ley aprobada."
+        },
+        {
+          "q": "¿Qué sanciones hay si no hago nada?",
+          "a": "Las sanciones y el control concreto aún no se han publicado — se conocerán con la legislación definitiva."
+        }
+      ]
+    },
+    "sources": {
+      "title": "Fuentes oficiales",
+      "intro": "Compruebe el estado de la cuestión en las fuentes primarias — el texto de la ley aún no existe, por lo que cada detalle puede cambiar.",
+      "items": [
+        {
+          "label": "Consejo Nacional del Trabajo — dictamen n.º 2.499 sobre el anteproyecto de ley de registro de la jornada (30 de septiembre de 2026)",
+          "url": "https://cnt-nar.be/sites/default/files/documents/nl/advies-2499.pdf"
+        },
+        {
+          "label": "Cámara de Representantes — propuesta de resolución sobre el registro de la jornada (DOC 56 1353/001)",
+          "url": "https://www.dekamer.be/FLWB/PDF/56/1353/56K1353001.pdf"
+        },
+        {
+          "label": "EUR-Lex — Directiva 2003/88/CE sobre la ordenación del tiempo de trabajo",
+          "url": "https://eur-lex.europa.eu/legal-content/ES/TXT/?uri=CELEX:32003L0088"
+        },
+        {
+          "label": "Tribunal de Justicia de la UE — sentencia C-55/18 (CCOO/Deutsche Bank), 14 de mayo de 2019",
+          "url": "https://curia.europa.eu/juris/liste.jsf?num=C-55/18&language=ES"
+        },
+        {
+          "label": "SPF Empleo — reglamento de trabajo y horarios",
+          "url": "https://werk.belgie.be/nl/themas/arbeidsreglementering/arbeidsreglement"
+        }
+      ]
+    },
+    "disclaimer": "Esta página es un resumen práctico y no constituye asesoramiento jurídico. Para su situación concreta, consulte siempre la legislación definitiva y, en su caso, a su asesor jurídico o secretaría social.",
+    "winprox": {
+      "title": "WinProx como solución práctica",
+      "body": "WinProx es un reloj de fichar digital con el que los trabajadores fichan a través de su teléfono o de un código QR en una pantalla de reloj fija. Las horas se sitúan junto al horario y pueden transmitirse a su secretaría social o administración de horas. Es una de las formas posibles de cumplir la futura obligación — qué solución conviene depende de cómo trabajan sus personas.",
+      "cta_demo": "Planificar una demo",
+      "cta_contact": "Contactar",
+      "cta_pricing": "Ver precios"
+    },
+    "related_title": "Seguir leyendo"
+  }
+}

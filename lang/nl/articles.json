@@ -1,0 +1,231 @@
+{
+  "tijdsregistratie_2027": {
+    "meta_title": "Tijdsregistratie verplicht in België vanaf 2027? Wat werkgevers moeten weten | WinProx",
+    "social": {
+      "og_title": "Tijdsregistratie verplicht in België vanaf 2027?",
+      "og_description": "Wat de aangekondigde Belgische registratieplicht vanaf 2027 betekent: voor wie ze geldt, welke gegevens je moet registreren en hoe je je voorbereidt."
+    },
+    "eyebrow": "Wetgeving · België",
+    "title": "Tijdsregistratie verplicht in België vanaf 2027? Wat werkgevers moeten weten",
+    "lead": "De federale regering wil dat werkgevers vanaf 1 januari 2027 de werkelijk gepresteerde arbeidstijd van hun werknemers registreren. De wet is er nog niet. Deze pagina legt uit wat vandaag al geldt, wat aangekondigd is en wat nog bevestigd moet worden.",
+    "updated": "Laatst gecontroleerd op 21 oktober 2026 · Deze pagina wordt bijgewerkt zodra de definitieve wet gepubliceerd is.",
+    "summary": {
+      "title": "In het kort",
+      "items": [
+        "De federale regering kondigde eind november 2025 een algemene verplichting aan om de arbeidstijd van werknemers te registreren, met als streefdatum 1 januari 2027.",
+        "Er is nog geen gestemde wet. Een voorontwerp ligt op tafel; de Nationale Arbeidsraad gaf er op 30 september 2026 een verdeeld advies over. Scope, uitzonderingen en timing kunnen dus nog wijzigen.",
+        "Een klassieke prikklok is niet verplicht: de keuze van het systeem is vrij, zolang de werkelijk gepresteerde arbeidstijd er objectief en betrouwbaar mee kan worden vastgesteld.",
+        "Vandaag gelden er al concrete registratieplichten, onder meer bij glijdende uurroosters en bij afwijkingen op het uurrooster van deeltijdse werknemers."
+      ]
+    },
+    "status": {
+      "title": "Wat geldt vandaag, wat is aangekondigd, wat is nog onzeker?",
+      "intro": "Het belangrijkste onderscheid: wat al in de wet staat, wat de regering voor 2027 aankondigde en wat pas definitief is nadat de wet gestemd is.",
+      "col_topic": "Onderwerp",
+      "col_state": "Status",
+      "col_detail": "Wat het betekent",
+      "state_now": "Geldt vandaag",
+      "state_announced": "Aangekondigd 2027",
+      "state_pending": "Nog te bevestigen",
+      "rows": [
+        {
+          "topic": "Registratie bij glijdende uurroosters",
+          "state": "now",
+          "detail": "Werkgevers die met glijdende uurroosters werken, moeten de prestaties van hun werknemers nu al registreren."
+        },
+        {
+          "topic": "Afwijkingen op het uurrooster van deeltijdse werknemers",
+          "state": "now",
+          "detail": "Alle afwijkingen op het vast of variabel uurrooster van deeltijdsen moeten in een controledocument (afwijkingenregister) worden bijgehouden."
+        },
+        {
+          "topic": "Sectorale aanwezigheidsregistratie",
+          "state": "now",
+          "detail": "In een aantal sectoren bestaat al een registratieplicht, zoals Checkin@work op bouwwerven en aanwezigheidsregistratie in de schoonmaak."
+        },
+        {
+          "topic": "Algemene registratie van de werkelijke arbeidstijd",
+          "state": "announced",
+          "detail": "Het voorontwerp verplicht werkgevers om de dagelijkse én wekelijkse arbeidstijd van elke werknemer objectief en betrouwbaar te registreren; voorziene inwerkingtreding 1 januari 2027, met praktische invoering uiterlijk op 1 april 2027."
+        },
+        {
+          "topic": "Vrije keuze van systeem — geen prikklok verplicht",
+          "state": "announced",
+          "detail": "Het voorontwerp schrijft geen technologie voor. Een systeem dat enkel de afwijkingen op het uurrooster registreert, kan volstaan als het de werkelijke arbeidstijd objectief en betrouwbaar vastlegt."
+        },
+        {
+          "topic": "Uitsluitingen voor bepaalde werknemers",
+          "state": "pending",
+          "detail": "Het voorontwerp sluit onder meer leidinggevend en vertrouwenspersoneel, handelsvertegenwoordigers, thuis- en telewerkers, mobiel personeel en werknemers in familieondernemingen uit. De sociale partners zijn hierover verdeeld; de definitieve lijst volgt pas in de wet."
+        },
+        {
+          "topic": "Bewaartermijn van 5 jaar",
+          "state": "pending",
+          "detail": "De regering kondigde een bewaarplicht van vijf jaar aan, maar die ligt nog niet vast in een gestemde wet."
+        },
+        {
+          "topic": "Sancties en controle",
+          "state": "pending",
+          "detail": "Nog niet gepubliceerd. Dat volgt pas met de definitieve wetgeving."
+        }
+      ]
+    },
+    "changes": {
+      "title": "Wat verandert er in 2027?",
+      "paras": [
+        "In het begrotingsakkoord van eind november 2025 kondigde de federale regering aan dat alle werkgevers de werkelijk gepresteerde arbeidstijd van hun werknemers moeten registreren. De maatregel is geen louter Belgisch initiatief: ze volgt op de Europese arbeidstijdenrichtlijn (2003/88/EG) en arresten van het Hof van Justitie (C-55/18 uit 2019 en C-531/23 uit 2024), die eisen dat lidstaten een objectief, betrouwbaar en toegankelijk registratiesysteem verplichten.",
+        "Een voorontwerp van wet wil daarvoor een nieuw artikel 38quinquies in de Arbeidswet invoeren. Het is op 30 september 2026 aan de Nationale Arbeidsraad voorgelegd, die een verdeeld advies uitbracht: de werknemersorganisaties vinden het voorstel niet ver genoeg gaan, de werkgeversorganisaties vinden een algemene plicht onnodig. De regering moet nu een definitieve tekst afleveren die daarna in de Kamer gestemd wordt.",
+        "Tot die stemming kan de inhoud nog veranderen. Behandel dit artikel daarom als een stand van zaken, niet als definitieve wetgeving."
+      ]
+    },
+    "who": {
+      "title": "Voor welke werkgevers en werknemers geldt de verplichting?",
+      "intro": "Volgens het voorontwerp geldt de verplichting voor werkgevers in de private én de openbare sector, zonder onderscheid naar sector of bedrijfsgrootte. Het voorontwerp sluit wel enkele categorieën werknemers uit:",
+      "items": [
+        "werknemers in familieondernemingen die onder gezag van bloed- of aanverwanten werken;",
+        "leidinggevend personeel en werknemers in vertrouwensfuncties;",
+        "handelsvertegenwoordigers;",
+        "thuiswerkers en telewerkers;",
+        "mobiel personeel, zoals vertegenwoordigers en chauffeurs."
+      ],
+      "note": "Bijkomende categorieën kunnen later bij koninklijk besluit worden uitgesloten. Ga er niet zelf van uit dat jouw werknemers uitgesloten zijn: de definitieve lijst staat pas vast in de gestemde wet."
+    },
+    "what": {
+      "title": "Welke gegevens moet een werkgever registreren?",
+      "intro": "Het voorontwerp verplicht om per werknemer de duur van de dagelijkse en wekelijkse arbeidstijd te registreren. In de praktijk betekent dat:",
+      "items": [
+        "ofwel een volledige registratie van begin- en einduren van elke werkdag;",
+        "ofwel — volgens het voorontwerp — registratie van de afwijkingen op het toepasselijke vaste of variabele uurrooster, als de werkelijk gepresteerde tijd daarmee objectief en betrouwbaar kan worden vastgesteld;",
+        "de gegevens mogen niet eenzijdig aanpasbaar zijn (objectief en betrouwbaar);",
+        "werknemers en inspectiediensten moeten de gegevens kunnen raadplegen (toegankelijk) — dat punt betwisten de sociale partners in het ontwerp nog;",
+        "de geregistreerde gegevens zouden vijf jaar bewaard moeten blijven."
+      ]
+    },
+    "system": {
+      "title": "Is een digitale prikklok verplicht?",
+      "paras": [
+        "Neen. De regering liet meermaals weten dat een klassieke prikklok niet de bedoeling is, en het voorontwerp legt geen enkele technologie op. Werkgevers mogen zelf kiezen hoe ze registreren — digitaal kloksysteem, software, een afwijkingenregister — zolang het resultaat objectief en betrouwbaar is.",
+        "Dat betekent niet dat een Excel-bestand of papieren lijst automatisch volstaat. Wie het systeem kiest, moet kunnen aantonen dat de geregistreerde tijd de werkelijk gepresteerde tijd weergeeft en dat werknemers en inspectie er toegang toe hebben. Een digitaal systeem met tijdstempels en rolgebaseerde toegang maakt dat in de praktijk eenvoudiger verdedigbaar."
+      ]
+    },
+    "already": {
+      "title": "Welke registratieplichten gelden er vandaag al?",
+      "intro": "Er is vandaag geen algemene registratieplicht, maar wel een reeks specifieke plichten die al verplicht zijn:",
+      "items": [
+        "glijdende uurroosters: wie met een glijdend uurrooster werkt, moet de werkelijke prestaties registreren;",
+        "deeltijdse arbeid: alle afwijkingen op het vast of variabel uurrooster horen in een controledocument (afwijkingenregister) dat vijf jaar bewaard blijft;",
+        "aanwezigheidsregistratie per sector: onder meer Checkin@work op bouwwerven en aanwezigheidsregistratie in de schoonmaak;",
+        "flexi-jobs en studenten: de overeenkomsten en het werkelijk tewerkstellingsrooster moeten elektronisch worden bijgehouden;",
+        "afwijkende uurroosters in het algemeen: wie van het normale uurrooster afwijkt, moet dat kunnen documenteren."
+      ],
+      "note": "Wie nu al één van deze systemen gebruikt, zit vaak al dicht bij wat de toekomstige algemene plicht zal vragen."
+    },
+    "sectors": {
+      "title": "Wat betekent dit voor jouw sector?",
+      "intro": "De verplichting is sectoroverstijgend bedoeld, maar de praktische impact verschilt:",
+      "items": [
+        {
+          "name": "Schoonmaak en facility",
+          "body": "Werknemers werken vaak op meerdere locaties per dag. De sector kent al aanwezigheidsverplichtingen; een systeem dat op locatie werkt (telefoon of QR) ligt het dichtst bij de dagelijkse praktijk."
+        },
+        {
+          "name": "Bouw",
+          "body": "Checkin@work is op grotere werven al verplicht. De algemene registratie komt daar bovenop voor wie nog niets registreert buiten de werfplicht."
+        },
+        {
+          "name": "KMO's en kleine bedrijven",
+          "body": "Geen HR-afdeling betekent dat de administratieve last relatief zwaar weegt. Een eenvoudig, betaalbaar systeem en duidelijke communicatie naar medewerkers maken het verschil."
+        },
+        {
+          "name": "Personeel dat op locatie werkt",
+          "body": "Wie op steeds wisselende plaatsen werkt, kan in het voorontwerp onder 'mobiel personeel' vallen dat uitgesloten wordt — maar de definitieve lijst volgt pas met de wet. Registratie op locatie blijft hoe dan ook nuttig voor werkopvolging en facturatie."
+        }
+      ]
+    },
+    "prepare": {
+      "title": "Hoe bereid je je praktisch voor?",
+      "intro": "Je hoeft niet te wachten op de definitieve wet om nuttige stappen te zetten:",
+      "items": [
+        "Breng in kaart welke werknemers vermoedelijk onder de verplichting vallen en welke mogelijk uitgesloten worden.",
+        "Controleer of je huidige aanpak (uurroosters, afwijkingen, urenstaten) objectief en betrouwbaar is en of werknemers afwijkingen zelf kunnen doorgeven.",
+        "Leg vast wie afwijkingen goedkeurt en hoe ze in de loonverwerking terechtkomen.",
+        "Bekijk of registratie gekoppeld kan worden aan je sociaal secretariaat of urenadministratie.",
+        "Pas het arbeidsreglement aan waar nodig — roosters en meetwijze horen daar al in thuis.",
+        "Informeer medewerkers over doel en werking van de registratie: duidelijke communicatie voorkomt weerstand.",
+        "Volg de publicatie van de definitieve wet; pas je systeem aan zodra de details vastliggen."
+      ]
+    },
+    "faq": {
+      "title": "Veelgestelde vragen",
+      "items": [
+        {
+          "q": "Is tijdregistratie in België vandaag al verplicht?",
+          "a": "Er is geen algemene verplichting, maar wel specifieke plichten — onder meer bij glijdende uurroosters, afwijkingen op deeltijdse uurroosters en sectorale aanwezigheidsregistratie. De algemene plicht is aangekondigd voor 1 januari 2027 maar nog niet gestemd."
+        },
+        {
+          "q": "Vanaf wanneer is de algemene verplichting van kracht?",
+          "a": "Het voorontwerp voorziet inwerkingtreding op 1 januari 2027, met als praktische deadline dat werkgevers hun systeem uiterlijk op 1 april 2027 operationeel moeten hebben. De data zijn pas definitief nadat de wet gestemd is."
+        },
+        {
+          "q": "Is een prikklok verplicht?",
+          "a": "Neen. Het voorontwerp is technologieneutraal: elke werkgever kiest zelf een systeem, zolang het de werkelijk gepresteerde arbeidstijd objectief en betrouwbaar registreert."
+        },
+        {
+          "q": "Volstaat het om enkel afwijkingen op het uurrooster te registreren?",
+          "a": "Volgens het voorontwerp wel, mits het systeem de werkelijke arbeidstijd objectief en betrouwbaar kan vaststellen. De werknemersorganisaties betwisten dit punt nog in hun advies."
+        },
+        {
+          "q": "Geldt de verplichting ook voor de openbare sector?",
+          "a": "Ja, dat is de bedoeling. De tekst voor de openbare sector maakt wel geen deel uit van het voorontwerp dat aan de Nationale Arbeidsraad werd voorgelegd; daarvoor volgt een eigen traject."
+        },
+        {
+          "q": "Zijn telewerkers en leidinggevenden uitgesloten?",
+          "a": "Het voorontwerp sluit onder meer telewerkers, leidinggevend en vertrouwenspersoneel, handelsvertegenwoordigers en mobiel personeel uit, maar die lijst is nog niet definitief. Ga er dus niet zelf van uit dat een werknemer buiten de plicht valt."
+        },
+        {
+          "q": "Hoe lang moeten de gegevens bewaard blijven?",
+          "a": "De regering kondigde vijf jaar aan. De definitieve bewaartermijn volgt pas in de gestemde wet."
+        },
+        {
+          "q": "Wat zijn de sancties als ik niets doe?",
+          "a": "Sancties en de concrete controle zijn nog niet gepubliceerd — ze volgen met de definitieve wetgeving."
+        }
+      ]
+    },
+    "sources": {
+      "title": "Officiële bronnen",
+      "intro": "Controleer de stand van zaken bij de primaire bronnen — de tekst van de wet is er nog niet, dus elke afspraak kan nog veranderen.",
+      "items": [
+        {
+          "label": "Nationale Arbeidsraad — advies nr. 2.499 over het voorontwerp van wet registratie van de arbeidstijd (30 september 2026)",
+          "url": "https://cnt-nar.be/sites/default/files/documents/nl/advies-2499.pdf"
+        },
+        {
+          "label": "Kamer van Volksvertegenwoordigers — voorstel van resolutie over de tijdsregistratie (DOC 56 1353/001)",
+          "url": "https://www.dekamer.be/FLWB/PDF/56/1353/56K1353001.pdf"
+        },
+        {
+          "label": "EUR-Lex — Richtlijn 2003/88/EG betreffende de regeling van de arbeidstijd",
+          "url": "https://eur-lex.europa.eu/legal-content/NL/TXT/?uri=CELEX:32003L0088"
+        },
+        {
+          "label": "Hof van Justitie van de EU — arrest C-55/18 (CCOO/Deutsche Bank), 14 mei 2019",
+          "url": "https://curia.europa.eu/juris/liste.jsf?num=C-55/18&language=nl"
+        },
+        {
+          "label": "FOD Werkgelegenheid — arbeidsreglement en uurroosters",
+          "url": "https://werk.belgie.be/nl/themas/arbeidsreglementering/arbeidsreglement"
+        }
+      ]
+    },
+    "disclaimer": "Deze pagina is een praktische samenvatting en geen juridisch advies. Controleer voor je specifieke situatie altijd de definitieve wetgeving en eventueel je juridisch adviseur of sociaal secretariaat.",
+    "winprox": {
+      "title": "WinProx als praktische oplossing",
+      "body": "WinProx is een digitale prikklok waarmee uitvoerders en werknemers via hun gsm of een QR-code aan een vast klokscherm in- en uitklokken. Uren staan naast het uurrooster en kunnen naar je sociaal secretariaat of urenadministratie. Het systeem is één van de mogelijke manieren om aan de toekomstige verplichting te voldoen — welke oplossing past, hangt af van hoe je mensen werken.",
+      "cta_demo": "Plan een demo",
+      "cta_contact": "Neem contact op",
+      "cta_pricing": "Bekijk de prijzen"
+    },
+    "related_title": "Lees verder"
+  }
+}

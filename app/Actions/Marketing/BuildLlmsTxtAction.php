@@ -41,6 +41,7 @@ class BuildLlmsTxtAction
             $lines[] = '- [Time ('.$label.')]('.$this->pageUrl('features.time', $locale).'): Clock Point presence, breaks and shifts.';
             $lines[] = '- [About ('.$label.')]('.$about.'): What WinProx is: a digital time clock, hours next to the roster'
                 .($checkmateHidden ? '.' : ', and optional CIAO.');
+            $lines[] = '- [Time registration Belgium 2027 ('.$label.')]('.$this->pageUrl('article.tijdsregistratie-2027', $locale).'): Guide on the announced Belgian working-time registration duty from 2027 — scope, required data, system choice and FAQ.';
         }
 
         $lines[] = '';

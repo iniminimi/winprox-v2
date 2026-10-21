@@ -1,0 +1,231 @@
+{
+  "tijdsregistratie_2027": {
+    "meta_title": "Mandatory time registration in Belgium from 2027? What employers need to know | WinProx",
+    "social": {
+      "og_title": "Mandatory time registration in Belgium from 2027?",
+      "og_description": "What Belgium's announced working-time registration duty from 2027 means: who it applies to, which data you must record and how to prepare."
+    },
+    "eyebrow": "Legislation · Belgium",
+    "title": "Mandatory time registration in Belgium from 2027? What employers need to know",
+    "lead": "The federal government wants employers to record their employees' actual working time from 1 January 2027. The law is not in place yet. This page explains what already applies today, what has been announced and what still needs to be confirmed.",
+    "updated": "Last checked on 21 October 2026 · This page is updated as soon as the final law is published.",
+    "summary": {
+      "title": "In short",
+      "items": [
+        "At the end of November 2025 the federal government announced a general obligation to record employees' working time, with a target date of 1 January 2027.",
+        "There is no enacted law yet. A preliminary draft exists; the National Labour Council issued a divided opinion on it on 30 September 2026. Scope, exemptions and timing can still change.",
+        "A traditional punch clock is not required: the choice of system is free, as long as the actual working time can be determined objectively and reliably.",
+        "Specific registration duties already apply today, for example for gliding working schedules and for deviations from part-time schedules."
+      ]
+    },
+    "status": {
+      "title": "What applies today, what is announced, what is still uncertain?",
+      "intro": "The most important distinction: what is already in the law, what the government announced for 2027 and what only becomes final once the law is passed.",
+      "col_topic": "Topic",
+      "col_state": "Status",
+      "col_detail": "What it means",
+      "state_now": "Applies today",
+      "state_announced": "Announced for 2027",
+      "state_pending": "To be confirmed",
+      "rows": [
+        {
+          "topic": "Registration for gliding working schedules",
+          "state": "now",
+          "detail": "Employers using gliding schedules must already record their employees' actual work."
+        },
+        {
+          "topic": "Deviations from part-time workers' schedules",
+          "state": "now",
+          "detail": "All deviations from the fixed or variable schedule of part-timers must be kept in a control document (deviation register)."
+        },
+        {
+          "topic": "Sector-specific attendance registration",
+          "state": "now",
+          "detail": "Several sectors already have a registration duty, such as Checkin@work on construction sites and attendance registration in the cleaning sector."
+        },
+        {
+          "topic": "General registration of actual working time",
+          "state": "announced",
+          "detail": "The draft requires employers to record each worker's daily and weekly working time objectively and reliably; entry into force is planned for 1 January 2027, with practical implementation by 1 April 2027 at the latest."
+        },
+        {
+          "topic": "Free choice of system — no punch clock required",
+          "state": "announced",
+          "detail": "The draft does not prescribe any technology. A system that only records deviations from the schedule can suffice, provided it captures actual working time objectively and reliably."
+        },
+        {
+          "topic": "Exemptions for certain workers",
+          "state": "pending",
+          "detail": "The draft excludes, among others, managerial and trust staff, sales representatives, home workers and teleworkers, mobile staff and workers in family businesses. The social partners are divided on this; the final list will only appear in the enacted law."
+        },
+        {
+          "topic": "Five-year retention period",
+          "state": "pending",
+          "detail": "The government announced a five-year retention duty, but it is not yet laid down in an enacted law."
+        },
+        {
+          "topic": "Sanctions and enforcement",
+          "state": "pending",
+          "detail": "Not yet published. That will follow with the final legislation."
+        }
+      ]
+    },
+    "changes": {
+      "title": "What changes in 2027?",
+      "paras": [
+        "In the budget agreement of late November 2025 the federal government announced that all employers must record the actual working time of their employees. The measure is not a purely Belgian initiative: it follows the European Working Time Directive (2003/88/EC) and rulings of the Court of Justice (C-55/18 of 2019 and C-531/23 of 2024), which require member states to oblige employers to set up an objective, reliable and accessible recording system.",
+        "A preliminary draft law would add a new Article 38quinquies to the Labour Act. It was submitted to the National Labour Council, which issued a divided opinion on 30 September 2026: employee organisations find the proposal does not go far enough, employer organisations consider a general duty unnecessary. The government must now produce a final text to be voted on in Parliament.",
+        "Until that vote, the content can still change. Treat this article as a state of play, not as final legislation."
+      ]
+    },
+    "who": {
+      "title": "Which employers and workers are covered?",
+      "intro": "According to the draft, the obligation applies to employers in the private and the public sector, without distinction by sector or company size. The draft does exclude several categories of workers:",
+      "items": [
+        "workers in family businesses working under the authority of blood relatives or relatives by marriage;",
+        "managerial staff and workers in positions of trust;",
+        "sales representatives;",
+        "home workers and teleworkers;",
+        "mobile staff, such as travelling salespeople and drivers."
+      ],
+      "note": "Additional categories can be excluded later by royal decree. Do not assume your workers are exempt: the final list is only fixed once the law is passed."
+    },
+    "what": {
+      "title": "Which data must an employer record?",
+      "intro": "The draft requires recording the duration of each worker's daily and weekly working time. In practice that means:",
+      "items": [
+        "either a full record of each working day's start and end times;",
+        "or — under the draft — recording the deviations from the applicable fixed or variable schedule, as long as the actual time worked can be determined objectively and reliably;",
+        "the data must not be unilaterally editable (objective and reliable);",
+        "workers and inspection services must be able to consult the data (accessible) — a point the social partners still contest in the draft;",
+        "the recorded data would have to be retained for five years."
+      ]
+    },
+    "system": {
+      "title": "Is a digital punch clock mandatory?",
+      "paras": [
+        "No. The government has repeatedly stated that a traditional punch clock is not the intention, and the draft does not impose any technology. Employers may choose how they record — a digital clocking system, software, a deviation register — as long as the result is objective and reliable.",
+        "That does not mean a spreadsheet or paper list automatically suffices. Whoever chooses the system must be able to show that the recorded time reflects the time actually worked and that workers and inspectors have access to it. A digital system with timestamps and role-based access makes that easier to defend in practice."
+      ]
+    },
+    "already": {
+      "title": "Which registration duties already apply today?",
+      "intro": "There is no general registration duty today, but a series of specific duties is already mandatory:",
+      "items": [
+        "gliding working schedules: anyone using a gliding schedule must record actual work performed;",
+        "part-time work: all deviations from the fixed or variable schedule belong in a control document (deviation register) retained for five years;",
+        "sectoral attendance registration: including Checkin@work on construction sites and attendance registration in cleaning;",
+        "flexi-jobs and students: agreements and the actual work schedule must be recorded electronically;",
+        "deviating schedules in general: anyone deviating from the normal schedule must be able to document it."
+      ],
+      "note": "If you already use one of these systems, you are often already close to what the future general duty will require."
+    },
+    "sectors": {
+      "title": "What does this mean for your sector?",
+      "intro": "The obligation is intended to apply across sectors, but the practical impact differs:",
+      "items": [
+        {
+          "name": "Cleaning and facility",
+          "body": "Workers often work at multiple locations per day. The sector already has attendance duties; a system that works on location (phone or QR) matches daily practice most closely."
+        },
+        {
+          "name": "Construction",
+          "body": "Checkin@work is already mandatory on larger sites. The general registration adds to that for those who record nothing beyond the site duty."
+        },
+        {
+          "name": "SMEs and small businesses",
+          "body": "Without an HR department the administrative burden weighs relatively heavily. A simple, affordable system and clear communication to staff make the difference."
+        },
+        {
+          "name": "Staff working on location",
+          "body": "People working at constantly changing sites may fall under 'mobile staff' excluded in the draft — but the final list only follows with the law. On-location registration remains useful for job tracking and invoicing regardless."
+        }
+      ]
+    },
+    "prepare": {
+      "title": "How do you prepare in practice?",
+      "intro": "You do not need to wait for the final law to take useful steps:",
+      "items": [
+        "Map out which workers will likely fall under the obligation and which may be excluded.",
+        "Check whether your current approach (schedules, deviations, timesheets) is objective and reliable and whether workers can report deviations themselves.",
+        "Decide who approves deviations and how they reach payroll processing.",
+        "Check whether registration can be linked to your social secretariat or time administration.",
+        "Adjust the work rules (arbeidsreglement) where needed — schedules and measuring methods already belong there.",
+        "Inform employees about the purpose and workings of the registration: clear communication prevents resistance.",
+        "Follow the publication of the final law; adjust your system once the details are fixed."
+      ]
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "items": [
+        {
+          "q": "Is time registration already mandatory in Belgium today?",
+          "a": "There is no general obligation, but there are specific duties — including gliding schedules, deviations from part-time schedules and sectoral attendance registration. The general duty is announced for 1 January 2027 but not yet enacted."
+        },
+        {
+          "q": "From when does the general obligation apply?",
+          "a": "The draft provides for entry into force on 1 January 2027, with a practical deadline for employers to have their system operational by 1 April 2027 at the latest. The dates only become final once the law is passed."
+        },
+        {
+          "q": "Is a punch clock mandatory?",
+          "a": "No. The draft is technology-neutral: every employer chooses a system, as long as it records actual working time objectively and reliably."
+        },
+        {
+          "q": "Is recording only deviations from the schedule enough?",
+          "a": "According to the draft, yes — provided the system can establish actual working time objectively and reliably. Employee organisations still contest this point in their opinion."
+        },
+        {
+          "q": "Does the obligation also apply to the public sector?",
+          "a": "Yes, that is the intention. However, the public-sector text was not part of the draft submitted to the National Labour Council; a separate process will follow."
+        },
+        {
+          "q": "Are teleworkers and managers excluded?",
+          "a": "The draft excludes, among others, teleworkers, managerial and trust staff, sales representatives and mobile staff, but that list is not final yet. Do not assume a worker falls outside the duty on your own."
+        },
+        {
+          "q": "How long must the data be retained?",
+          "a": "The government announced five years. The final retention period only follows in the enacted law."
+        },
+        {
+          "q": "What are the sanctions if I do nothing?",
+          "a": "Sanctions and concrete enforcement have not been published yet — they follow with the final legislation."
+        }
+      ]
+    },
+    "sources": {
+      "title": "Official sources",
+      "intro": "Check the state of play at the primary sources — the law text does not exist yet, so every detail can still change.",
+      "items": [
+        {
+          "label": "National Labour Council — opinion no. 2.499 on the preliminary draft law on working-time registration (30 September 2026)",
+          "url": "https://cnt-nar.be/sites/default/files/documents/nl/advies-2499.pdf"
+        },
+        {
+          "label": "Chamber of Representatives — draft resolution on time registration (DOC 56 1353/001)",
+          "url": "https://www.dekamer.be/FLWB/PDF/56/1353/56K1353001.pdf"
+        },
+        {
+          "label": "EUR-Lex — Directive 2003/88/EC on the organisation of working time",
+          "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32003L0088"
+        },
+        {
+          "label": "Court of Justice of the EU — judgment C-55/18 (CCOO/Deutsche Bank), 14 May 2019",
+          "url": "https://curia.europa.eu/juris/liste.jsf?num=C-55/18&language=EN"
+        },
+        {
+          "label": "FPS Employment — work rules and working schedules",
+          "url": "https://werk.belgie.be/nl/themas/arbeidsreglementering/arbeidsreglement"
+        }
+      ]
+    },
+    "disclaimer": "This page is a practical summary, not legal advice. For your specific situation, always check the final legislation and, where needed, your legal adviser or social secretariat.",
+    "winprox": {
+      "title": "WinProx as a practical solution",
+      "body": "WinProx is a digital time clock with which workers clock in and out via their phone or a QR code on a fixed clock screen. Hours sit next to the schedule and can be passed to your social secretariat or time administration. It is one possible way to meet the future obligation — which solution fits depends on how your people work.",
+      "cta_demo": "Plan a demo",
+      "cta_contact": "Get in touch",
+      "cta_pricing": "See pricing"
+    },
+    "related_title": "Read more"
+  }
+}

@@ -71,6 +71,7 @@ use App\Livewire\Issues\Show as IssueShow;
 use App\Livewire\Locations\Index as LocationIndex;
 use App\Livewire\Locations\Show as LocationShow;
 use App\Livewire\Pages\About;
+use App\Livewire\Pages\ArticleTijdsregistratie2027;
 use App\Livewire\Pages\ApiDocumentation;
 use App\Livewire\Pages\ApiSettings;
 use App\Livewire\Pages\Calendar;
@@ -305,6 +306,7 @@ Route::redirect('/facility/report/{token}', '/melden/{token}', 301);
 Route::get('/pricing', $redirectToLocalized('pricing'));
 Route::get('/contact', $redirectToLocalized('contact.index'));
 Route::get('/about', $redirectToLocalized('about'));
+Route::get('/tijdsregistratie-2027', $redirectToLocalized('article.tijdsregistratie-2027'));
 Route::get('/api', $redirectToLocalized('product.api_webhooks'));
 Route::get('/features/facility', $redirectToLocalized('features.facility'));
 Route::get('/features/time', $redirectToLocalized('features.time'));
@@ -334,6 +336,9 @@ Route::prefix('{locale}')
         Route::get('/pricing', Pricing::class)->middleware('promo.follow')->name('pricing');
         Route::get('/faq', PublicFaq::class)->middleware('promo.follow')->name('faq.public');
         Route::get('/about', About::class)->middleware('promo.follow')->name('about');
+        Route::get('/tijdsregistratie-2027', ArticleTijdsregistratie2027::class)
+            ->middleware('promo.follow')
+            ->name('article.tijdsregistratie-2027');
         Route::get('/api', function (string $locale) {
             return redirect()->route('product.api_webhooks', ['locale' => $locale], 301);
         });

@@ -7831,3 +7831,33 @@ html.wp-pwa-installed .wp-homescreen-shortcut-wrap {
     color: #fde68a;
     font-size: 0.8125rem;
 }
+
+/* Kennisartikel: status-tabel (marketingpagina's) */
+.wp-article-table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.wp-article-table {
+    width: 100%;
+    min-width: 42rem;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.wp-article-table th,
+.wp-article-table td {
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--wp-border, #e5e7eb);
+    text-align: left;
+    vertical-align: top;
+}
+
+.wp-article-table thead th {
+    font-weight: 600;
+    color: var(--wp-muted-text, #6b7280);
+}
+
+.wp-article-table tbody th {
+    font-weight: 500;
+}

@@ -1,0 +1,231 @@
+{
+  "tijdsregistratie_2027": {
+    "meta_title": "Registrazione dell'orario di lavoro obbligatoria in Belgio dal 2027? Cosa devono sapere i datori di lavoro | WinProx",
+    "social": {
+      "og_title": "Registrazione dell'orario di lavoro obbligatoria in Belgio dal 2027?",
+      "og_description": "Cosa significa l'obbligo belga annunciato di registrazione dell'orario di lavoro dal 2027: a chi si applica, quali dati registrare e come prepararsi."
+    },
+    "eyebrow": "Normativa · Belgio",
+    "title": "Registrazione dell'orario di lavoro obbligatoria in Belgio dal 2027? Cosa devono sapere i datori di lavoro",
+    "lead": "Il Governo federale vuole che i datori di lavoro registrino il tempo di lavoro effettivamente prestato dai loro lavoratori a partire dal 1° gennaio 2027. La legge non esiste ancora. Questa pagina spiega cosa vale già oggi, cosa è stato annunciato e cosa deve ancora essere confermato.",
+    "updated": "Ultimo controllo il 21 ottobre 2026 · Questa pagina viene aggiornata non appena viene pubblicata la legge definitiva.",
+    "summary": {
+      "title": "In breve",
+      "items": [
+        "A fine novembre 2025 il Governo federale ha annunciato un obbligo generale di registrare il tempo di lavoro dei lavoratori, con data obiettivo del 1° gennaio 2027.",
+        "Non esiste ancora una legge approvata. Esiste una proposta di legge su cui il Consiglio nazionale del lavoro ha emesso un parere diviso il 30 settembre 2026. Ambito, esenzioni e tempistica possono quindi ancora cambiare.",
+        "Non è richiesto un timbracartellini classico: la scelta del sistema è libera, purché il tempo di lavoro effettivamente prestato possa essere determinato in modo oggettivo e affidabile.",
+        "Obblighi di registrazione concreti valgono già oggi, tra l'altro per gli orari flessibili e per le deroghe agli orari dei lavoratori part-time."
+      ]
+    },
+    "status": {
+      "title": "Cosa vale oggi, cosa è annunciato, cosa resta incerto?",
+      "intro": "La distinzione più importante: cosa è già previsto dalla legge, cosa il Governo ha annunciato per il 2027 e cosa diventa definitivo solo dopo l'approvazione della legge.",
+      "col_topic": "Argomento",
+      "col_state": "Stato",
+      "col_detail": "Cosa significa",
+      "state_now": "In vigore",
+      "state_announced": "Annunciato per il 2027",
+      "state_pending": "Da confermare",
+      "rows": [
+        {
+          "topic": "Registrazione per gli orari flessibili",
+          "state": "now",
+          "detail": "I datori di lavoro che applicano orari flessibili devono già registrare le prestazioni dei loro lavoratori."
+        },
+        {
+          "topic": "Deroghe all'orario dei lavoratori part-time",
+          "state": "now",
+          "detail": "Tutte le deroghe all'orario fisso o variabile dei lavoratori part-time devono figurare in un documento di controllo (registro delle deroghe)."
+        },
+        {
+          "topic": "Registrazione delle presenze settoriale",
+          "state": "now",
+          "detail": "Diversi settori conoscono già un obbligo di registrazione, come Checkin@work nei cantieri e la registrazione delle presenze nel settore della pulizia."
+        },
+        {
+          "topic": "Registrazione generale del tempo di lavoro effettivo",
+          "state": "announced",
+          "detail": "La proposta obbliga i datori di lavoro a registrare la durata giornaliera e settimanale del lavoro di ogni lavoratore in modo oggettivo e affidabile; entrata in vigore prevista il 1° gennaio 2027, con attuazione pratica entro il 1° aprile 2027."
+        },
+        {
+          "topic": "Libera scelta del sistema — nessun timbracartellini obbligatorio",
+          "state": "announced",
+          "detail": "La proposta non impone alcuna tecnologia. Un sistema che registra solo le deroghe all'orario può bastare se consente di stabilire il tempo di lavoro reale in modo oggettivo e affidabile."
+        },
+        {
+          "topic": "Esenzioni per alcune categorie di lavoratori",
+          "state": "pending",
+          "detail": "La proposta esclude, tra gli altri, il personale direttivo e di fiducia, i rappresentanti di commercio, i lavoratori a domicilio e i telelavoratori, il personale mobile e i lavoratori delle imprese familiari. Le parti sociali sono divise al riguardo; l'elenco definitivo comparirà solo nella legge approvata."
+        },
+        {
+          "topic": "Conservazione dei dati per 5 anni",
+          "state": "pending",
+          "detail": "Il Governo ha annunciato un obbligo di conservazione di cinque anni, che però non è ancora fissato in una legge approvata."
+        },
+        {
+          "topic": "Sanzioni e controllo",
+          "state": "pending",
+          "detail": "Non ancora pubblicati. Seguiranno con la legislazione definitiva."
+        }
+      ]
+    },
+    "changes": {
+      "title": "Cosa cambia nel 2027?",
+      "paras": [
+        "Nell'accordo di bilancio di fine novembre 2025 il Governo federale ha annunciato che tutti i datori di lavoro dovranno registrare il tempo di lavoro effettivamente prestato dai loro lavoratori. La misura non è un'iniziativa puramente belga: fa seguito alla direttiva europea sull'orario di lavoro (2003/88/CE) e alle sentenze della Corte di giustizia (C-55/18 del 2019 e C-531/23 del 2024), che impongono agli Stati membri di obbligare i datori di lavoro a istituire un sistema di registrazione oggettivo, affidabile e accessibile.",
+        "Una proposta di legge prevede a tal fine l'inserimento di un nuovo articolo 38quinquies nella legge sul lavoro. È stata sottoposta al Consiglio nazionale del lavoro, che ha emesso un parere diviso il 30 settembre 2026: le organizzazioni dei lavoratori ritengono la proposta insufficiente, le organizzazioni dei datori di lavoro considerano superfluo un obbligo generale. Il Governo deve ora produrre un testo definitivo che sarà votato in Parlamento.",
+        "Fino a tale voto il contenuto può ancora cambiare. Consideri quindi questo articolo come uno stato dell'arte, non come legislazione definitiva."
+      ]
+    },
+    "who": {
+      "title": "A quali datori di lavoro e lavoratori si applica l'obbligo?",
+      "intro": "Secondo la proposta, l'obbligo si applica ai datori di lavoro del settore privato e di quello pubblico, senza distinzione per settore o dimensione dell'impresa. La proposta esclude però diverse categorie di lavoratori:",
+      "items": [
+        "i lavoratori delle imprese familiari che lavorano sotto l'autorità di consanguinei o affini;",
+        "il personale direttivo e i lavoratori in posizioni di fiducia;",
+        "i rappresentanti di commercio;",
+        "i lavoratori a domicilio e i telelavoratori;",
+        "il personale mobile, come rappresentanti e autisti."
+      ],
+      "note": "Ulteriori categorie possono essere escluse in seguito con decreto reale. Non dia per scontato che i suoi lavoratori siano esentati: l'elenco definitivo è fissato solo nella legge approvata."
+    },
+    "what": {
+      "title": "Quali dati deve registrare un datore di lavoro?",
+      "intro": "La proposta impone di registrare, per ogni lavoratore, la durata della giornata e della settimana lavorativa. In pratica significa:",
+      "items": [
+        "oppure una registrazione completa degli orari di inizio e fine di ogni giornata lavorativa;",
+        "oppure — secondo la proposta — la registrazione delle deroghe all'orario fisso o variabile applicabile, purché il tempo effettivamente prestato possa così essere determinato in modo oggettivo e affidabile;",
+        "i dati non devono essere modificabili unilateralmente (oggettivi e affidabili);",
+        "lavoratori e servizi di ispezione devono poter consultare i dati (accessibili) — un punto che le parti sociali contestano ancora nel progetto;",
+        "i dati registrati dovrebbero essere conservati per cinque anni."
+      ]
+    },
+    "system": {
+      "title": "È obbligatorio un timbracartellini digitale?",
+      "paras": [
+        "No. Il Governo ha più volte chiarito che un timbracartellini classico non è l'intenzione, e la proposta non impone alcuna tecnologia. I datori di lavoro possono scegliere autonomamente come registrare — sistema digitale di timbratura, software, registro delle deroghe — purché il risultato sia oggettivo e affidabile.",
+        "Ciò non significa che un file Excel o un elenco cartaceo bastino automaticamente. Chi sceglie il sistema deve poter dimostrare che il tempo registrato riflette il tempo effettivamente lavorato e che lavoratori e ispettorato vi hanno accesso. Un sistema digitale con marche temporali e accesso per ruoli lo rende più facilmente difendibile nella pratica."
+      ]
+    },
+    "already": {
+      "title": "Quali obblighi di registrazione valgono già oggi?",
+      "intro": "Oggi non esiste un obbligo generale di registrazione, ma una serie di obblighi specifici sono già vincolanti:",
+      "items": [
+        "orari flessibili: chi applica un orario flessibile deve registrare le prestazioni effettive;",
+        "lavoro part-time: tutte le deroghe all'orario fisso o variabile devono figurare in un documento di controllo (registro delle deroghe) conservato cinque anni;",
+        "registrazione delle presenze per settore: tra cui Checkin@work nei cantieri e la registrazione delle presenze nella pulizia;",
+        "flexi-job e studenti: le convenzioni e l'orario di lavoro effettivo devono essere tenuti per via elettronica;",
+        "orari derogatori in generale: chi deroga all'orario normale deve poterlo documentare."
+      ],
+      "note": "Chi usa già uno di questi sistemi è spesso già vicino a ciò che richiederà il futuro obbligo generale."
+    },
+    "sectors": {
+      "title": "Cosa significa per il suo settore?",
+      "intro": "L'obbligo vuole essere trasversale, ma l'impatto pratico differisce:",
+      "items": [
+        {
+          "name": "Pulizia e facility",
+          "body": "I lavoratori lavorano spesso in più sedi al giorno. Il settore conosce già obblighi di presenza; un sistema che funziona sul posto (telefono o QR) si avvicina di più alla pratica quotidiana."
+        },
+        {
+          "name": "Costruzioni",
+          "body": "Checkin@work è già obbligatorio nei cantieri più grandi. La registrazione generale si aggiunge per chi non registra nulla oltre all'obbligo di cantiere."
+        },
+        {
+          "name": "PMI e piccole imprese",
+          "body": "Senza un ufficio HR il peso amministrativo risulta relativamente più gravoso. Un sistema semplice e accessibile e una comunicazione chiara verso il personale fanno la differenza."
+        },
+        {
+          "name": "Personale che lavora sul posto",
+          "body": "Chi lavora in luoghi sempre diversi può rientrare, nella proposta, nel «personale mobile» escluso — ma l'elenco definitivo arriverà solo con la legge. La registrazione sul posto resta comunque utile per il monitoraggio del lavoro e la fatturazione."
+        }
+      ]
+    },
+    "prepare": {
+      "title": "Come prepararsi concretamente?",
+      "intro": "Non occorre aspettare la legge definitiva per compiere passi utili:",
+      "items": [
+        "Individui quali lavoratori rientrerebbero presumibilmente nell'obbligo e quali potrebbero esserne esclusi.",
+        "Verifichi se il suo approccio attuale (orari, deroghe, stati delle ore) è oggettivo e affidabile e se i lavoratori possono segnalare le deroghe da soli.",
+        "Stabilisca chi approva le deroghe e come giungono alla busta paga.",
+        "Verifichi se la registrazione può essere collegata al suo segretariato sociale o alla sua amministrazione delle ore.",
+        "Adegui il regolamento di lavoro dove necessario — orari e modalità di misurazione vi rientrano già.",
+        "Informi i lavoratori sullo scopo e sul funzionamento della registrazione: una comunicazione chiara evita resistenze.",
+        "Segua la pubblicazione della legge definitiva; adegui il suo sistema una volta fissati i dettagli."
+      ]
+    },
+    "faq": {
+      "title": "Domande frequenti",
+      "items": [
+        {
+          "q": "La registrazione dell'orario di lavoro è già obbligatoria in Belgio oggi?",
+          "a": "Non esiste un obbligo generale, ma vi sono obblighi specifici — tra cui orari flessibili, deroghe agli orari part-time e registrazione delle presenze settoriale. L'obbligo generale è annunciato per il 1° gennaio 2027 ma non è ancora stato approvato."
+        },
+        {
+          "q": "Da quando si applica l'obbligo generale?",
+          "a": "La proposta prevede l'entrata in vigore il 1° gennaio 2027, con il termine pratico che i datori di lavoro abbiano il loro sistema operativo entro il 1° aprile 2027. Le date diventano definitive solo dopo l'approvazione della legge."
+        },
+        {
+          "q": "È obbligatorio un timbracartellini?",
+          "a": "No. La proposta è neutrale dal punto di vista tecnologico: ogni datore di lavoro sceglie il suo sistema, purché registri il tempo di lavoro reale in modo oggettivo e affidabile."
+        },
+        {
+          "q": "Basta registrare solo le deroghe all'orario?",
+          "a": "Secondo la proposta, sì — purché il sistema possa stabilire il tempo di lavoro reale in modo oggettivo e affidabile. Le organizzazioni dei lavoratori contestano ancora questo punto nel loro parere."
+        },
+        {
+          "q": "L'obbligo vale anche per il settore pubblico?",
+          "a": "Sì, questa è l'intenzione. Tuttavia il testo per il settore pubblico non faceva parte della proposta sottoposta al Consiglio nazionale del lavoro; seguirà un percorso proprio."
+        },
+        {
+          "q": "Telelavoratori e dirigenti sono esclusi?",
+          "a": "La proposta esclude, tra gli altri, telelavoratori, personale direttivo e di fiducia, rappresentanti di commercio e personale mobile, ma quell'elenco non è ancora definitivo. Non dia per scontato che un lavoratore resti fuori dall'obbligo."
+        },
+        {
+          "q": "Per quanto tempo devono essere conservati i dati?",
+          "a": "Il Governo ha annunciato cinque anni. Il termine di conservazione definitivo seguirà solo nella legge approvata."
+        },
+        {
+          "q": "Quali sanzioni se non faccio nulla?",
+          "a": "Le sanzioni e il controllo concreto non sono ancora stati pubblicati — seguiranno con la legislazione definitiva."
+        }
+      ]
+    },
+    "sources": {
+      "title": "Fonti ufficiali",
+      "intro": "Verifichi lo stato dell'arte presso le fonti primarie — il testo di legge non esiste ancora, quindi ogni dettaglio può cambiare.",
+      "items": [
+        {
+          "label": "Consiglio nazionale del lavoro — parere n. 2.499 sulla proposta di legge relativa alla registrazione dell'orario di lavoro (30 settembre 2026)",
+          "url": "https://cnt-nar.be/sites/default/files/documents/nl/advies-2499.pdf"
+        },
+        {
+          "label": "Camera dei rappresentanti — proposta di risoluzione sulla registrazione dell'orario di lavoro (DOC 56 1353/001)",
+          "url": "https://www.dekamer.be/FLWB/PDF/56/1353/56K1353001.pdf"
+        },
+        {
+          "label": "EUR-Lex — Direttiva 2003/88/CE sull'organizzazione dell'orario di lavoro",
+          "url": "https://eur-lex.europa.eu/legal-content/IT/TXT/?uri=CELEX:32003L0088"
+        },
+        {
+          "label": "Corte di giustizia dell'UE — sentenza C-55/18 (CCOO/Deutsche Bank), 14 maggio 2019",
+          "url": "https://curia.europa.eu/juris/liste.jsf?num=C-55/18&language=IT"
+        },
+        {
+          "label": "SPF Occupazione — regolamento di lavoro e orari",
+          "url": "https://werk.belgie.be/nl/themas/arbeidsreglementering/arbeidsreglement"
+        }
+      ]
+    },
+    "disclaimer": "Questa pagina è un riepilogo pratico e non costituisce consulenza legale. Per la sua situazione specifica, verifichi sempre la legislazione definitiva e, se necessario, il suo consulente legale o il segretariato sociale.",
+    "winprox": {
+      "title": "WinProx come soluzione pratica",
+      "body": "WinProx è un timbracartellini digitale con cui i lavoratori timbrano tramite il loro telefono o un codice QR su uno schermo fisso. Le ore si affiancano all'orario e possono essere trasmesse al suo segretariato sociale o alla sua amministrazione delle ore. È uno dei modi possibili per soddisfare il futuro obbligo — quale soluzione conviene dipende da come lavora il suo personale.",
+      "cta_demo": "Pianifica una demo",
+      "cta_contact": "Contattaci",
+      "cta_pricing": "Vedi i prezzi"
+    },
+    "related_title": "Approfondimenti"
+  }
+}

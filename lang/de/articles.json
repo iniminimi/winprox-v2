@@ -1,0 +1,231 @@
+{
+  "tijdsregistratie_2027": {
+    "meta_title": "Arbeitszeiterfassung in Belgien ab 2027 verpflichtend? Was Arbeitgeber wissen müssen | WinProx",
+    "social": {
+      "og_title": "Arbeitszeiterfassung in Belgien ab 2027 verpflichtend?",
+      "og_description": "Was Belgiens angekündigte Arbeitszeiterfassungspflicht ab 2027 bedeutet: für wen sie gilt, welche Daten erfasst werden müssen und wie man sich vorbereitet."
+    },
+    "eyebrow": "Gesetzgebung · Belgien",
+    "title": "Arbeitszeiterfassung in Belgien ab 2027 verpflichtend? Was Arbeitgeber wissen müssen",
+    "lead": "Die föderale Regierung will, dass Arbeitgeber ab dem 1. Januar 2027 die tatsächlich geleistete Arbeitszeit ihrer Arbeitnehmer erfassen. Das Gesetz gibt es noch nicht. Diese Seite erklärt, was heute schon gilt, was angekündigt ist und was noch bestätigt werden muss.",
+    "updated": "Zuletzt geprüft am 21. Oktober 2026 · Diese Seite wird aktualisiert, sobald das endgültige Gesetz veröffentlicht ist.",
+    "summary": {
+      "title": "Kurz zusammengefasst",
+      "items": [
+        "Ende November 2025 kündigte die föderale Regierung eine allgemeine Pflicht zur Erfassung der Arbeitszeit von Arbeitnehmern an, mit dem 1. Januar 2027 als Zieldatum.",
+        "Es gibt noch kein verabschiedetes Gesetz. Ein Gesetzesvorentwurf liegt vor; der Nationale Arbeitsrat gab dazu am 30. September 2026 ein gespaltenes Gutachten ab. Umfang, Ausnahmen und Zeitplan können sich also noch ändern.",
+        "Eine klassische Stechuhr ist nicht vorgeschrieben: die Wahl des Systems ist frei, solange die tatsächlich geleistete Arbeitszeit objektiv und zuverlässig festgestellt werden kann.",
+        "Konkrete Erfassungspflichten gelten bereits heute, etwa bei Gleitzeitplänen und bei Abweichungen vom Zeitplan von Teilzeitkräften."
+      ]
+    },
+    "status": {
+      "title": "Was gilt heute, was ist angekündigt, was ist noch unsicher?",
+      "intro": "Die wichtigste Unterscheidung: was bereits im Gesetz steht, was die Regierung für 2027 angekündigt hat und was erst nach der Gesetzesabstimmung endgültig ist.",
+      "col_topic": "Thema",
+      "col_state": "Status",
+      "col_detail": "Was das bedeutet",
+      "state_now": "Gilt heute",
+      "state_announced": "Angekündigt für 2027",
+      "state_pending": "Noch zu bestätigen",
+      "rows": [
+        {
+          "topic": "Erfassung bei Gleitzeitplänen",
+          "state": "now",
+          "detail": "Arbeitgeber, die mit Gleitzeitplänen arbeiten, müssen die Leistungen ihrer Arbeitnehmer bereits jetzt erfassen."
+        },
+        {
+          "topic": "Abweichungen vom Zeitplan von Teilzeitkräften",
+          "state": "now",
+          "detail": "Alle Abweichungen vom festen oder variablen Zeitplan von Teilzeitkräften müssen in einem Kontrolldokument (Abweichungsregister) festgehalten werden."
+        },
+        {
+          "topic": "Sektorale Anwesenheitserfassung",
+          "state": "now",
+          "detail": "In einigen Sektoren besteht bereits eine Erfassungspflicht, etwa Checkin@work auf Baustellen und die Anwesenheitserfassung in der Reinigungsbranche."
+        },
+        {
+          "topic": "Allgemeine Erfassung der tatsächlichen Arbeitszeit",
+          "state": "announced",
+          "detail": "Der Vorentwurf verpflichtet Arbeitgeber, die tägliche und wöchentliche Arbeitszeit jedes Arbeitnehmers objektiv und zuverlässig zu erfassen; vorgesehenes Inkrafttreten am 1. Januar 2027, mit praktischer Umsetzung spätestens bis zum 1. April 2027."
+        },
+        {
+          "topic": "Freie Wahl des Systems — keine Stechuhr erforderlich",
+          "state": "announced",
+          "detail": "Der Vorentwurf schreibt keine Technologie vor. Ein System, das nur Abweichungen vom Zeitplan erfasst, kann genügen, wenn es die tatsächliche Arbeitszeit objektiv und zuverlässig festhält."
+        },
+        {
+          "topic": "Ausnahmen für bestimmte Arbeitnehmer",
+          "state": "pending",
+          "detail": "Der Vorentwurf schließt unter anderem leitendes und Vertrauenspersonal, Handelsvertreter, Heim- und Telearbeiter, mobiles Personal und Arbeitnehmer in Familienbetrieben aus. Die Sozialpartner sind hierüber gespalten; die endgültige Liste folgt erst im verabschiedeten Gesetz."
+        },
+        {
+          "topic": "Aufbewahrungsfrist von 5 Jahren",
+          "state": "pending",
+          "detail": "Die Regierung kündigte eine fünfjährige Aufbewahrungspflicht an, die jedoch noch nicht in einem verabschiedeten Gesetz festgelegt ist."
+        },
+        {
+          "topic": "Sanktionen und Kontrolle",
+          "state": "pending",
+          "detail": "Noch nicht veröffentlicht. Das folgt erst mit der endgültigen Gesetzgebung."
+        }
+      ]
+    },
+    "changes": {
+      "title": "Was ändert sich 2027?",
+      "paras": [
+        "Im Haushaltsabkommen von Ende November 2025 kündigte die föderale Regierung an, dass alle Arbeitgeber die tatsächlich geleistete Arbeitszeit ihrer Arbeitnehmer erfassen müssen. Die Maßnahme ist keine rein belgische Initiative: Sie folgt auf die europäische Arbeitszeitrichtlinie (2003/88/EG) und Urteile des Gerichtshofs (C-55/18 von 2019 und C-531/23 von 2024), die verlangen, dass Mitgliedstaaten Arbeitgeber zu einem objektiven, zuverlässigen und zugänglichen Erfassungssystem verpflichten.",
+        "Ein Gesetzesvorentwurf sieht dafür einen neuen Artikel 38quinquies im Arbeitsgesetz vor. Er wurde dem Nationalen Arbeitsrat vorgelegt, der am 30. September 2026 ein gespaltenes Gutachten abgab: Die Arbeitnehmerorganisationen finden den Vorschlag nicht weitgehend genug, die Arbeitgeberorganisationen halten eine allgemeine Pflicht für unnötig. Die Regierung muss nun einen endgültigen Text liefern, der anschließend in der Kammer abgestimmt wird.",
+        "Bis zu dieser Abstimmung kann sich der Inhalt noch ändern. Betrachten Sie diesen Artikel daher als Sachstand, nicht als endgültige Gesetzgebung."
+      ]
+    },
+    "who": {
+      "title": "Für welche Arbeitgeber und Arbeitnehmer gilt die Pflicht?",
+      "intro": "Dem Vorentwurf zufolge gilt die Pflicht für Arbeitgeber im privaten und im öffentlichen Sektor, ohne Unterscheidung nach Sektor oder Unternehmensgröße. Der Vorentwurf schließt jedoch mehrere Arbeitnehmerkategorien aus:",
+      "items": [
+        "Arbeitnehmer in Familienbetrieben, die unter der Aufsicht von Bluts- oder angeheirateten Verwandten arbeiten;",
+        "leitendes Personal und Arbeitnehmer in Vertrauensfunktionen;",
+        "Handelsvertreter;",
+        "Heimarbeiter und Telearbeiter;",
+        "mobiles Personal, etwa Außendienstler und Fahrer."
+      ],
+      "note": "Weitere Kategorien können später per königlichem Erlass ausgeschlossen werden. Gehen Sie nicht selbst davon aus, dass Ihre Arbeitnehmer ausgenommen sind: Die endgültige Liste steht erst im verabschiedeten Gesetz fest."
+    },
+    "what": {
+      "title": "Welche Daten muss ein Arbeitgeber erfassen?",
+      "intro": "Der Vorentwurf verpflichtet dazu, pro Arbeitnehmer die Dauer der täglichen und wöchentlichen Arbeitszeit zu erfassen. In der Praxis bedeutet das:",
+      "items": [
+        "entweder eine vollständige Erfassung der Beginn- und Endzeiten jedes Arbeitstags;",
+        "oder — dem Vorentwurf zufolge — die Erfassung der Abweichungen vom geltenden festen oder variablen Zeitplan, sofern die tatsächlich geleistete Zeit damit objektiv und zuverlässig festgestellt werden kann;",
+        "die Daten dürfen nicht einseitig anpassbar sein (objektiv und zuverlässig);",
+        "Arbeitnehmer und Inspektionsdienste müssen die Daten einsehen können (zugänglich) — ein Punkt, den die Sozialpartner im Entwurf noch anfechten;",
+        "die erfassten Daten müssten fünf Jahre aufbewahrt werden."
+      ]
+    },
+    "system": {
+      "title": "Ist eine digitale Stechuhr verpflichtend?",
+      "paras": [
+        "Nein. Die Regierung hat mehrfach klargestellt, dass eine klassische Stechuhr nicht beabsichtigt ist, und der Vorentwurf legt keine Technologie fest. Arbeitgeber dürfen selbst wählen, wie sie erfassen — digitales Stechsystem, Software, Abweichungsregister —, solange das Ergebnis objektiv und zuverlässig ist.",
+        "Das bedeutet nicht, dass eine Excel-Datei oder eine Papierliste automatisch genügt. Wer das System wählt, muss nachweisen können, dass die erfasste Zeit die tatsächlich geleistete Zeit wiedergibt und dass Arbeitnehmer und Inspektion Zugang dazu haben. Ein digitales System mit Zeitstempeln und rollenbasiertem Zugriff macht das in der Praxis einfacher verteidigbar."
+      ]
+    },
+    "already": {
+      "title": "Welche Erfassungspflichten gelten bereits heute?",
+      "intro": "Es gibt heute keine allgemeine Erfassungspflicht, wohl aber eine Reihe spezifischer Pflichten:",
+      "items": [
+        "Gleitzeitpläne: Wer mit einem Gleitzeitplan arbeitet, muss die tatsächlichen Leistungen erfassen;",
+        "Teilzeitarbeit: Alle Abweichungen vom festen oder variablen Zeitplan gehören in ein Kontrolldokument (Abweichungsregister), das fünf Jahre aufbewahrt wird;",
+        "sektorale Anwesenheitserfassung: unter anderem Checkin@work auf Baustellen und Anwesenheitserfassung in der Reinigung;",
+        "Flexi-Jobs und Studenten: Vereinbarungen und der tatsächliche Beschäftigungsplan müssen elektronisch geführt werden;",
+        "abweichende Zeitpläne im Allgemeinen: Wer vom normalen Zeitplan abweicht, muss dies dokumentieren können."
+      ],
+      "note": "Wer heute bereits eines dieser Systeme nutzt, ist häufig schon nahe an dem, was die künftige allgemeine Pflicht verlangen wird."
+    },
+    "sectors": {
+      "title": "Was bedeutet das für Ihre Branche?",
+      "intro": "Die Pflicht ist branchenübergreifend gedacht, aber die praktischen Auswirkungen unterscheiden sich:",
+      "items": [
+        {
+          "name": "Reinigung und Facility",
+          "body": "Arbeitnehmer arbeiten oft an mehreren Standorten pro Tag. Die Branche kennt bereits Anwesenheitspflichten; ein System, das vor Ort funktioniert (Telefon oder QR), kommt der täglichen Praxis am nächsten."
+        },
+        {
+          "name": "Bau",
+          "body": "Checkin@work ist auf größeren Baustellen bereits Pflicht. Die allgemeine Erfassung kommt für alle hinzu, die außerhalb der Baustellenpflicht nichts erfassen."
+        },
+        {
+          "name": "KMU und kleine Betriebe",
+          "body": "Ohne Personalabteilung wiegt die administrative Last relativ schwer. Ein einfaches, bezahlbares System und klare Kommunikation an die Belegschaft machen den Unterschied."
+        },
+        {
+          "name": "Personal, das vor Ort arbeitet",
+          "body": "Wer an ständig wechselnden Orten arbeitet, kann im Vorentwurf unter das ausgenommene „mobile Personal“ fallen — die endgültige Liste folgt aber erst mit dem Gesetz. Die Erfassung vor Ort bleibt ohnehin nützlich für Arbeitsnachweis und Fakturierung."
+        }
+      ]
+    },
+    "prepare": {
+      "title": "Wie bereiten Sie sich praktisch vor?",
+      "intro": "Sie müssen nicht auf das endgültige Gesetz warten, um sinnvolle Schritte zu setzen:",
+      "items": [
+        "Erfassen Sie, welche Arbeitnehmer voraussichtlich unter die Pflicht fallen und welche möglicherweise ausgenommen werden.",
+        "Prüfen Sie, ob Ihr derzeitiges Vorgehen (Zeitpläne, Abweichungen, Stundenzettel) objektiv und zuverlässig ist und ob Arbeitnehmer Abweichungen selbst melden können.",
+        "Legen Sie fest, wer Abweichungen genehmigt und wie sie in die Lohnabrechnung gelangen.",
+        "Prüfen Sie, ob die Erfassung an Ihr Sozialsekretariat oder Ihre Stundenverwaltung angebunden werden kann.",
+        "Passen Sie das Arbeitsreglement an, wo nötig — Zeitpläne und Messmethoden gehören dort bereits hin.",
+        "Informieren Sie die Mitarbeiter über Zweck und Funktionsweise der Erfassung: Klare Kommunikation vermeidet Widerstand.",
+        "Verfolgen Sie die Veröffentlichung des endgültigen Gesetzes; passen Sie Ihr System an, sobald die Details feststehen."
+      ]
+    },
+    "faq": {
+      "title": "Häufige Fragen",
+      "items": [
+        {
+          "q": "Ist die Arbeitszeiterfassung in Belgien heute schon verpflichtend?",
+          "a": "Es gibt keine allgemeine Pflicht, wohl aber spezifische Pflichten — etwa bei Gleitzeitplänen, Abweichungen von Teilzeitplänen und sektoraler Anwesenheitserfassung. Die allgemeine Pflicht ist für den 1. Januar 2027 angekündigt, aber noch nicht verabschiedet."
+        },
+        {
+          "q": "Ab wann gilt die allgemeine Pflicht?",
+          "a": "Der Vorentwurf sieht ein Inkrafttreten am 1. Januar 2027 vor, mit der praktischen Frist, dass Arbeitgeber ihr System spätestens am 1. April 2027 betriebsbereit haben müssen. Die Daten werden erst nach der Gesetzesabstimmung endgültig."
+        },
+        {
+          "q": "Ist eine Stechuhr verpflichtend?",
+          "a": "Nein. Der Vorentwurf ist technologieneutral: Jeder Arbeitgeber wählt sein System, solange es die tatsächlich geleistete Arbeitszeit objektiv und zuverlässig erfasst."
+        },
+        {
+          "q": "Genügt es, nur Abweichungen vom Zeitplan zu erfassen?",
+          "a": "Dem Vorentwurf zufolge ja — sofern das System die tatsächliche Arbeitszeit objektiv und zuverlässig feststellen kann. Die Arbeitnehmerorganisationen bestreiten diesen Punkt in ihrem Gutachten noch."
+        },
+        {
+          "q": "Gilt die Pflicht auch für den öffentlichen Sektor?",
+          "a": "Ja, das ist die Absicht. Der Text für den öffentlichen Sektor war jedoch nicht Teil des dem Nationalen Arbeitsrat vorgelegten Vorentwurfs; dafür folgt ein eigenes Verfahren."
+        },
+        {
+          "q": "Sind Telearbeiter und Führungskräfte ausgenommen?",
+          "a": "Der Vorentwurf schließt unter anderem Telearbeiter, leitendes und Vertrauenspersonal, Handelsvertreter und mobiles Personal aus, doch diese Liste ist noch nicht endgültig. Gehen Sie also nicht selbst davon aus, dass ein Arbeitnehmer nicht unter die Pflicht fällt."
+        },
+        {
+          "q": "Wie lange müssen die Daten aufbewahrt werden?",
+          "a": "Die Regierung kündigte fünf Jahre an. Die endgültige Aufbewahrungsfrist folgt erst im verabschiedeten Gesetz."
+        },
+        {
+          "q": "Welche Sanktionen drohen, wenn ich nichts tue?",
+          "a": "Sanktionen und die konkrete Kontrolle sind noch nicht veröffentlicht — sie folgen mit der endgültigen Gesetzgebung."
+        }
+      ]
+    },
+    "sources": {
+      "title": "Offizielle Quellen",
+      "intro": "Prüfen Sie den Sachstand anhand der Primärquellen — der Gesetzestext existiert noch nicht, jedes Detail kann sich also noch ändern.",
+      "items": [
+        {
+          "label": "Nationaler Arbeitsrat — Gutachten Nr. 2.499 zum Gesetzesvorentwurf über die Erfassung der Arbeitszeit (30. September 2026)",
+          "url": "https://cnt-nar.be/sites/default/files/documents/nl/advies-2499.pdf"
+        },
+        {
+          "label": "Abgeordnetenkammer — Resolutionsentwurf zur Zeiterfassung (DOC 56 1353/001)",
+          "url": "https://www.dekamer.be/FLWB/PDF/56/1353/56K1353001.pdf"
+        },
+        {
+          "label": "EUR-Lex — Richtlinie 2003/88/EG über die Gestaltung der Arbeitszeit",
+          "url": "https://eur-lex.europa.eu/legal-content/DE/TXT/?uri=CELEX:32003L0088"
+        },
+        {
+          "label": "Gerichtshof der EU — Urteil C-55/18 (CCOO/Deutsche Bank), 14. Mai 2019",
+          "url": "https://curia.europa.eu/juris/liste.jsf?num=C-55/18&language=DE"
+        },
+        {
+          "label": "FÖD Beschäftigung — Arbeitsreglement und Zeitpläne",
+          "url": "https://werk.belgie.be/nl/themas/arbeidsreglementering/arbeidsreglement"
+        }
+      ]
+    },
+    "disclaimer": "Diese Seite ist eine praktische Zusammenfassung und keine Rechtsberatung. Prüfen Sie für Ihre konkrete Situation stets die endgültige Gesetzgebung und gegebenenfalls Ihren Rechtsberater oder Ihr Sozialsekretariat.",
+    "winprox": {
+      "title": "WinProx als praktische Lösung",
+      "body": "WinProx ist eine digitale Stechuhr, mit der Mitarbeiter über ihr Handy oder einen QR-Code an einem festen Uhrenbildschirm ein- und ausstechen. Die Stunden stehen neben dem Zeitplan und können an Ihr Sozialsekretariat oder Ihre Stundenverwaltung weitergegeben werden. Es ist eine der möglichen Wege, die künftige Pflicht zu erfüllen — welche Lösung passt, hängt davon ab, wie Ihre Leute arbeiten.",
+      "cta_demo": "Demo vereinbaren",
+      "cta_contact": "Kontakt aufnehmen",
+      "cta_pricing": "Preise ansehen"
+    },
+    "related_title": "Weiterlesen"
+  }
+}

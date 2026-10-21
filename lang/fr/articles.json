@@ -1,0 +1,231 @@
+{
+  "tijdsregistratie_2027": {
+    "meta_title": "Enregistrement du temps de travail obligatoire en Belgique dès 2027 ? Ce que les employeurs doivent savoir | WinProx",
+    "social": {
+      "og_title": "Enregistrement du temps de travail obligatoire en Belgique dès 2027 ?",
+      "og_description": "Ce que l'obligation belge annoncée d'enregistrement du temps de travail à partir de 2027 signifie : à qui elle s'applique, quelles données enregistrer et comment se préparer."
+    },
+    "eyebrow": "Législation · Belgique",
+    "title": "Enregistrement du temps de travail obligatoire en Belgique dès 2027 ? Ce que les employeurs doivent savoir",
+    "lead": "Le gouvernement fédéral veut que les employeurs enregistrent le temps de travail effectivement presté de leurs travailleurs à partir du 1er janvier 2027. La loi n'existe pas encore. Cette page explique ce qui s'applique déjà aujourd'hui, ce qui est annoncé et ce qui doit encore être confirmé.",
+    "updated": "Dernière vérification le 21 octobre 2026 · Cette page sera mise à jour dès la publication de la loi définitive.",
+    "summary": {
+      "title": "En bref",
+      "items": [
+        "Fin novembre 2025, le gouvernement fédéral a annoncé une obligation générale d'enregistrer le temps de travail des travailleurs, avec pour date cible le 1er janvier 2027.",
+        "Il n'existe pas encore de loi votée. Un avant-projet de loi est sur la table ; le Conseil national du travail a rendu un avis partagé le 30 septembre 2026. Le champ d'application, les exemptions et le calendrier peuvent donc encore changer.",
+        "Une badgeuse classique n'est pas obligatoire : le choix du système est libre, pour autant que le temps de travail effectivement presté puisse être déterminé de manière objective et fiable.",
+        "Des obligations d'enregistrement concrètes s'appliquent déjà aujourd'hui, notamment pour les horaires flottants et les dérogations aux horaires à temps partiel."
+      ]
+    },
+    "status": {
+      "title": "Ce qui s'applique aujourd'hui, ce qui est annoncé, ce qui reste incertain",
+      "intro": "La distinction essentielle : ce qui figure déjà dans la loi, ce que le gouvernement a annoncé pour 2027 et ce qui ne deviendra définitif qu'après le vote de la loi.",
+      "col_topic": "Sujet",
+      "col_state": "Statut",
+      "col_detail": "Ce que cela signifie",
+      "state_now": "En vigueur",
+      "state_announced": "Annoncé pour 2027",
+      "state_pending": "À confirmer",
+      "rows": [
+        {
+          "topic": "Enregistrement pour les horaires flottants",
+          "state": "now",
+          "detail": "Les employeurs qui appliquent des horaires flottants doivent déjà enregistrer les prestations de leurs travailleurs."
+        },
+        {
+          "topic": "Dérogations aux horaires des travailleurs à temps partiel",
+          "state": "now",
+          "detail": "Toutes les dérogations à l'horaire fixe ou variable des temps partiels doivent figurer dans un document de contrôle (registre des dérogations)."
+        },
+        {
+          "topic": "Enregistrement de présence sectoriel",
+          "state": "now",
+          "detail": "Plusieurs secteurs connaissent déjà une obligation d'enregistrement, comme Checkin@work sur les chantiers et l'enregistrement de présence dans le secteur du nettoyage."
+        },
+        {
+          "topic": "Enregistrement général du temps de travail réel",
+          "state": "announced",
+          "detail": "L'avant-projet oblige les employeurs à enregistrer le temps de travail journalier et hebdomadaire de chaque travailleur de manière objective et fiable ; entrée en vigueur prévue le 1er janvier 2027, avec mise en œuvre pratique au plus tard le 1er avril 2027."
+        },
+        {
+          "topic": "Libre choix du système — pas de badgeuse obligatoire",
+          "state": "announced",
+          "detail": "L'avant-projet n'impose aucune technologie. Un système qui n'enregistre que les dérogations à l'horaire peut suffire s'il permet d'établir le temps de travail réel de manière objective et fiable."
+        },
+        {
+          "topic": "Exemptions pour certaines catégories de travailleurs",
+          "state": "pending",
+          "detail": "L'avant-projet exclut notamment le personnel de direction et de confiance, les représentants de commerce, les travailleurs à domicile et télétravailleurs, le personnel mobile et les travailleurs des entreprises familiales. Les partenaires sociaux sont divisés à ce sujet ; la liste définitive ne figurera que dans la loi votée."
+        },
+        {
+          "topic": "Conservation des données pendant 5 ans",
+          "state": "pending",
+          "detail": "Le gouvernement a annoncé une obligation de conservation de cinq ans, mais celle-ci n'est pas encore fixée dans une loi votée."
+        },
+        {
+          "topic": "Sanctions et contrôle",
+          "state": "pending",
+          "detail": "Pas encore publiés. Ils suivront avec la législation définitive."
+        }
+      ]
+    },
+    "changes": {
+      "title": "Qu'est-ce qui change en 2027 ?",
+      "paras": [
+        "Dans l'accord budgétaire de fin novembre 2025, le gouvernement fédéral a annoncé que tous les employeurs devront enregistrer le temps de travail effectivement presté de leurs travailleurs. La mesure n'est pas une initiative purement belge : elle fait suite à la directive européenne sur l'aménagement du temps de travail (2003/88/CE) et aux arrêts de la Cour de justice (C-55/18 de 2019 et C-531/23 de 2024), qui exigent que les États membres obligent les employeurs à mettre en place un système d'enregistrement objectif, fiable et accessible.",
+        "Un avant-projet de loi prévoit d'insérer à cette fin un nouvel article 38quinquies dans la loi sur le travail. Il a été soumis au Conseil national du travail, qui a rendu un avis partagé le 30 septembre 2026 : les organisations de travailleurs jugent la proposition insuffisante, les organisations d'employeurs estiment une obligation générale superflue. Le gouvernement doit à présent produire un texte définitif qui sera voté à la Chambre.",
+        "Jusqu'à ce vote, le contenu peut encore évoluer. Considérez donc cet article comme un état des lieux, et non comme une législation définitive."
+      ]
+    },
+    "who": {
+      "title": "À quels employeurs et travailleurs l'obligation s'applique-t-elle ?",
+      "intro": "Selon l'avant-projet, l'obligation s'applique aux employeurs des secteurs privé et public, sans distinction de secteur ni de taille d'entreprise. L'avant-projet exclut toutefois plusieurs catégories de travailleurs :",
+      "items": [
+        "les travailleurs des entreprises familiales travaillant sous l'autorité de parents ou alliés ;",
+        "le personnel de direction et les travailleurs occupant une fonction de confiance ;",
+        "les représentants de commerce ;",
+        "les travailleurs à domicile et les télétravailleurs ;",
+        "le personnel mobile, comme les représentants et les chauffeurs."
+      ],
+      "note": "Des catégories supplémentaires peuvent être exclues ultérieurement par arrêté royal. Ne présumez pas vous-même que vos travailleurs sont exemptés : la liste définitive n'est fixée que dans la loi votée."
+    },
+    "what": {
+      "title": "Quelles données un employeur doit-il enregistrer ?",
+      "intro": "L'avant-projet impose d'enregistrer, par travailleur, la durée du temps de travail journalier et hebdomadaire. Concrètement, cela signifie :",
+      "items": [
+        "soit un enregistrement complet des heures de début et de fin de chaque journée de travail ;",
+        "soit — selon l'avant-projet — l'enregistrement des dérogations à l'horaire fixe ou variable applicable, pour autant que le temps effectivement presté puisse ainsi être déterminé de manière objective et fiable ;",
+        "les données ne peuvent pas être modifiables unilatéralement (objectives et fiables) ;",
+        "les travailleurs et les services d'inspection doivent pouvoir consulter les données (accessibles) — un point que les partenaires sociaux contestent encore dans le projet ;",
+        "les données enregistrées devraient être conservées pendant cinq ans."
+      ]
+    },
+    "system": {
+      "title": "Une badgeuse digitale est-elle obligatoire ?",
+      "paras": [
+        "Non. Le gouvernement a indiqué à plusieurs reprises qu'une badgeuse classique n'est pas l'intention, et l'avant-projet n'impose aucune technologie. Les employeurs peuvent choisir eux-mêmes leur mode d'enregistrement — système de pointage digital, logiciel, registre des dérogations — pour autant que le résultat soit objectif et fiable.",
+        "Cela ne signifie pas qu'un fichier Excel ou une liste papier suffise automatiquement. Celui qui choisit le système doit pouvoir démontrer que le temps enregistré reflète le temps réellement presté et que les travailleurs et l'inspection y ont accès. Un système digital avec horodatage et accès par rôle rend cela plus facilement défendable dans la pratique."
+      ]
+    },
+    "already": {
+      "title": "Quelles obligations d'enregistrement s'appliquent déjà aujourd'hui ?",
+      "intro": "Il n'existe pas aujourd'hui d'obligation générale d'enregistrement, mais une série d'obligations spécifiques sont déjà impératives :",
+      "items": [
+        "horaires flottants : quiconque applique un horaire flottant doit enregistrer les prestations réelles ;",
+        "travail à temps partiel : toutes les dérogations à l'horaire fixe ou variable doivent figurer dans un document de contrôle (registre des dérogations) conservé cinq ans ;",
+        "enregistrement de présence par secteur : notamment Checkin@work sur les chantiers et l'enregistrement de présence dans le nettoyage ;",
+        "flexi-jobs et étudiants : les conventions et l'horaire de travail réel doivent être tenus par voie électronique ;",
+        "horaires dérogatoires en général : quiconque déroge à l'horaire normal doit pouvoir le documenter."
+      ],
+      "note": "Si vous utilisez déjà l'un de ces systèmes, vous êtes souvent déjà proche de ce que la future obligation générale demandera."
+    },
+    "sectors": {
+      "title": "Qu'est-ce que cela signifie pour votre secteur ?",
+      "intro": "L'obligation se veut transsectorielle, mais l'impact pratique diffère :",
+      "items": [
+        {
+          "name": "Nettoyage et facility",
+          "body": "Les travailleurs travaillent souvent sur plusieurs sites par jour. Le secteur connaît déjà des obligations de présence ; un système qui fonctionne sur site (téléphone ou QR) se rapproche le plus de la pratique quotidienne."
+        },
+        {
+          "name": "Construction",
+          "body": "Checkin@work est déjà obligatoire sur les chantiers plus importants. L'enregistrement général s'y ajoute pour ceux qui n'enregistrent rien au-delà de l'obligation chantier."
+        },
+        {
+          "name": "PME et petites entreprises",
+          "body": "Sans service RH, la charge administrative pèse relativement lourd. Un système simple et abordable, ainsi qu'une communication claire vers le personnel, font la différence."
+        },
+        {
+          "name": "Personnel travaillant sur site",
+          "body": "Ceux qui travaillent sur des sites constamment changeants peuvent, dans l'avant-projet, relever du « personnel mobile » exclu — mais la liste définitive ne suivra qu'avec la loi. L'enregistrement sur site reste de toute façon utile pour le suivi des travaux et la facturation."
+        }
+      ]
+    },
+    "prepare": {
+      "title": "Comment vous préparer concrètement ?",
+      "intro": "Vous n'avez pas besoin d'attendre la loi définitive pour prendre des mesures utiles :",
+      "items": [
+        "Identifiez quels travailleurs relèveraient de l'obligation et lesquels pourraient en être exclus.",
+        "Vérifiez si votre approche actuelle (horaires, dérogations, états de prestations) est objective et fiable et si les travailleurs peuvent signaler eux-mêmes les dérogations.",
+        "Déterminez qui approuve les dérogations et comment elles parviennent à la paie.",
+        "Examinez si l'enregistrement peut être lié à votre secrétariat social ou à votre administration des heures.",
+        "Adaptez le règlement de travail si nécessaire — les horaires et les modes de mesurage y ont déjà leur place.",
+        "Informez les travailleurs sur l'objectif et le fonctionnement de l'enregistrement : une communication claire évite les résistances.",
+        "Suivez la publication de la loi définitive ; adaptez votre système une fois les détails fixés."
+      ]
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "items": [
+        {
+          "q": "L'enregistrement du temps de travail est-il déjà obligatoire en Belgique aujourd'hui ?",
+          "a": "Il n'existe pas d'obligation générale, mais bien des obligations spécifiques — notamment pour les horaires flottants, les dérogations aux horaires à temps partiel et l'enregistrement de présence sectoriel. L'obligation générale est annoncée pour le 1er janvier 2027 mais n'est pas encore votée."
+        },
+        {
+          "q": "À partir de quand l'obligation générale s'applique-t-elle ?",
+          "a": "L'avant-projet prévoit une entrée en vigueur le 1er janvier 2027, avec comme échéance pratique que les employeurs disposent d'un système opérationnel au plus tard le 1er avril 2027. Les dates ne deviennent définitives qu'après le vote de la loi."
+        },
+        {
+          "q": "Une badgeuse est-elle obligatoire ?",
+          "a": "Non. L'avant-projet est neutre sur le plan technologique : chaque employeur choisit son système, pour autant qu'il enregistre le temps de travail réel de manière objective et fiable."
+        },
+        {
+          "q": "Suffit-il d'enregistrer uniquement les dérogations à l'horaire ?",
+          "a": "Selon l'avant-projet, oui — pour autant que le système permette d'établir le temps de travail réel de manière objective et fiable. Les organisations de travailleurs contestent encore ce point dans leur avis."
+        },
+        {
+          "q": "L'obligation s'applique-t-elle aussi au secteur public ?",
+          "a": "Oui, c'est l'intention. Le texte pour le secteur public ne faisait toutefois pas partie de l'avant-projet soumis au Conseil national du travail ; il fera l'objet d'un trajet propre."
+        },
+        {
+          "q": "Les télétravailleurs et les cadres sont-ils exclus ?",
+          "a": "L'avant-projet exclut notamment les télétravailleurs, le personnel de direction et de confiance, les représentants de commerce et le personnel mobile, mais cette liste n'est pas encore définitive. Ne présumez donc pas vous-même qu'un travailleur échappe à l'obligation."
+        },
+        {
+          "q": "Combien de temps les données doivent-elles être conservées ?",
+          "a": "Le gouvernement a annoncé cinq ans. Le délai de conservation définitif ne suivra que dans la loi votée."
+        },
+        {
+          "q": "Quelles sont les sanctions si je ne fais rien ?",
+          "a": "Les sanctions et le contrôle concret n'ont pas encore été publiés — ils suivront avec la législation définitive."
+        }
+      ]
+    },
+    "sources": {
+      "title": "Sources officielles",
+      "intro": "Vérifiez l'état des lieux auprès des sources primaires — le texte de loi n'existe pas encore, chaque détail peut donc encore changer.",
+      "items": [
+        {
+          "label": "Conseil national du travail — avis n° 2.499 sur l'avant-projet de loi relatif à l'enregistrement du temps de travail (30 septembre 2026)",
+          "url": "https://cnt-nar.be/sites/default/files/documents/fr/avis-2499_0.pdf"
+        },
+        {
+          "label": "Chambre des représentants — proposition de résolution sur l'enregistrement du temps de travail (DOC 56 1353/001)",
+          "url": "https://www.dekamer.be/FLWB/PDF/56/1353/56K1353001.pdf"
+        },
+        {
+          "label": "EUR-Lex — Directive 2003/88/CE concernant l'aménagement du temps de travail",
+          "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32003L0088"
+        },
+        {
+          "label": "Cour de justice de l'UE — arrêt C-55/18 (CCOO/Deutsche Bank), 14 mai 2019",
+          "url": "https://curia.europa.eu/juris/liste.jsf?num=C-55/18&language=FR"
+        },
+        {
+          "label": "SPF Emploi — règlement de travail et horaires",
+          "url": "https://emploi.belgique.be/fr/themes/reglementation-du-travail/reglement-de-travail"
+        }
+      ]
+    },
+    "disclaimer": "Cette page est un résumé pratique et ne constitue pas un avis juridique. Pour votre situation spécifique, vérifiez toujours la législation définitive et, le cas échéant, votre conseiller juridique ou votre secrétariat social.",
+    "winprox": {
+      "title": "WinProx comme solution pratique",
+      "body": "WinProx est une badgeuse digitale avec laquelle les travailleurs pointent via leur gsm ou un code QR sur un écran d'horloge fixe. Les heures se situent à côté de l'horaire et peuvent être transmises à votre secrétariat social ou à votre administration des heures. C'est l'une des manières possibles de répondre à la future obligation — la solution qui convient dépend de la façon dont vos collaborateurs travaillent.",
+      "cta_demo": "Planifier une démo",
+      "cta_contact": "Nous contacter",
+      "cta_pricing": "Voir les tarifs"
+    },
+    "related_title": "Pour aller plus loin"
+  }
+}
