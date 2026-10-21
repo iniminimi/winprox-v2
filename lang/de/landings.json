@@ -895,7 +895,7 @@
                 },
                 {
                     "title": "Scannen und bestätigen",
-                    "body": "Der Mitarbeiter scannt den QR-Code mit dem eigenen Smartphone und bestätigt seinen Namen. Ohne App oder Badge."
+                    "body": "Der Mitarbeiter scannt den QR-Code mit dem eigenen Smartphone und bestätigt seinen Namen. Ohne App oder Badge. Wer möchte, meldet sich künftig mit Fingerabdruck, Gesicht oder Gerätecode an."
                 },
                 {
                     "title": "Eingestempelt",
@@ -910,7 +910,8 @@
                 "Fester Uhrbildschirm mit wechselndem QR-Code — ein Foto des Bildschirms ist später nutzlos.",
                 "Zeit- und Anwesenheitserfassung in WinProx.",
                 "Smartphone mit dem Mitarbeiter gekoppelt.",
-                "Zusätzliche Kontrolle gegen Missbrauch, ohne biometrische Identifikation.",
+                "Zusätzliche Kontrolle gegen Missbrauch — WinProx erhebt keine biometrischen Daten.",
+                "Schnelle Anmeldung mit Fingerabdruck, Gesicht oder Gerätecode auf dem eigenen Handy.",
                 "Auch als QR-Aufkleber möglich, ohne Bildschirm.",
                 "Für Reinigung und Bau: Stempeln am Arbeitsplatz mit QR + GPS.",
                 "CIAO/RSZ wo zutreffend.",
@@ -980,6 +981,10 @@
                 {
                     "q": "Was passiert mit den Stunden?",
                     "a": "WinProx hält die gearbeiteten Stunden fest, neben dem Dienstplan. Sie geben sie an Ihr Sozialsekretariat weiter. Das Sekretariat macht den Lohn. WinProx tut das nicht."
+                },
+                {
+                    "q": "Wie meldet sich ein Mitarbeiter schnell an?",
+                    "a": "Nach der ersten Anmeldung kann er auf dem eigenen Handy Fingerabdruck, Gesicht oder Gerätecode aktivieren. Die Biometrie bleibt auf dem Gerät — PIN oder Symbol bleiben nutzbar."
                 }
             ]
         },

@@ -895,7 +895,7 @@
                 },
                 {
                     "title": "Scanner et confirmer",
-                    "body": "Le travailleur scanne le code QR avec son propre smartphone et confirme son nom. Sans appli ni badge."
+                    "body": "Le travailleur scanne le code QR avec son propre smartphone et confirme son nom. Sans appli ni badge. Ceux qui le souhaitent se connectent ensuite avec l'empreinte, le visage ou le code de l'appareil."
                 },
                 {
                     "title": "Pointé",
@@ -910,7 +910,8 @@
                 "Écran d’horloge fixe avec code QR renouvelé — une photo de l’écran ne sert à rien plus tard.",
                 "Enregistrement du temps et des heures dans WinProx.",
                 "Smartphone associé à l’employé.",
-                "Contrôle renforcé contre les abus, sans identification biométrique.",
+                "Contrôle renforcé contre les abus — WinProx ne collecte aucune donnée biométrique.",
+                "Connexion rapide par empreinte, visage ou code de l'appareil sur le téléphone du travailleur.",
                 "Possible aussi en autocollant QR, sans écran.",
                 "Pour le nettoyage et la construction : pointage sur le chantier via QR + GPS.",
                 "CIAO/RSZ le cas échéant.",
@@ -980,6 +981,10 @@
                 {
                     "q": "Que deviennent les heures ?",
                     "a": "WinProx conserve les heures prestées, à côté de l'horaire. Vous les transmettez à votre secrétariat social. Le secrétariat établit le salaire. WinProx ne le fait pas."
+                },
+                {
+                    "q": "Comment un employé se connecte-t-il rapidement ?",
+                    "a": "Après une première connexion, il peut activer l'empreinte, le visage ou le code de l'appareil sur son propre téléphone. La biométrie reste sur l'appareil — le PIN ou l'icône reste utilisable."
                 }
             ]
         },

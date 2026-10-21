@@ -895,7 +895,7 @@
                 },
                 {
                     "title": "Scan en bevestig",
-                    "body": "De werknemer scant de QR-code met zijn eigen smartphone en bevestigt zijn naam. Geen app of badge nodig."
+                    "body": "De werknemer scant de QR-code met zijn eigen smartphone en bevestigt zijn naam. Geen app of badge nodig. Wie wil, meldt zich voortaan aan met vingerafdruk, gezicht of toestelcode."
                 },
                 {
                     "title": "Ingeklokt",
@@ -910,7 +910,8 @@
                 "Vast klokscherm met wisselende QR-code — een foto van het scherm is later niet bruikbaar.",
                 "Tijdregistratie en uurregistratie in WinProx.",
                 "Smartphone gekoppeld aan de werknemer.",
-                "Extra controle tegen misbruik, zonder biometrische identificatie.",
+                "Extra controle tegen misbruik — WinProx verzamelt geen biometrische gegevens.",
+                "Snel aanmelden met vingerafdruk, gezicht of toestelcode op de eigen gsm.",
                 "Ook mogelijk als QR-sticker, zonder scherm.",
                 "Uren vergelijkt u met het uurrooster.",
                 "De uren geeft u door aan uw sociaal secretariaat.",
@@ -980,6 +981,10 @@
                 {
                     "q": "Wat gebeurt er met de uren?",
                     "a": "WinProx houdt de gewerkte uren bij, naast het rooster. U geeft ze door aan uw sociaal secretariaat. Het secretariaat maakt het loon. WinProx doet dat niet."
+                },
+                {
+                    "q": "Hoe meldt een medewerker zich snel aan?",
+                    "a": "Na een eerste aanmelding kan die op de eigen gsm vingerafdruk, gezicht of toestelcode inschakelen. De biometrie blijft op het toestel — pincode of icoon blijft altijd werken."
                 }
             ]
         },

@@ -895,7 +895,7 @@
                 },
                 {
                     "title": "Scansiona e conferma",
-                    "body": "Il lavoratore scansiona il codice QR con il proprio smartphone e conferma il suo nome. Nessuna app, nessun badge."
+                    "body": "Il lavoratore scansiona il codice QR con il proprio smartphone e conferma il suo nome. Nessuna app, nessun badge. Chi vuole accede poi con impronta, volto o codice del dispositivo."
                 },
                 {
                     "title": "Timbrato",
@@ -910,7 +910,8 @@
                 "Schermo-orologio fisso con codice QR rinnovato — una foto dello schermo non serve più dopo.",
                 "Registrazione di tempo e presenza in WinProx.",
                 "Smartphone collegato al dipendente.",
-                "Controllo extra contro gli abusi, senza identificazione biometrica.",
+                "Controllo extra contro gli abusi — WinProx non raccoglie dati biometrici.",
+                "Accesso rapido con impronta, volto o codice del dispositivo sul proprio telefono.",
                 "Possibile anche come adesivo QR, senza schermo.",
                 "Per pulizie e costruzioni: timbratura sul posto di lavoro con QR + GPS.",
                 "CIAO/RSZ dove applicabile.",
@@ -980,6 +981,10 @@
                 {
                     "q": "Che fine fanno le ore?",
                     "a": "WinProx tiene le ore lavorate, accanto al turno. Le passate al segretariato sociale. Il segretariato fa la paga. WinProx non lo fa."
+                },
+                {
+                    "q": "Come accede rapidamente un dipendente?",
+                    "a": "Dopo il primo accesso può attivare impronta, volto o codice del dispositivo sul proprio telefono. La biometria resta sul dispositivo — PIN o icona restano attivi."
                 }
             ]
         },

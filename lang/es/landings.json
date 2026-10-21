@@ -895,7 +895,7 @@
                 },
                 {
                     "title": "Escanear y confirmar",
-                    "body": "El trabajador escanea el código QR con su propio smartphone y confirma su nombre. Sin app ni tarjeta."
+                    "body": "El trabajador escanea el código QR con su propio smartphone y confirma su nombre. Sin app ni tarjeta. Quien quiera puede iniciar sesión después con huella, cara o código del dispositivo."
                 },
                 {
                     "title": "Fichado",
@@ -910,7 +910,8 @@
                 "Pantalla de reloj fija con código QR renovable — una foto de la pantalla no sirve después.",
                 "Registro horario y de presencia en WinProx.",
                 "Smartphone vinculado al empleado.",
-                "Control adicional contra el uso indebido, sin identificación biométrica.",
+                "Control adicional contra el uso indebido — WinProx no recopila datos biométricos.",
+                "Inicio de sesión rápido con huella, cara o código del dispositivo en el propio teléfono.",
                 "También posible como pegatina QR, sin pantalla.",
                 "Para limpieza y construcción: fichaje en el lugar de trabajo con QR + GPS.",
                 "CIAO/RSZ cuando corresponda.",
@@ -980,6 +981,10 @@
                 {
                     "q": "¿Qué pasa con las horas?",
                     "a": "WinProx guarda las horas trabajadas, junto al horario. Usted las pasa a su secretaría social. La secretaría hace el salario. WinProx no lo hace."
+                },
+                {
+                    "q": "¿Cómo inicia sesión un empleado rápidamente?",
+                    "a": "Tras el primer inicio de sesión puede activar huella, cara o código del dispositivo en su propio teléfono. La biometría no sale del dispositivo — el PIN o el icono sigue funcionando."
                 }
             ]
         },

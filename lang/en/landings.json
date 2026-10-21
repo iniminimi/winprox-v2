@@ -895,7 +895,7 @@
                 },
                 {
                     "title": "Scan and confirm",
-                    "body": "The worker scans the QR code with their own smartphone and confirms their name. No app or badge needed."
+                    "body": "The worker scans the QR code with their own smartphone and confirms their name. No app or badge needed. If they want, they can then sign in with fingerprint, face or device code."
                 },
                 {
                     "title": "Clocked in",
@@ -910,7 +910,8 @@
                 "Fixed clock screen with a rotating QR code — a photo of the screen is useless later.",
                 "Time and attendance registration in WinProx.",
                 "Smartphone linked to the employee.",
-                "Extra protection against misuse, without biometric identification.",
+                "Extra protection against misuse — WinProx collects no biometric data.",
+                "Quick sign-in with fingerprint, face or device code on the worker's own phone.",
                 "Also works as a QR sticker, no screen needed.",
                 "For cleaning and construction: clock in on site with QR + GPS.",
                 "CIAO/RSZ where applicable.",
@@ -980,6 +981,10 @@
                 {
                     "q": "What happens to the hours?",
                     "a": "WinProx keeps the worked hours, next to the roster. You pass them to your social secretariat. The secretariat prepares the wage. WinProx does not."
+                },
+                {
+                    "q": "How does an employee sign in quickly?",
+                    "a": "After a first sign-in they can enable fingerprint, face or device code on their own phone. The biometrics stay on the device — the PIN or icon keeps working."
                 }
             ]
         },
