@@ -773,7 +773,7 @@
                 "attention_hint": "Incomplete blocks or an open time record"
             },
             "incomplete_blocks": "{1} :count block incomplete|[2,*] :count blocks incomplete",
-            "registration_incomplete": "Time record incomplete"
+            "open_registration": "{1} Open clock-in since :datetime — clocked in, never clocked out|[2,*] :count open clock-ins, oldest since :datetime — clocked in, never clocked out"
         },
         "month_norm": {
             "errors": {

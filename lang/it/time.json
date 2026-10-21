@@ -773,7 +773,7 @@
                 "attention_hint": "Blocchi incompleti o una registrazione aperta"
             },
             "incomplete_blocks": "{1} :count blocco incompleto|[2,*] :count blocchi incompleti",
-            "registration_incomplete": "Registrazione ore incompleta"
+            "open_registration": "{1} Timbratura aperta dal :datetime — entrata timbrata senza uscita|[2,*] :count timbrature aperte, la più vecchia dal :datetime — entrate timbrate senza uscita"
         },
         "month_norm": {
             "errors": {

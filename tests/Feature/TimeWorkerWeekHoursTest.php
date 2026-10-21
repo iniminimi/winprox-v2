@@ -205,6 +205,18 @@ it('geeft een open dienst van vóór de week een signaal zonder minuten', functi
         ->and($summary->registrationIncomplete)->toBeTrue();
 });
 
+it('rapporteert aantal en oudste inklok van open registraties', function () {
+    [$tenant, , , $worker] = weekHoursTenant();
+    weekPunch($tenant, $worker, '2026-10-11 08:00:00', null);
+    weekPunch($tenant, $worker, '2026-10-14 09:30:00', null);
+    weekPunch($tenant, $worker, '2026-10-13 08:00:00', '2026-10-13 16:00:00');
+
+    $summary = weekSummary($tenant, $worker, '2026-10-12');
+
+    expect($summary->openRegistrations)->toBe(2)
+        ->and($summary->oldestOpenClockInAt?->format('Y-m-d H:i'))->toBe('2026-10-11 08:00');
+});
+
 it('legt een dienst over middernacht volledig op de inklokdatum', function () {
     [$tenant, , , $worker] = weekHoursTenant();
     weekPunch($tenant, $worker, '2026-10-18 22:00:00', '2026-10-19 06:00:00');
@@ -373,7 +385,10 @@ it('zet de uren in vaste cijferkolommen', function () {
         ->and($figure('recup'))->toBeNull()
         ->and($figure('sick')['value'])->toBe('2'.$hour)
         ->and($figure('attention')['value'])->toBe('1 · !')
-        ->and($figure('attention')['title'])->toContain(__('time.schedule.week_hours.registration_incomplete'));
+        ->and($figure('attention')['title'])->toContain(trans_choice('time.schedule.week_hours.open_registration', 1, [
+            'count' => 1,
+            'datetime' => '12/10/2026 08:00',
+        ]));
 });
 
 it('toont minuten compact in de cijferkolommen (15u32, geen 15u32min)', function () {

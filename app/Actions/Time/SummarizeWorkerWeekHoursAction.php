@@ -87,16 +87,23 @@ class SummarizeWorkerWeekHoursAction
             $worked[$workerId] = ($worked[$workerId] ?? 0) + $shift->netWorkMinutes();
         }
 
-        $openWorkerIds = WorkShift::query()
-            ->where('tenant_id', $tenantId)
-            ->whereIn('worker_id', $ownedIds)
-            ->whereNull('clock_out_at')
-            ->where('clock_in_at', '<', $nextMonday)
-            ->pluck('worker_id')
-            ->map(fn ($id) => (int) $id)
-            ->unique()
-            ->all();
-        $openSet = array_fill_keys($openWorkerIds, true);
+        $openByWorker = [];
+        foreach (
+            WorkShift::query()
+                ->where('tenant_id', $tenantId)
+                ->whereIn('worker_id', $ownedIds)
+                ->whereNull('clock_out_at')
+                ->where('clock_in_at', '<', $nextMonday)
+                ->get(['worker_id', 'clock_in_at']) as $openShift
+        ) {
+            $workerId = (int) $openShift->worker_id;
+            $bucket = $openByWorker[$workerId] ?? ['count' => 0, 'oldest' => null];
+            $bucket['count']++;
+            if ($bucket['oldest'] === null || $openShift->clock_in_at->lt($bucket['oldest'])) {
+                $bucket['oldest'] = $openShift->clock_in_at;
+            }
+            $openByWorker[$workerId] = $bucket;
+        }
 
         $result = [];
         foreach ($buckets as $workerId => $bucket) {
@@ -121,9 +128,11 @@ class SummarizeWorkerWeekHoursAction
                 contractMinutes: $bucket['contract'],
                 plannedMinutes: $bucket['planned'],
                 workedMinutes: $worked[$workerId] ?? 0,
-                registrationIncomplete: isset($openSet[$workerId]),
+                registrationIncomplete: isset($openByWorker[$workerId]),
                 incompleteBlocks: $bucket['incomplete'],
                 absences: $absences,
+                openRegistrations: $openByWorker[$workerId]['count'] ?? 0,
+                oldestOpenClockInAt: $openByWorker[$workerId]['oldest'] ?? null,
             );
         }
 

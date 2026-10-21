@@ -773,7 +773,7 @@
                 "attention_hint": "Blocs incomplets ou un pointage ouvert"
             },
             "incomplete_blocks": "{1} :count bloc incomplet|[2,*] :count blocs incomplets",
-            "registration_incomplete": "Pointage incomplet"
+            "open_registration": "{1} Pointage ouvert depuis le :datetime — entrée pointée sans sortie|[2,*] :count pointages ouverts, le plus ancien depuis le :datetime — entrées pointées sans sortie"
         },
         "month_norm": {
             "errors": {

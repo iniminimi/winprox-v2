@@ -2,6 +2,8 @@
 
 namespace App\Data\Time;
 
+use Carbon\Carbon;
+
 final class WorkerWeekHours
 {
     /**
@@ -14,6 +16,8 @@ final class WorkerWeekHours
         public bool $registrationIncomplete,
         public int $incompleteBlocks,
         public array $absences,
+        public int $openRegistrations = 0,
+        public ?Carbon $oldestOpenClockInAt = null,
     ) {}
 
     public function differenceMinutes(): ?int

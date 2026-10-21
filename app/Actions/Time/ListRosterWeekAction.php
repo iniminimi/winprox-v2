@@ -419,7 +419,8 @@ class ListRosterWeekAction
             $facts->workedMinutes,
             $facts->absences,
             $facts->incompleteBlocks,
-            $facts->registrationIncomplete,
+            $facts->openRegistrations,
+            $facts->oldestOpenClockInAt,
         );
 
         return $payload;
@@ -443,7 +444,8 @@ class ListRosterWeekAction
                 $hours->workedMinutes,
                 $hours->absences,
                 $hours->incompleteBlocks,
-                $hours->registrationIncomplete,
+                $hours->openRegistrations,
+                $hours->oldestOpenClockInAt,
             ),
         ];
 
@@ -506,7 +508,8 @@ class ListRosterWeekAction
         int $workedMinutes,
         array $absences,
         int $incompleteBlocks,
-        bool $registrationIncomplete,
+        int $openRegistrations = 0,
+        ?Carbon $oldestOpenClockInAt = null,
     ): array {
         $figures = [];
         if ($contractVisible) {
@@ -520,7 +523,7 @@ class ListRosterWeekAction
         foreach ([ShiftTypeKind::Leave, ShiftTypeKind::Recup, ShiftTypeKind::Sick] as $kind) {
             $figures[] = $this->figure($this->absenceFigure($absences[$kind->value] ?? null));
         }
-        $figures[] = $this->attentionFigure($incompleteBlocks, $registrationIncomplete);
+        $figures[] = $this->attentionFigure($incompleteBlocks, $openRegistrations, $oldestOpenClockInAt);
 
         return $figures;
     }
@@ -549,9 +552,9 @@ class ListRosterWeekAction
     /**
      * @return array{value: string, title: string}|null
      */
-    private function attentionFigure(int $incompleteBlocks, bool $registrationIncomplete): ?array
+    private function attentionFigure(int $incompleteBlocks, int $openRegistrations, ?Carbon $oldestOpenClockInAt): ?array
     {
-        if ($incompleteBlocks < 1 && ! $registrationIncomplete) {
+        if ($incompleteBlocks < 1 && $openRegistrations < 1) {
             return null;
         }
         $parts = [];
@@ -562,9 +565,12 @@ class ListRosterWeekAction
                 'count' => $incompleteBlocks,
             ]);
         }
-        if ($registrationIncomplete) {
+        if ($openRegistrations > 0) {
             $parts[] = '!';
-            $titles[] = __('time.schedule.week_hours.registration_incomplete');
+            $titles[] = trans_choice('time.schedule.week_hours.open_registration', $openRegistrations, [
+                'count' => $openRegistrations,
+                'datetime' => $oldestOpenClockInAt?->setTimezone((string) config('app.timezone'))->format('d/m/Y H:i') ?? '',
+            ]);
         }
 
         return [

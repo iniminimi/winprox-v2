@@ -773,7 +773,7 @@
                 "attention_hint": "Bloques incompletos o un registro abierto"
             },
             "incomplete_blocks": "{1} :count bloque incompleto|[2,*] :count bloques incompletos",
-            "registration_incomplete": "Registro de tiempo incompleto"
+            "open_registration": "{1} Fichaje abierto desde :datetime — entrada fichada sin salida|[2,*] :count fichajes abiertos, el más antiguo desde :datetime — entradas fichadas sin salida"
         },
         "month_norm": {
             "errors": {

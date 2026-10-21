@@ -2,6 +2,8 @@
 
 namespace App\Data\Time;
 
+use Carbon\Carbon;
+
 final class WorkerMonthFacts
 {
     /**
@@ -13,5 +15,7 @@ final class WorkerMonthFacts
         public bool $registrationIncomplete,
         public int $incompleteBlocks,
         public array $absences,
+        public int $openRegistrations = 0,
+        public ?Carbon $oldestOpenClockInAt = null,
     ) {}
 }

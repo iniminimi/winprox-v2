@@ -773,7 +773,7 @@
                 "attention_hint": "Onvolledige blokken of een open registratie"
             },
             "incomplete_blocks": "{1} :count blok onvolledig|[2,*] :count blokken onvolledig",
-            "registration_incomplete": "Registratie onvolledig"
+            "open_registration": "{1} Open klokregistratie sinds :datetime — ingeclockt zonder uit te klokken|[2,*] :count open klokregistraties, oudste sinds :datetime — ingeclockt zonder uit te klokken"
         },
         "month_norm": {
             "errors": {

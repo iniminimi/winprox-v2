@@ -773,7 +773,7 @@
                 "attention_hint": "Unvollständige Blöcke oder eine offene Zeiterfassung"
             },
             "incomplete_blocks": "{1} :count Block unvollständig|[2,*] :count Blöcke unvollständig",
-            "registration_incomplete": "Zeiterfassung unvollständig"
+            "open_registration": "{1} Offene Stempelung seit :datetime — eingestempelt, nicht ausgestempelt|[2,*] :count offene Stempelungen, älteste seit :datetime — eingestempelt, nicht ausgestempelt"
         },
         "month_norm": {
             "errors": {
