@@ -26,6 +26,7 @@ final class MarketingSeo
             'prikklok',
             'pricing',
             'contact.index',
+            'demo',
             'faq.public',
             'about',
             'features.facility',

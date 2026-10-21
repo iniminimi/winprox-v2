@@ -1,0 +1,55 @@
+{
+    "meta_title": "Persönliche Demo vereinbaren — WinProx",
+    "social": {
+        "og_title": "Persönliche Demo vereinbaren — WinProx",
+        "og_description": "Wir erklären WinProx bei Ihnen vor Ort oder gehen es gemeinsam per Videoanruf durch. Unverbindlich und auf Ihr Unternehmen zugeschnitten."
+    },
+    "eyebrow": "Persönliche Betreuung",
+    "title": "Wir helfen Ihnen persönlich weiter",
+    "lead": "Möchten Sie wissen, ob WinProx zu Ihrem Unternehmen passt? Wir erklären Ihnen gerne, wie es funktioniert.",
+    "intro": "Wir besprechen Ihre bisherige Arbeitsweise, zeigen die relevanten Funktionen und helfen Ihnen zu entscheiden, wie Sie starten können. Vor Ort bei Ihnen oder per Videoanruf.",
+    "no_ict": "Auch wenn Sie wenig Erfahrung mit Software haben, ist das kein Problem.",
+    "request_note": "Füllen Sie Ihre Daten aus und geben Sie an, wie Sie die Demonstration vorziehen. Wir melden uns bei Ihnen, um den weiteren Termin zu besprechen. Dies ist eine Anfrage, noch kein bestätigter Termin.",
+    "stored_subject": "Demo-Anfrage — :company",
+    "fields": {
+        "company": "Unternehmen",
+        "name": "Ansprechpartner",
+        "email": "E-Mail",
+        "phone": "Telefon",
+        "municipality": "Gemeinde",
+        "preference": "Präferenz",
+        "note": "Anmerkung"
+    },
+    "form": {
+        "company": "Firmenname",
+        "name": "Name der Kontaktperson",
+        "email": "E-Mail-Adresse",
+        "phone": "Telefonnummer",
+        "municipality": "Gemeinde",
+        "preference": "Wie wünschen Sie die Demonstration?",
+        "preference_onsite": "Vor Ort bei uns",
+        "preference_onsite_hint": "Wir kommen zu Ihnen an den Arbeitsplatz.",
+        "preference_video": "Per Videoanruf",
+        "preference_video_hint": "Wir gehen es gemeinsam online durch.",
+        "note": "Anmerkung oder gewünschte Formel (optional)",
+        "note_placeholder": "Z. B. Anzahl der Mitarbeiter, Checkmate, Arbeit vor Ort …",
+        "submit": "Meine Demo anfordern",
+        "submit_loading": "Wird gesendet…",
+        "privacy_html": "Wir verwenden Ihre Daten nur, um Sie zu Ihrer Anfrage zu kontaktieren. Mehr in unserer :privacy."
+    },
+    "success": {
+        "title": "Anfrage gesendet",
+        "text": "Vielen Dank für Ihr Interesse an WinProx. Wir melden uns bei Ihnen, um die Demonstration zu vereinbaren. Sie erhalten außerdem eine Bestätigung per E-Mail."
+    },
+    "errors": {
+        "company_required": "Geben Sie Ihren Firmennamen ein.",
+        "name_required": "Geben Sie den Namen der Kontaktperson ein.",
+        "email_required": "Geben Sie Ihre E-Mail-Adresse ein.",
+        "email_invalid": "Diese E-Mail-Adresse scheint nicht korrekt zu sein.",
+        "phone_required": "Geben Sie Ihre Telefonnummer ein.",
+        "phone_invalid": "Diese Telefonnummer scheint nicht korrekt zu sein.",
+        "municipality_required": "Geben Sie Ihre Gemeinde ein.",
+        "preference_required": "Wählen Sie, wie Sie die Demonstration wünschen.",
+        "rate_limited": "Es wurden bereits mehrere Anfragen gesendet. Versuchen Sie es später erneut oder schreiben Sie uns direkt."
+    }
+}

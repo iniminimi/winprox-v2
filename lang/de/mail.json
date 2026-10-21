@@ -197,5 +197,14 @@
     "presence_request": {
         "subject": "WinProx: CIAO-Aktivierung angefordert — :tenant",
         "body": "Ein Tenant fordert die CIAO-Aktivierung an.\n\nOrganisation: :tenant\nTenant-ID: :tenant_id\nKBO-Nummer: :enterprise_number\n\nÜber die Plattform bestätigen (CIAO-Schalter beim Tenant)."
+    },
+    "demo_request": {
+        "confirmation_subject": "WinProx — Ihre Anfrage für eine persönliche Demonstration",
+        "confirmation_intro": "Wir haben Ihre Anfrage für eine persönliche Demonstration von WinProx erhalten.",
+        "confirmation_next": "Wir melden uns bei Ihnen, um gemeinsam einen Termin zu vereinbaren. Diese Nachricht bestätigt den Eingang Ihrer Anfrage — der Termin ist noch nicht verbindlich.",
+        "confirmation_preference_label": "Ihre Präferenz",
+        "confirmation_note": "Haben Sie zwischenzeitlich eine Frage? Antworten Sie einfach auf diese E-Mail.",
+        "ops_subject": "WinProx: Demo-Anfrage — :company",
+        "ops_body": "Neue Demo-Anfrage über die Website.\n\nUnternehmen: :company\nAnsprechpartner: :name\nE-Mail: :email\nTelefon: :phone\nGemeinde: :municipality\nPräferenz: :preference\nAnmerkung: :note"
     }
 }

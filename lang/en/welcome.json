@@ -35,18 +35,38 @@
             "title": "Check in and out @ work",
             "text": "WinProx Checkmate: the limited plan for clocking in and out on site. Cleaning now. CIAO included from the start.",
             "price": "€5 per worker per month"
-        }
+        },
+        "cta_demo": "Book a personal demo",
+        "cta_self": "or create an account right away."
     },
     "employees": {
         "title": "More convenience for your staff. Correct hours for your social secretariat.",
         "lead": "With WinProx your staff have their work data and practical work features at hand, right on their phone. At home and on the work floor.",
         "items": [
-            { "label": "Clocking in and out", "text": "on their phone, no app or badge needed." },
-            { "label": "Check their roster", "text": "know when they have to work." },
-            { "label": "View their worked hours", "text": "insight into their registered hours." },
-            { "label": "Request leave or time off in lieu", "text": "easily on their phone." },
-            { "label": "Report issues and carry out tasks", "text": "right on the work floor." },
-            { "label": "Run inspection rounds", "text": "with digital checks and checklists." }
+            {
+                "label": "Clocking in and out",
+                "text": "on their phone, no app or badge needed."
+            },
+            {
+                "label": "Check their roster",
+                "text": "know when they have to work."
+            },
+            {
+                "label": "View their worked hours",
+                "text": "insight into their registered hours."
+            },
+            {
+                "label": "Request leave or time off in lieu",
+                "text": "easily on their phone."
+            },
+            {
+                "label": "Report issues and carry out tasks",
+                "text": "right on the work floor."
+            },
+            {
+                "label": "Run inspection rounds",
+                "text": "with digital checks and checklists."
+            }
         ],
         "note": "The available features depend on your WinProx plan.",
         "image_alt": "Worker checking roster and hours on a phone in WinProx."
@@ -55,15 +75,43 @@
         "title": "More overview for you. Less administration for your company.",
         "lead": "With the WinProx back office you manage time tracking, rosters and daily work follow-up from one central environment.",
         "items": [
-            { "label": "Follow up time tracking", "text": "compare registered hours with the rosters." },
-            { "label": "Manage rosters", "text": "plan your staff's working hours." },
-            { "label": "Follow up issues and tasks", "text": "from a report to its resolution." },
-            { "label": "Manage inspection rounds", "text": "organise checks with stops and checklists." },
-            { "label": "Centralise work and information", "text": "documents, briefings and calendar in one place." }
+            {
+                "label": "Follow up time tracking",
+                "text": "compare registered hours with the rosters."
+            },
+            {
+                "label": "Manage rosters",
+                "text": "plan your staff's working hours."
+            },
+            {
+                "label": "Follow up issues and tasks",
+                "text": "from a report to its resolution."
+            },
+            {
+                "label": "Manage inspection rounds",
+                "text": "organise checks with stops and checklists."
+            },
+            {
+                "label": "Centralise work and information",
+                "text": "documents, briefings and calendar in one place."
+            }
         ],
         "closing": "That is how WinProx brings time tracking and daily work follow-up together in one platform.",
         "note": "The available features depend on your WinProx plan.",
         "image_alt": "The WinProx back office showing hours and planning."
+    },
+    "guidance": {
+        "eyebrow": "Personal guidance",
+        "title": "Prefer to see how WinProx works first?",
+        "lead": "We visit you to explain WinProx, or walk through it together in a video call. We start from your company and show how your employees clock in, check their roster and how you manage the recorded hours.",
+        "items": [
+            "We start from your current way of working.",
+            "We show the time clock and the features that fit your plan.",
+            "We discuss how your employees and administration will work with it.",
+            "You get a clear picture of the possibilities and the price."
+        ],
+        "note": "No obligations — on-site at your location or via video call. You do not need to be an IT specialist.",
+        "cta": "Book a personal demo"
     },
     "video": {
         "title": "WinProx in action",
@@ -86,7 +134,8 @@
         "price_note": "Clock screen for rent from €:price per month per screen.",
         "cta_time": "Discover WinProx Time",
         "cta_clock": "See the time clock",
-        "image_alt": "The WinProx time clock: a compact white screen with QR code."
+        "image_alt": "The WinProx time clock: a compact white screen with QR code.",
+        "cta_demo": "Book a demo"
     },
     "footer": {
         "contact": "Contact",

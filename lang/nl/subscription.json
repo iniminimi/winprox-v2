@@ -369,5 +369,7 @@
             "seat": "Licentie — een collega met login (beheerder of medewerker) of een uitvoerder (Clock Point, zonder login). Collega met gekoppeld prikklok-profiel telt als één licentie.",
             "billing": "Na de proef: €5 per actieve seat per maand. Je stelt het aantal seats zelf in op deze pagina."
         }
-    }
+    },
+    "public_demo_note": "Twijfelt u welke formule past? Wij leggen het graag persoonlijk uit.",
+    "public_demo_cta": "Plan een demonstratie"
 }

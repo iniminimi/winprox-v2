@@ -369,5 +369,7 @@
             "seat": "Lizenz — ein Kollege mit Login (Admin oder Mitarbeiter) oder ein Ausführer (Clock Point, ohne Login). Ein Kollege mit verknüpftem Stempelprofil zählt als eine Lizenz.",
             "billing": "Nach der Probe: 5 € pro aktivem Seat pro Monat. Die Seat-Anzahl stellen Sie auf dieser Seite ein."
         }
-    }
+    },
+    "public_demo_note": "Unsicher, welche Formel passt? Wir erklären es Ihnen gerne persönlich.",
+    "public_demo_cta": "Demo vereinbaren"
 }

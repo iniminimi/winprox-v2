@@ -35,18 +35,38 @@
             "title": "Check in and out @ work",
             "text": "WinProx Checkmate : la formule limitée pour pointer sur site. Nettoyage dès maintenant. CIAO inclus dès le départ.",
             "price": "5 € par exécutant et par mois"
-        }
+        },
+        "cta_demo": "Planifier une démonstration personnalisée",
+        "cta_self": "ou créez un compte tout de suite."
     },
     "employees": {
         "title": "Plus de confort pour vos employés. Des heures correctes pour votre secrétariat social.",
         "lead": "Avec WinProx, vos employés ont leurs données de travail et leurs fonctionnalités pratiques à portée de main, directement sur leur téléphone. À la maison comme sur le terrain.",
         "items": [
-            { "label": "Pointer en entrée et en sortie", "text": "via leur téléphone, sans appli ni badge." },
-            { "label": "Consulter leur horaire", "text": "savoir quand ils doivent travailler." },
-            { "label": "Voir leurs heures travaillées", "text": "un aperçu de leurs heures enregistrées." },
-            { "label": "Demander un congé ou une récupération", "text": "facilement via leur téléphone." },
-            { "label": "Faire des signalements et exécuter des tâches", "text": "directement sur le terrain." },
-            { "label": "Parcourir des tournées d'inspection", "text": "avec des contrôles et checklists digitales." }
+            {
+                "label": "Pointer en entrée et en sortie",
+                "text": "via leur téléphone, sans appli ni badge."
+            },
+            {
+                "label": "Consulter leur horaire",
+                "text": "savoir quand ils doivent travailler."
+            },
+            {
+                "label": "Voir leurs heures travaillées",
+                "text": "un aperçu de leurs heures enregistrées."
+            },
+            {
+                "label": "Demander un congé ou une récupération",
+                "text": "facilement via leur téléphone."
+            },
+            {
+                "label": "Faire des signalements et exécuter des tâches",
+                "text": "directement sur le terrain."
+            },
+            {
+                "label": "Parcourir des tournées d'inspection",
+                "text": "avec des contrôles et checklists digitales."
+            }
         ],
         "note": "Les fonctionnalités disponibles dépendent de votre formule WinProx.",
         "image_alt": "Employé consultant son horaire et ses heures sur téléphone dans WinProx."
@@ -55,15 +75,43 @@
         "title": "Plus de vue d'ensemble pour vous. Moins d'administration pour votre entreprise.",
         "lead": "Avec le back-office WinProx, vous gérez le suivi du temps, les horaires et le suivi quotidien du travail depuis un environnement central.",
         "items": [
-            { "label": "Suivre l'enregistrement des heures", "text": "comparez les heures enregistrées avec les horaires." },
-            { "label": "Gérer les horaires", "text": "planifiez les heures de travail de vos employés." },
-            { "label": "Suivre signalements et tâches", "text": "d'un signalement à son traitement." },
-            { "label": "Gérer les tournées d'inspection", "text": "organisez des contrôles avec arrêts et checklists." },
-            { "label": "Centraliser travail et informations", "text": "documents, briefings et calendrier au même endroit." }
+            {
+                "label": "Suivre l'enregistrement des heures",
+                "text": "comparez les heures enregistrées avec les horaires."
+            },
+            {
+                "label": "Gérer les horaires",
+                "text": "planifiez les heures de travail de vos employés."
+            },
+            {
+                "label": "Suivre signalements et tâches",
+                "text": "d'un signalement à son traitement."
+            },
+            {
+                "label": "Gérer les tournées d'inspection",
+                "text": "organisez des contrôles avec arrêts et checklists."
+            },
+            {
+                "label": "Centraliser travail et informations",
+                "text": "documents, briefings et calendrier au même endroit."
+            }
         ],
         "closing": "WinProx réunit ainsi suivi du temps et suivi quotidien du travail dans une seule plateforme.",
         "note": "Les fonctionnalités disponibles dépendent de votre formule WinProx.",
         "image_alt": "Le back-office WinProx avec l'aperçu des heures et du planning."
+    },
+    "guidance": {
+        "eyebrow": "Accompagnement personnalisé",
+        "title": "Vous préférez d'abord voir comment WinProx fonctionne ?",
+        "lead": "Nous venons vous expliquer WinProx sur place ou le parcourons ensemble en visioconférence. Nous partons de votre entreprise et vous montrons comment vos employés pointent, consultent leur horaire et comment vous gérez les heures enregistrées.",
+        "items": [
+            "Nous partons de votre façon de travailler actuelle.",
+            "Nous montrons la badgeuse et les fonctions adaptées à votre formule.",
+            "Nous voyons ensemble comment vos employés et votre administration l'utiliseront.",
+            "Vous obtenez une image claire des possibilités et du prix."
+        ],
+        "note": "Sans engagement — sur place chez vous ou en visioconférence. Inutile d'être un spécialiste informatique.",
+        "cta": "Planifier une démonstration personnalisée"
     },
     "video": {
         "title": "WinProx en action",
@@ -86,7 +134,8 @@
         "price_note": "Écran d’horloge à louer dès €:price par mois et par écran.",
         "cta_time": "Découvrir WinProx Time",
         "cta_clock": "Voir la pointeuse",
-        "image_alt": "La pointeuse WinProx : un écran blanc compact avec code QR."
+        "image_alt": "La pointeuse WinProx : un écran blanc compact avec code QR.",
+        "cta_demo": "Planifier une démonstration"
     },
     "footer": {
         "contact": "Contact",

@@ -12,7 +12,8 @@
             "title": "Pointeuse incluse dans WinProx Time",
             "body": "Laissez vos employés pointer simplement avec leur propre smartphone — via un code QR ou l’écran d’horloge WinProx sur site.",
             "cta": "En savoir plus sur la pointeuse"
-        }
+        },
+        "cta_demo": "Demander une démonstration"
     },
     "hospitality": {
         "nav_label": "Horeca",

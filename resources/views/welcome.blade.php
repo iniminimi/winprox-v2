@@ -63,10 +63,13 @@
                             @endforeach
                         </ol>
                         <div class="wp-welcome-cta-row">
-                            <a href="{{ \App\Support\Marketing\MarketingDomain::authUrl('/register') }}" class="btn btn--primary btn--lg">{{ __('welcome.hero.cta_start') }}</a>
+                            <a href="{{ route('demo') }}" class="btn btn--primary btn--lg">{{ __('welcome.hero.cta_demo') }}</a>
                             <a href="#video" class="btn btn--ghost btn--lg">{{ __('welcome.hero.cta_how') }}</a>
                         </div>
-                        <p class="wp-text-body">{{ __('welcome.hero.trial') }}</p>
+                        <p class="wp-text-body">
+                            {{ __('welcome.hero.trial') }}
+                            <a href="{{ \App\Support\Marketing\MarketingDomain::authUrl('/register') }}">{{ __('welcome.hero.cta_self') }}</a>
+                        </p>
                         @unless (\App\Support\Marketing\MarketingDomain::routeHidden('checkmate'))
                         <a href="{{ route('checkmate') }}" class="wp-welcome-feature-board" aria-label="{{ __('welcome.hero.feature_board.title') }}">
                             <span class="wp-pill wp-pill--new">{{ __('welcome.hero.feature_board.badge') }}</span>
@@ -105,6 +108,7 @@
                     <div class="wp-welcome-cta-row">
                         <a href="{{ route('features.time') }}" class="btn btn--primary">{{ __('welcome.clock.cta_time') }}</a>
                         <a href="{{ route('prikklok') }}" class="btn btn--ghost">{{ __('welcome.clock.cta_clock') }}</a>
+                        <a href="{{ route('demo') }}" class="btn btn--ghost">{{ __('welcome.clock.cta_demo') }}</a>
                     </div>
                 </article>
                 <figure class="wp-welcome-screenshot wp-welcome-screenshot--desktop wp-landing-visual wp-landing-visual--compact">
@@ -169,6 +173,27 @@
                         decoding="async"
                     >
                 </figure>
+            </div>
+        </div>
+    </section>
+
+    <section class="wp-welcome-section wp-welcome-section--alt" aria-label="{{ __('welcome.guidance.title') }}">
+        <div class="wp-welcome-main">
+            <div class="wp-welcome-split">
+                <article class="wp-card wp-card-pad wp-stack">
+                    <span class="wp-welcome-eyebrow">{{ __('welcome.guidance.eyebrow') }}</span>
+                    <h2 class="wp-welcome-h3">{{ __('welcome.guidance.title') }}</h2>
+                    <p class="wp-text-body">{{ __('welcome.guidance.lead') }}</p>
+                    <ul class="wp-welcome-checklist">
+                        @foreach (__('welcome.guidance.items') as $item)
+                            <li><span>{{ $item }}</span></li>
+                        @endforeach
+                    </ul>
+                    <p class="wp-muted">{{ __('welcome.guidance.note') }}</p>
+                    <div class="wp-welcome-cta-row">
+                        <a href="{{ route('demo') }}" class="btn btn--primary">{{ __('welcome.guidance.cta') }}</a>
+                    </div>
+                </article>
             </div>
         </div>
     </section>

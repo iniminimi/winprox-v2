@@ -12,7 +12,8 @@
             "title": "Time clock included in WinProx Time",
             "body": "Let employees clock in and out with their own smartphone — via a QR code or the WinProx clock screen on site.",
             "cta": "More about the time clock"
-        }
+        },
+        "cta_demo": "Request a personal demo"
     },
     "hospitality": {
         "nav_label": "Hospitality",

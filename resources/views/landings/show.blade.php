@@ -40,6 +40,7 @@
                     @endif
                     <div class="wp-welcome-cta-row">
                         <a href="{{ \App\Support\Marketing\MarketingDomain::authUrl('/register') }}" class="btn btn--primary btn--lg">{{ \Illuminate\Support\Facades\Lang::has($key.'.cta_register') ? __("{$key}.cta_register") : __('landings.shared.cta_register') }}</a>
+                        <a href="{{ route('demo') }}" class="btn btn--ghost btn--lg">{{ __('landings.shared.cta_demo') }}</a>
                         <a href="{{ \App\Support\Marketing\MarketingDomain::authUrl('/login') }}" class="btn btn--ghost btn--lg">{{ __('landings.shared.cta_login') }}</a>
                         @if ($videoSrc !== null)
                             <a href="#landing-video" class="btn btn--ghost btn--lg">{{ __('landings.shared.cta_video') }}</a>

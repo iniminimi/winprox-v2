@@ -369,5 +369,7 @@
             "seat": "Licence — a colleague with login (admin or staff) or a field worker (Clock Point, no login). A colleague with a linked time-clock profile counts as one licence.",
             "billing": "After the trial: €5 per active seat per month. You set the seat quantity yourself on this page."
         }
-    }
+    },
+    "public_demo_note": "Not sure which plan fits? We are happy to explain it personally.",
+    "public_demo_cta": "Book a demo"
 }

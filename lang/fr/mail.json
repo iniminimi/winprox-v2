@@ -197,5 +197,14 @@
     "presence_request": {
         "subject": "WinProx : activation CIAO demandée — :tenant",
         "body": "Un tenant demande l'activation CIAO.\n\nOrganisation : :tenant\nID tenant : :tenant_id\nNuméro BCE : :enterprise_number\n\nConfirmez via la plateforme (toggle CIAO du tenant)."
+    },
+    "demo_request": {
+        "confirmation_subject": "WinProx — votre demande de démonstration personnalisée",
+        "confirmation_intro": "Nous avons bien reçu votre demande de démonstration personnalisée de WinProx.",
+        "confirmation_next": "Nous vous contacterons pour convenir ensemble d'un moment. Ce message confirme la réception de votre demande — le rendez-vous n'est pas encore définitif.",
+        "confirmation_preference_label": "Votre préférence",
+        "confirmation_note": "Une question entre-temps ? Répondez simplement à cet e-mail.",
+        "ops_subject": "WinProx : demande de démo — :company",
+        "ops_body": "Nouvelle demande de démonstration via le site web.\n\nEntreprise : :company\nContact : :name\nE-mail : :email\nTéléphone : :phone\nCommune : :municipality\nPréférence : :preference\nRemarque : :note"
     }
 }

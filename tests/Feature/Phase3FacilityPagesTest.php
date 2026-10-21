@@ -132,7 +132,7 @@ it('toont de uitgebreide hospitality-landing zonder demo of prijs', function () 
         ->assertSee(__('landings.hospitality.title', [], 'fr'))
         ->assertSee(__('landings.hospitality.problem.title', [], 'fr'))
         ->assertSee('id="landing-video"', false)
-        ->assertDontSee('démo', false);
+        ->assertSee(__('landings.shared.cta_demo', [], 'fr'));
 });
 
 it('toont de uitgebreide healthcare- en government-landing', function () {

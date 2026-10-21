@@ -14,6 +14,7 @@ it('gebruikt unieke locale-URL voor marketingpagina\'s', function () {
     expect(route('realestate', ['locale' => 'nl'], absolute: false))->toBe('/nl/realestate');
     expect(route('work-on-location', ['locale' => 'nl'], absolute: false))->toBe('/nl/work-on-location');
     expect(route('pricing', ['locale' => 'en'], absolute: false))->toBe('/en/pricing');
+    expect(route('demo', ['locale' => 'en'], absolute: false))->toBe('/en/demo');
     expect(route('contact.index', ['locale' => 'es'], absolute: false))->toBe('/es/contact');
     expect(route('legal.privacy', ['locale' => 'it'], absolute: false))->toBe('/it/legal/privacy');
 });
@@ -110,9 +111,9 @@ it('redirect v1-legacy-url\'s naar de locale-opvolger', function () {
     $this->get('/vastgoed?lang=fr')->assertRedirect(route('realestate', ['locale' => 'fr']));
     $this->get('/facility?lang=fr')->assertRedirect(route('features.facility', ['locale' => 'fr']));
 
-    // Verwijderde demo-flow → welcome
-    $this->get('/demo?lang=nl')->assertRedirect(route('welcome', ['locale' => 'nl']));
-    $this->get('/demo/task?lang=de')->assertRedirect(route('welcome', ['locale' => 'de']));
+    // Oude /demo-URL's → de nieuwe locale demo-pagina
+    $this->get('/demo?lang=nl')->assertRedirect(route('demo', ['locale' => 'nl']));
+    $this->get('/demo/task?lang=de')->assertRedirect(route('demo', ['locale' => 'de']));
 
     // Oude report-portal: zelfde qr_token → oude geprinte QR's blijven werken
     $this->get('/report/abc123')

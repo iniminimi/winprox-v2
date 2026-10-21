@@ -1,0 +1,55 @@
+{
+    "meta_title": "Demander une démonstration personnalisée — WinProx",
+    "social": {
+        "og_title": "Demander une démonstration personnalisée — WinProx",
+        "og_description": "Nous venons vous expliquer WinProx sur place ou le parcourons ensemble en visioconférence. Sans engagement et adapté à votre entreprise."
+    },
+    "eyebrow": "Accompagnement personnalisé",
+    "title": "Nous vous accompagnons personnellement",
+    "lead": "Vous voulez savoir si WinProx convient à votre entreprise ? Nous vous expliquons volontiers son fonctionnement.",
+    "intro": "Nous partons de votre façon de travailler actuelle, vous montrons les fonctionnalités pertinentes et vous aidons à décider comment démarrer. Sur place chez vous ou en visioconférence.",
+    "no_ict": "Même si vous avez peu d'expérience avec les logiciels, ce n'est pas un problème.",
+    "request_note": "Remplissez vos coordonnées et indiquez comment vous préférez suivre la démonstration. Nous vous contactons pour convenir de la suite. Il s'agit d'une demande, pas encore d'un rendez-vous confirmé.",
+    "stored_subject": "Demande de démo — :company",
+    "fields": {
+        "company": "Entreprise",
+        "name": "Personne de contact",
+        "email": "E-mail",
+        "phone": "Téléphone",
+        "municipality": "Commune",
+        "preference": "Préférence",
+        "note": "Remarque"
+    },
+    "form": {
+        "company": "Nom de l'entreprise",
+        "name": "Nom de la personne de contact",
+        "email": "Adresse e-mail",
+        "phone": "Numéro de téléphone",
+        "municipality": "Commune",
+        "preference": "Comment souhaitez-vous la démonstration ?",
+        "preference_onsite": "Sur place chez nous",
+        "preference_onsite_hint": "Nous passons sur votre lieu de travail.",
+        "preference_video": "En visioconférence",
+        "preference_video_hint": "Nous le parcourons ensemble en ligne.",
+        "note": "Remarque ou formule souhaitée (optionnel)",
+        "note_placeholder": "Par ex. nombre d'employés, Checkmate, travail sur site …",
+        "submit": "Demander ma démonstration",
+        "submit_loading": "Envoi…",
+        "privacy_html": "Nous utilisons vos données uniquement pour vous contacter au sujet de votre demande. Plus d'infos dans notre :privacy."
+    },
+    "success": {
+        "title": "Demande envoyée",
+        "text": "Merci de votre intérêt pour WinProx. Nous vous contacterons pour convenir de la démonstration. Vous recevrez également une confirmation par e-mail."
+    },
+    "errors": {
+        "company_required": "Indiquez le nom de votre entreprise.",
+        "name_required": "Indiquez le nom de la personne de contact.",
+        "email_required": "Indiquez votre adresse e-mail.",
+        "email_invalid": "Cette adresse e-mail semble incorrecte.",
+        "phone_required": "Indiquez votre numéro de téléphone.",
+        "phone_invalid": "Ce numéro de téléphone semble incorrect.",
+        "municipality_required": "Indiquez votre commune.",
+        "preference_required": "Choisissez comment vous souhaitez la démonstration.",
+        "rate_limited": "Plusieurs demandes ont déjà été envoyées. Réessayez plus tard ou écrivez-nous directement."
+    }
+}

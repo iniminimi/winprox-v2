@@ -291,6 +291,9 @@
 
         <div class="wp-billing-plan-details wp-stack-tight">
             <p class="wp-muted">{{ __($checkmateMode ? 'subscription.checkmate_page.plans_intro' : 'subscription.plans_intro') }}</p>
+            @if ($publicMode)
+                <p class="wp-muted">{{ __('subscription.public_demo_note') }} <a href="{{ route('demo') }}">{{ __('subscription.public_demo_cta') }}</a></p>
+            @endif
             <p class="wp-muted">{{ __('subscription.payment_notice') }}</p>
             <p class="wp-muted">{{ __('subscription.prices_excl_vat') }}</p>
             @unless ($checkmateMode)

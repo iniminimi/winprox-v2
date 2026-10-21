@@ -369,5 +369,7 @@
             "seat": "Licence — un collègue avec login (admin ou collaborateur) ou un exécutant (Clock Point, sans login). Un collègue avec profil pointeuse lié compte pour une licence.",
             "billing": "Après l'essai : 5 € par siège actif par mois. Vous réglez le nombre de sièges sur cette page."
         }
-    }
+    },
+    "public_demo_note": "Vous hésitez sur la formule ? Nous vous l'expliquons volontiers en personne.",
+    "public_demo_cta": "Planifier une démonstration"
 }

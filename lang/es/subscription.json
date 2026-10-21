@@ -369,5 +369,7 @@
             "seat": "Licencia — un compañero con login (admin o empleado) o un operario (Clock Point, sin login). Un compañero con perfil de fichaje vinculado cuenta como una licencia.",
             "billing": "Tras la prueba: 5 € por plaza activa al mes. Configuras el número de plazas en esta página."
         }
-    }
+    },
+    "public_demo_note": "¿No sabe qué fórmula le conviene? Se lo explicamos con gusto en persona.",
+    "public_demo_cta": "Solicitar una demostración"
 }

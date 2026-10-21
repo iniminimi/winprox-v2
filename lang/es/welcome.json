@@ -35,18 +35,38 @@
             "title": "Check in and out @ work",
             "text": "WinProx Checkmate: la fórmula limitada para fichar in situ. Limpieza ahora. CIAO incluido desde el inicio.",
             "price": "5 € por trabajador y mes"
-        }
+        },
+        "cta_demo": "Solicitar una demostración personal",
+        "cta_self": "o cree una cuenta de inmediato."
     },
     "employees": {
         "title": "Más comodidad para su personal. Horas correctas para su secretaría social.",
         "lead": "Con WinProx, su personal tiene sus datos de trabajo y funciones prácticas a mano, directamente en su móvil. En casa y en el trabajo.",
         "items": [
-            { "label": "Fichar la entrada y la salida", "text": "desde su móvil, sin app ni credencial." },
-            { "label": "Consultar su horario", "text": "saber cuándo deben trabajar." },
-            { "label": "Ver sus horas trabajadas", "text": "visión de sus horas registradas." },
-            { "label": "Solicitar vacaciones u horas de recupero", "text": "fácilmente desde su móvil." },
-            { "label": "Enviar avisos y ejecutar tareas", "text": "directamente en el trabajo." },
-            { "label": "Realizar rondas de inspección", "text": "con controles y listas digitales." }
+            {
+                "label": "Fichar la entrada y la salida",
+                "text": "desde su móvil, sin app ni credencial."
+            },
+            {
+                "label": "Consultar su horario",
+                "text": "saber cuándo deben trabajar."
+            },
+            {
+                "label": "Ver sus horas trabajadas",
+                "text": "visión de sus horas registradas."
+            },
+            {
+                "label": "Solicitar vacaciones u horas de recupero",
+                "text": "fácilmente desde su móvil."
+            },
+            {
+                "label": "Enviar avisos y ejecutar tareas",
+                "text": "directamente en el trabajo."
+            },
+            {
+                "label": "Realizar rondas de inspección",
+                "text": "con controles y listas digitales."
+            }
         ],
         "note": "Las funciones disponibles dependen de su fórmula WinProx.",
         "image_alt": "Trabajador consultando su horario y sus horas en el móvil en WinProx."
@@ -55,15 +75,43 @@
         "title": "Más visión general para usted. Menos administración para su empresa.",
         "lead": "Con el back office de WinProx gestiona el registro horario, los horarios y el seguimiento diario del trabajo desde un entorno central.",
         "items": [
-            { "label": "Seguir el registro horario", "text": "compare las horas registradas con los horarios." },
-            { "label": "Gestionar los horarios", "text": "planifique las horas de trabajo de su personal." },
-            { "label": "Seguir avisos y tareas", "text": "de un aviso a su resolución." },
-            { "label": "Gestionar las rondas de inspección", "text": "organice controles con paradas y listas." },
-            { "label": "Centralizar trabajo e información", "text": "documentos, briefings y calendario en un solo lugar." }
+            {
+                "label": "Seguir el registro horario",
+                "text": "compare las horas registradas con los horarios."
+            },
+            {
+                "label": "Gestionar los horarios",
+                "text": "planifique las horas de trabajo de su personal."
+            },
+            {
+                "label": "Seguir avisos y tareas",
+                "text": "de un aviso a su resolución."
+            },
+            {
+                "label": "Gestionar las rondas de inspección",
+                "text": "organice controles con paradas y listas."
+            },
+            {
+                "label": "Centralizar trabajo e información",
+                "text": "documentos, briefings y calendario en un solo lugar."
+            }
         ],
         "closing": "Así WinProx reúne el registro horario y el seguimiento diario del trabajo en una sola plataforma.",
         "note": "Las funciones disponibles dependen de su fórmula WinProx.",
         "image_alt": "El back office de WinProx con el resumen de horas y planificación."
+    },
+    "guidance": {
+        "eyebrow": "Acompañamiento personal",
+        "title": "¿Prefiere ver primero cómo funciona WinProx?",
+        "lead": "Visitamos su empresa para explicarle WinProx o lo revisamos juntos por videollamada. Partimos de su empresa y le mostramos cómo sus empleados fichan, consultan su horario y cómo usted gestiona las horas registradas.",
+        "items": [
+            "Partimos de su forma de trabajar actual.",
+            "Le mostramos el reloj de fichar y las funciones que encajan con su fórmula.",
+            "Vemos cómo trabajarán con ello sus empleados y su administración.",
+            "Obtiene una imagen clara de las posibilidades y el precio."
+        ],
+        "note": "Sin compromiso — en sus instalaciones o por videollamada. No necesita ser especialista en informática.",
+        "cta": "Solicitar una demostración personal"
     },
     "video": {
         "title": "WinProx en acción",
@@ -86,7 +134,8 @@
         "price_note": "Pantalla de reloj en alquiler desde €:price al mes por pantalla.",
         "cta_time": "Descubrir WinProx Time",
         "cta_clock": "Ver el reloj de fichar",
-        "image_alt": "El reloj de fichar WinProx: una pantalla blanca compacta con código QR."
+        "image_alt": "El reloj de fichar WinProx: una pantalla blanca compacta con código QR.",
+        "cta_demo": "Solicitar una demostración"
     },
     "footer": {
         "contact": "Contacto",

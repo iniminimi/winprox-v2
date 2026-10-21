@@ -35,18 +35,38 @@
             "title": "Check in and out @ work",
             "text": "WinProx Checkmate: la formula limitata per timbrare sul posto. Pulizie da subito. CIAO incluso fin dall'inizio.",
             "price": "5 € per operatore al mese"
-        }
+        },
+        "cta_demo": "Richiedi una demo personale",
+        "cta_self": "oppure crea subito un account."
     },
     "employees": {
         "title": "Più comodità per i vostri dipendenti. Ore corrette per il vostro segretariato sociale.",
         "lead": "Con WinProx i vostri dipendenti hanno i loro dati di lavoro e le funzionalità pratiche a portata di mano, direttamente sul telefono. A casa come sul posto di lavoro.",
         "items": [
-            { "label": "Timbrare entrata e uscita", "text": "dal loro telefono, senza app né badge." },
-            { "label": "Consultare il loro turno", "text": "sapere quando devono lavorare." },
-            { "label": "Vedere le loro ore lavorate", "text": "visione delle ore registrate." },
-            { "label": "Richiedere ferie o recuperi", "text": "facilmente dal telefono." },
-            { "label": "Inviare segnalazioni ed eseguire attività", "text": "direttamente sul posto di lavoro." },
-            { "label": "Svolgere giri di ispezione", "text": "con controlli e checklist digitali." }
+            {
+                "label": "Timbrare entrata e uscita",
+                "text": "dal loro telefono, senza app né badge."
+            },
+            {
+                "label": "Consultare il loro turno",
+                "text": "sapere quando devono lavorare."
+            },
+            {
+                "label": "Vedere le loro ore lavorate",
+                "text": "visione delle ore registrate."
+            },
+            {
+                "label": "Richiedere ferie o recuperi",
+                "text": "facilmente dal telefono."
+            },
+            {
+                "label": "Inviare segnalazioni ed eseguire attività",
+                "text": "direttamente sul posto di lavoro."
+            },
+            {
+                "label": "Svolgere giri di ispezione",
+                "text": "con controlli e checklist digitali."
+            }
         ],
         "note": "Le funzionalità disponibili dipendono dalla vostra formula WinProx.",
         "image_alt": "Dipendente che consulta turno e ore sul telefono in WinProx."
@@ -55,15 +75,43 @@
         "title": "Più panoramica per voi. Meno amministrazione per la vostra azienda.",
         "lead": "Con il back office di WinProx gestite rilevazione orari, turni e monitoraggio quotidiano del lavoro da un unico ambiente centrale.",
         "items": [
-            { "label": "Seguire la rilevazione orari", "text": "confrontate le ore registrate con i turni." },
-            { "label": "Gestire i turni", "text": "pianificate gli orari dei vostri dipendenti." },
-            { "label": "Seguire segnalazioni e attività", "text": "da una segnalazione alla sua chiusura." },
-            { "label": "Gestire i giri di ispezione", "text": "organizzate controlli con fermate e checklist." },
-            { "label": "Centralizzare lavoro e informazioni", "text": "documenti, briefing e calendario in un unico posto." }
+            {
+                "label": "Seguire la rilevazione orari",
+                "text": "confrontate le ore registrate con i turni."
+            },
+            {
+                "label": "Gestire i turni",
+                "text": "pianificate gli orari dei vostri dipendenti."
+            },
+            {
+                "label": "Seguire segnalazioni e attività",
+                "text": "da una segnalazione alla sua chiusura."
+            },
+            {
+                "label": "Gestire i giri di ispezione",
+                "text": "organizzate controlli con fermate e checklist."
+            },
+            {
+                "label": "Centralizzare lavoro e informazioni",
+                "text": "documenti, briefing e calendario in un unico posto."
+            }
         ],
         "closing": "Così WinProx riunisce rilevazione orari e monitoraggio quotidiano del lavoro in un'unica piattaforma.",
         "note": "Le funzionalità disponibili dipendono dalla vostra formula WinProx.",
         "image_alt": "Il back office di WinProx con la panoramica di ore e pianificazione."
+    },
+    "guidance": {
+        "eyebrow": "Accompagnamento personale",
+        "title": "Preferisci vedere prima come funziona WinProx?",
+        "lead": "Veniamo a spiegarti WinProx presso la tua sede oppure lo esaminiamo insieme in videochiamata. Partiamo dalla tua azienda e ti mostriamo come i tuoi dipendenti timbrano, consultano il turno e come gestisci le ore registrate.",
+        "items": [
+            "Partiamo dal tuo modo di lavorare attuale.",
+            "Ti mostriamo la timbratrice e le funzioni adatte alla tua formula.",
+            "Vediamo insieme come la utilizzeranno i tuoi dipendenti e la tua amministrazione.",
+            "Ottieni un'immagine chiara delle possibilità e del prezzo."
+        ],
+        "note": "Senza impegno — presso la tua sede o in videochiamata. Non è necessario essere esperti di informatica.",
+        "cta": "Richiedi una demo personale"
     },
     "video": {
         "title": "WinProx in azione",
@@ -86,7 +134,8 @@
         "price_note": "Schermo-orologio a noleggio da €:price al mese per schermo.",
         "cta_time": "Scoprire WinProx Time",
         "cta_clock": "Vedere la timbratrice",
-        "image_alt": "La timbratrice WinProx: uno schermo bianco compatto con codice QR."
+        "image_alt": "La timbratrice WinProx: uno schermo bianco compatto con codice QR.",
+        "cta_demo": "Richiedi una demo"
     },
     "footer": {
         "contact": "Contatto",

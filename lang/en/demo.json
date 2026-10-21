@@ -1,0 +1,55 @@
+{
+    "meta_title": "Book a personal demo — WinProx",
+    "social": {
+        "og_title": "Book a personal demo — WinProx",
+        "og_description": "We visit you to explain WinProx, or walk you through it together in a video call. Free of obligation and tailored to your company."
+    },
+    "eyebrow": "Personal guidance",
+    "title": "We help you get started personally",
+    "lead": "Want to know whether WinProx fits your company? We are happy to show you how it works.",
+    "intro": "We discuss your current way of working, show the relevant features and help you decide how to get started. On-site at your location or via video call.",
+    "no_ict": "Even if you have little experience with software, that is no problem.",
+    "request_note": "Fill in your details and tell us how you prefer the demonstration. We will contact you to arrange the next step. This is a request, not yet a confirmed appointment.",
+    "stored_subject": "Demo request — :company",
+    "fields": {
+        "company": "Company",
+        "name": "Contact person",
+        "email": "Email",
+        "phone": "Phone",
+        "municipality": "Town or city",
+        "preference": "Preference",
+        "note": "Notes"
+    },
+    "form": {
+        "company": "Company name",
+        "name": "Contact person name",
+        "email": "Email address",
+        "phone": "Phone number",
+        "municipality": "Town or city",
+        "preference": "How would you like the demonstration?",
+        "preference_onsite": "On-site at our location",
+        "preference_onsite_hint": "We visit your workplace.",
+        "preference_video": "Via video call",
+        "preference_video_hint": "We walk through it together online.",
+        "note": "Notes or preferred plan (optional)",
+        "note_placeholder": "E.g. number of employees, Checkmate, working on location …",
+        "submit": "Request my demo",
+        "submit_loading": "Sending…",
+        "privacy_html": "We only use your details to contact you about your request. More in our :privacy."
+    },
+    "success": {
+        "title": "Request sent",
+        "text": "Thank you for your interest in WinProx. We will contact you to schedule the demonstration. You will also receive a confirmation email."
+    },
+    "errors": {
+        "company_required": "Enter your company name.",
+        "name_required": "Enter the contact person's name.",
+        "email_required": "Enter your email address.",
+        "email_invalid": "This email address does not look correct.",
+        "phone_required": "Enter your phone number.",
+        "phone_invalid": "This phone number does not look correct.",
+        "municipality_required": "Enter your town or city.",
+        "preference_required": "Choose how you would like the demonstration.",
+        "rate_limited": "Several requests have already been sent. Please try again later or email us directly."
+    }
+}

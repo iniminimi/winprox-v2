@@ -10,6 +10,7 @@ enum PromoVisitFollowKey: string
     case Pricing = 'pricing';
     case Faq = 'faq';
     case About = 'about';
+    case Demo = 'demo';
 
     public static function fromRouteName(?string $routeName): ?self
     {
@@ -19,6 +20,7 @@ enum PromoVisitFollowKey: string
             'pricing' => self::Pricing,
             'faq.public' => self::Faq,
             'about' => self::About,
+            'demo' => self::Demo,
             'features.facility', 'features.time', 'features.esg', 'features.iot', 'features.qr' => self::Features,
             default => null,
         };

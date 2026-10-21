@@ -12,7 +12,8 @@
             "title": "Reloj de fichar incluido en WinProx Time",
             "body": "Deje que los empleados fichen con su propio smartphone — mediante un código QR o la pantalla de reloj WinProx en el lugar.",
             "cta": "Más sobre el reloj de fichar"
-        }
+        },
+        "cta_demo": "Solicitar una demostración"
     },
     "hospitality": {
         "nav_label": "Hostelería",

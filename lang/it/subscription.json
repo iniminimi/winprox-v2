@@ -369,5 +369,7 @@
             "seat": "Licenza — un collega con login (admin o collaboratore) o un operatore (Clock Point, senza login). Un collega con profilo timbratura collegato conta come una licenza.",
             "billing": "Dopo la prova: 5 € per posto attivo al mese. Imposti il numero di posti in questa pagina."
         }
-    }
+    },
+    "public_demo_note": "Non sai quale formula fa per te? Te lo spieghiamo volentieri di persona.",
+    "public_demo_cta": "Richiedi una demo"
 }

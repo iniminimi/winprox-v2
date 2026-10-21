@@ -1,0 +1,55 @@
+{
+    "meta_title": "Plan een persoonlijke demonstratie — WinProx",
+    "social": {
+        "og_title": "Plan een persoonlijke demonstratie — WinProx",
+        "og_description": "Wij komen WinProx bij u uitleggen of bekijken samen via videocall hoe het systeem werkt. Vrijblijvend en afgestemd op uw bedrijf."
+    },
+    "eyebrow": "Persoonlijke begeleiding",
+    "title": "Wij helpen u persoonlijk op weg",
+    "lead": "Wilt u weten of WinProx bij uw bedrijf past? We leggen u graag uit hoe het werkt.",
+    "intro": "We bespreken uw huidige werkwijze, tonen de relevante mogelijkheden en helpen u bepalen hoe u kunt starten. Dat kan bij u op locatie of via videocall.",
+    "no_ict": "Ook als u weinig ervaring hebt met software, hoeft dat geen probleem te zijn.",
+    "request_note": "Vul uw gegevens in en geef aan hoe u de demonstratie het liefst volgt. We nemen contact met u op om de verdere afspraak te bespreken. Dit is een aanvraag, nog geen bevestigde afspraak.",
+    "stored_subject": "Demo-aanvraag — :company",
+    "fields": {
+        "company": "Bedrijf",
+        "name": "Contactpersoon",
+        "email": "E-mail",
+        "phone": "Telefoon",
+        "municipality": "Gemeente",
+        "preference": "Voorkeur",
+        "note": "Toelichting"
+    },
+    "form": {
+        "company": "Bedrijfsnaam",
+        "name": "Naam contactpersoon",
+        "email": "E-mailadres",
+        "phone": "Telefoonnummer",
+        "municipality": "Gemeente",
+        "preference": "Hoe wenst u de demonstratie?",
+        "preference_onsite": "Bij ons op locatie",
+        "preference_onsite_hint": "Wij komen langs op uw werkvloer.",
+        "preference_video": "Via videocall",
+        "preference_video_hint": "We nemen het samen online door.",
+        "note": "Toelichting of gewenste formule (optioneel)",
+        "note_placeholder": "Bv. aantal medewerkers, Checkmate, werken op locatie …",
+        "submit": "Vraag mijn demonstratie aan",
+        "submit_loading": "Verzenden…",
+        "privacy_html": "We gebruiken uw gegevens enkel om contact op te nemen over uw aanvraag. Meer info in onze :privacy."
+    },
+    "success": {
+        "title": "Aanvraag verzonden",
+        "text": "Bedankt voor uw interesse in WinProx. We nemen contact met u op om de demonstratie verder af te spreken. U ontvangt ook een bevestiging per e-mail."
+    },
+    "errors": {
+        "company_required": "Vul uw bedrijfsnaam in.",
+        "name_required": "Vul de naam van de contactpersoon in.",
+        "email_required": "Vul uw e-mailadres in.",
+        "email_invalid": "Dit e-mailadres lijkt niet correct.",
+        "phone_required": "Vul uw telefoonnummer in.",
+        "phone_invalid": "Dit telefoonnummer lijkt niet correct.",
+        "municipality_required": "Vul uw gemeente in.",
+        "preference_required": "Kies hoe u de demonstratie wenst.",
+        "rate_limited": "Er werden al meerdere aanvragen verstuurd. Probeer het later opnieuw of mail ons rechtstreeks."
+    }
+}

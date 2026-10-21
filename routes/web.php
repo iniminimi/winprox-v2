@@ -81,6 +81,7 @@ use App\Livewire\Customers\Stats as CustomersStats;
 use App\Livewire\Pages\CheckListsIndex;
 use App\Livewire\Pages\CheckmateManualIndex;
 use App\Livewire\Pages\Contact;
+use App\Livewire\Pages\Demo;
 use App\Livewire\Pages\Faq;
 use App\Livewire\Pages\FeaturePage;
 use App\Livewire\Pages\Health;
@@ -298,7 +299,7 @@ Route::get('/real_estate', $redirectToLocalized('realestate'));
 Route::get('/vastgoed', $redirectToLocalized('realestate'));
 Route::get('/facility', $redirectToLocalized('features.facility'));
 Route::get('/comparison', $redirectToLocalized('welcome'));
-Route::get('/demo/{path?}', $redirectToLocalized('welcome'))->where('path', '.*');
+Route::get('/demo/{path?}', $redirectToLocalized('demo'))->where('path', '.*');
 Route::redirect('/report/{token}', '/melden/{token}', 301);
 Route::redirect('/facility/report/{token}', '/melden/{token}', 301);
 Route::get('/pricing', $redirectToLocalized('pricing'));
@@ -329,6 +330,7 @@ Route::prefix('{locale}')
         Route::get('/', WelcomeController::class)->name('welcome');
 
         Route::get('/contact', Contact::class)->middleware('promo.follow')->name('contact.index');
+        Route::get('/demo', Demo::class)->middleware('promo.follow')->name('demo');
         Route::get('/pricing', Pricing::class)->middleware('promo.follow')->name('pricing');
         Route::get('/faq', PublicFaq::class)->middleware('promo.follow')->name('faq.public');
         Route::get('/about', About::class)->middleware('promo.follow')->name('about');
