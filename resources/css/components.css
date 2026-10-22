@@ -7962,6 +7962,15 @@ html.wp-pwa-installed .wp-homescreen-shortcut-wrap {
     font-size: 0.8125rem;
 }
 
+.wp-scan-dialog .btn--ghost {
+    border-color: rgba(248, 250, 252, 0.4);
+    color: #f8fafc;
+}
+
+.wp-scan-dialog .btn--ghost:hover {
+    background-color: rgba(248, 250, 252, 0.12);
+}
+
 /* Kennisartikel: status-tabel (marketingpagina's) */
 .wp-article-table-scroll {
     overflow-x: auto;
