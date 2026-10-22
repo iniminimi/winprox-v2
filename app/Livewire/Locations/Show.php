@@ -919,7 +919,7 @@ class Show extends Component
     private function resetBulkPortalState(): void
     {
         $this->bulkCategoryId = null;
-        $this->bulkPublicReportsEnabled = true;
+        $this->bulkPublicReportsEnabled = $this->locationTenant()?->workMenuIssuesTasksEnabled() ?? true;
         $this->applyBulkPortalFlagsFromCategory();
     }
 

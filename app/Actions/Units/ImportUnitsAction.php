@@ -340,6 +340,13 @@ class ImportUnitsAction
             }
 
             if ($parsed['value'] === true) {
+                if ($column === 'public_reports_enabled' && ! TenantWorkMenuAccess::issuesTasksEnabled($tenant)) {
+                    $errors[] = __('locations.units_csv.errors.row', [
+                        'line' => $line,
+                        'message' => __('settings.work_menu.errors.issues_tasks_disabled'),
+                    ]);
+                }
+
                 if ($column === 'allow_reservations' && ! TenantWorkMenuAccess::reservationsEnabled($tenant)) {
                     $errors[] = __('locations.units_csv.errors.row', [
                         'line' => $line,

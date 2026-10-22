@@ -4,8 +4,11 @@ use App\Actions\Team\UpdateTenantWorkMenuAction;
 use App\Enums\TaskStatus;
 use App\Actions\Units\ImportUnitsAction;
 use App\Data\Units\ImportUnitsData;
+use App\Livewire\Locations\Index as LocationsIndex;
 use App\Livewire\Locations\Show;
 use App\Livewire\Pages\Settings;
+use App\Models\Category;
+use App\Models\InternalTeam;
 use App\Models\Issue;
 use App\Models\Location;
 use App\Models\Tenant;
@@ -398,4 +401,119 @@ it('toont werkmenu-instellingen niet aan medewerkers', function () {
     Livewire::actingAs($employee)
         ->test(Settings::class)
         ->assertDontSee('wire:submit="saveWorkMenuSettings"', false);
+});
+
+it('weigert nieuw inschakelen van bezoekersmeldingen op een unit wanneer werkmenu uit staat', function () {
+    $tenant = Tenant::factory()->create([
+        'work_menu_issues_tasks_enabled' => false,
+    ]);
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'public_reports_enabled' => false,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(Show::class, ['location' => $location])
+        ->call('openEditUnit', $unit->id)
+        ->set('unitPublicReportsEnabled', true)
+        ->call('saveUnit')
+        ->assertHasErrors(['unitPublicReportsEnabled']);
+
+    expect($unit->fresh()->public_reports_enabled)->toBeFalse();
+});
+
+it('weigert bezoekersmeldingen in bulk-aanmaak wanneer werkmenu uit staat', function () {
+    $tenant = Tenant::factory()->create([
+        'work_menu_issues_tasks_enabled' => false,
+    ]);
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(Show::class, ['location' => $location])
+        ->call('openBulkModal')
+        ->set('bulkRanges', [['start' => '1', 'count' => 2, 'padding' => '', 'prefix' => '', 'suffix' => '']])
+        ->set('bulkPublicReportsEnabled', true)
+        ->call('createBulk')
+        ->assertHasErrors(['bulkPublicReportsEnabled']);
+
+    expect(Unit::query()->where('location_id', $location->id)->count())->toBe(0);
+});
+
+it('weigert nieuw inschakelen van vorige meldingen op een categorie wanneer werkmenu uit staat', function () {
+    $tenant = Tenant::factory()->create([
+        'work_menu_issues_tasks_enabled' => false,
+    ]);
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $category = Category::query()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Kranen',
+        'show_previous_issues' => false,
+    ]);
+    $category->teams()->sync([$team->id]);
+
+    Livewire::actingAs($admin)
+        ->test(LocationsIndex::class)
+        ->call('openEditCategory', $category->id)
+        ->set('categoryShowPreviousIssues', true)
+        ->call('saveCategory')
+        ->assertHasErrors(['categoryShowPreviousIssues']);
+
+    expect($category->fresh()->show_previous_issues)->toBeFalse();
+});
+
+it('laat het uitschakelen van bezoekersmeldingen op een unit toe wanneer werkmenu uit staat', function () {
+    $tenant = Tenant::factory()->create([
+        'work_menu_issues_tasks_enabled' => false,
+    ]);
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'public_reports_enabled' => true,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(Show::class, ['location' => $location])
+        ->call('openEditUnit', $unit->id)
+        ->set('unitPublicReportsEnabled', false)
+        ->call('saveUnit')
+        ->assertHasNoErrors();
+
+    expect($unit->fresh()->public_reports_enabled)->toBeFalse();
+});
+
+it('weigert csv-import met public_reports_enabled wanneer werkmenu uit staat', function () {
+    $tenant = Tenant::factory()->create([
+        'work_menu_issues_tasks_enabled' => false,
+    ]);
+    Tenancy::actAs($tenant->id);
+    $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    $csvContent = "unit_name,public_reports_enabled\n";
+    $csvContent .= "Imported Unit,yes\n";
+    $file = UploadedFile::fake()->createWithContent('units.csv', $csvContent);
+
+    $result = app(ImportUnitsAction::class)->handle(
+        new ImportUnitsData(
+            filePath: $file->getRealPath(),
+            originalName: $file->getClientOriginalName(),
+            locationId: $location->id,
+        ),
+        $tenant->id,
+        $user->id,
+    );
+
+    expect($result['success'])->toBeFalse()
+        ->and($result['errors'][0])->toContain(__('settings.work_menu.errors.issues_tasks_disabled'));
 });

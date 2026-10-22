@@ -105,7 +105,8 @@
             "reservations_disabled": "Le prenotazioni sono disattivate nel menu Lavoro. Non puoi attivarle di nuovo su unità o categorie.",
             "unit_measurements_disabled": "Le misurazioni unità sono disattivate nel menu Lavoro. Non puoi attivarle di nuovo su unità o categorie.",
             "checklists_disabled": "Le checklist sono disattivate nel menu Lavoro. Non puoi assegnare una nuova checklist a un'unità.",
-            "unit_checks_disabled": "I unit check sono disattivati nel menu Lavoro. Non puoi attivarli su unità o categorie."
+            "unit_checks_disabled": "I unit check sono disattivati nel menu Lavoro. Non puoi attivarli su unità o categorie.",
+            "issues_tasks_disabled": "Segnalazioni e attività sono disattivate nel menu Lavoro. Non è possibile riattivarle su unità o categorie."
         }
     },
     "privacy": {

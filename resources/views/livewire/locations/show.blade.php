@@ -393,10 +393,14 @@
                         </button>
 
                         <div class="wp-field-panel__body wp-stack-tight" x-show="open" x-cloak>
-                            <label class="wp-check">
-                                <input type="checkbox" wire:model="unitPublicReportsEnabled">
-                                <span>{{ __('locations.units.fields.public_reports_enabled') }}</span>
-                            </label>
+                            @if ($workMenuIssuesTasksEnabled || $unitPublicReportsEnabled)
+                                <label class="wp-check">
+                                    <input type="checkbox" wire:model="unitPublicReportsEnabled"
+                                        @disabled(! $workMenuIssuesTasksEnabled && ! $unitPublicReportsEnabled)>
+                                    <span>{{ __('locations.units.fields.public_reports_enabled') }}</span>
+                                </label>
+                                @error('unitPublicReportsEnabled') <span class="wp-error">{{ $message }}</span> @enderror
+                            @endif
 
                             @if ($workMenuReservationsEnabled || $unitAllowReservations)
                                 <x-wp-tooltip :text="__('locations.units.allow_reservations_hint')" wrap class="wp-tooltip--block">
@@ -466,19 +470,25 @@
                                 </div>
                             @endif
 
-                            <x-wp-tooltip :text="__('locations.units.require_reporter_contact_hint')" wrap class="wp-tooltip--block">
-                                <label class="wp-check">
-                                    <input type="checkbox" wire:model="unitRequireReporterContact">
-                                    <span>{{ __('locations.units.fields.require_reporter_contact') }}</span>
-                                </label>
-                            </x-wp-tooltip>
+                            @if ($workMenuIssuesTasksEnabled || $unitRequireReporterContact)
+                                <x-wp-tooltip :text="__('locations.units.require_reporter_contact_hint')" wrap class="wp-tooltip--block">
+                                    <label class="wp-check">
+                                        <input type="checkbox" wire:model="unitRequireReporterContact"
+                                            @disabled(! $workMenuIssuesTasksEnabled && ! $unitRequireReporterContact)>
+                                        <span>{{ __('locations.units.fields.require_reporter_contact') }}</span>
+                                    </label>
+                                </x-wp-tooltip>
+                            @endif
 
-                            <x-wp-tooltip :text="__('locations.units.require_reporter_email_verification_hint')" wrap class="wp-tooltip--block">
-                                <label class="wp-check">
-                                    <input type="checkbox" wire:model="unitRequireReporterEmailVerification">
-                                    <span>{{ __('locations.units.fields.require_reporter_email_verification') }}</span>
-                                </label>
-                            </x-wp-tooltip>
+                            @if ($workMenuIssuesTasksEnabled || $unitRequireReporterEmailVerification)
+                                <x-wp-tooltip :text="__('locations.units.require_reporter_email_verification_hint')" wrap class="wp-tooltip--block">
+                                    <label class="wp-check">
+                                        <input type="checkbox" wire:model="unitRequireReporterEmailVerification"
+                                            @disabled(! $workMenuIssuesTasksEnabled && ! $unitRequireReporterEmailVerification)>
+                                        <span>{{ __('locations.units.fields.require_reporter_email_verification') }}</span>
+                                    </label>
+                                </x-wp-tooltip>
+                            @endif
 
                             <label class="wp-field">
                                 <span class="wp-label">{{ __('locations.units.fields.roster_code') }}</span>
@@ -752,10 +762,14 @@
                         </button>
 
                         <div class="wp-field-panel__body wp-stack-tight" x-show="open" x-cloak>
-                            <label class="wp-check">
-                                <input type="checkbox" wire:model="bulkPublicReportsEnabled">
-                                <span>{{ __('locations.units.fields.public_reports_enabled') }}</span>
-                            </label>
+                            @if ($workMenuIssuesTasksEnabled || $bulkPublicReportsEnabled)
+                                <label class="wp-check">
+                                    <input type="checkbox" wire:model="bulkPublicReportsEnabled"
+                                        @disabled(! $workMenuIssuesTasksEnabled && ! $bulkPublicReportsEnabled)>
+                                    <span>{{ __('locations.units.fields.public_reports_enabled') }}</span>
+                                </label>
+                                @error('bulkPublicReportsEnabled') <span class="wp-error">{{ $message }}</span> @enderror
+                            @endif
 
                             @if ($workMenuReservationsEnabled || $bulkAllowReservations)
                                 <x-wp-tooltip :text="__('locations.units.allow_reservations_hint')" wrap class="wp-tooltip--block">
@@ -825,19 +839,25 @@
                                 </div>
                             @endif
 
-                            <x-wp-tooltip :text="__('locations.units.require_reporter_contact_hint')" wrap class="wp-tooltip--block">
-                                <label class="wp-check">
-                                    <input type="checkbox" wire:model="bulkRequireReporterContact">
-                                    <span>{{ __('locations.units.fields.require_reporter_contact') }}</span>
-                                </label>
-                            </x-wp-tooltip>
+                            @if ($workMenuIssuesTasksEnabled || $bulkRequireReporterContact)
+                                <x-wp-tooltip :text="__('locations.units.require_reporter_contact_hint')" wrap class="wp-tooltip--block">
+                                    <label class="wp-check">
+                                        <input type="checkbox" wire:model="bulkRequireReporterContact"
+                                            @disabled(! $workMenuIssuesTasksEnabled && ! $bulkRequireReporterContact)>
+                                        <span>{{ __('locations.units.fields.require_reporter_contact') }}</span>
+                                    </label>
+                                </x-wp-tooltip>
+                            @endif
 
-                            <x-wp-tooltip :text="__('locations.units.require_reporter_email_verification_hint')" wrap class="wp-tooltip--block">
-                                <label class="wp-check">
-                                    <input type="checkbox" wire:model="bulkRequireReporterEmailVerification">
-                                    <span>{{ __('locations.units.fields.require_reporter_email_verification') }}</span>
-                                </label>
-                            </x-wp-tooltip>
+                            @if ($workMenuIssuesTasksEnabled || $bulkRequireReporterEmailVerification)
+                                <x-wp-tooltip :text="__('locations.units.require_reporter_email_verification_hint')" wrap class="wp-tooltip--block">
+                                    <label class="wp-check">
+                                        <input type="checkbox" wire:model="bulkRequireReporterEmailVerification"
+                                            @disabled(! $workMenuIssuesTasksEnabled && ! $bulkRequireReporterEmailVerification)>
+                                        <span>{{ __('locations.units.fields.require_reporter_email_verification') }}</span>
+                                    </label>
+                                </x-wp-tooltip>
+                            @endif
                         </div>
                     </div>
                 </div>

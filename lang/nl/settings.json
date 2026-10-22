@@ -105,7 +105,8 @@
             "reservations_disabled": "Reserveringen staan uit in het werkmenu. Je kunt dit niet nieuw inschakelen op units of categorieën.",
             "unit_measurements_disabled": "Unitmetingen staan uit in het werkmenu. Je kunt dit niet nieuw inschakelen op units of categorieën.",
             "checklists_disabled": "Checklists staan uit in het werkmenu. Je kunt geen nieuwe checklist aan een unit koppelen.",
-            "unit_checks_disabled": "Unit checks staan uit in het werkmenu. Je kunt dit niet nieuw inschakelen op units of categorieën."
+            "unit_checks_disabled": "Unit checks staan uit in het werkmenu. Je kunt dit niet nieuw inschakelen op units of categorieën.",
+            "issues_tasks_disabled": "Meldingen & taken staan uit in het werkmenu. Je kan dit niet opnieuw aanzetten op units of categorieën."
         }
     },
     "privacy": {

@@ -412,35 +412,44 @@
                     </div>
                 @endif
 
-                <div class="wp-field">
-                    <x-wp-tooltip :text="__('locations.categories.require_reporter_contact_hint')" wrap>
-                        <label class="wp-check">
-                            <input type="checkbox" wire:model="categoryRequireReporterContact" @disabled(! $canMutateOpenedCategory) />
-                            <span>{{ __('locations.categories.fields.require_reporter_contact') }}</span>
-                        </label>
-                    </x-wp-tooltip>
-                    @error('categoryRequireReporterContact') <p class="wp-error">{{ $message }}</p> @enderror
-                </div>
+                @if ($workMenuIssuesTasksEnabled || $categoryRequireReporterContact)
+                    <div class="wp-field">
+                        <x-wp-tooltip :text="__('locations.categories.require_reporter_contact_hint')" wrap>
+                            <label class="wp-check">
+                                <input type="checkbox" wire:model="categoryRequireReporterContact"
+                                    @disabled((! $workMenuIssuesTasksEnabled && ! $categoryRequireReporterContact) || ! $canMutateOpenedCategory) />
+                                <span>{{ __('locations.categories.fields.require_reporter_contact') }}</span>
+                            </label>
+                        </x-wp-tooltip>
+                        @error('categoryRequireReporterContact') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                @endif
 
-                <div class="wp-field">
-                    <x-wp-tooltip :text="__('locations.categories.require_reporter_email_verification_hint')" wrap>
-                        <label class="wp-check">
-                            <input type="checkbox" wire:model="categoryRequireReporterEmailVerification" @disabled(! $canMutateOpenedCategory) />
-                            <span>{{ __('locations.categories.fields.require_reporter_email_verification') }}</span>
-                        </label>
-                    </x-wp-tooltip>
-                    @error('categoryRequireReporterEmailVerification') <p class="wp-error">{{ $message }}</p> @enderror
-                </div>
+                @if ($workMenuIssuesTasksEnabled || $categoryRequireReporterEmailVerification)
+                    <div class="wp-field">
+                        <x-wp-tooltip :text="__('locations.categories.require_reporter_email_verification_hint')" wrap>
+                            <label class="wp-check">
+                                <input type="checkbox" wire:model="categoryRequireReporterEmailVerification"
+                                    @disabled((! $workMenuIssuesTasksEnabled && ! $categoryRequireReporterEmailVerification) || ! $canMutateOpenedCategory) />
+                                <span>{{ __('locations.categories.fields.require_reporter_email_verification') }}</span>
+                            </label>
+                        </x-wp-tooltip>
+                        @error('categoryRequireReporterEmailVerification') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                @endif
 
-                <div class="wp-field">
-                    <x-wp-tooltip :text="__('locations.categories.show_previous_issues_hint')" wrap>
-                        <label class="wp-check">
-                            <input type="checkbox" wire:model="categoryShowPreviousIssues" @disabled(! $canMutateOpenedCategory) />
-                            <span>{{ __('locations.categories.fields.show_previous_issues') }}</span>
-                        </label>
-                    </x-wp-tooltip>
-                    @error('categoryShowPreviousIssues') <p class="wp-error">{{ $message }}</p> @enderror
-                </div>
+                @if ($workMenuIssuesTasksEnabled || $categoryShowPreviousIssues)
+                    <div class="wp-field">
+                        <x-wp-tooltip :text="__('locations.categories.show_previous_issues_hint')" wrap>
+                            <label class="wp-check">
+                                <input type="checkbox" wire:model="categoryShowPreviousIssues"
+                                    @disabled((! $workMenuIssuesTasksEnabled && ! $categoryShowPreviousIssues) || ! $canMutateOpenedCategory) />
+                                <span>{{ __('locations.categories.fields.show_previous_issues') }}</span>
+                            </label>
+                        </x-wp-tooltip>
+                        @error('categoryShowPreviousIssues') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
+                @endif
                 </div>
 
                 <div class="wp-field">

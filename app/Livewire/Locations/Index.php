@@ -701,6 +701,16 @@ class Index extends Component
             : null;
 
         if ($tenant instanceof Tenant) {
+            if (! TenantWorkMenuAccess::mayEnableIssuesTasks(
+                $tenant,
+                (bool) $validated['categoryShowPreviousIssues'],
+                (bool) ($currentCategory?->show_previous_issues ?? false),
+            )) {
+                $this->addError('categoryShowPreviousIssues', __('settings.work_menu.errors.issues_tasks_disabled'));
+
+                return;
+            }
+
             if (! TenantWorkMenuAccess::mayEnableCategoryReservable(
                 $tenant,
                 (bool) $validated['categoryIsReservable'],
@@ -975,6 +985,7 @@ class Index extends Component
             'onboarding' => TenantOnboardingState::current(),
             'canMutateOpenedCategory' => $this->canMutateOpenedCategory(),
             'workMenuReservationsEnabled' => $viewerTenant?->workMenuReservationsEnabled() ?? true,
+            'workMenuIssuesTasksEnabled' => $viewerTenant?->workMenuIssuesTasksEnabled() ?? true,
             'workMenuUnitChecksEnabled' => $viewerTenant?->workMenuUnitChecksEnabled() ?? true,
             'workMenuUnitMeasurementsEnabled' => $viewerTenant?->workMenuUnitMeasurementsEnabled() ?? true,
             'presenceComplianceEnabled' => (bool) ($viewerTenant?->presenceComplianceEnabled()),
