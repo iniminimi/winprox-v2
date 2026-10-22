@@ -862,14 +862,14 @@
     },
     "prikklok": {
         "nav_label": "Prikklok",
-        "meta_title": "Digitale prikklok voor urenregistratie | WinProx",
+        "meta_title": "Digitale prikklok: urenregistratie met smartphone | WinProx",
         "social": {
-            "og_title": "Digitale prikklok voor urenregistratie | WinProx",
-            "og_description": "Medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat."
+            "og_title": "Digitale prikklok: urenregistratie met smartphone | WinProx",
+            "og_description": "Digitale prikklok met uw smartphone. Registreer gewerkte uren, vergelijk met het uurrooster en geef uren door aan uw sociaal secretariaat. Ontdek WinProx Time."
         },
         "eyebrow": "WinProx Time · Prikklok",
-        "title": "Digitale prikklok voor urenregistratie in uw bedrijf.",
-        "lead": "WinProx Time: medewerkers prikken met hun telefoon, zonder app. U vergelijkt de uren met het rooster en geeft ze door aan uw sociaal secretariaat.",
+        "title": "Digitale prikklok: urenregistratie met uw smartphone.",
+        "lead": "Met WinProx Time klokken uw medewerkers in en uit met hun eigen smartphone — geen app en geen badge nodig. U registreert de gewerkte uren, vergelijkt ze met het uurrooster en bezorgt ze aan uw sociaal secretariaat.",
         "flow": "Scan → bevestig → ingeklokt",
         "cta_register": "Probeer WinProx",
         "video": {
@@ -895,7 +895,7 @@
                 },
                 {
                     "title": "Scan en bevestig",
-                    "body": "De werknemer scant de QR-code met zijn eigen smartphone en bevestigt zijn naam. Geen app of badge nodig. Wie wil, meldt zich voortaan aan met vingerafdruk, gezicht of toestelcode."
+                    "body": "De werknemer scant de QR-code met zijn eigen smartphone en bevestigt zijn naam. Wie wil, meldt zich voortaan aan met vingerafdruk, gezicht of toestelcode."
                 },
                 {
                     "title": "Ingeklokt",
@@ -921,45 +921,45 @@
             "close": "Meer controle over wie, wanneer en waar er wordt ingeprikt — zonder badges of biometrische gegevens."
         },
         "roles": {
-            "title": "Geen app, geen badge",
+            "title": "Geen badge, geen app, controle op locatie",
             "items": [
                 {
                     "title": "Geen app",
-                    "body": "Werknemers gebruiken gewoon de browser op hun eigen smartphone."
+                    "body": "Werknemers prikken via de browser op hun eigen smartphone — niets te installeren."
                 },
                 {
                     "title": "Geen badge",
                     "body": "Geen persoonlijke kaarten of badges om bij te houden."
                 },
                 {
-                    "title": "Klein en eenvoudig",
-                    "body": "Een compact scherm op een vaste plek — meer is er niet."
+                    "title": "QR-code die wisselt",
+                    "body": "Het scherm toont een actuele code. Een foto of doorgestuurde QR-code werkt later niet."
                 },
                 {
-                    "title": "Eenvoudig beheer",
-                    "body": "Medewerkers, uren en planning beheert u vanuit WinProx."
+                    "title": "Zonder smartphone",
+                    "body": "Voornaam en pincode volstaan op het klokscherm."
                 }
             ]
         },
         "sites": {
             "title": "Prikklok huren — of zonder scherm starten",
-            "lead": "U hoeft geen hardware aan te kopen: het klokscherm huurt u bij uw abonnement, vanaf €:price per maand per scherm.",
+            "lead": "U hoeft geen hardware aan te kopen: het klokscherm huurt u apart bij uw abonnement, vanaf €:price per maand per scherm (excl. btw).",
             "items": [
                 {
                     "title": "Prikklok huren",
-                    "body": "Het scherm komt van WinProx. U zet het op een vaste plek en koppelt het in een minuut."
+                    "body": "Het scherm komt van WinProx en toont een QR-code die regelmatig ververst — extra zekerheid tegen hergebruik. U zet het op een vaste plek en koppelt het in een minuut."
                 },
                 {
                     "title": "Liever eenvoudig starten?",
-                    "body": "Ook mogelijk met een gewone QR-code als sticker of print — het klokscherm is een optie, geen vereiste."
+                    "body": "Ook mogelijk met een gewone QR-code als sticker of print — zonder roterende code biedt die wel minder bescherming tegen misbruik."
                 }
             ]
         },
         "why": {
-            "title": "Urenregistratie",
+            "title": "Van prikklok naar urenregistratie",
             "items": [
-                "Medewerkers prikken met de camera van hun telefoon. Geen app.",
-                "Uren, pauzes en het rooster staan in WinProx.",
+                "De gewerkte uren en pauzes staan meteen in WinProx.",
+                "U vergelijkt de geprikte uren met het uurrooster — in een vertrouwde tabelstructuur, zoals in Excel.",
                 "De uren geeft u door aan uw sociaal secretariaat. Het secretariaat maakt het loon.",
                 "CIAO zet u aan via Instellingen als de ploeg bij klanten werkt. De RSZ-koppeling (ondernemingsnummer) wordt bevestigd voordat de doorgifte start. Een ploeg op de eigen site laat het uit."
             ]
@@ -973,7 +973,7 @@
                 },
                 {
                     "q": "Wat kost het, en is het scherm verplicht?",
-                    "a": "Gewone WinProx-pakketten starten vanaf 59€ per maand. Het klokscherm is optioneel, te huur vanaf €10 per maand per scherm. Zonder scherm volstaat een QR-sticker of een link."
+                    "a": "Het softwarepakket start vanaf €59 per maand, exclusief btw. Het klokscherm is optioneel en huurt u apart, vanaf €10 per maand per scherm. Zonder scherm volstaat een QR-sticker of een link."
                 },
                 {
                     "q": "Voor wie geldt CIAO, en voor wie niet?",
@@ -990,13 +990,13 @@
             ]
         },
         "start": {
-            "title": "Starten met de prikklok",
-            "lead": "Maak een account, maak een Clock Point aan en plaats het klokscherm of een QR-code op uw locatie.",
-            "trial": "Proef: 30 dagen, 25 seats, na uw aanvraag via info@winprox.app."
+            "title": "Liever eerst zien hoe het werkt?",
+            "lead": "Wij demonstreren de prikklok en de urenregistratie bij u op locatie of via videocall. U ziet meteen hoe uw medewerkers ermee werken.",
+            "trial": "Direct starten kan ook: proefperiode van 30 dagen en 25 seats na uw aanvraag."
         },
         "close": {
             "title": "Klaar om eenvoudiger te prikken?",
-            "lead": "Start met WinProx Time en laat uw medewerkers in- en uitprikken met hun eigen smartphone."
+            "lead": "Plan een persoonlijke demonstratie of start meteen met WinProx Time — uw medewerkers prikken in en uit met hun eigen smartphone."
         },
         "visuals": {
             "hero": "De WinProx-prikklok: een compact wit scherm met QR-code op een metalen standaard.",

@@ -862,14 +862,14 @@
     },
     "prikklok": {
         "nav_label": "Stempeluhr",
-        "meta_title": "Digitale Stempeluhr für Mitarbeiter | WinProx",
+        "meta_title": "Digitale Stempeluhr: Zeiterfassung per Smartphone | WinProx",
         "social": {
-            "og_title": "Digitale Stempeluhr für Mitarbeiter | WinProx",
-            "og_description": "Mitarbeiter stempeln mit dem eigenen Smartphone über einen QR-Code ein und aus. Ohne App oder Badge."
+            "og_title": "Digitale Stempeluhr: Zeiterfassung per Smartphone | WinProx",
+            "og_description": "Digitale Stempeluhr mit dem Smartphone. Geleistete Stunden erfassen, mit dem Dienstplan vergleichen und an Ihr Sozialsekretariat weitergeben. WinProx Time entdecken."
         },
         "eyebrow": "WinProx Time · Stempeluhr",
-        "title": "Digitale Stempeluhr für die Zeiterfassung in Ihrem Unternehmen.",
-        "lead": "WinProx Time: Mitarbeitende stempeln mit dem Telefon, ohne App. Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter.",
+        "title": "Digitale Stempeluhr: Zeiterfassung mit dem Smartphone.",
+        "lead": "Mit WinProx Time stempeln Ihre Mitarbeitenden mit dem eigenen Smartphone ein und aus — ohne App und ohne Badge. Sie erfassen die geleisteten Stunden, vergleichen sie mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter.",
         "flow": "Scannen → bestätigen → eingestempelt",
         "cta_register": "WinProx ausprobieren",
         "video": {
@@ -895,7 +895,7 @@
                 },
                 {
                     "title": "Scannen und bestätigen",
-                    "body": "Der Mitarbeiter scannt den QR-Code mit dem eigenen Smartphone und bestätigt seinen Namen. Ohne App oder Badge. Wer möchte, meldet sich künftig mit Fingerabdruck, Gesicht oder Gerätecode an."
+                    "body": "Der Mitarbeitende scannt den QR-Code mit dem eigenen Smartphone und bestätigt seinen Namen. Wer mag, meldet sich danach mit Fingerabdruck, Gesicht oder Gerätecode an."
                 },
                 {
                     "title": "Eingestempelt",
@@ -921,45 +921,45 @@
             "close": "Mehr Kontrolle darüber, wer wann und wo einstempelt — ohne Badges oder biometrische Daten."
         },
         "roles": {
-            "title": "Keine App, kein Badge",
+            "title": "Kein Badge, keine App, Kontrolle am Standort",
             "items": [
                 {
                     "title": "Keine App",
-                    "body": "Mitarbeiter nutzen einfach den Browser auf dem eigenen Smartphone."
+                    "body": "Mitarbeitende stempeln über den Browser auf dem eigenen Smartphone — nichts zu installieren."
                 },
                 {
                     "title": "Kein Badge",
-                    "body": "Keine persönlichen Karten oder Badges im Umlauf."
+                    "body": "Keine persönlichen Karten oder Badges zum Verwalten."
                 },
                 {
-                    "title": "Klein und einfach",
-                    "body": "Ein kompakter Bildschirm an einem festen Platz — mehr ist es nicht."
+                    "title": "Ein QR-Code, der wechselt",
+                    "body": "Der Bildschirm zeigt einen aktuellen Code. Ein Foto oder ein weitergeleiteter QR-Code funktioniert später nicht."
                 },
                 {
-                    "title": "Einfache Verwaltung",
-                    "body": "Mitarbeiter, Stunden und Planung verwalten Sie in WinProx."
+                    "title": "Ohne Smartphone",
+                    "body": "Vorname und PIN genügen auf dem Stempelbildschirm."
                 }
             ]
         },
         "sites": {
             "title": "Stempeluhr mieten — oder ohne Bildschirm starten",
-            "lead": "Keine Hardware kaufen: den Uhrbildschirm mieten Sie zu Ihrem Abo, ab €:price pro Monat und Bildschirm.",
+            "lead": "Sie müssen keine Hardware kaufen: den Stempelbildschirm mieten Sie separat zu Ihrem Abo, ab €:price pro Monat und Bildschirm (exkl. MwSt.).",
             "items": [
                 {
                     "title": "Stempeluhr mieten",
-                    "body": "Der Bildschirm kommt von WinProx. Aufstellen, in einer Minute koppeln, fertig."
+                    "body": "Der Bildschirm kommt von WinProx und zeigt einen QR-Code, der regelmäßig wechselt — zusätzlicher Schutz vor Wiederverwendung. Sie stellen ihn an einem festen Ort auf und koppeln ihn in einer Minute."
                 },
                 {
                     "title": "Lieber einfach starten?",
-                    "body": "Ein einfacher QR-Code als Aufkleber oder Ausdruck reicht auch — der Bildschirm ist eine Option, keine Pflicht."
+                    "body": "Ein normaler QR-Code als Aufkleber oder Ausdruck funktioniert auch — ohne rotierenden Code bietet er jedoch weniger Schutz vor Missbrauch."
                 }
             ]
         },
         "why": {
-            "title": "Zeiterfassung",
+            "title": "Von der Stempeluhr zur Zeiterfassung",
             "items": [
-                "Mitarbeitende stempeln mit der Kamera ihres Telefons. Ohne App.",
-                "Stunden, Pausen und der Dienstplan stehen in WinProx.",
+                "Die geleisteten Stunden und Pausen stehen sofort in WinProx.",
+                "Sie vergleichen die gestempelten Stunden mit dem Dienstplan — in einer vertrauten Tabellenstruktur, wie in Excel.",
                 "Die Stunden geben Sie an Ihr Sozialsekretariat weiter. Das Sekretariat macht den Lohn.",
                 "CIAO schalten Sie in den Einstellungen ein, wenn die Mannschaft bei Kunden arbeitet. Die LSS-Kopplung (Unternehmensnummer) wird bestätigt, bevor die Meldung startet. Eine Mannschaft auf dem eigenen Standort lässt es aus."
             ]
@@ -973,7 +973,7 @@
                 },
                 {
                     "q": "Was kostet es, und ist der Bildschirm Pflicht?",
-                    "a": "Normale WinProx-Pakete beginnen bei 59 € pro Monat. Der Uhrbildschirm ist optional, zur Miete ab 10 € pro Monat und Bildschirm. Ohne Bildschirm reicht ein QR-Aufkleber oder ein Link."
+                    "a": "Das Softwarepaket startet ab €59 pro Monat, exklusive Mehrwertsteuer. Der Stempelbildschirm ist optional und wird separat gemietet, ab €10 pro Monat und Bildschirm. Ohne Bildschirm genügen ein QR-Aufkleber oder ein Link."
                 },
                 {
                     "q": "Für wen gilt CIAO, und für wen nicht?",
@@ -990,13 +990,13 @@
             ]
         },
         "start": {
-            "title": "Mit der Stempeluhr starten",
-            "lead": "Konto anlegen, Clock Point anlegen und den Uhrbildschirm oder einen QR-Code vor Ort platzieren.",
-            "trial": "Test: 30 Tage, 25 Plätze, nach Ihrer Anfrage über info@winprox.app."
+            "title": "Möchten Sie erst sehen, wie es funktioniert?",
+            "lead": "Wir zeigen Ihnen die Stempeluhr und die Zeiterfassung bei Ihnen vor Ort oder per Videoanruf. Sie sehen sofort, wie Ihre Mitarbeitenden damit arbeiten.",
+            "trial": "Direkt starten geht auch: 30 Tage Testphase mit 25 Plätzen nach Ihrer Anfrage."
         },
         "close": {
             "title": "Bereit für einfacheres Stempeln?",
-            "lead": "Starten Sie mit WinProx Time und lassen Sie Ihre Mitarbeiter mit dem eigenen Smartphone ein- und ausstempeln."
+            "lead": "Planen Sie eine persönliche Demonstration oder starten Sie direkt mit WinProx Time — Ihre Mitarbeitenden stempeln mit dem eigenen Smartphone ein und aus."
         },
         "visuals": {
             "hero": "Die WinProx-Stempeluhr: ein kompakter weißer Bildschirm mit QR-Code auf einem Metallständer.",

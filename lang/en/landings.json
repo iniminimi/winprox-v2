@@ -862,14 +862,14 @@
     },
     "prikklok": {
         "nav_label": "Time clock",
-        "meta_title": "Digital time clock for time tracking | WinProx",
+        "meta_title": "Digital time clock: time tracking with a smartphone | WinProx",
         "social": {
-            "og_title": "Digital time clock for time tracking | WinProx",
-            "og_description": "Staff clock in with their phone, without an app. You compare the hours with the roster and pass them to your social secretariat."
+            "og_title": "Digital time clock: time tracking with a smartphone | WinProx",
+            "og_description": "A digital time clock on your smartphone. Record worked hours, compare them with the roster and pass them to your social secretariat. Discover WinProx Time."
         },
         "eyebrow": "WinProx Time · Time clock",
-        "title": "A digital time clock for time tracking in your company.",
-        "lead": "WinProx Time: staff clock in with their phone, without an app. You compare the hours with the roster and pass them to your social secretariat.",
+        "title": "Digital time clock: time tracking with a smartphone.",
+        "lead": "With WinProx Time your staff clock in and out on their own smartphone — no app and no badge needed. You record the worked hours, compare them with the roster and pass them to your social secretariat.",
         "flow": "Scan → confirm → clocked in",
         "cta_register": "Try WinProx",
         "video": {
@@ -895,7 +895,7 @@
                 },
                 {
                     "title": "Scan and confirm",
-                    "body": "The worker scans the QR code with their own smartphone and confirms their name. No app or badge needed. If they want, they can then sign in with fingerprint, face or device code."
+                    "body": "The worker scans the QR code with their own smartphone and confirms their name. If they like, they sign in with fingerprint, face or device code from then on."
                 },
                 {
                     "title": "Clocked in",
@@ -921,45 +921,45 @@
             "close": "More control over who clocks in, when and where — without badges or biometric data."
         },
         "roles": {
-            "title": "No app, no badge",
+            "title": "No badge, no app, on-site control",
             "items": [
                 {
                     "title": "No app",
-                    "body": "Workers simply use the browser on their own smartphone."
+                    "body": "Workers clock in via the browser on their own smartphone — nothing to install."
                 },
                 {
                     "title": "No badge",
                     "body": "No personal cards or badges to keep track of."
                 },
                 {
-                    "title": "Small and simple",
-                    "body": "A compact screen in a fixed spot — that is all there is to it."
+                    "title": "A QR code that changes",
+                    "body": "The screen shows a current code. A photo or forwarded QR code stops working later."
                 },
                 {
-                    "title": "Simple management",
-                    "body": "You manage employees, hours and planning in WinProx."
+                    "title": "No smartphone",
+                    "body": "First name and PIN are enough on the clock screen."
                 }
             ]
         },
         "sites": {
             "title": "Rent the clock — or start without a screen",
-            "lead": "No hardware to buy: rent the clock screen with your subscription, from €:price per month per screen.",
+            "lead": "You don’t need to buy hardware: you rent the clock screen separately with your subscription, from €:price per month per screen (excl. VAT).",
             "items": [
                 {
-                    "title": "Rent the clock",
-                    "body": "The screen comes from WinProx. Put it in a fixed spot and pair it in a minute."
+                    "title": "Rent a time clock",
+                    "body": "The screen comes from WinProx and shows a QR code that refreshes regularly — extra protection against reuse. You place it at a fixed spot and pair it in a minute."
                 },
                 {
                     "title": "Prefer to start simple?",
-                    "body": "A plain QR code as a sticker or print works too — the screen is an option, not a requirement."
+                    "body": "A plain QR code as a sticker or print works too — without the rotating code it offers less protection against misuse."
                 }
             ]
         },
         "why": {
-            "title": "Time tracking",
+            "title": "From time clock to time tracking",
             "items": [
-                "Staff clock in with the camera on their phone. No app.",
-                "Hours, breaks and the roster sit in WinProx.",
+                "The worked hours and breaks are in WinProx right away.",
+                "You compare the clocked hours with the roster — in a familiar grid structure, like in Excel.",
                 "You pass the hours to your social secretariat. The secretariat prepares the wage.",
                 "Turn CIAO on in Settings when the crew works at customer sites. The NSSO link (enterprise number) is confirmed before filing starts. A crew that stays on its own site leaves it off."
             ]
@@ -973,7 +973,7 @@
                 },
                 {
                     "q": "What does it cost, and is the screen required?",
-                    "a": "Regular WinProx plans start from €59 per month. The clock screen is optional, for rent from €10 per month per screen. Without a screen a QR sticker or a link is enough."
+                    "a": "The software package starts from €59 per month, excluding VAT. The clock screen is optional and rented separately, from €10 per month per screen. Without a screen, a QR sticker or a link is enough."
                 },
                 {
                     "q": "Who is CIAO for, and who is it not for?",
@@ -990,13 +990,13 @@
             ]
         },
         "start": {
-            "title": "Getting started with the time clock",
-            "lead": "Create an account, add a Clock Point and place the clock screen or a QR code on your site.",
-            "trial": "Trial: 30 days, 25 seats, after you request it via info@winprox.app."
+            "title": "Rather see how it works first?",
+            "lead": "We demonstrate the time clock and time tracking at your site or over a video call. You see right away how your staff work with it.",
+            "trial": "Starting right away works too: 30-day trial with 25 seats after your request."
         },
         "close": {
             "title": "Ready for simpler clocking?",
-            "lead": "Start with WinProx Time and let your employees clock in and out with their own smartphone."
+            "lead": "Plan a personal demonstration or start with WinProx Time straight away — your staff clock in and out with their own smartphone."
         },
         "visuals": {
             "hero": "The WinProx time clock: a compact white screen with QR code on a metal stand.",

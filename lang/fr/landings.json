@@ -862,14 +862,14 @@
     },
     "prikklok": {
         "nav_label": "Pointeuse",
-        "meta_title": "Pointeuse digitale pour vos employés | WinProx",
+        "meta_title": "Pointeuse digitale : pointage des heures sur smartphone | WinProx",
         "social": {
-            "og_title": "Pointeuse digitale pour vos employés | WinProx",
-            "og_description": "Laissez vos employés pointer avec leur propre smartphone via un code QR. Sans appli ni badge."
+            "og_title": "Pointeuse digitale : pointage des heures sur smartphone | WinProx",
+            "og_description": "Une pointeuse digitale sur smartphone. Enregistrez les heures prestées, comparez-les à l’horaire et transmettez-les à votre secrétariat social. Découvrez WinProx Time."
         },
         "eyebrow": "WinProx Time · Pointeuse",
-        "title": "Pointeuse digitale pour le suivi du temps dans votre entreprise.",
-        "lead": "WinProx Time : les employés pointent avec leur téléphone, sans appli. Vous comparez les heures avec l'horaire et les transmettez à votre secrétariat social.",
+        "title": "Pointeuse digitale : enregistrement des heures avec votre smartphone.",
+        "lead": "Avec WinProx Time, vos employés pointent en entrée et en sortie avec leur propre smartphone — sans appli ni badge. Vous enregistrez les heures prestées, les comparez à l’horaire et les transmettez à votre secrétariat social.",
         "flow": "Scan → confirmation → pointé",
         "cta_register": "Essayer WinProx",
         "video": {
@@ -895,7 +895,7 @@
                 },
                 {
                     "title": "Scanner et confirmer",
-                    "body": "Le travailleur scanne le code QR avec son propre smartphone et confirme son nom. Sans appli ni badge. Ceux qui le souhaitent se connectent ensuite avec l'empreinte, le visage ou le code de l'appareil."
+                    "body": "L’employé scanne le code QR avec son propre smartphone et confirme son nom. S’il le souhaite, il s’identifie ensuite par empreinte, visage ou code de l’appareil."
                 },
                 {
                     "title": "Pointé",
@@ -921,45 +921,45 @@
             "close": "Plus de contrôle sur qui pointe, quand et où — sans badges ni données biométriques."
         },
         "roles": {
-            "title": "Ni appli, ni badge",
+            "title": "Ni badge ni appli, un contrôle sur site",
             "items": [
                 {
-                    "title": "Pas d’appli",
-                    "body": "Les travailleurs utilisent simplement le navigateur de leur smartphone."
+                    "title": "Sans appli",
+                    "body": "Les employés pointent via le navigateur de leur propre smartphone — rien à installer."
                 },
                 {
-                    "title": "Pas de badge",
-                    "body": "Aucune carte ou badge personnel à gérer."
+                    "title": "Sans badge",
+                    "body": "Pas de cartes ni de badges personnels à gérer."
                 },
                 {
-                    "title": "Petit et simple",
-                    "body": "Un écran compact à un endroit fixe — rien de plus."
+                    "title": "Un code QR qui change",
+                    "body": "L’écran affiche un code actuel. Une photo ou un QR transféré ne fonctionne plus après."
                 },
                 {
-                    "title": "Gestion simple",
-                    "body": "Employés, heures et planning se gèrent dans WinProx."
+                    "title": "Sans smartphone",
+                    "body": "Le prénom et le code PIN suffisent sur l’écran de pointage."
                 }
             ]
         },
         "sites": {
             "title": "Louer la pointeuse — ou démarrer sans écran",
-            "lead": "Pas de matériel à acheter : l’écran d’horloge se loue avec votre abonnement, dès €:price par mois et par écran.",
+            "lead": "Pas de matériel à acheter : l’écran de pointage se loue en plus de l’abonnement, dès €:price par mois et par écran (hors TVA).",
             "items": [
                 {
                     "title": "Louer la pointeuse",
-                    "body": "L’écran vient de WinProx. Posez-le à un endroit fixe et associez-le en une minute."
+                    "body": "L’écran vient de WinProx et affiche un code QR qui se rafraîchit régulièrement — une protection supplémentaire contre la réutilisation. Vous le placez à un endroit fixe et le couplez en une minute."
                 },
                 {
-                    "title": "Envie de démarrer simple ?",
-                    "body": "Un simple code QR en autocollant ou imprimé suffit aussi — l’écran est une option, pas une obligation."
+                    "title": "Démarrage simple ?",
+                    "body": "Un simple code QR en autocollant ou imprimé fonctionne aussi — sans code rotatif, il offre cependant moins de protection contre les abus."
                 }
             ]
         },
         "why": {
-            "title": "Suivi du temps",
+            "title": "De la pointeuse au suivi du temps",
             "items": [
-                "Les employés pointent avec l'appareil photo de leur téléphone. Sans appli.",
-                "Les heures, les pauses et l'horaire sont dans WinProx.",
+                "Les heures prestées et les pauses sont directement dans WinProx.",
+                "Vous comparez les heures pointées à l’horaire — dans une structure de tableau familière, comme dans Excel.",
                 "Vous transmettez les heures à votre secrétariat social. Le secrétariat établit le salaire.",
                 "Activez le CIAO dans les Paramètres si l'équipe travaille chez des clients. La liaison ONSS (numéro d'entreprise) est confirmée avant l'envoi. Une équipe sur son propre site le laisse éteint."
             ]
@@ -973,7 +973,7 @@
                 },
                 {
                     "q": "Combien ça coûte, et l'écran est-il obligatoire ?",
-                    "a": "Les formules WinProx ordinaires commencent à 59 € par mois. L'écran de pointage est optionnel, en location dès 10 € par mois et par écran. Sans écran, un autocollant QR ou un lien suffit."
+                    "a": "Le forfait logiciel démarre à partir de 59 € par mois, hors TVA. L’écran de pointage est optionnel et se loue séparément, dès 10 € par mois et par écran. Sans écran, un autocollant QR ou un lien suffit."
                 },
                 {
                     "q": "Pour qui CIAO vaut-il, et pour qui pas ?",
@@ -990,13 +990,13 @@
             ]
         },
         "start": {
-            "title": "Démarrer avec la pointeuse",
-            "lead": "Créez un compte, ajoutez un Clock Point et placez l’écran ou un code QR sur votre site.",
-            "trial": "Essai : 30 jours, 25 sièges, après votre demande via info@winprox.app."
+            "title": "Vous préférez d’abord voir comment cela marche ?",
+            "lead": "Nous démontrons la pointeuse et le suivi du temps chez vous ou en visio. Vous voyez tout de suite comment vos employés l’utilisent.",
+            "trial": "Démarrer directement est possible aussi : essai de 30 jours et 25 postes après votre demande."
         },
         "close": {
             "title": "Prêt à pointer plus simplement ?",
-            "lead": "Démarrez avec WinProx Time et laissez vos employés pointer avec leur propre smartphone."
+            "lead": "Planifiez une démonstration personnelle ou démarrez directement avec WinProx Time — vos employés pointent en entrée et en sortie avec leur propre smartphone."
         },
         "visuals": {
             "hero": "La pointeuse WinProx : un écran blanc compact avec code QR sur un pied métallique.",

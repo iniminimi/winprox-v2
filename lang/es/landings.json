@@ -862,14 +862,14 @@
     },
     "prikklok": {
         "nav_label": "Reloj de fichar",
-        "meta_title": "Reloj de fichar digital para empleados | WinProx",
+        "meta_title": "Reloj de fichar digital: registro horario con smartphone | WinProx",
         "social": {
-            "og_title": "Reloj de fichar digital para empleados | WinProx",
-            "og_description": "Sus empleados fichan la entrada y la salida con su propio smartphone mediante un código QR. Sin app ni tarjeta."
+            "og_title": "Reloj de fichar digital: registro horario con smartphone | WinProx",
+            "og_description": "Reloj de fichar digital con su smartphone. Registre las horas trabajadas, compárelas con el horario y páselas a su secretaría social. Descubra WinProx Time."
         },
         "eyebrow": "WinProx Time · Reloj de fichar",
-        "title": "Reloj de fichar digital para el registro horario en su empresa.",
-        "lead": "WinProx Time: el personal ficha con el teléfono, sin app. Usted compara las horas con el horario y las pasa a su secretaría social.",
+        "title": "Reloj de fichar digital: registro horario con su smartphone.",
+        "lead": "Con WinProx Time, sus empleados fichan la entrada y la salida con su propio smartphone — sin app y sin tarjeta. Usted registra las horas trabajadas, las compara con el horario y las pasa a su secretaría social.",
         "flow": "Escanear → confirmar → fichado",
         "cta_register": "Probar WinProx",
         "video": {
@@ -895,7 +895,7 @@
                 },
                 {
                     "title": "Escanear y confirmar",
-                    "body": "El trabajador escanea el código QR con su propio smartphone y confirma su nombre. Sin app ni tarjeta. Quien quiera puede iniciar sesión después con huella, cara o código del dispositivo."
+                    "body": "El trabajador escanea el código QR con su propio smartphone y confirma su nombre. Si quiere, después se identifica con huella, cara o código del dispositivo."
                 },
                 {
                     "title": "Fichado",
@@ -921,45 +921,45 @@
             "close": "Más control sobre quién ficha, cuándo y dónde — sin tarjetas ni datos biométricos."
         },
         "roles": {
-            "title": "Sin app, sin tarjeta",
+            "title": "Sin tarjeta, sin app, con control en el sitio",
             "items": [
                 {
                     "title": "Sin app",
-                    "body": "Los trabajadores usan el navegador de su propio smartphone."
+                    "body": "Los trabajadores fichan desde el navegador de su propio smartphone — nada que instalar."
                 },
                 {
                     "title": "Sin tarjeta",
-                    "body": "No hay tarjetas ni badges personales que gestionar."
+                    "body": "Sin tarjetas ni identificaciones personales que gestionar."
                 },
                 {
-                    "title": "Pequeño y sencillo",
-                    "body": "Una pantalla compacta en un punto fijo — nada más."
+                    "title": "Un código QR que cambia",
+                    "body": "La pantalla muestra un código actual. Una foto o un QR reenviado deja de funcionar después."
                 },
                 {
-                    "title": "Gestión sencilla",
-                    "body": "Empleados, horas y planificación se gestionan en WinProx."
+                    "title": "Sin smartphone",
+                    "body": "El nombre y el PIN bastan en la pantalla de fichaje."
                 }
             ]
         },
         "sites": {
             "title": "Alquilar el reloj — o empezar sin pantalla",
-            "lead": "Sin comprar hardware: la pantalla de reloj se alquila con su suscripción, desde €:price al mes por pantalla.",
+            "lead": "No hace falta comprar hardware: la pantalla de fichaje se alquila aparte con su suscripción, desde €:price al mes por pantalla (sin IVA).",
             "items": [
                 {
-                    "title": "Alquilar el reloj",
-                    "body": "La pantalla viene de WinProx. La coloca en un punto fijo y la empareja en un minuto."
+                    "title": "Alquilar el reloj de fichar",
+                    "body": "La pantalla viene de WinProx y muestra un código QR que se renueva con regularidad — protección extra contra la reutilización. La coloca en un punto fijo y la enlaza en un minuto."
                 },
                 {
                     "title": "¿Prefiere empezar sencillo?",
-                    "body": "También funciona con un código QR normal en pegatina o impreso — la pantalla es una opción, no un requisito."
+                    "body": "También funciona con un código QR normal en pegatina o impreso — sin el código rotativo ofrece menos protección contra el abuso."
                 }
             ]
         },
         "why": {
-            "title": "Registro horario",
+            "title": "Del reloj de fichar al registro horario",
             "items": [
-                "El personal ficha con la cámara del teléfono. Sin app.",
-                "Las horas, las pausas y el horario están en WinProx.",
+                "Las horas trabajadas y las pausas están en WinProx al momento.",
+                "Usted compara las horas fichadas con el horario — en una estructura de tabla familiar, como en Excel.",
                 "Usted pasa las horas a su secretaría social. La secretaría hace el salario.",
                 "Active CIAO en Ajustes si el equipo trabaja en clientes. El enlace ONSS (número de empresa) se confirma antes de enviar. Un equipo en su propio sitio lo deja apagado."
             ]
@@ -973,7 +973,7 @@
                 },
                 {
                     "q": "¿Cuánto cuesta, y la pantalla es obligatoria?",
-                    "a": "Los paquetes WinProx habituales empiezan en 59 € al mes. La pantalla del reloj es opcional, en alquiler desde 10 € al mes por pantalla. Sin pantalla basta una pegatina QR o un enlace."
+                    "a": "El paquete de software empieza desde 59 € al mes, sin IVA. La pantalla de fichaje es opcional y se alquila aparte, desde 10 € al mes por pantalla. Sin pantalla basta una pegatina QR o un enlace."
                 },
                 {
                     "q": "¿Para quién vale CIAO, y para quién no?",
@@ -990,13 +990,13 @@
             ]
         },
         "start": {
-            "title": "Empezar con el reloj de fichar",
-            "lead": "Cree una cuenta, dé de alta un Clock Point y coloque la pantalla o un código QR en su local.",
-            "trial": "Prueba: 30 días, 25 plazas, tras su solicitud en info@winprox.app."
+            "title": "¿Prefiere ver primero cómo funciona?",
+            "lead": "Le mostramos el reloj de fichar y el registro horario en su empresa o por videollamada. Verá de inmediato cómo lo usan sus empleados.",
+            "trial": "Empezar directamente también es posible: prueba de 30 días y 25 plazas tras su solicitud."
         },
         "close": {
             "title": "¿Listo para fichar más fácil?",
-            "lead": "Empiece con WinProx Time y deje que sus empleados fichen con su propio smartphone."
+            "lead": "Programe una demostración personal o empiece directamente con WinProx Time — sus empleados fichan la entrada y la salida con su propio smartphone."
         },
         "visuals": {
             "hero": "El reloj de fichar WinProx: una pantalla blanca compacta con código QR sobre un soporte metálico.",

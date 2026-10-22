@@ -862,14 +862,14 @@
     },
     "prikklok": {
         "nav_label": "Timbratrice",
-        "meta_title": "Timbratrice digitale per dipendenti | WinProx",
+        "meta_title": "Timbratrice digitale: rilevazione orari con smartphone | WinProx",
         "social": {
-            "og_title": "Timbratrice digitale per dipendenti | WinProx",
-            "og_description": "I dipendenti timbrano in entrata e in uscita con il proprio smartphone tramite un codice QR. Nessuna app, nessun badge."
+            "og_title": "Timbratrice digitale: rilevazione orari con smartphone | WinProx",
+            "og_description": "Timbratrice digitale con lo smartphone. Registrate le ore lavorate, confrontatele con il turno e passatele al segretariato sociale. Scoprite WinProx Time."
         },
         "eyebrow": "WinProx Time · Timbratrice",
-        "title": "Timbratrice digitale per la rilevazione orari nella vostra azienda.",
-        "lead": "WinProx Time: il personale timbra con il telefono, senza app. Confrontate le ore con il turno e le passate al segretariato sociale.",
+        "title": "Timbratrice digitale: rilevazione orari con lo smartphone.",
+        "lead": "Con WinProx Time i vostri dipendenti timbrano in entrata e in uscita con il proprio smartphone — senza app e senza badge. Registrate le ore lavorate, le confrontate con il turno e le passate al segretariato sociale.",
         "flow": "Scansione → conferma → timbrato",
         "cta_register": "Provare WinProx",
         "video": {
@@ -895,7 +895,7 @@
                 },
                 {
                     "title": "Scansiona e conferma",
-                    "body": "Il lavoratore scansiona il codice QR con il proprio smartphone e conferma il suo nome. Nessuna app, nessun badge. Chi vuole accede poi con impronta, volto o codice del dispositivo."
+                    "body": "Il lavoratore scansiona il codice QR con il proprio smartphone e conferma il suo nome. Se vuole, poi accede con impronta, volto o codice del dispositivo."
                 },
                 {
                     "title": "Timbrato",
@@ -921,45 +921,45 @@
             "close": "Più controllo su chi timbra, quando e dove — senza badge né dati biometrici."
         },
         "roles": {
-            "title": "Nessuna app, nessun badge",
+            "title": "Niente badge, niente app, controllo in sede",
             "items": [
                 {
-                    "title": "Nessuna app",
-                    "body": "I lavoratori usano semplicemente il browser del proprio smartphone."
+                    "title": "Senza app",
+                    "body": "I lavoratori timbrano dal browser del proprio smartphone — niente da installare."
                 },
                 {
-                    "title": "Nessun badge",
-                    "body": "Niente carte o badge personali da gestire."
+                    "title": "Senza badge",
+                    "body": "Niente tessere o badge personali da gestire."
                 },
                 {
-                    "title": "Piccola e semplice",
-                    "body": "Uno schermo compatto in un punto fisso — tutto qui."
+                    "title": "Un codice QR che cambia",
+                    "body": "Lo schermo mostra un codice aggiornato. Una foto o un QR inoltrato smette di funzionare."
                 },
                 {
-                    "title": "Gestione semplice",
-                    "body": "Dipendenti, ore e pianificazione si gestiscono in WinProx."
+                    "title": "Senza smartphone",
+                    "body": "Nome e PIN bastano sullo schermo di timbratura."
                 }
             ]
         },
         "sites": {
             "title": "Timbratrice a noleggio — o partire senza schermo",
-            "lead": "Nessun hardware da acquistare: lo schermo-orologio si noleggia con l’abbonamento, da €:price al mese per schermo.",
+            "lead": "Non serve comprare hardware: lo schermo di timbratura si noleggia a parte con l’abbonamento, da €:price al mese per schermo (IVA esclusa).",
             "items": [
                 {
                     "title": "Noleggiare la timbratrice",
-                    "body": "Lo schermo arriva da WinProx. Lo posizionate in un punto fisso e lo associate in un minuto."
+                    "body": "Lo schermo arriva da WinProx e mostra un codice QR che si rinnova regolarmente — protezione extra contro il riutilizzo. Lo posizionate in un punto fisso e lo associate in un minuto."
                 },
                 {
                     "title": "Preferite partire semplice?",
-                    "body": "Va bene anche un semplice codice QR come adesivo o stampa — lo schermo è un’opzione, non un requisito."
+                    "body": "Va bene anche un normale codice QR come adesivo o stampa — senza il codice rotante offre meno protezione dagli abusi."
                 }
             ]
         },
         "why": {
-            "title": "Rilevazione orari",
+            "title": "Dalla timbratrice alla rilevazione orari",
             "items": [
-                "Il personale timbra con la fotocamera del telefono. Senza app.",
-                "Ore, pause e turno stanno in WinProx.",
+                "Le ore lavorate e le pause sono subito in WinProx.",
+                "Confrontate le ore timbrate con il turno — in una struttura a tabella familiare, come in Excel.",
                 "Passate le ore al segretariato sociale. Il segretariato fa la paga.",
                 "Attivate il CIAO nelle Impostazioni se la squadra lavora dai clienti. Il collegamento ONSS (numero d'impresa) viene confermato prima dell'invio. Una squadra sulla propria sede lo lascia spento."
             ]
@@ -973,7 +973,7 @@
                 },
                 {
                     "q": "Quanto costa, e lo schermo è obbligatorio?",
-                    "a": "I pacchetti WinProx ordinari partono da 59 € al mese. Lo schermo della timbratrice è opzionale, a noleggio da 10 € al mese per schermo. Senza schermo bastano un adesivo QR o un link."
+                    "a": "Il pacchetto software parte da 59 € al mese, IVA esclusa. Lo schermo di timbratura è opzionale e si noleggia a parte, da 10 € al mese per schermo. Senza schermo bastano un adesivo QR o un link."
                 },
                 {
                     "q": "Per chi vale CIAO, e per chi no?",
@@ -990,13 +990,13 @@
             ]
         },
         "start": {
-            "title": "Iniziare con la timbratrice",
-            "lead": "Create un account, aggiungete un Clock Point e posizionate lo schermo o un codice QR sul posto.",
-            "trial": "Prova: 30 giorni, 25 posti, dopo la vostra richiesta via info@winprox.app."
+            "title": "Preferite prima vedere come funziona?",
+            "lead": "Vi mostriamo la timbratrice e la rilevazione orari presso di voi o in videochiamata. Vedete subito come la usano i vostri dipendenti.",
+            "trial": "Potete anche partire subito: prova di 30 giorni e 25 postazioni dopo la vostra richiesta."
         },
         "close": {
             "title": "Pronti a timbrare più semplicemente?",
-            "lead": "Iniziate con WinProx Time e lasciate che i vostri dipendenti timbrino con il proprio smartphone."
+            "lead": "Pianificate una dimostrazione personale o partite subito con WinProx Time — i vostri dipendenti timbrano in entrata e in uscita con il proprio smartphone."
         },
         "visuals": {
             "hero": "La timbratrice WinProx: uno schermo bianco compatto con codice QR su un supporto metallico.",

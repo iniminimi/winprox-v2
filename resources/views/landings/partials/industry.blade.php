@@ -171,6 +171,12 @@
     <h2 class="wp-welcome-h3">{{ __("{$key}.start.title") }}</h2>
     <p class="wp-text-body">{{ __("{$key}.start.lead") }}</p>
     <p class="wp-text-body">{{ __("{$key}.start.trial") }}</p>
+    @if ($key === 'landings.prikklok')
+        <div class="wp-welcome-cta-row">
+            <a href="{{ route('demo') }}" class="btn btn--primary">{{ __('landings.shared.cta_demo') }}</a>
+            <a href="{{ \App\Support\Marketing\MarketingDomain::authUrl('/register') }}" class="btn btn--ghost">{{ __('landings.shared.cta_register') }}</a>
+        </div>
+    @endif
 </article>
 
 @if (filled($visuals['close'] ?? null))
@@ -192,6 +198,12 @@
             <h2 class="wp-welcome-h3">{{ __("{$key}.close.title") }}</h2>
             <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __("{$key}.close.lead") }}</p>
             <p class="wp-text-body">{{ __("{$key}.flow") }}</p>
+            @if ($key === 'landings.prikklok')
+                <div class="wp-welcome-cta-row">
+                    <a href="{{ route('demo') }}" class="btn btn--primary">{{ __('landings.shared.cta_demo') }}</a>
+                    <a href="{{ \App\Support\Marketing\MarketingDomain::authUrl('/register') }}" class="btn btn--ghost wp-welcome-closing-panel__ghost">{{ __('landings.shared.cta_register') }}</a>
+                </div>
+            @endif
         </div>
     </section>
 @else
@@ -199,5 +211,11 @@
         <h2 class="wp-welcome-h3">{{ __("{$key}.close.title") }}</h2>
         <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __("{$key}.close.lead") }}</p>
         <p class="wp-text-body">{{ __("{$key}.flow") }}</p>
+        @if ($key === 'landings.prikklok')
+            <div class="wp-welcome-cta-row">
+                <a href="{{ route('demo') }}" class="btn btn--primary">{{ __('landings.shared.cta_demo') }}</a>
+                <a href="{{ \App\Support\Marketing\MarketingDomain::authUrl('/register') }}" class="btn btn--ghost">{{ __('landings.shared.cta_register') }}</a>
+            </div>
+        @endif
     </article>
 @endif
