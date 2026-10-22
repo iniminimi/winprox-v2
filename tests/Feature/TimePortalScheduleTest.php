@@ -10,6 +10,7 @@ use App\Data\Time\SavePlannedShiftsData;
 use App\Data\Time\SaveShiftTypeData;
 use App\Enums\ShiftTypeColor;
 use App\Enums\ShiftTypeKind;
+use App\Enums\WorkerNotificationType;
 use App\Livewire\Public\TimePortal;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
@@ -116,6 +117,76 @@ it('toont alleen published eigen diensten en zet de badge weg', function () {
         ->assertDontSee('wp-list', false);
 
     expect(WorkerNotification::query()->where('worker_id', $worker->id)->whereNull('read_at')->count())->toBe(0);
+});
+
+it('legt op Mijn rooster uit welke dagen de badge telde', function () {
+    $this->travelTo(Carbon::parse('2026-09-14 12:00:00'));
+    [$tenant, $team, $clockPoint, $worker] = schedulePortalTenant();
+    $week = Carbon::parse('2026-09-14')->startOfWeek(Carbon::MONDAY)->toDateString();
+    $monday = Carbon::parse($week);
+    app(SaveShiftTypeAction::class)->handle(
+        $tenant,
+        new SaveShiftTypeData('D1', 'Dagdienst', '07:00', '15:00', 30, ShiftTypeColor::Emerald),
+        null,
+    );
+
+    $cells = [];
+    for ($i = 0; $i < 7; $i++) {
+        $date = $monday->copy()->addDays($i)->toDateString();
+        $cells[] = [
+            'worker_id' => $worker->id,
+            'date' => $date,
+            'raw' => in_array($i, [0, 2], true) ? 'D1' : '',
+        ];
+    }
+
+    app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData($week, [$worker->id], $cells),
+        null,
+    );
+    app(PublishWeekAction::class)->handle(
+        $tenant,
+        new PublishWeekData($week, [$worker->id]),
+        null,
+    );
+
+    // Planner past woensdag aan → tweede ongelezen melding (roster_changed).
+    $changedDate = $monday->copy()->addDays(2);
+    WorkerNotification::create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'type' => WorkerNotificationType::RosterChanged,
+        'reference_id' => $changedDate->toDateString(),
+    ]);
+
+    $this->travelBack();
+
+    expect(WorkerNotification::query()->where('worker_id', $worker->id)->whereNull('read_at')->count())->toBe(2);
+
+    $publishedLabel = Carbon::parse($week)->locale(app()->getLocale())->translatedFormat('l j F');
+    $changedLabel = $changedDate->copy()->locale(app()->getLocale())->isoFormat('dd').' '.$changedDate->format('d/m');
+
+    signInScheduleWorker($clockPoint)
+        ->assertSeeHtml('wp-pill--new')
+        ->call('openSchedule')
+        ->assertSet('scheduleListOpen', true)
+        ->assertSee(__('time.portal.schedule.published_notice', ['date' => $publishedLabel]), false)
+        ->assertSee(__('time.portal.schedule.changed_notice', ['days' => $changedLabel]), false)
+        ->assertSeeHtml('wp-portal-schedule__changed')
+        ->assertSee(__('time.portal.schedule.changed_badge'), false)
+        ->call('closeSchedule')
+        ->assertSet('scheduleListOpen', false)
+        ->assertDontSeeHtml('wp-pill--new');
+
+    expect(WorkerNotification::query()->where('worker_id', $worker->id)->whereNull('read_at')->count())->toBe(0);
+
+    // Heropenen: meldingen zijn gelezen — geen markeringen meer.
+    signInScheduleWorker($clockPoint)
+        ->call('openSchedule')
+        ->assertSet('scheduleListOpen', true)
+        ->assertDontSeeHtml('wp-portal-schedule__notice')
+        ->assertDontSeeHtml('wp-portal-schedule__changed');
 });
 
 it('weigert de roosterlijst via Livewire-state', function () {

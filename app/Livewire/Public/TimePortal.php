@@ -224,6 +224,11 @@ class TimePortal extends Component
 
     public string $scheduleMonth = '';
 
+    /** @var list<string> Y-m-d dagen met een ongelezen rooster-wijziging */
+    public array $scheduleChangedDates = [];
+
+    public ?string $schedulePublishedFrom = null;
+
     public string $hoursMonth = '';
 
     public bool $rosterAcknowledged = false;
@@ -551,7 +556,7 @@ class TimePortal extends Component
     private function forgetPortalSignInState(): void
     {
         $this->taskBaselineSyncedThisVisit = false;
-        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'ownDeviceReleaseOffered', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'flashMessageKey', 'flashMessageReplace', 'homescreenHelpOpen', 'teamleaderOpen']);
+        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'ownDeviceReleaseOffered', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'scheduleChangedDates', 'schedulePublishedFrom', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'flashMessageKey', 'flashMessageReplace', 'homescreenHelpOpen', 'teamleaderOpen']);
         $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm', 'rosterAcknowledged']);
     }
 
@@ -637,6 +642,19 @@ class TimePortal extends Component
         $cursor = $newest?->target->cursor ?? now()->toDateString();
         [$monthStart] = $resolveMonth->handle($cursor);
         $this->scheduleMonth = $monthStart->toDateString();
+
+        // De badge naast "Mijn rooster" telt deze meldingen — markeer de
+        // betrokken dagen zodat de teller zichtbaar iets betekent.
+        $this->scheduleChangedDates = collect($unread)
+            ->reject(fn ($item) => $item->type === WorkerNotificationType::RosterPublished)
+            ->map(fn ($item) => $item->target->cursor)
+            ->unique()
+            ->values()
+            ->all();
+        $this->schedulePublishedFrom = collect($unread)
+            ->first(fn ($item) => $item->type === WorkerNotificationType::RosterPublished)
+            ?->target->cursor;
+
         $markRead->handle($worker, $this->tenantId, [WorkerNotificationType::RosterPublished, WorkerNotificationType::RosterChanged, WorkerNotificationType::RosterCorrected]);
         $this->scheduleListOpen = true;
     }
@@ -644,6 +662,8 @@ class TimePortal extends Component
     public function closeSchedule(): void
     {
         $this->scheduleListOpen = false;
+        $this->scheduleChangedDates = [];
+        $this->schedulePublishedFrom = null;
     }
 
     public function openAbsence(): void
@@ -2047,6 +2067,8 @@ class TimePortal extends Component
         $schedule = null;
         $scheduleMonthLabel = '';
         $scheduleUnreadCount = 0;
+        $schedulePublishedLabel = null;
+        $scheduleChangedDaysLabel = '';
         if ($canAct && $verifiedWorker !== null && $hasTimeModule && ! $checkmateMode) {
             $scheduleUnreadCount = count($listNotifications->handle(
                 $verifiedWorker,
@@ -2059,6 +2081,18 @@ class TimePortal extends Component
                 $schedule = $listSchedule->handle($verifiedWorker, $this->tenantId, $cursor, $this->locale);
                 $this->scheduleMonth = $schedule->monthStart;
                 $scheduleMonthLabel = $schedule->monthLabel;
+                if ($this->schedulePublishedFrom !== null) {
+                    $schedulePublishedLabel = Carbon::parse($this->schedulePublishedFrom)
+                        ->locale($this->locale)
+                        ->translatedFormat('l j F');
+                }
+                $scheduleChangedDaysLabel = collect($this->scheduleChangedDates)
+                    ->map(function (string $date) {
+                        $day = Carbon::parse($date)->locale($this->locale);
+
+                        return $day->isoFormat('dd').' '.$day->format('d/m');
+                    })
+                    ->implode(', ');
             }
         }
 
@@ -2142,6 +2176,8 @@ class TimePortal extends Component
             'hoursIsCurrentMonth' => $hoursIsCurrentMonth,
             'schedule' => $schedule,
             'scheduleMonthLabel' => $scheduleMonthLabel,
+            'schedulePublishedLabel' => $schedulePublishedLabel,
+            'scheduleChangedDaysLabel' => $scheduleChangedDaysLabel,
             'scheduleUnreadCount' => $scheduleUnreadCount,
             'absenceRequests' => $absenceRequests,
             'checkmateMode' => $checkmateMode,

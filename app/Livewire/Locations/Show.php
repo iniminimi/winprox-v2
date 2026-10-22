@@ -680,6 +680,16 @@ class Show extends Component
             : null;
 
         if ($tenant instanceof Tenant) {
+            if (! TenantWorkMenuAccess::mayEnableIssuesTasks(
+                $tenant,
+                (bool) $validated['unitPublicReportsEnabled'],
+                (bool) ($currentUnit?->public_reports_enabled ?? false),
+            )) {
+                $this->addError('unitPublicReportsEnabled', __('settings.work_menu.errors.issues_tasks_disabled'));
+
+                return;
+            }
+
             if (! TenantWorkMenuAccess::mayEnableReservations(
                 $tenant,
                 (bool) $validated['unitAllowReservations'],
@@ -1169,6 +1179,16 @@ class Show extends Component
 
         $tenant = $this->locationTenant();
         if ($tenant instanceof Tenant) {
+            if (! TenantWorkMenuAccess::mayEnableIssuesTasks(
+                $tenant,
+                (bool) $validated['bulkPublicReportsEnabled'],
+                false,
+            )) {
+                $this->addError('bulkPublicReportsEnabled', __('settings.work_menu.errors.issues_tasks_disabled'));
+
+                return;
+            }
+
             if (! TenantWorkMenuAccess::mayEnableReservations(
                 $tenant,
                 (bool) $validated['bulkAllowReservations'],
@@ -1484,6 +1504,7 @@ class Show extends Component
             'locationTranslationLocales' => $locationTranslationLocales,
             'canImportUnitsCsv' => $this->locationTenant()?->hasCsvUnitsImport() ?? false,
             'workMenuReservationsEnabled' => $this->locationTenant()?->workMenuReservationsEnabled() ?? true,
+            'workMenuIssuesTasksEnabled' => $this->locationTenant()?->workMenuIssuesTasksEnabled() ?? true,
             'workMenuChecklistsEnabled' => $this->locationTenant()?->workMenuChecklistsEnabled() ?? true,
             'workMenuUnitChecksEnabled' => $this->locationTenant()?->workMenuUnitChecksEnabled() ?? true,
             'workMenuUnitMeasurementsEnabled' => $this->locationTenant()?->workMenuUnitMeasurementsEnabled() ?? true,

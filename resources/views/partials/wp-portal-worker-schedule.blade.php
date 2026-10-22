@@ -7,6 +7,16 @@
 </nav>
 
 <div class="wp-card wp-card-pad wp-portal-schedule">
+    @if (($schedulePublishedLabel ?? null) !== null || ($scheduleChangedDaysLabel ?? '') !== '')
+        <div class="wp-flash wp-flash--muted wp-portal-schedule__notice">
+            @if (($schedulePublishedLabel ?? null) !== null)
+                <p>{{ __('time.portal.schedule.published_notice', ['date' => $schedulePublishedLabel]) }}</p>
+            @endif
+            @if (($scheduleChangedDaysLabel ?? '') !== '')
+                <p>{{ __('time.portal.schedule.changed_notice', ['days' => $scheduleChangedDaysLabel]) }}</p>
+            @endif
+        </div>
+    @endif
     @if ($schedule->entries === [])
         <p class="wp-muted">{{ __('time.portal.schedule.empty') }}</p>
     @else
@@ -27,7 +37,12 @@
                             'wp-portal-schedule__row--today' => $entry->isToday,
                         ])
                     >
-                        <td class="wp-portal-schedule__day">{{ $entry->dayLabel }}</td>
+                        <td class="wp-portal-schedule__day">
+                            {{ $entry->dayLabel }}
+                            @if (in_array($entry->date, $scheduleChangedDates ?? [], true))
+                                <span class="wp-pill wp-pill--new wp-portal-schedule__changed">{{ __('time.portal.schedule.changed_badge') }}</span>
+                            @endif
+                        </td>
                         <td class="wp-portal-schedule__duty">
                             {{ $entry->duty !== '' ? $entry->duty : '—' }}
                             @if ($entry->description !== null)

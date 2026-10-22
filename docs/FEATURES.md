@@ -1088,7 +1088,9 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   **maand**. Beknopte lijst in één kader (`ma 14/09 : Dagdienst - 08:00-17:00`); lege dagen
   worden overgeslagen; meerdere blokken op één dag staan als eigen regels onder elkaar.
   Badge = ongelezen `roster_published` **of `roster_changed`** (`wp-pill--new`). Klik opent de
-  maand van de nieuwste ongelezen melding en zet `read_at` voor beide types. Geen inbox, geen
+  maand van de nieuwste ongelezen melding, toont een info-balk ("nieuw rooster vanaf …" en/of
+  "aangepast op <dagen>") en markeert gewijzigde dagen met een `wp-pill--new` op de rij; daarna
+  wordt `read_at` gezet voor beide types. Geen inbox, geen
   mail, geen Laravel notifications. **`roster_changed`** (`reference_id` = gewijzigde `work_date`):
   één per worker×dag (dedup via `updateOrCreate`, `read_at` reset), alleen als de inhoudelijke
   dag-signature van **published** blokken wijzigt, alleen voor dagen **≥ vandaag** — correcties in

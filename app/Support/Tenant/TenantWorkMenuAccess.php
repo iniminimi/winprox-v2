@@ -126,6 +126,11 @@ final class TenantWorkMenuAccess
         return self::maySetBooleanFlag(self::unitChecksEnabled($tenant), $newValue, $currentValue);
     }
 
+    public static function mayEnableIssuesTasks(?Tenant $tenant, bool $newValue, bool $currentValue): bool
+    {
+        return self::maySetBooleanFlag(self::issuesTasksEnabled($tenant), $newValue, $currentValue);
+    }
+
     /**
      * Een checklist loskoppelen of ongewijzigd laten is altijd toegestaan.
      * Een (nieuwe) checklist koppelen vereist dat Checklists aan staat.

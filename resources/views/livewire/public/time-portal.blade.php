@@ -299,6 +299,9 @@
                     @include('partials.wp-portal-worker-schedule', [
                         'schedule' => $schedule,
                         'scheduleMonthLabel' => $scheduleMonthLabel,
+                        'scheduleChangedDates' => $scheduleChangedDates,
+                        'scheduleChangedDaysLabel' => $scheduleChangedDaysLabel,
+                        'schedulePublishedLabel' => $schedulePublishedLabel,
                     ])
                 @elseif ($absenceListOpen)
                     <x-wp-portal-back wire:click="closeAbsence" />
