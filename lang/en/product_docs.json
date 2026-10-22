@@ -298,7 +298,8 @@
                 "body": "Admin chooses which extras appear in the sidebar.",
                 "items": [
                     "Calendar, Reservations, Inspection rounds and Unit measurements per organisation.",
-                    "Off = no admin access; existing unit QR still works."
+                    "Off = no admin access; existing unit QR still works.",
+                    "Issues & tasks is the master switch: off = all other Work items go off too."
                 ]
             },
             {
@@ -382,7 +383,7 @@
                     "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons and a bound phone, manage workers and take photos.",
                     "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
                     "Operational reports: filtered CSV or print on issues, tasks, Time, reservations, unit checks, unit measurements and ESG — for users who may view those lists. Print follows the list layout where possible; Time = timesheet. Separate from the GDPR account export (Settings → Privacy & data export).",
-                    "Work menu: tenant columns work_menu_*_enabled; sidebar and backoffice routes via TenantWorkMenuAccess; starter template sets defaults via UpdateTenantWorkMenuAction (removing template does not revert menu)."
+                    "Work menu: tenant columns work_menu_*_enabled; sidebar and backoffice routes via TenantWorkMenuAccess; starter template sets defaults via UpdateTenantWorkMenuAction (removing template does not revert menu); issues & tasks is the master switch (getter cascade)."
                 ]
             },
             {

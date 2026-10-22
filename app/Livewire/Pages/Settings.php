@@ -391,13 +391,15 @@ class Settings extends Component
 
     private function fillWorkMenuFromTenant(Tenant $tenant): void
     {
-        $this->workMenuCalendarEnabled = $tenant->workMenuCalendarEnabled();
-        $this->workMenuReservationsEnabled = $tenant->workMenuReservationsEnabled();
-        $this->workMenuInspectionRoundsEnabled = $tenant->workMenuInspectionRoundsEnabled();
-        $this->workMenuChecklistsEnabled = $tenant->workMenuChecklistsEnabled();
-        $this->workMenuUnitChecksEnabled = $tenant->workMenuUnitChecksEnabled();
+        // Ruwe kolommen, niet de cascaderende getters: verborgen sub-opties
+        // behouden hun opgeslagen waarde zolang de hoofdschakelaar uit staat.
+        $this->workMenuCalendarEnabled = (bool) ($tenant->work_menu_calendar_enabled ?? true);
+        $this->workMenuReservationsEnabled = (bool) ($tenant->work_menu_reservations_enabled ?? true);
+        $this->workMenuInspectionRoundsEnabled = (bool) ($tenant->work_menu_inspection_rounds_enabled ?? true);
+        $this->workMenuChecklistsEnabled = (bool) ($tenant->work_menu_checklists_enabled ?? true);
+        $this->workMenuUnitChecksEnabled = (bool) ($tenant->work_menu_unit_checks_enabled ?? true);
         $this->workMenuIssuesTasksEnabled = $tenant->workMenuIssuesTasksEnabled();
-        $this->workMenuUnitMeasurementsEnabled = $tenant->workMenuUnitMeasurementsEnabled();
+        $this->workMenuUnitMeasurementsEnabled = (bool) ($tenant->work_menu_unit_measurements_enabled ?? true);
     }
 
     public function openOrgModal(): void

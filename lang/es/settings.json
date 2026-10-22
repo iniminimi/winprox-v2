@@ -87,7 +87,7 @@
         "title": "Ajustes del menú Trabajo",
         "hint": "Elige qué elementos del menú Trabajo son visibles en el backoffice. Los desactivados desaparecen de la barra lateral; los ajustes existentes en unidades/categorías del portal QR siguen funcionando.",
         "issues_tasks_label": "Avisos & tareas",
-        "issues_tasks_hint": "Las listas de avisos y tareas. Desactivadas desaparecen del menú, del panel y del portal de unidad de los operarios; las rondas de inspección siguen disponibles aparte.",
+        "issues_tasks_hint": "Las listas de avisos y tareas — el interruptor principal del menú Trabajo. Desactivadas desaparecen del menú, del panel y del portal de unidad de los operarios, y los demás elementos de Trabajo de abajo también se desactivan.",
         "inspection_rounds_label": "Rondas de inspección",
         "inspection_rounds_hint": "Lista y planificación de rondas de inspección. Los unit checks siguen disponibles por separado.",
         "checklists_label": "Checklists",

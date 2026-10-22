@@ -1656,9 +1656,9 @@ it('verbergt meldingen en taken op het unit-portaal als het werkmenu-item uit st
         ->assertDontSee(__('portal.tiles.new'))
         ->assertDontSee(__('portal.tiles.issues'))
         ->assertDontSee('Gewone taak die niet mag.')
-        // Inspectierondes staan aan: de takenkaart blijft bestaan (leeg).
-        ->assertSee('id="portal-open-tasks"', false)
-        ->assertSee('wp-tile-title">'.__('portal.tiles.open_tasks'), false);
+        // Meldingen & taken is de hoofdschakelaar: hele Werk-laag weg.
+        ->assertDontSee('id="portal-open-tasks"', false)
+        ->assertDontSee('wp-tile-title">'.__('portal.tiles.open_tasks'), false);
 });
 
 it('blokkeert melding maken en taakacties server-side als het werkmenu-item uit staat', function () {
@@ -1700,7 +1700,7 @@ it('blokkeert melding maken en taakacties server-side als het werkmenu-item uit 
         ->and(Issue::query()->where('description', 'Een melding die niet mag.')->count())->toBe(0);
 });
 
-it('houdt inspectieronde-taken zichtbaar als enkel meldingen en taken uit staan', function () {
+it('verbergt ook inspectieronde-taken op het unit-portaal als de hoofdschakelaar uit staat', function () {
     ['unit' => $unit, 'team' => $team, 'location' => $location, 'tenant' => $tenant] = unitPortalScaffold();
 
     $worker = Worker::factory()->withIcon('star')->create([
@@ -1731,12 +1731,14 @@ it('houdt inspectieronde-taken zichtbaar als enkel meldingen en taken uit staan'
         'description' => 'Ronde-taak gebouw',
     ]);
 
+    // De inspectierondes-vlag blijft opgeslagen aan, maar de hoofdschakelaar wint.
     $tenant->update(['work_menu_issues_tasks_enabled' => false]);
     WorkerVerification::markVerified($team, $worker);
 
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
-        ->assertSee('id="portal-open-tasks"', false)
-        ->assertSee('Ronde-taak gebouw');
+        ->assertDontSee('wp-tile-title">'.__('portal.tiles.open_tasks'), false)
+        ->assertDontSee('id="portal-open-tasks"', false)
+        ->assertDontSee('Ronde-taak gebouw');
 });
 
 it('verbergt ook ronde-taken als meldingen, taken én inspectierondes uit staan', function () {

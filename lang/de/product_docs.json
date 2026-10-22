@@ -298,7 +298,8 @@
                 "body": "Die Verwaltung wählt, welche Extras in der Seitenleiste stehen.",
                 "items": [
                     "Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen pro Organisation.",
-                    "Aus = kein Verwaltungszugang; vorhandener Unit-QR bleibt nutzbar."
+                    "Aus = kein Verwaltungszugang; vorhandener Unit-QR bleibt nutzbar.",
+                    "Meldungen & Aufgaben ist der Hauptschalter: aus = alle anderen Arbeit-Einträge fallen weg."
                 ]
             },
             {
@@ -382,7 +383,7 @@
                     "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons and a bound phone, manage workers and take photos.",
                     "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
                     "Betriebliche Berichte: gefilterte CSV oder Druck auf Meldungen, Aufgaben, Time, Reservierungen, Unit-Checks, Unit-Messungen und ESG — für Nutzer, die diese Listen sehen dürfen. Druck folgt wo sinnvoll dem Listenlayout; Time = Stundenübersicht. Getrennt vom DSGVO-Kontoexport (Einstellungen → Datenschutz und Export).",
-                    "Arbeitsmenü: Tenant-Spalten work_menu_*_enabled; Seitenleiste und Backoffice-Routen via TenantWorkMenuAccess; Startvorlage setzt Defaults via UpdateTenantWorkMenuAction (Löschen der Vorlage setzt Menü nicht zurück)."
+                    "Arbeitsmenü: Tenant-Spalten work_menu_*_enabled; Seitenleiste und Backoffice-Routen via TenantWorkMenuAccess; Startvorlage setzt Defaults via UpdateTenantWorkMenuAction (Löschen der Vorlage setzt Menü nicht zurück); Meldungen & Aufgaben ist der Hauptschalter (Getter-Kaskade)."
                 ]
             },
             {

@@ -705,7 +705,7 @@
                 {
                     "label": "Ajustes del menú Trabajo",
                     "requires_facility": true,
-                    "text": "En Organización → Ajustes → Ajustes del menú Trabajo, el administrador puede elegir por organización qué elementos de Trabajo son visibles: Calendario, Reservas, Rondas de inspección y Mediciones de unidad. Desactivado, el elemento desaparece de la barra lateral y las rutas de backoffice devuelven prohibido. Los ajustes de reserva o medición existentes en unidades y categorías siguen funcionando en el portal QR; no se pueden activar de nuevo mientras el elemento del menú Trabajo esté desactivado. Los unit checks no se ven afectados si Rondas de inspección está desactivado."
+                    "text": "En Organización → Ajustes → Ajustes del menú Trabajo, el administrador puede elegir por organización qué elementos de Trabajo son visibles: Calendario, Reservas, Rondas de inspección y Mediciones de unidad. Desactivado, el elemento desaparece de la barra lateral y las rutas de backoffice devuelven prohibido. Los ajustes de reserva o medición existentes en unidades y categorías siguen funcionando en el portal QR; no se pueden activar de nuevo mientras el elemento del menú Trabajo esté desactivado. Los unit checks no se ven afectados si Rondas de inspección está desactivado. Avisos & tareas es el interruptor principal del menú Trabajo: desactivado, todos los demás elementos también se desactivan."
                 },
                 {
                     "label": "Seguridad del fichaje",

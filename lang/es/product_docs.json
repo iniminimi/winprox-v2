@@ -298,7 +298,8 @@
                 "body": "La gestión elige qué extras aparecen en la barra lateral.",
                 "items": [
                     "Calendario, Reservas, Rondas y Mediciones de unidad por organización.",
-                    "Desactivado = sin acceso de gestión; el QR de unidad existente sigue funcionando."
+                    "Desactivado = sin acceso de gestión; el QR de unidad existente sigue funcionando.",
+                    "Avisos & tareas es el interruptor principal: desactivado = todos los demás elementos también se desactivan."
                 ]
             },
             {
@@ -382,7 +383,7 @@
                     "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons and a bound phone, manage workers and take photos.",
                     "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
                     "Informes operativos: CSV o impresión filtrada en incidencias, tareas, Time, reservas, unit checks, mediciones unit y ESG — para quien pueda ver esas listas. La impresión sigue cuando procede el diseño de la lista; Time = hoja de horas. Distinto de la exportación de cuenta RGPD (Ajustes → Privacidad y exportación).",
-                    "Menú de trabajo: columnas tenant work_menu_*_enabled; barra lateral y rutas backoffice via TenantWorkMenuAccess; plantilla inicial aplica defaults via UpdateTenantWorkMenuAction (eliminar plantilla no revierte el menú)."
+                    "Menú de trabajo: columnas tenant work_menu_*_enabled; barra lateral y rutas backoffice via TenantWorkMenuAccess; plantilla inicial aplica defaults via UpdateTenantWorkMenuAction (eliminar plantilla no revierte el menú); avisos & tareas es el interruptor principal (cascada de getters)."
                 ]
             },
             {

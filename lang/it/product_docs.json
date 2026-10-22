@@ -298,7 +298,8 @@
                 "body": "La gestione sceglie quali extra compaiono nella barra laterale.",
                 "items": [
                     "Calendario, Prenotazioni, Giri e Misure unità per organizzazione.",
-                    "Off = nessun accesso gestione; il QR unità esistente continua a funzionare."
+                    "Off = nessun accesso gestione; il QR unità esistente continua a funzionare.",
+                    "Segnalazioni & attività è l’interruttore principale: disattivato = anche le altre voci Lavoro vengono disattivate."
                 ]
             },
             {
@@ -382,7 +383,7 @@
                     "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons and a bound phone, manage workers and take photos.",
                     "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
                     "Rapporti operativi: CSV o stampa filtrata su segnalazioni, attività, Time, prenotazioni, unit check, misurazioni unit e ESG — per chi può vedere tali elenchi. La stampa segue dove possibile il layout dell'elenco; Time = foglio ore. Distinto dall'esportazione account GDPR (Impostazioni → Privacy ed esportazione).",
-                    "Menu Lavoro: colonne tenant work_menu_*_enabled; barra laterale e route backoffice via TenantWorkMenuAccess; modello iniziale imposta default via UpdateTenantWorkMenuAction (rimuovere modello non ripristina il menu)."
+                    "Menu Lavoro: colonne tenant work_menu_*_enabled; barra laterale e route backoffice via TenantWorkMenuAccess; modello iniziale imposta default via UpdateTenantWorkMenuAction (rimuovere modello non ripristina il menu); segnalazioni & attività è l’interruttore principale (cascata di getter)."
                 ]
             },
             {

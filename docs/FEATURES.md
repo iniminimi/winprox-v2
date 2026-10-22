@@ -27,7 +27,11 @@ Corporate — groep alleen als minstens één module aan staat) ·
 **Organisatie** (Instellingen, API, Abonnement) · **Hulp** (FAQ, Handleiding, Juridisch,
 Contact).
 
-**Werkmenu instellingen** (Organisatie → Instellingen, admin): per tenant Kalender, Reserveringen,
+**Werkmenu instellingen** (Organisatie → Instellingen, admin): **Meldingen & taken is de
+hoofdschakelaar** van het Werk-menu — uit = alle andere Werk-items (Inspectierondes, Checklists,
+Unit checks, Kalender, Reserveringen, Unitmetingen) vallen mee weg en worden in het
+instellingenblok verborgen; opgeslagen vlaggen blijven bewaard en herstellen mee bij het
+terug aanzetten. Per tenant Kalender, Reserveringen,
 Inspectierondes en Unitmetingen in/uit in de sidebar; uit = geen backoffice-routes (403).
 Bestaande unit/categorie-vlaggen op het QR-portaal blijven werken (grandfather); nieuw
 inschakelen op units/categorieën kan niet zolang het werkmenu-item uit staat. Inspectierondes

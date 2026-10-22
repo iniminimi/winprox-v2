@@ -705,7 +705,7 @@
                 {
                     "label": "Werkmenu instellingen",
                     "requires_facility": true,
-                    "text": "Via Organisatie → Instellingen → Werkmenu instellingen kan de beheerder per organisatie bepalen welke onderdelen onder Werk zichtbaar zijn: Kalender, Reserveringen, Inspectierondes en Unitmetingen. Uitgeschakeld verdwijnt het item uit de sidebar en zijn de backoffice-routes niet bereikbaar. Bestaande reserverings- of meet-instellingen op units en categorieën blijven op het QR-portaal werken; nieuw inschakelen kan niet zolang het werkmenu-item uit staat. Unit checks worden niet beïnvloed door Inspectierondes uit."
+                    "text": "Via Organisatie → Instellingen → Werkmenu instellingen kan de beheerder per organisatie bepalen welke onderdelen onder Werk zichtbaar zijn: Kalender, Reserveringen, Inspectierondes en Unitmetingen. Uitgeschakeld verdwijnt het item uit de sidebar en zijn de backoffice-routes niet bereikbaar. Bestaande reserverings- of meet-instellingen op units en categorieën blijven op het QR-portaal werken; nieuw inschakelen kan niet zolang het werkmenu-item uit staat. Unit checks worden niet beïnvloed door Inspectierondes uit. Meldingen & taken is de hoofdschakelaar van het Werk-menu: staat die uit, dan vallen alle andere Werk-items weg."
                 },
                 {
                     "label": "Prikklok-beveiliging",

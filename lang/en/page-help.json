@@ -705,7 +705,7 @@
                 {
                     "label": "Work menu settings",
                     "requires_facility": true,
-                    "text": "Via Organisation → Settings → Work menu settings, the administrator can choose per organisation which Work items are visible: Calendar, Reservations, Inspection rounds and Unit measurements. When disabled, the item disappears from the sidebar and backoffice routes return forbidden. Existing reservation or measurement settings on units and categories keep working on the QR portal; you cannot newly enable them while the work menu item is off. Unit checks are not affected when Inspection rounds is off."
+                    "text": "Via Organisation → Settings → Work menu settings, the administrator can choose per organisation which Work items are visible: Calendar, Reservations, Inspection rounds and Unit measurements. When disabled, the item disappears from the sidebar and backoffice routes return forbidden. Existing reservation or measurement settings on units and categories keep working on the QR portal; you cannot newly enable them while the work menu item is off. Unit checks are not affected when Inspection rounds is off. Issues & tasks is the master switch of the Work menu: when off, all other Work items are switched off too."
                 },
                 {
                     "label": "Punch clock security",

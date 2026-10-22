@@ -169,7 +169,8 @@ class Unit extends Model
         return $query
             ->where('units.allow_unit_checks', true)
             ->whereHas('tenant', function (Builder $tenant): void {
-                $tenant->where('work_menu_unit_checks_enabled', true);
+                $tenant->where('work_menu_issues_tasks_enabled', true)
+                    ->where('work_menu_unit_checks_enabled', true);
             })
             ->where(function (Builder $inner): void {
                 $inner->whereNull('units.category_id')

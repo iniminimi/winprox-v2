@@ -705,7 +705,7 @@
                 {
                     "label": "Arbeitsmenü-Einstellungen",
                     "requires_facility": true,
-                    "text": "Über Organisation → Einstellungen → Arbeitsmenü-Einstellungen kann der Administrator pro Organisation festlegen, welche Arbeitsmenü-Einträge sichtbar sind: Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen. Deaktiviert verschwindet der Eintrag aus der Seitenleiste und Backoffice-Routen sind gesperrt. Bestehende Reservierungs- oder Mess-Einstellungen auf Units und Kategorien funktionieren im QR-Portal weiter; neu aktivieren ist nicht möglich, solange der Menüeintrag aus ist. Unit Checks werden nicht beeinflusst, wenn Inspektionsrunden aus ist."
+                    "text": "Über Organisation → Einstellungen → Arbeitsmenü-Einstellungen kann der Administrator pro Organisation festlegen, welche Arbeitsmenü-Einträge sichtbar sind: Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen. Deaktiviert verschwindet der Eintrag aus der Seitenleiste und Backoffice-Routen sind gesperrt. Bestehende Reservierungs- oder Mess-Einstellungen auf Units und Kategorien funktionieren im QR-Portal weiter; neu aktivieren ist nicht möglich, solange der Menüeintrag aus ist. Unit Checks werden nicht beeinflusst, wenn Inspektionsrunden aus ist. Meldungen & Aufgaben ist der Hauptschalter des Arbeitsmenüs: deaktiviert fallen auch alle anderen Einträge weg."
                 },
                 {
                     "label": "Stempeluhr-Sicherheit",

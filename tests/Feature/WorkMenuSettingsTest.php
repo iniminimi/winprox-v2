@@ -54,11 +54,14 @@ it('persisteert werkmenu-wijzigingen via de action met audit', function () {
     $fresh = $tenant->fresh();
     expect($fresh->workMenuCalendarEnabled())->toBeFalse()
         ->and($fresh->workMenuReservationsEnabled())->toBeFalse()
-        ->and($fresh->workMenuInspectionRoundsEnabled())->toBeTrue()
         ->and($fresh->workMenuChecklistsEnabled())->toBeFalse()
         ->and($fresh->workMenuUnitChecksEnabled())->toBeFalse()
         ->and($fresh->workMenuIssuesTasksEnabled())->toBeFalse()
         ->and($fresh->workMenuUnitMeasurementsEnabled())->toBeFalse();
+
+    // Opgeslagen vlag blijft true, maar de getter volgt de hoofdschakelaar.
+    expect($fresh->work_menu_inspection_rounds_enabled)->toBeTrue()
+        ->and($fresh->workMenuInspectionRoundsEnabled())->toBeFalse();
 
     expect(\DB::table('audit_logs')->where('action', 'tenant.work_menu_updated')->exists())->toBeTrue();
 });
@@ -166,7 +169,17 @@ it('verbergt de hele Werk-groep wanneer geen enkel werkmenu-item zichtbaar is', 
         ->assertOk()
         ->assertDontSeeHtml('>Werk</span>');
 
+    // Kalender terug aan terwijl de hoofdschakelaar uit staat: Werk blijft weg.
     $tenant->update(['work_menu_calendar_enabled' => true]);
+    $admin->refresh();
+
+    $this->actingAs($admin)
+        ->get(route('dashboard'))
+        ->assertOk()
+        ->assertDontSeeHtml('>Werk</span>');
+
+    // Pas de hoofdschakelaar aan: de opgeslagen kalender-vlag komt mee terug.
+    $tenant->update(['work_menu_issues_tasks_enabled' => true]);
     $admin->refresh();
 
     $this->actingAs($admin)
@@ -175,10 +188,11 @@ it('verbergt de hele Werk-groep wanneer geen enkel werkmenu-item zichtbaar is', 
         ->assertSeeHtml('>Werk</span>');
 });
 
-it('laat inspectierondes bereikbaar wanneer meldingen en taken uit staan', function () {
+it('schakelt alle werkmenu-items mee uit wanneer meldingen en taken uit staan', function () {
     $tenant = Tenant::factory()->create([
         'work_menu_issues_tasks_enabled' => false,
         'work_menu_inspection_rounds_enabled' => true,
+        'work_menu_reservations_enabled' => true,
     ]);
     Tenancy::actAs($tenant->id);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
@@ -187,7 +201,42 @@ it('laat inspectierondes bereikbaar wanneer meldingen en taken uit staan', funct
 
     $this->actingAs($admin)
         ->get(route('issues.index', ['inspection_round' => 1]))
-        ->assertOk();
+        ->assertForbidden();
+
+    expect($tenant->workMenuInspectionRoundsEnabled())->toBeFalse()
+        ->and($tenant->workMenuReservationsEnabled())->toBeFalse()
+        ->and($tenant->workMenuUnitChecksEnabled())->toBeFalse()
+        ->and($tenant->workMenuCalendarEnabled())->toBeFalse()
+        ->and($tenant->workMenuUnitMeasurementsEnabled())->toBeFalse()
+        ->and($tenant->workMenuChecklistsEnabled())->toBeFalse();
+});
+
+it('verbergt de onderliggende werkmenu-opties als de hoofdschakelaar uit staat', function () {
+    $tenant = Tenant::factory()->create([
+        'work_menu_issues_tasks_enabled' => false,
+        'work_menu_reservations_enabled' => true,
+    ]);
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(Settings::class)
+        ->assertSee('wire:model.live="workMenuIssuesTasksEnabled"', false)
+        ->assertDontSee('wire:model="workMenuInspectionRoundsEnabled"', false)
+        ->assertDontSee('wire:model="workMenuChecklistsEnabled"', false)
+        ->assertDontSee('wire:model="workMenuUnitChecksEnabled"', false)
+        ->assertDontSee('wire:model="workMenuCalendarEnabled"', false)
+        ->assertDontSee('wire:model="workMenuReservationsEnabled"', false)
+        ->assertDontSee('wire:model="workMenuUnitMeasurementsEnabled"', false)
+        ->set('workMenuIssuesTasksEnabled', true)
+        ->assertSee('wire:model="workMenuInspectionRoundsEnabled"', false)
+        ->assertSee('wire:model="workMenuReservationsEnabled"', false)
+        ->set('workMenuIssuesTasksEnabled', false)
+        ->call('saveWorkMenuSettings')
+        ->assertRedirect(route('settings.index'));
+
+    // Verborgen opties worden niet gereset: opgeslagen vlag blijft bewaard.
+    expect($tenant->fresh()->work_menu_reservations_enabled)->toBeTrue();
 });
 
 it('weigert nieuw inschakelen van reserveringen op een unit wanneer werkmenu uit staat', function () {

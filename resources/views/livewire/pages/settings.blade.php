@@ -139,12 +139,13 @@
                 <p class="wp-muted wp-text-sm">{{ __('settings.work_menu.hint') }}</p>
                 <div class="wp-stack-tight">
                     <label class="wp-check">
-                        <input type="checkbox" wire:model="workMenuIssuesTasksEnabled" class="wp-checkbox">
+                        <input type="checkbox" wire:model.live="workMenuIssuesTasksEnabled" class="wp-checkbox">
                         <span>
                             {{ __('settings.work_menu.issues_tasks_label') }}
                             <br><span class="wp-hint">{{ __('settings.work_menu.issues_tasks_hint') }}</span>
                         </span>
                     </label>
+                    @if ($workMenuIssuesTasksEnabled)
                     <label class="wp-check">
                         <input type="checkbox" wire:model="workMenuInspectionRoundsEnabled" class="wp-checkbox">
                         <span>
@@ -187,6 +188,7 @@
                             <br><span class="wp-hint">{{ __('settings.work_menu.unit_measurements_hint') }}</span>
                         </span>
                     </label>
+                    @endif
                 </div>
                 <button type="submit" class="btn btn--primary btn--sm">{{ __('settings.work_menu.confirm') }}</button>
             </form>

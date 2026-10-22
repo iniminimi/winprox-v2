@@ -436,27 +436,27 @@ class Tenant extends Model
 
     public function workMenuCalendarEnabled(): bool
     {
-        return (bool) ($this->work_menu_calendar_enabled ?? true);
+        return $this->workMenuIssuesTasksEnabled() && (bool) ($this->work_menu_calendar_enabled ?? true);
     }
 
     public function workMenuReservationsEnabled(): bool
     {
-        return (bool) ($this->work_menu_reservations_enabled ?? true);
+        return $this->workMenuIssuesTasksEnabled() && (bool) ($this->work_menu_reservations_enabled ?? true);
     }
 
     public function workMenuInspectionRoundsEnabled(): bool
     {
-        return (bool) ($this->work_menu_inspection_rounds_enabled ?? true);
+        return $this->workMenuIssuesTasksEnabled() && (bool) ($this->work_menu_inspection_rounds_enabled ?? true);
     }
 
     public function workMenuChecklistsEnabled(): bool
     {
-        return (bool) ($this->work_menu_checklists_enabled ?? true);
+        return $this->workMenuIssuesTasksEnabled() && (bool) ($this->work_menu_checklists_enabled ?? true);
     }
 
     public function workMenuUnitChecksEnabled(): bool
     {
-        return (bool) ($this->work_menu_unit_checks_enabled ?? true);
+        return $this->workMenuIssuesTasksEnabled() && (bool) ($this->work_menu_unit_checks_enabled ?? true);
     }
 
     public function workMenuIssuesTasksEnabled(): bool
@@ -466,7 +466,7 @@ class Tenant extends Model
 
     public function workMenuUnitMeasurementsEnabled(): bool
     {
-        return (bool) ($this->work_menu_unit_measurements_enabled ?? true);
+        return $this->workMenuIssuesTasksEnabled() && (bool) ($this->work_menu_unit_measurements_enabled ?? true);
     }
 
     public function trialDaysRemaining(): int
