@@ -395,7 +395,7 @@
                         <div class="wp-field-panel__body wp-stack-tight" x-show="open" x-cloak>
                             @if ($workMenuIssuesTasksEnabled || $unitPublicReportsEnabled)
                                 <label class="wp-check">
-                                    <input type="checkbox" wire:model="unitPublicReportsEnabled"
+                                    <input type="checkbox" wire:model.live="unitPublicReportsEnabled"
                                         @disabled(! $workMenuIssuesTasksEnabled && ! $unitPublicReportsEnabled)>
                                     <span>{{ __('locations.units.fields.public_reports_enabled') }}</span>
                                 </label>
@@ -470,7 +470,7 @@
                                 </div>
                             @endif
 
-                            @if ($workMenuIssuesTasksEnabled || $unitRequireReporterContact)
+                            @if ($unitPublicReportsEnabled && ($workMenuIssuesTasksEnabled || $unitRequireReporterContact))
                                 <x-wp-tooltip :text="__('locations.units.require_reporter_contact_hint')" wrap class="wp-tooltip--block">
                                     <label class="wp-check">
                                         <input type="checkbox" wire:model="unitRequireReporterContact"
@@ -480,7 +480,7 @@
                                 </x-wp-tooltip>
                             @endif
 
-                            @if ($workMenuIssuesTasksEnabled || $unitRequireReporterEmailVerification)
+                            @if ($unitPublicReportsEnabled && ($workMenuIssuesTasksEnabled || $unitRequireReporterEmailVerification))
                                 <x-wp-tooltip :text="__('locations.units.require_reporter_email_verification_hint')" wrap class="wp-tooltip--block">
                                     <label class="wp-check">
                                         <input type="checkbox" wire:model="unitRequireReporterEmailVerification"
@@ -764,7 +764,7 @@
                         <div class="wp-field-panel__body wp-stack-tight" x-show="open" x-cloak>
                             @if ($workMenuIssuesTasksEnabled || $bulkPublicReportsEnabled)
                                 <label class="wp-check">
-                                    <input type="checkbox" wire:model="bulkPublicReportsEnabled"
+                                    <input type="checkbox" wire:model.live="bulkPublicReportsEnabled"
                                         @disabled(! $workMenuIssuesTasksEnabled && ! $bulkPublicReportsEnabled)>
                                     <span>{{ __('locations.units.fields.public_reports_enabled') }}</span>
                                 </label>
@@ -839,7 +839,7 @@
                                 </div>
                             @endif
 
-                            @if ($workMenuIssuesTasksEnabled || $bulkRequireReporterContact)
+                            @if ($bulkPublicReportsEnabled && ($workMenuIssuesTasksEnabled || $bulkRequireReporterContact))
                                 <x-wp-tooltip :text="__('locations.units.require_reporter_contact_hint')" wrap class="wp-tooltip--block">
                                     <label class="wp-check">
                                         <input type="checkbox" wire:model="bulkRequireReporterContact"
@@ -849,7 +849,7 @@
                                 </x-wp-tooltip>
                             @endif
 
-                            @if ($workMenuIssuesTasksEnabled || $bulkRequireReporterEmailVerification)
+                            @if ($bulkPublicReportsEnabled && ($workMenuIssuesTasksEnabled || $bulkRequireReporterEmailVerification))
                                 <x-wp-tooltip :text="__('locations.units.require_reporter_email_verification_hint')" wrap class="wp-tooltip--block">
                                     <label class="wp-check">
                                         <input type="checkbox" wire:model="bulkRequireReporterEmailVerification"

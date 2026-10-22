@@ -102,3 +102,44 @@ it('herkent wanneer unit-vinkjes afwijken van categorie-defaults', function () {
 
     expect(UnitCategoryPortalInheritance::unitMatchesDefaults($unit, $defaults))->toBeFalse();
 });
+
+it('verbergt reporter-opties in het unit-formulier zolang bezoekersmeldingen uit staan', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'public_reports_enabled' => false,
+        'require_reporter_contact' => false,
+        'require_reporter_email_verification' => false,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(Show::class, ['location' => $location])
+        ->call('openEditUnit', $unit->id)
+        ->assertDontSee('wire:model="unitRequireReporterContact"', false)
+        ->assertDontSee('wire:model="unitRequireReporterEmailVerification"', false)
+        ->set('unitPublicReportsEnabled', true)
+        ->assertSee('wire:model="unitRequireReporterContact"', false)
+        ->assertSee('wire:model="unitRequireReporterEmailVerification"', false);
+});
+
+it('verbergt reporter-opties in de bulk-modal zolang bezoekersmeldingen uit staan', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(Show::class, ['location' => $location])
+        ->call('openBulkModal')
+        ->set('bulkPublicReportsEnabled', false)
+        ->assertDontSee('wire:model="bulkRequireReporterContact"', false)
+        ->assertDontSee('wire:model="bulkRequireReporterEmailVerification"', false)
+        ->set('bulkPublicReportsEnabled', true)
+        ->assertSee('wire:model="bulkRequireReporterContact"', false)
+        ->assertSee('wire:model="bulkRequireReporterEmailVerification"', false);
+});
