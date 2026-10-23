@@ -116,7 +116,7 @@
                     @endif
                 </div>
 
-                @if (! ($checkmateMode ?? false))
+                @if (! ($checkmateMode ?? false) && ($organisationTenant?->workMenuIssuesTasksEnabled() ?? true))
                     <div class="wp-settings-subblock">
                         <h3 class="wp-settings-subblock-title">{{ __('settings.notifications.title') }}</h3>
                         <p class="wp-muted wp-text-sm">{{ __('settings.notifications.hint') }}</p>

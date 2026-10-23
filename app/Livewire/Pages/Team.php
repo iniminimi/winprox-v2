@@ -1658,6 +1658,7 @@ class Team extends Component
             'canManageTeams' => $user->can('create', InternalTeam::class),
             'canEditContent' => $user->can('manageContent', InternalTeam::class),
             'hasTimeModule' => $tenant?->hasTimeModule() ?? false,
+            'workMenuIssuesTasksEnabled' => $tenant?->workMenuIssuesTasksEnabled() ?? true,
             'presenceComplianceEnabled' => $tenant instanceof Tenant && $tenant->presenceComplianceEnabled(),
             'isCheckmate' => $tenant instanceof Tenant && $tenant->checkmateMode(),
             'canImportWorkers' => $tenant?->hasCsvWorkersImport() ?? false,

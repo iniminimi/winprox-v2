@@ -7,6 +7,7 @@ use App\Data\Units\ImportUnitsData;
 use App\Livewire\Locations\Index as LocationsIndex;
 use App\Livewire\Locations\Show;
 use App\Livewire\Pages\Settings;
+use App\Livewire\Pages\Team as TeamPage;
 use App\Models\Category;
 use App\Models\InternalTeam;
 use App\Models\Issue;
@@ -237,6 +238,38 @@ it('verbergt de onderliggende werkmenu-opties als de hoofdschakelaar uit staat',
 
     // Verborgen opties worden niet gereset: opgeslagen vlag blijft bewaard.
     expect($tenant->fresh()->work_menu_reservations_enabled)->toBeTrue();
+});
+
+it('verbergt de meldingsmail-voorkeur bij collega en eigen profiel als de hoofdschakelaar uit staat', function () {
+    $tenant = Tenant::factory()->create([
+        'work_menu_issues_tasks_enabled' => false,
+    ]);
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $colleague = User::factory()->employee()->create([
+        'tenant_id' => $tenant->id,
+        'notify_on_new_issue_email' => true,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(TeamPage::class)
+        ->call('openEditColleague', $colleague->id)
+        ->assertDontSee('wire:model="colleagueNotifyOnNewIssueEmail"', false);
+
+    Livewire::actingAs($admin)
+        ->test(Settings::class)
+        ->assertDontSee('wire:model.live="notifyOnNewIssueEmail"', false);
+
+    $tenant->update(['work_menu_issues_tasks_enabled' => true]);
+
+    Livewire::actingAs($admin)
+        ->test(TeamPage::class)
+        ->call('openEditColleague', $colleague->id)
+        ->assertSee('wire:model="colleagueNotifyOnNewIssueEmail"', false);
+
+    Livewire::actingAs($admin)
+        ->test(Settings::class)
+        ->assertSee('wire:model.live="notifyOnNewIssueEmail"', false);
 });
 
 it('weigert nieuw inschakelen van reserveringen op een unit wanneer werkmenu uit staat', function () {
