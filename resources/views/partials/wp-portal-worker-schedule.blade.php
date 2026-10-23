@@ -35,14 +35,10 @@
                         @class([
                             'wp-portal-schedule__row--week-start' => $entry->weekStart,
                             'wp-portal-schedule__row--today' => $entry->isToday,
+                            'wp-portal-schedule__row--changed' => in_array($entry->date, $scheduleChangedDates ?? [], true),
                         ])
                     >
-                        <td class="wp-portal-schedule__day">
-                            {{ $entry->dayLabel }}
-                            @if (in_array($entry->date, $scheduleChangedDates ?? [], true))
-                                <span class="wp-pill wp-pill--new wp-portal-schedule__changed">{{ __('time.portal.schedule.changed_badge') }}</span>
-                            @endif
-                        </td>
+                        <td class="wp-portal-schedule__day">{{ $entry->dayLabel }}</td>
                         <td class="wp-portal-schedule__duty">
                             {{ $entry->duty !== '' ? $entry->duty : '—' }}
                             @if ($entry->description !== null)

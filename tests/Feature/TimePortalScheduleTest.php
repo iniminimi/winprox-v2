@@ -103,8 +103,6 @@ it('toont alleen published eigen diensten en zet de badge weg', function () {
         null,
     );
 
-    $this->travelBack();
-
     expect(WorkerNotification::query()->where('worker_id', $worker->id)->whereNull('read_at')->count())->toBe(1);
 
     signInScheduleWorker($clockPoint)
@@ -117,6 +115,8 @@ it('toont alleen published eigen diensten en zet de badge weg', function () {
         ->assertDontSee('wp-list', false);
 
     expect(WorkerNotification::query()->where('worker_id', $worker->id)->whereNull('read_at')->count())->toBe(0);
+
+    $this->travelBack();
 });
 
 it('legt op Mijn rooster uit welke dagen de badge telde', function () {
@@ -160,8 +160,6 @@ it('legt op Mijn rooster uit welke dagen de badge telde', function () {
         'reference_id' => $changedDate->toDateString(),
     ]);
 
-    $this->travelBack();
-
     expect(WorkerNotification::query()->where('worker_id', $worker->id)->whereNull('read_at')->count())->toBe(2);
 
     $publishedLabel = Carbon::parse($week)->locale(app()->getLocale())->translatedFormat('l j F');
@@ -173,8 +171,7 @@ it('legt op Mijn rooster uit welke dagen de badge telde', function () {
         ->assertSet('scheduleListOpen', true)
         ->assertSee(__('time.portal.schedule.published_notice', ['date' => $publishedLabel]), false)
         ->assertSee(__('time.portal.schedule.changed_notice', ['days' => $changedLabel]), false)
-        ->assertSeeHtml('wp-portal-schedule__changed')
-        ->assertSee(__('time.portal.schedule.changed_badge'), false)
+        ->assertSeeHtml('wp-portal-schedule__row--changed')
         ->call('closeSchedule')
         ->assertSet('scheduleListOpen', false)
         ->assertDontSeeHtml('wp-pill--new');
@@ -186,7 +183,9 @@ it('legt op Mijn rooster uit welke dagen de badge telde', function () {
         ->call('openSchedule')
         ->assertSet('scheduleListOpen', true)
         ->assertDontSeeHtml('wp-portal-schedule__notice')
-        ->assertDontSeeHtml('wp-portal-schedule__changed');
+        ->assertDontSeeHtml('wp-portal-schedule__row--changed');
+
+    $this->travelBack();
 });
 
 it('weigert de roosterlijst via Livewire-state', function () {
@@ -236,8 +235,6 @@ it('toont de groepsnaam uit de snapshot op Mijn rooster', function () {
         null,
     );
 
-    $this->travelBack();
-
     signInScheduleWorker($clockPoint)
         ->call('openSchedule')
         ->assertSee('Groep 1', false)
@@ -247,6 +244,8 @@ it('toont de groepsnaam uit de snapshot op Mijn rooster', function () {
         ->assertSee(__('time.portal.schedule.columns.date'), false)
         ->assertSee(__('time.portal.schedule.columns.duty'), false)
         ->assertSee(__('time.portal.schedule.columns.hours'), false);
+
+    $this->travelBack();
 });
 
 it('slaagt lege dagen over in het maandoverzicht van Mijn rooster', function () {
