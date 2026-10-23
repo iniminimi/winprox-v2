@@ -13,4 +13,20 @@ final class WorkerRosterSnapshot
         public string $monthLabel,
         public array $entries,
     ) {}
+
+    /**
+     * @return list<list<WorkerRosterEntry>>
+     */
+    public function weeks(): array
+    {
+        $weeks = [];
+        foreach ($this->entries as $entry) {
+            if ($entry->weekStart || $weeks === []) {
+                $weeks[] = [];
+            }
+            $weeks[array_key_last($weeks)][] = $entry;
+        }
+
+        return $weeks;
+    }
 }

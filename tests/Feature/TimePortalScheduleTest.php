@@ -311,7 +311,8 @@ it('slaagt lege dagen over in het maandoverzicht van Mijn rooster', function () 
         ->assertSee('21/09', false)
         ->assertDontSee('15/09', false)
         ->assertSeeHtml('wp-portal-schedule__table')
-        ->assertSeeHtml('wp-portal-schedule__row--week-start')
+        ->assertSeeHtml('schedule-week-2026-09-14')
+        ->assertSeeHtml('schedule-week-2026-09-21')
         ->assertSeeHtml('wp-portal-schedule__row--today');
 });
 

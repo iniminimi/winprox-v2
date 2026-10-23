@@ -3658,7 +3658,7 @@ a.wp-pagination__page:active:not(.is-active) {
 .wp-portal-schedule__table th:first-child,
 .wp-portal-schedule__table td:first-child {
     padding-left: 0;
-    text-align: right;
+    text-align: left;
 }
 
 .wp-portal-schedule__table th:last-child,
@@ -3694,10 +3694,6 @@ a.wp-pagination__page:active:not(.is-active) {
 
 .wp-portal-schedule__notice p + p {
     margin-top: 0.25rem;
-}
-
-.wp-portal-schedule__row--week-start > td {
-    border-top: 1px solid var(--wp-border);
 }
 
 .wp-portal-schedule__row--today > td {
