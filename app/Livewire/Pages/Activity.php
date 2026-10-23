@@ -24,6 +24,9 @@ class Activity extends Component
     #[Url]
     public string $search = '';
 
+    #[Url]
+    public string $category = 'all';
+
     public function mount(): void
     {
         $tenant = $this->resolveTenant();
@@ -37,16 +40,22 @@ class Activity extends Component
         $this->resetPage();
     }
 
+    public function updatedCategory(): void
+    {
+        $this->resetPage();
+    }
+
     public function render(ListTenantAuditLogsAction $list)
     {
         $tenant = $this->resolveTenant();
         abort_unless($tenant instanceof Tenant, 404);
 
-        $result = $list->handle((int) $tenant->id, $this->search, $this->getPage());
+        $result = $list->handle((int) $tenant->id, $this->search, $this->category, $this->getPage());
 
         return view('livewire.pages.activity', [
             'logs' => $result['rows'],
             'summaries' => $result['summaries'],
+            'categories' => ListTenantAuditLogsAction::CATEGORIES,
         ]);
     }
 

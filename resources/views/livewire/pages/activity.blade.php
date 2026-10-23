@@ -7,6 +7,16 @@
     />
 
     <div class="wp-card wp-card-pad wp-stack">
+        <div class="wp-cluster wp-cluster--tight" role="group" aria-label="{{ __('audit.page.filter') }}">
+            @foreach ($categories as $cat)
+                <button type="button"
+                        class="btn btn--sm {{ $category === $cat ? 'btn--primary' : 'btn--ghost' }}"
+                        wire:click="$set('category', '{{ $cat }}')">
+                    {{ __('audit.categories.'.$cat) }}
+                </button>
+            @endforeach
+        </div>
+
         <label class="wp-label" for="activity-search">{{ __('audit.page.search') }}</label>
         <input id="activity-search" type="search" class="wp-input" wire:model.live.debounce.300ms="search"
                placeholder="{{ __('audit.page.search_placeholder') }}" autocomplete="off">
