@@ -3769,14 +3769,14 @@ a.wp-pagination__page:active:not(.is-active) {
     background-color: var(--wp-info-soft);
 }
 
-/* Teamrooster: dag-groepsheader tussen de uitvoerder-rijen. */
-.wp-portal-schedule__day-group > td {
-    padding-top: 0.75rem;
-    border-top: 1px solid var(--wp-border);
+/* Teamrooster: dag-header boven de tabel in een eigen kaart. */
+.wp-portal-schedule__day-group-label {
+    margin: 0 0 0.5rem;
     font-weight: 700;
     color: var(--wp-text);
     font-size: 0.8125rem;
     text-transform: capitalize;
+    text-align: left;
 }
 
 .wp-portal-schedule__day-group-label--today {

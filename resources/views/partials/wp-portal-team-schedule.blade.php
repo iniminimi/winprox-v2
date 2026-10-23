@@ -6,23 +6,23 @@
     </div>
 </nav>
 
-<div class="wp-card wp-card-pad wp-portal-schedule">
-    @if ($teamSchedule->days === [])
+@if ($teamSchedule->days === [])
+    <div class="wp-card wp-card-pad wp-portal-schedule">
         <p class="wp-muted">{{ __('time.portal.team_schedule.empty') }}</p>
-    @else
-        <table class="wp-portal-schedule__table">
-            <thead>
-                <tr>
-                    <th scope="col">{{ __('time.portal.team_schedule.columns.name') }}</th>
-                    <th scope="col">{{ __('time.portal.schedule.columns.duty') }}</th>
-                    <th scope="col">{{ __('time.portal.schedule.columns.hours') }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($teamSchedule->days as $day)
-                    <tr class="wp-portal-schedule__day-group" wire:key="team-day-{{ $day->date }}">
-                        <td colspan="3" @class(['wp-portal-schedule__day-group-label', 'wp-portal-schedule__day-group-label--today' => $day->isToday])>{{ $day->dayLabel }}</td>
+    </div>
+@else
+    @foreach ($teamSchedule->days as $day)
+        <div class="wp-card wp-card-pad wp-portal-schedule" wire:key="team-day-{{ $day->date }}">
+            <p @class(['wp-portal-schedule__day-group-label', 'wp-portal-schedule__day-group-label--today' => $day->isToday])>{{ $day->dayLabel }}</p>
+            <table class="wp-portal-schedule__table">
+                <thead>
+                    <tr>
+                        <th scope="col">{{ __('time.portal.team_schedule.columns.name') }}</th>
+                        <th scope="col">{{ __('time.portal.schedule.columns.duty') }}</th>
+                        <th scope="col">{{ __('time.portal.schedule.columns.hours') }}</th>
                     </tr>
+                </thead>
+                <tbody>
                     @foreach ($day->entries as $entry)
                         <tr
                             wire:key="team-entry-{{ $day->date }}-{{ $loop->index }}"
@@ -38,8 +38,8 @@
                             <td class="wp-portal-schedule__hours">{{ $entry->hours !== '' ? $entry->hours : '—' }}</td>
                         </tr>
                     @endforeach
-                @endforeach
-            </tbody>
-        </table>
-    @endif
-</div>
+                </tbody>
+            </table>
+        </div>
+    @endforeach
+@endif
