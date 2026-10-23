@@ -17,10 +17,7 @@
             <table class="wp-portal-schedule__table">
                 <tbody>
                     @foreach ($day->entries as $entry)
-                        <tr
-                            wire:key="team-entry-{{ $day->date }}-{{ $loop->index }}"
-                            @class(['wp-portal-schedule__row--self' => $entry->isViewer])
-                        >
+                        <tr wire:key="team-entry-{{ $day->date }}-{{ $loop->index }}">
                             <td class="wp-portal-schedule__day">
                                 {{ $entry->workerName }}
                                 @if ($entry->isViewer)

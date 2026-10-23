@@ -3795,20 +3795,6 @@ a.wp-pagination__page:active:not(.is-active) {
     color: var(--wp-accent-text);
 }
 
-/* Teamrooster: eigen rij gemarkeerd (accent), consistent met "Jij"-pill. */
-.wp-portal-schedule__row--self > td {
-    background-color: var(--wp-accent-soft);
-}
-
-.wp-portal-schedule__row--self > td:first-child {
-    border-radius: var(--wp-radius) 0 0 var(--wp-radius);
-    padding-left: 0.4rem;
-}
-
-.wp-portal-schedule__row--self > td:last-child {
-    border-radius: 0 var(--wp-radius) var(--wp-radius) 0;
-    padding-right: 0.4rem;
-}
 
 .wp-flash {
     padding: 0.75rem 1rem;
