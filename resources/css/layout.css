@@ -1344,6 +1344,15 @@
     color: var(--wp-portal-now-fg);
 }
 
+/* De statuskaart is altijd donker/verzadigd — rode alerttekst is daar
+   onleesbaar; witte pil met donkerrood blijft contrasterend. */
+.wp-portal-now .wp-portal-clock-alert {
+    padding: 0.125rem 0.625rem;
+    border-radius: var(--wp-radius-pill);
+    background-color: #ffffff;
+    color: #b91c1c;
+}
+
 .wp-portal-now__kicker {
     display: flex;
     align-items: flex-start;
