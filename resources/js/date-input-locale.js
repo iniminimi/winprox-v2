@@ -11,7 +11,7 @@ function resolveDateLang() {
 export function applyDateInputLocales(root = document) {
     const dateLang = resolveDateLang();
 
-    root.querySelectorAll('input[type="date"].wp-date-input, input[type="date"].wp-input').forEach((input) => {
+    root.querySelectorAll('input[type="date"].wp-date-input, input[type="date"].wp-input, input[type="datetime-local"].wp-input').forEach((input) => {
         input.lang = dateLang;
     });
 }

@@ -93,12 +93,12 @@
                 <p class="wp-muted wp-text-sm">{{ __('time.corrections.subtitle') }}</p>
                 <div class="wp-field">
                     <label class="wp-label" for="correction-clock-in">{{ __('time.corrections.fields.clock_in') }}</label>
-                    <input id="correction-clock-in" type="datetime-local" class="wp-input" wire:model="correctionClockIn">
+                    <input id="correction-clock-in" type="datetime-local" lang="{{ \App\Support\Translation\LocaleSupport::dateInputLang() }}" class="wp-input" wire:model="correctionClockIn">
                     @error('correctionClockIn') <p class="wp-field-error">{{ $message }}</p> @enderror
                 </div>
                 <div class="wp-field">
                     <label class="wp-label" for="correction-clock-out">{{ __('time.corrections.fields.clock_out') }}</label>
-                    <input id="correction-clock-out" type="datetime-local" class="wp-input" wire:model="correctionClockOut">
+                    <input id="correction-clock-out" type="datetime-local" lang="{{ \App\Support\Translation\LocaleSupport::dateInputLang() }}" class="wp-input" wire:model="correctionClockOut">
                     <p class="wp-muted wp-text-sm">{{ __('time.corrections.fields.clock_out_hint') }}</p>
                     @error('correctionClockOut') <p class="wp-field-error">{{ $message }}</p> @enderror
                 </div>
