@@ -614,6 +614,8 @@ class TimePortal extends Component
     public function openSchedule(
         ListWorkerNotificationsAction $listNotifications,
         MarkWorkerNotificationsReadAction $markRead,
+        ResolveRosterMonthAction $resolveMonth,
+        ListPublishedWorkerRosterAction $listSchedule,
     ): void {
         $worker = $this->authorizedWorker();
         if ($worker === null || $this->activeClockPoint() === null) {
@@ -637,9 +639,18 @@ class TimePortal extends Component
             [WorkerNotificationType::RosterPublished, WorkerNotificationType::RosterChanged, WorkerNotificationType::RosterCorrected],
             true,
         );
-        // Altijd de huidige maand openen: een sprong naar de meldingsmaand
-        // toonde een leeg scherm wanneer die maand geen diensten bevatte.
+        // Spring naar de meldingsmaand enkel als daar published diensten
+        // staan; een lege meldingsmaand leek op een verdwenen rooster en een
+        // lege huidige maand verstopt het net gemelde rooster.
         $this->scheduleMonth = now()->startOfMonth()->toDateString();
+        $cursor = ($unread[0] ?? null)?->target->cursor;
+        if ($cursor !== null) {
+            [$candidate] = $resolveMonth->handle($cursor);
+            if ($candidate->format('Y-m') !== now()->format('Y-m')
+                && $listSchedule->handle($worker, $this->tenantId, $candidate->toDateString(), $this->locale)->entries !== []) {
+                $this->scheduleMonth = $candidate->toDateString();
+            }
+        }
 
         // De badge naast "Mijn rooster" telt deze meldingen — markeer de
         // betrokken dagen zodat de teller zichtbaar iets betekent.

@@ -314,3 +314,82 @@ it('slaagt lege dagen over in het maandoverzicht van Mijn rooster', function () 
         ->assertSeeHtml('wp-portal-schedule__row--week-start')
         ->assertSeeHtml('wp-portal-schedule__row--today');
 });
+
+it('springt naar de meldingsmaand als daar published diensten staan', function () {
+    // Beheerder corrigeerde achteraf het september-rooster; nu is oktober.
+    $this->travelTo(Carbon::parse('2026-09-14 12:00:00'));
+    [$tenant, $team, $clockPoint, $worker] = schedulePortalTenant();
+    $week = Carbon::parse('2026-09-14')->startOfWeek(Carbon::MONDAY)->toDateString();
+    app(SaveShiftTypeAction::class)->handle(
+        $tenant,
+        new SaveShiftTypeData('D1', 'Dagdienst', '07:00', '15:00', 30, ShiftTypeColor::Emerald),
+        null,
+    );
+
+    $cells = [];
+    $monday = Carbon::parse($week);
+    for ($i = 0; $i < 7; $i++) {
+        $date = $monday->copy()->addDays($i)->toDateString();
+        $cells[] = [
+            'worker_id' => $worker->id,
+            'date' => $date,
+            'raw' => in_array($i, [0, 2], true) ? 'D1' : '', // ma 14/09 + wo 16/09
+        ];
+    }
+
+    app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData($week, [$worker->id], $cells),
+        null,
+    );
+    app(PublishWeekAction::class)->handle(
+        $tenant,
+        new PublishWeekData($week, [$worker->id]),
+        null,
+    );
+
+    // Achteraf-correctie: 2 meldingen voor septemberdagen met een dienst.
+    foreach (['2026-09-14:1', '2026-09-16:2'] as $reference) {
+        WorkerNotification::create([
+            'tenant_id' => $tenant->id,
+            'worker_id' => $worker->id,
+            'type' => WorkerNotificationType::RosterCorrected,
+            'reference_id' => $reference,
+        ]);
+    }
+
+    $this->travelTo(Carbon::parse('2026-10-05 10:00:00'));
+
+    signInScheduleWorker($clockPoint)
+        ->call('openSchedule')
+        ->assertSet('scheduleListOpen', true)
+        ->assertSet('scheduleMonth', '2026-09-01')
+        ->assertSee('14/09', false)
+        ->assertSee('16/09', false)
+        ->assertSee('Dagdienst', false)
+        ->assertSeeHtml('wp-portal-schedule__row--changed')
+        ->assertDontSee(__('time.portal.schedule.empty'), false);
+
+    $this->travelBack();
+});
+
+it('blijft op de huidige maand als de meldingsmaand geen diensten heeft', function () {
+    $this->travelTo(Carbon::parse('2026-09-14 12:00:00'));
+    [$tenant, , $clockPoint, $worker] = schedulePortalTenant();
+
+    // Melding voor oktober — de worker heeft daar geen published diensten.
+    WorkerNotification::create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'type' => WorkerNotificationType::RosterCorrected,
+        'reference_id' => '2026-10-05:1',
+    ]);
+
+    signInScheduleWorker($clockPoint)
+        ->call('openSchedule')
+        ->assertSet('scheduleListOpen', true)
+        ->assertSet('scheduleMonth', '2026-09-01')
+        ->assertSee(__('time.portal.schedule.empty'), false);
+
+    $this->travelBack();
+});
