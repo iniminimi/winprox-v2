@@ -181,6 +181,8 @@
             "clock_in": "Heure d'entrée",
             "clock_out": "Heure de sortie",
             "clock_out_hint": "Laissez vide pour rouvrir le service, par exemple après une sortie par erreur.",
+            "date": "Date",
+            "time": "Heure",
             "break_minutes": "Pause (minutes)",
             "reason": "Motif"
         },

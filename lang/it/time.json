@@ -181,6 +181,8 @@
             "clock_in": "Ora di entrata",
             "clock_out": "Ora di uscita",
             "clock_out_hint": "Lascia vuoto per riaprire il turno, ad esempio dopo un’uscita per errore.",
+            "date": "Data",
+            "time": "Ora",
             "break_minutes": "Pausa (minuti)",
             "reason": "Motivo"
         },

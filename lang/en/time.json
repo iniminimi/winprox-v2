@@ -181,6 +181,8 @@
             "clock_in": "Clock-in time",
             "clock_out": "Clock-out time",
             "clock_out_hint": "Leave empty to reopen the shift, for example after a mistaken clock-out.",
+            "date": "Date",
+            "time": "Time",
             "break_minutes": "Break (minutes)",
             "reason": "Reason"
         },

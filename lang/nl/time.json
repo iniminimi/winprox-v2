@@ -181,6 +181,8 @@
             "clock_in": "Inkloktijd",
             "clock_out": "Uitkloktijd",
             "clock_out_hint": "Leeg laten heropent de dienst, bijvoorbeeld na een foutieve uitklok.",
+            "date": "Datum",
+            "time": "Tijd",
             "break_minutes": "Pauze (minuten)",
             "reason": "Reden"
         },

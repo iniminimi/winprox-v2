@@ -1006,8 +1006,10 @@ it('laat een admin een gesloten shift corrigeren met auditlog', function () {
     Livewire::actingAs($admin)
         ->test(ShiftsIndex::class)
         ->call('openCorrection', $shift->id)
-        ->set('correctionClockIn', $newClockIn->format('Y-m-d\TH:i'))
-        ->set('correctionClockOut', $newClockOut->format('Y-m-d\TH:i'))
+        ->set('correctionClockInDate', $newClockIn->format('Y-m-d'))
+        ->set('correctionClockInTime', $newClockIn->format('H:i'))
+        ->set('correctionClockOutDate', $newClockOut->format('Y-m-d'))
+        ->set('correctionClockOutTime', $newClockOut->format('H:i'))
         ->set('correctionBreakMinutes', 10)
         ->set('correctionReason', 'Vergeten uit te klokken')
         ->call('saveCorrection')
@@ -1041,7 +1043,8 @@ it('heropent een gesloten shift als de uitkloktijd leeg blijft', function () {
     Livewire::actingAs($admin)
         ->test(ShiftsIndex::class)
         ->call('openCorrection', $shift->id)
-        ->set('correctionClockOut', '')
+        ->set('correctionClockOutDate', '')
+        ->set('correctionClockOutTime', '')
         ->set('correctionReason', 'Per ongeluk uitgeklokt')
         ->call('saveCorrection')
         ->assertHasNoErrors();
@@ -1078,10 +1081,11 @@ it('weigert heropenen als de uitvoerder al een andere open dienst heeft', functi
     Livewire::actingAs($admin)
         ->test(ShiftsIndex::class)
         ->call('openCorrection', $closed->id)
-        ->set('correctionClockOut', '')
+        ->set('correctionClockOutDate', '')
+        ->set('correctionClockOutTime', '')
         ->set('correctionReason', 'Per ongeluk uitgeklokt')
         ->call('saveCorrection')
-        ->assertHasErrors(['correctionClockOut']);
+        ->assertHasErrors(['correctionClockOutTime']);
 
     expect($closed->fresh()->status)->toBe(WorkShiftStatus::Closed)
         ->and($closed->fresh()->clock_out_at)->not->toBeNull();

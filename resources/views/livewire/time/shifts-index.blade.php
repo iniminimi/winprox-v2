@@ -93,14 +93,30 @@
                 <p class="wp-muted wp-text-sm">{{ __('time.corrections.subtitle') }}</p>
                 <div class="wp-field">
                     <label class="wp-label" for="correction-clock-in">{{ __('time.corrections.fields.clock_in') }}</label>
-                    <input id="correction-clock-in" type="datetime-local" lang="{{ \App\Support\Translation\LocaleSupport::dateInputLang() }}" class="wp-input" wire:model="correctionClockIn">
-                    @error('correctionClockIn') <p class="wp-field-error">{{ $message }}</p> @enderror
+                    <div class="wp-form-grid-2">
+                        <div class="wp-field">
+                            <input id="correction-clock-in" type="date" lang="{{ \App\Support\Translation\LocaleSupport::dateInputLang() }}" class="wp-input" wire:model="correctionClockInDate" aria-label="{{ __('time.corrections.fields.date') }}">
+                        </div>
+                        <div class="wp-field">
+                            <input id="correction-clock-in-time" type="text" inputmode="numeric" maxlength="5" placeholder="18:00" class="wp-input" wire:model="correctionClockInTime" aria-label="{{ __('time.corrections.fields.time') }}">
+                        </div>
+                    </div>
+                    @error('correctionClockInDate') <p class="wp-field-error">{{ $message }}</p> @enderror
+                    @error('correctionClockInTime') <p class="wp-field-error">{{ $message }}</p> @enderror
                 </div>
                 <div class="wp-field">
                     <label class="wp-label" for="correction-clock-out">{{ __('time.corrections.fields.clock_out') }}</label>
-                    <input id="correction-clock-out" type="datetime-local" lang="{{ \App\Support\Translation\LocaleSupport::dateInputLang() }}" class="wp-input" wire:model="correctionClockOut">
+                    <div class="wp-form-grid-2">
+                        <div class="wp-field">
+                            <input id="correction-clock-out" type="date" lang="{{ \App\Support\Translation\LocaleSupport::dateInputLang() }}" class="wp-input" wire:model="correctionClockOutDate" aria-label="{{ __('time.corrections.fields.date') }}">
+                        </div>
+                        <div class="wp-field">
+                            <input id="correction-clock-out-time" type="text" inputmode="numeric" maxlength="5" placeholder="18:00" class="wp-input" wire:model="correctionClockOutTime" aria-label="{{ __('time.corrections.fields.time') }}">
+                        </div>
+                    </div>
                     <p class="wp-muted wp-text-sm">{{ __('time.corrections.fields.clock_out_hint') }}</p>
-                    @error('correctionClockOut') <p class="wp-field-error">{{ $message }}</p> @enderror
+                    @error('correctionClockOutDate') <p class="wp-field-error">{{ $message }}</p> @enderror
+                    @error('correctionClockOutTime') <p class="wp-field-error">{{ $message }}</p> @enderror
                 </div>
                 <div class="wp-field">
                     <label class="wp-label" for="correction-break-minutes">{{ __('time.corrections.fields.break_minutes') }}</label>

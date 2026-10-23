@@ -181,6 +181,8 @@
             "clock_in": "Einstempelzeit",
             "clock_out": "Ausstempelzeit",
             "clock_out_hint": "Leer lassen öffnet die Schicht wieder, zum Beispiel nach einem falschen Ausstempeln.",
+            "date": "Datum",
+            "time": "Uhrzeit",
             "break_minutes": "Pause (Minuten)",
             "reason": "Grund"
         },
