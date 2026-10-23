@@ -6384,6 +6384,22 @@ a.wp-worker-hours-link:focus-visible {
     border-radius: var(--wp-radius);
 }
 
+a.wp-roster-name-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+a.wp-roster-name-link:hover {
+    color: var(--wp-accent-text);
+    text-decoration: underline;
+}
+
+a.wp-roster-name-link:focus-visible {
+    outline: 2px solid var(--wp-accent);
+    outline-offset: 2px;
+    border-radius: var(--wp-radius);
+}
+
 .wp-time-presence-card__avatar-wrap {
     position: relative;
     flex-shrink: 0;

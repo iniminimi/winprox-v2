@@ -494,6 +494,55 @@ function hoursUrlFor(payload, workerId, date, attendance) {
     }
 }
 
+function workerHoursUrlFor(payload, workerId) {
+    const base = payload.hours_url;
+    if (!base || !workerId) {
+        return '';
+    }
+    try {
+        const url = new URL(base, window.location.origin);
+        url.searchParams.set('worker', String(workerId));
+        // Zelfde venster als de Aanwezigheid-kaarten: laatste 3 weken.
+        const to = new Date();
+        const from = new Date();
+        from.setDate(from.getDate() - 21);
+        url.searchParams.set('from', from.toISOString().slice(0, 10));
+        url.searchParams.set('to', to.toISOString().slice(0, 10));
+
+        return `${url.pathname}${url.search}`;
+    } catch {
+        return '';
+    }
+}
+
+/** Naamcel (kolom 0, readOnly): werkernaam wordt link naar het urenoverzicht. */
+function applyNameLink(cell, payload, rowDef, worker) {
+    const url = rowDef?.type === 'worker' ? workerHoursUrlFor(payload, worker?.id) : '';
+    const existing = cell.querySelector(':scope > a.wp-roster-name-link');
+    if (!url) {
+        if (existing) {
+            cell.textContent = existing.textContent;
+        }
+
+        return;
+    }
+    const name = cellText(cell.textContent);
+    if (existing) {
+        existing.href = url;
+        existing.title = payload.worker_hours_hint || '';
+        existing.textContent = name;
+
+        return;
+    }
+    const anchor = document.createElement('a');
+    anchor.href = url;
+    anchor.className = 'wp-roster-name-link';
+    anchor.title = payload.worker_hours_hint || '';
+    anchor.textContent = name;
+    cell.textContent = '';
+    cell.appendChild(anchor);
+}
+
 function attendanceTitle(payload, attendance) {
     const base = payload.attendance_messages?.[attendance] || '';
     const hint = payload.attendance_open_hint || '';
@@ -567,6 +616,7 @@ function applyCellClasses(worksheet, payload) {
             }
             if (colIndex === 0) {
                 cell.classList.toggle('wp-roster-row--section', isSection);
+                applyNameLink(cell, payload, rowDef, worker);
 
                 return;
             }
@@ -1072,6 +1122,21 @@ export function bind(root, wire) {
         }
         selectDayCell(td);
     };
+    // Naamlink in kolom 0: gewone klik respecteert de unsaved-changes guard;
+    // ctrl/meta-klik opent een nieuwe tab (huidige blijft, geen verlies).
+    const openWorkerHoursFromName = (event) => {
+        const link = event.target?.closest?.('a.wp-roster-name-link');
+        if (!link) {
+            return;
+        }
+        if (event.ctrlKey || event.metaKey || event.button !== 0) {
+            return;
+        }
+        event.preventDefault();
+        event.stopPropagation();
+        requestLeave(() => window.location.assign(link.href));
+    };
+    grid.addEventListener('click', openWorkerHoursFromName, true);
     grid.addEventListener('mousedown', trackDaySelection, true);
     grid.addEventListener('mousedown', openHoursFromAttendance, true);
 

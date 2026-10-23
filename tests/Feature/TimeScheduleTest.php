@@ -1987,3 +1987,13 @@ it('laat de shift van vandaag bewerkbaar, ook als er al geprikt is', function ()
             ->whereDate('work_date', $today)
             ->exists())->toBeTrue();
 });
+
+it('levert een uren-linkhint per werknemer in het rooster-payload', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+
+    $this->actingAs($admin)
+        ->get(route('time.schedule.index', ['team' => $team->id]))
+        ->assertOk()
+        ->assertSeeHtml('worker_hours_hint')
+        ->assertSeeHtml('time/shifts');
+});
