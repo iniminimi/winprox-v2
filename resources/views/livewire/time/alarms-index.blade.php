@@ -55,7 +55,7 @@
     </div>
 
     @if ($items->isEmpty())
-        <p class="wp-muted">{{ __('time.alarms.empty') }}</p>
+        <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('time.alarms.empty') }}</p></div>
     @else
         @if ($filteredCount > $items->count())
             <p class="wp-muted wp-text-sm">{{ __('time.alarms.shown', ['shown' => $items->count(), 'total' => $filteredCount]) }}</p>
