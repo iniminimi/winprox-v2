@@ -3703,7 +3703,7 @@ a.wp-pagination__page:active:not(.is-active) {
 }
 
 .wp-portal-schedule__row--week-start > td {
-    border-top: 1px solid var(--wp-border);
+    border-top: 1px solid var(--wp-border-strong);
 }
 
 .wp-portal-schedule__row--today > td {
@@ -3783,7 +3783,7 @@ a.wp-pagination__page:active:not(.is-active) {
 .wp-portal-schedule__day-group-label {
     margin: 0 0 0.5rem;
     padding-bottom: 0.375rem;
-    border-bottom: 1px solid var(--wp-border);
+    border-bottom: 1px solid var(--wp-border-strong);
     font-weight: 700;
     color: var(--wp-text);
     font-size: 0.8125rem;
