@@ -196,7 +196,7 @@
                     "Digita un codice o un orario libero come 07:00-15:00.",
                     "Le modifiche non salvate chiedono di salvare prima se lasci la pagina o cambi settimana/mese.",
                     "Vista settimana o mese; i weekend si possono nascondere.",
-                    "Clock Point mostra Il mio turno (solo i servizi pubblicati propri).",
+                    "Clock Point mostra Il mio turno (solo i servizi pubblicati propri). Turni del team (opzionale via Impostazioni): turni settimanali pubblicati dei colleghi nella/e propria/e sede/i, assenze neutre.",
                     "Triangolo rosso se non hai timbrato, se timbri troppo presto o in ritardo, o se esci in ritardo. Le mie ore indica ogni motivo.",
                     "La gestione vede pianificato contro timbrato (margine di 15 minuti).",
                     "Le viste settimana e mese mostrano colonne fisse per esecutore, con il titolo in verticale e solo la cifra nella riga: norma, scarto, pianificato, lavorato, ferie, recupero e malattia. La colonna segnale indica blocchi incompleti o una timbratura aperta. Norma e scarto restano vuoti finché quella norma non è affidabile. Quella norma è di 38 ore per impostazione predefinita e resta modificabile per persona. Senza regola di lavoro, il mese conta lunedì–venerdì secondo quella norma; i festivi seguono il regime concordato o, senza accordo, lo standard belga (il giorno lavorativo decade; una festività nel weekend riceve un giorno sostitutivo proposto). È un conteggio, non un giudizio sulla durata del lavoro.",

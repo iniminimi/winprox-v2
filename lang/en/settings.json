@@ -262,7 +262,9 @@
         "backoffice_clock_hint": "Admins and staff with a punch-clock team clock themselves in from the sidebar after signing in with email and password. Off by default. No GPS requirement and no phone binding.",
         "gps_visit_radius_hint": "Default 50 m. Minimum 10 m, maximum 2000 m.",
         "worker_passkeys": "Sign in with fingerprint or face (passkey)",
-        "worker_passkeys_hint": "Workers can secure their own phone and then sign in with the device unlock. PIN or icon remains available."
+        "worker_passkeys_hint": "Workers can secure their own phone and then sign in with the device unlock. PIN or icon remains available.",
+        "team_roster": "Team roster visible to workers",
+        "team_roster_hint": "Workers see the published roster of colleagues at their location(s) on their phone."
     },
     "customers_on_location": {
         "title": "Customers on location",

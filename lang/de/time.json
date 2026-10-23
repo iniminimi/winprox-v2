@@ -559,6 +559,22 @@
             "error_denied": "Kein Kamerazugriff. Erlauben Sie die Kamera oder scannen Sie mit der Kamera-App.",
             "error_invalid": "Das ist kein Clock-Point-QR. Scannen Sie den Aufkleber oder den Uhrenbildschirm.",
             "slow_hint": "Funktioniert das Scannen nicht? Oeffnen Sie die Kamera-App und scannen Sie den QR-Code damit."
+        },
+        "team_schedule": {
+            "tile": "Team-Dienstplan",
+            "tile_sub": "Kollegen an Ihrem Standort",
+            "title": "Team-Dienstplan",
+            "subtitle": "Nur veröffentlichte Dienste · Ihr(e) Standort(e).",
+            "week_label": "Woche :week · :range",
+            "week_nav": "Woche",
+            "previous_week": "Vorherige Woche",
+            "next_week": "Nächste Woche",
+            "empty": "Keine veröffentlichten Dienste in dieser Woche.",
+            "you": "Sie",
+            "absent": "Abwesend",
+            "columns": {
+                "name": "Name"
+            }
         }
     },
     "ciao": {

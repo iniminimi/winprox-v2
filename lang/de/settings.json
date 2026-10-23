@@ -262,7 +262,9 @@
         "backoffice_clock_hint": "Admins und Mitarbeitende mit einem Stempeluhr-Team stempeln sich über die Seitenleiste ein, nachdem sie sich mit E-Mail und Passwort angemeldet haben. Standardmäßig aus. Keine GPS-Pflicht und keine Handy-Kopplung.",
         "gps_visit_radius_hint": "Standard 50 m. Minimum 10 m, Maximum 2000 m.",
         "worker_passkeys": "Anmeldung per Fingerabdruck oder Gesicht (Passkey)",
-        "worker_passkeys_hint": "Ausführer können ihr eigenes Telefon sichern und sich danach per Geräteentsperrung anmelden. PIN oder Symbol bleibt verfügbar."
+        "worker_passkeys_hint": "Ausführer können ihr eigenes Telefon sichern und sich danach per Geräteentsperrung anmelden. PIN oder Symbol bleibt verfügbar.",
+        "team_roster": "Team-Dienstplan für Ausführer sichtbar",
+        "team_roster_hint": "Ausführer sehen auf ihrem Handy den veröffentlichten Dienstplan der Kollegen an ihrem/ihren Standort(en)."
     },
     "customers_on_location": {
         "title": "Kunden vor Ort",

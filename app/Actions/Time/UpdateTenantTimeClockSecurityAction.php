@@ -31,6 +31,9 @@ class UpdateTenantTimeClockSecurityAction
         $backofficeClock = array_key_exists('time_backoffice_clock', $data)
             ? (bool) $data['time_backoffice_clock']
             : (bool) $tenant->time_backoffice_clock;
+        $teamRoster = array_key_exists('time_team_roster', $data)
+            ? (bool) $data['time_team_roster']
+            : (bool) ($tenant->time_team_roster ?? true);
         $radius = $data['time_gps_visit_radius_meters'] ?? null;
         $radius = $radius === null || $radius === '' ? null : (int) $radius;
         if ($radius !== null && $radius < 10) {
@@ -48,6 +51,7 @@ class UpdateTenantTimeClockSecurityAction
             'time_gps_visit_radius_meters' => $radius,
             'time_evacuation_list' => $evacuationList,
             'time_backoffice_clock' => $backofficeClock,
+            'time_team_roster' => $teamRoster,
         ]);
 
         $fresh = $tenant->fresh();
@@ -66,6 +70,7 @@ class UpdateTenantTimeClockSecurityAction
                 'time_gps_visit_radius_meters' => $radius,
                 'time_evacuation_list' => $evacuationList,
                 'time_backoffice_clock' => $backofficeClock,
+                'time_team_roster' => $teamRoster,
             ],
         );
 

@@ -262,7 +262,9 @@
         "backoffice_clock_hint": "Beheerders en medewerkers met een prikklok-team klokken zichzelf in via de zijbalk, nadat ze zijn aangemeld met e-mail en wachtwoord. Standaard uit. Geen GPS-plicht en geen gsm-koppeling.",
         "gps_visit_radius_hint": "Standaard 50 m. Minimum 10 m, maximum 2000 m.",
         "worker_passkeys": "Aanmelden met vingerafdruk of gezicht (passkey)",
-        "worker_passkeys_hint": "Uitvoerders kunnen hun eigen gsm beveiligen en daarna met de toestelontgrendeling aanmelden. PIN of icoon blijft altijd beschikbaar."
+        "worker_passkeys_hint": "Uitvoerders kunnen hun eigen gsm beveiligen en daarna met de toestelontgrendeling aanmelden. PIN of icoon blijft altijd beschikbaar.",
+        "team_roster": "Teamrooster zichtbaar voor uitvoerders",
+        "team_roster_hint": "Uitvoerders zien op hun gsm het gepubliceerde rooster van collega’s op hun locatie(s)."
     },
     "customers_on_location": {
         "title": "Klanten op locatie",

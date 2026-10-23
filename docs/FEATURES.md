@@ -1101,6 +1101,18 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   het verleden en draft-edits melden niets. Rode driehoek (`alert-triangle`) naast inklok of
   geplande uren als een **gepubliceerde werkdienst** ontbreekt (niet ingeklokt vanaf de
   geplande start), de inklok **meer dan 15 min te vroeg** is, of de inklok **≥ 15 min te laat** is, of de uitklok **≥ 15 min te laat** is (zelfde marge als beheer). Op **Mijn uren** staat elke reden in tekst naast een driehoek.
+- **Golf 2 — Teamrooster:** Clock Point-tegel naast "Mijn rooster" (alleen Facility,
+  nooit Checkmate; tenant-toggle `time_team_roster`, standaard aan, Instellingen →
+  Prikklok). Toont per **week** de gepubliceerde diensten van collega's **op de
+  locatie(s) van de kijker**: toegewezen collega's (hele week, zoals het
+  locatie-uurrooster in beheer) **plus** iedereen met een published dienst op een
+  locatie-snapshot (`planned_shifts.location_id`) van die locatie — invallers tellen
+  dus mee. Kijker zonder toegewezen locatie valt terug op de Clock Point-locatie.
+  Per dag gesorteerd op startuur dan naam; eigen rij gemarkeerd ("Jij"-pill +
+  accentrij). Afwezigheden van collega's tonen neutraal als **"Afwezig"** (geen soort
+  of reden). Weeknavigatie ‹ › + deze week; label "Week <iso> · <d/m>–<d/m>".
+  Drafts nooit zichtbaar. `ListPublishedLocationRosterAction` —
+  één worker-scope-query + één shift-query, geen N+1.
 - **Golf 2 — Verlof / Recup:** Clock Point-tegel. Uitvoerder vraagt `leave` of `recup`
   (van–tot, max. 31 dagen, niet in het verleden, optionele toelichting ≤ 500). Overlappende
   open aanvragen worden geweigerd. Eerste actieve shifttype van dat `kind`, anders fout.

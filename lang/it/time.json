@@ -559,6 +559,22 @@
             "error_denied": "Nessun accesso alla fotocamera. Consenti la fotocamera o scansiona con l’app fotocamera.",
             "error_invalid": "Non è un QR Clock Point. Scansiona l’adesivo o lo schermo orologio.",
             "slow_hint": "La scansione non funziona? Apri l'app fotocamera e inquadra il codice QR."
+        },
+        "team_schedule": {
+            "tile": "Turni del team",
+            "tile_sub": "Colleghi nella tua sede",
+            "title": "Turni del team",
+            "subtitle": "Solo turni pubblicati · la/e tua/e sede/i.",
+            "week_label": "Settimana :week · :range",
+            "week_nav": "Settimana",
+            "previous_week": "Settimana precedente",
+            "next_week": "Settimana successiva",
+            "empty": "Nessun turno pubblicato questa settimana.",
+            "you": "Tu",
+            "absent": "Assente",
+            "columns": {
+                "name": "Nome"
+            }
         }
     },
     "ciao": {

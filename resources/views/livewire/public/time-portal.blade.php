@@ -303,6 +303,15 @@
                         'scheduleChangedDaysLabel' => $scheduleChangedDaysLabel,
                         'schedulePublishedLabel' => $schedulePublishedLabel,
                     ])
+                @elseif ($teamScheduleOpen && $teamSchedule !== null)
+                    <x-wp-portal-back wire:click="closeTeamSchedule" />
+                    <x-wp-page-head-title variant="portal" icon="time" :title="__('time.portal.team_schedule.title')">
+                        <p class="wp-muted">{{ __('time.portal.team_schedule.subtitle') }}</p>
+                    </x-wp-page-head-title>
+                    @include('partials.wp-portal-team-schedule', [
+                        'teamSchedule' => $teamSchedule,
+                        'teamScheduleWeekLabel' => $teamScheduleWeekLabel,
+                    ])
                 @elseif ($absenceListOpen)
                     <x-wp-portal-back wire:click="closeAbsence" />
                     <x-wp-page-head-title variant="portal" icon="time" :title="__('time.portal.absence.title')">
@@ -905,6 +914,15 @@
                                     </span>
                                     <span class="wp-tile-sub">{{ __('time.portal.schedule.tile_sub') }}</span>
                                 </button>
+                                @if ($teamScheduleEnabled ?? false)
+                                    <button type="button" class="wp-tile" wire:click="openTeamSchedule">
+                                        <span class="wp-cluster">
+                                            <x-wp-icon name="team" class="wp-tile-icon" />
+                                            <span class="wp-tile-title">{{ __('time.portal.team_schedule.tile') }}</span>
+                                        </span>
+                                        <span class="wp-tile-sub">{{ __('time.portal.team_schedule.tile_sub') }}</span>
+                                    </button>
+                                @endif
                             @endunless
                             <button type="button" class="wp-tile" wire:click="openHours" data-manual-capture-trigger="portal-open-hours">
                                 <span class="wp-cluster">

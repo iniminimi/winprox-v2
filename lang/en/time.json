@@ -559,6 +559,22 @@
             "error_denied": "No camera access. Allow the camera or scan with your camera app.",
             "error_invalid": "This is not a Clock Point QR. Scan the sticker or the clock screen.",
             "slow_hint": "Scanning not working? Open your camera app and scan the QR code with it."
+        },
+        "team_schedule": {
+            "tile": "Team roster",
+            "tile_sub": "Colleagues at your location",
+            "title": "Team roster",
+            "subtitle": "Only published shifts · your location(s).",
+            "week_label": "Week :week · :range",
+            "week_nav": "Week",
+            "previous_week": "Previous week",
+            "next_week": "Next week",
+            "empty": "No published shifts this week.",
+            "you": "You",
+            "absent": "Absent",
+            "columns": {
+                "name": "Name"
+            }
         }
     },
     "ciao": {

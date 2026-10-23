@@ -262,7 +262,9 @@
         "backoffice_clock_hint": "Administrateurs et collaborateurs avec une équipe de pointage se pointent depuis la barre latérale, après connexion par e-mail et mot de passe. Désactivé par défaut. Pas d'exigence GPS et pas de liaison du téléphone.",
         "gps_visit_radius_hint": "Par défaut 50 m. Minimum 10 m, maximum 2000 m.",
         "worker_passkeys": "Connexion par empreinte ou visage (clé d'accès)",
-        "worker_passkeys_hint": "Les ouvriers peuvent sécuriser leur propre téléphone puis se connecter via le déverrouillage de l'appareil. Le PIN ou l'icône reste disponible."
+        "worker_passkeys_hint": "Les ouvriers peuvent sécuriser leur propre téléphone puis se connecter via le déverrouillage de l'appareil. Le PIN ou l'icône reste disponible.",
+        "team_roster": "Horaire d’équipe visible pour les exécutants",
+        "team_roster_hint": "Les exécutants voient sur leur gsm l’horaire publié des collègues de leur(s) lieu(x)."
     },
     "customers_on_location": {
         "title": "Clients sur site",

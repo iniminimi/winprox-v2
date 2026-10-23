@@ -559,6 +559,22 @@
             "error_denied": "Geen camera-toegang. Sta de camera toe of scan met je camera-app.",
             "error_invalid": "Dit is geen Clock Point-QR. Scan de sticker of het klokscherm.",
             "slow_hint": "Lukt het scannen niet? Open je camera-app en scan daarmee de QR-code."
+        },
+        "team_schedule": {
+            "tile": "Teamrooster",
+            "tile_sub": "Collega’s op jouw locatie",
+            "title": "Teamrooster",
+            "subtitle": "Alleen gepubliceerde diensten · jouw locatie(s).",
+            "week_label": "Week :week · :range",
+            "week_nav": "Week",
+            "previous_week": "Vorige week",
+            "next_week": "Volgende week",
+            "empty": "Geen gepubliceerde diensten deze week.",
+            "you": "Jij",
+            "absent": "Afwezig",
+            "columns": {
+                "name": "Naam"
+            }
         }
     },
     "ciao": {

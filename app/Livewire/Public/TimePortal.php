@@ -25,6 +25,7 @@ use App\Actions\Time\EndWorkBreakAction;
 use App\Actions\Time\EndWorkVisitAction;
 use App\Actions\Time\FindOpenWorkShiftForWorkerAction;
 use App\Actions\Time\ListOpenTimeRosterAction;
+use App\Actions\Time\ListPublishedLocationRosterAction;
 use App\Actions\Time\ListPublishedWorkerRosterAction;
 use App\Actions\Time\ListWorkDestinationsForWorkerAction;
 use App\Actions\Time\ListWorkerAbsenceRequestsAction;
@@ -209,6 +210,9 @@ class TimePortal extends Component
     public bool $scheduleListOpen = false;
 
     #[Locked]
+    public bool $teamScheduleOpen = false;
+
+    #[Locked]
     public bool $absenceListOpen = false;
 
     #[Locked]
@@ -223,6 +227,9 @@ class TimePortal extends Component
     public string $absenceDescription = '';
 
     public string $scheduleMonth = '';
+
+    /** Week-start (maandag, Y-m-d) van het getoonde teamrooster. */
+    public string $teamScheduleWeek = '';
 
     /** @var list<string> Y-m-d dagen met een ongelezen rooster-wijziging */
     public array $scheduleChangedDates = [];
@@ -556,7 +563,7 @@ class TimePortal extends Component
     private function forgetPortalSignInState(): void
     {
         $this->taskBaselineSyncedThisVisit = false;
-        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'ownDeviceReleaseOffered', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'scheduleChangedDates', 'schedulePublishedFrom', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'flashMessageKey', 'flashMessageReplace', 'homescreenHelpOpen', 'teamleaderOpen']);
+        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'ownDeviceReleaseOffered', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'scheduleChangedDates', 'schedulePublishedFrom', 'teamScheduleOpen', 'teamScheduleWeek', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'flashMessageKey', 'flashMessageReplace', 'homescreenHelpOpen', 'teamleaderOpen']);
         $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm', 'rosterAcknowledged']);
     }
 
@@ -578,6 +585,7 @@ class TimePortal extends Component
 
         $this->hoursListOpen = false;
         $this->scheduleListOpen = false;
+        $this->teamScheduleOpen = false;
         $this->absenceListOpen = false;
         $this->teamleaderOpen = false;
         $this->rosterAckOpen = true;
@@ -600,6 +608,7 @@ class TimePortal extends Component
 
         $this->closeRoster();
         $this->scheduleListOpen = false;
+        $this->teamScheduleOpen = false;
         $this->absenceListOpen = false;
         $this->teamleaderOpen = false;
         $this->hoursMonth = now()->format('Y-m');
@@ -630,6 +639,7 @@ class TimePortal extends Component
 
         $this->closeRoster();
         $this->hoursListOpen = false;
+        $this->teamScheduleOpen = false;
         $this->absenceListOpen = false;
         $this->teamleaderOpen = false;
 
@@ -675,6 +685,81 @@ class TimePortal extends Component
         $this->schedulePublishedFrom = null;
     }
 
+    public function openTeamSchedule(): void
+    {
+        if ($this->authorizedWorker() === null || $this->activeClockPoint() === null) {
+            return;
+        }
+
+        try {
+            TimeModuleAccess::assertEnabledForTenantId($this->tenantId);
+        } catch (InvalidArgumentException) {
+            return;
+        }
+
+        if (! $this->teamScheduleEnabled()) {
+            return;
+        }
+
+        $this->closeRoster();
+        $this->hoursListOpen = false;
+        $this->scheduleListOpen = false;
+        $this->absenceListOpen = false;
+        $this->teamleaderOpen = false;
+        $this->teamScheduleWeek = now()->startOfWeek(Carbon::MONDAY)->toDateString();
+        $this->teamScheduleOpen = true;
+    }
+
+    public function closeTeamSchedule(): void
+    {
+        $this->teamScheduleOpen = false;
+    }
+
+    public function previousTeamScheduleWeek(): void
+    {
+        $base = $this->teamScheduleWeek !== '' ? $this->teamScheduleWeek : now()->toDateString();
+        $this->teamScheduleWeek = Carbon::parse($base)->subWeek()->startOfWeek(Carbon::MONDAY)->toDateString();
+    }
+
+    public function nextTeamScheduleWeek(): void
+    {
+        $base = $this->teamScheduleWeek !== '' ? $this->teamScheduleWeek : now()->toDateString();
+        $this->teamScheduleWeek = Carbon::parse($base)->addWeek()->startOfWeek(Carbon::MONDAY)->toDateString();
+    }
+
+    public function thisTeamScheduleWeek(): void
+    {
+        $this->teamScheduleWeek = now()->startOfWeek(Carbon::MONDAY)->toDateString();
+    }
+
+    /**
+     * Locatiescope voor het teamrooster: toegewezen locaties van de uitvoerder,
+     * met de locatie van dit Clock Point als fallback voor vlinders.
+     *
+     * @return list<int>
+     */
+    private function teamScheduleLocationIds(Worker $worker): array
+    {
+        $ids = $worker->locations()->pluck('locations.id')->map(fn ($id) => (int) $id)->all();
+        if ($ids === []) {
+            $pointLocation = (int) ($this->activeClockPoint()?->location_id ?? 0);
+            if ($pointLocation > 0) {
+                $ids = [$pointLocation];
+            }
+        }
+
+        return $ids;
+    }
+
+    private function teamScheduleEnabled(): bool
+    {
+        if ($this->checkmateModeActive()) {
+            return false;
+        }
+
+        return (bool) (Tenant::query()->whereKey($this->tenantId)->value('time_team_roster') ?? false);
+    }
+
     public function openAbsence(): void
     {
         if ($this->authorizedWorker() === null || $this->activeClockPoint() === null) {
@@ -690,6 +775,7 @@ class TimePortal extends Component
         $this->closeRoster();
         $this->hoursListOpen = false;
         $this->scheduleListOpen = false;
+        $this->teamScheduleOpen = false;
         $this->teamleaderOpen = false;
         $today = now()->toDateString();
         $this->absenceKind = ShiftTypeKind::Leave->value;
@@ -714,6 +800,7 @@ class TimePortal extends Component
         $this->closeRoster();
         $this->hoursListOpen = false;
         $this->scheduleListOpen = false;
+        $this->teamScheduleOpen = false;
         $this->absenceListOpen = false;
         $this->customerFormOpen = false;
         $this->teamleaderOpen = true;
@@ -1916,7 +2003,7 @@ class TimePortal extends Component
         }
     }
 
-    public function render(FindOpenWorkShiftForWorkerAction $findShift, SyncWorkerOpenTaskBaselineAction $syncBaseline, ListOpenTimeRosterAction $listRoster, ListWorkerHoursAction $listHours, ListPublishedWorkerRosterAction $listSchedule, ListWorkerNotificationsAction $listNotifications, ListWorkDestinationsForWorkerAction $listDestinations, ResolveWorkerPortalRosterAlertsAction $rosterAlerts, ListWorkerAbsenceRequestsAction $listAbsenceRequests, CollectAbsenceClockInAttentionAction $absenceClockIns)
+    public function render(FindOpenWorkShiftForWorkerAction $findShift, SyncWorkerOpenTaskBaselineAction $syncBaseline, ListOpenTimeRosterAction $listRoster, ListWorkerHoursAction $listHours, ListPublishedWorkerRosterAction $listSchedule, ListPublishedLocationRosterAction $listTeamSchedule, ListWorkerNotificationsAction $listNotifications, ListWorkDestinationsForWorkerAction $listDestinations, ResolveWorkerPortalRosterAlertsAction $rosterAlerts, ListWorkerAbsenceRequestsAction $listAbsenceRequests, CollectAbsenceClockInAttentionAction $absenceClockIns)
     {
         app()->setLocale($this->locale);
         $this->refreshPortalFlash();
@@ -2045,6 +2132,7 @@ class TimePortal extends Component
                 $this->hoursListOpen = false;
             }
             $this->scheduleListOpen = false;
+            $this->teamScheduleOpen = false;
             $this->absenceListOpen = false;
         }
 
@@ -2108,6 +2196,22 @@ class TimePortal extends Component
         $absenceRequests = collect();
         if ($canAct && $this->absenceListOpen && $verifiedWorker !== null && $hasTimeModule && ! $checkmateMode) {
             $absenceRequests = $listAbsenceRequests->handle($verifiedWorker, $this->tenantId);
+        }
+
+        $teamSchedule = null;
+        $teamScheduleWeekLabel = '';
+        $teamScheduleEnabled = $hasTimeModule && ! $checkmateMode && $this->teamScheduleEnabled();
+        if ($canAct && $this->teamScheduleOpen && $verifiedWorker !== null && $teamScheduleEnabled) {
+            $cursor = $this->teamScheduleWeek !== '' ? $this->teamScheduleWeek : now()->toDateString();
+            $teamSchedule = $listTeamSchedule->handle(
+                $verifiedWorker,
+                $this->tenantId,
+                $this->teamScheduleLocationIds($verifiedWorker),
+                $cursor,
+                $this->locale,
+            );
+            $this->teamScheduleWeek = $teamSchedule->weekStart;
+            $teamScheduleWeekLabel = $teamSchedule->weekLabel;
         }
 
         $todayClockAlert = null;
@@ -2185,6 +2289,9 @@ class TimePortal extends Component
             'hoursIsCurrentMonth' => $hoursIsCurrentMonth,
             'schedule' => $schedule,
             'scheduleMonthLabel' => $scheduleMonthLabel,
+            'teamSchedule' => $teamSchedule,
+            'teamScheduleWeekLabel' => $teamScheduleWeekLabel,
+            'teamScheduleEnabled' => $teamScheduleEnabled,
             'schedulePublishedLabel' => $schedulePublishedLabel,
             'scheduleChangedDaysLabel' => $scheduleChangedDaysLabel,
             'scheduleUnreadCount' => $scheduleUnreadCount,

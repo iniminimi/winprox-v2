@@ -559,6 +559,22 @@
             "error_denied": "Pas d’accès à la caméra. Autorisez la caméra ou scannez avec l’appareil photo.",
             "error_invalid": "Ce n’est pas un QR Clock Point. Scannez l’autocollant ou l’écran de pointage.",
             "slow_hint": "Le scan ne fonctionne pas ? Ouvrez votre appareil photo et scannez le code QR avec."
+        },
+        "team_schedule": {
+            "tile": "Horaire équipe",
+            "tile_sub": "Collègues sur votre lieu",
+            "title": "Horaire de l’équipe",
+            "subtitle": "Uniquement les services publiés · votre/vos lieu(x).",
+            "week_label": "Semaine :week · :range",
+            "week_nav": "Semaine",
+            "previous_week": "Semaine précédente",
+            "next_week": "Semaine suivante",
+            "empty": "Aucun service publié cette semaine.",
+            "you": "Vous",
+            "absent": "Absent(e)",
+            "columns": {
+                "name": "Nom"
+            }
         }
     },
     "ciao": {

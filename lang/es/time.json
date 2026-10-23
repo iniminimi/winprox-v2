@@ -559,6 +559,22 @@
             "error_denied": "Sin acceso a la cámara. Permite la cámara o escanea con la app de cámara.",
             "error_invalid": "No es un QR de Clock Point. Escanea la pegatina o la pantalla del reloj.",
             "slow_hint": "No funciona el escaneo? Abre la app de camara y escanea el codigo QR con ella."
+        },
+        "team_schedule": {
+            "tile": "Cuadrante equipo",
+            "tile_sub": "Compañeros en su ubicación",
+            "title": "Cuadrante del equipo",
+            "subtitle": "Solo turnos publicados · su(s) ubicación(es).",
+            "week_label": "Semana :week · :range",
+            "week_nav": "Semana",
+            "previous_week": "Semana anterior",
+            "next_week": "Semana siguiente",
+            "empty": "No hay turnos publicados esta semana.",
+            "you": "Usted",
+            "absent": "Ausente",
+            "columns": {
+                "name": "Nombre"
+            }
         }
     },
     "ciao": {
