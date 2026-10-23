@@ -757,7 +757,7 @@ class TimePortal extends Component
             return false;
         }
 
-        return (bool) (Tenant::query()->whereKey($this->tenantId)->value('time_team_roster') ?? false);
+        return (bool) (Tenant::query()->find($this->tenantId)?->time_team_roster ?? false);
     }
 
     public function openAbsence(): void
