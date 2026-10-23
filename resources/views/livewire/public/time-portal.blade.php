@@ -292,7 +292,14 @@
                         'hoursIsCurrentMonth' => $hoursIsCurrentMonth,
                     ])
                 @elseif ($scheduleListOpen && $schedule !== null)
-                    <x-wp-portal-back wire:click="closeSchedule" />
+                    <div class="wp-portal-schedule-nav">
+                        <x-wp-portal-back wire:click="closeSchedule" />
+                        @if ($teamScheduleEnabled ?? false)
+                            <button type="button" class="btn btn--surface btn--sm wp-back" wire:click="openTeamSchedule">
+                                {{ __('time.portal.team_schedule.title') }} &rarr;
+                            </button>
+                        @endif
+                    </div>
                     <x-wp-page-head-title variant="portal" icon="time" :title="__('time.portal.schedule.title')">
                         <p class="wp-muted">{{ __('time.portal.schedule.subtitle') }}</p>
                     </x-wp-page-head-title>
@@ -304,7 +311,12 @@
                         'schedulePublishedLabel' => $schedulePublishedLabel,
                     ])
                 @elseif ($teamScheduleOpen && $teamSchedule !== null)
-                    <x-wp-portal-back wire:click="closeTeamSchedule" />
+                    <div class="wp-portal-schedule-nav">
+                        <x-wp-portal-back wire:click="closeTeamSchedule" />
+                        <button type="button" class="btn btn--surface btn--sm wp-back" wire:click="openSchedule">
+                            {{ __('time.portal.schedule.title') }} &rarr;
+                        </button>
+                    </div>
                     <x-wp-page-head-title variant="portal" icon="time" :title="__('time.portal.team_schedule.title')">
                         <p class="wp-muted">{{ __('time.portal.team_schedule.subtitle') }}</p>
                     </x-wp-page-head-title>

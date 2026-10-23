@@ -3942,6 +3942,14 @@ a.wp-pagination__page:active:not(.is-active) {
     margin-bottom: 0.75rem;
 }
 
+/* Portaalroosters: terug-knop links, wisselknop (Mijn rooster ⇄ Teamrooster) rechts. */
+.wp-portal-schedule-nav {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
 .wp-doc-title {
     font-weight: 700;
     color: var(--wp-text);
