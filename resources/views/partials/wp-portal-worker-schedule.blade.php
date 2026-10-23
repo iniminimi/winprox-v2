@@ -22,8 +22,8 @@
         <p class="wp-muted">{{ __('time.portal.schedule.empty') }}</p>
     </div>
 @else
-    @foreach ($schedule->weeks() as $week)
-        <div class="wp-card wp-card-pad wp-portal-schedule" wire:key="schedule-week-{{ $week[0]->date }}">
+    @foreach ($schedule->weeks() as $weekStart => $week)
+        <div class="wp-card wp-card-pad wp-portal-schedule" wire:key="schedule-week-{{ $weekStart }}">
             <table class="wp-portal-schedule__table">
                 <thead>
                     <tr>
