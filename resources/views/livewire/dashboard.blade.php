@@ -408,7 +408,7 @@
         @if ($intentHub !== null)
             <section class="wp-stack wp-dashboard-intent" aria-label="{{ __('dashboard.intent.title') }}">
                 <x-wp-page-head-title
-                    icon="home"
+                    icon="home-greeting"
                     :title="$intentHub->greeting"
                     :subtitle="__('dashboard.intent.title')"
                 />
