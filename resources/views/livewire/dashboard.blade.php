@@ -5,7 +5,7 @@
         <div class="wp-page-head">
             <div class="wp-grow wp-stack-tight">
                 <x-wp-page-head-title
-                    icon="home"
+                    icon="dashboard"
                     help-page="checkmate.dashboard"
                     :title="__('dashboard.title')"
                     :subtitle="__('dashboard.checkmate.subtitle')"
@@ -408,7 +408,7 @@
         @if ($intentHub !== null)
             <section class="wp-stack wp-dashboard-intent" aria-label="{{ __('dashboard.intent.title') }}">
                 <x-wp-page-head-title
-                    icon="team"
+                    icon="home"
                     :title="$intentHub->greeting"
                     :subtitle="__('dashboard.intent.title')"
                 />
@@ -438,7 +438,7 @@
         <div @class(['wp-page-head', 'wp-dashboard-overview' => $intentHub !== null])>
             <div class="wp-grow wp-stack-tight">
                 <x-wp-page-head-title
-                    icon="home"
+                    icon="dashboard"
                     :title="__('dashboard.title')"
                     help-page="dashboard"
                     :subtitle="__('dashboard.subtitle')"
