@@ -57,7 +57,9 @@ class MeasurementsIndex extends Component
     /** @var list<string> */
     public array $correctionValueMultiChoice = [];
 
-    public string $correctionRecordedAt = '';
+    public string $correctionRecordedDate = '';
+
+    public string $correctionRecordedTime = '';
 
     public function mount(): void
     {
@@ -103,7 +105,8 @@ class MeasurementsIndex extends Component
 
         $this->correctingMeasurementId = $measurement->id;
         $this->resetCorrectionFields();
-        $this->correctionRecordedAt = now()->format('Y-m-d\TH:i');
+        $this->correctionRecordedDate = now()->format('Y-m-d');
+        $this->correctionRecordedTime = now()->format('H:i');
         $this->showCorrectionModal = true;
     }
 
@@ -133,7 +136,10 @@ class MeasurementsIndex extends Component
 
         $this->validate(
             array_merge(
-                ['correctionRecordedAt' => ['required', 'date']],
+                [
+                    'correctionRecordedDate' => ['required', 'date_format:Y-m-d'],
+                    'correctionRecordedTime' => ['required', 'date_format:H:i'],
+                ],
                 RecordEsgMeasurementCorrectionRequest::valueRules($indicator->type),
             ),
             RecordEsgMeasurementCorrectionRequest::validationMessages($indicator->type),
@@ -145,7 +151,7 @@ class MeasurementsIndex extends Component
             'correctionValueString' => $this->correctionValueString,
             'correctionValueJson' => $this->correctionValueJson,
             'correctionValueMultiChoice' => $this->correctionValueMultiChoice,
-            'correctionRecordedAt' => $this->correctionRecordedAt,
+            'correctionRecordedAt' => $this->correctionRecordedDate.' '.$this->correctionRecordedTime,
         ]);
 
         $data = RecordEsgMeasurementCorrectionRequest::toData($original, $validated);
@@ -257,6 +263,7 @@ class MeasurementsIndex extends Component
         $this->correctionValueString = '';
         $this->correctionValueJson = '';
         $this->correctionValueMultiChoice = [];
-        $this->correctionRecordedAt = '';
+        $this->correctionRecordedDate = '';
+        $this->correctionRecordedTime = '';
     }
 }

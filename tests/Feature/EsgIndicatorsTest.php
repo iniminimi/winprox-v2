@@ -259,7 +259,7 @@ it('toont setup-stappen bij lege indicatorenlijst', function () {
 });
 
 it('toont esg-navigatie alleen wanneer module actief is', function () {
-    $tenant = Tenant::factory()->create(['has_esg_module' => true, 'trial_ends_at' => now()->addDays(5)]);
+    $tenant = Tenant::factory()->create(['has_esg_module' => true, 'has_time_module' => true, 'trial_ends_at' => now()->addDays(5)]);
     $user = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
 
     $this->actingAs($user)

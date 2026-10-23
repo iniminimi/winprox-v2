@@ -55,5 +55,13 @@
 @endif
 
 <label class="wp-label" for="esg-correction-recorded-at">{{ __('esg.measurements.correction_fields.recorded_at') }}</label>
-<input id="esg-correction-recorded-at" type="datetime-local" lang="{{ \App\Support\Translation\LocaleSupport::dateInputLang() }}" class="wp-input" wire:model="correctionRecordedAt">
-@error('correctionRecordedAt') <p class="wp-form-error">{{ $message }}</p> @enderror
+<div class="wp-form-grid-2">
+    <div class="wp-field">
+        <input id="esg-correction-recorded-at" type="date" lang="{{ \App\Support\Translation\LocaleSupport::dateInputLang() }}" class="wp-input" wire:model="correctionRecordedDate" aria-label="{{ __('time.corrections.fields.date') }}">
+    </div>
+    <div class="wp-field">
+        <input id="esg-correction-recorded-at-time" type="text" inputmode="numeric" maxlength="5" placeholder="18:00" class="wp-input" wire:model="correctionRecordedTime" aria-label="{{ __('time.corrections.fields.time') }}">
+    </div>
+</div>
+@error('correctionRecordedDate') <p class="wp-form-error">{{ $message }}</p> @enderror
+@error('correctionRecordedTime') <p class="wp-form-error">{{ $message }}</p> @enderror

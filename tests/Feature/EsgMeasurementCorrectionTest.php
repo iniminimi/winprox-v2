@@ -106,7 +106,8 @@ it('laat een admin een correctie registreren via livewire', function () {
         ->call('openCorrectionModal', $fixture['original']->id)
         ->assertSet('showCorrectionModal', true)
         ->set('correctionValueNumeric', '15')
-        ->set('correctionRecordedAt', now()->format('Y-m-d\TH:i'))
+        ->set('correctionRecordedDate', now()->format('Y-m-d'))
+        ->set('correctionRecordedTime', now()->format('H:i'))
         ->call('saveCorrection')
         ->assertSet('showCorrectionModal', false);
 
@@ -127,7 +128,8 @@ it('toont correctie-keten in het metingen-overzicht', function () {
         ->test(MeasurementsIndex::class)
         ->call('openCorrectionModal', $fixture['original']->id)
         ->set('correctionValueNumeric', '20')
-        ->set('correctionRecordedAt', $recordedAt)
+        ->set('correctionRecordedDate', now()->format('Y-m-d'))
+        ->set('correctionRecordedTime', now()->format('H:i'))
         ->call('saveCorrection');
 
     Livewire::actingAs($user)
