@@ -12,16 +12,18 @@
     </div>
 @else
     @foreach ($teamSchedule->days as $day)
-        <div class="wp-card wp-card-pad wp-portal-schedule" wire:key="team-day-{{ $day->date }}">
+        <div class="wp-card wp-card-pad wp-portal-schedule wp-portal-schedule--team" wire:key="team-day-{{ $day->date }}">
             <p @class(['wp-portal-schedule__day-group-label', 'wp-portal-schedule__day-group-label--today' => $day->isToday])>{{ $day->dayLabel }}</p>
             <table class="wp-portal-schedule__table">
-                <thead>
-                    <tr>
-                        <th scope="col">{{ __('time.portal.team_schedule.columns.name') }}</th>
-                        <th scope="col">{{ __('time.portal.schedule.columns.duty') }}</th>
-                        <th scope="col">{{ __('time.portal.schedule.columns.hours') }}</th>
-                    </tr>
-                </thead>
+                @if ($loop->first)
+                    <thead>
+                        <tr>
+                            <th scope="col">{{ __('time.portal.team_schedule.columns.name') }}</th>
+                            <th scope="col">{{ __('time.portal.schedule.columns.duty') }}</th>
+                            <th scope="col">{{ __('time.portal.schedule.columns.hours') }}</th>
+                        </tr>
+                    </thead>
+                @endif
                 <tbody>
                     @foreach ($day->entries as $entry)
                         <tr

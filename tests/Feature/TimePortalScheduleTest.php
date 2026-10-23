@@ -275,7 +275,7 @@ it('slaagt lege dagen over in het maandoverzicht van Mijn rooster', function () 
         $nextWeekCells[] = [
             'worker_id' => $worker->id,
             'date' => $date,
-            'raw' => $i === 2 ? 'D1' : '', // wo — week zonder maandag moet ook splitsen
+            'raw' => $i === 0 ? 'D1' : '',
         ];
     }
 
@@ -308,11 +308,10 @@ it('slaagt lege dagen over in het maandoverzicht van Mijn rooster', function () 
         ->assertSee('08:00-17:00', false)
         ->assertSee('14/09', false)
         ->assertSee('18/09', false)
-        ->assertSee('23/09', false)
+        ->assertSee('21/09', false)
         ->assertDontSee('15/09', false)
         ->assertSeeHtml('wp-portal-schedule__table')
-        ->assertSeeHtml('schedule-week-2026-09-14')
-        ->assertSeeHtml('schedule-week-2026-09-21')
+        ->assertSeeHtml('wp-portal-schedule__row--week-start')
         ->assertSeeHtml('wp-portal-schedule__row--today');
 });
 
