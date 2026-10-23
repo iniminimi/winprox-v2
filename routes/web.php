@@ -534,6 +534,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/settings/api/docs', ApiDocumentation::class)->name('settings.api.docs');
         Route::get('/settings/api/docs/{file}', ApiDocumentation::class)->name('settings.api.docs.show');
         Route::get('/subscription', Subscription::class)->name('subscription.index');
+        Route::get('/activity', \App\Livewire\Pages\Activity::class)->name('activity.index');
         Route::get('/qr/connect/{token}', QrConnect::class)->name('qr.connect');
     });
 

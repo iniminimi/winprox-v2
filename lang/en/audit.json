@@ -170,5 +170,12 @@
         "locations.import": "Locations imported",
         "locations.delete_import_batch": "Location import batch deleted"
     },
-    "context_ref_field": ":field #:id"
+    "context_ref_field": ":field #:id",
+    "page": {
+        "title": "Activity log",
+        "subtitle": "What happened in your organisation: shifts, workers, settings and security.",
+        "search": "Search",
+        "search_placeholder": "Search by action, user or number …",
+        "empty": "No activity found yet."
+    }
 }

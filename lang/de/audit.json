@@ -170,5 +170,12 @@
         "locations.import": "Standorte importiert",
         "locations.delete_import_batch": "Standort-Importstapel gelöscht"
     },
-    "context_ref_field": ":field #:id"
+    "context_ref_field": ":field #:id",
+    "page": {
+        "title": "Aktivitätsprotokoll",
+        "subtitle": "Was in Ihrer Organisation passiert ist: Dienste, Ausführer, Einstellungen und Sicherheit.",
+        "search": "Suchen",
+        "search_placeholder": "Nach Aktion, Benutzer oder Nummer suchen …",
+        "empty": "Noch keine Aktivität gefunden."
+    }
 }

@@ -33,7 +33,8 @@
         "unit_measurements": "Unitmetingen",
         "work_visits": "Werkbezoeken",
         "checklists": "Checklists",
-        "workers": "Uitvoerders"
+        "workers": "Uitvoerders",
+        "activity": "Activiteit"
     },
     "status": {
         "new": "Open",

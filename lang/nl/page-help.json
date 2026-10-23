@@ -2241,6 +2241,23 @@
                     "text": "Download de statistieken als CSV of druk ze af — handig als bijlage bij een maandfactuur."
                 }
             ]
+        },
+        "activity": {
+            "title": "Hulp — Activiteitenlog",
+            "actions": [
+                {
+                    "label": "Wat staat hier?",
+                    "text": "Alle mutaties in uw organisatie: geforceerd gesloten en gecorrigeerde diensten (met reden), aangemaakte of verwijderde uitvoerders, gewijzigde instellingen, toestel- en beveiligingsgebeurtenissen. Nieuwste bovenaan."
+                },
+                {
+                    "label": "Zoeken",
+                    "text": "Zoek op actienaam (bv. 'dienst'), op de naam of het e-mailadres van de gebruiker die de wijziging deed, of op een nummer."
+                },
+                {
+                    "label": "Wie ziet dit?",
+                    "text": "Enkel beheerders van uw organisatie. Uitvoerders, teamleaders en collega's zien dit scherm niet."
+                }
+            ]
         }
     }
 }

@@ -33,7 +33,8 @@
         "unit_measurements": "Mediciones de unit",
         "work_visits": "Visitas de trabajo",
         "checklists": "Checklists",
-        "workers": "Ejecutores"
+        "workers": "Ejecutores",
+        "activity": "Actividad"
     },
     "status": {
         "new": "Abierta",

@@ -2249,6 +2249,23 @@
                     "text": "Téléchargez les statistiques en CSV ou imprimez-les — pratique en annexe d'une facture mensuelle."
                 }
             ]
+        },
+        "activity": {
+            "title": "Aide — Journal d'activité",
+            "actions": [
+                {
+                    "label": "Que contient cette page ?",
+                    "text": "Toutes les modifications de votre organisation : services clôturés de force et corrigés (avec motif), exécutants créés ou supprimés, paramètres modifiés, événements d'appareil et de sécurité. Le plus récent en haut."
+                },
+                {
+                    "label": "Rechercher",
+                    "text": "Recherchez par nom d'action (p. ex. « service »), par le nom ou l'e-mail de l'utilisateur qui a fait la modification, ou par un numéro."
+                },
+                {
+                    "label": "Qui peut voir ceci ?",
+                    "text": "Uniquement les administrateurs de votre organisation. Les exécutants, chefs d'équipe et collègues ne voient pas cet écran."
+                }
+            ]
         }
     }
 }

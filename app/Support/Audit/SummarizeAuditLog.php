@@ -38,6 +38,37 @@ final class SummarizeAuditLog
         ];
     }
 
+    /**
+     * Actiecodes waarvan de code of het vertaalde label de zoekterm bevat.
+     *
+     * @return list<string>
+     */
+    public function actionCodesMatchingLabel(string $search): array
+    {
+        $needle = mb_strtolower(trim($search));
+        if ($needle === '') {
+            return [];
+        }
+
+        /** @var mixed $actions */
+        $actions = __('audit.actions');
+        if (! is_array($actions)) {
+            return [];
+        }
+
+        $matched = [];
+        foreach ($actions as $code => $label) {
+            if (! is_string($code) || ! is_string($label)) {
+                continue;
+            }
+            if (str_contains(mb_strtolower($label), $needle) || str_contains(mb_strtolower($code), $needle)) {
+                $matched[] = $code;
+            }
+        }
+
+        return $matched;
+    }
+
     private function titleFor(string $action): string
     {
         /** @var mixed $actions */

@@ -39,7 +39,7 @@ class ListPlatformAuditLogsAction
             ->whereNotIn('action', self::HIDDEN_ACTIONS)
             ->when($search !== '', function ($query) use ($search): void {
                 $like = '%'.addcslashes($search, '%_\\').'%';
-                $actionCodes = $this->actionCodesMatchingLabel($search);
+                $actionCodes = $this->summarize->actionCodesMatchingLabel($search);
 
                 $query->where(function ($subQuery) use ($like, $actionCodes): void {
                     $subQuery->where('action', 'like', $like)
@@ -91,32 +91,4 @@ class ListPlatformAuditLogsAction
             ->all();
     }
 
-    /**
-     * @return list<string>
-     */
-    private function actionCodesMatchingLabel(string $search): array
-    {
-        $needle = mb_strtolower(trim($search));
-        if ($needle === '') {
-            return [];
-        }
-
-        /** @var mixed $actions */
-        $actions = __('audit.actions');
-        if (! is_array($actions)) {
-            return [];
-        }
-
-        $matched = [];
-        foreach ($actions as $code => $label) {
-            if (! is_string($code) || ! is_string($label)) {
-                continue;
-            }
-            if (str_contains(mb_strtolower($label), $needle) || str_contains(mb_strtolower($code), $needle)) {
-                $matched[] = $code;
-            }
-        }
-
-        return $matched;
-    }
 }

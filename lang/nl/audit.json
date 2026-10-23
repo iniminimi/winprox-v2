@@ -170,5 +170,12 @@
         "locations.import": "Locaties geïmporteerd",
         "locations.delete_import_batch": "Locatie-importbatch verwijderd"
     },
-    "context_ref_field": ":field #:id"
+    "context_ref_field": ":field #:id",
+    "page": {
+        "title": "Activiteitenlog",
+        "subtitle": "Wat er in uw organisatie is gebeurd: diensten, uitvoerders, instellingen en beveiliging.",
+        "search": "Zoeken",
+        "search_placeholder": "Zoek op actie, gebruiker of nummer …",
+        "empty": "Nog geen activiteit gevonden."
+    }
 }

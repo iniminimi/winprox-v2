@@ -33,7 +33,8 @@
         "unit_measurements": "Misurazioni unit",
         "work_visits": "Visite di lavoro",
         "checklists": "Checklist",
-        "workers": "Esecutori"
+        "workers": "Esecutori",
+        "activity": "Attività"
     },
     "status": {
         "new": "Aperta",

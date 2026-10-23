@@ -2241,6 +2241,23 @@
                     "text": "Scaricate le statistiche in CSV o stampatele — utile come allegato a una fattura mensile."
                 }
             ]
+        },
+        "activity": {
+            "title": "Aiuto — Registro attività",
+            "actions": [
+                {
+                    "label": "Cosa contiene questa pagina?",
+                    "text": "Tutte le modifiche della vostra organizzazione: turni chiusi forzatamente e corretti (con motivo), esecutori creati o eliminati, impostazioni modificate, eventi di dispositivo e sicurezza. I più recenti in alto."
+                },
+                {
+                    "label": "Cerca",
+                    "text": "Cercate per nome dell'azione (p. es. «turno»), per nome o e-mail dell'utente che ha fatto la modifica, o per un numero."
+                },
+                {
+                    "label": "Chi può vedere questa pagina?",
+                    "text": "Solo gli amministratori della vostra organizzazione. Esecutori, capisquadra e colleghi non vedono questa schermata."
+                }
+            ]
         }
     }
 }

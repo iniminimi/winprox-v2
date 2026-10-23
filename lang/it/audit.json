@@ -170,5 +170,12 @@
         "locations.import": "Sedi importate",
         "locations.delete_import_batch": "Batch import sedi eliminato"
     },
-    "context_ref_field": ":field #:id"
+    "context_ref_field": ":field #:id",
+    "page": {
+        "title": "Registro attività",
+        "subtitle": "Cosa è successo nella vostra organizzazione: turni, esecutori, impostazioni e sicurezza.",
+        "search": "Cerca",
+        "search_placeholder": "Cerca per azione, utente o numero …",
+        "empty": "Nessuna attività trovata per ora."
+    }
 }

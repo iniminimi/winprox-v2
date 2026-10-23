@@ -170,5 +170,12 @@
         "locations.import": "Ubicaciones importadas",
         "locations.delete_import_batch": "Lote de importación de ubicaciones eliminado"
     },
-    "context_ref_field": ":field #:id"
+    "context_ref_field": ":field #:id",
+    "page": {
+        "title": "Registro de actividad",
+        "subtitle": "Lo que ha ocurrido en su organización: turnos, ejecutores, ajustes y seguridad.",
+        "search": "Buscar",
+        "search_placeholder": "Buscar por acción, usuario o número …",
+        "empty": "Aún no se ha encontrado actividad."
+    }
 }

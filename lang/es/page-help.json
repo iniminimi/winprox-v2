@@ -2241,6 +2241,23 @@
                     "text": "Descargue las estadísticas en CSV o imprímalas — útil como anexo de una factura mensual."
                 }
             ]
+        },
+        "activity": {
+            "title": "Ayuda — Registro de actividad",
+            "actions": [
+                {
+                    "label": "¿Qué aparece aquí?",
+                    "text": "Todos los cambios de su organización: turnos cerrados forzosamente y corregidos (con motivo), ejecutores creados o eliminados, ajustes modificados, eventos de dispositivo y seguridad. Lo más reciente primero."
+                },
+                {
+                    "label": "Buscar",
+                    "text": "Busque por nombre de acción (p. ej. «turno»), por el nombre o correo del usuario que hizo el cambio, o por un número."
+                },
+                {
+                    "label": "¿Quién puede ver esto?",
+                    "text": "Solo los administradores de su organización. Los ejecutores, jefes de equipo y colegas no ven esta pantalla."
+                }
+            ]
         }
     }
 }

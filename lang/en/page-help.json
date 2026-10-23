@@ -2241,6 +2241,23 @@
                     "text": "Download the statistics as CSV or print them — useful as an attachment to a monthly invoice."
                 }
             ]
+        },
+        "activity": {
+            "title": "Help — Activity log",
+            "actions": [
+                {
+                    "label": "What is listed here?",
+                    "text": "All changes in your organisation: force-closed and corrected shifts (with reason), created or deleted workers, changed settings, device and security events. Newest first."
+                },
+                {
+                    "label": "Search",
+                    "text": "Search by action name (e.g. 'shift'), by the name or email of the user who made the change, or by a number."
+                },
+                {
+                    "label": "Who can see this?",
+                    "text": "Only administrators of your organisation. Workers, teamleaders and colleagues do not see this screen."
+                }
+            ]
         }
     }
 }

@@ -82,6 +82,7 @@
             ] : []),
             ...($showTenantAdminNav ? [
                 ['route' => 'subscription.index', 'active' => 'subscription.*', 'icon' => 'subscription', 'label' => 'common.nav.subscription'],
+                ['route' => 'activity.index', 'active' => 'activity.*', 'icon' => 'document', 'label' => 'common.nav.activity'],
             ] : []),
             ['route' => 'faq.index', 'active' => 'faq.*', 'icon' => 'faq', 'label' => 'common.nav.faq'],
             ['route' => 'manual.hub', 'active' => 'manual.*', 'icon' => 'document', 'label' => 'common.nav.manual'],
@@ -308,8 +309,8 @@
                             </details>
                         @endif
 
-                        <details class="wp-sidebar-accordion__group" @if(request()->routeIs('settings.*') || request()->routeIs('subscription.*')) open @endif>
-                            <summary class="wp-nav-link {{ request()->routeIs('settings.*') || request()->routeIs('subscription.*') ? 'is-active' : '' }}">
+                        <details class="wp-sidebar-accordion__group" @if(request()->routeIs('settings.*') || request()->routeIs('subscription.*') || request()->routeIs('activity.*')) open @endif>
+                            <summary class="wp-nav-link {{ request()->routeIs('settings.*') || request()->routeIs('subscription.*') || request()->routeIs('activity.*') ? 'is-active' : '' }}">
                                 <x-wp-icon name="settings" class="wp-nav-icon" />
                                 <span>{{ __('common.nav.organization') }}</span>
                             </summary>
@@ -326,6 +327,11 @@
                                        class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('subscription.*') ? 'is-active' : '' }}"
                                        @click="nav = false">
                                         <span>{{ __('common.nav.subscription') }}</span>
+                                    </a>
+                                    <a href="{{ route('activity.index') }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('activity.*') ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <span>{{ __('common.nav.activity') }}</span>
                                     </a>
                                 @endif
                             </div>

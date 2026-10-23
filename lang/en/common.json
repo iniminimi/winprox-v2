@@ -33,7 +33,8 @@
         "unit_measurements": "Unit measurements",
         "work_visits": "Work visits",
         "checklists": "Checklists",
-        "workers": "Workers"
+        "workers": "Workers",
+        "activity": "Activity"
     },
     "status": {
         "new": "Open",

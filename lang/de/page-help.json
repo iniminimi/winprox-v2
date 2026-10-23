@@ -2241,6 +2241,23 @@
                     "text": "Laden Sie die Statistiken als CSV herunter oder drucken Sie sie — praktisch als Anlage zur Monatsrechnung."
                 }
             ]
+        },
+        "activity": {
+            "title": "Hilfe — Aktivitätsprotokoll",
+            "actions": [
+                {
+                    "label": "Was steht hier?",
+                    "text": "Alle Änderungen in Ihrer Organisation: zwangsgeschlossene und korrigierte Dienste (mit Grund), erstellte oder gelöschte Ausführer, geänderte Einstellungen, Geräte- und Sicherheitsereignisse. Neueste zuerst."
+                },
+                {
+                    "label": "Suchen",
+                    "text": "Suchen Sie nach Aktionsname (z. B. „Dienst“), nach Name oder E-Mail des Benutzers, der die Änderung vorgenommen hat, oder nach einer Nummer."
+                },
+                {
+                    "label": "Wer sieht das?",
+                    "text": "Nur Administratoren Ihrer Organisation. Ausführer, Teamleiter und Kollegen sehen diesen Bildschirm nicht."
+                }
+            ]
         }
     }
 }

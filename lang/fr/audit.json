@@ -170,5 +170,12 @@
         "locations.import": "Lieux importés",
         "locations.delete_import_batch": "Lot d'import de lieux supprimé"
     },
-    "context_ref_field": ":field #:id"
+    "context_ref_field": ":field #:id",
+    "page": {
+        "title": "Journal d'activité",
+        "subtitle": "Ce qui s'est passé dans votre organisation : services, exécutants, paramètres et sécurité.",
+        "search": "Rechercher",
+        "search_placeholder": "Rechercher par action, utilisateur ou numéro …",
+        "empty": "Aucune activité trouvée pour le moment."
+    }
 }
