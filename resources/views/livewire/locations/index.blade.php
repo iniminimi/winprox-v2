@@ -12,7 +12,7 @@
     <div class="wp-page-head">
         <div class="wp-grow wp-stack-tight">
             <x-wp-page-head-title
-                :icon="$isCategories ? 'organisation' : 'locations'"
+                icon="locations"
                 :title="$isCategories ? __('locations.categories.title') : __('locations.title')"
                 :help-page="$isCategories ? 'locations.categories' : 'locations.list'"
                 :subtitle="$isCategories ? __('locations.categories.subtitle') : __('locations.subtitle')"

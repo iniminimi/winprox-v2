@@ -1,6 +1,6 @@
 <div class="wp-stack">
     <x-wp-page-head-title
-        icon="document"
+        icon="organisation"
         :title="__('audit.page.title')"
         help-page="activity"
         :subtitle="__('audit.page.subtitle')"

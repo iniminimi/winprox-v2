@@ -11,13 +11,13 @@
         <div class="wp-grow wp-stack-tight">
             @if ($publicMode)
                 <x-wp-page-head-title
-                    icon="subscription"
+                    icon="organisation"
                     :title="__('subscription.public_title')"
                     :subtitle="__('subscription.public_subtitle')"
                 />
             @else
                 <x-wp-page-head-title
-                    icon="subscription"
+                    icon="organisation"
                     :title="__('subscription.title')"
                     help-page="subscription"
                     :subtitle="$billingStatus === 'paid' ? null : __($checkmateMode ? 'subscription.checkmate_page.subtitle' : 'subscription.subtitle')"

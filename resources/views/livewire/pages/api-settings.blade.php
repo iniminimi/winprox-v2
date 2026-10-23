@@ -1,6 +1,6 @@
 <div class="wp-stack" data-manual-capture="settings-api">
     <x-wp-page-head-title
-        icon="api"
+        icon="organisation"
         :title="__('settings.api.title')"
         help-page="settings.api"
         :subtitle="__('settings.api.subtitle')"

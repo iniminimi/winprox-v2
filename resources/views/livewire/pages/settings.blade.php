@@ -1,6 +1,6 @@
 <div class="wp-stack" data-manual-capture="settings" x-data x-on:ui-theme-changed.window="document.documentElement.dataset.theme = $event.detail.theme">
     <x-wp-page-head-title
-        icon="settings"
+        icon="organisation"
         :title="__('settings.title')"
         help-page="settings"
         :subtitle="__('settings.subtitle')"
