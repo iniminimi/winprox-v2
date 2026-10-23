@@ -66,19 +66,36 @@ class ListPublishedLocationRosterAction
         $days = [];
         foreach ($shifts->groupBy(fn (PlannedShift $s) => $s->work_date->toDateString()) as $date => $dayShifts) {
             $day = Carbon::parse($date);
+            // Cluster per uitvoerder: één rij per persoon, diensten/uren
+            // eronder gestapeld in chronologische volgorde.
             $entries = $dayShifts
-                ->sortBy(fn (PlannedShift $s) => [
-                    $s->kind->isAbsence() ? '1' : '0',
-                    $s->start_time ?? '99:99',
-                    $s->worker?->displayName() ?? '',
-                ])
-                ->map(fn (PlannedShift $s) => new TeamRosterEntry(
-                    workerName: $s->worker?->displayName() ?? '—',
-                    isViewer: (int) $s->worker_id === (int) $viewer->id,
-                    duty: $s->kind->isAbsence() ? $absentLabel : $this->duty($s),
-                    hours: $this->hours($s),
-                    kind: $s->kind->value,
-                ))
+                ->groupBy(fn (PlannedShift $s) => (int) $s->worker_id)
+                ->map(function ($workerShifts) use ($viewer, $absentLabel): array {
+                    $workerShifts = $workerShifts
+                        ->sortBy(fn (PlannedShift $s) => [
+                            $s->kind->isAbsence() ? '1' : '0',
+                            $s->start_time ?? '99:99',
+                        ])
+                        ->values();
+                    $first = $workerShifts->first();
+
+                    return [
+                        'sort' => [
+                            $workerShifts->every(fn (PlannedShift $s) => $s->kind->isAbsence()) ? '1' : '0',
+                            $workerShifts->first(fn (PlannedShift $s) => ! $s->kind->isAbsence())?->start_time ?? '99:99',
+                            $first->worker?->displayName() ?? '',
+                        ],
+                        'entry' => new TeamRosterEntry(
+                            workerName: $first->worker?->displayName() ?? '—',
+                            isViewer: (int) $first->worker_id === (int) $viewer->id,
+                            duties: $workerShifts->map(fn (PlannedShift $s) => $s->kind->isAbsence() ? $absentLabel : $this->duty($s))->all(),
+                            hourLines: $workerShifts->map(fn (PlannedShift $s) => $this->hours($s))->all(),
+                            kind: $first->kind->value,
+                        ),
+                    ];
+                })
+                ->sortBy(fn (array $item) => $item['sort'])
+                ->map(fn (array $item) => $item['entry'])
                 ->values()
                 ->all();
 

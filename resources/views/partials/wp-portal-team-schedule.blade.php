@@ -24,8 +24,14 @@
                                     <span class="wp-pill wp-pill--new">{{ __('time.portal.team_schedule.you') }}</span>
                                 @endif
                             </td>
-                            <td class="wp-portal-schedule__duty">{{ $entry->duty !== '' ? $entry->duty : '—' }}</td>
-                            <td class="wp-portal-schedule__hours">{{ $entry->hours !== '' ? $entry->hours : '—' }}</td>
+                            <td class="wp-portal-schedule__duty" colspan="2">
+                                @foreach ($entry->duties as $i => $duty)
+                                    <span class="wp-portal-schedule__line">
+                                        <span class="wp-portal-schedule__line-duty">{{ $duty !== '' ? $duty : '—' }}</span>
+                                        <span class="wp-portal-schedule__line-hours">{{ ($entry->hourLines[$i] ?? '') !== '' ? $entry->hourLines[$i] : '—' }}</span>
+                                    </span>
+                                @endforeach
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

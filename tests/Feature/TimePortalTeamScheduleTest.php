@@ -94,6 +94,34 @@ it('toont het teamrooster met collega’s van dezelfde locatie', function () {
         ->assertDontSee('18:00-22:00', false); // draft nooit zichtbaar
 });
 
+it('clustert meerdere diensten van een collega op één rij per dag', function () {
+    $this->travelTo(Carbon::parse('2026-10-19 12:00:00'));
+    [$tenant, $team, $clockPoint, $worker, $location] = teamSchedulePortalTenant();
+    $colleague = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Cluster',
+        'last_name' => 'Collega',
+    ]);
+    $colleague->locations()->attach($location->id);
+
+    teamScheduleShift($tenant, $colleague, '2026-10-20', [
+        'start_time' => '07:00', 'end_time' => '12:00', 'unit_name' => 'Kapel',
+        'location_id' => $location->id,
+    ]);
+    teamScheduleShift($tenant, $colleague, '2026-10-20', [
+        'start_time' => '13:00', 'end_time' => '17:00', 'unit_name' => 'Gang',
+        'location_id' => $location->id,
+    ]);
+
+    $component = teamScheduleSignIn($clockPoint)->call('openTeamSchedule');
+    $component
+        ->assertSee('07:00-12:00', false)
+        ->assertSee('13:00-17:00', false)
+        ->assertSee('Gang', false);
+    expect(substr_count($component->html(), 'Cluster Collega'))->toBe(1);
+});
+
 it('verbergt collega’s zonder band met de locatie en toont invallers', function () {
     $this->travelTo(Carbon::parse('2026-10-19 12:00:00'));
     [$tenant, $team, $clockPoint, $worker, $location] = teamSchedulePortalTenant();

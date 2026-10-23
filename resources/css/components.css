@@ -3683,6 +3683,25 @@ a.wp-pagination__page:active:not(.is-active) {
     width: 99%;
 }
 
+/* Teamrooster: meerdere diensten van één uitvoerder gestapeld; dienst
+   links, uur rechts op dezelfde lijn (ook bij afgebroken dienstnaam). */
+.wp-portal-schedule__line {
+    display: flex;
+    gap: 0.5rem;
+    text-align: left;
+}
+
+.wp-portal-schedule__line-duty {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.wp-portal-schedule__line-hours {
+    flex: 0 0 auto;
+    text-align: right;
+    white-space: nowrap;
+}
+
 .wp-portal-schedule__note {
     display: block;
     font-size: 0.8125rem;
