@@ -410,7 +410,7 @@
 
                             $timeGroupActive = request()->routeIs('time.*');
                             $automationGroupActive = request()->routeIs('iot.*') || request()->routeIs('esg.*');
-                            $organizationGroupActive = request()->routeIs('settings.*') || request()->routeIs('subscription.*');
+                            $organizationGroupActive = request()->routeIs('settings.*') || request()->routeIs('subscription.*') || request()->routeIs('activity.*');
                             $helpGroupActive = request()->routeIs('faq.*')
                                 || request()->routeIs('manual.*')
                                 || request()->routeIs('legal.index')
@@ -654,6 +654,11 @@
                                                class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('subscription.*') ? 'is-active' : '' }}"
                                                @click="nav = false">
                                                 <span>{{ __('common.nav.subscription') }}</span>
+                                            </a>
+                                            <a href="{{ route('activity.index') }}"
+                                               class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('activity.*') ? 'is-active' : '' }}"
+                                               @click="nav = false">
+                                                <span>{{ __('common.nav.activity') }}</span>
                                             </a>
                                         @endif
                                     </div>
