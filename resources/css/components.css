@@ -3648,7 +3648,7 @@ a.wp-pagination__page:active:not(.is-active) {
 .wp-portal-schedule__table th {
     color: var(--wp-text-muted);
     font-weight: 600;
-    border-bottom: 1px solid var(--wp-border);
+    border-bottom: 1px solid var(--wp-text);
 }
 
 .wp-portal-schedule__table td {
