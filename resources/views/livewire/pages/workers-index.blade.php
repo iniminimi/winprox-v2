@@ -2,7 +2,7 @@
     <div class="wp-page-head">
         <div class="wp-grow wp-stack-tight">
             <x-wp-page-head-title
-                icon="team"
+                icon="persons"
                 :title="__('team.workers_index.title')"
                 help-page="team.workers_index"
                 :subtitle="__('team.workers_index.subtitle')"
