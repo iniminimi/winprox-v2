@@ -1,6 +1,6 @@
 {
-  "_jsQR-C5uCl_Nr.js": {
-    "file": "assets/jsQR-C5uCl_Nr.js",
+  "_jsQR-DK6V6WS1.js": {
+    "file": "assets/jsQR-DK6V6WS1.js",
     "name": "jsQR",
     "isDynamicEntry": true,
     "imports": [
@@ -40,17 +40,17 @@
     "src": "node_modules/@fontsource/inter/files/inter-latin-700-normal.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-21r1Uxwu.css",
+    "file": "assets/app-D9s4BxKI.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CNb-eeKg.js",
+    "file": "assets/app-k0E0t8C5.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "dynamicImports": [
-      "_jsQR-C5uCl_Nr.js"
+      "_jsQR-DK6V6WS1.js"
     ],
     "css": [
       "assets/app-C2Xlxaxh.css"

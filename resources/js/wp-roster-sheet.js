@@ -515,32 +515,23 @@ function workerHoursUrlFor(payload, workerId) {
     }
 }
 
-/** Naamcel (kolom 0, readOnly): werkernaam wordt link naar het urenoverzicht. */
+/**
+ * Naamcel (kolom 0, readOnly): heel het vak wordt klikbaar naar het
+ * urenoverzicht — geen DOM-injectie, enkel dataset + klasse. De bestaande
+ * mousedown-handler (openHoursFromAttendance) dekt ctrl/meta; gewone klik
+ * wordt door openWorkerHoursFromName opgepakt.
+ */
 function applyNameLink(cell, payload, rowDef, worker) {
     const url = rowDef?.type === 'worker' ? workerHoursUrlFor(payload, worker?.id) : '';
-    const existing = cell.querySelector(':scope > a.wp-roster-name-link');
-    if (!url) {
-        if (existing) {
-            cell.textContent = existing.textContent;
-        }
-
-        return;
+    if (url) {
+        cell.dataset.wpHoursUrl = url;
+        cell.classList.add('wp-roster-cell--worker-link');
+        cell.title = payload.worker_hours_hint || '';
+    } else {
+        delete cell.dataset.wpHoursUrl;
+        cell.classList.remove('wp-roster-cell--worker-link');
+        cell.removeAttribute('title');
     }
-    const name = cellText(cell.textContent);
-    if (existing) {
-        existing.href = url;
-        existing.title = payload.worker_hours_hint || '';
-        existing.textContent = name;
-
-        return;
-    }
-    const anchor = document.createElement('a');
-    anchor.href = url;
-    anchor.className = 'wp-roster-name-link';
-    anchor.title = payload.worker_hours_hint || '';
-    anchor.textContent = name;
-    cell.textContent = '';
-    cell.appendChild(anchor);
 }
 
 function attendanceTitle(payload, attendance) {
@@ -1122,19 +1113,21 @@ export function bind(root, wire) {
         }
         selectDayCell(td);
     };
-    // Naamlink in kolom 0: gewone klik respecteert de unsaved-changes guard;
-    // ctrl/meta-klik opent een nieuwe tab (huidige blijft, geen verlies).
+    // Naamcel (kolom 0): gewone klik opent het urenoverzicht via de
+    // unsaved-changes guard. Ctrl/meta wordt door openHoursFromAttendance
+    // afgehandeld (zelfde pad als de attendance-markeringen).
     const openWorkerHoursFromName = (event) => {
-        const link = event.target?.closest?.('a.wp-roster-name-link');
-        if (!link) {
+        const td = event.target?.closest?.('td.wp-roster-cell--worker-link');
+        if (!td || event.button !== 0 || event.ctrlKey || event.metaKey) {
             return;
         }
-        if (event.ctrlKey || event.metaKey || event.button !== 0) {
+        const url = td.dataset.wpHoursUrl;
+        if (!url) {
             return;
         }
         event.preventDefault();
         event.stopPropagation();
-        requestLeave(() => window.location.assign(link.href));
+        requestLeave(() => window.location.assign(url));
     };
     grid.addEventListener('click', openWorkerHoursFromName, true);
     grid.addEventListener('mousedown', trackDaySelection, true);
