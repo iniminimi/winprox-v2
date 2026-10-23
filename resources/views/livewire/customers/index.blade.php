@@ -2,7 +2,7 @@
     <div class="wp-page-head">
         <div class="wp-grow wp-stack-tight">
             <x-wp-page-head-title
-                icon="building-office"
+                icon="places"
                 help-page="checkmate.customers"
                 :title="__('customers.title')"
                 :subtitle="__('customers.subtitle')"

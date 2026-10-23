@@ -2,7 +2,7 @@
     <div class="wp-page-head">
         <div class="wp-grow wp-stack-tight">
             <x-wp-page-head-title
-                        icon="locations"
+                        icon="places"
                         :title="__('units.title')"
                         help-page="units"
                         :subtitle="__('units.subtitle')"

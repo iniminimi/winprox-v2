@@ -10,6 +10,7 @@
         'time' => 'images/icons/time.png',
         'persons' => 'images/icons/persons.png',
         'organisation' => 'images/icons/organisation.png',
+        'places' => 'images/icons/places.png',
     ];
     $iconImage = $iconImages[$name] ?? null;
     $paths = [
