@@ -5,7 +5,7 @@
         <div class="wp-page-head">
             <div class="wp-grow wp-stack-tight">
                 <x-wp-page-head-title
-                    icon="dashboard"
+                    icon="home"
                     help-page="checkmate.dashboard"
                     :title="__('dashboard.title')"
                     :subtitle="__('dashboard.checkmate.subtitle')"
@@ -438,7 +438,7 @@
         <div @class(['wp-page-head', 'wp-dashboard-overview' => $intentHub !== null])>
             <div class="wp-grow wp-stack-tight">
                 <x-wp-page-head-title
-                    icon="dashboard"
+                    icon="home"
                     :title="__('dashboard.title')"
                     help-page="dashboard"
                     :subtitle="__('dashboard.subtitle')"

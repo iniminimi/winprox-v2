@@ -7,6 +7,7 @@
 
 @php
     $iconImages = [
+        'home' => 'images/icons/home.png',
         'time' => 'images/icons/time.png',
         'persons' => 'images/icons/persons.png',
         'organisation' => 'images/icons/organisation.png',
