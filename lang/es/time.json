@@ -571,10 +571,7 @@
             "next_week": "Semana siguiente",
             "empty": "No hay turnos publicados esta semana.",
             "you": "Usted",
-            "absent": "Ausente",
-            "columns": {
-                "name": "Nombre"
-            }
+            "absent": "Ausente"
         }
     },
     "ciao": {

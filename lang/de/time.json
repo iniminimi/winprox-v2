@@ -571,10 +571,7 @@
             "next_week": "Nächste Woche",
             "empty": "Keine veröffentlichten Dienste in dieser Woche.",
             "you": "Sie",
-            "absent": "Abwesend",
-            "columns": {
-                "name": "Name"
-            }
+            "absent": "Abwesend"
         }
     },
     "ciao": {

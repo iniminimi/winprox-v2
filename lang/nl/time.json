@@ -571,10 +571,7 @@
             "next_week": "Volgende week",
             "empty": "Geen gepubliceerde diensten deze week.",
             "you": "Jij",
-            "absent": "Afwezig",
-            "columns": {
-                "name": "Naam"
-            }
+            "absent": "Afwezig"
         }
     },
     "ciao": {

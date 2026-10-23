@@ -571,10 +571,7 @@
             "next_week": "Next week",
             "empty": "No published shifts this week.",
             "you": "You",
-            "absent": "Absent",
-            "columns": {
-                "name": "Name"
-            }
+            "absent": "Absent"
         }
     },
     "ciao": {
