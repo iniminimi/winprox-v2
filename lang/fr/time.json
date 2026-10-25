@@ -768,7 +768,7 @@
             "deviation": "Pointé hors de la plage prévue",
             "unplanned": "Pointé sans planning (ou pendant une absence)",
             "ok": "Correspond au planning",
-            "open_hours": "Cliquez sur le marqueur en haut à droite pour ouvrir Heures",
+            "open_hours": "Cliquez sur le point en haut à droite pour voir les heures.",
             "gap": "Temps pointé entre les blocs planifiés"
         },
         "nav_prev": "Précédent",

@@ -768,7 +768,7 @@
             "deviation": "Außerhalb des geplanten Fensters gestempelt",
             "unplanned": "Gestempelt ohne Plan (oder während Abwesenheit)",
             "ok": "Stimmt mit der Planung überein",
-            "open_hours": "Klicken Sie oben rechts auf die Markierung, um Stunden zu öffnen",
+            "open_hours": "Klicken Sie oben rechts auf den Punkt, um die Stunden anzuzeigen.",
             "gap": "Gestampelte Zeit zwischen geplanten Blöcken"
         },
         "nav_prev": "Zurück",

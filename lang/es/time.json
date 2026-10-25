@@ -768,7 +768,7 @@
             "deviation": "Fichado fuera de la franja prevista",
             "unplanned": "Fichado sin plan (o durante una ausencia)",
             "ok": "Coincide con lo planificado",
-            "open_hours": "Haga clic en la marca de arriba a la derecha para abrir Horas",
+            "open_hours": "Haga clic en el punto de arriba a la derecha para ver las horas.",
             "gap": "Tiempo fichado entre bloques planificados"
         },
         "nav_prev": "Anterior",

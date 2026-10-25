@@ -768,7 +768,7 @@
             "deviation": "Geklokt buiten het geplande venster",
             "unplanned": "Geklokt zonder (of tijdens) afwezigheid",
             "ok": "Komt overeen met de planning",
-            "open_hours": "Klik op de markering rechtsboven om Uren te openen",
+            "open_hours": "Klik op het bolletje rechtsboven om de uren te bekijken.",
             "gap": "Geklokte tijd tussen geplande blokken"
         },
         "nav_prev": "Vorige",
