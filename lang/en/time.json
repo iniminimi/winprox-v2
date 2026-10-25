@@ -291,7 +291,8 @@
                 "undeliverable": "This address cannot receive email.",
                 "invalid": "Enter a valid email address.",
                 "rate_limited": "Too many emails. Try again in :seconds seconds."
-            }
+            },
+            "renewal_recommended_hint": "The QR rotation interval has passed. Renew the QR code and print a new sticker — the old one keeps working for a while."
         },
         "errors": {
             "checkmate_single": "Checkmate has one Clock Point (Sign in). Extra ones cannot be created.",

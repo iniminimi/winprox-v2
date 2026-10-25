@@ -291,7 +291,8 @@
                 "undeliverable": "Dit adres kan geen e-mail ontvangen.",
                 "invalid": "Vul een geldig e-mailadres in.",
                 "rate_limited": "Te veel e-mails. Probeer over :seconds seconden opnieuw."
-            }
+            },
+            "renewal_recommended_hint": "Het ingestelde QR-rotatie-interval is verstreken. Vernieuw de QR-code en print een nieuwe sticker — de oude blijft nog even werken."
         },
         "errors": {
             "checkmate_single": "Checkmate heeft één Clock Point (Aanmelden). Extra aanmaken kan niet.",

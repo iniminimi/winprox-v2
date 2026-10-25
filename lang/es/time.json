@@ -291,7 +291,8 @@
                 "undeliverable": "Esta dirección no puede recibir correo.",
                 "invalid": "Introduzca una dirección de correo válida.",
                 "rate_limited": "Demasiados correos. Inténtelo de nuevo en :seconds segundos."
-            }
+            },
+            "renewal_recommended_hint": "El intervalo de rotación del QR ha pasado. Renueve el código QR e imprima una pegatina nueva — la antigua sigue funcionando un tiempo."
         },
         "errors": {
             "checkmate_single": "Checkmate tiene un Clock Point (Iniciar sesión). No se pueden crear más.",

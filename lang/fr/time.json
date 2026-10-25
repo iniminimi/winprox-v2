@@ -291,7 +291,8 @@
                 "undeliverable": "Cette adresse ne peut pas recevoir d’e-mail.",
                 "invalid": "Saisissez une adresse e-mail valide.",
                 "rate_limited": "Trop d’e-mails. Réessayez dans :seconds secondes."
-            }
+            },
+            "renewal_recommended_hint": "L'intervalle de rotation du QR est dépassé. Renouvelez le code QR et imprimez un nouvel autocollant — l'ancien fonctionne encore un temps."
         },
         "errors": {
             "checkmate_single": "Checkmate a un seul Clock Point (Connexion). Impossible d’en créer d’autres.",

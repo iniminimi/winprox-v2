@@ -71,7 +71,7 @@
                             </select>
                             @if ($selectedRenewClockPoint)
                                 @if ($selectedRenewClockPoint->isRenewalRecommended())
-                                    <span class="wp-pill wp-pill--progress">{{ __('time.clock_points.qr.renewal_recommended') }}</span>
+                                    <span class="wp-pill wp-pill--progress" title="{{ __('time.clock_points.qr.renewal_recommended_hint') }}">{{ __('time.clock_points.qr.renewal_recommended') }}</span>
                                 @endif
                                 @can('renewQr', $selectedRenewClockPoint)
                                     <button
@@ -103,7 +103,7 @@
                                 {{ $clockPoint->is_active ? __('time.clock_points.status.active') : __('time.clock_points.status.inactive') }}
                             </span>
                             @if ($clockPoint->isRenewalRecommended())
-                                <span class="wp-pill wp-pill--progress">{{ __('time.clock_points.qr.renewal_recommended') }}</span>
+                                <span class="wp-pill wp-pill--progress" title="{{ __('time.clock_points.qr.renewal_recommended_hint') }}">{{ __('time.clock_points.qr.renewal_recommended') }}</span>
                             @endif
                             @if (! ($checkmateMode ?? false) && $clockPoint->hasLinkedDisplay())
                                 <span class="wp-pill wp-pill--done" title="{{ __('time.clock_displays.linked.active') }}">{{ __('time.clock_displays.pill') }}</span>
