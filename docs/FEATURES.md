@@ -37,6 +37,7 @@ Bestaande unit/categorie-vlaggen op het QR-portaal blijven werken (grandfather);
 inschakelen op units/categorieën kan niet zolang het werkmenu-item uit staat. Inspectierondes
 uit heeft geen invloed op unit checks. Unit checks staan in de sidebar pas als er
 minstens één check is; Werkbezoeken pas bij GPS-werkbezoeken én minstens één bezoek.
+De Unit-checks-pil op de Units-lijst valt weg zolang het werkmenu-item uit staat.
 Een starttemplate toont de keuze in preview en op
 **Starttemplate aangemaakt**; verwijderen van het template zet het werkmenu niet terug.
 

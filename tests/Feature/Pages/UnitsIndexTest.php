@@ -140,6 +140,35 @@ it('filters tenant units by category in UnitsIndex', function () {
         ->assertSee(__('units.filters.count', ['count' => 1]));
 });
 
+it('toont de unit-checks pil alleen als de feature aan staat in het werkmenu', function () {
+    $tenant = Tenant::factory()->create(['work_menu_issues_tasks_enabled' => false]);
+    Tenancy::actAs($tenant->id);
+
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'is_active' => true,
+        'allow_unit_checks' => true,
+    ]);
+
+    // Meldingen & taken uit = hoofdschakelaar → unit checks uit → geen pil per rij.
+    Livewire::actingAs($user)
+        ->test(UnitsIndex::class)
+        ->assertDontSee(__('units.unit_checks.allowed'), false)
+        ->assertDontSee(__('units.unit_checks.disabled'), false);
+
+    $tenant->forceFill([
+        'work_menu_issues_tasks_enabled' => true,
+        'work_menu_unit_checks_enabled' => true,
+    ])->save();
+
+    Livewire::actingAs($user)
+        ->test(UnitsIndex::class)
+        ->assertSee(__('units.unit_checks.allowed'), false);
+});
+
 it('toont locatie en categorie op één metaregel zonder dubbele Units-titel', function () {
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);

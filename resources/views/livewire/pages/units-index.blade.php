@@ -66,9 +66,11 @@
                         <span class="wp-pill wp-pill--{{ $unit->is_active ? 'done' : 'closed' }}">
                             {{ $unit->is_active ? __('units.status.active') : __('units.status.inactive') }}
                         </span>
-                        <span class="wp-pill wp-pill--{{ $unit->allowsUnitChecks() ? 'progress' : 'closed' }}">
-                            {{ $unit->allowsUnitChecks() ? __('units.unit_checks.allowed') : __('units.unit_checks.disabled') }}
-                        </span>
+                        @if ($workMenuUnitChecksEnabled)
+                            <span class="wp-pill wp-pill--{{ $unit->allowsUnitChecks() ? 'progress' : 'closed' }}">
+                                {{ $unit->allowsUnitChecks() ? __('units.unit_checks.allowed') : __('units.unit_checks.disabled') }}
+                            </span>
+                        @endif
                     </div>
                 </div>
             @empty
