@@ -772,7 +772,7 @@
 
 /* Schakelaar (aan/uit, meteen actief) — moderne toggle op accent-token. */
 .wp-switch {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 0.45rem;
     padding: 0.375rem 0;
