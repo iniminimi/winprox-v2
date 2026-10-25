@@ -110,7 +110,7 @@ it('clustert meerdere diensten van een collega op één rij per dag', function (
         'location_id' => $location->id,
     ]);
     teamScheduleShift($tenant, $colleague, '2026-10-20', [
-        'start_time' => '13:00', 'end_time' => '17:00', 'unit_name' => 'Gang',
+        'start_time' => '13:00', 'end_time' => '17:00', 'unit_name' => 'Kapel',
         'location_id' => $location->id,
     ]);
 
@@ -118,7 +118,7 @@ it('clustert meerdere diensten van een collega op één rij per dag', function (
     $component
         ->assertSee('07:00-12:00', false)
         ->assertSee('13:00-17:00', false)
-        ->assertSee('Gang', false);
+        ->assertSee('Kapel', false);
     expect(substr_count($component->html(), 'Cluster Collega'))->toBe(1);
 });
 

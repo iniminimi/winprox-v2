@@ -16,8 +16,12 @@
             <p @class(['wp-portal-schedule__day-group-label', 'wp-portal-schedule__day-group-label--today' => $day->isToday])>{{ $day->dayLabel }}</p>
             <table class="wp-portal-schedule__table">
                 <tbody>
-                    @foreach ($day->entries as $entry)
-                        <tr wire:key="team-entry-{{ $day->date }}-{{ $loop->index }}">
+                    @foreach ($day->groups as $group)
+                        <tr class="wp-portal-schedule__unit-group" wire:key="team-unit-{{ $day->date }}-{{ $loop->index }}">
+                            <td colspan="3">{{ $group->label }}</td>
+                        </tr>
+                        @foreach ($group->entries as $entry)
+                        <tr wire:key="team-entry-{{ $day->date }}-{{ $loop->parent->index }}-{{ $loop->index }}">
                             <td class="wp-portal-schedule__day">
                                 {{ $entry->workerName }}
                                 @if ($entry->isViewer)
@@ -33,6 +37,7 @@
                                 @endforeach
                             </td>
                         </tr>
+                        @endforeach
                     @endforeach
                 </tbody>
             </table>

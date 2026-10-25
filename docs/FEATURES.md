@@ -1108,9 +1108,12 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   locatie-uurrooster in beheer) **plus** iedereen met een published dienst op een
   locatie-snapshot (`planned_shifts.location_id`) van die locatie — invallers tellen
   dus mee. Kijker zonder toegewezen locatie valt terug op de Clock Point-locatie.
-  Per dag gesorteerd op startuur dan naam; eigen rij gemarkeerd ("Jij"-pill +
-  accentrij). Afwezigheden van collega's tonen neutraal als **"Afwezig"** (geen soort
-  of reden). Weeknavigatie ‹ › + deze week; label "Week <iso> · <d/m>–<d/m>".
+  Per dagkaart oplijsting **per unit** zoals het uurrooster (sectielabel
+  `roster_code · naam`, alfabetisch; dan "Zonder groep", dan "Afwezig"); binnen
+  een unit geclusterd per uitvoerder (één rij, diensten/uren gestapeld op
+  startuur). Eigen rij gemarkeerd met "Jij"-pill. Afwezigheden van collega's
+  tonen neutraal als **"Afwezig"** (geen soort of reden). Weeknavigatie ‹ › +
+  deze week; label "Week <iso> · <d/m>–<d/m>".
   Drafts nooit zichtbaar. `ListPublishedLocationRosterAction` —
   één worker-scope-query + één shift-query, geen N+1.
 - **Golf 2 — Verlof / Recup:** Clock Point-tegel. Uitvoerder vraagt `leave` of `recup`

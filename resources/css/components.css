@@ -3814,6 +3814,21 @@ a.wp-pagination__page:active:not(.is-active) {
     color: var(--wp-accent-text);
 }
 
+/* Teamrooster: unit-secties binnen een dag, zoals de groepen in het uurrooster. */
+.wp-portal-schedule__unit-group > td {
+    padding-top: 0.625rem;
+    font-weight: 700;
+    color: var(--wp-text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    text-align: left;
+}
+
+.wp-portal-schedule__table .wp-portal-schedule__unit-group:first-child > td {
+    padding-top: 0;
+}
+
 
 .wp-flash {
     padding: 0.75rem 1rem;
