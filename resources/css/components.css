@@ -749,26 +749,34 @@
     display: inline-flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    padding: 0.3rem 0.55rem;
+    gap: 0.4rem;
+    padding: 0.2rem 0.45rem;
     border: 1px solid var(--wp-border);
     border-radius: var(--wp-radius);
     background: var(--wp-surface-2);
 }
 
+/* Tinten worden naar surface gemixt: de container markeert de groep, de
+   bedieningselementen erin blijven visueel leidend. */
 .wp-toolbar-group--view {
-    background: var(--wp-info-soft);
-    border-color: var(--wp-info-border);
+    background: color-mix(in srgb, var(--wp-info-soft) 55%, var(--wp-surface));
+    border-color: color-mix(in srgb, var(--wp-info-border) 70%, var(--wp-border));
 }
 
 .wp-toolbar-group--edit {
-    background: var(--wp-warning-soft);
+    background: color-mix(in srgb, var(--wp-warning-soft) 50%, var(--wp-surface));
     border-color: var(--wp-warning-border);
 }
 
 .wp-toolbar-group--action {
-    background: var(--wp-accent-soft);
-    border-color: var(--wp-accent-border);
+    background: color-mix(in srgb, var(--wp-accent-soft) 45%, var(--wp-surface));
+    border-color: color-mix(in srgb, var(--wp-accent-border) 70%, var(--wp-border));
+}
+
+/* Groepenrij = tweede-orde filter: merkbaar zwakker dan de hoofdgroep. */
+.wp-time-roster-groups.wp-toolbar-group--view {
+    background: color-mix(in srgb, var(--wp-info-soft) 30%, var(--wp-surface));
+    border-color: color-mix(in srgb, var(--wp-info-border) 50%, var(--wp-border));
 }
 
 .wp-toolbar-group--tools,
