@@ -472,6 +472,30 @@ it('onthoudt de laatst gekozen weergave via een cookie', function () {
         ->and($queued->getValue())->toBe('month');
 });
 
+it('onthoudt de statistieken-toggle via een cookie', function () {
+    [$tenant, $admin] = scheduleTenant();
+
+    $this->actingAs($admin)
+        ->withCookie('roster_stats', '0')
+        ->get(route('time.schedule.index'))
+        ->assertOk()
+        ->assertSee('id="schedule-stats"', false)
+        ->assertDontSee('id="schedule-stats" type="checkbox" checked', false);
+
+    $this->actingAs($admin)
+        ->withCookie('roster_stats', '0')
+        ->get(route('time.schedule.index', ['stats' => 1]))
+        ->assertOk();
+
+    Livewire::actingAs($admin)
+        ->test(RosterIndex::class)
+        ->set('showStats', false);
+
+    $queued = Cookie::queued('roster_stats');
+    expect($queued)->not->toBeNull()
+        ->and($queued->getValue())->toBe('0');
+});
+
 it('springt met de weergaveknoppen naar de huidige week of maand', function () {
     [$tenant, $admin] = scheduleTenant();
     $this->travelTo(Carbon::parse('2026-09-16'));

@@ -56,6 +56,10 @@ class RosterIndex extends Component
 
     private const SCOPE_COOKIE_MINUTES = 60 * 24 * 365;
 
+    private const STATS_COOKIE = 'roster_stats';
+
+    private const STATS_COOKIE_MINUTES = 60 * 24 * 365;
+
     #[Url(as: 'week')]
     public string $weekStart = '';
 
@@ -144,6 +148,7 @@ class RosterIndex extends Component
         $this->normalizeView();
         $this->restoreRememberedView();
         $this->restoreRememberedScope();
+        $this->restoreRememberedStats();
 
         if ($this->weekStart === '') {
             $this->weekStart = $this->isMonth()
@@ -582,6 +587,7 @@ class RosterIndex extends Component
     public function updatedShowStats(): void
     {
         $this->showStats = (bool) $this->showStats;
+        Cookie::queue(self::STATS_COOKIE, $this->showStats ? '1' : '0', self::STATS_COOKIE_MINUTES);
         $this->dispatch('roster-week-changed');
     }
 
@@ -918,6 +924,18 @@ class RosterIndex extends Component
         $remembered = request()->cookie(self::VIEW_COOKIE);
         if (in_array($remembered, ['week', 'month'], true)) {
             $this->view = $remembered;
+        }
+    }
+
+    private function restoreRememberedStats(): void
+    {
+        if (request()->query->has('stats')) {
+            return;
+        }
+
+        $remembered = request()->cookie(self::STATS_COOKIE);
+        if (in_array($remembered, ['0', '1'], true)) {
+            $this->showStats = $remembered === '1';
         }
     }
 
