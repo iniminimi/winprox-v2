@@ -10,6 +10,8 @@ use App\Actions\Time\ClockOutAction;
 use App\Actions\Time\EndWorkBreakAction;
 use App\Actions\Time\StartWorkBreakAction;
 use App\Actions\Time\ManualClockInWorkShiftAction;
+use App\Actions\Time\ScheduleClockPointQrRecommendationAction;
+use App\Actions\Time\UpdateTenantTimeQrRotationMonthsAction;
 use App\Enums\ClockSource;
 use App\Enums\ShiftTypeKind;
 use App\Enums\WorkShiftStatus;
@@ -985,6 +987,39 @@ it('toont renewal-aanbeveling wanneer aanbevolen datum verstreken is', function 
     ]);
 
     expect($clockPoint->isRenewalRecommended())->toBeTrue();
+});
+
+it('plant de QR-vernieuwingsaanbeveling pas na het rotatie-interval', function () {
+    [$tenant] = timeTenantWithAdmin();
+    $tenant->update(['time_qr_rotation_months' => 6]);
+
+    $clockPoint = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'qr_renewed_at' => now(),
+    ]);
+
+    $scheduled = app(ScheduleClockPointQrRecommendationAction::class)
+        ->handle($clockPoint->fresh(), $tenant->fresh(), now());
+
+    expect($scheduled->qr_renewal_recommended_at)->toBeGreaterThanOrEqual(now()->addDays(179));
+    expect($scheduled->qr_renewal_recommended_at)->toBeLessThanOrEqual(now()->addDays(195));
+    expect($scheduled->isRenewalRecommended())->toBeFalse();
+});
+
+it('schakelt QR-rotatie uit bij interval 0 en plant bestaande datums opnieuw', function () {
+    [$tenant, $admin] = timeTenantWithAdmin();
+    $clockPoint = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'qr_renewed_at' => now(),
+        'qr_renewal_recommended_at' => now()->addDay(),
+    ]);
+
+    app(UpdateTenantTimeQrRotationMonthsAction::class)->handle($tenant, 0, $admin->id);
+    expect($clockPoint->fresh()->qr_renewal_recommended_at)->toBeNull();
+
+    app(UpdateTenantTimeQrRotationMonthsAction::class)->handle($tenant->fresh(), 6, $admin->id);
+    expect($clockPoint->fresh()->qr_renewal_recommended_at)
+        ->toBeGreaterThanOrEqual(now()->addDays(179));
 });
 
 it('laat een admin een gesloten shift corrigeren met auditlog', function () {

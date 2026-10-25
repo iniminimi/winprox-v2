@@ -20,18 +20,11 @@ class UpdateTenantTimeQrRotationMonthsAction
             throw new InvalidArgumentException('invalid_rotation_months');
         }
 
-        $normalized = $months !== null && $months > 0 ? $months : null;
-
-        $tenant->update(['time_qr_rotation_months' => $normalized]);
+        $tenant->update(['time_qr_rotation_months' => $months]);
 
         ClockPoint::query()
             ->where('tenant_id', $tenant->id)
-            ->whereNull('qr_renewal_recommended_at')
             ->each(function (ClockPoint $clockPoint) use ($tenant): void {
-                if ($tenant->effectiveTimeQrRotationMonths() === null) {
-                    return;
-                }
-
                 $this->scheduleRecommendation->handle(
                     $clockPoint,
                     $tenant,
@@ -45,7 +38,7 @@ class UpdateTenantTimeQrRotationMonthsAction
             action: 'tenant.time_qr_rotation_updated',
             modelType: Tenant::class,
             modelId: $tenant->id,
-            payload: ['time_qr_rotation_months' => $normalized],
+            payload: ['time_qr_rotation_months' => $months],
         );
 
         return $tenant->fresh();

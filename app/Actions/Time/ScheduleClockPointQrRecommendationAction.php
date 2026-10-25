@@ -20,10 +20,10 @@ class ScheduleClockPointQrRecommendationAction
         }
 
         $intervalDays = max(1, $months * 30);
-        $randomOffsetDays = random_int(1, $intervalDays);
+        $randomOffsetDays = random_int(0, 14);
 
         $clockPoint->update([
-            'qr_renewal_recommended_at' => $renewedAt->copy()->addDays($randomOffsetDays),
+            'qr_renewal_recommended_at' => $renewedAt->copy()->addDays($intervalDays + $randomOffsetDays),
         ]);
 
         return $clockPoint->fresh();
