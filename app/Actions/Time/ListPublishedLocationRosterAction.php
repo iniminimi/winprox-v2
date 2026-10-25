@@ -68,7 +68,7 @@ class ListPublishedLocationRosterAction
         $absentLabel = __('time.portal.team_schedule.absent');
         $units = Unit::query()
             ->where('tenant_id', $tenantId)
-            ->whereIn('id', $shifts->pluck('unit_id')->filter()->unique()->all())
+            ->whereIn('id', $shifts->map(fn (PlannedShift $s) => $s->worker?->default_unit_id)->filter()->unique()->all())
             ->orderBy('name')
             ->get()
             ->keyBy('id');
@@ -105,9 +105,11 @@ class ListPublishedLocationRosterAction
         [$workShifts, $absences] = $dayShifts->partition(
             fn (PlannedShift $s) => ! $s->kind->isAbsence()
         );
-        $byUnit = $workShifts->groupBy(fn (PlannedShift $s) => $s->unit_id !== null
-            ? 'u'.(int) $s->unit_id
-            : (is_string($s->unit_name) && $s->unit_name !== '' ? 'n'.$s->unit_name : 'x'));
+        // Secties op de vaste groep van de uitvoerder (default_unit_id),
+        // zoals in het uurrooster — niet op de eenheid van die ene dienst.
+        $byUnit = $workShifts->groupBy(fn (PlannedShift $s) => $s->worker?->default_unit_id !== null
+            ? 'u'.(int) $s->worker->default_unit_id
+            : 'x');
 
         $groups = [];
         foreach ($units as $unit) {
@@ -118,12 +120,6 @@ class ListPublishedLocationRosterAction
             $code = is_string($unit->roster_code) ? trim($unit->roster_code) : '';
             $groups[] = new TeamRosterUnitGroup(
                 label: $code !== '' ? $code.' · '.$unit->name : $unit->name,
-                entries: $this->entries($byUnit->pull($key), $viewer, $absentLabel),
-            );
-        }
-        foreach ($byUnit->keys()->filter(fn (string $k) => str_starts_with($k, 'n'))->sort() as $key) {
-            $groups[] = new TeamRosterUnitGroup(
-                label: substr($key, 1),
                 entries: $this->entries($byUnit->pull($key), $viewer, $absentLabel),
             );
         }
@@ -186,10 +182,16 @@ class ListPublishedLocationRosterAction
     private function duty(PlannedShift $shift): string
     {
         $type = $shift->shiftType;
-
-        return ($type !== null && $type->is_active && $type->kind === ShiftTypeKind::Work)
+        $label = ($type !== null && $type->is_active && $type->kind === ShiftTypeKind::Work)
             ? $type->label
             : '';
+        $place = is_string($shift->unit_name) && $shift->unit_name !== '' ? $shift->unit_name : '';
+
+        if ($label !== '' && $place !== '') {
+            return $label.' · '.$place;
+        }
+
+        return $label !== '' ? $label : $place;
     }
 
     private function hours(PlannedShift $shift): string

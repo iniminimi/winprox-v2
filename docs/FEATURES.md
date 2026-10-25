@@ -1108,8 +1108,9 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   locatie-uurrooster in beheer) **plus** iedereen met een published dienst op een
   locatie-snapshot (`planned_shifts.location_id`) van die locatie — invallers tellen
   dus mee. Kijker zonder toegewezen locatie valt terug op de Clock Point-locatie.
-  Per dagkaart oplijsting **per unit** zoals het uurrooster (sectielabel
-  `roster_code · naam`, alfabetisch; dan "Zonder groep", dan "Afwezig"); binnen
+  Per dagkaart oplijsting **per vaste groep van de uitvoerder** (`default_unit_id`)
+  zoals het uurrooster (sectielabel `roster_code · naam`, alfabetisch; dan
+  "Zonder groep", dan "Afwezig"); binnen
   een unit geclusterd per uitvoerder (één rij, diensten/uren gestapeld op
   startuur). Eigen rij gemarkeerd met "Jij"-pill. Afwezigheden van collega's
   tonen neutraal als **"Afwezig"** (geen soort of reden). Weeknavigatie ‹ › +

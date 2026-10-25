@@ -122,6 +122,36 @@ it('clustert meerdere diensten van een collega op één rij per dag', function (
     expect(substr_count($component->html(), 'Cluster Collega'))->toBe(1);
 });
 
+it('groepeert collega’s onder hun vaste groep zoals het uurrooster', function () {
+    $this->travelTo(Carbon::parse('2026-10-19 12:00:00'));
+    [$tenant, $team, $clockPoint, $worker, $location] = teamSchedulePortalTenant();
+    $unit = \App\Models\Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Kapelgroep',
+        'roster_code' => 'KAP',
+    ]);
+    $colleague = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Groeps',
+        'last_name' => 'Collega',
+        'default_unit_id' => $unit->id,
+    ]);
+    $colleague->locations()->attach($location->id);
+
+    teamScheduleShift($tenant, $colleague, '2026-10-20', [
+        'start_time' => '08:00', 'end_time' => '16:00',
+        'location_id' => $location->id,
+    ]);
+
+    teamScheduleSignIn($clockPoint)
+        ->call('openTeamSchedule')
+        ->assertSee('KAP · Kapelgroep', false)
+        ->assertSee('Groeps Collega', false)
+        ->assertSee('08:00-16:00', false);
+});
+
 it('verbergt collega’s zonder band met de locatie en toont invallers', function () {
     $this->travelTo(Carbon::parse('2026-10-19 12:00:00'));
     [$tenant, $team, $clockPoint, $worker, $location] = teamSchedulePortalTenant();
