@@ -739,6 +739,44 @@
     flex-wrap: nowrap;
 }
 
+/* ---------------------------------------------------------------------------
+ | Werkbalk-groepen — zachte tint per functie zodat een toolbar leest als vaste
+ | blokken (weergave / instellingen / acties / tools) zonder knop-kermis.
+ | De controls erin blijven hun eigen variant houden; enkel de container tint.
+ | --tools en --subtle zijn bewust neutraal: semantische haak voor hergebruik.
+ * ------------------------------------------------------------------------- */
+.wp-toolbar-group {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0.3rem 0.55rem;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius);
+    background: var(--wp-surface-2);
+}
+
+.wp-toolbar-group--view {
+    background: var(--wp-info-soft);
+    border-color: var(--wp-info-border);
+}
+
+.wp-toolbar-group--edit {
+    background: var(--wp-warning-soft);
+    border-color: var(--wp-warning-border);
+}
+
+.wp-toolbar-group--action {
+    background: var(--wp-accent-soft);
+    border-color: var(--wp-accent-border);
+}
+
+.wp-toolbar-group--tools,
+.wp-toolbar-group--subtle {
+    background: var(--wp-surface-2);
+    border-color: var(--wp-border);
+}
+
 .wp-cluster--center {
     justify-content: center;
 }

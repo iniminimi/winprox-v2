@@ -10,34 +10,26 @@
         help-page="time.schedule"
         :subtitle="__('time.schedule.subtitle')"
     >
-        <x-slot:toolbar>
-            @php
-                $printParams = [
-                    'week' => $weekStart,
-                    'view' => $isMonth ? 'month' : 'week',
-                ];
-                if ($teamFilter) {
-                    $printParams['team'] = $teamFilter;
-                }
-                if ($locationFilter) {
-                    $printParams['location'] = $locationFilter;
-                    $printParams['ungrouped'] = $showUngrouped ? 1 : 0;
-                    if ($groupUnitIds !== []) {
-                        $printParams['groups'] = $groupUnitIds;
-                    }
-                }
-                if ($showWeekends) {
-                    $printParams['weekends'] = 1;
-                }
-            @endphp
-            <a
-                href="{{ route('time.schedule.print', $printParams) }}"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn btn--ghost btn--sm"
-            >{{ __('common.button.print') }}</a>
-        </x-slot:toolbar>
     </x-wp-page-head-title>
+    @php
+        $printParams = [
+            'week' => $weekStart,
+            'view' => $isMonth ? 'month' : 'week',
+        ];
+        if ($teamFilter) {
+            $printParams['team'] = $teamFilter;
+        }
+        if ($locationFilter) {
+            $printParams['location'] = $locationFilter;
+            $printParams['ungrouped'] = $showUngrouped ? 1 : 0;
+            if ($groupUnitIds !== []) {
+                $printParams['groups'] = $groupUnitIds;
+            }
+        }
+        if ($showWeekends) {
+            $printParams['weekends'] = 1;
+        }
+    @endphp
 
     <div class="wp-no-print">
         @include('partials.wp-time-nav', ['alarmCount' => $alarmCount])
@@ -53,11 +45,11 @@
     <div class="wp-card wp-filter-panel wp-time-roster-toolbar wp-no-print">
         <div class="wp-filter-form wp-time-roster-toolbar__form">
             <div class="wp-time-roster-toolbar__bar">
-                <div class="wp-cluster">
+                <div class="wp-toolbar-group wp-toolbar-group--view" role="group" aria-label="{{ __('time.schedule.toolbar.view') }}">
                     <div class="wp-filter-cell">
                         <div class="wp-cluster wp-cluster--tight">
-                            <button type="button" @class(['btn', 'btn--sm', $isMonth ? 'btn--surface' : 'btn--primary']) wire:click="setView('week')" data-wp-roster-nav>{{ __('time.schedule.view_week') }}</button>
-                            <button type="button" @class(['btn', 'btn--sm', $isMonth ? 'btn--primary' : 'btn--surface']) wire:click="setView('month')" data-wp-roster-nav>{{ __('time.schedule.view_month') }}</button>
+                            <button type="button" @class(['btn', 'btn--sm', $isMonth ? 'btn--surface' : 'btn--info']) wire:click="setView('week')" data-wp-roster-nav>{{ __('time.schedule.view_week') }}</button>
+                            <button type="button" @class(['btn', 'btn--sm', $isMonth ? 'btn--info' : 'btn--surface']) wire:click="setView('month')" data-wp-roster-nav>{{ __('time.schedule.view_month') }}</button>
                         </div>
                     </div>
                     <div class="wp-filter-cell">
@@ -111,20 +103,36 @@
                 </div>
                 <div class="wp-filter-form__actions">
                     @can('update', \App\Models\PlannedShift::class)
-                        <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-save @disabled(! $hasScope)>{{ __('common.button.save') }}</button>
-                        <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-day @disabled(! $hasScope)>{{ __('time.schedule.edit_day') }}</button>
-                        @unless ($isMonth)
-                            <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-copy @disabled(! $hasScope)>{{ __('time.schedule.copy.button') }}</button>
-                        @endunless
+                        <div class="wp-toolbar-group wp-toolbar-group--subtle" role="group" aria-label="{{ __('time.schedule.toolbar.edit') }}">
+                            <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-day @disabled(! $hasScope)>{{ __('time.schedule.edit_day') }}</button>
+                            @unless ($isMonth)
+                                <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-copy @disabled(! $hasScope)>{{ __('time.schedule.copy.button') }}</button>
+                            @endunless
+                        </div>
                     @endcan
-                    @can('publish', \App\Models\PlannedShift::class)
-                        <button type="button" class="btn btn--primary btn--sm" data-wp-roster-publish data-confirm="{{ $isMonth ? __('time.schedule.publish_confirm_month') : __('time.schedule.publish_confirm') }}" @disabled(! $hasScope)>{{ __('time.schedule.publish') }}</button>
-                    @endcan
-                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openLegendModal">{{ __('time.schedule.legend_button') }}</button>
+                    @canany(['update', 'publish'], \App\Models\PlannedShift::class)
+                        <div class="wp-toolbar-group wp-toolbar-group--action" role="group" aria-label="{{ __('time.schedule.toolbar.save') }}">
+                            @can('update', \App\Models\PlannedShift::class)
+                                <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-save @disabled(! $hasScope)>{{ __('common.button.save') }}</button>
+                            @endcan
+                            @can('publish', \App\Models\PlannedShift::class)
+                                <button type="button" class="btn btn--primary btn--sm" data-wp-roster-publish data-confirm="{{ $isMonth ? __('time.schedule.publish_confirm_month') : __('time.schedule.publish_confirm') }}" @disabled(! $hasScope)>{{ __('time.schedule.publish') }}</button>
+                            @endcan
+                        </div>
+                    @endcanany
+                    <div class="wp-toolbar-group wp-toolbar-group--tools" role="group" aria-label="{{ __('time.schedule.toolbar.tools') }}">
+                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openLegendModal">{{ __('time.schedule.legend_button') }}</button>
+                        <a
+                            href="{{ route('time.schedule.print', $printParams) }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn--ghost btn--sm"
+                        >{{ __('common.button.print') }}</a>
+                    </div>
                 </div>
             </div>
             @if ($locationFilter && $groupUnits !== [])
-                <div class="wp-filter-cell wp-time-roster-groups">
+                <div class="wp-filter-cell wp-time-roster-groups wp-toolbar-group wp-toolbar-group--view">
                     <span class="wp-filter-inline-label">{{ __('time.schedule.groups_filter') }}</span>
                     <div class="wp-cluster wp-cluster--tight">
                         @foreach ($groupUnits as $groupUnit)

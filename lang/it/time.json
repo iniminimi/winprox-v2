@@ -907,6 +907,12 @@
         "staffing": {
             "title": "Organico minimo non raggiunto",
             "missing": ":code — :name mancante (:actual/:required)"
+        },
+        "toolbar": {
+            "view": "Vista e filtri",
+            "edit": "Modifica pianificazione",
+            "save": "Salva e pubblica",
+            "tools": "Aiuto ed esportazione"
         }
     },
     "shift_types": {

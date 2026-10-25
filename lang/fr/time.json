@@ -907,6 +907,12 @@
         "staffing": {
             "title": "Effectif minimal non atteint",
             "missing": ":code — :name manquant (:actual/:required)"
+        },
+        "toolbar": {
+            "view": "Affichage et filtres",
+            "edit": "Modifier le planning",
+            "save": "Enregistrer et publier",
+            "tools": "Aide et export"
         }
     },
     "shift_types": {

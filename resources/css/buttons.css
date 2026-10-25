@@ -131,6 +131,13 @@
     color: var(--wp-text-on-accent);
 }
 
+/* Info (blauw) — actieve selectie binnen weergave/filters. */
+.btn--info {
+    background-color: var(--wp-info);
+    border-color: var(--wp-info);
+    color: var(--wp-text-on-accent);
+}
+
 /* Maatvarianten (zelfde taal, andere schaal). */
 .btn--sm {
     height: 2rem;

@@ -27,7 +27,7 @@
 @endphp
 
 @if ($hasLinks)
-    <nav class="wp-cluster wp-cluster--tight wp-time-nav" aria-label="{{ __('time.nav.label') }}">
+    <nav class="wp-toolbar-group wp-toolbar-group--edit wp-time-nav" aria-label="{{ __('time.nav.label') }}">
         @if ($showShifts)
             <a href="{{ route('time.shifts.index') }}" class="btn btn--sm btn--surface">
                 {{ __('time.nav.shifts') }}

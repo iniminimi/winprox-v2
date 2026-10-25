@@ -907,6 +907,12 @@
         "staffing": {
             "title": "Dotación mínima no alcanzada",
             "missing": "falta :code — :name (:actual/:required)"
+        },
+        "toolbar": {
+            "view": "Vista y filtros",
+            "edit": "Editar planificación",
+            "save": "Guardar y publicar",
+            "tools": "Ayuda y exportación"
         }
     },
     "shift_types": {

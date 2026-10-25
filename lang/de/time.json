@@ -907,6 +907,12 @@
         "staffing": {
             "title": "Mindestbesetzung nicht erreicht",
             "missing": ":code — :name fehlt (:actual/:required)"
+        },
+        "toolbar": {
+            "view": "Ansicht und Filter",
+            "edit": "Planung bearbeiten",
+            "save": "Speichern und veröffentlichen",
+            "tools": "Hilfe und Ausgabe"
         }
     },
     "shift_types": {
