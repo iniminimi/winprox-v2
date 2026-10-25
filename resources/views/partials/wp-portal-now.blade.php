@@ -62,7 +62,12 @@
     } elseif ($openShift === null) {
         $action = ['method' => 'clockIn', 'label' => __('time.portal.clock.in'), 'needsScan' => true];
     } elseif ($openElsewhere) {
-        $action = ['method' => 'transferToThisClockPoint', 'label' => __('time.portal.clock.transfer_here'), 'needsScan' => true];
+        // "Verplaats naar hier" pas bij aanwezigheidsbewijs op dit punt:
+        // een verse QR-scan of checkmate-vrijprik. Louter aanmelden via een
+        // link is geen bewijs — dan is uitklokken de neutrale hoofdactie.
+        $action = ($canPunch ?? false)
+            ? ['method' => 'transferToThisClockPoint', 'label' => __('time.portal.clock.transfer_here'), 'needsScan' => true]
+            : ['method' => 'clockOut', 'label' => __('time.portal.clock.out'), 'needsScan' => true];
     } else {
         $action = ['method' => 'clockOut', 'label' => __('time.portal.clock.out'), 'needsScan' => true];
     }

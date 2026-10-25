@@ -246,6 +246,34 @@ it('verplaatst een open dienst na een scan op een andere Clock Point', function 
         ->toBe($clockB->id);
 });
 
+it('biedt verplaatsen pas na een verse scan; aanmelden alleen biedt uitklokken', function () {
+    [$tenant, $clockA, $worker] = punchScanTenant();
+    $clockB = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'qr_token' => 'punch-scan-neutral-b-'.$tenant->id,
+    ]);
+
+    app(ClockInAction::class)->handle($worker, $clockA);
+
+    // Aangemeld op B zónder verse scan (bv. via de /cp-aanmeldlink):
+    // neutrale hoofdactie, geen "Verplaats naar hier".
+    $portal = Livewire::test(TimePortal::class, ['token' => $clockB->qr_token]);
+    ClockPointScanGrant::consume($clockB->id);
+
+    $portal->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->assertSee(__('time.portal.now.status_elsewhere'), false)
+        ->assertSee(__('time.portal.clock.out'), false)
+        ->assertDontSee(__('time.portal.clock.transfer_here'), false);
+
+    // Verse QR-scan op B → wél de verplaats-actie.
+    signInPunchScanWorker($clockB)
+        ->assertSee(__('time.portal.clock.transfer_here'), false);
+});
+
 it('behandelt een tweede Clock Point op dezelfde vestiging niet als elders', function () {
     [$tenant, , $worker] = punchScanTenant();
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
