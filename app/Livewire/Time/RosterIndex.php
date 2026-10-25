@@ -579,6 +579,12 @@ class RosterIndex extends Component
         $this->dispatch('roster-week-changed');
     }
 
+    public function updatedShowStats(): void
+    {
+        $this->showStats = (bool) $this->showStats;
+        $this->dispatch('roster-week-changed');
+    }
+
     public function updatedGroupUnitIds(): void
     {
         $this->groupUnitIds = array_values(array_map('intval', $this->groupUnitIds));
