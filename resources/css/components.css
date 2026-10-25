@@ -50,6 +50,11 @@
     white-space: nowrap;
 }
 
+.wp-pill .wp-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+}
+
 .wp-pill--new {
     background-color: var(--wp-info-soft);
     border-color: var(--wp-info-border);

@@ -3,6 +3,8 @@
 use App\Actions\Time\ListLocationStaffingShortfallsAction;
 use App\Enums\PlannedShiftStatus;
 use App\Enums\ShiftTypeKind;
+use App\Livewire\Locations\Index as LocationsIndex;
+use App\Livewire\Time\RosterIndex;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\PlannedShift;
@@ -12,6 +14,7 @@ use App\Models\User;
 use App\Models\Worker;
 use App\Support\Tenancy;
 use Carbon\Carbon;
+use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
 
@@ -63,12 +66,6 @@ function staffingShift(Tenant $tenant, Worker $worker, ShiftType $type, string $
         'location_id' => $locationId,
         'status' => $status ?? PlannedShiftStatus::Draft,
     ]);
-}
-
-function staffingDates(int $days = 1, int $offsetDays = 0): array
-{
-    return [Carbon::today()->addDays($offsetDays)->toDateString()]
-        + $days === 1 ? [Carbon::today()->addDays($offsetDays)->toDateString()] : [];
 }
 
 it('toont een zichtbare dag zonder werkdiensten als 0/N tekort', function () {
@@ -162,7 +159,6 @@ it('telt diensten met expliciete locatie; ambigue uitvoerders nergens', function
     );
 
     expect($result['total'])->toBe(2);
-    $flat = collect($result['locations'])->flatMap(fn ($g) => $g['items'])->keyBy(fn ($i) => $i['code'].'|'.$i['actual']);
     $a = collect($result['locations'])->firstWhere('name', 'A');
     $b = collect($result['locations'])->firstWhere('name', 'B');
     expect($a['items'][0]['actual'])->toBe(1)->and($a['items'][0]['required'])->toBe(2)
@@ -211,13 +207,12 @@ it('beperkt de lijst tot vijf tekorten en sorteert deterministisch', function ()
     $siteA = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Alpha']);
 
     // 2 locaties × 3 types = 6 tekorten op dezelfde dag.
-    foreach ([$siteA, $siteB] as $site) {
-        $reqs = [];
-        foreach (['D', 'L', 'V'] as $code) {
-            $reqs[(string) staffingType($tenant, $code)->id] = 1;
-        }
-        $site->update(['min_staffing' => $reqs]);
+    $reqs = [];
+    foreach (['D', 'L', 'V'] as $code) {
+        $reqs[(string) staffingType($tenant, $code)->id] = 1;
     }
+    $siteA->update(['min_staffing' => $reqs]);
+    $siteB->update(['min_staffing' => $reqs]);
 
     $result = app(ListLocationStaffingShortfallsAction::class)->handle(
         (int) $tenant->id,
@@ -296,6 +291,81 @@ it('telt drafts én gepubliceerde diensten, maar geen afwezigheden', function ()
     );
 
     expect($result['total'])->toBe(0);
+});
+
+it('toont het indicatieblok in het uurrooster', function () {
+    [$tenant, $admin, $team] = staffingTenant();
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $type = staffingType($tenant, 'V2');
+    $location->update(['min_staffing' => [(string) $type->id => 1]]);
+    staffingWorker($tenant, $team, [$location->id]);
+
+    Livewire::actingAs($admin)
+        ->test(RosterIndex::class)
+        ->set('locationFilter', $location->id)
+        ->call('nextWeek')
+        ->assertSee(__('time.schedule.staffing.title'), false)
+        ->assertSee(__('time.schedule.staffing.missing', ['code' => 'V2', 'actual' => 0, 'required' => 1]), false);
+});
+
+it('toont geen indicatieblok zonder vereisten', function () {
+    [$tenant, $admin, $team] = staffingTenant();
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    staffingWorker($tenant, $team, [$location->id]);
+
+    Livewire::actingAs($admin)
+        ->test(RosterIndex::class)
+        ->set('locationFilter', $location->id)
+        ->assertDontSee(__('time.schedule.staffing.title'), false);
+});
+
+it('slaat minimumbezetting op via het locatieformulier', function () {
+    [$tenant, $admin, $team] = staffingTenant();
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Kapel']);
+    $type = staffingType($tenant, 'D');
+
+    Livewire::actingAs($admin)
+        ->test(LocationsIndex::class)
+        ->call('openEdit', $location->id)
+        ->call('addMinStaffingRow')
+        ->set('locationFormMinStaffing.0.type_id', (string) $type->id)
+        ->set('locationFormMinStaffing.0.min', '3')
+        ->call('save')
+        ->assertHasNoErrors();
+
+    expect($location->fresh()->min_staffing)->toBe([(string) $type->id => 3]);
+});
+
+it('behoudt verouderde regels bij opslaan tot de beheerder ze verwijdert', function () {
+    [$tenant, $admin, $team] = staffingTenant();
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Kapel']);
+    $inactive = staffingType($tenant, 'X1', active: false);
+    $location->update(['min_staffing' => [(string) $inactive->id => 2, '999999' => 3]]);
+
+    Livewire::actingAs($admin)
+        ->test(LocationsIndex::class)
+        ->call('openEdit', $location->id)
+        ->call('save')
+        ->assertHasNoErrors();
+
+    expect($location->fresh()->min_staffing)
+        ->toBe([(string) $inactive->id => 2, '999999' => 3]);
+});
+
+it('verwijdert een verouderde regel enkel expliciet via de rij-verwijdering', function () {
+    [$tenant, $admin, $team] = staffingTenant();
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Kapel']);
+    $inactive = staffingType($tenant, 'X1', active: false);
+    $location->update(['min_staffing' => [(string) $inactive->id => 2]]);
+
+    Livewire::actingAs($admin)
+        ->test(LocationsIndex::class)
+        ->call('openEdit', $location->id)
+        ->call('removeMinStaffingRow', 0)
+        ->call('save')
+        ->assertHasNoErrors();
+
+    expect($location->fresh()->min_staffing)->toBeNull();
 });
 
 it('houdt tenants strikt gescheiden', function () {

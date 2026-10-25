@@ -200,7 +200,8 @@
                     "Triangolo rosso se non hai timbrato, se timbri troppo presto o in ritardo, o se esci in ritardo. Le mie ore indica ogni motivo.",
                     "La gestione vede pianificato contro timbrato (margine di 15 minuti).",
                     "Le viste settimana e mese mostrano colonne fisse per esecutore, con il titolo in verticale e solo la cifra nella riga: norma, scarto, pianificato, lavorato, ferie, recupero e malattia. La colonna segnale indica blocchi incompleti o una timbratura aperta. Norma e scarto restano vuoti finché quella norma non è affidabile. Quella norma è di 38 ore per impostazione predefinita e resta modificabile per persona. Senza regola di lavoro, il mese conta lunedì–venerdì secondo quella norma; i festivi seguono il regime concordato o, senza accordo, lo standard belga (il giorno lavorativo decade; una festività nel weekend riceve un giorno sostitutivo proposto). È un conteggio, non un giudizio sulla durata del lavoro.",
-                    "I festivi colorano la colonna di blu, i giorni sostitutivi di verde; una cella grigia è un giorno libero fisso (0 minuti nello schema) e resta modificabile."
+                    "I festivi colorano la colonna di blu, i giorni sostitutivi di verde; una cella grigia è un giorno libero fisso (0 minuti nello schema) e resta modificabile.",
+                    "Facoltativamente imposti un organico minimo per sede (quantità per tipo di turno). I turni indicano quindi quali servizi mancano in quale giorno; non bloccano mai il salvataggio né la pubblicazione."
                 ]
             },
             {

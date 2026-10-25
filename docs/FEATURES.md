@@ -1088,6 +1088,23 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   Enkelvoudige `CopyWeekAction`
   (API `POST /time/schedule/copy`) delegeert en behoudt zijn weiger-exceptions; optionele
   `weeks`-parameter geeft hetzelfde range-rapport terug.
+- **Minimum bezetting (indicatie):** per locatie instelbaar (locatie bewerken →
+  inklappanel **Minimum bezetting per dag**): aantallen per diensttype uit de
+  legende, gelijk voor elke dag (`locations.min_staffing` JSON
+  `{shift_type_id: min}`). Het uurrooster toont een muted `wp-flash`-blok met
+  tekorten — `di 25/10 · V2 ontbreekt (0/1)` — gegroepeerd per locatie. Puur
+  informatief: opslaan en publiceren worden nooit geblokkeerd.
+  `ListLocationStaffingShortfallsAction` telt **tenant-breed** unieke
+  uitvoerders (split-shifts = 1) per datum × locatie × actief werk-type
+  (draft + published; afwezigheid nooit), enkel voor **zichtbare dagen ≥
+  vandaag**. Effectieve locatie = `planned_shifts.location_id`, anders de
+  enige toegewezen locatie van de uitvoerder; bij 0 of ≥2 toegewezen
+  locaties telt een dienst zonder `location_id` **nergens** mee (bekende
+  v1-beperking). Weergegeven locaties: actor-locaties ∩ actief locatiefilter.
+  Inactieve/verwijderde types worden overgeslagen én blijven als vergrijsde
+  rij in de config staan tot de beheerder ze verwijdert — opslaan wist ze
+  nooit ongemerkt. Max. 5 tekorten globaal (sorteer: datum → locatie → code),
+  daarna `+N meer`.
 - **Golf 2 — Mijn rooster:** Clock Point-tegel, alleen eigen `published` diensten van de
   **maand**. Beknopte lijst in één kader (`ma 14/09 : Dagdienst - 08:00-17:00`); lege dagen
   worden overgeslagen; meerdere blokken op één dag staan als eigen regels onder elkaar.

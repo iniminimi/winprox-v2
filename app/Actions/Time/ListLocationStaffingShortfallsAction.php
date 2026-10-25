@@ -52,7 +52,10 @@ final class ListLocationStaffingShortfallsAction
             return $empty;
         }
 
+        // Expliciete tenant is leidend; de ambient tenant-scope mag deze
+        // telling niet beïnvloeden (actor-context ≠ getelde tenant).
         $locations = Location::query()
+            ->withoutGlobalScope('tenant')
             ->where('tenant_id', $tenantId)
             ->whereNotNull('min_staffing')
             ->when($actorLocationIds !== null, fn ($q) => $q->whereIn('id', $actorLocationIds))
@@ -76,6 +79,7 @@ final class ListLocationStaffingShortfallsAction
         // Verouderde config: inactieve/verwijderde types tellen niet mee;
         // enkel werk-types zijn zinvol als bezettingsvereiste.
         $activeTypes = ShiftType::query()
+            ->withoutGlobalScope('tenant')
             ->where('tenant_id', $tenantId)
             ->where('is_active', true)
             ->where('kind', ShiftTypeKind::Work->value)
@@ -153,9 +157,14 @@ final class ListLocationStaffingShortfallsAction
     private function countUniqueWorkers(int $tenantId, array $dates, array $typeIds): array
     {
         $shifts = PlannedShift::query()
+            ->withoutGlobalScope('tenant')
             ->where('tenant_id', $tenantId)
             ->where('kind', ShiftTypeKind::Work->value)
-            ->whereIn('work_date', $dates)
+            ->where(function ($query) use ($dates) {
+                foreach ($dates as $date) {
+                    $query->orWhereDate('work_date', $date);
+                }
+            })
             ->whereIn('shift_type_id', $typeIds)
             ->get(['worker_id', 'work_date', 'shift_type_id', 'location_id']);
 

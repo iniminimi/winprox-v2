@@ -200,7 +200,8 @@
                     "A red triangle if you have not clocked in, clocked in early or late, or clocked out late. My hours shows each reason.",
                     "Admin sees planned versus clocked (15-minute window).",
                     "Week and month view show fixed columns per worker, with a vertical title and only the figure in the row: norm, difference, planned, worked, leave, time off in lieu and sick. The flag column signals incomplete blocks or an open time record. Norm and difference stay empty while that norm is not reliable. The weekly norm defaults to 38 hours and stays adjustable per worker. Without a work pattern the month counts Monday–Friday per that norm; holidays follow the agreed scheme or, without an agreement, the Belgian standard (working day dropped; a weekend holiday gets a proposed replacement day). That is a count, not a judgement on working time.",
-                    "Holidays tint the date column blue, replacement days green; a grey cell is a fixed day off (0 minutes in the week pattern) and stays editable."
+                    "Holidays tint the date column blue, replacement days green; a grey cell is a fixed day off (0 minutes in the week pattern) and stays editable.",
+                    "Optionally set a minimum staffing per location (counts per shift type). The roster then indicates which shifts are missing on which day; it never blocks saving or publishing."
                 ]
             },
             {
