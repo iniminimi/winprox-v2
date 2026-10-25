@@ -24,7 +24,8 @@
     "worker_follow_up": "New worker",
     "pending_absence_leave": ":count Leave",
     "pending_absence_recup": ":count TOIL",
-    "iot_alarms": "IoT alarms"
+    "iot_alarms": "IoT alarms",
+    "staffing_shortfalls": "Staffing shortfall"
   },
   "recent": {
     "title": "Recent issues",

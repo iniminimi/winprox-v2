@@ -414,3 +414,50 @@ it('verbergt Welke taken vandaag zonder kalender in het werkmenu', function () {
         ->assertDontSee(__('dashboard.intent.tiles.today_tasks.title'))
         ->assertSee(__('dashboard.intent.tiles.day_task.title'));
 });
+
+it('toont bezettingstekort-KPI met link naar het uurrooster', function () {
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    Tenancy::actAs($tenant->id);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    $type = \App\Models\ShiftType::factory()->create([
+        'tenant_id' => $tenant->id,
+        'code' => 'D',
+        'kind' => \App\Enums\ShiftTypeKind::Work,
+        'is_active' => true,
+    ]);
+    $location->update(['min_staffing' => [(string) $type->id => 1]]);
+
+    Livewire::actingAs($user)
+        ->test(Dashboard::class)
+        ->assertSee(__('dashboard.kpi.staffing_shortfalls'))
+        ->assertSeeHtml('wp-kpi--staffing_shortfalls')
+        ->assertSee(route('time.schedule.index'));
+
+    for ($i = 0; $i < 7; $i++) {
+        $date = now()->startOfWeek()->addDays($i);
+        if ($date->isToday() || $date->isFuture()) {
+            \App\Models\PlannedShift::factory()->create([
+                'tenant_id' => $tenant->id,
+                'worker_id' => $worker->id,
+                'work_date' => $date->toDateString(),
+                'shift_type_id' => $type->id,
+                'kind' => \App\Enums\ShiftTypeKind::Work,
+                'location_id' => $location->id,
+                'status' => \App\Enums\PlannedShiftStatus::Draft,
+            ]);
+        }
+    }
+
+    Livewire::actingAs($user)
+        ->test(Dashboard::class)
+        ->assertDontSee(__('dashboard.kpi.staffing_shortfalls'));
+});

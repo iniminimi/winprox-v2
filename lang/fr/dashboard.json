@@ -24,7 +24,8 @@
     "worker_follow_up": "Nouvel exécutant",
     "pending_absence_leave": ":count Congé",
     "pending_absence_recup": ":count Récup",
-    "iot_alarms": "Alarmes IoT"
+    "iot_alarms": "Alarmes IoT",
+    "staffing_shortfalls": "Effectif insuffisant"
   },
   "recent": {
     "title": "Signalements récents",

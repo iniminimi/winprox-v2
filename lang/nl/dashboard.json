@@ -24,7 +24,8 @@
     "worker_follow_up": "Nieuwe uitvoerder",
     "pending_absence_leave": ":count Verlof",
     "pending_absence_recup": ":count Recup",
-    "iot_alarms": "IoT-alarmen"
+    "iot_alarms": "IoT-alarmen",
+    "staffing_shortfalls": "Bezettingstekort"
   },
   "recent": {
     "title": "Recente meldingen",

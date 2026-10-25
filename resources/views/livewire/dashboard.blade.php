@@ -467,6 +467,7 @@
                 'pending_absence' => route('time.absence-requests.index'),
                 'worker_follow_up' => route('workers.index', ['review' => 1]),
                 'iot_alarms' => route('iot.index'),
+                'staffing_shortfalls' => route('time.schedule.index'),
             ];
             $highlightCutoff = now()->subHours(3);
         @endphp

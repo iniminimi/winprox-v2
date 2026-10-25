@@ -24,7 +24,8 @@
     "worker_follow_up": "Nuovo esecutore",
     "pending_absence_leave": ":count Ferie",
     "pending_absence_recup": ":count Recupero",
-    "iot_alarms": "Allarmi IoT"
+    "iot_alarms": "Allarmi IoT",
+    "staffing_shortfalls": "Carenza di personale"
   },
   "recent": {
     "title": "Segnalazioni recenti",

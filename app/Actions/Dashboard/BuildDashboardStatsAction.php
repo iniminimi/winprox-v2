@@ -7,6 +7,7 @@ namespace App\Actions\Dashboard;
 use App\Actions\Team\CountWorkerAdminFollowUpAction;
 use App\Actions\Time\CountPendingAbsenceRequestsAction;
 use App\Actions\Time\CountTimePresenceAttentionAction;
+use App\Actions\Time\ListLocationStaffingShortfallsAction;
 use App\Data\Dashboard\DashboardStatsData;
 use App\Enums\IssueSource;
 use App\Enums\TaskStatus;
@@ -23,14 +24,19 @@ class BuildDashboardStatsAction
         private CountTimePresenceAttentionAction $countTimeAttention,
         private CountPendingAbsenceRequestsAction $countPendingAbsence,
         private CountWorkerAdminFollowUpAction $countWorkerFollowUp,
+        private ListLocationStaffingShortfallsAction $staffingShortfalls,
     ) {}
 
-    public function handle(int $tenantId, bool $hasTimeModule, bool $hasIotModule, bool $workMenuIssuesTasksEnabled = true): DashboardStatsData
+    /**
+     * @param  list<int>|null  $actorLocationIds  null = alle locaties
+     */
+    public function handle(int $tenantId, bool $hasTimeModule, bool $hasIotModule, bool $workMenuIssuesTasksEnabled = true, ?array $actorLocationIds = null): DashboardStatsData
     {
         $presentNow = null;
         $timeAttention = 0;
         $pendingAbsenceLeave = 0;
         $pendingAbsenceRecup = 0;
+        $staffingShortfalls = 0;
 
         if ($hasTimeModule) {
             $presentNow = WorkShift::query()
@@ -43,6 +49,13 @@ class BuildDashboardStatsAction
             $pendingByKind = $this->countPendingAbsence->byKind($tenantId);
             $pendingAbsenceLeave = $pendingByKind['leave'];
             $pendingAbsenceRecup = $pendingByKind['recup'];
+
+            $weekStart = now()->startOfWeek();
+            $staffingShortfalls = $this->staffingShortfalls->handle(
+                $tenantId,
+                array_map(fn (int $i) => $weekStart->copy()->addDays($i)->toDateString(), range(0, 6)),
+                $actorLocationIds,
+            )['total'];
         }
 
         $iotAlarms = 0;
@@ -77,6 +90,7 @@ class BuildDashboardStatsAction
             pendingAbsenceRecup: $pendingAbsenceRecup,
             workerFollowUp: $this->countWorkerFollowUp->handle($tenantId),
             iotAlarms: $iotAlarms,
+            staffingShortfalls: $staffingShortfalls,
             hasTimeModule: $hasTimeModule,
             hasIotModule: $hasIotModule,
             workMenuIssuesTasksEnabled: $workMenuIssuesTasksEnabled,

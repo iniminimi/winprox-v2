@@ -19,6 +19,7 @@ final class DashboardStatsData
         public int $pendingAbsenceRecup,
         public int $workerFollowUp,
         public int $iotAlarms,
+        public int $staffingShortfalls = 0,
         public bool $hasTimeModule,
         public bool $hasIotModule,
         public bool $workMenuIssuesTasksEnabled = true,
@@ -44,6 +45,10 @@ final class DashboardStatsData
 
         if ($this->workerFollowUp > 0) {
             $tiles[] = ['key' => 'worker_follow_up', 'icon' => 'team', 'label' => 'dashboard.kpi.worker_follow_up', 'meta' => null, 'alert' => true, 'href_key' => 'worker_follow_up'];
+        }
+
+        if ($this->hasTimeModule && $this->staffingShortfalls > 0) {
+            $tiles[] = ['key' => 'staffing_shortfalls', 'icon' => 'roster', 'label' => 'dashboard.kpi.staffing_shortfalls', 'meta' => null, 'alert' => true, 'href_key' => 'staffing_shortfalls'];
         }
 
         if ($this->hasTimeModule && $this->timeAttention > 0) {
@@ -74,6 +79,7 @@ final class DashboardStatsData
             'pending_absence' => $this->pendingAbsenceRequests,
             'worker_follow_up' => $this->workerFollowUp,
             'iot_alarms' => $this->iotAlarms,
+            'staffing_shortfalls' => $this->staffingShortfalls,
             default => 0,
         };
     }

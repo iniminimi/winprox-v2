@@ -24,7 +24,8 @@
     "worker_follow_up": "Nuevo ejecutor",
     "pending_absence_leave": ":count Permiso",
     "pending_absence_recup": ":count Compensación",
-    "iot_alarms": "Alarmas IoT"
+    "iot_alarms": "Alarmas IoT",
+    "staffing_shortfalls": "Déficit de personal"
   },
   "recent": {
     "title": "Incidencias recientes",
