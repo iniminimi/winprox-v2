@@ -931,7 +931,7 @@
     "staffing": {
         "title": "Effectif minimal",
         "subtitle": "Définir par site quels services doivent être planifiés au minimum chaque jour. Simple indication dans le planning horaire — cela ne bloque rien.",
-        "hint": "Les services sans unité ne comptent que si le collaborateur a exactement un site.",
+        "hint": "Les services sans site comptent via l'unité planifiée, le groupe fixe du collaborateur, ou exactement un site attribué.",
         "type": "Type de service",
         "type_placeholder": "Choisir un type de service",
         "count": "Nombre minimal",

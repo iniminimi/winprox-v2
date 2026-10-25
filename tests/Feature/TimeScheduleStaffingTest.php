@@ -10,6 +10,7 @@ use App\Models\Location;
 use App\Models\PlannedShift;
 use App\Models\ShiftType;
 use App\Models\Tenant;
+use App\Models\Unit;
 use App\Models\User;
 use App\Models\Worker;
 use App\Support\Tenancy;
@@ -55,7 +56,7 @@ function staffingWorker(Tenant $tenant, InternalTeam $team, array $locationIds =
     return $worker;
 }
 
-function staffingShift(Tenant $tenant, Worker $worker, ShiftType $type, string $date, ?int $locationId = null, ?string $status = null): PlannedShift
+function staffingShift(Tenant $tenant, Worker $worker, ShiftType $type, string $date, ?int $locationId = null, ?string $status = null, ?int $unitId = null): PlannedShift
 {
     return PlannedShift::factory()->create([
         'tenant_id' => $tenant->id,
@@ -64,6 +65,7 @@ function staffingShift(Tenant $tenant, Worker $worker, ShiftType $type, string $
         'shift_type_id' => $type->id,
         'kind' => $type->kind ?? ShiftTypeKind::Work,
         'location_id' => $locationId,
+        'unit_id' => $unitId,
         'status' => $status ?? PlannedShiftStatus::Draft,
     ]);
 }
@@ -106,6 +108,41 @@ it('dekt een vereiste met een dienst van een ander team (tenant-brede telling)',
     $type = staffingType($tenant, 'D');
     $location->update(['min_staffing' => [(string) $type->id => 1]]);
     $worker = staffingWorker($tenant, $otherTeam, [$location->id]);
+    staffingShift($tenant, $worker, $type, Carbon::today()->toDateString());
+
+    $result = app(ListLocationStaffingShortfallsAction::class)->handle(
+        (int) $tenant->id,
+        [Carbon::today()->toDateString()],
+    );
+
+    expect($result['total'])->toBe(0)->and($result['locations'])->toBe([]);
+});
+
+it('telt diensten op de locatie van de geplande eenheid', function () {
+    [$tenant, $admin, $team] = staffingTenant();
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    $type = staffingType($tenant, 'V1');
+    $location->update(['min_staffing' => [(string) $type->id => 1]]);
+    $worker = staffingWorker($tenant, $team);
+    staffingShift($tenant, $worker, $type, Carbon::today()->toDateString(), unitId: $unit->id);
+
+    $result = app(ListLocationStaffingShortfallsAction::class)->handle(
+        (int) $tenant->id,
+        [Carbon::today()->toDateString()],
+    );
+
+    expect($result['total'])->toBe(0)->and($result['locations'])->toBe([]);
+});
+
+it('telt diensten zonder eenheid op de vaste groep van de uitvoerder', function () {
+    [$tenant, $admin, $team] = staffingTenant();
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    $type = staffingType($tenant, 'V2');
+    $location->update(['min_staffing' => [(string) $type->id => 1]]);
+    $worker = staffingWorker($tenant, $team);
+    $worker->update(['default_unit_id' => $unit->id]);
     staffingShift($tenant, $worker, $type, Carbon::today()->toDateString());
 
     $result = app(ListLocationStaffingShortfallsAction::class)->handle(

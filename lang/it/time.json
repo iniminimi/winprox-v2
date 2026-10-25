@@ -931,7 +931,7 @@
     "staffing": {
         "title": "Organico minimo",
         "subtitle": "Definisci per sede quali turni devono essere pianificati al minimo ogni giorno. Indicazione nel planning — non blocca nulla.",
-        "hint": "I turni senza unità contano solo se l'operatore ha esattamente una sede.",
+        "hint": "I turni senza sede contano tramite l'unità pianificata, il gruppo fisso dell'operatore, o esattamente una sede assegnata.",
         "type": "Tipo di turno",
         "type_placeholder": "Scegli tipo di turno",
         "count": "Numero minimo",

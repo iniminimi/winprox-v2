@@ -931,7 +931,7 @@
     "staffing": {
         "title": "Minimum staffing",
         "subtitle": "Define per location which shifts must minimally be planned each day. An indication in the hour roster — it blocks nothing.",
-        "hint": "Shifts without a unit only count if the worker has exactly one location.",
+        "hint": "Shifts without a location count via the planned unit, the worker's default group, or exactly one assigned location.",
         "type": "Shift type",
         "type_placeholder": "Choose shift type",
         "count": "Minimum count",

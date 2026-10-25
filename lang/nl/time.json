@@ -931,7 +931,7 @@
     "staffing": {
         "title": "Minimum bezetting",
         "subtitle": "Per locatie vastleggen welke diensten er minimaal dagelijks gepland moeten zijn. Indicatie in het uurrooster — blokkeert niets.",
-        "hint": "Diensten zonder eenheid tellen alleen mee als de uitvoerder exact één locatie heeft.",
+        "hint": "Diensten zonder locatie tellen mee via de geplande eenheid, de vaste groep van de uitvoerder, of exact één toegewezen locatie.",
         "type": "Diensttype",
         "type_placeholder": "Kies diensttype",
         "count": "Minimumaantal",

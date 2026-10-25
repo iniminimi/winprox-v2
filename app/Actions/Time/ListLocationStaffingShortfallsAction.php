@@ -19,9 +19,10 @@ use Illuminate\Support\Facades\DB;
  * - Enkel zichtbare dagen >= vandaag (weekenden enkel als getoond).
  * - Enkel unieke uitvoerders tellen (split-shifts = 1), enkel werk-kind,
  *   draft + published.
- * - Effectieve locatie: planned_shifts.location_id, anders exact één
- *   toegewezen locatie van de uitvoerder; anders telt de dienst nergens
- *   (bekende v1-beperking bij 0 of >=2 toegewezen locaties).
+ * - Effectieve locatie: planned_shifts.location_id, anders de locatie van
+ *   de geplande eenheid (unit_id), anders de vaste groep van de uitvoerder
+ *   (default_unit), anders exact één toegewezen locatie; anders telt de
+ *   dienst nergens (bekende v1-beperking zonder enige locatie-aanknoping).
  * - Verouderde config (type inactief/verwijderd) wordt overgeslagen.
  * - Indicatie, nooit blokkerend. Limiet 5 vóór groepering per locatie.
  */
@@ -166,15 +167,36 @@ final class ListLocationStaffingShortfallsAction
                 }
             })
             ->whereIn('shift_type_id', $typeIds)
-            ->get(['worker_id', 'work_date', 'shift_type_id', 'location_id']);
+            ->get(['worker_id', 'work_date', 'shift_type_id', 'location_id', 'unit_id']);
 
         if ($shifts->isEmpty()) {
             return [];
         }
 
-        // worker_id => [location_ids]; effectieve locatie-fallback enkel bij exact één.
+        $workerIds = $shifts->pluck('worker_id')->unique();
+
+        // worker_id => default_unit_id (vaste groep van de uitvoerder).
+        $workerUnits = DB::table('workers')
+            ->whereIn('id', $workerIds)
+            ->whereNotNull('default_unit_id')
+            ->pluck('default_unit_id', 'id')
+            ->map(fn ($id) => (int) $id)
+            ->all();
+
+        // unit_id => location_id (geplande én vaste groepen).
+        $unitLocations = DB::table('units')
+            ->whereIn('id', array_unique(array_merge(
+                $shifts->pluck('unit_id')->filter()->all(),
+                array_values($workerUnits),
+            )) ?: [0])
+            ->whereNotNull('location_id')
+            ->pluck('location_id', 'id')
+            ->map(fn ($id) => (int) $id)
+            ->all();
+
+        // worker_id => [location_ids]; locatie-fallback enkel bij exact één.
         $workerLocations = DB::table('location_worker')
-            ->whereIn('worker_id', $shifts->pluck('worker_id')->unique())
+            ->whereIn('worker_id', $workerIds)
             ->get(['worker_id', 'location_id'])
             ->groupBy('worker_id')
             ->map(fn ($rows) => $rows->pluck('location_id')->map(fn ($id) => (int) $id)->all())
@@ -182,11 +204,7 @@ final class ListLocationStaffingShortfallsAction
 
         $seen = [];
         foreach ($shifts as $shift) {
-            $locationId = $shift->location_id !== null
-                ? (int) $shift->location_id
-                : (count($workerLocations[$shift->worker_id] ?? []) === 1
-                    ? $workerLocations[$shift->worker_id][0]
-                    : null);
+            $locationId = $this->resolveLocationId($shift, $unitLocations, $workerUnits, $workerLocations);
 
             if ($locationId !== null) {
                 $seen[$shift->work_date->toDateString().'|'.$locationId.'|'.(int) $shift->shift_type_id.'|'.(int) $shift->worker_id] = true;
@@ -200,5 +218,33 @@ final class ListLocationStaffingShortfallsAction
         }
 
         return $counts;
+    }
+
+    /**
+     * Effectieve locatie van een dienst: expliciete location_id → geplande
+     * eenheid → vaste groep van de uitvoerder → exact één toegewezen locatie.
+     *
+     * @param  array<int, int>  $unitLocations
+     * @param  array<int, int>  $workerUnits
+     * @param  array<int, list<int>>  $workerLocations
+     */
+    private function resolveLocationId(PlannedShift $shift, array $unitLocations, array $workerUnits, array $workerLocations): ?int
+    {
+        if ($shift->location_id !== null) {
+            return (int) $shift->location_id;
+        }
+
+        if ($shift->unit_id !== null && isset($unitLocations[(int) $shift->unit_id])) {
+            return $unitLocations[(int) $shift->unit_id];
+        }
+
+        $defaultUnit = $workerUnits[(int) $shift->worker_id] ?? null;
+        if ($defaultUnit !== null && isset($unitLocations[$defaultUnit])) {
+            return $unitLocations[$defaultUnit];
+        }
+
+        $assigned = $workerLocations[(int) $shift->worker_id] ?? [];
+
+        return count($assigned) === 1 ? $assigned[0] : null;
     }
 }

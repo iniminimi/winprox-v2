@@ -1097,10 +1097,11 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   `ListLocationStaffingShortfallsAction` telt **tenant-breed** unieke
   uitvoerders (split-shifts = 1) per datum × locatie × actief werk-type
   (draft + published; afwezigheid nooit), enkel voor **zichtbare dagen ≥
-  vandaag**. Effectieve locatie = `planned_shifts.location_id`, anders de
-  enige toegewezen locatie van de uitvoerder; bij 0 of ≥2 toegewezen
-  locaties telt een dienst zonder `location_id` **nergens** mee (bekende
-  v1-beperking). Weergegeven locaties: actor-locaties ∩ actief locatiefilter.
+  vandaag**. Effectieve locatie = `planned_shifts.location_id` → locatie van
+  de geplande eenheid (`unit_id`) → vaste groep van de uitvoerder
+  (`default_unit`) → exact één toegewezen locatie; zonder enige
+  locatie-aanknoping telt de dienst **nergens** mee (bekende v1-beperking).
+  Weergegeven locaties: actor-locaties ∩ actief locatiefilter.
   Inactieve/verwijderde types worden overgeslagen én blijven als vergrijsde
   rij in de config staan tot de beheerder ze verwijdert — opslaan wist ze
   nooit ongemerkt. Max. 5 tekorten globaal (sorteer: datum → locatie → code),

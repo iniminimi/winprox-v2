@@ -931,7 +931,7 @@
     "staffing": {
         "title": "Dotación mínima",
         "subtitle": "Define por lugar qué turnos deben planificarse como mínimo cada día. Indicación en el horario — no bloquea nada.",
-        "hint": "Los turnos sin unidad solo cuentan si el trabajador tiene exactamente un lugar.",
+        "hint": "Los turnos sin lugar cuentan a través de la unidad planificada, el grupo fijo del trabajador, o exactamente un lugar asignado.",
         "type": "Tipo de turno",
         "type_placeholder": "Elegir tipo de turno",
         "count": "Cantidad mínima",

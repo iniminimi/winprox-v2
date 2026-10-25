@@ -931,7 +931,7 @@
     "staffing": {
         "title": "Mindestbesetzung",
         "subtitle": "Pro Standort festlegen, welche Schichten täglich mindestens geplant sein müssen. Hinweis im Stundenplan — blockiert nichts.",
-        "hint": "Schichten ohne Einheit zählen nur, wenn der Mitarbeiter genau einen Standort hat.",
+        "hint": "Schichten ohne Standort zählen über die geplante Einheit, die feste Gruppe des Mitarbeiters oder genau einen zugewiesenen Standort.",
         "type": "Schichttyp",
         "type_placeholder": "Schichttyp wählen",
         "count": "Mindestanzahl",
