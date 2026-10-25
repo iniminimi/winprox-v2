@@ -16,6 +16,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Collection;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 
 /**
@@ -36,6 +37,9 @@ class StaffingIndex extends Component
     /** @var array<int, list<array{type_id: string, min: string, stale_label: ?string}>> */
     public array $staffingRows = [];
 
+    #[Url(as: 'location')]
+    public ?int $selectedLocationId = null;
+
     public function mount(): void
     {
         $this->authorize('viewAny', PlannedShift::class);
@@ -45,6 +49,12 @@ class StaffingIndex extends Component
         abort_if(CheckmateMode::isActive($tenant), 404);
 
         $this->hydrateAll();
+        $this->normalizeSelectedLocation();
+    }
+
+    public function updatedSelectedLocationId(): void
+    {
+        $this->normalizeSelectedLocation();
     }
 
     public function addStaffingRow(int $locationId): void
@@ -81,11 +91,22 @@ class StaffingIndex extends Component
 
     public function render()
     {
+        $locations = $this->scopedLocations();
+
         return view('livewire.time.staffing-index', [
-            'staffingLocations' => $this->scopedLocations(),
+            'staffingLocations' => $locations,
+            'selectedLocation' => $locations->firstWhere('id', $this->selectedLocationId),
             'staffingTypeOptions' => $this->typeOptions(),
             'alarmCount' => $this->timeNavAlarmCount(),
         ]);
+    }
+
+    private function normalizeSelectedLocation(): void
+    {
+        $ids = $this->scopedLocations()->pluck('id')->all();
+        if (! in_array($this->selectedLocationId, $ids, true)) {
+            $this->selectedLocationId = $ids[0] ?? null;
+        }
     }
 
     /**
@@ -151,7 +172,7 @@ class StaffingIndex extends Component
             $typeId = (int) ($row['type_id'] ?? 0);
             $min = (int) ($row['min'] ?? 0);
             if ($typeId > 0 && $min > 0 && ! array_key_exists($typeId, $map)) {
-                $map[$typeId] = min($min, 99);
+                $map[$typeId] = min($min, 999);
             }
         }
 
