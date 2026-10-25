@@ -1769,9 +1769,9 @@ button.wp-issue-row:disabled {
     z-index: 20;
     padding: 0.4rem 0.65rem;
     border: 1px solid var(--wp-border);
-    border-radius: var(--wp-radius-sm);
+    border-radius: var(--wp-radius);
     background-color: var(--wp-surface);
-    box-shadow: var(--wp-shadow);
+    box-shadow: var(--wp-shadow-lg);
     color: var(--wp-text);
     font-size: 0.75rem;
     font-weight: 600;
@@ -7123,7 +7123,7 @@ a.wp-worker-hours-link:focus-visible {
     background: var(--wp-surface);
     border: 1px solid var(--wp-border);
     border-radius: var(--wp-radius);
-    box-shadow: var(--wp-shadow);
+    box-shadow: var(--wp-shadow-lg);
 }
 
 .wp-roster-menu__item {
@@ -7382,12 +7382,13 @@ a.wp-worker-hours-link:focus-visible {
     position: fixed;
     z-index: 90;
     transform: translate(-50%, calc(-100% - 8px));
-    max-width: 300px;
+    width: max-content;
+    max-width: min(340px, 92vw);
     padding: 0.6rem 0.85rem;
     background: var(--wp-surface);
     border: 1px solid var(--wp-border);
-    border-radius: 12px;
-    box-shadow: var(--wp-shadow);
+    border-radius: var(--wp-radius);
+    box-shadow: var(--wp-shadow-lg);
     color: var(--wp-text);
     font-size: 0.8rem;
     line-height: 1.4;
@@ -7415,6 +7416,7 @@ a.wp-worker-hours-link:focus-visible {
 
 .wp-roster-day-tip__items li {
     margin: 0.05rem 0;
+    white-space: nowrap;
 }
 
 /* Geselecteerde cellen (Excel-stijl): donkere tint + donkere rand rond het
