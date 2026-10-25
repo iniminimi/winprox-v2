@@ -906,8 +906,7 @@
         },
         "staffing": {
             "title": "Effectif minimal non atteint",
-            "missing": ":code manquant (:actual/:required)",
-            "more": "+:count autres manques"
+            "missing": ":code manquant (:actual/:required)"
         }
     },
     "shift_types": {

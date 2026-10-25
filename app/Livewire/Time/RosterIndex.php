@@ -662,6 +662,26 @@ class RosterIndex extends Component
         ));
         $array['locked_hint'] = __('time.schedule.errors.locked_day');
 
+        // Minimum bezetting: per datum vertaalde tooltip-lijnen; JS markeert
+        // de dagheader rood en toont de lijnen als hover-ballon.
+        $shortfalls = app(ListLocationStaffingShortfallsAction::class)->handle(
+            (int) Tenancy::id(),
+            $snapshot->dates,
+            auth()->user()?->accessibleLocationIds(),
+            $this->locationFilter,
+        );
+        $array['staffing_shortfalls_title'] = __('time.schedule.staffing.title');
+        $array['staffing_shortfalls'] = collect($shortfalls['by_date'] ?? [])
+            ->map(fn (array $items) => array_map(
+                fn (array $item) => $item['location'].': '.__('time.schedule.staffing.missing', [
+                    'code' => $item['code'],
+                    'actual' => $item['actual'],
+                    'required' => $item['required'],
+                ]),
+                $items,
+            ))
+            ->all();
+
         return $array;
     }
 
@@ -826,7 +846,6 @@ class RosterIndex extends Component
     public function render(
         ListShiftTypesAction $listTypes,
         ListRosterWeekAction $listWeek,
-        ListLocationStaffingShortfallsAction $listShortfalls,
     ) {
         $snapshot = $this->snapshot($listWeek);
 
@@ -841,12 +860,6 @@ class RosterIndex extends Component
             'hasScope' => $this->teamFilter !== null || $this->locationFilter !== null,
             'isMonth' => $this->isMonth(),
             'alarmCount' => $this->timeNavAlarmCount(),
-            'staffingShortfalls' => $listShortfalls->handle(
-                (int) Tenancy::id(),
-                $snapshot->dates,
-                auth()->user()?->accessibleLocationIds(),
-                $this->locationFilter,
-            ),
         ]);
     }
 

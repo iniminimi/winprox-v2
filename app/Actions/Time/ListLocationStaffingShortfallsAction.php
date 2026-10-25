@@ -145,7 +145,19 @@ final class ListLocationStaffingShortfallsAction
             ];
         }
 
-        return ['total' => $total, 'locations' => array_values($groups)];
+        // Volledige map per datum (geen limiet) voor de dagmarkering in het
+        // rooster: elke dag met een tekort kleurt rood en toont al zijn items.
+        $byDate = [];
+        foreach ($shortfalls as $item) {
+            $byDate[$item['date']][] = [
+                'location' => $item['location'],
+                'code' => $item['code'],
+                'actual' => $item['actual'],
+                'required' => $item['required'],
+            ];
+        }
+
+        return ['total' => $total, 'locations' => array_values($groups), 'by_date' => $byDate];
     }
 
     /**

@@ -440,6 +440,27 @@ function applyDayFlagColumns(worksheet, dayFlags) {
     }
 }
 
+function applyStaffingMarkers(worksheet, payload) {
+    const byDate = payload?.staffing_shortfalls;
+    if (!Array.isArray(worksheet.headers) || !byDate || typeof byDate !== 'object') {
+        return;
+    }
+    worksheet.headers.forEach((header, colIndex) => {
+        if (!header) {
+            return;
+        }
+        const date = payload.dates?.[colIndex - 1];
+        const lines = date ? (byDate[date] ?? []) : [];
+        const marked = lines.length > 0;
+        header.classList.toggle('wp-roster-col--staffing-shortfall', marked);
+        if (!marked) {
+            return;
+        }
+        const block = [payload.staffing_shortfalls_title, ...lines].filter(Boolean).join('\n');
+        header.title = header.title ? `${header.title}\n\n${block}` : block;
+    });
+}
+
 function rosterTd(cell) {
     if (!cell) {
         return null;
@@ -578,6 +599,7 @@ function applyCellClasses(worksheet, payload) {
     applyWeekStartColumns(worksheet, weekStartCols);
     applyLockedColumns(worksheet, lockedCols);
     applyDayFlagColumns(worksheet, dayFlags);
+    applyStaffingMarkers(worksheet, payload);
     const rowDefs = gridRowDefs(payload);
     const workers = workerById(payload);
     // Unitcatalogus per worker cachen — niet per cel opnieuw filteren.

@@ -7371,6 +7371,13 @@ a.wp-worker-hours-link:focus-visible {
     background: color-mix(in srgb, var(--wp-accent) 16%, var(--wp-surface-2) 84%);
 }
 
+/* Minimumbezetting niet gehaald: dagheader rood; details als tooltip (title). */
+.wp-roster-sheet .jss_worksheet > thead > tr > td.wp-roster-col--staffing-shortfall {
+    background: color-mix(in srgb, var(--wp-danger) 30%, var(--wp-surface-2) 70%);
+    color: var(--wp-danger-text, var(--wp-danger));
+    font-weight: 600;
+}
+
 /* Geselecteerde cellen (Excel-stijl): donkere tint + donkere rand rond het
    blok. De tint komt via een inset-overlay zodat weekend-, today- en locked-
    achtergronden zichtbaar donkerder worden i.p.v. vervangen. */

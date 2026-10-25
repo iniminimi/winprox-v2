@@ -906,8 +906,7 @@
         },
         "staffing": {
             "title": "Minimum bezetting niet gehaald",
-            "missing": ":code ontbreekt (:actual/:required)",
-            "more": "+:count meer tekorten"
+            "missing": ":code ontbreekt (:actual/:required)"
         }
     },
     "shift_types": {

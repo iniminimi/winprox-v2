@@ -1091,9 +1091,10 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
 - **Minimum bezetting (indicatie):** per locatie instelbaar via de Time-pagina
   **Minimum bezetting** (`/time/staffing`, Time-balk naast Feestdagen): aantallen
   per diensttype uit de legende, gelijk voor elke dag (`locations.min_staffing` JSON
-  `{shift_type_id: min}`). Het uurrooster toont een muted `wp-flash`-blok met
-  tekorten — `di 25/10 · V2 ontbreekt (0/1)` — gegroepeerd per locatie. Puur
-  informatief: opslaan en publiceren worden nooit geblokkeerd.
+  `{shift_type_id: min}`). In het uurrooster kleurt elke dag met een tekort
+  **rood in de dagheader**; een hover-ballon op die cel toont per locatie
+  `Locatie: V2 ontbreekt (0/1)`. Puur informatief: opslaan en publiceren
+  worden nooit geblokkeerd.
   `ListLocationStaffingShortfallsAction` telt **tenant-breed** unieke
   uitvoerders (split-shifts = 1) per datum × locatie × actief werk-type
   (draft + published; afwezigheid nooit), enkel voor **zichtbare dagen ≥

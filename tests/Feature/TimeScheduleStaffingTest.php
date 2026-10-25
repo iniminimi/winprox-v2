@@ -330,7 +330,7 @@ it('telt drafts én gepubliceerde diensten, maar geen afwezigheden', function ()
     expect($result['total'])->toBe(0);
 });
 
-it('toont het indicatieblok in het uurrooster', function () {
+it('markeert dagen met tekort in het rooster-payload', function () {
     [$tenant, $admin, $team] = staffingTenant();
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     $type = staffingType($tenant, 'V2');
@@ -341,11 +341,17 @@ it('toont het indicatieblok in het uurrooster', function () {
         ->test(RosterIndex::class)
         ->set('locationFilter', $location->id)
         ->call('nextWeek')
-        ->assertSee(__('time.schedule.staffing.title'), false)
-        ->assertSee(__('time.schedule.staffing.missing', ['code' => 'V2', 'actual' => 0, 'required' => 1]), false);
+        ->assertViewHas('gridPayload', function (array $payload) {
+            $lines = collect($payload['staffing_shortfalls'] ?? [])->flatten();
+
+            return $lines->contains(fn ($line) => str_contains(
+                (string) $line,
+                __('time.schedule.staffing.missing', ['code' => 'V2', 'actual' => 0, 'required' => 1]),
+            ));
+        });
 });
 
-it('toont geen indicatieblok zonder vereisten', function () {
+it('markeert geen dagen zonder vereisten', function () {
     [$tenant, $admin, $team] = staffingTenant();
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
     staffingWorker($tenant, $team, [$location->id]);
@@ -353,7 +359,7 @@ it('toont geen indicatieblok zonder vereisten', function () {
     Livewire::actingAs($admin)
         ->test(RosterIndex::class)
         ->set('locationFilter', $location->id)
-        ->assertDontSee(__('time.schedule.staffing.title'), false);
+        ->assertViewHas('gridPayload', fn (array $payload) => ($payload['staffing_shortfalls'] ?? []) === []);
 });
 
 it('slaat minimumbezetting op via de staffing-pagina', function () {

@@ -906,8 +906,7 @@
         },
         "staffing": {
             "title": "Mindestbesetzung nicht erreicht",
-            "missing": ":code fehlt (:actual/:required)",
-            "more": "+:count weitere Fehlstellen"
+            "missing": ":code fehlt (:actual/:required)"
         }
     },
     "shift_types": {

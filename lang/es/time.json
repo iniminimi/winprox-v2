@@ -906,8 +906,7 @@
         },
         "staffing": {
             "title": "Dotación mínima no alcanzada",
-            "missing": "falta :code (:actual/:required)",
-            "more": "+:count faltas más"
+            "missing": "falta :code (:actual/:required)"
         }
     },
     "shift_types": {
