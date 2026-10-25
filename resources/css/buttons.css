@@ -19,6 +19,7 @@
     font-weight: var(--wp-btn-font-weight);
     line-height: 1.25;
     white-space: nowrap;
+    text-decoration: none;
     cursor: pointer;
     user-select: none;
     transition: transform var(--wp-transition), box-shadow var(--wp-transition),
@@ -27,8 +28,13 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+a.btn:hover {
+    text-decoration: none;
+}
+
 @media (hover: hover) and (pointer: fine) {
     .btn:hover {
+        text-decoration: none;
         transform: translateY(-2px);
         box-shadow: var(--wp-shadow);
     }
