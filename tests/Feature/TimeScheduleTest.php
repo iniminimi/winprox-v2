@@ -1997,3 +1997,16 @@ it('levert een uren-linkhint per werknemer in het rooster-payload', function () 
         ->assertSeeHtml('worker_hours_hint')
         ->assertSeeHtml('time/shifts');
 });
+
+it('verbergt en toont de statistiek-kolommen via de toggle', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+
+    Livewire::actingAs($admin)
+        ->test(RosterIndex::class)
+        ->set('teamFilter', $team->id)
+        ->assertViewHas('gridPayload', fn (array $payload) => count($payload['hours_columns'] ?? []) > 0)
+        ->set('showStats', false)
+        ->assertViewHas('gridPayload', fn (array $payload) => ($payload['hours_columns'] ?? []) === [])
+        ->set('showStats', true)
+        ->assertViewHas('gridPayload', fn (array $payload) => count($payload['hours_columns'] ?? []) > 0);
+});

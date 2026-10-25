@@ -71,6 +71,9 @@ class RosterIndex extends Component
     #[Url(as: 'weekends')]
     public bool $showWeekends = false;
 
+    #[Url(as: 'stats')]
+    public bool $showStats = true;
+
     /** @var list<int> */
     public array $groupUnitIds = [];
 
@@ -635,6 +638,7 @@ class RosterIndex extends Component
             $this->locationFilter !== null ? $this->groupUnitIds : null,
             $this->showUngrouped,
             true,
+            $this->showStats,
         );
     }
 

@@ -776,6 +776,7 @@
         "week_current": "Semaine actuelle (:number)",
         "week_numbered": "Semaine (:number)",
         "weekends": "Week-ends",
+        "stats_toggle": "Statistiques",
         "legend_units": "Groupes",
         "legend_button": "Légende",
         "legend_title": "Légende du planning",

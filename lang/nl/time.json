@@ -776,6 +776,7 @@
         "week_current": "Huidige week (:number)",
         "week_numbered": "Week (:number)",
         "weekends": "Weekends",
+        "stats_toggle": "Statistieken",
         "legend_units": "Groepen",
         "legend_button": "Legende",
         "legend_title": "Legende uurrooster",

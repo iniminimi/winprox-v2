@@ -776,6 +776,7 @@
         "week_current": "Semana actual (:number)",
         "week_numbered": "Semana (:number)",
         "weekends": "Fines de semana",
+        "stats_toggle": "Estadísticas",
         "legend_units": "Grupos",
         "legend_button": "Leyenda",
         "legend_title": "Leyenda del horario",

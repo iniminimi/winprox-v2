@@ -67,6 +67,12 @@
                         </label>
                     </div>
                     <div class="wp-filter-cell">
+                        <label class="wp-check" for="schedule-stats">
+                            <input id="schedule-stats" type="checkbox" wire:model.live="showStats">
+                            {{ __('time.schedule.stats_toggle') }}
+                        </label>
+                    </div>
+                    <div class="wp-filter-cell">
                         <select id="schedule-team" class="wp-select" wire:model.live="teamFilter" aria-label="{{ __('time.filters.team') }}">
                             <option value="">{{ __('time.filters.all_teams') }}</option>
                             @foreach ($teams as $team)

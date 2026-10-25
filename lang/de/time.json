@@ -776,6 +776,7 @@
         "week_current": "Aktuelle Woche (:number)",
         "week_numbered": "Woche (:number)",
         "weekends": "Wochenenden",
+        "stats_toggle": "Statistiken",
         "legend_units": "Gruppen",
         "legend_button": "Legende",
         "legend_title": "Dienstplan-Legende",

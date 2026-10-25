@@ -776,6 +776,7 @@
         "week_current": "Settimana attuale (:number)",
         "week_numbered": "Settimana (:number)",
         "weekends": "Weekend",
+        "stats_toggle": "Statistiche",
         "legend_units": "Gruppi",
         "legend_button": "Legenda",
         "legend_title": "Legenda turni",

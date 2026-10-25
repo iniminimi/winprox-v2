@@ -51,6 +51,7 @@ class ListRosterWeekAction
         ?array $groupUnitIds = null,
         bool $includeUngrouped = true,
         bool $requireScope = false,
+        bool $includeStats = true,
     ): RosterWeekSnapshot {
         TimeModuleAccess::assertEnabledForTenantId($tenantId);
 
@@ -232,7 +233,9 @@ class ListRosterWeekAction
         $weekHours = [];
         $monthFacts = [];
         $monthNorms = [];
-        $showsHours = $period === 'week' || $period === 'month';
+        // includeStats=false: geen stat-kolommen én de samenvattingsqueries
+        // (weekHours/monthFacts) mogen helemaal overgeslagen worden.
+        $showsHours = $includeStats && ($period === 'week' || $period === 'month');
         // De contractnorm wordt altijd getoond (ook voor superusers) — de
         // planner heeft Norm/Verschil nodig om het rooster te sturen.
         $contractVisible = $showsHours;
