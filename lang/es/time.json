@@ -913,7 +913,9 @@
             "edit": "Editar planificación",
             "save": "Guardar y publicar",
             "tools": "Ayuda y exportación"
-        }
+        },
+        "today": "Hoy",
+        "groups_count": ":selected de :total"
     },
     "shift_types": {
         "title": "Tipos de turno",

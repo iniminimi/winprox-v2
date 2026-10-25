@@ -286,7 +286,7 @@ it('opent het uurrooster voor een admin', function () {
         ->assertOk()
         ->assertSee('wp-roster-sheet', false)
         ->assertSee(__('time.schedule.legend_button'), false)
-        ->assertSee(__('time.schedule.nav_prev'), false)
+        ->assertSee(__('time.schedule.prev_week'), false)
         ->assertSee(__('time.schedule.week_current', ['number' => now()->startOfWeek(Carbon::MONDAY)->isoWeek()]), false)
         ->assertSee(__('time.schedule.weekends'), false)
         ->assertSee('id="schedule-weekends"', false)
@@ -309,7 +309,7 @@ it('opent het uurrooster voor een admin', function () {
         ->assertSee(__('time.schedule.unsaved.title'), false)
         ->assertSee(__('time.schedule.unsaved.body'), false)
         ->call('closeUnsavedLeaveModal')
-        ->assertDontSee(__('time.schedule.unsaved.title'), false);
+        ->assertDontSee(__('time.schedule.unsaved.stay'), false);
 
     Livewire::actingAs($admin)
         ->test(ShiftTypesIndex::class)

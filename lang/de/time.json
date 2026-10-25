@@ -913,7 +913,9 @@
             "edit": "Planung bearbeiten",
             "save": "Speichern und veröffentlichen",
             "tools": "Hilfe und Ausgabe"
-        }
+        },
+        "today": "Heute",
+        "groups_count": ":selected von :total"
     },
     "shift_types": {
         "title": "Schichttypen",

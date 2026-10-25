@@ -773,10 +773,114 @@
     border-color: color-mix(in srgb, var(--wp-accent-border) 70%, var(--wp-border));
 }
 
-/* Groepenrij = tweede-orde filter: merkbaar zwakker dan de hoofdgroep. */
-.wp-time-roster-groups.wp-toolbar-group--view {
-    background: color-mix(in srgb, var(--wp-info-soft) 30%, var(--wp-surface));
-    border-color: color-mix(in srgb, var(--wp-info-border) 50%, var(--wp-border));
+/* Schakelaar (aan/uit, meteen actief) — moderne toggle op accent-token. */
+.wp-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--wp-text);
+    cursor: pointer;
+    user-select: none;
+}
+
+.wp-switch input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.wp-switch__track {
+    position: relative;
+    width: 2rem;
+    height: 1.15rem;
+    flex: 0 0 auto;
+    border-radius: var(--wp-radius-pill);
+    background: var(--wp-border-strong);
+    transition: background var(--wp-transition);
+}
+
+.wp-switch__track::after {
+    content: '';
+    position: absolute;
+    top: 0.15rem;
+    left: 0.15rem;
+    width: 0.85rem;
+    height: 0.85rem;
+    border-radius: 50%;
+    background: var(--wp-surface);
+    box-shadow: var(--wp-shadow-sm);
+    transition: transform var(--wp-transition);
+}
+
+.wp-switch input:checked + .wp-switch__track {
+    background: var(--wp-accent);
+}
+
+.wp-switch input:checked + .wp-switch__track::after {
+    transform: translateX(0.85rem);
+}
+
+.wp-switch input:focus-visible + .wp-switch__track {
+    outline: 2px solid var(--wp-info);
+    outline-offset: 2px;
+}
+
+.wp-switch input:disabled ~ .wp-switch__track,
+.wp-switch input:disabled ~ span {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+/* Groepen als dropdown: "N van M"-trigger + checklist-paneel. */
+.wp-groups-dropdown {
+    position: relative;
+}
+
+.wp-groups-dropdown__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.wp-groups-dropdown__panel {
+    position: absolute;
+    top: calc(100% + 0.35rem);
+    left: 0;
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 11rem;
+    max-height: 18rem;
+    padding: 0.5rem 0.75rem;
+    overflow-y: auto;
+    background: var(--wp-surface);
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius);
+    box-shadow: var(--wp-shadow-tip);
+}
+
+/* Periode-label als anker in de werkbalk. */
+.wp-time-roster-period {
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+/* Niet-opgeslagen-status: JS zet data-wp-roster-dirty op de paginaroot. */
+.wp-roster-dirty-pill {
+    display: none;
+}
+
+[data-wp-roster-dirty='1'] .wp-roster-dirty-pill {
+    display: inline-flex;
+}
+
+.wp-icon--sm {
+    width: 0.875rem;
+    height: 0.875rem;
 }
 
 .wp-toolbar-group--tools,
@@ -7233,14 +7337,6 @@ a.wp-worker-hours-link:focus-visible {
     user-select: none;
     border-top: 1px solid var(--wp-text) !important;
     background: color-mix(in srgb, var(--wp-accent) 28%, var(--wp-surface) 72%) !important;
-}
-
-.wp-time-roster-groups {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.5rem 0.75rem;
-    width: 100%;
 }
 
 .wp-roster-sheet .jss_container,

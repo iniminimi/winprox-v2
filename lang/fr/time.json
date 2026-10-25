@@ -913,7 +913,9 @@
             "edit": "Modifier le planning",
             "save": "Enregistrer et publier",
             "tools": "Aide et export"
-        }
+        },
+        "today": "Aujourd'hui",
+        "groups_count": ":selected sur :total"
     },
     "shift_types": {
         "title": "Types de service",

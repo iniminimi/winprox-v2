@@ -53,15 +53,17 @@
                         </div>
                     </div>
                     <div class="wp-filter-cell">
-                        <label class="wp-check" for="schedule-weekends">
+                        <label class="wp-switch" for="schedule-weekends">
                             <input id="schedule-weekends" type="checkbox" wire:model.live="showWeekends">
-                            {{ __('time.schedule.weekends') }}
+                            <span class="wp-switch__track" aria-hidden="true"></span>
+                            <span>{{ __('time.schedule.weekends') }}</span>
                         </label>
                     </div>
                     <div class="wp-filter-cell">
-                        <label class="wp-check" for="schedule-stats">
+                        <label class="wp-switch" for="schedule-stats">
                             <input id="schedule-stats" type="checkbox" wire:model.live="showStats">
-                            {{ __('time.schedule.stats_toggle') }}
+                            <span class="wp-switch__track" aria-hidden="true"></span>
+                            <span>{{ __('time.schedule.stats_toggle') }}</span>
                         </label>
                     </div>
                     <div class="wp-filter-cell">
@@ -80,6 +82,28 @@
                             @endforeach
                         </select>
                     </div>
+                    @if ($locationFilter && $groupUnits !== [])
+                        <div class="wp-filter-cell">
+                            <div class="wp-groups-dropdown" x-data="{ open: false }" @click.outside="open = false" @keydown.escape.window="open = false">
+                                <button type="button" class="btn btn--sm btn--surface wp-groups-dropdown__trigger" @click="open = !open" :aria-expanded="open.toString()">
+                                    <span>{{ __('time.schedule.groups_filter') }} {{ __('time.schedule.groups_count', ['selected' => count($groupUnitIds) + ($showUngrouped ? 1 : 0), 'total' => count($groupUnits) + 1]) }}</span>
+                                    <x-wp-icon name="chevron-down" class="wp-icon wp-icon--sm" />
+                                </button>
+                                <div class="wp-groups-dropdown__panel" x-show="open" x-cloak>
+                                    @foreach ($groupUnits as $groupUnit)
+                                        <label class="wp-check">
+                                            <input type="checkbox" wire:model.live="groupUnitIds" value="{{ $groupUnit['id'] }}">
+                                            <span>{{ $groupUnit['code'] }}</span>
+                                        </label>
+                                    @endforeach
+                                    <label class="wp-check">
+                                        <input type="checkbox" wire:model.live="showUngrouped">
+                                        <span>{{ __('time.schedule.group_ungrouped') }}</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                     <div class="wp-filter-cell">
                         <nav class="wp-pagination" aria-label="{{ $isMonth ? __('time.schedule.month') : __('time.schedule.week') }}">
                             @php
@@ -88,17 +112,20 @@
                                     : $weekStart === now()->startOfWeek(\Carbon\Carbon::MONDAY)->toDateString();
                             @endphp
                             <div class="wp-pagination__pages">
-                                <button type="button" class="wp-pagination__control" wire:click="previousWeek" data-wp-roster-nav aria-label="{{ $isMonth ? __('time.schedule.prev_month') : __('time.schedule.prev_week') }}">{{ __('time.schedule.nav_prev') }}</button>
+                                <button type="button" class="wp-pagination__control" wire:click="previousWeek" data-wp-roster-nav aria-label="{{ $isMonth ? __('time.schedule.prev_month') : __('time.schedule.prev_week') }}"><x-wp-icon name="chevron-left" class="wp-icon wp-icon--sm" /></button>
                                 @if ($onCurrentPeriod)
-                                    <button type="button" class="wp-pagination__page wp-pagination__page--action is-active" wire:click="thisWeek" data-wp-roster-nav aria-label="{{ $isMonth ? __('time.schedule.this_month') : __('time.schedule.this_week') }}">{{ $weekLabel }}</button>
+                                    <button type="button" class="wp-pagination__page wp-pagination__page--action is-active wp-time-roster-period" wire:click="thisWeek" data-wp-roster-nav aria-label="{{ $isMonth ? __('time.schedule.this_month') : __('time.schedule.this_week') }}">{{ $weekLabel }}</button>
                                 @else
                                     <x-wp-tooltip :text="$isMonth ? __('time.schedule.goto_current_month') : __('time.schedule.goto_current_week')">
-                                        <button type="button" class="wp-pagination__page wp-pagination__page--action is-active" wire:click="thisWeek" data-wp-roster-nav aria-label="{{ $isMonth ? __('time.schedule.this_month') : __('time.schedule.this_week') }}">{{ $weekLabel }}</button>
+                                        <button type="button" class="wp-pagination__page wp-pagination__page--action is-active wp-time-roster-period" wire:click="thisWeek" data-wp-roster-nav aria-label="{{ $isMonth ? __('time.schedule.this_month') : __('time.schedule.this_week') }}">{{ $weekLabel }}</button>
                                     </x-wp-tooltip>
                                 @endif
-                                <button type="button" class="wp-pagination__control" wire:click="nextWeek" data-wp-roster-nav aria-label="{{ $isMonth ? __('time.schedule.next_month') : __('time.schedule.next_week') }}">{{ __('time.schedule.nav_next') }}</button>
+                                <button type="button" class="wp-pagination__control" wire:click="nextWeek" data-wp-roster-nav aria-label="{{ $isMonth ? __('time.schedule.next_month') : __('time.schedule.next_week') }}"><x-wp-icon name="chevron-right" class="wp-icon wp-icon--sm" /></button>
                             </div>
                         </nav>
+                        @unless ($onCurrentPeriod)
+                            <button type="button" class="btn btn--sm btn--surface" wire:click="thisWeek" data-wp-roster-nav>{{ __('time.schedule.today') }}</button>
+                        @endunless
                     </div>
                 </div>
                 <div class="wp-filter-form__actions">
@@ -112,6 +139,7 @@
                     @endcan
                     @canany(['update', 'publish'], \App\Models\PlannedShift::class)
                         <div class="wp-toolbar-group wp-toolbar-group--action" role="group" aria-label="{{ __('time.schedule.toolbar.save') }}">
+                            <span class="wp-pill wp-pill--progress wp-roster-dirty-pill">{{ __('time.schedule.unsaved.title') }}</span>
                             @can('update', \App\Models\PlannedShift::class)
                                 <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-save @disabled(! $hasScope)>{{ __('common.button.save') }}</button>
                             @endcan
@@ -131,23 +159,7 @@
                     </div>
                 </div>
             </div>
-            @if ($locationFilter && $groupUnits !== [])
-                <div class="wp-filter-cell wp-time-roster-groups wp-toolbar-group wp-toolbar-group--view">
-                    <span class="wp-filter-inline-label">{{ __('time.schedule.groups_filter') }}</span>
-                    <div class="wp-cluster wp-cluster--tight">
-                        @foreach ($groupUnits as $groupUnit)
-                            <label class="wp-check">
-                                <input type="checkbox" wire:model.live="groupUnitIds" value="{{ $groupUnit['id'] }}">
-                                <span>{{ $groupUnit['code'] }}</span>
-                            </label>
-                        @endforeach
-                        <label class="wp-check">
-                            <input type="checkbox" wire:model.live="showUngrouped">
-                            <span>{{ __('time.schedule.group_ungrouped') }}</span>
-                        </label>
-                    </div>
-                </div>
-            @endif
+            {{-- Groepen staan als dropdown in de view-groep hierboven. --}}
         </div>
     </div>
 

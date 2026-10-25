@@ -913,7 +913,9 @@
             "edit": "Edit planning",
             "save": "Save and publish",
             "tools": "Help and output"
-        }
+        },
+        "today": "Today",
+        "groups_count": ":selected of :total"
     },
     "shift_types": {
         "title": "Shift types",

@@ -913,7 +913,9 @@
             "edit": "Planning bewerken",
             "save": "Bewaren en publiceren",
             "tools": "Hulp en uitvoer"
-        }
+        },
+        "today": "Vandaag",
+        "groups_count": ":selected van :total"
     },
     "shift_types": {
         "title": "Shifttypes",
