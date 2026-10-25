@@ -4,6 +4,7 @@ use App\Actions\Time\ListLocationStaffingShortfallsAction;
 use App\Enums\PlannedShiftStatus;
 use App\Enums\ShiftTypeKind;
 use App\Livewire\Locations\Index as LocationsIndex;
+use App\Livewire\Locations\Show as LocationsShow;
 use App\Livewire\Time\RosterIndex;
 use App\Models\InternalTeam;
 use App\Models\Location;
@@ -334,6 +335,23 @@ it('slaat minimumbezetting op via het locatieformulier', function () {
         ->assertHasNoErrors();
 
     expect($location->fresh()->min_staffing)->toBe([(string) $type->id => 3]);
+});
+
+it('slaat minimumbezetting ook op via de locatie-detailpagina', function () {
+    [$tenant, $admin, $team] = staffingTenant();
+    $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Kapel']);
+    $type = staffingType($tenant, 'D');
+
+    Livewire::actingAs($admin)
+        ->test(LocationsShow::class, ['location' => $location])
+        ->call('openEditLocation')
+        ->call('addMinStaffingRow')
+        ->set('locationFormMinStaffing.0.type_id', (string) $type->id)
+        ->set('locationFormMinStaffing.0.min', '2')
+        ->call('saveLocation')
+        ->assertHasNoErrors();
+
+    expect($location->fresh()->min_staffing)->toBe([(string) $type->id => 2]);
 });
 
 it('behoudt verouderde regels bij opslaan tot de beheerder ze verwijdert', function () {

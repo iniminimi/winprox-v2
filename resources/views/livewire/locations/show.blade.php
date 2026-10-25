@@ -206,6 +206,8 @@
                 <div class="wp-modal-body wp-stack">
                     @include('livewire.locations.partials.location-form-fields')
 
+                    @include('livewire.locations.partials.min-staffing-panel')
+
                     @if ($location->is_active)
                         <div class="wp-field" x-data="{ open: false }">
                             <span class="wp-label">{{ __('locations.translation_edit.label') }}</span>
