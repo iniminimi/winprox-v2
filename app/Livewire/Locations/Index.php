@@ -18,6 +18,7 @@ use App\Actions\Locations\UpdateCategoryAction;
 use App\Actions\Locations\UpdateLocationAction;
 use App\Data\Locations\DeleteLocationImportBatchData;
 use App\Data\Locations\ImportLocationsData;
+use App\Enums\ShiftTypeKind;
 use App\Http\Requests\Locations\ImportLocationsRequest;
 use App\Http\Requests\Locations\StoreCategoryRequest;
 use App\Http\Requests\Locations\StoreLocationRequest;
@@ -29,6 +30,7 @@ use App\Models\Category;
 use App\Models\Customer;
 use App\Models\InternalTeam;
 use App\Models\Location;
+use App\Models\ShiftType;
 use App\Models\Tenant;
 use App\Support\Import\MinimalXlsxWriter;
 use App\Support\Locations\LocationImportBatchRegistry;
@@ -98,6 +100,9 @@ class Index extends Component
     public string $locationFormLongitude = '';
 
     public string $locationFormCustomerId = '';
+
+    /** @var list<array{type_id: string, min: string, stale_label: ?string}> */
+    public array $locationFormMinStaffing = [];
 
     public string $locationPreviewLocale = '';
 
@@ -187,6 +192,7 @@ class Index extends Component
         $this->locationFormLatitude = $location->latitude !== null ? (string) $location->latitude : '';
         $this->locationFormLongitude = $location->longitude !== null ? (string) $location->longitude : '';
         $this->locationFormCustomerId = $location->customer_id !== null ? (string) $location->customer_id : '';
+        $this->hydrateMinStaffingRows($location);
         $this->locationPreviewLocale = $this->defaultTranslationLocaleForLocation($location);
         $this->hydrateLocationTranslationInput($location->fresh('translations'));
         $this->resetErrorBag();
@@ -339,6 +345,11 @@ class Index extends Component
             $location = Location::findOrFail($this->editingLocationId);
             $this->authorize('update', $location);
             $validated = UpdateLocationRequest::validatePayload($payload, requireName: true);
+            if (! $this->minStaffingTypeIdsValid($location)) {
+                $this->addError('locationFormMinStaffing', __('locations.errors.min_staffing_type_invalid'));
+
+                return;
+            }
             $updateLocation->handle($location, $validated, (int) auth()->id());
             session()->flash('success', __('locations.flash.updated'));
         }
@@ -551,13 +562,95 @@ class Index extends Component
             'latitude' => $this->locationFormLatitude,
             'longitude' => $this->locationFormLongitude,
             'customer_id' => $this->locationFormCustomerId !== '' ? (int) $this->locationFormCustomerId : null,
+            'min_staffing' => $this->normalizedMinStaffingRows(),
         ];
+    }
+
+    public function addMinStaffingRow(): void
+    {
+        $this->locationFormMinStaffing[] = ['type_id' => '', 'min' => '1', 'stale_label' => null];
+    }
+
+    public function removeMinStaffingRow(int $index): void
+    {
+        unset($this->locationFormMinStaffing[$index]);
+        $this->locationFormMinStaffing = array_values($this->locationFormMinStaffing);
+    }
+
+    /**
+     * Min_staffing-rijen → {shift_type_id: min}. Lege/dubbele rijen vallen weg
+     * (eerste wint); verouderde ids blijven bewust bewaard zolang de rij er staat.
+     *
+     * @return array<int, int>
+     */
+    private function normalizedMinStaffingRows(): array
+    {
+        $map = [];
+        foreach ($this->locationFormMinStaffing as $row) {
+            $typeId = (int) ($row['type_id'] ?? 0);
+            $min = (int) ($row['min'] ?? 0);
+            if ($typeId > 0 && $min > 0 && ! array_key_exists($typeId, $map)) {
+                $map[$typeId] = min($min, 99);
+            }
+        }
+
+        return $map;
+    }
+
+    /**
+     * Ids die de beheerder mag opslaan: actieve werk-types ∪ ids die al in de
+     * opgeslagen config staan (verouderde regels blijven bewaard tot verwijderd).
+     */
+    private function minStaffingTypeIdsValid(Location $location): bool
+    {
+        $requested = array_keys($this->normalizedMinStaffingRows());
+        if ($requested === []) {
+            return true;
+        }
+
+        $allowed = ShiftType::query()
+            ->where('tenant_id', (int) $location->tenant_id)
+            ->where('is_active', true)
+            ->where('kind', ShiftTypeKind::Work->value)
+            ->pluck('id')
+            ->map(fn ($id) => (int) $id)
+            ->merge(array_map('intval', array_keys((array) ($location->min_staffing ?? []))))
+            ->all();
+
+        return count(array_diff($requested, $allowed)) === 0;
+    }
+
+    private function hydrateMinStaffingRows(Location $location): void
+    {
+        $stored = (array) ($location->min_staffing ?? []);
+        $storedIds = array_map('intval', array_keys($stored));
+
+        // Alle types (ook inactief/afwezig-kind) zodat verouderde regels
+        // herkenbaar getoond kunnen worden i.p.v. ongemerkt weg te vallen.
+        $known = ShiftType::query()
+            ->where('tenant_id', (int) $location->tenant_id)
+            ->whereIn('id', $storedIds)
+            ->get(['id', 'code', 'is_active', 'kind'])
+            ->keyBy('id');
+
+        $this->locationFormMinStaffing = [];
+        foreach ($stored as $typeId => $min) {
+            $typeId = (int) $typeId;
+            $type = $known->get($typeId);
+            $usable = $type !== null && $type->is_active && $type->kind?->isWork();
+
+            $this->locationFormMinStaffing[] = [
+                'type_id' => (string) $typeId,
+                'min' => (string) (int) $min,
+                'stale_label' => $usable ? null : ($type?->code ?? '?'),
+            ];
+        }
     }
 
     private function resetForm(): void
     {
         $this->reset([
-            'locationFormName', 'locationFormStreet', 'locationFormHouseNumber', 'locationFormPostalCode', 'locationFormCity', 'locationFormNotes', 'locationFormDdt', 'locationFormLatitude', 'locationFormLongitude', 'locationFormCustomerId', 'editingLocationId',
+            'locationFormName', 'locationFormStreet', 'locationFormHouseNumber', 'locationFormPostalCode', 'locationFormCity', 'locationFormNotes', 'locationFormDdt', 'locationFormLatitude', 'locationFormLongitude', 'locationFormCustomerId', 'locationFormMinStaffing', 'editingLocationId',
             'locationPreviewLocale', 'locationTranslationName',
         ]);
         $this->editingLocationId = null;
@@ -991,6 +1084,19 @@ class Index extends Component
             'presenceComplianceEnabled' => (bool) ($viewerTenant?->presenceComplianceEnabled()),
             'gpsWorkVisitsEnabled' => (bool) ($viewerTenant?->allowsGpsWorkVisits()),
             'customersOnLocation' => (bool) ($viewerTenant?->customersOnLocation()),
+            'minStaffingTypeOptions' => ($this->showModal && $this->editingLocationId !== null)
+                ? ShiftType::query()
+                    ->where('tenant_id', (int) ($viewerTenant?->id ?? 0))
+                    ->where('is_active', true)
+                    ->where('kind', ShiftTypeKind::Work->value)
+                    ->orderBy('code')
+                    ->get(['id', 'code', 'label'])
+                    ->map(fn (ShiftType $type): array => [
+                        'id' => (int) $type->id,
+                        'label' => trim($type->code.' — '.$type->label, ' —'),
+                    ])
+                    ->all()
+                : [],
             'customerOptions' => ($viewerTenant?->customersOnLocation() ?? false)
                 ? Customer::query()
                     ->where('tenant_id', (int) $viewerTenant->id)

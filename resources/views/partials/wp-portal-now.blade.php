@@ -37,7 +37,7 @@
         ]);
     } elseif ($onBreak) {
         $cardState = 'break';
-        $statusIcon = 'hourglass';
+        $statusIcon = 'coffee';
         $statusLine = __('time.portal.clock.on_break_since', ['time' => $breakSince ?? '—']);
     } elseif ($openElsewhere) {
         $cardState = 'in';

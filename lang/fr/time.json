@@ -901,6 +901,11 @@
             "tier_location": "Même lieu",
             "tier_other": "Autres travailleurs",
             "done": "Remplacement enregistré."
+        },
+        "staffing": {
+            "title": "Effectif minimal non atteint",
+            "missing": ":code manquant (:actual/:required)",
+            "more": "+:count autres manques"
         }
     },
     "shift_types": {

@@ -328,7 +328,8 @@
         "translation_import_name_too_long": "De vertaalde locatienaam is te lang.",
         "translation_requires_active": "Vertalingen zijn alleen mogelijk voor actieve locaties.",
         "ddt_invalid": "DDT-referentie moet exact 13 geldige tekens zijn.",
-        "coords_invalid": "Ongeldige coördinaten."
+        "coords_invalid": "Ongeldige coördinaten.",
+        "min_staffing_type_invalid": "Minstens één diensttype in de minimumbezetting is ongeldig."
     },
     "qr_pack": {
         "unavailable": "QR-export is niet beschikbaar op deze server.",
@@ -495,5 +496,16 @@
     "site_unit": {
         "default_name": "Hele locatie",
         "hint": "Automatisch aangemaakt zodat je meldingen, unit checks en inspectiestops kunt doen zonder ruimtes op te delen."
+    },
+    "min_staffing": {
+        "label": "Minimumbezetting",
+        "open": "Minimum bezetting per dag instellen",
+        "hint": "Hoeveel uitvoerders per diensttype er minimaal nodig zijn op deze locatie, elke dag. Dit is een indicatie in het uurrooster — het blokkeert niets. Diensten zonder eenheid tellen alleen mee als de uitvoerder exact één locatie heeft.",
+        "type": "Diensttype",
+        "type_placeholder": "Kies diensttype",
+        "count": "Minimumaantal",
+        "add": "Diensttype toevoegen",
+        "remove": "Regel verwijderen",
+        "stale": "inactief/verwijderd"
     }
 }

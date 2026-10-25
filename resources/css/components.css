@@ -184,6 +184,11 @@
     gap: 0.75rem;
 }
 
+.wp-input--compact {
+    width: 4.5rem;
+    flex: 0 0 auto;
+}
+
 .wp-grow {
     flex: 1 1 auto;
     min-width: 0;

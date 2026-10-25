@@ -328,7 +328,8 @@
         "translation_import_name_too_long": "Il nome sede tradotto è troppo lungo.",
         "translation_requires_active": "Le traduzioni sono disponibili solo per sedi attive.",
         "ddt_invalid": "Il riferimento DDT deve avere esattamente 13 caratteri validi.",
-        "coords_invalid": "Coordinate non valide."
+        "coords_invalid": "Coordinate non valide.",
+        "min_staffing_type_invalid": "Almeno un tipo di turno dell'organico minimo non è valido."
     },
     "qr_pack": {
         "unavailable": "Esportazione QR non disponibile su questo server.",
@@ -495,5 +496,16 @@
     "site_unit": {
         "default_name": "Sede intera",
         "hint": "Creata automaticamente per segnalazioni, unit check e fermate di ispezione senza suddividere in ambienti."
+    },
+    "min_staffing": {
+        "label": "Organico minimo",
+        "open": "Imposta l'organico minimo per giorno",
+        "hint": "Quanti operatori per tipo di turno sono necessari al minimo in questa sede, ogni giorno. È un'indicazione nel planning — non blocca nulla. I turni senza unità contano solo se l'operatore ha esattamente una sede.",
+        "type": "Tipo di turno",
+        "type_placeholder": "Scegli tipo di turno",
+        "count": "Numero minimo",
+        "add": "Aggiungi tipo di turno",
+        "remove": "Rimuovi riga",
+        "stale": "inattivo/rimosso"
     }
 }

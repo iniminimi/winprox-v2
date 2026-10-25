@@ -901,6 +901,11 @@
             "tier_location": "Same location",
             "tier_other": "Other workers",
             "done": "Replacement saved."
+        },
+        "staffing": {
+            "title": "Minimum staffing not met",
+            "missing": ":code missing (:actual/:required)",
+            "more": "+:count more shortages"
         }
     },
     "shift_types": {

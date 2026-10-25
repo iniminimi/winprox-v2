@@ -901,6 +901,11 @@
             "tier_location": "Stessa sede",
             "tier_other": "Altri lavoratori",
             "done": "Sostituzione salvata."
+        },
+        "staffing": {
+            "title": "Organico minimo non raggiunto",
+            "missing": ":code mancante (:actual/:required)",
+            "more": "+:count altre mancanze"
         }
     },
     "shift_types": {

@@ -137,6 +137,30 @@
         </div>
     </div>
 
+    @if (! empty($staffingShortfalls['locations']))
+        <div class="wp-flash wp-flash--muted wp-no-print" role="status">
+            <strong>{{ __('time.schedule.staffing.title') }}</strong>
+            <ul>
+                @foreach ($staffingShortfalls['locations'] as $staffingGroup)
+                    <li>
+                        <strong>{{ $staffingGroup['name'] }}:</strong>
+                        <ul>
+                            @foreach ($staffingGroup['items'] as $staffingItem)
+                                <li>
+                                    {{ \Carbon\Carbon::parse($staffingItem['date'])->translatedFormat('D d/m') }}
+                                    · {{ __('time.schedule.staffing.missing', ['code' => $staffingItem['code'], 'actual' => $staffingItem['actual'], 'required' => $staffingItem['required']]) }}
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                @endforeach
+            </ul>
+            @if ($staffingShortfalls['total'] > \App\Actions\Time\ListLocationStaffingShortfallsAction::LIMIT)
+                <p class="wp-hint">{{ __('time.schedule.staffing.more', ['count' => $staffingShortfalls['total'] - \App\Actions\Time\ListLocationStaffingShortfallsAction::LIMIT]) }}</p>
+            @endif
+        </div>
+    @endif
+
     <div @class(['wp-card', 'wp-card-pad', 'wp-roster-month' => $isMonth]) data-wp-roster-payload="{{ json_encode($gridPayload) }}">
         @if (! $hasScope)
             <p class="wp-muted">{{ __('time.schedule.pick_filter') }}</p>

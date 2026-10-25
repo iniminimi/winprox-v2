@@ -30,11 +30,13 @@ class Location extends Model
         'latitude',
         'longitude',
         'is_active',
+        'min_staffing',
         'import_batch_id',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
+        'min_staffing' => 'array',
         'latitude' => 'float',
         'longitude' => 'float',
     ];

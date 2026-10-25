@@ -57,6 +57,9 @@ class UpdateLocationAction
                 ? self::nullableFloat($data['longitude'])
                 : $location->longitude,
             'address' => $this->legacyAddressLine($street, $houseNumber, $postalCode, $city),
+            'min_staffing' => array_key_exists('min_staffing', $data)
+                ? self::normalizeMinStaffing($data['min_staffing'])
+                : $location->min_staffing,
         ]);
 
         $fresh = $location->fresh();
@@ -108,6 +111,27 @@ class UpdateLocationAction
         $legacy = trim(collect([$lineOne, $lineTwo])->filter()->implode(', '));
 
         return $legacy !== '' ? $legacy : null;
+    }
+
+    /**
+     * @return array<int, int>|null
+     */
+    private static function normalizeMinStaffing(mixed $value): ?array
+    {
+        if (! is_array($value) || $value === []) {
+            return null;
+        }
+
+        $map = [];
+        foreach ($value as $typeId => $min) {
+            $typeId = (int) $typeId;
+            $min = (int) $min;
+            if ($typeId > 0 && $min > 0) {
+                $map[$typeId] = min($min, 99);
+            }
+        }
+
+        return $map !== [] ? $map : null;
     }
 
     private static function nullableFloat(mixed $value): ?float

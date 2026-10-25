@@ -4,6 +4,7 @@ namespace App\Livewire\Time;
 
 use App\Actions\Time\CopyRosterWeeksAction;
 use App\Actions\Time\CorrectPlannedShiftAction;
+use App\Actions\Time\ListLocationStaffingShortfallsAction;
 use App\Actions\Time\ListRosterWeekAction;
 use App\Actions\Time\ListShiftTypesAction;
 use App\Actions\Time\LoadRosterDayEditorAction;
@@ -818,8 +819,11 @@ class RosterIndex extends Component
         $this->dispatch('roster-week-changed');
     }
 
-    public function render(ListShiftTypesAction $listTypes, ListRosterWeekAction $listWeek)
-    {
+    public function render(
+        ListShiftTypesAction $listTypes,
+        ListRosterWeekAction $listWeek,
+        ListLocationStaffingShortfallsAction $listShortfalls,
+    ) {
         $snapshot = $this->snapshot($listWeek);
 
         return view('livewire.time.roster-index', [
@@ -833,6 +837,12 @@ class RosterIndex extends Component
             'hasScope' => $this->teamFilter !== null || $this->locationFilter !== null,
             'isMonth' => $this->isMonth(),
             'alarmCount' => $this->timeNavAlarmCount(),
+            'staffingShortfalls' => $listShortfalls->handle(
+                (int) Tenancy::id(),
+                $snapshot->dates,
+                auth()->user()?->accessibleLocationIds(),
+                $this->locationFilter,
+            ),
         ]);
     }
 

@@ -901,6 +901,11 @@
             "tier_location": "Gleicher Standort",
             "tier_other": "Andere Mitarbeiter",
             "done": "Vertretung gespeichert."
+        },
+        "staffing": {
+            "title": "Mindestbesetzung nicht erreicht",
+            "missing": ":code fehlt (:actual/:required)",
+            "more": "+:count weitere Fehlstellen"
         }
     },
     "shift_types": {

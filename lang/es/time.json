@@ -901,6 +901,11 @@
             "tier_location": "Misma ubicación",
             "tier_other": "Otros trabajadores",
             "done": "Sustitución guardada."
+        },
+        "staffing": {
+            "title": "Dotación mínima no alcanzada",
+            "missing": "falta :code (:actual/:required)",
+            "more": "+:count faltas más"
         }
     },
     "shift_types": {
