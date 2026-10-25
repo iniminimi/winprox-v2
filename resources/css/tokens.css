@@ -17,6 +17,9 @@
     --wp-shadow-sm: 0 1px 2px rgba(17, 24, 39, 0.04), 0 1px 1px rgba(17, 24, 39, 0.03);
     --wp-shadow: 0 1px 3px rgba(17, 24, 39, 0.06), 0 4px 12px rgba(17, 24, 39, 0.05);
     --wp-shadow-lg: 0 8px 24px rgba(17, 24, 39, 0.10), 0 2px 6px rgba(17, 24, 39, 0.06);
+    /* Zwevende ballons (tooltips, contextmenu's): donkerder dan lg zodat ze
+       bovenop data-dichte grids zichtbaar zweven. */
+    --wp-shadow-tip: 0 10px 28px rgba(17, 24, 39, 0.22), 0 3px 8px rgba(17, 24, 39, 0.14);
 
     /* Knop-geometrie (gedeeld door alle knoppen) */
     --wp-btn-height: 2.5rem;
