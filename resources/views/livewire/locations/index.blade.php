@@ -232,10 +232,6 @@
                 <div class="wp-modal-body wp-stack">
                     @include('livewire.locations.partials.location-form-fields')
 
-                    @if ($editingLocationId)
-                        @include('livewire.locations.partials.min-staffing-panel')
-                    @endif
-
                     @if ($editingLocationId && $editingLocation?->is_active)
                         <div class="wp-field" x-data="{ open: false }">
                             <span class="wp-label">{{ __('locations.translation_edit.label') }}</span>

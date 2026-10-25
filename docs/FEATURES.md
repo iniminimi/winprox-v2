@@ -1088,9 +1088,9 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   Enkelvoudige `CopyWeekAction`
   (API `POST /time/schedule/copy`) delegeert en behoudt zijn weiger-exceptions; optionele
   `weeks`-parameter geeft hetzelfde range-rapport terug.
-- **Minimum bezetting (indicatie):** per locatie instelbaar (locatie bewerken →
-  inklappanel **Minimum bezetting per dag**): aantallen per diensttype uit de
-  legende, gelijk voor elke dag (`locations.min_staffing` JSON
+- **Minimum bezetting (indicatie):** per locatie instelbaar via de Time-pagina
+  **Minimum bezetting** (`/time/staffing`, Time-balk naast Feestdagen): aantallen
+  per diensttype uit de legende, gelijk voor elke dag (`locations.min_staffing` JSON
   `{shift_type_id: min}`). Het uurrooster toont een muted `wp-flash`-blok met
   tekorten — `di 25/10 · V2 ontbreekt (0/1)` — gegroepeerd per locatie. Puur
   informatief: opslaan en publiceren worden nooit geblokkeerd.

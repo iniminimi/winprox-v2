@@ -13,6 +13,7 @@
         "schedule": "Dienstplan",
         "shift_types": "Schichttypen",
         "holidays": "Feiertage",
+        "staffing": "Mindestbesetzung",
         "absence_requests": "Anträge"
     },
     "presence": {
@@ -926,6 +927,23 @@
         "override_badge": "Festgelegt",
         "standard_option": "Standard: :effect",
         "replacement_proposal": "Vorschlag: :date · noch zu bestätigen"
+    },
+    "staffing": {
+        "title": "Mindestbesetzung",
+        "subtitle": "Pro Standort festlegen, welche Schichten täglich mindestens geplant sein müssen. Hinweis im Stundenplan — blockiert nichts.",
+        "hint": "Schichten ohne Einheit zählen nur, wenn der Mitarbeiter genau einen Standort hat.",
+        "type": "Schichttyp",
+        "type_placeholder": "Schichttyp wählen",
+        "count": "Mindestanzahl",
+        "add": "Schichttyp hinzufügen",
+        "remove": "Zeile entfernen",
+        "stale": "inaktiv/gelöscht",
+        "empty_locations": "Keine Standorte zum Konfigurieren.",
+        "save": "Speichern",
+        "saved": "Mindestbesetzung für {location} gespeichert.",
+        "errors": {
+            "type_invalid": "Mindestens ein Schichttyp der Mindestbesetzung ist ungültig."
+        }
     },
     "absence": {
         "title": "Anträge",

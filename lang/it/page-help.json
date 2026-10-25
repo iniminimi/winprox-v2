@@ -1874,6 +1874,23 @@
                 }
             ]
         },
+        "time.staffing": {
+            "title": "Aiuto — Organico minimo",
+            "actions": [
+                {
+                    "label": "Regole",
+                    "text": "Imposta per sede quanti operatori per tipo di turno devono essere pianificati <strong>al minimo ogni giorno</strong>, secondo la legenda del planning."
+                },
+                {
+                    "label": "Indicazione",
+                    "text": "Il planning mostra i turni mancanti (es. <strong>V2 manca</strong>), raggruppati per sede e limitati ai giorni futuri visibili. È una <strong>indicazione</strong> — non blocca mai salvataggio o pubblicazione."
+                },
+                {
+                    "label": "Tipi obsoleti",
+                    "text": "I tipi di turno disattivati o eliminati restano in grigio finché non li rimuovi tu — non scompaiono mai di nascosto."
+                }
+            ]
+        },
         "time.absence_requests": {
             "title": "Guida — Richieste",
             "actions": [

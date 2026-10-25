@@ -13,6 +13,7 @@
         "schedule": "Turni",
         "shift_types": "Tipi di turno",
         "holidays": "Festività",
+        "staffing": "Organico minimo",
         "absence_requests": "Richieste"
     },
     "presence": {
@@ -926,6 +927,23 @@
         "override_badge": "Definito",
         "standard_option": "Standard: :effect",
         "replacement_proposal": "Proposta: :date · da confermare"
+    },
+    "staffing": {
+        "title": "Organico minimo",
+        "subtitle": "Definisci per sede quali turni devono essere pianificati al minimo ogni giorno. Indicazione nel planning — non blocca nulla.",
+        "hint": "I turni senza unità contano solo se l'operatore ha esattamente una sede.",
+        "type": "Tipo di turno",
+        "type_placeholder": "Scegli tipo di turno",
+        "count": "Numero minimo",
+        "add": "Aggiungi tipo di turno",
+        "remove": "Rimuovi riga",
+        "stale": "inattivo/rimosso",
+        "empty_locations": "Nessuna sede da configurare.",
+        "save": "Salva",
+        "saved": "Organico minimo salvato per {location}.",
+        "errors": {
+            "type_invalid": "Almeno un tipo di turno dell'organico minimo non è valido."
+        }
     },
     "absence": {
         "title": "Richieste",

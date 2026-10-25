@@ -3,8 +3,7 @@
 use App\Actions\Time\ListLocationStaffingShortfallsAction;
 use App\Enums\PlannedShiftStatus;
 use App\Enums\ShiftTypeKind;
-use App\Livewire\Locations\Index as LocationsIndex;
-use App\Livewire\Locations\Show as LocationsShow;
+use App\Livewire\Time\StaffingIndex;
 use App\Livewire\Time\RosterIndex;
 use App\Models\InternalTeam;
 use App\Models\Location;
@@ -320,38 +319,35 @@ it('toont geen indicatieblok zonder vereisten', function () {
         ->assertDontSee(__('time.schedule.staffing.title'), false);
 });
 
-it('slaat minimumbezetting op via het locatieformulier', function () {
+it('slaat minimumbezetting op via de staffing-pagina', function () {
     [$tenant, $admin, $team] = staffingTenant();
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Kapel']);
     $type = staffingType($tenant, 'D');
 
     Livewire::actingAs($admin)
-        ->test(LocationsIndex::class)
-        ->call('openEdit', $location->id)
-        ->call('addMinStaffingRow')
-        ->set('locationFormMinStaffing.0.type_id', (string) $type->id)
-        ->set('locationFormMinStaffing.0.min', '3')
-        ->call('save')
+        ->test(StaffingIndex::class)
+        ->call('addStaffingRow', $location->id)
+        ->set("staffingRows.{$location->id}.0.type_id", (string) $type->id)
+        ->set("staffingRows.{$location->id}.0.min", '3')
+        ->call('saveLocation', $location->id)
         ->assertHasNoErrors();
 
     expect($location->fresh()->min_staffing)->toBe([(string) $type->id => 3]);
 });
 
-it('slaat minimumbezetting ook op via de locatie-detailpagina', function () {
+it('weigert onbekende diensttypes op de staffing-pagina', function () {
     [$tenant, $admin, $team] = staffingTenant();
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Kapel']);
-    $type = staffingType($tenant, 'D');
 
     Livewire::actingAs($admin)
-        ->test(LocationsShow::class, ['location' => $location])
-        ->call('openEditLocation')
-        ->call('addMinStaffingRow')
-        ->set('locationFormMinStaffing.0.type_id', (string) $type->id)
-        ->set('locationFormMinStaffing.0.min', '2')
-        ->call('saveLocation')
-        ->assertHasNoErrors();
+        ->test(StaffingIndex::class)
+        ->call('addStaffingRow', $location->id)
+        ->set("staffingRows.{$location->id}.0.type_id", '424242')
+        ->set("staffingRows.{$location->id}.0.min", '1')
+        ->call('saveLocation', $location->id)
+        ->assertHasErrors('staffingRows');
 
-    expect($location->fresh()->min_staffing)->toBe([(string) $type->id => 2]);
+    expect($location->fresh()->min_staffing)->toBeNull();
 });
 
 it('behoudt verouderde regels bij opslaan tot de beheerder ze verwijdert', function () {
@@ -361,9 +357,8 @@ it('behoudt verouderde regels bij opslaan tot de beheerder ze verwijdert', funct
     $location->update(['min_staffing' => [(string) $inactive->id => 2, '999999' => 3]]);
 
     Livewire::actingAs($admin)
-        ->test(LocationsIndex::class)
-        ->call('openEdit', $location->id)
-        ->call('save')
+        ->test(StaffingIndex::class)
+        ->call('saveLocation', $location->id)
         ->assertHasNoErrors();
 
     expect($location->fresh()->min_staffing)
@@ -377,10 +372,9 @@ it('verwijdert een verouderde regel enkel expliciet via de rij-verwijdering', fu
     $location->update(['min_staffing' => [(string) $inactive->id => 2]]);
 
     Livewire::actingAs($admin)
-        ->test(LocationsIndex::class)
-        ->call('openEdit', $location->id)
-        ->call('removeMinStaffingRow', 0)
-        ->call('save')
+        ->test(StaffingIndex::class)
+        ->call('removeStaffingRow', $location->id, 0)
+        ->call('saveLocation', $location->id)
         ->assertHasNoErrors();
 
     expect($location->fresh()->min_staffing)->toBeNull();

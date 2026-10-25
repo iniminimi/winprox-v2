@@ -1874,6 +1874,23 @@
                 }
             ]
         },
+        "time.staffing": {
+            "title": "Hulp — Minimum bezetting",
+            "actions": [
+                {
+                    "label": "Regels",
+                    "text": "Leg per locatie vast hoeveel uitvoerders per diensttype er <strong>minimaal dagelijks</strong> gepland moeten zijn, volgens de legende van het uurrooster."
+                },
+                {
+                    "label": "Indicatie",
+                    "text": "Het uurrooster toont welke diensten ontbreken (bijvoorbeeld <strong>V2 ontbreekt</strong>), gegroepeerd per locatie en beperkt tot zichtbare toekomstige dagen. Dit is een <strong>indicatie</strong> — het blokkeert opslaan of publiceren nooit."
+                },
+                {
+                    "label": "Verouderde types",
+                    "text": "Gedeactiveerde of verwijderde diensttypes blijven vergrijsd staan tot u ze zelf verwijdert — ze gaan nooit ongemerkt weg."
+                }
+            ]
+        },
         "time.absence_requests": {
             "title": "Hulp — Aanvragen",
             "actions": [

@@ -25,7 +25,6 @@ use App\Http\Requests\Locations\UpdateCategoryRequest;
 use App\Http\Requests\Locations\UpdateLocationRequest;
 use App\Livewire\Concerns\AppliesGpsCoordinatePair;
 use App\Livewire\Concerns\AppliesPastedAddress;
-use App\Livewire\Concerns\ManagesLocationMinStaffing;
 use App\Models\Category;
 use App\Models\Customer;
 use App\Models\InternalTeam;
@@ -55,7 +54,6 @@ class Index extends Component
 {
     use AppliesGpsCoordinatePair;
     use AppliesPastedAddress;
-    use ManagesLocationMinStaffing;
     use WithFileUploads;
 
     #[Url(as: 'q')]
@@ -100,9 +98,6 @@ class Index extends Component
     public string $locationFormLongitude = '';
 
     public string $locationFormCustomerId = '';
-
-    /** @var list<array{type_id: string, min: string, stale_label: ?string}> */
-    public array $locationFormMinStaffing = [];
 
     public string $locationPreviewLocale = '';
 
@@ -192,7 +187,6 @@ class Index extends Component
         $this->locationFormLatitude = $location->latitude !== null ? (string) $location->latitude : '';
         $this->locationFormLongitude = $location->longitude !== null ? (string) $location->longitude : '';
         $this->locationFormCustomerId = $location->customer_id !== null ? (string) $location->customer_id : '';
-        $this->hydrateMinStaffingRows($location);
         $this->locationPreviewLocale = $this->defaultTranslationLocaleForLocation($location);
         $this->hydrateLocationTranslationInput($location->fresh('translations'));
         $this->resetErrorBag();
@@ -345,11 +339,6 @@ class Index extends Component
             $location = Location::findOrFail($this->editingLocationId);
             $this->authorize('update', $location);
             $validated = UpdateLocationRequest::validatePayload($payload, requireName: true);
-            if (! $this->minStaffingTypeIdsValid($location)) {
-                $this->addError('locationFormMinStaffing', __('locations.errors.min_staffing_type_invalid'));
-
-                return;
-            }
             $updateLocation->handle($location, $validated, (int) auth()->id());
             session()->flash('success', __('locations.flash.updated'));
         }
@@ -562,16 +551,13 @@ class Index extends Component
             'latitude' => $this->locationFormLatitude,
             'longitude' => $this->locationFormLongitude,
             'customer_id' => $this->locationFormCustomerId !== '' ? (int) $this->locationFormCustomerId : null,
-            'min_staffing' => $this->normalizedMinStaffingRows(),
         ];
     }
-
-    // Min-staffing-rijen zitten in ManagesLocationMinStaffing (gedeeld met Show).
 
     private function resetForm(): void
     {
         $this->reset([
-            'locationFormName', 'locationFormStreet', 'locationFormHouseNumber', 'locationFormPostalCode', 'locationFormCity', 'locationFormNotes', 'locationFormDdt', 'locationFormLatitude', 'locationFormLongitude', 'locationFormCustomerId', 'locationFormMinStaffing', 'editingLocationId',
+            'locationFormName', 'locationFormStreet', 'locationFormHouseNumber', 'locationFormPostalCode', 'locationFormCity', 'locationFormNotes', 'locationFormDdt', 'locationFormLatitude', 'locationFormLongitude', 'locationFormCustomerId', 'editingLocationId',
             'locationPreviewLocale', 'locationTranslationName',
         ]);
         $this->editingLocationId = null;
@@ -1005,9 +991,6 @@ class Index extends Component
             'presenceComplianceEnabled' => (bool) ($viewerTenant?->presenceComplianceEnabled()),
             'gpsWorkVisitsEnabled' => (bool) ($viewerTenant?->allowsGpsWorkVisits()),
             'customersOnLocation' => (bool) ($viewerTenant?->customersOnLocation()),
-            'minStaffingTypeOptions' => ($this->showModal && $this->editingLocationId !== null)
-                ? $this->minStaffingTypeOptions((int) ($viewerTenant?->id ?? 0))
-                : [],
             'customerOptions' => ($viewerTenant?->customersOnLocation() ?? false)
                 ? Customer::query()
                     ->where('tenant_id', (int) $viewerTenant->id)

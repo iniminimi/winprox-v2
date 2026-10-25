@@ -13,6 +13,7 @@
         "schedule": "Uurrooster",
         "shift_types": "Shifttypes",
         "holidays": "Feestdagen",
+        "staffing": "Minimum bezetting",
         "absence_requests": "Aanvragen"
     },
     "presence": {
@@ -926,6 +927,23 @@
         "override_badge": "Vastgelegd",
         "standard_option": "Standaard: :effect",
         "replacement_proposal": "Voorstel: :date · nog te bevestigen"
+    },
+    "staffing": {
+        "title": "Minimum bezetting",
+        "subtitle": "Per locatie vastleggen welke diensten er minimaal dagelijks gepland moeten zijn. Indicatie in het uurrooster — blokkeert niets.",
+        "hint": "Diensten zonder eenheid tellen alleen mee als de uitvoerder exact één locatie heeft.",
+        "type": "Diensttype",
+        "type_placeholder": "Kies diensttype",
+        "count": "Minimumaantal",
+        "add": "Diensttype toevoegen",
+        "remove": "Regel verwijderen",
+        "stale": "inactief/verwijderd",
+        "empty_locations": "Geen locaties om in te stellen.",
+        "save": "Opslaan",
+        "saved": "Minimumbezetting opgeslagen voor {location}.",
+        "errors": {
+            "type_invalid": "Minstens één diensttype in de minimumbezetting is ongeldig."
+        }
     },
     "absence": {
         "title": "Aanvragen",

@@ -1882,6 +1882,23 @@
                 }
             ]
         },
+        "time.staffing": {
+            "title": "Aide — Effectif minimal",
+            "actions": [
+                {
+                    "label": "Règles",
+                    "text": "Définissez par site combien de collaborateurs par type de service doivent être <strong>planifiés au minimum chaque jour</strong>, selon la légende du planning."
+                },
+                {
+                    "label": "Indication",
+                    "text": "Le planning affiche les services manquants (par ex. <strong>V2 manquant</strong>), groupés par site et limités aux jours futurs visibles. C'est une <strong>indication</strong> — cela ne bloque jamais l'enregistrement ni la publication."
+                },
+                {
+                    "label": "Types obsolètes",
+                    "text": "Les types de service désactivés ou supprimés restent grisés jusqu'à ce que vous les retiriez vous-même — ils ne disparaissent jamais sans prévenir."
+                }
+            ]
+        },
         "time.absence_requests": {
             "title": "Aide — Demandes",
             "actions": [

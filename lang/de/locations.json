@@ -328,8 +328,7 @@
         "translation_import_name_too_long": "Der übersetzte Standortname ist zu lang.",
         "translation_requires_active": "Übersetzungen sind nur für aktive Standorte möglich.",
         "ddt_invalid": "DDT-Referenz muss genau 13 gültige Zeichen haben.",
-        "coords_invalid": "Ungültige Koordinaten.",
-        "min_staffing_type_invalid": "Mindestens ein Schichttyp der Mindestbesetzung ist ungültig."
+        "coords_invalid": "Ungültige Koordinaten."
     },
     "qr_pack": {
         "unavailable": "QR-Export ist auf diesem Server nicht verfügbar.",
@@ -496,16 +495,5 @@
     "site_unit": {
         "default_name": "Gesamter Standort",
         "hint": "Automatisch erstellt, damit Meldungen, Unit-Checks und Inspektionsstopps ohne Raumaufteilung möglich sind."
-    },
-    "min_staffing": {
-        "label": "Mindestbesetzung",
-        "open": "Mindestbesetzung pro Tag festlegen",
-        "hint": "Wie viele Mitarbeiter pro Schichttyp an diesem Standort täglich mindestens benötigt werden. Hinweis im Stundenplan — blockiert nichts. Schichten ohne Einheit zählen nur, wenn der Mitarbeiter genau einen Standort hat.",
-        "type": "Schichttyp",
-        "type_placeholder": "Schichttyp wählen",
-        "count": "Mindestanzahl",
-        "add": "Schichttyp hinzufügen",
-        "remove": "Zeile entfernen",
-        "stale": "inaktiv/gelöscht"
     }
 }

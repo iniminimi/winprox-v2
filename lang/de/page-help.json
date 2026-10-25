@@ -1874,6 +1874,23 @@
                 }
             ]
         },
+        "time.staffing": {
+            "title": "Hilfe — Mindestbesetzung",
+            "actions": [
+                {
+                    "label": "Regeln",
+                    "text": "Legen Sie pro Standort fest, wie viele Mitarbeiter pro Schichttyp <strong>täglich mindestens</strong> geplant sein müssen, entsprechend der Legende des Stundenplans."
+                },
+                {
+                    "label": "Hinweis",
+                    "text": "Der Stundenplan zeigt fehlende Schichten (z. B. <strong>V2 fehlt</strong>), gruppiert pro Standort und auf sichtbare zukünftige Tage begrenzt. Dies ist ein <strong>Hinweis</strong> — er blockiert Speichern oder Veröffentlichen nie."
+                },
+                {
+                    "label": "Veraltete Typen",
+                    "text": "Deaktivierte oder gelöschte Schichttypen bleiben ausgegraut stehen, bis Sie sie selbst entfernen — sie verschwinden nie unbemerkt."
+                }
+            ]
+        },
         "time.absence_requests": {
             "title": "Hilfe — Anträge",
             "actions": [

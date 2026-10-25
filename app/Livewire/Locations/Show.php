@@ -26,7 +26,6 @@ use App\Http\Requests\Locations\UpdateUnitRequest;
 use App\Http\Requests\Units\ImportUnitsRequest;
 use App\Livewire\Concerns\AppliesGpsCoordinatePair;
 use App\Livewire\Concerns\AppliesPastedAddress;
-use App\Livewire\Concerns\ManagesLocationMinStaffing;
 use App\Models\Category;
 use App\Models\Customer;
 use App\Models\EsgMeasurement;
@@ -68,7 +67,6 @@ class Show extends Component
 {
     use AppliesGpsCoordinatePair;
     use AppliesPastedAddress;
-    use ManagesLocationMinStaffing;
     use WithFileUploads;
     use WithPagination;
 
@@ -127,9 +125,6 @@ class Show extends Component
     public string $locationFormLongitude = '';
 
     public string $locationFormCustomerId = '';
-
-    /** @var list<array{type_id: string, min: string, stale_label: ?string}> */
-    public array $locationFormMinStaffing = [];
 
     public string $unitName = '';
 
@@ -324,11 +319,6 @@ class Show extends Component
     {
         $this->authorize('update', $this->location);
         $validated = UpdateLocationRequest::validatePayload($this->locationFormPayload(), requireName: true);
-        if (! $this->minStaffingTypeIdsValid($this->location)) {
-            $this->addError('locationFormMinStaffing', __('locations.errors.min_staffing_type_invalid'));
-
-            return;
-        }
         $this->location = $updateLocation->handle($this->location, $validated, (int) auth()->id());
         $this->showLocationModal = false;
         $this->resetLocationForm();
@@ -352,7 +342,6 @@ class Show extends Component
             'latitude' => $this->locationFormLatitude,
             'longitude' => $this->locationFormLongitude,
             'customer_id' => $this->locationFormCustomerId !== '' ? (int) $this->locationFormCustomerId : null,
-            'min_staffing' => $this->normalizedMinStaffingRows(),
         ];
     }
 
@@ -369,7 +358,6 @@ class Show extends Component
         $this->locationFormLatitude = $this->location->latitude !== null ? (string) $this->location->latitude : '';
         $this->locationFormLongitude = $this->location->longitude !== null ? (string) $this->location->longitude : '';
         $this->locationFormCustomerId = $this->location->customer_id !== null ? (string) $this->location->customer_id : '';
-        $this->hydrateMinStaffingRows($this->location);
     }
 
     private function resetLocationForm(): void
@@ -385,7 +373,6 @@ class Show extends Component
             'locationFormLatitude',
             'locationFormLongitude',
             'locationFormCustomerId',
-            'locationFormMinStaffing',
             'locationPreviewLocale',
             'locationTranslationName',
         ]);
@@ -1524,9 +1511,6 @@ class Show extends Component
             'presenceComplianceEnabled' => $this->locationTenant()?->presenceComplianceEnabled() ?? false,
             'gpsWorkVisitsEnabled' => $this->locationTenant()?->allowsGpsWorkVisits() ?? false,
             'checkmateMode' => $this->locationTenant()?->checkmateMode() ?? false,
-            'minStaffingTypeOptions' => $this->showLocationModal
-                ? $this->minStaffingTypeOptions((int) $this->location->tenant_id)
-                : [],
             'customersOnLocation' => $this->locationTenant()?->customersOnLocation() ?? false,
             'customerOptions' => ($this->locationTenant()?->customersOnLocation() ?? false)
                 ? Customer::query()

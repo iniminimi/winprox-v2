@@ -13,6 +13,7 @@
         "schedule": "Horario",
         "shift_types": "Tipos de turno",
         "holidays": "Festivos",
+        "staffing": "Dotación mínima",
         "absence_requests": "Solicitudes"
     },
     "presence": {
@@ -926,6 +927,23 @@
         "override_badge": "Definido",
         "standard_option": "Estándar: :effect",
         "replacement_proposal": "Propuesta: :date · por confirmar"
+    },
+    "staffing": {
+        "title": "Dotación mínima",
+        "subtitle": "Define por lugar qué turnos deben planificarse como mínimo cada día. Indicación en el horario — no bloquea nada.",
+        "hint": "Los turnos sin unidad solo cuentan si el trabajador tiene exactamente un lugar.",
+        "type": "Tipo de turno",
+        "type_placeholder": "Elegir tipo de turno",
+        "count": "Cantidad mínima",
+        "add": "Añadir tipo de turno",
+        "remove": "Eliminar fila",
+        "stale": "inactivo/eliminado",
+        "empty_locations": "No hay lugares para configurar.",
+        "save": "Guardar",
+        "saved": "Dotación mínima guardada para {location}.",
+        "errors": {
+            "type_invalid": "Al menos un tipo de turno de la dotación mínima no es válido."
+        }
     },
     "absence": {
         "title": "Solicitudes",

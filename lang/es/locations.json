@@ -328,8 +328,7 @@
         "translation_import_name_too_long": "El nombre de ubicación traducido es demasiado largo.",
         "translation_requires_active": "Las traducciones solo están disponibles para ubicaciones activas.",
         "ddt_invalid": "La referencia DDT debe tener exactamente 13 caracteres válidos.",
-        "coords_invalid": "Coordenadas no válidas.",
-        "min_staffing_type_invalid": "Al menos un tipo de turno de la dotación mínima no es válido."
+        "coords_invalid": "Coordenadas no válidas."
     },
     "qr_pack": {
         "unavailable": "La exportación QR no está disponible en este servidor.",
@@ -496,16 +495,5 @@
     "site_unit": {
         "default_name": "Ubicación completa",
         "hint": "Creada automáticamente para poder reportar, hacer unit checks y paradas de inspección sin dividir en espacios."
-    },
-    "min_staffing": {
-        "label": "Dotación mínima",
-        "open": "Definir la dotación mínima por día",
-        "hint": "Cuántos trabajadores por tipo de turno se necesitan como mínimo en este lugar, cada día. Es una indicación en el horario — no bloquea nada. Los turnos sin unidad solo cuentan si el trabajador tiene exactamente un lugar.",
-        "type": "Tipo de turno",
-        "type_placeholder": "Elegir tipo de turno",
-        "count": "Cantidad mínima",
-        "add": "Añadir tipo de turno",
-        "remove": "Eliminar fila",
-        "stale": "inactivo/eliminado"
     }
 }

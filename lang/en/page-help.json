@@ -1874,6 +1874,23 @@
                 }
             ]
         },
+        "time.staffing": {
+            "title": "Help — Minimum staffing",
+            "actions": [
+                {
+                    "label": "Rules",
+                    "text": "Set per location how many workers per shift type must be <strong>planned at minimum every day</strong>, following the roster legend."
+                },
+                {
+                    "label": "Indication",
+                    "text": "The roster shows which shifts are missing (e.g. <strong>V2 missing</strong>), grouped per location and limited to visible future days. This is an <strong>indication</strong> — it never blocks saving or publishing."
+                },
+                {
+                    "label": "Stale types",
+                    "text": "Deactivated or deleted shift types stay greyed out until you remove them yourself — they never silently disappear."
+                }
+            ]
+        },
         "time.absence_requests": {
             "title": "Help — Requests",
             "actions": [

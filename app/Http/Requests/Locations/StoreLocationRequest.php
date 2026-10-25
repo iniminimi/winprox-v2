@@ -31,8 +31,6 @@ class StoreLocationRequest extends FormRequest
             'latitude' => ['nullable', 'numeric', 'between:-90,90'],
             'longitude' => ['nullable', 'numeric', 'between:-180,180'],
             'customer_id' => ['nullable', 'integer', 'min:1'],
-            'min_staffing' => ['nullable', 'array'],
-            'min_staffing.*' => ['integer', 'min:1', 'max:99'],
         ];
     }
 

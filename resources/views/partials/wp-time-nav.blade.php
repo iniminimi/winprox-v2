@@ -20,9 +20,10 @@
     $showShifts = ! $checkmateMode && ! request()->routeIs('time.shifts.*');
     $showShiftTypes = ! $checkmateMode && ! request()->routeIs('time.shift-types.*');
     $showHolidays = ! $checkmateMode && ! request()->routeIs('time.holidays.*');
+    $showStaffing = ! $checkmateMode && ! request()->routeIs('time.staffing.*');
     $showAlarms = ! $checkmateMode && ! request()->routeIs('time.alarms.*');
     $showCiao = $ciaoEnabled && ! $checkmateMode && ! request()->routeIs('time.ciao.*');
-    $hasLinks = $showShifts || $showShiftTypes || $showHolidays || $showAlarms || $showCiao;
+    $hasLinks = $showShifts || $showShiftTypes || $showHolidays || $showStaffing || $showAlarms || $showCiao;
 @endphp
 
 @if ($hasLinks)
@@ -40,6 +41,11 @@
         @if ($showHolidays)
             <a href="{{ route('time.holidays.index') }}" class="btn btn--sm btn--surface">
                 {{ __('time.nav.holidays') }}
+            </a>
+        @endif
+        @if ($showStaffing)
+            <a href="{{ route('time.staffing.index') }}" class="btn btn--sm btn--surface">
+                {{ __('time.nav.staffing') }}
             </a>
         @endif
         @if ($showAlarms)

@@ -13,6 +13,7 @@
         "schedule": "Horaire",
         "shift_types": "Types de service",
         "holidays": "Jours fériés",
+        "staffing": "Effectif minimal",
         "absence_requests": "Demandes"
     },
     "presence": {
@@ -926,6 +927,23 @@
         "override_badge": "Défini",
         "standard_option": "Standard : :effect",
         "replacement_proposal": "Proposition : :date · à confirmer"
+    },
+    "staffing": {
+        "title": "Effectif minimal",
+        "subtitle": "Définir par site quels services doivent être planifiés au minimum chaque jour. Simple indication dans le planning horaire — cela ne bloque rien.",
+        "hint": "Les services sans unité ne comptent que si le collaborateur a exactement un site.",
+        "type": "Type de service",
+        "type_placeholder": "Choisir un type de service",
+        "count": "Nombre minimal",
+        "add": "Ajouter un type de service",
+        "remove": "Supprimer la ligne",
+        "stale": "inactif/supprimé",
+        "empty_locations": "Aucun site à configurer.",
+        "save": "Enregistrer",
+        "saved": "Effectif minimal enregistré pour {location}.",
+        "errors": {
+            "type_invalid": "Au moins un type de service de l'effectif minimal est invalide."
+        }
     },
     "absence": {
         "title": "Demandes",

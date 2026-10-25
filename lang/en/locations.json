@@ -328,8 +328,7 @@
         "translation_import_name_too_long": "The translated location name is too long.",
         "translation_requires_active": "Translations are only available for active locations.",
         "ddt_invalid": "DDT reference must be exactly 13 valid characters.",
-        "coords_invalid": "Invalid coordinates.",
-        "min_staffing_type_invalid": "At least one shift type in the minimum staffing is invalid."
+        "coords_invalid": "Invalid coordinates."
     },
     "qr_pack": {
         "unavailable": "QR export is unavailable on this server.",
@@ -496,16 +495,5 @@
     "site_unit": {
         "default_name": "Whole location",
         "hint": "Created automatically so you can report, run unit checks and inspection stops without splitting into rooms."
-    },
-    "min_staffing": {
-        "label": "Minimum staffing",
-        "open": "Set minimum staffing per day",
-        "hint": "How many workers per shift type are minimally needed at this location, every day. This is an indication in the hour roster — it blocks nothing. Shifts without a unit only count if the worker has exactly one location.",
-        "type": "Shift type",
-        "type_placeholder": "Choose shift type",
-        "count": "Minimum count",
-        "add": "Add shift type",
-        "remove": "Remove row",
-        "stale": "inactive/removed"
     }
 }

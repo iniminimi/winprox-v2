@@ -1874,6 +1874,23 @@
                 }
             ]
         },
+        "time.staffing": {
+            "title": "Ayuda — Dotación mínima",
+            "actions": [
+                {
+                    "label": "Reglas",
+                    "text": "Define por lugar cuántos trabajadores por tipo de turno deben planificarse <strong>como mínimo cada día</strong>, según la leyenda del horario."
+                },
+                {
+                    "label": "Indicación",
+                    "text": "El horario muestra los turnos que faltan (p. ej. <strong>V2 falta</strong>), agrupados por lugar y limitados a días futuros visibles. Es una <strong>indicación</strong> — nunca bloquea guardar ni publicar."
+                },
+                {
+                    "label": "Tipos obsoletos",
+                    "text": "Los tipos de turno desactivados o eliminados quedan atenuados hasta que los quite usted mismo — nunca desaparecen sin aviso."
+                }
+            ]
+        },
         "time.absence_requests": {
             "title": "Ayuda — Solicitudes",
             "actions": [
