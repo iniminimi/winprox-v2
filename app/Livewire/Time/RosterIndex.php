@@ -678,14 +678,19 @@ class RosterIndex extends Component
         );
         $array['staffing_shortfalls_title'] = __('time.schedule.staffing.title');
         $array['staffing_shortfalls'] = collect($shortfalls['by_date'] ?? [])
-            ->map(fn (array $items) => array_map(
-                fn (array $item) => $item['location'].': '.__('time.schedule.staffing.missing', [
-                    'code' => $item['code'],
-                    'actual' => $item['actual'],
-                    'required' => $item['required'],
-                ]),
-                $items,
-            ))
+            ->map(fn (array $items) => collect($items)
+                ->groupBy('location')
+                ->map(fn ($group, string $location) => [
+                    'location' => $location,
+                    'lines' => $group->map(fn (array $item) => __('time.schedule.staffing.missing', [
+                        'code' => $item['code'],
+                        'name' => $item['label'],
+                        'actual' => $item['actual'],
+                        'required' => $item['required'],
+                    ]))->all(),
+                ])
+                ->values()
+                ->all())
             ->all();
 
         return $array;

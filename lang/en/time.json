@@ -906,7 +906,7 @@
         },
         "staffing": {
             "title": "Minimum staffing not met",
-            "missing": ":code missing (:actual/:required)"
+            "missing": ":code — :name missing (:actual/:required)"
         }
     },
     "shift_types": {

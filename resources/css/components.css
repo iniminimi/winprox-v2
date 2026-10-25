@@ -7371,11 +7371,50 @@ a.wp-worker-hours-link:focus-visible {
     background: color-mix(in srgb, var(--wp-accent) 16%, var(--wp-surface-2) 84%);
 }
 
-/* Minimumbezetting niet gehaald: dagheader rood; details als tooltip (title). */
+/* Minimumbezetting niet gehaald: dagheader rood; details als hover-ballon. */
 .wp-roster-sheet .jss_worksheet > thead > tr > td.wp-roster-col--staffing-shortfall {
     background: color-mix(in srgb, var(--wp-danger) 30%, var(--wp-surface-2) 70%);
     color: var(--wp-danger-text, var(--wp-danger));
     font-weight: 600;
+}
+
+.wp-roster-day-tip {
+    position: fixed;
+    z-index: 90;
+    transform: translate(-50%, calc(-100% - 8px));
+    max-width: 300px;
+    padding: 0.6rem 0.85rem;
+    background: var(--wp-surface);
+    border: 1px solid var(--wp-border);
+    border-radius: 12px;
+    box-shadow: var(--wp-shadow);
+    color: var(--wp-text);
+    font-size: 0.8rem;
+    line-height: 1.4;
+    pointer-events: none;
+}
+
+.wp-roster-day-tip--below {
+    transform: translate(-50%, 8px);
+}
+
+.wp-roster-day-tip__title {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.wp-roster-day-tip__location {
+    font-weight: 600;
+    margin-top: 0.3rem;
+}
+
+.wp-roster-day-tip__items {
+    margin: 0.1rem 0 0;
+    padding-left: 1rem;
+}
+
+.wp-roster-day-tip__items li {
+    margin: 0.05rem 0;
 }
 
 /* Geselecteerde cellen (Excel-stijl): donkere tint + donkere rand rond het

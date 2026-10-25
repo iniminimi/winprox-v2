@@ -906,7 +906,7 @@
         },
         "staffing": {
             "title": "Organico minimo non raggiunto",
-            "missing": ":code mancante (:actual/:required)"
+            "missing": ":code — :name mancante (:actual/:required)"
         }
     },
     "shift_types": {

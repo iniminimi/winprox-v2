@@ -906,7 +906,7 @@
         },
         "staffing": {
             "title": "Mindestbesetzung nicht erreicht",
-            "missing": ":code fehlt (:actual/:required)"
+            "missing": ":code — :name fehlt (:actual/:required)"
         }
     },
     "shift_types": {

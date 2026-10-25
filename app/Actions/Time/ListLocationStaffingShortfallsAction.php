@@ -85,7 +85,7 @@ final class ListLocationStaffingShortfallsAction
             ->where('is_active', true)
             ->where('kind', ShiftTypeKind::Work->value)
             ->whereIn('id', $requiredTypeIds)
-            ->get(['id', 'code'])
+            ->get(['id', 'code', 'label'])
             ->keyBy('id');
 
         // Per locatie: [type_id => min], enkel actieve types.
@@ -120,6 +120,7 @@ final class ListLocationStaffingShortfallsAction
                             'date' => $date,
                             'location' => (string) $names[$locationId]->name,
                             'code' => (string) $activeTypes[$typeId]->code,
+                            'label' => (string) ($activeTypes[$typeId]->label ?? ''),
                             'actual' => $actual,
                             'required' => $required,
                         ];
@@ -152,6 +153,7 @@ final class ListLocationStaffingShortfallsAction
             $byDate[$item['date']][] = [
                 'location' => $item['location'],
                 'code' => $item['code'],
+                'label' => $item['label'],
                 'actual' => $item['actual'],
                 'required' => $item['required'],
             ];

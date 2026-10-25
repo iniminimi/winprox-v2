@@ -341,13 +341,20 @@ it('markeert dagen met tekort in het rooster-payload', function () {
         ->test(RosterIndex::class)
         ->set('locationFilter', $location->id)
         ->call('nextWeek')
-        ->assertViewHas('gridPayload', function (array $payload) {
-            $lines = collect($payload['staffing_shortfalls'] ?? [])->flatten();
+        ->assertViewHas('gridPayload', function (array $payload) use ($location, $type) {
+            $groups = collect($payload['staffing_shortfalls'] ?? [])->flatten(1);
+            $lines = $groups->flatMap(fn ($group) => $group['lines'] ?? []);
 
-            return $lines->contains(fn ($line) => str_contains(
-                (string) $line,
-                __('time.schedule.staffing.missing', ['code' => 'V2', 'actual' => 0, 'required' => 1]),
-            ));
+            return $groups->contains(fn ($group) => ($group['location'] ?? '') === (string) $location->name)
+                && $lines->contains(fn ($line) => str_contains(
+                    (string) $line,
+                    __('time.schedule.staffing.missing', [
+                        'code' => 'V2',
+                        'name' => (string) $type->label,
+                        'actual' => 0,
+                        'required' => 1,
+                    ]),
+                ));
         });
 });
 
