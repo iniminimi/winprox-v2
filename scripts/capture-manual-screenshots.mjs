@@ -26,9 +26,17 @@ const checkmatePassword = process.env.MANUAL_CAPTURE_CHECKMATE_PASSWORD ?? '';
 const onlyPrefix = process.env.MANUAL_CAPTURE_ONLY ?? '';
 const outputDir = process.env.MANUAL_CAPTURE_OUTPUT_DIR ?? join(process.cwd(), 'public/images/manual');
 const configPath = process.env.MANUAL_CAPTURE_CONFIG_PATH ?? join(__dirname, 'manual-capture.config.json');
+// Locale-detectie: echte taalmappen bevatten direct *.json; geneste varianten
+// (bv. lang/markets/nl) zijn geen locales en mogen geen manual-shots krijgen.
 const locales = process.env.MANUAL_CAPTURE_LOCALES
     ? process.env.MANUAL_CAPTURE_LOCALES.split(',').map((l) => l.trim()).filter(Boolean)
-    : readdirSync(join(process.cwd(), 'lang')).filter((e) => statSync(join(process.cwd(), 'lang', e)).isDirectory()).sort();
+    : readdirSync(join(process.cwd(), 'lang'))
+        .filter((e) => {
+            const dir = join(process.cwd(), 'lang', e);
+            return statSync(dir).isDirectory()
+                && readdirSync(dir).some((f) => f.endsWith('.json'));
+        })
+        .sort();
 
 const pathVars = {
     location_id: process.env.MANUAL_CAPTURE_LOCATION_ID ?? '',
@@ -282,7 +290,7 @@ try {
             const localeDir = join(outputDir, locale);
             mkdirSync(localeDir, { recursive: true });
             const outputPath = join(localeDir, `${target.id}.png`);
-            await locator.screenshot({ path: outputPath });
+            await captureElementScreenshot(page, locator, viewport, outputPath);
             console.log(`Captured ${locale}/${target.id}.png`);
             captured++;
 
@@ -424,6 +432,35 @@ function captureUrl(path, locale, useAuth) {
     params.set('lang', locale);
 
     return `${baseUrl}${pathname}?${params.toString()}`;
+}
+
+/**
+ * Element-screenshot zonder de beyondViewport-route van Playwright.
+ *
+ * Chromium legt bij `captureBeyondViewport` (element hoger dan de viewport)
+ * fixed-sidebar layouts mis uit: `.wp-content` verliest margin-left en de
+ * inhoud schuift onder de zijbalk → links/rechts afgekapte PNG's. Door de
+ * viewport hoog genoeg te maken past het element erin en gebruikt Playwright
+ * het normale capture-pad. `.wp-help` (assistent-FAB) hoort niet in de
+ * handleiding en wordt voor de shot verborgen.
+ *
+ * @param {import('playwright').Page} page
+ * @param {import('playwright').Locator} locator
+ * @param {{ width: number, height: number }} viewport
+ * @param {string} outputPath
+ */
+async function captureElementScreenshot(page, locator, viewport, outputPath) {
+    const box = await locator.boundingBox();
+    if (box !== null) {
+        const needed = Math.ceil(box.y + box.height) + 8;
+        const vp = page.viewportSize() ?? viewport;
+        if (needed > vp.height) {
+            await page.setViewportSize({ width: vp.width, height: needed });
+        }
+    }
+
+    await page.addStyleTag({ content: '.wp-help { display: none !important; }' });
+    await locator.screenshot({ path: outputPath });
 }
 
 /**

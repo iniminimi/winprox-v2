@@ -164,6 +164,8 @@ Viewport-richtlijn:
 | Teamleader skips | Worker naam/icoon/team-token kloppen niet — of Livewire sign-in (update script) |
 | `locations-gps-history` skip | Geen unit met GPS op de capture-locatie — minstens één `unit_gps_reports`-rij nodig |
 | `esg-indicators` / `esg-measurements` skip | ESG-module uit op capture-tenant — zet `has_esg_module` aan voor die tenant |
+| PNG's links/rechts afgekapt, inhoud verschoven | Verouderde capture: Chromium `captureBeyondViewport` legt fixed-sidebar layouts mis uit — `captureElementScreenshot` maakt de viewport nu hoog genoeg; herdraai |
+| Map `manual/markets/` met PNG's | Geen locale — `lang/markets` is een geneste variant; locale-detectie kijkt nu naar mappen met `*.json`; verwijderen |
 | `iot-index` skip | IoT-module uit — `winprox:prepare-manual-capture` zet `has_iot_module` aan |
 | Timeout op `team-backoffice` / eerste beheer-shot, URL `/subscription` | Trial/abonnement verlopen — prepare vernieuwt trial; opnieuw `capture-manual-local.ps1` |
 | Server `pthread_create` | Shared hosting — capture lokaal |
