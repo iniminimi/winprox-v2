@@ -7378,7 +7378,9 @@ a.wp-worker-hours-link:focus-visible {
     font-weight: 600;
 }
 
-.wp-roster-day-tip {
+/* Globale ballon (wp-tip.js): vervangt native title-tooltips app-breed én
+   draagt de rooster-minimumbezetting-ballon via data-wp-staffing-tip. */
+.wp-tip {
     position: fixed;
     z-index: 90;
     transform: translate(-50%, calc(-100% - 8px));
@@ -7395,28 +7397,38 @@ a.wp-worker-hours-link:focus-visible {
     pointer-events: none;
 }
 
-.wp-roster-day-tip--below {
+.wp-tip--below {
     transform: translate(-50%, 8px);
 }
 
-.wp-roster-day-tip__title {
+.wp-tip__title {
     font-weight: 700;
     margin-bottom: 0.25rem;
 }
 
-.wp-roster-day-tip__location {
+.wp-tip__location {
     font-weight: 600;
     margin-top: 0.3rem;
 }
 
-.wp-roster-day-tip__items {
+.wp-tip__items {
     margin: 0.1rem 0 0;
     padding-left: 1rem;
 }
 
-.wp-roster-day-tip__items li {
+.wp-tip__items li {
     margin: 0.05rem 0;
     white-space: nowrap;
+}
+
+.wp-tip__line {
+    margin: 0.05rem 0;
+}
+
+.wp-tip__foot {
+    margin-top: 0.4rem;
+    color: var(--wp-text-muted);
+    font-size: 0.72rem;
 }
 
 /* Geselecteerde cellen (Excel-stijl): donkere tint + donkere rand rond het

@@ -1,4 +1,5 @@
 import './bootstrap';
+import './wp-tip';
 import './field-outbox';
 import './date-input-locale';
 import './homescreen-shortcut';

@@ -1589,75 +1589,8 @@ export function bind(root, wire) {
         });
     }
 
-    // Minimumbezetting-ballon: eigen tooltip (native title kan niet gestyled
-    // worden — geen radius/shadow). Gedeeld element, gevuld per gemerkte cel.
-    const dayTip = document.createElement('div');
-    dayTip.className = 'wp-roster-day-tip';
-    dayTip.hidden = true;
-    document.body.appendChild(dayTip);
-
-    const hideDayTip = () => {
-        dayTip.hidden = true;
-    };
-    const showDayTip = (td) => {
-        let data = null;
-        try {
-            data = JSON.parse(td.dataset.wpStaffingTip || '');
-        } catch {
-            data = null;
-        }
-        if (!data || !Array.isArray(data.groups) || data.groups.length === 0) {
-            hideDayTip();
-            return;
-        }
-        const nodes = [];
-        if (data.title) {
-            const titleEl = document.createElement('div');
-            titleEl.className = 'wp-roster-day-tip__title';
-            titleEl.textContent = data.title;
-            nodes.push(titleEl);
-        }
-        data.groups.forEach((group) => {
-            const loc = document.createElement('div');
-            loc.className = 'wp-roster-day-tip__location';
-            loc.textContent = group.location || '';
-            const ul = document.createElement('ul');
-            ul.className = 'wp-roster-day-tip__items';
-            (group.lines ?? []).forEach((line) => {
-                const li = document.createElement('li');
-                li.textContent = line;
-                ul.appendChild(li);
-            });
-            nodes.push(loc, ul);
-        });
-        dayTip.replaceChildren(...nodes);
-        dayTip.hidden = false;
-        const rect = td.getBoundingClientRect();
-        const tipRect = dayTip.getBoundingClientRect();
-        const above = rect.top > tipRect.height + 16;
-        const center = Math.min(
-            Math.max(rect.left + rect.width / 2, tipRect.width / 2 + 8),
-            window.innerWidth - tipRect.width / 2 - 8,
-        );
-        dayTip.classList.toggle('wp-roster-day-tip--below', !above);
-        dayTip.style.left = `${center}px`;
-        dayTip.style.top = `${above ? rect.top : rect.bottom}px`;
-    };
-
-    grid.addEventListener('mouseover', (event) => {
-        const td = event.target?.closest?.('td.wp-roster-col--staffing-shortfall');
-        if (td) {
-            showDayTip(td);
-        }
-    });
-    grid.addEventListener('mouseout', (event) => {
-        const td = event.target?.closest?.('td.wp-roster-col--staffing-shortfall');
-        if (td && !td.contains(event.relatedTarget)) {
-            hideDayTip();
-        }
-    });
-    grid.addEventListener('mouseleave', hideDayTip);
-    document.addEventListener('scroll', hideDayTip, true);
+    // Tooltips (notities, vergrendeld, feestdagen, minimumbezetting via
+    // data-wp-staffing-tip) draaien op de globale wp-tip-ballon (wp-tip.js).
 
     mount();
 }
