@@ -9,7 +9,7 @@
 
     $tiles = [
         ['key' => 'active', 'value' => $kpis->active, 'filter' => TimePresenceStatusFilter::Active, 'icon' => 'team', 'label' => 'time.presence.kpi.active'],
-        ['key' => 'break', 'value' => $kpis->onBreak, 'filter' => TimePresenceStatusFilter::Break, 'icon' => 'hourglass', 'label' => 'time.presence.kpi.break'],
+        ['key' => 'break', 'value' => $kpis->onBreak, 'filter' => TimePresenceStatusFilter::Break, 'icon' => 'coffee', 'label' => 'time.presence.kpi.break'],
         ['key' => 'absent', 'value' => $kpis->notClockedIn, 'filter' => TimePresenceStatusFilter::Absent, 'icon' => 'team', 'label' => 'time.presence.kpi.absent'],
     ];
 @endphp

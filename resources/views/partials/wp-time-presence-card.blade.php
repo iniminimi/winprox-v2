@@ -68,7 +68,7 @@
                     <span class="wp-pill">{{ __('time.manual_clock_in.badge') }}</span>
                 @endif
                 @if ($isOnBreak)
-                    <span class="wp-pill wp-pill--progress">{{ __('time.presence.on_break') }}</span>
+                    <span class="wp-pill wp-pill--progress"><x-wp-icon name="coffee" />{{ __('time.presence.on_break') }}</span>
                 @endif
             </div>
             <p class="wp-issue-card-meta">{{ implode(' · ', $metaParts) }}</p>

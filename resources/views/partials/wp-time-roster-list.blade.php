@@ -15,6 +15,7 @@
                             <div class="wp-time-roster__name-row">
                                 <span class="wp-time-roster__name">{{ $person->displayName }}</span>
                                 <span class="wp-pill {{ $person->onBreak ? 'wp-pill--progress' : 'wp-pill--done' }}">
+                                    @if ($person->onBreak)<x-wp-icon name="coffee" />@endif
                                     {{ $person->onBreak ? __('time.presence.on_break') : __('time.presence.present') }}
                                 </span>
                             </div>
