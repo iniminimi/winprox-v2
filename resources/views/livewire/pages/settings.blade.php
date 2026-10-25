@@ -120,8 +120,9 @@
                     <div class="wp-settings-subblock">
                         <h3 class="wp-settings-subblock-title">{{ __('settings.notifications.title') }}</h3>
                         <p class="wp-muted wp-text-sm">{{ __('settings.notifications.hint') }}</p>
-                        <label class="wp-check wp-check--boxed">
-                            <input type="checkbox" wire:model.live="notifyOnNewIssueEmail" class="wp-checkbox">
+                        <label class="wp-switch wp-check--boxed">
+                            <input type="checkbox" wire:model.live="notifyOnNewIssueEmail">
+                            <span class="wp-switch__track" aria-hidden="true"></span>
                             <span>
                                 {{ __('settings.notifications.new_qr_issue_label') }}
                                 <br><span class="wp-hint">{{ __('settings.notifications.new_qr_issue_hint') }}</span>
@@ -138,51 +139,58 @@
             <form wire:submit="saveWorkMenuSettings" class="wp-stack">
                 <p class="wp-muted wp-text-sm">{{ __('settings.work_menu.hint') }}</p>
                 <div class="wp-stack-tight">
-                    <label class="wp-check">
-                        <input type="checkbox" wire:model.live="workMenuIssuesTasksEnabled" class="wp-checkbox">
+                    <label class="wp-switch">
+                        <input type="checkbox" wire:model.live="workMenuIssuesTasksEnabled">
+                        <span class="wp-switch__track" aria-hidden="true"></span>
                         <span>
                             {{ __('settings.work_menu.issues_tasks_label') }}
                             <br><span class="wp-hint">{{ __('settings.work_menu.issues_tasks_hint') }}</span>
                         </span>
                     </label>
                     @if ($workMenuIssuesTasksEnabled)
-                    <label class="wp-check">
-                        <input type="checkbox" wire:model="workMenuInspectionRoundsEnabled" class="wp-checkbox">
+                    <label class="wp-switch">
+                        <input type="checkbox" wire:model="workMenuInspectionRoundsEnabled">
+                        <span class="wp-switch__track" aria-hidden="true"></span>
                         <span>
                             {{ __('settings.work_menu.inspection_rounds_label') }}
                             <br><span class="wp-hint">{{ __('settings.work_menu.inspection_rounds_hint') }}</span>
                         </span>
                     </label>
-                    <label class="wp-check">
-                        <input type="checkbox" wire:model="workMenuChecklistsEnabled" class="wp-checkbox">
+                    <label class="wp-switch">
+                        <input type="checkbox" wire:model="workMenuChecklistsEnabled">
+                        <span class="wp-switch__track" aria-hidden="true"></span>
                         <span>
                             {{ __('settings.work_menu.checklists_label') }}
                             <br><span class="wp-hint">{{ __('settings.work_menu.checklists_hint') }}</span>
                         </span>
                     </label>
-                    <label class="wp-check">
-                        <input type="checkbox" wire:model="workMenuUnitChecksEnabled" class="wp-checkbox">
+                    <label class="wp-switch">
+                        <input type="checkbox" wire:model="workMenuUnitChecksEnabled">
+                        <span class="wp-switch__track" aria-hidden="true"></span>
                         <span>
                             {{ __('settings.work_menu.unit_checks_label') }}
                             <br><span class="wp-hint">{{ __('settings.work_menu.unit_checks_hint') }}</span>
                         </span>
                     </label>
-                    <label class="wp-check">
-                        <input type="checkbox" wire:model="workMenuCalendarEnabled" class="wp-checkbox">
+                    <label class="wp-switch">
+                        <input type="checkbox" wire:model="workMenuCalendarEnabled">
+                        <span class="wp-switch__track" aria-hidden="true"></span>
                         <span>
                             {{ __('settings.work_menu.calendar_label') }}
                             <br><span class="wp-hint">{{ __('settings.work_menu.calendar_hint') }}</span>
                         </span>
                     </label>
-                    <label class="wp-check">
-                        <input type="checkbox" wire:model="workMenuReservationsEnabled" class="wp-checkbox">
+                    <label class="wp-switch">
+                        <input type="checkbox" wire:model="workMenuReservationsEnabled">
+                        <span class="wp-switch__track" aria-hidden="true"></span>
                         <span>
                             {{ __('settings.work_menu.reservations_label') }}
                             <br><span class="wp-hint">{{ __('settings.work_menu.reservations_hint') }}</span>
                         </span>
                     </label>
-                    <label class="wp-check">
-                        <input type="checkbox" wire:model="workMenuUnitMeasurementsEnabled" class="wp-checkbox">
+                    <label class="wp-switch">
+                        <input type="checkbox" wire:model="workMenuUnitMeasurementsEnabled">
+                        <span class="wp-switch__track" aria-hidden="true"></span>
                         <span>
                             {{ __('settings.work_menu.unit_measurements_label') }}
                             <br><span class="wp-hint">{{ __('settings.work_menu.unit_measurements_hint') }}</span>
@@ -199,12 +207,13 @@
         <x-wp-settings-section :title="__('settings.customers_on_location.title')">
             <p class="wp-muted wp-text-sm">{{ __('settings.customers_on_location.lead') }}</p>
             <form wire:submit="saveCustomersOnLocation" class="wp-stack">
-                <label class="wp-check">
+                <label class="wp-switch">
                     <input
                         type="checkbox"
                         wire:model="customersOnLocation"
                         @disabled($checkmateMode ?? false)
                     >
+                    <span class="wp-switch__track" aria-hidden="true"></span>
                     <span>{{ __('settings.customers_on_location.label') }}</span>
                 </label>
                 <p class="wp-hint">
@@ -226,37 +235,42 @@
         <x-wp-settings-section :title="__('settings.time_clock.title')">
             <p class="wp-muted wp-text-sm">{{ __('settings.time_clock.lead') }}</p>
             <form wire:submit="saveTimeClockSecurity" class="wp-stack">
-                <label class="wp-check">
+                <label class="wp-switch">
                     <input type="checkbox" wire:model="timeBackofficeClock">
+                    <span class="wp-switch__track" aria-hidden="true"></span>
                     <span>{{ __('settings.time_clock.backoffice_clock') }}</span>
                 </label>
                 <p class="wp-hint">{{ __('settings.time_clock.backoffice_clock_hint') }}</p>
                 @error('time_backoffice_clock') <p class="wp-error">{{ $message }}</p> @enderror
 
-                <label class="wp-check">
+                <label class="wp-switch">
                     <input type="checkbox" wire:model="timeTeamRoster">
+                    <span class="wp-switch__track" aria-hidden="true"></span>
                     <span>{{ __('settings.time_clock.team_roster') }}</span>
                 </label>
                 <p class="wp-hint">{{ __('settings.time_clock.team_roster_hint') }}</p>
                 @error('time_team_roster') <p class="wp-error">{{ $message }}</p> @enderror
 
-                <label class="wp-check">
+                <label class="wp-switch">
                     <input type="checkbox" wire:model="timeRequireWorkerPin">
+                    <span class="wp-switch__track" aria-hidden="true"></span>
                     <span>{{ __('settings.time_clock.require_pin') }}</span>
                 </label>
                 <p class="wp-hint">{{ __('settings.time_clock.require_pin_hint') }}</p>
                 @error('timeRequireWorkerPin') <p class="wp-error">{{ $message }}</p> @enderror
 
-                <label class="wp-check">
+                <label class="wp-switch">
                     <input type="checkbox" wire:model="timeWorkerPasskeys">
+                    <span class="wp-switch__track" aria-hidden="true"></span>
                     <span>{{ __('settings.time_clock.worker_passkeys') }}</span>
                 </label>
                 <p class="wp-hint">{{ __('settings.time_clock.worker_passkeys_hint') }}</p>
                 @error('timeWorkerPasskeys') <p class="wp-error">{{ $message }}</p> @enderror
 
                 @if (! ($checkmateMode ?? false))
-                    <label class="wp-check">
+                    <label class="wp-switch">
                         <input type="checkbox" wire:model="timeEvacuationList">
+                        <span class="wp-switch__track" aria-hidden="true"></span>
                         <span>{{ __('settings.time_clock.evacuation_list') }}</span>
                     </label>
                     <p class="wp-hint">{{ __('settings.time_clock.evacuation_list_hint') }}</p>
@@ -266,14 +280,16 @@
                     <h3 class="wp-settings-subblock-title">{{ __('settings.time_clock.work_on_location_title') }}</h3>
                     <p class="wp-muted wp-text-sm">{{ __('settings.time_clock.work_on_location_hint') }}</p>
                     <div class="wp-stack">
-                        <label class="wp-check">
+                        <label class="wp-switch">
                             <input type="checkbox" wire:model="timeGpsOnClock">
+                            <span class="wp-switch__track" aria-hidden="true"></span>
                             <span>{{ __('settings.time_clock.gps_on_clock') }}</span>
                         </label>
                         <p class="wp-hint">{{ __('settings.time_clock.gps_on_clock_hint') }}</p>
 
-                        <label class="wp-check">
+                        <label class="wp-switch">
                             <input type="checkbox" wire:model="timeGpsVisits">
+                            <span class="wp-switch__track" aria-hidden="true"></span>
                             <span>{{ __('settings.time_clock.gps_visits') }}</span>
                         </label>
                         <p class="wp-hint">{{ __('settings.time_clock.gps_visits_hint') }}</p>

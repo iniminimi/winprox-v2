@@ -775,9 +775,9 @@
     display: inline-flex;
     align-items: center;
     gap: 0.45rem;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--wp-text);
+    padding: 0.375rem 0;
+    font-size: 0.9375rem;
+    color: var(--wp-text-body);
     cursor: pointer;
     user-select: none;
 }
@@ -6256,7 +6256,8 @@ svg.wp-release-worker-row__icon,
     padding-inline: 0.75rem;
 }
 
-.wp-time-roster-toolbar .wp-check {
+.wp-time-roster-toolbar .wp-check,
+.wp-time-roster-toolbar .wp-switch {
     padding: 0;
     white-space: nowrap;
 }
