@@ -950,14 +950,14 @@
         "stale": "inactief/verwijderd",
         "empty_locations": "Geen locaties om in te stellen.",
         "save": "Opslaan",
-        "saved": "Minimumbezetting opgeslagen voor {location}.",
+        "saved": "Minimumbezetting opgeslagen voor :location.",
         "copy_button": "Kopiëren naar…",
         "copy_title": "Minimumbezetting kopiëren",
-        "copy_hint": "Kopieert de huidige regels van {from}. De bestaande minimumbezetting van de doellocatie wordt overschreven.",
+        "copy_hint": "Kopieert de huidige regels van :from. De bestaande minimumbezetting van de doellocatie wordt overschreven.",
         "copy_target_label": "Naar locatie",
         "copy_target_placeholder": "Kies locatie",
         "copy_confirm": "Kopiëren",
-        "copied": "Minimumbezetting gekopieerd naar {location}.",
+        "copied": "Minimumbezetting gekopieerd naar :location.",
         "errors": {
             "type_invalid": "Minstens één diensttype in de minimumbezetting is ongeldig."
         }

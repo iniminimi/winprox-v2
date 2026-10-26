@@ -60,7 +60,7 @@
                     <p class="wp-hint">{{ __('time.staffing.hint') }}</p>
                 </div>
                 <div class="wp-cluster wp-cluster--end">
-                    @if ($copyTargets->isNotEmpty())
+                    @if ($copyTargets->isNotEmpty() && ($staffingRows[$selectedLocation->id] ?? []) !== [])
                         <button type="button" class="btn btn--ghost" wire:click="openCopyModal">{{ __('time.staffing.copy_button') }}</button>
                     @endif
                     @can('update', $selectedLocation)

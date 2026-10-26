@@ -950,14 +950,14 @@
         "stale": "inaktiv/gelöscht",
         "empty_locations": "Keine Standorte zum Konfigurieren.",
         "save": "Speichern",
-        "saved": "Mindestbesetzung für {location} gespeichert.",
+        "saved": "Mindestbesetzung für :location gespeichert.",
         "copy_button": "Kopieren nach…",
         "copy_title": "Mindestbesetzung kopieren",
-        "copy_hint": "Kopiert die aktuellen Regeln von {from}. Die bestehende Mindestbesetzung des Zielstandorts wird überschrieben.",
+        "copy_hint": "Kopiert die aktuellen Regeln von :from. Die bestehende Mindestbesetzung des Zielstandorts wird überschrieben.",
         "copy_target_label": "Nach Standort",
         "copy_target_placeholder": "Standort wählen",
         "copy_confirm": "Kopieren",
-        "copied": "Mindestbesetzung nach {location} kopiert.",
+        "copied": "Mindestbesetzung nach :location kopiert.",
         "errors": {
             "type_invalid": "Mindestens ein Schichttyp der Mindestbesetzung ist ungültig."
         }

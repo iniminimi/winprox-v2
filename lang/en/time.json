@@ -950,14 +950,14 @@
         "stale": "inactive/removed",
         "empty_locations": "No locations to configure.",
         "save": "Save",
-        "saved": "Minimum staffing saved for {location}.",
+        "saved": "Minimum staffing saved for :location.",
         "copy_button": "Copy to…",
         "copy_title": "Copy minimum staffing",
-        "copy_hint": "Copies the current rules from {from}. The existing minimum staffing of the target location is overwritten.",
+        "copy_hint": "Copies the current rules from :from. The existing minimum staffing of the target location is overwritten.",
         "copy_target_label": "To location",
         "copy_target_placeholder": "Choose location",
         "copy_confirm": "Copy",
-        "copied": "Minimum staffing copied to {location}.",
+        "copied": "Minimum staffing copied to :location.",
         "errors": {
             "type_invalid": "At least one shift type in the minimum staffing is invalid."
         }

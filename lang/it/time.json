@@ -950,14 +950,14 @@
         "stale": "inattivo/rimosso",
         "empty_locations": "Nessuna sede da configurare.",
         "save": "Salva",
-        "saved": "Organico minimo salvato per {location}.",
+        "saved": "Organico minimo salvato per :location.",
         "copy_button": "Copia in…",
         "copy_title": "Copia organico minimo",
-        "copy_hint": "Copia le regole attuali da {from}. L’organico minimo esistente della sede di destinazione viene sovrascritto.",
+        "copy_hint": "Copia le regole attuali da :from. L’organico minimo esistente della sede di destinazione viene sovrascritto.",
         "copy_target_label": "Nella sede",
         "copy_target_placeholder": "Scegli sede",
         "copy_confirm": "Copia",
-        "copied": "Organico minimo copiato in {location}.",
+        "copied": "Organico minimo copiato in :location.",
         "errors": {
             "type_invalid": "Almeno un tipo di turno dell'organico minimo non è valido."
         }
