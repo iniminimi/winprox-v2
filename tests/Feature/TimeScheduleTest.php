@@ -42,6 +42,7 @@ use App\Support\Tenancy;
 use App\Support\Time\RosterHistoryLock;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\DB;
 use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
@@ -99,7 +100,7 @@ it('parses codes, free times and rejects night shifts', function () {
     [$tenant] = scheduleTenant();
     $type = app(SaveShiftTypeAction::class)->handle(
         $tenant,
-        new SaveShiftTypeData('v', 'Vroeg', '07:00', '15:00', 30, ShiftTypeColor::Emerald),
+        new SaveShiftTypeData('v', 'Vroeg', '07:00', '15:00', 30, ShiftTypeColor::Green),
         null,
     );
 
@@ -116,7 +117,7 @@ it('parses codes, free times and rejects night shifts', function () {
         ->and($parse->handle('22:00-06:00', $types)->errorKey)->toBe('time.schedule.errors.night_not_allowed')
         ->and($parse->handle('X', $types)->kind)->toBe(RosterCellKind::Invalid)
         ->and($type->code)->toBe('V')
-        ->and($type->color)->toBe(ShiftTypeColor::Emerald);
+        ->and($type->color)->toBe(ShiftTypeColor::Green);
 
     $neutral = app(SaveShiftTypeAction::class)->handle(
         $tenant,
@@ -126,6 +127,31 @@ it('parses codes, free times and rejects night shifts', function () {
     expect($neutral->color)->toBe(ShiftTypeColor::None)
         ->and($neutral->color->hasFill())->toBeFalse();
 });
+
+it('zet oude shifttype-kleuren om naar het palet', function (string $legacy, ShiftTypeColor $expected) {
+    [$tenant] = scheduleTenant();
+    $type = ShiftType::factory()->create([
+        'tenant_id' => $tenant->id,
+        'color' => ShiftTypeColor::Green,
+    ]);
+    DB::table('shift_types')->where('id', $type->id)->update(['color' => $legacy]);
+
+    (new RemapShiftTypeColors)->up();
+
+    expect($type->fresh()->color)->toBe($expected);
+})->with([
+    'emerald' => ['emerald', ShiftTypeColor::Green],
+    'mint' => ['mint', ShiftTypeColor::Green],
+    'teal' => ['teal', ShiftTypeColor::Petrol],
+    'sky' => ['sky', ShiftTypeColor::Blue],
+    'ice' => ['ice', ShiftTypeColor::Blue],
+    'navy' => ['navy', ShiftTypeColor::Blue],
+    'amber' => ['amber', ShiftTypeColor::Orange],
+    'gold' => ['gold', ShiftTypeColor::Yellow],
+    'sand' => ['sand', ShiftTypeColor::Yellow],
+    'rose' => ['rose', ShiftTypeColor::Pink],
+    'slate' => ['slate', ShiftTypeColor::Gray],
+]);
 
 it('telt raakvlak-tijden niet als overlap', function () {
     $assert = app(AssertPlannedShiftNoOverlapAction::class);
@@ -157,7 +183,7 @@ it('zet een correctie op een gepubliceerde week terug op draft tot herpublicatie
     $this->travelTo(Carbon::parse('2026-09-13'));
     app(SaveShiftTypeAction::class)->handle(
         $tenant,
-        new SaveShiftTypeData('V', 'Vroeg', '07:00', '15:00', 30, ShiftTypeColor::Emerald),
+        new SaveShiftTypeData('V', 'Vroeg', '07:00', '15:00', 30, ShiftTypeColor::Green),
         $admin->id,
     );
     $week = scheduleWeekStart();
@@ -213,7 +239,7 @@ it('toont een inactieve code als vrije tijd zodat opslaan blijft werken', functi
     $this->travelTo(Carbon::parse('2026-09-13'));
     $type = app(SaveShiftTypeAction::class)->handle(
         $tenant,
-        new SaveShiftTypeData('V', 'Vroeg', '07:00', '15:00', 30, ShiftTypeColor::Emerald),
+        new SaveShiftTypeData('V', 'Vroeg', '07:00', '15:00', 30, ShiftTypeColor::Green),
         $admin->id,
     );
     $week = scheduleWeekStart();
@@ -325,12 +351,14 @@ it('opent het uurrooster voor een admin', function () {
     Livewire::actingAs($admin)
         ->test(ShiftTypesIndex::class)
         ->call('openCreate')
+        ->assertSee(__('time.schedule.types.colors.purple'), false)
+        ->assertSee(__('time.schedule.types.colors.yellow'), false)
         ->set('typeCode', 'VM')
         ->set('typeLabel', 'Voormiddag')
         ->set('typeStart', '07:00')
         ->set('typeEnd', '15:00')
         ->set('typeBreak', 30)
-        ->set('typeColor', 'emerald')
+        ->set('typeColor', 'green')
         ->call('save')
         ->assertHasNoErrors();
 
@@ -711,7 +739,7 @@ it('slaat verlof op zonder uren en weigert overlap met werk', function () {
     $this->travelTo(Carbon::parse('2026-09-13'));
     $leave = app(SaveShiftTypeAction::class)->handle(
         $tenant,
-        new SaveShiftTypeData('VL', 'Verlof', null, null, 0, ShiftTypeColor::Rose, true, ShiftTypeKind::Leave),
+        new SaveShiftTypeData('VL', 'Verlof', null, null, 0, ShiftTypeColor::Pink, true, ShiftTypeKind::Leave),
         $admin->id,
     );
     expect($leave->kind)->toBe(ShiftTypeKind::Leave)
@@ -843,7 +871,7 @@ it('kopieert afwezigheid niet mee naar de volgende week', function () {
     $this->travelTo(Carbon::parse('2026-09-13'));
     app(SaveShiftTypeAction::class)->handle(
         $tenant,
-        new SaveShiftTypeData('VL', 'Verlof', null, null, 0, ShiftTypeColor::Rose, true, ShiftTypeKind::Leave),
+        new SaveShiftTypeData('VL', 'Verlof', null, null, 0, ShiftTypeColor::Pink, true, ShiftTypeKind::Leave),
         $admin->id,
     );
     $week = scheduleWeekStart();
@@ -888,7 +916,7 @@ it('parses a unit code in the same cell and snapshots place on save', function (
     ]);
     app(SaveShiftTypeAction::class)->handle(
         $tenant,
-        new SaveShiftTypeData('D1', 'Dagdienst', '07:00', '15:00', 30, ShiftTypeColor::Emerald),
+        new SaveShiftTypeData('D1', 'Dagdienst', '07:00', '15:00', 30, ShiftTypeColor::Green),
         $admin->id,
     );
     $types = ShiftType::query()->get();
@@ -954,12 +982,12 @@ it('weigert afwezigheid met groep en dubbele groepscode zonder locatiefilter', f
     ]);
     app(SaveShiftTypeAction::class)->handle(
         $tenant,
-        new SaveShiftTypeData('D1', 'Dagdienst', '07:00', '15:00', 0, ShiftTypeColor::Emerald),
+        new SaveShiftTypeData('D1', 'Dagdienst', '07:00', '15:00', 0, ShiftTypeColor::Green),
         $admin->id,
     );
     app(SaveShiftTypeAction::class)->handle(
         $tenant,
-        new SaveShiftTypeData('VL', 'Verlof', null, null, 0, ShiftTypeColor::Rose, true, ShiftTypeKind::Leave),
+        new SaveShiftTypeData('VL', 'Verlof', null, null, 0, ShiftTypeColor::Pink, true, ShiftTypeKind::Leave),
         $admin->id,
     );
     $types = ShiftType::query()->get();
@@ -1005,7 +1033,7 @@ it('negeert een groepscode op een locatie waar de uitvoerder niet mag prikken', 
     ]);
     app(SaveShiftTypeAction::class)->handle(
         $tenant,
-        new SaveShiftTypeData('D1', 'Dagdienst', '07:00', '15:00', 0, ShiftTypeColor::Emerald),
+        new SaveShiftTypeData('D1', 'Dagdienst', '07:00', '15:00', 0, ShiftTypeColor::Green),
         $admin->id,
     );
 
@@ -1462,7 +1490,7 @@ it('weigert een vervanging op een vergrendelde dag', function () {
 
     $leave = app(SaveShiftTypeAction::class)->handle(
         $tenant,
-        new SaveShiftTypeData('VL', 'Verlof', null, null, 0, ShiftTypeColor::Rose, true, ShiftTypeKind::Leave),
+        new SaveShiftTypeData('VL', 'Verlof', null, null, 0, ShiftTypeColor::Pink, true, ShiftTypeKind::Leave),
         $admin->id,
     );
     $shift = PlannedShift::factory()->create([

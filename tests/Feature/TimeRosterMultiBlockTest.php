@@ -228,7 +228,7 @@ it('laat afwezigheidsblok naast werkblok op dezelfde dag toe', function () {
     $date = now()->addWeek()->startOfWeek()->toDateString();
     $sick = app(SaveShiftTypeAction::class)->handle(
         $tenant,
-        new SaveShiftTypeData('ZK', 'Ziek', null, null, 0, ShiftTypeColor::Rose, true, ShiftTypeKind::Sick),
+        new SaveShiftTypeData('ZK', 'Ziek', null, null, 0, ShiftTypeColor::Pink, true, ShiftTypeKind::Sick),
         $admin->id,
     );
 

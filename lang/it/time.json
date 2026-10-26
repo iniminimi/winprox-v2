@@ -731,17 +731,14 @@
             "saved": "Tipo salvato.",
             "colors": {
                 "none": "Neutro",
-                "emerald": "Verde",
-                "mint": "Menta",
-                "teal": "Petrolio",
-                "sky": "Blu",
-                "ice": "Ghiaccio",
-                "navy": "Blu notte",
-                "amber": "Ambra",
-                "gold": "Oro",
-                "sand": "Sabbia",
-                "rose": "Rosso",
-                "slate": "Grigio"
+                "green": "Verde",
+                "petrol": "Petrolio",
+                "blue": "Blu",
+                "purple": "Viola",
+                "pink": "Rosa",
+                "orange": "Arancione",
+                "yellow": "Giallo",
+                "gray": "Grigio"
             },
             "kind": "Tipo",
             "kinds": {

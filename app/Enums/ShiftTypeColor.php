@@ -5,17 +5,14 @@ namespace App\Enums;
 enum ShiftTypeColor: string
 {
     case None = 'none';
-    case Emerald = 'emerald';
-    case Mint = 'mint';
-    case Teal = 'teal';
-    case Sky = 'sky';
-    case Ice = 'ice';
-    case Navy = 'navy';
-    case Amber = 'amber';
-    case Gold = 'gold';
-    case Sand = 'sand';
-    case Rose = 'rose';
-    case Slate = 'slate';
+    case Green = 'green';
+    case Petrol = 'petrol';
+    case Blue = 'blue';
+    case Purple = 'purple';
+    case Pink = 'pink';
+    case Orange = 'orange';
+    case Yellow = 'yellow';
+    case Gray = 'gray';
 
     public static function default(): self
     {

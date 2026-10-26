@@ -731,17 +731,14 @@
             "saved": "Type enregistré.",
             "colors": {
                 "none": "Neutre",
-                "emerald": "Vert",
-                "mint": "Menthe",
-                "teal": "Sarcelle",
-                "sky": "Bleu",
-                "ice": "Glace",
-                "navy": "Marine",
-                "amber": "Ambre",
-                "gold": "Or",
-                "sand": "Sable",
-                "rose": "Rouge",
-                "slate": "Gris"
+                "green": "Vert",
+                "petrol": "Pétrole",
+                "blue": "Bleu",
+                "purple": "Violet",
+                "pink": "Rose",
+                "orange": "Orange",
+                "yellow": "Jaune",
+                "gray": "Gris"
             },
             "kind": "Type",
             "kinds": {

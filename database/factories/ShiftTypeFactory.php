@@ -23,7 +23,7 @@ class ShiftTypeFactory extends Factory
             'start_time' => '07:00',
             'end_time' => '15:00',
             'break_minutes' => 30,
-            'color' => ShiftTypeColor::Emerald,
+            'color' => ShiftTypeColor::Green,
             'is_active' => true,
         ];
     }

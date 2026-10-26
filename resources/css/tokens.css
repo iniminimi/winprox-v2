@@ -2,7 +2,8 @@
  | Structurele tokens — thema-ONAFHANKELIJK.
  |
  | Hier staan maten, radius, schaduw, knop-geometrie en transitie.
- | KLEUREN staan NIET hier maar in themes/standard.css (en later andere thema's).
+ | UI-kleuren staan in themes/*.css. Uurrooster-vullingen staan hier: datakleuren,
+ | gelijk in elk thema (ook Donker en print).
  | Componenten verwijzen altijd naar deze variabelen, nooit naar harde waarden.
 */
 
@@ -33,6 +34,18 @@
 
     /* Beheer-hoofdkolom: leesbare breedte, links uitgelijnd (niet gecentreerd). */
     --wp-content-max: 76rem;
+
+    /* Uurrooster-vullingen. Feestdag, vervangingsdag en weekend/vrije dag
+       blijven zachte thema-tinten en gebruiken deze variabelen niet. */
+    --wp-roster-ink: #111827;
+    --wp-roster-green: #5fd38d;
+    --wp-roster-petrol: #5cc4d1;
+    --wp-roster-blue: #7aa7f7;
+    --wp-roster-purple: #b69bf4;
+    --wp-roster-pink: #f58fb0;
+    --wp-roster-orange: #f4a259;
+    --wp-roster-yellow: #f5de5a;
+    --wp-roster-gray: #b8c0c9;
 
     /* Foto-thumbnails (QR-portaal: 4 naast elkaar op smal scherm; beheer zet --wp-photo-thumb-size). */
     --wp-photo-thumb-columns: 4;

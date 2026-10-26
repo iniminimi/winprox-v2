@@ -70,7 +70,7 @@ it('toont alleen published eigen diensten en zet de badge weg', function () {
     $week = Carbon::parse('2026-09-14')->startOfWeek(Carbon::MONDAY)->toDateString();
     app(SaveShiftTypeAction::class)->handle(
         $tenant,
-        new SaveShiftTypeData('VL', 'Verlof', null, null, 0, ShiftTypeColor::Rose, true, ShiftTypeKind::Leave),
+        new SaveShiftTypeData('VL', 'Verlof', null, null, 0, ShiftTypeColor::Pink, true, ShiftTypeKind::Leave),
         null,
     );
 
@@ -126,7 +126,7 @@ it('legt op Mijn rooster uit welke dagen de badge telde', function () {
     $monday = Carbon::parse($week);
     app(SaveShiftTypeAction::class)->handle(
         $tenant,
-        new SaveShiftTypeData('D1', 'Dagdienst', '07:00', '15:00', 30, ShiftTypeColor::Emerald),
+        new SaveShiftTypeData('D1', 'Dagdienst', '07:00', '15:00', 30, ShiftTypeColor::Green),
         null,
     );
 
@@ -209,7 +209,7 @@ it('toont de groepsnaam uit de snapshot op Mijn rooster', function () {
     $week = Carbon::parse('2026-09-14')->startOfWeek(Carbon::MONDAY)->toDateString();
     app(SaveShiftTypeAction::class)->handle(
         $tenant,
-        new SaveShiftTypeData('D1', 'Dagdienst', '07:00', '15:00', 30, ShiftTypeColor::Emerald),
+        new SaveShiftTypeData('D1', 'Dagdienst', '07:00', '15:00', 30, ShiftTypeColor::Green),
         null,
     );
 
@@ -254,7 +254,7 @@ it('slaagt lege dagen over in het maandoverzicht van Mijn rooster', function () 
     $week = Carbon::parse('2026-09-14')->startOfWeek(Carbon::MONDAY)->toDateString();
     app(SaveShiftTypeAction::class)->handle(
         $tenant,
-        new SaveShiftTypeData('D1', 'Dagdienst 1', '08:00', '17:00', 30, ShiftTypeColor::Emerald),
+        new SaveShiftTypeData('D1', 'Dagdienst 1', '08:00', '17:00', 30, ShiftTypeColor::Green),
         null,
     );
 
@@ -322,7 +322,7 @@ it('springt naar de meldingsmaand als daar published diensten staan', function (
     $week = Carbon::parse('2026-09-14')->startOfWeek(Carbon::MONDAY)->toDateString();
     app(SaveShiftTypeAction::class)->handle(
         $tenant,
-        new SaveShiftTypeData('D1', 'Dagdienst', '07:00', '15:00', 30, ShiftTypeColor::Emerald),
+        new SaveShiftTypeData('D1', 'Dagdienst', '07:00', '15:00', 30, ShiftTypeColor::Green),
         null,
     );
 

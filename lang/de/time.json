@@ -731,17 +731,14 @@
             "saved": "Schichttyp gespeichert.",
             "colors": {
                 "none": "Neutral",
-                "emerald": "Grün",
-                "mint": "Mint",
-                "teal": "Petrol",
-                "sky": "Blau",
-                "ice": "Eisblau",
-                "navy": "Nachtblau",
-                "amber": "Bernstein",
-                "gold": "Gold",
-                "sand": "Sand",
-                "rose": "Rot",
-                "slate": "Grau"
+                "green": "Grün",
+                "petrol": "Petrol",
+                "blue": "Blau",
+                "purple": "Violett",
+                "pink": "Rosa",
+                "orange": "Orange",
+                "yellow": "Gelb",
+                "gray": "Grau"
             },
             "kind": "Art",
             "kinds": {

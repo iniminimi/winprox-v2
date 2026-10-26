@@ -731,17 +731,14 @@
             "saved": "Shift type saved.",
             "colors": {
                 "none": "Neutral",
-                "emerald": "Green",
-                "mint": "Mint",
-                "teal": "Teal",
-                "sky": "Blue",
-                "ice": "Ice",
-                "navy": "Navy",
-                "amber": "Amber",
-                "gold": "Gold",
-                "sand": "Sand",
-                "rose": "Rose",
-                "slate": "Grey"
+                "green": "Green",
+                "petrol": "Petrol",
+                "blue": "Blue",
+                "purple": "Purple",
+                "pink": "Pink",
+                "orange": "Orange",
+                "yellow": "Yellow",
+                "gray": "Grey"
             },
             "kind": "Type",
             "kinds": {

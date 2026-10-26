@@ -2,6 +2,8 @@
 
 namespace App\Data\Time;
 
+use App\Enums\ShiftTypeColor;
+
 final class RosterWeekSnapshot
 {
     /**
@@ -64,7 +66,7 @@ final class RosterWeekSnapshot
             'group_mode' => $this->groupMode,
             'week_published' => $this->weekPublished,
             'night_shifts' => $this->nightShifts,
-            'free_color' => 'slate',
+            'free_color' => ShiftTypeColor::freeTime()->value,
             'period' => $this->period,
             'month_label' => $this->monthLabel,
             'day_numbers' => $this->dayNumbers,

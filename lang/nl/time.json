@@ -731,17 +731,14 @@
             "saved": "Shifttype opgeslagen.",
             "colors": {
                 "none": "Neutraal",
-                "emerald": "Groen",
-                "mint": "Mint",
-                "teal": "Petrol",
-                "sky": "Blauw",
-                "ice": "IJsblauw",
-                "navy": "Nachtblauw",
-                "amber": "Amber",
-                "gold": "Goud",
-                "sand": "Zand",
-                "rose": "Rood",
-                "slate": "Grijs"
+                "green": "Groen",
+                "petrol": "Petrol",
+                "blue": "Blauw",
+                "purple": "Paars",
+                "pink": "Roze",
+                "orange": "Oranje",
+                "yellow": "Geel",
+                "gray": "Grijs"
             },
             "kind": "Soort",
             "kinds": {

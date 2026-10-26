@@ -7749,48 +7749,47 @@ a.wp-worker-hours-link:focus-visible {
     font-size: 0.875rem;
 }
 
-.wp-roster-cell--emerald {
-    background: color-mix(in srgb, var(--wp-accent) 48%, var(--wp-surface) 52%) !important;
+.wp-roster-cell--green,
+.wp-roster-cell--petrol,
+.wp-roster-cell--blue,
+.wp-roster-cell--purple,
+.wp-roster-cell--pink,
+.wp-roster-cell--orange,
+.wp-roster-cell--yellow,
+.wp-roster-cell--gray {
+    color: var(--wp-roster-ink) !important;
 }
 
-.wp-roster-cell--mint {
-    background: color-mix(in srgb, var(--wp-accent) 26%, var(--wp-surface) 74%) !important;
+.wp-roster-cell--green {
+    background: var(--wp-roster-green) !important;
 }
 
-.wp-roster-cell--teal {
-    background: color-mix(in srgb, var(--wp-info) 42%, var(--wp-accent) 58%) !important;
+.wp-roster-cell--petrol {
+    background: var(--wp-roster-petrol) !important;
 }
 
-.wp-roster-cell--sky {
-    background: color-mix(in srgb, var(--wp-info) 46%, var(--wp-surface) 54%) !important;
+.wp-roster-cell--blue {
+    background: var(--wp-roster-blue) !important;
 }
 
-.wp-roster-cell--ice {
-    background: color-mix(in srgb, var(--wp-info) 24%, var(--wp-surface) 76%) !important;
+.wp-roster-cell--purple {
+    background: var(--wp-roster-purple) !important;
 }
 
-.wp-roster-cell--navy {
-    background: color-mix(in srgb, var(--wp-info) 62%, var(--wp-surface-2) 38%) !important;
+.wp-roster-cell--pink {
+    background: var(--wp-roster-pink) !important;
 }
 
-.wp-roster-cell--amber {
-    background: color-mix(in srgb, var(--wp-warning) 48%, var(--wp-surface) 52%) !important;
+.wp-roster-cell--orange {
+    background: var(--wp-roster-orange) !important;
 }
 
-.wp-roster-cell--gold {
-    background: color-mix(in srgb, var(--wp-warning-border) 72%, var(--wp-warning) 28%) !important;
+.wp-roster-cell--yellow {
+    background: var(--wp-roster-yellow) !important;
 }
 
-.wp-roster-cell--sand {
-    background: color-mix(in srgb, var(--wp-warning) 28%, var(--wp-surface) 72%) !important;
-}
-
-.wp-roster-cell--rose {
-    background: color-mix(in srgb, var(--wp-danger) 42%, var(--wp-surface) 58%) !important;
-}
-
-.wp-roster-cell--slate {
-    background: color-mix(in srgb, var(--wp-text) 16%, var(--wp-surface-2) 84%) !important;
+.wp-roster-cell--gray {
+    background: var(--wp-roster-gray) !important;
 }
 
 .wp-roster-cell--invalid {
