@@ -141,10 +141,10 @@
                         <div class="wp-toolbar-group wp-toolbar-group--action" role="group" aria-label="{{ __('time.schedule.toolbar.save') }}">
                             <span
                                 class="wp-pill wp-pill--progress wp-roster-dirty-pill"
-                                hidden
+                                @if (! $hasUnpublished) hidden @endif
                                 data-label-dirty="{{ __('time.schedule.unsaved.title') }}"
                                 data-label-unpublished="{{ __('time.schedule.not_published') }}"
-                            >{{ __('time.schedule.unsaved.title') }}</span>
+                            >{{ $hasUnpublished ? __('time.schedule.not_published') : __('time.schedule.unsaved.title') }}</span>
                             @can('update', \App\Models\PlannedShift::class)
                                 <button type="button" class="btn btn--ghost btn--sm" data-wp-roster-save @disabled(! $hasScope)>{{ __('common.button.save') }}</button>
                             @endcan

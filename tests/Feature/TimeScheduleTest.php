@@ -326,6 +326,29 @@ it('opent het uurrooster voor een admin', function () {
     expect(ShiftType::query()->where('tenant_id', $tenant->id)->where('code', 'VM')->exists())->toBeTrue();
 });
 
+it('toont Niet gepubliceerd zolang de week draft-shifts bevat', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+
+    $shift = PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => now()->toDateString(),
+        'status' => PlannedShiftStatus::Draft,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->withQueryParams(['team' => (string) $team->id])
+        ->test(RosterIndex::class)
+        ->assertSeeHtml('>'.e(__('time.schedule.not_published')).'</span>');
+
+    $shift->update(['status' => PlannedShiftStatus::Published]);
+
+    Livewire::actingAs($admin)
+        ->withQueryParams(['team' => (string) $team->id])
+        ->test(RosterIndex::class)
+        ->assertDontSeeHtml('>'.e(__('time.schedule.not_published')).'</span>');
+});
+
 it('vraagt eerst een team- of locatiekeuze voor het rooster', function () {
     [$tenant, $admin, $team] = scheduleTenant();
 
@@ -387,7 +410,7 @@ it('onthoudt de gekozen team- of locatiescope', function () {
         ->withCookie('roster_scope', json_encode(['team' => $team->id, 'location' => null]))
         ->get(route('time.schedule.index'))
         ->assertOk()
-        ->assertSee($worker->last_name, false)
+        ->assertSee(e($worker->last_name), false)
         ->assertDontSee(__('time.schedule.pick_filter'), false)
         ->assertDontSee('wp-roster-grid-shell--hidden', false);
 
@@ -396,7 +419,7 @@ it('onthoudt de gekozen team- of locatiescope', function () {
         ->withCookie('roster_scope', json_encode(['team' => $team->id, 'location' => null]))
         ->get(route('time.schedule.index', ['team' => $other->id]))
         ->assertOk()
-        ->assertDontSee($worker->last_name, false);
+        ->assertDontSee(e($worker->last_name), false);
 });
 
 it('slaat een week op via de API', function () {

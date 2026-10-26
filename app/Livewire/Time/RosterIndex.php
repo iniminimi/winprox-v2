@@ -25,6 +25,7 @@ use App\Http\Requests\Time\PublishWeekRequest;
 use App\Http\Requests\Time\SavePlannedDayRequest;
 use App\Http\Requests\Time\SavePlannedShiftsRequest;
 use App\Livewire\Concerns\ProvidesTimeNavAlarmCount;
+use App\Enums\PlannedShiftStatus;
 use App\Models\PlannedShift;
 use App\Models\Tenant;
 use App\Models\WorkShift;
@@ -874,6 +875,11 @@ class RosterIndex extends Component
             'weekLabel' => $this->periodLabel($snapshot),
             'snapshot' => $snapshot,
             'gridPayload' => $this->gridPayload($snapshot),
+            'hasUnpublished' => collect($snapshot->cells)->contains(
+                fn (array $cell) => collect($cell['shifts'] ?? [$cell])->contains(
+                    fn (array $shift) => ($shift['status'] ?? null) === PlannedShiftStatus::Draft->value,
+                ),
+            ),
             'hasScope' => $this->teamFilter !== null || $this->locationFilter !== null,
             'isMonth' => $this->isMonth(),
             'alarmCount' => $this->timeNavAlarmCount(),
