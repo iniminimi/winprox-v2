@@ -364,6 +364,55 @@
                 </div>
 
                 <div class="wp-settings-subblock">
+                    <h3 class="wp-settings-subblock-title">{{ __('settings.org.shell_background_label') }}</h3>
+                    <p class="wp-muted wp-text-sm">{{ __('settings.org.shell_background_hint') }}</p>
+
+                    <div class="wp-portal-bg-settings wp-stack-tight">
+                        <div class="wp-field">
+                            <label class="wp-label" for="shellBackgroundStockPreset">{{ __('settings.qr_stickers.branding.preset_label') }}</label>
+                            <select
+                                id="shellBackgroundStockPreset"
+                                class="wp-select wp-portal-bg-preset-select"
+                                wire:model.live="shellBackgroundStockPreset"
+                            >
+                                <option value="">{{ __('settings.org.shell_background_stock_none') }}</option>
+                                @foreach ($qrPrintableBackgroundPresets as $preset)
+                                    <option value="{{ $preset['value'] }}">{{ $preset['label'] }}</option>
+                                @endforeach
+                            </select>
+                            @error('shellBackgroundStockPreset') <p class="wp-error">{{ $message }}</p> @enderror
+                            <p class="wp-muted wp-text-sm">{{ __('settings.org.shell_background_stock_hint') }}</p>
+                        </div>
+
+                        <div class="wp-field wp-portal-bg-upload">
+                            <span class="wp-label">{{ __('settings.org.shell_background_upload_label') }}</span>
+                            @if ($shellBackgroundUrl)
+                                <img
+                                    src="{{ $shellBackgroundUrl }}"
+                                    alt="{{ __('settings.org.shell_background_preview_alt') }}"
+                                    class="wp-portal-bg-preview"
+                                    wire:key="shell-bg-inline-{{ md5($shellBackgroundUrl) }}"
+                                >
+                            @endif
+                            <x-wp-file-input wireModel="shellBackground" id="shellBackgroundInline" accept="image/*" />
+                            @error('shellBackground') <p class="wp-error">{{ $message }}</p> @enderror
+                            @if (filled($organisationTenant->shell_background_path))
+                                <div class="wp-cluster">
+                                    <button
+                                        type="button"
+                                        class="btn btn--ghost btn--sm"
+                                        wire:click="removeOrganisationShellBackground"
+                                        wire:confirm="{{ __('settings.org.shell_background_remove_confirm') }}"
+                                    >
+                                        {{ __('settings.org.shell_background_remove') }}
+                                    </button>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wp-settings-subblock">
                     <h3 class="wp-settings-subblock-title">{{ __('settings.org.portal_colors_label') }}</h3>
                     <form wire:submit="saveOrganisationInline" class="wp-stack-tight">
                         <div class="wp-settings-split">

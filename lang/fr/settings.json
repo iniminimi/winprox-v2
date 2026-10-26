@@ -42,7 +42,15 @@
         "theme_preview_issue_title": "Ascenseur en panne",
         "theme_preview_issue_desc": "L'ascenseur 3 ne fonctionne pas",
         "portal_background_remove": "Supprimer l’arrière-plan du portail",
-        "portal_background_remove_confirm": "Supprimer l’arrière-plan du portail ? Le portail de signalement n’utilisera plus d’image de fond."
+        "portal_background_remove_confirm": "Supprimer l’arrière-plan du portail ? Le portail de signalement n’utilisera plus d’image de fond.",
+        "shell_background_label": "Arrière-plan du back-office",
+        "shell_background_hint": "Image d’arrière-plan derrière le back-office dans le style Modern (PNG/JPG, 2 Mo max., au moins 1080 px de large recommandé).",
+        "shell_background_stock_none": "Arrière-plan par défaut",
+        "shell_background_stock_hint": "Mêmes arrière-plans d’exemple que sur la feuille d’impression QR. Le choix est enregistré immédiatement ; votre propre image remplace le preset.",
+        "shell_background_upload_label": "Image personnalisée",
+        "shell_background_preview_alt": "Arrière-plan actuel du back-office",
+        "shell_background_remove": "Supprimer l’arrière-plan du back-office",
+        "shell_background_remove_confirm": "Supprimer l’arrière-plan du back-office ? Le back-office utilisera à nouveau l’arrière-plan par défaut."
     },
     "qr_stickers": {
         "title": "Feuille d’impression QR",

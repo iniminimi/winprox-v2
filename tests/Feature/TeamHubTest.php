@@ -786,3 +786,36 @@ it('toont geen teams of gebruikers van een andere tenant', function () {
         ->assertDontSee('Geheim Team B')
         ->assertDontSee('bob@b.test');
 });
+
+it('laat een medewerker een backoffice-achtergrond kiezen, uploaden en verwijderen', function () {
+    Storage::fake('public');
+    [$tenant] = tenantWithAdmin();
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+    $presetKey = QrPrintablePageStockBackgroundCatalog::defaultPresetKey();
+
+    Livewire::actingAs($employee)
+        ->test(Settings::class)
+        ->set('shellBackgroundStockPreset', $presetKey)
+        ->assertHasNoErrors();
+
+    expect($tenant->fresh()->shell_background_path)->toBe($presetKey)
+        ->and($tenant->fresh()->shellBackgroundPublicUrl())->toBe(
+            QrPrintablePageStockBackgroundCatalog::findByPresetKey($presetKey)['publicUrl'],
+        );
+
+    Livewire::actingAs($employee)
+        ->test(Settings::class)
+        ->set('shellBackground', UploadedFile::fake()->image('shell-bg.jpg'))
+        ->assertHasNoErrors();
+
+    $path = $tenant->fresh()->shell_background_path;
+    expect($path)->not->toBeNull()
+        ->and(TenantPortalBackground::isStockPath($path))->toBeFalse();
+
+    Livewire::actingAs($employee)
+        ->test(Settings::class)
+        ->call('removeOrganisationShellBackground')
+        ->assertHasNoErrors();
+
+    expect($tenant->fresh()->shell_background_path)->toBeNull();
+});

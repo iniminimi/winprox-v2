@@ -25,6 +25,7 @@ class Tenant extends Model
         'country_code',
         'logo_path',
         'portal_background_path',
+        'shell_background_path',
         'custom_theme_active',
         'custom_theme_bg',
         'custom_theme_btn',
@@ -1145,6 +1146,12 @@ class Tenant extends Model
     public function portalBackgroundPublicUrl(): ?string
     {
         return \App\Support\TenantPortalBackground::publicUrl($this->portal_background_path);
+    }
+
+    /** Publieke URL van de backoffice-shellachtergrond (Modern), of null. */
+    public function shellBackgroundPublicUrl(): ?string
+    {
+        return \App\Support\TenantPortalBackground::publicUrl($this->shell_background_path);
     }
 
     public function organisationAddressLine(): ?string

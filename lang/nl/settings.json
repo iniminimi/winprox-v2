@@ -42,7 +42,15 @@
         "theme_preview_issue_title": "Lift defect",
         "theme_preview_issue_desc": "Lift 3 werkt niet",
         "portal_background_remove": "Portaal-achtergrond verwijderen",
-        "portal_background_remove_confirm": "Portaal-achtergrond verwijderen? Het meldportaal gebruikt daarna geen achtergrondafbeelding meer."
+        "portal_background_remove_confirm": "Portaal-achtergrond verwijderen? Het meldportaal gebruikt daarna geen achtergrondafbeelding meer.",
+        "shell_background_label": "Backoffice-achtergrond",
+        "shell_background_hint": "Achtergrondafbeelding achter de backoffice in de stijl Modern (PNG/JPG, max. 2 MB, minimaal 1080 px breed aanbevolen).",
+        "shell_background_stock_none": "Standaardachtergrond",
+        "shell_background_stock_hint": "Zelfde voorbeeldachtergronden als bij QR-afdrukblad. Keuze wordt meteen opgeslagen; een eigen upload overschrijft de preset.",
+        "shell_background_upload_label": "Eigen afbeelding",
+        "shell_background_preview_alt": "Huidige backoffice-achtergrond",
+        "shell_background_remove": "Backoffice-achtergrond verwijderen",
+        "shell_background_remove_confirm": "Backoffice-achtergrond verwijderen? De backoffice gebruikt daarna weer de standaardachtergrond."
     },
     "qr_stickers": {
         "title": "QR-afdrukblad",

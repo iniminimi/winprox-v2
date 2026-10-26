@@ -23,6 +23,7 @@ final class ShareUiTheme
             : UiThemeResolver::resolve($request->user());
 
         View::share('uiTheme', $theme);
+        View::share('uiShellBgUrl', $request->user()?->tenant?->shellBackgroundPublicUrl());
 
         return $next($request);
     }

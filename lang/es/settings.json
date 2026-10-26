@@ -42,7 +42,15 @@
         "theme_preview_issue_title": "Ascensor fuera de servicio",
         "theme_preview_issue_desc": "El ascensor 3 no funciona",
         "portal_background_remove": "Eliminar fondo del portal",
-        "portal_background_remove_confirm": "¿Eliminar el fondo del portal? El portal de informes ya no usará imagen de fondo."
+        "portal_background_remove_confirm": "¿Eliminar el fondo del portal? El portal de informes ya no usará imagen de fondo.",
+        "shell_background_label": "Fondo del backoffice",
+        "shell_background_hint": "Imagen de fondo detrás del backoffice en el estilo Modern (PNG/JPG, máx. 2 MB, se recomienda al menos 1080 px de ancho).",
+        "shell_background_stock_none": "Fondo predeterminado",
+        "shell_background_stock_hint": "Los mismos fondos de ejemplo que en la hoja de impresión QR. La elección se guarda de inmediato; una imagen propia sobrescribe el preset.",
+        "shell_background_upload_label": "Imagen propia",
+        "shell_background_preview_alt": "Fondo actual del backoffice",
+        "shell_background_remove": "Eliminar fondo del backoffice",
+        "shell_background_remove_confirm": "¿Eliminar el fondo del backoffice? El backoffice volverá a usar el fondo predeterminado."
     },
     "qr_stickers": {
         "title": "Hoja de impresión QR",

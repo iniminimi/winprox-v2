@@ -19,7 +19,10 @@ use App\Enums\PresenceComplianceScope;
 use App\Http\Requests\Time\UpdatePresenceComplianceSettingsRequest;
 use App\Http\Requests\Time\UpdateTenantTimeClockSecurityRequest;
 use App\Actions\Team\RemoveOrganisationPortalBackgroundAction;
+use App\Actions\Team\RemoveOrganisationShellBackgroundAction;
 use App\Actions\Team\SetOrganisationPortalStockBackgroundAction;
+use App\Actions\Team\SetOrganisationShellStockBackgroundAction;
+use App\Actions\Team\UpdateOrganisationShellBackgroundAction;
 use App\Actions\Team\RemoveTenantQrStickerSheetBackgroundAction;
 use App\Actions\Team\UpdateTenantQrPrintablePageSettingsAction;
 use App\Actions\Team\UpdateTenantQrStickerSheetSettingsAction;
@@ -91,6 +94,11 @@ class Settings extends Component
     public $portalBackground = null;
 
     public string $portalBackgroundStockPreset = '';
+
+    public string $shellBackgroundStockPreset = '';
+
+    /** @var \Livewire\Features\SupportFileUploads\TemporaryUploadedFile|null */
+    public $shellBackground = null;
 
     public string $qrBrandingHeaderText = '';
 
@@ -726,6 +734,89 @@ class Settings extends Component
         );
     }
 
+    public function updatedShellBackground(): void
+    {
+        $this->persistOrganisationShellBackground(
+            app(UpdateOrganisationShellBackgroundAction::class),
+        );
+    }
+
+    public function updatedShellBackgroundStockPreset(
+        SetOrganisationShellStockBackgroundAction $setStock,
+        RemoveOrganisationShellBackgroundAction $removeBackground,
+    ): void {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('updateTenantBranding', $tenant);
+
+        if ($this->shellBackgroundStockPreset === '') {
+            if (TenantPortalBackground::isStockPath($tenant->shell_background_path)) {
+                $updated = $removeBackground->handle($tenant, (int) auth()->id());
+                $this->fillOrganisationFromTenant($updated);
+                $this->dispatch('saved');
+            }
+
+            return;
+        }
+
+        Validator::make(
+            ['portalBackgroundStockPreset' => $this->shellBackgroundStockPreset],
+            SetOrganisationPortalStockBackgroundRequest::ruleSet(),
+        )->validate();
+
+        $updated = $setStock->handle(
+            $tenant,
+            $this->shellBackgroundStockPreset,
+            (int) auth()->id(),
+        );
+        $this->reset('shellBackground');
+        $this->fillOrganisationFromTenant($updated);
+        $this->dispatch('saved');
+    }
+
+    public function removeOrganisationShellBackground(RemoveOrganisationShellBackgroundAction $removeBackground): void
+    {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('updateTenantBranding', $tenant);
+
+        $updated = $removeBackground->handle($tenant, (int) auth()->id());
+        $this->reset('shellBackground');
+        $this->fillOrganisationFromTenant($updated);
+        $this->dispatch('saved');
+    }
+
+    private function persistOrganisationShellBackground(UpdateOrganisationShellBackgroundAction $updateBackground): void
+    {
+        $tenant = $this->resolveTenant();
+        if (! $tenant instanceof Tenant) {
+            return;
+        }
+
+        $this->authorize('updateTenantBranding', $tenant);
+
+        if (! $this->shellBackground instanceof UploadedFile) {
+            return;
+        }
+
+        Validator::make(
+            ['portalBackground' => $this->shellBackground],
+            UploadOrganisationPortalBackgroundRequest::rules(),
+            UploadOrganisationPortalBackgroundRequest::messagesFor(),
+        )->validate();
+
+        $updated = $updateBackground->handle($tenant, $this->shellBackground, (int) auth()->id());
+        $this->reset('shellBackground');
+        $this->fillOrganisationFromTenant($updated);
+        $this->dispatch('saved');
+    }
+
     public function updatedPortalBackgroundStockPreset(
         SetOrganisationPortalStockBackgroundAction $setStock,
         RemoveOrganisationPortalBackgroundAction $removeBackground,
@@ -832,6 +923,15 @@ class Settings extends Component
         return $this->resolveTenant()?->fresh()?->portalBackgroundPublicUrl();
     }
 
+    public function shellBackgroundPreviewUrl(): ?string
+    {
+        if ($this->shellBackground !== null) {
+            return $this->livewireUploadPreviewUrl($this->shellBackground);
+        }
+
+        return $this->resolveTenant()?->fresh()?->shellBackgroundPublicUrl();
+    }
+
     private function livewireUploadPreviewUrl(UploadedFile $file): ?string
     {
         if (! $file instanceof TemporaryUploadedFile || ! $file->isPreviewable()) {
@@ -890,6 +990,7 @@ class Settings extends Component
             'themeChoices' => UiTheme::choices(),
             'organisationLogoUrl' => $this->organisationLogoPreviewUrl(),
             'portalBackgroundUrl' => $this->portalBackgroundPreviewUrl(),
+            'shellBackgroundUrl' => $this->shellBackgroundPreviewUrl(),
             'organisationTenant' => $tenant instanceof Tenant
                 ? $tenant->fresh()->load('qrStickerSheetSettings')
                 : null,
@@ -968,6 +1069,9 @@ class Settings extends Component
         $this->foreignVatNumber = (string) ($tenant->foreign_vat_number ?? '');
         $this->portalBackgroundStockPreset = TenantPortalBackground::stockPresetKeyFromPath(
             $tenant->portal_background_path,
+        ) ?? '';
+        $this->shellBackgroundStockPreset = TenantPortalBackground::stockPresetKeyFromPath(
+            $tenant->shell_background_path,
         ) ?? '';
         $tenant->loadMissing('qrStickerSheetSettings');
         $sheetSetting = $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::Avery62x89R);

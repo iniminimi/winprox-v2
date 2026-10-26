@@ -9,7 +9,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
 </head>
-<body class="wp-shell">
+<body class="wp-shell"@if (($uiShellBgUrl ?? null) !== null) style="--wp-shell-bg-image: url('{{ $uiShellBgUrl }}');"@endif>
     @php
         use App\Models\Tenant;
         use App\Support\Platform\SupportTenantContext;

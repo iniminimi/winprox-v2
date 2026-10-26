@@ -61,6 +61,9 @@ class UpdateOrganisationAction
         if (array_key_exists('portal_background_path', $data)) {
             $updates['portal_background_path'] = $data['portal_background_path'];
         }
+        if (array_key_exists('shell_background_path', $data)) {
+            $updates['shell_background_path'] = $data['shell_background_path'];
+        }
 
         if ($updates !== []) {
             $tenant->update($updates);
@@ -80,6 +83,7 @@ class UpdateOrganisationAction
                 'country_code' => $tenant->country_code,
                 'logo_path' => $tenant->logo_path,
                 'portal_background_path' => $tenant->portal_background_path,
+                'shell_background_path' => $tenant->shell_background_path,
                 'custom_theme_active' => $tenant->custom_theme_active,
                 'custom_theme_bg' => $tenant->custom_theme_bg,
                 'custom_theme_btn' => $tenant->custom_theme_btn,

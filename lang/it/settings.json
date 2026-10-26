@@ -42,7 +42,15 @@
         "theme_preview_issue_title": "Ascensore fuori servizio",
         "theme_preview_issue_desc": "L'ascensore 3 non funziona",
         "portal_background_remove": "Rimuovi sfondo portale",
-        "portal_background_remove_confirm": "Rimuovere lo sfondo del portale? Il portale segnalazioni non userà più un’immagine di sfondo."
+        "portal_background_remove_confirm": "Rimuovere lo sfondo del portale? Il portale segnalazioni non userà più un’immagine di sfondo.",
+        "shell_background_label": "Sfondo del backoffice",
+        "shell_background_hint": "Immagine di sfondo dietro il backoffice nello stile Modern (PNG/JPG, max. 2 MB, consigliati almeno 1080 px di larghezza).",
+        "shell_background_stock_none": "Sfondo predefinito",
+        "shell_background_stock_hint": "Gli stessi sfondi di esempio del foglio di stampa QR. La scelta viene salvata subito; un’immagine caricata sovrascrive il preset.",
+        "shell_background_upload_label": "Immagine personalizzata",
+        "shell_background_preview_alt": "Sfondo attuale del backoffice",
+        "shell_background_remove": "Rimuovi sfondo del backoffice",
+        "shell_background_remove_confirm": "Rimuovere lo sfondo del backoffice? Il backoffice userà di nuovo lo sfondo predefinito."
     },
     "qr_stickers": {
         "title": "Foglio di stampa QR",

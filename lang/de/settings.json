@@ -42,7 +42,15 @@
         "theme_preview_issue_title": "Aufzug defekt",
         "theme_preview_issue_desc": "Aufzug 3 funktioniert nicht",
         "portal_background_remove": "Portal-Hintergrund entfernen",
-        "portal_background_remove_confirm": "Portal-Hintergrund entfernen? Das Meldeportal verwendet danach kein Hintergrundbild mehr."
+        "portal_background_remove_confirm": "Portal-Hintergrund entfernen? Das Meldeportal verwendet danach kein Hintergrundbild mehr.",
+        "shell_background_label": "Backoffice-Hintergrund",
+        "shell_background_hint": "Hintergrundbild hinter dem Backoffice im Stil Modern (PNG/JPG, max. 2 MB, mindestens 1080 px Breite empfohlen).",
+        "shell_background_stock_none": "Standardhintergrund",
+        "shell_background_stock_hint": "Dieselben Beispielhintergründe wie beim QR-Druckbogen. Die Auswahl wird sofort gespeichert; ein eigener Upload überschreibt die Vorgabe.",
+        "shell_background_upload_label": "Eigenes Bild",
+        "shell_background_preview_alt": "Aktueller Backoffice-Hintergrund",
+        "shell_background_remove": "Backoffice-Hintergrund entfernen",
+        "shell_background_remove_confirm": "Backoffice-Hintergrund entfernen? Das Backoffice verwendet wieder den Standardhintergrund."
     },
     "qr_stickers": {
         "title": "QR-Druckbogen",
