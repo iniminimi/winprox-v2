@@ -48,8 +48,8 @@
                 <div class="wp-toolbar-group wp-toolbar-group--view" role="group" aria-label="{{ __('time.schedule.toolbar.view') }}">
                     <div class="wp-filter-cell">
                         <div class="wp-cluster wp-cluster--tight">
-                            <button type="button" @class(['btn', 'btn--sm', $isMonth ? 'btn--surface' : 'btn--info']) wire:click="setView('week')" data-wp-roster-nav>{{ __('time.schedule.view_week') }}</button>
-                            <button type="button" @class(['btn', 'btn--sm', $isMonth ? 'btn--info' : 'btn--surface']) wire:click="setView('month')" data-wp-roster-nav>{{ __('time.schedule.view_month') }}</button>
+                            <button type="button" @class(['btn', 'btn--sm', 'btn--surface', 'is-active' => ! $isMonth]) wire:click="setView('week')" data-wp-roster-nav>{{ __('time.schedule.view_week') }}</button>
+                            <button type="button" @class(['btn', 'btn--sm', 'btn--surface', 'is-active' => $isMonth]) wire:click="setView('month')" data-wp-roster-nav>{{ __('time.schedule.view_month') }}</button>
                         </div>
                     </div>
                     <div class="wp-filter-cell">

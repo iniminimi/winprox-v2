@@ -753,18 +753,9 @@
     background: var(--wp-surface-2);
 }
 
-/* Tinten worden naar surface gemixt: de container markeert de groep, de
-   bedieningselementen erin blijven visueel leidend. */
-.wp-toolbar-group--view {
-    background: color-mix(in srgb, var(--wp-info-soft) 55%, var(--wp-surface));
-    border-color: color-mix(in srgb, var(--wp-info-border) 70%, var(--wp-border));
-}
-
-.wp-toolbar-group--edit {
-    background: color-mix(in srgb, var(--wp-warning-soft) 50%, var(--wp-surface));
-    border-color: var(--wp-warning-border);
-}
-
+/* Weergave- en configuratiegroepen blijven neutraal (surface-2); alleen de
+   publicatiegroep krijgt een zachte emerald-tint zodat Publiceren de enige
+   effen accentknop in de toolbar blijft. */
 .wp-toolbar-group--action {
     background: color-mix(in srgb, var(--wp-accent-soft) 45%, var(--wp-surface));
     border-color: color-mix(in srgb, var(--wp-accent-border) 70%, var(--wp-border));
@@ -821,7 +812,7 @@
 }
 
 .wp-switch input:focus-visible + .wp-switch__track {
-    outline: 2px solid var(--wp-info);
+    outline: 2px solid var(--wp-accent);
     outline-offset: 2px;
 }
 
@@ -7267,6 +7258,12 @@ a.wp-worker-hours-link:focus-visible {
     background: transparent;
 }
 
+/* Extra scrollruimte onderaan: de zwevende assistent-knop (80px + marge)
+   mag de laatste rijen van het rooster niet bedekken. */
+.wp-roster-grid-shell {
+    padding-bottom: 7rem;
+}
+
 .wp-roster-grid-shell--hidden {
     display: none;
 }
@@ -7470,13 +7467,12 @@ a.wp-worker-hours-link:focus-visible {
     background: color-mix(in srgb, var(--wp-text) 12%, var(--wp-surface-2) 88%);
 }
 
-.wp-roster-sheet col.wp-roster-col--today,
-.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-col--today {
-    background: var(--wp-warning-soft);
-}
-
+/* Vandaag: alleen de kolomkop wordt gemarkeerd (emerald), de cellen zelf
+   houden hun shiftkleur zodat o.a. perzik (L) niet met de markering versmelt. */
 .wp-roster-sheet .jss_worksheet > thead > tr > td.wp-roster-col--today {
-    background: color-mix(in srgb, var(--wp-warning) 18%, var(--wp-surface-2) 82%);
+    background: color-mix(in srgb, var(--wp-accent) 18%, var(--wp-surface-2) 82%);
+    color: var(--wp-accent-strong);
+    box-shadow: inset 0 2px 0 var(--wp-accent), inset 0 -2px 0 var(--wp-accent);
 }
 
 .wp-roster-sheet col.wp-roster-col--week-start,
@@ -7760,7 +7756,7 @@ a.wp-worker-hours-link:focus-visible {
 }
 
 .wp-roster-cell--deviation {
-    box-shadow: inset 0 0 0 2px var(--wp-warning, var(--wp-accent)) !important;
+    box-shadow: inset 0 0 0 1px var(--wp-warning, var(--wp-accent)) !important;
 }
 
 .wp-roster-cell--unplanned {
@@ -7768,7 +7764,7 @@ a.wp-worker-hours-link:focus-visible {
 }
 
 .wp-roster-cell--gap {
-    box-shadow: inset 0 0 0 2px var(--wp-warning, var(--wp-accent)) !important;
+    box-shadow: inset 0 0 0 1px var(--wp-warning, var(--wp-accent)) !important;
     font-weight: 600 !important;
 }
 
