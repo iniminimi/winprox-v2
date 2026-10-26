@@ -395,7 +395,10 @@ it('laat een medewerker branding-instellingen zien en aanpassen maar niet privac
         ->assertOk()
         ->assertSee(__('settings.org.details_label'), false)
         ->assertSee(__('settings.org.logo_label'), false)
+        ->assertSee(__('settings.style.title'), false)
+        ->assertSee(__('settings.org.background_label'), false)
         ->assertSee(__('settings.org.portal_background_label'), false)
+        ->assertSee(__('settings.org.shell_background_label'), false)
         ->assertSee(__('settings.org.portal_colors_label'), false)
         ->assertSee(__('settings.qr_stickers.title'), false)
         ->assertDontSee(__('settings.privacy.title'), false);

@@ -311,106 +311,129 @@
         </x-wp-settings-section>
     @endif
 
-    @if ($canUpdateTenantBranding && $organisationTenant)
-        <x-wp-settings-section :title="__('settings.org.custom_theme_title')">
+    <x-wp-settings-section :title="__('settings.style.title')">
+        <p class="wp-muted">{{ __('settings.style.hint') }}</p>
+        <div class="wp-style-options" role="radiogroup" aria-label="{{ __('settings.style.title') }}">
+            @foreach ($themeChoices as $choice)
+                <label class="wp-style-option {{ $uiTheme === $choice->value ? 'is-selected' : '' }}">
+                    <input
+                        type="radio"
+                        name="uiTheme"
+                        value="{{ $choice->value }}"
+                        wire:model.live="uiTheme"
+                        class="wp-style-option-input"
+                    >
+                    <span class="wp-style-option-label">{{ __('settings.style.options.'.$choice->value.'.label') }}</span>
+                    <span class="wp-style-option-desc">{{ __('settings.style.options.'.$choice->value.'.description') }}</span>
+                </label>
+            @endforeach
+        </div>
+
+        @if ($canUpdateTenantBranding && $organisationTenant)
             <div class="wp-stack wp-settings-subblocks">
-                <div class="wp-settings-subblock">
-                    <h3 class="wp-settings-subblock-title">{{ __('settings.org.portal_background_label') }}</h3>
-                    <p class="wp-muted wp-text-sm">{{ __('settings.org.portal_background_hint') }}</p>
+                <div class="wp-settings-subblock" x-data="{ target: 'portal' }">
+                    <h3 class="wp-settings-subblock-title">{{ __('settings.org.background_label') }}</h3>
 
                     <div class="wp-portal-bg-settings wp-stack-tight">
                         <div class="wp-field">
-                            <label class="wp-label" for="portalBackgroundStockPreset">{{ __('settings.qr_stickers.branding.preset_label') }}</label>
-                            <select
-                                id="portalBackgroundStockPreset"
-                                class="wp-select wp-portal-bg-preset-select"
-                                wire:model.live="portalBackgroundStockPreset"
-                            >
-                                <option value="">{{ __('settings.org.portal_background_stock_none') }}</option>
-                                @foreach ($qrPrintableBackgroundPresets as $preset)
-                                    <option value="{{ $preset['value'] }}">{{ $preset['label'] }}</option>
-                                @endforeach
+                            <label class="wp-label" for="backgroundTarget">{{ __('settings.org.background_target_label') }}</label>
+                            <select id="backgroundTarget" class="wp-select wp-portal-bg-preset-select" x-model="target">
+                                <option value="portal">{{ __('settings.org.portal_background_label') }}</option>
+                                <option value="shell">{{ __('settings.org.shell_background_label') }}</option>
                             </select>
-                            @error('portalBackgroundStockPreset') <p class="wp-error">{{ $message }}</p> @enderror
-                            <p class="wp-muted wp-text-sm">{{ __('settings.org.portal_background_stock_hint') }}</p>
+                            <p class="wp-muted wp-text-sm" x-show="target === 'portal'">{{ __('settings.org.portal_background_hint') }}</p>
+                            <p class="wp-muted wp-text-sm" x-show="target === 'shell'" x-cloak>{{ __('settings.org.shell_background_hint') }}</p>
                         </div>
 
-                        <div class="wp-field wp-portal-bg-upload">
-                            <span class="wp-label">{{ __('settings.org.portal_background_upload_label') }}</span>
-                            @if ($portalBackgroundUrl)
-                                <img
-                                    src="{{ $portalBackgroundUrl }}"
-                                    alt="{{ __('settings.org.portal_background_preview_alt') }}"
-                                    class="wp-portal-bg-preview"
-                                    wire:key="portal-bg-inline-{{ md5($portalBackgroundUrl) }}"
+                        <div class="wp-stack-tight" x-show="target === 'portal'">
+                            <div class="wp-field">
+                                <label class="wp-label" for="portalBackgroundStockPreset">{{ __('settings.qr_stickers.branding.preset_label') }}</label>
+                                <select
+                                    id="portalBackgroundStockPreset"
+                                    class="wp-select wp-portal-bg-preset-select"
+                                    wire:model.live="portalBackgroundStockPreset"
                                 >
-                            @endif
-                            <x-wp-file-input wireModel="portalBackground" id="portalBackgroundInline" accept="image/*" />
-                            @error('portalBackground') <p class="wp-error">{{ $message }}</p> @enderror
-                            @if (filled($organisationTenant->portal_background_path))
-                                <div class="wp-cluster">
-                                    <button
-                                        type="button"
-                                        class="btn btn--ghost btn--sm"
-                                        wire:click="removeOrganisationPortalBackground"
-                                        wire:confirm="{{ __('settings.org.portal_background_remove_confirm') }}"
+                                    <option value="">{{ __('settings.org.portal_background_stock_none') }}</option>
+                                    @foreach ($qrPrintableBackgroundPresets as $preset)
+                                        <option value="{{ $preset['value'] }}">{{ $preset['label'] }}</option>
+                                    @endforeach
+                                </select>
+                                @error('portalBackgroundStockPreset') <p class="wp-error">{{ $message }}</p> @enderror
+                                <p class="wp-muted wp-text-sm">{{ __('settings.org.portal_background_stock_hint') }}</p>
+                            </div>
+
+                            <div class="wp-field wp-portal-bg-upload">
+                                <span class="wp-label">{{ __('settings.org.portal_background_upload_label') }}</span>
+                                @if ($portalBackgroundUrl)
+                                    <img
+                                        src="{{ $portalBackgroundUrl }}"
+                                        alt="{{ __('settings.org.portal_background_preview_alt') }}"
+                                        class="wp-portal-bg-preview"
+                                        wire:key="portal-bg-inline-{{ md5($portalBackgroundUrl) }}"
                                     >
-                                        {{ __('settings.org.portal_background_remove') }}
-                                    </button>
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                </div>
-
-                <div class="wp-settings-subblock">
-                    <h3 class="wp-settings-subblock-title">{{ __('settings.org.shell_background_label') }}</h3>
-                    <p class="wp-muted wp-text-sm">{{ __('settings.org.shell_background_hint') }}</p>
-
-                    <div class="wp-portal-bg-settings wp-stack-tight">
-                        <div class="wp-field">
-                            <label class="wp-label" for="shellBackgroundStockPreset">{{ __('settings.qr_stickers.branding.preset_label') }}</label>
-                            <select
-                                id="shellBackgroundStockPreset"
-                                class="wp-select wp-portal-bg-preset-select"
-                                wire:model.live="shellBackgroundStockPreset"
-                            >
-                                <option value="">{{ __('settings.org.shell_background_stock_none') }}</option>
-                                @foreach ($qrPrintableBackgroundPresets as $preset)
-                                    <option value="{{ $preset['value'] }}">{{ $preset['label'] }}</option>
-                                @endforeach
-                                @foreach (\App\Support\TenantPortalBackground::shellAssetChoices() as $assetChoice)
-                                    <option value="{{ $assetChoice['value'] }}">{{ $assetChoice['label'] }}</option>
-                                @endforeach
-                            </select>
-                            @error('shellBackgroundStockPreset') <p class="wp-error">{{ $message }}</p> @enderror
-                            <p class="wp-muted wp-text-sm">{{ __('settings.org.shell_background_stock_hint') }}</p>
+                                @endif
+                                <x-wp-file-input wireModel="portalBackground" id="portalBackgroundInline" accept="image/*" />
+                                @error('portalBackground') <p class="wp-error">{{ $message }}</p> @enderror
+                                @if (filled($organisationTenant->portal_background_path))
+                                    <div class="wp-cluster">
+                                        <button
+                                            type="button"
+                                            class="btn btn--ghost btn--sm"
+                                            wire:click="removeOrganisationPortalBackground"
+                                            wire:confirm="{{ __('settings.org.portal_background_remove_confirm') }}"
+                                        >
+                                            {{ __('settings.org.portal_background_remove') }}
+                                        </button>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
 
-                        <div class="wp-field wp-portal-bg-upload">
-                            <span class="wp-label">{{ __('settings.org.shell_background_upload_label') }}</span>
-                            @if ($shellBackgroundUrl)
-                                <img
-                                    src="{{ $shellBackgroundUrl }}"
-                                    alt="{{ __('settings.org.shell_background_preview_alt') }}"
-                                    class="wp-portal-bg-preview"
-                                    wire:key="shell-bg-inline-{{ md5($shellBackgroundUrl) }}"
+                        <div class="wp-stack-tight" x-show="target === 'shell'" x-cloak>
+                            <div class="wp-field">
+                                <label class="wp-label" for="shellBackgroundStockPreset">{{ __('settings.qr_stickers.branding.preset_label') }}</label>
+                                <select
+                                    id="shellBackgroundStockPreset"
+                                    class="wp-select wp-portal-bg-preset-select"
+                                    wire:model.live="shellBackgroundStockPreset"
                                 >
-                            @endif
-                            <x-wp-file-input wireModel="shellBackground" id="shellBackgroundInline" accept="image/*" />
-                            @error('shellBackground') <p class="wp-error">{{ $message }}</p> @enderror
-                            @if (filled($organisationTenant->shell_background_path))
-                                <div class="wp-cluster">
-                                    <button
-                                        type="button"
-                                        class="btn btn--ghost btn--sm"
-                                        wire:click="removeOrganisationShellBackground"
-                                        wire:confirm="{{ __('settings.org.shell_background_remove_confirm') }}"
+                                    <option value="">{{ __('settings.org.shell_background_stock_none') }}</option>
+                                    @foreach ($qrPrintableBackgroundPresets as $preset)
+                                        <option value="{{ $preset['value'] }}">{{ $preset['label'] }}</option>
+                                    @endforeach
+                                    @foreach (\App\Support\TenantPortalBackground::shellAssetChoices() as $assetChoice)
+                                        <option value="{{ $assetChoice['value'] }}">{{ $assetChoice['label'] }}</option>
+                                    @endforeach
+                                </select>
+                                @error('shellBackgroundStockPreset') <p class="wp-error">{{ $message }}</p> @enderror
+                                <p class="wp-muted wp-text-sm">{{ __('settings.org.shell_background_stock_hint') }}</p>
+                            </div>
+
+                            <div class="wp-field wp-portal-bg-upload">
+                                <span class="wp-label">{{ __('settings.org.shell_background_upload_label') }}</span>
+                                @if ($shellBackgroundUrl)
+                                    <img
+                                        src="{{ $shellBackgroundUrl }}"
+                                        alt="{{ __('settings.org.shell_background_preview_alt') }}"
+                                        class="wp-portal-bg-preview"
+                                        wire:key="shell-bg-inline-{{ md5($shellBackgroundUrl) }}"
                                     >
-                                        {{ __('settings.org.shell_background_remove') }}
-                                    </button>
-                                </div>
-                            @endif
+                                @endif
+                                <x-wp-file-input wireModel="shellBackground" id="shellBackgroundInline" accept="image/*" />
+                                @error('shellBackground') <p class="wp-error">{{ $message }}</p> @enderror
+                                @if (filled($organisationTenant->shell_background_path))
+                                    <div class="wp-cluster">
+                                        <button
+                                            type="button"
+                                            class="btn btn--ghost btn--sm"
+                                            wire:click="removeOrganisationShellBackground"
+                                            wire:confirm="{{ __('settings.org.shell_background_remove_confirm') }}"
+                                        >
+                                            {{ __('settings.org.shell_background_remove') }}
+                                        </button>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -486,8 +509,10 @@
                     </form>
                 </div>
             </div>
-        </x-wp-settings-section>
+        @endif
+    </x-wp-settings-section>
 
+    @if ($canUpdateTenantBranding && $organisationTenant)
         @if (! ($checkmateMode ?? false))
             <x-wp-settings-section :title="__('settings.qr_stickers.title')">
                 <p class="wp-muted wp-text-sm">{{ __('settings.qr_stickers.hint') }}</p>
@@ -495,25 +520,6 @@
             </x-wp-settings-section>
         @endif
     @endif
-
-    <x-wp-settings-section :title="__('settings.style.title')">
-        <p class="wp-muted">{{ __('settings.style.hint') }}</p>
-        <div class="wp-style-options" role="radiogroup" aria-label="{{ __('settings.style.title') }}">
-            @foreach ($themeChoices as $choice)
-                <label class="wp-style-option {{ $uiTheme === $choice->value ? 'is-selected' : '' }}">
-                    <input
-                        type="radio"
-                        name="uiTheme"
-                        value="{{ $choice->value }}"
-                        wire:model.live="uiTheme"
-                        class="wp-style-option-input"
-                    >
-                    <span class="wp-style-option-label">{{ __('settings.style.options.'.$choice->value.'.label') }}</span>
-                    <span class="wp-style-option-desc">{{ __('settings.style.options.'.$choice->value.'.description') }}</span>
-                </label>
-            @endforeach
-        </div>
-    </x-wp-settings-section>
 
     @if ($canManageOrganisation && $hasTimeModule)
         <x-wp-settings-section
