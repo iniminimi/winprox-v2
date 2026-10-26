@@ -40,6 +40,10 @@ class StaffingIndex extends Component
     #[Url(as: 'location')]
     public ?int $selectedLocationId = null;
 
+    public bool $showCopyModal = false;
+
+    public ?int $copyTargetId = null;
+
     public function mount(): void
     {
         $this->authorize('viewAny', PlannedShift::class);
@@ -89,6 +93,41 @@ class StaffingIndex extends Component
         session()->flash('time_flash', __('time.staffing.saved', ['location' => (string) $location->name]));
     }
 
+    public function openCopyModal(): void
+    {
+        $this->copyTargetId = null;
+        $this->showCopyModal = true;
+    }
+
+    public function closeCopyModal(): void
+    {
+        $this->showCopyModal = false;
+    }
+
+    public function copyToLocation(UpdateLocationAction $updateLocation): void
+    {
+        $locations = $this->scopedLocations();
+        $source = $locations->firstWhere('id', $this->selectedLocationId);
+        $target = $locations->firstWhere('id', $this->copyTargetId);
+        abort_if($source === null || $target === null, 404);
+        $this->authorize('update', $target);
+
+        if (! $this->typeIdsValid($source)) {
+            $this->addError('staffingRows', __('time.staffing.errors.type_invalid'));
+
+            return;
+        }
+
+        $updateLocation->handle(
+            $target,
+            ['min_staffing' => $this->normalizedRows((int) $source->id)],
+            (int) auth()->id(),
+        );
+        $this->staffingRows[$target->id] = $this->hydrateRows($target->fresh());
+        $this->showCopyModal = false;
+        session()->flash('time_flash', __('time.staffing.copied', ['location' => (string) $target->name]));
+    }
+
     public function render()
     {
         $locations = $this->scopedLocations();
@@ -97,6 +136,10 @@ class StaffingIndex extends Component
             'staffingLocations' => $locations,
             'selectedLocation' => $locations->firstWhere('id', $this->selectedLocationId),
             'staffingTypeOptions' => $this->typeOptions(),
+            'copyTargets' => $locations
+                ->reject(fn (Location $location): bool => (int) $location->id === (int) $this->selectedLocationId)
+                ->filter(fn (Location $location): bool => auth()->user()?->can('update', $location) ?? false)
+                ->values(),
             'alarmCount' => $this->timeNavAlarmCount(),
         ]);
     }

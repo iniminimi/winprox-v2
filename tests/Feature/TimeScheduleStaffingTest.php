@@ -449,3 +449,40 @@ it('houdt tenants strikt gescheiden', function () {
     expect($result['total'])->toBe(1)
         ->and($result['locations'][0]['name'])->toBe((string) $location->name);
 });
+
+it('kopieert de minimumbezetting naar een andere locatie', function () {
+    [$tenant, $admin, $team] = staffingTenant();
+    $type = staffingType($tenant, 'AV');
+    $source = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Bron']);
+    $target = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Doel']);
+    $source->update(['min_staffing' => [(string) $type->id => 2]]);
+
+    Livewire::actingAs($admin)
+        ->test(StaffingIndex::class)
+        ->set('selectedLocationId', $source->id)
+        ->call('openCopyModal')
+        ->assertSet('showCopyModal', true)
+        ->set('copyTargetId', $target->id)
+        ->call('copyToLocation')
+        ->assertSet('showCopyModal', false);
+
+    expect($target->fresh()->min_staffing)->toBe([(string) $type->id => 2]);
+});
+
+it('kopieert de zichtbare rijen, niet de opgeslagen bron', function () {
+    [$tenant, $admin, $team] = staffingTenant();
+    $type = staffingType($tenant, 'AV');
+    $source = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $target = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $source->update(['min_staffing' => [(string) $type->id => 2]]);
+
+    Livewire::actingAs($admin)
+        ->test(StaffingIndex::class)
+        ->set('selectedLocationId', $source->id)
+        ->set("staffingRows.{$source->id}.0.min", '5')
+        ->set('copyTargetId', $target->id)
+        ->call('copyToLocation');
+
+    expect($target->fresh()->min_staffing)->toBe([(string) $type->id => 5])
+        ->and($source->fresh()->min_staffing)->toBe([(string) $type->id => 2]);
+});

@@ -59,12 +59,40 @@
                     </div>
                     <p class="wp-hint">{{ __('time.staffing.hint') }}</p>
                 </div>
-                @can('update', $selectedLocation)
-                    <div class="wp-cluster wp-cluster--end">
+                <div class="wp-cluster wp-cluster--end">
+                    @if ($copyTargets->isNotEmpty())
+                        <button type="button" class="btn btn--ghost" wire:click="openCopyModal">{{ __('time.staffing.copy_button') }}</button>
+                    @endif
+                    @can('update', $selectedLocation)
                         <button type="button" class="btn btn--primary" wire:click="saveLocation({{ $selectedLocation->id }})">{{ __('time.staffing.save') }}</button>
-                    </div>
-                @endcan
+                    @endcan
+                </div>
             </div>
         @endif
+    @endif
+
+    @if ($showCopyModal && $selectedLocation !== null)
+        <x-wp-modal closeMethod="closeCopyModal" aria-labelledby="staffing-copy-title">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 id="staffing-copy-title" class="wp-section-title">{{ __('time.staffing.copy_title') }}</h2>
+                    <x-wp-modal-close wire:click="closeCopyModal" />
+                </div>
+                <p class="wp-muted wp-text-sm">{{ __('time.staffing.copy_hint', ['from' => $selectedLocation->name]) }}</p>
+                <div class="wp-filter-cell">
+                    <label class="wp-filter-inline-label" for="staffing-copy-target">{{ __('time.staffing.copy_target_label') }}</label>
+                    <select id="staffing-copy-target" class="wp-select" wire:model.live="copyTargetId">
+                        <option value="">{{ __('time.staffing.copy_target_placeholder') }}</option>
+                        @foreach ($copyTargets as $target)
+                            <option value="{{ $target->id }}">{{ $target->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="wp-modal-foot">
+                    <button type="button" class="btn btn--ghost" wire:click="closeCopyModal">{{ __('common.button.cancel') }}</button>
+                    <button type="button" class="btn btn--primary" wire:click="copyToLocation" @disabled(! $copyTargetId)>{{ __('time.staffing.copy_confirm') }}</button>
+                </div>
+            </div>
+        </x-wp-modal>
     @endif
 </div>
