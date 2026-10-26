@@ -7754,8 +7754,7 @@ a.wp-worker-hours-link:focus-visible {
 .wp-roster-cell--blue,
 .wp-roster-cell--purple,
 .wp-roster-cell--pink,
-.wp-roster-cell--orange,
-.wp-roster-cell--yellow,
+.wp-roster-cell--amber,
 .wp-roster-cell--gray {
     color: var(--wp-roster-ink) !important;
 }
@@ -7780,12 +7779,8 @@ a.wp-worker-hours-link:focus-visible {
     background: var(--wp-roster-pink) !important;
 }
 
-.wp-roster-cell--orange {
-    background: var(--wp-roster-orange) !important;
-}
-
-.wp-roster-cell--yellow {
-    background: var(--wp-roster-yellow) !important;
+.wp-roster-cell--amber {
+    background: var(--wp-roster-amber) !important;
 }
 
 .wp-roster-cell--gray {

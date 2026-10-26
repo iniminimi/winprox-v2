@@ -736,8 +736,7 @@
                 "blue": "Bleu",
                 "purple": "Violet",
                 "pink": "Rose",
-                "orange": "Orange",
-                "yellow": "Jaune",
+                "amber": "Ambre",
                 "gray": "Gris"
             },
             "kind": "Type",

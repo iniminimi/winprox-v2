@@ -38,14 +38,13 @@
     /* Uurrooster-vullingen. Feestdag, vervangingsdag en weekend/vrije dag
        blijven zachte thema-tinten en gebruiken deze variabelen niet. */
     --wp-roster-ink: #111827;
-    --wp-roster-green: #5fd38d;
-    --wp-roster-petrol: #5cc4d1;
-    --wp-roster-blue: #7aa7f7;
-    --wp-roster-purple: #b69bf4;
-    --wp-roster-pink: #f58fb0;
-    --wp-roster-orange: #f4a259;
-    --wp-roster-yellow: #f5de5a;
-    --wp-roster-gray: #b8c0c9;
+    --wp-roster-green: #a3e3be;
+    --wp-roster-petrol: #96d4dd;
+    --wp-roster-blue: #a7c4f9;
+    --wp-roster-purple: #cfbff6;
+    --wp-roster-pink: #f4b0c2;
+    --wp-roster-amber: #f5c48c;
+    --wp-roster-gray: #d3d7dc;
 
     /* Foto-thumbnails (QR-portaal: 4 naast elkaar op smal scherm; beheer zet --wp-photo-thumb-size). */
     --wp-photo-thumb-columns: 4;

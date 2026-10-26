@@ -137,6 +137,7 @@ it('zet oude shifttype-kleuren om naar het palet', function (string $legacy, Shi
     DB::table('shift_types')->where('id', $type->id)->update(['color' => $legacy]);
 
     (new RemapShiftTypeColors)->up();
+    (new SoftenShiftTypeColors)->up();
 
     expect($type->fresh()->color)->toBe($expected);
 })->with([
@@ -146,9 +147,11 @@ it('zet oude shifttype-kleuren om naar het palet', function (string $legacy, Shi
     'sky' => ['sky', ShiftTypeColor::Blue],
     'ice' => ['ice', ShiftTypeColor::Blue],
     'navy' => ['navy', ShiftTypeColor::Blue],
-    'amber' => ['amber', ShiftTypeColor::Orange],
-    'gold' => ['gold', ShiftTypeColor::Yellow],
-    'sand' => ['sand', ShiftTypeColor::Yellow],
+    'amber' => ['amber', ShiftTypeColor::Amber],
+    'gold' => ['gold', ShiftTypeColor::Amber],
+    'sand' => ['sand', ShiftTypeColor::Amber],
+    'orange' => ['orange', ShiftTypeColor::Amber],
+    'yellow' => ['yellow', ShiftTypeColor::Amber],
     'rose' => ['rose', ShiftTypeColor::Pink],
     'slate' => ['slate', ShiftTypeColor::Gray],
 ]);
@@ -352,7 +355,7 @@ it('opent het uurrooster voor een admin', function () {
         ->test(ShiftTypesIndex::class)
         ->call('openCreate')
         ->assertSee(__('time.schedule.types.colors.purple'), false)
-        ->assertSee(__('time.schedule.types.colors.yellow'), false)
+        ->assertSee(__('time.schedule.types.colors.amber'), false)
         ->set('typeCode', 'VM')
         ->set('typeLabel', 'Voormiddag')
         ->set('typeStart', '07:00')

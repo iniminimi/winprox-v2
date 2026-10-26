@@ -10,8 +10,7 @@ enum ShiftTypeColor: string
     case Blue = 'blue';
     case Purple = 'purple';
     case Pink = 'pink';
-    case Orange = 'orange';
-    case Yellow = 'yellow';
+    case Amber = 'amber';
     case Gray = 'gray';
 
     public static function default(): self
