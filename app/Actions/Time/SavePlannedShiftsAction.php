@@ -14,7 +14,6 @@ use App\Models\ShiftType;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\Worker;
-use App\Support\Time\RosterDaySignature;
 use App\Support\Time\RosterHistoryLock;
 use App\Support\Time\TimeModuleAccess;
 use Illuminate\Support\Collection;
@@ -27,7 +26,6 @@ class SavePlannedShiftsAction
         private ParseRosterCellAction $parseCell,
         private AssertPlannedShiftNoOverlapAction $assertNoOverlap,
         private ListShiftTypesAction $listShiftTypes,
-        private NotifyWorkersRosterChangedAction $notifyChanged,
     ) {}
 
     /**
@@ -101,8 +99,10 @@ class SavePlannedShiftsAction
                 ->lockForUpdate()
                 ->get();
 
-            $weekPublished = $existing->contains(fn (PlannedShift $shift) => $shift->status->isPublished());
-            $status = $weekPublished ? PlannedShiftStatus::Published : PlannedShiftStatus::Draft;
+            // Elke gewijzigde cel wordt draft — ook in een al gepubliceerde
+            // periode. Zo blijft "Niet gepubliceerd" zichtbaar tot de beheerder
+            // bewust publiceert; uitvoerders zien de wijziging pas dan.
+            $status = PlannedShiftStatus::Draft;
 
             $existingByDay = $existing->groupBy(
                 fn (PlannedShift $shift) => $shift->worker_id.':'.$shift->work_date->toDateString(),
@@ -234,14 +234,6 @@ class SavePlannedShiftsAction
 
             $this->assertNoOverlap->handle($intervals);
 
-            $this->notifyChangedPublishedDays(
-                $tenant,
-                $existingByDay,
-                $parsedCells,
-                $preservedDays,
-                $weekPublished,
-            );
-
             event(new ScheduleSaved(
                 tenantId: (int) $tenant->id,
                 actorUserId: $actorUserId,
@@ -268,84 +260,6 @@ class SavePlannedShiftsAction
             && (int) ($row->shift_type_id ?? 0) === (int) ($parsed->shiftTypeId ?? 0)
             && (int) ($row->unit_id ?? 0) === (int) ($parsed->unitId ?? 0)
             && (int) $row->break_minutes === (int) ($parsed->breakMinutes ?? 0);
-    }
-
-    /**
-     * RosterChanged-melding per gewijzigde published dag. Vergelijkt de
-     * inhoudelijke dag-signature voor/na; bewaarde (keep of identieke
-     * enkelvoudige cel) dagen zijn per definitie ongewijzigd.
-     *
-     * @param  Collection<string, Collection<int, PlannedShift>>  $existingByDay
-     * @param  list<array{cell: array<string, mixed>, blocks: ?list<\App\Data\Time\RosterCellData>}>  $parsedCells
-     * @param  array<string, true>  $preservedDays
-     */
-    private function notifyChangedPublishedDays(
-        Tenant $tenant,
-        Collection $existingByDay,
-        array $parsedCells,
-        array $preservedDays,
-        bool $weekPublished,
-    ): void {
-        $afterByDay = [];
-        foreach ($parsedCells as $item) {
-            $key = (int) $item['cell']['worker_id'].':'.(string) $item['cell']['date'];
-            $blocks = $item['blocks'];
-            if ($blocks === null) {
-                $afterByDay[$key] = [];
-
-                continue;
-            }
-            $afterByDay[$key] = collect($blocks)
-                ->reject(fn (RosterCellData $parsed) => $parsed->isEmpty())
-                ->map(fn (RosterCellData $parsed) => [
-                    'start' => $parsed->startTime,
-                    'end' => $parsed->endTime,
-                    'kind' => ($parsed->shiftTypeKind ?? ShiftTypeKind::Work)->value,
-                    'type' => $parsed->shiftTypeId,
-                    'unit' => $parsed->unitId,
-                ])
-                ->values()
-                ->all();
-        }
-
-        $pairs = [];
-        foreach ($afterByDay as $key => $afterBlocks) {
-            if (isset($preservedDays[$key])) {
-                continue;
-            }
-
-            $beforeRows = $existingByDay->get($key, collect());
-            $beforeSignature = RosterDaySignature::of($beforeRows->values());
-            $afterSignature = collect($afterBlocks)
-                ->map(fn (array $block) => implode('|', [
-                    ShiftType::formatTime($block['start']),
-                    ShiftType::formatTime($block['end']),
-                    $block['kind'],
-                    (string) $block['type'],
-                    (string) $block['unit'],
-                    '',
-                ]))
-                ->sort()
-                ->implode('||');
-
-            if ($beforeSignature === $afterSignature) {
-                continue;
-            }
-
-            $beforePublished = $beforeRows->contains(
-                fn (PlannedShift $shift) => $shift->status->isPublished(),
-            );
-            if (! $beforePublished && ! ($weekPublished && $afterBlocks !== [])) {
-                continue;
-            }
-
-            [$workerId, $date] = explode(':', $key, 2);
-            $pairs[] = ['worker_id' => (int) $workerId, 'date' => $date];
-        }
-
-        if ($pairs !== []) {
-            $this->notifyChanged->handle($tenant, $pairs);
-        }
     }
 
     /**

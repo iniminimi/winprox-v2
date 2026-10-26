@@ -11,7 +11,6 @@ use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\Worker;
 use App\Support\Time\RosterBlockNormalizer;
-use App\Support\Time\RosterDaySignature;
 use App\Support\Time\RosterHistoryLock;
 use App\Support\Time\TimeModuleAccess;
 use Carbon\Carbon;
@@ -28,7 +27,6 @@ class SavePlannedDayAction
 {
     public function __construct(
         private AssertPlannedShiftNoOverlapAction $assertNoOverlap,
-        private NotifyWorkersRosterChangedAction $notifyChanged,
         private ListShiftTypesAction $listShiftTypes,
     ) {}
 
@@ -99,20 +97,10 @@ class SavePlannedDayAction
                 throw new RosterValidationException('time.schedule.errors.unknown_block');
             }
 
-            $dayPublished = $existing->contains(
-                fn (PlannedShift $shift) => $shift->status->isPublished(),
-            ) || PlannedShift::query()
-                ->where('tenant_id', $tenant->id)
-                ->where('worker_id', $worker->id)
-                ->whereBetween('work_date', [
-                    Carbon::parse($date)->startOfWeek(Carbon::MONDAY)->toDateString(),
-                    Carbon::parse($date)->endOfWeek(Carbon::SUNDAY)->toDateString(),
-                ])
-                ->where('status', PlannedShiftStatus::Published)
-                ->exists();
-            $status = $dayPublished ? PlannedShiftStatus::Published : PlannedShiftStatus::Draft;
-
-            $beforeSignature = RosterDaySignature::of($existing->values());
+            // Gewijzigde of nieuwe blokken worden draft, ook op een al
+            // gepubliceerde dag: pas Publiceren maakt ze zichtbaar voor de
+            // uitvoerder en toont "Niet gepubliceerd" tot dan in de toolbar.
+            $status = PlannedShiftStatus::Draft;
 
             $created = 0;
             $updated = 0;
@@ -140,6 +128,7 @@ class SavePlannedDayAction
                         'description' => $block['description'],
                     ]);
                     if ($row->isDirty()) {
+                        $row->status = $status;
                         $row->save();
                         $updated++;
                     }
@@ -171,18 +160,10 @@ class SavePlannedDayAction
                 ->whereIn('id', $existing->keys()->diff($keptIds)->all() ?: [0])
                 ->delete();
 
-            $after = PlannedShift::query()
+            $afterCount = PlannedShift::query()
                 ->where('worker_id', $worker->id)
                 ->whereDate('work_date', $date)
-                ->get();
-            $changed = $beforeSignature !== RosterDaySignature::of($after);
-
-            if ($changed && $status === PlannedShiftStatus::Published) {
-                $this->notifyChanged->handle($tenant, [[
-                    'worker_id' => (int) $worker->id,
-                    'date' => $date,
-                ]]);
-            }
+                ->count();
 
             event(new ScheduleSaved(
                 tenantId: (int) $tenant->id,
@@ -190,7 +171,7 @@ class SavePlannedDayAction
                 weekStart: $date,
                 workerIds: [(int) $worker->id],
                 dates: [$date],
-                count: $after->count(),
+                count: $afterCount,
             ));
 
             return [

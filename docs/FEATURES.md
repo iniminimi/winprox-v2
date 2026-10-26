@@ -1116,9 +1116,12 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   "aangepast op <dagen>") en markeert gewijzigde dagen met een `wp-pill--new` op de rij; daarna
   wordt `read_at` gezet voor beide types. Geen inbox, geen
   mail, geen Laravel notifications. **`roster_changed`** (`reference_id` = gewijzigde `work_date`):
-  één per worker×dag (dedup via `updateOrCreate`, `read_at` reset), alleen als de inhoudelijke
-  dag-signature van **published** blokken wijzigt, alleen voor dagen **≥ vandaag** — correcties in
-  het verleden en draft-edits melden niets. Rode driehoek (`alert-triangle`) naast inklok of
+  één per worker×dag (dedup via `updateOrCreate`, `read_at` reset), uitsluitend bij de
+  **vervangingsflow** (`ReplacePlannedShiftAction`), alleen voor dagen **≥ vandaag**. Gewone
+  saves (grid én dag-editor) zetten gewijzigde blokken **altijd op draft** — ook in een al
+  gepubliceerde periode — en melden niets; de toolbar toont "Niet gepubliceerd" tot de
+  beheerder opnieuw publiceert (`roster_published`). Correcties in het verleden lopen via
+  `RosterCorrected`. Rode driehoek (`alert-triangle`) naast inklok of
   geplande uren als een **gepubliceerde werkdienst** ontbreekt (niet ingeklokt vanaf de
   geplande start), de inklok **meer dan 15 min te vroeg** is, of de inklok **≥ 15 min te laat** is, of de uitklok **≥ 15 min te laat** is (zelfde marge als beheer). Op **Mijn uren** staat elke reden in tekst naast een driehoek.
 - **Golf 2 — Teamrooster:** Clock Point-tegel naast "Mijn rooster" (alleen Facility,

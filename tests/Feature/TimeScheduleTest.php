@@ -152,7 +152,7 @@ it('weigert een minuut overlap en identieke vensters', function () {
     ]))->toThrow(RosterValidationException::class);
 });
 
-it('slaat een week op en houdt published na correctie', function () {
+it('zet een correctie op een gepubliceerde week terug op draft tot herpublicatie', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
     $this->travelTo(Carbon::parse('2026-09-13'));
     app(SaveShiftTypeAction::class)->handle(
@@ -192,9 +192,20 @@ it('slaat een week op en houdt published na correctie', function () {
     );
 
     $updated = PlannedShift::query()->first();
-    expect($updated->status)->toBe(PlannedShiftStatus::Published)
+    expect($updated->status)->toBe(PlannedShiftStatus::Draft)
         ->and($updated->shift_type_id)->toBeNull()
-        ->and($updated->start_time)->toBe('08:00');
+        ->and($updated->start_time)->toBe('08:00')
+        ->and(WorkerNotification::query()
+            ->where('type', WorkerNotificationType::RosterChanged->value)
+            ->count())->toBe(0);
+
+    app(PublishWeekAction::class)->handle(
+        $tenant,
+        new PublishWeekData($week, [$worker->id]),
+        $admin->id,
+    );
+
+    expect(PlannedShift::query()->first()->status)->toBe(PlannedShiftStatus::Published);
 });
 
 it('toont een inactieve code als vrije tijd zodat opslaan blijft werken', function () {

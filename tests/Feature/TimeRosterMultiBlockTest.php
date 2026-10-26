@@ -512,7 +512,7 @@ it('behoudt id en notitie bij een grid-save van een ongewijzigde cel', function 
         ->toBe($block->id);
 });
 
-it('meldt RosterChanged bij een notitie-wijziging op een published dag', function () {
+it('zet een notitie-wijziging op een published dag terug op draft zonder melding', function () {
     [$tenant, $admin, $worker] = multiBlockTenant();
     $date = now()->addWeek()->startOfWeek()->toDateString();
 
@@ -527,15 +527,12 @@ it('meldt RosterChanged bij een notitie-wijziging op een published dag', functio
         $admin->id,
     );
 
-    expect(
-        WorkerNotification::where('worker_id', $worker->id)
-            ->where('type', WorkerNotificationType::RosterChanged->value)
-            ->where('reference_id', $date)
-            ->count(),
-    )->toBe(1);
+    expect($block->fresh()->status)->toBe(PlannedShiftStatus::Draft)
+        ->and($block->fresh()->description)->toBe('Sleutel meenemen')
+        ->and(WorkerNotification::where('type', WorkerNotificationType::RosterChanged->value)->count())->toBe(0);
 });
 
-it('meldt RosterChanged bij wijziging van een published dag en dedupliceert', function () {
+it('houdt een ongewijzigd published blok published bij een day-editor save', function () {
     [$tenant, $admin, $worker] = multiBlockTenant();
     $date = now()->addWeek()->startOfWeek()->toDateString();
 
@@ -545,26 +542,23 @@ it('meldt RosterChanged bij wijziging van een published dag en dedupliceert', fu
     app(SavePlannedDayAction::class)->handle(
         $tenant,
         new SavePlannedDayData((int) $worker->id, $date, [
+            ['id' => $existing->id, 'start_time' => '07:00', 'end_time' => '10:00'],
+        ]),
+        $admin->id,
+    );
+
+    expect($existing->fresh()->status)->toBe(PlannedShiftStatus::Published);
+
+    app(SavePlannedDayAction::class)->handle(
+        $tenant,
+        new SavePlannedDayData((int) $worker->id, $date, [
             ['id' => $existing->id, 'start_time' => '07:00', 'end_time' => '11:00'],
         ]),
         $admin->id,
     );
-    app(SavePlannedDayAction::class)->handle(
-        $tenant,
-        new SavePlannedDayData((int) $worker->id, $date, [
-            ['id' => $existing->id, 'start_time' => '07:00', 'end_time' => '12:00'],
-        ]),
-        $admin->id,
-    );
 
-    $notifications = WorkerNotification::query()
-        ->where('worker_id', $worker->id)
-        ->where('type', WorkerNotificationType::RosterChanged->value)
-        ->where('reference_id', $date)
-        ->get();
-
-    expect($notifications)->toHaveCount(1)
-        ->and($notifications->first()->read_at)->toBeNull();
+    expect($existing->fresh()->status)->toBe(PlannedShiftStatus::Draft)
+        ->and(WorkerNotification::where('type', WorkerNotificationType::RosterChanged->value)->count())->toBe(0);
 });
 
 it('meldt geen RosterChanged bij een correctie op een verleden dag of draft-wijziging', function () {
@@ -602,7 +596,7 @@ it('meldt geen RosterChanged bij een correctie op een verleden dag of draft-wijz
             ->count())->toBe(1);
 });
 
-it('meldt RosterChanged via grid-save bij gewijzigde published dag', function () {
+it('zet een gewijzigde published dag via grid-save op draft zonder melding', function () {
     [$tenant, $admin, $worker] = multiBlockTenant();
     $week = Carbon::parse(now())->addWeek()->startOfWeek(Carbon::MONDAY)->toDateString();
     $day = Carbon::parse($week)->toDateString();
@@ -629,10 +623,7 @@ it('meldt RosterChanged via grid-save bij gewijzigde published dag', function ()
         $admin->id,
     );
 
-    expect(
-        WorkerNotification::where('worker_id', $worker->id)
-            ->where('type', WorkerNotificationType::RosterChanged->value)
-            ->where('reference_id', $day)
-            ->count(),
-    )->toBe(1);
+    expect(PlannedShift::where('worker_id', $worker->id)->whereDate('work_date', $day)->sole()->status)
+        ->toBe(PlannedShiftStatus::Draft)
+        ->and(WorkerNotification::where('type', WorkerNotificationType::RosterChanged->value)->count())->toBe(0);
 });
