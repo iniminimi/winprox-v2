@@ -1088,8 +1088,15 @@ button.wp-kpi {
 .wp-kpi--pending_review .wp-kpi-kicker,
 .wp-kpi--time_attention .wp-kpi-kicker,
 .wp-kpi--pending_absence .wp-kpi-kicker,
-.wp-kpi--iot_alarms .wp-kpi-kicker {
+.wp-kpi--iot_alarms .wp-kpi-kicker,
+.wp-kpi--staffing_shortfalls .wp-kpi-kicker {
     color: var(--wp-warning-text);
+}
+
+/* Bezettingstekort: duidelijke amber rand zodat de tegel opvalt. */
+.wp-kpi--staffing_shortfalls.wp-kpi--alert {
+    border-color: var(--wp-warning);
+    box-shadow: inset 0 0 0 1px var(--wp-warning);
 }
 
 .wp-kpi-stats {
@@ -1199,7 +1206,8 @@ button.wp-kpi {
 .wp-kpi--pending_review .wp-kpi-icon,
 .wp-kpi--time_attention .wp-kpi-icon,
 .wp-kpi--pending_absence .wp-kpi-icon,
-.wp-kpi--iot_alarms .wp-kpi-icon {
+.wp-kpi--iot_alarms .wp-kpi-icon,
+.wp-kpi--staffing_shortfalls .wp-kpi-icon {
     background-color: var(--wp-warning-soft);
     border-color: var(--wp-warning-border);
     color: var(--wp-warning-text);
