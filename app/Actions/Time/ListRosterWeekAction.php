@@ -263,6 +263,8 @@ class ListRosterWeekAction
             $payload = [
                 'id' => $worker->id,
                 'name' => $worker->displayName(),
+                'first_name' => (string) $worker->first_name,
+                'last_name' => (string) $worker->last_name,
                 'team_id' => $worker->internal_team_id,
                 'team_name' => $worker->team?->localizedName(),
                 'location_ids' => $worker->clocksAllLocations()

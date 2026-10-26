@@ -8014,7 +8014,7 @@ a.wp-worker-hours-link:focus-visible {
 }
 
 .wp-roster-print__table col.wp-roster-print__name-col {
-    /* Compact (~2,4 cm): namen wrappen op woordgrenzen; dagen krijgen meer ruimte. */
+    /* Compact (~2,4 cm): achternaam max. 15 tekens; namen blijven op één regel. */
     width: 6rem;
 }
 
@@ -8023,9 +8023,10 @@ a.wp-worker-hours-link:focus-visible {
     text-align: left;
     font-weight: 500;
     color: var(--wp-text);
-    white-space: normal;
-    overflow-wrap: break-word;
-    word-break: normal;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-wrap: normal;
+    word-break: keep-all;
     background: var(--wp-surface);
 }
 
@@ -8155,6 +8156,8 @@ a.wp-worker-hours-link:focus-visible {
     .wp-roster-print__table tbody th {
         font-size: 0.55rem;
         padding: 0.12rem 0.14rem;
+        white-space: nowrap;
+        overflow: hidden;
     }
 
     .wp-roster-print__section td {

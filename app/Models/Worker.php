@@ -150,6 +150,20 @@ class Worker extends Model
         return trim($this->first_name.' '.$this->last_name);
     }
 
+    /**
+     * Afdruklabel: achternaam langer dan 15 tekens krijgt een punt, zodat de rij op één regel blijft.
+     */
+    public static function printDisplayName(string $firstName, string $lastName, int $lastNameMax = 15): string
+    {
+        $first = trim($firstName);
+        $last = trim($lastName);
+        if ($last !== '' && mb_strlen($last) > $lastNameMax) {
+            $last = mb_substr($last, 0, $lastNameMax).'.';
+        }
+
+        return trim($first.' '.$last);
+    }
+
     public function photoPublicUrl(): ?string
     {
         $path = $this->photo_path;

@@ -6,6 +6,7 @@ use App\Actions\Time\ListRosterWeekAction;
 use App\Actions\Time\ListShiftTypesAction;
 use App\Models\PlannedShift;
 use App\Models\Tenant;
+use App\Models\Worker;
 use App\Support\Tenancy;
 use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
@@ -59,12 +60,23 @@ class RosterPrintController
 
         $legendTypes = $listTypes->handle((int) $tenant->id, true);
 
+        $printNames = [];
+        foreach ($snapshot->workers as $row) {
+            $id = (int) ($row['id'] ?? 0);
+            $label = Worker::printDisplayName(
+                (string) ($row['first_name'] ?? ''),
+                (string) ($row['last_name'] ?? ''),
+            );
+            $printNames[$id] = $label !== '' ? $label : (string) ($row['name'] ?? '');
+        }
+
         return view('time.roster-print', [
             'tenant' => $tenant,
             'snapshot' => $snapshot,
             'period' => $period,
             'periodLabel' => $periodLabel,
             'legendTypes' => $legendTypes,
+            'printNames' => $printNames,
         ]);
     }
 }

@@ -132,7 +132,7 @@
                                 @endphp
                                 @continue(! $worker)
                                 <tr>
-                                    <th scope="row">{{ $worker['name'] }}</th>
+                                    <th scope="row">{{ $printNames[$worker['id']] ?? $worker['name'] }}</th>
                                     @foreach ($snapshot->dates as $date)
                                         @php
                                             $cell = $snapshot->cells[$worker['id'].':'.$date] ?? null;

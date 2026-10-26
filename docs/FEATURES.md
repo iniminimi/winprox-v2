@@ -1173,7 +1173,8 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   Markering rechtsboven in de cel opent **Time → Uren** (worker + die dag;
   bij **missing** de hele maand, want die dag heeft geen prik). Geen locatievergelijking.
 - **Print:** knop naast de titel opent een **nieuw venster** (zoals briefing); A4 **liggend**,
-  zichtbare periode/filters.
+  zichtbare periode/filters. Achternaam langer dan **15 tekens** wordt afgekort met een punt,
+  zodat de naam op één regel blijft.
 
 ### 5g.7 Klokschermen (TFT met roterende QR)
 

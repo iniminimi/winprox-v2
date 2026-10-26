@@ -1306,6 +1306,35 @@ it('opent de uurrooster-printpagina in een apart venster-patroon', function () {
         ->assertSee('07:00–15:00', false);
 });
 
+it('kort achternamen op de uurrooster-afdruk af tot 15 tekens', function () {
+    [$tenant, $admin, $team] = scheduleTenant();
+    $week = scheduleWeekStart();
+    Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'is_active' => true,
+        'first_name' => 'Tara',
+        'last_name' => 'Vandenbroeckestraat',
+    ]);
+    Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'is_active' => true,
+        'first_name' => 'Christy',
+        'last_name' => 'De Graeve',
+    ]);
+
+    expect(Worker::printDisplayName('Tara', 'Vandenbroeckestraat'))->toBe('Tara Vandenbroeckest.')
+        ->and(Worker::printDisplayName('Christy', 'De Graeve'))->toBe('Christy De Graeve');
+
+    $this->actingAs($admin)
+        ->get(route('time.schedule.print', ['week' => $week, 'view' => 'week']))
+        ->assertOk()
+        ->assertSee('Tara Vandenbroeckest.', false)
+        ->assertDontSee('Vandenbroeckestraat', false)
+        ->assertSee('Christy De Graeve', false);
+});
+
 
 // ---- Historische roostervergrendeling (RosterHistoryLock) ----
 
