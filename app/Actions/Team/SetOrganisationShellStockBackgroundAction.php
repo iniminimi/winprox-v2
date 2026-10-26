@@ -19,8 +19,11 @@ class SetOrganisationShellStockBackgroundAction
 
     public function handle(Tenant $tenant, string $presetKey, ?int $actorUserId = null): Tenant
     {
-        $normalized = QrPrintablePageBackgroundPreset::normalizePresetKey($presetKey);
-        if (! QrPrintablePageBackgroundPreset::isValidPresetKey($normalized)) {
+        $normalized = TenantPortalBackground::isPublicAssetPath($presetKey)
+            ? $presetKey
+            : QrPrintablePageBackgroundPreset::normalizePresetKey($presetKey);
+        if (! TenantPortalBackground::isPublicAssetPath($normalized)
+            && ! QrPrintablePageBackgroundPreset::isValidPresetKey($normalized)) {
             throw new RuntimeException('Invalid shell background preset.');
         }
 

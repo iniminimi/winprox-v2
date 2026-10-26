@@ -753,7 +753,8 @@ class Settings extends Component
         $this->authorize('updateTenantBranding', $tenant);
 
         if ($this->shellBackgroundStockPreset === '') {
-            if (TenantPortalBackground::isStockPath($tenant->shell_background_path)) {
+            if (TenantPortalBackground::isStockPath($tenant->shell_background_path)
+                || TenantPortalBackground::isPublicAssetPath($tenant->shell_background_path)) {
                 $updated = $removeBackground->handle($tenant, (int) auth()->id());
                 $this->fillOrganisationFromTenant($updated);
                 $this->dispatch('saved');
@@ -762,10 +763,12 @@ class Settings extends Component
             return;
         }
 
-        Validator::make(
-            ['portalBackgroundStockPreset' => $this->shellBackgroundStockPreset],
-            SetOrganisationPortalStockBackgroundRequest::ruleSet(),
-        )->validate();
+        if (! TenantPortalBackground::isPublicAssetPath($this->shellBackgroundStockPreset)) {
+            Validator::make(
+                ['portalBackgroundStockPreset' => $this->shellBackgroundStockPreset],
+                SetOrganisationPortalStockBackgroundRequest::ruleSet(),
+            )->validate();
+        }
 
         $updated = $setStock->handle(
             $tenant,
@@ -1072,7 +1075,9 @@ class Settings extends Component
         ) ?? '';
         $this->shellBackgroundStockPreset = TenantPortalBackground::stockPresetKeyFromPath(
             $tenant->shell_background_path,
-        ) ?? '';
+        ) ?? (TenantPortalBackground::isPublicAssetPath($tenant->shell_background_path)
+            ? $tenant->shell_background_path
+            : '');
         $tenant->loadMissing('qrStickerSheetSettings');
         $sheetSetting = $tenant->qrStickerSheetSetting(QrStickerSheetTemplate::Avery62x89R);
         $layout = BrandedQrStickerLayoutConfig::fromSetting($sheetSetting);

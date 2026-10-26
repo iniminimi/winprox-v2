@@ -379,6 +379,9 @@
                                 @foreach ($qrPrintableBackgroundPresets as $preset)
                                     <option value="{{ $preset['value'] }}">{{ $preset['label'] }}</option>
                                 @endforeach
+                                @foreach (\App\Support\TenantPortalBackground::shellAssetChoices() as $assetChoice)
+                                    <option value="{{ $assetChoice['value'] }}">{{ $assetChoice['label'] }}</option>
+                                @endforeach
                             </select>
                             @error('shellBackgroundStockPreset') <p class="wp-error">{{ $message }}</p> @enderror
                             <p class="wp-muted wp-text-sm">{{ __('settings.org.shell_background_stock_hint') }}</p>

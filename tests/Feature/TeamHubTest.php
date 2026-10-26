@@ -818,4 +818,12 @@ it('laat een medewerker een backoffice-achtergrond kiezen, uploaden en verwijder
         ->assertHasNoErrors();
 
     expect($tenant->fresh()->shell_background_path)->toBeNull();
+
+    Livewire::actingAs($employee)
+        ->test(Settings::class)
+        ->set('shellBackgroundStockPreset', 'images/svg/background1.svg')
+        ->assertHasNoErrors();
+
+    expect($tenant->fresh()->shell_background_path)->toBe('images/svg/background1.svg')
+        ->and($tenant->fresh()->shellBackgroundPublicUrl())->toBe(asset('images/svg/background1.svg'));
 });
