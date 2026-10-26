@@ -1882,6 +1882,10 @@
                     "text": "Legen Sie pro Standort fest, wie viele Mitarbeiter pro Schichttyp <strong>täglich mindestens</strong> geplant sein müssen, entsprechend der Legende des Stundenplans."
                 },
                 {
+                    "label": "An einen anderen Standort kopieren",
+                    "text": "Wählen Sie mindestens einen Schichttyp und eine Mindestanzahl größer als null. <strong>Kopieren nach…</strong> erscheint, wenn Sie einen anderen Standort bearbeiten dürfen. Eine leere Eingabezeile zählt nicht. Ziel auswählen und bestätigen: Die aktuelle Eingabe einschließlich ungespeicherter Änderungen wird kopiert. Die bestehende Mindestbesetzung am Ziel wird vollständig ersetzt; der Quellstandort bleibt unverändert."
+                },
+                {
                     "label": "Hinweis",
                     "text": "Der Stundenplan zeigt fehlende Schichten (z. B. <strong>V2 fehlt</strong>), gruppiert pro Standort und auf sichtbare zukünftige Tage begrenzt. Dies ist ein <strong>Hinweis</strong> — er blockiert Speichern oder Veröffentlichen nie."
                 },

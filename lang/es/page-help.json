@@ -1882,6 +1882,10 @@
                     "text": "Define por lugar cuántos trabajadores por tipo de turno deben planificarse <strong>como mínimo cada día</strong>, según la leyenda del horario."
                 },
                 {
+                    "label": "Copiar a otra ubicación",
+                    "text": "Seleccione al menos un tipo de turno y un mínimo mayor que cero. <strong>Copiar a…</strong> aparece si puede modificar otra ubicación. Una fila vacía no cuenta. Elija el destino y confirme: se copia la entrada actual, incluidos los cambios sin guardar. La dotación mínima existente del destino se sustituye por completo; el origen no cambia."
+                },
+                {
                     "label": "Indicación",
                     "text": "El horario muestra los turnos que faltan (p. ej. <strong>V2 falta</strong>), agrupados por lugar y limitados a días futuros visibles. Es una <strong>indicación</strong> — nunca bloquea guardar ni publicar."
                 },

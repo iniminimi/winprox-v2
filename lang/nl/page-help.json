@@ -1882,6 +1882,10 @@
                     "text": "Leg per locatie vast hoeveel uitvoerders per diensttype er <strong>minimaal dagelijks</strong> gepland moeten zijn, volgens de legende van het uurrooster."
                 },
                 {
+                    "label": "Kopiëren naar een andere locatie",
+                    "text": "Kies minstens één diensttype en een minimumaantal groter dan nul. Dan verschijnt <strong>Kopiëren naar…</strong>, mits u een andere locatie mag bijwerken. Een lege invoerrij telt niet mee. Kies de doellocatie en bevestig: de huidige invoer wordt gekopieerd, ook als die nog niet is opgeslagen. De bestaande minimumbezetting van de doellocatie wordt volledig vervangen; de bronlocatie blijft ongewijzigd."
+                },
+                {
                     "label": "Indicatie",
                     "text": "Het uurrooster toont welke diensten ontbreken (bijvoorbeeld <strong>V2 ontbreekt</strong>), gegroepeerd per locatie en beperkt tot zichtbare toekomstige dagen. Dit is een <strong>indicatie</strong> — het blokkeert opslaan of publiceren nooit."
                 },

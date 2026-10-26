@@ -1095,7 +1095,12 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   `{shift_type_id: min}`). In het uurrooster kleurt elke dag met een tekort
   **rood in de dagheader**; een hover-ballon op die cel toont per locatie
   `Locatie: V2 ontbreekt (0/1)`. Puur informatief: opslaan en publiceren
-  worden nooit geblokkeerd.
+  worden nooit geblokkeerd. **Kopiëren naar…** kopieert de huidige invoer (ook
+  onopgeslagen wijzigingen) naar een andere locatie met update-rechten en vervangt
+  daar de volledige minimumbezetting; de bron blijft ongewijzigd. De knop verschijnt
+  alleen met minstens één gekozen diensttype en een positief minimumaantal; lege
+  invoerrijen tellen niet mee. Een lege bron kan ook server-side niet worden gekopieerd.
+  De paginahulp beschrijft deze werkwijze.
   `ListLocationStaffingShortfallsAction` telt **tenant-breed** unieke
   uitvoerders (split-shifts = 1) per datum × locatie × actief werk-type
   (draft + published; afwezigheid nooit), enkel voor **zichtbare dagen ≥

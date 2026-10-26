@@ -469,6 +469,50 @@ it('kopieert de minimumbezetting naar een andere locatie', function () {
     expect($target->fresh()->min_staffing)->toBe([(string) $type->id => 2]);
 });
 
+it('verbergt kopiëren zonder gekozen diensttype en reageert op invoer en verwijderen', function () {
+    [$tenant, $admin] = staffingTenant();
+    $type = staffingType($tenant, 'AV');
+    $source = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Location::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(StaffingIndex::class)
+        ->set('selectedLocationId', $source->id)
+        ->assertSee(__('page-help.pages')['time.staffing']['actions'][1]['label'])
+        ->assertDontSeeHtml('wire:click="openCopyModal"')
+        ->call('addStaffingRow', $source->id)
+        ->assertDontSeeHtml('wire:click="openCopyModal"')
+        ->call('openCopyModal')
+        ->assertSet('showCopyModal', false)
+        ->set("staffingRows.{$source->id}.0.type_id", (string) $type->id)
+        ->assertSeeHtml('wire:click="openCopyModal"')
+        ->set("staffingRows.{$source->id}.0.min", '0')
+        ->assertDontSeeHtml('wire:click="openCopyModal"')
+        ->set("staffingRows.{$source->id}.0.min", '2')
+        ->assertSeeHtml('wire:click="openCopyModal"')
+        ->call('removeStaffingRow', $source->id, 0)
+        ->assertDontSeeHtml('wire:click="openCopyModal"');
+});
+
+it('kopieert geen lege invoerrijen over bestaande minimumbezetting', function () {
+    [$tenant, $admin] = staffingTenant();
+    $type = staffingType($tenant, 'AV');
+    $source = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $target = Location::factory()->create([
+        'tenant_id' => $tenant->id,
+        'min_staffing' => [(string) $type->id => 3],
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(StaffingIndex::class)
+        ->set('selectedLocationId', $source->id)
+        ->call('addStaffingRow', $source->id)
+        ->set('copyTargetId', $target->id)
+        ->call('copyToLocation');
+
+    expect($target->fresh()->min_staffing)->toBe([(string) $type->id => 3]);
+});
+
 it('kopieert de zichtbare rijen, niet de opgeslagen bron', function () {
     [$tenant, $admin, $team] = staffingTenant();
     $type = staffingType($tenant, 'AV');

@@ -43,14 +43,14 @@
                                     <option>{{ $row['stale_label'] }} — {{ __('time.staffing.stale') }}</option>
                                 </select>
                             @else
-                                <select class="wp-select wp-select--compact" wire:model="staffingRows.{{ $selectedLocation->id }}.{{ $index }}.type_id" aria-label="{{ __('time.staffing.type') }}">
+                                <select class="wp-select wp-select--compact" wire:model.live="staffingRows.{{ $selectedLocation->id }}.{{ $index }}.type_id" aria-label="{{ __('time.staffing.type') }}">
                                     <option value="">{{ __('time.staffing.type_placeholder') }}</option>
                                     @foreach ($staffingTypeOptions as $option)
                                         <option value="{{ $option['id'] }}">{{ $option['label'] }}</option>
                                     @endforeach
                                 </select>
                             @endif
-                            <input class="wp-input wp-input--compact" type="number" min="1" max="999" wire:model="staffingRows.{{ $selectedLocation->id }}.{{ $index }}.min" aria-label="{{ __('time.staffing.count') }}">
+                            <input class="wp-input wp-input--compact" type="number" min="1" max="999" wire:model.live="staffingRows.{{ $selectedLocation->id }}.{{ $index }}.min" aria-label="{{ __('time.staffing.count') }}">
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="removeStaffingRow({{ $selectedLocation->id }}, {{ $index }})" aria-label="{{ __('time.staffing.remove') }}">✕</button>
                         </div>
                     @endforeach
@@ -60,7 +60,7 @@
                     <p class="wp-hint">{{ __('time.staffing.hint') }}</p>
                 </div>
                 <div class="wp-cluster wp-cluster--end">
-                    @if ($copyTargets->isNotEmpty() && ($staffingRows[$selectedLocation->id] ?? []) !== [])
+                    @if ($copyTargets->isNotEmpty() && $hasCopyableStaffing)
                         <button type="button" class="btn btn--ghost" wire:click="openCopyModal">{{ __('time.staffing.copy_button') }}</button>
                     @endif
                     @can('update', $selectedLocation)

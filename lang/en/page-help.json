@@ -1882,6 +1882,10 @@
                     "text": "Set per location how many workers per shift type must be <strong>planned at minimum every day</strong>, following the roster legend."
                 },
                 {
+                    "label": "Copy to another location",
+                    "text": "Select at least one shift type and a minimum count greater than zero. <strong>Copy to…</strong> then appears if you may update another location. An empty input row does not count. Choose the target and confirm: the current input is copied, including unsaved changes. The target's existing minimum staffing is fully replaced; the source location stays unchanged."
+                },
+                {
                     "label": "Indication",
                     "text": "The roster shows which shifts are missing (e.g. <strong>V2 missing</strong>), grouped per location and limited to visible future days. This is an <strong>indication</strong> — it never blocks saving or publishing."
                 },

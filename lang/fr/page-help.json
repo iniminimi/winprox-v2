@@ -1890,6 +1890,10 @@
                     "text": "Définissez par site combien de collaborateurs par type de service doivent être <strong>planifiés au minimum chaque jour</strong>, selon la légende du planning."
                 },
                 {
+                    "label": "Copier vers un autre site",
+                    "text": "Sélectionnez au moins un type de service et un minimum supérieur à zéro. <strong>Copier vers…</strong> apparaît si vous pouvez modifier un autre site. Une ligne vide ne compte pas. Choisissez la destination et confirmez : la saisie actuelle est copiée, y compris les modifications non enregistrées. L'effectif minimum existant du site cible est entièrement remplacé ; le site source reste inchangé."
+                },
+                {
                     "label": "Indication",
                     "text": "Le planning affiche les services manquants (par ex. <strong>V2 manquant</strong>), groupés par site et limités aux jours futurs visibles. C'est une <strong>indication</strong> — cela ne bloque jamais l'enregistrement ni la publication."
                 },

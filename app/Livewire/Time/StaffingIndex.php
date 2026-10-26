@@ -96,7 +96,7 @@ class StaffingIndex extends Component
     public function openCopyModal(): void
     {
         $this->copyTargetId = null;
-        $this->showCopyModal = true;
+        $this->showCopyModal = $this->normalizedRows((int) $this->selectedLocationId) !== [];
     }
 
     public function closeCopyModal(): void
@@ -111,6 +111,12 @@ class StaffingIndex extends Component
         $target = $locations->firstWhere('id', $this->copyTargetId);
         abort_if($source === null || $target === null, 404);
         $this->authorize('update', $target);
+
+        if ($this->normalizedRows((int) $source->id) === []) {
+            $this->closeCopyModal();
+
+            return;
+        }
 
         if (! $this->typeIdsValid($source)) {
             $this->addError('staffingRows', __('time.staffing.errors.type_invalid'));
@@ -136,6 +142,7 @@ class StaffingIndex extends Component
             'staffingLocations' => $locations,
             'selectedLocation' => $locations->firstWhere('id', $this->selectedLocationId),
             'staffingTypeOptions' => $this->typeOptions(),
+            'hasCopyableStaffing' => $this->normalizedRows((int) $this->selectedLocationId) !== [],
             'copyTargets' => $locations
                 ->reject(fn (Location $location): bool => (int) $location->id === (int) $this->selectedLocationId)
                 ->filter(fn (Location $location): bool => auth()->user()?->can('update', $location) ?? false)

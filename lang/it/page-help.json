@@ -1882,6 +1882,10 @@
                     "text": "Imposta per sede quanti operatori per tipo di turno devono essere pianificati <strong>al minimo ogni giorno</strong>, secondo la legenda del planning."
                 },
                 {
+                    "label": "Copia in un’altra sede",
+                    "text": "Seleziona almeno un tipo di turno e un minimo maggiore di zero. <strong>Copia in…</strong> appare se puoi modificare un’altra sede. Una riga vuota non conta. Scegli la destinazione e conferma: viene copiato l’inserimento attuale, incluse le modifiche non salvate. L’organico minimo esistente della destinazione viene sostituito interamente; la sede di origine resta invariata."
+                },
+                {
                     "label": "Indicazione",
                     "text": "Il planning mostra i turni mancanti (es. <strong>V2 manca</strong>), raggruppati per sede e limitati ai giorni futuri visibili. È una <strong>indicazione</strong> — non blocca mai salvataggio o pubblicazione."
                 },
