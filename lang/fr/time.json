@@ -933,13 +933,6 @@
         "subtitle": "Le régime belge standard (lun–ven) est déjà rempli ; ne consigner que les écarts.",
         "save": "Enregistrer",
         "saved": "Jours fériés enregistrés.",
-        "copy_button": "Copier vers…",
-        "copy_title": "Copier l'effectif minimum",
-        "copy_hint": "Copie les règles actuelles de {from}. L'effectif minimum existant du site cible est écrasé.",
-        "copy_target_label": "Vers le site",
-        "copy_target_placeholder": "Choisir un site",
-        "copy_confirm": "Copier",
-        "copied": "Effectif minimum copié vers {location}.",
         "standard_badge": "Standard",
         "override_badge": "Défini",
         "standard_option": "Standard : :effect",
@@ -958,6 +951,13 @@
         "empty_locations": "Aucun site à configurer.",
         "save": "Enregistrer",
         "saved": "Effectif minimal enregistré pour {location}.",
+        "copy_button": "Copier vers…",
+        "copy_title": "Copier l'effectif minimum",
+        "copy_hint": "Copie les règles actuelles de {from}. L'effectif minimum existant du site cible est écrasé.",
+        "copy_target_label": "Vers le site",
+        "copy_target_placeholder": "Choisir un site",
+        "copy_confirm": "Copier",
+        "copied": "Effectif minimum copié vers {location}.",
         "errors": {
             "type_invalid": "Au moins un type de service de l'effectif minimal est invalide."
         }

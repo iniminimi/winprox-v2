@@ -933,13 +933,6 @@
         "subtitle": "El régimen belga estándar (lun–vie) ya está rellenado; solo registra las desviaciones.",
         "save": "Guardar",
         "saved": "Festivos guardados.",
-        "copy_button": "Copiar a…",
-        "copy_title": "Copiar la plantilla mínima",
-        "copy_hint": "Copia las reglas actuales de {from}. La plantilla mínima existente del destino se sobrescribe.",
-        "copy_target_label": "A ubicación",
-        "copy_target_placeholder": "Elegir ubicación",
-        "copy_confirm": "Copiar",
-        "copied": "Plantilla mínima copiada a {location}.",
         "standard_badge": "Estándar",
         "override_badge": "Definido",
         "standard_option": "Estándar: :effect",
@@ -958,6 +951,13 @@
         "empty_locations": "No hay lugares para configurar.",
         "save": "Guardar",
         "saved": "Dotación mínima guardada para {location}.",
+        "copy_button": "Copiar a…",
+        "copy_title": "Copiar la plantilla mínima",
+        "copy_hint": "Copia las reglas actuales de {from}. La plantilla mínima existente del destino se sobrescribe.",
+        "copy_target_label": "A ubicación",
+        "copy_target_placeholder": "Elegir ubicación",
+        "copy_confirm": "Copiar",
+        "copied": "Plantilla mínima copiada a {location}.",
         "errors": {
             "type_invalid": "Al menos un tipo de turno de la dotación mínima no es válido."
         }
