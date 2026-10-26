@@ -99,14 +99,21 @@
                 </div>
                 @endif
                 <div class="wp-field">
-                    <label class="wp-label" for="type-color">{{ __('time.schedule.types.color') }}</label>
-                    <div class="wp-cluster wp-cluster--tight">
-                        <select id="type-color" class="wp-select" wire:model.live="typeColor">
-                            @foreach ($colors as $color)
-                                <option value="{{ $color->value }}">{{ __('time.schedule.types.colors.'.$color->value) }}</option>
-                            @endforeach
-                        </select>
-                        <span class="wp-roster-color-preview {{ $typeColor !== 'none' ? 'wp-roster-cell--'.$typeColor : '' }}" aria-hidden="true"></span>
+                    <span class="wp-label" id="type-color-label">{{ __('time.schedule.types.color') }}</span>
+                    <div class="wp-color-swatches" role="radiogroup" aria-labelledby="type-color-label">
+                        @foreach ($colors as $color)
+                            <label class="wp-color-swatch {{ $typeColor === $color->value ? 'is-selected' : '' }}">
+                                <input
+                                    type="radio"
+                                    name="typeColor"
+                                    value="{{ $color->value }}"
+                                    wire:model.live="typeColor"
+                                    class="wp-color-swatch__input"
+                                >
+                                <span class="wp-roster-color-preview {{ $color->value !== 'none' ? 'wp-roster-cell--'.$color->value : '' }}" aria-hidden="true"></span>
+                                <span class="wp-color-swatch__label">{{ __('time.schedule.types.colors.'.$color->value) }}</span>
+                            </label>
+                        @endforeach
                     </div>
                 </div>
                 <div class="wp-cluster">
