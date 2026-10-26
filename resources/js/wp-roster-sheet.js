@@ -1051,7 +1051,6 @@ export function bind(root, wire) {
 
     const grid = root.querySelector('[data-wp-roster-grid]');
     const banner = root.querySelector('[data-wp-roster-banner]');
-    const statusPill = root.querySelector('.wp-roster-dirty-pill');
     const payloadHost = root.querySelector('[data-wp-roster-payload]');
     if (!grid) {
         return;
@@ -1070,24 +1069,31 @@ export function bind(root, wire) {
             return false;
         }
 
-        return Object.values(payload.cells)
-            .flat()
-            .some((shift) => shift && shift.status === 'draft');
+        return Object.values(payload.cells).some((cell) => {
+            if (Array.isArray(cell?.shifts)) {
+                return cell.shifts.some((shift) => shift && shift.status === 'draft');
+            }
+
+            return cell && cell.status === 'draft';
+        });
     };
 
     const updateStatusPill = () => {
-        if (!statusPill) {
+        // Livewire morft de toolbar — de pill kan vervangen zijn, dus
+        // elke update opnieuw opzoeken in plaats van een referentie cachen.
+        const pill = root.querySelector('.wp-roster-dirty-pill');
+        if (!pill) {
             return;
         }
 
         if (dirty) {
-            statusPill.textContent = statusPill.dataset.labelDirty || '';
-            statusPill.hidden = false;
+            pill.textContent = pill.dataset.labelDirty || '';
+            pill.hidden = false;
         } else if (hasUnpublishedShifts()) {
-            statusPill.textContent = statusPill.dataset.labelUnpublished || '';
-            statusPill.hidden = false;
+            pill.textContent = pill.dataset.labelUnpublished || '';
+            pill.hidden = false;
         } else {
-            statusPill.hidden = true;
+            pill.hidden = true;
         }
     };
 
