@@ -19,7 +19,8 @@ class UploadOrganisationPortalBackgroundRequest extends FormRequest
     public static function rules(): array
     {
         return [
-            'portalBackground' => ['required', 'file', 'image', 'max:'.self::MAX_KILOBYTES],
+            // 'image' verwerpt svg (geen raster); mimes dekt svg + rasterformaten.
+            'portalBackground' => ['required', 'file', 'mimes:jpg,jpeg,png,svg,webp', 'max:'.self::MAX_KILOBYTES],
         ];
     }
 
