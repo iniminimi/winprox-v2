@@ -89,7 +89,12 @@
                 "Mijn uren op Clock Point (alleen eigen diensten)",
                 "Minimumpauze per team op de urenstaat (geen extra CIAO-event)",
                 "Verlof of recup aanvragen op Clock Point; beheer beslist onder Time → Aanvragen",
-                "Uurrooster in week- of maandzicht — feestdagen, vervangingsdagen en vaste vrije dagen gekleurd"
+                "Uurrooster: codes of vrije tijden, meerdere blokken per dag, week of maand",
+                "Week herhalen (1–26 weken) en vervanger zoeken",
+                "Feestdagen, vervangingsdagen en vaste vrije dagen gekleurd",
+                "Mijn rooster op Clock Point; beheer ziet gepland versus geklokt",
+                "Teamrooster op Clock Point (optioneel via Instellingen)",
+                "Minimum bezetting per locatie als indicatie, zonder blokkeren"
             ]
         },
         "audience": {

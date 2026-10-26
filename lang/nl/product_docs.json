@@ -193,15 +193,21 @@
                 "title": "Uurrooster",
                 "body": "Beheer plant diensten in Time → Uurrooster. Publiceren toont ze op Clock Point, niet bij de RSZ.",
                 "items": [
-                    "Typ een code of een vrije tijd zoals 07:00-15:00.",
-                    "Niet-opgeslagen wijzigingen vragen eerst om opslaan als je de pagina verlaat of van week/maand wisselt.",
-                    "Week- of maandweergave; weekends kun je verbergen.",
-                    "Clock Point toont Mijn rooster (alleen eigen gepubliceerde diensten). Teamrooster (optioneel via Instellingen): gepubliceerde weekdiensten van collega’s op de eigen locatie(s), afwezigheden neutraal.",
-                    "Rode driehoek als je niet, te vroeg of te laat inklokt, of te laat uitklokt. Op Mijn uren staat elke reden erbij.",
-                    "Beheer ziet gepland versus geklokt (15 minutenmarge).",
+                    "Typ een code (shifttype) of een vrije tijd zoals 07:00-15:00. Via Dag bewerken zet u meerdere blokken op één dag, optioneel met een notitie per blok.",
+                    "Afwezigheid (verlof, recup, ziek) vult de hele dag of een deelblok; uren tellen niet mee. De types stelt u in onder Time → Shifttypes; de knop Codes toont ze.",
+                    "Kies eerst een team of locatie; zonder filter laadt het rooster niet.",
+                    "Week- of maandweergave. Weekends staan standaard uit. De knoppen Week en Maand springen naar de huidige periode.",
+                    "Niet-opgeslagen wijzigingen vragen eerst om opslaan als u de pagina verlaat of van week/maand wisselt.",
+                    "Week herhalen kopieert werkdiensten naar 1–26 opeenvolgende weken; weken die al diensten hebben en dagen met afwezigheid worden overgeslagen. Notities gaan niet mee.",
+                    "Vervanger zoeken: WinProx stelt beschikbare collega’s voor. Het originele blok wordt afwezigheid; de vervanger krijgt hetzelfde slot.",
+                    "Optioneel een plek in de cel (groep of unit, bijvoorbeeld G1) onder de dienstcode. Filter op locatie toont uitvoerders per groep.",
+                    "Clock Point toont Mijn rooster (alleen eigen gepubliceerde diensten van de maand), met een badge bij publiceren of een latere wijziging. Teamrooster (optioneel via Instellingen): gepubliceerde weekdiensten van collega’s op de eigen locatie(s), afwezigheden neutraal.",
+                    "Rode driehoek als u niet, te vroeg of te laat inklokt, of te laat uitklokt. Op Mijn uren staat elke reden erbij.",
+                    "Beheer ziet gepland versus geklokt (15 minutenmarge). Een markering opent Time → Uren voor die persoon en die dag.",
                     "In de week- en maandweergave staan per uitvoerder vaste kolommen met een verticale titel en in de rij alleen het cijfer: norm, verschil, gepland, gewerkt, verlof, recup en ziek. De kolom sein signaleert onvolledige blokken of een openstaande registratie. Norm en verschil blijven leeg zolang die norm niet betrouwbaar is. Standaard is de weeknorm 38 uur en blijft ze per uitvoerder aanpasbaar. Zonder werkregeling telt de maand maandag tot vrijdag volgens die norm; feestdagen volgen de afgesproken regeling of, zonder afspraak, de Belgische standaard (werkdag vervalt; weekendfeestdag krijgt een voorgestelde vervangingsdag). Dat is een telling, geen oordeel over arbeidsduur.",
-                    "Feestdagen kleuren de datumkolom blauw, vervangingsdagen groen; een grijze cel is een vaste vrije dag (0 minuten in het weekpatroon) en blijft invulbaar.",
-                    "Optioneel stel je per locatie een minimum bezetting in (aantallen per diensttype). Het rooster toont dan als indicatie welke diensten op welke dag ontbreken; het blokkeert nooit het opslaan of publiceren."
+                    "Feestdagen kleuren de datumkolom blauw, vervangingsdagen groen; een grijze cel is een vaste vrije dag (0 minuten in het weekpatroon) en blijft invulbaar. Afspraken staan onder Time → Feestdagen.",
+                    "Optioneel stel je per locatie een minimum bezetting in (aantallen per diensttype). Het rooster toont dan als indicatie welke diensten op welke dag ontbreken; het blokkeert nooit het opslaan of publiceren.",
+                    "Afdrukken opent een liggend A4 van de zichtbare periode."
                 ]
             },
             {

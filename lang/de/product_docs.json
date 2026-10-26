@@ -193,15 +193,21 @@
                 "title": "Dienstplan",
                 "body": "Die Verwaltung plant Schichten unter Time → Dienstplan. Veröffentlichen zeigt sie am Clock Point, nicht bei der LSS.",
                 "items": [
-                    "Tippen Sie einen Code oder eine freie Zeit wie 07:00-15:00.",
+                    "Tippen Sie einen Code (Schichttyp) oder eine freie Zeit wie 07:00-15:00. Über Tag bearbeiten setzen Sie mehrere Blöcke an einem Tag, optional mit einer Notiz je Block.",
+                    "Abwesenheit (Urlaub, Ausgleich, krank) füllt den ganzen Tag oder einen Teilblock; Stunden zählen nicht. Die Typen stellen Sie unter Time → Schichttypen ein; die Schaltfläche Codes zeigt sie.",
+                    "Wählen Sie zuerst ein Team oder einen Standort; ohne Filter lädt der Dienstplan nicht.",
+                    "Wochen- oder Monatsansicht. Wochenenden sind standardmäßig ausgeblendet. Die Schaltflächen Woche und Monat springen zur aktuellen Periode.",
                     "Ungespeicherte Änderungen bitten zuerst um Speichern, wenn Sie die Seite verlassen oder Woche/Monat wechseln.",
-                    "Wochen- oder Monatsansicht; Wochenenden können Sie ausblenden.",
-                    "Clock Point zeigt Mein Dienstplan (nur eigene veröffentlichte Schichten). Team-Dienstplan (optional über Einstellungen): veröffentlichte Wochendienste der Kollegen am eigenen Standort/den eigenen Standorten, Abwesenheiten neutral.",
+                    "Woche wiederholen kopiert Dienste auf 1–26 aufeinanderfolgende Wochen; Wochen mit bestehenden Diensten und Tage mit Abwesenheit werden übersprungen. Notizen werden nicht mitkopiert.",
+                    "Vertretung suchen: WinProx schlägt verfügbare Kolleginnen und Kollegen vor. Der ursprüngliche Block wird zur Abwesenheit; die Vertretung erhält denselben Zeitslot.",
+                    "Optional ein Ort in der Zelle (Gruppe oder Einheit, zum Beispiel G1) unter dem Dienstcode. Ein Standortfilter zeigt Mitarbeitende gruppiert.",
+                    "Clock Point zeigt Mein Dienstplan (nur eigene veröffentlichte Schichten des Monats), mit einem Badge beim Veröffentlichen oder einer späteren Änderung. Team-Dienstplan (optional über Einstellungen): veröffentlichte Wochendienste der Kollegen am eigenen Standort/den eigenen Standorten, Abwesenheiten neutral.",
                     "Rotes Dreieck, wenn Sie nicht, zu früh oder zu spät einstempeln oder zu spät ausstempeln. Meine Stunden nennt jeden Grund.",
-                    "Die Verwaltung sieht geplant versus gestempelt (15-Minuten-Spielraum).",
+                    "Die Verwaltung sieht geplant versus gestempelt (15-Minuten-Spielraum). Eine Markierung öffnet Time → Stunden für diese Person und diesen Tag.",
                     "Wochen- und Monatsansicht zeigen je Ausführendem feste Spalten mit senkrechtem Titel und in der Zeile nur die Zahl: Norm, Differenz, geplant, gearbeitet, Urlaub, Ausgleich und krank. Die Spalte Hinweis zeigt unvollständige Blöcke oder eine offene Stempelung. Norm und Differenz bleiben leer, solange diese Norm nicht verlässlich ist. Die Norm steht standardmäßig auf 38 Stunden und bleibt je Person anpassbar. Ohne Arbeitsregelung zählt der Monat Montag–Freitag nach dieser Norm; Feiertage folgen der vereinbarten Regelung oder, ohne Vereinbarung, dem belgischen Standard (Arbeitstag entfällt; ein Feiertag am Wochenende erhält einen vorgeschlagenen Ersatztag). Das ist eine Zählung, kein Urteil über die Arbeitszeit.",
-                    "Feiertage färben die Datumsspalte blau, Ersatztage grün; eine graue Zelle ist ein fester freier Tag (0 Minuten im Wochenmuster) und bleibt ausfüllbar.",
-                    "Optional legen Sie pro Standort eine Mindestbesetzung fest (Anzahl pro Schichttyp). Der Plan zeigt dann als Hinweis, welche Schichten an welchem Tag fehlen; er blockiert nie das Speichern oder Veröffentlichen."
+                    "Feiertage färben die Datumsspalte blau, Ersatztage grün; eine graue Zelle ist ein fester freier Tag (0 Minuten im Wochenmuster) und bleibt ausfüllbar. Vereinbarungen stehen unter Time → Feiertage.",
+                    "Optional legen Sie pro Standort eine Mindestbesetzung fest (Anzahl pro Schichttyp). Der Plan zeigt dann als Hinweis, welche Schichten an welchem Tag fehlen; er blockiert nie das Speichern oder Veröffentlichen.",
+                    "Drucken öffnet ein querformatiges A4 der sichtbaren Periode."
                 ]
             },
             {

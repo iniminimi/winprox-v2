@@ -9,6 +9,11 @@ it('toont de features-overzicht pagina publiek per locale', function () {
         ->assertSee(__('product_docs.documents.features.label', [], 'nl'), false)
         ->assertSee('Verlof en recup', false)
         ->assertSee('1 Verlof, 1 Recup, of beide', false)
+        ->assertSee('Dag bewerken', false)
+        ->assertSee('Week herhalen', false)
+        ->assertSee('Vervanger zoeken', false)
+        ->assertSee('Teamrooster', false)
+        ->assertSee('minimum bezetting', false)
         ->assertSee('type="text/markdown"', false)
         ->assertSee(route('product.features.md', ['locale' => 'nl']), false);
 });

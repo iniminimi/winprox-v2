@@ -193,15 +193,21 @@
                 "title": "Roster",
                 "body": "Staff plan shifts under Time → Roster. Publishing shows them on Clock Point, not at the NSSO.",
                 "items": [
-                    "Type a code or a free time such as 07:00-15:00.",
+                    "Type a code (shift type) or a free time such as 07:00-15:00. Edit day lets you set several blocks on one day, optionally with a note per block.",
+                    "Absence (leave, TOIL, sick) fills the whole day or a partial block; hours do not count. You set the types under Time → Shift types; the Codes button shows them.",
+                    "Choose a team or location first; without a filter the roster does not load.",
+                    "Week or month view. Weekends are hidden by default. The Week and Month buttons jump to the current period.",
                     "Unsaved edits ask you to save first if you leave the page or switch week/month.",
-                    "Week or month view; weekends can be hidden.",
-                    "Clock Point shows My roster (own published shifts only). Team roster (optional via Settings): published weekly shifts of colleagues at own location(s), absences shown neutrally.",
+                    "Repeat week copies work shifts to 1–26 consecutive weeks; weeks that already have shifts and days with absence are skipped. Notes are not copied.",
+                    "Find replacement: WinProx suggests available colleagues. The original block becomes absence; the replacement gets the same slot.",
+                    "Optionally a place in the cell (group or unit, for example G1) under the duty code. Filtering by location groups workers.",
+                    "Clock Point shows My roster (own published shifts for the month only), with a badge when published or later changed. Team roster (optional via Settings): published weekly shifts of colleagues at own location(s), absences shown neutrally.",
                     "A red triangle if you have not clocked in, clocked in early or late, or clocked out late. My hours shows each reason.",
-                    "Admin sees planned versus clocked (15-minute window).",
+                    "Admin sees planned versus clocked (15-minute window). A mark opens Time → Hours for that person and that day.",
                     "Week and month view show fixed columns per worker, with a vertical title and only the figure in the row: norm, difference, planned, worked, leave, time off in lieu and sick. The flag column signals incomplete blocks or an open time record. Norm and difference stay empty while that norm is not reliable. The weekly norm defaults to 38 hours and stays adjustable per worker. Without a work pattern the month counts Monday–Friday per that norm; holidays follow the agreed scheme or, without an agreement, the Belgian standard (working day dropped; a weekend holiday gets a proposed replacement day). That is a count, not a judgement on working time.",
-                    "Holidays tint the date column blue, replacement days green; a grey cell is a fixed day off (0 minutes in the week pattern) and stays editable.",
-                    "Optionally set a minimum staffing per location (counts per shift type). The roster then indicates which shifts are missing on which day; it never blocks saving or publishing."
+                    "Holidays tint the date column blue, replacement days green; a grey cell is a fixed day off (0 minutes in the week pattern) and stays editable. Agreements live under Time → Public holidays.",
+                    "Optionally set a minimum staffing per location (counts per shift type). The roster then indicates which shifts are missing on which day; it never blocks saving or publishing.",
+                    "Print opens a landscape A4 of the visible period."
                 ]
             },
             {

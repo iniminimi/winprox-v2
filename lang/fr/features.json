@@ -89,7 +89,12 @@
                 "Mes heures sur Clock Point (uniquement vos services)",
                 "Pause minimale par équipe sur la feuille d’heures (pas d’événement CIAO extra)",
                 "Demander un congé ou une récup sur Clock Point ; la gestion décide sous Time → Demandes",
-                "Planning en vue semaine ou mois — jours fériés, jours de remplacement et jours de repos fixes en couleur"
+                "Planning : codes ou horaires libres, plusieurs blocs par jour, semaine ou mois",
+                "Répéter la semaine (1–26 semaines) et chercher un remplaçant",
+                "Jours fériés, jours de remplacement et jours de repos fixes en couleur",
+                "Mon planning sur Clock Point ; la gestion voit prévu versus pointé",
+                "Horaire d’équipe sur Clock Point (optionnel via Paramètres)",
+                "Effectif minimal par site comme indication, sans bloquer"
             ]
         },
         "audience": {

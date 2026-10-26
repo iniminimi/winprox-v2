@@ -193,15 +193,21 @@
                 "title": "Cuadrante",
                 "body": "La gestión planifica turnos en Time → Cuadrante. Publicar los muestra en Clock Point, no en la ONSS.",
                 "items": [
-                    "Escriba un código o un horario libre como 07:00-15:00.",
+                    "Escriba un código (tipo de turno) o un horario libre como 07:00-15:00. Editar día permite varios bloques en un mismo día, con una nota opcional por bloque.",
+                    "Una ausencia (permiso, compensación, baja) llena el día entero o un bloque parcial; las horas no cuentan. Los tipos se definen en Time → Tipos de turno; el botón Códigos los muestra.",
+                    "Elija primero un equipo o una ubicación; sin filtro el cuadrante no carga.",
+                    "Vista semanal o mensual. Los fines de semana están ocultos por defecto. Los botones Semana y Mes saltan al periodo actual.",
                     "Los cambios sin guardar piden guardar primero si sale de la página o cambia de semana/mes.",
-                    "Vista semanal o mensual; los fines de semana se pueden ocultar.",
-                    "Clock Point muestra Mi cuadrante (solo turnos publicados propios). Cuadrante del equipo (opcional vía Ajustes): turnos semanales publicados de los compañeros en su(s) ubicación(es), ausencias neutras.",
+                    "Repetir semana copia los turnos de trabajo a 1–26 semanas consecutivas; las semanas que ya tienen turnos y los días con ausencia se omiten. Las notas no se copian.",
+                    "Buscar sustituto: WinProx propone colegas disponibles. El bloque original pasa a ausencia; el sustituto recibe el mismo hueco.",
+                    "Opcionalmente un lugar en la celda (grupo o unidad, por ejemplo G1) bajo el código de servicio. El filtro por ubicación agrupa a los operarios.",
+                    "Clock Point muestra Mi cuadrante (solo los turnos publicados propios del mes), con una insignia al publicar o tras un cambio posterior. Cuadrante del equipo (opcional vía Ajustes): turnos semanales publicados de los compañeros en su(s) ubicación(es), ausencias neutras.",
                     "Triángulo rojo si no ha fichado, si ficha demasiado pronto o tarde, o si sale tarde. Mis horas indica cada motivo.",
-                    "La gestión ve planificado frente a fichado (margen de 15 minutos).",
+                    "La gestión ve planificado frente a fichado (margen de 15 minutos). Una marca abre Time → Horas para esa persona y ese día.",
                     "Las vistas semanal y mensual muestran columnas fijas por operario, con el título en vertical y solo la cifra en la fila: norma, diferencia, planificado, trabajado, vacaciones, descanso compensatorio y baja. La columna aviso señala bloques incompletos o un fichaje abierto. Norma y diferencia quedan vacías mientras esa norma no sea fiable. Esa norma es de 38 horas por defecto y sigue siendo ajustable por operario. Sin pauta de trabajo, el mes cuenta lunes–viernes según esa norma; los festivos siguen el régimen acordado o, sin acuerdo, el estándar belga (el día laborable se anula; un festivo en fin de semana recibe un día de sustitución propuesto). Es un recuento, no un juicio sobre la duración del trabajo.",
-                    "Los festivos tiñen la columna de azul, los días de sustitución de verde; una celda gris es un día libre fijo (0 minutos en el patrón) y sigue editable.",
-                    "Opcionalmente defina una dotación mínima por ubicación (cantidades por tipo de turno). El cuadrante indica entonces qué turnos faltan qué día; nunca bloquea el guardado ni la publicación."
+                    "Los festivos tiñen la columna de azul, los días de sustitución de verde; una celda gris es un día libre fijo (0 minutos en el patrón) y sigue editable. Los acuerdos están en Time → Festivos.",
+                    "Opcionalmente defina una dotación mínima por ubicación (cantidades por tipo de turno). El cuadrante indica entonces qué turnos faltan qué día; nunca bloquea el guardado ni la publicación.",
+                    "Imprimir abre un A4 apaisado del periodo visible."
                 ]
             },
             {

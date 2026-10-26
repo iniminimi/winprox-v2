@@ -89,7 +89,12 @@
                 "Le mie ore su Clock Point (solo i propri turni)",
                 "Pausa minima per team sul foglio ore (nessun evento CIAO extra)",
                 "Chiedere ferie o recupero sul Clock Point; la gestione decide in Time → Richieste",
-                "Turni in vista settimanale o mensile — festivi, giorni sostitutivi e giorni liberi fissi colorati"
+                "Turni: codici o orari liberi, più blocchi al giorno, settimana o mese",
+                "Ripeti settimana (1–26 settimane) e cerca sostituto",
+                "Festivi, giorni sostitutivi e giorni liberi fissi colorati",
+                "Il mio turno sul Clock Point; la gestione vede pianificato contro timbrato",
+                "Turni del team sul Clock Point (opzionale via Impostazioni)",
+                "Organico minimo per sede come indicazione, senza bloccare"
             ]
         },
         "audience": {

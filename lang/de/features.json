@@ -89,7 +89,12 @@
                 "Meine Stunden am Clock Point (nur eigene Schichten)",
                 "Mindestpause pro Team auf der Stundenliste (kein extra CIAO-Ereignis)",
                 "Urlaub oder Ausgleich am Clock Point beantragen; Verwaltung entscheidet unter Time → Anträge",
-                "Dienstplan in Wochen- oder Monatsansicht — Feiertage, Ersatztage und feste freie Tage eingefärbt"
+                "Dienstplan: Codes oder freie Zeiten, mehrere Blöcke pro Tag, Woche oder Monat",
+                "Woche wiederholen (1–26 Wochen) und Vertretung suchen",
+                "Feiertage, Ersatztage und feste freie Tage eingefärbt",
+                "Mein Dienstplan am Clock Point; die Verwaltung sieht geplant versus gestempelt",
+                "Team-Dienstplan am Clock Point (optional über Einstellungen)",
+                "Mindestbesetzung pro Standort als Hinweis, ohne zu blockieren"
             ]
         },
         "audience": {

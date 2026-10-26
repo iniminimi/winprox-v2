@@ -89,7 +89,12 @@
                 "My hours on Clock Point (own shifts only)",
                 "Per-team minimum break on the timesheet (no extra CIAO event)",
                 "Request leave or TOIL on Clock Point; staff decide under Time → Requests",
-                "Roster in week or month view — holidays, replacement days and fixed days off tinted"
+                "Roster: codes or free times, several blocks per day, week or month",
+                "Repeat week (1–26 weeks) and find a replacement",
+                "Holidays, replacement days and fixed days off tinted",
+                "My roster on Clock Point; admin sees planned versus clocked",
+                "Team roster on Clock Point (optional via Settings)",
+                "Minimum staffing per location as an indication, without blocking"
             ]
         },
         "audience": {

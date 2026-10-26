@@ -89,7 +89,12 @@
                 "Mis horas en Clock Point (solo tus turnos)",
                 "Pausa mínima por equipo en el parte (sin evento CIAO extra)",
                 "Pedir permiso o compensación en Clock Point; la gestión decide en Time → Solicitudes",
-                "Cuadrante en vista semanal o mensual — festivos, días de sustitución y días libres fijos coloreados"
+                "Cuadrante: códigos u horarios libres, varios bloques por día, semana o mes",
+                "Repetir semana (1–26 semanas) y buscar sustituto",
+                "Festivos, días de sustitución y días libres fijos coloreados",
+                "Mi cuadrante en Clock Point; la gestión ve planificado frente a fichado",
+                "Cuadrante del equipo en Clock Point (opcional vía Ajustes)",
+                "Dotación mínima por ubicación como indicación, sin bloquear"
             ]
         },
         "audience": {

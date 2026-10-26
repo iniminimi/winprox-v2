@@ -193,15 +193,21 @@
                 "title": "Turni",
                 "body": "La gestione pianifica i servizi in Time → Turni. Pubblicare li mostra sul Clock Point, non all’ONSS.",
                 "items": [
-                    "Digita un codice o un orario libero come 07:00-15:00.",
+                    "Digita un codice (tipo di turno) o un orario libero come 07:00-15:00. Modifica giorno consente più blocchi nello stesso giorno, con una nota opzionale per blocco.",
+                    "Un’assenza (ferie, recupero, malattia) riempie l’intera giornata o un blocco parziale; le ore non contano. I tipi si impostano in Time → Tipi di turno; il pulsante Codici li mostra.",
+                    "Scegli prima un team o una sede; senza filtro i turni non si caricano.",
+                    "Vista settimana o mese. I weekend sono nascosti di default. I pulsanti Settimana e Mese saltano al periodo corrente.",
                     "Le modifiche non salvate chiedono di salvare prima se lasci la pagina o cambi settimana/mese.",
-                    "Vista settimana o mese; i weekend si possono nascondere.",
-                    "Clock Point mostra Il mio turno (solo i servizi pubblicati propri). Turni del team (opzionale via Impostazioni): turni settimanali pubblicati dei colleghi nella/e propria/e sede/i, assenze neutre.",
+                    "Ripeti settimana copia i turni di lavoro su 1–26 settimane consecutive; le settimane già occupate e i giorni con assenza vengono saltati. Le note non vengono copiate.",
+                    "Cerca sostituto: WinProx propone colleghi disponibili. Il blocco originale diventa assenza; il sostituto ottiene la stessa fascia.",
+                    "Opzionalmente un luogo nella cella (gruppo o unità, ad esempio G1) sotto il codice del servizio. Il filtro per sede raggruppa gli esecutori.",
+                    "Clock Point mostra Il mio turno (solo i servizi pubblicati propri del mese), con un badge alla pubblicazione o a una modifica successiva. Turni del team (opzionale via Impostazioni): turni settimanali pubblicati dei colleghi nella/e propria/e sede/i, assenze neutre.",
                     "Triangolo rosso se non hai timbrato, se timbri troppo presto o in ritardo, o se esci in ritardo. Le mie ore indica ogni motivo.",
-                    "La gestione vede pianificato contro timbrato (margine di 15 minuti).",
+                    "La gestione vede pianificato contro timbrato (margine di 15 minuti). Un segno apre Time → Ore per quella persona e quel giorno.",
                     "Le viste settimana e mese mostrano colonne fisse per esecutore, con il titolo in verticale e solo la cifra nella riga: norma, scarto, pianificato, lavorato, ferie, recupero e malattia. La colonna segnale indica blocchi incompleti o una timbratura aperta. Norma e scarto restano vuoti finché quella norma non è affidabile. Quella norma è di 38 ore per impostazione predefinita e resta modificabile per persona. Senza regola di lavoro, il mese conta lunedì–venerdì secondo quella norma; i festivi seguono il regime concordato o, senza accordo, lo standard belga (il giorno lavorativo decade; una festività nel weekend riceve un giorno sostitutivo proposto). È un conteggio, non un giudizio sulla durata del lavoro.",
-                    "I festivi colorano la colonna di blu, i giorni sostitutivi di verde; una cella grigia è un giorno libero fisso (0 minuti nello schema) e resta modificabile.",
-                    "Facoltativamente imposti un organico minimo per sede (quantità per tipo di turno). I turni indicano quindi quali servizi mancano in quale giorno; non bloccano mai il salvataggio né la pubblicazione."
+                    "I festivi colorano la colonna di blu, i giorni sostitutivi di verde; una cella grigia è un giorno libero fisso (0 minuti nello schema) e resta modificabile. Gli accordi sono in Time → Festività.",
+                    "Facoltativamente imposti un organico minimo per sede (quantità per tipo di turno). I turni indicano quindi quali servizi mancano in quale giorno; non bloccano mai il salvataggio né la pubblicazione.",
+                    "Stampa apre un A4 orizzontale del periodo visibile."
                 ]
             },
             {
