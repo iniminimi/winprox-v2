@@ -839,6 +839,7 @@
         },
         "groups_filter": "Gruppen",
         "group_ungrouped": "Ohne Gruppe",
+        "not_published": "Nicht veröffentlicht",
         "unsaved": {
             "title": "Nicht gespeicherte Änderungen",
             "body": "Sie haben den Dienstplan geändert. Speichern Sie zuerst, sonst gehen diese Änderungen verloren.",

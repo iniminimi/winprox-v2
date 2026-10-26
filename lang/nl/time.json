@@ -839,6 +839,7 @@
         },
         "groups_filter": "Groepen",
         "group_ungrouped": "Zonder groep",
+        "not_published": "Niet gepubliceerd",
         "unsaved": {
             "title": "Niet-opgeslagen wijzigingen",
             "body": "Je hebt het uurrooster gewijzigd. Sla eerst op, anders gaan die wijzigingen verloren.",

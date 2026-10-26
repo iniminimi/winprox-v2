@@ -1051,6 +1051,7 @@ export function bind(root, wire) {
 
     const grid = root.querySelector('[data-wp-roster-grid]');
     const banner = root.querySelector('[data-wp-roster-banner]');
+    const statusPill = root.querySelector('.wp-roster-dirty-pill');
     const payloadHost = root.querySelector('[data-wp-roster-payload]');
     if (!grid) {
         return;
@@ -1064,6 +1065,32 @@ export function bind(root, wire) {
     let lastDaySelection = null;
     let lastDayCell = null;
 
+    const hasUnpublishedShifts = () => {
+        if (!payload || !payload.cells) {
+            return false;
+        }
+
+        return Object.values(payload.cells)
+            .flat()
+            .some((shift) => shift && shift.status === 'draft');
+    };
+
+    const updateStatusPill = () => {
+        if (!statusPill) {
+            return;
+        }
+
+        if (dirty) {
+            statusPill.textContent = statusPill.dataset.labelDirty || '';
+            statusPill.hidden = false;
+        } else if (hasUnpublishedShifts()) {
+            statusPill.textContent = statusPill.dataset.labelUnpublished || '';
+            statusPill.hidden = false;
+        } else {
+            statusPill.hidden = true;
+        }
+    };
+
     const setDirty = (value) => {
         dirty = Boolean(value);
         if (dirty) {
@@ -1071,6 +1098,7 @@ export function bind(root, wire) {
         } else {
             delete root.dataset.wpRosterDirty;
         }
+        updateStatusPill();
     };
 
     const runPendingLeave = () => {
@@ -1228,6 +1256,7 @@ export function bind(root, wire) {
     const mount = async () => {
         destroy();
         payload = readEmbeddedPayload() ?? await wire.payload();
+        updateStatusPill();
         lastDaySelection = null;
         lastDayCell = null;
         closeMenu();

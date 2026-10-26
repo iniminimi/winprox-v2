@@ -839,6 +839,7 @@
         },
         "groups_filter": "Gruppi",
         "group_ungrouped": "Senza gruppo",
+        "not_published": "Non pubblicato",
         "unsaved": {
             "title": "Modifiche non salvate",
             "body": "Hai modificato il turno. Salva prima, altrimenti quelle modifiche andranno perse.",

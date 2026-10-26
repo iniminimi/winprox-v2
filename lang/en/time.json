@@ -839,6 +839,7 @@
         },
         "groups_filter": "Groups",
         "group_ungrouped": "Ungrouped",
+        "not_published": "Not published",
         "unsaved": {
             "title": "Unsaved changes",
             "body": "You changed the roster. Save first, or those changes will be lost.",

@@ -839,6 +839,7 @@
         },
         "groups_filter": "Grupos",
         "group_ungrouped": "Sin grupo",
+        "not_published": "No publicado",
         "unsaved": {
             "title": "Cambios sin guardar",
             "body": "Has cambiado el horario. Guarda primero o se perderán esos cambios.",

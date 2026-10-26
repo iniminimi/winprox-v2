@@ -866,12 +866,12 @@
     letter-spacing: -0.01em;
 }
 
-/* Niet-opgeslagen-status: JS zet data-wp-roster-dirty op de paginaroot. */
+/* Rooster-status (niet opgeslagen / niet gepubliceerd): JS kiest de tekst. */
 .wp-roster-dirty-pill {
     display: none;
 }
 
-[data-wp-roster-dirty='1'] .wp-roster-dirty-pill {
+.wp-roster-dirty-pill:not([hidden]) {
     display: inline-flex;
 }
 
