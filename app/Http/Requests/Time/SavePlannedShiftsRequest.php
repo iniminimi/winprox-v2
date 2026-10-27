@@ -31,7 +31,8 @@ class SavePlannedShiftsRequest extends FormRequest
             'cells' => ['present', 'array'],
             'cells.*.worker_id' => ['required', 'integer'],
             'cells.*.date' => ['required', 'date'],
-            'cells.*.raw' => ['nullable', 'string', 'max:32'],
+            // Langste eigen celweergave: 8 blokken × "0800-1200/ABCDEFGH" + 7 × " · " = 165.
+            'cells.*.raw' => ['nullable', 'string', 'max:192'],
             'cells.*.keep' => ['sometimes', 'boolean'],
         ];
     }

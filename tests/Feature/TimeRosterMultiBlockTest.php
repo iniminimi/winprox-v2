@@ -8,6 +8,7 @@ use App\Actions\Time\ListRosterWeekAction;
 use App\Actions\Time\SavePlannedDayAction;
 use App\Actions\Time\SavePlannedShiftsAction;
 use App\Actions\Time\SaveShiftTypeAction;
+use App\Actions\Time\SetShiftTypeActiveAction;
 use App\Data\Time\SavePlannedDayData;
 use App\Data\Time\SavePlannedShiftsData;
 use App\Data\Time\SaveShiftTypeData;
@@ -16,6 +17,8 @@ use App\Enums\ShiftTypeColor;
 use App\Enums\ShiftTypeKind;
 use App\Enums\WorkerNotificationType;
 use App\Exceptions\RosterValidationException;
+use App\Http\Requests\Time\SavePlannedShiftsRequest;
+use App\Livewire\Time\RosterIndex;
 use App\Models\InternalTeam;
 use App\Models\PlannedShift;
 use App\Models\ShiftType;
@@ -27,6 +30,8 @@ use App\Models\WorkShift;
 use App\Support\Tenancy;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Validator;
+use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
 
@@ -626,4 +631,229 @@ it('zet een gewijzigde published dag via grid-save op draft zonder melding', fun
     expect(PlannedShift::where('worker_id', $worker->id)->whereDate('work_date', $day)->sole()->status)
         ->toBe(PlannedShiftStatus::Draft)
         ->and(WorkerNotification::where('type', WorkerNotificationType::RosterChanged->value)->count())->toBe(0);
+});
+
+function multiNextWeek(): string
+{
+    return now()->addWeek()->startOfWeek(Carbon::MONDAY)->toDateString();
+}
+
+function multiWeekCells(Worker $worker, string $week, array $values = []): array
+{
+    $cells = [];
+    for ($i = 0; $i < 7; $i++) {
+        $date = Carbon::parse($week)->addDays($i)->toDateString();
+        $cells[] = ['worker_id' => $worker->id, 'date' => $date, 'raw' => $values[$date] ?? ''];
+    }
+
+    return $cells;
+}
+
+function multiSaveGrid(Tenant $tenant, User $admin, Worker $worker, string $week, string $raw): void
+{
+    app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData($week, [$worker->id], multiWeekCells($worker, $week, [$week => $raw])),
+        $admin->id,
+    );
+}
+
+it('behoudt een identieke multi-blokdag via de API met ids, notities en status', function (string $raw) {
+    [$tenant, $admin, $worker] = multiBlockTenant();
+    $week = multiNextWeek();
+    $a = plannedBlock($tenant, $worker, $week, '07:00', '10:00');
+    $a->update(['description' => 'Sleutel ophalen']);
+    $b = plannedBlock($tenant, $worker, $week, '18:00', '20:00');
+    $token = $admin->createToken('test', ['time:write'])->plainTextToken;
+
+    $this->withToken($token)
+        ->putJson('/api/v1/time/schedule', [
+            'week_start' => $week,
+            'worker_ids' => [$worker->id],
+            'cells' => multiWeekCells($worker, $week, [$week => $raw]),
+        ])
+        ->assertOk();
+
+    Tenancy::actAs($tenant->id);
+    $keptA = PlannedShift::find($a->id);
+
+    expect($keptA)->not->toBeNull()
+        ->and($keptA->description)->toBe('Sleutel ophalen')
+        ->and($keptA->status)->toBe(PlannedShiftStatus::Published)
+        ->and(PlannedShift::find($b->id)?->status)->toBe(PlannedShiftStatus::Published)
+        ->and(PlannedShift::query()->count())->toBe(2);
+})->with([
+    'grid-weergave' => '0700-1000 · 1800-2000',
+    'met dubbelepunten' => '07:00-10:00 · 18:00-20:00',
+]);
+
+it('behoudt pauze, notitie en status van een ongewijzigde vrije-tijdcel via de API', function () {
+    [$tenant, $admin, $worker] = multiBlockTenant();
+    $week = multiNextWeek();
+    $row = plannedBlock($tenant, $worker, $week, '07:00', '15:00');
+    $row->update(['break_minutes' => 30, 'description' => 'Opleiding']);
+    $token = $admin->createToken('test', ['time:write'])->plainTextToken;
+
+    $this->withToken($token)
+        ->putJson('/api/v1/time/schedule', [
+            'week_start' => $week,
+            'worker_ids' => [$worker->id],
+            'cells' => multiWeekCells($worker, $week, [$week => '07:00-15:00']),
+        ])
+        ->assertOk();
+
+    Tenancy::actAs($tenant->id);
+    $kept = PlannedShift::find($row->id);
+
+    expect($kept)->not->toBeNull()
+        ->and($kept->break_minutes)->toBe(30)
+        ->and($kept->description)->toBe('Opleiding')
+        ->and($kept->status)->toBe(PlannedShiftStatus::Published);
+});
+
+it('behoudt pauze en notitie van een ongewijzigde vrije-tijdcel via de grid', function () {
+    [$tenant, $admin, $worker] = multiBlockTenant();
+    $week = multiNextWeek();
+    $row = plannedBlock($tenant, $worker, $week, '07:00', '15:00');
+    $row->update(['break_minutes' => 30, 'description' => 'Opleiding']);
+
+    Livewire::actingAs($admin)
+        ->test(RosterIndex::class)
+        ->set('teamFilter', (string) $worker->internal_team_id)
+        ->set('weekStart', $week)
+        ->call('save', array_slice(multiWeekCells($worker, $week, [
+            $week => '07:00-15:00',
+            Carbon::parse($week)->addDay()->toDateString() => '09:00-12:00',
+        ]), 0, 5))
+        ->assertNotDispatched('roster-save-failed');
+
+    Tenancy::actAs($tenant->id);
+    $kept = PlannedShift::find($row->id);
+
+    expect(PlannedShift::query()->where('start_time', '09:00')->exists())->toBeTrue()
+        ->and($kept)->not->toBeNull()
+        ->and($kept->break_minutes)->toBe(30)
+        ->and($kept->description)->toBe('Opleiding')
+        ->and($kept->status)->toBe(PlannedShiftStatus::Published);
+});
+
+it('behoudt aangepaste tijden als dezelfde code opnieuw getypt wordt', function () {
+    [$tenant, $admin, $worker] = multiBlockTenant();
+    $week = multiNextWeek();
+    $type = app(SaveShiftTypeAction::class)->handle(
+        $tenant,
+        new SaveShiftTypeData('V', 'Vroeg', '07:00', '15:00', 30, ShiftTypeColor::Green),
+        $admin->id,
+    );
+    $row = plannedBlock($tenant, $worker, $week, '08:00', '16:00');
+    $row->update(['shift_type_id' => $type->id, 'description' => 'Later starten']);
+
+    multiSaveGrid($tenant, $admin, $worker, $week, 'V');
+
+    $kept = PlannedShift::find($row->id);
+    expect($kept)->not->toBeNull()
+        ->and($kept->start_time)->toBe('08:00')
+        ->and($kept->end_time)->toBe('16:00')
+        ->and($kept->description)->toBe('Later starten');
+});
+
+it('behoudt bij een gedeeltelijke wijziging de ongewijzigde blokken (gemengde status)', function () {
+    [$tenant, $admin, $worker] = multiBlockTenant();
+    $week = multiNextWeek();
+    $a = plannedBlock($tenant, $worker, $week, '07:00', '10:00');
+    $a->update(['description' => 'Sleutel ophalen']);
+    $b = plannedBlock($tenant, $worker, $week, '18:00', '20:00');
+
+    multiSaveGrid($tenant, $admin, $worker, $week, '0700-1000 · 1900-2100');
+
+    $keptA = PlannedShift::find($a->id);
+    $new = PlannedShift::query()->where('start_time', '19:00')->first();
+
+    expect($keptA)->not->toBeNull()
+        ->and($keptA->status)->toBe(PlannedShiftStatus::Published)
+        ->and($keptA->description)->toBe('Sleutel ophalen')
+        ->and(PlannedShift::find($b->id))->toBeNull()
+        ->and($new)->not->toBeNull()
+        ->and($new->status)->toBe(PlannedShiftStatus::Draft)
+        ->and(PlannedShift::query()->count())->toBe(2);
+});
+
+it('weigert een nieuw blok dat overlapt met een behouden blok', function () {
+    [$tenant, $admin, $worker] = multiBlockTenant();
+    $week = multiNextWeek();
+    $a = plannedBlock($tenant, $worker, $week, '07:00', '10:00');
+    plannedBlock($tenant, $worker, $week, '18:00', '20:00');
+
+    expect(fn () => multiSaveGrid($tenant, $admin, $worker, $week, '0700-1000 · 0930-1200'))
+        ->toThrow(RosterValidationException::class);
+    expect(PlannedShift::find($a->id))->not->toBeNull();
+});
+
+it('behoudt de koppeling met een inactief werktype bij een ongewijzigde cel', function () {
+    [$tenant, $admin, $worker] = multiBlockTenant();
+    $week = multiNextWeek();
+    $type = app(SaveShiftTypeAction::class)->handle(
+        $tenant,
+        new SaveShiftTypeData('V', 'Vroeg', '07:00', '15:00', 30, ShiftTypeColor::Green),
+        $admin->id,
+    );
+    $row = plannedBlock($tenant, $worker, $week, '07:00', '15:00');
+    $row->update(['shift_type_id' => $type->id]);
+    app(SetShiftTypeActiveAction::class)->handle($type, false, $admin->id);
+
+    multiSaveGrid($tenant, $admin, $worker, $week, '07:00-15:00');
+
+    $kept = PlannedShift::find($row->id);
+    expect($kept)->not->toBeNull()
+        ->and((int) $kept->shift_type_id)->toBe((int) $type->id);
+});
+
+it('weigert een ongewijzigde afwezigheid met inactief type niet', function () {
+    [$tenant, $admin, $worker] = multiBlockTenant();
+    $week = multiNextWeek();
+    $leave = app(SaveShiftTypeAction::class)->handle(
+        $tenant,
+        new SaveShiftTypeData('VL', 'Verlof', null, null, 0, ShiftTypeColor::Pink, true, ShiftTypeKind::Leave),
+        $admin->id,
+    );
+    $row = plannedBlock($tenant, $worker, $week, '', '', PlannedShiftStatus::Published, ShiftTypeKind::Leave);
+    $row->update(['shift_type_id' => $leave->id]);
+    app(SetShiftTypeActiveAction::class)->handle($leave, false, $admin->id);
+    $display = $row->fresh()->load('shiftType')->displayValue();
+
+    multiSaveGrid($tenant, $admin, $worker, $week, $display);
+
+    expect(PlannedShift::find($row->id))->not->toBeNull();
+});
+
+it('slaat keep via de API over en verwerkt de gewijzigde raw', function () {
+    [$tenant, $admin, $worker] = multiBlockTenant();
+    $week = multiNextWeek();
+    $row = plannedBlock($tenant, $worker, $week, '07:00', '10:00');
+    $token = $admin->createToken('test', ['time:write'])->plainTextToken;
+    $cells = multiWeekCells($worker, $week, [$week => '09:00-12:00']);
+    $cells[0]['keep'] = true;
+
+    $this->withToken($token)
+        ->putJson('/api/v1/time/schedule', [
+            'week_start' => $week,
+            'worker_ids' => [$worker->id],
+            'cells' => $cells,
+        ])
+        ->assertOk();
+
+    Tenancy::actAs($tenant->id);
+    expect(PlannedShift::find($row->id))->toBeNull()
+        ->and(PlannedShift::query()->where('start_time', '09:00')->exists())->toBeTrue();
+});
+
+it('aanvaardt de langst mogelijke eigen celweergave als raw', function () {
+    $raw = implode(' · ', array_fill(0, 8, '0800-1200/ABCDEFGH'));
+
+    expect(mb_strlen($raw))->toBe(165)
+        ->and(Validator::make([
+            'week_start' => '2026-09-14',
+            'worker_ids' => [1],
+            'cells' => [['worker_id' => 1, 'date' => '2026-09-14', 'raw' => $raw]],
+        ], SavePlannedShiftsRequest::rulesFor())->passes())->toBeTrue();
 });

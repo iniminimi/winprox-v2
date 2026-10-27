@@ -944,6 +944,13 @@ een samenvatting (`0700-1000 · 1800-2000`, bij gedeeltelijke afwezigheid bv.
 grid-save de blokken opnieuw aanmaakt; er overheen typen (één blok) vervangt de hele dag
 (met bevestiging); onaangeroerde multi-cellen gaan met `keep: true` mee zodat blok-ids
 behouden blijven.
+**Blokbehoud bij grid- en API-save** (`SavePlannedShiftsAction`): de server vergelijkt elk
+geparst blok één op één met de bestaande rijen van die dag; de server is de bron van waarheid.
+Een blok dat overeenkomt (zelfde weergave, of zelfde soort/unit en shifttype, of bij vrije
+tijd dezelfde tijden) behoudt zijn rij — id, notitie, pauze en status. Alleen de overige
+blokken worden vervangen (draft), dus een dag kan gepubliceerde en concept-blokken naast
+elkaar hebben. Snapshotprincipe: dezelfde code opnieuw typen behoudt aangepaste tijden;
+een dag terugzetten naar de typetijden gaat via wissen en opnieuw invoeren.
 **Notitie per blok** (`planned_shifts.description`, max 500): alleen via de dag-editor;
 een grid-cel kan geen notitie dragen. Een grid-save die een enkelvoudige cel ongewijzigd
 laat, behoudt de bestaande rij — en dus de notitie. Zichtbaar als ✎-markering in de cel

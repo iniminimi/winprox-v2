@@ -64,7 +64,9 @@ Planned time is separate from punched `WorkShift`. Publishing does not send CIAO
 
 **Required Ability:** `time:write`
 
-Body: `week_start`, optional `period` (`week` default, or `month`), `worker_ids`, `cells` (`worker_id`, `date`, `raw` code or `07:00-15:00`). Full visible week or month snapshot.
+Body: `week_start`, optional `period` (`week` default, or `month`), `worker_ids`, `cells` (`worker_id`, `date`, `raw` code or `07:00-15:00`, max 192 characters; multi-block days as `07:00-10:00 · 18:00-20:00`). Full visible week or month snapshot.
+
+The server compares each block with the existing shifts of that day. Matching blocks keep their shift (id, note, break, status); only the other blocks are replaced as draft. Sending the `display` value from `GET /time/schedule` back unchanged therefore changes nothing. Retyping the same shift-type code keeps custom times; clear the cell to reset. `keep` is ignored by the API.
 
 `POST /time/schedule/copy` — all-or-nothing copy to another week; refused if the target week already has shifts.
 
