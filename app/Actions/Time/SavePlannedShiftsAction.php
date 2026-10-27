@@ -92,12 +92,18 @@ class SavePlannedShiftsAction
             throw new RosterValidationException('time.schedule.errors.invalid_cells', $invalid);
         }
 
-        return DB::transaction(function () use ($tenant, $workerIds, $weekStart, $weekEnd, $parsedCells, $keepCells, $actorUserId, $dates) {
+        return DB::transaction(function () use ($tenant, $workerIds, $weekStart, $weekEnd, $parsedCells, $keepCells, $actorUserId, $dates, $dateSet) {
+            // Alleen rijen op zichtbare datums horen bij deze save. In een
+            // maand zonder weekends liggen weekenddagen binnen [start, eind]
+            // maar buiten de grid: die rijen worden niet verwijderd en niet
+            // als vergrendelde wijziging gezien.
             $existing = PlannedShift::query()
                 ->whereIn('worker_id', $workerIds ?: [0])
                 ->whereBetween('work_date', [$weekStart, $weekEnd])
                 ->lockForUpdate()
-                ->get();
+                ->get()
+                ->filter(fn (PlannedShift $shift) => isset($dateSet[$shift->work_date->toDateString()]))
+                ->values();
 
             // Elke gewijzigde cel wordt draft — ook in een al gepubliceerde
             // periode. Zo blijft "Niet gepubliceerd" zichtbaar tot de beheerder

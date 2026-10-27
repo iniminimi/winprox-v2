@@ -13,6 +13,7 @@ use App\Actions\Time\ReplacePlannedShiftAction;
 use App\Actions\Time\SavePlannedDayAction;
 use App\Actions\Time\SavePlannedShiftsAction;
 use App\Actions\Time\SaveShiftTypeAction;
+use App\Actions\Time\SetShiftTypeActiveAction;
 use App\Data\Time\CopyWeekData;
 use App\Data\Time\PublishWeekData;
 use App\Data\Time\SavePlannedDayData;
@@ -38,6 +39,7 @@ use App\Models\WebhookEndpoint;
 use App\Models\Worker;
 use App\Models\WorkerNotification;
 use App\Models\WorkerWeekdayMinute;
+use App\Models\WorkShift;
 use App\Support\Tenancy;
 use App\Support\Time\RosterHistoryLock;
 use Carbon\Carbon;
@@ -254,7 +256,7 @@ it('toont een inactieve code als vrije tijd zodat opslaan blijft werken', functi
         $admin->id,
     );
 
-    app(\App\Actions\Time\SetShiftTypeActiveAction::class)->handle($type, false, $admin->id);
+    app(SetShiftTypeActiveAction::class)->handle($type, false, $admin->id);
 
     $shift = PlannedShift::query()->first();
     expect($shift->fresh()->load('shiftType')->displayValue())->toBe('07:00-15:00');
@@ -728,6 +730,90 @@ it('slaat een maandgrid op', function () {
 
     expect($saved)->toHaveCount(1)
         ->and($saved[0]->work_date->toDateString())->toBe('2026-09-14');
+});
+
+function scheduleMonthCells(Worker $worker, string $month, bool $includeWeekends, array $values = []): array
+{
+    $cells = [];
+    $day = Carbon::parse($month)->startOfMonth();
+    $end = $day->copy()->endOfMonth();
+    for (; $day->lte($end); $day->addDay()) {
+        if (! $includeWeekends && $day->isWeekend()) {
+            continue;
+        }
+        $date = $day->toDateString();
+        $cells[] = [
+            'worker_id' => $worker->id,
+            'date' => $date,
+            'raw' => $values[$date] ?? '',
+        ];
+    }
+
+    return $cells;
+}
+
+it('laat weekenddiensten staan bij opslaan van een maand met verborgen weekends', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-08-30'));
+
+    app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData('2026-09-01', [$worker->id], scheduleMonthCells($worker, '2026-09-01', true, [
+            '2026-09-12' => '07:00-12:00',
+        ]), 'month'),
+        $admin->id,
+    );
+
+    app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData('2026-09-01', [$worker->id], scheduleMonthCells($worker, '2026-09-01', false, [
+            '2026-09-14' => '08:00-16:00',
+        ]), 'month', false),
+        $admin->id,
+    );
+
+    Tenancy::actAs($tenant->id);
+    $weekend = PlannedShift::query()->whereDate('work_date', '2026-09-12')->first();
+    $monday = PlannedShift::query()->whereDate('work_date', '2026-09-14')->first();
+
+    expect($weekend)->not->toBeNull()
+        ->and($weekend->start_time)->toBe('07:00')
+        ->and($monday)->not->toBeNull()
+        ->and($monday->start_time)->toBe('08:00');
+});
+
+it('weigert opslaan niet door een verborgen historische weekenddienst in de lopende maand', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-09-16'));
+
+    $weekend = PlannedShift::create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-09-05',
+        'kind' => ShiftTypeKind::Work,
+        'start_time' => '07:00',
+        'end_time' => '12:00',
+        'break_minutes' => 0,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+
+    app(SavePlannedShiftsAction::class)->handle(
+        $tenant,
+        new SavePlannedShiftsData('2026-09-01', [$worker->id], scheduleMonthCells($worker, '2026-09-01', false, [
+            '2026-09-21' => '08:00-16:00',
+        ]), 'month', false),
+        $admin->id,
+    );
+
+    Tenancy::actAs($tenant->id);
+    $kept = PlannedShift::query()->find($weekend->id);
+    $monday = PlannedShift::query()->whereDate('work_date', '2026-09-21')->first();
+
+    expect($kept)->not->toBeNull()
+        ->and($kept->start_time)->toBe('07:00')
+        ->and($kept->status)->toBe(PlannedShiftStatus::Published)
+        ->and($monday)->not->toBeNull()
+        ->and($monday->start_time)->toBe('08:00');
 });
 
 it('bevat schedule-webhook-events', function () {
@@ -1334,7 +1420,6 @@ it('kort achternamen op de uurrooster-afdruk af tot 15 tekens', function () {
         ->assertDontSee('Vandenbroeckestraat', false)
         ->assertSee('Christy De Graeve', false);
 });
-
 
 // ---- Historische roostervergrendeling (RosterHistoryLock) ----
 
@@ -2083,7 +2168,7 @@ it('laat de shift van vandaag bewerkbaar, ook als er al geprikt is', function ()
     $today = '2026-10-15';
 
     // Bestaande prik op vandaag vergrendelt niets (punch-lock is buiten scope).
-    \App\Models\WorkShift::factory()->create([
+    WorkShift::factory()->create([
         'tenant_id' => $tenant->id,
         'worker_id' => $worker->id,
         'internal_team_id' => $worker->internal_team_id,
