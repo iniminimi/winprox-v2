@@ -119,6 +119,14 @@ return [
         ],
         [
             'patterns' => [
+                'herstellen', 'herstelpunt', 'restore point',
+                'rétablir', 'wiederherstellen', 'restaurar', 'ripristina',
+            ],
+            'page' => 'time.schedule',
+            'prefer' => ['Herstellen', 'Restore', 'Rétablir', 'Wiederherstellen', 'Restaurar', 'Ripristina'],
+        ],
+        [
+            'patterns' => [
                 'uurrooster', 'dienstplan', 'planned shift',
                 'horaire', 'roster', 'orario', 'horario',
             ],

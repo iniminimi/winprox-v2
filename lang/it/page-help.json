@@ -1823,6 +1823,10 @@
                     "text": "<strong>Copia nella settimana successiva</strong> è tutto o niente. Se la settimana di destinazione ha già turni, la copia è rifiutata."
                 },
                 {
+                    "label": "Ripristina",
+                    "text": "<strong>Ripristina</strong> (settimana e mese) mostra gli ultimi punti di una modifica al turno: data, ora, origine, esecutori e giorni. La differenza è raggruppata per effetto e per giorno: cosa sparisce, cosa torna e cosa cambia. Un giorno bloccato, un turno finito su un altro giorno o un’assenza approvata blocca il ripristino. Se il turno differisce o c’è una richiesta aperta, si conferma. La conferma vale solo per la differenza mostrata; se il piano è cambiato nel frattempo, non viene ripristinato nulla e si vede la nuova differenza. Dopo un ripristino riuscito si può annullare quel passo. I punti restano 30 giorni; l’elenco ne mostra al massimo 40."
+                },
+                {
                     "label": "Tipi di turno",
                     "text": "Il pulsante <strong>Legenda</strong> (accanto a Pubblica) apre codici, assenze e gruppi. I tipi si gestiscono in Time → <strong>Tipi di turno</strong> (di solito una volta)."
                 },

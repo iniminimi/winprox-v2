@@ -129,6 +129,7 @@ return [
         [
             'patterns' => [
                 'uurrooster', 'dienstplan', 'shift types', 'shifttypes', 'shiftypes', 'planned shift',
+                'herstellen', 'herstelpunt', 'restore point', 'rétablir', 'wiederherstellen', 'restaurar', 'ripristina',
                 'horaire', 'roster', 'orario', 'horario',
             ],
             'body_key' => 'faq.items.time_schedule.summary',

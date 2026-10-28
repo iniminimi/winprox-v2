@@ -1831,6 +1831,10 @@
                     "text": "<strong>Copier vers la semaine suivante</strong> est tout ou rien. Si la semaine cible a déjà des services, la copie est refusée."
                 },
                 {
+                    "label": "Rétablir",
+                    "text": "<strong>Rétablir</strong> (semaine et mois) montre les derniers points d’une modification du planning : date, heure, source, exécutants et jours. L’écart est groupé par effet et par jour : ce qui disparaît, ce qui revient et ce qui change. Un jour verrouillé, un service désormais sur un autre jour ou un congé approuvé bloque le rétablissement. Si le planning diffère ou qu’une demande est ouverte, vous confirmez. Cette confirmation ne vaut que pour l’écart affiché ; si le planning a changé entre-temps, rien n’est rétabli et vous voyez le nouvel écart. Après un rétablissement réussi, vous pouvez annuler cette étape. Les points sont conservés 30 jours ; la liste en montre au plus 40."
+                },
+                {
                     "label": "Types de service",
                     "text": "Le bouton <strong>Légende</strong> (à côté de Publier) ouvre codes, absences et groupes. Les types se gèrent sous Time → <strong>Types de service</strong> (en général une fois)."
                 },

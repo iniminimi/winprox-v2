@@ -1823,6 +1823,10 @@
                     "text": "<strong>Copy to next week</strong> is all-or-nothing. If the target week already has shifts, the copy is refused."
                 },
                 {
+                    "label": "Restore",
+                    "text": "<strong>Restore</strong> (week and month) lists the latest restore points of a roster edit: date, time, source, workers and days. The difference is grouped by effect and by day: what disappears, what comes back and what changes. A locked day, a shift that now sits on another day, or approved leave blocks the restore. If the roster differs or a request is still open, you confirm. That confirmation applies only to the difference you see; if the roster changed in the meantime, nothing is restored and you see the new difference. After a successful restore you can undo that step. Points are kept for 30 days; the list shows at most 40."
+                },
+                {
                     "label": "Shift types",
                     "text": "Use the <strong>Legend</strong> button (next to Publish) for codes, absences and groups. Manage types under Time → <strong>Shift types</strong> (usually once)."
                 },

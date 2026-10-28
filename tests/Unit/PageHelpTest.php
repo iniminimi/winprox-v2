@@ -94,6 +94,7 @@ it('laadt paginahulp voor Time-schermen', function (): void {
     $alarmGoal = collect($alarms['actions'])->first(fn (array $a): bool => $a['label'] === 'Doel');
 
     $presenceLabels = collect(PageHelp::for('time.presence')['actions'])->pluck('label')->all();
+    $scheduleLabels = collect(PageHelp::for('time.schedule')['actions'])->pluck('label')->all();
     $shiftLabels = collect(PageHelp::for('time.shifts')['actions'])->pluck('label')->all();
     $portalLabels = collect(PageHelp::for('portal.time')['actions'])->pluck('label')->all();
     $teamLabels = collect(PageHelp::for('team.teams')['actions'])->pluck('label')->all();
@@ -102,6 +103,7 @@ it('laadt paginahulp voor Time-schermen', function (): void {
         ->and(PageHelp::for('time.presence')['title'])->toBe('Hulp — Aanwezigheid')
         ->and(PageHelp::for('time.schedule'))->not->toBeNull()
         ->and(PageHelp::for('time.schedule')['title'])->toBe('Hulp — Uurrooster')
+        ->and($scheduleLabels)->toContain('Herstellen')
         ->and(PageHelp::for('time.shift_types'))->not->toBeNull()
         ->and(PageHelp::for('time.shift_types')['title'])->toBe('Hulp — Shifttypes')
         ->and($presenceLabels)->toContain('Manueel inklokken')

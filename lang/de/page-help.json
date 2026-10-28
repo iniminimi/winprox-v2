@@ -1823,6 +1823,10 @@
                     "text": "<strong>In nächste Woche kopieren</strong> gilt alles-oder-nichts. Hat die Zielwoche bereits Dienste, wird die Kopie abgelehnt."
                 },
                 {
+                    "label": "Wiederherstellen",
+                    "text": "<strong>Wiederherstellen</strong> (Woche und Monat) zeigt die letzten Punkte einer Dienstplanänderung: Datum, Uhrzeit, Quelle, Ausführende und Tage. Der Unterschied steht nach Folge und nach Tag: was wegfällt, was zurückkommt und was sich ändert. Ein gesperrter Tag, ein Dienst auf einem anderen Tag oder genehmigter Urlaub blockiert die Wiederherstellung. Weicht der Plan ab oder liegt ein offener Antrag vor, bestätigen Sie. Die Bestätigung gilt nur für den gezeigten Unterschied; hat sich der Plan inzwischen geändert, wird nichts wiederhergestellt und Sie sehen den neuen Unterschied. Nach einer erfolgreichen Wiederherstellung können Sie diesen Schritt rückgängig machen. Punkte bleiben 30 Tage erhalten; die Liste zeigt höchstens 40."
+                },
+                {
                     "label": "Schichttypen",
                     "text": "Über die Schaltfläche <strong>Legende</strong> (neben Veröffentlichen) sehen Sie Codes, Abwesenheiten und Gruppen. Typen verwalten Sie unter Time → <strong>Schichttypen</strong> (meist einmal)."
                 },

@@ -1823,6 +1823,10 @@
                     "text": "<strong>Copiar a la semana siguiente</strong> es todo o nada. Si la semana de destino ya tiene turnos, se rechaza la copia."
                 },
                 {
+                    "label": "Restaurar",
+                    "text": "<strong>Restaurar</strong> (semana y mes) muestra los últimos puntos de un cambio del cuadrante: fecha, hora, origen, operarios y días. La diferencia se agrupa por efecto y por día: qué desaparece, qué vuelve y qué cambia. Un día bloqueado, un turno que ya está en otro día o un permiso aprobado bloquea la restauración. Si el cuadrante difiere o hay una solicitud abierta, confirma. Esa confirmación vale solo para la diferencia que ve; si el horario cambió entretanto, no se restaura nada y ve la nueva diferencia. Tras una restauración correcta puede deshacer ese paso. Los puntos se conservan 30 días; la lista muestra como máximo 40."
+                },
+                {
                     "label": "Tipos de turno",
                     "text": "El botón <strong>Leyenda</strong> (junto a Publicar) abre códigos, ausencias y grupos. Los tipos se gestionan en Time → <strong>Tipos de turno</strong> (suele ser una vez)."
                 },

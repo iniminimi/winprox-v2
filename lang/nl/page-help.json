@@ -1823,6 +1823,10 @@
                     "text": "<strong>Kopieer naar volgende week</strong> kopieert alles-of-niets. Als de doelweek al diensten heeft, wordt de kopie geweigerd."
                 },
                 {
+                    "label": "Herstellen",
+                    "text": "<strong>Herstellen</strong> (week en maand) toont de laatste herstelpunten van een roosterwijziging: datum, tijdstip, bron, uitvoerders en dagen. Het verschil staat per gevolg en per dag: wat verdwijnt, wat terugkomt en wat wijzigt. Een vergrendelde dag, een dienst die intussen op een andere dag staat of goedgekeurd verlof blokkeert het herstel. Wijkt het rooster af of is er een open aanvraag, dan bevestigt u. Die bevestiging geldt alleen voor het verschil dat u ziet; is het rooster intussen gewijzigd, dan wordt niets hersteld en ziet u het nieuwe verschil. Na een geslaagd herstel kunt u die stap terugdraaien. Punten blijven 30 dagen bewaard; de lijst toont er hoogstens 40."
+                },
+                {
                     "label": "Shifttypes",
                     "text": "Via de knop <strong>Legende</strong> (naast Publiceren) opent u een overzicht van codes, afwezigheid en groepen. Types beheert u onder Time → <strong>Shifttypes</strong> (meestal één keer)."
                 },
