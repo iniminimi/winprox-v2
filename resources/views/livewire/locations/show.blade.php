@@ -377,7 +377,13 @@
                     </x-wp-tooltip>
                 @endif
 
-                <div class="wp-field" x-data="{ open: {{ ($unitPortalFlagsMatchCategory && $this->unitLatitude === '' && $this->unitLongitude === '' && $this->unitRosterCode === '') ? 'false' : 'true' }} }">
+                @php
+                    $advancedPortalStartsOpen = ! $unitPortalFlagsMatchCategory
+                        || $this->unitLatitude !== ''
+                        || $this->unitLongitude !== ''
+                        || (($timeRosterEnabled ?? false) && $this->unitRosterCode !== '');
+                @endphp
+                <div class="wp-field" x-data="{ open: {{ $advancedPortalStartsOpen ? 'true' : 'false' }} }">
                     <span class="wp-label">{{ __('locations.units.advanced_portal.label') }}</span>
                     <div class="wp-field-panel" :class="{ 'is-open': open }">
                         <button
@@ -490,12 +496,14 @@
                                 </x-wp-tooltip>
                             @endif
 
-                            <label class="wp-field">
-                                <span class="wp-label">{{ __('locations.units.fields.roster_code') }}</span>
-                                <input type="text" class="wp-input" wire:model="unitRosterCode" maxlength="8" autocomplete="off" />
-                                <span class="wp-muted">{{ __('locations.units.fields.roster_code_hint') }}</span>
-                                @error('unitRosterCode') <span class="wp-error">{{ $message }}</span> @enderror
-                            </label>
+                            @if ($timeRosterEnabled ?? false)
+                                <label class="wp-field">
+                                    <span class="wp-label">{{ __('locations.units.fields.roster_code') }}</span>
+                                    <input type="text" class="wp-input" wire:model="unitRosterCode" maxlength="8" autocomplete="off" />
+                                    <span class="wp-muted">{{ __('locations.units.fields.roster_code_hint') }}</span>
+                                    @error('unitRosterCode') <span class="wp-error">{{ $message }}</span> @enderror
+                                </label>
+                            @endif
 
                             @if (($gpsWorkVisitsEnabled ?? false) || $unitLatitude !== '' || $unitLongitude !== '')
                                 @include('partials.wp-gps-coords-fields', [
@@ -755,7 +763,7 @@
                             @click="open = !open"
                             :aria-expanded="open"
                         >
-                            <x-wp-tooltip :text="__('locations.bulk.advanced_portal.warning')" wrap class="wp-tooltip--block">
+                            <x-wp-tooltip :text="__(($timeRosterEnabled ?? false) ? 'locations.bulk.advanced_portal.warning' : 'locations.bulk.advanced_portal.warning_no_roster')" wrap class="wp-tooltip--block">
                                 <span>{{ __('locations.bulk.advanced_portal.open') }}</span>
                             </x-wp-tooltip>
                             <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />

@@ -251,6 +251,7 @@
         "advanced_portal": {
             "open": "Opciones de portal para este lote",
             "warning": "Estas casillas se aplican a todas las unidades de este lote. Por defecto siguen la categoría elegida. El código de roster y las fotos se configuran por unidad.",
+            "warning_no_roster": "Estas casillas se aplican a todas las unidades de este lote. Por defecto siguen la categoría elegida. Las fotos se configuran por unidad.",
             "inherits_from": "Sigue la categoría :category (las casillas se copian al cambiar de categoría).",
             "overrides_active": "Este lote difiere de la configuración de la categoría.",
             "no_category_hint": "Elija una categoría para heredar opciones del portal. Sin categoría, las casillas de abajo se aplican a todo el lote."

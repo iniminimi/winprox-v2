@@ -1160,7 +1160,8 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   één worker-scope-query + één shift-query, geen N+1.
 - **Uurrooster uit:** `time_roster_enabled` (standaard aan, Instellingen, onder Prikklok-beveiliging) verbergt
   de planning (uurrooster, shifttypes, feestdagen, minimumbezetting, verlof/recup) en
-  blokkeert die routes. Geplande diensten blijven bewaard. Time, QR-aanmelding, taken
+  blokkeert die routes. Het veld Roostercode in Geavanceerde portaal-opties verdwijnt;
+  een bestaande code blijft staan. Geplande diensten blijven bewaard. Time, QR-aanmelding, taken
   en de prikklok blijven aan.
 - **Golf 2 — Verlof / Recup:** Clock Point-tegel. Uitvoerder vraagt `leave` of `recup`
   (van–tot, max. 31 dagen, niet in het verleden, optionele toelichting ≤ 500). Overlappende

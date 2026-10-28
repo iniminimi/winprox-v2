@@ -638,6 +638,16 @@ class Show extends Component
             $photoSlotsLeft = max(0, 4 - (int) QrLinkPhoto::query()->where('unit_id', $this->editingUnitId)->count());
         }
 
+        $rosterOn = $this->locationTenant()?->timeRosterEnabled() ?? false;
+        if (! $rosterOn) {
+            $this->unitRosterCode = $this->editingUnitId === null
+                ? ''
+                : (string) (Unit::query()
+                    ->where('location_id', $this->location->id)
+                    ->whereKey($this->editingUnitId)
+                    ->value('roster_code') ?? '');
+        }
+
         $this->unitRosterCode = Unit::normalizeRosterCode($this->unitRosterCode);
 
         $validated = $this->validate([
@@ -735,7 +745,7 @@ class Show extends Component
             'name' => $validated['unitName'],
             'latitude' => $validated['unitLatitude'] ?? null,
             'longitude' => $validated['unitLongitude'] ?? null,
-            'roster_code' => $validated['unitRosterCode'] ?? null,
+            ...($rosterOn ? ['roster_code' => $validated['unitRosterCode'] ?? null] : []),
             'description' => $validated['unitDescription'] ?? null,
             'category_id' => $validated['unitCategoryId'] ?? null,
             'unit_check_list_id' => $validated['unitCheckListId'] ?? null,
@@ -1510,6 +1520,7 @@ class Show extends Component
             'workMenuUnitMeasurementsEnabled' => $this->locationTenant()?->workMenuUnitMeasurementsEnabled() ?? true,
             'presenceComplianceEnabled' => $this->locationTenant()?->presenceComplianceEnabled() ?? false,
             'gpsWorkVisitsEnabled' => $this->locationTenant()?->allowsGpsWorkVisits() ?? false,
+            'timeRosterEnabled' => $this->locationTenant()?->timeRosterEnabled() ?? false,
             'checkmateMode' => $this->locationTenant()?->checkmateMode() ?? false,
             'customersOnLocation' => $this->locationTenant()?->customersOnLocation() ?? false,
             'customerOptions' => ($this->locationTenant()?->customersOnLocation() ?? false)

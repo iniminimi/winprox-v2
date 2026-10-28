@@ -251,6 +251,7 @@
         "advanced_portal": {
             "open": "Opzioni portale per questo blocco",
             "warning": "Queste spunte valgono per tutte le unità di questo blocco. Di default seguono la categoria scelta. Codice roster e foto si impostano per unità.",
+            "warning_no_roster": "Queste spunte valgono per tutte le unità di questo blocco. Di default seguono la categoria scelta. Le foto si impostano per unità.",
             "inherits_from": "Segue la categoria :category (le spunte vengono copiate al cambio categoria).",
             "overrides_active": "Questo blocco differisce dalle impostazioni della categoria.",
             "no_category_hint": "Scegliete una categoria per ereditare le opzioni portale. Senza categoria le spunte sotto valgono per tutto il blocco."

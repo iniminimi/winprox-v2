@@ -251,6 +251,7 @@
         "advanced_portal": {
             "open": "Portal options for this bulk",
             "warning": "These flags apply to every unit in this bulk. They follow the selected category by default. Set roster code and photos per unit.",
+            "warning_no_roster": "These flags apply to every unit in this bulk. They follow the selected category by default. Set photos per unit.",
             "inherits_from": "Follows category :category (flags are copied when you change the category).",
             "overrides_active": "This bulk differs from the category settings.",
             "no_category_hint": "Choose a category to inherit portal options. Without a category, the flags below apply to the whole bulk."

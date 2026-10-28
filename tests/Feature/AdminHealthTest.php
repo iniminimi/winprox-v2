@@ -197,7 +197,7 @@ it('opent unit- en locatie-edit modals via query parameters', function () {
         ->assertSet('showUnitModal', true)
         ->assertSet('editingUnitId', $unit->id)
         ->assertSee(__('locations.units.advanced_portal.label'), false)
-        ->assertSee(__('locations.units.fields.roster_code'), false)
+        ->assertDontSee('wire:model="unitRosterCode"', false)
         ->assertSee(__('locations.units.fields.visit_pin'), false);
 });
 
