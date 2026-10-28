@@ -101,7 +101,7 @@ class BuildDashboardIntentHubAction
             ];
         }
 
-        if ($tenant->hasTimeModule()) {
+        if ($tenant->timeRosterEnabled()) {
             $tiles[] = [
                 'key' => 'roster',
                 'icon' => 'roster',

@@ -236,6 +236,14 @@
             <p class="wp-muted wp-text-sm">{{ __('settings.time_clock.lead') }}</p>
             <form wire:submit="saveTimeClockSecurity" class="wp-stack">
                 <label class="wp-switch">
+                    <input type="checkbox" wire:model="timeRosterEnabled">
+                    <span class="wp-switch__track" aria-hidden="true"></span>
+                    <span>{{ __('settings.time_clock.roster') }}</span>
+                </label>
+                <p class="wp-hint">{{ __('settings.time_clock.roster_hint') }}</p>
+                @error('time_roster_enabled') <p class="wp-error">{{ $message }}</p> @enderror
+
+                <label class="wp-switch">
                     <input type="checkbox" wire:model="timeBackofficeClock">
                     <span class="wp-switch__track" aria-hidden="true"></span>
                     <span>{{ __('settings.time_clock.backoffice_clock') }}</span>
@@ -243,13 +251,15 @@
                 <p class="wp-hint">{{ __('settings.time_clock.backoffice_clock_hint') }}</p>
                 @error('time_backoffice_clock') <p class="wp-error">{{ $message }}</p> @enderror
 
-                <label class="wp-switch">
-                    <input type="checkbox" wire:model="timeTeamRoster">
-                    <span class="wp-switch__track" aria-hidden="true"></span>
-                    <span>{{ __('settings.time_clock.team_roster') }}</span>
-                </label>
-                <p class="wp-hint">{{ __('settings.time_clock.team_roster_hint') }}</p>
-                @error('time_team_roster') <p class="wp-error">{{ $message }}</p> @enderror
+                @if ($timeRosterEnabled)
+                    <label class="wp-switch">
+                        <input type="checkbox" wire:model="timeTeamRoster">
+                        <span class="wp-switch__track" aria-hidden="true"></span>
+                        <span>{{ __('settings.time_clock.team_roster') }}</span>
+                    </label>
+                    <p class="wp-hint">{{ __('settings.time_clock.team_roster_hint') }}</p>
+                    @error('time_team_roster') <p class="wp-error">{{ $message }}</p> @enderror
+                @endif
 
                 <label class="wp-switch">
                     <input type="checkbox" wire:model="timeRequireWorkerPin">

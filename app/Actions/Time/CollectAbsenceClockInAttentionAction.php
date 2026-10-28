@@ -9,6 +9,7 @@ use App\Enums\ShiftTypeKind;
 use App\Enums\TimePresenceAttentionType;
 use App\Models\BelgianPublicHoliday;
 use App\Models\PlannedShift;
+use App\Models\Tenant;
 use App\Models\TenantHolidayAgreement;
 use App\Models\WorkShift;
 use App\Support\Time\BelgianHolidayStandardScheme;
@@ -27,6 +28,11 @@ class CollectAbsenceClockInAttentionAction
     public function handle(int $tenantId, Collection $openShifts, ?PlannedShiftStatus $plannedStatus = null): Collection
     {
         if ($openShifts->isEmpty()) {
+            return collect();
+        }
+
+        $tenant = Tenant::query()->find($tenantId);
+        if ($tenant === null || ! $tenant->timeRosterEnabled()) {
             return collect();
         }
 

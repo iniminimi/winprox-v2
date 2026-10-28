@@ -26,6 +26,7 @@
         $showEsgNav = $activeTenant instanceof Tenant && $activeTenant->hasEsgModule();
         $showIotNav = $activeTenant instanceof Tenant && $activeTenant->hasIotModule();
         $showTimeNav = $activeTenant instanceof Tenant && $activeTenant->hasTimeModule();
+        $showTimeRoster = $activeTenant instanceof Tenant && $activeTenant->timeRosterEnabled();
         $showCustomersNav = $activeTenant instanceof Tenant && $activeTenant->customersOnLocation();
         $showWorkMenuCalendar = $activeTenant instanceof Tenant && $activeTenant->workMenuCalendarEnabled();
         $showWorkMenuReservations = $activeTenant instanceof Tenant && $activeTenant->workMenuReservationsEnabled();
@@ -582,6 +583,7 @@
                                            @click="nav = false">
                                             <span>{{ __('time.nav.presence') }}</span>
                                         </a>
+                                        @if ($showTimeRoster)
                                         <a href="{{ route('time.schedule.index') }}"
                                            class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('time.schedule.*') ? 'is-active' : '' }}"
                                            @click="nav = false">
@@ -599,6 +601,7 @@
                                                 <span class="wp-pill wp-pill--progress">{{ $sidebarAbsenceCount }}</span>
                                             @endif
                                         </a>
+                                        @endif
                                     </div>
                                 </details>
                             @endif

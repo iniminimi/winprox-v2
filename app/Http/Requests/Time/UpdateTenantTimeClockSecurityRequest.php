@@ -30,6 +30,7 @@ class UpdateTenantTimeClockSecurityRequest extends FormRequest
             'time_evacuation_list' => ['required', 'boolean'],
             'time_backoffice_clock' => ['required', 'boolean'],
             'time_team_roster' => ['required', 'boolean'],
+            'time_roster_enabled' => ['required', 'boolean'],
         ];
     }
 }

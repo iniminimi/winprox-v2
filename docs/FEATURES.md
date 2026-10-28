@@ -1158,6 +1158,10 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   deze week; label "Week <iso> · <d/m>–<d/m>".
   Drafts nooit zichtbaar. `ListPublishedLocationRosterAction` —
   één worker-scope-query + één shift-query, geen N+1.
+- **Uurrooster uit:** `time_roster_enabled` (standaard aan, Instellingen → Prikklok) verbergt
+  de planning (uurrooster, shifttypes, feestdagen, minimumbezetting, verlof/recup) en
+  blokkeert die routes. Geplande diensten blijven bewaard. Time, QR-aanmelding, taken
+  en de prikklok blijven aan.
 - **Golf 2 — Verlof / Recup:** Clock Point-tegel. Uitvoerder vraagt `leave` of `recup`
   (van–tot, max. 31 dagen, niet in het verleden, optionele toelichting ≤ 500). Overlappende
   open aanvragen worden geweigerd. Eerste actieve shifttype van dat `kind`, anders fout.

@@ -31,6 +31,7 @@ use App\Models\Tenant;
 use App\Models\WorkShift;
 use App\Support\Tenancy;
 use App\Support\Time\RosterHistoryLock;
+use App\Support\Time\TimeModuleAccess;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Cookie;
@@ -142,6 +143,11 @@ class RosterIndex extends Component
     public array $copyReport = [];
 
     public string $copyError = '';
+
+    public function boot(): void
+    {
+        abort_unless(TimeModuleAccess::rosterEnabledForTenantId((int) Tenancy::id()), 403);
+    }
 
     public function mount(ResolveRosterPeriodAction $resolvePeriod): void
     {

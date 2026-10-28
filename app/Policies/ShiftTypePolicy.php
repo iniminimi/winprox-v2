@@ -29,7 +29,7 @@ class ShiftTypePolicy
 
     private function staffWithModule(User $user): bool
     {
-        if (! TimeModuleAccess::tenantHasModule($this->resolveTenant($user))) {
+        if (! TimeModuleAccess::rosterEnabled($this->resolveTenant($user))) {
             return false;
         }
 

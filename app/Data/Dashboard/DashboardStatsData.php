@@ -23,6 +23,7 @@ final class DashboardStatsData
         public bool $hasTimeModule,
         public bool $hasIotModule,
         public bool $workMenuIssuesTasksEnabled = true,
+        public bool $timeRosterEnabled = true,
     ) {}
 
     /** @return list<array{key: string, icon: string, label: string, meta: ?string, alert: bool, href_key: string}> */
@@ -47,7 +48,7 @@ final class DashboardStatsData
             $tiles[] = ['key' => 'worker_follow_up', 'icon' => 'team', 'label' => 'dashboard.kpi.worker_follow_up', 'meta' => null, 'alert' => true, 'href_key' => 'worker_follow_up'];
         }
 
-        if ($this->hasTimeModule && $this->staffingShortfalls > 0) {
+        if ($this->hasTimeModule && $this->timeRosterEnabled && $this->staffingShortfalls > 0) {
             $tiles[] = ['key' => 'staffing_shortfalls', 'icon' => 'roster', 'label' => 'dashboard.kpi.staffing_shortfalls', 'meta' => null, 'alert' => true, 'href_key' => 'staffing_shortfalls'];
         }
 
@@ -55,7 +56,7 @@ final class DashboardStatsData
             $tiles[] = ['key' => 'time_attention', 'icon' => 'alert-triangle', 'label' => 'dashboard.kpi.time_attention', 'meta' => null, 'alert' => true, 'href_key' => 'time_attention'];
         }
 
-        if ($this->hasTimeModule && $this->pendingAbsenceRequests > 0) {
+        if ($this->hasTimeModule && $this->timeRosterEnabled && $this->pendingAbsenceRequests > 0) {
             $tiles[] = ['key' => 'pending_absence', 'icon' => 'calendar', 'label' => 'dashboard.kpi.pending_absence', 'meta' => null, 'alert' => true, 'href_key' => 'pending_absence'];
         }
 

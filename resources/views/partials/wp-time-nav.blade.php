@@ -16,11 +16,12 @@
             ->handle((int) $tenantId);
     }
 
+    $rosterOn = $tenant instanceof \App\Models\Tenant && $tenant->timeRosterEnabled();
     // Checkmate: alles zit al in de zijbalk → geen balk.
     $showShifts = ! $checkmateMode && ! request()->routeIs('time.shifts.*');
-    $showShiftTypes = ! $checkmateMode && ! request()->routeIs('time.shift-types.*');
-    $showHolidays = ! $checkmateMode && ! request()->routeIs('time.holidays.*');
-    $showStaffing = ! $checkmateMode && ! request()->routeIs('time.staffing.*');
+    $showShiftTypes = $rosterOn && ! $checkmateMode && ! request()->routeIs('time.shift-types.*');
+    $showHolidays = $rosterOn && ! $checkmateMode && ! request()->routeIs('time.holidays.*');
+    $showStaffing = $rosterOn && ! $checkmateMode && ! request()->routeIs('time.staffing.*');
     $showAlarms = ! $checkmateMode && ! request()->routeIs('time.alarms.*');
     $showCiao = $ciaoEnabled && ! $checkmateMode && ! request()->routeIs('time.ciao.*');
     $hasLinks = $showShifts || $showShiftTypes || $showHolidays || $showStaffing || $showAlarms || $showCiao;

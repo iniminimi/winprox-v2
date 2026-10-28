@@ -50,7 +50,8 @@ class Tenant extends Model
         'time_gps_visit_radius_meters',
         'time_evacuation_list',
         'time_backoffice_clock',
-        'time_team_roster',
+            'time_team_roster',
+            'time_roster_enabled',
         'enterprise_number',
         'foreign_vat_number',
         'presence_compliance_enabled',
@@ -92,6 +93,7 @@ class Tenant extends Model
             'time_evacuation_list' => 'boolean',
             'time_backoffice_clock' => 'boolean',
             'time_team_roster' => 'boolean',
+            'time_roster_enabled' => 'boolean',
             'presence_compliance_enabled' => 'boolean',
             'presence_rsz_client_id' => 'encrypted',
             'presence_rsz_private_key' => 'encrypted',
@@ -341,6 +343,12 @@ class Tenant extends Model
     public function hasTimeModule(): bool
     {
         return (bool) $this->has_time_module;
+    }
+
+    /** Planning (uurrooster, shifttypes, feestdagen, bezetting, verlof). Prikklok blijft. */
+    public function timeRosterEnabled(): bool
+    {
+        return $this->hasTimeModule() && (bool) ($this->time_roster_enabled ?? true);
     }
 
     /** Checkmate = plan-preset (RSZ-compliance) — zie docs/CHECKMATE.md. */

@@ -7,6 +7,7 @@ use App\Http\Middleware\AuthenticateIotGateway;
 use App\Http\Middleware\CheckApiAccess;
 use App\Http\Middleware\ConfineMarketHost;
 use App\Http\Middleware\EnsureCheckmateRouteAllowed;
+use App\Http\Middleware\EnsureTimeRosterEnabled;
 use App\Http\Middleware\EnsureRequestIdempotency;
 use App\Http\Middleware\EnsureSuperuser;
 use App\Http\Middleware\RecordPromoFollowVisit;
@@ -44,6 +45,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'promo.follow' => RecordPromoFollowVisit::class,
             'support.tenant' => RequireSupportTenantForSuperuser::class,
             'checkmate.allowed' => EnsureCheckmateRouteAllowed::class,
+            'time.roster' => EnsureTimeRosterEnabled::class,
             'api.access' => CheckApiAccess::class,
             'iot.gateway' => AuthenticateIotGateway::class,
             'clock.display' => AuthenticateClockDisplay::class,

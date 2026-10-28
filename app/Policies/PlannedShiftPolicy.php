@@ -44,7 +44,7 @@ class PlannedShiftPolicy
      */
     public function correct(User $user, PlannedShift|string|null $plannedShift = null): bool
     {
-        if (! $user->isAdmin() || ! TimeModuleAccess::tenantHasModule($this->resolveTenant($user))) {
+        if (! $user->isAdmin() || ! TimeModuleAccess::rosterEnabled($this->resolveTenant($user))) {
             return false;
         }
 
@@ -57,7 +57,7 @@ class PlannedShiftPolicy
 
     private function staffWithModule(User $user): bool
     {
-        if (! TimeModuleAccess::tenantHasModule($this->resolveTenant($user))) {
+        if (! TimeModuleAccess::rosterEnabled($this->resolveTenant($user))) {
             return false;
         }
 

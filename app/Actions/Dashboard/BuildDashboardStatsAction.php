@@ -17,6 +17,7 @@ use App\Models\Location;
 use App\Models\Task;
 use App\Models\Unit;
 use App\Models\WorkShift;
+use App\Support\Time\TimeModuleAccess;
 
 class BuildDashboardStatsAction
 {
@@ -38,6 +39,8 @@ class BuildDashboardStatsAction
         $pendingAbsenceRecup = 0;
         $staffingShortfalls = 0;
 
+        $timeRosterEnabled = $hasTimeModule && TimeModuleAccess::rosterEnabledForTenantId($tenantId);
+
         if ($hasTimeModule) {
             $presentNow = WorkShift::query()
                 ->where('tenant_id', $tenantId)
@@ -46,16 +49,19 @@ class BuildDashboardStatsAction
                 ->count();
 
             $timeAttention = $this->countTimeAttention->handle($tenantId);
-            $pendingByKind = $this->countPendingAbsence->byKind($tenantId);
-            $pendingAbsenceLeave = $pendingByKind['leave'];
-            $pendingAbsenceRecup = $pendingByKind['recup'];
 
-            $weekStart = now()->startOfWeek();
-            $staffingShortfalls = $this->staffingShortfalls->handle(
-                $tenantId,
-                array_map(fn (int $i) => $weekStart->copy()->addDays($i)->toDateString(), range(0, 6)),
-                $actorLocationIds,
-            )['total'];
+            if ($timeRosterEnabled) {
+                $pendingByKind = $this->countPendingAbsence->byKind($tenantId);
+                $pendingAbsenceLeave = $pendingByKind['leave'];
+                $pendingAbsenceRecup = $pendingByKind['recup'];
+
+                $weekStart = now()->startOfWeek();
+                $staffingShortfalls = $this->staffingShortfalls->handle(
+                    $tenantId,
+                    array_map(fn (int $i) => $weekStart->copy()->addDays($i)->toDateString(), range(0, 6)),
+                    $actorLocationIds,
+                )['total'];
+            }
         }
 
         $iotAlarms = 0;
@@ -94,6 +100,7 @@ class BuildDashboardStatsAction
             hasTimeModule: $hasTimeModule,
             hasIotModule: $hasIotModule,
             workMenuIssuesTasksEnabled: $workMenuIssuesTasksEnabled,
+            timeRosterEnabled: $timeRosterEnabled,
         );
     }
 }

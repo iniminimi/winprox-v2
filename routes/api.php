@@ -89,10 +89,10 @@ Route::prefix('v1')->group(function () {
             ->middleware([CheckTokenAbilities::class.':time:read'])
             ->name('api.v1.time.work-shifts.index');
         Route::get('time/schedule', [TimeScheduleController::class, 'show'])
-            ->middleware([CheckTokenAbilities::class.':time:read'])
+            ->middleware([CheckTokenAbilities::class.':time:read', 'time.roster'])
             ->name('api.v1.time.schedule.show');
         Route::get('time/shift-types', [TimeScheduleController::class, 'types'])
-            ->middleware([CheckTokenAbilities::class.':time:read'])
+            ->middleware([CheckTokenAbilities::class.':time:read', 'time.roster'])
             ->name('api.v1.time.shift-types.index');
         Route::get('announcements', [AnnouncementController::class, 'index'])
             ->middleware([CheckTokenAbilities::class.':locations:read'])
@@ -166,22 +166,22 @@ Route::prefix('v1')->group(function () {
                 ->middleware([CheckTokenAbilities::class.':time:write'])
                 ->name('api.v1.time.workers.release-clock-device');
             Route::put('time/schedule', [TimeScheduleController::class, 'save'])
-                ->middleware([CheckTokenAbilities::class.':time:write'])
+                ->middleware([CheckTokenAbilities::class.':time:write', 'time.roster'])
                 ->name('api.v1.time.schedule.save');
             Route::post('time/schedule/copy', [TimeScheduleController::class, 'copy'])
-                ->middleware([CheckTokenAbilities::class.':time:write'])
+                ->middleware([CheckTokenAbilities::class.':time:write', 'time.roster'])
                 ->name('api.v1.time.schedule.copy');
             Route::post('time/schedule/publish', [TimeScheduleController::class, 'publish'])
-                ->middleware([CheckTokenAbilities::class.':time:write'])
+                ->middleware([CheckTokenAbilities::class.':time:write', 'time.roster'])
                 ->name('api.v1.time.schedule.publish');
             Route::post('time/shift-types', [TimeScheduleController::class, 'storeType'])
-                ->middleware([CheckTokenAbilities::class.':time:write'])
+                ->middleware([CheckTokenAbilities::class.':time:write', 'time.roster'])
                 ->name('api.v1.time.shift-types.store');
             Route::patch('time/shift-types/{shiftType}', [TimeScheduleController::class, 'updateType'])
-                ->middleware([CheckTokenAbilities::class.':time:write'])
+                ->middleware([CheckTokenAbilities::class.':time:write', 'time.roster'])
                 ->name('api.v1.time.shift-types.update');
             Route::post('time/shift-types/{shiftType}/active', [TimeScheduleController::class, 'setTypeActive'])
-                ->middleware([CheckTokenAbilities::class.':time:write'])
+                ->middleware([CheckTokenAbilities::class.':time:write', 'time.roster'])
                 ->name('api.v1.time.shift-types.active');
 
             Route::get('reservations', [ReservationController::class, 'index'])

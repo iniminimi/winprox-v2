@@ -499,7 +499,7 @@
                         </div>
                     </div>
                     @endif
-                    @if ($workerDefaultUnits->isNotEmpty())
+                    @if ($workerDefaultUnits->isNotEmpty() && (! ($hasTimeModule ?? false) || ($timeRosterEnabled ?? false)))
                         <div class="wp-field">
                             <x-wp-tooltip :text="__('team.workers.default_unit_hint')" wrap>
                                 <label class="wp-label" for="workerDefaultUnitId">{{ __('team.workers.default_unit') }}</label>
@@ -513,7 +513,7 @@
                             @error('workerDefaultUnitId') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
                     @endif
-                    @if ($hasTimeModule)
+                    @if ($timeRosterEnabled ?? false)
                         <div class="wp-modal-section">
                             <x-wp-tooltip :text="__('team.workers.contract_week_hint')" wrap>
                                 <h3 class="wp-label">{{ __('team.workers.contract_week') }}</h3>

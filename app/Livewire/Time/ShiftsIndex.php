@@ -15,6 +15,7 @@ use App\Models\Worker;
 use App\Models\WorkShift;
 use App\Support\Checkmate\CheckmateMode;
 use App\Support\Tenancy;
+use App\Support\Time\TimeModuleAccess;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
@@ -231,6 +232,10 @@ class ShiftsIndex extends Component
      */
     private function plannedShiftsMap(Collection $shifts): array
     {
+        if (! TimeModuleAccess::rosterEnabledForTenantId((int) Tenancy::id())) {
+            return [];
+        }
+
         $workerIds = $shifts->pluck('worker_id')->filter()->unique()->map(fn ($id) => (int) $id)->all();
         $dates = $shifts->pluck('clock_in_at')->filter()->map(fn ($at) => $at->toDateString())->unique()->sort()->values();
         if ($workerIds === [] || $dates->isEmpty()) {

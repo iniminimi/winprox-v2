@@ -44,6 +44,11 @@ class StaffingIndex extends Component
 
     public ?int $copyTargetId = null;
 
+    public function boot(): void
+    {
+        abort_unless(TimeModuleAccess::rosterEnabledForTenantId((int) Tenancy::id()), 403);
+    }
+
     public function mount(): void
     {
         $this->authorize('viewAny', PlannedShift::class);

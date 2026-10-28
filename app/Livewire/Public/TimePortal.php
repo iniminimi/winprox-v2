@@ -637,6 +637,10 @@ class TimePortal extends Component
             return;
         }
 
+        if (! $this->rosterOn()) {
+            return;
+        }
+
         $this->closeRoster();
         $this->hoursListOpen = false;
         $this->teamScheduleOpen = false;
@@ -697,7 +701,7 @@ class TimePortal extends Component
             return;
         }
 
-        if (! $this->teamScheduleEnabled()) {
+        if (! $this->rosterOn() || ! $this->teamScheduleEnabled()) {
             return;
         }
 
@@ -753,11 +757,16 @@ class TimePortal extends Component
 
     private function teamScheduleEnabled(): bool
     {
-        if ($this->checkmateModeActive()) {
+        if ($this->checkmateModeActive() || ! $this->rosterOn()) {
             return false;
         }
 
         return (bool) (Tenant::query()->find($this->tenantId)?->time_team_roster ?? false);
+    }
+
+    private function rosterOn(): bool
+    {
+        return TimeModuleAccess::rosterEnabledForTenantId($this->tenantId);
     }
 
     public function openAbsence(): void
@@ -769,6 +778,10 @@ class TimePortal extends Component
         try {
             TimeModuleAccess::assertEnabledForTenantId($this->tenantId);
         } catch (InvalidArgumentException) {
+            return;
+        }
+
+        if (! $this->rosterOn()) {
             return;
         }
 
@@ -814,7 +827,7 @@ class TimePortal extends Component
     public function submitAbsence(RequestAbsenceAction $requestAbsence): void
     {
         $worker = $this->authorizedWorker();
-        if ($worker === null || $this->activeClockPoint() === null) {
+        if ($worker === null || $this->activeClockPoint() === null || ! $this->rosterOn()) {
             return;
         }
 
@@ -2079,7 +2092,14 @@ class TimePortal extends Component
                     ?->absenceKind;
             }
         }
-        $hasTimeModule = TimeModuleAccess::tenantHasModule(Tenant::query()->find($this->tenantId));
+        $portalTenant = Tenant::query()->find($this->tenantId);
+        $hasTimeModule = TimeModuleAccess::tenantHasModule($portalTenant);
+        $timeRosterEnabled = TimeModuleAccess::rosterEnabled($portalTenant);
+        if (! $timeRosterEnabled) {
+            $this->scheduleListOpen = false;
+            $this->teamScheduleOpen = false;
+            $this->absenceListOpen = false;
+        }
         $checkmateMode = CheckmateMode::isActive(Tenant::query()->find($this->tenantId));
         $lastClosedShift = ($canAct && $verifiedWorker !== null && $hasTimeModule && $openShift === null)
             ? TimePortalData::lastClosedShiftToday($verifiedWorker)
@@ -2166,7 +2186,7 @@ class TimePortal extends Component
         $scheduleUnreadCount = 0;
         $schedulePublishedLabel = null;
         $scheduleChangedDaysLabel = '';
-        if ($canAct && $verifiedWorker !== null && $hasTimeModule && ! $checkmateMode) {
+        if ($canAct && $verifiedWorker !== null && $timeRosterEnabled && ! $checkmateMode) {
             $scheduleUnreadCount = count($listNotifications->handle(
                 $verifiedWorker,
                 $this->tenantId,
@@ -2194,7 +2214,7 @@ class TimePortal extends Component
         }
 
         $absenceRequests = collect();
-        if ($canAct && $this->absenceListOpen && $verifiedWorker !== null && $hasTimeModule && ! $checkmateMode) {
+        if ($canAct && $this->absenceListOpen && $verifiedWorker !== null && $timeRosterEnabled && ! $checkmateMode) {
             $absenceRequests = $listAbsenceRequests->handle($verifiedWorker, $this->tenantId);
         }
 
@@ -2215,7 +2235,7 @@ class TimePortal extends Component
         }
 
         $todayClockAlert = null;
-        if ($canAct && $verifiedWorker !== null && $hasTimeModule && ! $checkmateMode && ! $this->hoursListOpen && ! $this->scheduleListOpen && ! $this->absenceListOpen) {
+        if ($canAct && $verifiedWorker !== null && $timeRosterEnabled && ! $checkmateMode && ! $this->hoursListOpen && ! $this->scheduleListOpen && ! $this->absenceListOpen) {
             $todayClockAlert = ($rosterAlerts->handle(
                 $verifiedWorker,
                 $this->tenantId,
@@ -2275,6 +2295,7 @@ class TimePortal extends Component
             'completingTaskId' => $this->completingTaskId,
             'tasks' => $tasks,
             'hasTimeModule' => $hasTimeModule,
+            'timeRosterEnabled' => $timeRosterEnabled,
             'evacuationList' => $evacuationList,
             'gpsOnClock' => $this->tenantRequestsClockGps(),
             'gpsVisits' => $gpsVisits,

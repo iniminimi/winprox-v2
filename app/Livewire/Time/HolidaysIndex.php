@@ -39,6 +39,11 @@ class HolidaysIndex extends Component
     /** @var array<string, array{effect: string, replacement_date: string}> */
     public array $draftsByDate = [];
 
+    public function boot(): void
+    {
+        abort_unless(TimeModuleAccess::rosterEnabledForTenantId((int) Tenancy::id()), 403);
+    }
+
     public function mount(): void
     {
         $this->authorize('viewAny', TenantHolidayAgreement::class);

@@ -27,6 +27,10 @@ class ResolveWorkerPortalRosterAlertsAction
     {
         TimeModuleAccess::assertEnabledForTenantId($tenantId);
 
+        if (! TimeModuleAccess::rosterEnabledForTenantId($tenantId)) {
+            return [];
+        }
+
         if ((int) $worker->tenant_id !== $tenantId) {
             throw new InvalidArgumentException('worker_tenant_mismatch');
         }

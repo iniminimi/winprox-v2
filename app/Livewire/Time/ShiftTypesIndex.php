@@ -14,6 +14,7 @@ use App\Livewire\Concerns\ProvidesTimeNavAlarmCount;
 use App\Models\ShiftType;
 use App\Models\Tenant;
 use App\Support\Tenancy;
+use App\Support\Time\TimeModuleAccess;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
@@ -36,6 +37,11 @@ class ShiftTypesIndex extends Component
     public int $typeBreak = 0;
     public string $typeColor = 'none';
     public string $typeKind = 'work';
+
+    public function boot(): void
+    {
+        abort_unless(TimeModuleAccess::rosterEnabledForTenantId((int) Tenancy::id()), 403);
+    }
 
     public function mount(): void
     {

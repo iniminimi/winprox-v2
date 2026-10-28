@@ -13,6 +13,7 @@ use App\Livewire\Concerns\ProvidesTimeNavAlarmCount;
 use App\Models\AbsenceRequest;
 use App\Models\Tenant;
 use App\Support\Tenancy;
+use App\Support\Time\TimeModuleAccess;
 use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use InvalidArgumentException;
@@ -34,6 +35,11 @@ class AbsenceRequestsIndex extends Component
     public ?int $decidingId = null;
 
     public string $decisionReason = '';
+
+    public function boot(): void
+    {
+        abort_unless(TimeModuleAccess::rosterEnabledForTenantId((int) Tenancy::id()), 403);
+    }
 
     public function mount(): void
     {

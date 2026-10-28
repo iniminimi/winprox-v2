@@ -916,6 +916,7 @@
                     @if ($hasTimeModule)
                         <div class="wp-tiles">
                             @unless ($checkmateMode ?? false)
+                                @if ($timeRosterEnabled ?? true)
                                 <button type="button" class="wp-tile" wire:click="openSchedule">
                                     <span class="wp-cluster">
                                         <x-wp-icon name="calendar" class="wp-tile-icon" />
@@ -935,6 +936,7 @@
                                         <span class="wp-tile-sub">{{ __('time.portal.team_schedule.tile_sub') }}</span>
                                     </button>
                                 @endif
+                                @endif
                             @endunless
                             <button type="button" class="wp-tile" wire:click="openHours" data-manual-capture-trigger="portal-open-hours">
                                 <span class="wp-cluster">
@@ -953,6 +955,7 @@
                                 </button>
                             @endif
                             @unless ($checkmateMode ?? false)
+                                @if ($timeRosterEnabled ?? true)
                                 <button type="button" class="wp-tile" wire:click="openAbsence">
                                     <span class="wp-cluster">
                                         <x-wp-icon name="calendar-off" class="wp-tile-icon" />
@@ -960,6 +963,7 @@
                                     </span>
                                     <span class="wp-tile-sub">{{ __('time.portal.absence.tile_sub') }}</span>
                                 </button>
+                                @endif
                             @endunless
                             @if ($evacuationList)
                                 <button type="button" class="wp-tile" wire:click="openRoster">

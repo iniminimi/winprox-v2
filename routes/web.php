@@ -510,12 +510,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/esg/point', EsgPointHistory::class)->name('esg.point.history');
         Route::get('/iot', IotIndex::class)->name('iot.index');
         Route::get('/time/presence', PresenceIndex::class)->name('time.presence.index');
-        Route::get('/time/schedule', RosterIndex::class)->name('time.schedule.index');
-        Route::get('/time/schedule/print', RosterPrintController::class)->name('time.schedule.print');
-        Route::get('/time/absence-requests', AbsenceRequestsIndex::class)->name('time.absence-requests.index');
-        Route::get('/time/shift-types', ShiftTypesIndex::class)->name('time.shift-types.index');
-        Route::get('/time/holidays', HolidaysIndex::class)->name('time.holidays.index');
-        Route::get('/time/staffing', StaffingIndex::class)->name('time.staffing.index');
+        Route::middleware('time.roster')->group(function () {
+            Route::get('/time/schedule', RosterIndex::class)->name('time.schedule.index');
+            Route::get('/time/schedule/print', RosterPrintController::class)->name('time.schedule.print');
+            Route::get('/time/absence-requests', AbsenceRequestsIndex::class)->name('time.absence-requests.index');
+            Route::get('/time/shift-types', ShiftTypesIndex::class)->name('time.shift-types.index');
+            Route::get('/time/holidays', HolidaysIndex::class)->name('time.holidays.index');
+            Route::get('/time/staffing', StaffingIndex::class)->name('time.staffing.index');
+        });
         Route::get('/time/alarms', AlarmsIndex::class)->name('time.alarms.index');
         Route::get('/time/shifts', ShiftsIndex::class)->name('time.shifts.index');
         Route::get('/time/ciao', PresenceSubmissionsIndex::class)->name('time.ciao.index');
