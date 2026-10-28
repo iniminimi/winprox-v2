@@ -273,6 +273,7 @@
         "worker_passkeys": "Accesso con impronta o volto (passkey)",
         "worker_passkeys_hint": "Gli esecutori possono proteggere il proprio telefono e poi accedere con lo sblocco del dispositivo. PIN o icona restano disponibili.",
         "roster": "Turni",
+        "roster_label": "Usare i turni",
         "roster_saved": "Turni salvati.",
         "roster_hint": "Disattivato nasconde i turni, i tipi di turno, le festività, l’organico minimo e le richieste di assenza. L’accesso QR, i compiti e il timbratore restano. I turni esistenti restano salvati.",
         "team_roster": "Turni del team visibili agli esecutori",

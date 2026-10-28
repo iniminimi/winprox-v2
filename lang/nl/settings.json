@@ -273,6 +273,7 @@
         "worker_passkeys": "Aanmelden met vingerafdruk of gezicht (passkey)",
         "worker_passkeys_hint": "Uitvoerders kunnen hun eigen gsm beveiligen en daarna met de toestelontgrendeling aanmelden. PIN of icoon blijft altijd beschikbaar.",
         "roster": "Uurrooster",
+        "roster_label": "Uurrooster gebruiken",
         "roster_saved": "Uurrooster opgeslagen.",
         "roster_hint": "Uit verbergt het uurrooster, shifttypes, feestdagen, minimumbezetting en verlofaanvragen. QR-aanmelding, taken en de prikklok blijven. Bestaande diensten blijven bewaard.",
         "team_roster": "Teamrooster zichtbaar voor uitvoerders",

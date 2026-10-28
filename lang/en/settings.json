@@ -273,6 +273,7 @@
         "worker_passkeys": "Sign in with fingerprint or face (passkey)",
         "worker_passkeys_hint": "Workers can secure their own phone and then sign in with the device unlock. PIN or icon remains available.",
         "roster": "Roster",
+        "roster_label": "Use the roster",
         "roster_saved": "Roster saved.",
         "roster_hint": "Off hides the roster, shift types, holidays, minimum staffing and leave requests. QR sign-in, tasks and the clock stay. Existing shifts are kept.",
         "team_roster": "Team roster visible to workers",

@@ -273,6 +273,7 @@
         "worker_passkeys": "Connexion par empreinte ou visage (clé d'accès)",
         "worker_passkeys_hint": "Les ouvriers peuvent sécuriser leur propre téléphone puis se connecter via le déverrouillage de l'appareil. Le PIN ou l'icône reste disponible.",
         "roster": "Planning",
+        "roster_label": "Utiliser le planning",
         "roster_saved": "Planning enregistré.",
         "roster_hint": "Désactivé masque le planning, les types de service, les jours fériés, l’effectif minimum et les demandes de congé. La connexion QR, les tâches et la pointeuse restent. Les services existants sont conservés.",
         "team_roster": "Horaire d’équipe visible pour les exécutants",

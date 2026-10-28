@@ -709,7 +709,7 @@
                 },
                 {
                     "label": "Sicurezza marcatura",
-                    "text": "Solo con Time: PIN, biometria (passkey), GPS alla timbratura, visite GPS su Clock Point e, in opzione, timbrare dalla barra laterale per i colleghi con un team di timbratura (disattivato di default). La scheda Turni (attiva per impostazione predefinita) spegne la pianificazione; l’accesso QR, i compiti e il timbratore restano, e i turni esistenti restano salvati."
+                    "text": "Solo con Time: PIN, biometria (passkey), GPS alla timbratura, visite GPS su Clock Point e, in opzione, timbrare dalla barra laterale per i colleghi con un team di timbratura (disattivato di default). La scheda Turni è in cima a Impostazioni (attiva per impostazione predefinita). Disattivata spegne la pianificazione; l’accesso QR, i compiti e il timbratore restano, e i turni esistenti restano salvati."
                 },
                 {
                     "label": "Elenco evacuazione",

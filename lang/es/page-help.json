@@ -709,7 +709,7 @@
                 },
                 {
                     "label": "Seguridad del fichaje",
-                    "text": "Solo con Time: PIN, biometría (clave de acceso), GPS al fichar, visitas GPS en Clock Point y, opcionalmente, fichar desde la barra lateral para colegas con un equipo de fichaje (desactivado por defecto). La tarjeta Cuadrante (activada por defecto) apaga la planificación; el acceso por QR, las tareas y el reloj siguen, y los turnos existentes se conservan."
+                    "text": "Solo con Time: PIN, biometría (clave de acceso), GPS al fichar, visitas GPS en Clock Point y, opcionalmente, fichar desde la barra lateral para colegas con un equipo de fichaje (desactivado por defecto). La tarjeta Cuadrante está arriba en Ajustes (activada por defecto). Desactivada apaga la planificación; el acceso por QR, las tareas y el reloj siguen, y los turnos existentes se conservan."
                 },
                 {
                     "label": "Lista de evacuación",

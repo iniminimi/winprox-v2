@@ -76,7 +76,8 @@ it('zet het uurrooster uit en laat prikklok en aanmelden staan', function () {
     $this->actingAs($admin)
         ->get(route('settings.index'))
         ->assertOk()
-        ->assertSee(__('settings.time_clock.roster'), false)
+        ->assertSee('id="settings-roster"', false)
+        ->assertSee(__('settings.time_clock.roster_label'), false)
         ->assertDontSee(__('settings.time_clock.team_roster'), false);
 });
 
@@ -93,6 +94,7 @@ it('laat het uurrooster aan wanneer de schakelaar aan staat', function () {
     $this->actingAs($admin)
         ->get(route('settings.index'))
         ->assertOk()
-        ->assertSee(__('settings.time_clock.roster'), false)
+        ->assertSee('id="settings-roster"', false)
+        ->assertSee(__('settings.time_clock.roster_label'), false)
         ->assertSee(__('settings.time_clock.team_roster'), false);
 });

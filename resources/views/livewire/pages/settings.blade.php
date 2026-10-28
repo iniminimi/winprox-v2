@@ -10,6 +10,22 @@
         <div class="wp-flash wp-flash--success">{{ session('success') }}</div>
     @endif
 
+    @if ($canManageOrganisation && $hasTimeModule)
+        <section id="settings-roster" class="wp-card wp-card-pad wp-stack wp-settings-section">
+            <h2 class="wp-section-title">{{ __('settings.time_clock.roster') }}</h2>
+            <form wire:submit="saveTimeRoster" class="wp-stack">
+                <label class="wp-switch">
+                    <input type="checkbox" wire:model="timeRosterEnabled">
+                    <span class="wp-switch__track" aria-hidden="true"></span>
+                    <span>{{ __('settings.time_clock.roster_label') }}</span>
+                </label>
+                <p class="wp-hint">{{ __('settings.time_clock.roster_hint') }}</p>
+                @error('time_roster_enabled') <p class="wp-error">{{ $message }}</p> @enderror
+                <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
+            </form>
+        </section>
+    @endif
+
     @if (! ($checkmateMode ?? false))
     <div
         class="wp-card wp-card-pad wp-stack-tight wp-settings-section"
@@ -232,19 +248,6 @@
     @endif
 
     @if ($canManageOrganisation && $hasTimeModule)
-        <x-wp-settings-section :title="__('settings.time_clock.roster')" titleId="settings-roster" :openByDefault="true">
-            <form wire:submit="saveTimeRoster" class="wp-stack">
-                <label class="wp-switch">
-                    <input type="checkbox" wire:model="timeRosterEnabled">
-                    <span class="wp-switch__track" aria-hidden="true"></span>
-                    <span>{{ __('settings.time_clock.roster') }}</span>
-                </label>
-                <p class="wp-hint">{{ __('settings.time_clock.roster_hint') }}</p>
-                @error('time_roster_enabled') <p class="wp-error">{{ $message }}</p> @enderror
-                <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
-            </form>
-        </x-wp-settings-section>
-
         <x-wp-settings-section :title="__('settings.time_clock.title')">
             <p class="wp-muted wp-text-sm">{{ __('settings.time_clock.lead') }}</p>
             <form wire:submit="saveTimeClockSecurity" class="wp-stack">
