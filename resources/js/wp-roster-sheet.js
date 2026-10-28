@@ -1247,9 +1247,9 @@ export function bind(root, wire) {
         grid.querySelectorAll('.jss').forEach((node) => node.remove());
     };
 
-    // Payload zit al in de gerenderde HTML — scheelt een tweede
-    // ListRosterWeekAction-run + AJAX-roundtrip per mount. Livewire morft het
-    // attribuut bij elke render, dus na weekwissel staat de verse data er klaar.
+    // Eerste paint leest de payload uit de HTML. Na een wijziging (ook herstel)
+    // vragen we de server: het maand-attribuut is te groot om betrouwbaar te
+    // morphen, en de tabel bleef dan op de oude stand staan.
     const readEmbeddedPayload = () => {
         try {
             const raw = payloadHost?.dataset?.wpRosterPayload;
@@ -1259,9 +1259,18 @@ export function bind(root, wire) {
         }
     };
 
-    const mount = async () => {
+    let mountGeneration = 0;
+
+    const mount = async (fromServer = false) => {
+        const generation = ++mountGeneration;
+        const nextPayload = fromServer
+            ? await wire.payload()
+            : (readEmbeddedPayload() ?? await wire.payload());
+        if (generation !== mountGeneration || !nextPayload) {
+            return;
+        }
         destroy();
-        payload = readEmbeddedPayload() ?? await wire.payload();
+        payload = nextPayload;
         updateStatusPill();
         lastDaySelection = null;
         lastDayCell = null;
@@ -1615,7 +1624,7 @@ export function bind(root, wire) {
         wire.on('roster-week-changed', () => {
             showError('');
             setDirty(false);
-            mount();
+            mount(true);
         });
         wire.on('roster-save-failed', (event) => {
             showError(event.message || '');

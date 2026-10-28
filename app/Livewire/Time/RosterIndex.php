@@ -908,6 +908,7 @@ class RosterIndex extends Component
             return;
         }
 
+        $this->showRestoredPeriod($point);
         $this->restoreDone = true;
         $this->restoreUndoPointId = (int) $undo->id;
         $this->restoreError = '';
@@ -1106,6 +1107,27 @@ class RosterIndex extends Component
 
         $this->teamFilter = isset($remembered['team']) ? (int) $remembered['team'] : null;
         $this->locationFilter = isset($remembered['location']) ? (int) $remembered['location'] : null;
+    }
+
+    private function showRestoredPeriod(RosterRestorePoint $point): void
+    {
+        $dates = [];
+        foreach (is_array($point->scope) ? $point->scope : [] as $item) {
+            if (! empty($item['date'])) {
+                $dates[] = (string) $item['date'];
+            }
+        }
+        if ($dates === []) {
+            return;
+        }
+
+        $anchor = min($dates);
+        $target = $this->isMonth()
+            ? Carbon::parse($anchor)->startOfMonth()->toDateString()
+            : Carbon::parse($anchor)->startOfWeek(Carbon::MONDAY)->toDateString();
+        if ($this->weekStart !== $target) {
+            $this->weekStart = $target;
+        }
     }
 
     private function loadRestorePoints(ListRosterRestorePointsAction $list): void

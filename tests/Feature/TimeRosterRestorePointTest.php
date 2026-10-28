@@ -980,3 +980,46 @@ it('houdt een vergrendelde dag geblokkeerd, ook als de modal de knop zou tonen',
     expect(PlannedShift::find($row->id)?->start_time)->toBe('08:00')
         ->and(RosterRestorePoint::query()->count())->toBe(1);
 });
+
+it('zet de maandweergave op de maand van het herstelde punt', function () {
+    [$tenant, $admin, $worker] = restorePointTenant();
+    $date = restorePointWeek();
+    $row = PlannedShift::query()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => $date,
+        'status' => PlannedShiftStatus::Published,
+        'kind' => ShiftTypeKind::Work,
+        'start_time' => '08:00',
+        'end_time' => '12:00',
+        'break_minutes' => 0,
+        'description' => 'Ochtend',
+    ]);
+    app(SavePlannedDayAction::class)->handle(
+        $tenant,
+        new SavePlannedDayData((int) $worker->id, $date, [
+            [
+                'id' => $row->id,
+                'start_time' => '08:00',
+                'end_time' => '13:00',
+                'break_minutes' => 0,
+                'description' => 'Ochtend',
+            ],
+        ]),
+        $admin->id,
+    );
+    $point = RosterRestorePoint::query()->sole();
+
+    Livewire::actingAs($admin)
+        ->test(RosterIndex::class)
+        ->call('setView', 'month')
+        ->assertSet('view', 'month')
+        ->call('openRestoreModal')
+        ->call('selectRestorePoint', $point->id)
+        ->call('confirmRestore')
+        ->assertSet('view', 'month')
+        ->assertSet('weekStart', Carbon::parse($date)->startOfMonth()->toDateString())
+        ->assertSee(__('time.schedule.restore.success'), false);
+
+    expect(PlannedShift::find($row->id)?->end_time)->toBe('12:00');
+});
