@@ -693,7 +693,6 @@
             "workers": "Operarios",
             "days": "Días",
             "unknown_worker": "Operario",
-            "differences": "Diferencia con el cuadrante actual",
             "no_difference": "El cuadrante coincide con este punto. No hay nada que restaurar.",
             "blocks": "Esta restauración está bloqueada",
             "warnings": "Revise esto antes de confirmar",
@@ -708,10 +707,15 @@
                 "copy": "Semana copiada",
                 "restore": "Restauración anterior"
             },
-            "diff": {
-                "added": ":date · :name · :label — está en el cuadrante y no en este punto.",
-                "removed": ":date · :name · :label — está en este punto y ya no en el cuadrante.",
-                "changed": ":date · :name · :saved → :current (:fields)."
+            "effect": {
+                "remove": "{1} Restaurar quita :count turno.|[2,*] Restaurar quita :count turnos.",
+                "return": "{1} Restaurar devuelve :count turno.|[2,*] Restaurar devuelve :count turnos.",
+                "change": "{1} Restaurar cambia :count turno.|[2,*] Restaurar cambia :count turnos."
+            },
+            "effect_hint": {
+                "remove": "Están en el cuadrante ahora y no estaban en este punto.",
+                "return": "Estaban en este punto y ya no están en el cuadrante.",
+                "change": "A la izquierda el turno de este punto, a la derecha el turno actual."
             },
             "fields": {
                 "worker_id": "operario",

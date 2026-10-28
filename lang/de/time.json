@@ -693,7 +693,6 @@
             "workers": "Ausführende",
             "days": "Tage",
             "unknown_worker": "Ausführender",
-            "differences": "Unterschied zum aktuellen Dienstplan",
             "no_difference": "Der Dienstplan entspricht diesem Punkt. Es gibt nichts wiederherzustellen.",
             "blocks": "Diese Wiederherstellung ist blockiert",
             "warnings": "Vor dem Bestätigen prüfen",
@@ -708,10 +707,15 @@
                 "copy": "Woche kopiert",
                 "restore": "Vorherige Wiederherstellung"
             },
-            "diff": {
-                "added": ":date · :name · :label — steht jetzt im Plan und nicht in diesem Punkt.",
-                "removed": ":date · :name · :label — steht in diesem Punkt und nicht mehr im Plan.",
-                "changed": ":date · :name · :saved → :current (:fields)."
+            "effect": {
+                "remove": "{1} Wiederherstellen entfernt :count Dienst.|[2,*] Wiederherstellen entfernt :count Dienste.",
+                "return": "{1} Wiederherstellen setzt :count Dienst zurück.|[2,*] Wiederherstellen setzt :count Dienste zurück.",
+                "change": "{1} Wiederherstellen ändert :count Dienst.|[2,*] Wiederherstellen ändert :count Dienste."
+            },
+            "effect_hint": {
+                "remove": "Sie stehen jetzt im Plan und waren nicht in diesem Punkt.",
+                "return": "Sie waren in diesem Punkt und stehen nicht mehr im Plan.",
+                "change": "Links der Dienst aus diesem Punkt, rechts der aktuelle Dienst."
             },
             "fields": {
                 "worker_id": "Ausführender",

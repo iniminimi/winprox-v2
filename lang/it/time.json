@@ -693,7 +693,6 @@
             "workers": "Esecutori",
             "days": "Giorni",
             "unknown_worker": "Esecutore",
-            "differences": "Differenza rispetto al turno attuale",
             "no_difference": "Il turno coincide con questo punto. Non c'è nulla da ripristinare.",
             "blocks": "Questo ripristino è bloccato",
             "warnings": "Controllare prima di confermare",
@@ -708,10 +707,15 @@
                 "copy": "Settimana copiata",
                 "restore": "Ripristino precedente"
             },
-            "diff": {
-                "added": ":date · :name · :label — è nel turno e non in questo punto.",
-                "removed": ":date · :name · :label — è in questo punto e non più nel turno.",
-                "changed": ":date · :name · :saved → :current (:fields)."
+            "effect": {
+                "remove": "{1} Il ripristino toglie :count turno.|[2,*] Il ripristino toglie :count turni.",
+                "return": "{1} Il ripristino rimette :count turno.|[2,*] Il ripristino rimette :count turni.",
+                "change": "{1} Il ripristino modifica :count turno.|[2,*] Il ripristino modifica :count turni."
+            },
+            "effect_hint": {
+                "remove": "Sono nel turno adesso e non erano in questo punto.",
+                "return": "Erano in questo punto e non sono più nel turno.",
+                "change": "A sinistra il turno di questo punto, a destra il turno attuale."
             },
             "fields": {
                 "worker_id": "esecutore",

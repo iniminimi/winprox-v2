@@ -693,7 +693,6 @@
             "workers": "Workers",
             "days": "Days",
             "unknown_worker": "Worker",
-            "differences": "Difference from the current roster",
             "no_difference": "The roster matches this point. There is nothing to restore.",
             "blocks": "This restore is blocked",
             "warnings": "Check this before you confirm",
@@ -708,10 +707,15 @@
                 "copy": "Week copied",
                 "restore": "Previous restore"
             },
-            "diff": {
-                "added": ":date · :name · :label — is on the roster now and not in this point.",
-                "removed": ":date · :name · :label — is in this point and no longer on the roster.",
-                "changed": ":date · :name · :saved → :current (:fields)."
+            "effect": {
+                "remove": "{1} Restore removes :count shift.|[2,*] Restore removes :count shifts.",
+                "return": "{1} Restore puts :count shift back.|[2,*] Restore puts :count shifts back.",
+                "change": "{1} Restore changes :count shift.|[2,*] Restore changes :count shifts."
+            },
+            "effect_hint": {
+                "remove": "They are on the roster now and were not in this point.",
+                "return": "They were in this point and are no longer on the roster.",
+                "change": "The shift from this point is on the left, the current shift on the right."
             },
             "fields": {
                 "worker_id": "worker",

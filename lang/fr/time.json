@@ -693,7 +693,6 @@
             "workers": "Exécutants",
             "days": "Jours",
             "unknown_worker": "Exécutant",
-            "differences": "Écart avec le planning actuel",
             "no_difference": "Le planning correspond à ce point. Rien à rétablir.",
             "blocks": "Ce rétablissement est bloqué",
             "warnings": "À vérifier avant de confirmer",
@@ -708,10 +707,15 @@
                 "copy": "Semaine copiée",
                 "restore": "Rétablissement précédent"
             },
-            "diff": {
-                "added": ":date · :name · :label — est dans le planning et pas dans ce point.",
-                "removed": ":date · :name · :label — est dans ce point et plus dans le planning.",
-                "changed": ":date · :name · :saved → :current (:fields)."
+            "effect": {
+                "remove": "{1} Le rétablissement retire :count service.|[2,*] Le rétablissement retire :count services.",
+                "return": "{1} Le rétablissement remet :count service.|[2,*] Le rétablissement remet :count services.",
+                "change": "{1} Le rétablissement modifie :count service.|[2,*] Le rétablissement modifie :count services."
+            },
+            "effect_hint": {
+                "remove": "Ils sont dans le planning maintenant et n'étaient pas dans ce point.",
+                "return": "Ils étaient dans ce point et ne sont plus dans le planning.",
+                "change": "À gauche le service de ce point, à droite le service actuel."
             },
             "fields": {
                 "worker_id": "exécutant",

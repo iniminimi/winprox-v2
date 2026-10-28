@@ -1177,11 +1177,9 @@ class RosterIndex extends Component
 
         $this->restorePointId = (int) $point->id;
         $workerMap = [];
-        $workerLabel = '';
         foreach ($this->restorePoints as $row) {
             if ((int) $row['id'] === (int) $point->id) {
                 $workerMap = is_array($row['worker_map'] ?? null) ? $row['worker_map'] : [];
-                $workerLabel = (string) $row['workers'];
             }
         }
         $this->restoreDetail = $this->describeRestore(
@@ -1190,7 +1188,6 @@ class RosterIndex extends Component
             $preview['current'],
             $preview['saved'],
             $workerMap,
-            $workerLabel,
         );
     }
 
@@ -1206,7 +1203,6 @@ class RosterIndex extends Component
         array $current,
         array $saved,
         array $workerMap,
-        string $workers,
     ): array {
         $workerNames = [];
         foreach ($workerMap as $id => $name) {
@@ -1221,31 +1217,46 @@ class RosterIndex extends Component
             $savedById[(int) $row['planned_shift_id']] = $row;
         }
 
-        $differences = [];
+        $linesByEffect = ['added' => [], 'removed' => [], 'changed' => []];
         foreach ($assessment->differences as $difference) {
+            $effect = $difference['type'] === 'added' || $difference['type'] === 'removed'
+                ? $difference['type']
+                : 'changed';
             $savedRow = $savedById[(int) $difference['planned_shift_id']] ?? null;
             $currentRow = $currentById[(int) $difference['planned_shift_id']] ?? null;
             $name = $workerNames[(int) $difference['worker_id']] ?? __('time.schedule.restore.unknown_worker');
-            $date = Carbon::parse($difference['date'])->format('d/m/Y');
-            $differences[] = match ($difference['type']) {
-                'added' => __('time.schedule.restore.diff.added', [
-                    'date' => $date,
-                    'name' => $name,
-                    'label' => $this->restoreShiftLabel(is_array($currentRow) ? $currentRow : []),
-                ]),
-                'removed' => __('time.schedule.restore.diff.removed', [
-                    'date' => $date,
-                    'name' => $name,
-                    'label' => $this->restoreShiftLabel(is_array($savedRow) ? $savedRow : []),
-                ]),
-                default => __('time.schedule.restore.diff.changed', [
-                    'date' => $date,
-                    'name' => $name,
-                    'saved' => $this->restoreShiftLabel(is_array($savedRow) ? $savedRow : []),
-                    'current' => $this->restoreShiftLabel(is_array($currentRow) ? $currentRow : []),
-                    'fields' => $this->restoreFieldLabels($difference['fields']),
-                ]),
+            $savedLabel = $this->restoreShiftLabel(is_array($savedRow) ? $savedRow : []);
+            $currentLabel = $this->restoreShiftLabel(is_array($currentRow) ? $currentRow : []);
+            $line = $name.' — '.match ($effect) {
+                'added' => $currentLabel,
+                'removed' => $savedLabel,
+                default => $savedLabel === $currentLabel
+                    ? $currentLabel.$this->restoreFieldSuffix($difference['fields'])
+                    : $savedLabel.' → '.$currentLabel,
             };
+            $linesByEffect[$effect][(string) $difference['date']][] = $line;
+        }
+
+        $groups = [];
+        foreach (['added' => 'remove', 'removed' => 'return', 'changed' => 'change'] as $effect => $key) {
+            if ($linesByEffect[$effect] === []) {
+                continue;
+            }
+            $count = array_sum(array_map('count', $linesByEffect[$effect]));
+            $days = [];
+            $dates = array_keys($linesByEffect[$effect]);
+            sort($dates);
+            foreach ($dates as $date) {
+                $days[] = [
+                    'label' => Carbon::parse($date)->locale(app()->getLocale())->translatedFormat('D d/m'),
+                    'lines' => $linesByEffect[$effect][$date],
+                ];
+            }
+            $groups[] = [
+                'heading' => trans_choice('time.schedule.restore.effect.'.$key, $count, ['count' => $count]),
+                'hint' => __('time.schedule.restore.effect_hint.'.$key),
+                'days' => $days,
+            ];
         }
 
         $blocks = [];
@@ -1264,13 +1275,6 @@ class RosterIndex extends Component
             ]);
         }
 
-        $dates = [];
-        foreach (is_array($point->scope) ? $point->scope : [] as $item) {
-            $dates[(string) $item['date']] = (string) $item['date'];
-        }
-        $dateList = array_values($dates);
-        sort($dateList);
-
         return [
             'blocked' => $assessment->blocked(),
             'needs_confirmation' => $assessment->needsConfirmation(),
@@ -1281,9 +1285,7 @@ class RosterIndex extends Component
                     'time' => $point->created_at->timezone(config('app.timezone'))->format('H:i'),
                 ]),
             'source' => __('time.schedule.restore.sources.'.$point->source->value),
-            'workers' => $workers !== '' ? $workers : implode(', ', array_unique(array_values($workerNames))),
-            'dates' => $this->formatRestoreDates($dateList),
-            'differences' => $differences,
+            'groups' => $groups,
             'blocks' => $blocks,
             'warnings' => $warnings,
         ];
@@ -1320,6 +1322,16 @@ class RosterIndex extends Component
         }
 
         return implode(', ', $labels);
+    }
+
+    /**
+     * @param  list<string>  $fields
+     */
+    private function restoreFieldSuffix(array $fields): string
+    {
+        $label = $this->restoreFieldLabels($fields);
+
+        return $label === '' ? '' : ' ('.$label.')';
     }
 
     private function restoreNoticeKey(string $group, string $code): string

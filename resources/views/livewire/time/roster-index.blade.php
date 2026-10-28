@@ -687,12 +687,6 @@
                         <strong>{{ $restoreDetail['when'] }}</strong>
                         — {{ $restoreDetail['source'] }}
                     </p>
-                    <p class="wp-muted">
-                        {{ __('time.schedule.restore.workers') }}: {{ $restoreDetail['workers'] }}
-                    </p>
-                    <p class="wp-muted">
-                        {{ __('time.schedule.restore.days') }}: {{ $restoreDetail['dates'] }}
-                    </p>
 
                     @if ($restoreDetail['blocks'] !== [])
                         <div class="wp-stack">
@@ -716,18 +710,26 @@
                         </div>
                     @endif
 
-                    <div class="wp-stack">
-                        <p>{{ __('time.schedule.restore.differences') }}</p>
-                        @if ($restoreDetail['differences'] === [])
-                            <p class="wp-muted">{{ __('time.schedule.restore.no_difference') }}</p>
-                        @else
-                            <ul class="wp-stack" role="list">
-                                @foreach ($restoreDetail['differences'] as $difference)
-                                    <li>{{ $difference }}</li>
+                    @if ($restoreDetail['groups'] === [])
+                        <p class="wp-muted">{{ __('time.schedule.restore.no_difference') }}</p>
+                    @else
+                        @foreach ($restoreDetail['groups'] as $group)
+                            <div class="wp-stack">
+                                <p><strong>{{ $group['heading'] }}</strong></p>
+                                <p class="wp-muted">{{ $group['hint'] }}</p>
+                                @foreach ($group['days'] as $day)
+                                    <div>
+                                        <p><strong>{{ $day['label'] }}</strong></p>
+                                        <ul role="list">
+                                            @foreach ($day['lines'] as $line)
+                                                <li>{{ $line }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
                                 @endforeach
-                            </ul>
-                        @endif
-                    </div>
+                            </div>
+                        @endforeach
+                    @endif
 
                     <div class="wp-modal-foot">
                         @if ($restoreDetail['needs_confirmation'] && ! $restoreDetail['blocked'])

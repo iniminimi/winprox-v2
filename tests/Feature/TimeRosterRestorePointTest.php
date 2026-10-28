@@ -893,8 +893,10 @@ it('toont een herstelpunt, herstelt pas na bevestiging en kan die stap terugdraa
         ->assertSee(__('time.schedule.restore.sources.day'), false)
         ->assertSee($shown, false)
         ->call('selectRestorePoint', $point->id)
-        ->assertSee(__('time.schedule.restore.differences'), false)
-        ->assertSee(__('time.schedule.restore.fields.end_time'), false)
+        ->assertSee(trans_choice('time.schedule.restore.effect.change', 1, ['count' => 1]), false)
+        ->assertSee('08:00–12:00', false)
+        ->assertSee('08:00–13:00', false)
+        ->assertDontSee('staat nu in het rooster en niet in dit punt', false)
         ->assertSee(__('time.schedule.restore.confirm'), false)
         ->assertDontSee(__('time.schedule.restore.success'), false);
 
