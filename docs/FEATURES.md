@@ -1158,7 +1158,7 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   deze week; label "Week <iso> · <d/m>–<d/m>".
   Drafts nooit zichtbaar. `ListPublishedLocationRosterAction` —
   één worker-scope-query + één shift-query, geen N+1.
-- **Uurrooster uit:** `time_roster_enabled` (standaard aan, Instellingen, kaart Uurrooster) verbergt
+- **Uurrooster uit:** `time_roster_enabled` (standaard aan, Instellingen, onder Prikklok-beveiliging) verbergt
   de planning (uurrooster, shifttypes, feestdagen, minimumbezetting, verlof/recup) en
   blokkeert die routes. Geplande diensten blijven bewaard. Time, QR-aanmelding, taken
   en de prikklok blijven aan.
