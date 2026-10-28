@@ -16,9 +16,11 @@ use App\Livewire\Time\AbsenceRequestsIndex;
 use App\Models\AbsenceRequest;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
+use App\Models\Location;
 use App\Models\PlannedShift;
 use App\Models\ShiftType;
 use App\Models\Tenant;
+use App\Models\Unit;
 use App\Models\User;
 use App\Models\WebhookEndpoint;
 use App\Models\Worker;
@@ -147,14 +149,14 @@ it('trekt een eigen open aanvraag in', function () {
 
 it('zet het rooster terug bij intrekken van goedgekeurd verlof', function () {
     [$tenant, $admin, , $worker] = absenceTenant();
-    $location = \App\Models\Location::factory()->create(['tenant_id' => $tenant->id]);
-    $unit = \App\Models\Unit::factory()->create([
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $unit = Unit::factory()->create([
         'tenant_id' => $tenant->id,
         'location_id' => $location->id,
         'name' => 'Groep 1',
         'roster_code' => 'G1',
     ]);
-    $workType = \App\Models\ShiftType::factory()->create([
+    $workType = ShiftType::factory()->create([
         'tenant_id' => $tenant->id,
         'kind' => ShiftTypeKind::Work,
         'start_time' => '09:00',
@@ -211,6 +213,65 @@ it('zet het rooster terug bij intrekken van goedgekeurd verlof', function () {
         ->and((int) $restored->location_id)->toBe((int) $location->id)
         ->and($restored->description)->toBe('Vergeet niet de sleutel mee te nemen')
         ->and($restored->status)->toBe(PlannedShiftStatus::Published);
+});
+
+it('herstelt gepubliceerde en conceptblokken op dezelfde dag na intrekken', function () {
+    [$tenant, $admin, , $worker] = absenceTenant();
+    PlannedShift::query()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-09-23',
+        'status' => PlannedShiftStatus::Published,
+        'kind' => ShiftTypeKind::Work,
+        'start_time' => '07:00',
+        'end_time' => '10:00',
+        'break_minutes' => 10,
+        'description' => 'Ochtend',
+    ]);
+    PlannedShift::query()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-09-23',
+        'status' => PlannedShiftStatus::Draft,
+        'kind' => ShiftTypeKind::Work,
+        'start_time' => '18:00',
+        'end_time' => '20:00',
+        'break_minutes' => 15,
+        'description' => 'Concept',
+    ]);
+    $request = app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Leave, '2026-09-23', '2026-09-23'),
+    );
+    app(DecideAbsenceRequestAction::class)->handle(
+        $tenant,
+        $request,
+        new DecideAbsenceRequestData(true, ''),
+        $admin,
+    );
+
+    $cancelled = app(CancelAbsenceRequestAction::class)->handle($tenant, $worker, $request->fresh());
+
+    expect($cancelled->status)->toBe(AbsenceRequestStatus::Cancelled);
+
+    $rows = PlannedShift::query()
+        ->where('worker_id', $worker->id)
+        ->whereDate('work_date', '2026-09-23')
+        ->orderBy('start_time')
+        ->get();
+
+    expect($rows)->toHaveCount(2)
+        ->and($rows[0]->start_time)->toBe('07:00')
+        ->and($rows[0]->end_time)->toBe('10:00')
+        ->and($rows[0]->description)->toBe('Ochtend')
+        ->and((int) $rows[0]->break_minutes)->toBe(10)
+        ->and($rows[0]->status)->toBe(PlannedShiftStatus::Published)
+        ->and($rows[1]->start_time)->toBe('18:00')
+        ->and($rows[1]->end_time)->toBe('20:00')
+        ->and($rows[1]->description)->toBe('Concept')
+        ->and((int) $rows[1]->break_minutes)->toBe(15)
+        ->and($rows[1]->status)->toBe(PlannedShiftStatus::Draft);
 });
 
 it('keurt een aanvraag goed waarvan de range deels in het verleden ligt', function () {
