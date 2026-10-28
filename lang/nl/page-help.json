@@ -709,7 +709,7 @@
                 },
                 {
                     "label": "Prikklok-beveiliging",
-                    "text": "Alleen bij Time: pincode, biometrie (passkey), GPS bij de prik, GPS-werkbezoeken op Clock Point, en optioneel inklokken vanuit de zijbalk voor collega's met een prikklok-team (standaard uit)."
+                    "text": "Alleen bij Time: pincode, biometrie (passkey), GPS bij de prik, GPS-werkbezoeken op Clock Point, en optioneel inklokken vanuit de zijbalk voor collega's met een prikklok-team (standaard uit). De kaart Uurrooster (standaard aan) zet de planning uit; QR-aanmelding, taken en de prikklok blijven, bestaande diensten blijven bewaard."
                 },
                 {
                     "label": "Evacuatielijst",

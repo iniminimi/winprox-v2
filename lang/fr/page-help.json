@@ -717,7 +717,7 @@
                 },
                 {
                     "label": "Sécurité de la pointeuse",
-                    "text": "Uniquement avec Time : PIN, biométrie (clé d’accès), GPS à la pointe, visites GPS sur Clock Point, et en option le pointage depuis la barre latérale pour les collègues avec une équipe de pointage (désactivé par défaut)."
+                    "text": "Uniquement avec Time : PIN, biométrie (clé d’accès), GPS à la pointe, visites GPS sur Clock Point, et en option le pointage depuis la barre latérale pour les collègues avec une équipe de pointage (désactivé par défaut). La carte Planning (activée par défaut) désactive la planification ; la connexion QR, les tâches et la pointeuse restent, les services existants sont conservés."
                 },
                 {
                     "label": "Liste d'évacuation",

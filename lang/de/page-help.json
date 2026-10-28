@@ -709,7 +709,7 @@
                 },
                 {
                     "label": "Stempeluhr-Sicherheit",
-                    "text": "Nur mit Time: PIN, Biometrie (Passkey), GPS beim Stempeln und GPS-Arbeitsbesuche am Clock Point."
+                    "text": "Nur mit Time: PIN, Biometrie (Passkey), GPS beim Stempeln und GPS-Arbeitsbesuche am Clock Point. Die Karte Dienstplan (standardmäßig an) schaltet die Planung aus; QR-Anmeldung, Aufgaben und die Stechuhr bleiben, bestehende Dienste bleiben gespeichert."
                 },
                 {
                     "label": "Evakuierungsliste",

@@ -61,6 +61,13 @@ it('zet het uurrooster uit en laat prikklok en aanmelden staan', function () {
         ->get(route('time.shifts.index'))
         ->assertOk();
 
+    $this->withToken($admin->createToken('roster-off', ['time:read'])->plainTextToken)
+        ->getJson('/api/v1/time/schedule')
+        ->assertForbidden();
+    $this->withToken($admin->createToken('clock-stays', ['time:read'])->plainTextToken)
+        ->getJson('/api/v1/time/work-shifts')
+        ->assertOk();
+
     $this->actingAs($admin)
         ->get(route('dashboard'))
         ->assertOk()

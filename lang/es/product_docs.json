@@ -414,7 +414,7 @@
                     "Los datos permanecen en la **UE** (alojamiento/correo). Stripe UE/EE. UU. si hay pago. Con **Iniciar sesión con Microsoft**, el usuario va a Microsoft Entra ID (Microsoft, UE/EE. UU.); WinProx recibe el correo (y posiblemente el nombre) para reconocer la cuenta existente.",
                     "Confirmación por correo opcional en avisos QR: almacenamiento temporal del borrador hasta el enlace; los borradores no confirmados se eliminan automáticamente (normalmente 60 minutos, fotos incluidas). El correo de confirmación solo se envía a una dirección válida que no esté marcada como no entregable (bounce). Darse de baja del correo de marketing no bloquea esta confirmación. Sin cuenta de usuario.",
                     "Envío opcional **CIAO** (Check In and Out ONSS): si se activa, WinProx guarda el NISS (cifrado) y envía registros de presencia a la **ONSS belga** (autoridad / obligación legal del cliente). La ONSS no es un subencargado de marketing de WinProx; la cesión es de cumplimiento. WinProx usa sus propias credenciales Chaman; el cliente solo indica el número CBE (número de empresa). Una pausa de equipo aplicada en el parte no es un IN/OUT RSZ extra. Con visitas GPS: la entrada/salida no se envía a la ONSS; inicio de visita = IN, fin de visita = OUT. Las pausas durante una visita siguen OUT/IN. Los envíos correctos de más de 12 meses (configurable) se eliminan automáticamente; Time → CIAO ofrece exportación CSV/impresión (sin NISS).",
-                    "Cuadrante opcional: turnos y ausencias (permiso, compensación, baja) que introduce el cliente; Clock Point muestra solo el cuadrante publicado propio. Los códigos de baja son decisión del cliente; WinProx los guarda como encargado."
+                    "Cuadrante opcional: turnos y ausencias (permiso, compensación, baja) que introduce el cliente; Clock Point muestra solo el cuadrante publicado propio. Los códigos de baja son decisión del cliente; WinProx los guarda como encargado. Ajustes, tarjeta Cuadrante, puede apagar esa planificación; el reloj y el acceso por QR siguen, y los turnos existentes se conservan."
                 ]
             },
             {
@@ -592,7 +592,7 @@
                         ],
                         [
                             "Time",
-                            "Fichar entrada/salida, turnos (el fichaje API no vincula un móvil); liberar dispositivo vinculado; fichaje manual (POST /api/v1/time/manual-clock-in, origen admin, no vincula teléfono); aplicar pausa mínima (POST /api/v1/time/work-shifts/{id}/apply-required-break); los equipos exponen required_break_minutes; visitas GPS POST /api/v1/time/work-visits/start (unit_id o location_id) y .../end (time:write); webhooks time.visit.started / time.visit.ended"
+                            "Fichar entrada/salida, turnos (el fichaje API no vincula un móvil); liberar dispositivo vinculado; fichaje manual (POST /api/v1/time/manual-clock-in, origen admin, no vincula teléfono); aplicar pausa mínima (POST /api/v1/time/work-shifts/{id}/apply-required-break); los equipos exponen required_break_minutes; visitas GPS POST /api/v1/time/work-visits/start (unit_id o location_id) y .../end (time:write); webhooks time.visit.started / time.visit.ended. La planificación (GET/PUT /api/v1/time/schedule y shift-types) responde 403 si el cuadrante está apagado; el fichaje sigue"
                         ],
                         [
                             "ESG",

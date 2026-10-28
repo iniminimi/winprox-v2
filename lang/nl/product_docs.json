@@ -414,7 +414,7 @@
                     "Gegevens blijven in de **EU** (hosting/e-mail). Stripe EU/US indien betalend. Bij **Inloggen met Microsoft** gaat de gebruiker naar Microsoft Entra ID (Microsoft, EU/US); WinProx ontvangt e-mail (en eventueel naam) om het bestaande account te herkennen.",
                     "Optionele e-mailbevestiging bij QR-meldingen: tijdelijke conceptopslag tot de link; onbevestigd automatisch verwijderd (standaard 60 minuten, inclusief foto’s). De bevestigingsmail gaat alleen naar een geldig adres dat niet eerder als onbezorgbaar (bounce) is gemarkeerd. Uitschrijven van marketingmails blokkeert deze bevestiging niet. Geen gebruikersaccount.",
                     "Optionele **CIAO**-doorgifte (RSZ Check In and Out): bij inschakeling bewaart WinProx NISS (encrypted) en stuurt aanwezigheidsregistraties naar de **Belgische RSZ** (overheid / wettelijke verplichting van de klant). RSZ is geen WinProx-subverwerker voor marketing; doorgifte is functioneel voor compliance. WinProx gebruikt de eigen Chaman-credentials; de klant vult alleen het KBO-nummer (ondernemingsnummer) in. Een toegepaste teampauze op de urenstaat is geen extra RSZ IN/OUT. Met GPS-werkbezoeken: clock in/out gaan niet naar de RSZ; visit start = IN, visit end = OUT. Pauzes tijdens een bezoek blijven OUT/IN. Geslaagde inzendingen ouder dan 12 maanden (configureerbaar) worden automatisch verwijderd; Time → CIAO biedt CSV/print-export (zonder NISS).",
-                    "Gepland uurrooster (optioneel): diensten en afwezigheden (verlof, recup, ziek) die de klant invoert; Clock Point toont alleen het eigen gepubliceerde rooster. Ziektecodes zijn een keuze van de klant; WinProx bewaart ze als verwerker."
+                    "Gepland uurrooster (optioneel): diensten en afwezigheden (verlof, recup, ziek) die de klant invoert; Clock Point toont alleen het eigen gepubliceerde rooster. Ziektecodes zijn een keuze van de klant; WinProx bewaart ze als verwerker. Instellingen, kaart Uurrooster, kan die planning uitzetten; de prikklok en de QR-aanmelding blijven, bestaande diensten blijven bewaard."
                 ]
             },
             {
@@ -594,7 +594,7 @@
                         ],
                         [
                             "Time",
-                            "In-/uitklokken, shifts (API-inkloken bindt geen gsm); gekoppeld toestel vrijgeven; manueel inklokken (POST /api/v1/time/manual-clock-in, bron admin, bindt geen gsm); minimumpauze toepassen (POST /api/v1/time/work-shifts/{id}/apply-required-break); teams tonen required_break_minutes; GPS-werkbezoeken POST /api/v1/time/work-visits/start (unit_id of location_id) en .../end (time:write); webhooks time.visit.started / time.visit.ended"
+                            "In-/uitklokken, shifts (API-inkloken bindt geen gsm); gekoppeld toestel vrijgeven; manueel inklokken (POST /api/v1/time/manual-clock-in, bron admin, bindt geen gsm); minimumpauze toepassen (POST /api/v1/time/work-shifts/{id}/apply-required-break); teams tonen required_break_minutes; GPS-werkbezoeken POST /api/v1/time/work-visits/start (unit_id of location_id) en .../end (time:write); webhooks time.visit.started / time.visit.ended. Planning (GET/PUT /api/v1/time/schedule en shift-types) antwoordt 403 als het uurrooster uit staat; inklokken blijft"
                         ],
                         [
                             "ESG",

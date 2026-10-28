@@ -414,7 +414,7 @@
                     "Data stays in the **EU** (hosting/email). Stripe EU/US when paying. With **Sign in with Microsoft**, the user is sent to Microsoft Entra ID (Microsoft, EU/US); WinProx receives email (and possibly name) to match the existing account.",
                     "Optional email confirmation for QR reports: temporary draft storage until the link; unverified drafts are deleted automatically (typically 60 minutes, including photos). The confirmation mail is only sent to a valid address that is not marked undeliverable (bounce). Unsubscribing from marketing mail does not block this confirmation. No user account.",
                     "Optional **CIAO** forwarding (RSZ Check In and Out): when enabled, WinProx stores NISS (encrypted) and sends presence registrations to the **Belgian NSSO/RSZ** (public authority / customer legal duty). RSZ is not a WinProx marketing sub-processor; transfer is for compliance. WinProx uses its own Chaman credentials; the customer only enters the CBE (enterprise number). An applied team break on the timesheet is not an extra RSZ IN/OUT. With GPS work visits: clock in/out are not sent to the NSSO; visit start = IN, visit end = OUT. Breaks during a visit remain OUT/IN. Successful submissions older than 12 months (configurable) are deleted automatically; Time → CIAO offers CSV/print export (no SSIN).",
-                    "Optional planned roster: shifts and absences (leave, time off in lieu, sick) entered by the customer; Clock Point shows only the worker’s own published roster. Sick codes are the customer’s choice; WinProx stores them as processor."
+                    "Optional planned roster: shifts and absences (leave, time off in lieu, sick) entered by the customer; Clock Point shows only the worker’s own published roster. Sick codes are the customer’s choice; WinProx stores them as processor. Settings, Roster card, can turn that planning off; the clock and QR sign-in stay, and existing shifts are kept."
                 ]
             },
             {
@@ -593,7 +593,7 @@
                         ],
                         [
                             "Time",
-                            "Clock in/out, shifts (API clock-in does not bind a phone); release bound device; manual clock-in (POST /api/v1/time/manual-clock-in, admin source, does not bind a phone); apply minimum break (POST /api/v1/time/work-shifts/{id}/apply-required-break); teams expose required_break_minutes; GPS work visits POST /api/v1/time/work-visits/start (unit_id or location_id) and .../end (time:write); webhooks time.visit.started / time.visit.ended"
+                            "Clock in/out, shifts (API clock-in does not bind a phone); release bound device; manual clock-in (POST /api/v1/time/manual-clock-in, admin source, does not bind a phone); apply minimum break (POST /api/v1/time/work-shifts/{id}/apply-required-break); teams expose required_break_minutes; GPS work visits POST /api/v1/time/work-visits/start (unit_id or location_id) and .../end (time:write); webhooks time.visit.started / time.visit.ended. Planning (GET/PUT /api/v1/time/schedule and shift-types) returns 403 when the roster is off; clock-in stays"
                         ],
                         [
                             "ESG",
