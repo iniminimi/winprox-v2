@@ -333,6 +333,16 @@ class Settings extends Component
         session()->flash('success', __('settings.presence.request_sent'));
     }
 
+    public function saveTimeRoster(UpdateTenantTimeClockSecurityAction $update): void
+    {
+        $this->saveTimeClockSecurity($update);
+        if ($this->getErrorBag()->isNotEmpty()) {
+            return;
+        }
+
+        session()->flash('success', __('settings.time_clock.roster_saved'));
+    }
+
     public function saveTimeClockSecurity(UpdateTenantTimeClockSecurityAction $update): void
     {
         $tenant = $this->resolveTenant();

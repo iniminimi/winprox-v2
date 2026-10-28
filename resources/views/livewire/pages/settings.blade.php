@@ -232,9 +232,8 @@
     @endif
 
     @if ($canManageOrganisation && $hasTimeModule)
-        <x-wp-settings-section :title="__('settings.time_clock.title')">
-            <p class="wp-muted wp-text-sm">{{ __('settings.time_clock.lead') }}</p>
-            <form wire:submit="saveTimeClockSecurity" class="wp-stack">
+        <x-wp-settings-section :title="__('settings.time_clock.roster')" titleId="settings-roster" :openByDefault="true">
+            <form wire:submit="saveTimeRoster" class="wp-stack">
                 <label class="wp-switch">
                     <input type="checkbox" wire:model="timeRosterEnabled">
                     <span class="wp-switch__track" aria-hidden="true"></span>
@@ -242,7 +241,13 @@
                 </label>
                 <p class="wp-hint">{{ __('settings.time_clock.roster_hint') }}</p>
                 @error('time_roster_enabled') <p class="wp-error">{{ $message }}</p> @enderror
+                <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
+            </form>
+        </x-wp-settings-section>
 
+        <x-wp-settings-section :title="__('settings.time_clock.title')">
+            <p class="wp-muted wp-text-sm">{{ __('settings.time_clock.lead') }}</p>
+            <form wire:submit="saveTimeClockSecurity" class="wp-stack">
                 <label class="wp-switch">
                     <input type="checkbox" wire:model="timeBackofficeClock">
                     <span class="wp-switch__track" aria-hidden="true"></span>

@@ -273,6 +273,7 @@
         "worker_passkeys": "Inicio de sesión con huella o cara (clave de acceso)",
         "worker_passkeys_hint": "Los operarios pueden proteger su propio teléfono y luego iniciar sesión con el desbloqueo del dispositivo. El PIN o el icono sigue disponible.",
         "roster": "Cuadrante",
+        "roster_saved": "Cuadrante guardado.",
         "roster_hint": "Desactivado oculta el cuadrante, los tipos de turno, los festivos, la ocupación mínima y las solicitudes de ausencia. El acceso por QR, las tareas y el reloj siguen. Los turnos existentes se conservan.",
         "team_roster": "Cuadrante del equipo visible para ejecutores",
         "team_roster_hint": "Los ejecutores ven en su móvil el cuadrante publicado de los compañeros de su(s) ubicación(es)."

@@ -273,6 +273,7 @@
         "worker_passkeys": "Anmeldung per Fingerabdruck oder Gesicht (Passkey)",
         "worker_passkeys_hint": "Ausführer können ihr eigenes Telefon sichern und sich danach per Geräteentsperrung anmelden. PIN oder Symbol bleibt verfügbar.",
         "roster": "Dienstplan",
+        "roster_saved": "Dienstplan gespeichert.",
         "roster_hint": "Aus blendet Dienstplan, Diensttypen, Feiertage, Mindestbesetzung und Abwesenheitsanträge aus. QR-Anmeldung, Aufgaben und die Stechuhr bleiben. Bestehende Dienste bleiben gespeichert.",
         "team_roster": "Team-Dienstplan für Ausführer sichtbar",
         "team_roster_hint": "Ausführer sehen auf ihrem Handy den veröffentlichten Dienstplan der Kollegen an ihrem/ihren Standort(en)."
