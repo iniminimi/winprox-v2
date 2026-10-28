@@ -137,7 +137,7 @@ it('persists a stock preset via saveQrBrandingSettings in settings', function ()
 
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
-    $presetKey = QrPrintablePageStockBackgroundCatalog::PRESET_PREFIX.'back_06.jpg';
+    $presetKey = QrPrintablePageStockBackgroundCatalog::PRESET_PREFIX.'back_05.jpg';
 
     Livewire::actingAs($employee)
         ->test(Settings::class)
