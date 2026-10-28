@@ -758,6 +758,7 @@
             "restore_id_elsewhere": "Este turno está ahora en otro día y no se restaura.",
             "restore_blocked": "Esta restauración no puede hacerse. Un conflicto no se salta confirmando.",
             "restore_confirmation_required": "El horario difiere de este punto de restauración. Confirme la restauración de forma explícita.",
+            "restore_stale": "El horario cambió desde que vio este resumen. No se ha restaurado nada.",
             "restore_approved_absence": "Hay una ausencia aprobada en este día. La restauración no la sobrescribe.",
             "unknown_worker": "Trabajador desconocido.",
             "cell_out_of_scope": "La celda está fuera del horario visible.",

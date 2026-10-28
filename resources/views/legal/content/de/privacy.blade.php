@@ -229,6 +229,7 @@
     <li>Medien (Fotos): 24 Monate nach Abschluss der betreffenden Meldung oder Aufgabe.</li>
     <li>ESG-Messungen: gleiche Aufbewahrung wie Meldungen und Aufgaben (Vertragslaufzeit + 36 Monate).</li>
     <li>CIAO-/LSS-Einreichungen (Weiterleitungslog in WinProx): erfolgreiche Einreichungen standardmäßig 12 Monate (konfigurierbar); fehlgeschlagen/Warteschlange länger. Die offizielle Registrierung bleibt bei der LSS. Export über Time → CIAO.</li>
+    <li>Wiederherstellungspunkte des Dienstplans (vorherige Dienste einer Änderung): 30 Tage, danach automatisch gelöscht. Der Plan selbst folgt der Aufbewahrung von Time.</li>
     <li>IoT-Events, Gateway- und Sensor-Metadaten: Vertragslaufzeit + 36 Monate (oder kürzer, wenn die zugrunde liegende Meldung/Aufgabe bei Organisationslöschung früher entfernt wird).</li>
     <li>betriebliche Infrastruktur-Backups (Hosting/Cloud86): 7 Tage.</li>
     <li>technischer SQL-Snapshot nach vollständiger Organisationslöschung (ohne Mediendateien): maximal 30 Tage, danach Vernichtung.</li>

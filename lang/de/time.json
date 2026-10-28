@@ -758,6 +758,7 @@
             "restore_id_elsewhere": "Dieser Dienst liegt inzwischen auf einem anderen Tag und wird nicht zurückgesetzt.",
             "restore_blocked": "Diese Wiederherstellung ist nicht möglich. Ein Konflikt darf nicht durch Bestätigen überschrieben werden.",
             "restore_confirmation_required": "Der Dienstplan weicht von diesem Wiederherstellungspunkt ab. Bestätigen Sie die Wiederherstellung ausdrücklich.",
+            "restore_stale": "Der Dienstplan hat sich geändert, seit Sie diese Übersicht angesehen haben. Es wurde nichts wiederhergestellt.",
             "restore_approved_absence": "Genehmigter Urlaub liegt auf diesem Tag. Die Wiederherstellung überschreibt das nicht.",
             "unknown_worker": "Unbekannter Mitarbeiter.",
             "cell_out_of_scope": "Zelle liegt außerhalb des sichtbaren Plans.",

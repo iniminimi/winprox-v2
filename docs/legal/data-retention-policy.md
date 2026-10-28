@@ -21,6 +21,7 @@ This policy is a draft and requires legal approval.
 | ESG measurements | Indicator definitions, values, thresholds, follow-up tasks, API/webhooks | Contract period + 36 months | Delete with related records |
 | IoT Connect | Gateway/sensor metadata, alarm rules, event records (not time-series) | Contract period + 36 months | Delete with tenant / related workflow records |
 | Time / Clock Point | Shifts, breaks (including team-applied timesheet minimum; not an RSZ event), bound device, hashed PIN, optional GPS at punch, own-hours view, planned roster and absences (leave / time off in lieu / sick) entered by the customer, worker in-app roster notifications, evacuation-list views | Contract period + 36 months | Delete with tenant / related records |
+| Roster restore points | Previous shifts of a roster edit (worker, day, times, note), kept so an admin can undo that edit | 30 days (configurable) | Daily `winprox:retention-prune`; also deleted with the tenant |
 | Issue translations | AI-generated translations of issue descriptions | Contract period + 36 months | Delete with parent issue |
 | Owner contacts | Name, email, phone | While linked + 24 months | Delete if no legal need remains |
 | Notification logs | Sent/failed recipients, subject | 24 months | Delete or aggregate stats only |
@@ -33,6 +34,7 @@ This policy is a draft and requires legal approval.
 
 - **Automated cleanup**: Artisan-command `php artisan winprox:retention-prune --dry-run` toont wat verwijderd zou worden zonder te wijzigen. Zonder `--dry-run` worden records en bestanden daadwerkelijk verwijderd.
 - **Closed issue media**: Verwijdert foto's van gesloten meldingen volgens retentiebeleid.
+- **Roster restore points**: Verwijdert uurrooster-herstelpunten ouder dan 30 dagen (`RETENTION_ROSTER_RESTORE_POINTS_DAYS`).
 - **Inactive tenant facility data**: Verwijdert data van inactieve tenants (meldingen, foto's) volgens retentiebeleid.
 - Voer steeds **`--dry-run`** uit om te tellen zonder te wissen. Productie-aanzetten pas na legal / operations sign-off.
 - Admin export vóór verwijdering waar nodig: **TODO** (proces).

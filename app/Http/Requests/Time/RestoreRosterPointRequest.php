@@ -24,6 +24,7 @@ class RestoreRosterPointRequest extends FormRequest
         return [
             'restore_point_id' => ['required', 'integer'],
             'confirmed' => ['accepted'],
+            'seen_token' => ['required', 'string', 'size:64'],
         ];
     }
 }

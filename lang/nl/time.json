@@ -758,6 +758,7 @@
             "restore_id_elsewhere": "Deze dienst staat inmiddels op een andere dag en wordt niet teruggezet.",
             "restore_blocked": "Dit herstel kan niet. Een conflict mag niet met een bevestiging worden overschreven.",
             "restore_confirmation_required": "Het rooster wijkt af van dit herstelpunt. Bevestig het herstel expliciet.",
+            "restore_stale": "Het rooster is gewijzigd sinds je dit overzicht bekeek. Er is niets hersteld.",
             "restore_approved_absence": "Er is goedgekeurd verlof op deze dag. Het herstel overschrijft dat niet.",
             "unknown_worker": "Onbekende uitvoerder.",
             "cell_out_of_scope": "Cel valt buiten het zichtbare rooster.",

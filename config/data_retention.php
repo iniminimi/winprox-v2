@@ -19,4 +19,9 @@ return [
     | Officiële registratie blijft bij de RSZ; WinProx is doorstuurlog.
     */
     'presence_submissions_months' => (int) env('RETENTION_PRESENCE_SUBMISSIONS_MONTHS', 12),
+
+    /*
+    | Uurrooster-herstelpunten (vorige diensten van een roosterwijziging).
+    */
+    'roster_restore_points_days' => (int) env('RETENTION_ROSTER_RESTORE_POINTS_DAYS', 30),
 ];

@@ -22,7 +22,8 @@ use Illuminate\Support\Facades\Gate;
  * zodat het terugzetten opnieuw kan worden teruggedraaid.
  * Een vergrendelde dag, een id op een andere dag of goedgekeurd verlof
  * blokkeert het herstel. Een afwijkend rooster wordt niet stil overschreven:
- * dat vraagt een expliciete bevestiging.
+ * dat vraagt een expliciete bevestiging van exact de getoonde stand.
+ * Wijkt die stand af onder de vergrendeling, dan wordt niets geschreven.
  */
 class RestoreRosterPointAction
 {
@@ -54,12 +55,12 @@ class RestoreRosterPointAction
         ];
     }
 
-    public function handle(Tenant $tenant, User $actor, RosterRestorePoint $point, bool $confirmed = false): ?RosterRestorePoint
+    public function handle(Tenant $tenant, User $actor, RosterRestorePoint $point, bool $confirmed = false, ?string $seenToken = null): ?RosterRestorePoint
     {
         $this->assertCan($tenant, $actor, $point);
         [$scope, $scopeKeys, $workerIds, $dates, $savedInScope] = $this->scopeParts($point);
 
-        return DB::transaction(function () use ($tenant, $actor, $scope, $scopeKeys, $workerIds, $dates, $savedInScope, $confirmed): ?RosterRestorePoint {
+        return DB::transaction(function () use ($tenant, $actor, $scope, $scopeKeys, $workerIds, $dates, $savedInScope, $confirmed, $seenToken): ?RosterRestorePoint {
             $locked = $this->candidates($tenant, $workerIds, $dates, $savedInScope, true);
 
             $assessment = $this->assess->handle((int) $tenant->id, $scope, $savedInScope, $locked);
@@ -74,6 +75,12 @@ class RestoreRosterPointAction
             }
             if ($assessment->differences === []) {
                 return null;
+            }
+            if ($seenToken !== $assessment->token()) {
+                throw new RosterRestoreConflictException(
+                    'time.schedule.errors.restore_stale',
+                    $assessment,
+                );
             }
 
             $savedIds = array_map(fn (array $row): int => (int) $row['planned_shift_id'], $savedInScope);

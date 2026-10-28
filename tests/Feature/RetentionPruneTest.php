@@ -2,9 +2,12 @@
 
 use App\Actions\Retention\PruneClosedIssueMediaAction;
 use App\Actions\Retention\PruneInactiveTenantFacilityDataAction;
+use App\Actions\Retention\PruneRosterRestorePointsAction;
+use App\Enums\RosterRestorePointSource;
 use App\Enums\TaskStatus;
 use App\Models\Issue;
 use App\Models\IssuePhoto;
+use App\Models\RosterRestorePoint;
 use App\Models\Tenant;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
@@ -88,5 +91,34 @@ it('verwijdert meldingen van lang inactieve tenants', function () {
 it('retention-prune command ondersteunt dry-run', function () {
     Artisan::call('winprox:retention-prune', ['--dry-run' => true]);
 
-    expect(Artisan::output())->toContain('Dry-run');
+    $output = Artisan::output();
+
+    expect($output)->toContain('Dry-run')
+        ->and($output)->toContain('Herstelpunten');
+});
+
+it('verwijdert uurrooster-herstelpunten ouder dan 30 dagen', function () {
+    config(['data_retention.roster_restore_points_days' => 30]);
+
+    $tenant = Tenant::factory()->create();
+    $payload = [
+        'tenant_id' => $tenant->id,
+        'source' => RosterRestorePointSource::Grid,
+        'scope' => [['worker_id' => 1, 'date' => '2026-11-16']],
+        'shifts' => [],
+    ];
+    $old = RosterRestorePoint::query()->create($payload);
+    $old->forceFill(['created_at' => now()->subDays(31)])->save();
+    $fresh = RosterRestorePoint::query()->create($payload);
+
+    $stats = app(PruneRosterRestorePointsAction::class)->handle(dryRun: true);
+
+    expect($stats['removed'])->toBe(1)
+        ->and(RosterRestorePoint::query()->withoutGlobalScope('tenant')->find($old->id))->not->toBeNull();
+
+    $stats = app(PruneRosterRestorePointsAction::class)->handle(dryRun: false);
+
+    expect($stats['removed'])->toBe(1)
+        ->and(RosterRestorePoint::query()->withoutGlobalScope('tenant')->find($old->id))->toBeNull()
+        ->and(RosterRestorePoint::query()->withoutGlobalScope('tenant')->find($fresh->id))->not->toBeNull();
 });

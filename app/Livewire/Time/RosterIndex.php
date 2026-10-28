@@ -867,6 +867,7 @@ class RosterIndex extends Component
                 [
                     'restore_point_id' => $this->restorePointId,
                     'confirmed' => true,
+                    'seen_token' => (string) ($this->restoreDetail['token'] ?? ''),
                 ],
                 RestoreRosterPointRequest::rulesFor(),
             )->validate();
@@ -886,7 +887,13 @@ class RosterIndex extends Component
         }
 
         try {
-            $undo = $restore->handle($tenant, $actor, $point, true);
+            $undo = $restore->handle(
+                $tenant,
+                $actor,
+                $point,
+                true,
+                (string) ($this->restoreDetail['token'] ?? ''),
+            );
         } catch (RosterRestoreConflictException $e) {
             $this->restoreError = __($e->getMessage());
             $this->loadRestoreDetail((int) $point->id, $restore);
@@ -1285,6 +1292,7 @@ class RosterIndex extends Component
                     'time' => $point->created_at->timezone(config('app.timezone'))->format('H:i'),
                 ]),
             'source' => __('time.schedule.restore.sources.'.$point->source->value),
+            'token' => $assessment->token(),
             'groups' => $groups,
             'blocks' => $blocks,
             'warnings' => $warnings,

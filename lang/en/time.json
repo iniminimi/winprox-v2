@@ -758,6 +758,7 @@
             "restore_id_elsewhere": "This shift is now on another day and is not restored.",
             "restore_blocked": "This restore cannot proceed. A conflict must not be overwritten by confirming.",
             "restore_confirmation_required": "The roster differs from this restore point. Confirm the restore explicitly.",
+            "restore_stale": "The roster changed since you viewed this overview. Nothing was restored.",
             "restore_approved_absence": "Approved leave covers this day. The restore will not overwrite it.",
             "unknown_worker": "Unknown worker.",
             "cell_out_of_scope": "Cell is outside the visible roster.",

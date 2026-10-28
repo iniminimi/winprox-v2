@@ -70,6 +70,19 @@ function restorePointCells(Worker $worker, string $week, array $values = []): ar
     return $cells;
 }
 
+function confirmRestorePoint(Tenant $tenant, User $admin, RosterRestorePoint $point): mixed
+{
+    $preview = app(RestoreRosterPointAction::class)->preview($tenant, $admin, $point);
+
+    return app(RestoreRosterPointAction::class)->handle(
+        $tenant,
+        $admin,
+        $point,
+        true,
+        $preview['assessment']->token(),
+    );
+}
+
 function restorePointSave(Tenant $tenant, User $admin, Worker $worker, string $week, array $values): void
 {
     app(SavePlannedShiftsAction::class)->handle(
@@ -387,7 +400,7 @@ it('zet gewijzigde en verwijderde diensten terug met id, notitie, pauze en statu
     );
 
     $point = RosterRestorePoint::query()->sole();
-    app(RestoreRosterPointAction::class)->handle($tenant, $admin, $point, true);
+    confirmRestorePoint($tenant, $admin, $point);
 
     $restoredMorning = PlannedShift::find($morning->id);
     $restoredEvening = PlannedShift::find($evening->id);
@@ -433,7 +446,7 @@ it('maakt een oorspronkelijk lege dag weer leeg', function () {
     );
 
     $point = RosterRestorePoint::query()->sole();
-    app(RestoreRosterPointAction::class)->handle($tenant, $admin, $point, true);
+    confirmRestorePoint($tenant, $admin, $point);
 
     expect(PlannedShift::query()->where('worker_id', $worker->id)->whereDate('work_date', $target)->count())->toBe(0)
         ->and(PlannedShift::query()->whereDate('work_date', $week)->sole()->description)->toBe('Bron');
@@ -508,7 +521,7 @@ it('weigert het herstel als het id inmiddels op een andere dag staat', function 
 
     $point = RosterRestorePoint::query()->sole();
 
-    expect(fn () => app(RestoreRosterPointAction::class)->handle($tenant, $admin, $point, true))
+    expect(fn () => confirmRestorePoint($tenant, $admin, $point))
         ->toThrow(RosterValidationException::class, 'time.schedule.errors.restore_id_elsewhere');
 
     $kept = PlannedShift::find($row->id);
@@ -560,7 +573,7 @@ it('draait een mislukt herstel volledig terug', function () {
     $shifts[0]['shift_type_id'] = 999999;
     $point->update(['shifts' => $shifts]);
 
-    expect(fn () => app(RestoreRosterPointAction::class)->handle($tenant, $admin, $point->fresh(), true))
+    expect(fn () => confirmRestorePoint($tenant, $admin, $point->fresh()))
         ->toThrow(QueryException::class);
 
     $live = PlannedShift::find($row->id);
@@ -606,7 +619,7 @@ it('bewaart de stand van vóór het herstel en kan dat herstel zelf terugdraaien
     $added = PlannedShift::query()->where('start_time', '14:00')->sole();
     $original = RosterRestorePoint::query()->sole();
 
-    app(RestoreRosterPointAction::class)->handle($tenant, $admin, $original, true);
+    confirmRestorePoint($tenant, $admin, $original);
 
     $undo = RosterRestorePoint::query()->where('source', RosterRestorePointSource::Restore)->sole();
     $undoByStart = collect($undo->shifts)->keyBy('start_time');
@@ -623,7 +636,7 @@ it('bewaart de stand van vóór het herstel en kan dat herstel zelf terugdraaien
         ->and($undoByStart['14:00']['planned_shift_id'])->toBe((int) $added->id)
         ->and($undoByStart['14:00']['end_time'])->toBe('16:00');
 
-    app(RestoreRosterPointAction::class)->handle($tenant, $admin, $undo, true);
+    confirmRestorePoint($tenant, $admin, $undo);
 
     expect(PlannedShift::find($morning->id)?->end_time)->toBe('13:00')
         ->and(PlannedShift::find($morning->id)?->description)->toBe('Gewijzigd')
@@ -655,7 +668,7 @@ it('kan het leegmaken van een gekopieerde dag zelf terugdraaien', function () {
     $copied = PlannedShift::query()->whereDate('work_date', $target)->sole();
     $emptyDay = RosterRestorePoint::query()->sole();
 
-    app(RestoreRosterPointAction::class)->handle($tenant, $admin, $emptyDay, true);
+    confirmRestorePoint($tenant, $admin, $emptyDay);
 
     $undo = RosterRestorePoint::query()->where('source', RosterRestorePointSource::Restore)->sole();
 
@@ -666,7 +679,7 @@ it('kan het leegmaken van een gekopieerde dag zelf terugdraaien', function () {
         ->and($undo->shifts[0]['start_time'])->toBe('07:00')
         ->and($undo->shifts[0]['description'])->toBeNull();
 
-    app(RestoreRosterPointAction::class)->handle($tenant, $admin, $undo, true);
+    confirmRestorePoint($tenant, $admin, $undo);
 
     expect(PlannedShift::find($copied->id)?->start_time)->toBe('07:00')
         ->and(PlannedShift::query()->whereDate('work_date', $target)->count())->toBe(1)
@@ -749,7 +762,7 @@ it('laat een gelijk rooster met rust en schrijft geen extra punt', function () {
         $admin->id,
     );
     $point = RosterRestorePoint::query()->sole();
-    app(RestoreRosterPointAction::class)->handle($tenant, $admin, $point, true);
+    confirmRestorePoint($tenant, $admin, $point);
 
     app(RestoreRosterPointAction::class)->handle($tenant, $admin, $point);
 
@@ -793,7 +806,7 @@ it('blokkeert een vergrendelde dag ook met bevestiging', function () {
         ]],
     ]);
 
-    expect(fn () => app(RestoreRosterPointAction::class)->handle($tenant, $admin, $point, true))
+    expect(fn () => confirmRestorePoint($tenant, $admin, $point))
         ->toThrow(RosterRestoreConflictException::class, 'time.schedule.errors.locked_day');
 
     expect(PlannedShift::find($row->id)?->start_time)->toBe('08:00')
@@ -849,7 +862,7 @@ it('blokkeert goedgekeurd verlof en waarschuwt alleen bij een open aanvraag', fu
 
     $request->update(['status' => AbsenceRequestStatus::Approved]);
 
-    expect(fn () => app(RestoreRosterPointAction::class)->handle($tenant, $admin, $point, true))
+    expect(fn () => confirmRestorePoint($tenant, $admin, $point))
         ->toThrow(RosterRestoreConflictException::class, 'time.schedule.errors.restore_approved_absence');
 
     expect(PlannedShift::find($row->id)?->end_time)->toBe('13:00')
@@ -1021,6 +1034,122 @@ it('zet de maandweergave op de maand van het herstelde punt', function () {
         ->call('confirmRestore')
         ->assertSet('view', 'month')
         ->assertSet('weekStart', Carbon::parse($date)->startOfMonth()->toDateString())
+        ->assertSee(__('time.schedule.restore.success'), false);
+
+    expect(PlannedShift::find($row->id)?->end_time)->toBe('12:00');
+});
+
+it('weigert een bevestiging als het rooster sinds het overzicht is gewijzigd', function () {
+    [$tenant, $admin, $worker] = restorePointTenant();
+    $date = restorePointWeek();
+    $row = PlannedShift::query()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => $date,
+        'status' => PlannedShiftStatus::Published,
+        'kind' => ShiftTypeKind::Work,
+        'start_time' => '08:00',
+        'end_time' => '12:00',
+        'break_minutes' => 0,
+        'description' => 'Ochtend',
+    ]);
+    app(SavePlannedDayAction::class)->handle(
+        $tenant,
+        new SavePlannedDayData((int) $worker->id, $date, [
+            [
+                'id' => $row->id,
+                'start_time' => '08:00',
+                'end_time' => '13:00',
+                'break_minutes' => 0,
+                'description' => 'Ochtend',
+            ],
+        ]),
+        $admin->id,
+    );
+    $point = RosterRestorePoint::query()->oldest('id')->first();
+    $seen = app(RestoreRosterPointAction::class)->preview($tenant, $admin, $point)['assessment']->token();
+
+    app(SavePlannedDayAction::class)->handle(
+        $tenant,
+        new SavePlannedDayData((int) $worker->id, $date, [
+            [
+                'id' => $row->id,
+                'start_time' => '08:00',
+                'end_time' => '14:00',
+                'break_minutes' => 0,
+                'description' => 'Ochtend',
+            ],
+        ]),
+        $admin->id,
+    );
+
+    expect(fn () => app(RestoreRosterPointAction::class)->handle($tenant, $admin, $point, true, $seen))
+        ->toThrow(RosterRestoreConflictException::class, 'time.schedule.errors.restore_stale');
+
+    expect(PlannedShift::find($row->id)?->end_time)->toBe('14:00')
+        ->and(RosterRestorePoint::query()->where('source', RosterRestorePointSource::Restore)->count())->toBe(0);
+
+    confirmRestorePoint($tenant, $admin, $point);
+
+    expect(PlannedShift::find($row->id)?->end_time)->toBe('12:00');
+});
+
+it('toont het bijgewerkte verschil en herstelt pas na een nieuwe bevestiging', function () {
+    [$tenant, $admin, $worker] = restorePointTenant();
+    $date = restorePointWeek();
+    $row = PlannedShift::query()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => $date,
+        'status' => PlannedShiftStatus::Published,
+        'kind' => ShiftTypeKind::Work,
+        'start_time' => '08:00',
+        'end_time' => '12:00',
+        'break_minutes' => 0,
+        'description' => 'Ochtend',
+    ]);
+    app(SavePlannedDayAction::class)->handle(
+        $tenant,
+        new SavePlannedDayData((int) $worker->id, $date, [
+            [
+                'id' => $row->id,
+                'start_time' => '08:00',
+                'end_time' => '13:00',
+                'break_minutes' => 0,
+                'description' => 'Ochtend',
+            ],
+        ]),
+        $admin->id,
+    );
+    $point = RosterRestorePoint::query()->oldest('id')->firstOrFail();
+    $screen = Livewire::actingAs($admin)
+        ->test(RosterIndex::class)
+        ->call('openRestoreModal')
+        ->call('selectRestorePoint', $point->id)
+        ->assertSee('08:00–13:00', false);
+
+    app(SavePlannedDayAction::class)->handle(
+        $tenant,
+        new SavePlannedDayData((int) $worker->id, $date, [
+            [
+                'id' => $row->id,
+                'start_time' => '08:00',
+                'end_time' => '14:00',
+                'break_minutes' => 0,
+                'description' => 'Ochtend',
+            ],
+        ]),
+        $admin->id,
+    );
+
+    $screen->call('confirmRestore')
+        ->assertSee(__('time.schedule.errors.restore_stale'), false)
+        ->assertSee('08:00–14:00', false)
+        ->assertDontSee(__('time.schedule.restore.success'), false);
+
+    expect(PlannedShift::find($row->id)?->end_time)->toBe('14:00');
+
+    $screen->call('confirmRestore')
         ->assertSee(__('time.schedule.restore.success'), false);
 
     expect(PlannedShift::find($row->id)?->end_time)->toBe('12:00');

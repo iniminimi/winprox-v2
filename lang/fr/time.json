@@ -758,6 +758,7 @@
             "restore_id_elsewhere": "Ce service est désormais sur un autre jour et n'est pas rétabli.",
             "restore_blocked": "Ce rétablissement est impossible. Un conflit ne se contourne pas par une confirmation.",
             "restore_confirmation_required": "Le planning diffère de ce point de restauration. Confirmez explicitement.",
+            "restore_stale": "Le planning a changé depuis que vous avez vu cet aperçu. Rien n'a été rétabli.",
             "restore_approved_absence": "Un congé approuvé couvre ce jour. Le rétablissement ne l'écrase pas.",
             "unknown_worker": "Exécutant inconnu.",
             "cell_out_of_scope": "La cellule est hors de l’horaire visible.",

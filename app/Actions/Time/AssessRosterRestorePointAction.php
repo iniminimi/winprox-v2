@@ -168,7 +168,10 @@ class AssessRosterRestorePointAction
             }
         }
 
-        return new RosterRestoreAssessment($blocks, $warnings, $differences);
+        $stand = array_values($current);
+        usort($stand, fn (array $a, array $b): int => ((int) $a['planned_shift_id']) <=> ((int) $b['planned_shift_id']));
+
+        return new RosterRestoreAssessment($blocks, $warnings, $differences, $stand);
     }
 
     /**

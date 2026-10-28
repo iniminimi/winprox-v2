@@ -758,6 +758,7 @@
             "restore_id_elsewhere": "Questo turno è ora in un altro giorno e non viene ripristinato.",
             "restore_blocked": "Questo ripristino non è possibile. Un conflitto non si supera confermando.",
             "restore_confirmation_required": "Il piano differisce da questo punto di ripristino. Confermare esplicitamente il ripristino.",
+            "restore_stale": "Il piano è cambiato da quando hai visto questo riepilogo. Non è stato ripristinato nulla.",
             "restore_approved_absence": "C'è un'assenza approvata in questo giorno. Il ripristino non la sovrascrive.",
             "unknown_worker": "Esecutore sconosciuto.",
             "cell_out_of_scope": "La cella è fuori dal turno visibile.",

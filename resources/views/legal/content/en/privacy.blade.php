@@ -228,6 +228,7 @@
     <li>media (photos): 24 months after closing the relevant issue or task</li>
     <li>ESG measurements: same retention as issues and tasks (contract period + 36 months)</li>
     <li>CIAO/NSSO submissions (relay log in WinProx): successful submissions default 12 months (configurable); failed/queued longer. The official record remains with the NSSO. Export via Time → CIAO.</li>
+    <li>Roster restore points (previous shifts of a roster edit): 30 days, then deleted automatically. The roster itself follows the Time retention period.</li>
     <li>IoT events, gateway and sensor metadata: contract period + 36 months (or shorter if the underlying issue/task is removed earlier upon organisation deletion)</li>
     <li>operational infrastructure backups (hosting/Cloud86): 7 days</li>
     <li>technical SQL snapshot after a full organisation deletion (without media files): maximum 30 days, then destruction</li>
