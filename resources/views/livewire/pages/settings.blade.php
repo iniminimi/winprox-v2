@@ -311,8 +311,7 @@
                 <button type="submit" class="btn btn--primary btn--sm">{{ __('settings.time_clock.save') }}</button>
             </form>
         </x-wp-settings-section>
-        <section id="settings-roster" class="wp-card wp-card-pad wp-stack wp-settings-section">
-            <h2 class="wp-section-title">{{ __('settings.time_clock.roster') }}</h2>
+        <x-wp-settings-section :title="__('settings.time_clock.roster')" titleId="settings-roster">
             <form wire:submit="saveTimeRoster" class="wp-stack">
                 <label class="wp-switch">
                     <input type="checkbox" wire:model="timeRosterEnabled">
@@ -323,7 +322,7 @@
                 @error('time_roster_enabled') <p class="wp-error">{{ $message }}</p> @enderror
                 <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
             </form>
-        </section>
+        </x-wp-settings-section>
     @endif
 
     <x-wp-settings-section :title="__('settings.style.title')">

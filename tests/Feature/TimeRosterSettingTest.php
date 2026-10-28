@@ -91,10 +91,15 @@ it('laat het uurrooster aan wanneer de schakelaar aan staat', function () {
         ->get(route('time.schedule.index'))
         ->assertOk();
 
-    $this->actingAs($admin)
+    $settings = $this->actingAs($admin)
         ->get(route('settings.index'))
         ->assertOk()
         ->assertSee('id="settings-roster"', false)
         ->assertSee(__('settings.time_clock.roster_label'), false)
-        ->assertSee(__('settings.time_clock.team_roster'), false);
+        ->assertSee(__('settings.time_clock.team_roster'), false)
+        ->getContent();
+
+    expect($settings)->toMatch(
+        '/<button[^>]*class="wp-settings-section-toggle"[^>]*>[\s\S]*?id="settings-roster"[\s\S]*?<\/button>/',
+    );
 });
