@@ -55,41 +55,58 @@ class SavePlannedShiftsAction
             ->get()
             ->keyBy('id');
 
-        return DB::transaction(function () use ($tenant, $data, $types, $units, $workers, $workerIds, $weekStart, $weekEnd, $actorUserId, $dates, $dateSet) {
+        // Parsen hangt alleen af van de celtekst en de al geladen types/units,
+        // niet van de vergrendelde rijen. De vergelijking, de vergrendelde
+        // dagen en de overlap blijven in de transactie: een token dat op de
+        // rij zelf overeenkomt (ook een inactief type) mag de cel niet
+        // ongeldig maken, en een fout daarna mag niets vastleggen.
+        $parsedByIndex = [];
+        foreach ($data->cells as $index => $cell) {
+            if (! empty($cell['keep'])) {
+                continue;
+            }
+            $worker = $workers->get((int) $cell['worker_id']);
+            $catalog = $units->filter(
+                fn (Unit $unit) => $worker instanceof Worker && $worker->canClockAt((int) $unit->location_id),
+            );
+            $parsedByIndex[$index] = $this->parseCell->handleAll((string) $cell['raw'], $types, $catalog);
+        }
+
+        return DB::transaction(function () use ($tenant, $data, $workerIds, $weekStart, $weekEnd, $actorUserId, $dates, $dateSet, $parsedByIndex) {
             // Alleen rijen op zichtbare datums horen bij deze save. In een
             // maand zonder weekends liggen weekenddagen binnen [start, eind]
             // maar buiten de grid: die rijen worden niet verwijderd en niet
-            // als vergrendelde wijziging gezien.
+            // als vergrendelde wijziging gezien. start_time, id is een vaste
+            // lockvolgorde; de koppeling sorteert daarna nog eens zelf.
             $existing = PlannedShift::query()
                 ->with('shiftType')
                 ->whereIn('worker_id', $workerIds ?: [0])
                 ->whereBetween('work_date', [$weekStart, $weekEnd])
+                ->orderBy('start_time')
+                ->orderBy('id')
                 ->lockForUpdate()
                 ->get()
                 ->filter(fn (PlannedShift $shift) => isset($dateSet[$shift->work_date->toDateString()]))
                 ->values();
 
-            // Elke gewijzigde cel wordt draft — ook in een al gepubliceerde
-            // periode. Zo blijft "Niet gepubliceerd" zichtbaar tot de beheerder
-            // bewust publiceert; uitvoerders zien de wijziging pas dan.
+            // Alleen een nieuw blok wordt draft. Een blok dat overeenkomt
+            // houdt zijn status tot de beheerder de vervanging publiceert.
             $status = PlannedShiftStatus::Draft;
 
             $existingByDay = $existing->groupBy(
                 fn (PlannedShift $shift) => $shift->worker_id.':'.$shift->work_date->toDateString(),
             );
 
-            // Per cel worden de blokken één op één met de bestaande rijen
-            // vergeleken (server is de bron van waarheid). Een overeenkomend
-            // blok behoudt zijn rij — id, notitie, pauze en status — en alleen
-            // de rest wordt vervangen. Historische dagen (< vandaag,
-            // app-tijdzone) zijn vergrendeld: elke werkelijke wijziging —
-            // wijzigen, legen of op een lege dag plannen — wordt als cel
-            // geflagd.
+            // Per cel eerst de unieke één-op-één-matches, ook als de
+            // tekstvolgorde kruist. De rest volgt de grootste koppeling die
+            // niet kruist. Historische dagen (< vandaag, app-tijdzone) zijn
+            // vergrendeld: elke werkelijke wijziging — wijzigen, legen of op
+            // een lege dag plannen — wordt als cel geflagd.
             $preservedIds = [];
             $invalid = [];
             $lockedErrors = [];
             $pending = [];
-            foreach ($data->cells as $cell) {
+            foreach ($data->cells as $index => $cell) {
                 $workerId = (int) $cell['worker_id'];
                 $date = (string) $cell['date'];
                 /** @var Collection<int, PlannedShift> $rows */
@@ -104,31 +121,7 @@ class SavePlannedShiftsAction
                     continue;
                 }
 
-                $worker = $workers->get($workerId);
-                $catalog = $units->filter(
-                    fn (Unit $unit) => $worker instanceof Worker && $worker->canClockAt((int) $unit->location_id),
-                );
-                $unmatched = $rows->keyBy('id');
-                $kept = [];
-                $new = [];
-                $error = null;
-                foreach ($this->parseCell->handleAll((string) $cell['raw'], $types, $catalog) as $parsed) {
-                    if ($parsed->isEmpty()) {
-                        continue;
-                    }
-                    $match = $unmatched->first(fn (PlannedShift $row) => $this->blockMatchesRow($parsed, $row));
-                    if ($match !== null) {
-                        $unmatched->forget($match->id);
-                        $kept[] = $match;
-
-                        continue;
-                    }
-                    if ($parsed->kind === RosterCellKind::Invalid) {
-                        $error = $parsed;
-                        break;
-                    }
-                    $new[] = $parsed;
-                }
+                [$kept, $new, $error] = $this->pairBlocks($rows, $parsedByIndex[$index]);
 
                 if ($error !== null) {
                     $invalid[] = [
@@ -145,7 +138,7 @@ class SavePlannedShiftsAction
                 foreach ($kept as $row) {
                     $preservedIds[] = (int) $row->id;
                 }
-                if ($new === [] && $unmatched->isEmpty()) {
+                if ($new === [] && count($kept) === $rows->count()) {
                     continue;
                 }
 
@@ -217,12 +210,177 @@ class SavePlannedShiftsAction
     }
 
     /**
-     * Geparseerd blok == bestaande rij? Eerst de weergave: toont de server
-     * deze rij exact zo, dan is er niets gewijzigd (ook pauze, aangepaste
-     * tijden of een inactief type die de tekst niet kan dragen). Anders de
-     * inhoud die de cel wél uitdrukt: soort, unit en shifttype (aangepaste
-     * tijden blijven behouden), of bij vrije tijd de tijden. Notitie, pauze
-     * en status worden nooit vergeleken; een match behoudt de rij.
+     * Eerst unieke één-op-één-matches, ook als de tekstvolgorde kruist.
+     * Daarna de grootste koppeling die niet kruist op wat overblijft.
+     * Een gekoppelde rij wordt niet herschreven: id, notitie, pauze, status
+     * en aangepaste tijden blijven. Alleen een ongekoppeld token wordt een
+     * nieuw concept; alleen een ongekoppelde rij verdwijnt.
+     *
+     * Bij twee even grote koppelingen in de rest blijft de vroegste rij
+     * behouden. Identieke codes zijn niet uniek en vallen daarop terug.
+     * De tekst `V · V` onderscheidt hun volgorde niet en wordt niet als
+     * omwisseling gelezen.
+     *
+     * @param  Collection<int, PlannedShift>  $rows
+     * @param  list<RosterCellData>  $parsedBlocks
+     * @return array{0: list<PlannedShift>, 1: list<RosterCellData>, 2: ?RosterCellData}
+     */
+    private function pairBlocks(Collection $rows, array $parsedBlocks): array
+    {
+        $sorted = $rows->sort(function (PlannedShift $a, PlannedShift $b): int {
+            $byTime = $this->rosterMinutes($a) <=> $this->rosterMinutes($b);
+
+            return $byTime !== 0 ? $byTime : ((int) $a->id <=> (int) $b->id);
+        })->values();
+
+        $blocks = [];
+        foreach ($parsedBlocks as $parsed) {
+            if ($parsed->isEmpty()) {
+                continue;
+            }
+            $blocks[] = $parsed;
+        }
+
+        $tokenCount = count($blocks);
+        $rowCount = $sorted->count();
+        $tokenHits = array_fill(0, $tokenCount, []);
+        $rowHits = array_fill(0, $rowCount, []);
+        for ($token = 0; $token < $tokenCount; $token++) {
+            for ($row = 0; $row < $rowCount; $row++) {
+                if (! $this->blockMatchesRow($blocks[$token], $sorted[$row])) {
+                    continue;
+                }
+                $tokenHits[$token][] = $row;
+                $rowHits[$row][] = $token;
+            }
+        }
+
+        $lockedToken = array_fill(0, $tokenCount, false);
+        $lockedRow = array_fill(0, $rowCount, false);
+        $kept = [];
+        for ($token = 0; $token < $tokenCount; $token++) {
+            if (count($tokenHits[$token]) !== 1) {
+                continue;
+            }
+            $row = $tokenHits[$token][0];
+            if (count($rowHits[$row]) !== 1) {
+                continue;
+            }
+            $lockedToken[$token] = true;
+            $lockedRow[$row] = true;
+            $kept[] = $sorted[$row];
+        }
+
+        $restBlocks = [];
+        $restRows = [];
+        for ($token = 0; $token < $tokenCount; $token++) {
+            if (! $lockedToken[$token]) {
+                $restBlocks[] = $blocks[$token];
+            }
+        }
+        for ($row = 0; $row < $rowCount; $row++) {
+            if (! $lockedRow[$row]) {
+                $restRows[] = $sorted[$row];
+            }
+        }
+
+        [$restKept, $new, $error] = $this->alignNonCrossing($restBlocks, $restRows);
+        if ($error !== null) {
+            return [[], [], $error];
+        }
+
+        return [array_merge($kept, $restKept), $new, null];
+    }
+
+    /**
+     * Grootste koppeling die niet kruist. Bij gelijke score blijft de
+     * vroegste rij: een token dat de huidige rij niet raakt wordt een nieuw
+     * blok zolang dat de score niet verlaagt, anders vervalt de rij.
+     *
+     * @param  list<RosterCellData>  $blocks
+     * @param  list<PlannedShift>  $rows
+     * @return array{0: list<PlannedShift>, 1: list<RosterCellData>, 2: ?RosterCellData}
+     */
+    private function alignNonCrossing(array $blocks, array $rows): array
+    {
+        $tokenCount = count($blocks);
+        $rowCount = count($rows);
+        $score = array_fill(0, $tokenCount + 1, array_fill(0, $rowCount + 1, 0));
+        $matches = array_fill(0, $tokenCount, array_fill(0, $rowCount, false));
+
+        for ($token = $tokenCount - 1; $token >= 0; $token--) {
+            for ($row = $rowCount - 1; $row >= 0; $row--) {
+                $matches[$token][$row] = $this->blockMatchesRow($blocks[$token], $rows[$row]);
+                $best = $score[$token + 1][$row];
+                $best = max($best, $score[$token][$row + 1]);
+                if ($matches[$token][$row]) {
+                    $best = max($best, $score[$token + 1][$row + 1] + 1);
+                }
+                $score[$token][$row] = $best;
+            }
+        }
+
+        $kept = [];
+        $new = [];
+        $token = 0;
+        $row = 0;
+        while ($token < $tokenCount && $row < $rowCount) {
+            if ($matches[$token][$row] && $score[$token][$row] === $score[$token + 1][$row + 1] + 1) {
+                $kept[] = $rows[$row];
+                $token++;
+                $row++;
+
+                continue;
+            }
+
+            $skipIsOptimal = $score[$token][$row] === $score[$token + 1][$row];
+            $dropIsOptimal = $score[$token][$row] === $score[$token][$row + 1];
+            if ($blocks[$token]->kind === RosterCellKind::Invalid) {
+                if ($dropIsOptimal) {
+                    $row++;
+
+                    continue;
+                }
+
+                return [[], [], $blocks[$token]];
+            }
+            if ($skipIsOptimal) {
+                $new[] = $blocks[$token];
+                $token++;
+
+                continue;
+            }
+            $row++;
+        }
+
+        while ($token < $tokenCount) {
+            if ($blocks[$token]->kind === RosterCellKind::Invalid) {
+                return [[], [], $blocks[$token]];
+            }
+            $new[] = $blocks[$token];
+            $token++;
+        }
+
+        return [$kept, $new, null];
+    }
+
+    private function rosterMinutes(PlannedShift $row): int
+    {
+        $time = $row->start_time;
+        if (! is_string($time) || $time === '') {
+            return -1;
+        }
+
+        return ShiftType::timeToMinutes($time);
+    }
+
+    /**
+     * Vergelijkingsvelden, in deze volgorde en niet anders: de canonieke
+     * weergave; anders soort én unit; anders het shifttype-id, waarbij de
+     * opgeslagen tijden blijven staan; anders bij een vrije tijd exact het
+     * begin- en einduur. `13:00-15:00` raakt `12:00-14:00` dus niet en wordt
+     * een nieuw blok. Notitie, pauze en status worden niet vergeleken; een
+     * match behoudt de rij ongewijzigd.
      */
     private function blockMatchesRow(RosterCellData $parsed, PlannedShift $row): bool
     {

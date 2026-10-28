@@ -66,7 +66,7 @@ Planned time is separate from punched `WorkShift`. Publishing does not send CIAO
 
 Body: `week_start`, optional `period` (`week` default, or `month`), `worker_ids`, `cells` (`worker_id`, `date`, `raw` code or `07:00-15:00`, max 192 characters; multi-block days as `07:00-10:00 · 18:00-20:00`). Full visible week or month snapshot.
 
-The server compares each block with the existing shifts of that day. Matching blocks keep their shift (id, note, break, status); only the other blocks are replaced as draft. Sending the `display` value from `GET /time/schedule` back unchanged therefore changes nothing. Retyping the same shift-type code keeps custom times; clear the cell to reset. `keep` is ignored by the API.
+The server first locks a match when a block matches exactly one shift and that shift matches only that block, even if the text order crosses. The remaining blocks use the largest non-crossing match, ordered by start time then id. A kept shift is not rewritten: it retains its id, note, break, status and, for the same code, its custom times. Only unmatched blocks are replaced as draft. When two remaining matches are equally large, the earliest shift is kept. Identical codes are not unique, so they fall through to that rule: the text does not show a swap, and the server does not perform one. A free-time block matches only the same start and end, so `13:00-15:00` replaces `12:00-14:00` with a new draft. Sending the `display` value from `GET /time/schedule` back unchanged therefore changes nothing. Retyping the same shift-type code keeps the custom times of the matched shift; clear the cell to reset. `keep` is ignored by the API.
 
 `POST /time/schedule/copy` — all-or-nothing copy to another week; refused if the target week already has shifts.
 

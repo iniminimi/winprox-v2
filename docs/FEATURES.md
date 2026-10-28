@@ -944,13 +944,19 @@ een samenvatting (`0700-1000 · 1800-2000`, bij gedeeltelijke afwezigheid bv.
 grid-save de blokken opnieuw aanmaakt; er overheen typen (één blok) vervangt de hele dag
 (met bevestiging); onaangeroerde multi-cellen gaan met `keep: true` mee zodat blok-ids
 behouden blijven.
-**Blokbehoud bij grid- en API-save** (`SavePlannedShiftsAction`): de server vergelijkt elk
-geparst blok één op één met de bestaande rijen van die dag; de server is de bron van waarheid.
-Een blok dat overeenkomt (zelfde weergave, of zelfde soort/unit en shifttype, of bij vrije
-tijd dezelfde tijden) behoudt zijn rij — id, notitie, pauze en status. Alleen de overige
-blokken worden vervangen (draft), dus een dag kan gepubliceerde en concept-blokken naast
-elkaar hebben. Snapshotprincipe: dezelfde code opnieuw typen behoudt aangepaste tijden;
-een dag terugzetten naar de typetijden gaat via wissen en opnieuw invoeren.
+**Blokbehoud bij grid- en API-save** (`SavePlannedShiftsAction`): de server zet eerst elk token
+vast dat precies één rij raakt en waarvan die rij alleen dat token raakt, ook als de tekstvolgorde
+kruist. Rijen staan in rooster-volgorde (starttijd, daarna id). Wat overblijft volgt de grootste
+koppeling die niet kruist, zodat invoegen of verwijderen de overige rijen niet vervangt. Een
+gekoppelde rij wordt niet herschreven en houdt id, notitie, pauze, status en — bij dezelfde code —
+de aangepaste tijden. Alleen niet-gekoppelde blokken worden vervangen (draft), dus een dag kan
+gepubliceerde en concept-blokken naast elkaar hebben.
+Komen twee van die koppelingen even ver, dan blijft de vroegste rij behouden. Twee identieke
+codes zijn niet uniek en vallen daarop terug: de tekst onderscheidt hun volgorde niet en de
+server wisselt ze niet om. Een vrije tijd koppelt alleen bij hetzelfde begin- en einduur, dus
+`13:00-15:00` vervangt `12:00-14:00` door een nieuw concept. Snapshotprincipe: dezelfde code
+opnieuw typen behoudt de aangepaste tijden van de gekoppelde rij; terugzetten naar de
+typetijden gaat via wissen en opnieuw invoeren.
 **Notitie per blok** (`planned_shifts.description`, max 500): alleen via de dag-editor;
 een grid-cel kan geen notitie dragen. Een grid-save die een enkelvoudige cel ongewijzigd
 laat, behoudt de bestaande rij — en dus de notitie. Zichtbaar als ✎-markering in de cel
