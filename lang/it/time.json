@@ -683,6 +683,60 @@
             "week_failed": "copia non riuscita",
             "skipped_absence": ":name :date (:label) — assente"
         },
+        "restore": {
+            "button": "Ripristina",
+            "title": "Punto di ripristino",
+            "empty": "Non ci sono ancora punti di ripristino.",
+            "capped": "Sono mostrati solo gli ultimi :count punti.",
+            "back": "Tutti i punti",
+            "when": ":date alle :time",
+            "workers": "Esecutori",
+            "days": "Giorni",
+            "unknown_worker": "Esecutore",
+            "differences": "Differenza rispetto al turno attuale",
+            "no_difference": "Il turno coincide con questo punto. Non c'è nulla da ripristinare.",
+            "blocks": "Questo ripristino è bloccato",
+            "warnings": "Controllare prima di confermare",
+            "confirm": "Conferma e ripristina",
+            "success": "Il turno è stato ripristinato.",
+            "undo": "Annulla questo ripristino",
+            "undo_hint": "Prima si vede la differenza, poi si conferma di nuovo.",
+            "failed": "Il ripristino non è stato applicato.",
+            "sources": {
+                "grid": "Turno salvato",
+                "day": "Giorno modificato",
+                "copy": "Settimana copiata",
+                "restore": "Ripristino precedente"
+            },
+            "diff": {
+                "added": ":date · :name · :label — è nel turno e non in questo punto.",
+                "removed": ":date · :name · :label — è in questo punto e non più nel turno.",
+                "changed": ":date · :name · :saved → :current (:fields)."
+            },
+            "fields": {
+                "worker_id": "esecutore",
+                "work_date": "data",
+                "shift_type_id": "tipo di turno",
+                "kind": "tipo",
+                "unit_id": "gruppo",
+                "unit_code": "codice gruppo",
+                "unit_name": "nome gruppo",
+                "location_id": "sede",
+                "start_time": "inizio",
+                "end_time": "fine",
+                "break_minutes": "pausa",
+                "description": "nota",
+                "status": "stato"
+            },
+            "block": {
+                "locked_day": ":date è bloccato.",
+                "restore_id_elsewhere": "Un turno di :name il :date è su un altro giorno.",
+                "approved_absence": "Assenza approvata di :name il :date."
+            },
+            "warning": {
+                "pending_absence": "Richiesta di assenza aperta di :name il :date."
+            }
+        },
         "publish": "Pubblica",
         "publish_confirm": "Pubblicare questa settimana per gli esecutori visibili?",
         "saved": "Turni salvati.",
@@ -697,6 +751,10 @@
             "locked_day": "Questo giorno è nel passato ed è bloccato.",
             "locked_days": "Alcuni giorni sono nel passato e sono bloccati.",
             "overlap": "Questo esecutore ha turni sovrapposti.",
+            "restore_id_elsewhere": "Questo turno è ora in un altro giorno e non viene ripristinato.",
+            "restore_blocked": "Questo ripristino non è possibile. Un conflitto non si supera confermando.",
+            "restore_confirmation_required": "Il piano differisce da questo punto di ripristino. Confermare esplicitamente il ripristino.",
+            "restore_approved_absence": "C'è un'assenza approvata in questo giorno. Il ripristino non la sovrascrive.",
             "unknown_worker": "Esecutore sconosciuto.",
             "cell_out_of_scope": "La cella è fuori dal turno visibile.",
             "duplicate_cell": "Cella duplicata nel turno.",

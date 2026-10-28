@@ -6,6 +6,7 @@ use App\Data\Time\RosterCellData;
 use App\Data\Time\SavePlannedShiftsData;
 use App\Enums\PlannedShiftStatus;
 use App\Enums\RosterCellKind;
+use App\Enums\RosterRestorePointSource;
 use App\Enums\ShiftTypeKind;
 use App\Events\Time\ScheduleSaved;
 use App\Exceptions\RosterValidationException;
@@ -26,6 +27,7 @@ class SavePlannedShiftsAction
         private ParseRosterCellAction $parseCell,
         private AssertPlannedShiftNoOverlapAction $assertNoOverlap,
         private ListShiftTypesAction $listShiftTypes,
+        private RecordRosterRestorePointAction $recordRestorePoint,
     ) {}
 
     /**
@@ -161,6 +163,23 @@ class SavePlannedShiftsAction
             }
             if ($lockedErrors !== []) {
                 throw new RosterValidationException('time.schedule.errors.locked_days', $lockedErrors);
+            }
+
+            if ($pending !== []) {
+                $scope = [];
+                foreach ($pending as $item) {
+                    $scope[] = [
+                        'worker_id' => (int) $item['cell']['worker_id'],
+                        'date' => (string) $item['cell']['date'],
+                    ];
+                }
+                $this->recordRestorePoint->handle(
+                    $tenant,
+                    $actorUserId,
+                    RosterRestorePointSource::Grid,
+                    $scope,
+                    $this->recordRestorePoint->capture($existing),
+                );
             }
 
             PlannedShift::query()

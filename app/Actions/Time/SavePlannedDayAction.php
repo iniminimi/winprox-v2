@@ -4,6 +4,7 @@ namespace App\Actions\Time;
 
 use App\Data\Time\SavePlannedDayData;
 use App\Enums\PlannedShiftStatus;
+use App\Enums\RosterRestorePointSource;
 use App\Events\Time\ScheduleSaved;
 use App\Exceptions\RosterValidationException;
 use App\Models\PlannedShift;
@@ -28,6 +29,7 @@ class SavePlannedDayAction
     public function __construct(
         private AssertPlannedShiftNoOverlapAction $assertNoOverlap,
         private ListShiftTypesAction $listShiftTypes,
+        private RecordRosterRestorePointAction $recordRestorePoint,
     ) {}
 
     /**
@@ -81,11 +83,13 @@ class SavePlannedDayAction
 
         return DB::transaction(function () use ($tenant, $worker, $date, $normalized, $data, $actorUserId) {
             $existing = PlannedShift::query()
+                ->with('shiftType')
                 ->where('worker_id', $worker->id)
                 ->whereDate('work_date', $date)
                 ->lockForUpdate()
                 ->get()
                 ->keyBy('id');
+            $before = $this->recordRestorePoint->capture($existing);
 
             $payloadIds = collect($data->blocks)
                 ->pluck('id')
@@ -160,6 +164,16 @@ class SavePlannedDayAction
                 ->whereIn('id', $existing->keys()->diff($keptIds)->all() ?: [0])
                 ->delete();
 
+            if ($created + $updated + (int) $deleted > 0) {
+                $this->recordRestorePoint->handle(
+                    $tenant,
+                    $actorUserId,
+                    RosterRestorePointSource::Day,
+                    [['worker_id' => (int) $worker->id, 'date' => $date]],
+                    $before,
+                );
+            }
+
             $afterCount = PlannedShift::query()
                 ->where('worker_id', $worker->id)
                 ->whereDate('work_date', $date)
@@ -181,5 +195,4 @@ class SavePlannedDayAction
             ];
         });
     }
-
 }

@@ -683,6 +683,60 @@
             "week_failed": "copie échouée",
             "skipped_absence": ":name :date (:label) — absent"
         },
+        "restore": {
+            "button": "Rétablir",
+            "title": "Point de restauration",
+            "empty": "Il n'y a pas encore de point de restauration.",
+            "capped": "Seuls les :count derniers points sont affichés.",
+            "back": "Tous les points",
+            "when": ":date à :time",
+            "workers": "Exécutants",
+            "days": "Jours",
+            "unknown_worker": "Exécutant",
+            "differences": "Écart avec le planning actuel",
+            "no_difference": "Le planning correspond à ce point. Rien à rétablir.",
+            "blocks": "Ce rétablissement est bloqué",
+            "warnings": "À vérifier avant de confirmer",
+            "confirm": "Confirmer et rétablir",
+            "success": "Le planning a été rétabli.",
+            "undo": "Annuler ce rétablissement",
+            "undo_hint": "Vous voyez d'abord l'écart, puis vous confirmez à nouveau.",
+            "failed": "Le rétablissement n'a pas été appliqué.",
+            "sources": {
+                "grid": "Planning enregistré",
+                "day": "Jour modifié",
+                "copy": "Semaine copiée",
+                "restore": "Rétablissement précédent"
+            },
+            "diff": {
+                "added": ":date · :name · :label — est dans le planning et pas dans ce point.",
+                "removed": ":date · :name · :label — est dans ce point et plus dans le planning.",
+                "changed": ":date · :name · :saved → :current (:fields)."
+            },
+            "fields": {
+                "worker_id": "exécutant",
+                "work_date": "date",
+                "shift_type_id": "type de service",
+                "kind": "sorte",
+                "unit_id": "groupe",
+                "unit_code": "code de groupe",
+                "unit_name": "nom du groupe",
+                "location_id": "lieu",
+                "start_time": "début",
+                "end_time": "fin",
+                "break_minutes": "pause",
+                "description": "note",
+                "status": "statut"
+            },
+            "block": {
+                "locked_day": ":date est verrouillé.",
+                "restore_id_elsewhere": "Un service de :name le :date est désormais sur un autre jour.",
+                "approved_absence": "Congé approuvé de :name le :date."
+            },
+            "warning": {
+                "pending_absence": "Demande de congé ouverte de :name le :date."
+            }
+        },
         "publish": "Publier",
         "publish_confirm": "Publier cette semaine pour les exécutants visibles ?",
         "saved": "Horaire enregistré.",
@@ -697,6 +751,10 @@
             "locked_day": "Ce jour est dans le passé et verrouillé.",
             "locked_days": "Certains jours sont dans le passé et verrouillés.",
             "overlap": "Cet exécutant a des services qui se chevauchent.",
+            "restore_id_elsewhere": "Ce service est désormais sur un autre jour et n'est pas rétabli.",
+            "restore_blocked": "Ce rétablissement est impossible. Un conflit ne se contourne pas par une confirmation.",
+            "restore_confirmation_required": "Le planning diffère de ce point de restauration. Confirmez explicitement.",
+            "restore_approved_absence": "Un congé approuvé couvre ce jour. Le rétablissement ne l'écrase pas.",
             "unknown_worker": "Exécutant inconnu.",
             "cell_out_of_scope": "La cellule est hors de l’horaire visible.",
             "duplicate_cell": "Cellule en double dans l’horaire.",

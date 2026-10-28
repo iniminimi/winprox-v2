@@ -683,6 +683,60 @@
             "week_failed": "kopiëren mislukt",
             "skipped_absence": ":name :date (:label) — afwezig"
         },
+        "restore": {
+            "button": "Herstellen",
+            "title": "Herstelpunt",
+            "empty": "Er zijn nog geen herstelpunten.",
+            "capped": "Alleen de laatste :count herstelpunten worden getoond.",
+            "back": "Alle punten",
+            "when": ":date om :time",
+            "workers": "Uitvoerders",
+            "days": "Dagen",
+            "unknown_worker": "Uitvoerder",
+            "differences": "Verschil met het huidige rooster",
+            "no_difference": "Het rooster komt overeen met dit punt. Er is niets te herstellen.",
+            "blocks": "Dit herstel is geblokkeerd",
+            "warnings": "Let op voor u bevestigt",
+            "confirm": "Bevestig en herstel",
+            "success": "Het rooster is hersteld.",
+            "undo": "Dit herstel ongedaan maken",
+            "undo_hint": "U ziet eerst het verschil en bevestigt daarna opnieuw.",
+            "failed": "Het herstel is niet uitgevoerd.",
+            "sources": {
+                "grid": "Rooster opgeslagen",
+                "day": "Dag bewerkt",
+                "copy": "Week gekopieerd",
+                "restore": "Vorig herstel"
+            },
+            "diff": {
+                "added": ":date · :name · :label — staat nu in het rooster en niet in dit punt.",
+                "removed": ":date · :name · :label — staat in dit punt en niet meer in het rooster.",
+                "changed": ":date · :name · :saved → :current (:fields)."
+            },
+            "fields": {
+                "worker_id": "uitvoerder",
+                "work_date": "datum",
+                "shift_type_id": "shifttype",
+                "kind": "soort",
+                "unit_id": "groep",
+                "unit_code": "groepscode",
+                "unit_name": "groepsnaam",
+                "location_id": "locatie",
+                "start_time": "start",
+                "end_time": "einde",
+                "break_minutes": "pauze",
+                "description": "notitie",
+                "status": "status"
+            },
+            "block": {
+                "locked_day": ":date is vergrendeld.",
+                "restore_id_elsewhere": "Een dienst van :name op :date staat op een andere dag.",
+                "approved_absence": "Goedgekeurd verlof van :name op :date."
+            },
+            "warning": {
+                "pending_absence": "Open verlofaanvraag van :name op :date."
+            }
+        },
         "publish": "Publiceren",
         "publish_confirm": "Deze week publiceren voor de zichtbare uitvoerders?",
         "saved": "Uurrooster opgeslagen.",
@@ -697,6 +751,10 @@
             "locked_day": "Deze dag ligt in het verleden en is vergrendeld.",
             "locked_days": "Sommige dagen liggen in het verleden en zijn vergrendeld.",
             "overlap": "Deze uitvoerder heeft overlappende diensten.",
+            "restore_id_elsewhere": "Deze dienst staat inmiddels op een andere dag en wordt niet teruggezet.",
+            "restore_blocked": "Dit herstel kan niet. Een conflict mag niet met een bevestiging worden overschreven.",
+            "restore_confirmation_required": "Het rooster wijkt af van dit herstelpunt. Bevestig het herstel expliciet.",
+            "restore_approved_absence": "Er is goedgekeurd verlof op deze dag. Het herstel overschrijft dat niet.",
             "unknown_worker": "Onbekende uitvoerder.",
             "cell_out_of_scope": "Cel valt buiten het zichtbare rooster.",
             "duplicate_cell": "Dubbele cel in het rooster.",

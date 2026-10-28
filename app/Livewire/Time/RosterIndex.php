@@ -5,34 +5,44 @@ namespace App\Livewire\Time;
 use App\Actions\Time\CopyRosterWeeksAction;
 use App\Actions\Time\CorrectPlannedShiftAction;
 use App\Actions\Time\ListLocationStaffingShortfallsAction;
+use App\Actions\Time\ListRosterRestorePointsAction;
 use App\Actions\Time\ListRosterWeekAction;
 use App\Actions\Time\ListShiftTypesAction;
 use App\Actions\Time\LoadRosterDayEditorAction;
 use App\Actions\Time\PublishWeekAction;
 use App\Actions\Time\ReplacePlannedShiftAction;
 use App\Actions\Time\ResolveRosterPeriodAction;
+use App\Actions\Time\RestoreRosterPointAction;
 use App\Actions\Time\SavePlannedDayAction;
 use App\Actions\Time\SavePlannedShiftsAction;
 use App\Actions\Time\SuggestReplacementAction;
 use App\Data\Time\CopyRosterWeeksData;
 use App\Data\Time\PublishWeekData;
+use App\Data\Time\RosterRestoreAssessment;
 use App\Data\Time\RosterWeekSnapshot;
 use App\Data\Time\SavePlannedDayData;
 use App\Data\Time\SavePlannedShiftsData;
+use App\Enums\PlannedShiftStatus;
+use App\Exceptions\RosterRestoreConflictException;
 use App\Exceptions\RosterValidationException;
 use App\Http\Requests\Time\CopyWeekRequest;
 use App\Http\Requests\Time\PublishWeekRequest;
+use App\Http\Requests\Time\RestoreRosterPointRequest;
 use App\Http\Requests\Time\SavePlannedDayRequest;
 use App\Http\Requests\Time\SavePlannedShiftsRequest;
 use App\Livewire\Concerns\ProvidesTimeNavAlarmCount;
-use App\Enums\PlannedShiftStatus;
 use App\Models\PlannedShift;
+use App\Models\RosterRestorePoint;
 use App\Models\Tenant;
+use App\Models\Unit;
+use App\Models\User;
 use App\Models\WorkShift;
 use App\Support\Tenancy;
 use App\Support\Time\RosterHistoryLock;
 use App\Support\Time\TimeModuleAccess;
 use Carbon\Carbon;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
@@ -143,6 +153,24 @@ class RosterIndex extends Component
     public array $copyReport = [];
 
     public string $copyError = '';
+
+    public bool $showRestoreModal = false;
+
+    /** @var list<array<string, mixed>> */
+    public array $restorePoints = [];
+
+    public bool $restorePointsCapped = false;
+
+    public ?int $restorePointId = null;
+
+    /** @var array<string, mixed> */
+    public array $restoreDetail = [];
+
+    public string $restoreError = '';
+
+    public bool $restoreDone = false;
+
+    public ?int $restoreUndoPointId = null;
 
     public function boot(): void
     {
@@ -620,7 +648,7 @@ class RosterIndex extends Component
             return;
         }
 
-        $this->groupUnitIds = \App\Models\Unit::query()
+        $this->groupUnitIds = Unit::query()
             ->where('location_id', $this->locationFilter)
             ->where('is_active', true)
             ->whereNotNull('roster_code')
@@ -784,6 +812,120 @@ class RosterIndex extends Component
         $this->showCopyModal = false;
         $this->copyReport = [];
         $this->copyError = '';
+    }
+
+    public function openRestoreModal(ListRosterRestorePointsAction $list): void
+    {
+        $this->authorize('update', PlannedShift::class);
+        $this->restorePointId = null;
+        $this->restoreDetail = [];
+        $this->restoreError = '';
+        $this->restoreDone = false;
+        $this->restoreUndoPointId = null;
+        $this->loadRestorePoints($list);
+        $this->showRestoreModal = true;
+    }
+
+    public function closeRestoreModal(): void
+    {
+        $this->showRestoreModal = false;
+        $this->restorePointId = null;
+        $this->restoreDetail = [];
+        $this->restoreError = '';
+        $this->restoreDone = false;
+        $this->restoreUndoPointId = null;
+    }
+
+    public function backToRestoreList(): void
+    {
+        $this->restorePointId = null;
+        $this->restoreDetail = [];
+        $this->restoreError = '';
+        $this->restoreDone = false;
+    }
+
+    public function selectRestorePoint(int $pointId, RestoreRosterPointAction $restore): void
+    {
+        $this->authorize('update', PlannedShift::class);
+        $this->restoreDone = false;
+        $this->restoreError = '';
+        $this->loadRestoreDetail($pointId, $restore);
+    }
+
+    public function confirmRestore(RestoreRosterPointAction $restore, ListRosterRestorePointsAction $list): void
+    {
+        $this->authorize('update', PlannedShift::class);
+        if ($this->restorePointId === null || ($this->restoreDetail['blocked'] ?? false)) {
+            return;
+        }
+        if (! ($this->restoreDetail['needs_confirmation'] ?? false)) {
+            return;
+        }
+
+        try {
+            Validator::make(
+                [
+                    'restore_point_id' => $this->restorePointId,
+                    'confirmed' => true,
+                ],
+                RestoreRosterPointRequest::rulesFor(),
+            )->validate();
+        } catch (ValidationException $e) {
+            $this->restoreError = (string) collect($e->errors())->flatten()->first();
+
+            return;
+        }
+
+        $tenant = Tenant::query()->findOrFail(Tenancy::id());
+        $point = RosterRestorePoint::query()->find($this->restorePointId);
+        $actor = auth()->user();
+        if (! $point instanceof RosterRestorePoint || ! $actor instanceof User) {
+            $this->restoreError = __('time.schedule.restore.failed');
+
+            return;
+        }
+
+        try {
+            $undo = $restore->handle($tenant, $actor, $point, true);
+        } catch (RosterRestoreConflictException $e) {
+            $this->restoreError = __($e->getMessage());
+            $this->loadRestoreDetail((int) $point->id, $restore);
+
+            return;
+        } catch (RosterValidationException|InvalidArgumentException|AuthorizationException $e) {
+            $this->restoreError = __($e->getMessage());
+
+            return;
+        } catch (QueryException) {
+            $this->restoreError = __('time.schedule.restore.failed');
+
+            return;
+        }
+
+        if ($undo === null) {
+            $this->loadRestoreDetail((int) $point->id, $restore);
+
+            return;
+        }
+
+        $this->restoreDone = true;
+        $this->restoreUndoPointId = (int) $undo->id;
+        $this->restoreError = '';
+        $this->loadRestorePoints($list);
+        $this->dispatch('roster-week-changed');
+    }
+
+    public function undoRestore(RestoreRosterPointAction $restore): void
+    {
+        $this->authorize('update', PlannedShift::class);
+        if ($this->restoreUndoPointId === null) {
+            return;
+        }
+
+        $pointId = $this->restoreUndoPointId;
+        $this->restoreDone = false;
+        $this->restoreError = '';
+        $this->loadRestoreDetail($pointId, $restore);
     }
 
     public function copyWeeks(CopyRosterWeeksAction $copy): void
@@ -964,6 +1106,221 @@ class RosterIndex extends Component
 
         $this->teamFilter = isset($remembered['team']) ? (int) $remembered['team'] : null;
         $this->locationFilter = isset($remembered['location']) ? (int) $remembered['location'] : null;
+    }
+
+    private function loadRestorePoints(ListRosterRestorePointsAction $list): void
+    {
+        $listed = $list->handle(
+            Tenant::query()->findOrFail(Tenancy::id()),
+            auth()->user(),
+        );
+        $this->restorePointsCapped = $listed['capped'];
+        $this->restorePoints = array_map(fn (array $point): array => [
+            'id' => $point['id'],
+            'when' => $point['created_at'] === null
+                ? ''
+                : __('time.schedule.restore.when', [
+                    'date' => Carbon::parse($point['created_at'])->timezone(config('app.timezone'))->format('d/m/Y'),
+                    'time' => Carbon::parse($point['created_at'])->timezone(config('app.timezone'))->format('H:i'),
+                ]),
+            'source' => __('time.schedule.restore.sources.'.$point['source']),
+            'workers' => $point['workers'] === []
+                ? __('time.schedule.restore.unknown_worker')
+                : implode(', ', array_column($point['workers'], 'name')),
+            'worker_map' => array_column($point['workers'], 'name', 'id'),
+            'dates' => $this->formatRestoreDates($point['dates']),
+        ], $listed['points']);
+    }
+
+    private function loadRestoreDetail(int $pointId, RestoreRosterPointAction $restore): void
+    {
+        $tenant = Tenant::query()->findOrFail(Tenancy::id());
+        $point = RosterRestorePoint::query()->find($pointId);
+        $actor = auth()->user();
+        if (! $point instanceof RosterRestorePoint || ! $actor instanceof User) {
+            $this->restoreError = __('time.schedule.restore.failed');
+            $this->restoreDetail = [];
+
+            return;
+        }
+
+        try {
+            $preview = $restore->preview($tenant, $actor, $point);
+        } catch (AuthorizationException $e) {
+            $this->restoreError = __($e->getMessage());
+            $this->restoreDetail = [];
+
+            return;
+        }
+
+        $this->restorePointId = (int) $point->id;
+        $workerMap = [];
+        $workerLabel = '';
+        foreach ($this->restorePoints as $row) {
+            if ((int) $row['id'] === (int) $point->id) {
+                $workerMap = is_array($row['worker_map'] ?? null) ? $row['worker_map'] : [];
+                $workerLabel = (string) $row['workers'];
+            }
+        }
+        $this->restoreDetail = $this->describeRestore(
+            $point,
+            $preview['assessment'],
+            $preview['current'],
+            $preview['saved'],
+            $workerMap,
+            $workerLabel,
+        );
+    }
+
+    /**
+     * @param  list<array<string, mixed>>  $current
+     * @param  list<array<string, mixed>>  $saved
+     * @param  array<int|string, string>  $workerMap
+     * @return array<string, mixed>
+     */
+    private function describeRestore(
+        RosterRestorePoint $point,
+        RosterRestoreAssessment $assessment,
+        array $current,
+        array $saved,
+        array $workerMap,
+        string $workers,
+    ): array {
+        $workerNames = [];
+        foreach ($workerMap as $id => $name) {
+            $workerNames[(int) $id] = (string) $name;
+        }
+        $currentById = [];
+        foreach ($current as $row) {
+            $currentById[(int) $row['planned_shift_id']] = $row;
+        }
+        $savedById = [];
+        foreach ($saved as $row) {
+            $savedById[(int) $row['planned_shift_id']] = $row;
+        }
+
+        $differences = [];
+        foreach ($assessment->differences as $difference) {
+            $savedRow = $savedById[(int) $difference['planned_shift_id']] ?? null;
+            $currentRow = $currentById[(int) $difference['planned_shift_id']] ?? null;
+            $name = $workerNames[(int) $difference['worker_id']] ?? __('time.schedule.restore.unknown_worker');
+            $date = Carbon::parse($difference['date'])->format('d/m/Y');
+            $differences[] = match ($difference['type']) {
+                'added' => __('time.schedule.restore.diff.added', [
+                    'date' => $date,
+                    'name' => $name,
+                    'label' => $this->restoreShiftLabel(is_array($currentRow) ? $currentRow : []),
+                ]),
+                'removed' => __('time.schedule.restore.diff.removed', [
+                    'date' => $date,
+                    'name' => $name,
+                    'label' => $this->restoreShiftLabel(is_array($savedRow) ? $savedRow : []),
+                ]),
+                default => __('time.schedule.restore.diff.changed', [
+                    'date' => $date,
+                    'name' => $name,
+                    'saved' => $this->restoreShiftLabel(is_array($savedRow) ? $savedRow : []),
+                    'current' => $this->restoreShiftLabel(is_array($currentRow) ? $currentRow : []),
+                    'fields' => $this->restoreFieldLabels($difference['fields']),
+                ]),
+            };
+        }
+
+        $blocks = [];
+        foreach ($assessment->blocks as $block) {
+            $blocks[] = __($this->restoreNoticeKey('block', (string) $block['code']), [
+                'date' => isset($block['date']) ? Carbon::parse((string) $block['date'])->format('d/m/Y') : '',
+                'name' => $workerNames[(int) ($block['worker_id'] ?? 0)] ?? __('time.schedule.restore.unknown_worker'),
+            ]);
+        }
+
+        $warnings = [];
+        foreach ($assessment->warnings as $warning) {
+            $warnings[] = __($this->restoreNoticeKey('warning', (string) $warning['code']), [
+                'date' => isset($warning['date']) ? Carbon::parse((string) $warning['date'])->format('d/m/Y') : '',
+                'name' => $workerNames[(int) ($warning['worker_id'] ?? 0)] ?? __('time.schedule.restore.unknown_worker'),
+            ]);
+        }
+
+        $dates = [];
+        foreach (is_array($point->scope) ? $point->scope : [] as $item) {
+            $dates[(string) $item['date']] = (string) $item['date'];
+        }
+        $dateList = array_values($dates);
+        sort($dateList);
+
+        return [
+            'blocked' => $assessment->blocked(),
+            'needs_confirmation' => $assessment->needsConfirmation(),
+            'when' => $point->created_at === null
+                ? ''
+                : __('time.schedule.restore.when', [
+                    'date' => $point->created_at->timezone(config('app.timezone'))->format('d/m/Y'),
+                    'time' => $point->created_at->timezone(config('app.timezone'))->format('H:i'),
+                ]),
+            'source' => __('time.schedule.restore.sources.'.$point->source->value),
+            'workers' => $workers !== '' ? $workers : implode(', ', array_unique(array_values($workerNames))),
+            'dates' => $this->formatRestoreDates($dateList),
+            'differences' => $differences,
+            'blocks' => $blocks,
+            'warnings' => $warnings,
+        ];
+    }
+
+    /**
+     * @param  array<string, mixed>  $row
+     */
+    private function restoreShiftLabel(array $row): string
+    {
+        $code = isset($row['shift_type_code']) && $row['shift_type_code'] !== ''
+            ? (string) $row['shift_type_code']
+            : '';
+        $start = isset($row['start_time']) && $row['start_time'] !== '' ? (string) $row['start_time'] : '';
+        $end = isset($row['end_time']) && $row['end_time'] !== '' ? (string) $row['end_time'] : '';
+        $time = $start !== '' && $end !== '' ? $start.'–'.$end : '';
+        if ($code !== '' && $time !== '') {
+            return $code.' '.$time;
+        }
+
+        return $code !== '' ? $code : ($time !== '' ? $time : '—');
+    }
+
+    /**
+     * @param  list<string>  $fields
+     */
+    private function restoreFieldLabels(array $fields): string
+    {
+        $labels = [];
+        foreach ($fields as $field) {
+            $key = 'time.schedule.restore.fields.'.$field;
+            $label = __($key);
+            $labels[] = $label === $key ? $field : $label;
+        }
+
+        return implode(', ', $labels);
+    }
+
+    private function restoreNoticeKey(string $group, string $code): string
+    {
+        $key = 'time.schedule.restore.'.$group.'.'.$code;
+
+        return __($key) === $key ? 'time.schedule.errors.restore_blocked' : $key;
+    }
+
+    /**
+     * @param  list<string>  $dates
+     */
+    private function formatRestoreDates(array $dates): string
+    {
+        $formatted = array_map(
+            fn (string $date): string => Carbon::parse($date)->format('d/m/Y'),
+            $dates,
+        );
+        if (count($formatted) <= 6) {
+            return implode(', ', $formatted);
+        }
+
+        return implode(', ', array_slice($formatted, 0, 5)).' …';
     }
 
     private function rememberScope(): void

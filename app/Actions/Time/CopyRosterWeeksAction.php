@@ -5,6 +5,7 @@ namespace App\Actions\Time;
 use App\Data\Time\CopyRosterWeeksData;
 use App\Enums\AbsenceRequestStatus;
 use App\Enums\PlannedShiftStatus;
+use App\Enums\RosterRestorePointSource;
 use App\Enums\ShiftTypeKind;
 use App\Events\Time\ScheduleCopied;
 use App\Exceptions\RosterValidationException;
@@ -15,6 +16,7 @@ use App\Models\Worker;
 use App\Support\Time\RosterHistoryLock;
 use App\Support\Time\TimeModuleAccess;
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class CopyRosterWeeksAction
@@ -31,6 +33,7 @@ class CopyRosterWeeksAction
 
     public function __construct(
         private ResolveRosterWeekAction $resolveWeek,
+        private RecordRosterRestorePointAction $recordRestorePoint,
     ) {}
 
     /**
@@ -110,7 +113,7 @@ class CopyRosterWeeksAction
     }
 
     /**
-     * @param  \Illuminate\Support\Collection<int, PlannedShift>  $source
+     * @param  Collection<int, PlannedShift>  $source
      * @param  list<int>  $workerIds
      * @param  array<int, string>  $workerNames
      * @param  array<int, array<string, true>>  $absent
@@ -150,13 +153,14 @@ class CopyRosterWeeksAction
                 $tenant, $source, $sourceMonday, $targetMonday, $targetDates,
                 $workerIds, $workerNames, $absent, $actorUserId, $week, $empty,
             ) {
-                $occupied = PlannedShift::query()
+                $existing = PlannedShift::query()
+                    ->with('shiftType')
                     ->whereIn('worker_id', $workerIds ?: [0])
                     ->whereBetween('work_date', [$targetDates[0], $targetDates[6]])
                     ->lockForUpdate()
-                    ->exists();
+                    ->get();
 
-                if ($occupied) {
+                if ($existing->isNotEmpty()) {
                     return array_merge($empty, ['status' => self::STATUS_OCCUPIED]);
                 }
 
@@ -173,6 +177,7 @@ class CopyRosterWeeksAction
                             'label' => $this->shiftLabel($shift),
                             'reason' => $absent[(int) $shift->worker_id][$targetDate],
                         ];
+
                         continue;
                     }
 
@@ -191,6 +196,23 @@ class CopyRosterWeeksAction
                         'location_id' => $shift->location_id,
                         'status' => PlannedShiftStatus::Draft,
                     ]);
+                }
+
+                if ($created !== []) {
+                    $scope = [];
+                    foreach ($created as $shift) {
+                        $scope[] = [
+                            'worker_id' => (int) $shift->worker_id,
+                            'date' => $shift->work_date->toDateString(),
+                        ];
+                    }
+                    $this->recordRestorePoint->handle(
+                        $tenant,
+                        $actorUserId,
+                        RosterRestorePointSource::Copy,
+                        $scope,
+                        $this->recordRestorePoint->capture($existing),
+                    );
                 }
 
                 event(new ScheduleCopied(

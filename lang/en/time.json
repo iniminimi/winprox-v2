@@ -683,6 +683,60 @@
             "week_failed": "copy failed",
             "skipped_absence": ":name :date (:label) — absent"
         },
+        "restore": {
+            "button": "Restore",
+            "title": "Restore point",
+            "empty": "There are no restore points yet.",
+            "capped": "Only the latest :count restore points are shown.",
+            "back": "All points",
+            "when": ":date at :time",
+            "workers": "Workers",
+            "days": "Days",
+            "unknown_worker": "Worker",
+            "differences": "Difference from the current roster",
+            "no_difference": "The roster matches this point. There is nothing to restore.",
+            "blocks": "This restore is blocked",
+            "warnings": "Check this before you confirm",
+            "confirm": "Confirm and restore",
+            "success": "The roster has been restored.",
+            "undo": "Undo this restore",
+            "undo_hint": "You see the difference first, then confirm again.",
+            "failed": "The restore was not applied.",
+            "sources": {
+                "grid": "Roster saved",
+                "day": "Day edited",
+                "copy": "Week copied",
+                "restore": "Previous restore"
+            },
+            "diff": {
+                "added": ":date · :name · :label — is on the roster now and not in this point.",
+                "removed": ":date · :name · :label — is in this point and no longer on the roster.",
+                "changed": ":date · :name · :saved → :current (:fields)."
+            },
+            "fields": {
+                "worker_id": "worker",
+                "work_date": "date",
+                "shift_type_id": "shift type",
+                "kind": "kind",
+                "unit_id": "group",
+                "unit_code": "group code",
+                "unit_name": "group name",
+                "location_id": "location",
+                "start_time": "start",
+                "end_time": "end",
+                "break_minutes": "break",
+                "description": "note",
+                "status": "status"
+            },
+            "block": {
+                "locked_day": ":date is locked.",
+                "restore_id_elsewhere": "A shift for :name on :date is now on another day.",
+                "approved_absence": "Approved leave for :name on :date."
+            },
+            "warning": {
+                "pending_absence": "Open leave request for :name on :date."
+            }
+        },
         "publish": "Publish",
         "publish_confirm": "Publish this week for the visible workers?",
         "saved": "Roster saved.",
@@ -697,6 +751,10 @@
             "locked_day": "This day is in the past and locked.",
             "locked_days": "Some days are in the past and locked.",
             "overlap": "This worker has overlapping shifts.",
+            "restore_id_elsewhere": "This shift is now on another day and is not restored.",
+            "restore_blocked": "This restore cannot proceed. A conflict must not be overwritten by confirming.",
+            "restore_confirmation_required": "The roster differs from this restore point. Confirm the restore explicitly.",
+            "restore_approved_absence": "Approved leave covers this day. The restore will not overwrite it.",
             "unknown_worker": "Unknown worker.",
             "cell_out_of_scope": "Cell is outside the visible roster.",
             "duplicate_cell": "Duplicate cell in the roster.",

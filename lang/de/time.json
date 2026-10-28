@@ -683,6 +683,60 @@
             "week_failed": "Kopieren fehlgeschlagen",
             "skipped_absence": ":name :date (:label) — abwesend"
         },
+        "restore": {
+            "button": "Wiederherstellen",
+            "title": "Wiederherstellungspunkt",
+            "empty": "Es gibt noch keine Wiederherstellungspunkte.",
+            "capped": "Nur die letzten :count Punkte werden angezeigt.",
+            "back": "Alle Punkte",
+            "when": ":date um :time",
+            "workers": "Ausführende",
+            "days": "Tage",
+            "unknown_worker": "Ausführender",
+            "differences": "Unterschied zum aktuellen Dienstplan",
+            "no_difference": "Der Dienstplan entspricht diesem Punkt. Es gibt nichts wiederherzustellen.",
+            "blocks": "Diese Wiederherstellung ist blockiert",
+            "warnings": "Vor dem Bestätigen prüfen",
+            "confirm": "Bestätigen und wiederherstellen",
+            "success": "Der Dienstplan wurde wiederhergestellt.",
+            "undo": "Diese Wiederherstellung rückgängig machen",
+            "undo_hint": "Sie sehen zuerst den Unterschied und bestätigen danach erneut.",
+            "failed": "Die Wiederherstellung wurde nicht ausgeführt.",
+            "sources": {
+                "grid": "Dienstplan gespeichert",
+                "day": "Tag bearbeitet",
+                "copy": "Woche kopiert",
+                "restore": "Vorherige Wiederherstellung"
+            },
+            "diff": {
+                "added": ":date · :name · :label — steht jetzt im Plan und nicht in diesem Punkt.",
+                "removed": ":date · :name · :label — steht in diesem Punkt und nicht mehr im Plan.",
+                "changed": ":date · :name · :saved → :current (:fields)."
+            },
+            "fields": {
+                "worker_id": "Ausführender",
+                "work_date": "Datum",
+                "shift_type_id": "Diensttyp",
+                "kind": "Art",
+                "unit_id": "Gruppe",
+                "unit_code": "Gruppencode",
+                "unit_name": "Gruppenname",
+                "location_id": "Standort",
+                "start_time": "Beginn",
+                "end_time": "Ende",
+                "break_minutes": "Pause",
+                "description": "Notiz",
+                "status": "Status"
+            },
+            "block": {
+                "locked_day": ":date ist gesperrt.",
+                "restore_id_elsewhere": "Ein Dienst von :name am :date liegt auf einem anderen Tag.",
+                "approved_absence": "Genehmigter Urlaub von :name am :date."
+            },
+            "warning": {
+                "pending_absence": "Offener Urlaubsantrag von :name am :date."
+            }
+        },
         "publish": "Veröffentlichen",
         "publish_confirm": "Diese Woche für die sichtbaren Mitarbeiter veröffentlichen?",
         "saved": "Dienstplan gespeichert.",
@@ -697,6 +751,10 @@
             "locked_day": "Dieser Tag liegt in der Vergangenheit und ist gesperrt.",
             "locked_days": "Einige Tage liegen in der Vergangenheit und sind gesperrt.",
             "overlap": "Dieser Mitarbeiter hat überlappende Dienste.",
+            "restore_id_elsewhere": "Dieser Dienst liegt inzwischen auf einem anderen Tag und wird nicht zurückgesetzt.",
+            "restore_blocked": "Diese Wiederherstellung ist nicht möglich. Ein Konflikt darf nicht durch Bestätigen überschrieben werden.",
+            "restore_confirmation_required": "Der Dienstplan weicht von diesem Wiederherstellungspunkt ab. Bestätigen Sie die Wiederherstellung ausdrücklich.",
+            "restore_approved_absence": "Genehmigter Urlaub liegt auf diesem Tag. Die Wiederherstellung überschreibt das nicht.",
             "unknown_worker": "Unbekannter Mitarbeiter.",
             "cell_out_of_scope": "Zelle liegt außerhalb des sichtbaren Plans.",
             "duplicate_cell": "Doppelte Zelle im Plan.",

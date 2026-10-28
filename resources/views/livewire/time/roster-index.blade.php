@@ -154,6 +154,9 @@
                         </div>
                     @endcanany
                     <div class="wp-toolbar-group wp-toolbar-group--tools" role="group" aria-label="{{ __('time.schedule.toolbar.tools') }}">
+                        @can('update', \App\Models\PlannedShift::class)
+                            <button type="button" class="btn btn--ghost btn--sm" wire:click="openRestoreModal">{{ __('time.schedule.restore.button') }}</button>
+                        @endcan
                         <button type="button" class="btn btn--ghost btn--sm" wire:click="openLegendModal">{{ __('time.schedule.legend_button') }}</button>
                         <a
                             href="{{ route('time.schedule.print', $printParams) }}"
@@ -650,6 +653,122 @@
                         {{ __('common.button.cancel') }}
                     </button>
                 </div>
+            </div>
+        </x-wp-modal>
+    @endif
+
+    @if ($showRestoreModal)
+        <x-wp-modal closeMethod="closeRestoreModal" aria-labelledby="roster-restore-title">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card wp-modal-card--wide">
+                <div class="wp-modal-head">
+                    <h2 id="roster-restore-title" class="wp-section-title">{{ __('time.schedule.restore.title') }}</h2>
+                    <x-wp-modal-close wire:click="closeRestoreModal" />
+                </div>
+
+                @if ($restoreError !== '')
+                    <p class="wp-flash wp-flash--danger">{{ $restoreError }}</p>
+                @endif
+
+                @if ($restoreDone)
+                    <p class="wp-flash wp-flash--success">{{ __('time.schedule.restore.success') }}</p>
+                    <p class="wp-muted">{{ __('time.schedule.restore.undo_hint') }}</p>
+                    <div class="wp-modal-foot">
+                        @if ($restoreUndoPointId)
+                            <button type="button" class="btn btn--primary" wire:click="undoRestore">
+                                {{ __('time.schedule.restore.undo') }}
+                            </button>
+                        @endif
+                        <button type="button" class="btn btn--ghost" wire:click="closeRestoreModal">
+                            {{ __('common.button.close') }}
+                        </button>
+                    </div>
+                @elseif ($restoreDetail !== [])
+                    <p>
+                        <strong>{{ $restoreDetail['when'] }}</strong>
+                        — {{ $restoreDetail['source'] }}
+                    </p>
+                    <p class="wp-muted">
+                        {{ __('time.schedule.restore.workers') }}: {{ $restoreDetail['workers'] }}
+                    </p>
+                    <p class="wp-muted">
+                        {{ __('time.schedule.restore.days') }}: {{ $restoreDetail['dates'] }}
+                    </p>
+
+                    @if ($restoreDetail['blocks'] !== [])
+                        <div class="wp-stack">
+                            <p class="wp-flash wp-flash--danger">{{ __('time.schedule.restore.blocks') }}</p>
+                            <ul class="wp-stack" role="list">
+                                @foreach ($restoreDetail['blocks'] as $block)
+                                    <li>{{ $block }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    @if ($restoreDetail['warnings'] !== [])
+                        <div class="wp-stack">
+                            <p>{{ __('time.schedule.restore.warnings') }}</p>
+                            <ul class="wp-stack" role="list">
+                                @foreach ($restoreDetail['warnings'] as $warning)
+                                    <li>{{ $warning }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+                    <div class="wp-stack">
+                        <p>{{ __('time.schedule.restore.differences') }}</p>
+                        @if ($restoreDetail['differences'] === [])
+                            <p class="wp-muted">{{ __('time.schedule.restore.no_difference') }}</p>
+                        @else
+                            <ul class="wp-stack" role="list">
+                                @foreach ($restoreDetail['differences'] as $difference)
+                                    <li>{{ $difference }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </div>
+
+                    <div class="wp-modal-foot">
+                        @if ($restoreDetail['needs_confirmation'] && ! $restoreDetail['blocked'])
+                            <button type="button" class="btn btn--primary" wire:click="confirmRestore">
+                                {{ __('time.schedule.restore.confirm') }}
+                            </button>
+                        @endif
+                        <button type="button" class="btn btn--ghost" wire:click="backToRestoreList">
+                            {{ __('time.schedule.restore.back') }}
+                        </button>
+                        <button type="button" class="btn btn--ghost" wire:click="closeRestoreModal">
+                            {{ __('common.button.close') }}
+                        </button>
+                    </div>
+                @else
+                    @if ($restorePoints === [])
+                        <p class="wp-muted">{{ __('time.schedule.restore.empty') }}</p>
+                    @else
+                        @if ($restorePointsCapped)
+                            <p class="wp-muted">{{ __('time.schedule.restore.capped', ['count' => \App\Actions\Time\ListRosterRestorePointsAction::RECENT_LIMIT]) }}</p>
+                        @endif
+                        <ul class="wp-stack" role="list">
+                            @foreach ($restorePoints as $point)
+                                <li wire:key="restore-point-{{ $point['id'] }}">
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="selectRestorePoint({{ $point['id'] }})">
+                                        {{ $point['when'] }} — {{ $point['source'] }}
+                                    </button>
+                                    <p class="wp-muted">
+                                        {{ __('time.schedule.restore.workers') }}: {{ $point['workers'] }}
+                                        · {{ __('time.schedule.restore.days') }}: {{ $point['dates'] }}
+                                    </p>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+                    <div class="wp-modal-foot">
+                        <button type="button" class="btn btn--ghost" wire:click="closeRestoreModal">
+                            {{ __('common.button.close') }}
+                        </button>
+                    </div>
+                @endif
             </div>
         </x-wp-modal>
     @endif

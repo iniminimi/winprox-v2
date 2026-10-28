@@ -683,6 +683,60 @@
             "week_failed": "copia fallida",
             "skipped_absence": ":name :date (:label) — ausente"
         },
+        "restore": {
+            "button": "Restaurar",
+            "title": "Punto de restauración",
+            "empty": "Todavía no hay puntos de restauración.",
+            "capped": "Solo se muestran los últimos :count puntos.",
+            "back": "Todos los puntos",
+            "when": ":date a las :time",
+            "workers": "Operarios",
+            "days": "Días",
+            "unknown_worker": "Operario",
+            "differences": "Diferencia con el cuadrante actual",
+            "no_difference": "El cuadrante coincide con este punto. No hay nada que restaurar.",
+            "blocks": "Esta restauración está bloqueada",
+            "warnings": "Revise esto antes de confirmar",
+            "confirm": "Confirmar y restaurar",
+            "success": "El cuadrante se ha restaurado.",
+            "undo": "Deshacer esta restauración",
+            "undo_hint": "Primero ve la diferencia y después confirma de nuevo.",
+            "failed": "La restauración no se ha aplicado.",
+            "sources": {
+                "grid": "Cuadrante guardado",
+                "day": "Día editado",
+                "copy": "Semana copiada",
+                "restore": "Restauración anterior"
+            },
+            "diff": {
+                "added": ":date · :name · :label — está en el cuadrante y no en este punto.",
+                "removed": ":date · :name · :label — está en este punto y ya no en el cuadrante.",
+                "changed": ":date · :name · :saved → :current (:fields)."
+            },
+            "fields": {
+                "worker_id": "operario",
+                "work_date": "fecha",
+                "shift_type_id": "tipo de turno",
+                "kind": "clase",
+                "unit_id": "grupo",
+                "unit_code": "código de grupo",
+                "unit_name": "nombre del grupo",
+                "location_id": "ubicación",
+                "start_time": "inicio",
+                "end_time": "fin",
+                "break_minutes": "pausa",
+                "description": "nota",
+                "status": "estado"
+            },
+            "block": {
+                "locked_day": ":date está bloqueado.",
+                "restore_id_elsewhere": "Un turno de :name el :date está en otro día.",
+                "approved_absence": "Permiso aprobado de :name el :date."
+            },
+            "warning": {
+                "pending_absence": "Solicitud de permiso abierta de :name el :date."
+            }
+        },
         "publish": "Publicar",
         "publish_confirm": "¿Publicar esta semana para los trabajadores visibles?",
         "saved": "Horario guardado.",
@@ -697,6 +751,10 @@
             "locked_day": "Este día está en el pasado y está bloqueado.",
             "locked_days": "Algunos días están en el pasado y están bloqueados.",
             "overlap": "Este trabajador tiene turnos solapados.",
+            "restore_id_elsewhere": "Este turno está ahora en otro día y no se restaura.",
+            "restore_blocked": "Esta restauración no puede hacerse. Un conflicto no se salta confirmando.",
+            "restore_confirmation_required": "El horario difiere de este punto de restauración. Confirme la restauración de forma explícita.",
+            "restore_approved_absence": "Hay una ausencia aprobada en este día. La restauración no la sobrescribe.",
             "unknown_worker": "Trabajador desconocido.",
             "cell_out_of_scope": "La celda está fuera del horario visible.",
             "duplicate_cell": "Celda duplicada en el horario.",
