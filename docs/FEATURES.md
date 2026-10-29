@@ -1237,18 +1237,22 @@ binnen ~30–90 s dood.
   scherm" = revocatie; worker-gsm-binding (één gsm per uitvoerder) blijft de
   tweede fraude-laag.
 - **PIN-login (no-phone fallback):** tik op het QR-scherm → lettertrie op
-  voornaam → 4-cijferige PIN → in/uitklokken. `GET .../workers` levert enkel
-  actieve workers mét PIN binnen de locatiescope van het Clock Point
-  (zelfde regels als `canClockAt`); `POST .../pin-clock` verifieert server-side
-  (`ConfirmWorkerClockPinAction`), togglet in/uit via de gewone
-  ClockIn/ClockOut-actions met `ClockSource::ClockDisplayPin` en lockt de
-  **worker** na `time.display_pin_max_attempts` (2) foute pogingen voor
-  `time.display_pin_lockout_seconds` (60s) — per worker, niet per scherm.
-  `POST .../pin-setup` laat een worker zonder PIN die op het scherm zetten
-  (2× ingeven) en prikt meteen — bestaande PIN's kunnen daar niet overschreven
-  worden. Audit:
+  voornaam → bij open dienst eerst **Pauze** of **Uitklokken** (of alleen
+  uitklokken als de pauze al genomen is; bij lopende pauze: **Pauze stoppen**)
+  → 4-cijferige PIN. `GET .../workers` levert actieve workers binnen de
+  locatiescope (`canClockAt`) plus `presence` (`out`/`in`/`break`) en
+  `can_break`. `POST .../pin-clock` verifieert de PIN
+  (`ConfirmWorkerClockPinAction`) en voert optioneel `action`
+  `in`|`out`|`break_start`|`break_end` uit (zonder action: oude toggle
+  in/uit). Pauze via `StartWorkBreakAction` / `EndWorkBreakAction` (één
+  pauze per dienst, zelfde regels als het portaal). Bron
+  `ClockSource::ClockDisplayPin`. Lockout per **worker** na
+  `time.display_pin_max_attempts` (2) fouten voor
+  `time.display_pin_lockout_seconds` (60s). `POST .../pin-setup` zet een
+  ontbrekende PIN (2×) en prikt meteen. Audit:
   `worker.clock_display_pin_failed`, `worker.clock_display_pin_blocked_attempt`,
-  `worker.clock_display_pin_set`, `worker.clock_display_punched`.
+  `worker.clock_display_pin_set`, `worker.clock_display_punched`
+  (direction `in`/`out`/`break_start`/`break_end`).
 - **Rust-scherm / foto-album (slideshow):** per Clock Point max. 2 vensters
   (`album1/2_from|until`, zelfde conventie als aan-uren) plus één modus
   (`album_mode`: `photos` | `clock` | `flipclock` | `none`). Tijdens een

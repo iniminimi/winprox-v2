@@ -8,6 +8,7 @@ use App\Actions\Time\RecordClockDisplayPingAction;
 use App\Actions\Time\SetupClockDisplayPinAction;
 use App\Actions\Time\SubmitClockDisplayClaimAction;
 use App\Enums\ClockDisplayClaimStatus;
+use App\Enums\ClockDisplayPinAction;
 use App\Enums\ClockDisplayPinStatus;
 use App\Http\Requests\Api\V1\PinClockDisplayRequest;
 use App\Http\Requests\Api\V1\SetupPinClockDisplayRequest;
@@ -135,7 +136,8 @@ class ClockDisplayController extends Controller
     }
 
     /**
-     * PIN-klok vanaf het scherm: worker_id + 4-cijferige PIN → in/uit.
+     * PIN-klok vanaf het scherm: worker_id + 4-cijferige PIN → in/uit/pauze.
+     * Optionele `action` (in|out|break_start|break_end); zonder action = toggle.
      * Server is autoriteit voor PIN-check, worker-lockout en audit.
      */
     public function pinClock(
@@ -148,12 +150,16 @@ class ClockDisplayController extends Controller
         }
 
         $validated = $request->validated();
+        $action = isset($validated['action']) && is_string($validated['action']) && $validated['action'] !== ''
+            ? ClockDisplayPinAction::from($validated['action'])
+            : null;
 
         try {
             $result = $pinClock->handle(
                 $clockPoint,
                 (int) $validated['worker_id'],
                 (string) $validated['pin'],
+                $action,
             );
         } catch (InvalidArgumentException $e) {
             // Race: shift-status of locatie/activiteit veranderde tussen
@@ -169,6 +175,16 @@ class ClockDisplayController extends Controller
             ]),
             ClockDisplayPinStatus::ClockedOut => response()->json([
                 'result' => 'out',
+                'worker' => $result->workerName,
+                'at' => $result->clockedAt,
+            ]),
+            ClockDisplayPinStatus::BreakStarted => response()->json([
+                'result' => 'break_start',
+                'worker' => $result->workerName,
+                'at' => $result->clockedAt,
+            ]),
+            ClockDisplayPinStatus::BreakEnded => response()->json([
+                'result' => 'break_end',
                 'worker' => $result->workerName,
                 'at' => $result->clockedAt,
             ]),

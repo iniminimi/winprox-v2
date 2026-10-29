@@ -1076,7 +1076,7 @@
                 },
                 {
                     "label": "Pantalla del reloj",
-                    "text": "Si hay una pantalla del reloj en el fichero, el QR de esa pantalla se renueva sin parar — escanearla con el móvil cuenta como escaneo nuevo. ¿Sin móvil a mano? Toque su nombre en la pantalla y fiche con su PIN; dos intentos fallidos lo bloquean un rato. Sin PIN, fiche mediante un escaneo en su móvil."
+                    "text": "Si hay una pantalla del reloj en el fichero, el QR de esa pantalla se renueva sin parar — escanearla con el móvil cuenta como escaneo nuevo. ¿Sin móvil a mano? Toque su nombre en la pantalla; con turno abierto elija pausa o salida y luego su PIN. Dos intentos fallidos lo bloquean un rato. Sin PIN, fiche mediante un escaneo en su móvil."
                 },
                 {
                     "label": "Adónde debo ir hoy",
@@ -1460,7 +1460,7 @@
                 },
                 {
                     "label": "Fichar con PIN",
-                    "text": "¿Sin teléfono a mano? Toque la pantalla, elija su nombre con las letras y teclee su PIN de 4 dígitos — fichaje inmediato. Quien no tenga PIN lo elige allí mismo (dos veces). Tras dos fallos, ese ejecutor queda bloqueado un minuto. El admin restablece el PIN en Personas → Equipos → Editar."
+                    "text": "¿Sin teléfono a mano? Toque la pantalla, elija su nombre con las letras; con turno abierto elija pausa o salida y luego su PIN de 4 dígitos. Quien no tenga PIN lo elige allí mismo (dos veces). Tras dos fallos, ese ejecutor queda bloqueado un minuto. El admin restablece el PIN en Personas → Equipos → Editar."
                 },
                 {
                     "label": "Código de vinculación",

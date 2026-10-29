@@ -2,21 +2,24 @@
 
 namespace App\Actions\Time;
 
+use App\Enums\WorkShiftStatus;
 use App\Models\ClockPoint;
 use App\Models\Worker;
+use App\Models\WorkShift;
 use Illuminate\Support\Collection;
 
 /**
  * Workers die het klokscherm in de lettertrie mag tonen: actief en
  * toegelaten op de locatie van dit Clock Point (zelfde regels als
  * Worker::canClockAt). `has_pin` bepaalt of het scherm een PIN vraagt
- * of er één laat instellen. Minimale payload — PIN-hashes verlaten
- * de server nooit.
+ * of er één laat instellen. `presence` + `can_break` sturen de
+ * keuze Pauze/Uitklokken op het scherm. Minimale payload — PIN-hashes
+ * verlaten de server nooit.
  */
 class ListClockDisplayWorkersAction
 {
     /**
-     * @return Collection<int, array{id: int, first_name: string, last_name: string, has_pin: bool, photo_url: ?string}>
+     * @return Collection<int, array{id: int, first_name: string, last_name: string, has_pin: bool, photo_url: ?string, presence: string, can_break: bool}>
      */
     public function handle(ClockPoint $clockPoint): Collection
     {
@@ -37,16 +40,40 @@ class ListClockDisplayWorkersAction
             });
         }
 
-        return $query
+        $workers = $query
             ->orderBy('first_name')
             ->orderBy('last_name')
-            ->get(['id', 'first_name', 'last_name', 'clock_pin_hash', 'photo_path'])
-            ->map(fn (Worker $w) => [
+            ->get(['id', 'first_name', 'last_name', 'clock_pin_hash', 'photo_path']);
+
+        $openByWorker = WorkShift::query()
+            ->whereIn('worker_id', $workers->modelKeys())
+            ->where('status', WorkShiftStatus::Open)
+            ->with(['openBreak', 'breaks'])
+            ->get()
+            ->keyBy('worker_id');
+
+        return $workers->map(function (Worker $w) use ($openByWorker) {
+            $shift = $openByWorker->get($w->id);
+            $presence = 'out';
+            $canBreak = false;
+            if ($shift instanceof WorkShift) {
+                if ($shift->isOnBreak()) {
+                    $presence = 'break';
+                } else {
+                    $presence = 'in';
+                    $canBreak = $shift->breaks->isEmpty();
+                }
+            }
+
+            return [
                 'id' => (int) $w->id,
                 'first_name' => (string) $w->first_name,
                 'last_name' => (string) $w->last_name,
                 'has_pin' => $w->hasClockPin(),
                 'photo_url' => $w->photoPublicUrl(),
-            ]);
+                'presence' => $presence,
+                'can_break' => $canBreak,
+            ];
+        });
     }
 }

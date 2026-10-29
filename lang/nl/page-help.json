@@ -1076,7 +1076,7 @@
                 },
                 {
                     "label": "Klokscherm",
-                    "text": "Hangt er een klokscherm bij de prikklok, dan ververst de QR op dat scherm voortdurend — scannen met je gsm telt als verse scan. Geen gsm bij de hand? Tik op het scherm je naam aan en klok in of uit met je pincode; twee foute pogingen blokkeren dat even. Zonder pincode klok je via een scan op je gsm."
+                    "text": "Hangt er een klokscherm bij de prikklok, dan ververst de QR op dat scherm voortdurend — scannen met je gsm telt als verse scan. Geen gsm bij de hand? Tik op het scherm je naam aan; bij een open dienst kies je pauze of uitklokken, daarna je pincode. Twee foute pogingen blokkeren dat even. Zonder pincode klok je via een scan op je gsm."
                 },
                 {
                     "label": "Waar moet ik vandaag naartoe",
@@ -1460,7 +1460,7 @@
                 },
                 {
                     "label": "Aanmelden met pincode",
-                    "text": "Geen gsm bij de hand? Tik op het scherm, kies je voornaam via de letters en tik je pincode van 4 cijfers — je bent meteen in- of uitgeklokt. Wie nog geen pincode heeft, kiest die ter plaatse (twee keer). Na twee foute pogingen is die uitvoerder één minuut geblokkeerd. Beheer reset de pincode via Personen → Teams → Bewerken."
+                    "text": "Geen gsm bij de hand? Tik op het scherm, kies je voornaam via de letters; bij een open dienst kies je pauze of uitklokken, daarna je pincode van 4 cijfers. Wie nog geen pincode heeft, kiest die ter plaatse (twee keer). Na twee foute pogingen is die uitvoerder één minuut geblokkeerd. Beheer reset de pincode via Personen → Teams → Bewerken."
                 },
                 {
                     "label": "Koppelcode",

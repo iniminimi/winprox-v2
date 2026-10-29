@@ -1076,7 +1076,7 @@
                 },
                 {
                     "label": "Clock screen",
-                    "text": "If a clock screen hangs at the punch clock, the QR on that screen keeps refreshing — scanning it with your phone counts as a fresh scan. No phone at hand? Tap your name on the screen and clock in or out with your PIN; two wrong attempts block that briefly. Without a PIN you clock in via a scan on your phone."
+                    "text": "If a clock screen hangs at the punch clock, the QR on that screen keeps refreshing — scanning it with your phone counts as a fresh scan. No phone at hand? Tap your name on the screen; on an open shift choose break or clock-out, then your PIN. Two wrong attempts block that briefly. Without a PIN you clock in via a scan on your phone."
                 },
                 {
                     "label": "Where do I need to go today",
@@ -1460,7 +1460,7 @@
                 },
                 {
                     "label": "Sign in with a PIN",
-                    "text": "No phone at hand? Tap the display, pick your first name via the letters and enter your 4-digit PIN — you are clocked in or out right away. Workers without a PIN choose one on the spot (twice). After two wrong attempts that worker is blocked for one minute. Admins reset the PIN via People → Teams → Edit."
+                    "text": "No phone at hand? Tap the display, pick your first name via the letters; on an open shift choose break or clock-out, then enter your 4-digit PIN. Workers without a PIN choose one on the spot (twice). After two wrong attempts that worker is blocked for one minute. Admins reset the PIN via People → Teams → Edit."
                 },
                 {
                     "label": "Pairing code",
