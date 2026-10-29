@@ -8,7 +8,7 @@ Code: `App\Actions\Auth\ThrottleBackofficeLoginAction`, aangeroepen vanuit `App\
 | --- | --- | --- |
 | Zelfde e-mailadres én IP | 5 | 5 minuten |
 | Zelfde e-mailadres, ongeacht IP | 10 | 15 minuten |
-| Zelfde IP, ongeacht e-mailadres | 100 | 15 minuten |
+| Zelfde IP, ongeacht e-mailadres | 20 | 15 minuten |
 
 Een geslaagde login wist de tellers van dat e-mailadres. De IP-teller blijft, zodat één geldig wachtwoord op een gedeeld netwerk de rest van die teller niet leegmaakt.
 

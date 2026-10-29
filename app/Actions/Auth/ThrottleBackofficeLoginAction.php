@@ -29,7 +29,7 @@ class ThrottleBackofficeLoginAction
 
     public const EMAIL_DECAY_SECONDS = 900;
 
-    public const IP_MAX_ATTEMPTS = 100;
+    public const IP_MAX_ATTEMPTS = 20;
 
     public const IP_DECAY_SECONDS = 900;
 
