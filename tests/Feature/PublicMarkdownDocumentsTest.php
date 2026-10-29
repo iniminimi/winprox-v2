@@ -34,7 +34,7 @@ it('serveert llms-full.txt met fiches en juridische pagina\'s', function () {
         ->assertHeader('Content-Type', 'text/markdown; charset=utf-8')
         ->assertSee('# WinProx — full documentation (English)', false)
         ->assertSee('# Technical fact sheet', false)
-        ->assertSee('# Features overview', false)
+        ->assertSee('# Features and capabilities', false)
         ->assertSee('# API & Webhooks', false)
         ->assertSee('# Data processing agreement (DPA)', false)
         ->assertSee('# Subprocessors', false);

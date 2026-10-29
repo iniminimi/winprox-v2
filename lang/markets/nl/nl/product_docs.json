@@ -1,16 +1,25 @@
 {
   "features": {
-    "intro": "U vergelijkt de uren met het rooster en geeft ze door aan uw salarisadministratie. Meldingen en taken zitten in dezelfde app.",
+    "intro": "WinProx is een online platform waarmee een organisatie medewerkers, werkuren, uurroosters, locaties en het dagelijkse werk bijhoudt. Het wordt gebruikt voor urenregistratie, personeelsplanning, werkbezoeken bij klanten, onderhoud, inspectierondes en het opvolgen van meldingen. Afhankelijk van de formule zijn ook GPS-werkbezoeken, sensoren, ESG-metingen en softwarekoppelingen beschikbaar. Alles werkt in de browser: beheerders meestal op een computer, medewerkers op hun smartphone, via een QR-code of op een klokscherm.",
+    "flow": {
+      "3": "Salarisadministratie"
+    },
     "full": {
-      "11": {
+      "0": {
         "items": {
-          "4": "GPS-werkbezoeken op klant- of unitlocatie, zonder extra prijs.",
-          "5": "De uren geeft u door aan uw salarisadministratie. Geen loonberekening.",
-          "0": "Op een vaste prikklok vraagt elke in- en uitklok een scan van de sticker of het klokscherm. Het startscherm-icoon en de aanmeldlink klokken niet in. Let op: een foto van de statische sticker kan overal prikken; de roterende scherm-QR verloopt en bewijst echte aanwezigheid."
+          "6": "Optionele GPS-werkbezoeken koppelen een bezoek aan een locatie."
         }
       },
-      "13": {
-        "body": "Beheer plant diensten in Time → Uurrooster. Publiceren toont ze op Clock Point."
+      "3": {
+        "items": {
+          "0": "Medewerkers klokken in en uit met de QR-code van Clock Point. Op een vaste prikklok scant u bij elke prik de code op de sticker of op het klokscherm. Het icoon op het startscherm en de aanmeldlink klokken op zichzelf niet in.",
+          "6": "De uren geeft u door aan uw salarisadministratie. WinProx berekent geen loon."
+        }
+      },
+      "29": {
+        "items": {
+          "1": "Corporate voegt API-koppelingen, sensoren en ESG-opvolging toe."
+        }
       }
     }
   },
