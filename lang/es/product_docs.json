@@ -98,7 +98,7 @@
                     "Hacer tareas, seguir una ronda de inspección y empezar una visita cuando el GPS está activo.",
                     "Una pantalla de fichaje opcional muestra un QR que cambia solo. Se vincula con un código de un solo uso y una confirmación.",
                     "Se elige cuándo está encendida la pantalla, por ejemplo de 06:00 a 19:00. Fuera de ese horario puede quedarse apagada o mostrar una pantalla de reposo: fotos, un reloj de agujas o un reloj de paletas.",
-                    "Sin smartphone: tocar la pantalla, buscar el nombre por letras e introducir un PIN personal de cuatro cifras. Quien aún no tiene PIN lo elige allí, dos veces.",
+                    "Sin smartphone: tocar la pantalla, buscar el nombre por letras; con turno abierto elija pausa o salida y luego el PIN personal de cuatro cifras. Quien aún no tiene PIN lo elige allí, dos veces.",
                     "Tras dos intentos fallidos, ese ejecutor queda bloqueado un minuto."
                 ]
             },

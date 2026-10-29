@@ -98,7 +98,7 @@
                     "Carry out tasks, follow an inspection round, and start a work visit when GPS is on.",
                     "An optional clock screen shows a QR code that changes by itself. You pair the screen with a one-time code and a confirmation.",
                     "You choose when the screen is on, for example from 06:00 to 19:00. Outside those hours it can stay off, or show a rest screen: photos, a clock face or a flip clock.",
-                    "Without a smartphone: tap the screen, find the first name by letters, and enter a personal four-digit PIN. Someone without a PIN chooses one on the spot, twice.",
+                    "Without a smartphone: tap the screen, find the first name by letters; on an open shift choose break or clock-out, then enter a personal four-digit PIN. Someone without a PIN chooses one on the spot, twice.",
                     "After two wrong attempts, that worker is blocked for one minute."
                 ]
             },

@@ -98,7 +98,7 @@
                     "Exécuter des tâches, suivre une tournée d’inspection et démarrer une visite quand le GPS est actif.",
                     "Un écran de pointeuse facultatif affiche un QR qui change tout seul. Vous le reliez avec un code à usage unique et une confirmation.",
                     "Vous choisissez quand l’écran est allumé, par exemple de 06:00 à 19:00. En dehors, il peut rester éteint ou montrer un écran de repos : photos, une horloge à aiguilles ou une horloge à palettes.",
-                    "Sans smartphone : touchez l’écran, cherchez le prénom par lettres et entrez un code personnel à quatre chiffres. Qui n’a pas encore de code le choisit sur place, deux fois.",
+                    "Sans smartphone : touchez l’écran, cherchez le prénom par lettres ; en service ouvert choisissez pause ou sortie, puis le code personnel à quatre chiffres. Qui n’a pas encore de code le choisit sur place, deux fois.",
                     "Après deux essais faux, cet exécutant est bloqué une minute."
                 ]
             },
