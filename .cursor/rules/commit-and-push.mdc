@@ -1,32 +1,62 @@
 ---
-description: Lokaal ontwikkelen en testen; na elke afgeronde taak commit + push naar origin (server).
+description: Lokaal ontwikkelen; na elke afgeronde taak commit + push main + server-deploy.
 alwaysApply: true
 ---
 
-# Lokaal werken → commit → push (verplicht)
+# Lokaal → main → server (verplicht)
 
-We ontwikkelen en testen **lokaal** (Windows). Productie draait op de **server** (Linux) en wordt bijgewerkt via **git push** naar `origin`.
+We ontwikkelen en testen **lokaal** (Windows). Productie is **winprox.app** (Linux).
+`git push` alleen naar GitHub is **niet** live. De server haalt code pas binnen via
+`./pull-deploy.sh`.
 
-**Gebruiker wil altijd direct commit + push** zodra een taak klaar is — **niet vragen**, niet wachten op expliciete bevestiging. Dit geldt ook voor kleine follow-ups (locale-fixes, één bestand).
+**Gebruiker wil altijd direct commit + push + deploy** zodra een taak klaar is —
+**niet vragen**, niet wachten op bevestiging. Ook voor kleine follow-ups (locale,
+één bestand).
 
-## Werkwijze
+## Branch (hard)
 
-1. **Lokaal bouwen en testen** — wijziging afmaken tot het lokaal werkt (visueel + functioneel).
-2. **Frontend-build (hard)** — na **elke** wijziging aan `resources/css/**`, `resources/js/**`, `vite.config.*`, of Blade/views die CSS/JS-classes raken: **meteen** `npm run build` draaien. Niet wachten tot commit. Taak is niet klaar zolang `public/build/**` niet geüpdatet is.
-3. **Checks vóór commit (hard):**
-   - `npm run check:bom` (of via `check:architecture`) — **geen UTF-8 BOM**, ook niet in `.env`
-   - `npm run check:locales:parity`
+- Werk op **`main`**, tenzij de gebruiker **expliciet** een andere branch vraagt.
+- Geen Cursor-/feature-branches uit eigen beweging. Die tellen niet als “op de server”.
+
+## Werkwijze (volgorde hard)
+
+1. **Lokaal bouwen en testen** — wijziging afmaken tot het lokaal werkt.
+2. **Frontend-build (hard)** — na wijziging aan `resources/css/**`, `resources/js/**`,
+   `vite.config.*`, of Blade/views die CSS/JS raken: **meteen** `npm run build`.
+   `public/build/**` meecommitten. Productie bouwt **niet** opnieuw.
+3. **Checks vóór commit:**
+   - `npm run check:bom` (of via `check:architecture`)
+   - `npm run check:locales:parity` (bij `lang/**`)
    - `npm run check:architecture`
    - `php artisan test` (relevante tests)
-   - Bij CSS/JS/views: **`public/build/**` moet al gecommit klaarstaan** (build stap 2)
-4. **`git status`** — geen test-artefacten (`tests/Avery_*.zip`, `_extract/`, `.env`, logs).
-5. **Commit** met duidelijke boodschap.
-6. **`git push`** naar `origin` — zodat de server de wijziging kan deployen.
+4. **`git status`** — geen test-artefacten, geen `.env`, geen logs.
+5. **Commit** op `main` met duidelijke boodschap.
+6. **`git push origin main`** (of `git push -u origin HEAD` alleen als de gebruiker
+   expliciet een andere branch vroeg).
+7. **Server-deploy (hard — zonder dit is de taak niet klaar):**
+   ```bash
+   ssh -i C:/Users/domin/.ssh/id_ed25519 -o BatchMode=yes winprox@winprox.app \
+     "cd /var/www/vhosts/winprox.app/httpdocs/winprox && ./pull-deploy.sh"
+   ```
+   Host/user/key/path staan in `.env` als `TRANSLATION_SYNC_SSH_*` /
+   `TRANSLATION_SYNC_REMOTE_PATH` — zelfde toegang gebruiken.
+8. **Live verifiëren** — curl of browser op de geraakte URL (bv.
+   `https://winprox.app/nl/docs/...`). Niet aannemen dat push = live. Niet de
+   gebruiker laten “Ctrl+F5” als excuus zonder eerst deploy + check.
 
-Niet afsluiten met uncommitted werk dat klaar is. Tenzij de gebruiker expliciet vraagt om **niet** te committen of te pushen.
+Niet afsluiten met uncommitted werk dat klaar is. Alleen skippen als de gebruiker
+expliciet zegt: **niet** committen / pushen / deployen.
+
+## Wat “klaar” níet is
+
+- Push naar een feature-branch.
+- Push naar `origin/main` zonder `./pull-deploy.sh`.
+- “De server pakt het wel op” — dat gebeurt niet automatisch.
+- Alleen browsercache noemen terwijl de app-dir nog oude bestanden heeft.
 
 ## Lokaal vs. server
 
-- **Code** (PHP, Blade, locales): lokaal testen volstaat; na push pakt de server het op.
-- **Frontend-assets:** lokaal **altijd** `npm run build` na UI-wijziging — direct, vóór je verder gaat. Productie deployt **niet** opnieuw builden; alleen wat in git staat telt.
-- **GPS / geolocation:** test op **HTTPS** (productie) of `localhost`; HTTP via LAN-IP (`192.168.x.x`) wordt door browsers geblokkeerd — geen productie-bug.
+- **Code** (PHP, Blade, locales, config): na stap 7 staat het op de server.
+- **Frontend-assets:** lokaal gebuild (`public/build/**` in git); deploy synct die mee.
+- **GPS / geolocation:** test op HTTPS (productie) of `localhost`; HTTP via LAN-IP
+  wordt door browsers geblokkeerd.
