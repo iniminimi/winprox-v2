@@ -8,7 +8,7 @@
     "documents": {
         "features": {
             "label": "Feature-Übersicht",
-            "meta_description": "Vollständige Übersicht der WinProx-Funktionen: Meldungen, Aufgaben, Stempeluhr, Berichte und Portale."
+            "meta_description": "Digitale Stempeluhr, Zeiterfassung, Dienstplan, Meldungen und Aufgaben auf einer Plattform. Keine App zu installieren."
         },
         "technical": {
             "label": "Technisches Datenblatt",
@@ -20,330 +20,352 @@
         }
     },
     "features": {
-        "label": "Feature-Übersicht",
-        "tagline": "Was WinProx tut — in klarer Sprache",
-        "highlight": "Digitale Stempeluhr für die Zeiterfassung. Mitarbeitende stempeln mit dem Telefon, ohne App.",
-        "intro": "Sie vergleichen die Stunden mit dem Dienstplan und geben sie an Ihr Sozialsekretariat weiter. Arbeitet Ihre Mannschaft bei Kunden, können Sie die Anwesenheit für das LSS einschalten. Meldungen und Aufgaben sitzen in derselben App.",
+        "label": "Funktionen und Möglichkeiten",
+        "tagline": "Digitale Stempeluhr, Zeiterfassung, Dienstplan, Meldungen und Aufgaben auf einer Plattform.",
+        "highlight": "Mitarbeitende stempeln, sehen ihren Dienstplan, erledigen Aufgaben und melden ein Problem über das Telefon. Keine App zu installieren.",
+        "intro": "WinProx ist eine Online-Plattform, mit der eine Organisation Personen, Arbeitsstunden, Dienstpläne, Standorte und die tägliche Arbeit führt. Sie wird genutzt für Zeiterfassung, Personalplanung, Besuche bei Kunden, Wartung, Inspektionsrunden und die Nachverfolgung von Meldungen. Je nach Formel sind auch die RSZ/CIAO-Meldung, GPS-Arbeitsbesuche, Sensoren, ESG-Messungen und Software-Anbindungen verfügbar. Alles läuft im Browser: die Verwaltung meist am Computer, Mitarbeitende am Smartphone, über einen QR-Code oder auf einem Stempeldisplay.",
         "flow": [
-            "Scan",
             "Stempeln",
+            "Dienstplan",
             "Stunden",
             "Sekretariat"
         ],
-        "source": "Derselbe Inhalt wie Handbuch und FAQ in der App.",
-        "footer_left": "WinProx · info@winprox.app · Produktüberblick (Handbuch/FAQ)",
-        "footer_right": "Siehe auch: Technisches Datenblatt (Hosting, DSGVO, Sicherheit)",
+        "source": "Diese Seite beschreibt die Funktionen, was verfügbar ist, und die wichtigsten Bedingungen.",
+        "footer_left": "WinProx · winprox.app · info@winprox.app",
+        "footer_right": "Siehe auch: Technisches Datenblatt für Hosting, Datenschutz und Sicherheit, und API & Webhooks für Software-Anbindungen.",
         "left": [],
         "right": [],
         "full": [
             {
-                "title": "Meldungen",
-                "badge": "Kern",
-                "body": "Jemand sieht ein Problem und erstellt eine Meldung — über den Unit-QR, in der Verwaltung oder über einen Sensor (IoT).",
+                "title": "WinProx Time",
+                "body": "WinProx Time ist die digitale Stempeluhr, zusammen mit Zeiterfassung, Dienstplan und der täglichen Nachverfolgung.",
                 "items": [
-                    "Filter und Freigabe von QR-Meldungen.",
-                    "Optional Kontaktdaten oder E-Mail-Bestätigung für anonyme Melder.",
-                    "Auf öffentlichen QR-Seiten erst nach Freigabe sichtbar; die Verwaltung sieht alles sofort.",
-                    "Pille Melder bestätigt, wenn der E-Mail-Link bestätigt ist.",
-                    "Wiederkehrende Wartung können Sie pausieren oder schließen."
-                ]
+                    "Ein- und ausstempeln und sehen, wer anwesend ist.",
+                    "Die erfassten Stunden neben den Dienstplan legen.",
+                    "Schichten planen und veröffentlichen.",
+                    "Urlaubs- und Ausgleichsanträge bearbeiten.",
+                    "Meldungen, Aufgaben und Inspektionsrunden verwalten.",
+                    "Standorte, Teams, Personen und Units verwalten.",
+                    "Die RSZ/CIAO-Meldung kann in den Einstellungen aktiviert werden. Optionale GPS-Arbeitsbesuche verknüpfen einen Besuch mit einem Ort."
+                ],
+                "badge": "inklusive"
             },
             {
-                "title": "Aufgaben",
-                "badge": "Kern",
-                "body": "Eine Meldung kann mehrere Aufgaben haben. Jede Aufgabe geht an ein Team, optional an einen Mitarbeiter dieses Teams.",
-                "items": [
-                    "Prio, Frist und Notizen pro Aufgabe.",
-                    "Nachverfolgung in der Aufgabenliste und per QR vor Ort.",
-                    "Die Verwaltung kann den Mitarbeiter jederzeit ändern oder leeren (z. B. Krankheit)."
-                ]
-            },
-            {
-                "title": "Abschluss",
-                "badge": "Kern",
-                "body": "Das Team erledigt die Aufgaben. Wenn alles fertig ist, schließt die Verwaltung die Meldung.",
-                "items": [
-                    "Optionales Foto und Notiz beim Abschließen.",
-                    "Status und Historie in der Verwaltung.",
-                    "Ausführende arbeiten über Unit-QR oder Clock Point mit offenem GPS-Arbeitsbesuch.",
-                    "Optional: TFT-Uhrdisplay an einem Stempelpunkt mit rotierendem QR (Kopplung per Einmal-Code + Bestätigung). Einstellbare Einschaltzeiten (z. B. Kita 06:00–19:00); außerhalb bleibt der Bildschirm aus. Ohne Handy: Display antippen, Vornamen per Buchstaben wählen und 4-stellige PIN eingeben (wer keine PIN hat, wählt sie vor Ort, zweimal); nach zwei Fehlversuchen ist dieser Ausführende eine Minute gesperrt."
-                ]
-            },
-            {
-                "title": "Dashboard",
-                "body": "Der Startbildschirm beginnt mit Was möchten Sie tun? Darunter sehen Sie, was offen ist. Klicken Sie eine Karte, um die Liste zu öffnen.",
-                "items": [
-                    "Kurzbefehle: Dienstplan, Anwesenheit, neue Tagesaufgabe (Inspektionsrunde), Standort und Ausführender.",
-                    "Neue Meldungen und offene Aufgaben.",
-                    "Mit Time: wer gerade anwesend ist.",
-                    "Wer während Urlaub, Zeitausgleich, einem Feiertag oder Krankheit einstempelt, zählt bei Time-Aufmerksamkeit mit, mit Ausrufezeichen und Hinweis bei dieser Person in der Anwesenheit.",
-                    "Offener Urlaub oder TOIL als Extra-Karte: 1 Urlaub, 1 TOIL oder beides.",
-                    "Ein Mitarbeiter, den ein Teamleiter anlegt, erscheint als Karte Neuer Mitarbeiter, bis die Verwaltung diese Person speichert oder deaktiviert.",
-                    "Neue Organisationen können hier eine Startvorlage wählen.",
-                    "Briefing und Berichte sind vom Dashboard aus erreichbar."
-                ]
-            },
-            {
-                "title": "Facility",
-                "body": "Hier richten Sie Orte, Menschen und Teams ein.",
-                "items": [
-                    "Kategorien, Standorte (CSV) und Units (Bulk oder CSV).",
-                    "Dokumente und Mitteilungen auf dem Portal.",
-                    "Ausführende suchen unter Personen → Ausführende; optionales Porträt.",
-                    "Springer-Teams dürfen überall stempeln; andere nur an zugewiesenen Standorten.",
-                    "Seltene Aktionen (Teamleiter, Icon, Handy, PIN, Passkey) liegen unter Bearbeiten, nicht in der Liste."
-                ]
-            },
-            {
-                "title": "QR-Portale",
-                "body": "Alles öffnet im Browser. Kein App Store.",
-                "items": [
-                    "Unit-QR: melden, optional Unit-Check und Messwerte.",
-                    "Clock-Point-QR: anmelden (Name + Icon, PIN oder Biometrie) stempelt mit Time direkt ein; plus Teamaufgaben.",
-                    "Druckbar als Aufkleberbogen oder A6/A5/A4.",
-                    "Ein geladener Unit-QR bleibt ohne Empfang nutzbar; stempeln braucht einen frischen Scan.",
-                    "Clock-Point-Link auf dem Handy-Startbildschirm."
-                ]
-            },
-            {
-                "title": "Unit-Checks",
-                "body": "Schnell sagen, dass eine Unit in Ordnung ist — zum Beispiel nach einer Runde.",
-                "items": [
-                    "Am Unit-QR: OK oder Nicht OK.",
-                    "Bei OK brauchen Sie keine eigene Meldung.",
-                    "Optional Checkliste, Bemerkung und bis zu 4 Fotos.",
-                    "Historie unter Arbeit → Unit-Checks."
-                ]
-            },
-            {
-                "title": "Inspektionsrunden",
-                "body": "Eine feste Route von Units, auch über mehrere Standorte.",
-                "items": [
-                    "Planen unter Arbeit → Inspektionsrunden (wiederkehrend oder einmalig).",
-                    "Pro Stopp: OK, Nicht OK (mit Meldung) oder überspringen mit Grund.",
-                    "Standort-Einheiten zeigen in der Runde den Standortnamen.",
-                    "Mit Time + GPS erscheint die heutige Runde unter Wohin muss ich.",
-                    "Zyklus von der Rundenaufgabe drucken.",
-                    "Markieren Sie eine Runde als Favorit und kopieren Sie sie schnell (Stopps + Titel); Standard einmalig für heute."
-                ]
-            },
-            {
-                "title": "Unit-Messungen",
-                "body": "Einfache Messwerte an einer Unit, ohne ESG-Modul.",
-                "items": [
-                    "Kilometerstand, Temperatur, Status, …",
-                    "Felder unter Arbeit → Unit-Messungen; pro Kategorie und Unit einschalten.",
-                    "Per QR oder API; Webhook unit.measurement.recorded."
-                ]
-            },
-            {
-                "title": "Fotos",
-                "body": "Fotos werden auf dem Gerät verkleinert, bevor sie hochgeladen werden.",
-                "items": [
-                    "Bis zu 4 Fotos bei Meldung, Abschluss oder Unit-Check.",
-                    "Bis zu 4 Unit-Fotos und ein Hintergrund pro Unit.",
-                    "Melderfotos auf dem öffentlichen Portal erst nach Freigabe."
-                ]
-            },
-            {
-                "title": "GPS",
-                "body": "Für mobile Units (Fahrzeug, Maschine) können Sie einen Standort speichern.",
-                "items": [
-                    "Pro Kategorie einschalten.",
-                    "Historie in der Verwaltung; in Maps öffnen."
-                ]
-            },
-            {
-                "title": "Time",
-                "badge": "inklusive",
-                "body": "Time ist die Stempeluhr. Ausführende stempeln über denselben Clock-Point-QR wie die Feldarbeit.",
-                "items": [
-                    "An einer festen Stempeluhr verlangt jedes Ein- und Ausstempeln einen Scan des Aufklebers oder des Uhrenbildschirms. Startbildschirm-Symbol und Anmeldelink stempeln nicht ein. Checkmate stempelt über das Symbol. Achtung: ein Foto des festen Aufklebers kann überall stempeln; der wechselnde Bildschirm-QR läuft ab und beweist echte Anwesenheit.",
-                    "Inklusiv in der Probe und in jeder Formel.",
-                    "Anwesenheit, Stundenblatt und Meine Stunden (nur eigene Dienste).",
-                    "Einstempeln während Urlaub, Zeitausgleich, Feiertag oder Krankheit zählt bei Time-Aufmerksamkeit mit, mit Ausrufezeichen und Hinweis bei dieser Person in der Anwesenheit. Auf dem Handy-Portal wird dieser Block rot, mit dem Hinweis.",
-                    "Die Verwaltung kann manuell einstempeln, wenn das Handy vergessen ist.",
-                    "CIAO (LSS) über die Einstellungen, ohne Aufpreis; die LSS-Kopplung wird bestätigt, bevor die Meldung startet.",
-                    "Die Stunden geben Sie an das Sozialsekretariat weiter. Kein Dimona und keine Lohnberechnung.",
-                    "Optionale GPS-Arbeitsbesuche: Arbeit starten am Standort-Pin.",
-                    "Nach dem Einstempeln zeigt Clock Point eine dunkle Willkommen-Karte und die Runde als Zeitlinie.",
-                    "Stechuhr-Display (TFT): rotierender QR-Code, Einschaltzeiten und optionaler Ruhebildschirm (Foto-Diashow, Analoguhr oder Flip-Uhr) außerhalb der Stempelzeiten."
-                ]
-            },
-            {
-                "key": "checkmate",
                 "title": "Checkmate",
-                "badge": "RSZ/CIAO",
-                "body": "Checkmate ist die Außendienst-Formel für Teams beim Kunden.",
+                "body": "Checkmate ist die Formel für Menschen, die bei Kunden arbeiten, zum Beispiel im Bau oder in der Reinigung. Ein Besuch startet erst, wenn das GPS innerhalb der eingestellten Entfernung zum Kundenstandort liegt.",
                 "items": [
-                    "Mitarbeiter stechen über denselben Clock-Point-QR ein.",
-                    "Ein Kundenbesuch startet mit einer GPS-Prüfung innerhalb des Radius.",
-                    "Kunden und verknüpfte Standorte (mit Ganz-Standort-Unit) verwalten Sie unter Kunden und Standorte.",
-                    "Kunden per CSV oder Excel in Bulk importieren (inkl. Standortdaten pro Zeile).",
-                    "Anwesenheit, Stundenkonto und Meine Stunden wie in Time.",
-                    "CIAO (LSS) ist ab Beginn aktiv — KBO-Nummer in den Einstellungen eintragen.",
-                    "Die Stunden geben Sie an das Sozialsekretariat weiter. Kein Dimona und keine Lohnberechnung.",
-                    "Eigene kompakte Anleitung statt der allgemeinen WinProx-Anleitung.",
-                    "5 € pro aktivem Mitarbeiter im Monat; Sitzzahl anpassbar.",
-                    "Neue Organisationen wählen Bei Kunden → Checkmate als Startweg: ein Monat Probezeit mit 25 Lizenzen plus Demo-Team, Mitarbeiter und Demokunden. Keine Unit- oder Dokumentenlimits.",
-                    "Monatsstatistiken pro Kunde: Besuche, Arbeitszeit und Stunden pro verknüpftem Standort — exportierbar als CSV oder Druck."
+                    "Ein- und Ausstempeln geht über das Clock-Point-Symbol. Anwesenheit, Stundenliste und Meine Stunden sind dabei.",
+                    "Kunden und ihre Standorte verwalten Sie unter Kunden und Standorte. Ein Standort kann eine Unit für den ganzen Ort haben.",
+                    "Kunden importieren Sie gesammelt über CSV oder Excel, mit den Standortdaten pro Zeile.",
+                    "Pro Kunde sehen Sie den Monat: Besuche, Arbeitszeit und Stunden je Standort. Das exportieren Sie als CSV oder drucken es.",
+                    "Die RSZ/CIAO-Meldung ist von Anfang an aktiv, sobald die KBO-Nummer in den Einstellungen steht. Die Stunden geben Sie an das Sozialsekretariat. WinProx macht keine Dimona-Meldung und berechnet keinen Lohn.",
+                    "Der Preis beträgt 5 € pro aktivem Ausführenden im Monat. Die Anzahl der Lizenzen stellen Sie selbst ein.",
+                    "Neue Organisationen können mit einem Probemonat von 25 Lizenzen starten, plus Demoteam, einem Ausführenden und Demokunden. In der Probe gelten keine Limits für Units oder Dokumente.",
+                    "Checkmate hat eine eigene kurze Anleitung, anstelle der allgemeinen WinProx-Anleitung."
+                ],
+                "badge": "RSZ/CIAO",
+                "key": "checkmate"
+            },
+            {
+                "title": "Corporate",
+                "body": "Corporate ist für Organisationen, die WinProx mit Anbindungen, Sensoren und Messungen erweitern wollen. Das steht neben der gewöhnlichen Zeiterfassung und dem Dienstplan.",
+                "items": [
+                    "API und Webhooks, um Daten mit anderer Software auszutauschen.",
+                    "IoT Connect für Ereignisse angeschlossener Sensoren.",
+                    "ESG- und Compliance-Funktionen für Messwerte, Kennzahlen und Folgemaßnahmen."
+                ],
+                "badge": "Corporate",
+                "badge_mod": "corp"
+            },
+            {
+                "title": "Stempeluhr und Stunden",
+                "body": "WinProx erfasst, wann jemand beginnt und aufhört. Die Verwaltung verfolgt die Anwesenheit und legt die Stunden neben die geplanten Schichten.",
+                "items": [
+                    "Mitarbeitende stempeln mit dem QR-Code von Clock Point. An einer festen Uhr scannt jeder Stempel den Code auf dem Aufkleber oder auf dem Display. Das Symbol auf dem Startbildschirm und der Anmeldelink stempeln für sich nicht ein. Bei Checkmate kann man über das Symbol ein- und ausstempeln.",
+                    "Ein Foto des Aufklebers kann auch außerhalb der Tür verwendet werden. Der QR-Code auf dem Display wechselt von selbst und läuft ab, sodass ein altes Foto nicht mehr gilt.",
+                    "Sie sehen, wer anwesend ist, und die Stundenliste. Jede Person sieht unter Meine Stunden nur die eigenen Schichten.",
+                    "WinProx vergleicht geplant und erfasst mit einem Spielraum von 15 Minuten. Eine Markierung öffnet sofort die Stunden dieser Person an diesem Tag.",
+                    "Hat jemand das Einstempeln vergessen, kann die Verwaltung die Buchung von Hand ergänzen.",
+                    "Stempelt jemand während Urlaub, Ausgleich, einem Feiertag oder Krankheit ein, wird das ein Hinweis: eine Warnung bei der Person in der Anwesenheitsliste und auf dem Telefon ein roter Einstempelblock mit einer Meldung. Das ist ein Signal, die Buchung zu prüfen, kein Urteil über die Arbeitszeit.",
+                    "Die RSZ/CIAO-Meldung schalten Sie in den Einstellungen ein. Die Verbindung zur RSZ wird bestätigt, bevor die Übermittlung startet. Die Stunden geben Sie an das Sozialsekretariat. WinProx macht keine Dimona-Meldung und berechnet keinen Lohn."
+                ]
+            },
+            {
+                "title": "Clock Point",
+                "body": "Clock Point ist der Ort, an dem Mitarbeitende ihre Arbeitsfunktionen öffnen, im Browser. Nach dem Einstempeln kann ein Willkommensbildschirm die Runde des Tages als Zeitstrahl zeigen.",
+                "items": [
+                    "Ein- und ausstempeln, den eigenen veröffentlichten Dienstplan sehen, die eigenen Stunden sehen, Urlaub oder Ausgleich beantragen.",
+                    "Aufgaben erledigen, eine Inspektionsrunde folgen und einen Arbeitsbesuch starten, wenn GPS an ist.",
+                    "Ein optionales Stempeldisplay zeigt einen QR-Code, der von selbst wechselt. Sie koppeln das Display mit einem Einmalcode und einer Bestätigung.",
+                    "Sie wählen, wann das Display an ist, zum Beispiel von 06:00 bis 19:00. Außerhalb kann es aus bleiben oder einen Ruhebildschirm zeigen: Fotos, eine Zeigeruhr oder eine Flip-Uhr.",
+                    "Ohne Smartphone: Display antippen, den Vornamen über Buchstaben suchen und eine persönliche vierstellige PIN eingeben. Wer noch keine PIN hat, wählt sie vor Ort, zweimal.",
+                    "Nach zwei Fehlversuchen ist dieser Ausführende eine Minute gesperrt."
                 ]
             },
             {
                 "title": "Dienstplan",
-                "body": "Die Verwaltung plant Schichten unter Time → Dienstplan. Veröffentlichen zeigt sie am Clock Point, nicht bei der LSS.",
+                "body": "Die Verwaltung plant Schichten in Time → Dienstplan und veröffentlicht sie. Veröffentlichte Schichten erscheinen am Clock Point.",
                 "items": [
-                    "Tippen Sie einen Code (Schichttyp) oder eine freie Zeit wie 07:00-15:00. Über Tag bearbeiten setzen Sie mehrere Blöcke an einem Tag, optional mit einer Notiz je Block.",
-                    "Abwesenheit (Urlaub, Ausgleich, krank) füllt den ganzen Tag oder einen Teilblock; Stunden zählen nicht. Die Typen stellen Sie unter Time → Schichttypen ein; die Schaltfläche Codes zeigt sie.",
-                    "Wählen Sie zuerst ein Team oder einen Standort; ohne Filter lädt der Dienstplan nicht.",
-                    "Wochen- oder Monatsansicht. Wochenenden sind standardmäßig ausgeblendet. Die Schaltflächen Woche und Monat springen zur aktuellen Periode.",
-                    "Ungespeicherte Änderungen bitten zuerst um Speichern, wenn Sie die Seite verlassen oder Woche/Monat wechseln.",
-                    "Woche wiederholen kopiert Dienste auf 1–26 aufeinanderfolgende Wochen; Wochen mit bestehenden Diensten und Tage mit Abwesenheit werden übersprungen. Notizen werden nicht mitkopiert.",
-                    "Wiederherstellen (Woche und Monat) zeigt die letzten Punkte einer Dienstplanänderung: Datum, Uhrzeit, Quelle, Ausführende und Tage. Der Unterschied steht nach Folge und nach Tag: was wegfällt, was zurückkommt und was sich ändert. Ein gesperrter Tag, ein Dienst auf einem anderen Tag oder genehmigter Urlaub blockiert die Wiederherstellung. Weicht der Plan ab oder liegt ein offener Antrag vor, bestätigen Sie. Die Bestätigung gilt nur für den gezeigten Unterschied; hat sich der Plan inzwischen geändert, wird nichts wiederhergestellt und Sie sehen den neuen Unterschied. Nach einer erfolgreichen Wiederherstellung können Sie diesen Schritt rückgängig machen. Punkte bleiben 30 Tage erhalten; die Liste zeigt höchstens 40.",
-                    "Vertretung suchen: WinProx schlägt verfügbare Kolleginnen und Kollegen vor. Der ursprüngliche Block wird zur Abwesenheit; die Vertretung erhält denselben Zeitslot.",
-                    "Optional ein Ort in der Zelle (Gruppe oder Einheit, zum Beispiel G1) unter dem Dienstcode. Ein Standortfilter zeigt Mitarbeitende gruppiert.",
-                    "Clock Point zeigt Mein Dienstplan (nur eigene veröffentlichte Schichten des Monats), mit einem Badge beim Veröffentlichen oder einer späteren Änderung. Team-Dienstplan (optional über Einstellungen): veröffentlichte Wochendienste der Kollegen am eigenen Standort/den eigenen Standorten, Abwesenheiten neutral. In den Einstellungen kann die ganze Planung ausgeschaltet werden; QR-Anmeldung, Aufgaben und die Stechuhr bleiben, bestehende Dienste bleiben gespeichert.",
-                    "Rotes Dreieck, wenn Sie nicht, zu früh oder zu spät einstempeln oder zu spät ausstempeln. Meine Stunden nennt jeden Grund.",
-                    "Die Verwaltung sieht geplant versus gestempelt (15-Minuten-Spielraum). Eine Markierung öffnet Time → Stunden für diese Person und diesen Tag.",
-                    "Wochen- und Monatsansicht zeigen je Ausführendem feste Spalten mit senkrechtem Titel und in der Zeile nur die Zahl: Norm, Differenz, geplant, gearbeitet, Urlaub, Ausgleich und krank. Die Spalte Hinweis zeigt unvollständige Blöcke oder eine offene Stempelung. Norm und Differenz bleiben leer, solange diese Norm nicht verlässlich ist. Die Norm steht standardmäßig auf 38 Stunden und bleibt je Person anpassbar. Ohne Arbeitsregelung zählt der Monat Montag–Freitag nach dieser Norm; Feiertage folgen der vereinbarten Regelung oder, ohne Vereinbarung, dem belgischen Standard (Arbeitstag entfällt; ein Feiertag am Wochenende erhält einen vorgeschlagenen Ersatztag). Das ist eine Zählung, kein Urteil über die Arbeitszeit.",
-                    "Feiertage färben die Datumsspalte blau, Ersatztage grün; eine graue Zelle ist ein fester freier Tag (0 Minuten im Wochenmuster) und bleibt ausfüllbar. Vereinbarungen stehen unter Time → Feiertage.",
-                    "Optional legen Sie pro Standort eine Mindestbesetzung fest (Anzahl pro Schichttyp). Der Plan zeigt dann als Hinweis, welche Schichten an welchem Tag fehlen; er blockiert nie das Speichern oder Veröffentlichen.",
-                    "Drucken öffnet ein querformatiges A4 der sichtbaren Periode."
+                    "Wählen Sie zuerst ein Team oder einen Standort. Ohne diese Wahl lädt der Dienstplan nicht.",
+                    "Wochen- oder Monatsansicht. Mehrere Schichten an einem Tag, als Code oder als freier Block, zum Beispiel 07:00–15:00. Eine Notiz pro Schicht ist möglich, und auch eine Gruppe oder Unit an der Schicht.",
+                    "Sie kopieren eine Woche auf höchstens 26 aufeinanderfolgende Wochen. WinProx überspringt Tage, die schon Schichten oder Abwesenheiten haben. Notizen gehen nicht mit.",
+                    "WinProx bittet zuerst, nicht gespeicherte Änderungen zu sichern, wenn Sie die Seite verlassen oder Woche oder Monat wechseln.",
+                    "Ersatz suchen: WinProx schlägt verfügbare Kolleginnen und Kollegen vor. Der ursprüngliche Block wird eine Abwesenheit und die Vertretung bekommt dasselbe Zeitfenster.",
+                    "Urlaub, Ausgleich und Krankheit können einen ganzen Tag oder einen Teil davon füllen. Diese Blöcke zählen nicht als gearbeitete Stunden. Die Schichttypen stellen Sie unter Time → Schichttypen ein. Feiertage und Ersatztage stehen unter Time → Feiertage.",
+                    "Feiertage und Ersatztage haben eine eigene Farbe. Ein fester freier Tag ist grau und bleibt ausfüllbar.",
+                    "Standard ist eine Wochennorm von 38 Stunden, je Ausführendem anpassbar. Normen und Differenzen berücksichtigen die Arbeitsregelung und die Feiertage. Ohne verlässliche Norm bleibt die Zahl leer. Das ist eine Zählung für die Übersicht, kein Urteil über die Arbeitszeit.",
+                    "Pro Standort legen Sie eine Mindestbesetzung fest: wie viele Personen je Schichttyp nötig sind. WinProx zeigt, wo die geplante Besetzung zu knapp ist. Ein Mangel blockiert weder Speichern noch Veröffentlichen.",
+                    "Wiederherstellungspunkte von Dienstplanänderungen bleiben 30 Tage gespeichert. Die Liste zeigt höchstens 40. Sie sehen Datum, Uhrzeit, Quelle, Personen und Tage, und was wegfällt, zurückkommt oder sich ändert.",
+                    "Ein gesperrter Tag, eine Schicht, die inzwischen auf einem anderen Tag steht, oder genehmigter Urlaub kann eine Wiederherstellung stoppen. Weicht der Dienstplan ab oder ist ein Antrag offen, bittet WinProx um eine Bestätigung. Die gilt nur für den gezeigten Unterschied. Hat sich der Dienstplan inzwischen geändert, stellt WinProx nichts wieder her und zeigt den neuen Unterschied. Eine gelungene Wiederherstellung können Sie selbst zurücknehmen.",
+                    "Am Clock Point sehen Mitarbeitende nur ihre eigenen veröffentlichten Schichten dieses Monats. Nach einer Veröffentlichung oder einer späteren Änderung erscheint ein Hinweis.",
+                    "Ein Teamdienstplan ist optional. Mitarbeitende sehen dann die veröffentlichten Wochenschichten der Kolleginnen und Kollegen am eigenen Standort. Abwesenheiten stehen dort neutral.",
+                    "Die Planungsfunktion kann ausgeschaltet werden. Bestehende Schichten bleiben gespeichert. Stempeluhr, QR-Anmeldung und Aufgaben bleiben verfügbar.",
+                    "Drucken öffnet den sichtbaren Zeitraum auf Querformat A4."
                 ]
             },
             {
                 "title": "Urlaub und Ausgleich",
-                "body": "Ausführende beantragen Urlaub oder Ausgleich am Clock Point. Die Verwaltung entscheidet unter Time → Anträge.",
+                "body": "Mitarbeitende beantragen Urlaub oder Ausgleich über Clock Point. Die Verwaltung entscheidet in Time → Anträge. Dieser Antrag ist nicht dazu da, Krankheit zu melden, und es geht keine E-Mail hinaus.",
                 "items": [
-                    "Von–bis, max. 31 Tage, nicht in der Vergangenheit.",
-                    "Ablehnen braucht eine Begründung; Genehmigen nicht.",
-                    "Nach der Entscheidung sehen Sie, wer genehmigt oder abgelehnt hat.",
-                    "Am Clock Point ziehen Sie einen offenen oder genehmigten (noch nicht begonnenen) Antrag zurück.",
-                    "Bei Genehmigung speichert WinProx bestehende Schichten und ersetzt sie danach im Plan.",
-                    "Keine E-Mail und kein Krankantrag in diesem Schritt.",
-                    "Das Dashboard zeigt 1 Urlaub, 1 Ausgleich oder beides."
+                    "Ein Antrag läuft von einem Anfangs- bis zu einem Enddatum, höchstens 31 Tage, und nicht in der Vergangenheit.",
+                    "Eine Ablehnung braucht einen Grund. Nach der Entscheidung ist sichtbar, wer genehmigt oder abgelehnt hat.",
+                    "Ein offener oder genehmigter Antrag kann zurückgezogen werden, solange die Abwesenheit noch nicht begonnen hat.",
+                    "Bei Genehmigung bleiben die bestehenden Schichten zuerst stehen. Danach ersetzt WinProx sie im Dienstplan durch die Abwesenheit."
+                ]
+            },
+            {
+                "title": "Meldungen",
+                "body": "WinProx hilft, ein Problem an einem Standort zu melden, zuzuweisen und nachzuverfolgen.",
+                "items": [
+                    "Eine Meldung erstellen Sie über den QR-Code an einer Unit, aus der Verwaltung, oder über einen verbundenen Sensor, wenn IoT eingerichtet ist.",
+                    "Die Verwaltung kann QR-Meldungen filtern und freigeben. Auf der öffentlichen QR-Seite erscheint eine Meldung erst nach Freigabe.",
+                    "Bei anonymen Meldungen können Kontaktdaten oder eine E-Mail-Bestätigung verlangt werden. Sobald die meldende Person den Link nutzt, kann die Meldung als bestätigt gelten.",
+                    "Wiederkehrende Wartung können Sie pausieren oder abschließen."
+                ]
+            },
+            {
+                "title": "Aufgaben",
+                "body": "Eine Meldung kann mehrere Aufgaben haben. Jede Aufgabe geht an ein Team und optional an einen Ausführenden dieses Teams.",
+                "items": [
+                    "Pro Aufgabe legen Sie Priorität, Frist und Notizen fest.",
+                    "Die Nachverfolgung läuft über die Aufgabenliste oder einen QR-Code vor Ort.",
+                    "Die Verwaltung kann den zugewiesenen Ausführenden jederzeit ändern oder leeren, zum Beispiel bei Krankheit."
+                ]
+            },
+            {
+                "title": "Aufgaben abschließen",
+                "body": "Mitarbeitende schließen die zugewiesenen Aufgaben ab. Wenn alles fertig ist, schließt die Verwaltung die Meldung.",
+                "items": [
+                    "Beim Abschließen können sie eine Notiz und ein Foto hinzufügen.",
+                    "Die Verwaltung sieht den Status und den Verlauf.",
+                    "Ausführende arbeiten über den QR-Code der Unit oder über Clock Point mit einem offenen GPS-Arbeitsbesuch."
+                ]
+            },
+            {
+                "title": "Dashboard",
+                "body": "Das Dashboard ist der Start in den Tag. Oben steht die Frage Was möchten Sie tun?, mit Kurzbefehlen zu den wichtigsten Funktionen.",
+                "items": [
+                    "Dienstplan und Anwesenheit, eine neue Tagesaufgabe oder Inspektionsrunde, Standorte und Ausführende.",
+                    "Neue Meldungen und offene Aufgaben. Mit Time: wer jetzt anwesend ist.",
+                    "Eine Warnung, wenn jemand während Urlaub, Ausgleich, einem Feiertag oder Krankheit einstempelt. Offene Urlaubs- und Ausgleichsanträge.",
+                    "Neue Ausführende, die ein Teamleiter gerade angelegt hat, bis die Verwaltung sie speichert oder deaktiviert. Briefings und Berichte. Neue Organisationen wählen hier eine Startkonfiguration."
+                ]
+            },
+            {
+                "title": "Organisation, Standorte und Personen",
+                "body": "Die Verwaltung richtet die Organisation mit Standorten, Teams, Personen und Units ein. Eine Unit kann ein Raum, ein Fahrzeug, eine Maschine oder ein anderes Mittel sein. Jeder Standort kann auch eine Unit für den ganzen Ort haben.",
+                "items": [
+                    "Kategorien und Standorte verwalten. Units einzeln oder gesammelt hinzufügen, auch über CSV.",
+                    "Ausführende suchen und verwalten unter Personen → Mitarbeiter. Ein Porträtfoto ist optional.",
+                    "Dokumente und Mitteilungen über das Portal bereitstellen. Festlegen, welche Standorte ein Ausführender nutzen darf.",
+                    "Springer-Teams können an allen Standorten einstempeln. Andere Ausführende nur an den Standorten, die ihnen zugewiesen sind.",
+                    "Einen Teamleiter festlegen oder ein Symbol, ein Telefon, eine PIN oder einen Passkey ändern, geht über Bearbeiten."
+                ]
+            },
+            {
+                "title": "QR-Portale",
+                "body": "Alle QR-Portale öffnen im Browser. Eine Installation über den App Store oder Google Play ist nicht nötig.",
+                "items": [
+                    "Der QR-Code einer Unit öffnet, was für sie eingeschaltet ist: eine Meldung erstellen, eine Unit-Kontrolle machen oder einen Messwert erfassen.",
+                    "Eine schon geladene Unit-Seite kann ohne Internet nutzbar bleiben. Einstempeln braucht dennoch einen neuen Scan."
+                ]
+            },
+            {
+                "title": "Unit-Checks",
+                "body": "Eine Unit-Kontrolle ist eine kurze Prüfung: ist diese Unit in Ordnung, zum Beispiel während einer Runde.",
+                "items": [
+                    "Über den QR-Code wählt die Person OK oder Nicht OK. Bei OK ist keine eigene Meldung nötig.",
+                    "Optional: eine Checkliste, eine Bemerkung und höchstens vier Fotos.",
+                    "Der Verlauf steht unter Arbeit → Unit-Checks."
+                ]
+            },
+            {
+                "title": "Inspektionsrunden",
+                "body": "Eine Inspektionsrunde ist eine festgelegte Route entlang von Units oder Standorten. Sie kann einmalig oder wiederkehrend sein.",
+                "items": [
+                    "An jedem Stopp: alles in Ordnung, ein Problem sofort als Meldung, oder überspringen mit einem Grund.",
+                    "Ein Stopp, der den ganzen Standort meint, zeigt den Namen dieses Standorts.",
+                    "Mit Time und GPS erscheint die heutige Runde unter Wohin muss ich. Die Runde kann von der Aufgabe aus gedruckt werden.",
+                    "Eine bestehende Runde kann als Favorit markiert und kopiert werden. Die Kopie übernimmt Titel und Stopps und ist standardmäßig einmalig für heute."
+                ]
+            },
+            {
+                "title": "Messungen, Fotos und GPS",
+                "body": "WinProx kann einfache Messwerte führen, ohne das umfangreiche ESG-Modul. Fotos gehören zu Meldungen, Aufgaben und Kontrollen. GPS an einer mobilen Unit ist nicht die GPS-Prüfung eines Checkmate-Besuchs.",
+                "items": [
+                    "Beispiele für Messwerte: Kilometerstand, Temperatur oder der Status eines Geräts. Die Felder stehen unter Arbeit → Unit-Messungen und schalten Sie je Kategorie und je Unit ein.",
+                    "Messwerte kommen über einen QR-Code oder die API herein. Eine Messung kann andere Software über den Webhook unit.measurement.recorded erreichen.",
+                    "Bis zu vier Fotos bei einer Meldung, einem Abschluss oder einer Unit-Kontrolle. Pro Unit bis zu vier Unit-Fotos und ein Hintergrundfoto. Fotos werden auf dem Gerät verkleinert, bevor sie hochgeladen werden. Fotos einer meldenden Person auf dem öffentlichen Portal sind erst nach Freigabe der Meldung sichtbar.",
+                    "Für mobile Units, etwa ein Fahrzeug oder eine Maschine, kann der Standort festgehalten werden. Das schalten Sie je Kategorie ein. Den Verlauf öffnen Sie in der Verwaltung, und ein Punkt öffnet in Maps."
                 ]
             },
             {
                 "title": "Kalender",
-                "body": "Monats-, Wochen- und Tagesansicht von Aufgaben, Meldungen und Reservierungen.",
+                "body": "Der Kalender zeigt Aufgaben, Meldungen und Reservierungen nach Monat, Woche und Tag.",
                 "items": [
-                    "Vom Kalender aus können Sie das Briefing dieses Tages drucken."
+                    "Aus dem Kalender drucken Sie das Briefing dieses Tages."
                 ]
             },
             {
                 "title": "Briefing",
-                "body": "Druckbare Liste der offenen Aufgaben des gewählten Tages, nach Team.",
+                "body": "Das Briefing ist eine druckbare Übersicht der offenen Aufgaben eines gewählten Tages, je Team.",
                 "items": [
-                    "Erreichbar vom Dashboard, von Aufgaben und vom Kalender."
+                    "Das Briefing erreichen Sie über das Dashboard, die Aufgabenliste und den Kalender."
                 ]
             },
             {
                 "title": "Berichte",
-                "body": "Auf Suchbildschirmen können Sie die gefilterte Liste exportieren.",
+                "body": "Auf Such- und Übersichtsseiten exportieren oder drucken Sie die gefilterte Liste.",
                 "items": [
-                    "CSV für Excel oder Druck nach PDF.",
-                    "Dieselben Filter wie die Liste (max. 5000 Zeilen).",
-                    "Time zeigt ein Stundenblatt.",
-                    "Kundenstatistiken (Time): Arbeitszeit, Besuche und Stunden pro Arbeitsadresse pro Kunde und Monat."
+                    "CSV zum Beispiel für Excel, oder Druck nach PDF. Dieselben Filter wie die Liste. Höchstens 5.000 Zeilen pro Export.",
+                    "WinProx Time zeigt eine Stundenliste. Kundenstatistiken zeigen Arbeitszeit, Besuche und Stunden je Arbeitsadresse und je Monat."
                 ]
             },
             {
                 "title": "Reservierungen",
-                "body": "Für teilbare Mittel mit Zeitslot, etwa einen Raum oder ein Fahrzeug.",
+                "body": "WinProx kann ein teilbares Mittel mit einem Zeitfenster reservieren, zum Beispiel einen Besprechungsraum oder ein Fahrzeug.",
                 "items": [
-                    "Kategorie Reservierbar + pro Unit Reservierungen erlauben.",
-                    "Gäste buchen über den Unit-QR (E-Mail-Bestätigung)."
+                    "Die Verwaltung schaltet Reservieren für eine Kategorie ein und erlaubt es je Unit.",
+                    "Gäste reservieren über den QR-Code der Unit. Die Bestätigung geht per E-Mail."
                 ]
             },
             {
-                "title": "ESG & Compliance",
-                "badge": "Corporate",
-                "badge_mod": "corp",
-                "body": "Messwerte für Umwelt, Sicherheit und Compliance — neben den alltäglichen Aufgaben.",
+                "title": "ESG und Compliance",
+                "body": "Die ESG-Funktionen von Corporate sind für Organisationen, die Messwerte zu Umwelt, Sicherheit und Einhaltung sammeln und nachverfolgen wollen. Sie kommen zu den gewöhnlichen Meldungen, Aufgaben und Unit-Messungen hinzu.",
                 "items": [
-                    "Indikatoren, Messungen und Folgeaufgaben.",
-                    "Über Portal, Verwaltung oder API."
-                ]
+                    "Kennzahlen definieren, Messungen erfassen und Folgemaßnahmen an eine Messung koppeln.",
+                    "Daten eingeben über das Portal, die Verwaltung oder die API."
+                ],
+                "badge": "Corporate",
+                "badge_mod": "corp"
             },
             {
                 "title": "IoT Connect",
+                "body": "IoT Connect lässt angeschlossene Sensoren ein Ereignis an WinProx senden.",
+                "items": [
+                    "Ein Sensor kann einen Alarm senden. WinProx macht daraus eine freigegebene Meldung, mit einer Aufgabe.",
+                    "Messwerte können auch in die ESG-Funktionen fließen. Für IoT Connect genügt ein eigenes Gateway-Token; eine volle API ist nicht immer nötig."
+                ],
                 "badge": "Corporate",
-                "body": "Sensoren senden Events. Ein Alarm wird eine freigegebene Meldung mit Aufgabe.",
-                "items": [
-                    "Messungen können ins ESG fließen.",
-                    "Eigenes Gateway-Token, auch ohne vollständige REST-API."
-                ]
+                "badge_mod": "corp"
             },
             {
-                "title": "API & Webhooks",
+                "title": "API und Webhooks",
+                "body": "Die API und die Webhooks lassen andere Software Daten mit WinProx austauschen. Eine API holt Daten oder schickt sie. Ein Webhook sendet von selbst eine Nachricht, sobald etwas geschieht.",
+                "items": [
+                    "Tokens und ausgehende Webhooks stellen Sie unter Einstellungen → API ein.",
+                    "Die technischen Details stehen in den Blättern API & Webhooks und Technisches Datenblatt."
+                ],
                 "badge": "Corporate",
-                "badge_mod": "corp",
-                "body": "Andere Software kann dieselben Daten nutzen wie WinProx selbst.",
-                "items": [
-                    "Tokens und ausgehende Webhooks unter Einstellungen → API.",
-                    "Siehe die Blätter API & Webhooks und Technisch."
-                ]
+                "badge_mod": "corp"
             },
             {
-                "title": "Multi-Tenant",
-                "body": "Jede Organisation hat eine eigene Umgebung, mit Limits pro Formel.",
+                "title": "Erscheinungsbild und QR-Aufkleber",
+                "body": "Das Portal kann für die eigene Organisation wiedererkennbar werden.",
                 "items": [
-                    "Lizenz = Kollege mit Login oder Ausführender. Kollege + Stempeluhr zählt als eine.",
-                    "Units = 10× die Lizenzen (50/100/250/500); Dokumente 10/20/30/40. Standorte und Fotos unbegrenzt (jeder Standort erhält eine Unit «Gesamter Standort»)."
-                ]
-            },
-            {
-                "title": "Branding & QR",
-                "body": "Sie können das Portal wie Ihre Organisation aussehen lassen.",
-                "items": [
-                    "Logo, Hintergrund und Buttonfarben unter Einstellungen.",
-                    "Aufkleber: Avery oder A6/A5/A4."
+                    "In den Einstellungen setzen Sie ein Logo, passen den Hintergrund an und wählen die Farbe der Schaltflächen.",
+                    "QR-Codes drucken Sie als Aufkleberbogen oder auf A6, A5 oder A4. Unter anderem passen Avery- und Herma-Bögen."
                 ]
             },
             {
                 "title": "Arbeitsmenü",
-                "body": "Die Verwaltung wählt, welche Extras in der Seitenleiste stehen.",
+                "body": "Die Verwaltung wählt, welche zusätzlichen Teile im Arbeitsmenü stehen.",
                 "items": [
-                    "Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen pro Organisation.",
-                    "Aus = kein Verwaltungszugang; vorhandener Unit-QR bleibt nutzbar.",
-                    "Meldungen & Aufgaben ist der Hauptschalter: aus = alle anderen Arbeit-Einträge fallen weg."
+                    "Pro Organisation können Sie einschalten: Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen.",
+                    "Ist ein Teil aus, ist es in der Verwaltung nicht mehr erreichbar. Bestehende QR-Codes an Units funktionieren weiter.",
+                    "Meldungen und Aufgaben sind der Hauptschalter. Schalten Sie den aus, verschwinden auch die anderen Arbeitsteile aus dem Menü."
                 ]
             },
             {
-                "title": "KI-Übersetzung",
-                "body": "Nach der Freigabe legt WinProx Texte zur Übersetzung bereit.",
+                "title": "Übersetzungen",
+                "body": "Nach Freigabe kann WinProx Texte für die Übersetzung bereitlegen.",
                 "items": [
-                    "Lokale KI, keine externe KI-Cloud.",
-                    "Meist täglich, ohne feste Durchlaufzeit.",
-                    "Administratoren können Übersetzungen selbst korrigieren."
+                    "Die Übersetzung nutzt lokale KI. Dafür gehen die Texte nicht in eine externe KI-Cloud.",
+                    "Übersetzungen werden in der Regel täglich verarbeitet, ohne feste Durchlaufzeit. Die Verwaltung kann sie selbst korrigieren."
                 ]
+            },
+            {
+                "title": "Rollen und Zugang",
+                "body": "WinProx verwendet vier Rollen in derselben Plattform.",
+                "items": [
+                    "Verwaltung: die ganze Organisation, die Einstellungen und das Abonnement.",
+                    "Mitarbeiter: die tägliche Nachverfolgung, ohne die Abrechnung.",
+                    "Ausführender: die Arbeit über Clock Point und die QR-Codes, ohne gewöhnliche Verwaltungsanmeldung.",
+                    "Teamleiter: Ausführende verwalten, ihr Symbol freigeben und über Clock Point Fotos aufnehmen.",
+                    "Verwaltung und Mitarbeitende melden sich mit E-Mail und Passwort an, oder über Microsoft. Die E-Mail-Adresse muss zu einem bestehenden WinProx-Konto gehören.",
+                    "Ausführende nutzen Clock Point mit Namen und Symbol. Andere Software verbindet sich mit API-Schlüsseln, nicht mit der gewöhnlichen Anmeldung."
+                ]
+            },
+            {
+                "title": "Abonnement und Grenzen",
+                "body": "Jede Organisation hat eine eigene Umgebung. Die Formel bestimmt, wie viele Lizenzen, Units und Dokumente verfügbar sind. Eine Lizenz zählt für eine Kollegin oder einen Kollegen mit Verwaltungszugang oder für einen Ausführenden. Wer auch die Stempeluhr nutzt, zählt als eine Lizenz.",
+                "items": [
+                    "Die Anzahl der Units ist das Zehnfache der Lizenzen. Die Anzahl der Dokumente hängt von der Formel ab. Standorte und Fotos sind unbegrenzt. Jeder Standort erhält automatisch eine Unit für den ganzen Ort."
+                ],
+                "table": {
+                    "headers": [
+                        "Lizenzen",
+                        "Units",
+                        "Dokumente"
+                    ],
+                    "rows": [
+                        [
+                            "5",
+                            "50",
+                            "10"
+                        ],
+                        [
+                            "10",
+                            "100",
+                            "20"
+                        ],
+                        [
+                            "25",
+                            "250",
+                            "30"
+                        ],
+                        [
+                            "50",
+                            "500",
+                            "40"
+                        ]
+                    ]
+                }
             },
             {
                 "title": "Keine App nötig",
-                "body": "Alles im Browser. Verwaltung am Laptop; Feld und QR am Handy.",
+                "body": "WinProx läuft im Browser. Die Verwaltung nutzt einen Computer. Mitarbeitende öffnen Clock Point und die QR-Portale auf dem Smartphone.",
                 "items": [
-                    "Kein App Store.",
-                    "Clock-Point-Verknüpfung auf dem Startbildschirm."
+                    "Keine Installation über den App Store oder Google Play. Clock Point kann als Verknüpfung auf dem Startbildschirm des Telefons liegen."
                 ]
             },
             {
-                "title": "Rollen",
-                "body": "Vier Rollen, ohne Extra-Portale.",
+                "title": "Kurz gesagt",
+                "body": "WinProx bringt Zeiterfassung, Personalplanung und die tägliche Nachverfolgung in einer Online-Plattform zusammen.",
                 "items": [
-                    "Administrator: alles, inklusive Abo.",
-                    "Mitarbeiter: tägliche Nachverfolgung, kein Billing.",
-                    "Ausführender: Feldarbeit über Clock Point und Unit-QR, ohne Login.",
-                    "Teamleiter: Icon freigeben, Mitarbeiter verwalten und Fotos über Clock Point aufnehmen."
-                ]
-            },
-            {
-                "title": "Verwaltungs-Login",
-                "body": "Kollegen melden sich mit E-Mail und Passwort an, oder mit Mit Microsoft anmelden.",
-                "items": [
-                    "Nur bestehende WinProx-Konten; die E-Mail muss übereinstimmen.",
-                    "Ausführende bleiben am Clock Point (Name + Icon).",
-                    "Andere Software koppelt über API-Schlüssel, nicht über dieses Login."
+                    "Sie nutzen, was zur Organisation passt: Stempeluhr, Dienstplan, Kundenbesuche, Inspektionsrunden und Wartung.",
+                    "Checkmate ist für Arbeitsbesuche bei Kunden, mit RSZ/CIAO-Meldung. Corporate ergänzt API-Anbindungen, Sensoren und ESG-Nachverfolgung.",
+                    "WinProx läuft im Browser. Eine eigene App ist nicht nötig."
                 ]
             }
         ]
@@ -514,7 +536,7 @@
         "highlight": "WinProx ersetzt keine bestehenden IWMS- oder ERP-Systeme. Dank APIs und Webhooks arbeitet WinProx mit ihnen zusammen.",
         "intro": "WinProx ist so gebaut, dass andere Software dieselben Daten, Meldungen, Aufgaben und Unit-Checks nutzen kann wie WinProx selbst. Verwaltung und Docs liegen unter Einstellungen → API. Desktop Mit Microsoft anmelden ist keine API-Kopplung: andere Software nutzt Tokens, nicht SSO. Urlaubs- und Ausgleichsanträge haben Events time.absence.* (keine Schreib-REST-API in dieser Slice).",
         "footer_left": "WinProx · info@winprox.app · API & Webhooks (Corporate)",
-        "footer_right": "Siehe auch: Feature-Übersicht · Technisches Datenblatt",
+        "footer_right": "Siehe auch: Funktionen und Möglichkeiten · Technisches Datenblatt",
         "left": [
             {
                 "title": "Warum APIs und Webhooks?",

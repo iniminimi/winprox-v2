@@ -8,12 +8,11 @@ it('toont de features-overzicht pagina publiek per locale', function () {
         ->assertOk()
         ->assertSee(__('product_docs.documents.features.label', [], 'nl'), false)
         ->assertSee('Verlof en recup', false)
-        ->assertSee('1 Verlof, 1 Recup, of beide', false)
-        ->assertSee('Dag bewerken', false)
-        ->assertSee('Week herhalen', false)
-        ->assertSee('Vervanger zoeken', false)
-        ->assertSee('Teamrooster', false)
-        ->assertSee('minimum bezetting', false)
+        ->assertSee('Vervanging zoeken', false)
+        ->assertSee('teamrooster', false)
+        ->assertSee('minimumbezetting', false)
+        ->assertSee('pincode', false)
+        ->assertSee('15 minuten', false)
         ->assertSee('type="text/markdown"', false)
         ->assertSee(route('product.features.md', ['locale' => 'nl']), false);
 });
@@ -52,7 +51,7 @@ it('serveert productfiches als Markdown', function () {
 
     $this->get(route('product.features.md', ['locale' => 'nl']))
         ->assertOk()
-        ->assertSee('# Features-overzicht', false);
+        ->assertSee('# Functies en mogelijkheden', false);
 
     $this->withHeader('Accept', 'text/markdown')
         ->get(route('product.api_webhooks', ['locale' => 'en']))
