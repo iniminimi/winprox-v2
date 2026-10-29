@@ -21,7 +21,17 @@ it('toont de technische fiche publiek per locale', function () {
     $this->get(route('product.technical', ['locale' => 'en']))
         ->assertOk()
         ->assertSee(__('product_docs.documents.technical.label', [], 'en'), false)
-        ->assertSee('Sign in with Microsoft', false);
+        ->assertSee('Sign in with Microsoft', false)
+        ->assertSee('Clock display (optional)', false)
+        ->assertSee('WPA3-Personal', false)
+        ->assertDontSee('Seeed', false)
+        ->assertDontSee('D1S', false);
+
+    $this->get(route('product.technical', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee('Klokscherm (optioneel)', false)
+        ->assertSee('pauze', false)
+        ->assertDontSee('Seeed', false);
 });
 
 it('toont de API & Webhooks fiche publiek per locale', function () {

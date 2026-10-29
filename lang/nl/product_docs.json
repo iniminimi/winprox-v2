@@ -372,11 +372,23 @@
     },
     "technical": {
         "label": "Technische fiche",
-        "tagline": "Facility-meldingen: QR → taken → afhandeling · SaaS voor operationele teams",
-        "intro": "Overzicht voor IT en security. WinProx is een multi-tenant webapp (Laravel + MySQL). Elke klantorganisatie heeft een eigen, afgeschermde omgeving.",
+        "tagline": "Digitale prikklok, uren en facility-meldingen · SaaS voor operationele teams",
+        "intro": "Overzicht voor IT en security. WinProx is een multi-tenant webapp (Laravel + MySQL). Elke klantorganisatie heeft een eigen, afgeschermde omgeving. Optioneel hoort er een vast klokscherm op locatie bij (Wi‑Fi, roterende QR, PIN-prik zonder gsm).",
         "footer_left": "WinProx · info@winprox.app · Productoverzicht, geen juridisch advies of SLA.",
         "footer_right": "Vragen? We lichten DPA, subverwerkers en integraties graag toe.",
         "left": [
+            {
+                "title": "Klokscherm (optioneel)",
+                "items": [
+                    "Optioneel vast touchscreen op de locatie, gekoppeld aan een Clock Point. Huur apart bij het abonnement; geen aankoop via WinProx vereist.",
+                    "Toont een **roterende QR-code** (circa elke 30 seconden). Alleen een verse scan telt als aanwezigheidsbewijs; een oude foto van het scherm werkt niet meer.",
+                    "Netwerk: **Wi‑Fi 2,4 GHz**, **WPA2** en **WPA3-Personal**. Verbinding met WinProx via **HTTPS** (EU).",
+                    "Koppelen met een eenmalige code in beheer; daarna periodieke heartbeat. Ontkoppelen of de geheime sleutel roteren trekt het toestel in.",
+                    "Aan-uren configureerbaar; daarbuiten uit of een rustscherm (foto’s, wijzerklok of flipklok). Tik op het scherm → QR → PIN-login.",
+                    "Zonder smartphone: voornaam + **4-cijferige PIN** voor inklokken, uitklokken en **pauze** (dezelfde gehashte PIN als in beheer). Lockout na foute pogingen; elke poging wordt geaudit.",
+                    "CE-gekeurd voor professioneel gebruik; voeding via USB-C (5 V)."
+                ]
+            },
             {
                 "title": "Hosting",
                 "items": [

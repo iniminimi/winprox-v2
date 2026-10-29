@@ -372,11 +372,23 @@
     },
     "technical": {
         "label": "Technisches Datenblatt",
-        "tagline": "Facility issues: QR → tasks → completion · SaaS for operational teams",
-        "intro": "Überblick für IT und Security. WinProx ist eine Multi-Tenant-Web-App (Laravel + MySQL). Jede Kundenorganisation hat eine eigene, isolierte Umgebung.",
+        "tagline": "Digitale Stempeluhr, Stunden und Facility-Meldungen · SaaS für operative Teams",
+        "intro": "Überblick für IT und Security. WinProx ist eine Multi-Tenant-Web-App (Laravel + MySQL). Jede Kundenorganisation hat eine eigene, abgeschirmte Umgebung. Optional gibt es ein festes Uhrdisplay vor Ort (Wi‑Fi, rotierender QR, PIN-Stempeln ohne Handy).",
         "footer_left": "WinProx · info@winprox.app · Product overview, not legal advice or an SLA.",
         "footer_right": "Questions? We are happy to walk through the DPA, subprocessors and integrations.",
         "left": [
+            {
+                "title": "Uhrdisplay (optional)",
+                "items": [
+                    "Optionales festes Touchscreen vor Ort, gekoppelt an einen Clock Point. Separat zum Abo gemietet; kein Kauf über WinProx erforderlich.",
+                    "Zeigt einen **rotierenden QR-Code** (etwa alle 30 Sekunden). Nur ein frischer Scan zählt als Anwesenheitsnachweis; ein altes Foto des Bildschirms funktioniert nicht mehr.",
+                    "Netzwerk: **2,4-GHz-Wi‑Fi**, **WPA2** und **WPA3-Personal**. Verbindung zu WinProx über **HTTPS** (EU).",
+                    "Kopplung mit einmaligem Code in der Verwaltung; danach periodischer Heartbeat. Entkoppeln oder Geheimschlüssel rotieren widerruft das Gerät.",
+                    "Einschaltzeiten konfigurierbar; außerhalb aus oder Ruhebildschirm (Fotos, Analoguhr oder Flip-Uhr). Tippen → QR → PIN-Login.",
+                    "Ohne Smartphone: Vorname + **4-stellige PIN** für Einstempeln, Ausstempeln und **Pause** (dieselbe gehashte PIN wie in der Verwaltung). Sperre nach Fehlversuchen; jeder Versuch wird auditiert.",
+                    "CE-gekennzeichnet für den professionellen Einsatz; Stromversorgung über USB-C (5 V)."
+                ]
+            },
             {
                 "title": "Hosting",
                 "items": [

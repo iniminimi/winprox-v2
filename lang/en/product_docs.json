@@ -372,11 +372,23 @@
     },
     "technical": {
         "label": "Technical fact sheet",
-        "tagline": "Facility issues: QR → tasks → completion · SaaS for operational teams",
-        "intro": "Overview for IT and security. WinProx is a multi-tenant web app (Laravel + MySQL). Each customer organisation has its own isolated environment.",
+        "tagline": "Digital punch clock, hours and facility issues · SaaS for operational teams",
+        "intro": "Overview for IT and security. WinProx is a multi-tenant web app (Laravel + MySQL). Each customer organisation has its own isolated environment. An optional fixed clock display on site is available (Wi‑Fi, rotating QR, PIN punch without a phone).",
         "footer_left": "WinProx · info@winprox.app · Product overview, not legal advice or an SLA.",
         "footer_right": "Questions? We are happy to walk through the DPA, subprocessors and integrations.",
         "left": [
+            {
+                "title": "Clock display (optional)",
+                "items": [
+                    "Optional fixed touchscreen on site, linked to a Clock Point. Rented separately with the subscription; no purchase through WinProx required.",
+                    "Shows a **rotating QR code** (about every 30 seconds). Only a fresh scan counts as presence proof; an old photo of the screen no longer works.",
+                    "Network: **2.4 GHz Wi‑Fi**, **WPA2** and **WPA3-Personal**. Connects to WinProx over **HTTPS** (EU).",
+                    "Pair with a one-time code in admin; then periodic heartbeat. Unlinking or rotating the secret revokes the device.",
+                    "On-hours are configurable; outside those hours it can be off or show an idle screen (photos, analogue clock or flip clock). Tap the screen → QR → PIN login.",
+                    "Without a smartphone: first name + **4-digit PIN** for clock-in, clock-out and **break** (same hashed PIN as in admin). Lockout after failed attempts; every attempt is audited.",
+                    "CE-marked for professional use; powered via USB-C (5 V)."
+                ]
+            },
             {
                 "title": "Hosting",
                 "items": [

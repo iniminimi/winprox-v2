@@ -5,7 +5,7 @@
 }
 
 .wp-product-doc-sheet {
-    max-width: 48rem;
+    max-width: 56rem;
     margin: 1.25rem auto 2rem;
     padding: 1.5rem 1.75rem 1.75rem;
     background: #fff;
@@ -100,24 +100,19 @@
     color: #6b7280;
 }
 
-.wp-product-doc-columns {
-    display: flex;
-    gap: 0.65rem;
-    align-items: flex-start;
-}
-
-.wp-product-doc-col {
-    flex: 1 1 0;
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
+/* Eén kolom over de volle breedte — geen smalle twee-koloms kaarten. */
+.wp-product-doc-columns,
 .wp-product-doc-full {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+}
+
+.wp-product-doc-full {
+    margin-top: 0.75rem;
+}
+
+.wp-product-doc-columns + .wp-product-doc-full {
     margin-top: 0.75rem;
 }
 
@@ -229,10 +224,6 @@
 }
 
 @media (max-width: 40rem) {
-    .wp-product-doc-columns {
-        flex-direction: column;
-    }
-
     .wp-product-doc-head {
         flex-direction: column;
         align-items: flex-start;

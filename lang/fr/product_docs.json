@@ -372,11 +372,23 @@
     },
     "technical": {
         "label": "Fiche technique",
-        "tagline": "Facility issues: QR → tasks → completion · SaaS for operational teams",
-        "intro": "Aperçu pour l’IT et la sécurité. WinProx est une appli web multi-tenant (Laravel + MySQL). Chaque organisation cliente a son environnement isolé.",
+        "tagline": "Pointeuse numérique, heures et signalements facility · SaaS pour les équipes opérationnelles",
+        "intro": "Vue d’ensemble pour l’IT et la sécurité. WinProx est une application web multi-tenant (Laravel + MySQL). Chaque organisation cliente a son propre environnement isolé. Un écran de pointeuse fixe optionnel peut être installé sur site (Wi‑Fi, QR rotatif, pointage PIN sans téléphone).",
         "footer_left": "WinProx · info@winprox.app · Product overview, not legal advice or an SLA.",
         "footer_right": "Questions? We are happy to walk through the DPA, subprocessors and integrations.",
         "left": [
+            {
+                "title": "Écran de pointeuse (optionnel)",
+                "items": [
+                    "Écran tactile fixe optionnel sur site, lié à un Clock Point. Location séparée avec l’abonnement ; aucun achat via WinProx n’est requis.",
+                    "Affiche un **QR code rotatif** (environ toutes les 30 secondes). Seul un scan frais compte comme preuve de présence ; une ancienne photo de l’écran ne fonctionne plus.",
+                    "Réseau : **Wi‑Fi 2,4 GHz**, **WPA2** et **WPA3-Personal**. Connexion à WinProx en **HTTPS** (UE).",
+                    "Appariement avec un code à usage unique dans l’administration ; puis heartbeat périodique. Dissocier ou faire tourner le secret révoque l’appareil.",
+                    "Horaires d’allumage configurables ; en dehors, éteint ou écran de veille (photos, horloge analogique ou flip clock). Toucher l’écran → QR → login PIN.",
+                    "Sans smartphone : prénom + **PIN à 4 chiffres** pour l’entrée, la sortie et la **pause** (même PIN haché que dans l’administration). Verrouillage après échecs ; chaque tentative est auditée.",
+                    "Marquage CE pour usage professionnel ; alimentation via USB-C (5 V)."
+                ]
+            },
             {
                 "title": "Hosting",
                 "items": [

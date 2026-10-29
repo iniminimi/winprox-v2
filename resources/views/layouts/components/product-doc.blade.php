@@ -71,24 +71,9 @@
             <p class="wp-product-doc-source">{{ $content['source'] }}</p>
         @endif
 
-        @if (! empty($content['left']) || ! empty($content['right']))
+        @if (! empty($content['left']) || ! empty($content['right']) || ! empty($content['full']))
             <div class="wp-product-doc-columns">
-                <div class="wp-product-doc-col">
-                    @foreach (($content['left'] ?? []) as $card)
-                        @include('product-docs.partials.card', ['card' => $card])
-                    @endforeach
-                </div>
-                <div class="wp-product-doc-col">
-                    @foreach (($content['right'] ?? []) as $card)
-                        @include('product-docs.partials.card', ['card' => $card])
-                    @endforeach
-                </div>
-            </div>
-        @endif
-
-        @if (! empty($content['full']) && is_array($content['full']))
-            <div class="wp-product-doc-full">
-                @foreach ($content['full'] as $card)
+                @foreach (array_merge($content['left'] ?? [], $content['right'] ?? [], $content['full'] ?? []) as $card)
                     @include('product-docs.partials.card', ['card' => $card])
                 @endforeach
             </div>

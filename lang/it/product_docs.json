@@ -372,11 +372,23 @@
     },
     "technical": {
         "label": "Scheda tecnica",
-        "tagline": "Facility issues: QR → tasks → completion · SaaS for operational teams",
-        "intro": "Panoramica per IT e security. WinProx è un’app web multi-tenant (Laravel + MySQL). Ogni organizzazione cliente ha un ambiente isolato.",
+        "tagline": "Timbratura digitale, ore e segnalazioni facility · SaaS per team operativi",
+        "intro": "Panoramica per IT e security. WinProx è un’app web multi-tenant (Laravel + MySQL). Ogni organizzazione cliente ha un ambiente isolato. È disponibile uno schermo timbratrice fisso opzionale in sede (Wi‑Fi, QR rotante, timbratura PIN senza telefono).",
         "footer_left": "WinProx · info@winprox.app · Product overview, not legal advice or an SLA.",
         "footer_right": "Questions? We are happy to walk through the DPA, subprocessors and integrations.",
         "left": [
+            {
+                "title": "Schermo timbratrice (opzionale)",
+                "items": [
+                    "Touchscreen fisso opzionale in sede, collegato a un Clock Point. Noleggio separato con l’abbonamento; non serve acquistarlo tramite WinProx.",
+                    "Mostra un **QR code rotante** (circa ogni 30 secondi). Solo una scansione fresca conta come prova di presenza; una foto vecchia dello schermo non funziona più.",
+                    "Rete: **Wi‑Fi 2,4 GHz**, **WPA2** e **WPA3-Personal**. Collegamento a WinProx via **HTTPS** (UE).",
+                    "Associazione con un codice monouso in amministrazione; poi heartbeat periodico. Scollegare o ruotare il secret revoca il dispositivo.",
+                    "Orari di accensione configurabili; fuori orario spento o schermata di riposo (foto, orologio analogico o flip). Toccare lo schermo → QR → login PIN.",
+                    "Senza smartphone: nome + **PIN a 4 cifre** per entrata, uscita e **pausa** (stesso PIN hashato dell’amministrazione). Blocco dopo tentativi falliti; ogni tentativo è registrato in audit.",
+                    "Marcatura CE per uso professionale; alimentazione via USB-C (5 V)."
+                ]
+            },
             {
                 "title": "Hosting",
                 "items": [

@@ -372,11 +372,23 @@
     },
     "technical": {
         "label": "Ficha técnica",
-        "tagline": "Facility issues: QR → tasks → completion · SaaS for operational teams",
-        "intro": "Resumen para TI y seguridad. WinProx es una app web multiinquilino (Laravel + MySQL). Cada organización cliente tiene su entorno aislado.",
+        "tagline": "Fichaje digital, horas e incidencias facility · SaaS para equipos operativos",
+        "intro": "Resumen para IT y seguridad. WinProx es una aplicación web multiinquilino (Laravel + MySQL). Cada organización cliente tiene su propio entorno aislado. Hay una pantalla de fichaje fija opcional en el sitio (Wi‑Fi, QR rotativo, fichaje con PIN sin móvil).",
         "footer_left": "WinProx · info@winprox.app · Product overview, not legal advice or an SLA.",
         "footer_right": "Questions? We are happy to walk through the DPA, subprocessors and integrations.",
         "left": [
+            {
+                "title": "Pantalla de fichaje (opcional)",
+                "items": [
+                    "Pantalla táctil fija opcional en el sitio, vinculada a un Clock Point. Se alquila aparte con la suscripción; no hace falta comprarla a través de WinProx.",
+                    "Muestra un **código QR rotativo** (aproximadamente cada 30 segundos). Solo un escaneo reciente cuenta como prueba de presencia; una foto antigua de la pantalla ya no sirve.",
+                    "Red: **Wi‑Fi 2,4 GHz**, **WPA2** y **WPA3-Personal**. Conexión a WinProx por **HTTPS** (UE).",
+                    "Emparejamiento con un código de un solo uso en administración; después, heartbeat periódico. Desvincular o rotar el secreto revoca el dispositivo.",
+                    "Horario de encendido configurable; fuera de ese horario, apagada o pantalla de reposo (fotos, reloj analógico o flip). Tocar la pantalla → QR → acceso con PIN.",
+                    "Sin smartphone: nombre + **PIN de 4 dígitos** para entrada, salida y **pausa** (el mismo PIN hasheado que en administración). Bloqueo tras intentos fallidos; cada intento se audita.",
+                    "Marcado CE para uso profesional; alimentación por USB-C (5 V)."
+                ]
+            },
             {
                 "title": "Hosting",
                 "items": [
