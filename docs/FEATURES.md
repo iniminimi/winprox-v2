@@ -1200,7 +1200,7 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
 
 ### 5g.7 Klokschermen (TFT met roterende QR)
 
-Fysiek scherm (ESP32-4848S040, 4" 480×480) aan een Clock Point dat zelf elke ~30 s een
+Fysiek scherm (Seeed SenseCAP Indicator D1, 3.95" 480×480) aan een Clock Point dat zelf elke ~30 s een
 **nieuwe QR** toont. De werknemer fotografeert/scant het scherm en landt op hetzelfde
 `/time/{token}`-portaal als de sticker — geen aparte flow. Een foto van het scherm is
 binnen ~30–90 s dood.

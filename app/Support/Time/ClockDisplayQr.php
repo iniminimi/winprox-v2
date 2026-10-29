@@ -5,7 +5,7 @@ namespace App\Support\Time;
 use App\Models\ClockPoint;
 
 /**
- * Dynamische QR-token voor klokschermen (ESP32-4848S040).
+ * Dynamische QR-token voor klokschermen (Seeed SenseCAP Indicator D1).
  *
  * Layout: {display_id:24}{dyn:16} — 40 tekens, even lang als de statische
  * QR en compacter op het scherm. `dyn` = eerste 16 hex (64 bit) van
