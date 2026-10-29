@@ -42,9 +42,7 @@ class ProductDocumentController extends Controller
                 'updatedAt' => $updatedAt,
                 'content' => $content,
             ])
-            // Korte cache: fiche-tekst wijzigt met releases; lange max-age
-            // toonde na deploy nog de oude twee-koloms HTML.
-            ->header('Cache-Control', 'public, max-age=60, must-revalidate');
+            ->withHeaders($this->productDocCacheHeaders());
     }
 
     public function markdown(Request $request, string $doc): Response
@@ -53,10 +51,25 @@ class ProductDocumentController extends Controller
 
         abort_unless(is_string($markdown) && $markdown !== '', 404);
 
-        return response($markdown, 200, [
-            'Content-Type' => 'text/markdown; charset=utf-8',
-            'Cache-Control' => 'public, max-age=60, must-revalidate',
-        ]);
+        return response($markdown, 200, array_merge(
+            $this->productDocCacheHeaders(),
+            ['Content-Type' => 'text/markdown; charset=utf-8'],
+        ));
+    }
+
+    /**
+     * Geen LiteSpeed full-page cache op fiches: na deploy bleef oude
+     * twee-koloms HTML zichtbaar (X-LiteSpeed-Cache: hit) ondanks git pull.
+     *
+     * @return array<string, string>
+     */
+    private function productDocCacheHeaders(): array
+    {
+        return [
+            'Cache-Control' => 'private, no-cache, no-store, must-revalidate',
+            'Pragma' => 'no-cache',
+            'X-LiteSpeed-Cache-Control' => 'no-cache',
+        ];
     }
 
     private function wantsMarkdown(Request $request): bool

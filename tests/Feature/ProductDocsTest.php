@@ -37,7 +37,8 @@ it('toont de technische fiche publiek per locale', function () {
         ->assertDontSee('wp-product-doc-columns', false)
         ->assertSee('wp-product-doc-full', false);
 
-    expect($nl->headers->get('Cache-Control'))->toContain('max-age=60');
+    expect($nl->headers->get('Cache-Control'))->toContain('no-store');
+    expect($nl->headers->get('X-LiteSpeed-Cache-Control'))->toBe('no-cache');
 });
 
 it('toont de API & Webhooks fiche publiek per locale', function () {

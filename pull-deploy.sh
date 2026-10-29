@@ -47,9 +47,20 @@ fi
 echo "==> Laravel"
 php artisan migrate --force
 php artisan schedule:clear-cache
+php artisan optimize:clear
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
+
+echo "==> LiteSpeed page-cache legen (anders blijft oude HTML zichtbaar)"
+# Plesk/Cloud86: gebruikerscache + purge-header naar localhost.
+rm -rf "${HOME}/lscache/"* 2>/dev/null || true
+rm -rf /tmp/lshttpd/*/cache 2>/dev/null || true
+if command -v curl >/dev/null; then
+    curl -sS -o /dev/null -H "X-LiteSpeed-Purge: *" "http://127.0.0.1/" 2>/dev/null || true
+    curl -sS -o /dev/null -H "X-LiteSpeed-Purge: *" "https://winprox.app/" 2>/dev/null || true
+    curl -sS -o /dev/null -H "X-LiteSpeed-Purge: *" "https://www.winprox.app/" 2>/dev/null || true
+fi
 
 if [[ -d .git ]]; then
     echo "==> Verwijder .git uit app-dir"

@@ -5,11 +5,12 @@
 
     RewriteEngine On
 
-    # Public fact sheets / legal / llms / robots: LiteSpeed cache (AI crawlers skip PHP 429).
-    # cache-vary:host zet de Host-header in de cache-sleutel, anders deelt .be de .app-pagina.
+    # Statische/publieke tekst voor crawlers: LiteSpeed cache (AI crawlers skip PHP 429).
+    # Geen /docs/: productfiches wijzigen met releases; max-age=3600 hield oude HTML vast
+    # (X-LiteSpeed-Cache: hit) tot een uur na deploy. cache-vary:host = .be ≠ .app.
     <IfModule LiteSpeed>
         RewriteCond %{REQUEST_URI} ^/(llms\.txt|llms-full\.txt|sitemap\.xml|robots\.txt)$ [NC,OR]
-        RewriteCond %{REQUEST_URI} ^/[a-z]{2}/(docs|legal)/ [NC]
+        RewriteCond %{REQUEST_URI} ^/[a-z]{2}/legal/ [NC]
         RewriteRule .* - [E=cache-control:max-age=3600,E=cache-vary:host]
     </IfModule>
 
