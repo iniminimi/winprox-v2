@@ -42,7 +42,9 @@ class ProductDocumentController extends Controller
                 'updatedAt' => $updatedAt,
                 'content' => $content,
             ])
-            ->header('Cache-Control', 'public, max-age=3600');
+            // Korte cache: fiche-tekst wijzigt met releases; lange max-age
+            // toonde na deploy nog de oude twee-koloms HTML.
+            ->header('Cache-Control', 'public, max-age=60, must-revalidate');
     }
 
     public function markdown(Request $request, string $doc): Response
@@ -53,7 +55,7 @@ class ProductDocumentController extends Controller
 
         return response($markdown, 200, [
             'Content-Type' => 'text/markdown; charset=utf-8',
-            'Cache-Control' => 'public, max-age=3600',
+            'Cache-Control' => 'public, max-age=60, must-revalidate',
         ]);
     }
 

@@ -18,20 +18,26 @@ it('toont de features-overzicht pagina publiek per locale', function () {
 });
 
 it('toont de technische fiche publiek per locale', function () {
-    $this->get(route('product.technical', ['locale' => 'en']))
-        ->assertOk()
+    $en = $this->get(route('product.technical', ['locale' => 'en']));
+    $en->assertOk()
         ->assertSee(__('product_docs.documents.technical.label', [], 'en'), false)
         ->assertSee('Sign in with Microsoft', false)
         ->assertSee('Clock display (optional)', false)
         ->assertSee('WPA3-Personal', false)
         ->assertDontSee('Seeed', false)
-        ->assertDontSee('D1S', false);
+        ->assertDontSee('D1S', false)
+        ->assertDontSee('wp-product-doc-columns', false)
+        ->assertSee('wp-product-doc-full', false);
 
-    $this->get(route('product.technical', ['locale' => 'nl']))
-        ->assertOk()
+    $nl = $this->get(route('product.technical', ['locale' => 'nl']));
+    $nl->assertOk()
         ->assertSee('Klokscherm (optioneel)', false)
         ->assertSee('pauze', false)
-        ->assertDontSee('Seeed', false);
+        ->assertDontSee('Seeed', false)
+        ->assertDontSee('wp-product-doc-columns', false)
+        ->assertSee('wp-product-doc-full', false);
+
+    expect($nl->headers->get('Cache-Control'))->toContain('max-age=60');
 });
 
 it('toont de API & Webhooks fiche publiek per locale', function () {
