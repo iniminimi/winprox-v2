@@ -376,7 +376,9 @@
         "intro": "Overview for IT and security. WinProx is a multi-tenant web app (Laravel + MySQL). Each customer organisation has its own isolated environment. An optional fixed clock display on site is available (Wi‑Fi, rotating QR, PIN punch without a phone).",
         "footer_left": "WinProx · info@winprox.app · Product overview, not legal advice or an SLA.",
         "footer_right": "Questions? We are happy to walk through the DPA, subprocessors and integrations.",
-        "left": [
+        "left": [],
+        "right": [],
+        "full": [
             {
                 "title": "Clock display (optional)",
                 "items": [
@@ -436,9 +438,7 @@
                     "Available on **Corporate** (trial on request).",
                     "IoT ingest separately via gateway token (Corporate)."
                 ]
-            }
-        ],
-        "right": [
+            },
             {
                 "title": "GDPR",
                 "items": [
@@ -506,9 +506,7 @@
                     "€5 per active worker per month (per-seat via Stripe).",
                     "Trial plan checkmate_trial: 25 seats, 30 days; afterwards €5 per active seat per month (billing_seats_qty)."
                 ]
-            }
-        ],
-        "full": [
+            },
             {
                 "title": "Spam & abuse (limits)",
                 "items": [

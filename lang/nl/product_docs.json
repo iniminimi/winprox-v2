@@ -376,7 +376,9 @@
         "intro": "Overzicht voor IT en security. WinProx is een multi-tenant webapp (Laravel + MySQL). Elke klantorganisatie heeft een eigen, afgeschermde omgeving. Optioneel hoort er een vast klokscherm op locatie bij (Wi‑Fi, roterende QR, PIN-prik zonder gsm).",
         "footer_left": "WinProx · info@winprox.app · Productoverzicht, geen juridisch advies of SLA.",
         "footer_right": "Vragen? We lichten DPA, subverwerkers en integraties graag toe.",
-        "left": [
+        "left": [],
+        "right": [],
+        "full": [
             {
                 "title": "Klokscherm (optioneel)",
                 "items": [
@@ -436,9 +438,7 @@
                     "Beschikbaar op **Corporate** (proef op verzoek).",
                     "IoT-ingest apart via gateway-token (Corporate)."
                 ]
-            }
-        ],
-        "right": [
+            },
             {
                 "title": "GDPR / AVG",
                 "items": [
@@ -506,9 +506,7 @@
                     "€5 per actieve uitvoerder per maand (per-seat via Stripe).",
                     "Proefplan checkmate_trial: 25 seats, 30 dagen; daarna €5 per actieve seat per maand (billing_seats_qty)."
                 ]
-            }
-        ],
-        "full": [
+            },
             {
                 "title": "Spam & misbruik (limieten)",
                 "items": [

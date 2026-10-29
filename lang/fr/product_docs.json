@@ -376,7 +376,9 @@
         "intro": "Vue d’ensemble pour l’IT et la sécurité. WinProx est une application web multi-tenant (Laravel + MySQL). Chaque organisation cliente a son propre environnement isolé. Un écran de pointeuse fixe optionnel peut être installé sur site (Wi‑Fi, QR rotatif, pointage PIN sans téléphone).",
         "footer_left": "WinProx · info@winprox.app · Product overview, not legal advice or an SLA.",
         "footer_right": "Questions? We are happy to walk through the DPA, subprocessors and integrations.",
-        "left": [
+        "left": [],
+        "right": [],
+        "full": [
             {
                 "title": "Écran de pointeuse (optionnel)",
                 "items": [
@@ -436,9 +438,7 @@
                     "Available on **Corporate** (trial on request).",
                     "Ingest IoT à part via jeton de passerelle (Corporate)."
                 ]
-            }
-        ],
-        "right": [
+            },
             {
                 "title": "GDPR",
                 "items": [
@@ -506,9 +506,7 @@
                     "5 € par exécutant actif et par mois (par siège via Stripe).",
                     "Plan d'essai checkmate_trial : 25 sièges, 30 jours ; ensuite 5 € par siège actif par mois (billing_seats_qty)."
                 ]
-            }
-        ],
-        "full": [
+            },
             {
                 "title": "Spam & abuse (limits)",
                 "items": [

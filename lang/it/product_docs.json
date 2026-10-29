@@ -376,7 +376,9 @@
         "intro": "Panoramica per IT e security. WinProx è un’app web multi-tenant (Laravel + MySQL). Ogni organizzazione cliente ha un ambiente isolato. È disponibile uno schermo timbratrice fisso opzionale in sede (Wi‑Fi, QR rotante, timbratura PIN senza telefono).",
         "footer_left": "WinProx · info@winprox.app · Product overview, not legal advice or an SLA.",
         "footer_right": "Questions? We are happy to walk through the DPA, subprocessors and integrations.",
-        "left": [
+        "left": [],
+        "right": [],
+        "full": [
             {
                 "title": "Schermo timbratrice (opzionale)",
                 "items": [
@@ -436,9 +438,7 @@
                     "Available on **Corporate** (trial on request).",
                     "Ingest IoT a parte tramite token gateway (Corporate)."
                 ]
-            }
-        ],
-        "right": [
+            },
             {
                 "title": "GDPR",
                 "items": [
@@ -506,9 +506,7 @@
                     "5 € per esecutore attivo al mese (per posto via Stripe).",
                     "Piano prova checkmate_trial: 25 posti, 30 giorni; poi 5 € per posto attivo al mese (billing_seats_qty)."
                 ]
-            }
-        ],
-        "full": [
+            },
             {
                 "title": "Spam & abuse (limits)",
                 "items": [
