@@ -1084,7 +1084,7 @@
                 },
                 {
                     "label": "Écran de pointage",
-                    "text": "Si un écran de pointage est installé, son QR se rafraîchit en continu — le scanner avec votre téléphone compte comme nouveau scan. Pas de téléphone sous la main ? Touchez votre nom sur l'écran et pointez avec votre code PIN ; deux mauvaises tentatives bloquent cela un instant. Sans code PIN, pointez via un scan sur votre téléphone."
+                    "text": "Si un écran de pointage est installé, son QR se rafraîchit en continu — le scanner avec votre téléphone compte comme nouveau scan. Pas de téléphone sous la main ? Touchez votre nom sur l'écran ; en service ouvert choisissez pause ou sortie, puis votre code PIN. Deux mauvaises tentatives bloquent cela un instant. Sans code PIN, pointez via un scan sur votre téléphone."
                 },
                 {
                     "label": "Où dois-je aller aujourd'hui",
@@ -1468,7 +1468,7 @@
                 },
                 {
                     "label": "Connexion par code PIN",
-                    "text": "Pas de téléphone sous la main ? Touchez l'écran, choisissez votre prénom via les lettres et tapez votre PIN à 4 chiffres — pointage immédiat. Qui n'a pas encore de PIN le choisit sur place (deux fois). Après deux erreurs, cet exécutant est bloqué une minute. L'admin réinitialise le PIN via Personnes → Équipes → Modifier."
+                    "text": "Pas de téléphone sous la main ? Touchez l'écran, choisissez votre prénom via les lettres ; en service ouvert choisissez pause ou sortie, puis votre PIN à 4 chiffres. Qui n'a pas encore de PIN le choisit sur place (deux fois). Après deux erreurs, cet exécutant est bloqué une minute. L'admin réinitialise le PIN via Personnes → Équipes → Modifier."
                 },
                 {
                     "label": "Code d'association",

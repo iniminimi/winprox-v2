@@ -94,13 +94,15 @@ it('lijst enkel actieve workers op de locatie van het Clock Point, met has_pin',
         ->toContain($noPin->id)
         ->toContain($everywhere->id)
         ->toHaveCount(4)
-        ->and($response[0])->toHaveKeys(['id', 'first_name', 'last_name', 'has_pin', 'photo_url'])
+        ->and($response[0])->toHaveKeys(['id', 'first_name', 'last_name', 'has_pin', 'photo_url', 'presence', 'can_break'])
         ->and($response[0])->not->toHaveKey('clock_pin_hash')
         ->not->toHaveKey('photo_path');
     expect(collect($response)->firstWhere('id', $noPin->id)['has_pin'])->toBeFalse();
     expect(collect($response)->firstWhere('id', $inge->id)['has_pin'])->toBeTrue();
     expect(collect($response)->firstWhere('id', $inge->id)['photo_url'])->toContain('inge.jpg');
     expect(collect($response)->firstWhere('id', $noPin->id)['photo_url'])->toBeNull();
+    expect(collect($response)->firstWhere('id', $inge->id)['presence'])->toBe('out');
+    expect(collect($response)->firstWhere('id', $inge->id)['can_break'])->toBeFalse();
 });
 
 it('klokt in en uit met een correcte PIN en auditeert de prik', function () {
@@ -282,4 +284,64 @@ it('valideert het PIN-formaat', function () {
         'worker_id' => $worker->id,
         'pin' => 'abcd',
     ], ['X-WinProx-Clock-Key' => $token])->assertUnprocessable();
+});
+
+it('start en stopt een pauze via pin-clock action en toont presence op workers', function () {
+    $tenant = pinTenant();
+    Tenancy::actAs($tenant->id);
+    [$point, $token] = pairedPinPoint($tenant);
+    $worker = pinWorker($tenant);
+    Tenancy::forget();
+
+    $headers = ['X-WinProx-Clock-Key' => $token];
+
+    $this->postJson('/api/v1/time/clock-displays/pin-clock', [
+        'worker_id' => $worker->id,
+        'pin' => '1234',
+        'action' => 'in',
+    ], $headers)->assertOk()->assertJsonPath('result', 'in');
+
+    $listed = $this->getJson('/api/v1/time/clock-displays/workers', $headers)
+        ->assertOk()
+        ->json('workers');
+    $row = collect($listed)->firstWhere('id', $worker->id);
+    expect($row['presence'])->toBe('in')->and($row['can_break'])->toBeTrue();
+
+    $this->postJson('/api/v1/time/clock-displays/pin-clock', [
+        'worker_id' => $worker->id,
+        'pin' => '1234',
+        'action' => 'break_start',
+    ], $headers)->assertOk()->assertJsonPath('result', 'break_start');
+
+    $listed = $this->getJson('/api/v1/time/clock-displays/workers', $headers)->json('workers');
+    $row = collect($listed)->firstWhere('id', $worker->id);
+    expect($row['presence'])->toBe('break')->and($row['can_break'])->toBeFalse();
+
+    $this->postJson('/api/v1/time/clock-displays/pin-clock', [
+        'worker_id' => $worker->id,
+        'pin' => '1234',
+        'action' => 'break_end',
+    ], $headers)->assertOk()->assertJsonPath('result', 'break_end');
+
+    // Eén pauze per dienst: tweede start weigeren.
+    $this->postJson('/api/v1/time/clock-displays/pin-clock', [
+        'worker_id' => $worker->id,
+        'pin' => '1234',
+        'action' => 'break_start',
+    ], $headers)->assertStatus(409)->assertJsonPath('error', 'break_already_taken');
+
+    $listed = $this->getJson('/api/v1/time/clock-displays/workers', $headers)->json('workers');
+    $row = collect($listed)->firstWhere('id', $worker->id);
+    expect($row['presence'])->toBe('in')->and($row['can_break'])->toBeFalse();
+
+    $this->postJson('/api/v1/time/clock-displays/pin-clock', [
+        'worker_id' => $worker->id,
+        'pin' => '1234',
+        'action' => 'out',
+    ], $headers)->assertOk()->assertJsonPath('result', 'out');
+
+    expect(AuditLog::where('action', 'worker.clock_display_punched')
+        ->where('payload->direction', 'break_start')->exists())->toBeTrue();
+    expect(AuditLog::where('action', 'worker.clock_display_punched')
+        ->where('payload->direction', 'break_end')->exists())->toBeTrue();
 });

@@ -1076,7 +1076,7 @@
                 },
                 {
                     "label": "Uhrenbildschirm",
-                    "text": "Hängt ein Uhrenbildschirm an der Stechuhr, erneuert sich der QR darauf laufend — mit dem Handy scannen zählt als frischer Scan. Kein Handy dabei? Tippen Sie auf dem Bildschirm Ihren Namen und stempeln Sie mit Ihrem PIN ein oder aus; zwei Fehlversuche sperren das kurz. Ohne PIN stempeln Sie über einen Scan auf dem Handy."
+                    "text": "Hängt ein Uhrenbildschirm an der Stechuhr, erneuert sich der QR darauf laufend — mit dem Handy scannen zählt als frischer Scan. Kein Handy dabei? Tippen Sie auf dem Bildschirm Ihren Namen; bei offener Schicht Pause oder Ausstempeln wählen, dann PIN. Zwei Fehlversuche sperren das kurz. Ohne PIN stempeln Sie über einen Scan auf dem Handy."
                 },
                 {
                     "label": "Wohin muss ich heute",
@@ -1460,7 +1460,7 @@
                 },
                 {
                     "label": "Anmeldung per PIN",
-                    "text": "Kein Handy zur Hand? Tippen Sie auf das Display, wählen Sie Ihren Vornamen über die Buchstaben und geben Sie Ihre 4-stellige PIN ein — sofort ein- oder ausgestempelt. Wer noch keine PIN hat, wählt sie vor Ort (zweimal). Nach zwei Fehlversuchen ist dieser Ausführende eine Minute gesperrt. Der Admin setzt die PIN über Personen → Teams → Bearbeiten zurück."
+                    "text": "Kein Handy zur Hand? Tippen Sie auf das Display, wählen Sie Ihren Vornamen über die Buchstaben; bei offener Schicht Pause oder Ausstempeln, dann Ihre 4-stellige PIN. Wer noch keine PIN hat, wählt sie vor Ort (zweimal). Nach zwei Fehlversuchen ist dieser Ausführende eine Minute gesperrt. Der Admin setzt die PIN über Personen → Teams → Bearbeiten zurück."
                 },
                 {
                     "label": "Kopplungscode",

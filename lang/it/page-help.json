@@ -1076,7 +1076,7 @@
                 },
                 {
                     "label": "Schermo orologio",
-                    "text": "Se alla timbratrice c'è uno schermo orologio, il QR su quello schermo si rinnova di continuo — scansionarlo col telefono vale come nuova scansione. Senza telefono a portata? Tocca il tuo nome sullo schermo e timbra con il tuo PIN; due tentativi sbagliati lo bloccano per poco. Senza PIN timbri tramite una scansione sul telefono."
+                    "text": "Se alla timbratrice c'è uno schermo orologio, il QR su quello schermo si rinnova di continuo — scansionarlo col telefono vale come nuova scansione. Senza telefono a portata? Tocca il tuo nome sullo schermo; con turno aperto scegli pausa o uscita, poi il PIN. Due tentativi sbagliati lo bloccano per poco. Senza PIN timbri tramite una scansione sul telefono."
                 },
                 {
                     "label": "Dove devo andare oggi",
@@ -1460,7 +1460,7 @@
                 },
                 {
                     "label": "Accesso con PIN",
-                    "text": "Niente telefono a portata di mano? Tocca lo schermo, scegli il tuo nome con le lettere e digita il PIN a 4 cifre — timbratura immediata. Chi non ha ancora un PIN lo sceglie sul posto (due volte). Dopo due errori quell'esecutore resta bloccato un minuto. L'admin reimposta il PIN da Persone → Team → Modifica."
+                    "text": "Niente telefono a portata di mano? Tocca lo schermo, scegli il tuo nome con le lettere; con turno aperto scegli pausa o uscita, poi digita il PIN a 4 cifre. Chi non ha ancora un PIN lo sceglie sul posto (due volte). Dopo due errori quell'esecutore resta bloccato un minuto. L'admin reimposta il PIN da Persone → Team → Modifica."
                 },
                 {
                     "label": "Codice di collegamento",
