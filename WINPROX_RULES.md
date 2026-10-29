@@ -386,9 +386,13 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 ## 10. Git
 
 ### Werkwijze (hard)
-- We werken **lokaal** (Windows); productie staat op de **server** (Linux).
-- Een taak is pas af wanneer het **lokaal werkt** én de wijziging **gecommit en gepusht** is naar `origin` (server deployt vanuit git).
-- Niet afsluiten met klaar, uncommitted werk.
+- We werken **lokaal** (Windows); productie staat op de **server** (Linux, winprox.app).
+- Werk op **`main`**, tenzij de gebruiker expliciet een andere branch vraagt.
+- Een taak is pas af wanneer het **lokaal werkt**, de wijziging **gecommit + gepusht** is
+  naar `origin/main`, **én** `./pull-deploy.sh` op de server is gedraaid. Push alleen ≠ live.
+- Deploy: `ssh … winprox@winprox.app "cd …/httpdocs/winprox && ./pull-deploy.sh"`
+  (SSH-gegevens: `TRANSLATION_SYNC_SSH_*` / `TRANSLATION_SYNC_REMOTE_PATH` in `.env`).
+- Daarna de geraakte URL live controleren. Niet afsluiten met klaar, uncommitted werk.
 
 ### Vóór commit
 - `php artisan test` (relevante tests)
@@ -398,8 +402,10 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 - Raakt het `lang/**`: alle talen in pariteit + `fix:locales`/`check:locales`/`check:locales:parity` vóór commit.
 - Geen test-artefacten committen (`tests/Avery_*.zip`, `_extract/`, `.env`, logs).
 
-### Push
-- Na commit: **`git push`** naar `origin`, tenzij de gebruiker expliciet vraagt om niet te pushen.
+### Push + deploy
+- Na commit: **`git push origin main`**, tenzij de gebruiker expliciet vraagt om niet te pushen.
+- Direct daarna **server-deploy** (`./pull-deploy.sh` via SSH). Zonder die stap blijft
+  productie op de oude code (ook bij productfiches / locales / config).
 
 ---
 
