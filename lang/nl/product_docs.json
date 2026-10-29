@@ -12,7 +12,7 @@
         },
         "technical": {
             "label": "Technische fiche",
-            "meta_description": "Technische fiche van WinProx: architectuur, beveiliging, hosting en integraties."
+            "meta_description": "Technische fiche van WinProx: hosting, privacy, beveiliging en integraties."
         },
         "api_webhooks": {
             "label": "API & Webhooks",
@@ -372,170 +372,131 @@
     },
     "technical": {
         "label": "Technische fiche",
-        "tagline": "Digitale prikklok, uren en facility-meldingen · SaaS voor operationele teams",
-        "intro": "Overzicht voor IT en security. WinProx is een multi-tenant webapp (Laravel + MySQL). Elke klantorganisatie heeft een eigen, afgeschermde omgeving. Optioneel hoort er een vast klokscherm op locatie bij (Wi‑Fi, roterende QR, PIN-prik zonder gsm).",
+        "tagline": "Hosting, privacy, beschikbaarheid en beveiliging voor IT.",
+        "intro": "Overzicht voor IT en security. Elke klantorganisatie heeft een eigen, afgeschermde omgeving. WinProx werkt in de browser. Optioneel staat er een vast klokscherm op locatie.",
         "footer_left": "WinProx · info@winprox.app · Productoverzicht, geen juridisch advies of SLA.",
         "footer_right": "Vragen? We lichten DPA, subverwerkers en integraties graag toe.",
         "left": [],
         "right": [],
         "full": [
             {
-                "title": "Klokscherm (optioneel)",
-                "items": [
-                    "Optioneel vast touchscreen op de locatie, gekoppeld aan een Clock Point. Huur apart bij het abonnement; geen aankoop via WinProx vereist.",
-                    "Toont een **roterende QR-code** (circa elke 30 seconden). Alleen een verse scan telt als aanwezigheidsbewijs; een oude foto van het scherm werkt niet meer.",
-                    "Netwerk: **Wi‑Fi 2,4 GHz**, **WPA2** en **WPA3-Personal**. Verbinding met WinProx via **HTTPS** (EU).",
-                    "Koppelen met een eenmalige code in beheer; daarna periodieke heartbeat. Ontkoppelen of de geheime sleutel roteren trekt het toestel in.",
-                    "Aan-uren configureerbaar; daarbuiten uit of een rustscherm (foto’s, wijzerklok of flipklok). Tik op het scherm → QR → PIN-login.",
-                    "Zonder smartphone: voornaam + **4-cijferige PIN** voor inklokken, uitklokken en **pauze** (dezelfde gehashte PIN als in beheer). Lockout na foute pogingen; elke poging wordt geaudit.",
-                    "CE-gekeurd voor professioneel gebruik; voeding via USB-C (5 V)."
-                ]
-            },
-            {
                 "title": "Hosting",
                 "items": [
-                    "Productie op **Linux** (EU), bij **Cloud86**.",
-                    "Toegang via **HTTPS** (versleutelde verbinding, TLS).",
-                    "Stack: PHP 8.2+, Laravel 12, Livewire, MySQL, Vite-frontend.",
-                    "E-mail via SMTP in de EU; betaling maandelijks via Stripe Checkout. Organisaties kiezen zelf een formule (5/10/25/50); Corporate op aanvraag via WinProx.",
-                    "Prijzen: **59€** (5 licenties + 50 units), **99€** (10 + 100), **199€** (25 + 250), **349€** (50 + 500) per maand via Stripe. Corporate op maat."
+                    "Productie in de **EU**, bij **Cloud86**, op Linux.",
+                    "Toegang via **HTTPS** (versleutelde verbinding).",
+                    "E-mail via servers in de EU. Betaling maandelijks via Stripe.",
+                    "Prijzen: **59€** (5 licenties + 50 units), **99€** (10 + 100), **199€** (25 + 250), **349€** (50 + 500) per maand. Corporate op aanvraag."
                 ]
             },
             {
-                "title": "Backups",
+                "title": "Back-ups",
                 "items": [
-                    "Automatische **dagelijkse** backups via Cloud86 (bestanden + database), bewaard **7 dagen**.",
-                    "**RPO ≈ 24 uur**: in het slechtste geval verlies je data sinds de laatste nachtelijke backup (Recovery Point Objective = max. aanvaardbaar dataverlies).",
-                    "**RTO: best effort, doorgaans binnen 1 werkdag** (Recovery Time Objective = tijd tot de dienst weer beschikbaar is na herstel).",
-                    "Bij volledige organisatieverwijdering: aparte technische SQL-snapshot **zonder media**, max. **30 dagen** (niet hetzelfde als disaster-recovery-backup)."
+                    "Automatische **dagelijkse** back-ups van bestanden en database, bewaard **7 dagen**.",
+                    "In het slechtste geval gegevens sinds de laatste nachtelijke back-up (ongeveer 24 uur).",
+                    "Herstel is best effort, doorgaans binnen één werkdag.",
+                    "Een formele herstelafspraak kan contractueel."
                 ]
             },
             {
-                "title": "Database",
+                "title": "Scheiding van klantgegevens",
                 "items": [
-                    "**MySQL**, relationeel model per tenant.",
-                    "Strikte **tenant-isolatie**: elke query/API-call blijft binnen de eigen organisatie.",
-                    "Geen gedeelde zichtbaarheid tussen klanten.",
-                    "**Locatiescope:** pivot-tabellen location_user en location_worker; teams.clocks_all_locations voor invallers; workers.user_id koppelt collega aan uitvoerderprofiel."
+                    "Elke organisatie ziet alleen haar eigen gegevens.",
+                    "Een gebruiker of API-sleutel van de ene klant kan geen gegevens van een andere klant lezen of wijzigen.",
+                    "Medewerkers kunnen beperkt worden tot de locaties die hen zijn toegewezen."
                 ]
             },
             {
-                "title": "Rechten",
+                "title": "Rollen en toegang",
                 "items": [
-                    "**Beheerder**: alles (users, bedrijf, abonnement, teams).",
-                    "**Medewerker**: operationeel (meldingen, taken, locaties) — geen account-/billingbeheer; optioneel beperkt tot toegewezen locaties.",
-                    "**Uitvoerder / teamleader**: taken via veldportaal; teamleader kan iconen en gekoppelde gsm vrijgeven, uitvoerders beheren en foto's nemen.",
-                    "Elke actie wordt gecontroleerd: je mag alleen wat bij je rol past (**minimale rechten**). API-sleutels krijgen aparte toestemmingen — bijvoorbeeld “meldingen lezen” zonder toegang tot alles.",
-                    "Operationele rapporten: gefilterde CSV of afdruk op meldingen, taken, Time, reserveringen, unit checks, unitmetingen en ESG — voor wie die lijsten mag zien. Afdruk volgt waar mogelijk de lijstlayout; Time = urenstaat. Los van de AVG-account-export (Instellingen → Privacy & export).",
-                    "Werkmenu: tenant-kolommen work_menu_*_enabled; sidebar en backoffice-routes via TenantWorkMenuAccess; starttemplate zet defaults via UpdateTenantWorkMenuAction (verwijderen template zet menu niet terug); meldingen & taken is de hoofdschakelaar (getter-cascade)."
+                    "**Beheerder**: organisatie, gebruikers, abonnement en teams.",
+                    "**Medewerker**: dagelijks werk (meldingen, taken, locaties), zonder account- of facturatiebeheer.",
+                    "**Uitvoerder**: taken via het veldportaal, zonder e-mailaccount. Een teamleader kan uitvoerders en gekoppelde telefoons beheren.",
+                    "API-sleutels krijgen aparte rechten, bijvoorbeeld alleen meldingen lezen.",
+                    "Rapporten (CSV of afdruk) volgen dezelfde rechten als de lijsten in de app."
                 ]
             },
             {
-                "title": "API",
+                "title": "Aanmelden",
                 "items": [
-                    "**REST API v1** (vaste URL’s + HTTP-methodes) met antwoorden in **JSON** (standaard gegevensformaat). Documentatie in-app + docs.",
-                    "O.a. meldingen, taken, locaties, units (incl. externe ID), teams, workers, unit check (ook inbound via externe unit-ID), unitmetingen, ESG, vertalingen.",
-                    "Beschikbaar op **Corporate** (proef op verzoek).",
-                    "IoT-ingest apart via gateway-token (Corporate)."
+                    "Beheer: e-mail en wachtwoord. Wachtwoorden worden gehasht bewaard. Herhaalde mislukte pogingen worden tijdelijk geblokkeerd.",
+                    "Zelfregistratie werkt pas na de link in de bevestigingsmail. Niet-bevestigde aanmeldingen worden na 7 dagen verwijderd.",
+                    "**Inloggen met Microsoft** (desktop): alleen een bestaand account waarvan het e-mailadres overeenkomt. Geen automatische nieuwe accounts. E-mail en wachtwoord blijven werken.",
+                    "Andere software gebruikt een intrekbaar toegangstoken met gekozen rechten, niet de gewone login.",
+                    "Uitvoerders melden zich aan via Clock Point (naam en persoonlijk icoon, of een PIN of biometrie). Geen e-mailaccount.",
+                    "Melders gebruiken het publieke QR-portaal zonder account. Bij optionele e-mailbevestiging ontstaat de melding pas na de link."
                 ]
             },
             {
-                "title": "GDPR / AVG",
+                "title": "Beveiliging",
+                "items": [
+                    "HTTPS, gehashte wachtwoorden en een intrekbaar API-token.",
+                    "Bescherming tegen acties vanaf een andere website terwijl iemand is ingelogd.",
+                    "Scheiding tussen organisaties, plus een log van belangrijke acties.",
+                    "Uitgaande webhooks zijn ondertekend, zodat de ontvanger kan nagaan dat het bericht van WinProx komt.",
+                    "De API, het publieke meldformulier en de beheerlogin begrenzen herhaalde verzoeken.",
+                    "QR-meldingen op het publieke portaal blijven onzichtbaar tot een beheerder ze goedkeurt.",
+                    "Supporttoegang is uitzonderlijk en standaard alleen-lezen.",
+                    "Een telefoon wordt aan één uitvoerder gekoppeld. Beheer of een teamleader kan die koppeling vrijgeven. Herhaalde foute aanmelding wordt geblokkeerd tot vrijgave.",
+                    "Optionele PIN of biometrie. Optionele GPS-controle bij inklokken."
+                ]
+            },
+            {
+                "title": "Privacy (AVG)",
                 "items": [
                     "**Klant = verwerkingsverantwoordelijke**; WinProx = **verwerker**.",
-                    "Kader: EU-AVG + Belgische wet (30 juli 2018).",
-                    "Verwerkersovereenkomst (DPA) en subverwerkerslijst beschikbaar.",
-                    "Data-export (account), self-service organisatieverwijdering, bewaartermijnen vastgelegd.",
-                    "Gegevens blijven in de **EU** (hosting/e-mail). Stripe EU/US indien betalend. Bij **Inloggen met Microsoft** gaat de gebruiker naar Microsoft Entra ID (Microsoft, EU/US); WinProx ontvangt e-mail (en eventueel naam) om het bestaande account te herkennen.",
-                    "Optionele e-mailbevestiging bij QR-meldingen: tijdelijke conceptopslag tot de link; onbevestigd automatisch verwijderd (standaard 60 minuten, inclusief foto’s). De bevestigingsmail gaat alleen naar een geldig adres dat niet eerder als onbezorgbaar (bounce) is gemarkeerd. Uitschrijven van marketingmails blokkeert deze bevestiging niet. Geen gebruikersaccount.",
-                    "Optionele **CIAO**-doorgifte (RSZ Check In and Out): bij inschakeling bewaart WinProx NISS (encrypted) en stuurt aanwezigheidsregistraties naar de **Belgische RSZ** (overheid / wettelijke verplichting van de klant). RSZ is geen WinProx-subverwerker voor marketing; doorgifte is functioneel voor compliance. WinProx gebruikt de eigen Chaman-credentials; de klant vult alleen het KBO-nummer (ondernemingsnummer) in. Een toegepaste teampauze op de urenstaat is geen extra RSZ IN/OUT. Met GPS-werkbezoeken: clock in/out gaan niet naar de RSZ; visit start = IN, visit end = OUT. Pauzes tijdens een bezoek blijven OUT/IN. Geslaagde inzendingen ouder dan 12 maanden (configureerbaar) worden automatisch verwijderd; Time → CIAO biedt CSV/print-export (zonder NISS).",
-                    "Gepland uurrooster (optioneel): diensten en afwezigheden (verlof, recup, ziek) die de klant invoert; Clock Point toont alleen het eigen gepubliceerde rooster. Ziektecodes zijn een keuze van de klant; WinProx bewaart ze als verwerker. Instellingen, kaart Uurrooster, kan die planning uitzetten; de prikklok en de QR-aanmelding blijven, bestaande diensten blijven bewaard.",
-                    "Herstelpunten van het uurrooster bewaren de vorige diensten van een roosterwijziging (uitvoerder, dag, tijden, notitie). Alleen wie het rooster mag bewerken ziet ze. Ze worden na 30 dagen automatisch verwijderd. Een bevestiging geldt alleen voor het getoonde verschil; is het rooster intussen gewijzigd, dan wordt niets hersteld."
+                    "Kader: EU-AVG en de Belgische wet. Verwerkersovereenkomst en subverwerkerslijst zijn beschikbaar.",
+                    "Gegevens blijven in de **EU** (hosting en e-mail). Bij betaling kan Stripe ook in de EU of de VS verwerken. Bij Inloggen met Microsoft gaat de gebruiker naar Microsoft; WinProx ontvangt het e-mailadres (en eventueel de naam) om een bestaand account te herkennen.",
+                    "Export van het account en self-service verwijdering van de organisatie. Bewaartermijnen liggen vast.",
+                    "Optionele e-mailbevestiging bij een QR-melding: een onbevestigd concept wordt automatisch verwijderd, inclusief foto’s. Geen gebruikersaccount.",
+                    "Een gepland uurrooster is optioneel. Een vorige versie terugzetten kan alleen wie het rooster mag bewerken, en alleen gedurende een beperkte tijd.",
+                    "Optionele doorgifte van aanwezigheid naar de Belgische RSZ (CIAO). Het rijksregisternummer wordt versleuteld bewaard. De klant vult het ondernemingsnummer in. Geslaagde doorgiftes worden na een beperkte termijn verwijderd. Een export zonder rijksregisternummer is beschikbaar."
                 ]
             },
             {
                 "title": "Beschikbaarheid",
                 "items": [
-                    "24/7 bereikbaar als SaaS (browser + QR-portalen).",
-                    "Unit-QR: een geladen pagina blijft bruikbaar zonder netwerk voor taken, meldingen en unit checks; synchronisatie bij herstel. Clock Point-prik vereist online + verse QR-scan. Het startscherm-icoon op elk Clock Point opent de vaste aanmeldlink zonder prik, ook als de app vanaf de draaiende scherm-QR is gezet; sticker en klokscherm-QR geven een scan. Op Android opent die scan de geïnstalleerde app; op iPhone opent de camera Safari. Geen extra offline. De statische sticker is een vaste link: een foto ervan kan overal in- of uitklokken. Alleen de roterende klokscherm-QR verloopt en vormt fraudebestendig bewijs van ter plaatse zijn.",
-                    "Gepland onderhoud: bij voorkeur buiten kantooruren, met aankondiging waar mogelijk.",
-                    "Formele uptime-SLA: op vraag contractueel af te spreken."
+                    "24/7 bereikbaar als online dienst (browser en QR-portalen).",
+                    "Een al geladen unitpagina blijft kort bruikbaar zonder netwerk en synchroniseert daarna. Inklokken vraagt een verbinding.",
+                    "Op een vast klokscherm wisselt de code, zodat een oude foto van het scherm niet geldig blijft.",
+                    "Gepland onderhoud bij voorkeur buiten kantooruren, met aankondiging waar mogelijk.",
+                    "Een formele beschikbaarheidsafspraak is op vraag contractueel mogelijk."
                 ]
             },
             {
-                "title": "Authenticatie",
+                "title": "Klokscherm (optioneel)",
                 "items": [
-                    "Beheer: e-mail + wachtwoord (gehasht opgeslagen), sessies.",
-                    "Zelfregistratie vereist **e-mailverificatie**: het account werkt pas na het klikken op de link in de bevestigingsmail. De bevestigingsmail gaat alleen naar een geldig adres dat niet eerder als onbezorgbaar (bounce) is gemarkeerd. Uitschrijven van marketingmails blokkeert deze bevestiging niet. Niet-geverifieerde aanmeldingen worden na 7 dagen automatisch en volledig verwijderd.",
-                    "**SSO** (één bedrijfs-login via Microsoft Entra): op desktop voor beheerder en medewerker (**Inloggen met Microsoft**). Alleen bestaande WinProx-accounts (e-mail gelijk aan het Microsoft-account); e-mail + wachtwoord blijft werken. Geen automatische nieuwe accounts. Uitvoerders blijven Clock Point-QR (naam + icoon). Koppeling met andere software (Ultimo, IWMS, …) loopt via API-sleutels, niet via SSO.",
-                    "API: persoonlijke **toegangssleutel** (Bearer-token via Laravel Sanctum). Intrekbaar; met scopes = welke acties de sleutel mag.",
-                    "Uitvoerders: **geen e-maillogin** — Clock Point-QR + naam + persoonlijk icoon (of optionele PIN of biometrie). Eén gsm per uitvoerder; het icoon wordt na aanmelden niet getoond. Op elk Clock Point-portaal staat het startscherm-icoon om thuis aan te melden. Op een vaste prikklok blijft inklokken een scan; Checkmate klokt in vanuit het icoon.",
-                    "Offline veldacties op de unit-QR lopen via POST /portal/field-sync met de toestelcookie (geen API-token). Dezelfde client_id maakt geen dubbele melding of taakwijziging.",
-                    "Melders: publiek QR-portaal zonder account. Optioneel mailboxbewijs (categorie én unit): geen login; de melding ontstaat pas na de link in de mail.",
-                    "Collega met **Prikklok-team** krijgt een gekoppeld uitvoerderprofiel voor Clock Point (naam + icoon); telt niet dubbel als licentie."
+                    "Optioneel vast touchscreen op de locatie, gekoppeld aan een Clock Point. Huur apart bij het abonnement; geen aankoop via WinProx vereist.",
+                    "Netwerk: **Wi‑Fi 2,4 GHz**, **WPA2** en **WPA3-Personal**. Verbinding met WinProx via **HTTPS** (EU).",
+                    "Koppelen met een eenmalige code in beheer. Ontkoppelen trekt het toestel in.",
+                    "Zonder smartphone: voornaam en PIN voor inklokken, uitklokken en **pauze**. Herhaalde foute pogingen worden tijdelijk geblokkeerd.",
+                    "CE-gekeurd voor professioneel gebruik; voeding via USB-C (5 V)."
                 ]
             },
             {
-                "title": "Veiligheid",
+                "title": "Integraties",
                 "items": [
-                    "HTTPS; wachtwoorden gehasht; API-tokens intrekbaar.",
-                    "**CSRF-bescherming**: voorkomt dat een andere website stiekem acties uitvoert in naam van een ingelogde gebruiker.",
-                    "Tenant-scoping; audit-/activiteitenlogs.",
-                    "Webhooks met **HMAC-SHA256**-handtekening (bewijs dat het bericht van WinProx komt).",
-                    "API: max. **60 verzoeken/minuut** per token.",
-                    "Supporttoegang: uitzonderlijk, standaard alleen-lezen.",
-                    "Time Clock Point: sticker en klokscherm-QR geven één scan, twee minuten geldig, voor in-/uitklok of verplaatsing. Aanmeldlink en startscherm geven die niet; Checkmate klokt in en uit zonder scan. Aanmelden klokt niet vanzelf in (open tab/poll volstaat niet). Eén gsm per uitvoerder (weigeren + audit bij ander toestel). Geen knop om van uitvoerder te wisselen (ook niet bij icoon, PIN of biometrie) en na aanmelden geen kop Aanmelden; wel Afmelden (opnieuw icoon/PIN/biometrie, geen uitklokken, gsm blijft gekoppeld tot beheer of teamleader vrijgeeft). Optionele PIN (gehasht) en optionele passkey (biometrie op de eigen gsm; enkel de publieke sleutel wordt bewaard). GPS bij inklokken: aan betekent een positie verplicht, anders geen inklok. API-inkloken bindt geen gsm. Manueel inklokken in beheer (beheerder/medewerker) bindt geen gsm. Inklokken vanuit beheer (zijbalk, standaard uit) is een eigen prik van de collega met prikklok-team na e-mail en wachtwoord; geen gsm en geen GPS-poort. Mijn uren (tegel na aanmelden): alleen de eigen diensten van de aangemelde uitvoerder. Mijn rooster: alleen het eigen gepubliceerde uurrooster van de maand. Rode driehoek bij niet of minstens 15 minuten te laat inklokken. Waarschuwing als GPS uitstaat op de gsm, alleen als er bestemmingen zijn. Evacuatielijst (optioneel in Instellingen, standaard uit; tegel na aanmelden): namen pas na bevestiging dat de raadpleging uitzonderlijk is; elke raadpleging wordt gelogd (voornaam, naam, datum en uur). Raadplegingen van vandaag lichten Time-aandacht op (dashboard en aanwezigheid). Time → Alarmen houdt de volledige lijst (datum en uur, nieuwste bovenaan). Beheer geeft gsm, PIN, icoon en passkey vrij via Personen → Teams → Bewerken. Clock Point bewaart een noodzakelijke toestelcookie (circa 1 jaar). Een toegepaste teampauze op de urenstaat is geen RSZ/CIAO-event (geen nep-IN/OUT). Tijdens een open werkbezoek toont Clock Point bovenaan de huidige locatie en de volgende stop. Vandaag-locaties volgen de inspectieronde-volgorde. GPS-werkbezoeken: verse GPS op het klikmoment (maximumAge 0) om werk te starten/stoppen op een locatie-pin of unit-pin; inklokken blijft zonder GPS-gate. Na inklokken (GPS-werkbezoeken aan): donkere Welkom-kaart plus Vandaag als tijdlijn (hier / volgende / geweest / later) met Navigeer op de volgende stop; Start werk pas ter plaatse. Met open werkbezoek: teamtaken starten/afronden op Clock Point; volgende inspectiestop (unit check) ter plaatse. Optionele startscherm-snelkoppeling alleen als het Clock Point-vinkje aan staat (standaard uit; niet voor TFT met wisselende QR). Op het klokscherm prikt een uitvoerder zonder gsm met voornaam + 4-cijferige PIN (dezelfde gehashte PIN; na 2 foute pogingen 60 s geblokkeerd; instellen op het scherm kan alleen als er nog geen PIN is; elke poging wordt geaudit)."
+                    "**REST API** met antwoorden in **JSON**, op **Corporate** (proef op verzoek). De documentatie voor integratoren staat bij API & Webhooks.",
+                    "Onder meer meldingen, taken, locaties, units, teams, uitvoerders, controles, metingen en ESG.",
+                    "Uitgaande webhooks bij gebeurtenissen, ondertekend, met automatische herpogingen. Zelfde formule als de API.",
+                    "IoT-sensoren via een apart gateway-token (Corporate).",
+                    "Inloggen met Microsoft op de desktop is geen koppeling voor andere software."
                 ]
             },
             {
-                "title": "Webhooks",
-                "items": [
-                    "Uitgaande HTTP POST bij events (o.a. issue/task-status, unit check, unitmeting, ESG, GPS, Time/CIAO). time.visit.started / time.visit.ended.",
-                    "Configuratie onder Instellingen → API; secret voor verificatie.",
-                    "Automatische retries bij falen (tot enkele pogingen met oplopende pauze).",
-                    "Zelfde planvereiste als API (Corporate).",
-                    "Bij optionele e-mailbevestiging volgt het event **melding aangemaakt** pas na de link, niet bij het indienen op het portaal."
-                ]
-            },
-            {
-                "key": "checkmate",
                 "title": "Checkmate",
                 "items": [
-                    "Checkmate is geen aparte app: plan-preset met whitelist (Klanten, Locaties/Units, Time, …) op hetzelfde Location/Unit-model; categorieën blijven stil (default «Klantlocatie»); facility-routes zoals meldingen geven 404.",
-                    "Zelfde tenant-isolatie, Time-infrastructuur en Clock Point-portaal; precies één Clock Point («Aanmelden») — geen extra, geen deactiveren, geen vestigingslocatie; locaties krijgen standaard een site-unit voor een veilig Facility-upgrade-pad.",
-                    "€5 per actieve uitvoerder per maand (per-seat via Stripe).",
-                    "Proefplan checkmate_trial: 25 seats, 30 dagen; daarna €5 per actieve seat per maand (billing_seats_qty)."
-                ]
+                    "Zelfde platform en dezelfde scheiding tussen organisaties, met een kleinere set schermen voor wie bij klanten werkt.",
+                    "**€5** per actieve uitvoerder per maand.",
+                    "Proef: 25 licenties gedurende 30 dagen."
+                ],
+                "key": "checkmate"
             },
             {
-                "title": "Spam & misbruik (limieten)",
+                "title": "AI-vertaling",
                 "items": [
-                    "**Publieke QR-meldingen** (per apparaat/IP, per unit): max. **1 melding per 3 minuten**; max. **5 meldingen per 30 minuten** op dezelfde unit; max. **20 meldingen per uur** over alle units van dezelfde organisatie. (Aangemelde uitvoerders vallen hierbuiten.)",
-                    "**Uitvoerders-aanmelding (icoon)**: na **2 foute icoonkeuzes** wordt de uitvoerder geblokkeerd tot een teamleader of beheerder vrijgeeft.",
-                    "**Beheer-login** (e-mail/wachtwoord): wachtwoorden gehasht; geen aparte app-rate-limit op mislukte logins (kan infra/contractueel versterkt worden).",
-                    "Extra: QR-meldingen op het publieke portaal blijven **onzichtbaar tot goedkeuring**. Optionele e-mailbevestiging (categorie én unit) houdt de melding vast tot de link in de mail; de bestaande QR-limieten tellen bij het indienen. API heeft eigen rate limit (60/min)."
-                ]
-            },
-            {
-                "title": "AI (Artificial Intelligence = kunstmatige intelligentie)",
-                "items": [
-                    "Na goedkeuring worden operationele teksten (meldingen, taken, units, mededelingen, …) klaargezet voor AI-vertaling.",
-                    "Assistent-kennisbank-antwoorden (superuser) volgen dezelfde Ollama-pipeline als operationele content.",
-                    "Draait op een **lokale Ollama-instantie** — geen ChatGPT / externe AI-cloud voor deze functie.",
-                    "WinProx voert vertalingen **periodiek** uit (doorgaans dagelijks), **zonder vaste doorlooptijd of garantie**. Organisatiebeheerders kunnen vertalingen **handmatig corrigeren**. Geen aan/uit per organisatie.",
-                    "Geen generatieve “AI-assistent” die klantprocessen autonoom beslist — vertaling is ondersteuning, geen besluitvorming."
-                ]
-            },
-            {
-                "title": "Time: verlof en recup",
-                "items": [
-                    "Uitvoerders vragen verlof of recup op Clock Point (van–tot, max. 31 dagen).",
-                    "Beheer beslist onder Time → Aanvragen. Weigeren eist een reden; goedkeuren niet.",
-                    "Aanvragen toont wie heeft goedgekeurd of geweigerd.",
-                    "Intrekken op Clock Point herstelt het rooster uit de snapshot als de aanvraag goedgekeurd was.",
-                    "Goedkeuren bewaart bestaande roostercellen op de aanvraag en vervangt ze daarna.",
-                    "Geen e-mail, geen REST-schrijf-API. Events: time.absence.requested|cancelled|approved|rejected.",
-                    "Dashboard toont open aanvragen per soort (1 Verlof, 1 Recup, of beide)."
+                    "Operationele teksten kunnen vertaald worden op infrastructuur van WinProx, niet via een openbare AI-cloud.",
+                    "Beheerders kunnen vertalingen handmatig corrigeren.",
+                    "Vertaling ondersteunt het werk; ze neemt geen beslissingen over processen."
                 ]
             }
         ]

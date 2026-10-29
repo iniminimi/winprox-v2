@@ -474,6 +474,12 @@ API/webhooks, authenticatie/rechten, spam-limieten, AI, plan-grenzen), dan **in 
 3. Houd de tekst in **mensentaal** (geen jargon zonder uitleg) en consistent met handleiding/FAQ/legal.
 4. `npm run check:locales:parity` groen.
 
+**Technische fiche (publiek, hard):** klanttekst voor IT — hosting, privacy, beschikbaarheid,
+back-ups, rollen, algemene beveiliging, integraties. Geen tabel- of kolomnamen, routes,
+klasse- of actienamen, exacte drempels, uitzonderingen per kanaal, of geldigheidsduren van
+QR, PIN of cookies. Integratiedetail hoort op API & Webhooks en in `docs/api/`.
+Loginlimieten: `docs/internal/beheerlogin.md`.
+
 De oude print-HTML’s in `docs/*-klant.html` zijn **geen** bron van waarheid meer — alleen
 eventueel als lokale print-referentie; de app/website-JSON is leidend.
 

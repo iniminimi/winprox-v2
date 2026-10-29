@@ -12,7 +12,7 @@
         },
         "technical": {
             "label": "Ficha técnica",
-            "meta_description": "Ficha técnica de WinProx: arquitectura, seguridad, alojamiento e integraciones."
+            "meta_description": "Ficha técnica de WinProx: alojamiento, privacidad, seguridad e integraciones."
         },
         "api_webhooks": {
             "label": "API & Webhooks",
@@ -372,170 +372,131 @@
     },
     "technical": {
         "label": "Ficha técnica",
-        "tagline": "Fichaje digital, horas e incidencias facility · SaaS para equipos operativos",
-        "intro": "Resumen para IT y seguridad. WinProx es una aplicación web multiinquilino (Laravel + MySQL). Cada organización cliente tiene su propio entorno aislado. Hay una pantalla de fichaje fija opcional en el sitio (Wi‑Fi, QR rotativo, fichaje con PIN sin móvil).",
+        "tagline": "Alojamiento, privacidad, disponibilidad y seguridad para TI.",
+        "intro": "Resumen para TI y seguridad. Cada organización cliente tiene un entorno propio y separado. WinProx funciona en el navegador. Opcionalmente hay una pantalla de fichaje fija en el sitio.",
         "footer_left": "WinProx · info@winprox.app · Product overview, not legal advice or an SLA.",
         "footer_right": "Questions? We are happy to walk through the DPA, subprocessors and integrations.",
         "left": [],
         "right": [],
         "full": [
             {
+                "title": "Alojamiento",
+                "items": [
+                    "Producción en la **UE**, en **Cloud86**, sobre Linux.",
+                    "Acceso mediante **HTTPS** (conexión cifrada).",
+                    "Correo mediante servidores en la UE. Pago mensual con Stripe.",
+                    "Precios: **59 €** (5 licencias + 50 units), **99 €** (10 + 100), **199 €** (25 + 250), **349 €** (50 + 500) al mes. Corporate bajo petición."
+                ]
+            },
+            {
+                "title": "Copias de seguridad",
+                "items": [
+                    "Copias **diarias** automáticas de archivos y base de datos, conservadas **7 días**.",
+                    "En el peor caso, datos desde la última copia nocturna (unas 24 horas).",
+                    "La restauración es best effort, por lo general en un día laborable.",
+                    "Un acuerdo formal de restauración puede constar en el contrato."
+                ]
+            },
+            {
+                "title": "Separación de datos de clientes",
+                "items": [
+                    "Cada organización solo ve sus propios datos.",
+                    "Un usuario o una clave API de un cliente no puede leer ni modificar los datos de otro cliente.",
+                    "El personal puede limitarse a las ubicaciones que tiene asignadas."
+                ]
+            },
+            {
+                "title": "Roles y acceso",
+                "items": [
+                    "**Administrador**: organización, usuarios, suscripción y equipos.",
+                    "**Empleado**: trabajo diario (avisos, tareas, ubicaciones), sin gestión de cuentas ni de facturación.",
+                    "**Operario**: tareas por el portal de campo, sin cuenta de correo. Un jefe de equipo puede gestionar operarios y teléfonos vinculados.",
+                    "Las claves API tienen permisos propios, por ejemplo solo leer avisos.",
+                    "Los informes (CSV o impresión) siguen los mismos permisos que las listas de la aplicación."
+                ]
+            },
+            {
+                "title": "Acceso",
+                "items": [
+                    "Gestión: correo y contraseña. Las contraseñas se guardan con hash. Los intentos fallidos repetidos se bloquean temporalmente.",
+                    "El alta propia solo vale tras el enlace del correo de confirmación. Las altas no confirmadas se eliminan a los 7 días.",
+                    "**Iniciar sesión con Microsoft** (escritorio): solo una cuenta existente cuyo correo coincida. Sin cuentas nuevas automáticas. El correo y la contraseña siguen funcionando.",
+                    "Otro software usa un token de acceso revocable con permisos elegidos, no el acceso ordinario.",
+                    "Los operarios entran por Clock Point (nombre e icono personal, o un PIN o biometría). Sin cuenta de correo.",
+                    "Quien avisa usa el portal QR público sin cuenta. Con la confirmación de correo opcional, el aviso solo existe tras el enlace."
+                ]
+            },
+            {
+                "title": "Seguridad",
+                "items": [
+                    "HTTPS, contraseñas con hash y un token API revocable.",
+                    "Protección frente a acciones desde otro sitio mientras alguien ha iniciado sesión.",
+                    "Separación entre organizaciones y un registro de acciones importantes.",
+                    "Los webhooks salientes van firmados, para que el receptor compruebe que el mensaje viene de WinProx.",
+                    "La API, el formulario público de avisos y el acceso de gestión limitan las peticiones repetidas.",
+                    "Los avisos QR del portal público permanecen invisibles hasta que un administrador los aprueba.",
+                    "El acceso de soporte es excepcional y de solo lectura por defecto.",
+                    "Un teléfono queda vinculado a un operario. Gestión o un jefe de equipo puede liberar ese vínculo. Un acceso erróneo repetido sigue bloqueado hasta la liberación.",
+                    "PIN o biometría opcionales. Control GPS opcional al fichar la entrada."
+                ]
+            },
+            {
+                "title": "Privacidad (RGPD)",
+                "items": [
+                    "**Cliente = responsable del tratamiento**; WinProx = **encargado**.",
+                    "Marco: RGPD de la UE y ley belga. Hay acuerdo de tratamiento y lista de subencargados.",
+                    "Los datos permanecen en la **UE** (alojamiento y correo). Al pagar, Stripe también puede tratar en la UE o en EE. UU. Con Iniciar sesión con Microsoft el usuario va a Microsoft; WinProx recibe el correo (y en su caso el nombre) para reconocer una cuenta existente.",
+                    "Exportación de la cuenta y baja en autoservicio de la organización. Los plazos de conservación están fijados.",
+                    "Confirmación de correo opcional en un aviso QR: un borrador no confirmado se elimina solo, fotos incluidas. Sin cuenta de usuario.",
+                    "Un horario planificado es opcional. Restaurar una versión anterior solo puede quien puede editar el horario, y solo durante un tiempo limitado.",
+                    "Envío opcional de presencia a la seguridad social belga (CIAO). El número de registro nacional se guarda cifrado. El cliente indica el número de empresa. Los envíos correctos se eliminan tras un plazo limitado. Hay una exportación sin el número de registro nacional."
+                ]
+            },
+            {
+                "title": "Disponibilidad",
+                "items": [
+                    "Disponible 24/7 como servicio en línea (navegador y portales QR).",
+                    "Una página de unit ya cargada sigue usable un momento sin red y luego se sincroniza. Fichar la entrada exige conexión.",
+                    "En una pantalla de fichaje fija el código cambia, así que una foto antigua de la pantalla no sigue siendo válida.",
+                    "Mantenimiento planificado preferiblemente fuera del horario de oficina, con aviso cuando sea posible.",
+                    "Un acuerdo formal de disponibilidad puede constar en el contrato si se pide."
+                ]
+            },
+            {
                 "title": "Pantalla de fichaje (opcional)",
                 "items": [
-                    "Pantalla táctil fija opcional en el sitio, vinculada a un Clock Point. Se alquila aparte con la suscripción; no hace falta comprarla a través de WinProx.",
-                    "Muestra un **código QR rotativo** (aproximadamente cada 30 segundos). Solo un escaneo reciente cuenta como prueba de presencia; una foto antigua de la pantalla ya no sirve.",
-                    "Red: **Wi‑Fi 2,4 GHz**, **WPA2** y **WPA3-Personal**. Conexión a WinProx por **HTTPS** (UE).",
-                    "Emparejamiento con un código de un solo uso en administración; después, heartbeat periódico. Desvincular o rotar el secreto revoca el dispositivo.",
-                    "Horario de encendido configurable; fuera de ese horario, apagada o pantalla de reposo (fotos, reloj analógico o flip). Tocar la pantalla → QR → acceso con PIN.",
-                    "Sin smartphone: nombre + **PIN de 4 dígitos** para entrada, salida y **pausa** (el mismo PIN hasheado que en administración). Bloqueo tras intentos fallidos; cada intento se audita.",
+                    "Pantalla táctil fija opcional en el sitio, vinculada a un Clock Point. Alquiler aparte con la suscripción; no hace falta comprarla a través de WinProx.",
+                    "Red: **Wi‑Fi 2,4 GHz**, **WPA2** y **WPA3-Personal**. Conexión con WinProx mediante **HTTPS** (UE).",
+                    "Emparejar con un código de un solo uso en gestión. Desvincular retira el aparato.",
+                    "Sin smartphone: nombre y PIN para entrada, salida y **pausa**. Los intentos erróneos repetidos se bloquean temporalmente.",
                     "Marcado CE para uso profesional; alimentación por USB-C (5 V)."
                 ]
             },
             {
-                "title": "Hosting",
+                "title": "Integraciones",
                 "items": [
-                    "Production on **Linux** (EU), at **Cloud86**.",
-                    "Access via **HTTPS** (encrypted connection, TLS).",
-                    "Stack: PHP 8.2+, Laravel 12, Livewire, MySQL, Vite frontend.",
-                    "Correo por SMTP en la UE; facturación mensual con Stripe Checkout. Las organizaciones eligen un plan (5/10/25/50); Corporate bajo petición vía WinProx.",
-                    "Precios: **59€** (5 licencias + 50 unidades), **99€** (10 + 100), **199€** (25 + 250), **349€** (50 + 500) al mes con Stripe. Corporate a medida."
+                    "**API REST** con respuestas en **JSON**, en **Corporate** (prueba bajo petición). La documentación para integradores está en API y webhooks.",
+                    "Entre otros: avisos, tareas, ubicaciones, units, equipos, operarios, controles, mediciones y ESG.",
+                    "Webhooks salientes ante eventos, firmados, con reintentos automáticos. La misma fórmula que la API.",
+                    "Sensores IoT mediante un token de pasarela aparte (Corporate).",
+                    "Iniciar sesión con Microsoft en el escritorio no es una conexión para otro software."
                 ]
             },
             {
-                "title": "Backups",
-                "items": [
-                    "Automatic **daily** backups via Cloud86 (files + database), retained for **7 days**.",
-                    "**RPO ≈ 24 hours**: in the worst case you lose data since the last nightly backup (Recovery Point Objective = max. acceptable data loss).",
-                    "**RTO: best effort, typically within 1 business day** (Recovery Time Objective = time until the service is available again after restore).",
-                    "On full organisation deletion: separate technical SQL snapshot **without media**, max. **30 days** (not the same as a disaster-recovery backup)."
-                ]
-            },
-            {
-                "title": "Database",
-                "items": [
-                    "**MySQL**, relational model per tenant.",
-                    "Strict **tenant isolation**: every query/API call stays within the organisation.",
-                    "No shared visibility between customers.",
-                    "**Ámbito de sede:** tablas pivot location_user y location_worker; teams.clocks_all_locations para relevos; workers.user_id vincula colega y perfil ejecutor."
-                ]
-            },
-            {
-                "title": "Permissions",
-                "items": [
-                    "**Admin**: everything (users, company, subscription, teams).",
-                    "**Employee**: operational (issues, tasks, locations) — no account/billing management.",
-                    "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons and a bound phone, manage workers and take photos.",
-                    "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
-                    "Informes operativos: CSV o impresión filtrada en incidencias, tareas, Time, reservas, unit checks, mediciones unit y ESG — para quien pueda ver esas listas. La impresión sigue cuando procede el diseño de la lista; Time = hoja de horas. Distinto de la exportación de cuenta RGPD (Ajustes → Privacidad y exportación).",
-                    "Menú de trabajo: columnas tenant work_menu_*_enabled; barra lateral y rutas backoffice via TenantWorkMenuAccess; plantilla inicial aplica defaults via UpdateTenantWorkMenuAction (eliminar plantilla no revierte el menú); avisos & tareas es el interruptor principal (cascada de getters)."
-                ]
-            },
-            {
-                "title": "API",
-                "items": [
-                    "**REST API v1** (fixed URLs + HTTP methods) with **JSON** responses (standard data format). Documentation in-app + docs.",
-                    "P. ej. avisos, tareas, ubicaciones, unidades (ID externo incluido), equipos, ejecutores, comprobaciones de unidad (también entrantes vía ID externo), ESG, traducciones.",
-                    "Available on **Corporate** (trial on request).",
-                    "Ingest IoT aparte mediante token de pasarela (Corporate)."
-                ]
-            },
-            {
-                "title": "GDPR",
-                "items": [
-                    "**Customer = controller**; WinProx = **processor**.",
-                    "Framework: EU GDPR + Belgian Act of 30 July 2018.",
-                    "Data Processing Agreement (DPA) and subprocessor list available.",
-                    "Data export (account), self-service organisation deletion, retention periods documented.",
-                    "Los datos permanecen en la **UE** (alojamiento/correo). Stripe UE/EE. UU. si hay pago. Con **Iniciar sesión con Microsoft**, el usuario va a Microsoft Entra ID (Microsoft, UE/EE. UU.); WinProx recibe el correo (y posiblemente el nombre) para reconocer la cuenta existente.",
-                    "Confirmación por correo opcional en avisos QR: almacenamiento temporal del borrador hasta el enlace; los borradores no confirmados se eliminan automáticamente (normalmente 60 minutos, fotos incluidas). El correo de confirmación solo se envía a una dirección válida que no esté marcada como no entregable (bounce). Darse de baja del correo de marketing no bloquea esta confirmación. Sin cuenta de usuario.",
-                    "Envío opcional **CIAO** (Check In and Out ONSS): si se activa, WinProx guarda el NISS (cifrado) y envía registros de presencia a la **ONSS belga** (autoridad / obligación legal del cliente). La ONSS no es un subencargado de marketing de WinProx; la cesión es de cumplimiento. WinProx usa sus propias credenciales Chaman; el cliente solo indica el número CBE (número de empresa). Una pausa de equipo aplicada en el parte no es un IN/OUT RSZ extra. Con visitas GPS: la entrada/salida no se envía a la ONSS; inicio de visita = IN, fin de visita = OUT. Las pausas durante una visita siguen OUT/IN. Los envíos correctos de más de 12 meses (configurable) se eliminan automáticamente; Time → CIAO ofrece exportación CSV/impresión (sin NISS).",
-                    "Cuadrante opcional: turnos y ausencias (permiso, compensación, baja) que introduce el cliente; Clock Point muestra solo el cuadrante publicado propio. Los códigos de baja son decisión del cliente; WinProx los guarda como encargado. Ajustes, tarjeta Cuadrante, puede apagar esa planificación; el reloj y el acceso por QR siguen, y los turnos existentes se conservan.",
-                    "Los puntos de restauración del cuadrante guardan los turnos anteriores de un cambio (operario, día, horas, nota). Solo quien puede editar el cuadrante los ve. Se eliminan automáticamente a los 30 días. Una confirmación vale solo para la diferencia mostrada; si el horario cambió entretanto, no se restaura nada."
-                ]
-            },
-            {
-                "title": "Availability",
-                "items": [
-                    "Available 24/7 as SaaS (browser + QR portals).",
-                    "QR de unidad: una página cargada sigue usable sin red para tareas, avisos y controles de unidad; se sincroniza al volver. El fichaje Clock Point sigue en línea y exige un nuevo escaneo QR. El icono de inicio en cada Clock Point abre el enlace de acceso fijo sin fichaje, también si la app se instaló desde el QR giratorio de la pantalla; la pegatina y el QR de la pantalla dan un escaneo. En Android ese escaneo abre la app instalada; en el iPhone la cámara abre Safari. Sin extra sin conexión. La pegatina estática es un enlace fijo: una foto permite fichar desde cualquier lugar. Solo el QR rotativo de la pantalla caduca y es prueba antifraude de presencia en el lugar.",
-                    "Planned maintenance preferably outside business hours, with notice where possible.",
-                    "Formal uptime SLA: available contractually on request."
-                ]
-            },
-            {
-                "title": "Authentication",
-                "items": [
-                    "Back office: email + password (stored hashed), sessions.",
-                    "Self-service sign-up requires **email verification**: the account only works after clicking the link in the confirmation mail. The confirmation mail is only sent to a valid address that is not marked undeliverable (bounce). Unsubscribing from marketing mail does not block this confirmation. Unverified sign-ups are automatically and completely deleted after 7 days.",
-                    "**SSO** (un inicio de sesión de empresa vía Microsoft Entra): para administradores y empleados en escritorio (**Iniciar sesión con Microsoft**). Solo cuentas WinProx existentes (el correo debe coincidir con la cuenta Microsoft); correo + contraseña sigue funcionando. No se crean cuentas nuevas automáticamente. Los ejecutores siguen con el QR Clock Point (nombre + icono). La conexión con otro software (Ultimo, IWMS, …) usa tokens de API, no SSO.",
-                    "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
-                    "Operarios: **sin inicio de sesión por correo** — QR Clock Point + nombre + icono personal (o PIN o biometría opcionales). Un móvil por operario; el icono se oculta tras identificarse. Cada portal Clock Point muestra el icono de inicio para identificarse en casa. En un reloj fijo, la entrada sigue siendo un escaneo; Checkmate ficha desde el icono.",
-                    "Offline field actions on the unit QR go through POST /portal/field-sync with the device cookie (no API token). The same client_id does not create a duplicate issue or task change.",
-                    "Avisadores: portal QR público sin cuenta. Prueba de buzón opcional (categoría y unidad): sin inicio de sesión; el aviso solo se crea tras el enlace del correo.",
-                    "Colega con **equipo de fichaje** obtiene perfil ejecutor vinculado para Clock Point (nombre + icono); no cuenta doble en la licencia."
-                ]
-            },
-            {
-                "title": "Security",
-                "items": [
-                    "HTTPS; hashed passwords; revocable API tokens.",
-                    "**CSRF protection**: prevents another website from secretly performing actions as a logged-in user.",
-                    "Tenant scoping; audit/activity logs.",
-                    "Webhooks with **HMAC-SHA256** signature (proof the message comes from WinProx).",
-                    "API: max. **60 requests/minute** per token.",
-                    "Support access: exceptional, read-only by default.",
-                    "Time Clock Point: la pegatina y el QR de la pantalla dan un escaneo, válido dos minutos, para entrada, salida o traslado. El enlace de acceso y la pantalla de inicio no; Checkmate ficha sin escaneo. Identificarse no ficha solo (una pestaña/poll abierta no basta). Un móvil por ejecutor (rechazo + registro si es otro dispositivo). No hay botón para cambiar de ejecutor (tampoco en icono, PIN o biometría) y tras identificarse desaparece el título Inicio de sesión; Cerrar sesión vuelve al icono/PIN/biometría sin fichar la salida, y el móvil sigue vinculado hasta que un admin o un jefe de equipo lo libere. PIN hasheado opcional y clave de acceso opcional (biometría en el móvil del trabajador; solo se guarda la clave pública). GPS al fichar la entrada: activado exige una posición, si no no se puede fichar la entrada. El fichaje API no vincula un móvil. El fichaje manual en back office (admin/empleado) no vincula un teléfono. Fichar desde el back office (barra lateral, desactivado por defecto) es el fichaje del propio colega con equipo de fichaje tras correo y contraseña; sin teléfono y sin control GPS. Mis horas (ficha tras identificarse): solo los turnos del ejecutor identificado. Mi cuadrante: solo el cuadrante publicado propio del mes. Un triángulo rojo si el turno publicado no está fichado o lo está con al menos 15 minutos de retraso. Aviso si el GPS está apagado en el móvil, solo si hoy hay destinos. Lista de evacuación (opcional en Ajustes, desactivada por defecto; ficha tras identificarse): nombres solo tras confirmar que la consulta es excepcional; cada consulta se registra (nombre, apellidos, fecha y hora). Las consultas de hoy encienden Atención Time (panel y presencia). Time → Alertas conserva la lista completa (fecha y hora, la más reciente arriba). Administración libera móvil, PIN, icono y clave de acceso en Personas → Equipos → Editar. Durante una visita abierta, Clock Point muestra arriba la sede actual y la siguiente parada. Las sedes de hoy siguen el orden de la ronda. Clock Point guarda una cookie de dispositivo esencial (unos 12 meses). Una pausa de equipo aplicada en el parte no es un evento RSZ/CIAO (sin IN/OUT ficticios). Visitas GPS: GPS fresco al hacer clic (maximumAge 0) para iniciar/detener el trabajo en el pin de sede o unidad; la entrada sigue sin barrera GPS. Tras fichar (visitas GPS activas): tarjeta oscura Bienvenido más Hoy como línea de tiempo (aquí / siguiente / ya estuve / más tarde) con Navegar en la siguiente parada; empezar el trabajo solo in situ. Con visita abierta: iniciar/cerrar tareas de equipo en Clock Point; siguiente parada de inspección (control de unidad) in situ. Acceso directo en la pantalla de inicio solo si la casilla del Clock Point está activa (desactivada por defecto; no para TFT con QR rotativos). En la pantalla de fichaje, un ejecutor sin teléfono ficha con nombre + PIN de 4 dígitos (el mismo PIN con hash; bloqueado 60 s tras 2 fallos; la configuración en la pantalla solo es posible si aún no hay PIN; cada intento queda auditado)."
-                ]
-            },
-            {
-                "title": "Webhooks",
-                "items": [
-                    "HTTP POST saliente en eventos (p. ej. estado de aviso/tarea, comprobación de unidad, ESG, GPS, Time/CIAO). time.visit.started / time.visit.ended.",
-                    "Configured under Settings → API; secret for verification.",
-                    "Automatic retries on failure (several attempts with increasing delay).",
-                    "Same plan requirement as API (Corporate).",
-                    "Con la confirmación por correo opcional, el evento **aviso creado** se dispara solo tras el enlace, no al enviar el formulario en el portal."
-                ]
-            },
-            {
-                "key": "checkmate",
                 "title": "Checkmate",
                 "items": [
-                    "Checkmate no es una app aparte: preset de plan con whitelist (Clientes, Ubicaciones/Units, Time, …) sobre el mismo modelo Location/Unit; las categorías quedan en silencio (por defecto «Sede del cliente»); las rutas de facility como avisos dan 404.",
-                    "Mismo aislamiento de inquilinos, infraestructura Time y portal Clock Point; exactamente un Clock Point (Iniciar sesión) — sin extras, sin desactivar, sin ubicación de sede; las ubicaciones reciben una unidad de sede por defecto para un camino de upgrade Facility seguro.",
-                    "5 € por trabajador activo al mes (por puesto vía Stripe).",
-                    "Plan de prueba checkmate_trial: 25 plazas, 30 días; después 5 € por plaza activa al mes (billing_seats_qty)."
-                ]
+                    "La misma plataforma y la misma separación entre organizaciones, con menos pantallas para quien trabaja en casa del cliente.",
+                    "**5 €** por operario activo y mes.",
+                    "Prueba: 25 licencias durante 30 días."
+                ],
+                "key": "checkmate"
             },
             {
-                "title": "Spam & abuse (limits)",
+                "title": "Traducción con IA",
                 "items": [
-                    "**Public QR issues** (per device/IP, per unit): max. **1 issue per 3 minutes**; max. **5 issues per 30 minutes** on the same unit; max. **20 issues per hour** across all units of the same organisation. (Signed-in workers are exempt.)",
-                    "**Worker sign-in (icon)**: after **2 wrong icon choices** the worker is locked until a team leader or admin releases them.",
-                    "**Back-office login** (email/password): passwords hashed; no separate app rate limit on failed logins (can be strengthened via infra/contract).",
-                    "Extra: QR issues on the public portal stay **invisible until approval**. Optional email confirmation (category and unit) holds the report until the email link; existing QR limits count at submit. API has its own rate limit (60/min)."
-                ]
-            },
-            {
-                "title": "AI (Artificial Intelligence)",
-                "items": [
-                    "After approval, operational texts (issues, tasks, units, announcements, …) are queued for AI translation.",
-                    "Las respuestas de la base de conocimiento del asistente (superuser) usan la misma pipeline Ollama que el contenido operativo.",
-                    "Runs on a **local Ollama instance** — no ChatGPT / external AI cloud for this feature.",
-                    "WinProx runs translations **periodically** (typically daily), **with no guaranteed turnaround**. Organisation admins can **correct translations manually**. No per-organisation on/off switch.",
-                    "No generative “AI assistant” that autonomously decides customer processes — translation is support, not decision-making."
-                ]
-            },
-            {
-                "title": "Time: permiso y compensación",
-                "items": [
-                    "Los operarios piden permiso o compensación en Clock Point (desde–hasta, máx. 31 días).",
-                    "La gestión decide en Time → Solicitudes. Rechazar pide un motivo; aprobar no.",
-                    "Solicitudes muestra quién aprobó o rechazó.",
-                    "Retirar en Clock Point restaura el cuadrante desde la instantánea si la solicitud estaba aprobada.",
-                    "Al aprobar se guardan las celdas existentes en la solicitud y luego se sustituyen.",
-                    "Sin correo, sin API REST de escritura. Eventos: time.absence.requested|cancelled|approved|rejected.",
-                    "El panel muestra las solicitudes abiertas por tipo (1 Permiso, 1 Compensación, o ambos)."
+                    "Los textos operativos pueden traducirse en la infraestructura de WinProx, no en una nube de IA pública.",
+                    "Los administradores pueden corregir las traducciones a mano.",
+                    "La traducción apoya el trabajo; no decide sobre los procesos."
                 ]
             }
         ]

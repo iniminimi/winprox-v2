@@ -12,7 +12,7 @@
         },
         "technical": {
             "label": "Technical fact sheet",
-            "meta_description": "WinProx technical sheet: architecture, security, hosting and integrations."
+            "meta_description": "WinProx technical fact sheet: hosting, privacy, security and integrations."
         },
         "api_webhooks": {
             "label": "API & Webhooks",
@@ -372,170 +372,131 @@
     },
     "technical": {
         "label": "Technical fact sheet",
-        "tagline": "Digital punch clock, hours and facility issues · SaaS for operational teams",
-        "intro": "Overview for IT and security. WinProx is a multi-tenant web app (Laravel + MySQL). Each customer organisation has its own isolated environment. An optional fixed clock display on site is available (Wi‑Fi, rotating QR, PIN punch without a phone).",
+        "tagline": "Hosting, privacy, availability and security for IT.",
+        "intro": "Overview for IT and security. Each customer organisation has its own separated environment. WinProx runs in the browser. An optional fixed clock display can stand on site.",
         "footer_left": "WinProx · info@winprox.app · Product overview, not legal advice or an SLA.",
         "footer_right": "Questions? We are happy to walk through the DPA, subprocessors and integrations.",
         "left": [],
         "right": [],
         "full": [
             {
-                "title": "Clock display (optional)",
-                "items": [
-                    "Optional fixed touchscreen on site, linked to a Clock Point. Rented separately with the subscription; no purchase through WinProx required.",
-                    "Shows a **rotating QR code** (about every 30 seconds). Only a fresh scan counts as presence proof; an old photo of the screen no longer works.",
-                    "Network: **2.4 GHz Wi‑Fi**, **WPA2** and **WPA3-Personal**. Connects to WinProx over **HTTPS** (EU).",
-                    "Pair with a one-time code in admin; then periodic heartbeat. Unlinking or rotating the secret revokes the device.",
-                    "On-hours are configurable; outside those hours it can be off or show an idle screen (photos, analogue clock or flip clock). Tap the screen → QR → PIN login.",
-                    "Without a smartphone: first name + **4-digit PIN** for clock-in, clock-out and **break** (same hashed PIN as in admin). Lockout after failed attempts; every attempt is audited.",
-                    "CE-marked for professional use; powered via USB-C (5 V)."
-                ]
-            },
-            {
                 "title": "Hosting",
                 "items": [
-                    "Production on **Linux** (EU), at **Cloud86**.",
-                    "Access via **HTTPS** (encrypted connection, TLS).",
-                    "Stack: PHP 8.2+, Laravel 12, Livewire, MySQL, Vite frontend.",
-                    "Email via SMTP in the EU; billing monthly via Stripe Checkout. Organisations self-select a plan (5/10/25/50); Corporate on request via WinProx.",
-                    "Pricing: **€59** (5 seats + 50 units), **€99** (10 + 100), **€199** (25 + 250), **€349** (50 + 500) per month via Stripe. Corporate is custom."
+                    "Production in the **EU**, at **Cloud86**, on Linux.",
+                    "Access via **HTTPS** (encrypted connection).",
+                    "Email via servers in the EU. Billing monthly via Stripe.",
+                    "Pricing: **€59** (5 licences + 50 units), **€99** (10 + 100), **€199** (25 + 250), **€349** (50 + 500) per month. Corporate on request."
                 ]
             },
             {
                 "title": "Backups",
                 "items": [
-                    "Automatic **daily** backups via Cloud86 (files + database), retained for **7 days**.",
-                    "**RPO ≈ 24 hours**: in the worst case you lose data since the last nightly backup (Recovery Point Objective = max. acceptable data loss).",
-                    "**RTO: best effort, typically within 1 business day** (Recovery Time Objective = time until the service is available again after restore).",
-                    "On full organisation deletion: separate technical SQL snapshot **without media**, max. **30 days** (not the same as a disaster-recovery backup)."
+                    "Automatic **daily** backups of files and the database, kept for **7 days**.",
+                    "Worst case, data since the last nightly backup (about 24 hours).",
+                    "Restore is best effort, usually within one business day.",
+                    "A formal restore arrangement can be agreed in the contract."
                 ]
             },
             {
-                "title": "Database",
+                "title": "Separation of customer data",
                 "items": [
-                    "**MySQL**, relational model per tenant.",
-                    "Strict **tenant isolation**: every query/API call stays within the organisation.",
-                    "No shared visibility between customers.",
-                    "**Location scope:** pivot tables location_user and location_worker; teams.clocks_all_locations for floaters; workers.user_id links colleague to worker profile."
+                    "Each organisation sees only its own data.",
+                    "A user or API key of one customer cannot read or change another customer’s data.",
+                    "Staff can be limited to the locations assigned to them."
                 ]
             },
             {
-                "title": "Permissions",
+                "title": "Roles and access",
                 "items": [
-                    "**Admin**: everything (users, company, subscription, teams).",
-                    "**Employee**: operational (issues, tasks, locations) — no account/billing management.",
-                    "**Worker / team leader**: complete tasks via the field portal; team leaders can release icons and a bound phone, manage workers and take photos.",
-                    "Every action is checked: you only get what your role allows (**least privilege**). API keys get separate permissions — e.g. “read issues” without access to everything.",
-                    "Operational reports: filtered CSV or print on issues, tasks, Time, reservations, unit checks, unit measurements and ESG — for users who may view those lists. Print follows the list layout where possible; Time = timesheet. Separate from the GDPR account export (Settings → Privacy & data export).",
-                    "Work menu: tenant columns work_menu_*_enabled; sidebar and backoffice routes via TenantWorkMenuAccess; starter template sets defaults via UpdateTenantWorkMenuAction (removing template does not revert menu); issues & tasks is the master switch (getter cascade)."
+                    "**Administrator**: organisation, users, subscription and teams.",
+                    "**Employee**: day-to-day work (issues, tasks, locations), without account or billing administration.",
+                    "**Worker**: tasks via the field portal, without an email account. A team leader can manage workers and linked phones.",
+                    "API keys get separate permissions, for example read issues only.",
+                    "Reports (CSV or print) follow the same permissions as the lists in the app."
                 ]
             },
             {
-                "title": "API",
+                "title": "Sign-in",
                 "items": [
-                    "**REST API v1** (fixed URLs + HTTP methods) with **JSON** responses (standard data format). Documentation in-app + docs.",
-                    "Incl. issues, tasks, locations, units (incl. external ID), teams, workers, unit check (also inbound via external unit ID), unit measurements, ESG, translations.",
-                    "Available on **Corporate** (trial on request).",
-                    "IoT ingest separately via gateway token (Corporate)."
-                ]
-            },
-            {
-                "title": "GDPR",
-                "items": [
-                    "**Customer = controller**; WinProx = **processor**.",
-                    "Framework: EU GDPR + Belgian Act of 30 July 2018.",
-                    "Data Processing Agreement (DPA) and subprocessor list available.",
-                    "Data export (account), self-service organisation deletion, retention periods documented.",
-                    "Data stays in the **EU** (hosting/email). Stripe EU/US when paying. With **Sign in with Microsoft**, the user is sent to Microsoft Entra ID (Microsoft, EU/US); WinProx receives email (and possibly name) to match the existing account.",
-                    "Optional email confirmation for QR reports: temporary draft storage until the link; unverified drafts are deleted automatically (typically 60 minutes, including photos). The confirmation mail is only sent to a valid address that is not marked undeliverable (bounce). Unsubscribing from marketing mail does not block this confirmation. No user account.",
-                    "Optional **CIAO** forwarding (RSZ Check In and Out): when enabled, WinProx stores NISS (encrypted) and sends presence registrations to the **Belgian NSSO/RSZ** (public authority / customer legal duty). RSZ is not a WinProx marketing sub-processor; transfer is for compliance. WinProx uses its own Chaman credentials; the customer only enters the CBE (enterprise number). An applied team break on the timesheet is not an extra RSZ IN/OUT. With GPS work visits: clock in/out are not sent to the NSSO; visit start = IN, visit end = OUT. Breaks during a visit remain OUT/IN. Successful submissions older than 12 months (configurable) are deleted automatically; Time → CIAO offers CSV/print export (no SSIN).",
-                    "Optional planned roster: shifts and absences (leave, time off in lieu, sick) entered by the customer; Clock Point shows only the worker’s own published roster. Sick codes are the customer’s choice; WinProx stores them as processor. Settings, Roster card, can turn that planning off; the clock and QR sign-in stay, and existing shifts are kept.",
-                    "Roster restore points keep the previous shifts of a roster edit (worker, day, times, note). Only someone allowed to edit the roster can see them. They are deleted automatically after 30 days. A confirmation applies only to the difference that was shown; if the roster changed in the meantime, nothing is restored."
-                ]
-            },
-            {
-                "title": "Availability",
-                "items": [
-                    "Available 24/7 as SaaS (browser + QR portals).",
-                    "Unit QR: a loaded page stays usable without network for tasks, reports and unit checks; it syncs when connectivity returns. Clock Point punches stay online and need a fresh QR scan. The home-screen icon on every Clock Point opens the fixed sign-in link without a punch, including when the app was installed from the rotating screen QR; the sticker and clock-screen QR grant a scan. On Android that scan opens the installed app; on iPhone the camera opens Safari. No extra offline. The static sticker is a fixed link: a photo of it can clock in or out from anywhere. Only the rotating clock-screen QR expires and is fraud-resistant proof of being on site.",
-                    "Planned maintenance preferably outside business hours, with notice where possible.",
-                    "Formal uptime SLA: available contractually on request."
-                ]
-            },
-            {
-                "title": "Authentication",
-                "items": [
-                    "Back office: email + password (stored hashed), sessions.",
-                    "Self-service sign-up requires **email verification**: the account only works after clicking the link in the confirmation mail. The confirmation mail is only sent to a valid address that is not marked undeliverable (bounce). Unsubscribing from marketing mail does not block this confirmation. Unverified sign-ups are automatically and completely deleted after 7 days.",
-                    "**SSO** (one work login via Microsoft Entra): for admins and employees on desktop (**Sign in with Microsoft**). Only existing WinProx accounts (email must match the Microsoft account); email + password still works. No automatic new accounts. Workers stay on Clock Point QR (name + icon). Connecting other software (Ultimo, IWMS, …) uses API tokens, not SSO.",
-                    "API: personal **access key** (Bearer token via Laravel Sanctum). Revocable; with scopes = which actions the key may perform.",
-                    "Workers: **no email login** — Clock Point QR + name + personal icon (or optional PIN or biometrics). One phone per worker; the icon is hidden after sign-in. Every Clock Point portal shows the home-screen icon to sign in from home. On a fixed clock, clock-in still needs a scan; Checkmate clocks in from the icon.",
-                    "Offline field actions on the unit QR go through POST /portal/field-sync with the device cookie (no API token). The same client_id does not create a duplicate issue or task change.",
-                    "Reporters: public QR portal without an account. Optional mailbox proof (category and unit): no login; the issue is created only after the link in the mail.",
-                    "Colleague with **punch-clock team** gets a linked worker profile for Clock Point (name + icon); does not count twice towards the licence."
+                    "Back office: email and password. Passwords are stored hashed. Repeated failed attempts are temporarily blocked.",
+                    "Self-registration works only after the link in the confirmation email. Unconfirmed sign-ups are deleted after 7 days.",
+                    "**Sign in with Microsoft** (desktop): only an existing account whose email matches. No automatic new accounts. Email and password still work.",
+                    "Other software uses a revocable access token with chosen permissions, not the ordinary login.",
+                    "Workers sign in via Clock Point (name and personal icon, or a PIN or biometrics). No email account.",
+                    "Reporters use the public QR portal without an account. With optional email confirmation, the issue is created only after the link."
                 ]
             },
             {
                 "title": "Security",
                 "items": [
-                    "HTTPS; hashed passwords; revocable API tokens.",
-                    "**CSRF protection**: prevents another website from secretly performing actions as a logged-in user.",
-                    "Tenant scoping; audit/activity logs.",
-                    "Webhooks with **HMAC-SHA256** signature (proof the message comes from WinProx).",
-                    "API: max. **60 requests/minute** per token.",
-                    "Support access: exceptional, read-only by default.",
-                    "Time Clock Point: the sticker and clock-screen QR grant one scan, valid for two minutes, for clock-in, clock-out or a move. The sign-in link and home screen do not; Checkmate clocks in and out without a scan. Sign-in does not clock in by itself (an open tab/poll is not enough). One phone per worker (refuse + audit on another device). There is no switch-worker control (including on the icon/PIN/biometrics step) and after sign-in the Sign in heading is hidden; Sign out returns to icon/PIN/biometrics without clocking out, and the phone stays bound until an admin or team leader releases it. Optional hashed PIN and optional passkey (biometrics on the worker’s own phone; only the public key is stored). GPS on clock-in: on means a position is required, otherwise clock-in is refused. API clock-in does not bind a phone. Manual clock-in in back office (admin/staff) does not bind a phone. Clock-in from back office (sidebar, off by default) is the colleague's own punch with a punch-clock team after email and password; no phone and no GPS gate. My hours (tile after sign-in): only the signed-in worker’s own shifts. My roster: only that worker’s published roster for the month. A red triangle marks a published work shift without clock-in or at least 15 minutes late. A warning if GPS is off on the phone, only when there are destinations today. Evacuation list (optional in Settings, off by default; tile after sign-in): names only after confirming the consultation is exceptional; each view is logged (first name, last name, date and time). Views from today light up Time attention on the dashboard and on Presence. Time → Alarms keeps the full list (date and time, newest first). Admins release phone, PIN, icon and passkey via People → Teams → Edit. During an open work visit Clock Point shows the current location and next stop at the top. Today locations follow inspection-round stop order. Clock Point stores an essential device cookie (about 1 year). An applied team break on the timesheet is not an RSZ/CIAO event (no fake IN/OUT). GPS work visits: fresh GPS at click time (maximumAge 0) to start/stop work on a location pin or unit pin; clock-in stays without a GPS gate. After clock-in (GPS work visits on): dark Welcome card plus Today as a timeline (here / next / been / later) with Navigate on the next stop; Start work only on site. With an open visit: start/complete team tasks on Clock Point; next inspection stop (unit check) on site. Optional home-screen shortcut only when the Clock Point checkbox is on (off by default; not for TFT screens with rotating QR). On the clock display, a worker without a phone clocks in with first name + 4-digit PIN (the same hashed PIN; blocked for 60 s after 2 wrong attempts; setup on the display only while no PIN exists yet; every attempt is audited)."
+                    "HTTPS, hashed passwords and a revocable API token.",
+                    "Protection against actions from another website while someone is signed in.",
+                    "Separation between organisations, plus a log of important actions.",
+                    "Outbound webhooks are signed, so the receiver can check that the message comes from WinProx.",
+                    "The API, the public report form and the back-office login limit repeated requests.",
+                    "QR issues on the public portal stay invisible until an administrator approves them.",
+                    "Support access is exceptional and read-only by default.",
+                    "A phone is linked to one worker. An administrator or team leader can release that link. Repeated wrong sign-in stays blocked until release.",
+                    "Optional PIN or biometrics. Optional GPS check on clock-in."
                 ]
             },
             {
-                "title": "Webhooks",
+                "title": "Privacy (GDPR)",
                 "items": [
-                    "Outbound HTTP POST on events (incl. issue/task status, unit check, unit measurement, ESG, GPS, Time/CIAO). time.visit.started / time.visit.ended.",
-                    "Configured under Settings → API; secret for verification.",
-                    "Automatic retries on failure (several attempts with increasing delay).",
-                    "Same plan requirement as API (Corporate).",
-                    "With optional email confirmation, the **issue created** event fires only after the link, not when the form is submitted on the portal."
+                    "**Customer = controller**; WinProx = **processor**.",
+                    "Framework: EU GDPR and Belgian law. A data processing agreement and a list of subprocessors are available.",
+                    "Data stays in the **EU** (hosting and email). When paying, Stripe may also process in the EU or the US. With Sign in with Microsoft the user goes to Microsoft; WinProx receives the email address (and possibly the name) to recognise an existing account.",
+                    "Account export and self-service deletion of the organisation. Retention periods are fixed.",
+                    "Optional email confirmation for a QR issue: an unconfirmed draft is deleted automatically, including photos. No user account.",
+                    "A planned roster is optional. Restoring a previous version is limited to people who may edit the roster, and only for a limited time.",
+                    "Optional presence reporting to the Belgian social security office (CIAO). The national register number is stored encrypted. The customer enters the enterprise number. Successful submissions are deleted after a limited period. An export without the national register number is available."
                 ]
             },
             {
-                "key": "checkmate",
+                "title": "Availability",
+                "items": [
+                    "Available 24/7 as an online service (browser and QR portals).",
+                    "A unit page that is already loaded stays usable briefly without a network and syncs afterwards. Clock-in needs a connection.",
+                    "On a fixed clock display the code changes, so an old photo of the screen does not stay valid.",
+                    "Planned maintenance preferably outside office hours, with notice when possible.",
+                    "A formal availability arrangement can be agreed in the contract on request."
+                ]
+            },
+            {
+                "title": "Clock display (optional)",
+                "items": [
+                    "Optional fixed touchscreen on site, linked to a Clock Point. Rented separately with the subscription; no purchase through WinProx required.",
+                    "Network: **2.4 GHz Wi‑Fi**, **WPA2** and **WPA3-Personal**. Connection to WinProx via **HTTPS** (EU).",
+                    "Pair with a one-time code in the back office. Unlinking revokes the device.",
+                    "Without a smartphone: first name and PIN for clock-in, clock-out and **break**. Repeated wrong attempts are temporarily blocked.",
+                    "CE-marked for professional use; powered via USB-C (5 V)."
+                ]
+            },
+            {
+                "title": "Integrations",
+                "items": [
+                    "**REST API** with **JSON** responses, on **Corporate** (trial on request). Documentation for integrators is on API & Webhooks.",
+                    "Including issues, tasks, locations, units, teams, workers, checks, measurements and ESG.",
+                    "Outbound webhooks on events, signed, with automatic retries. Same plan as the API.",
+                    "IoT sensors via a separate gateway token (Corporate).",
+                    "Sign in with Microsoft on the desktop is not a connection for other software."
+                ]
+            },
+            {
                 "title": "Checkmate",
                 "items": [
-                    "Checkmate is not a separate app: a plan preset with a whitelist (Customers, Locations/Units, Time, …) on the same Location/Unit model; categories stay silent (default «Customer site»); facility routes such as issues return 404.",
-                    "Same tenant isolation, Time infrastructure and Clock Point portal; exactly one Clock Point (Sign in) — no extras, no deactivation, no site location; locations get a default site unit for a safe Facility upgrade path.",
-                    "€5 per active worker per month (per-seat via Stripe).",
-                    "Trial plan checkmate_trial: 25 seats, 30 days; afterwards €5 per active seat per month (billing_seats_qty)."
-                ]
+                    "The same platform and the same separation between organisations, with a smaller set of screens for people who work at customer sites.",
+                    "**€5** per active worker per month.",
+                    "Trial: 25 licences for 30 days."
+                ],
+                "key": "checkmate"
             },
             {
-                "title": "Spam & abuse (limits)",
+                "title": "AI translation",
                 "items": [
-                    "**Public QR issues** (per device/IP, per unit): max. **1 issue per 3 minutes**; max. **5 issues per 30 minutes** on the same unit; max. **20 issues per hour** across all units of the same organisation. (Signed-in workers are exempt.)",
-                    "**Worker sign-in (icon)**: after **2 wrong icon choices** the worker is locked until a team leader or admin releases them.",
-                    "**Back-office login** (email/password): passwords hashed; no separate app rate limit on failed logins (can be strengthened via infra/contract).",
-                    "Extra: QR issues on the public portal stay **invisible until approval**. Optional email confirmation (category and unit) holds the report until the email link; existing QR limits count at submit. API has its own rate limit (60/min)."
-                ]
-            },
-            {
-                "title": "AI (Artificial Intelligence)",
-                "items": [
-                    "After approval, operational texts (issues, tasks, units, announcements, …) are queued for AI translation.",
-                    "Assistant knowledge base answers (superuser) use the same Ollama pipeline as operational content.",
-                    "Runs on a **local Ollama instance** — no ChatGPT / external AI cloud for this feature.",
-                    "WinProx runs translations **periodically** (typically daily), **with no guaranteed turnaround**. Organisation admins can **correct translations manually**. No per-organisation on/off switch.",
-                    "No generative “AI assistant” that autonomously decides customer processes — translation is support, not decision-making."
-                ]
-            },
-            {
-                "title": "Time: leave and TOIL",
-                "items": [
-                    "Workers request leave or time off in lieu on Clock Point (from–to, max. 31 days).",
-                    "Staff decide under Time → Requests. Reject needs a reason; approve does not.",
-                    "Requests shows who approved or rejected.",
-                    "Withdrawing on Clock Point restores the roster from the snapshot if the request was approved.",
-                    "Approval stores existing roster cells on the request, then replaces them.",
-                    "No email, no write REST API. Events: time.absence.requested|cancelled|approved|rejected.",
-                    "The dashboard shows pending requests per kind (1 Leave, 1 TOIL, or both)."
+                    "Operational texts can be translated on WinProx infrastructure, not via a public AI cloud.",
+                    "Administrators can correct translations by hand.",
+                    "Translation supports the work; it does not decide on processes."
                 ]
             }
         ]
