@@ -505,6 +505,24 @@ it('toont een nette fout als de einddatum vóór de startdatum ligt', function (
     expect(AbsenceRequest::query()->count())->toBe(0);
 });
 
+it('toont de periodekalender en weigert verlof in het verleden', function () {
+    [, , $clockPoint] = absenceTenant();
+
+    signInAbsenceWorker($clockPoint)
+        ->call('openAbsence')
+        ->assertSee(__('time.portal.absence.period'), false)
+        ->assertSee(__('time.portal.absence.period_hint'), false)
+        ->assertSeeHtml('wp-date-range')
+        ->set('absenceKind', ShiftTypeKind::Leave->value)
+        ->set('absenceDateFrom', '2026-09-21')
+        ->set('absenceDateTo', '2026-09-23')
+        ->call('submitAbsence')
+        ->assertHasErrors(['absenceDateFrom' => 'after_or_equal'])
+        ->assertSee(__('time.absence.errors.date_in_past'), false);
+
+    expect(AbsenceRequest::query()->count())->toBe(0);
+});
+
 it('laat beheer een aanvraag goedkeuren zonder reden', function () {
     [$tenant, $admin, , $worker] = absenceTenant();
     $request = app(RequestAbsenceAction::class)->handle(

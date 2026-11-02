@@ -840,6 +840,7 @@ class TimePortal extends Component
                 'absenceDescription' => $rules['description'],
             ],
             [
+                'absenceDateFrom.after_or_equal' => __('time.absence.errors.date_in_past'),
                 'absenceDateTo.after_or_equal' => __('time.absence.errors.range_inverted'),
             ],
             [

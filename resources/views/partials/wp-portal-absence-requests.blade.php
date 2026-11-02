@@ -10,13 +10,15 @@
             @error('absenceKind') <p class="wp-error">{{ $message }}</p> @enderror
         </div>
         <div class="wp-field">
-            <label class="wp-label" for="absence-from">{{ __('time.portal.absence.date_from') }}</label>
-            <input id="absence-from" class="wp-input" type="date" wire:model="absenceDateFrom">
+            <span class="wp-label" id="absence-period-label">{{ __('time.portal.absence.period') }}</span>
+            <x-wp-date-range-picker
+                wire:model.from="absenceDateFrom"
+                wire:model.to="absenceDateTo"
+                :min="now()->toDateString()"
+                :max-days="\App\Actions\Time\RequestAbsenceAction::MAX_DAYS"
+                aria-labelledby="absence-period-label"
+            />
             @error('absenceDateFrom') <p class="wp-error">{{ $message }}</p> @enderror
-        </div>
-        <div class="wp-field">
-            <label class="wp-label" for="absence-to">{{ __('time.portal.absence.date_to') }}</label>
-            <input id="absence-to" class="wp-input" type="date" wire:model="absenceDateTo">
             @error('absenceDateTo') <p class="wp-error">{{ $message }}</p> @enderror
         </div>
         <div class="wp-field" x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">

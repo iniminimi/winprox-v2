@@ -8361,3 +8361,142 @@ html.wp-pwa-installed .wp-homescreen-shortcut-wrap {
 .wp-article-table tbody th {
     font-weight: 500;
 }
+
+
+/* --- Date range picker (portaal verlof/recup) --- */
+.wp-date-range {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.wp-date-range__summary {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 0.75rem;
+}
+
+.wp-date-range__summary-dates {
+    font-size: 1.05rem;
+    color: var(--wp-text);
+}
+
+.wp-date-range__hint {
+    font-size: 0.875rem;
+    margin: 0;
+}
+
+.wp-date-range__panel {
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius-lg);
+    background: var(--wp-surface);
+    padding: 0.75rem;
+    box-shadow: var(--wp-shadow-sm);
+}
+
+.wp-date-range__nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.wp-date-range__month {
+    margin: 0;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--wp-text);
+    text-transform: capitalize;
+    text-align: center;
+    flex: 1;
+}
+
+.wp-date-range__weekdays,
+.wp-date-range__grid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 0.2rem;
+}
+
+.wp-date-range__weekdays {
+    margin-bottom: 0.35rem;
+}
+
+.wp-date-range__weekdays span {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--wp-text-muted);
+    text-transform: capitalize;
+    padding: 0.25rem 0;
+}
+
+.wp-date-range__day {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    min-height: 2.75rem;
+    border-radius: var(--wp-radius);
+    font: inherit;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--wp-text);
+    cursor: pointer;
+    transition: background-color var(--wp-transition), color var(--wp-transition), transform var(--wp-transition);
+}
+
+.wp-date-range__day:not(:disabled):hover {
+    background: var(--wp-accent-soft);
+    color: var(--wp-accent-text);
+}
+
+.wp-date-range__day:focus-visible {
+    outline: 2px solid var(--wp-accent);
+    outline-offset: 1px;
+}
+
+.wp-date-range__day--empty,
+.wp-date-range__day--empty:disabled {
+    visibility: hidden;
+    pointer-events: none;
+    cursor: default;
+}
+
+.wp-date-range__day--disabled,
+.wp-date-range__day--disabled:disabled {
+    color: var(--wp-text-muted);
+    opacity: 0.4;
+    cursor: not-allowed;
+    text-decoration: line-through;
+}
+
+.wp-date-range__day--today:not(.wp-date-range__day--start):not(.wp-date-range__day--end):not(.wp-date-range__day--single) {
+    box-shadow: inset 0 0 0 1.5px var(--wp-accent);
+}
+
+.wp-date-range__day--in-range {
+    background: color-mix(in srgb, var(--wp-accent) 16%, transparent);
+    color: var(--wp-accent-text);
+    border-radius: 0;
+}
+
+.wp-date-range__day--start,
+.wp-date-range__day--end,
+.wp-date-range__day--single {
+    background: var(--wp-accent);
+    color: #fff;
+}
+
+.wp-date-range__day--start:not(.wp-date-range__day--single) {
+    border-radius: var(--wp-radius) 0 0 var(--wp-radius);
+}
+
+.wp-date-range__day--end:not(.wp-date-range__day--single) {
+    border-radius: 0 var(--wp-radius) var(--wp-radius) 0;
+}
+
+.wp-date-range__day--single {
+    border-radius: var(--wp-radius);
+}

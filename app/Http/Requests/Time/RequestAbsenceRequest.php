@@ -25,6 +25,7 @@ class RequestAbsenceRequest extends FormRequest
     public function messages(): array
     {
         return [
+            'date_from.after_or_equal' => __('time.absence.errors.date_in_past'),
             'date_to.after_or_equal' => __('time.absence.errors.range_inverted'),
         ];
     }
@@ -49,7 +50,7 @@ class RequestAbsenceRequest extends FormRequest
     {
         return [
             'kind' => ['required', Rule::in([ShiftTypeKind::Leave->value, ShiftTypeKind::Recup->value])],
-            'date_from' => ['required', 'date_format:Y-m-d'],
+            'date_from' => ['required', 'date_format:Y-m-d', 'after_or_equal:today'],
             'date_to' => ['required', 'date_format:Y-m-d', 'after_or_equal:date_from'],
             'description' => ['nullable', 'string', 'max:'.TextDescriptionLimits::MAX],
         ];
