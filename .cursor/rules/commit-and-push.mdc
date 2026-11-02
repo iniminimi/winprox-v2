@@ -1,22 +1,31 @@
 ---
-description: Lokaal ontwikkelen; na elke afgeronde taak commit + push main + server-deploy.
+description: Lokaal ontwikkelen; na elke afgeronde taak commit + push main. Deploy doet de gebruiker.
 alwaysApply: true
 ---
 
-# Lokaal → main → server (verplicht)
+# Lokaal → main → push (verplicht); deploy = gebruiker
 
 We ontwikkelen en testen **lokaal** (Windows). Productie is **winprox.app** (Linux).
 `git push` alleen naar GitHub is **niet** live. De server haalt code pas binnen via
 `./pull-deploy.sh`.
 
-**Gebruiker wil altijd direct commit + push + deploy** zodra een taak klaar is —
+**Gebruiker wil altijd direct commit + push** zodra een taak klaar is —
 **niet vragen**, niet wachten op bevestiging. Ook voor kleine follow-ups (locale,
 één bestand).
+
+## Deploy (hard — agent nooit)
+
+- **De gebruiker doet altijd zelf de deploy** op de server (`./pull-deploy.sh`).
+- Agent: **geen** SSH naar de server, **geen** `pull-deploy.sh`, **geen** remote
+  deploy-commando’s. Na push volstaat een korte melding dat push klaar is en
+  dat de gebruiker kan deployen.
+- Live-verificatie op winprox.app hoort bij de gebruiker na diens deploy — niet
+  afdwingen of “Ctrl+F5” als excuus zonder deploy.
 
 ## Branch (hard)
 
 - Werk op **`main`**, tenzij de gebruiker **expliciet** een andere branch vraagt.
-- Geen Cursor-/feature-branches uit eigen beweging. Die tellen niet als “op de server”.
+- Geen Cursor-/feature-branches uit eigen beweging.
 
 ## Werkwijze (volgorde hard)
 
@@ -33,30 +42,19 @@ We ontwikkelen en testen **lokaal** (Windows). Productie is **winprox.app** (Lin
 5. **Commit** op `main` met duidelijke boodschap.
 6. **`git push origin main`** (of `git push -u origin HEAD` alleen als de gebruiker
    expliciet een andere branch vroeg).
-7. **Server-deploy (hard — zonder dit is de taak niet klaar):**
-   ```bash
-   ssh -i C:/Users/domin/.ssh/id_ed25519 -o BatchMode=yes winprox@winprox.app \
-     "cd /var/www/vhosts/winprox.app/httpdocs/winprox && ./pull-deploy.sh"
-   ```
-   Host/user/key/path staan in `.env` als `TRANSLATION_SYNC_SSH_*` /
-   `TRANSLATION_SYNC_REMOTE_PATH` — zelfde toegang gebruiken.
-8. **Live verifiëren** — curl of browser op de geraakte URL (bv.
-   `https://winprox.app/nl/docs/...`). Niet aannemen dat push = live. Niet de
-   gebruiker laten “Ctrl+F5” als excuus zonder eerst deploy + check.
 
 Niet afsluiten met uncommitted werk dat klaar is. Alleen skippen als de gebruiker
-expliciet zegt: **niet** committen / pushen / deployen.
+expliciet zegt: **niet** committen / pushen.
 
-## Wat “klaar” níet is
+## Wat “klaar” voor de agent níet is
 
-- Push naar een feature-branch.
-- Push naar `origin/main` zonder `./pull-deploy.sh`.
-- “De server pakt het wel op” — dat gebeurt niet automatisch.
-- Alleen browsercache noemen terwijl de app-dir nog oude bestanden heeft.
+- Push naar een feature-branch (tenzij gevraagd).
+- Aannemen dat push = live zonder dat de gebruiker deployt.
+- Zelf SSH/deploy proberen “voor de zekerheid”.
 
 ## Lokaal vs. server
 
-- **Code** (PHP, Blade, locales, config): na stap 7 staat het op de server.
+- **Code** (PHP, Blade, locales, config): live na **gebruikers**-deploy.
 - **Frontend-assets:** lokaal gebuild (`public/build/**` in git); deploy synct die mee.
 - **GPS / geolocation:** test op HTTPS (productie) of `localhost`; HTTP via LAN-IP
   wordt door browsers geblokkeerd.

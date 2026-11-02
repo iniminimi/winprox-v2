@@ -388,11 +388,12 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 ### Werkwijze (hard)
 - We werken **lokaal** (Windows); productie staat op de **server** (Linux, winprox.app).
 - Werk op **`main`**, tenzij de gebruiker expliciet een andere branch vraagt.
-- Een taak is pas af wanneer het **lokaal werkt**, de wijziging **gecommit + gepusht** is
-  naar `origin/main`, **én** `./pull-deploy.sh` op de server is gedraaid. Push alleen ≠ live.
-- Deploy: `ssh … winprox@winprox.app "cd …/httpdocs/winprox && ./pull-deploy.sh"`
-  (SSH-gegevens: `TRANSLATION_SYNC_SSH_*` / `TRANSLATION_SYNC_REMOTE_PATH` in `.env`).
-- Daarna de geraakte URL live controleren. Niet afsluiten met klaar, uncommitted werk.
+- Voor de **agent** is een taak af wanneer het **lokaal werkt** en de wijziging
+  **gecommit + gepusht** is naar `origin/main`. Push alleen ≠ live.
+- **Deploy doet altijd de gebruiker zelf** op de server (`./pull-deploy.sh`).
+  De agent mag **niet** SSH’en, niet `pull-deploy.sh` draaien, en niet remote
+  deployen — ook niet “voor de zekerheid”.
+- Niet afsluiten met klaar, uncommitted werk.
 
 ### Vóór commit
 - `php artisan test` (relevante tests)
@@ -402,10 +403,10 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 - Raakt het `lang/**`: alle talen in pariteit + `fix:locales`/`check:locales`/`check:locales:parity` vóór commit.
 - Geen test-artefacten committen (`tests/Avery_*.zip`, `_extract/`, `.env`, logs).
 
-### Push + deploy
+### Push (+ deploy door gebruiker)
 - Na commit: **`git push origin main`**, tenzij de gebruiker expliciet vraagt om niet te pushen.
-- Direct daarna **server-deploy** (`./pull-deploy.sh` via SSH). Zonder die stap blijft
-  productie op de oude code (ook bij productfiches / locales / config).
+- Daarna deployt **de gebruiker** met `./pull-deploy.sh` op de server. Zonder die
+  stap blijft productie op de oude code (ook bij productfiches / locales / config).
 
 ---
 
