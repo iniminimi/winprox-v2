@@ -535,7 +535,10 @@ it('laat beheer een aanvraag goedkeuren zonder reden', function () {
     Livewire::actingAs($admin)
         ->test(AbsenceRequestsIndex::class)
         ->assertSee('Jan Janssen', false)
+        ->assertSee('23-09-2026', false)
+        ->assertDontSee('2026-09-23', false)
         ->call('openDecide', $request->id)
+        ->assertSee('23-09-2026', false)
         ->call('approve')
         ->assertSee(__('time.absence.approved'), false)
         ->assertSee(__('time.absence.decided_by_approved', ['name' => $admin->name]), false);

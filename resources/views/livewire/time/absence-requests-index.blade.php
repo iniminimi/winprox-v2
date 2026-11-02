@@ -45,9 +45,9 @@
                             · {{ __('time.schedule.types.kinds.'.$request->kind->value) }}
                         </p>
                         <p class="wp-issue-card-meta">
-                            {{ $request->date_from->toDateString() }}
+                            {{ $request->date_from->format('d-m-Y') }}
                             @if ($request->date_from->toDateString() !== $request->date_to->toDateString())
-                                – {{ $request->date_to->toDateString() }}
+                                – {{ $request->date_to->format('d-m-Y') }}
                             @endif
                             @if ($request->description)
                                 · {{ $request->description }}
@@ -95,9 +95,9 @@
                 <p>
                     <strong>{{ $deciding->worker?->displayName() }}</strong>
                     · {{ __('time.schedule.types.kinds.'.$deciding->kind->value) }}
-                    · {{ $deciding->date_from->toDateString() }}
+                    · {{ $deciding->date_from->format('d-m-Y') }}
                     @if ($deciding->date_from->toDateString() !== $deciding->date_to->toDateString())
-                        – {{ $deciding->date_to->toDateString() }}
+                        – {{ $deciding->date_to->format('d-m-Y') }}
                     @endif
                 </p>
                 @if ($deciding->description)
@@ -112,7 +112,7 @@
                         <ul class="wp-list">
                             @foreach ($conflicts as $shift)
                                 <li>
-                                    {{ $shift->work_date->toDateString() }}
+                                    {{ $shift->work_date->format('d-m-Y') }}
                                     · {{ $shift->displayValue() }}
                                     @if ($shift->start_time && $shift->end_time)
                                         · {{ $shift->start_time }}–{{ $shift->end_time }}
