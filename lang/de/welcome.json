@@ -17,9 +17,9 @@
     "api_webhooks": "API & Webhooks"
   },
   "hero": {
-    "brand": "WinProx",
-    "headline": "Die digitale Stempeluhr für die Zeiterfassung in Ihrem Unternehmen.",
-    "subtitle": "Mitarbeitende stempeln ein und aus mit ihrem Smartphone – ohne App oder Badge. Sie verwalten die Dienstpläne einfach, erfassen die geleisteten Stunden und geben sie an Ihr Sozialsekretariat weiter.",
+    "brand": "Sparen Sie wie ein PRO.",
+    "headline": "Weniger Verwaltung. Mehr Ergebnis.",
+    "subtitle": "Zeiterfassung, Meldungen, Aufgaben und Messungen. WinProx erfasst, organisiert und verfolgt nach. So sparen Sie Zeit und vermeiden Fehler.",
     "flow": "Scan → Stempeln → Stunden → Sekretariat",
     "flow_steps": {
       "scan": "Scan",

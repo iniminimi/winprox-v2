@@ -17,9 +17,9 @@
     "api_webhooks": "API & Webhooks"
   },
   "hero": {
-    "brand": "WinProx",
-    "headline": "De digitale prikklok voor urenregistratie in uw bedrijf.",
-    "subtitle": "Medewerkers prikken in en uit met hun smartphone, zonder app of badge. U beheert de uurroosters eenvoudig, registreert de gewerkte uren en geeft ze door aan uw sociaal secretariaat.",
+    "brand": "Bespaar als een PRO.",
+    "headline": "Minder administratie. Meer resultaat.",
+    "subtitle": "Urenregistratie, meldingen, taken en metingen. WinProx registreert, organiseert en volgt op. Zo bespaart u tijd en voorkomt u fouten.",
     "flow": "Scan → Prik → Uren → Secretariaat",
     "flow_steps": {
       "scan": "Scan",

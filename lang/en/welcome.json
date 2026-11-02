@@ -17,9 +17,9 @@
     "api_webhooks": "API & Webhooks"
   },
   "hero": {
-    "brand": "WinProx",
-    "headline": "The digital time clock for time tracking in your company.",
-    "subtitle": "Staff clock in and out with their smartphone — no app, no badge. You manage rosters easily, register worked hours and pass them to your social secretariat.",
+    "brand": "Save like a PRO.",
+    "headline": "Less administration. More results.",
+    "subtitle": "Time tracking, issues, tasks and measurements. WinProx records, organises and follows up. You save time and avoid mistakes.",
     "flow": "Scan → Clock → Hours → Secretariat",
     "flow_steps": {
       "scan": "Scan",

@@ -17,9 +17,9 @@
     "api_webhooks": "API y webhooks"
   },
   "hero": {
-    "brand": "WinProx",
-    "headline": "El reloj de fichar digital para el registro horario en su empresa.",
-    "subtitle": "El personal ficha con su smartphone, sin app ni tarjeta. Usted gestiona los horarios fácilmente, registra las horas trabajadas y las pasa a su secretaría social.",
+    "brand": "Ahorre como un PRO.",
+    "headline": "Menos administración. Más resultados.",
+    "subtitle": "Registro de horas, avisos, tareas y mediciones. WinProx registra, organiza y hace el seguimiento. Así ahorra tiempo y evita errores.",
     "flow": "Escanear → Fichar → Horas → Secretaría",
     "flow_steps": {
       "scan": "Escanear",

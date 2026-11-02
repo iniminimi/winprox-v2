@@ -1701,9 +1701,9 @@ Login, mail en `APP_URL` blijven op `.app`. `.nl` verschijnt pas in hreflang als
 - **Hero (één viewport):** foto `images/welcome/welcome_reception.jpg` in een afgerond kader
   (niet pagina-breed); copy-kader (80% dekkend beige) **op** de foto, links, zodat de
   receptie rechts zichtbaar blijft.
-  WinProx · *De digitale prikklok voor urenregistratie in uw bedrijf.* ·
-  *Medewerkers prikken met hun telefoon, zonder app. Planning, meldingen en taken horen bij
-  dezelfde WinProx-ervaring.* · **Scan → Prik → Uren → Secretariaat**
+  *Bespaar als een PRO.* · *Minder administratie. Meer resultaat.* ·
+  *Urenregistratie, meldingen, taken en metingen. WinProx registreert, organiseert en volgt op.
+  Zo bespaart u tijd en voorkomt u fouten.* · **Scan → Prik → Uren → Secretariaat**
   (met iconen) · CTA's **Gratis proberen** / **Bekijk hoe het werkt**.
   Over de kaders een vierkant geel **Checkmate-bord**: badge *Checkmate* ·
   *Check in and out @ work* · beperkte formule voor in-/uitchecken op locatie

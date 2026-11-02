@@ -17,9 +17,9 @@
     "api_webhooks": "API & Webhooks"
   },
   "hero": {
-    "brand": "WinProx",
-    "headline": "La pointeuse digitale pour le suivi du temps dans votre entreprise.",
-    "subtitle": "Les employés pointent avec leur smartphone, sans appli ni badge. Vous gérez facilement les horaires, enregistrez les heures prestées et les transmettez à votre secrétariat social.",
+    "brand": "Économisez comme un PRO.",
+    "headline": "Moins d'administration. Plus de résultats.",
+    "subtitle": "Suivi du temps, signalements, tâches et mesures. WinProx enregistre, organise et assure le suivi. Vous gagnez du temps et évitez les erreurs.",
     "flow": "Scan → Pointer → Heures → Secrétariat",
     "flow_steps": {
       "scan": "Scan",

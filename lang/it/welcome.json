@@ -17,9 +17,9 @@
     "api_webhooks": "API e webhook"
   },
   "hero": {
-    "brand": "WinProx",
-    "headline": "La timbratrice digitale per la rilevazione orari nella vostra azienda.",
-    "subtitle": "Il personale timbra con il suo smartphone, senza app né badge. Gestite facilmente i turni, registrate le ore lavorate e le passate al segretariato sociale.",
+    "brand": "Risparmiate come un PRO.",
+    "headline": "Meno amministrazione. Più risultati.",
+    "subtitle": "Rilevazione ore, segnalazioni, attività e misurazioni. WinProx registra, organizza e dà seguito. Così risparmiate tempo ed evitate errori.",
     "flow": "Scansiona → Timbra → Ore → Segretariato",
     "flow_steps": {
       "scan": "Scansiona",
