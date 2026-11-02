@@ -481,6 +481,7 @@ it('toont de portaltegel en verstuurt een aanvraag', function () {
         ->set('absenceDescription', 'Familie')
         ->call('submitAbsence')
         ->assertSee(__('time.portal.absence.submitted'), false)
+        ->assertSee('23-09-2026', false)
         ->assertSee(__('time.portal.absence.cancel'), false)
         ->call('cancelAbsence', (int) AbsenceRequest::query()->value('id'))
         ->assertSee(__('time.portal.absence.cancelled'), false);

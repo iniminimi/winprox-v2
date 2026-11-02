@@ -57,9 +57,9 @@
                             ])>{{ __('time.absence.status.'.$request->status->value) }}</span>
                         </div>
                         <p>
-                            {{ $request->date_from->toDateString() }}
+                            {{ $request->date_from->format('d-m-Y') }}
                             @if ($request->date_from->toDateString() !== $request->date_to->toDateString())
-                                – {{ $request->date_to->toDateString() }}
+                                – {{ $request->date_to->format('d-m-Y') }}
                             @endif
                         </p>
                         @if ($request->description)
