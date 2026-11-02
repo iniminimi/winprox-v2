@@ -982,7 +982,11 @@
             "tools": "Hilfe und Ausgabe"
         },
         "today": "Heute",
-        "groups_count": ":selected von :total"
+        "groups_count": ":selected von :total",
+        "pending_absence": {
+            "leave": "Urlaub beantragt (wartet auf Freigabe)",
+            "recup": "Ausgleich beantragt (wartet auf Freigabe)"
+        }
     },
     "shift_types": {
         "title": "Schichttypen",

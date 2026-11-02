@@ -982,7 +982,11 @@
             "tools": "Ayuda y exportación"
         },
         "today": "Hoy",
-        "groups_count": ":selected de :total"
+        "groups_count": ":selected de :total",
+        "pending_absence": {
+            "leave": "Vacaciones solicitadas (pendiente de aprobación)",
+            "recup": "Recup solicitado (pendiente de aprobación)"
+        }
     },
     "shift_types": {
         "title": "Tipos de turno",

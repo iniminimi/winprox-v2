@@ -148,12 +148,22 @@
                                                     : $rawDisplay;
                                             }
                                             $color = is_array($cell) ? (string) ($cell['color'] ?? 'none') : 'none';
+                                            $pendingKey = $worker['id'].':'.$date;
+                                            $pending = $snapshot->pendingAbsences[$pendingKey] ?? null;
+                                            $pendingKind = is_array($pending) ? (string) ($pending['kind'] ?? '') : '';
+                                            $pendingTitle = $pendingKind !== ''
+                                                ? ($snapshot->pendingAbsenceMessages[$pendingKind] ?? '')
+                                                : '';
                                         @endphp
-                                        <td @class([
-                                            'wp-roster-print__cell',
-                                            'wp-roster-print__cell--multi' => is_array($cell) && ($cell['multi'] ?? false),
-                                            'wp-roster-cell--'.$color => $color !== '' && $color !== 'none',
-                                        ])>{{ $display }}</td>
+                                        <td
+                                            @class([
+                                                'wp-roster-print__cell',
+                                                'wp-roster-print__cell--multi' => is_array($cell) && ($cell['multi'] ?? false),
+                                                'wp-roster-print__cell--pending-absence' => $pending !== null,
+                                                'wp-roster-cell--'.$color => $color !== '' && $color !== 'none',
+                                            ])
+                                            @if ($pendingTitle !== '') title="{{ $pendingTitle }}" @endif
+                                        >{{ $display }}</td>
                                     @endforeach
                                 </tr>
                             @endif

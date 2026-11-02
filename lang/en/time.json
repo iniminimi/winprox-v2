@@ -982,7 +982,11 @@
             "tools": "Help and output"
         },
         "today": "Today",
-        "groups_count": ":selected of :total"
+        "groups_count": ":selected of :total",
+        "pending_absence": {
+            "leave": "Leave requested (awaiting approval)",
+            "recup": "Time off in lieu requested (awaiting approval)"
+        }
     },
     "shift_types": {
         "title": "Shift types",

@@ -757,6 +757,21 @@ function applyCellClasses(worksheet, payload) {
                     cell.title = `${cell.title ? `${cell.title}\n` : ''}${notes.join('\n')}`;
                 }
             }
+            // Open verlof/recup: overlay (geen celtekst) — class + tooltip.
+            const pendingAbsence = attendanceKey ? payload.pending_absences?.[attendanceKey] : null;
+            if (pendingAbsence) {
+                cell.classList.add('wp-roster-cell--pending-absence');
+                const pendingKind = typeof pendingAbsence.kind === 'string' ? pendingAbsence.kind : '';
+                if (pendingKind) {
+                    cell.classList.add(`wp-roster-cell--pending-absence-${pendingKind}`);
+                }
+                const pendingTitle = payload.pending_absence_messages?.[pendingKind]
+                    || payload.pending_absence_messages?.leave
+                    || '';
+                if (pendingTitle) {
+                    cell.title = cell.title ? `${cell.title}\n${pendingTitle}` : pendingTitle;
+                }
+            }
             // Vergrendelde dag (verleden): cel is readOnly; tooltip legt uit waarom.
             if (isLocked && payload.locked_hint) {
                 cell.title = cell.title ? `${cell.title}\n${payload.locked_hint}` : payload.locked_hint;

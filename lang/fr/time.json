@@ -982,7 +982,11 @@
             "tools": "Aide et export"
         },
         "today": "Aujourd'hui",
-        "groups_count": ":selected sur :total"
+        "groups_count": ":selected sur :total",
+        "pending_absence": {
+            "leave": "Congé demandé (en attente d’approbation)",
+            "recup": "Récupération demandée (en attente d’approbation)"
+        }
     },
     "shift_types": {
         "title": "Types de service",

@@ -6,10 +6,12 @@ use App\Data\Time\RosterWeekSnapshot;
 use App\Data\Time\WorkerMonthFacts;
 use App\Data\Time\WorkerMonthNorm;
 use App\Data\Time\WorkerWeekHours;
+use App\Enums\AbsenceRequestStatus;
 use App\Enums\MonthNormStatus;
 use App\Enums\RosterAttendanceStatus;
 use App\Enums\ShiftTypeColor;
 use App\Enums\ShiftTypeKind;
+use App\Models\AbsenceRequest;
 use App\Models\BelgianPublicHoliday;
 use App\Models\InternalTeam;
 use App\Models\Location;
@@ -303,6 +305,7 @@ class ListRosterWeekAction
             ], $workerPayload);
 
         $dayFlags = $this->dayFlags($tenantId, $dates, $visibleStart, $visibleEnd);
+        $pendingAbsences = $this->pendingAbsences($tenantId, $workerIds, $visibleStart, $visibleEnd, $dates);
 
         return new RosterWeekSnapshot(
             weekStart: $weekStartDate,
@@ -332,7 +335,63 @@ class ListRosterWeekAction
             groupMode: $groupMode,
             hoursColumns: $hoursColumns,
             dayFlags: $dayFlags,
+            pendingAbsences: $pendingAbsences,
+            pendingAbsenceMessages: [
+                ShiftTypeKind::Leave->value => __('time.schedule.pending_absence.leave'),
+                ShiftTypeKind::Recup->value => __('time.schedule.pending_absence.recup'),
+            ],
         );
+    }
+
+    /**
+     * Open verlof-/recupaanvragen per worker+dag in het zichtbare venster.
+     * Geen PlannedShift tot goedkeuring — alleen overlay-info voor de grid.
+     *
+     * @param  list<int>  $workerIds
+     * @param  list<string>  $dates
+     * @return array<string, array{kind: string, request_id: int}>
+     */
+    private function pendingAbsences(
+        int $tenantId,
+        array $workerIds,
+        string $visibleStart,
+        string $visibleEnd,
+        array $dates,
+    ): array {
+        if ($workerIds === [] || $dates === []) {
+            return [];
+        }
+
+        $visible = array_fill_keys($dates, true);
+        $requests = AbsenceRequest::query()
+            ->where('tenant_id', $tenantId)
+            ->whereIn('worker_id', $workerIds)
+            ->where('status', AbsenceRequestStatus::Pending->value)
+            ->whereDate('date_from', '<=', $visibleEnd)
+            ->whereDate('date_to', '>=', $visibleStart)
+            ->orderBy('id')
+            ->get(['id', 'worker_id', 'kind', 'date_from', 'date_to']);
+
+        $map = [];
+        foreach ($requests as $request) {
+            $day = Carbon::parse($request->date_from->toDateString())->startOfDay();
+            $end = Carbon::parse($request->date_to->toDateString())->startOfDay();
+            while ($day->lte($end)) {
+                $date = $day->toDateString();
+                if (isset($visible[$date])) {
+                    $key = ((int) $request->worker_id).':'.$date;
+                    if (! isset($map[$key])) {
+                        $map[$key] = [
+                            'kind' => $request->kind->value,
+                            'request_id' => (int) $request->id,
+                        ];
+                    }
+                }
+                $day = $day->addDay();
+            }
+        }
+
+        return $map;
     }
 
     /**

@@ -1176,7 +1176,10 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   dashboardtegel alleen als er open aanvragen zijn; toont het aantal per soort
   (1 Verlof, 1 Recup, of 1 Verlof - 1 Recup).
   Weigeren eist een reden (min. 3); goedkeuren niet. Aanvragen toont wie heeft goedgekeurd
-  of geweigerd. Bij goedkeuren: bestaande roostercellen
+  of geweigerd. **Open** aanvragen: overlay in het beheer-uurrooster (week/maand + print)
+  op elke geraakte cel (gestippelde rand + tooltip Verlof/Recup aangevraagd) — geen
+  `PlannedShift` tot goedkeuring; onderliggende dienst blijft zichtbaar en bewerkbaar.
+  Niet op gsm-portaal/teamrooster. Bij goedkeuren: bestaande roostercellen
   in die periode tonen, snapshot op de aanvraag, daarna vervangen door gepubliceerde
   afwezigheid (niet stil). Intrekken op Clock Point: open aanvragen altijd; goedgekeurd
   verlof/recup zolang `date_from` nog niet voorbij is — snapshot zet het rooster terug.

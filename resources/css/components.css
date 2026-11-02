@@ -7853,6 +7853,19 @@ a.wp-worker-hours-link:focus-visible {
     flex: 1 1 100%;
 }
 
+/* Open verlof/recup: gestippelde rand, geen fill zoals goedgekeurde absence. */
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--pending-absence {
+    box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--wp-warning, #b45309) 90%, transparent);
+    outline: 1px dashed color-mix(in srgb, var(--wp-warning, #b45309) 75%, transparent);
+    outline-offset: -3px;
+}
+
+.wp-roster-print__cell--pending-absence {
+    box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--wp-warning, #b45309) 90%, transparent);
+    outline: 1px dashed color-mix(in srgb, var(--wp-warning, #b45309) 75%, transparent);
+    outline-offset: -2px;
+}
+
 /* Blok met notitie: klein pennetje in de celhoek (title toont de tekst). */
 .wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--note {
     position: relative;

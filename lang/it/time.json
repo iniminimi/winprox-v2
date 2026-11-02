@@ -982,7 +982,11 @@
             "tools": "Aiuto ed esportazione"
         },
         "today": "Oggi",
-        "groups_count": ":selected di :total"
+        "groups_count": ":selected di :total",
+        "pending_absence": {
+            "leave": "Ferie richieste (in attesa di approvazione)",
+            "recup": "Recupero richiesto (in attesa di approvazione)"
+        }
     },
     "shift_types": {
         "title": "Tipi di turno",

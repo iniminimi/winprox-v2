@@ -21,6 +21,8 @@ final class RosterWeekSnapshot
      * @param  list<array<string, mixed>>  $rows
      * @param  list<array{key: string, title: string, hint: string, width: int}>  $hoursColumns
      * @param  array<string, array{kind: string, label: string}>  $dayFlags
+     * @param  array<string, array{kind: string, request_id: int}>  $pendingAbsences
+     * @param  array<string, string>  $pendingAbsenceMessages
      */
     public function __construct(
         public string $weekStart,
@@ -44,6 +46,8 @@ final class RosterWeekSnapshot
         public bool $groupMode = false,
         public array $hoursColumns = [],
         public array $dayFlags = [],
+        public array $pendingAbsences = [],
+        public array $pendingAbsenceMessages = [],
     ) {}
 
     /**
@@ -75,6 +79,8 @@ final class RosterWeekSnapshot
             'hours_columns' => $this->hoursColumns,
             'day_flags' => $this->dayFlags,
             'off_day_label' => __('time.schedule.day_flag.off_day'),
+            'pending_absences' => $this->pendingAbsences,
+            'pending_absence_messages' => $this->pendingAbsenceMessages,
             'error_messages' => [
                 'time.schedule.errors.unknown_code' => __('time.schedule.errors.unknown_code'),
                 'time.schedule.errors.unknown_unit' => __('time.schedule.errors.unknown_unit'),

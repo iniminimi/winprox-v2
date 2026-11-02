@@ -982,7 +982,11 @@
             "tools": "Hulp en uitvoer"
         },
         "today": "Vandaag",
-        "groups_count": ":selected van :total"
+        "groups_count": ":selected van :total",
+        "pending_absence": {
+            "leave": "Verlof aangevraagd (wacht op goedkeuring)",
+            "recup": "Recup aangevraagd (wacht op goedkeuring)"
+        }
     },
     "shift_types": {
         "title": "Shifttypes",
