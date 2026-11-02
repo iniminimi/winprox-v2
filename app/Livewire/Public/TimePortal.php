@@ -722,7 +722,12 @@ class TimePortal extends Component
     public function previousTeamScheduleWeek(): void
     {
         $base = $this->teamScheduleWeek !== '' ? $this->teamScheduleWeek : now()->toDateString();
-        $this->teamScheduleWeek = Carbon::parse($base)->subWeek()->startOfWeek(Carbon::MONDAY)->toDateString();
+        $candidate = Carbon::parse($base)->subWeek()->startOfWeek(Carbon::MONDAY);
+        $currentWeekStart = now()->startOfWeek(Carbon::MONDAY);
+        if ($candidate->lt($currentWeekStart)) {
+            return;
+        }
+        $this->teamScheduleWeek = $candidate->toDateString();
     }
 
     public function nextTeamScheduleWeek(): void

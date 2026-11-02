@@ -118,7 +118,7 @@
                     "Les points de restauration des changements de planning sont gardés 30 jours. La liste en montre 40 au plus. Vous voyez date, heure, source, personnes et jours, et ce qui disparaît, revient ou change.",
                     "Un jour verrouillé, un service passé entre-temps à un autre jour, ou un congé approuvé peut bloquer une restauration. Si le planning diffère ou qu’une demande est ouverte, WinProx demande une confirmation. Elle ne vaut que pour l’écart affiché. Si le planning a changé entre-temps, WinProx ne restaure rien et montre le nouvel écart. Une restauration réussie peut elle-même être annulée.",
                     "Sur Clock Point, les personnes voient seulement leurs propres services publiés du mois. Après une publication ou un changement ultérieur, une indication apparaît.",
-                    "Un planning d’équipe est facultatif. Les personnes voient alors les services de semaine publiés des collègues sur leur propre site. Les absences y sont neutres.",
+                    "Un planning d’équipe est facultatif. Les personnes voient alors les services de semaine publiés des collègues sur leur propre site, à partir d’aujourd’hui (pas de jours passés). Les absences y sont neutres.",
                     "La fonction de planning peut être coupée. Les services existants restent conservés. La pointeuse, la connexion par QR et les tâches restent disponibles.",
                     "L’impression ouvre la période visible en A4 paysage."
                 ]

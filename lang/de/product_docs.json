@@ -118,7 +118,7 @@
                     "Wiederherstellungspunkte von Dienstplanänderungen bleiben 30 Tage gespeichert. Die Liste zeigt höchstens 40. Sie sehen Datum, Uhrzeit, Quelle, Personen und Tage, und was wegfällt, zurückkommt oder sich ändert.",
                     "Ein gesperrter Tag, eine Schicht, die inzwischen auf einem anderen Tag steht, oder genehmigter Urlaub kann eine Wiederherstellung stoppen. Weicht der Dienstplan ab oder ist ein Antrag offen, bittet WinProx um eine Bestätigung. Die gilt nur für den gezeigten Unterschied. Hat sich der Dienstplan inzwischen geändert, stellt WinProx nichts wieder her und zeigt den neuen Unterschied. Eine gelungene Wiederherstellung können Sie selbst zurücknehmen.",
                     "Am Clock Point sehen Mitarbeitende nur ihre eigenen veröffentlichten Schichten dieses Monats. Nach einer Veröffentlichung oder einer späteren Änderung erscheint ein Hinweis.",
-                    "Ein Teamdienstplan ist optional. Mitarbeitende sehen dann die veröffentlichten Wochenschichten der Kolleginnen und Kollegen am eigenen Standort. Abwesenheiten stehen dort neutral.",
+                    "Ein Teamdienstplan ist optional. Mitarbeitende sehen dann die veröffentlichten Wochenschichten der Kolleginnen und Kollegen am eigenen Standort, ab heute (keine vergangenen Tage). Abwesenheiten stehen dort neutral.",
                     "Die Planungsfunktion kann ausgeschaltet werden. Bestehende Schichten bleiben gespeichert. Stempeluhr, QR-Anmeldung und Aufgaben bleiben verfügbar.",
                     "Drucken öffnet den sichtbaren Zeitraum auf Querformat A4."
                 ]

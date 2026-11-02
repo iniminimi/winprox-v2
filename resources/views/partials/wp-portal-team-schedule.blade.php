@@ -1,6 +1,12 @@
 <nav class="wp-pagination" aria-label="{{ __('time.portal.team_schedule.week_nav') }}">
     <div class="wp-pagination__pages">
-        <button type="button" class="wp-pagination__control" wire:click="previousTeamScheduleWeek" aria-label="{{ __('time.portal.team_schedule.previous_week') }}">‹</button>
+        <button
+            type="button"
+            class="wp-pagination__control"
+            wire:click="previousTeamScheduleWeek"
+            @disabled(! $teamSchedule->canGoPrevious)
+            aria-label="{{ __('time.portal.team_schedule.previous_week') }}"
+        >‹</button>
         <button type="button" class="wp-pagination__page is-active" wire:click="thisTeamScheduleWeek">{{ $teamScheduleWeekLabel }}</button>
         <button type="button" class="wp-pagination__control" wire:click="nextTeamScheduleWeek" aria-label="{{ __('time.portal.team_schedule.next_week') }}">›</button>
     </div>

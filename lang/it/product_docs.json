@@ -118,7 +118,7 @@
                     "I punti di ripristino delle modifiche ai turni restano 30 giorni. L’elenco ne mostra al massimo 40. Si vedono data, ora, origine, persone e giorni, e cosa sparisce, torna o cambia.",
                     "Un giorno bloccato, un turno finito intanto su un altro giorno, o ferie approvate possono fermare un ripristino. Se i turni differiscono o c’è una richiesta aperta, WinProx chiede una conferma. Vale solo per la differenza che vedete. Se i turni sono cambiati nel frattempo, WinProx non ripristina nulla e mostra la nuova differenza. Un ripristino riuscito si può annullare.",
                     "Su Clock Point le persone vedono solo i propri turni pubblicati di quel mese. Dopo una pubblicazione o una modifica successiva compare un segno.",
-                    "Un turno di team è facoltativo. Le persone vedono allora i turni settimanali pubblicati dei colleghi nella propria sede. Le assenze compaiono in modo neutro.",
+                    "Un turno di team è facoltativo. Le persone vedono allora i turni settimanali pubblicati dei colleghi nella propria sede, da oggi in poi (niente giorni passati). Le assenze compaiono in modo neutro.",
                     "La pianificazione si può disattivare. I turni esistenti restano salvati. Timbratrice, accesso QR e compiti restano disponibili.",
                     "La stampa apre il periodo visibile in A4 orizzontale."
                 ]

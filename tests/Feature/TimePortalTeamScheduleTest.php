@@ -232,3 +232,55 @@ it('navigeert tussen weken', function () {
         ->call('thisTeamScheduleWeek')
         ->assertSet('teamScheduleWeek', '2026-10-19');
 });
+
+it('toont geen dagen in het verleden in de lopende week', function () {
+    $this->travelTo(Carbon::parse('2026-10-22 12:00:00')); // donderdag week 43
+    [$tenant, $team, $clockPoint, $worker, $location] = teamSchedulePortalTenant();
+    $past = Worker::factory()->create([
+        'tenant_id' => $tenant->id, 'internal_team_id' => $team->id,
+        'first_name' => 'Gisteren', 'last_name' => 'Weg',
+    ]);
+    $past->locations()->attach($location->id);
+    $today = Worker::factory()->create([
+        'tenant_id' => $tenant->id, 'internal_team_id' => $team->id,
+        'first_name' => 'Vandaag', 'last_name' => 'Nog',
+    ]);
+    $today->locations()->attach($location->id);
+
+    teamScheduleShift($tenant, $past, '2026-10-20', [ // dinsdag = verleden
+        'location_id' => $location->id, 'unit_name' => 'VerledenZaal',
+    ]);
+    teamScheduleShift($tenant, $today, '2026-10-22', [
+        'location_id' => $location->id, 'unit_name' => 'NuZaal',
+    ]);
+
+    teamScheduleSignIn($clockPoint)
+        ->call('openTeamSchedule')
+        ->assertSee('Vandaag Nog', false)
+        ->assertSee('NuZaal', false)
+        ->assertDontSee('Gisteren Weg', false)
+        ->assertDontSee('VerledenZaal', false);
+});
+
+it('blokkeert navigatie naar vorige weken', function () {
+    $this->travelTo(Carbon::parse('2026-10-22 12:00:00'));
+    [$tenant, $team, $clockPoint, $worker, $location] = teamSchedulePortalTenant();
+    $old = Worker::factory()->create([
+        'tenant_id' => $tenant->id, 'internal_team_id' => $team->id,
+        'first_name' => 'Oude', 'last_name' => 'Week',
+    ]);
+    $old->locations()->attach($location->id);
+    teamScheduleShift($tenant, $old, '2026-10-13', [ // vorige week dinsdag
+        'location_id' => $location->id,
+    ]);
+
+    teamScheduleSignIn($clockPoint)
+        ->call('openTeamSchedule')
+        ->assertSet('teamScheduleWeek', '2026-10-19')
+        ->call('previousTeamScheduleWeek')
+        ->assertSet('teamScheduleWeek', '2026-10-19')
+        ->assertDontSee('Oude Week', false)
+        ->set('teamScheduleWeek', '2026-10-12') // geforceerd verleden
+        ->assertSet('teamScheduleWeek', '2026-10-19') // action clamt terug
+        ->assertDontSee('Oude Week', false);
+});

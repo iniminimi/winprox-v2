@@ -12,5 +12,6 @@ final class TeamRosterWeekSnapshot
         public string $weekEnd,
         public string $weekLabel,
         public array $days,
+        public bool $canGoPrevious = true,
     ) {}
 }

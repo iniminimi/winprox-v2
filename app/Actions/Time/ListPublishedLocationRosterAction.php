@@ -37,8 +37,15 @@ class ListPublishedLocationRosterAction
 
         $locationIds = array_values(array_unique(array_map('intval', $locationIds)));
         $locale = $locale ?: app()->getLocale();
+        $today = Carbon::today();
+        $currentWeekStart = $today->copy()->startOfWeek(Carbon::MONDAY);
         $start = Carbon::parse($cursor)->startOfWeek(Carbon::MONDAY);
+        // Volledig verleden weken terugzetten naar de lopende week.
+        if ($start->lt($currentWeekStart)) {
+            $start = $currentWeekStart->copy();
+        }
         $end = $start->copy()->endOfWeek(Carbon::SUNDAY);
+        $from = $start->lt($today) ? $today->copy() : $start->copy();
 
         $assignedIds = $locationIds === [] ? [] : Worker::query()
             ->where('tenant_id', $tenantId)
@@ -51,7 +58,7 @@ class ListPublishedLocationRosterAction
                 ->with('shiftType', 'worker')
                 ->where('tenant_id', $tenantId)
                 ->where('status', PlannedShiftStatus::Published->value)
-                ->whereBetween('work_date', [$start->toDateString(), $end->toDateString()])
+                ->whereBetween('work_date', [$from->toDateString(), $end->toDateString()])
                 ->where(function ($q) use ($assignedIds, $locationIds): void {
                     if ($assignedIds->isNotEmpty()) {
                         $q->orWhereIn('worker_id', $assignedIds);
@@ -74,7 +81,10 @@ class ListPublishedLocationRosterAction
             ->keyBy('id');
         $days = [];
         foreach ($shifts->groupBy(fn (PlannedShift $s) => $s->work_date->toDateString()) as $date => $dayShifts) {
-            $day = Carbon::parse($date);
+            $day = Carbon::parse($date)->startOfDay();
+            if ($day->lt($today)) {
+                continue;
+            }
             $days[] = new TeamRosterDay(
                 date: $date,
                 dayLabel: $day->copy()->locale($locale)->isoFormat('dd').' '.$day->format('d/m'),
@@ -91,6 +101,7 @@ class ListPublishedLocationRosterAction
                 'range' => $start->format('d/m').' – '.$end->format('d/m'),
             ]),
             days: $days,
+            canGoPrevious: $start->gt($currentWeekStart),
         );
     }
 

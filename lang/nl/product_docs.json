@@ -118,7 +118,7 @@
                     "Herstelpunten van roosterwijzigingen blijven 30 dagen bewaard. De lijst toont er hoogstens 40. U ziet datum, tijdstip, bron, medewerkers en dagen, en wat verdwijnt, terugkomt of wijzigt.",
                     "Een vergrendelde dag, een dienst die intussen op een andere dag staat, of goedgekeurd verlof kan een herstel tegenhouden. Wijkt het rooster af of staat er een aanvraag open, dan vraagt WinProx een bevestiging. Die geldt alleen voor het verschil dat u ziet. Is het rooster intussen veranderd, dan herstelt WinProx niets en toont het het nieuwe verschil. Een geslaagd herstel kunt u zelf terugdraaien.",
                     "Medewerkers zien op Clock Point alleen hun eigen gepubliceerde diensten van die maand. Na een publicatie of een latere wijziging verschijnt een aanduiding.",
-                    "Een teamrooster is optioneel. Medewerkers zien dan de gepubliceerde weekdiensten van collega’s op hun eigen locatie. Afwezigheden staan daar neutraal.",
+                    "Een teamrooster is optioneel. Medewerkers zien dan de gepubliceerde weekdiensten van collega’s op hun eigen locatie, vanaf vandaag (geen dagen in het verleden). Afwezigheden staan daar neutraal.",
                     "De planningsfunctie kan uit. Bestaande diensten blijven bewaard. De prikklok, de QR-aanmelding en de taken blijven beschikbaar.",
                     "Afdrukken opent de zichtbare periode op liggend A4."
                 ]

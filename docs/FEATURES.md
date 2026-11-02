@@ -1158,10 +1158,12 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   "Zonder groep", dan "Afwezig"); binnen
   een unit geclusterd per uitvoerder (één rij, diensten/uren gestapeld op
   startuur). Eigen rij gemarkeerd met "Jij"-pill. Afwezigheden van collega's
-  tonen neutraal als **"Afwezig"** (geen soort of reden). Weeknavigatie ‹ › +
-  deze week; label "Week <iso> · <d/m>–<d/m>".
-  Drafts nooit zichtbaar. `ListPublishedLocationRosterAction` —
-  één worker-scope-query + één shift-query, geen N+1.
+  tonen neutraal als **"Afwezig"** (geen soort of reden). Alleen vandaag en
+  toekomst: dagen vóór vandaag verdwijnen; vorige weken zijn niet bereikbaar
+  (‹ disabled op de lopende week). Weeknavigatie ‹ › + deze week; label
+  "Week <iso> · <d/m>–<d/m>". Drafts nooit zichtbaar.
+  `ListPublishedLocationRosterAction` — één worker-scope-query + één
+  shift-query, geen N+1.
 - **Uurrooster uit:** `time_roster_enabled` (standaard aan, Instellingen, onder Prikklok-beveiliging) verbergt
   de planning (uurrooster, shifttypes, feestdagen, minimumbezetting, verlof/recup) en
   blokkeert die routes. Het veld Roostercode in Geavanceerde portaal-opties verdwijnt;

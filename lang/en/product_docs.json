@@ -118,7 +118,7 @@
                     "Restore points of roster changes are kept for 30 days. The list shows at most 40. You see date, time, source, people and days, and what disappears, comes back or changes.",
                     "A locked day, a shift that has since moved to another day, or approved leave can block a restore. If the roster differs or a request is still open, WinProx asks for a confirmation. That confirmation covers only the difference you see. If the roster has changed in the meantime, WinProx restores nothing and shows the new difference. A successful restore can itself be undone.",
                     "On Clock Point, people see only their own published shifts for that month. After a publication or a later change, a mark appears.",
-                    "A team roster is optional. People then see colleagues’ published week shifts at their own location. Absences are shown in a neutral way.",
+                    "A team roster is optional. People then see colleagues’ published week shifts at their own location, from today onward (no past days). Absences are shown in a neutral way.",
                     "The planning feature can be switched off. Existing shifts stay stored. The clock, QR sign-in and tasks remain available.",
                     "Print opens the visible period on landscape A4."
                 ]

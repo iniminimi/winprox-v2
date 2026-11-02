@@ -118,7 +118,7 @@
                     "Los puntos de restauración de cambios del cuadrante se guardan 30 días. La lista muestra como máximo 40. Se ve fecha, hora, origen, personas y días, y qué desaparece, vuelve o cambia.",
                     "Un día bloqueado, un turno que entretanto está en otro día, o un permiso aprobado pueden impedir una restauración. Si el cuadrante difiere o hay una solicitud abierta, WinProx pide una confirmación. Esa vale solo para la diferencia que se ve. Si el cuadrante cambió entretanto, WinProx no restaura nada y muestra la nueva diferencia. Una restauración lograda se puede deshacer.",
                     "En Clock Point, las personas ven solo sus turnos publicados de ese mes. Tras una publicación o un cambio posterior aparece una marca.",
-                    "Un cuadrante de equipo es opcional. Las personas ven entonces los turnos de semana publicados de los compañeros en su propia sede. Las ausencias se muestran de forma neutra.",
+                    "Un cuadrante de equipo es opcional. Las personas ven entonces los turnos de semana publicados de los compañeros en su propia sede, desde hoy (sin días pasados). Las ausencias se muestran de forma neutra.",
                     "La planificación se puede desactivar. Los turnos existentes se conservan. El reloj, el acceso por QR y las tareas siguen disponibles.",
                     "Imprimir abre el periodo visible en A4 horizontal."
                 ]
