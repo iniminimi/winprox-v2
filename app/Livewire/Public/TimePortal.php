@@ -832,12 +832,23 @@ class TimePortal extends Component
         }
 
         $rules = RequestAbsenceRequest::rulesFor();
-        $this->validate([
-            'absenceKind' => $rules['kind'],
-            'absenceDateFrom' => $rules['date_from'],
-            'absenceDateTo' => ['required', 'date_format:Y-m-d', 'after_or_equal:absenceDateFrom'],
-            'absenceDescription' => $rules['description'],
-        ]);
+        $this->validate(
+            [
+                'absenceKind' => $rules['kind'],
+                'absenceDateFrom' => $rules['date_from'],
+                'absenceDateTo' => ['required', 'date_format:Y-m-d', 'after_or_equal:absenceDateFrom'],
+                'absenceDescription' => $rules['description'],
+            ],
+            [
+                'absenceDateTo.after_or_equal' => __('time.absence.errors.range_inverted'),
+            ],
+            [
+                'absenceKind' => __('time.portal.absence.kind'),
+                'absenceDateFrom' => __('time.portal.absence.date_from'),
+                'absenceDateTo' => __('time.portal.absence.date_to'),
+                'absenceDescription' => __('time.portal.absence.description'),
+            ],
+        );
 
         $tenant = Tenant::query()->find($this->tenantId);
         if ($tenant === null) {

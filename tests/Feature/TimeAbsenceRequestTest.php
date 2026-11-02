@@ -489,6 +489,22 @@ it('toont de portaltegel en verstuurt een aanvraag', function () {
         ->and(AbsenceRequest::query()->first()?->status)->toBe(AbsenceRequestStatus::Cancelled);
 });
 
+it('toont een nette fout als de einddatum vóór de startdatum ligt', function () {
+    [, , $clockPoint] = absenceTenant();
+
+    signInAbsenceWorker($clockPoint)
+        ->call('openAbsence')
+        ->set('absenceKind', ShiftTypeKind::Leave->value)
+        ->set('absenceDateFrom', '2026-09-24')
+        ->set('absenceDateTo', '2026-09-23')
+        ->call('submitAbsence')
+        ->assertHasErrors(['absenceDateTo' => 'after_or_equal'])
+        ->assertSee(__('time.absence.errors.range_inverted'), false)
+        ->assertDontSee('absence date', false);
+
+    expect(AbsenceRequest::query()->count())->toBe(0);
+});
+
 it('laat beheer een aanvraag goedkeuren zonder reden', function () {
     [$tenant, $admin, , $worker] = absenceTenant();
     $request = app(RequestAbsenceAction::class)->handle(

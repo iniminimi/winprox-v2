@@ -20,6 +20,29 @@ class RequestAbsenceRequest extends FormRequest
     }
 
     /**
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            'date_to.after_or_equal' => __('time.absence.errors.range_inverted'),
+        ];
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function attributes(): array
+    {
+        return [
+            'kind' => __('time.portal.absence.kind'),
+            'date_from' => __('time.portal.absence.date_from'),
+            'date_to' => __('time.portal.absence.date_to'),
+            'description' => __('time.portal.absence.description'),
+        ];
+    }
+
+    /**
      * @return array<string, mixed>
      */
     public static function rulesFor(): array
