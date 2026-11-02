@@ -985,7 +985,8 @@
         "groups_count": ":selected van :total",
         "pending_absence": {
             "leave": "Verlof aangevraagd (wacht op goedkeuring)",
-            "recup": "Recup aangevraagd (wacht op goedkeuring)"
+            "recup": "Recup aangevraagd (wacht op goedkeuring)",
+            "open_hint": "Klik op de markering linksonder om de aanvraag te openen."
         }
     },
     "shift_types": {

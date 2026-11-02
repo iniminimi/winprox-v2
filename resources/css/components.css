@@ -7860,18 +7860,42 @@ a.wp-worker-hours-link:focus-visible {
     outline-offset: -3px;
 }
 
+/* Klikbare markering linksonder (::before; attendance gebruikt ::after rechtsboven). */
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--pending-absence-link {
+    position: relative;
+}
+
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--pending-absence-link::before {
+    content: '';
+    position: absolute;
+    bottom: 3px;
+    left: 3px;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--wp-warning, #b45309) 92%, transparent);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--wp-surface) 70%, transparent);
+    pointer-events: none;
+    z-index: 2;
+}
+
 .wp-roster-print__cell--pending-absence {
     box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--wp-warning, #b45309) 90%, transparent);
     outline: 1px dashed color-mix(in srgb, var(--wp-warning, #b45309) 75%, transparent);
     outline-offset: -2px;
 }
 
-/* Blok met notitie: klein pennetje in de celhoek (title toont de tekst). */
+.wp-roster-print__pending-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Blok met notitie: klein pennetje (niet combineren met pending-::before). */
 .wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--note {
     position: relative;
 }
 
-.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--note::before {
+.wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--note:not(.wp-roster-cell--pending-absence-link)::before {
     content: '✎';
     position: absolute;
     top: 0.125rem;

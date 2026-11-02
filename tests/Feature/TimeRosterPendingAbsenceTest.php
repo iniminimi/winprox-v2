@@ -9,6 +9,8 @@ use App\Data\Time\DecideAbsenceRequestData;
 use App\Data\Time\RequestAbsenceData;
 use App\Enums\AbsenceRequestStatus;
 use App\Enums\ShiftTypeKind;
+use App\Livewire\Time\AbsenceRequestsIndex;
+use App\Livewire\Time\RosterIndex;
 use App\Models\InternalTeam;
 use App\Models\ShiftType;
 use App\Models\Tenant;
@@ -16,6 +18,7 @@ use App\Models\User;
 use App\Models\Worker;
 use App\Support\Tenancy;
 use Carbon\Carbon;
+use Livewire\Livewire;
 
 afterEach(function () {
     Carbon::setTestNow();
@@ -152,4 +155,37 @@ it('toont geen pending-marker voor aanvragen buiten de zichtbare week', function
     )->pendingAbsences;
 
     expect($pending)->toBe([]);
+});
+
+it('zet de aanvragen-url in de roosterpayload voor wie mag bekijken', function () {
+    [$tenant, $admin, $worker] = pendingAbsenceRosterSetup();
+
+    Livewire::actingAs($admin)
+        ->test(RosterIndex::class)
+        ->set('teamFilter', (string) $worker->internal_team_id)
+        ->set('weekStart', '2026-09-21')
+        ->assertViewHas('gridPayload', function (array $payload) {
+            return ($payload['absence_requests_url'] ?? null) === route('time.absence-requests.index')
+                && ($payload['pending_absence_open_hint'] ?? null) === __('time.schedule.pending_absence.open_hint');
+        });
+});
+
+it('opent de beslismodal via decide-query op Aanvragen', function () {
+    [$tenant, $admin, $worker] = pendingAbsenceRosterSetup();
+
+    $request = app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Leave, '2026-09-23', '2026-09-23'),
+    );
+
+    Livewire::actingAs($admin)
+        ->withQueryParams([
+            'status' => AbsenceRequestStatus::Pending->value,
+            'decide' => $request->id,
+        ])
+        ->test(AbsenceRequestsIndex::class)
+        ->assertSet('decidingId', $request->id)
+        ->assertSet('statusFilter', AbsenceRequestStatus::Pending->value)
+        ->assertSee('Jan Janssen', false);
 });

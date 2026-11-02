@@ -577,6 +577,28 @@ function isAttendanceMarkerClick(td, event) {
     return event.clientX >= rect.right - 18 && event.clientY <= rect.top + 18;
 }
 
+function isPendingAbsenceMarkerClick(td, event) {
+    const rect = td.getBoundingClientRect();
+
+    return event.clientX <= rect.left + 18 && event.clientY >= rect.bottom - 18;
+}
+
+function absenceRequestUrlFor(payload, requestId) {
+    const base = payload.absence_requests_url;
+    if (!base || !requestId) {
+        return '';
+    }
+    try {
+        const url = new URL(base, window.location.origin);
+        url.searchParams.set('status', 'pending');
+        url.searchParams.set('decide', String(requestId));
+
+        return `${url.pathname}${url.search}`;
+    } catch {
+        return '';
+    }
+}
+
 function applyAttendanceLink(cell, url) {
     if (url) {
         cell.dataset.wpHoursUrl = url;
@@ -584,6 +606,16 @@ function applyAttendanceLink(cell, url) {
     } else {
         delete cell.dataset.wpHoursUrl;
         cell.classList.remove('wp-roster-cell--attendance-link');
+    }
+}
+
+function applyPendingAbsenceLink(cell, url) {
+    if (url) {
+        cell.dataset.wpAbsenceUrl = url;
+        cell.classList.add('wp-roster-cell--pending-absence-link');
+    } else {
+        delete cell.dataset.wpAbsenceUrl;
+        cell.classList.remove('wp-roster-cell--pending-absence-link');
     }
 }
 
@@ -757,7 +789,7 @@ function applyCellClasses(worksheet, payload) {
                     cell.title = `${cell.title ? `${cell.title}\n` : ''}${notes.join('\n')}`;
                 }
             }
-            // Open verlof/recup: overlay (geen celtekst) — class + tooltip.
+            // Open verlof/recup: overlay (geen celtekst) — class + tooltip + link.
             const pendingAbsence = attendanceKey ? payload.pending_absences?.[attendanceKey] : null;
             if (pendingAbsence) {
                 cell.classList.add('wp-roster-cell--pending-absence');
@@ -768,9 +800,19 @@ function applyCellClasses(worksheet, payload) {
                 const pendingTitle = payload.pending_absence_messages?.[pendingKind]
                     || payload.pending_absence_messages?.leave
                     || '';
-                if (pendingTitle) {
-                    cell.title = cell.title ? `${cell.title}\n${pendingTitle}` : pendingTitle;
+                const openHint = payload.absence_requests_url
+                    ? (payload.pending_absence_open_hint || '')
+                    : '';
+                const pendingFullTitle = [pendingTitle, openHint].filter(Boolean).join(' — ');
+                if (pendingFullTitle) {
+                    cell.title = cell.title ? `${cell.title}\n${pendingFullTitle}` : pendingFullTitle;
                 }
+                applyPendingAbsenceLink(
+                    cell,
+                    absenceRequestUrlFor(payload, pendingAbsence.request_id),
+                );
+            } else {
+                applyPendingAbsenceLink(cell, '');
             }
             // Vergrendelde dag (verleden): cel is readOnly; tooltip legt uit waarom.
             if (isLocked && payload.locked_hint) {
@@ -1166,6 +1208,30 @@ export function bind(root, wire) {
         event.stopPropagation();
         requestLeave(() => window.location.assign(url));
     };
+    // Open verlof/recup: markering linksonder (of Ctrl/Meta zonder uren-link).
+    const openAbsenceFromPending = (event) => {
+        if (event.button !== 0) {
+            return;
+        }
+        const td = event.target?.closest?.('td');
+        const url = td?.dataset?.wpAbsenceUrl;
+        if (!url) {
+            return;
+        }
+        const corner = isPendingAbsenceMarkerClick(td, event);
+        if (corner) {
+            event.preventDefault();
+            event.stopPropagation();
+            requestLeave(() => window.location.assign(url));
+
+            return;
+        }
+        if ((event.ctrlKey || event.metaKey) && !td.dataset.wpHoursUrl) {
+            event.preventDefault();
+            event.stopPropagation();
+            requestLeave(() => window.location.assign(url));
+        }
+    };
     // Dagselectie zelf bijhouden: jspreadsheet reset selectedCell bij mousedown
     // buiten het grid (o.a. de "Dag bewerken"-knop) en zijn eigen highlight is
     // hier niet zichtbaar. Cel-coördinaten komen uit data-x/data-y.
@@ -1205,6 +1271,7 @@ export function bind(root, wire) {
     };
     grid.addEventListener('click', openWorkerHoursFromName, true);
     grid.addEventListener('mousedown', trackDaySelection, true);
+    grid.addEventListener('mousedown', openAbsenceFromPending, true);
     grid.addEventListener('mousedown', openHoursFromAttendance, true);
 
     // Rechtsklik-menu op een dagcel: "Dag bewerken" (+ "Uren openen" als de cel

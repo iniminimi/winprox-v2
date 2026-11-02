@@ -128,7 +128,7 @@
                 "body": "Les personnes demandent un congé ou une récupération via Clock Point. Le gestionnaire décide dans Time → Demandes. Cette demande ne sert pas à signaler une maladie, et aucun e-mail n’est envoyé.",
                 "items": [
                     "Une demande va d’une date de début à une date de fin, 31 jours au maximum, et pas dans le passé.",
-                    "Dans le planning d’administration, les demandes ouvertes apparaissent comme un marquage sur les jours concernés (le service reste jusqu’à l’approbation).",
+                    "Dans le planning d’administration, les demandes ouvertes apparaissent comme un marquage sur les jours concernés ; ce marquage ouvre Time → Demandes (le service reste jusqu’à l’approbation).",
                     "Un refus demande un motif. Après la décision, on voit qui a approuvé ou refusé.",
                     "Une demande ouverte ou approuvée peut être retirée tant que l’absence n’a pas commencé.",
                     "À l’approbation, les services existants restent d’abord en place. WinProx les remplace ensuite dans le planning par l’absence."

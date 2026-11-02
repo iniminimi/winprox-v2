@@ -985,7 +985,8 @@
         "groups_count": ":selected von :total",
         "pending_absence": {
             "leave": "Urlaub beantragt (wartet auf Freigabe)",
-            "recup": "Ausgleich beantragt (wartet auf Freigabe)"
+            "recup": "Ausgleich beantragt (wartet auf Freigabe)",
+            "open_hint": "Klicken Sie unten links auf die Markierung, um den Antrag zu öffnen."
         }
     },
     "shift_types": {

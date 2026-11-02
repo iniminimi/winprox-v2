@@ -985,7 +985,8 @@
         "groups_count": ":selected de :total",
         "pending_absence": {
             "leave": "Vacaciones solicitadas (pendiente de aprobación)",
-            "recup": "Recup solicitado (pendiente de aprobación)"
+            "recup": "Recup solicitado (pendiente de aprobación)",
+            "open_hint": "Haga clic en la marca abajo a la izquierda para abrir la solicitud."
         }
     },
     "shift_types": {

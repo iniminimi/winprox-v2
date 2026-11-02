@@ -985,7 +985,8 @@
         "groups_count": ":selected of :total",
         "pending_absence": {
             "leave": "Leave requested (awaiting approval)",
-            "recup": "Time off in lieu requested (awaiting approval)"
+            "recup": "Time off in lieu requested (awaiting approval)",
+            "open_hint": "Click the marker at the bottom left to open the request."
         }
     },
     "shift_types": {

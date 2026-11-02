@@ -31,6 +31,7 @@ use App\Http\Requests\Time\RestoreRosterPointRequest;
 use App\Http\Requests\Time\SavePlannedDayRequest;
 use App\Http\Requests\Time\SavePlannedShiftsRequest;
 use App\Livewire\Concerns\ProvidesTimeNavAlarmCount;
+use App\Models\AbsenceRequest;
 use App\Models\PlannedShift;
 use App\Models\RosterRestorePoint;
 use App\Models\Tenant;
@@ -698,6 +699,10 @@ class RosterIndex extends Component
         if (auth()->user()?->can('viewAny', WorkShift::class)) {
             $array['hours_url'] = route('time.shifts.index');
             $array['worker_hours_hint'] = __('time.presence.open_worker_hours');
+        }
+        if (auth()->user()?->can('viewAny', AbsenceRequest::class)) {
+            $array['absence_requests_url'] = route('time.absence-requests.index');
+            $array['pending_absence_open_hint'] = __('time.schedule.pending_absence.open_hint');
         }
         $array['attendance_open_hint'] = __('time.schedule.attendance.open_hours');
         $array['multi_replace_confirm'] = __('time.schedule.multi_replace_confirm');

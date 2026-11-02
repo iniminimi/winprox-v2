@@ -985,7 +985,8 @@
         "groups_count": ":selected di :total",
         "pending_absence": {
             "leave": "Ferie richieste (in attesa di approvazione)",
-            "recup": "Recupero richiesto (in attesa di approvazione)"
+            "recup": "Recupero richiesto (in attesa di approvazione)",
+            "open_hint": "Fate clic sul contrassegno in basso a sinistra per aprire la richiesta."
         }
     },
     "shift_types": {

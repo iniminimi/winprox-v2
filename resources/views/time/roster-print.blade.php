@@ -154,6 +154,12 @@
                                             $pendingTitle = $pendingKind !== ''
                                                 ? ($snapshot->pendingAbsenceMessages[$pendingKind] ?? '')
                                                 : '';
+                                            $pendingHref = ($pending !== null && ($absenceRequestsUrl ?? null))
+                                                ? $absenceRequestsUrl.'?'.http_build_query([
+                                                    'status' => $pendingAbsenceStatus ?? 'pending',
+                                                    'decide' => (int) ($pending['request_id'] ?? 0),
+                                                ])
+                                                : null;
                                         @endphp
                                         <td
                                             @class([
@@ -163,7 +169,13 @@
                                                 'wp-roster-cell--'.$color => $color !== '' && $color !== 'none',
                                             ])
                                             @if ($pendingTitle !== '') title="{{ $pendingTitle }}" @endif
-                                        >{{ $display }}</td>
+                                        >
+                                            @if ($pendingHref && ($pending['request_id'] ?? 0))
+                                                <a class="wp-roster-print__pending-link" href="{{ $pendingHref }}">{{ $display !== '' ? $display : '·' }}</a>
+                                            @else
+                                                {{ $display }}
+                                            @endif
+                                        </td>
                                     @endforeach
                                 </tr>
                             @endif

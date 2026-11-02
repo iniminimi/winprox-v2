@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Time;
 
 use App\Actions\Time\ListRosterWeekAction;
 use App\Actions\Time\ListShiftTypesAction;
+use App\Enums\AbsenceRequestStatus;
+use App\Models\AbsenceRequest;
 use App\Models\PlannedShift;
 use App\Models\Tenant;
 use App\Models\Worker;
@@ -70,6 +72,11 @@ class RosterPrintController
             $printNames[$id] = $label !== '' ? $label : (string) ($row['name'] ?? '');
         }
 
+        $absenceRequestsUrl = null;
+        if (Gate::allows('viewAny', AbsenceRequest::class)) {
+            $absenceRequestsUrl = route('time.absence-requests.index');
+        }
+
         return view('time.roster-print', [
             'tenant' => $tenant,
             'snapshot' => $snapshot,
@@ -77,6 +84,8 @@ class RosterPrintController
             'periodLabel' => $periodLabel,
             'legendTypes' => $legendTypes,
             'printNames' => $printNames,
+            'absenceRequestsUrl' => $absenceRequestsUrl,
+            'pendingAbsenceStatus' => AbsenceRequestStatus::Pending->value,
         ]);
     }
 }

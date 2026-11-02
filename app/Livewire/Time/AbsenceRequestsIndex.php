@@ -32,6 +32,9 @@ class AbsenceRequestsIndex extends Component
     #[Url(as: 'status')]
     public ?string $statusFilter = null;
 
+    #[Url(as: 'decide')]
+    public ?int $decide = null;
+
     public ?int $decidingId = null;
 
     public string $decisionReason = '';
@@ -44,6 +47,17 @@ class AbsenceRequestsIndex extends Component
     public function mount(): void
     {
         $this->authorize('viewAny', AbsenceRequest::class);
+
+        if ($this->decide !== null) {
+            if ($this->statusFilter === null || $this->statusFilter === '') {
+                $this->statusFilter = AbsenceRequestStatus::Pending->value;
+            }
+            try {
+                $this->openDecide((int) $this->decide);
+            } catch (\Illuminate\Database\Eloquent\ModelNotFoundException) {
+                $this->decide = null;
+            }
+        }
     }
 
     public function setStatusFilter(string $status = ''): void

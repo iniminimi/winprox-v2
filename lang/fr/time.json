@@ -985,7 +985,8 @@
         "groups_count": ":selected sur :total",
         "pending_absence": {
             "leave": "Congé demandé (en attente d’approbation)",
-            "recup": "Récupération demandée (en attente d’approbation)"
+            "recup": "Récupération demandée (en attente d’approbation)",
+            "open_hint": "Cliquez sur le marquage en bas à gauche pour ouvrir la demande."
         }
     },
     "shift_types": {
