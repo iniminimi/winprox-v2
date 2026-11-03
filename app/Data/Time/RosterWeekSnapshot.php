@@ -85,6 +85,7 @@ final class RosterWeekSnapshot
                 'time.schedule.errors.unknown_code' => __('time.schedule.errors.unknown_code'),
                 'time.schedule.errors.unknown_unit' => __('time.schedule.errors.unknown_unit'),
                 'time.schedule.errors.ambiguous_unit' => __('time.schedule.errors.ambiguous_unit'),
+                'time.schedule.errors.ambiguous_blocks' => __('time.schedule.errors.ambiguous_blocks'),
                 'time.schedule.errors.absence_has_unit' => __('time.schedule.errors.absence_has_unit'),
                 'time.schedule.errors.invalid_time' => __('time.schedule.errors.invalid_time'),
                 'time.schedule.errors.night_not_allowed' => __('time.schedule.errors.night_not_allowed'),

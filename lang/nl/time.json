@@ -753,6 +753,7 @@
         "published": "Week gepubliceerd.",
         "errors": {
             "unknown_code": "Onbekende code.",
+            "ambiguous_blocks": "Meerdere blokken passen bij deze code (:count). Kies in Dag bewerken welk blok weg moet.",
             "invalid_time": "Ongeldige tijd. Gebruik uu:mm-uu:mm.",
             "night_not_allowed": "Nachtshiften (eind voor of gelijk aan start) zijn niet toegestaan.",
             "invalid_code": "Ongeldige code. Gebruik letters of cijfers.",

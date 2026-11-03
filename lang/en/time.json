@@ -753,6 +753,7 @@
         "published": "Week published.",
         "errors": {
             "unknown_code": "Unknown code.",
+            "ambiguous_blocks": "Several blocks match this code (:count). Use Edit day to choose which block to remove.",
             "invalid_time": "Invalid time. Use hh:mm-hh:mm.",
             "night_not_allowed": "Overnight shifts (end at or before start) are not allowed.",
             "invalid_code": "Invalid code. Use letters or digits.",

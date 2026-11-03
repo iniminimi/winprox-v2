@@ -753,6 +753,7 @@
         "published": "Woche veröffentlicht.",
         "errors": {
             "unknown_code": "Unbekannter Code.",
+            "ambiguous_blocks": "Mehrere Blöcke passen zu diesem Code (:count). Wählen Sie unter Tag bearbeiten, welcher Block entfernt wird.",
             "invalid_time": "Ungültige Zeit. Format hh:mm-hh:mm.",
             "night_not_allowed": "Nachtschichten (Ende vor oder gleich Start) sind nicht erlaubt.",
             "invalid_code": "Ungültiger Code. Nur Buchstaben oder Ziffern.",

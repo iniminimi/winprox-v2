@@ -902,7 +902,7 @@ it('houdt bij een overlapfout ook het niet-gematchte gepubliceerde blok intact',
         ->and(PlannedShift::query()->count())->toBe(2);
 });
 
-it('houdt bij één code voor twee dezelfde blokken de vroegste rij, ongeacht aanmaakvolgorde', function (string $raw, string $createFirst, string $keptStart, string $keptNote, int $keptBreak, PlannedShiftStatus $keptStatus) {
+it('weigert één code voor twee verschillende blokken met dezelfde code, ongeacht aanmaakvolgorde', function (string $raw, string $createFirst) {
     [$tenant, $admin, $worker] = multiBlockTenant();
     $week = multiNextWeek();
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
@@ -941,29 +941,24 @@ it('houdt bij één code voor twee dezelfde blokken de vroegste rij, ongeacht aa
         }
     }
 
-    multiSaveGrid($tenant, $admin, $worker, $week, $raw);
+    try {
+        multiSaveGrid($tenant, $admin, $worker, $week, $raw);
+        $error = null;
+    } catch (RosterValidationException $e) {
+        $error = $e->cells[0]['error'] ?? null;
+    }
 
-    $kept = PlannedShift::query()->where('start_time', $keptStart)->first();
-    $replaced = PlannedShift::query()->where('start_time', '12:00')->first();
-
-    expect($kept)->not->toBeNull()
-        ->and((int) $kept->id)->toBe($keptStart === '08:00' ? (int) $morning->id : (int) $evening->id)
-        ->and($kept->end_time)->toBe($keptStart === '08:00' ? '12:00' : '22:00')
-        ->and($kept->description)->toBe($keptNote)
-        ->and($kept->break_minutes)->toBe($keptBreak)
-        ->and($kept->status)->toBe($keptStatus)
-        ->and((int) $kept->shift_type_id)->toBe((int) $type->id)
-        ->and((int) $kept->unit_id)->toBe((int) $unit->id)
-        ->and(PlannedShift::find($keptStart === '08:00' ? $evening->id : $morning->id))->toBeNull()
-        ->and($replaced)->not->toBeNull()
-        ->and($replaced->status)->toBe(PlannedShiftStatus::Draft)
-        ->and($replaced->shift_type_id)->toBeNull()
+    expect($error)->toBe('time.schedule.errors.ambiguous_blocks')
+        ->and(PlannedShift::find($morning->id)?->description)->toBe('Ochtend')
+        ->and(PlannedShift::find($morning->id)?->status)->toBe(PlannedShiftStatus::Published)
+        ->and(PlannedShift::find($evening->id)?->description)->toBe('Avond')
+        ->and(PlannedShift::find($evening->id)?->status)->toBe(PlannedShiftStatus::Draft)
         ->and(PlannedShift::query()->count())->toBe(2);
 })->with([
-    'vrije tijd eerst, ochtend eerst' => ['12:00-16:00 · V/G1', 'morning', '08:00', 'Ochtend', 10, PlannedShiftStatus::Published],
-    'vrije tijd eerst, avond eerst' => ['12:00-16:00 · V/G1', 'evening', '08:00', 'Ochtend', 10, PlannedShiftStatus::Published],
-    'code eerst, ochtend eerst' => ['V/G1 · 12:00-16:00', 'morning', '08:00', 'Ochtend', 10, PlannedShiftStatus::Published],
-    'code eerst, avond eerst' => ['V/G1 · 12:00-16:00', 'evening', '08:00', 'Ochtend', 10, PlannedShiftStatus::Published],
+    'vrije tijd eerst, ochtend eerst' => ['12:00-16:00 · V/G1', 'morning'],
+    'vrije tijd eerst, avond eerst' => ['12:00-16:00 · V/G1', 'evening'],
+    'code eerst, ochtend eerst' => ['V/G1 · 12:00-16:00', 'morning'],
+    'code eerst, avond eerst' => ['V/G1 · 12:00-16:00', 'evening'],
 ]);
 
 it('behoudt bij twee dezelfde codes de aangepaste tijden, notities, pauzes en statussen', function (string $createFirst) {
@@ -1249,6 +1244,56 @@ it('houdt alle rijen bij een ongeldige cel', function () {
         ->and(PlannedShift::find($evening->id)?->description)->toBe('Avond')
         ->and(PlannedShift::find($evening->id)?->break_minutes)->toBe(15)
         ->and(PlannedShift::query()->count())->toBe(2);
+});
+
+it('weigert via de grid V voor twee verschillende V-blokken en laat beide staan', function () {
+    [$tenant, $admin, $worker, $week, $location, $unit, $type] = multiAlignmentFixture();
+    $morning = multiAlignmentBlock($tenant, $worker, $week, $type, $unit, $location, '08:00', '10:00', PlannedShiftStatus::Published, 'Ochtend', 10, true);
+    $afternoon = multiAlignmentBlock($tenant, $worker, $week, $type, $unit, $location, '14:00', '16:00', PlannedShiftStatus::Published, 'Middag', 5, true);
+
+    Livewire::actingAs($admin)
+        ->test(RosterIndex::class)
+        ->set('teamFilter', (string) $worker->internal_team_id)
+        ->set('weekStart', $week)
+        ->call('save', array_slice(multiWeekCells($worker, $week, [$week => 'V/G1']), 0, 5))
+        ->assertDispatched('roster-save-failed', fn (string $name, array $params) => ($params['cells'][0]['error'] ?? null) === 'time.schedule.errors.ambiguous_blocks');
+
+    Tenancy::actAs($tenant->id);
+    expect(PlannedShift::find($morning->id)?->description)->toBe('Ochtend')
+        ->and(PlannedShift::find($afternoon->id)?->description)->toBe('Middag')
+        ->and(PlannedShift::query()->count())->toBe(2);
+});
+
+it('weigert via de API V voor twee verschillende V-blokken met 422', function () {
+    [$tenant, $admin, $worker, $week, $location, $unit, $type] = multiAlignmentFixture();
+    $morning = multiAlignmentBlock($tenant, $worker, $week, $type, $unit, $location, '08:00', '10:00', PlannedShiftStatus::Published, 'Ochtend', 10, true);
+    $afternoon = multiAlignmentBlock($tenant, $worker, $week, $type, $unit, $location, '14:00', '16:00', PlannedShiftStatus::Published, 'Middag', 5, true);
+    $token = $admin->createToken('test', ['time:write'])->plainTextToken;
+
+    $this->withToken($token)
+        ->putJson('/api/v1/time/schedule', [
+            'week_start' => $week,
+            'worker_ids' => [$worker->id],
+            'cells' => multiWeekCells($worker, $week, [$week => 'V/G1']),
+        ])
+        ->assertStatus(422)
+        ->assertJsonPath('cells.0.error', 'time.schedule.errors.ambiguous_blocks');
+
+    Tenancy::actAs($tenant->id);
+    expect(PlannedShift::find($morning->id))->not->toBeNull()
+        ->and(PlannedShift::find($afternoon->id))->not->toBeNull();
+});
+
+it('laat twee V-blokken vervangen door een andere inhoud zonder dubbelzinnigheid', function () {
+    [$tenant, $admin, $worker, $week, $location, $unit, $type] = multiAlignmentFixture();
+    $morning = multiAlignmentBlock($tenant, $worker, $week, $type, $unit, $location, '08:00', '10:00', PlannedShiftStatus::Published, 'Ochtend', 10, true);
+    $afternoon = multiAlignmentBlock($tenant, $worker, $week, $type, $unit, $location, '14:00', '16:00', PlannedShiftStatus::Published, 'Middag', 5, true);
+
+    multiSaveGrid($tenant, $admin, $worker, $week, '1200-1300');
+
+    expect(PlannedShift::find($morning->id))->toBeNull()
+        ->and(PlannedShift::find($afternoon->id))->toBeNull()
+        ->and(PlannedShift::query()->where('start_time', '12:00')->exists())->toBeTrue();
 });
 
 /**

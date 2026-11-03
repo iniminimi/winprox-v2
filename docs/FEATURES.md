@@ -953,7 +953,9 @@ de aangepaste tijden. Alleen niet-gekoppelde blokken worden vervangen (draft), d
 gepubliceerde en concept-blokken naast elkaar hebben.
 Komen twee van die koppelingen even ver, dan blijft de vroegste rij behouden. Twee identieke
 codes zijn niet uniek en vallen daarop terug: de tekst onderscheidt hun volgorde niet en de
-server wisselt ze niet om. Een vrije tijd koppelt alleen bij hetzelfde begin- en einduur, dus
+server wisselt ze niet om. Staan er in een cel minder blokken met dezelfde tekst dan er
+passende rijen zijn, en verschillen die rijen (tijden, notitie, pauze of status), dan weigert
+de save die cel (`ambiguous_blocks`): welk blok weg moet, kies je in Dag bewerken. Een vrije tijd koppelt alleen bij hetzelfde begin- en einduur, dus
 `13:00-15:00` vervangt `12:00-14:00` door een nieuw concept. Snapshotprincipe: dezelfde code
 opnieuw typen behoudt de aangepaste tijden van de gekoppelde rij; terugzetten naar de
 typetijden gaat via wissen en opnieuw invoeren.

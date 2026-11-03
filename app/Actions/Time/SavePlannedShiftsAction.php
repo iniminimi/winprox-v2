@@ -238,7 +238,8 @@ class SavePlannedShiftsAction
      * Bij twee even grote koppelingen in de rest blijft de vroegste rij
      * behouden. Identieke codes zijn niet uniek en vallen daarop terug.
      * De tekst `V · V` onderscheidt hun volgorde niet en wordt niet als
-     * omwisseling gelezen.
+     * omwisseling gelezen. Minder gelijke tokens dan verschillende rijen
+     * die ze raken, wordt geweigerd (zie ambiguousReduction).
      *
      * @param  Collection<int, PlannedShift>  $rows
      * @param  list<RosterCellData>  $parsedBlocks
@@ -272,6 +273,11 @@ class SavePlannedShiftsAction
                 $tokenHits[$token][] = $row;
                 $rowHits[$row][] = $token;
             }
+        }
+
+        $ambiguous = $this->ambiguousReduction($blocks, $sorted, $tokenHits);
+        if ($ambiguous !== null) {
+            return [[], [], $ambiguous];
         }
 
         $lockedToken = array_fill(0, $tokenCount, false);
@@ -381,6 +387,67 @@ class SavePlannedShiftsAction
         }
 
         return [$kept, $new, null];
+    }
+
+    /**
+     * Minder tokens met dezelfde tekst dan rijen die ze raken, terwijl die
+     * rijen verschillen in wat de cel niet toont (tijden, notitie, pauze,
+     * status): welke rij weg moet, is dan niet te bepalen. Weigeren in
+     * plaats van stil een rij te kiezen; die keuze hoort in de dag-editor.
+     *
+     * @param  list<RosterCellData>  $blocks
+     * @param  Collection<int, PlannedShift>  $rows
+     * @param  array<int, list<int>>  $tokenHits
+     */
+    private function ambiguousReduction(array $blocks, Collection $rows, array $tokenHits): ?RosterCellData
+    {
+        $groups = [];
+        foreach ($blocks as $token => $block) {
+            $key = $this->canonicalDisplay($block->raw);
+            $groups[$key]['raw'] ??= $block->raw;
+            $groups[$key]['tokens'] = ($groups[$key]['tokens'] ?? 0) + 1;
+            $groups[$key]['rows'] ??= [];
+            foreach ($tokenHits[$token] as $row) {
+                $groups[$key]['rows'][$row] = true;
+            }
+        }
+
+        foreach ($groups as $group) {
+            $candidates = array_keys($group['rows']);
+            if (count($candidates) < 2 || $group['tokens'] >= count($candidates)) {
+                continue;
+            }
+            $signatures = array_unique(array_map(
+                fn (int $row): string => $this->rowSignature($rows[$row]),
+                $candidates,
+            ));
+            if (count($signatures) < 2) {
+                continue;
+            }
+
+            return new RosterCellData(
+                kind: RosterCellKind::Invalid,
+                raw: (string) $group['raw'],
+                errorKey: 'time.schedule.errors.ambiguous_blocks',
+                ambiguousCount: count($candidates),
+            );
+        }
+
+        return null;
+    }
+
+    private function rowSignature(PlannedShift $row): string
+    {
+        return implode('|', [
+            $row->kind->value,
+            (int) ($row->shift_type_id ?? 0),
+            (int) ($row->unit_id ?? 0),
+            (string) $row->start_time,
+            (string) $row->end_time,
+            (int) $row->break_minutes,
+            (string) $row->description,
+            $row->status->value,
+        ]);
     }
 
     private function rosterMinutes(PlannedShift $row): int

@@ -753,6 +753,7 @@
         "published": "Semaine publiée.",
         "errors": {
             "unknown_code": "Code inconnu.",
+            "ambiguous_blocks": "Plusieurs blocs correspondent à ce code (:count). Choisissez dans Modifier le jour le bloc à supprimer.",
             "invalid_time": "Heure invalide. Utilisez hh:mm-hh:mm.",
             "night_not_allowed": "Les services de nuit (fin avant ou égale au début) ne sont pas autorisés.",
             "invalid_code": "Code invalide. Utilisez des lettres ou des chiffres.",
