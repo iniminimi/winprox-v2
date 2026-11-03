@@ -556,6 +556,23 @@
                             </div>
                             @error('workerWeekdayMinutes') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
+                        <div class="wp-modal-section">
+                            <x-wp-tooltip :text="__('team.workers.leave_entitlement_hint')" wrap>
+                                <h3 class="wp-label">{{ __('team.workers.leave_entitlement') }}</h3>
+                            </x-wp-tooltip>
+                            <div class="wp-minutes-row">
+                                <label class="wp-minutes-field">
+                                    <span class="wp-minutes-field__text">{{ __('team.workers.leave_entitlement_this_year', ['year' => now()->year]) }}</span>
+                                    <input id="workerLeaveDaysThisYear" class="wp-input" type="number" min="0" max="366" step="0.5" inputmode="decimal" wire:model="workerLeaveDaysThisYear">
+                                </label>
+                                <label class="wp-minutes-field">
+                                    <span class="wp-minutes-field__text">{{ __('team.workers.leave_entitlement_next_year', ['year' => now()->year + 1]) }}</span>
+                                    <input id="workerLeaveDaysNextYear" class="wp-input" type="number" min="0" max="366" step="0.5" inputmode="decimal" wire:model="workerLeaveDaysNextYear">
+                                </label>
+                            </div>
+                            @error('workerLeaveDaysThisYear') <p class="wp-error">{{ $message }}</p> @enderror
+                            @error('workerLeaveDaysNextYear') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
                     @endif
                     @if ($editingWorkerId)
                         @php $editingWorker = $this->editingWorkerRecord(); @endphp

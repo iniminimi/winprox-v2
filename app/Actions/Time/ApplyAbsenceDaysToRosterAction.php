@@ -102,6 +102,7 @@ class ApplyAbsenceDaysToRosterAction
                     'location_id' => null,
                     'start_time' => null,
                     'end_time' => null,
+                    'day_portion' => $this->isHalfDay($request) ? 0.5 : null,
                     'break_minutes' => 0,
                     'status' => PlannedShiftStatus::Published,
                 ]);
@@ -109,5 +110,12 @@ class ApplyAbsenceDaysToRosterAction
 
             return $snapshot;
         });
+    }
+
+    private function isHalfDay(AbsenceRequest $request): bool
+    {
+        return $request->day_portion !== null
+            && (int) round(((float) $request->day_portion) * 2) === 1
+            && $request->date_from->toDateString() === $request->date_to->toDateString();
     }
 }

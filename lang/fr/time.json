@@ -532,6 +532,8 @@
             "cancel": "Retirer",
             "list_title": "Vos demandes",
             "form_title": "Nouvelle demande",
+            "half_day": "Demi-journée",
+            "half_day_hint": "Uniquement si la demande porte sur un seul jour.",
             "cancel_confirm": "Retirer cette demande ?",
             "cancel_approved_confirm": "Retirer ce congé ou cette récup approuvé ? Le planning rétablit les services précédents.",
             "submitted": "Demande envoyée.",
@@ -1080,8 +1082,22 @@
             "not_owner": "Vous ne pouvez retirer que votre propre demande.",
             "reason_required": "Un motif est obligatoire (au moins 3 caractères).",
             "already_started": "Ce congé ou cette récup a déjà commencé. Le retrait n’est plus possible.",
-            "not_cancellable": "Vous ne pouvez pas retirer cette demande."
+            "not_cancellable": "Vous ne pouvez pas retirer cette demande.",
+            "half_day_range": "Une demi-journée ne peut concerner qu'une seule date."
         }
+    },
+        "leave_balance": {
+        "short": ":days j",
+        "title": "Droit :entitlement · approuvé :approved · planifié :planned · restant :remaining",
+        "entitlement": "Droit annuel",
+        "approved": "Congé approuvé",
+        "planned": "Congé planifié",
+        "remaining": "Solde restant",
+        "request_days": "Cette demande",
+        "year": "Solde de congé :year",
+        "unset": "Aucun droit de congé pour :year.",
+        "shortfall": "Le solde restant devient :days. Vous pouvez quand même approuver.",
+        "half_day": "Demi-journée"
     },
     "backoffice_clock": {
         "start_break": "Prendre une pause",

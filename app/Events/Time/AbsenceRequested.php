@@ -17,6 +17,7 @@ class AbsenceRequested implements WebhookEvent
         public string $kind,
         public string $dateFrom,
         public string $dateTo,
+        public float $dayPortion = 1,
     ) {}
 
     public function webhookEventName(): string
@@ -32,6 +33,7 @@ class AbsenceRequested implements WebhookEvent
             'kind' => $this->kind,
             'date_from' => $this->dateFrom,
             'date_to' => $this->dateTo,
+            'day_portion' => $this->dayPortion,
         ];
     }
 

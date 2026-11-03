@@ -532,6 +532,8 @@
             "cancel": "Withdraw",
             "list_title": "Your requests",
             "form_title": "New request",
+            "half_day": "Half day",
+            "half_day_hint": "Only when the request is a single day.",
             "cancel_confirm": "Withdraw this request?",
             "cancel_approved_confirm": "Withdraw this approved leave or TOIL? The roster restores the previous duties.",
             "submitted": "Request sent.",
@@ -1080,8 +1082,22 @@
             "not_owner": "You can only withdraw your own request.",
             "reason_required": "A reason is required (at least 3 characters).",
             "already_started": "This leave or TOIL has already started. You can no longer withdraw it.",
-            "not_cancellable": "You cannot withdraw this request."
+            "not_cancellable": "You cannot withdraw this request.",
+            "half_day_range": "A half day can only be a single date."
         }
+    },
+        "leave_balance": {
+        "short": ":days d",
+        "title": "Allowance :entitlement · approved :approved · planned :planned · remaining :remaining",
+        "entitlement": "Yearly allowance",
+        "approved": "Approved leave",
+        "planned": "Planned leave",
+        "remaining": "Remaining balance",
+        "request_days": "This request",
+        "year": "Leave balance :year",
+        "unset": "No leave allowance set for :year.",
+        "shortfall": "The remaining balance becomes :days. You can still approve.",
+        "half_day": "Half day"
     },
     "backoffice_clock": {
         "start_break": "Take a break",

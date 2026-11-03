@@ -2,6 +2,7 @@
 
 namespace App\Actions\Time;
 
+use App\Data\Time\LeaveBalance;
 use App\Data\Time\RosterWeekSnapshot;
 use App\Data\Time\WorkerMonthFacts;
 use App\Data\Time\WorkerMonthNorm;
@@ -17,6 +18,7 @@ use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\PlannedShift;
 use App\Models\ShiftType;
+use App\Models\Tenant;
 use App\Models\TenantHolidayAgreement;
 use App\Models\Unit;
 use App\Models\User;
@@ -37,6 +39,7 @@ class ListRosterWeekAction
         private SummarizeWorkerWeekHoursAction $summarizeWeekHours,
         private SummarizeWorkerMonthFactsAction $summarizeMonthFacts,
         private ResolveWorkerMonthNormAction $resolveMonthNorm,
+        private WorkerLeaveBalanceAction $leaveBalance,
     ) {}
 
     /**
@@ -296,6 +299,20 @@ class ListRosterWeekAction
 
             return $payload;
         })->values()->all();
+
+        if ($workerIds !== [] && $dates !== []) {
+            $tenant = Tenant::query()->findOrFail($tenantId);
+            $year = (int) Carbon::parse($dates[0])->year;
+            $balances = $this->leaveBalance->handle($tenant, $workerIds, $year);
+            foreach ($workerPayload as $index => $payload) {
+                $mark = $this->leaveBalance->rosterMark(
+                    $balances[(int) $payload['id']] ?? new LeaveBalance(null, 0, 0),
+                );
+                if ($mark !== null) {
+                    $workerPayload[$index]['leave_balance'] = $mark;
+                }
+            }
+        }
 
         $rows = $groupMode
             ? $this->buildGroupedRows($workers, $units, $includeUngrouped, $groupUnitIds)

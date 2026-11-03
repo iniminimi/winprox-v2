@@ -532,6 +532,8 @@
             "cancel": "Ritira",
             "list_title": "Le tue richieste",
             "form_title": "Nuova richiesta",
+            "half_day": "Mezza giornata",
+            "half_day_hint": "Solo se la richiesta è un solo giorno.",
             "cancel_confirm": "Ritirare questa richiesta?",
             "cancel_approved_confirm": "Ritirare queste ferie o recupero approvati? Il turno ripristina i servizi precedenti.",
             "submitted": "Richiesta inviata.",
@@ -1080,8 +1082,22 @@
             "not_owner": "Puoi ritirare solo la tua richiesta.",
             "reason_required": "Il motivo è obbligatorio (almeno 3 caratteri).",
             "already_started": "Queste ferie o questo recupero sono già iniziati. Non si può più ritirare.",
-            "not_cancellable": "Non puoi ritirare questa richiesta."
+            "not_cancellable": "Non puoi ritirare questa richiesta.",
+            "half_day_range": "Una mezza giornata può riguardare una sola data."
         }
+    },
+        "leave_balance": {
+        "short": ":days g",
+        "title": "Diritto :entitlement · approvato :approved · pianificato :planned · restante :remaining",
+        "entitlement": "Diritto annuale",
+        "approved": "Ferie approvate",
+        "planned": "Ferie pianificate",
+        "remaining": "Saldo restante",
+        "request_days": "Questa richiesta",
+        "year": "Saldo ferie :year",
+        "unset": "Nessun diritto ferie per :year.",
+        "shortfall": "Il saldo restante diventa :days. Puoi comunque approvare.",
+        "half_day": "Mezza giornata"
     },
     "backoffice_clock": {
         "start_break": "Fare una pausa",

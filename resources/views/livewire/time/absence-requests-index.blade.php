@@ -103,6 +103,29 @@
                 @if ($deciding->description)
                     <p>{{ $deciding->description }}</p>
                 @endif
+                @if ((int) round(((float) $deciding->day_portion) * 2) === 1)
+                    <p>{{ __('time.leave_balance.half_day') }}</p>
+                @endif
+
+                @foreach ($leaveBalances as $leaveBalance)
+                    <div class="wp-stack-tight">
+                        <h3 class="wp-section-title">{{ __('time.leave_balance.year', ['year' => $leaveBalance['year']]) }}</h3>
+                        @if ($leaveBalance['balance']->entitlementHalves === null)
+                            <p class="wp-muted">{{ __('time.leave_balance.unset', ['year' => $leaveBalance['year']]) }}</p>
+                        @else
+                            <ul class="wp-list">
+                                <li>{{ __('time.leave_balance.entitlement') }}: {{ \App\Data\Time\LeaveBalance::formatHalves($leaveBalance['balance']->entitlementHalves) }}</li>
+                                <li>{{ __('time.leave_balance.approved') }}: {{ \App\Data\Time\LeaveBalance::formatHalves($leaveBalance['balance']->approvedHalves) }}</li>
+                                <li>{{ __('time.leave_balance.planned') }}: {{ \App\Data\Time\LeaveBalance::formatHalves($leaveBalance['balance']->plannedHalves) }}</li>
+                                <li>{{ __('time.leave_balance.remaining') }}: {{ \App\Data\Time\LeaveBalance::formatHalves((int) $leaveBalance['balance']->remainingHalves()) }}</li>
+                                <li>{{ __('time.leave_balance.request_days') }}: {{ \App\Data\Time\LeaveBalance::formatHalves($leaveBalance['request_halves']) }}</li>
+                            </ul>
+                            @if ($leaveBalance['balance']->remainingHalves() < 0)
+                                <p class="wp-flash wp-flash--danger">{{ __('time.leave_balance.shortfall', ['days' => \App\Data\Time\LeaveBalance::formatHalves((int) $leaveBalance['balance']->remainingHalves())]) }}</p>
+                            @endif
+                        @endif
+                    </div>
+                @endforeach
 
                 <div class="wp-stack-tight">
                     <h3 class="wp-section-title">{{ __('time.absence.conflicts_title') }}</h3>

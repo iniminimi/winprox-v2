@@ -220,6 +220,8 @@ class TimePortal extends Component
 
     public string $absenceKind = 'leave';
 
+    public bool $absenceHalfDay = false;
+
     public string $absenceDateFrom = '';
 
     public string $absenceDateTo = '';
@@ -563,7 +565,7 @@ class TimePortal extends Component
     private function forgetPortalSignInState(): void
     {
         $this->taskBaselineSyncedThisVisit = false;
-        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'ownDeviceReleaseOffered', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'scheduleChangedDates', 'schedulePublishedFrom', 'teamScheduleOpen', 'teamScheduleWeek', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'flashMessageKey', 'flashMessageReplace', 'homescreenHelpOpen', 'teamleaderOpen']);
+        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'ownDeviceReleaseOffered', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'scheduleChangedDates', 'schedulePublishedFrom', 'teamScheduleOpen', 'teamScheduleWeek', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceHalfDay', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'flashMessageKey', 'flashMessageReplace', 'homescreenHelpOpen', 'teamleaderOpen']);
         $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm', 'rosterAcknowledged']);
     }
 
@@ -800,7 +802,8 @@ class TimePortal extends Component
         $this->absenceDateFrom = $today;
         $this->absenceDateTo = $today;
         $this->absenceDescription = '';
-        $this->resetErrorBag(['absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription']);
+        $this->absenceHalfDay = false;
+        $this->resetErrorBag(['absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription', 'absenceHalfDay']);
         $this->absenceListOpen = true;
     }
 
@@ -875,6 +878,7 @@ class TimePortal extends Component
                     $this->absenceDateFrom,
                     $this->absenceDateTo,
                     $this->absenceDescription !== '' ? $this->absenceDescription : null,
+                    $this->absenceHalfDay,
                 ),
             );
         } catch (InvalidArgumentException $e) {
@@ -884,6 +888,7 @@ class TimePortal extends Component
         }
 
         $this->absenceDescription = '';
+        $this->absenceHalfDay = false;
         $this->portalFlash('time.portal.absence.submitted');
     }
 

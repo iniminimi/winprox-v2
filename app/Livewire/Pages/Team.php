@@ -30,6 +30,7 @@ use App\Actions\Team\UpdateTeamAction;
 use App\Actions\Team\UpdateWorkerAction;
 use App\Actions\Team\UpdateWorkerPhotoAction;
 use App\Actions\Time\EnsureDefaultClockPointAction;
+use App\Actions\Time\SetWorkerLeaveEntitlementAction;
 use App\Http\Requests\Team\StoreColleagueRequest;
 use App\Http\Requests\Team\StoreTeamRequest;
 use App\Http\Requests\Team\StoreWorkerRequest;
@@ -41,6 +42,7 @@ use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\User;
 use App\Models\Worker;
+use App\Models\WorkerLeaveEntitlement;
 use App\Support\Tenancy;
 use App\Support\Translation\LocaleSupport;
 use App\Support\Workers\WorkerImportBatchRegistry;
@@ -132,6 +134,10 @@ class Team extends Component
     public string|int|null $workerContractHours = null;
 
     public string|int|null $workerContractMinutes = null;
+
+    public string $workerLeaveDaysThisYear = '';
+
+    public string $workerLeaveDaysNextYear = '';
 
     /** @var TemporaryUploadedFile|null */
     public $workerPhoto = null;
@@ -742,8 +748,8 @@ class Team extends Component
 
         $this->editingWorkerId = null;
         $this->resetWorkerPhotoState();
-        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'workerContractHours', 'workerContractMinutes', 'selectedWorkerLocationIds', 'workerDefaultUnitId']);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'workerContractHours', 'workerContractMinutes', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerPhoto', 'addingWorkerTeamId']);
+        $this->reset(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'workerContractHours', 'workerContractMinutes', 'workerLeaveDaysThisYear', 'workerLeaveDaysNextYear', 'selectedWorkerLocationIds', 'workerDefaultUnitId']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'workerContractHours', 'workerContractMinutes', 'workerLeaveDaysThisYear', 'workerLeaveDaysNextYear', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerPhoto', 'addingWorkerTeamId']);
         $this->addingWorkerTeamId = $teamId;
         $this->workerContractHours = intdiv(Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES, 60);
         $this->workerContractMinutes = Worker::DEFAULT_WEEKLY_CONTRACT_MINUTES % 60;
@@ -832,8 +838,14 @@ class Team extends Component
         DeleteWorkerPhotoAction $deleteWorkerPhoto,
         SyncWorkerWeekdayMinutesAction $syncWeekPattern,
         ClearWorkerWeekdayMinutesAction $clearWeekPattern,
+        SetWorkerLeaveEntitlementAction $setLeaveEntitlement,
     ): void {
         $presenceComplianceEnabled = $this->tenantPresenceComplianceEnabled();
+
+        if ($this->leaveEntitlementEnabled()
+            && (! $this->assertLeaveDays('workerLeaveDaysThisYear') || ! $this->assertLeaveDays('workerLeaveDaysNextYear'))) {
+            return;
+        }
 
         if ($this->editingWorkerId) {
             // Edit mode
@@ -960,6 +972,27 @@ class Team extends Component
             }
         }
 
+        if ($this->leaveEntitlementEnabled()) {
+            try {
+                $setLeaveEntitlement->handle(
+                    Tenant::query()->findOrFail(Tenancy::id()),
+                    $worker->fresh(),
+                    (int) now()->year,
+                    $this->workerLeaveDaysThisYear,
+                    (int) now()->year + 1,
+                    $this->workerLeaveDaysNextYear,
+                    (int) auth()->id(),
+                );
+            } catch (ValidationException $e) {
+                $this->editingWorkerId = (int) $worker->id;
+                foreach ($e->errors() as $field => $messages) {
+                    $this->addError((string) $field, (string) ($messages[0] ?? ''));
+                }
+
+                return;
+            }
+        }
+
         $this->cancelWorkerModal();
         $this->dispatch('saved');
     }
@@ -1061,6 +1094,56 @@ class Team extends Component
         $tenant = Tenant::query()->find($tenantId);
 
         return $tenant instanceof Tenant && $tenant->hasTimeModule();
+    }
+
+    private function leaveEntitlementEnabled(): bool
+    {
+        $tenant = Tenant::query()->find(Tenancy::id());
+
+        return $tenant instanceof Tenant && $tenant->timeRosterEnabled();
+    }
+
+    private function assertLeaveDays(string $property): bool
+    {
+        $raw = trim(str_replace(',', '.', (string) $this->{$property}));
+        $this->{$property} = $raw;
+        if ($raw === '') {
+            return true;
+        }
+
+        $value = is_numeric($raw) ? (float) $raw : null;
+        $halves = $value === null ? 0 : (int) round($value * 2);
+        if ($value === null || $value < 0 || $value > 366 || abs(($value * 2) - $halves) > 0.001) {
+            $this->addError($property, __('team.errors.leave_days_invalid'));
+
+            return false;
+        }
+
+        return true;
+    }
+
+    private function loadLeaveEntitlement(Worker $worker): void
+    {
+        $year = (int) now()->year;
+        $rows = WorkerLeaveEntitlement::query()
+            ->where('worker_id', $worker->id)
+            ->whereIn('year', [$year, $year + 1])
+            ->get()
+            ->keyBy('year');
+        $this->workerLeaveDaysThisYear = $this->leaveInput($rows->get($year)?->days);
+        $this->workerLeaveDaysNextYear = $this->leaveInput($rows->get($year + 1)?->days);
+    }
+
+    private function leaveInput(mixed $days): string
+    {
+        if ($days === null || $days === '') {
+            return '';
+        }
+
+        $halves = (int) round(((float) $days) * 2);
+        $whole = intdiv($halves, 2);
+
+        return ($halves % 2) === 0 ? (string) $whole : $whole.'.5';
     }
 
     private function workerContractFieldEnabled(): bool
@@ -1223,6 +1306,7 @@ class Team extends Component
             $this->workerContractMinutes = ((int) $worker->weekly_contract_minutes) % 60;
         }
         $this->loadWorkPattern($worker);
+        $this->loadLeaveEntitlement($worker);
         $this->workerLocationsPanelOpen = $this->selectedWorkerLocationIds !== [];
         $this->resetWorkerPhotoState();
         $this->existingWorkerPhotoUrl = $worker->photoPublicUrl();
@@ -1252,12 +1336,14 @@ class Team extends Component
             'workerDefaultUnitId',
             'workerContractHours',
             'workerContractMinutes',
+            'workerLeaveDaysThisYear',
+            'workerLeaveDaysNextYear',
             'workerWeekdayMinutes',
             'workerPhoto',
             'removeWorkerPhoto',
             'existingWorkerPhotoUrl',
         ]);
-        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'workerContractHours', 'workerContractMinutes', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerPhoto']);
+        $this->resetErrorBag(['workerFirstName', 'workerLastName', 'workerEmail', 'workerPhone', 'workerIsExternal', 'workerCompanyName', 'workerSsin', 'workerContractHours', 'workerContractMinutes', 'workerLeaveDaysThisYear', 'workerLeaveDaysNextYear', 'selectedWorkerLocationIds', 'workerDefaultUnitId', 'workerPhoto']);
     }
 
     /**

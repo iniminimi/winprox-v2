@@ -60,6 +60,11 @@ class RequestAbsenceAction
             throw new InvalidArgumentException('overlapping_pending');
         }
 
+        $halfDay = $data->halfDay && $data->kind === ShiftTypeKind::Leave && $from->equalTo($to);
+        if ($data->halfDay && ! $halfDay) {
+            throw new InvalidArgumentException('half_day_range');
+        }
+
         $description = $this->normalizeDescription($data->description);
 
         $request = AbsenceRequest::query()->create([
@@ -69,6 +74,7 @@ class RequestAbsenceAction
             'shift_type_id' => $shiftType->id,
             'date_from' => $from->toDateString(),
             'date_to' => $to->toDateString(),
+            'day_portion' => $halfDay ? 0.5 : 1,
             'description' => $description,
             'status' => AbsenceRequestStatus::Pending,
         ]);
@@ -80,6 +86,7 @@ class RequestAbsenceAction
             $data->kind->value,
             $from->toDateString(),
             $to->toDateString(),
+            $halfDay ? 0.5 : 1,
         );
 
         return $request->fresh(['worker', 'shiftType']) ?? $request;

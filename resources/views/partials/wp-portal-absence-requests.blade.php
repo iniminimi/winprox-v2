@@ -21,6 +21,13 @@
             @error('absenceDateFrom') <p class="wp-error">{{ $message }}</p> @enderror
             @error('absenceDateTo') <p class="wp-error">{{ $message }}</p> @enderror
         </div>
+        @if ($absenceKind === \App\Enums\ShiftTypeKind::Leave->value)
+            <label class="wp-check wp-check--boxed">
+                <input type="checkbox" wire:model="absenceHalfDay">
+                <span>{{ __('time.portal.absence.half_day') }}</span>
+            </label>
+            <p class="wp-hint">{{ __('time.portal.absence.half_day_hint') }}</p>
+        @endif
         <div class="wp-field" x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
             <label class="wp-label" for="absence-description">{{ __('time.portal.absence.description') }}</label>
             <textarea
@@ -60,6 +67,9 @@
                             {{ $request->date_from->format('d-m-Y') }}
                             @if ($request->date_from->toDateString() !== $request->date_to->toDateString())
                                 – {{ $request->date_to->format('d-m-Y') }}
+                            @endif
+                            @if ((int) round(((float) $request->day_portion) * 2) === 1)
+                                · {{ __('time.portal.absence.half_day') }}
                             @endif
                         </p>
                         @if ($request->description)

@@ -1179,7 +1179,7 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
 - **Golf 2 — Verlof / Recup:** Clock Point-tegel. Uitvoerder vraagt `leave` of `recup`
   (van–tot, max. 31 dagen, niet in het verleden, optionele toelichting ≤ 500). Overlappende
   open aanvragen worden geweigerd. Eerste actieve shifttype van dat `kind`, anders fout.
-  Geen ziek, geen saldo, geen e-mail. Beheer: Time → **Aanvragen** (badge = open);
+  Geen ziek, geen e-mail. Het verlofsaldo is een teller, geen vakantierechtenberekening: de werkgever vult het jaarlijks recht per uitvoerder in (dit kalenderjaar en het volgende, stappen van een halve dag). Goedgekeurd = verlofdagen op het rooster in dat jaar (hele dag 1, blok met uren of halve aanvraag 0,5, hoogstens 1 per datum), ook als de beheerder ze zelf zet. Gepland = open verlofaanvragen waarvan de dag nog niet als verlof op het rooster staat. Resterend = recht min die twee. Zonder recht geen getal. Recup telt niet mee. Op het uurrooster staat het restgetal onder de naam; de beslismodal toont het viertal en waarschuwt onder nul, zonder de goedkeuring te blokkeren. Een halve dag kan alleen als de aanvraag één dag is. Beheer: Time → **Aanvragen** (badge = open);
   dashboardtegel alleen als er open aanvragen zijn; toont het aantal per soort
   (1 Verlof, 1 Recup, of 1 Verlof - 1 Recup).
   Weigeren eist een reden (min. 3); goedkeuren niet. Aanvragen toont wie heeft goedgekeurd

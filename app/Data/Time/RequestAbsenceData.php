@@ -11,5 +11,6 @@ final class RequestAbsenceData
         public string $dateFrom,
         public string $dateTo,
         public ?string $description = null,
+        public bool $halfDay = false,
     ) {}
 }

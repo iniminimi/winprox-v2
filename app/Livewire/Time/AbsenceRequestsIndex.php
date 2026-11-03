@@ -6,6 +6,7 @@ use App\Actions\Time\CountPendingAbsenceRequestsAction;
 use App\Actions\Time\DecideAbsenceRequestAction;
 use App\Actions\Time\ListAbsenceRequestConflictsAction;
 use App\Actions\Time\ListAbsenceRequestsAction;
+use App\Actions\Time\WorkerLeaveBalanceAction;
 use App\Data\Time\DecideAbsenceRequestData;
 use App\Enums\AbsenceRequestStatus;
 use App\Http\Requests\Time\DecideAbsenceRequestRequest;
@@ -128,6 +129,7 @@ class AbsenceRequestsIndex extends Component
         ListAbsenceRequestsAction $list,
         ListAbsenceRequestConflictsAction $listConflicts,
         CountPendingAbsenceRequestsAction $countPending,
+        WorkerLeaveBalanceAction $leaveBalance,
     ) {
         $tenantId = (int) Tenancy::id();
         $status = AbsenceRequestStatus::tryFrom((string) $this->statusFilter);
@@ -138,11 +140,15 @@ class AbsenceRequestsIndex extends Component
         $conflicts = $deciding instanceof AbsenceRequest
             ? $listConflicts->handle($deciding)
             : collect();
+        $leaveBalances = $deciding instanceof AbsenceRequest
+            ? $leaveBalance->forRequest(Tenant::query()->findOrFail($tenantId), $deciding)
+            : [];
 
         return view('livewire.time.absence-requests-index', [
             'requests' => $requests,
             'deciding' => $deciding,
             'conflicts' => $conflicts,
+            'leaveBalances' => $leaveBalances,
             'alarmCount' => $this->timeNavAlarmCount(),
             'pendingCount' => $countPending->handle($tenantId),
             'reasonMax' => TextDescriptionLimits::MAX,

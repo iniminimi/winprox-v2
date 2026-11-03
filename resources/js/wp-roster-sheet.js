@@ -547,13 +547,24 @@ function workerHoursUrlFor(payload, workerId) {
  */
 function applyNameLink(cell, payload, rowDef, worker) {
     const url = rowDef?.type === 'worker' ? workerHoursUrlFor(payload, worker?.id) : '';
+    const bits = [];
+    if (worker?.leave_balance?.title) {
+        bits.push(worker.leave_balance.title);
+    }
+    cell.classList.toggle('wp-roster-cell--leave-balance', Boolean(worker?.leave_balance?.short));
     if (url) {
         cell.dataset.wpHoursUrl = url;
         cell.classList.add('wp-roster-cell--worker-link');
-        cell.title = payload.worker_hours_hint || '';
+        if (payload.worker_hours_hint) {
+            bits.push(payload.worker_hours_hint);
+        }
     } else {
         delete cell.dataset.wpHoursUrl;
         cell.classList.remove('wp-roster-cell--worker-link');
+    }
+    if (bits.length > 0) {
+        cell.title = bits.join('\n');
+    } else {
         cell.removeAttribute('title');
     }
 }
@@ -1024,7 +1035,8 @@ function buildData(payload) {
             return section;
         }
         const worker = byId[row.worker_id];
-        const line = [worker?.name ?? ''];
+        const balance = worker?.leave_balance?.short;
+        const line = [balance ? `${worker?.name ?? ''}\n${balance}` : (worker?.name ?? '')];
         payload.dates.forEach((date) => {
             const key = `${row.worker_id}:${date}`;
             const cell = payload.cells?.[key];
@@ -1400,6 +1412,7 @@ export function bind(root, wire) {
         const nestedPx = isMonth && payload.month_label ? 28 : 0;
         const headerPx = nestedPx + titleRowPx;
         // Multi-blok-rijen groeien: elke blok krijgt een eigen regel in de cel.
+        const workersById = workerById(payload);
         const extraRowPx = rowDefs.reduce((extra, row) => {
             if (row.type === 'section' || !row.worker_id) {
                 return extra;
@@ -1407,8 +1420,9 @@ export function bind(root, wire) {
             const maxBlocks = Math.max(1, ...payload.dates.map(
                 (d) => payload.cells?.[`${row.worker_id}:${d}`]?.shifts?.length ?? 1,
             ));
+            const balancePx = workersById[row.worker_id]?.leave_balance?.short ? (isMonth ? 12 : 14) : 0;
 
-            return extra + Math.min(Math.max(maxBlocks - 1, 0), 2) * (isMonth ? 10 : 14);
+            return extra + balancePx + Math.min(Math.max(maxBlocks - 1, 0), 2) * (isMonth ? 10 : 14);
         }, 0);
         const tableHeight = `${headerPx + (rowCount * rowPx) + extraRowPx + 12}px`;
         const worksheetConfig = {

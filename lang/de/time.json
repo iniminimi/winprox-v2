@@ -532,6 +532,8 @@
             "cancel": "Zurückziehen",
             "list_title": "Ihre Anträge",
             "form_title": "Neuer Antrag",
+            "half_day": "Halber Tag",
+            "half_day_hint": "Nur wenn der Antrag einen einzelnen Tag betrifft.",
             "cancel_confirm": "Diesen Antrag zurückziehen?",
             "cancel_approved_confirm": "Diesen genehmigten Urlaub oder Ausgleich zurückziehen? Der Dienstplan stellt die früheren Schichten wieder her.",
             "submitted": "Antrag gesendet.",
@@ -1080,8 +1082,22 @@
             "not_owner": "Sie können nur Ihren eigenen Antrag zurückziehen.",
             "reason_required": "Eine Begründung ist Pflicht (mindestens 3 Zeichen).",
             "already_started": "Dieser Urlaub oder Ausgleich hat bereits begonnen. Zurückziehen ist nicht mehr möglich.",
-            "not_cancellable": "Diesen Antrag können Sie nicht zurückziehen."
+            "not_cancellable": "Diesen Antrag können Sie nicht zurückziehen.",
+            "half_day_range": "Ein halber Tag kann nur ein einzelnes Datum sein."
         }
+    },
+        "leave_balance": {
+        "short": ":days T",
+        "title": "Anspruch :entitlement · genehmigt :approved · geplant :planned · Rest :remaining",
+        "entitlement": "Jahresanspruch",
+        "approved": "Genehmigter Urlaub",
+        "planned": "Geplanter Urlaub",
+        "remaining": "Restsaldo",
+        "request_days": "Dieser Antrag",
+        "year": "Urlaubssaldo :year",
+        "unset": "Kein Urlaubsanspruch für :year.",
+        "shortfall": "Das Restsaldo wird :days. Sie können trotzdem genehmigen.",
+        "half_day": "Halber Tag"
     },
     "backoffice_clock": {
         "start_break": "Pause nehmen",

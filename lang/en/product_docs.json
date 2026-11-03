@@ -111,7 +111,7 @@
                     "You copy a week to at most 26 weeks in a row. WinProx skips days that already have shifts or absences. Notes are not copied.",
                     "WinProx asks you to save unsaved changes first if you leave the page or switch week or month.",
                     "Find a replacement: WinProx suggests workers who have a replacement-pool shift type that day. The original block becomes an absence and the replacement gets the same time slot.",
-                    "Leave, time off and sickness can be a whole day or part of a day. Those blocks do not count as hours worked. You set the shift types under Time → Shift types. Public holidays and replacement days live under Time → Public holidays.",
+                    "Leave, time off and sickness can be a whole day or part of a day. Those blocks do not count as hours worked. The leave balance is the yearly allowance you enter per worker, minus leave days on the roster and open leave requests. You set the shift types under Time → Shift types. Public holidays and replacement days live under Time → Public holidays.",
                     "Public holidays and replacement days have their own colour. A fixed day off is grey and can still be filled in.",
                     "The default week target is 38 hours, adjustable per worker. Targets and differences take the work pattern and public holidays into account. Without a reliable target the figure stays empty. It is a count for the overview, not a judgement on working time.",
                     "Per location you set a minimum staffing level: how many people are needed per shift type. WinProx shows where the planned staffing falls short. A shortfall does not block saving or publishing.",

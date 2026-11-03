@@ -532,6 +532,8 @@
             "cancel": "Retirar",
             "list_title": "Tus solicitudes",
             "form_title": "Nueva solicitud",
+            "half_day": "Media jornada",
+            "half_day_hint": "Solo si la solicitud es un único día.",
             "cancel_confirm": "¿Retirar esta solicitud?",
             "cancel_approved_confirm": "¿Retirar este permiso o compensación aprobado? El cuadrante restaura los turnos anteriores.",
             "submitted": "Solicitud enviada.",
@@ -1080,8 +1082,22 @@
             "not_owner": "Solo puedes retirar tu propia solicitud.",
             "reason_required": "El motivo es obligatorio (al menos 3 caracteres).",
             "already_started": "Este permiso o compensación ya ha empezado. Ya no se puede retirar.",
-            "not_cancellable": "No puede retirar esta solicitud."
+            "not_cancellable": "No puede retirar esta solicitud.",
+            "half_day_range": "Una media jornada solo puede ser una fecha."
         }
+    },
+        "leave_balance": {
+        "short": ":days d",
+        "title": "Derecho :entitlement · aprobado :approved · planificado :planned · restante :remaining",
+        "entitlement": "Derecho anual",
+        "approved": "Permiso aprobado",
+        "planned": "Permiso planificado",
+        "remaining": "Saldo restante",
+        "request_days": "Esta solicitud",
+        "year": "Saldo de permiso :year",
+        "unset": "No hay derecho de permiso para :year.",
+        "shortfall": "El saldo restante queda en :days. Puede aprobar igualmente.",
+        "half_day": "Media jornada"
     },
     "backoffice_clock": {
         "start_break": "Tomar un descanso",
