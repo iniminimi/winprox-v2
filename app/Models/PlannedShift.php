@@ -57,6 +57,25 @@ class PlannedShift extends Model
         return $this->belongsTo(Location::class);
     }
 
+    public function isReplacementPool(): bool
+    {
+        return $this->shiftType !== null
+            && $this->shiftType->is_replacement_pool
+            && $this->kind !== ShiftTypeKind::Sick;
+    }
+
+    public function overlapsMinutes(int $start, int $end): bool
+    {
+        if ($this->start_time === null || $this->end_time === null || $this->kind->isAbsence()) {
+            return false;
+        }
+
+        $blockStart = ShiftType::timeToMinutes((string) $this->start_time);
+        $blockEnd = ShiftType::timeToMinutes((string) $this->end_time);
+
+        return $blockStart < $end && $start < $blockEnd;
+    }
+
     public function startMinutes(): int
     {
         return ShiftType::timeToMinutes($this->start_time);

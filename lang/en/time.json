@@ -815,7 +815,9 @@
                 "leave": "Leave",
                 "recup": "Time off in lieu",
                 "sick": "Sick"
-            }
+            },
+            "replacement_pool": "Available for replacement",
+            "replacement_pool_hint": "Workers with this shift type that day appear in the replacement list. Sickness never counts."
         },
         "empty_workers": "No workers in this period. Add workers under People → Teams.",
         "pick_filter": "Choose a team or location to load the roster.",
@@ -966,7 +968,7 @@
             "choose_candidate": "Choose a worker",
             "absence_type": "Absence type",
             "confirm": "Replace",
-            "none": "No suitable workers for this time slot",
+            "none": "No available replacements found. Check that workers are scheduled with a shift type marked as the replacement pool.",
             "tier_unit": "Same unit",
             "tier_location": "Same location",
             "tier_other": "Other workers",
@@ -997,7 +999,10 @@
         "status": {
             "active": "Active",
             "inactive": "Inactive"
-        }
+        },
+        "include_unplanned": "Also suggest workers with no plan",
+        "include_unplanned_hint": "Off: only people who have a replacement-pool shift type that day. On: also people with no block that day.",
+        "pool": "Replacement pool"
     },
     "holidays": {
         "title": "Public holidays",

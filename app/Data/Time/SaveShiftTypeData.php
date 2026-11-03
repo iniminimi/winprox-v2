@@ -16,5 +16,6 @@ final class SaveShiftTypeData
         public ShiftTypeColor $color,
         public bool $isActive = true,
         public ShiftTypeKind $kind = ShiftTypeKind::Work,
+        public bool $isReplacementPool = false,
     ) {}
 }

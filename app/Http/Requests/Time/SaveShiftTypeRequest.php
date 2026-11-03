@@ -33,6 +33,7 @@ class SaveShiftTypeRequest extends FormRequest
             'break_minutes' => ['required_if:kind,'.ShiftTypeKind::Work->value, 'nullable', 'integer', 'min:0', 'max:720'],
             'color' => ['required', Rule::enum(ShiftTypeColor::class)],
             'is_active' => ['sometimes', 'boolean'],
+            'is_replacement_pool' => ['sometimes', 'boolean'],
         ];
     }
 }

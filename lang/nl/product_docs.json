@@ -110,7 +110,7 @@
                     "Week- of maandweergave. Meerdere diensten op één dag, als code of als vrij blok, bijvoorbeeld 07:00–15:00. Een notitie per dienst kan, en ook een groep of unit bij de dienst.",
                     "U kopieert een week naar maximaal 26 opeenvolgende weken. Dagen die al diensten of afwezigheden hebben, slaat WinProx over. Notities gaan niet mee.",
                     "Niet-opgeslagen wijzigingen vraagt WinProx eerst op te slaan als u de pagina verlaat of van week of maand wisselt.",
-                    "Vervanging zoeken: WinProx stelt beschikbare collega’s voor. Het oorspronkelijke blok wordt een afwezigheid en de vervanger krijgt hetzelfde tijdslot.",
+                    "Vervanging zoeken: WinProx stelt uitvoerders voor die die dag een shifttype uit de vervangingspool hebben. Het oorspronkelijke blok wordt een afwezigheid en de vervanger krijgt hetzelfde tijdslot.",
                     "Verlof, recup en ziekte kunnen een hele dag of een deel van de dag zijn. Die blokken tellen niet als gewerkte uren. De soorten diensten stelt u in via Time → Shifttypes. Feestdagen en vervangingsdagen staan onder Time → Feestdagen.",
                     "Feestdagen en vervangingsdagen hebben een eigen kleur. Een vaste vrije dag is grijs en blijft invulbaar.",
                     "Standaard is de weeknorm 38 uur, aanpasbaar per uitvoerder. Normen en verschillen houden rekening met de werkregeling en de feestdagen. Zonder betrouwbare norm blijft het cijfer leeg. Dat is een telling voor het overzicht, geen oordeel over de arbeidsduur.",

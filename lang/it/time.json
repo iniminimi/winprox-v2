@@ -815,7 +815,9 @@
                 "leave": "Ferie",
                 "recup": "Recupero",
                 "sick": "Malattia"
-            }
+            },
+            "replacement_pool": "Disponibile per la sostituzione",
+            "replacement_pool_hint": "Gli esecutori con questo tipo di turno quel giorno compaiono nell'elenco dei sostituti. La malattia non conta mai."
         },
         "empty_workers": "Nessun esecutore in questo periodo. Aggiungili in Persone → Team.",
         "pick_filter": "Scegli un team o una sede per caricare il turnario.",
@@ -966,7 +968,7 @@
             "choose_candidate": "Scegli un lavoratore",
             "absence_type": "Tipo di assenza",
             "confirm": "Sostituisci",
-            "none": "Nessun lavoratore disponibile per questa fascia oraria",
+            "none": "Nessun sostituto disponibile. Controlla che ci siano esecutori pianificati con un tipo di turno segnato come pool di sostituzione.",
             "tier_unit": "Stessa unità",
             "tier_location": "Stessa sede",
             "tier_other": "Altri lavoratori",
@@ -997,7 +999,10 @@
         "status": {
             "active": "Attivo",
             "inactive": "Inattivo"
-        }
+        },
+        "include_unplanned": "Proporre anche esecutori senza pianificazione",
+        "include_unplanned_hint": "Spento: solo chi quel giorno ha un tipo di turno del pool. Acceso: anche chi quel giorno non ha nessun blocco.",
+        "pool": "Pool di sostituzione"
     },
     "holidays": {
         "title": "Festività",

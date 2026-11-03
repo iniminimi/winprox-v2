@@ -173,6 +173,7 @@ class TimeScheduleController extends Controller
             'break_minutes' => $type->break_minutes,
             'color' => $type->color->value,
             'is_active' => $type->is_active,
+            'is_replacement_pool' => $type->is_replacement_pool,
         ], $types));
     }
 
@@ -204,6 +205,9 @@ class TimeScheduleController extends Controller
     private function persistType(SaveShiftTypeRequest $request, SaveShiftTypeAction $save, ?int $shiftTypeId): ShiftType
     {
         $validated = $request->validated();
+        $existingPool = $shiftTypeId !== null
+            ? (bool) ShiftType::query()->whereKey($shiftTypeId)->value('is_replacement_pool')
+            : false;
 
         try {
             return $save->handle(
@@ -217,6 +221,9 @@ class TimeScheduleController extends Controller
                     ShiftTypeColor::from($validated['color']),
                     (bool) ($validated['is_active'] ?? true),
                     ShiftTypeKind::from($validated['kind']),
+                    array_key_exists('is_replacement_pool', $validated)
+                        ? $request->boolean('is_replacement_pool')
+                        : $existingPool,
                 ),
                 $request->user()?->id,
                 $shiftTypeId,

@@ -30,6 +30,7 @@ class ShiftTypeSaved implements WebhookEvent
             'break_minutes' => $this->shiftType->break_minutes,
             'color' => $this->shiftType->color->value,
             'is_active' => $this->shiftType->is_active,
+            'is_replacement_pool' => $this->shiftType->is_replacement_pool,
             'actor_user_id' => $this->actorUserId,
         ];
     }

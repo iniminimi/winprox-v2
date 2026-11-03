@@ -15,6 +15,16 @@
 
     @include('partials.wp-time-nav', ['alarmCount' => $alarmCount])
 
+    @can('create', \App\Models\ShiftType::class)
+        <div class="wp-card wp-card-pad wp-stack-tight">
+            <label class="wp-check wp-check--boxed">
+                <input type="checkbox" wire:model.live="includeUnplanned">
+                <span>{{ __('time.shift_types.include_unplanned') }}</span>
+            </label>
+            <p class="wp-hint">{{ __('time.shift_types.include_unplanned_hint') }}</p>
+        </div>
+    @endcan
+
     @if (session('time_flash'))
         <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
     @endif
@@ -31,6 +41,9 @@
                                 {{ __('time.schedule.types.kinds.'.$type->kind->value) }}
                                 @if ($type->kind->isWork())
                                     · {{ $type->start_time }}–{{ $type->end_time }} · {{ __('time.schedule.types.break') }} {{ $type->break_minutes }}
+                                @endif
+                                @if ($type->is_replacement_pool)
+                                    · {{ __('time.shift_types.pool') }}
                                 @endif
                             </p>
                         </div>
@@ -97,6 +110,13 @@
                     <input id="type-break" type="number" min="0" max="720" class="wp-input" wire:model="typeBreak">
                     @error('typeBreak') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
+                @endif
+                @if ($typeKind !== \App\Enums\ShiftTypeKind::Sick->value)
+                    <label class="wp-check wp-check--boxed">
+                        <input type="checkbox" wire:model="typeReplacementPool">
+                        <span>{{ __('time.schedule.types.replacement_pool') }}</span>
+                    </label>
+                    <p class="wp-hint">{{ __('time.schedule.types.replacement_pool_hint') }}</p>
                 @endif
                 <div class="wp-field">
                     <span class="wp-label" id="type-color-label">{{ __('time.schedule.types.color') }}</span>

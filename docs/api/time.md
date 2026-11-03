@@ -72,6 +72,6 @@ The server first locks a match when a block matches exactly one shift and that s
 
 `POST /time/schedule/publish` — marks the visible week (or month if `period=month`) as published.
 
-Shift types: `GET/POST /time/shift-types`, `PATCH /time/shift-types/{id}`, `POST /time/shift-types/{id}/active`.
+Shift types: `GET/POST /time/shift-types`, `PATCH /time/shift-types/{id}`, `POST /time/shift-types/{id}/active`. The body may include `is_replacement_pool`. Omitting it on update keeps the stored value. A sick type is never in the pool.
 
 Webhooks: `time.schedule.saved`, `time.schedule.copied`, `time.schedule.published`, `time.shift_type.saved`.

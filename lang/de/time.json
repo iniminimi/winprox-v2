@@ -815,7 +815,9 @@
                 "leave": "Urlaub",
                 "recup": "Ausgleich",
                 "sick": "Krank"
-            }
+            },
+            "replacement_pool": "Für Vertretung verfügbar",
+            "replacement_pool_hint": "Ausführende mit diesem Schichttyp an dem Tag erscheinen in der Vertretungsliste. Krankheit zählt nie."
         },
         "empty_workers": "Keine Ausführenden in diesem Zeitraum. Legen Sie sie unter Personen → Teams an.",
         "pick_filter": "Wählen Sie ein Team oder einen Standort, um den Dienstplan zu laden.",
@@ -966,7 +968,7 @@
             "choose_candidate": "Mitarbeiter wählen",
             "absence_type": "Abwesenheitstyp",
             "confirm": "Ersetzen",
-            "none": "Keine geeigneten Mitarbeiter für diesen Zeitslot",
+            "none": "Keine verfügbaren Vertretungen gefunden. Prüfen Sie, ob Ausführende mit einem als Vertretungspool markierten Schichttyp geplant sind.",
             "tier_unit": "Gleiche Einheit",
             "tier_location": "Gleicher Standort",
             "tier_other": "Andere Mitarbeiter",
@@ -997,7 +999,10 @@
         "status": {
             "active": "Aktiv",
             "inactive": "Inaktiv"
-        }
+        },
+        "include_unplanned": "Auch Ausführende ohne Planung vorschlagen",
+        "include_unplanned_hint": "Aus: nur wer an dem Tag einen Schichttyp aus dem Vertretungspool hat. An: auch wer an dem Tag keinen Block hat.",
+        "pool": "Vertretungspool"
     },
     "holidays": {
         "title": "Feiertage",

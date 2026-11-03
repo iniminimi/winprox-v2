@@ -358,16 +358,21 @@ it('opent het uurrooster voor een admin', function () {
         ->call('openCreate')
         ->assertSee(__('time.schedule.types.colors.purple'), false)
         ->assertSee(__('time.schedule.types.colors.amber'), false)
+        ->assertSee(__('time.schedule.types.replacement_pool'), false)
+        ->assertSee(__('time.shift_types.include_unplanned'), false)
         ->set('typeCode', 'VM')
         ->set('typeLabel', 'Voormiddag')
         ->set('typeStart', '07:00')
         ->set('typeEnd', '15:00')
         ->set('typeBreak', 30)
         ->set('typeColor', 'green')
+        ->set('typeReplacementPool', true)
+        ->set('includeUnplanned', true)
         ->call('save')
         ->assertHasNoErrors();
 
-    expect(ShiftType::query()->where('tenant_id', $tenant->id)->where('code', 'VM')->exists())->toBeTrue();
+    expect(ShiftType::query()->where('tenant_id', $tenant->id)->where('code', 'VM')->value('is_replacement_pool'))->toBeTrue()
+        ->and($tenant->fresh()->time_replacement_include_unplanned)->toBeTrue();
 });
 
 it('toont Niet gepubliceerd zolang de week draft-shifts bevat', function () {

@@ -23,11 +23,13 @@ class ShiftType extends Model
         'break_minutes',
         'color',
         'is_active',
+        'is_replacement_pool',
     ];
 
     protected $casts = [
         'break_minutes' => 'integer',
         'is_active' => 'boolean',
+        'is_replacement_pool' => 'boolean',
         'color' => ShiftTypeColor::class,
         'kind' => ShiftTypeKind::class,
     ];

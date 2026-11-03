@@ -110,7 +110,7 @@
                     "Vista de semana o de mes. Varios turnos en un día, como código o como bloque libre, por ejemplo 07:00–15:00. Se puede poner una nota por turno, y también un grupo o una unidad en el turno.",
                     "Se copia una semana hacia un máximo de 26 semanas seguidas. WinProx omite los días que ya tienen turnos o ausencias. Las notas no se copian.",
                     "WinProx pide guardar primero los cambios no guardados si sale de la página o cambia de semana o de mes.",
-                    "Buscar un sustituto: WinProx propone compañeros disponibles. El bloque original pasa a ser una ausencia y el sustituto recibe el mismo tramo.",
+                    "Buscar un sustituto: WinProx propone operarios que ese día tienen un tipo de turno de la bolsa de sustitución. El bloque original pasa a ser una ausencia y el sustituto recibe el mismo tramo.",
                     "Permiso, compensación y baja pueden ser un día entero o parte del día. Esos bloques no cuentan como horas trabajadas. Los tipos de turno se definen en Time → Tipos de turno. Festivos y días de sustitución están en Time → Festivos.",
                     "Los festivos y los días de sustitución tienen un color propio. Un día libre fijo se ve gris y se puede rellenar.",
                     "La norma semanal por defecto es de 38 horas, ajustable por ejecutor. Normas y diferencias tienen en cuenta el régimen de trabajo y los festivos. Sin una norma fiable, la cifra queda vacía. Es un recuento para la vista general, no un juicio sobre la jornada.",

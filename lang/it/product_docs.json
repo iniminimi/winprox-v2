@@ -110,7 +110,7 @@
                     "Vista settimana o mese. Più turni nello stesso giorno, come codice o come blocco libero, per esempio 07:00–15:00. Si può aggiungere una nota per turno, e anche un gruppo o un’unità sul turno.",
                     "Si copia una settimana su al massimo 26 settimane di fila. WinProx salta i giorni che hanno già turni o assenze. Le note non vengono copiate.",
                     "WinProx chiede di salvare prima le modifiche non salvate se uscite dalla pagina o cambiate settimana o mese.",
-                    "Cercare un sostituto: WinProx propone colleghi disponibili. Il blocco originale diventa un’assenza e il sostituto riceve la stessa fascia.",
+                    "Cercare un sostituto: WinProx propone esecutori che quel giorno hanno un tipo di turno del pool di sostituzione. Il blocco originale diventa un’assenza e il sostituto riceve la stessa fascia.",
                     "Ferie, recupero e malattia possono essere un giorno intero o parte del giorno. Quei blocchi non contano come ore lavorate. I tipi di turno si impostano in Time → Tipi di turno. Festivi e giorni sostitutivi stanno in Time → Festività.",
                     "I festivi e i giorni sostitutivi hanno un colore proprio. Un giorno libero fisso è grigio e resta compilabile.",
                     "La norma settimanale predefinita è di 38 ore, modificabile per esecutore. Norme e scostamenti tengono conto del regime di lavoro e dei festivi. Senza una norma affidabile la cifra resta vuota. È un conteggio per la vista d’insieme, non un giudizio sull’orario di lavoro.",

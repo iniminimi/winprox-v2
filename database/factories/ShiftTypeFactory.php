@@ -25,6 +25,7 @@ class ShiftTypeFactory extends Factory
             'break_minutes' => 30,
             'color' => ShiftTypeColor::Green,
             'is_active' => true,
+            'is_replacement_pool' => false,
         ];
     }
 }

@@ -5,6 +5,7 @@ namespace App\Livewire\Time;
 use App\Actions\Time\ListShiftTypesAction;
 use App\Actions\Time\SaveShiftTypeAction;
 use App\Actions\Time\SetShiftTypeActiveAction;
+use App\Actions\Time\SetTenantReplacementIncludeUnplannedAction;
 use App\Data\Time\SaveShiftTypeData;
 use App\Enums\ShiftTypeColor;
 use App\Enums\ShiftTypeKind;
@@ -38,6 +39,10 @@ class ShiftTypesIndex extends Component
     public string $typeColor = 'none';
     public string $typeKind = 'work';
 
+    public bool $typeReplacementPool = false;
+
+    public bool $includeUnplanned = false;
+
     public function boot(): void
     {
         abort_unless(TimeModuleAccess::rosterEnabledForTenantId((int) Tenancy::id()), 403);
@@ -46,6 +51,18 @@ class ShiftTypesIndex extends Component
     public function mount(): void
     {
         $this->authorize('viewAny', ShiftType::class);
+        $tenant = Tenant::query()->find(Tenancy::id());
+        $this->includeUnplanned = (bool) ($tenant?->time_replacement_include_unplanned ?? false);
+    }
+
+    public function updatedIncludeUnplanned(bool $value, SetTenantReplacementIncludeUnplannedAction $set): void
+    {
+        $this->authorize('create', ShiftType::class);
+        $set->handle(
+            Tenant::query()->findOrFail(Tenancy::id()),
+            $value,
+            auth()->id(),
+        );
     }
 
     public function openCreate(): void
@@ -67,6 +84,7 @@ class ShiftTypesIndex extends Component
         $this->typeBreak = (int) $type->break_minutes;
         $this->typeColor = $type->color->value;
         $this->typeKind = $type->kind->value;
+        $this->typeReplacementPool = (bool) $type->is_replacement_pool;
         $this->showModal = true;
     }
 
@@ -119,6 +137,7 @@ class ShiftTypesIndex extends Component
                         color: $color,
                         isActive: $type->is_active,
                         kind: $kind,
+                        isReplacementPool: $kind === ShiftTypeKind::Sick ? false : $this->typeReplacementPool,
                     ),
                     auth()->id(),
                     $type->id,
@@ -136,6 +155,7 @@ class ShiftTypesIndex extends Component
                         color: $color,
                         isActive: true,
                         kind: $kind,
+                        isReplacementPool: $kind === ShiftTypeKind::Sick ? false : $this->typeReplacementPool,
                     ),
                     auth()->id(),
                 );
@@ -177,6 +197,7 @@ class ShiftTypesIndex extends Component
         $this->typeBreak = 0;
         $this->typeColor = ShiftTypeColor::default()->value;
         $this->typeKind = ShiftTypeKind::Work->value;
+        $this->typeReplacementPool = false;
         $this->resetErrorBag();
     }
 }

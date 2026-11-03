@@ -110,7 +110,7 @@
                     "Week or month view. Several shifts on one day, as a code or as a free block, for example 07:00–15:00. A note per shift is possible, and so is a group or unit on the shift.",
                     "You copy a week to at most 26 weeks in a row. WinProx skips days that already have shifts or absences. Notes are not copied.",
                     "WinProx asks you to save unsaved changes first if you leave the page or switch week or month.",
-                    "Find a replacement: WinProx suggests available colleagues. The original block becomes an absence and the replacement gets the same time slot.",
+                    "Find a replacement: WinProx suggests workers who have a replacement-pool shift type that day. The original block becomes an absence and the replacement gets the same time slot.",
                     "Leave, time off and sickness can be a whole day or part of a day. Those blocks do not count as hours worked. You set the shift types under Time → Shift types. Public holidays and replacement days live under Time → Public holidays.",
                     "Public holidays and replacement days have their own colour. A fixed day off is grey and can still be filled in.",
                     "The default week target is 38 hours, adjustable per worker. Targets and differences take the work pattern and public holidays into account. Without a reliable target the figure stays empty. It is a count for the overview, not a judgement on working time.",

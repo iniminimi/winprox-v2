@@ -4,6 +4,7 @@ namespace App\Actions\Time;
 
 use App\Data\Time\SaveShiftTypeData;
 use App\Enums\RosterCellKind;
+use App\Enums\ShiftTypeKind;
 use App\Events\Time\ShiftTypeSaved;
 use App\Exceptions\RosterValidationException;
 use App\Models\ShiftType;
@@ -45,6 +46,7 @@ class SaveShiftTypeAction
             'break_minutes' => $breakMinutes,
             'color' => $data->color,
             'is_active' => $data->isActive,
+            'is_replacement_pool' => $data->kind === ShiftTypeKind::Sick ? false : $data->isReplacementPool,
         ];
 
         if ($shiftTypeId !== null) {

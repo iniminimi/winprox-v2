@@ -3,6 +3,7 @@
 namespace App\Actions\Time;
 
 use App\Enums\AbsenceRequestStatus;
+use App\Enums\ShiftTypeKind;
 use App\Models\AbsenceRequest;
 use App\Models\PlannedShift;
 use App\Models\ShiftType;
@@ -15,12 +16,12 @@ use Illuminate\Support\Collection;
 
 /**
  * Rangschikt vervanger-kandidaten voor één of meerdere werkblokken van dezelfde
- * worker×dag. Kandidaten moeten elk tijdslot kunnen overnemen:
- * - actief, andere worker, kan klokken op elke blok-locatie
- * - geen overlappend gepland blok en geen absence-blok die dag
- * - geen lopende/goedgekeurde afwezigheidsaanvraag die dag
- * - geen expliciete werkregelingsrij met 0 minuten op die weekdag
- *   (zonder werkregeling valt een kandidaat nooit af op deze grond)
+ * worker×dag. Alleen wie die dag een shifttype uit de vervangingspool heeft,
+ * plus — als de tenant dat aanzet — wie die dag geen blok heeft.
+ * Een poolblok is beschikbaarheid: het telt niet als overlappend werk.
+ * Ziekte, een gewoon werkblok dat de gevraagde uren overlapt, een afwezigheid
+ * buiten de pool, een lopende aanvraag zonder poolblok, een andere locatie
+ * en een expliciete 0-minutenweekdag blijven uitsluiten.
  * Rang: 1) zelfde unit (default_unit) → 2) toegewezen op de blok-locatie → 3) rest.
  */
 class SuggestReplacementAction
@@ -57,31 +58,14 @@ class SuggestReplacementAction
             ->map(fn ($id) => (int) $id)
             ->all();
 
-        // Werker-dag combinaties die een kandidaat diskwalificeren.
-        $busyWorkerIds = PlannedShift::query()
+        $dayShifts = PlannedShift::query()
+            ->with('shiftType')
             ->where('tenant_id', $tenant->id)
             ->whereDate('work_date', $date)
             ->where('worker_id', '!=', $workerId)
             ->whereIn('worker_id', $candidateIds ?: [0])
-            ->get(['worker_id', 'start_time', 'end_time', 'kind'])
-            ->filter(function (PlannedShift $shift) use ($windows) {
-                if ($shift->kind->isAbsence()) {
-                    // Elk afwezigheidsblok die dag (aanvraag óf omgezet) = afwezig.
-                    return true;
-                }
-                $start = ShiftType::timeToMinutes((string) $shift->start_time);
-                $end = ShiftType::timeToMinutes((string) $shift->end_time);
-                foreach ($windows as [$wStart, $wEnd]) {
-                    if ($start < $wEnd && $wStart < $end) {
-                        return true;
-                    }
-                }
-
-                return false;
-            })
-            ->pluck('worker_id')
-            ->map(fn ($id) => (int) $id)
-            ->all();
+            ->get()
+            ->groupBy(fn (PlannedShift $shift) => (int) $shift->worker_id);
 
         $absentWorkerIds = AbsenceRequest::query()
             ->where('tenant_id', $tenant->id)
@@ -107,7 +91,9 @@ class SuggestReplacementAction
             ->map(fn ($id) => (int) $id)
             ->all();
 
-        $excluded = array_flip(array_merge($busyWorkerIds, $absentWorkerIds, $offDayWorkerIds, [$workerId]));
+        $includeUnplanned = (bool) $tenant->time_replacement_include_unplanned;
+        $absent = array_flip($absentWorkerIds);
+        $offDay = array_flip($offDayWorkerIds);
 
         return Worker::query()
             ->with(['locations', 'defaultUnit', 'tenant'])
@@ -117,7 +103,7 @@ class SuggestReplacementAction
             ->orderBy('first_name')
             ->orderBy('last_name')
             ->get()
-            ->reject(fn (Worker $worker) => isset($excluded[(int) $worker->id]))
+            ->reject(fn (Worker $worker) => isset($offDay[(int) $worker->id]))
             ->filter(function (Worker $worker) use ($locationIds) {
                 foreach ($locationIds as $locationId) {
                     if (! $worker->canClockAt($locationId)) {
@@ -126,6 +112,28 @@ class SuggestReplacementAction
                 }
 
                 return true;
+            })
+            ->filter(function (Worker $worker) use ($dayShifts, $windows, $includeUnplanned, $absent) {
+                /** @var Collection<int, PlannedShift> $blocks */
+                $blocks = $dayShifts->get((int) $worker->id, collect());
+                if ($blocks->contains(fn (PlannedShift $shift) => $shift->kind === ShiftTypeKind::Sick)) {
+                    return false;
+                }
+                if ($blocks->contains(fn (PlannedShift $shift) => $shift->kind->isAbsence() && ! $shift->isReplacementPool())) {
+                    return false;
+                }
+                if ($blocks->contains(fn (PlannedShift $shift) => $this->blocksRequestedWindow($shift, $windows))) {
+                    return false;
+                }
+
+                $hasPool = $blocks->contains(fn (PlannedShift $shift) => $shift->isReplacementPool());
+                if ($hasPool) {
+                    return true;
+                }
+
+                return $includeUnplanned
+                    && $blocks->isEmpty()
+                    && ! isset($absent[(int) $worker->id]);
             })
             ->map(function (Worker $worker) use ($unitIds, $locationIds) {
                 $tier = 3;
@@ -148,6 +156,26 @@ class SuggestReplacementAction
             ->sortBy([['tier', 'asc'], ['name', 'asc']])
             ->values()
             ->all();
+    }
+
+    /**
+     * Gewoon werk dat de gevraagde uren raakt. Een poolblok is beschikbaarheid.
+     *
+     * @param  list<array{0: int, 1: int}>  $windows
+     */
+    private function blocksRequestedWindow(PlannedShift $shift, array $windows): bool
+    {
+        if (! $shift->kind->isWork() || $shift->isReplacementPool()) {
+            return false;
+        }
+
+        foreach ($windows as [$start, $end]) {
+            if ($shift->overlapsMinutes($start, $end)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**

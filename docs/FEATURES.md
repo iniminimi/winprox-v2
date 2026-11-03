@@ -969,14 +969,19 @@ laat, behoudt de bestaande rij — en dus de notitie. Zichtbaar als ✎-markerin
 (tooltip toont de tekst) en onder de dienst in **Mijn rooster**. Week herhalen kopieert
 notities niet mee.
 **Vervanger zoeken** (`SuggestReplacementAction` + `ReplacePlannedShiftAction`, vanuit de
-dag-editor per blok of voor de hele dag): kandidaten moeten elk tijdslot kunnen overnemen —
-actief, `canClockAt` op de blok-locatie, geen overlappend blok, geen afwezigheid
-(aanvraag goedgekeurd **of** lopend, én omgezet absence-blok), en geen expliciete
-werkregelingsrij met 0 minuten op die weekdag (wie geen werkregeling heeft, valt op
-die grond nooit af). Rang: zelfde unit → toegewezen op de locatie → rest. Bij vervanging wordt
-het originele blok op dezelfde rij omgezet naar het gekozen afwezigheidstype (unit-snapshot
-leeg, identiteit blijft → geen `missing`) en krijgt de vervanger een spiegelblok met
-hetzelfde slot, locatie en unit; published dagen geven `RosterChanged` aan beide workers.
+dag-editor per blok of voor de hele dag): een kandidaat heeft die dag minstens één blok
+waarvan het shifttype `is_replacement_pool` aanstaat, of — alleen als de tenant
+`time_replacement_include_unplanned` aanzet — geen enkel blok en geen open of goedgekeurde
+afwezigheidsaanvraag. Verder: actief, `canClockAt` op de blok-locatie, geen gewoon werkblok
+dat de gevraagde uren overlapt, geen afwezigheid buiten de pool, geen ziekteblok, en geen
+expliciete werkregelingsrij met 0 minuten op die weekdag. Een poolblok is beschikbaarheid
+en telt niet als overlap. Ziekte kan nooit in de pool. Rang: zelfde unit → toegewezen op de
+locatie → rest. Bij vervanging wordt het originele blok op dezelfde rij omgezet naar het
+gekozen afwezigheidstype (unit-snapshot leeg, identiteit blijft → geen `missing`) en krijgt
+de vervanger een spiegelblok met hetzelfde slot, locatie en unit. Een overlappend
+pool-werkblok of een pool-afwezigheid op die dag verdwijnt, zodat de uren niet dubbel tellen;
+een pool-werkblok dat de nieuwe dienst niet raakt blijft staan. Published dagen geven
+`RosterChanged` aan beide workers.
 Geen link-kolom en geen impliciete `AbsenceRequest` in v1.
 Week- of **maandweergave**; maandkolommen zijn smaller (dagnummer + weekdag onder de maandnaam).
 In **week- en maandweergave** toont het vinkje **Weekends** zaterdag en zondag;

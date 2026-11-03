@@ -815,7 +815,9 @@
                 "leave": "Congé",
                 "recup": "Récup",
                 "sick": "Maladie"
-            }
+            },
+            "replacement_pool": "Disponible pour remplacement",
+            "replacement_pool_hint": "Les exécutants avec ce type de service ce jour-là apparaissent dans la liste des remplaçants. La maladie ne compte jamais."
         },
         "empty_workers": "Aucun exécutant pour cette période. Ajoutez-les sous Personnes → Équipes.",
         "pick_filter": "Choisissez une équipe ou un site pour charger le planning.",
@@ -966,7 +968,7 @@
             "choose_candidate": "Choisir un travailleur",
             "absence_type": "Type d'absence",
             "confirm": "Remplacer",
-            "none": "Aucun travailleur disponible pour ce créneau",
+            "none": "Aucun remplaçant disponible. Vérifiez que des exécutants sont planifiés avec un type de service marqué comme vivier de remplacement.",
             "tier_unit": "Même unité",
             "tier_location": "Même lieu",
             "tier_other": "Autres travailleurs",
@@ -997,7 +999,10 @@
         "status": {
             "active": "Actif",
             "inactive": "Inactif"
-        }
+        },
+        "include_unplanned": "Proposer aussi les exécutants sans planning",
+        "include_unplanned_hint": "Désactivé : uniquement qui a ce jour un type de service du vivier. Activé : aussi qui n'a aucun bloc ce jour-là.",
+        "pool": "Vivier de remplacement"
     },
     "holidays": {
         "title": "Jours fériés",

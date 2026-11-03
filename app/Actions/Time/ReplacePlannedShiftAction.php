@@ -84,11 +84,15 @@ class ReplacePlannedShiftAction
                 fn (PlannedShift $shift) => $shift->status->isPublished(),
             );
 
-            // Overlap-guard voor de vervanger: bestaande werkdag + nieuwe blokken.
-            $intervals = PlannedShift::query()
+            // Overlap-guard: poolblokken zijn beschikbaarheid en tellen niet mee.
+            $existing = PlannedShift::query()
+                ->with('shiftType')
                 ->where('worker_id', $replacement->id)
                 ->whereDate('work_date', $date)
-                ->get(['start_time', 'end_time', 'kind'])
+                ->lockForUpdate()
+                ->get();
+            $intervals = $existing
+                ->reject(fn (PlannedShift $shift) => $shift->isReplacementPool())
                 ->map(fn (PlannedShift $shift) => [
                     'worker_id' => (int) $replacement->id,
                     'date' => $date,
@@ -107,6 +111,11 @@ class ReplacePlannedShiftAction
                 ];
             }
             $this->assertNoOverlap->handle($intervals);
+
+            $windows = $blocks->map(fn (PlannedShift $source) => [
+                ShiftType::timeToMinutes((string) $source->start_time),
+                ShiftType::timeToMinutes((string) $source->end_time),
+            ])->all();
 
             $created = [];
             foreach ($blocks as $block) {
@@ -133,6 +142,25 @@ class ReplacePlannedShiftAction
                 $block->unit_code = null;
                 $block->unit_name = null;
                 $block->save();
+            }
+
+            foreach ($existing as $pool) {
+                if (! $pool->isReplacementPool()) {
+                    continue;
+                }
+                $overlaps = false;
+                foreach ($windows as [$start, $end]) {
+                    if ($pool->overlapsMinutes($start, $end)) {
+                        $overlaps = true;
+                        break;
+                    }
+                }
+                if ($pool->kind->isAbsence() || $overlaps) {
+                    if ($pool->status->isPublished()) {
+                        $published = true;
+                    }
+                    $pool->delete();
+                }
             }
 
             if ($published && $date >= now()->toDateString()) {

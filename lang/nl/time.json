@@ -815,7 +815,9 @@
                 "leave": "Verlof",
                 "recup": "Recup",
                 "sick": "Ziek"
-            }
+            },
+            "replacement_pool": "Beschikbaar voor vervanging",
+            "replacement_pool_hint": "Uitvoerders met dit shifttype op die dag verschijnen in de vervangerslijst. Ziekte telt nooit mee."
         },
         "empty_workers": "Geen uitvoerders in deze periode. Voeg uitvoerders toe onder Personen → Teams.",
         "pick_filter": "Kies een team of locatie om het rooster te laden.",
@@ -966,7 +968,7 @@
             "choose_candidate": "Kies een uitvoerder",
             "absence_type": "Afwezigheidstype",
             "confirm": "Vervangen",
-            "none": "Geen geschikte uitvoerders voor dit tijdslot",
+            "none": "Geen beschikbare vervangers gevonden. Controleer of er uitvoerders zijn ingepland met een shifttype dat als vervangingspool is aangeduid.",
             "tier_unit": "Zelfde unit",
             "tier_location": "Zelfde locatie",
             "tier_other": "Andere uitvoerders",
@@ -997,7 +999,10 @@
         "status": {
             "active": "Actief",
             "inactive": "Inactief"
-        }
+        },
+        "include_unplanned": "Ook uitvoerders zonder planning voorstellen",
+        "include_unplanned_hint": "Staat uit: alleen wie die dag een shifttype uit de vervangingspool heeft. Staat aan: ook wie die dag geen blok heeft.",
+        "pool": "Vervangingspool"
     },
     "holidays": {
         "title": "Feestdagen",

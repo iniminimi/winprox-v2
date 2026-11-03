@@ -815,7 +815,9 @@
                 "leave": "Vacaciones",
                 "recup": "Descanso compensatorio",
                 "sick": "Baja"
-            }
+            },
+            "replacement_pool": "Disponible para sustitución",
+            "replacement_pool_hint": "Los operarios con este tipo de turno ese día aparecen en la lista de sustitutos. La baja nunca cuenta."
         },
         "empty_workers": "No hay operarios en este periodo. Añádalos en Personas → Equipos.",
         "pick_filter": "Elige un equipo o una ubicación para cargar el horario.",
@@ -966,7 +968,7 @@
             "choose_candidate": "Elegir un trabajador",
             "absence_type": "Tipo de ausencia",
             "confirm": "Sustituir",
-            "none": "No hay trabajadores disponibles para este horario",
+            "none": "No hay sustitutos disponibles. Compruebe que hay operarios planificados con un tipo de turno marcado como bolsa de sustitución.",
             "tier_unit": "Misma unidad",
             "tier_location": "Misma ubicación",
             "tier_other": "Otros trabajadores",
@@ -997,7 +999,10 @@
         "status": {
             "active": "Activo",
             "inactive": "Inactivo"
-        }
+        },
+        "include_unplanned": "Proponer también operarios sin planificación",
+        "include_unplanned_hint": "Desactivado: solo quien ese día tiene un tipo de turno de la bolsa. Activado: también quien ese día no tiene ningún bloque.",
+        "pool": "Bolsa de sustitución"
     },
     "holidays": {
         "title": "Festivos",
