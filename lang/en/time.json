@@ -972,7 +972,8 @@
             "tier_unit": "Same unit",
             "tier_location": "Same location",
             "tier_other": "Other workers",
-            "done": "Replacement saved."
+            "done": "Replacement saved.",
+            "no_shift": "no shift"
         },
         "staffing": {
             "title": "Minimum staffing not met",

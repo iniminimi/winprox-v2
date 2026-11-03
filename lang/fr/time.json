@@ -972,7 +972,8 @@
             "tier_unit": "Même unité",
             "tier_location": "Même lieu",
             "tier_other": "Autres travailleurs",
-            "done": "Remplacement enregistré."
+            "done": "Remplacement enregistré.",
+            "no_shift": "pas de service"
         },
         "staffing": {
             "title": "Effectif minimal non atteint",

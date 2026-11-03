@@ -972,7 +972,8 @@
             "tier_unit": "Zelfde unit",
             "tier_location": "Zelfde locatie",
             "tier_other": "Andere uitvoerders",
-            "done": "Vervanging opgeslagen."
+            "done": "Vervanging opgeslagen.",
+            "no_shift": "geen planning"
         },
         "staffing": {
             "title": "Minimum bezetting niet gehaald",

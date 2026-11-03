@@ -623,7 +623,7 @@
                                     <optgroup label="{{ __('time.schedule.replacement.'.$labelKey) }}">
                                         @foreach ($tiered as $candidate)
                                             <option value="{{ $candidate['worker_id'] }}">
-                                                {{ $candidate['name'] }}@if ($candidate['unit_code'] ?? null) ({{ $candidate['unit_code'] }})@endif
+                                                {{ $candidate['name'] }}@if ($candidate['unit_code'] ?? null) ({{ $candidate['unit_code'] }})@endif — {{ ($candidate['shift_label'] ?? '') !== '' ? $candidate['shift_label'] : __('time.schedule.replacement.no_shift') }}
                                             </option>
                                         @endforeach
                                     </optgroup>

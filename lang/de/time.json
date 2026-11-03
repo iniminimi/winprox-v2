@@ -972,7 +972,8 @@
             "tier_unit": "Gleiche Einheit",
             "tier_location": "Gleicher Standort",
             "tier_other": "Andere Mitarbeiter",
-            "done": "Vertretung gespeichert."
+            "done": "Vertretung gespeichert.",
+            "no_shift": "kein Dienst"
         },
         "staffing": {
             "title": "Mindestbesetzung nicht erreicht",

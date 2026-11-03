@@ -29,7 +29,7 @@ class SuggestReplacementAction
 
     /**
      * @param  list<int>  $plannedShiftIds  werkblokken van dezelfde worker×dag
-     * @return list<array{worker_id: int, name: string, tier: int, unit_code: ?string}>
+     * @return list<array{worker_id: int, name: string, tier: int, unit_code: ?string, shift_label: string}>
      */
     public function handle(Tenant $tenant, array $plannedShiftIds): array
     {
@@ -135,7 +135,7 @@ class SuggestReplacementAction
                     && $blocks->isEmpty()
                     && ! isset($absent[(int) $worker->id]);
             })
-            ->map(function (Worker $worker) use ($unitIds, $locationIds) {
+            ->map(function (Worker $worker) use ($unitIds, $locationIds, $dayShifts) {
                 $tier = 3;
                 if ($unitIds !== [] && in_array((int) $worker->default_unit_id, $unitIds, true)) {
                     $tier = 1;
@@ -151,11 +151,39 @@ class SuggestReplacementAction
                     'name' => $worker->displayName(),
                     'tier' => $tier,
                     'unit_code' => $worker->defaultUnit?->roster_code,
+                    'shift_label' => $this->shiftLabel($dayShifts->get((int) $worker->id, collect())),
                 ];
             })
             ->sortBy([['tier', 'asc'], ['name', 'asc']])
             ->values()
             ->all();
+    }
+
+    /**
+     * @param  Collection<int, PlannedShift>  $blocks
+     */
+    private function shiftLabel(Collection $blocks): string
+    {
+        return $blocks
+            ->sortBy(fn (PlannedShift $shift) => sprintf(
+                '%d-%s',
+                $shift->start_time === null ? 0 : 1,
+                (string) $shift->start_time,
+            ))
+            ->map(function (PlannedShift $shift): ?string {
+                $name = trim((string) ($shift->shiftType?->label ?: $shift->shiftType?->code));
+                if ($name === '') {
+                    return null;
+                }
+                if ($shift->kind->isWork() && $shift->start_time !== null && $shift->end_time !== null) {
+                    return $name.' '.substr((string) $shift->start_time, 0, 5).'–'.substr((string) $shift->end_time, 0, 5);
+                }
+
+                return $name;
+            })
+            ->filter()
+            ->unique()
+            ->implode(', ');
     }
 
     /**

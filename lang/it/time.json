@@ -972,7 +972,8 @@
             "tier_unit": "Stessa unità",
             "tier_location": "Stessa sede",
             "tier_other": "Altri lavoratori",
-            "done": "Sostituzione salvata."
+            "done": "Sostituzione salvata.",
+            "no_shift": "nessun turno"
         },
         "staffing": {
             "title": "Organico minimo non raggiunto",

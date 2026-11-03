@@ -179,7 +179,11 @@ it('filtert kandidaten: overlap, afwezigheid, patroon-nuldag en locatie', functi
     $candidates = app(SuggestReplacementAction::class)->handle($tenant, [$block->id]);
     $ids = array_column($candidates, 'worker_id');
 
+    $labels = collect($candidates)->keyBy('worker_id');
+
     expect($ids)->toContain((int) $reserve->id)
+        ->and($labels[(int) $reserve->id]['shift_label'])->toBe('Reserve 07:00–15:00')
+        ->and($labels[(int) $onLeave->id]['shift_label'])->toBe('Verlof')
         ->and($ids)->toContain((int) $onLeave->id)
         ->and($ids)->not->toContain((int) $free->id)
         ->and($ids)->not->toContain((int) $original->id)
@@ -359,8 +363,9 @@ it('toont uitvoerders zonder planning alleen als de tenant dat aanzet', function
 
     $tenant->update(['time_replacement_include_unplanned' => true]);
 
-    $with = array_column(app(SuggestReplacementAction::class)->handle($tenant, [$block->id]), 'worker_id');
-    expect($with)->toContain((int) $free->id);
+    $with = collect(app(SuggestReplacementAction::class)->handle($tenant, [$block->id]))->keyBy('worker_id');
+    expect($with->has((int) $free->id))->toBeTrue()
+        ->and($with[(int) $free->id]['shift_label'])->toBe('');
 });
 
 it('houdt een overlappend reserveblok als kandidaat en verwijdert het bij vervangen', function () {
