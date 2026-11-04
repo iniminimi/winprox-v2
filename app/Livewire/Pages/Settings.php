@@ -148,6 +148,8 @@ class Settings extends Component
 
     public bool $timeRosterEnabled = true;
 
+    public bool $timeAllowExternalWorkers = false;
+
     public bool $customersOnLocation = false;
 
     public string $timeGpsVisitRadiusMeters = '250';
@@ -365,6 +367,7 @@ class Settings extends Component
                 'time_backoffice_clock' => $this->timeBackofficeClock,
                 'time_team_roster' => $this->timeTeamRoster,
                 'time_roster_enabled' => $this->timeRosterEnabled,
+                'time_allow_external_workers' => $this->timeAllowExternalWorkers,
             ],
             UpdateTenantTimeClockSecurityRequest::ruleSet(),
         )->validate();
@@ -1076,6 +1079,7 @@ class Settings extends Component
         $this->timeBackofficeClock = (bool) $tenant->time_backoffice_clock;
         $this->timeTeamRoster = (bool) ($tenant->time_team_roster ?? true);
         $this->timeRosterEnabled = (bool) ($tenant->time_roster_enabled ?? true);
+        $this->timeAllowExternalWorkers = (bool) $tenant->time_allow_external_workers;
         $this->customersOnLocation = $tenant->customersOnLocation();
         $this->timeGpsVisitRadiusMeters = $tenant->time_gps_visit_radius_meters
             ? (string) $tenant->time_gps_visit_radius_meters

@@ -243,6 +243,14 @@
                 <p class="wp-hint">{{ __('settings.time_clock.backoffice_clock_hint') }}</p>
                 @error('time_backoffice_clock') <p class="wp-error">{{ $message }}</p> @enderror
 
+                <label class="wp-switch">
+                    <input type="checkbox" wire:model="timeAllowExternalWorkers">
+                    <span class="wp-switch__track" aria-hidden="true"></span>
+                    <span>{{ __('settings.time_clock.allow_external_workers') }}</span>
+                </label>
+                <p class="wp-hint">{{ __('settings.time_clock.allow_external_workers_hint') }}</p>
+                @error('time_allow_external_workers') <p class="wp-error">{{ $message }}</p> @enderror
+
                 @if ($timeRosterEnabled)
                     <label class="wp-switch">
                         <input type="checkbox" wire:model="timeTeamRoster">

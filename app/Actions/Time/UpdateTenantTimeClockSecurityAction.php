@@ -12,7 +12,7 @@ class UpdateTenantTimeClockSecurityAction
     public function __construct(private AuditRecorder $audit) {}
 
     /**
-     * @param  array{time_require_worker_pin?: bool, time_worker_passkeys?: bool, time_gps_on_clock?: bool, time_gps_visits?: bool, time_gps_visit_radius_meters?: int|null, time_evacuation_list?: bool, time_backoffice_clock?: bool, time_team_roster?: bool, time_roster_enabled?: bool}  $data
+     * @param  array{time_require_worker_pin?: bool, time_worker_passkeys?: bool, time_gps_on_clock?: bool, time_gps_visits?: bool, time_gps_visit_radius_meters?: int|null, time_evacuation_list?: bool, time_backoffice_clock?: bool, time_team_roster?: bool, time_roster_enabled?: bool, time_allow_external_workers?: bool}  $data
      */
     public function handle(Tenant $tenant, int $tenantId, array $data, ?int $actorUserId): Tenant
     {
@@ -37,6 +37,9 @@ class UpdateTenantTimeClockSecurityAction
         $rosterEnabled = array_key_exists('time_roster_enabled', $data)
             ? (bool) $data['time_roster_enabled']
             : (bool) ($tenant->time_roster_enabled ?? true);
+        $allowExternalWorkers = array_key_exists('time_allow_external_workers', $data)
+            ? (bool) $data['time_allow_external_workers']
+            : (bool) $tenant->time_allow_external_workers;
         $radius = $data['time_gps_visit_radius_meters'] ?? null;
         $radius = $radius === null || $radius === '' ? null : (int) $radius;
         if ($radius !== null && $radius < 10) {
@@ -56,6 +59,7 @@ class UpdateTenantTimeClockSecurityAction
             'time_backoffice_clock' => $backofficeClock,
             'time_team_roster' => $teamRoster,
             'time_roster_enabled' => $rosterEnabled,
+            'time_allow_external_workers' => $allowExternalWorkers,
         ]);
 
         $fresh = $tenant->fresh();
@@ -76,6 +80,7 @@ class UpdateTenantTimeClockSecurityAction
                 'time_backoffice_clock' => $backofficeClock,
                 'time_team_roster' => $teamRoster,
                 'time_roster_enabled' => $rosterEnabled,
+                'time_allow_external_workers' => $allowExternalWorkers,
             ],
         );
 

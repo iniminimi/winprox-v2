@@ -830,6 +830,10 @@ productsector op `Tenant`.
   wachtwoord (`ClockSource::Backoffice`). Geen gsm-koppeling en geen GPS-poort. Naast
   Inklokken/Uitklokken staat Pauze nemen / Pauze eindigen. De sessieknop in de zijbalk heet
   Afmelden.
+  **Externe uitvoerders toestaan** (Instellingen → Prikklok-beveiliging, standaard uit,
+  `time_allow_external_workers`): uit = de uitvoerder-popup (Personen → Teams) verbergt het
+  vakje Externe uitvoerder en de bedrijfsnaam. Bestaande externe uitvoerders blijven extern
+  (Ext-badge blijft); opslaan wist die gegevens niet.
 
 ### 5g.6 GPS-werkbezoeken (veld, optioneel)
 

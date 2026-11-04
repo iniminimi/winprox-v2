@@ -269,6 +269,8 @@
         "evacuation_list_hint": "Après connexion, les exécutants voient une tuile pour voir qui est pointé. Ils confirment que la consultation est exceptionnelle ; chaque consultation est enregistrée. Désactivé par défaut.",
         "backoffice_clock": "Pointer depuis le back-office",
         "backoffice_clock_hint": "Administrateurs et collaborateurs avec une équipe de pointage se pointent depuis la barre latérale, après connexion par e-mail et mot de passe. Désactivé par défaut. Pas d'exigence GPS et pas de liaison du téléphone.",
+        "allow_external_workers": "Autoriser les intervenants externes",
+        "allow_external_workers_hint": "Affiche la case Intervenant externe et le nom de l'entreprise dans la fenêtre de l'intervenant (sous-traitant, intérimaire, …). Désactivé par défaut.",
         "gps_visit_radius_hint": "Par défaut 50 m. Minimum 10 m, maximum 2000 m.",
         "worker_passkeys": "Connexion par empreinte ou visage (clé d'accès)",
         "worker_passkeys_hint": "Les ouvriers peuvent sécuriser leur propre téléphone puis se connecter via le déverrouillage de l'appareil. Le PIN ou l'icône reste disponible.",

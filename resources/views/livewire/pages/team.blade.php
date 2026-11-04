@@ -444,18 +444,20 @@
                             @error('workerPhone') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
                     @endif
-                    <x-wp-tooltip :text="__('team.workers.is_external_hint')" wrap class="wp-tooltip--block">
-                        <label class="wp-check wp-check--boxed">
-                            <input type="checkbox" wire:model.live="workerIsExternal">
-                            <span>{{ __('team.workers.is_external') }}</span>
-                        </label>
-                    </x-wp-tooltip>
-                    @if ($workerIsExternal)
-                        <div class="wp-field">
-                            <label class="sr-only" for="workerCompanyName">{{ __('team.workers.company_name') }}</label>
-                            <input type="text" id="workerCompanyName" class="wp-input" wire:model="workerCompanyName" placeholder="{{ __('team.workers.company_name') }}" maxlength="120">
-                            @error('workerCompanyName') <p class="wp-error">{{ $message }}</p> @enderror
-                        </div>
+                    @if ($allowsExternalWorkers)
+                        <x-wp-tooltip :text="__('team.workers.is_external_hint')" wrap class="wp-tooltip--block">
+                            <label class="wp-check wp-check--boxed">
+                                <input type="checkbox" wire:model.live="workerIsExternal">
+                                <span>{{ __('team.workers.is_external') }}</span>
+                            </label>
+                        </x-wp-tooltip>
+                        @if ($workerIsExternal)
+                            <div class="wp-field">
+                                <label class="sr-only" for="workerCompanyName">{{ __('team.workers.company_name') }}</label>
+                                <input type="text" id="workerCompanyName" class="wp-input" wire:model="workerCompanyName" placeholder="{{ __('team.workers.company_name') }}" maxlength="120">
+                                @error('workerCompanyName') <p class="wp-error">{{ $message }}</p> @enderror
+                            </div>
+                        @endif
                     @endif
                     @php
                         $workerLocationCount = count($selectedWorkerLocationIds);

@@ -52,6 +52,7 @@ class Tenant extends Model
         'time_backoffice_clock',
             'time_team_roster',
             'time_roster_enabled',
+        'time_allow_external_workers',
         'time_replacement_include_unplanned',
         'enterprise_number',
         'foreign_vat_number',
@@ -95,6 +96,7 @@ class Tenant extends Model
             'time_backoffice_clock' => 'boolean',
             'time_team_roster' => 'boolean',
             'time_roster_enabled' => 'boolean',
+            'time_allow_external_workers' => 'boolean',
             'time_replacement_include_unplanned' => 'boolean',
             'presence_compliance_enabled' => 'boolean',
             'presence_rsz_client_id' => 'encrypted',
@@ -383,6 +385,12 @@ class Tenant extends Model
     public function allowsBackofficeClock(): bool
     {
         return $this->hasTimeModule() && (bool) $this->time_backoffice_clock;
+    }
+
+    /** Vinkje "Externe uitvoerder" + bedrijfsnaam in de uitvoerder-popup. Standaard uit. */
+    public function allowsExternalWorkers(): bool
+    {
+        return $this->hasTimeModule() && (bool) $this->time_allow_external_workers;
     }
 
     public function requestsClockGps(): bool
