@@ -37,6 +37,7 @@
         "search_results": "Suchergebnisse",
         "search_empty": "Keine Mitarbeitenden gefunden.",
         "open_worker_hours": "Stundenübersicht (letzte 3 Wochen)",
+        "open_worker_hours_click": "Klicken für die Stundenübersicht (letzte 3 Wochen)",
         "location": "Standort",
         "all_locations": "Alle Standorte",
         "no_attention": "Derzeit keine Abweichungen.",
@@ -1088,7 +1089,7 @@
     },
         "leave_balance": {
         "short": ":days T",
-        "title": "Urlaubssaldo :year\nAnspruch :entitlement\nGenehmigt :approved\nGeplant :planned\nRest :remaining",
+        "title": "Urlaubssaldo :year:\nAnspruch :entitlement\nGenehmigt :approved\nGeplant :planned\nRest :remaining",
         "entitlement": "Jahresanspruch",
         "approved": "Genehmigter Urlaub",
         "planned": "Geplanter Urlaub",

@@ -37,6 +37,7 @@
         "search_results": "Zoekresultaten",
         "search_empty": "Geen medewerkers gevonden.",
         "open_worker_hours": "Urenoverzicht (laatste 3 weken)",
+        "open_worker_hours_click": "Klik voor Urenoverzicht (laatste 3 weken)",
         "location": "Locatie",
         "all_locations": "Alle locaties",
         "no_attention": "Geen afwijkingen op dit moment.",
@@ -1088,7 +1089,7 @@
     },
         "leave_balance": {
         "short": ":days d",
-        "title": "Verlofsaldo :year\nRecht :entitlement\nGoedgekeurd :approved\nGepland :planned\nResterend :remaining",
+        "title": "Verlofsaldo :year :\nRecht :entitlement\nGoedgekeurd :approved\nGepland :planned\nResterend :remaining",
         "entitlement": "Jaarlijks verlofrecht",
         "approved": "Goedgekeurd verlof",
         "planned": "Gepland verlof",

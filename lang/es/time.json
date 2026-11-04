@@ -37,6 +37,7 @@
         "search_results": "Resultados de búsqueda",
         "search_empty": "No se encontraron trabajadores.",
         "open_worker_hours": "Resumen de horas (últimas 3 semanas)",
+        "open_worker_hours_click": "Clic para el resumen de horas (últimas 3 semanas)",
         "location": "Ubicación",
         "all_locations": "Todas las ubicaciones",
         "no_attention": "No hay excepciones en este momento.",
@@ -1088,7 +1089,7 @@
     },
         "leave_balance": {
         "short": ":days d",
-        "title": "Saldo de permiso :year\nDerecho :entitlement\nAprobado :approved\nPlanificado :planned\nRestante :remaining",
+        "title": "Saldo de permiso :year:\nDerecho :entitlement\nAprobado :approved\nPlanificado :planned\nRestante :remaining",
         "entitlement": "Derecho anual",
         "approved": "Permiso aprobado",
         "planned": "Permiso planificado",

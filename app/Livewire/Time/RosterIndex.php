@@ -698,7 +698,7 @@ class RosterIndex extends Component
         $array['name_column'] = __('time.schedule.column_name');
         if (auth()->user()?->can('viewAny', WorkShift::class)) {
             $array['hours_url'] = route('time.shifts.index');
-            $array['worker_hours_hint'] = __('time.presence.open_worker_hours');
+            $array['worker_hours_hint'] = __('time.presence.open_worker_hours_click');
         }
         if (auth()->user()?->can('viewAny', AbsenceRequest::class)) {
             $array['absence_requests_url'] = route('time.absence-requests.index');

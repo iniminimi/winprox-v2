@@ -547,26 +547,90 @@ function workerHoursUrlFor(payload, workerId) {
  */
 function applyNameLink(cell, payload, rowDef, worker) {
     const url = rowDef?.type === 'worker' ? workerHoursUrlFor(payload, worker?.id) : '';
-    const bits = [];
-    if (worker?.leave_balance?.title) {
-        bits.push(worker.leave_balance.title);
-    }
+    const lines = String(worker?.leave_balance?.title || '').split('\n').filter((line) => line !== '');
     cell.classList.toggle('wp-roster-cell--leave-balance', Boolean(worker?.leave_balance?.short));
+    if (lines.length > 0) {
+        cell.dataset.wpTipHeading = lines[0];
+        cell.dataset.wpTipBody = lines.slice(1).join('\n');
+    } else {
+        delete cell.dataset.wpTipHeading;
+        delete cell.dataset.wpTipBody;
+    }
     if (url) {
         cell.dataset.wpHoursUrl = url;
         cell.classList.add('wp-roster-cell--worker-link');
         if (payload.worker_hours_hint) {
-            bits.push(payload.worker_hours_hint);
+            cell.dataset.wpTipAction = payload.worker_hours_hint;
+        } else {
+            delete cell.dataset.wpTipAction;
         }
     } else {
         delete cell.dataset.wpHoursUrl;
+        delete cell.dataset.wpTipAction;
         cell.classList.remove('wp-roster-cell--worker-link');
     }
-    if (bits.length > 0) {
-        cell.title = bits.join('\n');
+    const label = [cell.dataset.wpTipHeading, cell.dataset.wpTipBody, cell.dataset.wpTipAction]
+        .filter((part) => part)
+        .join('\n');
+    if (label) {
+        cell.setAttribute('aria-label', label);
     } else {
-        cell.removeAttribute('title');
+        cell.removeAttribute('aria-label');
     }
+    cell.removeAttribute('title');
+}
+
+function rosterTipElement() {
+    let tip = document.querySelector('[data-wp-roster-tip]');
+    if (tip) {
+        return tip;
+    }
+    tip = document.createElement('div');
+    tip.className = 'wp-roster-tip';
+    tip.dataset.wpRosterTip = '1';
+    tip.hidden = true;
+    const heading = document.createElement('p');
+    heading.className = 'wp-roster-tip__heading';
+    const body = document.createElement('p');
+    body.className = 'wp-roster-tip__body';
+    const action = document.createElement('p');
+    action.className = 'wp-roster-tip__action';
+    tip.append(heading, body, action);
+    document.body.appendChild(tip);
+
+    return tip;
+}
+
+function hideRosterTip() {
+    const tip = document.querySelector('[data-wp-roster-tip]');
+    if (tip) {
+        tip.hidden = true;
+    }
+}
+
+function showRosterTip(cell) {
+    const heading = cell.dataset.wpTipHeading || '';
+    const body = cell.dataset.wpTipBody || '';
+    const action = cell.dataset.wpTipAction || '';
+    if (!heading && !body && !action) {
+        hideRosterTip();
+
+        return;
+    }
+    const tip = rosterTipElement();
+    tip.querySelector('.wp-roster-tip__heading').textContent = heading;
+    tip.querySelector('.wp-roster-tip__body').textContent = body;
+    tip.querySelector('.wp-roster-tip__action').textContent = action;
+    tip.hidden = false;
+    const rect = cell.getBoundingClientRect();
+    const tipRect = tip.getBoundingClientRect();
+    const left = Math.max(8, Math.min(rect.left, window.innerWidth - tipRect.width - 8));
+    let top = rect.top - tipRect.height - 8;
+    if (top < 8) {
+        top = rect.bottom + 8;
+    }
+    tip.style.left = `${left}px`;
+    tip.style.top = `${top}px`;
 }
 
 function attendanceTitle(payload, attendance) {
@@ -1282,6 +1346,17 @@ export function bind(root, wire) {
         requestLeave(() => window.location.assign(url));
     };
     grid.addEventListener('click', openWorkerHoursFromName, true);
+    grid.addEventListener('mouseover', (event) => {
+        const td = event.target?.closest?.('td');
+        if (!td || (!td.dataset.wpTipHeading && !td.dataset.wpTipBody && !td.dataset.wpTipAction)) {
+            hideRosterTip();
+
+            return;
+        }
+        showRosterTip(td);
+    });
+    grid.addEventListener('mouseleave', hideRosterTip);
+    document.addEventListener('scroll', hideRosterTip, true);
     grid.addEventListener('mousedown', trackDaySelection, true);
     grid.addEventListener('mousedown', openAbsenceFromPending, true);
     grid.addEventListener('mousedown', openHoursFromAttendance, true);

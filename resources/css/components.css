@@ -7733,6 +7733,44 @@ a.wp-worker-hours-link:focus-visible {
     font-weight: 500;
 }
 
+.wp-roster-tip {
+    position: fixed;
+    z-index: 40;
+    max-width: 16rem;
+    padding: 0.45rem 0.7rem;
+    border: 1px solid var(--wp-border);
+    border-radius: var(--wp-radius);
+    background-color: var(--wp-surface);
+    box-shadow: var(--wp-shadow-tip);
+    color: var(--wp-text);
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.35;
+    pointer-events: none;
+}
+
+.wp-roster-tip__heading {
+    font-weight: 700;
+}
+
+.wp-roster-tip__body {
+    white-space: pre-line;
+}
+
+.wp-roster-tip__heading:empty,
+.wp-roster-tip__body:empty,
+.wp-roster-tip__action:empty {
+    display: none;
+}
+
+.wp-roster-tip__action {
+    margin-top: 0.75rem;
+}
+
+.wp-roster-tip__heading:empty + .wp-roster-tip__body:empty + .wp-roster-tip__action {
+    margin-top: 0;
+}
+
 /* Dienst + groep: newline in celwaarde, tweede regel iets kleiner */
 .wp-roster-sheet .jss_worksheet > tbody > tr > td.wp-roster-cell--stacked {
     white-space: pre-line;
