@@ -1088,7 +1088,7 @@
     },
         "leave_balance": {
         "short": ":days d",
-        "title": "Derecho :entitlement · aprobado :approved · planificado :planned · restante :remaining",
+        "title": "Saldo de permiso :year\nDerecho :entitlement\nAprobado :approved\nPlanificado :planned\nRestante :remaining",
         "entitlement": "Derecho anual",
         "approved": "Permiso aprobado",
         "planned": "Permiso planificado",

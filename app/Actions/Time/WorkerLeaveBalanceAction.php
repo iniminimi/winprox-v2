@@ -124,7 +124,7 @@ class WorkerLeaveBalanceAction
     /**
      * @return array{short: string, title: string}|null
      */
-    public function rosterMark(LeaveBalance $balance): ?array
+    public function rosterMark(LeaveBalance $balance, int $year): ?array
     {
         $remaining = $balance->remainingHalves();
         if ($remaining === null || $balance->entitlementHalves === null) {
@@ -136,6 +136,7 @@ class WorkerLeaveBalanceAction
                 'days' => LeaveBalance::formatHalves($remaining),
             ]),
             'title' => __('time.leave_balance.title', [
+                'year' => $year,
                 'entitlement' => LeaveBalance::formatHalves($balance->entitlementHalves),
                 'approved' => LeaveBalance::formatHalves($balance->approvedHalves),
                 'planned' => LeaveBalance::formatHalves($balance->plannedHalves),

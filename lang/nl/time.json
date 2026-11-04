@@ -1088,7 +1088,7 @@
     },
         "leave_balance": {
         "short": ":days d",
-        "title": "Recht :entitlement · goedgekeurd :approved · gepland :planned · resterend :remaining",
+        "title": "Verlofsaldo :year\nRecht :entitlement\nGoedgekeurd :approved\nGepland :planned\nResterend :remaining",
         "entitlement": "Jaarlijks verlofrecht",
         "approved": "Goedgekeurd verlof",
         "planned": "Gepland verlof",

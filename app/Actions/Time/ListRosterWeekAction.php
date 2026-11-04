@@ -307,6 +307,7 @@ class ListRosterWeekAction
             foreach ($workerPayload as $index => $payload) {
                 $mark = $this->leaveBalance->rosterMark(
                     $balances[(int) $payload['id']] ?? new LeaveBalance(null, 0, 0),
+                    $year,
                 );
                 if ($mark !== null) {
                     $workerPayload[$index]['leave_balance'] = $mark;

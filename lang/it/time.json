@@ -1088,7 +1088,7 @@
     },
         "leave_balance": {
         "short": ":days g",
-        "title": "Diritto :entitlement · approvato :approved · pianificato :planned · restante :remaining",
+        "title": "Saldo ferie :year\nDiritto :entitlement\nApprovato :approved\nPianificato :planned\nRestante :remaining",
         "entitlement": "Diritto annuale",
         "approved": "Ferie approvate",
         "planned": "Ferie pianificate",

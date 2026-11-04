@@ -1088,7 +1088,7 @@
     },
         "leave_balance": {
         "short": ":days T",
-        "title": "Anspruch :entitlement · genehmigt :approved · geplant :planned · Rest :remaining",
+        "title": "Urlaubssaldo :year\nAnspruch :entitlement\nGenehmigt :approved\nGeplant :planned\nRest :remaining",
         "entitlement": "Jahresanspruch",
         "approved": "Genehmigter Urlaub",
         "planned": "Geplanter Urlaub",

@@ -110,7 +110,7 @@ it('telt roosterverlof, een blok met uren en een open aanvraag', function () {
     $row = collect($snapshot->workers)->firstWhere('id', $worker->id);
 
     expect($row['leave_balance']['short'])->toBe('−0,5 d')
-        ->and($row['leave_balance']['title'])->toContain('Recht 2');
+        ->and($row['leave_balance']['title'])->toBe("Verlofsaldo 2026\nRecht 2\nGoedgekeurd 1,5\nGepland 1\nResterend −0,5");
 });
 
 it('telt een halve aanvraag één keer na goedkeuren', function () {

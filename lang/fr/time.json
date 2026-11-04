@@ -1088,7 +1088,7 @@
     },
         "leave_balance": {
         "short": ":days j",
-        "title": "Droit :entitlement · approuvé :approved · planifié :planned · restant :remaining",
+        "title": "Solde de congé :year\nDroit :entitlement\nApprouvé :approved\nPlanifié :planned\nRestant :remaining",
         "entitlement": "Droit annuel",
         "approved": "Congé approuvé",
         "planned": "Congé planifié",

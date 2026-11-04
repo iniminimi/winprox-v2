@@ -1088,7 +1088,7 @@
     },
         "leave_balance": {
         "short": ":days d",
-        "title": "Allowance :entitlement · approved :approved · planned :planned · remaining :remaining",
+        "title": "Leave balance :year\nAllowance :entitlement\nApproved :approved\nPlanned :planned\nRemaining :remaining",
         "entitlement": "Yearly allowance",
         "approved": "Approved leave",
         "planned": "Planned leave",
