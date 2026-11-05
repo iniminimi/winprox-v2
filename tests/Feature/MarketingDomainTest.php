@@ -420,6 +420,11 @@ it('gebruikt op .nl de markt-overlay en valt terug op de basis', function () {
     $home = $this->get('https://winprox.nl/nl')->assertOk()->getContent();
     expect($home)->toContain('salarisadministratie')
         ->and($home)->not->toContain('sociaal secretariaat');
+
+    $docs = $this->get('https://winprox.nl/nl/docs/features')->assertOk()->getContent();
+    expect($docs)->toContain('GPS-controle bij een werkbezoek')
+        ->and($docs)->toContain('De uren geeft u door aan uw salarisadministratie. WinProx berekent geen loon.')
+        ->and($docs)->not->toContain('Checkmate-bezoek');
 });
 
 it('laat de .nl-overlay onaangeroerd op het app-domein', function () {
@@ -428,6 +433,9 @@ it('laat de .nl-overlay onaangeroerd op het app-domein', function () {
     $app = $this->get('https://winprox.app/nl')->assertOk()->getContent();
     expect($app)->toContain('sociaal secretariaat')
         ->and($app)->toContain('/nl/checkmate');
+
+    $docs = $this->get('https://winprox.app/nl/docs/features')->assertOk()->getContent();
+    expect($docs)->toContain('Checkmate-bezoek');
 });
 
 it('laat op een live .be alleen de allowlist door en stuurt de rest weg', function () {

@@ -48,7 +48,8 @@
                     "Manage locations, teams, people and units.",
                     "RSZ/CIAO presence reporting can be turned on in settings. Optional GPS work visits tie a visit to a location."
                 ],
-                "badge": "included"
+                "badge": "included",
+                "key": "winprox_time"
             },
             {
                 "title": "Checkmate",
@@ -88,7 +89,8 @@
                     "If someone forgot to clock in, an administrator can add the record by hand.",
                     "If someone clocks in during leave, time off, a public holiday or sickness, that becomes a point of attention: a warning next to that person on the presence list, and a red clock-in block with a message on the phone. It is a signal to check the record, not a judgement on working time.",
                     "You turn on RSZ/CIAO reporting in settings. The link with the social security office is confirmed before sending starts. You pass the hours to the social secretariat. WinProx does not file Dimona and does not calculate pay."
-                ]
+                ],
+                "key": "time_clock"
             },
             {
                 "title": "Clock Point",
@@ -218,7 +220,8 @@
                     "Measurements arrive via a QR code or the API. A measurement can reach other software through the webhook unit.measurement.recorded.",
                     "Up to four photos on an issue, a completion or a unit check. Per unit, up to four unit photos and one background photo. Photos are reduced on the device before upload. A reporter’s photos on the public portal become visible only after the issue is approved.",
                     "For mobile units, such as a vehicle or a machine, the location can be recorded. You switch that on per category. You open the history in the back office, and a point opens in Maps."
-                ]
+                ],
+                "key": "measurements"
             },
             {
                 "title": "Calendar",
@@ -367,7 +370,8 @@
                     "You use what fits the organisation: time clock, roster, customer visits, inspection rounds and maintenance.",
                     "Checkmate is for work visits at customers, with RSZ/CIAO reporting. Corporate adds API links, sensors and ESG follow-up.",
                     "WinProx works in the browser. A separate app is not needed."
-                ]
+                ],
+                "key": "summary"
             }
         ]
     },
@@ -451,7 +455,8 @@
                     "Optional email confirmation for a QR issue: an unconfirmed draft is deleted automatically, including photos. No user account.",
                     "A planned roster is optional. Restoring a previous version is limited to people who may edit the roster, and only for a limited time.",
                     "Optional presence reporting to the Belgian social security office (CIAO). The national register number is stored encrypted. The customer enters the enterprise number. Successful submissions are deleted after a limited period. An export without the national register number is available."
-                ]
+                ],
+                "key": "privacy"
             },
             {
                 "title": "Availability",
@@ -613,7 +618,8 @@
                     "**Reliability:** if delivery fails, WinProx retries (with increasing delay). Deliveries appear in a log.",
                     "**Other events include:** issue created / approved / status changed · task created / started / completed · Time (incl. CIAO presence) · GPS · ESG · reservations · test button · unit check recorded. With email confirmation: **issue created** only after the link. time.visit.started / time.visit.ended."
                 ],
-                "emphasis": "Example: a worker completes a task. WinProx automatically sends a webhook to your external system (IWMS, CMMS or ERP) so a work order can be updated immediately."
+                "emphasis": "Example: a worker completes a task. WinProx automatically sends a webhook to your external system (IWMS, CMMS or ERP) so a work order can be updated immediately.",
+                "key": "outbound_webhooks"
             }
         ],
         "full": [

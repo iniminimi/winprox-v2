@@ -48,7 +48,8 @@
                     "Gérer les sites, les équipes, les personnes et les unités.",
                     "L’enregistrement ONSS/CIAO peut être activé dans les paramètres. Les visites GPS facultatives relient une visite à un lieu."
                 ],
-                "badge": "inclus"
+                "badge": "inclus",
+                "key": "winprox_time"
             },
             {
                 "title": "Checkmate",
@@ -88,7 +89,8 @@
                     "Si quelqu’un a oublié de pointer, un gestionnaire peut ajouter l’enregistrement à la main.",
                     "Si quelqu’un pointe pendant un congé, une récupération, un jour férié ou une maladie, cela devient un point d’attention : un avertissement près de la personne dans la liste de présence, et sur le téléphone un bloc d’entrée rouge avec un message. C’est un signal pour vérifier l’enregistrement, pas un jugement sur la durée du travail.",
                     "Vous activez l’enregistrement ONSS/CIAO dans les paramètres. Le lien avec l’ONSS est confirmé avant le début de l’envoi. Vous transmettez les heures au secrétariat social. WinProx ne fait pas de Dimona et ne calcule pas le salaire."
-                ]
+                ],
+                "key": "time_clock"
             },
             {
                 "title": "Clock Point",
@@ -218,7 +220,8 @@
                     "Les mesures arrivent via un QR ou via l’API. Une mesure peut atteindre un autre logiciel via le webhook unit.measurement.recorded.",
                     "Jusqu’à quatre photos sur un signalement, une clôture ou un contrôle d’unité. Par unité, jusqu’à quatre photos d’unité et une photo de fond. Les photos sont réduites sur l’appareil avant l’envoi. Les photos d’un auteur sur le portail public ne sont visibles qu’après approbation du signalement.",
                     "Pour les unités mobiles, comme un véhicule ou une machine, l’emplacement peut être enregistré. Vous l’activez par catégorie. Vous ouvrez l’historique dans la gestion, et un point s’ouvre dans Maps."
-                ]
+                ],
+                "key": "measurements"
             },
             {
                 "title": "Calendrier",
@@ -367,7 +370,8 @@
                     "Vous utilisez ce qui convient à l’organisation : pointeuse, planning, visites clients, tournées d’inspection et entretien.",
                     "Checkmate sert aux visites de travail chez les clients, avec l’enregistrement ONSS/CIAO. Corporate ajoute les liaisons API, les capteurs et le suivi ESG.",
                     "WinProx fonctionne dans le navigateur. Une appli séparée n’est pas nécessaire."
-                ]
+                ],
+                "key": "summary"
             }
         ]
     },
@@ -451,7 +455,8 @@
                     "Confirmation e-mail optionnelle pour un signalement QR : un brouillon non confirmé est supprimé automatiquement, photos comprises. Pas de compte utilisateur.",
                     "Un horaire planifié est optionnel. Revenir à une version précédente est réservé à qui peut modifier l’horaire, et seulement pendant une durée limitée.",
                     "Transmission optionnelle des présences vers l’ONSS belge (CIAO). Le numéro de registre national est stocké chiffré. Le client indique le numéro d’entreprise. Les envois réussis sont supprimés après une durée limitée. Un export sans numéro de registre national est disponible."
-                ]
+                ],
+                "key": "privacy"
             },
             {
                 "title": "Disponibilité",
@@ -612,7 +617,8 @@
                     "**Fiabilité :** en cas d’échec, WinProx réessaie (avec pause croissante). Les livraisons apparaissent dans un journal.",
                     "**Autres événements p. ex. :** signalement créé / approuvé / statut modifié · tâche créée / démarrée / terminée · Time (incl. présence CIAO) · GPS · ESG · réservations · bouton de test · contrôle d'unité enregistré. Avec confirmation e-mail : **signalement créé** seulement après le lien. time.visit.started / time.visit.ended."
                 ],
-                "emphasis": "Exemple : un collaborateur termine une tâche. WinProx envoie automatiquement un webhook vers votre système externe (GMAO, IWMS ou ERP) pour mettre à jour immédiatement un ordre de travail."
+                "emphasis": "Exemple : un collaborateur termine une tâche. WinProx envoie automatiquement un webhook vers votre système externe (GMAO, IWMS ou ERP) pour mettre à jour immédiatement un ordre de travail.",
+                "key": "outbound_webhooks"
             }
         ],
         "full": [

@@ -48,7 +48,8 @@
                     "Gestire sedi, team, persone e unità.",
                     "La registrazione ONSS/CIAO si può attivare nelle impostazioni. Le visite GPS facoltative collegano una visita a un luogo."
                 ],
-                "badge": "incluso"
+                "badge": "incluso",
+                "key": "winprox_time"
             },
             {
                 "title": "Checkmate",
@@ -88,7 +89,8 @@
                     "Se qualcuno ha dimenticato di timbrare, un amministratore può aggiungere la registrazione a mano.",
                     "Se qualcuno timbra durante ferie, recupero, un festivo o una malattia, diventa un punto di attenzione: un avviso accanto alla persona nell’elenco presenze e sul telefono un blocco di entrata rosso con un messaggio. È un segnale per controllare la registrazione, non un giudizio sull’orario di lavoro.",
                     "La registrazione ONSS/CIAO si attiva nelle impostazioni. Il collegamento con l’ONSS viene confermato prima che parta l’invio. Le ore si passano al segretariato sociale. WinProx non fa Dimona e non calcola la paga."
-                ]
+                ],
+                "key": "time_clock"
             },
             {
                 "title": "Clock Point",
@@ -218,7 +220,8 @@
                     "Le misure arrivano da un QR o dall’API. Una misura può raggiungere altro software tramite il webhook unit.measurement.recorded.",
                     "Fino a quattro foto su una segnalazione, una chiusura o un controllo unità. Per unità, fino a quattro foto dell’unità e una foto di sfondo. Le foto si riducono sul dispositivo prima del caricamento. Le foto di chi segnala sul portale pubblico si vedono solo dopo l’approvazione.",
                     "Per le unità mobili, come un veicolo o una macchina, si può registrare la posizione. Si attiva per categoria. Lo storico si apre in gestione, e un punto si apre in Maps."
-                ]
+                ],
+                "key": "measurements"
             },
             {
                 "title": "Calendario",
@@ -367,7 +370,8 @@
                     "Si usa ciò che si adatta all’organizzazione: timbratrice, turni, visite ai clienti, giri di ispezione e manutenzione.",
                     "Checkmate è per le visite di lavoro dai clienti, con registrazione ONSS/CIAO. Corporate aggiunge collegamenti API, sensori e seguito ESG.",
                     "WinProx funziona nel browser. Non serve un’app a parte."
-                ]
+                ],
+                "key": "summary"
             }
         ]
     },
@@ -451,7 +455,8 @@
                     "Conferma e-mail opzionale per una segnalazione QR: una bozza non confermata viene eliminata in automatico, foto comprese. Nessun account utente.",
                     "Un turno pianificato è opzionale. Ripristinare una versione precedente può solo chi può modificare il turno, e solo per un tempo limitato.",
                     "Invio opzionale delle presenze all’ente previdenziale belga (CIAO). Il numero di registro nazionale è conservato cifrato. Il cliente indica il numero d’impresa. Gli invii riusciti sono eliminati dopo un periodo limitato. È disponibile un export senza il numero di registro nazionale."
-                ]
+                ],
+                "key": "privacy"
             },
             {
                 "title": "Disponibilità",
@@ -612,7 +617,8 @@
                     "**Affidabilità:** se fallisce, WinProx riprova (con pausa crescente). Le consegne appaiono in un registro.",
                     "**Altri eventi es.:** segnalazione creata / approvata / stato modificato · compito creato / avviato / completato · Time (incl. presenza CIAO) · GPS · ESG · prenotazioni · pulsante di test · controllo unità registrato. Con conferma e-mail: **segnalazione creata** solo dopo il link. time.visit.started / time.visit.ended."
                 ],
-                "emphasis": "Esempio: un operatore chiude un’attività. WinProx invia automaticamente un webhook al vostro sistema esterno (IWMS, CMMS o ERP) così un ordine di lavoro può essere aggiornato subito."
+                "emphasis": "Esempio: un operatore chiude un’attività. WinProx invia automaticamente un webhook al vostro sistema esterno (IWMS, CMMS o ERP) così un ordine di lavoro può essere aggiornato subito.",
+                "key": "outbound_webhooks"
             }
         ],
         "full": [

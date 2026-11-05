@@ -48,7 +48,8 @@
                     "Standorte, Teams, Personen und Units verwalten.",
                     "Die RSZ/CIAO-Meldung kann in den Einstellungen aktiviert werden. Optionale GPS-Arbeitsbesuche verknüpfen einen Besuch mit einem Ort."
                 ],
-                "badge": "inklusive"
+                "badge": "inklusive",
+                "key": "winprox_time"
             },
             {
                 "title": "Checkmate",
@@ -88,7 +89,8 @@
                     "Hat jemand das Einstempeln vergessen, kann die Verwaltung die Buchung von Hand ergänzen.",
                     "Stempelt jemand während Urlaub, Ausgleich, einem Feiertag oder Krankheit ein, wird das ein Hinweis: eine Warnung bei der Person in der Anwesenheitsliste und auf dem Telefon ein roter Einstempelblock mit einer Meldung. Das ist ein Signal, die Buchung zu prüfen, kein Urteil über die Arbeitszeit.",
                     "Die RSZ/CIAO-Meldung schalten Sie in den Einstellungen ein. Die Verbindung zur RSZ wird bestätigt, bevor die Übermittlung startet. Die Stunden geben Sie an das Sozialsekretariat. WinProx macht keine Dimona-Meldung und berechnet keinen Lohn."
-                ]
+                ],
+                "key": "time_clock"
             },
             {
                 "title": "Clock Point",
@@ -218,7 +220,8 @@
                     "Messwerte kommen über einen QR-Code oder die API herein. Eine Messung kann andere Software über den Webhook unit.measurement.recorded erreichen.",
                     "Bis zu vier Fotos bei einer Meldung, einem Abschluss oder einer Unit-Kontrolle. Pro Unit bis zu vier Unit-Fotos und ein Hintergrundfoto. Fotos werden auf dem Gerät verkleinert, bevor sie hochgeladen werden. Fotos einer meldenden Person auf dem öffentlichen Portal sind erst nach Freigabe der Meldung sichtbar.",
                     "Für mobile Units, etwa ein Fahrzeug oder eine Maschine, kann der Standort festgehalten werden. Das schalten Sie je Kategorie ein. Den Verlauf öffnen Sie in der Verwaltung, und ein Punkt öffnet in Maps."
-                ]
+                ],
+                "key": "measurements"
             },
             {
                 "title": "Kalender",
@@ -367,7 +370,8 @@
                     "Sie nutzen, was zur Organisation passt: Stempeluhr, Dienstplan, Kundenbesuche, Inspektionsrunden und Wartung.",
                     "Checkmate ist für Arbeitsbesuche bei Kunden, mit RSZ/CIAO-Meldung. Corporate ergänzt API-Anbindungen, Sensoren und ESG-Nachverfolgung.",
                     "WinProx läuft im Browser. Eine eigene App ist nicht nötig."
-                ]
+                ],
+                "key": "summary"
             }
         ]
     },
@@ -451,7 +455,8 @@
                     "Optionale E-Mail-Bestätigung bei einer QR-Meldung: ein unbestätigter Entwurf wird automatisch gelöscht, einschließlich Fotos. Kein Benutzerkonto.",
                     "Ein geplanter Dienstplan ist optional. Eine frühere Fassung zurücksetzen darf nur, wer den Plan bearbeiten darf, und nur für begrenzte Zeit.",
                     "Optionale Anwesenheitsmeldung an das belgische Landesamt für soziale Sicherheit (CIAO). Die Nationalregisternummer wird verschlüsselt gespeichert. Der Kunde trägt die Unternehmensnummer ein. Erfolgreiche Meldungen werden nach einer begrenzten Frist gelöscht. Ein Export ohne Nationalregisternummer ist verfügbar."
-                ]
+                ],
+                "key": "privacy"
             },
             {
                 "title": "Verfügbarkeit",
@@ -612,7 +617,8 @@
                     "**Zuverlässigkeit:** schlägt die Zustellung fehl, versucht WinProx es erneut (mit steigender Pause). Zustellungen sehen Sie im Protokoll.",
                     "**Weitere Ereignisse u. a.:** Meldung erstellt / freigegeben / Status geändert · Aufgabe erstellt / gestartet / abgeschlossen · Time (inkl. CIAO-Presence) · GPS · ESG · Reservierungen · Testbutton · Unit-Check erfasst. Bei E-Mail-Bestätigung: **Meldung erstellt** erst nach dem Link. time.visit.started / time.visit.ended."
                 ],
-                "emphasis": "Beispiel: ein Mitarbeiter schließt eine Aufgabe ab. WinProx sendet automatisch einen Webhook an Ihr externes System (IWMS, CMMS oder ERP), damit dort sofort ein Arbeitsauftrag aktualisiert werden kann."
+                "emphasis": "Beispiel: ein Mitarbeiter schließt eine Aufgabe ab. WinProx sendet automatisch einen Webhook an Ihr externes System (IWMS, CMMS oder ERP), damit dort sofort ein Arbeitsauftrag aktualisiert werden kann.",
+                "key": "outbound_webhooks"
             }
         ],
         "full": [

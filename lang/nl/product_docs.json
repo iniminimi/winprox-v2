@@ -48,7 +48,8 @@
                     "Locaties, teams, medewerkers en units beheren.",
                     "De RSZ/CIAO-registratie kan via de instellingen worden geactiveerd. Optionele GPS-werkbezoeken koppelen een bezoek aan een locatie."
                 ],
-                "badge": "inbegrepen"
+                "badge": "inbegrepen",
+                "key": "winprox_time"
             },
             {
                 "title": "Checkmate",
@@ -88,7 +89,8 @@
                     "Is iemand vergeten in te klokken, dan kan een beheerder de registratie manueel toevoegen.",
                     "Klokt iemand in tijdens verlof, recup, een feestdag of ziekte, dan wordt dat een aandachtspunt: een waarschuwing bij die persoon in de aanwezigheidslijst, en op de telefoon een rood inklokblok met een melding. Dat is een signaal om de registratie te controleren, geen oordeel over de arbeidsduur.",
                     "De RSZ/CIAO-registratie zet u aan in de instellingen. De koppeling met de RSZ wordt bevestigd voordat de doorgifte start. De uren geeft u door aan het sociaal secretariaat. WinProx doet geen Dimona-aangifte en berekent geen loon."
-                ]
+                ],
+                "key": "time_clock"
             },
             {
                 "title": "Clock Point",
@@ -218,7 +220,8 @@
                     "Meetwaarden komen binnen via een QR-code of via de API. Een meting kan andere software bereiken via de webhook unit.measurement.recorded.",
                     "Tot vier foto’s bij een melding, een afhandeling of een unit check. Per unit tot vier unitfoto’s en één achtergrondfoto. Foto’s worden op het toestel verkleind vóór het opladen. Foto’s van een melder op het openbare portaal zijn pas zichtbaar na goedkeuring van de melding.",
                     "Voor mobiele units, zoals een voertuig of een machine, kan de locatie worden vastgelegd. Dat zet u aan per categorie. De historiek opent u in beheer, en een punt opent in Maps."
-                ]
+                ],
+                "key": "measurements"
             },
             {
                 "title": "Kalender",
@@ -367,7 +370,8 @@
                     "U gebruikt wat bij de organisatie past: prikklok, uurrooster, klantbezoeken, inspectierondes en onderhoud.",
                     "Checkmate is er voor werkbezoeken bij klanten, met RSZ/CIAO-registratie. Corporate voegt API-koppelingen, sensoren en ESG-opvolging toe.",
                     "WinProx werkt in de browser. Een aparte app is niet nodig."
-                ]
+                ],
+                "key": "summary"
             }
         ]
     },
@@ -451,7 +455,8 @@
                     "Optionele e-mailbevestiging bij een QR-melding: een onbevestigd concept wordt automatisch verwijderd, inclusief foto’s. Geen gebruikersaccount.",
                     "Een gepland uurrooster is optioneel. Een vorige versie terugzetten kan alleen wie het rooster mag bewerken, en alleen gedurende een beperkte tijd.",
                     "Optionele doorgifte van aanwezigheid naar de Belgische RSZ (CIAO). Het rijksregisternummer wordt versleuteld bewaard. De klant vult het ondernemingsnummer in. Geslaagde doorgiftes worden na een beperkte termijn verwijderd. Een export zonder rijksregisternummer is beschikbaar."
-                ]
+                ],
+                "key": "privacy"
             },
             {
                 "title": "Beschikbaarheid",
@@ -614,7 +619,8 @@
                     "**Betrouwbaarheid:** mislukt het? WinProx probeert opnieuw (met oplopende pauze). Leveringen zie je in een log.",
                     "**Andere events o.a.:** melding aangemaakt / goedgekeurd / status gewijzigd · taak aangemaakt / gestart / afgerond · Time (incl. CIAO presence) · GPS · ESG · reserveringen · testknop · unit check geregistreerd. Bij e-mailbevestiging: **melding aangemaakt** pas na de link. time.visit.started / time.visit.ended."
                 ],
-                "emphasis": "Voorbeeld: een medewerker sluit een taak af. WinProx stuurt automatisch een webhook naar jullie externe systeem (IWMS, CMMS of ERP), zodat daar onmiddellijk een werkorder kan worden bijgewerkt."
+                "emphasis": "Voorbeeld: een medewerker sluit een taak af. WinProx stuurt automatisch een webhook naar jullie externe systeem (IWMS, CMMS of ERP), zodat daar onmiddellijk een werkorder kan worden bijgewerkt.",
+                "key": "outbound_webhooks"
             }
         ],
         "full": [

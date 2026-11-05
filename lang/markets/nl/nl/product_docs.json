@@ -5,21 +5,21 @@
       "3": "Salarisadministratie"
     },
     "full": {
-      "0": {
+      "winprox_time": {
         "items": {
           "6": "Optionele GPS-werkbezoeken koppelen een bezoek aan een locatie."
         }
       },
-      "3": {
+      "time_clock": {
         "items": {
           "0": "Medewerkers klokken in en uit met de QR-code van Clock Point. Op een vaste prikklok scant u bij elke prik de code op de sticker of op het klokscherm. Het icoon op het startscherm en de aanmeldlink klokken op zichzelf niet in.",
           "6": "De uren geeft u door aan uw salarisadministratie. WinProx berekent geen loon."
         }
       },
-      "15": {
+      "measurements": {
         "body": "WinProx kan eenvoudige meetwaarden bijhouden zonder de uitgebreide ESG-module. Foto’s horen bij meldingen, taken en controles. GPS op een mobiele unit is iets anders dan de GPS-controle bij een werkbezoek."
       },
-      "29": {
+      "summary": {
         "items": {
           "1": "Corporate voegt API-koppelingen, sensoren en ESG-opvolging toe."
         }
@@ -28,7 +28,7 @@
   },
   "technical": {
     "full": {
-      "6": {
+      "privacy": {
         "items": {
           "6": "Optionele aanwezigheidsdoorgifte naar de Belgische RSZ (CIAO): alleen beschikbaar voor Belgische klanten, niet in Nederland."
         }
@@ -37,7 +37,7 @@
   },
   "api_webhooks": {
     "right": {
-      "2": {
+      "outbound_webhooks": {
         "items": {
           "3": "**Andere events o.a.:** melding aangemaakt / goedgekeurd / status gewijzigd · taak aangemaakt / gestart / afgerond · Time · GPS · ESG · reserveringen · testknop · unit check geregistreerd. Bij e-mailbevestiging: **melding aangemaakt** pas na de link. time.visit.started / time.visit.ended."
         }

@@ -1707,8 +1707,14 @@ Login, mail en `APP_URL` blijven op `.app`. `.nl` verschijnt pas in hreflang als
   `lang/{locale}/{page}.json` (`JsonTranslationLoader`, markt via `MarketingDomain::marketKey`).
   Alleen verschillende keys; `.nl` bevat nl-NL-woordkeuze (mobiel i.p.v. gsm,
   salarisadministratie i.p.v. sociaal secretariaat) en CIAO-loze varianten van
-  overgebleven marketingteksten. `lang/markets` is géén locale (parity-script filtert
-  op tweeletters). Console/queue hebben geen markt → basis-nl.
+  overgebleven marketingteksten. Productkaarten die de overlay aanpast
+  (`winprox_time`, `time_clock`, `measurements`, `summary`, `privacy`,
+  `outbound_webhooks`) worden op `key` gemerged, niet op hun plaats in de lijst.
+  Lijstregels blijven een nummer. `npm run check:locales` faalt als zo'n nummer
+  in de basis ontbreekt of naar een ander type wijst, en als die `key`-waarde
+  tussen de talen verschilt. Twee regels die van plaats wisselen vangt dat niet.
+  `lang/markets` is géén locale (parity-script filtert op tweeletters).
+  Console/queue hebben geen markt → basis-nl.
 
 ### 11.1 Structuur (minimaal — eerste gesprek)
 - **Nav:** WinProx-logo, **taal-pillen**, **Prijzen**, **Features-overzicht**, **Prikklok**
