@@ -110,7 +110,7 @@ it('promoveert de homepage-headline tot H1 met prikklok-signalen', function () {
     $this->get(route('welcome', ['locale' => 'nl']))
         ->assertOk()
         ->assertSee('<h1 class="wp-welcome-hero-minimal__headline">', false)
-        ->assertSee('digitale prikklok', false)
+        ->assertSee(__('welcome.hero.headline', [], 'nl'))
         ->assertSee('<title>WinProx — Digitale prikklok en urenregistratie</title>', false);
 });
 

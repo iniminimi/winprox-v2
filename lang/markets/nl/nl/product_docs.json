@@ -16,6 +16,9 @@
           "6": "De uren geeft u door aan uw salarisadministratie. WinProx berekent geen loon."
         }
       },
+      "15": {
+        "body": "WinProx kan eenvoudige meetwaarden bijhouden zonder de uitgebreide ESG-module. Foto’s horen bij meldingen, taken en controles. GPS op een mobiele unit is iets anders dan de GPS-controle bij een werkbezoek."
+      },
       "29": {
         "items": {
           "1": "Corporate voegt API-koppelingen, sensoren en ESG-opvolging toe."

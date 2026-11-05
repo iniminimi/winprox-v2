@@ -47,20 +47,21 @@ it('zet markdown-alternate op de HTML DPA', function () {
         ->assertSee(route('legal.dpa.md', ['locale' => 'en']), false);
 });
 
-it('zet geen sessiecookies op crawler-documenten', function (string $path) {
+it('zet geen sessiecookies op crawler-documenten', function (string $path, string $cacheDirective) {
     $response = $this->get($path);
 
     $response->assertOk();
     expect($response->headers->getCookies())->toBeEmpty()
-        ->and($response->headers->get('Cache-Control'))->toContain('public');
+        ->and($response->headers->get('Cache-Control'))->toContain($cacheDirective);
 })->with([
-    'robots' => '/robots.txt',
-    'llms' => '/llms.txt',
-    'llms-full' => '/llms-full.txt',
-    'technical-md' => '/en/docs/technical.md',
-    'dpa-md' => '/en/legal/dpa.md',
-    'technical-html' => '/en/docs/technical',
-    'dpa-html' => '/en/legal/dpa',
+    'robots' => ['/robots.txt', 'public'],
+    'llms' => ['/llms.txt', 'public'],
+    'llms-full' => ['/llms-full.txt', 'public'],
+    // Productfiches: bewust geen (LiteSpeed-)cache, anders blijft na deploy oude HTML staan.
+    'technical-md' => ['/en/docs/technical.md', 'no-store'],
+    'dpa-md' => ['/en/legal/dpa.md', 'public'],
+    'technical-html' => ['/en/docs/technical', 'no-store'],
+    'dpa-html' => ['/en/legal/dpa', 'public'],
 ]);
 
 it('laat Perplexity-crawlers toe in robots.txt', function () {
