@@ -8,9 +8,22 @@ it('rendert het tijdsregistratie-2027 artikel in elke locale', function () {
     foreach (['nl', 'en', 'fr', 'de', 'es', 'it'] as $locale) {
         $this->get(route('article.tijdsregistratie-2027', ['locale' => $locale]))
             ->assertOk()
-            ->assertSee(__('articles.tijdsregistratie_2027.title', [], $locale), false)
-            ->assertSee(__('articles.tijdsregistratie_2027.updated', [], $locale), false);
+            ->assertSee(__('articles.tijdsregistratie_2027.title', [], $locale))
+            ->assertSee(__('articles.tijdsregistratie_2027.updated', [], $locale))
+            ->assertSee(__('articles.tijdsregistratie_2027.winprox_label', [], $locale))
+            ->assertSee(__('articles.tijdsregistratie_2027.conclusion.cta', [], $locale));
     }
+});
+
+it('toont proefperiode- en demo-knoppen in het artikel', function () {
+    $days = (int) config('billing.trial_days');
+
+    $this->get(route('article.tijdsregistratie-2027', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee(__('articles.tijdsregistratie_2027.cta_mid.cta_trial', ['days' => $days], 'nl'))
+        ->assertSee(__('articles.tijdsregistratie_2027.cta_mid.cta_demo', [], 'nl'))
+        ->assertSee('href="'.route('register').'"', false)
+        ->assertSee('href="'.route('demo', ['locale' => 'nl']).'"', false);
 });
 
 it('redirect van niet-gelocaliseerde URL naar locale-prefix', function () {

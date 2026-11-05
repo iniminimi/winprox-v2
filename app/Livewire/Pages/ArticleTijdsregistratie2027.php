@@ -40,7 +40,7 @@ class ArticleTijdsregistratie2027 extends Component
             'description' => __(self::KEY.'.social.og_description'),
             'inLanguage' => app()->getLocale(),
             'datePublished' => '2026-10-21',
-            'dateModified' => '2026-10-21',
+            'dateModified' => '2026-11-04',
             'author' => ['@type' => 'Organization', 'name' => 'WinProx', 'url' => url('/')],
             'publisher' => ['@type' => 'Organization', 'name' => 'WinProx', 'url' => url('/')],
             'mainEntityOfPage' => [
@@ -87,7 +87,7 @@ class ArticleTijdsregistratie2027 extends Component
             ['label' => __('landings.prikklok.nav_label'), 'url' => route('prikklok')],
             ['label' => __('features.shared.links.pricing'), 'url' => route('pricing')],
             ['label' => __('about.links.time'), 'url' => route('features.time')],
-            ['label' => __('articles.tijdsregistratie_2027.winprox.cta_demo'), 'url' => route('demo')],
+            ['label' => __('articles.tijdsregistratie_2027.cta_mid.cta_demo'), 'url' => route('demo')],
         ];
     }
 }

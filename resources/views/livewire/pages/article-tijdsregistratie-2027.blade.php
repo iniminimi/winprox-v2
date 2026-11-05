@@ -1,10 +1,6 @@
 @php
     $key = 'articles.tijdsregistratie_2027';
-    $badgeClass = [
-        'now' => 'wp-badge wp-badge-info',
-        'announced' => 'wp-badge wp-badge-secondary',
-        'pending' => 'wp-badge wp-badge-warning',
-    ];
+    $trialDays = (int) config('billing.trial_days');
 @endphp
 
 <div class="wp-welcome-section wp-welcome-section--alt wp-welcome-faq-page">
@@ -17,69 +13,17 @@
         </div>
 
         <article class="wp-card wp-card-pad wp-stack">
-            <h2 class="wp-welcome-h3">{{ __("{$key}.summary.title") }}</h2>
-            <ul class="wp-welcome-checklist">
-                @foreach (__("{$key}.summary.items") as $item)
-                    <li>{{ $item }}</li>
-                @endforeach
-            </ul>
-        </article>
-
-        <article class="wp-card wp-card-pad wp-stack">
-            <h2 class="wp-welcome-h3">{{ __("{$key}.status.title") }}</h2>
-            <p class="wp-text-body">{{ __("{$key}.status.intro") }}</p>
-            <div class="wp-article-table-scroll">
-                <table class="wp-article-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">{{ __("{$key}.status.col_topic") }}</th>
-                            <th scope="col">{{ __("{$key}.status.col_state") }}</th>
-                            <th scope="col">{{ __("{$key}.status.col_detail") }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (__("{$key}.status.rows") as $row)
-                            <tr>
-                                <th scope="row">{{ $row['topic'] }}</th>
-                                <td>
-                                    <span class="{{ $badgeClass[$row['state']] ?? 'wp-badge' }}">
-                                        {{ __("{$key}.status.state_{$row['state']}") }}
-                                    </span>
-                                </td>
-                                <td>{{ $row['detail'] }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </article>
-
-        <article class="wp-card wp-card-pad wp-stack">
             <h2 class="wp-welcome-h3">{{ __("{$key}.changes.title") }}</h2>
             @foreach (__("{$key}.changes.paras") as $para)
                 <p class="wp-text-body">{{ $para }}</p>
             @endforeach
-        </article>
-
-        <article class="wp-card wp-card-pad wp-stack">
-            <h2 class="wp-welcome-h3">{{ __("{$key}.who.title") }}</h2>
-            <p class="wp-text-body">{{ __("{$key}.who.intro") }}</p>
-            <ul class="wp-welcome-checklist">
-                @foreach (__("{$key}.who.items") as $item)
-                    <li>{{ $item }}</li>
-                @endforeach
-            </ul>
-            <p class="wp-muted wp-text-sm">{{ __("{$key}.who.note") }}</p>
-        </article>
-
-        <article class="wp-card wp-card-pad wp-stack">
-            <h2 class="wp-welcome-h3">{{ __("{$key}.what.title") }}</h2>
-            <p class="wp-text-body">{{ __("{$key}.what.intro") }}</p>
-            <ul class="wp-welcome-checklist">
-                @foreach (__("{$key}.what.items") as $item)
-                    <li>{{ $item }}</li>
-                @endforeach
-            </ul>
+            <div class="wp-card wp-card-pad wp-card--info wp-stack-tight">
+                <h3 class="wp-subhead">{{ __("{$key}.winprox_label") }}</h3>
+                <p class="wp-text-body">{{ __("{$key}.changes.winprox") }}</p>
+            </div>
+            @foreach (__("{$key}.changes.after") as $para)
+                <p class="wp-text-body">{{ $para }}</p>
+            @endforeach
         </article>
 
         <article class="wp-card wp-card-pad wp-stack">
@@ -87,6 +31,30 @@
             @foreach (__("{$key}.system.paras") as $para)
                 <p class="wp-text-body">{{ $para }}</p>
             @endforeach
+            <div class="wp-card wp-card-pad wp-card--info wp-stack-tight">
+                <h3 class="wp-subhead">{{ __("{$key}.winprox_label") }}</h3>
+                <p class="wp-text-body">{{ __("{$key}.system.winprox") }}</p>
+            </div>
+        </article>
+
+        <article class="wp-card wp-card-pad wp-stack">
+            <h2 class="wp-welcome-h3">{{ __("{$key}.sectors.title") }}</h2>
+            <p class="wp-text-body">{{ __("{$key}.sectors.intro") }}</p>
+            @foreach (__("{$key}.sectors.items") as $sector)
+                <div class="wp-stack-tight">
+                    <h3 class="wp-subhead">{{ $sector['name'] }}</h3>
+                    <p class="wp-text-body">{{ $sector['body'] }}</p>
+                </div>
+            @endforeach
+        </article>
+
+        <article class="wp-card wp-card-pad wp-card--success-accent wp-stack wp-welcome-section--center">
+            <h2 class="wp-welcome-h3">{{ __("{$key}.cta_mid.title") }}</h2>
+            <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __("{$key}.cta_mid.body") }}</p>
+            <div class="wp-welcome-cta-row">
+                <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __("{$key}.cta_mid.cta_trial", ['days' => $trialDays]) }}</a>
+                <a href="{{ route('demo') }}" class="btn btn--ghost btn--lg">{{ __("{$key}.cta_mid.cta_demo") }}</a>
+            </div>
         </article>
 
         <article class="wp-card wp-card-pad wp-stack">
@@ -101,17 +69,6 @@
         </article>
 
         <article class="wp-card wp-card-pad wp-stack">
-            <h2 class="wp-welcome-h3">{{ __("{$key}.sectors.title") }}</h2>
-            <p class="wp-text-body">{{ __("{$key}.sectors.intro") }}</p>
-            @foreach (__("{$key}.sectors.items") as $sector)
-                <div class="wp-stack-tight">
-                    <h3 class="wp-subhead">{{ $sector['name'] }}</h3>
-                    <p class="wp-text-body">{{ $sector['body'] }}</p>
-                </div>
-            @endforeach
-        </article>
-
-        <article class="wp-card wp-card-pad wp-stack">
             <h2 class="wp-welcome-h3">{{ __("{$key}.prepare.title") }}</h2>
             <p class="wp-text-body">{{ __("{$key}.prepare.intro") }}</p>
             <ul class="wp-welcome-checklist">
@@ -119,6 +76,16 @@
                     <li>{{ $item }}</li>
                 @endforeach
             </ul>
+        </article>
+
+        <article class="wp-card wp-card-pad wp-stack wp-welcome-section--center">
+            <h2 class="wp-welcome-h3">{{ __("{$key}.conclusion.title") }}</h2>
+            @foreach (__("{$key}.conclusion.paras") as $para)
+                <p class="wp-welcome-lead wp-welcome-lead--sm">{{ $para }}</p>
+            @endforeach
+            <div class="wp-welcome-cta-row">
+                <a href="{{ route('register') }}" class="btn btn--primary btn--lg">{{ __("{$key}.conclusion.cta") }}</a>
+            </div>
         </article>
 
         <article class="wp-card wp-card-pad wp-stack">
@@ -141,16 +108,6 @@
                     </li>
                 @endforeach
             </ul>
-        </article>
-
-        <article class="wp-card wp-card-pad wp-stack wp-welcome-section--center">
-            <h2 class="wp-welcome-h3">{{ __("{$key}.winprox.title") }}</h2>
-            <p class="wp-welcome-lead wp-welcome-lead--sm">{{ __("{$key}.winprox.body") }}</p>
-            <div class="wp-welcome-cta-row">
-                <a href="{{ route('demo') }}" class="btn btn--primary btn--lg">{{ __("{$key}.winprox.cta_demo") }}</a>
-                <a href="{{ route('contact.index') }}" class="btn btn--ghost btn--lg">{{ __("{$key}.winprox.cta_contact") }}</a>
-                <a href="{{ route('pricing') }}" class="btn btn--ghost btn--lg">{{ __("{$key}.winprox.cta_pricing") }}</a>
-            </div>
         </article>
 
         <p class="wp-muted wp-text-sm">{{ __("{$key}.disclaimer") }}</p>
