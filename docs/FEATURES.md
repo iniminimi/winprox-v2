@@ -1159,7 +1159,8 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   **vervangingsflow** (`ReplacePlannedShiftAction`), alleen voor dagen **≥ vandaag**. Gewone
   saves (grid én dag-editor) zetten gewijzigde blokken **altijd op draft** — ook in een al
   gepubliceerde periode — en melden niets; de toolbar toont "Niet gepubliceerd" tot de
-  beheerder opnieuw publiceert (`roster_published`). Correcties in het verleden lopen via
+  beheerder opnieuw publiceert (`roster_published`). Dagen vóór vandaag blijven
+  vergrendeld en houden die pil niet vast. Correcties in het verleden lopen via
   `RosterCorrected`. Rode driehoek (`alert-triangle`) naast inklok of
   geplande uren als een **gepubliceerde werkdienst** ontbreekt (niet ingeklokt vanaf de
   geplande start), de inklok **meer dan 15 min te vroeg** is, of de inklok **≥ 15 min te laat** is, of de uitklok **≥ 15 min te laat** is (zelfde marge als beheer). Op **Mijn uren** staat elke reden in tekst naast een driehoek.

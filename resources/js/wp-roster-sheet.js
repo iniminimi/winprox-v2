@@ -1202,7 +1202,14 @@ export function bind(root, wire) {
             return false;
         }
 
-        return Object.values(payload.cells).some((cell) => {
+        const locked = new Set(payload.locked_dates ?? []);
+
+        return Object.entries(payload.cells).some(([key, cell]) => {
+            const date = String(key).split(':')[1] ?? '';
+            if (date !== '' && locked.has(date)) {
+                return false;
+            }
+
             if (Array.isArray(cell?.shifts)) {
                 return cell.shifts.some((shift) => shift && shift.status === 'draft');
             }

@@ -1037,9 +1037,16 @@ class RosterIndex extends Component
             'snapshot' => $snapshot,
             'gridPayload' => $this->gridPayload($snapshot),
             'hasUnpublished' => collect($snapshot->cells)->contains(
-                fn (array $cell) => collect($cell['shifts'] ?? [$cell])->contains(
-                    fn (array $shift) => ($shift['status'] ?? null) === PlannedShiftStatus::Draft->value,
-                ),
+                function (array $cell, string $key): bool {
+                    $date = explode(':', $key, 2)[1] ?? '';
+                    if ($date !== '' && RosterHistoryLock::isLockedDate($date)) {
+                        return false;
+                    }
+
+                    return collect($cell['shifts'] ?? [$cell])->contains(
+                        fn (array $shift) => ($shift['status'] ?? null) === PlannedShiftStatus::Draft->value,
+                    );
+                },
             ),
             'hasScope' => $this->teamFilter !== null || $this->locationFilter !== null,
             'isMonth' => $this->isMonth(),

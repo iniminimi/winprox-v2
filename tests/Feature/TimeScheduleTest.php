@@ -377,11 +377,12 @@ it('opent het uurrooster voor een admin', function () {
 
 it('toont Niet gepubliceerd zolang de week draft-shifts bevat', function () {
     [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-10-14'));
 
     $shift = PlannedShift::factory()->create([
         'tenant_id' => $tenant->id,
         'worker_id' => $worker->id,
-        'work_date' => now()->toDateString(),
+        'work_date' => '2026-10-14',
         'status' => PlannedShiftStatus::Draft,
     ]);
 
@@ -396,6 +397,42 @@ it('toont Niet gepubliceerd zolang de week draft-shifts bevat', function () {
         ->withQueryParams(['team' => (string) $team->id])
         ->test(RosterIndex::class)
         ->assertDontSeeHtml('>'.e(__('time.schedule.not_published')).'</span>');
+});
+
+it('houdt de pil weg als enkel vergrendelde dagen nog concept zijn', function () {
+    [$tenant, $admin, $team, $worker] = scheduleTenant();
+    $this->travelTo(Carbon::parse('2026-10-15'));
+
+    PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-14',
+        'status' => PlannedShiftStatus::Draft,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->withQueryParams(['team' => (string) $team->id])
+        ->test(RosterIndex::class)
+        ->assertDontSeeHtml('>'.e(__('time.schedule.not_published')).'</span>');
+
+    PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-15',
+        'status' => PlannedShiftStatus::Draft,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->withQueryParams(['team' => (string) $team->id])
+        ->test(RosterIndex::class)
+        ->assertSeeHtml('>'.e(__('time.schedule.not_published')).'</span>')
+        ->call('publish')
+        ->assertDontSeeHtml('>'.e(__('time.schedule.not_published')).'</span>');
+
+    expect(PlannedShift::query()->whereDate('work_date', '2026-10-14')->first()?->status)
+        ->toBe(PlannedShiftStatus::Draft)
+        ->and(PlannedShift::query()->whereDate('work_date', '2026-10-15')->first()?->status)
+        ->toBe(PlannedShiftStatus::Published);
 });
 
 it('vraagt eerst een team- of locatiekeuze voor het rooster', function () {
