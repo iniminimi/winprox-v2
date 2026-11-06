@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Poner en el escritorio",
-                    "text": "Abajo en la barra lateral está Poner en el escritorio. En Chrome o Edge eso inicia la instalación: una ventana propia sin barra de direcciones y un acceso directo en el escritorio. Firefox oculta el botón. Safari en un Mac también: elija Archivo → Añadir al Dock. En iPhone o iPad, un icono de la pantalla de inicio pasa por Compartir, no por este botón. El reloj de fichar en el teléfono es un acceso aparte."
+                    "text": "No hace falta instalar nada desde una tienda de aplicaciones. En Chrome o Edge, el botón Poner en el escritorio está abajo en la barra lateral. Abre la gestión en su propia ventana, sin barra de direcciones, y añade un acceso directo en el escritorio. Firefox no puede hacerlo, por eso ese botón no aparece allí. Si usa Safari en un Mac, abra el menú Archivo y elija Añadir al Dock. En un iPhone o un iPad añade un icono a la pantalla de inicio con Compartir. El reloj de fichar en el teléfono es un acceso aparte."
                 },
                 {
                     "label": "Plantilla inicial",

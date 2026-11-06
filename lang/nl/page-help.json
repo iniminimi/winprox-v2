@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Zet op het bureaublad",
-                    "text": "Onderaan in de zijbalk staat Zet op het bureaublad. In Chrome of Edge opent dat de installatie: een eigen venster zonder adresbalk, en een snelkoppeling op het bureaublad. In Firefox blijft de knop weg. In Safari op een Mac ook: kies daar Bestand → Zet in Dock. Op iPhone of iPad gaat een beginscherm-icoon via Deel, niet via deze knop. De prikklok op de gsm is een aparte snelkoppeling."
+                    "text": "Je hoeft niets te installeren uit een appwinkel. In Chrome of Edge staat onderaan in de zijbalk de knop Zet op het bureaublad. Daarmee opent het beheer in een eigen venster, zonder adresbalk, en komt er een snelkoppeling op het bureaublad. In Firefox kan dat niet, daarom zie je die knop daar niet. Gebruik je Safari op een Mac, kies dan in het menu Bestand de optie Zet in Dock. Op een iPhone of iPad zet je een icoon op het beginscherm via Deel. De prikklok op de telefoon is een aparte snelkoppeling."
                 },
                 {
                     "label": "Starttemplate",

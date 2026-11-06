@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Metti sul desktop",
-                    "text": "In basso nella barra laterale c’è Metti sul desktop. In Chrome o Edge avvia l’installazione: una finestra propria senza barra degli indirizzi e un collegamento sul desktop. Firefox nasconde il pulsante. Safari su Mac anche: scegli File → Aggiungi al Dock. Su iPhone o iPad un’icona della schermata Home passa da Condividi, non da questo pulsante. Il timbratore sul telefono è un collegamento a parte."
+                    "text": "Non serve installare nulla da uno store di app. In Chrome o Edge, il pulsante Metti sul desktop sta in basso nella barra laterale. Apre la gestione in una finestra propria, senza barra degli indirizzi, e aggiunge un collegamento sul desktop. Firefox non può farlo, quindi quel pulsante lì non compare. Se usa Safari su un Mac, apra il menu File e scelga Aggiungi al Dock. Su un iPhone o un iPad aggiunge un’icona alla schermata Home tramite Condividi. Il timbratore sul telefono è un collegamento a parte."
                 },
                 {
                     "label": "Modello iniziale",

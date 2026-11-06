@@ -19,7 +19,7 @@
                 },
                 {
                     "label": "Auf den Desktop legen",
-                    "text": "Unten in der Seitenleiste steht Auf den Desktop legen. In Chrome oder Edge startet das die Installation: ein eigenes Fenster ohne Adressleiste und eine Verknüpfung auf dem Desktop. Firefox blendet die Schaltfläche aus. Safari auf dem Mac ebenfalls: wählen Sie dort Ablage → Zum Dock hinzufügen. Auf iPhone oder iPad geht ein Symbol für den Home-Bildschirm über Teilen, nicht über diese Schaltfläche. Die Stempeluhr auf dem Handy ist eine eigene Verknüpfung."
+                    "text": "Sie müssen nichts aus einem App-Store installieren. In Chrome oder Edge steht unten in der Seitenleiste der Knopf Auf den Desktop legen. Damit öffnet die Verwaltung in einem eigenen Fenster, ohne Adressleiste, und es kommt eine Verknüpfung auf den Desktop. Firefox kann das nicht, deshalb sehen Sie den Knopf dort nicht. Nutzen Sie Safari auf einem Mac, öffnen Sie das Menü Ablage und wählen Sie Zum Dock hinzufügen. Auf einem iPhone oder iPad setzen Sie ein Symbol auf den Home-Bildschirm über Teilen. Die Stempeluhr auf dem Handy ist eine eigene Verknüpfung."
                 },
                 {
                     "label": "Startvorlage",
