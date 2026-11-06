@@ -59,6 +59,7 @@ it('toont de bureaublad-knop in het beheer', function () {
 it('opent de uitleg als de browser geen installatievraag toont', function () {
     Livewire::test(BackofficeAppInstall::class)
         ->assertSeeHtml('data-wp-backoffice-install')
+        ->assertSeeHtml('btn btn--surface')
         ->call('openHelp')
         ->assertSet('helpOpen', true)
         ->assertSee(__('common.pwa.help_title'), false)

@@ -1,7 +1,7 @@
 <div class="wp-backoffice-install">
     <button
         type="button"
-        class="btn btn--ghost"
+        class="btn btn--surface"
         data-wp-backoffice-install
         wire:click="openHelp"
     >
