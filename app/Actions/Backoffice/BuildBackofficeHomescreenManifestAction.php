@@ -15,10 +15,10 @@ class BuildBackofficeHomescreenManifestAction
     {
         $appId = url('/backoffice');
         $manifestUrl = route('backoffice.manifest');
-        $icon192 = url('/images/pwa/winprox-192.png').'?v=3';
-        $icon512 = url('/images/pwa/winprox-512.png').'?v=3';
-        $maskable192 = url('/images/pwa/winprox-maskable-192.png').'?v=3';
-        $maskable512 = url('/images/pwa/winprox-maskable-512.png').'?v=3';
+        $icon192 = url('/images/pwa/winprox-192.png').'?v=4';
+        $icon512 = url('/images/pwa/winprox-512.png').'?v=4';
+        $maskable192 = url('/images/pwa/winprox-maskable-192.png').'?v=4';
+        $maskable512 = url('/images/pwa/winprox-maskable-512.png').'?v=4';
 
         return [
             'id' => $appId,
