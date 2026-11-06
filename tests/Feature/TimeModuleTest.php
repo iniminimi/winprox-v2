@@ -12,6 +12,7 @@ use App\Actions\Time\StartWorkBreakAction;
 use App\Actions\Time\ManualClockInWorkShiftAction;
 use App\Actions\Time\ScheduleClockPointQrRecommendationAction;
 use App\Actions\Time\UpdateTenantTimeQrRotationMonthsAction;
+use App\Enums\BreakType;
 use App\Enums\ClockSource;
 use App\Enums\ShiftTypeKind;
 use App\Enums\WorkShiftStatus;
@@ -30,6 +31,7 @@ use App\Models\Tenant;
 use App\Models\User;
 use App\Models\Worker;
 use App\Models\WorkerDevice;
+use App\Models\WorkBreak;
 use App\Models\WorkShift;
 use App\Models\WorkShiftTaskLog;
 use App\Support\Portal\WorkerVerification;
@@ -1150,10 +1152,19 @@ it('toont in- en uitklokken als tijden met locatie, niet Aanmelden', function ()
         'clock_in_at' => $clockInAt,
         'clock_out_at' => $clockOutAt,
     ]);
+    WorkBreak::query()->create([
+        'tenant_id' => $tenant->id,
+        'work_shift_id' => $shift->id,
+        'started_at' => $clockInAt->copy()->setTime(10, 0),
+        'ended_at' => $clockInAt->copy()->setTime(10, 20),
+        'break_type' => BreakType::Break,
+    ]);
 
     Livewire::actingAs($admin)
         ->test(ShiftsIndex::class)
         ->assertSee(__('time.shifts.punches_heading'), false)
+        ->assertSee('wp-time-shift-card__punch-mark--break', false)
+        ->assertSee(__('time.shifts.break_range', ['start' => '10:00', 'end' => '10:20']), false)
         ->assertSee(__('time.shifts.worked_label'), false)
         ->assertSee(__('time.export.columns.date'), false)
         ->assertSee(__('time.export.columns.status'), false)

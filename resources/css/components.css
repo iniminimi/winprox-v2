@@ -6140,6 +6140,11 @@ svg.wp-release-worker-row__icon,
     color: var(--wp-text-on-accent);
 }
 
+.wp-time-shift-card__punch-mark--break {
+    background-color: var(--wp-warning);
+    color: var(--wp-text-on-accent);
+}
+
 .wp-time-shift-card__punch-mark .wp-icon {
     width: 0.9rem;
     height: 0.9rem;
@@ -6161,7 +6166,7 @@ svg.wp-release-worker-row__icon,
 }
 
 .wp-time-shift-card__punch--break {
-    padding-left: 2.375rem;
+    align-items: center;
 }
 
 .wp-time-shift-card__punch--break .wp-muted {

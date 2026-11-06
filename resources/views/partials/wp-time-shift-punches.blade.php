@@ -25,13 +25,18 @@
     @endif
     @foreach ($shift->breaks as $break)
         <li class="wp-time-shift-card__punch wp-time-shift-card__punch--break" wire:key="shift-{{ $shift->id }}-break-{{ $break->id }}">
-            <p class="wp-muted wp-text-sm">
-                @if ($break->ended_at)
-                    {{ __('time.shifts.break_range', ['start' => $break->started_at->format('H:i'), 'end' => $break->ended_at->format('H:i')]) }}
-                @else
-                    {{ __('time.shifts.break_open', ['start' => $break->started_at->format('H:i')]) }}
-                @endif
-            </p>
+            <span class="wp-time-shift-card__punch-mark wp-time-shift-card__punch-mark--break" aria-hidden="true">
+                <x-wp-icon name="coffee" />
+            </span>
+            <div class="wp-time-shift-card__punch-copy">
+                <p class="wp-muted wp-text-sm">
+                    @if ($break->ended_at)
+                        {{ __('time.shifts.break_range', ['start' => $break->started_at->format('H:i'), 'end' => $break->ended_at->format('H:i')]) }}
+                    @else
+                        {{ __('time.shifts.break_open', ['start' => $break->started_at->format('H:i')]) }}
+                    @endif
+                </p>
+            </div>
         </li>
     @endforeach
 </ul>
