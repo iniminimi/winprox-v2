@@ -16,7 +16,6 @@
                     <x-wp-modal-close wire:click="closeHelp" />
                 </div>
                 <p>{{ __('common.pwa.help_chrome') }}</p>
-                <p class="wp-muted">{{ __('common.pwa.help_other') }}</p>
                 <div class="wp-cluster">
                     <button type="button" class="btn btn--primary" wire:click="closeHelp">{{ __('common.button.close') }}</button>
                 </div>

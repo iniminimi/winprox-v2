@@ -73,9 +73,8 @@
         "name": "WinProx Verwaltung",
         "short_name": "WinProx",
         "install": "Auf den Desktop legen",
-        "help_title": "WinProx als Fenster",
-        "help_chrome": "In Chrome oder Edge öffnet diese Schaltfläche die Installation. Bestätigen Sie sie und setzen Sie das Häkchen für die Desktop-Verknüpfung, wenn Windows danach fragt. WinProx öffnet sich danach in einem eigenen Fenster, ohne Adressleiste. Maximieren Sie das Fenster, um den Bildschirm zu füllen.",
-        "help_other": "Firefox kann das nicht. Nutzen Sie Chrome oder Edge. Bleibt die Frage aus: im Browsermenü unter Apps WinProx installieren."
+        "help_title": "Auf den Desktop",
+        "help_chrome": "Klicken Sie in Chrome oder Edge auf das Installationssymbol in der Adressleiste. Oder öffnen Sie das Menü und wählen Sie Apps, danach WinProx Verwaltung installieren. Setzen Sie das Häkchen für die Desktop-Verknüpfung."
     },
     "language": {
         "label": "Sprache"

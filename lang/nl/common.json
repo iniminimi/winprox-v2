@@ -73,9 +73,8 @@
         "name": "WinProx Beheer",
         "short_name": "WinProx",
         "install": "Zet op het bureaublad",
-        "help_title": "WinProx als venster",
-        "help_chrome": "In Chrome of Edge opent deze knop de installatie. Bevestig die en vink de snelkoppeling op het bureaublad aan als die vraag er staat. WinProx opent daarna in een eigen venster, zonder de adresbalk. Maximaliseer dat venster om het scherm te vullen.",
-        "help_other": "Firefox doet dit niet. Gebruik Chrome of Edge. Blijft de vraag uit, dan zit in het menu van de browser: Apps, en daarna WinProx installeren."
+        "help_title": "Op het bureaublad",
+        "help_chrome": "Klik in Chrome of Edge het installatie-icoon in de adresbalk. Of open het menu en kies Apps, daarna WinProx Beheer installeren. Vink de snelkoppeling op het bureaublad aan."
     },
     "language": {
         "label": "Taal"

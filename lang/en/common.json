@@ -73,9 +73,8 @@
         "name": "WinProx Back office",
         "short_name": "WinProx",
         "install": "Add to desktop",
-        "help_title": "WinProx as a window",
-        "help_chrome": "In Chrome or Edge this button opens the install prompt. Confirm it, and tick the desktop shortcut if Windows asks. WinProx then opens in its own window, without the address bar. Maximise that window to fill the screen.",
-        "help_other": "Firefox does not do this. Use Chrome or Edge. If no prompt appears, open the browser menu: Apps, then install WinProx."
+        "help_title": "On the desktop",
+        "help_chrome": "In Chrome or Edge, click the install icon in the address bar. Or open the menu and choose Apps, then install WinProx Back office. Tick the desktop shortcut."
     },
     "language": {
         "label": "Language"

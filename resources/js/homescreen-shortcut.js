@@ -38,8 +38,30 @@ function markHomescreenInstalled() {
     markInstalled(INSTALLED_KEY, 'wp-pwa-installed');
 }
 
+function browserInstallsDesktopApp() {
+    const ua = navigator.userAgent;
+    if (/Firefox\//.test(ua)) {
+        return false;
+    }
+
+    return /Edg\/|Chrome\/|Chromium\//.test(ua);
+}
+
+function backofficeInstallWrap() {
+    return document.querySelector('.wp-backoffice-install');
+}
+
+function syncBackofficeInstallButton() {
+    const show = Boolean(backofficeInstallWrap())
+        && browserInstallsDesktopApp()
+        && !isStandaloneDisplay()
+        && !readFlag(BACKOFFICE_INSTALLED_KEY);
+    document.documentElement.classList.toggle('wp-backoffice-pwa-available', show);
+}
+
 function markBackofficeInstalled() {
     markInstalled(BACKOFFICE_INSTALLED_KEY, 'wp-backoffice-pwa-installed');
+    document.documentElement.classList.remove('wp-backoffice-pwa-available');
 }
 
 async function hideWhenRelatedAppInstalled(buttonSelector, mark) {
@@ -68,7 +90,9 @@ async function hideShortcutWhenInstalled() {
         await hideWhenRelatedAppInstalled('[data-wp-homescreen-install]', markHomescreenInstalled);
     }
 
-    if (!document.querySelector('[data-wp-backoffice-install]')) {
+    syncBackofficeInstallButton();
+
+    if (!document.querySelector('[data-wp-backoffice-install]') || !browserInstallsDesktopApp()) {
         return;
     }
 

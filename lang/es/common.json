@@ -73,9 +73,8 @@
         "name": "WinProx Gestión",
         "short_name": "WinProx",
         "install": "Poner en el escritorio",
-        "help_title": "WinProx como ventana",
-        "help_chrome": "En Chrome o Edge este botón abre la instalación. Confírmela y marque el acceso directo en el escritorio si Windows lo pregunta. WinProx se abre después en una ventana propia, sin barra de direcciones. Maximice esa ventana para llenar la pantalla.",
-        "help_other": "Firefox no lo hace. Use Chrome o Edge. Si no aparece la pregunta: menú del navegador, Aplicaciones y después instalar WinProx."
+        "help_title": "En el escritorio",
+        "help_chrome": "En Chrome o Edge, pulse el icono de instalación en la barra de direcciones. O abra el menú y elija Aplicaciones, después instalar WinProx Gestión. Marque el acceso directo en el escritorio."
     },
     "language": {
         "label": "Idioma"

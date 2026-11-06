@@ -427,7 +427,12 @@
 }
 
 .wp-backoffice-install {
+    display: none;
     margin-top: 0.875rem;
+}
+
+html.wp-backoffice-pwa-available .wp-backoffice-install {
+    display: block;
 }
 
 .wp-backoffice-install .btn {
