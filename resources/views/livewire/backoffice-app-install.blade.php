@@ -3,6 +3,7 @@
         type="button"
         class="btn btn--surface"
         data-wp-backoffice-install
+        title="{{ __('common.pwa.install_tip') }}"
         wire:click="openHelp"
     >
         {{ __('common.pwa.install') }}

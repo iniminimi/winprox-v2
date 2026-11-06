@@ -53,6 +53,7 @@ it('toont de bureaublad-knop in het beheer', function () {
         ->assertSee(route('backoffice.manifest'), false)
         ->assertSee('data-wp-backoffice-install', false)
         ->assertSee(__('common.pwa.install'), false)
+        ->assertSee(__('common.pwa.install_tip'), false)
         ->assertSee('sw-portal.js', false);
 });
 

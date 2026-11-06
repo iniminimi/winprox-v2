@@ -73,6 +73,7 @@
         "name": "WinProx Back office",
         "short_name": "WinProx",
         "install": "Add to desktop",
+        "install_tip": "Opens WinProx in its own window on your computer, without the browser address bar. You also get a shortcut on the desktop.",
         "help_title": "On the desktop",
         "help_chrome": "In Chrome or Edge, click the install icon in the address bar. Or open the menu and choose Apps, then install WinProx Back office. Tick the desktop shortcut."
     },

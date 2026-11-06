@@ -73,6 +73,7 @@
         "name": "WinProx Verwaltung",
         "short_name": "WinProx",
         "install": "Auf den Desktop legen",
+        "install_tip": "Öffnet WinProx in einem eigenen Fenster auf Ihrem Computer, ohne die Adressleiste des Browsers. Sie bekommen dazu eine Verknüpfung auf dem Desktop.",
         "help_title": "Auf den Desktop",
         "help_chrome": "Klicken Sie in Chrome oder Edge auf das Installationssymbol in der Adressleiste. Oder öffnen Sie das Menü und wählen Sie Apps, danach WinProx Verwaltung installieren. Setzen Sie das Häkchen für die Desktop-Verknüpfung."
     },

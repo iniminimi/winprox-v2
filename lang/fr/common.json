@@ -73,6 +73,7 @@
         "name": "WinProx Gestion",
         "short_name": "WinProx",
         "install": "Mettre sur le bureau",
+        "install_tip": "Ouvre WinProx dans sa propre fenêtre sur votre ordinateur, sans la barre d’adresse du navigateur. Vous obtenez aussi un raccourci sur le bureau.",
         "help_title": "Sur le bureau",
         "help_chrome": "Dans Chrome ou Edge, cliquez l’icône d’installation dans la barre d’adresse. Ou ouvrez le menu et choisissez Applications, puis installer WinProx Gestion. Cochez le raccourci sur le bureau."
     },

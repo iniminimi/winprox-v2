@@ -73,6 +73,7 @@
         "name": "WinProx Gestione",
         "short_name": "WinProx",
         "install": "Metti sul desktop",
+        "install_tip": "Apre WinProx in una finestra propria sul computer, senza la barra degli indirizzi del browser. Ottiene anche un collegamento sul desktop.",
         "help_title": "Sul desktop",
         "help_chrome": "In Chrome o Edge, fai clic sull’icona di installazione nella barra degli indirizzi. Oppure apri il menu e scegli App, poi installa WinProx Gestione. Spunta il collegamento sul desktop."
     },
