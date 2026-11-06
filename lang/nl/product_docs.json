@@ -360,7 +360,8 @@
                 "title": "Geen app nodig",
                 "body": "WinProx werkt in de browser. Beheerders gebruiken een computer. Medewerkers openen Clock Point en de QR-portalen op hun smartphone.",
                 "items": [
-                    "Geen installatie via de App Store of Google Play. Clock Point kan als snelkoppeling op het startscherm van de telefoon."
+                    "Geen installatie via de App Store of Google Play. Clock Point kan als snelkoppeling op het startscherm van de telefoon.",
+                    "Beheer op de computer kan als venster: snelkoppeling op het bureaublad, zonder adresbalk. Chrome of Edge. Geen App Store."
                 ]
             },
             {

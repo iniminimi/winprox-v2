@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="wp-date-locale" content="{{ \App\Support\Translation\LocaleSupport::dateInputLang() }}">
     <title>{{ $title ?? 'WinProx' }}</title>
+    <link rel="manifest" href="{{ route('backoffice.manifest') }}">
     @include('partials.favicon')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @livewireStyles
@@ -708,6 +709,7 @@
                         <div class="wp-sidebar-user">
                             <p class="wp-sidebar-user-name">{{ __('common.welcome') }} {{ auth()->user()->name }}</p>
                             <livewire:time.backoffice-clock />
+                            <livewire:backoffice-app-install />
                             <form method="POST" action="{{ route('logout') }}" class="wp-sidebar-logout-form">
                                 @csrf
                                 <button type="submit" class="wp-sidebar-logout">{{ __('common.button.logout') }}</button>
@@ -851,6 +853,11 @@
     </div>
 
     @livewireScripts
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw-portal.js', { scope: '/' }).catch(() => {});
+        }
+    </script>
 </body>
 </html>
 

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\ConfirmUserEmailController;
 use App\Http\Controllers\Auth\MicrosoftAuthController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Backoffice\BackofficeHomescreenManifestController;
 use App\Http\Controllers\Billing\StripeWebhookController;
 use App\Http\Controllers\BriefingPrintController;
 use App\Http\Controllers\EmailUnsubscribeController;
@@ -198,6 +199,8 @@ Route::get('/melden/onbekend/{token}', UnassignedQrPortal::class)->name('public.
 Route::get('/reservations/confirm/{token}', ReservationConfirm::class)->name('reservations.confirm');
 Route::get('/reservations/manage/{token}', ReservationManage::class)->name('reservations.manage');
 
+Route::get('/backoffice/manifest.webmanifest', BackofficeHomescreenManifestController::class)
+    ->name('backoffice.manifest');
 Route::get('/time-portal/{tenant}/manifest.webmanifest', TenantHomescreenManifestController::class)
     ->whereNumber('tenant')
     ->name('public.time-portal.tenant.manifest');

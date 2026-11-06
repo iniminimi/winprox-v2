@@ -19,6 +19,12 @@ Per scherm: doel · weergave · acties · data · rollen · device · bijzonderh
 > medewerkers** en tonen alles **onverkort** — zij moeten de inhoud juist kunnen beoordelen en
 > goedkeuren. Dus: **geen blur op desktop/beheer**.
 
+**Beheer als venster (desktop):** in de zijbalk, onderaan, **Zet op het bureaublad**.
+Chrome of Edge installeert het beheer als eigen venster (geen adresbalk) en kan een
+snelkoppeling op het bureaublad of in het startmenu zetten. Het venster is te maximaliseren.
+Geen App Store. De prikklok-app op de gsm blijft een aparte installatie; een scan opent die,
+niet het beheervenster. Firefox installeert dit niet.
+
 Menu-volgorde (sidebar, accordion): Home · **Werk** (Meldingen, Taken,
 Inspectierondes, Checklists, Unit checks, Werkbezoeken, Kalender,
 Reserveringen, Unitmetingen) · **Plaatsen** (Categorieën, Locaties, Units tenant-breed) · **Personen** (Backoffice = Beheerder/Medewerker;

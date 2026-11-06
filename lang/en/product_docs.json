@@ -360,7 +360,8 @@
                 "title": "No app needed",
                 "body": "WinProx works in the browser. Administrators use a computer. People open Clock Point and the QR portals on their smartphone.",
                 "items": [
-                    "No install from the App Store or Google Play. Clock Point can sit as a shortcut on the phone’s home screen."
+                    "No install from the App Store or Google Play. Clock Point can sit as a shortcut on the phone’s home screen.",
+                    "The back office on a computer can open as its own window: a desktop shortcut, without the address bar. Chrome or Edge. No app store."
                 ]
             },
             {

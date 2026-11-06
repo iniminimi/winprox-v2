@@ -360,7 +360,8 @@
                 "title": "Keine App nötig",
                 "body": "WinProx läuft im Browser. Die Verwaltung nutzt einen Computer. Mitarbeitende öffnen Clock Point und die QR-Portale auf dem Smartphone.",
                 "items": [
-                    "Keine Installation über den App Store oder Google Play. Clock Point kann als Verknüpfung auf dem Startbildschirm des Telefons liegen."
+                    "Keine Installation über den App Store oder Google Play. Clock Point kann als Verknüpfung auf dem Startbildschirm des Telefons liegen.",
+                    "Die Verwaltung am Computer kann als eigenes Fenster öffnen: eine Verknüpfung auf dem Desktop, ohne Adressleiste. Chrome oder Edge. Kein App Store."
                 ]
             },
             {

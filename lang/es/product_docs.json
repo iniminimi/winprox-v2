@@ -360,7 +360,8 @@
                 "title": "Sin aplicación",
                 "body": "WinProx funciona en el navegador. La administración usa un ordenador. Las personas abren Clock Point y los portales QR en el smartphone.",
                 "items": [
-                    "Sin instalación desde App Store o Google Play. Clock Point puede quedar como acceso directo en la pantalla de inicio del teléfono."
+                    "Sin instalación desde App Store o Google Play. Clock Point puede quedar como acceso directo en la pantalla de inicio del teléfono.",
+                    "La gestión en el ordenador puede abrirse en su propia ventana: un acceso directo en el escritorio, sin barra de direcciones. Chrome o Edge. Sin tienda de aplicaciones."
                 ]
             },
             {

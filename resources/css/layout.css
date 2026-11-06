@@ -426,6 +426,24 @@
     margin: 0.75rem 0 0;
 }
 
+.wp-backoffice-install {
+    margin-top: 0.875rem;
+}
+
+.wp-backoffice-install .btn {
+    width: 100%;
+}
+
+@media (display-mode: standalone), (display-mode: fullscreen) {
+    .wp-backoffice-install {
+        display: none;
+    }
+}
+
+html.wp-backoffice-pwa-installed .wp-backoffice-install {
+    display: none;
+}
+
 .wp-sidebar-logout-form {
     margin: 0.875rem 0 0;
 }
