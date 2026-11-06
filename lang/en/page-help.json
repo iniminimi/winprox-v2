@@ -18,6 +18,10 @@
                     "text": "Under Dashboard you see counts of open issues, open tasks and (with Time) who is present now. Click a card to go to the related screen. Open leave or TOIL requests appear as an extra card to Time → Requests, with the count per kind (1 Leave, 1 TOIL, or both)."
                 },
                 {
+                    "label": "Add to desktop",
+                    "text": "At the bottom of the sidebar is Add to desktop. In Chrome or Edge that starts the install: its own window without the address bar, and a desktop shortcut. Firefox hides the button. Safari on a Mac does too: choose File → Add to Dock there. On iPhone or iPad a home-screen icon goes through Share, not this button. The punch clock on the phone is a separate shortcut."
+                },
+                {
                     "label": "Starter template",
                     "text": "New organisations see a welcome card on the dashboard («Would you like a hand getting started?»): choose what you use WinProx for — at your own locations, at customer sites, or for vehicles and fleet. WinProx creates a small sample environment (teams, categories, one location, units). For customer-site work you also choose size (1–5, 6–20 or 21+). You can also start on your own. This is not a sector system, only a start. You can add locations, teams and units yourself afterwards."
                 },

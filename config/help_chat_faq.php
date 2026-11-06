@@ -231,7 +231,15 @@ return [
             'body_key' => 'faq.items.mobile.summary',
         ],
         [
-            'patterns' => ['install', 'installeren', 'app store', 'software', 'applicatie'],
+            'patterns' => [
+                'install', 'installeren', 'app store', 'software', 'applicatie',
+                'bureaublad', 'zet in dock', 'add to dock', 'add to desktop', 'desktop shortcut',
+                'firefox', 'safari',
+                'mettre sur le bureau', 'ajouter au dock',
+                'auf den desktop', 'zum dock',
+                'en el escritorio', 'añadir al dock',
+                'sul desktop', 'aggiungi al dock',
+            ],
             'body_key' => 'faq.items.install.summary',
         ],
         [

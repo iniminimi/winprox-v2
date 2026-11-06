@@ -23,7 +23,10 @@ Per scherm: doel · weergave · acties · data · rollen · device · bijzonderh
 Chrome of Edge installeert het beheer als eigen venster (geen adresbalk) en kan een
 snelkoppeling op het bureaublad of in het startmenu zetten. Het venster is te maximaliseren.
 Geen App Store. De prikklok-app op de gsm blijft een aparte installatie; een scan opent die,
-niet het beheervenster. In Firefox blijft de knop verborgen: die browser installeert geen bureaubladvenster.
+niet het beheervenster. In Firefox blijft de knop verborgen: die browser installeert geen
+bureaubladvenster. In Safari blijft de knop ook verborgen: Apple laat de installatie niet
+vanuit de pagina starten. Op een Mac zet de beheerder het zelf via **Bestand → Zet in Dock**.
+Op iPhone of iPad gaat een beginscherm-icoon via **Deel**, niet via deze knop.
 
 Menu-volgorde (sidebar, accordion): Home · **Werk** (Meldingen, Taken,
 Inspectierondes, Checklists, Unit checks, Werkbezoeken, Kalender,

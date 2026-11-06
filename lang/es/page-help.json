@@ -18,6 +18,10 @@
                     "text": "Bajo Panel ves conteos de incidencias abiertas, tareas abiertas y (con Time) quién está presente ahora. Haz clic en una tarjeta para ir a la pantalla relacionada. Las solicitudes abiertas de vacaciones o TOIL aparecen como tarjeta extra hacia Time → Solicitudes, con el conteo por tipo (1 Vacaciones, 1 TOIL, o ambos)."
                 },
                 {
+                    "label": "Poner en el escritorio",
+                    "text": "Abajo en la barra lateral está Poner en el escritorio. En Chrome o Edge eso inicia la instalación: una ventana propia sin barra de direcciones y un acceso directo en el escritorio. Firefox oculta el botón. Safari en un Mac también: elija Archivo → Añadir al Dock. En iPhone o iPad, un icono de la pantalla de inicio pasa por Compartir, no por este botón. El reloj de fichar en el teléfono es un acceso aparte."
+                },
+                {
                     "label": "Plantilla inicial",
                     "text": "Las organizaciones nuevas ven el botón «¿Quieres ayuda para empezar?». Elige para qué usas WinProx: en tus propias ubicaciones, en ubicaciones de clientes, o para vehículos y flotas. WinProx crea un entorno de ejemplo pequeño (equipos, categorías, una ubicación, units). En trabajo en sede de clientes también eliges el tamaño (1–5, 6–20 o 21+). No es un sistema de sectores, solo un arranque. Después puedes añadir tú mismo ubicaciones, equipos y units."
                 },

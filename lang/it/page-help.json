@@ -18,6 +18,10 @@
                     "text": "Sotto Dashboard vedi i conteggi di segnalazioni aperte, attività aperte e (con Time) chi è presente ora. Clicchi su una scheda per andare alla schermata correlata. Le richieste aperte di ferie o recupero appaiono come scheda extra verso Time → Richieste, con il conteggio per tipo (1 Ferie, 1 Recupero, o entrambi)."
                 },
                 {
+                    "label": "Metti sul desktop",
+                    "text": "In basso nella barra laterale c’è Metti sul desktop. In Chrome o Edge avvia l’installazione: una finestra propria senza barra degli indirizzi e un collegamento sul desktop. Firefox nasconde il pulsante. Safari su Mac anche: scegli File → Aggiungi al Dock. Su iPhone o iPad un’icona della schermata Home passa da Condividi, non da questo pulsante. Il timbratore sul telefono è un collegamento a parte."
+                },
+                {
                     "label": "Modello iniziale",
                     "text": "Le nuove organizzazioni vedono il pulsante «Vuoi un aiuto per iniziare?». Scegli per cosa usi WinProx: nelle tue sedi, presso i clienti, o per veicoli e flotta. WinProx crea un piccolo ambiente di esempio (team, categorie, una sede, unit). Per il lavoro presso i clienti scegli anche la dimensione (1–5, 6–20 o 21+). Non è un sistema di settori, solo un avvio. Poi puoi aggiungere tu sedi, team e unit."
                 },

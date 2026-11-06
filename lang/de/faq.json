@@ -307,8 +307,8 @@
             "slug": "install",
             "type": "text",
             "title": "Muss ich Software installieren?",
-            "body": "Nein. WinProx ist eine Web-App. Koordinatoren und Außendienstteams arbeiten im Browser, ohne separate Installation oder App-Store. Optional können Sie die Clock-Point-Anmeldeseite als Icon auf dem Startbildschirm ablegen — das ist eine Browser-Verknüpfung, keine App. Am Feldportal speichert der Browser Arbeit ohne Empfang vorübergehend bis wieder Verbindung besteht; das ist keine App-Installation.",
-            "summary": "Keine Installation — alles über den Browser."
+            "body": "Nein. WinProx läuft im Browser, ohne App Store oder Google Play. In Chrome oder Edge steht unten in der Seitenleiste Auf den Desktop legen: die Verwaltung öffnet dann in einem eigenen Fenster, ohne Adressleiste, mit einer Verknüpfung auf dem Desktop. Firefox blendet die Schaltfläche aus, weil Firefox kein Desktop-Fenster installiert. Safari auf dem Mac ebenfalls: wählen Sie Ablage → Zum Dock hinzufügen. Auf dem Handy bleibt Clock Point eine eigene Verknüpfung auf dem Startbildschirm (Android über Chrome, iPhone über Teilen → Zum Home-Bildschirm). Das ist keine App. Am Feldportal speichert der Browser Arbeit ohne Empfang vorübergehend, bis wieder Verbindung besteht; das ist keine Installation.",
+            "summary": "Kein App Store. Chrome oder Edge: die Schaltfläche Auf den Desktop legen. Firefox zeigt sie nicht. Safari auf dem Mac: Ablage → Zum Dock hinzufügen. Clock Point auf dem Handy ist eine eigene Verknüpfung."
         },
         "dynamic_qr_codes": {
             "slug": "dynamic_qr_codes",

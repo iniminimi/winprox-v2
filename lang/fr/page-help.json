@@ -18,6 +18,10 @@
                     "text": "Sous Tableau de bord vous voyez le nombre de signalements ouverts, de tâches ouvertes et (avec Time) qui est présent maintenant. Cliquez sur une carte pour accéder à l’écran correspondant. Les demandes de congé ou de récup ouvertes apparaissent comme carte extra vers Time → Demandes, avec le nombre par type (1 Congé, 1 Récup, ou les deux)."
                 },
                 {
+                    "label": "Mettre sur le bureau",
+                    "text": "En bas de la barre latérale se trouve Mettre sur le bureau. Dans Chrome ou Edge, cela lance l’installation : une fenêtre propre sans barre d’adresse, et un raccourci sur le bureau. Firefox cache le bouton. Safari sur Mac aussi : choisissez Fichier → Ajouter au Dock. Sur iPhone ou iPad, une icône d’écran d’accueil passe par Partager, pas par ce bouton. La pointeuse sur le téléphone est un raccourci à part."
+                },
+                {
                     "label": "Modèle de départ",
                     "text": "Les nouvelles organisations voient le bouton « Voulez-vous un coup de pouce pour démarrer ? ». Choisissez à quoi sert WinProx : sur vos propres sites, sur les sites des clients, ou pour véhicules et flotte. WinProx crée un petit environnement d’exemple (équipes, catégories, un lieu, units). Pour le travail chez le client, vous choisissez aussi la taille (1–5, 6–20 ou 21+). Ce n’est pas un système de secteurs, seulement un démarrage. Vous pourrez ensuite ajouter vous-même des lieux, équipes et units."
                 },

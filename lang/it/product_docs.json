@@ -361,7 +361,7 @@
                 "body": "WinProx funziona nel browser. La gestione usa un computer. Le persone aprono Clock Point e i portali QR sullo smartphone.",
                 "items": [
                     "Nessuna installazione da App Store o Google Play. Clock Point può stare come collegamento sulla schermata Home del telefono.",
-                    "La gestione al computer può aprirsi in una finestra propria: un collegamento sul desktop, senza barra degli indirizzi. Chrome o Edge. Nessun app store."
+                    "La gestione al computer può aprirsi in una finestra propria: un collegamento sul desktop, senza barra degli indirizzi. In Chrome o Edge, con il pulsante nella barra laterale. Firefox non può; il pulsante resta nascosto. Su Mac, Safari lo fa con File → Aggiungi al Dock. Nessun app store."
                 ]
             },
             {
@@ -463,6 +463,7 @@
                 "title": "Disponibilità",
                 "items": [
                     "Raggiungibile 24/7 come servizio online (browser e portali QR).",
+                    "La gestione si apre nel browser. In Chrome o Edge può girare in una finestra propria con un collegamento sul desktop. Firefox non installa quella finestra. Safari su Mac lo fa con File → Aggiungi al Dock.",
                     "Una pagina unit già caricata resta usabile per poco senza rete e poi si sincronizza. La timbratura in entrata richiede una connessione.",
                     "Su uno schermo timbrature fisso il codice cambia, quindi una foto vecchia dello schermo non resta valida.",
                     "Manutenzione pianificata preferibilmente fuori dall’orario d’ufficio, con avviso quando possibile.",

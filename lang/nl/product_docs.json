@@ -361,7 +361,7 @@
                 "body": "WinProx werkt in de browser. Beheerders gebruiken een computer. Medewerkers openen Clock Point en de QR-portalen op hun smartphone.",
                 "items": [
                     "Geen installatie via de App Store of Google Play. Clock Point kan als snelkoppeling op het startscherm van de telefoon.",
-                    "Beheer op de computer kan als venster: snelkoppeling op het bureaublad, zonder adresbalk. Chrome of Edge. Geen App Store."
+                    "Beheer op de computer kan als venster: snelkoppeling op het bureaublad, zonder adresbalk. In Chrome of Edge via de knop in de zijbalk. Firefox doet dit niet; daar blijft de knop weg. Op een Mac zet Safari het via Bestand → Zet in Dock. Geen App Store."
                 ]
             },
             {
@@ -463,6 +463,7 @@
                 "title": "Beschikbaarheid",
                 "items": [
                     "24/7 bereikbaar als online dienst (browser en QR-portalen).",
+                    "Beheer opent in de browser. In Chrome of Edge kan het als eigen venster met snelkoppeling op het bureaublad. Firefox installeert dat venster niet. Safari op een Mac doet het via Bestand → Zet in Dock.",
                     "Een al geladen unitpagina blijft kort bruikbaar zonder netwerk en synchroniseert daarna. Inklokken vraagt een verbinding.",
                     "Op een vast klokscherm wisselt de code, zodat een oude foto van het scherm niet geldig blijft.",
                     "Gepland onderhoud bij voorkeur buiten kantooruren, met aankondiging waar mogelijk.",

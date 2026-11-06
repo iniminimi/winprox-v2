@@ -361,7 +361,7 @@
                 "body": "WinProx works in the browser. Administrators use a computer. People open Clock Point and the QR portals on their smartphone.",
                 "items": [
                     "No install from the App Store or Google Play. Clock Point can sit as a shortcut on the phone’s home screen.",
-                    "The back office on a computer can open as its own window: a desktop shortcut, without the address bar. Chrome or Edge. No app store."
+                    "The back office on a computer can open as its own window: a desktop shortcut, without the address bar. In Chrome or Edge, use the button in the sidebar. Firefox cannot do this; the button stays hidden. On a Mac, Safari does it via File → Add to Dock. No app store."
                 ]
             },
             {
@@ -463,6 +463,7 @@
                 "title": "Availability",
                 "items": [
                     "Available 24/7 as an online service (browser and QR portals).",
+                    "The back office opens in the browser. In Chrome or Edge it can run as its own window with a desktop shortcut. Firefox does not install that window. Safari on a Mac does it via File → Add to Dock.",
                     "A unit page that is already loaded stays usable briefly without a network and syncs afterwards. Clock-in needs a connection.",
                     "On a fixed clock display the code changes, so an old photo of the screen does not stay valid.",
                     "Planned maintenance preferably outside office hours, with notice when possible.",

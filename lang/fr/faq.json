@@ -307,8 +307,8 @@
             "slug": "install",
             "type": "text",
             "title": "Dois-je installer un logiciel ?",
-            "body": "Non. WinProx est une webapp. Coordinateurs et équipes terrain travaillent dans le navigateur, sans installation ni app store. Vous pouvez aussi mettre la page d’identification Clock Point en icône sur l’écran d’accueil — c’est un raccourci navigateur, pas une app. Sur le portail de terrain, le navigateur conserve temporairement le travail sans réseau jusqu’à la reconnexion ; ce n’est pas une installation d’application.",
-            "summary": "Pas d'installation — tout via le navigateur."
+            "body": "Non. WinProx fonctionne dans le navigateur, sans App Store ni Google Play. Dans Chrome ou Edge, le bouton Mettre sur le bureau se trouve en bas de la barre latérale : la gestion s’ouvre alors dans sa propre fenêtre, sans barre d’adresse, avec un raccourci sur le bureau. Firefox cache ce bouton, car il n’installe pas de fenêtre de bureau. Safari sur Mac non plus : choisissez Fichier → Ajouter au Dock. Sur le téléphone, Clock Point reste un raccourci séparé sur l’écran d’accueil (Android via Chrome, iPhone via Partager → Sur l’écran d’accueil). Ce n’est pas une appli. Sur le portail de terrain, le navigateur conserve temporairement le travail sans réseau jusqu’à la reconnexion ; ce n’est pas une installation.",
+            "summary": "Pas d’App Store. Chrome ou Edge : le bouton Mettre sur le bureau. Firefox ne montre pas ce bouton. Safari sur Mac : Fichier → Ajouter au Dock. Clock Point sur le téléphone est un raccourci à part."
         },
         "dynamic_qr_codes": {
             "slug": "dynamic_qr_codes",

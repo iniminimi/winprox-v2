@@ -311,8 +311,8 @@
             "slug": "install",
             "type": "text",
             "title": "Do I need to install software?",
-            "body": "No. WinProx is a web app. Coordinators and field teams work in the browser, with no separate installation or app store. You can optionally save the Clock Point sign-in page as a home-screen icon — that is a browser shortcut, not an app. On the field portal the browser temporarily stores work without coverage until you are back online; that is not an app install.",
-            "summary": "No installation — everything via the browser."
+            "body": "No. WinProx runs in the browser, with no App Store or Google Play. In Chrome or Edge the sidebar has Add to desktop: the back office then opens in its own window, without the address bar, and with a desktop shortcut. Firefox hides that button, because Firefox does not install a desktop window. Safari on a Mac does the same: choose File → Add to Dock. On a phone, Clock Point stays a separate home-screen shortcut (Android via Chrome, iPhone via Share → Add to Home Screen). That is not an app. On the field portal the browser temporarily stores work without coverage until you are back online; that is not an install.",
+            "summary": "No app store. Chrome or Edge: the Add to desktop button. Firefox hides that button. Safari on a Mac: File → Add to Dock. Clock Point on the phone is a separate shortcut."
         },
         "dynamic_qr_codes": {
             "slug": "dynamic_qr_codes",

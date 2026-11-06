@@ -361,7 +361,7 @@
                 "body": "WinProx funciona en el navegador. La administración usa un ordenador. Las personas abren Clock Point y los portales QR en el smartphone.",
                 "items": [
                     "Sin instalación desde App Store o Google Play. Clock Point puede quedar como acceso directo en la pantalla de inicio del teléfono.",
-                    "La gestión en el ordenador puede abrirse en su propia ventana: un acceso directo en el escritorio, sin barra de direcciones. Chrome o Edge. Sin tienda de aplicaciones."
+                    "La gestión en el ordenador puede abrirse en su propia ventana: un acceso directo en el escritorio, sin barra de direcciones. En Chrome o Edge, con el botón de la barra lateral. Firefox no puede; el botón permanece oculto. En un Mac, Safari lo hace con Archivo → Añadir al Dock. Sin tienda de aplicaciones."
                 ]
             },
             {
@@ -463,6 +463,7 @@
                 "title": "Disponibilidad",
                 "items": [
                     "Disponible 24/7 como servicio en línea (navegador y portales QR).",
+                    "La gestión se abre en el navegador. En Chrome o Edge puede funcionar en su propia ventana con un acceso directo en el escritorio. Firefox no instala esa ventana. Safari en un Mac lo hace con Archivo → Añadir al Dock.",
                     "Una página de unit ya cargada sigue usable un momento sin red y luego se sincroniza. Fichar la entrada exige conexión.",
                     "En una pantalla de fichaje fija el código cambia, así que una foto antigua de la pantalla no sigue siendo válida.",
                     "Mantenimiento planificado preferiblemente fuera del horario de oficina, con aviso cuando sea posible.",

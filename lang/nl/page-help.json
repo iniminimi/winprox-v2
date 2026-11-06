@@ -18,6 +18,10 @@
                     "text": "Onder Dashboard zie je tellingen van open meldingen, open taken en (met Time) wie er nu aanwezig is. Klik op een kaart om naar het bijhorende scherm te gaan. Open verlof- of recupaanvragen verschijnen als extra kaart naar Time → Aanvragen, met het aantal per soort (1 Verlof, 1 Recup, of beide)."
                 },
                 {
+                    "label": "Zet op het bureaublad",
+                    "text": "Onderaan in de zijbalk staat Zet op het bureaublad. In Chrome of Edge opent dat de installatie: een eigen venster zonder adresbalk, en een snelkoppeling op het bureaublad. In Firefox blijft de knop weg. In Safari op een Mac ook: kies daar Bestand → Zet in Dock. Op iPhone of iPad gaat een beginscherm-icoon via Deel, niet via deze knop. De prikklok op de gsm is een aparte snelkoppeling."
+                },
+                {
                     "label": "Starttemplate",
                     "text": "Nieuwe organisaties zien op het dashboard «Wil je op weg geholpen worden?»: kies waarvoor je WinProx gebruikt (eigen locaties, locaties van klanten, of voertuigen en fleet). WinProx maakt een kleine voorbeeldomgeving (teams, categorieën, één locatie, units). Bij werken bij klanten kies je ook de grootte (1–5, 6–20 of 21+). Liever zelf beginnen kan ook. Dit is geen sectorsysteem, alleen een start. Daarna kun je zelf locaties, teams en units toevoegen."
                 },

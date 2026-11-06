@@ -311,8 +311,8 @@
             "slug": "install",
             "type": "text",
             "title": "Moet ik software installeren?",
-            "body": "Nee. WinProx is een webapp. Coördinatoren en veldteams werken in de browser, zonder aparte installatie of app-store. Optioneel zet je de Clock Point-aanmeldpagina als icoon op het startscherm — dat is een browsersnelkoppeling, geen app. Op het veldportaal bewaart de browser tijdelijk werk zonder bereik tot er weer verbinding is; dat is geen app-installatie.",
-            "summary": "Geen installatie — alles via de browser."
+            "body": "Nee. WinProx werkt in de browser, zonder App Store of Google Play. In Chrome of Edge staat onderaan in de zijbalk Zet op het bureaublad: het beheer opent dan in een eigen venster, zonder adresbalk, met een snelkoppeling op het bureaublad. In Firefox blijft die knop verborgen, want Firefox installeert geen bureaubladvenster. In Safari op een Mac ook: kies Bestand → Zet in Dock. Op de gsm blijft Clock Point een aparte snelkoppeling op het startscherm (Android via Chrome, iPhone via Deel → Zet op beginscherm). Dat is geen app. Op het veldportaal bewaart de browser tijdelijk werk zonder bereik tot er weer verbinding is; dat is geen installatie.",
+            "summary": "Geen App Store. Chrome of Edge: knop Zet op het bureaublad. Firefox toont die knop niet. Safari op een Mac: Bestand → Zet in Dock. Clock Point op de gsm is een aparte snelkoppeling."
         },
         "dynamic_qr_codes": {
             "slug": "dynamic_qr_codes",
