@@ -1,5 +1,6 @@
 <?php
 
+use App\Actions\TenantPurge\CollectTenantPurgeCountsAction;
 use App\Actions\TenantPurge\ConfirmTenantPurgeEmailAction;
 use App\Actions\TenantPurge\CreateTenantPurgeBackupAction;
 use App\Actions\TenantPurge\ExecuteTenantPurgeAction;
@@ -545,4 +546,147 @@ it('na verlopen trial blijft subscription-route bereikbaar', function () {
     $this->actingAs($admin)
         ->get(route('dashboard'))
         ->assertRedirect(route('subscription.index'));
+});
+
+it('purge wist alle tenant-bestanden en toegangsgegevens van de gebruikers', function () {
+    Mail::fake();
+    Storage::fake('local');
+    Storage::fake('public');
+    $disk = Storage::disk('public');
+
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id, 'email' => 'Purge.Admin@example.com']);
+    $other = Tenant::factory()->create();
+    $otherUser = User::factory()->admin()->create(['tenant_id' => $other->id]);
+
+    $files = [
+        'logo' => "tenant-logos/{$tenant->id}/logo.png",
+        'portal' => "tenant-portal-backgrounds/{$tenant->id}/portal.jpg",
+        'shell' => "tenant-portal-backgrounds/{$tenant->id}/shell.jpg",
+        'sticker' => "tenant-qr-sticker-backgrounds/{$tenant->id}/avery/bg.png",
+        'album' => 'clock-display-album/global/album.jpg',
+        'unit' => 'unit-backgrounds/unit.jpg',
+        'hold1' => 'issue-photos/hold-1.jpg',
+        'hold2' => 'issue-photos/hold-2.jpg',
+        'orphan' => "location-documents/{$tenant->id}/9/orphan.pdf",
+    ];
+    foreach ($files as $file) {
+        $disk->put($file, 'x');
+    }
+    $otherLogo = "tenant-logos/{$other->id}/logo.png";
+    $disk->put($otherLogo, 'x');
+
+    $tenant->forceFill([
+        'logo_path' => $files['logo'],
+        'portal_background_path' => $files['portal'],
+        'shell_background_path' => $files['shell'],
+    ])->save();
+    $unit = Unit::factory()->create(['tenant_id' => $tenant->id]);
+    DB::table('units')->where('id', $unit->id)->update(['background_photo_path' => $files['unit']]);
+    DB::table('clock_display_images')->insert([
+        'tenant_id' => $tenant->id,
+        'path' => $files['album'],
+        'sort_order' => 0,
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+    DB::table('tenant_qr_sticker_sheet_settings')->insert([
+        'tenant_id' => $tenant->id,
+        'template' => 'avery',
+        'background_path' => $files['sticker'],
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+    DB::table('qr_report_email_holds')->insert([
+        'tenant_id' => $tenant->id,
+        'unit_id' => $unit->id,
+        'description' => 'Wacht op bevestiging',
+        'reporter_contact' => 'melder@example.com',
+        'photo_paths' => json_encode([$files['hold1'], $files['hold2']], JSON_THROW_ON_ERROR),
+        'token' => str_repeat('a', 64),
+        'expires_at' => now()->addDay(),
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+
+    $admin->createToken('purge-test');
+    $otherUser->createToken('blijft');
+    DB::table('sessions')->insert([
+        ['id' => 'purge-sess', 'user_id' => $admin->id, 'payload' => 'x', 'last_activity' => time()],
+        ['id' => 'other-sess', 'user_id' => $otherUser->id, 'payload' => 'x', 'last_activity' => time()],
+    ]);
+    DB::table('password_reset_tokens')->insert(['email' => $admin->email, 'token' => 'x', 'created_at' => now()]);
+    DB::table('email_action_tokens')->insert([
+        'email' => 'purge.admin@example.com',
+        'token' => '12345678',
+        'purpose' => 'unsub',
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+
+    $purge = TenantPurgeRequest::query()->create([
+        'tenant_id' => $tenant->id,
+        'tenant_name' => $tenant->name,
+        'track' => TenantPurgeTrack::Trial,
+        'status' => TenantPurgeStatus::Ready,
+        'initiated_by_user_id' => $admin->id,
+        'export_acknowledged_at' => now(),
+        'password_verified_at' => now(),
+        'email_confirmed_at' => now(),
+        'email_confirmed_by_user_id' => $admin->id,
+    ]);
+
+    app(ExecuteTenantPurgeAction::class)->handle($purge, $admin, 'password');
+
+    foreach ($files as $file) {
+        $disk->assertMissing($file);
+    }
+    $disk->assertExists($otherLogo);
+
+    expect(DB::table('personal_access_tokens')->where('tokenable_id', $admin->id)->count())->toBe(0)
+        ->and(DB::table('personal_access_tokens')->where('tokenable_id', $otherUser->id)->count())->toBe(1)
+        ->and(DB::table('sessions')->pluck('id')->all())->toBe(['other-sess'])
+        ->and(DB::table('password_reset_tokens')->count())->toBe(0)
+        ->and(DB::table('email_action_tokens')->count())->toBe(0);
+});
+
+it('elke tenant-kolom met een bestandspad wordt gewist bij purge', function () {
+    $covered = ExecuteTenantPurgeAction::MEDIA_PATH_COLUMNS;
+
+    foreach (Schema::getTableListing(schemaQualified: false) as $table) {
+        if ($table === 'tenant_purge_requests') {
+            continue;
+        }
+        if ($table !== 'tenants' && ! Schema::hasColumn($table, 'tenant_id')) {
+            continue;
+        }
+        foreach (Schema::getColumnListing($table) as $column) {
+            if ($column === 'path' || str_ends_with($column, '_path') || str_ends_with($column, '_paths')) {
+                expect(in_array($column, $covered[$table] ?? [], true))
+                    ->toBeTrue("{$table}.{$column} ontbreekt in ExecuteTenantPurgeAction::MEDIA_PATH_COLUMNS");
+            }
+        }
+    }
+});
+
+it('telt elke tenant-tabel en heeft voor elke telling een label in elke taal', function () {
+    $tenant = Tenant::factory()->create();
+    $counts = app(CollectTenantPurgeCountsAction::class)->handle($tenant);
+    $aliases = ['teams' => 'internal_teams', 'webhooks' => 'webhook_endpoints'];
+    $countedTables = array_map(fn (string $key) => $aliases[$key] ?? $key, array_keys($counts));
+
+    foreach (Schema::getTableListing(schemaQualified: false) as $table) {
+        if (in_array($table, ['tenants', 'tenant_purge_requests'], true) || ! Schema::hasColumn($table, 'tenant_id')) {
+            continue;
+        }
+        expect(in_array($table, $countedTables, true))
+            ->toBeTrue("{$table} ontbreekt in CollectTenantPurgeCountsAction");
+    }
+
+    foreach (['nl', 'en', 'fr', 'de', 'es', 'it'] as $locale) {
+        foreach (array_keys($counts) as $key) {
+            $line = 'mail.tenant_purge.completed.count.'.$key;
+            expect(__($line, ['count' => 1], $locale))->not->toBe($line, "{$locale}: {$line} ontbreekt");
+        }
+    }
 });

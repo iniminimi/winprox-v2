@@ -5,14 +5,9 @@ namespace App\Actions\TenantPurge;
 use App\Enums\TenantPurgeStatus;
 use App\Enums\TenantPurgeTrack;
 use App\Mail\TenantPurgeCompletedMail;
-use App\Models\Document;
-use App\Models\IssuePhoto;
-use App\Models\QrLinkPhoto;
 use App\Models\Tenant;
 use App\Models\TenantPurgeRequest;
-use App\Models\UnitCheckPhoto;
 use App\Models\User;
-use App\Models\Worker;
 use App\Support\Audit\AuditRecorder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -25,6 +20,31 @@ use Illuminate\Validation\ValidationException;
  */
 final class ExecuteTenantPurgeAction
 {
+    /**
+     * Kolommen met paden op de publieke disk. `tenants` matcht op id, de rest op tenant_id.
+     * Nieuwe upload-kolom? Voeg hem hier toe; TenantPurgeTest faalt anders.
+     */
+    public const MEDIA_PATH_COLUMNS = [
+        'tenants' => ['logo_path', 'portal_background_path', 'shell_background_path'],
+        'clock_display_images' => ['path'],
+        'documents' => ['file_path'],
+        'issue_photos' => ['path'],
+        'qr_link_photos' => ['path'],
+        'qr_report_email_holds' => ['photo_paths'],
+        'tenant_qr_sticker_sheet_settings' => ['background_path'],
+        'unit_check_photos' => ['path'],
+        'units' => ['background_photo_path'],
+        'workers' => ['photo_path'],
+    ];
+
+    /** Mappen op de publieke disk met de tenant-id in het pad (vangt ook losse bestanden op). */
+    public const MEDIA_TENANT_DIRECTORIES = [
+        'tenant-logos',
+        'tenant-portal-backgrounds',
+        'tenant-qr-sticker-backgrounds',
+        'location-documents',
+    ];
+
     public function __construct(
         private CollectTenantPurgeCountsAction $collectCounts,
         private CreateTenantPurgeBackupAction $createBackup,
@@ -88,6 +108,7 @@ final class ExecuteTenantPurgeAction
 
         $this->deleteMediaFiles($tenant);
         $this->deleteSetNullTenantRows((int) $tenant->id);
+        $this->deleteUserAccessRows((int) $tenant->id);
 
         $tenantName = $tenant->name;
 
@@ -113,8 +134,8 @@ final class ExecuteTenantPurgeAction
                 adminName: (string) $admin->name,
                 counts: array_filter(
                     $counts,
-                    fn ($key) => ! str_starts_with((string) $key, '_'),
-                    ARRAY_FILTER_USE_KEY,
+                    fn ($count, $key) => ! str_starts_with((string) $key, '_') && $count > 0,
+                    ARRAY_FILTER_USE_BOTH,
                 ),
                 backupExpiresAt: $backupExpiresAt,
                 adminLocale: $admin->locale ?: 'nl',
@@ -218,77 +239,63 @@ final class ExecuteTenantPurgeAction
     private function deleteMediaFiles(Tenant $tenant): void
     {
         $disk = Storage::disk('public');
+        $tenantId = (int) $tenant->id;
 
-        foreach (['logo_path', 'portal_background_path'] as $field) {
-            $path = $tenant->{$field} ?? null;
-            if (is_string($path) && $path !== '') {
-                $disk->delete($path);
-            }
-        }
-
-        IssuePhoto::query()
-            ->withoutGlobalScopes()
-            ->where('tenant_id', $tenant->id)
-            ->orderBy('id')
-            ->chunkById(100, function ($photos) use ($disk): void {
-                foreach ($photos as $photo) {
-                    if (is_string($photo->path) && $photo->path !== '') {
-                        $disk->delete($photo->path);
-                    }
-                }
-            });
-
-        UnitCheckPhoto::query()
-            ->withoutGlobalScopes()
-            ->where('tenant_id', $tenant->id)
-            ->orderBy('id')
-            ->chunkById(100, function ($photos) use ($disk): void {
-                foreach ($photos as $photo) {
-                    if (is_string($photo->path) && $photo->path !== '') {
-                        $disk->delete($photo->path);
-                    }
-                }
-            });
-
-        Document::query()
-            ->withoutGlobalScopes()
-            ->where('tenant_id', $tenant->id)
-            ->orderBy('id')
-            ->chunkById(100, function ($docs) use ($disk): void {
-                foreach ($docs as $doc) {
-                    $path = $doc->file_path ?? null;
-                    if (is_string($path) && $path !== '') {
-                        $disk->delete($path);
-                    }
-                }
-            });
-
-        Worker::query()
-            ->withoutGlobalScopes()
-            ->where('tenant_id', $tenant->id)
-            ->orderBy('id')
-            ->chunkById(100, function ($workers) use ($disk): void {
-                foreach ($workers as $worker) {
-                    $path = $worker->photo_path ?? null;
-                    if (is_string($path) && $path !== '') {
-                        $disk->delete($path);
-                    }
-                }
-            });
-
-        if (class_exists(QrLinkPhoto::class)) {
-            QrLinkPhoto::query()
-                ->withoutGlobalScopes()
-                ->where('tenant_id', $tenant->id)
+        foreach (self::MEDIA_PATH_COLUMNS as $table => $columns) {
+            DB::table($table)
+                ->where($table === 'tenants' ? 'id' : 'tenant_id', $tenantId)
+                ->select(array_merge(['id'], $columns))
                 ->orderBy('id')
-                ->chunkById(100, function ($photos) use ($disk): void {
-                    foreach ($photos as $photo) {
-                        if (is_string($photo->path) && $photo->path !== '') {
-                            $disk->delete($photo->path);
+                ->chunkById(100, function ($rows) use ($disk, $columns): void {
+                    foreach ($rows as $row) {
+                        foreach ($columns as $column) {
+                            foreach ($this->storedPaths($column, $row->{$column}) as $path) {
+                                $disk->delete($path);
+                            }
                         }
                     }
                 });
         }
+
+        foreach (self::MEDIA_TENANT_DIRECTORIES as $directory) {
+            $disk->deleteDirectory($directory.'/'.$tenantId);
+        }
+    }
+
+    /**
+     * @return list<string>
+     */
+    private function storedPaths(string $column, mixed $value): array
+    {
+        if (str_ends_with($column, '_paths') && is_string($value)) {
+            $value = json_decode($value, true);
+        }
+
+        $paths = is_array($value) ? $value : [$value];
+
+        return array_values(array_filter($paths, fn ($path) => is_string($path) && $path !== ''));
+    }
+
+    /**
+     * API-tokens, sessies en e-mailtokens van de gebruikers hebben geen FK naar users.
+     */
+    private function deleteUserAccessRows(int $tenantId): void
+    {
+        $users = DB::table('users')->where('tenant_id', $tenantId)->get(['id', 'email']);
+        if ($users->isEmpty()) {
+            return;
+        }
+
+        $userIds = $users->pluck('id')->all();
+        $emails = $users->pluck('email')->filter()->map(fn ($email) => mb_strtolower(trim((string) $email)))->unique()->values()->all();
+
+        DB::table('personal_access_tokens')
+            ->where('tokenable_type', (new User)->getMorphClass())
+            ->whereIn('tokenable_id', $userIds)
+            ->delete();
+        DB::table('sessions')->whereIn('user_id', $userIds)->delete();
+        DB::table('password_reset_tokens')->whereIn('email', $users->pluck('email')->all())->delete();
+        DB::table('email_action_tokens')->whereIn('email', $emails)->delete();
     }
 
     private function deleteSetNullTenantRows(int $tenantId): void

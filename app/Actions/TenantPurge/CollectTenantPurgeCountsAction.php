@@ -38,6 +38,39 @@ use Illuminate\Support\Facades\DB;
  */
 final class CollectTenantPurgeCountsAction
 {
+    /** Tenant-tabellen zonder eigen telling hieronder; sleutel = tabelnaam. */
+    public const TABLE_COUNTS = [
+        'clock_display_claims',
+        'clock_display_images',
+        'clock_point_qr_tokens',
+        'contact_messages',
+        'customers',
+        'field_sync_receipts',
+        'help_chat_unanswered_questions',
+        'presence_submissions',
+        'qr_link_photos',
+        'qr_report_email_holds',
+        'qr_scans',
+        'roster_restore_points',
+        'tenant_holiday_agreements',
+        'tenant_qr_sticker_sheet_settings',
+        'unit_bulk_batches',
+        'unit_check_lists',
+        'unit_checks',
+        'unit_gps_reports',
+        'unit_measure_fields',
+        'unit_measurements',
+        'unit_portal_visits',
+        'webhook_deliveries',
+        'work_breaks',
+        'work_shift_task_logs',
+        'work_visits',
+        'worker_devices',
+        'worker_leave_entitlements',
+        'worker_passkey_credentials',
+        'worker_weekday_minutes',
+    ];
+
     /**
      * @return array<string, int>
      */
@@ -45,7 +78,7 @@ final class CollectTenantPurgeCountsAction
     {
         $id = (int) $tenant->id;
 
-        return [
+        $counts = [
             'users' => User::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'locations' => Location::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'units' => Unit::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
@@ -76,5 +109,11 @@ final class CollectTenantPurgeCountsAction
             'iot_rules' => IotRule::query()->withoutGlobalScopes()->where('tenant_id', $id)->count(),
             'audit_logs' => (int) DB::table('audit_logs')->where('tenant_id', $id)->count(),
         ];
+
+        foreach (self::TABLE_COUNTS as $table) {
+            $counts[$table] = (int) DB::table($table)->where('tenant_id', $id)->count();
+        }
+
+        return $counts;
     }
 }

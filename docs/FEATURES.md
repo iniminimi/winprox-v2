@@ -1594,6 +1594,14 @@ Self-service wispad voor tenant-admins (niet medewerkers), onder Abonnement.
 4. Audit blijft op platformniveau bewaard (`tenant_purge.unused_deleted`, zonder `tenant_id`).
 5. Collega's die een beheerder zelf aanmaakt gelden meteen als geverifieerd (geen zelfregistratie).
 
+**Wat wordt gewist (alle sporen):** alle tenant-rijen (cascade + expliciet voor `audit_logs`,
+`contact_messages`, `tenant_purge_requests`), alle bestanden op de publieke disk
+(`ExecuteTenantPurgeAction::MEDIA_PATH_COLUMNS` + de tenant-mappen) en de API-tokens, sessies,
+reset- en e-mailtokens van de tenant-gebruikers. De afmeldlijst (`email_unsubscribes`) blijft bewust
+staan. Nieuwe upload-kolom of tenant-tabel: toevoegen aan `MEDIA_PATH_COLUMNS` en
+`CollectTenantPurgeCountsAction` (`TenantPurgeTest` faalt anders). De resultaatmail toont alleen
+aantallen > 0.
+
 Config: `config/tenant_purge.php`. Actions onder `app/Actions/TenantPurge/`.
 
 ### 7.5 NIET overnemen
