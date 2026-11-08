@@ -134,9 +134,6 @@
                                 <tr>
                                     <th scope="row">
                                         {{ $printNames[$worker['id']] ?? $worker['name'] }}
-                                        @if (($worker['leave_balance']['short'] ?? '') !== '')
-                                            <br><span class="wp-muted">{{ $worker['leave_balance']['short'] }}</span>
-                                        @endif
                                     </th>
                                     @foreach ($snapshot->dates as $date)
                                         @php
