@@ -1808,7 +1808,7 @@
                 },
                 {
                     "label": "Colores y selección",
-                    "text": "Los festivos tiñen la columna de fecha de <strong>azul</strong> y los días de sustitución de <strong>verde</strong> — la información del encabezado indica el festivo y su efecto. Una <strong>celda gris</strong> es un día libre fijo de ese operario (0 minutos en su patrón semanal); la celda sigue editable. Fin de semana, hoy y días bloqueados tienen su propio tono. Solo se pueden seleccionar las celdas de fecha — nombres y columnas de cifras no."
+                    "text": "Los festivos tiñen la columna de fecha de <strong>azul</strong> y los días de sustitución de <strong>verde</strong> — la información del encabezado indica el festivo y su efecto. En un festivo la ocupación mínima no se muestra en rojo; en un día de sustitución sí, si falta gente. Una <strong>celda gris</strong> es un día libre fijo de ese operario (0 minutos en su patrón semanal); la celda sigue editable. Fin de semana, hoy y días bloqueados tienen su propio tono. Solo se pueden seleccionar las celdas de fecha — nombres y columnas de cifras no."
                 },
                 {
                     "label": "Códigos y horas libres",
@@ -1895,7 +1895,7 @@
                 },
                 {
                     "label": "Indicación",
-                    "text": "El horario muestra los turnos que faltan (p. ej. <strong>V2 falta</strong>), agrupados por lugar y limitados a días futuros visibles. Es una <strong>indicación</strong> — nunca bloquea guardar ni publicar."
+                    "text": "El horario muestra los turnos que faltan (p. ej. <strong>V2 falta</strong>), agrupados por lugar y limitados a días futuros visibles. Un festivo no cuenta; un día de sustitución sí. Es una <strong>indicación</strong> — nunca bloquea guardar ni publicar."
                 },
                 {
                     "label": "Tipos obsoletos",

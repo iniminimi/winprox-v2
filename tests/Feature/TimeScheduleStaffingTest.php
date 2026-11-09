@@ -3,6 +3,7 @@
 use App\Actions\Time\ListLocationStaffingShortfallsAction;
 use App\Enums\PlannedShiftStatus;
 use App\Enums\ShiftTypeKind;
+use App\Models\BelgianPublicHoliday;
 use App\Livewire\Time\StaffingIndex;
 use App\Livewire\Time\RosterIndex;
 use App\Models\InternalTeam;
@@ -84,6 +85,36 @@ it('toont een zichtbare dag zonder werkdiensten als 0/N tekort', function () {
     expect($result['total'])->toBe(1)
         ->and($result['locations'][0]['items'][0])
         ->toMatchArray(['code' => 'V2', 'actual' => 0, 'required' => 1]);
+});
+
+it('telt een feestdag niet als tekort en een gewone dag wel', function () {
+    [$tenant] = staffingTenant();
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $type = staffingType($tenant, 'V2');
+    $location->update(['min_staffing' => [(string) $type->id => 1]]);
+
+    $holidayDates = BelgianPublicHoliday::query()
+        ->whereDate('date', '>=', Carbon::today()->toDateString())
+        ->orderBy('date')
+        ->pluck('date')
+        ->map(fn ($date) => Carbon::parse($date)->toDateString())
+        ->all();
+    $holidayDate = $holidayDates[0] ?? null;
+    expect($holidayDate)->not->toBeNull();
+    $workday = Carbon::today();
+    while (in_array($workday->toDateString(), $holidayDates, true)) {
+        $workday->addDay();
+    }
+    $workday = $workday->toDateString();
+
+    $result = app(ListLocationStaffingShortfallsAction::class)->handle(
+        (int) $tenant->id,
+        [$workday, $holidayDate],
+    );
+
+    expect($result['by_date'])->not->toHaveKey($holidayDate)
+        ->and($result['by_date'])->toHaveKey($workday)
+        ->and($result['total'])->toBe(1);
 });
 
 it('negeert verleden en niet-zichtbare dagen', function () {

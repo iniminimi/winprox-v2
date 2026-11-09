@@ -1808,7 +1808,7 @@
                 },
                 {
                     "label": "Farben und Auswahl",
-                    "text": "Feiertage färben die Datumsspalte <strong>blau</strong>, Ersatztage <strong>grün</strong> — der Tooltip der Spaltenüberschrift nennt Feiertag und Wirkung. Eine <strong>graue Zelle</strong> ist ein fester freier Tag dieses Ausführenden (0 Minuten in seinem Wochenmuster); die Zelle bleibt ausfüllbar. Wochenende, heute und gesperrte Tage haben eine eigene Färbung. Nur die Datumszellen sind auswählbar — Namen und Zahlenspalten nicht."
+                    "text": "Feiertage färben die Datumsspalte <strong>blau</strong>, Ersatztage <strong>grün</strong> — der Tooltip der Spaltenüberschrift nennt Feiertag und Wirkung. An einem Feiertag wird die Mindestbesetzung nicht rot gezeigt; an einem Ersatztag schon, wenn etwas fehlt. Eine <strong>graue Zelle</strong> ist ein fester freier Tag dieses Ausführenden (0 Minuten in seinem Wochenmuster); die Zelle bleibt ausfüllbar. Wochenende, heute und gesperrte Tage haben eine eigene Färbung. Nur die Datumszellen sind auswählbar — Namen und Zahlenspalten nicht."
                 },
                 {
                     "label": "Codes und freie Zeiten",
@@ -1895,7 +1895,7 @@
                 },
                 {
                     "label": "Hinweis",
-                    "text": "Der Stundenplan zeigt fehlende Schichten (z. B. <strong>V2 fehlt</strong>), gruppiert pro Standort und auf sichtbare zukünftige Tage begrenzt. Dies ist ein <strong>Hinweis</strong> — er blockiert Speichern oder Veröffentlichen nie."
+                    "text": "Der Stundenplan zeigt fehlende Schichten (z. B. <strong>V2 fehlt</strong>), gruppiert pro Standort und auf sichtbare zukünftige Tage begrenzt. Ein Feiertag zählt nicht; ein Ersatztag schon. Dies ist ein <strong>Hinweis</strong> — er blockiert Speichern oder Veröffentlichen nie."
                 },
                 {
                     "label": "Veraltete Typen",

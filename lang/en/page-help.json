@@ -1808,7 +1808,7 @@
                 },
                 {
                     "label": "Colours and selection",
-                    "text": "Public holidays tint the date column <strong>blue</strong>, replacement days <strong>green</strong> — the column-header tooltip says which holiday and which effect. A <strong>grey cell</strong> is a fixed day off for that worker (0 minutes in their week pattern); the cell stays editable. Weekend, today and locked days have their own tint. Only the date cells can be selected — names and figure columns cannot."
+                    "text": "Public holidays tint the date column <strong>blue</strong>, replacement days <strong>green</strong> — the column-header tooltip says which holiday and which effect. On a public holiday the minimum staffing is not shown in red; a replacement day still is when there is a shortfall. A <strong>grey cell</strong> is a fixed day off for that worker (0 minutes in their week pattern); the cell stays editable. Weekend, today and locked days have their own tint. Only the date cells can be selected — names and figure columns cannot."
                 },
                 {
                     "label": "Codes and free times",
@@ -1895,7 +1895,7 @@
                 },
                 {
                     "label": "Indication",
-                    "text": "The roster shows which shifts are missing (e.g. <strong>V2 missing</strong>), grouped per location and limited to visible future days. This is an <strong>indication</strong> — it never blocks saving or publishing."
+                    "text": "The roster shows which shifts are missing (e.g. <strong>V2 missing</strong>), grouped per location and limited to visible future days. A public holiday is not counted; a replacement day is. This is an <strong>indication</strong> — it never blocks saving or publishing."
                 },
                 {
                     "label": "Stale types",

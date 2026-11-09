@@ -3,6 +3,7 @@
 namespace App\Actions\Time;
 
 use App\Enums\ShiftTypeKind;
+use App\Models\BelgianPublicHoliday;
 use App\Models\Location;
 use App\Models\PlannedShift;
 use App\Models\ShiftType;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\DB;
  * - Telling is tenant-breed per locatie; weergave beperkt tot actor-locaties
  *   en het actieve locatiefilter.
  * - Enkel zichtbare dagen >= vandaag (weekenden enkel als getoond).
+ * - Een feestdag (kalenderdatum) telt niet mee. Een vervangingsdag wel.
  * - Enkel unieke uitvoerders tellen (split-shifts = 1), enkel werk-kind,
  *   draft + published.
  * - Effectieve locatie: planned_shifts.location_id, anders de locatie van
@@ -48,6 +50,7 @@ final class ListLocationStaffingShortfallsAction
             fn (string $date) => $date >= Carbon::today()->toDateString(),
         )));
         sort($dates);
+        $dates = array_values(array_diff($dates, $this->holidayDates($dates)));
 
         if ($dates === []) {
             return $empty;
@@ -160,6 +163,24 @@ final class ListLocationStaffingShortfallsAction
         }
 
         return ['total' => $total, 'locations' => array_values($groups), 'by_date' => $byDate];
+    }
+
+    /**
+     * @param  list<string>  $dates
+     * @return list<string>
+     */
+    private function holidayDates(array $dates): array
+    {
+        if ($dates === []) {
+            return [];
+        }
+
+        return BelgianPublicHoliday::query()
+            ->whereDate('date', '>=', $dates[0])
+            ->whereDate('date', '<=', $dates[array_key_last($dates)])
+            ->pluck('date')
+            ->map(fn ($date) => Carbon::parse($date)->toDateString())
+            ->all();
     }
 
     /**

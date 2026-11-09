@@ -1130,7 +1130,8 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   **Minimum bezetting** (`/time/staffing`, Time-balk naast Feestdagen): aantallen
   per diensttype uit de legende, gelijk voor elke dag (`locations.min_staffing` JSON
   `{shift_type_id: min}`). In het uurrooster kleurt elke dag met een tekort
-  **rood in de dagheader**; een hover-ballon op die cel toont per locatie
+  **rood in de dagheader**, behalve een feestdag (de kalenderdatum zelf; een
+  vervangingsdag telt wel); een hover-ballon op die cel toont per locatie
   `Locatie: V2 ontbreekt (0/1)`. Puur informatief: opslaan en publiceren
   worden nooit geblokkeerd. **Kopiëren naar…** kopieert de huidige invoer (ook
   onopgeslagen wijzigingen) naar een andere locatie met update-rechten en vervangt
@@ -1141,7 +1142,7 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   `ListLocationStaffingShortfallsAction` telt **tenant-breed** unieke
   uitvoerders (split-shifts = 1) per datum × locatie × actief werk-type
   (draft + published; afwezigheid nooit), enkel voor **zichtbare dagen ≥
-  vandaag**. Effectieve locatie = `planned_shifts.location_id` → locatie van
+  vandaag** die geen feestdag zijn. Effectieve locatie = `planned_shifts.location_id` → locatie van
   de geplande eenheid (`unit_id`) → vaste groep van de uitvoerder
   (`default_unit`) → exact één toegewezen locatie; zonder enige
   locatie-aanknoping telt de dienst **nergens** mee (bekende v1-beperking).

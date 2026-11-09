@@ -1816,7 +1816,7 @@
                 },
                 {
                     "label": "Couleurs et sélection",
-                    "text": "Les jours fériés colorent la colonne de date en <strong>bleu</strong>, les jours de remplacement en <strong>vert</strong> — l’infobulle de l’en-tête indique le jour férié et son effet. Une <strong>cellule grise</strong> est un jour de repos fixe de cet intervenant (0 minute dans son rythme hebdomadaire); la cellule reste modifiable. Week-end, aujourd’hui et jours verrouillés ont leur propre teinte. Seules les cellules de date sont sélectionnables — ni les noms ni les colonnes de chiffres."
+                    "text": "Les jours fériés colorent la colonne de date en <strong>bleu</strong>, les jours de remplacement en <strong>vert</strong> — l’infobulle de l’en-tête indique le jour férié et son effet. Un jour férié n’affiche pas l’effectif minimum en rouge ; un jour de remplacement le fait s’il manque du monde. Une <strong>cellule grise</strong> est un jour de repos fixe de cet intervenant (0 minute dans son rythme hebdomadaire); la cellule reste modifiable. Week-end, aujourd’hui et jours verrouillés ont leur propre teinte. Seules les cellules de date sont sélectionnables — ni les noms ni les colonnes de chiffres."
                 },
                 {
                     "label": "Codes et heures libres",
@@ -1903,7 +1903,7 @@
                 },
                 {
                     "label": "Indication",
-                    "text": "Le planning affiche les services manquants (par ex. <strong>V2 manquant</strong>), groupés par site et limités aux jours futurs visibles. C'est une <strong>indication</strong> — cela ne bloque jamais l'enregistrement ni la publication."
+                    "text": "Le planning affiche les services manquants (par ex. <strong>V2 manquant</strong>), groupés par site et limités aux jours futurs visibles. Un jour férié ne compte pas ; un jour de remplacement oui. C'est une <strong>indication</strong> — cela ne bloque jamais l'enregistrement ni la publication."
                 },
                 {
                     "label": "Types obsolètes",

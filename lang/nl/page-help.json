@@ -1808,7 +1808,7 @@
                 },
                 {
                     "label": "Kleuren en selectie",
-                    "text": "Feestdagen kleuren de datumkolom <strong>blauw</strong>, vervangingsdagen <strong>groen</strong> — de tooltip op de kolomkop zegt welke feestdag en welk effect. Een <strong>grijze cel</strong> is een vaste vrije dag van die uitvoerder (0 minuten in zijn weekpatroon); de cel blijft gewoon invulbaar. Weekend, vandaag en vergrendelde dagen hebben een eigen tint. Alleen de datumcellen kun je selecteren — namen en cijferkolommen niet."
+                    "text": "Feestdagen kleuren de datumkolom <strong>blauw</strong>, vervangingsdagen <strong>groen</strong> — de tooltip op de kolomkop zegt welke feestdag en welk effect. Op een feestdag staat de minimumbezetting niet rood; een vervangingsdag wel als er een tekort is. Een <strong>grijze cel</strong> is een vaste vrije dag van die uitvoerder (0 minuten in zijn weekpatroon); de cel blijft gewoon invulbaar. Weekend, vandaag en vergrendelde dagen hebben een eigen tint. Alleen de datumcellen kun je selecteren — namen en cijferkolommen niet."
                 },
                 {
                     "label": "Codes en vrije tijden",
@@ -1895,7 +1895,7 @@
                 },
                 {
                     "label": "Indicatie",
-                    "text": "Het uurrooster toont welke diensten ontbreken (bijvoorbeeld <strong>V2 ontbreekt</strong>), gegroepeerd per locatie en beperkt tot zichtbare toekomstige dagen. Dit is een <strong>indicatie</strong> — het blokkeert opslaan of publiceren nooit."
+                    "text": "Het uurrooster toont welke diensten ontbreken (bijvoorbeeld <strong>V2 ontbreekt</strong>), gegroepeerd per locatie en beperkt tot zichtbare toekomstige dagen. Een feestdag telt niet mee; een vervangingsdag wel. Dit is een <strong>indicatie</strong> — het blokkeert opslaan of publiceren nooit."
                 },
                 {
                     "label": "Verouderde types",

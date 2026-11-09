@@ -1808,7 +1808,7 @@
                 },
                 {
                     "label": "Colori e selezione",
-                    "text": "I festivi colorano la colonna della data di <strong>blu</strong>, i giorni sostitutivi di <strong>verde</strong> — il tooltip dell’intestazione indica la festa e il suo effetto. Una <strong>cella grigia</strong> è un giorno libero fisso di quell’esecutore (0 minuti nel suo schema settimanale); la cella resta modificabile. Weekend, oggi e giorni bloccati hanno una tinta propria. Solo le celle delle date si possono selezionare — nomi e colonne di cifre no."
+                    "text": "I festivi colorano la colonna della data di <strong>blu</strong>, i giorni sostitutivi di <strong>verde</strong> — il tooltip dell’intestazione indica la festa e il suo effetto. In un festivo la presenza minima non è rossa; in un giorno sostitutivo sì, se manca personale. Una <strong>cella grigia</strong> è un giorno libero fisso di quell’esecutore (0 minuti nel suo schema settimanale); la cella resta modificabile. Weekend, oggi e giorni bloccati hanno una tinta propria. Solo le celle delle date si possono selezionare — nomi e colonne di cifre no."
                 },
                 {
                     "label": "Codici e orari liberi",
@@ -1895,7 +1895,7 @@
                 },
                 {
                     "label": "Indicazione",
-                    "text": "Il planning mostra i turni mancanti (es. <strong>V2 manca</strong>), raggruppati per sede e limitati ai giorni futuri visibili. È una <strong>indicazione</strong> — non blocca mai salvataggio o pubblicazione."
+                    "text": "Il planning mostra i turni mancanti (es. <strong>V2 manca</strong>), raggruppati per sede e limitati ai giorni futuri visibili. Un festivo non conta; un giorno sostitutivo sì. È una <strong>indicazione</strong> — non blocca mai salvataggio o pubblicazione."
                 },
                 {
                     "label": "Tipi obsoleti",
