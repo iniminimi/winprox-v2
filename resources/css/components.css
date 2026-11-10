@@ -569,7 +569,7 @@
 [data-theme='modern'] .wp-portal .wp-page-help-dialog {
     position: relative;
     z-index: 1;
-    width: min(100%, 40rem);
+    width: min(100%, 72rem);
     margin: auto 0;
     max-height: calc(100dvh - 2rem);
     display: flex;
