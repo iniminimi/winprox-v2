@@ -142,6 +142,7 @@
             "role_title": "Ruolo",
             "clock_title": "Timbratrice",
             "clock_hint": "Serve solo in caso di telefono perso, blocco o nuova icona.",
+            "clock_hint_pin": "Serve solo se il telefono è perso o c’è un blocco. L’accesso è con PIN, non con un’icona.",
             "status_title": "Stato",
             "confirm_reset_icon": "Reimpostare icona, PIN e telefono associato? Il lavoratore sceglierà di nuovo un’icona al prossimo accesso.",
             "confirm_clear_clock_device": "Scollegare il telefono? Il lavoratore potrà poi usare un nuovo dispositivo.",

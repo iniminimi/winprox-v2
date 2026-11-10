@@ -142,6 +142,7 @@
             "role_title": "Rol",
             "clock_title": "Reloj de fichar",
             "clock_hint": "Solo hace falta si se pierde el móvil, hay bloqueo o se necesita un icono nuevo.",
+            "clock_hint_pin": "Solo hace falta si se pierde el móvil o hay un bloqueo. El acceso es con PIN, no con icono.",
             "status_title": "Estado",
             "confirm_reset_icon": "¿Restablecer icono, PIN y móvil vinculado? El trabajador elegirá un icono de nuevo en el próximo acceso.",
             "confirm_clear_clock_device": "¿Desvincular el móvil? El trabajador podrá usar un dispositivo nuevo.",

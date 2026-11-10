@@ -625,7 +625,7 @@
                 },
                 {
                     "label": "Icoon resetten",
-                    "text": "Open **Bewerken** bij de uitvoerder in Personen → Teams. Resetten wist het icoon, de pincode, eventuele passkeys en de gekoppelde gsm, zodat de uitvoerder zich opnieuw kan aanmelden. Handig bij verloren toestel, lockout of een verkeerd icoon. Teamleaders kunnen in hun portal ook iconen verwijderen van hun teamgenoten."
+                    "text": "Open **Bewerken** bij de uitvoerder in Personen → Teams. Resetten wist het icoon, de pincode, eventuele passkeys en de gekoppelde gsm, zodat de uitvoerder zich opnieuw kan aanmelden. Handig bij verloren toestel, lockout of een verkeerd icoon. Staat de pincode aan, dan staat deze knop er niet en toont de lijst geen «Geen icoon bevestigd». Teamleaders kunnen in hun portal ook iconen verwijderen van hun teamgenoten."
                 },
                 {
                     "label": "Nieuw toestel of pincode",

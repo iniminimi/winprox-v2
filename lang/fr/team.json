@@ -142,6 +142,7 @@
             "role_title": "Rôle",
             "clock_title": "Pointeuse",
             "clock_hint": "Uniquement en cas de téléphone perdu, de verrouillage ou d’une nouvelle icône.",
+            "clock_hint_pin": "Uniquement en cas de téléphone perdu ou de blocage. La connexion se fait par code PIN, pas par icône.",
             "status_title": "Statut",
             "confirm_reset_icon": "Réinitialiser l’icône, le code PIN et le téléphone lié ? L’exécutant choisira une icône à la prochaine connexion.",
             "confirm_clear_clock_device": "Dissocier le téléphone ? L’exécutant pourra ensuite utiliser un nouvel appareil.",

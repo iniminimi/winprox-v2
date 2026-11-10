@@ -745,6 +745,38 @@ it('houdt zeldzame worker-acties in de bewerk-modal, niet in de lijst', function
         ->assertSeeHtml('wire:click="setWorkerActive('.$worker->id.', false)"');
 });
 
+it('verbergt icoonstatus en icoonreset wanneer de pincode verplicht is', function () {
+    [$tenant, $admin] = tenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->claimable()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+    ]);
+
+    $pill = '<span class="wp-pill wp-pill--progress">'.e(__('team.workers.no_icon')).'</span>';
+
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->call('toggleTeam', $team->id)
+        ->assertSeeHtml($pill)
+        ->call('openEditWorker', $worker->id)
+        ->assertSeeHtml('wire:click="resetWorkerIcon('.$worker->id.')"');
+
+    $tenant->forceFill([
+        'has_time_module' => true,
+        'time_require_worker_pin' => true,
+    ])->save();
+
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->call('toggleTeam', $team->id)
+        ->assertDontSeeHtml($pill)
+        ->call('openEditWorker', $worker->id)
+        ->assertDontSeeHtml('wire:click="resetWorkerIcon('.$worker->id.')"')
+        ->assertSee(__('team.workers.modal.clock_hint_pin'), false)
+        ->assertSee(__('team.workers.modal.clock_title'), false);
+});
+
 it('ververst de teamlijst direct na terugdraaien van een worker CSV-import', function () {
     [$tenant, $admin] = tenantWithAdmin();
 

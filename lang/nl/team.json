@@ -142,6 +142,7 @@
             "role_title": "Rol",
             "clock_title": "Prikklok",
             "clock_hint": "Alleen nodig bij verloren gsm, lockout of een nieuw icoon.",
+            "clock_hint_pin": "Alleen nodig bij verloren gsm of een blokkade. Aanmelden gaat via pincode, niet via een icoon.",
             "status_title": "Status",
             "confirm_reset_icon": "Icoon, pincode en gekoppelde gsm resetten? De uitvoerder kiest bij de volgende aanmelding opnieuw een icoon.",
             "confirm_clear_clock_device": "Gekoppelde gsm loskoppelen? De uitvoerder mag daarna een nieuw toestel gebruiken.",

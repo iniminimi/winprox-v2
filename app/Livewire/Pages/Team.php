@@ -1744,6 +1744,7 @@ class Team extends Component
             'canManageTeams' => $user->can('create', InternalTeam::class),
             'canEditContent' => $user->can('manageContent', InternalTeam::class),
             'hasTimeModule' => $tenant?->hasTimeModule() ?? false,
+            'requiresWorkerPin' => $tenant?->requiresWorkerPin() ?? false,
             'timeRosterEnabled' => $tenant?->timeRosterEnabled() ?? false,
             'allowsExternalWorkers' => $tenant?->allowsExternalWorkers() ?? false,
             'workMenuIssuesTasksEnabled' => $tenant?->workMenuIssuesTasksEnabled() ?? true,

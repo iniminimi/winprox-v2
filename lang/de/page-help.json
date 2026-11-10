@@ -625,7 +625,7 @@
                 },
                 {
                     "label": "Icon zurücksetzen",
-                    "text": "Öffnen Sie **Bearbeiten** beim Ausführenden unter Personen → Teams. Zurücksetzen löscht Symbol, PIN, etwaige Passkeys und gekoppeltes Handy, damit er sich erneut anmelden kann. Nützlich bei verlorenem Gerät, Sperre oder falschem Symbol. Teamleiter können im Portal auch Icons von ihren Teammitgliedern entfernen."
+                    "text": "Öffnen Sie **Bearbeiten** beim Ausführenden unter Personen → Teams. Zurücksetzen löscht Symbol, PIN, etwaige Passkeys und gekoppeltes Handy, damit er sich erneut anmelden kann. Nützlich bei verlorenem Gerät, Sperre oder falschem Symbol. Ist die PIN Pflicht, fehlt diese Schaltfläche und die Liste zeigt kein «Kein Symbol bestätigt». Teamleiter können im Portal auch Icons von ihren Teammitgliedern entfernen."
                 },
                 {
                     "label": "Neues Gerät oder PIN",

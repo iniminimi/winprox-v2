@@ -158,7 +158,7 @@
                                             @if ($worker->is_external)
                                                 <span class="wp-pill wp-pill--progress">{{ __('team.workers.external_badge') }}</span>
                                             @endif
-                                            @unless ($worker->field_icon_slug)
+                                            @unless ($requiresWorkerPin || $worker->field_icon_slug)
                                                 <span class="wp-pill wp-pill--progress">{{ __('team.workers.no_icon') }}</span>
                                             @endunless
                                             @if ($worker->is_teamleader)
@@ -591,9 +591,11 @@
                             </div>
                             <div class="wp-modal-section">
                                 <h3 class="wp-label">{{ __('team.workers.modal.clock_title') }}</h3>
-                                <p class="wp-hint">{{ __('team.workers.modal.clock_hint') }}</p>
+                                <p class="wp-hint">{{ $requiresWorkerPin ? __('team.workers.modal.clock_hint_pin') : __('team.workers.modal.clock_hint') }}</p>
                                 <div class="wp-cluster wp-cluster--tight">
-                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="resetWorkerIcon({{ $editingWorker->id }})" wire:confirm="{{ __('team.workers.modal.confirm_reset_icon') }}">{{ __('team.workers.reset_icon') }}</button>
+                                    @unless ($requiresWorkerPin)
+                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="resetWorkerIcon({{ $editingWorker->id }})" wire:confirm="{{ __('team.workers.modal.confirm_reset_icon') }}">{{ __('team.workers.reset_icon') }}</button>
+                                    @endunless
                                     @if ($editingWorker->clock_device_id)
                                         <button type="button" class="btn btn--ghost btn--sm" wire:click="clearWorkerClockDevice({{ $editingWorker->id }})" wire:confirm="{{ __('team.workers.modal.confirm_clear_clock_device') }}">{{ __('team.workers.clear_clock_device') }}</button>
                                     @endif

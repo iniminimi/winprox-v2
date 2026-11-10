@@ -1402,6 +1402,9 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 - Per team: workers toevoegen (voor-/achternaam), **locatie-multi-select** (leeg = overal inklokken
   behalve Clock Point-filter op naam), lijst met **status-pills** + **Bewerken**; **teamleader-vlag**,
   icoon/gsm/PIN-reset, actief/inactief en verwijderen zitten in de bewerk-modal.
+  Staat pincode aan, dan toont de lijst geen «geen icoon bevestigd» (aanmelden
+  vraagt geen icoon) en staat **Icoon resetten** niet in de modal. Gsm, pincode
+  en passkey blijven apart.
 - **Optionele portretfoto** bij aanmaken/bewerken: uitsnede via Cropper.js (vierkant/rond), daarna
   client-side verkleind (max. ~400px); getoond in ronde avatar op **Time → Aanwezigheid**,
   **Uitvoerders** en **Teams** (zelfde stijl; zonder foto = initiaal; hover toont grotere preview).

@@ -625,7 +625,7 @@
                 },
                 {
                     "label": "Reset icon",
-                    "text": "Open **Edit** on the worker in People → Teams. Resetting clears the icon, PIN, any passkeys and bound phone so the worker can sign in again. Useful for a lost device, lockout, or a mistaken icon. Team leaders can also remove icons from their team members in their portal."
+                    "text": "Open **Edit** on the worker in People → Teams. Resetting clears the icon, PIN, any passkeys and bound phone so the worker can sign in again. Useful for a lost device, lockout, or a mistaken icon. When a PIN is required, this button is hidden and the list does not show “No icon confirmed”. Team leaders can also remove icons from their team members in their portal."
                 },
                 {
                     "label": "New device or PIN",

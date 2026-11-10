@@ -142,6 +142,7 @@
             "role_title": "Rolle",
             "clock_title": "Stechuhr",
             "clock_hint": "Nur nötig bei verlorenem Handy, Sperre oder einem neuen Symbol.",
+            "clock_hint_pin": "Nur nötig bei verlorenem Handy oder einer Sperre. Die Anmeldung läuft über die PIN, nicht über ein Symbol.",
             "status_title": "Status",
             "confirm_reset_icon": "Symbol, PIN und gekoppeltes Handy zurücksetzen? Der Ausführende wählt beim nächsten Anmelden erneut ein Symbol.",
             "confirm_clear_clock_device": "Handy entkoppeln? Der Ausführende darf danach ein neues Gerät nutzen.",

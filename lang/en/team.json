@@ -142,6 +142,7 @@
             "role_title": "Role",
             "clock_title": "Time clock",
             "clock_hint": "Only needed for a lost phone, lockout, or a new icon.",
+            "clock_hint_pin": "Only needed for a lost phone or a lockout. Sign-in uses a PIN, not an icon.",
             "status_title": "Status",
             "confirm_reset_icon": "Reset icon, PIN and bound phone? The worker will choose an icon again at the next sign-in.",
             "confirm_clear_clock_device": "Unbind the phone? The worker can then use a new device.",
