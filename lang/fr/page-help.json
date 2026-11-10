@@ -612,6 +612,10 @@
                     "text": "Les exécutants n’ont pas de login e-mail ; ils s’identifient via la QR Clock Point avec nom et icône (PIN ou biométrie optionnels) sur un téléphone. La liste d’équipe montre des pastilles de statut et **Modifier** — rôle, pointeuse (icône/téléphone/PIN/passkey) et statut sont dans cette fenêtre. Sites optionnels (vide = partout). Grandes listes : **Personnes → Exécutants**."
                 },
                 {
+                    "label": "Site",
+                    "text": "Choisissez un site pour n’afficher, dans chaque équipe, que les exécutants autorisés à pointer là. Les exécutants sans site, et les équipes qui peuvent pointer partout, restent visibles. Tous les sites réaffiche tout le monde. Le nombre à côté de l’équipe ne compte que ces exécutants."
+                },
+                {
                     "label": "Sites par exécutant",
                     "text": "À la modification, choisissez un ou plusieurs sites. Vide = pointer partout (défaut pour les exécutants existants). Sur Clock Point, le nom n'apparaît que sur les sites assignés, sauf si l'équipe a **Peut pointer partout**."
                 },

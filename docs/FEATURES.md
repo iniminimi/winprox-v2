@@ -1363,7 +1363,11 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 
 ### 6.2 Teams
 - Sidebar **Personen → Teams** (`/team?section=teams`): teamlijst (geen checklists).
-- Lijst: teamnaam, aantal actieve workers, actief/inactief.
+- Lijst: teamnaam, aantal actieve workers, actief/inactief. Filter **Locatie**
+  beperkt de uitvoerders per team (zelfde regel als Uitvoerders: toegewezen aan
+  die vestiging, geen vestiging, of een team dat overal mag inklokken). Het
+  aantal naast de teamnaam volgt die filter. Verwijderen van een team kijkt
+  nog naar alle uitvoerders, niet naar de gefilterde lijst.
 - Aanmaken/bewerken (naam, `sort_order`, actief, **`clocks_all_locations`** voor invallers) — **aanmaken/deactiveren = admin**; inhoud
   bewerken = admin of medewerker. Geen sectorcopy.
 - **Clock Point-QR** (Time-module, standaard aan): printbare QR → `/time/{token}` geeft een

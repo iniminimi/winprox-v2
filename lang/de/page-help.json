@@ -604,6 +604,10 @@
                     "text": "Ausführende haben kein E-Mail-Login; sie melden sich über den Clock-Point-QR mit Name und Symbol (optionale PIN oder Biometrie) auf einem Handy an. Die Teamliste zeigt Status-Pills und **Bearbeiten** — Teamleiter, Stechuhr (Symbol/Handy/PIN/Passkey) und Status stehen in diesem Dialog. Optional Standorte (leer = überall). Große Listen: **Personen → Ausführende**."
                 },
                 {
+                    "label": "Standort",
+                    "text": "Wählen Sie einen Standort, um in jedem Team nur die Ausführenden zu sehen, die dort stempeln dürfen. Ausführende ohne Standort und Teams, die überall stempeln dürfen, bleiben sichtbar. Alle Standorte zeigt wieder alle. Die Zahl beim Team zählt nur diese Ausführenden."
+                },
+                {
                     "label": "Standorte pro Ausführendem",
                     "text": "Beim Bearbeiten einen oder mehrere Standorte wählen. Leer = überall einstempeln (Standard für bestehende Ausführende). Am Clock Point sieht der Ausführende seinen Namen nur an zugewiesenen Standorten, außer das Team hat **Darf überall einstempeln**."
                 },

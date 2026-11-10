@@ -604,6 +604,10 @@
                     "text": "Workers have no email login; they sign in via the Clock Point QR with name and icon (optional PIN or biometrics) on one phone. The team list shows status pills and **Edit** — team leader, time clock (icon/phone/PIN/passkey) and status live in that modal. Optionally link sites (empty = anywhere). Large lists: **People → Workers**."
                 },
                 {
+                    "label": "Location",
+                    "text": "Pick a location to show, in each team, only the workers who may clock in there. Workers with no location, and teams that may clock in anywhere, stay visible. All locations shows everyone again. The count next to the team only includes those workers."
+                },
+                {
                     "label": "Locations per worker",
                     "text": "When editing, pick one or more locations. Empty = clock in anywhere (default for existing workers). On Clock Point the worker only sees their name at assigned locations, unless the team has **May clock in anywhere**."
                 },

@@ -604,6 +604,10 @@
                     "text": "Uitvoerders hebben geen e-mail-login; zij melden zich aan via de Clock Point-QR met naam en icoon (optioneel pincode of biometrie) op één gsm. In de teamlijst zie je statuspills en **Bewerken** — teamleader, prikklok (icoon/gsm/PIN/passkey) en status staan in die modal. Optioneel vestigingen koppelen (leeg = overal). Grote lijsten beheer je onder **Personen → Uitvoerders**."
                 },
                 {
+                    "label": "Locatie",
+                    "text": "Kies een vestiging om in elk team alleen de uitvoerders te zien die daar mogen inklokken. Uitvoerders zonder vestiging, en teams die overal mogen inklokken, blijven zichtbaar. Alle locaties toont weer iedereen. Het aantal bij het team telt alleen die uitvoerders."
+                },
+                {
                     "label": "Vestigingen per uitvoerder",
                     "text": "Bij bewerken kies je één of meer vestigingen. Leeg = overal inklokken (standaard voor bestaande uitvoerders). Op Clock Point ziet de uitvoerder zijn naam alleen op toegewezen vestigingen, tenzij het team **Mag overal inklokken** heeft."
                 },

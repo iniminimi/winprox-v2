@@ -97,10 +97,23 @@
         </div>
         <p class="wp-hint">{{ __('team.teams.hint') }}</p>
 
+        @if ($filterLocations->isNotEmpty())
+            <div class="wp-filter-cell">
+                <span class="wp-filter-inline-label">{{ __('team.workers_index.filters.label') }}</span>
+                <select class="wp-select wp-select--compact" wire:model.live="locationFilter" aria-label="{{ __('team.workers_index.filters.location') }}">
+                    <option value="">{{ __('team.workers_index.filters.all_locations') }}</option>
+                    @foreach ($filterLocations as $location)
+                        <option value="{{ $location->id }}">{{ $location->name ?: $location->address }}</option>
+                    @endforeach
+                </select>
+            </div>
+        @endif
+
         <div class="wp-list">
             @forelse ($teams as $team)
                 @php
                     $isTeamExpanded = in_array($team->id, $expandedTeamIds, true);
+                    $visibleWorkers = $this->visibleTeamWorkers($team);
                 @endphp
                 <div class="wp-stack-tight {{ $isTeamExpanded ? 'wp-team-row--expanded' : '' }}" wire:key="team-{{ $team->id }}">
                     <div class="wp-data-row {{ $isTeamExpanded ? 'wp-team-header--expanded' : '' }}">
@@ -113,7 +126,7 @@
                                 <x-wp-icon name="chevron-down" class="wp-disclosure-chevron {{ $isTeamExpanded ? 'is-open' : '' }}" />
                                 <span class="wp-data-row-title">{{ $team->localizedName() }}</span>
                             </button>
-                            <span class="wp-muted">{{ __('team.teams.worker_count', ['count' => $team->workers->where('is_active', true)->count()]) }}</span>
+                            <span class="wp-muted">{{ __('team.teams.worker_count', ['count' => $visibleWorkers->where('is_active', true)->count()]) }}</span>
                         </div>
                         <div class="wp-cluster wp-cluster--tight">
                             <span class="wp-pill wp-pill--{{ $team->is_active ? 'done' : 'closed' }}">{{ $team->is_active ? __('team.teams.active') : __('team.teams.inactive') }}</span>
@@ -143,7 +156,7 @@
                             @endif
 
                             <div class="wp-list">
-                                @forelse ($team->workers as $worker)
+                                @forelse ($visibleWorkers as $worker)
                                     <div @class(['wp-data-row', 'wp-issue-row--highlight' => $highlightWorkerId === $worker->id]) wire:key="worker-{{ $worker->id }}">
                                         <div class="wp-data-row-identity">
                                             <x-wp-worker-avatar :worker="$worker" size="sm" :tone="$worker->is_active ? 'present' : 'absent'" />
@@ -179,7 +192,7 @@
                                         </div>
                                     </div>
                                 @empty
-                                    <p class="wp-muted">{{ __('team.workers.empty') }}</p>
+                                    <p class="wp-muted">{{ $locationFilter && $team->workers->isNotEmpty() ? __('team.workers_index.empty') : __('team.workers.empty') }}</p>
                                 @endforelse
                             </div>
                         </div>

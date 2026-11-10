@@ -6,6 +6,7 @@ use App\Support\Qr\QrPrintablePageStockBackgroundCatalog;
 use App\Support\TenantPortalBackground;
 use App\Livewire\Pages\Team;
 use App\Models\InternalTeam;
+use App\Models\Location;
 use App\Models\InternalTeamTranslation;
 use App\Models\Tenant;
 use App\Models\User;
@@ -21,6 +22,47 @@ use Illuminate\Http\UploadedFile;
 use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
+
+it('beperkt de uitvoerders in een team tot de gekozen locatie', function () {
+    [$tenant, $admin] = tenantWithAdmin();
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $here = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Depot Noord']);
+    $away = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Depot Zuid']);
+    $atHere = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Nora',
+        'last_name' => 'Noord',
+    ]);
+    $atHere->locations()->sync([$here->id]);
+    $atAway = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Zora',
+        'last_name' => 'Zuid',
+    ]);
+    $atAway->locations()->sync([$away->id]);
+    Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Ada',
+        'last_name' => 'Overal',
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->assertSee(__('team.workers_index.filters.all_locations'), false)
+        ->call('toggleTeam', $team->id)
+        ->assertSee('Nora Noord')
+        ->assertSee('Zora Zuid')
+        ->assertSee('Ada Overal')
+        ->set('locationFilter', $here->id)
+        ->assertSee('Nora Noord')
+        ->assertSee('Ada Overal')
+        ->assertDontSee('Zora Zuid')
+        ->assertSee(__('team.teams.worker_count', ['count' => 2]), false)
+        ->assertDontSeeHtml('wire:click="deleteTeam('.$team->id.')"');
+});
 
 it('toont de briefing-afdrukknop op de teamspagina', function () {
     [, $admin] = tenantWithAdmin();

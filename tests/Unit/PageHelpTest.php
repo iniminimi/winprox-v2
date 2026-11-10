@@ -33,6 +33,16 @@ it('laadt paginahulp voor een bekende pagina', function (): void {
         ->and(collect($plan['actions'])->pluck('label')->all())->toContain('Stops — Route');
 });
 
+it('beschrijft de locatiefilter in de hulp van teams', function (): void {
+    app()->setLocale('nl');
+
+    $help = PageHelp::for('team.teams');
+    $action = collect($help['actions'] ?? [])->first(fn (array $item): bool => $item['label'] === 'Locatie');
+
+    expect($action)->not->toBeNull()
+        ->and($action['text'])->toContain('vestiging');
+});
+
 it('beschrijft Te controleren in de hulp van uitvoerders', function (): void {
     app()->setLocale('nl');
 

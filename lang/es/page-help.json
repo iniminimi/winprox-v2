@@ -604,6 +604,10 @@
                     "text": "Los trabajadores no tienen inicio de sesión por correo; se identifican con el QR Clock Point (nombre + icono, PIN o biometría opcionales) en un móvil. La lista del equipo muestra pastillas de estado y **Editar**: jefe de equipo, reloj (icono/móvil/PIN/passkey) y estado están en esa ventana. Sedes opcionales (vacío = en todas). Listas grandes: **Personas → Trabajadores**."
                 },
                 {
+                    "label": "Ubicación",
+                    "text": "Elija una sede para ver, en cada equipo, solo a quienes pueden fichar allí. Quienes no tienen sede, y los equipos que pueden fichar en todas partes, siguen visibles. Todas las sedes vuelve a mostrar a todos. El número junto al equipo cuenta solo a esas personas."
+                },
+                {
                     "label": "Sedes por ejecutor",
                     "text": "Al editar, elija una o más sedes. Vacío = fichar en cualquier sitio (predeterminado para ejecutores existentes). En Clock Point el ejecutor solo ve su nombre en sedes asignadas, salvo que el equipo tenga **Puede fichar en cualquier sede**."
                 },

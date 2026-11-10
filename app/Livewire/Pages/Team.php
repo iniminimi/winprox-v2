@@ -110,6 +110,9 @@ class Team extends Component
     #[Url(as: 'q')]
     public string $search = '';
 
+    #[Url(as: 'location')]
+    public ?int $locationFilter = null;
+
     #[Url(as: 'worker')]
     public ?int $highlightWorkerId = null;
 
@@ -1658,6 +1661,34 @@ class Team extends Component
         }
     }
 
+    /**
+     * Zelfde regel als Uitvoerders: toegewezen aan de locatie, geen vestiging
+     * (overal), of een team dat overal mag inklokken.
+     */
+    public function visibleTeamWorkers(InternalTeam $team): \Illuminate\Support\Collection
+    {
+        $workers = $team->workers;
+        $locationId = $this->locationFilter;
+        if ($locationId === null) {
+            return $workers;
+        }
+
+        return $workers
+            ->filter(function (Worker $worker) use ($team, $locationId): bool {
+                if ($team->clocks_all_locations) {
+                    return true;
+                }
+                if ($worker->locations->isEmpty()) {
+                    return true;
+                }
+
+                return $worker->locations->contains(
+                    fn (Location $location): bool => (int) $location->id === $locationId,
+                );
+            })
+            ->values();
+    }
+
     public function render()
     {
         $user = auth()->user();
@@ -1683,7 +1714,7 @@ class Team extends Component
             ? collect()
             : InternalTeam::with([
                 'translations',
-                'workers' => fn ($q) => $q->orderBy('first_name')->orderBy('last_name'),
+                'workers' => fn ($q) => $q->with('locations')->orderBy('first_name')->orderBy('last_name'),
             ])
                 ->when(trim($this->search) !== '', function ($query) {
                     $term = '%'.trim($this->search).'%';
@@ -1726,6 +1757,15 @@ class Team extends Component
             }
         }
 
+        $locationQuery = Location::query()->orderBy('name');
+        $scopeLocationIds = $user->accessibleLocationIds();
+        if ($scopeLocationIds !== null) {
+            $locationQuery->whereIn('id', $scopeLocationIds);
+        }
+        $filterLocations = $isBackoffice
+            ? collect()
+            : $locationQuery->get(['id', 'name', 'address']);
+
         $tenantId = Tenancy::id();
         $tenant = $tenantId !== null ? Tenant::query()->find($tenantId) : null;
         $workerImportBatches = $isBackoffice
@@ -1754,6 +1794,7 @@ class Team extends Component
             'roles' => User::ROLES,
             'categories' => $isBackoffice ? collect() : $categories,
             'teamTranslationLocales' => $teamTranslationLocales,
+            'filterLocations' => $filterLocations,
             'allLocations' => Location::query()->orderBy('name')->get(['id', 'name', 'address']),
             'workerDefaultUnits' => $this->showWorkerModal ? $this->availableWorkerDefaultUnits() : collect(),
             'workerModalTeams' => $this->showWorkerModal

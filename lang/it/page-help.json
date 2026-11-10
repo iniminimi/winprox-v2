@@ -604,6 +604,10 @@
                     "text": "I lavoratori non hanno login e-mail; accedono con il QR Clock Point (nome + icona, PIN o biometria opzionali) su un telefono. L’elenco del team mostra pillole di stato e **Modifica**: caposquadra, timbratrice (icona/telefono/PIN/passkey) e stato sono in quella finestra. Sedi opzionali (vuoto = ovunque). Elenchi grandi: **Persone → Lavoratori**."
                 },
                 {
+                    "label": "Sede",
+                    "text": "Scegli una sede per vedere, in ogni team, solo chi può timbrare lì. Chi non ha una sede, e i team che possono timbrare ovunque, restano visibili. Tutte le sedi mostra di nuovo tutti. Il numero accanto al team conta solo queste persone."
+                },
+                {
                     "label": "Sedi per esecutore",
                     "text": "In modifica, scegli una o più sedi. Vuoto = timbrare ovunque (default per esecutori esistenti). Su Clock Point il nome appare solo sulle sedi assegnate, salvo che il team abbia **Può timbrare ovunque**."
                 },
