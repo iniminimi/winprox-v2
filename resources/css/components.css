@@ -589,6 +589,14 @@
     border-bottom: 1px solid var(--wp-border);
 }
 
+.wp-page-help-dialog-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
 .wp-page-help-dialog-title {
     margin: 0;
     font-size: 1.125rem;
@@ -596,6 +604,7 @@
     color: var(--wp-text-heading);
 }
 
+.wp-page-help-print,
 .wp-page-help-close {
     display: inline-flex;
     align-items: center;
@@ -612,9 +621,56 @@
     cursor: pointer;
 }
 
+.wp-page-help-print:hover,
 .wp-page-help-close:hover {
     background-color: var(--wp-surface-muted);
     color: var(--wp-text-heading);
+}
+
+.wp-page-help-print {
+    flex-shrink: 0;
+}
+
+@media print {
+    html.wp-printing-page-help body > *:not(.wp-page-help-modal) {
+        display: none !important;
+    }
+
+    html.wp-printing-page-help .wp-page-help-modal {
+        position: static;
+        inset: auto;
+        overflow: visible;
+        padding: 0;
+        background: transparent;
+    }
+
+    html.wp-printing-page-help .wp-page-help-backdrop,
+    html.wp-printing-page-help .wp-page-help-print,
+    html.wp-printing-page-help .wp-page-help-close,
+    html.wp-printing-page-help .wp-page-help-dialog-foot {
+        display: none !important;
+    }
+
+    html.wp-printing-page-help .wp-page-help-dialog,
+    html.wp-printing-page-help [data-theme='modern'] .wp-page-help-dialog,
+    html.wp-printing-page-help [data-theme='modern'] .wp-portal .wp-page-help-dialog {
+        position: static;
+        width: auto;
+        max-width: 100%;
+        max-height: none;
+        margin: 0;
+        overflow: visible;
+        box-shadow: none;
+    }
+
+    html.wp-printing-page-help .wp-page-help-dialog-body {
+        overflow: visible;
+    }
+
+    html.wp-printing-page-help .wp-page-help-item {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
 }
 
 .wp-page-help-dialog-body {

@@ -2,6 +2,7 @@
     "button_label": "Aide page",
     "modal": {
         "close": "Fermer",
+        "print": "Imprimer",
         "actions_heading": "Actions",
         "statuses_heading": "Statuts"
     },

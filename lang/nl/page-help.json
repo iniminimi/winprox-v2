@@ -2,6 +2,7 @@
     "button_label": "Hulp bij deze pagina",
     "modal": {
         "close": "Sluiten",
+        "print": "Afdrukken",
         "actions_heading": "Acties",
         "statuses_heading": "Statussen"
     },

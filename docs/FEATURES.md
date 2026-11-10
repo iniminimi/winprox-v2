@@ -1629,6 +1629,7 @@ battery-PNG-widget als losse kaart (de vijf PNG's zitten in de compacte capsule)
 `HelpChatKnowledgeBaseEntry`, `HelpChatUnansweredQuestion`.
 
 ### 8.1 FAQ-pagina
+- De ?-popup (paginahulp) heeft rechts van de titel een printicoon. Afdrukken toont alleen die hulp.
 - Accordeon met FAQ-items per **slug** (geen DB-categoriemodel nodig). Facility-specifieke items
   (bv. interne teams, opvolging, **microsoft_login** voor desktop SSO) **herschrijven**
   (geen contractor-flow).

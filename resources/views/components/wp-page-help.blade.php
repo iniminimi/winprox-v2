@@ -43,7 +43,18 @@
                 aria-labelledby="wp-page-help-title-{{ $page }}"
             >
                 <div class="wp-page-help-dialog-head">
-                    <h2 id="wp-page-help-title-{{ $page }}" class="wp-page-help-dialog-title">{{ $help['title'] }}</h2>
+                    <div class="wp-page-help-dialog-heading">
+                        <h2 id="wp-page-help-title-{{ $page }}" class="wp-page-help-dialog-title">{{ $help['title'] }}</h2>
+                        <button
+                            type="button"
+                            class="wp-page-help-print"
+                            aria-label="{{ __('page-help.modal.print') }}"
+                            title="{{ __('page-help.modal.print') }}"
+                            @click="document.documentElement.classList.add('wp-printing-page-help'); window.addEventListener('afterprint', () => document.documentElement.classList.remove('wp-printing-page-help'), { once: true }); window.print()"
+                        >
+                            <x-wp-icon name="printer" />
+                        </button>
+                    </div>
                     <button type="button" class="wp-page-help-close" @click="open = false" aria-label="{{ __('page-help.modal.close') }}">×</button>
                 </div>
 

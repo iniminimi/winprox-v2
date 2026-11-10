@@ -2,6 +2,7 @@
     "button_label": "Aiuto pagina",
     "modal": {
         "close": "Chiudi",
+        "print": "Stampa",
         "actions_heading": "Azioni",
         "statuses_heading": "Stati"
     },

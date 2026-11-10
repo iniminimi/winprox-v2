@@ -86,6 +86,8 @@ it('toont de briefing-afdrukknop op de teamspagina', function () {
     $this->actingAs($admin)
         ->get(route('team.index', ['section' => 'teams']))
         ->assertOk()
+        ->assertSee('wp-page-help-print', false)
+        ->assertSee(__('page-help.modal.print'), false)
         ->assertSee(__('team.briefing'), false)
         ->assertSee(route('briefing.print'), false)
         ->assertDontSee(__('team.colleagues.title'), false);
