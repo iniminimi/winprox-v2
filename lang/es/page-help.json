@@ -625,7 +625,7 @@
                 },
                 {
                     "label": "Restablecer icono",
-                    "text": "Abra **Editar** en el trabajador en Personas → Equipos. Restablecer borra el icono, el PIN, las claves de acceso y el móvil vinculado para que pueda identificarse de nuevo. Útil si se pierde el dispositivo, hay bloqueo o el icono es incorrecto. Si el PIN es obligatorio, este botón no aparece y la lista no muestra «Sin icono confirmado». Los jefes de equipo también pueden eliminar iconos de sus compañeros en su portal."
+                    "text": "Abra **Editar** en el trabajador en Personas → Equipos. Restablecer borra el icono, el PIN, las claves de acceso y el móvil vinculado para que pueda identificarse de nuevo. Útil si se pierde el dispositivo, hay bloqueo o el icono es incorrecto. Si el PIN es obligatorio, este botón no aparece, la lista no muestra «Sin icono confirmado», y el bloque Reloj de fichar permanece oculto hasta que haya una acción. Los jefes de equipo también pueden eliminar iconos de sus compañeros en su portal."
                 },
                 {
                     "label": "Dispositivo nuevo o PIN",

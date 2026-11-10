@@ -589,24 +589,32 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="wp-modal-section">
-                                <h3 class="wp-label">{{ __('team.workers.modal.clock_title') }}</h3>
-                                <p class="wp-hint">{{ $requiresWorkerPin ? __('team.workers.modal.clock_hint_pin') : __('team.workers.modal.clock_hint') }}</p>
-                                <div class="wp-cluster wp-cluster--tight">
-                                    @unless ($requiresWorkerPin)
-                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="resetWorkerIcon({{ $editingWorker->id }})" wire:confirm="{{ __('team.workers.modal.confirm_reset_icon') }}">{{ __('team.workers.reset_icon') }}</button>
-                                    @endunless
-                                    @if ($editingWorker->clock_device_id)
-                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="clearWorkerClockDevice({{ $editingWorker->id }})" wire:confirm="{{ __('team.workers.modal.confirm_clear_clock_device') }}">{{ __('team.workers.clear_clock_device') }}</button>
-                                    @endif
-                                    @if ($editingWorker->hasClockPin())
-                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="clearWorkerClockPin({{ $editingWorker->id }})" wire:confirm="{{ __('team.workers.modal.confirm_clear_clock_pin') }}">{{ __('team.workers.clear_clock_pin') }}</button>
-                                    @endif
-                                    @if ($editingWorker->passkeyCredentials()->exists())
-                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="clearWorkerPasskeys({{ $editingWorker->id }})" wire:confirm="{{ __('team.workers.modal.confirm_clear_worker_passkeys') }}">{{ __('team.workers.clear_worker_passkeys') }}</button>
-                                    @endif
+                            @php
+                                $canResetWorkerIcon = ! $requiresWorkerPin;
+                                $canClearWorkerDevice = $editingWorker->clock_device_id !== null;
+                                $canClearWorkerPin = $editingWorker->hasClockPin();
+                                $canClearWorkerPasskeys = $editingWorker->passkeyCredentials()->exists();
+                            @endphp
+                            @if ($canResetWorkerIcon || $canClearWorkerDevice || $canClearWorkerPin || $canClearWorkerPasskeys)
+                                <div class="wp-modal-section">
+                                    <h3 class="wp-label">{{ __('team.workers.modal.clock_title') }}</h3>
+                                    <p class="wp-hint">{{ $requiresWorkerPin ? __('team.workers.modal.clock_hint_pin') : __('team.workers.modal.clock_hint') }}</p>
+                                    <div class="wp-cluster wp-cluster--tight">
+                                        @if ($canResetWorkerIcon)
+                                            <button type="button" class="btn btn--ghost btn--sm" wire:click="resetWorkerIcon({{ $editingWorker->id }})" wire:confirm="{{ __('team.workers.modal.confirm_reset_icon') }}">{{ __('team.workers.reset_icon') }}</button>
+                                        @endif
+                                        @if ($canClearWorkerDevice)
+                                            <button type="button" class="btn btn--ghost btn--sm" wire:click="clearWorkerClockDevice({{ $editingWorker->id }})" wire:confirm="{{ __('team.workers.modal.confirm_clear_clock_device') }}">{{ __('team.workers.clear_clock_device') }}</button>
+                                        @endif
+                                        @if ($canClearWorkerPin)
+                                            <button type="button" class="btn btn--ghost btn--sm" wire:click="clearWorkerClockPin({{ $editingWorker->id }})" wire:confirm="{{ __('team.workers.modal.confirm_clear_clock_pin') }}">{{ __('team.workers.clear_clock_pin') }}</button>
+                                        @endif
+                                        @if ($canClearWorkerPasskeys)
+                                            <button type="button" class="btn btn--ghost btn--sm" wire:click="clearWorkerPasskeys({{ $editingWorker->id }})" wire:confirm="{{ __('team.workers.modal.confirm_clear_worker_passkeys') }}">{{ __('team.workers.clear_worker_passkeys') }}</button>
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
                             <div class="wp-modal-section">
                                 <h3 class="wp-label">{{ __('team.workers.modal.status_title') }}</h3>
                                 <div class="wp-cluster wp-cluster--tight">

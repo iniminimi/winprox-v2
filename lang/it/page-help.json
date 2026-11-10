@@ -625,7 +625,7 @@
                 },
                 {
                     "label": "Reimposta icona",
-                    "text": "Apri **Modifica** sul lavoratore in Persone → Team. Il reset cancella icona, PIN, eventuali passkey e telefono associato, così può accedere di nuovo. Utile in caso di dispositivo perso, blocco o icona sbagliata. Se il PIN è obbligatorio, questo pulsante non compare e l’elenco non mostra «Nessuna icona confermata». I capisquadra possono anche rimuovere icone dai membri del team nel proprio portale."
+                    "text": "Apri **Modifica** sul lavoratore in Persone → Team. Il reset cancella icona, PIN, eventuali passkey e telefono associato, così può accedere di nuovo. Utile in caso di dispositivo perso, blocco o icona sbagliata. Se il PIN è obbligatorio, questo pulsante non compare, l’elenco non mostra «Nessuna icona confermata», e il blocco Timbratrice resta nascosto finché non c’è un’azione. I capisquadra possono anche rimuovere icone dai membri del team nel proprio portale."
                 },
                 {
                     "label": "Nuovo dispositivo o PIN",

@@ -633,7 +633,7 @@
                 },
                 {
                     "label": "Réinitialiser l'icône",
-                    "text": "Ouvrez **Modifier** sur l’exécutant dans Personnes → Équipes. La réinitialisation efface l’icône, le code PIN, les clés d’accès éventuelles et le téléphone lié, pour qu’il puisse se reconnecter. Utile en cas d’appareil perdu, de verrouillage ou d’icône erronée. Si le code PIN est obligatoire, ce bouton n’apparaît pas et la liste n’affiche pas « Aucune icône confirmée ». Les chefs d’équipe peuvent aussi supprimer des icônes de leurs coéquipiers dans leur portail."
+                    "text": "Ouvrez **Modifier** sur l’exécutant dans Personnes → Équipes. La réinitialisation efface l’icône, le code PIN, les clés d’accès éventuelles et le téléphone lié, pour qu’il puisse se reconnecter. Utile en cas d’appareil perdu, de verrouillage ou d’icône erronée. Si le code PIN est obligatoire, ce bouton n’apparaît pas, la liste n’affiche pas « Aucune icône confirmée », et le bloc Pointeuse reste masqué tant qu’il n’y a pas d’action. Les chefs d’équipe peuvent aussi supprimer des icônes de leurs coéquipiers dans leur portail."
                 },
                 {
                     "label": "Nouvel appareil ou code PIN",

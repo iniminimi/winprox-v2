@@ -773,8 +773,20 @@ it('verbergt icoonstatus en icoonreset wanneer de pincode verplicht is', functio
         ->assertDontSeeHtml($pill)
         ->call('openEditWorker', $worker->id)
         ->assertDontSeeHtml('wire:click="resetWorkerIcon('.$worker->id.')"')
-        ->assertSee(__('team.workers.modal.clock_hint_pin'), false)
-        ->assertSee(__('team.workers.modal.clock_title'), false);
+        ->assertDontSee(__('team.workers.modal.clock_hint_pin'), false);
+
+    $device = WorkerDevice::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+    ]);
+    $worker->forceFill(['clock_device_id' => $device->id])->save();
+
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->call('openEditWorker', $worker->id)
+        ->assertDontSeeHtml('wire:click="resetWorkerIcon('.$worker->id.')"')
+        ->assertSeeHtml('wire:click="clearWorkerClockDevice('.$worker->id.')"')
+        ->assertSee(__('team.workers.modal.clock_hint_pin'), false);
 });
 
 it('ververst de teamlijst direct na terugdraaien van een worker CSV-import', function () {
