@@ -8,7 +8,9 @@
                 icon="persons"
                 :title="$this->isBackofficeSection() ? __('team.backoffice.title') : __('team.teams_page.title')"
                 :help-page="$this->isBackofficeSection() ? 'team.backoffice' : 'team.teams'"
-                :subtitle="$this->isBackofficeSection() ? __('team.backoffice.subtitle') : __('team.teams_page.subtitle')"
+                :subtitle="$this->isBackofficeSection()
+                    ? __('team.backoffice.subtitle')
+                    : ($teams->isEmpty() ? __('team.teams_page.subtitle') : __('team.teams_page.subtitle_active'))"
             />
         </div>
         @unless ($this->isBackofficeSection() || $isCheckmate)

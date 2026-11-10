@@ -5,7 +5,8 @@
     },
     "teams_page": {
         "title": "Teams",
-        "subtitle": "Eén team is genoeg om te starten. Voeg uitvoerders toe."
+        "subtitle": "Eén team is genoeg om te starten. Voeg uitvoerders toe.",
+        "subtitle_active": "Beheer hier de teams binnen je organisatie en voeg uitvoerders toe."
     },
     "nav": {
         "teams": "Teams"

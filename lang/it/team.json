@@ -5,7 +5,8 @@
     },
     "teams_page": {
         "title": "Teams",
-        "subtitle": "Un team basta per iniziare. Aggiunga esecutori."
+        "subtitle": "Un team basta per iniziare. Aggiunga esecutori.",
+        "subtitle_active": "Gestisca qui i team della sua organizzazione e aggiunga esecutori."
     },
     "nav": {
         "teams": "Teams"

@@ -1363,6 +1363,8 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 
 ### 6.2 Teams
 - Sidebar **Personen → Teams** (`/team?section=teams`): teamlijst (geen checklists).
+- Onder de titel staat «Eén team is genoeg om te starten…» zolang er geen team is.
+  Zodra er een team is: «Beheer hier de teams binnen je organisatie en voeg uitvoerders toe».
 - Lijst: teamnaam, aantal actieve workers, actief/inactief. Filter **Locatie**
   beperkt de uitvoerders per team (zelfde regel als Uitvoerders: toegewezen aan
   die vestiging, geen vestiging, of een team dat overal mag inklokken). Het

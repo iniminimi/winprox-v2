@@ -5,7 +5,8 @@
     },
     "teams_page": {
         "title": "Équipes",
-        "subtitle": "Une équipe suffit pour démarrer. Ajoutez des exécutants."
+        "subtitle": "Une équipe suffit pour démarrer. Ajoutez des exécutants.",
+        "subtitle_active": "Gérez ici les équipes de votre organisation et ajoutez des exécutants."
     },
     "nav": {
         "teams": "Teams"

@@ -64,6 +64,22 @@ it('beperkt de uitvoerders in een team tot de gekozen locatie', function () {
         ->assertDontSeeHtml('wire:click="deleteTeam('.$team->id.')"');
 });
 
+it('toont de startzin tot er een team is en daarna de beheerzin', function () {
+    [$tenant, $admin] = tenantWithAdmin();
+
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->assertSee(__('team.teams_page.subtitle'), false)
+        ->assertDontSee(__('team.teams_page.subtitle_active'), false);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(Team::class)
+        ->assertSee(__('team.teams_page.subtitle_active'), false)
+        ->assertDontSee(__('team.teams_page.subtitle'), false);
+});
+
 it('toont de briefing-afdrukknop op de teamspagina', function () {
     [, $admin] = tenantWithAdmin();
 

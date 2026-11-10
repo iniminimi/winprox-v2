@@ -5,7 +5,8 @@
     },
     "teams_page": {
         "title": "Teams",
-        "subtitle": "Un equipo basta para empezar. Añada operarios."
+        "subtitle": "Un equipo basta para empezar. Añada operarios.",
+        "subtitle_active": "Gestione aquí los equipos de su organización y añada operarios."
     },
     "nav": {
         "teams": "Teams"

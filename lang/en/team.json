@@ -5,7 +5,8 @@
     },
     "teams_page": {
         "title": "Teams",
-        "subtitle": "One team is enough to get started. Add workers."
+        "subtitle": "One team is enough to get started. Add workers.",
+        "subtitle_active": "Manage the teams in your organisation here and add workers."
     },
     "nav": {
         "teams": "Teams"

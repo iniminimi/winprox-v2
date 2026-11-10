@@ -5,7 +5,8 @@
     },
     "teams_page": {
         "title": "Teams",
-        "subtitle": "Ein Team reicht zum Start. Fügen Sie Ausführende hinzu."
+        "subtitle": "Ein Team reicht zum Start. Fügen Sie Ausführende hinzu.",
+        "subtitle_active": "Verwalten Sie hier die Teams in Ihrer Organisation und fügen Sie Ausführende hinzu."
     },
     "nav": {
         "teams": "Teams"
