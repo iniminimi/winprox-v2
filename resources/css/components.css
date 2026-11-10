@@ -604,7 +604,6 @@
     color: var(--wp-text-heading);
 }
 
-.wp-page-help-print,
 .wp-page-help-close {
     display: inline-flex;
     align-items: center;
@@ -621,7 +620,6 @@
     cursor: pointer;
 }
 
-.wp-page-help-print:hover,
 .wp-page-help-close:hover {
     background-color: var(--wp-surface-muted);
     color: var(--wp-text-heading);

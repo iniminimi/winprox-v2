@@ -47,7 +47,7 @@
                         <h2 id="wp-page-help-title-{{ $page }}" class="wp-page-help-dialog-title">{{ $help['title'] }}</h2>
                         <button
                             type="button"
-                            class="wp-page-help-print"
+                            class="wp-page-help-trigger wp-page-help-print"
                             aria-label="{{ __('page-help.modal.print') }}"
                             title="{{ __('page-help.modal.print') }}"
                             @click="document.documentElement.classList.add('wp-printing-page-help'); window.addEventListener('afterprint', () => document.documentElement.classList.remove('wp-printing-page-help'), { once: true }); window.print()"
