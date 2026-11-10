@@ -1769,6 +1769,10 @@
                     "text": "Workers linked to a Backoffice account (punch-clock team) count as one licence. They clock in via Clock Point (name + icon), not via the backoffice login."
                 },
                 {
+                    "label": "To review",
+                    "text": "Shows only active workers a team leader just created on Clock Point, with first and last name only. They also have the To review badge and the New worker dashboard tile. Saving or deactivating them under People → Teams removes them from this list. Click again to show everyone."
+                },
+                {
                     "label": "Edit",
                     "text": "Add, edit or deactivate workers via People → Teams → **Edit**. Icon, phone, PIN, passkey, team leader and delete live in that modal. This screen is for quick search and filtering."
                 }

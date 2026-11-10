@@ -1769,6 +1769,10 @@
                     "text": "Uitvoerders met een gekoppeld Backoffice-account (Prikklok-team) tellen als één licentie. Zij klokken in via Clock Point (naam + icoon), niet via de Backoffice-login."
                 },
                 {
+                    "label": "Te controleren",
+                    "text": "Toont alleen actieve uitvoerders die een teamleider net op Clock Point heeft aangemaakt, met enkel voor- en achternaam. Zij hebben de badge Te controleren en de dashboardtegel Nieuwe uitvoerder. Opslaan of deactiveren via Personen → Teams haalt hen uit deze lijst. Nogmaals klikken toont weer iedereen."
+                },
+                {
                     "label": "Bewerken",
                     "text": "Voeg uitvoerders toe, wijzig of deactiveer via Personen → Teams → **Bewerken**. Icoon, gsm, pincode, passkey, teamleader en verwijderen zitten in die modal. Dit scherm is bedoeld om snel te zoeken en te filteren."
                 }

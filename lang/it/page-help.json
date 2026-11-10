@@ -1769,6 +1769,10 @@
                     "text": "Esecutori collegati a un account backoffice (team timbratura) contano come una licenza. Timbrano via Clock Point (nome + icona), non con il login backoffice."
                 },
                 {
+                    "label": "Da controllare",
+                    "text": "Mostra solo gli esecutori attivi che un caposquadra ha appena creato su Clock Point, solo con nome e cognome. Hanno anche il badge Da controllare e la tessera Nuovo esecutore nella dashboard. Salvare o disattivare in Persone → Team li toglie da questo elenco. Un secondo clic mostra di nuovo tutti."
+                },
+                {
                     "label": "Modifica",
                     "text": "Aggiungi, modifica o disattiva lavoratori da Persone → Team → **Modifica**. Icona, telefono, PIN, passkey, caposquadra ed eliminazione sono in quella finestra. Questa schermata serve a cercare e filtrare in fretta."
                 }

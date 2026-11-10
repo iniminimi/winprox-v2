@@ -33,6 +33,18 @@ it('laadt paginahulp voor een bekende pagina', function (): void {
         ->and(collect($plan['actions'])->pluck('label')->all())->toContain('Stops — Route');
 });
 
+it('beschrijft Te controleren in de hulp van uitvoerders', function (): void {
+    app()->setLocale('nl');
+
+    $help = PageHelp::for('team.workers_index');
+    $action = collect($help['actions'] ?? [])->first(fn (array $item): bool => $item['label'] === 'Te controleren');
+
+    expect($help)->not->toBeNull()
+        ->and($action)->not->toBeNull()
+        ->and($action['text'])->toContain('teamleider')
+        ->and($action['text'])->toContain('Clock Point');
+});
+
 it('laadt paginahulp voor units-overzicht', function (): void {
     app()->setLocale('nl');
 

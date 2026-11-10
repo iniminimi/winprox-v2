@@ -1777,6 +1777,10 @@
                     "text": "Les exécutants liés à un compte backoffice (équipe pointeuse) comptent pour une licence. Ils pointent via Clock Point (nom + icône), pas via le login backoffice."
                 },
                 {
+                    "label": "À contrôler",
+                    "text": "Affiche uniquement les exécutants actifs qu’un chef d’équipe vient de créer sur Clock Point, avec seulement le prénom et le nom. Ils portent aussi le badge À contrôler et la tuile Nouvel exécutant du tableau de bord. Enregistrer ou désactiver dans Personnes → Équipes les retire de cette liste. Un second clic réaffiche tout le monde."
+                },
+                {
                     "label": "Modifier",
                     "text": "Ajoutez, modifiez ou désactivez des exécutants via Personnes → Équipes → **Modifier**. Icône, téléphone, PIN, clé d’accès, chef d’équipe et suppression sont dans cette fenêtre. Cet écran sert à chercher et filtrer rapidement."
                 }

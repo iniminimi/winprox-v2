@@ -1769,6 +1769,10 @@
                     "text": "Ejecutores vinculados a una cuenta de backoffice (equipo de fichaje) cuentan como una licencia. Fichan vía Clock Point (nombre + icono), no con el login de backoffice."
                 },
                 {
+                    "label": "Por revisar",
+                    "text": "Muestra solo ejecutores activos que un jefe de equipo acaba de crear en Clock Point, solo con nombre y apellido. También llevan la insignia Por revisar y la ficha Nuevo ejecutor del panel. Guardar o desactivar en Personas → Equipos los quita de esta lista. Otro clic vuelve a mostrar a todos."
+                },
+                {
                     "label": "Editar",
                     "text": "Añada, edite o desactive trabajadores en Personas → Equipos → **Editar**. Icono, móvil, PIN, clave de acceso, jefe de equipo y eliminar están en esa ventana. Esta pantalla sirve para buscar y filtrar rápido."
                 }

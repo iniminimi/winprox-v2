@@ -1769,6 +1769,10 @@
                     "text": "Ausführende mit verknüpftem Backoffice-Konto (Stempeluhr-Team) zählen als eine Lizenz. Einstempeln erfolgt über Clock Point (Name + Symbol), nicht über das Backoffice-Login."
                 },
                 {
+                    "label": "Zu prüfen",
+                    "text": "Zeigt nur aktive Ausführende, die ein Teamleiter gerade auf Clock Point angelegt hat, nur mit Vor- und Nachname. Sie haben auch das Badge Zu prüfen und die Dashboard-Kachel Neuer Mitarbeiter. Speichern oder Deaktivieren unter Personen → Teams nimmt sie aus dieser Liste. Nochmal klicken zeigt wieder alle."
+                },
+                {
                     "label": "Bearbeiten",
                     "text": "Ausführende hinzufügen, ändern oder deaktivieren unter Personen → Teams → **Bearbeiten**. Symbol, Handy, PIN, Passkey, Teamleiter und Löschen stehen in diesem Dialog. Diese Seite dient zum schnellen Suchen und Filtern."
                 }
