@@ -13,8 +13,8 @@ use Carbon\CarbonImmutable;
 use Illuminate\Support\Collection;
 
 /**
- * Leest het fotoalbum voor beheer: units met album, dagen binnen de
- * bewaartermijn, foto's van de gekozen dag, ontvangers en verzendingen.
+ * Leest het fotoalbum voor beheer: alleen units en dagen met foto's
+ * binnen de bewaartermijn, plus ontvangers en verzendingen van de unit.
  */
 final class LoadUnitPhotoAlbumAction
 {
@@ -26,16 +26,39 @@ final class LoadUnitPhotoAlbumAction
      *     day: string,
      *     photos: Collection<int, UnitAlbumPhoto>,
      *     recipients: Collection<int, UnitAlbumRecipient>,
-     *     sends: Collection<int, UnitAlbumSend>
+     *     sends: Collection<int, UnitAlbumSend>,
+     *     retentionDays: int
      * }
      */
     public function handle(int $tenantId, ?int $unitId, ?string $day): array
     {
+        $retention = max(1, (int) config('data_retention.unit_album_photos_days', 7));
+        $empty = [
+            'units' => collect(),
+            'unit' => null,
+            'days' => [],
+            'day' => '',
+            'photos' => collect(),
+            'recipients' => collect(),
+            'sends' => collect(),
+            'retentionDays' => $retention,
+        ];
+
         $tenant = Tenant::query()->find($tenantId);
-        $units = ($tenant === null || ! $tenant->photoAlbumEnabled())
-            ? collect()
-            : Unit::query()
+        if ($tenant === null || ! $tenant->photoAlbumEnabled()) {
+            return $empty;
+        }
+
+        $cutoff = now()->subDays($retention);
+        $unitIds = UnitAlbumPhoto::query()
             ->where('tenant_id', $tenantId)
+            ->where('created_at', '>=', $cutoff)
+            ->distinct()
+            ->pluck('unit_id');
+
+        $units = Unit::query()
+            ->where('tenant_id', $tenantId)
+            ->whereIn('id', $unitIds)
             ->where('is_active', true)
             ->with(['location', 'translations'])
             ->orderBy('name')
@@ -43,45 +66,50 @@ final class LoadUnitPhotoAlbumAction
 
         $unit = $unitId !== null ? $units->firstWhere('id', $unitId) : null;
         $unit ??= $units->first();
-
-        $today = CarbonImmutable::today();
-        $retention = max(1, (int) config('data_retention.unit_album_photos_days', 7));
-        $days = [];
-        for ($i = 0; $i < $retention; $i++) {
-            $days[] = $today->subDays($i)->toDateString();
+        if ($unit === null) {
+            return $empty;
         }
-        $day = in_array($day, $days, true) ? (string) $day : $days[0];
 
-        $photos = collect();
-        $recipients = collect();
-        $sends = collect();
+        $days = UnitAlbumPhoto::query()
+            ->where('tenant_id', $tenantId)
+            ->where('unit_id', $unit->id)
+            ->where('created_at', '>=', $cutoff)
+            ->orderByDesc('taken_on')
+            ->pluck('taken_on')
+            ->map(fn ($takenOn): string => CarbonImmutable::parse($takenOn)->toDateString())
+            ->unique()
+            ->values()
+            ->all();
 
-        if ($unit !== null) {
-            $photos = UnitAlbumPhoto::query()
+        $day = in_array($day, $days, true) ? (string) $day : (string) ($days[0] ?? '');
+
+        $photos = $day === ''
+            ? collect()
+            : UnitAlbumPhoto::query()
                 ->where('tenant_id', $tenantId)
                 ->where('unit_id', $unit->id)
+                ->where('created_at', '>=', $cutoff)
                 ->whereDate('taken_on', $day)
                 ->with('worker')
                 ->orderBy('created_at')
                 ->orderBy('id')
                 ->get();
 
-            $recipients = UnitAlbumRecipient::query()
-                ->where('tenant_id', $tenantId)
-                ->where('unit_id', $unit->id)
-                ->orderByDesc('last_sent_at')
-                ->orderBy('email')
-                ->get();
+        $recipients = UnitAlbumRecipient::query()
+            ->where('tenant_id', $tenantId)
+            ->where('unit_id', $unit->id)
+            ->orderByDesc('last_sent_at')
+            ->orderBy('email')
+            ->get();
 
-            $sends = UnitAlbumSend::query()
-                ->where('tenant_id', $tenantId)
-                ->where('unit_id', $unit->id)
-                ->with('user')
-                ->orderByDesc('created_at')
-                ->orderByDesc('id')
-                ->limit(20)
-                ->get();
-        }
+        $sends = UnitAlbumSend::query()
+            ->where('tenant_id', $tenantId)
+            ->where('unit_id', $unit->id)
+            ->with('user')
+            ->orderByDesc('created_at')
+            ->orderByDesc('id')
+            ->limit(20)
+            ->get();
 
         return [
             'units' => $units,
@@ -91,6 +119,7 @@ final class LoadUnitPhotoAlbumAction
             'photos' => $photos,
             'recipients' => $recipients,
             'sends' => $sends,
+            'retentionDays' => $retention,
         ];
     }
 }

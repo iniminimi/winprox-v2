@@ -679,7 +679,7 @@
                 },
                 {
                     "label": "Senden",
-                    "text": "Im Fotoalbum wählen Sie die Unit und die Fotos und geben eine E-Mail-Adresse ein. Die Adresse bleibt bei dieser Unit. Die Fotos stehen in der E-Mail. Nach einer Woche löscht WinProx die Dateien."
+                    "text": "Fotoalbum steht unter Standorte, unter Units. Dort wählen Sie eine Einheit und einen Tag mit Fotos, haken Fotos an und geben eine E-Mail-Adresse ein. Die Adresse bleibt bei dieser Unit. Die Fotos stehen in der E-Mail. Nach einer Woche löscht WinProx die Dateien."
                 }
             ]
         },

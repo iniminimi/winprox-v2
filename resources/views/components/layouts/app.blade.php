@@ -378,7 +378,6 @@
                                 || (($workMenuIssuesTasksOn || $showWorkMenuInspectionRounds) && request()->routeIs('tasks.*'))
                                 || ($showWorkMenuChecklists && request()->routeIs('checklists.*'))
                                 || ($showUnitChecksNav && request()->routeIs('unit-checks.*'))
-                                || ($showPhotoAlbumNav && request()->routeIs('photo-album.*'))
                                 || ($showWorkMenuCalendar && request()->routeIs('calendar.*'))
                                 || ($showWorkMenuReservations && request()->routeIs('reservations.*'))
                                 || ($showWorkMenuUnitMeasurements && request()->routeIs('unit-measurements.*'))
@@ -389,9 +388,12 @@
                                 && (request()->query('section') === 'categories' || request()->filled('edit_category'));
                             $locationsActive = request()->routeIs('locations.index') && ! $categoriesActive;
                             $unitsActive = request()->routeIs('units.index');
+                            $showPhotoAlbumNavItem = $showPhotoAlbumNav
+                                && ($authUser?->can('viewAny', \App\Models\UnitAlbumPhoto::class) ?? false);
                             $placesGroupActive = request()->routeIs('locations.*')
                                 || $unitsActive
-                                || ($showCustomersNav && request()->routeIs('customers.*'));
+                                || ($showCustomersNav && request()->routeIs('customers.*'))
+                                || ($showPhotoAlbumNavItem && request()->routeIs('photo-album.*'));
 
                             $peopleGroupActive = request()->routeIs('team.index') || request()->routeIs('workers.index');
                             $peopleSection = request()->routeIs('team.index') ? (string) request()->query('section', '') : '';
@@ -403,13 +405,10 @@
                                 && ($authUser?->can('viewAny', \App\Models\UnitCheckList::class) ?? false);
                             $showUnitChecksNavItem = $showUnitChecksNav
                                 && ($authUser?->can('viewAny', \App\Models\UnitCheck::class) ?? false);
-                            $showPhotoAlbumNavItem = $showPhotoAlbumNav
-                                && ($authUser?->can('viewAny', \App\Models\UnitAlbumPhoto::class) ?? false);
                             $showWorkGroup = $showWorkMenuIssuesTasks
                                 || $showWorkMenuInspectionRounds
                                 || $showChecklistsNav
                                 || $showUnitChecksNavItem
-                                || $showPhotoAlbumNavItem
                                 || $showWorkVisitsNav
                                 || $showWorkMenuCalendar
                                 || $showWorkMenuReservations
@@ -483,13 +482,6 @@
                                             <span>{{ __('common.nav.unit_checks') }}</span>
                                         </a>
                                     @endif
-                                    @if ($showPhotoAlbumNavItem)
-                                        <a href="{{ route('photo-album.index') }}"
-                                           class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('photo-album.*') ? 'is-active' : '' }}"
-                                           @click="nav = false">
-                                            <span>{{ __('common.nav.photo_album') }}</span>
-                                        </a>
-                                    @endif
                                     @if ($showWorkVisitsNav)
                                         <a href="{{ route('work-visits.index') }}"
                                            class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('work-visits.*') ? 'is-active' : '' }}"
@@ -550,6 +542,13 @@
                                        @click="nav = false">
                                         <span>{{ __('units.title') }}</span>
                                     </a>
+                                    @if ($showPhotoAlbumNavItem)
+                                        <a href="{{ route('photo-album.index') }}"
+                                           class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('photo-album.*') ? 'is-active' : '' }}"
+                                           @click="nav = false">
+                                            <span>{{ __('common.nav.photo_album') }}</span>
+                                        </a>
+                                    @endif
                                 </div>
                             </details>
 

@@ -1,7 +1,7 @@
 {
     "title": "Álbum de fotos",
     "subtitle": "Fotos que los operarios toman por unidad mediante el QR de la unidad. Seleccione fotos y envíelas a una sola dirección de correo.",
-    "no_units": "El álbum de fotos está desactivado, o aún no hay una unidad activa. Actívelo en Ajustes → Su organización.",
+    "no_units": "Aún no hay fotos dentro del plazo de conservación. Los operarios las hacen en el QR de la unidad. Si el álbum está desactivado, actívelo en Ajustes → Su organización.",
     "photos_title": "Fotos",
     "filters": {
         "unit": "Unidad",

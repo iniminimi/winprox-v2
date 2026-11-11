@@ -1,7 +1,7 @@
 {
     "title": "Fotoalbum",
     "subtitle": "Fotos, die Ausführende pro Einheit über den QR-Code der Einheit aufnehmen. Wählen Sie Fotos aus und senden Sie sie an eine E-Mail-Adresse.",
-    "no_units": "Das Fotoalbum ist aus, oder es gibt noch keine aktive Einheit. Schalten Sie es unter Einstellungen → Ihre Organisation ein.",
+    "no_units": "Noch keine Fotos innerhalb der Aufbewahrungsfrist. Ausführende machen sie über den QR-Code der Einheit. Ist das Album aus, schalten Sie es unter Einstellungen → Ihre Organisation ein.",
     "photos_title": "Fotos",
     "filters": {
         "unit": "Einheit",

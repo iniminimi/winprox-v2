@@ -574,8 +574,8 @@ backoffice kiest welke foto's naar één e-mailadres gaan. Algemeen, niet sector
 - Max. **24 foto's per unit per dag** (`config/unit_photo_album.php`); client-side compressie
   (golden path, max. 1000 px), geen server-resize. Eigen foto's van vandaag wissen kan.
 
-### Beheer (`/photo-album`, Werk → Fotoalbum)
-- Unit + dag (binnen de bewaartermijn), foto's aanvinken, wissen.
+### Beheer (`/photo-album`, Plaatsen → Fotoalbum, onder Units)
+- Alleen units en dagen waarop nog foto's staan (binnen de bewaartermijn). Foto's als kleine thumbnails, zoals bij meldingen: aanvinken en wissen.
 - **Eén ontvanger per verzending**; adres + vrije omschrijving worden per unit bewaard
   (`unit_album_recipients`) en voorgesteld; beheren/verwijderen in hetzelfde scherm.
 - Max. **8 foto's per mail**, ingesloten (CID, 2 × 4 raster), geen links; meer foto's = meerdere mails.

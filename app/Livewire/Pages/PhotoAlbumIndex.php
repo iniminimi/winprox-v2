@@ -191,6 +191,13 @@ class PhotoAlbumIndex extends Component
     public function render(LoadUnitPhotoAlbumAction $load): View
     {
         $album = $load->handle((int) Tenancy::id(), $this->unitId, $this->day !== '' ? $this->day : null);
+        $resolvedUnitId = $album['unit']?->id !== null ? (int) $album['unit']->id : null;
+        if ($this->unitId !== $resolvedUnitId) {
+            $this->unitId = $resolvedUnitId;
+        }
+        if ($this->day !== $album['day']) {
+            $this->day = $album['day'];
+        }
 
         return view('livewire.pages.photo-album-index', [
             ...$album,

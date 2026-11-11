@@ -159,6 +159,39 @@ it('wist foto\'s na de bewaartermijn', function () {
     Storage::disk('local')->assertMissing($old->path);
 });
 
+it('toont in het album alleen units en dagen met foto\'s', function () {
+    [$tenant, $unit, $worker, $admin] = albumContext();
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $unit->location_id,
+        'name' => 'Leeg lokaal',
+    ]);
+    albumPhoto($unit, $worker);
+    $older = albumPhoto($unit, $worker);
+    $older->forceFill([
+        'taken_on' => now()->subDays(3)->toDateString(),
+        'created_at' => now()->subDays(3),
+    ])->save();
+
+    $today = now()->translatedFormat('l d-m-Y');
+    $threeDaysAgo = now()->subDays(3)->translatedFormat('l d-m-Y');
+    $yesterday = now()->subDay()->translatedFormat('l d-m-Y');
+
+    Livewire::actingAs($admin)->test(PhotoAlbumIndex::class)
+        ->assertSee('Lokaal 1')
+        ->assertDontSee('Leeg lokaal')
+        ->assertSee($today)
+        ->assertSee($threeDaysAgo)
+        ->assertDontSee($yesterday)
+        ->assertSeeHtml('wp-photo-grid--gallery')
+        ->assertSeeHtml('wp-photo-thumb')
+        ->assertSeeHtml('wp-photo-remove')
+        ->assertSeeHtml('wp-photo-lightbox')
+        ->set('unitId', $unit->id + 999)
+        ->assertSee('Lokaal 1')
+        ->assertDontSee('Leeg lokaal');
+});
+
 it('backoffice toont het album en schermt andere tenants af', function () {
     Queue::fake();
     [$tenant, $unit, $worker, $admin] = albumContext();

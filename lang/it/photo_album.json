@@ -1,7 +1,7 @@
 {
     "title": "Album fotografico",
     "subtitle": "Foto scattate dagli operatori per unità tramite il QR dell'unità. Seleziona le foto e inviale a un solo indirizzo e-mail.",
-    "no_units": "L'album fotografico è disattivato, oppure non c'è ancora un'unità attiva. Attivalo in Impostazioni → La sua organizzazione.",
+    "no_units": "Ancora nessuna foto nel periodo di conservazione. Gli operatori le scattano sul QR dell'unità. Se l'album è disattivato, attivalo in Impostazioni → La sua organizzazione.",
     "photos_title": "Foto",
     "filters": {
         "unit": "Unità",

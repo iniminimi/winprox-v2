@@ -36,28 +36,32 @@
                 </div>
             </div>
 
-            <p class="wp-hint">{{ __('photo_album.retention_hint', ['days' => count($days)]) }}</p>
+            <p class="wp-hint">{{ __('photo_album.retention_hint', ['days' => $retentionDays]) }}</p>
 
             @if ($photos->isEmpty())
                 <p class="wp-muted">{{ __('photo_album.empty') }}</p>
             @else
-                <div class="wp-photo-grid wp-photo-grid--gallery">
-                    @foreach ($photos as $photo)
-                        <div class="wp-stack-tight" wire:key="album-photo-{{ $photo->id }}">
-                            <label class="wp-photo-thumb">
-                                <img src="{{ route('photo-album.photos.show', $photo) }}" alt="" width="80" height="80" loading="lazy">
-                            </label>
-                            <label class="wp-check">
-                                <input type="checkbox" value="{{ $photo->id }}" wire:model.live="selectedPhotoIds">
-                                <span>{{ $photo->created_at?->format('H:i') }}</span>
-                            </label>
-                            <button type="button" class="btn btn--ghost btn--sm"
-                                    wire:click="deletePhoto({{ $photo->id }})"
-                                    wire:confirm="{{ __('photo_album.delete_confirm') }}">
-                                {{ __('photo_album.delete') }}
-                            </button>
-                        </div>
-                    @endforeach
+                <div class="wp-photo-gallery" x-data="{ lightboxSrc: null }" @keydown.escape.window="lightboxSrc = null">
+                    <div class="wp-photo-grid wp-photo-grid--gallery">
+                        @foreach ($photos as $photo)
+                            <div class="wp-photo-thumb" wire:key="album-photo-{{ $photo->id }}">
+                                <button type="button" @click="lightboxSrc = @js(route('photo-album.photos.show', $photo))" aria-label="{{ __('issues.show.photo_enlarge') }}">
+                                    <img src="{{ route('photo-album.photos.show', $photo) }}" alt="" width="80" height="80" loading="lazy">
+                                </button>
+                                <label class="wp-photo-thumb-tag" @click.stop>
+                                    <input type="checkbox" value="{{ $photo->id }}" wire:model.live="selectedPhotoIds">
+                                    <span>{{ $photo->created_at?->format('H:i') }}</span>
+                                </label>
+                                <button type="button" class="wp-photo-remove" @click.stop
+                                        wire:click="deletePhoto({{ $photo->id }})"
+                                        wire:confirm="{{ __('photo_album.delete_confirm') }}"
+                                        aria-label="{{ __('photo_album.delete') }}">×</button>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="wp-photo-lightbox" x-show="lightboxSrc" x-cloak x-transition.opacity role="dialog" aria-modal="true" @click="lightboxSrc = null">
+                        <img :src="lightboxSrc" alt="" @click.stop>
+                    </div>
                 </div>
             @endif
             @error('selectedPhotoIds') <p class="wp-error">{{ $message }}</p> @enderror
