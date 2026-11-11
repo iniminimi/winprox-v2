@@ -146,8 +146,7 @@
             "roster_code": "Código de cuadrante",
             "roster_code_hint": "Opcional. Código corto para el cuadrante, único por sede (p. ej. G1).",
             "visit_pin": "Pin de visita",
-            "visit_pin_hint": "Pin fijo del edificio para visitas GPS. Vacío = solo avisos/tareas. Pulsa el icono rojo, busca en Google Maps, pulsa el pin rojo y pega aquí (51.336167, 3.236306). Los avisos GPS del portal no cambian este pin.",
-            "photo_album": "Álbum de fotos"
+            "visit_pin_hint": "Pin fijo del edificio para visitas GPS. Vacío = solo avisos/tareas. Pulsa el icono rojo, busca en Google Maps, pulsa el pin rojo y pega aquí (51.336167, 3.236306). Los avisos GPS del portal no cambian este pin."
         },
         "translation_preview": "Traducción (portal)",
         "translation_edit": {
@@ -217,8 +216,7 @@
             "inherits_from": "Sigue la categoría :category (las casillas se copian al cambiar de categoría).",
             "overrides_active": "Esta unidad difiere de la configuración de la categoría.",
             "no_category_hint": "Elija una categoría para heredar opciones del portal. Sin categoría, solo aplican las casillas de unidad abajo."
-        },
-        "photo_album_hint": "Los operarios toman fotos de esta unidad mediante Clock Point (máx. 24 al día, se guardan 7 días). La oficina las envía a una dirección de correo."
+        }
     },
     "bulk": {
         "title": "Añadir unidades en bloque",

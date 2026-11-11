@@ -473,8 +473,8 @@ it('laat een uitvoerder foto’s nemen in het fotoalbum van haar thuisgroep op C
     Storage::fake('local');
     $ctx = prepareClockPointWorker(gpsVisitContext());
     [$tenant, $worker, $clockPoint, $location, $unit] = $ctx;
-    $other = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id, 'is_active' => true, 'photo_album_enabled' => true, 'name' => 'Lokaal 2']);
-    $unit->update(['photo_album_enabled' => true]);
+    $tenant->update(['photo_album_enabled' => true]);
+    $other = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id, 'is_active' => true, 'name' => 'Lokaal 2']);
     $worker->update(['default_unit_id' => $other->id]);
 
     $file = UploadedFile::fake()->image('album.jpg', 50, 50);

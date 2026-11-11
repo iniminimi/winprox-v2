@@ -208,7 +208,7 @@
                 "items": [
                     "Ausführende machen auf Clock Point bis zu 24 Fotos pro Einheit pro Tag; ihre Stammgruppe ist vorausgewählt.",
                     "Das Backoffice wählt Fotos aus und sendet sie an eine E-Mail-Adresse, bis zu 8 Fotos in der E-Mail selbst. Adressen werden pro Einheit gespeichert.",
-                    "Fotos werden privat gespeichert und nach 7 Tagen gelöscht. Pro Einheit ein-/ausschaltbar."
+                    "Fotos werden privat gespeichert und nach 7 Tagen gelöscht. Ein- oder ausgeschaltet für die ganze Organisation, unter Einstellungen → Ihre Organisation."
                 ],
                 "key": "photo_album"
             },

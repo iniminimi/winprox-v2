@@ -1135,7 +1135,7 @@
                 },
                 {
                     "label": "Photo album",
-                    "text": "If the photo album is on for a unit at this location, you see the Photo album tile after signing in. Your home group is preselected. Take up to 24 photos per unit per day; you can delete your own photos from today. The back office decides what is sent."
+                    "text": "If the photo album is on for the organisation, you see the Photo album tile after signing in. Your home group is preselected. Take up to 24 photos per unit per day; you can delete your own photos from today. The back office decides what is sent."
                 }
             ]
         },
@@ -2324,31 +2324,6 @@
                 {
                     "label": "Who can see this?",
                     "text": "Only administrators of your organisation. Workers, teamleaders and colleagues do not see this screen."
-                }
-            ]
-        },
-        "photo-album": {
-            "title": "Help — Photo album",
-            "actions": [
-                {
-                    "label": "Turn on",
-                    "text": "Turn on Photo album under Locations → edit unit (off by default). Not available in Checkmate."
-                },
-                {
-                    "label": "Taking photos",
-                    "text": "Workers open Photo album on Clock Point after signing in. Their home group from the roster is preselected. Up to 24 photos per unit per day; the phone resizes them before upload."
-                },
-                {
-                    "label": "Sending",
-                    "text": "Choose a unit and a day, tick photos and enter one email address, or pick a saved address for that unit. A new address is saved with the unit, with a free description (e.g. Lotte's mum). Up to 8 photos per email, inside the email itself (no link). More photos = several emails to the same address."
-                },
-                {
-                    "label": "Limits and unsubscribe",
-                    "text": "Up to 25 photo emails per hour per organisation; anything above is sent later (status Scheduled). Every email has the standard unsubscribe link. If an address has unsubscribed, nothing is sent and you get a message; Sends then shows Not sent: unsubscribed."
-                },
-                {
-                    "label": "Retention",
-                    "text": "Photos are stored privately (no public link) and deleted automatically after 7 days. Consent from the people concerned is the organisation's responsibility."
                 }
             ]
         }

@@ -150,8 +150,6 @@ class Show extends Component
 
     public bool $unitAllowUnitMeasurements = false;
 
-    public bool $unitPhotoAlbumEnabled = false;
-
     /** @var array<int, int> */
     public array $unitMeasureFieldIds = [];
 
@@ -438,7 +436,6 @@ class Show extends Component
         $this->unitAllowReservations = false;
         $this->unitAllowUnitChecks = false;
         $this->unitAllowUnitMeasurements = false;
-        $this->unitPhotoAlbumEnabled = false;
         $this->unitMeasureFieldIds = [];
         $this->unitRequireReporterContact = false;
         $this->unitRequireReporterEmailVerification = false;
@@ -521,7 +518,6 @@ class Show extends Component
         $this->unitAllowReservations = (bool) $unit->allow_reservations;
         $this->unitAllowUnitChecks = (bool) $unit->allow_unit_checks;
         $this->unitAllowUnitMeasurements = (bool) $unit->allow_unit_measurements;
-        $this->unitPhotoAlbumEnabled = (bool) $unit->photo_album_enabled;
         $this->unitMeasureFieldIds = $unit->measureFields()
             ->pluck('unit_measure_fields.id')
             ->map(fn ($id) => (int) $id)
@@ -553,7 +549,6 @@ class Show extends Component
         $this->unitAllowReservations = false;
         $this->unitAllowUnitChecks = false;
         $this->unitAllowUnitMeasurements = false;
-        $this->unitPhotoAlbumEnabled = false;
         $this->unitMeasureFieldIds = [];
         $this->unitRequireReporterContact = false;
         $this->unitRequireReporterEmailVerification = false;
@@ -668,7 +663,6 @@ class Show extends Component
             'unitAllowReservations' => $rules['allow_reservations'],
             'unitAllowUnitChecks' => $rules['allow_unit_checks'],
             'unitAllowUnitMeasurements' => $rules['allow_unit_measurements'],
-            'unitPhotoAlbumEnabled' => $rules['photo_album_enabled'],
             'unitMeasureFieldIds' => $rules['measure_field_ids'],
             'unitMeasureFieldIds.*' => $rules['measure_field_ids.*'],
             'unitRequireReporterContact' => $rules['require_reporter_contact'],
@@ -760,8 +754,6 @@ class Show extends Component
             'allow_reservations' => (bool) $validated['unitAllowReservations'],
             'allow_unit_checks' => (bool) $validated['unitAllowUnitChecks'],
             'allow_unit_measurements' => (bool) $validated['unitAllowUnitMeasurements'],
-            'photo_album_enabled' => ! ($this->locationTenant()?->checkmateMode() ?? false)
-                && (bool) $validated['unitPhotoAlbumEnabled'],
             'measure_field_ids' => array_map('intval', $validated['unitMeasureFieldIds'] ?? []),
             'require_reporter_contact' => (bool) $validated['unitRequireReporterContact'],
             'require_reporter_email_verification' => (bool) $validated['unitRequireReporterEmailVerification'],

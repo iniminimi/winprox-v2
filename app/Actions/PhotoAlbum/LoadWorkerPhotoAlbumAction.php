@@ -23,13 +23,12 @@ final class LoadWorkerPhotoAlbumAction
     public function units(Worker $worker, ?ClockPoint $clockPoint): Collection
     {
         $worker->loadMissing('tenant');
-        if ($worker->tenant?->checkmateMode()) {
+        if (! ($worker->tenant?->photoAlbumEnabled() ?? false)) {
             return collect();
         }
 
         return Unit::query()
             ->where('tenant_id', $worker->tenant_id)
-            ->where('photo_album_enabled', true)
             ->where('is_active', true)
             ->when($clockPoint?->location_id !== null, fn ($q) => $q->where('location_id', $clockPoint->location_id))
             ->with('translations')
@@ -62,7 +61,16 @@ final class LoadWorkerPhotoAlbumAction
         $disk = Storage::disk(UnitAlbumPhoto::DISK);
         $previewUrls = [];
         foreach ($photos->where('worker_id', $worker->id) as $photo) {
-            $previewUrls[(int) $photo->id] = $disk->temporaryUrl((string) $photo->path, now()->addMinutes(10));
+            $path = (string) $photo->path;
+            try {
+                $previewUrls[(int) $photo->id] = $disk->temporaryUrl($path, now()->addMinutes(10));
+            } catch (\RuntimeException) {
+                if (! $disk->exists($path)) {
+                    continue;
+                }
+                $mime = $disk->mimeType($path) ?: 'image/jpeg';
+                $previewUrls[(int) $photo->id] = 'data:'.$mime.';base64,'.base64_encode($disk->get($path));
+            }
         }
 
         return [

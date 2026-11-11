@@ -208,7 +208,7 @@
                 "items": [
                     "Gli operatori scattano su Clock Point fino a 24 foto per unità al giorno; il loro gruppo di base è preselezionato.",
                     "Il back office sceglie le foto e le invia a un solo indirizzo e-mail, fino a 8 foto nell'e-mail stessa. Gli indirizzi vengono salvati per unità.",
-                    "Le foto sono archiviate in modo privato ed eliminate dopo 7 giorni. Attivabile per unità."
+                    "Le foto sono archiviate in modo privato ed eliminate dopo 7 giorni. Attivo o spento per tutta l'organizzazione, in Impostazioni → La sua organizzazione."
                 ],
                 "key": "photo_album"
             },

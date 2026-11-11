@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Actions\PhotoAlbum;
 
+use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\UnitAlbumPhoto;
 use App\Models\UnitAlbumRecipient;
@@ -30,9 +31,11 @@ final class LoadUnitPhotoAlbumAction
      */
     public function handle(int $tenantId, ?int $unitId, ?string $day): array
     {
-        $units = Unit::query()
+        $tenant = Tenant::query()->find($tenantId);
+        $units = ($tenant === null || ! $tenant->photoAlbumEnabled())
+            ? collect()
+            : Unit::query()
             ->where('tenant_id', $tenantId)
-            ->where('photo_album_enabled', true)
             ->where('is_active', true)
             ->with(['location', 'translations'])
             ->orderBy('name')

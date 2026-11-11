@@ -7,7 +7,7 @@ use App\Actions\Customers\SuggestCustomerNameMatchesAction;
 use App\Actions\Notifications\ListWorkerNotificationsAction;
 use App\Actions\Notifications\MarkWorkerNotificationsReadAction;
 use App\Actions\PhotoAlbum\DeleteUnitAlbumPhotoAction;
-use App\Actions\PhotoAlbum\ListWorkerUnitAlbumAction;
+use App\Actions\PhotoAlbum\LoadWorkerPhotoAlbumAction;
 use App\Actions\PhotoAlbum\UploadUnitAlbumPhotoAction;
 use App\Actions\Portal\ConfirmWorkerIconAction;
 use App\Actions\Portal\SyncWorkerOpenTaskBaselineAction;
@@ -76,10 +76,6 @@ use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\UnitAlbumPhoto;
-use App\Actions\PhotoAlbum\DeleteUnitAlbumPhotoAction;
-use App\Actions\PhotoAlbum\LoadWorkerPhotoAlbumAction;
-use App\Actions\PhotoAlbum\UploadUnitAlbumPhotoAction;
-use App\Http\Requests\PhotoAlbum\UploadUnitAlbumPhotosRequest;
 use App\Models\Worker;
 use App\Models\WorkerDevice;
 use App\Models\WorkShift;
@@ -233,13 +229,6 @@ class TimePortal extends Component
 
     #[Locked]
     public bool $teamleaderOpen = false;
-
-    public bool $albumOpen = false;
-
-    public ?int $albumUnitId = null;
-
-    /** @var array<int, mixed> */
-    public array $albumPhotos = [];
 
     public string $absenceKind = 'leave';
 
@@ -732,84 +721,6 @@ class TimePortal extends Component
     public function closeHours(): void
     {
         $this->hoursListOpen = false;
-    }
-
-    public function openAlbum(): void
-    {
-        $worker = $this->authorizedWorker();
-        if ($worker === null || ! Tenant::query()->find($this->tenantId)?->photoAlbumEnabled()) {
-            return;
-        }
-
-        $this->hoursListOpen = false;
-        $this->scheduleListOpen = false;
-        $this->teamScheduleOpen = false;
-        $this->absenceListOpen = false;
-        $this->teamleaderOpen = false;
-        $this->rosterListOpen = false;
-        $this->customerFormOpen = false;
-        $this->albumOpen = true;
-    }
-
-    public function closeAlbum(): void
-    {
-        $this->albumOpen = false;
-        $this->albumPhotos = [];
-        $this->resetErrorBag(['albumUnitId', 'albumPhotos']);
-    }
-
-    public function removeAlbumPhoto(int $index): void
-    {
-        if (isset($this->albumPhotos[$index])) {
-            array_splice($this->albumPhotos, $index, 1);
-        }
-    }
-
-    public function saveAlbumPhotos(UploadUnitAlbumPhotoAction $upload): void
-    {
-        $worker = $this->authorizedWorker();
-        if ($worker === null) {
-            return;
-        }
-
-        $validated = validator(
-            [
-                'albumUnitId' => $this->albumUnitId,
-                'albumPhotos' => $this->albumPhotos,
-            ],
-            UploadUnitAlbumPhotosRequest::portalRuleSet(),
-            UploadUnitAlbumPhotosRequest::portalValidationMessages(),
-        )->validate();
-
-        foreach ($validated['albumPhotos'] as $file) {
-            try {
-                $upload->handleForWorker((int) $validated['albumUnitId'], $file, (int) $this->tenantId, $worker);
-            } catch (\InvalidArgumentException $e) {
-                $field = $e->getMessage() === 'album_unit_not_allowed' || $e->getMessage() === 'unit_unavailable'
-                    ? 'albumUnitId'
-                    : 'albumPhotos';
-                $this->addError($field, __('photo_album.errors.'.$e->getMessage()));
-
-                return;
-            }
-        }
-
-        $this->albumPhotos = [];
-        $this->portalFlash('photo_album.saved');
-    }
-
-    public function deleteAlbumPhoto(int $photoId, DeleteUnitAlbumPhotoAction $delete): void
-    {
-        $worker = $this->authorizedWorker();
-        if ($worker === null) {
-            return;
-        }
-
-        try {
-            $delete->handleForWorker($photoId, (int) $this->tenantId, $worker);
-        } catch (\InvalidArgumentException) {
-            $this->addError('albumPhotos', __('photo_album.errors.album_photo_not_own'));
-        }
     }
 
     public function openSchedule(
@@ -2312,11 +2223,6 @@ class TimePortal extends Component
         }
         $portalTenant = Tenant::query()->find($this->tenantId);
         $hasTimeModule = TimeModuleAccess::tenantHasModule($portalTenant);
-        $albumEnabled = $portalTenant?->photoAlbumEnabled() ?? false;
-        $album = ['units' => collect(), 'photos' => collect(), 'count' => 0, 'max' => UploadUnitAlbumPhotoAction::maxPerDay()];
-        if ($canAct && $albumEnabled && $this->albumOpen && $verifiedWorker !== null) {
-            $album = app(ListWorkerUnitAlbumAction::class)->handle($verifiedWorker, (int) $this->tenantId, $this->albumUnitId);
-        }
         $timeRosterEnabled = TimeModuleAccess::rosterEnabled($portalTenant);
         if (! $timeRosterEnabled) {
             $this->scheduleListOpen = false;
@@ -2528,11 +2434,6 @@ class TimePortal extends Component
             'completingTaskId' => $this->completingTaskId,
             'tasks' => $tasks,
             'hasTimeModule' => $hasTimeModule,
-            'albumEnabled' => $albumEnabled,
-            'albumUnits' => $album['units'],
-            'albumToday' => $album['photos'],
-            'albumTodayCount' => $album['count'],
-            'albumMax' => $album['max'],
             'timeRosterEnabled' => $timeRosterEnabled,
             'evacuationList' => $evacuationList,
             'photoAlbumUnits' => $photoAlbumUnits,

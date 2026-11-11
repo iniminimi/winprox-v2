@@ -36,14 +36,13 @@
         $workMenuIssuesTasksOn = $activeTenant instanceof Tenant && $activeTenant->workMenuIssuesTasksEnabled();
         $showWorkMenuIssuesTasks = $workMenuIssuesTasksOn;
         $showWorkMenuUnitMeasurements = $activeTenant instanceof Tenant && $activeTenant->workMenuUnitMeasurementsEnabled();
-        $showPhotoAlbum = $activeTenant instanceof Tenant && $activeTenant->photoAlbumEnabled();
         $showWorkVisitsNav = $activeTenant instanceof Tenant
             && $activeTenant->allowsGpsWorkVisits()
             && $activeTenant->hasRecordedWorkVisits();
         $showUnitChecksNav = $activeTenant instanceof Tenant
             && $activeTenant->workMenuUnitChecksEnabled()
             && $activeTenant->hasRecordedUnitChecks();
-        $showPhotoAlbumNav = $activeTenant instanceof Tenant && $activeTenant->hasPhotoAlbumUnits();
+        $showPhotoAlbumNav = $activeTenant instanceof Tenant && $activeTenant->photoAlbumEnabled();
         $checkmateNav = \App\Support\Checkmate\CheckmateMode::isActive($activeTenant);
 
         $primaryNav = [
@@ -392,7 +391,6 @@
                             $unitsActive = request()->routeIs('units.index');
                             $placesGroupActive = request()->routeIs('locations.*')
                                 || $unitsActive
-                                || request()->routeIs('photo-album.*')
                                 || ($showCustomersNav && request()->routeIs('customers.*'));
 
                             $peopleGroupActive = request()->routeIs('team.index') || request()->routeIs('workers.index');
@@ -552,13 +550,6 @@
                                        @click="nav = false">
                                         <span>{{ __('units.title') }}</span>
                                     </a>
-                                    @if ($showPhotoAlbum)
-                                        <a href="{{ route('photo-album.index') }}"
-                                           class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('photo-album.*') ? 'is-active' : '' }}"
-                                           @click="nav = false">
-                                            <span>{{ __('photo_album.title') }}</span>
-                                        </a>
-                                    @endif
                                 </div>
                             </details>
 

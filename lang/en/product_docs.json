@@ -208,7 +208,7 @@
                 "items": [
                     "Workers take up to 24 photos per unit per day on Clock Point; their home group is preselected.",
                     "The back office selects photos and sends them to one email address, up to 8 photos inside the email. Addresses are saved per unit.",
-                    "Photos are stored privately and deleted after 7 days. On/off per unit."
+                    "Photos are stored privately and deleted after 7 days. On or off for the whole organisation, under Settings → Your organisation."
                 ],
                 "key": "photo_album"
             },

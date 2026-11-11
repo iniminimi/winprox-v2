@@ -45,9 +45,6 @@ class CreateUnitAction
             'allow_unit_measurements' => array_key_exists('allow_unit_measurements', $data)
                 ? (bool) $data['allow_unit_measurements']
                 : false,
-            'photo_album_enabled' => array_key_exists('photo_album_enabled', $data)
-                ? (bool) $data['photo_album_enabled']
-                : false,
             'require_reporter_contact' => array_key_exists('require_reporter_contact', $data)
                 ? (bool) $data['require_reporter_contact']
                 : false,

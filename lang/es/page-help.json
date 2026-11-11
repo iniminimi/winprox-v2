@@ -1135,7 +1135,7 @@
                 },
                 {
                     "label": "Álbum de fotos",
-                    "text": "Si el álbum de fotos está activado para una unidad de esta ubicación, verás el mosaico Álbum de fotos tras iniciar sesión. Tu grupo base viene preseleccionado. Toma hasta 24 fotos por unidad y día; puedes eliminar tus propias fotos de hoy. La oficina decide qué se envía."
+                    "text": "Si el álbum de fotos está activado para la organización, verás el mosaico Álbum de fotos tras iniciar sesión. Tu grupo base viene preseleccionado. Toma hasta 24 fotos por unidad y día; puedes eliminar tus propias fotos de hoy. La oficina decide qué se envía."
                 }
             ]
         },
@@ -2324,31 +2324,6 @@
                 {
                     "label": "¿Quién puede ver esto?",
                     "text": "Solo los administradores de su organización. Los ejecutores, jefes de equipo y colegas no ven esta pantalla."
-                }
-            ]
-        },
-        "photo-album": {
-            "title": "Ayuda — Álbum de fotos",
-            "actions": [
-                {
-                    "label": "Activar",
-                    "text": "Active Álbum de fotos en Ubicaciones → editar unidad (desactivado por defecto). No disponible en Checkmate."
-                },
-                {
-                    "label": "Tomar fotos",
-                    "text": "Los operarios abren Álbum de fotos en Clock Point tras iniciar sesión. Su grupo base del cuadrante viene preseleccionado. Como máximo 24 fotos por unidad y día; el móvil las reduce antes de subirlas."
-                },
-                {
-                    "label": "Enviar",
-                    "text": "Elija una unidad y un día, marque fotos e introduzca una dirección de correo, o elija una dirección guardada de esa unidad. Una dirección nueva se guarda con la unidad, con una descripción libre (p. ej. mamá de Lotte). Como máximo 8 fotos por correo, dentro del propio correo (sin enlace). Más fotos = varios correos a la misma dirección."
-                },
-                {
-                    "label": "Límites y baja",
-                    "text": "Como máximo 25 correos de fotos por hora y organización; lo que supere se envía más tarde (estado Programado). Cada correo lleva el enlace de baja estándar. Si una dirección se ha dado de baja, no se envía nada y recibe un aviso; en Envíos aparece No enviado: dado de baja."
-                },
-                {
-                    "label": "Conservación",
-                    "text": "Las fotos se guardan de forma privada (sin enlace público) y se eliminan automáticamente a los 7 días. El consentimiento de las personas afectadas es responsabilidad de la organización."
                 }
             ]
         }

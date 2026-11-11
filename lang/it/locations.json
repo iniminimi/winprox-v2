@@ -146,8 +146,7 @@
             "roster_code": "Codice turno",
             "roster_code_hint": "Facoltativo. Codice breve per il turno, univoco per sede (es. G1).",
             "visit_pin": "Pin visita",
-            "visit_pin_hint": "Pin fisso dell’edificio per le visite GPS. Vuoto = solo segnalazioni/attività. Clicca l’icona rossa, cerca in Google Maps, clicca il pin rosso e incolla qui (51.336167, 3.236306). Le segnalazioni GPS del portale non modificano questo pin.",
-            "photo_album": "Album fotografico"
+            "visit_pin_hint": "Pin fisso dell’edificio per le visite GPS. Vuoto = solo segnalazioni/attività. Clicca l’icona rossa, cerca in Google Maps, clicca il pin rosso e incolla qui (51.336167, 3.236306). Le segnalazioni GPS del portale non modificano questo pin."
         },
         "translation_preview": "Traduzione (portale)",
         "translation_edit": {
@@ -217,8 +216,7 @@
             "inherits_from": "Segue la categoria :category (le spunte vengono copiate al cambio categoria).",
             "overrides_active": "Questa unità differisce dalle impostazioni della categoria.",
             "no_category_hint": "Scegliete una categoria per ereditare le opzioni portale. Senza categoria valgono solo le spunte unità sotto."
-        },
-        "photo_album_hint": "Gli operatori scattano foto di questa unità tramite Clock Point (max. 24 al giorno, conservate 7 giorni). Il back office le invia a un indirizzo e-mail."
+        }
     },
     "bulk": {
         "title": "Aggiungi unità in blocco",

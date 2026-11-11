@@ -208,7 +208,7 @@
                 "items": [
                     "Los operarios toman en Clock Point hasta 24 fotos por unidad y día; su grupo base viene preseleccionado.",
                     "La oficina elige fotos y las envía a una sola dirección de correo, hasta 8 fotos dentro del correo. Las direcciones se guardan por unidad.",
-                    "Las fotos se guardan de forma privada y se eliminan a los 7 días. Activable por unidad."
+                    "Las fotos se guardan de forma privada y se eliminan a los 7 días. Activado o no para toda la organización, en Ajustes → Su organización."
                 ],
                 "key": "photo_album"
             },

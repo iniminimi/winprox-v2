@@ -6,6 +6,7 @@ namespace App\Http\Controllers\PhotoAlbum;
 
 use App\Http\Controllers\Controller;
 use App\Models\UnitAlbumPhoto;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
@@ -14,6 +15,8 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
  */
 class UnitAlbumPhotoFileController extends Controller
 {
+    use AuthorizesRequests;
+
     public function __invoke(UnitAlbumPhoto $photo): StreamedResponse
     {
         $this->authorize('view', $photo);

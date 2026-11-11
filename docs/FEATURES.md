@@ -561,11 +561,11 @@ zonder ESG. Los van unit checks.
 backoffice kiest welke foto's naar één e-mailadres gaan. Algemeen, niet sectorgebonden.
 
 ### Aan/uit
-- Per unit: Locaties → unit bewerken → **Fotoalbum** (`units.photo_album_enabled`, standaard uit).
+- Eén vinkje voor de hele organisatie: **Instellingen → Je organisatie** (`tenants.photo_album_enabled`, standaard uit).
 - Nooit in Checkmate (geen tegel, geen sidebar, Policy weigert).
 
 ### Clock Point (geverifieerde uitvoerder)
-- Tegel **Fotoalbum** zodra een actieve unit op de locatie van het klokpunt het album aan heeft.
+- Tegel **Fotoalbum** zodra het album voor de organisatie aan staat en er een actieve unit is op de locatie van het klokpunt.
 - Thuisgroep (`workers.default_unit_id`) is voorgeselecteerd; andere unit kiezen kan.
 - Max. **24 foto's per unit per dag** (`config/unit_photo_album.php`); client-side compressie
   (golden path, max. 1000 px), geen server-resize. Eigen foto's van vandaag wissen kan.
@@ -1363,23 +1363,6 @@ binnen ~30–90 s dood.
   `Customer::locations()` — die filtert `is_active`).
 
 ---
-
-## 5h. Fotoalbum per unit
-
-Optioneel, **uit** tot de beheerder het aanzet onder **Instellingen → Je organisatie**.
-Eén vinkje voor de hele organisatie. Nooit in Checkmate.
-
-- Clock Point: tegel **Foto's**. De uitvoerder kiest een unit waar hij mag klokken
-  en maakt foto's. De gsm verkleint ze eerst (kleiner dan een meldingsfoto, omdat
-  ze in de mail gaan). Maximum per unit per dag (`unit_photo_album.max_photos_per_day`,
-  standaard 24). Alleen de eigen foto van vandaag mag de uitvoerder wissen.
-- Beheer → **Fotoalbum**: kies de unit, vink foto's aan, mail één adres. Het adres
-  blijft bij die unit. Maximaal 8 foto's per mail. Onderwerp is vast
-  (`:tenant — foto's`), foto's ingesloten (geen externe afbeelding), uitschrijven
-  via de gewone footer. Een afgemeld adres krijgt de mail niet. Binnen het uurlimiet
-  vertrekt de mail meteen; daarboven wacht ze in de wachtrij.
-- Bestanden op de privé-schijf. Na 7 dagen wist `winprox:retention-prune` bestand
-  en rij. De verzendhistoriek blijft.
 
 ## 6. Personen (Backoffice + Teams)
 

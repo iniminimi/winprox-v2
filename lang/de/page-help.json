@@ -1135,7 +1135,7 @@
                 },
                 {
                     "label": "Fotoalbum",
-                    "text": "Ist das Fotoalbum für eine Einheit an diesem Standort aktiviert, siehst du nach der Anmeldung die Kachel Fotoalbum. Deine Stammgruppe ist vorausgewählt. Mache bis zu 24 Fotos pro Einheit pro Tag; deine eigenen Fotos von heute kannst du wieder löschen. Das Backoffice entscheidet, was gesendet wird."
+                    "text": "Ist das Fotoalbum für die Organisation aktiviert, siehst du nach der Anmeldung die Kachel Fotoalbum. Deine Stammgruppe ist vorausgewählt. Mache bis zu 24 Fotos pro Einheit pro Tag; deine eigenen Fotos von heute kannst du wieder löschen. Das Backoffice entscheidet, was gesendet wird."
                 }
             ]
         },
@@ -2324,31 +2324,6 @@
                 {
                     "label": "Wer sieht das?",
                     "text": "Nur Administratoren Ihrer Organisation. Ausführer, Teamleiter und Kollegen sehen diesen Bildschirm nicht."
-                }
-            ]
-        },
-        "photo-album": {
-            "title": "Hilfe — Fotoalbum",
-            "actions": [
-                {
-                    "label": "Aktivieren",
-                    "text": "Aktivieren Sie Fotoalbum unter Standorte → Einheit bearbeiten (standardmäßig aus). In Checkmate nicht verfügbar."
-                },
-                {
-                    "label": "Fotos aufnehmen",
-                    "text": "Ausführende öffnen Fotoalbum auf Clock Point nach der Anmeldung. Ihre Stammgruppe aus dem Dienstplan ist vorausgewählt. Höchstens 24 Fotos pro Einheit pro Tag; das Handy verkleinert sie vor dem Hochladen."
-                },
-                {
-                    "label": "Senden",
-                    "text": "Wählen Sie eine Einheit und einen Tag, markieren Sie Fotos und geben Sie eine E-Mail-Adresse ein oder wählen Sie eine gespeicherte Adresse dieser Einheit. Eine neue Adresse wird bei der Einheit gespeichert, mit freier Beschreibung (z. B. Mama von Lotte). Höchstens 8 Fotos pro E-Mail, in der E-Mail selbst (kein Link). Mehr Fotos = mehrere E-Mails an dieselbe Adresse."
-                },
-                {
-                    "label": "Limits und Abmeldung",
-                    "text": "Höchstens 25 Foto-E-Mails pro Stunde pro Organisation; darüber hinaus wird später gesendet (Status Geplant). Jede E-Mail enthält den Standard-Abmeldelink. Hat sich eine Adresse abgemeldet, wird nichts gesendet und Sie erhalten eine Meldung; unter Versendungen steht dann Nicht gesendet: abgemeldet."
-                },
-                {
-                    "label": "Aufbewahrung",
-                    "text": "Fotos werden privat gespeichert (kein öffentlicher Link) und nach 7 Tagen automatisch gelöscht. Die Einwilligung der Betroffenen liegt in der Verantwortung der Organisation."
                 }
             ]
         }

@@ -28,7 +28,6 @@ class UnitResource extends JsonResource
             'is_active' => (bool) $this->is_active,
             'external_id' => $this->external_id,
             'allow_unit_checks' => (bool) $this->allow_unit_checks,
-            'photo_album_enabled' => (bool) $this->photo_album_enabled,
         ];
     }
 }

@@ -1135,7 +1135,7 @@
                 },
                 {
                     "label": "Album fotografico",
-                    "text": "Se l'album fotografico è attivo per un'unità di questo luogo, dopo l'accesso vedi il riquadro Album fotografico. Il tuo gruppo di base è preselezionato. Scatta fino a 24 foto per unità al giorno; puoi eliminare le tue foto di oggi. Il back office decide cosa inviare."
+                    "text": "Se l'album fotografico è attivo per l'organizzazione, dopo l'accesso vedi il riquadro Album fotografico. Il tuo gruppo di base è preselezionato. Scatta fino a 24 foto per unità al giorno; puoi eliminare le tue foto di oggi. Il back office decide cosa inviare."
                 }
             ]
         },
@@ -2324,31 +2324,6 @@
                 {
                     "label": "Chi può vedere questa pagina?",
                     "text": "Solo gli amministratori della vostra organizzazione. Esecutori, capisquadra e colleghi non vedono questa schermata."
-                }
-            ]
-        },
-        "photo-album": {
-            "title": "Guida — Album fotografico",
-            "actions": [
-                {
-                    "label": "Attivare",
-                    "text": "Attiva Album fotografico in Luoghi → modifica unità (disattivato per impostazione predefinita). Non disponibile in Checkmate."
-                },
-                {
-                    "label": "Scattare foto",
-                    "text": "Gli operatori aprono Album fotografico su Clock Point dopo l'accesso. Il loro gruppo di base del turno è preselezionato. Al massimo 24 foto per unità al giorno; il telefono le riduce prima del caricamento."
-                },
-                {
-                    "label": "Inviare",
-                    "text": "Scegli un'unità e un giorno, seleziona le foto e inserisci un indirizzo e-mail, oppure scegli un indirizzo salvato di quell'unità. Un nuovo indirizzo viene salvato con l'unità, con una descrizione libera (ad es. mamma di Lotte). Al massimo 8 foto per e-mail, nell'e-mail stessa (nessun link). Più foto = più e-mail allo stesso indirizzo."
-                },
-                {
-                    "label": "Limiti e disiscrizione",
-                    "text": "Al massimo 25 e-mail di foto all'ora per organizzazione; il resto viene inviato più tardi (stato Pianificato). Ogni e-mail contiene il link di disiscrizione standard. Se un indirizzo si è disiscritto, non viene inviato nulla e ricevi un avviso; in Invii compare Non inviato: disiscritto."
-                },
-                {
-                    "label": "Conservazione",
-                    "text": "Le foto sono archiviate in modo privato (nessun link pubblico) ed eliminate automaticamente dopo 7 giorni. Il consenso delle persone interessate è responsabilità dell'organizzazione."
                 }
             ]
         }

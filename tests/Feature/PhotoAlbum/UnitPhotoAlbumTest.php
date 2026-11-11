@@ -23,7 +23,6 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\ValidationException;
 use Livewire\Livewire;
 
 afterEach(fn () => Tenancy::forget());
@@ -31,10 +30,10 @@ afterEach(fn () => Tenancy::forget());
 function albumContext(array $tenantAttrs = []): array
 {
     Storage::fake('local');
-    $tenant = Tenant::factory()->create($tenantAttrs);
+    $tenant = Tenant::factory()->create(['photo_album_enabled' => true, ...$tenantAttrs]);
     Tenancy::actAs($tenant->id);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
-    $unit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id, 'photo_album_enabled' => true, 'name' => 'Lokaal 1']);
+    $unit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id, 'name' => 'Lokaal 1']);
     $worker = Worker::factory()->create(['tenant_id' => $tenant->id]);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
 
@@ -59,8 +58,8 @@ it('bewaart foto privé en stopt bij het maximum per dag', function () {
 });
 
 it('weigert upload als het album uit staat of in Checkmate', function () {
-    [, $unit, $worker] = albumContext();
-    $unit->update(['photo_album_enabled' => false]);
+    [$tenant, $unit, $worker] = albumContext();
+    $tenant->update(['photo_album_enabled' => false]);
     expect(fn () => albumPhoto($unit->fresh(), $worker))->toThrow(InvalidArgumentException::class, 'album_disabled');
 
     [, $cmUnit, $cmWorker] = albumContext(['checkmate_mode' => true]);
@@ -93,12 +92,11 @@ it('weigert meteen een afgemeld adres met een melding', function () {
     EmailUnsubscribe::query()->create(['email' => 'weg@example.com', 'source' => 'voluntary', 'unsubscribed_at' => now()]);
     $photo = albumPhoto($unit, $worker);
 
-    try {
-        app(SendUnitAlbumPhotosAction::class)->handle(new SendUnitAlbumPhotosData($unit->id, [$photo->id], 'weg@example.com'), $tenant->id, $admin->id);
-        $this->fail('geen fout');
-    } catch (ValidationException $e) {
-        expect($e->errors()['email'][0])->toContain('weg@example.com');
-    }
+    expect(fn () => app(SendUnitAlbumPhotosAction::class)->handle(
+        new SendUnitAlbumPhotosData($unit->id, [$photo->id], 'weg@example.com'),
+        $tenant->id,
+        $admin->id,
+    ))->toThrow(InvalidArgumentException::class, 'unsubscribed');
     expect(UnitAlbumSend::query()->count())->toBe(0);
     Queue::assertNothingPushed();
 });

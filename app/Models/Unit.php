@@ -38,7 +38,6 @@ class Unit extends Model
         'allow_reservations',
         'allow_unit_checks',
         'allow_unit_measurements',
-        'photo_album_enabled',
         'require_reporter_contact',
         'require_reporter_email_verification',
         'background_photo_path',
@@ -55,7 +54,6 @@ class Unit extends Model
         'allow_reservations' => 'boolean',
         'allow_unit_checks' => 'boolean',
         'allow_unit_measurements' => 'boolean',
-        'photo_album_enabled' => 'boolean',
         'require_reporter_contact' => 'boolean',
         'require_reporter_email_verification' => 'boolean',
     ];

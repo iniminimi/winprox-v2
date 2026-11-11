@@ -1,43 +1,53 @@
 {
     "title": "Album photo",
-    "subtitle": "Photos par unité. Choisissez des photos et envoyez-les. Les fichiers sont effacés après une semaine.",
-    "unit": "Unité",
-    "choose_unit": "Choisissez une unité",
-    "empty": "Pas encore de photos pour cette unité.",
-    "delete": "Supprimer",
-    "recipients": "Adresses enregistrées",
-    "email": "Adresse e-mail",
-    "description": "Nom (facultatif)",
-    "send": "Envoyer",
-    "sent": "Le message est envoyé ou planifié.",
-    "saved": "Photos enregistrées.",
-    "portal": {
-        "tile": "Photos",
-        "tile_sub": "Photos d'une unité",
-        "title": "Photos",
-        "subtitle": "Choisissez l'unité et prenez des photos. Elles sont réduites sur ce téléphone.",
-        "hint": "La photo est réduite sur ce téléphone avant l'envoi.",
-        "save": "Enregistrer les photos",
-        "day_count": ":count sur :max aujourd'hui"
+    "subtitle": "Photos prises par les exécutants par unité via Clock Point. Sélectionnez des photos et envoyez-les à une seule adresse e-mail.",
+    "no_units": "L'album photo est désactivé, ou il n'y a pas encore d'unité active. Activez-le dans Paramètres → Votre organisation.",
+    "photos_title": "Photos",
+    "filters": {
+        "unit": "Unité",
+        "day": "Jour"
     },
-    "status": {
-        "queued": "Planifié",
-        "sent": "Envoyé",
-        "blocked_unsubscribed": "Désinscrit",
-        "failed": "Échoué"
+    "retention_hint": "Les photos sont supprimées automatiquement après :days jours.",
+    "empty": "Aucune photo ce jour-là.",
+    "delete": "Supprimer",
+    "delete_confirm": "Supprimer cette photo ?",
+    "send": {
+        "title": "Envoyer",
+        "hint": "Un destinataire par envoi. Chaque e-mail contient au maximum :max photos ; au-delà, plusieurs e-mails sont envoyés.",
+        "email": "Adresse e-mail",
+        "description": "Description (facultative)",
+        "description_placeholder": "p. ex. maman de Lotte",
+        "submit": "Envoyer (:count)",
+        "queued": ":count e-mail(s) en file d'attente.",
+        "scheduled": ":count e-mail(s) planifié(s), le dernier vers :time."
+    },
+    "recipients": {
+        "title": "Destinataires de cette unité",
+        "use": "Choisir",
+        "edit": "Description",
+        "delete": "Retirer",
+        "delete_confirm": "Retirer cette adresse de cette unité ?",
+        "empty": "Aucun destinataire. Une nouvelle adresse est enregistrée lors de l'envoi."
+    },
+    "sends": {
+        "title": "Envois",
+        "line": ":count photos · :time · :user",
+        "empty": "Rien n'a encore été envoyé.",
+        "status": {
+            "queued": "En file d'attente",
+            "scheduled": "Planifié vers :time",
+            "sent": "Envoyé",
+            "blocked_unsubscribed": "Non envoyé : désinscrit",
+            "failed": "Échec"
+        }
     },
     "errors": {
         "unit_unavailable": "Cette unité n'est pas disponible.",
-        "photos_unavailable": "Une ou plusieurs photos ne sont plus disponibles.",
-        "unsubscribed": "Cette adresse est désinscrite.",
-        "album_unit_not_allowed": "Vous ne pouvez pas prendre de photos pour cette unité.",
-        "album_day_full": "Le maximum d'aujourd'hui est atteint.",
-        "album_disabled": "L'album photo est désactivé.",
-        "album_photo_not_own": "Vous ne pouvez supprimer que votre propre photo d'aujourd'hui.",
-        "unit_required": "Choisissez une unité.",
+        "photos_unavailable": "Une ou plusieurs photos n'existent plus. Sélectionnez à nouveau.",
         "photos_required": "Choisissez au moins une photo.",
-        "email_required": "Indiquez une adresse e-mail.",
+        "unsubscribed": ":email s'est désinscrit des e-mails de WinProx. Les photos n'ont pas été envoyées.",
+        "email_required": "Saisissez une adresse e-mail.",
         "email_invalid": "Cette adresse e-mail n'est pas valide.",
-        "description_max": "Le nom est trop long."
+        "description_max": "La description est trop longue (max. 500 caractères)."
     }
 }
