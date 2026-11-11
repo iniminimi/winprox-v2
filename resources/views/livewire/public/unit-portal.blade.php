@@ -338,6 +338,12 @@
                         <span class="wp-tile-title">{{ __('portal.tiles.measurements') }} : {{ $measureFields->count() }}</span>
                     </button>
                 @endif
+                @if ($canAct && ($allowsPhotoAlbum ?? false))
+                    <button type="button" class="wp-tile" wire:click="openSection('album')">
+                        <span class="wp-tile-title">{{ __('portal.album.tile') }}</span>
+                        <span class="wp-tile-sub">{{ __('portal.album.tile_sub') }}</span>
+                    </button>
+                @endif
                 @if ($isReservable)
                     <button type="button" class="wp-tile"
                             @if ($guestReservations->isNotEmpty())
@@ -588,6 +594,51 @@
                         </button>
                     </div>
                 </form>
+            </div>
+        @endif
+
+        {{-- ============================ ALBUM ============================ --}}
+        @if ($portalSection === 'album' && ($allowsPhotoAlbum ?? false) && ($photoAlbum ?? null) !== null)
+            <div data-manual-capture="portal-unit-album" class="wp-stack">
+                <x-wp-portal-back wire:click="openSection('home')" />
+                <x-wp-page-head-title variant="portal" icon="document" :title="__('portal.album.title')">
+                    <p class="wp-muted">{{ __('portal.album.subtitle') }}</p>
+                </x-wp-page-head-title>
+                <p class="wp-portal-unit-name">
+                    @if ($locationName)<span>{{ $locationName }}</span> &middot; @endif<span>{{ $unitName }}</span>
+                </p>
+                <form class="wp-card wp-card-pad wp-stack" @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.saveAlbumPhotos()">
+                    <p class="wp-hint">{{ __('portal.album.counter', ['count' => $photoAlbum['count'], 'max' => $photoAlbum['max']]) }}</p>
+                    @if ($photoAlbum['count'] < $photoAlbum['max'])
+                        @include('partials.wp-issue-photo-upload', [
+                            'model' => 'albumPhotos',
+                            'removeMethod' => 'removeAlbumPhoto',
+                            'preferCamera' => true,
+                            'max' => min(8, $photoAlbum['max'] - $photoAlbum['count']),
+                            'maxDimension' => 1000,
+                            'photoAltKey' => 'portal.album.add',
+                            'hintKey' => 'portal.album.hint',
+                        ])
+                        <button type="submit" class="btn btn--primary">{{ __('portal.album.save') }}</button>
+                    @else
+                        <p class="wp-muted">{{ __('portal.album.errors.day_full', ['max' => $photoAlbum['max']]) }}</p>
+                    @endif
+                    @error('albumPhotos') <p class="wp-error">{{ $message }}</p> @enderror
+                    @error('albumPhotos.*') <p class="wp-error">{{ $message }}</p> @enderror
+                </form>
+                @if ($photoAlbum['previewUrls'] !== [])
+                    <div class="wp-card wp-card-pad wp-stack">
+                        <p class="wp-section-title">{{ __('portal.album.own_today') }}</p>
+                        <div class="wp-photo-grid wp-photo-grid--gallery">
+                            @foreach ($photoAlbum['previewUrls'] as $albumPhotoId => $albumPhotoUrl)
+                                <div class="wp-stack-tight" wire:key="portal-album-photo-{{ $albumPhotoId }}">
+                                    <span class="wp-photo-thumb"><img src="{{ $albumPhotoUrl }}" alt="" width="80" height="80" loading="lazy"></span>
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteAlbumPhoto({{ $albumPhotoId }})" wire:confirm="{{ __('portal.album.delete_confirm') }}">{{ __('portal.album.delete') }}</button>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
             </div>
         @endif
 

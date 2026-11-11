@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Actions\PhotoAlbum;
 
-use App\Models\ClockPoint;
 use App\Models\Unit;
 use App\Models\UnitAlbumPhoto;
 use App\Models\Worker;
@@ -12,51 +11,34 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 
 /**
- * Fotoalbum op het Clock Point-portaal: units van de locatie van het
- * klokpunt met album aan (thuisgroep eerst gekozen), en de foto's van vandaag.
+ * Foto's van vandaag voor de unit die de uitvoerder net via de unit-QR opende.
  */
 final class LoadWorkerPhotoAlbumAction
 {
     /**
-     * @return Collection<int, Unit>
+     * @return array{photos: Collection<int, UnitAlbumPhoto>, previewUrls: array<int, string>, count: int, max: int}
      */
-    public function units(Worker $worker, ?ClockPoint $clockPoint): Collection
+    public function handle(Worker $worker, Unit $unit): array
     {
-        $worker->loadMissing('tenant');
-        if (! ($worker->tenant?->photoAlbumEnabled() ?? false)) {
-            return collect();
+        $empty = [
+            'photos' => collect(),
+            'previewUrls' => [],
+            'count' => 0,
+            'max' => UploadUnitAlbumPhotoAction::maxPerDay(),
+        ];
+
+        if ((int) $unit->tenant_id !== (int) $worker->tenant_id
+            || ! $unit->allowsPhotoAlbum()
+            || ! $worker->canClockAt($unit->location_id !== null ? (int) $unit->location_id : null)) {
+            return $empty;
         }
 
-        return Unit::query()
+        $photos = UnitAlbumPhoto::query()
             ->where('tenant_id', $worker->tenant_id)
-            ->where('is_active', true)
-            ->when($clockPoint?->location_id !== null, fn ($q) => $q->where('location_id', $clockPoint->location_id))
-            ->with('translations')
-            ->orderBy('name')
-            ->get()
-            ->filter(fn (Unit $unit): bool => $worker->canClockAt((int) $unit->location_id))
-            ->values();
-    }
-
-    /**
-     * @return array{units: Collection<int, Unit>, unit: ?Unit, photos: Collection<int, UnitAlbumPhoto>, previewUrls: array<int, string>, count: int, max: int}
-     */
-    public function handle(Worker $worker, ?ClockPoint $clockPoint, ?int $unitId): array
-    {
-        $units = $this->units($worker, $clockPoint);
-        $unit = ($unitId !== null ? $units->firstWhere('id', $unitId) : null)
-            ?? $units->firstWhere('id', $worker->default_unit_id)
-            ?? $units->first();
-
-        $photos = collect();
-        if ($unit !== null) {
-            $photos = UnitAlbumPhoto::query()
-                ->where('tenant_id', $worker->tenant_id)
-                ->where('unit_id', $unit->id)
-                ->whereDate('taken_on', now()->toDateString())
-                ->orderBy('id')
-                ->get();
-        }
+            ->where('unit_id', $unit->id)
+            ->whereDate('taken_on', now()->toDateString())
+            ->orderBy('id')
+            ->get();
 
         $disk = Storage::disk(UnitAlbumPhoto::DISK);
         $previewUrls = [];
@@ -74,8 +56,6 @@ final class LoadWorkerPhotoAlbumAction
         }
 
         return [
-            'units' => $units,
-            'unit' => $unit,
             'photos' => $photos,
             'previewUrls' => $previewUrls,
             'count' => $photos->count(),

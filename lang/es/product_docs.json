@@ -47,7 +47,7 @@
                     "Gestionar avisos, tareas y rondas de inspección.",
                     "Gestionar sedes, equipos, personas y unidades.",
                     "El registro ONSS/CIAO se puede activar en los ajustes. Las visitas GPS opcionales vinculan una visita a un lugar.",
-                    "Álbum de fotos opcional: los operarios hacen fotos por unidad en Clock Point. Usted las envía desde Álbum de fotos. Los archivos se borran al cabo de una semana. Se activa en Ajustes, bajo Su organización."
+                    "Álbum de fotos opcional: los operarios hacen fotos en el QR de la unidad. La sede y el nombre de la unidad aparecen. Usted las envía desde Álbum de fotos. Los archivos se borran al cabo de una semana. Se activa en Ajustes, bajo Su organización."
                 ],
                 "badge": "incluido",
                 "key": "winprox_time"
@@ -206,7 +206,7 @@
             {
                 "title": "Álbum de fotos por unidad",
                 "items": [
-                    "Los operarios toman en Clock Point hasta 24 fotos por unidad y día; su grupo base viene preseleccionado.",
+                    "Los operarios toman en el QR de la unidad hasta 24 fotos al día de esa unidad. La sede y el nombre de la unidad aparecen.",
                     "La oficina elige fotos y las envía a una sola dirección de correo, hasta 8 fotos dentro del correo. Las direcciones se guardan por unidad.",
                     "Las fotos se guardan de forma privada y se eliminan a los 7 días. Activado o no para toda la organización, en Ajustes → Su organización."
                 ],

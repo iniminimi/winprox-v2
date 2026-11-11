@@ -9,7 +9,7 @@
         "modal_hint": "Deze gegevens verschijnen onder meer op afgedrukte QR-codes, unitlabels en ander meldergericht materiaal.",
         "card_hint": "Deze gegevens verschijnen onder meer op afgedrukte QR-codes en unitlabels.",
         "photo_album_label": "Fotoalbum",
-        "photo_album_hint": "Uitvoerders maken op Clock Point foto's per unit. In Fotoalbum mailt u die naar een adres. De bestanden worden na een week gewist.",
+        "photo_album_hint": "Uitvoerders maken foto's op de unit-QR. Locatie en unitnaam staan erbij. In Fotoalbum mailt u die naar een adres. De bestanden worden na een week gewist.",
         "label_email": "E-mail",
         "label_phone": "Telefoon",
         "label_address": "Adres",

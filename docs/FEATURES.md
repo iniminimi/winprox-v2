@@ -564,9 +564,11 @@ backoffice kiest welke foto's naar één e-mailadres gaan. Algemeen, niet sector
 - Eén vinkje voor de hele organisatie: **Instellingen → Je organisatie** (`tenants.photo_album_enabled`, standaard uit).
 - Nooit in Checkmate (geen tegel, geen sidebar, Policy weigert).
 
-### Clock Point (geverifieerde uitvoerder)
-- Tegel **Fotoalbum** zodra het album voor de organisatie aan staat en er een actieve unit is op de locatie van het klokpunt.
-- Thuisgroep (`workers.default_unit_id`) is voorgeselecteerd; andere unit kiezen kan.
+### Unit-QR (aangemelde uitvoerder)
+- Tegel **Fotoalbum** op de unit-QR, niet op Clock Point. Zichtbaar zodra het album voor de
+  organisatie aan staat, de uitvoerder aangemeld is, en `canClockAt` de locatie toelaat.
+- De gescande unit is de enige unit. Locatie en unitnaam staan op het scherm. Geen dropdown
+  en geen thuisgroep als fotokeuze.
 - Max. **24 foto's per unit per dag** (`config/unit_photo_album.php`); client-side compressie
   (golden path, max. 1000 px), geen server-resize. Eigen foto's van vandaag wissen kan.
 

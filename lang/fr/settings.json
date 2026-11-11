@@ -9,7 +9,7 @@
         "modal_hint": "Ces informations apparaissent notamment sur les codes QR imprimés, les étiquettes d'unité et autres supports visibles par les rapporteurs.",
         "card_hint": "Ces informations apparaissent notamment sur les codes QR imprimés et les étiquettes d'unité.",
         "photo_album_label": "Album photo",
-        "photo_album_hint": "Les exécutants prennent des photos par unité sur Clock Point. Dans Album photo vous les envoyez à une adresse. Les fichiers sont effacés après une semaine.",
+        "photo_album_hint": "Les exécutants prennent des photos sur le QR de l'unité. Le lieu et le nom de l'unité sont indiqués. Dans Album photo vous les envoyez à une adresse. Les fichiers sont effacés après une semaine.",
         "label_email": "E-mail",
         "label_phone": "Téléphone",
         "label_address": "Adresse",

@@ -40,6 +40,25 @@
         "measurements": "Mediciones",
         "reservations": "Reservas"
     },
+    "album": {
+        "tile": "Álbum de fotos",
+        "tile_sub": "Fotos de esta unidad",
+        "title": "Álbum de fotos",
+        "subtitle": "Estas fotos son de la unidad de este código QR.",
+        "counter": "Hoy: :count de :max fotos",
+        "add": "Tomar foto",
+        "hint": "Las fotos se reducen en tu móvil y se eliminan tras unos días.",
+        "save": "Guardar fotos",
+        "own_today": "Tus fotos de hoy",
+        "delete": "Eliminar",
+        "delete_confirm": "¿Eliminar esta foto?",
+        "saved": ":count foto(s) guardada(s).",
+        "errors": {
+            "photos_required": "Toma al menos una foto.",
+            "day_full": "Máximo alcanzado: :max fotos por unidad y día.",
+            "not_allowed": "Esto no está permitido."
+        }
+    },
     "report": {
         "title": "Crear un informe",
         "description": "¿Cuál es el problema?",

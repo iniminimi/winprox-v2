@@ -281,53 +281,7 @@
 
         @if ($canAct)
             <div class="wp-stack" data-manual-capture="portal-team-signed-in">
-                @if ($albumOpen && ($photoAlbum ?? null) !== null)
-                    <x-wp-portal-back wire:click="closeAlbum" />
-                    <x-wp-page-head-title variant="portal" icon="document" :title="__('time.portal.album.title')">
-                        <p class="wp-muted">{{ __('time.portal.album.subtitle') }}</p>
-                    </x-wp-page-head-title>
-                    <form class="wp-card wp-card-pad wp-stack" @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.saveAlbumPhotos()">
-                        <label class="wp-field">
-                            <span class="wp-label">{{ __('time.portal.album.unit') }}</span>
-                            <select class="wp-select" wire:model.live="albumUnitId">
-                                @foreach ($photoAlbum['units'] as $albumUnit)
-                                    <option value="{{ $albumUnit->id }}">{{ $albumUnit->localizedName() }}</option>
-                                @endforeach
-                            </select>
-                            @error('albumUnitId') <span class="wp-error">{{ $message }}</span> @enderror
-                        </label>
-                        <p class="wp-hint">{{ __('time.portal.album.counter', ['count' => $photoAlbum['count'], 'max' => $photoAlbum['max']]) }}</p>
-                        @if ($photoAlbum['count'] < $photoAlbum['max'])
-                            @include('partials.wp-issue-photo-upload', [
-                                'model' => 'albumPhotos',
-                                'removeMethod' => 'removeAlbumPhoto',
-                                'preferCamera' => true,
-                                'max' => min(8, $photoAlbum['max'] - $photoAlbum['count']),
-                                'maxDimension' => 1000,
-                                'photoAltKey' => 'time.portal.album.add',
-                                'hintKey' => 'time.portal.album.hint',
-                            ])
-                            <button type="submit" class="btn btn--primary">{{ __('time.portal.album.save') }}</button>
-                        @else
-                            <p class="wp-muted">{{ __('time.portal.album.errors.day_full', ['max' => $photoAlbum['max']]) }}</p>
-                        @endif
-                        @error('albumPhotos') <p class="wp-error">{{ $message }}</p> @enderror
-                        @error('albumPhotos.*') <p class="wp-error">{{ $message }}</p> @enderror
-                    </form>
-                    @if ($photoAlbum['previewUrls'] !== [])
-                        <div class="wp-card wp-card-pad wp-stack">
-                            <p class="wp-section-title">{{ __('time.portal.album.own_today') }}</p>
-                            <div class="wp-photo-grid wp-photo-grid--gallery">
-                                @foreach ($photoAlbum['previewUrls'] as $albumPhotoId => $albumPhotoUrl)
-                                    <div class="wp-stack-tight" wire:key="portal-album-photo-{{ $albumPhotoId }}">
-                                        <span class="wp-photo-thumb"><img src="{{ $albumPhotoUrl }}" alt="" width="80" height="80" loading="lazy"></span>
-                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteAlbumPhoto({{ $albumPhotoId }})" wire:confirm="{{ __('time.portal.album.delete_confirm') }}">{{ __('time.portal.album.delete') }}</button>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </div>
-                    @endif
-                @elseif ($hoursListOpen && $hours !== null)
+                @if ($hoursListOpen && $hours !== null)
                     <x-wp-portal-back wire:click="closeHours" />
                     <x-wp-page-head-title variant="portal" icon="time" :title="__('time.portal.hours.title')">
                         <p class="wp-muted">{{ __('time.portal.hours.subtitle') }}</p>
@@ -1011,15 +965,6 @@
                                 </button>
                                 @endif
                             @endunless
-                            @if (($photoAlbumUnits ?? collect())->isNotEmpty())
-                                <button type="button" class="wp-tile" wire:click="openAlbum">
-                                    <span class="wp-cluster">
-                                        <x-wp-icon name="document" class="wp-tile-icon" />
-                                        <span class="wp-tile-title">{{ __('time.portal.album.tile') }}</span>
-                                    </span>
-                                    <span class="wp-tile-sub">{{ __('time.portal.album.tile_sub') }}</span>
-                                </button>
-                            @endif
                             @if ($evacuationList)
                                 <button type="button" class="wp-tile" wire:click="openRoster">
                                     <span class="wp-cluster">

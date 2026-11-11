@@ -583,27 +583,6 @@
             "empty": "No hay turnos publicados esta semana.",
             "you": "Usted",
             "absent": "Ausente"
-        },
-        "album": {
-            "tile": "Álbum de fotos",
-            "tile_sub": "Fotos de tu unidad",
-            "title": "Álbum de fotos",
-            "subtitle": "Toma fotos de la unidad. La oficina decide qué se envía.",
-            "unit": "Unidad",
-            "counter": "Hoy: :count de :max fotos",
-            "add": "Tomar foto",
-            "hint": "Las fotos se reducen en tu móvil y se eliminan tras unos días.",
-            "save": "Guardar fotos",
-            "own_today": "Tus fotos de hoy",
-            "delete": "Eliminar",
-            "delete_confirm": "¿Eliminar esta foto?",
-            "saved": ":count foto(s) guardada(s).",
-            "errors": {
-                "unit_required": "Elige una unidad.",
-                "photos_required": "Toma al menos una foto.",
-                "day_full": "Máximo alcanzado: :max fotos por unidad y día.",
-                "not_allowed": "Esto no está permitido."
-            }
         }
     },
     "ciao": {

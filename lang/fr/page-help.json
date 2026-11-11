@@ -679,11 +679,11 @@
             "actions": [
                 {
                     "label": "Activé ou non",
-                    "text": "L'album photo vaut pour toute l'organisation. L'administrateur l'active sous Paramètres → Votre organisation. Désactivé, il n'apparaît nulle part : ni sur Clock Point, ni dans le menu."
+                    "text": "L'album photo vaut pour toute l'organisation. L'administrateur l'active sous Paramètres → Votre organisation. Désactivé, il n'apparaît nulle part : ni sur le QR de l'unité, ni dans le menu."
                 },
                 {
                     "label": "Prendre des photos",
-                    "text": "Sur Clock Point, l'exécutant choisit Photos, puis l'unité, et prend des photos. Le téléphone les réduit d'abord. Chaque unité a un maximum par jour."
+                    "text": "Sur le QR de l'unité, l'exécutant connecté ouvre Album photo. Les photos sont pour cette unité scannée ; le lieu et le nom de l'unité sont indiqués. Le téléphone les réduit d'abord. Il y a un maximum par jour."
                 },
                 {
                     "label": "Envoyer",
@@ -706,7 +706,7 @@
                 {
                     "label": "Album photo",
                     "requires_facility": true,
-                    "text": "Sous Votre organisation, l'administrateur active ou désactive l'album photo pour toute l'organisation. Activé : les exécutants prennent des photos par unité sur Clock Point, et vous les envoyez via Album photo. Les fichiers sont effacés après une semaine."
+                    "text": "Sous Votre organisation, l'administrateur active ou désactive l'album photo pour toute l'organisation. Activé : les exécutants prennent des photos sur le QR de l'unité, et vous les envoyez via Album photo. Les fichiers sont effacés après une semaine."
                 },
                 {
                     "label": "Notifications e-mail",
@@ -944,6 +944,10 @@
                 {
                     "label": "Mesures d’unité",
                     "text": "Si catégorie et unité autorisent les mesures et des champs sont liés, le portail affiche la tuile Mesure. Saisissez et envoyez — Clock Point non requis. Historique sous Travail → Mesures d’unité."
+                },
+                {
+                    "label": "Album photo",
+                    "text": "Si l'album photo est activé pour l'organisation, la tuile Album photo apparaît après la connexion sur ce QR d'unité. Les photos sont pour cette unité ; le lieu et le nom de l'unité sont indiqués. Prenez jusqu'à 24 photos par jour ; vous pouvez supprimer vos propres photos du jour. Le back-office décide de ce qui est envoyé."
                 }
             ],
             "status_note": "Les tâches ouvertes sur cette page suivent les statuts ci-dessous.",
@@ -1140,10 +1144,6 @@
                 {
                     "label": "Congé / Récup",
                     "text": "Après connexion, vous voyez la tuile Congé / Récup. Demandez un congé ou une récup (du–au, note facultative, 31 jours max., pas dans le passé). Les demandes ouvertes qui se chevauchent sont refusées. Vos demandes sont sous le formulaire : vous pouvez retirer une demande ouverte ou approuvée (pas encore commencée) ; un congé approuvé rétablit le planning. La gestion décide sous Time → Demandes ; refuser exige un motif, approuver non. Aucun e-mail n’est envoyé."
-                },
-                {
-                    "label": "Album photo",
-                    "text": "Si l'album photo est activé pour l'organisation, la tuile Album photo apparaît après la connexion. Votre groupe d'attache est présélectionné. Prenez jusqu'à 24 photos par unité et par jour ; vous pouvez supprimer vos propres photos du jour. Le back-office décide de ce qui est envoyé."
                 }
             ]
         },

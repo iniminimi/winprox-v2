@@ -671,11 +671,11 @@
             "actions": [
                 {
                     "label": "Aan of uit",
-                    "text": "Het fotoalbum geldt voor de hele organisatie. De beheerder zet het aan onder Instellingen → Je organisatie. Uit staat het nergens: niet op Clock Point en niet in het menu."
+                    "text": "Het fotoalbum geldt voor de hele organisatie. De beheerder zet het aan onder Instellingen → Je organisatie. Uit staat het nergens: niet op de unit-QR en niet in het menu."
                 },
                 {
                     "label": "Foto's maken",
-                    "text": "Op Clock Point kiest de uitvoerder Foto's, dan de unit, en maakt foto's. De telefoon verkleint ze eerst. Per unit geldt een maximum per dag."
+                    "text": "Op de unit-QR opent de aangemelde uitvoerder Fotoalbum. De foto's horen bij die gescande unit; locatie en unitnaam staan erbij. De telefoon verkleint ze eerst. Per dag geldt een maximum."
                 },
                 {
                     "label": "Mailen",
@@ -698,7 +698,7 @@
                 {
                     "label": "Fotoalbum",
                     "requires_facility": true,
-                    "text": "Onder Je organisatie zet de beheerder het fotoalbum aan of uit voor de hele organisatie. Aan: uitvoerders maken foto's per unit op Clock Point, en u mailt ze via Fotoalbum. De bestanden worden na een week gewist."
+                    "text": "Onder Je organisatie zet de beheerder het fotoalbum aan of uit voor de hele organisatie. Aan: uitvoerders maken foto's op de unit-QR, en u mailt ze via Fotoalbum. De bestanden worden na een week gewist."
                 },
                 {
                     "label": "E-mailmeldingen",
@@ -936,6 +936,10 @@
                 {
                     "label": "Unitmetingen",
                     "text": "Wanneer categorie én unit Unitmetingen toestaan en er meetvelden gekoppeld zijn, toont het portaal de tegel Meting. Vul de waarden in en verstuur — geen Clock Point vereist. Historiek in beheer onder Werk → Unitmetingen."
+                },
+                {
+                    "label": "Fotoalbum",
+                    "text": "Staat het fotoalbum aan voor de organisatie, dan zie je na aanmelden op deze unit-QR de tegel Fotoalbum. De foto's horen bij deze unit; locatie en unitnaam staan erbij. Neem tot 24 foto's per dag; je eigen foto's van vandaag kun je weer wissen. De backoffice beslist wat er verstuurd wordt."
                 }
             ],
             "status_note": "Open taken op deze pagina volgen de onderstaande statussen.",
@@ -1132,10 +1136,6 @@
                 {
                     "label": "Verlof / Recup",
                     "text": "Na aanmelden zie je de tegel Verlof / Recup. Vraag verlof of recup aan (van–tot, optionele toelichting, max. 31 dagen, niet in het verleden). Open aanvragen die overlappen worden geweigerd. Onder het formulier staan je eigen aanvragen: open of goedgekeurd (nog niet begonnen) kun je intrekken; bij goedgekeurd komt het uurrooster terug. Beheer beslist onder Time → Aanvragen; weigeren vraagt een reden, goedkeuren niet. Er gaat geen e-mail."
-                },
-                {
-                    "label": "Fotoalbum",
-                    "text": "Staat het fotoalbum aan voor de organisatie, dan zie je na het aanmelden de tegel Fotoalbum. Je thuisgroep is al gekozen. Neem tot 24 foto's per unit per dag; je eigen foto's van vandaag kun je weer wissen. De backoffice beslist wat er verstuurd wordt."
                 }
             ]
         },

@@ -1,6 +1,6 @@
 {
     "title": "Album photo",
-    "subtitle": "Photos prises par les exécutants par unité via Clock Point. Sélectionnez des photos et envoyez-les à une seule adresse e-mail.",
+    "subtitle": "Photos prises par les exécutants par unité via le QR de l'unité. Sélectionnez des photos et envoyez-les à une seule adresse e-mail.",
     "no_units": "L'album photo est désactivé, ou il n'y a pas encore d'unité active. Activez-le dans Paramètres → Votre organisation.",
     "photos_title": "Photos",
     "filters": {

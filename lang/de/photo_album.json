@@ -1,6 +1,6 @@
 {
     "title": "Fotoalbum",
-    "subtitle": "Fotos, die Ausführende pro Einheit über Clock Point aufnehmen. Wählen Sie Fotos aus und senden Sie sie an eine E-Mail-Adresse.",
+    "subtitle": "Fotos, die Ausführende pro Einheit über den QR-Code der Einheit aufnehmen. Wählen Sie Fotos aus und senden Sie sie an eine E-Mail-Adresse.",
     "no_units": "Das Fotoalbum ist aus, oder es gibt noch keine aktive Einheit. Schalten Sie es unter Einstellungen → Ihre Organisation ein.",
     "photos_title": "Fotos",
     "filters": {

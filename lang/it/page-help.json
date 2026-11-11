@@ -671,11 +671,11 @@
             "actions": [
                 {
                     "label": "Attivo o no",
-                    "text": "L'album foto vale per tutta l'organizzazione. L'amministratore lo attiva in Impostazioni → La sua organizzazione. Spento, non compare da nessuna parte: né su Clock Point né nel menu."
+                    "text": "L'album foto vale per tutta l'organizzazione. L'amministratore lo attiva in Impostazioni → La sua organizzazione. Spento, non compare da nessuna parte: né sul QR dell'unità né nel menu."
                 },
                 {
                     "label": "Scattare foto",
-                    "text": "Su Clock Point l'esecutore sceglie Foto, poi l'unità, e scatta. Il telefono le riduce prima. Ogni unità ha un massimo al giorno."
+                    "text": "Sul QR dell'unità l'esecutore connesso apre Album fotografico. Le foto sono di quell'unità scansionata; la sede e il nome dell'unità sono indicati. Il telefono le riduce prima. C'è un massimo al giorno."
                 },
                 {
                     "label": "Inviare",
@@ -698,7 +698,7 @@
                 {
                     "label": "Album foto",
                     "requires_facility": true,
-                    "text": "In La sua organizzazione l'amministratore attiva o disattiva l'album foto per tutta l'organizzazione. Attivo: gli esecutori scattano foto per unità su Clock Point e lei le invia da Album foto. I file vengono cancellati dopo una settimana."
+                    "text": "In La sua organizzazione l'amministratore attiva o disattiva l'album foto per tutta l'organizzazione. Attivo: gli esecutori scattano foto sul QR dell'unità e lei le invia da Album foto. I file vengono cancellati dopo una settimana."
                 },
                 {
                     "label": "Notifiche e-mail",
@@ -936,6 +936,10 @@
                 {
                     "label": "Misurazioni unità",
                     "text": "Se categoria e unità consentono le misurazioni e i campi sono collegati, il portale mostra la tessera Misura. Inserisci e invia — Clock Point non obbligatorio. Storico in Lavoro → Misurazioni unità."
+                },
+                {
+                    "label": "Album fotografico",
+                    "text": "Se l'album fotografico è attivo per l'organizzazione, dopo l'accesso su questo QR dell'unità vedi il riquadro Album fotografico. Le foto sono di questa unità; la sede e il nome dell'unità sono indicati. Scatta fino a 24 foto al giorno; puoi eliminare le tue foto di oggi. Il back office decide cosa inviare."
                 }
             ],
             "status_note": "Le attività aperte su questa pagina seguono gli stati qui sotto.",
@@ -1132,10 +1136,6 @@
                 {
                     "label": "Ferie / Recupero",
                     "text": "Dopo l’accesso vedi il riquadro Ferie / Recupero. Richiedi ferie o recupero (dal–al, nota facoltativa, max 31 giorni, non nel passato). Le richieste aperte che si sovrappongono vengono rifiutate. Le tue richieste stanno sotto il modulo: puoi ritirare una aperta o approvata (non ancora iniziata); ferie approvate ripristinano il turno. La gestione decide in Time → Richieste; rifiutare chiede un motivo, approvare no. Non parte nessuna e-mail."
-                },
-                {
-                    "label": "Album fotografico",
-                    "text": "Se l'album fotografico è attivo per l'organizzazione, dopo l'accesso vedi il riquadro Album fotografico. Il tuo gruppo di base è preselezionato. Scatta fino a 24 foto per unità al giorno; puoi eliminare le tue foto di oggi. Il back office decide cosa inviare."
                 }
             ]
         },

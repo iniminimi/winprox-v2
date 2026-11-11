@@ -671,11 +671,11 @@
             "actions": [
                 {
                     "label": "An oder aus",
-                    "text": "Das Fotoalbum gilt für die ganze Organisation. Der Administrator schaltet es unter Einstellungen → Ihre Organisation ein. Aus erscheint es nirgends: nicht auf Clock Point und nicht im Menü."
+                    "text": "Das Fotoalbum gilt für die ganze Organisation. Der Administrator schaltet es unter Einstellungen → Ihre Organisation ein. Aus erscheint es nirgends: nicht auf dem QR-Code der Einheit und nicht im Menü."
                 },
                 {
                     "label": "Fotos machen",
-                    "text": "Auf Clock Point wählt der Ausführende Fotos, dann die Unit, und macht Fotos. Das Telefon verkleinert sie zuerst. Pro Unit gilt ein Maximum pro Tag."
+                    "text": "Auf dem QR-Code der Einheit öffnet der angemeldete Ausführende Fotoalbum. Die Fotos gehören zu dieser gescannten Einheit; Standort und Name stehen dabei. Das Telefon verkleinert sie zuerst. Pro Tag gilt ein Maximum."
                 },
                 {
                     "label": "Senden",
@@ -698,7 +698,7 @@
                 {
                     "label": "Fotoalbum",
                     "requires_facility": true,
-                    "text": "Unter Ihre Organisation schaltet der Administrator das Fotoalbum für die ganze Organisation ein oder aus. Ein: Ausführende machen Fotos pro Unit auf Clock Point, und Sie mailen sie über Fotoalbum. Die Dateien werden nach einer Woche gelöscht."
+                    "text": "Unter Ihre Organisation schaltet der Administrator das Fotoalbum für die ganze Organisation ein oder aus. Ein: Ausführende machen Fotos über den QR-Code der Einheit, und Sie mailen sie über Fotoalbum. Die Dateien werden nach einer Woche gelöscht."
                 },
                 {
                     "label": "E-Mail-Benachrichtigungen",
@@ -936,6 +936,10 @@
                 {
                     "label": "Unit-Messungen",
                     "text": "Wenn Kategorie und Unit Unit-Messungen erlauben und Felder verknüpft sind, zeigt das Portal die Kachel Messung. Werte eingeben und senden — kein Clock Point nötig. Historie unter Arbeit → Unit-Messungen."
+                },
+                {
+                    "label": "Fotoalbum",
+                    "text": "Ist das Fotoalbum für die Organisation aktiviert, siehst du nach der Anmeldung auf diesem Einheiten-QR die Kachel Fotoalbum. Die Fotos gehören zu dieser Einheit; Standort und Name stehen dabei. Mache bis zu 24 Fotos pro Tag; deine eigenen Fotos von heute kannst du wieder löschen. Das Backoffice entscheidet, was gesendet wird."
                 }
             ],
             "status_note": "Offene Aufgaben auf dieser Seite folgen den untenstehenden Status.",
@@ -1132,10 +1136,6 @@
                 {
                     "label": "Urlaub / Ausgleich",
                     "text": "Nach der Anmeldung sehen Sie die Kachel Urlaub / Ausgleich. Beantragen Sie Urlaub oder Ausgleich (von–bis, optionaler Hinweis, max. 31 Tage, nicht in der Vergangenheit). Überlappende offene Anträge werden abgelehnt. Ihre Anträge stehen unter dem Formular: offen oder genehmigt (noch nicht begonnen) können Sie zurückziehen; bei Genehmigung kommt der Dienstplan zurück. Die Verwaltung entscheidet unter Time → Anträge; Ablehnen braucht eine Begründung, Genehmigen nicht. Es geht keine E-Mail."
-                },
-                {
-                    "label": "Fotoalbum",
-                    "text": "Ist das Fotoalbum für die Organisation aktiviert, siehst du nach der Anmeldung die Kachel Fotoalbum. Deine Stammgruppe ist vorausgewählt. Mache bis zu 24 Fotos pro Einheit pro Tag; deine eigenen Fotos von heute kannst du wieder löschen. Das Backoffice entscheidet, was gesendet wird."
                 }
             ]
         },

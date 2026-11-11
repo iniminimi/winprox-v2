@@ -47,7 +47,7 @@
                     "Meldingen, taken en inspectierondes beheren.",
                     "Locaties, teams, medewerkers en units beheren.",
                     "De RSZ/CIAO-registratie kan via de instellingen worden geactiveerd. Optionele GPS-werkbezoeken koppelen een bezoek aan een locatie.",
-                    "Optioneel fotoalbum: uitvoerders maken foto's per unit op Clock Point. U mailt ze vanuit Fotoalbum. De bestanden worden na een week gewist. U zet dit aan bij Instellingen, onder Je organisatie."
+                    "Optioneel fotoalbum: uitvoerders maken foto's op de unit-QR. Locatie en unitnaam staan erbij. U mailt ze vanuit Fotoalbum. De bestanden worden na een week gewist. U zet dit aan bij Instellingen, onder Je organisatie."
                 ],
                 "badge": "inbegrepen",
                 "key": "winprox_time"
@@ -206,7 +206,7 @@
             {
                 "title": "Fotoalbum per unit",
                 "items": [
-                    "Uitvoerders nemen op Clock Point tot 24 foto's per unit per dag; de thuisgroep staat al gekozen.",
+                    "Uitvoerders nemen op de unit-QR tot 24 foto's per dag van die unit. Locatie en unitnaam staan erbij.",
                     "De backoffice kiest foto's en stuurt ze naar één e-mailadres, tot 8 foto's in de mail zelf. Adressen worden per unit bewaard.",
                     "Foto's staan privé en worden na 7 dagen gewist. Aan of uit voor de hele organisatie, onder Instellingen → Je organisatie."
                 ],

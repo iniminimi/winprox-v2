@@ -40,6 +40,25 @@
         "measurements": "Messungen",
         "reservations": "Reservierungen"
     },
+    "album": {
+        "tile": "Fotoalbum",
+        "tile_sub": "Fotos dieser Einheit",
+        "title": "Fotoalbum",
+        "subtitle": "Diese Fotos gehören zur Einheit dieses QR-Codes.",
+        "counter": "Heute: :count von :max Fotos",
+        "add": "Foto aufnehmen",
+        "hint": "Die Fotos werden auf deinem Handy verkleinert und nach einigen Tagen gelöscht.",
+        "save": "Fotos speichern",
+        "own_today": "Deine Fotos von heute",
+        "delete": "Löschen",
+        "delete_confirm": "Dieses Foto löschen?",
+        "saved": ":count Foto(s) gespeichert.",
+        "errors": {
+            "photos_required": "Mache mindestens ein Foto.",
+            "day_full": "Maximum erreicht: :max Fotos pro Einheit pro Tag.",
+            "not_allowed": "Das ist nicht erlaubt."
+        }
+    },
     "report": {
         "title": "Eine Meldung erstellen",
         "description": "Worum geht es?",

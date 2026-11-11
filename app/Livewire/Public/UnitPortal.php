@@ -5,6 +5,9 @@ namespace App\Livewire\Public;
 use App\Actions\Portal\ClearWorkerTaskBaselineAction;
 use App\Actions\Portal\FindNewTeamTasksSinceBaselineAction;
 use App\Actions\Portal\MarkTeamTasksSeenInBaselineAction;
+use App\Actions\PhotoAlbum\DeleteUnitAlbumPhotoAction;
+use App\Actions\PhotoAlbum\LoadWorkerPhotoAlbumAction;
+use App\Actions\PhotoAlbum\UploadUnitAlbumPhotoAction;
 use App\Actions\Public\RecordUnitPortalVisitAction;
 use App\Actions\Public\SubmitReportAction;
 use App\Actions\Reservations\CancelReservationAction;
@@ -31,6 +34,7 @@ use Carbon\CarbonImmutable;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
 use App\Livewire\Concerns\StoresPortalFlashMessage;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
+use App\Http\Requests\PhotoAlbum\UploadUnitAlbumPhotosRequest;
 use App\Http\Requests\Public\CompletePortalTaskRequest;
 use App\Http\Requests\Public\ReportIssueRequest;
 use App\Http\Requests\Public\UpdateUnitPortalPhotosRequest;
@@ -136,6 +140,9 @@ class UnitPortal extends Component
 
     /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
     public array $checkPhotos = [];
+
+    /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
+    public array $albumPhotos = [];
 
     /** @var array<int|string, mixed> */
     public array $measureValues = [];
@@ -263,7 +270,11 @@ class UnitPortal extends Component
             }
         }
 
-        if (! in_array($section, ['home', 'new', 'issues', 'issue_detail', 'documents', 'announcements', 'reserve', 'my_reservations', 'unit_check', 'measure'], true)) {
+        if ($section === 'album' && ! $this->workerMayUsePhotoAlbum()) {
+            return;
+        }
+
+        if (! in_array($section, ['home', 'new', 'issues', 'issue_detail', 'documents', 'announcements', 'reserve', 'my_reservations', 'unit_check', 'measure', 'album'], true)) {
             return;
         }
 
@@ -290,8 +301,72 @@ class UnitPortal extends Component
             $this->resetErrorBag();
         }
 
+        if ($section === 'album') {
+            $this->albumPhotos = [];
+            $this->resetErrorBag(['albumPhotos']);
+            $this->dispatch('wp-prepare-photo-inputs');
+        }
+
         if ($section === 'reserve') {
             $this->prefillReservationGuest();
+        }
+    }
+
+    public function saveAlbumPhotos(UploadUnitAlbumPhotoAction $upload): void
+    {
+        if ($this->inactiveReasonKey !== null || ! $this->workerMayUsePhotoAlbum()) {
+            return;
+        }
+
+        $this->validate(
+            UploadUnitAlbumPhotosRequest::portalRuleSet(),
+            UploadUnitAlbumPhotosRequest::portalValidationMessages(),
+        );
+
+        $worker = $this->authorizedWorker();
+        if ($worker === null) {
+            return;
+        }
+
+        $unit = $this->unit();
+        $saved = 0;
+        foreach ($this->albumPhotos as $file) {
+            try {
+                $upload->handle($unit, $file, $this->tenantId, $worker);
+                $saved++;
+            } catch (\InvalidArgumentException $e) {
+                $this->addError('albumPhotos', __($e->getMessage() === 'album_day_full'
+                    ? 'portal.album.errors.day_full'
+                    : 'portal.album.errors.not_allowed', ['max' => UploadUnitAlbumPhotoAction::maxPerDay()]));
+                break;
+            }
+        }
+
+        $this->albumPhotos = [];
+        $this->dispatch('wp-clear-photo-previews');
+        if ($saved > 0) {
+            $this->portalFlash('portal.album.saved', ['count' => $saved]);
+        }
+    }
+
+    public function removeAlbumPhoto(int $index): void
+    {
+        if (isset($this->albumPhotos[$index])) {
+            array_splice($this->albumPhotos, $index, 1);
+        }
+    }
+
+    public function deleteAlbumPhoto(int $photoId, DeleteUnitAlbumPhotoAction $delete): void
+    {
+        $worker = $this->authorizedWorker();
+        if ($worker === null) {
+            return;
+        }
+
+        try {
+            $delete->handleForWorker($photoId, $this->tenantId, $worker);
+        } catch (\InvalidArgumentException) {
+            $this->addError('albumPhotos', __('portal.album.errors.not_allowed'));
         }
     }
 
@@ -1360,6 +1435,10 @@ class UnitPortal extends Component
             'unit' => $unit,
             'allowsUnitChecks' => $unit->allowsUnitChecks(),
             'allowsUnitMeasurements' => $unit->allowsUnitMeasurements(),
+            'allowsPhotoAlbum' => $this->workerMayUsePhotoAlbum(),
+            'photoAlbum' => ($this->workerMayUsePhotoAlbum() && $this->portalSection === 'album' && $worker !== null)
+                ? app(LoadWorkerPhotoAlbumAction::class)->handle($worker, $unit)
+                : null,
             'measureFields' => $measureFields,
             'unitFieldTrustActive' => $unitFieldTrustActive,
             'unitCheckList' => $unitCheckList,
@@ -1451,6 +1530,19 @@ class UnitPortal extends Component
         }
 
         return $worker;
+    }
+
+    private function workerMayUsePhotoAlbum(): bool
+    {
+        $worker = $this->authorizedWorker();
+        if ($worker === null) {
+            return false;
+        }
+
+        $unit = $this->unit();
+
+        return $unit->allowsPhotoAlbum()
+            && $worker->canClockAt($unit->location_id !== null ? (int) $unit->location_id : null);
     }
 
     private function showNewReportSection(): bool

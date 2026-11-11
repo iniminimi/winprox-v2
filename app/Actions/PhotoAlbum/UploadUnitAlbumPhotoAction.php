@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\DB;
 use InvalidArgumentException;
 
 /**
- * Voegt één foto toe aan het album van een unit (Clock Point-portaal).
+ * Voegt één foto toe aan het album van een unit (unit-QR-portaal).
  * Maximum per unit per kalenderdag: config('unit_photo_album.max_photos_per_day').
  * Bestand is client-side gecomprimeerd — geen server-resize (WINPROX_RULES.md §7).
  */

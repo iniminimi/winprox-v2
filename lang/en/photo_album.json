@@ -1,6 +1,6 @@
 {
     "title": "Photo album",
-    "subtitle": "Photos that workers take per unit via Clock Point. Select photos and send them to one email address.",
+    "subtitle": "Photos that workers take per unit via the unit QR. Select photos and send them to one email address.",
     "no_units": "The photo album is off, or there is no active unit yet. Turn it on under Settings → Your organisation.",
     "photos_title": "Photos",
     "filters": {

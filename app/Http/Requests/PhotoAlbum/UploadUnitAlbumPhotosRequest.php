@@ -7,7 +7,8 @@ namespace App\Http\Requests\PhotoAlbum;
 use Illuminate\Foundation\Http\FormRequest;
 
 /**
- * Albumfoto's vanuit het Clock Point-portaal (Livewire-veldnamen).
+ * Albumfoto's vanuit het unit-QR-portaal (Livewire-veldnamen).
+ * De unit is de gescande QR; er is geen unitkeuze.
  */
 class UploadUnitAlbumPhotosRequest extends FormRequest
 {
@@ -30,7 +31,6 @@ class UploadUnitAlbumPhotosRequest extends FormRequest
     public static function portalRuleSet(): array
     {
         return [
-            'albumUnitId' => ['required', 'integer'],
             'albumPhotos' => ['required', 'array', 'min:1', 'max:'.max(1, (int) config('unit_photo_album.max_photos_per_day', 24))],
             'albumPhotos.*' => ['image', 'max:10240'],
         ];
@@ -42,10 +42,9 @@ class UploadUnitAlbumPhotosRequest extends FormRequest
     public static function portalValidationMessages(): array
     {
         return [
-            'albumUnitId.required' => __('photo_album.errors.unit_required'),
-            'albumPhotos.required' => __('photo_album.errors.photos_required'),
-            'albumPhotos.min' => __('photo_album.errors.photos_required'),
-            'albumPhotos.max' => __('photo_album.errors.album_day_full'),
+            'albumPhotos.required' => __('portal.album.errors.photos_required'),
+            'albumPhotos.min' => __('portal.album.errors.photos_required'),
+            'albumPhotos.max' => __('portal.album.errors.day_full', ['max' => (int) config('unit_photo_album.max_photos_per_day', 24)]),
             'albumPhotos.*.image' => __('portal.report.errors.photos_image'),
             'albumPhotos.*.max' => __('portal.report.errors.photos_size'),
         ];

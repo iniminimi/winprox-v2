@@ -1,6 +1,6 @@
 {
     "title": "Álbum de fotos",
-    "subtitle": "Fotos que los operarios toman por unidad mediante Clock Point. Seleccione fotos y envíelas a una sola dirección de correo.",
+    "subtitle": "Fotos que los operarios toman por unidad mediante el QR de la unidad. Seleccione fotos y envíelas a una sola dirección de correo.",
     "no_units": "El álbum de fotos está desactivado, o aún no hay una unidad activa. Actívelo en Ajustes → Su organización.",
     "photos_title": "Fotos",
     "filters": {

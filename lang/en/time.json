@@ -583,27 +583,6 @@
             "empty": "No published shifts this week.",
             "you": "You",
             "absent": "Absent"
-        },
-        "album": {
-            "tile": "Photo album",
-            "tile_sub": "Photos of your unit",
-            "title": "Photo album",
-            "subtitle": "Take photos of the unit. The back office decides what is sent.",
-            "unit": "Unit",
-            "counter": "Today: :count of :max photos",
-            "add": "Take photo",
-            "hint": "Photos are resized on your phone and deleted after a few days.",
-            "save": "Save photos",
-            "own_today": "Your photos today",
-            "delete": "Delete",
-            "delete_confirm": "Delete this photo?",
-            "saved": ":count photo(s) saved.",
-            "errors": {
-                "unit_required": "Select a unit.",
-                "photos_required": "Take at least one photo.",
-                "day_full": "Maximum reached: :max photos per unit per day.",
-                "not_allowed": "This is not allowed."
-            }
         }
     },
     "ciao": {

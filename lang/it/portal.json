@@ -40,6 +40,25 @@
         "measurements": "Misurazioni",
         "reservations": "Prenotazioni"
     },
+    "album": {
+        "tile": "Album fotografico",
+        "tile_sub": "Foto di questa unità",
+        "title": "Album fotografico",
+        "subtitle": "Queste foto appartengono all'unità di questo codice QR.",
+        "counter": "Oggi: :count di :max foto",
+        "add": "Scatta foto",
+        "hint": "Le foto vengono ridotte sul telefono ed eliminate dopo alcuni giorni.",
+        "save": "Salva foto",
+        "own_today": "Le tue foto di oggi",
+        "delete": "Elimina",
+        "delete_confirm": "Eliminare questa foto?",
+        "saved": ":count foto salvate.",
+        "errors": {
+            "photos_required": "Scatta almeno una foto.",
+            "day_full": "Massimo raggiunto: :max foto per unità al giorno.",
+            "not_allowed": "Non è consentito."
+        }
+    },
     "report": {
         "title": "Crea una segnalazione",
         "description": "Qual è il problema?",

@@ -40,6 +40,25 @@
         "measurements": "Metingen",
         "reservations": "Reserveringen"
     },
+    "album": {
+        "tile": "Fotoalbum",
+        "tile_sub": "Foto's van deze unit",
+        "title": "Fotoalbum",
+        "subtitle": "Deze foto's horen bij de unit van deze QR-code.",
+        "counter": "Vandaag: :count van :max foto's",
+        "add": "Foto nemen",
+        "hint": "De foto's worden verkleind op je gsm en na enkele dagen gewist.",
+        "save": "Foto's opslaan",
+        "own_today": "Jouw foto's van vandaag",
+        "delete": "Wissen",
+        "delete_confirm": "Deze foto wissen?",
+        "saved": ":count foto('s) opgeslagen.",
+        "errors": {
+            "photos_required": "Neem minstens één foto.",
+            "day_full": "Maximum bereikt: :max foto's per unit per dag.",
+            "not_allowed": "Dit is niet toegestaan."
+        }
+    },
     "report": {
         "title": "Een melding maken",
         "description": "Wat is er aan de hand?",

@@ -22,6 +22,7 @@ use App\Models\QrReportEmailHold;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Unit;
+use App\Models\UnitAlbumPhoto;
 use App\Models\UnitGpsReport;
 use App\Models\Worker;
 use App\Support\PageHelp;
@@ -1782,4 +1783,90 @@ it('verbergt ook ronde-taken als meldingen, taken én inspectierondes uit staan'
         ->assertDontSee('wp-tile-title">'.__('portal.tiles.open_tasks'), false)
         ->assertDontSee('id="portal-open-tasks"', false)
         ->assertDontSee('Ronde-taak gebouw');
+});
+
+it('laat een aangemelde uitvoerder foto\'s nemen van de gescande unit', function () {
+    Storage::fake('local');
+    ['unit' => $unit, 'team' => $team, 'tenant' => $tenant, 'location' => $location] = unitPortalScaffold(['name' => 'Lokaal 4']);
+    $tenant->update(['photo_album_enabled' => true]);
+    $location->update(['name' => 'School Noord']);
+
+    Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Sam',
+        'last_name' => 'Worker',
+    ]);
+
+    $file = UploadedFile::fake()->image('album.jpg', 40, 40);
+
+    $portal = Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->assertDontSeeHtml('wire:click="openSection(\'album\')"')
+        ->set('first_name', 'Sam')
+        ->set('last_name', 'Worker')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'star')
+        ->call('signInWithIcon')
+        ->assertSeeHtml('wire:click="openSection(\'album\')"')
+        ->call('openSection', 'album')
+        ->assertSet('portalSection', 'album')
+        ->assertSee('School Noord', false)
+        ->assertSee('Lokaal 4', false)
+        ->set('albumPhotos', [$file])
+        ->call('saveAlbumPhotos')
+        ->assertHasNoErrors()
+        ->assertSet('flashMessage', __('portal.album.saved', ['count' => 1]));
+
+    $photo = UnitAlbumPhoto::query()->sole();
+    expect($photo->unit_id)->toBe($unit->id);
+    Storage::disk('local')->assertExists($photo->path);
+
+    $portal->call('deleteAlbumPhoto', $photo->id)->assertHasNoErrors();
+    expect(UnitAlbumPhoto::query()->count())->toBe(0);
+});
+
+it('toont geen fotoalbum op de unit-QR zonder schakelaar of zonder klokrecht', function () {
+    ['team' => $team, 'tenant' => $tenant] = unitPortalScaffold();
+    Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Sam',
+        'last_name' => 'Worker',
+    ]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('first_name', 'Sam')
+        ->set('last_name', 'Worker')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'star')
+        ->call('signInWithIcon')
+        ->assertDontSeeHtml('wire:click="openSection(\'album\')"')
+        ->call('openSection', 'album')
+        ->assertSet('portalSection', 'home');
+
+    $tenant->update(['checkmate_mode' => true, 'photo_album_enabled' => true]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('first_name', 'Sam')
+        ->set('last_name', 'Worker')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'star')
+        ->call('signInWithIcon')
+        ->assertDontSeeHtml('wire:click="openSection(\'album\')"');
+
+    $tenant->update(['checkmate_mode' => false, 'photo_album_enabled' => true]);
+    $team->update(['clocks_all_locations' => false]);
+    $worker = Worker::query()->where('internal_team_id', $team->id)->first();
+    $other = Location::factory()->create(['tenant_id' => $tenant->id, 'is_active' => true]);
+    $worker->locations()->attach($other->id);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('first_name', 'Sam')
+        ->set('last_name', 'Worker')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'star')
+        ->call('signInWithIcon')
+        ->assertDontSeeHtml('wire:click="openSection(\'album\')"')
+        ->call('openSection', 'album')
+        ->assertSet('portalSection', 'home');
 });

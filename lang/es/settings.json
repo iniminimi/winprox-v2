@@ -9,7 +9,7 @@
         "modal_hint": "Estos datos aparecen en códigos QR impresos, etiquetas de unidad y otros materiales para reportadores.",
         "card_hint": "Estos datos aparecen en códigos QR impresos y etiquetas de unidad.",
         "photo_album_label": "Álbum de fotos",
-        "photo_album_hint": "Los operarios hacen fotos por unidad en Clock Point. En Álbum de fotos las envía a una dirección. Los archivos se borran al cabo de una semana.",
+        "photo_album_hint": "Los operarios hacen fotos en el QR de la unidad. La sede y el nombre de la unidad aparecen. En Álbum de fotos las envía a una dirección. Los archivos se borran al cabo de una semana.",
         "label_email": "Correo electrónico",
         "label_phone": "Teléfono",
         "label_address": "Dirección",

@@ -671,11 +671,11 @@
             "actions": [
                 {
                     "label": "Activado o no",
-                    "text": "El álbum de fotos vale para toda la organización. El administrador lo activa en Ajustes → Su organización. Desactivado, no aparece en ningún sitio: ni en Clock Point ni en el menú."
+                    "text": "El álbum de fotos vale para toda la organización. El administrador lo activa en Ajustes → Su organización. Desactivado, no aparece en ningún sitio: ni en el QR de la unidad ni en el menú."
                 },
                 {
                     "label": "Hacer fotos",
-                    "text": "En Clock Point el operario elige Fotos, luego la unidad, y hace fotos. El teléfono las reduce primero. Cada unidad tiene un máximo por día."
+                    "text": "En el QR de la unidad el operario conectado abre Álbum de fotos. Las fotos son de esa unidad escaneada; la sede y el nombre de la unidad aparecen. El teléfono las reduce primero. Hay un máximo por día."
                 },
                 {
                     "label": "Enviar",
@@ -698,7 +698,7 @@
                 {
                     "label": "Álbum de fotos",
                     "requires_facility": true,
-                    "text": "En Su organización el administrador activa o desactiva el álbum de fotos para toda la organización. Activado: los operarios hacen fotos por unidad en Clock Point y usted las envía desde Álbum de fotos. Los archivos se borran al cabo de una semana."
+                    "text": "En Su organización el administrador activa o desactiva el álbum de fotos para toda la organización. Activado: los operarios hacen fotos en el QR de la unidad y usted las envía desde Álbum de fotos. Los archivos se borran al cabo de una semana."
                 },
                 {
                     "label": "Notificaciones por correo",
@@ -936,6 +936,10 @@
                 {
                     "label": "Mediciones de unidad",
                     "text": "Si categoría y unidad permiten mediciones y hay campos vinculados, el portal muestra la ficha Medición. Introduzca y envíe — Clock Point no obligatorio. Historial en Trabajo → Mediciones de unidad."
+                },
+                {
+                    "label": "Álbum de fotos",
+                    "text": "Si el álbum de fotos está activado para la organización, verás el mosaico Álbum de fotos tras iniciar sesión en este QR de unidad. Las fotos son de esta unidad; la sede y el nombre de la unidad aparecen. Toma hasta 24 fotos al día; puedes eliminar tus propias fotos de hoy. La oficina decide qué se envía."
                 }
             ],
             "status_note": "Las tareas abiertas en esta página siguen los estados indicados a continuación.",
@@ -1132,10 +1136,6 @@
                 {
                     "label": "Permiso / Compensación",
                     "text": "Tras identificarte ves el mosaico Permiso / Compensación. Solicita permiso o compensación (desde–hasta, nota opcional, máx. 31 días, no en el pasado). Las solicitudes abiertas que se solapan se rechazan. Tus solicitudes están debajo del formulario: puedes retirar una abierta o aprobada (aún no empezada); un permiso aprobado restaura el cuadrante. La gestión decide en Time → Solicitudes; rechazar pide un motivo, aprobar no. No se envía correo."
-                },
-                {
-                    "label": "Álbum de fotos",
-                    "text": "Si el álbum de fotos está activado para la organización, verás el mosaico Álbum de fotos tras iniciar sesión. Tu grupo base viene preseleccionado. Toma hasta 24 fotos por unidad y día; puedes eliminar tus propias fotos de hoy. La oficina decide qué se envía."
                 }
             ]
         },

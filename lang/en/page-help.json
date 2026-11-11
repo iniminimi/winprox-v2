@@ -671,11 +671,11 @@
             "actions": [
                 {
                     "label": "On or off",
-                    "text": "The photo album applies to the whole organisation. An administrator turns it on under Settings → Your organisation. Off, it appears nowhere: not on Clock Point and not in the menu."
+                    "text": "The photo album applies to the whole organisation. An administrator turns it on under Settings → Your organisation. Off, it appears nowhere: not on the unit QR and not in the menu."
                 },
                 {
                     "label": "Take photos",
-                    "text": "On Clock Point the worker chooses Photos, then the unit, and takes photos. The phone reduces them first. Each unit has a daily maximum."
+                    "text": "On the unit QR a signed-in worker opens Photo album. The photos belong to that scanned unit; the location and unit name are shown. The phone reduces them first. There is a daily maximum."
                 },
                 {
                     "label": "Email",
@@ -698,7 +698,7 @@
                 {
                     "label": "Photo album",
                     "requires_facility": true,
-                    "text": "Under Your organisation an administrator turns the photo album on or off for the whole organisation. On: workers take photos per unit on Clock Point, and you email them via Photo album. The files are deleted after a week."
+                    "text": "Under Your organisation an administrator turns the photo album on or off for the whole organisation. On: workers take photos on the unit QR, and you email them via Photo album. The files are deleted after a week."
                 },
                 {
                     "label": "Email notifications",
@@ -936,6 +936,10 @@
                 {
                     "label": "Unit measurements",
                     "text": "When category and unit allow unit measurements and fields are linked, the portal shows the Measure tile. Enter values and submit — Clock Point not required. History under Work → Unit measurements."
+                },
+                {
+                    "label": "Photo album",
+                    "text": "If the photo album is on for the organisation, you see the Photo album tile after signing in on this unit QR. The photos belong to this unit; the location and unit name are shown. Take up to 24 photos per day; you can delete your own photos from today. The back office decides what is sent."
                 }
             ],
             "status_note": "Open tasks on this page follow the statuses below.",
@@ -1132,10 +1136,6 @@
                 {
                     "label": "Leave / TOIL",
                     "text": "After sign-in you see the Leave / TOIL tile. Request leave or time off in lieu (from–to, optional note, max. 31 days, not in the past). Overlapping open requests are refused. Your own requests sit below the form: you can withdraw an open or approved request that has not started; approved leave restores the roster. Staff decide under Time → Requests; reject needs a reason, approve does not. No email is sent."
-                },
-                {
-                    "label": "Photo album",
-                    "text": "If the photo album is on for the organisation, you see the Photo album tile after signing in. Your home group is preselected. Take up to 24 photos per unit per day; you can delete your own photos from today. The back office decides what is sent."
                 }
             ]
         },
