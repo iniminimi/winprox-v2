@@ -207,7 +207,7 @@
                 "items": [
                     "Les exécutants prennent sur Clock Point jusqu'à 24 photos par unité et par jour ; leur groupe d'attache est présélectionné.",
                     "Le back-office choisit des photos et les envoie à une seule adresse e-mail, jusqu'à 8 photos dans l'e-mail même. Les adresses sont enregistrées par unité.",
-                    "Les photos sont stockées de manière privée et supprimées après 7 jours. Activable par unité ; pas dans Checkmate."
+                    "Les photos sont stockées de manière privée et supprimées après 7 jours. Activable par unité."
                 ],
                 "key": "photo_album"
             },
