@@ -67,6 +67,15 @@ it('legt Checkmate uit in de hulp van abonnement', function (string $locale): vo
         ->and($action['text'])->toContain('CIAO');
 })->with(['nl', 'en', 'fr', 'de', 'es', 'it']);
 
+it('noemt het maximum aantal foto’s in de hulp van klokscherm', function (string $locale): void {
+    app()->setLocale($locale);
+
+    $help = PageHelp::for('time.clock_display');
+    $text = collect($help['actions'] ?? [])->pluck('text')->implode(' ');
+
+    expect($text)->toContain((string) \App\Models\ClockDisplayImage::MAX_PER_SCOPE);
+})->with(['nl', 'en', 'fr', 'de', 'es', 'it']);
+
 it('laadt paginahulp voor units-overzicht', function (): void {
     app()->setLocale('nl');
 
