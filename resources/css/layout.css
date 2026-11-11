@@ -1251,6 +1251,7 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
 }
 
 .wp-portal .wp-tile {
+    width: 100%;
     background-color: color-mix(in srgb, var(--wp-surface) 85%, transparent);
 }
 

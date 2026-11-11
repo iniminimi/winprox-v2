@@ -1124,6 +1124,7 @@ it('lets a verified worker store unit photos up to the remaining slots', functio
 
 it('lets a verified worker record unit gps coordinates', function () {
     ['unit' => $unit, 'team' => $team, 'tenant' => $tenant] = unitPortalScaffold();
+    $unit->category->update(['allow_gps_location' => true]);
 
     $worker = Worker::factory()->withIcon('star')->create([
         'tenant_id' => $tenant->id,
@@ -1157,6 +1158,31 @@ it('lets a reporter record gps when the category allows it', function () {
         ->assertHasNoErrors();
 
     expect($unit->fresh()->latestGpsReport)->not->toBeNull();
+});
+
+it('verbergt gps vastleggen voor een uitvoerder als de categorie het uit heeft', function () {
+    ['unit' => $unit, 'team' => $team, 'tenant' => $tenant] = unitPortalScaffold();
+    $unit->category->update(['allow_gps_location' => false]);
+
+    Worker::factory()->withIcon('star')->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Sam',
+        'last_name' => 'Worker',
+    ]);
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->set('first_name', 'Sam')
+        ->set('last_name', 'Worker')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'star')
+        ->call('signInWithIcon')
+        ->assertDontSee('wire:click="updateUnitGps"')
+        ->set('gpsLatitude', 51.05)
+        ->set('gpsLongitude', 3.72)
+        ->set('gpsReportedAt', '2026-06-13T14:30:00+02:00')
+        ->call('updateUnitGps')
+        ->assertHasErrors(['gpsLatitude']);
 });
 
 it('rejects gps capture for reporters when the category does not allow it', function () {

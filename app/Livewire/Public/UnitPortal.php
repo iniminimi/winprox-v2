@@ -1466,7 +1466,7 @@ class UnitPortal extends Component
             'hasUnitTeam' => $team !== null,
             'qrLinkPhotos' => $unit->qrLinkPhotos ?? collect(),
             'workerBelongsToUnitTeam' => $worker !== null && $unit->category !== null && $unit->category->teams()->where('internal_teams.id', $worker->internal_team_id)->exists(),
-            'canCaptureUnitGps' => $worker !== null || ($unit->category?->allow_gps_location ?? false),
+            'canCaptureUnitGps' => $this->canCaptureUnitGps(),
             'mapsUrl' => $unit->googleMapsUrl(),
             'isTeamPortal' => false,
             'manageWorkersMessage' => '',
@@ -1563,13 +1563,7 @@ class UnitPortal extends Component
 
     private function canCaptureUnitGps(): bool
     {
-        if ($this->authorizedWorker() !== null) {
-            return true;
-        }
-
-        $unit = $this->unit();
-
-        return (bool) ($unit->category?->allow_gps_location ?? false);
+        return (bool) ($this->unit()->category?->allow_gps_location ?? false);
     }
 
     private function workerBelongsToUnitTeam(): bool
