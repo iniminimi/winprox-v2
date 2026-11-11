@@ -289,6 +289,9 @@
                 @if ($unitDescription)
                     <p class="wp-muted">{{ $unitDescription }}</p>
                 @endif
+                @if ($canAct && $worker)
+                    <p class="wp-muted">{{ $worker->displayName() }}</p>
+                @endif
             </div>
 
             <div class="wp-tiles">
@@ -338,12 +341,6 @@
                         <span class="wp-tile-title">{{ __('portal.tiles.measurements') }} : {{ $measureFields->count() }}</span>
                     </button>
                 @endif
-                @if ($canAct && ($allowsPhotoAlbum ?? false))
-                    <button type="button" class="wp-tile" wire:click="openSection('album')">
-                        <span class="wp-tile-title">{{ __('portal.album.tile') }}</span>
-                        <span class="wp-tile-sub">{{ __('portal.album.tile_sub') }}</span>
-                    </button>
-                @endif
                 @if ($isReservable)
                     <button type="button" class="wp-tile"
                             @if ($guestReservations->isNotEmpty())
@@ -358,16 +355,6 @@
 
             @if ($isFieldVisitor && $hasUnitTeam)
                 @if ($canAct)
-                    <div class="wp-portal-worker-bar">
-                        <div class="wp-card wp-card-pad wp-cluster">
-                            @if ($worker?->field_icon_slug)
-                                <div class="wp-icon-tile is-selected" aria-hidden="true" style="pointer-events: none; width: 40px; height: 40px; padding: 0.35rem;">
-                                    <x-wp-worker-icon :slug="$worker->field_icon_slug" />
-                                </div>
-                            @endif
-                            <strong class="wp-text-body">{{ $worker?->displayName() }}</strong>
-                        </div>
-                    </div>
                     @if ($worker?->is_teamleader)
                         @include('partials.wp-portal-teamleader-release')
                     @endif
@@ -975,6 +962,13 @@
                     <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('portal.reservations.empty') }}</p></div>
                 @endforelse
             </div>
+        @endif
+
+        @if ($portalSection === 'home' && ($canAct ?? false) && ($allowsPhotoAlbum ?? false))
+            <button type="button" class="wp-tile" wire:click="openSection('album')">
+                <span class="wp-tile-title">{{ __('portal.album.tile') }}</span>
+                <span class="wp-tile-sub">{{ __('portal.album.tile_sub') }}</span>
+            </button>
         @endif
 
         {{-- ==================== UNIT BACKGROUND PHOTO ==================== --}}

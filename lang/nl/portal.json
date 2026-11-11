@@ -42,7 +42,7 @@
     },
     "album": {
         "tile": "Fotoalbum",
-        "tile_sub": "Foto's van deze unit",
+        "tile_sub": "Foto's van vandaag, om te mailen",
         "title": "Fotoalbum",
         "subtitle": "Deze foto's horen bij de unit van deze QR-code.",
         "counter": "Vandaag: :count van :max foto's",

@@ -42,7 +42,7 @@
     },
     "album": {
         "tile": "Photo album",
-        "tile_sub": "Photos of this unit",
+        "tile_sub": "Today's photos, to email",
         "title": "Photo album",
         "subtitle": "These photos belong to the unit on this QR code.",
         "counter": "Today: :count of :max photos",

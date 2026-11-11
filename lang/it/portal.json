@@ -42,7 +42,7 @@
     },
     "album": {
         "tile": "Album fotografico",
-        "tile_sub": "Foto di questa unità",
+        "tile_sub": "Foto di oggi, da inviare",
         "title": "Album fotografico",
         "subtitle": "Queste foto appartengono all'unità di questo codice QR.",
         "counter": "Oggi: :count di :max foto",

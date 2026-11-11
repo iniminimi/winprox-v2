@@ -42,7 +42,7 @@
     },
     "album": {
         "tile": "Album photo",
-        "tile_sub": "Photos de cette unité",
+        "tile_sub": "Photos du jour, à envoyer",
         "title": "Album photo",
         "subtitle": "Ces photos appartiennent à l'unité de ce QR code.",
         "counter": "Aujourd'hui : :count sur :max photos",

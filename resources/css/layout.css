@@ -1574,12 +1574,6 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
     color: var(--wp-text);
 }
 
-.wp-portal-worker-bar {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
 /* Zelfde pulse als PRIO1 (.wp-badge-critical) â€” alleen ingeklapt (Alpine verwijdert class bij uitklappen). */
 .wp-portal-open-tasks-card--attention {
     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;

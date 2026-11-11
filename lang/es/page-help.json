@@ -939,7 +939,7 @@
                 },
                 {
                     "label": "Álbum de fotos",
-                    "text": "Si el álbum de fotos está activado para la organización, verás el mosaico Álbum de fotos tras iniciar sesión en este QR de unidad. Las fotos son de esta unidad; la sede y el nombre de la unidad aparecen. Toma hasta 24 fotos al día; puedes eliminar tus propias fotos de hoy. La oficina decide qué se envía."
+                    "text": "Si el álbum de fotos está activado, aparece junto a las tarjetas de fotos en este QR de unidad. Son las fotos de hoy para enviar, no las fotos fijas de la unidad. Hasta 24 al día; puedes eliminar tus fotos de hoy. La oficina decide qué se envía."
                 }
             ],
             "status_note": "Las tareas abiertas en esta página siguen los estados indicados a continuación.",

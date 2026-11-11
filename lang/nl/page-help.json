@@ -939,7 +939,7 @@
                 },
                 {
                     "label": "Fotoalbum",
-                    "text": "Staat het fotoalbum aan voor de organisatie, dan zie je na aanmelden op deze unit-QR de tegel Fotoalbum. De foto's horen bij deze unit; locatie en unitnaam staan erbij. Neem tot 24 foto's per dag; je eigen foto's van vandaag kun je weer wissen. De backoffice beslist wat er verstuurd wordt."
+                    "text": "Staat het fotoalbum aan, dan staat het bij de fotokaarten op deze unit-QR. Dat zijn foto's van vandaag om te mailen, niet de vaste foto's van de unit. Tot 24 per dag; je eigen foto's van vandaag kun je wissen. De backoffice beslist wat er verstuurd wordt."
                 }
             ],
             "status_note": "Open taken op deze pagina volgen de onderstaande statussen.",

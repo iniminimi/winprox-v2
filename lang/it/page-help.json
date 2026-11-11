@@ -939,7 +939,7 @@
                 },
                 {
                     "label": "Album fotografico",
-                    "text": "Se l'album fotografico è attivo per l'organizzazione, dopo l'accesso su questo QR dell'unità vedi il riquadro Album fotografico. Le foto sono di questa unità; la sede e il nome dell'unità sono indicati. Scatta fino a 24 foto al giorno; puoi eliminare le tue foto di oggi. Il back office decide cosa inviare."
+                    "text": "Se l'album fotografico è attivo, sta con le schede foto su questo QR dell'unità. Sono le foto di oggi da inviare, non le foto fisse dell'unità. Fino a 24 al giorno; puoi eliminare le tue foto di oggi. Il back office decide cosa inviare."
                 }
             ],
             "status_note": "Le attività aperte su questa pagina seguono gli stati qui sotto.",

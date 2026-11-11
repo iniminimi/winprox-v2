@@ -939,7 +939,7 @@
                 },
                 {
                     "label": "Fotoalbum",
-                    "text": "Ist das Fotoalbum für die Organisation aktiviert, siehst du nach der Anmeldung auf diesem Einheiten-QR die Kachel Fotoalbum. Die Fotos gehören zu dieser Einheit; Standort und Name stehen dabei. Mache bis zu 24 Fotos pro Tag; deine eigenen Fotos von heute kannst du wieder löschen. Das Backoffice entscheidet, was gesendet wird."
+                    "text": "Ist das Fotoalbum aktiv, steht es bei den Fotokarten auf diesem Einheiten-QR. Das sind Fotos von heute zum Versenden, nicht die festen Fotos der Einheit. Bis zu 24 pro Tag; deine eigenen Fotos von heute kannst du löschen. Das Backoffice entscheidet, was gesendet wird."
                 }
             ],
             "status_note": "Offene Aufgaben auf dieser Seite folgen den untenstehenden Status.",

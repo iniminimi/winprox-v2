@@ -565,8 +565,10 @@ backoffice kiest welke foto's naar één e-mailadres gaan. Algemeen, niet sector
 - Nooit in Checkmate (geen tegel, geen sidebar, Policy weigert).
 
 ### Unit-QR (aangemelde uitvoerder)
-- Tegel **Fotoalbum** op de unit-QR, niet op Clock Point. Zichtbaar zodra het album voor de
-  organisatie aan staat, de uitvoerder aangemeld is, en `canClockAt` de locatie toelaat.
+- **Fotoalbum** staat bij de fotokaarten op de unit-QR, niet op Clock Point en niet tussen de
+  navigatietegels. Zichtbaar zodra het album voor de organisatie aan staat, de uitvoerder
+  aangemeld is, en `canClockAt` de locatie toelaat. Dit zijn foto's van vandaag om te mailen,
+  niet de vaste foto's van de unit.
 - De gescande unit is de enige unit. Locatie en unitnaam staan op het scherm. Geen dropdown
   en geen thuisgroep als fotokeuze.
 - Max. **24 foto's per unit per dag** (`config/unit_photo_album.php`); client-side compressie

@@ -939,7 +939,7 @@
                 },
                 {
                     "label": "Photo album",
-                    "text": "If the photo album is on for the organisation, you see the Photo album tile after signing in on this unit QR. The photos belong to this unit; the location and unit name are shown. Take up to 24 photos per day; you can delete your own photos from today. The back office decides what is sent."
+                    "text": "When the photo album is on, it sits with the photo cards on this unit QR. Those are today's photos to email, not the unit's permanent photos. Up to 24 a day; you can delete your own photos from today. The back office decides what is sent."
                 }
             ],
             "status_note": "Open tasks on this page follow the statuses below.",

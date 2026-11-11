@@ -947,7 +947,7 @@
                 },
                 {
                     "label": "Album photo",
-                    "text": "Si l'album photo est activé pour l'organisation, la tuile Album photo apparaît après la connexion sur ce QR d'unité. Les photos sont pour cette unité ; le lieu et le nom de l'unité sont indiqués. Prenez jusqu'à 24 photos par jour ; vous pouvez supprimer vos propres photos du jour. Le back-office décide de ce qui est envoyé."
+                    "text": "Si l'album photo est activé, il se trouve avec les cartes photo sur ce QR d'unité. Ce sont les photos du jour à envoyer, pas les photos permanentes de l'unité. Jusqu'à 24 par jour ; vous pouvez supprimer vos photos du jour. Le back-office décide de ce qui est envoyé."
                 }
             ],
             "status_note": "Les tâches ouvertes sur cette page suivent les statuts ci-dessous.",
