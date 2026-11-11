@@ -629,13 +629,20 @@
                 @if ($photoAlbum['previewUrls'] !== [])
                     <div class="wp-card wp-card-pad wp-stack">
                         <p class="wp-section-title">{{ __('portal.album.own_today') }}</p>
-                        <div class="wp-album-own">
-                            @foreach ($photoAlbum['previewUrls'] as $albumPhotoId => $albumPhotoUrl)
-                                <div class="wp-album-own__item" wire:key="portal-album-photo-{{ $albumPhotoId }}">
-                                    <span class="wp-photo-thumb"><img src="{{ $albumPhotoUrl }}" alt="" width="160" height="160" loading="lazy"></span>
-                                    <button type="button" class="btn btn--ghost btn--block" wire:click="deleteAlbumPhoto({{ $albumPhotoId }})" wire:confirm="{{ __('portal.album.delete_confirm') }}">{{ __('portal.album.delete') }}</button>
-                                </div>
-                            @endforeach
+                        <div class="wp-photo-gallery" x-data="{ lightboxSrc: null }" @keydown.escape.window="lightboxSrc = null">
+                            <div class="wp-photo-grid wp-photo-grid--gallery">
+                                @foreach ($photoAlbum['previewUrls'] as $albumPhotoId => $albumPhotoUrl)
+                                    <div class="wp-photo-thumb" wire:key="portal-album-photo-{{ $albumPhotoId }}">
+                                        <button type="button" @click="lightboxSrc = @js($albumPhotoUrl)" aria-label="{{ __('issues.show.photo_enlarge') }}">
+                                            <img src="{{ $albumPhotoUrl }}" alt="" width="80" height="80" loading="lazy">
+                                        </button>
+                                        <button type="button" class="wp-photo-remove" @click.stop wire:click="deleteAlbumPhoto({{ $albumPhotoId }})" wire:confirm="{{ __('portal.album.delete_confirm') }}" aria-label="{{ __('portal.album.delete') }}">×</button>
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="wp-photo-lightbox" x-show="lightboxSrc" x-cloak x-transition.opacity role="dialog" aria-modal="true" @click="lightboxSrc = null">
+                                <img :src="lightboxSrc" alt="" @click.stop>
+                            </div>
                         </div>
                     </div>
                 @endif

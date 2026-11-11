@@ -3735,6 +3735,18 @@ a.wp-pagination__page:active:not(.is-active) {
     display: block;
 }
 
+.wp-photo-grid--gallery .wp-photo-thumb > button:not(.wp-photo-remove) {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+}
+
 .wp-photo-lightbox {
     position: fixed;
     inset: 0;

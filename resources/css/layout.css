@@ -1636,36 +1636,6 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
     text-decoration: none;
 }
 
-/* Fotoalbum op de unit-QR: vierkante foto's, wisknop eronder (niet in het 4-koloms raster). */
-.wp-album-own {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.75rem;
-    align-items: start;
-}
-
-.wp-album-own__item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    min-width: 0;
-}
-
-.wp-album-own__item .wp-photo-thumb {
-    display: block;
-    width: 100%;
-    height: auto;
-    aspect-ratio: 1 / 1;
-}
-
-.wp-album-own__item .wp-photo-thumb img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
 /* ---------------------------------------------------------------------------
  | Foutpagina's (401, 403, 404, 419, 429, 500, 503) â€” standalone layout.
  * ------------------------------------------------------------------------- */
