@@ -7,6 +7,7 @@
     $hintKey = $hintKey ?? null;
     $showHint = $showHint ?? true;
     $storeLocal = $storeLocal ?? false;
+    $maxDimension = $maxDimension ?? null;
     $uploadLocale = app()->getLocale();
 
     $uploadProperty = $model;
@@ -27,6 +28,7 @@
         data-wp-photo-remove-method="{{ $removeMethod }}"
         data-wp-photo-max="{{ $max }}"
         @if ($storeLocal) data-wp-photo-store="local" @endif
+        @if ($maxDimension) data-wp-photo-max-dimension="{{ (int) $maxDimension }}" @endif
         x-init="queueMicrotask(() => window.wpRefreshAllPhotoUploadAreas?.())"
     >
         <div class="wp-photo-grid wp-photo-grid--gallery">

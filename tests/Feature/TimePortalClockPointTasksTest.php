@@ -468,3 +468,42 @@ it('toont Unit check pas na Start werk en verwart Afmelden niet met inklokken', 
 
     expect(substr_count($portal->html(), __('portal.team.complete_needs_visit')))->toBe(1);
 });
+
+it('laat een uitvoerder foto’s nemen in het fotoalbum van haar thuisgroep op Clock Point', function () {
+    Storage::fake('local');
+    $ctx = prepareClockPointWorker(gpsVisitContext());
+    [$tenant, $worker, $clockPoint, $location, $unit] = $ctx;
+    $other = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id, 'is_active' => true, 'photo_album_enabled' => true, 'name' => 'Lokaal 2']);
+    $unit->update(['photo_album_enabled' => true]);
+    $worker->update(['default_unit_id' => $other->id]);
+
+    $file = UploadedFile::fake()->image('album.jpg', 50, 50);
+
+    $portal = signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
+        ->assertSeeHtml('wire:click="openAlbum"')
+        ->call('openAlbum')
+        ->assertSet('albumOpen', true)
+        ->assertSet('albumUnitId', $other->id)
+        ->set('albumPhotos', [$file])
+        ->call('saveAlbumPhotos')
+        ->assertHasNoErrors()
+        ->assertSet('flashMessage', __('time.portal.album.saved', ['count' => 1]));
+
+    $photo = \App\Models\UnitAlbumPhoto::query()->sole();
+    expect($photo->unit_id)->toBe($other->id)
+        ->and($photo->worker_id)->toBe($worker->id);
+    Storage::disk('local')->assertExists($photo->path);
+
+    $portal->call('deleteAlbumPhoto', $photo->id)->assertHasNoErrors();
+    expect(\App\Models\UnitAlbumPhoto::query()->count())->toBe(0);
+});
+
+it('toont geen fotoalbum op Clock Point als geen unit het album aan heeft', function () {
+    $ctx = prepareClockPointWorker(gpsVisitContext());
+    [, , $clockPoint] = $ctx;
+
+    signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')
+        ->assertDontSeeHtml('wire:click="openAlbum"')
+        ->call('openAlbum')
+        ->assertSet('albumOpen', false);
+});

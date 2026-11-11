@@ -71,6 +71,11 @@ use App\Models\Location;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Unit;
+use App\Models\UnitAlbumPhoto;
+use App\Actions\PhotoAlbum\DeleteUnitAlbumPhotoAction;
+use App\Actions\PhotoAlbum\LoadWorkerPhotoAlbumAction;
+use App\Actions\PhotoAlbum\UploadUnitAlbumPhotoAction;
+use App\Http\Requests\PhotoAlbum\UploadUnitAlbumPhotosRequest;
 use App\Models\Worker;
 use App\Models\WorkerDevice;
 use App\Models\WorkShift;
@@ -217,6 +222,13 @@ class TimePortal extends Component
 
     #[Locked]
     public bool $teamleaderOpen = false;
+
+    public bool $albumOpen = false;
+
+    public ?int $albumUnitId = null;
+
+    /** @var array<int, mixed> */
+    public array $albumPhotos = [];
 
     public string $absenceKind = 'leave';
 
@@ -615,6 +627,93 @@ class TimePortal extends Component
         $this->teamleaderOpen = false;
         $this->hoursMonth = now()->format('Y-m');
         $this->hoursListOpen = true;
+    }
+
+    public function openAlbum(LoadWorkerPhotoAlbumAction $loadAlbum): void
+    {
+        $worker = $this->authorizedWorker();
+        if ($worker === null || $loadAlbum->units($worker, $this->activeClockPoint())->isEmpty()) {
+            return;
+        }
+
+        $this->closeRoster();
+        $this->hoursListOpen = false;
+        $this->scheduleListOpen = false;
+        $this->teamScheduleOpen = false;
+        $this->absenceListOpen = false;
+        $this->teamleaderOpen = false;
+        $this->albumUnitId = $loadAlbum->handle($worker, $this->activeClockPoint(), null)['unit']?->id;
+        $this->albumPhotos = [];
+        $this->albumOpen = true;
+        $this->dispatch('wp-prepare-photo-inputs');
+    }
+
+    public function closeAlbum(): void
+    {
+        $this->albumOpen = false;
+        $this->albumPhotos = [];
+        $this->resetErrorBag(['albumUnitId', 'albumPhotos']);
+        $this->dispatch('wp-clear-photo-previews');
+    }
+
+    public function removeAlbumPhoto(int $index): void
+    {
+        if (isset($this->albumPhotos[$index])) {
+            array_splice($this->albumPhotos, $index, 1);
+        }
+    }
+
+    public function saveAlbumPhotos(UploadUnitAlbumPhotoAction $upload, LoadWorkerPhotoAlbumAction $loadAlbum): void
+    {
+        $worker = $this->authorizedWorker();
+        if ($worker === null) {
+            return;
+        }
+
+        $this->validate(UploadUnitAlbumPhotosRequest::portalRuleSet(), UploadUnitAlbumPhotosRequest::portalValidationMessages());
+
+        $unit = $loadAlbum->units($worker, $this->activeClockPoint())->firstWhere('id', $this->albumUnitId);
+        if ($unit === null) {
+            $this->addError('albumUnitId', __('time.portal.album.errors.unit_required'));
+
+            return;
+        }
+
+        $saved = 0;
+        foreach ($this->albumPhotos as $file) {
+            try {
+                $upload->handle($unit, $file, $this->tenantId, $worker);
+                $saved++;
+            } catch (InvalidArgumentException $e) {
+                $this->addError('albumPhotos', __($e->getMessage() === 'album_day_full'
+                    ? 'time.portal.album.errors.day_full'
+                    : 'time.portal.album.errors.not_allowed', ['max' => UploadUnitAlbumPhotoAction::maxPerDay()]));
+                break;
+            }
+        }
+
+        $this->albumPhotos = [];
+        $this->dispatch('wp-clear-photo-previews');
+        if ($saved > 0) {
+            $this->portalFlash('time.portal.album.saved', ['count' => $saved]);
+        }
+    }
+
+    public function deleteAlbumPhoto(int $photoId, DeleteUnitAlbumPhotoAction $delete): void
+    {
+        $worker = $this->authorizedWorker();
+        $photo = $worker !== null
+            ? UnitAlbumPhoto::query()->where('tenant_id', $worker->tenant_id)->find($photoId)
+            : null;
+        if ($photo === null) {
+            return;
+        }
+
+        try {
+            $delete->handle($photo, (int) $worker->tenant_id, null, $worker);
+        } catch (InvalidArgumentException) {
+            $this->addError('albumPhotos', __('time.portal.album.errors.not_allowed'));
+        }
     }
 
     public function closeHours(): void
@@ -2277,6 +2376,16 @@ class TimePortal extends Component
             : null;
         $homescreenPoint = $this->activeClockPoint();
 
+        $photoAlbumUnits = collect();
+        $photoAlbum = null;
+        if ($canAct && $verifiedWorker !== null && ! $checkmateMode) {
+            $loadAlbum = app(LoadWorkerPhotoAlbumAction::class);
+            $photoAlbumUnits = $loadAlbum->units($verifiedWorker, $this->activeClockPoint());
+            if ($this->albumOpen && $photoAlbumUnits->isNotEmpty()) {
+                $photoAlbum = $loadAlbum->handle($verifiedWorker, $this->activeClockPoint(), $this->albumUnitId);
+            }
+        }
+
         return view('livewire.public.time-portal', [
             'canAct' => $canAct,
             'verifiedWorker' => $verifiedWorker,
@@ -2319,6 +2428,8 @@ class TimePortal extends Component
             'hasTimeModule' => $hasTimeModule,
             'timeRosterEnabled' => $timeRosterEnabled,
             'evacuationList' => $evacuationList,
+            'photoAlbumUnits' => $photoAlbumUnits,
+            'photoAlbum' => $photoAlbum,
             'gpsOnClock' => $this->tenantRequestsClockGps(),
             'gpsVisits' => $gpsVisits,
             'canPunch' => $this->canPunchNow(),

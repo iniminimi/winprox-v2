@@ -290,6 +290,18 @@ function wpShowUploadError(message) {
 }
 
 /**
+ * Optioneel kleinere foto's per upload-area (bv. fotoalbum dat per mail gaat).
+ *
+ * @param {HTMLElement} area
+ * @returns {{ maxDimension?: number }}
+ */
+function wpAreaCompressOptions(area) {
+    const maxDimension = Number(area.dataset.wpPhotoMaxDimension || '0');
+
+    return maxDimension > 0 ? { maxDimension } : {};
+}
+
+/**
  * @param {HTMLElement} area
  * @param {HTMLInputElement} input
  * @param {string} propertyName
@@ -317,7 +329,7 @@ async function wpProcessPhotoBatch(area, input, propertyName, files) {
 
     try {
         const compressedFiles = await Promise.all(
-            files.map((file) => wpCompressImageFile(file)),
+            files.map((file) => wpCompressImageFile(file, wpAreaCompressOptions(area))),
         );
 
         if (area.dataset.wpPhotoStore === 'local') {

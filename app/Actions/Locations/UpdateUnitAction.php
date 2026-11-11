@@ -68,6 +68,10 @@ class UpdateUnitAction
             $payload['allow_unit_measurements'] = (bool) $data['allow_unit_measurements'];
         }
 
+        if (array_key_exists('photo_album_enabled', $data)) {
+            $payload['photo_album_enabled'] = (bool) $data['photo_album_enabled'];
+        }
+
         if (array_key_exists('require_reporter_contact', $data)) {
             $payload['require_reporter_contact'] = (bool) $data['require_reporter_contact'];
         }

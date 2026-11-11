@@ -42,6 +42,7 @@
         $showUnitChecksNav = $activeTenant instanceof Tenant
             && $activeTenant->workMenuUnitChecksEnabled()
             && $activeTenant->hasRecordedUnitChecks();
+        $showPhotoAlbumNav = $activeTenant instanceof Tenant && $activeTenant->hasPhotoAlbumUnits();
         $checkmateNav = \App\Support\Checkmate\CheckmateMode::isActive($activeTenant);
 
         $primaryNav = [
@@ -377,6 +378,7 @@
                                 || (($workMenuIssuesTasksOn || $showWorkMenuInspectionRounds) && request()->routeIs('tasks.*'))
                                 || ($showWorkMenuChecklists && request()->routeIs('checklists.*'))
                                 || ($showUnitChecksNav && request()->routeIs('unit-checks.*'))
+                                || ($showPhotoAlbumNav && request()->routeIs('photo-album.*'))
                                 || ($showWorkMenuCalendar && request()->routeIs('calendar.*'))
                                 || ($showWorkMenuReservations && request()->routeIs('reservations.*'))
                                 || ($showWorkMenuUnitMeasurements && request()->routeIs('unit-measurements.*'))
@@ -401,10 +403,13 @@
                                 && ($authUser?->can('viewAny', \App\Models\UnitCheckList::class) ?? false);
                             $showUnitChecksNavItem = $showUnitChecksNav
                                 && ($authUser?->can('viewAny', \App\Models\UnitCheck::class) ?? false);
+                            $showPhotoAlbumNavItem = $showPhotoAlbumNav
+                                && ($authUser?->can('viewAny', \App\Models\UnitAlbumPhoto::class) ?? false);
                             $showWorkGroup = $showWorkMenuIssuesTasks
                                 || $showWorkMenuInspectionRounds
                                 || $showChecklistsNav
                                 || $showUnitChecksNavItem
+                                || $showPhotoAlbumNavItem
                                 || $showWorkVisitsNav
                                 || $showWorkMenuCalendar
                                 || $showWorkMenuReservations
@@ -476,6 +481,13 @@
                                            class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('unit-checks.*') ? 'is-active' : '' }}"
                                            @click="nav = false">
                                             <span>{{ __('common.nav.unit_checks') }}</span>
+                                        </a>
+                                    @endif
+                                    @if ($showPhotoAlbumNavItem)
+                                        <a href="{{ route('photo-album.index') }}"
+                                           class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('photo-album.*') ? 'is-active' : '' }}"
+                                           @click="nav = false">
+                                            <span>{{ __('common.nav.photo_album') }}</span>
                                         </a>
                                     @endif
                                     @if ($showWorkVisitsNav)

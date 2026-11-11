@@ -583,6 +583,27 @@
             "empty": "Keine veröffentlichten Dienste in dieser Woche.",
             "you": "Sie",
             "absent": "Abwesend"
+        },
+        "album": {
+            "tile": "Fotoalbum",
+            "tile_sub": "Fotos deiner Einheit",
+            "title": "Fotoalbum",
+            "subtitle": "Mache Fotos der Einheit. Das Backoffice entscheidet, was gesendet wird.",
+            "unit": "Einheit",
+            "counter": "Heute: :count von :max Fotos",
+            "add": "Foto aufnehmen",
+            "hint": "Die Fotos werden auf deinem Handy verkleinert und nach einigen Tagen gelöscht.",
+            "save": "Fotos speichern",
+            "own_today": "Deine Fotos von heute",
+            "delete": "Löschen",
+            "delete_confirm": "Dieses Foto löschen?",
+            "saved": ":count Foto(s) gespeichert.",
+            "errors": {
+                "unit_required": "Wähle eine Einheit.",
+                "photos_required": "Mache mindestens ein Foto.",
+                "day_full": "Maximum erreicht: :max Fotos pro Einheit pro Tag.",
+                "not_allowed": "Das ist nicht erlaubt."
+            }
         }
     },
     "ciao": {
@@ -1087,7 +1108,7 @@
             "half_day_range": "Ein halber Tag kann nur ein einzelnes Datum sein."
         }
     },
-        "leave_balance": {
+    "leave_balance": {
         "short": ":days T",
         "title": "Urlaubssaldo :year:\nAnspruch :entitlement\nGenehmigt :approved\nGeplant :planned\nRest :remaining",
         "entitlement": "Jahresanspruch",

@@ -6,19 +6,21 @@ use App\Actions\Retention\PruneClosedIssueMediaAction;
 use App\Actions\Retention\PruneInactiveTenantFacilityDataAction;
 use App\Actions\Retention\PrunePresenceSubmissionsAction;
 use App\Actions\Retention\PruneRosterRestorePointsAction;
+use App\Actions\Retention\PruneUnitAlbumPhotosAction;
 use Illuminate\Console\Command;
 
 class RetentionPruneCommand extends Command
 {
     protected $signature = 'winprox:retention-prune {--dry-run : Toon wat verwijderd zou worden zonder te wijzigen}';
 
-    protected $description = 'Prune closed issue photos, CIAO submissions, roster restore points, and inactive tenant facility data per retention policy';
+    protected $description = 'Prune closed issue photos, CIAO submissions, roster restore points, unit album photos, and inactive tenant facility data per retention policy';
 
     public function handle(
         PruneClosedIssueMediaAction $pruneMedia,
         PrunePresenceSubmissionsAction $prunePresence,
         PruneInactiveTenantFacilityDataAction $pruneTenants,
         PruneRosterRestorePointsAction $pruneRosterRestorePoints,
+        PruneUnitAlbumPhotosAction $pruneUnitAlbumPhotos,
     ): int {
         $dryRun = (bool) $this->option('dry-run');
 
@@ -47,6 +49,14 @@ class RetentionPruneCommand extends Command
             'Herstelpunten: %d gescand, %d %s',
             $restorePoints['scanned'],
             $restorePoints['removed'],
+            $dryRun ? '(zou verwijderen)' : 'verwijderd',
+        ));
+
+        $albumPhotos = $pruneUnitAlbumPhotos->handle($dryRun);
+        $this->info(sprintf(
+            'Fotoalbum: %d gescand, %d %s',
+            $albumPhotos['scanned'],
+            $albumPhotos['removed'],
             $dryRun ? '(zou verwijderen)' : 'verwijderd',
         ));
 

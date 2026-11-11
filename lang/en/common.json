@@ -34,7 +34,8 @@
         "work_visits": "Work visits",
         "checklists": "Checklists",
         "workers": "Workers",
-        "activity": "Activity"
+        "activity": "Activity",
+        "photo_album": "Photo album"
     },
     "status": {
         "new": "Open",

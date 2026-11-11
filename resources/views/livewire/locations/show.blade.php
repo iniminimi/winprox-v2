@@ -419,6 +419,15 @@
                                 @error('unitAllowReservations') <span class="wp-error">{{ $message }}</span> @enderror
                             @endif
 
+                            @unless ($checkmateMode)
+                                <x-wp-tooltip :text="__('locations.units.photo_album_hint')" wrap class="wp-tooltip--block">
+                                    <label class="wp-check">
+                                        <input type="checkbox" wire:model="unitPhotoAlbumEnabled">
+                                        <span>{{ __('locations.units.fields.photo_album') }}</span>
+                                    </label>
+                                </x-wp-tooltip>
+                            @endunless
+
                             @if ($workMenuUnitChecksEnabled || $unitAllowUnitChecks)
                                 <x-wp-tooltip :text="__('locations.units.allow_unit_checks_hint')" wrap class="wp-tooltip--block">
                                     <label class="wp-check">

@@ -24,4 +24,9 @@ return [
     | Uurrooster-herstelpunten (vorige diensten van een roosterwijziging).
     */
     'roster_restore_points_days' => (int) env('RETENTION_ROSTER_RESTORE_POINTS_DAYS', 30),
+
+    /*
+    | Foto's van het fotoalbum per unit (bestand + rij). De verzendhistoriek blijft.
+    */
+    'unit_album_photos_days' => (int) env('RETENTION_UNIT_ALBUM_PHOTOS_DAYS', 7),
 ];

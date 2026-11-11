@@ -583,6 +583,27 @@
             "empty": "Aucun service publié cette semaine.",
             "you": "Vous",
             "absent": "Absent(e)"
+        },
+        "album": {
+            "tile": "Album photo",
+            "tile_sub": "Photos de votre unité",
+            "title": "Album photo",
+            "subtitle": "Prenez des photos de l'unité. Le back-office décide de ce qui est envoyé.",
+            "unit": "Unité",
+            "counter": "Aujourd'hui : :count sur :max photos",
+            "add": "Prendre une photo",
+            "hint": "Les photos sont réduites sur votre téléphone et supprimées après quelques jours.",
+            "save": "Enregistrer les photos",
+            "own_today": "Vos photos d'aujourd'hui",
+            "delete": "Supprimer",
+            "delete_confirm": "Supprimer cette photo ?",
+            "saved": ":count photo(s) enregistrée(s).",
+            "errors": {
+                "unit_required": "Choisissez une unité.",
+                "photos_required": "Prenez au moins une photo.",
+                "day_full": "Maximum atteint : :max photos par unité et par jour.",
+                "not_allowed": "Ce n'est pas autorisé."
+            }
         }
     },
     "ciao": {
@@ -1087,7 +1108,7 @@
             "half_day_range": "Une demi-journée ne peut concerner qu'une seule date."
         }
     },
-        "leave_balance": {
+    "leave_balance": {
         "short": ":days j",
         "title": "Solde de congé :year :\nDroit :entitlement\nApprouvé :approved\nPlanifié :planned\nRestant :remaining",
         "entitlement": "Droit annuel",

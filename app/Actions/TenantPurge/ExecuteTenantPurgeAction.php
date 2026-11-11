@@ -45,6 +45,16 @@ final class ExecuteTenantPurgeAction
         'location-documents',
     ];
 
+    /** Kolommen met paden op de privé-disk (`local`), zelfde opbouw als MEDIA_PATH_COLUMNS. */
+    public const PRIVATE_MEDIA_PATH_COLUMNS = [
+        'unit_album_photos' => ['path'],
+    ];
+
+    /** Mappen op de privé-disk met de tenant-id in het pad. */
+    public const PRIVATE_MEDIA_TENANT_DIRECTORIES = [
+        'unit-album',
+    ];
+
     public function __construct(
         private CollectTenantPurgeCountsAction $collectCounts,
         private CreateTenantPurgeBackupAction $createBackup,
@@ -238,10 +248,20 @@ final class ExecuteTenantPurgeAction
 
     private function deleteMediaFiles(Tenant $tenant): void
     {
-        $disk = Storage::disk('public');
+        $this->deleteDiskMedia($tenant, 'public', self::MEDIA_PATH_COLUMNS, self::MEDIA_TENANT_DIRECTORIES);
+        $this->deleteDiskMedia($tenant, 'local', self::PRIVATE_MEDIA_PATH_COLUMNS, self::PRIVATE_MEDIA_TENANT_DIRECTORIES);
+    }
+
+    /**
+     * @param  array<string, list<string>>  $pathColumns
+     * @param  list<string>  $tenantDirectories
+     */
+    private function deleteDiskMedia(Tenant $tenant, string $diskName, array $pathColumns, array $tenantDirectories): void
+    {
+        $disk = Storage::disk($diskName);
         $tenantId = (int) $tenant->id;
 
-        foreach (self::MEDIA_PATH_COLUMNS as $table => $columns) {
+        foreach ($pathColumns as $table => $columns) {
             DB::table($table)
                 ->where($table === 'tenants' ? 'id' : 'tenant_id', $tenantId)
                 ->select(array_merge(['id'], $columns))
@@ -257,7 +277,7 @@ final class ExecuteTenantPurgeAction
                 });
         }
 
-        foreach (self::MEDIA_TENANT_DIRECTORIES as $directory) {
+        foreach ($tenantDirectories as $directory) {
             $disk->deleteDirectory($directory.'/'.$tenantId);
         }
     }

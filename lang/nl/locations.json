@@ -146,7 +146,8 @@
             "roster_code": "Roostercode",
             "roster_code_hint": "Optioneel. Korte code voor het uurrooster, uniek per locatie (bijv. G1).",
             "visit_pin": "Werkbezoek-pin",
-            "visit_pin_hint": "Vaste pin van het gebouw voor GPS-werkbezoeken. Leeg = alleen meldingen/taken. Klik het rode icoon, zoek in Google Maps, klik de rode pin en plak hier (51.336167, 3.236306). GPS-meldingen van het portaal wijzigen deze pin niet."
+            "visit_pin_hint": "Vaste pin van het gebouw voor GPS-werkbezoeken. Leeg = alleen meldingen/taken. Klik het rode icoon, zoek in Google Maps, klik de rode pin en plak hier (51.336167, 3.236306). GPS-meldingen van het portaal wijzigen deze pin niet.",
+            "photo_album": "Fotoalbum"
         },
         "translation_preview": "Vertaling (portaal)",
         "translation_edit": {
@@ -216,7 +217,8 @@
             "inherits_from": "Volgt categorie :category (vinkjes worden automatisch overgenomen bij wijziging van categorie).",
             "overrides_active": "Deze unit wijkt af van de categorie-instellingen.",
             "no_category_hint": "Kies een categorie om portaal-opties over te nemen. Zonder categorie gelden alleen de unit-vinkjes hieronder."
-        }
+        },
+        "photo_album_hint": "Uitvoerders nemen via Clock Point foto's van deze unit (max. 24 per dag, 7 dagen bewaard). De backoffice stuurt ze naar één e-mailadres."
     },
     "bulk": {
         "title": "Bulk units toevoegen",

@@ -204,7 +204,10 @@
                 "worker_devices": "Dispositivi degli esecutori: :count",
                 "worker_leave_entitlements": "Diritti alle ferie: :count",
                 "worker_passkey_credentials": "Passkey degli esecutori: :count",
-                "worker_weekday_minutes": "Ore settimanali per esecutore: :count"
+                "worker_weekday_minutes": "Ore settimanali per esecutore: :count",
+                "unit_album_photos": "Foto dell'album: :count",
+                "unit_album_recipients": "Destinatari dell'album: :count",
+                "unit_album_sends": "Invii dell'album: :count"
             }
         },
         "link_fallback": "Se il pulsante non funziona, copia questo link:",
@@ -240,5 +243,11 @@
         "confirmation_note": "Hai una domanda nel frattempo? Rispondi pure a questa e-mail.",
         "ops_subject": "WinProx: richiesta demo — :company",
         "ops_body": "Nuova richiesta di demo dal sito web.\n\nAzienda: :company\nContatto: :name\nE-mail: :email\nTelefono: :phone\nComune: :municipality\nPreferenza: :preference\nNota: :note"
+    },
+    "unit_album": {
+        "subject": ":tenant — Foto",
+        "intro": ":tenant ti invia delle foto.",
+        "outro": "Questa e-mail è stata inviata da :tenant tramite WinProx.",
+        "photo_alt": "Foto :number"
     }
 }

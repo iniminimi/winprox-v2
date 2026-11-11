@@ -146,7 +146,8 @@
             "roster_code": "Dienstplancode",
             "roster_code_hint": "Optional. Kurzer Code für den Dienstplan, eindeutig pro Standort (z. B. G1).",
             "visit_pin": "Arbeitsbesuch-Pin",
-            "visit_pin_hint": "Fester Gebäude-Pin für GPS-Arbeitsbesuche. Leer = nur Meldungen/Aufgaben. Rotes Symbol klicken, in Google Maps suchen, roten Pin klicken und hier einfügen (51.336167, 3.236306). Portal-GPS-Meldungen ändern diesen Pin nicht."
+            "visit_pin_hint": "Fester Gebäude-Pin für GPS-Arbeitsbesuche. Leer = nur Meldungen/Aufgaben. Rotes Symbol klicken, in Google Maps suchen, roten Pin klicken und hier einfügen (51.336167, 3.236306). Portal-GPS-Meldungen ändern diesen Pin nicht.",
+            "photo_album": "Fotoalbum"
         },
         "translation_preview": "Übersetzung (Portal)",
         "translation_edit": {
@@ -216,7 +217,8 @@
             "inherits_from": "Folgt Kategorie :category (Häkchen werden bei Kategoriewechsel übernommen).",
             "overrides_active": "Diese Unit weicht von den Kategorie-Einstellungen ab.",
             "no_category_hint": "Wählen Sie eine Kategorie, um Portal-Optionen zu übernehmen. Ohne Kategorie gelten nur die Unit-Vinkjes unten."
-        }
+        },
+        "photo_album_hint": "Ausführende machen über Clock Point Fotos dieser Einheit (max. 24 pro Tag, 7 Tage gespeichert). Das Backoffice sendet sie an eine E-Mail-Adresse."
     },
     "bulk": {
         "title": "Bulk-Units hinzufügen",

@@ -146,7 +146,8 @@
             "roster_code": "Roster code",
             "roster_code_hint": "Optional. Short code for the roster, unique per location (e.g. G1).",
             "visit_pin": "Work-visit pin",
-            "visit_pin_hint": "Fixed building pin for GPS work visits. Empty = issues/tasks only. Click the red icon, find it in Google Maps, click the red pin and paste here (51.336167, 3.236306). Portal GPS reports never change this pin."
+            "visit_pin_hint": "Fixed building pin for GPS work visits. Empty = issues/tasks only. Click the red icon, find it in Google Maps, click the red pin and paste here (51.336167, 3.236306). Portal GPS reports never change this pin.",
+            "photo_album": "Photo album"
         },
         "translation_preview": "Translation (portal)",
         "translation_edit": {
@@ -216,7 +217,8 @@
             "inherits_from": "Follows category :category (flags are copied when you change the category).",
             "overrides_active": "This unit differs from the category settings.",
             "no_category_hint": "Choose a category to inherit portal options. Without a category, only the unit flags below apply."
-        }
+        },
+        "photo_album_hint": "Workers take photos of this unit via Clock Point (max. 24 per day, kept for 7 days). The back office sends them to one email address."
     },
     "bulk": {
         "title": "Add bulk units",

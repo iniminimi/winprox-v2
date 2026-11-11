@@ -38,6 +38,7 @@ class Unit extends Model
         'allow_reservations',
         'allow_unit_checks',
         'allow_unit_measurements',
+        'photo_album_enabled',
         'require_reporter_contact',
         'require_reporter_email_verification',
         'background_photo_path',
@@ -54,6 +55,7 @@ class Unit extends Model
         'allow_reservations' => 'boolean',
         'allow_unit_checks' => 'boolean',
         'allow_unit_measurements' => 'boolean',
+        'photo_album_enabled' => 'boolean',
         'require_reporter_contact' => 'boolean',
         'require_reporter_email_verification' => 'boolean',
     ];
@@ -136,6 +138,18 @@ class Unit extends Model
         $this->loadMissing('category');
 
         return (bool) $this->category?->allow_unit_checks;
+    }
+
+    /** Fotoalbum per unit: unit-vlag aan en geen Checkmate (docs/FEATURES.md §5h). */
+    public function allowsPhotoAlbum(): bool
+    {
+        if (! (bool) $this->photo_album_enabled || ! (bool) $this->is_active) {
+            return false;
+        }
+
+        $this->loadMissing('tenant');
+
+        return ! ($this->tenant?->checkmateMode() ?? false);
     }
 
     public function allowsUnitMeasurements(): bool

@@ -203,6 +203,15 @@
                 ]
             },
             {
+                "title": "Photo album per unit",
+                "items": [
+                    "Workers take up to 24 photos per unit per day on Clock Point; their home group is preselected.",
+                    "The back office selects photos and sends them to one email address, up to 8 photos inside the email. Addresses are saved per unit.",
+                    "Photos are stored privately and deleted after 7 days. On/off per unit; not in Checkmate."
+                ],
+                "key": "photo_album"
+            },
+            {
                 "title": "Inspection rounds",
                 "body": "An inspection round is a set route along units or locations. It can be one-off or recurring.",
                 "items": [

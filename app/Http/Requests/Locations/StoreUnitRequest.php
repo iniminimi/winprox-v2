@@ -76,6 +76,7 @@ class StoreUnitRequest extends FormRequest
             'allow_reservations' => ['boolean'],
             'allow_unit_checks' => ['boolean'],
             'allow_unit_measurements' => ['boolean'],
+            'photo_album_enabled' => ['boolean'],
             'measure_field_ids' => ['nullable', 'array'],
             'measure_field_ids.*' => ['integer', 'exists:unit_measure_fields,id'],
             'require_reporter_contact' => ['boolean'],

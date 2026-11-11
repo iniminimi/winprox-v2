@@ -34,7 +34,8 @@
         "work_visits": "Werkbezoeken",
         "checklists": "Checklists",
         "workers": "Uitvoerders",
-        "activity": "Activiteit"
+        "activity": "Activiteit",
+        "photo_album": "Fotoalbum"
     },
     "status": {
         "new": "Open",

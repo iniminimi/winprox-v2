@@ -1118,6 +1118,10 @@
                 {
                     "label": "Congé / Récup",
                     "text": "Après connexion, vous voyez la tuile Congé / Récup. Demandez un congé ou une récup (du–au, note facultative, 31 jours max., pas dans le passé). Les demandes ouvertes qui se chevauchent sont refusées. Vos demandes sont sous le formulaire : vous pouvez retirer une demande ouverte ou approuvée (pas encore commencée) ; un congé approuvé rétablit le planning. La gestion décide sous Time → Demandes ; refuser exige un motif, approuver non. Aucun e-mail n’est envoyé."
+                },
+                {
+                    "label": "Album photo",
+                    "text": "Si l'album photo est activé pour une unité de ce lieu, la tuile Album photo apparaît après la connexion. Votre groupe d'attache est présélectionné. Prenez jusqu'à 24 photos par unité et par jour ; vous pouvez supprimer vos propres photos du jour. Le back-office décide de ce qui est envoyé."
                 }
             ]
         },
@@ -2306,6 +2310,31 @@
                 {
                     "label": "Qui peut voir ceci ?",
                     "text": "Uniquement les administrateurs de votre organisation. Les exécutants, chefs d'équipe et collègues ne voient pas cet écran."
+                }
+            ]
+        },
+        "photo-album": {
+            "title": "Aide — Album photo",
+            "actions": [
+                {
+                    "label": "Activer",
+                    "text": "Activez Album photo dans Lieux → modifier l'unité (désactivé par défaut). Non disponible dans Checkmate."
+                },
+                {
+                    "label": "Prendre des photos",
+                    "text": "Les exécutants ouvrent Album photo sur Clock Point après s'être connectés. Leur groupe d'attache du planning est présélectionné. Au maximum 24 photos par unité et par jour ; le téléphone les réduit avant l'envoi."
+                },
+                {
+                    "label": "Envoyer",
+                    "text": "Choisissez une unité et un jour, cochez des photos et saisissez une adresse e-mail, ou choisissez une adresse enregistrée de cette unité. Une nouvelle adresse est enregistrée avec l'unité, avec une description libre (p. ex. maman de Lotte). Au maximum 8 photos par e-mail, dans l'e-mail lui-même (pas de lien). Plus de photos = plusieurs e-mails à la même adresse."
+                },
+                {
+                    "label": "Limites et désinscription",
+                    "text": "Au maximum 25 e-mails photo par heure et par organisation ; au-delà, l'envoi est différé (statut Planifié). Chaque e-mail contient le lien de désinscription standard. Si une adresse s'est désinscrite, rien n'est envoyé et vous recevez un message ; Envois affiche alors Non envoyé : désinscrit."
+                },
+                {
+                    "label": "Conservation",
+                    "text": "Les photos sont stockées de manière privée (pas de lien public) et supprimées automatiquement après 7 jours. Le consentement des personnes concernées relève de la responsabilité de l'organisation."
                 }
             ]
         }

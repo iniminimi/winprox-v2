@@ -1,0 +1,53 @@
+{
+    "title": "Photo album",
+    "subtitle": "Photos that workers take per unit via Clock Point. Select photos and send them to one email address.",
+    "no_units": "No unit with a photo album yet. Turn on the photo album under Locations → edit unit.",
+    "photos_title": "Photos",
+    "filters": {
+        "unit": "Unit",
+        "day": "Day"
+    },
+    "retention_hint": "Photos are deleted automatically after :days days.",
+    "empty": "No photos on this day.",
+    "delete": "Delete",
+    "delete_confirm": "Delete this photo?",
+    "send": {
+        "title": "Send",
+        "hint": "One recipient per send. Each email holds up to :max photos; if you select more, several emails are sent.",
+        "email": "Email address",
+        "description": "Description (optional)",
+        "description_placeholder": "e.g. Lotte's mum",
+        "submit": "Send (:count)",
+        "queued": ":count email(s) queued.",
+        "scheduled": ":count email(s) scheduled, last one around :time."
+    },
+    "recipients": {
+        "title": "Recipients for this unit",
+        "use": "Select",
+        "edit": "Description",
+        "delete": "Remove",
+        "delete_confirm": "Remove this address from this unit?",
+        "empty": "No recipients yet. A new address is saved when you send."
+    },
+    "sends": {
+        "title": "Sends",
+        "line": ":count photos · :time · :user",
+        "empty": "Nothing sent yet.",
+        "status": {
+            "queued": "Queued",
+            "scheduled": "Scheduled around :time",
+            "sent": "Sent",
+            "blocked_unsubscribed": "Not sent: unsubscribed",
+            "failed": "Failed"
+        }
+    },
+    "errors": {
+        "unit_unavailable": "This unit has no photo album.",
+        "photos_unavailable": "One or more photos no longer exist. Select again.",
+        "photos_required": "Select at least one photo.",
+        "unsubscribed": ":email has unsubscribed from WinProx emails. The photos were not sent.",
+        "email_required": "Enter an email address.",
+        "email_invalid": "This email address is not valid.",
+        "description_max": "The description is too long (max. 500 characters)."
+    }
+}

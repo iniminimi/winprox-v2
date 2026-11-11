@@ -203,6 +203,15 @@
                 ]
             },
             {
+                "title": "Fotoalbum per unit",
+                "items": [
+                    "Uitvoerders nemen op Clock Point tot 24 foto's per unit per dag; de thuisgroep staat al gekozen.",
+                    "De backoffice kiest foto's en stuurt ze naar één e-mailadres, tot 8 foto's in de mail zelf. Adressen worden per unit bewaard.",
+                    "Foto's staan privé en worden na 7 dagen gewist. Aan/uit per unit; niet in Checkmate."
+                ],
+                "key": "photo_album"
+            },
+            {
                 "title": "Inspectierondes",
                 "body": "Een inspectieronde is een vooraf bepaalde route langs units of locaties. Ze kan eenmalig zijn of terugkeren.",
                 "items": [

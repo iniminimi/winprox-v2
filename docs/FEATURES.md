@@ -555,6 +555,40 @@ zonder ESG. Los van unit checks.
 
 ---
 
+## 5h. Fotoalbum per unit (alle formules behalve Checkmate)
+
+**Doel:** uitvoerders nemen per dag foto's van een unit (bv. het lokaal van een groep); de
+backoffice kiest welke foto's naar één e-mailadres gaan. Algemeen, niet sectorgebonden.
+
+### Aan/uit
+- Per unit: Locaties → unit bewerken → **Fotoalbum** (`units.photo_album_enabled`, standaard uit).
+- Nooit in Checkmate (geen tegel, geen sidebar, Policy weigert).
+
+### Clock Point (geverifieerde uitvoerder)
+- Tegel **Fotoalbum** zodra een actieve unit op de locatie van het klokpunt het album aan heeft.
+- Thuisgroep (`workers.default_unit_id`) is voorgeselecteerd; andere unit kiezen kan.
+- Max. **24 foto's per unit per dag** (`config/unit_photo_album.php`); client-side compressie
+  (golden path, max. 1000 px), geen server-resize. Eigen foto's van vandaag wissen kan.
+
+### Beheer (`/photo-album`, Werk → Fotoalbum)
+- Unit + dag (binnen de bewaartermijn), foto's aanvinken, wissen.
+- **Eén ontvanger per verzending**; adres + vrije omschrijving worden per unit bewaard
+  (`unit_album_recipients`) en voorgesteld; beheren/verwijderen in hetzelfde scherm.
+- Max. **8 foto's per mail**, ingesloten (CID, 2 × 4 raster), geen links; meer foto's = meerdere mails.
+- Wachtrij met limieten: **25 mails/uur per tenant**, **150/uur globaal** (Cloud86: 250/uur per
+  hostingpakket voor alle mails samen). Overloop wordt later ingepland, niet geweigerd.
+- Standaard afmeldfooter + `List-Unsubscribe`. Afgemeld adres → meteen foutmelding; wordt het
+  adres na het inplannen afgemeld → status **Niet verstuurd: afgemeld** in Verzendingen.
+- Statussen (`UnitAlbumSendStatus`): queued, sent, blocked_unsubscribed, failed. Audit op upload,
+  wissen, versturen en ontvangers.
+
+### Opslag en bewaring
+- Privé-disk `local` (`unit-album/{tenant}/{unit}/{dag}`), tonen via route met Policy.
+- Telt niet mee voor `photos_org_limit`.
+- `winprox:retention-prune` wist foto's + bestanden na **7 dagen** (`data_retention.unit_album_photos_days`).
+- Tenant-purge wist foto's (ook verweesde bestanden), ontvangers en verzendingen.
+- Toestemming van betrokkenen: verantwoordelijkheid van de tenant.
+
 ## 5e. Inspectierondes (Facility)
 
 **Doel:** melding met geordende stop-lijst (units) — **terugkerend of eenmalig**.

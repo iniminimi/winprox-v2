@@ -408,6 +408,16 @@ class Tenant extends Model
         return UnitCheck::query()->where('tenant_id', $this->id)->exists();
     }
 
+    /** Fotoalbum in het werkmenu: minstens één unit met album aan, nooit in Checkmate. */
+    public function hasPhotoAlbumUnits(): bool
+    {
+        return ! $this->checkmateMode()
+            && Unit::query()
+                ->where('tenant_id', $this->id)
+                ->where('photo_album_enabled', true)
+                ->exists();
+    }
+
     public function hasRecordedWorkVisits(): bool
     {
         return WorkVisit::query()->where('tenant_id', $this->id)->exists();

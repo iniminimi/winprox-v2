@@ -146,7 +146,8 @@
             "roster_code": "Code planning",
             "roster_code_hint": "Facultatif. Code court pour le planning, unique par site (ex. G1).",
             "visit_pin": "Pin de visite",
-            "visit_pin_hint": "Pin fixe du bâtiment pour les visites GPS. Vide = signalements/tâches seulement. Cliquez l’icône rouge, cherchez dans Google Maps, cliquez l’épingle rouge et collez ici (51.336167, 3.236306). Les signalements GPS du portail ne changent pas ce pin."
+            "visit_pin_hint": "Pin fixe du bâtiment pour les visites GPS. Vide = signalements/tâches seulement. Cliquez l’icône rouge, cherchez dans Google Maps, cliquez l’épingle rouge et collez ici (51.336167, 3.236306). Les signalements GPS du portail ne changent pas ce pin.",
+            "photo_album": "Album photo"
         },
         "translation_preview": "Traduction (portail)",
         "translation_edit": {
@@ -216,7 +217,8 @@
             "inherits_from": "Suit la catégorie :category (les cases sont reprises quand vous changez de catégorie).",
             "overrides_active": "Cette unité diffère des réglages de la catégorie.",
             "no_category_hint": "Choisissez une catégorie pour hériter des options portail. Sans catégorie, seules les cases unité ci-dessous s'appliquent."
-        }
+        },
+        "photo_album_hint": "Les exécutants prennent des photos de cette unité via Clock Point (max. 24 par jour, conservées 7 jours). Le back-office les envoie à une adresse e-mail."
     },
     "bulk": {
         "title": "Ajouter des unités en masse",

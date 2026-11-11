@@ -34,7 +34,8 @@
         "work_visits": "Visitas de trabajo",
         "checklists": "Checklists",
         "workers": "Ejecutores",
-        "activity": "Actividad"
+        "activity": "Actividad",
+        "photo_album": "Álbum de fotos"
     },
     "status": {
         "new": "Abierta",

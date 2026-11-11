@@ -575,6 +575,13 @@ it('purge wist alle tenant-bestanden en toegangsgegevens van de gebruikers', fun
     }
     $otherLogo = "tenant-logos/{$other->id}/logo.png";
     $disk->put($otherLogo, 'x');
+    $privateDisk = Storage::disk('local');
+    $albumPhoto = "unit-album/{$tenant->id}/1/2026-11-11/photo.jpg";
+    $albumOrphan = "unit-album/{$tenant->id}/1/2026-11-11/orphan.jpg";
+    $otherAlbumPhoto = "unit-album/{$other->id}/1/2026-11-11/photo.jpg";
+    foreach ([$albumPhoto, $albumOrphan, $otherAlbumPhoto] as $file) {
+        $privateDisk->put($file, 'x');
+    }
 
     $tenant->forceFill([
         'logo_path' => $files['logo'],
@@ -587,6 +594,14 @@ it('purge wist alle tenant-bestanden en toegangsgegevens van de gebruikers', fun
         'tenant_id' => $tenant->id,
         'path' => $files['album'],
         'sort_order' => 0,
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+    DB::table('unit_album_photos')->insert([
+        'tenant_id' => $tenant->id,
+        'unit_id' => $unit->id,
+        'path' => $albumPhoto,
+        'taken_on' => now()->toDateString(),
         'created_at' => now(),
         'updated_at' => now(),
     ]);
@@ -642,6 +657,9 @@ it('purge wist alle tenant-bestanden en toegangsgegevens van de gebruikers', fun
         $disk->assertMissing($file);
     }
     $disk->assertExists($otherLogo);
+    $privateDisk->assertMissing($albumPhoto);
+    $privateDisk->assertMissing($albumOrphan);
+    $privateDisk->assertExists($otherAlbumPhoto);
 
     expect(DB::table('personal_access_tokens')->where('tokenable_id', $admin->id)->count())->toBe(0)
         ->and(DB::table('personal_access_tokens')->where('tokenable_id', $otherUser->id)->count())->toBe(1)
@@ -651,7 +669,10 @@ it('purge wist alle tenant-bestanden en toegangsgegevens van de gebruikers', fun
 });
 
 it('elke tenant-kolom met een bestandspad wordt gewist bij purge', function () {
-    $covered = ExecuteTenantPurgeAction::MEDIA_PATH_COLUMNS;
+    $covered = array_merge_recursive(
+        ExecuteTenantPurgeAction::MEDIA_PATH_COLUMNS,
+        ExecuteTenantPurgeAction::PRIVATE_MEDIA_PATH_COLUMNS,
+    );
 
     foreach (Schema::getTableListing(schemaQualified: false) as $table) {
         if ($table === 'tenant_purge_requests') {

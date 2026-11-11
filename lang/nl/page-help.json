@@ -1110,6 +1110,10 @@
                 {
                     "label": "Verlof / Recup",
                     "text": "Na aanmelden zie je de tegel Verlof / Recup. Vraag verlof of recup aan (van–tot, optionele toelichting, max. 31 dagen, niet in het verleden). Open aanvragen die overlappen worden geweigerd. Onder het formulier staan je eigen aanvragen: open of goedgekeurd (nog niet begonnen) kun je intrekken; bij goedgekeurd komt het uurrooster terug. Beheer beslist onder Time → Aanvragen; weigeren vraagt een reden, goedkeuren niet. Er gaat geen e-mail."
+                },
+                {
+                    "label": "Fotoalbum",
+                    "text": "Staat het fotoalbum aan voor een unit op deze locatie, dan zie je na het aanmelden de tegel Fotoalbum. Je thuisgroep is al gekozen. Neem tot 24 foto's per unit per dag; je eigen foto's van vandaag kun je weer wissen. De backoffice beslist wat er verstuurd wordt."
                 }
             ]
         },
@@ -2298,6 +2302,31 @@
                 {
                     "label": "Wie ziet dit?",
                     "text": "Enkel beheerders van uw organisatie. Uitvoerders, teamleaders en collega's zien dit scherm niet."
+                }
+            ]
+        },
+        "photo-album": {
+            "title": "Hulp — Fotoalbum",
+            "actions": [
+                {
+                    "label": "Inschakelen",
+                    "text": "Zet Fotoalbum aan bij Locaties → unit bewerken (standaard uit). Niet beschikbaar in Checkmate."
+                },
+                {
+                    "label": "Foto's nemen",
+                    "text": "Uitvoerders openen Fotoalbum op Clock Point na het aanmelden. Hun thuisgroep uit het uurrooster staat al gekozen. Maximaal 24 foto's per unit per dag; de gsm verkleint ze vóór het opladen."
+                },
+                {
+                    "label": "Versturen",
+                    "text": "Kies een unit en een dag, vink foto's aan en vul één e-mailadres in, of kies een bewaard adres van die unit. Een nieuw adres wordt bij de unit bewaard, met een vrije omschrijving (bv. mama van Lotte). Maximaal 8 foto's per mail, in de mail zelf (geen link). Meer foto's = meerdere mails naar hetzelfde adres."
+                },
+                {
+                    "label": "Limieten en afmelden",
+                    "text": "Maximaal 25 foto-mails per uur per organisatie; wat erboven gaat, wordt later verstuurd (status Gepland). Elke mail heeft de standaard afmeldlink. Heeft een adres zich afgemeld, dan wordt er niets verstuurd en krijg je een melding; in Verzendingen staat dan Niet verstuurd: afgemeld."
+                },
+                {
+                    "label": "Bewaren",
+                    "text": "Foto's staan privé (niet via een publieke link) en worden na 7 dagen automatisch gewist. Toestemming van de betrokkenen is de verantwoordelijkheid van de organisatie."
                 }
             ]
         }

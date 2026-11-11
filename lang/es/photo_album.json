@@ -1,0 +1,53 @@
+{
+    "title": "Álbum de fotos",
+    "subtitle": "Fotos que los operarios toman por unidad mediante Clock Point. Seleccione fotos y envíelas a una sola dirección de correo.",
+    "no_units": "Aún no hay ninguna unidad con álbum de fotos. Active el álbum en Ubicaciones → editar unidad.",
+    "photos_title": "Fotos",
+    "filters": {
+        "unit": "Unidad",
+        "day": "Día"
+    },
+    "retention_hint": "Las fotos se eliminan automáticamente después de :days días.",
+    "empty": "No hay fotos en este día.",
+    "delete": "Eliminar",
+    "delete_confirm": "¿Eliminar esta foto?",
+    "send": {
+        "title": "Enviar",
+        "hint": "Un destinatario por envío. Cada correo lleva como máximo :max fotos; si elige más, se envían varios correos.",
+        "email": "Dirección de correo",
+        "description": "Descripción (opcional)",
+        "description_placeholder": "p. ej. mamá de Lotte",
+        "submit": "Enviar (:count)",
+        "queued": ":count correo(s) en cola.",
+        "scheduled": ":count correo(s) programado(s), el último hacia las :time."
+    },
+    "recipients": {
+        "title": "Destinatarios de esta unidad",
+        "use": "Elegir",
+        "edit": "Descripción",
+        "delete": "Quitar",
+        "delete_confirm": "¿Quitar esta dirección de esta unidad?",
+        "empty": "Aún no hay destinatarios. Una dirección nueva se guarda al enviar."
+    },
+    "sends": {
+        "title": "Envíos",
+        "line": ":count fotos · :time · :user",
+        "empty": "Aún no se ha enviado nada.",
+        "status": {
+            "queued": "En cola",
+            "scheduled": "Programado hacia las :time",
+            "sent": "Enviado",
+            "blocked_unsubscribed": "No enviado: dado de baja",
+            "failed": "Fallido"
+        }
+    },
+    "errors": {
+        "unit_unavailable": "Esta unidad no tiene álbum de fotos.",
+        "photos_unavailable": "Una o más fotos ya no existen. Vuelva a elegir.",
+        "photos_required": "Elija al menos una foto.",
+        "unsubscribed": ":email se ha dado de baja de los correos de WinProx. Las fotos no se han enviado.",
+        "email_required": "Introduzca una dirección de correo.",
+        "email_invalid": "Esta dirección de correo no es válida.",
+        "description_max": "La descripción es demasiado larga (máx. 500 caracteres)."
+    }
+}

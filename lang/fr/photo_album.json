@@ -1,0 +1,53 @@
+{
+    "title": "Album photo",
+    "subtitle": "Photos prises par les exécutants par unité via Clock Point. Sélectionnez des photos et envoyez-les à une seule adresse e-mail.",
+    "no_units": "Aucune unité avec album photo. Activez l'album photo dans Lieux → modifier l'unité.",
+    "photos_title": "Photos",
+    "filters": {
+        "unit": "Unité",
+        "day": "Jour"
+    },
+    "retention_hint": "Les photos sont supprimées automatiquement après :days jours.",
+    "empty": "Aucune photo ce jour-là.",
+    "delete": "Supprimer",
+    "delete_confirm": "Supprimer cette photo ?",
+    "send": {
+        "title": "Envoyer",
+        "hint": "Un destinataire par envoi. Chaque e-mail contient au maximum :max photos ; au-delà, plusieurs e-mails sont envoyés.",
+        "email": "Adresse e-mail",
+        "description": "Description (facultative)",
+        "description_placeholder": "p. ex. maman de Lotte",
+        "submit": "Envoyer (:count)",
+        "queued": ":count e-mail(s) en file d'attente.",
+        "scheduled": ":count e-mail(s) planifié(s), le dernier vers :time."
+    },
+    "recipients": {
+        "title": "Destinataires de cette unité",
+        "use": "Choisir",
+        "edit": "Description",
+        "delete": "Retirer",
+        "delete_confirm": "Retirer cette adresse de cette unité ?",
+        "empty": "Aucun destinataire. Une nouvelle adresse est enregistrée lors de l'envoi."
+    },
+    "sends": {
+        "title": "Envois",
+        "line": ":count photos · :time · :user",
+        "empty": "Rien n'a encore été envoyé.",
+        "status": {
+            "queued": "En file d'attente",
+            "scheduled": "Planifié vers :time",
+            "sent": "Envoyé",
+            "blocked_unsubscribed": "Non envoyé : désinscrit",
+            "failed": "Échec"
+        }
+    },
+    "errors": {
+        "unit_unavailable": "Cette unité n'a pas d'album photo.",
+        "photos_unavailable": "Une ou plusieurs photos n'existent plus. Sélectionnez à nouveau.",
+        "photos_required": "Choisissez au moins une photo.",
+        "unsubscribed": ":email s'est désinscrit des e-mails de WinProx. Les photos n'ont pas été envoyées.",
+        "email_required": "Saisissez une adresse e-mail.",
+        "email_invalid": "Cette adresse e-mail n'est pas valide.",
+        "description_max": "La description est trop longue (max. 500 caractères)."
+    }
+}

@@ -204,7 +204,10 @@
                 "worker_devices": "Toestellen van uitvoerders: :count",
                 "worker_leave_entitlements": "Verlofrechten: :count",
                 "worker_passkey_credentials": "Passkeys van uitvoerders: :count",
-                "worker_weekday_minutes": "Weekuren per uitvoerder: :count"
+                "worker_weekday_minutes": "Weekuren per uitvoerder: :count",
+                "unit_album_photos": "Foto's fotoalbum: :count",
+                "unit_album_recipients": "Ontvangers fotoalbum: :count",
+                "unit_album_sends": "Verzendingen fotoalbum: :count"
             }
         },
         "link_fallback": "Als de knop niet werkt, kopieer dan deze link:",
@@ -240,5 +243,11 @@
         "confirmation_note": "Heeft u intussen een vraag? Antwoord gerust op deze e-mail.",
         "ops_subject": "WinProx: demo-aanvraag — :company",
         "ops_body": "Nieuwe demo-aanvraag via de website.\n\nBedrijf: :company\nContactpersoon: :name\nE-mail: :email\nTelefoon: :phone\nGemeente: :municipality\nVoorkeur: :preference\nToelichting: :note"
+    },
+    "unit_album": {
+        "subject": ":tenant — Foto's",
+        "intro": ":tenant stuurt je foto's.",
+        "outro": "Deze mail werd verstuurd door :tenant via WinProx.",
+        "photo_alt": "Foto :number"
     }
 }
