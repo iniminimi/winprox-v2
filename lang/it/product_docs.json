@@ -46,7 +46,8 @@
                     "Gestire le richieste di ferie e di recupero.",
                     "Gestire segnalazioni, compiti e giri di ispezione.",
                     "Gestire sedi, team, persone e unità.",
-                    "La registrazione ONSS/CIAO si può attivare nelle impostazioni. Le visite GPS facoltative collegano una visita a un luogo."
+                    "La registrazione ONSS/CIAO si può attivare nelle impostazioni. Le visite GPS facoltative collegano una visita a un luogo.",
+                    "Album foto facoltativo: gli esecutori scattano foto per unità su Clock Point. Le invia da Album foto. I file vengono cancellati dopo una settimana. Si attiva in Impostazioni, sotto La sua organizzazione."
                 ],
                 "badge": "incluso",
                 "key": "winprox_time"

@@ -1,53 +1,43 @@
 {
-    "title": "Album fotografico",
-    "subtitle": "Foto scattate dagli operatori per unità tramite Clock Point. Seleziona le foto e inviale a un solo indirizzo e-mail.",
-    "no_units": "Nessuna unità con album fotografico. Attiva l'album in Luoghi → modifica unità.",
-    "photos_title": "Foto",
-    "filters": {
-        "unit": "Unità",
-        "day": "Giorno"
-    },
-    "retention_hint": "Le foto vengono eliminate automaticamente dopo :days giorni.",
-    "empty": "Nessuna foto in questo giorno.",
+    "title": "Album foto",
+    "subtitle": "Foto per unità. Scelga le foto e le invii. I file vengono cancellati dopo una settimana.",
+    "unit": "Unità",
+    "choose_unit": "Scelga un'unità",
+    "empty": "Ancora nessuna foto per questa unità.",
     "delete": "Elimina",
-    "delete_confirm": "Eliminare questa foto?",
-    "send": {
-        "title": "Invia",
-        "hint": "Un destinatario per invio. Ogni e-mail contiene al massimo :max foto; se ne scegli di più, vengono inviate più e-mail.",
-        "email": "Indirizzo e-mail",
-        "description": "Descrizione (facoltativa)",
-        "description_placeholder": "ad es. mamma di Lotte",
-        "submit": "Invia (:count)",
-        "queued": ":count e-mail in coda.",
-        "scheduled": ":count e-mail pianificate, l'ultima verso le :time."
+    "recipients": "Indirizzi salvati",
+    "email": "Indirizzo e-mail",
+    "description": "Nome (facoltativo)",
+    "send": "Invia",
+    "sent": "Il messaggio è stato inviato o pianificato.",
+    "saved": "Foto salvate.",
+    "portal": {
+        "tile": "Foto",
+        "tile_sub": "Foto di un'unità",
+        "title": "Foto",
+        "subtitle": "Scelga l'unità e scatti le foto. Vengono ridotte su questo telefono.",
+        "hint": "La foto viene ridotta su questo telefono prima dell'invio.",
+        "save": "Salva le foto",
+        "day_count": ":count di :max oggi"
     },
-    "recipients": {
-        "title": "Destinatari di questa unità",
-        "use": "Scegli",
-        "edit": "Descrizione",
-        "delete": "Rimuovi",
-        "delete_confirm": "Rimuovere questo indirizzo da questa unità?",
-        "empty": "Nessun destinatario. Un nuovo indirizzo viene salvato all'invio."
-    },
-    "sends": {
-        "title": "Invii",
-        "line": ":count foto · :time · :user",
-        "empty": "Ancora nessun invio.",
-        "status": {
-            "queued": "In coda",
-            "scheduled": "Pianificato verso le :time",
-            "sent": "Inviato",
-            "blocked_unsubscribed": "Non inviato: disiscritto",
-            "failed": "Non riuscito"
-        }
+    "status": {
+        "queued": "Pianificato",
+        "sent": "Inviato",
+        "blocked_unsubscribed": "Disiscritto",
+        "failed": "Non riuscito"
     },
     "errors": {
-        "unit_unavailable": "Questa unità non ha un album fotografico.",
-        "photos_unavailable": "Una o più foto non esistono più. Seleziona di nuovo.",
-        "photos_required": "Scegli almeno una foto.",
-        "unsubscribed": ":email ha annullato l'iscrizione alle e-mail di WinProx. Le foto non sono state inviate.",
-        "email_required": "Inserisci un indirizzo e-mail.",
+        "unit_unavailable": "Questa unità non è disponibile.",
+        "photos_unavailable": "Una o più foto non sono più disponibili.",
+        "unsubscribed": "Questo indirizzo è disiscritto.",
+        "album_unit_not_allowed": "Non può scattare foto per questa unità.",
+        "album_day_full": "Il massimo di oggi è stato raggiunto.",
+        "album_disabled": "L'album foto è disattivato.",
+        "album_photo_not_own": "Può eliminare solo la propria foto di oggi.",
+        "unit_required": "Scelga un'unità.",
+        "photos_required": "Scelga almeno una foto.",
+        "email_required": "Inserisca un indirizzo e-mail.",
         "email_invalid": "Questo indirizzo e-mail non è valido.",
-        "description_max": "La descrizione è troppo lunga (max. 500 caratteri)."
+        "description_max": "Il nome è troppo lungo."
     }
 }

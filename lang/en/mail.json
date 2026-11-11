@@ -193,6 +193,9 @@
                 "unit_bulk_batches": "Unit bulk batches: :count",
                 "unit_check_lists": "Unit checklists: :count",
                 "unit_checks": "Unit checks: :count",
+                "unit_album_photos": "Album photos: :count",
+                "unit_album_recipients": "Album recipients: :count",
+                "unit_album_sends": "Album sends: :count",
                 "unit_gps_reports": "Unit GPS reports: :count",
                 "unit_measure_fields": "Measure fields: :count",
                 "unit_measurements": "Unit measurements: :count",
@@ -245,9 +248,9 @@
         "ops_body": "New demo request via the website.\n\nCompany: :company\nContact: :name\nEmail: :email\nPhone: :phone\nTown/city: :municipality\nPreference: :preference\nNotes: :note"
     },
     "unit_album": {
-        "subject": ":tenant — Photos",
-        "intro": ":tenant is sending you photos.",
-        "outro": "This email was sent by :tenant via WinProx.",
-        "photo_alt": "Photo :number"
+        "subject": ":tenant — photos",
+        "intro": ":tenant sent you photos.",
+        "photo_alt": "Photo :number",
+        "outro": "The photos stay in this email. WinProx deletes the files after a week."
     }
 }

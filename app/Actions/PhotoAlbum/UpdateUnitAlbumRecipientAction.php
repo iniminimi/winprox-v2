@@ -12,6 +12,14 @@ final class UpdateUnitAlbumRecipientAction
 {
     public function __construct(private AuditRecorder $audit) {}
 
+    public function findForUnit(int $recipientId, int $tenantId, int $unitId): ?UnitAlbumRecipient
+    {
+        return UnitAlbumRecipient::query()
+            ->where('tenant_id', $tenantId)
+            ->where('unit_id', $unitId)
+            ->find($recipientId);
+    }
+
     public function handle(UnitAlbumRecipient $recipient, ?string $description, int $tenantId, int $actorUserId): UnitAlbumRecipient
     {
         if ((int) $recipient->tenant_id !== $tenantId) {

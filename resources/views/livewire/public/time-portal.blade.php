@@ -554,6 +554,50 @@
                     @else
                         <p class="wp-muted">{{ __('portal.worker.errors.no_permission') }}</p>
                     @endif
+                @elseif ($albumOpen)
+                    <x-wp-portal-back wire:click="closeAlbum" />
+                    <x-wp-page-head-title variant="portal" icon="document" :title="__('photo_album.portal.title')">
+                        <p class="wp-muted">{{ __('photo_album.portal.subtitle') }}</p>
+                    </x-wp-page-head-title>
+                    <div class="wp-card wp-card-pad wp-stack">
+                        <div class="wp-field">
+                            <label class="wp-label" for="album-unit">{{ __('photo_album.unit') }}</label>
+                            <select id="album-unit" class="wp-select" wire:model.live="albumUnitId">
+                                <option value="">{{ __('photo_album.choose_unit') }}</option>
+                                @foreach ($albumUnits as $unit)
+                                    <option value="{{ $unit->id }}">{{ $unit->localizedName() }}</option>
+                                @endforeach
+                            </select>
+                            @error('albumUnitId') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                        @if ($albumUnitId)
+                            <p class="wp-muted">{{ __('photo_album.portal.day_count', ['count' => $albumTodayCount, 'max' => $albumMax]) }}</p>
+                            @if ($albumTodayCount < $albumMax)
+                                <form wire:submit="saveAlbumPhotos" class="wp-stack">
+                                    @include('partials.wp-issue-photo-upload', [
+                                        'model' => 'albumPhotos',
+                                        'removeMethod' => 'removeAlbumPhoto',
+                                        'max' => max(1, $albumMax - $albumTodayCount),
+                                        'preferCamera' => true,
+                                        'maxDimension' => 800,
+                                        'hintKey' => 'photo_album.portal.hint',
+                                    ])
+                                    @error('albumPhotos') <p class="wp-error">{{ $message }}</p> @enderror
+                                    @error('albumPhotos.*') <p class="wp-error">{{ $message }}</p> @enderror
+                                    <button type="submit" class="btn btn--primary btn--block">{{ __('photo_album.portal.save') }}</button>
+                                </form>
+                            @else
+                                <p class="wp-muted">{{ __('photo_album.errors.album_day_full') }}</p>
+                            @endif
+                            @foreach ($albumToday as $photo)
+                                @if ((int) $photo->worker_id === (int) ($verifiedWorker?->id ?? 0))
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteAlbumPhoto({{ $photo->id }})">
+                                        {{ __('photo_album.delete') }}
+                                    </button>
+                                @endif
+                            @endforeach
+                        @endif
+                    </div>
                 @elseif ($teamleaderOpen)
                     <x-wp-portal-back wire:click="closeTeamleader" />
                     <x-wp-page-head-title variant="portal" icon="star" :title="__('portal.teamleader.page_title')">
@@ -1029,6 +1073,18 @@
                                     <span class="wp-tile-sub">{{ __('time.roster.tile_sub') }}</span>
                                 </button>
                             @endif
+                        </div>
+                    @endif
+
+                    @if ($albumEnabled ?? false)
+                        <div class="wp-tiles">
+                            <button type="button" class="wp-tile" wire:click="openAlbum">
+                                <span class="wp-cluster">
+                                    <x-wp-icon name="document" class="wp-tile-icon" />
+                                    <span class="wp-tile-title">{{ __('photo_album.portal.tile') }}</span>
+                                </span>
+                                <span class="wp-tile-sub">{{ __('photo_album.portal.tile_sub') }}</span>
+                            </button>
                         </div>
                     @endif
 

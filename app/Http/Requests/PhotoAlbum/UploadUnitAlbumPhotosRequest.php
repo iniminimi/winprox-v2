@@ -42,10 +42,10 @@ class UploadUnitAlbumPhotosRequest extends FormRequest
     public static function portalValidationMessages(): array
     {
         return [
-            'albumUnitId.required' => __('time.portal.album.errors.unit_required'),
-            'albumPhotos.required' => __('time.portal.album.errors.photos_required'),
-            'albumPhotos.min' => __('time.portal.album.errors.photos_required'),
-            'albumPhotos.max' => __('time.portal.album.errors.day_full'),
+            'albumUnitId.required' => __('photo_album.errors.unit_required'),
+            'albumPhotos.required' => __('photo_album.errors.photos_required'),
+            'albumPhotos.min' => __('photo_album.errors.photos_required'),
+            'albumPhotos.max' => __('photo_album.errors.album_day_full'),
             'albumPhotos.*.image' => __('portal.report.errors.photos_image'),
             'albumPhotos.*.max' => __('portal.report.errors.photos_size'),
         ];

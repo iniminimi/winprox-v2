@@ -193,6 +193,9 @@
                 "unit_bulk_batches": "Unit-Sammelimporte: :count",
                 "unit_check_lists": "Unit-Checklisten: :count",
                 "unit_checks": "Unit-Checks: :count",
+                "unit_album_photos": "Albumfotos: :count",
+                "unit_album_recipients": "Albumempfänger: :count",
+                "unit_album_sends": "Albumsendungen: :count",
                 "unit_gps_reports": "Unit-GPS-Meldungen: :count",
                 "unit_measure_fields": "Messfelder: :count",
                 "unit_measurements": "Unit-Messungen: :count",
@@ -246,8 +249,8 @@
     },
     "unit_album": {
         "subject": ":tenant — Fotos",
-        "intro": ":tenant sendet Ihnen Fotos.",
-        "outro": "Diese E-Mail wurde von :tenant über WinProx gesendet.",
-        "photo_alt": "Foto :number"
+        "intro": ":tenant hat Ihnen Fotos geschickt.",
+        "photo_alt": "Foto :number",
+        "outro": "Die Fotos bleiben in dieser E-Mail. WinProx löscht die Dateien nach einer Woche."
     }
 }

@@ -1,53 +1,43 @@
 {
     "title": "Fotoalbum",
-    "subtitle": "Foto's die uitvoerders per unit nemen via Clock Point. Kies foto's en stuur ze naar één e-mailadres.",
-    "no_units": "Nog geen unit met fotoalbum. Zet het fotoalbum aan bij Locaties → unit bewerken.",
-    "photos_title": "Foto's",
-    "filters": {
-        "unit": "Unit",
-        "day": "Dag"
+    "subtitle": "Foto's per unit. Kies foto's en mail ze. De bestanden worden na een week gewist.",
+    "unit": "Unit",
+    "choose_unit": "Kies een unit",
+    "empty": "Nog geen foto's voor deze unit.",
+    "delete": "Verwijderen",
+    "recipients": "Bewaarde adressen",
+    "email": "E-mailadres",
+    "description": "Naam (optioneel)",
+    "send": "Versturen",
+    "sent": "De mail is verzonden of ingepland.",
+    "saved": "Foto's opgeslagen.",
+    "portal": {
+        "tile": "Foto's",
+        "tile_sub": "Foto's van een unit",
+        "title": "Foto's",
+        "subtitle": "Kies de unit en maak foto's. Ze worden op deze telefoon verkleind.",
+        "hint": "De foto wordt op deze telefoon verkleind voor ze vertrekt.",
+        "save": "Foto's opslaan",
+        "day_count": ":count van :max vandaag"
     },
-    "retention_hint": "Foto's worden na :days dagen automatisch gewist.",
-    "empty": "Geen foto's op deze dag.",
-    "delete": "Wissen",
-    "delete_confirm": "Deze foto wissen?",
-    "send": {
-        "title": "Versturen",
-        "hint": "Eén ontvanger per verzending. Per mail gaan er maximaal :max foto's mee; kies je er meer, dan worden het meerdere mails.",
-        "email": "E-mailadres",
-        "description": "Omschrijving (optioneel)",
-        "description_placeholder": "bv. mama van Lotte",
-        "submit": "Versturen (:count)",
-        "queued": ":count mail(s) in de wachtrij.",
-        "scheduled": ":count mail(s) gepland, laatste rond :time."
-    },
-    "recipients": {
-        "title": "Ontvangers van deze unit",
-        "use": "Kiezen",
-        "edit": "Omschrijving",
-        "delete": "Verwijderen",
-        "delete_confirm": "Dit adres verwijderen bij deze unit?",
-        "empty": "Nog geen ontvangers. Een nieuw adres wordt bij het versturen bewaard."
-    },
-    "sends": {
-        "title": "Verzendingen",
-        "line": ":count foto's · :time · :user",
-        "empty": "Nog niets verstuurd.",
-        "status": {
-            "queued": "In de wachtrij",
-            "scheduled": "Gepland rond :time",
-            "sent": "Verstuurd",
-            "blocked_unsubscribed": "Niet verstuurd: afgemeld",
-            "failed": "Mislukt"
-        }
+    "status": {
+        "queued": "Ingepland",
+        "sent": "Verzonden",
+        "blocked_unsubscribed": "Afgemeld",
+        "failed": "Mislukt"
     },
     "errors": {
-        "unit_unavailable": "Deze unit heeft geen fotoalbum.",
-        "photos_unavailable": "Een of meer foto's bestaan niet meer. Kies opnieuw.",
+        "unit_unavailable": "Deze unit is niet beschikbaar.",
+        "photos_unavailable": "Een of meer foto's zijn niet meer beschikbaar.",
+        "unsubscribed": "Dit adres is afgemeld.",
+        "album_unit_not_allowed": "Je mag voor deze unit geen foto's maken.",
+        "album_day_full": "Het maximum voor vandaag is bereikt.",
+        "album_disabled": "Het fotoalbum staat uit.",
+        "album_photo_not_own": "Je kunt alleen je eigen foto van vandaag verwijderen.",
+        "unit_required": "Kies een unit.",
         "photos_required": "Kies minstens één foto.",
-        "unsubscribed": ":email heeft zich afgemeld voor mails van WinProx. De foto's zijn niet verstuurd.",
         "email_required": "Vul een e-mailadres in.",
-        "email_invalid": "Dit e-mailadres is niet geldig.",
-        "description_max": "De omschrijving is te lang (max. 500 tekens)."
+        "email_invalid": "Dit e-mailadres is ongeldig.",
+        "description_max": "De naam is te lang."
     }
 }

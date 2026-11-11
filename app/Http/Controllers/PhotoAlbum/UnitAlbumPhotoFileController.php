@@ -6,7 +6,6 @@ namespace App\Http\Controllers\PhotoAlbum;
 
 use App\Http\Controllers\Controller;
 use App\Models\UnitAlbumPhoto;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
@@ -17,7 +16,7 @@ class UnitAlbumPhotoFileController extends Controller
 {
     public function __invoke(UnitAlbumPhoto $photo): StreamedResponse
     {
-        Gate::authorize('view', $photo);
+        $this->authorize('view', $photo);
 
         $disk = Storage::disk(UnitAlbumPhoto::DISK);
         abort_unless($disk->exists((string) $photo->path), 404);

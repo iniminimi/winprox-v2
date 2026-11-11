@@ -116,6 +116,20 @@
                     @endif
                 </div>
 
+                @if ($canManageOrganisation && ! ($checkmateMode ?? false))
+                    <div class="wp-settings-subblock">
+                        <h3 class="wp-settings-subblock-title">{{ __('settings.org.photo_album_label') }}</h3>
+                        <label class="wp-switch wp-check--boxed">
+                            <input type="checkbox" wire:model.live="photoAlbumEnabled">
+                            <span class="wp-switch__track" aria-hidden="true"></span>
+                            <span>
+                                {{ __('settings.org.photo_album_label') }}
+                                <br><span class="wp-hint">{{ __('settings.org.photo_album_hint') }}</span>
+                            </span>
+                        </label>
+                    </div>
+                @endif
+
                 @if (! ($checkmateMode ?? false) && ($organisationTenant?->workMenuIssuesTasksEnabled() ?? true))
                     <div class="wp-settings-subblock">
                         <h3 class="wp-settings-subblock-title">{{ __('settings.notifications.title') }}</h3>

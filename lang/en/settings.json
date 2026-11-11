@@ -8,6 +8,8 @@
         "modal_title": "Organisation details",
         "modal_hint": "These details appear on printed QR codes, unit labels, and other reporter-facing materials.",
         "card_hint": "These details appear on printed QR codes and unit labels.",
+        "photo_album_label": "Photo album",
+        "photo_album_hint": "Workers take photos per unit on Clock Point. In Photo album you email them to an address. The files are deleted after a week.",
         "label_email": "Email",
         "label_phone": "Phone",
         "label_address": "Address",

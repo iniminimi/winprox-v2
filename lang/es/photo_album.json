@@ -1,53 +1,43 @@
 {
     "title": "Álbum de fotos",
-    "subtitle": "Fotos que los operarios toman por unidad mediante Clock Point. Seleccione fotos y envíelas a una sola dirección de correo.",
-    "no_units": "Aún no hay ninguna unidad con álbum de fotos. Active el álbum en Ubicaciones → editar unidad.",
-    "photos_title": "Fotos",
-    "filters": {
-        "unit": "Unidad",
-        "day": "Día"
-    },
-    "retention_hint": "Las fotos se eliminan automáticamente después de :days días.",
-    "empty": "No hay fotos en este día.",
+    "subtitle": "Fotos por unidad. Elija fotos y envíelas. Los archivos se borran al cabo de una semana.",
+    "unit": "Unidad",
+    "choose_unit": "Elija una unidad",
+    "empty": "Aún no hay fotos de esta unidad.",
     "delete": "Eliminar",
-    "delete_confirm": "¿Eliminar esta foto?",
-    "send": {
-        "title": "Enviar",
-        "hint": "Un destinatario por envío. Cada correo lleva como máximo :max fotos; si elige más, se envían varios correos.",
-        "email": "Dirección de correo",
-        "description": "Descripción (opcional)",
-        "description_placeholder": "p. ej. mamá de Lotte",
-        "submit": "Enviar (:count)",
-        "queued": ":count correo(s) en cola.",
-        "scheduled": ":count correo(s) programado(s), el último hacia las :time."
+    "recipients": "Direcciones guardadas",
+    "email": "Correo electrónico",
+    "description": "Nombre (opcional)",
+    "send": "Enviar",
+    "sent": "El correo se ha enviado o programado.",
+    "saved": "Fotos guardadas.",
+    "portal": {
+        "tile": "Fotos",
+        "tile_sub": "Fotos de una unidad",
+        "title": "Fotos",
+        "subtitle": "Elija la unidad y haga fotos. Se reducen en este teléfono.",
+        "hint": "La foto se reduce en este teléfono antes de enviarse.",
+        "save": "Guardar fotos",
+        "day_count": ":count de :max hoy"
     },
-    "recipients": {
-        "title": "Destinatarios de esta unidad",
-        "use": "Elegir",
-        "edit": "Descripción",
-        "delete": "Quitar",
-        "delete_confirm": "¿Quitar esta dirección de esta unidad?",
-        "empty": "Aún no hay destinatarios. Una dirección nueva se guarda al enviar."
-    },
-    "sends": {
-        "title": "Envíos",
-        "line": ":count fotos · :time · :user",
-        "empty": "Aún no se ha enviado nada.",
-        "status": {
-            "queued": "En cola",
-            "scheduled": "Programado hacia las :time",
-            "sent": "Enviado",
-            "blocked_unsubscribed": "No enviado: dado de baja",
-            "failed": "Fallido"
-        }
+    "status": {
+        "queued": "Programado",
+        "sent": "Enviado",
+        "blocked_unsubscribed": "Dado de baja",
+        "failed": "Fallido"
     },
     "errors": {
-        "unit_unavailable": "Esta unidad no tiene álbum de fotos.",
-        "photos_unavailable": "Una o más fotos ya no existen. Vuelva a elegir.",
+        "unit_unavailable": "Esta unidad no está disponible.",
+        "photos_unavailable": "Una o más fotos ya no están disponibles.",
+        "unsubscribed": "Esta dirección está dada de baja.",
+        "album_unit_not_allowed": "No puede hacer fotos de esta unidad.",
+        "album_day_full": "Se ha alcanzado el máximo de hoy.",
+        "album_disabled": "El álbum de fotos está desactivado.",
+        "album_photo_not_own": "Solo puede eliminar su propia foto de hoy.",
+        "unit_required": "Elija una unidad.",
         "photos_required": "Elija al menos una foto.",
-        "unsubscribed": ":email se ha dado de baja de los correos de WinProx. Las fotos no se han enviado.",
-        "email_required": "Introduzca una dirección de correo.",
-        "email_invalid": "Esta dirección de correo no es válida.",
-        "description_max": "La descripción es demasiado larga (máx. 500 caracteres)."
+        "email_required": "Introduzca un correo electrónico.",
+        "email_invalid": "Este correo no es válido.",
+        "description_max": "El nombre es demasiado largo."
     }
 }

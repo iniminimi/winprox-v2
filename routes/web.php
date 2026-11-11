@@ -499,7 +499,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/unit-checks/export', UnitCheckExportController::class)->name('unit-checks.export');
         Route::get('/unit-checks/print', UnitCheckPrintController::class)->name('unit-checks.print');
         Route::get('/photo-album', PhotoAlbumIndex::class)->name('photo-album.index');
-        Route::get('/photo-album/photos/{photo}', UnitAlbumPhotoFileController::class)->name('photo-album.photos.show');
+        Route::get('/photo-album/photos/{photo}', \App\Http\Controllers\PhotoAlbum\UnitAlbumPhotoFileController::class)->name('photo-album.photos.show');
         Route::get('/checklists', CheckListsIndex::class)->name('checklists.index');
         Route::get('/unit-measurements', UnitMeasurementsIndex::class)->name('unit-measurements.index');
         Route::get('/work-visits', WorkVisitsIndex::class)->name('work-visits.index');

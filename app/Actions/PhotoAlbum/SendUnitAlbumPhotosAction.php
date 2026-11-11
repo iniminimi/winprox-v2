@@ -17,7 +17,7 @@ use App\Support\EmailUnsubscribeExemptions;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\ValidationException;
+use InvalidArgumentException;
 
 /**
  * Plant de albumfoto's in voor precies één ontvanger: per
@@ -36,9 +36,7 @@ final class SendUnitAlbumPhotosAction
     {
         $unit = Unit::query()->where('tenant_id', $tenantId)->find($data->unitId);
         if ($unit === null || ! $unit->allowsPhotoAlbum()) {
-            throw ValidationException::withMessages([
-                'unit_id' => [__('photo_album.errors.unit_unavailable')],
-            ]);
+            throw new InvalidArgumentException('unit_unavailable');
         }
 
         $photos = UnitAlbumPhoto::query()
@@ -49,16 +47,12 @@ final class SendUnitAlbumPhotosAction
             ->get();
 
         if ($photos->isEmpty() || $photos->count() !== count($data->photoIds)) {
-            throw ValidationException::withMessages([
-                'photo_ids' => [__('photo_album.errors.photos_unavailable')],
-            ]);
+            throw new InvalidArgumentException('photos_unavailable');
         }
 
         $email = EmailUnsubscribe::normalizeEmail($data->email);
         if (! EmailUnsubscribeExemptions::isExempt($email) && EmailUnsubscribe::isUnsubscribed($email)) {
-            throw ValidationException::withMessages([
-                'email' => [__('photo_album.errors.unsubscribed', ['email' => $email])],
-            ]);
+            throw new InvalidArgumentException('unsubscribed');
         }
 
         $sends = DB::transaction(function () use ($unit, $photos, $email, $data, $tenantId, $actorUserId): Collection {
@@ -113,7 +107,7 @@ final class SendUnitAlbumPhotosAction
             if ($send->scheduled_at !== null && $send->scheduled_at->isFuture()) {
                 dispatch($job->delay($send->scheduled_at));
             } else {
-                dispatch($job);
+                dispatch_sync($job);
             }
         }
 

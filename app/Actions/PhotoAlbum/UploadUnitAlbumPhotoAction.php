@@ -26,6 +26,16 @@ final class UploadUnitAlbumPhotoAction
         private UnitAlbumPhotoStorage $storage,
     ) {}
 
+    public function handleForWorker(int $unitId, UploadedFile $file, int $tenantId, Worker $worker, ?CarbonInterface $now = null): UnitAlbumPhoto
+    {
+        $unit = Unit::query()->where('tenant_id', $tenantId)->find($unitId);
+        if ($unit === null) {
+            throw new InvalidArgumentException('unit_unavailable');
+        }
+
+        return $this->handle($unit, $file, $tenantId, $worker, $now);
+    }
+
     public function handle(
         Unit $unit,
         UploadedFile $file,

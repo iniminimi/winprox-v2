@@ -21,6 +21,26 @@ final class DeleteUnitAlbumPhotoAction
         private UnitAlbumPhotoStorage $storage,
     ) {}
 
+    public function handleForWorker(int $photoId, int $tenantId, Worker $worker): void
+    {
+        $photo = UnitAlbumPhoto::query()->where('tenant_id', $tenantId)->find($photoId);
+        if ($photo === null) {
+            return;
+        }
+
+        $this->handle($photo, $tenantId, null, $worker);
+    }
+
+    public function handleForUser(int $photoId, int $tenantId, int $actorUserId): void
+    {
+        $photo = UnitAlbumPhoto::query()->where('tenant_id', $tenantId)->find($photoId);
+        if ($photo === null) {
+            return;
+        }
+
+        $this->handle($photo, $tenantId, $actorUserId);
+    }
+
     public function handle(UnitAlbumPhoto $photo, int $tenantId, ?int $actorUserId, ?Worker $worker = null): void
     {
         if ((int) $photo->tenant_id !== $tenantId) {

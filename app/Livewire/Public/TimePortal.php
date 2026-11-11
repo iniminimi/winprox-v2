@@ -6,6 +6,9 @@ use App\Actions\Customers\CreateCustomerWithLocationAction;
 use App\Actions\Customers\SuggestCustomerNameMatchesAction;
 use App\Actions\Notifications\ListWorkerNotificationsAction;
 use App\Actions\Notifications\MarkWorkerNotificationsReadAction;
+use App\Actions\PhotoAlbum\DeleteUnitAlbumPhotoAction;
+use App\Actions\PhotoAlbum\ListWorkerUnitAlbumAction;
+use App\Actions\PhotoAlbum\UploadUnitAlbumPhotoAction;
 use App\Actions\Portal\ConfirmWorkerIconAction;
 use App\Actions\Portal\SyncWorkerOpenTaskBaselineAction;
 use App\Actions\Portal\TeamleaderReleaseWorkerClockDeviceAction;
@@ -55,6 +58,7 @@ use App\Enums\WorkerNotificationType;
 use App\Http\Requests\Esg\RecordEsgMeasurementRequest;
 use App\Http\Requests\Public\CompletePortalTaskRequest;
 use App\Http\Requests\Time\AcknowledgeTimeRosterViewRequest;
+use App\Http\Requests\PhotoAlbum\UploadUnitAlbumPhotosRequest;
 use App\Http\Requests\Time\ListWorkerHoursRequest;
 use App\Http\Requests\Time\RequestAbsenceRequest;
 use App\Http\Requests\Time\WorkerClockPinRequest;
@@ -210,6 +214,13 @@ class TimePortal extends Component
 
     #[Locked]
     public bool $hoursListOpen = false;
+
+    public bool $albumOpen = false;
+
+    public ?int $albumUnitId = null;
+
+    /** @var array<int, \Livewire\Features\SupportFileUploads\TemporaryUploadedFile> */
+    public array $albumPhotos = [];
 
     #[Locked]
     public bool $scheduleListOpen = false;
@@ -577,7 +588,7 @@ class TimePortal extends Component
     private function forgetPortalSignInState(): void
     {
         $this->taskBaselineSyncedThisVisit = false;
-        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'ownDeviceReleaseOffered', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'scheduleChangedDates', 'schedulePublishedFrom', 'teamScheduleOpen', 'teamScheduleWeek', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceHalfDay', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'flashMessageKey', 'flashMessageReplace', 'homescreenHelpOpen', 'teamleaderOpen']);
+        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'ownDeviceReleaseOffered', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'scheduleChangedDates', 'schedulePublishedFrom', 'teamScheduleOpen', 'teamScheduleWeek', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceHalfDay', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'flashMessageKey', 'flashMessageReplace', 'homescreenHelpOpen', 'teamleaderOpen', 'albumOpen', 'albumUnitId', 'albumPhotos']);
         $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm', 'rosterAcknowledged']);
     }
 
@@ -602,6 +613,7 @@ class TimePortal extends Component
         $this->teamScheduleOpen = false;
         $this->absenceListOpen = false;
         $this->teamleaderOpen = false;
+        $this->albumOpen = false;
         $this->rosterAckOpen = true;
         $this->rosterListOpen = false;
         $this->rosterAcknowledged = false;
@@ -626,6 +638,7 @@ class TimePortal extends Component
         $this->absenceListOpen = false;
         $this->teamleaderOpen = false;
         $this->hoursMonth = now()->format('Y-m');
+        $this->albumOpen = false;
         $this->hoursListOpen = true;
     }
 
@@ -721,6 +734,84 @@ class TimePortal extends Component
         $this->hoursListOpen = false;
     }
 
+    public function openAlbum(): void
+    {
+        $worker = $this->authorizedWorker();
+        if ($worker === null || ! Tenant::query()->find($this->tenantId)?->photoAlbumEnabled()) {
+            return;
+        }
+
+        $this->hoursListOpen = false;
+        $this->scheduleListOpen = false;
+        $this->teamScheduleOpen = false;
+        $this->absenceListOpen = false;
+        $this->teamleaderOpen = false;
+        $this->rosterListOpen = false;
+        $this->customerFormOpen = false;
+        $this->albumOpen = true;
+    }
+
+    public function closeAlbum(): void
+    {
+        $this->albumOpen = false;
+        $this->albumPhotos = [];
+        $this->resetErrorBag(['albumUnitId', 'albumPhotos']);
+    }
+
+    public function removeAlbumPhoto(int $index): void
+    {
+        if (isset($this->albumPhotos[$index])) {
+            array_splice($this->albumPhotos, $index, 1);
+        }
+    }
+
+    public function saveAlbumPhotos(UploadUnitAlbumPhotoAction $upload): void
+    {
+        $worker = $this->authorizedWorker();
+        if ($worker === null) {
+            return;
+        }
+
+        $validated = validator(
+            [
+                'albumUnitId' => $this->albumUnitId,
+                'albumPhotos' => $this->albumPhotos,
+            ],
+            UploadUnitAlbumPhotosRequest::portalRuleSet(),
+            UploadUnitAlbumPhotosRequest::portalValidationMessages(),
+        )->validate();
+
+        foreach ($validated['albumPhotos'] as $file) {
+            try {
+                $upload->handleForWorker((int) $validated['albumUnitId'], $file, (int) $this->tenantId, $worker);
+            } catch (\InvalidArgumentException $e) {
+                $field = $e->getMessage() === 'album_unit_not_allowed' || $e->getMessage() === 'unit_unavailable'
+                    ? 'albumUnitId'
+                    : 'albumPhotos';
+                $this->addError($field, __('photo_album.errors.'.$e->getMessage()));
+
+                return;
+            }
+        }
+
+        $this->albumPhotos = [];
+        $this->portalFlash('photo_album.saved');
+    }
+
+    public function deleteAlbumPhoto(int $photoId, DeleteUnitAlbumPhotoAction $delete): void
+    {
+        $worker = $this->authorizedWorker();
+        if ($worker === null) {
+            return;
+        }
+
+        try {
+            $delete->handleForWorker($photoId, (int) $this->tenantId, $worker);
+        } catch (\InvalidArgumentException) {
+            $this->addError('albumPhotos', __('photo_album.errors.album_photo_not_own'));
+        }
+    }
+
     public function openSchedule(
         ListWorkerNotificationsAction $listNotifications,
         MarkWorkerNotificationsReadAction $markRead,
@@ -780,6 +871,7 @@ class TimePortal extends Component
             ?->target->cursor;
 
         $markRead->handle($worker, $this->tenantId, [WorkerNotificationType::RosterPublished, WorkerNotificationType::RosterChanged, WorkerNotificationType::RosterCorrected]);
+        $this->albumOpen = false;
         $this->scheduleListOpen = true;
     }
 
@@ -812,6 +904,7 @@ class TimePortal extends Component
         $this->absenceListOpen = false;
         $this->teamleaderOpen = false;
         $this->teamScheduleWeek = now()->startOfWeek(Carbon::MONDAY)->toDateString();
+        $this->albumOpen = false;
         $this->teamScheduleOpen = true;
     }
 
@@ -903,6 +996,7 @@ class TimePortal extends Component
         $this->absenceDescription = '';
         $this->absenceHalfDay = false;
         $this->resetErrorBag(['absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription', 'absenceHalfDay']);
+        $this->albumOpen = false;
         $this->absenceListOpen = true;
     }
 
@@ -923,6 +1017,7 @@ class TimePortal extends Component
         $this->teamScheduleOpen = false;
         $this->absenceListOpen = false;
         $this->customerFormOpen = false;
+        $this->albumOpen = false;
         $this->teamleaderOpen = true;
     }
 
@@ -1103,6 +1198,7 @@ class TimePortal extends Component
         }
 
         $this->rosterAckOpen = false;
+        $this->albumOpen = false;
         $this->rosterListOpen = true;
     }
 
@@ -1586,6 +1682,7 @@ class TimePortal extends Component
 
         $this->resetCustomerForm();
         $this->teamleaderOpen = false;
+        $this->albumOpen = false;
         $this->customerFormOpen = true;
     }
 
@@ -2215,6 +2312,11 @@ class TimePortal extends Component
         }
         $portalTenant = Tenant::query()->find($this->tenantId);
         $hasTimeModule = TimeModuleAccess::tenantHasModule($portalTenant);
+        $albumEnabled = $portalTenant?->photoAlbumEnabled() ?? false;
+        $album = ['units' => collect(), 'photos' => collect(), 'count' => 0, 'max' => UploadUnitAlbumPhotoAction::maxPerDay()];
+        if ($canAct && $albumEnabled && $this->albumOpen && $verifiedWorker !== null) {
+            $album = app(ListWorkerUnitAlbumAction::class)->handle($verifiedWorker, (int) $this->tenantId, $this->albumUnitId);
+        }
         $timeRosterEnabled = TimeModuleAccess::rosterEnabled($portalTenant);
         if (! $timeRosterEnabled) {
             $this->scheduleListOpen = false;
@@ -2426,6 +2528,11 @@ class TimePortal extends Component
             'completingTaskId' => $this->completingTaskId,
             'tasks' => $tasks,
             'hasTimeModule' => $hasTimeModule,
+            'albumEnabled' => $albumEnabled,
+            'albumUnits' => $album['units'],
+            'albumToday' => $album['photos'],
+            'albumTodayCount' => $album['count'],
+            'albumMax' => $album['max'],
             'timeRosterEnabled' => $timeRosterEnabled,
             'evacuationList' => $evacuationList,
             'photoAlbumUnits' => $photoAlbumUnits,

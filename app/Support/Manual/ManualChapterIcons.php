@@ -39,6 +39,7 @@ final class ManualChapterIcons
         'time.alarms' => 'alert-triangle',
         'time.shifts' => 'calendar',
         'time.clock_points' => 'map-pin',
+        'photo-album' => 'document',
         'settings' => 'settings',
         'settings.api' => 'api',
         'subscription' => 'subscription',

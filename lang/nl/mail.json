@@ -193,6 +193,9 @@
                 "unit_bulk_batches": "Bulkimports units: :count",
                 "unit_check_lists": "Checklists units: :count",
                 "unit_checks": "Unit checks: :count",
+                "unit_album_photos": "Albumfoto's: :count",
+                "unit_album_recipients": "Albumontvangers: :count",
+                "unit_album_sends": "Albumverzendingen: :count",
                 "unit_gps_reports": "GPS-meldingen units: :count",
                 "unit_measure_fields": "Meetvelden: :count",
                 "unit_measurements": "Unitmetingen: :count",
@@ -245,9 +248,9 @@
         "ops_body": "Nieuwe demo-aanvraag via de website.\n\nBedrijf: :company\nContactpersoon: :name\nE-mail: :email\nTelefoon: :phone\nGemeente: :municipality\nVoorkeur: :preference\nToelichting: :note"
     },
     "unit_album": {
-        "subject": ":tenant — Foto's",
-        "intro": ":tenant stuurt je foto's.",
-        "outro": "Deze mail werd verstuurd door :tenant via WinProx.",
-        "photo_alt": "Foto :number"
+        "subject": ":tenant — foto's",
+        "intro": ":tenant stuurde je foto's.",
+        "photo_alt": "Foto :number",
+        "outro": "De foto's blijven in deze mail staan. In WinProx worden de bestanden na een week gewist."
     }
 }

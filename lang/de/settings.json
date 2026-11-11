@@ -8,6 +8,8 @@
         "modal_title": "Organisationsdaten",
         "modal_hint": "Diese Angaben erscheinen u. a. auf gedruckten QR-Codes, Unit-Etiketten und anderem Melder-Material.",
         "card_hint": "Diese Angaben erscheinen u. a. auf gedruckten QR-Codes und Unit-Etiketten.",
+        "photo_album_label": "Fotoalbum",
+        "photo_album_hint": "Ausführende machen auf Clock Point Fotos pro Unit. Im Fotoalbum mailen Sie diese an eine Adresse. Die Dateien werden nach einer Woche gelöscht.",
         "label_email": "E-Mail",
         "label_phone": "Telefon",
         "label_address": "Adresse",

@@ -666,6 +666,23 @@
                 }
             ]
         },
+        "photo-album": {
+            "title": "Hilfe — Fotoalbum",
+            "actions": [
+                {
+                    "label": "An oder aus",
+                    "text": "Das Fotoalbum gilt für die ganze Organisation. Der Administrator schaltet es unter Einstellungen → Ihre Organisation ein. Aus erscheint es nirgends: nicht auf Clock Point und nicht im Menü."
+                },
+                {
+                    "label": "Fotos machen",
+                    "text": "Auf Clock Point wählt der Ausführende Fotos, dann die Unit, und macht Fotos. Das Telefon verkleinert sie zuerst. Pro Unit gilt ein Maximum pro Tag."
+                },
+                {
+                    "label": "Senden",
+                    "text": "Im Fotoalbum wählen Sie die Unit und die Fotos und geben eine E-Mail-Adresse ein. Die Adresse bleibt bei dieser Unit. Die Fotos stehen in der E-Mail. Nach einer Woche löscht WinProx die Dateien."
+                }
+            ]
+        },
         "settings": {
             "title": "Hilfe — Einstellungen",
             "actions": [
@@ -677,6 +694,11 @@
                 {
                     "label": "Organisationsdaten",
                     "text": "Unter Ihre Organisation finden Sie zwei Bereiche: Organisationsdaten (Name, E-Mail, Telefon und Adresse — nur der Administrator kann über 'Organisationsdaten bearbeiten' ändern) und Organisationslogo (Upload PNG/JPG, max. 2 MB). Als Mitarbeiter sehen Sie Daten und Logo nur zur Information. Das Logo erscheint in der Mitte jedes QR-Codes auf Aufklebern und im Meldeportal. Für die Eckplatzierung auf Aufklebern siehe den Bereich Logo und Adresse unter QR-Aufkleberbögen."
+                },
+                {
+                    "label": "Fotoalbum",
+                    "requires_facility": true,
+                    "text": "Unter Ihre Organisation schaltet der Administrator das Fotoalbum für die ganze Organisation ein oder aus. Ein: Ausführende machen Fotos pro Unit auf Clock Point, und Sie mailen sie über Fotoalbum. Die Dateien werden nach einer Woche gelöscht."
                 },
                 {
                     "label": "E-Mail-Benachrichtigungen",

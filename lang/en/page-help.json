@@ -666,6 +666,23 @@
                 }
             ]
         },
+        "photo-album": {
+            "title": "Help — Photo album",
+            "actions": [
+                {
+                    "label": "On or off",
+                    "text": "The photo album applies to the whole organisation. An administrator turns it on under Settings → Your organisation. Off, it appears nowhere: not on Clock Point and not in the menu."
+                },
+                {
+                    "label": "Take photos",
+                    "text": "On Clock Point the worker chooses Photos, then the unit, and takes photos. The phone reduces them first. Each unit has a daily maximum."
+                },
+                {
+                    "label": "Email",
+                    "text": "In Photo album you choose the unit and the photos, and enter an email address. The address stays with that unit. The photos are in the email. After a week WinProx deletes the files."
+                }
+            ]
+        },
         "settings": {
             "title": "Help — Settings",
             "actions": [
@@ -677,6 +694,11 @@
                 {
                     "label": "Organisation details",
                     "text": "Under Your organisation you will find two blocks: Organisation details (name, email, phone and address — only the administrator can edit via 'Edit organisation details') and Organisation logo (upload PNG/JPG, max. 2 MB). As an employee you only see details and logo for reference. The logo appears in the centre of every QR code on stickers and in the reporting portal. For corner placement on stickers, see the Logo and address section under QR sticker sheets."
+                },
+                {
+                    "label": "Photo album",
+                    "requires_facility": true,
+                    "text": "Under Your organisation an administrator turns the photo album on or off for the whole organisation. On: workers take photos per unit on Clock Point, and you email them via Photo album. The files are deleted after a week."
                 },
                 {
                     "label": "Email notifications",

@@ -12,6 +12,16 @@ final class DeleteUnitAlbumRecipientAction
 {
     public function __construct(private AuditRecorder $audit) {}
 
+    public function handleId(int $recipientId, int $tenantId, int $actorUserId): void
+    {
+        $recipient = UnitAlbumRecipient::query()->where('tenant_id', $tenantId)->find($recipientId);
+        if ($recipient === null) {
+            return;
+        }
+
+        $this->handle($recipient, $tenantId, $actorUserId);
+    }
+
     public function handle(UnitAlbumRecipient $recipient, int $tenantId, int $actorUserId): void
     {
         if ((int) $recipient->tenant_id !== $tenantId) {

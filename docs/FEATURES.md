@@ -1364,6 +1364,23 @@ binnen ~30–90 s dood.
 
 ---
 
+## 5h. Fotoalbum per unit
+
+Optioneel, **uit** tot de beheerder het aanzet onder **Instellingen → Je organisatie**.
+Eén vinkje voor de hele organisatie. Nooit in Checkmate.
+
+- Clock Point: tegel **Foto's**. De uitvoerder kiest een unit waar hij mag klokken
+  en maakt foto's. De gsm verkleint ze eerst (kleiner dan een meldingsfoto, omdat
+  ze in de mail gaan). Maximum per unit per dag (`unit_photo_album.max_photos_per_day`,
+  standaard 24). Alleen de eigen foto van vandaag mag de uitvoerder wissen.
+- Beheer → **Fotoalbum**: kies de unit, vink foto's aan, mail één adres. Het adres
+  blijft bij die unit. Maximaal 8 foto's per mail. Onderwerp is vast
+  (`:tenant — foto's`), foto's ingesloten (geen externe afbeelding), uitschrijven
+  via de gewone footer. Een afgemeld adres krijgt de mail niet. Binnen het uurlimiet
+  vertrekt de mail meteen; daarboven wacht ze in de wachtrij.
+- Bestanden op de privé-schijf. Na 7 dagen wist `winprox:retention-prune` bestand
+  en rij. De verzendhistoriek blijft.
+
 ## 6. Personen (Backoffice + Teams)
 
 **Doel:** drie pagina’s onder **Personen**. **Backoffice** = collega-gebruikers (login).

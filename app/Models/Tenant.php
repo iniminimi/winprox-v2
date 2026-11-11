@@ -67,6 +67,7 @@ class Tenant extends Model
         'work_menu_unit_checks_enabled',
         'work_menu_issues_tasks_enabled',
         'work_menu_unit_measurements_enabled',
+        'photo_album_enabled',
         'starter_pack_key',
         'starter_pack_applied_at',
         'starter_pack_payload',
@@ -108,6 +109,7 @@ class Tenant extends Model
             'work_menu_unit_checks_enabled' => 'boolean',
             'work_menu_issues_tasks_enabled' => 'boolean',
             'work_menu_unit_measurements_enabled' => 'boolean',
+            'photo_album_enabled' => 'boolean',
             'starter_pack_applied_at' => 'datetime',
             'starter_pack_payload' => 'array',
             'starter_pack_result_dismissed_at' => 'datetime',
@@ -408,14 +410,10 @@ class Tenant extends Model
         return UnitCheck::query()->where('tenant_id', $this->id)->exists();
     }
 
-    /** Fotoalbum in het werkmenu: minstens één unit met album aan, nooit in Checkmate. */
-    public function hasPhotoAlbumUnits(): bool
+    /** Fotoalbum voor de hele organisatie. Nooit in Checkmate. */
+    public function photoAlbumEnabled(): bool
     {
-        return ! $this->checkmateMode()
-            && Unit::query()
-                ->where('tenant_id', $this->id)
-                ->where('photo_album_enabled', true)
-                ->exists();
+        return ! $this->checkmateMode() && (bool) $this->photo_album_enabled;
     }
 
     public function hasRecordedWorkVisits(): bool

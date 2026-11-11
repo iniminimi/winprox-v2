@@ -1,53 +1,43 @@
 {
     "title": "Fotoalbum",
-    "subtitle": "Fotos, die Ausführende pro Einheit über Clock Point aufnehmen. Wählen Sie Fotos aus und senden Sie sie an eine E-Mail-Adresse.",
-    "no_units": "Noch keine Einheit mit Fotoalbum. Aktivieren Sie das Fotoalbum unter Standorte → Einheit bearbeiten.",
-    "photos_title": "Fotos",
-    "filters": {
-        "unit": "Einheit",
-        "day": "Tag"
-    },
-    "retention_hint": "Fotos werden nach :days Tagen automatisch gelöscht.",
-    "empty": "Keine Fotos an diesem Tag.",
+    "subtitle": "Fotos pro Unit. Wählen Sie Fotos und mailen Sie sie. Die Dateien werden nach einer Woche gelöscht.",
+    "unit": "Unit",
+    "choose_unit": "Unit wählen",
+    "empty": "Noch keine Fotos für diese Unit.",
     "delete": "Löschen",
-    "delete_confirm": "Dieses Foto löschen?",
-    "send": {
-        "title": "Senden",
-        "hint": "Ein Empfänger pro Versand. Pro E-Mail höchstens :max Fotos; wählen Sie mehr, werden mehrere E-Mails gesendet.",
-        "email": "E-Mail-Adresse",
-        "description": "Beschreibung (optional)",
-        "description_placeholder": "z. B. Mama von Lotte",
-        "submit": "Senden (:count)",
-        "queued": ":count E-Mail(s) in der Warteschlange.",
-        "scheduled": ":count E-Mail(s) geplant, die letzte gegen :time."
+    "recipients": "Gespeicherte Adressen",
+    "email": "E-Mail-Adresse",
+    "description": "Name (optional)",
+    "send": "Senden",
+    "sent": "Die E-Mail wurde gesendet oder eingeplant.",
+    "saved": "Fotos gespeichert.",
+    "portal": {
+        "tile": "Fotos",
+        "tile_sub": "Fotos einer Unit",
+        "title": "Fotos",
+        "subtitle": "Wählen Sie die Unit und machen Sie Fotos. Sie werden auf diesem Telefon verkleinert.",
+        "hint": "Das Foto wird auf diesem Telefon verkleinert, bevor es gesendet wird.",
+        "save": "Fotos speichern",
+        "day_count": ":count von :max heute"
     },
-    "recipients": {
-        "title": "Empfänger dieser Einheit",
-        "use": "Auswählen",
-        "edit": "Beschreibung",
-        "delete": "Entfernen",
-        "delete_confirm": "Diese Adresse bei dieser Einheit entfernen?",
-        "empty": "Noch keine Empfänger. Eine neue Adresse wird beim Senden gespeichert."
-    },
-    "sends": {
-        "title": "Versendungen",
-        "line": ":count Fotos · :time · :user",
-        "empty": "Noch nichts gesendet.",
-        "status": {
-            "queued": "In der Warteschlange",
-            "scheduled": "Geplant gegen :time",
-            "sent": "Gesendet",
-            "blocked_unsubscribed": "Nicht gesendet: abgemeldet",
-            "failed": "Fehlgeschlagen"
-        }
+    "status": {
+        "queued": "Geplant",
+        "sent": "Gesendet",
+        "blocked_unsubscribed": "Abgemeldet",
+        "failed": "Fehlgeschlagen"
     },
     "errors": {
-        "unit_unavailable": "Diese Einheit hat kein Fotoalbum.",
-        "photos_unavailable": "Ein oder mehrere Fotos existieren nicht mehr. Bitte erneut auswählen.",
+        "unit_unavailable": "Diese Unit ist nicht verfügbar.",
+        "photos_unavailable": "Ein oder mehrere Fotos sind nicht mehr verfügbar.",
+        "unsubscribed": "Diese Adresse ist abgemeldet.",
+        "album_unit_not_allowed": "Sie dürfen für diese Unit keine Fotos machen.",
+        "album_day_full": "Das Maximum für heute ist erreicht.",
+        "album_disabled": "Das Fotoalbum ist ausgeschaltet.",
+        "album_photo_not_own": "Sie können nur Ihr eigenes Foto von heute löschen.",
+        "unit_required": "Wählen Sie eine Unit.",
         "photos_required": "Wählen Sie mindestens ein Foto.",
-        "unsubscribed": ":email hat sich von WinProx-E-Mails abgemeldet. Die Fotos wurden nicht gesendet.",
         "email_required": "Geben Sie eine E-Mail-Adresse ein.",
         "email_invalid": "Diese E-Mail-Adresse ist ungültig.",
-        "description_max": "Die Beschreibung ist zu lang (max. 500 Zeichen)."
+        "description_max": "Der Name ist zu lang."
     }
 }

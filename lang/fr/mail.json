@@ -193,6 +193,9 @@
                 "unit_bulk_batches": "Lots d'unités en masse: :count",
                 "unit_check_lists": "Listes de contrôle d'unité: :count",
                 "unit_checks": "Contrôles d'unité: :count",
+                "unit_album_photos": "Photos de l'album : :count",
+                "unit_album_recipients": "Destinataires de l'album : :count",
+                "unit_album_sends": "Envois de l'album : :count",
                 "unit_gps_reports": "Rapports GPS d'unité: :count",
                 "unit_measure_fields": "Champs de mesure: :count",
                 "unit_measurements": "Mesures d'unité: :count",
@@ -245,9 +248,9 @@
         "ops_body": "Nouvelle demande de démonstration via le site web.\n\nEntreprise : :company\nContact : :name\nE-mail : :email\nTéléphone : :phone\nCommune : :municipality\nPréférence : :preference\nRemarque : :note"
     },
     "unit_album": {
-        "subject": ":tenant — Photos",
-        "intro": ":tenant vous envoie des photos.",
-        "outro": "Cet e-mail a été envoyé par :tenant via WinProx.",
-        "photo_alt": "Photo :number"
+        "subject": ":tenant — photos",
+        "intro": ":tenant vous a envoyé des photos.",
+        "photo_alt": "Photo :number",
+        "outro": "Les photos restent dans ce message. WinProx efface les fichiers après une semaine."
     }
 }

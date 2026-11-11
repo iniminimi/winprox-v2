@@ -666,6 +666,23 @@
                 }
             ]
         },
+        "photo-album": {
+            "title": "Ayuda — Álbum de fotos",
+            "actions": [
+                {
+                    "label": "Activado o no",
+                    "text": "El álbum de fotos vale para toda la organización. El administrador lo activa en Ajustes → Su organización. Desactivado, no aparece en ningún sitio: ni en Clock Point ni en el menú."
+                },
+                {
+                    "label": "Hacer fotos",
+                    "text": "En Clock Point el operario elige Fotos, luego la unidad, y hace fotos. El teléfono las reduce primero. Cada unidad tiene un máximo por día."
+                },
+                {
+                    "label": "Enviar",
+                    "text": "En Álbum de fotos elige la unidad y las fotos e indica un correo. La dirección queda guardada en esa unidad. Las fotos van en el correo. Al cabo de una semana WinProx borra los archivos."
+                }
+            ]
+        },
         "settings": {
             "title": "Ayuda — Configuración",
             "actions": [
@@ -677,6 +694,11 @@
                 {
                     "label": "Datos de la organización",
                     "text": "En Su organización hay dos bloques: Datos de la organización (nombre, correo, teléfono y dirección — solo el administrador puede editar mediante «Editar datos de la organización») y Logotipo de la organización (subida PNG/JPG, máx. 2 MB). Como empleado solo ve datos y logotipo como referencia. El logotipo aparece en el centro de cada código QR en las pegatinas y en el portal de informes. Para la colocación en esquina en las pegatinas, consulte la sección Logotipo y dirección bajo Hojas de pegatinas QR."
+                },
+                {
+                    "label": "Álbum de fotos",
+                    "requires_facility": true,
+                    "text": "En Su organización el administrador activa o desactiva el álbum de fotos para toda la organización. Activado: los operarios hacen fotos por unidad en Clock Point y usted las envía desde Álbum de fotos. Los archivos se borran al cabo de una semana."
                 },
                 {
                     "label": "Notificaciones por correo",

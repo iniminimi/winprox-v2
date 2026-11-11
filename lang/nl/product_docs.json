@@ -46,7 +46,8 @@
                     "Verlof- en recupaanvragen behandelen.",
                     "Meldingen, taken en inspectierondes beheren.",
                     "Locaties, teams, medewerkers en units beheren.",
-                    "De RSZ/CIAO-registratie kan via de instellingen worden geactiveerd. Optionele GPS-werkbezoeken koppelen een bezoek aan een locatie."
+                    "De RSZ/CIAO-registratie kan via de instellingen worden geactiveerd. Optionele GPS-werkbezoeken koppelen een bezoek aan een locatie.",
+                    "Optioneel fotoalbum: uitvoerders maken foto's per unit op Clock Point. U mailt ze vanuit Fotoalbum. De bestanden worden na een week gewist. U zet dit aan bij Instellingen, onder Je organisatie."
                 ],
                 "badge": "inbegrepen",
                 "key": "winprox_time"

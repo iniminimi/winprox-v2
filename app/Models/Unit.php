@@ -140,16 +140,16 @@ class Unit extends Model
         return (bool) $this->category?->allow_unit_checks;
     }
 
-    /** Fotoalbum per unit: unit-vlag aan en geen Checkmate (docs/FEATURES.md §5h). */
+    /** Fotoalbum: organisatievlag aan, unit actief, geen Checkmate. */
     public function allowsPhotoAlbum(): bool
     {
-        if (! (bool) $this->photo_album_enabled || ! (bool) $this->is_active) {
+        if (! (bool) $this->is_active) {
             return false;
         }
 
         $this->loadMissing('tenant');
 
-        return ! ($this->tenant?->checkmateMode() ?? false);
+        return $this->tenant?->photoAlbumEnabled() ?? false;
     }
 
     public function allowsUnitMeasurements(): bool

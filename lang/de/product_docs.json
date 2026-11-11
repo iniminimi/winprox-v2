@@ -46,7 +46,8 @@
                     "Urlaubs- und Ausgleichsanträge bearbeiten.",
                     "Meldungen, Aufgaben und Inspektionsrunden verwalten.",
                     "Standorte, Teams, Personen und Units verwalten.",
-                    "Die RSZ/CIAO-Meldung kann in den Einstellungen aktiviert werden. Optionale GPS-Arbeitsbesuche verknüpfen einen Besuch mit einem Ort."
+                    "Die RSZ/CIAO-Meldung kann in den Einstellungen aktiviert werden. Optionale GPS-Arbeitsbesuche verknüpfen einen Besuch mit einem Ort.",
+                    "Optionales Fotoalbum: Ausführende machen Fotos pro Unit auf Clock Point. Sie mailen sie aus dem Fotoalbum. Die Dateien werden nach einer Woche gelöscht. Sie schalten es unter Einstellungen, Ihre Organisation, ein."
                 ],
                 "badge": "inklusive",
                 "key": "winprox_time"

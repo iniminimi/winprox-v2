@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Http\Requests\PhotoAlbum;
 
-use App\Models\UnitAlbumPhoto;
 use App\Support\Validation\TextDescriptionLimits;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -12,7 +11,7 @@ class SendUnitAlbumPhotosRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return $this->user()?->can('send', UnitAlbumPhoto::class) ?? false;
+        return $this->user()?->can('send', \App\Models\UnitAlbumPhoto::class) ?? false;
     }
 
     /**

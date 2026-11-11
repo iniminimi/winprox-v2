@@ -41,6 +41,7 @@ final class ManualChapters
         'time.shifts',
         'time.clock_points',
         'time.clock_display',
+        'photo-album',
         'settings',
         'settings.api',
         'subscription',

@@ -8,6 +8,8 @@
         "modal_title": "Dati organizzazione",
         "modal_hint": "Questi dati compaiono sui codici QR stampati, sulle etichette unità e altri materiali rivolti ai reporter.",
         "card_hint": "Questi dati compaiono sui codici QR stampati e sulle etichette unità.",
+        "photo_album_label": "Album foto",
+        "photo_album_hint": "Gli esecutori scattano foto per unità su Clock Point. In Album foto le invia a un indirizzo. I file vengono cancellati dopo una settimana.",
         "label_email": "E-mail",
         "label_phone": "Telefono",
         "label_address": "Indirizzo",

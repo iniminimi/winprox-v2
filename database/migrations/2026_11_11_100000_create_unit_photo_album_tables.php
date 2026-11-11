@@ -8,8 +8,8 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('units', function (Blueprint $table): void {
-            $table->boolean('photo_album_enabled')->default(false)->after('allow_unit_measurements');
+        Schema::table('tenants', function (Blueprint $table): void {
+            $table->boolean('photo_album_enabled')->default(false);
         });
 
         Schema::create('unit_album_photos', function (Blueprint $table): void {
@@ -63,7 +63,7 @@ return new class extends Migration
         Schema::dropIfExists('unit_album_recipients');
         Schema::dropIfExists('unit_album_photos');
 
-        Schema::table('units', function (Blueprint $table): void {
+        Schema::table('tenants', function (Blueprint $table): void {
             $table->dropColumn('photo_album_enabled');
         });
     }

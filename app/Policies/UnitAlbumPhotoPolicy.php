@@ -7,7 +7,6 @@ namespace App\Policies;
 use App\Models\Tenant;
 use App\Models\UnitAlbumPhoto;
 use App\Models\User;
-use App\Support\Checkmate\CheckmateMode;
 use App\Support\Platform\SuperuserTenantAccess;
 use App\Support\Tenancy;
 
@@ -41,6 +40,6 @@ class UnitAlbumPhotoPolicy
             ? $user->tenant
             : ($user->is_superuser && Tenancy::id() !== null ? Tenant::query()->find(Tenancy::id()) : null);
 
-        return $tenant !== null && ! CheckmateMode::isActive($tenant);
+        return $tenant?->photoAlbumEnabled() ?? false;
     }
 }

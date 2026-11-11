@@ -46,7 +46,8 @@
                     "Handle leave and time-off requests.",
                     "Manage issues, tasks and inspection rounds.",
                     "Manage locations, teams, people and units.",
-                    "RSZ/CIAO presence reporting can be turned on in settings. Optional GPS work visits tie a visit to a location."
+                    "RSZ/CIAO presence reporting can be turned on in settings. Optional GPS work visits tie a visit to a location.",
+                    "Optional photo album: workers take photos per unit on Clock Point. You email them from Photo album. The files are deleted after a week. Turn this on in Settings, under Your organisation."
                 ],
                 "badge": "included",
                 "key": "winprox_time"
