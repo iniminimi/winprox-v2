@@ -832,6 +832,10 @@
                     "text": "Formule: 5/10/25/50 licenze + Corporate. Scegli e paghi mensilmente con Stripe (Corporate su richiesta). Contatta info@winprox.app per Corporate o CIAO. CIAO si richiede allo stesso modo; un Superuser lo attiva (Time si attiva; Corporate non serve)."
                 },
                 {
+                    "label": "Checkmate",
+                    "text": "Checkmate è la formula semplice per le squadre che lavorano sul posto presso i clienti, come le squadre di pulizia. I tuoi operatori timbrano entrata e uscita con lo smartphone. Presso ogni cliente avviano una visita e lo smartphone verifica che si trovino davvero all'indirizzo di lavoro (entro 100 m). Incluso: clienti e indirizzi di lavoro, timbratura con pause, una panoramica delle proprie ore per l'operatore, il tempo lavorato per cliente per l'amministratore e la dichiarazione di presenza all'ONSS (CIAO). Per questo inserisci il tuo numero d'impresa (CBE) in Impostazioni. Non incluso: segnalazioni, attività, unit, documenti e la pianificazione dei turni. Prezzo: 5 € per licenza attiva (collega o operatore) al mese; il numero lo scegli tu. Ti serve di più in seguito? Passa a una formula WinProx; i tuoi dati restano conservati."
+                },
+                {
                     "label": "Elimina i dati dell’organizzazione",
                     "text": "Solo amministratori. Scarica prima un’esportazione da Impostazioni → Privacy ed esportazione dati. Poi in Abbonamento spunta la conferma e inserisci la password. Tutti gli amministratori ricevono un’email di conferma. In prova puoi poi eliminare definitivamente tu stesso (snapshot tecnico senza media, conservato 30 giorni). Con un abbonamento a pagamento c’è un’attesa di 7 giorni con banner e email di promemoria; l’amministrazione WinProx esegue l’eliminazione. Puoi annullare fino ad allora da Abbonamento. Se la prova termina senza abbonamento, seguono e-mail di avviso e l’organizzazione può essere eliminata automaticamente (predefinito intorno al giorno 14)."
                 }

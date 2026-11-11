@@ -832,6 +832,10 @@
                     "text": "Fórmulas: 5/10/25/50 licencias + Corporate. Usted elige y paga mensualmente con Stripe (Corporate bajo petición). Contacte info@winprox.app para Corporate o CIAO. CIAO (ONSS) se solicita igual; un Superuser lo activa (Time se enciende; no hace falta Corporate)."
                 },
                 {
+                    "label": "Checkmate",
+                    "text": "Checkmate es la fórmula sencilla para equipos que trabajan in situ en casa de clientes, como los equipos de limpieza. Tus operarios fichan la entrada y la salida con su móvil. En cada cliente inician una visita y el móvil comprueba que están realmente en la dirección de trabajo (a menos de 100 m). Incluido: clientes y direcciones de trabajo, fichaje con pausas, un resumen de sus propias horas para el operario, el tiempo trabajado por cliente para el administrador y la declaración de presencia a la ONSS (CIAO). Para ello, introduce tu número de empresa (CBE) en Configuración. No incluido: incidencias, tareas, units, documentos y el cuadrante de turnos. Precio: 5 € por licencia activa (compañero u operario) al mes; tú eliges el número. ¿Necesitas más después? Cambia a una fórmula WinProx; tus datos se conservan."
+                },
+                {
                     "label": "Eliminar datos de la organización",
                     "text": "Solo administradores. Descargue primero una exportación en Ajustes → Privacidad y exportación de datos. Luego en Suscripción marque la confirmación e introduzca su contraseña. Todos los administradores reciben un correo de confirmación. En periodo de prueba puede eliminar definitivamente después (instantánea técnica sin medios, guardada 30 días). Con un plan de pago hay una espera de 7 días con banner y recordatorio; la administración de WinProx realiza la eliminación. Puede cancelar hasta entonces en Suscripción. Si la prueba termina sin suscripción, hay correos de aviso y la organización puede eliminarse automáticamente (por defecto hacia el día 14)."
                 }

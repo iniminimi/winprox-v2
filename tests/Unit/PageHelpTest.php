@@ -55,6 +55,18 @@ it('beschrijft Te controleren in de hulp van uitvoerders', function (): void {
         ->and($action['text'])->toContain('Clock Point');
 });
 
+it('legt Checkmate uit in de hulp van abonnement', function (string $locale): void {
+    app()->setLocale($locale);
+
+    $help = PageHelp::for('subscription');
+    $action = collect($help['actions'] ?? [])->first(fn (array $item): bool => $item['label'] === 'Checkmate');
+
+    expect($action)->not->toBeNull()
+        ->and($action['text'])->toContain('5')
+        ->and($action['text'])->toContain('100 m')
+        ->and($action['text'])->toContain('CIAO');
+})->with(['nl', 'en', 'fr', 'de', 'es', 'it']);
+
 it('laadt paginahulp voor units-overzicht', function (): void {
     app()->setLocale('nl');
 

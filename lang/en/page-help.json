@@ -832,6 +832,10 @@
                     "text": "Plans: 5/10/25/50 seats + Corporate. You choose a plan and pay monthly via Stripe (Corporate on request). Contact info@winprox.app for Corporate or CIAO. Request CIAO (NSSO) the same way; a Superuser enables it (Time turns on; Corporate not required)."
                 },
                 {
+                    "label": "Checkmate",
+                    "text": "Checkmate is the simple plan for teams who work on site at customers, such as cleaning crews. Your field workers clock in and out on their phone. At each customer they start a visit, and the phone checks that they are really at the work address (within 100 m). Included: customers and work addresses, time clock with breaks, an overview of their own hours for field workers, time worked per customer for admins, and presence reporting to the NSSO (CIAO). For that, enter your enterprise number (CBE) in Settings. Not included: issues, tasks, units, documents and the roster. Price: €5 per active licence (colleague or field worker) per month; you choose the number yourself. Need more later? Switch to a WinProx plan; your data is kept."
+                },
+                {
                     "label": "Delete organisation data",
                     "text": "Administrators only. First download a data export via Settings → Privacy & data export. Then on Subscription tick the confirmation and enter your password. All administrators receive a confirmation email. During a trial you can then permanently delete yourself (technical snapshot without media, kept 30 days). On a paid plan there is a 7-day wait with banner and reminder email; WinProx administration performs the deletion. You can cancel until then via Subscription. If the trial ends without a subscription, warning emails follow and the organisation may be deleted automatically (default around day 14)."
                 }

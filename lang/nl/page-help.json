@@ -832,6 +832,10 @@
                     "text": "Formules: 5/10/25/50 licenties + Corporate. U kiest zelf een formule en betaalt maandelijks via Stripe (Corporate op aanvraag). Neem contact op via info@winprox.app voor Corporate of CIAO. CIAO (RSZ) vraagt u ook aan; een Superuser zet het aan (Time gaat mee; geen Corporate nodig)."
                 },
                 {
+                    "label": "Checkmate",
+                    "text": "Checkmate is de eenvoudige formule voor ploegen die op locatie bij klanten werken, zoals schoonmaakploegen. Je uitvoerders klokken in en uit met hun gsm. Bij elke klant starten ze een bezoek: de gsm controleert dan of ze echt op het werkadres zijn (binnen 100 m). Inbegrepen: klanten en werkadressen, prikklok met pauzes, een overzicht van de eigen uren voor de uitvoerder, de gewerkte tijd per klant voor de beheerder, en de aanwezigheidsmelding aan de RSZ (CIAO). Vul daarvoor je KBO-nummer in bij Instellingen. Niet inbegrepen: meldingen, taken, units, documenten en het uurrooster. Prijs: €5 per actieve licentie (collega of uitvoerder) per maand; het aantal kies je zelf. Later meer nodig? Stap over naar een WinProx-formule; je gegevens blijven bewaard."
+                },
+                {
                     "label": "Organisatiegegevens verwijderen",
                     "text": "Alleen beheerders. Download eerst een gegevensexport via Instellingen → Privacy & export van gegevens. Vink daarna op Abonnement de bevestiging aan en geef je wachtwoord. Alle beheerders krijgen een bevestigingsmail. Bij een proefperiode kun je daarna zelf definitief wissen (technische snapshot zonder media, 30 dagen bewaard). Bij een betaald abonnement volgt een wachttijd van 7 dagen met banner en herinneringsmail; WinProx-administratie voert de verwijdering uit. Annuleren kan tot die tijd via Abonnement. Eindigt de proef zonder abonnement, dan volgen waarschuwingsmails en kan de organisatie automatisch worden verwijderd (standaard rond dag 14)."
                 }
