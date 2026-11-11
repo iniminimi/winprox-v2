@@ -43,6 +43,15 @@
     justify-content: start;
 }
 
+/* Fotoalbum: iets grotere thumbs, zoveel naast elkaar als de kaart breed is. */
+.wp-app [data-manual-capture="photo-album"] {
+    --wp-photo-thumb-size: 8rem;
+}
+
+.wp-app [data-manual-capture="photo-album"] .wp-photo-grid--gallery {
+    grid-template-columns: repeat(auto-fill, var(--wp-photo-thumb-size));
+}
+
 .wp-sidebar {
     display: flex;
     flex-direction: column;
