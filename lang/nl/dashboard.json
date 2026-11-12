@@ -190,6 +190,10 @@
       "since": "Begonnen om :time",
       "range": ":start – :end"
     },
+    "ssin": {
+      "title": "Rijksregisternummer ontbreekt",
+      "body": "Deze uitvoerders hebben geen rijksregisternummer. Zonder dat nummer kan CIAO hun aanwezigheid niet naar de RSZ sturen. Tik een naam om het nummer in te vullen."
+    },
     "ciao": {
       "pending_title": "CIAO-aanvraag in behandeling",
       "pending_body": "Je RSZ-aanvraag wacht op bevestiging. Daarna lopen de aanwezigheidsregistraties automatisch mee.",

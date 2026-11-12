@@ -190,6 +190,10 @@
       "since": "Begonnen um :time",
       "range": ":start – :end"
     },
+    "ssin": {
+      "title": "Nationalregisternummer fehlt",
+      "body": "Diesen Mitarbeitern fehlt die Nationalregisternummer. Ohne diese Nummer kann CIAO ihre Anwesenheit nicht an die RSZ senden. Tippen Sie einen Namen an, um sie einzutragen."
+    },
     "ciao": {
       "pending_title": "CIAO-Anfrage in Bearbeitung",
       "pending_body": "Ihre LSS-Anfrage wartet auf Bestätigung. Anwesenheitsregistrierungen laufen danach automatisch mit.",

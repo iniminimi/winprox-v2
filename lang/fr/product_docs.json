@@ -61,6 +61,7 @@
                     "Vous importez les clients en masse via CSV ou Excel, avec les données du site par ligne.",
                     "Par client, vous voyez le mois : visites, temps travaillé et heures par site. Vous exportez en CSV ou vous imprimez.",
                     "L’enregistrement ONSS/CIAO est actif dès le départ, dès que le numéro BCE est dans les paramètres. Vous transmettez les heures au secrétariat social. WinProx ne fait pas de Dimona et ne calcule pas le salaire.",
+                    "Le tableau de bord affiche une carte avec les exécutants actifs sans numéro de registre national. Touchez un nom pour le compléter.",
                     "Le prix est de 5 € par exécutant actif et par mois. Vous réglez vous-même le nombre de licences.",
                     "Les nouvelles organisations peuvent commencer par un mois d’essai de 25 licences, une équipe démo, un exécutant et des clients démo. Pendant l’essai, il n’y a pas de limite d’unités ou de documents.",
                     "Checkmate a son propre mode d’emploi court, à la place du manuel général WinProx."

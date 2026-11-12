@@ -1222,6 +1222,32 @@ it('toont op de uitvoerders-tegel hoeveel actieve uitvoerders geen RRN hebben', 
         ->assertDontSee(__('dashboard.checkmate.kpi.workers_missing_ssin', ['count' => 1]));
 });
 
+it('toont een kaart met uitvoerders zonder rijksregisternummer en verbergt die na invullen', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create();
+    $worker = checkmateWorker($tenant);
+    $worker->update([
+        'first_name' => 'Rita',
+        'last_name' => 'Peeters',
+        'ssin' => null,
+    ]);
+
+    $link = route('team.index', ['section' => 'teams', 'worker' => $worker->id]);
+
+    $this->actingAs($admin)->get('/dashboard')
+        ->assertOk()
+        ->assertSee(__('dashboard.checkmate.ssin.title'), false)
+        ->assertSee('Rita Peeters', false)
+        ->assertSee($link);
+
+    $worker->update(['ssin' => '85010112345']);
+
+    $this->actingAs($admin)->get('/dashboard')
+        ->assertOk()
+        ->assertDontSee('Rita Peeters', false)
+        ->assertDontSee($link);
+});
+
 it('opent de Clock Point-QR-popup vanaf de KPI-tegel met pulse tot de eerste dienst', function () {
     $tenant = checkmateTenant();
     Tenancy::actAs($tenant->id);
@@ -1262,7 +1288,8 @@ it('houdt het facility-dashboard ongewijzigd voor niet-checkmate tenants', funct
 
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
-        ->assertViewHas('checkmate', null);
+        ->assertViewHas('checkmate', null)
+        ->assertDontSee(__('dashboard.checkmate.ssin.title'), false);
 });
 
 it('maakt een klant aan via het formulier op /klanten', function () {

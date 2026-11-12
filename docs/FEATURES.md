@@ -1588,7 +1588,8 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
   documenten/mededelingen. Klant-CSV maakt werkadressen (+ stille site-unit);
   Facility-locatie-import op Locaties verborgen. Eén Clock Point («Aanmelden»):
   geen extra, geen deactiveren, geen vestigingslocatie. Portaal: klok,
-  klantbezoek, pauze, Mijn uren.
+  klantbezoek, pauze, Mijn uren. Dashboard: pulserende kaart met actieve
+  uitvoerders zonder rijksregisternummer (de naam linkt naar die uitvoerder).
   Volledige spec: `docs/CHECKMATE.md`.
 - **Instellingen — klanten op locatie** (`tenants.customers_on_location`): toont
   **Klanten** in het menu (Facility) of forceert aan op Checkmate. Locaties koppelen

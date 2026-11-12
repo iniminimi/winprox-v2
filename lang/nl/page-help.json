@@ -2057,6 +2057,10 @@
                     "text": "Geen teller maar een knop: opent de Clock Point-QR om te tonen, printen of mailen. Pulseert zolang er nog geen dienst is geweest."
                 },
                 {
+                    "label": "Rijksregisternummer ontbreekt",
+                    "text": "Een pulserende kaart noemt actieve uitvoerders zonder rijksregisternummer. Tik een naam om het nummer bij die uitvoerder in te vullen. Zonder nummer kan CIAO hun aanwezigheid niet naar de RSZ sturen. De kaart verdwijnt zodra elk nummer is ingevuld."
+                },
+                {
                     "label": "Laatste activiteit",
                     "text": "De laatste acht klantbezoeken, nieuwste eerst: uitvoerder, klant en werkadres, met begin- en eindtijd — of enkel de begintijd als het bezoek nog loopt. 'Loopt' linkt naar de aanwezigheidslijst, 'Klaar' naar de dienstenlijst. De knop 'Aanwezigheid openen' rechtsboven opent het live overzicht."
                 }

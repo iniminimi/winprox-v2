@@ -17,11 +17,13 @@ final class CheckmateDashboardData
      * @param  list<array{key: string, icon: string, tone: string, title: string, body: string, href: string}>  $quickTiles
      * @param  list<array{key: string, icon: string, tone: string, label: string, value?: string|null, body?: string|null, href?: string|null, action?: string|null, pulse?: bool}>  $kpis
      * @param  Collection<int, WorkVisit>  $recentVisits
+     * @param  list<array{id: int, name: string}>  $workersMissingSsin
      */
     public function __construct(
         public array $quickTiles,
         public array $kpis,
         public Collection $recentVisits,
+        public array $workersMissingSsin,
         public bool $needsWorkers,
         public bool $needsCustomers,
         public bool $presencePending,

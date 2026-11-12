@@ -61,6 +61,7 @@
                     "You import customers in bulk from CSV or Excel, with location details on each row.",
                     "For each customer you see the month: visits, time worked and hours per location. Export that as CSV or print it.",
                     "RSZ/CIAO reporting is on from the start, once the CBE number is in settings. You pass the hours to the social secretariat. WinProx does not file Dimona and does not calculate pay.",
+                    "The dashboard shows a card listing active workers without a national register number. Tap a name to fill it in.",
                     "The price is €5 per active worker per month. You set the number of licences yourself.",
                     "New organisations can start with a trial month of 25 licences, a demo team, a worker and demo customers. During the trial there are no limits on units or documents.",
                     "Checkmate has its own short manual, instead of the general WinProx manual."

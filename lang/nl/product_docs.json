@@ -61,6 +61,7 @@
                     "Klanten importeert u in bulk via CSV of Excel, met de locatiegegevens per rij.",
                     "Per klant ziet u de maand: bezoeken, gewerkte tijd en uren per locatie. Dat exporteert u als CSV of u drukt het af.",
                     "De RSZ/CIAO-registratie staat aan vanaf de start, zodra het KBO-nummer in de instellingen staat. De uren geeft u door aan het sociaal secretariaat. WinProx doet geen Dimona-aangifte en berekent geen loon.",
+                    "Op het dashboard staat een kaart met actieve uitvoerders zonder rijksregisternummer. Tik een naam om het nummer in te vullen.",
                     "De prijs is € 5 per actieve uitvoerder per maand. Het aantal licenties stelt u zelf in.",
                     "Nieuwe organisaties kunnen starten met een proefmaand van 25 licenties, een demoteam, een uitvoerder en demoklanten. Tijdens die proef gelden geen limieten voor units of documenten.",
                     "Checkmate heeft een eigen korte handleiding, in plaats van de algemene WinProx-handleiding."

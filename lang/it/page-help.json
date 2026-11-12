@@ -2057,6 +2057,10 @@
                     "text": "Non un contatore ma un pulsante: apre il QR del Clock Point da mostrare, stampare o inviare via e-mail. Lampeggia finché non c’è stato ancora nessun turno."
                 },
                 {
+                    "label": "Manca il numero di registro nazionale",
+                    "text": "Una scheda che pulsa elenca gli operatori attivi senza numero di registro nazionale. Tocca un nome per compilare il numero. Senza quel numero, CIAO non può inviare la loro presenza all’ONSS. La scheda sparisce appena ogni numero è compilato."
+                },
+                {
                     "label": "Ultima attività",
                     "text": "Le ultime otto visite ai clienti, la più recente prima: operatore, cliente e indirizzo di lavoro, con ora di inizio e fine — o solo l’ora di inizio se la visita è ancora in corso. 'In corso' porta all’elenco presenze, 'Fatto' all’elenco dei turni. Il pulsante 'Apri presenza' in alto a destra apre il quadro live."
                 }

@@ -190,6 +190,10 @@
       "since": "Started at :time",
       "range": ":start – :end"
     },
+    "ssin": {
+      "title": "National register number missing",
+      "body": "These workers have no national register number. Without it, CIAO cannot send their presence to the social security office. Tap a name to fill it in."
+    },
     "ciao": {
       "pending_title": "CIAO request pending",
       "pending_body": "Your NSSO request is awaiting confirmation. Attendance registrations follow automatically afterwards.",

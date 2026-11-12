@@ -86,7 +86,9 @@ Whitelist-schermen:
   (eerste uitvoerder → eerste klant), snelacties (klant/uitvoerder/aanwezigheid/
   Clock Points). KPI's (nu aanwezig, bezoeken vandaag, seats, actieve klanten)
   plus **Clock Point QR** rechts daarvan (opent print/mail-popup; pulse tot de
-  eerste dienst). Laatste klantbezoeken. Geen facility-tegels, starter packs of
+  eerste dienst). Pulserende kaart met actieve uitvoerders zonder
+  rijksregisternummer; een naam opent die uitvoerder op het teamscherm.
+  Laatste klantbezoeken. Geen facility-tegels, starter packs of
   meldingen-feed.
 - **Plaatsen** — **Klanten**, **Locaties** (geen Units/Categorieën in het menu).
   Bij plan-activatie/site-unit wordt stil een defaultcategorie «Klantlocatie»

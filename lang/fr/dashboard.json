@@ -190,6 +190,10 @@
       "since": "Commencé à :time",
       "range": ":start – :end"
     },
+    "ssin": {
+      "title": "Numéro de registre national manquant",
+      "body": "Ces exécutants n’ont pas de numéro de registre national. Sans ce numéro, CIAO ne peut pas envoyer leur présence à l’ONSS. Touchez un nom pour le compléter."
+    },
     "ciao": {
       "pending_title": "Demande CIAO en attente",
       "pending_body": "Votre demande ONSS attend une confirmation. Les enregistrements de présence suivent ensuite automatiquement.",

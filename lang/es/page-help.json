@@ -2057,6 +2057,10 @@
                     "text": "No es un contador sino un botón: abre el QR del Clock Point para mostrarlo, imprimirlo o enviarlo por correo. Parpadea mientras aún no ha habido ningún turno."
                 },
                 {
+                    "label": "Falta el número de registro nacional",
+                    "text": "Una tarjeta que parpadea nombra a los operarios activos sin número de registro nacional. Pulse un nombre para completar el número. Sin ese número, CIAO no puede enviar su presencia a la ONSS. La tarjeta desaparece en cuanto cada número está completo."
+                },
+                {
                     "label": "Última actividad",
                     "text": "Las ocho últimas visitas a clientes, la más reciente primero: operario, cliente y dirección de obra, con hora de inicio y fin — o solo la hora de inicio si la visita sigue en curso. 'En curso' lleva a la lista de presencia, 'Listo' a la lista de turnos. El botón 'Abrir presencia' arriba a la derecha abre el panel en directo."
                 }

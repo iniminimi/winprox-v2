@@ -190,6 +190,10 @@
       "since": "Iniziato alle :time",
       "range": ":start – :end"
     },
+    "ssin": {
+      "title": "Manca il numero di registro nazionale",
+      "body": "Questi esecutori non hanno il numero di registro nazionale. Senza quel numero, CIAO non può inviare la loro presenza all’ONSS. Tocca un nome per compilarlo."
+    },
     "ciao": {
       "pending_title": "Richiesta CIAO in attesa",
       "pending_body": "La tua richiesta RSZ attende conferma. Le registrazioni delle presenze seguono poi automaticamente.",

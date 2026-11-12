@@ -40,6 +40,21 @@
             </div>
         @endif
 
+        @if ($checkmate->workersMissingSsin !== [])
+            <div class="wp-card wp-card-pad wp-stack-tight wp-card--prio-pulse">
+                <p class="wp-text-body"><strong>{{ __('dashboard.checkmate.ssin.title') }}</strong></p>
+                <p class="wp-muted">{{ __('dashboard.checkmate.ssin.body') }}</p>
+                <div class="wp-cluster wp-cluster--tight">
+                    @foreach ($checkmate->workersMissingSsin as $missingWorker)
+                        <a
+                            href="{{ route('team.index', ['section' => 'teams', 'worker' => $missingWorker['id']]) }}"
+                            class="btn btn--ghost btn--sm"
+                        >{{ $missingWorker['name'] }}</a>
+                    @endforeach
+                </div>
+            </div>
+        @endif
+
         @if ($checkmate->needsWorkers)
             <div class="wp-card wp-card-pad wp-stack-tight">
                 <p class="wp-text-body"><strong>{{ __('dashboard.checkmate.onboarding.workers_title') }}</strong></p>

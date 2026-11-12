@@ -2065,6 +2065,10 @@
                     "text": "Pas un compteur mais un bouton : affiche le QR du Clock Point à montrer, imprimer ou envoyer par e-mail. Pulse tant qu'aucune intervention n'a eu lieu."
                 },
                 {
+                    "label": "Numéro de registre national manquant",
+                    "text": "Une carte qui pulse cite les exécutants actifs sans numéro de registre national. Touchez un nom pour compléter le numéro. Sans ce numéro, CIAO ne peut pas envoyer leur présence à l’ONSS. La carte disparaît dès que chaque numéro est complété."
+                },
+                {
                     "label": "Dernière activité",
                     "text": "Les huit dernières visites clients, la plus récente d'abord : exécutant, client et adresse de chantier, avec heure de début et de fin — ou seulement l'heure de début si la visite est en cours. 'En cours' mène à la liste de présence, 'Terminé' à la liste des interventions. Le bouton 'Ouvrir la présence' en haut à droite ouvre le tableau en direct."
                 }

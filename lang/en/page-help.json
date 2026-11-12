@@ -2057,6 +2057,10 @@
                     "text": "Not a counter but a button: opens the Clock Point QR to show, print or email. Pulses until the first shift has run."
                 },
                 {
+                    "label": "National register number missing",
+                    "text": "A pulsing card lists active workers without a national register number. Tap a name to fill in that worker's number. Without it, CIAO cannot send their presence to the social security office. The card disappears once every number is filled in."
+                },
+                {
                     "label": "Recent activity",
                     "text": "The eight most recent customer visits, newest first: worker, customer and work address, with start and end time — or just the start time while the visit is still running. 'Running' links to the presence list, 'Done' to the shifts list. The 'Open presence' button top right opens the live board."
                 }

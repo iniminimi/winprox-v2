@@ -190,6 +190,10 @@
       "since": "Empezó a las :time",
       "range": ":start – :end"
     },
+    "ssin": {
+      "title": "Falta el número de registro nacional",
+      "body": "Estos ejecutores no tienen número de registro nacional. Sin ese número, CIAO no puede enviar su presencia a la ONSS. Pulse un nombre para completarlo."
+    },
     "ciao": {
       "pending_title": "Solicitud CIAO pendiente",
       "pending_body": "Tu solicitud NSSO espera confirmación. Después, los registros de presencia se envían automáticamente.",

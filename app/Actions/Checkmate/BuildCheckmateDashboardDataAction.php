@@ -48,7 +48,15 @@ class BuildCheckmateDashboardDataAction
             ->where('tenant_id', $tenantId)
             ->where('is_active', true)
             ->where(fn ($query) => $query->whereNull('ssin')->orWhere('ssin', ''))
-            ->count();
+            ->orderBy('last_name')
+            ->orderBy('first_name')
+            ->get()
+            ->map(fn (Worker $worker): array => [
+                'id' => (int) $worker->id,
+                'name' => $worker->displayName(),
+            ])
+            ->values()
+            ->all();
 
         // Seats = collega's (admin/medewerker) + uitvoerders — billing-basis.
         // Los van het aantal uitvoerders zelf (kpi 'workers').
@@ -119,8 +127,8 @@ class BuildCheckmateDashboardDataAction
                     'tone' => 'open_tasks',
                     'label' => 'dashboard.checkmate.kpi.workers',
                     'value' => (string) $activeWorkers,
-                    'meta' => $workersMissingSsin > 0
-                        ? __('dashboard.checkmate.kpi.workers_missing_ssin', ['count' => $workersMissingSsin])
+                    'meta' => $workersMissingSsin !== []
+                        ? __('dashboard.checkmate.kpi.workers_missing_ssin', ['count' => count($workersMissingSsin)])
                         : null,
                     'href' => route('team.index', ['section' => 'teams']),
                 ],
@@ -159,6 +167,7 @@ class BuildCheckmateDashboardDataAction
                 ->latest('started_at')
                 ->limit(8)
                 ->get(),
+            workersMissingSsin: $workersMissingSsin,
             needsWorkers: Worker::query()->where('tenant_id', $tenantId)->count() === 0,
             needsCustomers: Customer::query()->where('tenant_id', $tenantId)->count() === 0,
             presencePending: $tenant->presenceComplianceRequested(),

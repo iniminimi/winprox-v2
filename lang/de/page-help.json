@@ -2057,6 +2057,10 @@
                     "text": "Kein Zähler, sondern ein Button: öffnet den Clock-Point-QR zum Anzeigen, Drucken oder Mailen. Pulsiert, solange noch keine Schicht gelaufen ist."
                 },
                 {
+                    "label": "Nationalregisternummer fehlt",
+                    "text": "Eine pulsierende Karte nennt aktive Mitarbeiter ohne Nationalregisternummer. Tippen Sie einen Namen an, um die Nummer bei diesem Mitarbeiter einzutragen. Ohne diese Nummer kann CIAO ihre Anwesenheit nicht an die RSZ senden. Die Karte verschwindet, sobald jede Nummer eingetragen ist."
+                },
+                {
                     "label": "Letzte Aktivität",
                     "text": "Die acht letzten Kundenbesuche, neueste zuerst: Mitarbeiter, Kunde und Einsatzadresse, mit Start- und Endzeit — oder nur der Startzeit, solange der Besuch läuft. 'Läuft' führt zur Anwesenheit, 'Fertig' zur Schichtliste. Der Button 'Anwesenheit öffnen' oben rechts öffnet die Live-Übersicht."
                 }

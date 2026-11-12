@@ -61,6 +61,7 @@
                     "Kunden importieren Sie gesammelt über CSV oder Excel, mit den Standortdaten pro Zeile.",
                     "Pro Kunde sehen Sie den Monat: Besuche, Arbeitszeit und Stunden je Standort. Das exportieren Sie als CSV oder drucken es.",
                     "Die RSZ/CIAO-Meldung ist von Anfang an aktiv, sobald die KBO-Nummer in den Einstellungen steht. Die Stunden geben Sie an das Sozialsekretariat. WinProx macht keine Dimona-Meldung und berechnet keinen Lohn.",
+                    "Das Dashboard zeigt eine Karte mit aktiven Mitarbeitern ohne Nationalregisternummer. Tippen Sie einen Namen an, um sie einzutragen.",
                     "Der Preis beträgt 5 € pro aktivem Ausführenden im Monat. Die Anzahl der Lizenzen stellen Sie selbst ein.",
                     "Neue Organisationen können mit einem Probemonat von 25 Lizenzen starten, plus Demoteam, einem Ausführenden und Demokunden. In der Probe gelten keine Limits für Units oder Dokumente.",
                     "Checkmate hat eine eigene kurze Anleitung, anstelle der allgemeinen WinProx-Anleitung."
