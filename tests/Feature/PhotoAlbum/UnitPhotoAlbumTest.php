@@ -144,7 +144,8 @@ it('rendert de mail met cid-afbeeldingen zonder links naar foto\'s', function ()
 
     expect($sent->getHtmlBody())->toContain('cid:')->not->toContain('unit-album/')
         ->and(collect($sent->getAttachments())->filter(fn ($part) => $part->getDisposition() === 'inline'))->toHaveCount(1)
-        ->and($sent->getHeaders()->has('List-Unsubscribe'))->toBeTrue();
+        ->and($sent->getHeaders()->has('List-Unsubscribe'))->toBeFalse()
+        ->and($sent->getHtmlBody())->not->toContain('/u/');
 });
 
 it('wist foto\'s na de bewaartermijn', function () {

@@ -25,6 +25,10 @@ Lees **`WINPROX_RULES.md` §14** volledig vóór je een mailable of e-mailbody w
   géén winprox-template, géén uitschrijfblok — inschrijven + uitschrijven in één mail is
   tegenstrijdig (beslist 2026-10-01). Opt-out via header
   `AppendEmailUnsubscribeFooterToMessage::SKIP_HEADER`.
+- **Uitzondering albumfoto's (`UnitAlbumPhotosMail`):** simpele HTML met ingesloten foto's,
+  géén winprox-template, géén uitschrijfblok, géén `List-Unsubscribe` (zelfde skip-header).
+  Telenet weigerde de fotomail mét die header; een gewone mail van `info@winprox.app` kwam
+  wel aan (2026-11-12). Geen `X-WinProx-Transactional`: een afgemeld adres krijgt de mail niet.
 - Bevestiging synchroon `Mail::send` (geen promo-throttle / queue-wachten).
 - **Uitzondering worker-Clock-Point-mail:**zelfde pad als **promo-testmail**:
   From + SMTP = promo-mailbox (`dominique.schaepdrijver@winprox.app` /

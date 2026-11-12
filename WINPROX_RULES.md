@@ -554,6 +554,11 @@ Verplicht bij nieuwe/gewijzigde uitgaande mail:
 - **`List-Unsubscribe` + uitschrijffooter altijd** via `AppendEmailUnsubscribeFooterToMessage`
   — nodig voor deliverability. Header `X-WinProx-Transactional` slaat die footer **niet** over;
   die header dient enkel om marketing-opt-out transactionele bevestiging niet te laten blokkeren.
+- **Uitzondering albumfoto's (`UnitAlbumPhotosMail`):** simpele HTML, foto's ingesloten,
+  géén winprox-template, géén uitschrijffooter, géén `List-Unsubscribe`
+  (`AppendEmailUnsubscribeFooterToMessage::SKIP_HEADER`). Telenet weigerde de fotomail mét
+  die header als spam; een gewone mail van hetzelfde adres kwam wel aan (2026-11-12).
+  Een afgemeld adres blijft geblokkeerd: geen `X-WinProx-Transactional`.
 - Bevestigingsmails **synchroon** versturen (`Mail::send`), niet via de promo-queue/throttle
   (promo = 20 s; shared hosting `queue:work` is geen betrouwbare “binnen de seconde”).
 

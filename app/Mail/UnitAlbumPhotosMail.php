@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Mail;
 
+use App\Listeners\AppendEmailUnsubscribeFooterToMessage;
 use App\Models\UnitAlbumPhoto;
 use App\Models\UnitAlbumSend;
 use Illuminate\Bus\Queueable;
@@ -13,12 +14,14 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\Mime\Email as SymfonyEmail;
 
 /**
  * Foto's uit het album van een unit, ingesloten in de mail (geen links,
- * geen remote images — WINPROX_RULES.md §14). Vast onderwerp; uitschrijffooter
- * + List-Unsubscribe via AppendEmailUnsubscribeFooterToMessage. Bewust geen
- * X-WinProx-Transactional: een afgemeld adres krijgt deze mail niet.
+ * geen remote images — WINPROX_RULES.md §14). Simpele HTML, zonder
+ * uitschrijffooter en zonder List-Unsubscribe: Telenet weigerde die
+ * fotomail als spam, een gewone mail van hetzelfde adres kwam wel aan.
+ * Bewust geen X-WinProx-Transactional: een afgemeld adres krijgt deze mail niet.
  */
 class UnitAlbumPhotosMail extends Mailable
 {
@@ -35,6 +38,12 @@ class UnitAlbumPhotosMail extends Mailable
         $this->locale(in_array($userLocale, config('locales.supported', []), true)
             ? $userLocale
             : (string) config('locales.default', 'nl'));
+        $this->withSymfonyMessage(function (SymfonyEmail $message): void {
+            $message->getHeaders()->addTextHeader(
+                AppendEmailUnsubscribeFooterToMessage::SKIP_HEADER,
+                '1',
+            );
+        });
     }
 
     public function envelope(): Envelope

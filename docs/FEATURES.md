@@ -578,11 +578,12 @@ backoffice kiest welke foto's naar één e-mailadres gaan. Algemeen, niet sector
 - Alleen units en dagen waarop nog foto's staan (binnen de bewaartermijn). Foto's als kleine thumbnails, zoals bij meldingen: aanvinken en wissen.
 - **Eén ontvanger per verzending**; adres + vrije omschrijving worden per unit bewaard
   (`unit_album_recipients`) en voorgesteld; beheren/verwijderen in hetzelfde scherm.
-- Max. **8 foto's per mail**, ingesloten (CID, 2 × 4 raster), geen links; meer foto's = meerdere mails.
+- Max. **8 foto's per mail**, ingesloten (CID), onder elkaar in simpele HTML, geen links; meer foto's = meerdere mails.
 - Wachtrij met limieten: **25 mails/uur per tenant**, **150/uur globaal** (Cloud86: 250/uur per
   hostingpakket voor alle mails samen). Overloop wordt later ingepland, niet geweigerd.
-- Standaard afmeldfooter + `List-Unsubscribe`. Afgemeld adres → meteen foutmelding; wordt het
-  adres na het inplannen afgemeld → status **Niet verstuurd: afgemeld** in Verzendingen.
+- Geen afmeldfooter en geen `List-Unsubscribe` in deze mail (Telenet weigerde die fotomail als spam).
+  Afgemeld adres → meteen foutmelding; wordt het adres na het inplannen afgemeld → status
+  **Niet verstuurd: afgemeld** in Verzendingen.
 - Statussen (`UnitAlbumSendStatus`): queued, sent, blocked_unsubscribed, failed. Audit op upload,
   wissen, versturen en ontvangers.
 
