@@ -19,8 +19,8 @@ class UnitAlbumPhotoStorage
 {
     public const DIRECTORY = 'unit-album';
 
-    /** Deel van de fotobreedte. 1000 px → ongeveer 34 px lettergrootte. */
-    private const STAMP_FONT_RATIO = 0.034;
+    /** Deel van de fotobreedte. 1000 px → ongeveer 22 px lettergrootte. */
+    private const STAMP_FONT_RATIO = 0.022;
 
     public function store(UploadedFile $file, int $tenantId, int $unitId, string $day, string $stampLine): string
     {
