@@ -1412,7 +1412,7 @@ class TimePortal extends Component
         }
     }
 
-    public function startWorkVisit(int $unitId, mixed $latitude, mixed $longitude, int $locationId, StartWorkVisitAction $startVisit): void
+    public function startWorkVisit(int $unitId, mixed $latitude, mixed $longitude, StartWorkVisitAction $startVisit, ?int $locationId = null): void
     {
         $worker = $this->authorizedWorker();
         if ($worker === null) {
@@ -1427,13 +1427,16 @@ class TimePortal extends Component
             return;
         }
 
+        // locationId blijft de laatste parameter. PHP ziet `= null` niet zolang
+        // er daarna nog een verplichte Action staat, en Livewire geeft dan 500
+        // als Safari of de nabije-unitknop het id weglaat.
         $place = null;
         if ($unitId > 0) {
             $place = Unit::query()
                 ->where('tenant_id', $this->tenantId)
                 ->whereKey($unitId)
                 ->first();
-        } elseif ($locationId > 0) {
+        } elseif ($locationId !== null && $locationId > 0) {
             $place = Location::query()
                 ->where('tenant_id', $this->tenantId)
                 ->whereKey($locationId)

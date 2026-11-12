@@ -488,6 +488,45 @@ it('gebruikt standaard 50 m straal en laat 10 m toe', function () {
         ->and($updated->gpsVisitRadiusMeters())->toBe(10);
 });
 
+it('crasht niet als startWorkVisit zonder locationId binnenkomt', function () {
+    [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext();
+    $location->update(['latitude' => 51.05, 'longitude' => 3.73]);
+    $worker->update([
+        'first_name' => 'Jan',
+        'last_name' => 'Janssen',
+        'field_icon_slug' => 'heart',
+    ]);
+    app(ClockInAction::class)->handle($worker, $clockPoint);
+
+    $portal = Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon');
+
+    $portal->call('startWorkVisit', 0, 51.05, 3.73)
+        ->assertSet('flashMessageKey', 'time.portal.errors.visit_unit_out_of_range');
+
+    expect(WorkVisit::query()->count())->toBe(0);
+
+    $portal->call('startWorkVisit', 0, 51.05, 3.73, $location->id)
+        ->assertSet('flashMessageKey', 'time.portal.visit_started');
+
+    $atLocation = WorkVisit::query()->where('worker_id', $worker->id)->whereNull('ended_at')->first();
+
+    expect($atLocation)->not->toBeNull()
+        ->and((int) $atLocation->location_id)->toBe((int) $location->id);
+
+    $portal->call('startWorkVisit', $unit->id, 51.0501, 3.7301)
+        ->assertSet('flashMessageKey', 'time.portal.visit_started');
+
+    $atUnit = WorkVisit::query()->where('worker_id', $worker->id)->whereNull('ended_at')->first();
+
+    expect($atUnit)->not->toBeNull()
+        ->and((int) $atUnit->unit_id)->toBe((int) $unit->id);
+});
+
 it('toont de GPS-werkbezoekfout in de actieve portal-locale en na taalwissel', function () {
     [$tenant, $worker, $clockPoint, $location, $unit] = gpsVisitContext();
     $worker->update([
