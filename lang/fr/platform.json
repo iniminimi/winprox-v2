@@ -59,12 +59,21 @@
     "users": {
         "nav": "Utilisateurs",
         "title": "Utilisateurs plateforme",
-        "subtitle": "Aperçu en lecture seule des utilisateurs de toutes les organisations.",
+        "subtitle": "Cherchez des utilisateurs et définissez un mot de passe si le mail de réinitialisation n'arrive pas.",
         "search_placeholder": "Nom, e-mail ou organisation…",
         "empty": "Aucun utilisateur trouvé.",
         "superuser": "Superuser",
         "inactive": "Inactif",
-        "no_tenant": "Aucune organisation"
+        "no_tenant": "Aucune organisation",
+        "password": {
+            "button": "Nouveau mot de passe",
+            "title": "Nouveau mot de passe",
+            "hint": "Il s'applique tout de suite. Aucun e-mail n'est envoyé. Transmettez le mot de passe vous-même.",
+            "password": "Mot de passe",
+            "confirmation": "Répéter le mot de passe",
+            "save": "Enregistrer",
+            "saved": "Le mot de passe de :name a été modifié."
+        }
     },
     "contact_messages": {
         "nav": "Messages Contact"

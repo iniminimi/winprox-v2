@@ -1181,6 +1181,15 @@
                 }
             ]
         },
+        "platform.users": {
+            "title": "Ayuda — Usuarios de la plataforma",
+            "actions": [
+                {
+                    "label": "Nueva contraseña",
+                    "text": "Ponga una contraseña nueva para un usuario de una organización. No se envía ningún correo. Comunique la contraseña usted mismo. Un superusuario no recibe una contraseña nueva aquí."
+                }
+            ]
+        },
         "platform.help": {
             "title": "Ayuda — Base de conocimiento de la plataforma",
             "actions": [

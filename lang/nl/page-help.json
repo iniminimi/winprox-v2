@@ -1181,6 +1181,15 @@
                 }
             ]
         },
+        "platform.users": {
+            "title": "Hulp — Platformgebruikers",
+            "actions": [
+                {
+                    "label": "Nieuw wachtwoord",
+                    "text": "Zet een nieuw wachtwoord voor een gebruiker van een organisatie. Er gaat geen e-mail uit. Geef het wachtwoord zelf door. Een superuser krijgt hier geen nieuw wachtwoord."
+                }
+            ]
+        },
         "platform.help": {
             "title": "Hulp — Platform kennisbank",
             "actions": [

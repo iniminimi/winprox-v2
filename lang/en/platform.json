@@ -59,12 +59,21 @@
     "users": {
         "nav": "Users",
         "title": "Platform users",
-        "subtitle": "Read-only overview of users across all organisations.",
+        "subtitle": "Find users and set a new password when the reset email does not arrive.",
         "search_placeholder": "Name, email or organisation…",
         "empty": "No users found.",
         "superuser": "Superuser",
         "inactive": "Inactive",
-        "no_tenant": "No organisation"
+        "no_tenant": "No organisation",
+        "password": {
+            "button": "New password",
+            "title": "New password",
+            "hint": "This applies immediately. No email is sent. Pass the password on yourself.",
+            "password": "Password",
+            "confirmation": "Repeat password",
+            "save": "Save",
+            "saved": "The password for :name has been changed."
+        }
     },
     "contact_messages": {
         "nav": "Contact Messages"

@@ -59,12 +59,21 @@
     "users": {
         "nav": "Gebruikers",
         "title": "Platformgebruikers",
-        "subtitle": "Read-only overzicht van gebruikers over alle organisaties.",
+        "subtitle": "Zoek gebruikers en zet een nieuw wachtwoord als de herstelmail niet aankomt.",
         "search_placeholder": "Naam, e-mail of organisatie…",
         "empty": "Geen gebruikers gevonden.",
         "superuser": "Superuser",
         "inactive": "Inactief",
-        "no_tenant": "Geen organisatie"
+        "no_tenant": "Geen organisatie",
+        "password": {
+            "button": "Nieuw wachtwoord",
+            "title": "Nieuw wachtwoord",
+            "hint": "Dit geldt meteen. Er gaat geen e-mail uit. Geef het wachtwoord zelf door.",
+            "password": "Wachtwoord",
+            "confirmation": "Herhaal wachtwoord",
+            "save": "Opslaan",
+            "saved": "Het wachtwoord van :name is gewijzigd."
+        }
     },
     "contact_messages": {
         "nav": "Contactberichten"

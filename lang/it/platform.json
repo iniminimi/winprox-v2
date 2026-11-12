@@ -59,12 +59,21 @@
     "users": {
         "nav": "Utenti",
         "title": "Utenti piattaforma",
-        "subtitle": "Panoramica in sola lettura degli utenti di tutte le organizzazioni.",
+        "subtitle": "Cerchi gli utenti e imposti una nuova password se la mail di recupero non arriva.",
         "search_placeholder": "Nome, e-mail o organizzazione…",
         "empty": "Nessun utente trovato.",
         "superuser": "Superuser",
         "inactive": "Inattivo",
-        "no_tenant": "Nessuna organizzazione"
+        "no_tenant": "Nessuna organizzazione",
+        "password": {
+            "button": "Nuova password",
+            "title": "Nuova password",
+            "hint": "Vale subito. Non parte nessuna e-mail. Comunichi lei la password.",
+            "password": "Password",
+            "confirmation": "Ripeta la password",
+            "save": "Salva",
+            "saved": "La password di :name è stata cambiata."
+        }
     },
     "contact_messages": {
         "nav": "Messaggi di contatto"

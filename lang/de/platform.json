@@ -59,12 +59,21 @@
     "users": {
         "nav": "Benutzer",
         "title": "Plattformbenutzer",
-        "subtitle": "Schreibgeschützte Übersicht der Benutzer aller Organisationen.",
+        "subtitle": "Benutzer suchen und ein neues Passwort setzen, wenn die Zurücksetzen-Mail nicht ankommt.",
         "search_placeholder": "Name, E-Mail oder Organisation…",
         "empty": "Keine Benutzer gefunden.",
         "superuser": "Superuser",
         "inactive": "Inaktiv",
-        "no_tenant": "Keine Organisation"
+        "no_tenant": "Keine Organisation",
+        "password": {
+            "button": "Neues Passwort",
+            "title": "Neues Passwort",
+            "hint": "Es gilt sofort. Es wird keine E-Mail gesendet. Geben Sie das Passwort selbst weiter.",
+            "password": "Passwort",
+            "confirmation": "Passwort wiederholen",
+            "save": "Speichern",
+            "saved": "Das Passwort von :name wurde geändert."
+        }
     },
     "contact_messages": {
         "nav": "Kontakt-Nachrichten"

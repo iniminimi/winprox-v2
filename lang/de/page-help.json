@@ -1181,6 +1181,15 @@
                 }
             ]
         },
+        "platform.users": {
+            "title": "Hilfe — Plattformbenutzer",
+            "actions": [
+                {
+                    "label": "Neues Passwort",
+                    "text": "Setzen Sie ein neues Passwort für einen Benutzer einer Organisation. Es wird keine E-Mail gesendet. Geben Sie das Passwort selbst weiter. Ein Superuser erhält hier kein neues Passwort."
+                }
+            ]
+        },
         "platform.help": {
             "title": "Hilfe — Plattform-Wissensdatenbank",
             "actions": [

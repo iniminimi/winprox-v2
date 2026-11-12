@@ -59,12 +59,21 @@
     "users": {
         "nav": "Usuarios",
         "title": "Usuarios de la plataforma",
-        "subtitle": "Resumen de solo lectura de usuarios en todas las organizaciones.",
+        "subtitle": "Busque usuarios y ponga una contraseña nueva si el correo de restablecimiento no llega.",
         "search_placeholder": "Nombre, correo u organización…",
         "empty": "No se han encontrado usuarios.",
         "superuser": "Superusuario",
         "inactive": "Inactivo",
-        "no_tenant": "Sin organización"
+        "no_tenant": "Sin organización",
+        "password": {
+            "button": "Nueva contraseña",
+            "title": "Nueva contraseña",
+            "hint": "Se aplica al momento. No se envía ningún correo. Comunique la contraseña usted mismo.",
+            "password": "Contraseña",
+            "confirmation": "Repetir contraseña",
+            "save": "Guardar",
+            "saved": "La contraseña de :name se ha cambiado."
+        }
     },
     "contact_messages": {
         "nav": "Mensajes de contacto"

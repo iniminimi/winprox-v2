@@ -1189,6 +1189,15 @@
                 }
             ]
         },
+        "platform.users": {
+            "title": "Aide — Utilisateurs plateforme",
+            "actions": [
+                {
+                    "label": "Nouveau mot de passe",
+                    "text": "Définissez un nouveau mot de passe pour un utilisateur d'une organisation. Aucun e-mail n'est envoyé. Transmettez le mot de passe vous-même. Un superuser n'en reçoit pas ici."
+                }
+            ]
+        },
         "platform.help": {
             "title": "Aide — Base de connaissances plateforme",
             "actions": [

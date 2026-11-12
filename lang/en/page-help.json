@@ -1181,6 +1181,15 @@
                 }
             ]
         },
+        "platform.users": {
+            "title": "Help — Platform users",
+            "actions": [
+                {
+                    "label": "New password",
+                    "text": "Set a new password for a user of an organisation. No email is sent. Pass the password on yourself. A superuser does not get a new password here."
+                }
+            ]
+        },
         "platform.help": {
             "title": "Help — Platform knowledge base",
             "actions": [

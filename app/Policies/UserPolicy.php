@@ -56,6 +56,11 @@ class UserPolicy
         return $user->is_superuser;
     }
 
+    public function setPassword(User $actor, User $target): bool
+    {
+        return $actor->is_superuser && ! $target->is_superuser;
+    }
+
     private function isTenantAdmin(User $user): bool
     {
         return $user->tenant_id !== null && $user->isAdmin();
