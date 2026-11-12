@@ -2020,7 +2020,7 @@
             "actions": [
                 {
                     "label": "Scopo",
-                    "text": "La tua giornata inizia qui: scorciatoie verso un nuovo cliente o operatore, il link Clock Point e le presenze di oggi. Sotto, le ultime visite ai clienti."
+                    "text": "La tua giornata inizia qui: scorciatoie verso un nuovo cliente o operatore e le presenze di oggi. Sotto, le ultime visite ai clienti."
                 },
                 {
                     "label": "Riquadri",

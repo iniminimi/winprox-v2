@@ -168,9 +168,7 @@
       "add_worker_title": "Añadir operario",
       "add_worker_body": "Alguien que ficha en obra.",
       "presence_title": "Presencia",
-      "presence_body": "Quién está trabajando ahora.",
-      "clock_point_title": "QR del Clock Point",
-      "clock_point_body": "Mostrar o imprimir el QR para operarios."
+      "presence_body": "Quién está trabajando ahora."
     },
     "kpi": {
       "visits_today": "Visitas hoy",

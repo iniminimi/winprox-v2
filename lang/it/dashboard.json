@@ -168,9 +168,7 @@
       "add_worker_title": "Aggiungi operatore",
       "add_worker_body": "Chi timbra sul posto.",
       "presence_title": "Presenza",
-      "presence_body": "Chi sta lavorando adesso.",
-      "clock_point_title": "QR del Clock Point",
-      "clock_point_body": "Mostra o stampa il QR per gli operatori."
+      "presence_body": "Chi sta lavorando adesso."
     },
     "kpi": {
       "visits_today": "Visite oggi",

@@ -2028,7 +2028,7 @@
             "actions": [
                 {
                     "label": "Objectif",
-                    "text": "Votre journée commence ici : raccourcis vers un nouveau client ou exécutant, le lien Clock Point et la présence du jour. En dessous, les dernières visites clients."
+                    "text": "Votre journée commence ici : raccourcis vers un nouveau client ou exécutant et la présence du jour. En dessous, les dernières visites clients."
                 },
                 {
                     "label": "Tuiles",

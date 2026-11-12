@@ -83,8 +83,8 @@ evacuatielijst, uurrooster (initieel), meldingen.
 Whitelist-schermen:
 
 - **Dashboard** — Checkmate-variant: pending-CIAO-banner (§6), mini-onboarding
-  (eerste uitvoerder → eerste klant), snelacties (klant/uitvoerder/aanwezigheid/
-  Clock Points). KPI's (nu aanwezig, bezoeken vandaag, seats, actieve klanten)
+  (eerste uitvoerder → eerste klant), snelacties (klant/uitvoerder/aanwezigheid).
+  KPI's (nu aanwezig, bezoeken vandaag, seats, actieve klanten)
   plus **Clock Point QR** rechts daarvan (opent print/mail-popup; pulse tot de
   eerste dienst). Pulserende kaart met actieve uitvoerders zonder
   rijksregisternummer; een naam opent die uitvoerder op het teamscherm.

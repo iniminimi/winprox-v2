@@ -2020,7 +2020,7 @@
             "actions": [
                 {
                     "label": "Objetivo",
-                    "text": "Tu día empieza aquí: accesos directos a un nuevo cliente u operario, el enlace Clock Point y la presencia de hoy. Debajo, las últimas visitas a clientes."
+                    "text": "Tu día empieza aquí: accesos directos a un nuevo cliente u operario y la presencia de hoy. Debajo, las últimas visitas a clientes."
                 },
                 {
                     "label": "Tarjetas",

@@ -95,14 +95,6 @@ class BuildCheckmateDashboardDataAction
                     'body' => 'dashboard.checkmate.actions.presence_body',
                     'href' => route('time.presence.index'),
                 ],
-                [
-                    'key' => 'clock_point',
-                    'icon' => 'qr',
-                    'tone' => 'new_issues',
-                    'title' => 'dashboard.checkmate.actions.clock_point_title',
-                    'body' => 'dashboard.checkmate.actions.clock_point_body',
-                    'href' => route('time.clock-points.index'),
-                ],
             ],
             kpis: [
                 [

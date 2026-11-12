@@ -168,9 +168,7 @@
       "add_worker_title": "Mitarbeiter hinzufügen",
       "add_worker_body": "Jemand, der vor Ort einstempelt.",
       "presence_title": "Anwesenheit",
-      "presence_body": "Wer gerade arbeitet.",
-      "clock_point_title": "Clock-Point-QR",
-      "clock_point_body": "QR für Mitarbeiter anzeigen oder drucken."
+      "presence_body": "Wer gerade arbeitet."
     },
     "kpi": {
       "visits_today": "Besuche heute",

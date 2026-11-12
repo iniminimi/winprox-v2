@@ -2020,7 +2020,7 @@
             "actions": [
                 {
                     "label": "Purpose",
-                    "text": "Your day starts here: shortcuts to a new customer or worker, the Clock Point link and today's presence. Below that, the latest customer visits."
+                    "text": "Your day starts here: shortcuts to a new customer or worker and today's presence. Below that, the latest customer visits."
                 },
                 {
                     "label": "Tiles",

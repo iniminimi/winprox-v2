@@ -168,9 +168,7 @@
       "add_worker_title": "Add worker",
       "add_worker_body": "Someone who clocks in on location.",
       "presence_title": "Presence",
-      "presence_body": "Who is at work right now.",
-      "clock_point_title": "Clock Point QR",
-      "clock_point_body": "Show or print the QR for workers."
+      "presence_body": "Who is at work right now."
     },
     "kpi": {
       "visits_today": "Visits today",
