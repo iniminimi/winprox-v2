@@ -18,8 +18,9 @@
         "description": "Description (optional)",
         "description_placeholder": "e.g. Lotte's mum",
         "submit": "Send (:count)",
-        "queued": ":count email(s) queued.",
-        "scheduled": ":count email(s) scheduled, last one around :time."
+        "queued": "{1} :count email queued.|[2,*] :count emails queued.",
+        "sent": "{1} :count email sent.|[2,*] :count emails sent.",
+        "scheduled": "{1} :count email scheduled, around :time.|[2,*] :count emails scheduled, last one around :time."
     },
     "recipients": {
         "title": "Recipients for this unit",

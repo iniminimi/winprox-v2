@@ -18,8 +18,9 @@
         "description": "Descripción (opcional)",
         "description_placeholder": "p. ej. mamá de Lotte",
         "submit": "Enviar (:count)",
-        "queued": ":count correo(s) en cola.",
-        "scheduled": ":count correo(s) programado(s), el último hacia las :time."
+        "queued": "{1} :count correo en cola.|[2,*] :count correos en cola.",
+        "sent": "{1} :count correo enviado.|[2,*] :count correos enviados.",
+        "scheduled": "{1} :count correo programado, hacia las :time.|[2,*] :count correos programados, el último hacia las :time."
     },
     "recipients": {
         "title": "Destinatarios de esta unidad",

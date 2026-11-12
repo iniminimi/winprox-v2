@@ -18,8 +18,9 @@
         "description": "Beschreibung (optional)",
         "description_placeholder": "z. B. Mama von Lotte",
         "submit": "Senden (:count)",
-        "queued": ":count E-Mail(s) in der Warteschlange.",
-        "scheduled": ":count E-Mail(s) geplant, die letzte gegen :time."
+        "queued": "{1} :count E-Mail in der Warteschlange.|[2,*] :count E-Mails in der Warteschlange.",
+        "sent": "{1} :count E-Mail gesendet.|[2,*] :count E-Mails gesendet.",
+        "scheduled": "{1} :count E-Mail geplant, gegen :time.|[2,*] :count E-Mails geplant, die letzte gegen :time."
     },
     "recipients": {
         "title": "Empfänger dieser Einheit",

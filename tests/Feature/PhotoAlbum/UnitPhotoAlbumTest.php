@@ -197,6 +197,22 @@ it('toont in het album alleen units en dagen met foto\'s', function () {
         ->assertDontSee('Leeg lokaal');
 });
 
+it('toont verstuurd wanneer de albummail meteen vertrekt', function () {
+    Mail::fake();
+    [, $unit, $worker, $admin] = albumContext();
+    $photo = albumPhoto($unit, $worker);
+
+    Livewire::actingAs($admin)->test(PhotoAlbumIndex::class)
+        ->set('selectedPhotoIds', [$photo->id])
+        ->set('recipientEmail', 'ouder@example.com')
+        ->call('send')
+        ->assertHasNoErrors()
+        ->assertSee(trans_choice('photo_album.send.sent', 1, ['count' => 1]))
+        ->assertDontSee(trans_choice('photo_album.send.queued', 1, ['count' => 1]));
+
+    expect(UnitAlbumSend::query()->first()?->status)->toBe(UnitAlbumSendStatus::Sent);
+});
+
 it('backoffice toont het album en schermt andere tenants af', function () {
     Queue::fake();
     [$tenant, $unit, $worker, $admin] = albumContext();

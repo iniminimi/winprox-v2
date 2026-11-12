@@ -18,8 +18,9 @@
         "description": "Description (facultative)",
         "description_placeholder": "p. ex. maman de Lotte",
         "submit": "Envoyer (:count)",
-        "queued": ":count e-mail(s) en file d'attente.",
-        "scheduled": ":count e-mail(s) planifié(s), le dernier vers :time."
+        "queued": "{1} :count e-mail en file d'attente.|[2,*] :count e-mails en file d'attente.",
+        "sent": "{1} :count e-mail envoyé.|[2,*] :count e-mails envoyés.",
+        "scheduled": "{1} :count e-mail planifié, vers :time.|[2,*] :count e-mails planifiés, le dernier vers :time."
     },
     "recipients": {
         "title": "Destinataires de cette unité",

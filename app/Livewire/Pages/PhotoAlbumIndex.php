@@ -10,6 +10,7 @@ use App\Actions\PhotoAlbum\LoadUnitPhotoAlbumAction;
 use App\Actions\PhotoAlbum\SendUnitAlbumPhotosAction;
 use App\Actions\PhotoAlbum\UpdateUnitAlbumRecipientAction;
 use App\Data\PhotoAlbum\SendUnitAlbumPhotosData;
+use App\Enums\UnitAlbumSendStatus;
 use App\Http\Requests\PhotoAlbum\SendUnitAlbumPhotosRequest;
 use App\Http\Requests\PhotoAlbum\UpdateUnitAlbumRecipientRequest;
 use App\Models\UnitAlbumPhoto;
@@ -112,10 +113,22 @@ class PhotoAlbumIndex extends Component
             return;
         }
 
+        $sends->each->refresh();
+        $count = $sends->count();
         $last = $sends->last();
-        $this->statusMessage = $last !== null && $last->scheduled_at?->isFuture()
-            ? __('photo_album.send.scheduled', ['count' => $sends->count(), 'time' => $last->scheduled_at->format('H:i')])
-            : __('photo_album.send.queued', ['count' => $sends->count()]);
+        $waiting = $sends->contains(
+            fn ($send) => $send->status === UnitAlbumSendStatus::Queued && $send->scheduled_at?->isFuture(),
+        );
+        $this->statusMessage = match (true) {
+            $waiting => trans_choice('photo_album.send.scheduled', $count, [
+                'count' => $count,
+                'time' => $last?->scheduled_at?->format('H:i'),
+            ]),
+            $sends->every(fn ($send) => $send->status === UnitAlbumSendStatus::Sent) => trans_choice('photo_album.send.sent', $count, [
+                'count' => $count,
+            ]),
+            default => trans_choice('photo_album.send.queued', $count, ['count' => $count]),
+        };
         $this->resetSelection();
         $this->recipientEmail = '';
         $this->recipientDescription = '';

@@ -18,8 +18,9 @@
         "description": "Omschrijving (optioneel)",
         "description_placeholder": "bv. mama van Lotte",
         "submit": "Versturen (:count)",
-        "queued": ":count mail(s) in de wachtrij.",
-        "scheduled": ":count mail(s) gepland, laatste rond :time."
+        "queued": "{1} :count mail in de wachtrij.|[2,*] :count mails in de wachtrij.",
+        "sent": "{1} :count mail verstuurd.|[2,*] :count mails verstuurd.",
+        "scheduled": "{1} :count mail gepland, rond :time.|[2,*] :count mails gepland, laatste rond :time."
     },
     "recipients": {
         "title": "Ontvangers van deze unit",

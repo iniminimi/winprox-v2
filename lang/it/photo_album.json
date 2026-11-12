@@ -18,8 +18,9 @@
         "description": "Descrizione (facoltativa)",
         "description_placeholder": "ad es. mamma di Lotte",
         "submit": "Invia (:count)",
-        "queued": ":count e-mail in coda.",
-        "scheduled": ":count e-mail pianificate, l'ultima verso le :time."
+        "queued": "{1} :count e-mail in coda.|[2,*] :count e-mail in coda.",
+        "sent": "{1} :count e-mail inviata.|[2,*] :count e-mail inviate.",
+        "scheduled": "{1} :count e-mail pianificata, verso le :time.|[2,*] :count e-mail pianificate, l'ultima verso le :time."
     },
     "recipients": {
         "title": "Destinatari di questa unità",
