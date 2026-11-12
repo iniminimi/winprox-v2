@@ -261,18 +261,29 @@ class Settings extends Component
 
         $validated = Validator::make(
             [
-                'presence_compliance_scope' => $this->presenceComplianceScope !== ''
+                'presenceComplianceScope' => $this->presenceComplianceScope !== ''
                     ? $this->presenceComplianceScope
                     : null,
-                'enterprise_number' => $this->enterpriseNumber,
-                'foreign_vat_number' => $this->foreignVatNumber,
+                'enterpriseNumber' => trim($this->enterpriseNumber),
+                'foreignVatNumber' => $this->foreignVatNumber,
             ],
-            UpdatePresenceComplianceSettingsRequest::ruleSet(),
-            UpdatePresenceComplianceSettingsRequest::messageSet(),
+            [
+                'presenceComplianceScope' => UpdatePresenceComplianceSettingsRequest::ruleSet()['presence_compliance_scope'],
+                'enterpriseNumber' => UpdatePresenceComplianceSettingsRequest::enterpriseNumberRules(),
+                'foreignVatNumber' => UpdatePresenceComplianceSettingsRequest::ruleSet()['foreign_vat_number'],
+            ],
+            [
+                'enterpriseNumber.regex' => __('settings.errors.enterprise_number_invalid'),
+                'presenceComplianceScope.Illuminate\Validation\Rules\Enum' => __('settings.errors.presence_scope_invalid'),
+            ],
         )->validate();
 
         try {
-            $updated = $update->handle($tenant, $validated, (int) auth()->id());
+            $updated = $update->handle($tenant, [
+                'presence_compliance_scope' => $validated['presenceComplianceScope'] ?? null,
+                'enterprise_number' => $validated['enterpriseNumber'] ?? null,
+                'foreign_vat_number' => $validated['foreignVatNumber'] ?? null,
+            ], (int) auth()->id());
         } catch (\InvalidArgumentException $e) {
             if ($e->getMessage() === 'time_module_disabled') {
                 $this->addError('presenceComplianceEnabled', __('settings.errors.time_module_required'));
@@ -286,6 +297,11 @@ class Settings extends Component
             }
             if ($e->getMessage() === 'presence_scope_unavailable') {
                 $this->addError('presenceComplianceScope', __('settings.errors.presence_scope_invalid'));
+
+                return;
+            }
+            if ($e->getMessage() === 'enterprise_number_invalid') {
+                $this->addError('enterpriseNumber', __('settings.errors.enterprise_number_invalid'));
 
                 return;
             }
@@ -309,25 +325,37 @@ class Settings extends Component
 
         $validated = Validator::make(
             [
-                // Punten/spaties uit de KBO/CBE/BCE-weergave strippen vóór validatie.
-                'enterprise_number' => preg_replace('/\D+/', '', $this->enterpriseNumber) ?? '',
-                'foreign_vat_number' => $this->foreignVatNumber,
+                'enterpriseNumber' => trim($this->enterpriseNumber),
+                'foreignVatNumber' => $this->foreignVatNumber,
             ],
             [
-                'enterprise_number' => ['required', 'regex:/^[01]\d{9}$/'],
-                'foreign_vat_number' => ['nullable', 'string', 'max:255'],
+                'enterpriseNumber' => UpdatePresenceComplianceSettingsRequest::enterpriseNumberRules(required: true),
+                'foreignVatNumber' => ['nullable', 'string', 'max:255'],
             ],
             [
-                'enterprise_number.required' => __('settings.errors.enterprise_number_required'),
-                'enterprise_number.regex' => __('settings.errors.enterprise_number_invalid'),
+                'enterpriseNumber.required' => __('settings.errors.enterprise_number_required'),
+                'enterpriseNumber.regex' => __('settings.errors.enterprise_number_invalid'),
             ],
         )->validate();
 
         try {
-            $requestCompliance->handle($tenant, $validated, (int) auth()->id());
+            $requestCompliance->handle($tenant, [
+                'enterprise_number' => $validated['enterpriseNumber'],
+                'foreign_vat_number' => $validated['foreignVatNumber'] ?? null,
+            ], (int) auth()->id());
         } catch (\InvalidArgumentException $e) {
             if ($e->getMessage() === 'presence_request_pending') {
                 $this->addError('enterpriseNumber', __('settings.presence.request_pending'));
+
+                return;
+            }
+            if ($e->getMessage() === 'enterprise_number_invalid') {
+                $this->addError('enterpriseNumber', __('settings.errors.enterprise_number_invalid'));
+
+                return;
+            }
+            if ($e->getMessage() === 'enterprise_number_required') {
+                $this->addError('enterpriseNumber', __('settings.errors.enterprise_number_required'));
 
                 return;
             }

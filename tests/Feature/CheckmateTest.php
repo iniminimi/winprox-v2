@@ -23,6 +23,7 @@ use App\Livewire\Customers\Index as CustomersIndex;
 use App\Livewire\Dashboard;
 use App\Livewire\Locations\Index as LocationsIndex;
 use App\Livewire\Public\TimePortal;
+use App\Livewire\Pages\Settings;
 use App\Livewire\Pages\Subscription;
 use App\Livewire\Pages\Team as TeamPage;
 use App\Livewire\Platform\Tenants as PlatformTenants;
@@ -703,7 +704,7 @@ it('registreert een CIAO self-service aanvraag en houdt pending-status', functio
     Tenancy::actAs($tenant->id);
 
     $fresh = app(RequestPresenceComplianceAction::class)->handle($tenant, [
-        'enterprise_number' => 'BE0123.456.789',
+        'enterprise_number' => '0123.456.789',
     ], null);
 
     expect($fresh->presenceComplianceRequested())->toBeTrue()
@@ -718,6 +719,61 @@ it('registreert een CIAO self-service aanvraag en houdt pending-status', functio
     expect(fn () => app(RequestPresenceComplianceAction::class)->handle($tenant->fresh(), [
         'enterprise_number' => '0123456789',
     ]))->toThrow(InvalidArgumentException::class, 'presence_request_pending');
+});
+
+it('weigert een KBO-nummer met BE-prefix bij de CIAO-aanvraag', function () {
+    Mail::fake();
+    $tenant = checkmateTenant();
+    Tenancy::actAs($tenant->id);
+
+    expect(fn () => app(RequestPresenceComplianceAction::class)->handle($tenant, [
+        'enterprise_number' => 'BE0123.456.789',
+    ]))->toThrow(InvalidArgumentException::class, 'enterprise_number_invalid');
+
+    expect($tenant->fresh()->enterprise_number)->toBeNull()
+        ->and($tenant->fresh()->presenceComplianceRequested())->toBeFalse();
+    Mail::assertNothingSent();
+
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(Settings::class)
+        ->set('enterpriseNumber', 'BE0123456789')
+        ->call('requestPresenceCompliance')
+        ->assertHasErrors(['enterpriseNumber'])
+        ->assertSee(__('settings.errors.enterprise_number_invalid'), false)
+        ->assertSessionMissing('success');
+
+    expect($tenant->fresh()->presenceComplianceRequested())->toBeFalse();
+    Mail::assertNothingSent();
+});
+
+it('toont een fout bij een KBO-nummer met BE-prefix en slaat het niet op', function () {
+    $tenant = checkmateTenant([
+        'presence_compliance_enabled' => true,
+        'enterprise_number' => '0987654321',
+    ]);
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(Settings::class)
+        ->set('enterpriseNumber', 'BE0123456789')
+        ->call('savePresenceCompliance')
+        ->assertHasErrors(['enterpriseNumber'])
+        ->assertSee(__('settings.errors.enterprise_number_invalid'), false)
+        ->assertSessionMissing('success');
+
+    expect($tenant->fresh()->enterprise_number)->toBe('0987654321');
+
+    Livewire::actingAs($admin)
+        ->test(Settings::class)
+        ->set('enterpriseNumber', '0123.456.789')
+        ->call('savePresenceCompliance')
+        ->assertHasNoErrors()
+        ->assertSee(__('settings.presence.saved'), false);
+
+    expect($tenant->fresh()->enterprise_number)->toBe('0123456789');
 });
 
 it('vereist een ondernemingsnummer voor de CIAO-aanvraag', function () {

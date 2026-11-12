@@ -32,8 +32,8 @@ class RequestPresenceComplianceAction
             throw new InvalidArgumentException('presence_request_pending');
         }
 
-        $enterpriseNumber = preg_replace('/\D+/', '', (string) ($data['enterprise_number'] ?? '')) ?? '';
-        if ($enterpriseNumber === '') {
+        $enterpriseNumber = $this->canonicalEnterpriseNumber($data['enterprise_number'] ?? null);
+        if ($enterpriseNumber === null) {
             throw new InvalidArgumentException('enterprise_number_required');
         }
 
@@ -66,5 +66,20 @@ class RequestPresenceComplianceAction
         }
 
         return $fresh;
+    }
+
+    private function canonicalEnterpriseNumber(mixed $raw): ?string
+    {
+        $trimmed = trim((string) ($raw ?? ''));
+        if ($trimmed === '') {
+            return null;
+        }
+
+        $compact = preg_replace('/[.\s]+/', '', $trimmed) ?? '';
+        if (! preg_match('/^[01]\d{9}$/', $compact)) {
+            throw new InvalidArgumentException('enterprise_number_invalid');
+        }
+
+        return $compact;
     }
 }

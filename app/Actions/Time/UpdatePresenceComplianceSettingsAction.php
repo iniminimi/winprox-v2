@@ -36,8 +36,7 @@ class UpdatePresenceComplianceSettingsAction
         $updates = [];
 
         if (array_key_exists('enterprise_number', $data)) {
-            $raw = preg_replace('/\D+/', '', (string) ($data['enterprise_number'] ?? '')) ?? '';
-            $updates['enterprise_number'] = $raw !== '' ? $raw : null;
+            $updates['enterprise_number'] = $this->canonicalEnterpriseNumber($data['enterprise_number'] ?? null);
         }
 
         if (array_key_exists('foreign_vat_number', $data)) {
@@ -79,5 +78,20 @@ class UpdatePresenceComplianceSettingsAction
         );
 
         return $fresh;
+    }
+
+    private function canonicalEnterpriseNumber(mixed $raw): ?string
+    {
+        $trimmed = trim((string) ($raw ?? ''));
+        if ($trimmed === '') {
+            return null;
+        }
+
+        $compact = preg_replace('/[.\s]+/', '', $trimmed) ?? '';
+        if (! preg_match('/^[01]\d{9}$/', $compact)) {
+            throw new InvalidArgumentException('enterprise_number_invalid');
+        }
+
+        return $compact;
     }
 }
