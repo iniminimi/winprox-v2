@@ -502,7 +502,8 @@ it('zet checkmate-proef met team, uitvoerder en demoklanten zonder facility-stru
         ->and($payload['worker_ids'])->toHaveCount(1)
         ->and($tenant->checkmateMode())->toBeTrue()
         ->and($tenant->customersOnLocation())->toBeTrue()
-        ->and($tenant->hasTimeModule())->toBeTrue()
+        ->and($tenant->hasTimeModule())->toBeFalse()
+        ->and($tenant->timeRosterEnabled())->toBeFalse()
         ->and($tenant->presenceComplianceEnabled())->toBeTrue()
         ->and($tenant->presenceComplianceScope())->toBe(\App\Enums\PresenceComplianceScope::CiaoCleaning)
         ->and($tenant->presenceComplianceRequested())->toBeFalse()
@@ -518,7 +519,7 @@ it('zet checkmate-proef met team, uitvoerder en demoklanten zonder facility-stru
         ->and(Worker::query()->count())->toBe(1)
         ->and(Worker::query()->first()->displayName())->toBe('Demo Uitvoerder')
         ->and(Worker::query()->first()->internal_team_id)->toBe(InternalTeam::query()->first()->id)
-        ->and(Category::query()->count())->toBe(0)
+        ->and(Category::query()->where('name', \App\Support\Checkmate\CheckmateDefaultCategoryCatalog::SOURCE_NAME)->count())->toBe(1)
         ->and(Unit::query()->count())->toBe(0)
         ->and(ClockPoint::query()->where('tenant_id', $tenant->id)->exists())->toBeTrue();
 
@@ -542,7 +543,9 @@ it('houdt checkmate-entitlements bij her-toepassing tijdens de proef', function 
 
     $tenant->refresh();
     expect($tenant->checkmateMode())->toBeTrue()
-        ->and($tenant->hasTimeModule())->toBeTrue()
+        ->and($tenant->hasTimeModule())->toBeFalse()
+        ->and($tenant->timeRosterEnabled())->toBeFalse()
+        ->and($tenant->allowsGpsWorkVisits())->toBeTrue()
         ->and($tenant->maxSeatsLimit())->toBe(25);
 });
 

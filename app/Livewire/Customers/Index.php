@@ -532,7 +532,7 @@ class Index extends Component
                 ->get()
             : collect();
 
-        $showWorkStats = $tenant?->hasTimeModule() ?? false;
+        $showWorkStats = $tenant?->showsCustomerWorkStats() ?? false;
         $statsPeriodStart = CarbonImmutable::now()->startOfMonth();
         $workStats = $showWorkStats && $tenant instanceof Tenant
             ? app(SummarizeCustomerWorkStatsAction::class)->handle(

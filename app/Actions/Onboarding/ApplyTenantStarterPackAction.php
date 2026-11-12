@@ -257,7 +257,7 @@ class ApplyTenantStarterPackAction
                 'customers_on_location' => true,
             ])->save();
 
-            // effectivePlanKey() → checkmate_trial: zet Time + GPS-bezoeken + Clock Point.
+            // effectivePlanKey() → checkmate_trial: GPS-bezoeken + Clock Point, zonder Time-module.
             $this->applyEntitlements->handle($tenant->fresh());
 
             $teamsByKey = [];

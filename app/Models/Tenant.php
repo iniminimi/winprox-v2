@@ -374,7 +374,7 @@ class Tenant extends Model
 
     public function requiresWorkerPin(): bool
     {
-        return $this->hasTimeModule() && (bool) $this->time_require_worker_pin;
+        return ($this->hasTimeModule() || $this->checkmateMode()) && (bool) $this->time_require_worker_pin;
     }
 
     /** Passkey/toestelverificatie op het time-portaal (naast icoon/PIN). */
@@ -402,7 +402,11 @@ class Tenant extends Model
 
     public function allowsGpsWorkVisits(): bool
     {
-        return $this->hasTimeModule() && (bool) $this->time_gps_visits;
+        if (! (bool) $this->time_gps_visits) {
+            return false;
+        }
+
+        return $this->hasTimeModule() || $this->checkmateMode();
     }
 
     public function hasRecordedUnitChecks(): bool
@@ -439,7 +443,17 @@ class Tenant extends Model
 
     public function presenceComplianceEnabled(): bool
     {
-        return $this->hasTimeModule() && (bool) $this->presence_compliance_enabled;
+        if (! (bool) $this->presence_compliance_enabled) {
+            return false;
+        }
+
+        return $this->hasTimeModule() || $this->checkmateMode();
+    }
+
+    /** Maandcijfers per klant. Checkmate heeft die zonder de Time-module. */
+    public function showsCustomerWorkStats(): bool
+    {
+        return $this->hasTimeModule() || $this->checkmateMode();
     }
 
     /**

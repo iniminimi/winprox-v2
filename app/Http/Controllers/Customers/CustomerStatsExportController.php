@@ -17,7 +17,7 @@ class CustomerStatsExportController
     public function __invoke(Request $request, Customer $customer, SummarizeCustomerWorkStatsAction $summarize): StreamedResponse
     {
         Gate::authorize('view', $customer);
-        abort_unless($customer->tenant?->hasTimeModule(), 404);
+        abort_unless($customer->tenant?->showsCustomerWorkStats(), 404);
 
         [$from, $to, $month] = $this->period($request->query('month'));
 

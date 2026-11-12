@@ -15,7 +15,7 @@ class CustomerStatsPrintController
     public function __invoke(Request $request, Customer $customer, SummarizeCustomerWorkStatsAction $summarize): View
     {
         Gate::authorize('view', $customer);
-        abort_unless($customer->tenant?->hasTimeModule(), 404);
+        abort_unless($customer->tenant?->showsCustomerWorkStats(), 404);
 
         $tz = (string) config('app.timezone');
         $month = is_string($request->query('month')) && preg_match('/^\d{4}-\d{2}$/', (string) $request->query('month'))

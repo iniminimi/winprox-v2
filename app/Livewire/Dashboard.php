@@ -253,7 +253,7 @@ class Dashboard extends Component
         $tenant = $this->resolveTenant();
         if ($tenant !== null) {
             $tenant = $realign->handle($tenant);
-            if ($tenant->isTrialActive() && ! $tenant->hasTimeModule()) {
+            if ($tenant->isTrialActive() && ! $tenant->hasTimeModule() && ! $tenant->checkmateMode()) {
                 $tenant = $applyEntitlements->handle($tenant);
             }
         }

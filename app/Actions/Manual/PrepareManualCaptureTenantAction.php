@@ -68,12 +68,14 @@ final class PrepareManualCaptureTenantAction
             $updates['has_esg_module'] = true;
         }
 
-        if (! $tenant->hasTimeModule()) {
+        if (! $checkmate && ! $tenant->hasTimeModule()) {
             $updates['has_time_module'] = true;
         }
 
         if (! $tenant->allowsGpsWorkVisits()) {
-            $updates['has_time_module'] = true;
+            if (! $checkmate) {
+                $updates['has_time_module'] = true;
+            }
             $updates['time_gps_visits'] = true;
         }
 

@@ -12,7 +12,9 @@ final class TimeModuleAccess
 {
     public static function tenantHasModule(?Tenant $tenant): bool
     {
-        return $tenant !== null && $tenant->hasTimeModule();
+        // Checkmate klokt, registreert uren en CIAO zonder de Time-module.
+        // Uurrooster en verlof blijven achter timeRosterEnabled() (kolom uit).
+        return $tenant !== null && ($tenant->hasTimeModule() || $tenant->checkmateMode());
     }
 
     public static function activeTenantHasModule(): bool

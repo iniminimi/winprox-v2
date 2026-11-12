@@ -245,10 +245,11 @@
         </x-wp-settings-section>
     @endif
 
-    @if ($canManageOrganisation && $hasTimeModule)
+    @if ($canManageOrganisation && ($hasTimeModule || ($checkmateMode ?? false)))
         <x-wp-settings-section :title="__('settings.time_clock.title')">
             <p class="wp-muted wp-text-sm">{{ __('settings.time_clock.lead') }}</p>
             <form wire:submit="saveTimeClockSecurity" class="wp-stack">
+                @unless ($checkmateMode ?? false)
                 <label class="wp-switch">
                     <input type="checkbox" wire:model="timeBackofficeClock">
                     <span class="wp-switch__track" aria-hidden="true"></span>
@@ -264,8 +265,9 @@
                 </label>
                 <p class="wp-hint">{{ __('settings.time_clock.allow_external_workers_hint') }}</p>
                 @error('time_allow_external_workers') <p class="wp-error">{{ $message }}</p> @enderror
+                @endunless
 
-                @if ($timeRosterEnabled)
+                @if ($timeRosterEnabled && ! ($checkmateMode ?? false))
                     <label class="wp-switch">
                         <input type="checkbox" wire:model="timeTeamRoster">
                         <span class="wp-switch__track" aria-hidden="true"></span>
@@ -283,6 +285,7 @@
                 <p class="wp-hint">{{ __('settings.time_clock.require_pin_hint') }}</p>
                 @error('timeRequireWorkerPin') <p class="wp-error">{{ $message }}</p> @enderror
 
+                @unless ($checkmateMode ?? false)
                 <label class="wp-switch">
                     <input type="checkbox" wire:model="timeWorkerPasskeys">
                     <span class="wp-switch__track" aria-hidden="true"></span>
@@ -290,6 +293,7 @@
                 </label>
                 <p class="wp-hint">{{ __('settings.time_clock.worker_passkeys_hint') }}</p>
                 @error('timeWorkerPasskeys') <p class="wp-error">{{ $message }}</p> @enderror
+                @endunless
 
                 @if (! ($checkmateMode ?? false))
                     <label class="wp-switch">
@@ -304,12 +308,14 @@
                     <h3 class="wp-settings-subblock-title">{{ __('settings.time_clock.work_on_location_title') }}</h3>
                     <p class="wp-muted wp-text-sm">{{ __('settings.time_clock.work_on_location_hint') }}</p>
                     <div class="wp-stack">
+                        @unless ($checkmateMode ?? false)
                         <label class="wp-switch">
                             <input type="checkbox" wire:model="timeGpsOnClock">
                             <span class="wp-switch__track" aria-hidden="true"></span>
                             <span>{{ __('settings.time_clock.gps_on_clock') }}</span>
                         </label>
                         <p class="wp-hint">{{ __('settings.time_clock.gps_on_clock_hint') }}</p>
+                        @endunless
 
                         <label class="wp-switch">
                             <input type="checkbox" wire:model="timeGpsVisits">
@@ -333,6 +339,7 @@
                 <button type="submit" class="btn btn--primary btn--sm">{{ __('settings.time_clock.save') }}</button>
             </form>
         </x-wp-settings-section>
+        @if ($hasTimeModule && ! ($checkmateMode ?? false))
         <x-wp-settings-section :title="__('settings.time_clock.roster')" titleId="settings-roster">
             <form wire:submit="saveTimeRoster" class="wp-stack">
                 <label class="wp-switch">
@@ -345,6 +352,7 @@
                 <button type="submit" class="btn btn--primary btn--sm">{{ __('common.button.save') }}</button>
             </form>
         </x-wp-settings-section>
+        @endif
     @endif
 
     <x-wp-settings-section :title="__('settings.style.title')">
@@ -557,7 +565,7 @@
         @endif
     @endif
 
-    @if ($canManageOrganisation && $hasTimeModule)
+    @if ($canManageOrganisation && ($hasTimeModule || ($checkmateMode ?? false)))
         <x-wp-settings-section
             id="settings-presence"
             :title="__('settings.presence.title')"

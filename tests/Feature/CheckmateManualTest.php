@@ -11,7 +11,8 @@ function checkmateManualTenant(array $attrs = []): Tenant
 {
     return Tenant::factory()->create(array_merge([
         'checkmate_mode' => true,
-        'has_time_module' => true,
+        'has_time_module' => false,
+        'time_roster_enabled' => false,
         'time_gps_visits' => true,
         'billing_plan' => 'checkmate',
         'billing_active_until' => now()->addMonth(),

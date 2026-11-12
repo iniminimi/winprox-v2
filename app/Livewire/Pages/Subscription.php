@@ -58,7 +58,7 @@ class Subscription extends Component
         $tenant = $this->resolveTenant();
         if ($tenant !== null) {
             $realign->handle($tenant);
-            if ($tenant->isTrialActive() && ! $tenant->hasTimeModule()) {
+            if ($tenant->isTrialActive() && ! $tenant->hasTimeModule() && ! $tenant->checkmateMode()) {
                 $applyEntitlements->handle($tenant);
             }
         }

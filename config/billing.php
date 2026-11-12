@@ -106,7 +106,9 @@ $checkmatePreset = static function (int $defaultSeats, bool $qtyEditable): array
         'documents_per_unit'     => null,
         'announcements_per_unit' => null,
         'includes_facility'      => false,
-        'time_module'            => true,
+        // Prikklok, GPS-bezoeken en CIAO horen bij Checkmate zelf.
+        // De Time-module (uurrooster, verlof) niet.
+        'time_module'            => false,
         'esg_module'             => false,
         'iot_module'             => false,
         'api_access'             => false,

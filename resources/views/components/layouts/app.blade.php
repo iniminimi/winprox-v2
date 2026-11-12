@@ -26,7 +26,8 @@
         $activeTenant = $supportTenant ?? $authUser?->tenant;
         $showEsgNav = $activeTenant instanceof Tenant && $activeTenant->hasEsgModule();
         $showIotNav = $activeTenant instanceof Tenant && $activeTenant->hasIotModule();
-        $showTimeNav = $activeTenant instanceof Tenant && $activeTenant->hasTimeModule();
+        $showTimeNav = $activeTenant instanceof Tenant
+            && ($activeTenant->hasTimeModule() || $activeTenant->checkmateMode());
         $showTimeRoster = $activeTenant instanceof Tenant && $activeTenant->timeRosterEnabled();
         $showCustomersNav = $activeTenant instanceof Tenant && $activeTenant->customersOnLocation();
         $showWorkMenuCalendar = $activeTenant instanceof Tenant && $activeTenant->workMenuCalendarEnabled();

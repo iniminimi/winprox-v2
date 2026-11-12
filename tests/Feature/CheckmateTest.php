@@ -54,7 +54,8 @@ function checkmateTenant(array $attrs = []): Tenant
     return Tenant::factory()->create(array_merge([
         'checkmate_mode' => true,
         'customers_on_location' => true,
-        'has_time_module' => true,
+        'has_time_module' => false,
+        'time_roster_enabled' => false,
         'time_gps_visits' => true,
         'time_gps_visit_radius_meters' => 100,
         'billing_plan' => 'checkmate',
@@ -95,7 +96,8 @@ it('provisioneert het checkmate-plan met GPS-bezoeken en een Clock Point', funct
 
     expect($fresh->checkmateMode())->toBeTrue()
         ->and($fresh->customersOnLocation())->toBeTrue()
-        ->and($fresh->hasTimeModule())->toBeTrue()
+        ->and($fresh->hasTimeModule())->toBeFalse()
+        ->and($fresh->timeRosterEnabled())->toBeFalse()
         ->and($fresh->allowsGpsWorkVisits())->toBeTrue()
         ->and($fresh->gpsVisitRadiusMeters())->toBe(100)
         // CIAO staat meteen aan (essentie van Checkmate); tenant vult het
@@ -878,7 +880,11 @@ it('blokkeert niet-whitelist admin-routes voor checkmate-tenants', function () {
     $this->get('/workers')->assertOk();
     // Uitvoerder-rij linkt naar het beheer op /team (whitelisted).
     $this->get('/team?section=teams&worker='.checkmateWorker($tenant)->id)->assertOk();
-    $this->get('/settings')->assertOk();
+    $this->get('/settings')
+        ->assertOk()
+        ->assertSee('id="settings-presence"', false)
+        ->assertSee('wire:submit="saveTimeClockSecurity"', false)
+        ->assertDontSee('wire:submit="saveTimeRoster"', false);
     $this->get('/subscription')->assertOk();
     $this->get('/time/presence')->assertOk();
     $this->get('/time/shifts')->assertOk();
@@ -1095,7 +1101,8 @@ it('laat een tenant zelf het checkmate-plan kiezen op Abonnement', function () {
 
     expect($fresh->billing_plan)->toBe('checkmate')
         ->and($fresh->checkmateMode())->toBeTrue()
-        ->and($fresh->hasTimeModule())->toBeTrue()
+        ->and($fresh->hasTimeModule())->toBeFalse()
+        ->and($fresh->timeRosterEnabled())->toBeFalse()
         ->and($fresh->allowsGpsWorkVisits())->toBeTrue()
         ->and($fresh->gpsVisitRadiusMeters())->toBe(100);
 });
@@ -1147,7 +1154,8 @@ it('toont Checkmate-abonnementscopy en 25 proef-seats i.p.v. Facility-limieten',
         ->assertSee(__('subscription.checkmate_page.subtitle'), false)
         ->assertSee(__('subscription.checkmate_page.glossary.heading'), false)
         ->assertDontSee(__('subscription.pricing_intro'), false)
-        ->assertDontSee(__('subscription.glossary.unit'), false);
+        ->assertDontSee(__('subscription.glossary.unit'), false)
+        ->assertDontSee(__('subscription.status_module_time'), false);
 });
 
 it('toont het checkmate-dashboard met veldwerk-tegels en zonder facility-links', function () {

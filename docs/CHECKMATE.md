@@ -11,9 +11,11 @@ Checkmate is een **RSZ-compliance-product voor veldwerk**, met schoonmaak als ee
 scope (`CiaoCleaning`; bouw volgt via `rsz.construction_scope_enabled`). Het is **geen**
 generiek "lite CRM". Dat betekent:
 
-- `checkmate_mode` forceert bij provisioning: `has_time_module = true`,
+- `checkmate_mode` forceert bij provisioning: `has_time_module = false`,
+  `time_roster_enabled = false` (geen uurrooster of verlof),
   `time_gps_visits = true`, `time_gps_visit_radius_meters = 100`,
   `presence_compliance_enabled = true` (CIAO staat aan vanaf de start; zie §6).
+  Inklokken, pauzes, klantbezoeken, uren en CIAO lopen zonder de Time-module.
 - CIAO-scope default `CiaoCleaning`; KBO-nummer (`enterprise_number`; FR: BCE,
   EN: CBE) vult de tenant zelf in via Instellingen.
 - Prijs: **€5 per actieve seat per maand**, tenant kiest het aantal zelf.
@@ -135,7 +137,7 @@ Reserveringen, Unitmetingen, ESG, IoT, API.
 ## 7. Billing
 
 - `config/billing.php`: plan `checkmate` — `per_worker_monthly_eur = 5`,
-  `includes_facility = false`, `time_module = true`, `checkmate_mode = true`,
+  `includes_facility = false`, `time_module = false`, `checkmate_mode = true`,
   `self_activate = true`, `public_catalog = true`, `subscription_period_days = 30`.
   De tenant kiest het plan dus zélf op Abonnement (en het staat op `/pricing`).
   Plan `checkmate_trial` met zelfde preset + **25 seats** (30 dagen) om goed te

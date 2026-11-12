@@ -1576,7 +1576,8 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
   (zelfde plan-kiezer). **Jaarlijks** (365 dagen) of op maat; niet via Stripe Checkout.
   Time + IoT + ESG + API. Prijs op maat (geen Stripe price_id).
 - **Checkmate** (`checkmate` / `checkmate_trial`): veldwerk-preset op hetzelfde product —
-  Time + GPS-klantbezoeken (blokkerende straal, default 100 m) + `customers_on_location`.
+  inklokken, uren, CIAO en GPS-klantbezoeken (blokkerende straal, default 100 m)
+  + `customers_on_location`. Geen Time-module: geen uurrooster en geen verlof.
   Locaties krijgen «Hele locatie»-units (upgrade naar Facility zonder data-kloof).
   **5€ per actieve uitvoerder per maand**; seats via `billing_seats_qty`.
   Proef (`checkmate_trial`): **25 seats**, 30 dagen — Abonnement toont Checkmate-copy

@@ -36,7 +36,7 @@ class Stats extends Component
         $this->authorize('view', $customer);
 
         $tenant = $this->resolveTenant();
-        abort_unless($tenant instanceof Tenant && $tenant->hasTimeModule(), 404);
+        abort_unless($tenant instanceof Tenant && $tenant->showsCustomerWorkStats(), 404);
         abort_unless((int) $customer->tenant_id === (int) $tenant->id, 404);
 
         $this->customer = $customer;
@@ -59,7 +59,7 @@ class Stats extends Component
     public function render(SummarizeCustomerWorkStatsAction $summarize)
     {
         $tenant = $this->resolveTenant();
-        abort_unless($tenant instanceof Tenant && $tenant->hasTimeModule(), 404);
+        abort_unless($tenant instanceof Tenant && $tenant->showsCustomerWorkStats(), 404);
 
         $from = $this->periodStart();
         $to = $from->addMonth();

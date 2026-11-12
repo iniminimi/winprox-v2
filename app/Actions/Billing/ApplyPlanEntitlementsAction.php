@@ -35,9 +35,11 @@ class ApplyPlanEntitlementsAction
             'checkmate_mode' => $checkmateMode,
         ];
 
-        // Checkmate-preset (docs/CHECKMATE.md §1): GPS-werkbezoeken verplicht aan.
+        // Checkmate-preset (docs/CHECKMATE.md §1): GPS-werkbezoeken en CIAO
+        // verplicht aan. De Time-module (uurrooster, verlof) niet.
         if ($checkmateMode) {
-            $updates['has_time_module'] = true;
+            $updates['has_time_module'] = false;
+            $updates['time_roster_enabled'] = false;
             $updates['time_gps_visits'] = true;
             $updates['time_gps_visit_radius_meters'] = (int) ($config['gps_visit_radius_meters'] ?? 100);
             $updates['customers_on_location'] = true;
