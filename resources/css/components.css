@@ -3831,6 +3831,23 @@ a.wp-pagination__page:active:not(.is-active) {
     font-size: 0.625rem;
 }
 
+.wp-album-photo {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.wp-album-stamp {
+    margin: 0;
+    padding: 2px 4px;
+    background: #000;
+    color: #fff;
+    font-size: 8px;
+    line-height: 1.2;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
 /* ---------------------------------------------------------------------------
  | QR-portaal (publiek, mobiel-first): kop, tegels, taalkeuze, terugknop.
  * ------------------------------------------------------------------------- */

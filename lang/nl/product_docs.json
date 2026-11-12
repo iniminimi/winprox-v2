@@ -47,7 +47,7 @@
                     "Meldingen, taken en inspectierondes beheren.",
                     "Locaties, teams, medewerkers en units beheren.",
                     "De RSZ/CIAO-registratie kan via de instellingen worden geactiveerd. Optionele GPS-werkbezoeken koppelen een bezoek aan een locatie.",
-                    "Optioneel fotoalbum: uitvoerders maken foto's op de unit-QR. Locatie en unitnaam staan erbij. U mailt ze vanuit Fotoalbum. De bestanden worden na een week gewist. U zet dit aan bij Instellingen, onder Je organisatie. Gebruik bijvoorbeeld: in een crèche nemen verzorgsters foto's van kindjes en sturen die door naar de ouders."
+                    "Optioneel fotoalbum: uitvoerders maken foto's op de unit-QR. Locatie en unitnaam staan erbij. Onder elke foto staat datum, tijd, uitvoerder, unit en organisatienaam. U mailt ze vanuit Fotoalbum. De bestanden worden na een week gewist. U zet dit aan bij Instellingen, onder Je organisatie. Gebruik bijvoorbeeld: in een crèche nemen verzorgsters foto's van kindjes en sturen die door naar de ouders."
                 ],
                 "badge": "inbegrepen",
                 "key": "winprox_time"
@@ -208,7 +208,7 @@
                 "title": "Fotoalbum per unit",
                 "items": [
                     "Uitvoerders nemen op de unit-QR tot 24 foto's per dag van die unit. Locatie en unitnaam staan erbij.",
-                    "De backoffice kiest foto's en stuurt ze naar één e-mailadres, tot 8 foto's in de mail zelf. Adressen worden per unit bewaard.",
+                    "De backoffice kiest foto's en stuurt ze naar één e-mailadres, tot 8 foto's in de mail zelf. Adressen worden per unit bewaard. Onder elke foto staat datum, tijd, uitvoerder, unit en organisatienaam.",
                     "Foto's staan privé en worden na 7 dagen gewist. Aan of uit voor de hele organisatie, onder Instellingen → Je organisatie."
                 ],
                 "key": "photo_album"

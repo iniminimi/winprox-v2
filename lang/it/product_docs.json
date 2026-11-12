@@ -47,7 +47,7 @@
                     "Gestire segnalazioni, compiti e giri di ispezione.",
                     "Gestire sedi, team, persone e unità.",
                     "La registrazione ONSS/CIAO si può attivare nelle impostazioni. Le visite GPS facoltative collegano una visita a un luogo.",
-                    "Album foto facoltativo: gli esecutori scattano foto sul QR dell'unità. La sede e il nome dell'unità sono indicati. Le invia da Album foto. I file vengono cancellati dopo una settimana. Si attiva in Impostazioni, sotto La sua organizzazione. Per esempio: in un asilo nido, le educatrici scattano foto dei bambini e le inviano ai genitori."
+                    "Album foto facoltativo: gli esecutori scattano foto sul QR dell'unità. La sede e il nome dell'unità sono indicati. Sotto ogni foto compaiono data, ora, esecutore, unità e nome dell'organizzazione. Le invia da Album foto. I file vengono cancellati dopo una settimana. Si attiva in Impostazioni, sotto La sua organizzazione. Per esempio: in un asilo nido, le educatrici scattano foto dei bambini e le inviano ai genitori."
                 ],
                 "badge": "incluso",
                 "key": "winprox_time"
@@ -208,7 +208,7 @@
                 "title": "Album fotografico per unità",
                 "items": [
                     "Gli operatori scattano sul QR dell'unità fino a 24 foto al giorno di quell'unità. La sede e il nome dell'unità sono indicati.",
-                    "Il back office sceglie le foto e le invia a un solo indirizzo e-mail, fino a 8 foto nell'e-mail stessa. Gli indirizzi vengono salvati per unità.",
+                    "Il back office sceglie le foto e le invia a un solo indirizzo e-mail, fino a 8 foto nell'e-mail stessa. Gli indirizzi vengono salvati per unità. Sotto ogni foto compaiono data, ora, esecutore, unità e nome dell'organizzazione.",
                     "Le foto sono archiviate in modo privato ed eliminate dopo 7 giorni. Attivo o spento per tutta l'organizzazione, in Impostazioni → La sua organizzazione."
                 ],
                 "key": "photo_album"

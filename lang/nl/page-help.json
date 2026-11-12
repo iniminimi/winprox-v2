@@ -679,7 +679,7 @@
                 },
                 {
                     "label": "Mailen",
-                    "text": "Fotoalbum staat bij Plaatsen, onder Units. U kiest daar een unit en een dag waarop foto's staan, vinkt foto's aan en vult een e-mailadres in. Het adres blijft bij die unit staan. De foto's zitten in de mail. Na een week wist WinProx de bestanden."
+                    "text": "Fotoalbum staat bij Plaatsen, onder Units. U kiest daar een unit en een dag waarop foto's staan, vinkt foto's aan en vult een e-mailadres in. Het adres blijft bij die unit staan. Onder elke foto staat datum, tijd, uitvoerder, unit en organisatienaam. De foto's zitten in de mail. Na een week wist WinProx de bestanden."
                 }
             ]
         },

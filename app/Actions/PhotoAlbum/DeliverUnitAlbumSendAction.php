@@ -47,6 +47,7 @@ final class DeliverUnitAlbumSendAction
             ->where('tenant_id', $send->tenant_id)
             ->where('unit_id', $send->unit_id)
             ->whereIn('id', $send->photo_ids ?? [])
+            ->with(['worker', 'unit.tenant'])
             ->orderBy('id')
             ->get()
             ->filter(fn (UnitAlbumPhoto $photo): bool => $disk->exists((string) $photo->path))

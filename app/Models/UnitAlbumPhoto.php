@@ -40,4 +40,17 @@ class UnitAlbumPhoto extends Model
     {
         return $this->belongsTo(Worker::class);
     }
+
+    /**
+     * Balk onder de foto: 12/11/2026 21:50 - Iris Lowyck - Unit Organisatie.
+     */
+    public function stampLine(): string
+    {
+        $takenAt = $this->created_at?->timezone((string) config('app.timezone'))->format('d/m/Y H:i') ?? '';
+        $photographer = trim((string) ($this->worker?->displayName() ?? ''));
+        $unitName = trim((string) ($this->unit?->localizedName() ?? ''));
+        $tenantName = trim((string) ($this->unit?->tenant?->name ?? $this->tenant?->name ?? ''));
+
+        return $takenAt.' - '.$photographer.' - '.trim($unitName.' '.$tenantName);
+    }
 }

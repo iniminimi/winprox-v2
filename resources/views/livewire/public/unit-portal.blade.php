@@ -616,19 +616,26 @@
                 @if ($photoAlbum['previewUrls'] !== [])
                     <div class="wp-card wp-card-pad wp-stack">
                         <p class="wp-section-title">{{ __('portal.album.own_today') }}</p>
-                        <div class="wp-photo-gallery" x-data="{ lightboxSrc: null }" @keydown.escape.window="lightboxSrc = null">
+                        <div class="wp-photo-gallery" x-data="{ lightbox: null }" @keydown.escape.window="lightbox = null">
                             <div class="wp-photo-grid wp-photo-grid--gallery">
-                                @foreach ($photoAlbum['previewUrls'] as $albumPhotoId => $albumPhotoUrl)
-                                    <div class="wp-photo-thumb" wire:key="portal-album-photo-{{ $albumPhotoId }}">
-                                        <button type="button" @click="lightboxSrc = @js($albumPhotoUrl)" aria-label="{{ __('issues.show.photo_enlarge') }}">
-                                            <img src="{{ $albumPhotoUrl }}" alt="" width="80" height="80" loading="lazy">
-                                        </button>
-                                        <button type="button" class="wp-photo-remove" @click.stop wire:click="deleteAlbumPhoto({{ $albumPhotoId }})" wire:confirm="{{ __('portal.album.delete_confirm') }}" aria-label="{{ __('portal.album.delete') }}">×</button>
+                                @foreach ($photoAlbum['photos'] as $albumPhoto)
+                                    @continue(! isset($photoAlbum['previewUrls'][$albumPhoto->id]))
+                                    <div class="wp-album-photo" wire:key="portal-album-photo-{{ $albumPhoto->id }}">
+                                        <div class="wp-photo-thumb">
+                                            <button type="button" @click="lightbox = { src: @js($photoAlbum['previewUrls'][$albumPhoto->id]), stamp: @js($albumPhoto->stampLine()) }" aria-label="{{ __('issues.show.photo_enlarge') }}">
+                                                <img src="{{ $photoAlbum['previewUrls'][$albumPhoto->id] }}" alt="" width="80" height="80" loading="lazy">
+                                            </button>
+                                            <button type="button" class="wp-photo-remove" @click.stop wire:click="deleteAlbumPhoto({{ $albumPhoto->id }})" wire:confirm="{{ __('portal.album.delete_confirm') }}" aria-label="{{ __('portal.album.delete') }}">×</button>
+                                        </div>
+                                        <p class="wp-album-stamp">{{ $albumPhoto->stampLine() }}</p>
                                     </div>
                                 @endforeach
                             </div>
-                            <div class="wp-photo-lightbox" x-show="lightboxSrc" x-cloak x-transition.opacity role="dialog" aria-modal="true" @click="lightboxSrc = null">
-                                <img :src="lightboxSrc" alt="" @click.stop>
+                            <div class="wp-photo-lightbox" x-show="lightbox" x-cloak x-transition.opacity role="dialog" aria-modal="true" @click="lightbox = null">
+                                <div @click.stop>
+                                    <img :src="lightbox?.src" alt="">
+                                    <p class="wp-album-stamp" x-text="lightbox?.stamp"></p>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -687,7 +687,7 @@
                 },
                 {
                     "label": "Envoyer",
-                    "text": "Album photo se trouve sous Emplacements, sous Unités. Vous y choisissez une unité et un jour qui ont des photos, vous cochez les photos et vous indiquez une adresse e-mail. L'adresse reste liée à cette unité. Les photos sont dans le message. Après une semaine, WinProx efface les fichiers."
+                    "text": "Album photo se trouve sous Emplacements, sous Unités. Vous y choisissez une unité et un jour qui ont des photos, vous cochez les photos et vous indiquez une adresse e-mail. L'adresse reste liée à cette unité. Sous chaque photo figurent la date, l'heure, l'exécutant, l'unité et le nom de l'organisation. Les photos sont dans le message. Après une semaine, WinProx efface les fichiers."
                 }
             ]
         },

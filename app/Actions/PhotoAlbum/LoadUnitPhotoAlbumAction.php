@@ -90,7 +90,7 @@ final class LoadUnitPhotoAlbumAction
                 ->where('unit_id', $unit->id)
                 ->where('created_at', '>=', $cutoff)
                 ->whereDate('taken_on', $day)
-                ->with('worker')
+                ->with(['worker', 'unit.tenant'])
                 ->orderBy('created_at')
                 ->orderBy('id')
                 ->get();

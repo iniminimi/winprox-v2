@@ -1841,7 +1841,8 @@ it('laat een aangemelde uitvoerder foto\'s nemen van de gescande unit', function
         ->set('albumPhotos', [$file])
         ->call('saveAlbumPhotos')
         ->assertHasNoErrors()
-        ->assertSet('flashMessage', __('portal.album.saved', ['count' => 1]));
+        ->assertSet('flashMessage', __('portal.album.saved', ['count' => 1]))
+        ->assertSee(UnitAlbumPhoto::query()->with(['worker', 'unit.tenant'])->sole()->stampLine(), false);
 
     $photo = UnitAlbumPhoto::query()->sole();
     expect($photo->unit_id)->toBe($unit->id);

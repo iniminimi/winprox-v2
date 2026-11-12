@@ -47,7 +47,7 @@
                     "Manage issues, tasks and inspection rounds.",
                     "Manage locations, teams, people and units.",
                     "RSZ/CIAO presence reporting can be turned on in settings. Optional GPS work visits tie a visit to a location.",
-                    "Optional photo album: workers take photos on the unit QR. The location and unit name are shown. You email them from Photo album. The files are deleted after a week. Turn this on in Settings, under Your organisation. For example: in a nursery, carers take photos of the children and send them to the parents."
+                    "Optional photo album: workers take photos on the unit QR. The location and unit name are shown. Under each photo are the date, time, worker, unit and organisation name. You email them from Photo album. The files are deleted after a week. Turn this on in Settings, under Your organisation. For example: in a nursery, carers take photos of the children and send them to the parents."
                 ],
                 "badge": "included",
                 "key": "winprox_time"
@@ -208,7 +208,7 @@
                 "title": "Photo album per unit",
                 "items": [
                     "Workers take up to 24 photos per day of that unit on the unit QR. The location and unit name are shown.",
-                    "The back office selects photos and sends them to one email address, up to 8 photos inside the email. Addresses are saved per unit.",
+                    "The back office selects photos and sends them to one email address, up to 8 photos inside the email. Addresses are saved per unit. Under each photo are the date, time, worker, unit and organisation name.",
                     "Photos are stored privately and deleted after 7 days. On or off for the whole organisation, under Settings → Your organisation."
                 ],
                 "key": "photo_album"

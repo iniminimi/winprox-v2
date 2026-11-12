@@ -63,6 +63,7 @@ class UnitAlbumPhotosMail extends Mailable
                 'data' => (string) ($disk->get($photo->path) ?? ''),
                 'name' => 'foto-'.($index + 1).'.jpg',
                 'mime' => (string) ($disk->mimeType($photo->path) ?: 'image/jpeg'),
+                'stamp' => $photo->stampLine(),
             ])
             ->filter(fn (array $image): bool => $image['data'] !== '')
             ->values()

@@ -579,6 +579,8 @@ backoffice kiest welke foto's naar één e-mailadres gaan. Algemeen, niet sector
 - **Eén ontvanger per verzending**; adres + vrije omschrijving worden per unit bewaard
   (`unit_album_recipients`) en voorgesteld; beheren/verwijderen in hetzelfde scherm.
 - Max. **8 foto's per mail**, ingesloten (CID), onder elkaar in simpele HTML, geen links; meer foto's = meerdere mails.
+- Onder elke foto (album, unit-QR en mail) een zwarte balk, witte tekst, 8 px, gecentreerd:
+  `dd/mm/jjjj uu:mm - uitvoerder - unit tenant`. De foto zelf wordt niet bewerkt.
 - Wachtrij met limieten: **25 mails/uur per tenant**, **150/uur globaal** (Cloud86: 250/uur per
   hostingpakket voor alle mails samen). Overloop wordt later ingepland, niet geweigerd.
 - Geen afmeldfooter en geen `List-Unsubscribe` in deze mail (Telenet weigerde die fotomail als spam).

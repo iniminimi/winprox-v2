@@ -47,7 +47,7 @@
                     "Meldungen, Aufgaben und Inspektionsrunden verwalten.",
                     "Standorte, Teams, Personen und Units verwalten.",
                     "Die RSZ/CIAO-Meldung kann in den Einstellungen aktiviert werden. Optionale GPS-Arbeitsbesuche verknüpfen einen Besuch mit einem Ort.",
-                    "Optionales Fotoalbum: Ausführende machen Fotos über den QR-Code der Einheit. Standort und Name stehen dabei. Sie mailen sie aus dem Fotoalbum. Die Dateien werden nach einer Woche gelöscht. Sie schalten es unter Einstellungen, Ihre Organisation, ein. Zum Beispiel: in einer Kita machen Betreuerinnen Fotos von den Kindern und schicken sie an die Eltern."
+                    "Optionales Fotoalbum: Ausführende machen Fotos über den QR-Code der Einheit. Standort und Name stehen dabei. Unter jedem Foto stehen Datum, Uhrzeit, Ausführender, Einheit und Organisationsname. Sie mailen sie aus dem Fotoalbum. Die Dateien werden nach einer Woche gelöscht. Sie schalten es unter Einstellungen, Ihre Organisation, ein. Zum Beispiel: in einer Kita machen Betreuerinnen Fotos von den Kindern und schicken sie an die Eltern."
                 ],
                 "badge": "inklusive",
                 "key": "winprox_time"
@@ -208,7 +208,7 @@
                 "title": "Fotoalbum pro Einheit",
                 "items": [
                     "Ausführende machen über den QR-Code der Einheit bis zu 24 Fotos pro Tag von dieser Einheit. Standort und Name stehen dabei.",
-                    "Das Backoffice wählt Fotos aus und sendet sie an eine E-Mail-Adresse, bis zu 8 Fotos in der E-Mail selbst. Adressen werden pro Einheit gespeichert.",
+                    "Das Backoffice wählt Fotos aus und sendet sie an eine E-Mail-Adresse, bis zu 8 Fotos in der E-Mail selbst. Adressen werden pro Einheit gespeichert. Unter jedem Foto stehen Datum, Uhrzeit, Ausführender, Einheit und Organisationsname.",
                     "Fotos werden privat gespeichert und nach 7 Tagen gelöscht. Ein- oder ausgeschaltet für die ganze Organisation, unter Einstellungen → Ihre Organisation."
                 ],
                 "key": "photo_album"

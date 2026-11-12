@@ -679,7 +679,7 @@
                 },
                 {
                     "label": "Inviare",
-                    "text": "Album foto sta in Sedi, sotto Unità. Lì si sceglie un'unità e un giorno con foto, si selezionano le foto e si indica un indirizzo e-mail. L'indirizzo resta su quell'unità. Le foto sono nel messaggio. Dopo una settimana WinProx cancella i file."
+                    "text": "Album foto sta in Sedi, sotto Unità. Lì si sceglie un'unità e un giorno con foto, si selezionano le foto e si indica un indirizzo e-mail. L'indirizzo resta su quell'unità. Sotto ogni foto compaiono data, ora, esecutore, unità e nome dell'organizzazione. Le foto sono nel messaggio. Dopo una settimana WinProx cancella i file."
                 }
             ]
         },

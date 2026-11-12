@@ -135,9 +135,14 @@ it('rendert de mail met cid-afbeeldingen zonder links naar foto\'s', function ()
     $send = UnitAlbumSend::factory()->create(['tenant_id' => $tenant->id, 'unit_id' => $unit->id, 'photo_ids' => [$photo->id], 'photo_count' => 1]);
 
     $send->load('unit.tenant', 'user');
+    $photo->load(['worker', 'unit.tenant']);
     expect((new UnitAlbumPhotosMail($send, collect([$photo])))->render())
         ->toContain('data:image/')->toContain('Lokaal 1')->toContain('Hallo,')
         ->toContain((string) $send->user?->name)
+        ->toContain($photo->stampLine())
+        ->toContain('font-size: 8px')
+        ->toContain('background: #000')
+        ->toContain('color: #fff')
         ->toContain('Veel groeten,')
         ->not->toContain('unit-album/')
         ->not->toContain('na een week gewist');
@@ -171,7 +176,7 @@ it('toont in het album alleen units en dagen met foto\'s', function () {
         'location_id' => $unit->location_id,
         'name' => 'Leeg lokaal',
     ]);
-    albumPhoto($unit, $worker);
+    $photo = albumPhoto($unit, $worker);
     $older = albumPhoto($unit, $worker);
     $older->forceFill([
         'taken_on' => now()->subDays(3)->toDateString(),
@@ -190,6 +195,8 @@ it('toont in het album alleen units en dagen met foto\'s', function () {
         ->assertDontSee($yesterday)
         ->assertSeeHtml('wp-photo-grid--gallery')
         ->assertSeeHtml('wp-photo-thumb')
+        ->assertSeeHtml('wp-album-stamp')
+        ->assertSee($photo->fresh()->load(['worker', 'unit.tenant'])->stampLine(), false)
         ->assertSeeHtml('wp-photo-remove')
         ->assertSeeHtml('wp-photo-lightbox')
         ->set('unitId', $unit->id + 999)
