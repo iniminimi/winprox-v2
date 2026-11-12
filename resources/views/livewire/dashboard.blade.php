@@ -93,9 +93,6 @@
                     </div>
                 </a>
             @endforeach
-        </div>
-
-        <div class="wp-kpis">
             @foreach ($checkmate->kpis as $kpi)
                 @if (($kpi['action'] ?? null) === 'open_clock_point_qr')
                     <button

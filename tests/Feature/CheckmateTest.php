@@ -1250,16 +1250,22 @@ it('toont het checkmate-dashboard met veldwerk-tegels en zonder facility-links',
         'location_id' => $location->id,
     ]);
 
-    $this->actingAs($admin)->get('/dashboard')
+    $dashboard = $this->actingAs($admin)->get('/dashboard')
         ->assertOk()
         ->assertSee(__('dashboard.checkmate.kpi.visits_today'))
         ->assertSee(__('dashboard.checkmate.recent.title'))
         ->assertSee($customer->name)
         ->assertDontSee('cm-action-clock_point', false)
+        ->assertSeeInOrder([
+            __('dashboard.checkmate.actions.presence_title'),
+            __('dashboard.kpi.present_now'),
+        ], false)
         ->assertSee(__('dashboard.checkmate.kpi.clock_point_qr'))
         ->assertDontSee(__('dashboard.add_issue'))
         ->assertDontSee(__('dashboard.recent.title'))
         ->assertDontSee(route('issues.index'));
+
+    expect(substr_count($dashboard->getContent(), 'class="wp-kpis"'))->toBe(1);
 });
 
 it('toont op de uitvoerders-tegel hoeveel actieve uitvoerders geen RRN hebben', function () {
