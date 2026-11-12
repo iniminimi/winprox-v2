@@ -34,9 +34,11 @@ class UpdateTenantTimeClockSecurityAction
         $teamRoster = array_key_exists('time_team_roster', $data)
             ? (bool) $data['time_team_roster']
             : (bool) ($tenant->time_team_roster ?? true);
-        $rosterEnabled = array_key_exists('time_roster_enabled', $data)
-            ? (bool) $data['time_roster_enabled']
-            : (bool) ($tenant->time_roster_enabled ?? true);
+        $rosterEnabled = $tenant->checkmateMode()
+            ? false
+            : (array_key_exists('time_roster_enabled', $data)
+                ? (bool) $data['time_roster_enabled']
+                : (bool) ($tenant->time_roster_enabled ?? true));
         $allowExternalWorkers = array_key_exists('time_allow_external_workers', $data)
             ? (bool) $data['time_allow_external_workers']
             : (bool) $tenant->time_allow_external_workers;

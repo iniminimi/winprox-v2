@@ -863,6 +863,22 @@ it('verbergt documenten en mededelingen op locatie-detail voor checkmate', funct
         ->assertSee(__('locations.announcements.subtitle'), false);
 });
 
+it('houdt het uurrooster uit bij checkmate, ook als de Time-vlag nog aanstaat', function () {
+    $tenant = checkmateTenant([
+        'has_time_module' => true,
+        'time_roster_enabled' => true,
+    ]);
+
+    expect($tenant->timeRosterEnabled())->toBeFalse();
+
+    $admin = User::factory()->admin()->for($tenant)->create();
+    $this->actingAs($admin)
+        ->get('/dashboard')
+        ->assertOk()
+        ->assertDontSee('href="'.url('/time/schedule').'"', false)
+        ->assertDontSee('href="'.url('/time/absence-requests').'"', false);
+});
+
 it('blokkeert niet-whitelist admin-routes voor checkmate-tenants', function () {
     $tenant = checkmateTenant();
     $admin = User::factory()->admin()->for($tenant)->create();

@@ -351,9 +351,13 @@ class Tenant extends Model
         return (bool) $this->has_time_module;
     }
 
-    /** Planning (uurrooster, shifttypes, feestdagen, bezetting, verlof). Prikklok blijft. */
+    /** Planning (uurrooster, shifttypes, feestdagen, bezetting, verlof). Prikklok blijft. Checkmate heeft geen planning. */
     public function timeRosterEnabled(): bool
     {
+        if ($this->checkmateMode()) {
+            return false;
+        }
+
         return $this->hasTimeModule() && (bool) ($this->time_roster_enabled ?? true);
     }
 
