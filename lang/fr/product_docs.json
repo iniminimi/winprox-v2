@@ -47,7 +47,7 @@
                     "Gérer les signalements, les tâches et les tournées d’inspection.",
                     "Gérer les sites, les équipes, les personnes et les unités.",
                     "L’enregistrement ONSS/CIAO peut être activé dans les paramètres. Les visites GPS facultatives relient une visite à un lieu.",
-                    "Album photo facultatif : les exécutants prennent des photos sur le QR de l'unité. Le lieu et le nom de l'unité sont indiqués. Vous les envoyez depuis Album photo. Les fichiers sont effacés après une semaine. Activez-le dans Paramètres, sous Votre organisation."
+                    "Album photo facultatif : les exécutants prennent des photos sur le QR de l'unité. Le lieu et le nom de l'unité sont indiqués. Vous les envoyez depuis Album photo. Les fichiers sont effacés après une semaine. Activez-le dans Paramètres, sous Votre organisation. Par exemple : dans une crèche, les puéricultrices prennent des photos des enfants et les envoient aux parents."
                 ],
                 "badge": "inclus",
                 "key": "winprox_time"

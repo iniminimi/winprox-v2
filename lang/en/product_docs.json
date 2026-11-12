@@ -47,7 +47,7 @@
                     "Manage issues, tasks and inspection rounds.",
                     "Manage locations, teams, people and units.",
                     "RSZ/CIAO presence reporting can be turned on in settings. Optional GPS work visits tie a visit to a location.",
-                    "Optional photo album: workers take photos on the unit QR. The location and unit name are shown. You email them from Photo album. The files are deleted after a week. Turn this on in Settings, under Your organisation."
+                    "Optional photo album: workers take photos on the unit QR. The location and unit name are shown. You email them from Photo album. The files are deleted after a week. Turn this on in Settings, under Your organisation. For example: in a nursery, carers take photos of the children and send them to the parents."
                 ],
                 "badge": "included",
                 "key": "winprox_time"
