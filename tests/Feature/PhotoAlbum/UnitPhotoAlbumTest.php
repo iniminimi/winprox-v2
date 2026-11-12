@@ -134,9 +134,13 @@ it('rendert de mail met cid-afbeeldingen zonder links naar foto\'s', function ()
     $photo = albumPhoto($unit, $worker);
     $send = UnitAlbumSend::factory()->create(['tenant_id' => $tenant->id, 'unit_id' => $unit->id, 'photo_ids' => [$photo->id], 'photo_count' => 1]);
 
-    $send->load('unit.tenant');
+    $send->load('unit.tenant', 'user');
     expect((new UnitAlbumPhotosMail($send, collect([$photo])))->render())
-        ->toContain('data:image/')->toContain('Lokaal 1')->not->toContain('unit-album/');
+        ->toContain('data:image/')->toContain('Lokaal 1')->toContain('Hallo,')
+        ->toContain((string) $send->user?->name)
+        ->toContain('Veel groeten,')
+        ->not->toContain('unit-album/')
+        ->not->toContain('na een week gewist');
 
     config(['mail.default' => 'array']);
     Mail::to('ouder@example.com')->send(new UnitAlbumPhotosMail($send, collect([$photo])));

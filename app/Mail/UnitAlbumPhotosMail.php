@@ -73,6 +73,7 @@ class UnitAlbumPhotosMail extends Mailable
             with: [
                 'mailSubject' => $this->mailSubject(),
                 'tenantName' => $this->tenantName(),
+                'senderName' => trim((string) ($this->send->user?->name ?? '')),
                 'unitName' => (string) ($unit?->localizedName() ?? ''),
                 'dayLabel' => (string) $this->send->album_day?->copy()->locale((string) $this->locale)->translatedFormat('l j F Y'),
                 'images' => $images,

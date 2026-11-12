@@ -249,8 +249,10 @@
     },
     "unit_album": {
         "subject": ":tenant — foto",
-        "intro": ":tenant le ha inviato delle foto.",
+        "greeting": "Ciao,",
+        "intro": "Ecco alcune foto inviate da :sender di :tenant.",
+        "taken": "Le foto sono state scattate il :day in :unit:",
         "photo_alt": "Foto :number",
-        "outro": "Le foto restano in questo messaggio. WinProx cancella i file dopo una settimana."
+        "closing": "Tanti saluti,"
     }
 }

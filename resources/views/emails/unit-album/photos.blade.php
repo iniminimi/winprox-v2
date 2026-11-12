@@ -5,11 +5,9 @@
     <title>{{ $mailSubject }}</title>
 </head>
 <body>
-    <p>{{ __('mail.unit_album.intro', ['tenant' => $tenantName]) }}</p>
-    <p>
-        <strong>{{ $unitName }}</strong><br>
-        {{ $dayLabel }}
-    </p>
+    <p>{{ __('mail.unit_album.greeting') }}</p>
+    <p>{{ __('mail.unit_album.intro', ['sender' => $senderName, 'tenant' => $tenantName]) }}</p>
+    <p>{{ __('mail.unit_album.taken', ['day' => $dayLabel, 'unit' => $unitName]) }}</p>
     @foreach ($images as $image)
         <p>
             <img src="{{ $message->embedData($image['data'], $image['name'], $image['mime']) }}"
@@ -18,6 +16,7 @@
                  style="max-width: 100%; height: auto;">
         </p>
     @endforeach
-    <p>{{ __('mail.unit_album.outro', ['tenant' => $tenantName]) }}</p>
+    <p>{{ __('mail.unit_album.closing') }}</p>
+    <p>{{ $senderName }}</p>
 </body>
 </html>

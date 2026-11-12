@@ -249,8 +249,10 @@
     },
     "unit_album": {
         "subject": ":tenant — Fotos",
-        "intro": ":tenant hat Ihnen Fotos geschickt.",
+        "greeting": "Hallo,",
+        "intro": "Anbei einige Fotos, gesendet von :sender von :tenant.",
+        "taken": "Die Fotos wurden am :day in :unit aufgenommen:",
         "photo_alt": "Foto :number",
-        "outro": "Die Fotos bleiben in dieser E-Mail. WinProx löscht die Dateien nach einer Woche."
+        "closing": "Viele Grüße,"
     }
 }

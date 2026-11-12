@@ -249,8 +249,10 @@
     },
     "unit_album": {
         "subject": ":tenant — foto's",
-        "intro": ":tenant stuurde je foto's.",
+        "greeting": "Hallo,",
+        "intro": "Hierbij enkele foto's verstuurd door :sender van :tenant.",
+        "taken": "De foto's werden genomen op :day in :unit:",
         "photo_alt": "Foto :number",
-        "outro": "De foto's blijven in deze mail staan. In WinProx worden de bestanden na een week gewist."
+        "closing": "Veel groeten,"
     }
 }
