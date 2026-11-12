@@ -37,7 +37,6 @@ final class LoadWorkerPhotoAlbumAction
             ->where('tenant_id', $worker->tenant_id)
             ->where('unit_id', $unit->id)
             ->whereDate('taken_on', now()->toDateString())
-            ->with(['worker', 'unit.tenant'])
             ->orderBy('id')
             ->get();
 

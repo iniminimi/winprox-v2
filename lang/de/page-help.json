@@ -679,7 +679,7 @@
                 },
                 {
                     "label": "Senden",
-                    "text": "Fotoalbum steht unter Standorte, unter Units. Dort wählen Sie eine Einheit und einen Tag mit Fotos, haken Fotos an und geben eine E-Mail-Adresse ein. Die Adresse bleibt bei dieser Unit. Unter jedem Foto stehen Datum, Uhrzeit, Ausführender, Einheit und Organisationsname. Die Fotos stehen in der E-Mail. Nach einer Woche löscht WinProx die Dateien."
+                    "text": "Fotoalbum steht unter Standorte, unter Units. Dort wählen Sie eine Einheit und einen Tag mit Fotos, haken Fotos an und geben eine E-Mail-Adresse ein. Die Adresse bleibt bei dieser Unit. Im Foto selbst stehen unten Datum, Uhrzeit, Ausführender, Einheit und Organisationsname. Die Fotos stehen in der E-Mail. Nach einer Woche löscht WinProx die Dateien."
                 }
             ]
         },

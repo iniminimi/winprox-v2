@@ -572,15 +572,16 @@ backoffice kiest welke foto's naar één e-mailadres gaan. Algemeen, niet sector
 - De gescande unit is de enige unit. Locatie en unitnaam staan op het scherm. Geen dropdown
   en geen thuisgroep als fotokeuze.
 - Max. **24 foto's per unit per dag** (`config/unit_photo_album.php`); client-side compressie
-  (golden path, max. 1000 px), geen server-resize. Eigen foto's van vandaag wissen kan.
+  (golden path, max. 1000 px). De server verkleint de foto niet. Onder het beeld komt een
+  zwarte balk in het bestand (witte tekst, gecentreerd): datum en tijd, uitvoerder, unit en
+  organisatie. De balk en de letters schalen mee met de breedte. Eigen foto's van vandaag wissen kan.
 
 ### Beheer (`/photo-album`, Plaatsen → Fotoalbum, onder Units)
 - Alleen units en dagen waarop nog foto's staan (binnen de bewaartermijn). Foto's als kleine thumbnails, zoals bij meldingen: aanvinken en wissen.
 - **Eén ontvanger per verzending**; adres + vrije omschrijving worden per unit bewaard
   (`unit_album_recipients`) en voorgesteld; beheren/verwijderen in hetzelfde scherm.
 - Max. **8 foto's per mail**, ingesloten (CID), onder elkaar in simpele HTML, geen links; meer foto's = meerdere mails.
-- Onder elke foto (album, unit-QR en mail) een zwarte balk, witte tekst, 8 px, gecentreerd:
-  `dd/mm/jjjj uu:mm - uitvoerder - unit tenant`. De foto zelf wordt niet bewerkt.
+  De stempel zit in het fotobestand, niet als losse tekst in de mail.
 - Wachtrij met limieten: **25 mails/uur per tenant**, **150/uur globaal** (Cloud86: 250/uur per
   hostingpakket voor alle mails samen). Overloop wordt later ingepland, niet geweigerd.
 - Geen afmeldfooter en geen `List-Unsubscribe` in deze mail (Telenet weigerde die fotomail als spam).

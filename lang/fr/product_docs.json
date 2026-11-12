@@ -47,7 +47,7 @@
                     "Gérer les signalements, les tâches et les tournées d’inspection.",
                     "Gérer les sites, les équipes, les personnes et les unités.",
                     "L’enregistrement ONSS/CIAO peut être activé dans les paramètres. Les visites GPS facultatives relient une visite à un lieu.",
-                    "Album photo facultatif : les exécutants prennent des photos sur le QR de l'unité. Le lieu et le nom de l'unité sont indiqués. Sous chaque photo figurent la date, l'heure, l'exécutant, l'unité et le nom de l'organisation. Vous les envoyez depuis Album photo. Les fichiers sont effacés après une semaine. Activez-le dans Paramètres, sous Votre organisation. Par exemple : dans une crèche, les puéricultrices prennent des photos des enfants et les envoient aux parents."
+                    "Album photo facultatif : les exécutants prennent des photos sur le QR de l'unité. Le lieu et le nom de l'unité sont indiqués. Dans la photo même, en bas, figurent la date, l'heure, l'exécutant, l'unité et le nom de l'organisation. Vous les envoyez depuis Album photo. Les fichiers sont effacés après une semaine. Activez-le dans Paramètres, sous Votre organisation. Par exemple : dans une crèche, les puéricultrices prennent des photos des enfants et les envoient aux parents."
                 ],
                 "badge": "inclus",
                 "key": "winprox_time"
@@ -208,7 +208,7 @@
                 "title": "Album photo par unité",
                 "items": [
                     "Les exécutants prennent sur le QR de l'unité jusqu'à 24 photos par jour de cette unité. Le lieu et le nom de l'unité sont indiqués.",
-                    "Le back-office choisit des photos et les envoie à une seule adresse e-mail, jusqu'à 8 photos dans l'e-mail même. Les adresses sont enregistrées par unité. Sous chaque photo figurent la date, l'heure, l'exécutant, l'unité et le nom de l'organisation.",
+                    "Le back-office choisit des photos et les envoie à une seule adresse e-mail, jusqu'à 8 photos dans l'e-mail même. Les adresses sont enregistrées par unité. Dans la photo même, en bas, figurent la date, l'heure, l'exécutant, l'unité et le nom de l'organisation.",
                     "Les photos sont stockées de manière privée et supprimées après 7 jours. Activé ou non pour toute l'organisation, dans Paramètres → Votre organisation."
                 ],
                 "key": "photo_album"

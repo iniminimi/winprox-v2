@@ -17,7 +17,8 @@ use InvalidArgumentException;
 /**
  * Voegt één foto toe aan het album van een unit (unit-QR-portaal).
  * Maximum per unit per kalenderdag: config('unit_photo_album.max_photos_per_day').
- * Bestand is client-side gecomprimeerd — geen server-resize (WINPROX_RULES.md §7).
+ * Bestand is client-side gecomprimeerd. De server verkleint de foto niet
+ * (WINPROX_RULES.md §7) en tekent de stempel als balk onder het beeld.
  */
 final class UploadUnitAlbumPhotoAction
 {
@@ -55,13 +56,21 @@ final class UploadUnitAlbumPhotoAction
             throw new InvalidArgumentException('album_unit_not_allowed');
         }
 
-        $day = ($now ?? now())->toDateString();
+        $moment = $now ?? now();
+        $day = $moment->toDateString();
 
         if ($this->countForDay($unit, $tenantId, $day) >= self::maxPerDay()) {
             throw new InvalidArgumentException('album_day_full');
         }
 
-        $path = $this->storage->store($file, $tenantId, (int) $unit->id, $day);
+        $unit->loadMissing('tenant');
+        $path = $this->storage->store(
+            $file,
+            $tenantId,
+            (int) $unit->id,
+            $day,
+            $this->stampLine($moment, $worker, $unit),
+        );
 
         try {
             return DB::transaction(function () use ($unit, $tenantId, $worker, $day, $path): UnitAlbumPhoto {
@@ -97,6 +106,16 @@ final class UploadUnitAlbumPhotoAction
     public static function maxPerDay(): int
     {
         return max(1, (int) config('unit_photo_album.max_photos_per_day', 24));
+    }
+
+    private function stampLine(CarbonInterface $takenAt, Worker $worker, Unit $unit): string
+    {
+        $at = $takenAt->timezone((string) config('app.timezone'))->format('d/m/Y H:i');
+        $photographer = trim($worker->displayName());
+        $unitName = trim($unit->localizedName());
+        $tenantName = trim((string) ($unit->tenant?->name ?? ''));
+
+        return $at.' - '.$photographer.' - '.trim($unitName.' '.$tenantName);
     }
 
     public function countForDay(Unit $unit, int $tenantId, string $day): int

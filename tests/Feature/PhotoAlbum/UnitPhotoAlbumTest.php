@@ -57,6 +57,44 @@ it('bewaart foto privé en stopt bij het maximum per dag', function () {
     expect(fn () => albumPhoto($unit, $worker))->toThrow(InvalidArgumentException::class, 'album_day_full');
 });
 
+it('tekent de stempel onderaan in de foto en schaalt mee met de breedte', function () {
+    [, $unit, $worker] = albumContext();
+    $upload = app(UploadUnitAlbumPhotoAction::class);
+
+    $narrow = $upload->handle($unit, UploadedFile::fake()->image('narrow.jpg', 300, 80), (int) $unit->tenant_id, $worker);
+    $wide = $upload->handle($unit, UploadedFile::fake()->image('wide.jpg', 800, 80), (int) $unit->tenant_id, $worker);
+
+    $narrowImage = imagecreatefromstring((string) Storage::disk('local')->get($narrow->path));
+    $wideImage = imagecreatefromstring((string) Storage::disk('local')->get($wide->path));
+
+    expect(imagesx($narrowImage))->toBe(300)
+        ->and(imagesy($narrowImage))->toBeGreaterThan(80)
+        ->and(imagesx($wideImage))->toBe(800)
+        ->and(imagesy($wideImage) - 80)->toBeGreaterThan(imagesy($narrowImage) - 80);
+
+    $barHasWhite = false;
+    $barHasBlack = false;
+    for ($y = 80; $y < imagesy($narrowImage); $y += 2) {
+        for ($x = 0; $x < 300; $x += 4) {
+            $rgb = imagecolorat($narrowImage, $x, $y);
+            $red = ($rgb >> 16) & 0xFF;
+            $green = ($rgb >> 8) & 0xFF;
+            $blue = $rgb & 0xFF;
+            if ($red > 200 && $green > 200 && $blue > 200) {
+                $barHasWhite = true;
+            }
+            if ($red < 30 && $green < 30 && $blue < 30) {
+                $barHasBlack = true;
+            }
+        }
+    }
+
+    expect($barHasWhite)->toBeTrue()->and($barHasBlack)->toBeTrue();
+
+    imagedestroy($narrowImage);
+    imagedestroy($wideImage);
+});
+
 it('weigert upload als het album uit staat of in Checkmate', function () {
     [$tenant, $unit, $worker] = albumContext();
     $tenant->update(['photo_album_enabled' => false]);
@@ -135,15 +173,11 @@ it('rendert de mail met cid-afbeeldingen zonder links naar foto\'s', function ()
     $send = UnitAlbumSend::factory()->create(['tenant_id' => $tenant->id, 'unit_id' => $unit->id, 'photo_ids' => [$photo->id], 'photo_count' => 1]);
 
     $send->load('unit.tenant', 'user');
-    $photo->load(['worker', 'unit.tenant']);
     expect((new UnitAlbumPhotosMail($send, collect([$photo])))->render())
         ->toContain('data:image/')->toContain('Lokaal 1')->toContain('Hallo,')
         ->toContain((string) $send->user?->name)
-        ->toContain($photo->stampLine())
-        ->toContain('font-size: 8px')
-        ->toContain('background: #000')
-        ->toContain('color: #fff')
         ->toContain('Veel groeten,')
+        ->not->toContain('font-size: 8px')
         ->not->toContain('unit-album/')
         ->not->toContain('na een week gewist');
 
@@ -176,7 +210,7 @@ it('toont in het album alleen units en dagen met foto\'s', function () {
         'location_id' => $unit->location_id,
         'name' => 'Leeg lokaal',
     ]);
-    $photo = albumPhoto($unit, $worker);
+    albumPhoto($unit, $worker);
     $older = albumPhoto($unit, $worker);
     $older->forceFill([
         'taken_on' => now()->subDays(3)->toDateString(),
@@ -195,8 +229,6 @@ it('toont in het album alleen units en dagen met foto\'s', function () {
         ->assertDontSee($yesterday)
         ->assertSeeHtml('wp-photo-grid--gallery')
         ->assertSeeHtml('wp-photo-thumb')
-        ->assertSeeHtml('wp-album-stamp')
-        ->assertSee($photo->fresh()->load(['worker', 'unit.tenant'])->stampLine(), false)
         ->assertSeeHtml('wp-photo-remove')
         ->assertSeeHtml('wp-photo-lightbox')
         ->set('unitId', $unit->id + 999)

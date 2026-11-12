@@ -679,7 +679,7 @@
                 },
                 {
                     "label": "Enviar",
-                    "text": "Álbum de fotos está en Ubicaciones, bajo Unidades. Allí elige una unidad y un día con fotos, marca las fotos e indica un correo. La dirección queda guardada en esa unidad. Bajo cada foto figuran la fecha, la hora, el operario, la unidad y el nombre de la organización. Las fotos van en el correo. Al cabo de una semana WinProx borra los archivos."
+                    "text": "Álbum de fotos está en Ubicaciones, bajo Unidades. Allí elige una unidad y un día con fotos, marca las fotos e indica un correo. La dirección queda guardada en esa unidad. En la propia foto, abajo, figuran la fecha, la hora, el operario, la unidad y el nombre de la organización. Las fotos van en el correo. Al cabo de una semana WinProx borra los archivos."
                 }
             ]
         },

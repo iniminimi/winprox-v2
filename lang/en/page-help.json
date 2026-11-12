@@ -679,7 +679,7 @@
                 },
                 {
                     "label": "Email",
-                    "text": "Photo album is under Places, below Units. There you choose a unit and a day that have photos, tick the photos and enter an email address. The address stays with that unit. Under each photo are the date, time, worker, unit and organisation name. The photos are in the email. After a week WinProx deletes the files."
+                    "text": "Photo album is under Places, below Units. There you choose a unit and a day that have photos, tick the photos and enter an email address. The address stays with that unit. Inside the photo, at the bottom, are the date, time, worker, unit and organisation name. The photos are in the email. After a week WinProx deletes the files."
                 }
             ]
         },
