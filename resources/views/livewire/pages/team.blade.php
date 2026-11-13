@@ -226,38 +226,33 @@
             </div>
         @endif
 
-        <div class="wp-list">
+        <div class="wp-list wp-list--entity-rows">
             @forelse ($teams as $team)
                 @php
                     $visibleWorkers = $this->visibleTeamWorkers($team);
                 @endphp
-                <div class="wp-stack-tight" wire:key="team-{{ $team->id }}">
-                    <div class="wp-data-row">
-                        <div class="wp-data-row-main">
-                            <a href="{{ route('team.show', $team) }}" class="wp-issue-row-link">
-                                <span class="wp-data-row-title">{{ $team->localizedName() }}</span>
-                            </a>
-                            <span class="wp-muted">{{ __('team.teams.worker_count', ['count' => $visibleWorkers->where('is_active', true)->count()]) }}</span>
-                        </div>
-                        <div class="wp-cluster wp-cluster--tight">
-                            <span class="wp-pill wp-pill--{{ $team->is_active ? 'done' : 'closed' }}">{{ $team->is_active ? __('team.teams.active') : __('team.teams.inactive') }}</span>
-                            @if ($canEditContent)
-                                <button type="button" class="btn btn--surface btn--sm" wire:click="openEditTeam({{ $team->id }})">{{ __('team.teams.edit') }}</button>
+                <div class="wp-issue-row" wire:key="team-{{ $team->id }}">
+                    <a href="{{ route('team.show', $team) }}" class="wp-issue-row-link wp-stack-tight">
+                        <p class="wp-issue-card-title">{{ $team->localizedName() }}</p>
+                        <p class="wp-issue-card-meta">{{ __('team.teams.worker_count', ['count' => $visibleWorkers->where('is_active', true)->count()]) }}</p>
+                    </a>
+                    <div class="wp-cluster wp-cluster--tight">
+                        <span class="wp-pill wp-pill--{{ $team->is_active ? 'done' : 'closed' }}">{{ $team->is_active ? __('team.teams.active') : __('team.teams.inactive') }}</span>
+                        @if ($canEditContent)
+                            <button type="button" class="btn btn--surface btn--sm" wire:click="openEditTeam({{ $team->id }})">{{ __('team.teams.edit') }}</button>
+                        @endif
+                        @if ($canManageTeams)
+                            @if ($team->workers->isEmpty())
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteTeam({{ $team->id }})"
+                                        wire:confirm="{{ __('team.teams.confirm_delete') }}">{{ __('common.button.delete') }}</button>
                             @endif
-                            @if ($canManageTeams)
-                                @if ($team->workers->isEmpty())
-                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteTeam({{ $team->id }})"
-                                            wire:confirm="{{ __('team.teams.confirm_delete') }}">{{ __('common.button.delete') }}</button>
-                                @endif
-                                @if ($team->is_active)
-                                    <button type="button" class="btn btn--warning btn--sm" wire:click="setTeamActive({{ $team->id }}, false)">{{ __('team.teams.deactivate') }}</button>
-                                @else
-                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="setTeamActive({{ $team->id }}, true)">{{ __('team.teams.activate') }}</button>
-                                @endif
+                            @if ($team->is_active)
+                                <button type="button" class="btn btn--warning btn--sm" wire:click="setTeamActive({{ $team->id }}, false)">{{ __('team.teams.deactivate') }}</button>
+                            @else
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="setTeamActive({{ $team->id }}, true)">{{ __('team.teams.activate') }}</button>
                             @endif
-                        </div>
+                        @endif
                     </div>
-
                 </div>
             @empty
                 <p class="wp-muted">{{ __('team.teams.empty') }}</p>
