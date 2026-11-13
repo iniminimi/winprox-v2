@@ -171,13 +171,14 @@ it('toont de tegels op Clock Point ook zonder prikklok en verbergt andermans con
         'field_icon_slug' => 'star',
         'is_teamleader' => true,
     ]);
-    TeamDocument::factory()->create([
+    $document = TeamDocument::factory()->create([
         'tenant_id' => $tenant->id,
         'internal_team_id' => $team->id,
         'worker_id' => $owner->id,
+        'title' => 'Contract Nora',
         'description' => 'Contract alleen voor Nora',
     ]);
-    TeamAnnouncement::factory()->create([
+    $announcement = TeamAnnouncement::factory()->create([
         'tenant_id' => $tenant->id,
         'internal_team_id' => $team->id,
         'worker_id' => null,
@@ -195,13 +196,18 @@ it('toont de tegels op Clock Point ook zonder prikklok en verbergt andermans con
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
         ->assertDontSeeHtml('wire:click="openHours"')
-        ->assertSee(__('portal.worker_library.documents_title'), false)
-        ->assertSee(__('portal.worker_library.announcements_title'), false)
+        ->assertSee(__('portal.tiles.documents'), false)
+        ->assertSee(__('portal.tiles.announcements'), false)
         ->call('openTeamDocuments')
+        ->assertSeeHtml('class="wp-card wp-card-pad wp-stack-tight"')
+        ->assertSee('Contract Nora', false)
         ->assertSee('Contract alleen voor Nora', false)
+        ->assertSee(__('portal.documents.published', ['date' => $document->published_at->isoFormat('D MMM YYYY')]), false)
         ->call('closeTeamDocuments')
         ->call('openTeamAnnouncements')
-        ->assertSee('Ploegmededeling voor iedereen', false);
+        ->assertSeeHtml('class="wp-card wp-card-pad wp-stack-tight"')
+        ->assertSee('Ploegmededeling voor iedereen', false)
+        ->assertSee($announcement->published_at->isoFormat('D MMM YYYY'), false);
 
     Livewire::test(TimePortal::class, ['token' => 'library-clock'])
         ->set('first_name', 'Zora')
@@ -210,7 +216,7 @@ it('toont de tegels op Clock Point ook zonder prikklok en verbergt andermans con
         ->set('sign_in_icon_slug', 'star')
         ->call('signInWithIcon')
         ->assertDontSee('Contract alleen voor Nora', false)
-        ->assertSee(__('portal.worker_library.announcements_title'), false)
+        ->assertSee(__('portal.tiles.announcements'), false)
         ->call('openTeamAnnouncements')
         ->assertSee('Ploegmededeling voor iedereen', false);
 });

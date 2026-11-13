@@ -236,9 +236,7 @@
         "device_self_released": "Votre ancien téléphone a été libéré ; cet appareil est maintenant lié."
     },
     "worker_library": {
-        "documents_title": "Documents",
         "documents_sub": "Vos fichiers",
-        "announcements_title": "Annonces",
         "announcements_sub": "Messages pour vous"
     },
     "documents": {

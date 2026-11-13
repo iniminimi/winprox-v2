@@ -236,9 +236,7 @@
         "device_self_released": "Je vorige gsm is vrijgegeven; dit toestel is nu gekoppeld."
     },
     "worker_library": {
-        "documents_title": "Documenten",
         "documents_sub": "Je bestanden",
-        "announcements_title": "Mededelingen",
         "announcements_sub": "Berichten voor jou"
     },
     "documents": {
