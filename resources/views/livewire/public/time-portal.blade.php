@@ -999,27 +999,6 @@
                                 </button>
                                 @endif
                             @endunless
-                            @if ($evacuationList)
-                                <button type="button" class="wp-tile" wire:click="openRoster">
-                                    <span class="wp-cluster">
-                                        <x-wp-icon name="fire" class="wp-tile-icon" />
-                                        <span class="wp-tile-title">{{ __('time.roster.tile') }}</span>
-                                    </span>
-                                    <span class="wp-tile-sub">{{ __('time.roster.tile_sub') }}</span>
-                                </button>
-                            @endif
-                        </div>
-                    @endif
-
-                    @if ($verifiedWorker?->is_teamleader)
-                        <div class="wp-tiles">
-                            <button type="button" class="wp-tile" wire:click="openTeamleader" data-manual-capture-trigger="portal-open-teamleader">
-                                <span class="wp-cluster">
-                                    <x-wp-icon name="star" class="wp-tile-icon" />
-                                    <span class="wp-tile-title">{{ __('portal.teamleader.tile') }}</span>
-                                </span>
-                                <span class="wp-tile-sub">{{ __('portal.teamleader.tile_sub') }}</span>
-                            </button>
                         </div>
                     @endif
 
@@ -1045,6 +1024,30 @@
                                     <span class="wp-tile-sub">{{ __('portal.worker_library.announcements_sub') }}</span>
                                 </button>
                             @endif
+                        </div>
+                    @endif
+
+                    @if ($verifiedWorker?->is_teamleader)
+                        <div class="wp-tiles">
+                            <button type="button" class="wp-tile" wire:click="openTeamleader" data-manual-capture-trigger="portal-open-teamleader">
+                                <span class="wp-cluster">
+                                    <x-wp-icon name="star" class="wp-tile-icon" />
+                                    <span class="wp-tile-title">{{ __('portal.teamleader.tile') }}</span>
+                                </span>
+                                <span class="wp-tile-sub">{{ __('portal.teamleader.tile_sub') }}</span>
+                            </button>
+                        </div>
+                    @endif
+
+                    @if ($evacuationList)
+                        <div class="wp-tiles">
+                            <button type="button" class="wp-tile" wire:click="openRoster">
+                                <span class="wp-cluster">
+                                    <x-wp-icon name="fire" class="wp-tile-icon" />
+                                    <span class="wp-tile-title">{{ __('time.roster.tile') }}</span>
+                                </span>
+                                <span class="wp-tile-sub">{{ __('time.roster.tile_sub') }}</span>
+                            </button>
                         </div>
                     @endif
                 @endif

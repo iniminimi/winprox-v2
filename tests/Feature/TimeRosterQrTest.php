@@ -17,6 +17,8 @@ use App\Models\AuditLog;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Location;
+use App\Models\TeamAnnouncement;
+use App\Models\TeamDocument;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Models\Worker;
@@ -90,6 +92,30 @@ it('toont de evacuatietegel na aanmelden op Clock Point', function () {
         ->assertDontSee(__('time.roster.ack_title'), false)
         ->assertDontSee(__('portal.worker.no_open_tasks'), false)
         ->assertSet('rosterListOpen', false);
+});
+
+it('zet documenten, mededelingen, teamleader en evacuatielijst in die volgorde onderaan', function () {
+    [$tenant, , $clockPoint, $worker] = rosterTenantWithPeople();
+    $worker->forceFill(['is_teamleader' => true])->save();
+    TeamDocument::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $worker->internal_team_id,
+    ]);
+    TeamAnnouncement::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $worker->internal_team_id,
+    ]);
+
+    $html = signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')->html();
+    $documents = strpos($html, 'wire:click="openTeamDocuments"');
+    $announcements = strpos($html, 'wire:click="openTeamAnnouncements"');
+    $teamleader = strpos($html, 'wire:click="openTeamleader"');
+    $evacuation = strpos($html, 'wire:click="openRoster"');
+
+    expect($documents)->not->toBeFalse()
+        ->and($announcements)->toBeGreaterThan($documents)
+        ->and($teamleader)->toBeGreaterThan($announcements)
+        ->and($evacuation)->toBeGreaterThan($teamleader);
 });
 
 it('toont ingeklokte uitvoerders en beheer na tegel en audit-bevestiging', function () {
