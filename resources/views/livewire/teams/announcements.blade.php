@@ -59,10 +59,10 @@
                     @error('expiresAt') <span class="wp-error">{{ $message }}</span> @enderror
                 </div>
                 @include('livewire.teams.partials.audience-fields', ['formId' => 'create-ann', 'workers' => $workers, 'audience' => $audience])
-                <label class="wp-check">
-                    <input type="checkbox" wire:model="isActive">
-                    <span>{{ __('team.library.active') }}</span>
-                </label>
+                <div>
+                    <label class="wp-check"><input type="checkbox" wire:model="isActive"> {{ __('team.library.active') }}</label>
+                    <p class="wp-hint">{{ __('team.library.announcement_active_hint') }}</p>
+                </div>
                 <div class="wp-cluster">
                     <button type="button" class="btn btn--ghost" wire:click="closeCreateModal">{{ __('common.button.cancel') }}</button>
                     <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
@@ -88,10 +88,10 @@
                     <input id="team-announcement-edit-expires" type="date" class="wp-input" wire:model="expiresAt">
                 </div>
                 @include('livewire.teams.partials.audience-fields', ['formId' => 'edit-ann', 'workers' => $workers, 'audience' => $audience])
-                <label class="wp-check">
-                    <input type="checkbox" wire:model="isActive">
-                    <span>{{ __('team.library.active') }}</span>
-                </label>
+                <div>
+                    <label class="wp-check"><input type="checkbox" wire:model="isActive"> {{ __('team.library.active') }}</label>
+                    <p class="wp-hint">{{ __('team.library.announcement_active_hint') }}</p>
+                </div>
                 <div class="wp-cluster">
                     <button type="button" class="btn btn--ghost" wire:click="closeEditModal">{{ __('common.button.cancel') }}</button>
                     <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>

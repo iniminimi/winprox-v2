@@ -269,7 +269,7 @@
         "worker": "Uitvoerder",
         "worker_placeholder": "Kies een uitvoerder",
         "worker_required": "Kies een uitvoerder van dit team.",
-        "active": "Zichtbaar voor uitvoerders",
+        "active": "Actief",
         "expires": "Zichtbaar tot",
         "expires_on": "Zichtbaar tot :date",
         "empty_documents": "Nog geen documenten voor dit team.",
@@ -277,7 +277,9 @@
         "open": "Openen",
         "default_title": "Document",
         "confirm_delete_document": "Dit document verwijderen?",
-        "confirm_delete_announcement": "Deze mededeling verwijderen?"
+        "confirm_delete_announcement": "Deze mededeling verwijderen?",
+        "document_active_hint": "Het document verschijnt op Clock Point voor de gekozen uitvoerder of voor het hele team.",
+        "announcement_active_hint": "De mededeling verschijnt op Clock Point voor de gekozen uitvoerder of voor het hele team."
     },
     "workers_index": {
         "title": "Uitvoerders",

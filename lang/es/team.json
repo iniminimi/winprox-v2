@@ -269,7 +269,7 @@
         "worker": "Ejecutor",
         "worker_placeholder": "Elija un ejecutor",
         "worker_required": "Elija un ejecutor de este equipo.",
-        "active": "Visible para los ejecutores",
+        "active": "Activo",
         "expires": "Visible hasta",
         "expires_on": "Visible hasta :date",
         "empty_documents": "Aún no hay documentos para este equipo.",
@@ -277,7 +277,9 @@
         "open": "Abrir",
         "default_title": "Documento",
         "confirm_delete_document": "¿Eliminar este documento?",
-        "confirm_delete_announcement": "¿Eliminar este aviso?"
+        "confirm_delete_announcement": "¿Eliminar este aviso?",
+        "document_active_hint": "El documento aparece en Clock Point para el ejecutor elegido o para todo el equipo.",
+        "announcement_active_hint": "El aviso aparece en Clock Point para el ejecutor elegido o para todo el equipo."
     },
     "workers_index": {
         "title": "Ejecutores",

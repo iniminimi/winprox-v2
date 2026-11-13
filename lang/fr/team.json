@@ -269,7 +269,7 @@
         "worker": "Exécutant",
         "worker_placeholder": "Choisissez un exécutant",
         "worker_required": "Choisissez un exécutant de cette équipe.",
-        "active": "Visible pour les exécutants",
+        "active": "Actif",
         "expires": "Visible jusqu'au",
         "expires_on": "Visible jusqu'au :date",
         "empty_documents": "Pas encore de documents pour cette équipe.",
@@ -277,7 +277,9 @@
         "open": "Ouvrir",
         "default_title": "Document",
         "confirm_delete_document": "Supprimer ce document ?",
-        "confirm_delete_announcement": "Supprimer cette annonce ?"
+        "confirm_delete_announcement": "Supprimer cette annonce ?",
+        "document_active_hint": "Le document apparaît sur Clock Point pour l’exécutant choisi ou pour toute l’équipe.",
+        "announcement_active_hint": "L’annonce apparaît sur Clock Point pour l’exécutant choisi ou pour toute l’équipe."
     },
     "workers_index": {
         "title": "Exécutants",

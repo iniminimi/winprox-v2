@@ -60,10 +60,10 @@
                     @error('documentFile') <span class="wp-error">{{ $message }}</span> @enderror
                 </div>
                 @include('livewire.teams.partials.audience-fields', ['formId' => 'create-doc', 'workers' => $workers, 'audience' => $audience])
-                <label class="wp-check">
-                    <input type="checkbox" wire:model="isActive">
-                    <span>{{ __('team.library.active') }}</span>
-                </label>
+                <div>
+                    <label class="wp-check"><input type="checkbox" wire:model="isActive"> {{ __('team.library.active') }}</label>
+                    <p class="wp-hint">{{ __('team.library.document_active_hint') }}</p>
+                </div>
                 <div class="wp-cluster">
                     <button type="button" class="btn btn--ghost" wire:click="closeCreateModal">{{ __('common.button.cancel') }}</button>
                     <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
@@ -90,10 +90,10 @@
                     @error('documentFile') <span class="wp-error">{{ $message }}</span> @enderror
                 </div>
                 @include('livewire.teams.partials.audience-fields', ['formId' => 'edit-doc', 'workers' => $workers, 'audience' => $audience])
-                <label class="wp-check">
-                    <input type="checkbox" wire:model="isActive">
-                    <span>{{ __('team.library.active') }}</span>
-                </label>
+                <div>
+                    <label class="wp-check"><input type="checkbox" wire:model="isActive"> {{ __('team.library.active') }}</label>
+                    <p class="wp-hint">{{ __('team.library.document_active_hint') }}</p>
+                </div>
                 <div class="wp-cluster">
                     <button type="button" class="btn btn--ghost" wire:click="closeEditModal">{{ __('common.button.cancel') }}</button>
                     <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>

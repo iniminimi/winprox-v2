@@ -5,11 +5,14 @@ use App\Livewire\Public\TimePortal;
 use App\Livewire\Public\UnitPortal;
 use App\Livewire\Teams\Announcements;
 use App\Livewire\Teams\Documents;
+use App\Models\Category;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
+use App\Models\Location;
 use App\Models\TeamAnnouncement;
 use App\Models\TeamDocument;
 use App\Models\Tenant;
+use App\Models\Unit;
 use App\Models\User;
 use App\Models\Worker;
 use App\Support\Portal\WorkerDeviceSession;
@@ -213,7 +216,17 @@ it('toont de tegels op Clock Point ook zonder prikklok en verbergt andermans con
 });
 
 it('zet teambestanden niet op het unit-portaal', function () {
-    ['tenant' => $tenant, 'team' => $team] = unitPortalScaffold(['qr_token' => 'library-unit-token']);
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $category = Category::factory()->create(['tenant_id' => $tenant->id]);
+    $category->teams()->sync([$team->id]);
+    Unit::factory()->withQrToken('library-unit-token')->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'category_id' => $category->id,
+    ]);
     TeamDocument::factory()->create([
         'tenant_id' => $tenant->id,
         'internal_team_id' => $team->id,

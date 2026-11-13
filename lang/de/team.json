@@ -269,7 +269,7 @@
         "worker": "Ausführende",
         "worker_placeholder": "Person wählen",
         "worker_required": "Wählen Sie eine Person aus diesem Team.",
-        "active": "Sichtbar für Ausführende",
+        "active": "Aktiv",
         "expires": "Sichtbar bis",
         "expires_on": "Sichtbar bis :date",
         "empty_documents": "Noch keine Dokumente für dieses Team.",
@@ -277,7 +277,9 @@
         "open": "Öffnen",
         "default_title": "Dokument",
         "confirm_delete_document": "Dieses Dokument löschen?",
-        "confirm_delete_announcement": "Diese Mitteilung löschen?"
+        "confirm_delete_announcement": "Diese Mitteilung löschen?",
+        "document_active_hint": "Das Dokument erscheint am Clock Point für die gewählte Person oder das ganze Team.",
+        "announcement_active_hint": "Die Mitteilung erscheint am Clock Point für die gewählte Person oder das ganze Team."
     },
     "workers_index": {
         "title": "Mitarbeiter",

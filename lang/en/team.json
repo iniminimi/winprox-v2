@@ -269,7 +269,7 @@
         "worker": "Worker",
         "worker_placeholder": "Choose a worker",
         "worker_required": "Choose a worker from this team.",
-        "active": "Visible to workers",
+        "active": "Active",
         "expires": "Visible until",
         "expires_on": "Visible until :date",
         "empty_documents": "No documents for this team yet.",
@@ -277,7 +277,9 @@
         "open": "Open",
         "default_title": "Document",
         "confirm_delete_document": "Delete this document?",
-        "confirm_delete_announcement": "Delete this announcement?"
+        "confirm_delete_announcement": "Delete this announcement?",
+        "document_active_hint": "The document appears on Clock Point for the selected worker or the whole team.",
+        "announcement_active_hint": "The announcement appears on Clock Point for the selected worker or the whole team."
     },
     "workers_index": {
         "title": "Workers",
