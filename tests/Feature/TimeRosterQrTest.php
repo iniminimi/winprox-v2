@@ -108,13 +108,15 @@ it('zet nieuwe bibliotheektegels bovenaan en na openen terug onderaan', function
 
     $portal = signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart');
     $html = $portal->html();
+    $login = strpos($html, 'wp-portal-now');
     $documents = strpos($html, 'wire:click="openTeamDocuments"');
     $announcements = strpos($html, 'wire:click="openTeamAnnouncements"');
     $hours = strpos($html, 'wire:click="openHours"');
     $teamleader = strpos($html, 'wire:click="openTeamleader"');
     $evacuation = strpos($html, 'wire:click="openRoster"');
 
-    expect($documents)->not->toBeFalse()
+    expect($login)->not->toBeFalse()
+        ->and($documents)->toBeGreaterThan($login)
         ->and($announcements)->toBeGreaterThan($documents)
         ->and($hours)->toBeGreaterThan($announcements)
         ->and($teamleader)->toBeGreaterThan($announcements)

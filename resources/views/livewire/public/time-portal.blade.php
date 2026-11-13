@@ -555,16 +555,15 @@
 
                     @unless ($hasTimeModule)
                         @include('partials.wp-portal-presence')
+                        @include('partials.wp-worker-library-tiles', [
+                            'showDocuments' => ($workerDocumentUnreadCount ?? 0) > 0,
+                            'showAnnouncements' => ($workerAnnouncementUnreadCount ?? 0) > 0,
+                            'documentCount' => $workerDocuments->count(),
+                            'announcementCount' => $workerAnnouncements->count(),
+                            'documentUnreadCount' => $workerDocumentUnreadCount ?? 0,
+                            'announcementUnreadCount' => $workerAnnouncementUnreadCount ?? 0,
+                        ])
                     @endunless
-
-                    @include('partials.wp-worker-library-tiles', [
-                        'showDocuments' => ($workerDocumentUnreadCount ?? 0) > 0,
-                        'showAnnouncements' => ($workerAnnouncementUnreadCount ?? 0) > 0,
-                        'documentCount' => $workerDocuments->count(),
-                        'announcementCount' => $workerAnnouncements->count(),
-                        'documentUnreadCount' => $workerDocumentUnreadCount ?? 0,
-                        'announcementUnreadCount' => $workerAnnouncementUnreadCount ?? 0,
-                    ])
 
                     @if ($hasTimeModule)
                     <div
@@ -710,6 +709,14 @@
                         x-init="refreshHere(); window.addEventListener('pageshow', () => refreshHere())"
                     >
                         @include('partials.wp-portal-now')
+                        @include('partials.wp-worker-library-tiles', [
+                            'showDocuments' => ($workerDocumentUnreadCount ?? 0) > 0,
+                            'showAnnouncements' => ($workerAnnouncementUnreadCount ?? 0) > 0,
+                            'documentCount' => $workerDocuments->count(),
+                            'announcementCount' => $workerAnnouncements->count(),
+                            'documentUnreadCount' => $workerDocumentUnreadCount ?? 0,
+                            'announcementUnreadCount' => $workerAnnouncementUnreadCount ?? 0,
+                        ])
 
                         @if ($openShift !== null && ($gpsVisits ?? false))
                             @php
