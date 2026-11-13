@@ -95,7 +95,7 @@
     },
     "workers": {
         "title": "Intervenants",
-        "add": "+ Ajouter un intervenant",
+        "add": "+ Ajouter un exécutant",
         "add_submit": "Ajouter",
         "empty": "Aucun intervenant dans cette équipe.",
         "first_name": "Prénom",
@@ -132,11 +132,11 @@
             "location_names": "Site A, Site B"
         },
         "modal": {
-            "create_title": "Ajouter un intervenant",
+            "create_title": "Ajouter un exécutant",
             "create_subtitle": "Choisissez une équipe et ajoutez un nouvel exécutant.",
-            "edit_title": "Modifier l'intervenant",
+            "edit_title": "Modifier l'exécutant",
             "edit_subtitle": "Modifiez les données de cet intervenant.",
-            "save": "Enregistrer l'intervenant",
+            "save": "Enregistrer l'exécutant",
             "locations_title": "Pointer sur les lieux",
             "locations_hint": "Exception : par défaut cet intervenant peut pointer partout. Ouvrez ceci seulement pour le limiter à des sites précis. Vide = tous les lieux.",
             "locations_empty": "Pas encore de sites.",
@@ -279,7 +279,19 @@
         "confirm_delete_document": "Supprimer ce document ?",
         "confirm_delete_announcement": "Supprimer cette annonce ?",
         "document_active_hint": "Le document apparaît sur Clock Point pour l’exécutant choisi ou pour toute l’équipe.",
-        "announcement_active_hint": "L’annonce apparaît sur Clock Point pour l’exécutant choisi ou pour toute l’équipe."
+        "announcement_active_hint": "L’annonce apparaît sur Clock Point pour l’exécutant choisi ou pour toute l’équipe.",
+        "worker_documents_count": "{1} :count document|[2,*] :count documents",
+        "worker_announcements_count": "{1} :count annonce|[2,*] :count annonces",
+        "filters": {
+            "search_documents": "Rechercher par description, fichier ou exécutant",
+            "search_announcements": "Rechercher par texte ou exécutant",
+            "audience_all": "Tous les destinataires",
+            "status_active": "Actif",
+            "status_inactive": "Inactif",
+            "status_expired": "Expiré",
+            "status_all": "Tous les statuts",
+            "empty": "Aucun résultat pour ce filtre."
+        }
     },
     "workers_index": {
         "title": "Exécutants",

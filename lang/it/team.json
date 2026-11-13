@@ -279,7 +279,19 @@
         "confirm_delete_document": "Eliminare questo documento?",
         "confirm_delete_announcement": "Eliminare questa comunicazione?",
         "document_active_hint": "Il documento appare su Clock Point per l’esecutore scelto o per tutto il team.",
-        "announcement_active_hint": "La comunicazione appare su Clock Point per l’esecutore scelto o per tutto il team."
+        "announcement_active_hint": "La comunicazione appare su Clock Point per l’esecutore scelto o per tutto il team.",
+        "worker_documents_count": "{1} :count documento|[2,*] :count documenti",
+        "worker_announcements_count": "{1} :count comunicazione|[2,*] :count comunicazioni",
+        "filters": {
+            "search_documents": "Cerca per descrizione, file o esecutore",
+            "search_announcements": "Cerca per testo o esecutore",
+            "audience_all": "Tutti i destinatari",
+            "status_active": "Attivo",
+            "status_inactive": "Inattivo",
+            "status_expired": "Scaduto",
+            "status_all": "Tutti gli stati",
+            "empty": "Nessun risultato per questo filtro."
+        }
     },
     "workers_index": {
         "title": "Esecutori",

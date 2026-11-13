@@ -606,7 +606,7 @@
                 },
                 {
                     "label": "Documenti e comunicazioni",
-                    "text": "Apri un team. I documenti e le comunicazioni sono per gli esecutori di quel team, non per il portale segnalazioni. Scegli tutto il team oppure un solo esecutore (per esempio un contratto). Su Clock Point ogni esecutore vede solo ciò che è per lui. Un file personale segue l'esecutore se cambia team."
+                    "text": "Apri un team. I documenti e le comunicazioni sono per gli esecutori di quel team, non per il portale segnalazioni. Scegli tutto il team oppure un solo esecutore (per esempio un contratto). Su Clock Point ogni esecutore vede solo ciò che è per lui. Un file personale segue l'esecutore se cambia team. Nella gestione l’elenco mostra di default gli elementi attivi per tutto il team; filtra per esecutore, stato o termine di ricerca. Clicca sul contatore accanto a un esecutore per vederne gli elementi. 25 elementi per pagina."
                 },
                 {
                     "label": "Sede",

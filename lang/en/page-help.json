@@ -606,7 +606,7 @@
                 },
                 {
                     "label": "Documents and announcements",
-                    "text": "Open a team. Documents and announcements there are for that team's workers, not the report portal. Choose the whole team, or one worker (for example a contract). On Clock Point each worker only sees what is meant for them. A personal file moves with the worker when they change team."
+                    "text": "Open a team. Documents and announcements there are for that team's workers, not the report portal. Choose the whole team, or one worker (for example a contract). On Clock Point each worker only sees what is meant for them. A personal file moves with the worker when they change team. In management the list shows the active items for the whole team by default; filter by worker, status or search term. Click the counter next to a worker to see their items. 25 items per page."
                 },
                 {
                     "label": "Location",

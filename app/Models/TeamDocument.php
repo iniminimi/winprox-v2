@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Concerns\BelongsToTenant;
+use App\Models\Concerns\FiltersTeamLibrary;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,9 +12,11 @@ use Illuminate\Support\Facades\Storage;
 
 class TeamDocument extends Model
 {
-    use BelongsToTenant, HasFactory;
+    use BelongsToTenant, FiltersTeamLibrary, HasFactory;
 
     public const DISK = 'local';
+
+    public const LIBRARY_SEARCH_COLUMNS = ['title', 'description'];
 
     protected $fillable = [
         'tenant_id',
@@ -61,6 +64,15 @@ class TeamDocument extends Model
      * @param  Builder<TeamDocument>  $query
      * @return Builder<TeamDocument>
      */
+    public function scopeWithLibraryStatus(Builder $query, string $status): Builder
+    {
+        return match ($status) {
+            'active' => $query->where($this->qualifyColumn('is_active'), true),
+            'inactive' => $query->where($this->qualifyColumn('is_active'), false),
+            default => $query,
+        };
+    }
+
     public function scopeVisibleToWorker(Builder $query, Worker $worker): Builder
     {
         return $query

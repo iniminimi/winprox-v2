@@ -606,7 +606,7 @@
                 },
                 {
                     "label": "Documenten en mededelingen",
-                    "text": "Open een team. Daar staan documenten en mededelingen voor de uitvoerders van dat team, niet voor het meldportaal. Kies heel het team, of één uitvoerder (bijvoorbeeld een contract). Op Clock Point ziet elke uitvoerder alleen wat voor hem bedoeld is. Een persoonlijk bestand verhuist mee als de uitvoerder van team wisselt."
+                    "text": "Open een team. Daar staan documenten en mededelingen voor de uitvoerders van dat team, niet voor het meldportaal. Kies heel het team, of één uitvoerder (bijvoorbeeld een contract). Op Clock Point ziet elke uitvoerder alleen wat voor hem bedoeld is. Een persoonlijk bestand verhuist mee als de uitvoerder van team wisselt. In beheer toont de lijst standaard de actieve items voor heel het team; filter op uitvoerder, status of zoekterm. Klik op de teller bij een uitvoerder om diens items te zien. 25 items per pagina."
                 },
                 {
                     "label": "Locatie",

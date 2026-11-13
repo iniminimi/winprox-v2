@@ -606,7 +606,7 @@
                 },
                 {
                     "label": "Documentos y avisos",
-                    "text": "Abra un equipo. Los documentos y avisos son para los ejecutores de ese equipo, no para el portal de avisos. Elija todo el equipo o un ejecutor (por ejemplo un contrato). En Clock Point cada ejecutor solo ve lo que es para él. Un archivo personal se muda con el ejecutor si cambia de equipo."
+                    "text": "Abra un equipo. Los documentos y avisos son para los ejecutores de ese equipo, no para el portal de avisos. Elija todo el equipo o un ejecutor (por ejemplo un contrato). En Clock Point cada ejecutor solo ve lo que es para él. Un archivo personal se muda con el ejecutor si cambia de equipo. En la gestión, la lista muestra por defecto los elementos activos para todo el equipo; filtre por ejecutor, estado o término de búsqueda. Haga clic en el contador de un ejecutor para ver sus elementos. 25 elementos por página."
                 },
                 {
                     "label": "Ubicación",

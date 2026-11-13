@@ -104,6 +104,16 @@ class Worker extends Model
         return $this->belongsToMany(Location::class, 'location_worker')->withTimestamps();
     }
 
+    public function teamDocuments(): HasMany
+    {
+        return $this->hasMany(TeamDocument::class);
+    }
+
+    public function teamAnnouncements(): HasMany
+    {
+        return $this->hasMany(TeamAnnouncement::class);
+    }
+
     public function devices(): HasMany
     {
         return $this->hasMany(WorkerDevice::class);

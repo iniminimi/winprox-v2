@@ -69,7 +69,8 @@ it('zet documenten en mededelingen op de teampagina en niet op de teamlijst', fu
         ->assertOk()
         ->assertSee(__('team.library.documents_title'), false)
         ->assertSee(__('team.library.announcements_title'), false)
-        ->assertSee('Persoonlijk contract van Nora', false)
+        ->assertDontSee('Persoonlijk contract van Nora', false)
+        ->assertSee(trans_choice('team.library.worker_documents_count', 1, ['count' => 1]), false)
         ->assertSee('Nora Noord', false)
         ->assertSee('Huisreglement voor de ploeg', false);
 
@@ -259,4 +260,114 @@ it('stuurt een oude worker-link door naar de teampagina', function () {
             'internalTeam' => $team->id,
             'worker' => $worker->id,
         ]));
+});
+
+function teamLibrarySetup(): array
+{
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'Jan',
+        'last_name' => 'Peeters',
+    ]);
+
+    return [$tenant, $admin, $team, $worker];
+}
+
+it('toont standaard alleen actieve teambrede documenten en filtert op doelgroep, status en zoekterm', function () {
+    [$tenant, $admin, $team, $worker] = teamLibrarySetup();
+    $base = ['tenant_id' => $tenant->id, 'internal_team_id' => $team->id];
+    TeamDocument::factory()->create($base + ['description' => 'Huisreglement ploeg']);
+    TeamDocument::factory()->create($base + ['description' => 'Oud reglement', 'is_active' => false]);
+    TeamDocument::factory()->create($base + ['description' => 'Contract arbeider', 'worker_id' => $worker->id]);
+
+    $component = Livewire::actingAs($admin)
+        ->test(Documents::class, ['team' => $team])
+        ->assertSee('Huisreglement ploeg')
+        ->assertDontSee('Oud reglement')
+        ->assertDontSee('Contract arbeider');
+
+    $component->set('audienceFilter', (string) $worker->id)
+        ->assertSee('Contract arbeider')
+        ->assertDontSee('Huisreglement ploeg');
+
+    $component->set('audienceFilter', 'all')
+        ->assertSee('Contract arbeider')
+        ->assertSee('Huisreglement ploeg')
+        ->assertDontSee('Oud reglement');
+
+    $component->set('statusFilter', 'inactive')
+        ->assertSee('Oud reglement')
+        ->assertDontSee('Huisreglement ploeg');
+
+    $component->set('statusFilter', 'all')
+        ->set('search', 'Peeters')
+        ->assertSee('Contract arbeider')
+        ->assertDontSee('Huisreglement ploeg')
+        ->assertDontSee('Oud reglement');
+
+    $component->set('search', 'zzz-niets')
+        ->assertSee(__('team.library.filters.empty'));
+});
+
+it('toont verlopen mededelingen alleen onder de status verlopen', function () {
+    [$tenant, $admin, $team] = teamLibrarySetup();
+    $base = ['tenant_id' => $tenant->id, 'internal_team_id' => $team->id];
+    TeamAnnouncement::factory()->create($base + ['description' => 'Lopende mededeling', 'expires_at' => now()->addWeek()]);
+    TeamAnnouncement::factory()->create($base + ['description' => 'Verlopen mededeling', 'expires_at' => now()->subDay()]);
+    TeamAnnouncement::factory()->create($base + ['description' => 'Uitgezette mededeling', 'is_active' => false]);
+
+    Livewire::actingAs($admin)
+        ->test(Announcements::class, ['team' => $team])
+        ->assertSee('Lopende mededeling')
+        ->assertDontSee('Verlopen mededeling')
+        ->assertDontSee('Uitgezette mededeling')
+        ->set('statusFilter', 'expired')
+        ->assertSee('Verlopen mededeling')
+        ->assertSee(__('team.library.filters.status_expired'))
+        ->assertDontSee('Lopende mededeling')
+        ->assertDontSee('Uitgezette mededeling')
+        ->set('statusFilter', 'inactive')
+        ->assertSee('Uitgezette mededeling')
+        ->assertDontSee('Verlopen mededeling');
+});
+
+it('pagineert documenten en mededelingen per 25', function () {
+    [$tenant, $admin, $team] = teamLibrarySetup();
+    $base = ['tenant_id' => $tenant->id, 'internal_team_id' => $team->id];
+    TeamDocument::factory()->count(30)->create($base);
+    TeamAnnouncement::factory()->count(30)->create($base);
+
+    Livewire::actingAs($admin)
+        ->test(Documents::class, ['team' => $team])
+        ->assertViewHas('documents', fn ($documents) => $documents->count() === 25 && $documents->total() === 30);
+
+    Livewire::actingAs($admin)
+        ->test(Announcements::class, ['team' => $team])
+        ->assertViewHas('announcements', fn ($announcements) => $announcements->count() === 25 && $announcements->total() === 30);
+});
+
+it('opent de lijst gefilterd op de uitvoerder via de teller in de uitvoerdersrij', function () {
+    [$tenant, $admin, $team, $worker] = teamLibrarySetup();
+    $base = ['tenant_id' => $tenant->id, 'internal_team_id' => $team->id];
+    TeamDocument::factory()->create($base + ['description' => 'Contract Jan', 'worker_id' => $worker->id]);
+    TeamAnnouncement::factory()->create($base + ['description' => 'Bericht voor Jan', 'worker_id' => $worker->id]);
+
+    Livewire::actingAs($admin)
+        ->test(Documents::class, ['team' => $team])
+        ->set('statusFilter', 'inactive')
+        ->dispatch('team-documents-show-worker', workerId: $worker->id)
+        ->assertSet('audienceFilter', (string) $worker->id)
+        ->assertSet('statusFilter', 'active')
+        ->assertSet('panelOpen', true)
+        ->assertSee('Contract Jan');
+
+    Livewire::actingAs($admin)
+        ->test(Announcements::class, ['team' => $team])
+        ->dispatch('team-announcements-show-worker', workerId: $worker->id)
+        ->assertSee('Bericht voor Jan');
 });

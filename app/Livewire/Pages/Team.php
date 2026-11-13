@@ -1804,7 +1804,12 @@ class Team extends Component
         if ($this->viewingTeam !== null) {
             $this->viewingTeam->load([
                 'translations',
-                'workers' => fn ($q) => $q->with('locations')->orderBy('first_name')->orderBy('last_name'),
+                'workers' => fn ($q) => $q->with('locations')
+                    ->withCount([
+                        'teamDocuments as active_team_documents_count' => fn ($d) => $d->withLibraryStatus('active'),
+                        'teamAnnouncements as active_team_announcements_count' => fn ($a) => $a->withLibraryStatus('active'),
+                    ])
+                    ->orderBy('first_name')->orderBy('last_name'),
             ]);
             $orderedIds = InternalTeam::query()->orderBy('sort_order')->orderBy('name')->pluck('id');
             $position = $orderedIds->search(fn (mixed $id): bool => (int) $id === (int) $this->viewingTeam->id);

@@ -279,7 +279,19 @@
         "confirm_delete_document": "¿Eliminar este documento?",
         "confirm_delete_announcement": "¿Eliminar este aviso?",
         "document_active_hint": "El documento aparece en Clock Point para el ejecutor elegido o para todo el equipo.",
-        "announcement_active_hint": "El aviso aparece en Clock Point para el ejecutor elegido o para todo el equipo."
+        "announcement_active_hint": "El aviso aparece en Clock Point para el ejecutor elegido o para todo el equipo.",
+        "worker_documents_count": "{1} :count documento|[2,*] :count documentos",
+        "worker_announcements_count": "{1} :count aviso|[2,*] :count avisos",
+        "filters": {
+            "search_documents": "Buscar por descripción, archivo o ejecutor",
+            "search_announcements": "Buscar por texto o ejecutor",
+            "audience_all": "Todos los destinatarios",
+            "status_active": "Activo",
+            "status_inactive": "Inactivo",
+            "status_expired": "Caducado",
+            "status_all": "Todos los estados",
+            "empty": "No se encontró nada con este filtro."
+        }
     },
     "workers_index": {
         "title": "Ejecutores",

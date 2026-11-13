@@ -606,7 +606,7 @@
                 },
                 {
                     "label": "Dokumente und Mitteilungen",
-                    "text": "Öffnen Sie ein Team. Dokumente und Mitteilungen dort gelten für die Ausführenden dieses Teams, nicht für das Meldeportal. Wählen Sie das ganze Team oder eine Person (zum Beispiel einen Vertrag). Am Clock Point sieht jede Person nur, was für sie bestimmt ist. Eine persönliche Datei zieht mit, wenn die Person das Team wechselt."
+                    "text": "Öffnen Sie ein Team. Dokumente und Mitteilungen dort gelten für die Ausführenden dieses Teams, nicht für das Meldeportal. Wählen Sie das ganze Team oder eine Person (zum Beispiel einen Vertrag). Am Clock Point sieht jede Person nur, was für sie bestimmt ist. Eine persönliche Datei zieht mit, wenn die Person das Team wechselt. In der Verwaltung zeigt die Liste standardmäßig die aktiven Einträge für das ganze Team; filtern Sie nach Ausführenden, Status oder Suchbegriff. Klicken Sie auf den Zähler bei einem Ausführenden, um dessen Einträge zu sehen. 25 Einträge pro Seite."
                 },
                 {
                     "label": "Standort",

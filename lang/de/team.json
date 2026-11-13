@@ -279,7 +279,19 @@
         "confirm_delete_document": "Dieses Dokument löschen?",
         "confirm_delete_announcement": "Diese Mitteilung löschen?",
         "document_active_hint": "Das Dokument erscheint am Clock Point für die gewählte Person oder das ganze Team.",
-        "announcement_active_hint": "Die Mitteilung erscheint am Clock Point für die gewählte Person oder das ganze Team."
+        "announcement_active_hint": "Die Mitteilung erscheint am Clock Point für die gewählte Person oder das ganze Team.",
+        "worker_documents_count": "{1} :count Dokument|[2,*] :count Dokumente",
+        "worker_announcements_count": "{1} :count Mitteilung|[2,*] :count Mitteilungen",
+        "filters": {
+            "search_documents": "Nach Beschreibung, Datei oder Ausführende suchen",
+            "search_announcements": "Nach Text oder Ausführende suchen",
+            "audience_all": "Alle Zielgruppen",
+            "status_active": "Aktiv",
+            "status_inactive": "Inaktiv",
+            "status_expired": "Abgelaufen",
+            "status_all": "Alle Status",
+            "empty": "Nichts gefunden für diesen Filter."
+        }
     },
     "workers_index": {
         "title": "Mitarbeiter",

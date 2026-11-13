@@ -279,7 +279,19 @@
         "confirm_delete_document": "Dit document verwijderen?",
         "confirm_delete_announcement": "Deze mededeling verwijderen?",
         "document_active_hint": "Het document verschijnt op Clock Point voor de gekozen uitvoerder of voor het hele team.",
-        "announcement_active_hint": "De mededeling verschijnt op Clock Point voor de gekozen uitvoerder of voor het hele team."
+        "announcement_active_hint": "De mededeling verschijnt op Clock Point voor de gekozen uitvoerder of voor het hele team.",
+        "worker_documents_count": "{1} :count document|[2,*] :count documenten",
+        "worker_announcements_count": "{1} :count mededeling|[2,*] :count mededelingen",
+        "filters": {
+            "search_documents": "Zoek op omschrijving, bestand of uitvoerder",
+            "search_announcements": "Zoek op tekst of uitvoerder",
+            "audience_all": "Alle doelgroepen",
+            "status_active": "Actief",
+            "status_inactive": "Inactief",
+            "status_expired": "Verlopen",
+            "status_all": "Alle statussen",
+            "empty": "Niets gevonden voor deze filter."
+        }
     },
     "workers_index": {
         "title": "Uitvoerders",

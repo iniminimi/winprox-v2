@@ -279,7 +279,19 @@
         "confirm_delete_document": "Delete this document?",
         "confirm_delete_announcement": "Delete this announcement?",
         "document_active_hint": "The document appears on Clock Point for the selected worker or the whole team.",
-        "announcement_active_hint": "The announcement appears on Clock Point for the selected worker or the whole team."
+        "announcement_active_hint": "The announcement appears on Clock Point for the selected worker or the whole team.",
+        "worker_documents_count": "{1} :count document|[2,*] :count documents",
+        "worker_announcements_count": "{1} :count announcement|[2,*] :count announcements",
+        "filters": {
+            "search_documents": "Search by description, file or worker",
+            "search_announcements": "Search by text or worker",
+            "audience_all": "All audiences",
+            "status_active": "Active",
+            "status_inactive": "Inactive",
+            "status_expired": "Expired",
+            "status_all": "All statuses",
+            "empty": "Nothing found for this filter."
+        }
     },
     "workers_index": {
         "title": "Workers",

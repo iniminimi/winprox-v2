@@ -12,10 +12,14 @@ use App\Models\Worker;
 use App\Support\Tenancy;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Locked;
+use Livewire\Attributes\On;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Announcements extends Component
 {
+    use WithPagination;
+
     #[Locked]
     public InternalTeam $team;
 
@@ -35,10 +39,43 @@ class Announcements extends Component
 
     public ?string $expiresAt = null;
 
+    public string $search = '';
+
+    public string $audienceFilter = 'team';
+
+    public string $statusFilter = 'active';
+
+    public bool $panelOpen = false;
+
     public function mount(InternalTeam $team): void
     {
         $this->authorize('viewAny', [TeamAnnouncement::class, $team]);
         $this->team = $team;
+    }
+
+    public function updatedSearch(): void
+    {
+        $this->resetPage('announcementsPage');
+    }
+
+    public function updatedAudienceFilter(): void
+    {
+        $this->resetPage('announcementsPage');
+    }
+
+    public function updatedStatusFilter(): void
+    {
+        $this->resetPage('announcementsPage');
+    }
+
+    #[On('team-announcements-show-worker')]
+    public function showWorker(int $workerId): void
+    {
+        $this->search = '';
+        $this->audienceFilter = (string) $workerId;
+        $this->statusFilter = 'active';
+        $this->panelOpen = true;
+        $this->resetPage('announcementsPage');
     }
 
     public function openCreateModal(): void
@@ -131,9 +168,13 @@ class Announcements extends Component
         return view('livewire.teams.announcements', [
             'announcements' => TeamAnnouncement::query()
                 ->where('internal_team_id', $this->team->id)
+                ->forLibraryAudience($this->audienceFilter)
+                ->withLibraryStatus($this->statusFilter)
+                ->matchingLibrarySearch($this->search)
                 ->with('worker')
-                ->orderByDesc('id')
-                ->get(),
+                ->inLibraryOrder()
+                ->paginate(25, pageName: 'announcementsPage'),
+            'hasAnnouncements' => TeamAnnouncement::query()->where('internal_team_id', $this->team->id)->exists(),
             'workers' => Worker::query()
                 ->where('internal_team_id', $this->team->id)
                 ->orderBy('first_name')

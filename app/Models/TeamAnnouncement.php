@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Concerns\BelongsToTenant;
+use App\Models\Concerns\FiltersTeamLibrary;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -10,7 +11,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TeamAnnouncement extends Model
 {
-    use BelongsToTenant, HasFactory;
+    use BelongsToTenant, FiltersTeamLibrary, HasFactory;
+
+    public const LIBRARY_SEARCH_COLUMNS = ['description'];
 
     protected $fillable = [
         'tenant_id',
@@ -48,6 +51,25 @@ class TeamAnnouncement extends Model
      * @param  Builder<TeamAnnouncement>  $query
      * @return Builder<TeamAnnouncement>
      */
+    public function scopeWithLibraryStatus(Builder $query, string $status): Builder
+    {
+        $isActive = $this->qualifyColumn('is_active');
+        $expiresAt = $this->qualifyColumn('expires_at');
+
+        return match ($status) {
+            'active' => $query->where($isActive, true)
+                ->where(fn (Builder $q) => $q->whereNull($expiresAt)->orWhere($expiresAt, '>=', now())),
+            'expired' => $query->where($isActive, true)->where($expiresAt, '<', now()),
+            'inactive' => $query->where($isActive, false),
+            default => $query,
+        };
+    }
+
+    public function isExpired(): bool
+    {
+        return $this->expires_at !== null && $this->expires_at->lt(now());
+    }
+
     public function scopeVisibleToWorker(Builder $query, Worker $worker): Builder
     {
         return $query

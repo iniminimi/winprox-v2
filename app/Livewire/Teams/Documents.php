@@ -12,13 +12,15 @@ use App\Models\Worker;
 use App\Support\Tenancy;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Locked;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class Documents extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, WithPagination;
 
     #[Locked]
     public InternalTeam $team;
@@ -39,10 +41,43 @@ class Documents extends Component
 
     public ?TemporaryUploadedFile $documentFile = null;
 
+    public string $search = '';
+
+    public string $audienceFilter = 'team';
+
+    public string $statusFilter = 'active';
+
+    public bool $panelOpen = false;
+
     public function mount(InternalTeam $team): void
     {
         $this->authorize('viewAny', [TeamDocument::class, $team]);
         $this->team = $team;
+    }
+
+    public function updatedSearch(): void
+    {
+        $this->resetPage('documentsPage');
+    }
+
+    public function updatedAudienceFilter(): void
+    {
+        $this->resetPage('documentsPage');
+    }
+
+    public function updatedStatusFilter(): void
+    {
+        $this->resetPage('documentsPage');
+    }
+
+    #[On('team-documents-show-worker')]
+    public function showWorker(int $workerId): void
+    {
+        $this->search = '';
+        $this->audienceFilter = (string) $workerId;
+        $this->statusFilter = 'active';
+        $this->panelOpen = true;
+        $this->resetPage('documentsPage');
     }
 
     public function openCreateModal(): void
@@ -137,9 +172,13 @@ class Documents extends Component
         return view('livewire.teams.documents', [
             'documents' => TeamDocument::query()
                 ->where('internal_team_id', $this->team->id)
+                ->forLibraryAudience($this->audienceFilter)
+                ->withLibraryStatus($this->statusFilter)
+                ->matchingLibrarySearch($this->search)
                 ->with('worker')
-                ->orderByDesc('id')
-                ->get(),
+                ->inLibraryOrder()
+                ->paginate(25, pageName: 'documentsPage'),
+            'hasDocuments' => TeamDocument::query()->where('internal_team_id', $this->team->id)->exists(),
             'workers' => Worker::query()
                 ->where('internal_team_id', $this->team->id)
                 ->orderBy('first_name')

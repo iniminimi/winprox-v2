@@ -1,14 +1,42 @@
-<div wire:key="team-documents-{{ $team->id }}">
+<div wire:key="team-documents-{{ $team->id }}" id="team-documents-{{ $team->id }}">
     <x-wp-disclosure-card
+        entangle="panelOpen"
         :title="__('team.library.documents_title')"
         :subtitle="__('team.library.documents_subtitle')"
-        :count="$documents->count()"
+        :count="$documents->total()"
     >
         <x-slot:toolbar>
             <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateModal">
                 {{ __('team.library.add_document') }}
             </button>
         </x-slot:toolbar>
+
+        <div class="wp-filter-cell">
+            <span class="wp-filter-inline-label">{{ __('team.workers_index.filters.label') }}</span>
+            <input
+                type="search"
+                class="wp-input wp-input--compact"
+                wire:model.live.debounce.300ms="search"
+                placeholder="{{ __('team.library.filters.search_documents') }}"
+                aria-label="{{ __('team.library.filters.search_documents') }}"
+            >
+            <select class="wp-select wp-select--compact" wire:model.live="audienceFilter" aria-label="{{ __('team.library.audience') }}">
+                <option value="all">{{ __('team.library.filters.audience_all') }}</option>
+                <option value="team">{{ __('team.library.audience_team') }}</option>
+                @if ($workers->isNotEmpty())
+                    <optgroup label="{{ __('team.library.worker') }}">
+                        @foreach ($workers as $worker)
+                            <option value="{{ $worker->id }}">{{ $worker->displayName() }}</option>
+                        @endforeach
+                    </optgroup>
+                @endif
+            </select>
+            <select class="wp-select wp-select--compact" wire:model.live="statusFilter" aria-label="{{ __('team.workers_index.filters.status') }}">
+                    <option value="active">{{ __('team.library.filters.status_active') }}</option>
+                    <option value="inactive">{{ __('team.library.filters.status_inactive') }}</option>
+                    <option value="all">{{ __('team.library.filters.status_all') }}</option>
+            </select>
+        </div>
 
         <div class="wp-list">
             @forelse ($documents as $document)
@@ -37,9 +65,15 @@
                     </div>
                 </div>
             @empty
-                <p class="wp-muted">{{ __('team.library.empty_documents') }}</p>
+                <p class="wp-muted">{{ $hasDocuments ? __('team.library.filters.empty') : __('team.library.empty_documents') }}</p>
             @endforelse
         </div>
+
+        @if ($documents->hasPages())
+            <div class="wp-pagination">
+                {{ $documents->links() }}
+            </div>
+        @endif
     </x-wp-disclosure-card>
 
     @if ($showCreateModal)

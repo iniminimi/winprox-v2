@@ -1,14 +1,43 @@
-<div wire:key="team-announcements-{{ $team->id }}">
+<div wire:key="team-announcements-{{ $team->id }}" id="team-announcements-{{ $team->id }}">
     <x-wp-disclosure-card
+        entangle="panelOpen"
         :title="__('team.library.announcements_title')"
         :subtitle="__('team.library.announcements_subtitle')"
-        :count="$announcements->count()"
+        :count="$announcements->total()"
     >
         <x-slot:toolbar>
             <button type="button" class="btn btn--primary btn--sm" wire:click="openCreateModal">
                 {{ __('team.library.add_announcement') }}
             </button>
         </x-slot:toolbar>
+
+        <div class="wp-filter-cell">
+            <span class="wp-filter-inline-label">{{ __('team.workers_index.filters.label') }}</span>
+            <input
+                type="search"
+                class="wp-input wp-input--compact"
+                wire:model.live.debounce.300ms="search"
+                placeholder="{{ __('team.library.filters.search_announcements') }}"
+                aria-label="{{ __('team.library.filters.search_announcements') }}"
+            >
+            <select class="wp-select wp-select--compact" wire:model.live="audienceFilter" aria-label="{{ __('team.library.audience') }}">
+                <option value="all">{{ __('team.library.filters.audience_all') }}</option>
+                <option value="team">{{ __('team.library.audience_team') }}</option>
+                @if ($workers->isNotEmpty())
+                    <optgroup label="{{ __('team.library.worker') }}">
+                        @foreach ($workers as $worker)
+                            <option value="{{ $worker->id }}">{{ $worker->displayName() }}</option>
+                        @endforeach
+                    </optgroup>
+                @endif
+            </select>
+            <select class="wp-select wp-select--compact" wire:model.live="statusFilter" aria-label="{{ __('team.workers_index.filters.status') }}">
+                    <option value="active">{{ __('team.library.filters.status_active') }}</option>
+                    <option value="expired">{{ __('team.library.filters.status_expired') }}</option>
+                    <option value="inactive">{{ __('team.library.filters.status_inactive') }}</option>
+                    <option value="all">{{ __('team.library.filters.status_all') }}</option>
+            </select>
+        </div>
 
         <div class="wp-list">
             @forelse ($announcements as $announcement)
@@ -22,6 +51,8 @@
                             @endif
                             @unless ($announcement->is_active)
                                 · <span class="wp-pill wp-pill--closed">{{ __('locations.inactive') }}</span>
+                            @elseif ($announcement->isExpired())
+                                · <span class="wp-pill wp-pill--closed">{{ __('team.library.filters.status_expired') }}</span>
                             @endunless
                         </p>
                     </div>
@@ -36,9 +67,15 @@
                     </div>
                 </div>
             @empty
-                <p class="wp-muted">{{ __('team.library.empty_announcements') }}</p>
+                <p class="wp-muted">{{ $hasAnnouncements ? __('team.library.filters.empty') : __('team.library.empty_announcements') }}</p>
             @endforelse
         </div>
+
+        @if ($announcements->hasPages())
+            <div class="wp-pagination">
+                {{ $announcements->links() }}
+            </div>
+        @endif
     </x-wp-disclosure-card>
 
     @if ($showCreateModal)

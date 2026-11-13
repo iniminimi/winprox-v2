@@ -1420,7 +1420,12 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 - **Documenten en mededelingen voor uitvoerders** hangen aan het team, niet aan
   de vestiging. Ze staan niet op het unit-QR-portaal en tellen niet mee in het
   documentenquotum (10/20/30/40). Doelgroep: heel het team, of één uitvoerder
-  (bijvoorbeeld een contract). Een persoonlijk bestand verhuist mee als de
+  (bijvoorbeeld een contract). Beheerlijst: filter **Doelgroep** (alle · heel het
+  team · per uitvoerder), **Status** (actief · inactief · bij mededelingen ook
+  verlopen) en zoeken (omschrijving/titel en naam uitvoerder); standaard
+  actief + heel het team; volgorde teambreed eerst, dan per uitvoerder;
+  25 per pagina. Een teller in de uitvoerdersrij opent de lijst op die persoon.
+  Een persoonlijk bestand verhuist mee als de
   uitvoerder van team wisselt; een teambreed bestand blijft op dat team.
   Zelfde bestandstypes als locatiedocumenten, max. 10 MB, privé-disk. Op Clock
   Point ziet de aangemelde uitvoerder alleen de eigen tegels, en alleen als er
