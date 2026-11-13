@@ -6,7 +6,6 @@ use App\Actions\Time\BuildTimePresenceDashboardAction;
 use App\Enums\TimePresenceAttentionType;
 use App\Enums\TimePresenceStatusFilter;
 use App\Livewire\Concerns\ManagesWorkShiftForceClose;
-use App\Livewire\Concerns\ProvidesTimeNavAlarmCount;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\WorkShift;
@@ -23,7 +22,6 @@ class AlarmsIndex extends Component
 {
     use AuthorizesRequests;
     use ManagesWorkShiftForceClose;
-    use ProvidesTimeNavAlarmCount;
 
     #[Url(as: 'team')]
     public ?int $teamFilter = null;
@@ -82,6 +80,7 @@ class AlarmsIndex extends Component
             locationId: $this->locationFilter,
             statusFilter: TimePresenceStatusFilter::Attention,
             includeHistoricalRosterViews: true,
+            attentionOnly: true,
         );
 
         $typeFilter = TimePresenceAttentionType::tryFrom((string) $this->attentionType);
@@ -102,7 +101,7 @@ class AlarmsIndex extends Component
             'items' => $visibleItems,
             'filteredCount' => $filteredCount,
             'totalCount' => $dashboard->attentionItems->count(),
-            'alarmCount' => $this->timeNavAlarmCount(),
+            'alarmCount' => null,
             'typeCounts' => $typeCounts,
             'hasMore' => $filteredCount > $visibleItems->count(),
             'pageSize' => $pageSize,

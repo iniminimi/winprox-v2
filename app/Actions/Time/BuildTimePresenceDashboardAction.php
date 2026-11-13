@@ -37,6 +37,7 @@ class BuildTimePresenceDashboardAction
         bool $includeAbsentRoster = false,
         ?array $scopeLocationIds = null,
         bool $includeHistoricalRosterViews = false,
+        bool $attentionOnly = false,
     ): TimePresenceDashboard {
         $needle = mb_strtolower(trim((string) $search));
         $isSearchMode = $needle !== '';
@@ -73,6 +74,24 @@ class BuildTimePresenceDashboardAction
             ->concat($this->absenceClockIns->handle($tenantId, $openShifts))
             ->concat($this->rosterViewItems($tenantId, $teamId, $needle, $includeHistoricalRosterViews))
             ->values();
+
+        if ($attentionOnly && ! $isSearchMode) {
+            return new TimePresenceDashboard(
+                kpis: new TimePresenceKpis(
+                    clockedIn: $active->count() + $onBreak->count(),
+                    active: $active->count(),
+                    onBreak: $onBreak->count(),
+                    notClockedIn: 0,
+                    attention: $attentionItems->count(),
+                ),
+                attentionItems: $this->filterAttention($attentionItems, $statusFilter),
+                teamBuckets: collect(),
+                locationBuckets: collect(),
+                searchShifts: collect(),
+                searchAbsentWorkers: collect(),
+                isSearchMode: false,
+            );
+        }
 
         $clockedInWorkerIds = $openShifts->pluck('worker_id')->all();
         $absentCount = $this->countAbsentWorkers($tenantId, $teamId, $clockedInWorkerIds, $needle, $clockPointId, $locationId);
