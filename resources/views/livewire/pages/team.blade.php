@@ -766,137 +766,143 @@
 
     {{-- Modal: team ---------------------------------------------------------}}
     @if ($canEditContent && $showTeamModal)
-        <x-wp-modal closeMethod="cancelTeam">
-            <form wire:submit="saveTeam" class="wp-card wp-card-pad wp-stack wp-modal-card">
-                <div class="wp-modal-head">
-                    <h2 class="wp-section-title">{{ $editingTeamId ? __('team.teams.modal.edit_title') : __('team.teams.modal.create_title') }}</h2>
+        <x-wp-modal closeMethod="cancelTeam" aria-labelledby="team-modal-title">
+            <form wire:submit="saveTeam" class="wp-card wp-modal-card wp-modal-card--form">
+                <div class="wp-modal-head wp-modal-head--bordered">
+                    <h2 id="team-modal-title" class="wp-section-title">{{ $editingTeamId ? __('team.teams.modal.edit_title') : __('team.teams.modal.create_title') }}</h2>
                     <x-wp-modal-close wire:click="cancelTeam" />
                 </div>
-                <div class="wp-field">
-                    <label class="wp-label" for="teamName">{{ __('team.teams.modal.name') }}</label>
-                    <input type="text" id="teamName" class="wp-input" wire:model="teamName">
-                    @error('teamName') <p class="wp-error">{{ $message }}</p> @enderror
-                </div>
+                <div class="wp-modal-body wp-stack">
+                    <div class="wp-field">
+                        <label class="wp-label" for="teamName">{{ __('team.teams.modal.name') }}</label>
+                        <input type="text" id="teamName" class="wp-input" wire:model="teamName">
+                        @error('teamName') <p class="wp-error">{{ $message }}</p> @enderror
+                    </div>
 
-                @if ($editingTeamId !== null)
-                    <div class="wp-field" x-data="{ open: false }">
-                        <span class="wp-label">{{ __('team.teams.translation_edit.label') }}</span>
+                    @if ($editingTeamId !== null)
+                        <div class="wp-field" x-data="{ open: false }">
+                            <span class="wp-label">{{ __('team.teams.translation_edit.label') }}</span>
 
-                        <div class="wp-field-panel" :class="{ 'is-open': open }">
-                            <button
-                                type="button"
-                                class="wp-field-panel__trigger"
-                                @click="open = !open"
-                                :aria-expanded="open"
-                            >
-                                <span>{{ __('team.teams.translation_edit.open') }}</span>
-                                <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
-                            </button>
+                            <div class="wp-field-panel" :class="{ 'is-open': open }">
+                                <button
+                                    type="button"
+                                    class="wp-field-panel__trigger"
+                                    @click="open = !open"
+                                    :aria-expanded="open"
+                                >
+                                    <span>{{ __('team.teams.translation_edit.open') }}</span>
+                                    <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
+                                </button>
 
-                            <div class="wp-field-panel__body wp-stack-tight" x-show="open" x-cloak>
-                                <div class="wp-cluster wp-issue-description-row">
-                                    <select
-                                        class="wp-select wp-select--compact"
-                                        wire:model.live="teamPreviewLocale"
-                                        aria-label="{{ __('issues.show.description_language') }}"
-                                    >
-                                        @foreach ($teamTranslationLocales as $code => $label)
-                                            <option value="{{ $code }}">{{ $label }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                                <div class="wp-field-panel__body wp-stack-tight" x-show="open" x-cloak>
+                                    <div class="wp-cluster wp-issue-description-row">
+                                        <select
+                                            class="wp-select wp-select--compact"
+                                            wire:model.live="teamPreviewLocale"
+                                            aria-label="{{ __('issues.show.description_language') }}"
+                                        >
+                                            @foreach ($teamTranslationLocales as $code => $label)
+                                                <option value="{{ $code }}">{{ $label }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
 
-                                <label class="wp-field">
-                                    <span class="wp-label">{{ __('team.teams.translation_edit.name') }}</span>
-                                    <textarea class="wp-input" wire:model="teamTranslationName" rows="1"></textarea>
-                                    @error('teamTranslationName') <span class="wp-error">{{ $message }}</span> @enderror
-                                </label>
+                                    <label class="wp-field">
+                                        <span class="wp-label">{{ __('team.teams.translation_edit.name') }}</span>
+                                        <textarea class="wp-input" wire:model="teamTranslationName" rows="1"></textarea>
+                                        @error('teamTranslationName') <span class="wp-error">{{ $message }}</span> @enderror
+                                    </label>
 
-                                <div class="wp-row">
-                                    <button
-                                        type="button"
-                                        class="btn btn--ghost btn--sm"
-                                        wire:click="saveTeamTranslationOverride"
-                                        wire:loading.attr="disabled"
-                                        wire:target="saveTeamTranslationOverride"
-                                    >
-                                        <span wire:loading wire:target="saveTeamTranslationOverride" class="wp-mr-2">
-                                            <x-wp-spinner size="sm" />
-                                        </span>
-                                        <span>{{ __('team.teams.translation_edit.save') }}</span>
-                                    </button>
+                                    <div class="wp-row">
+                                        <button
+                                            type="button"
+                                            class="btn btn--ghost btn--sm"
+                                            wire:click="saveTeamTranslationOverride"
+                                            wire:loading.attr="disabled"
+                                            wire:target="saveTeamTranslationOverride"
+                                        >
+                                            <span wire:loading wire:target="saveTeamTranslationOverride" class="wp-mr-2">
+                                                <x-wp-spinner size="sm" />
+                                            </span>
+                                            <span>{{ __('team.teams.translation_edit.save') }}</span>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endif
-
-                {{-- sort_order blijft in DB (default 0); geen UI meer — lijsten sorteren op naam. --}}
-                <div class="wp-field">
-                    <label class="wp-label" for="teamSessionLifespanType">{{ __('team.teams.modal.session_lifespan_label') }}</label>
-                    <select id="teamSessionLifespanType" class="wp-input" wire:model.live="teamSessionLifespanType">
-                        <option value="daily">{{ __('team.teams.modal.session_lifespan_daily') }}</option>
-                        <option value="weekly">{{ __('team.teams.modal.session_lifespan_weekly') }}</option>
-                        <option value="custom">{{ __('team.teams.modal.session_lifespan_custom') }}</option>
-                    </select>
-                </div>
-                @if ($teamSessionLifespanType === 'custom')
-                    <div class="wp-field">
-                        <label class="wp-label" for="teamSessionLifespanCustomHours">{{ __('team.teams.modal.session_lifespan_custom_hours') }}</label>
-                        <input type="number" id="teamSessionLifespanCustomHours" class="wp-input" wire:model="teamSessionLifespanCustomHours" min="1">
-                        @error('teamSessionLifespanCustomHours') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                @endif
-                {{-- Actief/inactief: knoppen op de teamlijst, niet in dit modal. --}}
-                @if (! $isCheckmate)
-                    <label class="wp-check">
-                        <input type="checkbox" wire:model="teamClocksAllLocations">
-                        {{ __('team.teams.modal.clocks_all_locations') }}
-                    </label>
-                    <p class="wp-hint">{{ __('team.teams.modal.clocks_all_locations_hint') }}</p>
-                @endif
-                @if ($hasTimeModule)
-                    <div class="wp-field">
-                        <label class="wp-label" for="teamRequiredBreakMinutes">{{ __('team.teams.modal.required_break_minutes') }}</label>
-                        <input
-                            type="number"
-                            id="teamRequiredBreakMinutes"
-                            class="wp-input"
-                            wire:model="teamRequiredBreakMinutes"
-                            min="0"
-                            max="240"
-                            placeholder="{{ __('team.teams.modal.required_break_minutes_placeholder') }}"
-                        >
-                        <p class="wp-hint">{{ __('team.teams.modal.required_break_minutes_hint') }}</p>
-                        @error('teamRequiredBreakMinutes') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                @endif
-
-                @unless ($isCheckmate ?? false)
-                    <div class="wp-field">
-                        <h3 class="wp-label">{{ __('team.teams.modal.categories_title') }}</h3>
-                        <p class="wp-hint">{{ __('team.teams.modal.categories_subtitle') }}</p>
-                    </div>
-
-                    @if ($categories->isNotEmpty())
-                        <div class="wp-form-grid-2">
-                            @foreach ($categories as $category)
-                                <label class="wp-check">
-                                    <input type="checkbox"
-                                           wire:model.live="selectedCategoryIds"
-                                           value="{{ $category->id }}">
-                                    <span>{{ $category->localizedName() }}</span>
-                                </label>
-                            @endforeach
-                        </div>
-                    @else
-                        <p class="wp-muted">{{ __('team.teams.modal.categories_empty') }}</p>
                     @endif
-                @endunless
 
-                <div class="wp-cluster wp-cluster--tight">
-                    <button type="submit" class="btn btn--primary">{{ __('common.button.save') }}</button>
+                    {{-- sort_order blijft in DB (default 0); geen UI meer — lijsten sorteren op naam. --}}
+                    <div class="wp-field">
+                        <label class="wp-label" for="teamSessionLifespanType">{{ __('team.teams.modal.session_lifespan_label') }}</label>
+                        <select id="teamSessionLifespanType" class="wp-input" wire:model.live="teamSessionLifespanType">
+                            <option value="daily">{{ __('team.teams.modal.session_lifespan_daily') }}</option>
+                            <option value="weekly">{{ __('team.teams.modal.session_lifespan_weekly') }}</option>
+                            <option value="custom">{{ __('team.teams.modal.session_lifespan_custom') }}</option>
+                        </select>
+                    </div>
+                    @if ($teamSessionLifespanType === 'custom')
+                        <div class="wp-field">
+                            <label class="wp-label" for="teamSessionLifespanCustomHours">{{ __('team.teams.modal.session_lifespan_custom_hours') }}</label>
+                            <input type="number" id="teamSessionLifespanCustomHours" class="wp-input" wire:model="teamSessionLifespanCustomHours" min="1">
+                            @error('teamSessionLifespanCustomHours') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                    @endif
+                    {{-- Actief/inactief: knoppen op de teamlijst, niet in dit modal. --}}
+                    @if (! $isCheckmate)
+                        <label class="wp-check">
+                            <input type="checkbox" wire:model="teamClocksAllLocations">
+                            {{ __('team.teams.modal.clocks_all_locations') }}
+                        </label>
+                        <p class="wp-hint">{{ __('team.teams.modal.clocks_all_locations_hint') }}</p>
+                    @endif
+                    @if ($hasTimeModule)
+                        <div class="wp-field">
+                            <label class="wp-label" for="teamRequiredBreakMinutes">{{ __('team.teams.modal.required_break_minutes') }}</label>
+                            <input
+                                type="number"
+                                id="teamRequiredBreakMinutes"
+                                class="wp-input"
+                                wire:model="teamRequiredBreakMinutes"
+                                min="0"
+                                max="240"
+                                placeholder="{{ __('team.teams.modal.required_break_minutes_placeholder') }}"
+                            >
+                            <p class="wp-hint">{{ __('team.teams.modal.required_break_minutes_hint') }}</p>
+                            @error('teamRequiredBreakMinutes') <p class="wp-error">{{ $message }}</p> @enderror
+                        </div>
+                    @endif
+
+                    @unless ($isCheckmate ?? false)
+                        <div class="wp-field">
+                            <h3 class="wp-label">{{ __('team.teams.modal.categories_title') }}</h3>
+                            <p class="wp-hint">{{ __('team.teams.modal.categories_subtitle') }}</p>
+                        </div>
+
+                        @if ($categories->isNotEmpty())
+                            <div class="wp-form-grid-2">
+                                @foreach ($categories as $category)
+                                    <label class="wp-check">
+                                        <input type="checkbox"
+                                               wire:model.live="selectedCategoryIds"
+                                               value="{{ $category->id }}">
+                                        <span>{{ $category->localizedName() }}</span>
+                                    </label>
+                                @endforeach
+                            </div>
+                        @else
+                            <p class="wp-muted">{{ __('team.teams.modal.categories_empty') }}</p>
+                        @endif
+                    @endunless
+                </div>
+                <div class="wp-modal-foot">
                     <button type="button" class="btn btn--ghost" wire:click="cancelTeam">{{ __('common.button.cancel') }}</button>
+                    <button type="submit" class="btn btn--primary" wire:loading.attr="disabled" wire:target="saveTeam">
+                        <span wire:loading wire:target="saveTeam" class="wp-mr-2">
+                            <x-wp-spinner size="sm" />
+                        </span>
+                        <span>{{ __('common.button.save') }}</span>
+                    </button>
                 </div>
             </form>
         </x-wp-modal>
