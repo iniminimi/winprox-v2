@@ -1140,6 +1140,10 @@
                 {
                     "label": "Urlaub / Ausgleich",
                     "text": "Nach der Anmeldung sehen Sie die Kachel Urlaub / Ausgleich. Beantragen Sie Urlaub oder Ausgleich (von–bis, optionaler Hinweis, max. 31 Tage, nicht in der Vergangenheit). Überlappende offene Anträge werden abgelehnt. Ihre Anträge stehen unter dem Formular: offen oder genehmigt (noch nicht begonnen) können Sie zurückziehen; bei Genehmigung kommt der Dienstplan zurück. Die Verwaltung entscheidet unter Time → Anträge; Ablehnen braucht eine Begründung, Genehmigen nicht. Es geht keine E-Mail. Oben steht der Resturlaub dieses Jahres vom Anspruch, und des nächsten Jahres wenn dort ein Anspruch steht, plus die Überstunden. Dieses Jahr bis heute: gearbeitete Zeit minus veröffentlichter Dienstplan, minus Ausgleich im Plan oder als offener Antrag. Kein Lohn."
+                },
+                {
+                    "label": "Neue Dokumente und Mitteilungen",
+                    "text": "Neue Dokumente und Mitteilungen stehen vorübergehend oben und zeigen einen blauen Zähler. Öffnen Sie die Kachel; danach kehrt sie an ihren festen Platz unten zurück. Kommen später neue Inhalte hinzu, wandert sie erneut nach oben. Ihr Lesestand bleibt auch auf einem anderen Gerät erhalten."
                 }
             ]
         },

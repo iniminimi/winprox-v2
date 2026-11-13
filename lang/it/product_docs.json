@@ -185,7 +185,7 @@
                     "Gestire categorie e sedi. Aggiungere unità una a una o in blocco, anche da CSV.",
                     "Cercare e gestire gli esecutori in Persone → Esecutori. Una foto ritratto è facoltativa.",
                     "Rendere disponibili documenti e avvisi nel portale. Impostare quali sedi un esecutore può usare.",
-                    "Documenti e comunicazioni per gli esecutori su Clock Point: un file personale, come un contratto, oppure un solo file per tutto il team, come il regolamento. Non sul portale segnalazioni e non contano nella quota documenti della sede.",
+                    "Documenti e comunicazioni per gli esecutori su Clock Point: un file personale, come un contratto, oppure un solo file per tutto il team, come il regolamento. Non sul portale segnalazioni e non contano nella quota documenti della sede. I nuovi contenuti ricevono un contatore blu e spostano temporaneamente il riquadro in alto; dopo l’apertura torna in basso.",
                     "I team jolly possono timbrare in tutte le sedi. Gli altri esecutori solo nelle sedi che hanno assegnate.",
                     "Impostare un caposquadra, o modificare un’icona, un telefono, un PIN o una passkey, si fa da Modifica."
                 ]

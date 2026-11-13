@@ -94,28 +94,70 @@ it('toont de evacuatietegel na aanmelden op Clock Point', function () {
         ->assertSet('rosterListOpen', false);
 });
 
-it('zet documenten, mededelingen, teamleader en evacuatielijst in die volgorde onderaan', function () {
+it('zet nieuwe bibliotheektegels bovenaan en na openen terug onderaan', function () {
     [$tenant, , $clockPoint, $worker] = rosterTenantWithPeople();
     $worker->forceFill(['is_teamleader' => true])->save();
-    TeamDocument::factory()->create([
+    $document = TeamDocument::factory()->create([
         'tenant_id' => $tenant->id,
         'internal_team_id' => $worker->internal_team_id,
     ]);
-    TeamAnnouncement::factory()->create([
+    $announcement = TeamAnnouncement::factory()->create([
         'tenant_id' => $tenant->id,
         'internal_team_id' => $worker->internal_team_id,
     ]);
 
-    $html = signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart')->html();
+    $portal = signInClockPointWorker($clockPoint, 'Jan', 'Janssen', 'heart');
+    $html = $portal->html();
     $documents = strpos($html, 'wire:click="openTeamDocuments"');
     $announcements = strpos($html, 'wire:click="openTeamAnnouncements"');
+    $hours = strpos($html, 'wire:click="openHours"');
     $teamleader = strpos($html, 'wire:click="openTeamleader"');
     $evacuation = strpos($html, 'wire:click="openRoster"');
 
     expect($documents)->not->toBeFalse()
         ->and($announcements)->toBeGreaterThan($documents)
+        ->and($hours)->toBeGreaterThan($announcements)
         ->and($teamleader)->toBeGreaterThan($announcements)
-        ->and($evacuation)->toBeGreaterThan($teamleader);
+        ->and($evacuation)->toBeGreaterThan($teamleader)
+        ->and(substr_count($html, 'wp-pill wp-pill--new'))->toBe(2);
+
+    $afterDocument = $portal
+        ->call('openTeamDocuments')
+        ->call('closeTeamDocuments')
+        ->html();
+
+    expect(strpos($afterDocument, 'wire:click="openTeamAnnouncements"'))
+        ->toBeLessThan(strpos($afterDocument, 'wire:click="openHours"'))
+        ->and(strpos($afterDocument, 'wire:click="openTeamDocuments"'))
+        ->toBeGreaterThan(strpos($afterDocument, 'wire:click="openHours"'))
+        ->and($worker->fresh()->last_team_document_id_seen)->toBe($document->id)
+        ->and($worker->fresh()->last_team_announcement_id_seen)->toBeNull()
+        ->and(substr_count($afterDocument, 'wp-pill wp-pill--new'))->toBe(1);
+
+    $afterBoth = $portal
+        ->call('openTeamAnnouncements')
+        ->call('closeTeamAnnouncements')
+        ->html();
+
+    expect(strpos($afterBoth, 'wire:click="openTeamDocuments"'))
+        ->toBeGreaterThan(strpos($afterBoth, 'wire:click="openHours"'))
+        ->and(strpos($afterBoth, 'wire:click="openTeamAnnouncements"'))
+        ->toBeGreaterThan(strpos($afterBoth, 'wire:click="openTeamDocuments"'))
+        ->and(strpos($afterBoth, 'wire:click="openTeamleader"'))
+        ->toBeGreaterThan(strpos($afterBoth, 'wire:click="openTeamAnnouncements"'))
+        ->and(strpos($afterBoth, 'wire:click="openRoster"'))
+        ->toBeGreaterThan(strpos($afterBoth, 'wire:click="openTeamleader"'))
+        ->and($worker->fresh()->last_team_announcement_id_seen)->toBe($announcement->id)
+        ->and(substr_count($afterBoth, 'wp-pill wp-pill--new'))->toBe(0);
+
+    TeamDocument::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $worker->internal_team_id,
+    ]);
+    $withNewDocument = $portal->call('$refresh')->html();
+
+    expect(strpos($withNewDocument, 'wire:click="openTeamDocuments"'))
+        ->toBeLessThan(strpos($withNewDocument, 'wire:click="openHours"'));
 });
 
 it('toont ingeklokte uitvoerders en beheer na tegel en audit-bevestiging', function () {

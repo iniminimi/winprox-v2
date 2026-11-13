@@ -557,6 +557,15 @@
                         @include('partials.wp-portal-presence')
                     @endunless
 
+                    @include('partials.wp-worker-library-tiles', [
+                        'showDocuments' => ($workerDocumentUnreadCount ?? 0) > 0,
+                        'showAnnouncements' => ($workerAnnouncementUnreadCount ?? 0) > 0,
+                        'documentCount' => $workerDocuments->count(),
+                        'announcementCount' => $workerAnnouncements->count(),
+                        'documentUnreadCount' => $workerDocumentUnreadCount ?? 0,
+                        'announcementUnreadCount' => $workerAnnouncementUnreadCount ?? 0,
+                    ])
+
                     @if ($hasTimeModule)
                     <div
                         class="wp-stack"
@@ -1002,30 +1011,14 @@
                         </div>
                     @endif
 
-                    @if (($workerDocuments ?? collect())->isNotEmpty() || ($workerAnnouncements ?? collect())->isNotEmpty())
-                        <div class="wp-tiles">
-                            @if (($workerDocuments ?? collect())->isNotEmpty())
-                                <button type="button" class="wp-tile" wire:click="openTeamDocuments">
-                                    <span class="wp-cluster">
-                                        <x-wp-icon name="document" class="wp-tile-icon" />
-                                        <span class="wp-tile-title">{{ __('portal.tiles.documents') }}</span>
-                                        <span class="wp-pill wp-pill--closed">{{ $workerDocuments->count() }}</span>
-                                    </span>
-                                    <span class="wp-tile-sub">{{ __('portal.worker_library.documents_sub') }}</span>
-                                </button>
-                            @endif
-                            @if (($workerAnnouncements ?? collect())->isNotEmpty())
-                                <button type="button" class="wp-tile" wire:click="openTeamAnnouncements">
-                                    <span class="wp-cluster">
-                                        <x-wp-icon name="chat-bubble" class="wp-tile-icon" />
-                                        <span class="wp-tile-title">{{ __('portal.tiles.announcements') }}</span>
-                                        <span class="wp-pill wp-pill--closed">{{ $workerAnnouncements->count() }}</span>
-                                    </span>
-                                    <span class="wp-tile-sub">{{ __('portal.worker_library.announcements_sub') }}</span>
-                                </button>
-                            @endif
-                        </div>
-                    @endif
+                    @include('partials.wp-worker-library-tiles', [
+                        'showDocuments' => ($workerDocuments ?? collect())->isNotEmpty() && ($workerDocumentUnreadCount ?? 0) === 0,
+                        'showAnnouncements' => ($workerAnnouncements ?? collect())->isNotEmpty() && ($workerAnnouncementUnreadCount ?? 0) === 0,
+                        'documentCount' => $workerDocuments->count(),
+                        'announcementCount' => $workerAnnouncements->count(),
+                        'documentUnreadCount' => 0,
+                        'announcementUnreadCount' => 0,
+                    ])
 
                     @if ($verifiedWorker?->is_teamleader)
                         <div class="wp-tiles">

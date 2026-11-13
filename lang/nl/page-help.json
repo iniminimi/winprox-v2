@@ -1126,6 +1126,10 @@
                     "text": "Na inklokken (Time met GPS-werkbezoeken) zie je waar je vandaag naartoe moet: alleen locaties, in de volgorde van de inspectieronde (niet alfabetisch), als tijdlijn (hier, volgende, geweest, later). De volgende stop toont het adres en Navigeer. Staat GPS uit op je telefoon, dan zie je een waarschuwing — alleen als je vandaag ergens naartoe moet. Start werk verschijnt op de locatie als je ter plaatse bent; Zoek werkplek in de buurt verdwijnt dan. Inspectiestops staan onder Open taken; Unit check pas na Start werk. Open taken zonder datum blijven onder Open taken."
                 },
                 {
+                    "label": "Nieuwe documenten en mededelingen",
+                    "text": "Nieuwe documenten en mededelingen staan tijdelijk bovenaan met een blauwe teller. Open de tegel om de inhoud te bekijken; daarna keert de tegel terug naar de vaste plek onderaan. Komt er later iets nieuws bij, dan verhuist de tegel opnieuw naar boven. De leesstand hoort bij jou en blijft ook op een ander toestel bewaard."
+                },
+                {
                     "label": "Evacuatielijst",
                     "text": "Als beheer de evacuatielijst in Instellingen heeft aangezet (standaard uit), zie je na aanmelden de tegel Evacuatielijst (brandicoon). Eerst bevestig je dat de raadpleging uitzonderlijk is en wordt gelogd (voornaam, naam, datum en uur). Daarna zie je wie nu is ingeklokt, per locatie, nieuwste inklokking bovenaan."
                 },

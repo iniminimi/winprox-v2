@@ -13,6 +13,7 @@ use App\Actions\Tasks\CompleteTaskAction;
 use App\Actions\Tasks\RoundTaskCompletionAction;
 use App\Actions\Tasks\SkipRoundStopAction;
 use App\Actions\Tasks\StartTaskAction;
+use App\Actions\Team\MarkWorkerLibraryViewedAction;
 use App\Actions\Time\AcknowledgeTimeRosterViewAction;
 use App\Actions\Time\CancelAbsenceRequestAction;
 use App\Actions\Time\AssertClockPointTaskVisitAction;
@@ -1512,12 +1513,14 @@ class TimePortal extends Component
         $this->customerFormOpen = true;
     }
 
-    public function openTeamDocuments(): void
+    public function openTeamDocuments(MarkWorkerLibraryViewedAction $markViewed): void
     {
-        if ($this->authorizedWorker() === null) {
+        $worker = $this->authorizedWorker();
+        if ($worker === null) {
             return;
         }
 
+        $markViewed->handle($worker, $this->tenantId, MarkWorkerLibraryViewedAction::DOCUMENTS);
         $this->closeRoster();
         $this->hoursListOpen = false;
         $this->scheduleListOpen = false;
@@ -1534,12 +1537,14 @@ class TimePortal extends Component
         $this->teamDocumentsOpen = false;
     }
 
-    public function openTeamAnnouncements(): void
+    public function openTeamAnnouncements(MarkWorkerLibraryViewedAction $markViewed): void
     {
-        if ($this->authorizedWorker() === null) {
+        $worker = $this->authorizedWorker();
+        if ($worker === null) {
             return;
         }
 
+        $markViewed->handle($worker, $this->tenantId, MarkWorkerLibraryViewedAction::ANNOUNCEMENTS);
         $this->closeRoster();
         $this->hoursListOpen = false;
         $this->scheduleListOpen = false;
@@ -2381,6 +2386,12 @@ class TimePortal extends Component
         $workerAnnouncements = ($canAct && $verifiedWorker !== null)
             ? TeamAnnouncement::query()->visibleToWorker($verifiedWorker)->orderByDesc('id')->get()
             : collect();
+        $workerDocumentUnreadCount = $verifiedWorker !== null
+            ? $workerDocuments->where('id', '>', (int) ($verifiedWorker->last_team_document_id_seen ?? 0))->count()
+            : 0;
+        $workerAnnouncementUnreadCount = $verifiedWorker !== null
+            ? $workerAnnouncements->where('id', '>', (int) ($verifiedWorker->last_team_announcement_id_seen ?? 0))->count()
+            : 0;
 
         return view('livewire.public.time-portal', [
             'canAct' => $canAct,
@@ -2432,6 +2443,8 @@ class TimePortal extends Component
             'teamWorkers' => $teamWorkers,
             'workerDocuments' => $workerDocuments,
             'workerAnnouncements' => $workerAnnouncements,
+            'workerDocumentUnreadCount' => $workerDocumentUnreadCount,
+            'workerAnnouncementUnreadCount' => $workerAnnouncementUnreadCount,
             'manageWorkersMessage' => $this->manageWorkersMessage,
             'roster' => $roster,
             'hours' => $hours,

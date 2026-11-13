@@ -63,6 +63,8 @@ class Worker extends Model
         'photo_path',
         'clock_pin_hash',
         'clock_device_id',
+        'last_team_document_id_seen',
+        'last_team_announcement_id_seen',
     ];
 
     protected $hidden = [
@@ -77,6 +79,8 @@ class Worker extends Model
         'needs_admin_follow_up' => 'boolean',
         'is_external' => 'boolean',
         'weekly_contract_minutes' => 'integer',
+        'last_team_document_id_seen' => 'integer',
+        'last_team_announcement_id_seen' => 'integer',
         'ssin' => 'encrypted',
     ];
 

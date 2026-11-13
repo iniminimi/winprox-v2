@@ -185,7 +185,7 @@
                     "Gérer les catégories et les sites. Ajouter des unités une à une ou en masse, aussi via CSV.",
                     "Chercher et gérer les exécutants sous Personnes → Exécutants. Une photo de portrait est facultative.",
                     "Mettre documents et annonces à disposition via le portail. Régler quels sites un exécutant peut utiliser.",
-                    "Documents et annonces pour les exécutants sur Clock Point : un fichier personnel, comme un contrat, ou un seul fichier pour toute l'équipe, comme le règlement. Pas sur le portail de signalement, et pas comptés dans le quota de documents du site.",
+                    "Documents et annonces pour les exécutants sur Clock Point : un fichier personnel, comme un contrat, ou un seul fichier pour toute l'équipe, comme le règlement. Pas sur le portail de signalement, et pas comptés dans le quota de documents du site. Le nouveau contenu reçoit un compteur bleu et place temporairement la tuile en haut ; après ouverture, elle revient en bas.",
                     "Les équipes volantes peuvent pointer sur tous les sites. Les autres exécutants seulement sur les sites qui leur sont attribués.",
                     "Définir un chef d’équipe, ou modifier une icône, un téléphone, un code ou une clé d’accès, se fait via Modifier."
                 ]

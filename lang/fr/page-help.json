@@ -1134,6 +1134,10 @@
                     "text": "Après le pointage (Time avec visites GPS) vous voyez où aller aujourd'hui : uniquement les sites, dans l’ordre de la tournée d’inspection (pas alphabétique), en frise (ici, suivant, déjà passé, plus tard). L’arrêt suivant montre l’adresse et Naviguer. Si le GPS est désactivé sur le téléphone, un avertissement apparaît — seulement s’il y a une destination aujourd’hui. Commencer le travail apparaît sur le site une fois sur place ; Trouver un lieu de travail à proximité disparaît alors. Les arrêts d'inspection sont sous Tâches ouvertes ; Contrôle d'unité seulement après Commencer le travail. Les tâches ouvertes sans date restent sous Tâches ouvertes."
                 },
                 {
+                    "label": "Nouveaux documents et annonces",
+                    "text": "Les nouveaux documents et annonces apparaissent temporairement en haut avec un compteur bleu. Ouvrez la tuile pour consulter le contenu ; elle revient ensuite à sa place fixe en bas. Si du nouveau contenu arrive, elle remonte. Votre état de lecture vous suit aussi sur un autre appareil."
+                },
+                {
                     "label": "Liste d’évacuation",
                     "text": "Si un admin a activé la liste d’évacuation dans Paramètres (désactivée par défaut), la tuile Liste d’évacuation (icône feu) apparaît après connexion. Confirmez d’abord que la consultation est exceptionnelle et enregistrée (prénom, nom, date et heure). Ensuite s’affiche qui est pointé, par site, dernier pointage en haut."
                 },

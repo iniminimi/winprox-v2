@@ -1126,6 +1126,10 @@
                     "text": "After clock-in (Time with GPS work visits) you see where you need to go today: locations only, in inspection-round stop order (not alphabetical), as a timeline (here, next, been, later). The next stop shows the address and Navigate. If GPS is off on your phone you see a warning — only when you have somewhere to go today. Start work appears at the location when you are on site; Find a nearby workplace then disappears. Inspection stops are under Open tasks; Unit check only after Start work. Open tasks without a date stay under Open tasks."
                 },
                 {
+                    "label": "New documents and announcements",
+                    "text": "New documents and announcements temporarily appear at the top with a blue counter. Open the tile to view the content; it then returns to its fixed place at the bottom. If new content arrives later, the tile moves up again. Your read state belongs to you and is also retained on another device."
+                },
+                {
                     "label": "Evacuation list",
                     "text": "If an admin turned the evacuation list on in Settings (off by default), you see the Evacuation list tile (fire icon) after sign-in. First confirm that the consultation is exceptional and is logged (first name, last name, date and time). Then you see who is clocked in now, grouped by site, newest clock-in first."
                 },

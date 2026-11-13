@@ -185,7 +185,7 @@
                     "Manage categories and locations. Add units one by one or in bulk, including from CSV.",
                     "Find and manage workers under People → Workers. A portrait photo is optional.",
                     "Make documents and notices available on the portal. Set which sites a worker may use.",
-                    "Documents and announcements for workers on Clock Point: a personal file, such as a contract, or one file for the whole team, such as the house rules. Not on the report portal, and not counted in the location document quota.",
+                    "Documents and announcements for workers on Clock Point: a personal file, such as a contract, or one file for the whole team, such as the house rules. Not on the report portal, and not counted in the location document quota. New content gets a blue counter and temporarily moves the tile to the top; after opening, the tile returns to the bottom.",
                     "Floater teams can clock in at every location. Other workers only at the sites assigned to them.",
                     "Setting a team leader, or changing an icon, phone, PIN or passkey, is done via Edit."
                 ]
