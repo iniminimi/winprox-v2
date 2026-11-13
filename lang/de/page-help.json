@@ -1433,7 +1433,7 @@
             "actions": [
                 {
                     "label": "Zeitraum und Filter",
-                    "text": "Wählen Sie ein Von- und Bis-Datum und filtern Sie optional nach Team, Ausführendem oder Clock Point. Drücken Sie <strong>Anwenden</strong>, um die Liste zu aktualisieren."
+                    "text": "Die Liste öffnet auf heute. Wählen Sie ein Von- und Bis-Datum und filtern Sie optional nach Team, Ausführendem oder Clock Point. Drücken Sie <strong>Anwenden</strong>, um die Liste zu aktualisieren."
                 },
                 {
                     "label": "Bericht herunterladen",

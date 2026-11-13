@@ -6083,8 +6083,15 @@ svg.wp-release-worker-row__icon,
 }
 
 .wp-time-shifts-toolbar__primary {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: auto auto minmax(12rem, 1fr);
     gap: 0.5rem 1rem;
+}
+
+.wp-time-shifts-toolbar .wp-filter-cell .wp-input[type='date'] {
+    width: 10.5rem;
+    min-width: 10.5rem;
+    max-width: 10.5rem;
+    flex: 0 0 10.5rem;
 }
 
 .wp-work-visits-toolbar {

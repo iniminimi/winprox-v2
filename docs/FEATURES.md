@@ -816,7 +816,7 @@ productsector op `Tenant`.
   reden (`work_shift.corrected`). Uitklok **leeg** laten heropent de dienst (foutieve
   uitklok). Geweigerd als die uitvoerder al een andere open dienst heeft. Geen extra
   CIAO IN/OUT.
-- **Urenkaart:** Time → Uren toont per dienst vijf kolommen (medewerker+team,
+- **Urenkaart:** Time → Uren opent op vandaag (van = tot). Per dienst vijf kolommen (medewerker+team,
   gewerkt+pauze, datum+gepland, in/uit-registraties, status+Corrigeren).
   Verplaatsingen, werkbezoeken en taken staan onder die rij.
 - **Aanwezigheid → Uren:** klik op een uitvoerder (board, teams, locaties, zoek,

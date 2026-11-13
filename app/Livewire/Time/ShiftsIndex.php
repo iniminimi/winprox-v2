@@ -63,11 +63,12 @@ class ShiftsIndex extends Component
     {
         $this->authorize('viewAny', WorkShift::class);
 
+        $today = now()->format('Y-m-d');
         if ($this->from === '') {
-            $this->from = now()->startOfMonth()->format('Y-m-d');
+            $this->from = $today;
         }
         if ($this->to === '') {
-            $this->to = now()->format('Y-m-d');
+            $this->to = $today;
         }
     }
 

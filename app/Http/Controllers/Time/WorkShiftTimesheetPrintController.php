@@ -20,7 +20,7 @@ class WorkShiftTimesheetPrintController
         $tenant = Tenant::query()->findOrFail(Tenancy::id());
         $from = $request->query('from')
             ? Carbon::parse((string) $request->query('from'))->startOfDay()
-            : now()->startOfMonth();
+            : now()->startOfDay();
         $to = $request->query('to')
             ? Carbon::parse((string) $request->query('to'))->endOfDay()
             : now()->endOfDay();

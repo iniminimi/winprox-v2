@@ -1433,7 +1433,7 @@
             "actions": [
                 {
                     "label": "Periode en filters",
-                    "text": "Kies een van- en tot-datum en filter optioneel op team, uitvoerder of clock point. Druk op <strong>Toepassen</strong> om de lijst bij te werken."
+                    "text": "De lijst opent op vandaag. Kies een van- en tot-datum en filter optioneel op team, uitvoerder of clock point. Druk op <strong>Toepassen</strong> om de lijst bij te werken."
                 },
                 {
                     "label": "Download rapport",

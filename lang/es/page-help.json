@@ -1433,7 +1433,7 @@
             "actions": [
                 {
                     "label": "Período y filtros",
-                    "text": "Elija fechas de inicio y fin y filtre opcionalmente por equipo, operario o clock point. Pulse <strong>Aplicar</strong> para actualizar la lista."
+                    "text": "La lista se abre en hoy. Elija fechas de inicio y fin y filtre opcionalmente por equipo, operario o clock point. Pulse <strong>Aplicar</strong> para actualizar la lista."
                 },
                 {
                     "label": "Descargar informe",

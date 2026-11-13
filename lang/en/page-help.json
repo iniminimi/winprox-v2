@@ -1433,7 +1433,7 @@
             "actions": [
                 {
                     "label": "Period and filters",
-                    "text": "Choose from and to dates and optionally filter by team, worker, or clock point. Click <strong>Apply</strong> to refresh the list."
+                    "text": "The list opens on today. Choose from and to dates and optionally filter by team, worker, or clock point. Click <strong>Apply</strong> to refresh the list."
                 },
                 {
                     "label": "Download report",

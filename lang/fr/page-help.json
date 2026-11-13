@@ -1441,7 +1441,7 @@
             "actions": [
                 {
                     "label": "Période et filtres",
-                    "text": "Choisissez une date de début et de fin et filtrez éventuellement par équipe, exécutant ou clock point. Cliquez sur <strong>Appliquer</strong> pour mettre à jour la liste."
+                    "text": "La liste s'ouvre sur aujourd'hui. Choisissez une date de début et de fin et filtrez éventuellement par équipe, exécutant ou clock point. Cliquez sur <strong>Appliquer</strong> pour mettre à jour la liste."
                 },
                 {
                     "label": "Télécharger le rapport",

@@ -169,8 +169,12 @@ it('toont Aanwezigheid als paginatitel in plaats van Time', function () {
 it('toont Uren als paginatitel in plaats van Time', function () {
     [$tenant, $admin] = timeTenantWithAdmin();
 
+    $today = now()->toDateString();
+
     Livewire::actingAs($admin)
         ->test(ShiftsIndex::class)
+        ->assertSet('from', $today)
+        ->assertSet('to', $today)
         ->assertSeeHtml('>'.e(__('time.nav.shifts')).'</h1>')
         ->assertDontSeeHtml('>'.e(__('time.title')).'</h1>');
 });

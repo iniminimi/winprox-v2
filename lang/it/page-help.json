@@ -1433,7 +1433,7 @@
             "actions": [
                 {
                     "label": "Periodo e filtri",
-                    "text": "Scelga date di inizio e fine e filtri facoltativamente per team, esecutore o clock point. Clicchi <strong>Applica</strong> per aggiornare l'elenco."
+                    "text": "L'elenco si apre su oggi. Scelga date di inizio e fine e filtri facoltativamente per team, esecutore o clock point. Clicchi <strong>Applica</strong> per aggiornare l'elenco."
                 },
                 {
                     "label": "Scarica rapporto",
