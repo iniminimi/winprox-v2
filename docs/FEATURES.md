@@ -1264,7 +1264,10 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   **Missing** pas na het geplande einde (of op vorige dagen); omgezette afwezigheidsblokken
   tellen nooit als missing. Toekomstige dagen: geen markering.
   Markering rechtsboven in de cel opent **Time → Uren** (worker + die dag;
-  bij **missing** de hele maand, want die dag heeft geen prik). Geen locatievergelijking.
+  bij **missing** de hele maand, want die dag heeft geen prik). Een correcte inklok
+  (status ok) toont daar een groen vinkje; afwijking, ontbrekend, ongepland en gap
+  blijven een bolletje. Geen extra query: de vergelijking zat al in de roosterdata.
+  Geen locatievergelijking.
 - **Print:** knop naast de titel opent een **nieuw venster** (zoals briefing); A4 **liggend**,
   zichtbare periode/filters. Achternaam langer dan **15 tekens** wordt afgekort met een punt,
   zodat de naam op één regel blijft.

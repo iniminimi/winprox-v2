@@ -803,8 +803,8 @@ function applyCellClasses(worksheet, payload) {
             }
             const attendanceEntry = attendanceKey ? payload.attendance?.[attendanceKey] : null;
             const attendance = typeof attendanceEntry === 'string' ? attendanceEntry : attendanceEntry?.status;
-            const actionable = attendance && attendance !== 'none' && attendance !== 'ok';
-            const hoursUrl = actionable ? hoursUrlFor(payload, worker?.id, date, attendance) : '';
+            const marked = Boolean(attendance && attendance !== 'none');
+            const hoursUrl = marked ? hoursUrlFor(payload, worker?.id, date, attendance) : '';
             const parsed = isMultiSummary
                 ? { kind: 'multi' }
                 : parseRosterCell(value, types, (catalog ??= catalogFor(worker)));
@@ -822,8 +822,8 @@ function applyCellClasses(worksheet, payload) {
                     ? cellText(cellDef.display).trim()
                     : valueText;
                 const multiTitle = `${summary}\n\n`
-                    + (actionable ? attendanceTitle(payload, attendance) : (payload.multi_hint || ''));
-                if (actionable) {
+                    + (marked ? attendanceTitle(payload, attendance) : (payload.multi_hint || ''));
+                if (marked) {
                     cell.classList.add(`wp-roster-cell--${attendance}`);
                     cell.title = multiTitle;
                     applyAttendanceLink(cell, hoursUrl);
@@ -834,7 +834,7 @@ function applyCellClasses(worksheet, payload) {
             } else if (parsed.color && parsed.color !== 'none') {
                 cell.classList.add(`wp-roster-cell--${parsed.color}`);
                 cell.removeAttribute('aria-invalid');
-                if (actionable) {
+                if (marked) {
                     cell.classList.add(`wp-roster-cell--${attendance}`);
                     cell.title = attendanceTitle(payload, attendance);
                     applyAttendanceLink(cell, hoursUrl);
@@ -844,7 +844,7 @@ function applyCellClasses(worksheet, payload) {
                 }
             } else {
                 cell.removeAttribute('aria-invalid');
-                if (actionable) {
+                if (marked) {
                     cell.classList.add(`wp-roster-cell--${attendance}`);
                     cell.title = attendanceTitle(payload, attendance);
                     applyAttendanceLink(cell, hoursUrl);
