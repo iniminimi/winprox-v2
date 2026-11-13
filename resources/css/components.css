@@ -7594,12 +7594,12 @@ a.wp-worker-hours-link:focus-visible {
     background: color-mix(in srgb, var(--wp-text) 12%, var(--wp-surface-2) 88%);
 }
 
-/* Vandaag: alleen de kolomkop wordt gemarkeerd (emerald), de cellen zelf
-   houden hun shiftkleur zodat o.a. perzik (L) niet met de markering versmelt. */
+/* Vandaag: alleen de kolomkop. Donkerblauw, witte vette letters.
+   De cellen houden hun shiftkleur zodat o.a. perzik (L) niet versmelt. */
 .wp-roster-sheet .jss_worksheet > thead > tr > td.wp-roster-col--today {
-    background: color-mix(in srgb, var(--wp-accent) 18%, var(--wp-surface-2) 82%);
-    color: var(--wp-accent-strong);
-    box-shadow: inset 0 2px 0 var(--wp-accent), inset 0 -2px 0 var(--wp-accent);
+    background: #1e3a8a;
+    color: #fff;
+    font-weight: 700;
 }
 
 .wp-roster-sheet col.wp-roster-col--week-start,
