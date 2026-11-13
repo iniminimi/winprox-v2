@@ -230,10 +230,10 @@
                             $cmPlacesGroupActive = request()->routeIs('customers.*')
                                 || $cmLocationsActive
                                 || $cmUnitsActive;
-                            $cmPeopleGroupActive = request()->routeIs('team.index') || request()->routeIs('workers.index');
+                            $cmPeopleGroupActive = request()->routeIs('team.index', 'team.show') || request()->routeIs('workers.index');
                             $cmPeopleSection = request()->routeIs('team.index') ? (string) request()->query('section', '') : '';
                             $cmBackofficeNavActive = request()->routeIs('team.index') && $cmPeopleSection === 'backoffice';
-                            $cmTeamsNavActive = request()->routeIs('team.index') && $cmPeopleSection !== 'backoffice';
+                            $cmTeamsNavActive = request()->routeIs('team.show') || (request()->routeIs('team.index') && $cmPeopleSection !== 'backoffice');
                             $cmWorkersNavActive = request()->routeIs('workers.index');
                         @endphp
 
@@ -396,10 +396,10 @@
                                 || ($showCustomersNav && request()->routeIs('customers.*'))
                                 || ($showPhotoAlbumNavItem && request()->routeIs('photo-album.*'));
 
-                            $peopleGroupActive = request()->routeIs('team.index') || request()->routeIs('workers.index');
+                            $peopleGroupActive = request()->routeIs('team.index', 'team.show') || request()->routeIs('workers.index');
                             $peopleSection = request()->routeIs('team.index') ? (string) request()->query('section', '') : '';
                             $backofficeNavActive = request()->routeIs('team.index') && $peopleSection === 'backoffice';
-                            $teamsNavActive = request()->routeIs('team.index') && $peopleSection !== 'backoffice';
+                            $teamsNavActive = request()->routeIs('team.show') || (request()->routeIs('team.index') && $peopleSection !== 'backoffice');
                             $workersNavActive = request()->routeIs('workers.index');
 
                             $showChecklistsNav = $showWorkMenuChecklists

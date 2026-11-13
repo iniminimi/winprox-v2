@@ -6,12 +6,30 @@
         <div class="wp-grow wp-stack-tight">
             <x-wp-page-head-title
                 icon="persons"
-                :title="$this->isBackofficeSection() ? __('team.backoffice.title') : __('team.teams_page.title')"
-                :help-page="$this->isBackofficeSection() ? 'team.backoffice' : 'team.teams'"
-                :subtitle="$this->isBackofficeSection()
-                    ? __('team.backoffice.subtitle')
-                    : ($teams->isEmpty() ? __('team.teams_page.subtitle') : __('team.teams_page.subtitle_active'))"
-            />
+                :title="$viewingTeam
+                    ? $viewingTeam->localizedName()
+                    : ($this->isBackofficeSection() ? __('team.backoffice.title') : __('team.teams_page.title'))"
+                :help-page="$viewingTeam ? 'team.teams' : ($this->isBackofficeSection() ? 'team.backoffice' : 'team.teams')"
+                :subtitle="$viewingTeam
+                    ? __('team.show.subtitle')
+                    : ($this->isBackofficeSection()
+                        ? __('team.backoffice.subtitle')
+                        : ($teams->isEmpty() ? __('team.teams_page.subtitle') : __('team.teams_page.subtitle_active')))"
+            >
+                @if ($viewingTeam)
+                    <x-slot:toolbar>
+                        <x-wp-detail-nav
+                            route-name="team.show"
+                            :current-id="$viewingTeam->id"
+                            :nav-label="__('team.show.nav_label')"
+                            :first-id="$teamNav['firstId']"
+                            :prev-id="$teamNav['prevId']"
+                            :next-id="$teamNav['nextId']"
+                            :last-id="$teamNav['lastId']"
+                        />
+                    </x-slot:toolbar>
+                @endif
+            </x-wp-page-head-title>
         </div>
         @unless ($this->isBackofficeSection() || $isCheckmate)
             <div class="wp-cluster">
@@ -28,7 +46,90 @@
         ])>{{ $workersImportNotice }}</div>
     @endif
 
-    @if ($this->isBackofficeSection())
+    @if ($viewingTeam)
+        @php $visibleWorkers = $this->visibleTeamWorkers($viewingTeam); @endphp
+        <x-wp-disclosure-card
+            :title="__('team.show.details_title')"
+            :subtitle="$viewingTeam->is_active ? __('team.teams.active') : __('team.teams.inactive')"
+        >
+            <div class="wp-cluster">
+                <span class="wp-pill wp-pill--{{ $viewingTeam->is_active ? 'done' : 'closed' }}">
+                    {{ $viewingTeam->is_active ? __('team.teams.active') : __('team.teams.inactive') }}
+                </span>
+                <span class="wp-muted">{{ __('team.teams.worker_count', ['count' => $visibleWorkers->where('is_active', true)->count()]) }}</span>
+                @if ($canEditContent)
+                    <button type="button" class="btn btn--surface btn--sm" wire:click="openEditTeam({{ $viewingTeam->id }})">{{ __('team.teams.edit') }}</button>
+                @endif
+            </div>
+        </x-wp-disclosure-card>
+
+        @if ($canEditContent)
+            <livewire:teams.documents :team="$viewingTeam" :key="'team-docs-'.$viewingTeam->id" />
+            <livewire:teams.announcements :team="$viewingTeam" :key="'team-announcements-'.$viewingTeam->id" />
+        @endif
+
+        <div class="wp-card wp-card-pad wp-stack-tight">
+            <div class="wp-row">
+                <h2 class="wp-section-title">{{ __('team.show.workers_title') }}</h2>
+                @if ($canEditContent)
+                    <button type="button" class="btn btn--primary btn--sm" wire:click="openAddWorker({{ $viewingTeam->id }})">
+                        {{ __('team.workers.add') }}
+                    </button>
+                @endif
+            </div>
+            @if ($filterLocations->isNotEmpty())
+                <div class="wp-filter-cell">
+                    <span class="wp-filter-inline-label">{{ __('team.workers_index.filters.label') }}</span>
+                    <select class="wp-select wp-select--compact" wire:model.live="locationFilter" aria-label="{{ __('team.workers_index.filters.location') }}">
+                        <option value="">{{ __('team.workers_index.filters.all_locations') }}</option>
+                        @foreach ($filterLocations as $location)
+                            <option value="{{ $location->id }}">{{ $location->name ?: $location->address }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            @endif
+            <div class="wp-list">
+                @forelse ($visibleWorkers as $worker)
+                    <div @class(['wp-data-row', 'wp-issue-row--highlight' => $highlightWorkerId === $worker->id]) wire:key="team-show-worker-{{ $worker->id }}">
+                        <div class="wp-data-row-identity">
+                            <x-wp-worker-avatar :worker="$worker" size="sm" :tone="$worker->is_active ? 'present' : 'absent'" />
+                            <div class="wp-data-row-main">
+                                <span class="wp-data-row-title">{{ $worker->displayName() }}</span>
+                                @if ($worker->company_name)
+                                    <span class="wp-muted">{{ $worker->company_name }}</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="wp-cluster wp-cluster--tight">
+                            @if ($worker->is_external)
+                                <span class="wp-pill wp-pill--progress">{{ __('team.workers.external_badge') }}</span>
+                            @endif
+                            @unless ($requiresWorkerPin || $worker->field_icon_slug)
+                                <span class="wp-pill wp-pill--progress">{{ __('team.workers.no_icon') }}</span>
+                            @endunless
+                            @if ($worker->is_teamleader)
+                                <span class="wp-pill wp-pill--done">{{ __('team.workers.teamleader') }}</span>
+                            @endif
+                            @if ($worker->clock_device_id)
+                                <span class="wp-pill wp-pill--done">{{ __('team.workers.device_bound') }}</span>
+                            @endif
+                            @if ($worker->field_icon_locked_at)
+                                <span class="wp-pill wp-pill--closed">{{ __('team.workers.locked') }}</span>
+                            @endif
+                            @unless ($worker->is_active)
+                                <span class="wp-pill wp-pill--closed">{{ __('team.workers.inactive') }}</span>
+                            @endunless
+                            @if ($canEditContent)
+                                <button type="button" class="btn btn--surface btn--sm" wire:click="openEditWorker({{ $worker->id }})">{{ __('common.button.edit') }}</button>
+                            @endif
+                        </div>
+                    </div>
+                @empty
+                    <p class="wp-muted">{{ $locationFilter && $viewingTeam->workers->isNotEmpty() ? __('team.workers_index.empty') : __('team.workers.empty') }}</p>
+                @endforelse
+            </div>
+        </div>
+    @elseif ($this->isBackofficeSection())
     <div id="backoffice">
         @if ($canManageUsers)
             <div class="wp-card wp-card-pad wp-stack-tight">
@@ -114,20 +215,14 @@
         <div class="wp-list">
             @forelse ($teams as $team)
                 @php
-                    $isTeamExpanded = in_array($team->id, $expandedTeamIds, true);
                     $visibleWorkers = $this->visibleTeamWorkers($team);
                 @endphp
-                <div class="wp-stack-tight {{ $isTeamExpanded ? 'wp-team-row--expanded' : '' }}" wire:key="team-{{ $team->id }}">
-                    <div class="wp-data-row {{ $isTeamExpanded ? 'wp-team-header--expanded' : '' }}">
+                <div class="wp-stack-tight" wire:key="team-{{ $team->id }}">
+                    <div class="wp-data-row">
                         <div class="wp-data-row-main">
-                            <button type="button"
-                                    class="wp-team-row-toggle"
-                                    wire:click="toggleTeam({{ $team->id }})"
-                                    aria-expanded="{{ $isTeamExpanded ? 'true' : 'false' }}"
-                                    aria-controls="team-panel-{{ $team->id }}">
-                                <x-wp-icon name="chevron-down" class="wp-disclosure-chevron {{ $isTeamExpanded ? 'is-open' : '' }}" />
+                            <a href="{{ route('team.show', $team) }}" class="wp-issue-row-link">
                                 <span class="wp-data-row-title">{{ $team->localizedName() }}</span>
-                            </button>
+                            </a>
                             <span class="wp-muted">{{ __('team.teams.worker_count', ['count' => $visibleWorkers->where('is_active', true)->count()]) }}</span>
                         </div>
                         <div class="wp-cluster wp-cluster--tight">
@@ -149,56 +244,6 @@
                         </div>
                     </div>
 
-                    @if ($isTeamExpanded)
-                        <div id="team-panel-{{ $team->id }}" class="wp-team-workers-panel wp-stack-tight">
-                            @if ($canEditContent)
-                                <button type="button" class="btn btn--ghost btn--sm" wire:click="openAddWorker({{ $team->id }})">
-                                    {{ __('team.workers.add') }}
-                                </button>
-                            @endif
-
-                            <div class="wp-list">
-                                @forelse ($visibleWorkers as $worker)
-                                    <div @class(['wp-data-row', 'wp-issue-row--highlight' => $highlightWorkerId === $worker->id]) wire:key="worker-{{ $worker->id }}">
-                                        <div class="wp-data-row-identity">
-                                            <x-wp-worker-avatar :worker="$worker" size="sm" :tone="$worker->is_active ? 'present' : 'absent'" />
-                                            <div class="wp-data-row-main">
-                                                <span class="wp-data-row-title">{{ $worker->displayName() }}</span>
-                                                @if ($worker->company_name)
-                                                    <span class="wp-muted">{{ $worker->company_name }}</span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <div class="wp-cluster wp-cluster--tight">
-                                            @if ($worker->is_external)
-                                                <span class="wp-pill wp-pill--progress">{{ __('team.workers.external_badge') }}</span>
-                                            @endif
-                                            @unless ($requiresWorkerPin || $worker->field_icon_slug)
-                                                <span class="wp-pill wp-pill--progress">{{ __('team.workers.no_icon') }}</span>
-                                            @endunless
-                                            @if ($worker->is_teamleader)
-                                                <span class="wp-pill wp-pill--done">{{ __('team.workers.teamleader') }}</span>
-                                            @endif
-                                            @if ($worker->clock_device_id)
-                                                <span class="wp-pill wp-pill--done">{{ __('team.workers.device_bound') }}</span>
-                                            @endif
-                                            @if ($worker->field_icon_locked_at)
-                                                <span class="wp-pill wp-pill--closed">{{ __('team.workers.locked') }}</span>
-                                            @endif
-                                            @unless ($worker->is_active)
-                                                <span class="wp-pill wp-pill--closed">{{ __('team.workers.inactive') }}</span>
-                                            @endunless
-                                            @if ($canEditContent)
-                                                <button type="button" class="btn btn--surface btn--sm" wire:click="openEditWorker({{ $worker->id }})">{{ __('common.button.edit') }}</button>
-                                            @endif
-                                        </div>
-                                    </div>
-                                @empty
-                                    <p class="wp-muted">{{ $locationFilter && $team->workers->isNotEmpty() ? __('team.workers_index.empty') : __('team.workers.empty') }}</p>
-                                @endforelse
-                            </div>
-                        </div>
-                    @endif
                 </div>
             @empty
                 <p class="wp-muted">{{ __('team.teams.empty') }}</p>

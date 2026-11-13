@@ -247,6 +247,38 @@
         "worker_contract_minutes_max": "De weeknorm is hoogstens 168 uur.",
         "worker_default_unit_location": "De thuisgroep moet op een toegewezen locatie liggen."
     },
+    "show": {
+        "subtitle": "Documenten, mededelingen en uitvoerders van dit team.",
+        "details_title": "Gegevens van het team",
+        "workers_title": "Uitvoerders",
+        "nav_label": "Teams"
+    },
+    "library": {
+        "documents_title": "Documenten",
+        "documents_subtitle": "Bestanden voor de uitvoerders van dit team. Niet voor het meldportaal.",
+        "announcements_title": "Mededelingen",
+        "announcements_subtitle": "Teksten voor de uitvoerders van dit team. Niet voor het meldportaal.",
+        "add_document": "Document toevoegen",
+        "add_announcement": "Mededeling toevoegen",
+        "description": "Omschrijving",
+        "file": "Bestand",
+        "replace_file": "Nieuw bestand (optioneel)",
+        "audience": "Wie mag dit zien?",
+        "audience_team": "Heel het team",
+        "audience_worker": "Eén uitvoerder",
+        "worker": "Uitvoerder",
+        "worker_placeholder": "Kies een uitvoerder",
+        "worker_required": "Kies een uitvoerder van dit team.",
+        "active": "Zichtbaar voor uitvoerders",
+        "expires": "Zichtbaar tot",
+        "expires_on": "Zichtbaar tot :date",
+        "empty_documents": "Nog geen documenten voor dit team.",
+        "empty_announcements": "Nog geen mededelingen voor dit team.",
+        "open": "Openen",
+        "default_title": "Document",
+        "confirm_delete_document": "Dit document verwijderen?",
+        "confirm_delete_announcement": "Deze mededeling verwijderen?"
+    },
     "workers_index": {
         "title": "Uitvoerders",
         "subtitle": "Zoek en filter alle uitvoerders — ook bij grote teams.",

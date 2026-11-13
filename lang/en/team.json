@@ -247,6 +247,38 @@
         "worker_contract_minutes_max": "The weekly norm is at most 168 hours.",
         "worker_default_unit_location": "The home group must be on an assigned location."
     },
+    "show": {
+        "subtitle": "Documents, announcements and workers for this team.",
+        "details_title": "Team details",
+        "workers_title": "Workers",
+        "nav_label": "Teams"
+    },
+    "library": {
+        "documents_title": "Documents",
+        "documents_subtitle": "Files for this team's workers. Not for the report portal.",
+        "announcements_title": "Announcements",
+        "announcements_subtitle": "Texts for this team's workers. Not for the report portal.",
+        "add_document": "Add document",
+        "add_announcement": "Add announcement",
+        "description": "Description",
+        "file": "File",
+        "replace_file": "New file (optional)",
+        "audience": "Who can see this?",
+        "audience_team": "The whole team",
+        "audience_worker": "One worker",
+        "worker": "Worker",
+        "worker_placeholder": "Choose a worker",
+        "worker_required": "Choose a worker from this team.",
+        "active": "Visible to workers",
+        "expires": "Visible until",
+        "expires_on": "Visible until :date",
+        "empty_documents": "No documents for this team yet.",
+        "empty_announcements": "No announcements for this team yet.",
+        "open": "Open",
+        "default_title": "Document",
+        "confirm_delete_document": "Delete this document?",
+        "confirm_delete_announcement": "Delete this announcement?"
+    },
     "workers_index": {
         "title": "Workers",
         "subtitle": "Search and filter all workers — even in large teams.",

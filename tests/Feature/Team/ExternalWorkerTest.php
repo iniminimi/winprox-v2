@@ -67,8 +67,7 @@ it('toont externe badge en bedrijf in team-hub', function () {
     ]);
 
     Livewire::actingAs($admin)
-        ->test(Team::class)
-        ->call('toggleTeam', $team->id)
+        ->test(Team::class, ['internalTeam' => $team])
         ->assertSee('Elektro Peeters')
         ->assertSee(__('team.workers.external_badge'));
 });

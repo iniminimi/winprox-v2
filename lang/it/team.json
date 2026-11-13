@@ -247,6 +247,38 @@
         "worker_contract_minutes_max": "La norma settimanale è al massimo 168 ore.",
         "worker_default_unit_location": "Il gruppo di appartenenza deve essere su una sede assegnata."
     },
+    "show": {
+        "subtitle": "Documenti, comunicazioni ed esecutori di questo team.",
+        "details_title": "Dati del team",
+        "workers_title": "Esecutori",
+        "nav_label": "Team"
+    },
+    "library": {
+        "documents_title": "Documenti",
+        "documents_subtitle": "File per gli esecutori di questo team. Non per il portale segnalazioni.",
+        "announcements_title": "Comunicazioni",
+        "announcements_subtitle": "Testi per gli esecutori di questo team. Non per il portale segnalazioni.",
+        "add_document": "Aggiungi documento",
+        "add_announcement": "Aggiungi comunicazione",
+        "description": "Descrizione",
+        "file": "File",
+        "replace_file": "Nuovo file (facoltativo)",
+        "audience": "Chi può vederlo?",
+        "audience_team": "Tutto il team",
+        "audience_worker": "Un esecutore",
+        "worker": "Esecutore",
+        "worker_placeholder": "Scegli un esecutore",
+        "worker_required": "Scegli un esecutore di questo team.",
+        "active": "Visibile agli esecutori",
+        "expires": "Visibile fino al",
+        "expires_on": "Visibile fino al :date",
+        "empty_documents": "Nessun documento per questo team.",
+        "empty_announcements": "Nessuna comunicazione per questo team.",
+        "open": "Apri",
+        "default_title": "Documento",
+        "confirm_delete_document": "Eliminare questo documento?",
+        "confirm_delete_announcement": "Eliminare questa comunicazione?"
+    },
     "workers_index": {
         "title": "Esecutori",
         "subtitle": "Cerca e filtra tutti gli esecutori — anche in team numerosi.",

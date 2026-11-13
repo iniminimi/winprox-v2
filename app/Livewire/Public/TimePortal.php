@@ -74,6 +74,8 @@ use App\Models\Location;
 use App\Models\Task;
 use App\Models\Tenant;
 use App\Models\Unit;
+use App\Models\TeamAnnouncement;
+use App\Models\TeamDocument;
 use App\Models\Worker;
 use App\Models\WorkerDevice;
 use App\Models\WorkShift;
@@ -221,6 +223,12 @@ class TimePortal extends Component
 
     #[Locked]
     public bool $teamleaderOpen = false;
+
+    #[Locked]
+    public bool $teamDocumentsOpen = false;
+
+    #[Locked]
+    public bool $teamAnnouncementsOpen = false;
 
     public string $absenceKind = 'leave';
 
@@ -569,7 +577,7 @@ class TimePortal extends Component
     private function forgetPortalSignInState(): void
     {
         $this->taskBaselineSyncedThisVisit = false;
-        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'ownDeviceReleaseOffered', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'scheduleChangedDates', 'schedulePublishedFrom', 'teamScheduleOpen', 'teamScheduleWeek', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceHalfDay', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'flashMessageKey', 'flashMessageReplace', 'homescreenHelpOpen', 'teamleaderOpen']);
+        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'ownDeviceReleaseOffered', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'scheduleChangedDates', 'schedulePublishedFrom', 'teamScheduleOpen', 'teamScheduleWeek', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceHalfDay', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'flashMessageKey', 'flashMessageReplace', 'homescreenHelpOpen', 'teamleaderOpen', 'teamDocumentsOpen', 'teamAnnouncementsOpen']);
         $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm', 'rosterAcknowledged']);
     }
 
@@ -594,6 +602,7 @@ class TimePortal extends Component
         $this->teamScheduleOpen = false;
         $this->absenceListOpen = false;
         $this->teamleaderOpen = false;
+        $this->closeWorkerLibrary();
         $this->rosterAckOpen = true;
         $this->rosterListOpen = false;
         $this->rosterAcknowledged = false;
@@ -617,6 +626,7 @@ class TimePortal extends Component
         $this->teamScheduleOpen = false;
         $this->absenceListOpen = false;
         $this->teamleaderOpen = false;
+        $this->closeWorkerLibrary();
         $this->hoursMonth = now()->format('Y-m');
         $this->hoursListOpen = true;
     }
@@ -652,6 +662,7 @@ class TimePortal extends Component
         $this->teamScheduleOpen = false;
         $this->absenceListOpen = false;
         $this->teamleaderOpen = false;
+        $this->closeWorkerLibrary();
 
         $unread = $listNotifications->handle(
             $worker,
@@ -716,6 +727,7 @@ class TimePortal extends Component
         $this->scheduleListOpen = false;
         $this->absenceListOpen = false;
         $this->teamleaderOpen = false;
+        $this->closeWorkerLibrary();
         $this->teamScheduleWeek = now()->startOfWeek(Carbon::MONDAY)->toDateString();
         $this->teamScheduleOpen = true;
     }
@@ -801,6 +813,7 @@ class TimePortal extends Component
         $this->scheduleListOpen = false;
         $this->teamScheduleOpen = false;
         $this->teamleaderOpen = false;
+        $this->closeWorkerLibrary();
         $today = now()->toDateString();
         $this->absenceKind = ShiftTypeKind::Leave->value;
         $this->absenceDateFrom = $today;
@@ -828,6 +841,7 @@ class TimePortal extends Component
         $this->teamScheduleOpen = false;
         $this->absenceListOpen = false;
         $this->customerFormOpen = false;
+        $this->closeWorkerLibrary();
         $this->teamleaderOpen = true;
     }
 
@@ -1494,7 +1508,58 @@ class TimePortal extends Component
 
         $this->resetCustomerForm();
         $this->teamleaderOpen = false;
+        $this->closeWorkerLibrary();
         $this->customerFormOpen = true;
+    }
+
+    public function openTeamDocuments(): void
+    {
+        if ($this->authorizedWorker() === null) {
+            return;
+        }
+
+        $this->closeRoster();
+        $this->hoursListOpen = false;
+        $this->scheduleListOpen = false;
+        $this->teamScheduleOpen = false;
+        $this->absenceListOpen = false;
+        $this->teamleaderOpen = false;
+        $this->customerFormOpen = false;
+        $this->teamAnnouncementsOpen = false;
+        $this->teamDocumentsOpen = true;
+    }
+
+    public function closeTeamDocuments(): void
+    {
+        $this->teamDocumentsOpen = false;
+    }
+
+    public function openTeamAnnouncements(): void
+    {
+        if ($this->authorizedWorker() === null) {
+            return;
+        }
+
+        $this->closeRoster();
+        $this->hoursListOpen = false;
+        $this->scheduleListOpen = false;
+        $this->teamScheduleOpen = false;
+        $this->absenceListOpen = false;
+        $this->teamleaderOpen = false;
+        $this->customerFormOpen = false;
+        $this->teamDocumentsOpen = false;
+        $this->teamAnnouncementsOpen = true;
+    }
+
+    public function closeTeamAnnouncements(): void
+    {
+        $this->teamAnnouncementsOpen = false;
+    }
+
+    private function closeWorkerLibrary(): void
+    {
+        $this->teamDocumentsOpen = false;
+        $this->teamAnnouncementsOpen = false;
     }
 
     public function closeCustomerForm(): void
@@ -2189,6 +2254,10 @@ class TimePortal extends Component
             $this->teamleaderOpen = false;
         }
 
+        if (! $canAct || $verifiedWorker === null) {
+            $this->closeWorkerLibrary();
+        }
+
         if (! $evacuationList) {
             $this->rosterAckOpen = false;
             $this->rosterListOpen = false;
@@ -2306,6 +2375,12 @@ class TimePortal extends Component
             ? TimePortalData::onSiteGuidance($openShift->openVisit, $tasks, $todayDestinations)
             : null;
         $homescreenPoint = $this->activeClockPoint();
+        $workerDocuments = ($canAct && $verifiedWorker !== null)
+            ? TeamDocument::query()->visibleToWorker($verifiedWorker)->orderByDesc('id')->get()
+            : collect();
+        $workerAnnouncements = ($canAct && $verifiedWorker !== null)
+            ? TeamAnnouncement::query()->visibleToWorker($verifiedWorker)->orderByDesc('id')->get()
+            : collect();
 
         return view('livewire.public.time-portal', [
             'canAct' => $canAct,
@@ -2355,6 +2430,8 @@ class TimePortal extends Component
             'punchGrantSeconds' => ClockPointScanGrant::remainingSeconds((int) $this->clockPointId),
             'scanPunchMethod' => $this->scanPunchMethod(),
             'teamWorkers' => $teamWorkers,
+            'workerDocuments' => $workerDocuments,
+            'workerAnnouncements' => $workerAnnouncements,
             'manageWorkersMessage' => $this->manageWorkersMessage,
             'roster' => $roster,
             'hours' => $hours,

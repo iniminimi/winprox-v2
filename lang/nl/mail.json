@@ -208,6 +208,8 @@
                 "worker_leave_entitlements": "Verlofrechten: :count",
                 "worker_passkey_credentials": "Passkeys van uitvoerders: :count",
                 "worker_weekday_minutes": "Weekuren per uitvoerder: :count",
+                "team_announcements": "Mededelingen voor uitvoerders: :count",
+                "team_documents": "Documenten voor uitvoerders: :count",
                 "unit_album_photos": "Foto's fotoalbum: :count",
                 "unit_album_recipients": "Ontvangers fotoalbum: :count",
                 "unit_album_sends": "Verzendingen fotoalbum: :count"

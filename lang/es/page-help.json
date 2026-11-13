@@ -602,7 +602,11 @@
                 },
                 {
                     "label": "Trabajadores",
-                    "text": "Los trabajadores no tienen inicio de sesión por correo; se identifican con el QR Clock Point (nombre + icono, PIN o biometría opcionales) en un móvil. La lista del equipo muestra pastillas de estado y **Editar**: jefe de equipo, reloj (icono/móvil/PIN/passkey) y estado están en esa ventana. Sedes opcionales (vacío = en todas). Listas grandes: **Personas → Trabajadores**."
+                    "text": "Los trabajadores no tienen inicio de sesión por correo; se identifican con el QR Clock Point (nombre + icono, PIN o biometría opcionales) en un móvil. La página del equipo muestra pastillas de estado y **Editar**: jefe de equipo, reloj (icono/móvil/PIN/passkey) y estado están en esa ventana. Sedes opcionales (vacío = en todas). Listas grandes: **Personas → Trabajadores**."
+                },
+                {
+                    "label": "Documentos y avisos",
+                    "text": "Abra un equipo. Los documentos y avisos son para los ejecutores de ese equipo, no para el portal de avisos. Elija todo el equipo o un ejecutor (por ejemplo un contrato). En Clock Point cada ejecutor solo ve lo que es para él. Un archivo personal se muda con el ejecutor si cambia de equipo."
                 },
                 {
                     "label": "Ubicación",

@@ -602,7 +602,11 @@
                 },
                 {
                     "label": "Workers",
-                    "text": "Workers have no email login; they sign in via the Clock Point QR with name and icon (optional PIN or biometrics) on one phone. The team list shows status pills and **Edit** — team leader, time clock (icon/phone/PIN/passkey) and status live in that modal. Optionally link sites (empty = anywhere). Large lists: **People → Workers**."
+                    "text": "Workers have no email login; they sign in via the Clock Point QR with name and icon (optional PIN or biometrics) on one phone. The team page shows status pills and **Edit** — team leader, time clock (icon/phone/PIN/passkey) and status live in that modal. Optionally link sites (empty = anywhere). Large lists: **People → Workers**."
+                },
+                {
+                    "label": "Documents and announcements",
+                    "text": "Open a team. Documents and announcements there are for that team's workers, not the report portal. Choose the whole team, or one worker (for example a contract). On Clock Point each worker only sees what is meant for them. A personal file moves with the worker when they change team."
                 },
                 {
                     "label": "Location",

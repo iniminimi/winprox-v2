@@ -90,8 +90,7 @@ it('toont de worker-foto in teams- en uitvoerderslijst', function () {
     ]);
 
     Livewire::actingAs($admin)
-        ->test(Team::class)
-        ->call('toggleTeam', $team->id)
+        ->test(Team::class, ['internalTeam' => $team])
         ->assertSee('Lisa Foto')
         ->assertSee(Storage::disk('public')->url($path), false);
 

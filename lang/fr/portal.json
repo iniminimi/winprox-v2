@@ -235,6 +235,12 @@
         "device_self_submit": "Libérer mon ancien téléphone et me connecter",
         "device_self_released": "Votre ancien téléphone a été libéré ; cet appareil est maintenant lié."
     },
+    "worker_library": {
+        "documents_title": "Documents",
+        "documents_sub": "Vos fichiers",
+        "announcements_title": "Annonces",
+        "announcements_sub": "Messages pour vous"
+    },
     "documents": {
         "download": "Télécharger",
         "published": "Publié le :date",

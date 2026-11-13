@@ -3,6 +3,8 @@
 namespace App\Actions\Team;
 
 use App\Actions\Locations\SyncUserLocationsAction;
+use App\Models\TeamAnnouncement;
+use App\Models\TeamDocument;
 use App\Models\Worker;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Team\WorkerDefaultUnit;
@@ -68,6 +70,15 @@ class UpdateWorkerAction
         }
 
         $worker->update($updates);
+
+        if ($teamChanged) {
+            TeamDocument::query()->where('worker_id', $worker->id)->update([
+                'internal_team_id' => (int) $worker->internal_team_id,
+            ]);
+            TeamAnnouncement::query()->where('worker_id', $worker->id)->update([
+                'internal_team_id' => (int) $worker->internal_team_id,
+            ]);
+        }
 
         $this->audit->record(
             userId: $actorUserId,

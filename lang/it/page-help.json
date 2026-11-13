@@ -602,7 +602,11 @@
                 },
                 {
                     "label": "Lavoratori",
-                    "text": "I lavoratori non hanno login e-mail; accedono con il QR Clock Point (nome + icona, PIN o biometria opzionali) su un telefono. L’elenco del team mostra pillole di stato e **Modifica**: caposquadra, timbratrice (icona/telefono/PIN/passkey) e stato sono in quella finestra. Sedi opzionali (vuoto = ovunque). Elenchi grandi: **Persone → Lavoratori**."
+                    "text": "I lavoratori non hanno login e-mail; accedono con il QR Clock Point (nome + icona, PIN o biometria opzionali) su un telefono. La pagina del team mostra pillole di stato e **Modifica**: caposquadra, timbratrice (icona/telefono/PIN/passkey) e stato sono in quella finestra. Sedi opzionali (vuoto = ovunque). Elenchi grandi: **Persone → Lavoratori**."
+                },
+                {
+                    "label": "Documenti e comunicazioni",
+                    "text": "Apri un team. I documenti e le comunicazioni sono per gli esecutori di quel team, non per il portale segnalazioni. Scegli tutto il team oppure un solo esecutore (per esempio un contratto). Su Clock Point ogni esecutore vede solo ciò che è per lui. Un file personale segue l'esecutore se cambia team."
                 },
                 {
                     "label": "Sede",

@@ -247,6 +247,38 @@
         "worker_contract_minutes_max": "Die Wochennorm beträgt höchstens 168 Stunden.",
         "worker_default_unit_location": "Die Stammgruppe muss an einem zugewiesenen Standort liegen."
     },
+    "show": {
+        "subtitle": "Dokumente, Mitteilungen und Ausführende dieses Teams.",
+        "details_title": "Daten des Teams",
+        "workers_title": "Ausführende",
+        "nav_label": "Teams"
+    },
+    "library": {
+        "documents_title": "Dokumente",
+        "documents_subtitle": "Dateien für die Ausführenden dieses Teams. Nicht für das Meldeportal.",
+        "announcements_title": "Mitteilungen",
+        "announcements_subtitle": "Texte für die Ausführenden dieses Teams. Nicht für das Meldeportal.",
+        "add_document": "Dokument hinzufügen",
+        "add_announcement": "Mitteilung hinzufügen",
+        "description": "Beschreibung",
+        "file": "Datei",
+        "replace_file": "Neue Datei (optional)",
+        "audience": "Wer darf das sehen?",
+        "audience_team": "Das ganze Team",
+        "audience_worker": "Eine Person",
+        "worker": "Ausführende",
+        "worker_placeholder": "Person wählen",
+        "worker_required": "Wählen Sie eine Person aus diesem Team.",
+        "active": "Sichtbar für Ausführende",
+        "expires": "Sichtbar bis",
+        "expires_on": "Sichtbar bis :date",
+        "empty_documents": "Noch keine Dokumente für dieses Team.",
+        "empty_announcements": "Noch keine Mitteilungen für dieses Team.",
+        "open": "Öffnen",
+        "default_title": "Dokument",
+        "confirm_delete_document": "Dieses Dokument löschen?",
+        "confirm_delete_announcement": "Diese Mitteilung löschen?"
+    },
     "workers_index": {
         "title": "Mitarbeiter",
         "subtitle": "Alle Mitarbeiter suchen und filtern — auch bei großen Teams.",

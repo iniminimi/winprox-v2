@@ -208,6 +208,8 @@
                 "worker_leave_entitlements": "Derechos de vacaciones: :count",
                 "worker_passkey_credentials": "Passkeys de ejecutores: :count",
                 "worker_weekday_minutes": "Horas semanales por ejecutor: :count",
+                "team_announcements": "Avisos para ejecutores: :count",
+                "team_documents": "Documentos para ejecutores: :count",
                 "unit_album_photos": "Fotos del álbum: :count",
                 "unit_album_recipients": "Destinatarios del álbum: :count",
                 "unit_album_sends": "Envíos del álbum: :count"

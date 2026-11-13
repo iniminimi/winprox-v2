@@ -602,7 +602,11 @@
                 },
                 {
                     "label": "Uitvoerders",
-                    "text": "Uitvoerders hebben geen e-mail-login; zij melden zich aan via de Clock Point-QR met naam en icoon (optioneel pincode of biometrie) op één gsm. In de teamlijst zie je statuspills en **Bewerken** — teamleader, prikklok (icoon/gsm/PIN/passkey) en status staan in die modal. Optioneel vestigingen koppelen (leeg = overal). Grote lijsten beheer je onder **Personen → Uitvoerders**."
+                    "text": "Uitvoerders hebben geen e-mail-login; zij melden zich aan via de Clock Point-QR met naam en icoon (optioneel pincode of biometrie) op één gsm. Op de teampagina zie je statuspills en **Bewerken** — teamleader, prikklok (icoon/gsm/PIN/passkey) en status staan in die modal. Optioneel vestigingen koppelen (leeg = overal). Grote lijsten beheer je onder **Personen → Uitvoerders**."
+                },
+                {
+                    "label": "Documenten en mededelingen",
+                    "text": "Open een team. Daar staan documenten en mededelingen voor de uitvoerders van dat team, niet voor het meldportaal. Kies heel het team, of één uitvoerder (bijvoorbeeld een contract). Op Clock Point ziet elke uitvoerder alleen wat voor hem bedoeld is. Een persoonlijk bestand verhuist mee als de uitvoerder van team wisselt."
                 },
                 {
                     "label": "Locatie",

@@ -208,6 +208,8 @@
                 "worker_leave_entitlements": "Leave entitlements: :count",
                 "worker_passkey_credentials": "Worker passkeys: :count",
                 "worker_weekday_minutes": "Weekly hours per worker: :count",
+                "team_announcements": "Announcements for workers: :count",
+                "team_documents": "Documents for workers: :count",
                 "unit_album_photos": "Photo album photos: :count",
                 "unit_album_recipients": "Photo album recipients: :count",
                 "unit_album_sends": "Photo album sends: :count"

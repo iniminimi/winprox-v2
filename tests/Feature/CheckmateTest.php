@@ -950,8 +950,11 @@ it('blokkeert niet-whitelist admin-routes voor checkmate-tenants', function () {
     $this->get('/locations')->assertOk();
     $this->get('/units')->assertOk();
     $this->get('/workers')->assertOk();
-    // Uitvoerder-rij linkt naar het beheer op /team (whitelisted).
-    $this->get('/team?section=teams&worker='.checkmateWorker($tenant)->id)->assertOk();
+    // Uitvoerder-rij linkt naar het beheer; de lijst stuurt door naar de teampagina.
+    $worker = checkmateWorker($tenant);
+    $this->get('/team?section=teams&worker='.$worker->id)
+        ->assertRedirect(route('team.show', ['internalTeam' => $worker->internal_team_id, 'worker' => $worker->id]));
+    $this->get(route('team.show', $worker->internal_team_id))->assertOk();
     $this->get('/settings')
         ->assertOk()
         ->assertSee('id="settings-presence"', false)

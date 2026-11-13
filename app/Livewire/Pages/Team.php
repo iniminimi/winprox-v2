@@ -51,6 +51,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Validation\ValidationException;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Locked;
 use Livewire\Attributes\Title;
 use Livewire\Attributes\Url;
 use Livewire\Component;
@@ -123,6 +124,9 @@ class Team extends Component
     #[Url(as: 'section')]
     public ?string $section = null;
 
+    #[Locked]
+    public ?InternalTeam $viewingTeam = null;
+
     #[Url(as: 'create_worker')]
     public bool $openCreateWorker = false;
 
@@ -171,22 +175,36 @@ class Team extends Component
     public ?string $workersImportNotice = null;
     public string $workersImportNoticeType = 'success';
 
-    public function mount(): void
+    public function mount(?InternalTeam $internalTeam = null): void
     {
-        if ($this->highlightWorkerId !== null) {
+        if ($internalTeam?->exists) {
+            abort_unless((int) $internalTeam->tenant_id === (int) Tenancy::id(), 404);
+            $this->authorize('view', $internalTeam);
+            $this->viewingTeam = $internalTeam;
+            $this->section = 'teams';
+        } elseif ($this->highlightWorkerId !== null) {
             $worker = Worker::query()
                 ->where('tenant_id', Tenancy::id())
                 ->find($this->highlightWorkerId);
 
-            if ($worker !== null) {
-                $this->expandTeam((int) $worker->internal_team_id);
-                $this->section = 'teams';
-            }
-        }
+            if ($worker !== null && $worker->internal_team_id !== null) {
+                $this->redirect(route('team.show', [
+                    'internalTeam' => $worker->internal_team_id,
+                    'worker' => $worker->id,
+                ]));
 
-        if ($this->highlightTeamId !== null) {
-            $this->expandTeam($this->highlightTeamId);
-            $this->section = 'teams';
+                return;
+            }
+        } elseif ($this->highlightTeamId !== null) {
+            $team = InternalTeam::query()
+                ->where('tenant_id', Tenancy::id())
+                ->find($this->highlightTeamId);
+
+            if ($team !== null) {
+                $this->redirect(route('team.show', $team));
+
+                return;
+            }
         }
 
         if (! in_array($this->section, ['backoffice', 'teams'], true)) {
@@ -1776,6 +1794,30 @@ class Team extends Component
                     WorkerImportBatchRegistry::summary($tenantId, $batch['batch_id']),
                 ));
 
+        $teamNav = [
+            'firstId' => null,
+            'prevId' => null,
+            'nextId' => null,
+            'lastId' => null,
+        ];
+
+        if ($this->viewingTeam !== null) {
+            $this->viewingTeam->load([
+                'translations',
+                'workers' => fn ($q) => $q->with('locations')->orderBy('first_name')->orderBy('last_name'),
+            ]);
+            $orderedIds = InternalTeam::query()->orderBy('sort_order')->orderBy('name')->pluck('id');
+            $position = $orderedIds->search(fn (mixed $id): bool => (int) $id === (int) $this->viewingTeam->id);
+            if ($position !== false) {
+                $teamNav = [
+                    'firstId' => $orderedIds->first(),
+                    'prevId' => $orderedIds->get($position - 1),
+                    'nextId' => $orderedIds->get($position + 1),
+                    'lastId' => $orderedIds->last(),
+                ];
+            }
+        }
+
         return view('livewire.pages.team', [
             'colleagues' => $colleagues,
             'teams' => $teams,
@@ -1800,6 +1842,7 @@ class Team extends Component
             'workerModalTeams' => $this->showWorkerModal
                 ? $this->workerModalTeams()
                 : collect(),
+            'teamNav' => $teamNav,
             'punchClockTeams' => InternalTeam::query()
                 ->where('is_active', true)
                 ->orderBy('sort_order')

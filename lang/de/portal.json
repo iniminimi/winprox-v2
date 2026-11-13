@@ -235,6 +235,12 @@
         "device_self_submit": "Mein vorheriges Telefon freigeben und anmelden",
         "device_self_released": "Ihr vorheriges Telefon wurde freigegeben; dieses Gerät ist jetzt verknüpft."
     },
+    "worker_library": {
+        "documents_title": "Dokumente",
+        "documents_sub": "Ihre Dateien",
+        "announcements_title": "Mitteilungen",
+        "announcements_sub": "Nachrichten für Sie"
+    },
     "documents": {
         "download": "Herunterladen",
         "published": "Veröffentlicht am :date",

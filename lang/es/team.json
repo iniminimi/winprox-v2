@@ -247,6 +247,38 @@
         "worker_contract_minutes_max": "La norma semanal es como máximo 168 horas.",
         "worker_default_unit_location": "El grupo base debe estar en una ubicación asignada."
     },
+    "show": {
+        "subtitle": "Documentos, avisos y ejecutores de este equipo.",
+        "details_title": "Datos del equipo",
+        "workers_title": "Ejecutores",
+        "nav_label": "Equipos"
+    },
+    "library": {
+        "documents_title": "Documentos",
+        "documents_subtitle": "Archivos para los ejecutores de este equipo. No para el portal de avisos.",
+        "announcements_title": "Avisos",
+        "announcements_subtitle": "Textos para los ejecutores de este equipo. No para el portal de avisos.",
+        "add_document": "Añadir documento",
+        "add_announcement": "Añadir aviso",
+        "description": "Descripción",
+        "file": "Archivo",
+        "replace_file": "Archivo nuevo (opcional)",
+        "audience": "¿Quién puede ver esto?",
+        "audience_team": "Todo el equipo",
+        "audience_worker": "Un ejecutor",
+        "worker": "Ejecutor",
+        "worker_placeholder": "Elija un ejecutor",
+        "worker_required": "Elija un ejecutor de este equipo.",
+        "active": "Visible para los ejecutores",
+        "expires": "Visible hasta",
+        "expires_on": "Visible hasta :date",
+        "empty_documents": "Aún no hay documentos para este equipo.",
+        "empty_announcements": "Aún no hay avisos para este equipo.",
+        "open": "Abrir",
+        "default_title": "Documento",
+        "confirm_delete_document": "¿Eliminar este documento?",
+        "confirm_delete_announcement": "¿Eliminar este aviso?"
+    },
     "workers_index": {
         "title": "Ejecutores",
         "subtitle": "Buscar y filtrar todos los ejecutores — incluso en equipos grandes.",

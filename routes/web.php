@@ -33,6 +33,7 @@ use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\StopSupportViewController;
 use App\Http\Controllers\TenantPurgeConfirmController;
 use App\Http\Controllers\Portal\WorkerPasskeyController;
+use App\Http\Controllers\Team\TeamDocumentFileController;
 use App\Http\Controllers\Time\ClockPointHomescreenManifestController;
 use App\Http\Controllers\Time\TenantHomescreenManifestController;
 use App\Http\Controllers\Time\TimePortalHomeController;
@@ -239,6 +240,10 @@ Route::get('/time/{token}', TimePortal::class)
 Route::get('/cp/{token}', TimePortal::class)
     ->where('token', '[a-z0-9]{20,64}')
     ->name('public.time-portal.cp');
+Route::get('/team-documents/{teamDocument}/file', TeamDocumentFileController::class)
+    ->whereNumber('teamDocument')
+    ->middleware('throttle:60,1')
+    ->name('team-documents.file');
 
 Route::get('/u/{token}', [EmailUnsubscribeController::class, 'confirm'])
     ->where('token', '[0-9]{8}')
@@ -541,6 +546,7 @@ Route::middleware('auth')->group(function () {
         // op routenaam) schermbeheer NIET mee krijgt met time.clock-points.*.
         Route::get('/time/clock-points/{clockPoint}/display', ClockDisplayPair::class)->name('time.clock-displays.pair');
         Route::get('/team', Team::class)->name('team.index');
+        Route::get('/team/{internalTeam}', Team::class)->name('team.show');
         Route::get('/workers', WorkersIndex::class)->name('workers.index');
         Route::get('/settings', Settings::class)->name('settings.index');
         Route::get('/settings/api', ApiSettings::class)->name('settings.api');

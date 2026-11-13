@@ -610,7 +610,11 @@
                 },
                 {
                     "label": "Exécutants",
-                    "text": "Les exécutants n’ont pas de login e-mail ; ils s’identifient via la QR Clock Point avec nom et icône (PIN ou biométrie optionnels) sur un téléphone. La liste d’équipe montre des pastilles de statut et **Modifier** — rôle, pointeuse (icône/téléphone/PIN/passkey) et statut sont dans cette fenêtre. Sites optionnels (vide = partout). Grandes listes : **Personnes → Exécutants**."
+                    "text": "Les exécutants n’ont pas de login e-mail ; ils s’identifient via la QR Clock Point avec nom et icône (PIN ou biométrie optionnels) sur un téléphone. La page de l’équipe montre des pastilles de statut et **Modifier** — rôle, pointeuse (icône/téléphone/PIN/passkey) et statut sont dans cette fenêtre. Sites optionnels (vide = partout). Grandes listes : **Personnes → Exécutants**."
+                },
+                {
+                    "label": "Documents et annonces",
+                    "text": "Ouvrez une équipe. Les documents et annonces y sont destinés aux exécutants de cette équipe, pas au portail de signalement. Choisissez toute l'équipe, ou un seul exécutant (par exemple un contrat). Sur Clock Point, chaque exécutant ne voit que ce qui lui est destiné. Un fichier personnel suit l'exécutant s'il change d'équipe."
                 },
                 {
                     "label": "Site",

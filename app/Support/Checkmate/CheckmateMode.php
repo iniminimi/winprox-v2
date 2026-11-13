@@ -29,6 +29,7 @@ final class CheckmateMode
             'units.*',              // Route OK (site-units); niet in Checkmate-menu
             'workers.*',            // Uitvoerders (lijst)
             'team.index',           // Uitvoerder-beheer (aanmaken/bewerken)
+            'team.show',            // Teampagina: uitvoerders, documenten, mededelingen
             'time.presence.*',      // Time: aanwezigheid
             'time.shifts.*',        // Time: uren
             'time.ciao.*',          // Time: CIAO-inzendingen
@@ -47,7 +48,7 @@ final class CheckmateMode
      */
     public static function allowedPortalTiles(): array
     {
-        return ['clock', 'visit', 'break', 'hours', 'customer_create'];
+        return ['clock', 'visit', 'break', 'hours', 'customer_create', 'documents', 'announcements'];
     }
 
     public static function isActive(?Tenant $tenant): bool

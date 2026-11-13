@@ -3,6 +3,7 @@
 namespace App\Actions\Team;
 
 use App\Models\InternalTeam;
+use App\Models\TeamDocument;
 use App\Support\Audit\AuditRecorder;
 use InvalidArgumentException;
 
@@ -19,6 +20,11 @@ class DeleteTeamAction
         $tenantId = (int) $team->tenant_id;
         $teamId = (int) $team->id;
         $name = (string) $team->name;
+
+        TeamDocument::query()
+            ->where('internal_team_id', $team->id)
+            ->get()
+            ->each(fn (TeamDocument $document) => $document->deleteFile());
 
         $team->delete();
 

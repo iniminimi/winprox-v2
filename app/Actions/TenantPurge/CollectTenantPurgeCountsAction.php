@@ -72,6 +72,8 @@ final class CollectTenantPurgeCountsAction
         'worker_leave_entitlements',
         'worker_passkey_credentials',
         'worker_weekday_minutes',
+        'team_documents',
+        'team_announcements',
     ];
 
     /**

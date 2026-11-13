@@ -235,6 +235,12 @@
         "device_self_submit": "Liberar mi teléfono anterior e iniciar sesión",
         "device_self_released": "Tu teléfono anterior se ha liberado; este dispositivo ahora está vinculado."
     },
+    "worker_library": {
+        "documents_title": "Documentos",
+        "documents_sub": "Sus archivos",
+        "announcements_title": "Avisos",
+        "announcements_sub": "Mensajes para usted"
+    },
     "documents": {
         "download": "Descargar",
         "published": "Publicado el :date",

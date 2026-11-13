@@ -247,6 +247,38 @@
         "worker_contract_minutes_max": "La norme hebdomadaire est de 168 heures au plus.",
         "worker_default_unit_location": "Le groupe d’appartenance doit être sur un lieu assigné."
     },
+    "show": {
+        "subtitle": "Documents, annonces et exécutants de cette équipe.",
+        "details_title": "Données de l'équipe",
+        "workers_title": "Exécutants",
+        "nav_label": "Équipes"
+    },
+    "library": {
+        "documents_title": "Documents",
+        "documents_subtitle": "Fichiers pour les exécutants de cette équipe. Pas pour le portail de signalement.",
+        "announcements_title": "Annonces",
+        "announcements_subtitle": "Textes pour les exécutants de cette équipe. Pas pour le portail de signalement.",
+        "add_document": "Ajouter un document",
+        "add_announcement": "Ajouter une annonce",
+        "description": "Description",
+        "file": "Fichier",
+        "replace_file": "Nouveau fichier (facultatif)",
+        "audience": "Qui peut voir ceci ?",
+        "audience_team": "Toute l'équipe",
+        "audience_worker": "Un exécutant",
+        "worker": "Exécutant",
+        "worker_placeholder": "Choisissez un exécutant",
+        "worker_required": "Choisissez un exécutant de cette équipe.",
+        "active": "Visible pour les exécutants",
+        "expires": "Visible jusqu'au",
+        "expires_on": "Visible jusqu'au :date",
+        "empty_documents": "Pas encore de documents pour cette équipe.",
+        "empty_announcements": "Pas encore d'annonces pour cette équipe.",
+        "open": "Ouvrir",
+        "default_title": "Document",
+        "confirm_delete_document": "Supprimer ce document ?",
+        "confirm_delete_announcement": "Supprimer cette annonce ?"
+    },
     "workers_index": {
         "title": "Exécutants",
         "subtitle": "Rechercher et filtrer tous les exécutants — même dans de grandes équipes.",

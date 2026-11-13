@@ -2,6 +2,7 @@
 
 namespace App\Actions\Team;
 
+use App\Models\TeamDocument;
 use App\Models\Worker;
 use App\Support\Audit\AuditRecorder;
 use Illuminate\Support\Facades\Storage;
@@ -36,6 +37,11 @@ class DeleteWorkerAction
         $tenantId = (int) $worker->tenant_id;
         $id = (int) $worker->id;
         $photoPath = $worker->photo_path;
+
+        TeamDocument::query()
+            ->where('worker_id', $worker->id)
+            ->get()
+            ->each(fn (TeamDocument $document) => $document->deleteFile());
 
         $worker->devices()->delete();
         $worker->delete();

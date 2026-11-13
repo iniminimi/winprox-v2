@@ -208,6 +208,8 @@
                 "worker_leave_entitlements": "Urlaubsansprüche: :count",
                 "worker_passkey_credentials": "Passkeys der Ausführenden: :count",
                 "worker_weekday_minutes": "Wochenstunden pro Ausführendem: :count",
+                "team_announcements": "Mitteilungen für Ausführende: :count",
+                "team_documents": "Dokumente für Ausführende: :count",
                 "unit_album_photos": "Fotoalbum-Fotos: :count",
                 "unit_album_recipients": "Fotoalbum-Empfänger: :count",
                 "unit_album_sends": "Fotoalbum-Versendungen: :count"

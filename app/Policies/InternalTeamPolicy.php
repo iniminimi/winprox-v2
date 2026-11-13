@@ -4,6 +4,7 @@ namespace App\Policies;
 
 use App\Models\InternalTeam;
 use App\Models\User;
+use App\Support\Tenancy;
 
 /**
  * RBAC voor teams (V2-spec §6.0/§6.2):
@@ -17,6 +18,17 @@ class InternalTeamPolicy
     public function viewAny(User $user): bool
     {
         return $user->is_superuser || $user->tenant_id !== null;
+    }
+
+    public function view(User $user, InternalTeam $team): bool
+    {
+        if ($user->is_superuser) {
+            $tenantId = $user->tenant_id ?? Tenancy::id();
+
+            return $tenantId !== null && (int) $tenantId === (int) $team->tenant_id;
+        }
+
+        return $this->update($user, $team);
     }
 
     public function create(User $user): bool

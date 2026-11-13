@@ -602,7 +602,11 @@
                 },
                 {
                     "label": "Ausführende",
-                    "text": "Ausführende haben kein E-Mail-Login; sie melden sich über den Clock-Point-QR mit Name und Symbol (optionale PIN oder Biometrie) auf einem Handy an. Die Teamliste zeigt Status-Pills und **Bearbeiten** — Teamleiter, Stechuhr (Symbol/Handy/PIN/Passkey) und Status stehen in diesem Dialog. Optional Standorte (leer = überall). Große Listen: **Personen → Ausführende**."
+                    "text": "Ausführende haben kein E-Mail-Login; sie melden sich über den Clock-Point-QR mit Name und Symbol (optionale PIN oder Biometrie) auf einem Handy an. Die Teamseite zeigt Status-Pills und **Bearbeiten** — Teamleiter, Stechuhr (Symbol/Handy/PIN/Passkey) und Status stehen in diesem Dialog. Optional Standorte (leer = überall). Große Listen: **Personen → Ausführende**."
+                },
+                {
+                    "label": "Dokumente und Mitteilungen",
+                    "text": "Öffnen Sie ein Team. Dokumente und Mitteilungen dort gelten für die Ausführenden dieses Teams, nicht für das Meldeportal. Wählen Sie das ganze Team oder eine Person (zum Beispiel einen Vertrag). Am Clock Point sieht jede Person nur, was für sie bestimmt ist. Eine persönliche Datei zieht mit, wenn die Person das Team wechselt."
                 },
                 {
                     "label": "Standort",

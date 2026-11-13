@@ -50,9 +50,8 @@ it('beperkt de uitvoerders in een team tot de gekozen locatie', function () {
     ]);
 
     Livewire::actingAs($admin)
-        ->test(Team::class)
+        ->test(Team::class, ['internalTeam' => $team])
         ->assertSee(__('team.workers_index.filters.all_locations'), false)
-        ->call('toggleTeam', $team->id)
         ->assertSee('Nora Noord')
         ->assertSee('Zora Zuid')
         ->assertSee('Ada Overal')
@@ -777,10 +776,9 @@ it('houdt zeldzame worker-acties in de bewerk-modal, niet in de lijst', function
         'internal_team_id' => $team->id,
     ]);
 
-    $page = Livewire::actingAs($admin)->test(Team::class);
+    $page = Livewire::actingAs($admin)->test(Team::class, ['internalTeam' => $team]);
 
     $page
-        ->call('toggleTeam', $team->id)
         ->assertSeeHtml('wire:click="openEditWorker('.$worker->id.')"')
         ->assertDontSeeHtml('wire:click="resetWorkerIcon('.$worker->id.')"')
         ->assertDontSeeHtml('wire:click="setWorkerTeamleader('.$worker->id)
@@ -817,10 +815,12 @@ it('verbergt icoonstatus en icoonreset wanneer de pincode verplicht is', functio
 
     Livewire::actingAs($admin)
         ->test(Team::class)
-        ->call('toggleTeam', $team->id)
-        ->assertSeeHtml($pill)
         ->call('openEditWorker', $worker->id)
         ->assertSeeHtml('wire:click="resetWorkerIcon('.$worker->id.')"');
+
+    Livewire::actingAs($admin)
+        ->test(Team::class, ['internalTeam' => $team])
+        ->assertSeeHtml($pill);
 
     $tenant->forceFill([
         'has_time_module' => true,
@@ -829,11 +829,13 @@ it('verbergt icoonstatus en icoonreset wanneer de pincode verplicht is', functio
 
     Livewire::actingAs($admin)
         ->test(Team::class)
-        ->call('toggleTeam', $team->id)
-        ->assertDontSeeHtml($pill)
         ->call('openEditWorker', $worker->id)
         ->assertDontSeeHtml('wire:click="resetWorkerIcon('.$worker->id.')"')
         ->assertDontSee(__('team.workers.modal.clock_hint_pin'), false);
+
+    Livewire::actingAs($admin)
+        ->test(Team::class, ['internalTeam' => $team])
+        ->assertDontSeeHtml($pill);
 
     $device = WorkerDevice::factory()->create([
         'tenant_id' => $tenant->id,

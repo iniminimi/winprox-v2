@@ -1410,11 +1410,22 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 - Sidebar **Personen → Teams** (`/team?section=teams`): teamlijst (geen checklists).
 - Onder de titel staat «Eén team is genoeg om te starten…» zolang er geen team is.
   Zodra er een team is: «Beheer hier de teams binnen je organisatie en voeg uitvoerders toe».
-- Lijst: teamnaam, aantal actieve workers, actief/inactief. Filter **Locatie**
-  beperkt de uitvoerders per team (zelfde regel als Uitvoerders: toegewezen aan
-  die vestiging, geen vestiging, of een team dat overal mag inklokken). Het
-  aantal naast de teamnaam volgt die filter. Verwijderen van een team kijkt
-  nog naar alle uitvoerders, niet naar de gefilterde lijst.
+- Lijst: teamnaam, aantal actieve workers, actief/inactief. Een klik op de
+  teamnaam opent de teampagina (`/team/{team}`): gegevens, documenten,
+  mededelingen en de uitvoerders van dat team. Filter **Locatie** staat op de
+  lijst en op de teampagina en beperkt de uitvoerders (zelfde regel als
+  Uitvoerders: toegewezen aan die vestiging, geen vestiging, of een team dat
+  overal mag inklokken). Het aantal volgt die filter. Verwijderen van een team
+  kijkt nog naar alle uitvoerders, niet naar de gefilterde lijst.
+- **Documenten en mededelingen voor uitvoerders** hangen aan het team, niet aan
+  de vestiging. Ze staan niet op het unit-QR-portaal en tellen niet mee in het
+  documentenquotum (10/20/30/40). Doelgroep: heel het team, of één uitvoerder
+  (bijvoorbeeld een contract). Een persoonlijk bestand verhuist mee als de
+  uitvoerder van team wisselt; een teambreed bestand blijft op dat team.
+  Zelfde bestandstypes als locatiedocumenten, max. 10 MB, privé-disk. Op Clock
+  Point ziet de aangemelde uitvoerder alleen de eigen tegels, en alleen als er
+  iets is — ook zonder Time. Download loopt via de sessie, niet via een
+  publieke URL. Een teamleader ziet de contracten van collega’s niet.
 - Aanmaken/bewerken (naam, `sort_order`, actief, **`clocks_all_locations`** voor invallers) — **aanmaken/deactiveren = admin**; inhoud
   bewerken = admin of medewerker. Geen sectorcopy.
 - **Clock Point-QR** (Time-module, standaard aan): printbare QR → `/time/{token}` geeft een

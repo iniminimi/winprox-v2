@@ -510,6 +510,39 @@
                     @else
                         <p class="wp-muted">{{ __('portal.worker.errors.no_permission') }}</p>
                     @endif
+                @elseif ($teamDocumentsOpen)
+                    <x-wp-portal-back wire:click="closeTeamDocuments" />
+                    <x-wp-page-head-title variant="portal" icon="document" :title="__('portal.worker_library.documents_title')">
+                        <p class="wp-muted">{{ __('portal.worker_library.documents_sub') }}</p>
+                    </x-wp-page-head-title>
+                    <div class="wp-list">
+                        @foreach ($workerDocuments as $document)
+                            <a href="{{ route('team-documents.file', $document) }}" class="wp-issue-row" wire:key="worker-doc-{{ $document->id }}">
+                                <span class="wp-grow wp-stack-tight">
+                                    <span class="wp-issue-desc">{{ $document->description }}</span>
+                                    <span class="wp-muted wp-text-sm">{{ $document->title }}</span>
+                                </span>
+                                <span class="btn btn--ghost btn--sm">{{ __('portal.documents.download') }}</span>
+                            </a>
+                        @endforeach
+                    </div>
+                @elseif ($teamAnnouncementsOpen)
+                    <x-wp-portal-back wire:click="closeTeamAnnouncements" />
+                    <x-wp-page-head-title variant="portal" icon="chat-bubble" :title="__('portal.worker_library.announcements_title')">
+                        <p class="wp-muted">{{ __('portal.worker_library.announcements_sub') }}</p>
+                    </x-wp-page-head-title>
+                    <div class="wp-list">
+                        @foreach ($workerAnnouncements as $announcement)
+                            <div class="wp-issue-row" wire:key="worker-announcement-{{ $announcement->id }}">
+                                <div class="wp-grow wp-stack-tight">
+                                    <p class="wp-issue-desc">{{ $announcement->description }}</p>
+                                    @if ($announcement->expires_at)
+                                        <p class="wp-muted wp-text-sm">{{ __('team.library.expires_on', ['date' => $announcement->expires_at->format('d-m-Y')]) }}</p>
+                                    @endif
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
                 @elseif ($teamleaderOpen)
                     <x-wp-portal-back wire:click="closeTeamleader" />
                     <x-wp-page-head-title variant="portal" icon="star" :title="__('portal.teamleader.page_title')">
@@ -988,6 +1021,31 @@
                                 </span>
                                 <span class="wp-tile-sub">{{ __('portal.teamleader.tile_sub') }}</span>
                             </button>
+                        </div>
+                    @endif
+
+                    @if (($workerDocuments ?? collect())->isNotEmpty() || ($workerAnnouncements ?? collect())->isNotEmpty())
+                        <div class="wp-tiles">
+                            @if (($workerDocuments ?? collect())->isNotEmpty())
+                                <button type="button" class="wp-tile" wire:click="openTeamDocuments">
+                                    <span class="wp-cluster">
+                                        <x-wp-icon name="document" class="wp-tile-icon" />
+                                        <span class="wp-tile-title">{{ __('portal.worker_library.documents_title') }}</span>
+                                        <span class="wp-pill wp-pill--closed">{{ $workerDocuments->count() }}</span>
+                                    </span>
+                                    <span class="wp-tile-sub">{{ __('portal.worker_library.documents_sub') }}</span>
+                                </button>
+                            @endif
+                            @if (($workerAnnouncements ?? collect())->isNotEmpty())
+                                <button type="button" class="wp-tile" wire:click="openTeamAnnouncements">
+                                    <span class="wp-cluster">
+                                        <x-wp-icon name="chat-bubble" class="wp-tile-icon" />
+                                        <span class="wp-tile-title">{{ __('portal.worker_library.announcements_title') }}</span>
+                                        <span class="wp-pill wp-pill--closed">{{ $workerAnnouncements->count() }}</span>
+                                    </span>
+                                    <span class="wp-tile-sub">{{ __('portal.worker_library.announcements_sub') }}</span>
+                                </button>
+                            @endif
                         </div>
                     @endif
                 @endif
