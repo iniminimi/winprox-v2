@@ -543,7 +543,6 @@
             "list_title": "Le tue richieste",
             "form_title": "Nuova richiesta",
             "half_day": "Mezza giornata",
-            "half_day_hint": "Solo se la richiesta è un solo giorno.",
             "cancel_confirm": "Ritirare questa richiesta?",
             "cancel_approved_confirm": "Ritirare queste ferie o recupero approvati? Il turno ripristina i servizi precedenti.",
             "submitted": "Richiesta inviata.",

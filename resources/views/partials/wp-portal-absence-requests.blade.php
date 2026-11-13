@@ -40,7 +40,6 @@
                 <input type="checkbox" wire:model="absenceHalfDay">
                 <span>{{ __('time.portal.absence.half_day') }}</span>
             </label>
-            <p class="wp-hint">{{ __('time.portal.absence.half_day_hint') }}</p>
         @endif
         <div class="wp-field" x-data="{ n: 0, max: {{ \App\Support\Validation\TextDescriptionLimits::MAX }} }">
             <label class="wp-label" for="absence-description">{{ __('time.portal.absence.description') }}</label>

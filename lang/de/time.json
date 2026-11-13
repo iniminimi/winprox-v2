@@ -543,7 +543,6 @@
             "list_title": "Ihre Anträge",
             "form_title": "Neuer Antrag",
             "half_day": "Halber Tag",
-            "half_day_hint": "Nur wenn der Antrag einen einzelnen Tag betrifft.",
             "cancel_confirm": "Diesen Antrag zurückziehen?",
             "cancel_approved_confirm": "Diesen genehmigten Urlaub oder Ausgleich zurückziehen? Der Dienstplan stellt die früheren Schichten wieder her.",
             "submitted": "Antrag gesendet.",

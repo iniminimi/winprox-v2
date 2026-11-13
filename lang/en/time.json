@@ -543,7 +543,6 @@
             "list_title": "Your requests",
             "form_title": "New request",
             "half_day": "Half day",
-            "half_day_hint": "Only when the request is a single day.",
             "cancel_confirm": "Withdraw this request?",
             "cancel_approved_confirm": "Withdraw this approved leave or TOIL? The roster restores the previous duties.",
             "submitted": "Request sent.",

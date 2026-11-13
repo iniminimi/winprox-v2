@@ -543,7 +543,6 @@
             "list_title": "Vos demandes",
             "form_title": "Nouvelle demande",
             "half_day": "Demi-journée",
-            "half_day_hint": "Uniquement si la demande porte sur un seul jour.",
             "cancel_confirm": "Retirer cette demande ?",
             "cancel_approved_confirm": "Retirer ce congé ou cette récup approuvé ? Le planning rétablit les services précédents.",
             "submitted": "Demande envoyée.",
