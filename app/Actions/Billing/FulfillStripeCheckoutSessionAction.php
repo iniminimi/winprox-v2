@@ -4,6 +4,7 @@ namespace App\Actions\Billing;
 
 use App\Models\Tenant;
 use Illuminate\Support\Facades\Http;
+use InvalidArgumentException;
 
 /**
  * Haalt checkout.session op en activeert het plan voor de tenant (Stripe-webhook / success redirect).
@@ -53,7 +54,15 @@ class FulfillStripeCheckoutSessionAction
             $seatsQty = is_numeric($qty) ? max(1, (int) $qty) : null;
         }
 
-        $this->activate->handle(null, $tenant, $plan, 'stripe', seatsQty: $seatsQty);
+        try {
+            $this->activate->handle(null, $tenant, $plan, 'stripe', seatsQty: $seatsQty);
+        } catch (InvalidArgumentException $e) {
+            if ($e->getMessage() === 'corporate_plan_locked') {
+                return false;
+            }
+
+            throw $e;
+        }
 
         $customerId = $response->json('customer');
         if (is_string($customerId) && $customerId !== '') {

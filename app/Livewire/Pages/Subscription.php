@@ -101,6 +101,12 @@ class Subscription extends Component
             return;
         }
 
+        if ($tenant->isCorporate()) {
+            $this->addError('plan', __('subscription.corporate_locked'));
+
+            return;
+        }
+
         $result = $stripe->createCheckoutSession(auth()->user(), $tenant, $plan);
         $url = $result['url'] ?? null;
         if (! is_string($url) || $url === '') {
@@ -129,6 +135,12 @@ class Subscription extends Component
 
         if (! auth()->user()->can('manageSubscription', $tenant)) {
             $this->addError('plan', __('subscription.errors.admin_only'));
+
+            return;
+        }
+
+        if ($tenant->isCorporate()) {
+            $this->addError('plan', __('subscription.corporate_locked'));
 
             return;
         }

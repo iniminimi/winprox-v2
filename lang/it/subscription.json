@@ -18,6 +18,7 @@
     "choose_plan_loading": "Scelta in corso...",
     "activate_plan": "Scegli questo piano",
     "current_plan": "Piano attuale",
+    "corporate_locked": "Questa organizzazione è su Corporate. Solo WinProx può cambiare il piano.",
     "admin_required": "Solo un amministratore può scegliere un abbonamento. Contatta l'amministratore della tua organizzazione.",
     "activated": "Hai scelto :plan. Il tuo abbonamento è attivo per il periodo configurato.",
     "facility_not_included": "Segnalazioni, attività e calendario richiedono WinProx Facility o Corporate. Aggiorna il piano.",

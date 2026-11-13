@@ -3,6 +3,7 @@
     $allowSelfActivation = (bool) config('billing.allow_tenant_self_activation', false);
     $showManageActions = ($canManage ?? false) && ! $publicMode;
     $showPlanActivation = $showManageActions && $allowSelfActivation;
+    $corporateLocked = ! $publicMode && ($tenant?->isCorporate() ?? false);
     $checkmateMode = ! $publicMode && ($tenant?->checkmateMode() ?? false);
 @endphp
 
@@ -188,6 +189,9 @@
     <section class="wp-card wp-card-pad wp-billing-page-width">
         <header class="wp-billing-product__intro">
             <h2 class="wp-section-title">{{ __('subscription.plans_heading') }}</h2>
+            @if ($corporateLocked)
+                <p class="wp-muted">{{ __('subscription.corporate_locked') }}</p>
+            @endif
         </header>
 
         <div class="wp-billing-plan-list">
@@ -228,7 +232,7 @@
                             @endif
                         </ul>
                         @if (empty($planConfig['time_module']) && is_string($timeVariant) && $timeVariant !== '')
-                            @if ($showPlanActivation)
+                            @if ($showPlanActivation && ! $corporateLocked)
                                 <label class="wp-check wp-billing-time-addon">
                                     <input type="checkbox" wire:model.live="includeTime.{{ $planKey }}">
                                     <span>
@@ -248,7 +252,7 @@
                         <div class="wp-billing-plan-card-action">
                             @if ($isCurrentPlan && ($billingStatus ?? null) === 'paid')
                                 <span class="wp-pill wp-pill--done">{{ __('subscription.current_plan') }}</span>
-                            @elseif ($showPlanActivation && config("billing.plans.{$planKey}.self_activate", true))
+                            @elseif ($showPlanActivation && ! $corporateLocked && config("billing.plans.{$planKey}.self_activate", true))
                                 <button
                                     type="button"
                                     class="btn btn--primary btn--block"
@@ -260,7 +264,7 @@
                                     <span wire:loading.remove wire:target="activatePlan('{{ $planKey }}')">{{ __('subscription.choose_plan') }}</span>
                                     <span wire:loading wire:target="activatePlan('{{ $planKey }}')">{{ __('subscription.choose_plan_loading') }}</span>
                                 </button>
-                            @else
+                            @elseif (! $corporateLocked)
                                 <a
                                     href="mailto:{{ config('billing.contact_email') }}?subject={{ rawurlencode(__('subscription.contact_sales_subject')) }}"
                                     class="btn btn--ghost btn--block"

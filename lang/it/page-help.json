@@ -855,7 +855,7 @@
                 },
                 {
                     "label": "Scelga piano",
-                    "text": "Formule: 5/10/25/50 licenze + Corporate. Scegli e paghi mensilmente con Stripe (Corporate su richiesta). Contatta info@winprox.app per Corporate o CIAO. CIAO si richiede allo stesso modo; un Superuser lo attiva (Time si attiva; Corporate non serve)."
+                    "text": "Formule: 5/10/25/50 licenze + Corporate. Scegli e paghi mensilmente con Stripe (Corporate su richiesta). In Corporate un amministratore non può scegliere un altro piano; solo un Superuser lo cambia. Contatta info@winprox.app per Corporate o CIAO. CIAO si richiede allo stesso modo; un Superuser lo attiva (Time si attiva; Corporate non serve)."
                 },
                 {
                     "label": "Checkmate",

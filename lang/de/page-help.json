@@ -855,7 +855,7 @@
                 },
                 {
                     "label": "Tarif / Kontakt",
-                    "text": "Formeln: 5/10/25/50 Lizenzen + Corporate. Sie wählen selbst und zahlen monatlich über Stripe (Corporate auf Anfrage). Kontakt: info@winprox.app für Corporate oder CIAO. CIAO (LSS) ebenso beantragen; ein Superuser schaltet es ein (Time geht mit; kein Corporate nötig)."
+                    "text": "Formeln: 5/10/25/50 Lizenzen + Corporate. Sie wählen selbst und zahlen monatlich über Stripe (Corporate auf Anfrage). Bei Corporate kann ein Admin keinen anderen Tarif wählen; nur ein Superuser ändert ihn. Kontakt: info@winprox.app für Corporate oder CIAO. CIAO (LSS) ebenso beantragen; ein Superuser schaltet es ein (Time geht mit; kein Corporate nötig)."
                 },
                 {
                     "label": "Checkmate",

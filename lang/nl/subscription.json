@@ -17,6 +17,7 @@
     "choose_plan_loading": "Bezig met kiezen...",
     "activate_plan": "Kies deze formule",
     "current_plan": "Huidige formule",
+    "corporate_locked": "Deze organisatie zit op Corporate. Alleen WinProx kan de formule wijzigen.",
     "admin_required": "Alleen een beheerder kan een abonnement kiezen. Neem contact op met de beheerder van je organisatie.",
     "activated": "Je koos :plan. Je abonnement is actief voor de geconfigureerde periode.",
     "facility_not_included": "Meldingen, taken en kalender vereisen WinProx Facility of Corporate. Upgrade je formule om facility-workflows te ontgrendelen.",

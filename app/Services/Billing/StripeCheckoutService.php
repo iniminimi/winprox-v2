@@ -28,6 +28,10 @@ class StripeCheckoutService
      */
     public function createCheckoutSession(User $actor, Tenant $tenant, string $plan): array
     {
+        if ($tenant->isCorporate()) {
+            return ['url' => null, 'error' => 'corporate_plan_locked'];
+        }
+
         if (! config('stripe.offer_checkout')) {
             return ['url' => null, 'error' => 'offer_checkout_off'];
         }

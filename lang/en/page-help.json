@@ -855,7 +855,7 @@
                 },
                 {
                     "label": "Plan / contact",
-                    "text": "Plans: 5/10/25/50 seats + Corporate. You choose a plan and pay monthly via Stripe (Corporate on request). Contact info@winprox.app for Corporate or CIAO. Request CIAO (NSSO) the same way; a Superuser enables it (Time turns on; Corporate not required)."
+                    "text": "Plans: 5/10/25/50 seats + Corporate. You choose a plan and pay monthly via Stripe (Corporate on request). On Corporate, an admin cannot choose another plan; only a Superuser changes it. Contact info@winprox.app for Corporate or CIAO. Request CIAO (NSSO) the same way; a Superuser enables it (Time turns on; Corporate not required)."
                 },
                 {
                     "label": "Checkmate",

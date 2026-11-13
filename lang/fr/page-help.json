@@ -863,7 +863,7 @@
                 },
                 {
                     "label": "Formule / contact",
-                    "text": "Formules : 5/10/25/50 licences + Corporate. Vous choisissez une formule et payez mensuellement via Stripe (Corporate sur demande). Contactez info@winprox.app pour Corporate ou CIAO. CIAO (ONSS) se demande de la même façon ; un Superuser l’active (Time s’active ; pas besoin de Corporate)."
+                    "text": "Formules : 5/10/25/50 licences + Corporate. Vous choisissez une formule et payez mensuellement via Stripe (Corporate sur demande). En Corporate, un administrateur ne peut pas choisir une autre formule ; seul un Superuser la modifie. Contactez info@winprox.app pour Corporate ou CIAO. CIAO (ONSS) se demande de la même façon ; un Superuser l’active (Time s’active ; pas besoin de Corporate)."
                 },
                 {
                     "label": "Checkmate",

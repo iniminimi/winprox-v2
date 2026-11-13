@@ -855,7 +855,7 @@
                 },
                 {
                     "label": "Formule / contact",
-                    "text": "Formules: 5/10/25/50 licenties + Corporate. U kiest zelf een formule en betaalt maandelijks via Stripe (Corporate op aanvraag). Neem contact op via info@winprox.app voor Corporate of CIAO. CIAO (RSZ) vraagt u ook aan; een Superuser zet het aan (Time gaat mee; geen Corporate nodig)."
+                    "text": "Formules: 5/10/25/50 licenties + Corporate. U kiest zelf een formule en betaalt maandelijks via Stripe (Corporate op aanvraag). Zit de organisatie op Corporate, dan kan de beheerder geen andere formule kiezen; alleen een Superuser wijzigt die. Neem contact op via info@winprox.app voor Corporate of CIAO. CIAO (RSZ) vraagt u ook aan; een Superuser zet het aan (Time gaat mee; geen Corporate nodig)."
                 },
                 {
                     "label": "Checkmate",

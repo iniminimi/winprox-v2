@@ -17,6 +17,7 @@
     "choose_plan_loading": "Choosing...",
     "activate_plan": "Choose this plan",
     "current_plan": "Current plan",
+    "corporate_locked": "This organisation is on Corporate. Only WinProx can change the plan.",
     "admin_required": "Only an administrator can choose a subscription. Contact your organisation's administrator.",
     "activated": "You chose :plan. Your subscription is active for the configured period.",
     "facility_not_included": "Issues, tasks and calendar require WinProx Facility or Corporate. Upgrade your plan to unlock facility workflows.",

@@ -18,6 +18,7 @@
     "choose_plan_loading": "Eligiendo...",
     "activate_plan": "Elegir este plan",
     "current_plan": "Plan actual",
+    "corporate_locked": "Esta organización está en Corporate. Solo WinProx puede cambiar el plan.",
     "admin_required": "Solo un administrador puede elegir una suscripción. Contacte al administrador de su organización.",
     "activated": "Ha elegido :plan. Su suscripción está activa durante el período configurado.",
     "facility_not_included": "Incidencias, tareas y calendario requieren WinProx Facility o Corporate. Actualice su plan.",

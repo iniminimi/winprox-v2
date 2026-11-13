@@ -755,6 +755,11 @@ class Tenant extends Model
         return $this->currentSeatsCount();
     }
 
+    public function isCorporate(): bool
+    {
+        return self::normalizeBillingPlanKey($this->billing_plan) === 'corporate';
+    }
+
     public function effectivePlanKey(): ?string
     {
         if ($this->isPaidSubscriptionActive() || $this->isInPaidSubscriptionGrace()) {

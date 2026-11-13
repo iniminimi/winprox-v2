@@ -40,6 +40,10 @@ class ActivateSubscriptionPlanAction
             throw new InvalidArgumentException('plan_not_self_activate');
         }
 
+        if ($tenant->isCorporate() && $source !== 'platform') {
+            throw new InvalidArgumentException('corporate_plan_locked');
+        }
+
         if ($plan === 'corporate' && $unitsCap === null && $tenant->billing_units_cap === null) {
             throw new InvalidArgumentException('corporate_units_cap_required');
         }

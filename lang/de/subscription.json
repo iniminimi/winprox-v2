@@ -18,6 +18,7 @@
     "choose_plan_loading": "Wird gewählt...",
     "activate_plan": "Diesen Tarif wählen",
     "current_plan": "Aktueller Tarif",
+    "corporate_locked": "Diese Organisation ist auf Corporate. Nur WinProx kann den Tarif ändern.",
     "admin_required": "Nur ein Administrator kann ein Abonnement wählen. Wenden Sie sich an den Administrator Ihrer Organisation.",
     "activated": "Sie haben :plan gewählt. Ihr Abonnement ist für den konfigurierten Zeitraum aktiv.",
     "facility_not_included": "Meldungen, Aufgaben und Kalender erfordern WinProx Facility oder Corporate. Upgraden Sie Ihren Tarif.",

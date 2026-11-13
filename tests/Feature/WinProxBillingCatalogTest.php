@@ -107,6 +107,55 @@ it('houdt Time-plan-variant beschikbaar buiten de catalogus', function () {
         ->and(BillingCatalogViewData::publicPlanKeys())->toBe(['checkmate', 'winprox_5', 'winprox_10', 'winprox_25', 'winprox_50', 'corporate']);
 });
 
+it('laat een Corporate-tenant geen andere formule kiezen', function () {
+    config([
+        'billing.allow_tenant_self_activation' => true,
+        'stripe.offer_checkout' => true,
+        'stripe.enabled' => false,
+    ]);
+
+    $tenant = Tenant::factory()->create([
+        'billing_plan' => 'corporate',
+        'billing_units_cap' => 800,
+        'billing_active_until' => now()->addYear(),
+        'trial_ends_at' => now()->subDay(),
+    ]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(Subscription::class)
+        ->assertSee(__('subscription.corporate_locked'))
+        ->assertDontSee(__('subscription.choose_plan'))
+        ->call('activatePlan', 'winprox_5')
+        ->assertHasErrors(['plan']);
+
+    expect($tenant->fresh()->billing_plan)->toBe('corporate');
+
+    expect(fn () => app(ActivateSubscriptionPlanAction::class)->handle($admin, $tenant, 'winprox_10', 'manual'))
+        ->toThrow(InvalidArgumentException::class, 'corporate_plan_locked');
+});
+
+it('laat een superuser een Corporate-tenant naar een andere formule zetten', function () {
+    $super = User::factory()->superuser()->create();
+    $tenant = Tenant::factory()->create([
+        'billing_plan' => 'corporate',
+        'billing_units_cap' => 800,
+        'billing_active_until' => now()->addYear(),
+        'trial_ends_at' => now()->subDay(),
+    ]);
+
+    Livewire::actingAs($super)
+        ->test(Tenants::class)
+        ->set('planInputs.'.$tenant->id, 'winprox_10')
+        ->call('assignPlan', $tenant->id)
+        ->assertHasNoErrors();
+
+    $tenant->refresh();
+
+    expect($tenant->billing_plan)->toBe('winprox_10')
+        ->and($tenant->billing_units_cap)->toBeNull();
+});
+
 it('weigert self-activate van legacy facility-tiers', function () {
     $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
