@@ -606,7 +606,7 @@
                 },
                 {
                     "label": "Dokumente und Mitteilungen",
-                    "text": "Öffnen Sie ein Team. Dokumente und Mitteilungen dort gelten für die Ausführenden dieses Teams, nicht für das Meldeportal. Wählen Sie das ganze Team oder eine Person (zum Beispiel einen Vertrag). Am Clock Point sieht jede Person nur, was für sie bestimmt ist. Eine persönliche Datei zieht mit, wenn die Person das Team wechselt. In der Verwaltung zeigt die Liste standardmäßig die aktiven Einträge für das ganze Team; filtern Sie nach Ausführenden, Status oder Suchbegriff. Klicken Sie auf den Zähler bei einem Ausführenden, um dessen Einträge zu sehen. 25 Einträge pro Seite."
+                    "text": "Öffnen Sie ein Team. Dokumente und Mitteilungen dort gelten für die Ausführenden dieses Teams. Sie stehen nicht auf dem Meldeportal und zählen nicht zum Dokumentenkontingent. Wählen Sie das ganze Team oder eine Person, zum Beispiel einen Vertrag. Setzen Sie Aktiv, damit es am Clock Point erscheint. Eine persönliche Datei zieht mit, wenn die Person das Team wechselt. Am Clock Point sieht jede Person nur, was für sie bestimmt ist. Neue Inhalte stehen unter der Anmeldungskarte mit einem blauen Zähler; nach dem Öffnen sinkt die Kachel wieder nach unten. In der Verwaltung zeigt die Liste standardmäßig die aktiven Einträge für das ganze Team; filtern Sie nach Ausführenden, Status oder Suchbegriff. Klicken Sie auf den Zähler bei einem Ausführenden, um dessen Einträge zu sehen. 25 Einträge pro Seite."
                 },
                 {
                     "label": "Standort",
@@ -1143,7 +1143,7 @@
                 },
                 {
                     "label": "Neue Dokumente und Mitteilungen",
-                    "text": "Neue Dokumente und Mitteilungen stehen vorübergehend oben und zeigen einen blauen Zähler. Öffnen Sie die Kachel; danach kehrt sie an ihren festen Platz unten zurück. Kommen später neue Inhalte hinzu, wandert sie erneut nach oben. Ihr Lesestand bleibt auch auf einem anderen Gerät erhalten."
+                    "text": "Neue Dokumente und Mitteilungen stehen vorübergehend direkt unter Ihrer Anmeldungskarte und zeigen einen blauen Zähler. Öffnen Sie die Kachel; danach kehrt sie an ihren festen Platz unten zurück. Kommen später neue Inhalte hinzu, wandert sie erneut nach oben. Ihr Lesestand bleibt auch auf einem anderen Gerät erhalten."
                 }
             ]
         },

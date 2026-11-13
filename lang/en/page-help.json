@@ -606,7 +606,7 @@
                 },
                 {
                     "label": "Documents and announcements",
-                    "text": "Open a team. Documents and announcements there are for that team's workers, not the report portal. Choose the whole team, or one worker (for example a contract). On Clock Point each worker only sees what is meant for them. A personal file moves with the worker when they change team. In management the list shows the active items for the whole team by default; filter by worker, status or search term. Click the counter next to a worker to see their items. 25 items per page."
+                    "text": "Open a team. Documents and announcements there are for that team's workers. They are not on the report portal and do not count toward the document quota. Choose the whole team, or one worker, for example a contract. Tick Active to show it on Clock Point. A personal file moves with the worker when they change team. On Clock Point each worker only sees what is meant for them. New content appears under the sign-in card with a blue counter; after opening, the tile moves back down. In management the list shows the active items for the whole team by default; filter by worker, status or search term. Click the counter next to a worker to see their items. 25 items per page."
                 },
                 {
                     "label": "Location",
@@ -1127,7 +1127,7 @@
                 },
                 {
                     "label": "New documents and announcements",
-                    "text": "New documents and announcements temporarily appear at the top with a blue counter. Open the tile to view the content; it then returns to its fixed place at the bottom. If new content arrives later, the tile moves up again. Your read state belongs to you and is also retained on another device."
+                    "text": "New documents and announcements temporarily appear directly under your sign-in card, with a blue counter. Open the tile to view the content; it then returns to its fixed place at the bottom. If new content arrives later, the tile moves up again. Your read state belongs to you and is also retained on another device."
                 },
                 {
                     "label": "Evacuation list",

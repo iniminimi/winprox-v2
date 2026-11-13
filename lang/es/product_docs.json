@@ -185,7 +185,7 @@
                     "Gestionar categorías y sedes. Añadir unidades una a una o en bloque, también por CSV.",
                     "Buscar y gestionar ejecutores en Personas → Ejecutores. Una foto de retrato es opcional.",
                     "Poner documentos y avisos a disposición en el portal. Definir qué sedes puede usar un ejecutor.",
-                    "Documentos y avisos para los ejecutores en Clock Point: un archivo personal, como un contrato, o un solo archivo para todo el equipo, como el reglamento. No en el portal de avisos y no cuentan en la cuota de documentos de la sede. El contenido nuevo recibe un contador azul y mueve temporalmente la tarjeta arriba; después de abrirla, vuelve abajo.",
+                    "Documentos y avisos para los ejecutores en Clock Point: un archivo personal, como un contrato, o un solo archivo para todo el equipo, como el reglamento. No en el portal de avisos y no cuentan en la cuota de documentos de la sede. El contenido nuevo recibe un contador azul y coloca temporalmente la tarjeta bajo la tarjeta de acceso; después de abrirla, vuelve abajo. En la gestión filtre por ejecutor, estado o búsqueda; 25 por página.",
                     "Los equipos de refuerzo pueden fichar en todas las sedes. Los demás ejecutores solo en las sedes que tienen asignadas.",
                     "Definir un jefe de equipo, o cambiar un icono, un teléfono, un PIN o una clave de acceso, se hace en Editar."
                 ]

@@ -606,7 +606,7 @@
                 },
                 {
                     "label": "Documenten en mededelingen",
-                    "text": "Open een team. Daar staan documenten en mededelingen voor de uitvoerders van dat team, niet voor het meldportaal. Kies heel het team, of één uitvoerder (bijvoorbeeld een contract). Op Clock Point ziet elke uitvoerder alleen wat voor hem bedoeld is. Een persoonlijk bestand verhuist mee als de uitvoerder van team wisselt. In beheer toont de lijst standaard de actieve items voor heel het team; filter op uitvoerder, status of zoekterm. Klik op de teller bij een uitvoerder om diens items te zien. 25 items per pagina."
+                    "text": "Open een team. Daar staan documenten en mededelingen voor de uitvoerders van dat team. Ze horen niet op het meldportaal en tellen niet mee in het documentenquotum. Kies heel het team, of één uitvoerder, bijvoorbeeld een contract. Vink Actief aan om het op Clock Point te tonen. Een persoonlijk bestand verhuist mee als de uitvoerder van team wisselt. Op Clock Point ziet elke uitvoerder alleen wat voor hem bedoeld is. Nieuwe inhoud staat onder de aanmeldkaart met een blauwe teller; na openen zakt de tegel terug naar onderen. In beheer toont de lijst standaard de actieve items voor heel het team; filter op uitvoerder, status of zoekterm. Klik op de teller bij een uitvoerder om diens items te zien. 25 items per pagina."
                 },
                 {
                     "label": "Locatie",
@@ -1127,7 +1127,7 @@
                 },
                 {
                     "label": "Nieuwe documenten en mededelingen",
-                    "text": "Nieuwe documenten en mededelingen staan tijdelijk bovenaan met een blauwe teller. Open de tegel om de inhoud te bekijken; daarna keert de tegel terug naar de vaste plek onderaan. Komt er later iets nieuws bij, dan verhuist de tegel opnieuw naar boven. De leesstand hoort bij jou en blijft ook op een ander toestel bewaard."
+                    "text": "Nieuwe documenten en mededelingen staan tijdelijk direct onder je aanmeldkaart, met een blauwe teller. Open de tegel om de inhoud te bekijken; daarna keert de tegel terug naar de vaste plek onderaan. Komt er later iets nieuws bij, dan verhuist de tegel opnieuw omhoog. De leesstand hoort bij jou en blijft ook op een ander toestel bewaard."
                 },
                 {
                     "label": "Evacuatielijst",

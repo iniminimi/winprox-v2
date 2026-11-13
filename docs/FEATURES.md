@@ -1431,10 +1431,10 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   Point ziet de aangemelde uitvoerder alleen de eigen tegels, en alleen als er
   iets is — ook zonder Time. Download loopt via de sessie, niet via een
   publieke URL. Een teamleader ziet de contracten van collega’s niet. Een tegel
-  met nieuwe inhoud verhuist met een blauwe teller naar boven. Zodra de
-  uitvoerder die tegel opent, is alles wat dan zichtbaar is gelezen en keert de
-  tegel terug naar onderen; nieuwe inhoud brengt ze opnieuw naar boven. Deze
-  leesstand wordt per uitvoerder bewaard.
+  met nieuwe inhoud staat direct onder de aanmeldkaart, met een blauwe teller.
+  Zodra de uitvoerder die tegel opent, is alles wat dan zichtbaar is gelezen en
+  keert de tegel terug naar onderen; nieuwe inhoud brengt ze opnieuw omhoog.
+  Deze leesstand wordt per uitvoerder bewaard.
 - Aanmaken/bewerken (naam, `sort_order`, actief, **`clocks_all_locations`** voor invallers) — **aanmaken/deactiveren = admin**; inhoud
   bewerken = admin of medewerker. Geen sectorcopy.
 - **Clock Point-QR** (Time-module, standaard aan): printbare QR → `/time/{token}` geeft een

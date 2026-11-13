@@ -614,7 +614,7 @@
                 },
                 {
                     "label": "Documents et annonces",
-                    "text": "Ouvrez une équipe. Les documents et annonces y sont destinés aux exécutants de cette équipe, pas au portail de signalement. Choisissez toute l'équipe, ou un seul exécutant (par exemple un contrat). Sur Clock Point, chaque exécutant ne voit que ce qui lui est destiné. Un fichier personnel suit l'exécutant s'il change d'équipe. En gestion, la liste affiche par défaut les éléments actifs pour toute l’équipe ; filtrez par exécutant, statut ou mot-clé. Cliquez sur le compteur d’un exécutant pour voir ses éléments. 25 éléments par page."
+                    "text": "Ouvrez une équipe. Les documents et annonces sont destinés aux exécutants de cette équipe. Ils ne sont pas sur le portail de signalement et ne comptent pas dans le quota de documents. Choisissez toute l'équipe, ou un seul exécutant, par exemple un contrat. Cochez Actif pour l'afficher sur Clock Point. Un fichier personnel suit l'exécutant s'il change d'équipe. Sur Clock Point, chaque exécutant ne voit que ce qui lui est destiné. Le nouveau contenu apparaît sous la carte de connexion avec un compteur bleu ; après ouverture, la tuile redescend. En gestion, la liste affiche par défaut les éléments actifs pour toute l’équipe ; filtrez par exécutant, statut ou mot-clé. Cliquez sur le compteur d’un exécutant pour voir ses éléments. 25 éléments par page."
                 },
                 {
                     "label": "Site",
@@ -1135,7 +1135,7 @@
                 },
                 {
                     "label": "Nouveaux documents et annonces",
-                    "text": "Les nouveaux documents et annonces apparaissent temporairement en haut avec un compteur bleu. Ouvrez la tuile pour consulter le contenu ; elle revient ensuite à sa place fixe en bas. Si du nouveau contenu arrive, elle remonte. Votre état de lecture vous suit aussi sur un autre appareil."
+                    "text": "Les nouveaux documents et annonces apparaissent temporairement juste sous votre carte de connexion, avec un compteur bleu. Ouvrez la tuile pour consulter le contenu ; elle revient ensuite à sa place fixe en bas. Si du nouveau contenu arrive, elle remonte. Votre état de lecture vous suit aussi sur un autre appareil."
                 },
                 {
                     "label": "Liste d’évacuation",

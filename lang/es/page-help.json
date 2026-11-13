@@ -606,7 +606,7 @@
                 },
                 {
                     "label": "Documentos y avisos",
-                    "text": "Abra un equipo. Los documentos y avisos son para los ejecutores de ese equipo, no para el portal de avisos. Elija todo el equipo o un ejecutor (por ejemplo un contrato). En Clock Point cada ejecutor solo ve lo que es para él. Un archivo personal se muda con el ejecutor si cambia de equipo. En la gestión, la lista muestra por defecto los elementos activos para todo el equipo; filtre por ejecutor, estado o término de búsqueda. Haga clic en el contador de un ejecutor para ver sus elementos. 25 elementos por página."
+                    "text": "Abra un equipo. Los documentos y avisos son para los ejecutores de ese equipo. No están en el portal de avisos y no cuentan en la cuota de documentos. Elija todo el equipo o un ejecutor, por ejemplo un contrato. Marque Activo para mostrarlo en Clock Point. Un archivo personal se muda con el ejecutor si cambia de equipo. En Clock Point cada ejecutor solo ve lo que es para él. El contenido nuevo aparece bajo la tarjeta de acceso con un contador azul; después de abrirlo, la tarjeta baja de nuevo. En la gestión, la lista muestra por defecto los elementos activos para todo el equipo; filtre por ejecutor, estado o término de búsqueda. Haga clic en el contador de un ejecutor para ver sus elementos. 25 elementos por página."
                 },
                 {
                     "label": "Ubicación",
@@ -1143,7 +1143,7 @@
                 },
                 {
                     "label": "Documentos y avisos nuevos",
-                    "text": "Los documentos y avisos nuevos aparecen temporalmente arriba con un contador azul. Abra la tarjeta para ver el contenido; después vuelve a su lugar fijo abajo. Si llega contenido nuevo, vuelve a subir. Su estado de lectura también se conserva en otro dispositivo."
+                    "text": "Los documentos y avisos nuevos aparecen temporalmente justo debajo de su tarjeta de acceso, con un contador azul. Abra la tarjeta para ver el contenido; después vuelve a su lugar fijo abajo. Si llega contenido nuevo, vuelve a subir. Su estado de lectura también se conserva en otro dispositivo."
                 }
             ]
         },
