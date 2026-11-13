@@ -1475,7 +1475,11 @@
             "actions": [
                 {
                     "label": "Totaal en per maand",
-                    "text": "Overuren toont per uitvoerder het saldo van dit kalenderjaar tot vandaag, en elke maand daarin. Vorige maanden van dit jaar tellen mee. Op 1 januari begint het saldo opnieuw. Het getal is gewerkte tijd van gesloten diensten min het gepubliceerde rooster, min recup die al op het rooster staat of als aanvraag openstaat. Een hele recupdag volgt het weekpatroon of de gewone verdeling van het contract. Geen loon."
+                    "text": "Overuren toont per uitvoerder het saldo van dit kalenderjaar tot vandaag. Het totaal staat naast de naam, daarna de maanden. Vorige maanden van dit jaar tellen mee. Op 1 januari begint het saldo opnieuw. Het getal is gewerkte tijd van gesloten diensten min het gepubliceerde rooster, min recup die al op het rooster staat of als aanvraag openstaat. Een hele recupdag volgt het weekpatroon of de gewone verdeling van het contract. Geen loon."
+                },
+                {
+                    "label": "Team en clock point",
+                    "text": "Filter op team of clock point en druk op <strong>Toepassen</strong>. Team toont de uitvoerders van dat team. Clock point toont wie dit jaar daar een gesloten dienst heeft. Het saldo blijft het jaarsaldo, ook uren op een ander clock point."
                 }
             ]
         },

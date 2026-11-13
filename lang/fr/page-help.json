@@ -1483,7 +1483,11 @@
             "actions": [
                 {
                     "label": "Total et par mois",
-                    "text": "Heures supplémentaires montre par personne le solde de cette année civile jusqu’à aujourd’hui, et chaque mois. Les mois précédents de cette année comptent. Le 1er janvier le solde recommence. Le chiffre est le temps travaillé des services clos moins le planning publié, moins la récup déjà au planning ou en demande ouverte. Une journée entière de récup suit le schéma de semaine ou la répartition ordinaire du contrat. Pas de salaire."
+                    "text": "Heures supplémentaires montre par personne le solde de cette année civile jusqu’à aujourd’hui. Le total est à côté du nom, puis les mois. Les mois précédents de cette année comptent. Le 1er janvier le solde recommence. Le chiffre est le temps travaillé des services clos moins le planning publié, moins la récup déjà au planning ou en demande ouverte. Une journée entière de récup suit le schéma de semaine ou la répartition ordinaire du contrat. Pas de salaire."
+                },
+                {
+                    "label": "Équipe et clock point",
+                    "text": "Filtrez par équipe ou clock point et cliquez sur <strong>Appliquer</strong>. L’équipe montre les personnes de cette équipe. Le clock point montre qui y a un service clos cette année. Le solde reste celui de l’année, y compris les heures sur un autre clock point."
                 }
             ]
         },

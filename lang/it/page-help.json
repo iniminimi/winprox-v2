@@ -1475,7 +1475,11 @@
             "actions": [
                 {
                     "label": "Totale e per mese",
-                    "text": "Straordinari mostra per persona il saldo di quest’anno civile fino a oggi, e ogni mese. I mesi precedenti di quest’anno contano. Il 1° gennaio il saldo ricomincia. La cifra è il tempo lavorato dei servizi chiusi meno il turno pubblicato, meno il recupero già in turno o in una richiesta aperta. Un giorno intero di recupero segue lo schema settimanale o la ripartizione ordinaria del contratto. Non è paga."
+                    "text": "Straordinari mostra per persona il saldo di quest’anno civile fino a oggi. Il totale sta accanto al nome, poi i mesi. I mesi precedenti di quest’anno contano. Il 1° gennaio il saldo ricomincia. La cifra è il tempo lavorato dei servizi chiusi meno il turno pubblicato, meno il recupero già in turno o in una richiesta aperta. Un giorno intero di recupero segue lo schema settimanale o la ripartizione ordinaria del contratto. Non è paga."
+                },
+                {
+                    "label": "Team e clock point",
+                    "text": "Filtri per team o clock point e clicchi <strong>Applica</strong>. Il team mostra le persone di quel team. Il clock point mostra chi vi ha un servizio chiuso quest’anno. Il saldo resta quello dell’anno, anche le ore su un altro clock point."
                 }
             ]
         },

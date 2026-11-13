@@ -87,7 +87,7 @@
                     "Les personnes pointent avec le QR de Clock Point. Sur une pointeuse fixe, chaque pointage scanne le code de l’autocollant ou de l’écran. L’icône de l’écran d’accueil et le lien de connexion ne pointent pas à eux seuls. Avec Checkmate, on peut pointer via l’icône.",
                     "Une photo de l’autocollant peut aussi servir hors des lieux. Le QR de l’écran change tout seul et expire : une vieille photo ne suffit plus.",
                     "Vous voyez qui est présent et la feuille d’heures, et chacun voit sous Mes heures seulement ses propres services.",
-                    "Sous Présence, Heures supplémentaires montre le solde de cette année civile jusqu’à aujourd’hui, au total et par mois. Les mois précédents de cette année comptent. Ce n’est pas un calcul de salaire.",
+                    "Sous Présence, Heures supplémentaires montre le solde de cette année civile jusqu’à aujourd’hui, le total à côté du nom puis par mois. Équipe et clock point limitent qui vous voyez ; le solde reste celui de l’année. Les mois précédents de cette année comptent. Ce n’est pas un calcul de salaire.",
                     "WinProx compare prévu et pointé avec une marge de 15 minutes. Un marquage ouvre tout de suite les heures de cette personne pour ce jour.",
                     "Si quelqu’un a oublié de pointer, un gestionnaire peut ajouter l’enregistrement à la main.",
                     "Si quelqu’un pointe pendant un congé, une récupération, un jour férié ou une maladie, cela devient un point d’attention : un avertissement près de la personne dans la liste de présence, et sur le téléphone un bloc d’entrée rouge avec un message. C’est un signal pour vérifier l’enregistrement, pas un jugement sur la durée du travail.",

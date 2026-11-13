@@ -1475,7 +1475,11 @@
             "actions": [
                 {
                     "label": "Total and by month",
-                    "text": "Overtime shows each worker’s balance for this calendar year up to today, and each month in it. Earlier months of this year are included. On 1 January the balance starts again. The figure is time worked on closed shifts minus the published roster, minus time off already on the roster or in an open request. A full day of time off follows the week pattern or the ordinary split of the contract. Not pay."
+                    "text": "Overtime shows each worker’s balance for this calendar year up to today. The total sits next to the name, then the months. Earlier months of this year are included. On 1 January the balance starts again. The figure is time worked on closed shifts minus the published roster, minus time off already on the roster or in an open request. A full day of time off follows the week pattern or the ordinary split of the contract. Not pay."
+                },
+                {
+                    "label": "Team and clock point",
+                    "text": "Filter by team or clock point and click <strong>Apply</strong>. Team shows the workers of that team. Clock point shows who has a closed shift there this year. The balance stays the year balance, including hours at another clock point."
                 }
             ]
         },

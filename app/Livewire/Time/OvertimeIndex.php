@@ -4,6 +4,8 @@ namespace App\Livewire\Time;
 
 use App\Actions\Time\WorkerRecupBalanceAction;
 use App\Livewire\Concerns\ProvidesTimeNavAlarmCount;
+use App\Models\ClockPoint;
+use App\Models\InternalTeam;
 use App\Models\Tenant;
 use App\Models\Worker;
 use App\Models\WorkShift;
@@ -13,6 +15,7 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 
 #[Layout('components.layouts.app')]
@@ -21,6 +24,12 @@ class OvertimeIndex extends Component
 {
     use AuthorizesRequests;
     use ProvidesTimeNavAlarmCount;
+
+    #[Url(as: 'team')]
+    public ?int $teamFilter = null;
+
+    #[Url(as: 'clock_point')]
+    public ?int $clockPointFilter = null;
 
     public function boot(): void
     {
@@ -33,15 +42,15 @@ class OvertimeIndex extends Component
         TimeModuleAccess::assertEnabledForTenantId((int) Tenancy::id());
     }
 
+    public function applyFilters(): void
+    {
+    }
+
     public function render(WorkerRecupBalanceAction $overtime)
     {
         $tenant = Tenant::query()->find((int) Tenancy::id());
         $workers = $tenant instanceof Tenant
-            ? Worker::query()
-                ->where('tenant_id', $tenant->id)
-                ->orderBy('last_name')
-                ->orderBy('first_name')
-                ->get()
+            ? $this->workersForFilters($tenant)
             : collect();
 
         $byWorker = $tenant instanceof Tenant
@@ -85,7 +94,43 @@ class OvertimeIndex extends Component
             'rows' => $rows,
             'year' => $year,
             'monthLabels' => $monthLabels,
+            'teams' => $tenant instanceof Tenant
+                ? InternalTeam::query()->with('translations')->orderBy('sort_order')->orderBy('name')->get()
+                : collect(),
+            'clockPoints' => $tenant instanceof Tenant
+                ? ClockPoint::query()->orderBy('sort_order')->orderBy('name')->get()
+                : collect(),
             'alarmCount' => $this->timeNavAlarmCount(),
         ]);
+    }
+
+    /**
+     * Team beperkt op het team van de uitvoerder. Clock point beperkt op wie dit
+     * jaar daar een gesloten dienst heeft. Het saldo zelf blijft het jaarsaldo.
+     *
+     * @return \Illuminate\Support\Collection<int, Worker>
+     */
+    private function workersForFilters(Tenant $tenant)
+    {
+        $yearStart = now()->startOfYear();
+        $tomorrow = now()->startOfDay()->addDay();
+
+        return Worker::query()
+            ->where('tenant_id', $tenant->id)
+            ->when($this->teamFilter, fn ($q) => $q->where('internal_team_id', $this->teamFilter))
+            ->when($this->clockPointFilter, function ($q) use ($tenant, $yearStart, $tomorrow): void {
+                $clockedIds = WorkShift::query()
+                    ->where('tenant_id', $tenant->id)
+                    ->where('clock_in_clock_point_id', $this->clockPointFilter)
+                    ->whereNotNull('clock_out_at')
+                    ->where('clock_in_at', '>=', $yearStart)
+                    ->where('clock_in_at', '<', $tomorrow)
+                    ->distinct()
+                    ->pluck('worker_id');
+                $q->whereIn('id', $clockedIds);
+            })
+            ->orderBy('last_name')
+            ->orderBy('first_name')
+            ->get();
     }
 }

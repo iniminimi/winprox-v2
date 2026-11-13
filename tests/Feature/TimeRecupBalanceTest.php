@@ -7,6 +7,7 @@ use App\Actions\Time\WorkerRecupBalanceAction;
 use App\Data\Time\RequestAbsenceData;
 use App\Enums\PlannedShiftStatus;
 use App\Enums\ShiftTypeKind;
+use App\Livewire\Time\OvertimeIndex;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\PlannedShift;
@@ -20,6 +21,7 @@ use App\Support\Tenancy;
 use App\Support\Time\WorkDurationFormatter;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
+use Livewire\Livewire;
 
 afterEach(function () {
     Carbon::setTestNow();
@@ -248,7 +250,13 @@ it('toont in het beheer het totaal en de maand van de overuren', function () {
         ->get(route('time.overtime.index'))
         ->assertOk()
         ->assertSee('Nora Peeters', false)
-        ->assertSee(__('time.overtime.total'), false)
+        ->assertSeeInOrder([
+            __('time.overtime.worker'),
+            __('time.overtime.total'),
+            'wp-overtime-table__gap',
+        ], false)
+        ->assertSee(__('time.filters.team'), false)
+        ->assertSee(__('time.filters.clock_point'), false)
         ->assertSee(WorkDurationFormatter::signed(60), false)
         ->assertSee('wp-time-nav--clock', false)
         ->assertSee('wp-time-nav--plan', false);
@@ -258,4 +266,35 @@ it('toont in het beheer het totaal en de maand van de overuren', function () {
         ->assertOk()
         ->assertSee(__('time.nav.overtime'), false)
         ->assertSee(__('time.nav.shifts'), false);
+});
+
+it('filtert overuren op team en clock point en houdt het jaarsaldo', function () {
+    [$tenant, $clockPoint, $worker] = recupBalanceTenant();
+    $worker->forceFill(['first_name' => 'Nora', 'last_name' => 'Peeters'])->save();
+    $otherTeam = InternalTeam::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Andere']);
+    $otherPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Poort B']);
+    $other = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $otherTeam->id,
+        'first_name' => 'Mila',
+        'last_name' => 'Janssens',
+    ]);
+    recupWorked($tenant, $worker, $clockPoint, '2026-08-03 08:00:00', '2026-08-03 17:00:00');
+    recupWorked($tenant, $other, $otherPoint, '2026-08-03 08:00:00', '2026-08-03 17:00:00');
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($admin)
+        ->test(OvertimeIndex::class)
+        ->assertSee('Nora Peeters', false)
+        ->assertSee('Mila Janssens', false)
+        ->set('teamFilter', $worker->internal_team_id)
+        ->call('applyFilters')
+        ->assertSee('Nora Peeters', false)
+        ->assertDontSee('Mila Janssens', false)
+        ->set('teamFilter', null)
+        ->set('clockPointFilter', $otherPoint->id)
+        ->call('applyFilters')
+        ->assertDontSee('Nora Peeters', false)
+        ->assertSee('Mila Janssens', false)
+        ->assertSee(WorkDurationFormatter::signed(540), false);
 });

@@ -1475,7 +1475,11 @@
             "actions": [
                 {
                     "label": "Summe und pro Monat",
-                    "text": "Überstunden zeigt je Person das Saldo dieses Kalenderjahres bis heute, und jeden Monat darin. Frühere Monate dieses Jahres zählen mit. Am 1. Januar beginnt das Saldo neu. Die Zahl ist gearbeitete Zeit geschlossener Dienste minus veröffentlichter Dienstplan, minus Ausgleich der schon im Plan steht oder als Antrag offen ist. Ein ganzer Ausgleichstag folgt dem Wochenmuster oder der gewöhnlichen Verteilung des Vertrags. Kein Lohn."
+                    "text": "Überstunden zeigt je Person das Saldo dieses Kalenderjahres bis heute. Die Summe steht neben dem Namen, danach die Monate. Frühere Monate dieses Jahres zählen mit. Am 1. Januar beginnt das Saldo neu. Die Zahl ist gearbeitete Zeit geschlossener Dienste minus veröffentlichter Dienstplan, minus Ausgleich der schon im Plan steht oder als Antrag offen ist. Ein ganzer Ausgleichstag folgt dem Wochenmuster oder der gewöhnlichen Verteilung des Vertrags. Kein Lohn."
+                },
+                {
+                    "label": "Team und Clock Point",
+                    "text": "Filtern Sie nach Team oder Clock Point und drücken Sie <strong>Anwenden</strong>. Team zeigt die Personen dieses Teams. Clock Point zeigt, wer dort dieses Jahr einen geschlossenen Dienst hat. Das Saldo bleibt das Jahressaldo, auch Stunden an einem anderen Clock Point."
                 }
             ]
         },

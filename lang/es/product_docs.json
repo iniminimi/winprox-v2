@@ -87,7 +87,7 @@
                     "Las personas fichan con el QR de Clock Point. En un reloj fijo, cada fichaje escanea el código de la pegatina o de la pantalla. El icono de la pantalla de inicio y el enlace de acceso no fichan por sí solos. En Checkmate se puede fichar desde el icono.",
                     "Una foto de la pegatina también sirve fuera de la puerta. El QR de la pantalla cambia solo y caduca, así que una foto vieja ya no vale.",
                     "Se ve quién está presente y el parte de horas, y cada persona ve en Mis horas solo sus propios turnos.",
-                    "En Presencia, Horas extra muestra el saldo de este año natural hasta hoy, en total y por mes. Los meses anteriores de este año cuentan. No es un cálculo de nómina.",
+                    "En Presencia, Horas extra muestra el saldo de este año natural hasta hoy, el total junto al nombre y después por mes. Equipo y clock point limitan a quién ve; el saldo sigue siendo el del año. Los meses anteriores de este año cuentan. No es un cálculo de nómina.",
                     "WinProx compara lo previsto y lo fichado con un margen de 15 minutos. Una marca abre al momento las horas de esa persona en ese día.",
                     "Si alguien olvidó fichar, un administrador puede añadir el registro a mano.",
                     "Si alguien ficha durante un permiso, una compensación, un festivo o una baja, eso pasa a ser un aviso: una advertencia junto a la persona en la lista de presencia, y en el teléfono un bloque de entrada rojo con un mensaje. Es una señal para revisar el registro, no un juicio sobre la jornada.",

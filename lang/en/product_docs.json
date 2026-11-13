@@ -87,7 +87,7 @@
                     "People clock in and out with the Clock Point QR code. On a fixed clock, each punch scans the code on the sticker or on the clock screen. The home-screen icon and the sign-in link do not clock in by themselves. On Checkmate, a worker can clock in and out from the icon.",
                     "A photo of the sticker can also be used away from the door. The QR code on the clock screen changes by itself and expires, so an old photo no longer works.",
                     "You see who is present and the timesheet, and each person sees only their own shifts under My hours.",
-                    "Under Presence, Overtime shows this calendar year’s balance up to today, as a total and by month. Earlier months of this year are included. This is not a pay calculation.",
+                    "Under Presence, Overtime shows this calendar year’s balance up to today, the total next to the name and then by month. Team and clock point limit who you see; the balance stays the year balance. Earlier months of this year are included. This is not a pay calculation.",
                     "WinProx compares planned and recorded time with a margin of 15 minutes. A mark opens that person’s hours for that day straight away.",
                     "If someone forgot to clock in, an administrator can add the record by hand.",
                     "If someone clocks in during leave, time off, a public holiday or sickness, that becomes a point of attention: a warning next to that person on the presence list, and a red clock-in block with a message on the phone. It is a signal to check the record, not a judgement on working time.",
