@@ -135,7 +135,8 @@
                     "In het beheer-uurrooster ziet u open aanvragen als markering op de betreffende dagen; via die markering opent u Time → Aanvragen (dienst blijft staan tot goedkeuring).",
                     "Een weigering vraagt een reden. Na de beslissing is zichtbaar wie heeft goedgekeurd of geweigerd.",
                     "Een open of goedgekeurde aanvraag kan worden ingetrokken zolang de afwezigheid nog niet begonnen is.",
-                    "Bij goedkeuring blijven de bestaande diensten eerst staan. Daarna vervangt WinProx ze in het rooster door de afwezigheid."
+                    "Bij goedkeuring blijven de bestaande diensten eerst staan. Daarna vervangt WinProx ze in het rooster door de afwezigheid.",
+                    "Op Clock Point ziet de medewerker het resterende verlof van dit jaar, en van volgend jaar als daar een recht is. De overuren zijn de gewerkte tijd tot vandaag min het gepubliceerde rooster, min recup die al op het rooster staat of als aanvraag openstaat. Dat is geen loonberekening."
                 ]
             },
             {

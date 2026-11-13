@@ -29,6 +29,8 @@ use App\Actions\Time\ListPublishedLocationRosterAction;
 use App\Actions\Time\ListPublishedWorkerRosterAction;
 use App\Actions\Time\ListWorkDestinationsForWorkerAction;
 use App\Actions\Time\ListWorkerAbsenceRequestsAction;
+use App\Actions\Time\WorkerLeaveBalanceAction;
+use App\Actions\Time\WorkerRecupBalanceAction;
 use App\Actions\Time\ListWorkerHoursAction;
 use App\Actions\Time\RequestAbsenceAction;
 use App\Actions\Time\LogBlockedClockPointQrAttemptAction;
@@ -43,6 +45,7 @@ use App\Actions\Time\SuggestNearbyClockUnitsAction;
 use App\Actions\Time\TransferOpenWorkShiftToClockPointAction;
 use App\Actions\Units\RecordUnitCheckAndApplyTasksAction;
 use App\Actions\Units\ResolveOpenUnitTaskForCheckAction;
+use App\Data\Time\LeaveBalance;
 use App\Data\Time\RequestAbsenceData;
 use App\Data\Units\RecordUnitCheckData;
 use App\Enums\ClockDeviceRefusalReason;
@@ -78,6 +81,7 @@ use App\Support\Checkmate\CheckmateMode;
 use App\Support\Portal\ClockPointScanGrant;
 use App\Support\Portal\PortalEntryToken;
 use App\Support\Portal\TimePortalData;
+use App\Support\Time\WorkDurationFormatter;
 use App\Support\Portal\WorkerDeviceSession;
 use App\Support\Portal\WorkerIcon;
 use App\Support\Portal\WorkerIconGuard;
@@ -2239,8 +2243,30 @@ class TimePortal extends Component
         }
 
         $absenceRequests = collect();
+        $leaveBalances = [];
+        $recupHours = '';
         if ($canAct && $this->absenceListOpen && $verifiedWorker !== null && $timeRosterEnabled && ! $checkmateMode) {
             $absenceRequests = $listAbsenceRequests->handle($verifiedWorker, $this->tenantId);
+            $balanceTenant = Tenant::query()->find($this->tenantId);
+            if ($balanceTenant !== null) {
+                $leaveAction = app(WorkerLeaveBalanceAction::class);
+                $workerId = (int) $verifiedWorker->id;
+                $year = (int) now()->year;
+                foreach ([$year, $year + 1] as $offset => $balanceYear) {
+                    $balance = $leaveAction->handle($balanceTenant, [$workerId], $balanceYear)[$workerId];
+                    if ($offset === 1 && $balance->entitlementHalves === null) {
+                        continue;
+                    }
+                    $remaining = $balance->remainingHalves();
+                    $leaveBalances[] = [
+                        'year' => $balanceYear,
+                        'remaining' => $remaining === null ? null : LeaveBalance::formatHalves($remaining),
+                    ];
+                }
+                $recupHours = WorkDurationFormatter::signed(
+                    app(WorkerRecupBalanceAction::class)->handle($balanceTenant, $verifiedWorker),
+                );
+            }
         }
 
         $teamSchedule = null;
@@ -2342,6 +2368,8 @@ class TimePortal extends Component
             'scheduleChangedDaysLabel' => $scheduleChangedDaysLabel,
             'scheduleUnreadCount' => $scheduleUnreadCount,
             'absenceRequests' => $absenceRequests,
+            'leaveBalances' => $leaveBalances,
+            'recupHours' => $recupHours,
             'checkmateMode' => $checkmateMode,
             'customerOptions' => ($checkmateMode && $this->customerFormOpen)
                 ? Customer::query()

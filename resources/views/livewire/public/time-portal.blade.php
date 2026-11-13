@@ -331,6 +331,8 @@
                     </x-wp-page-head-title>
                     @include('partials.wp-portal-absence-requests', [
                         'absenceRequests' => $absenceRequests,
+                        'leaveBalances' => $leaveBalances,
+                        'recupHours' => $recupHours,
                     ])
                 @elseif ($rosterListOpen && $roster !== null)
                     <x-wp-portal-back wire:click="closeRoster" />

@@ -6,6 +6,15 @@ namespace App\Support\Time;
 
 final class WorkDurationFormatter
 {
+    public static function signed(int $minutes): string
+    {
+        if ($minutes < 0) {
+            return '−'.self::format(abs($minutes));
+        }
+
+        return self::format($minutes);
+    }
+
     public static function format(int $minutes): string
     {
         $minutes = max(0, $minutes);

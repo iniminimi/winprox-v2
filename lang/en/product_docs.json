@@ -135,7 +135,8 @@
                     "In the admin roster, open requests appear as a marker on the relevant days; that marker opens Time → Requests (the shift stays until approval).",
                     "A refusal needs a reason. After the decision you can see who approved or refused.",
                     "An open or approved request can be withdrawn as long as the absence has not started.",
-                    "On approval, the existing shifts stay at first. WinProx then replaces them in the roster with the absence."
+                    "On approval, the existing shifts stay at first. WinProx then replaces them in the roster with the absence.",
+                    "On Clock Point the person sees leave left this year, and next year when an entitlement is set. Overtime is time worked up to today minus the published roster, minus time off already on the roster or in an open request. This is not a pay calculation."
                 ]
             },
             {

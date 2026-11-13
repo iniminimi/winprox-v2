@@ -19,3 +19,8 @@ it('formatteert werkminuten menselijk leesbaar', function (int $minutes, string 
 it('formatteert negatieve minuten als nul', function () {
     expect(WorkDurationFormatter::format(-5))->toBe('0min');
 });
+
+it('zet een minteken voor een negatief saldo', function () {
+    expect(WorkDurationFormatter::signed(-80))->toBe('−1u20min')
+        ->and(WorkDurationFormatter::signed(0))->toBe('0min');
+});

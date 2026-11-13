@@ -135,7 +135,8 @@
                     "Nel turno di amministrazione le richieste aperte compaiono come contrassegno sui giorni interessati; da lì aprite Time → Richieste (il servizio resta fino all’approvazione).",
                     "Un rifiuto chiede un motivo. Dopo la decisione si vede chi ha approvato o rifiutato.",
                     "Una richiesta aperta o approvata si può ritirare finché l’assenza non è iniziata.",
-                    "All’approvazione i turni esistenti restano prima al loro posto. Poi WinProx li sostituisce nei turni con l’assenza."
+                    "All’approvazione i turni esistenti restano prima al loro posto. Poi WinProx li sostituisce nei turni con l’assenza.",
+                    "Su Clock Point la persona vede le ferie residue di quest’anno, e dell’anno prossimo se c’è un diritto. Gli straordinari sono il tempo lavorato fino a oggi meno il turno pubblicato, meno il recupero già in turno o in una richiesta aperta. Non è un calcolo della paga."
                 ]
             },
             {

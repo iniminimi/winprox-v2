@@ -539,7 +539,10 @@
             "cancel_approved_confirm": "¿Retirar este permiso o compensación aprobado? El cuadrante restaura los turnos anteriores.",
             "submitted": "Solicitud enviada.",
             "cancelled": "Solicitud retirada.",
-            "decision": "Decisión"
+            "decision": "Decisión",
+            "leave_remaining": "Permiso restante :year: :days",
+            "recup_balance": "Horas extra (compensación): :hours",
+            "recup_hint": "Este año hasta hoy: tiempo trabajado menos el cuadrante publicado, menos la compensación ya en el cuadrante o en una solicitud abierta. No es nómina."
         },
         "now": {
             "status_out": "Sin fichar",

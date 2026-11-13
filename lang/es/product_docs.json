@@ -135,7 +135,8 @@
                     "En el cuadrante de administración, las solicitudes abiertas aparecen como una marca en los días correspondientes; esa marca abre Time → Solicitudes (el turno permanece hasta la aprobación).",
                     "Un rechazo pide un motivo. Tras la decisión se ve quién aprobó o rechazó.",
                     "Una solicitud abierta o aprobada se puede retirar mientras la ausencia no haya empezado.",
-                    "Al aprobar, los turnos existentes se quedan primero. Después WinProx los sustituye en el cuadrante por la ausencia."
+                    "Al aprobar, los turnos existentes se quedan primero. Después WinProx los sustituye en el cuadrante por la ausencia.",
+                    "En Clock Point la persona ve el permiso restante de este año, y del año siguiente si hay un derecho. Las horas extra son el tiempo trabajado hasta hoy menos el cuadrante publicado, menos la compensación ya en el cuadrante o en una solicitud abierta. No es un cálculo de nómina."
                 ]
             },
             {

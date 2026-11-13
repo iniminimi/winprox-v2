@@ -24,7 +24,10 @@ use App\Models\Unit;
 use App\Models\User;
 use App\Models\WebhookEndpoint;
 use App\Models\Worker;
+use App\Models\WorkerLeaveEntitlement;
+use App\Models\WorkShift;
 use App\Support\Tenancy;
+use App\Support\Time\WorkDurationFormatter;
 use Carbon\Carbon;
 use Livewire\Livewire;
 
@@ -467,6 +470,60 @@ it('eist een reden bij weigeren', function () {
         $admin,
     );
 })->throws(InvalidArgumentException::class, 'reason_required');
+
+it('toont resterend verlof en overuren op de verlofpagina', function () {
+    [$tenant, , $clockPoint, $worker] = absenceTenant();
+    $worker->forceFill(['weekly_contract_minutes' => 2280])->save();
+    WorkerLeaveEntitlement::query()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'year' => 2026,
+        'days' => 10,
+    ]);
+    WorkerLeaveEntitlement::query()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'year' => 2027,
+        'days' => 2,
+    ]);
+    PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-09-21',
+        'kind' => ShiftTypeKind::Work,
+        'start_time' => '08:00',
+        'end_time' => '16:00',
+        'break_minutes' => 0,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+    WorkShift::factory()->closed()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $worker->internal_team_id,
+        'clock_in_clock_point_id' => $clockPoint->id,
+        'clock_out_clock_point_id' => $clockPoint->id,
+        'clock_in_at' => Carbon::parse('2026-09-21 08:00:00'),
+        'clock_out_at' => Carbon::parse('2026-09-21 17:00:00'),
+        'total_break_minutes' => 0,
+    ]);
+
+    signInAbsenceWorker($clockPoint)
+        ->call('openAbsence')
+        ->assertSee(__('time.portal.absence.leave_remaining', ['year' => 2026, 'days' => '10']), false)
+        ->assertSee(__('time.portal.absence.leave_remaining', ['year' => 2027, 'days' => '2']), false)
+        ->assertSee(__('time.portal.absence.recup_balance', ['hours' => WorkDurationFormatter::signed(60)]), false)
+        ->assertSee(__('time.portal.absence.recup_hint'), false);
+});
+
+it('toont geen verlofgetal zonder recht', function () {
+    [, , $clockPoint] = absenceTenant();
+
+    signInAbsenceWorker($clockPoint)
+        ->call('openAbsence')
+        ->assertSee(__('time.leave_balance.unset', ['year' => 2026]), false)
+        ->assertDontSee(__('time.portal.absence.leave_remaining', ['year' => 2027, 'days' => '0']), false)
+        ->assertSee(__('time.portal.absence.recup_balance', ['hours' => '0min']), false);
+});
 
 it('toont de portaltegel en verstuurt een aanvraag', function () {
     [, , $clockPoint] = absenceTenant();

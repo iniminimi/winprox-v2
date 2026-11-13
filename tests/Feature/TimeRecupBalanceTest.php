@@ -1,0 +1,205 @@
+<?php
+
+declare(strict_types=1);
+
+use App\Actions\Time\RequestAbsenceAction;
+use App\Actions\Time\WorkerRecupBalanceAction;
+use App\Data\Time\RequestAbsenceData;
+use App\Enums\PlannedShiftStatus;
+use App\Enums\ShiftTypeKind;
+use App\Models\ClockPoint;
+use App\Models\InternalTeam;
+use App\Models\PlannedShift;
+use App\Models\ShiftType;
+use App\Models\Tenant;
+use App\Models\Worker;
+use App\Models\WorkerWeekdayMinute;
+use App\Models\WorkShift;
+use App\Support\Tenancy;
+use Carbon\Carbon;
+use Carbon\CarbonImmutable;
+
+afterEach(function () {
+    Carbon::setTestNow();
+    Tenancy::forget();
+});
+
+function recupBalanceTenant(): array
+{
+    Carbon::setTestNow(Carbon::parse('2026-09-22 10:00:00'));
+
+    $tenant = Tenant::factory()->create(['has_time_module' => true]);
+    Tenancy::actAs($tenant->id);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $clockPoint = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'weekly_contract_minutes' => 2280,
+    ]);
+
+    return [$tenant, $clockPoint, $worker];
+}
+
+function recupWorked(Tenant $tenant, Worker $worker, ClockPoint $clockPoint, string $in, string $out): void
+{
+    WorkShift::factory()->closed()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $worker->internal_team_id,
+        'clock_in_clock_point_id' => $clockPoint->id,
+        'clock_out_clock_point_id' => $clockPoint->id,
+        'clock_in_at' => Carbon::parse($in),
+        'clock_out_at' => Carbon::parse($out),
+        'total_break_minutes' => 0,
+    ]);
+}
+
+it('telt gewerkt min gepubliceerd werk als overuren', function () {
+    [$tenant, $clockPoint, $worker] = recupBalanceTenant();
+    PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-09-21',
+        'kind' => ShiftTypeKind::Work,
+        'start_time' => '08:00',
+        'end_time' => '16:00',
+        'break_minutes' => 0,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+    PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-09-21',
+        'kind' => ShiftTypeKind::Work,
+        'start_time' => '08:00',
+        'end_time' => '16:00',
+        'status' => PlannedShiftStatus::Draft,
+    ]);
+    PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-09-23',
+        'kind' => ShiftTypeKind::Work,
+        'start_time' => '08:00',
+        'end_time' => '16:00',
+        'status' => PlannedShiftStatus::Published,
+    ]);
+    recupWorked($tenant, $worker, $clockPoint, '2026-09-21 08:00:00', '2026-09-21 17:00:00');
+    WorkShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $worker->internal_team_id,
+        'clock_in_clock_point_id' => $clockPoint->id,
+        'clock_in_at' => Carbon::parse('2026-09-22 08:00:00'),
+        'status' => \App\Enums\WorkShiftStatus::Open,
+    ]);
+
+    expect(app(WorkerRecupBalanceAction::class)->handle($tenant, $worker))->toBe(60);
+});
+
+it('trekt gepubliceerde recup en een open aanvraag af', function () {
+    [$tenant, $clockPoint, $worker] = recupBalanceTenant();
+    ShiftType::factory()->create([
+        'tenant_id' => $tenant->id,
+        'kind' => ShiftTypeKind::Recup,
+        'is_active' => true,
+    ]);
+    recupWorked($tenant, $worker, $clockPoint, '2026-09-21 08:00:00', '2026-09-21 17:00:00');
+    PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-09-21',
+        'kind' => ShiftTypeKind::Work,
+        'start_time' => '08:00',
+        'end_time' => '16:00',
+        'break_minutes' => 0,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+    PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-09-23',
+        'kind' => ShiftTypeKind::Recup,
+        'start_time' => null,
+        'end_time' => null,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+    foreach ([1 => 456, 2 => 456, 3 => 456, 4 => 400, 5 => 456, 6 => 0, 7 => 0] as $weekday => $minutes) {
+        WorkerWeekdayMinute::query()->create([
+            'tenant_id' => $tenant->id,
+            'worker_id' => $worker->id,
+            'weekday' => $weekday,
+            'minutes' => $minutes,
+        ]);
+    }
+    app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Recup, '2026-09-24', '2026-09-24'),
+    );
+
+    // 540 gewerkt − 480 gepland − 456 (woensdag, standaardpatroon) − 400 (donderdag, patroon)
+    expect(app(WorkerRecupBalanceAction::class)->handle($tenant, $worker))->toBe(60 - 456 - 400);
+});
+
+it('telt een open recupaanvraag niet dubbel op een dag die al recup is', function () {
+    [$tenant, $clockPoint, $worker] = recupBalanceTenant();
+    ShiftType::factory()->create([
+        'tenant_id' => $tenant->id,
+        'kind' => ShiftTypeKind::Recup,
+        'is_active' => true,
+    ]);
+    PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-09-23',
+        'kind' => ShiftTypeKind::Recup,
+        'start_time' => '08:00',
+        'end_time' => '10:00',
+        'break_minutes' => 0,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+    app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Recup, '2026-09-23', '2026-09-23'),
+    );
+
+    expect(app(WorkerRecupBalanceAction::class)->handle($tenant, $worker))->toBe(-120);
+});
+
+it('telt een hele recupdag als nul zonder patroon en zonder contract', function () {
+    [$tenant, , $worker] = recupBalanceTenant();
+    $worker->forceFill(['weekly_contract_minutes' => null])->save();
+    PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-09-23',
+        'kind' => ShiftTypeKind::Recup,
+        'start_time' => null,
+        'end_time' => null,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+
+    expect(app(WorkerRecupBalanceAction::class)->handle($tenant, $worker->fresh()))->toBe(0);
+});
+
+it('weigert een uitvoerder van een andere organisatie', function () {
+    [$tenant, , $worker] = recupBalanceTenant();
+    $other = Tenant::factory()->create(['has_time_module' => true]);
+
+    expect(fn () => app(WorkerRecupBalanceAction::class)->handle($other, $worker))
+        ->toThrow(InvalidArgumentException::class, 'worker_tenant_mismatch');
+});
+
+it('aanvaardt een expliciete peildatum', function () {
+    [$tenant, $clockPoint, $worker] = recupBalanceTenant();
+    recupWorked($tenant, $worker, $clockPoint, '2026-09-21 08:00:00', '2026-09-21 09:00:00');
+
+    expect(app(WorkerRecupBalanceAction::class)->handle(
+        $tenant,
+        $worker,
+        CarbonImmutable::parse('2026-09-20'),
+    ))->toBe(0);
+});

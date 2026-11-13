@@ -1143,7 +1143,7 @@
                 },
                 {
                     "label": "Congé / Récup",
-                    "text": "Après connexion, vous voyez la tuile Congé / Récup. Demandez un congé ou une récup (du–au, note facultative, 31 jours max., pas dans le passé). Les demandes ouvertes qui se chevauchent sont refusées. Vos demandes sont sous le formulaire : vous pouvez retirer une demande ouverte ou approuvée (pas encore commencée) ; un congé approuvé rétablit le planning. La gestion décide sous Time → Demandes ; refuser exige un motif, approuver non. Aucun e-mail n’est envoyé."
+                    "text": "Après connexion, vous voyez la tuile Congé / Récup. Demandez un congé ou une récup (du–au, note facultative, 31 jours max., pas dans le passé). Les demandes ouvertes qui se chevauchent sont refusées. Vos demandes sont sous le formulaire : vous pouvez retirer une demande ouverte ou approuvée (pas encore commencée) ; un congé approuvé rétablit le planning. La gestion décide sous Time → Demandes ; refuser exige un motif, approuver non. Aucun e-mail n’est envoyé. En haut figurent le congé restant de cette année, et de l’année suivante s’il y a un droit, plus les heures supplémentaires : temps travaillé jusqu’à aujourd’hui moins le planning publié, moins la récup déjà planifiée ou demandée. Pas de salaire."
                 }
             ]
         },

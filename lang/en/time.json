@@ -539,7 +539,10 @@
             "cancel_approved_confirm": "Withdraw this approved leave or TOIL? The roster restores the previous duties.",
             "submitted": "Request sent.",
             "cancelled": "Request withdrawn.",
-            "decision": "Decision"
+            "decision": "Decision",
+            "leave_remaining": "Leave left :year: :days",
+            "recup_balance": "Overtime (time off): :hours",
+            "recup_hint": "This year up to today: time worked minus the published roster, minus time off already on the roster or in an open request. Not pay."
         },
         "now": {
             "status_out": "Not clocked in",
