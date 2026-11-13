@@ -26,6 +26,7 @@
     "status_legacy": "Su organización aún no usa seguimiento de prueba (cuenta legacy). Todas las funciones siguen disponibles.",
     "status_trial": "Prueba con :plan activa hasta :date.",
     "status_active": "Suscripción activa: :plan, válida hasta :date.",
+    "status_corporate_cap": "Acordado: :count units.",
     "status_grace": "Suscripción :plan finalizó el :ended. Período de gracia hasta :grace_end — :days días de acceso completo restantes.",
     "status_expired": "Su prueba ha terminado. Elija un plan abajo.",
     "pricing_intro": "Mes de prueba gratis (5 licencias, 50 unidades, 10 documentos — igual que la fórmula de entrada). Luego 5/10/25/50 licencias. Pago mensual con Stripe.",

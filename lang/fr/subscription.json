@@ -26,6 +26,7 @@
     "status_legacy": "Votre organisation n'utilise pas encore le suivi d'essai (compte legacy). Toutes les fonctions restent disponibles.",
     "status_trial": "Essai avec :plan actif jusqu'au :date.",
     "status_active": "Abonnement actif : :plan, valable jusqu'au :date.",
+    "status_corporate_cap": "Convenu : :count unités.",
     "status_grace": "Abonnement :plan terminé le :ended. Période de grâce jusqu'au :grace_end — :days jours d'accès complet restants.",
     "status_expired": "Votre essai est terminé. Choisissez une formule ci-dessous.",
     "pricing_intro": "Mois d'essai gratuit (5 licences, 50 units, 10 documents — même formule d'entrée). Puis 5/10/25/50 licences. Paiement mensuel via Stripe.",

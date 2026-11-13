@@ -25,6 +25,7 @@
     "status_legacy": "Your organisation does not use trial tracking yet (legacy account). All features remain available.",
     "status_trial": "Trial with :plan active until :date.",
     "status_active": "Active subscription: :plan, valid until :date.",
+    "status_corporate_cap": "Agreed: :count units.",
     "status_grace": "Subscription :plan ended on :ended. Grace period until :grace_end — :days days of full access left. Renew in time to avoid interruption.",
     "status_expired": "Your trial has ended. Choose a plan below to continue.",
     "pricing_intro": "Free trial month (5 seats, 50 units, 10 documents — same as the entry plan). Then 5/10/25/50 seats. Billed monthly via Stripe.",

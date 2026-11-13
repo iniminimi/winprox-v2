@@ -25,6 +25,7 @@
     "status_legacy": "Je organisatie gebruikt nog geen proefperiode-tracking (legacy-account). Alle functies blijven beschikbaar.",
     "status_trial": "Proefperiode met :plan actief tot :date.",
     "status_active": "Actief abonnement: :plan, geldig tot :date.",
+    "status_corporate_cap": "Afgesproken: :count units.",
     "status_grace": "Abonnement :plan beëindigd op :ended. Respijtperiode tot :grace_end — nog :days dagen volledige toegang. Verleng op tijd om onderbreking te vermijden.",
     "status_expired": "Je proefperiode is afgelopen. Kies hieronder een formule om verder te gaan.",
     "pricing_intro": "Gratis proefmaand (5 licenties, 50 units, 10 documenten — zelfde als de instapformule). Daarna 5/10/25/50 licenties. Maandelijks te betalen via Stripe.",

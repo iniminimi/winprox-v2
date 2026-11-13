@@ -26,6 +26,7 @@
     "status_legacy": "La tua organizzazione non usa ancora il tracking della prova (account legacy). Tutte le funzioni restano disponibili.",
     "status_trial": "Prova con :plan attiva fino al :date.",
     "status_active": "Abbonamento attivo: :plan, valido fino al :date.",
+    "status_corporate_cap": "Concordato: :count units.",
     "status_grace": "Abbonamento :plan terminato il :ended. Periodo di grazia fino al :grace_end — :days giorni di accesso completo rimasti.",
     "status_expired": "La prova è terminata. Scegli un piano qui sotto.",
     "pricing_intro": "Mese di prova gratuito (5 licenze, 50 unità, 10 documenti — come la formula d'ingresso). Poi 5/10/25/50 licenze. Pagamento mensile tramite Stripe.",

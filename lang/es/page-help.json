@@ -855,7 +855,7 @@
                 },
                 {
                     "label": "Plan / contacto",
-                    "text": "Fórmulas: 5/10/25/50 licencias + Corporate. Usted elige y paga mensualmente con Stripe (Corporate bajo petición). En Corporate, un administrador no puede elegir otro plan; solo un Superuser lo cambia. Contacte info@winprox.app para Corporate o CIAO. CIAO (ONSS) se solicita igual; un Superuser lo activa (Time se enciende; no hace falta Corporate)."
+                    "text": "Fórmulas: 5/10/25/50 licencias + Corporate. Usted elige y paga mensualmente con Stripe (Corporate bajo petición). En Corporate, un administrador no puede elegir otro plan; solo un Superuser lo cambia. El estado muestra las units acordadas. Contacte info@winprox.app para Corporate o CIAO. CIAO (ONSS) se solicita igual; un Superuser lo activa (Time se enciende; no hace falta Corporate)."
                 },
                 {
                     "label": "Checkmate",

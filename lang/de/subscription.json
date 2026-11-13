@@ -26,6 +26,7 @@
     "status_legacy": "Ihre Organisation nutzt noch kein Trial-Tracking (Legacy-Konto). Alle Funktionen bleiben verfügbar.",
     "status_trial": "Testphase mit :plan aktiv bis :date.",
     "status_active": "Aktives Abonnement: :plan, gültig bis :date.",
+    "status_corporate_cap": "Vereinbart: :count Units.",
     "status_grace": "Abonnement :plan endete am :ended. Kulanzfrist bis :grace_end — noch :days Tage voller Zugang.",
     "status_expired": "Ihre Testphase ist abgelaufen. Wählen Sie unten einen Tarif.",
     "pricing_intro": "Kostenloser Testmonat (5 Lizenzen, 50 Units, 10 Dokumente — wie die Einstiegsformel). Danach 5/10/25/50 Lizenzen. Monatliche Zahlung über Stripe.",

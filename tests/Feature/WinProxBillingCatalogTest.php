@@ -125,6 +125,7 @@ it('laat een Corporate-tenant geen andere formule kiezen', function () {
     Livewire::actingAs($admin)
         ->test(Subscription::class)
         ->assertSee(__('subscription.corporate_locked'))
+        ->assertSee(__('subscription.status_corporate_cap', ['count' => number_format(800, 0, ',', '.')]))
         ->assertDontSee(__('subscription.choose_plan'))
         ->call('activatePlan', 'winprox_5')
         ->assertHasErrors(['plan']);

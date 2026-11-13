@@ -91,6 +91,9 @@
                     @else
                         <li class="wp-billing-status-list__warn">{{ __('subscription.status_expired') }}</li>
                     @endif
+                    @if ($tenant->isCorporate() && $tenant->billing_units_cap)
+                        <li>{{ __('subscription.status_corporate_cap', ['count' => number_format((int) $tenant->billing_units_cap, 0, ',', '.')]) }}</li>
+                    @endif
                     @if ($tenant->has_esg_module)
                         <li>{{ __('subscription.status_module_esg') }}</li>
                     @endif
