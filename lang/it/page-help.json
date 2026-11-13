@@ -1429,7 +1429,7 @@
             ]
         },
         "time.shifts": {
-            "title": "Aiuto — Ore",
+            "title": "Aiuto — Ore timbrate",
             "actions": [
                 {
                     "label": "Periodo e filtri",
@@ -1467,6 +1467,15 @@
                 {
                     "label": "Pausa minima",
                     "text": "Se un team ha una pausa minima e un turno chiuso mostra meno minuti, un admin può <strong>Applica pausa minima</strong> (audit log) o modificare i minuti con <strong>Correggi</strong>. All’uscita il minimo si applica automaticamente se il turno dura almeno 4 ore. Nessun IN/OUT CIAO extra."
+                }
+            ]
+        },
+        "time.overtime": {
+            "title": "Aiuto — Straordinari",
+            "actions": [
+                {
+                    "label": "Totale e per mese",
+                    "text": "Straordinari mostra per persona il saldo di quest’anno civile fino a oggi, e ogni mese. I mesi precedenti di quest’anno contano. Il 1° gennaio il saldo ricomincia. La cifra è il tempo lavorato dei servizi chiusi meno il turno pubblicato, meno il recupero già in turno o in una richiesta aperta. Un giorno intero di recupero segue lo schema settimanale o la ripartizione ordinaria del contratto. Non è paga."
                 }
             ]
         },

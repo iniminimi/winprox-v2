@@ -6563,6 +6563,55 @@ svg.wp-release-worker-row__icon,
     transform: rotate(-90deg);
 }
 
+.wp-time-nav-split {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.wp-toolbar-group.wp-time-nav--clock {
+    border: 2px solid #166534;
+}
+
+.wp-toolbar-group.wp-time-nav--plan {
+    border: 2px solid #ea580c;
+}
+
+.wp-overtime-table-wrap {
+    overflow-x: auto;
+    padding: 0.35rem 0.5rem 0.5rem;
+}
+
+.wp-overtime-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+}
+
+.wp-overtime-table th,
+.wp-overtime-table td {
+    padding: 0.45rem 0.6rem;
+    text-align: right;
+    border-bottom: 1px solid var(--wp-border);
+    white-space: nowrap;
+}
+
+.wp-overtime-table th:first-child,
+.wp-overtime-table td:first-child {
+    text-align: left;
+}
+
+.wp-overtime-table th {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--wp-text-muted);
+}
+
+.wp-overtime-table__negative {
+    color: var(--wp-danger);
+}
+
 .wp-time-nav__alarms {
     display: inline-flex;
     align-items: center;

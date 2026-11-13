@@ -1429,7 +1429,7 @@
             ]
         },
         "time.shifts": {
-            "title": "Hilfe — Stunden",
+            "title": "Hilfe — Gestempelte Stunden",
             "actions": [
                 {
                     "label": "Zeitraum und Filter",
@@ -1467,6 +1467,15 @@
                 {
                     "label": "Mindestpause",
                     "text": "Hat ein Team eine Mindestpause und eine geschlossene Schicht weniger Pauseminuten, kann ein Admin <strong>Mindestpause anwenden</strong> (Auditlog) oder die Minuten über <strong>Korrigieren</strong> ändern. Beim Ausstempeln gilt das Minimum automatisch, wenn die Schicht mindestens 4 Stunden dauert. Kein zusätzliches CIAO IN/OUT."
+                }
+            ]
+        },
+        "time.overtime": {
+            "title": "Hilfe — Überstunden",
+            "actions": [
+                {
+                    "label": "Summe und pro Monat",
+                    "text": "Überstunden zeigt je Person das Saldo dieses Kalenderjahres bis heute, und jeden Monat darin. Frühere Monate dieses Jahres zählen mit. Am 1. Januar beginnt das Saldo neu. Die Zahl ist gearbeitete Zeit geschlossener Dienste minus veröffentlichter Dienstplan, minus Ausgleich der schon im Plan steht oder als Antrag offen ist. Ein ganzer Ausgleichstag folgt dem Wochenmuster oder der gewöhnlichen Verteilung des Vertrags. Kein Lohn."
                 }
             ]
         },

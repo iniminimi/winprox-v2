@@ -1429,7 +1429,7 @@
             ]
         },
         "time.shifts": {
-            "title": "Hulp — Uren",
+            "title": "Hulp — Geklokte uren",
             "actions": [
                 {
                     "label": "Periode en filters",
@@ -1467,6 +1467,15 @@
                 {
                     "label": "Minimumpauze",
                     "text": "Als een team een minimumpauze heeft en een gesloten dienst minder pauzeminuten toont, kan een beheerder <strong>Minimumpauze toepassen</strong> (auditlog) of de minuten via <strong>Corrigeren</strong> aanpassen. Bij uitklokken gebeurt het minimum automatisch als de dienst minstens 4 uur duurt. Geen extra CIAO IN/OUT."
+                }
+            ]
+        },
+        "time.overtime": {
+            "title": "Hulp — Overuren",
+            "actions": [
+                {
+                    "label": "Totaal en per maand",
+                    "text": "Overuren toont per uitvoerder het saldo van dit kalenderjaar tot vandaag, en elke maand daarin. Vorige maanden van dit jaar tellen mee. Op 1 januari begint het saldo opnieuw. Het getal is gewerkte tijd van gesloten diensten min het gepubliceerde rooster, min recup die al op het rooster staat of als aanvraag openstaat. Een hele recupdag volgt het weekpatroon of de gewone verdeling van het contract. Geen loon."
                 }
             ]
         },

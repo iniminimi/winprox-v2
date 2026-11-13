@@ -7,7 +7,10 @@
         "label": "Time-Navigation",
         "presence": "Anwesenheit",
         "alarms": "Alarme",
-        "shifts": "Stunden",
+        "shifts": "Gestempelte Stunden",
+        "overtime": "Überstunden",
+        "clock_group": "Gestempelte Stunden und Alarme",
+        "plan_group": "Planung",
         "clock_points": "Clock Points",
         "ciao": "CIAO",
         "schedule": "Dienstplan",
@@ -15,6 +18,12 @@
         "holidays": "Feiertage",
         "staffing": "Mindestbesetzung",
         "absence_requests": "Anträge"
+    },
+    "overtime": {
+        "subtitle": "Saldo :year bis heute. Frühere Monate dieses Jahres zählen mit. Kein Lohn.",
+        "empty": "Keine Ausführenden.",
+        "worker": "Ausführende",
+        "total": "Summe"
     },
     "presence": {
         "title": "Anwesenheit",

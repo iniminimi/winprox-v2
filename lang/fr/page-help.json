@@ -1437,7 +1437,7 @@
             ]
         },
         "time.shifts": {
-            "title": "Aide — Heures",
+            "title": "Aide — Heures pointées",
             "actions": [
                 {
                     "label": "Période et filtres",
@@ -1475,6 +1475,15 @@
                 {
                     "label": "Pause minimale",
                     "text": "Si une équipe a une pause minimale et qu’un service clos affiche moins de minutes, un admin peut <strong>Appliquer la pause minimale</strong> (journal d’audit) ou modifier les minutes via <strong>Corriger</strong>. À la sortie, le minimum s’applique automatiquement si le service dure au moins 4 heures. Pas d’IN/OUT CIAO supplémentaire."
+                }
+            ]
+        },
+        "time.overtime": {
+            "title": "Aide — Heures supplémentaires",
+            "actions": [
+                {
+                    "label": "Total et par mois",
+                    "text": "Heures supplémentaires montre par personne le solde de cette année civile jusqu’à aujourd’hui, et chaque mois. Les mois précédents de cette année comptent. Le 1er janvier le solde recommence. Le chiffre est le temps travaillé des services clos moins le planning publié, moins la récup déjà au planning ou en demande ouverte. Une journée entière de récup suit le schéma de semaine ou la répartition ordinaire du contrat. Pas de salaire."
                 }
             ]
         },

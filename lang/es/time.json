@@ -7,7 +7,10 @@
         "label": "Navegación Time",
         "presence": "Presencia",
         "alarms": "Alarmas",
-        "shifts": "Horas",
+        "shifts": "Horas fichadas",
+        "overtime": "Horas extra",
+        "clock_group": "Horas fichadas y alarmas",
+        "plan_group": "Planificación",
         "clock_points": "Clock Points",
         "ciao": "CIAO",
         "schedule": "Horario",
@@ -15,6 +18,12 @@
         "holidays": "Festivos",
         "staffing": "Dotación mínima",
         "absence_requests": "Solicitudes"
+    },
+    "overtime": {
+        "subtitle": "Saldo de :year hasta hoy. Los meses anteriores de este año cuentan. No es nómina.",
+        "empty": "No hay operarios.",
+        "worker": "Operario",
+        "total": "Total"
     },
     "presence": {
         "title": "Presencia",

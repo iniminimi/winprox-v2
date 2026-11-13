@@ -7,7 +7,10 @@
         "label": "Time navigation",
         "presence": "Presence",
         "alarms": "Alarms",
-        "shifts": "Hours",
+        "shifts": "Clocked hours",
+        "overtime": "Overtime",
+        "clock_group": "Clocked hours and alarms",
+        "plan_group": "Planning",
         "clock_points": "Clock Points",
         "ciao": "CIAO",
         "schedule": "Roster",
@@ -15,6 +18,12 @@
         "holidays": "Public holidays",
         "staffing": "Minimum staffing",
         "absence_requests": "Requests"
+    },
+    "overtime": {
+        "subtitle": "Balance for :year up to today. Earlier months of this year are included. Not pay.",
+        "empty": "No workers.",
+        "worker": "Worker",
+        "total": "Total"
     },
     "presence": {
         "title": "Presence",

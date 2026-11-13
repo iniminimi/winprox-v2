@@ -7,7 +7,10 @@
         "label": "Navigazione Time",
         "presence": "Presenza",
         "alarms": "Allarmi",
-        "shifts": "Ore",
+        "shifts": "Ore timbrate",
+        "overtime": "Straordinari",
+        "clock_group": "Ore timbrate e allarmi",
+        "plan_group": "Pianificazione",
         "clock_points": "Clock Points",
         "ciao": "CIAO",
         "schedule": "Turni",
@@ -15,6 +18,12 @@
         "holidays": "Festività",
         "staffing": "Organico minimo",
         "absence_requests": "Richieste"
+    },
+    "overtime": {
+        "subtitle": "Saldo :year fino a oggi. I mesi precedenti di quest’anno contano. Non è paga.",
+        "empty": "Nessun operatore.",
+        "worker": "Operatore",
+        "total": "Totale"
     },
     "presence": {
         "title": "Presenza",

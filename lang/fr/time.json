@@ -7,7 +7,10 @@
         "label": "Navigation Time",
         "presence": "Présence",
         "alarms": "Alarmes",
-        "shifts": "Heures",
+        "shifts": "Heures pointées",
+        "overtime": "Heures supplémentaires",
+        "clock_group": "Heures pointées et alarmes",
+        "plan_group": "Planning",
         "clock_points": "Clock Points",
         "ciao": "CIAO",
         "schedule": "Horaire",
@@ -15,6 +18,12 @@
         "holidays": "Jours fériés",
         "staffing": "Effectif minimal",
         "absence_requests": "Demandes"
+    },
+    "overtime": {
+        "subtitle": "Solde :year jusqu’à aujourd’hui. Les mois précédents de cette année comptent. Pas de salaire.",
+        "empty": "Aucun exécutant.",
+        "worker": "Exécutant",
+        "total": "Total"
     },
     "presence": {
         "title": "Présence",

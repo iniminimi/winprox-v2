@@ -1429,7 +1429,7 @@
             ]
         },
         "time.shifts": {
-            "title": "Ayuda — Horas",
+            "title": "Ayuda — Horas fichadas",
             "actions": [
                 {
                     "label": "Período y filtros",
@@ -1467,6 +1467,15 @@
                 {
                     "label": "Pausa mínima",
                     "text": "Si un equipo tiene pausa mínima y un turno cerrado muestra menos minutos, un administrador puede <strong>Aplicar pausa mínima</strong> (registro de auditoría) o cambiar los minutos con <strong>Corregir</strong>. Al fichar la salida el mínimo se aplica solo si el turno dura al menos 4 horas. Sin IN/OUT CIAO extra."
+                }
+            ]
+        },
+        "time.overtime": {
+            "title": "Ayuda — Horas extra",
+            "actions": [
+                {
+                    "label": "Total y por mes",
+                    "text": "Horas extra muestra por persona el saldo de este año natural hasta hoy, y cada mes. Los meses anteriores de este año cuentan. El 1 de enero el saldo vuelve a empezar. La cifra es el tiempo trabajado de servicios cerrados menos el cuadrante publicado, menos la compensación ya en el cuadrante o en una solicitud abierta. Un día entero de compensación sigue el patrón semanal o el reparto ordinario del contrato. No es nómina."
                 }
             ]
         },

@@ -131,6 +131,7 @@ use App\Livewire\Time\AlarmsIndex;
 use App\Livewire\Time\ClockDisplayPair;
 use App\Livewire\Time\ClockPointsIndex;
 use App\Livewire\Time\HolidaysIndex;
+use App\Livewire\Time\OvertimeIndex;
 use App\Livewire\Time\PresenceIndex;
 use App\Livewire\Time\PresenceSubmissionsIndex;
 use App\Livewire\Time\RosterIndex;
@@ -524,6 +525,7 @@ Route::middleware('auth')->group(function () {
             Route::get('/time/shift-types', ShiftTypesIndex::class)->name('time.shift-types.index');
             Route::get('/time/holidays', HolidaysIndex::class)->name('time.holidays.index');
             Route::get('/time/staffing', StaffingIndex::class)->name('time.staffing.index');
+            Route::get('/time/overtime', OvertimeIndex::class)->name('time.overtime.index');
         });
         Route::get('/time/alarms', AlarmsIndex::class)->name('time.alarms.index');
         Route::get('/time/shifts', ShiftsIndex::class)->name('time.shifts.index');

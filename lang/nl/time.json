@@ -7,7 +7,10 @@
         "label": "Time-navigatie",
         "presence": "Aanwezigheid",
         "alarms": "Alarmen",
-        "shifts": "Uren",
+        "shifts": "Geklokte uren",
+        "overtime": "Overuren",
+        "clock_group": "Geklokte uren en alarmen",
+        "plan_group": "Planning",
         "clock_points": "Clock Points",
         "ciao": "CIAO",
         "schedule": "Uurrooster",
@@ -15,6 +18,12 @@
         "holidays": "Feestdagen",
         "staffing": "Minimum bezetting",
         "absence_requests": "Aanvragen"
+    },
+    "overtime": {
+        "subtitle": "Saldo :year tot vandaag. Vorige maanden van dit jaar tellen mee. Geen loon.",
+        "empty": "Geen uitvoerders.",
+        "worker": "Uitvoerder",
+        "total": "Totaal"
     },
     "presence": {
         "title": "Aanwezigheid",

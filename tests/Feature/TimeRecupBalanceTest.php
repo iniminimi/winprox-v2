@@ -12,10 +12,12 @@ use App\Models\InternalTeam;
 use App\Models\PlannedShift;
 use App\Models\ShiftType;
 use App\Models\Tenant;
+use App\Models\User;
 use App\Models\Worker;
 use App\Models\WorkerWeekdayMinute;
 use App\Models\WorkShift;
 use App\Support\Tenancy;
+use App\Support\Time\WorkDurationFormatter;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 
@@ -202,4 +204,58 @@ it('aanvaardt een expliciete peildatum', function () {
         $worker,
         CarbonImmutable::parse('2026-09-20'),
     ))->toBe(0);
+});
+
+it('zet overuren van een vorige maand in die maand en in het totaal', function () {
+    [$tenant, $clockPoint, $worker] = recupBalanceTenant();
+    PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-08-03',
+        'kind' => ShiftTypeKind::Work,
+        'start_time' => '08:00',
+        'end_time' => '16:00',
+        'break_minutes' => 0,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+    recupWorked($tenant, $worker, $clockPoint, '2026-08-03 08:00:00', '2026-08-03 17:00:00');
+
+    $months = app(WorkerRecupBalanceAction::class)->monthly($tenant, [(int) $worker->id]);
+
+    expect($months[$worker->id][8])->toBe(60)
+        ->and($months[$worker->id][9])->toBe(0)
+        ->and(array_sum($months[$worker->id]))->toBe(60)
+        ->and(app(WorkerRecupBalanceAction::class)->handle($tenant, $worker))->toBe(60);
+});
+
+it('toont in het beheer het totaal en de maand van de overuren', function () {
+    [$tenant, $clockPoint, $worker] = recupBalanceTenant();
+    $worker->forceFill(['first_name' => 'Nora', 'last_name' => 'Peeters'])->save();
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-08-03',
+        'kind' => ShiftTypeKind::Work,
+        'start_time' => '08:00',
+        'end_time' => '16:00',
+        'break_minutes' => 0,
+        'status' => PlannedShiftStatus::Published,
+    ]);
+    recupWorked($tenant, $worker, $clockPoint, '2026-08-03 08:00:00', '2026-08-03 17:00:00');
+
+    $this->actingAs($admin)
+        ->get(route('time.overtime.index'))
+        ->assertOk()
+        ->assertSee('Nora Peeters', false)
+        ->assertSee(__('time.overtime.total'), false)
+        ->assertSee(WorkDurationFormatter::signed(60), false)
+        ->assertSee('wp-time-nav--clock', false)
+        ->assertSee('wp-time-nav--plan', false);
+
+    $this->actingAs($admin)
+        ->get(route('time.shifts.index'))
+        ->assertOk()
+        ->assertSee(__('time.nav.overtime'), false)
+        ->assertSee(__('time.nav.shifts'), false);
 });
