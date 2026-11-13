@@ -540,9 +540,8 @@
             "submitted": "Aanvraag verstuurd.",
             "cancelled": "Aanvraag ingetrokken.",
             "decision": "Beslissing",
-            "leave_remaining": "Resterend verlof :year: :days",
-            "recup_balance": "Overuren (recup): :hours",
-            "recup_hint": "Dit jaar tot vandaag: gewerkte tijd min het gepubliceerde rooster, min recup op het rooster of als open aanvraag. Geen loon."
+            "leave_remaining": "Resterend verlof :year : :days van :total",
+            "recup_balance": "Overuren (recup): :hours"
         },
         "now": {
             "status_out": "Niet ingeklokt",

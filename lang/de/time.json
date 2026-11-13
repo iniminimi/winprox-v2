@@ -540,9 +540,8 @@
             "submitted": "Antrag gesendet.",
             "cancelled": "Antrag zurückgezogen.",
             "decision": "Entscheidung",
-            "leave_remaining": "Resturlaub :year: :days",
-            "recup_balance": "Überstunden (Ausgleich): :hours",
-            "recup_hint": "Dieses Jahr bis heute: gearbeitete Zeit minus veröffentlichter Dienstplan, minus Ausgleich im Plan oder als offener Antrag. Kein Lohn."
+            "leave_remaining": "Resturlaub :year: :days von :total",
+            "recup_balance": "Überstunden (Ausgleich): :hours"
         },
         "now": {
             "status_out": "Nicht eingestempelt",

@@ -2261,6 +2261,7 @@ class TimePortal extends Component
                     $leaveBalances[] = [
                         'year' => $balanceYear,
                         'remaining' => $remaining === null ? null : LeaveBalance::formatHalves($remaining),
+                        'total' => $balance->entitlementHalves === null ? null : LeaveBalance::formatHalves($balance->entitlementHalves),
                     ];
                 }
                 $recupHours = WorkDurationFormatter::signed(

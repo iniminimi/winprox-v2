@@ -509,10 +509,12 @@ it('toont resterend verlof en overuren op de verlofpagina', function () {
 
     signInAbsenceWorker($clockPoint)
         ->call('openAbsence')
-        ->assertSee(__('time.portal.absence.leave_remaining', ['year' => 2026, 'days' => '10']), false)
-        ->assertSee(__('time.portal.absence.leave_remaining', ['year' => 2027, 'days' => '2']), false)
-        ->assertSee(__('time.portal.absence.recup_balance', ['hours' => WorkDurationFormatter::signed(60)]), false)
-        ->assertSee(__('time.portal.absence.recup_hint'), false);
+        ->assertSee(__('time.portal.absence.leave_remaining', ['year' => 2026, 'days' => '10', 'total' => '10']), false)
+        ->assertSee(__('time.portal.absence.leave_remaining', ['year' => 2027, 'days' => '2', 'total' => '2']), false)
+        ->assertSeeInOrder([
+            __('time.portal.absence.recup_balance', ['hours' => WorkDurationFormatter::signed(60)]),
+            __('time.portal.absence.form_title'),
+        ], false);
 });
 
 it('toont geen verlofgetal zonder recht', function () {
@@ -521,7 +523,7 @@ it('toont geen verlofgetal zonder recht', function () {
     signInAbsenceWorker($clockPoint)
         ->call('openAbsence')
         ->assertSee(__('time.leave_balance.unset', ['year' => 2026]), false)
-        ->assertDontSee(__('time.portal.absence.leave_remaining', ['year' => 2027, 'days' => '0']), false)
+        ->assertDontSee(__('time.portal.absence.leave_remaining', ['year' => 2027, 'days' => '0', 'total' => '0']), false)
         ->assertSee(__('time.portal.absence.recup_balance', ['hours' => '0min']), false);
 });
 

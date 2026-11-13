@@ -5,12 +5,11 @@
                 @if ($balance['remaining'] === null)
                     <p>{{ __('time.leave_balance.unset', ['year' => $balance['year']]) }}</p>
                 @else
-                    <p><strong>{{ __('time.portal.absence.leave_remaining', ['year' => $balance['year'], 'days' => $balance['remaining']]) }}</strong></p>
+                    <p><strong>{{ __('time.portal.absence.leave_remaining', ['year' => $balance['year'], 'days' => $balance['remaining'], 'total' => $balance['total']]) }}</strong></p>
                 @endif
             @endforeach
             @if ($recupHours !== '')
                 <p><strong>{{ __('time.portal.absence.recup_balance', ['hours' => $recupHours]) }}</strong></p>
-                <p class="wp-hint">{{ __('time.portal.absence.recup_hint') }}</p>
             @endif
         </div>
     @endif

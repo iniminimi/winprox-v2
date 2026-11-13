@@ -540,9 +540,8 @@
             "submitted": "Request sent.",
             "cancelled": "Request withdrawn.",
             "decision": "Decision",
-            "leave_remaining": "Leave left :year: :days",
-            "recup_balance": "Overtime (time off): :hours",
-            "recup_hint": "This year up to today: time worked minus the published roster, minus time off already on the roster or in an open request. Not pay."
+            "leave_remaining": "Leave left :year: :days of :total",
+            "recup_balance": "Overtime (time off): :hours"
         },
         "now": {
             "status_out": "Not clocked in",

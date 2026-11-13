@@ -136,7 +136,7 @@
                     "Un refus demande un motif. Après la décision, on voit qui a approuvé ou refusé.",
                     "Une demande ouverte ou approuvée peut être retirée tant que l’absence n’a pas commencé.",
                     "À l’approbation, les services existants restent d’abord en place. WinProx les remplace ensuite dans le planning par l’absence.",
-                    "Sur Clock Point, la personne voit le congé restant de cette année, et de l’année suivante s’il y a un droit. Les heures supplémentaires sont le temps travaillé jusqu’à aujourd’hui moins le planning publié, moins la récup déjà au planning ou en demande ouverte. Ce n’est pas un calcul de salaire."
+                    "Sur Clock Point, la personne voit le congé restant de cette année sur le droit, et de l’année suivante s’il y a un droit. Les heures supplémentaires sont le temps travaillé jusqu’à aujourd’hui moins le planning publié, moins la récup déjà au planning ou en demande ouverte. Ce n’est pas un calcul de salaire."
                 ]
             },
             {

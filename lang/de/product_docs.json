@@ -136,7 +136,7 @@
                     "Eine Ablehnung braucht einen Grund. Nach der Entscheidung ist sichtbar, wer genehmigt oder abgelehnt hat.",
                     "Ein offener oder genehmigter Antrag kann zurückgezogen werden, solange die Abwesenheit noch nicht begonnen hat.",
                     "Bei Genehmigung bleiben die bestehenden Schichten zuerst stehen. Danach ersetzt WinProx sie im Dienstplan durch die Abwesenheit.",
-                    "Auf Clock Point sieht die Person den Resturlaub dieses Jahres, und des nächsten Jahres wenn dort ein Anspruch steht. Die Überstunden sind die gearbeitete Zeit bis heute minus veröffentlichter Dienstplan, minus Ausgleich der schon im Plan steht oder als Antrag offen ist. Das ist keine Lohnberechnung."
+                    "Auf Clock Point sieht die Person den Resturlaub dieses Jahres vom Anspruch, und des nächsten Jahres wenn dort ein Anspruch steht. Die Überstunden sind die gearbeitete Zeit bis heute minus veröffentlichter Dienstplan, minus Ausgleich der schon im Plan steht oder als Antrag offen ist. Das ist keine Lohnberechnung."
                 ]
             },
             {

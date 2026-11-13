@@ -1135,7 +1135,7 @@
                 },
                 {
                     "label": "Ferie / Recupero",
-                    "text": "Dopo l’accesso vedi il riquadro Ferie / Recupero. Richiedi ferie o recupero (dal–al, nota facoltativa, max 31 giorni, non nel passato). Le richieste aperte che si sovrappongono vengono rifiutate. Le tue richieste stanno sotto il modulo: puoi ritirare una aperta o approvata (non ancora iniziata); ferie approvate ripristinano il turno. La gestione decide in Time → Richieste; rifiutare chiede un motivo, approvare no. Non parte nessuna e-mail. In alto ci sono le ferie residue di quest’anno, e dell’anno prossimo se c’è un diritto, più gli straordinari: tempo lavorato fino a oggi meno il turno pubblicato, meno il recupero già pianificato o richiesto. Non è paga."
+                    "text": "Dopo l’accesso vedi il riquadro Ferie / Recupero. Richiedi ferie o recupero (dal–al, nota facoltativa, max 31 giorni, non nel passato). Le richieste aperte che si sovrappongono vengono rifiutate. Le tue richieste stanno sotto il modulo: puoi ritirare una aperta o approvata (non ancora iniziata); ferie approvate ripristinano il turno. La gestione decide in Time → Richieste; rifiutare chiede un motivo, approvare no. Non parte nessuna e-mail. In alto ci sono le ferie residue di quest’anno sul diritto, e dell’anno prossimo se c’è un diritto, più gli straordinari. Quest’anno fino a oggi: tempo lavorato meno il turno pubblicato, meno il recupero già in turno o in una richiesta aperta. Non è paga."
                 }
             ]
         },

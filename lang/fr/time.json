@@ -540,9 +540,8 @@
             "submitted": "Demande envoyée.",
             "cancelled": "Demande retirée.",
             "decision": "Décision",
-            "leave_remaining": "Congé restant :year : :days",
-            "recup_balance": "Heures supplémentaires (récup) : :hours",
-            "recup_hint": "Cette année jusqu’à aujourd’hui : temps travaillé moins le planning publié, moins la récup déjà au planning ou en demande ouverte. Pas de salaire."
+            "leave_remaining": "Congé restant :year : :days sur :total",
+            "recup_balance": "Heures supplémentaires (récup) : :hours"
         },
         "now": {
             "status_out": "Pas pointé",

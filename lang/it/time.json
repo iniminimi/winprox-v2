@@ -540,9 +540,8 @@
             "submitted": "Richiesta inviata.",
             "cancelled": "Richiesta ritirata.",
             "decision": "Decisione",
-            "leave_remaining": "Ferie residue :year: :days",
-            "recup_balance": "Straordinari (recupero): :hours",
-            "recup_hint": "Quest’anno fino a oggi: tempo lavorato meno il turno pubblicato, meno il recupero già in turno o in una richiesta aperta. Non è paga."
+            "leave_remaining": "Ferie residue :year: :days di :total",
+            "recup_balance": "Straordinari (recupero): :hours"
         },
         "now": {
             "status_out": "Non timbrato",
