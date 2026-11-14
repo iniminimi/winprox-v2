@@ -610,7 +610,8 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
 
 .wp-main {
     min-width: 0;
-    padding: 1.75rem;
+    /* Bovenkant gelijk met het logo in de zijbalk (.wp-sidebar-header is 1rem). */
+    padding: 1rem 1.75rem 1.75rem;
     max-width: var(--wp-content-max);
     width: 100%;
 }
