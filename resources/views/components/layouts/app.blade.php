@@ -192,23 +192,31 @@
                 <nav class="wp-sidebar-menu" aria-label="{{ __('common.nav.label') }}">
                     @unless ($isPlatformOnlySuperuser)
                         <div class="wp-pwa-nav" data-wp-pwa-nav aria-label="{{ __('common.nav.browser') }}">
-                            <button type="button" class="wp-pwa-nav__btn" data-wp-pwa="back" aria-label="{{ __('common.nav.back') }}">
-                                <span class="wp-nav-icon"><x-wp-icon name="arrow-left" class="wp-icon" /></span>
-                            </button>
-                            <button type="button" class="wp-pwa-nav__btn" data-wp-pwa="forward" aria-label="{{ __('common.nav.forward') }}">
-                                <span class="wp-nav-icon"><x-wp-icon name="arrow-right" class="wp-icon" /></span>
-                            </button>
-                            <button type="button" class="wp-pwa-nav__btn" data-wp-pwa="reload" aria-label="{{ __('common.nav.reload') }}">
-                                <span class="wp-nav-icon"><x-wp-icon name="arrow-path" class="wp-icon" /></span>
-                            </button>
-                            <a
-                                href="{{ route('dashboard') }}"
-                                class="wp-pwa-nav__btn {{ request()->routeIs('dashboard') ? 'is-active' : '' }}"
-                                aria-label="{{ __('common.nav.dashboard') }}"
-                                @click="nav = false"
-                            >
-                                <span class="wp-nav-icon"><x-wp-icon name="home" class="wp-icon" /></span>
-                            </a>
+                            <x-wp-tooltip class="wp-tooltip--below" :text="__('common.nav.back')">
+                                <button type="button" class="wp-pwa-nav__btn" data-wp-pwa="back" aria-label="{{ __('common.nav.back') }}">
+                                    <span class="wp-nav-icon"><x-wp-icon name="arrow-left" class="wp-icon" /></span>
+                                </button>
+                            </x-wp-tooltip>
+                            <x-wp-tooltip class="wp-tooltip--below" :text="__('common.nav.forward')">
+                                <button type="button" class="wp-pwa-nav__btn" data-wp-pwa="forward" aria-label="{{ __('common.nav.forward') }}">
+                                    <span class="wp-nav-icon"><x-wp-icon name="arrow-right" class="wp-icon" /></span>
+                                </button>
+                            </x-wp-tooltip>
+                            <x-wp-tooltip class="wp-tooltip--below" :text="__('common.nav.reload')">
+                                <button type="button" class="wp-pwa-nav__btn" data-wp-pwa="reload" aria-label="{{ __('common.nav.reload') }}">
+                                    <span class="wp-nav-icon"><x-wp-icon name="arrow-path" class="wp-icon" /></span>
+                                </button>
+                            </x-wp-tooltip>
+                            <x-wp-tooltip class="wp-tooltip--below" :text="__('common.nav.dashboard')">
+                                <a
+                                    href="{{ route('dashboard') }}"
+                                    class="wp-pwa-nav__btn {{ request()->routeIs('dashboard') ? 'is-active' : '' }}"
+                                    aria-label="{{ __('common.nav.dashboard') }}"
+                                    @click="nav = false"
+                                >
+                                    <span class="wp-nav-icon"><x-wp-icon name="home" class="wp-icon" /></span>
+                                </a>
+                            </x-wp-tooltip>
                         </div>
                     @endunless
                     @foreach ($primaryNav as $item)

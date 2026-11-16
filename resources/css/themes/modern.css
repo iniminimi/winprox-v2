@@ -127,11 +127,18 @@
 }
 
 [data-theme='modern'] .wp-sidebar .wp-pwa-nav .wp-nav-icon,
-[data-theme='modern'] .wp-sidebar .wp-pwa-nav__btn:hover .wp-nav-icon,
 [data-theme='modern'] .wp-sidebar .wp-pwa-nav__btn.is-active .wp-nav-icon,
 [data-theme='modern'] .wp-sidebar .wp-pwa-nav__btn:disabled:hover .wp-nav-icon {
     background-color: rgba(16, 185, 129, 0.28);
     color: #6ee7b7;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    [data-theme='modern'] .wp-sidebar .wp-pwa-nav__btn:hover:not(:disabled) .wp-nav-icon {
+        background-color: rgba(16, 185, 129, 0.48);
+        color: #a7f3d0;
+        box-shadow: 0 4px 10px rgba(16, 185, 129, 0.28);
+    }
 }
 
 [data-theme='modern'] .wp-sidebar .wp-text-muted,

@@ -342,11 +342,15 @@
 }
 
 .wp-pwa-nav .wp-nav-icon,
-.wp-pwa-nav__btn:hover .wp-nav-icon,
 .wp-pwa-nav__btn.is-active .wp-nav-icon,
 .wp-pwa-nav__btn:disabled:hover .wp-nav-icon {
     background-color: color-mix(in srgb, var(--wp-accent-soft) 65%, var(--wp-surface));
     color: var(--wp-accent);
+    transition:
+        transform var(--wp-transition),
+        background-color var(--wp-transition),
+        color var(--wp-transition),
+        box-shadow var(--wp-transition);
 }
 
 .wp-pwa-nav__btn {
@@ -364,6 +368,15 @@
 
 .wp-pwa-nav__btn:hover {
     text-decoration: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .wp-pwa-nav__btn:hover:not(:disabled) .wp-nav-icon {
+        transform: translateY(-2px);
+        background-color: var(--wp-accent);
+        color: var(--wp-text-on-accent, #ffffff);
+        box-shadow: var(--wp-shadow);
+    }
 }
 
 .wp-pwa-nav__btn:focus-visible {
