@@ -21,7 +21,7 @@ function phpLocaleList(key) {
     return [...match[1].matchAll(/'([a-z]{2})'/g)].map((m) => m[1]);
 }
 
-/** Backoffice, website en Ollama. Portaal-extra (pt, ro, …) telt hier niet mee. */
+/** Backoffice, website en Ollama. Portaal-extra (pt, ro, pl) telt hier niet mee. */
 function appLocales() {
     const listed = phpLocaleList('supported');
     return listed.length ? listed : locales();

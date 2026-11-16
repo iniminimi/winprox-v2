@@ -1,0 +1,9 @@
+{
+    "fields": {
+        "ddt": "Deklaracja robót (DDT)",
+        "ddt_hint": "13 znaków — wymagane dla CIAO w tej lokalizacji."
+    },
+    "errors": {
+        "ddt_invalid": "Numer DDT musi mieć dokładnie 13 prawidłowych znaków."
+    }
+}

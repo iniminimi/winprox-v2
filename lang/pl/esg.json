@@ -1,0 +1,12 @@
+{
+    "portal": {
+        "measurement_label": "Odczyt: :name",
+        "numeric_placeholder": "Wartość",
+        "boolean_choose": "Wybierz…",
+        "boolean_yes": "Tak",
+        "boolean_no": "Nie",
+        "string_placeholder": "Wartość",
+        "choice_choose": "Wybierz…",
+        "json_placeholder": "{\"key\": \"value\"}"
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "card": {
+        "round_stops": "Obchód · :count przystanków"
+    },
+    "show": {
+        "photo_enlarge": "Powiększ zdjęcie"
+    },
+    "updates": {
+        "kind": {
+            "worker_note": "Pracownik",
+            "worker_photos": "Zdjęcia pracownika",
+            "note": "Notatka",
+            "pause": "Przerwa",
+            "status_reason": "Zmiana statusu",
+            "close_reason": "Zgłoszenie zamknięte",
+            "reopen_reason": "Zgłoszenie ponownie otwarte"
+        }
+    }
+}

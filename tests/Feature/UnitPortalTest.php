@@ -876,7 +876,7 @@ it('switches the unit portal to romanian without touching backoffice locales', f
         ->assertSee('Ajutor — Portal public', false)
         ->assertSee('Sesizare nouă', false)
         ->assertDontSee('New report', false)
-        ->call('switchLocale', 'pl')
+        ->call('switchLocale', 'uk')
         ->assertSet('locale', 'ro');
 });
 
@@ -890,6 +890,19 @@ it('switches the unit portal to portuguese above romanian in the picklist', func
         ->assertSee('Ajuda — Portal público', false)
         ->assertSee('Nova ocorrência', false)
         ->assertSee('PO', false)
+        ->assertDontSee('New report', false);
+});
+
+it('switches the unit portal to polish as the last portal language', function () {
+    unitPortalScaffold();
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->call('switchLocale', 'pl')
+        ->assertSet('locale', 'pl')
+        ->assertSee('Pomoc do tej strony', false)
+        ->assertSee('Pomoc — Portal publiczny', false)
+        ->assertSee('Nowe zgłoszenie', false)
+        ->assertSee('PL', false)
         ->assertDontSee('New report', false);
 });
 

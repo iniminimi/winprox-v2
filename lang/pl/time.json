@@ -1,0 +1,238 @@
+{
+    "presence": {
+        "attention": {
+            "absence_kinds": {
+                "leave": "urlop",
+                "recup": "odbiór",
+                "sick": "zwolnienie lekarskie",
+                "holiday": "święto"
+            }
+        }
+    },
+    "manual_clock_in": {
+        "badge": "Wejście ręczne"
+    },
+    "status": {
+        "open": "Otwarte",
+        "closed": "Zamknięte"
+    },
+    "schedule": {
+        "types": {
+            "kinds": {
+                "work": "Praca",
+                "leave": "Urlop",
+                "recup": "Odbiór",
+                "sick": "Chorobowe"
+            }
+        }
+    },
+    "absence": {
+        "status": {
+            "pending": "Otwarte",
+            "approved": "Zatwierdzone",
+            "rejected": "Odrzucone",
+            "cancelled": "Wycofane"
+        },
+        "errors": {
+            "worker_tenant_mismatch": "Ten pracownik nie należy do tej organizacji.",
+            "invalid_kind": "Proszę wybrać urlop albo odbiór.",
+            "range_inverted": "Data końcowa musi przypadać w dniu początkowym albo później.",
+            "range_too_long": "Najwyżej 31 dni na wniosek.",
+            "date_in_past": "Data początkowa nie może być w przeszłości.",
+            "no_shift_type": "Nie ma aktywnego typu zmiany dla tego rodzaju nieobecności.",
+            "overlapping_pending": "Otwarty wniosek już obejmuje te dni.",
+            "not_pending": "Ten wniosek został już rozpatrzony.",
+            "not_owner": "Można wycofać tylko własny wniosek.",
+            "reason_required": "Powód jest wymagany (co najmniej 3 znaki).",
+            "already_started": "Ten urlop albo ten odbiór już się rozpoczął. Nie można go już wycofać.",
+            "not_cancellable": "Tego wniosku nie można wycofać.",
+            "half_day_range": "Pół dnia może obejmować tylko jedną datę."
+        }
+    },
+    "portal": {
+        "title": "Logowanie",
+        "clock": {
+            "not_clocked_in": "Wejście nie zostało jeszcze zarejestrowane",
+            "signed_in_at": "Zalogowano w WinProx o :time",
+            "clocked_in_at_tenant": "Wejście zarejestrowane w :tenant o :time",
+            "absence_clock_in": "Wejście zarejestrowane w trakcie: :kind",
+            "no_break": "Przerwa nie została jeszcze rozpoczęta",
+            "on_break_since": "Na przerwie od :time",
+            "in": "Zarejestruj wejście",
+            "out": "Zarejestruj wyjście",
+            "start_break": "Rozpocznij przerwę",
+            "break_hint": "Proszę pamiętać o przerwie — przy długich zmianach zapisujemy automatycznie :min min przerwy.",
+            "end_break": "Zakończ przerwę",
+            "open_elsewhere_hint": "Wejście jest już zarejestrowane w innej lokalizacji. Proszę przenieść obecność tutaj albo zarejestrować wyjście.",
+            "elsewhere_body": "Wejście jest zarejestrowane w innej lokalizacji.",
+            "sign_out_while_clocked": "Wejście jest nadal zarejestrowane. Wylogowanie nie rejestruje wyjścia.",
+            "transfer_here": "Przenieś tutaj",
+            "started_at": "Początek w :place (ta sama zmiana).",
+            "working_at": "Praca w :place",
+            "stop_work": "Zatrzymaj pracę",
+            "find_nearby": "Szukaj miejsca pracy w pobliżu",
+            "find_nearby_customer": "Szukaj adresu klienta w pobliżu",
+            "start_work_at": "Rozpocznij pracę: :place (:distance m)",
+            "no_nearby_units": "Brak jednostki z pinezką w zasięgu.",
+            "no_nearby_customer": "Brak adresu pracy klienta w zasięgu.",
+            "clocked_out_at": "Wyjście zarejestrowane o :time",
+            "scan_to_clock_in": "Proszę zeskanować naklejkę albo ekran zegara, aby zarejestrować wejście.",
+            "scan_to_clock_out": "Proszę zeskanować naklejkę albo ekran zegara, aby zarejestrować wyjście albo przenieść obecność."
+        },
+        "break_started": "Przerwa rozpoczęta.",
+        "break_ended": "Przerwa zakończona.",
+        "errors": {
+            "already_clocked_in": "Wejście jest już zarejestrowane. Powyżej widać gdzie, albo można przenieść się do tej lokalizacji.",
+            "not_clocked_in": "Wejście nie jest zarejestrowane.",
+            "break_already_open": "Przerwa jest już rozpoczęta.",
+            "break_already_taken": "W tej zmianie przerwa została już wykorzystana.",
+            "break_not_open": "Nie jesteście Państwo na przerwie.",
+            "icon_not_configured": "Konto nie jest jeszcze w pełni skonfigurowane. Proszę skontaktować się z administratorem.",
+            "device_mismatch": "To urządzenie nie jest powiązane z Państwa ewidencją. Proszę poprosić kierownika zespołu albo administratora o zezwolenie na nowe urządzenie.",
+            "scan_required": "Proszę zeskanować kod QR Clock Point, aby zarejestrować wejście albo wyjście. W ten sposób widać, że jesteście Państwo na miejscu.",
+            "visit_gps_required": "GPS jest wymagany, aby rozpocząć albo zatrzymać pracę. Proszę zezwolić na lokalizację i spróbować ponownie.",
+            "clock_gps_required": "GPS jest wymagany do rejestracji wejścia. Proszę zezwolić na lokalizację i spróbować ponownie.",
+            "visit_unit_out_of_range": "Jesteście Państwo za daleko od tego miejsca pracy.",
+            "visit_requires_customer_location": "Pracę można rozpocząć tylko pod adresem pracy klienta.",
+            "visit_already_open": "Praca w tym miejscu już trwa.",
+            "visit_not_open": "Nie ma otwartej wizyty roboczej.",
+            "gps_visits_disabled": "Wizyty robocze z GPS są wyłączone dla tej organizacji."
+        },
+        "transferred": "Obecność została przeniesiona do tej lokalizacji (ta sama zmiana).",
+        "hours": {
+            "tile": "Moje godziny",
+            "tile_sub": "Państwa zarejestrowane zmiany",
+            "title": "Moje godziny",
+            "subtitle": "Tylko Państwa godziny wejścia i wyjścia.",
+            "empty": "W tym miesiącu nie ma godzin.",
+            "total": "Razem w tym miesiącu: :duration",
+            "month_nav": "Miesiąc",
+            "previous_month": "Poprzedni miesiąc",
+            "next_month": "Następny miesiąc",
+            "day_line": "Wejście : :in - Wyjście : :out - przepracowano : :worked",
+            "out_open": "—",
+            "break_line": "Przerwa : :break",
+            "break_none": "brak"
+        },
+        "clock_alert": {
+            "absent": "Zaplanowane, ale bez wejścia",
+            "early": "Wejście za wcześnie",
+            "late": "Wejście z opóźnieniem",
+            "late_out": "Późne wyjście",
+            "absence_leave": "Wejście w dniu urlopu",
+            "absence_recup": "Wejście w dniu odbioru",
+            "absence_sick": "Wejście w dniu zwolnienia lekarskiego",
+            "absence_holiday": "Wejście w święto"
+        },
+        "schedule": {
+            "tile": "Mój grafik",
+            "tile_sub": "Państwa zaplanowany miesiąc",
+            "title": "Mój grafik",
+            "subtitle": "Tylko opublikowane zmiany i nieobecności.",
+            "published_notice": "Nowy grafik opublikowany od :date.",
+            "changed_notice": "Grafik został zaktualizowany :days (jasnoniebieski = zmieniony).",
+            "empty": "W tym miesiącu nic nie zaplanowano.",
+            "month_nav": "Miesiąc",
+            "previous_month": "Poprzedni miesiąc",
+            "next_month": "Następny miesiąc",
+            "columns": {
+                "date": "Data",
+                "duty": "Zmiana",
+                "hours": "Godziny"
+            }
+        },
+        "visit_started": "Wizyta robocza rozpoczęta.",
+        "visit_ended": "Wizyta robocza zakończona.",
+        "today": {
+            "title": "Dokąd mam iść dzisiaj:",
+            "title_checkmate": "Wizyta u klienta",
+            "empty": "Na dziś nie ma zaplanowanej wizyty",
+            "navigate": "Nawiguj",
+            "start_work": "Rozpocznij pracę",
+            "do_check": "Kontrola jednostki",
+            "gps_off": "GPS w telefonie jest wyłączony. Proszę włączyć lokalizację, aby rozpocząć pracę pod tymi adresami.",
+            "here": "Tutaj",
+            "been": "Już tu byłem"
+        },
+        "homescreen": {
+            "title": "Dodaj WinProx do ekranu głównego",
+            "help_title": "Clock Point na ekranie głównym",
+            "help_intro": "Proszę nacisnąć ikonę WinProx: na Androidzie Chrome pyta, czy dodać WinProx do ekranu głównego. Potem logowanie odbywa się bez kodu QR. Przy stałym zegarze wejście rejestruje się, skanując naklejkę albo ekran zegara. Bez App Store.",
+            "help_android": "Android (Chrome): jedno naciśnięcie ikony. Proszę potwierdzić „Dodaj do ekranu głównego”. Logowanie działa potem z tego skrótu.",
+            "help_ios": "iPhone: Apple nie pozwala na automatyczną instalację. Proszę nacisnąć ikonę; potem na iPhonie: trzy kropki (⋯) na dole → Udostępnij → Pokaż więcej → przewiń → „+ Dodaj do ekranu początkowego”.",
+            "help_existing": "Została stara ikona, przy której logowanie nic nie robiło? Proszę usunąć ikonę, odświeżyć stronę i nacisnąć plus jeszcze raz."
+        },
+        "absence": {
+            "tile": "Urlop / odbiór",
+            "tile_sub": "Złóż wniosek albo wycofaj",
+            "title": "Urlop / odbiór",
+            "subtitle": "Proszę przejrzeć wnioski i je wycofać. Personel zatwierdza albo odrzuca.",
+            "period": "Okres",
+            "period_hint": "Proszę nacisnąć datę początkową, a potem końcową. Minionych dni nie można wybrać.",
+            "period_one_day": "1 dzień",
+            "period_days": ":count dni",
+            "prev_month": "Poprzedni miesiąc",
+            "next_month": "Następny miesiąc",
+            "kind": "Rodzaj",
+            "date_from": "Od",
+            "date_to": "Do",
+            "description": "Notatka (opcjonalnie)",
+            "submit": "Złóż wniosek",
+            "empty": "Nie ma jeszcze wniosków.",
+            "cancel": "Wycofaj",
+            "list_title": "Państwa wnioski",
+            "form_title": "Nowy wniosek",
+            "half_day": "Pół dnia",
+            "cancel_confirm": "Wycofać ten wniosek?",
+            "cancel_approved_confirm": "Wycofać ten zatwierdzony urlop albo odbiór? Grafik przywraca poprzednie zmiany.",
+            "submitted": "Wniosek wysłany.",
+            "cancelled": "Wniosek wycofany.",
+            "decision": "Decyzja",
+            "leave_remaining": "Pozostały urlop :year: :days z :total",
+            "recup_balance": "Nadgodziny (czas wolny): :hours"
+        },
+        "now": {
+            "status_out": "Bez wejścia",
+            "status_in": "Wejście od :time",
+            "status_elsewhere": "Wejście w innej lokalizacji",
+            "next_stop": "Następny przystanek: :name",
+            "here_done": "Praca tutaj jest skończona.",
+            "toggle": "Szczegóły"
+        },
+        "customer": {
+            "tile": "Nowy klient",
+            "tile_sub": "Utwórz klienta i adres pracy",
+            "title": "Klient albo adres pracy",
+            "subtitle": "Proszę wybrać istniejącego klienta albo utworzyć nowego.",
+            "pick_existing": "Klient",
+            "new": "+ Nowy klient",
+            "location_name": "Nazwa adresu pracy",
+            "location_name_hint": "Opcjonalnie — domyślnie nazwa klienta.",
+            "gps_hint": "Aktualna pozycja GPS zostanie zapisana jako pinezka tego adresu pracy.",
+            "submit": "Zapisz klienta i adres pracy"
+        },
+        "customer_saved": "Klient i adres pracy zostały zapisane.",
+        "scan": {
+            "button": "Skanuj kod QR",
+            "title": "Zeskanuj kod QR Clock Point",
+            "hint": "Proszę skierować aparat na naklejkę albo na ekran zegara.",
+            "error_unsupported": "Ta przeglądarka nie może otworzyć aparatu. Proszę zeskanować aplikacją Aparat.",
+            "error_denied": "Brak dostępu do aparatu. Proszę zezwolić na aparat albo zeskanować aplikacją Aparat.",
+            "error_invalid": "To nie jest kod QR Clock Point. Proszę zeskanować naklejkę albo ekran zegara.",
+            "slow_hint": "Skanowanie nie działa? Proszę otworzyć aplikację Aparat i zeskanować nią kod QR."
+        },
+        "team_schedule": {
+            "tile": "Grafik zespołu",
+            "tile_sub": "Współpracownicy z Państwa lokalizacji",
+            "title": "Grafik zespołu",
+            "subtitle": "Tylko opublikowane zmiany · Państwa lokalizacja (lokalizacje).",
+            "week_label": "Tydzień :week · :range",
+            "week_nav": "Tydzień",
+            "previous_week": "Poprzedni tydzień",
+            "next_week": "Następny tydzień",
+            "empty": "W tym tygodniu nie ma opublikowanych zmian.",
+            "you": "Państwo",
+            "absent": "Nieobecny"
+        }
+    }
+}

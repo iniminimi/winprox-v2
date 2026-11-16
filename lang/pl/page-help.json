@@ -1,0 +1,236 @@
+{
+    "button_label": "Pomoc do tej strony",
+    "modal": {
+        "close": "Zamknij",
+        "print": "Drukuj",
+        "actions_heading": "Czynności",
+        "statuses_heading": "Statusy"
+    },
+    "pages": {
+        "portal.unit": {
+            "title": "Pomoc — Portal publiczny",
+            "actions": [
+                {
+                    "label": "Powitanie",
+                    "text": "Witamy w portalu publicznym :tenant. Poniżej jest więcej informacji. Interesuje Państwa własny portal dla firmy? Proszę nacisnąć <a href=\"https://winprox.app\" target=\"_blank\" rel=\"noopener noreferrer\">Winprox.app</a>."
+                },
+                {
+                    "label": "Zgłoś problem",
+                    "text": "Proszę nacisnąć „Utwórz zgłoszenie”, opisać problem i, jeśli trzeba, dodać do czterech zdjęć. Imię, nazwisko i e-mail są opcjonalne — jeśli administrator wymaga danych kontaktowych, proszę je wypełnić. Gdy potwierdzenie e-mailem jest włączone, przychodzi odnośnik: zgłoszenie powstaje dopiero po potwierdzeniu. Potem tworzy się zadanie dla zespołu. Zgłoszenie musi zostać zatwierdzone, zanim pojawi się w portalu. Limity antyspamowe: najwyżej jedno zgłoszenie co 3 minuty i pięć zgłoszeń w ciągu 30 minut dla tej jednostki (na urządzenie)."
+                },
+                {
+                    "label": "Wcześniejsze zgłoszenia",
+                    "text": "Jeśli administrator zostawi tę opcję włączoną dla kategorii, po zatwierdzeniu widać otwarte zgłoszenia tej jednostki. Gdy jest wyłączona, kafelek jest ukryty (na przykład pokój hotelowy albo toaleta)."
+                },
+                {
+                    "label": "Rezerwuj",
+                    "text": "Jeśli tę jednostkę można rezerwować, widać kafelek Rezerwuj. Proszę wybrać przedział, podać imię i e-mail oraz potwierdzić w ciągu 30 minut e-mailem. Do zmiany albo anulowania służą Moje rezerwacje albo odnośnik z e-maila."
+                },
+                {
+                    "label": "Dokumenty",
+                    "text": "Tutaj są instrukcje i inne dokumenty dostępne dla tej jednostki. Proszę wybrać język u góry — opis jest tłumaczony automatycznie, gdy będzie gotowy."
+                },
+                {
+                    "label": "Ogłoszenia",
+                    "text": "Tutaj są ogłoszenia dotyczące tej jednostki. Proszę wybrać język u góry — tekst jest tłumaczony automatycznie, gdy będzie gotowy."
+                },
+                {
+                    "label": "Zapisz lokalizację GPS",
+                    "text": "Gdy jest włączone, współrzędne GPS trafiają do administracji. Dzięki temu technik łatwiej Państwa znajdzie."
+                },
+                {
+                    "label": "Język",
+                    "text": "Proszę wybrać język w prawym górnym rogu. Teksty portalu od razu zmieniają się na wybrany język."
+                },
+                {
+                    "label": "Motyw",
+                    "text": "W prawym górnym rogu można przełączać motyw Standardowy i Ciemny. Ciemny jest wygodny w telefonie."
+                },
+                {
+                    "label": "Pomiary jednostki",
+                    "text": "Gdy kategoria i jednostka pozwalają na pomiary i są powiązane pola, portal pokazuje kafelek Pomiary. Proszę wpisać wartości i wysłać — Clock Point nie jest potrzebny. Historia jest w Praca → Pomiary jednostki."
+                },
+                {
+                    "label": "Album zdjęć",
+                    "text": "Gdy album zdjęć jest włączony, jest obok zdjęć z tego kodu QR jednostki. To dzisiejsze zdjęcia do wysłania e-mailem, nie stałe zdjęcia jednostki. Do 24 dziennie; własne dzisiejsze zdjęcia można usunąć. Backoffice decyduje, co jest wysyłane."
+                }
+            ],
+            "status_note": "Otwarte zadania na tej stronie mają poniższe statusy.",
+            "statuses": {
+                "new": "Zadanie czeka na rozpoczęcie.",
+                "in_progress": "Zespół nad nim pracuje.",
+                "done": "Praca jest zakończona.",
+                "closed": "Zadanie jest zamknięte."
+            }
+        },
+        "portal.team": {
+            "title": "Pomoc — Portal pracownika",
+            "actions": [
+                {
+                    "label": "Imię i ikona",
+                    "text": "Po otwarciu portalu Clock Point — skanem kodu QR, odnośnikiem logowania albo ikoną z ekranu głównego — proszę podać imię i nazwisko oraz wybrać własną ikonę. Proszę ją zapamiętać: następnym razem trzeba ją wybrać ponownie. Są dwie próby z właściwą ikoną; potem konto zostaje zablokowane. Kierownik zespołu albo administrator może je odblokować."
+                },
+                {
+                    "label": "Pierwszy raz",
+                    "text": "Są Państwo nowi w zespole? Proszę poprosić kierownika zespołu albo administratora o utworzenie konta. Potem logują się Państwo imieniem i nazwiskiem oraz wybierają ikonę."
+                },
+                {
+                    "label": "Wyloguj się",
+                    "text": "Proszę się wylogować po zakończeniu. O godzinach wybranych przez administratora wylogowanie następuje też automatycznie."
+                },
+                {
+                    "label": "Otwarte zadania",
+                    "text": "Po zalogowaniu widać otwarte zadania zespołu w portalu jednostki. Proszę zeskanować kod QR jednostki na miejscu, aby rozpocząć albo zakończyć zadanie."
+                },
+                {
+                    "label": "Nowe zadania zespołu",
+                    "text": "Jeśli od zalogowania pojawiły się nowe zadania dla zespołu, portal jednostki pokazuje ostrzeżenie. Proszę otworzyć listę zadań odnośnikiem Clock Point albo zamknąć ostrzeżenie."
+                },
+                {
+                    "label": "Rozpocznij",
+                    "text": "Proszę przejść do „Otwarte zadania” i nacisnąć „Rozpocznij zadanie”. Pozostali w zespole widzą, że Państwo nad nim pracują, a status zmienia się na „W toku”. Po zakończeniu proszę nacisnąć „Zakończ zadanie”. Bez zasięgu rozpoczęcie zostaje w telefonie i jest wysyłane później."
+                },
+                {
+                    "label": "Zakończ",
+                    "text": "Po rozpoczęciu zadania proszę je zakończyć przyciskiem „Zakończ zadanie”. Można dodać krótką notatkę i, jeśli trzeba, zdjęcia. Czasem portal prosi o zmierzoną wartość (na przykład stan licznika) — proszę ją wpisać przed potwierdzeniem. Zadanie dostaje status „Zakończone”. Bez zasięgu notatka i zdjęcia zostają w telefonie do powrotu online."
+                },
+                {
+                    "label": "Kontrola jednostki",
+                    "text": "Gdy kategoria i jednostka pozwalają na kontrolę, zalogowani pracownicy widzą kafelek Kontrola jednostki. Proszę zapisać W porządku albo Nie w porządku, ewentualnie z listą kontrolną. W porządku nie tworzy zgłoszenia; po Nie w porządku można je utworzyć. Bez zasięgu kontrola zostaje w telefonie i jest wysyłana później."
+                },
+                {
+                    "label": "Zapisz lokalizację GPS",
+                    "text": "Gdy jest włączone, współrzędne GPS trafiają do administracji. Dzięki temu technik łatwiej Państwa znajdzie."
+                }
+            ],
+            "status_note": "Każde zadanie przechodzi przez poniższe statusy:",
+            "statuses": {
+                "new": "Zadanie jeszcze się nie rozpoczęło i czeka na pracownika.",
+                "in_progress": "Ktoś pracuje teraz nad zadaniem, na miejscu.",
+                "done": "Pracę zakończył pracownik.",
+                "closed": "Zgłoszenie zostało sprawdzone przez administratora i zamknięte na stałe."
+            }
+        },
+        "portal.time": {
+            "title": "Pomoc — Portal Clock Point",
+            "actions": [
+                {
+                    "label": "Imię i ikona",
+                    "text": "Proszę otworzyć portal Clock Point, skanując naklejkę albo ekran zegara, odnośnikiem logowania z e-maila albo ikoną z ekranu głównego, i wybrać imię, nazwisko oraz własną ikonę (PIN albo biometria, opcjonalnie) na własnym telefonie. To mówi, kim Państwo są — to jeszcze nie jest rejestracja wejścia. Nie ma przycisku, aby zalogować się jako inny pracownik: telefon zostaje Państwa, dopóki administrator albo kierownik zespołu go nie zwolni. Po zalogowaniu znika tytuł Logowanie. Dwie błędne próby tymczasowo blokują konto; kierownik zespołu albo administrator może je zwolnić."
+                },
+                {
+                    "label": "Odcisk palca albo twarz",
+                    "text": "Po pierwszym logowaniu ikoną albo PIN-em portal proponuje „Szybsze logowanie?” — proszę nacisnąć Włącz i potwierdzić odciskiem palca albo twarzą telefonu (albo kodem urządzenia). Od tej chwili przycisk Zaloguj się biometrią jest na górze; ikona albo PIN nadal działają. Odcisk palca i twarz nie opuszczają telefonu — WinProx przechowuje tylko klucz publiczny. Oferta się nie pojawia? Administrator wyłączył opcję albo urządzenie jej nie obsługuje. Administratorzy mogą usunąć klucz w Osoby → Zespoły → Edytuj."
+                },
+                {
+                    "label": "Skrót na ekranie głównym",
+                    "text": "Ikona WinProx jest po prawej stronie Logowania. Proszę nacisnąć: na Androidzie Chrome dodaje ją do ekranu głównego; na iPhonie: ⋯ na dole → Udostępnij → Pokaż więcej → przewiń → + Dodaj do ekranu początkowego. Bez App Store. Ikona loguje bez kodu QR; przy stałym zegarze wejście albo wyjście można zarejestrować dopiero po zeskanowaniu naklejki albo ekranu zegara."
+                },
+                {
+                    "label": "Wyloguj się",
+                    "text": "Po zalogowaniu można nacisnąć Wyloguj się: portal znowu prosi o ikonę, PIN albo biometrię. To nie jest wyjście z ewidencji i nie odłącza telefonu; urządzenie zwalnia tylko administrator albo kierownik zespołu. Wyjście z ewidencji jest w wierszu rejestracji."
+                },
+                {
+                    "label": "Otwarte zadania",
+                    "text": "Po imieniu i ikonie u góry widać kartę ewidencji, ze statusem (bez wejścia, z wejściem, na przerwie, w innym miejscu albo na urlopie). Lokalizacja jest pod spodem, a główna czynność obok imienia. Rozpocznij przerwę i Wyloguj się są przyciskami za strzałką. Otwarte zadania są niżej, z liczbą; dodatkowe zadania przez Więcej zadań. Z Time i wizytami roboczymi GPS zadania zespołu rozpoczyna się albo kończy na Clock Point, gdy wizyta robocza jest otwarta pod tym adresem klienta (notatka i zdjęcia opcjonalnie). Obchód kontrolny pokazuje opis, priorytet, status i następny przystanek. Przycisk Kontrola jednostki pojawia się dopiero po Rozpocznij pracę w tej lokalizacji; pełna kontrola (W porządku / Nie w porządku / pomiń) otwiera się potem."
+                },
+                {
+                    "label": "Wejście i wyjście",
+                    "text": "Każde wejście, wyjście albo przeniesienie wymaga nowego skanu naklejki albo ekranu zegara, na miejscu — odnośnik logowania, ikona z ekranu głównego albo otwarta karta nie wystarczą (w Checkmate wystarcza ikona). Jeden skan daje jedną rejestrację i szybko wygasa. Przerwę można rozpocząć na tym samym telefonie, bez nowego skanu. Jeśli ustawienie GPS przy wejściu jest włączone, lokalizacja jest obowiązkowa przy wejściu; wyjście i przerwy nie wymagają pozycji. Inne urządzenie jest odrzucane, dopóki kierownik zespołu albo administrator nie zezwoli na nowe. Jednocześnie jest tylko jedna otwarta zmiana. Na Clock Point w innym miejscu widać, gdzie wejście jest zarejestrowane, i można przenieść obecność tutaj (przeniesienie w ciągu 5 minut podnosi alarm). Inny Clock Point w tym samym miejscu liczy się jako to samo miejsce. Przy wizytach roboczych GPS: proszę rozpocząć pracę na miejscu, a potem zadania zespołu i następny przystanek kontroli na Clock Point. Czerwony trójkąt przy godzinie wejścia pojawia się, gdy jest opublikowana zmiana i nie zarejestrowano wejścia, albo wejście było co najmniej 15 minut spóźnione."
+                },
+                {
+                    "label": "Ekran zegara",
+                    "text": "Jeśli przy ewidencji stoi ekran zegara, kod QR na ekranie odnawia się cały czas — zeskanowanie go telefonem liczy się jako nowy skan. Nie mają Państwo telefonu pod ręką? Proszę nacisnąć imię na ekranie; przy otwartej zmianie wybrać przerwę albo wyjście, a potem PIN. Dwie błędne próby blokują na krótko. Bez PIN-u wejście rejestruje się skanem w telefonie."
+                },
+                {
+                    "label": "Dokąd mam iść dzisiaj",
+                    "text": "Po wejściu (Time z wizytami roboczymi GPS) widać, dokąd iść dzisiaj: tylko lokalizacje, w kolejności przystanków obchodu kontrolnego (nie alfabetycznie), jak oś czasu (tutaj, następny, już byłem, później). Następny przystanek pokazuje adres i Nawiguj. Gdy GPS w telefonie jest wyłączony, widać ostrzeżenie — tylko gdy jest dokąd iść dzisiaj. Rozpocznij pracę pojawia się w lokalizacji, gdy są Państwo na miejscu; Szukaj miejsca pracy w pobliżu wtedy znika. Przystanki kontroli są w Otwartych zadaniach; Kontrola jednostki dopiero po Rozpocznij pracę. Otwarte zadania bez daty zostają w Otwartych zadaniach."
+                },
+                {
+                    "label": "Nowe dokumenty i ogłoszenia",
+                    "text": "Nowe dokumenty i ogłoszenia pojawiają się na chwilę tuż pod kartą logowania, z niebieskim licznikiem. Proszę otworzyć kafelek, aby zobaczyć treść; potem wraca na dół, na stałe miejsce. Gdy później pojawi się nowa treść, kafelek znowu się podnosi. To, co Państwo przeczytali, zostaje przy Państwu także na innym urządzeniu."
+                },
+                {
+                    "label": "Lista ewakuacyjna",
+                    "text": "Jeśli administrator włączył listę ewakuacyjną w Ustawieniach (domyślnie wyłączona), po zalogowaniu widać kafelek Lista ewakuacyjna (ikona ognia). Proszę najpierw potwierdzić, że wgląd jest wyjątkowy i zostaje zapisany (imię, nazwisko, data i godzina). Potem widać, kto ma teraz zarejestrowane wejście, pogrupowane według miejsca, najnowsze wejście pierwsze."
+                },
+                {
+                    "label": "Moje godziny",
+                    "text": "Po zalogowaniu widać kafelek Moje godziny. Wymienia dni wybranego miesiąca, zsumowane: pierwsze wejście, ostatnie wyjście, czas pracy i przerwa. Można przeglądać poprzedni i następny miesiąc. Przerwa pokazuje „brak”, gdy przerwy nie ma. Minimum zespołu dotyczy tylko zmian trwających co najmniej 4 godziny. Czerwony trójkąt podaje powód: wejście ponad 15 minut za wcześnie, wejście co najmniej 15 minut za późno albo wyjście co najmniej 15 minut za późno względem opublikowanego grafiku."
+                },
+                {
+                    "label": "Mój grafik",
+                    "text": "Po zalogowaniu widać kafelek Mój grafik. Pokazuje tylko <strong>opublikowane</strong> zmiany i nieobecności wybranego <strong>miesiąca</strong>, jako tabelę (puste dni są pomijane). Plakietka oznacza nowo opublikowany grafik; otwarcie ją usuwa. Czerwony trójkąt przy godzinach oznacza brak wejścia (od planowanego początku) albo co najmniej 15 minut opóźnienia."
+                },
+                {
+                    "label": "Urlop / odbiór",
+                    "text": "Po zalogowaniu widać kafelek Urlop / odbiór. Proszę złożyć wniosek o urlop albo odbiór (od–do, opcjonalna notatka, maks. 31 dni, nie w przeszłości). Nakładające się otwarte wnioski są odrzucane. Własne wnioski są pod formularzem: można wycofać otwarty albo zatwierdzony wniosek, który jeszcze się nie rozpoczął; zatwierdzony urlop układa grafik na nowo. Personel decyduje w Time → Wnioski; odrzucenie wymaga powodu, zatwierdzenie nie. E-mail nie jest wysyłany. U góry widać urlop pozostały w tym roku z przysługującego limitu, a w przyszłym roku, gdy limit istnieje, oraz nadgodziny. Ten rok do dzisiaj: czas przepracowany minus opublikowany grafik, minus czas wolny już w grafiku albo w otwartym wniosku. To nie jest wynagrodzenie."
+                }
+            ]
+        },
+        "checkmate.portal.signin": {
+            "title": "Pomoc — Jednorazowe logowanie (pracownik)",
+            "actions": [
+                {
+                    "label": "Cel",
+                    "text": "Pracownik raz otwiera odnośnik Clock Point z e-maila albo skanuje kod QR, wybiera imię i nazwisko oraz potwierdza własną ikoną, PIN-em albo biometrią. Telefon zostaje powiązany od tej chwili."
+                },
+                {
+                    "label": "Ekran główny",
+                    "text": "Potem wystarcza ikona WinProx na ekranie głównym (Android: jedno naciśnięcie; iPhone: ⋯ → Udostępnij → Pokaż więcej → przewiń → + Dodaj do ekranu początkowego). Bez sklepu z aplikacjami, bez hasła."
+                },
+                {
+                    "label": "Inne urządzenie",
+                    "text": "Inny telefon jest odrzucany, dopóki administrator albo kierownik zespołu nie zwolni urządzenia — jeden telefon na pracownika."
+                }
+            ]
+        },
+        "checkmate.portal.day": {
+            "title": "Pomoc — Wejście i przerwy (pracownik)",
+            "actions": [
+                {
+                    "label": "Wejście",
+                    "text": "Na początku dnia pracy: jedno naciśnięcie Zarejestruj wejście — ikoną z ekranu głównego, bez skanowania kodu QR. Skan naklejki Clock Point albo ekranu zegara też rejestruje wejście. Jeśli GPS przy wejściu jest włączony, lokalizacja jest obowiązkowa. Zmiana trwa do wyjścia."
+                },
+                {
+                    "label": "Przerwa",
+                    "text": "Przerwy rozpoczyna się i kończy w portalu; wchodzą do ewidencji godzin i — przy włączonym CIAO — trafiają do ONSS jako OUT/IN."
+                },
+                {
+                    "label": "Wyjście",
+                    "text": "Proszę zarejestrować wyjście na końcu dnia — można też ikoną, bez skanu. Wyjście zamyka zmianę i każdą otwartą wizytę u klienta. Wylogowanie z portalu nie jest tym samym co rejestracja wyjścia."
+                }
+            ]
+        },
+        "checkmate.portal.visit": {
+            "title": "Pomoc — Wizyta u klienta (pracownik)",
+            "actions": [
+                {
+                    "label": "Cel",
+                    "text": "Wizyta u klienta zapisuje pracę u klienta. Proszę nacisnąć Rozpocznij pracę u klienta — telefon sprawdza przez GPS, że są Państwo w ustalonym zasięgu. Poza zasięgiem wizyta się nie zaczyna."
+                },
+                {
+                    "label": "Zmiana klienta",
+                    "text": "Od klienta A do klienta B: wizyta u A się kończy, a u B się zaczyna, w jednej czynności."
+                },
+                {
+                    "label": "Nowy klient w terenie",
+                    "text": "Klienta nie ma na liście? Proszę utworzyć go w terenie, z nazwą i adresem; pinezka GPS pochodzi z telefonu. Jeśli nazwa jest podobna do istniejącego klienta, najpierw pojawia się dyskretne ostrzeżenie."
+                },
+                {
+                    "label": "Nawiguj",
+                    "text": "Przycisk Nawiguj otwiera adres w aplikacji map — nie zapisuje wizyty."
+                }
+            ]
+        },
+        "checkmate.portal.hours": {
+            "title": "Pomoc — Moje godziny (pracownik)",
+            "actions": [
+                {
+                    "label": "Cel",
+                    "text": "Pracownik widzi tylko własne zmiany wybranego miesiąca: na dzień pierwsze wejście, ostatnie wyjście, przerwę i czas pracy. Bez korekty i bez godzin współpracowników."
+                }
+            ]
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "lifecycle": {
+        "pending": "Oczekuje na potwierdzenie",
+        "confirmed": "Potwierdzona",
+        "cancelled": "Anulowana",
+        "expired": "Wygasła"
+    }
+}
