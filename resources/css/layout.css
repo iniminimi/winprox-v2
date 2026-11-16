@@ -291,7 +291,8 @@
 }
 
 /* Icoon in zacht kader (layout uit V1-sidebar, kleuren via emerald-tokens). */
-.wp-nav-link .wp-nav-icon {
+.wp-nav-link .wp-nav-icon,
+.wp-pwa-nav .wp-nav-icon {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -305,14 +306,68 @@
     box-sizing: border-box;
 }
 
-.wp-nav-link:hover .wp-nav-icon {
+.wp-nav-link:hover .wp-nav-icon,
+.wp-pwa-nav__btn:hover .wp-nav-icon {
     background-color: var(--wp-surface-hover);
     color: var(--wp-text-body);
 }
 
-.wp-nav-link.is-active .wp-nav-icon {
+.wp-nav-link.is-active .wp-nav-icon,
+.wp-pwa-nav__btn.is-active .wp-nav-icon {
     background-color: color-mix(in srgb, var(--wp-accent-soft) 65%, var(--wp-surface));
     color: var(--wp-accent);
+}
+
+/* Browserbalk alleen in het geïnstalleerde bureaubladvenster. */
+.wp-pwa-nav {
+    display: none;
+}
+
+@media (display-mode: standalone) and (min-width: 60rem),
+       (display-mode: fullscreen) and (min-width: 60rem) {
+    .wp-pwa-nav {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin: 0 0.35rem 0.15rem;
+        padding: 0.35rem 0.275rem;
+    }
+
+    .wp-nav-link--home {
+        display: none;
+    }
+}
+
+.wp-pwa-nav__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.15rem;
+    border: 0;
+    border-radius: 0.65rem;
+    background: transparent;
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.wp-pwa-nav__btn:hover {
+    text-decoration: none;
+}
+
+.wp-pwa-nav__btn:focus-visible {
+    outline: 2px solid var(--wp-accent);
+    outline-offset: 2px;
+}
+
+.wp-pwa-nav__btn:disabled {
+    opacity: 0.38;
+    cursor: default;
+}
+
+.wp-pwa-nav__btn:disabled:hover .wp-nav-icon {
+    background-color: var(--wp-surface-2);
+    color: var(--wp-text-muted);
 }
 
 .wp-icon {

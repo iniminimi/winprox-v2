@@ -82,7 +82,11 @@ it('toont geen zwevend WinProx-logo in de desktop-app', function () {
         ->get(route('dashboard'))
         ->assertOk()
         ->assertDontSee('wp-brand-float', false)
-        ->assertSee('wp-sidebar-header-logo', false);
+        ->assertSee('wp-sidebar-header-logo', false)
+        ->assertSee('data-wp-pwa-nav', false)
+        ->assertSee('wp-nav-link--home', false)
+        ->assertSee(__('common.nav.back'), false)
+        ->assertSee(__('common.nav.reload'), false);
 });
 
 it('toont meldingen van een andere tenant niet op het dashboard', function () {

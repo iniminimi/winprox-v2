@@ -477,7 +477,7 @@
                 "title": "Disponibilità",
                 "items": [
                     "Raggiungibile 24/7 come servizio online (browser e portali QR).",
-                    "La gestione si apre nel browser. In Chrome o Edge può girare in una finestra propria con un collegamento sul desktop. Firefox non installa quella finestra. Safari su Mac lo fa con File → Aggiungi al Dock.",
+                    "La gestione si apre nel browser. In Chrome o Edge può girare in una finestra propria con un collegamento sul desktop. In quella finestra su un desktop, Home diventa indietro, avanti, aggiorna e home. Firefox non installa quella finestra. Safari su Mac lo fa con File → Aggiungi al Dock.",
                     "Una pagina unit già caricata resta usabile per poco senza rete e poi si sincronizza. La timbratura in entrata richiede una connessione.",
                     "Su uno schermo timbrature fisso il codice cambia, quindi una foto vecchia dello schermo non resta valida.",
                     "Manutenzione pianificata preferibilmente fuori dall’orario d’ufficio, con avviso quando possibile.",

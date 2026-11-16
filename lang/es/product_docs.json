@@ -477,7 +477,7 @@
                 "title": "Disponibilidad",
                 "items": [
                     "Disponible 24/7 como servicio en línea (navegador y portales QR).",
-                    "La gestión se abre en el navegador. En Chrome o Edge puede funcionar en su propia ventana con un acceso directo en el escritorio. Firefox no instala esa ventana. Safari en un Mac lo hace con Archivo → Añadir al Dock.",
+                    "La gestión se abre en el navegador. En Chrome o Edge puede funcionar en su propia ventana con un acceso directo en el escritorio. En esa ventana en un escritorio, Inicio pasa a ser atrás, adelante, actualizar e inicio. Firefox no instala esa ventana. Safari en un Mac lo hace con Archivo → Añadir al Dock.",
                     "Una página de unit ya cargada sigue usable un momento sin red y luego se sincroniza. Fichar la entrada exige conexión.",
                     "En una pantalla de fichaje fija el código cambia, así que una foto antigua de la pantalla no sigue siendo válida.",
                     "Mantenimiento planificado preferiblemente fuera del horario de oficina, con aviso cuando sea posible.",

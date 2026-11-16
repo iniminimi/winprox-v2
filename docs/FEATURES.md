@@ -27,6 +27,8 @@ niet het beheervenster. In Firefox blijft de knop verborgen: die browser install
 bureaubladvenster. In Safari blijft de knop ook verborgen: Apple laat de installatie niet
 vanuit de pagina starten. Op een Mac zet de beheerder het zelf via **Bestand → Zet in Dock**.
 Op iPhone of iPad gaat een beginscherm-icoon via **Deel**, niet via deze knop.
+In dat bureaubladvenster, en alleen daar, staat op de plek van Home: terug, verder,
+vernieuwen en home. Op de gsm en in de gewone browser blijft Home staan.
 
 Menu-volgorde (sidebar, accordion): Home · **Werk** (Meldingen, Taken,
 Inspectierondes, Checklists, Unit checks, Werkbezoeken, Kalender,

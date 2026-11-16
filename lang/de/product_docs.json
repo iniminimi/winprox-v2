@@ -477,7 +477,7 @@
                 "title": "Verfügbarkeit",
                 "items": [
                     "Rund um die Uhr als Online-Dienst erreichbar (Browser und QR-Portale).",
-                    "Die Verwaltung öffnet im Browser. In Chrome oder Edge kann sie als eigenes Fenster mit Desktop-Verknüpfung laufen. Firefox installiert dieses Fenster nicht. Safari auf dem Mac macht das über Ablage → Zum Dock hinzufügen.",
+                    "Die Verwaltung öffnet im Browser. In Chrome oder Edge kann sie als eigenes Fenster mit Desktop-Verknüpfung laufen. In diesem Fenster auf einem Desktop stehen Zurück, Vor, Aktualisieren und Startseite an der Stelle von Startseite. Firefox installiert dieses Fenster nicht. Safari auf dem Mac macht das über Ablage → Zum Dock hinzufügen.",
                     "Eine bereits geladene Unit-Seite bleibt kurz ohne Netz nutzbar und synchronisiert danach. Einstempeln braucht eine Verbindung.",
                     "Auf einem festen Stempeldisplay wechselt der Code, sodass ein altes Foto des Bildschirms nicht gültig bleibt.",
                     "Geplante Wartung vorzugsweise außerhalb der Bürozeiten, mit Ankündigung wenn möglich.",

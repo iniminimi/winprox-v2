@@ -477,7 +477,7 @@
                 "title": "Disponibilité",
                 "items": [
                     "Accessible 24/7 comme service en ligne (navigateur et portails QR).",
-                    "La gestion s’ouvre dans le navigateur. Dans Chrome ou Edge, elle peut tourner dans sa propre fenêtre avec un raccourci sur le bureau. Firefox n’installe pas cette fenêtre. Safari sur Mac le fait via Fichier → Ajouter au Dock.",
+                    "La gestion s’ouvre dans le navigateur. Dans Chrome ou Edge, elle peut tourner dans sa propre fenêtre avec un raccourci sur le bureau. Dans cette fenêtre sur un ordinateur, Accueil devient retour, suivant, actualiser et accueil. Firefox n’installe pas cette fenêtre. Safari sur Mac le fait via Fichier → Ajouter au Dock.",
                     "Une page d’unit déjà chargée reste brièvement utilisable sans réseau, puis se synchronise. Le pointage demande une connexion.",
                     "Sur un écran de pointage fixe, le code change : une ancienne photo de l’écran ne reste pas valable.",
                     "Maintenance planifiée de préférence hors heures de bureau, avec annonce si possible.",

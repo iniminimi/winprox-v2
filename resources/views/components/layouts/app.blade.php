@@ -190,9 +190,30 @@
             </div>
             <div class="wp-sidebar-body">
                 <nav class="wp-sidebar-menu" aria-label="{{ __('common.nav.label') }}">
+                    @unless ($isPlatformOnlySuperuser)
+                        <div class="wp-pwa-nav" data-wp-pwa-nav aria-label="{{ __('common.nav.browser') }}">
+                            <button type="button" class="wp-pwa-nav__btn" data-wp-pwa="back" aria-label="{{ __('common.nav.back') }}">
+                                <span class="wp-nav-icon"><x-wp-icon name="arrow-left" class="wp-icon" /></span>
+                            </button>
+                            <button type="button" class="wp-pwa-nav__btn" data-wp-pwa="forward" aria-label="{{ __('common.nav.forward') }}">
+                                <span class="wp-nav-icon"><x-wp-icon name="arrow-right" class="wp-icon" /></span>
+                            </button>
+                            <button type="button" class="wp-pwa-nav__btn" data-wp-pwa="reload" aria-label="{{ __('common.nav.reload') }}">
+                                <span class="wp-nav-icon"><x-wp-icon name="arrow-path" class="wp-icon" /></span>
+                            </button>
+                            <a
+                                href="{{ route('dashboard') }}"
+                                class="wp-pwa-nav__btn {{ request()->routeIs('dashboard') ? 'is-active' : '' }}"
+                                aria-label="{{ __('common.nav.dashboard') }}"
+                                @click="nav = false"
+                            >
+                                <span class="wp-nav-icon"><x-wp-icon name="home" class="wp-icon" /></span>
+                            </a>
+                        </div>
+                    @endunless
                     @foreach ($primaryNav as $item)
                         <a href="{{ route($item['route']) }}"
-                           class="wp-nav-link {{ request()->routeIs($item['active']) ? 'is-active' : '' }}"
+                           class="wp-nav-link {{ $item['route'] === 'dashboard' ? 'wp-nav-link--home' : '' }} {{ request()->routeIs($item['active']) ? 'is-active' : '' }}"
                            @if (! empty($item['target'])) target="{{ $item['target'] }}" rel="noopener noreferrer" @endif
                            @click="nav = false">
                             <x-wp-icon :name="$item['icon']" class="wp-nav-icon" />

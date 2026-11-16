@@ -168,10 +168,57 @@ window.addEventListener('appinstalled', () => {
     }
 });
 
+function bindPwaNav() {
+    const bar = document.querySelector('[data-wp-pwa-nav]');
+    if (!bar || bar.dataset.bound === '1') {
+        return;
+    }
+    bar.dataset.bound = '1';
+
+    bar.addEventListener('click', (event) => {
+        const button = event.target.closest('[data-wp-pwa]');
+        if (!button || button.disabled) {
+            return;
+        }
+        const action = button.getAttribute('data-wp-pwa');
+        if (action === 'back') {
+            history.back();
+        } else if (action === 'forward') {
+            history.forward();
+        } else if (action === 'reload') {
+            window.location.reload();
+        }
+    });
+
+    const sync = () => {
+        if (!window.navigation) {
+            return;
+        }
+        const back = bar.querySelector('[data-wp-pwa="back"]');
+        const forward = bar.querySelector('[data-wp-pwa="forward"]');
+        if (back) {
+            back.disabled = window.navigation.canGoBack === false;
+        }
+        if (forward) {
+            forward.disabled = window.navigation.canGoForward === false;
+        }
+    };
+
+    if (window.navigation) {
+        window.navigation.addEventListener('currententrychange', sync);
+        window.navigation.addEventListener('navigate', () => {
+            window.queueMicrotask(sync);
+        });
+    }
+    sync();
+}
+
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         hideShortcutWhenInstalled();
+        bindPwaNav();
     }, { once: true });
 } else {
     hideShortcutWhenInstalled();
+    bindPwaNav();
 }
