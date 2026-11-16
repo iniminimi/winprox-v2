@@ -1,0 +1,16 @@
+{
+    "button": {
+        "cancel": "Cancelar",
+        "close": "Fechar"
+    },
+    "language": {
+        "label": "Idioma"
+    },
+    "status": {
+        "new": "Aberto",
+        "in_progress": "Em curso",
+        "done": "Concluído",
+        "closed": "Fechado"
+    },
+    "welcome": "Bem-vindo"
+}

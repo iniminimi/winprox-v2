@@ -66,6 +66,7 @@ final class LocaleSupport
             'de' => 'de-DE',
             'es' => 'es-ES',
             'it' => 'it-IT',
+            'pt' => 'pt-PT',
             'ro' => 'ro-RO',
             default => 'nl-NL',
         };

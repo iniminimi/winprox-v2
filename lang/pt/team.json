@@ -1,0 +1,7 @@
+{
+    "workers": {
+        "photo_remove": "Eliminar a fotografia",
+        "photo_crop_title": "Recortar a fotografia",
+        "photo_crop_apply": "Usar a seleção"
+    }
+}

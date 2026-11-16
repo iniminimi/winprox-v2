@@ -1,0 +1,12 @@
+{
+    "portal": {
+        "measurement_label": "Leitura: :name",
+        "numeric_placeholder": "Valor",
+        "boolean_choose": "Escolha…",
+        "boolean_yes": "Sim",
+        "boolean_no": "Não",
+        "string_placeholder": "Valor",
+        "choice_choose": "Escolha…",
+        "json_placeholder": "{\"key\": \"value\"}"
+    }
+}

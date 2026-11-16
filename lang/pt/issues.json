@@ -1,0 +1,19 @@
+{
+    "card": {
+        "round_stops": "Ronda · :count paragens"
+    },
+    "show": {
+        "photo_enlarge": "Ampliar a fotografia"
+    },
+    "updates": {
+        "kind": {
+            "worker_note": "Trabalhador",
+            "worker_photos": "Fotografias do trabalhador",
+            "note": "Nota",
+            "pause": "Pausa",
+            "status_reason": "Alteração de estado",
+            "close_reason": "Ocorrência fechada",
+            "reopen_reason": "Ocorrência reaberta"
+        }
+    }
+}

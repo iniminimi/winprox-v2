@@ -1,0 +1,20 @@
+{
+    "form": {
+        "name": "Nome do cliente",
+        "contact_name": "Pessoa de contacto",
+        "email": "E-mail",
+        "phone": "Telefone",
+        "name_matches": "Parece-se com:"
+    },
+    "location_form": {
+        "street": "Rua",
+        "house_number": "N.º",
+        "postal_code": "Código postal",
+        "city": "Localidade"
+    },
+    "errors": {
+        "name_required": "Introduza o nome do cliente.",
+        "email_invalid": "Introduza um endereço de e-mail válido.",
+        "not_found": "Cliente não encontrado."
+    }
+}

@@ -876,8 +876,21 @@ it('switches the unit portal to romanian without touching backoffice locales', f
         ->assertSee('Ajutor — Portal public', false)
         ->assertSee('Sesizare nouă', false)
         ->assertDontSee('New report', false)
-        ->call('switchLocale', 'pt')
+        ->call('switchLocale', 'pl')
         ->assertSet('locale', 'ro');
+});
+
+it('switches the unit portal to portuguese above romanian in the picklist', function () {
+    unitPortalScaffold();
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->call('switchLocale', 'pt')
+        ->assertSet('locale', 'pt')
+        ->assertSee('Ajuda desta página', false)
+        ->assertSee('Ajuda — Portal público', false)
+        ->assertSee('Nova ocorrência', false)
+        ->assertSee('PO', false)
+        ->assertDontSee('New report', false);
 });
 
 it('scopes documents to unit, category and location-wide entries', function () {

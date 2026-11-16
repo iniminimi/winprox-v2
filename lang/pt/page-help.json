@@ -1,0 +1,236 @@
+{
+    "button_label": "Ajuda desta página",
+    "modal": {
+        "close": "Fechar",
+        "print": "Imprimir",
+        "actions_heading": "Ações",
+        "statuses_heading": "Estados"
+    },
+    "pages": {
+        "portal.unit": {
+            "title": "Ajuda — Portal público",
+            "actions": [
+                {
+                    "label": "Boas-vindas",
+                    "text": "Bem-vindo ao portal público de :tenant. Leia abaixo para mais informação. Interessa-lhe um portal próprio para a empresa? Prima em <a href=\"https://winprox.app\" target=\"_blank\" rel=\"noopener noreferrer\">Winprox.app</a>."
+                },
+                {
+                    "label": "Comunicar um problema",
+                    "text": "Prima “Criar uma ocorrência”, descreva o problema e, se quiser, adicione até quatro fotografias. O nome próprio, o apelido e o e-mail são opcionais — se o administrador tornou os dados de contacto obrigatórios, preencha-os. Se a confirmação por e-mail estiver ligada, recebe uma ligação: a ocorrência só é criada depois da confirmação. Depois cria-se uma tarefa para a equipa. A ocorrência tem de ser aprovada antes de aparecer no portal. Limites anti-spam: no máximo uma ocorrência de 3 em 3 minutos e cinco ocorrências em 30 minutos para esta unidade (por dispositivo)."
+                },
+                {
+                    "label": "Ocorrências anteriores",
+                    "text": "Se o administrador deixar esta opção ligada para a categoria, vê as ocorrências abertas desta unidade depois da aprovação. Se estiver desligada, o mosaico fica oculto (por exemplo um quarto de hotel ou uma casa de banho)."
+                },
+                {
+                    "label": "Reservar",
+                    "text": "Se esta unidade puder ser reservada, vê o mosaico Reservar. Escolha um intervalo, introduza o nome e o e-mail e confirme em 30 minutos por e-mail. Use As minhas reservas ou a ligação do e-mail para alterar ou cancelar."
+                },
+                {
+                    "label": "Documentos",
+                    "text": "Consulte aqui os manuais e os outros documentos disponíveis para esta unidade. Escolha um idioma em cima — a descrição é traduzida automaticamente quando estiver pronta."
+                },
+                {
+                    "label": "Anúncios",
+                    "text": "Consulte aqui os anúncios que dizem respeito a esta unidade. Escolha um idioma em cima — o texto é traduzido automaticamente quando estiver pronto."
+                },
+                {
+                    "label": "Registar a localização GPS",
+                    "text": "Quando está ativo, as coordenadas GPS são enviadas à administração. Assim um técnico encontra-o com mais facilidade."
+                },
+                {
+                    "label": "Idioma",
+                    "text": "Escolha o idioma pretendido em cima, à direita. Os textos do portal atualizam-se de imediato no idioma escolhido."
+                },
+                {
+                    "label": "Tema",
+                    "text": "Alterne em cima, à direita, entre o tema Padrão e o Escuro, conforme a preferência. O escuro é útil no telemóvel."
+                },
+                {
+                    "label": "Medições da unidade",
+                    "text": "Quando a categoria e a unidade permitem medições e há campos ligados, o portal mostra o mosaico Medições. Introduza os valores e envie — o Clock Point não é necessário. O histórico está em Trabalho → Medições da unidade."
+                },
+                {
+                    "label": "Álbum de fotos",
+                    "text": "Quando o álbum de fotos está ligado, fica junto das fotografias deste QR de unidade. São as fotografias de hoje, para enviar por e-mail, não as fotografias permanentes da unidade. Até 24 por dia; pode eliminar as suas próprias fotografias de hoje. O backoffice decide o que é enviado."
+                }
+            ],
+            "status_note": "As tarefas abertas desta página seguem os estados abaixo.",
+            "statuses": {
+                "new": "Tarefa que espera para começar.",
+                "in_progress": "A equipa está a trabalhar nela.",
+                "done": "O trabalho está concluído.",
+                "closed": "A tarefa está fechada."
+            }
+        },
+        "portal.team": {
+            "title": "Ajuda — Portal do trabalhador",
+            "actions": [
+                {
+                    "label": "Nome e ícone",
+                    "text": "Depois de abrir o portal Clock Point — ao digitalizar o QR, pela ligação de início de sessão ou pelo ícone do ecrã inicial — introduza o nome próprio e o apelido e escolha um ícone pessoal. Guarde o ícone: da próxima vez tem de o escolher outra vez. Tem duas tentativas com o ícone correto; depois a conta fica bloqueada. Um chefe de equipa ou um administrador pode desbloqueá-la."
+                },
+                {
+                    "label": "Primeira vez",
+                    "text": "É novo na equipa? Peça ao chefe de equipa ou ao administrador que lhe crie uma conta. Depois inicia sessão com o nome próprio e o apelido e escolhe o ícone."
+                },
+                {
+                    "label": "Terminar sessão",
+                    "text": "Termine a sessão quando tiver acabado. Nas horas escolhidas pelo administrador a sessão termina também automaticamente."
+                },
+                {
+                    "label": "Tarefas abertas",
+                    "text": "Depois de iniciar sessão vê as tarefas abertas da equipa no portal da unidade. Digitalize o QR da unidade no local para iniciar ou concluir uma tarefa."
+                },
+                {
+                    "label": "Tarefas novas da equipa",
+                    "text": "Se surgiram tarefas novas para a equipa desde que iniciou sessão, o portal da unidade mostra um aviso. Abra a lista de tarefas pela ligação Clock Point ou feche o aviso."
+                },
+                {
+                    "label": "Iniciar",
+                    "text": "Vá a “Tarefas abertas” e prima “Iniciar a tarefa”. Os outros da equipa veem que está a trabalhar nela, e o estado passa a “Em curso”. Quando terminar, prima “Concluir a tarefa”. Sem rede, o início fica guardado no telemóvel e é enviado mais tarde."
+                },
+                {
+                    "label": "Concluir",
+                    "text": "Depois de ter iniciado a tarefa, conclua-a com “Concluir a tarefa”. Pode adicionar uma nota curta e, se quiser, fotografias. Por vezes o portal pede um valor medido (por exemplo um índice) — introduza-o antes de confirmar. A tarefa fica com o estado “Concluído”. Sem rede, a nota e as fotografias ficam no telemóvel até voltar a estar online."
+                },
+                {
+                    "label": "Controlo da unidade",
+                    "text": "Quando a categoria e a unidade permitem o controlo, os trabalhadores com sessão iniciada veem o mosaico Controlo da unidade. Registe Em ordem ou Não está em ordem, eventualmente com uma lista de verificação. Em ordem não cria uma ocorrência; depois de Não está em ordem pode criar uma. Sem rede, o controlo fica guardado no telemóvel e é enviado mais tarde."
+                },
+                {
+                    "label": "Registar a localização GPS",
+                    "text": "Quando está ativo, as coordenadas GPS são enviadas à administração. Assim um técnico encontra-o com mais facilidade."
+                }
+            ],
+            "status_note": "Cada tarefa passa pelos estados abaixo:",
+            "statuses": {
+                "new": "A tarefa ainda não começou e espera um trabalhador.",
+                "in_progress": "Alguém está agora a trabalhar na tarefa, no local.",
+                "done": "O trabalho foi concluído por um trabalhador.",
+                "closed": "A ocorrência foi verificada pelo administrador e fechada em definitivo."
+            }
+        },
+        "portal.time": {
+            "title": "Ajuda — Portal Clock Point",
+            "actions": [
+                {
+                    "label": "Nome e ícone",
+                    "text": "Abra o portal Clock Point ao digitalizar o autocolante ou o ecrã do relógio, pela ligação de início de sessão de um e-mail ou pelo ícone do ecrã inicial, e escolha o nome próprio, o apelido e o ícone pessoal (PIN ou dados biométricos, opcional) no seu telemóvel. Isso diz quem é — ainda não é o ponto. Não há um botão para iniciar sessão como outro trabalhador: o telemóvel fica seu até um administrador ou um chefe de equipa o libertar. Depois de iniciar sessão desaparece o título Iniciar sessão. Duas tentativas erradas bloqueiam temporariamente a conta; um chefe de equipa ou um administrador pode libertá-la."
+                },
+                {
+                    "label": "Impressão digital ou rosto",
+                    "text": "Depois do primeiro início de sessão com ícone ou PIN, o portal oferece “Início de sessão mais rápido?” — prima Ativar e confirme com a impressão digital ou o rosto do telemóvel (ou o código do dispositivo). A partir daí o botão Iniciar sessão com dados biométricos fica por cima; o ícone ou o PIN continuam a funcionar. A impressão digital ou o rosto não saem do telemóvel — o WinProx guarda apenas uma chave pública. A oferta não aparece? O administrador desligou a opção ou o dispositivo não a aceita. Os administradores podem apagar a chave em Pessoas → Equipas → Editar."
+                },
+                {
+                    "label": "Atalho no ecrã inicial",
+                    "text": "Um ícone WinProx fica à direita de Iniciar sessão. Prima: no Android, o Chrome adiciona-o ao ecrã inicial; no iPhone: ⋯ em baixo → Partilhar → Mostrar mais → deslize → + Adicionar ao ecrã inicial. Sem App Store. O ícone inicia a sessão sem QR; num relógio fixo só pode registar a entrada ou a saída depois de digitalizar o autocolante ou o ecrã do relógio."
+                },
+                {
+                    "label": "Terminar sessão",
+                    "text": "Depois de iniciar sessão pode premir Terminar sessão: o portal volta a pedir o ícone, o PIN ou os dados biométricos. Isso não é a saída do ponto e não desliga o telemóvel; só um administrador ou um chefe de equipa liberta o dispositivo. A saída do ponto está na linha do ponto."
+                },
+                {
+                    "label": "Tarefas abertas",
+                    "text": "Depois do nome e do ícone vê em cima o cartão do ponto, com o estado (sem entrada, com entrada, em pausa, noutro local ou de férias). O local fica por baixo, e a ação principal junto do nome. Iniciar a pausa e Terminar sessão são botões atrás da seta. As tarefas abertas ficam mais abaixo, com um número; as tarefas extra por Mais tarefas. Com Time e visitas de trabalho GPS inicia ou conclui as tarefas da equipa no Clock Point enquanto uma visita de trabalho está aberta naquela morada do cliente (nota e fotografias opcionais). Uma ronda de inspeção mostra a descrição, a prioridade, o estado e a paragem seguinte. O botão Controlo da unidade só aparece depois de Começar o trabalho naquele local; o controlo completo (Em ordem / Não está em ordem / ignorar) abre-se a seguir."
+                },
+                {
+                    "label": "Entrada e saída do ponto",
+                    "text": "Cada entrada, saída ou mudança precisa de uma digitalização nova do autocolante ou do ecrã do relógio, no local — a ligação de início de sessão, o ícone do ecrã inicial ou um separador aberto não chegam (no Checkmate o ícone chega). Uma digitalização dá um único ponto e expira depressa. A pausa pode iniciá-la no mesmo telemóvel, sem uma digitalização nova. Se a definição GPS na entrada estiver ligada, a localização é obrigatória para a entrada; a saída e as pausas não pedem a posição. Outro dispositivo é recusado até um chefe de equipa ou um administrador permitir um novo. Só tem um turno aberto de cada vez. Num Clock Point de outro local vê onde tem a entrada registada e pode mover a presença para aqui (uma mudança em 5 minutos levanta um alarme). Outro Clock Point no mesmo local conta como o mesmo local. Com visitas de trabalho GPS: comece o trabalho no local e depois as tarefas da equipa e a paragem seguinte da inspeção no Clock Point. Um triângulo vermelho junto da hora de entrada aparece quando tem um turno publicado e não registou a entrada, ou registou a entrada com pelo menos 15 minutos de atraso."
+                },
+                {
+                    "label": "Ecrã do relógio",
+                    "text": "Se no ponto houver um ecrã de relógio, o QR do ecrã renova-se sempre — digitalizá-lo com o telemóvel conta como digitalização nova. Não tem o telemóvel à mão? Prima o nome no ecrã; num turno aberto escolha pausa ou saída e depois o PIN. Duas tentativas erradas bloqueiam por pouco tempo. Sem PIN regista o ponto com uma digitalização no telemóvel."
+                },
+                {
+                    "label": "Para onde tenho de ir hoje",
+                    "text": "Depois da entrada no ponto (Time com visitas de trabalho GPS) vê para onde tem de ir hoje: só locais, na ordem das paragens da ronda de inspeção (não por ordem alfabética), como uma linha do tempo (aqui, a seguinte, já estive, mais tarde). A paragem seguinte mostra a morada e Navegar. Se o GPS estiver desligado no telemóvel, vê um aviso — só quando tem para onde ir hoje. Começar o trabalho aparece no local quando está no sítio; Procurar um local de trabalho perto desaparece então. As paragens da inspeção estão em Tarefas abertas; Controlo da unidade só depois de Começar o trabalho. As tarefas abertas sem data ficam em Tarefas abertas."
+                },
+                {
+                    "label": "Documentos e anúncios novos",
+                    "text": "Os documentos e os anúncios novos aparecem temporariamente logo por baixo do cartão de início de sessão, com um contador azul. Abra o mosaico para ver o conteúdo; depois volta para baixo, para o lugar fixo. Se surgir conteúdo novo mais tarde, o mosaico sobe outra vez. O que leu é seu e mantém-se também noutro dispositivo."
+                },
+                {
+                    "label": "Lista de evacuação",
+                    "text": "Se um administrador ligou a lista de evacuação em Definições (desligada por defeito), vê o mosaico Lista de evacuação (ícone de fogo) depois de iniciar sessão. Confirme primeiro que a consulta é excecional e fica registada (nome próprio, apelido, data e hora). Depois vê quem tem a entrada registada agora, agrupado por local, a entrada mais recente primeiro."
+                },
+                {
+                    "label": "As minhas horas",
+                    "text": "Depois de iniciar sessão vê o mosaico As minhas horas. Lista os dias do mês escolhido, acumulados: primeira entrada, última saída, tempo trabalhado e pausa. Folheie o mês anterior e o seguinte. A pausa mostra “nenhuma” quando não há pausa. O mínimo da equipa só se aplica a turnos de pelo menos 4 horas. Um triângulo vermelho mostra o motivo: entrada com mais de 15 minutos de antecedência, entrada com pelo menos 15 minutos de atraso ou saída com pelo menos 15 minutos de atraso face ao horário publicado."
+                },
+                {
+                    "label": "O meu horário",
+                    "text": "Depois de iniciar sessão vê o mosaico O meu horário. Mostra só os turnos e as ausências <strong>publicados</strong> do <strong>mês</strong> escolhido, em tabela (os dias vazios são omitidos). Um distintivo significa um horário novo publicado; abri-lo apaga-o. Um triângulo vermelho junto das horas significa sem entrada (a partir do início planeado) ou pelo menos 15 minutos de atraso."
+                },
+                {
+                    "label": "Férias / compensação",
+                    "text": "Depois de iniciar sessão vê o mosaico Férias / compensação. Peça férias ou compensação (de–até, nota opcional, máx. 31 dias, não no passado). Os pedidos abertos que se sobrepõem são recusados. Os seus pedidos ficam por baixo do formulário: pode retirar um pedido aberto ou aprovado que ainda não começou; as férias aprovadas recompõem o horário. O pessoal decide em Time → Pedidos; a recusa exige um motivo, a aprovação não. Não se envia e-mail. Em cima vê as férias restantes deste ano do direito, e do ano seguinte quando existe um direito, mais as horas extra. Este ano até hoje: o tempo trabalhado menos o horário publicado, menos o tempo livre já no horário ou num pedido aberto. Não é salário."
+                }
+            ]
+        },
+        "checkmate.portal.signin": {
+            "title": "Ajuda — Início de sessão único (trabalhador)",
+            "actions": [
+                {
+                    "label": "Objetivo",
+                    "text": "O trabalhador abre uma vez a ligação Clock Point do e-mail ou digitaliza o QR, escolhe o nome e confirma com um ícone pessoal, um PIN ou dados biométricos. O telemóvel fica ligado a partir daí."
+                },
+                {
+                    "label": "Ecrã inicial",
+                    "text": "Depois chega o ícone WinProx do ecrã inicial (Android: um toque; iPhone: ⋯ → Partilhar → Mostrar mais → deslize → + Adicionar ao ecrã inicial). Sem loja de aplicações, sem palavra-passe."
+                },
+                {
+                    "label": "Outro dispositivo",
+                    "text": "Outro telemóvel é recusado até um administrador ou um chefe de equipa libertar o dispositivo — um telemóvel por trabalhador."
+                }
+            ]
+        },
+        "checkmate.portal.day": {
+            "title": "Ajuda — Ponto e pausas (trabalhador)",
+            "actions": [
+                {
+                    "label": "Entrada",
+                    "text": "No início do dia de trabalho: um toque em Registar entrada — pelo ícone do ecrã inicial, sem digitalizar o QR. Digitalizar o autocolante Clock Point ou o ecrã do relógio também regista o ponto. Se o GPS na entrada estiver ligado, a localização é obrigatória. O turno segue até à saída."
+                },
+                {
+                    "label": "Pausa",
+                    "text": "Inicie e termine as pausas no portal; entram no registo das horas e — com o CIAO ativo — vão para a ONSS como OUT/IN."
+                },
+                {
+                    "label": "Saída",
+                    "text": "Registe a saída no fim do dia — também pode ser pelo ícone, sem digitalização. A saída fecha o turno e qualquer visita aberta ao cliente. Terminar sessão no portal não é o mesmo que registar a saída do ponto."
+                }
+            ]
+        },
+        "checkmate.portal.visit": {
+            "title": "Ajuda — Visita ao cliente (trabalhador)",
+            "actions": [
+                {
+                    "label": "Objetivo",
+                    "text": "Uma visita ao cliente regista o trabalho num cliente. Prima Começar o trabalho no cliente — o telemóvel verifica por GPS que está no raio definido. Fora do raio a visita não começa."
+                },
+                {
+                    "label": "Mudar de cliente",
+                    "text": "Do cliente A para o cliente B: a visita a A para e a de B começa, numa só ação."
+                },
+                {
+                    "label": "Cliente novo no terreno",
+                    "text": "O cliente não está na lista? Crie-o no terreno, com nome e morada; o pin GPS vem do telemóvel. Se o nome se parecer com um cliente existente, recebe primeiro um aviso discreto."
+                },
+                {
+                    "label": "Navegar",
+                    "text": "O botão Navegar abre a morada na aplicação de mapas — não regista uma visita."
+                }
+            ]
+        },
+        "checkmate.portal.hours": {
+            "title": "Ajuda — As minhas horas (trabalhador)",
+            "actions": [
+                {
+                    "label": "Objetivo",
+                    "text": "O trabalhador vê só os seus turnos do mês escolhido: por dia, a primeira entrada, a última saída, a pausa e o tempo trabalhado. Sem correção e sem as horas dos colegas."
+                }
+            ]
+        }
+    }
+}

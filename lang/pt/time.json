@@ -1,0 +1,238 @@
+{
+    "presence": {
+        "attention": {
+            "absence_kinds": {
+                "leave": "férias",
+                "recup": "compensação",
+                "sick": "baixa médica",
+                "holiday": "um feriado"
+            }
+        }
+    },
+    "manual_clock_in": {
+        "badge": "Entrada manual"
+    },
+    "status": {
+        "open": "Aberto",
+        "closed": "Fechado"
+    },
+    "schedule": {
+        "types": {
+            "kinds": {
+                "work": "Trabalho",
+                "leave": "Férias",
+                "recup": "Compensação",
+                "sick": "Baixa"
+            }
+        }
+    },
+    "absence": {
+        "status": {
+            "pending": "Aberto",
+            "approved": "Aprovado",
+            "rejected": "Recusado",
+            "cancelled": "Retirado"
+        },
+        "errors": {
+            "worker_tenant_mismatch": "Este trabalhador não pertence a esta organização.",
+            "invalid_kind": "Escolha férias ou compensação.",
+            "range_inverted": "A data de fim tem de ser no dia de início ou depois.",
+            "range_too_long": "Máximo de 31 dias por pedido.",
+            "date_in_past": "A data de início não pode estar no passado.",
+            "no_shift_type": "Não há um tipo de turno ativo para este tipo de ausência.",
+            "overlapping_pending": "Um pedido aberto já se sobrepõe a estes dias.",
+            "not_pending": "Este pedido já foi tratado.",
+            "not_owner": "Só pode retirar o seu próprio pedido.",
+            "reason_required": "É necessário um motivo (pelo menos 3 caracteres).",
+            "already_started": "Estas férias ou esta compensação já começaram. Já não as pode retirar.",
+            "not_cancellable": "Não pode retirar este pedido.",
+            "half_day_range": "Meio dia só pode ser uma única data."
+        }
+    },
+    "portal": {
+        "title": "Iniciar sessão",
+        "clock": {
+            "not_clocked_in": "Ainda não registou a entrada",
+            "signed_in_at": "Sessão iniciada no WinProx às :time",
+            "clocked_in_at_tenant": "Entrada registada em :tenant às :time",
+            "absence_clock_in": "Registou a entrada durante: :kind",
+            "no_break": "Ainda não fez pausa",
+            "on_break_since": "Em pausa desde :time",
+            "in": "Registar entrada",
+            "out": "Registar saída",
+            "start_break": "Iniciar a pausa",
+            "break_hint": "Não se esqueça da pausa — em turnos longos registamos automaticamente :min min de pausa.",
+            "end_break": "Terminar a pausa",
+            "open_elsewhere_hint": "Já tem a entrada registada noutro local. Mova a presença para aqui ou registe a saída.",
+            "elsewhere_body": "Tem a entrada registada noutro local.",
+            "sign_out_while_clocked": "Ainda tem a entrada registada. Terminar sessão não regista a saída.",
+            "transfer_here": "Mover para aqui",
+            "started_at": "Início em :place (o mesmo turno).",
+            "working_at": "Está a trabalhar em :place",
+            "stop_work": "Parar o trabalho",
+            "find_nearby": "Procurar um local de trabalho perto",
+            "find_nearby_customer": "Procurar a morada do cliente perto",
+            "start_work_at": "Começar o trabalho: :place (:distance m)",
+            "no_nearby_units": "Nenhuma unidade com pin no raio.",
+            "no_nearby_customer": "Nenhuma morada de trabalho do cliente no raio.",
+            "clocked_out_at": "Saída registada às :time",
+            "scan_to_clock_in": "Digitalize o autocolante ou o ecrã do relógio para a entrada.",
+            "scan_to_clock_out": "Digitalize o autocolante ou o ecrã do relógio para a saída ou para mudar."
+        },
+        "break_started": "A pausa começou.",
+        "break_ended": "A pausa terminou.",
+        "errors": {
+            "already_clocked_in": "Já tem a entrada registada. Veja acima onde, ou mude para este local.",
+            "not_clocked_in": "Não tem a entrada registada.",
+            "break_already_open": "A sua pausa já está iniciada.",
+            "break_already_taken": "Já fez uma pausa neste turno.",
+            "break_not_open": "Não está em pausa.",
+            "icon_not_configured": "A conta ainda não está completamente configurada. Contacte o administrador.",
+            "device_mismatch": "Este dispositivo não está ligado ao seu ponto. Peça ao chefe de equipa ou ao administrador que permita um dispositivo novo.",
+            "scan_required": "Digitalize o QR do Clock Point para a entrada ou a saída. Assim se mostra que está no local.",
+            "visit_gps_required": "O GPS é necessário para começar ou parar o trabalho. Permita a localização e tente novamente.",
+            "clock_gps_required": "O GPS é necessário para o ponto. Permita a localização e tente novamente.",
+            "visit_unit_out_of_range": "Não está suficientemente perto deste local de trabalho.",
+            "visit_requires_customer_location": "O trabalho só pode começar numa morada de trabalho do cliente.",
+            "visit_already_open": "Já está a trabalhar neste local.",
+            "visit_not_open": "Não tem uma visita de trabalho aberta.",
+            "gps_visits_disabled": "As visitas de trabalho com GPS estão desligadas para esta organização."
+        },
+        "transferred": "A presença foi movida para este local (o mesmo turno).",
+        "hours": {
+            "tile": "As minhas horas",
+            "tile_sub": "Os seus turnos registados",
+            "title": "As minhas horas",
+            "subtitle": "Só as suas horas de entrada e de saída.",
+            "empty": "Não há horas neste mês.",
+            "total": "Total deste mês: :duration",
+            "month_nav": "Mês",
+            "previous_month": "Mês anterior",
+            "next_month": "Mês seguinte",
+            "day_line": "Entrada : :in - Saída : :out - trabalhado : :worked",
+            "out_open": "—",
+            "break_line": "Pausa : :break",
+            "break_none": "nenhuma"
+        },
+        "clock_alert": {
+            "absent": "Planeado, mas sem entrada",
+            "early": "Entrada demasiado cedo",
+            "late": "Entrada com atraso",
+            "late_out": "Saída tardia",
+            "absence_leave": "Entrada num dia de férias",
+            "absence_recup": "Entrada num dia de compensação",
+            "absence_sick": "Entrada num dia de baixa médica",
+            "absence_holiday": "Entrada num feriado"
+        },
+        "schedule": {
+            "tile": "O meu horário",
+            "tile_sub": "O seu mês planeado",
+            "title": "O meu horário",
+            "subtitle": "Só os turnos e as ausências publicados.",
+            "published_notice": "Horário novo publicado a partir de :date.",
+            "changed_notice": "O horário foi atualizado em :days (azul claro = alterado).",
+            "empty": "Nada planeado neste mês.",
+            "month_nav": "Mês",
+            "previous_month": "Mês anterior",
+            "next_month": "Mês seguinte",
+            "columns": {
+                "date": "Data",
+                "duty": "Turno",
+                "hours": "Horas"
+            }
+        },
+        "visit_started": "A visita de trabalho começou.",
+        "visit_ended": "A visita de trabalho terminou.",
+        "today": {
+            "title": "Para onde tenho de ir hoje:",
+            "title_checkmate": "Visita ao cliente",
+            "empty": "Nenhuma visita planeada hoje",
+            "navigate": "Navegar",
+            "start_work": "Começar o trabalho",
+            "do_check": "Controlo da unidade",
+            "gps_off": "O GPS está desligado no telemóvel. Ligue a localização para começar o trabalho nestas moradas.",
+            "here": "Aqui",
+            "been": "Já estive aqui"
+        },
+        "homescreen": {
+            "title": "Adicione o WinProx ao ecrã inicial",
+            "help_title": "Clock Point no ecrã inicial",
+            "help_intro": "Prima o ícone WinProx: no Android, o Chrome pergunta se adiciona o WinProx ao ecrã inicial. Depois inicia sessão sem QR. Num relógio fixo regista o ponto ao digitalizar o autocolante ou o ecrã do relógio. Sem App Store.",
+            "help_android": "Android (Chrome): um toque no ícone. Confirme “Adicionar ao ecrã inicial”. O início de sessão funciona depois a partir desse atalho.",
+            "help_ios": "iPhone: a Apple não permite a instalação automática. Prima o ícone; depois, no iPhone: três pontos (⋯) em baixo → Partilhar → Mostrar mais → deslize → “+ Adicionar ao ecrã inicial”.",
+            "help_existing": "Ainda tem um ícone antigo em que Iniciar sessão não fazia nada? Elimine o ícone, atualize a página e prima outra vez o mais."
+        },
+        "absence": {
+            "tile": "Férias / compensação",
+            "tile_sub": "Pedir ou retirar",
+            "title": "Férias / compensação",
+            "subtitle": "Veja os pedidos e retire-os. O pessoal aprova ou recusa.",
+            "period": "Período",
+            "period_hint": "Prima a data de início e depois a data de fim. Os dias passados não podem ser escolhidos.",
+            "period_one_day": "1 dia",
+            "period_days": ":count dias",
+            "prev_month": "Mês anterior",
+            "next_month": "Mês seguinte",
+            "kind": "Tipo",
+            "date_from": "De",
+            "date_to": "Até",
+            "description": "Nota (opcional)",
+            "submit": "Pedir",
+            "empty": "Ainda não há pedidos.",
+            "cancel": "Retirar",
+            "list_title": "Os seus pedidos",
+            "form_title": "Pedido novo",
+            "half_day": "Meio dia",
+            "cancel_confirm": "Retirar este pedido?",
+            "cancel_approved_confirm": "Retirar estas férias ou esta compensação aprovada? O horário repõe os turnos anteriores.",
+            "submitted": "Pedido enviado.",
+            "cancelled": "Pedido retirado.",
+            "decision": "Decisão",
+            "leave_remaining": "Férias restantes :year: :days de :total",
+            "recup_balance": "Horas extra (tempo livre): :hours"
+        },
+        "now": {
+            "status_out": "Sem entrada",
+            "status_in": "Entrada desde :time",
+            "status_elsewhere": "Entrada noutro local",
+            "next_stop": "Paragem seguinte: :name",
+            "here_done": "O trabalho daqui está feito.",
+            "toggle": "Detalhes"
+        },
+        "customer": {
+            "tile": "Cliente novo",
+            "tile_sub": "Crie o cliente e a morada de trabalho",
+            "title": "Cliente ou morada de trabalho",
+            "subtitle": "Escolha um cliente existente ou crie um.",
+            "pick_existing": "Cliente",
+            "new": "+ Cliente novo",
+            "location_name": "Nome da morada de trabalho",
+            "location_name_hint": "Opcional — por defeito, o nome do cliente.",
+            "gps_hint": "A posição GPS atual fica guardada como pin desta morada de trabalho.",
+            "submit": "Guardar o cliente e a morada de trabalho"
+        },
+        "customer_saved": "O cliente e a morada de trabalho foram guardados.",
+        "scan": {
+            "button": "Digitalizar o código QR",
+            "title": "Digitalize o QR do Clock Point",
+            "hint": "Aponte a câmara para o autocolante ou para o ecrã do relógio.",
+            "error_unsupported": "Este navegador não consegue abrir a câmara. Digitalize com a aplicação Câmara.",
+            "error_denied": "Não há acesso à câmara. Permita a câmara ou digitalize com a aplicação Câmara.",
+            "error_invalid": "Este não é um QR Clock Point. Digitalize o autocolante ou o ecrã do relógio.",
+            "slow_hint": "A digitalização não funciona? Abra a aplicação Câmara e digitalize o código QR com ela."
+        },
+        "team_schedule": {
+            "tile": "Horário da equipa",
+            "tile_sub": "Colegas do seu local",
+            "title": "Horário da equipa",
+            "subtitle": "Só os turnos publicados · o seu local (os seus locais).",
+            "week_label": "Semana :week · :range",
+            "week_nav": "Semana",
+            "previous_week": "Semana anterior",
+            "next_week": "Semana seguinte",
+            "empty": "Não há turnos publicados esta semana.",
+            "you": "O próprio",
+            "absent": "Ausente"
+        }
+    }
+}

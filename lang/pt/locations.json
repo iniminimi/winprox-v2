@@ -1,0 +1,9 @@
+{
+    "fields": {
+        "ddt": "Declaração de trabalhos (DDT)",
+        "ddt_hint": "13 caracteres — obrigatório para o CIAO neste local."
+    },
+    "errors": {
+        "ddt_invalid": "A referência DDT deve ter exatamente 13 caracteres válidos."
+    }
+}
