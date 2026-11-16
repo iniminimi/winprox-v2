@@ -306,16 +306,22 @@
     box-sizing: border-box;
 }
 
-.wp-nav-link:hover .wp-nav-icon,
-.wp-pwa-nav__btn:hover .wp-nav-icon {
+.wp-nav-link:hover .wp-nav-icon {
     background-color: var(--wp-surface-hover);
     color: var(--wp-text-body);
 }
 
-.wp-nav-link.is-active .wp-nav-icon,
-.wp-pwa-nav__btn.is-active .wp-nav-icon {
+.wp-nav-link.is-active .wp-nav-icon {
     background-color: color-mix(in srgb, var(--wp-accent-soft) 65%, var(--wp-surface));
     color: var(--wp-accent);
+}
+
+.wp-pwa-nav .wp-nav-icon,
+.wp-pwa-nav__btn:hover .wp-nav-icon,
+.wp-pwa-nav__btn.is-active .wp-nav-icon,
+.wp-pwa-nav__btn:disabled:hover .wp-nav-icon {
+    background-color: var(--wp-accent-soft);
+    color: var(--wp-accent-text);
 }
 
 /* Browserbalk alleen in het geïnstalleerde bureaubladvenster. */
@@ -328,9 +334,10 @@
     .wp-pwa-nav {
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 0.35rem;
-        margin: 0 0.35rem 0.15rem;
-        padding: 0.35rem 0.275rem;
+        margin: 0 0 0.15rem;
+        padding: 0.35rem 0.625rem;
     }
 
     .wp-nav-link--home {
@@ -363,11 +370,6 @@
 .wp-pwa-nav__btn:disabled {
     opacity: 0.38;
     cursor: default;
-}
-
-.wp-pwa-nav__btn:disabled:hover .wp-nav-icon {
-    background-color: var(--wp-surface-2);
-    color: var(--wp-text-muted);
 }
 
 .wp-icon {
