@@ -11,8 +11,10 @@ use App\Models\Unit;
 use App\Models\Worker;
 use App\Support\Portal\WorkerDeviceSession;
 use App\Support\Qr\InvalidQrResponse;
+use App\Support\ResolveAppLocale;
 use App\Support\Tenancy;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -28,6 +30,8 @@ class UnassignedQrPortal extends Component
     use WithPagination;
 
     public string $token;
+
+    public string $locale = 'nl';
     public QrCode $qrCode;
     public int $tenantId;
     public string $stickerNumber = '';
@@ -65,6 +69,7 @@ class UnassignedQrPortal extends Component
         $this->stickerNumber = $this->qrCode->display_sticker_number;
 
         Tenancy::actAs($this->tenantId);
+        $this->syncLocaleFromRequest();
 
         // If QR code is already linked, redirect to unit portal
         if ($this->qrCode->unit_id) {
@@ -349,9 +354,28 @@ class UnassignedQrPortal extends Component
             ->paginate(20);
     }
 
+    public function switchLocale(string $locale): void
+    {
+        if (! in_array($locale, ResolveAppLocale::portalLocales(), true)) {
+            return;
+        }
+
+        session(['locale' => $locale]);
+        Cookie::queue(ResolveAppLocale::COOKIE_NAME, $locale, ResolveAppLocale::COOKIE_MINUTES);
+        $this->locale = $locale;
+        app()->setLocale($locale);
+    }
+
+    private function syncLocaleFromRequest(): void
+    {
+        $this->locale = ResolveAppLocale::applyPortal(request());
+        app()->setLocale($this->locale);
+    }
+
     public function render()
     {
         Tenancy::actAs($this->tenantId);
+        app()->setLocale($this->locale);
 
         $worker = $this->sessionWorker();
         $this->showLogin = ! $this->linkAuthorized();

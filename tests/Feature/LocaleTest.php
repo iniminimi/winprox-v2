@@ -19,5 +19,14 @@ it('koppelt elke taakstatus aan een vertaalsleutel', function () {
 it('mapt app-locale naar europese date-input locale', function () {
     expect(\App\Support\Translation\LocaleSupport::dateInputLang('nl'))->toBe('nl-NL')
         ->and(\App\Support\Translation\LocaleSupport::dateInputLang('en'))->toBe('en-GB')
-        ->and(\App\Support\Translation\LocaleSupport::dateInputLang('fr'))->toBe('fr-FR');
+        ->and(\App\Support\Translation\LocaleSupport::dateInputLang('fr'))->toBe('fr-FR')
+        ->and(\App\Support\Translation\LocaleSupport::dateInputLang('ro'))->toBe('ro-RO');
+});
+
+it('houdt roemeens buiten de backoffice en de Ollama-doeltalen', function () {
+    expect(config('locales.supported'))->not->toContain('ro')
+        ->and(config('locales.portal'))->toContain('ro')
+        ->and(\App\Support\Translation\LocaleSupport::targetLocalesForSource('nl'))->not->toContain('ro')
+        ->and(__('portal.worker.sign_out', [], 'ro'))->toBe('Deconectare')
+        ->and(__('time.portal.clock.in', [], 'ro'))->toBe('Pontaj intrare');
 });

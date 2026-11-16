@@ -1,0 +1,19 @@
+{
+    "card": {
+        "round_stops": "Rundă · :count opriri"
+    },
+    "show": {
+        "photo_enlarge": "Măriți fotografia"
+    },
+    "updates": {
+        "kind": {
+            "worker_note": "Lucrător",
+            "worker_photos": "Fotografii lucrător",
+            "note": "Notă",
+            "pause": "Pauză",
+            "status_reason": "Schimbare de stare",
+            "close_reason": "Sesizare închisă",
+            "reopen_reason": "Sesizare redeschisă"
+        }
+    }
+}

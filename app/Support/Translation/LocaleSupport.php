@@ -57,13 +57,16 @@ final class LocaleSupport
      */
     public static function dateInputLang(?string $locale = null): string
     {
-        return match (self::normalize($locale ?? app()->getLocale())) {
+        $primary = strtolower(explode('-', str_replace('_', '-', (string) ($locale ?? app()->getLocale())))[0]);
+
+        return match ($primary) {
             'nl' => 'nl-NL',
             'en' => 'en-GB',
             'fr' => 'fr-FR',
             'de' => 'de-DE',
             'es' => 'es-ES',
             'it' => 'it-IT',
+            'ro' => 'ro-RO',
             default => 'nl-NL',
         };
     }

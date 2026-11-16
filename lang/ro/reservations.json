@@ -1,0 +1,8 @@
+{
+    "lifecycle": {
+        "pending": "În așteptarea confirmării",
+        "confirmed": "Confirmată",
+        "cancelled": "Anulată",
+        "expired": "Expirată"
+    }
+}

@@ -14,6 +14,24 @@ function locales() {
     );
 }
 
+function phpLocaleList(key) {
+    const php = readFileSync('config/locales.php', 'utf8');
+    const match = php.match(new RegExp(`'${key}'\\s*=>\\s*\\[([^\\]]*)\\]`));
+    if (!match) return [];
+    return [...match[1].matchAll(/'([a-z]{2})'/g)].map((m) => m[1]);
+}
+
+/** Backoffice, website en Ollama. Portaal-extra (ro, …) telt hier niet mee. */
+function appLocales() {
+    const listed = phpLocaleList('supported');
+    return listed.length ? listed : locales();
+}
+
+function portalOnlyLocales() {
+    const supported = new Set(appLocales());
+    return phpLocaleList('portal').filter((code) => !supported.has(code));
+}
+
 function jsonFiles(locale) {
     const dir = join(LANG_DIR, locale);
     return readdirSync(dir).filter((f) => f.endsWith('.json'));
@@ -152,14 +170,15 @@ function checkMarketOverlays() {
     }
 
     const page = 'product_docs.json';
-    if (!locales().includes('nl')) return;
+    const appLangs = appLocales();
+    if (!appLangs.includes('nl')) return;
     const cardKeys = (locale) => {
         const out = [];
         collectCardKeys(JSON.parse(readFileSync(join(LANG_DIR, locale, page), 'utf8')), page, out);
         return new Map(out);
     };
     const reference = cardKeys('nl');
-    for (const locale of locales()) {
+    for (const locale of appLangs) {
         if (locale === 'nl') continue;
         const other = cardKeys(locale);
         for (const [path, key] of reference) {
@@ -185,8 +204,42 @@ if (cmd === 'check' || cmd === 'parity') {
     if (!failed && cmd === 'check') console.log('✓ check:locales: alle JSON geldig');
 }
 
+function checkPortalOnlyLocales() {
+    for (const loc of portalOnlyLocales()) {
+        const dir = join(LANG_DIR, loc);
+        if (!statSync(dir, { throwIfNoEntry: false })) {
+            fail(`portaal-taal ${loc}: map lang/${loc} ontbreekt`);
+            continue;
+        }
+        if (!jsonFiles(loc).includes('portal.json')) fail(`portaal-taal ${loc}: portal.json ontbreekt`);
+        for (const file of jsonFiles(loc)) {
+            const basePath = join(LANG_DIR, 'nl', file);
+            let base;
+            let own;
+            try {
+                base = new Set(flatten(JSON.parse(readFileSync(basePath, 'utf8'))));
+                own = new Set(flatten(JSON.parse(readFileSync(join(dir, file), 'utf8'))));
+            } catch (e) {
+                fail(`${loc}/${file}: ${e.message}`);
+                continue;
+            }
+            for (const k of own) if (!base.has(k)) fail(`${file}: extra sleutel "${k}" in ${loc}`);
+            if (file === 'portal.json') {
+                for (const k of base) if (!own.has(k)) fail(`${file}: sleutel "${k}" ontbreekt in ${loc}`);
+            }
+            if (file === 'time.json') {
+                for (const k of base) {
+                    if (k.startsWith('portal.')) {
+                        if (!own.has(k)) fail(`${file}: sleutel "${k}" ontbreekt in ${loc}`);
+                    }
+                }
+            }
+        }
+    }
+}
+
 if (cmd === 'parity' && !failed) {
-    const locs = locales();
+    const locs = appLocales();
     const pages = new Set(locs.flatMap((l) => jsonFiles(l)));
     for (const page of pages) {
         const keysPerLocale = {};
@@ -205,6 +258,7 @@ if (cmd === 'parity' && !failed) {
             for (const k of keysPerLocale[loc]) if (!reference.has(k)) fail(`${page}: extra sleutel "${k}" in ${loc} (niet in ${locs[0]})`);
         }
     }
+    if (!failed) checkPortalOnlyLocales();
     if (!failed) console.log('✓ check:locales:parity: alle talen hebben identieke sleutels');
 }
 

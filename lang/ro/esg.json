@@ -1,0 +1,12 @@
+{
+    "portal": {
+        "measurement_label": "Citire: :name",
+        "numeric_placeholder": "Valoare",
+        "boolean_choose": "Alegeți…",
+        "boolean_yes": "Da",
+        "boolean_no": "Nu",
+        "string_placeholder": "Valoare",
+        "choice_choose": "Alegeți…",
+        "json_placeholder": "{\"key\": \"value\"}"
+    }
+}

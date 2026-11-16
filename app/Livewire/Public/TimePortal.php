@@ -390,7 +390,7 @@ class TimePortal extends Component
 
     public function switchLocale(string $locale): void
     {
-        if (! in_array($locale, config('locales.supported', []), true)) {
+        if (! in_array($locale, ResolveAppLocale::portalLocales(), true)) {
             return;
         }
 
@@ -2981,17 +2981,7 @@ class TimePortal extends Component
 
     private function syncLocaleFromRequest(): void
     {
-        $supported = config('locales.supported', []);
-        $lang = request()->query('lang');
-
-        if (is_string($lang) && in_array($lang, $supported, true)) {
-            session(['locale' => $lang]);
-            Cookie::queue(ResolveAppLocale::COOKIE_NAME, $lang, ResolveAppLocale::COOKIE_MINUTES);
-            $this->locale = $lang;
-        } else {
-            $this->locale = ResolveAppLocale::resolve(request());
-        }
-
+        $this->locale = ResolveAppLocale::applyPortal(request());
         app()->setLocale($this->locale);
     }
 

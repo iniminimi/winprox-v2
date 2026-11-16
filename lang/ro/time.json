@@ -1,0 +1,238 @@
+{
+    "presence": {
+        "attention": {
+            "absence_kinds": {
+                "leave": "concediu",
+                "recup": "recuperare",
+                "sick": "concediu medical",
+                "holiday": "o sărbătoare legală"
+            }
+        }
+    },
+    "manual_clock_in": {
+        "badge": "Pontat manual"
+    },
+    "status": {
+        "open": "Deschis",
+        "closed": "Închis"
+    },
+    "schedule": {
+        "types": {
+            "kinds": {
+                "work": "Lucru",
+                "leave": "Concediu",
+                "recup": "Recuperare",
+                "sick": "Medical"
+            }
+        }
+    },
+    "absence": {
+        "status": {
+            "pending": "Deschis",
+            "approved": "Aprobat",
+            "rejected": "Respins",
+            "cancelled": "Retras"
+        },
+        "errors": {
+            "worker_tenant_mismatch": "Acest lucrător nu aparține acestei organizații.",
+            "invalid_kind": "Alegeți concediu sau recuperare.",
+            "range_inverted": "Data de sfârșit trebuie să fie în ziua de început sau după.",
+            "range_too_long": "Maximum 31 de zile pe cerere.",
+            "date_in_past": "Data de început nu poate fi în trecut.",
+            "no_shift_type": "Nu există un tip de tură activ pentru acest tip de absență.",
+            "overlapping_pending": "O cerere deschisă se suprapune deja peste aceste zile.",
+            "not_pending": "Această cerere a fost deja tratată.",
+            "not_owner": "Puteți retrage doar propria cerere.",
+            "reason_required": "Este necesar un motiv (cel puțin 3 caractere).",
+            "already_started": "Acest concediu sau această recuperare a început deja. Nu îl mai puteți retrage.",
+            "not_cancellable": "Nu puteți retrage această cerere.",
+            "half_day_range": "O jumătate de zi poate fi doar o singură dată."
+        }
+    },
+    "portal": {
+        "title": "Autentificare",
+        "clock": {
+            "not_clocked_in": "Nu sunteți încă pontat",
+            "signed_in_at": "Autentificat în WinProx la :time",
+            "clocked_in_at_tenant": "Pontat la :tenant la :time",
+            "absence_clock_in": "Ați pontat în timpul: :kind",
+            "no_break": "Nu ați luat încă pauză",
+            "on_break_since": "În pauză de la :time",
+            "in": "Pontaj intrare",
+            "out": "Pontaj ieșire",
+            "start_break": "Începeți pauza",
+            "break_hint": "Nu uitați pauza — la ture lungi înregistrăm automat :min min de pauză.",
+            "end_break": "Încheiați pauza",
+            "open_elsewhere_hint": "Sunteți deja pontat în altă locație. Mutați prezența aici sau faceți ieșirea.",
+            "elsewhere_body": "Sunteți pontat în altă locație.",
+            "sign_out_while_clocked": "Sunteți încă pontat. Deconectarea nu face ieșirea din pontaj.",
+            "transfer_here": "Mutați aici",
+            "started_at": "Început la :place (aceeași tură).",
+            "working_at": "Lucrați la :place",
+            "stop_work": "Opriți lucrul",
+            "find_nearby": "Căutați un loc de muncă în apropiere",
+            "find_nearby_customer": "Căutați adresa clientului în apropiere",
+            "start_work_at": "Începeți lucrul: :place (:distance m)",
+            "no_nearby_units": "Nicio unitate cu pin în rază.",
+            "no_nearby_customer": "Nicio adresă de lucru a clientului în rază.",
+            "clocked_out_at": "Ieșire din pontaj la :time",
+            "scan_to_clock_in": "Scanați autocolantul sau ecranul ceasului pentru intrare.",
+            "scan_to_clock_out": "Scanați autocolantul sau ecranul ceasului pentru ieșire sau mutare."
+        },
+        "break_started": "Pauza a început.",
+        "break_ended": "Pauza s-a încheiat.",
+        "errors": {
+            "already_clocked_in": "Sunteți deja pontat. Vedeți mai sus unde, sau mutați-vă în această locație.",
+            "not_clocked_in": "Nu sunteți pontat.",
+            "break_already_open": "Pauza dumneavoastră este deja pornită.",
+            "break_already_taken": "Ați luat deja o pauză în această tură.",
+            "break_not_open": "Nu sunteți în pauză.",
+            "icon_not_configured": "Contul nu este încă configurat complet. Contactați administratorul.",
+            "device_mismatch": "Acest dispozitiv nu este legat de pontajul dumneavoastră. Rugați șeful de echipă sau administratorul să permită un dispozitiv nou.",
+            "scan_required": "Scanați QR-ul Clock Point pentru intrare sau ieșire. Așa se arată că sunteți la fața locului.",
+            "visit_gps_required": "GPS-ul este necesar pentru a începe sau opri lucrul. Permiteți locația și încercați din nou.",
+            "clock_gps_required": "GPS-ul este necesar pentru pontaj. Permiteți locația și încercați din nou.",
+            "visit_unit_out_of_range": "Nu sunteți suficient de aproape de acest loc de muncă.",
+            "visit_requires_customer_location": "Lucrul poate începe doar la o adresă de lucru a clientului.",
+            "visit_already_open": "Lucrați deja în acest loc.",
+            "visit_not_open": "Nu aveți o vizită de lucru deschisă.",
+            "gps_visits_disabled": "Vizitele de lucru cu GPS sunt oprite pentru această organizație."
+        },
+        "transferred": "Prezența a fost mutată în această locație (aceeași tură).",
+        "hours": {
+            "tile": "Orele mele",
+            "tile_sub": "Turele dumneavoastră înregistrate",
+            "title": "Orele mele",
+            "subtitle": "Doar orele dumneavoastră de intrare și ieșire.",
+            "empty": "Nu există ore în această lună.",
+            "total": "Total luna aceasta: :duration",
+            "month_nav": "Lună",
+            "previous_month": "Luna anterioară",
+            "next_month": "Luna următoare",
+            "day_line": "Intrare : :in - Ieșire : :out - lucrat : :worked",
+            "out_open": "—",
+            "break_line": "Pauză : :break",
+            "break_none": "niciuna"
+        },
+        "clock_alert": {
+            "absent": "Planificat, dar nepontat",
+            "early": "Pontat prea devreme",
+            "late": "Pontat cu întârziere",
+            "late_out": "Ieșire târzie din pontaj",
+            "absence_leave": "Pontat într-o zi de concediu",
+            "absence_recup": "Pontat într-o zi de recuperare",
+            "absence_sick": "Pontat într-o zi de concediu medical",
+            "absence_holiday": "Pontat într-o sărbătoare legală"
+        },
+        "schedule": {
+            "tile": "Orarul meu",
+            "tile_sub": "Luna dumneavoastră planificată",
+            "title": "Orarul meu",
+            "subtitle": "Doar turele și absențele publicate.",
+            "published_notice": "Orar nou publicat începând cu :date.",
+            "changed_notice": "Orarul a fost actualizat pe :days (albastru deschis = modificat).",
+            "empty": "Nimic planificat luna aceasta.",
+            "month_nav": "Lună",
+            "previous_month": "Luna anterioară",
+            "next_month": "Luna următoare",
+            "columns": {
+                "date": "Dată",
+                "duty": "Tură",
+                "hours": "Ore"
+            }
+        },
+        "visit_started": "Vizita de lucru a început.",
+        "visit_ended": "Vizita de lucru s-a încheiat.",
+        "today": {
+            "title": "Unde trebuie să merg azi:",
+            "title_checkmate": "Vizită la client",
+            "empty": "Nicio vizită planificată azi",
+            "navigate": "Navigați",
+            "start_work": "Începeți lucrul",
+            "do_check": "Control unitate",
+            "gps_off": "GPS-ul este oprit pe telefon. Porniți locația pentru a începe lucrul la aceste adrese.",
+            "here": "Aici",
+            "been": "Am fost aici"
+        },
+        "homescreen": {
+            "title": "Adăugați WinProx pe ecranul de start",
+            "help_title": "Clock Point pe ecranul de start",
+            "help_intro": "Apăsați pictograma WinProx: pe Android, Chrome vă întreabă dacă adăugați WinProx pe ecranul de start. Apoi vă autentificați fără QR. La un ceas fix pontați scanând autocolantul sau ecranul ceasului. Fără App Store.",
+            "help_android": "Android (Chrome): o apăsare pe pictogramă. Confirmați „Adăugați pe ecranul de start”. Autentificarea funcționează apoi din acea scurtătură.",
+            "help_ios": "iPhone: Apple nu permite instalarea automată. Apăsați pictograma; apoi pe iPhone: trei puncte (⋯) jos → Partajați → Afișați mai multe → derulați → „+ Adăugați pe ecranul de pornire”.",
+            "help_existing": "Mai aveți o pictogramă veche la care Autentificarea nu făcea nimic? Ștergeți pictograma, reîmprospătați pagina și apăsați din nou plusul."
+        },
+        "absence": {
+            "tile": "Concediu / recuperare",
+            "tile_sub": "Cereți sau retrageți",
+            "title": "Concediu / recuperare",
+            "subtitle": "Vedeți cererile și retrageți-le. Personalul aprobă sau respinge.",
+            "period": "Perioadă",
+            "period_hint": "Apăsați data de început, apoi data de sfârșit. Zilele trecute nu pot fi alese.",
+            "period_one_day": "1 zi",
+            "period_days": ":count zile",
+            "prev_month": "Luna anterioară",
+            "next_month": "Luna următoare",
+            "kind": "Tip",
+            "date_from": "De la",
+            "date_to": "Până la",
+            "description": "Notă (opțional)",
+            "submit": "Cereți",
+            "empty": "Nu există încă cereri.",
+            "cancel": "Retrageți",
+            "list_title": "Cererile dumneavoastră",
+            "form_title": "Cerere nouă",
+            "half_day": "Jumătate de zi",
+            "cancel_confirm": "Retrageți această cerere?",
+            "cancel_approved_confirm": "Retrageți acest concediu sau această recuperare aprobată? Orarul reface turele anterioare.",
+            "submitted": "Cerere trimisă.",
+            "cancelled": "Cerere retrasă.",
+            "decision": "Decizie",
+            "leave_remaining": "Concediu rămas :year: :days din :total",
+            "recup_balance": "Ore suplimentare (timp liber): :hours"
+        },
+        "now": {
+            "status_out": "Nepontat",
+            "status_in": "Pontat de la :time",
+            "status_elsewhere": "Pontat în altă locație",
+            "next_stop": "Următoarea oprire: :name",
+            "here_done": "Lucrul de aici este gata.",
+            "toggle": "Detalii"
+        },
+        "customer": {
+            "tile": "Client nou",
+            "tile_sub": "Creați clientul și adresa de lucru",
+            "title": "Client sau adresă de lucru",
+            "subtitle": "Alegeți un client existent sau creați unul.",
+            "pick_existing": "Client",
+            "new": "+ Client nou",
+            "location_name": "Numele adresei de lucru",
+            "location_name_hint": "Opțional — implicit, numele clientului.",
+            "gps_hint": "Poziția GPS actuală se salvează ca pin pentru această adresă de lucru.",
+            "submit": "Salvați clientul și adresa de lucru"
+        },
+        "customer_saved": "Clientul și adresa de lucru au fost salvate.",
+        "scan": {
+            "button": "Scanați codul QR",
+            "title": "Scanați QR-ul Clock Point",
+            "hint": "Îndreptați camera spre autocolant sau spre ecranul ceasului.",
+            "error_unsupported": "Acest browser nu poate deschide camera. Scanați cu aplicația Cameră.",
+            "error_denied": "Nu există acces la cameră. Permiteți camera sau scanați cu aplicația Cameră.",
+            "error_invalid": "Acesta nu este un QR Clock Point. Scanați autocolantul sau ecranul ceasului.",
+            "slow_hint": "Scanarea nu merge? Deschideți aplicația Cameră și scanați codul QR cu ea."
+        },
+        "team_schedule": {
+            "tile": "Orarul echipei",
+            "tile_sub": "Colegii din locația dumneavoastră",
+            "title": "Orarul echipei",
+            "subtitle": "Doar turele publicate · locația (locațiile) dumneavoastră.",
+            "week_label": "Săptămâna :week · :range",
+            "week_nav": "Săptămână",
+            "previous_week": "Săptămâna anterioară",
+            "next_week": "Săptămâna următoare",
+            "empty": "Nu există ture publicate săptămâna aceasta.",
+            "you": "Dumneavoastră",
+            "absent": "Absent"
+        }
+    }
+}

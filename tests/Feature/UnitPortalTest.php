@@ -866,6 +866,18 @@ it('shows worker photo hints in the active portal locale', function () {
         ->assertDontSee('Add environment photo', false);
 });
 
+it('switches the unit portal to romanian without touching backoffice locales', function () {
+    unitPortalScaffold();
+
+    Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
+        ->call('switchLocale', 'ro')
+        ->assertSet('locale', 'ro')
+        ->assertSee('Sesizare nouă', false)
+        ->assertDontSee('New report', false)
+        ->call('switchLocale', 'pt')
+        ->assertSet('locale', 'ro');
+});
+
 it('scopes documents to unit, category and location-wide entries', function () {
     ['unit' => $unit, 'tenant' => $tenant, 'location' => $location] = unitPortalScaffold();
     $category = Category::query()->create([

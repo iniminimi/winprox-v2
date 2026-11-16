@@ -1,0 +1,9 @@
+{
+    "fields": {
+        "ddt": "Declarație de lucrări (DDT)",
+        "ddt_hint": "13 caractere — obligatoriu pentru CIAO în această locație."
+    },
+    "errors": {
+        "ddt_invalid": "Referința DDT trebuie să aibă exact 13 caractere valide."
+    }
+}

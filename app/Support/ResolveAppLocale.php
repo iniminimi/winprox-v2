@@ -4,6 +4,7 @@ namespace App\Support;
 
 use App\Support\Marketing\MarketingDomain;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 
 /**
  * Bepaalt de app-locale (host → sessie → gebruiker → cookie → browsertaal).
@@ -24,10 +25,51 @@ final class ResolveAppLocale
         return $locale;
     }
 
-    public static function resolve(Request $request): string
+    /**
+     * Talen op het uitvoerdersportaal. Mag ruimer zijn dan de backoffice.
+     *
+     * @return list<string>
+     */
+    public static function portalLocales(): array
     {
-        $supported = MarketingDomain::localesFor($request);
-        $default = MarketingDomain::defaultLocaleFor($request);
+        $portal = config('locales.portal');
+
+        if (! is_array($portal) || $portal === []) {
+            $portal = config('locales.supported', []);
+        }
+
+        return array_values(array_filter($portal, 'is_string'));
+    }
+
+    /**
+     * Portaal: ?lang= wint, anders sessie, cookie of browsertaal binnen de portaal-lijst.
+     */
+    public static function applyPortal(Request $request): string
+    {
+        $allowed = self::portalLocales();
+        $lang = $request->query('lang');
+
+        if (is_string($lang) && in_array($lang, $allowed, true)) {
+            if ($request->hasSession()) {
+                $request->session()->put('locale', $lang);
+            }
+            Cookie::queue(self::COOKIE_NAME, $lang, self::COOKIE_MINUTES);
+
+            return $lang;
+        }
+
+        return self::resolve($request, $allowed);
+    }
+
+    /**
+     * @param  list<string>|null  $allowed
+     */
+    public static function resolve(Request $request, ?array $allowed = null): string
+    {
+        $supported = $allowed ?? MarketingDomain::localesFor($request);
+        $default = $allowed !== null
+            ? (string) config('locales.default', 'nl')
+            : MarketingDomain::defaultLocaleFor($request);
 
         $sessionLocale = $request->hasSession() ? $request->session()->get('locale') : null;
         $userLocale = $request->user()?->locale;

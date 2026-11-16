@@ -10,7 +10,13 @@
     $driver = $driver ?? 'route';
     $livewireMethod = $livewireMethod ?? 'switchLocale';
     $labels = config('locales.labels', []);
-    if ($driver === 'route') {
+    if ($driver === 'livewire') {
+        $labels = array_merge($labels, config('locales.portal_labels', []));
+        $labels = array_intersect_key(
+            $labels,
+            array_flip(\App\Support\ResolveAppLocale::portalLocales()),
+        );
+    } elseif ($driver === 'route') {
         $labels = array_intersect_key(
             $labels,
             array_flip(\App\Support\Marketing\MarketingDomain::localesFor(request())),

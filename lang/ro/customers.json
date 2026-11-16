@@ -1,0 +1,20 @@
+{
+    "form": {
+        "name": "Nume client",
+        "contact_name": "Persoană de contact",
+        "email": "E-mail",
+        "phone": "Telefon",
+        "name_matches": "Seamănă cu:"
+    },
+    "location_form": {
+        "street": "Stradă",
+        "house_number": "Nr.",
+        "postal_code": "Cod poștal",
+        "city": "Localitate"
+    },
+    "errors": {
+        "name_required": "Introduceți numele clientului.",
+        "email_invalid": "Introduceți o adresă de e-mail validă.",
+        "not_found": "Clientul nu a fost găsit."
+    }
+}
