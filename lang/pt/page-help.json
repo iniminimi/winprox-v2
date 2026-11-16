@@ -28,11 +28,11 @@
                 },
                 {
                     "label": "Documentos",
-                    "text": "Consulte aqui os manuais e os outros documentos disponíveis para esta unidade. Escolha um idioma em cima — a descrição é traduzida automaticamente quando estiver pronta."
+                    "text": "Consulte aqui os manuais e os outros documentos disponíveis para esta unidade. A descrição é traduzida automaticamente em neerlandês, inglês, francês, alemão, espanhol e italiano, quando estiver pronta. Português, romeno e polaco são idiomas de ecrã extra do portal; o texto da organização fica então no idioma em que foi escrito."
                 },
                 {
                     "label": "Anúncios",
-                    "text": "Consulte aqui os anúncios que dizem respeito a esta unidade. Escolha um idioma em cima — o texto é traduzido automaticamente quando estiver pronto."
+                    "text": "Consulte aqui os anúncios que dizem respeito a esta unidade. O texto é traduzido automaticamente em neerlandês, inglês, francês, alemão, espanhol e italiano, quando estiver pronto. Português, romeno e polaco são idiomas de ecrã extra do portal; o texto da organização fica então no idioma em que foi escrito."
                 },
                 {
                     "label": "Registar a localização GPS",
@@ -40,7 +40,7 @@
                 },
                 {
                     "label": "Idioma",
-                    "text": "Escolha o idioma pretendido em cima, à direita. Os textos do portal atualizam-se de imediato no idioma escolhido."
+                    "text": "Escolha o idioma em cima, à direita. A gestão e o site usam neerlandês, inglês, francês, alemão, espanhol e italiano. Este portal acrescenta português, romeno e polaco; mais tarde podem ser adicionados outros idiomas. Os textos do ecrã seguem de imediato o idioma escolhido."
                 },
                 {
                     "label": "Tema",

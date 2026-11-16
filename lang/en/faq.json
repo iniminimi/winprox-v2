@@ -300,6 +300,13 @@
             "body": "On most screens, a ? appears next to the title. It opens page help with actions and — where relevant — explanations of statuses (open, in progress, handled, closed). On public QR portals, the same help appears in the header.",
             "summary": "Use the ? button next to the page title for action and status help."
         },
+        "languages": {
+            "slug": "languages",
+            "type": "text",
+            "title": "Which languages does WinProx use?",
+            "body": "The back office and website are available in Dutch, English, French, German, Spanish and Italian. Texts you write yourself — reports, tasks, announcements, documents and names of locations and units — are translated automatically into those six languages. The worker portal is separate. Workers can also choose Portuguese, Romanian or Polish there. Those three languages are the screen language and the help. Your organisation’s content stays in the language it was written in, unless that language is one of the six. More languages can be added to the portal later, without extending the back office or the automatic translation.",
+            "summary": "Back office and website in six languages; the portal also in Portuguese, Romanian and Polish, and more can be added later. Automatic translation stays with the six."
+        },
         "mobile": {
             "slug": "mobile",
             "type": "text",

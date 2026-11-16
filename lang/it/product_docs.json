@@ -316,8 +316,11 @@
             },
             {
                 "title": "Traduzioni",
-                "body": "Dopo l’approvazione, WinProx può mettere i testi in coda per la traduzione.",
+                "body": "Gestione, sito e traduzione automatica dei vostri testi usano sei lingue. Il portale degli operatori è separato.",
                 "items": [
+                    "Gestione e sito: olandese, inglese, francese, tedesco, spagnolo e italiano.",
+                    "Il portale degli operatori (Clock Point e QR) usa quelle sei lingue, più portoghese, rumeno e polacco. In seguito si possono aggiungere altre lingue al portale, senza allargare gestione o sito.",
+                    "Segnalazioni, attività, annunci e documenti sono tradotti automaticamente in quelle sei lingue. Portoghese, rumeno e polacco sono la lingua a schermo e l’aiuto del portale; il testo dell’organizzazione resta allora nella lingua in cui è stato scritto.",
                     "La traduzione usa IA locale. Per questo, i testi non vanno a un cloud di IA esterno.",
                     "Le traduzioni si elaborano di solito ogni giorno, senza un tempo fisso. La gestione può correggerle da sé."
                 ]
@@ -516,6 +519,8 @@
             {
                 "title": "Traduzione IA",
                 "items": [
+                    "Gestione, sito e traduzione automatica: olandese, inglese, francese, tedesco, spagnolo e italiano.",
+                    "Il portale degli operatori è separato. Aggiunge portoghese, rumeno e polacco, e in seguito si possono aggiungere altre lingue al portale. Quelle lingue in più traducono solo i testi a schermo, non segnalazioni, attività o annunci.",
                     "I testi operativi possono essere tradotti sull’infrastruttura di WinProx, non tramite un cloud IA pubblico.",
                     "Gli amministratori possono correggere le traduzioni a mano.",
                     "La traduzione supporta il lavoro; non decide sui processi."

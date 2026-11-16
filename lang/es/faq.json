@@ -296,6 +296,13 @@
             "body": "En la mayoría de pantallas hay un ? junto al título. Abre ayuda de página con acciones y — donde aplique — explicaciones de estados (abierta, en curso, gestionada, cerrada). En portales QR públicos, la misma ayuda aparece en la cabecera.",
             "summary": "Use el botón ? junto al título para ayuda de acciones y estados."
         },
+        "languages": {
+            "slug": "languages",
+            "type": "text",
+            "title": "¿En qué idiomas funciona WinProx?",
+            "body": "La gestión y el sitio web están disponibles en neerlandés, inglés, francés, alemán, español e italiano. Los textos que usted escribe — avisos, tareas, anuncios, documentos y nombres de ubicaciones y unidades — se traducen automáticamente a esos seis idiomas. El portal de los operarios va aparte. Allí también pueden elegir portugués, rumano o polaco. Esos tres idiomas son el idioma de pantalla y la ayuda. El contenido de su organización permanece en el idioma en que se escribió, salvo que sea uno de los seis. Más adelante pueden añadirse otros idiomas al portal, sin ampliar la gestión ni la traducción automática.",
+            "summary": "Gestión y sitio web en seis idiomas; el portal también en portugués, rumano y polaco, y se pueden añadir más. La traducción automática se queda en los seis."
+        },
         "mobile": {
             "slug": "mobile",
             "type": "text",

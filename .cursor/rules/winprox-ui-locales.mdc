@@ -19,7 +19,7 @@ alwaysApply: false
 
 ## Locales
 - `lang/{nl,en,fr,de,es,it}/[page].json` — alleen keys die op het scherm staan.
-- Portaal-extra (voorlopig `pt`, `ro` en `pl`): alleen portaalbestanden onder `lang/{code}/`, niet de backoffice. Niet in `locales.supported` (Ollama blijft de zes talen). De keuzelijst toont `portal_labels` in die volgorde (PO, RO, PL).
+- Portaal-extra (nu `pt`, `ro` en `pl`): alleen portaalbestanden onder `lang/{code}/`, niet de backoffice. Niet in `locales.supported` (Ollama blijft de zes talen). De keuzelijst toont `portal_labels` in die volgorde (PO, RO, PL). Meer portaal-talen kunnen later bijkomen zonder de zes uit te breiden.
 - Na wijziging: `node scripts/locales.mjs parity` (of npm scripts uit package.json).
 - Nooit hardcoded user-facing tekst in PHP/Blade.
 

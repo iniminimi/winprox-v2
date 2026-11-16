@@ -58,7 +58,7 @@
   },
   "tech": {
     "title": "Technology",
-    "body": "Web application (Laravel + Livewire). Public QR portals work on phones without install. Multilingual (NL, EN, FR, DE, ES, IT) with optional AI translation of report text."
+    "body": "Web application (Laravel + Livewire). Public QR portals work on phones without install. Back office, website and AI translation of report text in six languages (NL, EN, FR, DE, ES, IT). The worker portal is separate and adds Portuguese, Romanian and Polish; more portal languages can be added later."
   },
   "compliance": {
     "title": "Privacy & compliance",
@@ -71,7 +71,7 @@
   },
   "languages": {
     "title": "Languages",
-    "body": "Back office and website in Dutch, English, French, German, Spanish and Italian. The on-site worker portal also in Portuguese, Romanian and Polish."
+    "body": "Back office and website in Dutch, English, French, German, Spanish and Italian. The on-site worker portal is separate and also in Portuguese, Romanian and Polish. More languages can be added to the portal later. Those extra languages are the screen language; automatic translation of reports and tasks stays with the six."
   },
   "related_title": "Related pages",
   "links": {

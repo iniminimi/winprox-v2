@@ -27,7 +27,7 @@
         },
         "internet_portal": {
             "title": "Códigos QR en el lugar",
-            "intro": "Ayuda para QR de unit y QR Clock Point en sitio: acceso, avisos, comprobación de unit, reservas, tareas, fotos, banner de nuevas tareas del equipo y funciones de team leader. Incluye trabajo sin cobertura en un QR de unidad ya abierto."
+            "intro": "Ayuda para QR de unit y QR Clock Point en sitio: acceso, avisos, comprobación de unit, reservas, tareas, fotos, banner de nuevas tareas del equipo y funciones de team leader. Incluye trabajo sin cobertura en un QR de unidad ya abierto. El idioma de pantalla del portal va aparte de la gestión y el sitio web: además de neerlandés, inglés, francés, alemán, español e italiano, también portugués, rumano y polaco. Más adelante pueden añadirse otros idiomas al portal. La traducción automática de avisos y documentos se queda en esos seis idiomas."
         }
     },
     "statuses": "Estados",
@@ -107,7 +107,7 @@
             },
             "portal": {
                 "title": "El operario en el móvil",
-                "intro": "El portal Clock Point: registro único, fichaje de entrada, pausas, visitas a clientes con GPS y Mis horas."
+                "intro": "El portal Clock Point: registro único, fichaje de entrada, pausas, visitas a clientes con GPS y Mis horas. El idioma de pantalla va aparte de la gestión: también portugués, rumano y polaco, y se pueden añadir más."
             }
         }
     }

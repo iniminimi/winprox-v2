@@ -198,11 +198,11 @@
                 },
                 {
                     "label": "Description translation",
-                    "text": "On approved issues, pick a language (NL, EN, FR, DE) next to the description. The text is translated automatically after approval by WinProx (periodically). If a translation is not ready yet, you will see «Not translated yet». Lists and search show the source text until then. Active announcements and documents follow the same pattern on the location page. Tasks with their own description show the translated text in lists and the portal once ready."
+                    "text": "On approved issues, pick a language (NL, EN, FR, DE, ES, IT) next to the description. The text is translated automatically after approval by WinProx (periodically). If a translation is not ready yet, you will see «Not translated yet». Lists and search show the source text until then. Active announcements and documents follow the same pattern on the location page. Tasks with their own description show the translated text in lists and the portal once ready."
                 },
                 {
                     "label": "Task translations",
-                    "text": "In the task edit form you can manually update the task description per language (NL, EN, FR, DE). Useful when the automatic translation by WinProx (periodically) is wrong or still missing. Only available when the task has its own description. Saving finalises the translation for that language."
+                    "text": "In the task edit form you can manually update the task description per language (NL, EN, FR, DE, ES, IT). Useful when the automatic translation by WinProx (periodically) is wrong or still missing. Only available when the task has its own description. Saving finalises the translation for that language."
                 },
                 {
                     "label": "Reporter confirmed",
@@ -299,7 +299,7 @@
                 },
                 {
                     "label": "Description translation",
-                    "text": "If the task has its own description (not only the issue text), it is translated automatically by WinProx (periodically). In the task edit form you can manually update that description per language (NL, EN, FR, DE). Useful when the automatic translation is wrong or still missing. Saving finalises the translation for that language. Without its own description, the task follows the linked issue translation."
+                    "text": "If the task has its own description (not only the issue text), it is translated automatically by WinProx (periodically). In the task edit form you can manually update that description per language (NL, EN, FR, DE, ES, IT). Useful when the automatic translation is wrong or still missing. Saving finalises the translation for that language. Without its own description, the task follows the linked issue translation."
                 },
                 {
                     "label": "Open issue",
@@ -353,7 +353,7 @@
                 },
                 {
                     "label": "Location translations",
-                    "text": "In the location edit form you can manually update the name per language (NL, EN, FR, DE). Useful when the automatic translation by WinProx (periodically) is wrong or still missing. Saving finalises the translation for that language."
+                    "text": "In the location edit form you can manually update the name per language (NL, EN, FR, DE, ES, IT). Useful when the automatic translation by WinProx (periodically) is wrong or still missing. Saving finalises the translation for that language."
                 }
             ]
         },
@@ -366,7 +366,7 @@
                 },
                 {
                     "label": "Category translations",
-                    "text": "In the category edit form you can manually update the name per language (NL, EN, FR, DE). Useful when the automatic translation by WinProx (periodically) is wrong or still missing. Saving finalises the translation for that language."
+                    "text": "In the category edit form you can manually update the name per language (NL, EN, FR, DE, ES, IT). Useful when the automatic translation by WinProx (periodically) is wrong or still missing. Saving finalises the translation for that language."
                 },
                 {
                     "label": "Portal settings (category)",
@@ -421,11 +421,11 @@
                 },
                 {
                     "label": "Location translations",
-                    "text": "In the location edit form you can manually update the name per language (NL, EN, FR, DE). Useful when the automatic translation by WinProx (periodically) is wrong or still missing. Saving finalises the translation for that language."
+                    "text": "In the location edit form you can manually update the name per language (NL, EN, FR, DE, ES, IT). Useful when the automatic translation by WinProx (periodically) is wrong or still missing. Saving finalises the translation for that language."
                 },
                 {
                     "label": "Unit translations",
-                    "text": "In the unit edit form you can manually update name and description per language (NL, EN, FR, DE). Useful when the automatic translation by WinProx (periodically) is wrong or still missing. Saving finalises the translation for that language."
+                    "text": "In the unit edit form you can manually update name and description per language (NL, EN, FR, DE, ES, IT). Useful when the automatic translation by WinProx (periodically) is wrong or still missing. Saving finalises the translation for that language."
                 },
                 {
                     "label": "Advanced portal options",
@@ -594,7 +594,7 @@
                 },
                 {
                     "label": "Team translations",
-                    "text": "In the team edit form you can manually update the name per language (NL, EN, FR, DE). Useful when the automatic translation by WinProx (periodically) is wrong or still missing. Saving finalises the translation for that language."
+                    "text": "In the team edit form you can manually update the name per language (NL, EN, FR, DE, ES, IT). Useful when the automatic translation by WinProx (periodically) is wrong or still missing. Saving finalises the translation for that language."
                 },
                 {
                     "label": "Clock Point QR code",
@@ -919,11 +919,11 @@
                 },
                 {
                     "label": "Documents",
-                    "text": "View the manuals and other documents available for this unit here. Pick a language at the top — the description is translated automatically once ready."
+                    "text": "View the manuals and other documents available for this unit here. The description is translated automatically into Dutch, English, French, German, Spanish and Italian, once ready. Portuguese, Romanian and Polish are extra screen languages of the portal; the organisation’s text then stays in the language it was written in."
                 },
                 {
                     "label": "Announcements",
-                    "text": "View the announcements that apply specifically to this unit here. Pick a language at the top — the text is translated automatically once ready."
+                    "text": "View the announcements that apply specifically to this unit here. The text is translated automatically into Dutch, English, French, German, Spanish and Italian, once ready. Portuguese, Romanian and Polish are extra screen languages of the portal; the organisation’s text then stays in the language it was written in."
                 },
                 {
                     "label": "Capture GPS location",
@@ -931,7 +931,7 @@
                 },
                 {
                     "label": "Language",
-                    "text": "Choose your desired language in the top right (NL, EN, DE, FR). The texts on the portal are immediately updated to the chosen language."
+                    "text": "Choose the language in the top right. The back office and website use Dutch, English, French, German, Spanish and Italian. This portal also offers Portuguese, Romanian and Polish; more languages can be added here later. The screen texts follow the chosen language at once."
                 },
                 {
                     "label": "Theme",
@@ -1152,7 +1152,7 @@
             "actions": [
                 {
                     "label": "What gets translated?",
-                    "text": "Automatic translation slots (NL, EN, FR, DE) for: approved QR issues (description); active announcements (description); active units (name and description); tasks with their own description; active documents (description — title stays in source language). Tasks without their own description show the linked issue translation."
+                    "text": "Automatic translation slots (NL, EN, FR, DE, ES, IT) for: approved QR issues (description); active announcements (description); active units (name and description); tasks with their own description; active documents (description — title stays in source language). Tasks without their own description show the linked issue translation. Those are the languages of the back office, the website and automatic translation. The worker portal is separate: it also offers Portuguese, Romanian and Polish, and more portal languages can be added later. Those extra languages translate only the screen texts and the help, not the content the organisation writes."
                 },
                 {
                     "label": "Local via Ollama",

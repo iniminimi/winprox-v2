@@ -296,6 +296,13 @@
             "body": "Sur la plupart des écrans, un ? apparaît à côté du titre. Il ouvre l'aide page avec actions et — le cas échéant — explications des statuts (ouvert, en cours, traité, fermé). Sur les portails QR publics, la même aide figure dans l'en-tête.",
             "summary": "Utilisez le bouton ? à côté du titre pour l'aide actions et statuts."
         },
+        "languages": {
+            "slug": "languages",
+            "type": "text",
+            "title": "Dans quelles langues WinProx fonctionne-t-il ?",
+            "body": "Le back-office et le site sont disponibles en néerlandais, anglais, français, allemand, espagnol et italien. Les textes que vous rédigez — signalements, tâches, annonces, documents et noms de sites et d’unités — sont traduits automatiquement dans ces six langues. Le portail des intervenants en est séparé. Les intervenants y choisissent aussi le portugais, le roumain ou le polonais. Ces trois langues sont la langue d’écran et l’aide. Le contenu de votre organisation reste dans la langue où il a été écrit, sauf si cette langue fait partie des six. D’autres langues peuvent encore être ajoutées au portail, sans élargir le back-office ni la traduction automatique.",
+            "summary": "Back-office et site en six langues ; le portail aussi en portugais, roumain et polonais, et d’autres langues peuvent encore y être ajoutées. La traduction automatique reste sur les six."
+        },
         "mobile": {
             "slug": "mobile",
             "type": "text",

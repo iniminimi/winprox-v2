@@ -27,7 +27,7 @@
         },
         "internet_portal": {
             "title": "QR codes on site",
-            "intro": "Help for unit QR and Clock Point QR on site: sign-in, reports, unit check, unit measurements, reservations, tasks, photos, work without coverage, new-team-tasks banner and team leader features."
+            "intro": "Help for unit QR and Clock Point QR on site: sign-in, reports, unit check, unit measurements, reservations, tasks, photos, work without coverage, new-team-tasks banner and team leader features. The portal screen language is separate from the back office and website: besides Dutch, English, French, German, Spanish and Italian, also Portuguese, Romanian and Polish. More languages can be added to the portal later. Automatic translation of reports and documents stays with those six languages."
         }
     },
     "statuses": "Statuses",
@@ -107,7 +107,7 @@
             },
             "portal": {
                 "title": "Worker on the phone",
-                "intro": "The Clock Point portal: one-time sign-in, clocking in, breaks, GPS customer visits and My hours."
+                "intro": "The Clock Point portal: one-time sign-in, clocking in, breaks, GPS customer visits and My hours. The screen language is separate from the back office: also Portuguese, Romanian and Polish, and more can be added later."
             }
         }
     }

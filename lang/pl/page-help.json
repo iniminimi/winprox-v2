@@ -28,11 +28,11 @@
                 },
                 {
                     "label": "Dokumenty",
-                    "text": "Tutaj są instrukcje i inne dokumenty dostępne dla tej jednostki. Proszę wybrać język u góry — opis jest tłumaczony automatycznie, gdy będzie gotowy."
+                    "text": "Tutaj są instrukcje i inne dokumenty dostępne dla tej jednostki. Opis jest tłumaczony automatycznie na niderlandzki, angielski, francuski, niemiecki, hiszpański i włoski, gdy będzie gotowy. Portugalski, rumuński i polski to dodatkowe języki ekranu portalu; tekst organizacji zostaje wtedy w języku, w którym został napisany."
                 },
                 {
                     "label": "Ogłoszenia",
-                    "text": "Tutaj są ogłoszenia dotyczące tej jednostki. Proszę wybrać język u góry — tekst jest tłumaczony automatycznie, gdy będzie gotowy."
+                    "text": "Tutaj są ogłoszenia dotyczące tej jednostki. Tekst jest tłumaczony automatycznie na niderlandzki, angielski, francuski, niemiecki, hiszpański i włoski, gdy będzie gotowy. Portugalski, rumuński i polski to dodatkowe języki ekranu portalu; tekst organizacji zostaje wtedy w języku, w którym został napisany."
                 },
                 {
                     "label": "Zapisz lokalizację GPS",
@@ -40,7 +40,7 @@
                 },
                 {
                     "label": "Język",
-                    "text": "Proszę wybrać język w prawym górnym rogu. Teksty portalu od razu zmieniają się na wybrany język."
+                    "text": "Proszę wybrać język w prawym górnym rogu. Zarządzanie i strona używają niderlandzkiego, angielskiego, francuskiego, niemieckiego, hiszpańskiego i włoskiego. Ten portal dodaje portugalski, rumuński i polski; później można tu dodać kolejne języki. Teksty na ekranie od razu przyjmują wybrany język."
                 },
                 {
                     "label": "Motyw",

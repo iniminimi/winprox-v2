@@ -198,11 +198,11 @@
                 },
                 {
                     "label": "Traducción de la descripción",
-                    "text": "En incidencias aprobadas, elija un idioma (NL, EN, FR, DE) junto a la descripción. El texto se traduce automáticamente tras la aprobación vía Plataforma → Traducciones. Si una traducción aún no está lista, verá «Aún no traducida». Las listas y la búsqueda muestran el texto de origen hasta entonces. Los anuncios y documentos activos siguen el mismo patrón en la página de ubicación. Las tareas con su propia descripción muestran el texto traducido en listas y portal una vez lista."
+                    "text": "En incidencias aprobadas, elija un idioma (NL, EN, FR, DE, ES, IT) junto a la descripción. El texto se traduce automáticamente tras la aprobación vía Plataforma → Traducciones. Si una traducción aún no está lista, verá «Aún no traducida». Las listas y la búsqueda muestran el texto de origen hasta entonces. Los anuncios y documentos activos siguen el mismo patrón en la página de ubicación. Las tareas con su propia descripción muestran el texto traducido en listas y portal una vez lista."
                 },
                 {
                     "label": "Traducciones de tarea",
-                    "text": "En el formulario de edición de la tarea puede actualizar manualmente la descripción de la tarea por idioma (NL, EN, FR, DE). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Solo disponible cuando la tarea tiene su propia descripción. Guardar finaliza la traducción para ese idioma."
+                    "text": "En el formulario de edición de la tarea puede actualizar manualmente la descripción de la tarea por idioma (NL, EN, FR, DE, ES, IT). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Solo disponible cuando la tarea tiene su propia descripción. Guardar finaliza la traducción para ese idioma."
                 },
                 {
                     "label": "Informante confirmado",
@@ -299,7 +299,7 @@
                 },
                 {
                     "label": "Traducción de la descripción",
-                    "text": "Si la tarea tiene su propia descripción (no solo el texto de la incidencia), se traduce automáticamente vía Plataforma → Traducciones. En el formulario de edición de la tarea puede actualizar manualmente esa descripción por idioma (NL, EN, FR, DE). Útil cuando la traducción automática es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma. Sin descripción propia, la tarea sigue la traducción de la incidencia vinculada."
+                    "text": "Si la tarea tiene su propia descripción (no solo el texto de la incidencia), se traduce automáticamente vía Plataforma → Traducciones. En el formulario de edición de la tarea puede actualizar manualmente esa descripción por idioma (NL, EN, FR, DE, ES, IT). Útil cuando la traducción automática es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma. Sin descripción propia, la tarea sigue la traducción de la incidencia vinculada."
                 },
                 {
                     "label": "Abrir incidencia",
@@ -353,7 +353,7 @@
                 },
                 {
                     "label": "Traducciones de ubicación",
-                    "text": "En el formulario de edición de ubicación puede actualizar manualmente el nombre por idioma (NL, EN, FR, DE). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
+                    "text": "En el formulario de edición de ubicación puede actualizar manualmente el nombre por idioma (NL, EN, FR, DE, ES, IT). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
                 }
             ]
         },
@@ -366,7 +366,7 @@
                 },
                 {
                     "label": "Traducciones de categoría",
-                    "text": "En el formulario de edición de categoría puede actualizar manualmente el nombre por idioma (NL, EN, FR, DE). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
+                    "text": "En el formulario de edición de categoría puede actualizar manualmente el nombre por idioma (NL, EN, FR, DE, ES, IT). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
                 },
                 {
                     "label": "Ajustes del portal (categoría)",
@@ -421,11 +421,11 @@
                 },
                 {
                     "label": "Traducciones de ubicación",
-                    "text": "En el formulario de edición de ubicación puede actualizar manualmente el nombre por idioma (NL, EN, FR, DE). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
+                    "text": "En el formulario de edición de ubicación puede actualizar manualmente el nombre por idioma (NL, EN, FR, DE, ES, IT). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
                 },
                 {
                     "label": "Traducciones de unidad",
-                    "text": "En el formulario de edición de unidad puede actualizar manualmente el nombre y la descripción por idioma (NL, EN, FR, DE). Útil cuando la traducción automática por WinProx (periódicamente) es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
+                    "text": "En el formulario de edición de unidad puede actualizar manualmente el nombre y la descripción por idioma (NL, EN, FR, DE, ES, IT). Útil cuando la traducción automática por WinProx (periódicamente) es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
                 },
                 {
                     "label": "Opciones avanzadas del portal",
@@ -594,7 +594,7 @@
                 },
                 {
                     "label": "Traducciones de equipo",
-                    "text": "En el formulario de edición de equipo puede actualizar manualmente el nombre por idioma (NL, EN, FR, DE). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
+                    "text": "En el formulario de edición de equipo puede actualizar manualmente el nombre por idioma (NL, EN, FR, DE, ES, IT). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
                 },
                 {
                     "label": "QR Clock Point",
@@ -919,11 +919,11 @@
                 },
                 {
                     "label": "Documentos",
-                    "text": "Consulte aquí los manuales y otros documentos disponibles para esta unidad. Elija un idioma arriba — la descripción se traduce automáticamente una vez lista."
+                    "text": "Consulte aquí los manuales y otros documentos disponibles para esta unidad. La descripción se traduce automáticamente al neerlandés, inglés, francés, alemán, español e italiano, cuando está lista. El portugués, el rumano y el polaco son idiomas de pantalla extra del portal; el texto de la organización permanece entonces en el idioma en que se escribió."
                 },
                 {
                     "label": "Anuncios",
-                    "text": "Consulte aquí los anuncios que se aplican específicamente a esta unidad. Elija un idioma arriba — el texto se traduce automáticamente una vez listo."
+                    "text": "Consulte aquí los anuncios que se aplican específicamente a esta unidad. El texto se traduce automáticamente al neerlandés, inglés, francés, alemán, español e italiano, cuando está listo. El portugués, el rumano y el polaco son idiomas de pantalla extra del portal; el texto de la organización permanece entonces en el idioma en que se escribió."
                 },
                 {
                     "label": "Capturar ubicación GPS",
@@ -931,7 +931,7 @@
                 },
                 {
                     "label": "Idioma",
-                    "text": "Elija su idioma deseado arriba a la derecha (NL, EN, DE, FR). Los textos del portal se actualizan inmediatamente al idioma elegido."
+                    "text": "Elija el idioma arriba a la derecha. La gestión y el sitio web usan neerlandés, inglés, francés, alemán, español e italiano. Este portal añade portugués, rumano y polaco; más adelante pueden añadirse otros idiomas. Los textos de pantalla siguen de inmediato el idioma elegido."
                 },
                 {
                     "label": "Tema",
@@ -1152,7 +1152,7 @@
             "actions": [
                 {
                     "label": "¿Qué se traduce?",
-                    "text": "Slots de traducción automática (NL, EN, FR, DE) para: incidencias QR aprobadas (descripción); anuncios activos (descripción); unidades activas (nombre y descripción); tareas con su propia descripción; documentos activos (descripción — el título permanece en el idioma de origen). Las tareas sin descripción propia muestran la traducción de la incidencia vinculada."
+                    "text": "Slots de traducción automática (NL, EN, FR, DE, ES, IT) para: incidencias QR aprobadas (descripción); anuncios activos (descripción); unidades activas (nombre y descripción); tareas con su propia descripción; documentos activos (descripción — el título permanece en el idioma de origen). Las tareas sin descripción propia muestran la traducción de la incidencia vinculada. Esos son los idiomas de la gestión, el sitio web y la traducción automática. El portal de los operarios va aparte: añade portugués, rumano y polaco, y más adelante pueden añadirse otros idiomas al portal. Esos idiomas extra traducen solo los textos de pantalla y la ayuda, no el contenido que escribe la organización."
                 },
                 {
                     "label": "Local vía Ollama",

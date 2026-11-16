@@ -27,7 +27,7 @@
         },
         "internet_portal": {
             "title": "QR-codes op de werkvloer",
-            "intro": "Hulp bij unit-QR en Clock Point QR op locatie: inloggen, meldingen, unit check, unitmetingen, reserveringen, taken, foto's, werken zonder bereik, nieuwe-teamtaken-banner en teamleader-functies."
+            "intro": "Hulp bij unit-QR en Clock Point QR op locatie: inloggen, meldingen, unit check, unitmetingen, reserveringen, taken, foto's, werken zonder bereik, nieuwe-teamtaken-banner en teamleader-functies. De schermtaal van het portaal is los van beheer en website: naast Nederlands, Engels, Frans, Duits, Spaans en Italiaans ook Portugees, Roemeens en Pools. Later kunnen op het portaal nog talen bijkomen. Automatische vertaling van meldingen en documenten blijft bij die zes talen."
         }
     },
     "statuses": "Statussen",
@@ -107,7 +107,7 @@
             },
             "portal": {
                 "title": "Uitvoerder op de gsm",
-                "intro": "Het Clock Point-portaal: eenmalig aanmelden, inklokken, pauze, klantbezoeken met GPS en Mijn uren."
+                "intro": "Het Clock Point-portaal: eenmalig aanmelden, inklokken, pauze, klantbezoeken met GPS en Mijn uren. De schermtaal is los van het beheer: ook Portugees, Roemeens en Pools, en later nog uitbreidbaar."
             }
         }
     }

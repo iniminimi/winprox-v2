@@ -198,11 +198,11 @@
                 },
                 {
                     "label": "Traduction de la description",
-                    "text": "Sur les signalements validés, choisissez une langue (NL, EN, FR, DE) à côté de la description. Le texte est traduit automatiquement après validation via Plateforme → Traductions. Si une traduction n'est pas encore prête, vous verrez « Pas encore traduit ». Les listes et la recherche affichent le texte source en attendant. Les annonces et documents actifs suivent le même principe sur la page du site. Les tâches avec une description propre affichent le texte traduit dans les listes et le portail dès qu'il est prêt."
+                    "text": "Sur les signalements validés, choisissez une langue (NL, EN, FR, DE, ES, IT) à côté de la description. Le texte est traduit automatiquement après validation via Plateforme → Traductions. Si une traduction n'est pas encore prête, vous verrez « Pas encore traduit ». Les listes et la recherche affichent le texte source en attendant. Les annonces et documents actifs suivent le même principe sur la page du site. Les tâches avec une description propre affichent le texte traduit dans les listes et le portail dès qu'il est prêt."
                 },
                 {
                     "label": "Traductions de tâche",
-                    "text": "Dans le formulaire d’édition de la tâche, vous pouvez mettre à jour manuellement la description de la tâche par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Disponible uniquement lorsque la tâche a une description propre. Enregistrer finalise la traduction pour cette langue."
+                    "text": "Dans le formulaire d’édition de la tâche, vous pouvez mettre à jour manuellement la description de la tâche par langue (NL, EN, FR, DE, ES, IT). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Disponible uniquement lorsque la tâche a une description propre. Enregistrer finalise la traduction pour cette langue."
                 },
                 {
                     "label": "Déclarant confirmé",
@@ -299,7 +299,7 @@
                 },
                 {
                     "label": "Traduction de la description",
-                    "text": "Si la tâche a une description propre (pas seulement celle du signalement), elle est traduite automatiquement via Plateforme → Traductions. Dans le formulaire d’édition de la tâche, vous pouvez mettre à jour manuellement cette description par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue. Sans description propre, la tâche suit la traduction du signalement lié."
+                    "text": "Si la tâche a une description propre (pas seulement celle du signalement), elle est traduite automatiquement via Plateforme → Traductions. Dans le formulaire d’édition de la tâche, vous pouvez mettre à jour manuellement cette description par langue (NL, EN, FR, DE, ES, IT). Utile lorsque la traduction automatique est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue. Sans description propre, la tâche suit la traduction du signalement lié."
                 },
                 {
                     "label": "Ouvrir le signalement",
@@ -353,7 +353,7 @@
                 },
                 {
                     "label": "Traductions de lieu",
-                    "text": "Dans le formulaire d’édition du lieu, vous pouvez mettre à jour manuellement le nom par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
+                    "text": "Dans le formulaire d’édition du lieu, vous pouvez mettre à jour manuellement le nom par langue (NL, EN, FR, DE, ES, IT). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
                 }
             ]
         },
@@ -366,7 +366,7 @@
                 },
                 {
                     "label": "Traductions de catégorie",
-                    "text": "Dans le formulaire d’édition de catégorie, vous pouvez mettre à jour manuellement le nom par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
+                    "text": "Dans le formulaire d’édition de catégorie, vous pouvez mettre à jour manuellement le nom par langue (NL, EN, FR, DE, ES, IT). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
                 },
                 {
                     "label": "Paramètres portail (catégorie)",
@@ -425,11 +425,11 @@
                 },
                 {
                     "label": "Traductions de lieu",
-                    "text": "Dans le formulaire d’édition du lieu, vous pouvez mettre à jour manuellement le nom par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
+                    "text": "Dans le formulaire d’édition du lieu, vous pouvez mettre à jour manuellement le nom par langue (NL, EN, FR, DE, ES, IT). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
                 },
                 {
                     "label": "Traductions d'unité",
-                    "text": "Dans le formulaire d'édition d'unité, vous pouvez mettre à jour manuellement le nom et la description par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique par WinProx (périodiquement) est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
+                    "text": "Dans le formulaire d'édition d'unité, vous pouvez mettre à jour manuellement le nom et la description par langue (NL, EN, FR, DE, ES, IT). Utile lorsque la traduction automatique par WinProx (périodiquement) est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
                 },
                 {
                     "label": "Options portail avancées",
@@ -602,7 +602,7 @@
                 },
                 {
                     "label": "Traductions d’équipe",
-                    "text": "Dans le formulaire d’édition d’équipe, vous pouvez mettre à jour manuellement le nom par langue (NL, EN, FR, DE). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
+                    "text": "Dans le formulaire d’édition d’équipe, vous pouvez mettre à jour manuellement le nom par langue (NL, EN, FR, DE, ES, IT). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
                 },
                 {
                     "label": "QR Clock Point",
@@ -927,11 +927,11 @@
                 },
                 {
                     "label": "Documents",
-                    "text": "Consultez ici les manuels et autres documents disponibles pour cette unité. Choisissez une langue en haut — la description est traduite automatiquement dès qu'elle est prête."
+                    "text": "Consultez ici les manuels et autres documents disponibles pour cette unité. La description est traduite automatiquement en néerlandais, anglais, français, allemand, espagnol et italien, dès qu’elle est prête. Le portugais, le roumain et le polonais sont des langues d’écran supplémentaires du portail ; le texte de l’organisation reste alors dans la langue où il a été écrit."
                 },
                 {
                     "label": "Annonces",
-                    "text": "Consultez ici les annonces qui s'appliquent spécifiquement à cette unité. Choisissez une langue en haut — le texte est traduit automatiquement dès qu'il est prêt."
+                    "text": "Consultez ici les annonces qui s'appliquent spécifiquement à cette unité. Le texte est traduit automatiquement en néerlandais, anglais, français, allemand, espagnol et italien, dès qu’il est prêt. Le portugais, le roumain et le polonais sont des langues d’écran supplémentaires du portail ; le texte de l’organisation reste alors dans la langue où il a été écrit."
                 },
                 {
                     "label": "Enregistrer la position GPS",
@@ -939,7 +939,7 @@
                 },
                 {
                     "label": "Langue",
-                    "text": "Choisissez votre langue souhaitée en haut à droite (NL, EN, DE, FR). Les textes du portail sont immédiatement mis à jour vers la langue choisie."
+                    "text": "Choisissez la langue en haut à droite. Le back-office et le site utilisent le néerlandais, l’anglais, le français, l’allemand, l’espagnol et l’italien. Ce portail ajoute le portugais, le roumain et le polonais ; d’autres langues peuvent encore y être ajoutées. Les textes d’écran suivent aussitôt la langue choisie."
                 },
                 {
                     "label": "Thème",
@@ -1160,7 +1160,7 @@
             "actions": [
                 {
                     "label": "Qu'est-ce qui est traduit ?",
-                    "text": "Emplacements de traduction automatiques (NL, EN, FR, DE) pour : signalements QR validés (description) ; annonces actives (description) ; unités actives (nom et description) ; tâches avec description propre ; documents actifs (description — le titre reste en langue source). Les tâches sans description propre affichent la traduction du signalement lié."
+                    "text": "Emplacements de traduction automatiques (NL, EN, FR, DE, ES, IT) pour : signalements QR validés (description) ; annonces actives (description) ; unités actives (nom et description) ; tâches avec description propre ; documents actifs (description — le titre reste en langue source). Les tâches sans description propre affichent la traduction du signalement lié. Ce sont les langues du back-office, du site et de la traduction automatique. Le portail des intervenants en est séparé : il ajoute le portugais, le roumain et le polonais, et d’autres langues peuvent encore y être ajoutées. Ces langues supplémentaires traduisent seulement les textes d’écran et l’aide, pas le contenu rédigé par l’organisation."
                 },
                 {
                     "label": "Local via Ollama",

@@ -300,6 +300,13 @@
             "body": "Op de meeste schermen staat een ? naast de titel. Die opent pagina-hulp met acties en — waar relevant — uitleg over statussen (open, in uitvoering, afgehandeld, gesloten). Op publieke QR-portalen staat dezelfde hulp bij de kop.",
             "summary": "Gebruik de ?-knop naast de paginatitel voor actie- en statushulp."
         },
+        "languages": {
+            "slug": "languages",
+            "type": "text",
+            "title": "In welke talen werkt WinProx?",
+            "body": "Beheer en website zijn beschikbaar in het Nederlands, Engels, Frans, Duits, Spaans en Italiaans. Teksten die u zelf schrijft — meldingen, taken, mededelingen, documenten en namen van locaties en units — worden in die zes talen automatisch vertaald. Het uitvoerdersportaal is daarvan losgekoppeld. Uitvoerders kiezen daar ook Portugees, Roemeens of Pools. Die drie talen zijn de schermtaal en de hulp. De inhoud van uw organisatie blijft in de taal waarin ze geschreven is, tenzij die tot de zes talen behoort. Op het portaal kunnen later nog talen bijkomen, zonder het beheer of de automatische vertaling uit te breiden.",
+            "summary": "Beheer en website in zes talen; het portaal ook Portugees, Roemeens en Pools, en later nog uitbreidbaar. Automatische vertaling blijft bij de zes."
+        },
         "mobile": {
             "slug": "mobile",
             "type": "text",

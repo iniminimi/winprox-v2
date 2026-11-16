@@ -58,7 +58,7 @@
   },
   "tech": {
     "title": "Technologie",
-    "body": "Webapplicatie (Laravel + Livewire). Publieke QR-portalen werken op smartphone zonder installatie. Meertalig (NL, EN, FR, DE, ES, IT) met optionele AI-vertalingen van meldteksten."
+    "body": "Webapplicatie (Laravel + Livewire). Publieke QR-portalen werken op smartphone zonder installatie. Beheer, website en AI-vertaling van meldteksten in zes talen (NL, EN, FR, DE, ES, IT). Het uitvoerdersportaal is losgekoppeld en voegt Portugees, Roemeens en Pools toe; later kunnen daar nog talen bijkomen."
   },
   "compliance": {
     "title": "Privacy & compliance",
@@ -71,7 +71,7 @@
   },
   "languages": {
     "title": "Talen",
-    "body": "Beheer en website in het Nederlands, Engels, Frans, Duits, Spaans en Italiaans. Het uitvoerdersportaal ook in het Portugees, Roemeens en Pools."
+    "body": "Beheer en website in het Nederlands, Engels, Frans, Duits, Spaans en Italiaans. Het uitvoerdersportaal is daarvan losgekoppeld en ook in het Portugees, Roemeens en Pools. Op het portaal kunnen later nog talen bijkomen. Die extra talen zijn de schermtaal; de automatische vertaling van meldingen en taken blijft bij de zes."
   },
   "related_title": "Verder lezen",
   "links": {

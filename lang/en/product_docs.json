@@ -316,8 +316,11 @@
             },
             {
                 "title": "Translations",
-                "body": "After approval, WinProx can queue texts for translation.",
+                "body": "The back office, the website and the automatic translation of your texts use six languages. The worker portal is separate from that.",
                 "items": [
+                    "Back office and website: Dutch, English, French, German, Spanish and Italian.",
+                    "The worker portal (Clock Point and QR) uses those six languages, plus Portuguese, Romanian and Polish. More languages can be added to the portal later, without extending the back office or the website.",
+                    "Reports, tasks, announcements and documents are translated automatically into those six languages. Portuguese, Romanian and Polish are the screen language and the help of the portal; the organisation’s text then stays in the language it was written in.",
                     "Translation uses local AI. For this, the texts are not sent to an external AI cloud.",
                     "Translations are usually processed daily, without a fixed turnaround. Administrators can correct them themselves."
                 ]
@@ -516,6 +519,8 @@
             {
                 "title": "AI translation",
                 "items": [
+                    "Back office, website and automatic translation: Dutch, English, French, German, Spanish and Italian.",
+                    "The worker portal is separate. It also offers Portuguese, Romanian and Polish, and more portal languages can be added later. Those extra languages translate only the screen texts, not reports, tasks or announcements.",
                     "Operational texts can be translated on WinProx infrastructure, not via a public AI cloud.",
                     "Administrators can correct translations by hand.",
                     "Translation supports the work; it does not decide on processes."

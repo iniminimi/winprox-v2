@@ -316,8 +316,11 @@
             },
             {
                 "title": "Übersetzungen",
-                "body": "Nach Freigabe kann WinProx Texte für die Übersetzung bereitlegen.",
+                "body": "Verwaltung, Website und die automatische Übersetzung Ihrer Texte nutzen sechs Sprachen. Das Portal für Mitarbeitende vor Ort ist davon getrennt.",
                 "items": [
+                    "Verwaltung und Website: Niederländisch, Englisch, Französisch, Deutsch, Spanisch und Italienisch.",
+                    "Das Portal (Clock Point und QR) nutzt diese sechs Sprachen plus Portugiesisch, Rumänisch und Polnisch. Später können dort weitere Sprachen hinzukommen, ohne Verwaltung oder Website zu erweitern.",
+                    "Meldungen, Aufgaben, Mitteilungen und Dokumente werden automatisch in diese sechs Sprachen übersetzt. Portugiesisch, Rumänisch und Polnisch sind die Bildschirmsprache und die Hilfe des Portals; der Text der Organisation bleibt dann in der Sprache, in der er geschrieben wurde.",
                     "Die Übersetzung nutzt lokale KI. Dafür gehen die Texte nicht in eine externe KI-Cloud.",
                     "Übersetzungen werden in der Regel täglich verarbeitet, ohne feste Durchlaufzeit. Die Verwaltung kann sie selbst korrigieren."
                 ]
@@ -516,6 +519,8 @@
             {
                 "title": "KI-Übersetzung",
                 "items": [
+                    "Verwaltung, Website und automatische Übersetzung: Niederländisch, Englisch, Französisch, Deutsch, Spanisch und Italienisch.",
+                    "Das Portal für Mitarbeitende vor Ort ist getrennt. Dort kommen Portugiesisch, Rumänisch und Polnisch hinzu, und später können weitere Portalsprachen dazukommen. Diese zusätzlichen Sprachen übersetzen nur die Bildschirmtexte, nicht Meldungen, Aufgaben oder Mitteilungen.",
                     "Operative Texte können auf der Infrastruktur von WinProx übersetzt werden, nicht über eine öffentliche KI-Cloud.",
                     "Administratoren können Übersetzungen von Hand korrigieren.",
                     "Übersetzung unterstützt die Arbeit; sie entscheidet nicht über Prozesse."

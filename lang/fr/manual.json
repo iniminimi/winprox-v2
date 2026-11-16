@@ -27,7 +27,7 @@
         },
         "internet_portal": {
             "title": "QR codes sur le terrain",
-            "intro": "Aide pour QR unité et QR Clock Point sur site : connexion, signalements, contrôle d'unité, réservations, tâches, photos, travail hors réseau, bannière nouvelles tâches d'équipe et fonctions team leader."
+            "intro": "Aide pour QR unité et QR Clock Point sur site : connexion, signalements, contrôle d'unité, réservations, tâches, photos, travail hors réseau, bannière nouvelles tâches d'équipe et fonctions team leader. La langue d’écran du portail est séparée du back-office et du site : outre le néerlandais, l’anglais, le français, l’allemand, l’espagnol et l’italien, aussi le portugais, le roumain et le polonais. D’autres langues peuvent encore être ajoutées au portail. La traduction automatique des signalements et des documents reste sur ces six langues."
         }
     },
     "statuses": "Statuts",
@@ -107,7 +107,7 @@
             },
             "portal": {
                 "title": "Exécutant sur GSM",
-                "intro": "Le portail Clock Point : connexion unique, pointage, pause, visites clients avec GPS et Mes heures."
+                "intro": "Le portail Clock Point : connexion unique, pointage, pause, visites clients avec GPS et Mes heures. La langue d’écran est séparée du back-office : aussi le portugais, le roumain et le polonais, et d’autres langues peuvent encore y être ajoutées."
             }
         }
     }

@@ -296,6 +296,13 @@
             "body": "Auf den meisten Bildschirmen steht ein ? neben dem Titel. Es öffnet Seitenhilfe mit Aktionen und — wo relevant — Erklärungen zu Statussen (offen, in Bearbeitung, erledigt, geschlossen). Auf öffentlichen QR-Portalen steht dieselbe Hilfe in der Kopfzeile.",
             "summary": "Nutzen Sie die ?-Schaltfläche neben dem Seitentitel für Aktions- und Statushilfe."
         },
+        "languages": {
+            "slug": "languages",
+            "type": "text",
+            "title": "In welchen Sprachen funktioniert WinProx?",
+            "body": "Verwaltung und Website sind auf Niederländisch, Englisch, Französisch, Deutsch, Spanisch und Italienisch verfügbar. Texte, die Sie selbst schreiben — Meldungen, Aufgaben, Mitteilungen, Dokumente und Namen von Standorten und Units — werden automatisch in diese sechs Sprachen übersetzt. Das Portal für Mitarbeitende vor Ort ist davon getrennt. Dort wählen die Mitarbeitenden auch Portugiesisch, Rumänisch oder Polnisch. Diese drei Sprachen sind die Bildschirmsprache und die Hilfe. Der Inhalt Ihrer Organisation bleibt in der Sprache, in der er geschrieben wurde, außer sie gehört zu den sechs. Später können auf dem Portal weitere Sprachen hinzukommen, ohne die Verwaltung oder die automatische Übersetzung zu erweitern.",
+            "summary": "Verwaltung und Website in sechs Sprachen; das Portal auch auf Portugiesisch, Rumänisch und Polnisch, später erweiterbar. Die automatische Übersetzung bleibt bei den sechs."
+        },
         "mobile": {
             "slug": "mobile",
             "type": "text",

@@ -58,7 +58,7 @@
   },
   "tech": {
     "title": "Technologie",
-    "body": "Application web (Laravel + Livewire). Les portails QR publics fonctionnent sur smartphone sans installation. Multilingue (NL, EN, FR, DE, ES, IT) avec traductions IA optionnelles des textes de signalement."
+    "body": "Application web (Laravel + Livewire). Les portails QR publics fonctionnent sur smartphone sans installation. Back-office, site et traduction IA des signalements en six langues (NL, EN, FR, DE, ES, IT). Le portail des intervenants en est séparé et ajoute le portugais, le roumain et le polonais ; d’autres langues peuvent encore y être ajoutées."
   },
   "compliance": {
     "title": "Confidentialité & conformité",
@@ -71,7 +71,7 @@
   },
   "languages": {
     "title": "Langues",
-    "body": "Back-office et site en néerlandais, anglais, français, allemand, espagnol et italien. Le portail des intervenants aussi en portugais, en roumain et en polonais."
+    "body": "Back-office et site en néerlandais, anglais, français, allemand, espagnol et italien. Le portail des intervenants en est séparé et aussi en portugais, en roumain et en polonais. D’autres langues peuvent encore être ajoutées au portail. Ces langues supplémentaires sont la langue d’écran ; la traduction automatique des signalements et des tâches reste sur les six."
   },
   "related_title": "Pages associées",
   "links": {

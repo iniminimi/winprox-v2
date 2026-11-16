@@ -198,11 +198,11 @@
                 },
                 {
                     "label": "Übersetzung der Beschreibung",
-                    "text": "Bei freigegebenen Meldungen wählen Sie neben der Beschreibung eine Sprache (NL, EN, FR, DE). Der Text wird nach der Freigabe automatisch über Plattform → Übersetzungen übersetzt. Ist eine Übersetzung noch nicht fertig, sehen Sie « Noch nicht übersetzt ». In Übersichten und der Suche wird bis dahin der Ausgangstext angezeigt. Aktive Mitteilungen und Dokumente funktionieren gleich auf der Standortseite. Aufgaben mit eigener Beschreibung zeigen den übersetzten Text in Listen und im Portal, sobald er fertig ist."
+                    "text": "Bei freigegebenen Meldungen wählen Sie neben der Beschreibung eine Sprache (NL, EN, FR, DE, ES, IT). Der Text wird nach der Freigabe automatisch über Plattform → Übersetzungen übersetzt. Ist eine Übersetzung noch nicht fertig, sehen Sie « Noch nicht übersetzt ». In Übersichten und der Suche wird bis dahin der Ausgangstext angezeigt. Aktive Mitteilungen und Dokumente funktionieren gleich auf der Standortseite. Aufgaben mit eigener Beschreibung zeigen den übersetzten Text in Listen und im Portal, sobald er fertig ist."
                 },
                 {
                     "label": "Aufgaben-Übersetzungen",
-                    "text": "Im Aufgaben-Bearbeitungsformular können Sie die Aufgabenbeschreibung pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Nur verfügbar, wenn die Aufgabe eine eigene Beschreibung hat. Speichern macht die Übersetzung für diese Sprache endgültig."
+                    "text": "Im Aufgaben-Bearbeitungsformular können Sie die Aufgabenbeschreibung pro Sprache (NL, EN, FR, DE, ES, IT) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Nur verfügbar, wenn die Aufgabe eine eigene Beschreibung hat. Speichern macht die Übersetzung für diese Sprache endgültig."
                 },
                 {
                     "label": "Melder bestätigt",
@@ -299,7 +299,7 @@
                 },
                 {
                     "label": "Übersetzung Beschreibung",
-                    "text": "Hat die Aufgabe eine eigene Beschreibung (nicht nur die der Meldung), wird sie automatisch über Plattform → Übersetzungen übersetzt. Im Aufgaben-Bearbeitungsformular können Sie diese Beschreibung pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig. Ohne eigene Beschreibung folgt die Aufgabe der Übersetzung der verknüpften Meldung."
+                    "text": "Hat die Aufgabe eine eigene Beschreibung (nicht nur die der Meldung), wird sie automatisch über Plattform → Übersetzungen übersetzt. Im Aufgaben-Bearbeitungsformular können Sie diese Beschreibung pro Sprache (NL, EN, FR, DE, ES, IT) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig. Ohne eigene Beschreibung folgt die Aufgabe der Übersetzung der verknüpften Meldung."
                 },
                 {
                     "label": "Meldung öffnen",
@@ -353,7 +353,7 @@
                 },
                 {
                     "label": "Standort-Übersetzungen",
-                    "text": "Im Standort-Bearbeitungsformular können Sie den Namen pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
+                    "text": "Im Standort-Bearbeitungsformular können Sie den Namen pro Sprache (NL, EN, FR, DE, ES, IT) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
                 }
             ]
         },
@@ -366,7 +366,7 @@
                 },
                 {
                     "label": "Kategorie-Übersetzungen",
-                    "text": "Im Kategorie-Bearbeitungsformular können Sie den Namen pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
+                    "text": "Im Kategorie-Bearbeitungsformular können Sie den Namen pro Sprache (NL, EN, FR, DE, ES, IT) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
                 },
                 {
                     "label": "Portal-Einstellungen (Kategorie)",
@@ -421,11 +421,11 @@
                 },
                 {
                     "label": "Standort-Übersetzungen",
-                    "text": "Im Standort-Bearbeitungsformular können Sie den Namen pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
+                    "text": "Im Standort-Bearbeitungsformular können Sie den Namen pro Sprache (NL, EN, FR, DE, ES, IT) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
                 },
                 {
                     "label": "Unit-Übersetzungen",
-                    "text": "Im Unit-Bearbeitungsformular können Sie Name und Beschreibung pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung durch WinProx (periodisch) falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
+                    "text": "Im Unit-Bearbeitungsformular können Sie Name und Beschreibung pro Sprache (NL, EN, FR, DE, ES, IT) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung durch WinProx (periodisch) falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
                 },
                 {
                     "label": "Erweiterte Portal-Optionen",
@@ -594,7 +594,7 @@
                 },
                 {
                     "label": "Team-Übersetzungen",
-                    "text": "Im Team-Bearbeitungsformular können Sie den Namen pro Sprache (NL, EN, FR, DE) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
+                    "text": "Im Team-Bearbeitungsformular können Sie den Namen pro Sprache (NL, EN, FR, DE, ES, IT) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
                 },
                 {
                     "label": "Clock Point QR-code",
@@ -919,11 +919,11 @@
                 },
                 {
                     "label": "Dokumente",
-                    "text": "Sehen Sie hier die Handbücher und anderen Dokumente, die für diese Unit verfügbar sind. Wählen Sie oben eine Sprache — die Beschreibung wird automatisch übersetzt, sobald sie fertig ist."
+                    "text": "Sehen Sie hier die Handbücher und anderen Dokumente, die für diese Unit verfügbar sind. Die Beschreibung wird automatisch ins Niederländische, Englische, Französische, Deutsche, Spanische und Italienische übersetzt, sobald sie fertig ist. Portugiesisch, Rumänisch und Polnisch sind zusätzliche Bildschirmsprachen des Portals; der Text der Organisation bleibt dann in der Sprache, in der er geschrieben wurde."
                 },
                 {
                     "label": "Mitteilungen",
-                    "text": "Sehen Sie hier die Mitteilungen, die spezifisch für diese Unit gelten. Wählen Sie oben eine Sprache — der Text wird automatisch übersetzt, sobald er bereit ist."
+                    "text": "Sehen Sie hier die Mitteilungen, die spezifisch für diese Unit gelten. Der Text wird automatisch ins Niederländische, Englische, Französische, Deutsche, Spanische und Italienische übersetzt, sobald er bereit ist. Portugiesisch, Rumänisch und Polnisch sind zusätzliche Bildschirmsprachen des Portals; der Text der Organisation bleibt dann in der Sprache, in der er geschrieben wurde."
                 },
                 {
                     "label": "GPS-Standort (neu) erfassen",
@@ -931,7 +931,7 @@
                 },
                 {
                     "label": "Sprachwahl",
-                    "text": "Wählen Sie Ihre gewünschte Sprache oben rechts (NL, EN, DE, FR). Die Texte auf dem Portal werden sofort zur gewählten Sprache aktualisiert."
+                    "text": "Wählen Sie oben rechts die Sprache. Verwaltung und Website nutzen Niederländisch, Englisch, Französisch, Deutsch, Spanisch und Italienisch. Dieses Portal ergänzt Portugiesisch, Rumänisch und Polnisch; später können hier weitere Sprachen hinzukommen. Die Bildschirmtexte folgen sofort der gewählten Sprache."
                 },
                 {
                     "label": "Thema",
@@ -1152,7 +1152,7 @@
             "actions": [
                 {
                     "label": "Was wird übersetzt?",
-                    "text": "Automatische Übersetzungsslots (NL, EN, FR, DE) für: freigegebene QR-Meldungen (Beschreibung); aktive Mitteilungen (Beschreibung); aktive Units (Name und Beschreibung); Aufgaben mit eigener Beschreibung; aktive Dokumente (Beschreibung — Titel bleibt Ausgangssprache). Aufgaben ohne eigene Beschreibung zeigen die Übersetzung der verknüpften Meldung."
+                    "text": "Automatische Übersetzungsslots (NL, EN, FR, DE, ES, IT) für: freigegebene QR-Meldungen (Beschreibung); aktive Mitteilungen (Beschreibung); aktive Units (Name und Beschreibung); Aufgaben mit eigener Beschreibung; aktive Dokumente (Beschreibung — Titel bleibt Ausgangssprache). Aufgaben ohne eigene Beschreibung zeigen die Übersetzung der verknüpften Meldung. Das sind die Sprachen von Verwaltung, Website und automatischer Übersetzung. Das Portal für Mitarbeitende vor Ort ist davon getrennt: dort kommen Portugiesisch, Rumänisch und Polnisch hinzu, und später können weitere Portalsprachen dazukommen. Diese zusätzlichen Sprachen übersetzen nur die Bildschirmtexte und die Hilfe, nicht die Inhalte, die die Organisation selbst schreibt."
                 },
                 {
                     "label": "Lokal via Ollama",

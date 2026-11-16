@@ -316,8 +316,11 @@
             },
             {
                 "title": "Traductions",
-                "body": "Après approbation, WinProx peut préparer des textes pour la traduction.",
+                "body": "Le back-office, le site et la traduction automatique de vos textes utilisent six langues. Le portail des intervenants en est séparé.",
                 "items": [
+                    "Back-office et site : néerlandais, anglais, français, allemand, espagnol et italien.",
+                    "Le portail des intervenants (Clock Point et QR) utilise ces six langues, plus le portugais, le roumain et le polonais. D’autres langues peuvent encore être ajoutées au portail, sans élargir le back-office ni le site.",
+                    "Signalements, tâches, annonces et documents sont traduits automatiquement dans ces six langues. Le portugais, le roumain et le polonais sont la langue d’écran et l’aide du portail ; le texte de l’organisation reste alors dans la langue où il a été écrit.",
                     "La traduction utilise une IA locale. Pour cela, les textes ne partent pas vers un cloud d’IA externe.",
                     "Les traductions sont en général traitées chaque jour, sans délai fixe. Les gestionnaires peuvent les corriger eux-mêmes."
                 ]
@@ -516,6 +519,8 @@
             {
                 "title": "Traduction IA",
                 "items": [
+                    "Back-office, site et traduction automatique : néerlandais, anglais, français, allemand, espagnol et italien.",
+                    "Le portail des intervenants est séparé. Il ajoute le portugais, le roumain et le polonais, et d’autres langues peuvent encore y être ajoutées. Ces langues supplémentaires traduisent seulement les textes d’écran, pas les signalements, les tâches ou les annonces.",
                     "Les textes opérationnels peuvent être traduits sur l’infrastructure de WinProx, pas via un cloud d’IA public.",
                     "Les administrateurs peuvent corriger les traductions à la main.",
                     "La traduction aide le travail ; elle ne décide pas des processus."

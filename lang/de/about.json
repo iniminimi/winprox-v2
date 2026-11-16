@@ -58,7 +58,7 @@
   },
   "tech": {
     "title": "Technologie",
-    "body": "Webanwendung (Laravel + Livewire). Öffentliche QR-Portale funktionieren am Smartphone ohne Installation. Mehrsprachig (NL, EN, FR, DE, ES, IT) mit optionaler KI-Übersetzung von Meldetexten."
+    "body": "Webanwendung (Laravel + Livewire). Öffentliche QR-Portale funktionieren am Smartphone ohne Installation. Verwaltung, Website und KI-Übersetzung von Meldetexten in sechs Sprachen (NL, EN, FR, DE, ES, IT). Das Portal vor Ort ist getrennt und ergänzt Portugiesisch, Rumänisch und Polnisch; später können dort weitere Sprachen hinzukommen."
   },
   "compliance": {
     "title": "Datenschutz & Compliance",
@@ -71,7 +71,7 @@
   },
   "languages": {
     "title": "Sprachen",
-    "body": "Verwaltung und Website auf Niederländisch, Englisch, Französisch, Deutsch, Spanisch und Italienisch. Das Portal für Mitarbeitende vor Ort auch auf Portugiesisch, Rumänisch und Polnisch."
+    "body": "Verwaltung und Website auf Niederländisch, Englisch, Französisch, Deutsch, Spanisch und Italienisch. Das Portal für Mitarbeitende vor Ort ist davon getrennt und auch auf Portugiesisch, Rumänisch und Polnisch. Später können dort weitere Sprachen hinzukommen. Diese zusätzlichen Sprachen sind die Bildschirmsprache; die automatische Übersetzung von Meldungen und Aufgaben bleibt bei den sechs."
   },
   "related_title": "Weiterführende Seiten",
   "links": {

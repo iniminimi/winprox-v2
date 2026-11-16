@@ -27,7 +27,7 @@
         },
         "internet_portal": {
             "title": "QR-Codes vor Ort",
-            "intro": "Hilfe zu Unit-QR und Clock-Point-QR vor Ort: Anmeldung, Meldungen, Unit-Check, Reservierungen, Aufgaben, Fotos, Banner für neue Teamaufgaben und Teamleader-Funktionen. Inclusive Arbeit ohne Empfang auf einem bereits geladenen Unit-QR."
+            "intro": "Hilfe zu Unit-QR und Clock-Point-QR vor Ort: Anmeldung, Meldungen, Unit-Check, Reservierungen, Aufgaben, Fotos, Banner für neue Teamaufgaben und Teamleader-Funktionen. Inclusive Arbeit ohne Empfang auf einem bereits geladenen Unit-QR. Die Bildschirmsprache des Portals ist von Verwaltung und Website getrennt: neben Niederländisch, Englisch, Französisch, Deutsch, Spanisch und Italienisch auch Portugiesisch, Rumänisch und Polnisch. Später können dort weitere Sprachen hinzukommen. Die automatische Übersetzung von Meldungen und Dokumenten bleibt bei diesen sechs Sprachen."
         }
     },
     "statuses": "Status",
@@ -107,7 +107,7 @@
             },
             "portal": {
                 "title": "Ausführer auf dem Handy",
-                "intro": "Das Clock-Point-Portal: einmalige Anmeldung, Einstempeln, Pause, Kundenbesuche mit GPS und Meine Stunden."
+                "intro": "Das Clock-Point-Portal: einmalige Anmeldung, Einstempeln, Pause, Kundenbesuche mit GPS und Meine Stunden. Die Bildschirmsprache ist von der Verwaltung getrennt: auch Portugiesisch, Rumänisch und Polnisch, und später erweiterbar."
             }
         }
     }

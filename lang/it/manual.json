@@ -27,7 +27,7 @@
         },
         "internet_portal": {
             "title": "Codici QR sul campo",
-            "intro": "Guida a QR unit e QR Clock Point in sito: accesso, segnalazioni, controllo unità, prenotazioni, task, foto, banner nuovi task del team e funzioni team leader. Include il lavoro senza rete su un QR unità già aperto."
+            "intro": "Guida a QR unit e QR Clock Point in sito: accesso, segnalazioni, controllo unità, prenotazioni, task, foto, banner nuovi task del team e funzioni team leader. Include il lavoro senza rete su un QR unità già aperto. La lingua a schermo del portale è separata da gestione e sito: oltre a olandese, inglese, francese, tedesco, spagnolo e italiano, anche portoghese, rumeno e polacco. In seguito si possono aggiungere altre lingue al portale. La traduzione automatica di segnalazioni e documenti resta su quelle sei lingue."
         }
     },
     "statuses": "Stati",
@@ -107,7 +107,7 @@
             },
             "portal": {
                 "title": "L'operatore sul cellulare",
-                "intro": "Il portale Clock Point: registrazione unica, timbratura, pause, visite ai clienti con GPS e Le mie ore."
+                "intro": "Il portale Clock Point: registrazione unica, timbratura, pause, visite ai clienti con GPS e Le mie ore. La lingua a schermo è separata dalla gestione: anche portoghese, rumeno e polacco, e se ne possono aggiungere altre."
             }
         }
     }

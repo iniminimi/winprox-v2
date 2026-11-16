@@ -30,6 +30,16 @@ Op iPhone of iPad gaat een beginscherm-icoon via **Deel**, niet via deze knop.
 In dat bureaubladvenster, en alleen daar, staat op de plek van Home: terug, verder,
 vernieuwen en home. Op de gsm en in de gewone browser blijft Home staan.
 
+**Talen (gesplitst).** Beheer, website en automatische inhoudsvertaling (Ollama):
+`nl`, `en`, `fr`, `de`, `es`, `it` (`locales.supported`). Het uitvoerdersportaal
+(Clock Point en QR) gebruikt die zes plus `pt` (PO), `ro` (RO) en `pl` (PL),
+in die volgorde onderaan de keuzelijst. Meer portaal-talen kunnen later bijkomen
+zonder de zes uit te breiden. Extra portaal-talen vertalen alleen de schermteksten
+en de hulp (`lang/{code}/`: minstens `portal.json`, de portaal-sleutels van
+`time.json` en de portaalpagina’s in `page-help.json`). Geen Ollama-slots, en ze
+verschijnen niet in beheer of op de website. Publiek: `product_docs` (features +
+technische fiche), FAQ-item `languages`, handleiding (internetportaal + pagina-hulp).
+
 Menu-volgorde (sidebar, accordion): Home · **Werk** (Meldingen, Taken,
 Inspectierondes, Checklists, Unit checks, Werkbezoeken, Kalender,
 Reserveringen, Unitmetingen) · **Plaatsen** (Categorieën, Locaties, Units tenant-breed) · **Personen** (Backoffice = Beheerder/Medewerker;

@@ -198,11 +198,11 @@
                 },
                 {
                     "label": "Traduzione descrizione",
-                    "text": "Su segnalazioni approvate, scelga una lingua (NL, EN, FR, DE) accanto alla descrizione. Il testo viene tradotto automaticamente dopo l'approvazione tramite Piattaforma → Traduzioni. Se una traduzione non è ancora pronta, vedrà «Non ancora tradotta». Elenchi e ricerca mostrano il testo di origine fino ad allora. Annunci e documenti attivi seguono lo stesso schema nella pagina sede. Le attività con descrizione propria mostrano il testo tradotto negli elenchi e nel portale una volta pronto."
+                    "text": "Su segnalazioni approvate, scelga una lingua (NL, EN, FR, DE, ES, IT) accanto alla descrizione. Il testo viene tradotto automaticamente dopo l'approvazione tramite Piattaforma → Traduzioni. Se una traduzione non è ancora pronta, vedrà «Non ancora tradotta». Elenchi e ricerca mostrano il testo di origine fino ad allora. Annunci e documenti attivi seguono lo stesso schema nella pagina sede. Le attività con descrizione propria mostrano il testo tradotto negli elenchi e nel portale una volta pronto."
                 },
                 {
                     "label": "Traduzioni attività",
-                    "text": "Nel modulo di modifica attività può aggiornare manualmente la descrizione dell'attività per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Disponibile solo quando l'attività ha una descrizione propria. Salvare finalizza la traduzione per quella lingua."
+                    "text": "Nel modulo di modifica attività può aggiornare manualmente la descrizione dell'attività per lingua (NL, EN, FR, DE, ES, IT). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Disponibile solo quando l'attività ha una descrizione propria. Salvare finalizza la traduzione per quella lingua."
                 },
                 {
                     "label": "Segnalante confermato",
@@ -299,7 +299,7 @@
                 },
                 {
                     "label": "Traduzione descrizione",
-                    "text": "Se l'attività ha una descrizione propria (non solo il testo della segnalazione), viene tradotta automaticamente tramite Piattaforma → Traduzioni. Nel modulo di modifica attività può aggiornare manualmente quella descrizione per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua. Senza descrizione propria, l'attività segue la traduzione della segnalazione collegata."
+                    "text": "Se l'attività ha una descrizione propria (non solo il testo della segnalazione), viene tradotta automaticamente tramite Piattaforma → Traduzioni. Nel modulo di modifica attività può aggiornare manualmente quella descrizione per lingua (NL, EN, FR, DE, ES, IT). Utile quando la traduzione automatica è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua. Senza descrizione propria, l'attività segue la traduzione della segnalazione collegata."
                 },
                 {
                     "label": "Apri segnalazione",
@@ -353,7 +353,7 @@
                 },
                 {
                     "label": "Traduzioni sede",
-                    "text": "Nel modulo di modifica sede può aggiornare manualmente il nome per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
+                    "text": "Nel modulo di modifica sede può aggiornare manualmente il nome per lingua (NL, EN, FR, DE, ES, IT). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
                 }
             ]
         },
@@ -366,7 +366,7 @@
                 },
                 {
                     "label": "Traduzioni categoria",
-                    "text": "Nel modulo di modifica categoria può aggiornare manualmente il nome per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
+                    "text": "Nel modulo di modifica categoria può aggiornare manualmente il nome per lingua (NL, EN, FR, DE, ES, IT). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
                 },
                 {
                     "label": "Impostazioni portale (categoria)",
@@ -421,11 +421,11 @@
                 },
                 {
                     "label": "Traduzioni sede",
-                    "text": "Nel modulo di modifica sede può aggiornare manualmente il nome per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
+                    "text": "Nel modulo di modifica sede può aggiornare manualmente il nome per lingua (NL, EN, FR, DE, ES, IT). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
                 },
                 {
                     "label": "Traduzioni unità",
-                    "text": "Nel modulo di modifica unità può aggiornare manualmente nome e descrizione per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica da WinProx (periodicamente) è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
+                    "text": "Nel modulo di modifica unità può aggiornare manualmente nome e descrizione per lingua (NL, EN, FR, DE, ES, IT). Utile quando la traduzione automatica da WinProx (periodicamente) è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
                 },
                 {
                     "label": "Opzioni portale avanzate",
@@ -594,7 +594,7 @@
                 },
                 {
                     "label": "Traduzioni team",
-                    "text": "Nel modulo di modifica team può aggiornare manualmente il nome per lingua (NL, EN, FR, DE). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
+                    "text": "Nel modulo di modifica team può aggiornare manualmente il nome per lingua (NL, EN, FR, DE, ES, IT). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
                 },
                 {
                     "label": "QR Clock Point",
@@ -919,11 +919,11 @@
                 },
                 {
                     "label": "Documenti",
-                    "text": "Visualizzi qui i manuali e altri documenti disponibili per questa unità. Scelga una lingua in alto — la descrizione viene tradotta automaticamente una volta pronta."
+                    "text": "Visualizzi qui i manuali e altri documenti disponibili per questa unità. La descrizione viene tradotta automaticamente in olandese, inglese, francese, tedesco, spagnolo e italiano, quando è pronta. Portoghese, rumeno e polacco sono lingue di schermo aggiuntive del portale; il testo dell’organizzazione resta allora nella lingua in cui è stato scritto."
                 },
                 {
                     "label": "Annunci",
-                    "text": "Visualizzi qui gli annunci che si applicano specificamente a questa unità. Scelga una lingua in alto — il testo viene tradotto automaticamente una volta pronto."
+                    "text": "Visualizzi qui gli annunci che si applicano specificamente a questa unità. Il testo viene tradotto automaticamente in olandese, inglese, francese, tedesco, spagnolo e italiano, quando è pronto. Portoghese, rumeno e polacco sono lingue di schermo aggiuntive del portale; il testo dell’organizzazione resta allora nella lingua in cui è stato scritto."
                 },
                 {
                     "label": "Registra posizione GPS",
@@ -931,7 +931,7 @@
                 },
                 {
                     "label": "Lingua",
-                    "text": "Scelga la lingua desiderata in alto a destra (NL, EN, DE, FR). I testi sul portale vengono aggiornati immediatamente alla lingua scelta."
+                    "text": "Scelga la lingua in alto a destra. Gestione e sito usano olandese, inglese, francese, tedesco, spagnolo e italiano. Questo portale aggiunge portoghese, rumeno e polacco; in seguito si possono aggiungere altre lingue. I testi a schermo seguono subito la lingua scelta."
                 },
                 {
                     "label": "Tema",
@@ -1152,7 +1152,7 @@
             "actions": [
                 {
                     "label": "Cosa viene tradotto?",
-                    "text": "Slot di traduzione automatica (NL, EN, FR, DE) per: segnalazioni QR approvate (descrizione); annunci attivi (descrizione); unità attive (nome e descrizione); attività con descrizione propria; documenti attivi (descrizione — il titolo resta nella lingua di origine). Le attività senza descrizione propria mostrano la traduzione della segnalazione collegata."
+                    "text": "Slot di traduzione automatica (NL, EN, FR, DE, ES, IT) per: segnalazioni QR approvate (descrizione); annunci attivi (descrizione); unità attive (nome e descrizione); attività con descrizione propria; documenti attivi (descrizione — il titolo resta nella lingua di origine). Le attività senza descrizione propria mostrano la traduzione della segnalazione collegata. Sono le lingue della gestione, del sito e della traduzione automatica. Il portale degli operatori è separato: aggiunge portoghese, rumeno e polacco, e in seguito si possono aggiungere altre lingue al portale. Quelle lingue in più traducono solo i testi a schermo e l’aiuto, non i contenuti scritti dall’organizzazione."
                 },
                 {
                     "label": "Locale via Ollama",

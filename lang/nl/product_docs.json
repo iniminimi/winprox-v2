@@ -316,8 +316,11 @@
             },
             {
                 "title": "Vertalingen",
-                "body": "WinProx kan teksten na goedkeuring klaarzetten voor vertaling.",
+                "body": "Beheer, website en de automatische vertaling van uw teksten gebruiken zes talen. Het uitvoerdersportaal is daarvan losgekoppeld.",
                 "items": [
+                    "Beheer en website: Nederlands, Engels, Frans, Duits, Spaans en Italiaans.",
+                    "Het uitvoerdersportaal (Clock Point en QR) gebruikt die zes talen, plus Portugees, Roemeens en Pools. Op het portaal kunnen later nog talen bijkomen, zonder beheer of website uit te breiden.",
+                    "Meldingen, taken, mededelingen en documenten worden automatisch vertaald in die zes talen. Portugees, Roemeens en Pools zijn de schermtaal en de hulp van het portaal; de tekst van de organisatie blijft dan in de taal waarin ze geschreven is.",
                     "De vertaling gebruikt lokale AI. De teksten gaan daarvoor niet naar een externe AI-cloud.",
                     "Vertalingen worden doorgaans dagelijks verwerkt, zonder vaste doorlooptijd. Beheerders kunnen ze zelf corrigeren."
                 ]
@@ -516,6 +519,8 @@
             {
                 "title": "AI-vertaling",
                 "items": [
+                    "Beheer, website en automatische vertaling: Nederlands, Engels, Frans, Duits, Spaans en Italiaans.",
+                    "Het uitvoerdersportaal is losgekoppeld. Daar komen Portugees, Roemeens en Pools bij, en later kunnen op het portaal nog talen bijkomen. Die extra talen vertalen alleen de schermteksten, niet de meldingen, taken of mededelingen.",
                     "Operationele teksten kunnen vertaald worden op infrastructuur van WinProx, niet via een openbare AI-cloud.",
                     "Beheerders kunnen vertalingen handmatig corrigeren.",
                     "Vertaling ondersteunt het werk; ze neemt geen beslissingen over processen."

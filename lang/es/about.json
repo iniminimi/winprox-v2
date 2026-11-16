@@ -58,7 +58,7 @@
   },
   "tech": {
     "title": "Tecnología",
-    "body": "Aplicación web (Laravel + Livewire). Los portales QR públicos funcionan en el móvil sin instalación. Multilingüe (NL, EN, FR, DE, ES, IT) con traducción IA opcional de los textos de incidencia."
+    "body": "Aplicación web (Laravel + Livewire). Los portales QR públicos funcionan en el móvil sin instalación. Gestión, sitio web y traducción IA de los avisos en seis idiomas (NL, EN, FR, DE, ES, IT). El portal de los operarios va aparte y añade portugués, rumano y polaco; más adelante pueden añadirse otros idiomas."
   },
   "compliance": {
     "title": "Privacidad y cumplimiento",
@@ -71,7 +71,7 @@
   },
   "languages": {
     "title": "Idiomas",
-    "body": "Gestión y sitio web en neerlandés, inglés, francés, alemán, español e italiano. El portal de los operarios también en portugués, rumano y polaco."
+    "body": "Gestión y sitio web en neerlandés, inglés, francés, alemán, español e italiano. El portal de los operarios va aparte y también en portugués, rumano y polaco. Más adelante pueden añadirse otros idiomas al portal. Esos idiomas extra son el idioma de pantalla; la traducción automática de avisos y tareas se queda en los seis."
   },
   "related_title": "Seguir leyendo",
   "links": {

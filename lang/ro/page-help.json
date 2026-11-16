@@ -28,11 +28,11 @@
                 },
                 {
                     "label": "Documente",
-                    "text": "Consultați aici manualele și celelalte documente disponibile pentru această unitate. Alegeți o limbă sus — descrierea se traduce automat când este gata."
+                    "text": "Consultați aici manualele și celelalte documente disponibile pentru această unitate. Descrierea se traduce automat în neerlandeză, engleză, franceză, germană, spaniolă și italiană, când este gata. Portugheza, româna și poloneza sunt limbi de ecran suplimentare ale portalului; textul organizației rămâne atunci în limba în care a fost scris."
                 },
                 {
                     "label": "Anunțuri",
-                    "text": "Consultați aici anunțurile care privesc această unitate. Alegeți o limbă sus — textul se traduce automat când este gata."
+                    "text": "Consultați aici anunțurile care privesc această unitate. Textul se traduce automat în neerlandeză, engleză, franceză, germană, spaniolă și italiană, când este gata. Portugheza, româna și poloneza sunt limbi de ecran suplimentare ale portalului; textul organizației rămâne atunci în limba în care a fost scris."
                 },
                 {
                     "label": "Înregistrați locația GPS",
@@ -40,7 +40,7 @@
                 },
                 {
                     "label": "Limbă",
-                    "text": "Alegeți limba dorită dreapta sus. Textele de pe portal se actualizează imediat în limba aleasă."
+                    "text": "Alegeți limba dreapta sus. Administrarea și site-ul folosesc neerlandeza, engleza, franceza, germana, spaniola și italiana. Acest portal adaugă portugheza, româna și poloneza; mai târziu pot fi adăugate și alte limbi. Textele de pe ecran urmează imediat limba aleasă."
                 },
                 {
                     "label": "Temă",
