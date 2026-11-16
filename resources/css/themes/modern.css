@@ -121,11 +121,15 @@
 }
 
 [data-theme='modern'] .wp-sidebar .wp-pwa-nav .wp-nav-icon,
-[data-theme='modern'] .wp-sidebar .wp-pwa-nav__btn:hover .wp-nav-icon,
-[data-theme='modern'] .wp-sidebar .wp-pwa-nav__btn.is-active .wp-nav-icon,
 [data-theme='modern'] .wp-sidebar .wp-pwa-nav__btn:disabled:hover .wp-nav-icon {
-    background-color: rgba(16, 185, 129, 0.22);
-    color: #6ee7b7;
+    background-color: #059669;
+    color: #ffffff;
+}
+
+[data-theme='modern'] .wp-sidebar .wp-pwa-nav__btn:hover .wp-nav-icon,
+[data-theme='modern'] .wp-sidebar .wp-pwa-nav__btn.is-active .wp-nav-icon {
+    background-color: #047857;
+    color: #ffffff;
 }
 
 [data-theme='modern'] .wp-sidebar .wp-text-muted,

@@ -317,11 +317,15 @@
 }
 
 .wp-pwa-nav .wp-nav-icon,
-.wp-pwa-nav__btn:hover .wp-nav-icon,
-.wp-pwa-nav__btn.is-active .wp-nav-icon,
 .wp-pwa-nav__btn:disabled:hover .wp-nav-icon {
-    background-color: var(--wp-accent-soft);
-    color: var(--wp-accent-text);
+    background-color: var(--wp-accent);
+    color: var(--wp-text-on-accent, #ffffff);
+}
+
+.wp-pwa-nav__btn:hover .wp-nav-icon,
+.wp-pwa-nav__btn.is-active .wp-nav-icon {
+    background-color: var(--wp-accent-strong, var(--wp-accent));
+    color: var(--wp-text-on-accent, #ffffff);
 }
 
 /* Browserbalk alleen in het geïnstalleerde bureaubladvenster. */
