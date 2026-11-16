@@ -872,6 +872,8 @@ it('switches the unit portal to romanian without touching backoffice locales', f
     Livewire::test(UnitPortal::class, ['token' => 'unit-token'])
         ->call('switchLocale', 'ro')
         ->assertSet('locale', 'ro')
+        ->assertSee('Ajutor pentru această pagină', false)
+        ->assertSee('Ajutor — Portal public', false)
         ->assertSee('Sesizare nouă', false)
         ->assertDontSee('New report', false)
         ->call('switchLocale', 'pt')

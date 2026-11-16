@@ -6,5 +6,11 @@
     "language": {
         "label": "Limbă"
     },
+    "status": {
+        "new": "Deschis",
+        "in_progress": "În lucru",
+        "done": "Finalizat",
+        "closed": "Închis"
+    },
     "welcome": "Bun venit"
 }

@@ -1,0 +1,236 @@
+{
+    "button_label": "Ajutor pentru această pagină",
+    "modal": {
+        "close": "Închideți",
+        "print": "Tipăriți",
+        "actions_heading": "Acțiuni",
+        "statuses_heading": "Stări"
+    },
+    "pages": {
+        "portal.unit": {
+            "title": "Ajutor — Portal public",
+            "actions": [
+                {
+                    "label": "Bun venit",
+                    "text": "Bine ați venit în portalul public al :tenant. Citiți mai jos pentru mai multe informații. Vă interesează un portal propriu pentru firmă? Apăsați pe <a href=\"https://winprox.app\" target=\"_blank\" rel=\"noopener noreferrer\">Winprox.app</a>."
+                },
+                {
+                    "label": "Sesizați o problemă",
+                    "text": "Apăsați „Creați o sesizare”, descrieți problema și, dacă doriți, adăugați până la patru fotografii. Prenumele, numele și e-mailul sunt opționale — dacă administratorul a făcut datele de contact obligatorii, completați-le. Dacă confirmarea prin e-mail este pornită, primiți un link: sesizarea se creează doar după confirmare. Apoi se creează o sarcină pentru echipă. Sesizarea trebuie aprobată înainte să apară pe portal. Limite anti-spam: cel mult o sesizare la 3 minute și cinci sesizări la 30 de minute pentru această unitate (pe dispozitiv)."
+                },
+                {
+                    "label": "Sesizări anterioare",
+                    "text": "Dacă administratorul lasă această opțiune pornită pentru categorie, vedeți sesizările deschise ale acestei unități după aprobare. Dacă este oprită, tigla este ascunsă (de exemplu o cameră de hotel sau o toaletă)."
+                },
+                {
+                    "label": "Rezervați",
+                    "text": "Dacă această unitate se poate rezerva, vedeți tigla Rezervați. Alegeți un interval, introduceți numele și e-mailul și confirmați în 30 de minute prin e-mail. Folosiți Rezervările mele sau linkul din e-mail pentru a modifica sau anula."
+                },
+                {
+                    "label": "Documente",
+                    "text": "Consultați aici manualele și celelalte documente disponibile pentru această unitate. Alegeți o limbă sus — descrierea se traduce automat când este gata."
+                },
+                {
+                    "label": "Anunțuri",
+                    "text": "Consultați aici anunțurile care privesc această unitate. Alegeți o limbă sus — textul se traduce automat când este gata."
+                },
+                {
+                    "label": "Înregistrați locația GPS",
+                    "text": "Când este activat, coordonatele GPS sunt transmise administrației. Așa un tehnician vă găsește mai ușor."
+                },
+                {
+                    "label": "Limbă",
+                    "text": "Alegeți limba dorită dreapta sus. Textele de pe portal se actualizează imediat în limba aleasă."
+                },
+                {
+                    "label": "Temă",
+                    "text": "Comutați dreapta sus între tema Standard și cea Întunecată, după preferință. Întunecat este util pe telefon."
+                },
+                {
+                    "label": "Măsurători unitate",
+                    "text": "Când categoria și unitatea permit măsurători și există câmpuri legate, portalul arată tigla Măsurători. Introduceți valorile și trimiteți — Clock Point nu este necesar. Istoricul este la Lucru → Măsurători unitate."
+                },
+                {
+                    "label": "Album foto",
+                    "text": "Când albumul foto este pornit, stă lângă fotografiile de pe acest QR de unitate. Sunt fotografiile de azi, de trimis pe e-mail, nu fotografiile permanente ale unității. Până la 24 pe zi; vă puteți șterge propriile fotografii de azi. Backoffice-ul decide ce se trimite."
+                }
+            ],
+            "status_note": "Sarcinile deschise de pe această pagină urmează stările de mai jos.",
+            "statuses": {
+                "new": "Sarcină care așteaptă să înceapă.",
+                "in_progress": "Echipa lucrează la ea.",
+                "done": "Lucrul este finalizat.",
+                "closed": "Sarcina este închisă."
+            }
+        },
+        "portal.team": {
+            "title": "Ajutor — Portal lucrător",
+            "actions": [
+                {
+                    "label": "Nume și pictogramă",
+                    "text": "După ce deschideți portalul Clock Point — prin scanarea QR, linkul de autentificare sau pictograma de pe ecranul de start — introduceți prenumele și numele și alegeți o pictogramă personală. Țineți minte pictograma: data viitoare trebuie să o alegeți din nou. Aveți două încercări cu pictograma corectă; apoi contul se blochează. Un șef de echipă sau un administrator îl poate debloca."
+                },
+                {
+                    "label": "Prima dată",
+                    "text": "Sunteți nou în echipă? Rugați șeful de echipă sau administratorul să vă creeze un cont. Apoi vă autentificați cu prenumele și numele și vă alegeți pictograma."
+                },
+                {
+                    "label": "Deconectare",
+                    "text": "Deconectați-vă când ați terminat. La orele alese de administrator sunteți deconectat și automat."
+                },
+                {
+                    "label": "Sarcini deschise",
+                    "text": "După autentificare vedeți sarcinile deschise ale echipei pe portalul unității. Scanați QR-ul unității la fața locului pentru a începe sau finaliza o sarcină."
+                },
+                {
+                    "label": "Sarcini noi de echipă",
+                    "text": "Dacă au apărut sarcini noi pentru echipă de când v-ați autentificat, portalul unității arată un banner de atenție. Deschideți lista de sarcini prin linkul Clock Point sau închideți bannerul."
+                },
+                {
+                    "label": "Începeți",
+                    "text": "Mergeți la „Sarcini deschise” și apăsați „Începeți sarcina”. Ceilalți din echipă văd că lucrați la ea, iar starea devine „În lucru”. Când ați terminat, apăsați „Finalizați sarcina”. Fără semnal, pornirea se salvează pe telefon și se trimite mai târziu."
+                },
+                {
+                    "label": "Finalizați",
+                    "text": "După ce ați început sarcina, finalizați-o cu „Finalizați sarcina”. Puteți adăuga o notă scurtă și, dacă doriți, fotografii. Uneori portalul cere o valoare măsurată (de exemplu un index) — introduceți-o înainte de confirmare. Sarcina primește starea „Finalizat”. Fără semnal, nota și fotografiile rămân pe telefon până reveniți online."
+                },
+                {
+                    "label": "Control unitate",
+                    "text": "Când categoria și unitatea permit controlul, lucrătorii autentificați văd tigla Control unitate. Înregistrați În regulă sau Nu este în regulă, eventual cu o listă de verificare. În regulă nu creează o sesizare; după Nu este în regulă puteți crea una. Fără semnal, controlul se salvează pe telefon și se trimite mai târziu."
+                },
+                {
+                    "label": "Înregistrați locația GPS",
+                    "text": "Când este activat, coordonatele GPS sunt transmise administrației. Așa un tehnician vă găsește mai ușor."
+                }
+            ],
+            "status_note": "Fiecare sarcină trece prin stările de mai jos:",
+            "statuses": {
+                "new": "Sarcina nu a început încă și așteaptă un lucrător.",
+                "in_progress": "Cineva lucrează acum la sarcină, la fața locului.",
+                "done": "Lucrul a fost finalizat de un lucrător.",
+                "closed": "Sesizarea a fost verificată de administrator și închisă definitiv."
+            }
+        },
+        "portal.time": {
+            "title": "Ajutor — Portal Clock Point",
+            "actions": [
+                {
+                    "label": "Nume și pictogramă",
+                    "text": "Deschideți portalul Clock Point scanând autocolantul sau ecranul ceasului, prin linkul de autentificare dintr-un e-mail sau prin pictograma de pe ecranul de start, și alegeți prenumele, numele și pictograma personală (PIN sau date biometrice, opțional) pe propriul telefon. Asta spune cine sunteți — nu este încă pontajul. Nu există un buton ca să vă autentificați ca alt lucrător: telefonul rămâne al dumneavoastră până când un administrator sau un șef de echipă îl eliberează. După autentificare dispare titlul Autentificare. Două încercări greșite blochează temporar contul; un șef de echipă sau un administrator îl poate elibera."
+                },
+                {
+                    "label": "Amprentă sau față",
+                    "text": "După prima autentificare cu pictogramă sau PIN, portalul oferă „Autentificare mai rapidă?” — apăsați Activați și confirmați cu amprenta sau fața telefonului (sau codul dispozitivului). De atunci butonul Autentificare cu date biometrice stă deasupra; pictograma sau PIN-ul merg în continuare. Amprenta sau fața nu părăsesc telefonul — WinProx păstrează doar o cheie publică. Nu apare oferta? Administratorul a oprit opțiunea sau dispozitivul nu o acceptă. Administratorii pot șterge cheia la Persoane → Echipe → Editare."
+                },
+                {
+                    "label": "Scurtătură pe ecranul de start",
+                    "text": "O pictogramă WinProx stă la dreapta Autentificării. Apăsați: pe Android, Chrome o adaugă pe ecranul de start; pe iPhone: ⋯ jos → Partajați → Afișați mai multe → derulați → + Adăugați pe ecranul de pornire. Fără App Store. Pictograma vă autentifică fără QR; la un ceas fix puteți ponta intrarea sau ieșirea doar după ce scanați autocolantul sau ecranul ceasului."
+                },
+                {
+                    "label": "Deconectare",
+                    "text": "După autentificare puteți apăsa Deconectare: portalul cere din nou pictograma, PIN-ul sau datele biometrice. Asta nu este ieșirea din pontaj și nu dezleagă telefonul; doar un administrator sau un șef de echipă eliberează dispozitivul. Ieșirea din pontaj este pe linia de pontaj."
+                },
+                {
+                    "label": "Sarcini deschise",
+                    "text": "După nume și pictogramă vedeți sus cardul de pontaj, cu starea (nepontat, pontat, în pauză, alt loc sau concediu). Locul este dedesubt, iar acțiunea principală lângă nume. Începeți pauza și Deconectare sunt butoane în spatele săgeții. Sarcinile deschise sunt mai jos, cu un număr; sarcinile în plus prin Mai multe sarcini. Cu Time și vizite de lucru GPS începeți sau finalizați sarcinile echipei pe Clock Point cât timp o vizită de lucru este deschisă la acea locație a clientului (notă și fotografii opționale). O rundă de inspecție arată descrierea, prioritatea, starea și următoarea oprire. Butonul Control unitate apare doar după Începeți lucrul în acea locație; controlul complet (În regulă / Nu este în regulă / omiteți) se deschide după aceea."
+                },
+                {
+                    "label": "Intrare și ieșire din pontaj",
+                    "text": "Fiecare intrare, ieșire sau mutare are nevoie de o scanare nouă a autocolantului sau a ecranului ceasului, la fața locului — linkul de autentificare, pictograma de pe ecranul de start sau o filă deschisă nu sunt de ajuns (la Checkmate pictograma este de ajuns). O scanare dă o singură pontare și expiră repede. Pauza o puteți începe pe același telefon, fără o scanare nouă. Dacă setarea GPS la intrare este pornită, locația este obligatorie pentru intrare; ieșirea și pauzele nu cer poziția. Alt dispozitiv este refuzat până când un șef de echipă sau un administrator permite unul nou. Aveți o singură tură deschisă odată. La un Clock Point din alt loc vedeți unde sunteți pontat și puteți muta prezența aici (o mutare în 5 minute ridică o alarmă). Un alt Clock Point în același loc contează ca același loc. Cu vizite de lucru GPS: începeți lucrul la fața locului, apoi sarcinile echipei și următoarea oprire de inspecție pe Clock Point. Un triunghi roșu lângă ora de intrare apare când aveți o tură publicată și nu ați pontat, sau ați pontat cu cel puțin 15 minute întârziere."
+                },
+                {
+                    "label": "Ecranul ceasului",
+                    "text": "Dacă la pontaj stă un ecran de ceas, QR-ul de pe ecran se reîmprospătează mereu — scanarea lui cu telefonul contează ca scanare nouă. Nu aveți telefonul la îndemână? Apăsați numele pe ecran; la o tură deschisă alegeți pauză sau ieșire, apoi PIN-ul. Două încercări greșite blochează scurt. Fără PIN pontați printr-o scanare pe telefon."
+                },
+                {
+                    "label": "Unde trebuie să merg azi",
+                    "text": "După intrarea în pontaj (Time cu vizite de lucru GPS) vedeți unde trebuie să mergeți azi: doar locații, în ordinea opririlor din runda de inspecție (nu alfabetic), ca o linie de timp (aici, următoarea, am fost, mai târziu). Următoarea oprire arată adresa și Navigați. Dacă GPS-ul este oprit pe telefon, vedeți un avertisment — doar când aveți unde să mergeți azi. Începeți lucrul apare la locație când sunteți la fața locului; Căutați un loc de muncă în apropiere dispare atunci. Opririle de inspecție sunt la Sarcini deschise; Control unitate doar după Începeți lucrul. Sarcinile deschise fără dată rămân la Sarcini deschise."
+                },
+                {
+                    "label": "Documente și anunțuri noi",
+                    "text": "Documentele și anunțurile noi apar temporar direct sub cardul de autentificare, cu un contor albastru. Deschideți tigla ca să vedeți conținutul; apoi revine jos, la locul fix. Dacă apare conținut nou mai târziu, tigla urcă din nou. Ce ați citit vă aparține și se păstrează și pe alt dispozitiv."
+                },
+                {
+                    "label": "Listă de evacuare",
+                    "text": "Dacă un administrator a pornit lista de evacuare în Setări (oprită implicit), vedeți tigla Listă de evacuare (pictogramă de foc) după autentificare. Confirmați mai întâi că consultarea este excepțională și se înregistrează (prenume, nume, dată și oră). Apoi vedeți cine este pontat acum, grupat pe loc, cea mai recentă intrare prima."
+                },
+                {
+                    "label": "Orele mele",
+                    "text": "După autentificare vedeți tigla Orele mele. Listează zilele lunii alese, cumulate: prima intrare, ultima ieșire, timpul lucrat și pauza. Răsfoiți luna anterioară și următoarea. Pauza arată „niciuna” când nu există pauză. Minimul echipei se aplică doar la ture de cel puțin 4 ore. Un triunghi roșu arată motivul: pontat cu mai mult de 15 minute mai devreme, pontat cu cel puțin 15 minute întârziere sau ieșire cu cel puțin 15 minute întârziere față de orarul publicat."
+                },
+                {
+                    "label": "Orarul meu",
+                    "text": "După autentificare vedeți tigla Orarul meu. Arată doar turele și absențele <strong>publicate</strong> pentru <strong>luna</strong> aleasă, ca tabel (zilele goale sunt omise). O insignă înseamnă un orar nou publicat; deschiderea o șterge. Un triunghi roșu lângă ore înseamnă nepontat (de la începutul planificat) sau cel puțin 15 minute întârziere."
+                },
+                {
+                    "label": "Concediu / recuperare",
+                    "text": "După autentificare vedeți tigla Concediu / recuperare. Cereți concediu sau recuperare (de la–până la, notă opțională, max. 31 de zile, nu în trecut). Cererile deschise care se suprapun sunt refuzate. Propriile cereri stau sub formular: puteți retrage o cerere deschisă sau aprobată care nu a început; concediul aprobat reface orarul. Personalul decide la Time → Cereri; respingerea cere un motiv, aprobarea nu. Nu se trimite e-mail. Sus vedeți concediul rămas anul acesta din drept, și anul viitor când există un drept, plus orele suplimentare. Anul acesta până azi: timpul lucrat minus orarul publicat, minus timpul liber deja pe orar sau într-o cerere deschisă. Nu este salariu."
+                }
+            ]
+        },
+        "checkmate.portal.signin": {
+            "title": "Ajutor — Autentificare unică (lucrător)",
+            "actions": [
+                {
+                    "label": "Scop",
+                    "text": "Lucrătorul deschide o dată linkul Clock Point din e-mail sau scanează QR-ul, își alege numele și confirmă cu o pictogramă personală, un PIN sau date biometrice. Telefonul rămâne legat de atunci."
+                },
+                {
+                    "label": "Ecran de start",
+                    "text": "Apoi este de ajuns pictograma WinProx de pe ecranul de start (Android: o apăsare; iPhone: ⋯ → Partajați → Afișați mai multe → derulați → + Adăugați pe ecranul de pornire). Fără magazin de aplicații, fără parolă."
+                },
+                {
+                    "label": "Alt dispozitiv",
+                    "text": "Un alt telefon este refuzat până când un administrator sau un șef de echipă eliberează dispozitivul — un telefon pe lucrător."
+                }
+            ]
+        },
+        "checkmate.portal.day": {
+            "title": "Ajutor — Pontaj și pauze (lucrător)",
+            "actions": [
+                {
+                    "label": "Intrare",
+                    "text": "La începutul zilei de lucru: o apăsare pe Pontaj intrare — prin pictograma de pe ecranul de start, fără scanare QR. Scanarea autocolantului Clock Point sau a ecranului ceasului pontează și ea. Dacă GPS-ul la intrare este pornit, locația este obligatorie. Tura merge până la ieșire."
+                },
+                {
+                    "label": "Pauză",
+                    "text": "Începeți și încheiați pauzele din portal; ele intră în evidența orelor și — cu CIAO activ — merg la ONSS ca OUT/IN."
+                },
+                {
+                    "label": "Ieșire",
+                    "text": "Faceți ieșirea la sfârșitul zilei — se poate și din pictogramă, fără scanare. Ieșirea închide tura și orice vizită deschisă la client. Deconectarea din portal nu este același lucru cu ieșirea din pontaj."
+                }
+            ]
+        },
+        "checkmate.portal.visit": {
+            "title": "Ajutor — Vizită la client (lucrător)",
+            "actions": [
+                {
+                    "label": "Scop",
+                    "text": "O vizită la client înregistrează lucrul la un client. Apăsați Începeți lucrul la client — telefonul verifică prin GPS că sunteți în raza stabilită. În afara razei vizita nu pornește."
+                },
+                {
+                    "label": "Schimbați clientul",
+                    "text": "De la clientul A la clientul B: vizita la A se oprește și cea la B pornește, într-o singură acțiune."
+                },
+                {
+                    "label": "Client nou pe teren",
+                    "text": "Clientul nu este în listă? Creați-l pe teren, cu nume și adresă; pinul GPS vine de pe telefon. Dacă numele seamănă cu un client existent, primiți mai întâi un avertisment discret."
+                },
+                {
+                    "label": "Navigați",
+                    "text": "Butonul Navigați deschide adresa în aplicația de hărți — nu înregistrează o vizită."
+                }
+            ]
+        },
+        "checkmate.portal.hours": {
+            "title": "Ajutor — Orele mele (lucrător)",
+            "actions": [
+                {
+                    "label": "Scop",
+                    "text": "Lucrătorul vede doar propriile ture din luna aleasă: pe zi, prima intrare, ultima ieșire, pauza și timpul lucrat. Fără corecție și fără orele colegilor."
+                }
+            ]
+        }
+    }
+}
