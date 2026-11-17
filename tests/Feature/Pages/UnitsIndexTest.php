@@ -18,6 +18,7 @@ it('verwijst van Units naar Categorieën wanneer er nog geen categorieën zijn',
 
     Livewire::actingAs($user)
         ->test(UnitsIndex::class)
+        ->assertSee('images/icons/units.png', false)
         ->assertSee(__('locations.onboarding.title_categories'), false)
         ->assertSee(__('locations.onboarding.go_to_categories'), false)
         ->assertSee(route('locations.index', ['section' => 'categories']), false)
