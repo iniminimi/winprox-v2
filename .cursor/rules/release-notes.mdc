@@ -21,7 +21,7 @@ Niet: «WorkersIndex toont een teller en linkt naar team.show.»
 
 ## Bundel
 Maximaal **één** nota per kalenderdag (Europe/Brussels): `docs/release-notes/draft/YYYY-MM-DD.md`.
-Lege categorie weglaten. Een gepubliceerde nota niet meer aanvullen; later werk gaat naar de volgende dag.
+Lege categorie weglaten. Werk van vandaag hoort bij de nota van vandaag, ook als die al gepubliceerd is: eerst als concept met dezelfde datum, na productiebevestiging toevoegen aan de gepubliceerde nota en het concept wissen. Nooit een nota met een datum na vandaag publiceren.
 
 ## Publiceer niet
 Concept mag mee in de commit. `git push` is niet live. Een concept staat niet op Hulp → Nieuw.

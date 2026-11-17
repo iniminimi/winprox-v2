@@ -630,8 +630,12 @@ Categorieën, in deze volgorde, lege categorie weglaten: **Nieuw**, **Verbeterd*
 **Opgelost**, **Belangrijk**.
 
 Zolang het bestand `Status: concept` heeft, voeg je nieuwe zichtbare punten van
-die dag eraan toe. Een gepubliceerde nota wordt niet meer aangevuld. Zichtbaar
-werk dat later dezelfde dag klaar is, hoort bij de nota van de **volgende** dag.
+die dag eraan toe. Werk van vandaag hoort bij de nota van **vandaag**, ook als die al
+gepubliceerd is: noteer het dan als concept in `draft/` met **dezelfde datum**. Zodra de
+gebruiker bevestigt dat dat werk op productie staat, voeg je de punten toe aan de
+gepubliceerde nota van die dag (zelfde categorieën, gerelateerde punten in één zin) en
+verwijder je het concept. Wijzigingen niet tot morgen verzwijgen. Een nota met een datum
+**na vandaag** publiceer je nooit.
 
 ### 15.4 Publiceren pas na productie
 `git push` is niet live. De gebruiker deployt zelf (`./pull-deploy.sh`, §10).
