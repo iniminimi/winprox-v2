@@ -3,6 +3,10 @@
 return [
     'helpdesk_email' => env('WINPROX_HELPDESK_EMAIL', 'helpdesk@winprox.app'),
     'new_tenant_notification_email' => env('WINPROX_NEW_TENANT_NOTIFICATION_EMAIL', 'info@winprox.app'),
+    // Mail bij elke gelogde serverfout (alleen productie). Leeg = uit.
+    'error_alert_email' => env('WINPROX_ERROR_ALERT_EMAIL', 'info@winprox.app'),
+    // Throttle-teller buiten de database, zodat een databasefout de mail niet blokkeert.
+    'error_alert_cache_store' => env('WINPROX_ERROR_ALERT_CACHE_STORE', 'file'),
     'municipal_promo_email_from' => [
         'address' => env('WINPROX_MUNICIPAL_PROMO_EMAIL_FROM', 'dominique.schaepdrijver@winprox.app'),
         'name' => env('WINPROX_MUNICIPAL_PROMO_EMAIL_FROM_NAME', 'Dominique Schaepdrijver'),

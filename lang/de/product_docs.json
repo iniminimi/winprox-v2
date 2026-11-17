@@ -464,7 +464,7 @@
                     "Supportzugang ist die Ausnahme und standardmäßig nur lesend.",
                     "Ein Telefon ist mit einem Ausführenden verknüpft. Verwaltung oder Teamleitung kann die Verknüpfung freigeben. Wiederholte Fehlanmeldung bleibt bis zur Freigabe gesperrt.",
                     "Optionale PIN oder Biometrie. Optionale GPS-Prüfung beim Einstempeln.",
-                    "Bei einem unerwarteten Fehler sieht der Benutzer eine verständliche Meldung mit einem kurzen Referenzcode, nie technische Details. Derselbe Code steht im geschützten Serverprotokoll, sodass der Support den Fehler schnell findet."
+                    "Bei einem unerwarteten Fehler sieht der Benutzer eine verständliche Meldung mit einem kurzen Referenzcode, nie technische Details. Derselbe Code steht im geschützten Serverprotokoll, sodass der Support den Fehler schnell findet. WinProx wird sofort benachrichtigt."
                 ]
             },
             {

@@ -256,5 +256,22 @@
         "taken": "The photos were taken on :day in :unit:",
         "photo_alt": "Photo :number",
         "closing": "Kind regards,"
+    },
+    "error_alert": {
+        "subject": "WinProx — server error :reference",
+        "intro": "A server error was logged on :app.",
+        "reference": "Reference",
+        "time": "Time",
+        "tenant": "Tenant ID",
+        "user": "User ID",
+        "request": "Request",
+        "background": "background task (cron/queue)",
+        "component": "Livewire component",
+        "exception": "Error",
+        "location": "Location in the code",
+        "app_location": "First location in the app",
+        "message": "Error message",
+        "repeated": "The same error occurred :count more time(s) since the previous mail.",
+        "log_hint": "The full stack trace is in storage/logs; search for the reference. Delete this mail once the error is fixed (it may contain personal data)."
     }
 }

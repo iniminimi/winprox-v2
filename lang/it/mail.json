@@ -256,5 +256,22 @@
         "taken": "Le foto sono state scattate il :day in :unit:",
         "photo_alt": "Foto :number",
         "closing": "Tanti saluti,"
+    },
+    "error_alert": {
+        "subject": "WinProx — errore del server :reference",
+        "intro": "È stato registrato un errore del server su :app.",
+        "reference": "Riferimento",
+        "time": "Ora",
+        "tenant": "ID tenant",
+        "user": "ID utente",
+        "request": "Richiesta",
+        "background": "attività in background (cron/coda)",
+        "component": "Componente Livewire",
+        "exception": "Errore",
+        "location": "Posizione nel codice",
+        "app_location": "Prima posizione nell'app",
+        "message": "Messaggio di errore",
+        "repeated": "Lo stesso errore si è verificato altre :count volte dalla mail precedente.",
+        "log_hint": "La traccia completa è in storage/logs; cerchi il riferimento. Elimini questa mail quando l'errore è risolto (può contenere dati personali)."
     }
 }

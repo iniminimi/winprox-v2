@@ -71,7 +71,10 @@ querystring) en stack trace. 401/403/404/419/429 tonen een vertaalde uitleg zond
 referentie (die worden niet gelogd). Technische foutteksten (SQL, Engelse meldingen) komen
 nooit op het scherm: QR koppelen (portaal en QR Connect), contactberichten en de CSV-import
 en het terugdraaien ervan tonen een vertaalde melding en loggen de fout. Logs: één bestand
-per dag, max. 14 dagen bewaard; SQL-fouten kunnen persoonsgegevens bevatten. Zie
+per dag, max. 14 dagen bewaard; SQL-fouten kunnen persoonsgegevens bevatten. Op productie
+krijgt WinProx (info@winprox.app, `WINPROX_ERROR_ALERT_EMAIL`) meteen een mail per gelogde
+fout met referentie, foutmelding, bestand:regel, URL, tenant en gebruiker; max. 1 mail per
+fouttype per uur (met het aantal herhalingen) en 10 per uur in totaal. Zie
 `WINPROX_RULES.md` §16.
 
 ---

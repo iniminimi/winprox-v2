@@ -26,6 +26,7 @@ This policy is a draft and requires legal approval.
 | Owner contacts | Name, email, phone | While linked + 24 months | Delete if no legal need remains |
 | Notification logs | Sent/failed recipients, subject | 24 months | Delete or aggregate stats only |
 | Activity logs | Security and audit events | 24 months | Delete or anonymize |
+| Error alert mails | Internal mail to WinProx (info@): error reference, error message (SQL errors may contain personal data), file/line, URL, tenant/user ID. No stack trace. | Until the error is fixed | Delete the mail after the fix |
 | Application error logs | Server error log: error reference, tenant/user ID, method, URL (no query string), stack trace. SQL errors may contain personal data (entered values). No form input, passwords or tokens. | 14 days | Daily log rotation deletes older files (`LOG_DAILY_DAYS=14`) |
 | QR report email holds | Unverified QR drafts (description, photos, email) pending mailbox link | Unverified: typically 60 minutes then delete (incl. photos). Confirmed hold rows: 7 days. Created issues follow Issues/tasks. | Delete |
 | Operational infrastructure backups | Cloud86 daily backups of files/DB | 7 days | Rotate/overwrite by provider |

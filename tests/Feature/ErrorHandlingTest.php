@@ -1,5 +1,7 @@
 <?php
 
+use App\Actions\Errors\SendErrorAlertAction;
+use App\Mail\ErrorAlertMail;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Errors\ErrorReference;
@@ -7,6 +9,7 @@ use App\Support\Tenancy;
 use Illuminate\Log\Events\MessageLogged;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 use Livewire\Livewire;
@@ -37,6 +40,25 @@ beforeEach(function () {
 });
 
 afterEach(fn () => Tenancy::forget());
+
+function inProduction(Closure $callback): mixed
+{
+    app()->detectEnvironment(fn () => 'production');
+
+    try {
+        return $callback();
+    } finally {
+        app()->detectEnvironment(fn () => 'testing');
+    }
+}
+
+function exceptionAtLine(int $line): RuntimeException
+{
+    $e = new RuntimeException(TECHNICAL_DETAIL);
+    (new ReflectionProperty(Exception::class, 'line'))->setValue($e, $line);
+
+    return $e;
+}
 
 function captureErrorLogs(): Collection
 {
@@ -203,4 +225,93 @@ it('hides function arguments in stack traces in production', function () {
         app()->detectEnvironment(fn () => 'testing');
         ini_set('zend.exception_ignore_args', $original);
     }
+});
+
+it('mails WinProx the error message with the same reference as page and log in production', function () {
+    Mail::fake();
+    config(['winprox.error_alert_cache_store' => 'array']);
+    $logs = captureErrorLogs();
+
+    $response = inProduction(fn () => $this->get('/_test-error-500'));
+
+    $response->assertStatus(500)->assertDontSee('SQLSTATE', false);
+    preg_match(ERROR_REFERENCE_PATTERN, $response->getContent(), $match);
+    expect(loggedErrorReference($logs))->toBe($match[0]);
+
+    Mail::assertSent(ErrorAlertMail::class, 1);
+    $mail = Mail::sent(ErrorAlertMail::class)->first();
+
+    expect($mail->hasTo('info@winprox.app'))->toBeTrue()
+        ->and($mail->reference)->toBe($match[0])
+        ->and($mail->exceptionClass)->toBe(RuntimeException::class);
+
+    $mail->assertHasSubject(__('mail.error_alert.subject', ['reference' => $match[0]]));
+    $mail->assertSeeInText($match[0]);
+    $mail->assertSeeInText(TECHNICAL_DETAIL);
+    $mail->assertSeeInText('GET');
+    $mail->assertSeeInText('tests/Feature/ErrorHandlingTest.php');
+});
+
+it('sends at most one alert per error type per hour and reports the repeats', function () {
+    Mail::fake();
+    config(['winprox.error_alert_cache_store' => 'array']);
+    $e = exceptionAtLine(10);
+    $action = app(SendErrorAlertAction::class);
+
+    expect($action->handle($e, ['error_reference' => 'WP-AAAAAA']))->toBeTrue()
+        ->and($action->handle($e, ['error_reference' => 'WP-BBBBBB']))->toBeFalse()
+        ->and($action->handle($e, ['error_reference' => 'WP-CCCCCC']))->toBeFalse();
+
+    $this->travel(61)->minutes();
+
+    expect($action->handle($e, ['error_reference' => 'WP-DDDDDD']))->toBeTrue();
+    Mail::assertSent(ErrorAlertMail::class, 2);
+    expect(Mail::sent(ErrorAlertMail::class)->last()->repeated)->toBe(2);
+});
+
+it('sends at most 10 alerts per hour in total', function () {
+    Mail::fake();
+    config(['winprox.error_alert_cache_store' => 'array']);
+    $action = app(SendErrorAlertAction::class);
+
+    foreach (range(1, SendErrorAlertAction::MAX_PER_HOUR + 3) as $line) {
+        $action->handle(exceptionAtLine($line), ['error_reference' => 'WP-AAAAAA']);
+    }
+
+    Mail::assertSent(ErrorAlertMail::class, SendErrorAlertAction::MAX_PER_HOUR);
+});
+
+it('sends no alert outside production, for unlogged errors or without a recipient', function () {
+    Mail::fake();
+    config(['winprox.error_alert_cache_store' => 'array']);
+
+    $this->get('/_test-error-500')->assertStatus(500);
+    inProduction(fn () => $this->get('/wp-nonexistent-route-for-alert-test'))->assertNotFound();
+
+    config(['winprox.error_alert_email' => '']);
+    inProduction(fn () => $this->get('/_test-error-500'))->assertStatus(500);
+
+    Mail::assertNothingSent();
+});
+
+it('does not throw when the alert mail cannot be sent', function () {
+    config(['winprox.error_alert_cache_store' => 'array']);
+    Mail::shouldReceive('to')->andThrow(new RuntimeException('smtp down'));
+
+    expect(app(SendErrorAlertAction::class)->handle(exceptionAtLine(20), ['error_reference' => 'WP-AAAAAA']))
+        ->toBeFalse();
+});
+
+it('finds the first app location when the error is thrown in vendor code', function () {
+    $e = new RuntimeException('query failed');
+    (new ReflectionProperty(Exception::class, 'file'))->setValue($e, base_path('vendor/laravel/framework/src/Illuminate/Database/Connection.php'));
+    (new ReflectionProperty(Exception::class, 'trace'))->setValue($e, [
+        ['file' => base_path('vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php'), 'line' => 10],
+        ['file' => base_path('app/Livewire/Pages/Team.php'), 'line' => 42],
+    ]);
+
+    expect(ErrorReference::appFrame($e))->toBe('app/Livewire/Pages/Team.php:42');
+
+    $mail = new ErrorAlertMail($e, ['error_reference' => 'WP-AAAAAA']);
+    $mail->assertSeeInText('app/Livewire/Pages/Team.php:42');
 });

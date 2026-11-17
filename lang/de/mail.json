@@ -256,5 +256,22 @@
         "taken": "Die Fotos wurden am :day in :unit aufgenommen:",
         "photo_alt": "Foto :number",
         "closing": "Viele Grüße,"
+    },
+    "error_alert": {
+        "subject": "WinProx — Serverfehler :reference",
+        "intro": "Auf :app wurde ein Serverfehler protokolliert.",
+        "reference": "Referenz",
+        "time": "Zeitpunkt",
+        "tenant": "Tenant-ID",
+        "user": "Benutzer-ID",
+        "request": "Anfrage",
+        "background": "Hintergrundaufgabe (Cron/Queue)",
+        "component": "Livewire-Komponente",
+        "exception": "Fehler",
+        "location": "Stelle im Code",
+        "app_location": "Erste Stelle in der App",
+        "message": "Fehlermeldung",
+        "repeated": "Derselbe Fehler trat seit der letzten Mail noch :count-mal auf.",
+        "log_hint": "Der vollständige Stacktrace steht in storage/logs; suchen Sie nach der Referenz. Löschen Sie diese Mail, sobald der Fehler behoben ist (sie kann personenbezogene Daten enthalten)."
     }
 }

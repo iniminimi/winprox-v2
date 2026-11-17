@@ -256,5 +256,22 @@
         "taken": "Las fotos se tomaron el :day en :unit:",
         "photo_alt": "Foto :number",
         "closing": "Un saludo,"
+    },
+    "error_alert": {
+        "subject": "WinProx — error del servidor :reference",
+        "intro": "Se ha registrado un error del servidor en :app.",
+        "reference": "Referencia",
+        "time": "Hora",
+        "tenant": "ID del tenant",
+        "user": "ID del usuario",
+        "request": "Solicitud",
+        "background": "tarea en segundo plano (cron/cola)",
+        "component": "Componente Livewire",
+        "exception": "Error",
+        "location": "Ubicación en el código",
+        "app_location": "Primera ubicación en la app",
+        "message": "Mensaje de error",
+        "repeated": "El mismo error se ha producido :count vez/veces más desde el correo anterior.",
+        "log_hint": "La traza completa está en storage/logs; busque la referencia. Elimine este correo cuando el error esté resuelto (puede contener datos personales)."
     }
 }

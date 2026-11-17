@@ -5,6 +5,7 @@ namespace App\Support\Errors;
 use App\Support\Tenancy;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Context;
 use Livewire\Livewire;
 use Throwable;
@@ -45,13 +46,13 @@ class ErrorReference
      */
     public static function logContext(Throwable $e): array
     {
-        $reference = self::generate();
+        $reference = self::for($e) ?? self::generate();
 
         Context::addHidden(self::CONTEXT_REFERENCE, $reference);
         Context::addHidden(self::CONTEXT_EXCEPTION, spl_object_id($e));
 
         return array_filter(
-            ['error_reference' => $reference] + self::requestContext(),
+            ['error_reference' => $reference, 'userId' => self::userId()] + self::requestContext(),
             fn ($value) => $value !== null,
         );
     }
@@ -95,6 +96,32 @@ class ErrorReference
             'url' => self::safeUrl($request, $route),
             'livewire_component' => self::livewireComponent($request),
         ];
+    }
+
+    /** Eerste plaats in `app/` (bestand:regel), ook als de fout in vendor-code ontstond. */
+    public static function appFrame(Throwable $e): ?string
+    {
+        $appPath = base_path('app').DIRECTORY_SEPARATOR;
+        $frames = [['file' => $e->getFile(), 'line' => $e->getLine()], ...$e->getTrace()];
+
+        foreach ($frames as $frame) {
+            $file = (string) ($frame['file'] ?? '');
+
+            if (str_starts_with($file, $appPath)) {
+                return 'app/'.str_replace(DIRECTORY_SEPARATOR, '/', substr($file, strlen($appPath))).':'.($frame['line'] ?? 0);
+            }
+        }
+
+        return null;
+    }
+
+    private static function userId(): ?int
+    {
+        try {
+            return Auth::id();
+        } catch (Throwable) {
+            return null;
+        }
     }
 
     private static function tenantId(): ?int

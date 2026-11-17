@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\ApplySupportTenantContext;
+use App\Actions\Errors\SendErrorAlertAction;
 use App\Support\Errors\ErrorReference;
 use App\Support\ResolveAppLocale;
 use App\Http\Middleware\AuthenticateClockDisplay;
@@ -67,6 +68,18 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions) {
         // Elke gelogde fout krijgt een referentie (WP-XXXXXX) + tenant/URL-context.
         $exceptions->context(fn (\Throwable $e) => ErrorReference::logContext($e));
+
+        // Productie: mail naar WinProx (info@) zodra een fout gelogd wordt.
+        $exceptions->report(function (\Throwable $e) {
+            if (! app()->isProduction()) {
+                return;
+            }
+
+            $context = ErrorReference::logContext($e);
+            $send = fn () => app(SendErrorAlertAction::class)->handle($e, $context);
+
+            app()->runningInConsole() ? $send() : app()->terminating($send);
+        });
 
         // Foutpagina's renderen vóór web-middleware (bv. onbekende route → 404).
         $exceptions->render(function (\Throwable $e, Request $request) {

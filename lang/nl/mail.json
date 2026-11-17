@@ -256,5 +256,22 @@
         "taken": "De foto's werden genomen op :day in :unit:",
         "photo_alt": "Foto :number",
         "closing": "Veel groeten,"
+    },
+    "error_alert": {
+        "subject": "WinProx — serverfout :reference",
+        "intro": "Er is een serverfout gelogd op :app.",
+        "reference": "Referentie",
+        "time": "Tijdstip",
+        "tenant": "Tenant-ID",
+        "user": "Gebruiker-ID",
+        "request": "Request",
+        "background": "achtergrondtaak (cron/queue)",
+        "component": "Livewire-component",
+        "exception": "Fout",
+        "location": "Plaats in de code",
+        "app_location": "Eerste plaats in de app",
+        "message": "Foutmelding",
+        "repeated": "Dezelfde fout kwam sinds de vorige mail nog :count keer voor.",
+        "log_hint": "De volledige stack trace staat in storage/logs; zoek op de referentie. Verwijder deze mail zodra de fout is opgelost (ze kan persoonsgegevens bevatten)."
     }
 }

@@ -464,7 +464,7 @@
                     "Support access is exceptional and read-only by default.",
                     "A phone is linked to one worker. An administrator or team leader can release that link. Repeated wrong sign-in stays blocked until release.",
                     "Optional PIN or biometrics. Optional GPS check on clock-in.",
-                    "If something unexpected goes wrong, the user sees a clear message with a short reference code, never technical details. The same code is in the secured server log, so support can find the error quickly."
+                    "If something unexpected goes wrong, the user sees a clear message with a short reference code, never technical details. The same code is in the secured server log, so support can find the error quickly. WinProx is notified immediately."
                 ]
             },
             {

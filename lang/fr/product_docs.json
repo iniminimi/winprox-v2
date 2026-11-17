@@ -464,7 +464,7 @@
                     "L’accès support est exceptionnel et en lecture seule par défaut.",
                     "Un téléphone est lié à un seul exécutant. Un administrateur ou un chef d’équipe peut libérer ce lien. Une connexion erronée répétée reste bloquée jusqu’à la libération.",
                     "PIN ou biométrie en option. Contrôle GPS en option à l’entrée.",
-                    "En cas d'erreur inattendue, l'utilisateur voit un message compréhensible avec un court code de référence, jamais de détails techniques. Le même code figure dans le journal sécurisé du serveur, ce qui permet au support de retrouver l'erreur rapidement."
+                    "En cas d'erreur inattendue, l'utilisateur voit un message compréhensible avec un court code de référence, jamais de détails techniques. Le même code figure dans le journal sécurisé du serveur, ce qui permet au support de retrouver l'erreur rapidement. WinProx est averti immédiatement."
                 ]
             },
             {

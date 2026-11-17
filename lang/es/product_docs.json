@@ -464,7 +464,7 @@
                     "El acceso de soporte es excepcional y de solo lectura por defecto.",
                     "Un teléfono queda vinculado a un operario. Gestión o un jefe de equipo puede liberar ese vínculo. Un acceso erróneo repetido sigue bloqueado hasta la liberación.",
                     "PIN o biometría opcionales. Control GPS opcional al fichar la entrada.",
-                    "Si ocurre un error inesperado, el usuario ve un mensaje comprensible con un código de referencia breve, nunca detalles técnicos. El mismo código figura en el registro protegido del servidor, para que el soporte encuentre el error rápidamente."
+                    "Si ocurre un error inesperado, el usuario ve un mensaje comprensible con un código de referencia breve, nunca detalles técnicos. El mismo código figura en el registro protegido del servidor, para que el soporte encuentre el error rápidamente. WinProx recibe un aviso de inmediato."
                 ]
             },
             {

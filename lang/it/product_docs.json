@@ -464,7 +464,7 @@
                     "L’accesso di supporto è eccezionale e in sola lettura per impostazione predefinita.",
                     "Un telefono è collegato a un solo esecutore. Gestione o un caposquadra può sciogliere quel collegamento. Un accesso errato ripetuto resta bloccato fino allo sblocco.",
                     "PIN o biometria opzionali. Controllo GPS opzionale all’entrata.",
-                    "In caso di errore imprevisto, l'utente vede un messaggio comprensibile con un breve codice di riferimento, mai dettagli tecnici. Lo stesso codice è nel registro protetto del server, così il supporto trova rapidamente l'errore."
+                    "In caso di errore imprevisto, l'utente vede un messaggio comprensibile con un breve codice di riferimento, mai dettagli tecnici. Lo stesso codice è nel registro protetto del server, così il supporto trova rapidamente l'errore. WinProx riceve subito una notifica."
                 ]
             },
             {

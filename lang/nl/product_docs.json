@@ -464,7 +464,7 @@
                     "Supporttoegang is uitzonderlijk en standaard alleen-lezen.",
                     "Een telefoon wordt aan één uitvoerder gekoppeld. Beheer of een teamleader kan die koppeling vrijgeven. Herhaalde foute aanmelding wordt geblokkeerd tot vrijgave.",
                     "Optionele PIN of biometrie. Optionele GPS-controle bij inklokken.",
-                    "Bij een onverwachte fout ziet de gebruiker een begrijpelijke melding met een korte referentiecode, nooit technische details. Dezelfde code staat in het beveiligde serverlog, zodat support de fout snel terugvindt."
+                    "Bij een onverwachte fout ziet de gebruiker een begrijpelijke melding met een korte referentiecode, nooit technische details. Dezelfde code staat in het beveiligde serverlog, zodat support de fout snel terugvindt. WinProx krijgt meteen een melding."
                 ]
             },
             {

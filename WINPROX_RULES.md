@@ -674,4 +674,11 @@ werk dat later dezelfde dag klaar is, hoort bij de nota van de **volgende** dag.
   (`storage/logs`, buiten de webroot). Zie `docs/legal/data-retention-policy.md`.
   In productie zet `AppServiceProvider` `zend.exception_ignore_args` aan (web én CLI), zodat
   stack traces geen argumentwaarden zoals wachtwoorden bevatten.
+- **Foutmail:** op productie mailt `SendErrorAlertAction` elke gelogde fout naar
+  `WINPROX_ERROR_ALERT_EMAIL` (standaard info@winprox.app; leeg = uit): referentie,
+  foutmelding, bestand:regel, URL, tenant, gebruiker. Max. 1 mail per fouttype per uur
+  (met het aantal herhalingen) en 10 per uur in totaal; teller in de `file`-cache, zodat een
+  databasefout de mail niet tegenhoudt. Op het web vertrekt de mail na het antwoord. Een
+  mislukte mail wordt alleen als waarschuwing gelogd (geen nieuwe foutmail). Geen stack trace
+  in de mail; die blijft in het log.
 - Geen externe of betaalde monitoringdienst zonder kostenmelding (`disclose-costs.mdc`).
