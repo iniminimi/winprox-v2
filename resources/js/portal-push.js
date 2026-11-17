@@ -1,39 +1,19 @@
 /**
  * Clock Point: meldingen op de gekoppelde gsm.
- * De knop is er alleen in de geïnstalleerde app, niet in het browsertabblad.
- * De tik is wat de browser eist voor toestemming.
+ * Alleen in de app vanaf het startscherm.
+ * default → knop aanzetten; granted → abonneren en weg; denied → herstelpad.
  */
 
-const DECIDED_KEY = 'wp-push-decided';
+const LEGACY_DECIDED_KEY = 'wp-push-decided';
 
 let synced = false;
-let decided = readDecided();
-
-function readDecided() {
-    try {
-        return window.localStorage.getItem(DECIDED_KEY) === '1';
-    } catch {
-        return false;
-    }
-}
-
-function markDecided() {
-    decided = true;
-    try {
-        window.localStorage.setItem(DECIDED_KEY, '1');
-    } catch {
-        // Private mode: the class is enough for this page.
-    }
-    document.documentElement.classList.add('wp-push-decided');
-    hidePushOffer();
-}
-
-function hidePushOffer() {
-    document.documentElement.classList.remove('wp-push-offer');
-}
 
 function pushRoot() {
     return document.querySelector('[data-wp-push]');
+}
+
+function helpPanel() {
+    return document.querySelector('[data-wp-push-help]');
 }
 
 function standaloneDisplay() {
@@ -55,6 +35,63 @@ function canAsk() {
     return pushSupported() && standaloneDisplay();
 }
 
+function clearLegacyDecided() {
+    try {
+        window.localStorage.removeItem(LEGACY_DECIDED_KEY);
+    } catch {
+        // Private mode.
+    }
+}
+
+function setPushState(state) {
+    const root = document.documentElement;
+    root.classList.toggle('wp-push-offer', state === 'offer');
+    root.classList.toggle('wp-push-asking', state === 'asking');
+    root.classList.toggle('wp-push-blocked', state === 'blocked');
+    root.classList.toggle('wp-push-ready', state === 'ready');
+}
+
+function openBlockedHelp() {
+    const panel = helpPanel();
+    if (!panel) {
+        return;
+    }
+    panel.hidden = false;
+    panel.setAttribute('aria-hidden', 'false');
+}
+
+function closeBlockedHelp() {
+    const panel = helpPanel();
+    if (!panel) {
+        return;
+    }
+    panel.hidden = true;
+    panel.setAttribute('aria-hidden', 'true');
+}
+
+function syncPushUi() {
+    syncStandaloneClass();
+    clearLegacyDecided();
+
+    if (!canAsk()) {
+        setPushState('idle');
+        closeBlockedHelp();
+        return;
+    }
+
+    const permission = Notification.permission;
+    if (permission === 'granted') {
+        setPushState('ready');
+        closeBlockedHelp();
+        return;
+    }
+    if (permission === 'denied') {
+        setPushState('blocked');
+        return;
+    }
+    setPushState('offer');
+}
+
 function urlBase64ToUint8Array(value) {
     const padding = '='.repeat((4 - (value.length % 4)) % 4);
     const base64 = (value + padding).replace(/-/g, '+').replace(/_/g, '/');
@@ -64,19 +101,6 @@ function urlBase64ToUint8Array(value) {
         output[index] = raw.charCodeAt(index);
     }
     return output;
-}
-
-function offerPush() {
-    const root = pushRoot();
-    if (!root || !canAsk() || decided || Notification.permission !== 'default') {
-        if (Notification.permission !== 'default') {
-            markDecided();
-        } else {
-            hidePushOffer();
-        }
-        return;
-    }
-    document.documentElement.classList.add('wp-push-offer');
 }
 
 async function storeSubscription(root, subscription) {
@@ -113,15 +137,12 @@ async function subscribe(root) {
         });
     }
     await storeSubscription(root, subscription);
-    markDecided();
+    setPushState('ready');
+    closeBlockedHelp();
 }
 
 function refreshPush() {
-    syncStandaloneClass();
-    if (readDecided()) {
-        markDecided();
-    }
-    offerPush();
+    syncPushUi();
     const root = pushRoot();
     if (synced || !root || !canAsk() || Notification.permission !== 'granted') {
         return;
@@ -133,26 +154,80 @@ function refreshPush() {
 }
 
 document.addEventListener('click', (event) => {
-    const button = event.target instanceof Element ? event.target.closest('[data-wp-push-enable]') : null;
-    const root = button?.closest('[data-wp-push]');
-    if (!button || !root || !canAsk() || decided) {
+    const target = event.target instanceof Element ? event.target : null;
+    if (!target) {
         return;
     }
-    markDecided();
-    Notification.requestPermission().then((permission) => {
-        if (permission !== 'granted') {
-            return;
+
+    if (target.closest('[data-wp-push-help-close]')) {
+        closeBlockedHelp();
+        return;
+    }
+
+    if (target.closest('[data-wp-push-retry]')) {
+        synced = false;
+        refreshPush();
+        if (Notification.permission === 'denied') {
+            openBlockedHelp();
         }
+        return;
+    }
+
+    if (target.closest('[data-wp-push-blocked]')) {
+        openBlockedHelp();
+        return;
+    }
+
+    const button = target.closest('[data-wp-push-enable]');
+    const root = button?.closest('[data-wp-push]');
+    if (!button || !root || !canAsk()) {
+        return;
+    }
+    if (Notification.permission === 'denied') {
+        setPushState('blocked');
+        openBlockedHelp();
+        return;
+    }
+    if (Notification.permission === 'granted') {
+        setPushState('ready');
         synced = true;
         subscribe(root).catch(() => {
             synced = false;
         });
+        return;
+    }
+
+    setPushState('asking');
+    Notification.requestPermission().then((permission) => {
+        if (permission === 'granted') {
+            setPushState('ready');
+            synced = true;
+            subscribe(root).catch(() => {
+                synced = false;
+            });
+            return;
+        }
+        if (permission === 'denied') {
+            setPushState('blocked');
+            openBlockedHelp();
+            return;
+        }
+        setPushState('offer');
     });
 });
 
-if (decided) {
-    document.documentElement.classList.add('wp-push-decided');
-}
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+        synced = false;
+        refreshPush();
+    }
+});
+window.addEventListener('focus', () => {
+    synced = false;
+    refreshPush();
+});
+
+clearLegacyDecided();
 syncStandaloneClass();
 ['standalone', 'fullscreen', 'minimal-ui'].forEach((mode) => {
     window.matchMedia(`(display-mode: ${mode})`).addEventListener('change', refreshPush);

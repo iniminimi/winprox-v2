@@ -62,6 +62,33 @@
                             <button type="button" class="btn btn--ghost" data-wp-push-enable>
                                 {{ __('time.portal.push.enable') }}
                             </button>
+                            <button type="button" class="btn btn--ghost" data-wp-push-blocked>
+                                {{ __('time.portal.push.blocked') }}
+                            </button>
+                            <div
+                                class="wp-push-help"
+                                data-wp-push-help
+                                hidden
+                                role="dialog"
+                                aria-modal="true"
+                                aria-hidden="true"
+                                aria-labelledby="wp-push-help-title"
+                            >
+                                <div class="wp-card wp-card-pad wp-stack wp-push-help__card">
+                                    <h2 id="wp-push-help-title" class="wp-h2">{{ __('time.portal.push.blocked_title') }}</h2>
+                                    <p>{{ __('time.portal.push.blocked_intro') }}</p>
+                                    <p class="wp-muted">{{ __('time.portal.push.blocked_android') }}</p>
+                                    <p class="wp-muted">{{ __('time.portal.push.blocked_ios') }}</p>
+                                    <div class="wp-cluster">
+                                        <button type="button" class="btn btn--primary" data-wp-push-retry>
+                                            {{ __('time.portal.push.blocked_retry') }}
+                                        </button>
+                                        <button type="button" class="btn btn--ghost" data-wp-push-help-close>
+                                            {{ __('common.button.close') }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     @endif
                 </div>

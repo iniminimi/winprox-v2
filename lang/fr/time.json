@@ -523,7 +523,7 @@
             "help_android": "Android (Chrome) : une touche sur l’icône. Confirmez « Ajouter à l’écran d’accueil ». La connexion fonctionne ensuite dans ce raccourci.",
             "help_ios": "iPhone : Apple n’autorise pas l’installation automatique. Touchez l’icône ; puis sur votre iPhone : trois points (⋯) en bas → Partager → Afficher plus → faites défiler → “+ Sur l’écran d’accueil”.",
             "help_existing": "Vous avez encore une ancienne icône où la connexion ne faisait rien ? Supprimez-la, actualisez cette page et touchez à nouveau l’icône plus.",
-            "help_push": "Mettez d’abord WinProx sur l’écran d’accueil via le logo avec le plus. Ouvrez ensuite cette icône. Le bouton Activer les notifications push n’est que dans cette app. Touchez-le et autorisez les notifications. Le bouton disparaît tout de suite ; inutile de rafraîchir la page. Vous recevez alors une alerte si votre service change, si un congé ou une récupération est approuvé, si un document ou une annonce est prêt, ou si vous êtes encore pointé après la fin de votre service. Sur iPhone, cela ne fonctionne que si vous ouvrez WinProx depuis l’icône de l’écran d’accueil. Seulement sur ce téléphone. L’alerte ne contient pas le texte du document."
+            "help_push": "Mettez d’abord WinProx sur l’écran d’accueil via le logo avec le plus. Ouvrez ensuite cette icône. Le bouton Activer les notifications push n’est que dans cette app. Touchez-le et choisissez Autoriser. Le bouton disparaît tout de suite ; inutile de rafraîchir la page. Si vous choisissez Ne pas autoriser ou si les notifications sont bloquées, vous voyez Notifications désactivées avec les étapes pour les réactiver dans les réglages du téléphone. Touchez ensuite Vérifier à nouveau. Vous recevez une alerte si votre service change, si un congé ou une récupération est approuvé, si un document ou une annonce est prêt, ou si vous êtes encore pointé après la fin de votre service. Sur iPhone, cela ne fonctionne que depuis l’icône de l’écran d’accueil. Seulement sur ce téléphone. L’alerte ne contient pas le texte du document."
         },
         "absence": {
             "tile": "Congé / Récup",
@@ -599,6 +599,12 @@
         },
         "push": {
             "enable": "Activer les notifications push",
+            "blocked": "Notifications désactivées",
+            "blocked_title": "Les notifications sont désactivées sur ce téléphone",
+            "blocked_intro": "WinProx n’a pas l’autorisation d’envoyer des notifications. Activez-les dans les réglages du téléphone, puis touchez Vérifier à nouveau.",
+            "blocked_android": "Android : appuyez longuement sur l’icône WinProx → Infos sur l’appli → Notifications → activez les notifications (pas bloquées). Rouvrez ensuite WinProx via cette icône.",
+            "blocked_ios": "iPhone : Réglages → Notifications → WinProx → autorisez les notifications. Rouvrez WinProx via l’icône de l’écran d’accueil.",
+            "blocked_retry": "Vérifier à nouveau",
             "roster_changed_title": "Votre service a changé",
             "roster_changed_body": "Regardez votre planning pour le :date.",
             "roster_published_title": "Votre planning est prêt",

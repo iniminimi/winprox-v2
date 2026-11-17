@@ -523,7 +523,7 @@
             "help_android": "Android (Chrome): ein Tipp auf das Symbol. „Zum Startbildschirm hinzufügen“ bestätigen. Anmelden funktioniert danach in dieser Verknüpfung.",
             "help_ios": "iPhone: Apple erlaubt keine automatische Installation. Tippen Sie das Symbol; dann auf Ihrem iPhone: drei Punkte (⋯) unten → Teilen → Mehr anzeigen → nach unten scrollen → „+ Zum Home-Bildschirm“.",
             "help_existing": "Haben Sie noch ein altes Symbol, bei dem Anmelden nichts tat? Symbol löschen, diese Seite neu laden und erneut auf das Plus tippen.",
-            "help_push": "Legen Sie WinProx zuerst über das Logo mit dem Plus auf den Startbildschirm. Öffnen Sie danach dieses Symbol. Die Schaltfläche Push-Mitteilungen einschalten gibt es nur in dieser App. Tippen Sie darauf und erlauben Sie Mitteilungen. Die Schaltfläche verschwindet sofort; die Seite muss nicht neu geladen werden. Danach kommt ein Hinweis, wenn sich Ihre Schicht ändert, Urlaub oder Ausgleich genehmigt ist, ein Dokument oder eine Mitteilung bereitliegt, oder Sie nach Schichtende noch eingestempelt sind. Auf dem iPhone funktioniert das nur, wenn Sie WinProx über das Symbol auf dem Startbildschirm öffnen. Nur auf diesem Telefon. Der Hinweis enthält keinen Text aus dem Dokument."
+            "help_push": "Legen Sie WinProx zuerst über das Logo mit dem Plus auf den Startbildschirm. Öffnen Sie danach dieses Symbol. Die Schaltfläche Push-Mitteilungen einschalten gibt es nur in dieser App. Tippen Sie darauf und wählen Sie Erlauben. Die Schaltfläche verschwindet sofort; die Seite muss nicht neu geladen werden. Wählen Sie Nicht erlauben oder sind Mitteilungen blockiert, sehen Sie Mitteilungen sind aus mit Schritten zum Wiedereinschalten in den Telefoneinstellungen. Tippen Sie danach auf Erneut prüfen. Danach kommt ein Hinweis, wenn sich Ihre Schicht ändert, Urlaub oder Ausgleich genehmigt ist, ein Dokument oder eine Mitteilung bereitliegt, oder Sie nach Schichtende noch eingestempelt sind. Auf dem iPhone funktioniert das nur über das Symbol auf dem Startbildschirm. Nur auf diesem Telefon. Der Hinweis enthält keinen Text aus dem Dokument."
         },
         "absence": {
             "tile": "Urlaub / Ausgleich",
@@ -599,6 +599,12 @@
         },
         "push": {
             "enable": "Push-Mitteilungen einschalten",
+            "blocked": "Mitteilungen sind aus",
+            "blocked_title": "Mitteilungen sind auf diesem Telefon aus",
+            "blocked_intro": "WinProx darf keine Mitteilungen senden. Schalten Sie sie in den Telefoneinstellungen ein und tippen Sie danach auf Erneut prüfen.",
+            "blocked_android": "Android: WinProx-Symbol lange drücken → App-Info → Mitteilungen → Mitteilungen einschalten (nicht blockiert). Öffnen Sie WinProx danach wieder über dieses Symbol.",
+            "blocked_ios": "iPhone: Einstellungen → Mitteilungen → WinProx → Mitteilungen erlauben. Öffnen Sie WinProx erneut über das Symbol auf dem Startbildschirm.",
+            "blocked_retry": "Erneut prüfen",
             "roster_changed_title": "Ihre Schicht wurde geändert",
             "roster_changed_body": "Sehen Sie im Dienstplan nach dem :date.",
             "roster_published_title": "Ihr Dienstplan steht bereit",

@@ -1469,12 +1469,15 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   klokscherm de geïnstalleerde app opent (bestaand icoon opnieuw zetten, anders houdt
   Android de oude scope). Op iPhone opent de camera Safari; daar blijft inklokken in die
   browser. **Push naar de gekoppelde gsm** (alleen die gsm, alleen in de app vanaf het startscherm, na een tik op
-  Pushmeldingen aanzetten; de knop verdwijnt meteen na toestemming, zonder
-  de pagina te verversen): dienst
+  Pushmeldingen aanzetten; de knop verdwijnt meteen bij toestemming of bij weigering,
+  zonder de pagina te verversen): dienst
   gepubliceerd, gewijzigd of gecorrigeerd; verlof of recup goedgekeurd; nieuw
   document of nieuwe mededeling; nog ingeklokt 15 minuten na het laatste
   gepubliceerde blok van die inklokdag. Zonder rooster geen uitklokherinnering.
-  Geen sms. De melding bevat geen documenttekst. In de browser verdwijnt het installatie-icoon zodra Android de app als
+  Geen sms. De melding bevat geen documenttekst. Bij geweigerde of geblokkeerde
+  meldingen blijft **Meldingen staan uit** zichtbaar met stappen om ze in de
+  telefooninstellingen weer toe te staan; na herstel abonneert de app opnieuw
+  zonder verversen. In de browser verdwijnt het installatie-icoon zodra Android de app als
   geïnstalleerd meldt. Op een vaste prikklok is er vanuit dat icoon geen inklokknop; Checkmate klokt
   daar wel in en uit. Geen App Store. Zonder GPS-werkbezoeken blijven
   taakacties alleen-lezen (afhandelen via unit-QR). Met Time + GPS-werkbezoeken: teamtaken

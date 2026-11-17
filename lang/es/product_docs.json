@@ -48,7 +48,7 @@
                     "Gestionar sedes, equipos, personas y unidades.",
                     "El registro ONSS/CIAO se puede activar en los ajustes. Las visitas GPS opcionales vinculan una visita a un lugar.",
                     "Álbum de fotos opcional: los operarios hacen fotos en el QR de la unidad. La sede y el nombre de la unidad aparecen. En la propia foto, abajo, figuran la fecha, la hora, el operario, la unidad y el nombre de la organización. Usted las envía desde Álbum de fotos. Los archivos se borran al cabo de una semana. Se activa en Ajustes, bajo Su organización. Por ejemplo: en una guardería, las cuidadoras hacen fotos de los niños y las envían a los padres.",
-                    "El operario pone primero WinProx en la pantalla de inicio (logo con el signo más). El teléfono muestra después el botón Activar avisos push. Desaparece en cuanto se permiten los avisos. Después puede aparecer un aviso si cambia un turno, se aprueba un permiso o una compensación, hay un documento o un aviso listo, o el operario sigue fichado después del turno. En un iPhone solo funciona desde el icono de la pantalla de inicio."
+                    "El ejecutor pone primero WinProx en la pantalla de inicio (logo con más). Luego aparece Activar avisos push. Tras Permitir, ese botón desaparece enseguida. Si se deniega o bloquea, Avisos desactivados sigue visible con pasos en los ajustes del teléfono; tras corregirlo, la app vuelve a comprobar. Después puede aparecer un aviso si cambia un turno, se aprueba un permiso o una compensación, hay un documento o aviso listo, o sigue fichado tras el turno. En un iPhone solo desde el icono de la pantalla de inicio."
                 ],
                 "badge": "incluido",
                 "key": "winprox_time"
@@ -449,7 +449,7 @@
                     "Otro software usa un token de acceso revocable con permisos elegidos, no el acceso ordinario.",
                     "Los operarios entran por Clock Point (nombre e icono personal, o un PIN o biometría). Sin cuenta de correo.",
                     "Quien avisa usa el portal QR público sin cuenta. Con la confirmación de correo opcional, el aviso solo existe tras el enlace.",
-                    "En el teléfono, el operario puede recibir avisos push sobre un turno, un permiso, un documento, un aviso o un olvido de fichar la salida. Cuando WinProx está en la pantalla de inicio, los activa con el botón Activar avisos push; desaparece en cuanto los permite. En un iPhone solo desde el icono de la pantalla de inicio. El aviso no incluye el contenido del documento."
+                    "En el teléfono el ejecutor puede recibir avisos push sobre un turno, un permiso, un documento, un aviso o un olvido de fichar la salida. Con WinProx en la pantalla de inicio lo activa con Activar avisos push; el botón desaparece tras Permitir. Si está bloqueado, Avisos desactivados muestra los pasos de recuperación. En un iPhone solo desde el icono de la pantalla de inicio. El aviso no incluye el contenido del documento."
                 ]
             },
             {

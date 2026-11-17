@@ -78,14 +78,22 @@
             document.documentElement.classList.add('wp-pwa-standalone');
         }
         try {
-            if (window.localStorage.getItem('wp-push-decided') === '1') {
-                document.documentElement.classList.add('wp-push-decided');
-            }
+            window.localStorage.removeItem('wp-push-decided');
         } catch (e) {}
+        if ('Notification' in window) {
+            if (Notification.permission === 'granted') {
+                document.documentElement.classList.add('wp-push-ready');
+            } else if (Notification.permission === 'denied') {
+                document.documentElement.classList.add('wp-push-blocked');
+            }
+        }
     </script>
     <style>
         html:not(.wp-pwa-standalone) [data-wp-push-enable],
-        html.wp-push-decided [data-wp-push-enable] { display: none !important; }
+        html:not(.wp-pwa-standalone) [data-wp-push-blocked],
+        html.wp-push-ready [data-wp-push-enable],
+        html.wp-push-ready [data-wp-push-blocked],
+        html.wp-push-asking [data-wp-push-enable] { display: none !important; }
     </style>
     @livewireStyles
 </head>
