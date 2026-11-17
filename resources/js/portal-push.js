@@ -107,15 +107,12 @@ function refreshPush() {
 document.addEventListener('click', (event) => {
     const button = event.target instanceof Element ? event.target.closest('[data-wp-push-enable]') : null;
     const root = button?.closest('[data-wp-push]');
-    if (!button || !root || !canAsk()) {
+    if (!button || !root || !canAsk() || decided) {
         return;
     }
+    decided = true;
+    hidePushOffer();
     Notification.requestPermission().then((permission) => {
-        if (permission === 'default') {
-            return;
-        }
-        decided = true;
-        hidePushOffer();
         if (permission !== 'granted') {
             return;
         }
