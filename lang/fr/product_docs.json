@@ -48,7 +48,7 @@
                     "Gérer les sites, les équipes, les personnes et les unités.",
                     "L’enregistrement ONSS/CIAO peut être activé dans les paramètres. Les visites GPS facultatives relient une visite à un lieu.",
                     "Album photo facultatif : les exécutants prennent des photos sur le QR de l'unité. Le lieu et le nom de l'unité sont indiqués. Dans la photo même, en bas, figurent la date, l'heure, l'exécutant, l'unité et le nom de l'organisation. Vous les envoyez depuis Album photo. Les fichiers sont effacés après une semaine. Activez-le dans Paramètres, sous Votre organisation. Par exemple : dans une crèche, les puéricultrices prennent des photos des enfants et les envoient aux parents.",
-                    "Le téléphone de l'exécutant peut afficher une alerte quand un service change, un congé ou une récupération est approuvé, un document ou une annonce est prêt, ou l'exécutant est encore pointé après la fin du service. Cela fonctionne quand WinProx est sur l'écran d'accueil et que l'exécutant autorise les notifications."
+                    "Après la connexion, le téléphone de l’exécutant affiche le bouton Activer les notifications push. Il disparaît dès que les notifications sont autorisées. Une alerte peut ensuite apparaître si un service change, un congé ou une récupération est approuvé, un document ou une annonce est prêt, ou si l’exécutant est encore pointé après la fin du service. Sur iPhone, cela ne fonctionne que depuis l’icône de l’écran d’accueil."
                 ],
                 "badge": "inclus",
                 "key": "winprox_time"
@@ -448,7 +448,7 @@
                     "Les autres logiciels utilisent un jeton d’accès révocable avec des droits choisis, pas la connexion ordinaire.",
                     "Les exécutants se connectent via Clock Point (nom et icône personnelle, ou un PIN ou la biométrie). Pas de compte e-mail.",
                     "Les signalants utilisent le portail QR public sans compte. Avec la confirmation e-mail optionnelle, le signalement n’existe qu’après le lien.",
-                    "Sur le téléphone, l'exécutant peut recevoir des alertes sur un service, un congé, un document, une annonce ou un oubli de pointage de sortie. Seulement si WinProx est sur l'écran d'accueil et que les notifications sont autorisées. L'alerte ne contient pas le contenu du document."
+                    "Sur le téléphone, l’exécutant peut recevoir des notifications push sur un service, un congé, un document, une annonce ou un oubli de pointage de sortie. Il les active avec le bouton Activer les notifications push ; il disparaît dès l’autorisation. Sur iPhone, seulement depuis l’icône de l’écran d’accueil. L’alerte ne contient pas le contenu du document."
                 ]
             },
             {

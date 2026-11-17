@@ -916,7 +916,8 @@
                 "Also works as a QR sticker, no screen needed.",
                 "For cleaning and construction: clock in on site with QR + GPS.",
                 "CIAO/RSZ where applicable.",
-                "No smartphone? First name + PIN is enough on the display."
+                "No smartphone? First name + PIN is enough on the display.",
+                "Push alerts on the worker’s own phone after Turn on push notifications. The button disappears as soon as they allow them."
             ],
             "close": "More control over who clocks in, when and where — without badges or biometric data."
         },
@@ -986,6 +987,10 @@
                 {
                     "q": "How does an employee sign in quickly?",
                     "a": "After a first sign-in they can enable fingerprint, face or device code on their own phone. The biometrics stay on the device — the PIN or icon keeps working."
+                },
+                {
+                    "q": "Can the phone send an alert?",
+                    "a": "After sign-in, the worker taps Turn on push notifications and allows notifications. The button disappears at once; no refresh is needed. The phone can then show an alert when a shift changes, leave or time off is approved, a document or announcement is ready, or the worker is still clocked in after the shift. On an iPhone only from the home screen icon. Only on the linked phone."
                 }
             ]
         },

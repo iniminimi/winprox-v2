@@ -521,7 +521,7 @@
             "help_android": "Android (Chrome): un tocco sull’icona. Conferma «Aggiungi a schermata Home». L’accesso funziona poi in quel collegamento.",
             "help_ios": "iPhone: Apple non consente l’installazione automatica. Tocca l’icona; poi sul tuo iPhone: tre puntini (⋯) in basso → Condividi → Mostra altro → scorri verso il basso → “+ Aggiungi a schermata Home”.",
             "help_existing": "Hai ancora un’icona vecchia con cui Accesso non faceva nulla? Eliminala, aggiorna questa pagina e tocca di nuovo l’icona più.",
-            "help_push": "Gli avvisi su turno, ferie, un documento o una comunicazione funzionano in quel collegamento. Poi tocchi Attiva avvisi."
+            "help_push": "Dopo l’accesso, il pulsante Attiva le notifiche push è a destra sotto il logo. Toccalo e consenti gli avvisi. Il pulsante sparisce subito; non serve aggiornare la pagina. Ricevi un avviso se il turno cambia, ferie o recupero sono approvati, un documento o una comunicazione è pronto, o risulti ancora in servizio dopo la fine del turno. Su iPhone funziona solo se apri WinProx dall’icona sulla schermata Home. Solo su questo telefono. L’avviso non contiene il testo del documento."
         },
         "absence": {
             "tile": "Ferie / Recupero",
@@ -596,7 +596,7 @@
             "absent": "Assente"
         },
         "push": {
-            "enable": "Attiva avvisi",
+            "enable": "Attiva le notifiche push",
             "roster_changed_title": "Il suo turno è cambiato",
             "roster_changed_body": "Guardi il turno del :date.",
             "roster_published_title": "Il suo turno è pronto",

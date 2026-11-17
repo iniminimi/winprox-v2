@@ -14,6 +14,15 @@ return [
     'entries' => [
         [
             'patterns' => [
+                'pushmelding', 'pushmeldingen', 'push notification', 'push notifications',
+                'notification push', 'notifications push', 'push-mitteilung', 'push-mitteilungen',
+                'aviso push', 'avisos push', 'notifica push', 'notifiche push',
+            ],
+            'page' => 'portal.time',
+            'prefer' => ['pushmelding', 'push notification', 'notification push', 'push-mitteilung', 'aviso push', 'notifica push'],
+        ],
+        [
+            'patterns' => [
                 'e-mailbevestiging', 'emailbevestiging', 'bevestigingsmail', 'bevestigingslink',
                 'email confirmation', 'require email confirmation', 'confirmation e-mail', 'confirmation email',
                 'e-mail-bestätigung', 'email-bestätigung', 'bestätigungsmail',

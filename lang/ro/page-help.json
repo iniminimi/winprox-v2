@@ -127,6 +127,10 @@
                     "text": "O pictogramă WinProx stă la dreapta Autentificării. Apăsați: pe Android, Chrome o adaugă pe ecranul de start; pe iPhone: ⋯ jos → Partajați → Afișați mai multe → derulați → + Adăugați pe ecranul de pornire. Fără App Store. Pictograma vă autentifică fără QR; la un ceas fix puteți ponta intrarea sau ieșirea doar după ce scanați autocolantul sau ecranul ceasului."
                 },
                 {
+                    "label": "Notificări push",
+                    "text": "După autentificare, butonul Activați notificările push este în dreapta, sub logo. Apăsați și permiteți mesajele. Butonul dispare imediat; nu trebuie să reîmprospătați pagina. Primiți un mesaj dacă tura se schimbă, concediul sau recuperarea este aprobată, există un document sau un anunț, sau ați rămas pontat după tură. Pe iPhone funcționează doar dacă deschideți WinProx din pictograma de pe ecranul de start. Doar pe acest telefon. Mesajul nu conține textul documentului."
+                },
+                {
                     "label": "Deconectare",
                     "text": "După autentificare puteți apăsa Deconectare: portalul cere din nou pictograma, PIN-ul sau datele biometrice. Asta nu este ieșirea din pontaj și nu dezleagă telefonul; doar un administrator sau un șef de echipă eliberează dispozitivul. Ieșirea din pontaj este pe linia de pontaj."
                 },

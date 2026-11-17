@@ -161,7 +161,7 @@
             "help_android": "Android (Chrome): o apăsare pe pictogramă. Confirmați „Adăugați pe ecranul de start”. Autentificarea funcționează apoi din acea scurtătură.",
             "help_ios": "iPhone: Apple nu permite instalarea automată. Apăsați pictograma; apoi pe iPhone: trei puncte (⋯) jos → Partajați → Afișați mai multe → derulați → „+ Adăugați pe ecranul de pornire”.",
             "help_existing": "Mai aveți o pictogramă veche la care Autentificarea nu făcea nimic? Ștergeți pictograma, reîmprospătați pagina și apăsați din nou plusul.",
-            "help_push": "Mesajele despre tură, concediu, un document sau un anunț funcționează în această scurtătură. Apoi apăsați Activați mesajele."
+            "help_push": "După autentificare, butonul Activați notificările push este în dreapta, sub logo. Apăsați și permiteți mesajele. Butonul dispare imediat; nu trebuie să reîmprospătați pagina. Primiți un mesaj dacă tura se schimbă, concediul sau recuperarea este aprobată, există un document sau un anunț, sau ați rămas pontat după tură. Pe iPhone funcționează doar dacă deschideți WinProx din pictograma de pe ecranul de start. Doar pe acest telefon. Mesajul nu conține textul documentului."
         },
         "absence": {
             "tile": "Concediu / recuperare",
@@ -236,7 +236,7 @@
             "absent": "Absent"
         },
         "push": {
-            "enable": "Activați mesajele",
+            "enable": "Activați notificările push",
             "roster_changed_title": "Tura s-a schimbat",
             "roster_changed_body": "Uitați-vă la programul din :date.",
             "roster_published_title": "Programul este gata",

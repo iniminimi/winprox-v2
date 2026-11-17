@@ -48,7 +48,7 @@
                     "Manage locations, teams, people and units.",
                     "RSZ/CIAO presence reporting can be turned on in settings. Optional GPS work visits tie a visit to a location.",
                     "Optional photo album: workers take photos on the unit QR. The location and unit name are shown. Inside the photo, at the bottom, are the date, time, worker, unit and organisation name. You email them from Photo album. The files are deleted after a week. Turn this on in Settings, under Your organisation. For example: in a nursery, carers take photos of the children and send them to the parents.",
-                    "The worker's phone can show an alert when a shift changes, leave or time off is approved, a document or announcement is ready, or the worker is still clocked in after the shift ends. This works when WinProx is on the home screen and the worker allows notifications."
+                    "After sign-in, the worker’s phone shows the button Turn on push notifications. It disappears as soon as notifications are allowed. An alert can then appear when a shift changes, leave or time off is approved, a document or announcement is ready, or the worker is still clocked in after the shift. On an iPhone this only works from the home screen icon."
                 ],
                 "badge": "included",
                 "key": "winprox_time"
@@ -448,7 +448,7 @@
                     "Other software uses a revocable access token with chosen permissions, not the ordinary login.",
                     "Workers sign in via Clock Point (name and personal icon, or a PIN or biometrics). No email account.",
                     "Reporters use the public QR portal without an account. With optional email confirmation, the issue is created only after the link.",
-                    "On the phone, a worker can receive alerts about a shift, leave, a document, an announcement or a missed clock-out. Only when WinProx is on the home screen and notifications are allowed. The alert does not include the document contents."
+                    "On the phone, a worker can receive push alerts about a shift, leave, a document, an announcement or a missed clock-out. They turn this on with the button Turn on push notifications; it disappears as soon as they allow notifications. On an iPhone only from the home screen icon. The alert does not include the document contents."
                 ]
             },
             {

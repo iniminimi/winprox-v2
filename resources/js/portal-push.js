@@ -5,6 +5,11 @@
  */
 
 let synced = false;
+let decided = false;
+
+function hidePushOffer() {
+    document.documentElement.classList.remove('wp-push-offer');
+}
 
 function pushRoot() {
     return document.querySelector('[data-wp-push]');
@@ -43,8 +48,8 @@ function urlBase64ToUint8Array(value) {
 
 function offerPush() {
     const root = pushRoot();
-    if (!root || !canAsk() || Notification.permission !== 'default') {
-        document.documentElement.classList.remove('wp-push-offer');
+    if (!root || !canAsk() || decided || Notification.permission !== 'default') {
+        hidePushOffer();
         return;
     }
     document.documentElement.classList.add('wp-push-offer');
@@ -84,7 +89,7 @@ async function subscribe(root) {
         });
     }
     await storeSubscription(root, subscription);
-    document.documentElement.classList.remove('wp-push-offer');
+    hidePushOffer();
 }
 
 function refreshPush() {
@@ -106,8 +111,12 @@ document.addEventListener('click', (event) => {
         return;
     }
     Notification.requestPermission().then((permission) => {
+        if (permission === 'default') {
+            return;
+        }
+        decided = true;
+        hidePushOffer();
         if (permission !== 'granted') {
-            document.documentElement.classList.remove('wp-push-offer');
             return;
         }
         synced = true;

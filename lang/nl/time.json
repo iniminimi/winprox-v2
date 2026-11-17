@@ -521,7 +521,7 @@
             "help_android": "Android (Chrome): één tik op het icoon. Bevestig “Toevoegen aan startscherm”. Daarna werkt Aanmelden in die snelkoppeling.",
             "help_ios": "iPhone: Apple laat geen automatische installatie toe. Tik het icoon; daarna op je iPhone: drie puntjes (⋯) onderaan → Deel → Toon meer → scroll naar beneden → “+ Zet op beginscherm”.",
             "help_existing": "Heb je nog een oud icoon waarop Aanmelden vastliep? Verwijder dat icoon, ververs deze pagina en tik opnieuw op het plus-icoon.",
-            "help_push": "Meldingen over je dienst, verlof, een document of een mededeling werken in die snelkoppeling. Tik daarna op Meldingen aanzetten."
+            "help_push": "Na het aanmelden staat rechts onder het logo de knop Pushmeldingen aanzetten. Tik erop en sta meldingen toe. De knop verdwijnt meteen; de pagina hoeft niet ververst te worden. Je krijgt dan een melding als je dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of je na het einde van je dienst nog ingeklokt bent. Op een iPhone werkt dat alleen als je WinProx via het startscherm-icoon opent. Alleen op deze gsm. De melding bevat geen tekst uit het document."
         },
         "absence": {
             "tile": "Verlof / Recup",
@@ -596,7 +596,7 @@
             "absent": "Afwezig"
         },
         "push": {
-            "enable": "Meldingen aanzetten",
+            "enable": "Pushmeldingen aanzetten",
             "roster_changed_title": "Je dienst is gewijzigd",
             "roster_changed_body": "Kijk in je rooster naar :date.",
             "roster_published_title": "Je rooster staat klaar",

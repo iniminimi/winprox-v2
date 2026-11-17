@@ -127,6 +127,10 @@
                     "text": "Ikona WinProx jest po prawej stronie Logowania. Proszę nacisnąć: na Androidzie Chrome dodaje ją do ekranu głównego; na iPhonie: ⋯ na dole → Udostępnij → Pokaż więcej → przewiń → + Dodaj do ekranu początkowego. Bez App Store. Ikona loguje bez kodu QR; przy stałym zegarze wejście albo wyjście można zarejestrować dopiero po zeskanowaniu naklejki albo ekranu zegara."
                 },
                 {
+                    "label": "Powiadomienia push",
+                    "text": "Po zalogowaniu przycisk Włącz powiadomienia push jest po prawej, pod logo. Stuknij i zezwól na powiadomienia. Przycisk znika od razu; nie trzeba odświeżać strony. Dostaniesz powiadomienie, gdy zmieni się zmiana, urlop lub odbiór zostanie zatwierdzony, jest dokument lub ogłoszenie, albo nadal jesteś zarejestrowany po zmianie. Na iPhonie działa to tylko po otwarciu WinProx z ikony na ekranie głównym. Tylko na tym telefonie. Powiadomienie nie zawiera treści dokumentu."
+                },
+                {
                     "label": "Wyloguj się",
                     "text": "Po zalogowaniu można nacisnąć Wyloguj się: portal znowu prosi o ikonę, PIN albo biometrię. To nie jest wyjście z ewidencji i nie odłącza telefonu; urządzenie zwalnia tylko administrator albo kierownik zespołu. Wyjście z ewidencji jest w wierszu rejestracji."
                 },

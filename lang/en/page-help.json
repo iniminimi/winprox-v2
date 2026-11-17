@@ -1106,6 +1106,10 @@
                     "text": "A WinProx icon sits to the right of Sign in. Tap: on Android Chrome adds it to the home screen; on iPhone: ⋯ at the bottom → Share → Show more → scroll down → + Add to Home Screen. No App Store. That icon signs you in without a QR; on a fixed punch clock you can only clock in or out after scanning the sticker or the clock screen."
                 },
                 {
+                    "label": "Push notifications",
+                    "text": "After you sign in, the button Turn on push notifications sits on the right under the logo. Tap it and allow notifications. The button disappears at once; you do not need to refresh the page. You then get an alert when your shift changes, leave or time off is approved, a document or announcement is ready, or you are still clocked in after your shift. On an iPhone this only works when you open WinProx from the home screen icon. Only on this phone. The alert does not include text from the document."
+                },
+                {
                     "label": "Sign out",
                     "text": "After sign-in you can Sign out: the portal then asks for your icon, PIN or biometrics again. That is not clock-out and does not unbind the phone; only an admin or team leader releases the device. Clock-out is on your clock-in line."
                 },
@@ -1517,6 +1521,10 @@
                 {
                     "label": "Clock Point on the phone’s home screen",
                     "text": "Every Clock Point portal shows a WinProx icon to the right of <strong>Sign in</strong>. The worker taps it to put the sign-in link on their phone's home screen. From then on they open the portal with one tap, like an app — without installing anything from an app store. On iPhone this works via ⋯ (at the bottom) → <strong>Share</strong> → Show more → + Add to Home Screen."
+                },
+                {
+                    "label": "Push notifications on the phone",
+                    "text": "After sign-in, the worker sees the button Turn on push notifications on the right under the logo. They tap it and allow notifications. The button disappears at once; the page does not need a refresh. Their phone can then show an alert when a shift changes, leave or time off is approved, a document or announcement is ready, or they are still clocked in after the shift. On an iPhone this only works from the home screen icon. Only on the linked phone. The alert does not include text from the document."
                 }
             ]
         },
@@ -2175,6 +2183,10 @@
                 {
                     "label": "Clock Point on the phone’s home screen",
                     "text": "On the Clock Point portal, a WinProx icon sits to the right of <strong>Sign in</strong>. The worker taps it to put the sign-in link on the home screen. From then on the portal opens with one tap. On iPhone: ⋯ → <strong>Share</strong> → Show more → + Add to Home Screen."
+                },
+                {
+                    "label": "Push notifications on the phone",
+                    "text": "After sign-in, the worker sees the button Turn on push notifications on the right under the logo. They tap it and allow notifications. The button disappears at once; the page does not need a refresh. On an iPhone this only works from the home screen icon. Only on the linked phone."
                 }
             ]
         },

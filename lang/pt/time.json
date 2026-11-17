@@ -161,7 +161,7 @@
             "help_android": "Android (Chrome): um toque no ícone. Confirme “Adicionar ao ecrã inicial”. O início de sessão funciona depois a partir desse atalho.",
             "help_ios": "iPhone: a Apple não permite a instalação automática. Prima o ícone; depois, no iPhone: três pontos (⋯) em baixo → Partilhar → Mostrar mais → deslize → “+ Adicionar ao ecrã inicial”.",
             "help_existing": "Ainda tem um ícone antigo em que Iniciar sessão não fazia nada? Elimine o ícone, atualize a página e prima outra vez o mais.",
-            "help_push": "Os avisos sobre o turno, férias, um documento ou um comunicado funcionam nesse atalho. Depois toque em Ativar avisos."
+            "help_push": "Depois de iniciar sessão, o botão Ativar notificações push fica à direita, por baixo do logótipo. Toque e permita os avisos. O botão desaparece logo; não precisa de atualizar a página. Recebe um aviso se o turno mudar, se as férias ou a compensação forem aprovadas, se houver um documento ou comunicado, ou se continuar a registar o ponto depois do turno. No iPhone só funciona se abrir o WinProx pelo ícone no ecrã inicial. Só neste telemóvel. O aviso não inclui o texto do documento."
         },
         "absence": {
             "tile": "Férias / compensação",
@@ -236,7 +236,7 @@
             "absent": "Ausente"
         },
         "push": {
-            "enable": "Ativar avisos",
+            "enable": "Ativar notificações push",
             "roster_changed_title": "O seu turno mudou",
             "roster_changed_body": "Veja o horário de :date.",
             "roster_published_title": "O seu horário está pronto",

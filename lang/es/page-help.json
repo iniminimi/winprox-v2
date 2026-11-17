@@ -1106,6 +1106,10 @@
                     "text": "A la derecha de Inicio de sesión hay un icono WinProx. Tócalo: en Android Chrome lo añade a la pantalla de inicio; en iPhone: ⋯ abajo → Compartir → Mostrar más → desliza → + Añadir a pantalla de inicio. Sin App Store. Ese icono le identifica en adelante sin QR; en un reloj fijo solo ficha tras escanear la pegatina o la pantalla del reloj."
                 },
                 {
+                    "label": "Avisos push",
+                    "text": "Después de iniciar sesión, el botón Activar avisos push está a la derecha, bajo el logo. Púlselo y permita los avisos. El botón desaparece enseguida; no hace falta actualizar la página. Recibirá un aviso si cambia su turno, se aprueba un permiso o una compensación, hay un documento o un aviso listo, o sigue fichado después del turno. En un iPhone solo funciona si abre WinProx desde el icono de la pantalla de inicio. Solo en este teléfono. El aviso no incluye el texto del documento."
+                },
+                {
                     "label": "Cerrar sesión",
                     "text": "Tras identificarte puedes Cerrar sesión: el portal vuelve a pedir tu icono, PIN o biometría. No es una salida y no desvincula el móvil; solo un admin o un jefe de equipo libera el dispositivo. La salida está en tu línea de fichaje."
                 },
@@ -1517,6 +1521,10 @@
                 {
                     "label": "Clock Point en la pantalla de inicio del teléfono",
                     "text": "Cada portal Clock Point muestra un icono WinProx a la derecha de <strong>Inicio de sesión</strong>. El operario lo toca para poner el enlace de acceso en la pantalla de inicio de su teléfono. Así abre el portal con un solo toque, como una app — sin instalar nada de una tienda. En iPhone mediante ⋯ (abajo) → <strong>Compartir</strong> → Mostrar más → + Añadir a pantalla de inicio."
+                },
+                {
+                    "label": "Avisos push en el teléfono",
+                    "text": "Tras iniciar sesión, el operario ve a la derecha, bajo el logo, el botón Activar avisos push. Lo pulsa y permite los avisos. El botón desaparece enseguida; no hace falta actualizar la página. Su teléfono puede mostrar un aviso si cambia un turno, se aprueba un permiso o una compensación, hay un documento o un aviso listo, o sigue fichado después del turno. En un iPhone solo funciona desde el icono de la pantalla de inicio. Solo en el teléfono vinculado. El aviso no incluye el texto del documento."
                 }
             ]
         },
@@ -2175,6 +2183,10 @@
                 {
                     "label": "Enlace en la pantalla de inicio del móvil",
                     "text": "En el portal Clock Point, a la derecha de <strong>Iniciar sesión</strong> hay un icono WinProx. El operario lo pulsa para poner el enlace en la pantalla de inicio. Después abre el portal con un toque. En iPhone: ⋯ → <strong>Compartir</strong> → Mostrar más → + Añadir a pantalla de inicio."
+                },
+                {
+                    "label": "Avisos push en el teléfono",
+                    "text": "Tras iniciar sesión, el operario ve a la derecha, bajo el logo, el botón Activar avisos push. Lo pulsa y permite los avisos. El botón desaparece enseguida; no hace falta actualizar la página. En un iPhone solo funciona desde el icono de la pantalla de inicio. Solo en el teléfono vinculado."
                 }
             ]
         },

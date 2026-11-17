@@ -127,6 +127,10 @@
                     "text": "Um ícone WinProx fica à direita de Iniciar sessão. Prima: no Android, o Chrome adiciona-o ao ecrã inicial; no iPhone: ⋯ em baixo → Partilhar → Mostrar mais → deslize → + Adicionar ao ecrã inicial. Sem App Store. O ícone inicia a sessão sem QR; num relógio fixo só pode registar a entrada ou a saída depois de digitalizar o autocolante ou o ecrã do relógio."
                 },
                 {
+                    "label": "Notificações push",
+                    "text": "Depois de iniciar sessão, o botão Ativar notificações push fica à direita, por baixo do logótipo. Toque e permita os avisos. O botão desaparece logo; não precisa de atualizar a página. Recebe um aviso se o turno mudar, se as férias ou a compensação forem aprovadas, se houver um documento ou comunicado, ou se continuar a registar o ponto depois do turno. No iPhone só funciona se abrir o WinProx pelo ícone no ecrã inicial. Só neste telemóvel. O aviso não inclui o texto do documento."
+                },
+                {
                     "label": "Terminar sessão",
                     "text": "Depois de iniciar sessão pode premir Terminar sessão: o portal volta a pedir o ícone, o PIN ou os dados biométricos. Isso não é a saída do ponto e não desliga o telemóvel; só um administrador ou um chefe de equipa liberta o dispositivo. A saída do ponto está na linha do ponto."
                 },

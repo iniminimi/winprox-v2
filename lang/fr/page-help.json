@@ -1114,6 +1114,10 @@
                     "text": "Une icône WinProx se trouve à droite de Connexion. Touchez : sur Android, Chrome l’ajoute à l’écran d’accueil ; sur iPhone : ⋯ en bas → Partager → Afficher plus → faites défiler → + Sur l’écran d’accueil. Pas d’App Store. Cette icône vous identifie désormais sans QR ; sur une pointeuse fixe, vous ne pointez qu'après un scan de l'autocollant ou de l'écran de pointage."
                 },
                 {
+                    "label": "Notifications push",
+                    "text": "Après la connexion, le bouton Activer les notifications push se trouve à droite sous le logo. Touchez-le et autorisez les notifications. Le bouton disparaît tout de suite ; inutile de rafraîchir la page. Vous recevez alors une alerte si votre service change, si un congé ou une récupération est approuvé, si un document ou une annonce est prêt, ou si vous êtes encore pointé après la fin de votre service. Sur iPhone, cela ne fonctionne que si vous ouvrez WinProx depuis l’icône de l’écran d’accueil. Seulement sur ce téléphone. L’alerte ne contient pas le texte du document."
+                },
+                {
                     "label": "Se déconnecter",
                     "text": "Après connexion vous pouvez Se déconnecter : le portail redemande alors votre icône, le PIN ou la biométrie. Ce n’est pas une sortie et cela ne détache pas le téléphone ; seul un admin ou un chef d’équipe libère l’appareil. La sortie se trouve sur votre ligne de pointage."
                 },
@@ -1525,6 +1529,10 @@
                 {
                     "label": "Clock Point sur l’écran d’accueil du téléphone",
                     "text": "Chaque portail Clock Point affiche une icône WinProx à droite de <strong>Connexion</strong>. L'exécutant la touche pour placer le lien de connexion sur l'écran d'accueil de son téléphone. Il ouvre ensuite le portail d'une seule touche, comme une application — sans rien installer depuis un store. Sur iPhone : ⋯ (en bas) → <strong>Partager</strong> → Afficher plus → + Sur l’écran d’accueil."
+                },
+                {
+                    "label": "Notifications push sur le téléphone",
+                    "text": "Après la connexion, l’exécutant voit à droite sous le logo le bouton Activer les notifications push. Il le touche et autorise les notifications. Le bouton disparaît tout de suite ; inutile de rafraîchir la page. Son téléphone peut ensuite afficher une alerte si un service change, un congé ou une récupération est approuvé, un document ou une annonce est prêt, ou s’il est encore pointé après la fin du service. Sur iPhone, cela ne fonctionne que depuis l’icône de l’écran d’accueil. Seulement sur le téléphone lié. L’alerte ne contient pas le texte du document."
                 }
             ]
         },
@@ -2183,6 +2191,10 @@
                 {
                     "label": "Lien sur l’écran d’accueil du téléphone",
                     "text": "Sur le portail Clock Point, une icône WinProx se trouve à droite de <strong>Connexion</strong>. L’exécutant appuie dessus pour mettre le lien sur l’écran d’accueil. Ensuite le portail s’ouvre d’un tap. Sur iPhone : ⋯ → <strong>Partager</strong> → Afficher plus → + Sur l’écran d’accueil."
+                },
+                {
+                    "label": "Notifications push sur le téléphone",
+                    "text": "Après la connexion, l’exécutant voit à droite sous le logo le bouton Activer les notifications push. Il le touche et autorise les notifications. Le bouton disparaît tout de suite ; inutile de rafraîchir la page. Sur iPhone, cela ne fonctionne que depuis l’icône de l’écran d’accueil. Seulement sur le téléphone lié."
                 }
             ]
         },

@@ -521,7 +521,7 @@
             "help_android": "Android (Chrome): ein Tipp auf das Symbol. „Zum Startbildschirm hinzufügen“ bestätigen. Anmelden funktioniert danach in dieser Verknüpfung.",
             "help_ios": "iPhone: Apple erlaubt keine automatische Installation. Tippen Sie das Symbol; dann auf Ihrem iPhone: drei Punkte (⋯) unten → Teilen → Mehr anzeigen → nach unten scrollen → „+ Zum Home-Bildschirm“.",
             "help_existing": "Haben Sie noch ein altes Symbol, bei dem Anmelden nichts tat? Symbol löschen, diese Seite neu laden und erneut auf das Plus tippen.",
-            "help_push": "Hinweise zu Ihrer Schicht, zu Urlaub, einem Dokument oder einer Mitteilung funktionieren in dieser Verknüpfung. Tippen Sie danach auf Mitteilungen einschalten."
+            "help_push": "Nach der Anmeldung steht rechts unter dem Logo die Schaltfläche Push-Mitteilungen einschalten. Tippen Sie darauf und erlauben Sie Mitteilungen. Die Schaltfläche verschwindet sofort; die Seite muss nicht neu geladen werden. Danach kommt ein Hinweis, wenn sich Ihre Schicht ändert, Urlaub oder Ausgleich genehmigt ist, ein Dokument oder eine Mitteilung bereitliegt, oder Sie nach Schichtende noch eingestempelt sind. Auf dem iPhone funktioniert das nur, wenn Sie WinProx über das Symbol auf dem Startbildschirm öffnen. Nur auf diesem Telefon. Der Hinweis enthält keinen Text aus dem Dokument."
         },
         "absence": {
             "tile": "Urlaub / Ausgleich",
@@ -596,7 +596,7 @@
             "absent": "Abwesend"
         },
         "push": {
-            "enable": "Mitteilungen einschalten",
+            "enable": "Push-Mitteilungen einschalten",
             "roster_changed_title": "Ihre Schicht wurde geändert",
             "roster_changed_body": "Sehen Sie im Dienstplan nach dem :date.",
             "roster_published_title": "Ihr Dienstplan steht bereit",

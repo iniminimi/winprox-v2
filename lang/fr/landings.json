@@ -916,7 +916,8 @@
                 "Possible aussi en autocollant QR, sans écran.",
                 "Pour le nettoyage et la construction : pointage sur le chantier via QR + GPS.",
                 "CIAO/RSZ le cas échéant.",
-                "Pas de smartphone ? Prénom + code PIN suffisent sur l'écran."
+                "Pas de smartphone ? Prénom + code PIN suffisent sur l'écran.",
+                "Notifications push sur le téléphone du salarié après Activer les notifications push. Le bouton disparaît dès l’autorisation."
             ],
             "close": "Plus de contrôle sur qui pointe, quand et où — sans badges ni données biométriques."
         },
@@ -986,6 +987,10 @@
                 {
                     "q": "Comment un employé se connecte-t-il rapidement ?",
                     "a": "Après une première connexion, il peut activer l'empreinte, le visage ou le code de l'appareil sur son propre téléphone. La biométrie reste sur l'appareil — le PIN ou l'icône reste utilisable."
+                },
+                {
+                    "q": "Le téléphone peut-il envoyer une alerte ?",
+                    "a": "Après la connexion, le salarié touche Activer les notifications push et autorise les notifications. Le bouton disparaît tout de suite ; inutile de rafraîchir. Le téléphone peut ensuite afficher une alerte si un service change, un congé ou une récupération est approuvé, un document ou une annonce est prêt, ou s’il est encore pointé après le service. Sur iPhone, seulement depuis l’icône de l’écran d’accueil. Seulement sur le téléphone lié."
                 }
             ]
         },

@@ -1106,6 +1106,10 @@
                     "text": "A destra di Accesso c’è un’icona WinProx. Tocca: su Android Chrome la mette sulla schermata Home; su iPhone: ⋯ in basso → Condividi → Mostra altro → scorri → + Aggiungi a schermata Home. Nessun App Store. Con quell'icona accedi d'ora in poi senza QR; su una timbratrice fissa timbri solo dopo una scansione dell'adesivo o dello schermo orologio."
                 },
                 {
+                    "label": "Notifiche push",
+                    "text": "Dopo l’accesso, il pulsante Attiva le notifiche push è a destra sotto il logo. Toccalo e consenti gli avvisi. Il pulsante sparisce subito; non serve aggiornare la pagina. Ricevi un avviso se il turno cambia, ferie o recupero sono approvati, un documento o una comunicazione è pronto, o risulti ancora in servizio dopo la fine del turno. Su iPhone funziona solo se apri WinProx dall’icona sulla schermata Home. Solo su questo telefono. L’avviso non contiene il testo del documento."
+                },
+                {
                     "label": "Esci",
                     "text": "Dopo l’accesso puoi Esci: il portale chiede di nuovo l’icona, il PIN o la biometria. Non è un’uscita e non scollega il telefono; solo un admin o un caposquadra sblocca il dispositivo. L’uscita è sulla riga di timbratura."
                 },
@@ -1517,6 +1521,10 @@
                 {
                     "label": "Clock Point sulla schermata iniziale del telefono",
                     "text": "Ogni portale Clock Point mostra un'icona WinProx a destra di <strong>Accesso</strong>. L'esecutore la tocca per mettere il link di accesso sulla schermata iniziale del telefono. Così apre il portale con un tocco, come un'app — senza installare nulla da uno store. Su iPhone tramite ⋯ (in basso) → <strong>Condividi</strong> → Mostra altro → + Aggiungi a Home."
+                },
+                {
+                    "label": "Notifiche push sul telefono",
+                    "text": "Dopo l’accesso, l’esecutore vede a destra sotto il logo il pulsante Attiva le notifiche push. Lo tocca e consente gli avvisi. Il pulsante sparisce subito; non serve aggiornare la pagina. Il telefono può poi mostrare un avviso se un turno cambia, ferie o recupero sono approvati, un documento o una comunicazione è pronto, o risulta ancora in servizio dopo la fine del turno. Su iPhone funziona solo dall’icona sulla schermata Home. Solo sul telefono collegato. L’avviso non contiene il testo del documento."
                 }
             ]
         },
@@ -2175,6 +2183,10 @@
                 {
                     "label": "Link sulla schermata Home del telefono",
                     "text": "Sul portale Clock Point, a destra di <strong>Accedi</strong> c’è un’icona WinProx. L’operatore la tocca per mettere il link sulla schermata Home. Poi apre il portale con un tocco. Su iPhone: ⋯ → <strong>Condividi</strong> → Mostra altro → + Aggiungi a Home."
+                },
+                {
+                    "label": "Notifiche push sul telefono",
+                    "text": "Dopo l’accesso, l’esecutore vede a destra sotto il logo il pulsante Attiva le notifiche push. Lo tocca e consente gli avvisi. Il pulsante sparisce subito; non serve aggiornare la pagina. Su iPhone funziona solo dall’icona sulla schermata Home. Solo sul telefono collegato."
                 }
             ]
         },

@@ -1469,7 +1469,8 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   klokscherm de geïnstalleerde app opent (bestaand icoon opnieuw zetten, anders houdt
   Android de oude scope). Op iPhone opent de camera Safari; daar blijft inklokken in die
   browser. **Push naar de gekoppelde gsm** (alleen die gsm, na een tik op
-  Meldingen aanzetten; op iPhone alleen vanuit het startscherm-icoon): dienst
+  Pushmeldingen aanzetten; de knop verdwijnt meteen na toestemming, zonder
+  de pagina te verversen; op iPhone alleen vanuit het startscherm-icoon): dienst
   gepubliceerd, gewijzigd of gecorrigeerd; verlof of recup goedgekeurd; nieuw
   document of nieuwe mededeling; nog ingeklokt 15 minuten na het laatste
   gepubliceerde blok van die inklokdag. Zonder rooster geen uitklokherinnering.

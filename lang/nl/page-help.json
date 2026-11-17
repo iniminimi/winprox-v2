@@ -1106,6 +1106,10 @@
                     "text": "Rechts van Aanmelden staat een WinProx-icoon. Tik: op Android zet Chrome het meteen op het startscherm; op iPhone: ⋯ onderaan → Deel → Toon meer → scroll naar beneden → + Zet op beginscherm. Geen App Store. Via dat icoon meld je je voortaan aan zonder QR; op een vaste prikklok klok je pas in of uit na een scan van de sticker of het klokscherm."
                 },
                 {
+                    "label": "Pushmeldingen",
+                    "text": "Na het aanmelden staat rechts onder het logo de knop Pushmeldingen aanzetten. Tik erop en sta meldingen toe. De knop verdwijnt meteen; de pagina hoeft niet ververst te worden. Je krijgt dan een melding als je dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of je na het einde van je dienst nog ingeklokt bent. Op een iPhone werkt dat alleen als je WinProx via het startscherm-icoon opent. Alleen op deze gsm. De melding bevat geen tekst uit het document."
+                },
+                {
                     "label": "Afmelden",
                     "text": "Na aanmelden kun je Afmelden: het portaal vraagt daarna opnieuw je icoon, PIN of biometrie. Dat is geen uitklokken en koppelt de gsm niet los; alleen beheer of een teamleader geeft het toestel vrij. Uitklokken staat bij je inklokregel."
                 },
@@ -1517,6 +1521,10 @@
                 {
                     "label": "Link op het startscherm van de gsm",
                     "text": "Op elk Clock Point-portaal staat rechts van <strong>Aanmelden</strong> een WinProx-icoon. De uitvoerder tikt erop om de aanmeldlink op het startscherm van zijn gsm te zetten. Zo opent hij het portaal voortaan met één tik, net als een app — zonder iets uit een app store te installeren. Op iPhone gaat dat via ⋯ (onderaan) → <strong>Deel</strong> → Toon meer → + Zet op beginscherm."
+                },
+                {
+                    "label": "Pushmeldingen op de gsm",
+                    "text": "Na het aanmelden ziet de uitvoerder rechts onder het logo de knop Pushmeldingen aanzetten. Hij tikt erop en staat meldingen toe. De knop verdwijnt meteen; de pagina hoeft niet ververst te worden. Daarna kan zijn gsm een melding tonen als een dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of hij na het einde van de dienst nog ingeklokt is. Op een iPhone werkt dat alleen vanuit het startscherm-icoon. Alleen op de gekoppelde gsm. De melding bevat geen tekst uit het document."
                 }
             ]
         },
@@ -2175,6 +2183,10 @@
                 {
                     "label": "Link op het startscherm van de gsm",
                     "text": "Op het Clock Point-portaal staat rechts van <strong>Aanmelden</strong> een WinProx-icoon. De uitvoerder tikt erop om de aanmeldlink op het startscherm te zetten. Zo opent hij het portaal voortaan met één tik. Op iPhone: ⋯ → <strong>Deel</strong> → Toon meer → + Zet op beginscherm."
+                },
+                {
+                    "label": "Pushmeldingen op de gsm",
+                    "text": "Na het aanmelden ziet de uitvoerder rechts onder het logo de knop Pushmeldingen aanzetten. Hij tikt erop en staat meldingen toe. De knop verdwijnt meteen; de pagina hoeft niet ververst te worden. Op een iPhone werkt dat alleen vanuit het startscherm-icoon. Alleen op de gekoppelde gsm."
                 }
             ]
         },

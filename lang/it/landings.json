@@ -916,7 +916,8 @@
                 "Possibile anche come adesivo QR, senza schermo.",
                 "Per pulizie e costruzioni: timbratura sul posto di lavoro con QR + GPS.",
                 "CIAO/RSZ dove applicabile.",
-                "Niente smartphone? Nome + PIN bastano sullo schermo."
+                "Niente smartphone? Nome + PIN bastano sullo schermo.",
+                "Notifiche push sul telefono del lavoratore dopo Attiva le notifiche push. Il pulsante sparisce appena vengono consentite."
             ],
             "close": "Più controllo su chi timbra, quando e dove — senza badge né dati biometrici."
         },
@@ -986,6 +987,10 @@
                 {
                     "q": "Come accede rapidamente un dipendente?",
                     "a": "Dopo il primo accesso può attivare impronta, volto o codice del dispositivo sul proprio telefono. La biometria resta sul dispositivo — PIN o icona restano attivi."
+                },
+                {
+                    "q": "Il telefono può inviare un avviso?",
+                    "a": "Dopo l’accesso, il lavoratore tocca Attiva le notifiche push e consente gli avvisi. Il pulsante sparisce subito; non serve aggiornare. Il telefono può mostrare un avviso se un turno cambia, ferie o recupero sono approvati, un documento o una comunicazione è pronto, o risulta ancora in servizio dopo il turno. Su iPhone solo dall’icona sulla schermata Home. Solo sul telefono collegato."
                 }
             ]
         },

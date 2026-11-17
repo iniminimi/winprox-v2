@@ -48,7 +48,7 @@
                     "Locaties, teams, medewerkers en units beheren.",
                     "De RSZ/CIAO-registratie kan via de instellingen worden geactiveerd. Optionele GPS-werkbezoeken koppelen een bezoek aan een locatie.",
                     "Optioneel fotoalbum: uitvoerders maken foto's op de unit-QR. Locatie en unitnaam staan erbij. In de foto zelf staat onderaan datum, tijd, uitvoerder, unit en organisatienaam. U mailt ze vanuit Fotoalbum. De bestanden worden na een week gewist. U zet dit aan bij Instellingen, onder Je organisatie. Gebruik bijvoorbeeld: in een crèche nemen verzorgsters foto's van kindjes en sturen die door naar de ouders.",
-                    "Op de gsm van de uitvoerder kan een melding verschijnen als een dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of de uitvoerder na het einde van de dienst nog ingeklokt is. Dat werkt wanneer WinProx op het startscherm staat en de uitvoerder meldingen toestaat."
+                    "Op de gsm van de uitvoerder staat na het aanmelden de knop Pushmeldingen aanzetten. Na toestemming verdwijnt die knop meteen. Daarna kan een melding verschijnen als een dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of de uitvoerder na het einde van de dienst nog ingeklokt is. Op een iPhone werkt dat alleen vanuit het startscherm-icoon."
                 ],
                 "badge": "inbegrepen",
                 "key": "winprox_time"
@@ -448,7 +448,7 @@
                     "Andere software gebruikt een intrekbaar toegangstoken met gekozen rechten, niet de gewone login.",
                     "Uitvoerders melden zich aan via Clock Point (naam en persoonlijk icoon, of een PIN of biometrie). Geen e-mailaccount.",
                     "Melders gebruiken het publieke QR-portaal zonder account. Bij optionele e-mailbevestiging ontstaat de melding pas na de link.",
-                    "Op de gsm kan de uitvoerder meldingen ontvangen over een dienst, verlof, een document, een mededeling of een vergeten uitklok. Alleen als WinProx op het startscherm staat en meldingen zijn toegestaan. De melding bevat geen inhoud van het document."
+                    "Op de gsm kan de uitvoerder pushmeldingen ontvangen over een dienst, verlof, een document, een mededeling of een vergeten uitklok. Hij zet dat aan met de knop Pushmeldingen aanzetten; die verdwijnt meteen na toestemming. Op een iPhone alleen vanuit het startscherm-icoon. De melding bevat geen inhoud van het document."
                 ]
             },
             {

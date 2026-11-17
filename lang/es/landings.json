@@ -916,7 +916,8 @@
                 "También posible como pegatina QR, sin pantalla.",
                 "Para limpieza y construcción: fichaje en el lugar de trabajo con QR + GPS.",
                 "CIAO/RSZ cuando corresponda.",
-                "¿Sin smartphone? Nombre + PIN bastan en la pantalla."
+                "¿Sin smartphone? Nombre + PIN bastan en la pantalla.",
+                "Avisos push en el propio teléfono tras Activar avisos push. El botón desaparece en cuanto se permiten."
             ],
             "close": "Más control sobre quién ficha, cuándo y dónde — sin tarjetas ni datos biométricos."
         },
@@ -986,6 +987,10 @@
                 {
                     "q": "¿Cómo inicia sesión un empleado rápidamente?",
                     "a": "Tras el primer inicio de sesión puede activar huella, cara o código del dispositivo en su propio teléfono. La biometría no sale del dispositivo — el PIN o el icono sigue funcionando."
+                },
+                {
+                    "q": "¿Puede el teléfono enviar un aviso?",
+                    "a": "Tras iniciar sesión, el trabajador pulsa Activar avisos push y permite los avisos. El botón desaparece enseguida; no hace falta actualizar. El teléfono puede mostrar un aviso si cambia un turno, se aprueba un permiso o una compensación, hay un documento o un aviso listo, o sigue fichado después del turno. En un iPhone solo desde el icono de la pantalla de inicio. Solo en el teléfono vinculado."
                 }
             ]
         },

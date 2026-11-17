@@ -1106,6 +1106,10 @@
                     "text": "Rechts von Anmelden steht ein WinProx-Symbol. Tippen: unter Android legt Chrome es auf den Startbildschirm; am iPhone: ⋯ unten → Teilen → Mehr anzeigen → nach unten scrollen → + Zum Home-Bildschirm. Kein App Store. Über dieses Symbol melden Sie sich künftig ohne QR an; auf einer festen Stechuhr stempeln Sie erst nach einem Scan des Aufklebers oder des Uhrenbildschirms ein oder aus."
                 },
                 {
+                    "label": "Push-Mitteilungen",
+                    "text": "Nach der Anmeldung steht rechts unter dem Logo die Schaltfläche Push-Mitteilungen einschalten. Tippen Sie darauf und erlauben Sie Mitteilungen. Die Schaltfläche verschwindet sofort; die Seite muss nicht neu geladen werden. Danach kommt ein Hinweis, wenn sich Ihre Schicht ändert, Urlaub oder Ausgleich genehmigt ist, ein Dokument oder eine Mitteilung bereitliegt, oder Sie nach Schichtende noch eingestempelt sind. Auf dem iPhone funktioniert das nur, wenn Sie WinProx über das Symbol auf dem Startbildschirm öffnen. Nur auf diesem Telefon. Der Hinweis enthält keinen Text aus dem Dokument."
+                },
+                {
                     "label": "Abmelden",
                     "text": "Nach der Anmeldung können Sie Abmelden: das Portal fragt danach erneut nach Ihrem Symbol, Ihrer PIN oder Biometrie. Das ist kein Ausstempeln und trennt das Handy nicht; nur Verwaltung oder Teamleiter geben das Gerät frei. Ausstempeln steht bei Ihrer Einstempelzeile."
                 },
@@ -1517,6 +1521,10 @@
                 {
                     "label": "Clock Point auf dem Startbildschirm des Telefons",
                     "text": "Jedes Clock-Point-Portal zeigt rechts von <strong>Anmelden</strong> ein WinProx-Symbol. Der Ausführende tippt darauf, um den Anmeldelink auf den Startbildschirm seines Telefons zu legen. So öffnet er das Portal fortan mit einem Tipp, wie eine App — ohne etwas aus einem App Store zu installieren. Auf dem iPhone über ⋯ (unten) → <strong>Teilen</strong> → Mehr anzeigen → + Zum Home-Bildschirm."
+                },
+                {
+                    "label": "Push-Mitteilungen auf dem Telefon",
+                    "text": "Nach der Anmeldung sieht der Ausführende rechts unter dem Logo die Schaltfläche Push-Mitteilungen einschalten. Er tippt darauf und erlaubt Mitteilungen. Die Schaltfläche verschwindet sofort; die Seite muss nicht neu geladen werden. Danach kann sein Telefon einen Hinweis zeigen, wenn sich eine Schicht ändert, Urlaub oder Ausgleich genehmigt ist, ein Dokument oder eine Mitteilung bereitliegt, oder er nach Schichtende noch eingestempelt ist. Auf dem iPhone funktioniert das nur über das Symbol auf dem Startbildschirm. Nur auf dem verknüpften Telefon. Der Hinweis enthält keinen Text aus dem Dokument."
                 }
             ]
         },
@@ -2175,6 +2183,10 @@
                 {
                     "label": "Link auf dem Startbildschirm des Handys",
                     "text": "Am Clock-Point-Portal steht rechts von <strong>Anmelden</strong> ein WinProx-Symbol. Der Ausführende tippt darauf, um den Anmeldelink auf den Startbildschirm zu legen. Danach öffnet sich das Portal mit einem Tipp. Auf dem iPhone: ⋯ → <strong>Teilen</strong> → Mehr anzeigen → + Zum Home-Bildschirm."
+                },
+                {
+                    "label": "Push-Mitteilungen auf dem Telefon",
+                    "text": "Nach der Anmeldung sieht der Ausführende rechts unter dem Logo die Schaltfläche Push-Mitteilungen einschalten. Er tippt darauf und erlaubt Mitteilungen. Die Schaltfläche verschwindet sofort; die Seite muss nicht neu geladen werden. Auf dem iPhone funktioniert das nur über das Symbol auf dem Startbildschirm. Nur auf dem verknüpften Telefon."
                 }
             ]
         },

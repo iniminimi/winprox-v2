@@ -916,7 +916,8 @@
                 "Auch als QR-Aufkleber möglich, ohne Bildschirm.",
                 "Für Reinigung und Bau: Stempeln am Arbeitsplatz mit QR + GPS.",
                 "CIAO/RSZ wo zutreffend.",
-                "Kein Smartphone? Vorname + PIN reichen auf dem Display."
+                "Kein Smartphone? Vorname + PIN reichen auf dem Display.",
+                "Push-Mitteilungen auf dem eigenen Telefon nach Push-Mitteilungen einschalten. Die Schaltfläche verschwindet sofort nach der Erlaubnis."
             ],
             "close": "Mehr Kontrolle darüber, wer wann und wo einstempelt — ohne Badges oder biometrische Daten."
         },
@@ -986,6 +987,10 @@
                 {
                     "q": "Wie meldet sich ein Mitarbeiter schnell an?",
                     "a": "Nach der ersten Anmeldung kann er auf dem eigenen Handy Fingerabdruck, Gesicht oder Gerätecode aktivieren. Die Biometrie bleibt auf dem Gerät — PIN oder Symbol bleiben nutzbar."
+                },
+                {
+                    "q": "Kann das Telefon einen Hinweis senden?",
+                    "a": "Nach der Anmeldung tippt der Mitarbeitende auf Push-Mitteilungen einschalten und erlaubt Mitteilungen. Die Schaltfläche verschwindet sofort; neu laden ist nicht nötig. Danach kann das Telefon einen Hinweis zeigen, wenn sich eine Schicht ändert, Urlaub oder Ausgleich genehmigt ist, ein Dokument oder eine Mitteilung bereitliegt, oder er nach der Schicht noch eingestempelt ist. Auf dem iPhone nur über das Symbol auf dem Startbildschirm. Nur auf dem verknüpften Telefon."
                 }
             ]
         },
