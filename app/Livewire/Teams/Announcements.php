@@ -47,10 +47,23 @@ class Announcements extends Component
 
     public bool $panelOpen = false;
 
-    public function mount(InternalTeam $team): void
+    public function mount(InternalTeam $team, ?int $focusWorkerId = null): void
     {
         $this->authorize('viewAny', [TeamAnnouncement::class, $team]);
         $this->team = $team;
+
+        if ($focusWorkerId === null || $focusWorkerId < 1) {
+            return;
+        }
+
+        $onThisTeam = Worker::query()
+            ->where('internal_team_id', $this->team->id)
+            ->whereKey($focusWorkerId)
+            ->exists();
+
+        if ($onThisTeam) {
+            $this->showWorker($focusWorkerId);
+        }
     }
 
     public function updatedSearch(): void

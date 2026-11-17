@@ -1848,6 +1848,10 @@
                 {
                     "label": "Bewerken",
                     "text": "Voeg uitvoerders toe, wijzig of deactiveer via Personen → Teams → **Bewerken**. Icoon, gsm, pincode, passkey, teamleader en verwijderen zitten in die modal. Dit scherm is bedoeld om snel te zoeken en te filteren."
+                },
+                {
+                    "label": "Documenten en mededelingen",
+                    "text": "Staat er een document of mededeling bij een uitvoerder, dan zie je dezelfde teller als op de teampagina. De ballon eronder zegt Documenten beheren of Mededelingen beheren. Klikken opent die lijst van het team, gefilterd op die persoon."
                 }
             ]
         },

@@ -1848,6 +1848,10 @@
                 {
                     "label": "Edit",
                     "text": "Add, edit or deactivate workers via People → Teams → **Edit**. Icon, phone, PIN, passkey, team leader and delete live in that modal. This screen is for quick search and filtering."
+                },
+                {
+                    "label": "Documents and announcements",
+                    "text": "When a worker has a document or announcement, you see the same counter as on the team page. The tooltip underneath says Manage documents or Manage announcements. Clicking opens that team's list, filtered to that person."
                 }
             ]
         },

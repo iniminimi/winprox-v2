@@ -117,12 +117,18 @@ class WorkersIndex extends Component
             ->orderBy('last_name')
             ->orderBy('first_name');
 
-        $workers = $query->paginate(50);
+        $workers = $query
+            ->withCount([
+                'teamDocuments as active_team_documents_count' => fn ($documents) => $documents->withLibraryStatus('active'),
+                'teamAnnouncements as active_team_announcements_count' => fn ($announcements) => $announcements->withLibraryStatus('active'),
+            ])
+            ->paginate(50);
 
         return view('livewire.pages.workers-index', [
             'workers' => $workers,
             'locations' => $locations,
             'teams' => $teams,
+            'canEditContent' => $user?->can('manageContent', InternalTeam::class) ?? false,
         ]);
     }
 }

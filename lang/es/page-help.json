@@ -1848,6 +1848,10 @@
                 {
                     "label": "Editar",
                     "text": "Añada, edite o desactive trabajadores en Personas → Equipos → **Editar**. Icono, móvil, PIN, clave de acceso, jefe de equipo y eliminar están en esa ventana. Esta pantalla sirve para buscar y filtrar rápido."
+                },
+                {
+                    "label": "Documentos y avisos",
+                    "text": "Si un ejecutor tiene un documento o un aviso, ve el mismo contador que en la página del equipo. El globo de debajo dice Gestionar documentos o Gestionar avisos. Un clic abre esa lista del equipo, filtrada para esa persona."
                 }
             ]
         },

@@ -1488,6 +1488,9 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
 ### 6.3 Workers
 - Sidebar **Personen → Uitvoerders** (`/workers`): zoek/filter op naam, team, locatie, status,
   plus **Te controleren** voor uitvoerders die een teamleader net aanmaakte.
+  Zelfde tellers als op de teampagina: **document** en **mededeling**, met ballon
+  «Documenten beheren» / «Mededelingen beheren». Klik opent de lijst van dat team
+  op die persoon.
 - Een teamleader maakt op Clock Point alleen voor- en achternaam. Die uitvoerder blijft
   als dashboardtegel **Nieuwe uitvoerder** tot beheer de persoon opslaat of deactiveert.
   Aanmaken in beheer zet die tegel niet.

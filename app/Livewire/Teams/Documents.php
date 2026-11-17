@@ -49,10 +49,27 @@ class Documents extends Component
 
     public bool $panelOpen = false;
 
-    public function mount(InternalTeam $team): void
+    public function mount(InternalTeam $team, ?int $focusWorkerId = null): void
     {
         $this->authorize('viewAny', [TeamDocument::class, $team]);
         $this->team = $team;
+        $this->focusWorker($focusWorkerId);
+    }
+
+    private function focusWorker(?int $workerId): void
+    {
+        if ($workerId === null || $workerId < 1) {
+            return;
+        }
+
+        $onThisTeam = Worker::query()
+            ->where('internal_team_id', $this->team->id)
+            ->whereKey($workerId)
+            ->exists();
+
+        if ($onThisTeam) {
+            $this->showWorker($workerId);
+        }
     }
 
     public function updatedSearch(): void

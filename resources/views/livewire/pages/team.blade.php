@@ -64,8 +64,16 @@
         </x-wp-disclosure-card>
 
         @if ($canEditContent)
-            <livewire:teams.documents :team="$viewingTeam" :key="'team-docs-'.$viewingTeam->id" />
-            <livewire:teams.announcements :team="$viewingTeam" :key="'team-announcements-'.$viewingTeam->id" />
+            <livewire:teams.documents
+                :team="$viewingTeam"
+                :focus-worker-id="$openLibrary === 'documents' ? $highlightWorkerId : null"
+                :key="'team-docs-'.$viewingTeam->id"
+            />
+            <livewire:teams.announcements
+                :team="$viewingTeam"
+                :focus-worker-id="$openLibrary === 'announcements' ? $highlightWorkerId : null"
+                :key="'team-announcements-'.$viewingTeam->id"
+            />
         @endif
 
         <div class="wp-card wp-card-pad wp-stack-tight">

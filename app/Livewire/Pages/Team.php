@@ -119,6 +119,10 @@ class Team extends Component
     #[Url(as: 'worker')]
     public ?int $highlightWorkerId = null;
 
+    /** documents|announcements: lijst van dit team openen op de uitvoerder in de URL. */
+    #[Url(as: 'library')]
+    public ?string $openLibrary = null;
+
     #[Url(as: 'team')]
     public ?int $highlightTeamId = null;
 

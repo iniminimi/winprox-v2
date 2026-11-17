@@ -1848,6 +1848,10 @@
                 {
                     "label": "Modifica",
                     "text": "Aggiungi, modifica o disattiva lavoratori da Persone → Team → **Modifica**. Icona, telefono, PIN, passkey, caposquadra ed eliminazione sono in quella finestra. Questa schermata serve a cercare e filtrare in fretta."
+                },
+                {
+                    "label": "Documenti e comunicazioni",
+                    "text": "Se un esecutore ha un documento o una comunicazione, vedi lo stesso contatore della pagina del team. Il fumetto sotto dice Gestire i documenti o Gestire le comunicazioni. Un clic apre quell’elenco del team, filtrato su quella persona."
                 }
             ]
         },

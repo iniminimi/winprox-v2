@@ -72,6 +72,28 @@
                     </div>
 
                     <div class="wp-cluster wp-cluster--tight">
+                        @if ($canEditContent && $worker->internal_team_id && $worker->active_team_documents_count > 0)
+                            <x-wp-tooltip class="wp-tooltip--below" :text="__('team.library.manage_documents')">
+                                <a
+                                    href="{{ route('team.show', ['internalTeam' => $worker->internal_team_id, 'worker' => $worker->id, 'library' => 'documents']) }}#team-documents-{{ $worker->internal_team_id }}"
+                                    class="wp-pill wp-pill--new"
+                                    aria-label="{{ __('team.library.manage_documents') }}"
+                                >
+                                    {{ trans_choice('team.library.worker_documents_count', $worker->active_team_documents_count, ['count' => $worker->active_team_documents_count]) }}
+                                </a>
+                            </x-wp-tooltip>
+                        @endif
+                        @if ($canEditContent && $worker->internal_team_id && $worker->active_team_announcements_count > 0)
+                            <x-wp-tooltip class="wp-tooltip--below" :text="__('team.library.manage_announcements')">
+                                <a
+                                    href="{{ route('team.show', ['internalTeam' => $worker->internal_team_id, 'worker' => $worker->id, 'library' => 'announcements']) }}#team-announcements-{{ $worker->internal_team_id }}"
+                                    class="wp-pill wp-pill--new"
+                                    aria-label="{{ __('team.library.manage_announcements') }}"
+                                >
+                                    {{ trans_choice('team.library.worker_announcements_count', $worker->active_team_announcements_count, ['count' => $worker->active_team_announcements_count]) }}
+                                </a>
+                            </x-wp-tooltip>
+                        @endif
                         @if ($worker->needs_admin_follow_up)
                             <span class="wp-pill wp-pill--new">{{ __('team.workers_index.follow_up') }}</span>
                         @endif

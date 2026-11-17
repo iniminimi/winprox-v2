@@ -1848,6 +1848,10 @@
                 {
                     "label": "Bearbeiten",
                     "text": "Ausführende hinzufügen, ändern oder deaktivieren unter Personen → Teams → **Bearbeiten**. Symbol, Handy, PIN, Passkey, Teamleiter und Löschen stehen in diesem Dialog. Diese Seite dient zum schnellen Suchen und Filtern."
+                },
+                {
+                    "label": "Dokumente und Mitteilungen",
+                    "text": "Gibt es ein Dokument oder eine Mitteilung bei einem Ausführenden, sehen Sie denselben Zähler wie auf der Teamseite. Die Sprechblase darunter sagt Dokumente verwalten oder Mitteilungen verwalten. Ein Klick öffnet diese Liste des Teams, gefiltert auf diese Person."
                 }
             ]
         },

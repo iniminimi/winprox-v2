@@ -1856,6 +1856,10 @@
                 {
                     "label": "Modifier",
                     "text": "Ajoutez, modifiez ou désactivez des exécutants via Personnes → Équipes → **Modifier**. Icône, téléphone, PIN, clé d’accès, chef d’équipe et suppression sont dans cette fenêtre. Cet écran sert à chercher et filtrer rapidement."
+                },
+                {
+                    "label": "Documents et annonces",
+                    "text": "S’il y a un document ou une annonce chez un exécutant, vous voyez le même compteur que sur la page de l’équipe. L’info-bulle en dessous dit Gérer les documents ou Gérer les annonces. Un clic ouvre cette liste de l’équipe, filtrée sur cette personne."
                 }
             ]
         },

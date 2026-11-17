@@ -352,6 +352,52 @@ it('pagineert documenten en mededelingen per 25', function () {
         ->assertViewHas('announcements', fn ($announcements) => $announcements->count() === 25 && $announcements->total() === 30);
 });
 
+it('toont op uitvoerders dezelfde tellers en opent de lijst van dat team', function () {
+    [$tenant, $admin, $team, $worker] = teamLibrarySetup();
+    TeamDocument::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'description' => 'Contract Jan',
+        'worker_id' => $worker->id,
+    ]);
+    TeamAnnouncement::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'description' => 'Bericht voor Jan',
+        'worker_id' => $worker->id,
+    ]);
+
+    $documentsUrl = route('team.show', [
+        'internalTeam' => $team->id,
+        'worker' => $worker->id,
+        'library' => 'documents',
+    ]);
+
+    $this->actingAs($admin)
+        ->get(route('workers.index'))
+        ->assertOk()
+        ->assertSee(__('team.library.manage_documents'), false)
+        ->assertSee(__('team.library.manage_announcements'), false)
+        ->assertSee(e($documentsUrl).'#team-documents-'.$team->id, false)
+        ->assertSee(trans_choice('team.library.worker_documents_count', 1, ['count' => 1]), false);
+
+    $this->actingAs($admin)
+        ->get($documentsUrl)
+        ->assertOk()
+        ->assertSee('Contract Jan', false)
+        ->assertDontSee('Bericht voor Jan', false);
+
+    $this->actingAs($admin)
+        ->get(route('team.show', [
+            'internalTeam' => $team->id,
+            'worker' => $worker->id,
+            'library' => 'announcements',
+        ]))
+        ->assertOk()
+        ->assertSee('Bericht voor Jan', false)
+        ->assertDontSee('Contract Jan', false);
+});
+
 it('stuurt de teller in de uitvoerdersrij naar de documenten en mededelingen van dat team', function () {
     [$tenant, $admin, $team, $worker] = teamLibrarySetup();
     TeamDocument::factory()->create([
