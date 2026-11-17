@@ -1,13 +1,12 @@
 {{-- Startscherm-snelkoppeling op het Clock Point-portaal. --}}
-<x-wp-tooltip class="wp-homescreen-shortcut-wrap wp-tooltip--end" :text="__('time.portal.homescreen.title')" wrap>
-    <button
-        type="button"
-        class="wp-homescreen-shortcut"
-        data-wp-homescreen-install
-        wire:click="openHomescreenHelp"
-        title="{{ __('time.portal.homescreen.title') }}"
-        aria-label="{{ __('time.portal.homescreen.title') }}"
-    >
+<button
+    type="button"
+    class="wp-homescreen-shortcut-wrap"
+    data-wp-homescreen-install
+    wire:click="openHomescreenHelp"
+>
+    <span class="wp-homescreen-shortcut__label">{{ __('time.portal.homescreen.title') }}</span>
+    <span class="wp-homescreen-shortcut">
         <img
             src="{{ asset('images/Winprox_logo_100.png') }}"
             alt=""
@@ -17,5 +16,5 @@
         <span class="wp-homescreen-shortcut__add" aria-hidden="true">
             <x-wp-icon name="plus" />
         </span>
-    </button>
-</x-wp-tooltip>
+    </span>
+</button>

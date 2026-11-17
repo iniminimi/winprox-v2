@@ -8417,20 +8417,49 @@ a.wp-worker-hours-link:focus-visible {
 }
 
 .wp-homescreen-shortcut-wrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.65rem;
     margin-left: auto;
     flex-shrink: 0;
-    padding: 0.2rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    color: inherit;
+    font: inherit;
+    text-align: right;
+    cursor: pointer;
+}
+
+.wp-homescreen-shortcut__label {
+    max-width: 16rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.25;
+    color: var(--wp-text);
+}
+
+.wp-page-head-main .wp-homescreen-shortcut__label {
+    max-width: 9.5rem;
 }
 
 .wp-page-head-main .wp-cluster:has(.wp-homescreen-shortcut-wrap) {
     width: 100%;
-    flex-wrap: nowrap;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    row-gap: 0.35rem;
+}
+
+.wp-page-head-main .wp-cluster:has(.wp-homescreen-shortcut-wrap) .wp-page-title-row {
+    flex: 1 1 100%;
 }
 
 .wp-homescreen-shortcut {
     position: relative;
     display: inline-flex;
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
     padding: 0.2rem;
