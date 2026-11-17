@@ -1,6 +1,6 @@
 /**
  * Clock Point: meldingen op de gekoppelde gsm.
- * De knop verschijnt pas als WinProx op het startscherm staat.
+ * De knop is er alleen in de geïnstalleerde app, niet in het browsertabblad.
  * De tik is wat de browser eist voor toestemming.
  */
 
@@ -18,19 +18,20 @@ function pushRoot() {
 function standaloneDisplay() {
     return window.matchMedia('(display-mode: standalone)').matches
         || window.matchMedia('(display-mode: fullscreen)').matches
+        || window.matchMedia('(display-mode: minimal-ui)').matches
         || window.navigator.standalone === true;
+}
+
+function syncStandaloneClass() {
+    document.documentElement.classList.toggle('wp-pwa-standalone', standaloneDisplay());
 }
 
 function pushSupported() {
     return 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
 }
 
-function pwaInstalled() {
-    return standaloneDisplay() || document.documentElement.classList.contains('wp-pwa-installed');
-}
-
 function canAsk() {
-    return pushSupported() && pwaInstalled();
+    return pushSupported() && standaloneDisplay();
 }
 
 function urlBase64ToUint8Array(value) {
@@ -91,6 +92,7 @@ async function subscribe(root) {
 }
 
 function refreshPush() {
+    syncStandaloneClass();
     offerPush();
     const root = pushRoot();
     if (synced || !root || !canAsk() || Notification.permission !== 'granted') {
@@ -124,6 +126,10 @@ document.addEventListener('click', (event) => {
     });
 });
 
+syncStandaloneClass();
+['standalone', 'fullscreen', 'minimal-ui'].forEach((mode) => {
+    window.matchMedia(`(display-mode: ${mode})`).addEventListener('change', refreshPush);
+});
 document.addEventListener('wp-homescreen-installed', refreshPush);
 document.addEventListener('DOMContentLoaded', refreshPush);
 document.addEventListener('livewire:navigated', refreshPush);

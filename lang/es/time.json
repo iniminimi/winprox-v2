@@ -521,7 +521,7 @@
             "help_android": "Android (Chrome): un toque en el icono. Confirma «Añadir a pantalla de inicio». El inicio de sesión funciona después en ese acceso.",
             "help_ios": "iPhone: Apple no permite la instalación automática. Toca el icono; luego en tu iPhone: tres puntos (⋯) abajo → Compartir → Mostrar más → desliza hacia abajo → “+ Añadir a pantalla de inicio”.",
             "help_existing": "¿Aún tienes un icono antiguo con el que Inicio de sesión no hacía nada? Bórralo, actualiza esta página y vuelve a tocar el icono más.",
-            "help_push": "Ponga primero WinProx en la pantalla de inicio con el logo del signo más. Después aparece el botón Activar avisos push. Púlselo y permita los avisos. El botón desaparece enseguida; no hace falta actualizar la página. Recibirá un aviso si cambia su turno, se aprueba un permiso o una compensación, hay un documento o un aviso listo, o sigue fichado después del turno. En un iPhone solo funciona si abre WinProx desde el icono de la pantalla de inicio. Solo en este teléfono. El aviso no incluye el texto del documento."
+            "help_push": "Ponga primero WinProx en la pantalla de inicio con el logo del signo más. Abra después ese icono. El botón Activar avisos push solo está en esa app. Púlselo y permita los avisos. El botón desaparece enseguida; no hace falta actualizar la página. Recibirá un aviso si cambia su turno, se aprueba un permiso o una compensación, hay un documento o un aviso listo, o sigue fichado después del turno. En un iPhone solo funciona si abre WinProx desde el icono de la pantalla de inicio. Solo en este teléfono. El aviso no incluye el texto del documento."
         },
         "absence": {
             "tile": "Permiso / Compensación",

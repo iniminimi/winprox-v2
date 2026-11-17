@@ -70,8 +70,16 @@
     @stack('head')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script>
+        if (window.matchMedia('(display-mode: standalone)').matches
+            || window.matchMedia('(display-mode: fullscreen)').matches
+            || window.matchMedia('(display-mode: minimal-ui)').matches
+            || window.navigator.standalone === true) {
+            document.documentElement.classList.add('wp-pwa-standalone');
+        }
+    </script>
     <style>
-        html:not(.wp-pwa-installed) [data-wp-push-enable] { display: none !important; }
+        html:not(.wp-pwa-standalone) [data-wp-push-enable] { display: none !important; }
     </style>
     @livewireStyles
 </head>

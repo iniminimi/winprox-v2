@@ -1115,7 +1115,7 @@
                 },
                 {
                     "label": "Notifications push",
-                    "text": "Mettez d’abord WinProx sur l’écran d’accueil via le logo avec le plus. Le bouton Activer les notifications push apparaît ensuite. Touchez-le et autorisez les notifications. Le bouton disparaît tout de suite ; inutile de rafraîchir la page. Vous recevez alors une alerte si votre service change, si un congé ou une récupération est approuvé, si un document ou une annonce est prêt, ou si vous êtes encore pointé après la fin de votre service. Sur iPhone, cela ne fonctionne que si vous ouvrez WinProx depuis l’icône de l’écran d’accueil. Seulement sur ce téléphone. L’alerte ne contient pas le texte du document."
+                    "text": "Mettez d’abord WinProx sur l’écran d’accueil via le logo avec le plus. Ouvrez ensuite cette icône. Le bouton Activer les notifications push n’est que dans cette app. Touchez-le et autorisez les notifications. Le bouton disparaît tout de suite ; inutile de rafraîchir la page. Vous recevez alors une alerte si votre service change, si un congé ou une récupération est approuvé, si un document ou une annonce est prêt, ou si vous êtes encore pointé après la fin de votre service. Sur iPhone, cela ne fonctionne que si vous ouvrez WinProx depuis l’icône de l’écran d’accueil. Seulement sur ce téléphone. L’alerte ne contient pas le texte du document."
                 },
                 {
                     "label": "Se déconnecter",
@@ -1532,7 +1532,7 @@
                 },
                 {
                     "label": "Notifications push sur le téléphone",
-                    "text": "L’exécutant met d’abord WinProx sur l’écran d’accueil via le logo avec le plus. Le bouton Activer les notifications push apparaît ensuite. Il le touche et autorise les notifications. Le bouton disparaît tout de suite ; inutile de rafraîchir la page. Son téléphone peut ensuite afficher une alerte si un service change, un congé ou une récupération est approuvé, un document ou une annonce est prêt, ou s’il est encore pointé après la fin du service. Sur iPhone, cela ne fonctionne que depuis l’icône de l’écran d’accueil. Seulement sur le téléphone lié. L’alerte ne contient pas le texte du document."
+                    "text": "L’exécutant met d’abord WinProx sur l’écran d’accueil via le logo avec le plus. Ouvrez ensuite cette icône. Le bouton Activer les notifications push n’est que dans cette app. Il le touche et autorise les notifications. Le bouton disparaît tout de suite ; inutile de rafraîchir la page. Son téléphone peut ensuite afficher une alerte si un service change, un congé ou une récupération est approuvé, un document ou une annonce est prêt, ou s’il est encore pointé après la fin du service. Sur iPhone, cela ne fonctionne que depuis l’icône de l’écran d’accueil. Seulement sur le téléphone lié. L’alerte ne contient pas le texte du document."
                 }
             ]
         },
@@ -2194,7 +2194,7 @@
                 },
                 {
                     "label": "Notifications push sur le téléphone",
-                    "text": "L’exécutant met d’abord WinProx sur l’écran d’accueil via le logo avec le plus. Le bouton Activer les notifications push apparaît ensuite. Il le touche et autorise les notifications. Le bouton disparaît tout de suite ; inutile de rafraîchir la page. Sur iPhone, cela ne fonctionne que depuis l’icône de l’écran d’accueil. Seulement sur le téléphone lié."
+                    "text": "L’exécutant met d’abord WinProx sur l’écran d’accueil via le logo avec le plus. Ouvrez ensuite cette icône. Le bouton Activer les notifications push n’est que dans cette app. Il le touche et autorise les notifications. Le bouton disparaît tout de suite ; inutile de rafraîchir la page. Sur iPhone, cela ne fonctionne que depuis l’icône de l’écran d’accueil. Seulement sur le téléphone lié."
                 }
             ]
         },

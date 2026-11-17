@@ -1468,9 +1468,9 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   na aanmelden. De manifest-scope is de site-root, zodat een Android-scan van sticker of
   klokscherm de geïnstalleerde app opent (bestaand icoon opnieuw zetten, anders houdt
   Android de oude scope). Op iPhone opent de camera Safari; daar blijft inklokken in die
-  browser. **Push naar de gekoppelde gsm** (alleen die gsm, nadat WinProx op het startscherm staat, na een tik op
+  browser. **Push naar de gekoppelde gsm** (alleen die gsm, alleen in de app vanaf het startscherm, na een tik op
   Pushmeldingen aanzetten; de knop verdwijnt meteen na toestemming, zonder
-  de pagina te verversen; op iPhone alleen vanuit het startscherm-icoon): dienst
+  de pagina te verversen): dienst
   gepubliceerd, gewijzigd of gecorrigeerd; verlof of recup goedgekeurd; nieuw
   document of nieuwe mededeling; nog ingeklokt 15 minuten na het laatste
   gepubliceerde blok van die inklokdag. Zonder rooster geen uitklokherinnering.
