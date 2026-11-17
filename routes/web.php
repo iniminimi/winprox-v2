@@ -398,15 +398,15 @@ Route::post('/promo/track/engage', PromoEngageTrackController::class)
     ->name('promo.track.engage');
 
 Route::middleware('guest')->group(function () {
-    Route::get('/login', Login::class)->name('login');
+    Route::get('/login', Login::class)->middleware('backoffice.desktop')->name('login');
     Route::get('/register', Register::class)->middleware('promo.follow')->name('register');
     Route::get('/forgot-password', ForgotPassword::class)->name('password.request');
     Route::get('/reset-password/{token}', ResetPassword::class)->name('password.reset');
-    Route::get('/auth/microsoft/redirect', [MicrosoftAuthController::class, 'redirect'])->name('auth.microsoft.redirect');
-    Route::get('/auth/microsoft/callback', [MicrosoftAuthController::class, 'callback'])->name('auth.microsoft.callback');
+    Route::get('/auth/microsoft/redirect', [MicrosoftAuthController::class, 'redirect'])->middleware('backoffice.desktop')->name('auth.microsoft.redirect');
+    Route::get('/auth/microsoft/callback', [MicrosoftAuthController::class, 'callback'])->middleware('backoffice.desktop')->name('auth.microsoft.callback');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'backoffice.desktop'])->group(function () {
     Route::get('/ui-theme/{theme}', UiThemeController::class)->name('ui-theme.switch');
 
     Route::get('/email/verify', VerifyEmailNotice::class)->name('verification.notice');

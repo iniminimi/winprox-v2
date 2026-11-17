@@ -1,6 +1,6 @@
 {
   "features": {
-    "intro": "WinProx is een online platform waarmee een organisatie medewerkers, werkuren, uurroosters, locaties en het dagelijkse werk bijhoudt. Het wordt gebruikt voor urenregistratie, personeelsplanning, werkbezoeken bij klanten, onderhoud, inspectierondes en het opvolgen van meldingen. Afhankelijk van de formule zijn ook GPS-werkbezoeken, sensoren, ESG-metingen en softwarekoppelingen beschikbaar. Alles werkt in de browser: beheerders meestal op een computer, medewerkers op hun smartphone, via een QR-code of op een klokscherm.",
+    "intro": "WinProx is een online platform waarmee een organisatie medewerkers, werkuren, uurroosters, locaties en het dagelijkse werk bijhoudt. Het wordt gebruikt voor urenregistratie, personeelsplanning, werkbezoeken bij klanten, onderhoud, inspectierondes en het opvolgen van meldingen. Afhankelijk van de formule zijn ook GPS-werkbezoeken, sensoren, ESG-metingen en softwarekoppelingen beschikbaar. Alles werkt in de browser: beheerder en medewerker op een computer of tablet, uitvoerders op hun smartphone, via een QR-code of op een klokscherm.",
     "flow": {
       "3": "Salarisadministratie"
     },

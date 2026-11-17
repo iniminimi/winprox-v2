@@ -6,6 +6,7 @@ use App\Actions\Auth\ThrottleBackofficeLoginAction;
 use App\Enums\BackofficeLoginThrottleStep;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Support\Auth\EntraSso;
+use App\Support\Http\PhoneUserAgent;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
@@ -23,6 +24,10 @@ class Login extends Component
 
     public function login()
     {
+        if (PhoneUserAgent::isPhone(request()->userAgent())) {
+            return $this->redirectRoute('login', navigate: false);
+        }
+
         $request = new LoginRequest;
 
         $this->validate($request->rules(), $request->messages());
