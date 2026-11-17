@@ -119,7 +119,8 @@ it('levert een canoniek webmanifest per tenant', function () {
         ->assertJsonPath('related_applications.0.id', $home)
         ->assertJsonPath('icons.0.purpose', 'any')
         ->assertJsonPath('icons.2.purpose', 'maskable')
-        ->assertJsonPath('icons.3.purpose', 'maskable');
+        ->assertJsonPath('icons.3.purpose', 'maskable')
+        ->assertJsonPath('icons.4.purpose', 'monochrome');
 
     // Per-token manifest-URL's verwijzen naar hetzelfde canonieke manifest.
     $this->get(route('public.time-portal.cp.manifest', $clockPoint->qr_token))

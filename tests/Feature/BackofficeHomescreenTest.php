@@ -31,7 +31,8 @@ it('levert een webmanifest voor het beheer', function () {
         ->assertJsonPath('related_applications.0.url', route('backoffice.manifest'))
         ->assertJsonPath('related_applications.0.id', url('/backoffice'))
         ->assertJsonPath('icons.0.purpose', 'any')
-        ->assertJsonPath('icons.2.purpose', 'maskable');
+        ->assertJsonPath('icons.2.purpose', 'maskable')
+        ->assertJsonPath('icons.4.purpose', 'monochrome');
 });
 
 it('toont de bureaublad-knop in het beheer', function () {

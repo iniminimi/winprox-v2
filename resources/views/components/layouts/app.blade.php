@@ -896,7 +896,7 @@
     @livewireScripts
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw-portal.js', { scope: '/' }).catch(() => {});
+            navigator.serviceWorker.register('/sw-portal.js?v=3', { scope: '/', updateViaCache: 'none' }).catch(() => {});
         }
     </script>
 </body>

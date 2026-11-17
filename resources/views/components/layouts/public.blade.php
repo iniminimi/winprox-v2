@@ -104,7 +104,7 @@
         if ('serviceWorker' in navigator) {
             const path = window.location.pathname;
             if (path.startsWith('/melden') || path.startsWith('/time') || path.startsWith('/cp/')) {
-                navigator.serviceWorker.register('/sw-portal.js', { scope: '/' }).catch(() => {});
+                navigator.serviceWorker.register('/sw-portal.js?v=3', { scope: '/', updateViaCache: 'none' }).catch(() => {});
             }
         }
     </script>

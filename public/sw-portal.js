@@ -97,7 +97,7 @@ self.addEventListener('push', (event) => {
         body,
         tag,
         icon: '/images/pwa/winprox-192.png',
-        badge: '/images/pwa/winprox-badge.png',
+        badge: '/images/pwa/winprox-badge.png?v=1',
         data: { url },
     }));
 });
