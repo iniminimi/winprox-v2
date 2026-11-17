@@ -47,7 +47,8 @@
                     "Meldungen, Aufgaben und Inspektionsrunden verwalten.",
                     "Standorte, Teams, Personen und Units verwalten.",
                     "Die RSZ/CIAO-Meldung kann in den Einstellungen aktiviert werden. Optionale GPS-Arbeitsbesuche verknüpfen einen Besuch mit einem Ort.",
-                    "Optionales Fotoalbum: Ausführende machen Fotos über den QR-Code der Einheit. Standort und Name stehen dabei. Im Foto selbst stehen unten Datum, Uhrzeit, Ausführender, Einheit und Organisationsname. Sie mailen sie aus dem Fotoalbum. Die Dateien werden nach einer Woche gelöscht. Sie schalten es unter Einstellungen, Ihre Organisation, ein. Zum Beispiel: in einer Kita machen Betreuerinnen Fotos von den Kindern und schicken sie an die Eltern."
+                    "Optionales Fotoalbum: Ausführende machen Fotos über den QR-Code der Einheit. Standort und Name stehen dabei. Im Foto selbst stehen unten Datum, Uhrzeit, Ausführender, Einheit und Organisationsname. Sie mailen sie aus dem Fotoalbum. Die Dateien werden nach einer Woche gelöscht. Sie schalten es unter Einstellungen, Ihre Organisation, ein. Zum Beispiel: in einer Kita machen Betreuerinnen Fotos von den Kindern und schicken sie an die Eltern.",
+                    "Das Telefon des Ausführenden kann einen Hinweis zeigen, wenn eine Schicht sich ändert, Urlaub oder Ausgleich genehmigt ist, ein Dokument oder eine Mitteilung bereitliegt, oder der Ausführende nach Schichtende noch eingestempelt ist. Das funktioniert, wenn WinProx auf dem Startbildschirm liegt und der Ausführende Mitteilungen erlaubt."
                 ],
                 "badge": "inklusive",
                 "key": "winprox_time"
@@ -446,7 +447,8 @@
                     "**Mit Microsoft anmelden** (Desktop): nur ein bestehendes Konto, dessen E-Mail übereinstimmt. Keine automatischen neuen Konten. E-Mail und Passwort bleiben möglich.",
                     "Andere Software nutzt ein widerrufbares Zugriffstoken mit gewählten Rechten, nicht die gewöhnliche Anmeldung.",
                     "Ausführende melden sich über Clock Point an (Name und persönliches Symbol, oder PIN oder Biometrie). Kein E-Mail-Konto.",
-                    "Meldende nutzen das öffentliche QR-Portal ohne Konto. Bei optionaler E-Mail-Bestätigung entsteht die Meldung erst nach dem Link."
+                    "Meldende nutzen das öffentliche QR-Portal ohne Konto. Bei optionaler E-Mail-Bestätigung entsteht die Meldung erst nach dem Link.",
+                    "Auf dem Telefon kann der Ausführende Hinweise zu Schicht, Urlaub, Dokument, Mitteilung oder einem vergessenen Ausstempeln erhalten. Nur wenn WinProx auf dem Startbildschirm liegt und Mitteilungen erlaubt sind. Der Hinweis enthält nicht den Inhalt des Dokuments."
                 ]
             },
             {

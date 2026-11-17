@@ -160,7 +160,8 @@
             "help_intro": "Prima o ícone WinProx: no Android, o Chrome pergunta se adiciona o WinProx ao ecrã inicial. Depois inicia sessão sem QR. Num relógio fixo regista o ponto ao digitalizar o autocolante ou o ecrã do relógio. Sem App Store.",
             "help_android": "Android (Chrome): um toque no ícone. Confirme “Adicionar ao ecrã inicial”. O início de sessão funciona depois a partir desse atalho.",
             "help_ios": "iPhone: a Apple não permite a instalação automática. Prima o ícone; depois, no iPhone: três pontos (⋯) em baixo → Partilhar → Mostrar mais → deslize → “+ Adicionar ao ecrã inicial”.",
-            "help_existing": "Ainda tem um ícone antigo em que Iniciar sessão não fazia nada? Elimine o ícone, atualize a página e prima outra vez o mais."
+            "help_existing": "Ainda tem um ícone antigo em que Iniciar sessão não fazia nada? Elimine o ícone, atualize a página e prima outra vez o mais.",
+            "help_push": "Os avisos sobre o turno, férias, um documento ou um comunicado funcionam nesse atalho. Depois toque em Ativar avisos."
         },
         "absence": {
             "tile": "Férias / compensação",
@@ -233,6 +234,27 @@
             "empty": "Não há turnos publicados esta semana.",
             "you": "O próprio",
             "absent": "Ausente"
+        },
+        "push": {
+            "enable": "Ativar avisos",
+            "roster_changed_title": "O seu turno mudou",
+            "roster_changed_body": "Veja o horário de :date.",
+            "roster_published_title": "O seu horário está pronto",
+            "roster_published_body": "Há um horário publicado a partir de :date.",
+            "roster_corrected_title": "O seu turno foi ajustado",
+            "roster_corrected_body": "Um turno anterior em :date foi corrigido.",
+            "clock_out_title": "Ainda está com o ponto aberto",
+            "clock_out_body": "O turno previsto terminou. Registe a saída quando terminar.",
+            "document_title": "Novo documento",
+            "document_body": "Há um documento à sua espera.",
+            "announcement_title": "Novo comunicado",
+            "announcement_body": "Há um comunicado à sua espera.",
+            "absence_leave_title": "Férias aprovadas",
+            "absence_leave_body": "As suas férias em :date foram aprovadas.",
+            "absence_leave_body_range": "As suas férias de :from a :to foram aprovadas.",
+            "absence_recup_title": "Compensação aprovada",
+            "absence_recup_body": "A sua compensação em :date foi aprovada.",
+            "absence_recup_body_range": "A sua compensação de :from a :to foi aprovada."
         }
     }
 }

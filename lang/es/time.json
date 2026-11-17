@@ -520,7 +520,8 @@
             "help_intro": "Toca el icono WinProx: en Android, Chrome pide añadir WinProx a la pantalla de inicio. Después te identificas sin QR. En un reloj fijo fichas la entrada escaneando la pegatina o la pantalla. Sin App Store.",
             "help_android": "Android (Chrome): un toque en el icono. Confirma «Añadir a pantalla de inicio». El inicio de sesión funciona después en ese acceso.",
             "help_ios": "iPhone: Apple no permite la instalación automática. Toca el icono; luego en tu iPhone: tres puntos (⋯) abajo → Compartir → Mostrar más → desliza hacia abajo → “+ Añadir a pantalla de inicio”.",
-            "help_existing": "¿Aún tienes un icono antiguo con el que Inicio de sesión no hacía nada? Bórralo, actualiza esta página y vuelve a tocar el icono más."
+            "help_existing": "¿Aún tienes un icono antiguo con el que Inicio de sesión no hacía nada? Bórralo, actualiza esta página y vuelve a tocar el icono más.",
+            "help_push": "Los avisos sobre su turno, un permiso, un documento o un aviso funcionan en ese acceso directo. Después pulse Activar avisos."
         },
         "absence": {
             "tile": "Permiso / Compensación",
@@ -593,6 +594,27 @@
             "empty": "No hay turnos publicados esta semana.",
             "you": "Usted",
             "absent": "Ausente"
+        },
+        "push": {
+            "enable": "Activar avisos",
+            "roster_changed_title": "Su turno ha cambiado",
+            "roster_changed_body": "Mire su cuadrante para el :date.",
+            "roster_published_title": "Su cuadrante está listo",
+            "roster_published_body": "Hay un cuadrante publicado desde el :date.",
+            "roster_corrected_title": "Su turno se ha ajustado",
+            "roster_corrected_body": "Un turno anterior del :date se ha corregido.",
+            "clock_out_title": "Sigue fichado",
+            "clock_out_body": "Su turno previsto ha terminado. Fiche la salida cuando haya acabado.",
+            "document_title": "Documento nuevo",
+            "document_body": "Hay un documento para usted.",
+            "announcement_title": "Aviso nuevo",
+            "announcement_body": "Hay un aviso para usted.",
+            "absence_leave_title": "Permiso aprobado",
+            "absence_leave_body": "Su permiso del :date está aprobado.",
+            "absence_leave_body_range": "Su permiso del :from al :to está aprobado.",
+            "absence_recup_title": "Compensación aprobada",
+            "absence_recup_body": "Su compensación del :date está aprobada.",
+            "absence_recup_body_range": "Su compensación del :from al :to está aprobada."
         }
     },
     "ciao": {

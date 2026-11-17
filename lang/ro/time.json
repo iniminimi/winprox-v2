@@ -160,7 +160,8 @@
             "help_intro": "Apăsați pictograma WinProx: pe Android, Chrome vă întreabă dacă adăugați WinProx pe ecranul de start. Apoi vă autentificați fără QR. La un ceas fix pontați scanând autocolantul sau ecranul ceasului. Fără App Store.",
             "help_android": "Android (Chrome): o apăsare pe pictogramă. Confirmați „Adăugați pe ecranul de start”. Autentificarea funcționează apoi din acea scurtătură.",
             "help_ios": "iPhone: Apple nu permite instalarea automată. Apăsați pictograma; apoi pe iPhone: trei puncte (⋯) jos → Partajați → Afișați mai multe → derulați → „+ Adăugați pe ecranul de pornire”.",
-            "help_existing": "Mai aveți o pictogramă veche la care Autentificarea nu făcea nimic? Ștergeți pictograma, reîmprospătați pagina și apăsați din nou plusul."
+            "help_existing": "Mai aveți o pictogramă veche la care Autentificarea nu făcea nimic? Ștergeți pictograma, reîmprospătați pagina și apăsați din nou plusul.",
+            "help_push": "Mesajele despre tură, concediu, un document sau un anunț funcționează în această scurtătură. Apoi apăsați Activați mesajele."
         },
         "absence": {
             "tile": "Concediu / recuperare",
@@ -233,6 +234,27 @@
             "empty": "Nu există ture publicate săptămâna aceasta.",
             "you": "Dumneavoastră",
             "absent": "Absent"
+        },
+        "push": {
+            "enable": "Activați mesajele",
+            "roster_changed_title": "Tura s-a schimbat",
+            "roster_changed_body": "Uitați-vă la programul din :date.",
+            "roster_published_title": "Programul este gata",
+            "roster_published_body": "Un program este publicat de la :date.",
+            "roster_corrected_title": "Tura a fost corectată",
+            "roster_corrected_body": "O tură anterioară din :date a fost corectată.",
+            "clock_out_title": "Sunteți încă pontat",
+            "clock_out_body": "Tura planificată s-a încheiat. Pontați ieșirea când ați terminat.",
+            "document_title": "Document nou",
+            "document_body": "Vă așteaptă un document.",
+            "announcement_title": "Anunț nou",
+            "announcement_body": "Vă așteaptă un anunț.",
+            "absence_leave_title": "Concediu aprobat",
+            "absence_leave_body": "Concediul din :date este aprobat.",
+            "absence_leave_body_range": "Concediul din :from până în :to este aprobat.",
+            "absence_recup_title": "Recuperare aprobată",
+            "absence_recup_body": "Recuperarea din :date este aprobată.",
+            "absence_recup_body_range": "Recuperarea din :from până în :to este aprobată."
         }
     }
 }

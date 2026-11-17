@@ -11,7 +11,10 @@ use Illuminate\Support\Carbon;
 
 class CreateTeamAnnouncementAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private NotifyWorkersOfVisibleLibraryAction $notify,
+    ) {}
 
     /**
      * @param  array{description: string, worker_id: ?int, is_active: bool, expires_at: ?string, original_language?: ?string}  $data
@@ -52,6 +55,8 @@ class CreateTeamAnnouncementAction
                 'worker_id' => $workerId,
             ],
         );
+
+        $this->notify->handleAnnouncement($announcement);
 
         return $announcement;
     }

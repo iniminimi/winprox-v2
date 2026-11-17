@@ -1,0 +1,58 @@
+<?php
+
+namespace App\Actions\Time;
+
+use App\Actions\Notifications\CreateNotificationAction;
+use App\Actions\Notifications\DispatchWorkerPushAction;
+use App\Enums\ShiftTypeKind;
+use App\Enums\WorkerNotificationType;
+use App\Models\AbsenceRequest;
+use App\Models\Tenant;
+use App\Models\Worker;
+use App\Support\Push\WorkerPushScreen;
+
+class NotifyWorkerAbsenceApprovedAction
+{
+    public function __construct(
+        private CreateNotificationAction $createNotification,
+        private DispatchWorkerPushAction $dispatchPush,
+    ) {}
+
+    public function handle(Tenant $tenant, Worker $worker, AbsenceRequest $request): void
+    {
+        if ((int) $request->tenant_id !== (int) $tenant->id || (int) $request->worker_id !== (int) $worker->id) {
+            return;
+        }
+
+        if ($request->kind !== ShiftTypeKind::Leave && $request->kind !== ShiftTypeKind::Recup) {
+            return;
+        }
+
+        $row = $this->createNotification->recordOnce(
+            $tenant,
+            $worker,
+            WorkerNotificationType::AbsenceApproved,
+            (string) $request->id,
+        );
+        if (! $row->wasRecentlyCreated) {
+            return;
+        }
+
+        $from = $request->date_from->format('d-m-Y');
+        $to = $request->date_to->format('d-m-Y');
+        $leave = $request->kind === ShiftTypeKind::Leave;
+        $sameDay = $from === $to;
+
+        $this->dispatchPush->handle(
+            $tenant,
+            $worker,
+            $leave ? 'time.portal.push.absence_leave_title' : 'time.portal.push.absence_recup_title',
+            $leave
+                ? ($sameDay ? 'time.portal.push.absence_leave_body' : 'time.portal.push.absence_leave_body_range')
+                : ($sameDay ? 'time.portal.push.absence_recup_body' : 'time.portal.push.absence_recup_body_range'),
+            $sameDay ? ['date' => $from] : ['from' => $from, 'to' => $to],
+            WorkerPushScreen::ABSENCE,
+            'absence_approved:'.$request->id,
+        );
+    }
+}

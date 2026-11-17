@@ -15,12 +15,13 @@ use App\Actions\Tasks\SkipRoundStopAction;
 use App\Actions\Tasks\StartTaskAction;
 use App\Actions\Team\MarkWorkerLibraryViewedAction;
 use App\Actions\Time\AcknowledgeTimeRosterViewAction;
-use App\Actions\Time\CancelAbsenceRequestAction;
 use App\Actions\Time\AssertClockPointTaskVisitAction;
 use App\Actions\Time\AssertClockPointUnitVisitAction;
 use App\Actions\Time\AssertWorkerClockDeviceAction;
+use App\Actions\Time\CancelAbsenceRequestAction;
 use App\Actions\Time\ClockInAction;
 use App\Actions\Time\ClockOutAction;
+use App\Actions\Time\CollectAbsenceClockInAttentionAction;
 use App\Actions\Time\ConfirmWorkerClockPinAction;
 use App\Actions\Time\EndWorkBreakAction;
 use App\Actions\Time\EndWorkVisitAction;
@@ -30,28 +31,27 @@ use App\Actions\Time\ListPublishedLocationRosterAction;
 use App\Actions\Time\ListPublishedWorkerRosterAction;
 use App\Actions\Time\ListWorkDestinationsForWorkerAction;
 use App\Actions\Time\ListWorkerAbsenceRequestsAction;
-use App\Actions\Time\WorkerLeaveBalanceAction;
-use App\Actions\Time\WorkerRecupBalanceAction;
 use App\Actions\Time\ListWorkerHoursAction;
-use App\Actions\Time\RequestAbsenceAction;
 use App\Actions\Time\LogBlockedClockPointQrAttemptAction;
+use App\Actions\Time\RequestAbsenceAction;
 use App\Actions\Time\ResolveClockPointPortalTokenAction;
 use App\Actions\Time\ResolveRosterMonthAction;
-use App\Actions\Time\CollectAbsenceClockInAttentionAction;
 use App\Actions\Time\ResolveWorkerPortalRosterAlertsAction;
 use App\Actions\Time\SetWorkerClockPinAction;
 use App\Actions\Time\StartWorkBreakAction;
 use App\Actions\Time\StartWorkVisitAction;
 use App\Actions\Time\SuggestNearbyClockUnitsAction;
 use App\Actions\Time\TransferOpenWorkShiftToClockPointAction;
+use App\Actions\Time\WorkerLeaveBalanceAction;
+use App\Actions\Time\WorkerRecupBalanceAction;
 use App\Actions\Units\RecordUnitCheckAndApplyTasksAction;
 use App\Actions\Units\ResolveOpenUnitTaskForCheckAction;
 use App\Data\Time\LeaveBalance;
 use App\Data\Time\RequestAbsenceData;
 use App\Data\Units\RecordUnitCheckData;
 use App\Enums\ClockDeviceRefusalReason;
-use App\Enums\ShiftTypeKind;
 use App\Enums\ClockSource;
+use App\Enums\ShiftTypeKind;
 use App\Enums\TaskStatus;
 use App\Enums\UnitCheckResult;
 use App\Enums\UnitCheckSource;
@@ -64,8 +64,8 @@ use App\Http\Requests\Time\RequestAbsenceRequest;
 use App\Http\Requests\Time\WorkerClockPinRequest;
 use App\Http\Requests\Units\RecordUnitCheckRequest;
 use App\Livewire\Concerns\PortalTeamleaderManageWorkers;
-use App\Livewire\Concerns\StoresPortalFlashMessage;
 use App\Livewire\Concerns\PortalTeamleaderRelease;
+use App\Livewire\Concerns\StoresPortalFlashMessage;
 use App\Livewire\Concerns\SwitchesPortalUiTheme;
 use App\Models\AbsenceRequest;
 use App\Models\ClockPoint;
@@ -73,10 +73,10 @@ use App\Models\Customer;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\Task;
-use App\Models\Tenant;
-use App\Models\Unit;
 use App\Models\TeamAnnouncement;
 use App\Models\TeamDocument;
+use App\Models\Tenant;
+use App\Models\Unit;
 use App\Models\Worker;
 use App\Models\WorkerDevice;
 use App\Models\WorkShift;
@@ -84,16 +84,17 @@ use App\Support\Checkmate\CheckmateMode;
 use App\Support\Portal\ClockPointScanGrant;
 use App\Support\Portal\PortalEntryToken;
 use App\Support\Portal\TimePortalData;
-use App\Support\Time\WorkDurationFormatter;
 use App\Support\Portal\WorkerDeviceSession;
 use App\Support\Portal\WorkerIcon;
 use App\Support\Portal\WorkerIconGuard;
 use App\Support\Portal\WorkerVerification;
+use App\Support\Push\WorkerPushScreen;
 use App\Support\Qr\InvalidQrResponse;
 use App\Support\ResolveAppLocale;
 use App\Support\Tenancy;
 use App\Support\Time\ClockPointPortalTokenResolution;
 use App\Support\Time\TimeModuleAccess;
+use App\Support\Time\WorkDurationFormatter;
 use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -119,8 +120,8 @@ use Livewire\WithFileUploads;
 class TimePortal extends Component
 {
     use PortalTeamleaderManageWorkers;
-    use StoresPortalFlashMessage;
     use PortalTeamleaderRelease;
+    use StoresPortalFlashMessage;
     use SwitchesPortalUiTheme;
     use WithFileUploads;
 
@@ -145,7 +146,6 @@ class TimePortal extends Component
     public bool $showRegisterForm = false;
 
     public string $selected_icon_slug = '';
-
 
     public string $pin_code = '';
 
@@ -260,6 +260,9 @@ class TimePortal extends Component
 
     public bool $homescreenHelpOpen = false;
 
+    /** Scherm dat een push-tik wil openen. Blijft staan tot de uitvoerder aangemeld is. */
+    public string $openScreen = '';
+
     // Checkmate: "nieuwe klant onderweg" — klant (bestaand kiezen of nieuw)
     // + werkadres in één flow; GPS-pin komt van de gsm.
     public bool $customerFormOpen = false;
@@ -349,6 +352,8 @@ class TimePortal extends Component
         $this->inactiveReasonKey = TimePortalData::clockPointInactiveReasonKey($clockPoint);
 
         $this->syncLocaleFromRequest();
+        $open = (string) request()->query('open', '');
+        $this->openScreen = WorkerPushScreen::isOpen($open) ? $open : '';
 
         // De entry-token kan een roterende scherm-QR zijn die na ~30s verloopt
         // terwijl het portaal openstaat. Deze marker houdt die sessie bruikbaar.
@@ -578,7 +583,7 @@ class TimePortal extends Component
     private function forgetPortalSignInState(): void
     {
         $this->taskBaselineSyncedThisVisit = false;
-        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'ownDeviceReleaseOffered', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'scheduleChangedDates', 'schedulePublishedFrom', 'teamScheduleOpen', 'teamScheduleWeek', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceHalfDay', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'flashMessageKey', 'flashMessageReplace', 'homescreenHelpOpen', 'teamleaderOpen', 'teamDocumentsOpen', 'teamAnnouncementsOpen']);
+        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'ownDeviceReleaseOffered', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'scheduleChangedDates', 'schedulePublishedFrom', 'teamScheduleOpen', 'teamScheduleWeek', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceHalfDay', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'flashMessageKey', 'flashMessageReplace', 'homescreenHelpOpen', 'teamleaderOpen', 'teamDocumentsOpen', 'teamAnnouncementsOpen', 'openScreen']);
         $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm', 'rosterAcknowledged']);
     }
 
@@ -1567,6 +1572,29 @@ class TimePortal extends Component
         $this->teamAnnouncementsOpen = false;
     }
 
+    private function applyOpenScreen(bool $rosterEnabled): void
+    {
+        if ($this->openScreen === '' || $this->verifiedWorker() === null) {
+            return;
+        }
+
+        $screen = $this->openScreen;
+        $this->openScreen = '';
+
+        match ($screen) {
+            WorkerPushScreen::SCHEDULE => $rosterEnabled ? $this->openSchedule(
+                app(ListWorkerNotificationsAction::class),
+                app(MarkWorkerNotificationsReadAction::class),
+                app(ResolveRosterMonthAction::class),
+                app(ListPublishedWorkerRosterAction::class),
+            ) : null,
+            WorkerPushScreen::DOCUMENTS => $this->openTeamDocuments(app(MarkWorkerLibraryViewedAction::class)),
+            WorkerPushScreen::ANNOUNCEMENTS => $this->openTeamAnnouncements(app(MarkWorkerLibraryViewedAction::class)),
+            WorkerPushScreen::ABSENCE => $rosterEnabled ? $this->openAbsence() : null,
+            default => null,
+        };
+    }
+
     public function closeCustomerForm(): void
     {
         $this->customerFormOpen = false;
@@ -2199,6 +2227,7 @@ class TimePortal extends Component
             $this->teamScheduleOpen = false;
             $this->absenceListOpen = false;
         }
+        $this->applyOpenScreen($timeRosterEnabled);
         $checkmateMode = CheckmateMode::isActive(Tenant::query()->find($this->tenantId));
         $lastClosedShift = ($canAct && $verifiedWorker !== null && $hasTimeModule && $openShift === null)
             ? TimePortalData::lastClosedShiftToday($verifiedWorker)
@@ -2471,6 +2500,7 @@ class TimePortal extends Component
                 : collect(),
             'showClockPointName' => ! TimePortalData::isGenericClockPointName($this->clockPointName),
             'offerHomescreenShortcut' => $homescreenPoint !== null,
+            'pushPublicKey' => ($canAct && $verifiedWorker !== null) ? (string) config('push.public_key') : '',
             // Canoniek tenant-manifest: identiek op elk Clock Point, zodat
             // elke installatie dezelfde app is — ook op oudere Android.
             'homescreenManifestUrl' => $homescreenPoint !== null

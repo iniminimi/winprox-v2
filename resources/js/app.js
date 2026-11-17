@@ -3,6 +3,7 @@ import './wp-tip';
 import './field-outbox';
 import './date-input-locale';
 import './homescreen-shortcut';
+import './portal-push';
 import './image-upload-compress';
 import './worker-photo-crop';
 import './bulk-unit-ranges';

@@ -520,7 +520,8 @@
             "help_intro": "Touchez l'icône WinProx : sur Android, Chrome propose d'ajouter WinProx à l'écran d'accueil. Ensuite vous vous connectez sans QR. Sur une pointeuse fixe, vous pointez l'entrée en scannant l'autocollant ou l'écran. Pas d'App Store.",
             "help_android": "Android (Chrome) : une touche sur l’icône. Confirmez « Ajouter à l’écran d’accueil ». La connexion fonctionne ensuite dans ce raccourci.",
             "help_ios": "iPhone : Apple n’autorise pas l’installation automatique. Touchez l’icône ; puis sur votre iPhone : trois points (⋯) en bas → Partager → Afficher plus → faites défiler → “+ Sur l’écran d’accueil”.",
-            "help_existing": "Vous avez encore une ancienne icône où la connexion ne faisait rien ? Supprimez-la, actualisez cette page et touchez à nouveau l’icône plus."
+            "help_existing": "Vous avez encore une ancienne icône où la connexion ne faisait rien ? Supprimez-la, actualisez cette page et touchez à nouveau l’icône plus.",
+            "help_push": "Les alertes sur votre service, un congé, un document ou une annonce fonctionnent dans ce raccourci. Touchez ensuite Activer les notifications."
         },
         "absence": {
             "tile": "Congé / Récup",
@@ -593,6 +594,27 @@
             "empty": "Aucun service publié cette semaine.",
             "you": "Vous",
             "absent": "Absent(e)"
+        },
+        "push": {
+            "enable": "Activer les notifications",
+            "roster_changed_title": "Votre service a changé",
+            "roster_changed_body": "Regardez votre planning pour le :date.",
+            "roster_published_title": "Votre planning est prêt",
+            "roster_published_body": "Un planning est publié à partir du :date.",
+            "roster_corrected_title": "Votre service a été adapté",
+            "roster_corrected_body": "Un service passé du :date a été corrigé.",
+            "clock_out_title": "Vous êtes encore pointé",
+            "clock_out_body": "Votre service prévu est terminé. Pointez la sortie quand vous avez fini.",
+            "document_title": "Nouveau document",
+            "document_body": "Un document vous attend.",
+            "announcement_title": "Nouvelle annonce",
+            "announcement_body": "Une annonce vous attend.",
+            "absence_leave_title": "Congé approuvé",
+            "absence_leave_body": "Votre congé du :date est approuvé.",
+            "absence_leave_body_range": "Votre congé du :from au :to est approuvé.",
+            "absence_recup_title": "Récupération approuvée",
+            "absence_recup_body": "Votre récupération du :date est approuvée.",
+            "absence_recup_body_range": "Votre récupération du :from au :to est approuvée."
         }
     },
     "ciao": {

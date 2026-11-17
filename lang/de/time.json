@@ -520,7 +520,8 @@
             "help_intro": "Tippen Sie das WinProx-Symbol: unter Android fragt Chrome, ob WinProx auf den Startbildschirm soll. Danach melden Sie sich ohne QR an. An einer festen Stempeluhr stempeln Sie durch Scan des Aufklebers oder des Uhrenbildschirms ein. Kein App Store.",
             "help_android": "Android (Chrome): ein Tipp auf das Symbol. „Zum Startbildschirm hinzufügen“ bestätigen. Anmelden funktioniert danach in dieser Verknüpfung.",
             "help_ios": "iPhone: Apple erlaubt keine automatische Installation. Tippen Sie das Symbol; dann auf Ihrem iPhone: drei Punkte (⋯) unten → Teilen → Mehr anzeigen → nach unten scrollen → „+ Zum Home-Bildschirm“.",
-            "help_existing": "Haben Sie noch ein altes Symbol, bei dem Anmelden nichts tat? Symbol löschen, diese Seite neu laden und erneut auf das Plus tippen."
+            "help_existing": "Haben Sie noch ein altes Symbol, bei dem Anmelden nichts tat? Symbol löschen, diese Seite neu laden und erneut auf das Plus tippen.",
+            "help_push": "Hinweise zu Ihrer Schicht, zu Urlaub, einem Dokument oder einer Mitteilung funktionieren in dieser Verknüpfung. Tippen Sie danach auf Mitteilungen einschalten."
         },
         "absence": {
             "tile": "Urlaub / Ausgleich",
@@ -593,6 +594,27 @@
             "empty": "Keine veröffentlichten Dienste in dieser Woche.",
             "you": "Sie",
             "absent": "Abwesend"
+        },
+        "push": {
+            "enable": "Mitteilungen einschalten",
+            "roster_changed_title": "Ihre Schicht wurde geändert",
+            "roster_changed_body": "Sehen Sie im Dienstplan nach dem :date.",
+            "roster_published_title": "Ihr Dienstplan steht bereit",
+            "roster_published_body": "Ein Dienstplan ist ab dem :date veröffentlicht.",
+            "roster_corrected_title": "Ihre Schicht wurde angepasst",
+            "roster_corrected_body": "Eine frühere Schicht am :date wurde korrigiert.",
+            "clock_out_title": "Sie sind noch eingestempelt",
+            "clock_out_body": "Ihre geplante Schicht ist zu Ende. Stempeln Sie aus, wenn Sie fertig sind.",
+            "document_title": "Neues Dokument",
+            "document_body": "Ein Dokument liegt für Sie bereit.",
+            "announcement_title": "Neue Mitteilung",
+            "announcement_body": "Eine Mitteilung liegt für Sie bereit.",
+            "absence_leave_title": "Urlaub genehmigt",
+            "absence_leave_body": "Ihr Urlaub am :date wurde genehmigt.",
+            "absence_leave_body_range": "Ihr Urlaub vom :from bis :to wurde genehmigt.",
+            "absence_recup_title": "Ausgleich genehmigt",
+            "absence_recup_body": "Ihr Ausgleich am :date wurde genehmigt.",
+            "absence_recup_body_range": "Ihr Ausgleich vom :from bis :to wurde genehmigt."
         }
     },
     "ciao": {

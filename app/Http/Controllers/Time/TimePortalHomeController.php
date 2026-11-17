@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Time;
 
 use App\Actions\Time\ResolveTenantHomescreenPointAction;
+use App\Support\Push\WorkerPushScreen;
 use Illuminate\Http\RedirectResponse;
 
 /**
@@ -17,6 +18,12 @@ class TimePortalHomeController
 
         abort_if($clockPoint === null, 404);
 
-        return redirect()->route('public.time-portal.cp', $clockPoint->qr_token);
+        $params = ['token' => $clockPoint->qr_token];
+        $open = (string) request()->query('open', '');
+        if (WorkerPushScreen::isOpen($open)) {
+            $params['open'] = $open;
+        }
+
+        return redirect()->route('public.time-portal.cp', $params);
     }
 }

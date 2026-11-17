@@ -160,7 +160,8 @@
             "help_intro": "Proszę nacisnąć ikonę WinProx: na Androidzie Chrome pyta, czy dodać WinProx do ekranu głównego. Potem logowanie odbywa się bez kodu QR. Przy stałym zegarze wejście rejestruje się, skanując naklejkę albo ekran zegara. Bez App Store.",
             "help_android": "Android (Chrome): jedno naciśnięcie ikony. Proszę potwierdzić „Dodaj do ekranu głównego”. Logowanie działa potem z tego skrótu.",
             "help_ios": "iPhone: Apple nie pozwala na automatyczną instalację. Proszę nacisnąć ikonę; potem na iPhonie: trzy kropki (⋯) na dole → Udostępnij → Pokaż więcej → przewiń → „+ Dodaj do ekranu początkowego”.",
-            "help_existing": "Została stara ikona, przy której logowanie nic nie robiło? Proszę usunąć ikonę, odświeżyć stronę i nacisnąć plus jeszcze raz."
+            "help_existing": "Została stara ikona, przy której logowanie nic nie robiło? Proszę usunąć ikonę, odświeżyć stronę i nacisnąć plus jeszcze raz.",
+            "help_push": "Powiadomienia o zmianie, urlopie, dokumencie lub ogłoszeniu działają w tym skrócie. Potem stuknij Włącz powiadomienia."
         },
         "absence": {
             "tile": "Urlop / odbiór",
@@ -233,6 +234,27 @@
             "empty": "W tym tygodniu nie ma opublikowanych zmian.",
             "you": "Państwo",
             "absent": "Nieobecny"
+        },
+        "push": {
+            "enable": "Włącz powiadomienia",
+            "roster_changed_title": "Twoja zmiana została zmieniona",
+            "roster_changed_body": "Sprawdź grafik na :date.",
+            "roster_published_title": "Grafik jest gotowy",
+            "roster_published_body": "Grafik jest opublikowany od :date.",
+            "roster_corrected_title": "Zmiana została poprawiona",
+            "roster_corrected_body": "Wcześniejsza zmiana z :date została poprawiona.",
+            "clock_out_title": "Nadal jesteś w pracy",
+            "clock_out_body": "Planowana zmiana się skończyła. Odbij wyjście, gdy skończysz.",
+            "document_title": "Nowy dokument",
+            "document_body": "Czeka na ciebie dokument.",
+            "announcement_title": "Nowe ogłoszenie",
+            "announcement_body": "Czeka na ciebie ogłoszenie.",
+            "absence_leave_title": "Urlop zatwierdzony",
+            "absence_leave_body": "Urlop w dniu :date został zatwierdzony.",
+            "absence_leave_body_range": "Urlop od :from do :to został zatwierdzony.",
+            "absence_recup_title": "Odbiór zatwierdzony",
+            "absence_recup_body": "Odbiór w dniu :date został zatwierdzony.",
+            "absence_recup_body_range": "Odbiór od :from do :to został zatwierdzony."
         }
     }
 }

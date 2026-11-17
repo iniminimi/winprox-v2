@@ -3,9 +3,11 @@
 namespace App\Actions\Time;
 
 use App\Actions\Notifications\CreateNotificationAction;
+use App\Actions\Notifications\DispatchWorkerPushAction;
 use App\Enums\WorkerNotificationType;
 use App\Models\Tenant;
 use App\Models\Worker;
+use App\Support\Push\WorkerPushScreen;
 use Carbon\Carbon;
 use InvalidArgumentException;
 
@@ -22,7 +24,10 @@ use InvalidArgumentException;
  */
 class NotifyWorkersRosterChangedAction
 {
-    public function __construct(private CreateNotificationAction $createNotification) {}
+    public function __construct(
+        private CreateNotificationAction $createNotification,
+        private DispatchWorkerPushAction $dispatchPush,
+    ) {}
 
     /**
      * @param  list<array{worker_id: int, date: string}>  $workerDates
@@ -61,12 +66,7 @@ class NotifyWorkersRosterChangedAction
 
             foreach ($via as $channel) {
                 match ($channel) {
-                    'portal' => $this->createNotification->handle(
-                        $tenant,
-                        $worker,
-                        WorkerNotificationType::RosterChanged,
-                        $date,
-                    ),
+                    'portal' => $this->portal($tenant, $worker, $date),
                     default => throw new InvalidArgumentException('unknown_notification_channel'),
                 };
             }
@@ -74,5 +74,28 @@ class NotifyWorkersRosterChangedAction
         }
 
         return $count;
+    }
+
+    private function portal(Tenant $tenant, Worker $worker, string $date): void
+    {
+        $row = $this->createNotification->handle(
+            $tenant,
+            $worker,
+            WorkerNotificationType::RosterChanged,
+            $date,
+        );
+        if (! $row->wasRecentlyCreated) {
+            return;
+        }
+
+        $this->dispatchPush->handle(
+            $tenant,
+            $worker,
+            'time.portal.push.roster_changed_title',
+            'time.portal.push.roster_changed_body',
+            ['date' => Carbon::parse($date)->format('d-m-Y')],
+            WorkerPushScreen::SCHEDULE,
+            'roster_changed:'.$date,
+        );
     }
 }

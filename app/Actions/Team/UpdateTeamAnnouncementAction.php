@@ -9,7 +9,10 @@ use Illuminate\Support\Carbon;
 
 class UpdateTeamAnnouncementAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private NotifyWorkersOfVisibleLibraryAction $notify,
+    ) {}
 
     /**
      * @param  array{description: string, worker_id: ?int, is_active: bool, expires_at: ?string}  $data
@@ -25,6 +28,8 @@ class UpdateTeamAnnouncementAction
                 ->firstOrFail();
         }
 
+        $wasVisible = $announcement->is_active && ! $announcement->isExpired();
+        $previousWorkerId = $announcement->worker_id !== null ? (int) $announcement->worker_id : null;
         $isActive = (bool) ($data['is_active'] ?? true);
         $expires = $data['expires_at'] ?? null;
 
@@ -47,6 +52,13 @@ class UpdateTeamAnnouncementAction
             payload: ['id' => $announcement->id, 'worker_id' => $workerId],
         );
 
-        return $announcement->fresh();
+        $fresh = $announcement->fresh() ?? $announcement;
+        $nowWorkerId = $fresh->worker_id !== null ? (int) $fresh->worker_id : null;
+        $nowVisible = $fresh->is_active && ! $fresh->isExpired();
+        if ($nowVisible && (! $wasVisible || $previousWorkerId !== $nowWorkerId)) {
+            $this->notify->handleAnnouncement($fresh);
+        }
+
+        return $fresh;
     }
 }

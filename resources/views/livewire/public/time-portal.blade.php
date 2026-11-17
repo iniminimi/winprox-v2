@@ -47,9 +47,23 @@
                 @endif
             </x-wp-page-head-title>
         @else
-            @if ($offerHomescreenShortcut ?? false)
+            @if (($offerHomescreenShortcut ?? false) || ($pushPublicKey ?? '') !== '')
                 <div class="wp-portal-head-install">
-                    @include('partials.wp-homescreen-shortcut')
+                    @if ($offerHomescreenShortcut ?? false)
+                        @include('partials.wp-homescreen-shortcut')
+                    @endif
+                    @if (($pushPublicKey ?? '') !== '')
+                        <div
+                            data-wp-push
+                            data-public-key="{{ $pushPublicKey }}"
+                            data-url="{{ route('public.time-portal.push-subscription') }}"
+                            data-locale="{{ str_replace('_', '-', app()->getLocale()) }}"
+                        >
+                            <button type="button" class="btn btn--ghost" data-wp-push-enable>
+                                {{ __('time.portal.push.enable') }}
+                            </button>
+                        </div>
+                    @endif
                 </div>
             @endif
         @endunless
@@ -1087,6 +1101,7 @@
                 <p class="wp-muted">{{ __('time.portal.homescreen.help_android') }}</p>
                 <p class="wp-muted">{{ __('time.portal.homescreen.help_ios') }}</p>
                 <p class="wp-muted">{{ __('time.portal.homescreen.help_existing') }}</p>
+                <p class="wp-muted">{{ __('time.portal.homescreen.help_push') }}</p>
                 <div class="wp-cluster">
                     <button type="button" class="btn btn--primary" wire:click="closeHomescreenHelp">{{ __('common.button.close') }}</button>
                 </div>

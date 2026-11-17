@@ -12,6 +12,7 @@ Schedule::command('winprox:reservations-expire-pending')->everyFiveMinutes();
 Schedule::command('winprox:qr-report-email-holds-expire')->everyFiveMinutes();
 Schedule::command('winprox:recurrence-tick')->dailyAt('06:00');
 Schedule::command('winprox:time-auto-close-stale')->hourly();
+Schedule::command('winprox:time-remind-clock-out')->everyFiveMinutes()->withoutOverlapping(4);
 Schedule::command('winprox:time-finalize-qr-grace')->dailyAt('04:15');
 Schedule::command('winprox:time-expire-clock-display-claims')->hourly();
 Schedule::command('winprox:retention-prune')->dailyAt('03:30');

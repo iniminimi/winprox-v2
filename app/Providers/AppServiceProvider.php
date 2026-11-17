@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Contracts\TranslationSyncRemoteClient;
 use App\Contracts\WebhookEvent;
+use App\Contracts\WebPushClient;
 use App\Listeners\AppendEmailUnsubscribeFooterToMessage;
 use App\Listeners\BlockUnsubscribedEmailRecipients;
 use App\Listeners\DispatchWebhooksForDomainEvent;
@@ -17,6 +18,7 @@ use App\Policies\UserPolicy;
 use App\Services\Translation\OllamaProvider;
 use App\Services\Translation\TranslationProviderInterface;
 use App\Support\JsonTranslationLoader;
+use App\Support\Push\MinishlinkWebPushClient;
 use App\Support\Translation\TranslationSyncRemoteGateway;
 use Illuminate\Mail\Events\MessageSending;
 use Illuminate\Pagination\Paginator;
@@ -40,6 +42,7 @@ class AppServiceProvider extends ServiceProvider
             return new JsonTranslationLoader($app['files'], $app['path.lang']);
         });
 
+        $this->app->singleton(WebPushClient::class, MinishlinkWebPushClient::class);
         $this->app->singleton(TranslationProviderInterface::class, OllamaProvider::class);
         $this->app->singleton(TranslationSyncRemoteClient::class, TranslationSyncRemoteGateway::class);
     }

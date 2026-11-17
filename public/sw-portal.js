@@ -1,4 +1,4 @@
-const CACHE = 'wp-portal-shell-v1';
+const CACHE = 'wp-portal-shell-v2';
 const OFFLINE_URL = '/portal-offline.html';
 
 self.addEventListener('install', (event) => {
@@ -78,4 +78,32 @@ self.addEventListener('fetch', (event) => {
             return cached || Response.error();
         }
     })());
+});
+
+self.addEventListener('push', (event) => {
+    let data = {};
+    try {
+        data = event.data ? event.data.json() : {};
+    } catch {
+        data = {};
+    }
+
+    const title = typeof data.title === 'string' && data.title !== '' ? data.title : 'WinProx';
+    const body = typeof data.body === 'string' ? data.body : '';
+    const url = typeof data.url === 'string' && data.url !== '' ? data.url : '/';
+    const tag = typeof data.tag === 'string' && data.tag !== '' ? data.tag : 'winprox';
+
+    event.waitUntil(self.registration.showNotification(title, {
+        body,
+        tag,
+        icon: '/images/pwa/winprox-192.png',
+        badge: '/images/pwa/winprox-192.png',
+        data: { url },
+    }));
+});
+
+self.addEventListener('notificationclick', (event) => {
+    event.notification.close();
+    const target = new URL(event.notification.data?.url || '/', self.location.origin).href;
+    event.waitUntil(self.clients.openWindow(target));
 });

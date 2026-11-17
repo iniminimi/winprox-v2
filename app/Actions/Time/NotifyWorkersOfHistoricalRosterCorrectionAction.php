@@ -3,9 +3,12 @@
 namespace App\Actions\Time;
 
 use App\Actions\Notifications\CreateNotificationAction;
+use App\Actions\Notifications\DispatchWorkerPushAction;
 use App\Enums\WorkerNotificationType;
 use App\Models\Tenant;
 use App\Models\Worker;
+use App\Support\Push\WorkerPushScreen;
+use Carbon\Carbon;
 use InvalidArgumentException;
 
 /**
@@ -22,7 +25,10 @@ use InvalidArgumentException;
  */
 class NotifyWorkersOfHistoricalRosterCorrectionAction
 {
-    public function __construct(private CreateNotificationAction $createNotification) {}
+    public function __construct(
+        private CreateNotificationAction $createNotification,
+        private DispatchWorkerPushAction $dispatchPush,
+    ) {}
 
     /**
      * @param  list<array{worker_id: int, planned_shift_id: int, date: string}>  $records
@@ -60,12 +66,7 @@ class NotifyWorkersOfHistoricalRosterCorrectionAction
 
             foreach ($via as $channel) {
                 match ($channel) {
-                    'portal' => $this->createNotification->handle(
-                        $tenant,
-                        $worker,
-                        WorkerNotificationType::RosterCorrected,
-                        $date.':'.$shiftId,
-                    ),
+                    'portal' => $this->portal($tenant, $worker, $date, $shiftId),
                     default => throw new InvalidArgumentException('unknown_notification_channel'),
                 };
             }
@@ -73,5 +74,29 @@ class NotifyWorkersOfHistoricalRosterCorrectionAction
         }
 
         return $count;
+    }
+
+    private function portal(Tenant $tenant, Worker $worker, string $date, int $shiftId): void
+    {
+        $reference = $date.':'.$shiftId;
+        $row = $this->createNotification->handle(
+            $tenant,
+            $worker,
+            WorkerNotificationType::RosterCorrected,
+            $reference,
+        );
+        if (! $row->wasRecentlyCreated) {
+            return;
+        }
+
+        $this->dispatchPush->handle(
+            $tenant,
+            $worker,
+            'time.portal.push.roster_corrected_title',
+            'time.portal.push.roster_corrected_body',
+            ['date' => Carbon::parse($date)->format('d-m-Y')],
+            WorkerPushScreen::SCHEDULE,
+            'roster_corrected:'.$reference,
+        );
     }
 }

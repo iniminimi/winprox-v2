@@ -9,6 +9,7 @@ use App\Events\Time\AbsenceRejected;
 use App\Models\AbsenceRequest;
 use App\Models\Tenant;
 use App\Models\User;
+use App\Models\Worker;
 use App\Support\Time\TimeModuleAccess;
 use App\Support\Validation\TextDescriptionLimits;
 use InvalidArgumentException;
@@ -17,6 +18,7 @@ class DecideAbsenceRequestAction
 {
     public function __construct(
         private ApplyAbsenceDaysToRosterAction $applyAbsenceDays,
+        private NotifyWorkerAbsenceApprovedAction $notifyApproved,
     ) {}
 
     public function handle(
@@ -57,6 +59,14 @@ class DecideAbsenceRequestAction
         $request->save();
 
         if ($data->approve) {
+            $worker = Worker::withoutGlobalScope('tenant')
+                ->where('tenant_id', $tenant->id)
+                ->whereKey($request->worker_id)
+                ->first();
+            if ($worker instanceof Worker) {
+                $this->notifyApproved->handle($tenant, $worker, $request);
+            }
+
             AbsenceApproved::dispatch(
                 (int) $tenant->id,
                 (int) $request->id,

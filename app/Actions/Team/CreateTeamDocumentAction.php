@@ -11,7 +11,10 @@ use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class CreateTeamDocumentAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private NotifyWorkersOfVisibleLibraryAction $notify,
+    ) {}
 
     /**
      * @param  array{description: string, worker_id: ?int, is_active: bool, original_language?: ?string}  $data
@@ -56,6 +59,8 @@ class CreateTeamDocumentAction
                 'worker_id' => $workerId,
             ],
         );
+
+        $this->notify->handleDocument($document);
 
         return $document;
     }

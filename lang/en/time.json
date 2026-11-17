@@ -520,7 +520,8 @@
             "help_intro": "Tap the WinProx icon: on Android, Chrome asks to add WinProx to the home screen. After that you sign in without a QR. On a fixed clock you clock in by scanning the sticker or the clock screen. No App Store.",
             "help_android": "Android (Chrome): one tap on the icon. Confirm “Add to Home screen”. Sign in then works in that shortcut.",
             "help_ios": "iPhone: Apple does not allow automatic install. Tap the icon; then on your iPhone: three dots (⋯) at the bottom → Share → Show more → scroll down → “+ Add to Home Screen”.",
-            "help_existing": "Still have an old icon where Sign in did nothing? Delete that icon, refresh this page and tap the plus icon again."
+            "help_existing": "Still have an old icon where Sign in did nothing? Delete that icon, refresh this page and tap the plus icon again.",
+            "help_push": "Alerts about your shift, leave, a document or an announcement work in that shortcut. Then tap Turn on notifications."
         },
         "absence": {
             "tile": "Leave / TOIL",
@@ -593,6 +594,27 @@
             "empty": "No published shifts this week.",
             "you": "You",
             "absent": "Absent"
+        },
+        "push": {
+            "enable": "Turn on notifications",
+            "roster_changed_title": "Your shift has changed",
+            "roster_changed_body": "Check your roster for :date.",
+            "roster_published_title": "Your roster is ready",
+            "roster_published_body": "A roster has been published from :date.",
+            "roster_corrected_title": "Your shift was adjusted",
+            "roster_corrected_body": "An earlier shift on :date was corrected.",
+            "clock_out_title": "You are still clocked in",
+            "clock_out_body": "Your planned shift has ended. Clock out when you are done.",
+            "document_title": "New document",
+            "document_body": "A document is waiting for you.",
+            "announcement_title": "New announcement",
+            "announcement_body": "An announcement is waiting for you.",
+            "absence_leave_title": "Leave approved",
+            "absence_leave_body": "Your leave on :date has been approved.",
+            "absence_leave_body_range": "Your leave from :from to :to has been approved.",
+            "absence_recup_title": "Time off approved",
+            "absence_recup_body": "Your time off on :date has been approved.",
+            "absence_recup_body_range": "Your time off from :from to :to has been approved."
         }
     },
     "ciao": {

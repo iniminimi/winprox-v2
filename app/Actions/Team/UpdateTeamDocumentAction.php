@@ -9,7 +9,10 @@ use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
 class UpdateTeamDocumentAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private NotifyWorkersOfVisibleLibraryAction $notify,
+    ) {}
 
     /**
      * @param  array{description: string, worker_id: ?int, is_active: bool}  $data
@@ -30,6 +33,8 @@ class UpdateTeamDocumentAction
                 ->firstOrFail();
         }
 
+        $wasActive = (bool) $document->is_active;
+        $previousWorkerId = $document->worker_id !== null ? (int) $document->worker_id : null;
         $isActive = (bool) ($data['is_active'] ?? true);
         $updates = [
             'description' => trim((string) $data['description']),
@@ -59,6 +64,12 @@ class UpdateTeamDocumentAction
             payload: ['id' => $document->id, 'worker_id' => $workerId],
         );
 
-        return $document->fresh();
+        $fresh = $document->fresh() ?? $document;
+        $nowWorkerId = $fresh->worker_id !== null ? (int) $fresh->worker_id : null;
+        if ($fresh->is_active && (! $wasActive || $previousWorkerId !== $nowWorkerId)) {
+            $this->notify->handleDocument($fresh);
+        }
+
+        return $fresh;
     }
 }

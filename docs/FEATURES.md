@@ -1468,7 +1468,12 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   na aanmelden. De manifest-scope is de site-root, zodat een Android-scan van sticker of
   klokscherm de geïnstalleerde app opent (bestaand icoon opnieuw zetten, anders houdt
   Android de oude scope). Op iPhone opent de camera Safari; daar blijft inklokken in die
-  browser. In de browser verdwijnt het installatie-icoon zodra Android de app als
+  browser. **Push naar de gekoppelde gsm** (alleen die gsm, na een tik op
+  Meldingen aanzetten; op iPhone alleen vanuit het startscherm-icoon): dienst
+  gepubliceerd, gewijzigd of gecorrigeerd; verlof of recup goedgekeurd; nieuw
+  document of nieuwe mededeling; nog ingeklokt 15 minuten na het laatste
+  gepubliceerde blok van die inklokdag. Zonder rooster geen uitklokherinnering.
+  Geen sms. De melding bevat geen documenttekst. In de browser verdwijnt het installatie-icoon zodra Android de app als
   geïnstalleerd meldt. Op een vaste prikklok is er vanuit dat icoon geen inklokknop; Checkmate klokt
   daar wel in en uit. Geen App Store. Zonder GPS-werkbezoeken blijven
   taakacties alleen-lezen (afhandelen via unit-QR). Met Time + GPS-werkbezoeken: teamtaken

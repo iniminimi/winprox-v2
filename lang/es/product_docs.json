@@ -47,7 +47,8 @@
                     "Gestionar avisos, tareas y rondas de inspección.",
                     "Gestionar sedes, equipos, personas y unidades.",
                     "El registro ONSS/CIAO se puede activar en los ajustes. Las visitas GPS opcionales vinculan una visita a un lugar.",
-                    "Álbum de fotos opcional: los operarios hacen fotos en el QR de la unidad. La sede y el nombre de la unidad aparecen. En la propia foto, abajo, figuran la fecha, la hora, el operario, la unidad y el nombre de la organización. Usted las envía desde Álbum de fotos. Los archivos se borran al cabo de una semana. Se activa en Ajustes, bajo Su organización. Por ejemplo: en una guardería, las cuidadoras hacen fotos de los niños y las envían a los padres."
+                    "Álbum de fotos opcional: los operarios hacen fotos en el QR de la unidad. La sede y el nombre de la unidad aparecen. En la propia foto, abajo, figuran la fecha, la hora, el operario, la unidad y el nombre de la organización. Usted las envía desde Álbum de fotos. Los archivos se borran al cabo de una semana. Se activa en Ajustes, bajo Su organización. Por ejemplo: en una guardería, las cuidadoras hacen fotos de los niños y las envían a los padres.",
+                    "El teléfono del operario puede mostrar un aviso cuando cambia un turno, se aprueba un permiso o una compensación, hay un documento o un aviso listo, o el operario sigue fichado después del turno. Funciona cuando WinProx está en la pantalla de inicio y el operario permite los avisos."
                 ],
                 "badge": "incluido",
                 "key": "winprox_time"
@@ -446,7 +447,8 @@
                     "**Iniciar sesión con Microsoft** (escritorio): solo una cuenta existente cuyo correo coincida. Sin cuentas nuevas automáticas. El correo y la contraseña siguen funcionando.",
                     "Otro software usa un token de acceso revocable con permisos elegidos, no el acceso ordinario.",
                     "Los operarios entran por Clock Point (nombre e icono personal, o un PIN o biometría). Sin cuenta de correo.",
-                    "Quien avisa usa el portal QR público sin cuenta. Con la confirmación de correo opcional, el aviso solo existe tras el enlace."
+                    "Quien avisa usa el portal QR público sin cuenta. Con la confirmación de correo opcional, el aviso solo existe tras el enlace.",
+                    "En el teléfono, el operario puede recibir avisos sobre un turno, un permiso, un documento, un aviso o un olvido de fichar la salida. Solo si WinProx está en la pantalla de inicio y los avisos están permitidos. El aviso no incluye el contenido del documento."
                 ]
             },
             {

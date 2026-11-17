@@ -23,6 +23,12 @@ class WorkerDevice extends Model
         'last_seen_at',
     ];
 
+    protected $hidden = [
+        'push_endpoint',
+        'push_public_key',
+        'push_auth_token',
+    ];
+
     protected $casts = [
         'last_seen_at' => 'datetime',
     ];

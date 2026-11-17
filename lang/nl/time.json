@@ -520,7 +520,8 @@
             "help_intro": "Tik het WinProx-icoon: op Android opent Chrome de vraag om WinProx op het startscherm te zetten. Daarna meld je je aan zonder QR. Op een vaste prikklok klok je in door de sticker of het klokscherm te scannen. Geen App Store.",
             "help_android": "Android (Chrome): één tik op het icoon. Bevestig “Toevoegen aan startscherm”. Daarna werkt Aanmelden in die snelkoppeling.",
             "help_ios": "iPhone: Apple laat geen automatische installatie toe. Tik het icoon; daarna op je iPhone: drie puntjes (⋯) onderaan → Deel → Toon meer → scroll naar beneden → “+ Zet op beginscherm”.",
-            "help_existing": "Heb je nog een oud icoon waarop Aanmelden vastliep? Verwijder dat icoon, ververs deze pagina en tik opnieuw op het plus-icoon."
+            "help_existing": "Heb je nog een oud icoon waarop Aanmelden vastliep? Verwijder dat icoon, ververs deze pagina en tik opnieuw op het plus-icoon.",
+            "help_push": "Meldingen over je dienst, verlof, een document of een mededeling werken in die snelkoppeling. Tik daarna op Meldingen aanzetten."
         },
         "absence": {
             "tile": "Verlof / Recup",
@@ -593,6 +594,27 @@
             "empty": "Geen gepubliceerde diensten deze week.",
             "you": "Jij",
             "absent": "Afwezig"
+        },
+        "push": {
+            "enable": "Meldingen aanzetten",
+            "roster_changed_title": "Je dienst is gewijzigd",
+            "roster_changed_body": "Kijk in je rooster naar :date.",
+            "roster_published_title": "Je rooster staat klaar",
+            "roster_published_body": "Er is een rooster gepubliceerd vanaf :date.",
+            "roster_corrected_title": "Je dienst is aangepast",
+            "roster_corrected_body": "Een vroegere dienst op :date is gecorrigeerd.",
+            "clock_out_title": "Je bent nog ingeklokt",
+            "clock_out_body": "Je geplande dienst is afgelopen. Klok uit als je klaar bent.",
+            "document_title": "Nieuw document",
+            "document_body": "Er staat een document voor je klaar.",
+            "announcement_title": "Nieuwe mededeling",
+            "announcement_body": "Er staat een mededeling voor je klaar.",
+            "absence_leave_title": "Verlof goedgekeurd",
+            "absence_leave_body": "Je verlof op :date is goedgekeurd.",
+            "absence_leave_body_range": "Je verlof van :from tot :to is goedgekeurd.",
+            "absence_recup_title": "Recup goedgekeurd",
+            "absence_recup_body": "Je recup op :date is goedgekeurd.",
+            "absence_recup_body_range": "Je recup van :from tot :to is goedgekeurd."
         }
     },
     "ciao": {
