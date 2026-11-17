@@ -3852,7 +3852,7 @@ a.wp-pagination__page:active:not(.is-active) {
     display: none;
 }
 
-html.wp-push-offer [data-wp-push-enable] {
+html.wp-pwa-installed.wp-push-offer [data-wp-push-enable] {
     display: inline-flex;
 }
 

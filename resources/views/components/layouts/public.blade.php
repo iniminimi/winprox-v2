@@ -70,6 +70,9 @@
     @stack('head')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <style>
+        html:not(.wp-pwa-installed) [data-wp-push-enable] { display: none !important; }
+    </style>
     @livewireStyles
 </head>
 <body class="wp-shell {{ $bodyClass ?? 'wp-public-body' }}"
