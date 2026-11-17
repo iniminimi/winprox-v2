@@ -36,7 +36,7 @@ class BuildClockPointHomescreenManifestAction
         $maskable512 = url('/images/pwa/winprox-maskable-512.png').'?v=4';
         // Android tekent het meldingsicoon uit het alfakanaal. Het gewone icoon
         // is een dicht wit vlak en wordt dan een wit vierkant.
-        $badge = url('/images/pwa/winprox-badge.png').'?v=1';
+        $badge = url('/images/pwa/winprox-badge-96.png').'?v=2';
 
         return [
             'id' => $appId,
@@ -88,7 +88,7 @@ class BuildClockPointHomescreenManifestAction
                 ],
                 [
                     'src' => $badge,
-                    'sizes' => '192x192',
+                    'sizes' => '96x96',
                     'type' => 'image/png',
                     'purpose' => 'monochrome',
                 ],

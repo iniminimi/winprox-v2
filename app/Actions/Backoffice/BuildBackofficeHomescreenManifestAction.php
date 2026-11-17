@@ -19,7 +19,7 @@ class BuildBackofficeHomescreenManifestAction
         $icon512 = url('/images/pwa/winprox-512.png').'?v=4';
         $maskable192 = url('/images/pwa/winprox-maskable-192.png').'?v=4';
         $maskable512 = url('/images/pwa/winprox-maskable-512.png').'?v=4';
-        $badge = url('/images/pwa/winprox-badge.png').'?v=1';
+        $badge = url('/images/pwa/winprox-badge-96.png').'?v=2';
 
         return [
             'id' => $appId,
@@ -68,7 +68,7 @@ class BuildBackofficeHomescreenManifestAction
                 ],
                 [
                     'src' => $badge,
-                    'sizes' => '192x192',
+                    'sizes' => '96x96',
                     'type' => 'image/png',
                     'purpose' => 'monochrome',
                 ],
