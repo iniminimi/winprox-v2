@@ -171,7 +171,7 @@
             },
             {
                 "title": "Panel",
-                "body": "El panel es el punto de partida del día. Arriba está la pregunta ¿Qué quiere hacer?, con accesos a las funciones principales.",
+                "body": "El panel es el punto de partida del día. Arriba está la pregunta ¿Qué quiere hacer?, con accesos a las funciones principales. Una tarjeta ¿Qué hay de nuevo? señala durante una semana a Ayuda → Novedades, hasta que la abra.",
                 "items": [
                     "Cuadrante y presencia, una nueva tarea del día o ronda de inspección, sedes y ejecutores.",
                     "Avisos nuevos y tareas abiertas. Con Time: quién está presente ahora.",

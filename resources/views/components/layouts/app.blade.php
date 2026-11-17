@@ -370,12 +370,17 @@
                             </div>
                         </details>
 
-                        <details class="wp-sidebar-accordion__group" @if(request()->routeIs('faq.*') || request()->routeIs('manual.*') || request()->routeIs('legal.index') || request()->routeIs('contact.*')) open @endif>
-                            <summary class="wp-nav-link {{ request()->routeIs('faq.*') || request()->routeIs('manual.*') || request()->routeIs('legal.index') || request()->routeIs('contact.*') ? 'is-active' : '' }}">
+                        <details class="wp-sidebar-accordion__group" @if(request()->routeIs('whats-new.*') || request()->routeIs('faq.*') || request()->routeIs('manual.*') || request()->routeIs('legal.index') || request()->routeIs('contact.*')) open @endif>
+                            <summary class="wp-nav-link {{ request()->routeIs('whats-new.*') || request()->routeIs('faq.*') || request()->routeIs('manual.*') || request()->routeIs('legal.index') || request()->routeIs('contact.*') ? 'is-active' : '' }}">
                                 <x-wp-icon name="faq" class="wp-nav-icon" />
                                 <span>{{ __('common.nav.help') }}</span>
                             </summary>
                             <div class="wp-sidebar-accordion__panel">
+                                <a href="{{ route('whats-new.index') }}"
+                                   class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('whats-new.*') ? 'is-active' : '' }}"
+                                   @click="nav = false">
+                                    <span>{{ __('common.nav.whats_new') }}</span>
+                                </a>
                                 <a href="{{ route('faq.index') }}"
                                    class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('faq.*') ? 'is-active' : '' }}"
                                    @click="nav = false">
@@ -447,7 +452,8 @@
                             $timeGroupActive = request()->routeIs('time.*');
                             $automationGroupActive = request()->routeIs('iot.*') || request()->routeIs('esg.*');
                             $organizationGroupActive = request()->routeIs('settings.*') || request()->routeIs('subscription.*') || request()->routeIs('activity.*');
-                            $helpGroupActive = request()->routeIs('faq.*')
+                            $helpGroupActive = request()->routeIs('whats-new.*')
+                                || request()->routeIs('faq.*')
                                 || request()->routeIs('manual.*')
                                 || request()->routeIs('legal.index')
                                 || request()->routeIs('contact.*');
@@ -716,6 +722,11 @@
                                     <span>{{ __('common.nav.help') }}</span>
                                 </summary>
                                 <div class="wp-sidebar-accordion__panel">
+                                    <a href="{{ route('whats-new.index') }}"
+                                       class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('whats-new.*') ? 'is-active' : '' }}"
+                                       @click="nav = false">
+                                        <span>{{ __('common.nav.whats_new') }}</span>
+                                    </a>
                                     <a href="{{ route('faq.index') }}"
                                        class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('faq.*') ? 'is-active' : '' }}"
                                        @click="nav = false">

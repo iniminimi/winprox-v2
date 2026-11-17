@@ -1,0 +1,13 @@
+{
+    "title": "Novità",
+    "subtitle": "Che cosa è cambiato di recente in WinProx.",
+    "card_title": "Che cosa c'è di nuovo?",
+    "card_body": "Guarda gli ultimi aggiornamenti di WinProx.",
+    "empty": "Non ci sono ancora aggiornamenti.",
+    "categories": {
+        "new": "Nuovo",
+        "improved": "Migliorato",
+        "fixed": "Risolto",
+        "important": "Importante"
+    }
+}

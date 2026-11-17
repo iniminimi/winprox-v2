@@ -15,6 +15,10 @@
                     "text": "Bovenaan staan snelkoppelingen: nieuwe dagtaak via favorieten, nieuwe dagtaak, locatie toevoegen, uitvoerder toevoegen, wie werkt waar vandaag, welke taken vandaag en uurrooster bekijken. Zo hoef je niet door de menu’s te zoeken."
                 },
                 {
+                    "label": "Wat is er nieuw?",
+                    "text": "Staat die kaart bovenaan, dan is er recent iets veranderd. Ze blijft een week staan. Tik erop om de lijst onder Hulp → Nieuw te openen; daarna verdwijnt de kaart."
+                },
+                {
                     "label": "Overzicht",
                     "text": "Onder Dashboard zie je tellingen van open meldingen, open taken en (met Time) wie er nu aanwezig is. Klik op een kaart om naar het bijhorende scherm te gaan. Open verlof- of recupaanvragen verschijnen als extra kaart naar Time → Aanvragen, met het aantal per soort (1 Verlof, 1 Recup, of beide)."
                 },
@@ -864,6 +868,15 @@
                 {
                     "label": "Organisatiegegevens verwijderen",
                     "text": "Alleen beheerders. Download eerst een gegevensexport via Instellingen → Privacy & export van gegevens. Vink daarna op Abonnement de bevestiging aan en geef je wachtwoord. Alle beheerders krijgen een bevestigingsmail. Bij een proefperiode kun je daarna zelf definitief wissen (technische snapshot zonder media, 30 dagen bewaard). Bij een betaald abonnement volgt een wachttijd van 7 dagen met banner en herinneringsmail; WinProx-administratie voert de verwijdering uit. Annuleren kan tot die tijd via Abonnement. Eindigt de proef zonder abonnement, dan volgen waarschuwingsmails en kan de organisatie automatisch worden verwijderd (standaard rond dag 14)."
+                }
+            ]
+        },
+        "whats_new": {
+            "title": "Hulp — Nieuw",
+            "actions": [
+                {
+                    "label": "Versiegeschiedenis",
+                    "text": "Hier zie je wat er recent veranderde, nieuwste dag bovenaan. Elke dag staat onder Nieuw, Verbeterd, Opgelost of Belangrijk."
                 }
             ]
         },

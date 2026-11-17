@@ -171,7 +171,7 @@
             },
             {
                 "title": "Dashboard",
-                "body": "Het dashboard is het startpunt van de dag. Bovenaan staat de vraag Wat wil je doen?, met snelkoppelingen naar de belangrijkste functies.",
+                "body": "Het dashboard is het startpunt van de dag. Bovenaan staat de vraag Wat wil je doen?, met snelkoppelingen naar de belangrijkste functies. Een kaart Wat is er nieuw? wijst een week naar Hulp → Nieuw, tot je ze opent.",
                 "items": [
                     "Uurrooster en aanwezigheid, een nieuwe dagtaak of inspectieronde, locaties en uitvoerders.",
                     "Nieuwe meldingen en open taken. Met Time: wie er nu aanwezig is.",

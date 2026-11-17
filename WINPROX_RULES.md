@@ -584,8 +584,8 @@ een beheerder, medewerker, uitvoerder, of iemand op een meldpagina of de website
 De nota schrijf je **vanzelf**, in dezelfde taak. Niet wachten tot iemand erom vraagt.
 
 Dit is **geen** productfiche (§10a), **geen** `docs/FEATURES.md` en **geen** pagina-hulp.
-Die blijven apart. Er is nog **geen scherm** voor release notes. Bouw dat niet zelf
-bij het schrijven van een nota.
+Die blijven apart. Klanten lezen de gepubliceerde nota’s op **Hulp → Nieuw**
+(`/nieuw`). Bouw daar geen tweede scherm naast.
 
 ### 15.1 Wel of niet
 Schrijf een punt alleen als alles hier waar is:
@@ -637,9 +637,14 @@ werk dat later dezelfde dag klaar is, hoort bij de nota van de **volgende** dag.
 `git push` is niet live. De gebruiker deployt zelf (`./pull-deploy.sh`, §10).
 
 - Concept blijft in `docs/release-notes/draft/`. Dat bestand mag mee in de commit.
+  Het verschijnt **niet** op Hulp → Nieuw.
 - Publiceren = het bestand verplaatsen naar `docs/release-notes/published/` en
-  de statusregel zetten op `Status: gepubliceerd`.
+  de statusregel zetten op `Status: gepubliceerd`. Daarna toont de pagina het,
+  nieuwste dag bovenaan, onder Nieuw, Verbeterd, Opgelost en Belangrijk.
 - Dat doe je **alleen** nadat de gebruiker bevestigt dat díe wijzigingen op
   productie staan. Niet na de push, niet aan het eind van de dag, niet per mail,
   en niet door de tekst in de productfiches of de website te zetten.
 - De agent deployt niet zelf en vraagt niet om te publiceren.
+- Op het beginscherm staat de kaart **Wat is er nieuw?** zolang de nieuwste
+  gepubliceerde nota hooguit een week oud is en deze gebruiker de pagina nog
+  niet opende. Openen haalt de kaart weg. Een nieuwere nota toont ze opnieuw.

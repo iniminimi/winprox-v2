@@ -15,6 +15,10 @@
                     "text": "In alto ci sono scorciatoie: nuova attività giornaliera dai preferiti, nuova attività giornaliera, aggiungi sede, aggiungi esecutore, chi lavora dove oggi, quali attività oggi e visualizza il turno. Così non devi cercare nei menu."
                 },
                 {
+                    "label": "Che cosa c'è di nuovo?",
+                    "text": "Se quella scheda è in alto, qualcosa è cambiato di recente. Resta una settimana. Toccala per aprire l’elenco in Aiuto → Novità; poi la scheda sparisce."
+                },
+                {
                     "label": "Panoramica",
                     "text": "Sotto Dashboard vedi i conteggi di segnalazioni aperte, attività aperte e (con Time) chi è presente ora. Clicchi su una scheda per andare alla schermata correlata. Le richieste aperte di ferie o recupero appaiono come scheda extra verso Time → Richieste, con il conteggio per tipo (1 Ferie, 1 Recupero, o entrambi)."
                 },
@@ -864,6 +868,15 @@
                 {
                     "label": "Elimina i dati dell’organizzazione",
                     "text": "Solo amministratori. Scarica prima un’esportazione da Impostazioni → Privacy ed esportazione dati. Poi in Abbonamento spunta la conferma e inserisci la password. Tutti gli amministratori ricevono un’email di conferma. In prova puoi poi eliminare definitivamente tu stesso (snapshot tecnico senza media, conservato 30 giorni). Con un abbonamento a pagamento c’è un’attesa di 7 giorni con banner e email di promemoria; l’amministrazione WinProx esegue l’eliminazione. Puoi annullare fino ad allora da Abbonamento. Se la prova termina senza abbonamento, seguono e-mail di avviso e l’organizzazione può essere eliminata automaticamente (predefinito intorno al giorno 14)."
+                }
+            ]
+        },
+        "whats_new": {
+            "title": "Aiuto — Novità",
+            "actions": [
+                {
+                    "label": "Cronologia delle versioni",
+                    "text": "Qui vedi che cosa è cambiato di recente, il giorno più recente in alto. Ogni giorno sta sotto Nuovo, Migliorato, Risolto o Importante."
                 }
             ]
         },

@@ -82,6 +82,9 @@ Een starttemplate toont de keuze in preview en op
   - **Uurrooster bekijken** → Time → Planning (alleen met Time-module; rooster-icoon, geen kalender)
   - Volle titel/omschrijving op intent-tegels (geen ellipsis-afkorting); uitleg klein, titel normaal
 - Tegels volgen rechten/werkmenu; icoontinten via bestaande KPI-tokens.
+- **Wat is er nieuw?**: eerste tegel zolang de nieuwste gepubliceerde nota hooguit een week oud is
+  en deze gebruiker Hulp → Nieuw nog niet opende. Een klik opent die pagina en haalt de tegel weg.
+  Een nieuwere nota toont de tegel opnieuw, opnieuw voor een week.
 - Extra ruimte tussen intent-sectie en **Dashboard**-kop; daaronder KPI’s, recente meldingen, briefing en starttemplate.
 
 **Starttemplate (optioneel, nieuwe organisaties)**

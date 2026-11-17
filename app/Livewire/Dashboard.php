@@ -6,6 +6,7 @@ use App\Actions\Billing\ApplyPlanEntitlementsAction;
 use App\Actions\Billing\RealignSubscriptionPeriodAction;
 use App\Actions\Checkmate\BuildCheckmateDashboardDataAction;
 use App\Actions\Dashboard\BuildDashboardIntentHubAction;
+use App\Actions\ReleaseNotes\ShouldShowWhatsNewCardAction;
 use App\Actions\Dashboard\BuildDashboardStatsAction;
 use App\Actions\Dashboard\ListDashboardRecentIssuesAction;
 use App\Actions\Onboarding\ApplyTenantStarterPackAction;
@@ -249,6 +250,7 @@ class Dashboard extends Component
         BuildDashboardIntentHubAction $buildIntentHub,
         ListDashboardRecentIssuesAction $listRecentIssues,
         BuildCheckmateDashboardDataAction $buildCheckmate,
+        ShouldShowWhatsNewCardAction $shouldShowWhatsNew,
     ) {
         $tenant = $this->resolveTenant();
         if ($tenant !== null) {
@@ -323,6 +325,7 @@ class Dashboard extends Component
             'recent' => $recent,
             'showIssuesTasksUi' => $showIssuesTasksUi,
             'intentHub' => $intentHub,
+            'showWhatsNew' => $user instanceof User && $shouldShowWhatsNew->handle($user),
             'portalBatteryState' => $tenant?->portalDashboardBatteryState(),
             'onboarding' => $onboarding,
             'hasTimeModule' => $hasTimeModule,

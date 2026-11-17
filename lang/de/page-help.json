@@ -15,6 +15,10 @@
                     "text": "Oben finden Sie Verknüpfungen: neue Tagesaufgabe über Favoriten, neue Tagesaufgabe, Standort hinzufügen, Ausführenden hinzufügen, wer arbeitet wo heute, welche Aufgaben heute und Dienstplan ansehen. So müssen Sie nicht in den Menüs suchen."
                 },
                 {
+                    "label": "Was ist neu?",
+                    "text": "Steht diese Karte oben, hat sich kürzlich etwas geändert. Sie bleibt eine Woche stehen. Tippen Sie darauf, um die Liste unter Hilfe → Neu zu öffnen; danach verschwindet die Karte."
+                },
+                {
                     "label": "Übersicht",
                     "text": "Unter Dashboard sehen Sie Anzahlen offener Meldungen, offener Aufgaben und (mit Time) wer gerade anwesend ist. Klicken Sie auf eine Karte, um zum zugehörigen Bildschirm zu gelangen. Offene Urlaubs- oder Ausgleichsanträge erscheinen als extra Karte zu Time → Anträge, mit der Anzahl je Art (1 Urlaub, 1 Ausgleich, oder beides)."
                 },
@@ -864,6 +868,15 @@
                 {
                     "label": "Organisationsdaten löschen",
                     "text": "Nur Administratoren. Laden Sie zuerst einen Datenexport über Einstellungen → Datenschutz & Datenexport herunter. Bestätigen Sie danach unter Abonnement das Kontrollkästchen und geben Sie Ihr Passwort ein. Alle Administratoren erhalten eine Bestätigungs-E-Mail. In der Testphase können Sie danach selbst endgültig löschen (technischer Snapshot ohne Medien, 30 Tage aufbewahrt). Bei einem bezahlten Abonnement folgt eine 7-tägige Wartezeit mit Banner und Erinnerungsmail; die WinProx-Administration führt die Löschung durch. Bis dahin können Sie über Abonnement abbrechen. Endet die Testphase ohne Abonnement, folgen Warn-E-Mails und die Organisation kann automatisch gelöscht werden (Standard etwa Tag 14)."
+                }
+            ]
+        },
+        "whats_new": {
+            "title": "Hilfe — Neu",
+            "actions": [
+                {
+                    "label": "Versionsverlauf",
+                    "text": "Hier sehen Sie, was sich zuletzt geändert hat, der neueste Tag oben. Jeder Tag steht unter Neu, Verbessert, Behoben oder Wichtig."
                 }
             ]
         },

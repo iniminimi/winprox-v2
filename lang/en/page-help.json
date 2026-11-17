@@ -15,6 +15,10 @@
                     "text": "At the top are shortcuts: new day task from favorites, new day task, add a location, add a worker, who works where today, which tasks today and view the roster. So you do not have to dig through the menus."
                 },
                 {
+                    "label": "What's new?",
+                    "text": "If that card is at the top, something changed recently. It stays for a week. Tap it to open the list under Help → What's new; the card then disappears."
+                },
+                {
                     "label": "Overview",
                     "text": "Under Dashboard you see counts of open issues, open tasks and (with Time) who is present now. Click a card to go to the related screen. Open leave or TOIL requests appear as an extra card to Time → Requests, with the count per kind (1 Leave, 1 TOIL, or both)."
                 },
@@ -864,6 +868,15 @@
                 {
                     "label": "Delete organisation data",
                     "text": "Administrators only. First download a data export via Settings → Privacy & data export. Then on Subscription tick the confirmation and enter your password. All administrators receive a confirmation email. During a trial you can then permanently delete yourself (technical snapshot without media, kept 30 days). On a paid plan there is a 7-day wait with banner and reminder email; WinProx administration performs the deletion. You can cancel until then via Subscription. If the trial ends without a subscription, warning emails follow and the organisation may be deleted automatically (default around day 14)."
+                }
+            ]
+        },
+        "whats_new": {
+            "title": "Help — What's new",
+            "actions": [
+                {
+                    "label": "Version history",
+                    "text": "Here you see what changed recently, newest day first. Each day is grouped under New, Improved, Fixed or Important."
                 }
             ]
         },

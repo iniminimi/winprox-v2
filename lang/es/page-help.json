@@ -15,6 +15,10 @@
                     "text": "Arriba hay atajos: nueva tarea del día desde favoritos, nueva tarea del día, añadir ubicación, añadir ejecutor, quién trabaja dónde hoy, qué tareas hoy y ver el horario. Así no tienes que buscar en los menús."
                 },
                 {
+                    "label": "¿Qué hay de nuevo?",
+                    "text": "Si esa tarjeta está arriba, algo ha cambiado hace poco. Permanece una semana. Tóquela para abrir la lista en Ayuda → Novedades; después desaparece."
+                },
+                {
                     "label": "Resumen",
                     "text": "Bajo Panel ves conteos de incidencias abiertas, tareas abiertas y (con Time) quién está presente ahora. Haz clic en una tarjeta para ir a la pantalla relacionada. Las solicitudes abiertas de vacaciones o TOIL aparecen como tarjeta extra hacia Time → Solicitudes, con el conteo por tipo (1 Vacaciones, 1 TOIL, o ambos)."
                 },
@@ -864,6 +868,15 @@
                 {
                     "label": "Eliminar datos de la organización",
                     "text": "Solo administradores. Descargue primero una exportación en Ajustes → Privacidad y exportación de datos. Luego en Suscripción marque la confirmación e introduzca su contraseña. Todos los administradores reciben un correo de confirmación. En periodo de prueba puede eliminar definitivamente después (instantánea técnica sin medios, guardada 30 días). Con un plan de pago hay una espera de 7 días con banner y recordatorio; la administración de WinProx realiza la eliminación. Puede cancelar hasta entonces en Suscripción. Si la prueba termina sin suscripción, hay correos de aviso y la organización puede eliminarse automáticamente (por defecto hacia el día 14)."
+                }
+            ]
+        },
+        "whats_new": {
+            "title": "Ayuda — Novedades",
+            "actions": [
+                {
+                    "label": "Historial de versiones",
+                    "text": "Aquí ve lo que ha cambiado recientemente, el día más reciente arriba. Cada día está bajo Nuevo, Mejorado, Resuelto o Importante."
                 }
             ]
         },

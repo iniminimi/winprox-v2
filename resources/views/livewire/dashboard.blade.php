@@ -78,6 +78,9 @@
         @endif
 
         <div class="wp-kpis">
+            @if ($showWhatsNew)
+                @include('partials.whats-new-card')
+            @endif
             @foreach ($checkmate->quickTiles as $tile)
                 <a href="{{ $tile['href'] }}"
                    @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
@@ -425,8 +428,11 @@
                     :subtitle="__('dashboard.intent.title')"
                 />
 
-                @if (! $intentHub->isEmpty())
+                @if ($showWhatsNew || ! $intentHub->isEmpty())
                     <div class="wp-kpis">
+                        @if ($showWhatsNew)
+                            @include('partials.whats-new-card')
+                        @endif
                         @foreach ($intentHub->tiles as $tile)
                             <a href="{{ $tile['href'] }}"
                                @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])

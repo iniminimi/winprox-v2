@@ -89,6 +89,7 @@ use App\Livewire\Pages\CheckmateManualIndex;
 use App\Livewire\Pages\Contact;
 use App\Livewire\Pages\Demo;
 use App\Livewire\Pages\Faq;
+use App\Livewire\Pages\WhatsNew;
 use App\Livewire\Pages\FeaturePage;
 use App\Livewire\Pages\Health;
 use App\Livewire\Pages\Legal;
@@ -466,6 +467,7 @@ Route::middleware(['auth', 'backoffice.desktop'])->group(function () {
         ->name('platform.promo-recipients.qr');
 
     Route::get('/faq', Faq::class)->name('faq.index');
+    Route::get('/nieuw', WhatsNew::class)->name('whats-new.index');
     Route::get('/legal', Legal::class)->name('legal.index');
     Route::get('/manual', ManualHub::class)->name('manual.hub');
     Route::get('/manual/general', ManualIndex::class)->name('manual.general');

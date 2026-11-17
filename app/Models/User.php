@@ -129,6 +129,7 @@ class User extends Authenticatable implements MustVerifyEmail
             'notify_on_new_issue_email' => 'boolean',
             'role' => 'string',
             'ui_theme' => 'string',
+            'whats_new_dismissed_on' => 'date',
         ];
     }
 

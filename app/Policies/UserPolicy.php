@@ -56,6 +56,11 @@ class UserPolicy
         return $user->is_superuser;
     }
 
+    public function viewWhatsNew(User $user): bool
+    {
+        return $user->is_superuser || $user->tenant_id !== null;
+    }
+
     public function setPassword(User $actor, User $target): bool
     {
         return $actor->is_superuser && ! $target->is_superuser;

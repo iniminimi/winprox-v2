@@ -15,6 +15,10 @@
                     "text": "En haut se trouvent des raccourcis : nouvelle tâche du jour via favoris, nouvelle tâche du jour, ajouter un lieu, ajouter un exécutant, qui travaille où aujourd’hui, quelles tâches aujourd’hui et voir le planning. Ainsi, vous n’avez pas à chercher dans les menus."
                 },
                 {
+                    "label": "Quoi de neuf ?",
+                    "text": "Si cette carte est en haut, quelque chose a changé récemment. Elle reste une semaine. Touchez-la pour ouvrir la liste sous Aide → Nouveau ; la carte disparaît ensuite."
+                },
+                {
                     "label": "Vue d'ensemble",
                     "text": "Sous Tableau de bord vous voyez le nombre de signalements ouverts, de tâches ouvertes et (avec Time) qui est présent maintenant. Cliquez sur une carte pour accéder à l’écran correspondant. Les demandes de congé ou de récup ouvertes apparaissent comme carte extra vers Time → Demandes, avec le nombre par type (1 Congé, 1 Récup, ou les deux)."
                 },
@@ -872,6 +876,15 @@
                 {
                     "label": "Supprimer les données de l’organisation",
                     "text": "Administrateurs uniquement. Téléchargez d’abord une exportation via Paramètres → Confidentialité & export des données. Cochez ensuite la confirmation sur Abonnement et saisissez votre mot de passe. Tous les administrateurs reçoivent un e-mail de confirmation. Pendant l’essai, vous pouvez ensuite supprimer définitivement vous-même (instantané technique sans médias, conservé 30 jours). Avec un abonnement payant, un délai de 7 jours s’applique avec bannière et e-mail de rappel ; l’administration WinProx effectue la suppression. Vous pouvez annuler d’ici là via Abonnement. Si l’essai se termine sans abonnement, des e-mails d’avertissement suivent et l’organisation peut être supprimée automatiquement (par défaut vers le jour 14)."
+                }
+            ]
+        },
+        "whats_new": {
+            "title": "Aide — Nouveau",
+            "actions": [
+                {
+                    "label": "Historique des versions",
+                    "text": "Vous voyez ici ce qui a changé récemment, le jour le plus récent en haut. Chaque jour est rangé sous Nouveau, Amélioré, Corrigé ou Important."
                 }
             ]
         },

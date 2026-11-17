@@ -24,6 +24,9 @@ Maximaal **één** nota per kalenderdag (Europe/Brussels): `docs/release-notes/d
 Lege categorie weglaten. Een gepubliceerde nota niet meer aanvullen; later werk gaat naar de volgende dag.
 
 ## Publiceer niet
-Concept mag mee in de commit. `git push` is niet live.
+Concept mag mee in de commit. `git push` is niet live. Een concept staat niet op Hulp → Nieuw.
 Verplaatsen naar `docs/release-notes/published/` en `Status: gepubliceerd` alleen nadat de gebruiker bevestigt dat díe wijzigingen op productie staan.
-Niet in productfiches, website of mail. Geen scherm bouwen. Zelf niet deployen en niet vragen om te publiceren.
+Niet in productfiches, website of mail. Geen tweede scherm. Zelf niet deployen en niet vragen om te publiceren.
+
+## Kaart op het beginscherm
+Zolang de nieuwste gepubliceerde nota hooguit een week oud is en deze gebruiker Hulp → Nieuw nog niet opende, staat daar de kaart Wat is er nieuw? Openen haalt ze weg. Een nieuwere nota toont ze opnieuw.
