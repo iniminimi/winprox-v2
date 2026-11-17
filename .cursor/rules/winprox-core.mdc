@@ -49,6 +49,7 @@ Lees **`WINPROX_RULES.md`** en **`docs/FEATURES.md`** vóór je code wijzigt. Bi
 4. Waar zinvol: API/webhook + audit; Pest-test op de workflow.
 5. `npm run check:architecture` + `php artisan test` groen.
 6. Frontend (`resources/css/**`, `resources/js/**`, views): **`npm run build`** meteen na de wijziging; `public/build/**` meecommitten.
+7. Klantgerichte release note (§15 / `release-notes.mdc`): alleen wat de gebruiker merkt, als concept van vandaag. Publiceren pas na productie.
 
 ## Verboden (V1-valkuilen)
 - `Model::create/update/delete` of `DB::` buiten Actions.

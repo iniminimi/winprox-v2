@@ -25,6 +25,9 @@ het enige accent. Geen regenboogaccenten.
 >    in pariteit), token-CSS/`wp-*`, thin Livewire → Actions + Form Requests, case-sensitive paden,
 >    foto-golden-path, géén blur op beheer, geen sector-/contractor-/owner-overhead.
 > 3. Bij twijfel of conflict: **stop en herlees**, kies de regel — niet de snelste hack.
+> 4. Na een afgeronde taak: beoordeel de klantgerichte release note (§15). Alleen wat de
+>    gebruiker merkt, als concept, maximaal één nota per dag. Publiceren pas als het
+>    op productie staat.
 > Doel: kleine, consistente diffs; geen wildgroei zoals in V1.
 
 ---
@@ -403,6 +406,7 @@ Geen extra statussen (`on_hold`/`not_executed` bestaan niet; vroeger inklappen n
 - Bij frontend-wijzigingen (`resources/css/**`, `resources/js/**`, views, Vite): **eerst** `npm run build`, gewijzigde `public/build/**` meecommitten.
 - Raakt het `lang/**`: alle talen in pariteit + `fix:locales`/`check:locales`/`check:locales:parity` vóór commit.
 - Geen test-artefacten committen (`tests/Avery_*.zip`, `_extract/`, `.env`, logs).
+- Klantgerichte release note: §15. Een concept hoort in dezelfde commit; publiceren niet.
 
 ### Push (+ deploy door gebruiker)
 - Na commit: **`git push origin main`**, tenzij de gebruiker expliciet vraagt om niet te pushen.
@@ -513,6 +517,8 @@ die leveren kleine winst en grote diffs.
 3. Autorisatie via **Policy** — geen losse rolchecks in Blade.
 4. Waar zinvol: test + audit; 4 locales in pariteit bij `lang/**`-wijzigingen.
 5. `npm run check:architecture` groen.
+6. Klantgerichte release note beoordeeld (§15). Zichtbare impact → concept van vandaag.
+   Geen schermwijziging → geen nota. Nooit publiceren in deze stap.
 
 ### 13.4 Automatische check
 `npm run check:architecture` faalt bij:
@@ -568,3 +574,72 @@ Verplicht bij nieuwe/gewijzigde uitgaande mail:
 - **Transactioneel** (QR-bevestiging, account-verify, reservering): zelfde default-mailer als
   staff/notificaties; markeer met `X-WinProx-Transactional: 1`.
 - Geen Amazon SES opnieuw inbouwen.
+
+---
+
+## 15. Klantgerichte release notes (hard voor AI)
+
+Na **elke afgeronde ontwikkelopdracht** beoordeel je of de eindgebruiker iets merkt:
+een beheerder, medewerker, uitvoerder, of iemand op een meldpagina of de website.
+De nota schrijf je **vanzelf**, in dezelfde taak. Niet wachten tot iemand erom vraagt.
+
+Dit is **geen** productfiche (§10a), **geen** `docs/FEATURES.md` en **geen** pagina-hulp.
+Die blijven apart. Er is nog **geen scherm** voor release notes. Bouw dat niet zelf
+bij het schrijven van een nota.
+
+### 15.1 Wel of niet
+Schrijf een punt alleen als alles hier waar is:
+
+- De gebruiker ziet het, of een bestaande stap werkt merkbaar beter.
+- Het is af en getest (lokaal; de checks van §9 en §10 zijn groen).
+- Het hoort bij deze opdracht, niet bij werk dat nog openstaat.
+
+Geen nota bij louter technische wijzigingen: refactor, test, stijl, vertaalbestanden,
+interne documentatie, checks, of een herbouw zonder ander schermgedrag.
+
+### 15.2 Hoe de tekst klinkt
+Nederlands, zoals je het aan een beheerder zou zeggen. Kort, meestal één zin:
+wat hij merkt of wat er beter werkt.
+
+Wel: «Bij een uitvoerder zie je hoeveel documenten er zijn. Tik erop om ze bij het team te beheren.»
+Niet: klassenaam, bestand, route, commit, of woorden als component, query, middleware.
+
+Eén punt, één categorie. **Belangrijk** alleen als hij het moet weten of iets moet
+doen, ook zonder dat hij erom vroeg. Anders Nieuw, Verbeterd of Opgelost.
+Gerelateerde wijzigingen van dezelfde dag worden **één** zin, niet een lijst per commit.
+
+### 15.3 Eén nota per dag
+Map: `docs/release-notes/`. Dag = kalenderdag **Europe/Brussels**. Bestandsnaam
+`YYYY-MM-DD.md`. Nooit een tweede nota op dezelfde dag.
+
+```markdown
+# 17 november 2026
+
+Status: concept
+
+## Nieuw
+
+- …
+
+## Verbeterd
+
+- …
+```
+
+Categorieën, in deze volgorde, lege categorie weglaten: **Nieuw**, **Verbeterd**,
+**Opgelost**, **Belangrijk**.
+
+Zolang het bestand `Status: concept` heeft, voeg je nieuwe zichtbare punten van
+die dag eraan toe. Een gepubliceerde nota wordt niet meer aangevuld. Zichtbaar
+werk dat later dezelfde dag klaar is, hoort bij de nota van de **volgende** dag.
+
+### 15.4 Publiceren pas na productie
+`git push` is niet live. De gebruiker deployt zelf (`./pull-deploy.sh`, §10).
+
+- Concept blijft in `docs/release-notes/draft/`. Dat bestand mag mee in de commit.
+- Publiceren = het bestand verplaatsen naar `docs/release-notes/published/` en
+  de statusregel zetten op `Status: gepubliceerd`.
+- Dat doe je **alleen** nadat de gebruiker bevestigt dat díe wijzigingen op
+  productie staan. Niet na de push, niet aan het eind van de dag, niet per mail,
+  en niet door de tekst in de productfiches of de website te zetten.
+- De agent deployt niet zelf en vraagt niet om te publiceren.

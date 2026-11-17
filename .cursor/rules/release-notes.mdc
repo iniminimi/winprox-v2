@@ -1,0 +1,29 @@
+---
+description: Na elke afgeronde taak een klantgerichte release note beoordelen. Publiceren pas als de wijziging op productie staat.
+alwaysApply: true
+---
+
+# Klantgerichte release notes (verplicht)
+
+Volledige werkwijze: **`WINPROX_RULES.md` §15**. Na elke afgeronde opdracht, vanzelf.
+
+## Beoordeel
+Schrijf een punt alleen als de eindgebruiker het merkt én het af en getest is.
+Geen nota bij refactor, test, stijl, locales, interne docs of een herbouw zonder ander schermgedrag.
+
+## Schrijf
+Nederlands, één zin, wat hij ziet of wat beter werkt. Geen klassenaam, bestand, route of ontwikkelaarswoord.
+Categorieën: **Nieuw**, **Verbeterd**, **Opgelost**, **Belangrijk**.
+**Belangrijk** alleen als hij het moet weten of iets moet doen. Gerelateerde punten van dezelfde dag = één zin.
+
+Wel: «Bij een uitvoerder zie je hoeveel documenten er zijn. Tik erop om ze bij het team te beheren.»
+Niet: «WorkersIndex toont een teller en linkt naar team.show.»
+
+## Bundel
+Maximaal **één** nota per kalenderdag (Europe/Brussels): `docs/release-notes/draft/YYYY-MM-DD.md`.
+Lege categorie weglaten. Een gepubliceerde nota niet meer aanvullen; later werk gaat naar de volgende dag.
+
+## Publiceer niet
+Concept mag mee in de commit. `git push` is niet live.
+Verplaatsen naar `docs/release-notes/published/` en `Status: gepubliceerd` alleen nadat de gebruiker bevestigt dat díe wijzigingen op productie staan.
+Niet in productfiches, website of mail. Geen scherm bouwen. Zelf niet deployen en niet vragen om te publiceren.

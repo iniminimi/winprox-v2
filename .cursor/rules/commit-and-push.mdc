@@ -38,9 +38,10 @@ We ontwikkelen en testen **lokaal** (Windows). Productie is **winprox.app** (Lin
    - `npm run check:locales:parity` (bij `lang/**`)
    - `npm run check:architecture`
    - `php artisan test` (relevante tests)
-4. **`git status`** — geen test-artefacten, geen `.env`, geen logs.
-5. **Commit** op `main` met duidelijke boodschap.
-6. **`git push origin main`** (of `git push -u origin HEAD` alleen als de gebruiker
+4. **Release note** — beoordeel zichtbare impact (`WINPROX_RULES.md` §15). Zo ja: het concept van vandaag bijwerken. Publiceren hoort hier niet bij.
+5. **`git status`** — geen test-artefacten, geen `.env`, geen logs.
+6. **Commit** op `main` met duidelijke boodschap.
+7. **`git push origin main`** (of `git push -u origin HEAD` alleen als de gebruiker
    expliciet een andere branch vroeg).
 
 Niet afsluiten met uncommitted werk dat klaar is. Alleen skippen als de gebruiker
