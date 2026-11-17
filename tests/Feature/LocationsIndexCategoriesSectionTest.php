@@ -49,6 +49,7 @@ it('toont op Categorieën alleen categorieën', function () {
         ->test(Index::class, ['section' => 'categories'])
         ->assertSet('section', 'categories')
         ->assertSee(__('locations.categories.title'))
+        ->assertSee('images/icons/category.png', false)
         ->assertSee('Onderhoud')
         ->assertSee(__('common.button.edit'))
         ->assertSee(__('common.button.delete'))
