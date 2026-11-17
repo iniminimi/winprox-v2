@@ -7,6 +7,8 @@
 
 let deferredPrompt = null;
 let deferredBackofficePrompt = null;
+let homescreenCanInstall = false;
+let backofficeCanInstall = false;
 
 const INSTALLED_KEY = 'wp-pwa-installed';
 const BACKOFFICE_INSTALLED_KEY = 'wp-backoffice-pwa-installed';
@@ -38,6 +40,15 @@ function markHomescreenInstalled() {
     markInstalled(INSTALLED_KEY, 'wp-pwa-installed');
 }
 
+function clearInstalled(key, className) {
+    try {
+        window.localStorage.removeItem(key);
+    } catch {
+        // Private mode: the class is enough for this page.
+    }
+    document.documentElement.classList.remove(className);
+}
+
 function browserInstallsDesktopApp() {
     const ua = navigator.userAgent;
     if (/Firefox\//.test(ua)) {
@@ -64,30 +75,32 @@ function markBackofficeInstalled() {
     document.documentElement.classList.remove('wp-backoffice-pwa-available');
 }
 
-async function hideWhenRelatedAppInstalled(buttonSelector, mark) {
-    if (!document.querySelector(buttonSelector)) {
-        return;
-    }
-
+async function relatedWebAppInstalled() {
     if (typeof navigator.getInstalledRelatedApps !== 'function') {
-        return;
+        return false;
     }
 
     try {
         const apps = await navigator.getInstalledRelatedApps();
-        if (apps.some((app) => app.platform === 'webapp')) {
-            mark();
-        }
+
+        return apps.some((app) => app.platform === 'webapp');
     } catch {
-        // The browser may refuse the call outside a secure top-level page.
+        return false;
     }
 }
 
 async function hideShortcutWhenInstalled() {
-    if (document.querySelector('[data-wp-homescreen-install]') && (isStandaloneDisplay() || readFlag(INSTALLED_KEY))) {
-        markHomescreenInstalled();
-    } else {
-        await hideWhenRelatedAppInstalled('[data-wp-homescreen-install]', markHomescreenInstalled);
+    const homescreen = document.querySelector('[data-wp-homescreen-install]');
+    if (homescreen) {
+        if (isStandaloneDisplay()) {
+            markHomescreenInstalled();
+        } else if (homescreenCanInstall) {
+            clearInstalled(INSTALLED_KEY, 'wp-pwa-installed');
+        } else if (await relatedWebAppInstalled() && !homescreenCanInstall) {
+            markHomescreenInstalled();
+        } else {
+            clearInstalled(INSTALLED_KEY, 'wp-pwa-installed');
+        }
     }
 
     syncBackofficeInstallButton();
@@ -96,12 +109,24 @@ async function hideShortcutWhenInstalled() {
         return;
     }
 
-    if (isStandaloneDisplay() || readFlag(BACKOFFICE_INSTALLED_KEY)) {
+    if (isStandaloneDisplay()) {
         markBackofficeInstalled();
         return;
     }
 
-    await hideWhenRelatedAppInstalled('[data-wp-backoffice-install]', markBackofficeInstalled);
+    if (backofficeCanInstall) {
+        clearInstalled(BACKOFFICE_INSTALLED_KEY, 'wp-backoffice-pwa-installed');
+        syncBackofficeInstallButton();
+        return;
+    }
+
+    if (await relatedWebAppInstalled() && !backofficeCanInstall) {
+        markBackofficeInstalled();
+        return;
+    }
+
+    clearInstalled(BACKOFFICE_INSTALLED_KEY, 'wp-backoffice-pwa-installed');
+    syncBackofficeInstallButton();
 }
 
 window.addEventListener('beforeinstallprompt', (event) => {
@@ -113,17 +138,22 @@ window.addEventListener('beforeinstallprompt', (event) => {
 
     event.preventDefault();
 
-    if (homescreen && !readFlag(INSTALLED_KEY)) {
+    if (homescreen && !isStandaloneDisplay()) {
+        homescreenCanInstall = true;
+        clearInstalled(INSTALLED_KEY, 'wp-pwa-installed');
         deferredPrompt = event;
     }
-    if (backoffice && !readFlag(BACKOFFICE_INSTALLED_KEY)) {
+    if (backoffice && !isStandaloneDisplay()) {
+        backofficeCanInstall = true;
+        clearInstalled(BACKOFFICE_INSTALLED_KEY, 'wp-backoffice-pwa-installed');
         deferredBackofficePrompt = event;
+        syncBackofficeInstallButton();
     }
 });
 
 document.addEventListener('click', (event) => {
     const trigger = event.target.closest('[data-wp-homescreen-install]');
-    if (!trigger || isStandaloneDisplay() || readFlag(INSTALLED_KEY) || !deferredPrompt) {
+    if (!trigger || isStandaloneDisplay() || !deferredPrompt) {
         return;
     }
 
@@ -142,7 +172,7 @@ document.addEventListener('click', (event) => {
 
 document.addEventListener('click', (event) => {
     const trigger = event.target.closest('[data-wp-backoffice-install]');
-    if (!trigger || isStandaloneDisplay() || readFlag(BACKOFFICE_INSTALLED_KEY) || !deferredBackofficePrompt) {
+    if (!trigger || isStandaloneDisplay() || !deferredBackofficePrompt) {
         return;
     }
 
