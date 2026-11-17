@@ -77,9 +77,15 @@
             || window.navigator.standalone === true) {
             document.documentElement.classList.add('wp-pwa-standalone');
         }
+        try {
+            if (window.localStorage.getItem('wp-push-decided') === '1') {
+                document.documentElement.classList.add('wp-push-decided');
+            }
+        } catch (e) {}
     </script>
     <style>
-        html:not(.wp-pwa-standalone) [data-wp-push-enable] { display: none !important; }
+        html:not(.wp-pwa-standalone) [data-wp-push-enable],
+        html.wp-push-decided [data-wp-push-enable] { display: none !important; }
     </style>
     @livewireStyles
 </head>

@@ -4,8 +4,29 @@
  * De tik is wat de browser eist voor toestemming.
  */
 
+const DECIDED_KEY = 'wp-push-decided';
+
 let synced = false;
-let decided = false;
+let decided = readDecided();
+
+function readDecided() {
+    try {
+        return window.localStorage.getItem(DECIDED_KEY) === '1';
+    } catch {
+        return false;
+    }
+}
+
+function markDecided() {
+    decided = true;
+    try {
+        window.localStorage.setItem(DECIDED_KEY, '1');
+    } catch {
+        // Private mode: the class is enough for this page.
+    }
+    document.documentElement.classList.add('wp-push-decided');
+    hidePushOffer();
+}
 
 function hidePushOffer() {
     document.documentElement.classList.remove('wp-push-offer');
@@ -48,7 +69,11 @@ function urlBase64ToUint8Array(value) {
 function offerPush() {
     const root = pushRoot();
     if (!root || !canAsk() || decided || Notification.permission !== 'default') {
-        hidePushOffer();
+        if (Notification.permission !== 'default') {
+            markDecided();
+        } else {
+            hidePushOffer();
+        }
         return;
     }
     document.documentElement.classList.add('wp-push-offer');
@@ -88,11 +113,14 @@ async function subscribe(root) {
         });
     }
     await storeSubscription(root, subscription);
-    hidePushOffer();
+    markDecided();
 }
 
 function refreshPush() {
     syncStandaloneClass();
+    if (readDecided()) {
+        markDecided();
+    }
     offerPush();
     const root = pushRoot();
     if (synced || !root || !canAsk() || Notification.permission !== 'granted') {
@@ -110,8 +138,7 @@ document.addEventListener('click', (event) => {
     if (!button || !root || !canAsk() || decided) {
         return;
     }
-    decided = true;
-    hidePushOffer();
+    markDecided();
     Notification.requestPermission().then((permission) => {
         if (permission !== 'granted') {
             return;
@@ -123,6 +150,9 @@ document.addEventListener('click', (event) => {
     });
 });
 
+if (decided) {
+    document.documentElement.classList.add('wp-push-decided');
+}
 syncStandaloneClass();
 ['standalone', 'fullscreen', 'minimal-ui'].forEach((mode) => {
     window.matchMedia(`(display-mode: ${mode})`).addEventListener('change', refreshPush);
