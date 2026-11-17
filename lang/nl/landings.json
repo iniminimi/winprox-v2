@@ -917,7 +917,7 @@
                 "Uren vergelijkt u met het uurrooster.",
                 "De uren geeft u door aan uw sociaal secretariaat.",
                 "Zonder smartphone? Voornaam + pincode volstaat op het scherm.",
-                "Pushmeldingen op de eigen gsm na de knop Pushmeldingen aanzetten. De knop verdwijnt meteen na toestemming."
+                "Pushmeldingen op de eigen gsm: eerst WinProx op het startscherm, daarna de knop Pushmeldingen aanzetten. De knop verdwijnt meteen na toestemming."
             ],
             "close": "Meer controle over wie, wanneer en waar er wordt ingeprikt — zonder badges of biometrische gegevens."
         },
@@ -990,7 +990,7 @@
                 },
                 {
                     "q": "Kan de gsm een melding sturen?",
-                    "a": "Na het aanmelden tikt de medewerker op Pushmeldingen aanzetten en staat meldingen toe. De knop verdwijnt meteen; verversen is niet nodig. Daarna kan de gsm een melding tonen als een dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of de medewerker na de dienst nog ingeklokt is. Op een iPhone alleen vanuit het icoon op het startscherm. Alleen op de gekoppelde gsm."
+                    "a": "Nadat WinProx op het startscherm staat, tikt de medewerker op Pushmeldingen aanzetten en staat meldingen toe. De knop verdwijnt meteen; verversen is niet nodig. Daarna kan de gsm een melding tonen als een dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of de medewerker na de dienst nog ingeklokt is. Op een iPhone alleen vanuit het icoon op het startscherm. Alleen op de gekoppelde gsm."
                 }
             ]
         },

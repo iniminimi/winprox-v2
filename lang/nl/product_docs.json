@@ -23,7 +23,7 @@
         "label": "Functies en mogelijkheden",
         "tagline": "Digitale prikklok, urenregistratie, uurrooster, meldingen en taken in één platform.",
         "highlight": "Medewerkers klokken in, bekijken hun uurrooster, voeren taken uit en melden een probleem via hun telefoon. Een app installeren is niet nodig.",
-        "intro": "WinProx is een online platform waarmee een organisatie medewerkers, werkuren, uurroosters, locaties en het dagelijkse werk bijhoudt. Het wordt gebruikt voor urenregistratie, personeelsplanning, werkbezoeken bij klanten, onderhoud, inspectierondes en het opvolgen van meldingen. Afhankelijk van de formule zijn ook de RSZ/CIAO-registratie, GPS-werkbezoeken, sensoren, ESG-metingen en softwarekoppelingen beschikbaar. Alles werkt in de browser: beheerders meestal op een computer, medewerkers op hun smartphone, via een QR-code of op een klokscherm.",
+        "intro": "WinProx is een online platform waarmee een organisatie medewerkers, werkuren, uurroosters, locaties en het dagelijkse werk bijhoudt. Het wordt gebruikt voor urenregistratie, personeelsplanning, werkbezoeken bij klanten, onderhoud, inspectierondes en het opvolgen van meldingen. Afhankelijk van de formule zijn ook de RSZ/CIAO-registratie, GPS-werkbezoeken, sensoren, ESG-metingen en softwarekoppelingen beschikbaar. Alles werkt in de browser: beheerder en medewerker op een computer of tablet, uitvoerders op hun smartphone, via een QR-code of op een klokscherm.",
         "flow": [
             "Inklokken",
             "Uurrooster",
@@ -48,7 +48,7 @@
                     "Locaties, teams, medewerkers en units beheren.",
                     "De RSZ/CIAO-registratie kan via de instellingen worden geactiveerd. Optionele GPS-werkbezoeken koppelen een bezoek aan een locatie.",
                     "Optioneel fotoalbum: uitvoerders maken foto's op de unit-QR. Locatie en unitnaam staan erbij. In de foto zelf staat onderaan datum, tijd, uitvoerder, unit en organisatienaam. U mailt ze vanuit Fotoalbum. De bestanden worden na een week gewist. U zet dit aan bij Instellingen, onder Je organisatie. Gebruik bijvoorbeeld: in een crèche nemen verzorgsters foto's van kindjes en sturen die door naar de ouders.",
-                    "Op de gsm van de uitvoerder staat na het aanmelden de knop Pushmeldingen aanzetten. Na toestemming verdwijnt die knop meteen. Daarna kan een melding verschijnen als een dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of de uitvoerder na het einde van de dienst nog ingeklokt is. Op een iPhone werkt dat alleen vanuit het startscherm-icoon."
+                    "De uitvoerder zet WinProx eerst op het startscherm (logo met plusje). Daarna verschijnt op de gsm de knop Pushmeldingen aanzetten. Na toestemming verdwijnt die knop meteen. Daarna kan een melding verschijnen als een dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of de uitvoerder na het einde van de dienst nog ingeklokt is. Op een iPhone werkt dat alleen vanuit het startscherm-icoon."
                 ],
                 "badge": "inbegrepen",
                 "key": "winprox_time"
@@ -376,7 +376,7 @@
             },
             {
                 "title": "Geen app nodig",
-                "body": "WinProx werkt in de browser. Beheerders gebruiken een computer. Medewerkers openen Clock Point en de QR-portalen op hun smartphone.",
+                "body": "WinProx werkt in de browser. Beheerder en medewerker gebruiken een computer of tablet. Uitvoerders openen Clock Point en de QR-portalen op hun smartphone.",
                 "items": [
                     "Geen installatie via de App Store of Google Play. Clock Point kan als snelkoppeling op het startscherm van de telefoon.",
                     "Beheer op de computer kan als venster: snelkoppeling op het bureaublad, zonder adresbalk. In Chrome of Edge via de knop in de zijbalk. Firefox doet dit niet; daar blijft de knop weg. Op een Mac zet Safari het via Bestand → Zet in Dock. Geen App Store."
@@ -443,12 +443,13 @@
                 "title": "Aanmelden",
                 "items": [
                     "Beheer: e-mail en wachtwoord. Wachtwoorden worden gehasht bewaard. Herhaalde mislukte pogingen worden tijdelijk geblokkeerd.",
+                    "Op een smartphone opent het beheer niet. Een beheerder of medewerker logt in op een computer of tablet.",
                     "Zelfregistratie werkt pas na de link in de bevestigingsmail. Niet-bevestigde aanmeldingen worden na 7 dagen verwijderd.",
                     "**Inloggen met Microsoft** (desktop): alleen een bestaand account waarvan het e-mailadres overeenkomt. Geen automatische nieuwe accounts. E-mail en wachtwoord blijven werken.",
                     "Andere software gebruikt een intrekbaar toegangstoken met gekozen rechten, niet de gewone login.",
                     "Uitvoerders melden zich aan via Clock Point (naam en persoonlijk icoon, of een PIN of biometrie). Geen e-mailaccount.",
                     "Melders gebruiken het publieke QR-portaal zonder account. Bij optionele e-mailbevestiging ontstaat de melding pas na de link.",
-                    "Op de gsm kan de uitvoerder pushmeldingen ontvangen over een dienst, verlof, een document, een mededeling of een vergeten uitklok. Hij zet dat aan met de knop Pushmeldingen aanzetten; die verdwijnt meteen na toestemming. Op een iPhone alleen vanuit het startscherm-icoon. De melding bevat geen inhoud van het document."
+                    "Op de gsm kan de uitvoerder pushmeldingen ontvangen over een dienst, verlof, een document, een mededeling of een vergeten uitklok. Nadat WinProx op het startscherm staat, zet hij dat aan met de knop Pushmeldingen aanzetten; die verdwijnt meteen na toestemming. Op een iPhone alleen vanuit het startscherm-icoon. De melding bevat geen inhoud van het document."
                 ]
             },
             {

@@ -23,7 +23,7 @@
         "label": "Features and capabilities",
         "tagline": "Digital time clock, time tracking, roster, issues and tasks in one platform.",
         "highlight": "People clock in, look at their roster, carry out tasks and report a problem from their phone. There is no app to install.",
-        "intro": "WinProx is an online platform an organisation uses to keep people, working hours, rosters, locations and day-to-day work. It is used for time tracking, staff planning, visits at customers, maintenance, inspection rounds and following up issues. Depending on the plan, RSZ/CIAO reporting, GPS work visits, sensors, ESG measurements and software links are also available. Everything works in the browser: administrators usually on a computer, people on a smartphone, via a QR code or on a clock screen.",
+        "intro": "WinProx is an online platform an organisation uses to keep people, working hours, rosters, locations and day-to-day work. It is used for time tracking, staff planning, visits at customers, maintenance, inspection rounds and following up issues. Depending on the plan, RSZ/CIAO reporting, GPS work visits, sensors, ESG measurements and software links are also available. Everything works in the browser: administrators and staff on a computer or tablet, field workers on a smartphone, via a QR code or on a clock screen.",
         "flow": [
             "Clock in",
             "Roster",
@@ -48,7 +48,7 @@
                     "Manage locations, teams, people and units.",
                     "RSZ/CIAO presence reporting can be turned on in settings. Optional GPS work visits tie a visit to a location.",
                     "Optional photo album: workers take photos on the unit QR. The location and unit name are shown. Inside the photo, at the bottom, are the date, time, worker, unit and organisation name. You email them from Photo album. The files are deleted after a week. Turn this on in Settings, under Your organisation. For example: in a nursery, carers take photos of the children and send them to the parents.",
-                    "After sign-in, the worker’s phone shows the button Turn on push notifications. It disappears as soon as notifications are allowed. An alert can then appear when a shift changes, leave or time off is approved, a document or announcement is ready, or the worker is still clocked in after the shift. On an iPhone this only works from the home screen icon."
+                    "The worker puts WinProx on the home screen first (logo with a plus). The phone then shows the button Turn on push notifications. It disappears as soon as notifications are allowed. An alert can then appear when a shift changes, leave or time off is approved, a document or announcement is ready, or the worker is still clocked in after the shift. On an iPhone this only works from the home screen icon."
                 ],
                 "badge": "included",
                 "key": "winprox_time"
@@ -376,7 +376,7 @@
             },
             {
                 "title": "No app needed",
-                "body": "WinProx works in the browser. Administrators use a computer. People open Clock Point and the QR portals on their smartphone.",
+                "body": "WinProx works in the browser. Administrators and staff use a computer or tablet. Field workers open Clock Point and the QR portals on their smartphone.",
                 "items": [
                     "No install from the App Store or Google Play. Clock Point can sit as a shortcut on the phone’s home screen.",
                     "The back office on a computer can open as its own window: a desktop shortcut, without the address bar. In Chrome or Edge, use the button in the sidebar. Firefox cannot do this; the button stays hidden. On a Mac, Safari does it via File → Add to Dock. No app store."
@@ -443,12 +443,13 @@
                 "title": "Sign-in",
                 "items": [
                     "Back office: email and password. Passwords are stored hashed. Repeated failed attempts are temporarily blocked.",
+                    "The back office does not open on a smartphone. An administrator or staff member signs in on a computer or tablet.",
                     "Self-registration works only after the link in the confirmation email. Unconfirmed sign-ups are deleted after 7 days.",
                     "**Sign in with Microsoft** (desktop): only an existing account whose email matches. No automatic new accounts. Email and password still work.",
                     "Other software uses a revocable access token with chosen permissions, not the ordinary login.",
                     "Workers sign in via Clock Point (name and personal icon, or a PIN or biometrics). No email account.",
                     "Reporters use the public QR portal without an account. With optional email confirmation, the issue is created only after the link.",
-                    "On the phone, a worker can receive push alerts about a shift, leave, a document, an announcement or a missed clock-out. They turn this on with the button Turn on push notifications; it disappears as soon as they allow notifications. On an iPhone only from the home screen icon. The alert does not include the document contents."
+                    "On the phone, a worker can receive push alerts about a shift, leave, a document, an announcement or a missed clock-out. Once WinProx is on the home screen, they turn this on with the button Turn on push notifications; it disappears as soon as they allow notifications. On an iPhone only from the home screen icon. The alert does not include the document contents."
                 ]
             },
             {

@@ -1,7 +1,7 @@
 /**
  * Clock Point: meldingen op de gekoppelde gsm.
- * iPhone levert push alleen aan de app op het beginscherm.
- * De knop is de tik die de browser eist voor toestemming.
+ * De knop verschijnt pas als WinProx op het startscherm staat.
+ * De tik is wat de browser eist voor toestemming.
  */
 
 let synced = false;
@@ -21,18 +21,16 @@ function standaloneDisplay() {
         || window.navigator.standalone === true;
 }
 
-function iosDevice() {
-    const ua = window.navigator.userAgent || '';
-    return /iPad|iPhone|iPod/.test(ua)
-        || (window.navigator.platform === 'MacIntel' && window.navigator.maxTouchPoints > 1);
-}
-
 function pushSupported() {
     return 'serviceWorker' in navigator && 'PushManager' in window && 'Notification' in window;
 }
 
+function pwaInstalled() {
+    return standaloneDisplay() || document.documentElement.classList.contains('wp-pwa-installed');
+}
+
 function canAsk() {
-    return pushSupported() && (!iosDevice() || standaloneDisplay());
+    return pushSupported() && pwaInstalled();
 }
 
 function urlBase64ToUint8Array(value) {
@@ -126,6 +124,7 @@ document.addEventListener('click', (event) => {
     });
 });
 
+document.addEventListener('wp-homescreen-installed', refreshPush);
 document.addEventListener('DOMContentLoaded', refreshPush);
 document.addEventListener('livewire:navigated', refreshPush);
 document.addEventListener('livewire:init', () => {

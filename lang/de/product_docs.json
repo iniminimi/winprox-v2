@@ -23,7 +23,7 @@
         "label": "Funktionen und Möglichkeiten",
         "tagline": "Digitale Stempeluhr, Zeiterfassung, Dienstplan, Meldungen und Aufgaben auf einer Plattform.",
         "highlight": "Mitarbeitende stempeln, sehen ihren Dienstplan, erledigen Aufgaben und melden ein Problem über das Telefon. Keine App zu installieren.",
-        "intro": "WinProx ist eine Online-Plattform, mit der eine Organisation Personen, Arbeitsstunden, Dienstpläne, Standorte und die tägliche Arbeit führt. Sie wird genutzt für Zeiterfassung, Personalplanung, Besuche bei Kunden, Wartung, Inspektionsrunden und die Nachverfolgung von Meldungen. Je nach Formel sind auch die RSZ/CIAO-Meldung, GPS-Arbeitsbesuche, Sensoren, ESG-Messungen und Software-Anbindungen verfügbar. Alles läuft im Browser: die Verwaltung meist am Computer, Mitarbeitende am Smartphone, über einen QR-Code oder auf einem Stempeldisplay.",
+        "intro": "WinProx ist eine Online-Plattform, mit der eine Organisation Personen, Arbeitsstunden, Dienstpläne, Standorte und die tägliche Arbeit führt. Sie wird genutzt für Zeiterfassung, Personalplanung, Besuche bei Kunden, Wartung, Inspektionsrunden und die Nachverfolgung von Meldungen. Je nach Formel sind auch die RSZ/CIAO-Meldung, GPS-Arbeitsbesuche, Sensoren, ESG-Messungen und Software-Anbindungen verfügbar. Alles läuft im Browser: Verwaltung und Mitarbeitende mit Login am Computer oder Tablet, Ausführende am Smartphone, über einen QR-Code oder auf einem Stempeldisplay.",
         "flow": [
             "Stempeln",
             "Dienstplan",
@@ -48,7 +48,7 @@
                     "Standorte, Teams, Personen und Units verwalten.",
                     "Die RSZ/CIAO-Meldung kann in den Einstellungen aktiviert werden. Optionale GPS-Arbeitsbesuche verknüpfen einen Besuch mit einem Ort.",
                     "Optionales Fotoalbum: Ausführende machen Fotos über den QR-Code der Einheit. Standort und Name stehen dabei. Im Foto selbst stehen unten Datum, Uhrzeit, Ausführender, Einheit und Organisationsname. Sie mailen sie aus dem Fotoalbum. Die Dateien werden nach einer Woche gelöscht. Sie schalten es unter Einstellungen, Ihre Organisation, ein. Zum Beispiel: in einer Kita machen Betreuerinnen Fotos von den Kindern und schicken sie an die Eltern.",
-                    "Nach der Anmeldung zeigt das Telefon des Ausführenden die Schaltfläche Push-Mitteilungen einschalten. Sie verschwindet, sobald Mitteilungen erlaubt sind. Danach kann ein Hinweis erscheinen, wenn sich eine Schicht ändert, Urlaub oder Ausgleich genehmigt ist, ein Dokument oder eine Mitteilung bereitliegt, oder der Ausführende nach Schichtende noch eingestempelt ist. Auf dem iPhone funktioniert das nur über das Symbol auf dem Startbildschirm."
+                    "Der Ausführende legt WinProx zuerst auf den Startbildschirm (Logo mit Plus). Danach zeigt das Telefon die Schaltfläche Push-Mitteilungen einschalten. Sie verschwindet, sobald Mitteilungen erlaubt sind. Danach kann ein Hinweis erscheinen, wenn sich eine Schicht ändert, Urlaub oder Ausgleich genehmigt ist, ein Dokument oder eine Mitteilung bereitliegt, oder der Ausführende nach Schichtende noch eingestempelt ist. Auf dem iPhone funktioniert das nur über das Symbol auf dem Startbildschirm."
                 ],
                 "badge": "inklusive",
                 "key": "winprox_time"
@@ -376,7 +376,7 @@
             },
             {
                 "title": "Keine App nötig",
-                "body": "WinProx läuft im Browser. Die Verwaltung nutzt einen Computer. Mitarbeitende öffnen Clock Point und die QR-Portale auf dem Smartphone.",
+                "body": "WinProx läuft im Browser. Verwaltung und Mitarbeitende mit Login nutzen einen Computer oder ein Tablet. Ausführende öffnen Clock Point und die QR-Portale auf dem Smartphone.",
                 "items": [
                     "Keine Installation über den App Store oder Google Play. Clock Point kann als Verknüpfung auf dem Startbildschirm des Telefons liegen.",
                     "Die Verwaltung am Computer kann als eigenes Fenster öffnen: eine Verknüpfung auf dem Desktop, ohne Adressleiste. In Chrome oder Edge über die Schaltfläche in der Seitenleiste. Firefox kann das nicht; die Schaltfläche bleibt ausgeblendet. Auf dem Mac macht Safari das über Ablage → Zum Dock hinzufügen. Kein App Store."
@@ -443,12 +443,13 @@
                 "title": "Anmeldung",
                 "items": [
                     "Verwaltung: E-Mail und Passwort. Passwörter werden gehasht gespeichert. Wiederholte Fehlversuche werden vorübergehend gesperrt.",
+                    "Auf einem Smartphone öffnet sich die Verwaltung nicht. Ein Administrator oder Mitarbeiter mit Login meldet sich am Computer oder Tablet an.",
                     "Selbstregistrierung gilt erst nach dem Link in der Bestätigungsmail. Unbestätigte Anmeldungen werden nach 7 Tagen gelöscht.",
                     "**Mit Microsoft anmelden** (Desktop): nur ein bestehendes Konto, dessen E-Mail übereinstimmt. Keine automatischen neuen Konten. E-Mail und Passwort bleiben möglich.",
                     "Andere Software nutzt ein widerrufbares Zugriffstoken mit gewählten Rechten, nicht die gewöhnliche Anmeldung.",
                     "Ausführende melden sich über Clock Point an (Name und persönliches Symbol, oder PIN oder Biometrie). Kein E-Mail-Konto.",
                     "Meldende nutzen das öffentliche QR-Portal ohne Konto. Bei optionaler E-Mail-Bestätigung entsteht die Meldung erst nach dem Link.",
-                    "Auf dem Telefon kann der Ausführende Push-Mitteilungen zu Schicht, Urlaub, Dokument, Mitteilung oder einem vergessenen Ausstempeln erhalten. Er schaltet sie mit der Schaltfläche Push-Mitteilungen einschalten ein; sie verschwindet sofort nach der Erlaubnis. Auf dem iPhone nur über das Symbol auf dem Startbildschirm. Der Hinweis enthält nicht den Inhalt des Dokuments."
+                    "Auf dem Telefon kann der Ausführende Push-Mitteilungen zu Schicht, Urlaub, Dokument, Mitteilung oder einem vergessenen Ausstempeln erhalten. Sobald WinProx auf dem Startbildschirm liegt, schaltet er sie mit der Schaltfläche Push-Mitteilungen einschalten ein; sie verschwindet sofort nach der Erlaubnis. Auf dem iPhone nur über das Symbol auf dem Startbildschirm. Der Hinweis enthält nicht den Inhalt des Dokuments."
                 ]
             },
             {

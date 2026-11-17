@@ -135,7 +135,7 @@ linkt naar zijn lijst):
   - Assistent is **gekoppeld aan de FAQ & kennisbank**.
   - **NL-UI:** onderschrift toont ook de hulplijn (+32 451 09 58 72, plain text); andere talen niet.
 
-**Device:** desktop-first (laptop).
+**Device:** computer of tablet. Een smartphone krijgt op `/login` en in het beheer geen formulier en geen schermen: een korte uitleg om een computer of tablet te gebruiken. Een tablet (ook iPad) mag wel. Wachtwoord herstellen en e-mail bevestigen blijven op de gsm werken. Clock Point, unit-QR en de website blijven op de gsm.
 
 **Nieuw t.o.v. huidige bouw (backlog):** Briefing-print (taken van vandaag per team),
 WinProx-assistent (DB-Q&A + doorgestuurde-vragen-tabel + FAQ-koppeling),
@@ -1468,7 +1468,7 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   na aanmelden. De manifest-scope is de site-root, zodat een Android-scan van sticker of
   klokscherm de geïnstalleerde app opent (bestaand icoon opnieuw zetten, anders houdt
   Android de oude scope). Op iPhone opent de camera Safari; daar blijft inklokken in die
-  browser. **Push naar de gekoppelde gsm** (alleen die gsm, na een tik op
+  browser. **Push naar de gekoppelde gsm** (alleen die gsm, nadat WinProx op het startscherm staat, na een tik op
   Pushmeldingen aanzetten; de knop verdwijnt meteen na toestemming, zonder
   de pagina te verversen; op iPhone alleen vanuit het startscherm-icoon): dienst
   gepubliceerd, gewijzigd of gecorrigeerd; verlof of recup goedgekeurd; nieuw
@@ -1517,8 +1517,8 @@ Wel nodig: een **eigen Microsoft-directory** (Azure-account). Aanmelden vraagt m
 Azure-diensten aanzetten — anders wordt het pay-as-you-go. **Niet** het M365-ontwikkelaarsprogramma
 (sandbox, vaak Visual Studio-abonnement, niet voor productie).
 
-**Wie:** alleen beheerder (`admin`) en medewerker (`employee`) op desktop.
-**Niet:** uitvoerders, Clock Point-QR, unit-QR, gasten, superuser.
+**Wie:** alleen beheerder (`admin`) en medewerker (`employee`) op een computer of tablet.
+**Niet:** uitvoerders, Clock Point-QR, unit-QR, gasten, superuser. Op een smartphone opent ook e-mail + wachtwoord het beheer niet (`EnsureBackofficeDesktop`).
 
 **Protocol:** Microsoft Entra ID via OpenID Connect (OIDC). Geen SAML, geen SCIM, geen Google,
 geen betaalde SSO-dienst (WorkOS e.d.).

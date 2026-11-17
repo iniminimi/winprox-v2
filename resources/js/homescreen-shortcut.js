@@ -36,8 +36,13 @@ function markInstalled(key, className) {
     document.documentElement.classList.add(className);
 }
 
+function notifyHomescreenInstall() {
+    document.dispatchEvent(new Event('wp-homescreen-installed'));
+}
+
 function markHomescreenInstalled() {
     markInstalled(INSTALLED_KEY, 'wp-pwa-installed');
+    notifyHomescreenInstall();
 }
 
 function clearInstalled(key, className) {
@@ -47,6 +52,9 @@ function clearInstalled(key, className) {
         // Private mode: the class is enough for this page.
     }
     document.documentElement.classList.remove(className);
+    if (key === INSTALLED_KEY) {
+        notifyHomescreenInstall();
+    }
 }
 
 function browserInstallsDesktopApp() {

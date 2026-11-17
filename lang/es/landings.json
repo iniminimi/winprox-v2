@@ -917,7 +917,7 @@
                 "Para limpieza y construcción: fichaje en el lugar de trabajo con QR + GPS.",
                 "CIAO/RSZ cuando corresponda.",
                 "¿Sin smartphone? Nombre + PIN bastan en la pantalla.",
-                "Avisos push en el propio teléfono tras Activar avisos push. El botón desaparece en cuanto se permiten."
+                "Avisos push en el propio teléfono: primero WinProx en la pantalla de inicio y después Activar avisos push. El botón desaparece en cuanto se permiten."
             ],
             "close": "Más control sobre quién ficha, cuándo y dónde — sin tarjetas ni datos biométricos."
         },
@@ -990,7 +990,7 @@
                 },
                 {
                     "q": "¿Puede el teléfono enviar un aviso?",
-                    "a": "Tras iniciar sesión, el trabajador pulsa Activar avisos push y permite los avisos. El botón desaparece enseguida; no hace falta actualizar. El teléfono puede mostrar un aviso si cambia un turno, se aprueba un permiso o una compensación, hay un documento o un aviso listo, o sigue fichado después del turno. En un iPhone solo desde el icono de la pantalla de inicio. Solo en el teléfono vinculado."
+                    "a": "Cuando WinProx está en la pantalla de inicio, el trabajador pulsa Activar avisos push y permite los avisos. El botón desaparece enseguida; no hace falta actualizar. El teléfono puede mostrar un aviso si cambia un turno, se aprueba un permiso o una compensación, hay un documento o un aviso listo, o sigue fichado después del turno. En un iPhone solo desde el icono de la pantalla de inicio. Solo en el teléfono vinculado."
                 }
             ]
         },

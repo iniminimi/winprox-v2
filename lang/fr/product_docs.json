@@ -23,7 +23,7 @@
         "label": "Fonctions et possibilités",
         "tagline": "Pointeuse digitale, suivi des heures, planning, signalements et tâches sur une seule plateforme.",
         "highlight": "Les personnes pointent, consultent leur planning, exécutent des tâches et signalent un problème depuis leur téléphone. Aucune appli à installer.",
-        "intro": "WinProx est une plateforme en ligne avec laquelle une organisation suit les personnes, les heures, les plannings, les sites et le travail quotidien. Elle sert au suivi des heures, à la planification du personnel, aux visites chez les clients, à l’entretien, aux tournées d’inspection et au suivi des signalements. Selon la formule, l’enregistrement ONSS/CIAO, les visites GPS, les capteurs, les mesures ESG et les liaisons logicielles sont aussi disponibles. Tout fonctionne dans le navigateur : les gestionnaires en général sur un ordinateur, les personnes sur un smartphone, via un QR ou sur un écran de pointeuse.",
+        "intro": "WinProx est une plateforme en ligne avec laquelle une organisation suit les personnes, les heures, les plannings, les sites et le travail quotidien. Elle sert au suivi des heures, à la planification du personnel, aux visites chez les clients, à l’entretien, aux tournées d’inspection et au suivi des signalements. Selon la formule, l’enregistrement ONSS/CIAO, les visites GPS, les capteurs, les mesures ESG et les liaisons logicielles sont aussi disponibles. Tout fonctionne dans le navigateur : gestionnaires et collaborateurs sur un ordinateur ou une tablette, exécutants sur un smartphone, via un QR ou sur un écran de pointeuse.",
         "flow": [
             "Pointer",
             "Planning",
@@ -48,7 +48,7 @@
                     "Gérer les sites, les équipes, les personnes et les unités.",
                     "L’enregistrement ONSS/CIAO peut être activé dans les paramètres. Les visites GPS facultatives relient une visite à un lieu.",
                     "Album photo facultatif : les exécutants prennent des photos sur le QR de l'unité. Le lieu et le nom de l'unité sont indiqués. Dans la photo même, en bas, figurent la date, l'heure, l'exécutant, l'unité et le nom de l'organisation. Vous les envoyez depuis Album photo. Les fichiers sont effacés après une semaine. Activez-le dans Paramètres, sous Votre organisation. Par exemple : dans une crèche, les puéricultrices prennent des photos des enfants et les envoient aux parents.",
-                    "Après la connexion, le téléphone de l’exécutant affiche le bouton Activer les notifications push. Il disparaît dès que les notifications sont autorisées. Une alerte peut ensuite apparaître si un service change, un congé ou une récupération est approuvé, un document ou une annonce est prêt, ou si l’exécutant est encore pointé après la fin du service. Sur iPhone, cela ne fonctionne que depuis l’icône de l’écran d’accueil."
+                    "L’exécutant met d’abord WinProx sur l’écran d’accueil (logo avec le plus). Le téléphone affiche ensuite le bouton Activer les notifications push. Il disparaît dès que les notifications sont autorisées. Une alerte peut ensuite apparaître si un service change, un congé ou une récupération est approuvé, un document ou une annonce est prêt, ou si l’exécutant est encore pointé après la fin du service. Sur iPhone, cela ne fonctionne que depuis l’icône de l’écran d’accueil."
                 ],
                 "badge": "inclus",
                 "key": "winprox_time"
@@ -376,7 +376,7 @@
             },
             {
                 "title": "Pas d’appli à installer",
-                "body": "WinProx fonctionne dans le navigateur. Les gestionnaires utilisent un ordinateur. Les personnes ouvrent Clock Point et les portails QR sur leur smartphone.",
+                "body": "WinProx fonctionne dans le navigateur. Gestionnaires et collaborateurs utilisent un ordinateur ou une tablette. Les exécutants ouvrent Clock Point et les portails QR sur leur smartphone.",
                 "items": [
                     "Aucune installation via l’App Store ou Google Play. Clock Point peut être un raccourci sur l’écran d’accueil du téléphone.",
                     "La gestion sur ordinateur peut s’ouvrir dans sa propre fenêtre : un raccourci sur le bureau, sans barre d’adresse. Dans Chrome ou Edge, via le bouton dans la barre latérale. Firefox ne le fait pas ; le bouton reste caché. Sur Mac, Safari le fait via Fichier → Ajouter au Dock. Pas d’App Store."
@@ -443,12 +443,13 @@
                 "title": "Connexion",
                 "items": [
                     "Back-office : e-mail et mot de passe. Les mots de passe sont stockés hachés. Les tentatives échouées répétées sont bloquées temporairement.",
+                    "Sur un smartphone, la gestion ne s’ouvre pas. Un gestionnaire ou un collaborateur se connecte sur un ordinateur ou une tablette.",
                     "L’auto-inscription ne fonctionne qu’après le lien dans l’e-mail de confirmation. Les inscriptions non confirmées sont supprimées après 7 jours.",
                     "**Se connecter avec Microsoft** (ordinateur) : uniquement un compte existant dont l’e-mail correspond. Pas de nouveaux comptes automatiques. L’e-mail et le mot de passe restent possibles.",
                     "Les autres logiciels utilisent un jeton d’accès révocable avec des droits choisis, pas la connexion ordinaire.",
                     "Les exécutants se connectent via Clock Point (nom et icône personnelle, ou un PIN ou la biométrie). Pas de compte e-mail.",
                     "Les signalants utilisent le portail QR public sans compte. Avec la confirmation e-mail optionnelle, le signalement n’existe qu’après le lien.",
-                    "Sur le téléphone, l’exécutant peut recevoir des notifications push sur un service, un congé, un document, une annonce ou un oubli de pointage de sortie. Il les active avec le bouton Activer les notifications push ; il disparaît dès l’autorisation. Sur iPhone, seulement depuis l’icône de l’écran d’accueil. L’alerte ne contient pas le contenu du document."
+                    "Sur le téléphone, l’exécutant peut recevoir des notifications push sur un service, un congé, un document, une annonce ou un oubli de pointage de sortie. Une fois WinProx sur l’écran d’accueil, il les active avec le bouton Activer les notifications push ; il disparaît dès l’autorisation. Sur iPhone, seulement depuis l’icône de l’écran d’accueil. L’alerte ne contient pas le contenu du document."
                 ]
             },
             {

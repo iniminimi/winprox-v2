@@ -128,7 +128,7 @@
                 },
                 {
                     "label": "Notificări push",
-                    "text": "După autentificare, butonul Activați notificările push este în dreapta, sub logo. Apăsați și permiteți mesajele. Butonul dispare imediat; nu trebuie să reîmprospătați pagina. Primiți un mesaj dacă tura se schimbă, concediul sau recuperarea este aprobată, există un document sau un anunț, sau ați rămas pontat după tură. Pe iPhone funcționează doar dacă deschideți WinProx din pictograma de pe ecranul de start. Doar pe acest telefon. Mesajul nu conține textul documentului."
+                    "text": "Puneți mai întâi WinProx pe ecranul de start prin logo-ul cu plus. Apoi apare butonul Activați notificările push. Apăsați și permiteți mesajele. Butonul dispare imediat; nu trebuie să reîmprospătați pagina. Primiți un mesaj dacă tura se schimbă, concediul sau recuperarea este aprobată, există un document sau un anunț, sau ați rămas pontat după tură. Pe iPhone funcționează doar dacă deschideți WinProx din pictograma de pe ecranul de start. Doar pe acest telefon. Mesajul nu conține textul documentului."
                 },
                 {
                     "label": "Deconectare",

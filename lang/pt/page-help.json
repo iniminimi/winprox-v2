@@ -128,7 +128,7 @@
                 },
                 {
                     "label": "Notificações push",
-                    "text": "Depois de iniciar sessão, o botão Ativar notificações push fica à direita, por baixo do logótipo. Toque e permita os avisos. O botão desaparece logo; não precisa de atualizar a página. Recebe um aviso se o turno mudar, se as férias ou a compensação forem aprovadas, se houver um documento ou comunicado, ou se continuar a registar o ponto depois do turno. No iPhone só funciona se abrir o WinProx pelo ícone no ecrã inicial. Só neste telemóvel. O aviso não inclui o texto do documento."
+                    "text": "Coloque primeiro o WinProx no ecrã inicial pelo logótipo com o mais. Depois aparece o botão Ativar notificações push. Toque e permita os avisos. O botão desaparece logo; não precisa de atualizar a página. Recebe um aviso se o turno mudar, se as férias ou a compensação forem aprovadas, se houver um documento ou comunicado, ou se continuar a registar o ponto depois do turno. No iPhone só funciona se abrir o WinProx pelo ícone no ecrã inicial. Só neste telemóvel. O aviso não inclui o texto do documento."
                 },
                 {
                     "label": "Terminar sessão",

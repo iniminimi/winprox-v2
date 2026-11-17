@@ -1107,7 +1107,7 @@
                 },
                 {
                     "label": "Avisos push",
-                    "text": "Después de iniciar sesión, el botón Activar avisos push está a la derecha, bajo el logo. Púlselo y permita los avisos. El botón desaparece enseguida; no hace falta actualizar la página. Recibirá un aviso si cambia su turno, se aprueba un permiso o una compensación, hay un documento o un aviso listo, o sigue fichado después del turno. En un iPhone solo funciona si abre WinProx desde el icono de la pantalla de inicio. Solo en este teléfono. El aviso no incluye el texto del documento."
+                    "text": "Ponga primero WinProx en la pantalla de inicio con el logo del signo más. Después aparece el botón Activar avisos push. Púlselo y permita los avisos. El botón desaparece enseguida; no hace falta actualizar la página. Recibirá un aviso si cambia su turno, se aprueba un permiso o una compensación, hay un documento o un aviso listo, o sigue fichado después del turno. En un iPhone solo funciona si abre WinProx desde el icono de la pantalla de inicio. Solo en este teléfono. El aviso no incluye el texto del documento."
                 },
                 {
                     "label": "Cerrar sesión",
@@ -1524,7 +1524,7 @@
                 },
                 {
                     "label": "Avisos push en el teléfono",
-                    "text": "Tras iniciar sesión, el operario ve a la derecha, bajo el logo, el botón Activar avisos push. Lo pulsa y permite los avisos. El botón desaparece enseguida; no hace falta actualizar la página. Su teléfono puede mostrar un aviso si cambia un turno, se aprueba un permiso o una compensación, hay un documento o un aviso listo, o sigue fichado después del turno. En un iPhone solo funciona desde el icono de la pantalla de inicio. Solo en el teléfono vinculado. El aviso no incluye el texto del documento."
+                    "text": "El operario pone primero WinProx en la pantalla de inicio con el logo del signo más. Después aparece el botón Activar avisos push. Lo pulsa y permite los avisos. El botón desaparece enseguida; no hace falta actualizar la página. Su teléfono puede mostrar un aviso si cambia un turno, se aprueba un permiso o una compensación, hay un documento o un aviso listo, o sigue fichado después del turno. En un iPhone solo funciona desde el icono de la pantalla de inicio. Solo en el teléfono vinculado. El aviso no incluye el texto del documento."
                 }
             ]
         },
@@ -2186,7 +2186,7 @@
                 },
                 {
                     "label": "Avisos push en el teléfono",
-                    "text": "Tras iniciar sesión, el operario ve a la derecha, bajo el logo, el botón Activar avisos push. Lo pulsa y permite los avisos. El botón desaparece enseguida; no hace falta actualizar la página. En un iPhone solo funciona desde el icono de la pantalla de inicio. Solo en el teléfono vinculado."
+                    "text": "El operario pone primero WinProx en la pantalla de inicio con el logo del signo más. Después aparece el botón Activar avisos push. Lo pulsa y permite los avisos. El botón desaparece enseguida; no hace falta actualizar la página. En un iPhone solo funciona desde el icono de la pantalla de inicio. Solo en el teléfono vinculado."
                 }
             ]
         },

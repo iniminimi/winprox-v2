@@ -23,7 +23,7 @@
         "label": "Funciones y posibilidades",
         "tagline": "Reloj de fichar digital, registro de horas, cuadrante, avisos y tareas en una sola plataforma.",
         "highlight": "Las personas fichan, consultan su cuadrante, hacen tareas y avisan de un problema desde el teléfono. No hay ninguna aplicación que instalar.",
-        "intro": "WinProx es una plataforma en línea con la que una organización lleva personas, horas de trabajo, cuadrantes, sedes y el trabajo diario. Sirve para el registro de horas, la planificación del personal, las visitas a clientes, el mantenimiento, las rondas de inspección y el seguimiento de avisos. Según la fórmula, también están el registro ONSS/CIAO, las visitas GPS, los sensores, las mediciones ESG y las conexiones con otro software. Todo funciona en el navegador: la administración normalmente en un ordenador, las personas en el smartphone, con un QR o en una pantalla de fichaje.",
+        "intro": "WinProx es una plataforma en línea con la que una organización lleva personas, horas de trabajo, cuadrantes, sedes y el trabajo diario. Sirve para el registro de horas, la planificación del personal, las visitas a clientes, el mantenimiento, las rondas de inspección y el seguimiento de avisos. Según la fórmula, también están el registro ONSS/CIAO, las visitas GPS, los sensores, las mediciones ESG y las conexiones con otro software. Todo funciona en el navegador: la administración en un ordenador o tablet, los operarios en el smartphone, con un QR o en una pantalla de fichaje.",
         "flow": [
             "Fichar",
             "Cuadrante",
@@ -48,7 +48,7 @@
                     "Gestionar sedes, equipos, personas y unidades.",
                     "El registro ONSS/CIAO se puede activar en los ajustes. Las visitas GPS opcionales vinculan una visita a un lugar.",
                     "Álbum de fotos opcional: los operarios hacen fotos en el QR de la unidad. La sede y el nombre de la unidad aparecen. En la propia foto, abajo, figuran la fecha, la hora, el operario, la unidad y el nombre de la organización. Usted las envía desde Álbum de fotos. Los archivos se borran al cabo de una semana. Se activa en Ajustes, bajo Su organización. Por ejemplo: en una guardería, las cuidadoras hacen fotos de los niños y las envían a los padres.",
-                    "Tras iniciar sesión, el teléfono del operario muestra el botón Activar avisos push. Desaparece en cuanto se permiten los avisos. Después puede aparecer un aviso si cambia un turno, se aprueba un permiso o una compensación, hay un documento o un aviso listo, o el operario sigue fichado después del turno. En un iPhone solo funciona desde el icono de la pantalla de inicio."
+                    "El operario pone primero WinProx en la pantalla de inicio (logo con el signo más). El teléfono muestra después el botón Activar avisos push. Desaparece en cuanto se permiten los avisos. Después puede aparecer un aviso si cambia un turno, se aprueba un permiso o una compensación, hay un documento o un aviso listo, o el operario sigue fichado después del turno. En un iPhone solo funciona desde el icono de la pantalla de inicio."
                 ],
                 "badge": "incluido",
                 "key": "winprox_time"
@@ -376,7 +376,7 @@
             },
             {
                 "title": "Sin aplicación",
-                "body": "WinProx funciona en el navegador. La administración usa un ordenador. Las personas abren Clock Point y los portales QR en el smartphone.",
+                "body": "WinProx funciona en el navegador. La administración usa un ordenador o una tablet. Los operarios abren Clock Point y los portales QR en el smartphone.",
                 "items": [
                     "Sin instalación desde App Store o Google Play. Clock Point puede quedar como acceso directo en la pantalla de inicio del teléfono.",
                     "La gestión en el ordenador puede abrirse en su propia ventana: un acceso directo en el escritorio, sin barra de direcciones. En Chrome o Edge, con el botón de la barra lateral. Firefox no puede; el botón permanece oculto. En un Mac, Safari lo hace con Archivo → Añadir al Dock. Sin tienda de aplicaciones."
@@ -443,12 +443,13 @@
                 "title": "Acceso",
                 "items": [
                     "Gestión: correo y contraseña. Las contraseñas se guardan con hash. Los intentos fallidos repetidos se bloquean temporalmente.",
+                    "En un smartphone la gestión no se abre. Un administrador o un empleado entra en un ordenador o una tablet.",
                     "El alta propia solo vale tras el enlace del correo de confirmación. Las altas no confirmadas se eliminan a los 7 días.",
                     "**Iniciar sesión con Microsoft** (escritorio): solo una cuenta existente cuyo correo coincida. Sin cuentas nuevas automáticas. El correo y la contraseña siguen funcionando.",
                     "Otro software usa un token de acceso revocable con permisos elegidos, no el acceso ordinario.",
                     "Los operarios entran por Clock Point (nombre e icono personal, o un PIN o biometría). Sin cuenta de correo.",
                     "Quien avisa usa el portal QR público sin cuenta. Con la confirmación de correo opcional, el aviso solo existe tras el enlace.",
-                    "En el teléfono, el operario puede recibir avisos push sobre un turno, un permiso, un documento, un aviso o un olvido de fichar la salida. Los activa con el botón Activar avisos push; desaparece en cuanto los permite. En un iPhone solo desde el icono de la pantalla de inicio. El aviso no incluye el contenido del documento."
+                    "En el teléfono, el operario puede recibir avisos push sobre un turno, un permiso, un documento, un aviso o un olvido de fichar la salida. Cuando WinProx está en la pantalla de inicio, los activa con el botón Activar avisos push; desaparece en cuanto los permite. En un iPhone solo desde el icono de la pantalla de inicio. El aviso no incluye el contenido del documento."
                 ]
             },
             {

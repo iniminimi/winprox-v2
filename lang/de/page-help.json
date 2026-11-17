@@ -1107,7 +1107,7 @@
                 },
                 {
                     "label": "Push-Mitteilungen",
-                    "text": "Nach der Anmeldung steht rechts unter dem Logo die Schaltfläche Push-Mitteilungen einschalten. Tippen Sie darauf und erlauben Sie Mitteilungen. Die Schaltfläche verschwindet sofort; die Seite muss nicht neu geladen werden. Danach kommt ein Hinweis, wenn sich Ihre Schicht ändert, Urlaub oder Ausgleich genehmigt ist, ein Dokument oder eine Mitteilung bereitliegt, oder Sie nach Schichtende noch eingestempelt sind. Auf dem iPhone funktioniert das nur, wenn Sie WinProx über das Symbol auf dem Startbildschirm öffnen. Nur auf diesem Telefon. Der Hinweis enthält keinen Text aus dem Dokument."
+                    "text": "Legen Sie WinProx zuerst über das Logo mit dem Plus auf den Startbildschirm. Danach erscheint die Schaltfläche Push-Mitteilungen einschalten. Tippen Sie darauf und erlauben Sie Mitteilungen. Die Schaltfläche verschwindet sofort; die Seite muss nicht neu geladen werden. Danach kommt ein Hinweis, wenn sich Ihre Schicht ändert, Urlaub oder Ausgleich genehmigt ist, ein Dokument oder eine Mitteilung bereitliegt, oder Sie nach Schichtende noch eingestempelt sind. Auf dem iPhone funktioniert das nur, wenn Sie WinProx über das Symbol auf dem Startbildschirm öffnen. Nur auf diesem Telefon. Der Hinweis enthält keinen Text aus dem Dokument."
                 },
                 {
                     "label": "Abmelden",
@@ -1524,7 +1524,7 @@
                 },
                 {
                     "label": "Push-Mitteilungen auf dem Telefon",
-                    "text": "Nach der Anmeldung sieht der Ausführende rechts unter dem Logo die Schaltfläche Push-Mitteilungen einschalten. Er tippt darauf und erlaubt Mitteilungen. Die Schaltfläche verschwindet sofort; die Seite muss nicht neu geladen werden. Danach kann sein Telefon einen Hinweis zeigen, wenn sich eine Schicht ändert, Urlaub oder Ausgleich genehmigt ist, ein Dokument oder eine Mitteilung bereitliegt, oder er nach Schichtende noch eingestempelt ist. Auf dem iPhone funktioniert das nur über das Symbol auf dem Startbildschirm. Nur auf dem verknüpften Telefon. Der Hinweis enthält keinen Text aus dem Dokument."
+                    "text": "Der Ausführende legt WinProx zuerst über das Logo mit dem Plus auf den Startbildschirm. Danach erscheint die Schaltfläche Push-Mitteilungen einschalten. Er tippt darauf und erlaubt Mitteilungen. Die Schaltfläche verschwindet sofort; die Seite muss nicht neu geladen werden. Danach kann sein Telefon einen Hinweis zeigen, wenn sich eine Schicht ändert, Urlaub oder Ausgleich genehmigt ist, ein Dokument oder eine Mitteilung bereitliegt, oder er nach Schichtende noch eingestempelt ist. Auf dem iPhone funktioniert das nur über das Symbol auf dem Startbildschirm. Nur auf dem verknüpften Telefon. Der Hinweis enthält keinen Text aus dem Dokument."
                 }
             ]
         },
@@ -2186,7 +2186,7 @@
                 },
                 {
                     "label": "Push-Mitteilungen auf dem Telefon",
-                    "text": "Nach der Anmeldung sieht der Ausführende rechts unter dem Logo die Schaltfläche Push-Mitteilungen einschalten. Er tippt darauf und erlaubt Mitteilungen. Die Schaltfläche verschwindet sofort; die Seite muss nicht neu geladen werden. Auf dem iPhone funktioniert das nur über das Symbol auf dem Startbildschirm. Nur auf dem verknüpften Telefon."
+                    "text": "Der Ausführende legt WinProx zuerst über das Logo mit dem Plus auf den Startbildschirm. Danach erscheint die Schaltfläche Push-Mitteilungen einschalten. Er tippt darauf und erlaubt Mitteilungen. Die Schaltfläche verschwindet sofort; die Seite muss nicht neu geladen werden. Auf dem iPhone funktioniert das nur über das Symbol auf dem Startbildschirm. Nur auf dem verknüpften Telefon."
                 }
             ]
         },

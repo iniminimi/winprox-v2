@@ -917,7 +917,7 @@
                 "For cleaning and construction: clock in on site with QR + GPS.",
                 "CIAO/RSZ where applicable.",
                 "No smartphone? First name + PIN is enough on the display.",
-                "Push alerts on the worker’s own phone after Turn on push notifications. The button disappears as soon as they allow them."
+                "Push alerts on the worker’s own phone: WinProx on the home screen first, then Turn on push notifications. The button disappears as soon as they allow them."
             ],
             "close": "More control over who clocks in, when and where — without badges or biometric data."
         },
@@ -990,7 +990,7 @@
                 },
                 {
                     "q": "Can the phone send an alert?",
-                    "a": "After sign-in, the worker taps Turn on push notifications and allows notifications. The button disappears at once; no refresh is needed. The phone can then show an alert when a shift changes, leave or time off is approved, a document or announcement is ready, or the worker is still clocked in after the shift. On an iPhone only from the home screen icon. Only on the linked phone."
+                    "a": "Once WinProx is on the home screen, the worker taps Turn on push notifications and allows notifications. The button disappears at once; no refresh is needed. The phone can then show an alert when a shift changes, leave or time off is approved, a document or announcement is ready, or the worker is still clocked in after the shift. On an iPhone only from the home screen icon. Only on the linked phone."
                 }
             ]
         },

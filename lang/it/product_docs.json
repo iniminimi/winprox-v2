@@ -23,7 +23,7 @@
         "label": "Funzioni e possibilità",
         "tagline": "Timbratrice digitale, ore, turni, segnalazioni e compiti in un’unica piattaforma.",
         "highlight": "Le persone timbrano, consultano i turni, svolgono compiti e segnalano un problema dal telefono. Non c’è un’app da installare.",
-        "intro": "WinProx è una piattaforma online con cui un’organizzazione tiene persone, ore di lavoro, turni, sedi e il lavoro quotidiano. Serve per le ore, la pianificazione del personale, le visite dai clienti, la manutenzione, i giri di ispezione e il seguito delle segnalazioni. A seconda della formula sono disponibili anche la registrazione ONSS/CIAO, le visite GPS, i sensori, le misure ESG e i collegamenti software. Tutto funziona nel browser: la gestione di solito al computer, le persone sullo smartphone, con un QR o su uno schermo timbratrice.",
+        "intro": "WinProx è una piattaforma online con cui un’organizzazione tiene persone, ore di lavoro, turni, sedi e il lavoro quotidiano. Serve per le ore, la pianificazione del personale, le visite dai clienti, la manutenzione, i giri di ispezione e il seguito delle segnalazioni. A seconda della formula sono disponibili anche la registrazione ONSS/CIAO, le visite GPS, i sensori, le misure ESG e i collegamenti software. Tutto funziona nel browser: la gestione su computer o tablet, gli esecutori sullo smartphone, con un QR o su uno schermo timbratrice.",
         "flow": [
             "Timbrare",
             "Turni",
@@ -48,7 +48,7 @@
                     "Gestire sedi, team, persone e unità.",
                     "La registrazione ONSS/CIAO si può attivare nelle impostazioni. Le visite GPS facoltative collegano una visita a un luogo.",
                     "Album foto facoltativo: gli esecutori scattano foto sul QR dell'unità. La sede e il nome dell'unità sono indicati. Nella foto stessa, in basso, compaiono data, ora, esecutore, unità e nome dell'organizzazione. Le invia da Album foto. I file vengono cancellati dopo una settimana. Si attiva in Impostazioni, sotto La sua organizzazione. Per esempio: in un asilo nido, le educatrici scattano foto dei bambini e le inviano ai genitori.",
-                    "Dopo l’accesso, il telefono dell’esecutore mostra il pulsante Attiva le notifiche push. Sparisce appena gli avvisi sono consentiti. Poi può comparire un avviso se un turno cambia, ferie o recupero sono approvati, un documento o una comunicazione è pronto, o l’esecutore risulta ancora in servizio dopo la fine del turno. Su iPhone funziona solo dall’icona sulla schermata Home."
+                    "L’esecutore mette prima WinProx sulla schermata Home (logo con il più). Il telefono mostra poi il pulsante Attiva le notifiche push. Sparisce appena gli avvisi sono consentiti. Poi può comparire un avviso se un turno cambia, ferie o recupero sono approvati, un documento o una comunicazione è pronto, o l’esecutore risulta ancora in servizio dopo la fine del turno. Su iPhone funziona solo dall’icona sulla schermata Home."
                 ],
                 "badge": "incluso",
                 "key": "winprox_time"
@@ -376,7 +376,7 @@
             },
             {
                 "title": "Nessuna app",
-                "body": "WinProx funziona nel browser. La gestione usa un computer. Le persone aprono Clock Point e i portali QR sullo smartphone.",
+                "body": "WinProx funziona nel browser. La gestione usa un computer o un tablet. Gli esecutori aprono Clock Point e i portali QR sullo smartphone.",
                 "items": [
                     "Nessuna installazione da App Store o Google Play. Clock Point può stare come collegamento sulla schermata Home del telefono.",
                     "La gestione al computer può aprirsi in una finestra propria: un collegamento sul desktop, senza barra degli indirizzi. In Chrome o Edge, con il pulsante nella barra laterale. Firefox non può; il pulsante resta nascosto. Su Mac, Safari lo fa con File → Aggiungi al Dock. Nessun app store."
@@ -443,12 +443,13 @@
                 "title": "Accesso",
                 "items": [
                     "Gestione: e-mail e password. Le password sono salvate con hash. I tentativi falliti ripetuti vengono bloccati temporaneamente.",
+                    "Su uno smartphone la gestione non si apre. Un amministratore o un collaboratore accede da computer o tablet.",
                     "L’auto-registrazione vale solo dopo il link nell’e-mail di conferma. Le registrazioni non confermate sono eliminate dopo 7 giorni.",
                     "**Accedi con Microsoft** (desktop): solo un account esistente il cui indirizzo e-mail coincide. Nessun account nuovo automatico. E-mail e password restano possibili.",
                     "Altri software usano un token di accesso revocabile con permessi scelti, non l’accesso ordinario.",
                     "Gli esecutori accedono tramite Clock Point (nome e icona personale, oppure un PIN o la biometria). Nessun account e-mail.",
                     "Chi segnala usa il portale QR pubblico senza account. Con la conferma e-mail opzionale, la segnalazione nasce solo dopo il link.",
-                    "Sul telefono, l’esecutore può ricevere notifiche push su un turno, ferie, un documento, una comunicazione o un’uscita dimenticata. Le attiva con il pulsante Attiva le notifiche push; sparisce appena le consente. Su iPhone solo dall’icona sulla schermata Home. L’avviso non contiene il contenuto del documento."
+                    "Sul telefono, l’esecutore può ricevere notifiche push su un turno, ferie, un documento, una comunicazione o un’uscita dimenticata. Quando WinProx è sulla schermata Home, le attiva con il pulsante Attiva le notifiche push; sparisce appena le consente. Su iPhone solo dall’icona sulla schermata Home. L’avviso non contiene il contenuto del documento."
                 ]
             },
             {

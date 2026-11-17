@@ -128,7 +128,7 @@
                 },
                 {
                     "label": "Powiadomienia push",
-                    "text": "Po zalogowaniu przycisk Włącz powiadomienia push jest po prawej, pod logo. Stuknij i zezwól na powiadomienia. Przycisk znika od razu; nie trzeba odświeżać strony. Dostaniesz powiadomienie, gdy zmieni się zmiana, urlop lub odbiór zostanie zatwierdzony, jest dokument lub ogłoszenie, albo nadal jesteś zarejestrowany po zmianie. Na iPhonie działa to tylko po otwarciu WinProx z ikony na ekranie głównym. Tylko na tym telefonie. Powiadomienie nie zawiera treści dokumentu."
+                    "text": "Najpierw dodaj WinProx do ekranu głównego przez logo z plusem. Potem pojawia się przycisk Włącz powiadomienia push. Stuknij i zezwól na powiadomienia. Przycisk znika od razu; nie trzeba odświeżać strony. Dostaniesz powiadomienie, gdy zmieni się zmiana, urlop lub odbiór zostanie zatwierdzony, jest dokument lub ogłoszenie, albo nadal jesteś zarejestrowany po zmianie. Na iPhonie działa to tylko po otwarciu WinProx z ikony na ekranie głównym. Tylko na tym telefonie. Powiadomienie nie zawiera treści dokumentu."
                 },
                 {
                     "label": "Wyloguj się",
