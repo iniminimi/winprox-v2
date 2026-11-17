@@ -1,6 +1,6 @@
 <div class="wp-stack">
     <x-wp-page-head-title
-        icon="information-circle"
+        :assistant-video="asset('video/assistant_new.mp4')"
         :title="__('whats_new.title')"
         help-page="whats_new"
         :subtitle="__('whats_new.subtitle')"

@@ -36,6 +36,7 @@ it('toont de versiegeschiedenis nieuwste dag eerst en haalt de kaart weg', funct
     Livewire::actingAs($user)
         ->test(WhatsNew::class)
         ->assertSee(__('whats_new.title'), false)
+        ->assertSee('video/assistant_new.mp4', false)
         ->assertSeeInOrder([
             'Bij een uitvoerder zie je hoeveel documenten en mededelingen er zijn.',
             'Je kunt het beheer op de computer als eigen venster zetten',
