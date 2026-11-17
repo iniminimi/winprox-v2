@@ -282,6 +282,8 @@
         "announcement_active_hint": "The announcement appears on Clock Point for the selected worker or the whole team.",
         "worker_documents_count": "{1} :count document|[2,*] :count documents",
         "worker_announcements_count": "{1} :count announcement|[2,*] :count announcements",
+        "manage_documents": "Manage documents",
+        "manage_announcements": "Manage announcements",
         "filters": {
             "search_documents": "Search by description, file or worker",
             "search_announcements": "Search by text or worker",

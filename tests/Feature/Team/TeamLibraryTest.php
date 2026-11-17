@@ -1,6 +1,7 @@
 <?php
 
 use App\Actions\Team\UpdateWorkerAction;
+use App\Livewire\Pages\Team;
 use App\Livewire\Public\TimePortal;
 use App\Livewire\Public\UnitPortal;
 use App\Livewire\Teams\Announcements;
@@ -349,6 +350,49 @@ it('pagineert documenten en mededelingen per 25', function () {
     Livewire::actingAs($admin)
         ->test(Announcements::class, ['team' => $team])
         ->assertViewHas('announcements', fn ($announcements) => $announcements->count() === 25 && $announcements->total() === 30);
+});
+
+it('stuurt de teller in de uitvoerdersrij naar de documenten en mededelingen van dat team', function () {
+    [$tenant, $admin, $team, $worker] = teamLibrarySetup();
+    TeamDocument::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'worker_id' => $worker->id,
+    ]);
+    TeamAnnouncement::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'worker_id' => $worker->id,
+    ]);
+
+    $this->actingAs($admin)
+        ->get(route('team.show', $team))
+        ->assertOk()
+        ->assertSee(__('team.library.manage_documents'), false)
+        ->assertSee(__('team.library.manage_announcements'), false)
+        ->assertSee('openWorkerDocuments('.$worker->id.')', false)
+        ->assertSee('openWorkerAnnouncements('.$worker->id.')', false);
+
+    Livewire::actingAs($admin)
+        ->test(Team::class, ['internalTeam' => $team])
+        ->call('openWorkerDocuments', $worker->id)
+        ->assertDispatched('team-documents-show-worker', workerId: $worker->id);
+
+    Livewire::actingAs($admin)
+        ->test(Team::class, ['internalTeam' => $team])
+        ->call('openWorkerAnnouncements', $worker->id)
+        ->assertDispatched('team-announcements-show-worker', workerId: $worker->id);
+
+    $other = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $outsider = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $other->id,
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(Team::class, ['internalTeam' => $team])
+        ->call('openWorkerDocuments', $outsider->id)
+        ->assertNotDispatched('team-documents-show-worker');
 });
 
 it('opent de lijst gefilterd op de uitvoerder via de teller in de uitvoerdersrij', function () {

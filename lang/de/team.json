@@ -282,6 +282,8 @@
         "announcement_active_hint": "Die Mitteilung erscheint am Clock Point für die gewählte Person oder das ganze Team.",
         "worker_documents_count": "{1} :count Dokument|[2,*] :count Dokumente",
         "worker_announcements_count": "{1} :count Mitteilung|[2,*] :count Mitteilungen",
+        "manage_documents": "Dokumente verwalten",
+        "manage_announcements": "Mitteilungen verwalten",
         "filters": {
             "search_documents": "Nach Beschreibung, Datei oder Ausführende suchen",
             "search_announcements": "Nach Text oder Ausführende suchen",

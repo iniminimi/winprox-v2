@@ -41,6 +41,8 @@ use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\Unit;
 use App\Models\User;
+use App\Livewire\Teams\Announcements;
+use App\Livewire\Teams\Documents;
 use App\Models\Worker;
 use App\Models\WorkerLeaveEntitlement;
 use App\Support\Tenancy;
@@ -225,6 +227,33 @@ class Team extends Component
     public function isBackofficeSection(): bool
     {
         return $this->section === 'backoffice';
+    }
+
+    public function openWorkerDocuments(int $workerId): void
+    {
+        $this->openWorkerLibrary(Documents::class, 'team-documents-show-worker', $workerId);
+    }
+
+    public function openWorkerAnnouncements(int $workerId): void
+    {
+        $this->openWorkerLibrary(Announcements::class, 'team-announcements-show-worker', $workerId);
+    }
+
+    private function openWorkerLibrary(string $component, string $event, int $workerId): void
+    {
+        $team = $this->viewingTeam;
+        if ($team === null || $workerId < 1) {
+            return;
+        }
+
+        $this->authorize('manageContent', $team);
+
+        $onThisTeam = $team->workers()->whereKey($workerId)->exists();
+        if (! $onThisTeam) {
+            return;
+        }
+
+        $this->dispatch($event, workerId: $workerId)->to($component);
     }
 
     /**

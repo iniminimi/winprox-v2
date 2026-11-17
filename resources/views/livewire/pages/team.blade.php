@@ -120,18 +120,24 @@
                                 <span class="wp-pill wp-pill--closed">{{ __('team.workers.inactive') }}</span>
                             @endunless
                             @if ($canEditContent && $worker->active_team_documents_count > 0)
-                                <button type="button" class="wp-pill wp-pill--new"
-                                        wire:click="$dispatch('team-documents-show-worker', { workerId: {{ $worker->id }} })"
-                                        x-on:click="document.getElementById('team-documents-{{ $viewingTeam->id }}')?.scrollIntoView({ behavior: 'smooth', block: 'start' })">
-                                    {{ trans_choice('team.library.worker_documents_count', $worker->active_team_documents_count, ['count' => $worker->active_team_documents_count]) }}
-                                </button>
+                                <x-wp-tooltip class="wp-tooltip--below" :text="__('team.library.manage_documents')">
+                                    <button type="button" class="wp-pill wp-pill--new"
+                                            wire:click="openWorkerDocuments({{ $worker->id }})"
+                                            x-on:click="document.getElementById('team-documents-{{ $viewingTeam->id }}')?.scrollIntoView({ behavior: 'smooth', block: 'start' })"
+                                            aria-label="{{ __('team.library.manage_documents') }}">
+                                        {{ trans_choice('team.library.worker_documents_count', $worker->active_team_documents_count, ['count' => $worker->active_team_documents_count]) }}
+                                    </button>
+                                </x-wp-tooltip>
                             @endif
                             @if ($canEditContent && $worker->active_team_announcements_count > 0)
-                                <button type="button" class="wp-pill wp-pill--new"
-                                        wire:click="$dispatch('team-announcements-show-worker', { workerId: {{ $worker->id }} })"
-                                        x-on:click="document.getElementById('team-announcements-{{ $viewingTeam->id }}')?.scrollIntoView({ behavior: 'smooth', block: 'start' })">
-                                    {{ trans_choice('team.library.worker_announcements_count', $worker->active_team_announcements_count, ['count' => $worker->active_team_announcements_count]) }}
-                                </button>
+                                <x-wp-tooltip class="wp-tooltip--below" :text="__('team.library.manage_announcements')">
+                                    <button type="button" class="wp-pill wp-pill--new"
+                                            wire:click="openWorkerAnnouncements({{ $worker->id }})"
+                                            x-on:click="document.getElementById('team-announcements-{{ $viewingTeam->id }}')?.scrollIntoView({ behavior: 'smooth', block: 'start' })"
+                                            aria-label="{{ __('team.library.manage_announcements') }}">
+                                        {{ trans_choice('team.library.worker_announcements_count', $worker->active_team_announcements_count, ['count' => $worker->active_team_announcements_count]) }}
+                                    </button>
+                                </x-wp-tooltip>
                             @endif
                             @if ($canEditContent)
                                 <button type="button" class="btn btn--surface btn--sm" wire:click="openEditWorker({{ $worker->id }})">{{ __('common.button.edit') }}</button>

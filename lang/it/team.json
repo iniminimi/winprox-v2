@@ -282,6 +282,8 @@
         "announcement_active_hint": "La comunicazione appare su Clock Point per l’esecutore scelto o per tutto il team.",
         "worker_documents_count": "{1} :count documento|[2,*] :count documenti",
         "worker_announcements_count": "{1} :count comunicazione|[2,*] :count comunicazioni",
+        "manage_documents": "Gestire i documenti",
+        "manage_announcements": "Gestire le comunicazioni",
         "filters": {
             "search_documents": "Cerca per descrizione, file o esecutore",
             "search_announcements": "Cerca per testo o esecutore",

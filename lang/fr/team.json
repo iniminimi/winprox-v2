@@ -282,6 +282,8 @@
         "announcement_active_hint": "L’annonce apparaît sur Clock Point pour l’exécutant choisi ou pour toute l’équipe.",
         "worker_documents_count": "{1} :count document|[2,*] :count documents",
         "worker_announcements_count": "{1} :count annonce|[2,*] :count annonces",
+        "manage_documents": "Gérer les documents",
+        "manage_announcements": "Gérer les annonces",
         "filters": {
             "search_documents": "Rechercher par description, fichier ou exécutant",
             "search_announcements": "Rechercher par texte ou exécutant",

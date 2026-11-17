@@ -50,6 +50,10 @@
     white-space: nowrap;
 }
 
+button.wp-pill {
+    cursor: pointer;
+}
+
 .wp-pill .wp-icon {
     width: 0.875rem;
     height: 0.875rem;

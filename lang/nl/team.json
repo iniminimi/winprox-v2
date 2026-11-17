@@ -282,6 +282,8 @@
         "announcement_active_hint": "De mededeling verschijnt op Clock Point voor de gekozen uitvoerder of voor het hele team.",
         "worker_documents_count": "{1} :count document|[2,*] :count documenten",
         "worker_announcements_count": "{1} :count mededeling|[2,*] :count mededelingen",
+        "manage_documents": "Documenten beheren",
+        "manage_announcements": "Mededelingen beheren",
         "filters": {
             "search_documents": "Zoek op omschrijving, bestand of uitvoerder",
             "search_announcements": "Zoek op tekst of uitvoerder",

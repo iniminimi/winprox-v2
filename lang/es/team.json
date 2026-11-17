@@ -282,6 +282,8 @@
         "announcement_active_hint": "El aviso aparece en Clock Point para el ejecutor elegido o para todo el equipo.",
         "worker_documents_count": "{1} :count documento|[2,*] :count documentos",
         "worker_announcements_count": "{1} :count aviso|[2,*] :count avisos",
+        "manage_documents": "Gestionar documentos",
+        "manage_announcements": "Gestionar avisos",
         "filters": {
             "search_documents": "Buscar por descripción, archivo o ejecutor",
             "search_announcements": "Buscar por texto o ejecutor",
