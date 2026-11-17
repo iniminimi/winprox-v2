@@ -515,7 +515,7 @@
             "been": "Hier geweest"
         },
         "homescreen": {
-            "title": "Zet WinProx op je startscherm",
+            "title": "Zet WinProx op je startscherm:",
             "help_title": "Clock Point op je startscherm",
             "help_intro": "Tik het WinProx-icoon: op Android opent Chrome de vraag om WinProx op het startscherm te zetten. Daarna meld je je aan zonder QR. Op een vaste prikklok klok je in door de sticker of het klokscherm te scannen. Geen App Store.",
             "help_android": "Android (Chrome): één tik op het icoon. Bevestig “Toevoegen aan startscherm”. Daarna werkt Aanmelden in die snelkoppeling.",

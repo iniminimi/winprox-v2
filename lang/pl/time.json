@@ -155,7 +155,7 @@
             "been": "Już tu byłem"
         },
         "homescreen": {
-            "title": "Dodaj WinProx do ekranu głównego",
+            "title": "Dodaj WinProx do ekranu głównego:",
             "help_title": "Clock Point na ekranie głównym",
             "help_intro": "Proszę nacisnąć ikonę WinProx: na Androidzie Chrome pyta, czy dodać WinProx do ekranu głównego. Potem logowanie odbywa się bez kodu QR. Przy stałym zegarze wejście rejestruje się, skanując naklejkę albo ekran zegara. Bez App Store.",
             "help_android": "Android (Chrome): jedno naciśnięcie ikony. Proszę potwierdzić „Dodaj do ekranu głównego”. Logowanie działa potem z tego skrótu.",
