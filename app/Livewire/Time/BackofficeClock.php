@@ -21,7 +21,9 @@ class BackofficeClock extends Component
     {
         $open = $this->openShift($findShift);
 
-        $this->punch($punch, $open !== null ? BackofficePunch::ClockOut : BackofficePunch::ClockIn);
+        if ($this->punch($punch, $open !== null ? BackofficePunch::ClockOut : BackofficePunch::ClockIn)) {
+            $this->js('window.location.reload()');
+        }
     }
 
     public function toggleBreak(PunchBackofficeSessionAction $punch, FindOpenWorkShiftForWorkerAction $findShift): void
@@ -52,12 +54,12 @@ class BackofficeClock extends Component
         ]);
     }
 
-    private function punch(PunchBackofficeSessionAction $punch, BackofficePunch $kind): void
+    private function punch(PunchBackofficeSessionAction $punch, BackofficePunch $kind): bool
     {
         $user = auth()->user();
         $tenant = $user?->tenant;
         if (! $user instanceof User || ! $tenant instanceof Tenant) {
-            return;
+            return false;
         }
 
         $this->authorize('clockFromBackoffice', $tenant);
@@ -77,7 +79,11 @@ class BackofficeClock extends Component
                 'break_not_open' => __('time.backoffice_clock.errors.break_closed'),
                 default => throw $e,
             };
+
+            return false;
         }
+
+        return true;
     }
 
     private function openShift(FindOpenWorkShiftForWorkerAction $findShift): ?\App\Models\WorkShift

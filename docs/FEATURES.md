@@ -894,8 +894,9 @@ productsector op `Tenant`.
   **Inklokken vanuit beheer** (Instellingen → Prikklok-beveiliging, standaard uit): beheerder
   en medewerker met een prikklok-team klokken zichzelf in vanuit de zijbalk na e-mail en
   wachtwoord (`ClockSource::Backoffice`). Geen gsm-koppeling en geen GPS-poort. Naast
-  Inklokken/Uitklokken staat Pauze nemen / Pauze eindigen. De sessieknop in de zijbalk heet
-  Afmelden.
+  Inklokken/Uitklokken staat Pauze nemen / Pauze eindigen. Na Inklokken of Uitklokken
+  ververst de pagina, zodat het dashboard de aanwezigheid meteen juist toont. De
+  sessieknop in de zijbalk heet Afmelden.
   **Externe uitvoerders toestaan** (Instellingen → Prikklok-beveiliging, standaard uit,
   `time_allow_external_workers`): uit = de uitvoerder-popup (Personen → Teams) verbergt het
   vakje Externe uitvoerder en de bedrijfsnaam. Bestaande externe uitvoerders blijven extern

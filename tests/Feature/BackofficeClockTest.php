@@ -43,12 +43,15 @@ it('toont inklokken en pauze naast elkaar en wisselt de labels', function () {
 
     $workerId = (int) $admin->fresh()->linkedWorker->id;
 
-    Livewire::actingAs($admin)
+    $clock = Livewire::actingAs($admin)
         ->test(BackofficeClock::class)
         ->call('clock')
         ->assertSee(__('time.portal.clock.out'), false)
-        ->assertSee(__('time.backoffice_clock.start_break'), false)
-        ->call('toggleBreak')
+        ->assertSee(__('time.backoffice_clock.start_break'), false);
+
+    expect(json_encode($clock->effects))->toContain('window.location.reload()');
+
+    $clock->call('toggleBreak')
         ->assertSee(__('time.backoffice_clock.end_break'), false)
         ->call('toggleBreak')
         ->assertSee(__('time.backoffice_clock.start_break'), false)
