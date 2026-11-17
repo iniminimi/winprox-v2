@@ -40,7 +40,16 @@
         "gps_invalid_coords": "Coordinate non valide. Inserisca numeri validi.",
         "gps_out_of_range": "Coordinate fuori intervallo. Latitudine: -90 a 90, longitudine: -180 a 180.",
         "gps_latitude_placeholder": "Latitudine",
-        "gps_longitude_placeholder": "Longitudine"
+        "gps_longitude_placeholder": "Longitudine",
+        "errors": {
+            "tenant_mismatch": "Questo adesivo QR e questa unità non appartengono alla stessa organizzazione.",
+            "not_linkable": "Questo adesivo QR non può essere collegato in questo momento.",
+            "already_linked": "Qualcun altro ha già collegato questo adesivo QR.",
+            "failed": "Collegamento non riuscito. Riprovi.",
+            "invalid_unit": "Scelga un'unità valida.",
+            "unit_no_category": "Questa unità non ha ancora una categoria. Chieda al suo amministratore di assegnarne una.",
+            "unit_not_in_team": "Questa unità non è assegnata al suo team."
+        }
     },
     "unassigned_guest": {
         "title": "(ri)collega un'unità",

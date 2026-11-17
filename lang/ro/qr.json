@@ -40,7 +40,16 @@
         "gps_invalid_coords": "Coordonate invalide. Introduceți numere valide.",
         "gps_out_of_range": "Coordonate în afara intervalului. Latitudine: -90 până la 90, longitudine: -180 până la 180.",
         "gps_latitude_placeholder": "Latitudine",
-        "gps_longitude_placeholder": "Longitudine"
+        "gps_longitude_placeholder": "Longitudine",
+        "errors": {
+            "tenant_mismatch": "Acest autocolant QR și această unitate nu aparțin aceleiași organizații.",
+            "not_linkable": "Acest autocolant QR nu poate fi legat acum.",
+            "already_linked": "Altcineva a legat deja acest autocolant QR.",
+            "failed": "Legarea nu a reușit. Încercați din nou.",
+            "invalid_unit": "Alegeți o unitate validă.",
+            "unit_no_category": "Această unitate nu are încă o categorie. Cereți administratorului să atribuie una.",
+            "unit_not_in_team": "Această unitate nu este atribuită echipei dvs."
+        }
     },
     "unassigned_guest": {
         "title": "(re)legați o unitate",

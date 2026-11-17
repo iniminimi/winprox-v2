@@ -463,7 +463,8 @@
                     "QR-meldingen op het publieke portaal blijven onzichtbaar tot een beheerder ze goedkeurt.",
                     "Supporttoegang is uitzonderlijk en standaard alleen-lezen.",
                     "Een telefoon wordt aan één uitvoerder gekoppeld. Beheer of een teamleader kan die koppeling vrijgeven. Herhaalde foute aanmelding wordt geblokkeerd tot vrijgave.",
-                    "Optionele PIN of biometrie. Optionele GPS-controle bij inklokken."
+                    "Optionele PIN of biometrie. Optionele GPS-controle bij inklokken.",
+                    "Bij een onverwachte fout ziet de gebruiker een begrijpelijke melding met een korte referentiecode, nooit technische details. Dezelfde code staat in het beveiligde serverlog, zodat support de fout snel terugvindt."
                 ]
             },
             {
@@ -475,7 +476,8 @@
                     "Export van het account en self-service verwijdering van de organisatie. Bewaartermijnen liggen vast.",
                     "Optionele e-mailbevestiging bij een QR-melding: een onbevestigd concept wordt automatisch verwijderd, inclusief foto’s. Geen gebruikersaccount.",
                     "Een gepland uurrooster is optioneel. Een vorige versie terugzetten kan alleen wie het rooster mag bewerken, en alleen gedurende een beperkte tijd.",
-                    "Optionele doorgifte van aanwezigheid naar de Belgische RSZ (CIAO). Het rijksregisternummer wordt versleuteld bewaard. De klant vult het ondernemingsnummer in. Geslaagde doorgiftes worden na een beperkte termijn verwijderd. Een export zonder rijksregisternummer is beschikbaar."
+                    "Optionele doorgifte van aanwezigheid naar de Belgische RSZ (CIAO). Het rijksregisternummer wordt versleuteld bewaard. De klant vult het ondernemingsnummer in. Geslaagde doorgiftes worden na een beperkte termijn verwijderd. Een export zonder rijksregisternummer is beschikbaar.",
+                    "Technische foutlogs staan alleen op de server en worden maximaal 14 dagen bewaard."
                 ],
                 "key": "privacy"
             },

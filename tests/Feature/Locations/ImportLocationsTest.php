@@ -237,3 +237,31 @@ it('preserves imported locations that already have units when undoing', function
         ->and(Location::where('name', 'Keep Me')->exists())->toBeTrue()
         ->and(Location::where('name', 'Delete Me')->exists())->toBeFalse();
 });
+
+it('reports an unexpected database error and returns a translated message without SQL', function () {
+    \Illuminate\Support\Facades\Exceptions::fake();
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+
+    $this->mock(\App\Actions\Locations\CreateLocationAction::class)
+        ->shouldReceive('handle')
+        ->andThrow(new RuntimeException('SQLSTATE[23000]: Duplicate entry secret@example.com'));
+
+    $file = UploadedFile::fake()->createWithContent(
+        'locations.csv',
+        "name,street,house_number,postal_code,city,country_code\nDepot A,Kerkstraat,1,9000,Gent,BE\n",
+    );
+
+    $result = app(ImportLocationsAction::class)->handle(
+        new ImportLocationsData(filePath: $file->getRealPath(), originalName: $file->getClientOriginalName()),
+        $tenant->id,
+        $user->id,
+    );
+
+    expect($result['success'])->toBeFalse()
+        ->and($result['errors'])->toBe([__('locations.locations_csv.errors.database')])
+        ->and(implode(' ', $result['errors']))->not->toContain('SQLSTATE')
+        ->and(Location::where('tenant_id', $tenant->id)->count())->toBe(0);
+    \Illuminate\Support\Facades\Exceptions::assertReported(RuntimeException::class);
+});

@@ -25,6 +25,10 @@
 
         <h1 class="wp-error-title">{{ $title ?? __('error.default.title') }}</h1>
         <p class="wp-error-message">{{ $message ?? __('error.default.message') }}</p>
+        @if (! empty($reference))
+            <p class="wp-error-message">{{ __('error.reference_hint') }}</p>
+            <p class="wp-error-message"><strong>{{ __('error.reference', ['reference' => $reference]) }}</strong></p>
+        @endif
 
         <div class="wp-error-actions">
             @if(!empty($primaryAction))

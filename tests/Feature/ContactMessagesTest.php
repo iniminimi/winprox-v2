@@ -200,3 +200,25 @@ it('updates unread count correctly', function () {
 
     $component->assertSee('2');
 });
+
+it('reports a failed outbound message and shows only a translated message', function () {
+    \Illuminate\Support\Facades\Exceptions::fake();
+    $superuser = User::factory()->superuser()->create();
+
+    $this->mock(\App\Actions\Contact\SendNewOutboundMessageAction::class)
+        ->shouldReceive('handle')
+        ->andThrow(new \Exception('550 relay denied for secret@example.com'));
+
+    $message = Livewire::actingAs($superuser)
+        ->test(ContactMessages::class)
+        ->set('newEmail', 'klant@example.com')
+        ->set('newSubject', 'Onderwerp')
+        ->set('newMessageBody', 'Een bericht')
+        ->call('sendNewMessage')
+        ->errors()
+        ->first('newMessage');
+
+    expect($message)->toBe(__('contact-messages.failed_to_send'))
+        ->and($message)->not->toContain('secret@example.com');
+    \Illuminate\Support\Facades\Exceptions::assertReported(fn (\Exception $e) => str_contains($e->getMessage(), '550 relay denied'));
+});

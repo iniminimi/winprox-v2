@@ -69,7 +69,7 @@
       "unexpected_headers": "Colonne sconosciute: :columns",
       "row": "Riga :line: :message",
       "no_rows": "Nessuna riga valida trovata.",
-      "database": "Errore del database: :message",
+      "database": "L'importazione non è riuscita a causa di un errore imprevisto. Non è stato salvato nulla. Riprovi o contatti WinProx.",
       "unsupported_format": "Formato file non valido. Usa CSV o Excel (.xlsx).",
       "duplicate_row": "Cliente duplicato in questo file.",
       "incomplete_address": "Sede incompleto — street, postal_code e city sono obbligatori insieme.",

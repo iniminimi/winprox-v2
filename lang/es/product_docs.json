@@ -463,7 +463,8 @@
                     "Los avisos QR del portal público permanecen invisibles hasta que un administrador los aprueba.",
                     "El acceso de soporte es excepcional y de solo lectura por defecto.",
                     "Un teléfono queda vinculado a un operario. Gestión o un jefe de equipo puede liberar ese vínculo. Un acceso erróneo repetido sigue bloqueado hasta la liberación.",
-                    "PIN o biometría opcionales. Control GPS opcional al fichar la entrada."
+                    "PIN o biometría opcionales. Control GPS opcional al fichar la entrada.",
+                    "Si ocurre un error inesperado, el usuario ve un mensaje comprensible con un código de referencia breve, nunca detalles técnicos. El mismo código figura en el registro protegido del servidor, para que el soporte encuentre el error rápidamente."
                 ]
             },
             {
@@ -475,7 +476,8 @@
                     "Exportación de la cuenta y baja en autoservicio de la organización. Los plazos de conservación están fijados.",
                     "Confirmación de correo opcional en un aviso QR: un borrador no confirmado se elimina solo, fotos incluidas. Sin cuenta de usuario.",
                     "Un horario planificado es opcional. Restaurar una versión anterior solo puede quien puede editar el horario, y solo durante un tiempo limitado.",
-                    "Envío opcional de presencia a la seguridad social belga (CIAO). El número de registro nacional se guarda cifrado. El cliente indica el número de empresa. Los envíos correctos se eliminan tras un plazo limitado. Hay una exportación sin el número de registro nacional."
+                    "Envío opcional de presencia a la seguridad social belga (CIAO). El número de registro nacional se guarda cifrado. El cliente indica el número de empresa. Los envíos correctos se eliminan tras un plazo limitado. Hay una exportación sin el número de registro nacional.",
+                    "Los registros técnicos de errores se guardan solo en el servidor y durante un máximo de 14 días."
                 ],
                 "key": "privacy"
             },

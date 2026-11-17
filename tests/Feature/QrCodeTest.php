@@ -312,3 +312,43 @@ it('filters units by search in QrConnect', function () {
         ->assertSee('Kitchen Unit')
         ->assertDontSee('Bathroom Unit');
 });
+
+it('shows a translated message instead of the technical text for an invalid unit in QrConnect', function () {
+    ['tenant' => $tenant] = qrCodeScaffold();
+
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $qrCode = QrCode::factory()->unassigned()->create(['tenant_id' => $tenant->id]);
+    $otherUnit = Unit::factory()->create(['tenant_id' => Tenant::factory()->create()->id]);
+
+    $errors = Livewire::actingAs($user)
+        ->test(QrConnect::class, ['token' => $qrCode->token])
+        ->set('selectedUnitId', $otherUnit->id)
+        ->call('link')
+        ->errors();
+
+    expect($errors->first('selectedUnitId'))->toBe(__('qr.connect.errors.invalid_unit'));
+});
+
+it('shows a translated message when the QR code was linked meanwhile', function () {
+    ['tenant' => $tenant, 'unit' => $unit] = qrCodeScaffold();
+
+    $user = User::factory()->create(['tenant_id' => $tenant->id]);
+    $qrCode = QrCode::factory()->unassigned()->create(['tenant_id' => $tenant->id]);
+
+    $component = Livewire::actingAs($user)
+        ->test(QrConnect::class, ['token' => $qrCode->token])
+        ->set('selectedUnitId', $unit->id);
+
+    $qrCode->forceFill(['unit_id' => $unit->id, 'status' => QrCodeStatus::Active])->save();
+
+    $message = $component->call('link')->errors()->first('selectedUnitId');
+
+    expect($message)->toBeIn([__('qr.connect.errors.not_linkable'), __('qr.connect.errors.already_linked')])
+        ->and($message)->not->toContain('QR code');
+});
+
+it('maps link error codes to translation keys', function () {
+    expect(\App\Support\Qr\QrLinkErrorKey::for(new InvalidArgumentException('qr_link_tenant_mismatch')))->toBe('qr.connect.errors.tenant_mismatch')
+        ->and(\App\Support\Qr\QrLinkErrorKey::for(new InvalidArgumentException('qr_link_already_linked')))->toBe('qr.connect.errors.already_linked')
+        ->and(\App\Support\Qr\QrLinkErrorKey::for(new InvalidArgumentException('Something technical')))->toBe('qr.connect.errors.failed');
+});

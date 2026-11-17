@@ -219,10 +219,11 @@ class ImportWorkersAction
             ];
         } catch (\Throwable $e) {
             DB::rollBack();
+            report($e);
 
             return [
                 'success' => false,
-                'errors' => [__('team.workers.errors.database', ['message' => $e->getMessage()])],
+                'errors' => [__('team.workers.errors.database')],
             ];
         }
     }

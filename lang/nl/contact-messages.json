@@ -18,7 +18,7 @@
     "send_reply": "Antwoord Verzenden",
     "validation_required": "Dit veld is verplicht.",
     "validation.min.string": "Dit veld moet minimaal :min tekens bevatten.",
-    "failed_to_send": "Verzenden mislukt",
+    "failed_to_send": "Verzenden mislukt. Probeer het later opnieuw.",
     "reply_sent_success": "Antwoord succesvol verstuurd.",
     "badge_new": "Nieuw",
     "badge_sent": "Verzonden",

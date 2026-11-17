@@ -40,7 +40,16 @@
         "gps_invalid_coords": "Coordenadas no válidas. Introduzca números válidos.",
         "gps_out_of_range": "Coordenadas fuera de rango. Latitud: -90 a 90, Longitud: -180 a 180.",
         "gps_latitude_placeholder": "Latitud",
-        "gps_longitude_placeholder": "Longitud"
+        "gps_longitude_placeholder": "Longitud",
+        "errors": {
+            "tenant_mismatch": "Esta pegatina QR y esta unidad no pertenecen a la misma organización.",
+            "not_linkable": "Esta pegatina QR no se puede vincular ahora.",
+            "already_linked": "Otra persona ya ha vinculado esta pegatina QR.",
+            "failed": "No se ha podido vincular. Inténtelo de nuevo.",
+            "invalid_unit": "Elija una unidad válida.",
+            "unit_no_category": "Esta unidad aún no tiene categoría. Pida a su administrador que asigne una.",
+            "unit_not_in_team": "Esta unidad no está asignada a su equipo."
+        }
     },
     "unassigned_guest": {
         "title": "(re)vincular una unidad",

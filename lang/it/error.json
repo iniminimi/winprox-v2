@@ -10,15 +10,15 @@
     },
     "403": {
         "title": "Accesso negato",
-        "message": "Non ha l'autorizzazione per visualizzare questa pagina."
+        "message": "Non ha l'autorizzazione per visualizzare questa pagina. Se ritiene che sia un errore, chieda l'accesso al suo amministratore."
     },
     "404": {
         "title": "Pagina non trovata",
-        "message": "La pagina che sta cercando non esiste."
+        "message": "Questa pagina non esiste (più) oppure l'indirizzo non è corretto."
     },
     "419": {
         "title": "Pagina scaduta",
-        "message": "Aggiorni la pagina e riprovi."
+        "message": "La sessione è scaduta, ad esempio perché la pagina è rimasta aperta a lungo. Aggiorni la pagina e riprovi."
     },
     "429": {
         "title": "Troppe richieste",
@@ -26,7 +26,7 @@
     },
     "500": {
         "title": "Si è verificato un errore",
-        "message": "Si è verificato un errore interno. Riprovi più tardi."
+        "message": "Non è stato possibile eseguire questa operazione. Riprovi più tardi."
     },
     "503": {
         "title": "In manutenzione",
@@ -37,5 +37,7 @@
         "back": "Indietro",
         "login": "Accedi",
         "retry": "Riprova"
-    }
+    },
+    "reference": "Riferimento: :reference",
+    "reference_hint": "Il problema persiste? Comunichi questo riferimento al suo amministratore o a WinProx."
 }

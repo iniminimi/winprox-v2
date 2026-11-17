@@ -167,7 +167,7 @@
             "unexpected_headers": "Die Spalten in Ihrer Datei stimmen nicht mit der WinProx-Vorlage überein. Unerwartete Spalten: :columns",
             "row": "Zeile :line: :message",
             "no_rows": "Keine gültigen Zeilen gefunden.",
-            "database": "Während des Imports ist ein Datenbankfehler aufgetreten: :message",
+            "database": "Der Import ist aufgrund eines unerwarteten Fehlers fehlgeschlagen. Es wurde nichts gespeichert. Versuchen Sie es erneut oder wenden Sie sich an WinProx.",
             "unknown_locations": "Unbekannte Standorte: :names"
         },
         "active": "Aktiv",

@@ -15,6 +15,7 @@
 | Facturatie / Stripe | Uitvoering overeenkomst / wettelijke verplichting | Facturatiecontacten | Naar boekhoudvereisten | Stripe, zie subprocessors (niet operationeel - toekomstige functionaliteit) |
 | AI vertalingen (Ollama) | Uitvoering overeenkomst (meertalige ondersteuning) | Meldingsteksten, gebruikers | Zie retentiebeleid (issue translations) | Lokale Ollama-instantie (periodiek door WinProx uitgevoerd, zonder SLA) |
 | Activity / audit logs | Gerechtvaardigd belang (beveiliging, verantwoording) | Gebruikers (actoren) | Configureerbaar; default zie retentie | — |
+| Applicatie-foutlogs | Gerechtvaardigd belang (beveiliging, foutoplossing) | Gebruikers (ID), indirect personen in ingevoerde gegevens (SQL-fouten kunnen die bevatten) | Max. 14 dagen (dagelijkse rotatie) | Hosting (Cloud86, EU); geen externe monitoringdienst |
 | Infrastructuurbackups | Beschikbaarheid / beveiliging (gerechtvaardigd belang / uitvoering overeenkomst) | Alle klantdata in backupset | 7 dagen (Cloud86) | Cloud86 (EU) |
 
 **Opmerking:** De klant (tenant) is typisch **verwerkingsverantwoordelijke** voor klantdata; WinProx optreedt als **verwerker** tenzij anders contractueel bepaald.

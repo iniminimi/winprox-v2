@@ -62,6 +62,18 @@ De Unit-checks-pil op de Units-lijst valt weg zolang het werkmenu-item uit staat
 Een starttemplate toont de keuze in preview en op
 **Starttemplate aangemaakt**; verwijderen van het template zet het werkmenu niet terug.
 
+**Foutafhandeling (productie).** Bij een onverwachte serverfout toont WinProx de eigen
+foutpagina in de taal van de gebruiker, met een korte referentie `WP-XXXXXX` en de vraag die
+door te geven aan de beheerder of WinProx. Bij een klik in een scherm (Livewire) verschijnt
+die pagina in de foutpopup; de API antwoordt `{"message":"Server error.","reference":"WP-…"}`.
+Dezelfde referentie staat in het serverlog, met tenant, gebruiker, methode, URL (zonder
+querystring) en stack trace. 401/403/404/419/429 tonen een vertaalde uitleg zonder
+referentie (die worden niet gelogd). Technische foutteksten (SQL, Engelse meldingen) komen
+nooit op het scherm: QR koppelen (portaal en QR Connect), contactberichten en de CSV-import
+en het terugdraaien ervan tonen een vertaalde melding en loggen de fout. Logs: één bestand
+per dag, max. 14 dagen bewaard; SQL-fouten kunnen persoonsgegevens bevatten. Zie
+`WINPROX_RULES.md` §16.
+
 ---
 
 ## 1. Dashboard

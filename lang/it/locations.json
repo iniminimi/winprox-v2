@@ -18,7 +18,7 @@
             "unexpected_headers": "Colonne sconosciute: :columns",
             "row": "Riga :line: :message",
             "no_rows": "Nessuna riga valida trovata.",
-            "database": "Errore database: :message",
+            "database": "L'importazione non è riuscita a causa di un errore imprevisto. Non è stato salvato nulla. Riprovi o contatti WinProx.",
             "unsupported_format": "Formato file non valido. Usi CSV o Excel (.xlsx).",
             "invalid_boolean": "Valore non valido per :column (1/0, sì/no o yes/no).",
             "duplicate_name": "unit_name duplicato in questo file.",
@@ -468,7 +468,7 @@
             "unexpected_headers": "Colonne sconosciute: :columns",
             "row": "Riga :line: :message",
             "no_rows": "Nessuna riga valida trovata.",
-            "database": "Errore database: :message",
+            "database": "L'importazione non è riuscita a causa di un errore imprevisto. Non è stato salvato nulla. Riprovi o contatti WinProx.",
             "unsupported_format": "Formato file non valido. Usa CSV o Excel (.xlsx).",
             "duplicate_row": "Sede duplicata in questo file.",
             "coords_pair_required": "latitude e longitude devono essere compilati insieme."

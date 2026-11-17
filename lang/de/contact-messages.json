@@ -18,7 +18,7 @@
     "send_reply": "Antwort senden",
     "validation_required": "Dieses Feld ist erforderlich.",
     "validation.min.string": "Dieses Feld muss mindestens :min Zeichen enthalten.",
-    "failed_to_send": "Senden fehlgeschlagen",
+    "failed_to_send": "Senden fehlgeschlagen. Bitte versuchen Sie es später erneut.",
     "reply_sent_success": "Antwort erfolgreich gesendet.",
     "badge_new": "Neu",
     "badge_sent": "Gesendet",

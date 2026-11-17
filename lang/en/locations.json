@@ -18,7 +18,7 @@
             "unexpected_headers": "Unknown columns: :columns",
             "row": "Row :line: :message",
             "no_rows": "No valid rows found.",
-            "database": "Database error: :message",
+            "database": "The import failed due to an unexpected error. Nothing was saved. Please try again or contact WinProx.",
             "unsupported_format": "Invalid file format. Use CSV or Excel (.xlsx).",
             "invalid_boolean": "Invalid value for :column (use 1/0, yes/no).",
             "duplicate_name": "Duplicate unit_name in this file.",
@@ -468,7 +468,7 @@
             "unexpected_headers": "Unknown columns: :columns",
             "row": "Row :line: :message",
             "no_rows": "No valid rows found.",
-            "database": "Database error: :message",
+            "database": "The import failed due to an unexpected error. Nothing was saved. Please try again or contact WinProx.",
             "unsupported_format": "Invalid file format. Use CSV or Excel (.xlsx).",
             "duplicate_row": "Duplicate location in this file.",
             "coords_pair_required": "latitude and longitude must both be filled in."

@@ -18,7 +18,7 @@
             "unexpected_headers": "Unbekannte Spalten: :columns",
             "row": "Zeile :line: :message",
             "no_rows": "Keine gültigen Zeilen gefunden.",
-            "database": "Datenbankfehler: :message",
+            "database": "Der Import ist aufgrund eines unerwarteten Fehlers fehlgeschlagen. Es wurde nichts gespeichert. Versuchen Sie es erneut oder wenden Sie sich an WinProx.",
             "unsupported_format": "Ungültiges Dateiformat. Verwenden Sie CSV oder Excel (.xlsx).",
             "invalid_boolean": "Ungültiger Wert für :column (1/0, ja/nein oder yes/no).",
             "duplicate_name": "Doppelte unit_name in dieser Datei.",
@@ -468,7 +468,7 @@
             "unexpected_headers": "Unbekannte Spalten: :columns",
             "row": "Zeile :line: :message",
             "no_rows": "Keine gültigen Zeilen gefunden.",
-            "database": "Datenbankfehler: :message",
+            "database": "Der Import ist aufgrund eines unerwarteten Fehlers fehlgeschlagen. Es wurde nichts gespeichert. Versuchen Sie es erneut oder wenden Sie sich an WinProx.",
             "unsupported_format": "Ungültiges Dateiformat. Verwenden Sie CSV oder Excel (.xlsx).",
             "duplicate_row": "Doppelter Standort in dieser Datei.",
             "coords_pair_required": "latitude und longitude müssen zusammen ausgefüllt werden."

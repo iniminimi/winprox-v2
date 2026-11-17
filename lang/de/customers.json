@@ -69,7 +69,7 @@
       "unexpected_headers": "Unbekannte Spalten: :columns",
       "row": "Zeile :line: :message",
       "no_rows": "Keine gültigen Zeilen gefunden.",
-      "database": "Datenbankfehler: :message",
+      "database": "Der Import ist aufgrund eines unerwarteten Fehlers fehlgeschlagen. Es wurde nichts gespeichert. Versuchen Sie es erneut oder wenden Sie sich an WinProx.",
       "unsupported_format": "Ungültiges Dateiformat. Verwenden Sie CSV oder Excel (.xlsx).",
       "duplicate_row": "Doppelter Kunde in dieser Datei.",
       "incomplete_address": "Standort unvollständig — street, postal_code und city sind gemeinsam erforderlich.",

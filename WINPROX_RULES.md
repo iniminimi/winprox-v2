@@ -648,3 +648,28 @@ werk dat later dezelfde dag klaar is, hoort bij de nota van de **volgende** dag.
 - Op het beginscherm staat de kaart **Wat is er nieuw?** zolang de nieuwste
   gepubliceerde nota hooguit een week oud is en deze gebruiker de pagina nog
   niet opende. Openen haalt de kaart weg. Een nieuwere nota toont ze opnieuw.
+
+---
+
+## 16. Foutafhandeling & logging (hard)
+
+- **Productie-`.env`** (zet alleen de gebruiker, nooit via code of `pull-deploy.sh`):
+  `APP_ENV=production`, `APP_DEBUG=false`, `LOG_STACK=daily`, `LOG_LEVEL=warning`,
+  `LOG_DAILY_DAYS=14`, daarna `php artisan config:cache`.
+- **Foutreferentie:** elke gelogde fout krijgt `WP-XXXXXX` (willekeurig, geen teller of
+  tabel) via `$exceptions->context()` in `bootstrap/app.php` (`ErrorReference`). De
+  500/503-pagina, de Livewire-foutpopup en het API-500-antwoord tonen dezelfde code als het
+  log. 401/403/404/419/429 worden niet gelogd en krijgen dus geen referentie.
+- **Logcontext:** referentie, tenant-ID, `userId`, methode, URL zonder querystring
+  (token/hash-parameters gemaskeerd), Livewire-component; plus class, melding en stack
+  trace. Tenant en URL alleen bij een HTTP-request, niet in queue/cron. **Nooit**
+  formulierinhoud, headers, cookies, sessie, wachtwoorden of tokens aan de context toevoegen.
+- **Nooit `$e->getMessage()` aan een gebruiker tonen** voor een onverwachte fout. Een Action
+  gooit een **code** (bv. `qr_link_already_linked`); de UI vertaalt die naar een sleutel,
+  onbekend → algemene vertaalde melding. Een opgevangen `\Throwable` → `report($e)` plus
+  algemene vertaalde melding. Bewuste uitzonderingen: API-422-foutcodes voor integraties en
+  de promo-bouncemelding voor de superuser.
+- **Privacy & retentie:** applicatielogs max. **14 dagen**. SQL-fouten kunnen
+  persoonsgegevens bevatten (ingevulde waarden); logs zijn alleen voor serverbeheer
+  (`storage/logs`, buiten de webroot). Zie `docs/legal/data-retention-policy.md`.
+- Geen externe of betaalde monitoringdienst zonder kostenmelding (`disclose-costs.mdc`).

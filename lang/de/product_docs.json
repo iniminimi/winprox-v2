@@ -463,7 +463,8 @@
                     "QR-Meldungen auf dem öffentlichen Portal bleiben unsichtbar, bis ein Administrator sie freigibt.",
                     "Supportzugang ist die Ausnahme und standardmäßig nur lesend.",
                     "Ein Telefon ist mit einem Ausführenden verknüpft. Verwaltung oder Teamleitung kann die Verknüpfung freigeben. Wiederholte Fehlanmeldung bleibt bis zur Freigabe gesperrt.",
-                    "Optionale PIN oder Biometrie. Optionale GPS-Prüfung beim Einstempeln."
+                    "Optionale PIN oder Biometrie. Optionale GPS-Prüfung beim Einstempeln.",
+                    "Bei einem unerwarteten Fehler sieht der Benutzer eine verständliche Meldung mit einem kurzen Referenzcode, nie technische Details. Derselbe Code steht im geschützten Serverprotokoll, sodass der Support den Fehler schnell findet."
                 ]
             },
             {
@@ -475,7 +476,8 @@
                     "Kontoexport und Self-Service-Löschung der Organisation. Aufbewahrungsfristen sind festgelegt.",
                     "Optionale E-Mail-Bestätigung bei einer QR-Meldung: ein unbestätigter Entwurf wird automatisch gelöscht, einschließlich Fotos. Kein Benutzerkonto.",
                     "Ein geplanter Dienstplan ist optional. Eine frühere Fassung zurücksetzen darf nur, wer den Plan bearbeiten darf, und nur für begrenzte Zeit.",
-                    "Optionale Anwesenheitsmeldung an das belgische Landesamt für soziale Sicherheit (CIAO). Die Nationalregisternummer wird verschlüsselt gespeichert. Der Kunde trägt die Unternehmensnummer ein. Erfolgreiche Meldungen werden nach einer begrenzten Frist gelöscht. Ein Export ohne Nationalregisternummer ist verfügbar."
+                    "Optionale Anwesenheitsmeldung an das belgische Landesamt für soziale Sicherheit (CIAO). Die Nationalregisternummer wird verschlüsselt gespeichert. Der Kunde trägt die Unternehmensnummer ein. Erfolgreiche Meldungen werden nach einer begrenzten Frist gelöscht. Ein Export ohne Nationalregisternummer ist verfügbar.",
+                    "Technische Fehlerprotokolle liegen nur auf dem Server und werden höchstens 14 Tage aufbewahrt."
                 ],
                 "key": "privacy"
             },

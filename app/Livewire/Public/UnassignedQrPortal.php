@@ -11,6 +11,7 @@ use App\Models\Unit;
 use App\Models\Worker;
 use App\Support\Portal\WorkerDeviceSession;
 use App\Support\Qr\InvalidQrResponse;
+use App\Support\Qr\QrLinkErrorKey;
 use App\Support\ResolveAppLocale;
 use App\Support\Tenancy;
 use Illuminate\Support\Facades\Auth;
@@ -228,13 +229,13 @@ class UnassignedQrPortal extends Component
         // For team workers, verify unit belongs to their team via category
         if ($worker && $team) {
             if ($unit->category === null) {
-                $this->addError('selectedUnitId', 'Unit has no category');
+                $this->addError('selectedUnitId', __('qr.connect.errors.unit_no_category'));
                 return;
             }
 
             $categoryTeamIds = $unit->category->teams()->pluck('internal_teams.id')->toArray();
             if (!in_array($team->id, $categoryTeamIds, true)) {
-                $this->addError('selectedUnitId', 'Unit not assigned to your team');
+                $this->addError('selectedUnitId', __('qr.connect.errors.unit_not_in_team'));
                 return;
             }
         }
@@ -274,7 +275,7 @@ class UnassignedQrPortal extends Component
             // Redirect to unit portal directly after successful linking (with GPS)
             $this->redirectRoute('public.unit-portal', ['token' => $unit->qr_token], navigate: true);
         } catch (\InvalidArgumentException $e) {
-            $this->addError('selectedUnitId', $e->getMessage());
+            $this->addError('selectedUnitId', __(QrLinkErrorKey::for($e)));
         }
     }
 

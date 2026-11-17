@@ -167,7 +167,7 @@
             "unexpected_headers": "De kolommen in uw bestand komen niet overeen met het WinProx-sjabloon. Onverwachte kolommen: :columns",
             "row": "Rij :line: :message",
             "no_rows": "Geen geldige rijen gevonden.",
-            "database": "Er is een databasefout opgetreden tijdens het importeren: :message",
+            "database": "Het importeren is mislukt door een onverwachte fout. Er is niets opgeslagen. Probeer het opnieuw of neem contact op met WinProx.",
             "unknown_locations": "Onbekende locatie(s): :names"
         },
         "active": "Actief",

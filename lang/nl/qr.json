@@ -40,7 +40,16 @@
         "gps_invalid_coords": "Ongeldige coördinaten. Voer geldige getallen in.",
         "gps_out_of_range": "Coördinaten buiten bereik. Latitude: -90 tot 90, Longitude: -180 tot 180.",
         "gps_latitude_placeholder": "Breedtegraad",
-        "gps_longitude_placeholder": "Lengtegraad"
+        "gps_longitude_placeholder": "Lengtegraad",
+        "errors": {
+            "tenant_mismatch": "Deze QR-sticker en deze unit horen niet bij dezelfde organisatie.",
+            "not_linkable": "Deze QR-sticker kan nu niet gekoppeld worden.",
+            "already_linked": "Deze QR-sticker is intussen al door iemand anders gekoppeld.",
+            "failed": "Koppelen is niet gelukt. Probeer het opnieuw.",
+            "invalid_unit": "Kies een geldige unit.",
+            "unit_no_category": "Deze unit heeft nog geen categorie. Vraag je beheerder om er een toe te wijzen.",
+            "unit_not_in_team": "Deze unit hoort niet bij jouw team."
+        }
     },
     "unassigned_guest": {
         "title": "(her)koppel een unit",

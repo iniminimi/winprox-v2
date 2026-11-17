@@ -111,10 +111,11 @@ class DeleteImportBatchAction
             ];
         } catch (\Throwable $e) {
             DB::rollBack();
+            report($e);
 
             return [
                 'success' => false,
-                'errors' => ['Er is een databasefout opgetreden tijdens het verwijderen: '.$e->getMessage()],
+                'errors' => [__('locations.import_history.delete_failed')],
             ];
         }
     }

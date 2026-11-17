@@ -69,7 +69,7 @@
       "unexpected_headers": "Onbekende kolommen: :columns",
       "row": "Rij :line: :message",
       "no_rows": "Geen geldige rijen gevonden.",
-      "database": "Databasefout: :message",
+      "database": "Het importeren is mislukt door een onverwachte fout. Er is niets opgeslagen. Probeer het opnieuw of neem contact op met WinProx.",
       "unsupported_format": "Ongeldig bestandsformaat. Gebruik CSV of Excel (.xlsx).",
       "duplicate_row": "Dubbele klant in dit bestand.",
       "incomplete_address": "Locatie onvolledig — street, postal_code en city zijn samen verplicht.",

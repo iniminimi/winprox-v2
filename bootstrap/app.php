@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\ApplySupportTenantContext;
+use App\Support\Errors\ErrorReference;
 use App\Support\ResolveAppLocale;
 use App\Http\Middleware\AuthenticateClockDisplay;
 use App\Http\Middleware\AuthenticateIotGateway;
@@ -64,6 +65,9 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
+        // Elke gelogde fout krijgt een referentie (WP-XXXXXX) + tenant/URL-context.
+        $exceptions->context(fn (\Throwable $e) => ErrorReference::logContext($e));
+
         // Foutpagina's renderen vóór web-middleware (bv. onbekende route → 404).
         $exceptions->render(function (\Throwable $e, Request $request) {
             if (! $request->is('api/*')) {
@@ -107,8 +111,13 @@ return Application::configure(basePath: dirname(__DIR__))
 
             $status = $e instanceof HttpExceptionInterface ? $e->getStatusCode() : 500;
 
-            return response()->json([
-                'message' => $status === 500 ? 'Server error.' : $e->getMessage(),
-            ], $status);
+            $payload = ['message' => $status === 500 ? 'Server error.' : $e->getMessage()];
+            $reference = ErrorReference::for($e);
+
+            if ($reference !== null) {
+                $payload['reference'] = $reference;
+            }
+
+            return response()->json($payload, $status);
         });
     })->create();

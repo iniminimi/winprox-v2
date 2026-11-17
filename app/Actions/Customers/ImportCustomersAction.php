@@ -267,10 +267,11 @@ class ImportCustomersAction
             ];
         } catch (\Throwable $e) {
             DB::rollBack();
+            report($e);
 
             return [
                 'success' => false,
-                'errors' => [__('customers.customers_csv.errors.database', ['message' => $e->getMessage()])],
+                'errors' => [__('customers.customers_csv.errors.database')],
             ];
         }
     }

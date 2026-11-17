@@ -8,6 +8,7 @@ use App\Data\Units\RecordUnitGpsReportData;
 use App\Http\Requests\Units\RecordUnitGpsReportRequest;
 use App\Models\QrCode;
 use App\Models\Unit;
+use App\Support\Qr\QrLinkErrorKey;
 use App\Support\Tenancy;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Layout;
@@ -49,7 +50,7 @@ class QrConnect extends Component
 
         // Verify unit belongs to current tenant
         if ($unit->tenant_id !== Auth::user()->tenant_id) {
-            $this->addError('selectedUnitId', 'Invalid unit selected');
+            $this->addError('selectedUnitId', __('qr.connect.errors.invalid_unit'));
             return;
         }
 
@@ -71,7 +72,7 @@ class QrConnect extends Component
                 $this->showGpsCapture = true;
             }
         } catch (\InvalidArgumentException $e) {
-            $this->addError('selectedUnitId', $e->getMessage());
+            $this->addError('selectedUnitId', __(QrLinkErrorKey::for($e)));
         }
     }
 

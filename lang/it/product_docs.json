@@ -463,7 +463,8 @@
                     "Le segnalazioni QR sul portale pubblico restano invisibili finché un amministratore non le approva.",
                     "L’accesso di supporto è eccezionale e in sola lettura per impostazione predefinita.",
                     "Un telefono è collegato a un solo esecutore. Gestione o un caposquadra può sciogliere quel collegamento. Un accesso errato ripetuto resta bloccato fino allo sblocco.",
-                    "PIN o biometria opzionali. Controllo GPS opzionale all’entrata."
+                    "PIN o biometria opzionali. Controllo GPS opzionale all’entrata.",
+                    "In caso di errore imprevisto, l'utente vede un messaggio comprensibile con un breve codice di riferimento, mai dettagli tecnici. Lo stesso codice è nel registro protetto del server, così il supporto trova rapidamente l'errore."
                 ]
             },
             {
@@ -475,7 +476,8 @@
                     "Export dell’account e cancellazione self-service dell’organizzazione. I tempi di conservazione sono fissi.",
                     "Conferma e-mail opzionale per una segnalazione QR: una bozza non confermata viene eliminata in automatico, foto comprese. Nessun account utente.",
                     "Un turno pianificato è opzionale. Ripristinare una versione precedente può solo chi può modificare il turno, e solo per un tempo limitato.",
-                    "Invio opzionale delle presenze all’ente previdenziale belga (CIAO). Il numero di registro nazionale è conservato cifrato. Il cliente indica il numero d’impresa. Gli invii riusciti sono eliminati dopo un periodo limitato. È disponibile un export senza il numero di registro nazionale."
+                    "Invio opzionale delle presenze all’ente previdenziale belga (CIAO). Il numero di registro nazionale è conservato cifrato. Il cliente indica il numero d’impresa. Gli invii riusciti sono eliminati dopo un periodo limitato. È disponibile un export senza il numero di registro nazionale.",
+                    "I log tecnici degli errori restano solo sul server e sono conservati al massimo 14 giorni."
                 ],
                 "key": "privacy"
             },

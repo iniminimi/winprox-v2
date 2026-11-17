@@ -25,17 +25,17 @@ class LinkQrCodeToUnitAction
     {
         // Verify tenant ownership
         if ($qrCode->tenant_id !== $tenantId || $unit->tenant_id !== $tenantId) {
-            throw new \InvalidArgumentException('QR code and unit must belong to the same tenant');
+            throw new \InvalidArgumentException('qr_link_tenant_mismatch');
         }
 
         // Verify QR code can be linked
         if (!$qrCode->canBeLinked()) {
-            throw new \InvalidArgumentException('QR code cannot be linked in its current state');
+            throw new \InvalidArgumentException('qr_link_not_linkable');
         }
 
         // Prevent race condition - check if already linked
         if ($qrCode->unit_id !== null) {
-            throw new \InvalidArgumentException('QR code was already linked by another user');
+            throw new \InvalidArgumentException('qr_link_already_linked');
         }
 
         $qrCode->update([

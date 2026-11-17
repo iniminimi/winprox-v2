@@ -18,7 +18,7 @@
             "unexpected_headers": "Onbekende kolommen: :columns",
             "row": "Rij :line: :message",
             "no_rows": "Geen geldige rijen gevonden.",
-            "database": "Databasefout: :message",
+            "database": "Het importeren is mislukt door een onverwachte fout. Er is niets opgeslagen. Probeer het opnieuw of neem contact op met WinProx.",
             "unsupported_format": "Ongeldig bestandsformaat. Gebruik CSV of Excel (.xlsx).",
             "invalid_boolean": "Ongeldige waarde voor :column (gebruik 1/0, ja/nee of yes/no).",
             "duplicate_name": "Dubbele unit_name in dit bestand.",
@@ -468,7 +468,7 @@
             "unexpected_headers": "Onbekende kolommen: :columns",
             "row": "Rij :line: :message",
             "no_rows": "Geen geldige rijen gevonden.",
-            "database": "Databasefout: :message",
+            "database": "Het importeren is mislukt door een onverwachte fout. Er is niets opgeslagen. Probeer het opnieuw of neem contact op met WinProx.",
             "unsupported_format": "Ongeldig bestandsformaat. Gebruik CSV of Excel (.xlsx).",
             "duplicate_row": "Dubbele locatie in dit bestand.",
             "coords_pair_required": "latitude en longitude moeten samen worden ingevuld."

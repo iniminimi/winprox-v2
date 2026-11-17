@@ -10,15 +10,15 @@
     },
     "403": {
         "title": "Zugriff verweigert",
-        "message": "Sie haben keine Berechtigung, diese Seite anzuzeigen."
+        "message": "Sie haben keine Berechtigung, diese Seite anzuzeigen. Wenn Sie das für falsch halten, bitten Sie Ihren Administrator um Zugriff."
     },
     "404": {
         "title": "Seite nicht gefunden",
-        "message": "Die gesuchte Seite existiert nicht."
+        "message": "Diese Seite existiert nicht (mehr), oder die Adresse ist falsch."
     },
     "419": {
         "title": "Seite abgelaufen",
-        "message": "Aktualisieren Sie die Seite und versuchen Sie es erneut."
+        "message": "Ihre Sitzung ist abgelaufen, zum Beispiel weil die Seite lange geöffnet war. Aktualisieren Sie die Seite und versuchen Sie es erneut."
     },
     "429": {
         "title": "Zu viele Anfragen",
@@ -26,7 +26,7 @@
     },
     "500": {
         "title": "Etwas ist schiefgelaufen",
-        "message": "Ein interner Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
+        "message": "Wir konnten diesen Vorgang nicht ausführen. Bitte versuchen Sie es später erneut."
     },
     "503": {
         "title": "Wartungsarbeiten",
@@ -37,5 +37,7 @@
         "back": "Zurück",
         "login": "Anmelden",
         "retry": "Erneut versuchen"
-    }
+    },
+    "reference": "Referenz: :reference",
+    "reference_hint": "Besteht das Problem weiter? Geben Sie diese Referenz an Ihren Administrator oder an WinProx weiter."
 }

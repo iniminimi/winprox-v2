@@ -18,7 +18,7 @@
             "unexpected_headers": "Colonnes inconnues : :columns",
             "row": "Ligne :line : :message",
             "no_rows": "Aucune ligne valide trouvée.",
-            "database": "Erreur de base de données : :message",
+            "database": "L'importation a échoué à cause d'une erreur inattendue. Rien n'a été enregistré. Réessayez ou contactez WinProx.",
             "unsupported_format": "Format de fichier invalide. Utilisez CSV ou Excel (.xlsx).",
             "invalid_boolean": "Valeur invalide pour :column (1/0, oui/non ou yes/no).",
             "duplicate_name": "unit_name en double dans ce fichier.",
@@ -468,7 +468,7 @@
             "unexpected_headers": "Colonnes inconnues : :columns",
             "row": "Ligne :line : :message",
             "no_rows": "Aucune ligne valide trouvée.",
-            "database": "Erreur de base de données : :message",
+            "database": "L'importation a échoué à cause d'une erreur inattendue. Rien n'a été enregistré. Réessayez ou contactez WinProx.",
             "unsupported_format": "Format de fichier invalide. Utilisez CSV ou Excel (.xlsx).",
             "duplicate_row": "Lieu en double dans ce fichier.",
             "coords_pair_required": "latitude et longitude doivent être renseignées ensemble."

@@ -40,7 +40,16 @@
         "gps_invalid_coords": "Nieprawidłowe współrzędne. Proszę wpisać prawidłowe liczby.",
         "gps_out_of_range": "Współrzędne poza zakresem. Szerokość: od -90 do 90, długość: od -180 do 180.",
         "gps_latitude_placeholder": "Szerokość geograficzna",
-        "gps_longitude_placeholder": "Długość geograficzna"
+        "gps_longitude_placeholder": "Długość geograficzna",
+        "errors": {
+            "tenant_mismatch": "Ta naklejka QR i ta jednostka nie należą do tej samej organizacji.",
+            "not_linkable": "Tej naklejki QR nie można teraz powiązać.",
+            "already_linked": "Ktoś inny już powiązał tę naklejkę QR.",
+            "failed": "Nie udało się powiązać. Spróbuj ponownie.",
+            "invalid_unit": "Wybierz prawidłową jednostkę.",
+            "unit_no_category": "Ta jednostka nie ma jeszcze kategorii. Poproś administratora o jej przypisanie.",
+            "unit_not_in_team": "Ta jednostka nie jest przypisana do Twojego zespołu."
+        }
     },
     "unassigned_guest": {
         "title": "(ponownie) powiąż jednostkę",

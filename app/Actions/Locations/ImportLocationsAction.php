@@ -190,10 +190,11 @@ class ImportLocationsAction
             ];
         } catch (\Throwable $e) {
             DB::rollBack();
+            report($e);
 
             return [
                 'success' => false,
-                'errors' => [__('locations.locations_csv.errors.database', ['message' => $e->getMessage()])],
+                'errors' => [__('locations.locations_csv.errors.database')],
             ];
         }
     }

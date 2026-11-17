@@ -10,15 +10,15 @@
     },
     "403": {
         "title": "Acceso denegado",
-        "message": "No tiene permiso para ver esta página."
+        "message": "No tiene permiso para ver esta página. Si cree que es un error, pida acceso a su administrador."
     },
     "404": {
         "title": "Página no encontrada",
-        "message": "La página que busca no existe."
+        "message": "Esta página no existe (o ya no existe), o la dirección no es correcta."
     },
     "419": {
         "title": "Página caducada",
-        "message": "Actualice la página e inténtelo de nuevo."
+        "message": "Su sesión ha caducado, por ejemplo porque la página estuvo abierta mucho tiempo. Actualice la página e inténtelo de nuevo."
     },
     "429": {
         "title": "Demasiadas solicitudes",
@@ -26,7 +26,7 @@
     },
     "500": {
         "title": "Algo ha ido mal",
-        "message": "Se ha producido un error interno. Inténtelo de nuevo más tarde."
+        "message": "No hemos podido realizar esta operación. Inténtelo de nuevo más tarde."
     },
     "503": {
         "title": "En mantenimiento",
@@ -37,5 +37,7 @@
         "back": "Volver",
         "login": "Iniciar sesión",
         "retry": "Reintentar"
-    }
+    },
+    "reference": "Referencia: :reference",
+    "reference_hint": "¿El problema continúa? Facilite esta referencia a su administrador o a WinProx."
 }

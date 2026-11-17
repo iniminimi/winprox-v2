@@ -40,7 +40,16 @@
         "gps_invalid_coords": "Coordonnées invalides. Veuillez saisir des nombres valides.",
         "gps_out_of_range": "Coordonnées hors plage. Latitude : -90 à 90, Longitude : -180 à 180.",
         "gps_latitude_placeholder": "Latitude",
-        "gps_longitude_placeholder": "Longitude"
+        "gps_longitude_placeholder": "Longitude",
+        "errors": {
+            "tenant_mismatch": "Ce sticker QR et cette unité n'appartiennent pas à la même organisation.",
+            "not_linkable": "Ce sticker QR ne peut pas être lié pour le moment.",
+            "already_linked": "Quelqu'un d'autre a déjà lié ce sticker QR.",
+            "failed": "La liaison a échoué. Réessayez.",
+            "invalid_unit": "Choisissez une unité valide.",
+            "unit_no_category": "Cette unité n'a pas encore de catégorie. Demandez à votre administrateur d'en attribuer une.",
+            "unit_not_in_team": "Cette unité n'est pas attribuée à votre équipe."
+        }
     },
     "unassigned_guest": {
         "title": "(re)lier une unité",

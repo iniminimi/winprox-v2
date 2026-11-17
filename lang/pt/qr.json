@@ -40,7 +40,16 @@
         "gps_invalid_coords": "Coordenadas inválidas. Introduza números válidos.",
         "gps_out_of_range": "Coordenadas fora do intervalo. Latitude: -90 a 90, longitude: -180 a 180.",
         "gps_latitude_placeholder": "Latitude",
-        "gps_longitude_placeholder": "Longitude"
+        "gps_longitude_placeholder": "Longitude",
+        "errors": {
+            "tenant_mismatch": "Este autocolante QR e esta unidade não pertencem à mesma organização.",
+            "not_linkable": "Este autocolante QR não pode ser ligado neste momento.",
+            "already_linked": "Outra pessoa já ligou este autocolante QR.",
+            "failed": "Não foi possível ligar. Tente novamente.",
+            "invalid_unit": "Escolha uma unidade válida.",
+            "unit_no_category": "Esta unidade ainda não tem categoria. Peça ao seu administrador para atribuir uma.",
+            "unit_not_in_team": "Esta unidade não está atribuída à sua equipa."
+        }
     },
     "unassigned_guest": {
         "title": "(re)ligar uma unidade",

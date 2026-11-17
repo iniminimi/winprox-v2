@@ -244,10 +244,11 @@ class ImportUnitsAction
             ];
         } catch (\Throwable $e) {
             DB::rollBack();
+            report($e);
 
             return [
                 'success' => false,
-                'errors' => [__('locations.units_csv.errors.database', ['message' => $e->getMessage()])],
+                'errors' => [__('locations.units_csv.errors.database')],
             ];
         }
     }

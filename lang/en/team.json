@@ -167,7 +167,7 @@
             "unexpected_headers": "The columns in your file do not match the WinProx template. Unexpected columns: :columns",
             "row": "Row :line: :message",
             "no_rows": "No valid rows found.",
-            "database": "A database error occurred during import: :message",
+            "database": "The import failed due to an unexpected error. Nothing was saved. Please try again or contact WinProx.",
             "unknown_locations": "Unknown location(s): :names"
         },
         "active": "Active",

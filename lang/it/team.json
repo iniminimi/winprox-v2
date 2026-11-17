@@ -167,7 +167,7 @@
             "unexpected_headers": "Le colonne del file non corrispondono al modello WinProx. Colonne inattese: :columns",
             "row": "Riga :line: :message",
             "no_rows": "Nessuna riga valida trovata.",
-            "database": "Si è verificato un errore del database durante l'importazione: :message",
+            "database": "L'importazione non è riuscita a causa di un errore imprevisto. Non è stato salvato nulla. Riprovi o contatti WinProx.",
             "unknown_locations": "Sede sconosciute: :names"
         },
         "active": "Attivo",

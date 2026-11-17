@@ -18,7 +18,7 @@
     "send_reply": "Send Reply",
     "validation_required": "This field is required.",
     "validation.min.string": "This field must be at least :min characters.",
-    "failed_to_send": "Failed to send",
+    "failed_to_send": "Failed to send. Please try again later.",
     "reply_sent_success": "Reply sent successfully.",
     "badge_new": "New",
     "badge_sent": "Sent",

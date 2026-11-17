@@ -463,7 +463,8 @@
                     "QR issues on the public portal stay invisible until an administrator approves them.",
                     "Support access is exceptional and read-only by default.",
                     "A phone is linked to one worker. An administrator or team leader can release that link. Repeated wrong sign-in stays blocked until release.",
-                    "Optional PIN or biometrics. Optional GPS check on clock-in."
+                    "Optional PIN or biometrics. Optional GPS check on clock-in.",
+                    "If something unexpected goes wrong, the user sees a clear message with a short reference code, never technical details. The same code is in the secured server log, so support can find the error quickly."
                 ]
             },
             {
@@ -475,7 +476,8 @@
                     "Account export and self-service deletion of the organisation. Retention periods are fixed.",
                     "Optional email confirmation for a QR issue: an unconfirmed draft is deleted automatically, including photos. No user account.",
                     "A planned roster is optional. Restoring a previous version is limited to people who may edit the roster, and only for a limited time.",
-                    "Optional presence reporting to the Belgian social security office (CIAO). The national register number is stored encrypted. The customer enters the enterprise number. Successful submissions are deleted after a limited period. An export without the national register number is available."
+                    "Optional presence reporting to the Belgian social security office (CIAO). The national register number is stored encrypted. The customer enters the enterprise number. Successful submissions are deleted after a limited period. An export without the national register number is available.",
+                    "Technical error logs are kept on the server only, for at most 14 days."
                 ],
                 "key": "privacy"
             },

@@ -167,7 +167,7 @@
             "unexpected_headers": "Las columnas de su archivo no coinciden con la plantilla WinProx. Columnas inesperadas: :columns",
             "row": "Fila :line: :message",
             "no_rows": "No se encontraron filas válidas.",
-            "database": "Se produjo un error de base de datos durante la importación: :message",
+            "database": "La importación ha fallado por un error inesperado. No se ha guardado nada. Inténtelo de nuevo o contacte con WinProx.",
             "unknown_locations": "Sede(s) desconocida(s): :names"
         },
         "active": "Activo",

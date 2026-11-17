@@ -167,7 +167,7 @@
             "unexpected_headers": "Les colonnes de votre fichier ne correspondent pas au modèle WinProx. Colonnes inattendues : :columns",
             "row": "Ligne :line : :message",
             "no_rows": "Aucune ligne valide trouvée.",
-            "database": "Une erreur de base de données est survenue pendant l'import : :message",
+            "database": "L'importation a échoué à cause d'une erreur inattendue. Rien n'a été enregistré. Réessayez ou contactez WinProx.",
             "unknown_locations": "Site(s) inconnu(s) : :names"
         },
         "active": "Actif",

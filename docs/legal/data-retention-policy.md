@@ -26,6 +26,7 @@ This policy is a draft and requires legal approval.
 | Owner contacts | Name, email, phone | While linked + 24 months | Delete if no legal need remains |
 | Notification logs | Sent/failed recipients, subject | 24 months | Delete or aggregate stats only |
 | Activity logs | Security and audit events | 24 months | Delete or anonymize |
+| Application error logs | Server error log: error reference, tenant/user ID, method, URL (no query string), stack trace. SQL errors may contain personal data (entered values). No form input, passwords or tokens. | 14 days | Daily log rotation deletes older files (`LOG_DAILY_DAYS=14`) |
 | QR report email holds | Unverified QR drafts (description, photos, email) pending mailbox link | Unverified: typically 60 minutes then delete (incl. photos). Confirmed hold rows: 7 days. Created issues follow Issues/tasks. | Delete |
 | Operational infrastructure backups | Cloud86 daily backups of files/DB | 7 days | Rotate/overwrite by provider |
 | Tenant-purge SQL snapshot | Technical snapshot after organisation wipe (no media) | Max. 30 days | Destroy |
@@ -34,6 +35,7 @@ This policy is a draft and requires legal approval.
 
 - **Automated cleanup**: Artisan-command `php artisan winprox:retention-prune --dry-run` toont wat verwijderd zou worden zonder te wijzigen. Zonder `--dry-run` worden records en bestanden daadwerkelijk verwijderd.
 - **Closed issue media**: Verwijdert foto's van gesloten meldingen volgens retentiebeleid.
+- **Application error logs**: Laravel daily log (`LOG_STACK=daily`, `LOG_DAILY_DAYS=14`). Only server administration can read `storage/logs`; users see a reference code (`WP-XXXXXX`), never technical details.
 - **Roster restore points**: Verwijdert uurrooster-herstelpunten ouder dan 30 dagen (`RETENTION_ROSTER_RESTORE_POINTS_DAYS`).
 - **Inactive tenant facility data**: Verwijdert data van inactieve tenants (meldingen, foto's) volgens retentiebeleid.
 - Voer steeds **`--dry-run`** uit om te tellen zonder te wissen. Productie-aanzetten pas na legal / operations sign-off.

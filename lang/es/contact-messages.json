@@ -18,7 +18,7 @@
     "send_reply": "Enviar respuesta",
     "validation_required": "Este campo es obligatorio.",
     "validation.min.string": "Este campo debe tener al menos :min caracteres.",
-    "failed_to_send": "Error al enviar",
+    "failed_to_send": "Error al enviar. Inténtelo de nuevo más tarde.",
     "reply_sent_success": "Respuesta enviada correctamente.",
     "badge_new": "Nuevo",
     "badge_sent": "Enviado",

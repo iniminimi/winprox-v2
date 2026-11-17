@@ -40,7 +40,16 @@
         "gps_invalid_coords": "Ungültige Koordinaten. Bitte geben Sie gültige Zahlen ein.",
         "gps_out_of_range": "Koordinaten außerhalb des Bereichs. Breite: -90 bis 90, Länge: -180 bis 180.",
         "gps_latitude_placeholder": "Breitengrad",
-        "gps_longitude_placeholder": "Längengrad"
+        "gps_longitude_placeholder": "Längengrad",
+        "errors": {
+            "tenant_mismatch": "Dieser QR-Aufkleber und diese Einheit gehören nicht zur selben Organisation.",
+            "not_linkable": "Dieser QR-Aufkleber kann gerade nicht verknüpft werden.",
+            "already_linked": "Jemand anderes hat diesen QR-Aufkleber bereits verknüpft.",
+            "failed": "Verknüpfen fehlgeschlagen. Bitte versuchen Sie es erneut.",
+            "invalid_unit": "Wählen Sie eine gültige Einheit.",
+            "unit_no_category": "Diese Einheit hat noch keine Kategorie. Bitten Sie Ihren Administrator, eine zuzuweisen.",
+            "unit_not_in_team": "Diese Einheit ist Ihrem Team nicht zugewiesen."
+        }
     },
     "unassigned_guest": {
         "title": "(neu)verknüpfen einer Einheit",

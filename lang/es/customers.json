@@ -69,7 +69,7 @@
       "unexpected_headers": "Columnas desconocidas: :columns",
       "row": "Fila :line: :message",
       "no_rows": "No se encontraron filas válidas.",
-      "database": "Error de base de datos: :message",
+      "database": "La importación ha fallado por un error inesperado. No se ha guardado nada. Inténtelo de nuevo o contacte con WinProx.",
       "unsupported_format": "Formato de archivo no válido. Use CSV o Excel (.xlsx).",
       "duplicate_row": "Cliente duplicado en este archivo.",
       "incomplete_address": "Ubicación incompleta — street, postal_code y city son obligatorios juntos.",

@@ -10,15 +10,15 @@
     },
     "403": {
         "title": "Access denied",
-        "message": "You do not have permission to view this page."
+        "message": "You do not have permission to view this page. If you think this is wrong, ask your administrator for access."
     },
     "404": {
         "title": "Page not found",
-        "message": "The page you are looking for does not exist."
+        "message": "This page does not exist (anymore), or the address is incorrect."
     },
     "419": {
         "title": "Page expired",
-        "message": "Refresh the page and try again."
+        "message": "Your session has expired, for example because the page was open for a long time. Refresh the page and try again."
     },
     "429": {
         "title": "Too many requests",
@@ -26,7 +26,7 @@
     },
     "500": {
         "title": "Something went wrong",
-        "message": "An internal error occurred. Please try again later."
+        "message": "We could not complete this action. Please try again later."
     },
     "503": {
         "title": "Under maintenance",
@@ -37,5 +37,7 @@
         "back": "Go back",
         "login": "Log in",
         "retry": "Try again"
-    }
+    },
+    "reference": "Reference: :reference",
+    "reference_hint": "If the problem persists, share this reference with your administrator or with WinProx."
 }
