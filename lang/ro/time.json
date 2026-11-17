@@ -262,7 +262,19 @@
             "absence_leave_body_range": "Concediul din :from până în :to este aprobat.",
             "absence_recup_title": "Recuperare aprobată",
             "absence_recup_body": "Recuperarea din :date este aprobată.",
-            "absence_recup_body_range": "Recuperarea din :from până în :to este aprobată."
+            "absence_recup_body_range": "Recuperarea din :from până în :to este aprobată.",
+            "absence_leave_rejected_title": "Concediu respins",
+            "absence_leave_rejected_body": "Concediul dvs. din :date a fost respins.",
+            "absence_leave_rejected_body_range": "Concediul dvs. din :from până pe :to a fost respins.",
+            "absence_recup_rejected_title": "Recuperare respinsă",
+            "absence_recup_rejected_body": "Recuperarea dvs. din :date a fost respinsă.",
+            "absence_recup_rejected_body_range": "Recuperarea dvs. din :from până pe :to a fost respinsă.",
+            "task_assigned_title": "Sarcină nouă pentru dvs.",
+            "task_assigned_body": "O sarcină vă așteaptă.",
+            "team_task_title": "Sarcină nouă pentru echipa dvs.",
+            "team_task_body": "O sarcină nouă așteaptă echipa dvs.",
+            "recurring_tasks_title": "Sarcinile de azi",
+            "recurring_tasks_body": ":count sarcini noi vă așteaptă."
         }
     }
 }

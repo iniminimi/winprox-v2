@@ -22,6 +22,8 @@ use InvalidArgumentException;
  * | team_announcement | team_announcements.id                             | willekeurige string          | Clock Point → mededelingen                     |
  * | absence_approved  | absence_requests.id                               | willekeurige string          | Clock Point → verlof                           |
  * | clock_out_reminder| work_shifts.id                                    | willekeurige string          | Clock Point (nog ingeklokt)                    |
+ * | absence_rejected  | absence_requests.id                               | willekeurige string          | Clock Point → verlof                           |
+ * | task_assigned     | tasks.id                                          | willekeurige string          | Clock Point (taken op het beginscherm)         |
  */
 enum WorkerNotificationType: string
 {
@@ -32,6 +34,8 @@ enum WorkerNotificationType: string
     case TeamAnnouncement = 'team_announcement';
     case AbsenceApproved = 'absence_approved';
     case ClockOutReminder = 'clock_out_reminder';
+    case AbsenceRejected = 'absence_rejected';
+    case TaskAssigned = 'task_assigned';
 
     public function assertReferenceId(string $referenceId): void
     {
@@ -58,7 +62,7 @@ enum WorkerNotificationType: string
             return;
         }
 
-        if (in_array($this, [self::TeamDocument, self::TeamAnnouncement, self::AbsenceApproved, self::ClockOutReminder], true)) {
+        if (in_array($this, [self::TeamDocument, self::TeamAnnouncement, self::AbsenceApproved, self::ClockOutReminder, self::AbsenceRejected, self::TaskAssigned], true)) {
             if (! preg_match('/^[1-9]\d{0,18}$/', $referenceId)) {
                 throw new InvalidArgumentException('time.schedule.errors.invalid_notification_reference');
             }
@@ -75,8 +79,8 @@ enum WorkerNotificationType: string
             self::RosterPublished, self::RosterChanged, self::RosterCorrected => WorkerPushScreen::SCHEDULE,
             self::TeamDocument => WorkerPushScreen::DOCUMENTS,
             self::TeamAnnouncement => WorkerPushScreen::ANNOUNCEMENTS,
-            self::AbsenceApproved => WorkerPushScreen::ABSENCE,
-            self::ClockOutReminder => '',
+            self::AbsenceApproved, self::AbsenceRejected => WorkerPushScreen::ABSENCE,
+            self::ClockOutReminder, self::TaskAssigned => '',
         };
     }
 
@@ -95,8 +99,8 @@ enum WorkerNotificationType: string
             ),
             self::TeamDocument => new WorkerNotificationPortalTarget(screen: WorkerPushScreen::DOCUMENTS, cursor: $referenceId),
             self::TeamAnnouncement => new WorkerNotificationPortalTarget(screen: WorkerPushScreen::ANNOUNCEMENTS, cursor: $referenceId),
-            self::AbsenceApproved => new WorkerNotificationPortalTarget(screen: WorkerPushScreen::ABSENCE, cursor: $referenceId),
-            self::ClockOutReminder => new WorkerNotificationPortalTarget(screen: 'home', cursor: $referenceId),
+            self::AbsenceApproved, self::AbsenceRejected => new WorkerNotificationPortalTarget(screen: WorkerPushScreen::ABSENCE, cursor: $referenceId),
+            self::ClockOutReminder, self::TaskAssigned => new WorkerNotificationPortalTarget(screen: 'home', cursor: $referenceId),
         };
     }
 }

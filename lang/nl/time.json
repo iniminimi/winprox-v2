@@ -622,7 +622,19 @@
             "absence_leave_body_range": "Je verlof van :from tot :to is goedgekeurd.",
             "absence_recup_title": "Recup goedgekeurd",
             "absence_recup_body": "Je recup op :date is goedgekeurd.",
-            "absence_recup_body_range": "Je recup van :from tot :to is goedgekeurd."
+            "absence_recup_body_range": "Je recup van :from tot :to is goedgekeurd.",
+            "absence_leave_rejected_title": "Verlof geweigerd",
+            "absence_leave_rejected_body": "Je verlof op :date is geweigerd.",
+            "absence_leave_rejected_body_range": "Je verlof van :from tot :to is geweigerd.",
+            "absence_recup_rejected_title": "Recup geweigerd",
+            "absence_recup_rejected_body": "Je recup op :date is geweigerd.",
+            "absence_recup_rejected_body_range": "Je recup van :from tot :to is geweigerd.",
+            "task_assigned_title": "Nieuwe taak voor jou",
+            "task_assigned_body": "Er staat een taak voor je klaar.",
+            "team_task_title": "Nieuwe taak voor je team",
+            "team_task_body": "Er staat een nieuwe taak voor je team klaar.",
+            "recurring_tasks_title": "Taken voor vandaag",
+            "recurring_tasks_body": "Er staan :count nieuwe taken voor je klaar."
         }
     },
     "ciao": {

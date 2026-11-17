@@ -622,7 +622,19 @@
             "absence_leave_body_range": "Su permiso del :from al :to está aprobado.",
             "absence_recup_title": "Compensación aprobada",
             "absence_recup_body": "Su compensación del :date está aprobada.",
-            "absence_recup_body_range": "Su compensación del :from al :to está aprobada."
+            "absence_recup_body_range": "Su compensación del :from al :to está aprobada.",
+            "absence_leave_rejected_title": "Permiso rechazado",
+            "absence_leave_rejected_body": "Su permiso del :date ha sido rechazado.",
+            "absence_leave_rejected_body_range": "Su permiso del :from al :to ha sido rechazado.",
+            "absence_recup_rejected_title": "Recuperación rechazada",
+            "absence_recup_rejected_body": "Su recuperación del :date ha sido rechazada.",
+            "absence_recup_rejected_body_range": "Su recuperación del :from al :to ha sido rechazada.",
+            "task_assigned_title": "Nueva tarea para usted",
+            "task_assigned_body": "Tiene una tarea pendiente.",
+            "team_task_title": "Nueva tarea para su equipo",
+            "team_task_body": "Su equipo tiene una nueva tarea pendiente.",
+            "recurring_tasks_title": "Tareas de hoy",
+            "recurring_tasks_body": "Tiene :count tareas nuevas pendientes."
         }
     },
     "ciao": {

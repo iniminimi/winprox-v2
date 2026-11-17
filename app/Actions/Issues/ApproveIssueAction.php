@@ -3,13 +3,17 @@
 namespace App\Actions\Issues;
 
 use App\Actions\Communication\EnsureIssueTranslationSlotsAction;
+use App\Actions\Tasks\NotifyWorkersOfNewTaskAction;
 use App\Events\Issues\IssueApproved;
 use App\Models\Issue;
 use App\Models\User;
 
 class ApproveIssueAction
 {
-    public function __construct(private EnsureIssueTranslationSlotsAction $ensureTranslationSlots) {}
+    public function __construct(
+        private EnsureIssueTranslationSlotsAction $ensureTranslationSlots,
+        private NotifyWorkersOfNewTaskAction $notifyWorkers,
+    ) {}
 
     /**
      * Keurt een melding goed: beschrijving + foto's worden zichtbaar (niet langer geblurd).
@@ -26,6 +30,7 @@ class ApproveIssueAction
 
         $approved = $issue->fresh();
         $this->ensureTranslationSlots->handle($approved);
+        $approved->tasks()->get()->each(fn ($task) => $this->notifyWorkers->handle($task));
 
         return $approved;
     }

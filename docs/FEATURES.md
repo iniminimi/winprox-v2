@@ -1490,8 +1490,11 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   browser. **Push naar de gekoppelde gsm** (alleen die gsm, alleen in de app vanaf het startscherm, na een tik op
   Pushmeldingen aanzetten; de knop verdwijnt meteen bij toestemming of bij weigering,
   zonder de pagina te verversen): dienst
-  gepubliceerd, gewijzigd of gecorrigeerd; verlof of recup goedgekeurd; nieuw
-  document of nieuwe mededeling; nog ingeklokt 15 minuten na het laatste
+  gepubliceerd, gewijzigd of gecorrigeerd; verlof of recup goedgekeurd of geweigerd; nieuw
+  document of nieuwe mededeling; een taak persoonlijk toegewezen (één keer per taak); een
+  nieuwe teamtaak zonder vaste persoon (max. 1 push per kwartier per uitvoerder); na de
+  dagelijkse tick één ochtendpush per uitvoerder met het aantal nieuwe wederkerende taken;
+  taken pas na goedkeuring van de melding; nog ingeklokt 15 minuten na het laatste
   gepubliceerde blok van die inklokdag. Zonder rooster geen uitklokherinnering.
   Geen sms. De melding bevat geen documenttekst. Bij geweigerde of geblokkeerde
   meldingen blijft **Meldingen staan uit** zichtbaar met stappen om ze in de

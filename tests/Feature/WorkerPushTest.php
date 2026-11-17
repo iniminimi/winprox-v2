@@ -199,7 +199,7 @@ it('pusht een verlopen mededeling niet', function () {
     expect($this->push->sent)->toHaveCount(0);
 });
 
-it('pusht goedgekeurd verlof en niet een weigering', function () {
+it('pusht goedgekeurd en geweigerd verlof', function () {
     [$tenant, , $worker] = pushWorker('https://push.example.test/leave');
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
     $leaveType = ShiftType::factory()->create([
@@ -232,10 +232,13 @@ it('pusht goedgekeurd verlof en niet een weigering', function () {
     $decide->handle($tenant, $approved, new DecideAbsenceRequestData(true, ''), $admin);
     $decide->handle($tenant, $rejected, new DecideAbsenceRequestData(false, 'Bezet'), $admin);
 
-    expect($this->push->sent)->toHaveCount(1)
+    expect($this->push->sent)->toHaveCount(2)
         ->and($this->push->sent[0]['payload']['title'])->toBe('Verlof goedgekeurd')
         ->and($this->push->sent[0]['payload']['body'])->toContain('20-11-2026')
-        ->and($this->push->sent[0]['payload']['url'])->toContain('open=absence');
+        ->and($this->push->sent[0]['payload']['url'])->toContain('open=absence')
+        ->and($this->push->sent[1]['payload']['title'])->toBe('Verlof geweigerd')
+        ->and($this->push->sent[1]['payload']['body'])->toContain('21-11-2026')
+        ->and($this->push->sent[1]['payload']['url'])->toContain('open=absence');
 });
 
 it('herinnert één keer aan uitklokken na het laatste blok', function () {
@@ -379,4 +382,47 @@ it('geeft de open-parameter door naar het portaal', function () {
 
     $this->get(route('public.time-portal.home', ['tenant' => $tenant->id, 'open' => 'nope']))
         ->assertRedirect(route('public.time-portal.cp', $clock->qr_token));
+});
+
+it('pusht een persoonlijk toegewezen taak één keer naar die uitvoerder', function () {
+    [$tenant, $team, $worker] = pushWorker('https://push.example.test/task');
+    $issue = App\Models\Issue::factory()->create(['tenant_id' => $tenant->id, 'approved_at' => now()]);
+
+    $task = app(App\Actions\Tasks\CreateTaskAction::class)->handle($issue, $team->id, assignedWorkerId: $worker->id);
+    app(App\Actions\Tasks\UpdateTaskAssignmentAction::class)->handle($task, $team->id, $worker->id);
+
+    expect($this->push->sent)->toHaveCount(1)
+        ->and($this->push->sent[0]['payload']['title'])->toBe('Nieuwe taak voor jou');
+});
+
+it('pusht een teamtaak gebundeld en pas na goedkeuring van de melding', function () {
+    [$tenant, $team] = pushWorker('https://push.example.test/team-task');
+    $issue = App\Models\Issue::factory()->create(['tenant_id' => $tenant->id, 'approved_at' => null]);
+    $create = app(App\Actions\Tasks\CreateTaskAction::class);
+
+    $create->handle($issue, $team->id, duringIssueIntake: true);
+    expect($this->push->sent)->toHaveCount(0);
+
+    app(App\Actions\Issues\ApproveIssueAction::class)->handle($issue, User::factory()->admin()->create(['tenant_id' => $tenant->id]));
+    $create->handle($issue->fresh(), $team->id);
+
+    expect($this->push->sent)->toHaveCount(1)
+        ->and($this->push->sent[0]['payload']['title'])->toBe('Nieuwe taak voor je team');
+});
+
+it('pusht wederkerende taken als één ochtendmelding per uitvoerder', function () {
+    [$tenant, $team, $worker] = pushWorker('https://push.example.test/recurring');
+    $issue = App\Models\Issue::factory()->create(['tenant_id' => $tenant->id, 'approved_at' => now()]);
+    $tasks = collect(range(1, 3))->map(fn () => App\Models\Task::factory()->create([
+        'tenant_id' => $tenant->id,
+        'issue_id' => $issue->id,
+        'internal_team_id' => $team->id,
+        'is_recurring_cycle' => true,
+    ]))->all();
+
+    app(App\Actions\Tasks\NotifyWorkersOfRecurringTasksAction::class)->handle($tenant, $tasks);
+
+    expect($this->push->sent)->toHaveCount(1)
+        ->and($this->push->sent[0]['payload']['title'])->toBe('Taken voor vandaag')
+        ->and($this->push->sent[0]['payload']['body'])->toContain('3');
 });

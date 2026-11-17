@@ -9,6 +9,8 @@ use Illuminate\Validation\ValidationException;
 
 class UpdateTaskAssignmentAction
 {
+    public function __construct(private NotifyWorkersOfNewTaskAction $notifyWorkers) {}
+
     public function handle(Task $task, int $internalTeamId, ?int $assignedWorkerId = null): Task
     {
         TaskIssueApproval::assertTaskMutable($task);
@@ -29,7 +31,10 @@ class UpdateTaskAssignmentAction
             'assigned_worker_id' => $assignedWorkerId,
         ]);
 
-        return $task->fresh(['issue.location', 'issue.unit', 'team', 'assignedWorker']);
+        $fresh = $task->fresh(['issue.location', 'issue.unit', 'team', 'assignedWorker']);
+        $this->notifyWorkers->handle($fresh);
+
+        return $fresh;
     }
 
     private function normalizeWorkerId(?int $assignedWorkerId, int $teamId, int $tenantId): ?int

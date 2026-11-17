@@ -622,7 +622,19 @@
             "absence_leave_body_range": "Ihr Urlaub vom :from bis :to wurde genehmigt.",
             "absence_recup_title": "Ausgleich genehmigt",
             "absence_recup_body": "Ihr Ausgleich am :date wurde genehmigt.",
-            "absence_recup_body_range": "Ihr Ausgleich vom :from bis :to wurde genehmigt."
+            "absence_recup_body_range": "Ihr Ausgleich vom :from bis :to wurde genehmigt.",
+            "absence_leave_rejected_title": "Urlaub abgelehnt",
+            "absence_leave_rejected_body": "Ihr Urlaub am :date wurde abgelehnt.",
+            "absence_leave_rejected_body_range": "Ihr Urlaub vom :from bis :to wurde abgelehnt.",
+            "absence_recup_rejected_title": "Ausgleich abgelehnt",
+            "absence_recup_rejected_body": "Ihr Ausgleich am :date wurde abgelehnt.",
+            "absence_recup_rejected_body_range": "Ihr Ausgleich vom :from bis :to wurde abgelehnt.",
+            "task_assigned_title": "Neue Aufgabe für Sie",
+            "task_assigned_body": "Eine Aufgabe wartet auf Sie.",
+            "team_task_title": "Neue Aufgabe für Ihr Team",
+            "team_task_body": "Eine neue Aufgabe wartet auf Ihr Team.",
+            "recurring_tasks_title": "Aufgaben für heute",
+            "recurring_tasks_body": ":count neue Aufgaben warten auf Sie."
         }
     },
     "ciao": {

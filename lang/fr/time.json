@@ -622,7 +622,19 @@
             "absence_leave_body_range": "Votre congé du :from au :to est approuvé.",
             "absence_recup_title": "Récupération approuvée",
             "absence_recup_body": "Votre récupération du :date est approuvée.",
-            "absence_recup_body_range": "Votre récupération du :from au :to est approuvée."
+            "absence_recup_body_range": "Votre récupération du :from au :to est approuvée.",
+            "absence_leave_rejected_title": "Congé refusé",
+            "absence_leave_rejected_body": "Votre congé du :date a été refusé.",
+            "absence_leave_rejected_body_range": "Votre congé du :from au :to a été refusé.",
+            "absence_recup_rejected_title": "Récupération refusée",
+            "absence_recup_rejected_body": "Votre récupération du :date a été refusée.",
+            "absence_recup_rejected_body_range": "Votre récupération du :from au :to a été refusée.",
+            "task_assigned_title": "Nouvelle tâche pour vous",
+            "task_assigned_body": "Une tâche vous attend.",
+            "team_task_title": "Nouvelle tâche pour votre équipe",
+            "team_task_body": "Une nouvelle tâche attend votre équipe.",
+            "recurring_tasks_title": "Tâches du jour",
+            "recurring_tasks_body": ":count nouvelles tâches vous attendent."
         }
     },
     "ciao": {

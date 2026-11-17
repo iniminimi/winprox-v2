@@ -19,6 +19,7 @@ class CreateTaskAction
     public function __construct(
         private RecalculateIssueStatusAction $recalculateIssueStatus,
         private EnsureTaskTranslationSlotsAction $ensureTranslationSlots,
+        private NotifyWorkersOfNewTaskAction $notifyWorkers,
     ) {}
 
     /**
@@ -87,6 +88,7 @@ class CreateTaskAction
 
         $fresh = $task->fresh();
         $this->ensureTranslationSlots->handle($fresh);
+        $this->notifyWorkers->handle($fresh);
 
         if ($recalculateIssue) {
             $this->recalculateIssueStatus->handle($issue);

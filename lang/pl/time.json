@@ -262,7 +262,19 @@
             "absence_leave_body_range": "Urlop od :from do :to został zatwierdzony.",
             "absence_recup_title": "Odbiór zatwierdzony",
             "absence_recup_body": "Odbiór w dniu :date został zatwierdzony.",
-            "absence_recup_body_range": "Odbiór od :from do :to został zatwierdzony."
+            "absence_recup_body_range": "Odbiór od :from do :to został zatwierdzony.",
+            "absence_leave_rejected_title": "Urlop odrzucony",
+            "absence_leave_rejected_body": "Twój urlop w dniu :date został odrzucony.",
+            "absence_leave_rejected_body_range": "Twój urlop od :from do :to został odrzucony.",
+            "absence_recup_rejected_title": "Odbiór godzin odrzucony",
+            "absence_recup_rejected_body": "Twój odbiór godzin w dniu :date został odrzucony.",
+            "absence_recup_rejected_body_range": "Twój odbiór godzin od :from do :to został odrzucony.",
+            "task_assigned_title": "Nowe zadanie dla Ciebie",
+            "task_assigned_body": "Czeka na Ciebie zadanie.",
+            "team_task_title": "Nowe zadanie dla zespołu",
+            "team_task_body": "Na Twój zespół czeka nowe zadanie.",
+            "recurring_tasks_title": "Zadania na dziś",
+            "recurring_tasks_body": "Czeka na Ciebie nowych zadań: :count."
         }
     }
 }

@@ -18,7 +18,7 @@ class NotifyWorkerAbsenceApprovedAction
         private DispatchWorkerPushAction $dispatchPush,
     ) {}
 
-    public function handle(Tenant $tenant, Worker $worker, AbsenceRequest $request): void
+    public function handle(Tenant $tenant, Worker $worker, AbsenceRequest $request, bool $approved = true): void
     {
         if ((int) $request->tenant_id !== (int) $tenant->id || (int) $request->worker_id !== (int) $worker->id) {
             return;
@@ -31,7 +31,7 @@ class NotifyWorkerAbsenceApprovedAction
         $row = $this->createNotification->recordOnce(
             $tenant,
             $worker,
-            WorkerNotificationType::AbsenceApproved,
+            $approved ? WorkerNotificationType::AbsenceApproved : WorkerNotificationType::AbsenceRejected,
             (string) $request->id,
         );
         if (! $row->wasRecentlyCreated) {
@@ -42,17 +42,16 @@ class NotifyWorkerAbsenceApprovedAction
         $to = $request->date_to->format('d-m-Y');
         $leave = $request->kind === ShiftTypeKind::Leave;
         $sameDay = $from === $to;
+        $prefix = 'time.portal.push.absence_'.($leave ? 'leave' : 'recup').($approved ? '' : '_rejected');
 
         $this->dispatchPush->handle(
             $tenant,
             $worker,
-            $leave ? 'time.portal.push.absence_leave_title' : 'time.portal.push.absence_recup_title',
-            $leave
-                ? ($sameDay ? 'time.portal.push.absence_leave_body' : 'time.portal.push.absence_leave_body_range')
-                : ($sameDay ? 'time.portal.push.absence_recup_body' : 'time.portal.push.absence_recup_body_range'),
+            $prefix.'_title',
+            $prefix.($sameDay ? '_body' : '_body_range'),
             $sameDay ? ['date' => $from] : ['from' => $from, 'to' => $to],
             WorkerPushScreen::ABSENCE,
-            'absence_approved:'.$request->id,
+            ($approved ? 'absence_approved:' : 'absence_rejected:').$request->id,
         );
     }
 }

@@ -622,7 +622,19 @@
             "absence_leave_body_range": "Le sue ferie dal :from al :to sono approvate.",
             "absence_recup_title": "Recupero approvato",
             "absence_recup_body": "Il suo recupero del :date è approvato.",
-            "absence_recup_body_range": "Il suo recupero dal :from al :to è approvato."
+            "absence_recup_body_range": "Il suo recupero dal :from al :to è approvato.",
+            "absence_leave_rejected_title": "Ferie rifiutate",
+            "absence_leave_rejected_body": "Le ferie del :date sono state rifiutate.",
+            "absence_leave_rejected_body_range": "Le ferie dal :from al :to sono state rifiutate.",
+            "absence_recup_rejected_title": "Recupero rifiutato",
+            "absence_recup_rejected_body": "Il recupero del :date è stato rifiutato.",
+            "absence_recup_rejected_body_range": "Il recupero dal :from al :to è stato rifiutato.",
+            "task_assigned_title": "Nuova attività per lei",
+            "task_assigned_body": "Un'attività la sta aspettando.",
+            "team_task_title": "Nuova attività per il suo team",
+            "team_task_body": "Una nuova attività aspetta il suo team.",
+            "recurring_tasks_title": "Attività di oggi",
+            "recurring_tasks_body": ":count nuove attività la stanno aspettando."
         }
     },
     "ciao": {

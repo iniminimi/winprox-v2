@@ -58,14 +58,15 @@ class DecideAbsenceRequestAction
         $request->decided_at = now();
         $request->save();
 
+        $worker = Worker::withoutGlobalScope('tenant')
+            ->where('tenant_id', $tenant->id)
+            ->whereKey($request->worker_id)
+            ->first();
+        if ($worker instanceof Worker) {
+            $this->notifyApproved->handle($tenant, $worker, $request, $data->approve);
+        }
+
         if ($data->approve) {
-            $worker = Worker::withoutGlobalScope('tenant')
-                ->where('tenant_id', $tenant->id)
-                ->whereKey($request->worker_id)
-                ->first();
-            if ($worker instanceof Worker) {
-                $this->notifyApproved->handle($tenant, $worker, $request);
-            }
 
             AbsenceApproved::dispatch(
                 (int) $tenant->id,

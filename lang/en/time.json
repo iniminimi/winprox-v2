@@ -622,7 +622,19 @@
             "absence_leave_body_range": "Your leave from :from to :to has been approved.",
             "absence_recup_title": "Time off approved",
             "absence_recup_body": "Your time off on :date has been approved.",
-            "absence_recup_body_range": "Your time off from :from to :to has been approved."
+            "absence_recup_body_range": "Your time off from :from to :to has been approved.",
+            "absence_leave_rejected_title": "Leave declined",
+            "absence_leave_rejected_body": "Your leave on :date was declined.",
+            "absence_leave_rejected_body_range": "Your leave from :from to :to was declined.",
+            "absence_recup_rejected_title": "Time off in lieu declined",
+            "absence_recup_rejected_body": "Your time off in lieu on :date was declined.",
+            "absence_recup_rejected_body_range": "Your time off in lieu from :from to :to was declined.",
+            "task_assigned_title": "New task for you",
+            "task_assigned_body": "A task is waiting for you.",
+            "team_task_title": "New task for your team",
+            "team_task_body": "A new task is waiting for your team.",
+            "recurring_tasks_title": "Tasks for today",
+            "recurring_tasks_body": ":count new tasks are waiting for you."
         }
     },
     "ciao": {

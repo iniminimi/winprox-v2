@@ -262,7 +262,19 @@
             "absence_leave_body_range": "As suas férias de :from a :to foram aprovadas.",
             "absence_recup_title": "Compensação aprovada",
             "absence_recup_body": "A sua compensação em :date foi aprovada.",
-            "absence_recup_body_range": "A sua compensação de :from a :to foi aprovada."
+            "absence_recup_body_range": "A sua compensação de :from a :to foi aprovada.",
+            "absence_leave_rejected_title": "Férias recusadas",
+            "absence_leave_rejected_body": "As suas férias de :date foram recusadas.",
+            "absence_leave_rejected_body_range": "As suas férias de :from a :to foram recusadas.",
+            "absence_recup_rejected_title": "Recuperação recusada",
+            "absence_recup_rejected_body": "A sua recuperação de :date foi recusada.",
+            "absence_recup_rejected_body_range": "A sua recuperação de :from a :to foi recusada.",
+            "task_assigned_title": "Nova tarefa para si",
+            "task_assigned_body": "Tem uma tarefa à sua espera.",
+            "team_task_title": "Nova tarefa para a sua equipa",
+            "team_task_body": "A sua equipa tem uma nova tarefa.",
+            "recurring_tasks_title": "Tarefas de hoje",
+            "recurring_tasks_body": "Tem :count novas tarefas à sua espera."
         }
     }
 }
