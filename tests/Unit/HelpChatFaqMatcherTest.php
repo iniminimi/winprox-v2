@@ -3,12 +3,44 @@
 declare(strict_types=1);
 
 use App\Actions\HelpChat\ProcessHelpChatMessageAction;
+use App\Models\HelpChatKnowledgeBaseEntry;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Support\HelpChat\HelpChatFaqMatcher;
 
 beforeEach(function (): void {
     app()->setLocale('nl');
+});
+
+it('laat een kennisbankzin voorgaan op de handleiding bij het lange woord', function (): void {
+    HelpChatKnowledgeBaseEntry::query()->create([
+        'original_language' => 'nl',
+        'match_key' => 'inchecken_uitleg',
+        'patterns' => ['Ik weet niet hoe ik moet inchecken'],
+        'answer' => 'Scan de Clock Point-QR. Aanmelden is nog geen inklokken.',
+        'is_active' => true,
+    ]);
+
+    $matcher = app(HelpChatFaqMatcher::class);
+    $answer = 'Scan de Clock Point-QR. Aanmelden is nog geen inklokken.';
+
+    expect($matcher->match('inchecken', 'nl'))->toBe($answer)
+        ->and($matcher->match('Ik weet niet hoe ik moet inchecken', 'nl'))->toBe($answer)
+        ->and($matcher->match('hoe moet ik inchecken', 'nl'))->toBe($answer)
+        ->and($matcher->match('ik weet niet', 'nl'))->not->toBe($answer);
+});
+
+it('matcht een kort kennisbankpatroon als de vraag dat patroon bevat', function (): void {
+    HelpChatKnowledgeBaseEntry::query()->create([
+        'original_language' => 'nl',
+        'match_key' => 'qr_melden',
+        'patterns' => ['qr melden'],
+        'answer' => 'Scan de code op de unit.',
+        'is_active' => true,
+    ]);
+
+    expect(app(HelpChatFaqMatcher::class)->match('Hoe kan ik via qr melden?', 'nl'))
+        ->toBe('Scan de code op de unit.');
 });
 
 it('beantwoordt Time-vragen vanuit pagina-hulp Clock Points', function (): void {

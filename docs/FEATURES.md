@@ -1730,6 +1730,10 @@ battery-PNG-widget als losse kaart (de vijf PNG's zitten in de compacte capsule)
   (`config/help_chat_page_help.php`, zelfde bron als handleiding) → **FAQ-samenvattingen**
   (`config/help_chat_faq.php`) → **handleiding doorzoeken** (alle `page-help`-hoofdstukken +
   Aan de slag via `HelpChatPageHelpMatcher::searchManual`) → **geen match** (niet opslaan).
+  Een kennisbankpatroon matcht als de vraag dat patroon bevat, of als een woord van
+  minstens 8 tekens uit het patroon in de vraag staat. De opgeslagen zin
+  «Ik weet niet hoe ik moet inchecken» antwoordt daardoor ook op «inchecken»,
+  vóór de handleiding.
   **Geen automatische helpdesk-mail** — na elk antwoord knop **Doorsturen naar helpdesk**
   (`EscalateHelpChatAnswerAction`: mail + opslaan in `help_chat_unanswered_questions` voor
   superuser-overzicht), ook wanneer de assistent wél een antwoord gaf.

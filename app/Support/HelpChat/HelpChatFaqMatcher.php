@@ -10,6 +10,12 @@ use Illuminate\Support\Str;
 
 class HelpChatFaqMatcher
 {
+    /**
+     * Woorden korter dan dit matchen niet los uit een lange kennisbankzin.
+     * «inchecken» (9) wel, «niet» of «locatie» niet.
+     */
+    private const PATTERN_KEYWORD_MIN_LENGTH = 8;
+
     public function __construct(
         private HelpChatPageHelpMatcher $pageHelpMatcher,
     ) {}
@@ -45,16 +51,19 @@ class HelpChatFaqMatcher
     {
         $locale = LocaleSupport::normalize($locale);
 
+        $bestAnswer = null;
+        $bestScore = 0;
+
         $sourceEntries = HelpChatKnowledgeBaseEntry::query()
             ->where('is_active', true)
             ->where('original_language', $locale)
             ->get();
 
         foreach ($sourceEntries as $entry) {
-            foreach ($entry->patterns ?? [] as $pattern) {
-                if ($this->patternMatches($normalized, (string) $pattern)) {
-                    return $entry->answer;
-                }
+            $score = $this->knowledgeBaseScore($normalized, $entry->patterns ?? []);
+            if ($score > $bestScore && $entry->answer !== '') {
+                $bestScore = $score;
+                $bestAnswer = $entry->answer;
             }
         }
 
@@ -65,14 +74,50 @@ class HelpChatFaqMatcher
             ->get();
 
         foreach ($translations as $translation) {
-            foreach ($translation->patterns ?? [] as $pattern) {
-                if ($this->patternMatches($normalized, (string) $pattern)) {
-                    return $translation->answer;
+            $score = $this->knowledgeBaseScore($normalized, $translation->patterns ?? []);
+            if ($score > $bestScore && filled($translation->answer)) {
+                $bestScore = $score;
+                $bestAnswer = $translation->answer;
+            }
+        }
+
+        return $bestAnswer;
+    }
+
+    /**
+     * @param  list<string>  $patterns
+     */
+    protected function knowledgeBaseScore(string $normalized, array $patterns): int
+    {
+        $best = 0;
+
+        foreach ($patterns as $pattern) {
+            $pattern = $this->normalize((string) $pattern);
+
+            if ($pattern === '') {
+                continue;
+            }
+
+            if (Str::contains($normalized, $pattern)) {
+                $best = max($best, 1000 + Str::length($pattern));
+
+                continue;
+            }
+
+            foreach (preg_split('/\s+/', $pattern) ?: [] as $word) {
+                $word = preg_replace('/[^\p{L}\p{N}]/u', '', (string) $word) ?? '';
+
+                if (Str::length($word) < self::PATTERN_KEYWORD_MIN_LENGTH) {
+                    continue;
+                }
+
+                if (Str::contains($normalized, $word)) {
+                    $best = max($best, Str::length($word));
                 }
             }
         }
 
-        return null;
+        return $best;
     }
 
     protected function matchConfigFaq(string $normalized, string $locale): ?string
