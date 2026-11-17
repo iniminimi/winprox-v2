@@ -516,6 +516,8 @@
         },
         "homescreen": {
             "title": "Add WinProx to your home screen:",
+            "open_title": "WinProx is on your home screen",
+            "open_text": "The app will open in a moment. If it does not, tap the WinProx icon on your home screen.",
             "help_title": "Clock Point on your home screen",
             "help_intro": "Tap the WinProx icon: on Android, Chrome asks to add WinProx to the home screen. After that you sign in without a QR. On a fixed clock you clock in by scanning the sticker or the clock screen. No App Store.",
             "help_android": "Android (Chrome): one tap on the icon. Confirm “Add to Home screen”. Sign in then works in that shortcut.",

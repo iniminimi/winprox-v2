@@ -156,6 +156,8 @@
         },
         "homescreen": {
             "title": "Adăugați WinProx pe ecranul de start:",
+            "open_title": "WinProx este pe ecranul de start",
+            "open_text": "Aplicația se deschide imediat. Dacă nu, atingeți pictograma WinProx de pe ecranul de start.",
             "help_title": "Clock Point pe ecranul de start",
             "help_intro": "Apăsați pictograma WinProx: pe Android, Chrome vă întreabă dacă adăugați WinProx pe ecranul de start. Apoi vă autentificați fără QR. La un ceas fix pontați scanând autocolantul sau ecranul ceasului. Fără App Store.",
             "help_android": "Android (Chrome): o apăsare pe pictogramă. Confirmați „Adăugați pe ecranul de start”. Autentificarea funcționează apoi din acea scurtătură.",

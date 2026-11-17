@@ -516,6 +516,8 @@
         },
         "homescreen": {
             "title": "Ajouter WinProx à l’écran d’accueil :",
+            "open_title": "WinProx est sur votre écran d’accueil",
+            "open_text": "L’app s’ouvre dans un instant. Sinon, touchez l’icône WinProx sur l’écran d’accueil.",
             "help_title": "Clock Point sur l’écran d’accueil",
             "help_intro": "Touchez l'icône WinProx : sur Android, Chrome propose d'ajouter WinProx à l'écran d'accueil. Ensuite vous vous connectez sans QR. Sur une pointeuse fixe, vous pointez l'entrée en scannant l'autocollant ou l'écran. Pas d'App Store.",
             "help_android": "Android (Chrome) : une touche sur l’icône. Confirmez « Ajouter à l’écran d’accueil ». La connexion fonctionne ensuite dans ce raccourci.",

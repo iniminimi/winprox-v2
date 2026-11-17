@@ -156,6 +156,8 @@
         },
         "homescreen": {
             "title": "Adicione o WinProx ao ecrã inicial:",
+            "open_title": "O WinProx está no ecrã inicial",
+            "open_text": "A app abre dentro de momentos. Se não abrir, toque no ícone WinProx no ecrã inicial.",
             "help_title": "Clock Point no ecrã inicial",
             "help_intro": "Prima o ícone WinProx: no Android, o Chrome pergunta se adiciona o WinProx ao ecrã inicial. Depois inicia sessão sem QR. Num relógio fixo regista o ponto ao digitalizar o autocolante ou o ecrã do relógio. Sem App Store.",
             "help_android": "Android (Chrome): um toque no ícone. Confirme “Adicionar ao ecrã inicial”. O início de sessão funciona depois a partir desse atalho.",

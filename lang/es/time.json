@@ -516,6 +516,8 @@
         },
         "homescreen": {
             "title": "Poner WinProx en la pantalla de inicio:",
+            "open_title": "WinProx está en la pantalla de inicio",
+            "open_text": "La app se abre en un momento. Si no, pulse el icono de WinProx en la pantalla de inicio.",
             "help_title": "Clock Point en la pantalla de inicio",
             "help_intro": "Toca el icono WinProx: en Android, Chrome pide añadir WinProx a la pantalla de inicio. Después te identificas sin QR. En un reloj fijo fichas la entrada escaneando la pegatina o la pantalla. Sin App Store.",
             "help_android": "Android (Chrome): un toque en el icono. Confirma «Añadir a pantalla de inicio». El inicio de sesión funciona después en ese acceso.",

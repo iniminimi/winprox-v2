@@ -8509,6 +8509,33 @@ html.wp-pwa-installed .wp-homescreen-shortcut-wrap {
     display: none;
 }
 
+.wp-pwa-open-screen {
+    display: none;
+}
+
+html.wp-pwa-open-app .wp-pwa-open-screen {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    background: var(--wp-bg);
+}
+
+.wp-pwa-open-screen__card {
+    align-items: center;
+    max-width: 22rem;
+    text-align: center;
+}
+
+.wp-pwa-open-screen__card img {
+    width: 4.5rem;
+    height: 4.5rem;
+    border-radius: 1rem;
+}
+
 
 
 /* Klokscherm-koppelcode (time.clock-displays) — groot intikbaar op het scherm. */

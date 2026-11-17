@@ -516,6 +516,8 @@
         },
         "homescreen": {
             "title": "Metti WinProx sulla schermata Home:",
+            "open_title": "WinProx è sulla schermata Home",
+            "open_text": "L’app si apre tra un attimo. Altrimenti tocca l’icona WinProx sulla schermata Home.",
             "help_title": "Clock Point sulla schermata Home",
             "help_intro": "Tocca l'icona WinProx: su Android Chrome chiede di aggiungere WinProx alla schermata Home. Poi accedi senza QR. Su una timbratrice fissa timbri l'entrata scansionando l'adesivo o lo schermo. Nessun App Store.",
             "help_android": "Android (Chrome): un tocco sull’icona. Conferma «Aggiungi a schermata Home». L’accesso funziona poi in quel collegamento.",
