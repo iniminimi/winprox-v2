@@ -2,7 +2,7 @@
     <div class="wp-page-head">
         <div class="wp-grow wp-stack-tight">
             <x-wp-page-head-title
-                icon="document"
+                icon="album"
                 :title="__('photo_album.title')"
                 help-page="photo-album"
                 :subtitle="__('photo_album.subtitle')"

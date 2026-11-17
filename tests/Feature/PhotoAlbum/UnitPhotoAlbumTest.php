@@ -227,6 +227,7 @@ it('toont in het album alleen units en dagen met foto\'s', function () {
         ->assertSee($today)
         ->assertSee($threeDaysAgo)
         ->assertDontSee($yesterday)
+        ->assertSee('images/icons/album.png', false)
         ->assertSeeHtml('wp-photo-grid--gallery')
         ->assertSeeHtml('wp-photo-thumb')
         ->assertSeeHtml('wp-photo-remove')
