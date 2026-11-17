@@ -672,4 +672,6 @@ werk dat later dezelfde dag klaar is, hoort bij de nota van de **volgende** dag.
 - **Privacy & retentie:** applicatielogs max. **14 dagen**. SQL-fouten kunnen
   persoonsgegevens bevatten (ingevulde waarden); logs zijn alleen voor serverbeheer
   (`storage/logs`, buiten de webroot). Zie `docs/legal/data-retention-policy.md`.
+  In productie zet `AppServiceProvider` `zend.exception_ignore_args` aan (web én CLI), zodat
+  stack traces geen argumentwaarden zoals wachtwoorden bevatten.
 - Geen externe of betaalde monitoringdienst zonder kostenmelding (`disclose-costs.mdc`).

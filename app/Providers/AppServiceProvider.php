@@ -37,6 +37,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        // Geen argumentwaarden (bv. wachtwoorden) in stack traces in het productielog, ook in CLI/cron.
+        if ($this->app->isProduction()) {
+            ini_set('zend.exception_ignore_args', '1');
+        }
+
         // Ondersteun per-page JSON-vertaalbestanden: lang/[locale]/[page].json
         $this->app->extend('translation.loader', function ($loader, $app) {
             return new JsonTranslationLoader($app['files'], $app['path.lang']);

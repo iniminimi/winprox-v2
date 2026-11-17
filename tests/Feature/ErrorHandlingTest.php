@@ -189,3 +189,18 @@ it('shows the 500 page with the logged reference for a failing Livewire request'
         ->and($response->getContent())->not->toContain('SQLSTATE')
         ->and($response->getContent())->not->toContain('secret@example.com');
 });
+
+it('hides function arguments in stack traces in production', function () {
+    $original = ini_get('zend.exception_ignore_args');
+    ini_set('zend.exception_ignore_args', '0');
+    app()->detectEnvironment(fn () => 'production');
+
+    try {
+        (new App\Providers\AppServiceProvider(app()))->register();
+
+        expect(ini_get('zend.exception_ignore_args'))->toBe('1');
+    } finally {
+        app()->detectEnvironment(fn () => 'testing');
+        ini_set('zend.exception_ignore_args', $original);
+    }
+});
