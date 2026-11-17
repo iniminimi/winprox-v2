@@ -48,7 +48,7 @@
                     "Gestire sedi, team, persone e unità.",
                     "La registrazione ONSS/CIAO si può attivare nelle impostazioni. Le visite GPS facoltative collegano una visita a un luogo.",
                     "Album foto facoltativo: gli esecutori scattano foto sul QR dell'unità. La sede e il nome dell'unità sono indicati. Nella foto stessa, in basso, compaiono data, ora, esecutore, unità e nome dell'organizzazione. Le invia da Album foto. I file vengono cancellati dopo una settimana. Si attiva in Impostazioni, sotto La sua organizzazione. Per esempio: in un asilo nido, le educatrici scattano foto dei bambini e le inviano ai genitori.",
-                    "L’esecutore mette prima WinProx sulla schermata Home (logo con più). Poi compare Attiva le notifiche push. Dopo Consenti il pulsante sparisce subito. Se rifiuta o sono bloccati, Avvisi disattivati resta visibile con i passaggi nelle impostazioni del telefono; dopo la correzione l’app controlla di nuovo. Poi può comparire un avviso se cambia un turno, ferie o recupero sono approvati, un documento o una comunicazione è pronto, o risulta ancora in servizio dopo il turno. Su iPhone solo dall’icona sulla schermata Home."
+                    "L’esecutore mette prima WinProx sulla schermata Home (logo con più). Poi compare Attiva le notifiche push. Dopo Consenti il pulsante sparisce subito. Se rifiuta o sono bloccati, Avvisi disattivati resta visibile con i passaggi nelle impostazioni del telefono; dopo la correzione l’app controlla di nuovo. Poi può comparire un avviso se cambia un turno, ferie o recupero sono approvati, un documento o una comunicazione è pronto, o risulta ancora in servizio dopo il turno. Anche per una nuova attività per lui o il suo team, una volta al mattino per le attività ricorrenti, e se ferie o recupero vengono rifiutati. Su iPhone solo dall’icona sulla schermata Home."
                 ],
                 "badge": "incluso",
                 "key": "winprox_time"
@@ -449,7 +449,7 @@
                     "Altri software usano un token di accesso revocabile con permessi scelti, non l’accesso ordinario.",
                     "Gli esecutori accedono tramite Clock Point (nome e icona personale, oppure un PIN o la biometria). Nessun account e-mail.",
                     "Chi segnala usa il portale QR pubblico senza account. Con la conferma e-mail opzionale, la segnalazione nasce solo dopo il link.",
-                    "Sul telefono l’esecutore può ricevere avvisi push su turno, ferie, documento, comunicazione o uscita dimenticata. Con WinProx sulla schermata Home li attiva con Attiva le notifiche push; il pulsante sparisce subito dopo Consenti. Se bloccati, Avvisi disattivati mostra i passaggi di ripristino. Su iPhone solo dall’icona sulla schermata Home. L’avviso non include il contenuto del documento."
+                    "Sul telefono l’esecutore può ricevere avvisi push su turno, ferie (approvate o rifiutate), attività per lui o il suo team, documento, comunicazione o uscita dimenticata. Con WinProx sulla schermata Home li attiva con Attiva le notifiche push; il pulsante sparisce subito dopo Consenti. Se bloccati, Avvisi disattivati mostra i passaggi di ripristino. Su iPhone solo dall’icona sulla schermata Home. L’avviso non include il contenuto del documento."
                 ]
             },
             {

@@ -48,7 +48,7 @@
                     "Locaties, teams, medewerkers en units beheren.",
                     "De RSZ/CIAO-registratie kan via de instellingen worden geactiveerd. Optionele GPS-werkbezoeken koppelen een bezoek aan een locatie.",
                     "Optioneel fotoalbum: uitvoerders maken foto's op de unit-QR. Locatie en unitnaam staan erbij. In de foto zelf staat onderaan datum, tijd, uitvoerder, unit en organisatienaam. U mailt ze vanuit Fotoalbum. De bestanden worden na een week gewist. U zet dit aan bij Instellingen, onder Je organisatie. Gebruik bijvoorbeeld: in een crèche nemen verzorgsters foto's van kindjes en sturen die door naar de ouders.",
-                    "De uitvoerder zet WinProx eerst op het startscherm (logo met plusje). Daarna verschijnt op de gsm de knop Pushmeldingen aanzetten. Na toestemming verdwijnt die knop meteen. Bij weigering of blokkering blijft Meldingen staan uit zichtbaar met stappen in de telefooninstellingen; na herstel controleert de app opnieuw. Daarna kan een melding verschijnen als een dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of de uitvoerder na het einde van de dienst nog ingeklokt is. Op een iPhone werkt dat alleen vanuit het startscherm-icoon."
+                    "De uitvoerder zet WinProx eerst op het startscherm (logo met plusje). Daarna verschijnt op de gsm de knop Pushmeldingen aanzetten. Na toestemming verdwijnt die knop meteen. Bij weigering of blokkering blijft Meldingen staan uit zichtbaar met stappen in de telefooninstellingen; na herstel controleert de app opnieuw. Daarna kan een melding verschijnen als een dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of de uitvoerder na het einde van de dienst nog ingeklokt is. Ook bij een nieuwe taak voor hem of zijn team, één keer per ochtend voor wederkerende taken, en als verlof of recup geweigerd wordt. Op een iPhone werkt dat alleen vanuit het startscherm-icoon."
                 ],
                 "badge": "inbegrepen",
                 "key": "winprox_time"
@@ -449,7 +449,7 @@
                     "Andere software gebruikt een intrekbaar toegangstoken met gekozen rechten, niet de gewone login.",
                     "Uitvoerders melden zich aan via Clock Point (naam en persoonlijk icoon, of een PIN of biometrie). Geen e-mailaccount.",
                     "Melders gebruiken het publieke QR-portaal zonder account. Bij optionele e-mailbevestiging ontstaat de melding pas na de link.",
-                    "Op de gsm kan de uitvoerder pushmeldingen ontvangen over een dienst, verlof, een document, een mededeling of een vergeten uitklok. Nadat WinProx op het startscherm staat, zet hij dat aan met de knop Pushmeldingen aanzetten; die verdwijnt meteen na toestemming. Bij blokkering volgt Meldingen staan uit met herstelstappen. Op een iPhone alleen vanuit het startscherm-icoon. De melding bevat geen inhoud van het document."
+                    "Op de gsm kan de uitvoerder pushmeldingen ontvangen over een dienst, verlof (goedgekeurd of geweigerd), een taak voor hem of zijn team, een document, een mededeling of een vergeten uitklok. Nadat WinProx op het startscherm staat, zet hij dat aan met de knop Pushmeldingen aanzetten; die verdwijnt meteen na toestemming. Bij blokkering volgt Meldingen staan uit met herstelstappen. Op een iPhone alleen vanuit het startscherm-icoon. De melding bevat geen inhoud van het document."
                 ]
             },
             {

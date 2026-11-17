@@ -1120,7 +1120,7 @@
                 },
                 {
                     "label": "Pushmeldingen",
-                    "text": "Zet WinProx eerst op het startscherm via het logo met het plusje. Open daarna dat icoon. Alleen in die app staat de knop Pushmeldingen aanzetten. Tik erop en sta meldingen toe. De knop verdwijnt meteen; de pagina hoeft niet ververst te worden. Je krijgt dan een melding als je dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of je na het einde van je dienst nog ingeklokt bent. Op een iPhone werkt dat alleen als je WinProx via het startscherm-icoon opent. Alleen op deze gsm. De melding bevat geen tekst uit het document."
+                    "text": "Zet WinProx eerst op het startscherm via het logo met het plusje. Open daarna dat icoon. Alleen in die app staat de knop Pushmeldingen aanzetten. Tik erop en sta meldingen toe. De knop verdwijnt meteen; de pagina hoeft niet ververst te worden. Je krijgt dan een melding als je dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of je na het einde van je dienst nog ingeklokt bent. Ook bij een nieuwe taak voor jou of je team, één keer per ochtend voor je wederkerende taken, en als verlof of recup geweigerd wordt. Op een iPhone werkt dat alleen als je WinProx via het startscherm-icoon opent. Alleen op deze gsm. De melding bevat geen tekst uit het document."
                 },
                 {
                     "label": "Afmelden",
@@ -1537,7 +1537,7 @@
                 },
                 {
                     "label": "Pushmeldingen op de gsm",
-                    "text": "De uitvoerder zet WinProx eerst op het startscherm via het logo met het plusje. Open daarna dat icoon. Alleen in die app staat de knop Pushmeldingen aanzetten. Hij tikt erop en staat meldingen toe. De knop verdwijnt meteen; de pagina hoeft niet ververst te worden. Daarna kan zijn gsm een melding tonen als een dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of hij na het einde van de dienst nog ingeklokt is. Op een iPhone werkt dat alleen vanuit het startscherm-icoon. Alleen op de gekoppelde gsm. De melding bevat geen tekst uit het document."
+                    "text": "De uitvoerder zet WinProx eerst op het startscherm via het logo met het plusje. Open daarna dat icoon. Alleen in die app staat de knop Pushmeldingen aanzetten. Hij tikt erop en staat meldingen toe. De knop verdwijnt meteen; de pagina hoeft niet ververst te worden. Daarna kan zijn gsm een melding tonen als een dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of hij na het einde van de dienst nog ingeklokt is. Ook bij een nieuwe taak voor hem of zijn team, één keer per ochtend voor wederkerende taken, en als verlof of recup geweigerd wordt. Op een iPhone werkt dat alleen vanuit het startscherm-icoon. Alleen op de gekoppelde gsm. De melding bevat geen tekst uit het document."
                 }
             ]
         },

@@ -1120,7 +1120,7 @@
                 },
                 {
                     "label": "Notifiche push",
-                    "text": "Metti prima WinProx sulla schermata Home con il logo e il più. Poi apri quell’icona. Il pulsante Attiva le notifiche push c’è solo in quell’app. Toccalo e consenti gli avvisi. Il pulsante sparisce subito; non serve aggiornare la pagina. Ricevi un avviso se il turno cambia, ferie o recupero sono approvati, un documento o una comunicazione è pronto, o risulti ancora in servizio dopo la fine del turno. Su iPhone funziona solo se apri WinProx dall’icona sulla schermata Home. Solo su questo telefono. L’avviso non contiene il testo del documento."
+                    "text": "Metti prima WinProx sulla schermata Home con il logo e il più. Poi apri quell’icona. Il pulsante Attiva le notifiche push c’è solo in quell’app. Toccalo e consenti gli avvisi. Il pulsante sparisce subito; non serve aggiornare la pagina. Ricevi un avviso se il turno cambia, ferie o recupero sono approvati, un documento o una comunicazione è pronto, o risulti ancora in servizio dopo la fine del turno. Anche per una nuova attività per te o il tuo team, una volta al mattino per le tue attività ricorrenti, e se ferie o recupero vengono rifiutati. Su iPhone funziona solo se apri WinProx dall’icona sulla schermata Home. Solo su questo telefono. L’avviso non contiene il testo del documento."
                 },
                 {
                     "label": "Esci",
@@ -1537,7 +1537,7 @@
                 },
                 {
                     "label": "Notifiche push sul telefono",
-                    "text": "L’esecutore mette prima WinProx sulla schermata Home con il logo e il più. Poi apri quell’icona. Il pulsante Attiva le notifiche push c’è solo in quell’app. Lo tocca e consente gli avvisi. Il pulsante sparisce subito; non serve aggiornare la pagina. Il telefono può poi mostrare un avviso se un turno cambia, ferie o recupero sono approvati, un documento o una comunicazione è pronto, o risulta ancora in servizio dopo la fine del turno. Su iPhone funziona solo dall’icona sulla schermata Home. Solo sul telefono collegato. L’avviso non contiene il testo del documento."
+                    "text": "L’esecutore mette prima WinProx sulla schermata Home con il logo e il più. Poi apri quell’icona. Il pulsante Attiva le notifiche push c’è solo in quell’app. Lo tocca e consente gli avvisi. Il pulsante sparisce subito; non serve aggiornare la pagina. Il telefono può poi mostrare un avviso se un turno cambia, ferie o recupero sono approvati, un documento o una comunicazione è pronto, o risulta ancora in servizio dopo la fine del turno. Anche per una nuova attività per lui o il suo team, una volta al mattino per le attività ricorrenti, e se ferie o recupero vengono rifiutati. Su iPhone funziona solo dall’icona sulla schermata Home. Solo sul telefono collegato. L’avviso non contiene il testo del documento."
                 }
             ]
         },

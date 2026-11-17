@@ -1120,7 +1120,7 @@
                 },
                 {
                     "label": "Push notifications",
-                    "text": "Put WinProx on the home screen first, using the logo with the plus. Then open that icon. The button Turn on push notifications is only inside that app. Tap it and allow notifications. The button disappears at once; you do not need to refresh the page. You then get an alert when your shift changes, leave or time off is approved, a document or announcement is ready, or you are still clocked in after your shift. On an iPhone this only works when you open WinProx from the home screen icon. Only on this phone. The alert does not include text from the document."
+                    "text": "Put WinProx on the home screen first, using the logo with the plus. Then open that icon. The button Turn on push notifications is only inside that app. Tap it and allow notifications. The button disappears at once; you do not need to refresh the page. You then get an alert when your shift changes, leave or time off is approved, a document or announcement is ready, or you are still clocked in after your shift. Also for a new task for you or your team, once each morning for your recurring tasks, and when leave or time off is declined. On an iPhone this only works when you open WinProx from the home screen icon. Only on this phone. The alert does not include text from the document."
                 },
                 {
                     "label": "Sign out",
@@ -1537,7 +1537,7 @@
                 },
                 {
                     "label": "Push notifications on the phone",
-                    "text": "The worker puts WinProx on the home screen first, using the logo with the plus. Then open that icon. The button Turn on push notifications is only inside that app. They tap it and allow notifications. The button disappears at once; the page does not need a refresh. Their phone can then show an alert when a shift changes, leave or time off is approved, a document or announcement is ready, or they are still clocked in after the shift. On an iPhone this only works from the home screen icon. Only on the linked phone. The alert does not include text from the document."
+                    "text": "The worker puts WinProx on the home screen first, using the logo with the plus. Then open that icon. The button Turn on push notifications is only inside that app. They tap it and allow notifications. The button disappears at once; the page does not need a refresh. Their phone can then show an alert when a shift changes, leave or time off is approved, a document or announcement is ready, or they are still clocked in after the shift. Also for a new task for them or their team, once each morning for recurring tasks, and when leave or time off is declined. On an iPhone this only works from the home screen icon. Only on the linked phone. The alert does not include text from the document."
                 }
             ]
         },
