@@ -6168,8 +6168,33 @@ svg.wp-release-worker-row__icon,
     flex: 0 0 10.5rem;
 }
 
+.wp-time-shifts-toolbar__form--line {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+}
+
+.wp-time-shifts-toolbar__form--line .wp-filter-form__row {
+    display: flex;
+    flex: 1 1 auto;
+    gap: 0.5rem 0.75rem;
+    min-width: 0;
+}
+
+.wp-time-shifts-toolbar__form--line .wp-filter-cell {
+    flex: 1 1 8rem;
+    flex-wrap: nowrap;
+    min-width: 0;
+}
+
+.wp-time-shifts-toolbar__form--line .wp-filter-form__actions {
+    flex: 0 0 auto;
+    flex-wrap: nowrap;
+}
+
 .wp-time-week {
-    --wp-tw-hour: 2.5rem;
+    --wp-tw-hour: 1.25rem;
     padding: 0;
     overflow: hidden;
 }
@@ -6389,6 +6414,12 @@ svg.wp-release-worker-row__icon,
 @media (max-width: 767px) {
     .wp-time-shifts-toolbar__primary {
         grid-template-columns: 1fr;
+    }
+
+    .wp-time-shifts-toolbar__form--line,
+    .wp-time-shifts-toolbar__form--line .wp-filter-form__row,
+    .wp-time-shifts-toolbar__form--line .wp-filter-form__actions {
+        flex-wrap: wrap;
     }
 }
 

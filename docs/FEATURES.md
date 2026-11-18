@@ -851,7 +851,8 @@ productsector op `Tenant`.
   per dienst een blok van in- tot uitklok (open dienst tot nu, amber), pauzes gearceerd, geplande
   dienst als stippellijn (als het uurrooster aan staat). Nachtdienst wordt over twee dagen verdeeld;
   dagtotaal telt bij de dag van inklokken (zoals lijst en export). Totaal per dag en week; scrollt naar
-  het eerste uur. Klik op een blok = Corrigeren (gesloten, Policy `correct`) of Shift sluiten (open).
+  het eerste uur. De weekfilter (team, uitvoerder, clock point, toepassen) staat op één lijn.
+  Elk uur is 1,25 rem hoog, zodat een dag meer op het scherm past. Klik op een blok = Corrigeren (gesloten, Policy `correct`) of Shift sluiten (open).
   Bron: `BuildWorkShiftWeekGridAction::handle(int $tenantId, int $workerId, string $cursor, ?int $clockPointId)`.
   Export en Afdrukken blijven op de lijst.
 - **Urenkaart:** Time → Uren opent op vandaag (van = tot). Per dienst vijf kolommen (medewerker+team,
