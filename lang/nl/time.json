@@ -307,7 +307,9 @@
                 "inactive": "Dit clock point is inactief. Activeer het eerst.",
                 "undeliverable": "Dit adres kan geen e-mail ontvangen.",
                 "invalid": "Vul een geldig e-mailadres in.",
-                "rate_limited": "Te veel e-mails. Probeer over :seconds seconden opnieuw."
+                "rate_limited": "Te veel e-mails. Probeer over :seconds seconden opnieuw.",
+                "link_whatsapp": "WhatsApp",
+                "link_whatsapp_hint": "Opent WhatsApp met de aanmeldlink."
             },
             "renewal_recommended_hint": "Het ingestelde QR-rotatie-interval is verstreken. Vernieuw de QR-code en print een nieuwe sticker — de oude blijft nog even werken."
         },

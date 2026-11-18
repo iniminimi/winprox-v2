@@ -307,7 +307,9 @@
                 "inactive": "Este clock point está inactivo. Actívelo primero.",
                 "undeliverable": "Esta dirección no puede recibir correo.",
                 "invalid": "Introduzca una dirección de correo válida.",
-                "rate_limited": "Demasiados correos. Inténtelo de nuevo en :seconds segundos."
+                "rate_limited": "Demasiados correos. Inténtelo de nuevo en :seconds segundos.",
+                "link_whatsapp": "WhatsApp",
+                "link_whatsapp_hint": "Abre WhatsApp con el enlace de acceso."
             },
             "renewal_recommended_hint": "El intervalo de rotación del QR ha pasado. Renueve el código QR e imprima una pegatina nueva — la antigua sigue funcionando un tiempo."
         },

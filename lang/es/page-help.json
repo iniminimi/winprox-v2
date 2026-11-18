@@ -1521,7 +1521,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Con <strong>QR</strong> abre un diálogo: ver/imprimir en el navegador, o una hoja Word (A6, A5 o A4) con la misma marca que Ajustes → Hoja de impresión QR. Con <strong>Correo</strong> envía el enlace de acceso (acceso sin fichar la entrada) a un operario en la ubicación. Cada clock point tiene un código único."
+                    "text": "Con <strong>QR</strong> abre un diálogo: ver/imprimir en el navegador, o una hoja Word (A6, A5 o A4) con la misma marca que Ajustes → Hoja de impresión QR. Con <strong>Correo</strong> o <strong>WhatsApp</strong> comparte el enlace de acceso (acceso sin fichar la entrada) con un operario en la ubicación. Cada clock point tiene un código único."
                 },
                 {
                     "label": "Rotación QR",
@@ -2187,7 +2187,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Con <strong>QR</strong> abre un diálogo: ver/imprimir en el navegador, o una hoja Word (A6, A5 o A4). Con <strong>Correo</strong> envía el enlace de acceso a un operario. Quien ya se identificó abre el portal con el icono de la pantalla de inicio — no hace falta escanear de nuevo. En Checkmate, fichar entrada y salida también funciona desde ese icono, sin escaneo."
+                    "text": "Con <strong>QR</strong> abre un diálogo: ver/imprimir en el navegador, o una hoja Word (A6, A5 o A4). Con <strong>Correo</strong> o <strong>WhatsApp</strong> comparte el enlace de acceso con un operario. Quien ya se identificó abre el portal con el icono de la pantalla de inicio — no hace falta escanear de nuevo. En Checkmate, fichar entrada y salida también funciona desde ese icono, sin escaneo."
                 },
                 {
                     "label": "Rotación QR",

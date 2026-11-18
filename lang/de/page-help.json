@@ -1521,7 +1521,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Über <strong>QR</strong> öffnen Sie ein Fenster: Ansehen/Drucken im Browser, oder ein Word-Druckblatt (A6, A5 oder A4) mit derselben Marke wie unter Einstellungen → QR-Druckblatt. Über <strong>E-Mail</strong> senden Sie den Anmeldelink (Anmeldung ohne Einstempeln) an eine ausführende Person vor Ort. Jeder Clock Point hat einen einzigartigen Code."
+                    "text": "Über <strong>QR</strong> öffnen Sie ein Fenster: Ansehen/Drucken im Browser, oder ein Word-Druckblatt (A6, A5 oder A4) mit derselben Marke wie unter Einstellungen → QR-Druckblatt. Über <strong>E-Mail</strong> oder <strong>WhatsApp</strong> teilen Sie den Anmeldelink (Anmeldung ohne Einstempeln) mit einer ausführenden Person vor Ort. Jeder Clock Point hat einen einzigartigen Code."
                 },
                 {
                     "label": "QR-Rotation",
@@ -2187,7 +2187,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Über <strong>QR</strong> öffnen Sie ein Fenster: Anzeigen/Drucken im Browser oder ein Word-Druckblatt (A6, A5 oder A4). Über <strong>E-Mail</strong> senden Sie den Anmeldelink an einen Ausführenden. Wer einmal angemeldet ist, öffnet das Portal über das Startbildschirm-Symbol — erneutes Scannen ist nicht nötig. Bei Checkmate geht Ein- und Ausstempeln auch über dieses Symbol, ohne Scan."
+                    "text": "Über <strong>QR</strong> öffnen Sie ein Fenster: Anzeigen/Drucken im Browser oder ein Word-Druckblatt (A6, A5 oder A4). Über <strong>E-Mail</strong> oder <strong>WhatsApp</strong> teilen Sie den Anmeldelink mit einem Ausführenden. Wer einmal angemeldet ist, öffnet das Portal über das Startbildschirm-Symbol — erneutes Scannen ist nicht nötig. Bei Checkmate geht Ein- und Ausstempeln auch über dieses Symbol, ohne Scan."
                 },
                 {
                     "label": "QR-Rotation",

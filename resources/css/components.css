@@ -491,6 +491,10 @@ a.wp-pill:hover {
     object-fit: contain;
 }
 
+.wp-icon--whatsapp {
+    color: #25d366;
+}
+
 .wp-page-icon:has(.wp-icon--img) {
     width: 5rem;
     height: 5rem;

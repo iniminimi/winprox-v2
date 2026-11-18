@@ -307,7 +307,9 @@
                 "inactive": "Ce clock point est inactif. Activez-le d’abord.",
                 "undeliverable": "Cette adresse ne peut pas recevoir d’e-mail.",
                 "invalid": "Saisissez une adresse e-mail valide.",
-                "rate_limited": "Trop d’e-mails. Réessayez dans :seconds secondes."
+                "rate_limited": "Trop d’e-mails. Réessayez dans :seconds secondes.",
+                "link_whatsapp": "WhatsApp",
+                "link_whatsapp_hint": "Ouvre WhatsApp avec le lien de connexion."
             },
             "renewal_recommended_hint": "L'intervalle de rotation du QR est dépassé. Renouvelez le code QR et imprimez un nouvel autocollant — l'ancien fonctionne encore un temps."
         },

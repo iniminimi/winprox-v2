@@ -1529,7 +1529,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Via <strong>QR</strong>, vous ouvrez une fenêtre : afficher/imprimer dans le navigateur, ou une feuille Word (A6, A5 ou A4) avec la même charte que Paramètres → Feuille d'impression QR. Via <strong>E-mail</strong>, vous envoyez le lien de connexion (connexion sans pointage) à un exécutant sur site. Chaque clock point a un code unique."
+                    "text": "Via <strong>QR</strong>, vous ouvrez une fenêtre : afficher/imprimer dans le navigateur, ou une feuille Word (A6, A5 ou A4) avec la même charte que Paramètres → Feuille d'impression QR. Via <strong>E-mail</strong> ou <strong>WhatsApp</strong>, vous partagez le lien de connexion (connexion sans pointage) avec un exécutant sur site. Chaque clock point a un code unique."
                 },
                 {
                     "label": "Rotation QR",
@@ -2195,7 +2195,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Via <strong>QR</strong> vous ouvrez une fenêtre : afficher/imprimer dans le navigateur, ou une feuille Word (A6, A5 ou A4). Via <strong>E-mail</strong> vous envoyez le lien de connexion à un exécutant. Une fois connecté, il ouvre le portail via l’icône d’écran d’accueil — pas besoin de rescanner. Chez Checkmate, pointer l’entrée et la sortie se fait aussi depuis cette icône, sans scan."
+                    "text": "Via <strong>QR</strong> vous ouvrez une fenêtre : afficher/imprimer dans le navigateur, ou une feuille Word (A6, A5 ou A4). Via <strong>E-mail</strong> ou <strong>WhatsApp</strong> vous partagez le lien de connexion avec un exécutant. Une fois connecté, il ouvre le portail via l’icône d’écran d’accueil — pas besoin de rescanner. Chez Checkmate, pointer l’entrée et la sortie se fait aussi depuis cette icône, sans scan."
                 },
                 {
                     "label": "Rotation QR",

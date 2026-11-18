@@ -1521,7 +1521,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Via <strong>QR</strong> opent u een venster: bekijken/afdrukken in de browser, of een Word-afdrukblad (A6, A5 of A4) met dezelfde branding als bij Instellingen → QR-afdrukblad. Via <strong>E-mail</strong> stuurt u de aanmeldlink (aanmelden zonder inklokken) naar een uitvoerder op locatie. Elke clock point heeft een unieke code."
+                    "text": "Via <strong>QR</strong> opent u een venster: bekijken/afdrukken in de browser, of een Word-afdrukblad (A6, A5 of A4) met dezelfde branding als bij Instellingen → QR-afdrukblad. Via <strong>E-mail</strong> of <strong>WhatsApp</strong> deelt u de aanmeldlink (aanmelden zonder inklokken) met een uitvoerder op locatie. Elke clock point heeft een unieke code."
                 },
                 {
                     "label": "QR-rotatie",
@@ -2187,7 +2187,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Via <strong>QR</strong> opent u een venster: bekijken/afdrukken in de browser, of een Word-afdrukblad (A6, A5 of A4). Via <strong>E-mail</strong> stuurt u de aanmeldlink naar een uitvoerder. Wie zich eenmaal aanmeldde, opent het portaal daarna via het startscherm-icoon — opnieuw scannen is niet nodig. In- en uitklokken kan bij Checkmate ook vanuit dat icoon, zonder scan."
+                    "text": "Via <strong>QR</strong> opent u een venster: bekijken/afdrukken in de browser, of een Word-afdrukblad (A6, A5 of A4). Via <strong>E-mail</strong> of <strong>WhatsApp</strong> deelt u de aanmeldlink met een uitvoerder. Wie zich eenmaal aanmeldde, opent het portaal daarna via het startscherm-icoon — opnieuw scannen is niet nodig. In- en uitklokken kan bij Checkmate ook vanuit dat icoon, zonder scan."
                 },
                 {
                     "label": "QR-rotatie",

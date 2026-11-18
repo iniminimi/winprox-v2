@@ -1521,7 +1521,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Use <strong>QR</strong> to open a dialog: view/print in the browser, or download a Word print sheet (A6, A5 or A4) with the same branding as Settings → QR print sheet. Use <strong>Email</strong> to send the sign-in link (sign-in without clocking in) to a worker on site. Each clock point has a unique code."
+                    "text": "Use <strong>QR</strong> to open a dialog: view/print in the browser, or download a Word print sheet (A6, A5 or A4) with the same branding as Settings → QR print sheet. Use <strong>Email</strong> or <strong>WhatsApp</strong> to share the sign-in link (sign-in without clocking in) with a worker on site. Each clock point has a unique code."
                 },
                 {
                     "label": "QR rotation",
@@ -2187,7 +2187,7 @@
                 },
                 {
                     "label": "QR",
-                    "text": "Use <strong>QR</strong> to open a dialog: view/print in the browser, or download a Word print sheet (A6, A5 or A4). Use <strong>Email</strong> to send the sign-in link to a worker. Once signed in, the worker opens the portal via the home-screen icon — no new scan needed. On Checkmate, clocking in and out also works from that icon, without a scan."
+                    "text": "Use <strong>QR</strong> to open a dialog: view/print in the browser, or download a Word print sheet (A6, A5 or A4). Use <strong>Email</strong> or <strong>WhatsApp</strong> to share the sign-in link with a worker. Once signed in, the worker opens the portal via the home-screen icon — no new scan needed. On Checkmate, clocking in and out also works from that icon, without a scan."
                 },
                 {
                     "label": "QR rotation",

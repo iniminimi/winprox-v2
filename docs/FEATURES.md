@@ -1478,7 +1478,8 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   bewerken = admin of medewerker. Geen sectorcopy.
 - **Clock Point-QR** (Time-module, standaard aan): printbare QR → `/time/{token}` geeft een
   scan om in of uit te klokken. De e-mail-aanmeldlink is `/cp/{token}` (transactionele golden
-  path: default-mailer + WinProx-template + groene CTA, §14.2; geen QR-afbeelding) en geeft
+  path: default-mailer + WinProx-template + groene CTA, §14.2; geen QR-afbeelding). In het
+  QR-venster kunt u die link kopiëren of via WhatsApp delen. De link geeft
   **geen** scan: aanmelden, rooster, uren en verlof wel, inklokken op een vaste prikklok niet.
   Standaardnaam van het eerste
   Clock Point: **Aanmelden** (niet Inloggen/Inklokken); die generieke naam blijft op het

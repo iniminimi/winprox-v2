@@ -205,6 +205,10 @@
                         <h3 class="wp-label">{{ __('time.clock_points.qr.email.heading') }}</h3>
                         <p class="wp-muted">{{ __('time.clock_points.qr.email.hint') }}</p>
                     </div>
+                    @php
+                        $clockPointSignInUrl = $qrPackClockPoint->emailPortalUrl();
+                        $clockPointWhatsAppUrl = 'https://wa.me/?text='.rawurlencode($clockPointSignInUrl);
+                    @endphp
                     <div class="wp-field" x-data="{ copied: false }">
                         <label class="wp-filter-inline-label" for="clock-point-signin-link">{{ __('time.clock_points.qr.email.link_label') }}</label>
                         <div class="wp-cluster wp-cluster--wrap">
@@ -212,7 +216,7 @@
                                 id="clock-point-signin-link"
                                 type="text"
                                 class="wp-input"
-                                value="{{ $qrPackClockPoint->emailPortalUrl() }}"
+                                value="{{ $clockPointSignInUrl }}"
                                 readonly
                                 aria-label="{{ __('time.clock_points.qr.email.link_label') }}"
                                 @focus="$el.select()"
@@ -233,6 +237,18 @@
                                 "
                                 x-text="copied ? @js(__('time.clock_points.qr.email.link_copied')) : @js(__('time.clock_points.qr.email.link_copy'))"
                             ></button>
+                            <x-wp-tooltip class="wp-tooltip--below" :text="__('time.clock_points.qr.email.link_whatsapp_hint')">
+                                <a
+                                    href="{{ $clockPointWhatsAppUrl }}"
+                                    class="btn btn--ghost"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="{{ __('time.clock_points.qr.email.link_whatsapp') }}"
+                                >
+                                    <x-wp-icon name="whatsapp" class="wp-icon wp-icon--whatsapp" />
+                                    <span>{{ __('time.clock_points.qr.email.link_whatsapp') }}</span>
+                                </a>
+                            </x-wp-tooltip>
                         </div>
                         <p class="wp-muted wp-text-sm">{{ __('time.clock_points.qr.email.link_hint') }}</p>
                     </div>
