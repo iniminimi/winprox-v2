@@ -1365,8 +1365,10 @@ binnen ~30–90 s dood.
   `boot_id` = `esp_random()` per boot; counter in RAM. Server:
   `ValidateClockDisplayPresenceTokenAction`, TTL/drift via config, anti-replay
   via cache-set `display_id:boot_id:counter` (≥2×TTL) — niet “laatste counter”.
-  Portaal: `submitBlePresenceToken` → scan-grant + passkey (`ble-punch`) →
-  `ClockSource::Bluetooth`.
+  Portaal: `submitBlePresenceToken` → scan-grant op het **scherm**-clock-point
+  (niet per se het `/cp`-punt van de sessie) + passkey (`ble-punch`) → prik op
+  dat scherm-punt, `ClockSource::Bluetooth`. Uitvoerder moet `canClockAt` die
+  vestiging.
 - **Heartbeat:** `GET /api/v1/time/clock-displays/ping` (`X-WinProx-Clock-Key`)
   → `server_time`, `state`, naam/locatie, rotatie-/offline-drempels, `clock_mode`,
   `presence_token_ttl_seconds` (`time.display_*` / `time.presence_token_*`).
