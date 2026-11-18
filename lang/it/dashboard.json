@@ -149,6 +149,10 @@
       "workers": {
         "title": "Vedi esecutori",
         "body": "Consulta e modifica gli esecutori."
+      },
+      "manual_clock_in": {
+        "title": "Timbratura manuale",
+        "body": "Timbra chi non è riuscito a timbrare da solo."
       }
     }
   },

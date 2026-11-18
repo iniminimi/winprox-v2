@@ -13,6 +13,7 @@ use App\Actions\Onboarding\ApplyTenantStarterPackAction;
 use App\Actions\Onboarding\DismissTenantStarterPackResultAction;
 use App\Actions\Onboarding\RemoveTenantStarterPackAction;
 use App\Actions\Time\EnsureDefaultClockPointAction;
+use App\Livewire\Concerns\ManagesManualClockIn;
 use App\Actions\Time\SendClockPointQrMailAction;
 use App\Data\Onboarding\ApplyTenantStarterPackData;
 use App\Data\Time\SendClockPointQrMailData;
@@ -42,6 +43,7 @@ use Livewire\Component;
 class Dashboard extends Component
 {
     use AuthorizesRequests;
+    use ManagesManualClockIn;
 
     public bool $showRemoveStarterPackModal = false;
 
@@ -311,6 +313,10 @@ class Dashboard extends Component
             ? $buildIntentHub->handle($tenant, $user)
             : null;
 
+        $manualClockInOptions = $this->showManualClockInModal
+            ? $this->manualClockInFormOptions($user instanceof User ? $user->accessibleLocationIds() : null)
+            : ['workers' => collect(), 'clockPoints' => collect()];
+
         $checkmateQrClockPoint = $this->showCheckmateClockPointQrModal && $this->checkmateQrClockPointId !== null
             ? ClockPoint::query()
                 ->where('tenant_id', $tenantId)
@@ -325,6 +331,8 @@ class Dashboard extends Component
             'recent' => $recent,
             'showIssuesTasksUi' => $showIssuesTasksUi,
             'intentHub' => $intentHub,
+            'manualClockInWorkers' => $manualClockInOptions['workers'],
+            'manualClockInClockPoints' => $manualClockInOptions['clockPoints'],
             'showWhatsNew' => $user instanceof User && $shouldShowWhatsNew->handle($user),
             'portalBatteryState' => $tenant?->portalDashboardBatteryState(),
             'onboarding' => $onboarding,

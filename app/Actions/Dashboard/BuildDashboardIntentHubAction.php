@@ -10,6 +10,7 @@ use App\Models\Issue;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\User;
+use App\Models\WorkShift;
 use Carbon\CarbonInterface;
 
 class BuildDashboardIntentHubAction
@@ -84,6 +85,17 @@ class BuildDashboardIntentHubAction
                 'body' => 'dashboard.intent.tiles.presence.body',
                 'href' => route('time.presence.index'),
             ];
+
+            if ($user->can('manualClockIn', WorkShift::class)) {
+                $tiles[] = [
+                    'key' => 'manual_clock_in',
+                    'icon' => 'clock',
+                    'tone' => 'present_now',
+                    'title' => 'dashboard.intent.tiles.manual_clock_in.title',
+                    'body' => 'dashboard.intent.tiles.manual_clock_in.body',
+                    'action' => 'openManualClockIn',
+                ];
+            }
         }
 
         if ($user->can('accessWorkMenuCalendar', $tenant)) {

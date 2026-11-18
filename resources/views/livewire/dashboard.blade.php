@@ -420,6 +420,10 @@
             </div>
         @endif
 
+        @if (session('time_flash'))
+            <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
+        @endif
+
         @if ($intentHub !== null)
             <section class="wp-stack wp-dashboard-intent" aria-label="{{ __('dashboard.intent.title') }}">
                 <x-wp-page-head-title
@@ -434,19 +438,36 @@
                             @include('partials.whats-new-card')
                         @endif
                         @foreach ($intentHub->tiles as $tile)
-                            <a href="{{ $tile['href'] }}"
-                               @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
-                               wire:key="intent-{{ $tile['key'] }}">
-                                <div class="wp-kpi-body">
-                                    <span class="wp-kpi-icon" aria-hidden="true">
-                                        <x-wp-icon :name="$tile['icon']" />
-                                    </span>
-                                    <div class="wp-kpi-main">
-                                        <p class="wp-kpi-kicker">{{ __($tile['title']) }}</p>
-                                        <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ __($tile['body']) }}</p>
+                            @if (($tile['action'] ?? null) !== null)
+                                <button type="button"
+                                        wire:click="{{ $tile['action'] }}"
+                                        @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
+                                        wire:key="intent-{{ $tile['key'] }}">
+                                    <div class="wp-kpi-body">
+                                        <span class="wp-kpi-icon" aria-hidden="true">
+                                            <x-wp-icon :name="$tile['icon']" />
+                                        </span>
+                                        <div class="wp-kpi-main">
+                                            <p class="wp-kpi-kicker">{{ __($tile['title']) }}</p>
+                                            <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ __($tile['body']) }}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
+                                </button>
+                            @else
+                                <a href="{{ $tile['href'] }}"
+                                   @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
+                                   wire:key="intent-{{ $tile['key'] }}">
+                                    <div class="wp-kpi-body">
+                                        <span class="wp-kpi-icon" aria-hidden="true">
+                                            <x-wp-icon :name="$tile['icon']" />
+                                        </span>
+                                        <div class="wp-kpi-main">
+                                            <p class="wp-kpi-kicker">{{ __($tile['title']) }}</p>
+                                            <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ __($tile['body']) }}</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endif
                         @endforeach
                     </div>
                 @endif
@@ -581,4 +602,5 @@
         </x-wp-modal>
     @endif
     @endif
+    @include('partials.wp-time-manual-clock-in-modal')
 </div>

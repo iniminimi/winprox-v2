@@ -149,6 +149,10 @@
       "workers": {
         "title": "Uitvoerders bekijken",
         "body": "Bekijk en wijzig de uitvoerders."
+      },
+      "manual_clock_in": {
+        "title": "Manueel inklokken",
+        "body": "Klok iemand in die zelf niet kon inklokken."
       }
     }
   },

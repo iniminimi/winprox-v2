@@ -149,6 +149,10 @@
       "workers": {
         "title": "View workers",
         "body": "View and edit workers."
+      },
+      "manual_clock_in": {
+        "title": "Clock in manually",
+        "body": "Clock someone in who could not clock in themselves."
       }
     }
   },

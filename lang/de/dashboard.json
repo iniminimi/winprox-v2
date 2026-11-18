@@ -149,6 +149,10 @@
       "workers": {
         "title": "Ausführende ansehen",
         "body": "Ausführende ansehen und bearbeiten."
+      },
+      "manual_clock_in": {
+        "title": "Manuell einstempeln",
+        "body": "Stempeln Sie jemanden ein, der selbst nicht konnte."
       }
     }
   },

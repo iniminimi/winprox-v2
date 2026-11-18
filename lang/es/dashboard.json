@@ -149,6 +149,10 @@
       "workers": {
         "title": "Ver ejecutores",
         "body": "Consulta y edita los ejecutores."
+      },
+      "manual_clock_in": {
+        "title": "Fichaje manual",
+        "body": "Ficha a alguien que no pudo fichar por sí mismo."
       }
     }
   },

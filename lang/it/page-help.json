@@ -12,7 +12,7 @@
             "actions": [
                 {
                     "label": "Cosa vuoi fare?",
-                    "text": "In alto ci sono scorciatoie: nuova attività giornaliera dai preferiti, nuova attività giornaliera, aggiungi sede, aggiungi esecutore, chi lavora dove oggi, quali attività oggi e visualizza il turno. Così non devi cercare nei menu."
+                    "text": "In alto ci sono scorciatoie: nuova attività giornaliera dai preferiti, nuova attività giornaliera, aggiungi sede, aggiungi esecutore, chi lavora dove oggi, timbratura manuale, quali attività oggi e visualizza il turno. Così non devi cercare nei menu."
                 },
                 {
                     "label": "Che cosa c'è di nuovo?",

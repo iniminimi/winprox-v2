@@ -149,6 +149,10 @@
       "workers": {
         "title": "Voir les exécutants",
         "body": "Consultez et modifiez les exécutants."
+      },
+      "manual_clock_in": {
+        "title": "Pointage manuel",
+        "body": "Pointez quelqu’un qui n’a pas pu pointer lui-même."
       }
     }
   },

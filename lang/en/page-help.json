@@ -12,7 +12,7 @@
             "actions": [
                 {
                     "label": "What do you want to do?",
-                    "text": "At the top are shortcuts: new day task from favorites, new day task, add a location, add a worker, who works where today, which tasks today and view the roster. So you do not have to dig through the menus."
+                    "text": "At the top are shortcuts: new day task from favorites, new day task, add a location, add a worker, who works where today, clock in manually, which tasks today and view the roster. So you do not have to dig through the menus."
                 },
                 {
                     "label": "What's new?",

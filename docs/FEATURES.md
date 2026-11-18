@@ -93,6 +93,7 @@ fouttype per uur (met het aantal herhalingen) en 10 per uur in totaal. Zie
   - **Uitvoerder toevoegen** → Personen → Teams + worker-modal
   - **Uitvoerders bekijken** → Personen → Uitvoerders (`/workers`)
   - **Wie werkt waar vandaag?** → Time → Aanwezigheid (alleen met Time-module)
+  - **Manueel inklokken** → venster op het dashboard om iemand in te klokken die zelf niet kon (admin of medewerker, Time aan; niet op Checkmate)
   - **Welke taken vandaag?** → Kalender dagweergave (taken van vandaag); alleen als kalender in het werkmenu aan staat (geen briefing-fallback)
   - **Uurrooster bekijken** → Time → Planning (alleen met Time-module; rooster-icoon, geen kalender)
   - Volle titel/omschrijving op intent-tegels (geen ellipsis-afkorting); uitleg klein, titel normaal

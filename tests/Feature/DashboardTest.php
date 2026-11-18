@@ -341,6 +341,8 @@ it('toont de intent-hub boven de KPI’s met begroeting en snelkoppelingen', fun
         ->assertSee(__('dashboard.intent.tiles.location.title'))
         ->assertSee(__('dashboard.intent.tiles.worker.title'))
         ->assertSee(__('dashboard.intent.tiles.presence.title'))
+        ->assertSee(__('dashboard.intent.tiles.manual_clock_in.title'))
+        ->assertSee(__('dashboard.intent.tiles.manual_clock_in.body'))
         ->assertSee(__('dashboard.intent.tiles.today_tasks.title'))
         ->assertSee(__('dashboard.intent.tiles.roster.title'))
         ->assertSee(__('dashboard.intent.tiles.workers.title'))
@@ -353,7 +355,10 @@ it('toont de intent-hub boven de KPI’s met begroeting en snelkoppelingen', fun
         ])
         ->assertSeeHtml('wp-kpi--favorite')
         ->assertSeeHtml('wp-dashboard-intent')
-        ->assertSee(__('dashboard.kpi.new_issues'));
+        ->assertSee(__('dashboard.kpi.new_issues'))
+        ->call('openManualClockIn')
+        ->assertSet('showManualClockInModal', true)
+        ->assertSee(__('time.manual_clock_in.subtitle'));
 });
 
 it('verbergt Time-tegels in de intent-hub zonder Time-module', function () {
@@ -383,6 +388,7 @@ it('verbergt Time-tegels in de intent-hub zonder Time-module', function () {
         ->assertSee(__('dashboard.intent.title'))
         ->assertDontSee(__('dashboard.intent.tiles.roster.title'))
         ->assertDontSee(__('dashboard.intent.tiles.presence.title'))
+        ->assertDontSee(__('dashboard.intent.tiles.manual_clock_in.title'))
         ->assertSee(__('dashboard.intent.tiles.day_task_favorites.body'))
         ->assertSee(__('dashboard.intent.tiles.today_tasks.title'))
         ->assertSee(__('dashboard.intent.tiles.day_task.title'));
