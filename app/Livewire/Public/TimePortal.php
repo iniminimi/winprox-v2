@@ -367,6 +367,9 @@ class TimePortal extends Component
         PortalEntryToken::grant($token, $clockPoint->id);
 
         if ($this->inactiveReasonKey === null && $this->entryGrantsPunchScan()) {
+            // Verse QR-scan wint: openstaande BLE-passkey mag QR niet blokkeren
+            // (nieuwe uitvoerder / iPhone / liever scannen).
+            $this->clearBlePunchSession();
             ClockPointScanGrant::grant($this->clockPointId);
         }
     }
@@ -475,6 +478,7 @@ class TimePortal extends Component
         }
 
         WorkerDeviceSession::bindRememberedWorkerForTenant($worker);
+        $this->clearBlePunchSession();
         $this->showRegisterForm = false;
         $this->sign_in_icon_slug = '';
         $this->pin_code = '';
@@ -562,7 +566,17 @@ class TimePortal extends Component
             WorkerVerification::clearForTeam((int) $team->id);
         }
 
+        $this->clearBlePunchSession();
         $this->forgetPortalSignInState();
+    }
+
+    /**
+     * Stop openstaande BLE-passkey en laat QR weer de gewone prikflow doen
+     * (nieuwe uitvoerder / iPhone / liever scannen).
+     */
+    public function cancelBlePasskey(): void
+    {
+        $this->clearBlePunchSession();
     }
 
     public function dismissPasskeyOffer(): void
@@ -1089,6 +1103,7 @@ class TimePortal extends Component
         }
 
         $this->sign_in_icon_slug = '';
+        $this->clearBlePunchSession();
         $this->taskBaselineSyncedThisVisit = false;
         app(SyncWorkerOpenTaskBaselineAction::class)->handle($worker);
         $this->taskBaselineSyncedThisVisit = true;

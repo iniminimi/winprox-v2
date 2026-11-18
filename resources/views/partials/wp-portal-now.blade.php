@@ -157,9 +157,15 @@
             @endif
         </div>
 
-        @if ($action['needsScan'] && ! ($bleNeedsPasskey ?? false))
-            <div class="wp-portal-now__scan-choices" x-show="!direct && left <= 0" x-cloak>
-                @if ($showBleChoice)
+        {{-- FEATURES: in ble-modus altijd bluetooth óf QR. QR blijft beschikbaar
+             voor iPhone, nieuwe uitvoerders en als fallback naast passkey. --}}
+        @if ($action['needsScan'])
+            <div
+                class="wp-portal-now__scan-choices"
+                x-show="(!direct && left <= 0) || @js((bool) ($bleNeedsPasskey ?? false))"
+                x-cloak
+            >
+                @if ($showBleChoice && ! ($bleNeedsPasskey ?? false))
                     <div
                         class="wp-portal-now__ble"
                         x-data="wpPortalBle({
@@ -201,9 +207,14 @@
                         punch: @js($action['method']),
                     })"
                 >
-                    <button type="button" class="btn {{ $showBleChoice ? 'btn--surface' : 'btn--primary' }} btn--block" @click="openScanner()" data-manual-capture-trigger="portal-scan-qr">
+                    <button
+                        type="button"
+                        class="btn {{ ($showBleChoice && ! ($bleNeedsPasskey ?? false)) ? 'btn--surface' : 'btn--primary' }} btn--block"
+                        @click="@if ($bleNeedsPasskey ?? false) $wire.cancelBlePasskey(); @endif openScanner()"
+                        data-manual-capture-trigger="portal-scan-qr"
+                    >
                         <x-wp-icon name="qr" class="wp-icon" />
-                        <span>{{ $showBleChoice ? __('time.portal.ble.via_qr') : $action['label'] }}</span>
+                        <span>{{ ($showBleChoice || ($bleNeedsPasskey ?? false)) ? __('time.portal.ble.via_qr') : $action['label'] }}</span>
                     </button>
                     <template x-teleport="body">
                         <div class="wp-scan-overlay" x-show="scannerOpen" x-cloak @keydown.escape.window="closeScanner()">

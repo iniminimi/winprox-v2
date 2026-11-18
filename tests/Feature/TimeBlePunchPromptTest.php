@@ -254,3 +254,40 @@ it('toont de bluetooth-vraag op het portaal rond de start', function () {
         ->call('signInWithIcon')
         ->assertSee(__('time.portal.ble.in_title'), false);
 });
+
+it('houdt QR scannen zichtbaar tijdens bluetooth-passkey en wist die sessie bij annuleren', function () {
+    [, , $worker, $clockPoint] = blePromptWorld();
+    WorkerPasskeyCredential::query()->create([
+        'tenant_id' => $worker->tenant_id,
+        'worker_id' => $worker->id,
+        'credential_id' => 'ble-cred-qr-'.$worker->id,
+        'credential_public_key' => 'test',
+        'user_handle' => 'handle',
+    ]);
+
+    $portal = Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon');
+
+    ClockPointScanGrant::consume($clockPoint->id);
+    session([
+        'wp_ble_punch_pending' => $clockPoint->id,
+        'wp_ble_punch_direction' => 'in',
+        'wp_ble_presence_clock_point_id' => $clockPoint->id,
+        'wp_ble_passkey_ok' => 0,
+    ]);
+
+    $portal->call('$refresh')
+        ->assertSee(__('time.portal.ble.passkey_button'), false)
+        ->assertSee(__('time.portal.ble.via_qr'), false)
+        ->assertSeeHtml('data-manual-capture-trigger="portal-scan-qr"')
+        ->assertDontSeeHtml('data-manual-capture-trigger="portal-ble-punch"');
+
+    $portal->call('cancelBlePasskey');
+
+    expect((int) session('wp_ble_punch_pending', 0))->toBe(0)
+        ->and(session()->has('wp_ble_punch_direction'))->toBeFalse();
+});
