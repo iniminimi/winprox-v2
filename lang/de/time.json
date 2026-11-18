@@ -420,6 +420,18 @@
         "minute_short": "min"
     },
     "portal": {
+        "ble": {
+            "in_title": "Per Bluetooth einstempeln?",
+            "out_title": "Per Bluetooth ausstempeln?",
+            "in_body": "Stehen Sie neben der Uhr. Danach fragt das Telefon erneut nach Finger oder Gesicht.",
+            "out_body": "Stehen Sie neben der Uhr. Danach fragt das Telefon erneut nach Finger oder Gesicht.",
+            "yes": "Ja",
+            "later": "Nicht jetzt",
+            "not_found": "Keine Uhr gefunden. Stellen Sie sich neben den Bildschirm und versuchen Sie es erneut.",
+            "failed": "Verbindung mit der Uhr fehlgeschlagen.",
+            "passkey_required": "Bestätigen Sie zuerst mit Finger oder Gesicht.",
+            "passkey_button": "Mit Finger oder Gesicht bestätigen"
+        },
         "title": "Anmeldung",
         "clock": {
             "not_clocked_in": "Noch nicht eingestempelt",

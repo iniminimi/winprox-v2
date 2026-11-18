@@ -12,7 +12,7 @@
       },
       "time_clock": {
         "items": {
-          "0": "Medewerkers klokken in en uit met de QR-code van Clock Point. Op een vaste prikklok scant u bij elke prik de code op de sticker of op het klokscherm. Het icoon op het startscherm en de aanmeldlink klokken op zichzelf niet in.",
+          "0": "Medewerkers klokken in en uit met de QR-code van Clock Point. Op een vaste prikklok scant u bij elke prik de code op de sticker of op het klokscherm. Op Android kan bluetooth die scan vervangen rond het begin of het einde van een gepubliceerde dienst, gevolgd door vinger of gezicht. Het icoon op het startscherm en de aanmeldlink klokken op zichzelf niet in.",
           "6": "De uren geeft u door aan uw salarisadministratie. WinProx berekent geen loon."
         }
       },

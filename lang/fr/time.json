@@ -420,6 +420,18 @@
         "minute_short": "min"
     },
     "portal": {
+        "ble": {
+            "in_title": "Pointer l'entrée via Bluetooth ?",
+            "out_title": "Pointer la sortie via Bluetooth ?",
+            "in_body": "Placez-vous à côté de l'horloge. Votre téléphone demandera ensuite à nouveau votre doigt ou votre visage.",
+            "out_body": "Placez-vous à côté de l'horloge. Votre téléphone demandera ensuite à nouveau votre doigt ou votre visage.",
+            "yes": "Oui",
+            "later": "Pas maintenant",
+            "not_found": "Aucune horloge trouvée. Placez-vous à côté de l'écran et réessayez.",
+            "failed": "La connexion à l'horloge a échoué.",
+            "passkey_required": "Confirmez d'abord avec votre doigt ou votre visage.",
+            "passkey_button": "Confirmer avec le doigt ou le visage"
+        },
         "title": "Connexion",
         "clock": {
             "not_clocked_in": "Pas encore pointé",

@@ -85,7 +85,7 @@
                 "title": "Timbratrice e ore",
                 "body": "WinProx registra quando qualcuno inizia e finisce. La gestione segue la presenza e affianca le ore ai turni previsti.",
                 "items": [
-                    "Le persone timbrano con il QR di Clock Point. Su una timbratrice fissa, ogni timbratura scansiona il codice dell’adesivo o dello schermo. L’icona della schermata Home e il link di accesso non timbrano da soli. Con Checkmate si può timbrare dall’icona.",
+                    "Le persone timbrano con il QR di Clock Point. Su una timbratrice fissa, ogni timbratura scansiona il codice dell’adesivo o dello schermo. Su Android, il Bluetooth può sostituire quella scansione intorno all’inizio o alla fine di un turno pubblicato, poi dito o viso. L’icona della schermata Home e il link di accesso non timbrano da soli. Con Checkmate si può timbrare dall’icona.",
                     "Una foto dell’adesivo si può usare anche fuori dalla porta. Il QR sullo schermo cambia da solo e scade, quindi una foto vecchia non basta più.",
                     "Si vede chi è presente e il foglio ore, e ognuno vede in Le mie ore solo i propri turni. In Ore timbrate la vista Settimana mostra i turni di un esecutore per giorno e per ora, accanto alla pianificazione. Nell’elenco di tutti gli esecutori, un clic sul nome apre quella settimana. Weekend è disattivato per impostazione predefinita, quindi sabato e domenica restano nascosti finché non lo attivate.",
                     "In Presenza, Straordinari mostra il saldo di quest’anno civile fino a oggi, il totale accanto al nome e poi per mese. Team e clock point limitano chi vede; il saldo resta quello dell’anno. I mesi precedenti di quest’anno contano. Non è un calcolo della paga.",
@@ -499,6 +499,7 @@
                     "Rete: **Wi‑Fi 2,4 GHz**, **WPA2** e **WPA3-Personal**. Connessione a WinProx tramite **HTTPS** (UE).",
                     "Associazione con un codice monouso in gestione. Lo scollegamento ritira il dispositivo.",
                     "Senza smartphone: nome e PIN per entrata, uscita e **pausa**. I tentativi errati ripetuti vengono bloccati temporaneamente.",
+                    "Su Android il telefono accanto allo schermo legge lo stesso codice che cambia del QR e poi chiede di nuovo dito o viso.",
                     "Marchio CE per uso professionale; alimentazione USB-C (5 V)."
                 ]
             },

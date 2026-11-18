@@ -420,6 +420,18 @@
         "minute_short": "min"
     },
     "portal": {
+        "ble": {
+            "in_title": "Wil je inklokken via bluetooth?",
+            "out_title": "Wil je uitklokken via bluetooth?",
+            "in_body": "Sta naast de klok. Daarna vraagt je gsm nog eens om je vinger of gezicht.",
+            "out_body": "Sta naast de klok. Daarna vraagt je gsm nog eens om je vinger of gezicht.",
+            "yes": "Ja",
+            "later": "Niet nu",
+            "not_found": "Geen klok gevonden. Sta naast het scherm en probeer opnieuw.",
+            "failed": "Verbinden met de klok lukte niet.",
+            "passkey_required": "Bevestig eerst met je vinger of gezicht.",
+            "passkey_button": "Bevestig met vinger of gezicht"
+        },
         "title": "Aanmelden",
         "clock": {
             "not_clocked_in": "Nog niet ingeklokt",

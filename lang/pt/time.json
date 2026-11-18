@@ -50,6 +50,18 @@
         }
     },
     "portal": {
+        "ble": {
+            "in_title": "Registar entrada por Bluetooth?",
+            "out_title": "Registar saída por Bluetooth?",
+            "in_body": "Fique ao lado do relógio. Depois o telemóvel pede outra vez o dedo ou o rosto.",
+            "out_body": "Fique ao lado do relógio. Depois o telemóvel pede outra vez o dedo ou o rosto.",
+            "yes": "Sim",
+            "later": "Agora não",
+            "not_found": "Nenhum relógio encontrado. Fique ao lado do ecrã e tente de novo.",
+            "failed": "Não foi possível ligar ao relógio.",
+            "passkey_required": "Confirme primeiro com o dedo ou o rosto.",
+            "passkey_button": "Confirmar com dedo ou rosto"
+        },
         "title": "Iniciar sessão",
         "clock": {
             "not_clocked_in": "Ainda não registou a entrada",

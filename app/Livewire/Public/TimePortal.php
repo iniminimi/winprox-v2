@@ -15,6 +15,7 @@ use App\Actions\Tasks\SkipRoundStopAction;
 use App\Actions\Tasks\StartTaskAction;
 use App\Actions\Team\MarkWorkerLibraryViewedAction;
 use App\Actions\Time\AcknowledgeTimeRosterViewAction;
+use App\Actions\Time\ResolveWorkerBlePunchPromptAction;
 use App\Actions\Time\AssertClockPointTaskVisitAction;
 use App\Actions\Time\AssertClockPointUnitVisitAction;
 use App\Actions\Time\AssertWorkerClockDeviceAction;
@@ -361,6 +362,14 @@ class TimePortal extends Component
 
         if ($this->inactiveReasonKey === null && $this->entryGrantsPunchScan()) {
             ClockPointScanGrant::grant($this->clockPointId);
+        }
+
+        $ble = request()->query('ble');
+        if (in_array($ble, ['in', 'out'], true) && $this->entryGrantsPunchScan()) {
+            session([
+                'wp_ble_punch_pending' => $this->clockPointId,
+                'wp_ble_punch_direction' => $ble,
+            ]);
         }
     }
 
@@ -1271,7 +1280,7 @@ class TimePortal extends Component
             return;
         }
 
-        if (! $this->requirePunchScanGrant()) {
+        if (! $this->requirePunchScanGrant() || ! $this->requireBlePasskey()) {
             return;
         }
 
@@ -1305,7 +1314,7 @@ class TimePortal extends Component
                 $clockPoint,
                 $device,
                 null,
-                ClockSource::ClockPointQr,
+                $this->punchSource(),
                 true,
                 $token,
                 $lat,
@@ -1349,7 +1358,7 @@ class TimePortal extends Component
             return;
         }
 
-        if (! $this->requirePunchScanGrant()) {
+        if (! $this->requirePunchScanGrant() || ! $this->requireBlePasskey()) {
             return;
         }
 
@@ -1389,13 +1398,13 @@ class TimePortal extends Component
             return;
         }
 
-        if (! $this->requirePunchScanGrant()) {
+        if (! $this->requirePunchScanGrant() || ! $this->requireBlePasskey()) {
             return;
         }
 
         try {
             [$device, $token] = $this->clockDeviceContext($worker);
-            $clockOut->handle($worker, $clockPoint, null, ClockSource::ClockPointQr, true, $device, $token);
+            $clockOut->handle($worker, $clockPoint, null, $this->punchSource(), true, $device, $token);
             ClockPointScanGrant::consume((int) $clockPoint->id);
             $this->portalFlash('time.portal.clock.clocked_out_at', [
                 'time' => now()->format('H:i'),
@@ -2468,6 +2477,13 @@ class TimePortal extends Component
             'gpsVisits' => $gpsVisits,
             'canPunch' => $this->canPunchNow(),
             'punchGrantSeconds' => ClockPointScanGrant::remainingSeconds((int) $this->clockPointId),
+            'blePrompt' => $this->blePromptFor($verifiedWorker, $openShift),
+            'bleNeedsPasskey' => $this->blePunchPending()
+                && (int) session('wp_ble_passkey_ok', 0) !== (int) $this->clockPointId,
+            'bleAutopunch' => $this->blePunchPending()
+                && (int) session('wp_ble_passkey_ok', 0) === (int) $this->clockPointId
+                ? (string) session('wp_ble_punch_direction', '')
+                : '',
             'scanPunchMethod' => $this->scanPunchMethod(),
             'teamWorkers' => $teamWorkers,
             'workerDocuments' => $workerDocuments,
@@ -2553,6 +2569,72 @@ class TimePortal extends Component
         $this->portalFlash('time.portal.errors.scan_required');
 
         return false;
+    }
+
+    private function blePunchPending(): bool
+    {
+        return (int) session('wp_ble_punch_pending', 0) === (int) $this->clockPointId;
+    }
+
+    private function requireBlePasskey(): bool
+    {
+        if (! $this->blePunchPending()) {
+            return true;
+        }
+        if ((int) session('wp_ble_passkey_ok', 0) === (int) $this->clockPointId) {
+            return true;
+        }
+
+        $this->portalFlash('time.portal.ble.passkey_required');
+
+        return false;
+    }
+
+    private function punchSource(): ClockSource
+    {
+        return $this->blePunchPending() ? ClockSource::Bluetooth : ClockSource::ClockPointQr;
+    }
+
+    public function dismissBlePrompt(int $plannedShiftId, string $direction): void
+    {
+        if ($this->authorizedWorker() === null) {
+            return;
+        }
+        if ($plannedShiftId < 1 || ! in_array($direction, ['in', 'out'], true)) {
+            return;
+        }
+
+        session(['wp_ble_dismiss_'.$plannedShiftId.'_'.$direction => true]);
+    }
+
+    /**
+     * @return array{direction: string, planned_shift_id: int}|null
+     */
+    private function blePromptFor(?Worker $worker, mixed $openShift): ?array
+    {
+        if (! $worker instanceof Worker || ! $worker->passkeyCredentials()->exists()) {
+            return null;
+        }
+        if (ClockPointScanGrant::isValid((int) $this->clockPointId)) {
+            return null;
+        }
+
+        $portalLocationId = ClockPoint::query()->whereKey($this->clockPointId)->value('location_id');
+        $prompt = app(ResolveWorkerBlePunchPromptAction::class)->handle(
+            $worker,
+            $openShift instanceof WorkShift ? $openShift : null,
+            null,
+            $portalLocationId !== null ? (int) $portalLocationId : null,
+        );
+        if ($prompt === null) {
+            return null;
+        }
+        $key = 'wp_ble_dismiss_'.$prompt['planned_shift_id'].'_'.$prompt['direction'];
+        if (session($key)) {
+            return null;
+        }
+
+        return $prompt;
     }
 
     private function tenantRequiresPin(): bool

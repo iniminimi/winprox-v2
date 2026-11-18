@@ -85,7 +85,7 @@
                 "title": "Pointeuse et heures",
                 "body": "WinProx enregistre quand quelqu’un commence et s’arrête. Les gestionnaires suivent la présence et mettent les heures à côté des services prévus.",
                 "items": [
-                    "Les personnes pointent avec le QR de Clock Point. Sur une pointeuse fixe, chaque pointage scanne le code de l’autocollant ou de l’écran. L’icône de l’écran d’accueil et le lien de connexion ne pointent pas à eux seuls. Avec Checkmate, on peut pointer via l’icône.",
+                    "Les personnes pointent avec le QR de Clock Point. Sur une pointeuse fixe, chaque pointage scanne le code de l’autocollant ou de l’écran. Sur Android, le Bluetooth peut remplacer ce scan autour du début ou de la fin d’un service publié, suivi du doigt ou du visage. L’icône de l’écran d’accueil et le lien de connexion ne pointent pas à eux seuls. Avec Checkmate, on peut pointer via l’icône.",
                     "Une photo de l’autocollant peut aussi servir hors des lieux. Le QR de l’écran change tout seul et expire : une vieille photo ne suffit plus.",
                     "Vous voyez qui est présent et la feuille d’heures, et chacun voit sous Mes heures seulement ses propres services. Dans Heures pointées, la vue Semaine montre les services d’un exécutant par jour et par heure, à côté du planning. Dans la liste de tous les exécutants, un clic sur le nom ouvre cette semaine. Week-ends est désactivé par défaut : samedi et dimanche restent cachés jusqu’à ce que vous les activiez.",
                     "Sous Présence, Heures supplémentaires montre le solde de cette année civile jusqu’à aujourd’hui, le total à côté du nom puis par mois. Équipe et clock point limitent qui vous voyez ; le solde reste celui de l’année. Les mois précédents de cette année comptent. Ce n’est pas un calcul de salaire.",
@@ -499,6 +499,7 @@
                     "Réseau : **Wi‑Fi 2,4 GHz**, **WPA2** et **WPA3-Personal**. Connexion à WinProx via **HTTPS** (UE).",
                     "Couplage avec un code à usage unique dans le back-office. Le découplage retire l’appareil.",
                     "Sans smartphone : prénom et PIN pour l’entrée, la sortie et la **pause**. Les tentatives erronées répétées sont bloquées temporairement.",
+                    "Sur Android, le téléphone à côté de l’écran lit le même code changeant que le QR, puis redemande le doigt ou le visage.",
                     "Marquage CE pour un usage professionnel ; alimentation USB-C (5 V)."
                 ]
             },

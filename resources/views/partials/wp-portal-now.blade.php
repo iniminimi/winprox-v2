@@ -102,9 +102,30 @@
         @else
             <div
                 class="wp-portal-now__punch"
-                x-data="{ direct: @js($directForever), left: @js($grantSeconds), autoPunch: @js(($scanPunchMethod ?? null) === $action['method']) }"
+                x-data="{ direct: @js($directForever), left: @js($grantSeconds), autoPunch: @js(! ($bleNeedsPasskey ?? false) && (($scanPunchMethod ?? null) === $action['method'] || ($bleAutopunch ?? '') === ($action['method'] === 'clockIn' ? 'in' : ($action['method'] === 'clockOut' ? 'out' : '')))) }"
                 x-init="if (!direct && left > 0) { const id = setInterval(() => { left -= 1; if (left <= 0) { left = 0; clearInterval(id) } }, 1000) } if (autoPunch && left > 0) { $nextTick(() => withGps('{{ $action['method'] }}')) }"
             >
+                @if ($bleNeedsPasskey ?? false)
+                    <div
+                        x-data="wpPortalPasskey({
+                            purpose: 'ble-punch',
+                            urls: {
+                                assertOptions: @js(route('public.time-portal.passkey.assert-options', $passkeyTenantId)),
+                                assert: @js(route('public.time-portal.passkey.assert', $passkeyTenantId)),
+                            },
+                            i18n: {
+                                error_cancelled: @js(__('portal.passkey.error_cancelled')),
+                                error_failed: @js(__('portal.passkey.error_failed')),
+                                error_device: @js(__('portal.passkey.error_device')),
+                            },
+                        })"
+                    >
+                        <button type="button" class="btn btn--primary btn--sm" @click="verify" :disabled="busy" x-show="supported" x-cloak>
+                            {{ __('time.portal.ble.passkey_button') }}
+                        </button>
+                        <p class="wp-error" x-show="error !== ''" x-text="error"></p>
+                    </div>
+                @else
                 <button
                     type="button"
                     class="btn btn--primary btn--sm"
@@ -113,6 +134,7 @@
                     @click="withGps('{{ $action['method'] }}')"
                     data-manual-capture-trigger="portal-primary-action"
                 >{{ $action['label'] }}</button>
+                @endif
                 <div
                     x-show="!direct && left <= 0"
                     x-cloak

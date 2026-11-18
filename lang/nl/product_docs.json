@@ -85,7 +85,7 @@
                 "title": "Prikklok en uren",
                 "body": "WinProx registreert wanneer iemand begint en stopt. Beheerders volgen de aanwezigheid en leggen de uren naast de geplande diensten.",
                 "items": [
-                    "Medewerkers klokken in en uit met de QR-code van Clock Point. Op een vaste prikklok scant u bij elke prik de code op de sticker of op het klokscherm. Het icoon op het startscherm en de aanmeldlink klokken op zichzelf niet in. Bij Checkmate kan een medewerker wel in- en uitklokken via het icoon.",
+                    "Medewerkers klokken in en uit met de QR-code van Clock Point. Op een vaste prikklok scant u bij elke prik de code op de sticker of op het klokscherm. Op Android kan bluetooth die scan vervangen rond het begin of het einde van een gepubliceerde dienst, gevolgd door vinger of gezicht. Het icoon op het startscherm en de aanmeldlink klokken op zichzelf niet in. Bij Checkmate kan een medewerker wel in- en uitklokken via het icoon.",
                     "Een foto van de sticker kan ook buiten de deur worden gebruikt. De QR-code op het klokscherm verandert vanzelf en verloopt, zodat een oude foto niet meer werkt.",
                     "U ziet wie aanwezig is, de urenstaat, en elke medewerker ziet onder Mijn uren alleen de eigen diensten. Op Geklokte uren toont Week de diensten van één uitvoerder per dag en per uur, naast zijn planning. In de lijst van alle uitvoerders opent een klik op de naam die week. Weekends staat standaard uit, zodat zaterdag en zondag weg zijn tot u ze aanzet.",
                     "Onder Aanwezigheid staat Overuren: het saldo van dit kalenderjaar tot vandaag, totaal naast de naam en daarna per maand. Team en clock point beperken wie u ziet; het saldo blijft dat van het jaar. Vorige maanden van dit jaar tellen mee. Dat is geen loonberekening.",
@@ -499,6 +499,7 @@
                     "Netwerk: **Wi‑Fi 2,4 GHz**, **WPA2** en **WPA3-Personal**. Verbinding met WinProx via **HTTPS** (EU).",
                     "Koppelen met een eenmalige code in beheer. Ontkoppelen trekt het toestel in.",
                     "Zonder smartphone: voornaam en PIN voor inklokken, uitklokken en **pauze**. Herhaalde foute pogingen worden tijdelijk geblokkeerd.",
+                    "Op Android leest de telefoon naast het scherm dezelfde wisselende code als de QR, en vraagt daarna opnieuw om vinger of gezicht.",
                     "CE-gekeurd voor professioneel gebruik; voeding via USB-C (5 V)."
                 ]
             },

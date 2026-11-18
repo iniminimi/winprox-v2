@@ -50,6 +50,18 @@
         }
     },
     "portal": {
+        "ble": {
+            "in_title": "Odbij wejście przez Bluetooth?",
+            "out_title": "Odbij wyjście przez Bluetooth?",
+            "in_body": "Stań obok zegara. Potem telefon znowu poprosi o palec albo twarz.",
+            "out_body": "Stań obok zegara. Potem telefon znowu poprosi o palec albo twarz.",
+            "yes": "Tak",
+            "later": "Nie teraz",
+            "not_found": "Nie znaleziono zegara. Stań obok ekranu i spróbuj ponownie.",
+            "failed": "Nie udało się połączyć z zegarem.",
+            "passkey_required": "Najpierw potwierdź palcem lub twarzą.",
+            "passkey_button": "Potwierdź palcem lub twarzą"
+        },
         "title": "Logowanie",
         "clock": {
             "not_clocked_in": "Wejście nie zostało jeszcze zarejestrowane",

@@ -420,6 +420,18 @@
         "minute_short": "min"
     },
     "portal": {
+        "ble": {
+            "in_title": "¿Fichar la entrada por Bluetooth?",
+            "out_title": "¿Fichar la salida por Bluetooth?",
+            "in_body": "Ponte junto al reloj. Después el teléfono pedirá otra vez tu dedo o tu cara.",
+            "out_body": "Ponte junto al reloj. Después el teléfono pedirá otra vez tu dedo o tu cara.",
+            "yes": "Sí",
+            "later": "Ahora no",
+            "not_found": "No se encontró ningún reloj. Ponte junto a la pantalla e inténtalo de nuevo.",
+            "failed": "No se pudo conectar con el reloj.",
+            "passkey_required": "Confirma primero con el dedo o la cara.",
+            "passkey_button": "Confirmar con dedo o cara"
+        },
         "title": "Inicio de sesión",
         "clock": {
             "not_clocked_in": "Aún no ha fichado",

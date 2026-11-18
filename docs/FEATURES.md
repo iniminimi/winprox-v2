@@ -901,6 +901,9 @@ productsector op `Tenant`.
   hops tussen Clock Points (alarm bij hop < 5 min). **Aanmelden klokt niet vanzelf in.**
   **In-/uitklokken en verplaatsen** op een vaste prikklok vereisen een **verse QR-scan**
   (volle page-load van de sticker of de wisselende klokscherm-QR, één prik, ~10 min).
+  Op Android kan die scan, rond begin of einde van een gepubliceerde dienst op deze
+  vestiging, ook via bluetooth: de telefoon leest dezelfde wisselende code en vraagt
+  daarna opnieuw om vinger of gezicht. iPhone blijft bij de QR. Checkmate krijgt die vraag niet.
   De in-portal scan-knop markeert haar navigatie (`?scan_punch=`); na een positieve
   scan voert het portaal die prik meteen uit — geen tweede tik op dezelfde knop.
   De aanmeldlink (`/cp/{token}`) en het startscherm-icoon openen hetzelfde portaal

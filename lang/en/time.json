@@ -420,6 +420,18 @@
         "minute_short": "min"
     },
     "portal": {
+        "ble": {
+            "in_title": "Clock in via Bluetooth?",
+            "out_title": "Clock out via Bluetooth?",
+            "in_body": "Stand next to the clock. Your phone will then ask for your finger or face again.",
+            "out_body": "Stand next to the clock. Your phone will then ask for your finger or face again.",
+            "yes": "Yes",
+            "later": "Not now",
+            "not_found": "No clock found. Stand next to the screen and try again.",
+            "failed": "Could not connect to the clock.",
+            "passkey_required": "Confirm with your finger or face first.",
+            "passkey_button": "Confirm with finger or face"
+        },
         "title": "Sign in",
         "clock": {
             "not_clocked_in": "Not clocked in yet",

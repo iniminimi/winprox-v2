@@ -56,6 +56,7 @@ function registerAlpineComponent() {
     window.Alpine.data('wpPortalPasskey', (config = {}) => ({
         i18n: config.i18n ?? {},
         urls: config.urls ?? {},
+        purpose: config.purpose ?? '',
         busy: false,
         error: '',
         supported: typeof window.PublicKeyCredential !== 'undefined' && !!navigator.credentials,
@@ -149,6 +150,7 @@ function registerAlpineComponent() {
 
                 const done = await this.post(this.urls.assert, {
                     credential: JSON.stringify(credentialToJson(cred, false)),
+                    purpose: this.purpose,
                 });
                 if (!done.ok || !done.data?.ok) {
                     this.setError(done.status === 409 ? 'error_device' : 'error_failed');

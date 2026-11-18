@@ -50,6 +50,18 @@
         }
     },
     "portal": {
+        "ble": {
+            "in_title": "Pontezi intrarea prin Bluetooth?",
+            "out_title": "Pontezi ieșirea prin Bluetooth?",
+            "in_body": "Stai lângă ceas. Apoi telefonul cere din nou degetul sau fața.",
+            "out_body": "Stai lângă ceas. Apoi telefonul cere din nou degetul sau fața.",
+            "yes": "Da",
+            "later": "Nu acum",
+            "not_found": "Nu s-a găsit niciun ceas. Stai lângă ecran și încearcă din nou.",
+            "failed": "Conectarea la ceas nu a reușit.",
+            "passkey_required": "Confirmă mai întâi cu degetul sau fața.",
+            "passkey_button": "Confirmă cu degetul sau fața"
+        },
         "title": "Autentificare",
         "clock": {
             "not_clocked_in": "Nu sunteți încă pontat",
