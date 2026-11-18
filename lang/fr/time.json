@@ -181,7 +181,14 @@
         "presence_at": "Dernière présence : :name",
         "visits_heading": "Visites de travail",
         "visit_range": ":start–:end · :place",
-        "visit_open": ":start–en cours · :place"
+        "visit_open": ":start–en cours · :place",
+        "week": {
+            "view_list": "Liste",
+            "view_week": "Semaine",
+            "pick_worker": "Choisissez un exécutant et appuyez sur Appliquer pour voir sa semaine.",
+            "week_total": "Total semaine : :duration",
+            "now": "maintenant"
+        }
     },
     "corrections": {
         "button": "Corriger",

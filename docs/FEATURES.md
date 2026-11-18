@@ -846,6 +846,14 @@ productsector op `Tenant`.
   reden (`work_shift.corrected`). Uitklok **leeg** laten heropent de dienst (foutieve
   uitklok). Geweigerd als die uitvoerder al een andere open dienst heeft. Geen extra
   CIAO IN/OUT.
+- **Weekweergave** (Time → Uren, knop **Lijst | Week**, `?view=week&week=YYYY-MM-DD`): alleen voor
+  één gekozen uitvoerder (zonder uitvoerder: melding om er een te kiezen). Maandag–zondag × 00–23 uur;
+  per dienst een blok van in- tot uitklok (open dienst tot nu, amber), pauzes gearceerd, geplande
+  dienst als stippellijn (als het uurrooster aan staat). Nachtdienst wordt over twee dagen verdeeld;
+  dagtotaal telt bij de dag van inklokken (zoals lijst en export). Totaal per dag en week; scrollt naar
+  het eerste uur. Klik op een blok = Corrigeren (gesloten, Policy `correct`) of Shift sluiten (open).
+  Bron: `BuildWorkShiftWeekGridAction::handle(int $tenantId, int $workerId, string $cursor, ?int $clockPointId)`.
+  Export en Afdrukken blijven op de lijst.
 - **Urenkaart:** Time → Uren opent op vandaag (van = tot). Per dienst vijf kolommen (medewerker+team,
   gewerkt+pauze, datum+gepland, in/uit-registraties, status+Corrigeren).
   Verplaatsingen, werkbezoeken en taken staan onder die rij.

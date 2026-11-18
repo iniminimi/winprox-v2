@@ -1461,6 +1461,10 @@
                     "text": "Die Liste öffnet auf heute. Wählen Sie ein Von- und Bis-Datum und filtern Sie optional nach Team, Ausführendem oder Clock Point. Drücken Sie <strong>Anwenden</strong>, um die Liste zu aktualisieren."
                 },
                 {
+                    "label": "Wochenansicht",
+                    "text": "Wählen Sie oben <strong>Woche</strong>, eine ausführende Person und drücken Sie <strong>Anwenden</strong>. Sie sehen Montag bis Sonntag mit den Stunden des Tages: Jeder Block ist eine Schicht vom Ein- bis zum Ausstempeln, die Pause schraffiert und die geplante Schicht gestrichelt dahinter. Oben stehen die Summe pro Tag und für die Woche. Blättern Sie mit den Pfeilen; ein Klick auf einen Block öffnet die Korrektur oder das Schließen einer offenen Schicht."
+                },
+                {
                     "label": "Bericht herunterladen",
                     "text": "Untermenü CSV + Drucken: laden Sie die gefilterten Schichten als CSV herunter (Excel-freundlich) oder öffnen Sie eine druckbare Stundenübersicht (Strg+P zu PDF). Dieselben Filter wie die Liste; nicht nur die aktuelle Seite (max. 5000 Zeilen)."
                 },

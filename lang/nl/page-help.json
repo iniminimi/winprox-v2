@@ -1461,6 +1461,10 @@
                     "text": "De lijst opent op vandaag. Kies een van- en tot-datum en filter optioneel op team, uitvoerder of clock point. Druk op <strong>Toepassen</strong> om de lijst bij te werken."
                 },
                 {
+                    "label": "Weekweergave",
+                    "text": "Kies bovenaan <strong>Week</strong>, kies een uitvoerder en druk op <strong>Toepassen</strong>. Je ziet maandag tot zondag met de uren van de dag: elk blok is een dienst van inklokken tot uitklokken, met de pauze gearceerd en de geplande dienst als stippellijn erachter. Bovenaan staan het totaal per dag en voor de week. Blader met de pijlen; klik op een blok om te corrigeren of een open dienst te sluiten."
+                },
+                {
                     "label": "Download rapport",
                     "text": "Submenu CSV + Afdrukken: download de gefilterde shifts als CSV (Excel-vriendelijk) of open een afdrukbare urenstaat (Ctrl+P naar PDF). Zelfde filters als het overzicht; niet alleen de huidige pagina (max. 5000 rijen)."
                 },

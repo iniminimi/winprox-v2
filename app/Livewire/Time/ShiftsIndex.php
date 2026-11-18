@@ -3,6 +3,7 @@
 namespace App\Livewire\Time;
 
 use App\Actions\Time\ApplyRequiredBreakToWorkShiftAction;
+use App\Actions\Time\BuildWorkShiftWeekGridAction;
 use App\Actions\Time\CorrectWorkShiftAction;
 use App\Livewire\Concerns\ManagesManualClockIn;
 use App\Livewire\Concerns\ManagesWorkShiftForceClose;
@@ -15,6 +16,7 @@ use App\Models\Worker;
 use App\Models\WorkShift;
 use App\Support\Checkmate\CheckmateMode;
 use App\Support\Tenancy;
+use Carbon\Carbon;
 use App\Support\Time\TimeModuleAccess;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Collection;
@@ -50,6 +52,12 @@ class ShiftsIndex extends Component
     #[Url(as: 'to')]
     public string $to = '';
 
+    #[Url(as: 'view')]
+    public string $view = 'list';
+
+    #[Url(as: 'week')]
+    public string $weekStart = '';
+
     public bool $showCorrectionModal = false;
     public ?int $correctionShiftId = null;
     public string $correctionClockInDate = '';
@@ -75,6 +83,30 @@ class ShiftsIndex extends Component
     public function applyFilters(): void
     {
         $this->resetPage();
+    }
+
+    public function setView(string $view): void
+    {
+        $this->view = $view === 'week' ? 'week' : 'list';
+        if ($this->view === 'week' && $this->weekStart === '') {
+            $this->weekStart = $this->from !== '' ? $this->from : now()->toDateString();
+        }
+        $this->resetPage();
+    }
+
+    public function previousWeek(): void
+    {
+        $this->weekStart = $this->weekCursor()->subWeek()->toDateString();
+    }
+
+    public function nextWeek(): void
+    {
+        $this->weekStart = $this->weekCursor()->addWeek()->toDateString();
+    }
+
+    public function thisWeek(): void
+    {
+        $this->weekStart = now()->startOfWeek(Carbon::MONDAY)->toDateString();
     }
 
     public function openCorrection(int $shiftId): void
@@ -172,8 +204,13 @@ class ShiftsIndex extends Component
         session()->flash('time_flash', __('time.required_break.saved'));
     }
 
-    public function render()
+    public function render(BuildWorkShiftWeekGridAction $buildWeekGrid)
     {
+        $isWeek = $this->view === 'week';
+        $weekGrid = $isWeek && $this->workerFilter
+            ? $buildWeekGrid->handle((int) Tenancy::id(), (int) $this->workerFilter, $this->weekCursor()->toDateString(), $this->clockPointFilter)
+            : null;
+
         $query = WorkShift::query()
             ->with([
                 'worker',
@@ -192,7 +229,7 @@ class ShiftsIndex extends Component
             ->when($this->clockPointFilter, fn ($q) => $q->where('clock_in_clock_point_id', $this->clockPointFilter))
             ->orderByDesc('clock_in_at');
 
-        $shifts = $query->paginate(25);
+        $shifts = $isWeek ? null : $query->paginate(25);
 
         $manualClockInOptions = $this->showManualClockInModal
             ? $this->manualClockInFormOptions(auth()->user()?->accessibleLocationIds())
@@ -200,7 +237,9 @@ class ShiftsIndex extends Component
 
         return view('livewire.time.shifts-index', [
             'shifts' => $shifts,
-            'plannedMap' => $this->plannedShiftsMap($shifts->getCollection()),
+            'plannedMap' => $shifts ? $this->plannedShiftsMap($shifts->getCollection()) : [],
+            'isWeek' => $isWeek,
+            'weekGrid' => $weekGrid,
             'teams' => InternalTeam::query()->with('translations')->orderBy('sort_order')->orderBy('name')->get(),
             'workers' => Worker::query()->where('is_active', true)->orderBy('last_name')->orderBy('first_name')->get(),
             'clockPoints' => ClockPoint::query()->orderBy('sort_order')->orderBy('name')->get(),
@@ -225,6 +264,17 @@ class ShiftsIndex extends Component
             // alleen via de eigen gsm — knop weglaten.
             'checkmateMode' => CheckmateMode::isActive(Tenant::query()->find((int) Tenancy::id())),
         ]);
+    }
+
+    private function weekCursor(): Carbon
+    {
+        try {
+            $cursor = $this->weekStart !== '' ? Carbon::parse($this->weekStart) : now();
+        } catch (\Throwable) {
+            $cursor = now();
+        }
+
+        return $cursor->startOfWeek(Carbon::MONDAY);
     }
 
     /**

@@ -181,7 +181,14 @@
         "presence_at": "Laatste aanwezigheid: :name",
         "visits_heading": "Werkbezoeken",
         "visit_range": ":start–:end · :place",
-        "visit_open": ":start–nu · :place"
+        "visit_open": ":start–nu · :place",
+        "week": {
+            "view_list": "Lijst",
+            "view_week": "Week",
+            "pick_worker": "Kies een uitvoerder en druk op Toepassen om zijn week te zien.",
+            "week_total": "Totaal week: :duration",
+            "now": "nu"
+        }
     },
     "corrections": {
         "button": "Corrigeren",

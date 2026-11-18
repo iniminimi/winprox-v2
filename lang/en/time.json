@@ -181,7 +181,14 @@
         "presence_at": "Latest presence: :name",
         "visits_heading": "Work visits",
         "visit_range": ":start–:end · :place",
-        "visit_open": ":start–now · :place"
+        "visit_open": ":start–now · :place",
+        "week": {
+            "view_list": "List",
+            "view_week": "Week",
+            "pick_worker": "Choose a worker and press Apply to see their week.",
+            "week_total": "Week total: :duration",
+            "now": "now"
+        }
     },
     "corrections": {
         "button": "Correct",

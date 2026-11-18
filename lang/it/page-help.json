@@ -1461,6 +1461,10 @@
                     "text": "L'elenco si apre su oggi. Scelga date di inizio e fine e filtri facoltativamente per team, esecutore o clock point. Clicchi <strong>Applica</strong> per aggiornare l'elenco."
                 },
                 {
+                    "label": "Vista settimanale",
+                    "text": "Scelga <strong>Settimana</strong> in alto, selezioni un esecutore e clicchi <strong>Applica</strong>. Vede da lunedì a domenica con le ore della giornata: ogni blocco è un turno dall’entrata all’uscita, con la pausa tratteggiata e il turno pianificato con linea punteggiata dietro. In alto ci sono il totale per giorno e per la settimana. Scorra con le frecce; clicchi su un blocco per correggerlo o chiudere un turno aperto."
+                },
+                {
                     "label": "Scarica rapporto",
                     "text": "Sottomenu CSV + Stampa: scarica i turni filtrati come CSV (compatibile Excel) oppure apri un foglio ore stampabile (Ctrl+P a PDF). Stessi filtri dell'elenco; non solo la pagina corrente (max. 5000 righe)."
                 },

@@ -1461,6 +1461,10 @@
                     "text": "The list opens on today. Choose from and to dates and optionally filter by team, worker, or clock point. Click <strong>Apply</strong> to refresh the list."
                 },
                 {
+                    "label": "Week view",
+                    "text": "Choose <strong>Week</strong> at the top, pick a worker and click <strong>Apply</strong>. You see Monday to Sunday with the hours of the day: each block is a shift from clock-in to clock-out, with the break hatched and the planned shift as a dotted outline behind it. The top shows the total per day and for the week. Use the arrows to browse; click a block to correct it or close an open shift."
+                },
+                {
                     "label": "Download report",
                     "text": "Submenu CSV + Print: download the filtered shifts as CSV (Excel-friendly) or open a printable timesheet (Ctrl+P to PDF). Same filters as the list; not only the current page (max. 5000 rows)."
                 },

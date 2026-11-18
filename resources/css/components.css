@@ -6164,6 +6164,198 @@ svg.wp-release-worker-row__icon,
     flex: 0 0 10.5rem;
 }
 
+.wp-time-week {
+    --wp-tw-hour: 2.5rem;
+    padding: 0;
+    overflow: hidden;
+}
+
+.wp-time-week__bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--wp-border);
+}
+
+.wp-time-week__total {
+    margin: 0 0 0 auto;
+    font-weight: 700;
+    color: var(--wp-text);
+}
+
+.wp-time-week__scroll {
+    position: relative;
+    max-height: 36rem;
+    overflow: auto;
+}
+
+.wp-time-week__grid {
+    display: grid;
+    grid-template-columns: 3rem repeat(7, minmax(6.5rem, 1fr));
+    min-width: 48rem;
+}
+
+.wp-time-week__corner,
+.wp-time-week__head {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: var(--wp-surface);
+    border-bottom: 1px solid var(--wp-border);
+}
+
+.wp-time-week__head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.125rem;
+    padding: 0.5rem 0.25rem;
+    border-left: 1px solid var(--wp-border);
+    font-size: 0.8125rem;
+}
+
+.wp-time-week__head.is-today {
+    background: var(--wp-accent-soft);
+}
+
+.wp-time-week__weekday {
+    font-weight: 700;
+    color: var(--wp-text);
+    text-transform: capitalize;
+}
+
+.wp-time-week__day-total {
+    color: var(--wp-text-muted);
+}
+
+.wp-time-week__all-day {
+    font-size: 0.75rem;
+    color: var(--wp-info-text);
+}
+
+.wp-time-week__hours {
+    display: grid;
+    grid-template-rows: repeat(24, var(--wp-tw-hour));
+}
+
+.wp-time-week__hour {
+    padding: 0.125rem 0.375rem 0 0;
+    font-size: 0.75rem;
+    text-align: right;
+    color: var(--wp-text-muted);
+    border-top: 1px solid var(--wp-border);
+}
+
+.wp-time-week__day {
+    position: relative;
+    height: calc(24 * var(--wp-tw-hour));
+    border-left: 1px solid var(--wp-border);
+    background-image: repeating-linear-gradient(to bottom, var(--wp-border) 0, var(--wp-border) 1px, transparent 1px, transparent var(--wp-tw-hour));
+}
+
+.wp-time-week__day.is-today {
+    background-color: var(--wp-accent-soft);
+}
+
+.wp-time-week__planned,
+.wp-time-week__block {
+    position: absolute;
+    top: var(--wp-tw-top);
+    height: var(--wp-tw-height);
+    box-sizing: border-box;
+    border-radius: var(--wp-radius-sm);
+    overflow: hidden;
+}
+
+.wp-time-week__planned {
+    left: 0.25rem;
+    right: 0.25rem;
+    border: 1px dashed var(--wp-border-strong);
+}
+
+.wp-time-week__planned-label {
+    position: absolute;
+    right: 0.25rem;
+    bottom: 0.125rem;
+    font-size: 0.6875rem;
+    color: var(--wp-text-muted);
+}
+
+.wp-time-week__block {
+    left: 0.5rem;
+    right: 0.5rem;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    padding: 0.25rem 0.375rem;
+    border: 1px solid var(--wp-accent-border);
+    background: var(--wp-surface);
+    border-left: 3px solid var(--wp-accent);
+    color: var(--wp-text);
+    font: inherit;
+    font-size: 0.75rem;
+    line-height: 1.25;
+    text-align: left;
+    box-shadow: var(--wp-shadow-sm);
+    cursor: pointer;
+    transition: border-color var(--wp-transition);
+}
+
+.wp-time-week__block:hover:not(:disabled) {
+    border-color: var(--wp-accent);
+}
+
+.wp-time-week__block:disabled {
+    cursor: default;
+}
+
+.wp-time-week__block.is-open {
+    border-color: var(--wp-warning-border);
+    border-left-color: var(--wp-warning);
+    background: var(--wp-warning-soft);
+}
+
+.wp-time-week__block-time,
+.wp-time-week__block-place,
+.wp-time-week__block-worked {
+    position: relative;
+    z-index: 1;
+}
+
+.wp-time-week__block-time {
+    font-weight: 700;
+}
+
+.wp-time-week__block-place {
+    color: var(--wp-text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.wp-time-week__break {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--wp-tw-top);
+    height: var(--wp-tw-height);
+    background-image: repeating-linear-gradient(135deg, var(--wp-border-strong) 0, var(--wp-border-strong) 2px, transparent 2px, transparent 6px);
+    opacity: 0.6;
+}
+
+.wp-time-week__now {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--wp-tw-top);
+    z-index: 2;
+    border-top: 2px solid var(--wp-danger);
+    pointer-events: none;
+}
+
 .wp-work-visits-toolbar {
     padding: 0.75rem 1rem;
 }

@@ -17,15 +17,21 @@
 
     <div class="wp-card wp-filter-panel wp-time-shifts-toolbar">
         <div class="wp-filter-form wp-time-shifts-toolbar__form">
+            <div class="wp-cluster wp-cluster--tight" role="group" aria-label="{{ __('time.schedule.toolbar.view') }}">
+                <button type="button" @class(['btn', 'btn--sm', 'btn--surface', 'is-active' => ! $isWeek]) wire:click="setView('list')">{{ __('time.shifts.week.view_list') }}</button>
+                <button type="button" @class(['btn', 'btn--sm', 'btn--surface', 'is-active' => $isWeek]) wire:click="setView('week')">{{ __('time.shifts.week.view_week') }}</button>
+            </div>
             <div class="wp-filter-form__row wp-time-shifts-toolbar__primary">
-                <div class="wp-filter-cell">
-                    <label class="wp-filter-inline-label" for="shifts-from">{{ __('time.filters.from') }}</label>
-                    <input id="shifts-from" type="date" class="wp-input" wire:model="from">
-                </div>
-                <div class="wp-filter-cell">
-                    <label class="wp-filter-inline-label" for="shifts-to">{{ __('time.filters.to') }}</label>
-                    <input id="shifts-to" type="date" class="wp-input" wire:model="to">
-                </div>
+                @unless ($isWeek)
+                    <div class="wp-filter-cell">
+                        <label class="wp-filter-inline-label" for="shifts-from">{{ __('time.filters.from') }}</label>
+                        <input id="shifts-from" type="date" class="wp-input" wire:model="from">
+                    </div>
+                    <div class="wp-filter-cell">
+                        <label class="wp-filter-inline-label" for="shifts-to">{{ __('time.filters.to') }}</label>
+                        <input id="shifts-to" type="date" class="wp-input" wire:model="to">
+                    </div>
+                @endunless
                 <div class="wp-filter-cell">
                     <label class="wp-filter-inline-label" for="shifts-team">{{ __('time.filters.team') }}</label>
                     <select id="shifts-team" class="wp-select" wire:model="teamFilter">
@@ -65,11 +71,16 @@
                     @endcan
                 @endif
                 <button type="button" class="btn btn--primary btn--sm" wire:click="applyFilters">{{ __('time.filters.apply') }}</button>
-                <x-wp-list-export :csv-url="$exportUrl" :print-url="$printUrl" />
+                @unless ($isWeek)
+                    <x-wp-list-export :csv-url="$exportUrl" :print-url="$printUrl" />
+                @endunless
             </div>
         </div>
     </div>
 
+    @if ($isWeek)
+        @include('partials.wp-time-shift-week', ['grid' => $weekGrid])
+    @else
     <div class="wp-list">
         @forelse ($shifts as $shift)
             @include('partials.wp-time-shift-card', [
@@ -82,6 +93,7 @@
     </div>
 
     {{ $shifts->links() }}
+    @endif
 
     @if ($showCorrectionModal)
         <x-wp-modal closeMethod="closeCorrection" aria-labelledby="shift-correction-title">
