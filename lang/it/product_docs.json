@@ -85,7 +85,7 @@
                 "title": "Timbratrice e ore",
                 "body": "WinProx registra quando qualcuno inizia e finisce. La gestione segue la presenza e affianca le ore ai turni previsti.",
                 "items": [
-                    "Su Android, con un display orologio in modalità Bluetooth, il telefono può leggere un breve token di presenza dall’orologio all’inizio o fine di un turno pubblicato (e per la pausa), poi confermare con impronta o volto. La modalità online mantiene QR e PIN sul display.",
+                    "Le persone timbrano con il QR di Clock Point. Su una timbratrice fissa, ogni timbratura scansiona il codice dell’adesivo o dello schermo. L’icona della schermata Home e il link di accesso non timbrano da soli. Con Checkmate si può timbrare dall’icona.",
                     "Una foto dell’adesivo si può usare anche fuori dalla porta. Il QR sullo schermo cambia da solo e scade, quindi una foto vecchia non basta più.",
                     "Si vede chi è presente e il foglio ore, e ognuno vede in Le mie ore solo i propri turni. In Ore timbrate la vista Settimana mostra i turni di un esecutore per giorno e per ora, accanto alla pianificazione. Nell’elenco di tutti gli esecutori, un clic sul nome apre quella settimana. Weekend è disattivato per impostazione predefinita, quindi sabato e domenica restano nascosti finché non lo attivate.",
                     "In Presenza, Straordinari mostra il saldo di quest’anno civile fino a oggi, il totale accanto al nome e poi per mese. Team e clock point limitano chi vede; il saldo resta quello dell’anno. I mesi precedenti di quest’anno contano. Non è un calcolo della paga.",
@@ -102,7 +102,7 @@
                 "items": [
                     "Timbrare, vedere il proprio turno pubblicato, vedere le proprie ore, chiedere ferie o recupero.",
                     "Svolgere compiti, seguire un giro di ispezione e avviare una visita quando il GPS è attivo.",
-                    "Uno schermo timbratrice facoltativo mostra un QR che cambia da solo, oppure funziona in modalità Bluetooth senza tastierino PIN. Si collega con un codice monouso e una conferma, e scegli la modalità in Display.",
+                    "Uno schermo timbratrice facoltativo mostra un QR che cambia da solo. Si collega con un codice monouso e una conferma.",
                     "Si sceglie quando lo schermo è acceso, per esempio dalle 06:00 alle 19:00. Fuori orario può restare spento o mostrare una schermata di riposo: foto, un orologio a lancette o un orologio a palette.",
                     "Senza smartphone: toccare lo schermo, cercare il nome per lettere; con turno aperto scegliere pausa o uscita, poi il PIN personale di quattro cifre. Chi non ha ancora un PIN lo sceglie sul posto, due volte.",
                     "Dopo due tentativi errati, quell’esecutore resta bloccato un minuto."
@@ -499,7 +499,6 @@
                     "Rete: **Wi‑Fi 2,4 GHz**, **WPA2** e **WPA3-Personal**. Connessione a WinProx tramite **HTTPS** (UE).",
                     "Associazione con un codice monouso in gestione. Lo scollegamento ritira il dispositivo.",
                     "Senza smartphone: nome e PIN per entrata, uscita e **pausa**. I tentativi errati ripetuti vengono bloccati temporaneamente.",
-                    "Su Android il telefono accanto allo schermo legge lo stesso codice che cambia del QR e poi chiede di nuovo dito o viso.",
                     "Marchio CE per uso professionale; alimentazione USB-C (5 V)."
                 ]
             },

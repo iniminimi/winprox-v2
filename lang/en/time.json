@@ -413,15 +413,6 @@
             "mode_clock": "Analog clock",
             "mode_flipclock": "Flip clock",
             "mode_none": "Nothing (regular QR)"
-        },
-        "mode": {
-            "title": "Clock mode",
-            "hint": "Online: QR and PIN on the display only. Bluetooth: workers choose on the phone between Bluetooth or QR (useful for iPhone); no PIN pad on the display.",
-            "online": "Online (QR + PIN)",
-            "ble": "Bluetooth + QR (phone)",
-            "save": "Save",
-            "saved": "Clock mode saved.",
-            "invalid": "Invalid clock mode."
         }
     },
     "duration": {
@@ -429,36 +420,6 @@
         "minute_short": "min"
     },
     "portal": {
-        "ble": {
-            "in_title": "Clock in via Bluetooth?",
-            "out_title": "Clock out via Bluetooth?",
-            "in_body": "Choose Bluetooth next to the clock, or scan the QR code. With Bluetooth your phone then asks for fingerprint or face.",
-            "out_body": "Choose Bluetooth next to the clock, or scan the QR code. With Bluetooth your phone then asks for fingerprint or face.",
-            "yes": "Via Bluetooth",
-            "later": "Not now",
-            "not_found": "No clock found. Stand next to the screen and try again.",
-            "failed": "Could not connect to the clock.",
-            "rejected": "The server rejected this clock. Read the message above and try again.",
-            "passkey_required": "Confirm with your finger or face first.",
-            "passkey_button": "Confirm with finger or face",
-            "break_start_title": "Start your break via Bluetooth?",
-            "break_end_title": "End your break via Bluetooth?",
-            "break_start_body": "Choose Bluetooth next to the clock, or scan the QR code. With Bluetooth your phone then asks for fingerprint or face.",
-            "break_end_body": "Choose Bluetooth next to the clock, or scan the QR code. With Bluetooth your phone then asks for fingerprint or face.",
-            "token_expired": "The clock time did not match. Tap again next to the display.",
-            "token_replay": "This token was already used. Read again from the clock.",
-            "token_invalid": "Could not recognise the clock. Please try again.",
-            "token_unknown": "This clock is not linked in WinProx. Pair the screen again.",
-            "token_mode": "This clock is not in bluetooth mode. Set clock mode to Bluetooth in settings.",
-            "token_wrong_clock": "This is a different clock. Go to the right site.",
-            "unsupported": "This browser does not support Bluetooth punching.",
-            "permission": "Bluetooth access denied. Allow Bluetooth and location for this site.",
-            "bt_off": "Bluetooth or location is off. Turn them on and try again.",
-            "fallback_scan": "You can also scan the QR on the display or the sticker.",
-            "via_bluetooth": "Via Bluetooth",
-            "via_qr": "Scan QR code",
-            "pair_once": "Pair clock"
-        },
         "title": "Sign in",
         "clock": {
             "not_clocked_in": "Not clocked in yet",

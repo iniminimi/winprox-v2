@@ -413,15 +413,6 @@
             "mode_clock": "Analoge Uhr",
             "mode_flipclock": "Flip-Uhr",
             "mode_none": "Nichts (normaler QR)"
-        },
-        "mode": {
-            "title": "Uhr-Modus",
-            "hint": "Online: nur QR und PIN am Display. Bluetooth: Ausführende wählen am Telefon zwischen Bluetooth oder QR (nützlich für iPhone); kein PIN-Pad am Display.",
-            "online": "Online (QR + PIN)",
-            "ble": "Bluetooth + QR (Telefon)",
-            "save": "Speichern",
-            "saved": "Uhr-Modus gespeichert.",
-            "invalid": "Ungültiger Uhr-Modus."
         }
     },
     "duration": {
@@ -429,36 +420,6 @@
         "minute_short": "min"
     },
     "portal": {
-        "ble": {
-            "in_title": "Per Bluetooth einstempeln?",
-            "out_title": "Per Bluetooth ausstempeln?",
-            "in_body": "Wählen Sie Bluetooth neben der Uhr oder scannen Sie den QR-Code. Bei Bluetooth fragt das Telefon danach Fingerabdruck oder Gesicht.",
-            "out_body": "Wählen Sie Bluetooth neben der Uhr oder scannen Sie den QR-Code. Bei Bluetooth fragt das Telefon danach Fingerabdruck oder Gesicht.",
-            "yes": "Per Bluetooth",
-            "later": "Nicht jetzt",
-            "not_found": "Keine Uhr gefunden. Stellen Sie sich neben den Bildschirm und versuchen Sie es erneut.",
-            "failed": "Verbindung mit der Uhr fehlgeschlagen.",
-            "rejected": "Der Server hat diese Uhr abgelehnt. Lesen Sie die Meldung oben und versuchen Sie es erneut.",
-            "passkey_required": "Bestätigen Sie zuerst mit Finger oder Gesicht.",
-            "passkey_button": "Mit Finger oder Gesicht bestätigen",
-            "break_start_title": "Pause per Bluetooth starten?",
-            "break_end_title": "Pause per Bluetooth beenden?",
-            "break_start_body": "Wählen Sie Bluetooth neben der Uhr oder scannen Sie den QR-Code. Bei Bluetooth fragt das Telefon danach Fingerabdruck oder Gesicht.",
-            "break_end_body": "Wählen Sie Bluetooth neben der Uhr oder scannen Sie den QR-Code. Bei Bluetooth fragt das Telefon danach Fingerabdruck oder Gesicht.",
-            "token_expired": "Die Uhrzeit stimmte nicht. Tippen Sie erneut neben dem Display.",
-            "token_replay": "Dieses Token wurde bereits verwendet. Erneut von der Uhr lesen.",
-            "token_invalid": "Die Uhr konnte nicht erkannt werden. Bitte erneut versuchen.",
-            "token_unknown": "Diese Uhr ist in WinProx nicht verknüpft. Koppeln Sie das Display erneut.",
-            "token_mode": "Diese Uhr ist nicht im Bluetooth-Modus. Stellen Sie den Uhr-Modus in der Verwaltung auf Bluetooth.",
-            "token_wrong_clock": "Das ist eine andere Uhr. Gehen Sie zum richtigen Standort.",
-            "unsupported": "Dieser Browser unterstützt kein Bluetooth-Stempeln.",
-            "permission": "Bluetooth-Zugriff verweigert. Erlauben Sie Bluetooth und Standort für diese Seite.",
-            "bt_off": "Bluetooth oder Standort ist aus. Schalten Sie beides ein und versuchen Sie es erneut.",
-            "fallback_scan": "Sie können auch den QR am Display oder den Aufkleber scannen.",
-            "via_bluetooth": "Per Bluetooth",
-            "via_qr": "QR-Code scannen",
-            "pair_once": "Uhr koppeln"
-        },
         "title": "Anmeldung",
         "clock": {
             "not_clocked_in": "Noch nicht eingestempelt",

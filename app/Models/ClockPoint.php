@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Enums\ClockDisplayMode;
 use App\Models\Concerns\BelongsToTenant;
 use App\Support\Portal\TimePortalData;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -42,7 +41,6 @@ class ClockPoint extends Model
         'album2_until',
         'album_mode',
         'album_days',
-        'display_clock_mode',
     ];
 
     protected $casts = [
@@ -55,7 +53,6 @@ class ClockPoint extends Model
         'display_paired_at' => 'datetime',
         'display_last_seen_at' => 'datetime',
         'album_days' => 'integer',
-        'display_clock_mode' => ClockDisplayMode::class,
     ];
 
     protected static function booted(): void
@@ -95,12 +92,6 @@ class ClockPoint extends Model
     public function hasLinkedDisplay(): bool
     {
         return $this->display_id !== null && $this->display_secret !== null;
-    }
-
-    public function displayUsesBle(): bool
-    {
-        return $this->hasLinkedDisplay()
-            && ($this->display_clock_mode ?? ClockDisplayMode::Online) === ClockDisplayMode::Ble;
     }
 
     public function matchesDisplayToken(?string $plain): bool

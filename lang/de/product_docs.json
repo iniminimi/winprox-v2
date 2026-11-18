@@ -85,7 +85,7 @@
                 "title": "Stempeluhr und Stunden",
                 "body": "WinProx erfasst, wann jemand beginnt und aufhört. Die Verwaltung verfolgt die Anwesenheit und legt die Stunden neben die geplanten Schichten.",
                 "items": [
-                    "Mitarbeitende stempeln mit dem QR-Code von Clock Point. An einer festen Uhr scannt jeder Stempel den Code auf dem Aufkleber oder auf dem Display. Auf Android kann Bluetooth diesen Scan rund um Beginn oder Ende einer veröffentlichten Schicht ersetzen, danach Finger oder Gesicht. Das Symbol auf dem Startbildschirm und der Anmeldelink stempeln für sich nicht ein. Bei Checkmate kann man über das Symbol ein- und ausstempeln.",
+                    "Mitarbeitende stempeln mit dem QR-Code von Clock Point. An einer festen Uhr scannt jeder Stempel den Code auf dem Aufkleber oder auf dem Display. Das Symbol auf dem Startbildschirm und der Anmeldelink stempeln für sich nicht ein. Bei Checkmate kann man über das Symbol ein- und ausstempeln.",
                     "Ein Foto des Aufklebers kann auch außerhalb der Tür verwendet werden. Der QR-Code auf dem Display wechselt von selbst und läuft ab, sodass ein altes Foto nicht mehr gilt.",
                     "Sie sehen, wer anwesend ist, und die Stundenliste. Jede Person sieht unter Meine Stunden nur die eigenen Schichten. Unter Gestempelte Stunden zeigt die Wochenansicht die Schichten einer Person pro Tag und Stunde neben der Planung. In der Liste aller Ausführenden öffnet ein Klick auf den Namen diese Woche. Wochenenden ist standardmäßig aus, sodass Samstag und Sonntag verborgen bleiben, bis Sie sie einschalten.",
                     "Unter Anwesenheit zeigt Überstunden das Saldo dieses Kalenderjahres bis heute, die Summe neben dem Namen und danach pro Monat. Team und Clock Point begrenzen, wen Sie sehen; das Saldo bleibt das Jahressaldo. Frühere Monate dieses Jahres zählen mit. Das ist keine Lohnberechnung.",
@@ -102,7 +102,7 @@
                 "items": [
                     "Ein- und ausstempeln, den eigenen veröffentlichten Dienstplan sehen, die eigenen Stunden sehen, Urlaub oder Ausgleich beantragen.",
                     "Aufgaben erledigen, eine Inspektionsrunde folgen und einen Arbeitsbesuch starten, wenn GPS an ist.",
-                    "Ein optionales Stempeldisplay zeigt einen wechselnden QR-Code oder läuft im Bluetooth-Modus ohne PIN-Pad. Sie koppeln das Display mit einem Einmalcode und einer Bestätigung und wählen den Modus unter Display.",
+                    "Ein optionales Stempeldisplay zeigt einen QR-Code, der von selbst wechselt. Sie koppeln das Display mit einem Einmalcode und einer Bestätigung.",
                     "Sie wählen, wann das Display an ist, zum Beispiel von 06:00 bis 19:00. Außerhalb kann es aus bleiben oder einen Ruhebildschirm zeigen: Fotos, eine Zeigeruhr oder eine Flip-Uhr.",
                     "Ohne Smartphone: Display antippen, den Vornamen über Buchstaben suchen; bei offener Schicht Pause oder Ausstempeln wählen, dann die persönliche vierstellige PIN. Wer noch keine PIN hat, wählt sie vor Ort, zweimal.",
                     "Nach zwei Fehlversuchen ist dieser Ausführende eine Minute gesperrt."
@@ -499,7 +499,6 @@
                     "Netz: **WLAN 2,4 GHz**, **WPA2** und **WPA3-Personal**. Verbindung zu WinProx über **HTTPS** (EU).",
                     "Koppeln mit einem Einmalcode in der Verwaltung. Entkoppeln zieht das Gerät ein.",
                     "Ohne Smartphone: Vorname und PIN für Ein- und Ausstempeln und **Pause**. Wiederholte Fehlversuche werden vorübergehend gesperrt.",
-                    "Auf Android liest das Telefon neben dem Bildschirm denselben wechselnden Code wie der QR und fragt danach erneut nach Finger oder Gesicht.",
                     "CE-Kennzeichnung für den professionellen Einsatz; Versorgung über USB-C (5 V)."
                 ]
             },

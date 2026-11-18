@@ -413,15 +413,6 @@
             "mode_clock": "Wijzerklok",
             "mode_flipclock": "Flipklok",
             "mode_none": "Niets (gewone QR)"
-        },
-        "mode": {
-            "title": "Klokmodus",
-            "hint": "Online: alleen QR en PIN op het scherm. Bluetooth: uitvoerders kiezen op de telefoon tussen bluetooth of QR-code (handig voor iPhone); geen PIN-pad op het scherm.",
-            "online": "Online (QR + PIN)",
-            "ble": "Bluetooth + QR (telefoon)",
-            "save": "Opslaan",
-            "saved": "Klokmodus opgeslagen.",
-            "invalid": "Ongeldige klokmodus."
         }
     },
     "duration": {
@@ -429,36 +420,6 @@
         "minute_short": "min"
     },
     "portal": {
-        "ble": {
-            "in_title": "Wil je inklokken via bluetooth?",
-            "out_title": "Wil je uitklokken via bluetooth?",
-            "in_body": "Kies bluetooth naast de klok, of scan de QR-code. Bij bluetooth vraagt je gsm daarna om vinger of gezicht.",
-            "out_body": "Kies bluetooth naast de klok, of scan de QR-code. Bij bluetooth vraagt je gsm daarna om vinger of gezicht.",
-            "yes": "Via bluetooth",
-            "later": "Niet nu",
-            "not_found": "Geen klok gevonden. Sta naast het scherm en probeer opnieuw.",
-            "failed": "Verbinden met de klok lukte niet.",
-            "rejected": "De server weigerde deze klok. Lees de melding hierboven en probeer opnieuw.",
-            "passkey_required": "Bevestig eerst met je vinger of gezicht.",
-            "passkey_button": "Bevestig met vinger of gezicht",
-            "break_start_title": "Wil je pauze starten via bluetooth?",
-            "break_end_title": "Wil je pauze stoppen via bluetooth?",
-            "break_start_body": "Kies bluetooth naast de klok, of scan de QR-code. Bij bluetooth vraagt je gsm daarna om vinger of gezicht.",
-            "break_end_body": "Kies bluetooth naast de klok, of scan de QR-code. Bij bluetooth vraagt je gsm daarna om vinger of gezicht.",
-            "token_expired": "De tijd van de klok klopte niet. Tik opnieuw naast het scherm.",
-            "token_replay": "Dit teken is al gebruikt. Lees opnieuw vanaf de klok.",
-            "token_invalid": "De klok herkennen lukte niet. Probeer opnieuw.",
-            "token_unknown": "Deze klok is niet gekoppeld in WinProx. Koppel het scherm opnieuw.",
-            "token_mode": "Deze klok staat niet in bluetooth-modus. Zet klokmodus op Bluetooth in beheer.",
-            "token_wrong_clock": "Dit is een andere klok. Ga naar de juiste vestiging.",
-            "unsupported": "Deze browser ondersteunt geen Bluetooth voor prikken.",
-            "permission": "Bluetooth-toegang geweigerd. Sta Bluetooth en locatie toe voor deze site.",
-            "bt_off": "Bluetooth of locatie staat uit. Zet ze aan en probeer opnieuw.",
-            "fallback_scan": "Je kunt ook de QR op het scherm of de sticker scannen.",
-            "via_bluetooth": "Via bluetooth",
-            "via_qr": "QR-code scannen",
-            "pair_once": "Klok koppelen"
-        },
         "title": "Aanmelden",
         "clock": {
             "not_clocked_in": "Nog niet ingeklokt",

@@ -56,7 +56,6 @@ function registerAlpineComponent() {
     window.Alpine.data('wpPortalPasskey', (config = {}) => ({
         i18n: config.i18n ?? {},
         urls: config.urls ?? {},
-        purpose: config.purpose ?? '',
         busy: false,
         error: '',
         supported: typeof window.PublicKeyCredential !== 'undefined' && !!navigator.credentials,
@@ -150,19 +149,10 @@ function registerAlpineComponent() {
 
                 const done = await this.post(this.urls.assert, {
                     credential: JSON.stringify(credentialToJson(cred, false)),
-                    purpose: this.purpose,
                 });
                 if (!done.ok || !done.data?.ok) {
                     this.setError(done.status === 409 ? 'error_device' : 'error_failed');
                     return;
-                }
-                // BLE-prik: Livewire afronden i.p.v. reload (wire:poll wist anders de sessie).
-                if (this.purpose === 'ble-punch') {
-                    const wire = resolveLivewireWire(this);
-                    if (wire && typeof wire.confirmBlePasskeyAndPunch === 'function') {
-                        await wire.confirmBlePasskeyAndPunch();
-                        return;
-                    }
                 }
                 window.location.reload();
             } catch (e) {
@@ -172,28 +162,6 @@ function registerAlpineComponent() {
             }
         },
     }));
-}
-
-function resolveLivewireWire(alpineComponent) {
-    if (alpineComponent?.$wire && typeof alpineComponent.$wire.confirmBlePasskeyAndPunch === 'function') {
-        return alpineComponent.$wire;
-    }
-    if (typeof Livewire === 'undefined' || typeof Livewire.find !== 'function') {
-        return alpineComponent?.$wire ?? null;
-    }
-    let node = alpineComponent?.$el ?? null;
-    while (node) {
-        const id = node.getAttribute?.('wire:id');
-        if (id) {
-            try {
-                return Livewire.find(id);
-            } catch (e) {
-                break;
-            }
-        }
-        node = node.parentElement;
-    }
-    return typeof Livewire.first === 'function' ? Livewire.first() : null;
 }
 
 document.addEventListener('alpine:init', registerAlpineComponent);

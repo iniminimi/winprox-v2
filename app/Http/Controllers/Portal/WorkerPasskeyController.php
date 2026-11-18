@@ -88,18 +88,7 @@ class WorkerPasskeyController
             return response()->json(['ok' => false, 'error' => 'device_mismatch'], 409);
         }
 
-        $blePasskeyOk = false;
-        if ((string) $request->input('purpose') === 'ble-punch') {
-            $pending = (int) session('wp_ble_punch_pending', 0);
-            if ($pending > 0) {
-                session(['wp_ble_passkey_ok' => $pending]);
-                // Direct flushen: wire:poll kan anders een oudere sessie terugschrijven.
-                session()->save();
-                $blePasskeyOk = true;
-            }
-        }
-
-        return response()->json(['ok' => true, 'ble_passkey_ok' => $blePasskeyOk]);
+        return response()->json(['ok' => true]);
     }
 
     /**

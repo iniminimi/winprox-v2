@@ -17,5 +17,3 @@ import './reservation-default-window';
 import './wp-roster-sheet';
 import './wp-portal-qr-scanner';
 import './wp-portal-passkey';
-import './wp-portal-ble';
-

@@ -8,10 +8,8 @@ use App\Actions\Time\DenyClockDisplayClaimAction;
 use App\Actions\Time\IssueClockDisplayPairingCodeAction;
 use App\Actions\Time\UnlinkClockPointDisplayAction;
 use App\Actions\Time\UpdateClockDisplayAlbumWindowsAction;
-use App\Actions\Time\UpdateClockDisplayModeAction;
 use App\Actions\Time\UpdateClockDisplayScheduleAction;
 use App\Actions\Time\UploadClockDisplayImageAction;
-use App\Enums\ClockDisplayMode;
 use App\Models\ClockDisplayClaim;
 use App\Models\ClockDisplayImage;
 use App\Models\ClockPoint;
@@ -58,8 +56,6 @@ class ClockDisplayPair extends Component
 
     public string $albumMode = 'photos';
 
-    public string $displayClockMode = 'online';
-
     /** Weekdagen waarop het rust-scherm actief is: index 0 = ma … 6 = zo. */
     public array $albumDays = [true, true, true, true, true, false, false];
 
@@ -67,7 +63,6 @@ class ClockDisplayPair extends Component
     {
         $this->authorize('update', $clockPoint);
         $this->clockPoint = $clockPoint;
-        $this->displayClockMode = ($clockPoint->display_clock_mode ?? ClockDisplayMode::Online)->value;
         $hm = fn (?string $t) => $t !== null ? substr((string) $t, 0, 5) : null;
         $this->displayOnFrom = $hm($clockPoint->display_on_from);
         $this->displayOnUntil = $hm($clockPoint->display_on_until);
@@ -115,30 +110,6 @@ class ClockDisplayPair extends Component
         return $from <= $until
             ? ($slot >= $from && $slot <= $until)
             : ($slot >= $from || $slot <= $until);
-    }
-
-    public function saveClockMode(UpdateClockDisplayModeAction $update): void
-    {
-        $this->authorize('update', $this->clockPoint);
-        $mode = ClockDisplayMode::tryFrom($this->displayClockMode);
-        if ($mode === null) {
-            $this->addError('displayClockMode', __('time.clock_displays.mode.invalid'));
-
-            return;
-        }
-        try {
-            $this->clockPoint = $update->handle(
-                $this->clockPoint,
-                (int) $this->clockPoint->tenant_id,
-                auth()->id(),
-                $mode,
-            );
-        } catch (InvalidArgumentException $e) {
-            session()->flash('time_flash', __('time.clock_displays.errors.'.$e->getMessage()));
-
-            return;
-        }
-        session()->flash('time_flash', __('time.clock_displays.mode.saved'));
     }
 
     public function issueCode(IssueClockDisplayPairingCodeAction $issue): void
