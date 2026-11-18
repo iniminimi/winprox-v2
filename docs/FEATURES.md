@@ -849,7 +849,7 @@ productsector op `Tenant`.
 - **Weekweergave** (Time → Uren, knop **Lijst | Week**, `?view=week&week=YYYY-MM-DD`): alleen voor
   één gekozen uitvoerder (zonder uitvoerder: melding om er een te kiezen). Maandag–zondag × 00–23 uur;
   per dienst een blok van in- tot uitklok (open dienst tot nu, amber), pauzes gearceerd, geplande
-  dienst als stippellijn (als het uurrooster aan staat). Nachtdienst wordt over twee dagen verdeeld;
+  dienst als dikkere stippellijn met 40% witte vulling (als het uurrooster aan staat). De uurkolom is smal en gecentreerd. Nachtdienst wordt over twee dagen verdeeld;
   dagtotaal telt bij de dag van inklokken (zoals lijst en export). Totaal per dag en week; scrollt naar
   het eerste uur. De weekfilter (team, uitvoerder, clock point, toepassen) staat op één lijn.
   Elk uur is 1,25 rem hoog, zodat een dag meer op het scherm past. Klik op een blok = Corrigeren (gesloten, Policy `correct`) of Shift sluiten (open).
