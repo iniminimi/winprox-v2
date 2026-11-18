@@ -852,7 +852,10 @@
                                     x-cloak
                                     @click="yes"
                                     :disabled="busy"
-                                >{{ __('time.portal.ble.via_bluetooth') }}</button>
+                                >
+                                    <x-wp-icon name="bluetooth" class="wp-icon" />
+                                    <span>{{ __('time.portal.ble.via_bluetooth') }}</span>
+                                </button>
                                 <div
                                     x-data="wpPortalQrScanner({
                                         i18n: {
