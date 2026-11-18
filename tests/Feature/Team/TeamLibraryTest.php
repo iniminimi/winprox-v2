@@ -403,7 +403,7 @@ it('toont op uitvoerders dezelfde tellers en opent de lijst van dat team', funct
         ]))
         ->assertOk()
         ->assertSee('Bericht voor Jan', false)
-        ->assertDontSee('Contract Jan', false);
+        ->assertSee('Contract Jan', false);
 });
 
 it('stuurt de teller in de uitvoerdersrij naar de documenten en mededelingen van dat team', function () {
