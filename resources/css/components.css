@@ -6306,7 +6306,7 @@ svg.wp-release-worker-row__icon,
     left: 0.25rem;
     right: 0.25rem;
     border: 2px dashed var(--wp-border-strong);
-    background: rgb(255 255 255 / 40%);
+    background: rgb(255 255 255 / 60%);
 }
 
 .wp-time-week__planned-label {
