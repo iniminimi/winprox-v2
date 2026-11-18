@@ -17,8 +17,9 @@ function presenceWorld(): array
     $tenant = Tenant::factory()->create(['has_time_module' => true]);
     Tenancy::actAs($tenant->id);
     $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    // Echte display_ids zijn Str::random (alfanumeriek), geen pure hex.
     $point = ClockPoint::factory()->forLocation($location)->create([
-        'display_id' => str_repeat('ab', 12),
+        'display_id' => 'k9zuar33m2plqwx7vbn4c1de',
         'display_secret' => str_repeat('cd', 32),
         'display_clock_mode' => ClockDisplayMode::Ble,
     ]);

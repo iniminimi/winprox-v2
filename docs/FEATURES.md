@@ -1360,12 +1360,13 @@ binnen ~30–90 s dood.
   **bluetooth of QR** (iPhone / geen Bluetooth → QR). Offline-blokkade ~3 dagen
   (`time.display_offline_block_hours`).
 - **BLE presence-token:** 32 bytes
-  `display_id|timestamp|boot_id|counter|hmac8` (HMAC over
-  `display_id|ts|boot|counter`). `boot_id` = `esp_random()` per boot; counter
-  in RAM. Server: `ValidateClockDisplayPresenceTokenAction`, TTL 30s + drift,
-  anti-replay via cache-set `display_id:boot_id:counter` (≥2×TTL) — niet
-  “laatste counter”. Portaal: `submitBlePresenceToken` → scan-grant + passkey
-  (`ble-punch`) → `ClockSource::Bluetooth`.
+  `sha256(display_id)[12]|timestamp|boot_id|counter|hmac8` (HMAC over
+  `display_id|ts|boot|counter`; `display_id` is opaque `Str::random`, geen hex).
+  `boot_id` = `esp_random()` per boot; counter in RAM. Server:
+  `ValidateClockDisplayPresenceTokenAction`, TTL/drift via config, anti-replay
+  via cache-set `display_id:boot_id:counter` (≥2×TTL) — niet “laatste counter”.
+  Portaal: `submitBlePresenceToken` → scan-grant + passkey (`ble-punch`) →
+  `ClockSource::Bluetooth`.
 - **Heartbeat:** `GET /api/v1/time/clock-displays/ping` (`X-WinProx-Clock-Key`)
   → `server_time`, `state`, naam/locatie, rotatie-/offline-drempels, `clock_mode`,
   `presence_token_ttl_seconds` (`time.display_*` / `time.presence_token_*`).

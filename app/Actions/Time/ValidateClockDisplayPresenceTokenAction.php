@@ -24,18 +24,24 @@ class ValidateClockDisplayPresenceTokenAction
             throw new InvalidArgumentException('presence_token_invalid');
         }
 
-        $ttl = max(10, (int) config('time.presence_token_ttl_seconds', 30));
-        $drift = max(0, (int) config('time.presence_token_drift_seconds', 5));
+        $ttl = max(10, (int) config('time.presence_token_ttl_seconds', 90));
+        $drift = max(0, (int) config('time.presence_token_drift_seconds', 120));
         $now = time();
         if ($parsed['timestamp'] < $now - $ttl - $drift || $parsed['timestamp'] > $now + $drift) {
             throw new InvalidArgumentException('presence_token_expired');
         }
 
+        $fingerprint = $parsed['id_fingerprint'];
         $clockPoint = ClockPoint::query()
             ->where('tenant_id', $tenantId)
-            ->where('display_id', $parsed['display_id'])
             ->where('is_active', true)
-            ->first();
+            ->whereNotNull('display_id')
+            ->whereNotNull('display_secret')
+            ->get()
+            ->first(fn (ClockPoint $point): bool => hash_equals(
+                ClockDisplayPresenceToken::fingerprint((string) $point->display_id),
+                $fingerprint,
+            ));
 
         if ($clockPoint === null || ! $clockPoint->hasLinkedDisplay()) {
             throw new InvalidArgumentException('presence_token_unknown');
@@ -48,9 +54,10 @@ class ValidateClockDisplayPresenceTokenAction
             throw new InvalidArgumentException('presence_token_mode');
         }
 
+        $displayId = (string) $clockPoint->display_id;
         $expected = ClockDisplayPresenceToken::hmacHex(
             (string) $clockPoint->display_secret,
-            $parsed['display_id'],
+            $displayId,
             $parsed['timestamp'],
             $parsed['boot_id'],
             $parsed['counter'],
@@ -60,7 +67,7 @@ class ValidateClockDisplayPresenceTokenAction
         }
 
         $replayKey = ClockDisplayPresenceToken::replayKey(
-            $parsed['display_id'],
+            $displayId,
             $parsed['boot_id'],
             $parsed['counter'],
         );
@@ -71,7 +78,7 @@ class ValidateClockDisplayPresenceTokenAction
 
         return [
             'clock_point' => $clockPoint,
-            'display_id' => $parsed['display_id'],
+            'display_id' => $displayId,
             'boot_id' => $parsed['boot_id'],
             'counter' => $parsed['counter'],
         ];
