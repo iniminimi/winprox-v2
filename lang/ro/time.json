@@ -53,9 +53,9 @@
         "ble": {
             "in_title": "Pontezi intrarea prin Bluetooth?",
             "out_title": "Pontezi ieșirea prin Bluetooth?",
-            "in_body": "Stai lângă ceas. Apoi telefonul cere din nou degetul sau fața.",
-            "out_body": "Stai lângă ceas. Apoi telefonul cere din nou degetul sau fața.",
-            "yes": "Da",
+            "in_body": "Alege Bluetooth lângă ceas sau scanează QR. Cu Bluetooth telefonul cere apoi amprenta sau fața.",
+            "out_body": "Alege Bluetooth lângă ceas sau scanează QR. Cu Bluetooth telefonul cere apoi amprenta sau fața.",
+            "yes": "Prin Bluetooth",
             "later": "Nu acum",
             "not_found": "Nu s-a găsit niciun ceas. Stai lângă ecran și încearcă din nou.",
             "failed": "Conectarea la ceas nu a reușit.",
@@ -63,8 +63,8 @@
             "passkey_button": "Confirmă cu degetul sau fața",
             "break_start_title": "Pornești pauza prin Bluetooth?",
             "break_end_title": "Oprești pauza prin Bluetooth?",
-            "break_start_body": "Stai lângă ceas. Telefonul va cere din nou amprenta sau fața.",
-            "break_end_body": "Stai lângă ceas. Telefonul va cere din nou amprenta sau fața.",
+            "break_start_body": "Alege Bluetooth lângă ceas sau scanează QR. Cu Bluetooth telefonul cere apoi amprenta sau fața.",
+            "break_end_body": "Alege Bluetooth lângă ceas sau scanează QR. Cu Bluetooth telefonul cere apoi amprenta sau fața.",
             "token_expired": "Semnalul de pe ceas a expirat. Încearcă din nou lângă ecran.",
             "token_replay": "Acest semnal a fost deja folosit. Citește din nou de pe ceas.",
             "token_invalid": "Ceasul nu a putut fi recunoscut. Încearcă din nou.",
@@ -72,7 +72,9 @@
             "unsupported": "Acest browser nu suportă pontajul prin Bluetooth.",
             "permission": "Acces Bluetooth refuzat. Permite Bluetooth și locația pentru acest site.",
             "bt_off": "Bluetooth sau locația sunt oprite. Pornește-le și încearcă din nou.",
-            "fallback_scan": "Poți scana și QR-ul de pe ecran sau autocolantul."
+            "fallback_scan": "Poți scana și QR-ul de pe ecran sau autocolantul.",
+            "via_bluetooth": "Prin Bluetooth",
+            "via_qr": "Scanează QR"
         },
         "title": "Autentificare",
         "clock": {

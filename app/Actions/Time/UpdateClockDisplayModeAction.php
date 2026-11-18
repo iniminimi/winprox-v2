@@ -40,7 +40,10 @@ class UpdateClockDisplayModeAction
                 action: 'clock_point.display_clock_mode_updated',
                 modelType: ClockPoint::class,
                 modelId: $locked->id,
-                meta: ['mode' => $mode->value],
+                payload: [
+                    'clock_point_id' => $locked->id,
+                    'mode' => $mode->value,
+                ],
             );
 
             return $locked->fresh();

@@ -53,9 +53,9 @@
         "ble": {
             "in_title": "Registar entrada por Bluetooth?",
             "out_title": "Registar saída por Bluetooth?",
-            "in_body": "Fique ao lado do relógio. Depois o telemóvel pede outra vez o dedo ou o rosto.",
-            "out_body": "Fique ao lado do relógio. Depois o telemóvel pede outra vez o dedo ou o rosto.",
-            "yes": "Sim",
+            "in_body": "Escolha Bluetooth junto do relógio, ou leia o QR. Com Bluetooth o telemóvel pede depois dedo ou rosto.",
+            "out_body": "Escolha Bluetooth junto do relógio, ou leia o QR. Com Bluetooth o telemóvel pede depois dedo ou rosto.",
+            "yes": "Via Bluetooth",
             "later": "Agora não",
             "not_found": "Nenhum relógio encontrado. Fique ao lado do ecrã e tente de novo.",
             "failed": "Não foi possível ligar ao relógio.",
@@ -63,8 +63,8 @@
             "passkey_button": "Confirmar com dedo ou rosto",
             "break_start_title": "Iniciar a pausa por Bluetooth?",
             "break_end_title": "Terminar a pausa por Bluetooth?",
-            "break_start_body": "Fique ao lado do relógio. Depois o telemóvel pede outra vez o dedo ou o rosto.",
-            "break_end_body": "Fique ao lado do relógio. Depois o telemóvel pede outra vez o dedo ou o rosto.",
+            "break_start_body": "Escolha Bluetooth junto do relógio, ou leia o QR. Com Bluetooth o telemóvel pede depois dedo ou rosto.",
+            "break_end_body": "Escolha Bluetooth junto do relógio, ou leia o QR. Com Bluetooth o telemóvel pede depois dedo ou rosto.",
             "token_expired": "O sinal do relógio expirou. Tente de novo junto ao ecrã.",
             "token_replay": "Este sinal já foi usado. Leia de novo no relógio.",
             "token_invalid": "Não foi possível reconhecer o relógio. Tente de novo.",
@@ -72,7 +72,9 @@
             "unsupported": "Este browser não suporta marcação por Bluetooth.",
             "permission": "Acesso Bluetooth recusado. Autorize Bluetooth e localização para este site.",
             "bt_off": "Bluetooth ou localização estão desligados. Ligue-os e tente de novo.",
-            "fallback_scan": "Também pode ler o QR no ecrã ou o autocolante."
+            "fallback_scan": "Também pode ler o QR no ecrã ou o autocolante.",
+            "via_bluetooth": "Via Bluetooth",
+            "via_qr": "Ler código QR"
         },
         "title": "Iniciar sessão",
         "clock": {

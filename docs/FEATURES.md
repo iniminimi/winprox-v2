@@ -1356,7 +1356,9 @@ binnen ~30–90 s dood.
 - **Klokmodus** (`display_clock_mode`, beheer Clock Point → Scherm): `online`
   (QR + PIN + periodieke ping) of `ble` (boot-TLS-sync, daarna presence via
   GATT, geen PIN-pad, geen TLS na boot; SNTP blijft; nachtelijke herstart
-  vernieuwt `lastSync`). Offline-blokkade ~3 dagen (`time.display_offline_block_hours`).
+  vernieuwt `lastSync`). In ble-modus kiest de uitvoerder op de telefoon
+  **bluetooth of QR** (iPhone / geen Bluetooth → QR). Offline-blokkade ~3 dagen
+  (`time.display_offline_block_hours`).
 - **BLE presence-token:** 32 bytes
   `display_id|timestamp|boot_id|counter|hmac8` (HMAC over
   `display_id|ts|boot|counter`). `boot_id` = `esp_random()` per boot; counter

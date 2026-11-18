@@ -53,9 +53,9 @@
         "ble": {
             "in_title": "Odbij wejście przez Bluetooth?",
             "out_title": "Odbij wyjście przez Bluetooth?",
-            "in_body": "Stań obok zegara. Potem telefon znowu poprosi o palec albo twarz.",
-            "out_body": "Stań obok zegara. Potem telefon znowu poprosi o palec albo twarz.",
-            "yes": "Tak",
+            "in_body": "Wybierz Bluetooth przy zegarze albo zeskanuj QR. Przy Bluetooth telefon potem poprosi o odcisk lub twarz.",
+            "out_body": "Wybierz Bluetooth przy zegarze albo zeskanuj QR. Przy Bluetooth telefon potem poprosi o odcisk lub twarz.",
+            "yes": "Przez Bluetooth",
             "later": "Nie teraz",
             "not_found": "Nie znaleziono zegara. Stań obok ekranu i spróbuj ponownie.",
             "failed": "Nie udało się połączyć z zegarem.",
@@ -63,8 +63,8 @@
             "passkey_button": "Potwierdź palcem lub twarzą",
             "break_start_title": "Rozpocząć przerwę przez Bluetooth?",
             "break_end_title": "Zakończyć przerwę przez Bluetooth?",
-            "break_start_body": "Stań przy zegarze. Telefon ponownie poprosi o odcisk palca lub twarz.",
-            "break_end_body": "Stań przy zegarze. Telefon ponownie poprosi o odcisk palca lub twarz.",
+            "break_start_body": "Wybierz Bluetooth przy zegarze albo zeskanuj QR. Przy Bluetooth telefon potem poprosi o odcisk lub twarz.",
+            "break_end_body": "Wybierz Bluetooth przy zegarze albo zeskanuj QR. Przy Bluetooth telefon potem poprosi o odcisk lub twarz.",
             "token_expired": "Znak z zegara wygasł. Spróbuj ponownie przy ekranie.",
             "token_replay": "Ten znak był już użyty. Odczytaj ponownie z zegara.",
             "token_invalid": "Nie udało się rozpoznać zegara. Spróbuj ponownie.",
@@ -72,7 +72,9 @@
             "unsupported": "Ta przeglądarka nie obsługuje punktacji przez Bluetooth.",
             "permission": "Odmowa dostępu do Bluetooth. Zezwól na Bluetooth i lokalizację dla tej witryny.",
             "bt_off": "Bluetooth lub lokalizacja są wyłączone. Włącz je i spróbuj ponownie.",
-            "fallback_scan": "Możesz też zeskanować QR na ekranie lub naklejkę."
+            "fallback_scan": "Możesz też zeskanować QR na ekranie lub naklejkę.",
+            "via_bluetooth": "Przez Bluetooth",
+            "via_qr": "Skanuj QR"
         },
         "title": "Logowanie",
         "clock": {

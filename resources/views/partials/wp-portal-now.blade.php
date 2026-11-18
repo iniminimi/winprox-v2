@@ -58,8 +58,13 @@
     }
 
     $bleDir = (string) ($blePunchDirection ?? ($bleAutopunch ?? ''));
+    $scanPunch = (string) ($scanPunchMethod ?? '');
     if (in_array($bleDir, ['break_start', 'break_end'], true)) {
         $action = $bleDir === 'break_end'
+            ? ['method' => 'endBreak', 'label' => __('time.portal.clock.end_break'), 'needsScan' => true]
+            : ['method' => 'startBreak', 'label' => __('time.portal.clock.start_break'), 'needsScan' => true];
+    } elseif (in_array($scanPunch, ['startBreak', 'endBreak'], true)) {
+        $action = $scanPunch === 'endBreak'
             ? ['method' => 'endBreak', 'label' => __('time.portal.clock.end_break'), 'needsScan' => true]
             : ['method' => 'startBreak', 'label' => __('time.portal.clock.start_break'), 'needsScan' => true];
     } elseif ($onBreak) {

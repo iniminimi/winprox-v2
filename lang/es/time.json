@@ -416,9 +416,9 @@
         },
         "mode": {
             "title": "Modo de reloj",
-            "hint": "En línea: QR y PIN en la pantalla. Bluetooth: el teléfono lee un token de presencia corto; sin teclado PIN en la pantalla.",
+            "hint": "En línea: solo QR y PIN en la pantalla. Bluetooth: eligen en el teléfono entre Bluetooth o QR (útil en iPhone); sin teclado PIN en la pantalla.",
             "online": "En línea (QR + PIN)",
-            "ble": "Bluetooth (teléfono)",
+            "ble": "Bluetooth + QR (teléfono)",
             "save": "Guardar",
             "saved": "Modo de reloj guardado.",
             "invalid": "Modo de reloj no válido."
@@ -432,9 +432,9 @@
         "ble": {
             "in_title": "¿Fichar la entrada por Bluetooth?",
             "out_title": "¿Fichar la salida por Bluetooth?",
-            "in_body": "Ponte junto al reloj. Después el teléfono pedirá otra vez tu dedo o tu cara.",
-            "out_body": "Ponte junto al reloj. Después el teléfono pedirá otra vez tu dedo o tu cara.",
-            "yes": "Sí",
+            "in_body": "Elige Bluetooth junto al reloj, o escanea el QR. Con Bluetooth el móvil pide después huella o rostro.",
+            "out_body": "Elige Bluetooth junto al reloj, o escanea el QR. Con Bluetooth el móvil pide después huella o rostro.",
+            "yes": "Por Bluetooth",
             "later": "Ahora no",
             "not_found": "No se encontró ningún reloj. Ponte junto a la pantalla e inténtalo de nuevo.",
             "failed": "No se pudo conectar con el reloj.",
@@ -442,8 +442,8 @@
             "passkey_button": "Confirmar con dedo o cara",
             "break_start_title": "¿Empezar la pausa por Bluetooth?",
             "break_end_title": "¿Terminar la pausa por Bluetooth?",
-            "break_start_body": "Ponte junto al reloj. Luego el móvil pedirá otra vez tu huella o rostro.",
-            "break_end_body": "Ponte junto al reloj. Luego el móvil pedirá otra vez tu huella o rostro.",
+            "break_start_body": "Elige Bluetooth junto al reloj, o escanea el QR. Con Bluetooth el móvil pide después huella o rostro.",
+            "break_end_body": "Elige Bluetooth junto al reloj, o escanea el QR. Con Bluetooth el móvil pide después huella o rostro.",
             "token_expired": "El token del reloj caducó. Inténtalo de nuevo junto a la pantalla.",
             "token_replay": "Este token ya se usó. Vuelve a leerlo del reloj.",
             "token_invalid": "No se pudo reconocer el reloj. Inténtalo de nuevo.",
@@ -451,7 +451,9 @@
             "unsupported": "Este navegador no admite fichaje por Bluetooth.",
             "permission": "Acceso Bluetooth denegado. Permite Bluetooth y ubicación para este sitio.",
             "bt_off": "Bluetooth o ubicación están desactivados. Actívalos e inténtalo de nuevo.",
-            "fallback_scan": "También puedes escanear el QR de la pantalla o la pegatina."
+            "fallback_scan": "También puedes escanear el QR de la pantalla o la pegatina.",
+            "via_bluetooth": "Por Bluetooth",
+            "via_qr": "Escanear QR"
         },
         "title": "Inicio de sesión",
         "clock": {

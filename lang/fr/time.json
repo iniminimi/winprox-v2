@@ -416,9 +416,9 @@
         },
         "mode": {
             "title": "Mode horloge",
-            "hint": "En ligne : QR et PIN sur l’écran. Bluetooth : le téléphone lit un jeton de présence court ; pas de clavier PIN sur l’écran.",
+            "hint": "En ligne : QR et PIN sur l’écran seulement. Bluetooth : les exécutants choisissent sur le téléphone entre Bluetooth ou QR (utile pour iPhone) ; pas de clavier PIN sur l’écran.",
             "online": "En ligne (QR + PIN)",
-            "ble": "Bluetooth (téléphone)",
+            "ble": "Bluetooth + QR (téléphone)",
             "save": "Enregistrer",
             "saved": "Mode horloge enregistré.",
             "invalid": "Mode horloge invalide."
@@ -432,9 +432,9 @@
         "ble": {
             "in_title": "Pointer l'entrée via Bluetooth ?",
             "out_title": "Pointer la sortie via Bluetooth ?",
-            "in_body": "Placez-vous à côté de l'horloge. Votre téléphone demandera ensuite à nouveau votre doigt ou votre visage.",
-            "out_body": "Placez-vous à côté de l'horloge. Votre téléphone demandera ensuite à nouveau votre doigt ou votre visage.",
-            "yes": "Oui",
+            "in_body": "Choisissez Bluetooth près de l’horloge, ou scannez le QR. Avec Bluetooth le téléphone demande ensuite empreinte ou visage.",
+            "out_body": "Choisissez Bluetooth près de l’horloge, ou scannez le QR. Avec Bluetooth le téléphone demande ensuite empreinte ou visage.",
+            "yes": "Via Bluetooth",
             "later": "Pas maintenant",
             "not_found": "Aucune horloge trouvée. Placez-vous à côté de l'écran et réessayez.",
             "failed": "La connexion à l'horloge a échoué.",
@@ -442,8 +442,8 @@
             "passkey_button": "Confirmer avec le doigt ou le visage",
             "break_start_title": "Démarrer la pause via Bluetooth ?",
             "break_end_title": "Terminer la pause via Bluetooth ?",
-            "break_start_body": "Placez-vous près de l’horloge. Le téléphone demandera ensuite à nouveau votre empreinte ou votre visage.",
-            "break_end_body": "Placez-vous près de l’horloge. Le téléphone demandera ensuite à nouveau votre empreinte ou votre visage.",
+            "break_start_body": "Choisissez Bluetooth près de l’horloge, ou scannez le QR. Avec Bluetooth le téléphone demande ensuite empreinte ou visage.",
+            "break_end_body": "Choisissez Bluetooth près de l’horloge, ou scannez le QR. Avec Bluetooth le téléphone demande ensuite empreinte ou visage.",
             "token_expired": "Le jeton de l’horloge a expiré. Réessayez près de l’écran.",
             "token_replay": "Ce jeton a déjà été utilisé. Relisez depuis l’horloge.",
             "token_invalid": "Impossible de reconnaître l’horloge. Réessayez.",
@@ -451,7 +451,9 @@
             "unsupported": "Ce navigateur ne prend pas en charge le pointage Bluetooth.",
             "permission": "Accès Bluetooth refusé. Autorisez Bluetooth et la localisation pour ce site.",
             "bt_off": "Bluetooth ou localisation est désactivé. Activez-les et réessayez.",
-            "fallback_scan": "Vous pouvez aussi scanner le QR sur l’écran ou l’autocollant."
+            "fallback_scan": "Vous pouvez aussi scanner le QR sur l’écran ou l’autocollant.",
+            "via_bluetooth": "Via Bluetooth",
+            "via_qr": "Scanner le QR"
         },
         "title": "Connexion",
         "clock": {

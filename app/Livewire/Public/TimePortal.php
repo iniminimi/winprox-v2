@@ -2589,7 +2589,7 @@ class TimePortal extends Component
             return null;
         }
 
-        return in_array($method, ['clockIn', 'clockOut', 'transferToThisClockPoint'], true)
+        return in_array($method, ['clockIn', 'clockOut', 'transferToThisClockPoint', 'startBreak', 'endBreak'], true)
             ? $method
             : null;
     }

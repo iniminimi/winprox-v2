@@ -416,9 +416,9 @@
         },
         "mode": {
             "title": "Modalità orologio",
-            "hint": "Online: QR e PIN sul display. Bluetooth: il telefono legge un token di presenza breve; nessun tastierino PIN sul display.",
+            "hint": "Online: solo QR e PIN sul display. Bluetooth: gli esecutori scelgono sul telefono tra Bluetooth o QR (utile per iPhone); nessun tastierino PIN sul display.",
             "online": "Online (QR + PIN)",
-            "ble": "Bluetooth (telefono)",
+            "ble": "Bluetooth + QR (telefono)",
             "save": "Salva",
             "saved": "Modalità orologio salvata.",
             "invalid": "Modalità orologio non valida."
@@ -432,9 +432,9 @@
         "ble": {
             "in_title": "Timbri l'entrata via Bluetooth?",
             "out_title": "Timbri l'uscita via Bluetooth?",
-            "in_body": "Mettiti accanto all'orologio. Poi il telefono chiede di nuovo il dito o il viso.",
-            "out_body": "Mettiti accanto all'orologio. Poi il telefono chiede di nuovo il dito o il viso.",
-            "yes": "Sì",
+            "in_body": "Scegli Bluetooth vicino all’orologio, oppure scansiona il QR. Con Bluetooth il telefono chiede poi impronta o volto.",
+            "out_body": "Scegli Bluetooth vicino all’orologio, oppure scansiona il QR. Con Bluetooth il telefono chiede poi impronta o volto.",
+            "yes": "Via Bluetooth",
             "later": "Non ora",
             "not_found": "Nessun orologio trovato. Mettiti accanto allo schermo e riprova.",
             "failed": "Connessione all'orologio non riuscita.",
@@ -442,8 +442,8 @@
             "passkey_button": "Conferma con dito o viso",
             "break_start_title": "Avviare la pausa via Bluetooth?",
             "break_end_title": "Terminare la pausa via Bluetooth?",
-            "break_start_body": "Stai vicino all’orologio. Poi il telefono chiederà di nuovo impronta o volto.",
-            "break_end_body": "Stai vicino all’orologio. Poi il telefono chiederà di nuovo impronta o volto.",
+            "break_start_body": "Scegli Bluetooth vicino all’orologio, oppure scansiona il QR. Con Bluetooth il telefono chiede poi impronta o volto.",
+            "break_end_body": "Scegli Bluetooth vicino all’orologio, oppure scansiona il QR. Con Bluetooth il telefono chiede poi impronta o volto.",
             "token_expired": "Il token dell’orologio è scaduto. Riprova vicino al display.",
             "token_replay": "Questo token è già stato usato. Rileggi dall’orologio.",
             "token_invalid": "Impossibile riconoscere l’orologio. Riprova.",
@@ -451,7 +451,9 @@
             "unsupported": "Questo browser non supporta la timbratura Bluetooth.",
             "permission": "Accesso Bluetooth negato. Consenti Bluetooth e posizione per questo sito.",
             "bt_off": "Bluetooth o posizione sono disattivati. Attivali e riprova.",
-            "fallback_scan": "Puoi anche scansionare il QR sul display o l’adesivo."
+            "fallback_scan": "Puoi anche scansionare il QR sul display o l’adesivo.",
+            "via_bluetooth": "Via Bluetooth",
+            "via_qr": "Scansiona QR"
         },
         "title": "Accesso",
         "clock": {

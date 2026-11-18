@@ -416,9 +416,9 @@
         },
         "mode": {
             "title": "Klokmodus",
-            "hint": "Online: QR en PIN op het scherm. Bluetooth: telefoon leest een kort aanwezigheidsteken; geen PIN-pad op het scherm.",
+            "hint": "Online: alleen QR en PIN op het scherm. Bluetooth: uitvoerders kiezen op de telefoon tussen bluetooth of QR-code (handig voor iPhone); geen PIN-pad op het scherm.",
             "online": "Online (QR + PIN)",
-            "ble": "Bluetooth (telefoon)",
+            "ble": "Bluetooth + QR (telefoon)",
             "save": "Opslaan",
             "saved": "Klokmodus opgeslagen.",
             "invalid": "Ongeldige klokmodus."
@@ -432,9 +432,9 @@
         "ble": {
             "in_title": "Wil je inklokken via bluetooth?",
             "out_title": "Wil je uitklokken via bluetooth?",
-            "in_body": "Sta naast de klok. Daarna vraagt je gsm nog eens om je vinger of gezicht.",
-            "out_body": "Sta naast de klok. Daarna vraagt je gsm nog eens om je vinger of gezicht.",
-            "yes": "Ja",
+            "in_body": "Kies bluetooth naast de klok, of scan de QR-code. Bij bluetooth vraagt je gsm daarna om vinger of gezicht.",
+            "out_body": "Kies bluetooth naast de klok, of scan de QR-code. Bij bluetooth vraagt je gsm daarna om vinger of gezicht.",
+            "yes": "Via bluetooth",
             "later": "Niet nu",
             "not_found": "Geen klok gevonden. Sta naast het scherm en probeer opnieuw.",
             "failed": "Verbinden met de klok lukte niet.",
@@ -442,8 +442,8 @@
             "passkey_button": "Bevestig met vinger of gezicht",
             "break_start_title": "Wil je pauze starten via bluetooth?",
             "break_end_title": "Wil je pauze stoppen via bluetooth?",
-            "break_start_body": "Sta naast de klok. Daarna vraagt je gsm nog eens om je vinger of gezicht.",
-            "break_end_body": "Sta naast de klok. Daarna vraagt je gsm nog eens om je vinger of gezicht.",
+            "break_start_body": "Kies bluetooth naast de klok, of scan de QR-code. Bij bluetooth vraagt je gsm daarna om vinger of gezicht.",
+            "break_end_body": "Kies bluetooth naast de klok, of scan de QR-code. Bij bluetooth vraagt je gsm daarna om vinger of gezicht.",
             "token_expired": "Het teken van de klok is verlopen. Probeer opnieuw naast het scherm.",
             "token_replay": "Dit teken is al gebruikt. Lees opnieuw vanaf de klok.",
             "token_invalid": "De klok herkennen lukte niet. Probeer opnieuw.",
@@ -451,7 +451,9 @@
             "unsupported": "Deze browser ondersteunt geen Bluetooth voor prikken.",
             "permission": "Bluetooth-toegang geweigerd. Sta Bluetooth en locatie toe voor deze site.",
             "bt_off": "Bluetooth of locatie staat uit. Zet ze aan en probeer opnieuw.",
-            "fallback_scan": "Je kunt ook de QR op het scherm of de sticker scannen."
+            "fallback_scan": "Je kunt ook de QR op het scherm of de sticker scannen.",
+            "via_bluetooth": "Via bluetooth",
+            "via_qr": "QR-code scannen"
         },
         "title": "Aanmelden",
         "clock": {

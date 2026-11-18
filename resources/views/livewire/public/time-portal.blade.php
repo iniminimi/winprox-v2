@@ -776,6 +776,12 @@
                                     'break_end' => __('time.portal.ble.break_end_body'),
                                     default => __('time.portal.ble.in_body'),
                                 };
+                                $bleScanPunch = match ($bleDir) {
+                                    'out' => 'clockOut',
+                                    'break_start' => 'startBreak',
+                                    'break_end' => 'endBreak',
+                                    default => 'clockIn',
+                                };
                             @endphp
                             <div
                                 class="wp-card wp-card-pad wp-stack"
@@ -838,14 +844,47 @@
                             >
                                 <h2 class="wp-section-title">{{ $bleTitle }}</h2>
                                 <p class="wp-muted">{{ $bleBody }}</p>
-                                <template x-if="unsupported">
-                                    <p class="wp-error">{{ __('time.portal.ble.unsupported') }}</p>
-                                </template>
-                                <template x-if="!unsupported">
-                                    <button type="button" class="btn btn--primary btn--block" @click="yes" :disabled="busy">{{ __('time.portal.ble.yes') }}</button>
-                                </template>
+                                <p class="wp-muted wp-text-sm" x-show="unsupported">{{ __('time.portal.ble.unsupported') }}</p>
+                                <button
+                                    type="button"
+                                    class="btn btn--primary btn--block"
+                                    x-show="!unsupported"
+                                    x-cloak
+                                    @click="yes"
+                                    :disabled="busy"
+                                >{{ __('time.portal.ble.via_bluetooth') }}</button>
+                                <div
+                                    x-data="wpPortalQrScanner({
+                                        i18n: {
+                                            unsupported: @js(__('time.portal.scan.error_unsupported')),
+                                            denied: @js(__('time.portal.scan.error_denied')),
+                                            invalid: @js(__('time.portal.scan.error_invalid')),
+                                            slow: @js(__('time.portal.scan.slow_hint')),
+                                        },
+                                        punch: @js($bleScanPunch),
+                                    })"
+                                >
+                                    <button type="button" class="btn btn--surface btn--block" @click="openScanner()">
+                                        <x-wp-icon name="qr" class="wp-icon" />
+                                        <span>{{ __('time.portal.ble.via_qr') }}</span>
+                                    </button>
+                                    <template x-teleport="body">
+                                        <div class="wp-scan-overlay" x-show="scannerOpen" x-cloak @keydown.escape.window="closeScanner()">
+                                            <div class="wp-scan-dialog" role="dialog" aria-modal="true" aria-label="{{ __('time.portal.scan.title') }}">
+                                                <p class="wp-scan-title">{{ __('time.portal.scan.title') }}</p>
+                                                <div class="wp-scan-viewport">
+                                                    <video x-ref="scanVideo" playsinline muted autoplay></video>
+                                                    <span class="wp-scan-frame" aria-hidden="true"></span>
+                                                </div>
+                                                <p class="wp-scan-hint">{{ __('time.portal.scan.hint') }}</p>
+                                                <p class="wp-scan-hint" x-show="slowHint" x-text="i18n.slow" x-cloak></p>
+                                                <p class="wp-scan-error" x-show="errorKey !== null" x-text="errorText" x-cloak></p>
+                                                <button type="button" class="btn btn--ghost btn--sm" @click="closeScanner()">{{ __('common.button.cancel') }}</button>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
                                 <button type="button" class="btn btn--ghost btn--block" wire:click="dismissBlePrompt({{ (int) $blePrompt['planned_shift_id'] }}, '{{ $bleDir }}')">{{ __('time.portal.ble.later') }}</button>
-                                <p class="wp-muted wp-text-sm" x-show="unsupported">{{ __('time.portal.ble.fallback_scan') }}</p>
                                 <p class="wp-error" x-show="error !== ''" x-text="error"></p>
                             </div>
                         @endif
