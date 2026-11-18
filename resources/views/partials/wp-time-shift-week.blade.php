@@ -30,10 +30,16 @@
                     @endphp
                     <div @class(['wp-time-week__head', 'is-today' => $day['isToday']])>
                         <span class="wp-time-week__weekday">{{ $date->translatedFormat('D') }} {{ $date->format('d-m') }}</span>
-                        <span class="wp-time-week__day-total wp-tabular">{{ $day['workedMinutes'] > 0 ? \App\Support\Time\WorkDurationFormatter::format($day['workedMinutes']) : '–' }}</span>
-                        @foreach ($day['allDayPlanned'] as $label)
-                            <span class="wp-time-week__all-day">{{ $label }}</span>
-                        @endforeach
+                        <span class="wp-time-week__meta">
+                            @if ($day['workedMinutes'] > 0)
+                                <span class="wp-time-week__day-total wp-tabular">{{ \App\Support\Time\WorkDurationFormatter::format($day['workedMinutes']) }}</span>
+                            @elseif ($day['allDayPlanned'] === [])
+                                <span class="wp-time-week__day-total">–</span>
+                            @endif
+                            @foreach ($day['allDayPlanned'] as $label)
+                                <span class="wp-time-week__all-day">{{ $label }}</span>
+                            @endforeach
+                        </span>
                     </div>
                 @endforeach
 

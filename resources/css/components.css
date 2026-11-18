@@ -6208,6 +6208,10 @@ svg.wp-release-worker-row__icon,
     border-bottom: 1px solid var(--wp-border);
 }
 
+.wp-time-week__bar .wp-pagination {
+    margin: 0;
+}
+
 .wp-time-week__total {
     margin: 0 0 0 auto;
     font-weight: 700;
@@ -6255,13 +6259,25 @@ svg.wp-release-worker-row__icon,
     text-transform: capitalize;
 }
 
+.wp-time-week__meta {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.35rem;
+    max-width: 100%;
+    white-space: nowrap;
+}
+
 .wp-time-week__day-total {
     color: var(--wp-text-muted);
 }
 
 .wp-time-week__all-day {
+    overflow: hidden;
     font-size: 0.75rem;
+    font-weight: 700;
     color: var(--wp-info-text);
+    text-overflow: ellipsis;
 }
 
 .wp-time-week__hours {
