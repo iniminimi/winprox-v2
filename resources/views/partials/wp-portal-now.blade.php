@@ -107,8 +107,9 @@
     @endphp
     <div
         class="wp-portal-now__punch"
+        data-wp-ble-dir="{{ $bleDir }}"
         x-data="{ direct: @js($directForever), left: @js($grantSeconds), autoPunch: @js(! ($bleNeedsPasskey ?? false) && (($scanPunchMethod ?? null) === $action['method'] || ($bleAutopunch ?? '') === ($action['method'] === 'clockIn' ? 'in' : ($action['method'] === 'clockOut' ? 'out' : ($action['method'] === 'startBreak' ? 'break_start' : ($action['method'] === 'endBreak' ? 'break_end' : '')))))) }"
-        x-init="if (!direct && left > 0) { const id = setInterval(() => { left -= 1; if (left <= 0) { left = 0; clearInterval(id) } }, 1000) } if (autoPunch && left > 0) { $nextTick(() => withGps('{{ $action['method'] }}')) }"
+        x-init="if (!direct && left > 0) { const id = setInterval(() => { left -= 1; if (left <= 0) { left = 0; clearInterval(id) } }, 1000) } if (autoPunch && left > 0) { $nextTick(() => { @if (($bleAutopunch ?? '') !== '') $wire.{{ $action['method'] }}() @else withGps('{{ $action['method'] }}') @endif }) }"
     >
         <div class="wp-portal-now__head">
             <button

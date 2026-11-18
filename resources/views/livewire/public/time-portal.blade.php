@@ -630,7 +630,11 @@
                             openVisitLocationId: @js($openVisitLocationId ?? null),
                             async withGps(method) {
                                 const run = () => $wire[method]();
-                                const clockInNeedsGps = this.gpsOn && method === 'clockIn';
+                                // BLE-aanwezigheid is al bewezen; GPS mag meekomen maar mag
+                                // inklokken niet blokkeren (server eist GPS alleen bij QR).
+                                const bleDir = document.querySelector('[data-wp-ble-dir]')?.getAttribute('data-wp-ble-dir') || '';
+                                const blePunch = bleDir !== '';
+                                const clockInNeedsGps = this.gpsOn && method === 'clockIn' && !blePunch;
                                 if (!this.gpsOn || !navigator.geolocation) {
                                     if (clockInNeedsGps) {
                                         $wire.reportMissingClockGps();
@@ -652,7 +656,7 @@
                                         }
                                         run();
                                     },
-                                    { enableHighAccuracy: false, timeout: 8000, maximumAge: 60000 }
+                                    { enableHighAccuracy: false, timeout: blePunch ? 2000 : 8000, maximumAge: 60000 }
                                 );
                             },
                             async withFreshGps(method, arg, extra) {

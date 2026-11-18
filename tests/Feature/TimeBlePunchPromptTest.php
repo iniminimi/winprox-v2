@@ -114,6 +114,7 @@ it('slaat afwezigheid, een andere vestiging, checkmate en een klok zonder scherm
 
 it('blokkeert een bluetooth-prik tot de passkey opnieuw klopt', function () {
     [$tenant, , $worker, $clockPoint] = blePromptWorld();
+    $tenant->update(['time_gps_on_clock' => true]);
 
     $portal = Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->set('first_name', 'Jan')
@@ -134,6 +135,7 @@ it('blokkeert een bluetooth-prik tot de passkey opnieuw klopt', function () {
 
     session(['wp_ble_passkey_ok' => $clockPoint->id]);
 
+    // Geen GPS: bluetooth-aanwezigheid volstaat ook als GPS-op-prik aan staat.
     $portal->call('clockIn');
 
     $shift = WorkShift::query()->where('worker_id', $worker->id)->first();

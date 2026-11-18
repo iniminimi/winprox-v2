@@ -63,6 +63,8 @@ class ClockInAction
 
         TimeModuleAccess::assertEnabledForTenantId((int) $worker->tenant_id);
 
+        // QR-prik: GPS indien tenant dat vraagt. Bluetooth-aanwezigheid bij het
+        // scherm is al bewijs — GPS is dan optioneel (wel bewaren als aanwezig).
         if ($source === ClockSource::ClockPointQr) {
             $tenant = Tenant::query()->find($worker->tenant_id);
             if ($tenant?->requestsClockGps() && ! self::hasClockFix($latitude, $longitude)) {
