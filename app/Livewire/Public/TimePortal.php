@@ -2507,6 +2507,12 @@ class TimePortal extends Component
             'canPunch' => $this->canPunchNow(),
             'punchGrantSeconds' => ClockPointScanGrant::remainingSeconds((int) $this->clockPointId),
             'blePrompt' => $this->blePromptFor($verifiedWorker, $openShift),
+            // Bluetooth-knop naast QR zodra het scherm in ble-modus staat en
+            // de uitvoerder een passkey heeft — niet alleen rond de dienstgrens.
+            'bleChoiceAvailable' => $verifiedWorker instanceof Worker
+                && ! $this->checkmateModeActive()
+                && $verifiedWorker->passkeyCredentials()->exists()
+                && ($this->activeClockPoint()?->displayUsesBle() ?? false),
             'bleNeedsPasskey' => $this->blePunchPending()
                 && (int) session('wp_ble_passkey_ok', 0) !== (int) $this->clockPointId,
             'blePunchDirection' => $this->blePunchPending()

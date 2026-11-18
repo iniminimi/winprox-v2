@@ -1497,6 +1497,12 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
     flex: 0 0 auto;
 }
 
+.wp-portal-now__punch > .wp-portal-now__scan-choices {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+}
+
 .wp-portal .wp-portal-now__head .btn--sm,
 .wp-portal .wp-portal-now__more-actions .btn--sm {
     flex: 0 0 auto;

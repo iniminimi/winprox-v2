@@ -146,37 +146,125 @@
                 >{{ $action['label'] }}</button>
                 @endif
                 <div
+                    class="wp-portal-now__scan-choices"
                     x-show="!direct && left <= 0"
                     x-cloak
-                    x-data="wpPortalQrScanner({
-                        i18n: {
-                            unsupported: @js(__('time.portal.scan.error_unsupported')),
-                            denied: @js(__('time.portal.scan.error_denied')),
-                            invalid: @js(__('time.portal.scan.error_invalid')),
-                            slow: @js(__('time.portal.scan.slow_hint')),
-                        },
-                        punch: @js($action['method']),
-                    })"
                 >
-                    <button type="button" class="btn btn--primary btn--sm" @click="openScanner()" data-manual-capture-trigger="portal-scan-qr">
-                        <x-wp-icon name="qr" class="wp-icon" />
-                        <span>{{ $action['label'] }}</span>
-                    </button>
-                    <template x-teleport="body">
-                        <div class="wp-scan-overlay" x-show="scannerOpen" x-cloak @keydown.escape.window="closeScanner()">
-                            <div class="wp-scan-dialog" role="dialog" aria-modal="true" aria-label="{{ __('time.portal.scan.title') }}">
-                                <p class="wp-scan-title">{{ __('time.portal.scan.title') }}</p>
-                                <div class="wp-scan-viewport">
-                                    <video x-ref="scanVideo" playsinline muted autoplay></video>
-                                    <span class="wp-scan-frame" aria-hidden="true"></span>
-                                </div>
-                                <p class="wp-scan-hint">{{ __('time.portal.scan.hint') }}</p>
-                                <p class="wp-scan-hint" x-show="slowHint" x-text="i18n.slow" x-cloak></p>
-                                <p class="wp-scan-error" x-show="errorKey !== null" x-text="errorText" x-cloak></p>
-                                <button type="button" class="btn btn--ghost btn--sm" @click="closeScanner()">{{ __('common.button.cancel') }}</button>
-                            </div>
+                    @php
+                        $bleDirForAction = match ($action['method']) {
+                            'clockIn' => 'in',
+                            'clockOut' => 'out',
+                            'startBreak' => 'break_start',
+                            'endBreak' => 'break_end',
+                            default => null,
+                        };
+                    @endphp
+                    @if (($bleChoiceAvailable ?? false) && $bleDirForAction !== null)
+                        <div
+                            x-data="{
+                                busy: false,
+                                error: '',
+                                unsupported: !('bluetooth' in navigator),
+                                async yes() {
+                                    if (this.busy || this.unsupported) return;
+                                    this.busy = true;
+                                    this.error = '';
+                                    const service = '8f1c2a10-7b3e-4d5a-9c11-6e5b4a3d2c01';
+                                    const tokenChar = '8f1c2a10-7b3e-4d5a-9c11-6e5b4a3d2c02';
+                                    const readToken = async (device) => {
+                                        const server = await device.gatt.connect();
+                                        const svc = await server.getPrimaryService(service);
+                                        const ch = await svc.getCharacteristic(tokenChar);
+                                        const value = await ch.readValue();
+                                        try { device.gatt.disconnect(); } catch (e) {}
+                                        return [...new Uint8Array(value.buffer, value.byteOffset, value.byteLength)]
+                                            .map((b) => b.toString(16).padStart(2, '0')).join('');
+                                    };
+                                    try {
+                                        let hex = '';
+                                        if (typeof navigator.bluetooth.getDevices === 'function') {
+                                            const known = await navigator.bluetooth.getDevices();
+                                            for (const device of known) {
+                                                if (!device.name || !device.name.startsWith('WinProx')) continue;
+                                                try { hex = await readToken(device); if (hex.length === 64) break; } catch (e) {}
+                                            }
+                                        }
+                                        if (hex.length !== 64) {
+                                            const picked = await navigator.bluetooth.requestDevice({
+                                                filters: [{ namePrefix: 'WinProx', services: [service] }],
+                                                optionalServices: [service],
+                                            });
+                                            hex = await readToken(picked);
+                                        }
+                                        if (hex.length !== 64) {
+                                            this.error = @js(__('time.portal.ble.not_found'));
+                                            return;
+                                        }
+                                        await $wire.submitBlePresenceToken(hex, @js($bleDirForAction));
+                                    } catch (e) {
+                                        const name = e?.name || '';
+                                        if (name === 'NotFoundError') {
+                                            this.error = @js(__('time.portal.ble.not_found'));
+                                        } else if (name === 'SecurityError' || name === 'NotAllowedError') {
+                                            this.error = @js(__('time.portal.ble.permission'));
+                                        } else if (name === 'NetworkError' || name === 'InvalidStateError') {
+                                            this.error = @js(__('time.portal.ble.bt_off'));
+                                        } else {
+                                            this.error = @js(__('time.portal.ble.failed'));
+                                        }
+                                    } finally {
+                                        this.busy = false;
+                                    }
+                                },
+                            }"
+                        >
+                            <button
+                                type="button"
+                                class="btn btn--primary btn--sm"
+                                x-show="!unsupported"
+                                x-cloak
+                                @click="yes"
+                                :disabled="busy"
+                                data-manual-capture-trigger="portal-ble-punch"
+                            >
+                                <x-wp-icon name="bluetooth" class="wp-icon" />
+                                <span>{{ __('time.portal.ble.via_bluetooth') }}</span>
+                            </button>
+                            <p class="wp-muted wp-text-sm" x-show="unsupported" x-cloak>{{ __('time.portal.ble.unsupported') }}</p>
+                            <p class="wp-error" x-show="error !== ''" x-text="error"></p>
                         </div>
-                    </template>
+                    @endif
+                    <div
+                        x-data="wpPortalQrScanner({
+                            i18n: {
+                                unsupported: @js(__('time.portal.scan.error_unsupported')),
+                                denied: @js(__('time.portal.scan.error_denied')),
+                                invalid: @js(__('time.portal.scan.error_invalid')),
+                                slow: @js(__('time.portal.scan.slow_hint')),
+                            },
+                            punch: @js($action['method']),
+                        })"
+                    >
+                        <button type="button" class="btn {{ ($bleChoiceAvailable ?? false) ? 'btn--surface' : 'btn--primary' }} btn--sm" @click="openScanner()" data-manual-capture-trigger="portal-scan-qr">
+                            <x-wp-icon name="qr" class="wp-icon" />
+                            <span>{{ ($bleChoiceAvailable ?? false) ? __('time.portal.ble.via_qr') : $action['label'] }}</span>
+                        </button>
+                        <template x-teleport="body">
+                            <div class="wp-scan-overlay" x-show="scannerOpen" x-cloak @keydown.escape.window="closeScanner()">
+                                <div class="wp-scan-dialog" role="dialog" aria-modal="true" aria-label="{{ __('time.portal.scan.title') }}">
+                                    <p class="wp-scan-title">{{ __('time.portal.scan.title') }}</p>
+                                    <div class="wp-scan-viewport">
+                                        <video x-ref="scanVideo" playsinline muted autoplay></video>
+                                        <span class="wp-scan-frame" aria-hidden="true"></span>
+                                    </div>
+                                    <p class="wp-scan-hint">{{ __('time.portal.scan.hint') }}</p>
+                                    <p class="wp-scan-hint" x-show="slowHint" x-text="i18n.slow" x-cloak></p>
+                                    <p class="wp-scan-error" x-show="errorKey !== null" x-text="errorText" x-cloak></p>
+                                    <button type="button" class="btn btn--ghost btn--sm" @click="closeScanner()">{{ __('common.button.cancel') }}</button>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
                 </div>
             </div>
         @endif
