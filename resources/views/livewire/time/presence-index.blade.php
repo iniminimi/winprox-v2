@@ -12,16 +12,12 @@
                 :subtitle="__('time.presence.subtitle')"
             />
         </div>
-        @if (! $checkmateMode)
-            @can('manualClockIn', \App\Models\WorkShift::class)
-                <button type="button" class="btn btn--primary" wire:click="openManualClockIn">
-                    {{ __('time.manual_clock_in.button') }}
-                </button>
-            @endcan
-        @endif
     </div>
 
-    @include('partials.wp-time-nav', ['alarmCount' => $dashboard->kpis->attention])
+    @include('partials.wp-time-nav', [
+        'alarmCount' => $dashboard->kpis->attention,
+        'showManualClockIn' => true,
+    ])
 
     @if (session('time_flash'))
         <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>

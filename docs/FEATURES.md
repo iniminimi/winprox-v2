@@ -915,6 +915,7 @@ productsector op `Tenant`.
   Uitklokken blijft zonder die poort; coördinaten worden bewaard als ze er zijn.
   API `POST /time/clock-in` (bron API) koppelt **geen** gsm en eist deze positie niet.
   Beheerder en medewerker kunnen een uitvoerder **manueel inklokken** op een Clock Point
+  (knop in de Time-balk naast Minimum bezetting, op Aanwezigheid en op Geklokte uren)
   (`ClockSource::Admin`, `POST /api/v1/time/manual-clock-in`): geen gsm-koppeling, verplichte
   reden in het auditlog (`work_shift.manual_clock_in`), pil **Manueel ingeklokt**. Uitklokken
   later via Clock Point-QR of Shift sluiten. Geen terugwerkende gesloten dienst in deze slice.

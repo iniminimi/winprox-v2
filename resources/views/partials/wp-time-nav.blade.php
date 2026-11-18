@@ -1,10 +1,10 @@
-@props(['alarmCount' => null, 'ciaoFailCount' => null, 'pendingAbsenceCount' => null, 'showShiftActions' => false])
+@props(['alarmCount' => null, 'ciaoFailCount' => null, 'pendingAbsenceCount' => null, 'showShiftActions' => false, 'showManualClockIn' => false])
 
 {{--
   Time-balk: alleen links die niet in de Time-zijbalk staan.
   Links (groen): geklokte uren, overuren, alarmen, CIAO.
   Midden (oranje): shifttypes, feestdagen, minimumbezetting.
-  Op geklokte uren rechts (blauw): manueel inklokken en rapport.
+  Rechts (blauw): manueel inklokken op aanwezigheid en geklokte uren; rapport alleen op geklokte uren.
   Zijbalk (Checkmate): Clock Points, Aanwezigheid, Uren, CIAO. Geen balk.
 --}}
 @php
@@ -28,7 +28,7 @@
     $showCiao = $ciaoEnabled && ! $checkmateMode && ! request()->routeIs('time.ciao.*');
     $showClockGroup = $showShifts || $showOvertime || $showAlarms || $showCiao;
     $showPlanGroup = $showShiftTypes || $showHolidays || $showStaffing;
-    $canManualClockIn = $showShiftActions
+    $canManualClockIn = ($showShiftActions || $showManualClockIn)
         && ! $checkmateMode
         && (auth()->user()?->can('manualClockIn', \App\Models\WorkShift::class) ?? false);
     $canExportShifts = $showShiftActions
