@@ -270,6 +270,8 @@ class ClockDisplayController extends Controller
     {
         return [
             'server_time' => now()->toIso8601String(),
+            // Unix UTC — scherm zet hiermee de QR-klok zonder ISO-offset-ambiguïteit.
+            'server_unix' => now()->getTimestamp(),
             // Aan-uren van het scherm ("06:00"/null = altijd aan). Firmware
             // dimt de backlight buiten dit venster; over-middernacht werkt.
             'display_on_from' => $clockPoint?->display_on_from !== null

@@ -41,7 +41,8 @@ return [
     'display_window_seconds' => (int) env('TIME_DISPLAY_WINDOW_SECONDS', 30),
 
     /** Hoeveel vensters voor/na de server ook nog accepteert (klokdrift). */
-    'display_window_tolerance' => (int) env('TIME_DISPLAY_WINDOW_TOLERANCE', 1),
+    // ±2 (±60s bij 30s-rotatie): korte NTP-/sync-drift mag een verse scherm-QR niet kelderen.
+    'display_window_tolerance' => (int) env('TIME_DISPLAY_WINDOW_TOLERANCE', 2),
 
     /** Geldigheid van een pairing-code (XXXX-XXXX) in minuten. */
     'display_pairing_ttl_minutes' => (int) env('TIME_DISPLAY_PAIRING_TTL_MINUTES', 10),

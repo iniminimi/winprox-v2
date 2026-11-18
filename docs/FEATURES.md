@@ -1325,7 +1325,7 @@ binnen ~30–90 s dood.
 
 - **Token:** `{display_id:24}{dyn:40}` = 64 tekens. `display_id` is de stabiele publieke
   sleutel; `dyn` = 40 hex van `HMAC-SHA256(display_secret, "wpx:<unix-venster>")`.
-  Resolver accepteert het huidige venster ±1; falende dyn → `blocked` + audit
+  Resolver accepteert het huidige venster ±2; falende dyn → `blocked` + audit
   `clock_point.qr_blocked` (zelfde log als verlopen sticker-tokens). Geen DB-rij per rotatie.
   Clock Points toont daarvan alleen een vorige sticker-QR waarvan de grace voorbij is:
   één zin met clock point, aantal en laatste moment (7 dagen). Verlopen schermcodes
