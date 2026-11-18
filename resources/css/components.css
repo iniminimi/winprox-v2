@@ -6912,6 +6912,11 @@ svg.wp-release-worker-row__icon,
     border: 2px solid #ea580c;
 }
 
+.wp-toolbar-group.wp-time-nav--actions {
+    border: 2px solid var(--wp-info);
+    background: var(--wp-info-soft);
+}
+
 .wp-overtime-table-wrap {
     overflow-x: auto;
     padding: 0.35rem 0.5rem 0.5rem;

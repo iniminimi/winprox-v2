@@ -6,7 +6,7 @@
         :subtitle="__('time.shifts.subtitle')"
     />
 
-    @include('partials.wp-time-nav', ['alarmCount' => $alarmCount])
+    @include('partials.wp-time-nav', ['alarmCount' => $alarmCount, 'showShiftActions' => true])
 
     @if (session('time_flash'))
         <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
@@ -63,17 +63,7 @@
                 </div>
             </div>
             <div class="wp-filter-form__actions">
-                @if (! $checkmateMode)
-                    @can('manualClockIn', \App\Models\WorkShift::class)
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openManualClockIn">
-                            {{ __('time.manual_clock_in.button') }}
-                        </button>
-                    @endcan
-                @endif
                 <button type="button" class="btn btn--primary btn--sm" wire:click="applyFilters">{{ __('time.filters.apply') }}</button>
-                @unless ($isWeek)
-                    <x-wp-list-export :csv-url="$exportUrl" :print-url="$printUrl" />
-                @endunless
             </div>
         </div>
     </div>

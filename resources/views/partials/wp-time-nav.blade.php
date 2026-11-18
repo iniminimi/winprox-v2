@@ -1,9 +1,10 @@
-@props(['alarmCount' => null, 'ciaoFailCount' => null, 'pendingAbsenceCount' => null])
+@props(['alarmCount' => null, 'ciaoFailCount' => null, 'pendingAbsenceCount' => null, 'showShiftActions' => false])
 
 {{--
   Time-balk: alleen links die niet in de Time-zijbalk staan.
   Links (groen): geklokte uren, overuren, alarmen, CIAO.
-  Rechts (oranje): shifttypes, feestdagen, minimumbezetting.
+  Midden (oranje): shifttypes, feestdagen, minimumbezetting.
+  Op geklokte uren rechts (blauw): manueel inklokken en rapport.
   Zijbalk (Checkmate): Clock Points, Aanwezigheid, Uren, CIAO. Geen balk.
 --}}
 @php
@@ -27,9 +28,16 @@
     $showCiao = $ciaoEnabled && ! $checkmateMode && ! request()->routeIs('time.ciao.*');
     $showClockGroup = $showShifts || $showOvertime || $showAlarms || $showCiao;
     $showPlanGroup = $showShiftTypes || $showHolidays || $showStaffing;
+    $canManualClockIn = $showShiftActions
+        && ! $checkmateMode
+        && (auth()->user()?->can('manualClockIn', \App\Models\WorkShift::class) ?? false);
+    $canExportShifts = $showShiftActions
+        && ! ($isWeek ?? false)
+        && filled($exportUrl ?? null)
+        && filled($printUrl ?? null);
 @endphp
 
-@if ($showClockGroup || $showPlanGroup)
+@if ($showClockGroup || $showPlanGroup || $canManualClockIn || $canExportShifts)
     <div class="wp-time-nav-split">
         @if ($showClockGroup)
             <nav class="wp-toolbar-group wp-toolbar-group--edit wp-time-nav wp-time-nav--clock" aria-label="{{ __('time.nav.clock_group') }}">
@@ -79,6 +87,18 @@
                     </a>
                 @endif
             </nav>
+        @endif
+        @if ($canManualClockIn || $canExportShifts)
+            <div class="wp-toolbar-group wp-toolbar-group--edit wp-time-nav wp-time-nav--actions" aria-label="{{ __('time.nav.shift_actions') }}">
+                @if ($canManualClockIn)
+                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openManualClockIn">
+                        {{ __('time.manual_clock_in.button') }}
+                    </button>
+                @endif
+                @if ($canExportShifts)
+                    <x-wp-list-export :csv-url="$exportUrl" :print-url="$printUrl" />
+                @endif
+            </div>
         @endif
     </div>
 @endif
