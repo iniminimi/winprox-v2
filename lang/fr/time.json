@@ -438,6 +438,7 @@
             "later": "Pas maintenant",
             "not_found": "Aucune horloge trouvée. Placez-vous à côté de l'écran et réessayez.",
             "failed": "La connexion à l'horloge a échoué.",
+            "rejected": "Le serveur a refusé cette horloge. Lisez le message ci-dessus et réessayez.",
             "passkey_required": "Confirmez d'abord avec votre doigt ou votre visage.",
             "passkey_button": "Confirmer avec le doigt ou le visage",
             "break_start_title": "Démarrer la pause via Bluetooth ?",

@@ -438,6 +438,7 @@
             "later": "Not now",
             "not_found": "No clock found. Stand next to the screen and try again.",
             "failed": "Could not connect to the clock.",
+            "rejected": "The server rejected this clock. Read the message above and try again.",
             "passkey_required": "Confirm with your finger or face first.",
             "passkey_button": "Confirm with finger or face",
             "break_start_title": "Start your break via Bluetooth?",

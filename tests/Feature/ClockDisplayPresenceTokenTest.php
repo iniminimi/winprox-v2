@@ -71,3 +71,19 @@ it('laat twee tellers van dezelfde boot naast elkaar toe', function () {
     $second = app(ValidateClockDisplayPresenceTokenAction::class)->handle($b, $tenant->id);
     expect($second['counter'])->toBe(2);
 });
+
+it('verbruikt geen replay als consumeReplay false is', function () {
+    [$tenant, $point] = presenceWorld();
+    $hex = presenceHex($point, time(), 55, 1);
+    $action = app(ValidateClockDisplayPresenceTokenAction::class);
+
+    $first = $action->handle($hex, $tenant->id, false);
+    expect($first['counter'])->toBe(1);
+
+    $again = $action->handle($hex, $tenant->id, false);
+    expect($again['counter'])->toBe(1);
+
+    $action->consumeReplay($first['display_id'], $first['boot_id'], $first['counter']);
+    expect(fn () => $action->consumeReplay($first['display_id'], $first['boot_id'], $first['counter']))
+        ->toThrow(InvalidArgumentException::class, 'presence_token_replay');
+});

@@ -144,6 +144,67 @@ it('blokkeert een bluetooth-prik tot de passkey opnieuw klopt', function () {
         ->and($tenant->id)->toBe($shift->tenant_id);
 });
 
+it('aanvaardt bluetooth van een ander clock point op dezelfde vestiging', function () {
+    [, $location, , $portalPoint] = blePromptWorld();
+    $screenPoint = ClockPoint::factory()->forLocation($location)->create([
+        'display_id' => 'k9zuar33m2plqwx7vbn4c1de',
+        'display_secret' => str_repeat('ab', 32),
+        'display_clock_mode' => ClockDisplayMode::Ble,
+    ]);
+
+    $hex = bin2hex(\App\Support\Time\ClockDisplayPresenceToken::buildBinary(
+        (string) $screenPoint->display_id,
+        (string) $screenPoint->display_secret,
+        time(),
+        7,
+        1,
+    ));
+
+    $portal = Livewire::test(TimePortal::class, ['token' => $portalPoint->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon');
+
+    expect($portal->instance()->submitBlePresenceToken($hex, 'in'))->toBeTrue()
+        ->and(ClockPointScanGrant::isValid($portalPoint->id))->toBeTrue()
+        ->and((int) session('wp_ble_punch_pending'))->toBe($portalPoint->id);
+});
+
+it('weigert bluetooth van een andere vestiging zonder het teken te verbruiken', function () {
+    [$tenant, , , $portalPoint] = blePromptWorld();
+    $otherLocation = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $screenPoint = ClockPoint::factory()->forLocation($otherLocation)->create([
+        'display_id' => 'zzotherclockpointid00001',
+        'display_secret' => str_repeat('ef', 32),
+        'display_clock_mode' => ClockDisplayMode::Ble,
+    ]);
+
+    $hex = bin2hex(\App\Support\Time\ClockDisplayPresenceToken::buildBinary(
+        (string) $screenPoint->display_id,
+        (string) $screenPoint->display_secret,
+        time(),
+        8,
+        1,
+    ));
+
+    $portal = Livewire::test(TimePortal::class, ['token' => $portalPoint->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon');
+
+    expect($portal->instance()->submitBlePresenceToken($hex, 'in'))->toBeFalse();
+    $portal->assertSet('flashMessage', __('time.portal.ble.token_wrong_clock'));
+
+    // Zelfde teken mag daarna wél geconsumeerd worden (geen premature replay).
+    $accepted = app(\App\Actions\Time\ValidateClockDisplayPresenceTokenAction::class)
+        ->handle($hex, $tenant->id);
+    expect($accepted['clock_point']->id)->toBe($screenPoint->id);
+});
+
 it('toont de bluetooth-vraag op het portaal rond de start', function () {
     [, $location, $worker, $clockPoint] = blePromptWorld();
     blePublishedShift($worker, $location);

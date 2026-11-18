@@ -438,6 +438,7 @@
             "later": "Niet nu",
             "not_found": "Geen klok gevonden. Sta naast het scherm en probeer opnieuw.",
             "failed": "Verbinden met de klok lukte niet.",
+            "rejected": "De server weigerde deze klok. Lees de melding hierboven en probeer opnieuw.",
             "passkey_required": "Bevestig eerst met je vinger of gezicht.",
             "passkey_button": "Bevestig met vinger of gezicht",
             "break_start_title": "Wil je pauze starten via bluetooth?",

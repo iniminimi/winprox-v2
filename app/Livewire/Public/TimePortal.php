@@ -2659,20 +2659,28 @@ class TimePortal extends Component
 
     /**
      * BLE-aanwezigheidstoken van het scherm: valideer, geef scan-grant, vraag passkey.
+     * Zelfde vestiging = zelfde plek (zie WorkShift::isPresentAtSamePlace / FEATURES).
+     *
+     * @return bool true als presence aanvaard is (JS mag pairing bewaren)
      */
-    public function submitBlePresenceToken(string $tokenHex, string $direction): void
+    public function submitBlePresenceToken(string $tokenHex, string $direction): bool
     {
         if ($this->authorizedWorker() === null || $this->activeClockPoint() === null) {
-            return;
+            return false;
         }
         if (! in_array($direction, ['in', 'out', 'break_start', 'break_end'], true)) {
-            return;
+            return false;
         }
 
+        $validator = app(ValidateClockDisplayPresenceTokenAction::class);
+
         try {
-            $result = app(ValidateClockDisplayPresenceTokenAction::class)->handle(
+            // Replay pas ná vestigingscheck — anders is een verkeerde portaal-sessie
+            // het teken kwijt en lijkt de volgende tik "dood".
+            $result = $validator->handle(
                 $tokenHex,
                 (int) $this->tenantId,
+                false,
             );
         } catch (InvalidArgumentException $e) {
             $key = match ($e->getMessage()) {
@@ -2682,13 +2690,26 @@ class TimePortal extends Component
             };
             $this->portalFlash($key);
 
-            return;
+            return false;
         }
 
-        if ((int) $result['clock_point']->id !== (int) $this->clockPointId) {
+        $portalPoint = $this->activeClockPoint();
+        if ($portalPoint === null || ! $this->blePresenceMatchesPortal($result['clock_point'], $portalPoint)) {
             $this->portalFlash('time.portal.ble.token_wrong_clock');
 
-            return;
+            return false;
+        }
+
+        try {
+            $validator->consumeReplay(
+                $result['display_id'],
+                $result['boot_id'],
+                $result['counter'],
+            );
+        } catch (InvalidArgumentException $e) {
+            $this->portalFlash('time.portal.ble.token_replay');
+
+            return false;
         }
 
         ClockPointScanGrant::grant((int) $this->clockPointId);
@@ -2697,6 +2718,23 @@ class TimePortal extends Component
             'wp_ble_punch_direction' => $direction,
             'wp_ble_passkey_ok' => 0,
         ]);
+
+        return true;
+    }
+
+    /**
+     * BLE-scherm hoort bij dit portaal: zelfde clock point, of ander punt op
+     * dezelfde vestiging (productregel: hop = tussen vestigingen, niet binnen).
+     */
+    private function blePresenceMatchesPortal(ClockPoint $blePoint, ClockPoint $portalPoint): bool
+    {
+        if ((int) $blePoint->id === (int) $portalPoint->id) {
+            return true;
+        }
+
+        return $blePoint->location_id !== null
+            && $portalPoint->location_id !== null
+            && (int) $blePoint->location_id === (int) $portalPoint->location_id;
     }
 
     /**

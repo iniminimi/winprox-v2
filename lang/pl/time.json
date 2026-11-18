@@ -59,6 +59,7 @@
             "later": "Nie teraz",
             "not_found": "Nie znaleziono zegara. Stań obok ekranu i spróbuj ponownie.",
             "failed": "Nie udało się połączyć z zegarem.",
+            "rejected": "Serwer odrzucił ten zegar. Przeczytaj komunikat powyżej i spróbuj ponownie.",
             "passkey_required": "Najpierw potwierdź palcem lub twarzą.",
             "passkey_button": "Potwierdź palcem lub twarzą",
             "break_start_title": "Rozpocząć przerwę przez Bluetooth?",

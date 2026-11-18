@@ -59,6 +59,7 @@
             "later": "Nu acum",
             "not_found": "Nu s-a găsit niciun ceas. Stai lângă ecran și încearcă din nou.",
             "failed": "Conectarea la ceas nu a reușit.",
+            "rejected": "Serverul a refuzat acest ceas. Citește mesajul de mai sus și încearcă din nou.",
             "passkey_required": "Confirmă mai întâi cu degetul sau fața.",
             "passkey_button": "Confirmă cu degetul sau fața",
             "break_start_title": "Pornești pauza prin Bluetooth?",

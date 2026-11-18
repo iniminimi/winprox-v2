@@ -1,6 +1,6 @@
 {
-  "_jsQR-9uWkRuRR.js": {
-    "file": "assets/jsQR-9uWkRuRR.js",
+  "_jsQR-UQxwzjTh.js": {
+    "file": "assets/jsQR-UQxwzjTh.js",
     "name": "jsQR",
     "isDynamicEntry": true,
     "imports": [
@@ -45,12 +45,12 @@
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-CJdeF-qm.js",
+    "file": "assets/app-NJUKOLat.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "dynamicImports": [
-      "_jsQR-9uWkRuRR.js"
+      "_jsQR-UQxwzjTh.js"
     ],
     "css": [
       "assets/app-C2Xlxaxh.css"

@@ -15,7 +15,7 @@ function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function waitForAdvertisement(device, ms = 5000) {
+async function waitForAdvertisement(device, ms = 2500) {
     if (typeof device.watchAdvertisements !== 'function') {
         return;
     }
@@ -54,8 +54,8 @@ function bytesToHex(value) {
     return [...bytes].map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 
-async function readPresenceHexOnce(device) {
-    await waitForAdvertisement(device);
+async function readPresenceHexOnce(device, waitMs) {
+    await waitForAdvertisement(device, waitMs);
     if (!device.gatt) {
         throw new Error('no_gatt');
     }
@@ -66,11 +66,9 @@ async function readPresenceHexOnce(device) {
         } catch (e) {}
     }
     await device.gatt.connect();
-    // Android/Chrome: service discovery is soms pas klaar na een korte pauze.
     await sleep(120);
     const svc = await device.gatt.getPrimaryService(SERVICE);
     const ch = await svc.getCharacteristic(TOKEN_CHAR);
-    // NimBLE levert bij de eerste read soms de oude (lege) value.
     await ch.readValue();
     await sleep(40);
     const value = await ch.readValue();
@@ -80,11 +78,11 @@ async function readPresenceHexOnce(device) {
     return bytesToHex(value);
 }
 
-async function readPresenceHex(device) {
+async function readPresenceHex(device, waitMs = 2500) {
     let lastErr = null;
     for (let attempt = 0; attempt < 3; attempt++) {
         try {
-            return await readPresenceHexOnce(device);
+            return await readPresenceHexOnce(device, waitMs);
         } catch (e) {
             lastErr = e;
             try {
@@ -92,7 +90,7 @@ async function readPresenceHex(device) {
                     device.gatt.disconnect();
                 }
             } catch (err) {}
-            await sleep(200 + attempt * 250);
+            await sleep(150 + attempt * 150);
         }
     }
     throw lastErr || new Error('read_failed');
@@ -113,9 +111,9 @@ async function tryKnownDevices(clockPointId) {
         : known;
 
     for (const device of ordered) {
-        // Geen name-filter: getDevices levert vaak een lege name tot connect.
         try {
-            const hex = await readPresenceHex(device);
+            // Korte advertentie-wacht: bekende devices zijn al gekoppeld.
+            const hex = await readPresenceHex(device, 1200);
             if (hex.length === 64) {
                 return { hex, device };
             }
@@ -126,8 +124,6 @@ async function tryKnownDevices(clockPointId) {
 }
 
 async function pickNewDevice() {
-    // Alleen namePrefix in de filter: services in dezelfde filter eist dat de
-    // 128-bit UUID in het advertentiepakket past — dat faalt vaak naast de naam.
     return navigator.bluetooth.requestDevice({
         filters: [{ namePrefix: 'WinProx' }],
         optionalServices: [SERVICE],
@@ -174,12 +170,20 @@ function registerAlpineComponent() {
                 let { hex, device } = await tryKnownDevices(this.clockPointId);
                 if (hex.length !== 64) {
                     const picked = await pickNewDevice();
-                    hex = await readPresenceHex(picked);
+                    hex = await readPresenceHex(picked, 2500);
                     device = picked;
                 }
                 if (hex.length !== 64) {
                     this.clearPairing();
                     this.error = this.i18n.not_found || '';
+                    return;
+                }
+                // Pas na server-OK pairing bewaren — anders blijft een foute
+                // sessie stil hergebruiken zonder nieuw browserscherm.
+                const ok = await this.$wire.submitBlePresenceToken(hex, this.direction);
+                if (!ok) {
+                    this.clearPairing();
+                    this.error = this.i18n.rejected || this.i18n.failed || '';
                     return;
                 }
                 if (device?.id) {
@@ -188,7 +192,6 @@ function registerAlpineComponent() {
                         this.paired = true;
                     } catch (e) {}
                 }
-                await this.$wire.submitBlePresenceToken(hex, this.direction);
             } catch (e) {
                 const name = e?.name || '';
                 const msg = String(e?.message || '');

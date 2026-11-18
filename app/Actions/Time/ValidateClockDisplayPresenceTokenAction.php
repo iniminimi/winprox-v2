@@ -17,7 +17,7 @@ class ValidateClockDisplayPresenceTokenAction
     /**
      * @return array{clock_point: ClockPoint, display_id: string, boot_id: int, counter: int}
      */
-    public function handle(string $token, int $tenantId): array
+    public function handle(string $token, int $tenantId, bool $consumeReplay = true): array
     {
         $parsed = ClockDisplayPresenceToken::parse($token);
         if ($parsed === null) {
@@ -66,14 +66,8 @@ class ValidateClockDisplayPresenceTokenAction
             throw new InvalidArgumentException('presence_token_invalid');
         }
 
-        $replayKey = ClockDisplayPresenceToken::replayKey(
-            $displayId,
-            $parsed['boot_id'],
-            $parsed['counter'],
-        );
-        $replayTtl = max($ttl * 2, 60);
-        if (! Cache::add($replayKey, 1, $replayTtl)) {
-            throw new InvalidArgumentException('presence_token_replay');
+        if ($consumeReplay) {
+            $this->consumeReplay($displayId, $parsed['boot_id'], $parsed['counter'], $ttl);
         }
 
         return [
@@ -82,5 +76,15 @@ class ValidateClockDisplayPresenceTokenAction
             'boot_id' => $parsed['boot_id'],
             'counter' => $parsed['counter'],
         ];
+    }
+
+    public function consumeReplay(string $displayId, int $bootId, int $counter, ?int $ttlSeconds = null): void
+    {
+        $ttl = max(10, $ttlSeconds ?? (int) config('time.presence_token_ttl_seconds', 90));
+        $replayKey = ClockDisplayPresenceToken::replayKey($displayId, $bootId, $counter);
+        $replayTtl = max($ttl * 2, 60);
+        if (! Cache::add($replayKey, 1, $replayTtl)) {
+            throw new InvalidArgumentException('presence_token_replay');
+        }
     }
 }

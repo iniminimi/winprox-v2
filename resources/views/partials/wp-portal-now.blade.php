@@ -170,6 +170,7 @@
                                 permission: @js(__('time.portal.ble.permission')),
                                 bt_off: @js(__('time.portal.ble.bt_off')),
                                 failed: @js(__('time.portal.ble.failed')),
+                                rejected: @js(__('time.portal.ble.rejected')),
                             },
                         })"
                     >

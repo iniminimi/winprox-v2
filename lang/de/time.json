@@ -438,6 +438,7 @@
             "later": "Nicht jetzt",
             "not_found": "Keine Uhr gefunden. Stellen Sie sich neben den Bildschirm und versuchen Sie es erneut.",
             "failed": "Verbindung mit der Uhr fehlgeschlagen.",
+            "rejected": "Der Server hat diese Uhr abgelehnt. Lesen Sie die Meldung oben und versuchen Sie es erneut.",
             "passkey_required": "Bestätigen Sie zuerst mit Finger oder Gesicht.",
             "passkey_button": "Mit Finger oder Gesicht bestätigen",
             "break_start_title": "Pause per Bluetooth starten?",

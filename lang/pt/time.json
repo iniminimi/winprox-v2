@@ -59,6 +59,7 @@
             "later": "Agora não",
             "not_found": "Nenhum relógio encontrado. Fique ao lado do ecrã e tente de novo.",
             "failed": "Não foi possível ligar ao relógio.",
+            "rejected": "O servidor rejeitou este relógio. Leia a mensagem acima e tente de novo.",
             "passkey_required": "Confirme primeiro com o dedo ou o rosto.",
             "passkey_button": "Confirmar com dedo ou rosto",
             "break_start_title": "Iniciar a pausa por Bluetooth?",
