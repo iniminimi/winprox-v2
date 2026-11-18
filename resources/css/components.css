@@ -6908,6 +6908,31 @@ svg.wp-release-worker-row__icon,
     border: 2px solid var(--wp-info);
 }
 
+.wp-overtime-toolbar__form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+}
+
+.wp-overtime-toolbar__form .wp-filter-cell {
+    flex: 1 1 18rem;
+    flex-wrap: nowrap;
+    max-width: 28rem;
+}
+
+.wp-overtime-toolbar__form .wp-select {
+    flex: 1 1 12rem;
+    width: auto;
+    min-width: 12rem;
+    max-width: none;
+    field-sizing: fixed;
+}
+
+.wp-overtime-toolbar__form .wp-filter-form__actions {
+    flex: 0 0 auto;
+}
+
 .wp-overtime-table-wrap {
     overflow-x: auto;
     padding: 0.35rem 0.5rem 0.5rem;

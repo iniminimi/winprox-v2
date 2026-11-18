@@ -8,27 +8,25 @@
 
     @include('partials.wp-time-nav', ['alarmCount' => $alarmCount])
 
-    <div class="wp-card wp-filter-panel">
-        <div class="wp-filter-form">
-            <div class="wp-filter-form__row">
-                <div class="wp-filter-cell">
-                    <label class="wp-filter-inline-label" for="overtime-team">{{ __('time.filters.team') }}</label>
-                    <select id="overtime-team" class="wp-select" wire:model="teamFilter">
-                        <option value="">{{ __('time.filters.all_teams') }}</option>
-                        @foreach ($teams as $team)
-                            <option value="{{ $team->id }}">{{ $team->localizedName() }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="wp-filter-cell">
-                    <label class="wp-filter-inline-label" for="overtime-clock-point">{{ __('time.filters.clock_point') }}</label>
-                    <select id="overtime-clock-point" class="wp-select" wire:model="clockPointFilter">
-                        <option value="">{{ __('time.filters.all_clock_points') }}</option>
-                        @foreach ($clockPoints as $clockPoint)
-                            <option value="{{ $clockPoint->id }}">{{ $clockPoint->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
+    <div class="wp-card wp-filter-panel wp-overtime-toolbar">
+        <div class="wp-filter-form wp-overtime-toolbar__form">
+            <div class="wp-filter-cell">
+                <label class="wp-filter-inline-label" for="overtime-team">{{ __('time.filters.team') }}</label>
+                <select id="overtime-team" class="wp-select" wire:model="teamFilter">
+                    <option value="">{{ __('time.filters.all_teams') }}</option>
+                    @foreach ($teams as $team)
+                        <option value="{{ $team->id }}">{{ $team->localizedName() }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="wp-filter-cell">
+                <label class="wp-filter-inline-label" for="overtime-clock-point">{{ __('time.filters.clock_point') }}</label>
+                <select id="overtime-clock-point" class="wp-select" wire:model="clockPointFilter">
+                    <option value="">{{ __('time.filters.all_clock_points') }}</option>
+                    @foreach ($clockPoints as $clockPoint)
+                        <option value="{{ $clockPoint->id }}">{{ $clockPoint->name }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="wp-filter-form__actions">
                 <button type="button" class="btn btn--primary btn--sm" wire:click="applyFilters">{{ __('time.filters.apply') }}</button>
