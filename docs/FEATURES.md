@@ -1470,7 +1470,7 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   (bijvoorbeeld een contract). Beheerlijst: filter **Doelgroep** (alle · heel het
   team · per uitvoerder), **Status** (actief · inactief · bij mededelingen ook
   verlopen) en zoeken (omschrijving/titel en naam uitvoerder); standaard
-  actief + heel het team; volgorde teambreed eerst, dan per uitvoerder;
+  actief + alle doelgroepen; volgorde teambreed eerst, dan per uitvoerder;
   25 per pagina. Een teller in de uitvoerdersrij (ballon «Documenten beheren» / «Mededelingen beheren») opent de lijst van dat team op die persoon.
   Een persoonlijk bestand verhuist mee als de
   uitvoerder van team wisselt; een teambreed bestand blijft op dat team.

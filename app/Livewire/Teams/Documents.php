@@ -47,7 +47,7 @@ class Documents extends Component
 
     public string $search = '';
 
-    public string $audienceFilter = 'team';
+    public string $audienceFilter = 'all';
 
     public string $statusFilter = 'active';
 

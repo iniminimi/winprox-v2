@@ -73,7 +73,7 @@ it('zet documenten en mededelingen op de teampagina en niet op de teamlijst', fu
         ->assertOk()
         ->assertSee(__('team.library.documents_title'), false)
         ->assertSee(__('team.library.announcements_title'), false)
-        ->assertDontSee('Persoonlijk contract van Nora', false)
+        ->assertSee('Persoonlijk contract van Nora', false)
         ->assertSee(trans_choice('team.library.worker_documents_count', 1, ['count' => 1]), false)
         ->assertSee('Nora Noord', false)
         ->assertSee('Huisreglement voor de ploeg', false);
@@ -282,7 +282,7 @@ function teamLibrarySetup(): array
     return [$tenant, $admin, $team, $worker];
 }
 
-it('toont standaard alleen actieve teambrede documenten en filtert op doelgroep, status en zoekterm', function () {
+it('toont standaard alle actieve documenten en filtert op doelgroep, status en zoekterm', function () {
     [$tenant, $admin, $team, $worker] = teamLibrarySetup();
     $base = ['tenant_id' => $tenant->id, 'internal_team_id' => $team->id];
     TeamDocument::factory()->create($base + ['description' => 'Huisreglement ploeg']);
@@ -291,8 +291,13 @@ it('toont standaard alleen actieve teambrede documenten en filtert op doelgroep,
 
     $component = Livewire::actingAs($admin)
         ->test(Documents::class, ['team' => $team])
+        ->assertSet('audienceFilter', 'all')
         ->assertSee('Huisreglement ploeg')
-        ->assertDontSee('Oud reglement')
+        ->assertSee('Contract arbeider')
+        ->assertDontSee('Oud reglement');
+
+    $component->set('audienceFilter', 'team')
+        ->assertSee('Huisreglement ploeg')
         ->assertDontSee('Contract arbeider');
 
     $component->set('audienceFilter', (string) $worker->id)
@@ -388,7 +393,7 @@ it('toont op uitvoerders dezelfde tellers en opent de lijst van dat team', funct
         ->get($documentsUrl)
         ->assertOk()
         ->assertSee('Contract Jan', false)
-        ->assertDontSee('Bericht voor Jan', false);
+        ->assertSee('Bericht voor Jan', false);
 
     $this->actingAs($admin)
         ->get(route('team.show', [
