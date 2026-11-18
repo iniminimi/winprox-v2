@@ -448,6 +448,8 @@
             "token_expired": "L’heure de l’horloge ne correspondait pas. Réessayez près de l’écran.",
             "token_replay": "Ce jeton a déjà été utilisé. Relisez depuis l’horloge.",
             "token_invalid": "Impossible de reconnaître l’horloge. Réessayez.",
+            "token_unknown": "Cette horloge n’est pas liée dans WinProx. Recouplez l’écran.",
+            "token_mode": "Cette horloge n’est pas en mode Bluetooth. Passez le mode horloge sur Bluetooth dans l’admin.",
             "token_wrong_clock": "Ce n’est pas la bonne horloge. Allez sur le bon site.",
             "unsupported": "Ce navigateur ne prend pas en charge le pointage Bluetooth.",
             "permission": "Accès Bluetooth refusé. Autorisez Bluetooth et la localisation pour ce site.",

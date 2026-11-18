@@ -180,10 +180,14 @@ function registerAlpineComponent() {
                 }
                 // Pas na server-OK pairing bewaren — anders blijft een foute
                 // sessie stil hergebruiken zonder nieuw browserscherm.
-                const ok = await this.$wire.submitBlePresenceToken(hex, this.direction);
-                if (!ok) {
+                // Let op: check expliciet ok===true (Livewire bool false is onbetrouwbaar).
+                const result = await this.$wire.submitBlePresenceToken(hex, this.direction);
+                if (!result || result.ok !== true) {
                     this.clearPairing();
-                    this.error = this.i18n.rejected || this.i18n.failed || '';
+                    this.error = (result && result.message)
+                        || this.i18n.rejected
+                        || this.i18n.failed
+                        || '';
                     return;
                 }
                 if (device?.id) {

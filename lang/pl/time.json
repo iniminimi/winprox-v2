@@ -69,6 +69,8 @@
             "token_expired": "Czas zegara nie pasował. Spróbuj ponownie przy ekranie.",
             "token_replay": "Ten znak był już użyty. Odczytaj ponownie z zegara.",
             "token_invalid": "Nie udało się rozpoznać zegara. Spróbuj ponownie.",
+            "token_unknown": "Ten zegar nie jest połączony w WinProx. Sparuj ekran ponownie.",
+            "token_mode": "Ten zegar nie jest w trybie Bluetooth. Ustaw tryb zegara na Bluetooth w panelu.",
             "token_wrong_clock": "To inny zegar. Idź do właściwej lokalizacji.",
             "unsupported": "Ta przeglądarka nie obsługuje punktacji przez Bluetooth.",
             "permission": "Odmowa dostępu do Bluetooth. Zezwól na Bluetooth i lokalizację dla tej witryny.",

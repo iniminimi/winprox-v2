@@ -448,6 +448,8 @@
             "token_expired": "Die Uhrzeit stimmte nicht. Tippen Sie erneut neben dem Display.",
             "token_replay": "Dieses Token wurde bereits verwendet. Erneut von der Uhr lesen.",
             "token_invalid": "Die Uhr konnte nicht erkannt werden. Bitte erneut versuchen.",
+            "token_unknown": "Diese Uhr ist in WinProx nicht verknüpft. Koppeln Sie das Display erneut.",
+            "token_mode": "Diese Uhr ist nicht im Bluetooth-Modus. Stellen Sie den Uhr-Modus in der Verwaltung auf Bluetooth.",
             "token_wrong_clock": "Das ist eine andere Uhr. Gehen Sie zum richtigen Standort.",
             "unsupported": "Dieser Browser unterstützt kein Bluetooth-Stempeln.",
             "permission": "Bluetooth-Zugriff verweigert. Erlauben Sie Bluetooth und Standort für diese Seite.",

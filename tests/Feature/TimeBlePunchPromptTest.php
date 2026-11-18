@@ -167,7 +167,8 @@ it('aanvaardt bluetooth van een ander clock point op dezelfde vestiging', functi
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon');
 
-    expect($portal->instance()->submitBlePresenceToken($hex, 'in'))->toBeTrue()
+    $accepted = $portal->instance()->submitBlePresenceToken($hex, 'in');
+    expect($accepted['ok'])->toBeTrue()
         ->and(ClockPointScanGrant::isValid($portalPoint->id))->toBeTrue()
         ->and((int) session('wp_ble_punch_pending'))->toBe($portalPoint->id);
 });
@@ -196,7 +197,10 @@ it('weigert bluetooth van een andere vestiging zonder het teken te verbruiken', 
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon');
 
-    expect($portal->instance()->submitBlePresenceToken($hex, 'in'))->toBeFalse();
+    $rejected = $portal->instance()->submitBlePresenceToken($hex, 'in');
+    expect($rejected['ok'])->toBeFalse()
+        ->and($rejected['error'])->toBe('presence_token_wrong_clock')
+        ->and($rejected['message'])->toBe(__('time.portal.ble.token_wrong_clock'));
     $portal->assertSet('flashMessage', __('time.portal.ble.token_wrong_clock'));
 
     // Zelfde teken mag daarna wél geconsumeerd worden (geen premature replay).

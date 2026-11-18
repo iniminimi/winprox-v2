@@ -448,6 +448,8 @@
             "token_expired": "De tijd van de klok klopte niet. Tik opnieuw naast het scherm.",
             "token_replay": "Dit teken is al gebruikt. Lees opnieuw vanaf de klok.",
             "token_invalid": "De klok herkennen lukte niet. Probeer opnieuw.",
+            "token_unknown": "Deze klok is niet gekoppeld in WinProx. Koppel het scherm opnieuw.",
+            "token_mode": "Deze klok staat niet in bluetooth-modus. Zet klokmodus op Bluetooth in beheer.",
             "token_wrong_clock": "Dit is een andere klok. Ga naar de juiste vestiging.",
             "unsupported": "Deze browser ondersteunt geen Bluetooth voor prikken.",
             "permission": "Bluetooth-toegang geweigerd. Sta Bluetooth en locatie toe voor deze site.",

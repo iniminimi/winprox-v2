@@ -448,6 +448,8 @@
             "token_expired": "The clock time did not match. Tap again next to the display.",
             "token_replay": "This token was already used. Read again from the clock.",
             "token_invalid": "Could not recognise the clock. Please try again.",
+            "token_unknown": "This clock is not linked in WinProx. Pair the screen again.",
+            "token_mode": "This clock is not in bluetooth mode. Set clock mode to Bluetooth in settings.",
             "token_wrong_clock": "This is a different clock. Go to the right site.",
             "unsupported": "This browser does not support Bluetooth punching.",
             "permission": "Bluetooth access denied. Allow Bluetooth and location for this site.",

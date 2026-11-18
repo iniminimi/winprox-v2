@@ -69,6 +69,8 @@
             "token_expired": "Ora ceasului nu se potrivea. Încearcă din nou lângă ecran.",
             "token_replay": "Acest semnal a fost deja folosit. Citește din nou de pe ceas.",
             "token_invalid": "Ceasul nu a putut fi recunoscut. Încearcă din nou.",
+            "token_unknown": "Acest ceas nu este legat în WinProx. Asociază din nou ecranul.",
+            "token_mode": "Acest ceas nu este în modul Bluetooth. Setează modul ceas pe Bluetooth în administrare.",
             "token_wrong_clock": "Acesta este alt ceas. Mergi la locația corectă.",
             "unsupported": "Acest browser nu suportă pontajul prin Bluetooth.",
             "permission": "Acces Bluetooth refuzat. Permite Bluetooth și locația pentru acest site.",

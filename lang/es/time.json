@@ -448,6 +448,8 @@
             "token_expired": "La hora del reloj no coincidía. Inténtalo de nuevo junto a la pantalla.",
             "token_replay": "Este token ya se usó. Vuelve a leerlo del reloj.",
             "token_invalid": "No se pudo reconocer el reloj. Inténtalo de nuevo.",
+            "token_unknown": "Este reloj no está vinculado en WinProx. Vuelve a emparejar la pantalla.",
+            "token_mode": "Este reloj no está en modo Bluetooth. Pon el modo reloj en Bluetooth en la administración.",
             "token_wrong_clock": "Es otro reloj. Ve a la sede correcta.",
             "unsupported": "Este navegador no admite fichaje por Bluetooth.",
             "permission": "Acceso Bluetooth denegado. Permite Bluetooth y ubicación para este sitio.",

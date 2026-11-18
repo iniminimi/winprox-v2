@@ -2661,15 +2661,15 @@ class TimePortal extends Component
      * BLE-aanwezigheidstoken van het scherm: valideer, geef scan-grant, vraag passkey.
      * Zelfde vestiging = zelfde plek (zie WorkShift::isPresentAtSamePlace / FEATURES).
      *
-     * @return bool true als presence aanvaard is (JS mag pairing bewaren)
+     * @return array{ok: bool, error: string|null, message: string|null}
      */
-    public function submitBlePresenceToken(string $tokenHex, string $direction): bool
+    public function submitBlePresenceToken(string $tokenHex, string $direction): array
     {
         if ($this->authorizedWorker() === null || $this->activeClockPoint() === null) {
-            return false;
+            return $this->bleSubmitResult(false, 'session', 'time.portal.ble.rejected');
         }
         if (! in_array($direction, ['in', 'out', 'break_start', 'break_end'], true)) {
-            return false;
+            return $this->bleSubmitResult(false, 'direction', 'time.portal.ble.rejected');
         }
 
         $validator = app(ValidateClockDisplayPresenceTokenAction::class);
@@ -2686,18 +2686,17 @@ class TimePortal extends Component
             $key = match ($e->getMessage()) {
                 'presence_token_expired' => 'time.portal.ble.token_expired',
                 'presence_token_replay' => 'time.portal.ble.token_replay',
+                'presence_token_unknown' => 'time.portal.ble.token_unknown',
+                'presence_token_mode' => 'time.portal.ble.token_mode',
                 default => 'time.portal.ble.token_invalid',
             };
-            $this->portalFlash($key);
 
-            return false;
+            return $this->bleSubmitResult(false, $e->getMessage(), $key);
         }
 
         $portalPoint = $this->activeClockPoint();
         if ($portalPoint === null || ! $this->blePresenceMatchesPortal($result['clock_point'], $portalPoint)) {
-            $this->portalFlash('time.portal.ble.token_wrong_clock');
-
-            return false;
+            return $this->bleSubmitResult(false, 'presence_token_wrong_clock', 'time.portal.ble.token_wrong_clock');
         }
 
         try {
@@ -2707,9 +2706,7 @@ class TimePortal extends Component
                 $result['counter'],
             );
         } catch (InvalidArgumentException $e) {
-            $this->portalFlash('time.portal.ble.token_replay');
-
-            return false;
+            return $this->bleSubmitResult(false, 'presence_token_replay', 'time.portal.ble.token_replay');
         }
 
         ClockPointScanGrant::grant((int) $this->clockPointId);
@@ -2719,7 +2716,23 @@ class TimePortal extends Component
             'wp_ble_passkey_ok' => 0,
         ]);
 
-        return true;
+        return $this->bleSubmitResult(true, null, null);
+    }
+
+    /**
+     * @return array{ok: bool, error: string|null, message: string|null}
+     */
+    private function bleSubmitResult(bool $ok, ?string $error, ?string $messageKey): array
+    {
+        if (! $ok && $messageKey !== null) {
+            $this->portalFlash($messageKey);
+        }
+
+        return [
+            'ok' => $ok,
+            'error' => $error,
+            'message' => $messageKey !== null ? __($messageKey) : null,
+        ];
     }
 
     /**
