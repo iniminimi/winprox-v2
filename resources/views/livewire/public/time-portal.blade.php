@@ -785,66 +785,21 @@
                             @endphp
                             <div
                                 class="wp-card wp-card-pad wp-stack"
-                                x-data="{
-                                    busy: false,
-                                    error: '',
-                                    unsupported: !('bluetooth' in navigator),
-                                    async yes() {
-                                        if (this.busy || this.unsupported) return;
-                                        this.busy = true;
-                                        this.error = '';
-                                        const service = '8f1c2a10-7b3e-4d5a-9c11-6e5b4a3d2c01';
-                                        const tokenChar = '8f1c2a10-7b3e-4d5a-9c11-6e5b4a3d2c02';
-                                        const readToken = async (device) => {
-                                            const server = await device.gatt.connect();
-                                            const svc = await server.getPrimaryService(service);
-                                            const ch = await svc.getCharacteristic(tokenChar);
-                                            const value = await ch.readValue();
-                                            try { device.gatt.disconnect(); } catch (e) {}
-                                            return [...new Uint8Array(value.buffer, value.byteOffset, value.byteLength)]
-                                                .map((b) => b.toString(16).padStart(2, '0')).join('');
-                                        };
-                                        try {
-                                            let hex = '';
-                                            if (typeof navigator.bluetooth.getDevices === 'function') {
-                                                const known = await navigator.bluetooth.getDevices();
-                                                for (const device of known) {
-                                                    if (!device.name || !device.name.startsWith('WinProx')) continue;
-                                                    try { hex = await readToken(device); if (hex.length === 64) break; } catch (e) {}
-                                                }
-                                            }
-                                            if (hex.length !== 64) {
-                                                const picked = await navigator.bluetooth.requestDevice({
-                                                    filters: [{ namePrefix: 'WinProx', services: [service] }],
-                                                    optionalServices: [service],
-                                                });
-                                                hex = await readToken(picked);
-                                            }
-                                            if (hex.length !== 64) {
-                                                this.error = @js(__('time.portal.ble.not_found'));
-                                                return;
-                                            }
-                                            await $wire.submitBlePresenceToken(hex, @js($bleDir));
-                                        } catch (e) {
-                                            const name = e?.name || '';
-                                            if (name === 'NotFoundError') {
-                                                this.error = @js(__('time.portal.ble.not_found'));
-                                            } else if (name === 'SecurityError' || name === 'NotAllowedError') {
-                                                this.error = @js(__('time.portal.ble.permission'));
-                                            } else if (name === 'NetworkError' || name === 'InvalidStateError') {
-                                                this.error = @js(__('time.portal.ble.bt_off'));
-                                            } else {
-                                                this.error = @js(__('time.portal.ble.failed'));
-                                            }
-                                        } finally {
-                                            this.busy = false;
-                                        }
+                                x-data="wpPortalBle({
+                                    clockPointId: @js((int) ($bleClockPointId ?? 0)),
+                                    direction: @js($bleDir),
+                                    i18n: {
+                                        not_found: @js(__('time.portal.ble.not_found')),
+                                        permission: @js(__('time.portal.ble.permission')),
+                                        bt_off: @js(__('time.portal.ble.bt_off')),
+                                        failed: @js(__('time.portal.ble.failed')),
                                     },
-                                }"
+                                })"
                             >
                                 <h2 class="wp-section-title">{{ $bleTitle }}</h2>
                                 <p class="wp-muted">{{ $bleBody }}</p>
                                 <p class="wp-muted wp-text-sm" x-show="unsupported">{{ __('time.portal.ble.unsupported') }}</p>
+                                <p class="wp-muted wp-text-sm" x-show="!paired && !unsupported" x-cloak>{{ __('time.portal.ble.pair_once_hint') }}</p>
                                 <button
                                     type="button"
                                     class="btn btn--primary btn--block"
@@ -854,7 +809,7 @@
                                     :disabled="busy"
                                 >
                                     <x-wp-icon name="bluetooth" class="wp-icon" />
-                                    <span>{{ __('time.portal.ble.via_bluetooth') }}</span>
+                                    <span x-text="paired ? @js(__('time.portal.ble.via_bluetooth')) : @js(__('time.portal.ble.pair_once'))"></span>
                                 </button>
                                 <div
                                     x-data="wpPortalQrScanner({

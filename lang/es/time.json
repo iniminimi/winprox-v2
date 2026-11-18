@@ -453,7 +453,9 @@
             "bt_off": "Bluetooth o ubicación están desactivados. Actívalos e inténtalo de nuevo.",
             "fallback_scan": "También puedes escanear el QR de la pantalla o la pegatina.",
             "via_bluetooth": "Por Bluetooth",
-            "via_qr": "Escanear QR"
+            "via_qr": "Escanear QR",
+            "pair_once": "Emparejar reloj una vez",
+            "pair_once_hint": "La primera vez elige WinProx en el móvil. Después basta un toque en Bluetooth."
         },
         "title": "Inicio de sesión",
         "clock": {

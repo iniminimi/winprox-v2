@@ -453,7 +453,9 @@
             "bt_off": "Bluetooth o posizione sono disattivati. Attivali e riprova.",
             "fallback_scan": "Puoi anche scansionare il QR sul display o l’adesivo.",
             "via_bluetooth": "Via Bluetooth",
-            "via_qr": "Scansiona QR"
+            "via_qr": "Scansiona QR",
+            "pair_once": "Associa orologio una volta",
+            "pair_once_hint": "La prima volta scegli WinProx sul telefono. Poi basta un tocco su Bluetooth."
         },
         "title": "Accesso",
         "clock": {

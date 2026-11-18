@@ -453,7 +453,9 @@
             "bt_off": "Bluetooth oder Standort ist aus. Schalten Sie beides ein und versuchen Sie es erneut.",
             "fallback_scan": "Sie können auch den QR am Display oder den Aufkleber scannen.",
             "via_bluetooth": "Per Bluetooth",
-            "via_qr": "QR-Code scannen"
+            "via_qr": "QR-Code scannen",
+            "pair_once": "Uhr einmal koppeln",
+            "pair_once_hint": "Beim ersten Mal wählen Sie WinProx auf dem Telefon. Danach reicht ein Tipp auf Bluetooth."
         },
         "title": "Anmeldung",
         "clock": {

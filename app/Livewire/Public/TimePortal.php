@@ -2513,6 +2513,7 @@ class TimePortal extends Component
                 && ! $this->checkmateModeActive()
                 && $verifiedWorker->passkeyCredentials()->exists()
                 && ($this->activeClockPoint()?->displayUsesBle() ?? false),
+            'bleClockPointId' => (int) $this->clockPointId,
             'bleNeedsPasskey' => $this->blePunchPending()
                 && (int) session('wp_ble_passkey_ok', 0) !== (int) $this->clockPointId,
             'blePunchDirection' => $this->blePunchPending()

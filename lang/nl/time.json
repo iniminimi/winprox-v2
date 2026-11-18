@@ -453,7 +453,9 @@
             "bt_off": "Bluetooth of locatie staat uit. Zet ze aan en probeer opnieuw.",
             "fallback_scan": "Je kunt ook de QR op het scherm of de sticker scannen.",
             "via_bluetooth": "Via bluetooth",
-            "via_qr": "QR-code scannen"
+            "via_qr": "QR-code scannen",
+            "pair_once": "Klok eenmalig koppelen",
+            "pair_once_hint": "Eerste keer kies je WinProx op je gsm. Daarna volstaat één tik op bluetooth."
         },
         "title": "Aanmelden",
         "clock": {

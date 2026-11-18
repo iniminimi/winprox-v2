@@ -74,7 +74,9 @@
             "bt_off": "Bluetooth lub lokalizacja są wyłączone. Włącz je i spróbuj ponownie.",
             "fallback_scan": "Możesz też zeskanować QR na ekranie lub naklejkę.",
             "via_bluetooth": "Przez Bluetooth",
-            "via_qr": "Skanuj QR"
+            "via_qr": "Skanuj QR",
+            "pair_once": "Sparuj zegar raz",
+            "pair_once_hint": "Za pierwszym razem wybierz WinProx na telefonie. Potem wystarczy jedno kliknięcie Bluetooth."
         },
         "title": "Logowanie",
         "clock": {
