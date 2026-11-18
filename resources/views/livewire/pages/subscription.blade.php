@@ -25,6 +25,14 @@
                 />
             @endif
         </div>
+        @if ($publicMode)
+            <div class="wp-page-actions no-print">
+                <button type="button" class="btn btn--ghost btn--sm" onclick="window.print()">
+                    <x-wp-icon name="printer" class="wp-icon" />
+                    <span>{{ __('common.button.print') }}</span>
+                </button>
+            </div>
+        @endif
         @if (! $publicMode && $portalBatteryState)
             <div class="wp-page-actions">
                 <x-wp-trial-battery-capsule :state="$portalBatteryState" />

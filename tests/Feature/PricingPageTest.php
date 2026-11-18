@@ -75,3 +75,23 @@ it('toont self-activate knoppen op abonnementenpagina voor beheerder', function 
         ->assertSee(__('subscription.contact_sales_cta'))
         ->assertDontSee(__('subscription.plans.facility_25.price'));
 });
+
+it('toont een afdrukknop op de publieke prijzenpagina die niet mee afgedrukt wordt', function () {
+    $html = $this->get(route('pricing'))
+        ->assertOk()
+        ->assertSee(__('common.button.print'))
+        ->getContent();
+
+    expect($html)->toContain('wp-page-actions no-print')
+        ->and($html)->toContain('onclick="window.print()"');
+});
+
+it('toont geen afdrukknop op de abonnementenpagina in de app', function () {
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(14)]);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+
+    Livewire\Livewire::actingAs($admin)
+        ->test(Subscription::class)
+        ->assertDontSee('onclick="window.print()"', false);
+});
+

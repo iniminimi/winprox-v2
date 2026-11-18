@@ -5032,6 +5032,12 @@ svg.wp-release-worker-row__icon,
     box-sizing: border-box;
 }
 
+@media (min-width: 40rem) {
+    .wp-page-head.wp-billing-page-width {
+        flex-wrap: nowrap;
+    }
+}
+
 .wp-billing-product {
     display: grid;
     grid-template-columns: 14rem minmax(0, 1fr);
@@ -5138,6 +5144,29 @@ svg.wp-release-worker-row__icon,
         flex-direction: row;
         align-items: flex-start;
         gap: 1.25rem;
+    }
+}
+
+@media print {
+    .wp-billing-plan-card {
+        box-shadow: none;
+        break-inside: avoid;
+    }
+
+    .wp-billing-plan-card-action {
+        display: none !important;
+    }
+
+    .wp-billing-comparison-scroll {
+        overflow: visible;
+    }
+
+    .wp-billing-comparison-table {
+        min-width: 0;
+    }
+
+    .wp-billing-comparison-table tr {
+        break-inside: avoid;
     }
 }
 

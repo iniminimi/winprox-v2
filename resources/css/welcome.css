@@ -330,6 +330,21 @@
     padding: 2rem 1.5rem 4rem;
 }
 
+@media print {
+    [data-theme='standard'] .wp-welcome-shell {
+        background: #ffffff;
+    }
+
+    [data-theme='standard'] .wp-welcome-top {
+        display: none !important;
+    }
+
+    [data-theme='standard'] .wp-welcome-marketing-main {
+        max-width: none;
+        padding: 0;
+    }
+}
+
 [data-theme='standard'] .wp-welcome-related__list {
     display: grid;
     gap: 0.5rem;

@@ -1671,6 +1671,8 @@ Bron: `Subscription.php`, `subscription.blade.php`, `Tenant.php`, `config/billin
   aan een klant (DDT/GPS op de locatie). Uit = eigen sites (bv. crèche).
 - **Legacy `facility_*` en `winprox_100`:** blijven in config (niet in catalogus).
 - Plankaarten + vergelijkingstabel op publieke `/pricing` (informatief + trial-registratie).
+  Rechtsboven een knop **Afdrukken** (`window.print()`); bij afdrukken verdwijnen de menubalk,
+  de knoppen en de schaduwen, en blijven plankaarten en tabelrijen heel op één pagina.
   In de app: status + limieten + **formule activeren** (Stripe Checkout indien geconfigureerd;
   anders gesimuleerde activatie in lokale/dev-setup zonder price IDs). Superuser kan ook
   toewijzen via Platform.
