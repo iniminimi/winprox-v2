@@ -6193,6 +6193,15 @@ svg.wp-release-worker-row__icon,
     flex-wrap: nowrap;
 }
 
+.wp-time-shifts-toolbar__form--line .wp-filter-cell .wp-select,
+.wp-time-shifts-toolbar__form--line .wp-filter-cell .wp-input[type='date'] {
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+    max-width: 100%;
+    field-sizing: fixed;
+}
+
 .wp-time-week {
     --wp-tw-hour: 1.25rem;
     padding: 0;

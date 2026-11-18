@@ -851,7 +851,7 @@ productsector op `Tenant`.
   per dienst een blok van in- tot uitklok (open dienst tot nu, amber), pauzes gearceerd, geplande
   dienst als dikkere stippellijn met 60% witte vulling (als het uurrooster aan staat). De uurkolom is smal en gecentreerd. Nachtdienst wordt over twee dagen verdeeld;
   dagtotaal telt bij de dag van inklokken (zoals lijst en export). Een hele-dagcode (verlof) staat op dezelfde regel als het dagtotaal, zodat de dagkop even hoog blijft. Totaal per dag en week; scrollt naar
-  het eerste uur. De weekfilter (team, uitvoerder, clock point, toepassen) staat op één lijn.
+  het eerste uur. De filter van Lijst en Week (van, tot, team, uitvoerder, clock point, toepassen) staat op één lijn.
   Elk uur is 1,25 rem hoog, zodat een dag meer op het scherm past. Klik op een blok = Corrigeren (gesloten, Policy `correct`) of Shift sluiten (open).
   Bron: `BuildWorkShiftWeekGridAction::handle(int $tenantId, int $workerId, string $cursor, ?int $clockPointId)`.
   Export en Afdrukken blijven op de lijst.

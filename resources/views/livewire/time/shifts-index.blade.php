@@ -16,7 +16,7 @@
     @endif
 
     <div class="wp-card wp-filter-panel wp-time-shifts-toolbar">
-        <div @class(['wp-filter-form', 'wp-time-shifts-toolbar__form', 'wp-time-shifts-toolbar__form--line' => $isWeek])>
+        <div class="wp-filter-form wp-time-shifts-toolbar__form wp-time-shifts-toolbar__form--line">
             <div class="wp-cluster wp-cluster--tight" role="group" aria-label="{{ __('time.schedule.toolbar.view') }}">
                 <button type="button" @class(['btn', 'btn--sm', 'btn--surface', 'is-active' => ! $isWeek]) wire:click="setView('list')">{{ __('time.shifts.week.view_list') }}</button>
                 <button type="button" @class(['btn', 'btn--sm', 'btn--surface', 'is-active' => $isWeek]) wire:click="setView('week')">{{ __('time.shifts.week.view_week') }}</button>
