@@ -11,7 +11,11 @@ function storageKey(clockPointId) {
     return 'wp_ble_device_' + String(clockPointId || '0');
 }
 
-async function waitForAdvertisement(device, ms = 4000) {
+function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function waitForAdvertisement(device, ms = 5000) {
     if (typeof device.watchAdvertisements !== 'function') {
         return;
     }
@@ -32,28 +36,11 @@ async function waitForAdvertisement(device, ms = 4000) {
     }
 }
 
-async function readPresenceHex(device) {
-    await waitForAdvertisement(device);
-    if (!device.gatt) {
-        throw new Error('no_gatt');
-    }
-    if (!device.gatt.connected) {
-        await device.gatt.connect();
-    }
-    const svc = await device.gatt.getPrimaryService(SERVICE);
-    const ch = await svc.getCharacteristic(TOKEN_CHAR);
-    // NimBLE levert bij de eerste read soms de oude (lege) value; onRead
-    // vernieuwt pas daarna. Tweede read pakt het verse presence-token.
-    await ch.readValue();
-    const value = await ch.readValue();
-    try {
-        device.gatt.disconnect();
-    } catch (e) {}
+function bytesToHex(value) {
     const bytes = new Uint8Array(value.buffer, value.byteOffset, value.byteLength);
     if (bytes.length !== 32) {
         throw new Error('bad_len');
     }
-    // Alles-nul = nog geen UTC op het scherm → behandelen als mislukte scan.
     let nonzero = false;
     for (let i = 0; i < bytes.length; i++) {
         if (bytes[i] !== 0) {
@@ -65,6 +52,50 @@ async function readPresenceHex(device) {
         throw new Error('empty_token');
     }
     return [...bytes].map((b) => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function readPresenceHexOnce(device) {
+    await waitForAdvertisement(device);
+    if (!device.gatt) {
+        throw new Error('no_gatt');
+    }
+    if (device.gatt.connected) {
+        try {
+            device.gatt.disconnect();
+            await sleep(150);
+        } catch (e) {}
+    }
+    await device.gatt.connect();
+    // Android/Chrome: service discovery is soms pas klaar na een korte pauze.
+    await sleep(120);
+    const svc = await device.gatt.getPrimaryService(SERVICE);
+    const ch = await svc.getCharacteristic(TOKEN_CHAR);
+    // NimBLE levert bij de eerste read soms de oude (lege) value.
+    await ch.readValue();
+    await sleep(40);
+    const value = await ch.readValue();
+    try {
+        device.gatt.disconnect();
+    } catch (e) {}
+    return bytesToHex(value);
+}
+
+async function readPresenceHex(device) {
+    let lastErr = null;
+    for (let attempt = 0; attempt < 3; attempt++) {
+        try {
+            return await readPresenceHexOnce(device);
+        } catch (e) {
+            lastErr = e;
+            try {
+                if (device.gatt?.connected) {
+                    device.gatt.disconnect();
+                }
+            } catch (err) {}
+            await sleep(200 + attempt * 250);
+        }
+    }
+    throw lastErr || new Error('read_failed');
 }
 
 async function tryKnownDevices(clockPointId) {
@@ -95,8 +126,10 @@ async function tryKnownDevices(clockPointId) {
 }
 
 async function pickNewDevice() {
+    // Alleen namePrefix in de filter: services in dezelfde filter eist dat de
+    // 128-bit UUID in het advertentiepakket past — dat faalt vaak naast de naam.
     return navigator.bluetooth.requestDevice({
-        filters: [{ namePrefix: 'WinProx', services: [SERVICE] }],
+        filters: [{ namePrefix: 'WinProx' }],
         optionalServices: [SERVICE],
     });
 }
@@ -124,6 +157,13 @@ function registerAlpineComponent() {
             }
         },
 
+        clearPairing() {
+            try {
+                localStorage.removeItem(storageKey(this.clockPointId));
+            } catch (e) {}
+            this.paired = false;
+        },
+
         async yes() {
             if (this.busy || this.unsupported) {
                 return;
@@ -138,6 +178,7 @@ function registerAlpineComponent() {
                     device = picked;
                 }
                 if (hex.length !== 64) {
+                    this.clearPairing();
                     this.error = this.i18n.not_found || '';
                     return;
                 }
@@ -150,13 +191,19 @@ function registerAlpineComponent() {
                 await this.$wire.submitBlePresenceToken(hex, this.direction);
             } catch (e) {
                 const name = e?.name || '';
+                const msg = String(e?.message || '');
                 if (name === 'NotFoundError') {
                     this.error = this.i18n.not_found || '';
                 } else if (name === 'SecurityError' || name === 'NotAllowedError') {
                     this.error = this.i18n.permission || '';
-                } else if (name === 'NetworkError' || name === 'InvalidStateError') {
+                } else if (name === 'NetworkError' || name === 'InvalidStateError' || name === 'AbortError') {
+                    this.clearPairing();
                     this.error = this.i18n.bt_off || '';
+                } else if (msg === 'empty_token' || msg === 'bad_len' || msg === 'no_gatt') {
+                    this.clearPairing();
+                    this.error = this.i18n.not_found || '';
                 } else {
+                    this.clearPairing();
                     this.error = this.i18n.failed || '';
                 }
             } finally {
