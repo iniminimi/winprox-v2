@@ -24,8 +24,9 @@ class WorkShiftExportController
         $teamId = $request->integer('team') ?: null;
         $workerId = $request->integer('worker') ?: null;
         $clockPointId = $request->integer('clock_point') ?: null;
+        $includeWeekends = ! $request->has('weekends') || $request->boolean('weekends');
 
-        $result = $export->handle($tenantId, $from, $to, $teamId, $workerId, $clockPointId);
+        $result = $export->handle($tenantId, $from, $to, $teamId, $workerId, $clockPointId, $includeWeekends);
         $filename = 'time-shifts-'.now()->format('Y-m-d').'.csv';
 
         $headers = [

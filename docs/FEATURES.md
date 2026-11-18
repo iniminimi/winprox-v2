@@ -851,10 +851,11 @@ productsector op `Tenant`.
   per dienst een blok van in- tot uitklok (open dienst tot nu, amber), pauzes gearceerd, geplande
   dienst als dikkere stippellijn met 60% witte vulling (als het uurrooster aan staat). De uurkolom is smal en gecentreerd. Nachtdienst wordt over twee dagen verdeeld;
   dagtotaal telt bij de dag van inklokken (zoals lijst en export). Een hele-dagcode (verlof) staat op dezelfde regel als het dagtotaal, zodat de dagkop even hoog blijft. Totaal per dag en week; scrollt naar
-  het eerste uur. De filter van Lijst en Week staat op twee lijnen: boven de periode en toepassen, onder team, uitvoerder en clock point.
+  het eerste uur. De filter van Lijst en Week staat op twee lijnen: boven de periode, de schakelaar Weekends en toepassen, onder team, uitvoerder en clock point.
+  Weekends staat standaard uit: za/zo verdwijnen uit de lijst, de weekkolommen en het rapport (export/print met `weekends=0`). Aan toont ze weer. Een nachtdienst die op vrijdag inklokt blijft bij vrijdag.
   Manueel inklokken en het rapport staan in een blauw kader rechts van Minimum bezetting.
   Elk uur is 1,25 rem hoog, zodat een dag meer op het scherm past. Klik op een blok = Corrigeren (gesloten, Policy `correct`) of Shift sluiten (open).
-  Bron: `BuildWorkShiftWeekGridAction::handle(int $tenantId, int $workerId, string $cursor, ?int $clockPointId)`.
+  Bron: `BuildWorkShiftWeekGridAction::handle(int $tenantId, int $workerId, string $cursor, ?int $clockPointId, bool $includeWeekends = true)`.
   Export en Afdrukken blijven op de lijst.
 - **Urenkaart:** Time → Uren opent op vandaag (van = tot). Per dienst vijf kolommen (medewerker+team,
   gewerkt+pauze, datum+gepland, in/uit-registraties, status+Corrigeren).

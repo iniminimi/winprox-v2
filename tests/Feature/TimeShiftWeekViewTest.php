@@ -119,6 +119,38 @@ it('toont geen diensten van een andere uitvoerder of tenant', function () {
         ->and(collect($otherTenant['days'])->sum(fn ($day) => count($day['blocks'])))->toBe(0);
 });
 
+it('laat zaterdag en zondag weg tot weekends aan staat', function () {
+    [$tenant, $admin, $worker, $clockPoint] = weekViewSetup();
+    $this->travelTo(Carbon::parse('2026-11-18 10:00:00'));
+    weekViewShift($worker, $clockPoint, '2026-11-21 10:00:00', '2026-11-21 14:00:00');
+    weekViewShift($worker, $clockPoint, '2026-11-18 08:00:00', '2026-11-18 12:00:00');
+
+    $grid = app(BuildWorkShiftWeekGridAction::class)->handle($tenant->id, $worker->id, '2026-11-18', null, false);
+
+    expect(array_column($grid['days'], 'date'))->toBe([
+        '2026-11-16', '2026-11-17', '2026-11-18', '2026-11-19', '2026-11-20',
+    ])->and($grid['workedMinutes'])->toBe(240);
+
+    Livewire::actingAs($admin)
+        ->withQueryParams([
+            'view' => 'week',
+            'worker' => $worker->id,
+            'from' => '2026-11-16',
+            'to' => '2026-11-22',
+        ])
+        ->test(ShiftsIndex::class)
+        ->assertSet('showWeekends', false)
+        ->assertDontSee('10:00 – 14:00')
+        ->assertSee('08:00 – 12:00')
+        ->set('showWeekends', true)
+        ->assertSee('10:00 – 14:00')
+        ->call('setView', 'list')
+        ->assertSee('21-11-2026')
+        ->set('showWeekends', false)
+        ->assertDontSee('21-11-2026')
+        ->assertSee('18-11-2026');
+});
+
 it('vraagt in de weekweergave eerst een uitvoerder', function () {
     [, $admin] = weekViewSetup();
 

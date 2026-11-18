@@ -19,6 +19,7 @@ class ExportWorkShiftsAction
         ?int $teamId = null,
         ?int $workerId = null,
         ?int $clockPointId = null,
+        bool $includeWeekends = true,
     ): ListExportResult {
         $limit = ListExportLimit::MAX;
 
@@ -29,6 +30,13 @@ class ExportWorkShiftsAction
             ->when($teamId, fn ($q) => $q->where('internal_team_id', $teamId))
             ->when($workerId, fn ($q) => $q->where('worker_id', $workerId))
             ->when($clockPointId, fn ($q) => $q->where('clock_in_clock_point_id', $clockPointId))
+            ->when(! $includeWeekends, function ($q) {
+                $driver = $q->getConnection()->getDriverName();
+
+                return $driver === 'sqlite'
+                    ? $q->whereRaw("cast(strftime('%w', clock_in_at) as integer) not in (0, 6)")
+                    : $q->whereRaw('DAYOFWEEK(clock_in_at) not in (1, 7)');
+            })
             ->with(['worker', 'team', 'clockInClockPoint', 'clockOutClockPoint', 'taskLogs.task', 'breaks'])
             ->orderByDesc('clock_in_at')
             ->limit($limit + 1)

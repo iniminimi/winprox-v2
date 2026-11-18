@@ -32,6 +32,7 @@ class WorkShiftTimesheetPrintController
             $request->integer('team') ?: null,
             $request->integer('worker') ?: null,
             $request->integer('clock_point') ?: null,
+            ! $request->has('weekends') || $request->boolean('weekends'),
         );
 
         $shifts = $result->rows;

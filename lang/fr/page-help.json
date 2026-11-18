@@ -1466,11 +1466,11 @@
             "actions": [
                 {
                     "label": "Période et filtres",
-                    "text": "La liste s'ouvre sur aujourd'hui. Choisissez une date de début et de fin et filtrez éventuellement par équipe, exécutant ou clock point. Cliquez sur <strong>Appliquer</strong> pour mettre à jour la liste."
+                    "text": "La liste s'ouvre sur aujourd'hui. Choisissez une date de début et de fin et filtrez éventuellement par équipe, exécutant ou clock point. <strong>Week-ends</strong> est désactivé par défaut : samedi et dimanche disparaissent. Activez-le pour les afficher. Cliquez sur <strong>Appliquer</strong> pour mettre à jour la liste."
                 },
                 {
                     "label": "Vue semaine",
-                    "text": "Choisissez <strong>Semaine</strong> en haut, sélectionnez un exécutant et cliquez sur <strong>Appliquer</strong>. Vous voyez du lundi au dimanche avec les heures de la journée : chaque bloc est un service du pointage d’entrée à la sortie, la pause hachurée et le service planifié en pointillés derrière. En haut figurent le total par jour et pour la semaine. Naviguez avec les flèches ; cliquez sur un bloc pour le corriger ou clôturer un service ouvert."
+                    "text": "Choisissez <strong>Semaine</strong> en haut, sélectionnez un exécutant et cliquez sur <strong>Appliquer</strong>. Vous voyez les jours de cette semaine avec les heures de la journée (samedi et dimanche seulement si Week-ends est activé) : chaque bloc est un service du pointage d’entrée à la sortie, la pause hachurée et le service planifié en pointillés derrière. En haut figurent le total par jour et pour la semaine. Naviguez avec les flèches ; cliquez sur un bloc pour le corriger ou clôturer un service ouvert."
                 },
                 {
                     "label": "Télécharger le rapport",

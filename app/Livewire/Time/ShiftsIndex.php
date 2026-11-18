@@ -18,6 +18,7 @@ use App\Support\Checkmate\CheckmateMode;
 use App\Support\Tenancy;
 use Carbon\Carbon;
 use App\Support\Time\TimeModuleAccess;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
@@ -58,6 +59,9 @@ class ShiftsIndex extends Component
     #[Url(as: 'week')]
     public string $weekStart = '';
 
+    #[Url(as: 'weekends')]
+    public bool $showWeekends = false;
+
     public bool $showCorrectionModal = false;
     public ?int $correctionShiftId = null;
     public string $correctionClockInDate = '';
@@ -82,6 +86,12 @@ class ShiftsIndex extends Component
 
     public function applyFilters(): void
     {
+        $this->resetPage();
+    }
+
+    public function updatedShowWeekends(): void
+    {
+        $this->showWeekends = (bool) $this->showWeekends;
         $this->resetPage();
     }
 
@@ -208,7 +218,7 @@ class ShiftsIndex extends Component
     {
         $isWeek = $this->view === 'week';
         $weekGrid = $isWeek && $this->workerFilter
-            ? $buildWeekGrid->handle((int) Tenancy::id(), (int) $this->workerFilter, $this->weekCursor()->toDateString(), $this->clockPointFilter)
+            ? $buildWeekGrid->handle((int) Tenancy::id(), (int) $this->workerFilter, $this->weekCursor()->toDateString(), $this->clockPointFilter, $this->showWeekends)
             : null;
 
         $query = WorkShift::query()
@@ -227,6 +237,7 @@ class ShiftsIndex extends Component
             ->when($this->teamFilter, fn ($q) => $q->where('internal_team_id', $this->teamFilter))
             ->when($this->workerFilter, fn ($q) => $q->where('worker_id', $this->workerFilter))
             ->when($this->clockPointFilter, fn ($q) => $q->where('clock_in_clock_point_id', $this->clockPointFilter))
+            ->when(! $this->showWeekends, fn ($q) => $this->withoutWeekendClockIns($q))
             ->orderByDesc('clock_in_at');
 
         $shifts = $isWeek ? null : $query->paginate(25);
@@ -245,25 +256,38 @@ class ShiftsIndex extends Component
             'clockPoints' => ClockPoint::query()->orderBy('sort_order')->orderBy('name')->get(),
             'manualClockInWorkers' => $manualClockInOptions['workers'],
             'manualClockInClockPoints' => $manualClockInOptions['clockPoints'],
-            'exportUrl' => route('time.shifts.export', array_filter([
-                'from' => $this->from,
-                'to' => $this->to,
-                'team' => $this->teamFilter,
-                'worker' => $this->workerFilter,
-                'clock_point' => $this->clockPointFilter,
-            ])),
-            'printUrl' => route('time.shifts.print', array_filter([
-                'from' => $this->from,
-                'to' => $this->to,
-                'team' => $this->teamFilter,
-                'worker' => $this->workerFilter,
-                'clock_point' => $this->clockPointFilter,
-            ])),
+            'exportUrl' => route('time.shifts.export', $this->exportQuery()),
+            'printUrl' => route('time.shifts.print', $this->exportQuery()),
             'alarmCount' => $this->timeNavAlarmCount(),
             // Manueel inklokken hoort bij facility-beheer; Checkmate klokt
             // alleen via de eigen gsm — knop weglaten.
             'checkmateMode' => CheckmateMode::isActive(Tenant::query()->find((int) Tenancy::id())),
         ]);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function exportQuery(): array
+    {
+        return array_filter([
+            'from' => $this->from,
+            'to' => $this->to,
+            'team' => $this->teamFilter,
+            'worker' => $this->workerFilter,
+            'clock_point' => $this->clockPointFilter,
+            'weekends' => $this->showWeekends ? 1 : 0,
+        ], fn (mixed $value): bool => $value !== null && $value !== '');
+    }
+
+    /** @param  Builder<WorkShift>  $query */
+    private function withoutWeekendClockIns(Builder $query): Builder
+    {
+        $driver = $query->getConnection()->getDriverName();
+
+        return $driver === 'sqlite'
+            ? $query->whereRaw("cast(strftime('%w', clock_in_at) as integer) not in (0, 6)")
+            : $query->whereRaw('DAYOFWEEK(clock_in_at) not in (1, 7)');
     }
 
     private function weekCursor(): Carbon

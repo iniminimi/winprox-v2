@@ -6228,8 +6228,8 @@ svg.wp-release-worker-row__icon,
 
 .wp-time-week__grid {
     display: grid;
-    grid-template-columns: 1.75rem repeat(7, minmax(6.5rem, 1fr));
-    min-width: 48rem;
+    grid-template-columns: 1.75rem repeat(var(--wp-tw-days, 7), minmax(6.5rem, 1fr));
+    min-width: calc(1.75rem + var(--wp-tw-days, 7) * 6.5rem);
 }
 
 .wp-time-week__corner,

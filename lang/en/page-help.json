@@ -1458,11 +1458,11 @@
             "actions": [
                 {
                     "label": "Period and filters",
-                    "text": "The list opens on today. Choose from and to dates and optionally filter by team, worker, or clock point. Click <strong>Apply</strong> to refresh the list."
+                    "text": "The list opens on today. Choose from and to dates and optionally filter by team, worker, or clock point. <strong>Weekends</strong> is off by default: Saturday and Sunday are hidden. Turn it on to show them. Click <strong>Apply</strong> to refresh the list."
                 },
                 {
                     "label": "Week view",
-                    "text": "Choose <strong>Week</strong> at the top, pick a worker and click <strong>Apply</strong>. You see Monday to Sunday with the hours of the day: each block is a shift from clock-in to clock-out, with the break hatched and the planned shift as a dotted outline behind it. The top shows the total per day and for the week. Use the arrows to browse; click a block to correct it or close an open shift."
+                    "text": "Choose <strong>Week</strong> at the top, pick a worker and click <strong>Apply</strong>. You see the days of that week with the hours of the day (Saturday and Sunday only when Weekends is on): each block is a shift from clock-in to clock-out, with the break hatched and the planned shift as a dotted outline behind it. The top shows the total per day and for the week. Use the arrows to browse; click a block to correct it or close an open shift."
                 },
                 {
                     "label": "Download report",

@@ -1458,11 +1458,11 @@
             "actions": [
                 {
                     "label": "Período y filtros",
-                    "text": "La lista se abre en hoy. Elija fechas de inicio y fin y filtre opcionalmente por equipo, operario o clock point. Pulse <strong>Aplicar</strong> para actualizar la lista."
+                    "text": "La lista se abre en hoy. Elija fechas de inicio y fin y filtre opcionalmente por equipo, operario o clock point. <strong>Fines de semana</strong> está desactivado por defecto: sábado y domingo desaparecen. Actívelo para mostrarlos. Pulse <strong>Aplicar</strong> para actualizar la lista."
                 },
                 {
                     "label": "Vista semanal",
-                    "text": "Elija <strong>Semana</strong> arriba, seleccione un operario y pulse <strong>Aplicar</strong>. Verá de lunes a domingo con las horas del día: cada bloque es un turno desde el fichaje de entrada hasta la salida, con la pausa rayada y el turno planificado en línea discontinua detrás. Arriba aparecen el total por día y de la semana. Navegue con las flechas; pulse un bloque para corregirlo o cerrar un turno abierto."
+                    "text": "Elija <strong>Semana</strong> arriba, seleccione un operario y pulse <strong>Aplicar</strong>. Verá los días de esa semana con las horas del día (sábado y domingo solo si Fines de semana está activo): cada bloque es un turno desde el fichaje de entrada hasta la salida, con la pausa rayada y el turno planificado en línea discontinua detrás. Arriba aparecen el total por día y de la semana. Navegue con las flechas; pulse un bloque para corregirlo o cerrar un turno abierto."
                 },
                 {
                     "label": "Descargar informe",

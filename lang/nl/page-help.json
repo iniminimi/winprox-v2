@@ -1458,11 +1458,11 @@
             "actions": [
                 {
                     "label": "Periode en filters",
-                    "text": "De lijst opent op vandaag. Kies een van- en tot-datum en filter optioneel op team, uitvoerder of clock point. Druk op <strong>Toepassen</strong> om de lijst bij te werken."
+                    "text": "De lijst opent op vandaag. Kies een van- en tot-datum en filter optioneel op team, uitvoerder of clock point. <strong>Weekends</strong> staat standaard uit: zaterdag en zondag verdwijnen. Zet het aan om ze te tonen. Druk op <strong>Toepassen</strong> om de lijst bij te werken."
                 },
                 {
                     "label": "Weekweergave",
-                    "text": "Kies bovenaan <strong>Week</strong>, kies een uitvoerder en druk op <strong>Toepassen</strong>. Je ziet maandag tot zondag met de uren van de dag: elk blok is een dienst van inklokken tot uitklokken, met de pauze gearceerd en de geplande dienst als stippellijn erachter. Bovenaan staan het totaal per dag en voor de week. Blader met de pijlen; klik op een blok om te corrigeren of een open dienst te sluiten."
+                    "text": "Kies bovenaan <strong>Week</strong>, kies een uitvoerder en druk op <strong>Toepassen</strong>. Je ziet de dagen van die week met de uren van de dag (zaterdag en zondag alleen als Weekends aan staat): elk blok is een dienst van inklokken tot uitklokken, met de pauze gearceerd en de geplande dienst als stippellijn erachter. Bovenaan staan het totaal per dag en voor de week. Blader met de pijlen; klik op een blok om te corrigeren of een open dienst te sluiten."
                 },
                 {
                     "label": "Download rapport",

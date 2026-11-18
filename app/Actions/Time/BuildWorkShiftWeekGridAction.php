@@ -30,9 +30,15 @@ class BuildWorkShiftWeekGridAction
      *     days: list<array{date: string, isToday: bool, nowPct: ?float, workedMinutes: int, allDayPlanned: list<string>, planned: list<array<string, mixed>>, blocks: list<array<string, mixed>>}>
      * }
      */
-    public function handle(int $tenantId, int $workerId, string $cursor, ?int $clockPointId = null): array
+    public function handle(int $tenantId, int $workerId, string $cursor, ?int $clockPointId = null, bool $includeWeekends = true): array
     {
         [$monday, $sunday, $dates] = $this->resolveWeek->handle($cursor);
+        if (! $includeWeekends) {
+            $dates = array_values(array_filter(
+                $dates,
+                fn (string $date): bool => ! Carbon::parse($date)->isWeekend(),
+            ));
+        }
         $now = now();
 
         $shifts = WorkShift::query()

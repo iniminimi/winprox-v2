@@ -22,6 +22,11 @@
                     <button type="button" @class(['btn', 'btn--sm', 'btn--surface', 'is-active' => ! $isWeek]) wire:click="setView('list')">{{ __('time.shifts.week.view_list') }}</button>
                     <button type="button" @class(['btn', 'btn--sm', 'btn--surface', 'is-active' => $isWeek]) wire:click="setView('week')">{{ __('time.shifts.week.view_week') }}</button>
                 </div>
+                <label class="wp-switch" for="shifts-weekends">
+                    <input id="shifts-weekends" type="checkbox" wire:model.live="showWeekends">
+                    <span class="wp-switch__track" aria-hidden="true"></span>
+                    <span>{{ __('time.schedule.weekends') }}</span>
+                </label>
                 @unless ($isWeek)
                     <div class="wp-filter-cell">
                         <label class="wp-filter-inline-label" for="shifts-from">{{ __('time.filters.from') }}</label>

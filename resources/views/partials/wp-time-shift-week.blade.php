@@ -22,7 +22,7 @@
         </div>
 
         <div class="wp-time-week__scroll" x-data x-init="$el.scrollTop = ($el.querySelector('[data-hour=\'{{ $grid['firstHour'] }}\']')?.offsetTop ?? 0) - ($el.querySelector('.wp-time-week__head')?.offsetHeight ?? 0)">
-            <div class="wp-time-week__grid">
+            <div class="wp-time-week__grid" style="--wp-tw-days: {{ count($grid['days']) }};">
                 <div class="wp-time-week__corner"></div>
                 @foreach ($grid['days'] as $day)
                     @php
