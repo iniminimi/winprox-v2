@@ -65,7 +65,7 @@
             "break_end_title": "Terminar a pausa por Bluetooth?",
             "break_start_body": "Escolha Bluetooth junto do relógio, ou leia o QR. Com Bluetooth o telemóvel pede depois dedo ou rosto.",
             "break_end_body": "Escolha Bluetooth junto do relógio, ou leia o QR. Com Bluetooth o telemóvel pede depois dedo ou rosto.",
-            "token_expired": "O sinal do relógio expirou. Tente de novo junto ao ecrã.",
+            "token_expired": "A hora do relógio não coincidia. Tente de novo junto ao ecrã.",
             "token_replay": "Este sinal já foi usado. Leia de novo no relógio.",
             "token_invalid": "Não foi possível reconhecer o relógio. Tente de novo.",
             "token_wrong_clock": "Este é outro relógio. Vá para o local certo.",

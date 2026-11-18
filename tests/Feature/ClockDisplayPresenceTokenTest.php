@@ -50,7 +50,9 @@ it('aanvaardt een geldig presence-token één keer', function () {
 
 it('weigert een verlopen token en een online-scherm', function () {
     [$tenant, $point] = presenceWorld();
-    $old = presenceHex($point, time() - 120, 1, 2);
+    $ttl = max(10, (int) config('time.presence_token_ttl_seconds', 90));
+    $drift = max(0, (int) config('time.presence_token_drift_seconds', 120));
+    $old = presenceHex($point, time() - $ttl - $drift - 30, 1, 2);
     expect(fn () => app(ValidateClockDisplayPresenceTokenAction::class)->handle($old, $tenant->id))
         ->toThrow(InvalidArgumentException::class, 'presence_token_expired');
 

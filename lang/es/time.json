@@ -444,7 +444,7 @@
             "break_end_title": "¿Terminar la pausa por Bluetooth?",
             "break_start_body": "Elige Bluetooth junto al reloj, o escanea el QR. Con Bluetooth el móvil pide después huella o rostro.",
             "break_end_body": "Elige Bluetooth junto al reloj, o escanea el QR. Con Bluetooth el móvil pide después huella o rostro.",
-            "token_expired": "El token del reloj caducó. Inténtalo de nuevo junto a la pantalla.",
+            "token_expired": "La hora del reloj no coincidía. Inténtalo de nuevo junto a la pantalla.",
             "token_replay": "Este token ya se usó. Vuelve a leerlo del reloj.",
             "token_invalid": "No se pudo reconocer el reloj. Inténtalo de nuevo.",
             "token_wrong_clock": "Es otro reloj. Ve a la sede correcta.",

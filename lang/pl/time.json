@@ -65,7 +65,7 @@
             "break_end_title": "Zakończyć przerwę przez Bluetooth?",
             "break_start_body": "Wybierz Bluetooth przy zegarze albo zeskanuj QR. Przy Bluetooth telefon potem poprosi o odcisk lub twarz.",
             "break_end_body": "Wybierz Bluetooth przy zegarze albo zeskanuj QR. Przy Bluetooth telefon potem poprosi o odcisk lub twarz.",
-            "token_expired": "Znak z zegara wygasł. Spróbuj ponownie przy ekranie.",
+            "token_expired": "Czas zegara nie pasował. Spróbuj ponownie przy ekranie.",
             "token_replay": "Ten znak był już użyty. Odczytaj ponownie z zegara.",
             "token_invalid": "Nie udało się rozpoznać zegara. Spróbuj ponownie.",
             "token_wrong_clock": "To inny zegar. Idź do właściwej lokalizacji.",

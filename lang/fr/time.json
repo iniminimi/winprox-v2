@@ -444,7 +444,7 @@
             "break_end_title": "Terminer la pause via Bluetooth ?",
             "break_start_body": "Choisissez Bluetooth près de l’horloge, ou scannez le QR. Avec Bluetooth le téléphone demande ensuite empreinte ou visage.",
             "break_end_body": "Choisissez Bluetooth près de l’horloge, ou scannez le QR. Avec Bluetooth le téléphone demande ensuite empreinte ou visage.",
-            "token_expired": "Le jeton de l’horloge a expiré. Réessayez près de l’écran.",
+            "token_expired": "L’heure de l’horloge ne correspondait pas. Réessayez près de l’écran.",
             "token_replay": "Ce jeton a déjà été utilisé. Relisez depuis l’horloge.",
             "token_invalid": "Impossible de reconnaître l’horloge. Réessayez.",
             "token_wrong_clock": "Ce n’est pas la bonne horloge. Allez sur le bon site.",

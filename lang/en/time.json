@@ -444,7 +444,7 @@
             "break_end_title": "End your break via Bluetooth?",
             "break_start_body": "Choose Bluetooth next to the clock, or scan the QR code. With Bluetooth your phone then asks for fingerprint or face.",
             "break_end_body": "Choose Bluetooth next to the clock, or scan the QR code. With Bluetooth your phone then asks for fingerprint or face.",
-            "token_expired": "The clock token expired. Try again next to the display.",
+            "token_expired": "The clock time did not match. Tap again next to the display.",
             "token_replay": "This token was already used. Read again from the clock.",
             "token_invalid": "Could not recognise the clock. Please try again.",
             "token_wrong_clock": "This is a different clock. Go to the right site.",

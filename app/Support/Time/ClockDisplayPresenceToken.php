@@ -47,7 +47,11 @@ final class ClockDisplayPresenceToken
 
     public static function message(string $displayIdHex, int $timestamp, int $bootId, int $counter): string
     {
-        return strtolower($displayIdHex).'|'.$timestamp.'|'.$bootId.'|'.$counter;
+        // Unsigned decimal — zelfde als firmware %lu op uint32_t.
+        return strtolower($displayIdHex).'|'
+            .sprintf('%u', $timestamp)
+            .'|'.sprintf('%u', $bootId)
+            .'|'.sprintf('%u', $counter);
     }
 
     public static function hmacHex(string $secret, string $displayIdHex, int $timestamp, int $bootId, int $counter): string

@@ -444,7 +444,7 @@
             "break_end_title": "Terminare la pausa via Bluetooth?",
             "break_start_body": "Scegli Bluetooth vicino all’orologio, oppure scansiona il QR. Con Bluetooth il telefono chiede poi impronta o volto.",
             "break_end_body": "Scegli Bluetooth vicino all’orologio, oppure scansiona il QR. Con Bluetooth il telefono chiede poi impronta o volto.",
-            "token_expired": "Il token dell’orologio è scaduto. Riprova vicino al display.",
+            "token_expired": "L’ora dell’orologio non corrispondeva. Riprova vicino al display.",
             "token_replay": "Questo token è già stato usato. Rileggi dall’orologio.",
             "token_invalid": "Impossibile riconoscere l’orologio. Riprova.",
             "token_wrong_clock": "Questo è un altro orologio. Vai alla sede corretta.",

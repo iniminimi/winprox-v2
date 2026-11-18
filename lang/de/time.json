@@ -444,7 +444,7 @@
             "break_end_title": "Pause per Bluetooth beenden?",
             "break_start_body": "Wählen Sie Bluetooth neben der Uhr oder scannen Sie den QR-Code. Bei Bluetooth fragt das Telefon danach Fingerabdruck oder Gesicht.",
             "break_end_body": "Wählen Sie Bluetooth neben der Uhr oder scannen Sie den QR-Code. Bei Bluetooth fragt das Telefon danach Fingerabdruck oder Gesicht.",
-            "token_expired": "Das Uhr-Token ist abgelaufen. Versuchen Sie es erneut neben dem Display.",
+            "token_expired": "Die Uhrzeit stimmte nicht. Tippen Sie erneut neben dem Display.",
             "token_replay": "Dieses Token wurde bereits verwendet. Erneut von der Uhr lesen.",
             "token_invalid": "Die Uhr konnte nicht erkannt werden. Bitte erneut versuchen.",
             "token_wrong_clock": "Das ist eine andere Uhr. Gehen Sie zum richtigen Standort.",

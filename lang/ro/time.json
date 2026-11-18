@@ -65,7 +65,7 @@
             "break_end_title": "Oprești pauza prin Bluetooth?",
             "break_start_body": "Alege Bluetooth lângă ceas sau scanează QR. Cu Bluetooth telefonul cere apoi amprenta sau fața.",
             "break_end_body": "Alege Bluetooth lângă ceas sau scanează QR. Cu Bluetooth telefonul cere apoi amprenta sau fața.",
-            "token_expired": "Semnalul de pe ceas a expirat. Încearcă din nou lângă ecran.",
+            "token_expired": "Ora ceasului nu se potrivea. Încearcă din nou lângă ecran.",
             "token_replay": "Acest semnal a fost deja folosit. Citește din nou de pe ceas.",
             "token_invalid": "Ceasul nu a putut fi recunoscut. Încearcă din nou.",
             "token_wrong_clock": "Acesta este alt ceas. Mergi la locația corectă.",

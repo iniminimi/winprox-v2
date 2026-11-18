@@ -270,6 +270,8 @@ class ClockDisplayController extends Controller
     {
         return [
             'server_time' => now()->toIso8601String(),
+            // Unix UTC — firmware gebruikt dit bij voorkeur (geen ISO-offset-ambiguïteit).
+            'server_unix' => now()->getTimestamp(),
             // Aan-uren van het scherm ("06:00"/null = altijd aan). Firmware
             // dimt de backlight buiten dit venster; over-middernacht werkt.
             'display_on_from' => $clockPoint?->display_on_from !== null
@@ -282,7 +284,7 @@ class ClockDisplayController extends Controller
             'offline_block_hours' => (int) config('time.display_offline_block_hours', 72),
             // ble = geen TLS na boot-sync, presence via GATT; online = huidig gedrag.
             'clock_mode' => ($clockPoint?->display_clock_mode?->value) ?? 'online',
-            'presence_token_ttl_seconds' => (int) config('time.presence_token_ttl_seconds', 30),
+            'presence_token_ttl_seconds' => (int) config('time.presence_token_ttl_seconds', 90),
             // Scherm vult hier {display_id}{dyn} in; display_id volgt mee in
             // de claim-status-response (of staat in NVS na provisioning).
             'portal_url_template' => route('public.time-portal', '__TOKEN__'),

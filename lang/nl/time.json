@@ -444,7 +444,7 @@
             "break_end_title": "Wil je pauze stoppen via bluetooth?",
             "break_start_body": "Kies bluetooth naast de klok, of scan de QR-code. Bij bluetooth vraagt je gsm daarna om vinger of gezicht.",
             "break_end_body": "Kies bluetooth naast de klok, of scan de QR-code. Bij bluetooth vraagt je gsm daarna om vinger of gezicht.",
-            "token_expired": "Het teken van de klok is verlopen. Probeer opnieuw naast het scherm.",
+            "token_expired": "De tijd van de klok klopte niet. Tik opnieuw naast het scherm.",
             "token_replay": "Dit teken is al gebruikt. Lees opnieuw vanaf de klok.",
             "token_invalid": "De klok herkennen lukte niet. Probeer opnieuw.",
             "token_wrong_clock": "Dit is een andere klok. Ga naar de juiste vestiging.",

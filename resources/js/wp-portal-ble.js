@@ -42,13 +42,29 @@ async function readPresenceHex(device) {
     }
     const svc = await device.gatt.getPrimaryService(SERVICE);
     const ch = await svc.getCharacteristic(TOKEN_CHAR);
+    // NimBLE levert bij de eerste read soms de oude (lege) value; onRead
+    // vernieuwt pas daarna. Tweede read pakt het verse presence-token.
+    await ch.readValue();
     const value = await ch.readValue();
     try {
         device.gatt.disconnect();
     } catch (e) {}
-    return [...new Uint8Array(value.buffer, value.byteOffset, value.byteLength)]
-        .map((b) => b.toString(16).padStart(2, '0'))
-        .join('');
+    const bytes = new Uint8Array(value.buffer, value.byteOffset, value.byteLength);
+    if (bytes.length !== 32) {
+        throw new Error('bad_len');
+    }
+    // Alles-nul = nog geen UTC op het scherm → behandelen als mislukte scan.
+    let nonzero = false;
+    for (let i = 0; i < bytes.length; i++) {
+        if (bytes[i] !== 0) {
+            nonzero = true;
+            break;
+        }
+    }
+    if (!nonzero) {
+        throw new Error('empty_token');
+    }
+    return [...bytes].map((b) => b.toString(16).padStart(2, '0')).join('');
 }
 
 async function tryKnownDevices(clockPointId) {
