@@ -2708,6 +2708,13 @@ class TimePortal extends Component
 
         session(['wp_ble_passkey_ok' => $this->clockPointId]);
 
+        // Vinger/gezicht kan langer duren dan de scan-grant; presence is al
+        // bewezen via BLE — grant hier verversen zodat de prik niet stil faalt.
+        $presence = $this->presenceClockPoint();
+        if ($presence !== null) {
+            ClockPointScanGrant::grant((int) $presence->id);
+        }
+
         $direction = (string) session('wp_ble_punch_direction', '');
         match ($direction) {
             'in' => $this->clockIn($findShift),

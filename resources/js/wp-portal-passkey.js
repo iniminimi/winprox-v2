@@ -157,10 +157,12 @@ function registerAlpineComponent() {
                     return;
                 }
                 // BLE-prik: Livewire afronden i.p.v. reload (wire:poll wist anders de sessie).
-                if (this.purpose === 'ble-punch' && this.$wire
-                    && typeof this.$wire.confirmBlePasskeyAndPunch === 'function') {
-                    await this.$wire.confirmBlePasskeyAndPunch();
-                    return;
+                if (this.purpose === 'ble-punch') {
+                    const wire = resolveLivewireWire(this);
+                    if (wire && typeof wire.confirmBlePasskeyAndPunch === 'function') {
+                        await wire.confirmBlePasskeyAndPunch();
+                        return;
+                    }
                 }
                 window.location.reload();
             } catch (e) {
@@ -170,6 +172,28 @@ function registerAlpineComponent() {
             }
         },
     }));
+}
+
+function resolveLivewireWire(alpineComponent) {
+    if (alpineComponent?.$wire && typeof alpineComponent.$wire.confirmBlePasskeyAndPunch === 'function') {
+        return alpineComponent.$wire;
+    }
+    if (typeof Livewire === 'undefined' || typeof Livewire.find !== 'function') {
+        return alpineComponent?.$wire ?? null;
+    }
+    let node = alpineComponent?.$el ?? null;
+    while (node) {
+        const id = node.getAttribute?.('wire:id');
+        if (id) {
+            try {
+                return Livewire.find(id);
+            } catch (e) {
+                break;
+            }
+        }
+        node = node.parentElement;
+    }
+    return typeof Livewire.first === 'function' ? Livewire.first() : null;
 }
 
 document.addEventListener('alpine:init', registerAlpineComponent);

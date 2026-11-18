@@ -137,7 +137,8 @@ it('blokkeert een bluetooth-prik tot de passkey opnieuw klopt', function () {
         'wp_ble_passkey_ok' => 0,
         'wp_ble_presence_clock_point_id' => $clockPoint->id,
     ]);
-    \App\Support\Portal\ClockPointScanGrant::grant($clockPoint->id);
+    // Grant expres verlopen: bevestigen met vinger moet hem verversen.
+    \App\Support\Portal\ClockPointScanGrant::consume($clockPoint->id);
 
     // Geen GPS: bluetooth-aanwezigheid volstaat ook als GPS-op-prik aan staat.
     $portal->call('confirmBlePasskeyAndPunch');

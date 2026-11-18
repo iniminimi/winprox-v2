@@ -157,7 +157,7 @@
             @endif
         </div>
 
-        @if ($action['needsScan'])
+        @if ($action['needsScan'] && ! ($bleNeedsPasskey ?? false))
             <div class="wp-portal-now__scan-choices" x-show="!direct && left <= 0" x-cloak>
                 @if ($showBleChoice)
                     <div
