@@ -5,6 +5,7 @@ namespace App\Livewire\Teams;
 use App\Actions\Team\CreateTeamDocumentAction;
 use App\Actions\Team\DeleteTeamDocumentAction;
 use App\Actions\Team\UpdateTeamDocumentAction;
+use App\Actions\Team\ListTeamLibraryOpensAction;
 use App\Http\Requests\Team\StoreTeamDocumentRequest;
 use App\Models\InternalTeam;
 use App\Models\TeamDocument;
@@ -28,6 +29,9 @@ class Documents extends Component
     public bool $showCreateModal = false;
 
     public bool $showEditModal = false;
+
+    #[Locked]
+    public ?int $opensItemId = null;
 
     public ?int $editingDocumentId = null;
 
@@ -184,8 +188,25 @@ class Documents extends Component
         $delete->handle($document, (int) Tenancy::id(), (int) auth()->id());
     }
 
-    public function render()
+    public function showOpens(int $itemId): void
     {
+        $this->authorize('update', $this->findDocument($itemId));
+        $this->opensItemId = $itemId;
+    }
+
+    public function closeOpens(): void
+    {
+        $this->opensItemId = null;
+    }
+
+    public function render(ListTeamLibraryOpensAction $listOpens)
+    {
+        $workers = Worker::query()
+            ->where('internal_team_id', $this->team->id)
+            ->orderBy('first_name')
+            ->orderBy('last_name')
+            ->get();
+
         return view('livewire.teams.documents', [
             'documents' => TeamDocument::query()
                 ->where('internal_team_id', $this->team->id)
@@ -196,11 +217,11 @@ class Documents extends Component
                 ->inLibraryOrder()
                 ->paginate(25, pageName: 'documentsPage'),
             'hasDocuments' => TeamDocument::query()->where('internal_team_id', $this->team->id)->exists(),
-            'workers' => Worker::query()
-                ->where('internal_team_id', $this->team->id)
-                ->orderBy('first_name')
-                ->orderBy('last_name')
-                ->get(),
+            'workers' => $workers,
+            'activeWorkerIds' => $workers->where('is_active', true)->pluck('id')->map(fn ($id) => (int) $id)->all(),
+            'opensRows' => $this->opensItemId !== null
+                ? $listOpens->handle((int) Tenancy::id(), $this->findDocument($this->opensItemId))
+                : null,
         ]);
     }
 

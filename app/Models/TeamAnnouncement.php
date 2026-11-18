@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Concerns\BelongsToTenant;
 use App\Models\Concerns\FiltersTeamLibrary;
+use App\Models\Concerns\TracksWorkerOpens;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -11,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TeamAnnouncement extends Model
 {
-    use BelongsToTenant, FiltersTeamLibrary, HasFactory;
+    use BelongsToTenant, FiltersTeamLibrary, HasFactory, TracksWorkerOpens;
 
     public const LIBRARY_SEARCH_COLUMNS = ['description'];
 
@@ -22,6 +23,8 @@ class TeamAnnouncement extends Model
         'description',
         'original_language',
         'is_active',
+        'opened_worker_ids',
+        'is_revised',
         'published_at',
         'expires_at',
     ];

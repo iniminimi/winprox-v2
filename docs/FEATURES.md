@@ -1482,6 +1482,16 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   Zodra de uitvoerder die tegel opent, is alles wat dan zichtbaar is gelezen en
   keert de tegel terug naar onderen; nieuwe inhoud brengt ze opnieuw omhoog.
   Deze leesstand wordt per uitvoerder bewaard.
+- **Geopend (team-documenten en -mededelingen):** kolom `opened_worker_ids` (JSON, uitvoerder-id's)
+  op `team_documents` en `team_announcements` — **geen datum of uur** (privacy): geen audit-rij,
+  `updated_at` blijft staan (`MarkTeamLibraryOpenedAction`, rij-lock in transactie). Document =
+  geopend bij download door de uitvoerder via Clock Point (beheerder telt niet); mededelingen =
+  alle zichtbare bij het openen van het scherm Mededelingen. Nieuw bestand of gewijzigde tekst →
+  lijst leeg + `is_revised` (pil **Gewijzigd** i.p.v. **Nieuw**); status/doelgroep wijzigen laat
+  de lijst staan. Clock Point: ongeopend bovenaan, geopend grijzer; teller op de tegel = ongeopend
+  (mededelingen geopend tijdens dit bezoek blijven tot sluiten bovenaan). Beheer: knop **Geopend x/y**
+  (actieve uitvoerders van de doelgroep) → popup per uitvoerder Geopend / Nog niet geopend
+  (`ListTeamLibraryOpensAction`, Policy `update`).
 - Aanmaken/bewerken (naam, `sort_order`, actief, **`clocks_all_locations`** voor invallers) — **aanmaken/deactiveren = admin**; inhoud
   bewerken = admin of medewerker. Geen sectorcopy.
 - **Clock Point-QR** (Time-module, standaard aan): printbare QR → `/time/{token}` geeft een

@@ -152,7 +152,7 @@
                 },
                 {
                     "label": "Documente și anunțuri noi",
-                    "text": "Documentele și anunțurile noi apar temporar direct sub cardul de autentificare, cu un contor albastru. Deschideți tigla ca să vedeți conținutul; apoi revine jos, la locul fix. Dacă apare conținut nou mai târziu, tigla urcă din nou. Ce ați citit vă aparține și se păstrează și pe alt dispozitiv."
+                    "text": "Documentele și anunțurile noi apar temporar direct sub cardul de autentificare, cu un contor albastru. Deschideți tigla ca să vedeți conținutul; apoi revine jos, la locul fix. Dacă apare conținut nou mai târziu, tigla urcă din nou. Ce ați citit vă aparține și se păstrează și pe alt dispozitiv. Un document contează ca deschis imediat ce îl descărcați, anunțurile imediat ce deschideți ecranul Anunțuri. Ce nu ați deschis încă apare sus cu Nou, sau Modificat dacă responsabilul l-a schimbat."
                 },
                 {
                     "label": "Listă de evacuare",

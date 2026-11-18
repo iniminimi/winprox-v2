@@ -1,6 +1,9 @@
 <?php
 
+use App\Actions\Team\MarkTeamLibraryOpenedAction;
+use App\Actions\Team\UpdateTeamAnnouncementAction;
 use App\Actions\Team\UpdateWorkerAction;
+use App\Enums\TeamLibraryKind;
 use App\Livewire\Pages\Team;
 use App\Livewire\Public\TimePortal;
 use App\Livewire\Public\UnitPortal;
@@ -461,3 +464,115 @@ it('opent de lijst gefilterd op de uitvoerder via de teller in de uitvoerdersrij
         ->dispatch('team-announcements-show-worker', workerId: $worker->id)
         ->assertSee('Bericht voor Jan');
 });
+
+function libraryOpensSetup(): array
+{
+    Storage::fake('local');
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $nora = Worker::factory()->create(['tenant_id' => $tenant->id, 'internal_team_id' => $team->id, 'first_name' => 'Nora', 'last_name' => 'Noord']);
+    $zora = Worker::factory()->create(['tenant_id' => $tenant->id, 'internal_team_id' => $team->id, 'first_name' => 'Zora', 'last_name' => 'Zuid']);
+    Storage::disk('local')->put('team-documents/'.$tenant->id.'/reglement.pdf', 'reglement');
+    $document = TeamDocument::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'description' => 'Huisreglement',
+        'file_path' => 'team-documents/'.$tenant->id.'/reglement.pdf',
+    ]);
+
+    return [$tenant, $admin, $team, $nora, $zora, $document];
+}
+
+it('zet een uitvoerder bij downloaden op de lijst geopend zonder tijdstip', function () {
+    [$tenant, $admin, $team, $nora, , $document] = libraryOpensSetup();
+    $updatedAt = $document->updated_at->toDateTimeString();
+    $this->travel(5)->minutes();
+
+    $this->actingAs($admin)->get(route('team-documents.file', $document))->assertOk();
+    expect($document->fresh()->openedWorkerIds())->toBe([]);
+
+    auth()->logout();
+    WorkerDeviceSession::bindRememberedWorker($team, $nora);
+    $this->get(route('team-documents.file', $document))->assertOk();
+    $this->get(route('team-documents.file', $document))->assertOk();
+
+    $fresh = $document->fresh();
+    expect($fresh->openedWorkerIds())->toBe([$nora->id])
+        ->and($fresh->updated_at->toDateTimeString())->toBe($updatedAt)
+        ->and(\App\Models\AuditLog::query()->where('model_type', TeamDocument::class)->where('action', 'like', '%open%')->exists())->toBeFalse();
+});
+
+it('toont bij het team hoeveel uitvoerders een item openden en wie', function () {
+    [$tenant, $admin, $team, $nora, $zora, $document] = libraryOpensSetup();
+    app(MarkTeamLibraryOpenedAction::class)->handle($nora, $tenant->id, TeamLibraryKind::Documents, [$document->id]);
+
+    Livewire::actingAs($admin)
+        ->test(Documents::class, ['team' => $team])
+        ->assertSee(__('team.library.opened_count', ['opened' => 1, 'total' => 2]))
+        ->call('showOpens', $document->id)
+        ->assertSee(__('team.library.opens_title'))
+        ->assertSeeInOrder(['Zora Zuid', __('team.library.not_opened'), 'Nora Noord', __('team.library.opened')])
+        ->call('closeOpens')
+        ->assertDontSee(__('team.library.opens_title'));
+});
+
+it('telt alle mededelingen als geopend bij het openen van het scherm en houdt ze dat bezoek als nieuw', function () {
+    [$tenant, , $team, $nora] = libraryOpensSetup();
+    $old = TeamAnnouncement::factory()->create(['tenant_id' => $tenant->id, 'internal_team_id' => $team->id, 'description' => 'Oude mededeling']);
+    app(MarkTeamLibraryOpenedAction::class)->handle($nora, $tenant->id, TeamLibraryKind::Announcements, [$old->id]);
+    $new = TeamAnnouncement::factory()->create(['tenant_id' => $tenant->id, 'internal_team_id' => $team->id, 'description' => 'Nieuwe mededeling']);
+
+    $opened = app(MarkTeamLibraryOpenedAction::class)->handle($nora, $tenant->id, TeamLibraryKind::Announcements);
+
+    expect($opened)->toBe([$new->id])
+        ->and($new->fresh()->isOpenedBy($nora->id))->toBeTrue()
+        ->and($old->fresh()->openedWorkerIds())->toBe([$nora->id]);
+});
+
+it('laat een gewijzigde mededeling of een nieuw bestand opnieuw openen', function () {
+    [$tenant, $admin, $team, $nora, , $document] = libraryOpensSetup();
+    $announcement = TeamAnnouncement::factory()->create(['tenant_id' => $tenant->id, 'internal_team_id' => $team->id, 'description' => 'Eerste tekst']);
+    app(MarkTeamLibraryOpenedAction::class)->handle($nora, $tenant->id, TeamLibraryKind::Announcements);
+    app(MarkTeamLibraryOpenedAction::class)->handle($nora, $tenant->id, TeamLibraryKind::Documents);
+
+    $update = app(UpdateTeamAnnouncementAction::class);
+    $update->handle($announcement->fresh(), ['description' => 'Eerste tekst', 'worker_id' => null, 'is_active' => true, 'expires_at' => '2030-01-01'], $tenant->id, $admin->id);
+    expect($announcement->fresh()->isOpenedBy($nora->id))->toBeTrue()
+        ->and($announcement->fresh()->is_revised)->toBeFalse();
+
+    $update->handle($announcement->fresh(), ['description' => 'Aangepaste tekst', 'worker_id' => null, 'is_active' => true, 'expires_at' => null], $tenant->id, $admin->id);
+    expect($announcement->fresh()->openedWorkerIds())->toBe([])
+        ->and($announcement->fresh()->is_revised)->toBeTrue();
+
+    Livewire::actingAs($admin)
+        ->test(Documents::class, ['team' => $team])
+        ->call('openEditModal', $document->id)
+        ->set('documentFile', UploadedFile::fake()->create('reglement-v2.pdf', 20, 'application/pdf'))
+        ->call('updateDocument')
+        ->assertHasNoErrors();
+
+    expect($document->fresh()->openedWorkerIds())->toBe([])
+        ->and($document->fresh()->is_revised)->toBeTrue();
+});
+
+it('zet op Clock Point ongeopende items bovenaan met Nieuw of Gewijzigd', function () {
+    [$tenant, , $team, $nora, , $document] = libraryOpensSetup();
+    $nora->update(['field_icon_slug' => 'heart']);
+    $opened = TeamDocument::factory()->create(['tenant_id' => $tenant->id, 'internal_team_id' => $team->id, 'title' => 'Al gelezen', 'description' => 'Al gelezen']);
+    $document->update(['title' => 'Nieuw reglement', 'is_revised' => true]);
+    app(MarkTeamLibraryOpenedAction::class)->handle($nora, $tenant->id, TeamLibraryKind::Documents, [$opened->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id, 'qr_token' => 'library-opens']);
+
+    Livewire::test(TimePortal::class, ['token' => 'library-opens'])
+        ->set('first_name', 'Nora')
+        ->set('last_name', 'Noord')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->call('openTeamDocuments')
+        ->assertSeeInOrder([__('portal.library.revised'), 'Nieuw reglement', 'Al gelezen'])
+        ->assertSeeHtml('wp-portal-library-item--opened');
+});
+

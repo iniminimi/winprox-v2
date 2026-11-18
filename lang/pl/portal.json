@@ -405,5 +405,9 @@
         "error_cancelled": "Weryfikacja anulowana — proszę spróbować ponownie albo użyć PIN-u lub ikony.",
         "error_failed": "Weryfikacja urządzenia nie powiodła się — proszę użyć PIN-u lub ikony.",
         "error_device": "To urządzenie nie jest powiązane z kontem — proszę użyć PIN-u lub ikony."
+    },
+    "library": {
+        "new": "Nowe",
+        "revised": "Zmienione"
     }
 }

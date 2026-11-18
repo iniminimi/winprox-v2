@@ -405,5 +405,9 @@
         "error_cancelled": "Verifica annullata — riprova o usa PIN o icona.",
         "error_failed": "Verifica del dispositivo non riuscita — usa PIN o icona.",
         "error_device": "Questo dispositivo non è collegato al tuo account — usa PIN o icona."
+    },
+    "library": {
+        "new": "Nuovo",
+        "revised": "Modificato"
     }
 }

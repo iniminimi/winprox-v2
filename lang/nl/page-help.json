@@ -610,7 +610,7 @@
                 },
                 {
                     "label": "Documenten en mededelingen",
-                    "text": "Open een team. Daar staan documenten en mededelingen voor de uitvoerders van dat team. Ze horen niet op het meldportaal en tellen niet mee in het documentenquotum. Kies heel het team, of één uitvoerder, bijvoorbeeld een contract. Vink Actief aan om het op Clock Point te tonen. Een persoonlijk bestand verhuist mee als de uitvoerder van team wisselt. Op Clock Point ziet elke uitvoerder alleen wat voor hem bedoeld is. Nieuwe inhoud staat onder de aanmeldkaart met een blauwe teller; na openen zakt de tegel terug naar onderen. In beheer toont de lijst standaard de actieve items voor heel het team; filter op uitvoerder, status of zoekterm. Klik op de teller bij een uitvoerder (ballon: Documenten beheren of Mededelingen beheren) om de lijst van dat team op die persoon te openen. 25 items per pagina."
+                    "text": "Open een team. Daar staan documenten en mededelingen voor de uitvoerders van dat team. Ze horen niet op het meldportaal en tellen niet mee in het documentenquotum. Kies heel het team, of één uitvoerder, bijvoorbeeld een contract. Vink Actief aan om het op Clock Point te tonen. Een persoonlijk bestand verhuist mee als de uitvoerder van team wisselt. Op Clock Point ziet elke uitvoerder alleen wat voor hem bedoeld is. Nieuwe inhoud staat onder de aanmeldkaart met een blauwe teller; na openen zakt de tegel terug naar onderen. In beheer toont de lijst standaard de actieve items voor heel het team; filter op uitvoerder, status of zoekterm. Klik op de teller bij een uitvoerder (ballon: Documenten beheren of Mededelingen beheren) om de lijst van dat team op die persoon te openen. 25 items per pagina. Per item zie je Geopend, bv. 3/5; klik erop om te zien wie het opende. WinProx bewaart geen datum of uur. Een document telt als geopend na downloaden, een mededeling na het openen van het scherm Mededelingen. Na een nieuw bestand of een aangepaste tekst moet iedereen het opnieuw openen."
                 },
                 {
                     "label": "Locatie",
@@ -1144,7 +1144,7 @@
                 },
                 {
                     "label": "Nieuwe documenten en mededelingen",
-                    "text": "Nieuwe documenten en mededelingen staan tijdelijk direct onder je aanmeldkaart, met een blauwe teller. Open de tegel om de inhoud te bekijken; daarna keert de tegel terug naar de vaste plek onderaan. Komt er later iets nieuws bij, dan verhuist de tegel opnieuw omhoog. De leesstand hoort bij jou en blijft ook op een ander toestel bewaard."
+                    "text": "Nieuwe documenten en mededelingen staan tijdelijk direct onder je aanmeldkaart, met een blauwe teller. Open de tegel om de inhoud te bekijken; daarna keert de tegel terug naar de vaste plek onderaan. Komt er later iets nieuws bij, dan verhuist de tegel opnieuw omhoog. De leesstand hoort bij jou en blijft ook op een ander toestel bewaard. Een document telt als geopend zodra je het downloadt, mededelingen zodra je het scherm Mededelingen opent. Wat je nog niet opende staat bovenaan met Nieuw, of met Gewijzigd als je beheerder het aanpaste."
                 },
                 {
                     "label": "Evacuatielijst",

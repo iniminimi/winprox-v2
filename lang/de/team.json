@@ -293,7 +293,13 @@
             "status_expired": "Abgelaufen",
             "status_all": "Alle Status",
             "empty": "Nichts gefunden für diesen Filter."
-        }
+        },
+        "opened_count": "Geöffnet :opened/:total",
+        "opens_title": "Wer hat das geöffnet?",
+        "opens_hint": "Ohne Datum oder Uhrzeit. Nach einer neuen Datei oder geändertem Text beginnt es neu.",
+        "opened": "Geöffnet",
+        "not_opened": "Noch nicht geöffnet",
+        "opens_empty": "Keine aktiven Ausführenden für diesen Eintrag."
     },
     "workers_index": {
         "title": "Mitarbeiter",

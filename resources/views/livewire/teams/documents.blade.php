@@ -52,6 +52,7 @@
                         </p>
                     </div>
                     <div class="wp-cluster">
+                        @include('livewire.teams.partials.opens-button', ['item' => $document, 'activeWorkerIds' => $activeWorkerIds])
                         <a href="{{ route('team-documents.file', $document) }}" class="btn btn--ghost btn--sm" target="_blank" rel="noopener">
                             {{ __('team.library.open') }}
                         </a>
@@ -75,6 +76,8 @@
             </div>
         @endif
     </x-wp-disclosure-card>
+
+    @include('livewire.teams.partials.opens-modal', ['rows' => $opensRows])
 
     @if ($showCreateModal)
         <x-wp-modal closeMethod="closeCreateModal" aria-labelledby="team-document-create-title">

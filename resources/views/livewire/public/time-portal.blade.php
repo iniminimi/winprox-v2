@@ -556,7 +556,13 @@
                     <x-wp-page-head-title variant="portal" icon="document" :title="__('portal.tiles.documents')" />
                     <div class="wp-list">
                         @forelse ($workerDocuments as $document)
-                            <div class="wp-card wp-card-pad wp-stack-tight" wire:key="worker-doc-{{ $document->id }}">
+                            @php
+                                $documentUnopened = in_array($document->id, $unopenedDocumentIds ?? [], true);
+                            @endphp
+                            <div @class(['wp-card wp-card-pad wp-stack-tight', 'wp-portal-library-item--opened' => ! $documentUnopened]) wire:key="worker-doc-{{ $document->id }}">
+                                @if ($documentUnopened)
+                                    <span class="wp-pill wp-pill--new wp-portal-library-item__pill">{{ $document->is_revised ? __('portal.library.revised') : __('portal.library.new') }}</span>
+                                @endif
                                 <p class="wp-doc-title">{{ $document->title }}</p>
                                 @if ($document->description)<p class="wp-muted">{{ $document->description }}</p>@endif
                                 @if ($document->published_at)
@@ -575,7 +581,13 @@
                     <x-wp-page-head-title variant="portal" icon="document" :title="__('portal.tiles.announcements')" />
                     <div class="wp-list">
                         @forelse ($workerAnnouncements as $announcement)
-                            <div class="wp-card wp-card-pad wp-stack-tight" wire:key="worker-announcement-{{ $announcement->id }}">
+                            @php
+                                $announcementUnopened = in_array($announcement->id, $unopenedAnnouncementIds ?? [], true);
+                            @endphp
+                            <div @class(['wp-card wp-card-pad wp-stack-tight', 'wp-portal-library-item--opened' => ! $announcementUnopened]) wire:key="worker-announcement-{{ $announcement->id }}">
+                                @if ($announcementUnopened)
+                                    <span class="wp-pill wp-pill--new wp-portal-library-item__pill">{{ $announcement->is_revised ? __('portal.library.revised') : __('portal.library.new') }}</span>
+                                @endif
                                 <p class="wp-text-body">{{ $announcement->description }}</p>
                                 <p class="wp-muted">{{ $announcement->published_at?->isoFormat('D MMM YYYY') }}</p>
                             </div>

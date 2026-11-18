@@ -405,5 +405,9 @@
         "error_cancelled": "Verificare anulată — încercați din nou sau folosiți PIN-ul ori pictograma.",
         "error_failed": "Verificarea dispozitivului a eșuat — folosiți PIN-ul sau pictograma.",
         "error_device": "Acest dispozitiv nu este legat de cont — folosiți PIN-ul sau pictograma."
+    },
+    "library": {
+        "new": "Nou",
+        "revised": "Modificat"
     }
 }

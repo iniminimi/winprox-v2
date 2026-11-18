@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Team;
 
+use App\Actions\Team\MarkTeamLibraryOpenedAction;
+use App\Enums\TeamLibraryKind;
 use App\Models\TeamDocument;
 use App\Models\User;
 use App\Support\Portal\WorkerDeviceSession;
@@ -28,6 +30,13 @@ class TeamDocumentFileController
         abort_unless(
             $document->worker_id === null || (int) $document->worker_id === (int) $worker->id,
             403,
+        );
+
+        app(MarkTeamLibraryOpenedAction::class)->handle(
+            $worker,
+            (int) $document->tenant_id,
+            TeamLibraryKind::Documents,
+            [(int) $document->id],
         );
 
         return $this->stream($document);

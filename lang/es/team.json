@@ -293,7 +293,13 @@
             "status_expired": "Caducado",
             "status_all": "Todos los estados",
             "empty": "No se encontró nada con este filtro."
-        }
+        },
+        "opened_count": "Abierto :opened/:total",
+        "opens_title": "¿Quién lo abrió?",
+        "opens_hint": "Sin fecha ni hora. Tras un archivo nuevo o un texto modificado, empieza de nuevo.",
+        "opened": "Abierto",
+        "not_opened": "Aún no abierto",
+        "opens_empty": "No hay ejecutores activos para este elemento."
     },
     "workers_index": {
         "title": "Ejecutores",

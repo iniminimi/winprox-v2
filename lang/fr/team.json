@@ -293,7 +293,13 @@
             "status_expired": "Expiré",
             "status_all": "Tous les statuts",
             "empty": "Aucun résultat pour ce filtre."
-        }
+        },
+        "opened_count": "Ouvert :opened/:total",
+        "opens_title": "Qui l’a ouvert ?",
+        "opens_hint": "Sans date ni heure. Après un nouveau fichier ou un texte modifié, tout recommence.",
+        "opened": "Ouvert",
+        "not_opened": "Pas encore ouvert",
+        "opens_empty": "Aucun exécutant actif pour cet élément."
     },
     "workers_index": {
         "title": "Exécutants",

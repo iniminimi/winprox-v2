@@ -13,7 +13,7 @@ use App\Actions\Tasks\CompleteTaskAction;
 use App\Actions\Tasks\RoundTaskCompletionAction;
 use App\Actions\Tasks\SkipRoundStopAction;
 use App\Actions\Tasks\StartTaskAction;
-use App\Actions\Team\MarkWorkerLibraryViewedAction;
+use App\Actions\Team\MarkTeamLibraryOpenedAction;
 use App\Actions\Time\AcknowledgeTimeRosterViewAction;
 use App\Actions\Time\ResolveWorkerBlePunchPromptAction;
 use App\Actions\Time\AssertClockPointTaskVisitAction;
@@ -53,6 +53,7 @@ use App\Data\Units\RecordUnitCheckData;
 use App\Enums\ClockDeviceRefusalReason;
 use App\Enums\ClockSource;
 use App\Enums\ShiftTypeKind;
+use App\Enums\TeamLibraryKind;
 use App\Enums\TaskStatus;
 use App\Enums\UnitCheckResult;
 use App\Enums\UnitCheckSource;
@@ -231,6 +232,10 @@ class TimePortal extends Component
 
     #[Locked]
     public bool $teamAnnouncementsOpen = false;
+
+    /** @var list<int> */
+    #[Locked]
+    public array $freshAnnouncementIds = [];
 
     public string $absenceKind = 'leave';
 
@@ -1527,14 +1532,13 @@ class TimePortal extends Component
         $this->customerFormOpen = true;
     }
 
-    public function openTeamDocuments(MarkWorkerLibraryViewedAction $markViewed): void
+    public function openTeamDocuments(): void
     {
         $worker = $this->authorizedWorker();
         if ($worker === null) {
             return;
         }
 
-        $markViewed->handle($worker, $this->tenantId, MarkWorkerLibraryViewedAction::DOCUMENTS);
         $this->closeRoster();
         $this->hoursListOpen = false;
         $this->scheduleListOpen = false;
@@ -1551,14 +1555,14 @@ class TimePortal extends Component
         $this->teamDocumentsOpen = false;
     }
 
-    public function openTeamAnnouncements(MarkWorkerLibraryViewedAction $markViewed): void
+    public function openTeamAnnouncements(MarkTeamLibraryOpenedAction $markOpened): void
     {
         $worker = $this->authorizedWorker();
         if ($worker === null) {
             return;
         }
 
-        $markViewed->handle($worker, $this->tenantId, MarkWorkerLibraryViewedAction::ANNOUNCEMENTS);
+        $this->freshAnnouncementIds = $markOpened->handle($worker, $this->tenantId, TeamLibraryKind::Announcements);
         $this->closeRoster();
         $this->hoursListOpen = false;
         $this->scheduleListOpen = false;
@@ -1573,12 +1577,14 @@ class TimePortal extends Component
     public function closeTeamAnnouncements(): void
     {
         $this->teamAnnouncementsOpen = false;
+        $this->freshAnnouncementIds = [];
     }
 
     private function closeWorkerLibrary(): void
     {
         $this->teamDocumentsOpen = false;
         $this->teamAnnouncementsOpen = false;
+        $this->freshAnnouncementIds = [];
     }
 
     private function applyOpenScreen(bool $rosterEnabled): void
@@ -1597,8 +1603,8 @@ class TimePortal extends Component
                 app(ResolveRosterMonthAction::class),
                 app(ListPublishedWorkerRosterAction::class),
             ) : null,
-            WorkerPushScreen::DOCUMENTS => $this->openTeamDocuments(app(MarkWorkerLibraryViewedAction::class)),
-            WorkerPushScreen::ANNOUNCEMENTS => $this->openTeamAnnouncements(app(MarkWorkerLibraryViewedAction::class)),
+            WorkerPushScreen::DOCUMENTS => $this->openTeamDocuments(),
+            WorkerPushScreen::ANNOUNCEMENTS => $this->openTeamAnnouncements(app(MarkTeamLibraryOpenedAction::class)),
             WorkerPushScreen::ABSENCE => $rosterEnabled ? $this->openAbsence() : null,
             default => null,
         };
@@ -2424,12 +2430,16 @@ class TimePortal extends Component
         $workerAnnouncements = ($canAct && $verifiedWorker !== null)
             ? TeamAnnouncement::query()->visibleToWorker($verifiedWorker)->orderByDesc('id')->get()
             : collect();
-        $workerDocumentUnreadCount = $verifiedWorker !== null
-            ? $workerDocuments->where('id', '>', (int) ($verifiedWorker->last_team_document_id_seen ?? 0))->count()
-            : 0;
-        $workerAnnouncementUnreadCount = $verifiedWorker !== null
-            ? $workerAnnouncements->where('id', '>', (int) ($verifiedWorker->last_team_announcement_id_seen ?? 0))->count()
-            : 0;
+        $workerId = (int) ($verifiedWorker?->id ?? 0);
+        $unopenedDocumentIds = $workerDocuments->reject(fn (TeamDocument $d) => $d->isOpenedBy($workerId))->pluck('id')->all();
+        $unopenedAnnouncementIds = $workerAnnouncements
+            ->filter(fn (TeamAnnouncement $a) => ! $a->isOpenedBy($workerId) || in_array((int) $a->id, $this->freshAnnouncementIds, true))
+            ->pluck('id')
+            ->all();
+        $workerDocuments = $workerDocuments->sortBy(fn (TeamDocument $d) => in_array($d->id, $unopenedDocumentIds, true) ? 0 : 1)->values();
+        $workerAnnouncements = $workerAnnouncements->sortBy(fn (TeamAnnouncement $a) => in_array($a->id, $unopenedAnnouncementIds, true) ? 0 : 1)->values();
+        $workerDocumentUnreadCount = count($unopenedDocumentIds);
+        $workerAnnouncementUnreadCount = $workerAnnouncements->reject(fn (TeamAnnouncement $a) => $a->isOpenedBy($workerId))->count();
 
         return view('livewire.public.time-portal', [
             'canAct' => $canAct,
@@ -2489,6 +2499,8 @@ class TimePortal extends Component
             'workerDocuments' => $workerDocuments,
             'workerAnnouncements' => $workerAnnouncements,
             'workerDocumentUnreadCount' => $workerDocumentUnreadCount,
+            'unopenedDocumentIds' => $unopenedDocumentIds,
+            'unopenedAnnouncementIds' => $unopenedAnnouncementIds,
             'workerAnnouncementUnreadCount' => $workerAnnouncementUnreadCount,
             'manageWorkersMessage' => $this->manageWorkersMessage,
             'roster' => $roster,

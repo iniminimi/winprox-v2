@@ -293,7 +293,13 @@
             "status_expired": "Verlopen",
             "status_all": "Alle statussen",
             "empty": "Niets gevonden voor deze filter."
-        }
+        },
+        "opened_count": "Geopend :opened/:total",
+        "opens_title": "Wie opende dit?",
+        "opens_hint": "Zonder datum of uur. Na een nieuw bestand of een aangepaste tekst begint het opnieuw.",
+        "opened": "Geopend",
+        "not_opened": "Nog niet geopend",
+        "opens_empty": "Geen actieve uitvoerders voor dit item."
     },
     "workers_index": {
         "title": "Uitvoerders",

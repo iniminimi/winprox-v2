@@ -57,6 +57,7 @@
                         </p>
                     </div>
                     <div class="wp-cluster">
+                        @include('livewire.teams.partials.opens-button', ['item' => $announcement, 'activeWorkerIds' => $activeWorkerIds])
                         <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditModal({{ $announcement->id }})">
                             {{ __('common.button.edit') }}
                         </button>
@@ -77,6 +78,8 @@
             </div>
         @endif
     </x-wp-disclosure-card>
+
+    @include('livewire.teams.partials.opens-modal', ['rows' => $opensRows])
 
     @if ($showCreateModal)
         <x-wp-modal closeMethod="closeCreateModal" aria-labelledby="team-announcement-create-title">

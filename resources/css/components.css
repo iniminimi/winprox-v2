@@ -6408,6 +6408,14 @@ svg.wp-release-worker-row__icon,
     pointer-events: none;
 }
 
+.wp-portal-library-item--opened {
+    opacity: 0.7;
+}
+
+.wp-portal-library-item__pill {
+    align-self: flex-start;
+}
+
 .wp-work-visits-toolbar {
     padding: 0.75rem 1rem;
 }

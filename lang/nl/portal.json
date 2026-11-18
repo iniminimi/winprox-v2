@@ -405,5 +405,9 @@
         "error_cancelled": "Verificatie afgebroken — probeer opnieuw of gebruik je PIN of icoon.",
         "error_failed": "Toestelverificatie mislukt — gebruik je PIN of icoon.",
         "error_device": "Dit toestel is niet gekoppeld aan je account — gebruik je PIN of icoon."
+    },
+    "library": {
+        "new": "Nieuw",
+        "revised": "Gewijzigd"
     }
 }

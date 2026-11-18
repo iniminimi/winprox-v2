@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+use App\Actions\Team\MarkTeamLibraryOpenedAction;
+use App\Enums\TeamLibraryKind;
 use App\Actions\Dashboard\BuildDashboardStatsAction;
 use App\Actions\Time\AcknowledgeTimeRosterViewAction;
 use App\Actions\Time\BuildTimePresenceDashboardAction;
@@ -123,17 +125,23 @@ it('zet nieuwe bibliotheektegels bovenaan en na openen terug onderaan', function
         ->and($evacuation)->toBeGreaterThan($teamleader)
         ->and(substr_count($html, 'wp-pill wp-pill--new'))->toBe(2);
 
-    $afterDocument = $portal
+    $stillNew = $portal
         ->call('openTeamDocuments')
         ->call('closeTeamDocuments')
         ->html();
+
+    expect(strpos($stillNew, 'wire:click="openTeamDocuments"'))
+        ->toBeLessThan(strpos($stillNew, 'wire:click="openHours"'));
+
+    app(MarkTeamLibraryOpenedAction::class)->handle($worker->fresh(), $tenant->id, TeamLibraryKind::Documents, [$document->id]);
+    $afterDocument = $portal->call('$refresh')->html();
 
     expect(strpos($afterDocument, 'wire:click="openTeamAnnouncements"'))
         ->toBeLessThan(strpos($afterDocument, 'wire:click="openHours"'))
         ->and(strpos($afterDocument, 'wire:click="openTeamDocuments"'))
         ->toBeGreaterThan(strpos($afterDocument, 'wire:click="openHours"'))
-        ->and($worker->fresh()->last_team_document_id_seen)->toBe($document->id)
-        ->and($worker->fresh()->last_team_announcement_id_seen)->toBeNull()
+        ->and($document->fresh()->isOpenedBy($worker->id))->toBeTrue()
+        ->and($announcement->fresh()->isOpenedBy($worker->id))->toBeFalse()
         ->and(substr_count($afterDocument, 'wp-pill wp-pill--new'))->toBe(1);
 
     $afterBoth = $portal
@@ -149,7 +157,7 @@ it('zet nieuwe bibliotheektegels bovenaan en na openen terug onderaan', function
         ->toBeGreaterThan(strpos($afterBoth, 'wire:click="openTeamAnnouncements"'))
         ->and(strpos($afterBoth, 'wire:click="openRoster"'))
         ->toBeGreaterThan(strpos($afterBoth, 'wire:click="openTeamleader"'))
-        ->and($worker->fresh()->last_team_announcement_id_seen)->toBe($announcement->id)
+        ->and($announcement->fresh()->isOpenedBy($worker->id))->toBeTrue()
         ->and(substr_count($afterBoth, 'wp-pill wp-pill--new'))->toBe(0);
 
     TeamDocument::factory()->create([

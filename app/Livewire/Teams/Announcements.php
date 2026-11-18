@@ -5,6 +5,7 @@ namespace App\Livewire\Teams;
 use App\Actions\Team\CreateTeamAnnouncementAction;
 use App\Actions\Team\DeleteTeamAnnouncementAction;
 use App\Actions\Team\UpdateTeamAnnouncementAction;
+use App\Actions\Team\ListTeamLibraryOpensAction;
 use App\Http\Requests\Team\StoreTeamAnnouncementRequest;
 use App\Models\InternalTeam;
 use App\Models\TeamAnnouncement;
@@ -26,6 +27,9 @@ class Announcements extends Component
     public bool $showCreateModal = false;
 
     public bool $showEditModal = false;
+
+    #[Locked]
+    public ?int $opensItemId = null;
 
     public ?int $editingAnnouncementId = null;
 
@@ -176,8 +180,25 @@ class Announcements extends Component
         $delete->handle($announcement, (int) Tenancy::id(), (int) auth()->id());
     }
 
-    public function render()
+    public function showOpens(int $itemId): void
     {
+        $this->authorize('update', $this->findAnnouncement($itemId));
+        $this->opensItemId = $itemId;
+    }
+
+    public function closeOpens(): void
+    {
+        $this->opensItemId = null;
+    }
+
+    public function render(ListTeamLibraryOpensAction $listOpens)
+    {
+        $workers = Worker::query()
+            ->where('internal_team_id', $this->team->id)
+            ->orderBy('first_name')
+            ->orderBy('last_name')
+            ->get();
+
         return view('livewire.teams.announcements', [
             'announcements' => TeamAnnouncement::query()
                 ->where('internal_team_id', $this->team->id)
@@ -188,11 +209,11 @@ class Announcements extends Component
                 ->inLibraryOrder()
                 ->paginate(25, pageName: 'announcementsPage'),
             'hasAnnouncements' => TeamAnnouncement::query()->where('internal_team_id', $this->team->id)->exists(),
-            'workers' => Worker::query()
-                ->where('internal_team_id', $this->team->id)
-                ->orderBy('first_name')
-                ->orderBy('last_name')
-                ->get(),
+            'workers' => $workers,
+            'activeWorkerIds' => $workers->where('is_active', true)->pluck('id')->map(fn ($id) => (int) $id)->all(),
+            'opensRows' => $this->opensItemId !== null
+                ? $listOpens->handle((int) Tenancy::id(), $this->findAnnouncement($this->opensItemId))
+                : null,
         ]);
     }
 

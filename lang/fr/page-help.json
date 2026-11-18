@@ -618,7 +618,7 @@
                 },
                 {
                     "label": "Documents et annonces",
-                    "text": "Ouvrez une équipe. Les documents et annonces sont destinés aux exécutants de cette équipe. Ils ne sont pas sur le portail de signalement et ne comptent pas dans le quota de documents. Choisissez toute l'équipe, ou un seul exécutant, par exemple un contrat. Cochez Actif pour l'afficher sur Clock Point. Un fichier personnel suit l'exécutant s'il change d'équipe. Sur Clock Point, chaque exécutant ne voit que ce qui lui est destiné. Le nouveau contenu apparaît sous la carte de connexion avec un compteur bleu ; après ouverture, la tuile redescend. En gestion, la liste affiche par défaut les éléments actifs pour toute l’équipe ; filtrez par exécutant, statut ou mot-clé. Cliquez sur le compteur d’un exécutant (info-bulle : Gérer les documents ou Gérer les annonces) pour ouvrir la liste de cette équipe pour cette personne. 25 éléments par page."
+                    "text": "Ouvrez une équipe. Les documents et annonces sont destinés aux exécutants de cette équipe. Ils ne sont pas sur le portail de signalement et ne comptent pas dans le quota de documents. Choisissez toute l'équipe, ou un seul exécutant, par exemple un contrat. Cochez Actif pour l'afficher sur Clock Point. Un fichier personnel suit l'exécutant s'il change d'équipe. Sur Clock Point, chaque exécutant ne voit que ce qui lui est destiné. Le nouveau contenu apparaît sous la carte de connexion avec un compteur bleu ; après ouverture, la tuile redescend. En gestion, la liste affiche par défaut les éléments actifs pour toute l’équipe ; filtrez par exécutant, statut ou mot-clé. Cliquez sur le compteur d’un exécutant (info-bulle : Gérer les documents ou Gérer les annonces) pour ouvrir la liste de cette équipe pour cette personne. 25 éléments par page. Chaque élément affiche Ouvert, p. ex. 3/5 ; cliquez pour voir qui l’a ouvert. WinProx n’enregistre ni date ni heure. Un document compte comme ouvert après téléchargement, une annonce après l’ouverture de l’écran Annonces. Après un nouveau fichier ou un texte modifié, chacun doit l’ouvrir à nouveau."
                 },
                 {
                     "label": "Site",
@@ -1152,7 +1152,7 @@
                 },
                 {
                     "label": "Nouveaux documents et annonces",
-                    "text": "Les nouveaux documents et annonces apparaissent temporairement juste sous votre carte de connexion, avec un compteur bleu. Ouvrez la tuile pour consulter le contenu ; elle revient ensuite à sa place fixe en bas. Si du nouveau contenu arrive, elle remonte. Votre état de lecture vous suit aussi sur un autre appareil."
+                    "text": "Les nouveaux documents et annonces apparaissent temporairement juste sous votre carte de connexion, avec un compteur bleu. Ouvrez la tuile pour consulter le contenu ; elle revient ensuite à sa place fixe en bas. Si du nouveau contenu arrive, elle remonte. Votre état de lecture vous suit aussi sur un autre appareil. Un document compte comme ouvert dès que vous le téléchargez, les annonces dès que vous ouvrez l’écran Annonces. Ce que vous n’avez pas encore ouvert est en haut avec Nouveau, ou Modifié si votre responsable l’a changé."
                 },
                 {
                     "label": "Liste d’évacuation",

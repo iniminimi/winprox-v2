@@ -51,6 +51,8 @@ class UpdateTeamDocumentAction
             $updates['title'] = $title !== '' ? $title : $document->title;
             $updates['mime_type'] = $file->getMimeType() ?: $file->getClientMimeType();
             $updates['file_size_bytes'] = $file->getSize() ?: null;
+            $updates['opened_worker_ids'] = null;
+            $updates['is_revised'] = true;
         }
 
         $document->update($updates);
@@ -61,7 +63,7 @@ class UpdateTeamDocumentAction
             action: 'team_document.updated',
             modelType: TeamDocument::class,
             modelId: (int) $document->id,
-            payload: ['id' => $document->id, 'worker_id' => $workerId],
+            payload: ['id' => $document->id, 'worker_id' => $workerId, 'opens_reset' => $file !== null],
         );
 
         $fresh = $document->fresh() ?? $document;

@@ -293,7 +293,13 @@
             "status_expired": "Expired",
             "status_all": "All statuses",
             "empty": "Nothing found for this filter."
-        }
+        },
+        "opened_count": "Opened :opened/:total",
+        "opens_title": "Who opened this?",
+        "opens_hint": "No date or time. After a new file or changed text it starts again.",
+        "opened": "Opened",
+        "not_opened": "Not opened yet",
+        "opens_empty": "No active workers for this item."
     },
     "workers_index": {
         "title": "Workers",

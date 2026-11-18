@@ -405,5 +405,9 @@
         "error_cancelled": "Verification cancelled — try again or use your PIN or icon.",
         "error_failed": "Device verification failed — use your PIN or icon.",
         "error_device": "This device is not linked to your account — use your PIN or icon."
+    },
+    "library": {
+        "new": "New",
+        "revised": "Changed"
     }
 }

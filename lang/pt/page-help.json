@@ -152,7 +152,7 @@
                 },
                 {
                     "label": "Documentos e anúncios novos",
-                    "text": "Os documentos e os anúncios novos aparecem temporariamente logo por baixo do cartão de início de sessão, com um contador azul. Abra o mosaico para ver o conteúdo; depois volta para baixo, para o lugar fixo. Se surgir conteúdo novo mais tarde, o mosaico sobe outra vez. O que leu é seu e mantém-se também noutro dispositivo."
+                    "text": "Os documentos e os anúncios novos aparecem temporariamente logo por baixo do cartão de início de sessão, com um contador azul. Abra o mosaico para ver o conteúdo; depois volta para baixo, para o lugar fixo. Se surgir conteúdo novo mais tarde, o mosaico sobe outra vez. O que leu é seu e mantém-se também noutro dispositivo. Um documento conta como aberto assim que o descarrega; os anúncios, assim que abre o ecrã de anúncios. O que ainda não abriu fica no topo com Novo, ou Alterado se o responsável o mudou."
                 },
                 {
                     "label": "Lista de evacuação",

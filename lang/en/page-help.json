@@ -610,7 +610,7 @@
                 },
                 {
                     "label": "Documents and announcements",
-                    "text": "Open a team. Documents and announcements there are for that team's workers. They are not on the report portal and do not count toward the document quota. Choose the whole team, or one worker, for example a contract. Tick Active to show it on Clock Point. A personal file moves with the worker when they change team. On Clock Point each worker only sees what is meant for them. New content appears under the sign-in card with a blue counter; after opening, the tile moves back down. In management the list shows the active items for the whole team by default; filter by worker, status or search term. Click the counter next to a worker (tooltip: Manage documents or Manage announcements) to open this team's list for that person. 25 items per page."
+                    "text": "Open a team. Documents and announcements there are for that team's workers. They are not on the report portal and do not count toward the document quota. Choose the whole team, or one worker, for example a contract. Tick Active to show it on Clock Point. A personal file moves with the worker when they change team. On Clock Point each worker only sees what is meant for them. New content appears under the sign-in card with a blue counter; after opening, the tile moves back down. In management the list shows the active items for the whole team by default; filter by worker, status or search term. Click the counter next to a worker (tooltip: Manage documents or Manage announcements) to open this team's list for that person. 25 items per page. Each item shows Opened, e.g. 3/5; click it to see who opened it. WinProx stores no date or time. A document counts as opened after download, an announcement after opening the Announcements screen. After a new file or changed text, everyone has to open it again."
                 },
                 {
                     "label": "Location",
@@ -1144,7 +1144,7 @@
                 },
                 {
                     "label": "New documents and announcements",
-                    "text": "New documents and announcements temporarily appear directly under your sign-in card, with a blue counter. Open the tile to view the content; it then returns to its fixed place at the bottom. If new content arrives later, the tile moves up again. Your read state belongs to you and is also retained on another device."
+                    "text": "New documents and announcements temporarily appear directly under your sign-in card, with a blue counter. Open the tile to view the content; it then returns to its fixed place at the bottom. If new content arrives later, the tile moves up again. Your read state belongs to you and is also retained on another device. A document counts as opened once you download it, announcements once you open the Announcements screen. What you have not opened yet is at the top with New, or Changed if your manager edited it."
                 },
                 {
                     "label": "Evacuation list",

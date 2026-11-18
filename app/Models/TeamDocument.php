@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Concerns\BelongsToTenant;
 use App\Models\Concerns\FiltersTeamLibrary;
+use App\Models\Concerns\TracksWorkerOpens;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Storage;
 
 class TeamDocument extends Model
 {
-    use BelongsToTenant, FiltersTeamLibrary, HasFactory;
+    use BelongsToTenant, FiltersTeamLibrary, HasFactory, TracksWorkerOpens;
 
     public const DISK = 'local';
 
@@ -29,6 +30,8 @@ class TeamDocument extends Model
         'mime_type',
         'file_size_bytes',
         'is_active',
+        'opened_worker_ids',
+        'is_revised',
         'published_at',
     ];
 

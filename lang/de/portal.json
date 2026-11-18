@@ -405,5 +405,9 @@
         "error_cancelled": "Verifizierung abgebrochen — erneut versuchen oder PIN bzw. Symbol verwenden.",
         "error_failed": "Geräteverifizierung fehlgeschlagen — verwenden Sie PIN oder Symbol.",
         "error_device": "Dieses Gerät ist nicht mit Ihrem Konto verknüpft — verwenden Sie PIN oder Symbol."
+    },
+    "library": {
+        "new": "Neu",
+        "revised": "Geändert"
     }
 }

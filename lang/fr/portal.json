@@ -405,5 +405,9 @@
         "error_cancelled": "Vérification annulée — réessayez ou utilisez votre PIN ou icône.",
         "error_failed": "Échec de la vérification de l'appareil — utilisez votre PIN ou icône.",
         "error_device": "Cet appareil n'est pas lié à votre compte — utilisez votre PIN ou icône."
+    },
+    "library": {
+        "new": "Nouveau",
+        "revised": "Modifié"
     }
 }

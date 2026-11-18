@@ -32,9 +32,12 @@ class UpdateTeamAnnouncementAction
         $previousWorkerId = $announcement->worker_id !== null ? (int) $announcement->worker_id : null;
         $isActive = (bool) ($data['is_active'] ?? true);
         $expires = $data['expires_at'] ?? null;
+        $description = trim((string) $data['description']);
+        $textChanged = $description !== (string) $announcement->description;
 
         $announcement->update([
-            'description' => trim((string) $data['description']),
+            ...($textChanged ? ['opened_worker_ids' => null, 'is_revised' => true] : []),
+            'description' => $description,
             'worker_id' => $workerId,
             'is_active' => $isActive,
             'published_at' => $isActive ? ($announcement->published_at ?? now()) : null,
@@ -49,7 +52,7 @@ class UpdateTeamAnnouncementAction
             action: 'team_announcement.updated',
             modelType: TeamAnnouncement::class,
             modelId: (int) $announcement->id,
-            payload: ['id' => $announcement->id, 'worker_id' => $workerId],
+            payload: ['id' => $announcement->id, 'worker_id' => $workerId, 'opens_reset' => $textChanged],
         );
 
         $fresh = $announcement->fresh() ?? $announcement;
