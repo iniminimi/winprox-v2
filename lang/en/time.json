@@ -454,8 +454,7 @@
             "fallback_scan": "You can also scan the QR on the display or the sticker.",
             "via_bluetooth": "Via Bluetooth",
             "via_qr": "Scan QR code",
-            "pair_once": "Pair clock",
-            "pair_once_hint": "First time pick the clock; then one tap."
+            "pair_once": "Pair clock"
         },
         "title": "Sign in",
         "clock": {

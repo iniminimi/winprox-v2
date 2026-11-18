@@ -184,7 +184,6 @@
                             <x-wp-icon name="bluetooth" class="wp-icon" />
                             <span x-text="paired ? @js(__('time.portal.ble.via_bluetooth')) : @js(__('time.portal.ble.pair_once'))"></span>
                         </button>
-                        <p class="wp-muted wp-text-sm" x-show="!paired && !unsupported" x-cloak>{{ __('time.portal.ble.pair_once_hint') }}</p>
                         <p class="wp-muted wp-text-sm" x-show="unsupported" x-cloak>{{ __('time.portal.ble.unsupported') }}</p>
                         <p class="wp-error" x-show="error !== ''" x-text="error"></p>
                     </div>

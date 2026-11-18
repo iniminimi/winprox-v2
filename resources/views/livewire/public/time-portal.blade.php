@@ -799,7 +799,6 @@
                                 <h2 class="wp-section-title">{{ $bleTitle }}</h2>
                                 <p class="wp-muted">{{ $bleBody }}</p>
                                 <p class="wp-muted wp-text-sm" x-show="unsupported">{{ __('time.portal.ble.unsupported') }}</p>
-                                <p class="wp-muted wp-text-sm" x-show="!paired && !unsupported" x-cloak>{{ __('time.portal.ble.pair_once_hint') }}</p>
                                 <button
                                     type="button"
                                     class="btn btn--primary btn--block"

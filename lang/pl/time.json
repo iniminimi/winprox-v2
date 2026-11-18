@@ -75,8 +75,7 @@
             "fallback_scan": "Możesz też zeskanować QR na ekranie lub naklejkę.",
             "via_bluetooth": "Przez Bluetooth",
             "via_qr": "Skanuj QR",
-            "pair_once": "Sparuj",
-            "pair_once_hint": "Za pierwszym razem wybierz zegar; potem jedno kliknięcie."
+            "pair_once": "Sparuj"
         },
         "title": "Logowanie",
         "clock": {

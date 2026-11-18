@@ -75,8 +75,7 @@
             "fallback_scan": "Também pode ler o QR no ecrã ou o autocolante.",
             "via_bluetooth": "Via Bluetooth",
             "via_qr": "Ler código QR",
-            "pair_once": "Emparelhar",
-            "pair_once_hint": "Na primeira vez escolha o relógio; depois um toque."
+            "pair_once": "Emparelhar"
         },
         "title": "Iniciar sessão",
         "clock": {

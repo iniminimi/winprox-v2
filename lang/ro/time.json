@@ -75,8 +75,7 @@
             "fallback_scan": "Poți scana și QR-ul de pe ecran sau autocolantul.",
             "via_bluetooth": "Prin Bluetooth",
             "via_qr": "Scanează QR",
-            "pair_once": "Asociază",
-            "pair_once_hint": "Prima dată alege ceasul; apoi o apăsare."
+            "pair_once": "Asociază"
         },
         "title": "Autentificare",
         "clock": {

@@ -454,8 +454,7 @@
             "fallback_scan": "También puedes escanear el QR de la pantalla o la pegatina.",
             "via_bluetooth": "Por Bluetooth",
             "via_qr": "Escanear QR",
-            "pair_once": "Emparejar",
-            "pair_once_hint": "La primera vez elige el reloj; después un toque."
+            "pair_once": "Emparejar"
         },
         "title": "Inicio de sesión",
         "clock": {

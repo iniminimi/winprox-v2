@@ -454,8 +454,7 @@
             "fallback_scan": "Je kunt ook de QR op het scherm of de sticker scannen.",
             "via_bluetooth": "Via bluetooth",
             "via_qr": "QR-code scannen",
-            "pair_once": "Klok koppelen",
-            "pair_once_hint": "Eerste keer kies je de klok; daarna één tik."
+            "pair_once": "Klok koppelen"
         },
         "title": "Aanmelden",
         "clock": {

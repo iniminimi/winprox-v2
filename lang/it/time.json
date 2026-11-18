@@ -454,8 +454,7 @@
             "fallback_scan": "Puoi anche scansionare il QR sul display o l’adesivo.",
             "via_bluetooth": "Via Bluetooth",
             "via_qr": "Scansiona QR",
-            "pair_once": "Associa",
-            "pair_once_hint": "La prima volta scegli l’orologio; poi un tocco."
+            "pair_once": "Associa"
         },
         "title": "Accesso",
         "clock": {
