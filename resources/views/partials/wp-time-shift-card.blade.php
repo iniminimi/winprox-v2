@@ -31,7 +31,13 @@
         <div class="wp-time-shift-card__who">
             <x-wp-worker-avatar :worker="$shift->worker" size="md" />
             <div class="wp-time-shift-card__who-copy">
-                <strong class="wp-time-shift-card__name">{{ $shift->worker?->displayName() }}</strong>
+                @if (($linkToWeek ?? false) && $shift->worker)
+                    <button type="button" class="wp-time-shift-card__name wp-time-shift-card__name--link" wire:click="openWorkerWeek({{ (int) $shift->worker_id }}, '{{ $shift->clock_in_at->toDateString() }}')">
+                        {{ $shift->worker->displayName() }}
+                    </button>
+                @else
+                    <strong class="wp-time-shift-card__name">{{ $shift->worker?->displayName() }}</strong>
+                @endif
                 @if ($shift->team)
                     <p class="wp-muted wp-text-sm">{{ $shift->team->localizedName() }}</p>
                 @endif

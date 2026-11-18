@@ -1458,7 +1458,7 @@
             "actions": [
                 {
                     "label": "Periodo e filtri",
-                    "text": "L'elenco si apre su oggi. Scelga date di inizio e fine e filtri facoltativamente per team, esecutore o clock point. <strong>Weekend</strong> è disattivato per impostazione predefinita: sabato e domenica spariscono. Lo attivi per mostrarli. Clicchi <strong>Applica</strong> per aggiornare l'elenco."
+                    "text": "L'elenco si apre su oggi. Scelga date di inizio e fine e filtri facoltativamente per team, esecutore o clock point. <strong>Weekend</strong> è disattivato per impostazione predefinita: sabato e domenica spariscono. Lo attivi per mostrarli. Clicchi <strong>Applica</strong> per aggiornare l'elenco. Con tutti gli esecutori, clicchi un nome per aprire la settimana di quella persona."
                 },
                 {
                     "label": "Vista settimanale",

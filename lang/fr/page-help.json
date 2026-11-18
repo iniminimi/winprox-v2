@@ -1466,7 +1466,7 @@
             "actions": [
                 {
                     "label": "Période et filtres",
-                    "text": "La liste s'ouvre sur aujourd'hui. Choisissez une date de début et de fin et filtrez éventuellement par équipe, exécutant ou clock point. <strong>Week-ends</strong> est désactivé par défaut : samedi et dimanche disparaissent. Activez-le pour les afficher. Cliquez sur <strong>Appliquer</strong> pour mettre à jour la liste."
+                    "text": "La liste s'ouvre sur aujourd'hui. Choisissez une date de début et de fin et filtrez éventuellement par équipe, exécutant ou clock point. <strong>Week-ends</strong> est désactivé par défaut : samedi et dimanche disparaissent. Activez-le pour les afficher. Cliquez sur <strong>Appliquer</strong> pour mettre à jour la liste. Avec tous les exécutants, cliquez sur un nom pour ouvrir la semaine de cette personne."
                 },
                 {
                     "label": "Vue semaine",

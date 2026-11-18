@@ -95,6 +95,25 @@ class ShiftsIndex extends Component
         $this->resetPage();
     }
 
+    public function openWorkerWeek(int $workerId, string $date): void
+    {
+        $this->authorize('viewAny', WorkShift::class);
+
+        $worker = Worker::query()->whereKey($workerId)->first();
+        if (! $worker instanceof Worker) {
+            return;
+        }
+
+        $this->workerFilter = (int) $worker->id;
+        $this->view = 'week';
+        try {
+            $this->weekStart = Carbon::parse($date)->toDateString();
+        } catch (\Throwable) {
+            $this->weekStart = $this->from !== '' ? $this->from : now()->toDateString();
+        }
+        $this->resetPage();
+    }
+
     public function setView(string $view): void
     {
         $this->view = $view === 'week' ? 'week' : 'list';

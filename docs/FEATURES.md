@@ -858,7 +858,7 @@ productsector op `Tenant`.
   Elk uur is 1,25 rem hoog, zodat een dag meer op het scherm past. Klik op een blok = Corrigeren (gesloten, Policy `correct`) of Shift sluiten (open).
   Bron: `BuildWorkShiftWeekGridAction::handle(int $tenantId, int $workerId, string $cursor, ?int $clockPointId, bool $includeWeekends = true)`.
   Export en Afdrukken blijven op de lijst.
-- **Urenkaart:** Time → Uren opent op vandaag (van = tot). Per dienst vijf kolommen (medewerker+team,
+- **Urenkaart:** Time → Uren opent op vandaag (van = tot). Bij alle uitvoerders opent een klik op de naam het weekoverzicht van die persoon, in de week van die dienst. Per dienst vijf kolommen (medewerker+team,
   gewerkt+pauze, datum+gepland, in/uit-registraties, status+Corrigeren).
   Verplaatsingen, werkbezoeken en taken staan onder die rij.
 - **Aanwezigheid → Uren:** klik op een uitvoerder (board, teams, locaties, zoek,

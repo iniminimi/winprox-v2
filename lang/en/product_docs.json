@@ -87,7 +87,7 @@
                 "items": [
                     "People clock in and out with the Clock Point QR code. On a fixed clock, each punch scans the code on the sticker or on the clock screen. The home-screen icon and the sign-in link do not clock in by themselves. On Checkmate, a worker can clock in and out from the icon.",
                     "A photo of the sticker can also be used away from the door. The QR code on the clock screen changes by itself and expires, so an old photo no longer works.",
-                    "You see who is present and the timesheet, and each person sees only their own shifts under My hours. On Clocked hours, Week shows one worker’s shifts per day and per hour, next to the planning. Weekends is off by default, so Saturday and Sunday stay hidden until you turn them on.",
+                    "You see who is present and the timesheet, and each person sees only their own shifts under My hours. On Clocked hours, Week shows one worker’s shifts per day and per hour, next to the planning. In the list of all workers, a click on the name opens that week. Weekends is off by default, so Saturday and Sunday stay hidden until you turn them on.",
                     "Under Presence, Overtime shows this calendar year’s balance up to today, the total next to the name and then by month. Team and clock point limit who you see; the balance stays the year balance. Earlier months of this year are included. This is not a pay calculation.",
                     "WinProx compares planned and recorded time with a margin of 15 minutes. A mark opens that person’s hours for that day straight away.",
                     "If someone forgot to clock in, an administrator can add the record by hand.",

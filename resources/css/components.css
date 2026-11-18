@@ -6474,6 +6474,23 @@ svg.wp-release-worker-row__icon,
     color: var(--wp-text);
 }
 
+button.wp-time-shift-card__name--link {
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+    color: var(--wp-accent-text);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+}
+
+button.wp-time-shift-card__name--link:hover {
+    color: var(--wp-accent-strong, var(--wp-accent));
+}
+
 .wp-time-shift-card__who-copy .wp-muted {
     margin: 0.15rem 0 0;
 }

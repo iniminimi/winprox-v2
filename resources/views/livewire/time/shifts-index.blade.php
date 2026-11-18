@@ -81,6 +81,7 @@
             @include('partials.wp-time-shift-card', [
                 'shift' => $shift,
                 'planned' => $plannedMap[$shift->worker_id.':'.$shift->clock_in_at->toDateString()] ?? [],
+                'linkToWeek' => blank($workerFilter),
             ])
         @empty
             <div class="wp-card wp-card-pad"><p class="wp-muted">{{ __('time.shifts.empty') }}</p></div>

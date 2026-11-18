@@ -1458,7 +1458,7 @@
             "actions": [
                 {
                     "label": "Período y filtros",
-                    "text": "La lista se abre en hoy. Elija fechas de inicio y fin y filtre opcionalmente por equipo, operario o clock point. <strong>Fines de semana</strong> está desactivado por defecto: sábado y domingo desaparecen. Actívelo para mostrarlos. Pulse <strong>Aplicar</strong> para actualizar la lista."
+                    "text": "La lista se abre en hoy. Elija fechas de inicio y fin y filtre opcionalmente por equipo, operario o clock point. <strong>Fines de semana</strong> está desactivado por defecto: sábado y domingo desaparecen. Actívelo para mostrarlos. Pulse <strong>Aplicar</strong> para actualizar la lista. Con todos los operarios, pulse un nombre para abrir la semana de esa persona."
                 },
                 {
                     "label": "Vista semanal",

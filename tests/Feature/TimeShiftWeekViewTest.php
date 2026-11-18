@@ -151,6 +151,23 @@ it('laat zaterdag en zondag weg tot weekends aan staat', function () {
         ->assertSee('18-11-2026');
 });
 
+it('opent vanuit de lijst van alle uitvoerders het weekoverzicht van die persoon', function () {
+    [, $admin, $worker, $clockPoint] = weekViewSetup();
+    $this->travelTo(Carbon::parse('2026-11-18 10:00:00'));
+    weekViewShift($worker, $clockPoint, '2026-11-17 08:00:00', '2026-11-17 16:00:00');
+
+    Livewire::actingAs($admin)
+        ->withQueryParams(['from' => '2026-11-16', 'to' => '2026-11-22'])
+        ->test(ShiftsIndex::class)
+        ->assertSeeHtml('wire:click="openWorkerWeek('.$worker->id)
+        ->call('openWorkerWeek', $worker->id, '2026-11-17')
+        ->assertSet('view', 'week')
+        ->assertSet('workerFilter', $worker->id)
+        ->assertSet('weekStart', '2026-11-17')
+        ->assertSee('08:00 – 16:00')
+        ->assertDontSeeHtml('wp-time-shift-card__name--link');
+});
+
 it('vraagt in de weekweergave eerst een uitvoerder', function () {
     [, $admin] = weekViewSetup();
 

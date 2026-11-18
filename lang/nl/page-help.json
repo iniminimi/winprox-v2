@@ -1458,7 +1458,7 @@
             "actions": [
                 {
                     "label": "Periode en filters",
-                    "text": "De lijst opent op vandaag. Kies een van- en tot-datum en filter optioneel op team, uitvoerder of clock point. <strong>Weekends</strong> staat standaard uit: zaterdag en zondag verdwijnen. Zet het aan om ze te tonen. Druk op <strong>Toepassen</strong> om de lijst bij te werken."
+                    "text": "De lijst opent op vandaag. Kies een van- en tot-datum en filter optioneel op team, uitvoerder of clock point. <strong>Weekends</strong> staat standaard uit: zaterdag en zondag verdwijnen. Zet het aan om ze te tonen. Druk op <strong>Toepassen</strong> om de lijst bij te werken. Bij alle uitvoerders klik je op een naam om de week van die persoon te openen."
                 },
                 {
                     "label": "Weekweergave",
