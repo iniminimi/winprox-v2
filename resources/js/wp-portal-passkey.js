@@ -156,6 +156,12 @@ function registerAlpineComponent() {
                     this.setError(done.status === 409 ? 'error_device' : 'error_failed');
                     return;
                 }
+                // BLE-prik: Livewire afronden i.p.v. reload (wire:poll wist anders de sessie).
+                if (this.purpose === 'ble-punch' && this.$wire
+                    && typeof this.$wire.confirmBlePasskeyAndPunch === 'function') {
+                    await this.$wire.confirmBlePasskeyAndPunch();
+                    return;
+                }
                 window.location.reload();
             } catch (e) {
                 this.setError(e?.name === 'NotAllowedError' ? 'error_cancelled' : 'error_failed');

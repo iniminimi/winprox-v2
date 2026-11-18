@@ -133,10 +133,14 @@ it('blokkeert een bluetooth-prik tot de passkey opnieuw klopt', function () {
 
     expect(WorkShift::query()->where('worker_id', $worker->id)->open()->exists())->toBeFalse();
 
-    session(['wp_ble_passkey_ok' => $clockPoint->id]);
+    session([
+        'wp_ble_passkey_ok' => 0,
+        'wp_ble_presence_clock_point_id' => $clockPoint->id,
+    ]);
+    \App\Support\Portal\ClockPointScanGrant::grant($clockPoint->id);
 
     // Geen GPS: bluetooth-aanwezigheid volstaat ook als GPS-op-prik aan staat.
-    $portal->call('clockIn');
+    $portal->call('confirmBlePasskeyAndPunch');
 
     $shift = WorkShift::query()->where('worker_id', $worker->id)->first();
     expect($shift)->not->toBeNull()

@@ -2691,6 +2691,34 @@ class TimePortal extends Component
     }
 
     /**
+     * Na WebAuthn voor ble-punch: markeer passkey OK en voer de prik meteen uit.
+     * Geen full reload — die race't met wire:poll en wist wp_ble_passkey_ok.
+     */
+    public function confirmBlePasskeyAndPunch(
+        FindOpenWorkShiftForWorkerAction $findShift,
+        ClockOutAction $clockOut,
+        StartWorkBreakAction $startBreak,
+        EndWorkBreakAction $endBreak,
+    ): void {
+        if (! $this->blePunchPending()) {
+            $this->portalFlash('time.portal.ble.rejected');
+
+            return;
+        }
+
+        session(['wp_ble_passkey_ok' => $this->clockPointId]);
+
+        $direction = (string) session('wp_ble_punch_direction', '');
+        match ($direction) {
+            'in' => $this->clockIn($findShift),
+            'out' => $this->clockOut($clockOut),
+            'break_start' => $this->startBreak($startBreak, $findShift),
+            'break_end' => $this->endBreak($endBreak, $findShift),
+            default => $this->portalFlash('time.portal.ble.rejected'),
+        };
+    }
+
+    /**
      * BLE-aanwezigheidstoken van het scherm: valideer, geef scan-grant, vraag passkey.
      * Het scherm is de aanwezigheid — prik gebeurt op dat clock point, niet op het
      * portaal-punt waarmee de sessie ooit geopend werd (vaak een andere /cp-link).
