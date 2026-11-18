@@ -1484,6 +1484,12 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
     hyphenate-limit-chars: 6 3 3;
 }
 
+.wp-portal-now__punch {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
 .wp-portal-now__head {
     display: flex;
     align-items: center;
@@ -1491,16 +1497,16 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
     gap: 0.75rem;
 }
 
-.wp-portal-now__punch,
-.wp-portal-now__punch > div {
+.wp-portal-now__scan-choices {
     display: flex;
-    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.wp-portal-now__punch > .wp-portal-now__scan-choices {
+.wp-portal-now__ble {
+    display: flex;
     flex-direction: column;
-    align-items: stretch;
-    gap: 0.5rem;
+    gap: 0.35rem;
 }
 
 .wp-portal .wp-portal-now__head .btn--sm,
@@ -1511,6 +1517,11 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
     height: auto;
     min-height: 2.75rem;
     padding-inline: 0.85rem;
+}
+
+.wp-portal .wp-portal-now__scan-choices .btn--block {
+    width: 100%;
+    justify-content: center;
 }
 
 .wp-portal-now__name {

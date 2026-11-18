@@ -95,47 +95,56 @@
     @if ($placeLine !== '')
         <p class="wp-portal-now__place">{{ $placeLine }}</p>
     @endif
-    <div class="wp-portal-now__head">
-        <button
-            type="button"
-            class="wp-settings-section-toggle wp-portal-now__disclosure-toggle"
-            @click="open = !open"
-            :aria-expanded="open"
-            aria-label="{{ __('time.portal.now.toggle') }}"
-            data-manual-capture-trigger="portal-now-toggle"
-        >
-            <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
-            <strong class="wp-portal-now__name">{{ $workerName }}</strong>
-        </button>
-        @if (! $action['needsScan'])
-            <button type="button" class="btn btn--primary btn--sm" wire:click="endBreak" data-manual-capture-trigger="portal-primary-action">{{ $action['label'] }}</button>
-        @else
-            <div
-                class="wp-portal-now__punch"
-                x-data="{ direct: @js($directForever), left: @js($grantSeconds), autoPunch: @js(! ($bleNeedsPasskey ?? false) && (($scanPunchMethod ?? null) === $action['method'] || ($bleAutopunch ?? '') === ($action['method'] === 'clockIn' ? 'in' : ($action['method'] === 'clockOut' ? 'out' : ($action['method'] === 'startBreak' ? 'break_start' : ($action['method'] === 'endBreak' ? 'break_end' : '')))))) }"
-                x-init="if (!direct && left > 0) { const id = setInterval(() => { left -= 1; if (left <= 0) { left = 0; clearInterval(id) } }, 1000) } if (autoPunch && left > 0) { $nextTick(() => withGps('{{ $action['method'] }}')) }"
+    @php
+        $bleDirForAction = match ($action['method']) {
+            'clockIn' => 'in',
+            'clockOut' => 'out',
+            'startBreak' => 'break_start',
+            'endBreak' => 'break_end',
+            default => null,
+        };
+        $showBleChoice = ($bleChoiceAvailable ?? false) && $bleDirForAction !== null;
+    @endphp
+    <div
+        class="wp-portal-now__punch"
+        x-data="{ direct: @js($directForever), left: @js($grantSeconds), autoPunch: @js(! ($bleNeedsPasskey ?? false) && (($scanPunchMethod ?? null) === $action['method'] || ($bleAutopunch ?? '') === ($action['method'] === 'clockIn' ? 'in' : ($action['method'] === 'clockOut' ? 'out' : ($action['method'] === 'startBreak' ? 'break_start' : ($action['method'] === 'endBreak' ? 'break_end' : '')))))) }"
+        x-init="if (!direct && left > 0) { const id = setInterval(() => { left -= 1; if (left <= 0) { left = 0; clearInterval(id) } }, 1000) } if (autoPunch && left > 0) { $nextTick(() => withGps('{{ $action['method'] }}')) }"
+    >
+        <div class="wp-portal-now__head">
+            <button
+                type="button"
+                class="wp-settings-section-toggle wp-portal-now__disclosure-toggle"
+                @click="open = !open"
+                :aria-expanded="open"
+                aria-label="{{ __('time.portal.now.toggle') }}"
+                data-manual-capture-trigger="portal-now-toggle"
             >
-                @if ($bleNeedsPasskey ?? false)
-                    <div
-                        x-data="wpPortalPasskey({
-                            purpose: 'ble-punch',
-                            urls: {
-                                assertOptions: @js(route('public.time-portal.passkey.assert-options', $passkeyTenantId)),
-                                assert: @js(route('public.time-portal.passkey.assert', $passkeyTenantId)),
-                            },
-                            i18n: {
-                                error_cancelled: @js(__('portal.passkey.error_cancelled')),
-                                error_failed: @js(__('portal.passkey.error_failed')),
-                                error_device: @js(__('portal.passkey.error_device')),
-                            },
-                        })"
-                    >
-                        <button type="button" class="btn btn--primary btn--sm" @click="verify" :disabled="busy" x-show="supported" x-cloak>
-                            {{ __('time.portal.ble.passkey_button') }}
-                        </button>
-                        <p class="wp-error" x-show="error !== ''" x-text="error"></p>
-                    </div>
-                @else
+                <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
+                <strong class="wp-portal-now__name">{{ $workerName }}</strong>
+            </button>
+            @if (! $action['needsScan'])
+                <button type="button" class="btn btn--primary btn--sm" wire:click="endBreak" data-manual-capture-trigger="portal-primary-action">{{ $action['label'] }}</button>
+            @elseif ($bleNeedsPasskey ?? false)
+                <div
+                    x-data="wpPortalPasskey({
+                        purpose: 'ble-punch',
+                        urls: {
+                            assertOptions: @js(route('public.time-portal.passkey.assert-options', $passkeyTenantId)),
+                            assert: @js(route('public.time-portal.passkey.assert', $passkeyTenantId)),
+                        },
+                        i18n: {
+                            error_cancelled: @js(__('portal.passkey.error_cancelled')),
+                            error_failed: @js(__('portal.passkey.error_failed')),
+                            error_device: @js(__('portal.passkey.error_device')),
+                        },
+                    })"
+                >
+                    <button type="button" class="btn btn--primary btn--sm" @click="verify" :disabled="busy" x-show="supported" x-cloak>
+                        {{ __('time.portal.ble.passkey_button') }}
+                    </button>
+                    <p class="wp-error" x-show="error !== ''" x-text="error"></p>
+                </div>
+            @else
                 <button
                     type="button"
                     class="btn btn--primary btn--sm"
@@ -144,82 +153,72 @@
                     @click="withGps('{{ $action['method'] }}')"
                     data-manual-capture-trigger="portal-primary-action"
                 >{{ $action['label'] }}</button>
-                @endif
-                <div
-                    class="wp-portal-now__scan-choices"
-                    x-show="!direct && left <= 0"
-                    x-cloak
-                >
-                    @php
-                        $bleDirForAction = match ($action['method']) {
-                            'clockIn' => 'in',
-                            'clockOut' => 'out',
-                            'startBreak' => 'break_start',
-                            'endBreak' => 'break_end',
-                            default => null,
-                        };
-                    @endphp
-                    @if (($bleChoiceAvailable ?? false) && $bleDirForAction !== null)
-                        <div
-                            x-data="wpPortalBle({
-                                clockPointId: @js((int) ($bleClockPointId ?? 0)),
-                                direction: @js($bleDirForAction),
-                                i18n: {
-                                    not_found: @js(__('time.portal.ble.not_found')),
-                                    permission: @js(__('time.portal.ble.permission')),
-                                    bt_off: @js(__('time.portal.ble.bt_off')),
-                                    failed: @js(__('time.portal.ble.failed')),
-                                },
-                            })"
-                        >
-                            <button
-                                type="button"
-                                class="btn btn--primary btn--sm"
-                                x-show="!unsupported"
-                                x-cloak
-                                @click="yes"
-                                :disabled="busy"
-                                data-manual-capture-trigger="portal-ble-punch"
-                            >
-                                <x-wp-icon name="bluetooth" class="wp-icon" />
-                                <span x-text="paired ? @js(__('time.portal.ble.via_bluetooth')) : @js(__('time.portal.ble.pair_once'))"></span>
-                            </button>
-                            <p class="wp-muted wp-text-sm" x-show="!paired && !unsupported" x-cloak>{{ __('time.portal.ble.pair_once_hint') }}</p>
-                            <p class="wp-muted wp-text-sm" x-show="unsupported" x-cloak>{{ __('time.portal.ble.unsupported') }}</p>
-                            <p class="wp-error" x-show="error !== ''" x-text="error"></p>
-                        </div>
-                    @endif
+            @endif
+        </div>
+
+        @if ($action['needsScan'])
+            <div class="wp-portal-now__scan-choices" x-show="!direct && left <= 0" x-cloak>
+                @if ($showBleChoice)
                     <div
-                        x-data="wpPortalQrScanner({
+                        class="wp-portal-now__ble"
+                        x-data="wpPortalBle({
+                            clockPointId: @js((int) ($bleClockPointId ?? 0)),
+                            direction: @js($bleDirForAction),
                             i18n: {
-                                unsupported: @js(__('time.portal.scan.error_unsupported')),
-                                denied: @js(__('time.portal.scan.error_denied')),
-                                invalid: @js(__('time.portal.scan.error_invalid')),
-                                slow: @js(__('time.portal.scan.slow_hint')),
+                                not_found: @js(__('time.portal.ble.not_found')),
+                                permission: @js(__('time.portal.ble.permission')),
+                                bt_off: @js(__('time.portal.ble.bt_off')),
+                                failed: @js(__('time.portal.ble.failed')),
                             },
-                            punch: @js($action['method']),
                         })"
                     >
-                        <button type="button" class="btn {{ ($bleChoiceAvailable ?? false) ? 'btn--surface' : 'btn--primary' }} btn--sm" @click="openScanner()" data-manual-capture-trigger="portal-scan-qr">
-                            <x-wp-icon name="qr" class="wp-icon" />
-                            <span>{{ ($bleChoiceAvailable ?? false) ? __('time.portal.ble.via_qr') : $action['label'] }}</span>
+                        <button
+                            type="button"
+                            class="btn btn--primary btn--block"
+                            x-show="!unsupported"
+                            x-cloak
+                            @click="yes"
+                            :disabled="busy"
+                            data-manual-capture-trigger="portal-ble-punch"
+                        >
+                            <x-wp-icon name="bluetooth" class="wp-icon" />
+                            <span x-text="paired ? @js(__('time.portal.ble.via_bluetooth')) : @js(__('time.portal.ble.pair_once'))"></span>
                         </button>
-                        <template x-teleport="body">
-                            <div class="wp-scan-overlay" x-show="scannerOpen" x-cloak @keydown.escape.window="closeScanner()">
-                                <div class="wp-scan-dialog" role="dialog" aria-modal="true" aria-label="{{ __('time.portal.scan.title') }}">
-                                    <p class="wp-scan-title">{{ __('time.portal.scan.title') }}</p>
-                                    <div class="wp-scan-viewport">
-                                        <video x-ref="scanVideo" playsinline muted autoplay></video>
-                                        <span class="wp-scan-frame" aria-hidden="true"></span>
-                                    </div>
-                                    <p class="wp-scan-hint">{{ __('time.portal.scan.hint') }}</p>
-                                    <p class="wp-scan-hint" x-show="slowHint" x-text="i18n.slow" x-cloak></p>
-                                    <p class="wp-scan-error" x-show="errorKey !== null" x-text="errorText" x-cloak></p>
-                                    <button type="button" class="btn btn--ghost btn--sm" @click="closeScanner()">{{ __('common.button.cancel') }}</button>
-                                </div>
-                            </div>
-                        </template>
+                        <p class="wp-muted wp-text-sm" x-show="!paired && !unsupported" x-cloak>{{ __('time.portal.ble.pair_once_hint') }}</p>
+                        <p class="wp-muted wp-text-sm" x-show="unsupported" x-cloak>{{ __('time.portal.ble.unsupported') }}</p>
+                        <p class="wp-error" x-show="error !== ''" x-text="error"></p>
                     </div>
+                @endif
+                <div
+                    x-data="wpPortalQrScanner({
+                        i18n: {
+                            unsupported: @js(__('time.portal.scan.error_unsupported')),
+                            denied: @js(__('time.portal.scan.error_denied')),
+                            invalid: @js(__('time.portal.scan.error_invalid')),
+                            slow: @js(__('time.portal.scan.slow_hint')),
+                        },
+                        punch: @js($action['method']),
+                    })"
+                >
+                    <button type="button" class="btn {{ $showBleChoice ? 'btn--surface' : 'btn--primary' }} btn--block" @click="openScanner()" data-manual-capture-trigger="portal-scan-qr">
+                        <x-wp-icon name="qr" class="wp-icon" />
+                        <span>{{ $showBleChoice ? __('time.portal.ble.via_qr') : $action['label'] }}</span>
+                    </button>
+                    <template x-teleport="body">
+                        <div class="wp-scan-overlay" x-show="scannerOpen" x-cloak @keydown.escape.window="closeScanner()">
+                            <div class="wp-scan-dialog" role="dialog" aria-modal="true" aria-label="{{ __('time.portal.scan.title') }}">
+                                <p class="wp-scan-title">{{ __('time.portal.scan.title') }}</p>
+                                <div class="wp-scan-viewport">
+                                    <video x-ref="scanVideo" playsinline muted autoplay></video>
+                                    <span class="wp-scan-frame" aria-hidden="true"></span>
+                                </div>
+                                <p class="wp-scan-hint">{{ __('time.portal.scan.hint') }}</p>
+                                <p class="wp-scan-hint" x-show="slowHint" x-text="i18n.slow" x-cloak></p>
+                                <p class="wp-scan-error" x-show="errorKey !== null" x-text="errorText" x-cloak></p>
+                                <button type="button" class="btn btn--ghost btn--sm" @click="closeScanner()">{{ __('common.button.cancel') }}</button>
+                            </div>
+                        </div>
+                    </template>
                 </div>
             </div>
         @endif

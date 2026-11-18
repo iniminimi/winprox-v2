@@ -454,8 +454,8 @@
             "fallback_scan": "Vous pouvez aussi scanner le QR sur l’écran ou l’autocollant.",
             "via_bluetooth": "Via Bluetooth",
             "via_qr": "Scanner le QR",
-            "pair_once": "Associer l’horloge une fois",
-            "pair_once_hint": "La première fois, choisissez WinProx sur le téléphone. Ensuite, un seul appui sur Bluetooth suffit."
+            "pair_once": "Associer",
+            "pair_once_hint": "La première fois choisissez l’horloge ; ensuite un appui."
         },
         "title": "Connexion",
         "clock": {

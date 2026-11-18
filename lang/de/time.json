@@ -454,8 +454,8 @@
             "fallback_scan": "Sie können auch den QR am Display oder den Aufkleber scannen.",
             "via_bluetooth": "Per Bluetooth",
             "via_qr": "QR-Code scannen",
-            "pair_once": "Uhr einmal koppeln",
-            "pair_once_hint": "Beim ersten Mal wählen Sie WinProx auf dem Telefon. Danach reicht ein Tipp auf Bluetooth."
+            "pair_once": "Uhr koppeln",
+            "pair_once_hint": "Beim ersten Mal Uhr wählen; danach ein Tipp."
         },
         "title": "Anmeldung",
         "clock": {

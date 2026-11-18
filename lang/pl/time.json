@@ -75,8 +75,8 @@
             "fallback_scan": "Możesz też zeskanować QR na ekranie lub naklejkę.",
             "via_bluetooth": "Przez Bluetooth",
             "via_qr": "Skanuj QR",
-            "pair_once": "Sparuj zegar raz",
-            "pair_once_hint": "Za pierwszym razem wybierz WinProx na telefonie. Potem wystarczy jedno kliknięcie Bluetooth."
+            "pair_once": "Sparuj",
+            "pair_once_hint": "Za pierwszym razem wybierz zegar; potem jedno kliknięcie."
         },
         "title": "Logowanie",
         "clock": {

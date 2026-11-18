@@ -75,8 +75,8 @@
             "fallback_scan": "Poți scana și QR-ul de pe ecran sau autocolantul.",
             "via_bluetooth": "Prin Bluetooth",
             "via_qr": "Scanează QR",
-            "pair_once": "Asociază ceasul o dată",
-            "pair_once_hint": "Prima dată alege WinProx pe telefon. Apoi e suficient o apăsare pe Bluetooth."
+            "pair_once": "Asociază",
+            "pair_once_hint": "Prima dată alege ceasul; apoi o apăsare."
         },
         "title": "Autentificare",
         "clock": {
