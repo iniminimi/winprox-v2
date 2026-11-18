@@ -1355,8 +1355,8 @@ binnen ~30–90 s dood.
   token → 401 → scherm wist credentials → pairing-modus.
 - **Klokmodus** (`display_clock_mode`, beheer Clock Point → Scherm): `online`
   (QR + PIN + periodieke ping) of `ble` (boot-TLS-sync, daarna presence via
-  GATT, geen PIN-pad, geen TLS na boot; SNTP blijft; nachtelijke herstart
-  vernieuwt `lastSync`). In ble-modus kiest de uitvoerder op de telefoon
+  GATT, geen PIN-pad; SNTP + lichte ping ±30 min voor servertijd/`lastSync`;
+  nachtelijke herstart). In ble-modus kiest de uitvoerder op de telefoon
   **bluetooth of QR** (iPhone / geen Bluetooth → QR). Offline-blokkade ~3 dagen
   (`time.display_offline_block_hours`).
 - **BLE presence-token:** 32 bytes
