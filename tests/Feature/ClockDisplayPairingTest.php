@@ -284,8 +284,8 @@ it('lost een dynamische display-token op binnen het venster en blokkeert een ver
         hash_hmac('sha256', 'wpx:'.$window, $point->display_secret), 0, 40);
     expect($resolver->handle($legacy)->status)->toBe(ClockPointPortalTokenResolution::STATUS_CURRENT);
 
-    // ±1 venster binnen tolerantie.
-    $prev = $point->display_id.ClockDisplayQr::dynFor($point->display_secret, $window - 1);
+    // ±2 vensters binnen tolerantie (korte klokdrift / nieuwe gsm).
+    $prev = $point->display_id.ClockDisplayQr::dynFor($point->display_secret, $window - 2);
     expect($resolver->handle($prev)->status)->toBe(ClockPointPortalTokenResolution::STATUS_CURRENT);
 
     // Buiten tolerantie (stale foto van het scherm) → blocked, niet notFound.

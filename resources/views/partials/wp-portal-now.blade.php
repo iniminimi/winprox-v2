@@ -210,7 +210,7 @@
                     <button
                         type="button"
                         class="btn {{ ($showBleChoice && ! ($bleNeedsPasskey ?? false)) ? 'btn--surface' : 'btn--primary' }} btn--block"
-                        @click="@if ($bleNeedsPasskey ?? false) $wire.cancelBlePasskey(); @endif openScanner()"
+                        @click="openScanner()"
                         data-manual-capture-trigger="portal-scan-qr"
                     >
                         <x-wp-icon name="qr" class="wp-icon" />
