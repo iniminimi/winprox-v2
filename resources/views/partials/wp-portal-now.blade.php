@@ -57,7 +57,12 @@
         $statusLine = __('time.portal.now.status_out');
     }
 
-    if ($onBreak) {
+    $bleDir = (string) ($blePunchDirection ?? ($bleAutopunch ?? ''));
+    if (in_array($bleDir, ['break_start', 'break_end'], true)) {
+        $action = $bleDir === 'break_end'
+            ? ['method' => 'endBreak', 'label' => __('time.portal.clock.end_break'), 'needsScan' => true]
+            : ['method' => 'startBreak', 'label' => __('time.portal.clock.start_break'), 'needsScan' => true];
+    } elseif ($onBreak) {
         $action = ['method' => 'endBreak', 'label' => __('time.portal.clock.end_break'), 'needsScan' => false];
     } elseif ($openShift === null) {
         $action = ['method' => 'clockIn', 'label' => __('time.portal.clock.in'), 'needsScan' => true];
@@ -102,7 +107,7 @@
         @else
             <div
                 class="wp-portal-now__punch"
-                x-data="{ direct: @js($directForever), left: @js($grantSeconds), autoPunch: @js(! ($bleNeedsPasskey ?? false) && (($scanPunchMethod ?? null) === $action['method'] || ($bleAutopunch ?? '') === ($action['method'] === 'clockIn' ? 'in' : ($action['method'] === 'clockOut' ? 'out' : '')))) }"
+                x-data="{ direct: @js($directForever), left: @js($grantSeconds), autoPunch: @js(! ($bleNeedsPasskey ?? false) && (($scanPunchMethod ?? null) === $action['method'] || ($bleAutopunch ?? '') === ($action['method'] === 'clockIn' ? 'in' : ($action['method'] === 'clockOut' ? 'out' : ($action['method'] === 'startBreak' ? 'break_start' : ($action['method'] === 'endBreak' ? 'break_end' : '')))))) }"
                 x-init="if (!direct && left > 0) { const id = setInterval(() => { left -= 1; if (left <= 0) { left = 0; clearInterval(id) } }, 1000) } if (autoPunch && left > 0) { $nextTick(() => withGps('{{ $action['method'] }}')) }"
             >
                 @if ($bleNeedsPasskey ?? false)

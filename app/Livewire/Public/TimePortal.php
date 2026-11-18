@@ -16,6 +16,7 @@ use App\Actions\Tasks\StartTaskAction;
 use App\Actions\Team\MarkTeamLibraryOpenedAction;
 use App\Actions\Time\AcknowledgeTimeRosterViewAction;
 use App\Actions\Time\ResolveWorkerBlePunchPromptAction;
+use App\Actions\Time\ValidateClockDisplayPresenceTokenAction;
 use App\Actions\Time\AssertClockPointTaskVisitAction;
 use App\Actions\Time\AssertClockPointUnitVisitAction;
 use App\Actions\Time\AssertWorkerClockDeviceAction;
@@ -367,14 +368,6 @@ class TimePortal extends Component
 
         if ($this->inactiveReasonKey === null && $this->entryGrantsPunchScan()) {
             ClockPointScanGrant::grant($this->clockPointId);
-        }
-
-        $ble = request()->query('ble');
-        if (in_array($ble, ['in', 'out'], true) && $this->entryGrantsPunchScan()) {
-            session([
-                'wp_ble_punch_pending' => $this->clockPointId,
-                'wp_ble_punch_direction' => $ble,
-            ]);
         }
     }
 
@@ -1303,6 +1296,7 @@ class TimePortal extends Component
                 [$device, $token] = $this->clockDeviceContext($worker);
                 app(TransferOpenWorkShiftToClockPointAction::class)->handle($worker, $clockPoint, $device, null, true, $token);
                 ClockPointScanGrant::consume((int) $clockPoint->id);
+                $this->clearBlePunchSession();
                 $this->portalFlash('time.portal.transferred');
             } catch (InvalidArgumentException $e) {
                 $this->flashPunchError($e);
@@ -1326,6 +1320,7 @@ class TimePortal extends Component
                 $lng,
             );
             ClockPointScanGrant::consume((int) $clockPoint->id);
+            $this->clearBlePunchSession();
             $this->portalFlash('time.portal.clock.clocked_in_at_tenant', [
                 'tenant' => (string) (Tenant::query()->whereKey($this->tenantId)->value('name') ?? ''),
                 'time' => now()->format('H:i'),
@@ -1384,6 +1379,7 @@ class TimePortal extends Component
             [$device, $token] = $this->clockDeviceContext($worker);
             $transfer->handle($worker, $clockPoint, $device, null, true, $token);
             ClockPointScanGrant::consume((int) $clockPoint->id);
+            $this->clearBlePunchSession();
             $this->portalFlash('time.portal.transferred');
         } catch (InvalidArgumentException $e) {
             if ($this->flashClockDeviceError($e)) {
@@ -1411,6 +1407,7 @@ class TimePortal extends Component
             [$device, $token] = $this->clockDeviceContext($worker);
             $clockOut->handle($worker, $clockPoint, null, $this->punchSource(), true, $device, $token);
             ClockPointScanGrant::consume((int) $clockPoint->id);
+            $this->clearBlePunchSession();
             $this->portalFlash('time.portal.clock.clocked_out_at', [
                 'time' => now()->format('H:i'),
             ]);
@@ -2105,6 +2102,13 @@ class TimePortal extends Component
         if ($worker === null) {
             return;
         }
+        // BLE-modus: pauze alleen met aanwezigheidsbewijs (canPunch), zoals in/uit.
+        if ($this->activeClockPoint()?->displayUsesBle() && ! $this->requirePunchScanGrant()) {
+            return;
+        }
+        if (! $this->requireBlePasskey()) {
+            return;
+        }
 
         $shift = $findShift->handle($worker);
         if ($shift === null) {
@@ -2116,6 +2120,10 @@ class TimePortal extends Component
         try {
             [$device, $token] = $this->clockDeviceContext($worker);
             $startBreak->handle($worker, $shift, true, $device, $token);
+            if ($this->blePunchPending()) {
+                ClockPointScanGrant::consume((int) $this->clockPointId);
+                $this->clearBlePunchSession();
+            }
             $this->portalFlash('time.portal.break_started');
         } catch (InvalidArgumentException $e) {
             if ($this->flashClockDeviceError($e)) {
@@ -2136,6 +2144,12 @@ class TimePortal extends Component
         if ($worker === null) {
             return;
         }
+        if ($this->activeClockPoint()?->displayUsesBle() && ! $this->requirePunchScanGrant()) {
+            return;
+        }
+        if (! $this->requireBlePasskey()) {
+            return;
+        }
 
         $shift = $findShift->handle($worker);
         if ($shift === null) {
@@ -2147,6 +2161,10 @@ class TimePortal extends Component
         try {
             [$device, $token] = $this->clockDeviceContext($worker);
             $endBreak->handle($worker, $shift, true, $device, $token);
+            if ($this->blePunchPending()) {
+                ClockPointScanGrant::consume((int) $this->clockPointId);
+                $this->clearBlePunchSession();
+            }
             $this->portalFlash('time.portal.break_ended');
         } catch (InvalidArgumentException $e) {
             if ($this->flashClockDeviceError($e)) {
@@ -2229,6 +2247,7 @@ class TimePortal extends Component
         if ($canAct && $verifiedWorker !== null && TimeModuleAccess::tenantHasModule(Tenant::query()->find($this->tenantId))) {
             $openShift = $findShift->handle($verifiedWorker);
             if ($openShift !== null) {
+                $openShift->loadMissing(['openBreak', 'breaks', 'team']);
                 $absenceClockInKind = $absenceClockIns->handle((int) $this->tenantId, collect([$openShift]))
                     ->first()
                     ?->absenceKind;
@@ -2490,6 +2509,9 @@ class TimePortal extends Component
             'blePrompt' => $this->blePromptFor($verifiedWorker, $openShift),
             'bleNeedsPasskey' => $this->blePunchPending()
                 && (int) session('wp_ble_passkey_ok', 0) !== (int) $this->clockPointId,
+            'blePunchDirection' => $this->blePunchPending()
+                ? (string) session('wp_ble_punch_direction', '')
+                : '',
             'bleAutopunch' => $this->blePunchPending()
                 && (int) session('wp_ble_passkey_ok', 0) === (int) $this->clockPointId
                 ? (string) session('wp_ble_punch_direction', '')
@@ -2588,6 +2610,15 @@ class TimePortal extends Component
         return (int) session('wp_ble_punch_pending', 0) === (int) $this->clockPointId;
     }
 
+    private function clearBlePunchSession(): void
+    {
+        session()->forget([
+            'wp_ble_punch_pending',
+            'wp_ble_punch_direction',
+            'wp_ble_passkey_ok',
+        ]);
+    }
+
     private function requireBlePasskey(): bool
     {
         if (! $this->blePunchPending()) {
@@ -2612,11 +2643,53 @@ class TimePortal extends Component
         if ($this->authorizedWorker() === null) {
             return;
         }
-        if ($plannedShiftId < 1 || ! in_array($direction, ['in', 'out'], true)) {
+        if ($plannedShiftId < 1 || ! in_array($direction, ['in', 'out', 'break_start', 'break_end'], true)) {
             return;
         }
 
         session(['wp_ble_dismiss_'.$plannedShiftId.'_'.$direction => true]);
+    }
+
+    /**
+     * BLE-aanwezigheidstoken van het scherm: valideer, geef scan-grant, vraag passkey.
+     */
+    public function submitBlePresenceToken(string $tokenHex, string $direction): void
+    {
+        if ($this->authorizedWorker() === null || $this->activeClockPoint() === null) {
+            return;
+        }
+        if (! in_array($direction, ['in', 'out', 'break_start', 'break_end'], true)) {
+            return;
+        }
+
+        try {
+            $result = app(ValidateClockDisplayPresenceTokenAction::class)->handle(
+                $tokenHex,
+                (int) $this->tenantId,
+            );
+        } catch (InvalidArgumentException $e) {
+            $key = match ($e->getMessage()) {
+                'presence_token_expired' => 'time.portal.ble.token_expired',
+                'presence_token_replay' => 'time.portal.ble.token_replay',
+                default => 'time.portal.ble.token_invalid',
+            };
+            $this->portalFlash($key);
+
+            return;
+        }
+
+        if ((int) $result['clock_point']->id !== (int) $this->clockPointId) {
+            $this->portalFlash('time.portal.ble.token_wrong_clock');
+
+            return;
+        }
+
+        ClockPointScanGrant::grant((int) $this->clockPointId);
+        session([
+            'wp_ble_punch_pending' => $this->clockPointId,
+            'wp_ble_punch_direction' => $direction,
+            'wp_ble_passkey_ok' => 0,
+        ]);
     }
 
     /**
@@ -2630,8 +2703,12 @@ class TimePortal extends Component
         if (ClockPointScanGrant::isValid((int) $this->clockPointId)) {
             return null;
         }
+        $portalPoint = ClockPoint::query()->whereKey($this->clockPointId)->first();
+        if ($portalPoint === null || ! $portalPoint->displayUsesBle()) {
+            return null;
+        }
 
-        $portalLocationId = ClockPoint::query()->whereKey($this->clockPointId)->value('location_id');
+        $portalLocationId = $portalPoint->location_id;
         $prompt = app(ResolveWorkerBlePunchPromptAction::class)->handle(
             $worker,
             $openShift instanceof WorkShift ? $openShift : null,

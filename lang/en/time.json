@@ -413,6 +413,15 @@
             "mode_clock": "Analog clock",
             "mode_flipclock": "Flip clock",
             "mode_none": "Nothing (regular QR)"
+        },
+        "mode": {
+            "title": "Clock mode",
+            "hint": "Online: QR and PIN on the display. Bluetooth: the phone reads a short presence token; no PIN pad on the display.",
+            "online": "Online (QR + PIN)",
+            "ble": "Bluetooth (phone)",
+            "save": "Save",
+            "saved": "Clock mode saved.",
+            "invalid": "Invalid clock mode."
         }
     },
     "duration": {
@@ -430,7 +439,19 @@
             "not_found": "No clock found. Stand next to the screen and try again.",
             "failed": "Could not connect to the clock.",
             "passkey_required": "Confirm with your finger or face first.",
-            "passkey_button": "Confirm with finger or face"
+            "passkey_button": "Confirm with finger or face",
+            "break_start_title": "Start your break via Bluetooth?",
+            "break_end_title": "End your break via Bluetooth?",
+            "break_start_body": "Stand next to the clock. Your phone will then ask for your fingerprint or face again.",
+            "break_end_body": "Stand next to the clock. Your phone will then ask for your fingerprint or face again.",
+            "token_expired": "The clock token expired. Try again next to the display.",
+            "token_replay": "This token was already used. Read again from the clock.",
+            "token_invalid": "Could not recognise the clock. Please try again.",
+            "token_wrong_clock": "This is a different clock. Go to the right site.",
+            "unsupported": "This browser does not support Bluetooth punching.",
+            "permission": "Bluetooth access denied. Allow Bluetooth and location for this site.",
+            "bt_off": "Bluetooth or location is off. Turn them on and try again.",
+            "fallback_scan": "You can also scan the QR on the display or the sticker."
         },
         "title": "Sign in",
         "clock": {

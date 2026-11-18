@@ -413,6 +413,15 @@
             "mode_clock": "Horloge analogique",
             "mode_flipclock": "Horloge flip",
             "mode_none": "Rien (QR normal)"
+        },
+        "mode": {
+            "title": "Mode horloge",
+            "hint": "En ligne : QR et PIN sur l’écran. Bluetooth : le téléphone lit un jeton de présence court ; pas de clavier PIN sur l’écran.",
+            "online": "En ligne (QR + PIN)",
+            "ble": "Bluetooth (téléphone)",
+            "save": "Enregistrer",
+            "saved": "Mode horloge enregistré.",
+            "invalid": "Mode horloge invalide."
         }
     },
     "duration": {
@@ -430,7 +439,19 @@
             "not_found": "Aucune horloge trouvée. Placez-vous à côté de l'écran et réessayez.",
             "failed": "La connexion à l'horloge a échoué.",
             "passkey_required": "Confirmez d'abord avec votre doigt ou votre visage.",
-            "passkey_button": "Confirmer avec le doigt ou le visage"
+            "passkey_button": "Confirmer avec le doigt ou le visage",
+            "break_start_title": "Démarrer la pause via Bluetooth ?",
+            "break_end_title": "Terminer la pause via Bluetooth ?",
+            "break_start_body": "Placez-vous près de l’horloge. Le téléphone demandera ensuite à nouveau votre empreinte ou votre visage.",
+            "break_end_body": "Placez-vous près de l’horloge. Le téléphone demandera ensuite à nouveau votre empreinte ou votre visage.",
+            "token_expired": "Le jeton de l’horloge a expiré. Réessayez près de l’écran.",
+            "token_replay": "Ce jeton a déjà été utilisé. Relisez depuis l’horloge.",
+            "token_invalid": "Impossible de reconnaître l’horloge. Réessayez.",
+            "token_wrong_clock": "Ce n’est pas la bonne horloge. Allez sur le bon site.",
+            "unsupported": "Ce navigateur ne prend pas en charge le pointage Bluetooth.",
+            "permission": "Accès Bluetooth refusé. Autorisez Bluetooth et la localisation pour ce site.",
+            "bt_off": "Bluetooth ou localisation est désactivé. Activez-les et réessayez.",
+            "fallback_scan": "Vous pouvez aussi scanner le QR sur l’écran ou l’autocollant."
         },
         "title": "Connexion",
         "clock": {

@@ -413,6 +413,15 @@
             "mode_clock": "Wijzerklok",
             "mode_flipclock": "Flipklok",
             "mode_none": "Niets (gewone QR)"
+        },
+        "mode": {
+            "title": "Klokmodus",
+            "hint": "Online: QR en PIN op het scherm. Bluetooth: telefoon leest een kort aanwezigheidsteken; geen PIN-pad op het scherm.",
+            "online": "Online (QR + PIN)",
+            "ble": "Bluetooth (telefoon)",
+            "save": "Opslaan",
+            "saved": "Klokmodus opgeslagen.",
+            "invalid": "Ongeldige klokmodus."
         }
     },
     "duration": {
@@ -430,7 +439,19 @@
             "not_found": "Geen klok gevonden. Sta naast het scherm en probeer opnieuw.",
             "failed": "Verbinden met de klok lukte niet.",
             "passkey_required": "Bevestig eerst met je vinger of gezicht.",
-            "passkey_button": "Bevestig met vinger of gezicht"
+            "passkey_button": "Bevestig met vinger of gezicht",
+            "break_start_title": "Wil je pauze starten via bluetooth?",
+            "break_end_title": "Wil je pauze stoppen via bluetooth?",
+            "break_start_body": "Sta naast de klok. Daarna vraagt je gsm nog eens om je vinger of gezicht.",
+            "break_end_body": "Sta naast de klok. Daarna vraagt je gsm nog eens om je vinger of gezicht.",
+            "token_expired": "Het teken van de klok is verlopen. Probeer opnieuw naast het scherm.",
+            "token_replay": "Dit teken is al gebruikt. Lees opnieuw vanaf de klok.",
+            "token_invalid": "De klok herkennen lukte niet. Probeer opnieuw.",
+            "token_wrong_clock": "Dit is een andere klok. Ga naar de juiste vestiging.",
+            "unsupported": "Deze browser ondersteunt geen Bluetooth voor prikken.",
+            "permission": "Bluetooth-toegang geweigerd. Sta Bluetooth en locatie toe voor deze site.",
+            "bt_off": "Bluetooth of locatie staat uit. Zet ze aan en probeer opnieuw.",
+            "fallback_scan": "Je kunt ook de QR op het scherm of de sticker scannen."
         },
         "title": "Aanmelden",
         "clock": {

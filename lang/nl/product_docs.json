@@ -85,7 +85,7 @@
                 "title": "Prikklok en uren",
                 "body": "WinProx registreert wanneer iemand begint en stopt. Beheerders volgen de aanwezigheid en leggen de uren naast de geplande diensten.",
                 "items": [
-                    "Medewerkers klokken in en uit met de QR-code van Clock Point. Op een vaste prikklok scant u bij elke prik de code op de sticker of op het klokscherm. Op Android kan bluetooth die scan vervangen rond het begin of het einde van een gepubliceerde dienst, gevolgd door vinger of gezicht. Het icoon op het startscherm en de aanmeldlink klokken op zichzelf niet in. Bij Checkmate kan een medewerker wel in- en uitklokken via het icoon.",
+                    "Op Android, bij een klokscherm in bluetooth-modus, kan de telefoon rond begin of einde van de dienst (en voor pauze) een kort teken van de klok lezen, gevolgd door vinger of gezicht. Online-modus blijft QR en PIN op het scherm.",
                     "Een foto van de sticker kan ook buiten de deur worden gebruikt. De QR-code op het klokscherm verandert vanzelf en verloopt, zodat een oude foto niet meer werkt.",
                     "U ziet wie aanwezig is, de urenstaat, en elke medewerker ziet onder Mijn uren alleen de eigen diensten. Op Geklokte uren toont Week de diensten van één uitvoerder per dag en per uur, naast zijn planning. In de lijst van alle uitvoerders opent een klik op de naam die week. Weekends staat standaard uit, zodat zaterdag en zondag weg zijn tot u ze aanzet.",
                     "Onder Aanwezigheid staat Overuren: het saldo van dit kalenderjaar tot vandaag, totaal naast de naam en daarna per maand. Team en clock point beperken wie u ziet; het saldo blijft dat van het jaar. Vorige maanden van dit jaar tellen mee. Dat is geen loonberekening.",
@@ -102,7 +102,7 @@
                 "items": [
                     "In- en uitklokken, het eigen gepubliceerde uurrooster, de eigen uren, verlof of recup aanvragen.",
                     "Taken uitvoeren, een inspectieronde opvolgen, en een werkbezoek starten wanneer GPS aanstaat.",
-                    "Een optioneel klokscherm toont een QR-code die vanzelf verandert. U koppelt het scherm met een eenmalige code en een bevestiging.",
+                    "Een optioneel klokscherm toont een QR-code die vanzelf verandert, of werkt in bluetooth-modus zonder PIN-pad. U koppelt het scherm met een eenmalige code en een bevestiging, en kiest de klokmodus bij Scherm.",
                     "U kiest wanneer het scherm aanstaat, bijvoorbeeld van 06:00 tot 19:00. Daarbuiten kan het uit, of een rustscherm tonen: foto’s, een wijzerklok of een flipklok.",
                     "Zonder smartphone: tik op het scherm, zoek de voornaam via letters; bij een open dienst kies je pauze of uitklokken, daarna je pincode van vier cijfers. Wie nog geen code heeft, kiest die ter plaatse, twee keer.",
                     "Na twee foute pogingen is die uitvoerder één minuut geblokkeerd."

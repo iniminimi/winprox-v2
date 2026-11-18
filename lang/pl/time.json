@@ -60,7 +60,19 @@
             "not_found": "Nie znaleziono zegara. Stań obok ekranu i spróbuj ponownie.",
             "failed": "Nie udało się połączyć z zegarem.",
             "passkey_required": "Najpierw potwierdź palcem lub twarzą.",
-            "passkey_button": "Potwierdź palcem lub twarzą"
+            "passkey_button": "Potwierdź palcem lub twarzą",
+            "break_start_title": "Rozpocząć przerwę przez Bluetooth?",
+            "break_end_title": "Zakończyć przerwę przez Bluetooth?",
+            "break_start_body": "Stań przy zegarze. Telefon ponownie poprosi o odcisk palca lub twarz.",
+            "break_end_body": "Stań przy zegarze. Telefon ponownie poprosi o odcisk palca lub twarz.",
+            "token_expired": "Znak z zegara wygasł. Spróbuj ponownie przy ekranie.",
+            "token_replay": "Ten znak był już użyty. Odczytaj ponownie z zegara.",
+            "token_invalid": "Nie udało się rozpoznać zegara. Spróbuj ponownie.",
+            "token_wrong_clock": "To inny zegar. Idź do właściwej lokalizacji.",
+            "unsupported": "Ta przeglądarka nie obsługuje punktacji przez Bluetooth.",
+            "permission": "Odmowa dostępu do Bluetooth. Zezwól na Bluetooth i lokalizację dla tej witryny.",
+            "bt_off": "Bluetooth lub lokalizacja są wyłączone. Włącz je i spróbuj ponownie.",
+            "fallback_scan": "Możesz też zeskanować QR na ekranie lub naklejkę."
         },
         "title": "Logowanie",
         "clock": {

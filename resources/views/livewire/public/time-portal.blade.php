@@ -762,17 +762,29 @@
                         x-init="refreshHere(); window.addEventListener('pageshow', () => refreshHere())"
                     >
                         @if ($blePrompt ?? null)
+                            @php
+                                $bleDir = (string) $blePrompt['direction'];
+                                $bleTitle = match ($bleDir) {
+                                    'out' => __('time.portal.ble.out_title'),
+                                    'break_start' => __('time.portal.ble.break_start_title'),
+                                    'break_end' => __('time.portal.ble.break_end_title'),
+                                    default => __('time.portal.ble.in_title'),
+                                };
+                                $bleBody = match ($bleDir) {
+                                    'out' => __('time.portal.ble.out_body'),
+                                    'break_start' => __('time.portal.ble.break_start_body'),
+                                    'break_end' => __('time.portal.ble.break_end_body'),
+                                    default => __('time.portal.ble.in_body'),
+                                };
+                            @endphp
                             <div
                                 class="wp-card wp-card-pad wp-stack"
                                 x-data="{
-                                    show: false,
                                     busy: false,
                                     error: '',
-                                    init() {
-                                        this.show = /Android/i.test(navigator.userAgent) && !!navigator.bluetooth;
-                                    },
+                                    unsupported: !('bluetooth' in navigator),
                                     async yes() {
-                                        if (this.busy) return;
+                                        if (this.busy || this.unsupported) return;
                                         this.busy = true;
                                         this.error = '';
                                         const service = '8f1c2a10-7b3e-4d5a-9c11-6e5b4a3d2c01';
@@ -792,36 +804,48 @@
                                                 const known = await navigator.bluetooth.getDevices();
                                                 for (const device of known) {
                                                     if (!device.name || !device.name.startsWith('WinProx')) continue;
-                                                    try { hex = await readToken(device); break; } catch (e) {}
+                                                    try { hex = await readToken(device); if (hex.length === 64) break; } catch (e) {}
                                                 }
                                             }
-                                            if (hex.length !== 40) {
+                                            if (hex.length !== 64) {
                                                 const picked = await navigator.bluetooth.requestDevice({
                                                     filters: [{ namePrefix: 'WinProx', services: [service] }],
+                                                    optionalServices: [service],
                                                 });
                                                 hex = await readToken(picked);
                                             }
-                                            if (hex.length !== 40) {
+                                            if (hex.length !== 64) {
                                                 this.error = @js(__('time.portal.ble.not_found'));
                                                 return;
                                             }
-                                            window.location = @js(url('/time')) + '/' + hex + '?ble=' + @js($blePrompt['direction']);
+                                            await $wire.submitBlePresenceToken(hex, @js($bleDir));
                                         } catch (e) {
-                                            this.error = e?.name === 'NotFoundError'
-                                                ? @js(__('time.portal.ble.not_found'))
-                                                : @js(__('time.portal.ble.failed'));
+                                            const name = e?.name || '';
+                                            if (name === 'NotFoundError') {
+                                                this.error = @js(__('time.portal.ble.not_found'));
+                                            } else if (name === 'SecurityError' || name === 'NotAllowedError') {
+                                                this.error = @js(__('time.portal.ble.permission'));
+                                            } else if (name === 'NetworkError' || name === 'InvalidStateError') {
+                                                this.error = @js(__('time.portal.ble.bt_off'));
+                                            } else {
+                                                this.error = @js(__('time.portal.ble.failed'));
+                                            }
                                         } finally {
                                             this.busy = false;
                                         }
                                     },
                                 }"
-                                x-show="show"
-                                x-cloak
                             >
-                                <h2 class="wp-section-title">{{ $blePrompt['direction'] === 'out' ? __('time.portal.ble.out_title') : __('time.portal.ble.in_title') }}</h2>
-                                <p class="wp-muted">{{ $blePrompt['direction'] === 'out' ? __('time.portal.ble.out_body') : __('time.portal.ble.in_body') }}</p>
-                                <button type="button" class="btn btn--primary btn--block" @click="yes" :disabled="busy">{{ __('time.portal.ble.yes') }}</button>
-                                <button type="button" class="btn btn--ghost btn--block" wire:click="dismissBlePrompt({{ (int) $blePrompt['planned_shift_id'] }}, '{{ $blePrompt['direction'] }}')">{{ __('time.portal.ble.later') }}</button>
+                                <h2 class="wp-section-title">{{ $bleTitle }}</h2>
+                                <p class="wp-muted">{{ $bleBody }}</p>
+                                <template x-if="unsupported">
+                                    <p class="wp-error">{{ __('time.portal.ble.unsupported') }}</p>
+                                </template>
+                                <template x-if="!unsupported">
+                                    <button type="button" class="btn btn--primary btn--block" @click="yes" :disabled="busy">{{ __('time.portal.ble.yes') }}</button>
+                                </template>
+                                <button type="button" class="btn btn--ghost btn--block" wire:click="dismissBlePrompt({{ (int) $blePrompt['planned_shift_id'] }}, '{{ $bleDir }}')">{{ __('time.portal.ble.later') }}</button>
+                                <p class="wp-muted wp-text-sm" x-show="unsupported">{{ __('time.portal.ble.fallback_scan') }}</p>
                                 <p class="wp-error" x-show="error !== ''" x-text="error"></p>
                             </div>
                         @endif

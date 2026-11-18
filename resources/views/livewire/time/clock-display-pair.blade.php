@@ -18,6 +18,22 @@
         <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
     @endif
 
+    <x-wp-settings-section :title="__('time.clock_displays.mode.title')">
+        <p class="wp-muted wp-text-sm">{{ __('time.clock_displays.mode.hint') }}</p>
+        <div class="wp-field">
+            <select id="display-clock-mode" class="wp-input wp-input--auto" wire:model="displayClockMode">
+                <option value="online">{{ __('time.clock_displays.mode.online') }}</option>
+                <option value="ble">{{ __('time.clock_displays.mode.ble') }}</option>
+            </select>
+        </div>
+        @error('displayClockMode') <p class="wp-error">{{ $message }}</p> @enderror
+        <div class="wp-cluster">
+            <button type="button" class="btn btn--primary btn--sm" wire:click="saveClockMode">
+                {{ __('time.clock_displays.mode.save') }}
+            </button>
+        </div>
+    </x-wp-settings-section>
+
     {{-- Aan-uren van het scherm --}}
     <x-wp-settings-section :title="__('time.clock_displays.schedule.title')">
         <p class="wp-muted wp-text-sm">{{ __('time.clock_displays.schedule.hint') }}</p>

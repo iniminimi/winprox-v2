@@ -413,6 +413,15 @@
             "mode_clock": "Analoge Uhr",
             "mode_flipclock": "Flip-Uhr",
             "mode_none": "Nichts (normaler QR)"
+        },
+        "mode": {
+            "title": "Uhr-Modus",
+            "hint": "Online: QR und PIN am Display. Bluetooth: das Telefon liest ein kurzes Anwesenheitstoken; kein PIN-Pad am Display.",
+            "online": "Online (QR + PIN)",
+            "ble": "Bluetooth (Telefon)",
+            "save": "Speichern",
+            "saved": "Uhr-Modus gespeichert.",
+            "invalid": "Ungültiger Uhr-Modus."
         }
     },
     "duration": {
@@ -430,7 +439,19 @@
             "not_found": "Keine Uhr gefunden. Stellen Sie sich neben den Bildschirm und versuchen Sie es erneut.",
             "failed": "Verbindung mit der Uhr fehlgeschlagen.",
             "passkey_required": "Bestätigen Sie zuerst mit Finger oder Gesicht.",
-            "passkey_button": "Mit Finger oder Gesicht bestätigen"
+            "passkey_button": "Mit Finger oder Gesicht bestätigen",
+            "break_start_title": "Pause per Bluetooth starten?",
+            "break_end_title": "Pause per Bluetooth beenden?",
+            "break_start_body": "Stellen Sie sich neben die Uhr. Ihr Telefon fragt danach erneut nach Fingerabdruck oder Gesicht.",
+            "break_end_body": "Stellen Sie sich neben die Uhr. Ihr Telefon fragt danach erneut nach Fingerabdruck oder Gesicht.",
+            "token_expired": "Das Uhr-Token ist abgelaufen. Versuchen Sie es erneut neben dem Display.",
+            "token_replay": "Dieses Token wurde bereits verwendet. Erneut von der Uhr lesen.",
+            "token_invalid": "Die Uhr konnte nicht erkannt werden. Bitte erneut versuchen.",
+            "token_wrong_clock": "Das ist eine andere Uhr. Gehen Sie zum richtigen Standort.",
+            "unsupported": "Dieser Browser unterstützt kein Bluetooth-Stempeln.",
+            "permission": "Bluetooth-Zugriff verweigert. Erlauben Sie Bluetooth und Standort für diese Seite.",
+            "bt_off": "Bluetooth oder Standort ist aus. Schalten Sie beides ein und versuchen Sie es erneut.",
+            "fallback_scan": "Sie können auch den QR am Display oder den Aufkleber scannen."
         },
         "title": "Anmeldung",
         "clock": {

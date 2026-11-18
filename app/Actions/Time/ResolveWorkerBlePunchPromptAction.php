@@ -12,8 +12,8 @@ use Illuminate\Support\Carbon;
 
 /**
  * Of een aangemelde uitvoerder nu de bluetooth-vraag mag zien.
- * Alleen een gepubliceerde werkdienst op déze vestiging, 15 minuten rond
- * begin (nog niet ingeklokt) of rond einde (nog ingeklokt), met klokscherm.
+ * Vestiging met klokscherm in BLE-modus; in/uit rond de dienstgrenzen,
+ * of pauze starten/stoppen terwijl de dienst open is.
  */
 class ResolveWorkerBlePunchPromptAction
 {
@@ -66,6 +66,12 @@ class ResolveWorkerBlePunchPromptAction
                 $direction = 'in';
             } elseif ($clockedIn && $this->inside($now, $end)) {
                 $direction = 'out';
+            } elseif ($clockedIn && $openShift !== null && $openShift->openBreak !== null) {
+                $direction = 'break_end';
+            } elseif ($clockedIn && $openShift !== null && $openShift->openBreak === null
+                && (bool) ($openShift->team?->required_break_minutes ?? 0) > 0
+                && $openShift->breaks->isEmpty()) {
+                $direction = 'break_start';
             }
             if ($direction === null) {
                 continue;
@@ -75,7 +81,7 @@ class ResolveWorkerBlePunchPromptAction
                 'direction' => $direction,
                 'planned_shift_id' => (int) $plan->id,
             ];
-            if ($direction === 'out') {
+            if (in_array($direction, ['out', 'break_end'], true)) {
                 break;
             }
         }
@@ -89,7 +95,7 @@ class ResolveWorkerBlePunchPromptAction
             ->where('location_id', $locationId)
             ->where('is_active', true)
             ->get()
-            ->contains(fn (ClockPoint $point): bool => $point->hasLinkedDisplay());
+            ->contains(fn (ClockPoint $point): bool => $point->displayUsesBle());
     }
 
     private function at(string $date, string $time, Carbon $now): Carbon

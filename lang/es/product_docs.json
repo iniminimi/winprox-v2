@@ -85,7 +85,7 @@
                 "title": "Reloj de fichar y horas",
                 "body": "WinProx registra cuándo empieza y termina alguien. La administración sigue la presencia y pone las horas junto a los turnos previstos.",
                 "items": [
-                    "Las personas fichan con el QR de Clock Point. En un reloj fijo, cada fichaje escanea el código de la pegatina o de la pantalla. En Android, el Bluetooth puede sustituir ese escaneo alrededor del inicio o del fin de un turno publicado, seguido del dedo o la cara. El icono de la pantalla de inicio y el enlace de acceso no fichan por sí solos. En Checkmate se puede fichar desde el icono.",
+                    "En Android, con una pantalla de reloj en modo Bluetooth, el teléfono puede leer un token corto de presencia del reloj al inicio o final de un turno publicado (y para la pausa) y luego confirmar con huella o rostro. El modo en línea mantiene QR y PIN en la pantalla.",
                     "Una foto de la pegatina también sirve fuera de la puerta. El QR de la pantalla cambia solo y caduca, así que una foto vieja ya no vale.",
                     "Se ve quién está presente y el parte de horas, y cada persona ve en Mis horas solo sus propios turnos. En Horas fichadas, la vista Semana muestra los turnos de un operario por día y por hora, junto a la planificación. En la lista de todos los operarios, un clic en el nombre abre esa semana. Fines de semana está desactivado por defecto, así que sábado y domingo quedan ocultos hasta que los active.",
                     "En Presencia, Horas extra muestra el saldo de este año natural hasta hoy, el total junto al nombre y después por mes. Equipo y clock point limitan a quién ve; el saldo sigue siendo el del año. Los meses anteriores de este año cuentan. No es un cálculo de nómina.",
@@ -102,7 +102,7 @@
                 "items": [
                     "Fichar, ver el cuadrante publicado, ver las propias horas, pedir permiso o compensación.",
                     "Hacer tareas, seguir una ronda de inspección y empezar una visita cuando el GPS está activo.",
-                    "Una pantalla de fichaje opcional muestra un QR que cambia solo. Se vincula con un código de un solo uso y una confirmación.",
+                    "Una pantalla de fichaje opcional muestra un QR que cambia solo, o funciona en modo Bluetooth sin teclado PIN. Se vincula con un código de un solo uso y una confirmación, y eliges el modo en Pantalla.",
                     "Se elige cuándo está encendida la pantalla, por ejemplo de 06:00 a 19:00. Fuera de ese horario puede quedarse apagada o mostrar una pantalla de reposo: fotos, un reloj de agujas o un reloj de paletas.",
                     "Sin smartphone: tocar la pantalla, buscar el nombre por letras; con turno abierto elija pausa o salida y luego el PIN personal de cuatro cifras. Quien aún no tiene PIN lo elige allí, dos veces.",
                     "Tras dos intentos fallidos, ese ejecutor queda bloqueado un minuto."

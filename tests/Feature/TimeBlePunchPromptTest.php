@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Actions\Time\ResolveWorkerBlePunchPromptAction;
+use App\Enums\ClockDisplayMode;
 use App\Enums\ClockSource;
 use App\Enums\PlannedShiftStatus;
 use App\Enums\ShiftTypeKind;
@@ -42,6 +43,7 @@ function blePromptWorld(): array
         'qr_token' => 'ble-prompt-'.$tenant->id,
         'display_id' => str_repeat('ab', 12),
         'display_secret' => str_repeat('cd', 16),
+        'display_clock_mode' => ClockDisplayMode::Ble,
     ]);
 
     return [$tenant, $location, $worker, $clockPoint];

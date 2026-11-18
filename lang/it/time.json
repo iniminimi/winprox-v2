@@ -413,6 +413,15 @@
             "mode_clock": "Orologio analogico",
             "mode_flipclock": "Orologio flip",
             "mode_none": "Niente (QR normale)"
+        },
+        "mode": {
+            "title": "Modalità orologio",
+            "hint": "Online: QR e PIN sul display. Bluetooth: il telefono legge un token di presenza breve; nessun tastierino PIN sul display.",
+            "online": "Online (QR + PIN)",
+            "ble": "Bluetooth (telefono)",
+            "save": "Salva",
+            "saved": "Modalità orologio salvata.",
+            "invalid": "Modalità orologio non valida."
         }
     },
     "duration": {
@@ -430,7 +439,19 @@
             "not_found": "Nessun orologio trovato. Mettiti accanto allo schermo e riprova.",
             "failed": "Connessione all'orologio non riuscita.",
             "passkey_required": "Conferma prima con il dito o il viso.",
-            "passkey_button": "Conferma con dito o viso"
+            "passkey_button": "Conferma con dito o viso",
+            "break_start_title": "Avviare la pausa via Bluetooth?",
+            "break_end_title": "Terminare la pausa via Bluetooth?",
+            "break_start_body": "Stai vicino all’orologio. Poi il telefono chiederà di nuovo impronta o volto.",
+            "break_end_body": "Stai vicino all’orologio. Poi il telefono chiederà di nuovo impronta o volto.",
+            "token_expired": "Il token dell’orologio è scaduto. Riprova vicino al display.",
+            "token_replay": "Questo token è già stato usato. Rileggi dall’orologio.",
+            "token_invalid": "Impossibile riconoscere l’orologio. Riprova.",
+            "token_wrong_clock": "Questo è un altro orologio. Vai alla sede corretta.",
+            "unsupported": "Questo browser non supporta la timbratura Bluetooth.",
+            "permission": "Accesso Bluetooth negato. Consenti Bluetooth e posizione per questo sito.",
+            "bt_off": "Bluetooth o posizione sono disattivati. Attivali e riprova.",
+            "fallback_scan": "Puoi anche scansionare il QR sul display o l’adesivo."
         },
         "title": "Accesso",
         "clock": {

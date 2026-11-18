@@ -52,8 +52,14 @@ return [
     /** Scherm toont "synchronisatie nodig"-waarschuwing na zoveel uur offline. */
     'display_offline_warn_hours' => (int) env('TIME_DISPLAY_OFFLINE_WARN_HOURS', 24),
 
-    /** Scherm stopt QR's na zoveel uur zonder succesvolle ping (default 7d). */
-    'display_offline_block_hours' => (int) env('TIME_DISPLAY_OFFLINE_BLOCK_HOURS', 168),
+    /** Scherm stopt QR's na zoveel uur zonder succesvolle ping (default 3d; nachtelijke herstart vernieuwt). */
+    'display_offline_block_hours' => (int) env('TIME_DISPLAY_OFFLINE_BLOCK_HOURS', 72),
+
+    /** Geldigheid van een BLE-aanwezigheidstoken (seconden). */
+    'presence_token_ttl_seconds' => (int) env('TIME_PRESENCE_TOKEN_TTL_SECONDS', 30),
+
+    /** Extra seconden klokdrift bij BLE-tokenvalidatie. */
+    'presence_token_drift_seconds' => (int) env('TIME_PRESENCE_TOKEN_DRIFT_SECONDS', 5),
 
     /** Foute PIN-pogingen op het scherm vóór de worker kort geblokkeerd is. */
     'display_pin_max_attempts' => max(1, (int) env('TIME_DISPLAY_PIN_MAX_ATTEMPTS', 2)),

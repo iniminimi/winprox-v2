@@ -901,9 +901,11 @@ productsector op `Tenant`.
   hops tussen Clock Points (alarm bij hop < 5 min). **Aanmelden klokt niet vanzelf in.**
   **In-/uitklokken en verplaatsen** op een vaste prikklok vereisen een **verse QR-scan**
   (volle page-load van de sticker of de wisselende klokscherm-QR, één prik, ~10 min).
-  Op Android kan die scan, rond begin of einde van een gepubliceerde dienst op deze
-  vestiging, ook via bluetooth: de telefoon leest dezelfde wisselende code en vraagt
-  daarna opnieuw om vinger of gezicht. iPhone blijft bij de QR. Checkmate krijgt die vraag niet.
+  Op Android, bij een klokscherm in **Bluetooth-modus**, kan die aanwezigheid rond
+  begin/einde van een gepubliceerde dienst (en pauze starten/stoppen) via Web Bluetooth:
+  de telefoon leest een kort presence-token van het scherm en vraagt daarna opnieuw om
+  vinger of gezicht. Het scherm doet na boot-sync geen HTTPS meer. Online-modus blijft
+  QR + PIN. iPhone blijft bij de QR. Checkmate krijgt die bluetooth-vraag niet.
   De in-portal scan-knop markeert haar navigatie (`?scan_punch=`); na een positieve
   scan voert het portaal die prik meteen uit — geen tweede tik op dezelfde knop.
   De aanmeldlink (`/cp/{token}`) en het startscherm-icoon openen hetzelfde portaal
@@ -1351,18 +1353,29 @@ binnen ~30–90 s dood.
 - **Ontkoppelen/roteren:** `Unlink` wist secret/token (display_id blijft voor het
   audit-spoor); `RotateSecret` roteert beide (scherm moet her-pairen). Ping met oude
   token → 401 → scherm wist credentials → pairing-modus.
+- **Klokmodus** (`display_clock_mode`, beheer Clock Point → Scherm): `online`
+  (QR + PIN + periodieke ping) of `ble` (boot-TLS-sync, daarna presence via
+  GATT, geen PIN-pad, geen TLS na boot; SNTP blijft; nachtelijke herstart
+  vernieuwt `lastSync`). Offline-blokkade ~3 dagen (`time.display_offline_block_hours`).
+- **BLE presence-token:** 32 bytes
+  `display_id|timestamp|boot_id|counter|hmac8` (HMAC over
+  `display_id|ts|boot|counter`). `boot_id` = `esp_random()` per boot; counter
+  in RAM. Server: `ValidateClockDisplayPresenceTokenAction`, TTL 30s + drift,
+  anti-replay via cache-set `display_id:boot_id:counter` (≥2×TTL) — niet
+  “laatste counter”. Portaal: `submitBlePresenceToken` → scan-grant + passkey
+  (`ble-punch`) → `ClockSource::Bluetooth`.
 - **Heartbeat:** `GET /api/v1/time/clock-displays/ping` (`X-WinProx-Clock-Key`)
-  → `server_time`, `state`, naam/locatie, rotatie- en offline-drempels
-  (`time.display_*` in `config/time.php`). Firmware: sync bij confirm én elke ping;
-  amber banner na 24u offline, geen QR meer na 7 dagen. Dreigingsmodel "gestolen
-  scherm" = revocatie; worker-gsm-binding (één gsm per uitvoerder) blijft de
-  tweede fraude-laag.
-- **PIN-login (no-phone fallback):** tik op het QR-scherm → lettertrie op
-  voornaam → bij open dienst eerst **Pauze** of **Uitklokken** (of alleen
-  uitklokken als de pauze al genomen is; bij lopende pauze: **Pauze stoppen**)
-  → 4-cijferige PIN. `GET .../workers` levert actieve workers binnen de
-  locatiescope (`canClockAt`) plus `presence` (`out`/`in`/`break`) en
-  `can_break`. `POST .../pin-clock` verifieert de PIN
+  → `server_time`, `state`, naam/locatie, rotatie-/offline-drempels, `clock_mode`,
+  `presence_token_ttl_seconds` (`time.display_*` / `time.presence_token_*`).
+  Online-firmware: sync bij confirm én elke ping. BLE-firmware: retries ~60s
+  bij boot, daarna geen ping. Amber na 24u, blok na ~3d. Dreigingsmodel
+  "gestolen scherm" = revocatie; worker-gsm-binding blijft de tweede laag.
+- **PIN-login (no-phone fallback, alleen online-modus):** tik op het QR-scherm →
+  lettertrie op voornaam → bij open dienst eerst **Pauze** of **Uitklokken**
+  (of alleen uitklokken als de pauze al genomen is; bij lopende pauze:
+  **Pauze stoppen**) → 4-cijferige PIN. `GET .../workers` levert actieve
+  workers binnen de locatiescope (`canClockAt`) plus `presence`
+  (`out`/`in`/`break`) en `can_break`. `POST .../pin-clock` verifieert de PIN
   (`ConfirmWorkerClockPinAction`) en voert optioneel `action`
   `in`|`out`|`break_start`|`break_end` uit (zonder action: oude toggle
   in/uit). Pauze via `StartWorkBreakAction` / `EndWorkBreakAction` (één

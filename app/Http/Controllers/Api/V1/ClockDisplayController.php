@@ -279,7 +279,10 @@ class ClockDisplayController extends Controller
             'album' => $this->albumManifest($clockPoint),
             'rotation_seconds' => (int) config('time.display_window_seconds', 30),
             'offline_warn_hours' => (int) config('time.display_offline_warn_hours', 24),
-            'offline_block_hours' => (int) config('time.display_offline_block_hours', 168),
+            'offline_block_hours' => (int) config('time.display_offline_block_hours', 72),
+            // ble = geen TLS na boot-sync, presence via GATT; online = huidig gedrag.
+            'clock_mode' => ($clockPoint?->display_clock_mode?->value) ?? 'online',
+            'presence_token_ttl_seconds' => (int) config('time.presence_token_ttl_seconds', 30),
             // Scherm vult hier {display_id}{dyn} in; display_id volgt mee in
             // de claim-status-response (of staat in NVS na provisioning).
             'portal_url_template' => route('public.time-portal', '__TOKEN__'),
