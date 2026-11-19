@@ -12,7 +12,6 @@ let backofficeCanInstall = false;
 
 const INSTALLED_KEY = 'wp-pwa-installed';
 const BACKOFFICE_INSTALLED_KEY = 'wp-backoffice-pwa-installed';
-const LAUNCH_KEY = 'wp-pwa-launch';
 
 function isStandaloneDisplay() {
     return window.matchMedia('(display-mode: standalone)').matches
@@ -45,87 +44,6 @@ function notifyHomescreenInstall() {
 function markHomescreenInstalled() {
     markInstalled(INSTALLED_KEY, 'wp-pwa-installed');
     notifyHomescreenInstall();
-}
-
-function androidPhone() {
-    return /Android/i.test(navigator.userAgent);
-}
-
-function readLaunchPhase() {
-    try {
-        return window.sessionStorage.getItem(LAUNCH_KEY) || '';
-    } catch {
-        return '';
-    }
-}
-
-function writeLaunchPhase(phase) {
-    try {
-        if (phase) {
-            window.sessionStorage.setItem(LAUNCH_KEY, phase);
-        } else {
-            window.sessionStorage.removeItem(LAUNCH_KEY);
-        }
-    } catch {
-        // Private mode: the screen for this page is enough.
-    }
-}
-
-function showOpenAppScreen() {
-    document.documentElement.classList.add('wp-pwa-open-app');
-    document.querySelector('.wp-pwa-open-screen')?.removeAttribute('hidden');
-}
-
-function resumeOpenAppScreen() {
-    if (isStandaloneDisplay()) {
-        writeLaunchPhase('');
-        return;
-    }
-    const phase = readLaunchPhase();
-    if (phase === 'opening' || phase === 'done') {
-        writeLaunchPhase('done');
-        showOpenAppScreen();
-    }
-}
-
-async function launchInstalledHomescreen() {
-    if (!androidPhone() || isStandaloneDisplay()) {
-        return;
-    }
-    const phase = readLaunchPhase();
-    if (phase === 'opening' || phase === 'done') {
-        writeLaunchPhase('done');
-        showOpenAppScreen();
-        return;
-    }
-    writeLaunchPhase('opening');
-    showOpenAppScreen();
-    const earliest = Date.now() + 3000;
-    const deadline = Date.now() + 8000;
-    let seen = false;
-    while (Date.now() < deadline) {
-        if (isStandaloneDisplay()) {
-            writeLaunchPhase('');
-            return;
-        }
-        if (!seen && await relatedWebAppInstalled()) {
-            seen = true;
-        }
-        if (seen && Date.now() >= earliest) {
-            break;
-        }
-        await new Promise((resolve) => {
-            window.setTimeout(resolve, 400);
-        });
-    }
-    if (isStandaloneDisplay()) {
-        writeLaunchPhase('');
-        return;
-    }
-    const current = new URL(window.location.href);
-    const bare = `${current.host}${current.pathname}${current.search}`;
-    const fallback = encodeURIComponent(current.href);
-    window.location.href = `intent://${bare}#Intent;scheme=https;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;S.browser_fallback_url=${fallback};end`;
 }
 
 function clearInstalled(key, className) {
@@ -257,7 +175,6 @@ document.addEventListener('click', (event) => {
     promptEvent.userChoice.then((choice) => {
         if (choice.outcome === 'accepted') {
             markHomescreenInstalled();
-            launchInstalledHomescreen();
         }
     }).catch(() => {});
 }, true);
@@ -284,7 +201,6 @@ document.addEventListener('click', (event) => {
 window.addEventListener('appinstalled', () => {
     if (document.querySelector('[data-wp-homescreen-install]')) {
         markHomescreenInstalled();
-        launchInstalledHomescreen();
     }
     if (document.querySelector('[data-wp-backoffice-install]')) {
         markBackofficeInstalled();
@@ -339,11 +255,9 @@ function bindPwaNav() {
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         hideShortcutWhenInstalled();
-        resumeOpenAppScreen();
         bindPwaNav();
     }, { once: true });
 } else {
     hideShortcutWhenInstalled();
-    resumeOpenAppScreen();
     bindPwaNav();
 }

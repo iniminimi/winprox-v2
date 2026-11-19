@@ -7,6 +7,7 @@
         "label": "Hauptnavigation",
         "collapse": "Menü einklappen",
         "content_width": "Ziehen Sie den Rand, um diesen Bildschirm schmaler oder breiter zu machen",
+        "content_height": "Ziehen Sie den unteren Rand, um diesen Bildschirm niedriger oder höher zu machen",
         "dashboard": "Startseite",
         "browser": "Browser",
         "back": "Zurück",
