@@ -3873,6 +3873,11 @@ html.wp-pwa-standalone.wp-push-blocked:not(.wp-push-ready) [data-wp-push-blocked
     display: inline-flex !important;
 }
 
+html.wp-pwa-standalone.wp-push-offer:not(.wp-push-asking):not(.wp-push-ready) .wp-portal-push-card [data-wp-push-enable],
+html.wp-pwa-standalone.wp-push-blocked:not(.wp-push-ready) .wp-portal-push-card [data-wp-push-blocked] {
+    display: flex !important;
+}
+
 .wp-push-help {
     position: fixed;
     inset: 0;
@@ -8779,14 +8784,51 @@ a.wp-worker-hours-link:focus-visible {
     }
 }
 
-.wp-portal-homescreen-card {
+.wp-portal-homescreen-card,
+.wp-portal-push-card {
     margin-top: 0.5rem;
 }
 
-.wp-portal-homescreen-card.wp-card--prio-pulse {
+.wp-portal-homescreen-card.wp-card--prio-pulse,
+.wp-portal-push-card.wp-card--prio-pulse {
     border-width: 3px;
     border-color: var(--wp-danger, #dc2626) !important;
     background-color: var(--wp-danger-soft, #fee2e2);
+}
+
+.wp-portal-push-card {
+    display: none;
+}
+
+html.wp-pwa-standalone.wp-push-offer:not(.wp-push-asking):not(.wp-push-ready) .wp-portal-push-card,
+html.wp-pwa-standalone.wp-push-blocked:not(.wp-push-ready) .wp-portal-push-card {
+    display: block;
+}
+
+.wp-portal-push-card__actions {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.wp-portal-push-card__btn {
+    display: none;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    background: none;
+    box-shadow: none;
+    color: var(--wp-text);
+    font: inherit;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    line-height: 1.3;
+    text-align: center;
+    white-space: nowrap;
+    cursor: pointer;
 }
 
 .wp-homescreen-shortcut-wrap {

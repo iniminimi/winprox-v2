@@ -53,17 +53,18 @@
                 </div>
             @endif
             @if (($pushPublicKey ?? '') !== '')
-                <div class="wp-portal-head-install">
+                <div class="wp-card wp-card-pad wp-portal-push-card wp-card--prio-pulse">
                     <div
+                        class="wp-portal-push-card__actions"
                         data-wp-push
                         data-public-key="{{ $pushPublicKey }}"
                         data-url="{{ route('public.time-portal.push-subscription') }}"
                         data-locale="{{ str_replace('_', '-', app()->getLocale()) }}"
                     >
-                        <button type="button" class="btn btn--ghost" data-wp-push-enable>
+                        <button type="button" class="wp-portal-push-card__btn" data-wp-push-enable>
                             {{ __('time.portal.push.enable') }}
                         </button>
-                        <button type="button" class="btn btn--ghost" data-wp-push-blocked>
+                        <button type="button" class="wp-portal-push-card__btn" data-wp-push-blocked>
                             {{ __('time.portal.push.blocked') }}
                         </button>
                         <div
