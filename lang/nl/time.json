@@ -526,14 +526,15 @@
         },
         "homescreen": {
             "title": "Zet WinProx op je startscherm:",
-            "open_title": "WinProx staat op je startscherm",
-            "open_text": "De app opent zo. Lukt dat niet, tik op het WinProx-icoon op je startscherm.",
+            "open_title": "WinProx wordt op het startscherm van je GSM gezet.",
+            "open_text": "Even geduld. Open daarna WinProx vanaf het icoon van je startscherm.",
             "help_title": "Clock Point op je startscherm",
             "help_intro": "Tik het WinProx-icoon: op Android opent Chrome de vraag om WinProx op het startscherm te zetten. Daarna meld je je aan zonder QR. Op een vaste prikklok klok je in door de sticker of het klokscherm te scannen. Geen App Store.",
             "help_android": "Android (Chrome): één tik op het icoon. Bevestig “Toevoegen aan startscherm”. Daarna werkt Aanmelden in die snelkoppeling.",
             "help_ios": "iPhone: Apple laat geen automatische installatie toe. Tik het icoon; daarna op je iPhone: drie puntjes (⋯) onderaan → Deel → Toon meer → scroll naar beneden → “+ Zet op beginscherm”.",
             "help_existing": "Heb je nog een oud icoon waarop Aanmelden vastliep? Verwijder dat icoon, ververs deze pagina en tik opnieuw op het plus-icoon.",
-            "help_push": "Zet WinProx eerst op het startscherm via het logo met het plusje. Open daarna dat icoon. Alleen in die app staat de knop Pushmeldingen aanzetten. Tik erop en kies Toestaan. De knop verdwijnt meteen; de pagina hoeft niet ververst te worden. Kies je Niet toestaan of staan meldingen geblokkeerd, dan zie je Meldingen staan uit met uitleg om ze in de telefooninstellingen weer aan te zetten. Daarna tik je Opnieuw controleren. Je krijgt een melding als je dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of je na het einde van je dienst nog ingeklokt bent. Op een iPhone werkt dat alleen via het startscherm-icoon. Alleen op deze gsm. De melding bevat geen tekst uit het document."
+            "help_push": "Zet WinProx eerst op het startscherm via het logo met het plusje. Open daarna dat icoon. Alleen in die app staat de knop Pushmeldingen aanzetten. Tik erop en kies Toestaan. De knop verdwijnt meteen; de pagina hoeft niet ververst te worden. Kies je Niet toestaan of staan meldingen geblokkeerd, dan zie je Meldingen staan uit met uitleg om ze in de telefooninstellingen weer aan te zetten. Daarna tik je Opnieuw controleren. Je krijgt een melding als je dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of je na het einde van je dienst nog ingeklokt bent. Op een iPhone werkt dat alleen via het startscherm-icoon. Alleen op deze gsm. De melding bevat geen tekst uit het document.",
+            "open_apps": "WinProx kan je vanaf dan ook terugvinden tussen je APP's."
         },
         "absence": {
             "tile": "Verlof / Recup",

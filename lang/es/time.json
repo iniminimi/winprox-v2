@@ -526,14 +526,15 @@
         },
         "homescreen": {
             "title": "Poner WinProx en la pantalla de inicio:",
-            "open_title": "WinProx está en la pantalla de inicio",
-            "open_text": "La app se abre en un momento. Si no, pulse el icono de WinProx en la pantalla de inicio.",
+            "open_title": "WinProx se está añadiendo a la pantalla de inicio de tu móvil.",
+            "open_text": "Espera un momento. Después abre WinProx desde el icono de la pantalla de inicio.",
             "help_title": "Clock Point en la pantalla de inicio",
             "help_intro": "Toca el icono WinProx: en Android, Chrome pide añadir WinProx a la pantalla de inicio. Después te identificas sin QR. En un reloj fijo fichas la entrada escaneando la pegatina o la pantalla. Sin App Store.",
             "help_android": "Android (Chrome): un toque en el icono. Confirma «Añadir a pantalla de inicio». El inicio de sesión funciona después en ese acceso.",
             "help_ios": "iPhone: Apple no permite la instalación automática. Toca el icono; luego en tu iPhone: tres puntos (⋯) abajo → Compartir → Mostrar más → desliza hacia abajo → “+ Añadir a pantalla de inicio”.",
             "help_existing": "¿Aún tienes un icono antiguo con el que Inicio de sesión no hacía nada? Bórralo, actualiza esta página y vuelve a tocar el icono más.",
-            "help_push": "Ponga primero WinProx en la pantalla de inicio con el logo del signo más. Abra después ese icono. El botón Activar avisos push solo está en esa app. Púlselo y elija Permitir. El botón desaparece enseguida; no hace falta actualizar la página. Si elige No permitir o los avisos están bloqueados, verá Avisos desactivados con los pasos para volver a activarlos en los ajustes del teléfono. Luego pulse Comprobar de nuevo. Recibirá un aviso si cambia su turno, se aprueba un permiso o una compensación, hay un documento o un aviso listo, o sigue fichado después del turno. En un iPhone solo funciona desde el icono de la pantalla de inicio. Solo en este teléfono. El aviso no incluye el texto del documento."
+            "help_push": "Ponga primero WinProx en la pantalla de inicio con el logo del signo más. Abra después ese icono. El botón Activar avisos push solo está en esa app. Púlselo y elija Permitir. El botón desaparece enseguida; no hace falta actualizar la página. Si elige No permitir o los avisos están bloqueados, verá Avisos desactivados con los pasos para volver a activarlos en los ajustes del teléfono. Luego pulse Comprobar de nuevo. Recibirá un aviso si cambia su turno, se aprueba un permiso o una compensación, hay un documento o un aviso listo, o sigue fichado después del turno. En un iPhone solo funciona desde el icono de la pantalla de inicio. Solo en este teléfono. El aviso no incluye el texto del documento.",
+            "open_apps": "A partir de entonces también encontrarás WinProx entre tus aplicaciones."
         },
         "absence": {
             "tile": "Permiso / Compensación",
