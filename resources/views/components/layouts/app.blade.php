@@ -924,7 +924,7 @@
                     tabindex="0"
                     @keydown.left.prevent="nudgeContentWidth(-32)"
                     @keydown.right.prevent="nudgeContentWidth(32)"
-                ></div>
+                ><span class="wp-content-resize__grip" aria-hidden="true"></span></div>
             </main>
         </div>
 

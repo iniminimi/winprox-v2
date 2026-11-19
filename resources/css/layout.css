@@ -720,7 +720,7 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
         right: 0;
         bottom: 0;
         z-index: 25;
-        width: 1.25rem;
+        width: 1.75rem;
         margin: 0;
         padding: 0;
         border: 0;
@@ -728,6 +728,37 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
         cursor: col-resize;
         touch-action: none;
         pointer-events: auto;
+    }
+
+    .wp-content-resize__grip {
+        position: sticky;
+        top: calc(50vh - 1.15rem);
+        z-index: 1;
+        display: block;
+        width: 1.5rem;
+        height: 2.35rem;
+        margin-top: calc(50vh - 1.15rem);
+        margin-left: 0.125rem;
+        border: 1px solid var(--wp-border);
+        border-radius: var(--wp-radius-pill);
+        background: var(--wp-surface);
+        box-shadow: var(--wp-shadow-sm);
+        pointer-events: none;
+    }
+
+    .wp-content-resize__grip::before {
+        content: "";
+        position: absolute;
+        inset: 0.4rem 0.2rem;
+        background-color: var(--wp-text-muted);
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 10'%3E%3Cpath fill='black' d='M5.2 1 1 5l4.2 4V1zm3.6 0v8L13 5 8.8 1z'/%3E%3C/svg%3E");
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 10'%3E%3Cpath fill='black' d='M5.2 1 1 5l4.2 4V1zm3.6 0v8L13 5 8.8 1z'/%3E%3C/svg%3E");
+        -webkit-mask-repeat: no-repeat;
+        mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+        mask-position: center;
+        -webkit-mask-size: contain;
+        mask-size: contain;
     }
 
     .wp-content-resize::after {
@@ -747,6 +778,18 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
     .wp-content-resize:focus-visible::after,
     .wp-app--content-resizing .wp-content-resize::after {
         background: var(--wp-accent);
+    }
+
+    .wp-content-resize:hover .wp-content-resize__grip,
+    .wp-content-resize:focus-visible .wp-content-resize__grip,
+    .wp-app--content-resizing .wp-content-resize__grip {
+        border-color: var(--wp-accent);
+    }
+
+    .wp-content-resize:hover .wp-content-resize__grip::before,
+    .wp-content-resize:focus-visible .wp-content-resize__grip::before,
+    .wp-app--content-resizing .wp-content-resize__grip::before {
+        background-color: var(--wp-accent);
     }
 
     .wp-content-resize:focus-visible {
