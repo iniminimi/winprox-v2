@@ -97,13 +97,14 @@
 
     <div
         class="wp-app"
-        :class="{ 'wp-app--sidebar-collapsed': collapsed, 'wp-app--content-resizing': resizing }"
+        :class="{ 'wp-app--sidebar-collapsed': collapsed, 'wp-app--content-resizing': resizing === 'x', 'wp-app--content-resizing-y': resizing === 'y', 'wp-app--content-height': contentHeight }"
         @pointerdown.window.capture="contentEdgePointerDown($event)"
         x-data="{
             nav: false,
             collapsed: false,
             resizing: false,
             contentWidth: null,
+            contentHeight: null,
             help: false,
             helpFabShowQuestion: false,
             helpVideoUrl: @js(asset('video/assistant_small.mp4')),
@@ -115,6 +116,10 @@
                     const storedWidth = parseInt(localStorage.getItem('wp_content_width') || '', 10);
                     if (storedWidth > 0) {
                         this.applyContentWidth(storedWidth);
+                    }
+                    const storedHeight = parseInt(localStorage.getItem('wp_content_height') || '', 10);
+                    if (storedHeight > 0) {
+                        this.applyContentHeight(storedHeight);
                     }
                     const key = 'wp_help_fab_page_count';
                     const next = (parseInt(sessionStorage.getItem(key) || '0', 10) || 0) + 1;
@@ -152,8 +157,49 @@
                     localStorage.setItem('wp_content_width', String(this.contentWidth));
                 } catch (e) {}
             },
+            contentHeightMin() {
+                const root = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+                return Math.round(20 * root);
+            },
+            contentHeightMax() {
+                return window.innerHeight;
+            },
+            applyContentHeight(px) {
+                const min = this.contentHeightMin();
+                const max = this.contentHeightMax();
+                let next = Math.round(Math.max(min, px));
+                if (max > min) {
+                    next = Math.min(max, next);
+                }
+                this.contentHeight = next;
+                this.$el.style.setProperty('--wp-content-height', next + 'px');
+            },
+            persistContentHeight() {
+                if (! this.contentHeight) {
+                    return;
+                }
+                try {
+                    localStorage.setItem('wp_content_height', String(this.contentHeight));
+                } catch (e) {}
+            },
+            pointerOnResize(handle, grip, event) {
+                if (! handle) {
+                    return false;
+                }
+                const x = event.clientX;
+                const y = event.clientY;
+                const rect = handle.getBoundingClientRect();
+                const onEdge = rect.width >= 1 && rect.height >= 1
+                    && x >= rect.left - 6 && x <= rect.right + 6
+                    && y >= rect.top - 6 && y <= rect.bottom + 6;
+                const gripRect = grip ? grip.getBoundingClientRect() : null;
+                const onGrip = gripRect && gripRect.width >= 1
+                    && x >= gripRect.left - 6 && x <= gripRect.right + 6
+                    && y >= gripRect.top - 6 && y <= gripRect.bottom + 6;
+                return onEdge || onGrip;
+            },
             contentEdgePointerDown(event) {
-                if (this.resizing || ! this.$refs.resize || ! this.$refs.main) {
+                if (this.resizing || ! this.$refs.main) {
                     return;
                 }
                 if (! window.matchMedia('(min-width: 60rem)').matches) {
@@ -166,39 +212,36 @@
                 if (target instanceof Element && target.closest('.wp-help, a, button, input, textarea, select, label')) {
                     return;
                 }
-                const rect = this.$refs.resize.getBoundingClientRect();
-                const grip = this.$refs.grip ? this.$refs.grip.getBoundingClientRect() : null;
-                if (rect.width < 1 && (! grip || grip.width < 1)) {
+                if (this.pointerOnResize(this.$refs.resizeHeight, this.$refs.gripHeight, event)) {
+                    this.startContentResize(event, 'y');
                     return;
                 }
-                const x = event.clientX;
-                const y = event.clientY;
-                const onEdge = rect.width >= 1
-                    && x >= rect.left - 6 && x <= rect.right + 6
-                    && y >= rect.top && y <= rect.bottom;
-                const onGrip = grip && grip.width >= 1
-                    && x >= grip.left - 6 && x <= grip.right + 6
-                    && y >= grip.top - 6 && y <= grip.bottom + 6;
-                if (! onEdge && ! onGrip) {
-                    return;
+                if (this.pointerOnResize(this.$refs.resize, this.$refs.grip, event)) {
+                    this.startContentResize(event, 'x');
                 }
-                this.startContentResize(event);
             },
-            startContentResize(event) {
+            startContentResize(event, axis) {
                 if (this.resizing) {
                     return;
                 }
                 event.preventDefault();
                 event.stopPropagation();
-                this.resizing = true;
-                const startX = event.clientX;
-                const startWidth = this.$refs.main.getBoundingClientRect().width;
+                this.resizing = axis;
+                const vertical = axis === 'y';
+                const start = vertical ? event.clientY : event.clientX;
+                const box = this.$refs.main.getBoundingClientRect();
+                const startSize = vertical ? box.height : box.width;
                 const pointerId = event.pointerId;
                 const move = (e) => {
                     if (pointerId != null && e.pointerId !== pointerId) {
                         return;
                     }
-                    this.applyContentWidth(startWidth + (e.clientX - startX));
+                    const next = startSize + ((vertical ? e.clientY : e.clientX) - start);
+                    if (vertical) {
+                        this.applyContentHeight(next);
+                        return;
+                    }
+                    this.applyContentWidth(next);
                 };
                 const up = (e) => {
                     if (pointerId != null && e.pointerId !== pointerId) {
@@ -208,6 +251,10 @@
                     window.removeEventListener('pointerup', up);
                     window.removeEventListener('pointercancel', up);
                     this.resizing = false;
+                    if (vertical) {
+                        this.persistContentHeight();
+                        return;
+                    }
                     this.persistContentWidth();
                 };
                 window.addEventListener('pointermove', move);
@@ -221,6 +268,14 @@
                 const current = this.contentWidth || this.$refs.main.getBoundingClientRect().width;
                 this.applyContentWidth(current + delta);
                 this.persistContentWidth();
+            },
+            nudgeContentHeight(delta) {
+                if (! window.matchMedia('(min-width: 60rem)').matches || ! this.$refs.main) {
+                    return;
+                }
+                const current = this.contentHeight || this.$refs.main.getBoundingClientRect().height;
+                this.applyContentHeight(current + delta);
+                this.persistContentHeight();
             },
             toggleSidebar() {
                 if (window.matchMedia('(min-width: 60rem)').matches) {
@@ -932,6 +987,16 @@
                     @keydown.left.prevent="nudgeContentWidth(-32)"
                     @keydown.right.prevent="nudgeContentWidth(32)"
                 ><span class="wp-content-resize__grip" x-ref="grip" aria-hidden="true"></span></div>
+                <div
+                    class="wp-content-resize wp-content-resize--height"
+                    x-ref="resizeHeight"
+                    role="separator"
+                    aria-orientation="horizontal"
+                    aria-label="{{ __('common.nav.content_height') }}"
+                    tabindex="0"
+                    @keydown.up.prevent="nudgeContentHeight(-32)"
+                    @keydown.down.prevent="nudgeContentHeight(32)"
+                ><span class="wp-content-resize__grip wp-content-resize__grip--height" x-ref="gripHeight" aria-hidden="true"></span></div>
             </main>
         </div>
 
