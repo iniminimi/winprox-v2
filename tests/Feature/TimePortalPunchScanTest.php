@@ -345,6 +345,31 @@ it('behandelt een Clock Point zonder vestiging via de punt-vergelijking', functi
         ->assertSee(__('time.portal.clock.elsewhere_body'), false);
 });
 
+it('behandelt gelijknamige prikklokken zonder vestiging als dezelfde plek', function () {
+    [$tenant, , $worker] = punchScanTenant();
+    $clockA = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Duinhummeltjes Prikklok',
+        'qr_token' => 'same-name-a-'.$tenant->id,
+    ]);
+    $clockB = ClockPoint::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Duinhummeltjes Prikklok',
+        'qr_token' => 'same-name-b-'.$tenant->id,
+    ]);
+
+    app(ClockInAction::class)->handle($worker, $clockA);
+
+    Livewire::test(TimePortal::class, ['token' => $clockB->qr_token])
+        ->set('first_name', 'Jan')
+        ->set('last_name', 'Janssen')
+        ->call('identifyWorker')
+        ->set('sign_in_icon_slug', 'heart')
+        ->call('signInWithIcon')
+        ->assertDontSee(__('time.portal.clock.elsewhere_body'), false)
+        ->assertSee(__('time.portal.now.status_in', ['time' => now()->format('H:i')]), false);
+});
+
 it('vuurt na een in-portal scan meteen de pendende prik af', function () {
     [, $clockPoint] = punchScanTenant();
     $clockPoint->update(['qr_token' => str_repeat('c', 40)]);

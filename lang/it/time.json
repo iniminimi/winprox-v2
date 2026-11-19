@@ -433,8 +433,8 @@
             "start_break": "Inizia pausa",
             "break_hint": "Non dimenticare la pausa — nei turni lunghi registriamo automaticamente :min min di pausa.",
             "end_break": "Termina pausa",
-            "open_elsewhere_hint": "Hai già timbrato in un'altra sede. Sposta la presenza qui oppure timbra l'uscita.",
-            "elsewhere_body": "Sei timbrato in un'altra sede.",
+            "open_elsewhere_hint": "Hai già timbrato su un altro orologio. Sposta la presenza qui oppure timbra l'uscita.",
+            "elsewhere_body": "Sei timbrato su un altro orologio.",
             "sign_out_while_clocked": "Sei ancora timbrato. Uscire non timbra l'uscita.",
             "transfer_here": "Sposta qui",
             "started_at": "Iniziato presso :place (stesso turno).",
@@ -568,7 +568,7 @@
         "now": {
             "status_out": "Non timbrato",
             "status_in": "Timbrato dalle :time",
-            "status_elsewhere": "Timbrato in un'altra sede",
+            "status_elsewhere": "Timbrato su un altro orologio",
             "next_stop": "Prossima sosta: :name",
             "here_done": "Il lavoro qui è finito.",
             "toggle": "Dettagli"

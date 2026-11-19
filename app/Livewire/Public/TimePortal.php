@@ -51,6 +51,7 @@ use App\Data\Time\RequestAbsenceData;
 use App\Data\Units\RecordUnitCheckData;
 use App\Enums\ClockDeviceRefusalReason;
 use App\Enums\ClockSource;
+use App\Enums\PortalRosterClockAlert;
 use App\Enums\ShiftTypeKind;
 use App\Enums\TeamLibraryKind;
 use App\Enums\TaskStatus;
@@ -2402,6 +2403,11 @@ class TimePortal extends Component
                 $this->tenantId,
                 [now()->toDateString()],
             )[now()->toDateString()] ?? [])[0] ?? null;
+            // Open dienst = aanwezig; "niet ingeklokt" mag dan niet op Nu staan
+            // (bv. nacht/overdag doorlopend of punch buiten het dagvenster).
+            if ($openShift !== null && $todayClockAlert === PortalRosterClockAlert::Absent) {
+                $todayClockAlert = null;
+            }
         }
 
         $todayDestinations = $checkmateMode

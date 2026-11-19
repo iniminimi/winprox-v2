@@ -433,8 +433,8 @@
             "start_break": "Pauze starten",
             "break_hint": "Vergeet je pauze niet — anders wordt er bij lange diensten automatisch :min min pauze ingegeven.",
             "end_break": "Pauze stoppen",
-            "open_elsewhere_hint": "Je bent al ingeklokt op een andere vestiging. Verplaats je aanwezigheid naar hier, of klok uit.",
-            "elsewhere_body": "Je bent ingeklokt bij een andere vestiging.",
+            "open_elsewhere_hint": "Je bent al ingeklokt in een andere prikklok. Verplaats je aanwezigheid naar hier, of klok uit.",
+            "elsewhere_body": "Je bent ingeklokt in een andere prikklok.",
             "sign_out_while_clocked": "Je bent nog ingeklokt. Afmelden klokt je niet uit.",
             "transfer_here": "Verplaats naar hier",
             "started_at": "Gestart bij :place (zelfde dienst).",
@@ -568,7 +568,7 @@
         "now": {
             "status_out": "Niet ingeklokt",
             "status_in": "Ingeklokt sinds :time",
-            "status_elsewhere": "Ingeklokt bij een andere vestiging",
+            "status_elsewhere": "Ingeklokt in een andere prikklok",
             "next_stop": "Volgende stop: :name",
             "here_done": "Werk hier is klaar.",
             "toggle": "Details"

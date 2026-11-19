@@ -4,6 +4,7 @@ namespace App\Actions\Time;
 
 use App\Enums\PlannedShiftStatus;
 use App\Enums\PortalRosterClockAlert;
+use App\Enums\WorkShiftStatus;
 use App\Models\PlannedShift;
 use App\Models\ShiftType;
 use App\Models\WorkShift;
@@ -69,6 +70,17 @@ class ResolveWorkerPortalRosterAlertsAction
             ->get()
             ->groupBy(fn (WorkShift $shift) => $shift->clock_in_at->toDateString());
 
+        // Open diensten die vóór het venster startten (nacht/overdag doorlopend)
+        // tellen als aanwezigheid op elke gevraagde dag die ze nog overlappen.
+        $openCarried = WorkShift::query()
+            ->where('tenant_id', $tenantId)
+            ->where('worker_id', $worker->id)
+            ->where('status', WorkShiftStatus::Open)
+            ->where('clock_in_at', '<', $from)
+            ->orderByDesc('clock_in_at')
+            ->orderByDesc('id')
+            ->get();
+
         $tolerance = max(0, (int) config('time.roster_attendance_tolerance_minutes', 15));
         $absenceByDate = $this->absenceKindsByDate($tenantId, $punches->collapse());
         $alerts = [];
@@ -79,11 +91,18 @@ class ResolveWorkerPortalRosterAlertsAction
             }
 
             $dayPunches = $punches->get($date) ?? collect();
+            $dayEnd = Carbon::parse($date)->endOfDay();
+            $presentViaOpenEarlier = $dayPunches->isEmpty() && $openCarried->contains(
+                fn (WorkShift $shift) => $shift->clock_in_at !== null
+                    && $shift->clock_in_at->lte($dayEnd)
+            );
             $dayAlerts = [];
 
             $dayPlans = $planned->get($date) ?? collect();
             $dayPlan = $dayPlans->first();
-            if ($dayPlan instanceof PlannedShift) {
+            if ($dayPlan instanceof PlannedShift && ! $presentViaOpenEarlier) {
+                // Doorlopende open dienst van een eerdere dag: geen Absent/Early/Late
+                // t.o.v. het plan van vandaag — de uitvoerder is al aanwezig.
                 $dayAlerts = $this->alertsForDay($dayPlan, $dayPlans, $dayPunches, $date, $now, $tolerance);
             }
 

@@ -63,8 +63,8 @@
             "start_break": "Iniciar a pausa",
             "break_hint": "Não se esqueça da pausa — em turnos longos registamos automaticamente :min min de pausa.",
             "end_break": "Terminar a pausa",
-            "open_elsewhere_hint": "Já tem a entrada registada noutro local. Mova a presença para aqui ou registe a saída.",
-            "elsewhere_body": "Tem a entrada registada noutro local.",
+            "open_elsewhere_hint": "Já tem a entrada registada noutro relógio de ponto. Mova a presença para aqui ou registe a saída.",
+            "elsewhere_body": "Tem a entrada registada noutro relógio de ponto.",
             "sign_out_while_clocked": "Ainda tem a entrada registada. Terminar sessão não regista a saída.",
             "transfer_here": "Mover para aqui",
             "started_at": "Início em :place (o mesmo turno).",
@@ -198,7 +198,7 @@
         "now": {
             "status_out": "Sem entrada",
             "status_in": "Entrada desde :time",
-            "status_elsewhere": "Entrada noutro local",
+            "status_elsewhere": "Entrada noutro relógio de ponto",
             "next_stop": "Paragem seguinte: :name",
             "here_done": "O trabalho daqui está feito.",
             "toggle": "Detalhes"

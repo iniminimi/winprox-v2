@@ -433,8 +433,8 @@
             "start_break": "Pause starten",
             "break_hint": "Vergessen Sie Ihre Pause nicht — bei langen Schichten tragen wir automatisch :min Min. Pause ein.",
             "end_break": "Pause beenden",
-            "open_elsewhere_hint": "Sie sind bereits an einem anderen Standort eingestempelt. Verschieben Sie die Anwesenheit hierher oder stempeln Sie aus.",
-            "elsewhere_body": "Sie sind an einem anderen Standort eingestempelt.",
+            "open_elsewhere_hint": "Sie sind bereits an einer anderen Stempeluhr eingestempelt. Verschieben Sie die Anwesenheit hierher oder stempeln Sie aus.",
+            "elsewhere_body": "Sie sind an einer anderen Stempeluhr eingestempelt.",
             "sign_out_while_clocked": "Sie sind noch eingestempelt. Abmelden stempelt Sie nicht aus.",
             "transfer_here": "Hierher verschieben",
             "started_at": "Gestartet bei :place (gleiche Schicht).",
@@ -568,7 +568,7 @@
         "now": {
             "status_out": "Nicht eingestempelt",
             "status_in": "Eingestempelt seit :time",
-            "status_elsewhere": "An einem anderen Standort eingestempelt",
+            "status_elsewhere": "An einer anderen Stempeluhr eingestempelt",
             "next_stop": "Nächster Stopp: :name",
             "here_done": "Die Arbeit hier ist fertig.",
             "toggle": "Details"

@@ -237,6 +237,54 @@ it('toont de rode driehoek op Clock Point naast niet ingeklokt', function () {
         ->assertSeeHtml('wp-portal-clock-alert');
 });
 
+it('toont geen niet-ingeklokt bij een open dienst van de vorige dag', function () {
+    [$tenant, $team, $clockPoint, $worker] = rosterAlertTenant();
+    publishWorkShift($tenant, $worker, '2026-09-22', '08:00', '16:00');
+    WorkShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_clock_point_id' => $clockPoint->id,
+        'presence_clock_point_id' => $clockPoint->id,
+        'clock_in_at' => Carbon::parse('2026-09-21 22:00:00'),
+        'status' => WorkShiftStatus::Open,
+    ]);
+
+    $alerts = app(ResolveWorkerPortalRosterAlertsAction::class)->handle(
+        $worker,
+        (int) $tenant->id,
+        ['2026-09-22'],
+        Carbon::parse('2026-09-22 10:00:00'),
+    );
+
+    expect($alerts['2026-09-22'] ?? [])->toBe([]);
+
+    $this->travelTo(Carbon::parse('2026-09-22 10:00:00'));
+
+    signInRosterAlertWorker($clockPoint)
+        ->assertDontSee(__('time.portal.clock_alert.absent'), false)
+        ->assertDontSeeHtml('wp-portal-clock-alert');
+});
+
+it('toont geen niet-ingeklokt op Nu wanneer de uitvoerder al ingeklokt is', function () {
+    [$tenant, $team, $clockPoint, $worker] = rosterAlertTenant();
+    publishWorkShift($tenant, $worker, '2026-09-22', '08:00', '16:00');
+    WorkShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_clock_point_id' => $clockPoint->id,
+        'presence_clock_point_id' => $clockPoint->id,
+        'clock_in_at' => Carbon::parse('2026-09-22 08:05:00'),
+        'status' => WorkShiftStatus::Open,
+    ]);
+    $this->travelTo(Carbon::parse('2026-09-22 10:00:00'));
+
+    signInRosterAlertWorker($clockPoint)
+        ->assertSee(__('time.portal.now.status_in', ['time' => '08:05']), false)
+        ->assertDontSee(__('time.portal.clock_alert.absent'), false);
+});
+
 it('toont geen driehoek vóór de geplande start op Clock Point', function () {
     [$tenant, , $clockPoint, $worker] = rosterAlertTenant();
     publishWorkShift($tenant, $worker, '2026-09-22');

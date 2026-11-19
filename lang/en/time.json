@@ -433,8 +433,8 @@
             "start_break": "Start break",
             "break_hint": "Don't forget your break — on long shifts we automatically record :min min of break.",
             "end_break": "Stop break",
-            "open_elsewhere_hint": "You are already clocked in at another location. Move your presence here, or clock out.",
-            "elsewhere_body": "You are clocked in at another location.",
+            "open_elsewhere_hint": "You are already clocked in at another time clock. Move your presence here, or clock out.",
+            "elsewhere_body": "You are clocked in at another time clock.",
             "sign_out_while_clocked": "You are still clocked in. Signing out does not clock you out.",
             "transfer_here": "Move here",
             "started_at": "Started at :place (same shift).",
@@ -568,7 +568,7 @@
         "now": {
             "status_out": "Not clocked in",
             "status_in": "Clocked in since :time",
-            "status_elsewhere": "Clocked in at another location",
+            "status_elsewhere": "Clocked in at another time clock",
             "next_stop": "Next stop: :name",
             "here_done": "Work here is done.",
             "toggle": "Details"

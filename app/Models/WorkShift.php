@@ -100,7 +100,9 @@ class WorkShift extends Model
      * Aanwezigheid op dezelfde plek als dit clock point: hetzelfde punt, of een
      * ander punt op dezelfde vestiging. Twee punten met een vestiging die gelijk
      * is tellen als één plek — een hop is tussen vestigingen, niet binnen.
-     * Punten zonder vestiging vallen terug op de punt-vergelijking.
+     * Punten zonder vestiging vallen terug op de punt-vergelijking, met een
+     * naam-match als vangnet (dubbele prikklokken zonder vestiging, bv. na een
+     * proefkoppeling).
      */
     public function isPresentAtSamePlace(ClockPoint $clockPoint): bool
     {
@@ -113,9 +115,21 @@ class WorkShift extends Model
             return true;
         }
 
-        return $presencePoint->location_id !== null
+        if ($presencePoint->location_id !== null
             && $clockPoint->location_id !== null
-            && (int) $presencePoint->location_id === (int) $clockPoint->location_id;
+            && (int) $presencePoint->location_id === (int) $clockPoint->location_id) {
+            return true;
+        }
+
+        // Zelfde naam + minstens één zonder vestiging: behandel als dezelfde prikklok.
+        if ($presencePoint->location_id !== null && $clockPoint->location_id !== null) {
+            return false;
+        }
+
+        $presenceName = mb_strtolower(trim((string) $presencePoint->name));
+        $portalName = mb_strtolower(trim((string) $clockPoint->name));
+
+        return $presenceName !== '' && $presenceName === $portalName;
     }
 
     /** @return list<array<string, mixed>> */

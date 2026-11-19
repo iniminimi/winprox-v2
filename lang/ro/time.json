@@ -63,8 +63,8 @@
             "start_break": "Începeți pauza",
             "break_hint": "Nu uitați pauza — la ture lungi înregistrăm automat :min min de pauză.",
             "end_break": "Încheiați pauza",
-            "open_elsewhere_hint": "Sunteți deja pontat în altă locație. Mutați prezența aici sau faceți ieșirea.",
-            "elsewhere_body": "Sunteți pontat în altă locație.",
+            "open_elsewhere_hint": "Sunteți deja pontat la un alt ceas. Mutați prezența aici sau faceți ieșirea.",
+            "elsewhere_body": "Sunteți pontat la un alt ceas.",
             "sign_out_while_clocked": "Sunteți încă pontat. Deconectarea nu face ieșirea din pontaj.",
             "transfer_here": "Mutați aici",
             "started_at": "Început la :place (aceeași tură).",
@@ -198,7 +198,7 @@
         "now": {
             "status_out": "Nepontat",
             "status_in": "Pontat de la :time",
-            "status_elsewhere": "Pontat în altă locație",
+            "status_elsewhere": "Pontat la un alt ceas",
             "next_stop": "Următoarea oprire: :name",
             "here_done": "Lucrul de aici este gata.",
             "toggle": "Detalii"

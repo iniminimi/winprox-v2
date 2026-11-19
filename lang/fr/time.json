@@ -433,8 +433,8 @@
             "start_break": "Commencer la pause",
             "break_hint": "N'oubliez pas votre pause — sur les longues journées, :min min de pause sont enregistrées automatiquement.",
             "end_break": "Arrêter la pause",
-            "open_elsewhere_hint": "Vous êtes déjà pointé sur un autre site. Déplacez votre présence ici, ou pointez la sortie.",
-            "elsewhere_body": "Vous êtes pointé sur un autre site.",
+            "open_elsewhere_hint": "Vous êtes déjà pointé sur une autre pointeuse. Déplacez votre présence ici, ou pointez la sortie.",
+            "elsewhere_body": "Vous êtes pointé sur une autre pointeuse.",
             "sign_out_while_clocked": "Vous êtes encore pointé. Se déconnecter ne pointe pas la sortie.",
             "transfer_here": "Déplacer ici",
             "started_at": "Démarré à :place (même vacation).",
@@ -568,7 +568,7 @@
         "now": {
             "status_out": "Pas pointé",
             "status_in": "Pointé depuis :time",
-            "status_elsewhere": "Pointé sur un autre site",
+            "status_elsewhere": "Pointé sur une autre pointeuse",
             "next_stop": "Prochain arrêt : :name",
             "here_done": "Le travail ici est terminé.",
             "toggle": "Détails"

@@ -63,8 +63,8 @@
             "start_break": "Rozpocznij przerwę",
             "break_hint": "Proszę pamiętać o przerwie — przy długich zmianach zapisujemy automatycznie :min min przerwy.",
             "end_break": "Zakończ przerwę",
-            "open_elsewhere_hint": "Wejście jest już zarejestrowane w innej lokalizacji. Proszę przenieść obecność tutaj albo zarejestrować wyjście.",
-            "elsewhere_body": "Wejście jest zarejestrowane w innej lokalizacji.",
+            "open_elsewhere_hint": "Wejście jest już zarejestrowane na innym zegarze. Proszę przenieść obecność tutaj albo zarejestrować wyjście.",
+            "elsewhere_body": "Wejście jest zarejestrowane na innym zegarze.",
             "sign_out_while_clocked": "Wejście jest nadal zarejestrowane. Wylogowanie nie rejestruje wyjścia.",
             "transfer_here": "Przenieś tutaj",
             "started_at": "Początek w :place (ta sama zmiana).",
@@ -198,7 +198,7 @@
         "now": {
             "status_out": "Bez wejścia",
             "status_in": "Wejście od :time",
-            "status_elsewhere": "Wejście w innej lokalizacji",
+            "status_elsewhere": "Wejście na innym zegarze",
             "next_stop": "Następny przystanek: :name",
             "here_done": "Praca tutaj jest skończona.",
             "toggle": "Szczegóły"
