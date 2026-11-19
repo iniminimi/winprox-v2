@@ -37,58 +37,60 @@
         </div>
         @unless ($canAct ?? false)
             <x-wp-page-head-title variant="portal" icon="time" :title="__('time.portal.title')">
-                @if ($offerHomescreenShortcut ?? false)
-                    @include('partials.wp-homescreen-shortcut')
-                @endif
                 @if ($showClockPointName ?? false)
                     <p class="wp-muted">{{ $clockPointName }}</p>
                 @endif
             </x-wp-page-head-title>
+            @if ($offerHomescreenShortcut ?? false)
+                <div class="wp-card wp-card-pad wp-portal-homescreen-card">
+                    @include('partials.wp-homescreen-shortcut')
+                </div>
+            @endif
         @else
-            @if (($offerHomescreenShortcut ?? false) || ($pushPublicKey ?? '') !== '')
+            @if ($offerHomescreenShortcut ?? false)
+                <div class="wp-card wp-card-pad wp-portal-homescreen-card">
+                    @include('partials.wp-homescreen-shortcut')
+                </div>
+            @endif
+            @if (($pushPublicKey ?? '') !== '')
                 <div class="wp-portal-head-install">
-                    @if ($offerHomescreenShortcut ?? false)
-                        @include('partials.wp-homescreen-shortcut')
-                    @endif
-                    @if (($pushPublicKey ?? '') !== '')
+                    <div
+                        data-wp-push
+                        data-public-key="{{ $pushPublicKey }}"
+                        data-url="{{ route('public.time-portal.push-subscription') }}"
+                        data-locale="{{ str_replace('_', '-', app()->getLocale()) }}"
+                    >
+                        <button type="button" class="btn btn--ghost" data-wp-push-enable>
+                            {{ __('time.portal.push.enable') }}
+                        </button>
+                        <button type="button" class="btn btn--ghost" data-wp-push-blocked>
+                            {{ __('time.portal.push.blocked') }}
+                        </button>
                         <div
-                            data-wp-push
-                            data-public-key="{{ $pushPublicKey }}"
-                            data-url="{{ route('public.time-portal.push-subscription') }}"
-                            data-locale="{{ str_replace('_', '-', app()->getLocale()) }}"
+                            class="wp-push-help"
+                            data-wp-push-help
+                            hidden
+                            role="dialog"
+                            aria-modal="true"
+                            aria-hidden="true"
+                            aria-labelledby="wp-push-help-title"
                         >
-                            <button type="button" class="btn btn--ghost" data-wp-push-enable>
-                                {{ __('time.portal.push.enable') }}
-                            </button>
-                            <button type="button" class="btn btn--ghost" data-wp-push-blocked>
-                                {{ __('time.portal.push.blocked') }}
-                            </button>
-                            <div
-                                class="wp-push-help"
-                                data-wp-push-help
-                                hidden
-                                role="dialog"
-                                aria-modal="true"
-                                aria-hidden="true"
-                                aria-labelledby="wp-push-help-title"
-                            >
-                                <div class="wp-card wp-card-pad wp-stack wp-push-help__card">
-                                    <h2 id="wp-push-help-title" class="wp-h2">{{ __('time.portal.push.blocked_title') }}</h2>
-                                    <p>{{ __('time.portal.push.blocked_intro') }}</p>
-                                    <p class="wp-muted">{{ __('time.portal.push.blocked_android') }}</p>
-                                    <p class="wp-muted">{{ __('time.portal.push.blocked_ios') }}</p>
-                                    <div class="wp-cluster">
-                                        <button type="button" class="btn btn--primary" data-wp-push-retry>
-                                            {{ __('time.portal.push.blocked_retry') }}
-                                        </button>
-                                        <button type="button" class="btn btn--ghost" data-wp-push-help-close>
-                                            {{ __('common.button.close') }}
-                                        </button>
-                                    </div>
+                            <div class="wp-card wp-card-pad wp-stack wp-push-help__card">
+                                <h2 id="wp-push-help-title" class="wp-h2">{{ __('time.portal.push.blocked_title') }}</h2>
+                                <p>{{ __('time.portal.push.blocked_intro') }}</p>
+                                <p class="wp-muted">{{ __('time.portal.push.blocked_android') }}</p>
+                                <p class="wp-muted">{{ __('time.portal.push.blocked_ios') }}</p>
+                                <div class="wp-cluster">
+                                    <button type="button" class="btn btn--primary" data-wp-push-retry>
+                                        {{ __('time.portal.push.blocked_retry') }}
+                                    </button>
+                                    <button type="button" class="btn btn--ghost" data-wp-push-help-close>
+                                        {{ __('common.button.close') }}
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                    @endif
+                    </div>
                 </div>
             @endif
         @endunless
