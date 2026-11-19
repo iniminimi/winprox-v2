@@ -41,6 +41,37 @@ function clockInAt(Worker $worker, ClockPoint $clockPoint, string $local): void
     ]);
 }
 
+it('zoekt afwezigheidsdagen met indexvriendelijke work_date-equality', function () {
+    $this->travelTo(Carbon::parse('2026-10-14 10:00:00', 'Europe/Brussels'));
+    [$tenant, $clockPoint, $worker] = absenceClockInSetup();
+    clockInAt($worker, $clockPoint, '2026-10-14 09:15:00');
+    PlannedShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-10-14',
+        'kind' => ShiftTypeKind::Sick,
+        'start_time' => null,
+        'end_time' => null,
+    ]);
+
+    $plannedSql = [];
+    \Illuminate\Support\Facades\DB::listen(function ($query) use (&$plannedSql): void {
+        if (str_contains($query->sql, 'planned_shifts') && str_contains($query->sql, 'kind')) {
+            $plannedSql[] = strtolower($query->sql);
+        }
+    });
+
+    $dashboard = app(BuildTimePresenceDashboardAction::class)->handle(
+        tenantId: $tenant->id,
+        attentionOnly: true,
+    );
+
+    expect($dashboard->attentionItems->contains(fn ($row) => $row->type === TimePresenceAttentionType::AbsenceClockIn))->toBeTrue()
+        ->and($plannedSql)->not->toBeEmpty()
+        ->and($plannedSql[0])->not->toMatch('/date\s*\(\s*[`"\[]?work_date/')
+        ->and($plannedSql[0])->toContain('work_date');
+});
+
 it('merkt een open shift op een volledige verlofdag', function () {
     $this->travelTo(Carbon::parse('2026-10-14 10:00:00', 'Europe/Brussels'));
     [$tenant, $clockPoint, $worker] = absenceClockInSetup();

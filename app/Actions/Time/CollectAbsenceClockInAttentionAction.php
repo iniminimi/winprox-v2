@@ -51,14 +51,16 @@ class CollectAbsenceClockInAttentionAction
         $dates = collect($locals)->map(fn (CarbonInterface $at) => $at->toDateString())->unique()->values()->all();
         $workerIds = $openShifts->pluck('worker_id')->unique()->filter()->all();
 
+        // Equality on work_date (not whereDate/DATE()) so (tenant_id, work_date) / (worker_id, work_date) stay usable.
+        // Append 00:00:00 so SQLite (datetime storage) and MySQL (DATE) both match.
+        $workDates = array_values(array_unique(array_map(
+            static fn (string $date): string => substr($date, 0, 10).' 00:00:00',
+            $dates,
+        )));
         $planned = PlannedShift::query()
             ->where('tenant_id', $tenantId)
             ->whereIn('worker_id', $workerIds)
-            ->where(function ($query) use ($dates) {
-                foreach ($dates as $date) {
-                    $query->orWhereDate('work_date', $date);
-                }
-            })
+            ->whereIn('work_date', $workDates)
             ->when($plannedStatus instanceof PlannedShiftStatus, fn ($query) => $query->where('status', $plannedStatus))
             ->whereIn('kind', [ShiftTypeKind::Leave, ShiftTypeKind::Recup, ShiftTypeKind::Sick])
             ->get()
