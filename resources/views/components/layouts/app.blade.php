@@ -98,6 +98,7 @@
     <div
         class="wp-app"
         :class="{ 'wp-app--sidebar-collapsed': collapsed, 'wp-app--content-resizing': resizing }"
+        @pointerdown.window.capture="contentEdgePointerDown($event)"
         x-data="{
             nav: false,
             collapsed: false,
@@ -151,39 +152,60 @@
                     localStorage.setItem('wp_content_width', String(this.contentWidth));
                 } catch (e) {}
             },
-            startContentResize(event) {
+            contentEdgePointerDown(event) {
+                if (this.resizing || ! this.$refs.resize || ! this.$refs.main) {
+                    return;
+                }
                 if (! window.matchMedia('(min-width: 60rem)').matches) {
                     return;
                 }
                 if (event.button != null && event.button !== 0) {
                     return;
                 }
+                const target = event.target;
+                if (target instanceof Element && target.closest('.wp-help, a, button, input, textarea, select, label')) {
+                    return;
+                }
+                const rect = this.$refs.resize.getBoundingClientRect();
+                if (rect.width < 1 || rect.height < 1) {
+                    return;
+                }
+                const x = event.clientX;
+                const y = event.clientY;
+                if (x < rect.left - 6 || x > rect.right + 6 || y < rect.top || y > rect.bottom) {
+                    return;
+                }
+                this.startContentResize(event);
+            },
+            startContentResize(event) {
+                if (this.resizing) {
+                    return;
+                }
                 event.preventDefault();
-                const handle = event.currentTarget;
-                handle.setPointerCapture(event.pointerId);
+                event.stopPropagation();
                 this.resizing = true;
                 const startX = event.clientX;
                 const startWidth = this.$refs.main.getBoundingClientRect().width;
                 const pointerId = event.pointerId;
                 const move = (e) => {
-                    if (e.pointerId !== pointerId) {
+                    if (pointerId != null && e.pointerId !== pointerId) {
                         return;
                     }
                     this.applyContentWidth(startWidth + (e.clientX - startX));
                 };
                 const up = (e) => {
-                    if (e.pointerId !== pointerId) {
+                    if (pointerId != null && e.pointerId !== pointerId) {
                         return;
                     }
-                    handle.removeEventListener('pointermove', move);
-                    handle.removeEventListener('pointerup', up);
-                    handle.removeEventListener('pointercancel', up);
+                    window.removeEventListener('pointermove', move);
+                    window.removeEventListener('pointerup', up);
+                    window.removeEventListener('pointercancel', up);
                     this.resizing = false;
                     this.persistContentWidth();
                 };
-                handle.addEventListener('pointermove', move);
-                handle.addEventListener('pointerup', up);
-                handle.addEventListener('pointercancel', up);
+                window.addEventListener('pointermove', move);
+                window.addEventListener('pointerup', up);
+                window.addEventListener('pointercancel', up);
             },
             nudgeContentWidth(delta) {
                 if (! window.matchMedia('(min-width: 60rem)').matches || ! this.$refs.main) {
@@ -895,11 +917,11 @@
                 {{ $slot }}
                 <div
                     class="wp-content-resize"
+                    x-ref="resize"
                     role="separator"
                     aria-orientation="vertical"
                     aria-label="{{ __('common.nav.content_width') }}"
                     tabindex="0"
-                    @pointerdown="startContentResize($event)"
                     @keydown.left.prevent="nudgeContentWidth(-32)"
                     @keydown.right.prevent="nudgeContentWidth(32)"
                 ></div>

@@ -702,11 +702,15 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
 
 @media (min-width: 60rem) {
     .wp-main {
-        max-width: var(--wp-content-width, var(--wp-content-max));
+        width: min(100%, var(--wp-content-width, var(--wp-content-max)));
+        max-width: min(100%, var(--wp-content-width, var(--wp-content-max)));
+        margin-inline-end: auto;
+        align-self: flex-start;
     }
 
     .wp-main:has(.wp-roster-page) {
-        max-width: var(--wp-content-width, none);
+        width: var(--wp-content-width, 100%);
+        max-width: 100%;
     }
 
     .wp-content-resize {
@@ -715,14 +719,15 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
         top: 0;
         right: 0;
         bottom: 0;
-        z-index: 5;
-        width: 0.75rem;
+        z-index: 25;
+        width: 1.25rem;
         margin: 0;
         padding: 0;
         border: 0;
         background: transparent;
         cursor: col-resize;
         touch-action: none;
+        pointer-events: auto;
     }
 
     .wp-content-resize::after {
@@ -731,10 +736,11 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
         top: 0.75rem;
         bottom: 0.75rem;
         left: 50%;
-        width: 2px;
+        width: 4px;
         transform: translateX(-50%);
         border-radius: var(--wp-radius-pill);
         background: var(--wp-border);
+        pointer-events: none;
     }
 
     .wp-content-resize:hover::after,
