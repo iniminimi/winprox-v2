@@ -38,9 +38,7 @@
         @unless ($canAct ?? false)
             <x-wp-page-head-title variant="portal" icon="time" :title="__('time.portal.title')">
                 @if ($offerHomescreenShortcut ?? false)
-                    <x-slot:toolbar>
-                        @include('partials.wp-homescreen-shortcut')
-                    </x-slot:toolbar>
+                    @include('partials.wp-homescreen-shortcut')
                 @endif
                 @if ($showClockPointName ?? false)
                     <p class="wp-muted">{{ $clockPointName }}</p>
