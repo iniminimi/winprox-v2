@@ -731,18 +731,19 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
     }
 
     .wp-content-resize__grip {
-        position: sticky;
-        top: calc(50vh - 1.15rem);
+        position: fixed;
+        top: 50%;
+        right: 0;
         z-index: 1;
         display: block;
         width: 1.5rem;
         height: 2.35rem;
-        margin-top: calc(50vh - 1.15rem);
-        margin-left: 0.125rem;
+        margin: 0;
         border: 1px solid var(--wp-border);
         border-radius: var(--wp-radius-pill);
         background: var(--wp-surface);
         box-shadow: var(--wp-shadow-sm);
+        transform: translate(-50%, -50%);
         pointer-events: none;
     }
 
