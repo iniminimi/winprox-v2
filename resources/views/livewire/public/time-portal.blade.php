@@ -42,13 +42,13 @@
                 @endif
             </x-wp-page-head-title>
             @if ($offerHomescreenShortcut ?? false)
-                <div class="wp-card wp-card-pad wp-portal-homescreen-card">
+                <div class="wp-card wp-card-pad wp-portal-homescreen-card wp-card--prio-pulse">
                     @include('partials.wp-homescreen-shortcut')
                 </div>
             @endif
         @else
             @if ($offerHomescreenShortcut ?? false)
-                <div class="wp-card wp-card-pad wp-portal-homescreen-card">
+                <div class="wp-card wp-card-pad wp-portal-homescreen-card wp-card--prio-pulse">
                     @include('partials.wp-homescreen-shortcut')
                 </div>
             @endif
