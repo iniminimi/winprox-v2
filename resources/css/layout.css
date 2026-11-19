@@ -316,30 +316,45 @@
     color: var(--wp-accent);
 }
 
-/* Browserbalk alleen in het geïnstalleerde bureaubladvenster.
-   Chrome en Edge melden standalone; Firefox op Windows meldt minimal-ui.
+/* Browserbalk in het geïnstalleerde bureaubladvenster.
+   Chrome en Edge: standalone. Firefox meldt dat venster niet zo,
+   dus daar staat de balk op elk breed scherm.
    Zelfde actieve balk + icoonkader als .wp-nav-link.is-active (bv. Plaatsen). */
 .wp-pwa-nav {
     display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.5rem 0.625rem;
+    border: 1px solid var(--wp-accent-border);
+    border-radius: 0.75rem;
+    background-color: var(--wp-accent-soft);
+    color: var(--wp-accent-text);
 }
 
-@media (display-mode: standalone) and (min-width: 60rem),
-       (display-mode: minimal-ui) and (min-width: 60rem),
-       (display-mode: fullscreen) and (min-width: 60rem) {
-    .wp-pwa-nav {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.75rem;
-        padding: 0.5rem 0.625rem;
-        border: 1px solid var(--wp-accent-border);
-        border-radius: 0.75rem;
-        background-color: var(--wp-accent-soft);
-        color: var(--wp-accent-text);
-    }
+@media (min-width: 60rem) {
+    @media (display-mode: standalone),
+           (display-mode: minimal-ui),
+           (display-mode: fullscreen) {
+        .wp-pwa-nav {
+            display: flex;
+        }
 
-    .wp-nav-link--home {
-        display: none;
+        .wp-nav-link--home {
+            display: none;
+        }
+    }
+}
+
+@supports (-moz-appearance: none) {
+    @media (min-width: 60rem) {
+        .wp-pwa-nav {
+            display: flex;
+        }
+
+        .wp-nav-link--home {
+            display: none;
+        }
     }
 }
 
