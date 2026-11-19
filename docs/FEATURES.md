@@ -1323,9 +1323,10 @@ Fysiek scherm (ESP32-4848S040, 4" 480×480) aan een Clock Point dat zelf elke ~3
 `/time/{token}`-portaal als de sticker — geen aparte flow. Een foto van het scherm is
 binnen ~30–90 s dood.
 
-- **Token:** `{display_id:24}{dyn:40}` = 64 tekens. `display_id` is de stabiele publieke
-  sleutel; `dyn` = 40 hex van `HMAC-SHA256(display_secret, "wpx:<unix-venster>")`.
-  Resolver accepteert het huidige venster ±2; falende dyn → `blocked` + audit
+- **Token:** `{display_id:24}{dyn:16}` = 40 tekens (legacy firmware: `{dyn:40}` = 64).
+  `display_id` is de stabiele publieke sleutel; `dyn` = eerste 16 hex van
+  `HMAC-SHA256(display_secret, "wpx:<unix-venster>")`. Resolver accepteert
+  het huidige venster ±2 en beide dyn-lengtes; falende dyn → `blocked` + audit
   `clock_point.qr_blocked` (zelfde log als verlopen sticker-tokens). Geen DB-rij per rotatie.
   Clock Points toont daarvan alleen een vorige sticker-QR waarvan de grace voorbij is:
   één zin met clock point, aantal en laatste moment (7 dagen). Verlopen schermcodes
