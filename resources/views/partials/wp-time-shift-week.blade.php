@@ -57,9 +57,21 @@
                         @endforeach
                         @foreach ($day['blocks'] as $block)
                             @php
-                                $range = $block['start'].' – '.($block['end'] ?? __('time.shifts.week.now'));
+                                $endLabel = $block['end'] ?? __('time.shifts.week.now');
+                                $range = $block['start'].' – '.$endLabel;
+                                $workedLabel = \App\Support\Time\WorkDurationFormatter::format($block['workedMinutes']);
+                                $breakLabel = \App\Support\Time\WorkDurationFormatter::format((int) ($block['breakMinutes'] ?? 0));
                                 $canCorrect = ! $block['open'] && (auth()->user()?->can('correct', $block['shift']) ?? false);
                                 $clickable = $block['open'] || $canCorrect;
+                                $titleParts = [
+                                    __('time.shifts.punch_in', ['time' => $block['start']]),
+                                    $block['place'] ?? '',
+                                    __('time.shifts.punch_out', ['time' => $endLabel]),
+                                    $block['outPlace'] ?? ($block['place'] ?? ''),
+                                    __('time.shifts.worked', ['duration' => $workedLabel]),
+                                    __('time.shifts.break_minutes', ['duration' => $breakLabel]),
+                                    $block['statusLabel'] ?? '',
+                                ];
                             @endphp
                             <button
                                 type="button"
@@ -67,16 +79,27 @@
                                 style="--wp-tw-top: {{ $block['topPct'] }}%; --wp-tw-height: {{ $block['heightPct'] }}%;"
                                 @if ($block['open']) wire:click="openForceClose({{ $block['shiftId'] }})" @elseif ($canCorrect) wire:click="openCorrection({{ $block['shiftId'] }})" @endif
                                 @disabled(! $clickable)
-                                title="{{ $range }}{{ $block['place'] ? ' · '.$block['place'] : '' }}"
+                                title="{{ collect($titleParts)->filter()->implode(' · ') }}"
                             >
                                 @foreach ($block['breaks'] as $break)
                                     <span class="wp-time-week__break" style="--wp-tw-top: {{ $break['topPct'] }}%; --wp-tw-height: {{ $break['heightPct'] }}%;" aria-hidden="true"></span>
                                 @endforeach
-                                <span class="wp-time-week__block-time wp-tabular">{{ $range }}</span>
+                                <span class="wp-time-week__block-time wp-tabular">{{ __('time.shifts.punch_in', ['time' => $block['start']]) }}</span>
                                 @if ($block['place'])
                                     <span class="wp-time-week__block-place">{{ $block['place'] }}</span>
                                 @endif
-                                <span class="wp-time-week__block-worked wp-tabular">{{ \App\Support\Time\WorkDurationFormatter::format($block['workedMinutes']) }}</span>
+                                <span class="wp-time-week__block-time wp-tabular">{{ __('time.shifts.punch_out', ['time' => $endLabel]) }}</span>
+                                @if (($block['outPlace'] ?? null) && ($block['outPlace'] !== ($block['place'] ?? null)))
+                                    <span class="wp-time-week__block-place">{{ $block['outPlace'] }}</span>
+                                @endif
+                                <span class="wp-time-week__block-meta wp-tabular">{{ __('time.shifts.worked', ['duration' => $workedLabel]) }}</span>
+                                <span class="wp-time-week__block-meta wp-tabular">{{ __('time.shifts.break_minutes', ['duration' => $breakLabel]) }}</span>
+                                @if (! empty($block['manual']))
+                                    <span class="wp-time-week__block-status">{{ __('time.manual_clock_in.badge') }}</span>
+                                @endif
+                                @if (! empty($block['statusLabel']))
+                                    <span class="wp-time-week__block-status">{{ $block['statusLabel'] }}</span>
+                                @endif
                             </button>
                         @endforeach
                         @if ($day['nowPct'] !== null)

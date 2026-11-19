@@ -6377,7 +6377,8 @@ svg.wp-release-worker-row__icon,
 
 .wp-time-week__block-time,
 .wp-time-week__block-place,
-.wp-time-week__block-worked {
+.wp-time-week__block-meta,
+.wp-time-week__block-status {
     position: relative;
     z-index: 1;
 }
@@ -6386,11 +6387,18 @@ svg.wp-release-worker-row__icon,
     font-weight: 700;
 }
 
-.wp-time-week__block-place {
+.wp-time-week__block-place,
+.wp-time-week__block-meta,
+.wp-time-week__block-status {
     color: var(--wp-text-muted);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.wp-time-week__block-status {
+    font-weight: 600;
+    color: var(--wp-text);
 }
 
 .wp-time-week__break {

@@ -2,6 +2,8 @@
 
 namespace App\Actions\Time;
 
+use App\Enums\ClockSource;
+use App\Enums\WorkShiftStatus;
 use App\Models\PlannedShift;
 use App\Models\ShiftType;
 use App\Models\WorkBreak;
@@ -47,7 +49,7 @@ class BuildWorkShiftWeekGridAction
             ->when($clockPointId, fn ($q) => $q->where('clock_in_clock_point_id', $clockPointId))
             ->where('clock_in_at', '<=', $sunday)
             ->where(fn ($q) => $q->whereNull('clock_out_at')->orWhere('clock_out_at', '>=', $monday))
-            ->with(['breaks', 'clockInClockPoint'])
+            ->with(['breaks', 'clockInClockPoint.location', 'clockOutClockPoint.location', 'team'])
             ->orderBy('clock_in_at')
             ->get();
 
@@ -91,14 +93,21 @@ class BuildWorkShiftWeekGridAction
                 $endMinute = max($endMinute, $startMinute + 1);
                 $firstMinute = $firstMinute === null ? $startMinute : min($firstMinute, $startMinute);
 
+                $inPlace = $shift->clockInClockPoint?->attendancePlaceLabel()
+                    ?? __('time.shifts.clock_point_fallback');
+                $outPlace = $shift->clockOutClockPoint?->attendancePlaceLabel() ?? $inPlace;
                 $days[$date]['blocks'][] = [
                     'shift' => $shift,
                     'shiftId' => (int) $shift->id,
                     'open' => $shift->status->isOpen(),
                     'start' => $shift->clock_in_at->format('H:i'),
                     'end' => $shift->clock_out_at?->format('H:i'),
-                    'place' => $shift->clockInClockPoint?->name,
+                    'place' => $inPlace,
+                    'outPlace' => $outPlace,
+                    'breakMinutes' => $shift->visibleBreakMinutes(),
                     'workedMinutes' => $shift->netWorkMinutes(),
+                    'statusLabel' => $this->statusLabel($shift),
+                    'manual' => $shift->isManuallyClockedIn(),
                     'topPct' => $this->pct($startMinute),
                     'heightPct' => $this->pct($endMinute - $startMinute),
                     'breaks' => $this->breakSegments($shift, $dayStart, $startMinute, $endMinute, $now),
@@ -200,5 +209,14 @@ class BuildWorkShiftWeekGridAction
     private function pct(int $minutes): float
     {
         return round($this->clamp($minutes) / self::DAY_MINUTES * 100, 3);
+    }
+
+    private function statusLabel(WorkShift $shift): string
+    {
+        if ($shift->status === WorkShiftStatus::ForceClosed && $shift->clock_out_source === ClockSource::Auto) {
+            return __('time.status.auto_closed');
+        }
+
+        return __('time.status.'.$shift->status->value);
     }
 }
