@@ -6,6 +6,7 @@
     "nav": {
         "label": "Navigazione principale",
         "collapse": "Comprimi il menu",
+        "content_width": "Trascina il bordo per restringere o allargare questa schermata",
         "dashboard": "Home",
         "browser": "Browser",
         "back": "Indietro",

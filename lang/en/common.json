@@ -6,6 +6,7 @@
     "nav": {
         "label": "Main navigation",
         "collapse": "Collapse menu",
+        "content_width": "Drag the edge to make this screen narrower or wider",
         "dashboard": "Home",
         "browser": "Browser",
         "back": "Back",

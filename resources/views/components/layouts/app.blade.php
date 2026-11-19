@@ -97,10 +97,12 @@
 
     <div
         class="wp-app"
-        :class="{ 'wp-app--sidebar-collapsed': collapsed }"
+        :class="{ 'wp-app--sidebar-collapsed': collapsed, 'wp-app--content-resizing': resizing }"
         x-data="{
             nav: false,
             collapsed: false,
+            resizing: false,
+            contentWidth: null,
             help: false,
             helpFabShowQuestion: false,
             helpVideoUrl: @js(asset('video/assistant_small.mp4')),
@@ -109,6 +111,10 @@
                 this.$el.classList.add('wp-app--boot');
                 try {
                     this.collapsed = localStorage.getItem('wp_sidebar_collapsed') === '1';
+                    const storedWidth = parseInt(localStorage.getItem('wp_content_width') || '', 10);
+                    if (storedWidth > 0) {
+                        this.applyContentWidth(storedWidth);
+                    }
                     const key = 'wp_help_fab_page_count';
                     const next = (parseInt(sessionStorage.getItem(key) || '0', 10) || 0) + 1;
                     sessionStorage.setItem(key, String(next));
@@ -119,6 +125,73 @@
                 requestAnimationFrame(() => requestAnimationFrame(() => {
                     this.$el.classList.remove('wp-app--boot');
                 }));
+            },
+            contentMin() {
+                const root = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
+                return Math.round(48 * root);
+            },
+            contentMax() {
+                return this.$refs.content ? this.$refs.content.clientWidth : window.innerWidth;
+            },
+            applyContentWidth(px) {
+                const min = this.contentMin();
+                const max = this.contentMax();
+                let next = Math.round(Math.max(min, px));
+                if (max > min) {
+                    next = Math.min(max, next);
+                }
+                this.contentWidth = next;
+                this.$el.style.setProperty('--wp-content-width', next + 'px');
+            },
+            persistContentWidth() {
+                if (! this.contentWidth) {
+                    return;
+                }
+                try {
+                    localStorage.setItem('wp_content_width', String(this.contentWidth));
+                } catch (e) {}
+            },
+            startContentResize(event) {
+                if (! window.matchMedia('(min-width: 60rem)').matches) {
+                    return;
+                }
+                if (event.button != null && event.button !== 0) {
+                    return;
+                }
+                event.preventDefault();
+                const handle = event.currentTarget;
+                handle.setPointerCapture(event.pointerId);
+                this.resizing = true;
+                const startX = event.clientX;
+                const startWidth = this.$refs.main.getBoundingClientRect().width;
+                const pointerId = event.pointerId;
+                const move = (e) => {
+                    if (e.pointerId !== pointerId) {
+                        return;
+                    }
+                    this.applyContentWidth(startWidth + (e.clientX - startX));
+                };
+                const up = (e) => {
+                    if (e.pointerId !== pointerId) {
+                        return;
+                    }
+                    handle.removeEventListener('pointermove', move);
+                    handle.removeEventListener('pointerup', up);
+                    handle.removeEventListener('pointercancel', up);
+                    this.resizing = false;
+                    this.persistContentWidth();
+                };
+                handle.addEventListener('pointermove', move);
+                handle.addEventListener('pointerup', up);
+                handle.addEventListener('pointercancel', up);
+            },
+            nudgeContentWidth(delta) {
+                if (! window.matchMedia('(min-width: 60rem)').matches || ! this.$refs.main) {
+                    return;
+                }
+                const current = this.contentWidth || this.$refs.main.getBoundingClientRect().width;
+                this.applyContentWidth(current + delta);
+                this.persistContentWidth();
             },
             toggleSidebar() {
                 if (window.matchMedia('(min-width: 60rem)').matches) {
@@ -778,7 +851,7 @@
             <x-wp-icon name="menu" class="wp-icon" />
         </button>
 
-        <div class="wp-content">
+        <div class="wp-content" x-ref="content">
             @if ($supportTenant)
                 <div class="wp-support-banner-bar" role="status">
                     <span>{{ __('platform.banner', ['name' => $supportTenant->name]) }}</span>
@@ -818,8 +891,18 @@
                 </div>
             @endif
 
-            <main class="wp-main">
+            <main class="wp-main" x-ref="main">
                 {{ $slot }}
+                <div
+                    class="wp-content-resize"
+                    role="separator"
+                    aria-orientation="vertical"
+                    aria-label="{{ __('common.nav.content_width') }}"
+                    tabindex="0"
+                    @pointerdown="startContentResize($event)"
+                    @keydown.left.prevent="nudgeContentWidth(-32)"
+                    @keydown.right.prevent="nudgeContentWidth(32)"
+                ></div>
             </main>
         </div>
 

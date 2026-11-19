@@ -6,6 +6,7 @@
     "nav": {
         "label": "Navegación principal",
         "collapse": "Contraer el menú",
+        "content_width": "Arrastre el borde para hacer esta pantalla más estrecha o más ancha",
         "dashboard": "Inicio",
         "browser": "Navegador",
         "back": "Atrás",

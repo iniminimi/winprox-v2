@@ -683,6 +683,7 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
 }
 
 .wp-main {
+    position: relative;
     min-width: 0;
     /* Bovenkant gelijk met het logo in de zijbalk (.wp-sidebar-header is 1rem). */
     padding: 1rem 1.75rem 1.75rem;
@@ -692,6 +693,65 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
 
 .wp-main:has(.wp-roster-page) {
     max-width: none;
+}
+
+/* Rechterrand van de hoofdkolom: smaller of breder, onthouden op dit toestel. */
+.wp-content-resize {
+    display: none;
+}
+
+@media (min-width: 60rem) {
+    .wp-main {
+        max-width: var(--wp-content-width, var(--wp-content-max));
+    }
+
+    .wp-main:has(.wp-roster-page) {
+        max-width: var(--wp-content-width, none);
+    }
+
+    .wp-content-resize {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 5;
+        width: 0.75rem;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        cursor: col-resize;
+        touch-action: none;
+    }
+
+    .wp-content-resize::after {
+        content: "";
+        position: absolute;
+        top: 0.75rem;
+        bottom: 0.75rem;
+        left: 50%;
+        width: 2px;
+        transform: translateX(-50%);
+        border-radius: var(--wp-radius-pill);
+        background: var(--wp-border);
+    }
+
+    .wp-content-resize:hover::after,
+    .wp-content-resize:focus-visible::after,
+    .wp-app--content-resizing .wp-content-resize::after {
+        background: var(--wp-accent);
+    }
+
+    .wp-content-resize:focus-visible {
+        outline: none;
+    }
+
+    .wp-app--content-resizing,
+    .wp-app--content-resizing * {
+        cursor: col-resize;
+        user-select: none;
+    }
 }
 
 /* Menu-knop linksboven op smalle schermen (zijbalk is off-canvas). */

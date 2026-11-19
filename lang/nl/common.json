@@ -6,6 +6,7 @@
     "nav": {
         "label": "Hoofdnavigatie",
         "collapse": "Menu inklappen",
+        "content_width": "Sleep de rand om dit scherm smaller of breder te maken",
         "dashboard": "Home",
         "browser": "Browser",
         "back": "Terug",
