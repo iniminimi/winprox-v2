@@ -5,7 +5,7 @@
     <div class="wp-page-head">
         <div class="wp-grow wp-stack-tight">
             <x-wp-page-head-title
-                icon="persons"
+                :icon="$this->isBackofficeSection() ? 'backoffice' : 'persons'"
                 :title="$viewingTeam
                     ? $viewingTeam->localizedName()
                     : ($this->isBackofficeSection() ? __('team.backoffice.title') : __('team.teams_page.title'))"

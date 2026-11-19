@@ -15,6 +15,7 @@
         'album' => 'images/icons/album.png',
         'units' => 'images/icons/units.png',
         'category' => 'images/icons/category.png',
+        'backoffice' => 'images/icons/backoffice.png',
     ];
     $iconImage = $iconImages[$name] ?? null;
     $paths = [

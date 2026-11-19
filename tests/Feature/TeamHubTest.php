@@ -98,6 +98,7 @@ it('toont geen briefing op backoffice', function () {
     $this->actingAs($admin)
         ->get(route('team.index', ['section' => 'backoffice']))
         ->assertOk()
+        ->assertSee('images/icons/backoffice.png', false)
         ->assertSee(__('team.colleagues.title'), false)
         ->assertDontSee(__('team.briefing'), false);
 });
