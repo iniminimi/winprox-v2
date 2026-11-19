@@ -8787,7 +8787,7 @@ a.wp-worker-hours-link:focus-visible {
     display: flex;
     width: 100%;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 0.75rem;
     padding: 0;
     border: 0;
@@ -8795,13 +8795,13 @@ a.wp-worker-hours-link:focus-visible {
     box-shadow: none;
     color: inherit;
     font: inherit;
-    text-align: left;
+    text-align: center;
     cursor: pointer;
 }
 
 .wp-homescreen-shortcut__label {
-    flex: 1 1 auto;
-    min-width: 0;
+    flex: 0 1 auto;
+    max-width: 14rem;
     font-size: 0.9375rem;
     font-weight: 600;
     line-height: 1.3;

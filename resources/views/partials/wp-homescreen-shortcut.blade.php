@@ -8,7 +8,7 @@
     <span class="wp-homescreen-shortcut__label">{{ __('time.portal.homescreen.title') }}</span>
     <span class="wp-homescreen-shortcut">
         <img
-            src="{{ asset('images/Winprox_logo_100.png') }}"
+            src="{{ asset('images/pwa/winprox-192.png') }}"
             alt=""
             width="40"
             height="40"
