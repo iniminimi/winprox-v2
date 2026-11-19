@@ -125,27 +125,7 @@
                 }
                 requestAnimationFrame(() => requestAnimationFrame(() => {
                     this.$el.classList.remove('wp-app--boot');
-                    this.syncContentGrip();
                 }));
-                if (! window.__wpContentGripResize) {
-                    window.__wpContentGripResize = () => {
-                        const grip = document.querySelector('.wp-content-resize__grip');
-                        const handle = grip?.parentElement;
-                        if (! grip || ! handle) {
-                            return;
-                        }
-                        const rect = handle.getBoundingClientRect();
-                        if (rect.width < 1) {
-                            return;
-                        }
-                        grip.style.right = 'auto';
-                        grip.style.left = (rect.left + (rect.width / 2)) + 'px';
-                    };
-                    window.addEventListener('resize', window.__wpContentGripResize);
-                }
-            },
-            syncContentGrip() {
-                window.__wpContentGripResize?.();
             },
             contentMin() {
                 const root = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
@@ -163,7 +143,6 @@
                 }
                 this.contentWidth = next;
                 this.$el.style.setProperty('--wp-content-width', next + 'px');
-                this.syncContentGrip();
             },
             persistContentWidth() {
                 if (! this.contentWidth) {
@@ -249,14 +228,6 @@
                     try {
                         localStorage.setItem('wp_sidebar_collapsed', this.collapsed ? '1' : '0');
                     } catch (e) {}
-                    let frames = 0;
-                    const follow = () => {
-                        this.syncContentGrip();
-                        if (frames++ < 12) {
-                            requestAnimationFrame(follow);
-                        }
-                    };
-                    requestAnimationFrame(follow);
                     return;
                 }
                 this.nav = ! this.nav;

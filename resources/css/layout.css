@@ -731,9 +731,9 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
     }
 
     .wp-content-resize__grip {
-        position: fixed;
+        position: absolute;
         top: 50%;
-        right: 0;
+        left: 50%;
         z-index: 1;
         display: block;
         width: 1.5rem;
