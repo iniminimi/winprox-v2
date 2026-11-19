@@ -8886,15 +8886,26 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
 }
 
 .wp-pwa-open-screen__card {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     max-width: 22rem;
     text-align: center;
 }
 
 .wp-pwa-open-screen__card img {
+    display: block;
     width: 4.5rem;
     height: 4.5rem;
+    margin-inline: auto;
+    object-fit: contain;
     border-radius: 1rem;
+}
+
+.wp-pwa-open-screen__card .wp-h2,
+.wp-pwa-open-screen__card .wp-muted {
+    width: 100%;
+    text-align: center;
 }
 
 
