@@ -46,6 +46,19 @@ function markHomescreenInstalled() {
     notifyHomescreenInstall();
 }
 
+function showOpenAppScreen() {
+    if (isStandaloneDisplay()) {
+        return;
+    }
+    document.documentElement.classList.add('wp-pwa-open-app');
+    document.querySelector('.wp-pwa-open-screen')?.removeAttribute('hidden');
+}
+
+function dismissOpenAppScreen() {
+    document.documentElement.classList.remove('wp-pwa-open-app');
+    document.querySelector('.wp-pwa-open-screen')?.setAttribute('hidden', '');
+}
+
 function clearInstalled(key, className) {
     try {
         window.localStorage.removeItem(key);
@@ -175,11 +188,18 @@ document.addEventListener('click', (event) => {
     promptEvent.userChoice.then((choice) => {
         if (choice.outcome === 'accepted') {
             markHomescreenInstalled();
+            showOpenAppScreen();
         }
     }).catch(() => {});
 }, true);
 
 document.addEventListener('click', (event) => {
+    if (event.target.closest('[data-wp-pwa-open-dismiss]')) {
+        event.preventDefault();
+        dismissOpenAppScreen();
+        return;
+    }
+
     const trigger = event.target.closest('[data-wp-backoffice-install]');
     if (!trigger || isStandaloneDisplay() || !deferredBackofficePrompt) {
         return;
@@ -201,6 +221,7 @@ document.addEventListener('click', (event) => {
 window.addEventListener('appinstalled', () => {
     if (document.querySelector('[data-wp-homescreen-install]')) {
         markHomescreenInstalled();
+        showOpenAppScreen();
     }
     if (document.querySelector('[data-wp-backoffice-install]')) {
         markBackofficeInstalled();

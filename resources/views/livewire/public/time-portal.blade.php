@@ -1130,6 +1130,18 @@
         @endif
     @endif
 
+    @if ($offerHomescreenShortcut ?? false)
+        <div class="wp-pwa-open-screen" hidden role="dialog" aria-modal="true" aria-labelledby="wp-pwa-open-title">
+            <div class="wp-card wp-card-pad wp-stack wp-pwa-open-screen__card">
+                <img src="{{ asset('images/pwa/winprox-192.png') }}" alt="" width="72" height="72">
+                <h2 id="wp-pwa-open-title" class="wp-h2">{{ __('time.portal.homescreen.open_title') }}</h2>
+                <p class="wp-muted">{{ __('time.portal.homescreen.open_text') }}</p>
+                <p class="wp-muted">{{ __('time.portal.homescreen.open_apps') }}</p>
+                <button type="button" class="btn btn--primary" data-wp-pwa-open-dismiss>{{ __('common.button.close') }}</button>
+            </div>
+        </div>
+    @endif
+
     @if (($offerHomescreenShortcut ?? false) && $homescreenHelpOpen)
         <x-wp-modal closeMethod="closeHomescreenHelp" aria-labelledby="homescreen-help-title">
             <div class="wp-card wp-card-pad wp-stack wp-modal-card">

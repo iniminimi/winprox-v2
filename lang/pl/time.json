@@ -161,7 +161,10 @@
             "help_android": "Android (Chrome): jedno naciśnięcie ikony. Proszę potwierdzić „Dodaj do ekranu głównego”. Logowanie działa potem z tego skrótu.",
             "help_ios": "iPhone: Apple nie pozwala na automatyczną instalację. Proszę nacisnąć ikonę; potem na iPhonie: trzy kropki (⋯) na dole → Udostępnij → Pokaż więcej → przewiń → „+ Dodaj do ekranu początkowego”.",
             "help_existing": "Została stara ikona, przy której logowanie nic nie robiło? Proszę usunąć ikonę, odświeżyć stronę i nacisnąć plus jeszcze raz.",
-            "help_push": "Najpierw dodaj WinProx do ekranu głównego przez logo z plusem. Potem otwórz tę ikonę. Przycisk Włącz powiadomienia push jest tylko w tej aplikacji. Stuknij i wybierz Zezwól. Przycisk znika od razu; nie trzeba odświeżać strony. Jeśli wybierzesz Nie zezwalaj lub powiadomienia są zablokowane, zobaczysz Powiadomienia wyłączone z krokami, jak włączyć je ponownie w ustawieniach telefonu. Potem stuknij Sprawdź ponownie. Dostaniesz powiadomienie, gdy zmieni się zmiana, urlop lub odbiór zostanie zatwierdzony, jest dokument lub ogłoszenie, albo nadal jesteś zarejestrowany po zmianie. Na iPhonie działa to tylko z ikony na ekranie głównym. Tylko na tym telefonie. Powiadomienie nie zawiera treści dokumentu."
+            "help_push": "Najpierw dodaj WinProx do ekranu głównego przez logo z plusem. Potem otwórz tę ikonę. Przycisk Włącz powiadomienia push jest tylko w tej aplikacji. Stuknij i wybierz Zezwól. Przycisk znika od razu; nie trzeba odświeżać strony. Jeśli wybierzesz Nie zezwalaj lub powiadomienia są zablokowane, zobaczysz Powiadomienia wyłączone z krokami, jak włączyć je ponownie w ustawieniach telefonu. Potem stuknij Sprawdź ponownie. Dostaniesz powiadomienie, gdy zmieni się zmiana, urlop lub odbiór zostanie zatwierdzony, jest dokument lub ogłoszenie, albo nadal jesteś zarejestrowany po zmianie. Na iPhonie działa to tylko z ikony na ekranie głównym. Tylko na tym telefonie. Powiadomienie nie zawiera treści dokumentu.",
+            "open_title": "WinProx jest dodawany do ekranu głównego telefonu.",
+            "open_text": "Chwila cierpliwości. Potem otwórz WinProx z ikony na ekranie głównym.",
+            "open_apps": "Od tej pory WinProx znajdziesz też wśród swoich aplikacji."
         },
         "absence": {
             "tile": "Urlop / odbiór",

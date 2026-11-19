@@ -161,7 +161,10 @@
             "help_android": "Android (Chrome): o apăsare pe pictogramă. Confirmați „Adăugați pe ecranul de start”. Autentificarea funcționează apoi din acea scurtătură.",
             "help_ios": "iPhone: Apple nu permite instalarea automată. Apăsați pictograma; apoi pe iPhone: trei puncte (⋯) jos → Partajați → Afișați mai multe → derulați → „+ Adăugați pe ecranul de pornire”.",
             "help_existing": "Mai aveți o pictogramă veche la care Autentificarea nu făcea nimic? Ștergeți pictograma, reîmprospătați pagina și apăsați din nou plusul.",
-            "help_push": "Puneți mai întâi WinProx pe ecranul de start prin logo-ul cu plus. Apoi deschideți pictograma. Butonul Activați notificările push este doar în acea aplicație. Apăsați și alegeți Permite. Butonul dispare imediat; nu trebuie să reîmprospătați pagina. Dacă alegeți Nu permiteți sau notificările sunt blocate, vedeți Notificările sunt oprite cu pașii pentru a le reactiva în setările telefonului. Apoi apăsați Verifică din nou. Primiți un mesaj dacă tura se schimbă, concediul sau recuperarea este aprobată, există un document sau un anunț, sau ați rămas pontat după tură. Pe iPhone funcționează doar din pictograma de pe ecranul de start. Doar pe acest telefon. Mesajul nu conține textul documentului."
+            "help_push": "Puneți mai întâi WinProx pe ecranul de start prin logo-ul cu plus. Apoi deschideți pictograma. Butonul Activați notificările push este doar în acea aplicație. Apăsați și alegeți Permite. Butonul dispare imediat; nu trebuie să reîmprospătați pagina. Dacă alegeți Nu permiteți sau notificările sunt blocate, vedeți Notificările sunt oprite cu pașii pentru a le reactiva în setările telefonului. Apoi apăsați Verifică din nou. Primiți un mesaj dacă tura se schimbă, concediul sau recuperarea este aprobată, există un document sau un anunț, sau ați rămas pontat după tură. Pe iPhone funcționează doar din pictograma de pe ecranul de start. Doar pe acest telefon. Mesajul nu conține textul documentului.",
+            "open_title": "WinProx este adăugat pe ecranul de start al telefonului.",
+            "open_text": "Așteptați. Apoi deschideți WinProx din pictograma de pe ecranul de start.",
+            "open_apps": "De atunci găsiți WinProx și între aplicațiile dumneavoastră."
         },
         "absence": {
             "tile": "Concediu / recuperare",
