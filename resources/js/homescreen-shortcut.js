@@ -16,6 +16,7 @@ const LAUNCH_KEY = 'wp-pwa-launch';
 
 function isStandaloneDisplay() {
     return window.matchMedia('(display-mode: standalone)').matches
+        || window.matchMedia('(display-mode: minimal-ui)').matches
         || window.matchMedia('(display-mode: fullscreen)').matches
         || window.navigator.standalone === true;
 }

@@ -317,12 +317,14 @@
 }
 
 /* Browserbalk alleen in het geïnstalleerde bureaubladvenster.
+   Chrome en Edge melden standalone; Firefox op Windows meldt minimal-ui.
    Zelfde actieve balk + icoonkader als .wp-nav-link.is-active (bv. Plaatsen). */
 .wp-pwa-nav {
     display: none;
 }
 
 @media (display-mode: standalone) and (min-width: 60rem),
+       (display-mode: minimal-ui) and (min-width: 60rem),
        (display-mode: fullscreen) and (min-width: 60rem) {
     .wp-pwa-nav {
         display: flex;
@@ -522,7 +524,7 @@ html.wp-backoffice-pwa-available .wp-backoffice-install {
     width: 100%;
 }
 
-@media (display-mode: standalone), (display-mode: fullscreen) {
+@media (display-mode: standalone), (display-mode: minimal-ui), (display-mode: fullscreen) {
     .wp-backoffice-install {
         display: none;
     }
