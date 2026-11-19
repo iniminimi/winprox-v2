@@ -345,3 +345,39 @@ it('start en stopt een pauze via pin-clock action en toont presence op workers',
     expect(AuditLog::where('action', 'worker.clock_display_punched')
         ->where('payload->direction', 'break_end')->exists())->toBeTrue();
 });
+
+it('wijzigt een bestaande code na de huidige code, zonder te prikken', function () {
+    $tenant = pinTenant();
+    Tenancy::actAs($tenant->id);
+    [$point, $token] = pairedPinPoint($tenant);
+    $worker = pinWorker($tenant, null, '1234');
+    Tenancy::forget();
+
+    $headers = ['X-WinProx-Clock-Key' => $token];
+
+    $this->postJson('/api/v1/time/clock-displays/pin-change', [
+        'worker_id' => $worker->id,
+        'current_pin' => '0000',
+        'new_pin' => '5678',
+    ], $headers)->assertStatus(401)->assertJsonPath('error', 'invalid_pin');
+
+    expect(WorkShift::where('worker_id', $worker->id)->exists())->toBeFalse();
+
+    $this->postJson('/api/v1/time/clock-displays/pin-change', [
+        'worker_id' => $worker->id,
+        'current_pin' => '1234',
+        'new_pin' => '5678',
+    ], $headers)->assertOk()->assertJsonPath('result', 'changed');
+
+    expect(WorkShift::where('worker_id', $worker->id)->exists())->toBeFalse();
+
+    $this->postJson('/api/v1/time/clock-displays/pin-clock', [
+        'worker_id' => $worker->id,
+        'pin' => '1234',
+    ], $headers)->assertStatus(401);
+
+    $this->postJson('/api/v1/time/clock-displays/pin-clock', [
+        'worker_id' => $worker->id,
+        'pin' => '5678',
+    ], $headers)->assertOk()->assertJsonPath('result', 'in');
+});

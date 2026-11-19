@@ -12,6 +12,7 @@ enum ClockDisplayPinStatus: string
     case BreakStarted = 'break_started';
     case BreakEnded = 'break_ended';
     case InvalidPin = 'invalid_pin';
+    case PinChanged = 'pin_changed';
     case WorkerLocked = 'worker_locked';
     case WorkerNotFound = 'worker_not_found';
 }

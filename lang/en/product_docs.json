@@ -104,7 +104,7 @@
                     "Carry out tasks, follow an inspection round, and start a work visit when GPS is on.",
                     "An optional clock screen shows a QR code that changes by itself. You pair the screen with a one-time code and a confirmation.",
                     "You choose when the screen is on, for example from 06:00 to 19:00. Outside those hours it can stay off, or show a rest screen: photos, a clock face or a flip clock.",
-                    "Without a smartphone: tap the screen, find the first name by letters; on an open shift choose break or clock-out, then enter a personal four-digit PIN. Someone without a PIN chooses one on the spot, twice.",
+                    "Without a smartphone: tap the screen, find the first name by letters; on an open shift choose break or clock-out, then enter a personal four-digit PIN. Someone without a PIN chooses one on the spot, twice. Under clock-out you change that code: the current one first, then the new one twice.",
                     "After two wrong attempts, that worker is blocked for one minute."
                 ]
             },
@@ -498,7 +498,7 @@
                     "Optional fixed touchscreen on site, linked to a Clock Point. Rented separately with the subscription; no purchase through WinProx required.",
                     "Network: **2.4 GHz Wi‑Fi**, **WPA2** and **WPA3-Personal**. Connection to WinProx via **HTTPS** (EU).",
                     "Pair with a one-time code in the back office. Unlinking revokes the device.",
-                    "Without a smartphone: first name and PIN for clock-in, clock-out and **break**. Repeated wrong attempts are temporarily blocked.",
+                    "Without a smartphone: first name and PIN for clock-in, clock-out and **break**. You change the code on the screen without clocking in or out. Repeated wrong attempts are temporarily blocked.",
                     "CE-marked for professional use; powered via USB-C (5 V)."
                 ]
             },

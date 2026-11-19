@@ -56,6 +56,9 @@ Route::prefix('v1')->group(function () {
     Route::post('time/clock-displays/pin-setup', [ClockDisplayController::class, 'pinSetup'])
         ->middleware(['clock.display', 'throttle:10,1'])
         ->name('api.v1.time.clock-displays.pin-setup');
+    Route::post('time/clock-displays/pin-change', [ClockDisplayController::class, 'pinChange'])
+        ->middleware(['clock.display', 'throttle:10,1'])
+        ->name('api.v1.time.clock-displays.pin-change');
 
     Route::middleware(['auth:sanctum', SetTenantFromToken::class, 'api.access'])->group(function () {
         // Read endpoints (geen idempotency nodig)

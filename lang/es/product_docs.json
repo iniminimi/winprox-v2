@@ -104,7 +104,7 @@
                     "Hacer tareas, seguir una ronda de inspección y empezar una visita cuando el GPS está activo.",
                     "Una pantalla de fichaje opcional muestra un QR que cambia solo. Se vincula con un código de un solo uso y una confirmación.",
                     "Se elige cuándo está encendida la pantalla, por ejemplo de 06:00 a 19:00. Fuera de ese horario puede quedarse apagada o mostrar una pantalla de reposo: fotos, un reloj de agujas o un reloj de paletas.",
-                    "Sin smartphone: tocar la pantalla, buscar el nombre por letras; con turno abierto elija pausa o salida y luego el PIN personal de cuatro cifras. Quien aún no tiene PIN lo elige allí, dos veces.",
+                    "Sin smartphone: tocar la pantalla, buscar el nombre por letras; con turno abierto elija pausa o salida y luego el PIN personal de cuatro cifras. Quien aún no tiene PIN lo elige allí, dos veces. Bajo Salida cambia ese PIN: primero el actual y luego el nuevo dos veces.",
                     "Tras dos intentos fallidos, ese ejecutor queda bloqueado un minuto."
                 ]
             },
@@ -498,7 +498,7 @@
                     "Pantalla táctil fija opcional en el sitio, vinculada a un Clock Point. Alquiler aparte con la suscripción; no hace falta comprarla a través de WinProx.",
                     "Red: **Wi‑Fi 2,4 GHz**, **WPA2** y **WPA3-Personal**. Conexión con WinProx mediante **HTTPS** (UE).",
                     "Emparejar con un código de un solo uso en gestión. Desvincular retira el aparato.",
-                    "Sin smartphone: nombre y PIN para entrada, salida y **pausa**. Los intentos erróneos repetidos se bloquean temporalmente.",
+                    "Sin smartphone: nombre y PIN para entrada, salida y **pausa**. El PIN se cambia en la pantalla sin fichar. Los intentos erróneos repetidos se bloquean temporalmente.",
                     "Marcado CE para uso profesional; alimentación por USB-C (5 V)."
                 ]
             },

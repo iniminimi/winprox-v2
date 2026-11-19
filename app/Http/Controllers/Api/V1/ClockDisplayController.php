@@ -10,6 +10,8 @@ use App\Actions\Time\SubmitClockDisplayClaimAction;
 use App\Enums\ClockDisplayClaimStatus;
 use App\Enums\ClockDisplayPinAction;
 use App\Enums\ClockDisplayPinStatus;
+use App\Actions\Time\ChangeClockDisplayPinAction;
+use App\Http\Requests\Api\V1\ChangePinClockDisplayRequest;
 use App\Http\Requests\Api\V1\PinClockDisplayRequest;
 use App\Http\Requests\Api\V1\SetupPinClockDisplayRequest;
 use App\Http\Requests\Api\V1\SubmitClockDisplayClaimRequest;
@@ -236,6 +238,40 @@ class ClockDisplayController extends Controller
                 'worker' => $result->workerName,
                 'at' => $result->clockedAt,
             ]),
+            ClockDisplayPinStatus::WorkerLocked => response()->json([
+                'error' => 'worker_locked',
+                'retry_after' => $result->retryAfterSeconds,
+            ], 429),
+            default => response()->json(['error' => 'worker_not_found'], 404),
+        };
+    }
+
+    /**
+     * Bestaande code wijzigen: huidige code + nieuwe code. Klokt niet.
+     */
+    public function pinChange(
+        ChangePinClockDisplayRequest $request,
+        ChangeClockDisplayPinAction $change,
+    ): JsonResponse {
+        $clockPoint = $this->linkedPoint($request);
+        if (! $clockPoint instanceof ClockPoint) {
+            return $clockPoint;
+        }
+
+        $validated = $request->validated();
+        $result = $change->handle(
+            $clockPoint,
+            (int) $validated['worker_id'],
+            (string) $validated['current_pin'],
+            (string) $validated['new_pin'],
+        );
+
+        return match ($result->status) {
+            ClockDisplayPinStatus::PinChanged => response()->json([
+                'result' => 'changed',
+                'worker' => $result->workerName,
+            ]),
+            ClockDisplayPinStatus::InvalidPin => response()->json(['error' => 'invalid_pin'], 401),
             ClockDisplayPinStatus::WorkerLocked => response()->json([
                 'error' => 'worker_locked',
                 'retry_after' => $result->retryAfterSeconds,

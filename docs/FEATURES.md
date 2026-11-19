@@ -1368,7 +1368,8 @@ binnen ~30–90 s dood.
   `ClockSource::ClockDisplayPin`. Lockout per **worker** na
   `time.display_pin_max_attempts` (2) fouten voor
   `time.display_pin_lockout_seconds` (60s). `POST .../pin-setup` zet een
-  ontbrekende PIN (2×) en prikt meteen. Audit:
+  ontbrekende PIN (2×) en prikt meteen. `POST .../pin-change` vervangt een
+  bestaande code na de huidige code, zonder te prikken. Audit:
   `worker.clock_display_pin_failed`, `worker.clock_display_pin_blocked_attempt`,
   `worker.clock_display_pin_set`, `worker.clock_display_punched`
   (direction `in`/`out`/`break_start`/`break_end`).
