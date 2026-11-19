@@ -63,6 +63,10 @@
 }
 
 @media (min-width: 60rem) {
+    .wp-app {
+        --wp-sidebar-offset: 18rem;
+    }
+
     .wp-sidebar {
         position: fixed;
         inset: 0 auto 0 0;
@@ -80,6 +84,10 @@
     .wp-app--sidebar-collapsed .wp-sidebar {
         transform: translateX(-100%);
         box-shadow: none;
+    }
+
+    .wp-app--sidebar-collapsed {
+        --wp-sidebar-offset: 0px;
     }
 
     .wp-app--sidebar-collapsed .wp-content {
@@ -896,6 +904,18 @@ html.wp-backoffice-pwa-installed .wp-backoffice-install {
     .wp-help {
         padding: 1.5rem;
         padding-bottom: 1.5rem;
+    }
+}
+
+/* Breed scherm: assistent direct rechts van de inhoudsrand, niet in de verre hoek. */
+@media (min-width: 60rem) {
+    .wp-help {
+        --wp-frame-width: min(calc(100vw - var(--wp-sidebar-offset, 18rem)), var(--wp-content-width, var(--wp-content-max)));
+        right: max(0px, calc(100vw - var(--wp-sidebar-offset, 18rem) - var(--wp-frame-width) - 80px - 1.5rem));
+    }
+
+    .wp-app:has(.wp-roster-page) .wp-help {
+        --wp-frame-width: min(calc(100vw - var(--wp-sidebar-offset, 18rem)), var(--wp-content-width, calc(100vw - var(--wp-sidebar-offset, 18rem))));
     }
 }
 
