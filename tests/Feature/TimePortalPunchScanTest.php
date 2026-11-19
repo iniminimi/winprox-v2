@@ -255,8 +255,8 @@ it('biedt verplaatsen pas na een verse scan; aanmelden alleen biedt uitklokken',
 
     app(ClockInAction::class)->handle($worker, $clockA);
 
-    // Aangemeld op B zónder verse scan (bv. via de /cp-aanmeldlink):
-    // neutrale hoofdactie, geen "Verplaats naar hier".
+    // Aangemeld op B zónder verse scan (bv. startscherm van een eerdere QR):
+    // gewoon "ingeklokt", geen "andere prikklok", neutrale Uitklokken.
     $portal = Livewire::test(TimePortal::class, ['token' => $clockB->qr_token]);
     ClockPointScanGrant::consume($clockB->id);
 
@@ -265,12 +265,15 @@ it('biedt verplaatsen pas na een verse scan; aanmelden alleen biedt uitklokken',
         ->call('identifyWorker')
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
-        ->assertSee(__('time.portal.now.status_elsewhere'), false)
+        ->assertDontSee(__('time.portal.now.status_elsewhere'), false)
+        ->assertDontSee(__('time.portal.clock.elsewhere_body'), false)
+        ->assertSee(__('time.portal.now.status_in', ['time' => now()->format('H:i')]), false)
         ->assertSee(__('time.portal.clock.out'), false)
         ->assertDontSee(__('time.portal.clock.transfer_here'), false);
 
-    // Verse QR-scan op B → wél de verplaats-actie.
+    // Verse QR-scan op B → wél elders + verplaats-actie.
     signInPunchScanWorker($clockB)
+        ->assertSee(__('time.portal.now.status_elsewhere'), false)
         ->assertSee(__('time.portal.clock.transfer_here'), false);
 });
 

@@ -6,9 +6,13 @@
     $placeLine = $openShift === null
         ? ''
         : trim((string) ($presencePoint?->name ?: ($presencePoint?->location?->name ?? '')));
+    // Alleen "andere prikklok" na aanwezigheidsbewijs hier (verse QR/checkmate).
+    // Het startscherm onthoudt de eerste QR (/cp) — dat is geen bewijs dat je
+    // nu op die prikklok staat, dus geen elders-melding zonder scan.
     $openElsewhere = $openShift !== null && $presencePoint !== null
         && ($portalClockPoint ?? null) !== null
-        && ! $openShift->isPresentAtSamePlace($portalClockPoint);
+        && ! $openShift->isPresentAtSamePlace($portalClockPoint)
+        && ($canPunch ?? false);
     $startedElsewhere = $openShift !== null
         && $openShift->hasLocationHops()
         && (int) $openShift->clock_in_clock_point_id !== (int) ($presencePoint?->id ?? 0);

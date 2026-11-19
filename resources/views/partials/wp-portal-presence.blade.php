@@ -7,9 +7,11 @@
     $clockInPlace = $presencePoint?->location?->name
         ? $presencePoint->location->name.($presencePoint->name ? ' · '.$presencePoint->name : '')
         : ($presencePoint?->name ?? '');
+    // Zelfde regel als Nu: elders alleen bij verse scan/checkmate op dit punt.
     $openElsewhere = $openShift !== null && $presencePoint !== null
         && ($portalClockPoint ?? null) !== null
-        && ! $openShift->isPresentAtSamePlace($portalClockPoint);
+        && ! $openShift->isPresentAtSamePlace($portalClockPoint)
+        && ($canPunch ?? false);
     $startedElsewhere = $openShift !== null
         && $openShift->hasLocationHops()
         && (int) $openShift->clock_in_clock_point_id !== (int) ($presencePoint?->id ?? 0);
