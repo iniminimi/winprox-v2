@@ -781,7 +781,7 @@
     {{-- Modal: team ---------------------------------------------------------}}
     @if ($canEditContent && $showTeamModal)
         <x-wp-modal closeMethod="cancelTeam" aria-labelledby="team-modal-title">
-            <form wire:submit="saveTeam" class="wp-card wp-modal-card wp-modal-card--form">
+            <form wire:submit="saveTeam" class="wp-card wp-modal-card wp-modal-card--form wp-modal-card--narrow">
                 <div class="wp-modal-head wp-modal-head--bordered">
                     <h2 id="team-modal-title" class="wp-section-title">{{ $editingTeamId ? __('team.teams.modal.edit_title') : __('team.teams.modal.create_title') }}</h2>
                     <x-wp-modal-close wire:click="cancelTeam" />
@@ -795,20 +795,21 @@
 
                     @if ($editingTeamId !== null)
                         <div class="wp-field" x-data="{ open: false }">
-                            <span class="wp-label">{{ __('team.teams.translation_edit.label') }}</span>
-
-                            <div class="wp-field-panel" :class="{ 'is-open': open }">
+                            <div class="wp-cluster">
+                                <span class="wp-label">{{ __('team.teams.translation_edit.label') }}</span>
                                 <button
                                     type="button"
-                                    class="wp-field-panel__trigger"
+                                    class="wp-field-panel__trigger wp-field-panel__trigger--auto"
                                     @click="open = !open"
                                     :aria-expanded="open"
                                 >
                                     <span>{{ __('team.teams.translation_edit.open') }}</span>
                                     <x-wp-icon name="chevron-down" class="wp-disclosure-chevron" x-bind:class="{ 'is-open': open }" />
                                 </button>
+                            </div>
 
-                                <div class="wp-field-panel__body wp-stack-tight" x-show="open" x-cloak>
+                            <div class="wp-field-panel" x-show="open" x-cloak>
+                                <div class="wp-field-panel__body wp-stack-tight">
                                     <div class="wp-cluster wp-issue-description-row">
                                         <select
                                             class="wp-select wp-select--compact"
@@ -848,12 +849,14 @@
 
                     {{-- sort_order blijft in DB (default 0); geen UI meer — lijsten sorteren op naam. --}}
                     <div class="wp-field">
-                        <label class="wp-label" for="teamSessionLifespanType">{{ __('team.teams.modal.session_lifespan_label') }}</label>
-                        <select id="teamSessionLifespanType" class="wp-input" wire:model.live="teamSessionLifespanType">
+                        <div class="wp-cluster">
+                            <label class="wp-label" for="teamSessionLifespanType">{{ __('team.teams.modal.session_lifespan_label') }}</label>
+                            <select id="teamSessionLifespanType" class="wp-input wp-input--auto" wire:model.live="teamSessionLifespanType">
                             <option value="daily">{{ __('team.teams.modal.session_lifespan_daily') }}</option>
                             <option value="weekly">{{ __('team.teams.modal.session_lifespan_weekly') }}</option>
                             <option value="custom">{{ __('team.teams.modal.session_lifespan_custom') }}</option>
-                        </select>
+                            </select>
+                        </div>
                     </div>
                     @if ($teamSessionLifespanType === 'custom')
                         <div class="wp-field">

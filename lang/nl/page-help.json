@@ -287,7 +287,7 @@
                 },
                 {
                     "label": "Inspectieronde",
-                    "text": "Bij een inspectieronde zie je hier de voortgang per stop (OK, Niet OK, overgeslagen, open). Datum/uur en uitvoerder staan klein. Daaronder de checklistpunten die niet OK waren — dat is het bewijs voor de klant. Op het unit-QR-portaal van elke stop ziet de worker dezelfde voortgang; de taak wordt automatisch afgehandeld als alle stops klaar zijn. Openblijvende ronden kun je hier handmatig afhandelen of sluiten (met reden)."
+                    "text": "Bij een inspectieronde zie je hier de voortgang per stop (OK, Niet OK, overgeslagen, open). Datum/uur en uitvoerder staan klein. Daaronder de checklistpunten die niet OK waren — dat is het bewijs voor de klant. Op het unit-QR-portaal van elke stop ziet de uitvoerder dezelfde voortgang; de taak wordt automatisch afgehandeld als alle stops klaar zijn. Openblijvende ronden kun je hier handmatig afhandelen of sluiten (met reden)."
                 },
                 {
                     "label": "Afdrukken",
@@ -830,7 +830,7 @@
                 },
                 {
                     "label": "Gebeurtenis: unit.gps_reported",
-                    "text": "Een GPS-locatie is vastgelegd voor een unit via het portaal (burger, worker of beheerder bij QR-koppeling). Payload bevat coördinaten, optioneel location_name en country_code (GeoNames)."
+                    "text": "Een GPS-locatie is vastgelegd voor een unit via het portaal (burger, uitvoerder of beheerder bij QR-koppeling). Payload bevat coördinaten, optioneel location_name en country_code (GeoNames)."
                 },
                 {
                     "label": "Endpoint actief of inactief",
@@ -1045,7 +1045,7 @@
                 },
                 {
                     "label": "Extra panelen",
-                    "text": "Na aanmelden zie je extra secties: icoon collega vrijgeven en workers beheren (ook foto's nemen)."
+                    "text": "Na aanmelden zie je extra secties: icoon collega vrijgeven en uitvoerders beheren (ook foto's nemen)."
                 }
             ]
         },
@@ -1075,7 +1075,7 @@
                 },
                 {
                     "label": "Verwijderen",
-                    "text": "Verwijder alleen een worker die je zelf net hebt aangemaakt (binnen 24 uur). Andere teamleden verwijdert de beheerder. Jezelf verwijderen kan niet."
+                    "text": "Verwijder alleen een uitvoerder die je zelf net hebt aangemaakt (binnen 24 uur). Andere teamleden verwijdert de beheerder. Jezelf verwijderen kan niet."
                 },
                 {
                     "label": "Foto",

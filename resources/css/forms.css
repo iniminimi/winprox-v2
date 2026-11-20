@@ -291,6 +291,12 @@
     transition: color var(--wp-transition), background-color var(--wp-transition);
 }
 
+.wp-field-panel__trigger--auto {
+    width: auto;
+    border: 1px solid var(--wp-border);
+    background-color: var(--wp-surface);
+}
+
 .wp-field-panel__trigger:hover {
     color: var(--wp-text);
     background-color: var(--wp-surface-muted);

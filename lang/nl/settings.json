@@ -206,7 +206,7 @@
         "ability_locations_read": "Locaties lezen",
         "ability_units_read": "Units lezen",
         "ability_teams_read": "Teams lezen",
-        "ability_workers_read": "Workers lezen",
+        "ability_workers_read": "Uitvoerders lezen",
         "ability_time_read": "Urenregistratie lezen",
         "ability_time_write": "Urenregistratie schrijven",
         "ability_webhooks_manage": "Webhooks beheren",

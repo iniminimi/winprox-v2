@@ -33,7 +33,7 @@
                 "Publieke meldportalen met moderatie/blur tot goedkeuring",
                 "Meerdere taken per melding, elk aan één team",
                 "Kalender, briefing en dashboardopvolging",
-                "Teams, workers en teamleader-flows op de werkvloer",
+                "Teams, uitvoerders en teamleader-flows op de werkvloer",
                 "Starttemplate op het dashboard (op eigen locaties, op locaties van klanten, of voor voertuigen en fleet)"
             ]
         },
@@ -82,7 +82,7 @@
                 "Pauzes starten/stoppen",
                 "Aanwezigheidsbord en alarmen",
                 "Shiftlijsten en export/print",
-                "Zelfde worker-identiteit (naam + icoon) als facility",
+                "Zelfde uitvoerder (naam + icoon) als bij facility",
                 "Eén gsm per uitvoerder, optionele PIN en GPS",
                 "Optionele evacuatielijst op Clock Point (Instellingen, standaard uit)",
                 "Alarm bij hop tussen Clock Points binnen 5 min",
@@ -151,12 +151,12 @@
         },
         "solution": {
             "title": "Oplossing",
-            "body": "Unit-QR voor melden en taken op die unit. Clock Point-QR voor worker-login (en Time). Locatie-QR voor een algemene locatielink. Alles in de browser. Een geladen unit-QR blijft bruikbaar zonder bereik."
+            "body": "Unit-QR voor melden en taken op die unit. Clock Point-QR om aan te melden als uitvoerder (en Time). Locatie-QR voor een algemene locatielink. Alles in de browser. Een geladen unit-QR blijft bruikbaar zonder bereik."
         },
         "capabilities": {
             "title": "Functies",
             "items": [
-                "Unit-QR: melden + worker-taken ter plaatse",
+                "Unit-QR: melden + taken van de uitvoerder ter plaatse",
                 "Unit-QR: geladen pagina bruikbaar zonder bereik",
                 "Clock Point-QR: aanmelden / inklokken",
                 "Clock Point: optionele tegel Evacuatielijst van ingeklokten (standaard uit)",
