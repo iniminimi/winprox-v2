@@ -860,8 +860,10 @@
                     </div>
                     @if ($teamSessionLifespanType === 'custom')
                         <div class="wp-field">
-                            <label class="wp-label" for="teamSessionLifespanCustomHours">{{ __('team.teams.modal.session_lifespan_custom_hours') }}</label>
-                            <input type="number" id="teamSessionLifespanCustomHours" class="wp-input" wire:model="teamSessionLifespanCustomHours" min="1">
+                            <div class="wp-cluster">
+                                <label class="wp-label" for="teamSessionLifespanCustomHours">{{ __('team.teams.modal.session_lifespan_custom_hours') }}</label>
+                                <input type="number" id="teamSessionLifespanCustomHours" class="wp-input wp-input--compact" wire:model="teamSessionLifespanCustomHours" min="1">
+                            </div>
                             @error('teamSessionLifespanCustomHours') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
                     @endif
