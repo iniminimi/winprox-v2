@@ -781,7 +781,7 @@
     {{-- Modal: team ---------------------------------------------------------}}
     @if ($canEditContent && $showTeamModal)
         <x-wp-modal closeMethod="cancelTeam" aria-labelledby="team-modal-title">
-            <form wire:submit="saveTeam" class="wp-card wp-modal-card wp-modal-card--form wp-modal-card--narrow">
+            <form wire:submit="saveTeam" class="wp-card wp-modal-card wp-modal-card--form">
                 <div class="wp-modal-head wp-modal-head--bordered">
                     <h2 id="team-modal-title" class="wp-section-title">{{ $editingTeamId ? __('team.teams.modal.edit_title') : __('team.teams.modal.create_title') }}</h2>
                     <x-wp-modal-close wire:click="cancelTeam" />

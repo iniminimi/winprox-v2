@@ -4705,11 +4705,6 @@ svg.wp-release-worker-row__icon,
     }
 }
 
-/* Kort formulier: niet meegroeien naar 42/48rem. */
-.wp-modal-card--form.wp-modal-card--narrow {
-    max-width: 32rem;
-}
-
 @media (min-width: 64rem) {
     .wp-modal-card--form,
     .wp-modal-card--wide {
