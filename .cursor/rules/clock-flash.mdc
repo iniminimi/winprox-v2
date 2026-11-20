@@ -1,0 +1,39 @@
+---
+description: Flash het WinProx-klokscherm (SenseCAP Indicator D1, ESP32-S3 via CH340). Gebruik bij upload, flash, COM-poort of firmware op het scherm.
+alwaysApply: false
+---
+
+# Klokscherm flashen (ESP32)
+
+Werkmap `C:\werkmap\winprox-clock`, env `indicator`. Python:
+`C:\Users\domin\AppData\Local\Programs\Python\Python313\python.exe`.
+
+## Poort
+
+- ESP32 = CH340, VID `1A86` PID `7523` (`USB-SERIAL CH340`). Het COM-nummer wisselt.
+- RP2040 = VID `2886` (`USB Serial Device`). Daar geen ESP32-firmware naartoe schrijven.
+- Kies de poort met `serial.tools.list_ports` op VID `1A86`, zonder hem te openen.
+- De eerste open is esptool. Een test-open die meteen sluit, laat het CH340-stuurprogramma daarna `Onjuiste functie` (Win32-fout 1) geven tot de USB eruit gaat.
+
+## Commando dat werkt
+
+Eerst bouwen: `python -m platformio run -e indicator`.
+
+Daarna vanuit de firmwaremap, op de gevonden `COMx`, rechtstreeks via de ROM-loader. Geen stub, 115200 baud:
+
+```cmd
+python C:\Users\domin\.platformio\packages\tool-esptoolpy\esptool.py --chip esp32s3 --port COMx --baud 115200 --before default_reset --after hard_reset --connect-attempts 5 --no-stub write_flash -z 0x0000 .pio\build\indicator\bootloader.bin 0x8000 .pio\build\indicator\partitions.bin 0x10000 .pio\build\indicator\firmware.bin
+```
+
+Klaar pas na drie keer `Hash of data verified` en `Hard resetting via RTS pin`.
+
+## Niet doen
+
+- Geen `platformio run -t upload` op 460800. Die snelheid breekt de CH340 midden in het schrijven (`Serial data stream stopped` / `Lost connection`). Daarna antwoordt de chip niet meer.
+- `upload_speed = 115200` in `platformio.ini` is alleen een vangnet. De bewezen weg is het commando hierboven.
+- Geen minutenlange herhaallus en geen `pnputil /restart-device`.
+- Er is geen ESP32-BOOT-knop aan de buitenkant. Het naaldgaatje is alleen de RP2040-BOOTSEL.
+
+## Als de poort weigert
+
+Stop. Laat beide USB-C-kabels 5 seconden los en weer rechtstreeks in de laptop steken. Daarna één keer het esptool-commando. eFuses niet branden. Wifi en koppeling in NVS blijven staan.

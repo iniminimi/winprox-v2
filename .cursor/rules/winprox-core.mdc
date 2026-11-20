@@ -22,6 +22,8 @@ Lees **`WINPROX_RULES.md`** en **`docs/FEATURES.md`** vóór je code wijzigt. Bi
 ## Houd het mager
 - **Minimale diff**: alleen wat de taak vraagt; geen refactor “erbij”.
 - **Geen repo-brede alignment-runs** — brede cleanup is klaar (zie `WINPROX_RULES.md` §13).
+- **Klokscherm flashen:** ESP32 alleen via CH340, esptool `--no-stub` op 115200 baud.
+  Zie `.cursor/rules/clock-flash.mdc`. Geen PlatformIO-upload op 460800.
 - **Tooling:** Python is lokaal beschikbaar via
   `C:\Users\domin\AppData\Local\Programs\Python\Python313\python.exe`
   (niet de Windows Store-stub in `WindowsApps`). Gebruik Python voor
