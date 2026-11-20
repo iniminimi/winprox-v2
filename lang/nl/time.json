@@ -363,6 +363,12 @@
             "save": "Opslaan",
             "saved": "Aan-uren opgeslagen."
         },
+        "sound": {
+            "title": "Geluid",
+            "label": "Geluid aan",
+            "hint": "Het scherm piept bij elke toets en na een prikking. Zet uit voor een stil scherm; het scherm volgt binnen ongeveer een minuut.",
+            "saved": "Geluid opgeslagen."
+        },
         "unlink_modal": {
             "title": "Scherm ontkoppelen?",
             "body": "Het scherm kan daarna geen geldige QR-codes meer tonen en valt terug naar de koppelmodus.",

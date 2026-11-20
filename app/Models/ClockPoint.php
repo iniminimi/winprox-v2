@@ -35,6 +35,7 @@ class ClockPoint extends Model
         'display_last_seen_at',
         'display_on_from',
         'display_on_until',
+        'display_sound_enabled',
         'album1_from',
         'album1_until',
         'album2_from',
@@ -52,6 +53,7 @@ class ClockPoint extends Model
         'display_pairing_expires_at' => 'datetime',
         'display_paired_at' => 'datetime',
         'display_last_seen_at' => 'datetime',
+        'display_sound_enabled' => 'boolean',
         'album_days' => 'integer',
     ];
 

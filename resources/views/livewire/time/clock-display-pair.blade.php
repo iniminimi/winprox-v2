@@ -66,6 +66,18 @@
         </div>
     </x-wp-settings-section>
 
+    {{-- Geluid van het scherm: schakelaar bewaart meteen --}}
+    <x-wp-settings-section :title="__('time.clock_displays.sound.title')">
+        <label class="wp-switch wp-check--boxed">
+            <input type="checkbox" wire:model.live="displaySoundEnabled">
+            <span class="wp-switch__track" aria-hidden="true"></span>
+            <span>
+                {{ __('time.clock_displays.sound.label') }}
+                <br><span class="wp-hint">{{ __('time.clock_displays.sound.hint') }}</span>
+            </span>
+        </label>
+    </x-wp-settings-section>
+
     {{-- Rust-scherm tijdens de album-vensters: foto's, wijzerklok of niets --}}
     <x-wp-settings-section :title="__('time.clock_displays.album.title')">
         <p class="wp-muted wp-text-sm">{{ __('time.clock_displays.album.hint') }}</p>

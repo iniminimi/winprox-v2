@@ -9,6 +9,7 @@ use App\Actions\Time\IssueClockDisplayPairingCodeAction;
 use App\Actions\Time\UnlinkClockPointDisplayAction;
 use App\Actions\Time\UpdateClockDisplayAlbumWindowsAction;
 use App\Actions\Time\UpdateClockDisplayScheduleAction;
+use App\Actions\Time\UpdateClockDisplaySoundAction;
 use App\Actions\Time\UploadClockDisplayImageAction;
 use App\Models\ClockDisplayClaim;
 use App\Models\ClockDisplayImage;
@@ -42,6 +43,8 @@ class ClockDisplayPair extends Component
 
     public ?string $displayOnUntil = null;
 
+    public bool $displaySoundEnabled = true;
+
     public ?TemporaryUploadedFile $albumPhoto = null;
 
     public bool $albumGlobal = false;
@@ -66,6 +69,7 @@ class ClockDisplayPair extends Component
         $hm = fn (?string $t) => $t !== null ? substr((string) $t, 0, 5) : null;
         $this->displayOnFrom = $hm($clockPoint->display_on_from);
         $this->displayOnUntil = $hm($clockPoint->display_on_until);
+        $this->displaySoundEnabled = (bool) ($clockPoint->display_sound_enabled ?? true);
         $this->album1From = $hm($clockPoint->album1_from);
         $this->album1Until = $hm($clockPoint->album1_until);
         $this->album2From = $hm($clockPoint->album2_from);
@@ -208,6 +212,27 @@ class ClockDisplayPair extends Component
         }
 
         session()->flash('time_flash', __('time.clock_displays.schedule.saved'));
+    }
+
+    /** Schakelaar bewaart meteen; het scherm volgt bij de volgende ping. */
+    public function updatedDisplaySoundEnabled(bool $enabled): void
+    {
+        $this->authorize('update', $this->clockPoint);
+
+        try {
+            app(UpdateClockDisplaySoundAction::class)->handle(
+                $this->clockPoint->fresh(),
+                (int) $this->clockPoint->tenant_id,
+                auth()->id(),
+                $enabled,
+            );
+        } catch (InvalidArgumentException $e) {
+            session()->flash('time_flash', __('time.clock_displays.errors.'.$e->getMessage()));
+
+            return;
+        }
+
+        session()->flash('time_flash', __('time.clock_displays.sound.saved'));
     }
 
     /** Crop + compress gebeurde client-side; hier enkel valideren + opslaan. */

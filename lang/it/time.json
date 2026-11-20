@@ -363,6 +363,12 @@
             "save": "Salva",
             "saved": "Orari di accensione salvati."
         },
+        "sound": {
+            "title": "Suono",
+            "label": "Suono attivo",
+            "hint": "Lo schermo emette un bip a ogni tasto e dopo una timbratura. Disattivalo per uno schermo silenzioso; lo schermo si adegua entro circa un minuto.",
+            "saved": "Suono salvato."
+        },
         "unlink_modal": {
             "title": "Scollegare lo schermo?",
             "body": "Lo schermo non potrà più mostrare QR validi e tornerà in modalità collegamento.",

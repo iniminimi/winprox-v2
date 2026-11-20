@@ -314,6 +314,8 @@ class ClockDisplayController extends Controller
                 ? substr((string) $clockPoint->display_on_from, 0, 5) : null,
             'display_on_until' => $clockPoint?->display_on_until !== null
                 ? substr((string) $clockPoint->display_on_until, 0, 5) : null,
+            // Piep bij toets en prikking; uit = stil scherm.
+            'sound_enabled' => (bool) ($clockPoint?->display_sound_enabled ?? true),
             'album' => $this->albumManifest($clockPoint),
             'rotation_seconds' => (int) config('time.display_window_seconds', 30),
             'offline_warn_hours' => (int) config('time.display_offline_warn_hours', 24),

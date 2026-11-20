@@ -1396,8 +1396,14 @@ binnen ~30–90 s dood.
   ontbrekende beelden via HTTPS (public-disk URL's zoals issue-foto's), wist
   weggevallen en draait offline verder uit flash. Max 12 foto's per scope.
   De klokken zijn puur lokaal (RTC) — geen downloads, altijd offline.
+- **Geluid:** schakelaar op de Scherm-pagina per Clock Point
+  (`display_sound_enabled`, standaard aan; `UpdateClockDisplaySoundAction`,
+  bewaart meteen). Ping en claim-status leveren `sound_enabled`; de firmware
+  bewaart de keuze en piept dan niet meer bij toetsen, prikkingen of het
+  QR-scherm. Oudere firmware negeert het veld.
 - Audit: `clock_point.display_pairing_issued`, `display_claim_confirmed`,
   `display_claim_denied`, `display_unlinked`, `display_secret_rotated`,
+  `display_schedule_updated`, `display_sound_updated`,
   `album_windows_updated`; `clock_display.image_uploaded`, `image_deleted`.
 
 ### 5g.8 Klantstatistieken (`/klanten`, Time-entitlement)

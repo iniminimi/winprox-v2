@@ -363,6 +363,12 @@
             "save": "Speichern",
             "saved": "Einschaltzeiten gespeichert."
         },
+        "sound": {
+            "title": "Ton",
+            "label": "Ton an",
+            "hint": "Der Bildschirm piept bei jeder Taste und nach dem Stempeln. Ausschalten für einen stillen Bildschirm; der Bildschirm folgt innerhalb von etwa einer Minute.",
+            "saved": "Ton gespeichert."
+        },
         "unlink_modal": {
             "title": "Display trennen?",
             "body": "Das Display kann danach keine gültigen QR-Codes mehr anzeigen und kehrt in den Kopplungsmodus zurück.",

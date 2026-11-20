@@ -363,6 +363,12 @@
             "save": "Guardar",
             "saved": "Horario de encendido guardado."
         },
+        "sound": {
+            "title": "Sonido",
+            "label": "Sonido activado",
+            "hint": "La pantalla emite un pitido con cada tecla y después de un fichaje. Desactívelo para una pantalla silenciosa; la pantalla lo aplica en un minuto aproximadamente.",
+            "saved": "Sonido guardado."
+        },
         "unlink_modal": {
             "title": "¿Desvincular pantalla?",
             "body": "La pantalla ya no podrá mostrar QR válidos y volverá al modo de vinculación.",

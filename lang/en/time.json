@@ -363,6 +363,12 @@
             "save": "Save",
             "saved": "On-hours saved."
         },
+        "sound": {
+            "title": "Sound",
+            "label": "Sound on",
+            "hint": "The screen beeps on every key and after a clock-in or clock-out. Turn it off for a silent screen; the screen follows within about a minute.",
+            "saved": "Sound saved."
+        },
         "unlink_modal": {
             "title": "Unlink display?",
             "body": "The display will no longer show valid QR codes and returns to pairing mode.",

@@ -1565,6 +1565,10 @@
                     "text": "Stel in tussen welke uren het scherm aan staat, bv. crèche 06:00–19:00. Buiten dit venster gaat het scherm uit. Beide velden leeg = altijd aan; een venster over middernacht (bv. 22:00–06:00) werkt ook."
                 },
                 {
+                    "label": "Geluid",
+                    "text": "Met de schakelaar zet u het geluid van dit klokscherm aan of uit. Aan: het scherm piept bij elke toets en na een prikking. Uit: het scherm blijft stil. Het scherm neemt de keuze over bij de eerstvolgende melding (±1 minuut)."
+                },
+                {
                     "label": "Screensaver",
                     "text": "Tijdens maximaal twee ingestelde tijdsblokken — alleen op de aangevinkte weekdagen — toont het scherm een rust-scherm i.p.v. de QR-code — bv. buiten de piek-klokuren. Kies wat er getoond wordt: <strong>foto’s</strong> (elke foto 10 seconden), een <strong>wijzerklok</strong> met rode secondewijzer, een digitale <strong>flipklok</strong>, of <strong>niets</strong> — dan blijft de gewone QR-klok zichtbaar. Een tik op het scherm toont meteen de QR-code, nog een tik opent manueel aanmelden. Upload foto’s via <strong>Foto toevoegen</strong>: u snijdt ze vierkant bij en ze worden automatisch verkleind. Per klokscherm kunt u maximaal 12 foto’s gebruiken: eigen foto’s en foto’s voor alle klokschermen samen. Vink <strong>Toon op alle klokschermen</strong> aan voor beelden die op elk scherm van de organisatie mogen. Het scherm downloadt nieuwe foto’s vanzelf bij de eerstvolgende melding (±1 minuut) en bewaart ze lokaal — verwijderde foto’s verdwijnen dan ook van het scherm. Offline blijven het laatst gedownloade album én de klok gewoon werken."
                 },

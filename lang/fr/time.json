@@ -363,6 +363,12 @@
             "save": "Enregistrer",
             "saved": "Heures d'allumage enregistrées."
         },
+        "sound": {
+            "title": "Son",
+            "label": "Son activé",
+            "hint": "L'écran émet un bip à chaque touche et après un pointage. Désactivez-le pour un écran silencieux ; l'écran suit en une minute environ.",
+            "saved": "Son enregistré."
+        },
         "unlink_modal": {
             "title": "Dissocier l'écran ?",
             "body": "L'écran ne pourra plus afficher de QR valides et repassera en mode association.",

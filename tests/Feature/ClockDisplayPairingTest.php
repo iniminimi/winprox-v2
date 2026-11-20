@@ -422,6 +422,39 @@ it('bewaart aan-uren en stuurt ze mee in de ping-config', function () {
         ->assertJsonPath('display_on_until', '19:00');
 });
 
+it('zet het geluid van het scherm uit en stuurt dat mee in de ping-config', function () {
+    $tenant = displayTenant();
+    Tenancy::actAs($tenant->id);
+    $point = displayPoint($tenant);
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $token = linkDisplay($point);
+
+    // Standaard aan.
+    expect($point->refresh()->display_sound_enabled)->toBeTrue();
+    $this->getJson('/api/v1/time/clock-displays/ping', ['X-WinProx-Clock-Key' => $token])
+        ->assertOk()
+        ->assertJsonPath('sound_enabled', true);
+
+    // Schakelaar op de Scherm-pagina bewaart meteen.
+    Livewire::actingAs($admin)
+        ->test(\App\Livewire\Time\ClockDisplayPair::class, ['clockPoint' => $point])
+        ->assertSet('displaySoundEnabled', true)
+        ->set('displaySoundEnabled', false)
+        ->assertSee(__('time.clock_displays.sound.saved'));
+
+    expect($point->refresh()->display_sound_enabled)->toBeFalse();
+    expect(AuditLog::where('action', 'clock_point.display_sound_updated')->exists())->toBeTrue();
+
+    $this->getJson('/api/v1/time/clock-displays/ping', ['X-WinProx-Clock-Key' => $token])
+        ->assertOk()
+        ->assertJsonPath('sound_enabled', false);
+
+    // Ander tenant-id wordt geweigerd.
+    expect(fn () => app(App\Actions\Time\UpdateClockDisplaySoundAction::class)
+        ->handle($point, $tenant->id + 1, $admin->id, true))
+        ->toThrow(InvalidArgumentException::class, 'tenant_mismatch');
+});
+
 it('toont een vertaalde melding bij een half ingevuld schermuren-paar', function () {
     $tenant = displayTenant();
     Tenancy::actAs($tenant->id);
