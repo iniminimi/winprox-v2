@@ -545,6 +545,16 @@ it('bewaart de album-modus en weigert een ongeldige', function () {
     $windows->handle($point, $tenant->id, $admin->id, null, null, null, null, 'flipclock');
     expect($point->refresh()->album_mode)->toBe('flipclock');
 
+    // Zwart scherm: de keuze gaat mee naar het scherm in de ping.
+    $windows->handle($point, $tenant->id, $admin->id, '12:00', '13:00', null, null, 'black');
+    expect($point->refresh()->album_mode)->toBe('black');
+    $token = linkDisplay($point);
+    Tenancy::forget();
+    $this->getJson('/api/v1/time/clock-displays/ping', ['X-WinProx-Clock-Key' => $token])
+        ->assertOk()
+        ->assertJsonPath('album.mode', 'black')
+        ->assertJsonPath('album.windows.0', ['12:00', '13:00']);
+
     expect(fn () => $windows->handle($point, $tenant->id, $admin->id, null, null, null, null, 'banana'))
         ->toThrow(InvalidArgumentException::class, 'album_mode_invalid');
 });

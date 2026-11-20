@@ -418,6 +418,7 @@
             "mode_photos": "Photos (diaporama)",
             "mode_clock": "Horloge analogique",
             "mode_flipclock": "Horloge flip",
+            "mode_black": "Écran noir",
             "mode_none": "Rien (QR normal)"
         }
     },

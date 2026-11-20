@@ -418,6 +418,7 @@
             "mode_photos": "Foto's (slideshow)",
             "mode_clock": "Wijzerklok",
             "mode_flipclock": "Flipklok",
+            "mode_black": "Zwart scherm",
             "mode_none": "Niets (gewone QR)"
         }
     },

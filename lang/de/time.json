@@ -418,6 +418,7 @@
             "mode_photos": "Fotos (Slideshow)",
             "mode_clock": "Analoge Uhr",
             "mode_flipclock": "Flip-Uhr",
+            "mode_black": "Schwarzer Bildschirm",
             "mode_none": "Nichts (normaler QR)"
         }
     },
