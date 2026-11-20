@@ -1,0 +1,10 @@
+---
+description: 3D-prints en Bambu-bestanden horen in C:\werkmap\Bambu
+alwaysApply: true
+---
+
+# 3D-prints
+
+Alle Bambu-bestanden voor de doosjes en alle toekomstige 3D-prints staan in
+`C:\werkmap\Bambu`. Wat al gemaakt is, staat daar. Nieuwe prints daar bewerken,
+niet in `Documents\Seeed-D1-enclosure` en niet in de WinProx-repo.
