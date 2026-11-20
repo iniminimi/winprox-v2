@@ -17,6 +17,7 @@ use App\Support\Qr\QrPrintablePageTenantBranding;
 use App\Support\Qr\QrStickerEntry;
 use App\Support\Qr\QrStickerRasterCache;
 use App\Support\Qr\QrStickerSheetTemplate;
+use App\Support\Qr\QrTtfWrappedText;
 use Imagick;
 use ImagickDraw;
 use ImagickPixel;
@@ -46,6 +47,9 @@ final class QrPrintablePageWordBuilder
     /** Space between optional page headline and the caption above the QR. */
     private const HEADLINE_GAP_MM = 4.0;
 
+    /** Horizontal inset so wrapped labels stay inside the page artwork. */
+    private const TEXT_SIDE_PADDING_MM = 5.0;
+
     /** Type sizes at A6 content width; scaled up for A5/A4. */
     private const PRIMARY_FONT_MM = 2.8;
 
@@ -53,10 +57,18 @@ final class QrPrintablePageWordBuilder
 
     private const HEADLINE_FONT_MM = 5.2;
 
+    private const HEADLINE_MAX_LINES = 4;
+
+    private const SECONDARY_MAX_LINES = 3;
+
+    private const PRIMARY_MAX_LINES = 2;
+
+    private const LINE_HEIGHT_RATIO = 1.18;
+
     /** Nudge the centred QR block upward on A6/A5/A4 (room for bottom branding). */
     private const CONTENT_NUDGE_UP_MM = 5.0;
 
-    /** A6 printable content short side (105 − 2×5 mm margins). */
+    /** A6 printable content short side reference for type scaling. */
     private const BASE_CONTENT_SHORT_SIDE_MM = 95.0;
 
     /**
@@ -309,36 +321,30 @@ final class QrPrintablePageWordBuilder
         $qr->clear();
 
         $centerX = (int) round($widthPx / 2);
-        if ($layout['headlineText'] !== '') {
-            $this->drawImagickCenteredText(
-                $canvas,
-                $layout['headlineText'],
-                $centerX,
-                $layout['headlineY'],
-                $layout['headlineFontPx'],
-                QrPrintablePageFont::semiboldAbsolutePath(),
-            );
-        }
-        if ($layout['primaryText'] !== '') {
-            $this->drawImagickCenteredText(
-                $canvas,
-                $layout['primaryText'],
-                $centerX,
-                $layout['primaryY'],
-                $layout['primaryFontPx'],
-                QrPrintablePageFont::semiboldAbsolutePath(),
-            );
-        }
-        if ($layout['secondaryText'] !== '') {
-            $this->drawImagickCenteredText(
-                $canvas,
-                $layout['secondaryText'],
-                $centerX,
-                $layout['secondaryY'],
-                $layout['secondaryFontPx'],
-                QrPrintablePageFont::regularAbsolutePath(),
-            );
-        }
+        $this->drawImagickCenteredLines(
+            $canvas,
+            $layout['headlineLines'],
+            $centerX,
+            $layout['headlineY'],
+            $layout['headlineFontPx'],
+            QrPrintablePageFont::semiboldAbsolutePath(),
+        );
+        $this->drawImagickCenteredLines(
+            $canvas,
+            $layout['secondaryLines'],
+            $centerX,
+            $layout['secondaryY'],
+            $layout['secondaryFontPx'],
+            QrPrintablePageFont::regularAbsolutePath(),
+        );
+        $this->drawImagickCenteredLines(
+            $canvas,
+            $layout['primaryLines'],
+            $centerX,
+            $layout['primaryY'],
+            $layout['primaryFontPx'],
+            QrPrintablePageFont::semiboldAbsolutePath(),
+        );
 
         $this->drawTenantBrandingOnImagick($canvas, $tenant, $sheetSettings);
 
@@ -405,39 +411,33 @@ final class QrPrintablePageWordBuilder
 
         $color = imagecolorallocate($canvas, 17, 24, 39);
         if ($color !== false) {
-            if ($layout['headlineText'] !== '') {
-                $this->drawGdCenteredText(
-                    $canvas,
-                    $layout['headlineText'],
-                    $widthPx,
-                    $layout['headlineY'],
-                    $layout['headlineFontPx'],
-                    $color,
-                    QrPrintablePageFont::semiboldAbsolutePath(),
-                );
-            }
-            if ($layout['primaryText'] !== '') {
-                $this->drawGdCenteredText(
-                    $canvas,
-                    $layout['primaryText'],
-                    $widthPx,
-                    $layout['primaryY'],
-                    $layout['primaryFontPx'],
-                    $color,
-                    QrPrintablePageFont::semiboldAbsolutePath(),
-                );
-            }
-            if ($layout['secondaryText'] !== '') {
-                $this->drawGdCenteredText(
-                    $canvas,
-                    $layout['secondaryText'],
-                    $widthPx,
-                    $layout['secondaryY'],
-                    $layout['secondaryFontPx'],
-                    $color,
-                    QrPrintablePageFont::regularAbsolutePath(),
-                );
-            }
+            $this->drawGdCenteredLines(
+                $canvas,
+                $layout['headlineLines'],
+                $widthPx,
+                $layout['headlineY'],
+                $layout['headlineFontPx'],
+                $color,
+                QrPrintablePageFont::semiboldAbsolutePath(),
+            );
+            $this->drawGdCenteredLines(
+                $canvas,
+                $layout['secondaryLines'],
+                $widthPx,
+                $layout['secondaryY'],
+                $layout['secondaryFontPx'],
+                $color,
+                QrPrintablePageFont::regularAbsolutePath(),
+            );
+            $this->drawGdCenteredLines(
+                $canvas,
+                $layout['primaryLines'],
+                $widthPx,
+                $layout['primaryY'],
+                $layout['primaryFontPx'],
+                $color,
+                QrPrintablePageFont::semiboldAbsolutePath(),
+            );
         }
 
         $this->drawTenantBrandingOnGd($canvas, $tenant, $sheetSettings);
@@ -504,9 +504,9 @@ final class QrPrintablePageWordBuilder
      *     qrPx: int,
      *     qrX: int,
      *     qrY: int,
-     *     primaryText: string,
-     *     secondaryText: string,
-     *     headlineText: string,
+     *     primaryLines: list<string>,
+     *     secondaryLines: list<string>,
+     *     headlineLines: list<string>,
      *     primaryY: int,
      *     secondaryY: int,
      *     headlineY: int,
@@ -534,29 +534,60 @@ final class QrPrintablePageWordBuilder
         $secondaryText = $labels['secondary'];
 
         $typeScale = min($contentWidthMm, $contentHeightMm) / self::BASE_CONTENT_SHORT_SIDE_MM;
-        $primaryFontPx = self::mmToPixelAtDpi(self::PRIMARY_FONT_MM * $typeScale);
-        $secondaryFontPx = self::mmToPixelAtDpi(self::SECONDARY_FONT_MM * $typeScale);
-        $headlineFontPx = self::mmToPixelAtDpi(self::HEADLINE_FONT_MM * $typeScale);
+        $preferredPrimaryFontPx = (float) self::mmToPixelAtDpi(self::PRIMARY_FONT_MM * $typeScale);
+        $preferredSecondaryFontPx = (float) self::mmToPixelAtDpi(self::SECONDARY_FONT_MM * $typeScale);
+        $preferredHeadlineFontPx = (float) self::mmToPixelAtDpi(self::HEADLINE_FONT_MM * $typeScale);
         $labelGapPx = self::mmToPixelAtDpi(self::LABEL_GAP_MM * $typeScale);
         $aboveQrGapPx = self::mmToPixelAtDpi(self::ABOVE_QR_GAP_MM * $typeScale);
         $headlineGapPx = self::mmToPixelAtDpi(self::HEADLINE_GAP_MM * $typeScale);
+        $maxTextWidthPx = max(
+            40,
+            $widthPx - (2 * self::mmToPixelAtDpi(self::TEXT_SIDE_PADDING_MM * $typeScale)),
+        );
+
+        $headlineFit = $this->fitLabel(
+            $headlineText,
+            QrPrintablePageFont::semiboldAbsolutePath(),
+            $preferredHeadlineFontPx,
+            $maxTextWidthPx,
+            self::HEADLINE_MAX_LINES,
+        );
+        $secondaryFit = $this->fitLabel(
+            $secondaryText,
+            QrPrintablePageFont::regularAbsolutePath(),
+            $preferredSecondaryFontPx,
+            $maxTextWidthPx,
+            self::SECONDARY_MAX_LINES,
+        );
+        $primaryFit = $this->fitLabel(
+            $primaryText,
+            QrPrintablePageFont::semiboldAbsolutePath(),
+            $preferredPrimaryFontPx,
+            $maxTextWidthPx,
+            self::PRIMARY_MAX_LINES,
+        );
+
+        $headlineFontPx = $headlineFit['font_size'];
+        $secondaryFontPx = $secondaryFit['font_size'];
+        $primaryFontPx = $primaryFit['font_size'];
+        $headlineLines = $headlineFit['lines'];
+        $secondaryLines = $secondaryFit['lines'];
+        $primaryLines = $primaryFit['lines'];
 
         $aboveBlock = 0;
-        if ($headlineText !== '') {
-            $aboveBlock += (int) ceil($headlineFontPx) + 2;
-            if ($secondaryText !== '') {
-                $aboveBlock += $headlineGapPx;
-            } else {
-                $aboveBlock += $aboveQrGapPx;
-            }
+        if ($headlineLines !== []) {
+            $aboveBlock += QrTtfWrappedText::blockHeightPx(count($headlineLines), $headlineFontPx, self::LINE_HEIGHT_RATIO);
+            $aboveBlock += $secondaryLines !== [] ? $headlineGapPx : $aboveQrGapPx;
         }
-        if ($secondaryText !== '') {
-            $aboveBlock += (int) ceil($secondaryFontPx) + 2 + $aboveQrGapPx;
+        if ($secondaryLines !== []) {
+            $aboveBlock += QrTtfWrappedText::blockHeightPx(count($secondaryLines), $secondaryFontPx, self::LINE_HEIGHT_RATIO)
+                + $aboveQrGapPx;
         }
 
         $belowBlock = 0;
-        if ($primaryText !== '') {
-            $belowBlock = $labelGapPx + (int) ceil($primaryFontPx) + 2;
+        if ($primaryLines !== []) {
+            $belowBlock = $labelGapPx
+                + QrTtfWrappedText::blockHeightPx(count($primaryLines), $primaryFontPx, self::LINE_HEIGHT_RATIO);
         }
 
         $blockHeight = $aboveBlock + $qrPx + $belowBlock;
@@ -568,15 +599,21 @@ final class QrPrintablePageWordBuilder
         $headlineY = 0;
         $secondaryY = 0;
 
-        if ($headlineText !== '') {
+        if ($headlineLines !== []) {
             $headlineY = $cursorY + (int) round($headlineFontPx);
-            $cursorY = $headlineY + ($secondaryText !== '' ? $headlineGapPx : $aboveQrGapPx);
+            $cursorY = $headlineY
+                + QrTtfWrappedText::blockHeightPx(count($headlineLines), $headlineFontPx, self::LINE_HEIGHT_RATIO)
+                - (int) round($headlineFontPx)
+                + ($secondaryLines !== [] ? $headlineGapPx : $aboveQrGapPx);
         }
 
         $qrY = $cursorY;
-        if ($secondaryText !== '') {
+        if ($secondaryLines !== []) {
             $secondaryY = $cursorY + (int) round($secondaryFontPx);
-            $qrY = $secondaryY + $aboveQrGapPx;
+            $qrY = $secondaryY
+                + QrTtfWrappedText::blockHeightPx(count($secondaryLines), $secondaryFontPx, self::LINE_HEIGHT_RATIO)
+                - (int) round($secondaryFontPx)
+                + $aboveQrGapPx;
         }
 
         $primaryY = $qrY + $qrPx + $labelGapPx + (int) round($primaryFontPx);
@@ -585,50 +622,94 @@ final class QrPrintablePageWordBuilder
             'qrPx' => $qrPx,
             'qrX' => $qrX,
             'qrY' => $qrY,
-            'primaryText' => $primaryText,
-            'secondaryText' => $secondaryText,
-            'headlineText' => $headlineText,
+            'primaryLines' => $primaryLines,
+            'secondaryLines' => $secondaryLines,
+            'headlineLines' => $headlineLines,
             'primaryY' => $primaryY,
             'secondaryY' => $secondaryY,
             'headlineY' => $headlineY,
-            'primaryFontPx' => (float) $primaryFontPx,
-            'secondaryFontPx' => (float) $secondaryFontPx,
-            'headlineFontPx' => (float) $headlineFontPx,
+            'primaryFontPx' => $primaryFontPx,
+            'secondaryFontPx' => $secondaryFontPx,
+            'headlineFontPx' => $headlineFontPx,
         ];
     }
 
-    private function drawImagickCenteredText(
-        Imagick $canvas,
+    /**
+     * @return array{font_size: float, lines: list<string>}
+     */
+    private function fitLabel(
         string $text,
+        string $fontPath,
+        float $preferredFontPx,
+        int $maxWidthPx,
+        int $maxLines,
+    ): array {
+        if (trim($text) === '') {
+            return ['font_size' => $preferredFontPx, 'lines' => []];
+        }
+
+        return QrTtfWrappedText::fit(
+            $text,
+            $fontPath,
+            $preferredFontPx,
+            max(8.0, $preferredFontPx * 0.62),
+            $maxWidthPx,
+            $maxLines,
+        );
+    }
+
+    /**
+     * @param  list<string>  $lines
+     */
+    private function drawImagickCenteredLines(
+        Imagick $canvas,
+        array $lines,
         int $centerX,
-        int $baselineY,
+        int $firstBaselineY,
         float $fontSizePx,
         string $fontPath,
     ): void {
+        if ($lines === []) {
+            return;
+        }
+
         $draw = new ImagickDraw;
         $draw->setFillColor(new ImagickPixel('#111827'));
         $draw->setFont($fontPath);
         $draw->setFontSize($fontSizePx);
         $draw->setTextAlignment(Imagick::ALIGN_CENTER);
-        $canvas->annotateImage($draw, $centerX, $baselineY, 0, $text);
+        $lineHeight = max($fontSizePx, $fontSizePx * self::LINE_HEIGHT_RATIO);
+        foreach ($lines as $index => $line) {
+            $baselineY = (int) round($firstBaselineY + ($index * $lineHeight));
+            $canvas->annotateImage($draw, $centerX, $baselineY, 0, $line);
+        }
     }
 
     /**
      * @param  \GdImage  $canvas
+     * @param  list<string>  $lines
      */
-    private function drawGdCenteredText(
+    private function drawGdCenteredLines(
         $canvas,
-        string $text,
+        array $lines,
         int $canvasWidthPx,
-        int $baselineY,
+        int $firstBaselineY,
         float $fontSizePx,
         int $color,
         string $fontPath,
     ): void {
-        $bbox = imagettfbbox($fontSizePx, 0, $fontPath, $text);
-        $textWidth = is_array($bbox) ? (int) abs($bbox[2] - $bbox[0]) : 0;
-        $textX = (int) round(($canvasWidthPx - $textWidth) / 2);
-        imagettftext($canvas, $fontSizePx, 0, $textX, $baselineY, $color, $fontPath, $text);
+        if ($lines === []) {
+            return;
+        }
+
+        $lineHeight = max($fontSizePx, $fontSizePx * self::LINE_HEIGHT_RATIO);
+        foreach ($lines as $index => $line) {
+            $bbox = imagettfbbox($fontSizePx, 0, $fontPath, $line);
+            $textWidth = is_array($bbox) ? (int) abs($bbox[2] - $bbox[0]) : 0;
+            $textX = (int) round(($canvasWidthPx - $textWidth) / 2);
+            $baselineY = (int) round($firstBaselineY + ($index * $lineHeight));
+            imagettftext($canvas, $fontSizePx, 0, $textX, $baselineY, $color, $fontPath, $line);
+        }
     }
 
     /**

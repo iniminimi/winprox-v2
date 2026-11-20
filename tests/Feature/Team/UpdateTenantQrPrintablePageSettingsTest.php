@@ -110,6 +110,41 @@ it('exports a6 printable docx using a shared stock preset', function () {
         ->and(substr($binary, 0, 2))->toBe('PK');
 });
 
+it('exports a6 printable docx with a long wrapped page headline', function () {
+    if (! QrCodePngWriter::canGenerate()) {
+        test()->markTestSkipped('PHP gd or imagick extension required for QR PNG generation.');
+    }
+
+    Storage::fake('public');
+
+    $tenant = Tenant::factory()->create(['trial_ends_at' => now()->addDays(5)]);
+    app(UpdateTenantQrPrintablePageSettingsAction::class)->handle(
+        $tenant,
+        UpdateTenantQrPrintablePageSettingsData::fromValidated([
+            'preset' => QrPrintablePageBackgroundPreset::defaultPresetKey(),
+            'headerText' => 'Scan deze QR-code en maak een melding',
+        ]),
+        actorUserId: null,
+    );
+
+    $binary = app(QrStickerWordExporter::class)->buildDocxBinaryFromEntries(
+        [
+            new QrStickerEntry(
+                unitLabel: 'Duinhummeltjes',
+                reportUrl: 'https://example.test/qr/demo',
+                stickerNumber: 'Duinhummeltjes',
+                locationUnitLabel: 'Duinhummeltjes Prikklok',
+            ),
+        ],
+        QrStickerSheetTemplate::A6Print,
+        null,
+        $tenant->fresh()->load('qrStickerSheetSettings'),
+    );
+
+    expect($binary)->not->toBe('')
+        ->and(substr($binary, 0, 2))->toBe('PK');
+});
+
 it('saves a stock printable page background preset from public/images/qr/background', function () {
     Storage::fake('public');
 
