@@ -678,7 +678,7 @@
                 },
                 {
                     "label": "Pause minimale",
-                    "text": "Par équipe, vous pouvez fixer une pause minimale (par exemple 30 minutes). À la sortie ou à la clôture, WinProx compte ce minimum sur la feuille d’heures s’il y a eu moins de pause (ou aucune) et si le service dure au moins 4 heures. Ce n’est pas une pause Clock Point ni un événement CIAO. Dans Time → Heures, un admin peut encore appliquer le minimum manuellement ou corriger les minutes de pause."
+                    "text": "Par équipe, vous pouvez fixer une pause minimale (par exemple 30 minutes). À la sortie ou à la clôture, WinProx compte ce minimum sur la feuille d’heures s’il y a eu moins de pause (ou aucune) et si le service dure au moins 4 heures. Ce n’est pas une pause Clock Point ni un événement CIAO. Dans Time → Heures, un admin peut encore appliquer le minimum manuellement ou corriger les minutes de pause. Par équipe vous réglez aussi après combien d’heures l’alerte longue vacation apparaît (défaut 10) et après combien d’heures une vacation ouverte est fermée automatiquement (défaut 16, max. 24). Ce sont des heures calendaires depuis le pointage d’entrée."
                 }
             ]
         },
@@ -1453,7 +1453,7 @@
                 },
                 {
                     "label": "Types",
-                    "text": "Filtrez sur <strong>Long shift</strong> (&gt;10 h), <strong>Non pointé sortie</strong> (&gt;16 h), <strong>Pas de pause</strong> (&gt;6 h sans pause Clock Point live), <strong>Hop rapide</strong> (déplacement en moins de 5 min) ou <strong>Liste d’évacuation</strong> (toutes les consultations, avec date). L’alarme <strong>Pas de pause</strong> ne regarde pas le minimum d’équipe sur la feuille d’heures."
+                    "text": "Filtrez sur <strong>Long shift</strong> (par équipe, défaut &gt;10 h), <strong>Non pointé sortie</strong> (par équipe, défaut &gt;16 h), <strong>Pas de pause</strong> (&gt;6 h sans pause Clock Point live), <strong>Hop rapide</strong> (déplacement en moins de 5 min) ou <strong>Liste d’évacuation</strong> (toutes les consultations, avec date). L’alarme <strong>Pas de pause</strong> ne regarde pas le minimum d’équipe sur la feuille d’heures."
                 },
                 {
                     "label": "Action",

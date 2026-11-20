@@ -90,7 +90,11 @@
             "clocks_all_locations_hint": "Mitarbeiter dieses Teams erscheinen an jedem Stempelpunkt unabhängig von Standortzuweisungen.",
             "required_break_minutes": "Mindestpause (Minuten)",
             "required_break_minutes_placeholder": "z. B. 30",
-            "required_break_minutes_hint": "Leer oder 0 = kein Minimum. Beim Ausstempeln zählt WinProx mindestens diese Pauseminuten auf der Stundenliste, wenn die Schicht mindestens 4 Stunden dauert. Das ist keine Clock-Point-Pause und kein CIAO-Ereignis."
+            "required_break_minutes_hint": "Leer oder 0 = kein Minimum. Beim Ausstempeln zählt WinProx mindestens diese Pauseminuten auf der Stundenliste, wenn die Schicht mindestens 4 Stunden dauert. Das ist keine Clock-Point-Pause und kein CIAO-Ereignis.",
+            "long_shift_hours": "Alarm lange Schicht (Stunden)",
+            "long_shift_hours_hint": "Nach so vielen Kalenderstunden seit dem Einstempeln erscheint der Alarm Lange Schicht. Standard 10. Maximum 24. Muss unter dem Auto-Schließen liegen.",
+            "stale_shift_hours": "Automatisch schließen (Stunden)",
+            "stale_shift_hours_hint": "Nach so vielen Kalenderstunden seit dem Einstempeln schließt WinProx die offene Schicht automatisch. Standard 16. Maximum 24."
         }
     },
     "workers": {
@@ -245,7 +249,10 @@
         "worker_ssin_invalid": "Geben Sie eine gültige 11-stellige NISS ein oder lassen Sie das Feld leer.",
         "worker_default_unit_invalid": "Wählen Sie eine gültige Stammgruppe mit Dienstplancode, oder lassen Sie leer.",
         "worker_contract_minutes_max": "Die Wochennorm beträgt höchstens 168 Stunden.",
-        "worker_default_unit_location": "Die Stammgruppe muss an einem zugewiesenen Standort liegen."
+        "worker_default_unit_location": "Die Stammgruppe muss an einem zugewiesenen Standort liegen.",
+        "long_shift_before_stale": "Der Alarm Lange Schicht muss unter dem Auto-Schließen liegen.",
+        "stale_shift_hours_max": "Automatisch schließen beträgt höchstens 24 Stunden.",
+        "long_shift_hours_max": "Der Alarm Lange Schicht beträgt höchstens 24 Stunden."
     },
     "show": {
         "subtitle": "Dokumente, Mitteilungen und Ausführende dieses Teams.",

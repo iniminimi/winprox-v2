@@ -67,7 +67,13 @@
             @foreach ($grouped as $type => $groupItems)
                 @php
                     $typeEnum = \App\Enums\TimePresenceAttentionType::from($type);
-                    $hours = $typeEnum->thresholdValue();
+                    $groupHours = $groupItems
+                        ->map(fn ($item) => $item->thresholdHours ?? $typeEnum->thresholdValue())
+                        ->unique()
+                        ->values();
+                    $hours = $groupHours->count() === 1
+                        ? (int) $groupHours->first()
+                        : $typeEnum->thresholdValue();
                     $typeTotal = $activeAttentionType !== null
                         ? $filteredCount
                         : (int) ($typeCounts[$type] ?? $groupItems->count());

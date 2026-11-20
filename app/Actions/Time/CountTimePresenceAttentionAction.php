@@ -3,6 +3,7 @@
 namespace App\Actions\Time;
 
 use App\Enums\WorkShiftStatus;
+use App\Models\Tenant;
 use App\Models\WorkShift;
 use App\Support\Time\TimePresenceAttentionRules;
 
@@ -18,10 +19,12 @@ class CountTimePresenceAttentionAction
         $openShifts = WorkShift::query()
             ->where('tenant_id', $tenantId)
             ->where('status', WorkShiftStatus::Open)
-            ->with(['openBreak', 'breaks'])
+            ->with(['openBreak', 'breaks', 'team'])
             ->get();
 
-        return TimePresenceAttentionRules::collect($openShifts)->count()
+        $checkmateMode = (bool) Tenant::query()->whereKey($tenantId)->value('checkmate_mode');
+
+        return TimePresenceAttentionRules::collect($openShifts, $checkmateMode)->count()
             + $this->absenceClockIns->handle($tenantId, $openShifts)->count()
             + $this->listRosterViews->handle($tenantId)->count();
     }

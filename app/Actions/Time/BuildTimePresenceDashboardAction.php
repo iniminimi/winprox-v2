@@ -14,6 +14,7 @@ use App\Enums\WorkShiftStatus;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Location;
+use App\Models\Tenant;
 use App\Models\Worker;
 use App\Models\WorkShift;
 use App\Support\Time\TimePresenceAttentionRules;
@@ -56,8 +57,8 @@ class BuildTimePresenceDashboardAction
             ->where('tenant_id', $tenantId)
             ->where('status', WorkShiftStatus::Open)
             ->with($attentionOnly && ! $isSearchMode
-                ? ['worker', 'team.translations', 'openBreak', 'openVisit.unit', 'openVisit.location', 'breaks']
-                : ['worker.team.translations', 'openBreak', 'openVisit.unit', 'openVisit.location', 'clockInClockPoint.location', 'presenceClockPoint.location', 'breaks'])
+                ? ['worker', 'team', 'openBreak', 'openVisit.unit', 'openVisit.location', 'breaks']
+                : ['worker.team.translations', 'team', 'openBreak', 'openVisit.unit', 'openVisit.location', 'clockInClockPoint.location', 'presenceClockPoint.location', 'breaks'])
             ->when($teamId, fn ($q) => $q->where('internal_team_id', $teamId))
             ->when($clockPointId, fn ($q) => $q->where('presence_clock_point_id', $clockPointId))
             ->when($clockPointIdsForLocation !== null, fn ($q) => $q->whereIn('presence_clock_point_id', $clockPointIdsForLocation))
@@ -72,7 +73,8 @@ class BuildTimePresenceDashboardAction
 
         $onBreak = $openShifts->filter(fn (WorkShift $shift) => $shift->openBreak !== null)->values();
         $active = $openShifts->filter(fn (WorkShift $shift) => $shift->openBreak === null)->values();
-        $attentionItems = TimePresenceAttentionRules::collect($openShifts)
+        $checkmateMode = (bool) Tenant::query()->whereKey($tenantId)->value('checkmate_mode');
+        $attentionItems = TimePresenceAttentionRules::collect($openShifts, $checkmateMode)
             ->concat($this->absenceClockIns->handle($tenantId, $openShifts))
             ->concat($this->rosterViewItems($tenantId, $teamId, $needle, $includeHistoricalRosterViews))
             ->values();

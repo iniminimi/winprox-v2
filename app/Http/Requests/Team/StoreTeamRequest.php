@@ -30,6 +30,8 @@ class StoreTeamRequest extends FormRequest
             'is_active' => ['boolean'],
             'clocks_all_locations' => ['boolean'],
             'required_break_minutes' => ['nullable', 'integer', 'min:0', 'max:240'],
+            'stale_shift_hours' => ['required', 'integer', 'min:1', 'max:24'],
+            'long_shift_hours' => ['required', 'integer', 'min:1', 'max:24'],
         ];
     }
 
@@ -40,6 +42,8 @@ class StoreTeamRequest extends FormRequest
     {
         return [
             'name.required' => __('team.errors.team_name_required'),
+            'stale_shift_hours.max' => __('team.errors.stale_shift_hours_max'),
+            'long_shift_hours.max' => __('team.errors.long_shift_hours_max'),
         ];
     }
 }

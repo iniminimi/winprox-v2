@@ -90,7 +90,11 @@
             "clocks_all_locations_hint": "Les exécutants de cette équipe apparaissent sur chaque pointeuse, quelle que soit l'affectation au site.",
             "required_break_minutes": "Pause minimale (minutes)",
             "required_break_minutes_placeholder": "ex. 30",
-            "required_break_minutes_hint": "Vide ou 0 = pas de minimum. À la sortie, WinProx compte au moins ces minutes de pause sur la feuille d’heures si le service dure au moins 4 heures. Ce n’est pas une pause Clock Point ni un événement CIAO."
+            "required_break_minutes_hint": "Vide ou 0 = pas de minimum. À la sortie, WinProx compte au moins ces minutes de pause sur la feuille d’heures si le service dure au moins 4 heures. Ce n’est pas une pause Clock Point ni un événement CIAO.",
+            "long_shift_hours": "Alerte longue vacation (heures)",
+            "long_shift_hours_hint": "Après tant d’heures calendaires depuis le pointage d’entrée, l’alerte longue vacation apparaît. Par défaut 10. Maximum 24. Doit être inférieur à la fermeture auto.",
+            "stale_shift_hours": "Fermeture automatique (heures)",
+            "stale_shift_hours_hint": "Après tant d’heures calendaires depuis le pointage d’entrée, WinProx ferme automatiquement la vacation ouverte. Par défaut 16. Maximum 24."
         }
     },
     "workers": {
@@ -245,7 +249,10 @@
         "worker_ssin_invalid": "Indiquez un NISS valide de 11 chiffres ou laissez vide.",
         "worker_default_unit_invalid": "Choisissez un groupe d’appartenance valide avec code planning, ou laissez vide.",
         "worker_contract_minutes_max": "La norme hebdomadaire est de 168 heures au plus.",
-        "worker_default_unit_location": "Le groupe d’appartenance doit être sur un lieu assigné."
+        "worker_default_unit_location": "Le groupe d’appartenance doit être sur un lieu assigné.",
+        "long_shift_before_stale": "L’alerte longue vacation doit être inférieure à la fermeture automatique.",
+        "stale_shift_hours_max": "La fermeture automatique est au maximum de 24 heures.",
+        "long_shift_hours_max": "L’alerte longue vacation est au maximum de 24 heures."
     },
     "show": {
         "subtitle": "Documents, annonces et exécutants de cette équipe.",

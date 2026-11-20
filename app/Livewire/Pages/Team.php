@@ -96,6 +96,8 @@ class Team extends Component
     public bool $teamIsActive = true;
     public bool $teamClocksAllLocations = false;
     public mixed $teamRequiredBreakMinutes = null;
+    public int $teamStaleShiftHours = 16;
+    public int $teamLongShiftHours = 10;
     public string $teamSessionLifespanType = 'daily';
     public ?int $teamSessionLifespanCustomHours = null;
     public string $teamPreviewLocale = '';
@@ -518,6 +520,8 @@ class Team extends Component
         $this->teamIsActive = $team->is_active;
         $this->teamClocksAllLocations = (bool) $team->clocks_all_locations;
         $this->teamRequiredBreakMinutes = $team->required_break_minutes;
+        $this->teamStaleShiftHours = $team->staleShiftHours();
+        $this->teamLongShiftHours = $team->longShiftHours();
 
         // Determine session lifespan type
         if ($team->session_lifespan_hours === 14) {
@@ -563,13 +567,26 @@ class Team extends Component
         if ($this->teamRequiredBreakMinutes === '' || $this->teamRequiredBreakMinutes === false) {
             $this->teamRequiredBreakMinutes = null;
         }
+        $rules = [
+            'teamName' => $request->rules()['name'],
+            'teamSortOrder' => $request->rules()['sort_order'],
+            'teamRequiredBreakMinutes' => $request->rules()['required_break_minutes'],
+        ];
+        if ($this->tenantTimeModuleEnabled()) {
+            $rules['teamStaleShiftHours'] = $request->rules()['stale_shift_hours'];
+            $rules['teamLongShiftHours'] = [
+                ...$request->rules()['long_shift_hours'],
+                'lt:teamStaleShiftHours',
+            ];
+        }
         $validated = $this->validate(
+            $rules,
             [
-                'teamName' => $request->rules()['name'],
-                'teamSortOrder' => $request->rules()['sort_order'],
-                'teamRequiredBreakMinutes' => $request->rules()['required_break_minutes'],
+                'teamName.required' => __('team.errors.team_name_required'),
+                'teamLongShiftHours.lt' => __('team.errors.long_shift_before_stale'),
+                'teamStaleShiftHours.max' => __('team.errors.stale_shift_hours_max'),
+                'teamLongShiftHours.max' => __('team.errors.long_shift_hours_max'),
             ],
-            ['teamName.required' => __('team.errors.team_name_required')],
         );
 
         // Calculate session_lifespan_hours based on type
@@ -595,6 +612,8 @@ class Team extends Component
                 'is_active' => $active,
                 'clocks_all_locations' => $this->teamClocksAllLocations,
                 'required_break_minutes' => $validated['teamRequiredBreakMinutes'] ?? null,
+                'stale_shift_hours' => $validated['teamStaleShiftHours'] ?? $this->teamStaleShiftHours,
+                'long_shift_hours' => $validated['teamLongShiftHours'] ?? $this->teamLongShiftHours,
                 'session_lifespan_hours' => $sessionLifespanHours,
             ], (int) auth()->id());
 
@@ -610,6 +629,8 @@ class Team extends Component
                 'is_active' => $this->teamIsActive,
                 'clocks_all_locations' => $this->teamClocksAllLocations,
                 'required_break_minutes' => $validated['teamRequiredBreakMinutes'] ?? null,
+                'stale_shift_hours' => $validated['teamStaleShiftHours'] ?? $this->teamStaleShiftHours,
+                'long_shift_hours' => $validated['teamLongShiftHours'] ?? $this->teamLongShiftHours,
                 'session_lifespan_hours' => $sessionLifespanHours,
             ], (int) Tenancy::id(), (int) auth()->id());
 
@@ -736,6 +757,8 @@ class Team extends Component
             'teamIsActive',
             'teamClocksAllLocations',
             'teamRequiredBreakMinutes',
+            'teamStaleShiftHours',
+            'teamLongShiftHours',
             'teamSessionLifespanType',
             'teamSessionLifespanCustomHours',
             'editingTeamId',
@@ -746,6 +769,8 @@ class Team extends Component
         $this->teamIsActive = true;
         $this->teamClocksAllLocations = false;
         $this->teamRequiredBreakMinutes = null;
+        $this->teamStaleShiftHours = (int) config('time.stale_shift_hours', 16);
+        $this->teamLongShiftHours = (int) config('time.long_shift_hours', 10);
         $this->teamSessionLifespanType = 'daily';
         $this->teamSessionLifespanCustomHours = null;
         $this->selectedCategoryIds = [];

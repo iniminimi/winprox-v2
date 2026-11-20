@@ -670,7 +670,7 @@
                 },
                 {
                     "label": "Mindestpause",
-                    "text": "Pro Team können Sie eine Mindestpause festlegen (z. B. 30 Minuten). Beim Ausstempeln oder Schließen zählt WinProx dieses Minimum auf der Stundenliste, wenn weniger oder keine Live-Pause gestempelt wurde und die Schicht mindestens 4 Stunden dauert. Das ist keine Clock-Point-Pause und kein CIAO-Ereignis. Unter Time → Stunden kann ein Admin das Minimum noch manuell anwenden oder Pauseminuten korrigieren."
+                    "text": "Pro Team können Sie eine Mindestpause festlegen (z. B. 30 Minuten). Beim Ausstempeln oder Schließen zählt WinProx dieses Minimum auf der Stundenliste, wenn weniger oder keine Live-Pause gestempelt wurde und die Schicht mindestens 4 Stunden dauert. Das ist keine Clock-Point-Pause und kein CIAO-Ereignis. Unter Time → Stunden kann ein Admin das Minimum noch manuell anwenden oder Pauseminuten korrigieren. Pro Team stellen Sie auch ein, nach wie vielen Stunden der Alarm Lange Schicht erscheint (Standard 10) und nach wie vielen Stunden eine offene Schicht automatisch geschlossen wird (Standard 16, max. 24). Das sind Kalenderstunden seit dem Einstempeln."
                 }
             ]
         },
@@ -1445,7 +1445,7 @@
                 },
                 {
                     "label": "Typen",
-                    "text": "Filter auf <strong>Lange Schicht</strong> (&gt;10 Std.), <strong>Nicht ausgestempelt</strong> (&gt;16 Std.), <strong>Keine Pause</strong> (&gt;6 Std. ohne Live-Clock-Point-Pause), <strong>Schneller Hop</strong> (Wechsel innerhalb 5 Min) oder <strong>Evakuierungsliste</strong> (alle Einsichten, mit Datum). Der Alarm <strong>Keine Pause</strong> berücksichtigt nicht das Teamminimum auf der Stundenliste."
+                    "text": "Filter auf <strong>Lange Schicht</strong> (pro Team, Standard &gt;10 Std.), <strong>Nicht ausgestempelt</strong> (pro Team, Standard &gt;16 Std.), <strong>Keine Pause</strong> (&gt;6 Std. ohne Live-Clock-Point-Pause), <strong>Schneller Hop</strong> (Wechsel innerhalb 5 Min) oder <strong>Evakuierungsliste</strong> (alle Einsichten, mit Datum). Der Alarm <strong>Keine Pause</strong> berücksichtigt nicht das Teamminimum auf der Stundenliste."
                 },
                 {
                     "label": "Aktion",

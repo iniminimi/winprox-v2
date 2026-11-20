@@ -14,14 +14,52 @@ class InternalTeam extends Model
 {
     use BelongsToTenant, HasFactory;
 
-    protected $fillable = ['tenant_id', 'name', 'original_language', 'sort_order', 'is_active', 'clocks_all_locations', 'required_break_minutes', 'session_lifespan_hours'];
+    protected $fillable = [
+        'tenant_id',
+        'name',
+        'original_language',
+        'sort_order',
+        'is_active',
+        'clocks_all_locations',
+        'required_break_minutes',
+        'stale_shift_hours',
+        'long_shift_hours',
+        'session_lifespan_hours',
+    ];
 
     protected $casts = [
         'sort_order' => 'integer',
         'is_active' => 'boolean',
         'clocks_all_locations' => 'boolean',
         'required_break_minutes' => 'integer',
+        'stale_shift_hours' => 'integer',
+        'long_shift_hours' => 'integer',
     ];
+
+    /** Kalenderuren sinds inklok waarna de dienst automatisch wordt gesloten (1–24). */
+    public function staleShiftHours(): int
+    {
+        return self::clampShiftHours(
+            $this->stale_shift_hours,
+            (int) config('time.stale_shift_hours', 16),
+        );
+    }
+
+    /** Kalenderuren sinds inklok voor het alarm “lange shift” (1–24). */
+    public function longShiftHours(): int
+    {
+        return self::clampShiftHours(
+            $this->long_shift_hours,
+            (int) config('time.long_shift_hours', 10),
+        );
+    }
+
+    public static function clampShiftHours(mixed $value, int $fallback): int
+    {
+        $hours = is_numeric($value) ? (int) $value : $fallback;
+
+        return max(1, min(24, $hours > 0 ? $hours : $fallback));
+    }
 
     public function workers(): HasMany
     {

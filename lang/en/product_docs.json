@@ -92,7 +92,8 @@
                     "WinProx compares planned and recorded time with a margin of 15 minutes. A mark opens that person’s hours for that day straight away.",
                     "If someone forgot to clock in, an administrator can add the record by hand.",
                     "If someone clocks in during leave, time off, a public holiday or sickness, that becomes a point of attention: a warning next to that person on the presence list, and a red clock-in block with a message on the phone. It is a signal to check the record, not a judgement on working time.",
-                    "You turn on RSZ/CIAO reporting in settings. The link with the social security office is confirmed before sending starts. You pass the hours to the social secretariat. WinProx does not file Dimona and does not calculate pay."
+                    "You turn on RSZ/CIAO reporting in settings. The link with the social security office is confirmed before sending starts. You pass the hours to the social secretariat. WinProx does not file Dimona and does not calculate pay.",
+                    "Per team you set after how many hours the Long shift alert appears (default 10) and after how many hours an open shift is closed automatically (default 16, max. 24). These are calendar hours since clock-in. With Checkmate, fixed values apply for the whole organisation."
                 ],
                 "key": "time_clock"
             },

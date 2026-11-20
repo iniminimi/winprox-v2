@@ -670,7 +670,7 @@
                 },
                 {
                     "label": "Pausa mínima",
-                    "text": "Por equipo puedes fijar una pausa mínima (por ejemplo 30 minutos). Al fichar la salida o al cerrar, WinProx cuenta ese mínimo en el parte de horas si se fichó menos pausa o ninguna y el turno dura al menos 4 horas. No es una pausa de Clock Point ni un evento CIAO. En Time → Horas un administrador aún puede aplicar el mínimo manualmente o corregir los minutos de pausa."
+                    "text": "Por equipo puedes fijar una pausa mínima (por ejemplo 30 minutos). Al fichar la salida o al cerrar, WinProx cuenta ese mínimo en el parte de horas si se fichó menos pausa o ninguna y el turno dura al menos 4 horas. No es una pausa de Clock Point ni un evento CIAO. En Time → Horas un administrador aún puede aplicar el mínimo manualmente o corregir los minutos de pausa. Por equipo también fija tras cuántas horas aparece la alarma de turno largo (por defecto 10) y tras cuántas horas se cierra automáticamente un turno abierto (por defecto 16, máx. 24). Son horas de calendario desde el fichaje de entrada."
                 }
             ]
         },
@@ -1445,7 +1445,7 @@
                 },
                 {
                     "label": "Tipos",
-                    "text": "Filtre por <strong>Turno largo</strong> (&gt;10 h), <strong>Sin salida</strong> (&gt;16 h), <strong>Sin pausa</strong> (&gt;6 h sin pausa Clock Point en vivo), <strong>Salto rápido</strong> (cambio en menos de 5 min) o <strong>Lista de evacuación</strong> (todas las consultas, con fecha). La alarma <strong>Sin pausa</strong> no mira el mínimo de equipo del parte."
+                    "text": "Filtre por <strong>Turno largo</strong> (por equipo, por defecto &gt;10 h), <strong>Sin salida</strong> (por equipo, por defecto &gt;16 h), <strong>Sin pausa</strong> (&gt;6 h sin pausa Clock Point en vivo), <strong>Salto rápido</strong> (cambio en menos de 5 min) o <strong>Lista de evacuación</strong> (todas las consultas, con fecha). La alarma <strong>Sin pausa</strong> no mira el mínimo de equipo del parte."
                 },
                 {
                     "label": "Acción",

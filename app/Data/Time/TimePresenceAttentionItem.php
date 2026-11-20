@@ -12,6 +12,7 @@ final class TimePresenceAttentionItem
         public ?WorkShift $shift = null,
         public ?TimeRosterViewAttention $rosterView = null,
         public ?string $absenceKind = null,
+        public ?int $thresholdHours = null,
     ) {}
 
     public function message(): string
@@ -23,7 +24,7 @@ final class TimePresenceAttentionItem
         }
 
         return __('time.presence.attention.'.$this->type->value, [
-            'hours' => $this->type->thresholdValue(),
+            'hours' => $this->thresholdHours ?? $this->type->thresholdValue(),
         ]);
     }
 

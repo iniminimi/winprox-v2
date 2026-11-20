@@ -670,7 +670,7 @@
                 },
                 {
                     "label": "Minimum break",
-                    "text": "Per team you can set a minimum unpaid break (for example 30 minutes). On clock-out or close, WinProx counts that minimum on the timesheet if less or no live break was clocked and the shift lasts at least 4 hours. That is not a Clock Point break and not a CIAO event. On Time → Hours an admin can still apply the minimum manually or correct break minutes."
+                    "text": "Per team you can set a minimum unpaid break (for example 30 minutes). On clock-out or close, WinProx counts that minimum on the timesheet if less or no live break was clocked and the shift lasts at least 4 hours. That is not a Clock Point break and not a CIAO event. On Time → Hours an admin can still apply the minimum manually or correct break minutes. Per team you also set after how many hours the Long shift alert appears (default 10) and after how many hours an open shift is closed automatically (default 16, max. 24). Those are calendar hours since clock-in."
                 }
             ]
         },
@@ -1445,7 +1445,7 @@
                 },
                 {
                     "label": "Types",
-                    "text": "Filter by <strong>Long shift</strong> (&gt;10 hours), <strong>Not clocked out</strong> (&gt;16 hours), <strong>No break</strong> (&gt;6 hours without a live Clock Point break), <strong>Quick hop</strong> (move within 5 min) or <strong>Evacuation list</strong> (all views, with date). The <strong>No break</strong> alarm does not look at the team minimum on the timesheet."
+                    "text": "Filter by <strong>Long shift</strong> (per team, default &gt;10 hours), <strong>Not clocked out</strong> (per team, default &gt;16 hours), <strong>No break</strong> (&gt;6 hours without a live Clock Point break), <strong>Quick hop</strong> (move within 5 min) or <strong>Evacuation list</strong> (all views, with date). The <strong>No break</strong> alarm does not look at the team minimum on the timesheet."
                 },
                 {
                     "label": "Action",

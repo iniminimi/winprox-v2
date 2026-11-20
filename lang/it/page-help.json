@@ -670,7 +670,7 @@
                 },
                 {
                     "label": "Pausa minima",
-                    "text": "Per team puoi impostare una pausa minima (ad esempio 30 minuti). All’uscita o alla chiusura WinProx conta quel minimo sul foglio ore se è stata timbrata meno pausa (o nessuna) e il turno dura almeno 4 ore. Non è una pausa Clock Point né un evento CIAO. In Time → Ore un admin può ancora applicare il minimo manualmente o correggere i minuti di pausa."
+                    "text": "Per team puoi impostare una pausa minima (ad esempio 30 minuti). All’uscita o alla chiusura WinProx conta quel minimo sul foglio ore se è stata timbrata meno pausa (o nessuna) e il turno dura almeno 4 ore. Non è una pausa Clock Point né un evento CIAO. In Time → Ore un admin può ancora applicare il minimo manualmente o correggere i minuti di pausa. Per team imposti anche dopo quante ore compare l’allarme Turno lungo (predefinito 10) e dopo quante ore un turno aperto viene chiuso automaticamente (predefinito 16, max. 24). Sono ore di calendario dall’entrata."
                 }
             ]
         },
@@ -1445,7 +1445,7 @@
                 },
                 {
                     "label": "Tipi",
-                    "text": "Filtra per <strong>Turno lungo</strong> (&gt;10 ore), <strong>Non uscito</strong> (&gt;16 ore), <strong>Nessuna pausa</strong> (&gt;6 ore senza pausa Clock Point live), <strong>Salto rapido</strong> (spostamento entro 5 min) o <strong>Elenco evacuazione</strong> (tutte le consultazioni, con data). L’allarme <strong>Nessuna pausa</strong> non guarda il minimo team sul foglio ore."
+                    "text": "Filtra per <strong>Turno lungo</strong> (per team, predefinito &gt;10 ore), <strong>Non uscito</strong> (per team, predefinito &gt;16 ore), <strong>Nessuna pausa</strong> (&gt;6 ore senza pausa Clock Point live), <strong>Salto rapido</strong> (spostamento entro 5 min) o <strong>Elenco evacuazione</strong> (tutte le consultazioni, con data). L’allarme <strong>Nessuna pausa</strong> non guarda il minimo team sul foglio ore."
                 },
                 {
                     "label": "Azione",

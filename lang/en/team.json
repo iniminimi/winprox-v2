@@ -90,7 +90,11 @@
             "clocks_all_locations_hint": "Workers on this team appear on every clock point regardless of location links.",
             "required_break_minutes": "Minimum break (minutes)",
             "required_break_minutes_placeholder": "e.g. 30",
-            "required_break_minutes_hint": "Empty or 0 = no minimum. On clock-out WinProx counts at least this many unpaid break minutes on the timesheet if the shift lasts at least 4 hours. This is not a Clock Point break and not a CIAO event."
+            "required_break_minutes_hint": "Empty or 0 = no minimum. On clock-out WinProx counts at least this many unpaid break minutes on the timesheet if the shift lasts at least 4 hours. This is not a Clock Point break and not a CIAO event.",
+            "long_shift_hours": "Long shift alert (hours)",
+            "long_shift_hours_hint": "After this many calendar hours since clock-in, the Long shift alert appears. Default 10. Maximum 24. Must be lower than auto-close.",
+            "stale_shift_hours": "Auto-close (hours)",
+            "stale_shift_hours_hint": "After this many calendar hours since clock-in, WinProx closes the open shift automatically. Default 16. Maximum 24."
         }
     },
     "workers": {
@@ -245,7 +249,10 @@
         "worker_ssin_invalid": "Enter a valid 11-digit NISS or leave blank.",
         "worker_default_unit_invalid": "Choose a valid home group with a roster code, or leave empty.",
         "worker_contract_minutes_max": "The weekly norm is at most 168 hours.",
-        "worker_default_unit_location": "The home group must be on an assigned location."
+        "worker_default_unit_location": "The home group must be on an assigned location.",
+        "long_shift_before_stale": "The long shift alert must be lower than auto-close.",
+        "stale_shift_hours_max": "Auto-close is at most 24 hours.",
+        "long_shift_hours_max": "The long shift alert is at most 24 hours."
     },
     "show": {
         "subtitle": "Documents, announcements and workers for this team.",

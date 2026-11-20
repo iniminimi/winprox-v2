@@ -670,7 +670,7 @@
                 },
                 {
                     "label": "Minimumpauze",
-                    "text": "Per team kun je een minimum aantal pauzeminuten instellen (bijvoorbeeld 30). Bij uitklokken of sluiten telt WinProx dat minimum op de urenstaat als er minder of geen live pauze is geklokt én de dienst minstens 4 uur duurt. Dat is geen Clock Point-pauze en geen CIAO-event. Op Time → Uren kan een beheerder het minimum nog manueel toepassen of de pauzeminuten corrigeren."
+                    "text": "Per team kun je een minimum aantal pauzeminuten instellen (bijvoorbeeld 30). Bij uitklokken of sluiten telt WinProx dat minimum op de urenstaat als er minder of geen live pauze is geklokt én de dienst minstens 4 uur duurt. Dat is geen Clock Point-pauze en geen CIAO-event. Op Time → Uren kan een beheerder het minimum nog manueel toepassen of de pauzeminuten corrigeren. Per team stel je ook in na hoeveel uren het alarm Lange shift verschijnt (standaard 10) en na hoeveel uren een open dienst automatisch wordt gesloten (standaard 16, max. 24). Dat zijn kalenderuren sinds inklokken."
                 }
             ]
         },
@@ -1445,7 +1445,7 @@
                 },
                 {
                     "label": "Typen",
-                    "text": "Filter op <strong>Lange shift</strong> (&gt;10 uur), <strong>Niet uitgeklokt</strong> (&gt;16 uur), <strong>Geen pauze</strong> (&gt;6 uur zonder live Clock Point-pauze), <strong>Snelle hop</strong> (verplaatsing binnen 5 min) of <strong>Evacuatielijst</strong> (alle raadplegingen, met datum). Het alarm <strong>Geen pauze</strong> kijkt niet naar het teamminimum op de urenstaat."
+                    "text": "Filter op <strong>Lange shift</strong> (per team, standaard &gt;10 uur), <strong>Niet uitgeklokt</strong> (per team, standaard &gt;16 uur), <strong>Geen pauze</strong> (&gt;6 uur zonder live Clock Point-pauze), <strong>Snelle hop</strong> (verplaatsing binnen 5 min) of <strong>Evacuatielijst</strong> (alle raadplegingen, met datum). Het alarm <strong>Geen pauze</strong> kijkt niet naar het teamminimum op de urenstaat."
                 },
                 {
                     "label": "Actie",

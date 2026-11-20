@@ -843,6 +843,11 @@ productsector op `Tenant`.
   gestopt is, ook bij inklokken op verlof) verdwijnt op het portaal
   "Vergeet je pauze niet" en de knop voor een tweede pauze. API: `POST /api/v1/time/work-shifts/{id}/apply-required-break`;
   `GET /api/v1/teams` bevat `required_break_minutes`.
+- **Shift-drempels per team** (alleen Facility Time, niet Checkmate): `long_shift_hours`
+  (standaard 10, alarm Lange shift) en `stale_shift_hours` (standaard 16, max. 24,
+  automatisch sluiten). Kalenderuren sinds inklok. Lange-shift-drempel moet lager
+  zijn dan auto-close. Beheerder én medewerker mogen wijzigen. Checkmate blijft de
+  globale `config/time.php`-waarden gebruiken.
 - **Shift corrigeren** (Time → Uren, admin): inklok, uitklok en pauze met verplichte
   reden (`work_shift.corrected`). Uitklok **leeg** laten heropent de dienst (foutieve
   uitklok). Geweigerd als die uitvoerder al een andere open dienst heeft. Geen extra

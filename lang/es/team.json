@@ -90,7 +90,11 @@
             "clocks_all_locations_hint": "Los ejecutores de este equipo aparecen en cada punto de fichaje sin importar la ubicación.",
             "required_break_minutes": "Pausa mínima (minutos)",
             "required_break_minutes_placeholder": "p. ej. 30",
-            "required_break_minutes_hint": "Vacío o 0 = sin mínimo. Al fichar la salida, WinProx cuenta al menos estos minutos de pausa en el parte de horas si el turno dura al menos 4 horas. No es una pausa de Clock Point ni un evento CIAO."
+            "required_break_minutes_hint": "Vacío o 0 = sin mínimo. Al fichar la salida, WinProx cuenta al menos estos minutos de pausa en el parte de horas si el turno dura al menos 4 horas. No es una pausa de Clock Point ni un evento CIAO.",
+            "long_shift_hours": "Alarma de turno largo (horas)",
+            "long_shift_hours_hint": "Tras tantas horas de calendario desde el fichaje de entrada aparece la alarma de turno largo. Por defecto 10. Máximo 24. Debe ser menor que el cierre automático.",
+            "stale_shift_hours": "Cierre automático (horas)",
+            "stale_shift_hours_hint": "Tras tantas horas de calendario desde el fichaje de entrada, WinProx cierra automáticamente el turno abierto. Por defecto 16. Máximo 24."
         }
     },
     "workers": {
@@ -245,7 +249,10 @@
         "worker_ssin_invalid": "Introduzca un NISS válido de 11 dígitos o déjelo vacío.",
         "worker_default_unit_invalid": "Elija un grupo base válido con código de cuadrante, o déjelo vacío.",
         "worker_contract_minutes_max": "La norma semanal es como máximo 168 horas.",
-        "worker_default_unit_location": "El grupo base debe estar en una ubicación asignada."
+        "worker_default_unit_location": "El grupo base debe estar en una ubicación asignada.",
+        "long_shift_before_stale": "La alarma de turno largo debe ser menor que el cierre automático.",
+        "stale_shift_hours_max": "El cierre automático es como máximo 24 horas.",
+        "long_shift_hours_max": "La alarma de turno largo es como máximo 24 horas."
     },
     "show": {
         "subtitle": "Documentos, avisos y ejecutores de este equipo.",

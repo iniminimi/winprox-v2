@@ -92,7 +92,8 @@
                     "WinProx confronta previsto e timbrato con un margine di 15 minuti. Un segno apre subito le ore di quella persona in quel giorno.",
                     "Se qualcuno ha dimenticato di timbrare, un amministratore può aggiungere la registrazione a mano.",
                     "Se qualcuno timbra durante ferie, recupero, un festivo o una malattia, diventa un punto di attenzione: un avviso accanto alla persona nell’elenco presenze e sul telefono un blocco di entrata rosso con un messaggio. È un segnale per controllare la registrazione, non un giudizio sull’orario di lavoro.",
-                    "La registrazione ONSS/CIAO si attiva nelle impostazioni. Il collegamento con l’ONSS viene confermato prima che parta l’invio. Le ore si passano al segretariato sociale. WinProx non fa Dimona e non calcola la paga."
+                    "La registrazione ONSS/CIAO si attiva nelle impostazioni. Il collegamento con l’ONSS viene confermato prima che parta l’invio. Le ore si passano al segretariato sociale. WinProx non fa Dimona e non calcola la paga.",
+                    "Per team imposti dopo quante ore compare l’allarme Turno lungo (predefinito 10) e dopo quante ore un turno aperto viene chiuso automaticamente (predefinito 16, max. 24). Sono ore di calendario dall’entrata. Con Checkmate valgono valori fissi per tutta l’organizzazione."
                 ],
                 "key": "time_clock"
             },

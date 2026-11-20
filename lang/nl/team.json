@@ -90,7 +90,11 @@
             "clocks_all_locations_hint": "Workers in dit team zien hun naam op elke Clock Point, ongeacht locatie-koppeling.",
             "required_break_minutes": "Minimumpauze (minuten)",
             "required_break_minutes_placeholder": "bv. 30",
-            "required_break_minutes_hint": "Leeg of 0 = geen minimum. Bij uitklokken telt WinProx minstens zoveel pauzeminuten op de urenstaat als de dienst minstens 4 uur duurt. Dat is geen Clock Point-pauze en geen CIAO-event."
+            "required_break_minutes_hint": "Leeg of 0 = geen minimum. Bij uitklokken telt WinProx minstens zoveel pauzeminuten op de urenstaat als de dienst minstens 4 uur duurt. Dat is geen Clock Point-pauze en geen CIAO-event.",
+            "long_shift_hours": "Lange shift-alarm (uren)",
+            "long_shift_hours_hint": "Na zoveel kalenderuren sinds inklok verschijnt het alarm Lange shift. Standaard 10. Maximum 24. Moet lager zijn dan automatisch sluiten.",
+            "stale_shift_hours": "Automatisch sluiten (uren)",
+            "stale_shift_hours_hint": "Na zoveel kalenderuren sinds inklok sluit WinProx de open dienst automatisch. Standaard 16. Maximum 24."
         }
     },
     "workers": {
@@ -245,7 +249,10 @@
         "worker_ssin_invalid": "Geef een geldig NISS van 11 cijfers of laat leeg.",
         "worker_default_unit_invalid": "Kies een geldige thuisgroep met roostercode, of laat leeg.",
         "worker_contract_minutes_max": "De weeknorm is hoogstens 168 uur.",
-        "worker_default_unit_location": "De thuisgroep moet op een toegewezen locatie liggen."
+        "worker_default_unit_location": "De thuisgroep moet op een toegewezen locatie liggen.",
+        "long_shift_before_stale": "Het lange-shift-alarm moet lager zijn dan automatisch sluiten.",
+        "stale_shift_hours_max": "Automatisch sluiten is maximaal 24 uur.",
+        "long_shift_hours_max": "Het lange-shift-alarm is maximaal 24 uur."
     },
     "show": {
         "subtitle": "Documenten, mededelingen en uitvoerders van dit team.",

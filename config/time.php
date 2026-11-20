@@ -1,10 +1,18 @@
 <?php
 
 return [
-    /** Open shifts ouder dan dit aantal uren worden automatisch gesloten. */
+    /**
+     * Open shifts ouder dan dit aantal uren worden automatisch gesloten.
+     * Facility Time: default per team (`internal_teams.stale_shift_hours`, max. 24).
+     * Checkmate: altijd deze globale waarde.
+     */
     'stale_shift_hours' => (int) env('TIME_STALE_SHIFT_HOURS', 16),
 
-    /** Open shift langer dan dit aantal uren → aandacht op aanwezigheid. */
+    /**
+     * Open shift langer dan dit aantal uren → aandacht op aanwezigheid.
+     * Facility Time: default per team (`internal_teams.long_shift_hours`, max. 24).
+     * Checkmate: altijd deze globale waarde.
+     */
     'long_shift_hours' => (int) env('TIME_LONG_SHIFT_HOURS', 10),
 
     /** Shift zonder geregistreerde pauze na dit aantal uren → aandacht. */

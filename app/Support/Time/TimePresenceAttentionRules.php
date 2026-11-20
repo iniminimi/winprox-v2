@@ -13,10 +13,10 @@ final class TimePresenceAttentionRules
      * @param  Collection<int, WorkShift>  $openShifts
      * @return Collection<int, TimePresenceAttentionItem>
      */
-    public static function collect(Collection $openShifts): Collection
+    public static function collect(Collection $openShifts, bool $checkmateMode = false): Collection
     {
-        $staleHours = max(1, (int) config('time.stale_shift_hours', 16));
-        $longHours = max(1, (int) config('time.long_shift_hours', 10));
+        $globalStaleHours = max(1, min(24, (int) config('time.stale_shift_hours', 16)));
+        $globalLongHours = max(1, min(24, (int) config('time.long_shift_hours', 10)));
         $breakReminderHours = max(1, (int) config('time.break_reminder_hours', 6));
 
         $rapidHopMinutes = max(1, (int) config('time.rapid_hop_minutes', 5));
@@ -30,16 +30,35 @@ final class TimePresenceAttentionRules
                 continue;
             }
 
+            if ($shift->clock_in_at === null) {
+                continue;
+            }
+
+            $staleHours = $checkmateMode || $shift->team === null
+                ? $globalStaleHours
+                : $shift->team->staleShiftHours();
+            $longHours = $checkmateMode || $shift->team === null
+                ? $globalLongHours
+                : $shift->team->longShiftHours();
+
             $openHours = $shift->clock_in_at->diffInMinutes(now()) / 60;
 
             if ($openHours >= $staleHours) {
-                $items->push(new TimePresenceAttentionItem(TimePresenceAttentionType::StaleShift, $shift));
+                $items->push(new TimePresenceAttentionItem(
+                    TimePresenceAttentionType::StaleShift,
+                    $shift,
+                    thresholdHours: $staleHours,
+                ));
 
                 continue;
             }
 
             if ($openHours >= $longHours) {
-                $items->push(new TimePresenceAttentionItem(TimePresenceAttentionType::LongShift, $shift));
+                $items->push(new TimePresenceAttentionItem(
+                    TimePresenceAttentionType::LongShift,
+                    $shift,
+                    thresholdHours: $longHours,
+                ));
 
                 continue;
             }

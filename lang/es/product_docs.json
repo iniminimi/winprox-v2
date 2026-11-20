@@ -92,7 +92,8 @@
                     "WinProx compara lo previsto y lo fichado con un margen de 15 minutos. Una marca abre al momento las horas de esa persona en ese día.",
                     "Si alguien olvidó fichar, un administrador puede añadir el registro a mano.",
                     "Si alguien ficha durante un permiso, una compensación, un festivo o una baja, eso pasa a ser un aviso: una advertencia junto a la persona en la lista de presencia, y en el teléfono un bloque de entrada rojo con un mensaje. Es una señal para revisar el registro, no un juicio sobre la jornada.",
-                    "El registro ONSS/CIAO se activa en los ajustes. El enlace con la ONSS se confirma antes de empezar el envío. Las horas se pasan a la secretaría social. WinProx no hace Dimona ni calcula la nómina."
+                    "El registro ONSS/CIAO se activa en los ajustes. El enlace con la ONSS se confirma antes de empezar el envío. Las horas se pasan a la secretaría social. WinProx no hace Dimona ni calcula la nómina.",
+                    "Por equipo configura tras cuántas horas aparece la alarma Turno largo (por defecto 10) y tras cuántas horas se cierra automáticamente un turno abierto (por defecto 16, máx. 24). Son horas de calendario desde el fichaje de entrada. Con Checkmate aplican valores fijos para toda la organización."
                 ],
                 "key": "time_clock"
             },

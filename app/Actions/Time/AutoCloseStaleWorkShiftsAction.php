@@ -23,18 +23,34 @@ class AutoCloseStaleWorkShiftsAction
 
     public function handle(?int $staleHours = null): int
     {
-        $hours = $staleHours ?? (int) config('time.stale_shift_hours', 16);
-        $cutoff = now()->subHours(max(1, $hours));
         $closed = 0;
+        $globalHours = max(1, min(24, (int) config('time.stale_shift_hours', 16)));
 
-        Tenant::query()->each(function (Tenant $tenant) use ($cutoff, &$closed): void {
+        Tenant::query()->each(function (Tenant $tenant) use ($staleHours, $globalHours, &$closed): void {
             Tenancy::actAs($tenant->id);
+
+            // Checkmate: vaste serverdrempel. Facility Time: per team (default 16).
+            $useTeamThreshold = ! $tenant->checkmateMode() && $staleHours === null;
 
             WorkShift::query()
                 ->open()
-                ->where('clock_in_at', '<', $cutoff)
+                ->with('team')
                 ->orderBy('id')
-                ->each(function (WorkShift $shift) use (&$closed): void {
+                ->each(function (WorkShift $shift) use ($staleHours, $globalHours, $useTeamThreshold, &$closed): void {
+                    if ($shift->clock_in_at === null) {
+                        return;
+                    }
+
+                    $hours = $staleHours !== null
+                        ? max(1, min(24, $staleHours))
+                        : ($useTeamThreshold && $shift->team !== null
+                            ? $shift->team->staleShiftHours()
+                            : $globalHours);
+
+                    if ($shift->clock_in_at->greaterThanOrEqualTo(now()->subHours($hours))) {
+                        return;
+                    }
+
                     if ($this->closeShift($shift)) {
                         $closed++;
                     }

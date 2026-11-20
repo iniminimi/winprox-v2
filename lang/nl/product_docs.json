@@ -92,7 +92,8 @@
                     "Gepland en geregistreerd vergelijkt WinProx met een marge van 15 minuten. Een markering opent meteen de uren van die persoon op die dag.",
                     "Is iemand vergeten in te klokken, dan kan een beheerder de registratie manueel toevoegen.",
                     "Klokt iemand in tijdens verlof, recup, een feestdag of ziekte, dan wordt dat een aandachtspunt: een waarschuwing bij die persoon in de aanwezigheidslijst, en op de telefoon een rood inklokblok met een melding. Dat is een signaal om de registratie te controleren, geen oordeel over de arbeidsduur.",
-                    "De RSZ/CIAO-registratie zet u aan in de instellingen. De koppeling met de RSZ wordt bevestigd voordat de doorgifte start. De uren geeft u door aan het sociaal secretariaat. WinProx doet geen Dimona-aangifte en berekent geen loon."
+                    "De RSZ/CIAO-registratie zet u aan in de instellingen. De koppeling met de RSZ wordt bevestigd voordat de doorgifte start. De uren geeft u door aan het sociaal secretariaat. WinProx doet geen Dimona-aangifte en berekent geen loon.",
+                    "Per team stelt u in na hoeveel uren het alarm Lange shift verschijnt (standaard 10) en na hoeveel uren een open dienst automatisch wordt gesloten (standaard 16, max. 24). Dat zijn kalenderuren sinds inklok. Bij Checkmate gelden vaste waarden voor de hele organisatie."
                 ],
                 "key": "time_clock"
             },

@@ -30,6 +30,18 @@ class UpdateTeamAction
             'required_break_minutes' => array_key_exists('required_break_minutes', $data)
                 ? self::normalizeRequiredBreakMinutes($data['required_break_minutes'])
                 : $team->required_break_minutes,
+            'stale_shift_hours' => array_key_exists('stale_shift_hours', $data)
+                ? InternalTeam::clampShiftHours(
+                    $data['stale_shift_hours'],
+                    (int) config('time.stale_shift_hours', 16),
+                )
+                : $team->stale_shift_hours,
+            'long_shift_hours' => array_key_exists('long_shift_hours', $data)
+                ? InternalTeam::clampShiftHours(
+                    $data['long_shift_hours'],
+                    (int) config('time.long_shift_hours', 10),
+                )
+                : $team->long_shift_hours,
             'session_lifespan_hours' => $data['session_lifespan_hours'] ?? null,
         ]);
 

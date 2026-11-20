@@ -33,6 +33,14 @@ class CreateTeamAction
             'is_active' => (bool) ($data['is_active'] ?? true),
             'clocks_all_locations' => (bool) ($data['clocks_all_locations'] ?? false),
             'required_break_minutes' => self::normalizeRequiredBreakMinutes($data['required_break_minutes'] ?? null),
+            'stale_shift_hours' => InternalTeam::clampShiftHours(
+                $data['stale_shift_hours'] ?? null,
+                (int) config('time.stale_shift_hours', 16),
+            ),
+            'long_shift_hours' => InternalTeam::clampShiftHours(
+                $data['long_shift_hours'] ?? null,
+                (int) config('time.long_shift_hours', 10),
+            ),
             'session_lifespan_hours' => $data['session_lifespan_hours'] ?? null,
         ]);
 

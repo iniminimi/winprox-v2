@@ -92,7 +92,8 @@
                     "WinProx compare prévu et pointé avec une marge de 15 minutes. Un marquage ouvre tout de suite les heures de cette personne pour ce jour.",
                     "Si quelqu’un a oublié de pointer, un gestionnaire peut ajouter l’enregistrement à la main.",
                     "Si quelqu’un pointe pendant un congé, une récupération, un jour férié ou une maladie, cela devient un point d’attention : un avertissement près de la personne dans la liste de présence, et sur le téléphone un bloc d’entrée rouge avec un message. C’est un signal pour vérifier l’enregistrement, pas un jugement sur la durée du travail.",
-                    "Vous activez l’enregistrement ONSS/CIAO dans les paramètres. Le lien avec l’ONSS est confirmé avant le début de l’envoi. Vous transmettez les heures au secrétariat social. WinProx ne fait pas de Dimona et ne calcule pas le salaire."
+                    "Vous activez l’enregistrement ONSS/CIAO dans les paramètres. Le lien avec l’ONSS est confirmé avant le début de l’envoi. Vous transmettez les heures au secrétariat social. WinProx ne fait pas de Dimona et ne calcule pas le salaire.",
+                    "Par équipe, vous réglez après combien d’heures l’alerte Longue vacation apparaît (défaut 10) et après combien d’heures une vacation ouverte est fermée automatiquement (défaut 16, max. 24). Ce sont des heures calendaires depuis le pointage d’entrée. Avec Checkmate, des valeurs fixes s’appliquent à toute l’organisation."
                 ],
                 "key": "time_clock"
             },
