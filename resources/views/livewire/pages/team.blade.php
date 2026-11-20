@@ -877,42 +877,48 @@
                     @endif
                     @if ($hasTimeModule)
                         <div class="wp-field">
-                            <label class="wp-label" for="teamRequiredBreakMinutes">{{ __('team.teams.modal.required_break_minutes') }}</label>
-                            <input
-                                type="number"
-                                id="teamRequiredBreakMinutes"
-                                class="wp-input"
-                                wire:model="teamRequiredBreakMinutes"
-                                min="0"
-                                max="240"
-                                placeholder="{{ __('team.teams.modal.required_break_minutes_placeholder') }}"
-                            >
+                            <div class="wp-cluster">
+                                <label class="wp-label" for="teamRequiredBreakMinutes">{{ __('team.teams.modal.required_break_minutes') }}</label>
+                                <input
+                                    type="number"
+                                    id="teamRequiredBreakMinutes"
+                                    class="wp-input wp-input--compact"
+                                    wire:model="teamRequiredBreakMinutes"
+                                    min="0"
+                                    max="240"
+                                    placeholder="{{ __('team.teams.modal.required_break_minutes_placeholder') }}"
+                                >
+                            </div>
                             <p class="wp-hint">{{ __('team.teams.modal.required_break_minutes_hint') }}</p>
                             @error('teamRequiredBreakMinutes') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
                         <div class="wp-field">
-                            <label class="wp-label" for="teamLongShiftHours">{{ __('team.teams.modal.long_shift_hours') }}</label>
-                            <input
-                                type="number"
-                                id="teamLongShiftHours"
-                                class="wp-input"
-                                wire:model="teamLongShiftHours"
-                                min="1"
-                                max="24"
-                            >
+                            <div class="wp-cluster">
+                                <label class="wp-label" for="teamLongShiftHours">{{ __('team.teams.modal.long_shift_hours') }}</label>
+                                <input
+                                    type="number"
+                                    id="teamLongShiftHours"
+                                    class="wp-input wp-input--compact"
+                                    wire:model="teamLongShiftHours"
+                                    min="1"
+                                    max="24"
+                                >
+                            </div>
                             <p class="wp-hint">{{ __('team.teams.modal.long_shift_hours_hint') }}</p>
                             @error('teamLongShiftHours') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
                         <div class="wp-field">
-                            <label class="wp-label" for="teamStaleShiftHours">{{ __('team.teams.modal.stale_shift_hours') }}</label>
-                            <input
-                                type="number"
-                                id="teamStaleShiftHours"
-                                class="wp-input"
-                                wire:model="teamStaleShiftHours"
-                                min="1"
-                                max="24"
-                            >
+                            <div class="wp-cluster">
+                                <label class="wp-label" for="teamStaleShiftHours">{{ __('team.teams.modal.stale_shift_hours') }}</label>
+                                <input
+                                    type="number"
+                                    id="teamStaleShiftHours"
+                                    class="wp-input wp-input--compact"
+                                    wire:model="teamStaleShiftHours"
+                                    min="1"
+                                    max="24"
+                                >
+                            </div>
                             <p class="wp-hint">{{ __('team.teams.modal.stale_shift_hours_hint') }}</p>
                             @error('teamStaleShiftHours') <p class="wp-error">{{ $message }}</p> @enderror
                         </div>
