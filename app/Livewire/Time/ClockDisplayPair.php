@@ -57,7 +57,7 @@ class ClockDisplayPair extends Component
 
     public ?string $album2Until = null;
 
-    public string $albumMode = 'photos';
+    public string $albumMode = 'none';
 
     /** Weekdagen waarop het rust-scherm actief is: index 0 = ma … 6 = zo. */
     public array $albumDays = [true, true, true, true, true, false, false];
@@ -74,7 +74,7 @@ class ClockDisplayPair extends Component
         $this->album1Until = $hm($clockPoint->album1_until);
         $this->album2From = $hm($clockPoint->album2_from);
         $this->album2Until = $hm($clockPoint->album2_until);
-        $this->albumMode = $clockPoint->album_mode ?? 'photos';
+        $this->albumMode = $clockPoint->album_mode ?? 'none';
         $days = $clockPoint->album_days ?? 31;
         for ($i = 0; $i < 7; $i++) {
             $this->albumDays[$i] = (bool) ($days & (1 << $i));

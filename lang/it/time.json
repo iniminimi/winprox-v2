@@ -419,7 +419,7 @@
             "mode_clock": "Orologio analogico",
             "mode_flipclock": "Orologio flip",
             "mode_black": "Schermo nero",
-            "mode_none": "Niente (QR normale)"
+            "mode_none": "Codice QR"
         }
     },
     "duration": {

@@ -538,6 +538,12 @@ it('bewaart de album-modus en weigert een ongeldige', function () {
     $point = displayPoint($tenant);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
 
+    // Nieuw clock point: geen rust-scherm, de QR-code blijft staan.
+    expect($point->refresh()->album_mode)->toBe('none');
+    Livewire::actingAs($admin)
+        ->test(\App\Livewire\Time\ClockDisplayPair::class, ['clockPoint' => $point])
+        ->assertSet('albumMode', 'none');
+
     $windows = app(UpdateClockDisplayAlbumWindowsAction::class);
     $windows->handle($point, $tenant->id, $admin->id, null, null, null, null, 'clock');
     expect($point->refresh()->album_mode)->toBe('clock');

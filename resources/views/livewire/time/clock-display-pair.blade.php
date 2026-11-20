@@ -85,11 +85,11 @@
         <div class="wp-cluster wp-cluster--wrap">
             <label class="wp-label" for="album-mode">{{ __('time.clock_displays.album.mode_label') }}</label>
             <select id="album-mode" class="wp-input wp-input--auto" wire:model.live="albumMode">
+                <option value="none">{{ __('time.clock_displays.album.mode_none') }}</option>
                 <option value="photos">{{ __('time.clock_displays.album.mode_photos') }}</option>
                 <option value="clock">{{ __('time.clock_displays.album.mode_clock') }}</option>
                 <option value="flipclock">{{ __('time.clock_displays.album.mode_flipclock') }}</option>
                 <option value="black">{{ __('time.clock_displays.album.mode_black') }}</option>
-                <option value="none">{{ __('time.clock_displays.album.mode_none') }}</option>
             </select>
         </div>
         @error('albumMode') <p class="wp-error">{{ $message }}</p> @enderror

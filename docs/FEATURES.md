@@ -1380,7 +1380,8 @@ binnen ~30–90 s dood.
   (direction `in`/`out`/`break_start`/`break_end`).
 - **Rust-scherm / foto-album (slideshow):** per Clock Point max. 2 vensters
   (`album1/2_from|until`, zelfde conventie als aan-uren) plus één modus
-  (`album_mode`: `photos` | `clock` | `flipclock` | `black` | `none`). Tijdens een
+  (`album_mode`: `none` | `photos` | `clock` | `flipclock` | `black`; nieuw
+  clock point = `none`, in de keuzelijst **QR-code** en bovenaan). Tijdens een
   venster toont het scherm foto's (10 s per beeld), een donkere wijzerklok
   (lv_meter, rode secondewijzer), een digitale flipklok (twee flap-tegels,
   knipperende dubbele punt), een zwart scherm (backlight uit; wifi en ping
