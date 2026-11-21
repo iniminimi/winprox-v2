@@ -586,11 +586,43 @@
             "actions": [
                 {
                     "label": "Utenti colleghi",
-                    "text": "Gestisci collaboratori amministrativi che lavorano principalmente al PC. Accedono con e-mail e password, oppure con **Accedi con Microsoft** (l’e-mail Microsoft deve corrispondere all’account WinProx esistente; non viene creato un account nuovo). Un amministratore è l’utente principale che può modificare i dati aziendali. Sono possibili più amministratori. Colleghi (admin e dipendente) ed esecutori condividono il limite di posti del piano. Gli esecutori non usano l’accesso Microsoft (QR Clock Point). Opzionalmente assegna sedi ai colleghi (vuoto = tutte le sedi in backoffice)."
+                    "text": "Qui gestisce i colleghi che lavorano con WinProx al computer. Accedono con il loro indirizzo e-mail e la password.<br><br>Attenzione: qui non gestisce gli esecutori sul campo. Loro usano WinProx tramite il codice QR della timbratrice e non hanno bisogno di un account e-mail.<br><br>Per ogni collega vede:<br>• Nome.<br>• Indirizzo e-mail.<br>• Ruolo.<br>• Se l’account è attivo."
                 },
                 {
-                    "label": "Team timbratura (colleghi)",
-                    "text": "I colleghi che devono timbrare ricevono un **Team timbratura** in Backoffice → modifica. WinProx crea automaticamente un profilo esecutore collegato (nome dall'account collega). Quel profilo non conta due volte nella licenza. La timbratura avviene via Clock Point (nome + icona)."
+                    "label": "Ruoli",
+                    "text": "In WinProx ci sono due ruoli.<br><br><strong>Amministratore</strong><br><br>Un amministratore può gestire l’organizzazione. Può, tra l’altro:<br>• Gestire gli utenti colleghi.<br>• Modificare i dati aziendali.<br>• Gestire l’abbonamento.<br><br>Può esserci più di un amministratore nella stessa organizzazione.<br><br><strong>Dipendente</strong><br><br>Un dipendente può lavorare con WinProx, ma non può gestire gli account, i dati aziendali o l’abbonamento.<br><br>Scelga questo ruolo per i colleghi che seguono il lavoro quotidiano, ma non devono essere amministratori."
+                },
+                {
+                    "label": "Aggiungere un collega",
+                    "text": "Faccia clic su Aggiungi utente per creare un nuovo collega.<br><br>Compili:<br>• Nome.<br>• E-mail di lavoro.<br>• Lingua.<br>• Ruolo: Amministratore o Dipendente."
+                },
+                {
+                    "label": "Impostare una password",
+                    "text": "Ha due possibilità:<br><br>• Sceglie lei una password e la consegna al collega.<br>• Lascia che WinProx invii un’e-mail. Il collega può allora impostare una password tramite il link di quell’e-mail.<br><br>Sta modificando un collega già esistente? Lasci vuoti i campi della password se la password attuale deve restare."
+                },
+                {
+                    "label": "E-mail per le nuove segnalazioni",
+                    "text": "Può anche fare in modo che il collega riceva un’e-mail ogni volta che qualcuno invia una nuova segnalazione tramite il codice QR di un’unità."
+                },
+                {
+                    "label": "Sedi",
+                    "text": "Per un dipendente può scegliere a quali sedi ha accesso.<br><br>Selezioni le sedi desiderate.<br><br>• Una o più sedi selezionate: il dipendente ha accesso alle sedi selezionate.<br>• Nessuna sede selezionata: il dipendente ha accesso a tutte le sedi.<br><br>Un amministratore ha sempre accesso a tutte le sedi. Questo limite vale quindi solo per i dipendenti."
+                },
+                {
+                    "label": "Accedi con Microsoft",
+                    "text": "Nella schermata di accesso può comparire Accedi con Microsoft.<br><br>I colleghi possono così accedere con il loro account Microsoft, se l’indirizzo e-mail coincide con quello del loro account WinProx.<br><br>Non viene creato un nuovo account WinProx. Microsoft serve solo per far accedere il collega già esistente.<br><br>Gli esecutori non usano questo metodo. Accedono tramite il codice QR della timbratrice."
+                },
+                {
+                    "label": "Timbratrice",
+                    "text": "Un collega deve poter timbrare, oltre al lavoro di backoffice? Allora può collegare quella persona a un profilo esecutore.<br><br>Apra il collega per modificarlo e scelga un Team timbratura. Questo campo è visibile solo se la timbratrice è attiva.<br><br>Che cosa succede dopo?<br><br>WinProx crea automaticamente un profilo esecutore con lo stesso nome.<br><br>Il collega può allora timbrare anche sulla timbratrice, dove è riconoscibile dal nome e dall’icona.<br><br>Importante: il profilo esecutore non conta come una persona o una licenza in più. Il collega resta una sola persona nella sua organizzazione."
+                },
+                {
+                    "label": "Attivo o inattivo",
+                    "text": "Un collega lascia la sua organizzazione, oppure non deve più poter accedere? Allora può scegliere Disattiva.<br><br>Un collega disattivato non può più accedere a WinProx. L’account e i dati restano conservati.<br><br>Vuole consentire di nuovo l’accesso più avanti? Allora può scegliere di nuovo Attiva.<br><br>Riconosce il suo account dall’etichetta Lei. Per non togliersi l’accesso per sbaglio, qui non può disattivare il suo account."
+                },
+                {
+                    "label": "Licenze",
+                    "text": "Colleghi ed esecutori usano insieme le licenze del suo abbonamento WinProx.<br><br>Un collega che ha anche un profilo esecutore per poter timbrare conta come una sola licenza.<br><br>Non paga quindi due volte per una persona che lavora nel backoffice e timbra anche."
                 }
             ]
         },

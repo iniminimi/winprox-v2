@@ -586,11 +586,43 @@
             "actions": [
                 {
                     "label": "Colleague users",
-                    "text": "Manage administrative staff who mainly work on a PC. They sign in with email and password, or via **Sign in with Microsoft** (the Microsoft email must match the existing WinProx account; no new account is created). An administrator is the main user who can change company details. Multiple administrators are allowed. Colleagues (admin and employee) and workers share the seat limit of your plan. Workers do not use Microsoft sign-in (Clock Point QR). Optionally assign locations to colleagues (empty = all locations in the back office)."
+                    "text": "Here you manage the colleagues who work with WinProx on a computer. They sign in with their email address and password.<br><br>Please note: you do not manage workers on the floor here. They use WinProx via the QR code on the punch clock and do not need an email account for that.<br><br>For each colleague you see:<br>• Name.<br>• Email address.<br>• Role.<br>• Whether the account is active."
                 },
                 {
-                    "label": "Punch-clock team (colleagues)",
-                    "text": "Colleagues who need to clock in themselves get a **Punch-clock team** under Backoffice → edit. WinProx then creates a linked worker profile automatically (name from the colleague account). That profile does not count twice towards the licence limit. Clock-in goes via Clock Point (name + icon)."
+                    "label": "Roles",
+                    "text": "WinProx has two roles.<br><br><strong>Administrator</strong><br><br>An administrator can manage the organisation. They can, among other things:<br>• Manage colleague users.<br>• Change company details.<br>• Manage the subscription.<br><br>You can have more than one administrator in one organisation.<br><br><strong>Employee</strong><br><br>An employee can work in WinProx, but cannot manage user accounts, company details or the subscription.<br><br>Choose this role for colleagues who follow the day-to-day work, but do not need to be an administrator."
+                },
+                {
+                    "label": "Add a colleague",
+                    "text": "Click Add user to create a new colleague.<br><br>Fill in:<br>• Name.<br>• Work email address.<br>• Language.<br>• Role: Administrator or Employee."
+                },
+                {
+                    "label": "Set a password",
+                    "text": "You have two options:<br><br>• You choose a password yourself and give it to the colleague.<br>• You let WinProx send an email. The colleague can then set a password via the link in that email.<br><br>Editing an existing colleague? Leave the password fields empty if the current password should stay as it is."
+                },
+                {
+                    "label": "Email for new reports",
+                    "text": "You can also set the colleague to receive an email each time someone submits a new report via a unit QR code."
+                },
+                {
+                    "label": "Locations",
+                    "text": "For an employee you can choose which locations they can access.<br><br>Tick the locations you want.<br><br>• One or more locations selected: the employee can access those locations.<br>• No locations selected: the employee can access all locations.<br><br>An administrator always has access to all locations. This limit applies only to employees."
+                },
+                {
+                    "label": "Sign in with Microsoft",
+                    "text": "The sign-in screen can show Sign in with Microsoft.<br><br>Colleagues can use it to sign in with their Microsoft account, as long as that email address matches the email address of their WinProx account.<br><br>No new WinProx account is created. Microsoft is only used to sign in the existing colleague.<br><br>Workers do not use this sign-in method. They sign in via the QR code on the punch clock."
+                },
+                {
+                    "label": "Punch clock",
+                    "text": "Should a colleague also be able to clock in, besides the back-office work? Then you can link that person to a worker profile.<br><br>Open the colleague to edit them and choose a Punch clock team. This field is only visible when the punch clock is switched on.<br><br>What happens next?<br><br>WinProx automatically creates a worker profile with the same name.<br><br>The colleague can then also clock in on the punch clock, where they are recognised by their name and icon.<br><br>Important: the worker profile does not count as an extra person or licence. The colleague remains one person in your organisation."
+                },
+                {
+                    "label": "Active or inactive",
+                    "text": "Is a colleague leaving your organisation, or should they no longer be able to sign in? Then you can Deactivate the account.<br><br>A deactivated colleague can no longer sign in to WinProx. The account and its details are kept.<br><br>Do you want to allow access again later? Then you can Activate the account again.<br><br>You recognise your own account by the label You. To stop you from locking yourself out by accident, you cannot deactivate your own account here."
+                },
+                {
+                    "label": "Licences",
+                    "text": "Colleagues and workers share the licences of your WinProx subscription.<br><br>A colleague who also has a worker profile so they can clock in counts as only one licence.<br><br>You do not pay twice for someone who both works in the back office and clocks in on the punch clock."
                 }
             ]
         },

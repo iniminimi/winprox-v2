@@ -590,11 +590,43 @@
             "actions": [
                 {
                     "label": "Utilisateurs collègues",
-                    "text": "Gérez les collaborateurs administratifs qui travaillent surtout sur PC. Ils se connectent par e-mail et mot de passe, ou via **Se connecter avec Microsoft** (l’e-mail Microsoft doit correspondre au compte WinProx existant ; aucun nouveau compte n’est créé). Un administrateur est l’utilisateur principal qui peut modifier les données de l’entreprise. Plusieurs administrateurs sont possibles. Les collègues (admin et employé) et les exécutants partagent la limite de places de votre formule. Les exécutants n’utilisent pas la connexion Microsoft (QR Clock Point). Vous pouvez assigner des sites aux collègues (vide = tous les sites en backoffice)."
+                    "text": "Ici, vous gérez les collègues qui travaillent avec WinProx sur un ordinateur. Ils se connectent avec leur adresse e-mail et leur mot de passe.<br><br>Attention : vous ne gérez pas ici les exécutants sur le terrain. Ils utilisent WinProx via le code QR de la pointeuse et n’ont pas besoin d’un compte e-mail pour cela.<br><br>Pour chaque collègue, vous voyez :<br>• Le nom.<br>• L’adresse e-mail.<br>• Le rôle.<br>• Si le compte est actif."
                 },
                 {
-                    "label": "Équipe pointeuse (collègues)",
-                    "text": "Les collègues qui doivent pointer reçoivent une **Équipe pointeuse** sous Backoffice → modifier. WinProx crée alors un profil exécutant lié (nom du compte collègue). Ce profil ne compte pas deux fois dans la licence. Le pointage se fait via Clock Point (nom + icône)."
+                    "label": "Rôles",
+                    "text": "WinProx a deux rôles.<br><br><strong>Administrateur</strong><br><br>Un administrateur a accès à la gestion de l’organisation. Il ou elle peut notamment :<br>• Gérer les utilisateurs collègues.<br>• Modifier les données de l’entreprise.<br>• Gérer l’abonnement.<br><br>Vous pouvez avoir plusieurs administrateurs dans une même organisation.<br><br><strong>Employé</strong><br><br>Un employé peut travailler avec WinProx, mais n’a pas accès à la gestion des comptes, des données de l’entreprise ou de l’abonnement.<br><br>Choisissez ce rôle pour les collègues qui suivent le travail au quotidien, sans devoir être administrateur."
+                },
+                {
+                    "label": "Ajouter un collègue",
+                    "text": "Cliquez sur Ajouter un utilisateur pour créer un nouveau collègue.<br><br>Indiquez :<br>• Le nom.<br>• L’adresse e-mail professionnelle.<br>• La langue.<br>• Le rôle : Administrateur ou Employé."
+                },
+                {
+                    "label": "Définir un mot de passe",
+                    "text": "Vous avez deux possibilités :<br><br>• Vous choisissez vous-même un mot de passe et vous le transmettez au collègue.<br>• Vous laissez WinProx envoyer un e-mail. Le collègue peut alors définir un mot de passe via le lien de cet e-mail.<br><br>Vous modifiez un collègue existant ? Laissez les champs du mot de passe vides si le mot de passe actuel doit rester inchangé."
+                },
+                {
+                    "label": "E-mail pour les nouveaux signalements",
+                    "text": "Vous pouvez aussi prévoir que le collègue reçoive un e-mail chaque fois que quelqu’un envoie un nouveau signalement via le code QR d’une unité."
+                },
+                {
+                    "label": "Sites",
+                    "text": "Pour un employé, vous pouvez choisir les sites auxquels il a accès.<br><br>Cochez les sites souhaités.<br><br>• Un ou plusieurs sites sélectionnés : l’employé a accès aux sites sélectionnés.<br>• Aucun site sélectionné : l’employé a accès à tous les sites.<br><br>Un administrateur a toujours accès à tous les sites. Cette limite ne concerne donc que les employés."
+                },
+                {
+                    "label": "Se connecter avec Microsoft",
+                    "text": "L’écran de connexion peut afficher Se connecter avec Microsoft.<br><br>Les collègues peuvent ainsi se connecter avec leur compte Microsoft, à condition que l’adresse e-mail corresponde à celle de leur compte WinProx.<br><br>Aucun nouveau compte WinProx n’est créé. Microsoft sert seulement à connecter le collègue existant.<br><br>Les exécutants n’utilisent pas cette méthode. Ils se connectent via le code QR de la pointeuse."
+                },
+                {
+                    "label": "Pointeuse",
+                    "text": "Un collègue doit-il aussi pouvoir pointer, en plus du travail de backoffice ? Vous pouvez alors le relier à un profil d’exécutant.<br><br>Ouvrez le collègue pour le modifier et choisissez une Équipe pointeuse. Ce champ n’est visible que si la pointeuse est active.<br><br>Que se passe-t-il ensuite ?<br><br>WinProx crée automatiquement un profil d’exécutant avec le même nom.<br><br>Le collègue peut alors aussi pointer sur la pointeuse, où il est reconnu par son nom et son icône.<br><br>Important : le profil d’exécutant ne compte pas comme une personne ou une licence en plus. Le collègue reste une seule personne dans votre organisation."
+                },
+                {
+                    "label": "Actif ou inactif",
+                    "text": "Un collègue quitte votre organisation, ou ne doit plus pouvoir se connecter ? Vous pouvez alors Désactiver le compte.<br><br>Un collègue désactivé ne peut plus se connecter à WinProx. Le compte et les données associées sont conservés.<br><br>Vous voulez rouvrir l’accès plus tard ? Vous pouvez simplement Activer le compte à nouveau.<br><br>Vous reconnaissez votre propre compte à l’étiquette Vous. Pour éviter de vous retirer l’accès par erreur, vous ne pouvez pas désactiver votre propre compte ici."
+                },
+                {
+                    "label": "Licences",
+                    "text": "Les collègues et les exécutants utilisent ensemble les licences de votre abonnement WinProx.<br><br>Un collègue qui a aussi un profil d’exécutant pour pouvoir pointer ne compte que pour une seule licence.<br><br>Vous ne payez donc pas deux fois pour une personne qui travaille dans le backoffice et qui pointe aussi."
                 }
             ]
         },

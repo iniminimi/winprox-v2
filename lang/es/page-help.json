@@ -586,11 +586,43 @@
             "actions": [
                 {
                     "label": "Usuarios colegas",
-                    "text": "Gestione empleados administrativos que trabajan principalmente en PC. Inician sesión con correo y contraseña, o con **Iniciar sesión con Microsoft** (el correo de Microsoft debe coincidir con la cuenta WinProx existente; no se crea una cuenta nueva). Un administrador es el usuario principal que puede modificar los datos de la empresa. Pueden existir varios administradores. Los colegas (admin y empleado) y los operarios comparten el límite de plazas del plan. Los operarios no usan el inicio de sesión Microsoft (QR Clock Point). Opcionalmente asigne sedes a los colegas (vacío = todas las sedes en backoffice)."
+                    "text": "Aquí gestiona a los colegas que trabajan con WinProx en un ordenador. Entran con su dirección de correo y su contraseña.<br><br>Atención: aquí no gestiona a los trabajadores de campo. Ellos usan WinProx mediante el código QR del reloj de fichar y no necesitan una cuenta de correo para ello.<br><br>Por cada colega ve:<br>• Nombre.<br>• Correo electrónico.<br>• Rol.<br>• Si la cuenta está activa."
                 },
                 {
-                    "label": "Equipo de fichaje (colegas)",
-                    "text": "Los colegas que deben fichar reciben un **Equipo de fichaje** en Backoffice → editar. WinProx crea entonces un perfil de ejecutor vinculado (nombre del cuenta de colega). Ese perfil no cuenta doble en la licencia. El fichaje es vía Clock Point (nombre + icono)."
+                    "label": "Roles",
+                    "text": "En WinProx hay dos roles.<br><br><strong>Administrador</strong><br><br>Un administrador puede gestionar la organización. Puede, entre otras cosas:<br>• Gestionar los usuarios colegas.<br>• Modificar los datos de la empresa.<br>• Gestionar la suscripción.<br><br>Puede haber varios administradores en una misma organización.<br><br><strong>Empleado</strong><br><br>Un empleado puede trabajar con WinProx, pero no puede gestionar cuentas de usuario, datos de la empresa ni la suscripción.<br><br>Elija este rol para colegas que siguen el trabajo diario, pero no necesitan ser administradores."
+                },
+                {
+                    "label": "Añadir un colega",
+                    "text": "Haga clic en Añadir usuario para crear un nuevo colega.<br><br>Indique:<br>• Nombre.<br>• Correo de trabajo.<br>• Idioma.<br>• Rol: Administrador o Empleado."
+                },
+                {
+                    "label": "Establecer una contraseña",
+                    "text": "Tiene dos posibilidades:<br><br>• Usted elige una contraseña y se la da al colega.<br>• Deja que WinProx envíe un correo. El colega puede entonces crear una contraseña con el enlace de ese correo.<br><br>¿Está editando un colega que ya existe? Deje vacíos los campos de contraseña si la contraseña actual debe mantenerse."
+                },
+                {
+                    "label": "Correo ante avisos nuevos",
+                    "text": "También puede hacer que el colega reciba un correo cada vez que alguien envía un aviso nuevo mediante el código QR de una unidad."
+                },
+                {
+                    "label": "Ubicaciones",
+                    "text": "En un empleado puede decidir a qué ubicaciones tiene acceso.<br><br>Marque las ubicaciones que quiera.<br><br>• Una o varias ubicaciones seleccionadas: el empleado tiene acceso a esas ubicaciones.<br>• Ninguna ubicación seleccionada: el empleado tiene acceso a todas las ubicaciones.<br><br>Un administrador tiene siempre acceso a todas las ubicaciones. Este límite solo se aplica a los empleados."
+                },
+                {
+                    "label": "Iniciar sesión con Microsoft",
+                    "text": "En la pantalla de acceso puede aparecer Iniciar sesión con Microsoft.<br><br>Los colegas pueden entrar así con su cuenta de Microsoft, siempre que el correo coincida con el correo de su cuenta de WinProx.<br><br>No se crea una cuenta nueva de WinProx. Microsoft solo sirve para que el colega existente inicie sesión.<br><br>Los trabajadores no usan este método. Ellos entran mediante el código QR del reloj de fichar."
+                },
+                {
+                    "label": "Reloj de fichar",
+                    "text": "¿Un colega también debe poder fichar, además del trabajo de backoffice? Entonces puede vincular a esa persona con un perfil de trabajador.<br><br>Abra el colega para editarlo y elija un Equipo de fichaje. Este campo solo se ve cuando el reloj de fichar está activo.<br><br>¿Qué ocurre después?<br><br>WinProx crea automáticamente un perfil de trabajador con el mismo nombre.<br><br>El colega puede entonces fichar en el reloj, donde se le reconoce por el nombre y el icono.<br><br>Importante: el perfil de trabajador no cuenta como una persona o una licencia extra. El colega sigue siendo una sola persona en su organización."
+                },
+                {
+                    "label": "Activo o inactivo",
+                    "text": "¿Un colega deja su organización, o ya no debe poder entrar? Entonces puede Desactivar la cuenta.<br><br>Un colega desactivado ya no puede entrar en WinProx. La cuenta y sus datos se conservan.<br><br>¿Quiere permitir el acceso más adelante? Entonces puede Activar la cuenta de nuevo.<br><br>Reconoce su propia cuenta por la etiqueta Usted. Para no quitarse el acceso por error, aquí no puede desactivar su propia cuenta."
+                },
+                {
+                    "label": "Licencias",
+                    "text": "Los colegas y los trabajadores comparten las licencias de su suscripción de WinProx.<br><br>Un colega que también tiene un perfil de trabajador para poder fichar cuenta solo como una licencia.<br><br>No paga dos veces por alguien que trabaja en el backoffice y además ficha en el reloj."
                 }
             ]
         },

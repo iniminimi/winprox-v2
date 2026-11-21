@@ -586,35 +586,43 @@
             "actions": [
                 {
                     "label": "Collega-gebruikers",
-                    "text": "Hier beheert u de collega’s die in WinProx werken op een computer. Zij melden zich aan met een e-mailadres en een wachtwoord.<br><br>Uitvoerders op de werkvloer staan hier niet. Die werken via de QR-code op de prikklok, zonder e-mailaccount.<br><br>Per collega ziet u de naam, het e-mailadres, de rol en of het account actief is."
+                    "text": "Hier beheert u de collega's die met WinProx werken via een computer. Zij melden zich aan met hun e-mailadres en wachtwoord.<br><br>Let op: uitvoerders op de werkvloer beheert u niet hier. Zij gebruiken WinProx via de QR-code op de prikklok en hebben daarvoor geen e-mailaccount nodig.<br><br>Per collega ziet u:<br>• Naam.<br>• E-mailadres.<br>• Rol.<br>• Of het account actief is."
                 },
                 {
                     "label": "Rollen",
-                    "text": "Er zijn twee rollen.<br><br>• Beheerder: mag de organisatie beheren, ook collega’s, bedrijfsgegevens en het abonnement. U kunt meerdere beheerders hebben.<br>• Medewerker: werkt mee in WinProx, maar beheert geen accounts, bedrijfsgegevens of het abonnement."
+                    "text": "In WinProx zijn er twee rollen.<br><br><strong>Beheerder</strong><br><br>Een beheerder heeft toegang tot het beheer van de organisatie. Hij of zij kan onder andere:<br>• Collega-gebruikers beheren.<br>• Bedrijfsgegevens aanpassen.<br>• Het abonnement beheren.<br><br>U kunt meerdere beheerders binnen één organisatie hebben.<br><br><strong>Medewerker</strong><br><br>Een medewerker kan met WinProx werken, maar heeft geen toegang tot het beheer van gebruikersaccounts, bedrijfsgegevens of het abonnement.<br><br>Kies deze rol voor collega's die de dagelijkse werking opvolgen, maar geen beheerder hoeven te zijn."
                 },
                 {
                     "label": "Een collega toevoegen",
-                    "text": "Klik op Gebruiker toevoegen. Vul de naam, het werk-e-mailadres, de taal en de rol in.<br><br>Kies een wachtwoord, of vink aan dat WinProx meteen een mail stuurt. Daarmee stelt de collega zelf een wachtwoord in.<br><br>Bij een bestaande collega laat u de wachtwoordvelden leeg als het wachtwoord hetzelfde mag blijven.<br><br>U kunt ook aanvinken dat de collega een e-mail krijgt bij elke nieuwe melding via de QR-code."
+                    "text": "Klik op Gebruiker toevoegen om een nieuwe collega aan te maken.<br><br>Vul de volgende gegevens in:<br>• Naam.<br>• Werk-e-mailadres.<br>• Taal.<br>• Rol: Beheerder of Medewerker."
+                },
+                {
+                    "label": "Wachtwoord instellen",
+                    "text": "U hebt twee mogelijkheden:<br><br>• U kiest zelf een wachtwoord en bezorgt dit aan de collega.<br>• U laat WinProx automatisch een e-mail versturen. De collega kan dan zelf een wachtwoord instellen via de link in die e-mail.<br><br>Bewerkt u een bestaande collega? Laat dan de wachtwoordvelden leeg als het huidige wachtwoord behouden moet blijven."
+                },
+                {
+                    "label": "E-mail bij nieuwe meldingen",
+                    "text": "U kunt ook instellen dat de collega een e-mail ontvangt telkens wanneer iemand een nieuwe melding indient via een unit-QR-code."
                 },
                 {
                     "label": "Locaties",
-                    "text": "Bij een medewerker kunt u vestigingen aanvinken. Laat u die leeg, dan ziet de medewerker alle locaties. Een beheerder ziet altijd alle locaties."
+                    "text": "Bij een medewerker kunt u bepalen tot welke locaties die toegang heeft.<br><br>Vink de gewenste locaties aan.<br><br>• Eén of meerdere locaties geselecteerd: de medewerker heeft toegang tot de geselecteerde locaties.<br>• Geen locaties geselecteerd: de medewerker krijgt toegang tot alle locaties.<br><br>Een beheerder heeft altijd toegang tot alle locaties. Deze beperking geldt dus alleen voor medewerkers."
                 },
                 {
                     "label": "Inloggen met Microsoft",
-                    "text": "Staat op het aanmeldscherm Inloggen met Microsoft, dan kan een collega dat gebruiken. Het Microsoft-adres moet hetzelfde zijn als het WinProx-account. Er wordt geen nieuw account gemaakt.<br><br>Uitvoerders gebruiken dit niet. Zij melden zich aan via de QR-code op de prikklok."
+                    "text": "Op het aanmeldscherm kan de optie Inloggen met Microsoft verschijnen.<br><br>Collega's kunnen hiermee aanmelden met hun Microsoft-account, op voorwaarde dat het e-mailadres overeenkomt met het e-mailadres van hun WinProx-account.<br><br>Er wordt geen nieuw WinProx-account aangemaakt. Microsoft wordt alleen gebruikt om de bestaande collega aan te melden.<br><br>Uitvoerders gebruiken deze aanmeldmethode niet. Zij melden zich aan via de QR-code op de prikklok."
                 },
                 {
                     "label": "Prikklok",
-                    "text": "Moet een collega ook inklokken? Kies dan bij bewerken een Prikklok-team. Dit veld verschijnt alleen als de prikklok aanstaat.<br><br>WinProx maakt dan een uitvoerdersprofiel met dezelfde naam. Inklokken gebeurt op de prikklok, met naam en icoon.<br><br>Dat profiel telt niet als extra licentie. De collega blijft één persoon."
+                    "text": "Moet een collega naast het backofficewerk ook kunnen inklokken? Dan kunt u die persoon koppelen aan een uitvoerdersprofiel.<br><br>Open de collega om deze te bewerken en kies een Prikklok-team. Dit veld is alleen zichtbaar wanneer de prikklokfunctie actief is.<br><br>Wat gebeurt er daarna?<br><br>WinProx maakt automatisch een uitvoerdersprofiel aan met dezelfde naam.<br><br>De collega kan dan ook op de prikklok inklokken, waar hij of zij herkenbaar is aan de naam en het bijbehorende icoon.<br><br>Belangrijk: het uitvoerdersprofiel telt niet als een extra persoon of licentie. De collega blijft één persoon binnen uw organisatie."
                 },
                 {
                     "label": "Actief of inactief",
-                    "text": "Deactiveer een collega die niet meer mag aanmelden. Het account blijft bestaan en u kunt het later weer activeren.<br><br>Uw eigen account herkent u aan Jij. Dat kunt u hier niet uitzetten."
+                    "text": "Verlaat een collega uw organisatie of mag die persoon niet langer aanmelden? Dan kunt u het account Deactiveren.<br><br>Een gedeactiveerde collega kan niet meer aanmelden bij WinProx. Het account en de bijbehorende gegevens blijven wel bewaard.<br><br>Wilt u de toegang later opnieuw toestaan? Dan kunt u het account gewoon weer Activeren.<br><br>Uw eigen account herkent u aan het label Jij. Om te voorkomen dat u uzelf per ongeluk de toegang ontneemt, kunt u uw eigen account hier niet deactiveren."
                 },
                 {
                     "label": "Licenties",
-                    "text": "Collega’s en uitvoerders delen de licenties van uw abonnement. Een collega die ook inklokt, telt als één licentie, niet als twee."
+                    "text": "Collega's en uitvoerders gebruiken samen de licenties van uw WinProx-abonnement.<br><br>Een collega die ook een uitvoerdersprofiel heeft om te kunnen inklokken, telt maar als één licentie.<br><br>U betaalt dus niet dubbel voor iemand die zowel in de backoffice werkt als op de prikklok inklokt."
                 }
             ]
         },

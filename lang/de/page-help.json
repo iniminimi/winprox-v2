@@ -586,11 +586,43 @@
             "actions": [
                 {
                     "label": "Kollegenbenutzer",
-                    "text": "Verwalten Sie administrative Mitarbeiter, die hauptsächlich am PC arbeiten. Sie melden sich mit E-Mail und Passwort an, oder über **Mit Microsoft anmelden** (die Microsoft-E-Mail muss mit dem bestehenden WinProx-Konto übereinstimmen; es wird kein neues Konto angelegt). Ein Administrator ist der Hauptbenutzer, der Unternehmensdaten ändern kann. Mehrere Administratoren sind möglich. Kollegen (Admin und Mitarbeiter) und Ausführende teilen sich das Platzlimit Ihres Abos. Ausführende nutzen keine Microsoft-Anmeldung (Clock-Point-QR). Optional weisen Sie Kollegen Standorte zu (leer = alle Standorte im Backoffice)."
+                    "text": "Hier verwalten Sie die Kollegen, die mit WinProx am Computer arbeiten. Sie melden sich mit ihrer E-Mail-Adresse und ihrem Passwort an.<br><br>Hinweis: Ausführende auf der Fläche verwalten Sie hier nicht. Sie nutzen WinProx über den QR-Code an der Stempeluhr und brauchen dafür kein E-Mail-Konto.<br><br>Pro Kollege sehen Sie:<br>• Name.<br>• E-Mail-Adresse.<br>• Rolle.<br>• Ob das Konto aktiv ist."
                 },
                 {
-                    "label": "Stempeluhr-Team (Kollegen)",
-                    "text": "Kollegen, die selbst einstempeln müssen, erhalten unter Backoffice → bearbeiten ein **Stempeluhr-Team**. WinProx erstellt dann automatisch ein verknüpftes Ausführenden-Profil (Name aus dem Kollegen-Konto). Dieses Profil zählt nicht doppelt zur Lizenz. Einstempeln über Clock Point (Name + Symbol)."
+                    "label": "Rollen",
+                    "text": "In WinProx gibt es zwei Rollen.<br><br><strong>Administrator</strong><br><br>Ein Administrator kann die Organisation verwalten. Er oder sie kann unter anderem:<br>• Kollegenbenutzer verwalten.<br>• Unternehmensdaten anpassen.<br>• Das Abonnement verwalten.<br><br>Sie können mehrere Administratoren in einer Organisation haben.<br><br><strong>Mitarbeiter</strong><br><br>Ein Mitarbeiter kann mit WinProx arbeiten, hat aber keinen Zugriff auf die Verwaltung von Benutzerkonten, Unternehmensdaten oder dem Abonnement.<br><br>Wählen Sie diese Rolle für Kollegen, die die tägliche Arbeit begleiten, aber kein Administrator sein müssen."
+                },
+                {
+                    "label": "Einen Kollegen hinzufügen",
+                    "text": "Klicken Sie auf Benutzer hinzufügen, um einen neuen Kollegen anzulegen.<br><br>Füllen Sie aus:<br>• Name.<br>• Dienstliche E-Mail-Adresse.<br>• Sprache.<br>• Rolle: Administrator oder Mitarbeiter."
+                },
+                {
+                    "label": "Passwort festlegen",
+                    "text": "Sie haben zwei Möglichkeiten:<br><br>• Sie wählen selbst ein Passwort und geben es dem Kollegen.<br>• Sie lassen WinProx automatisch eine E-Mail senden. Der Kollege kann dann über den Link in dieser E-Mail selbst ein Passwort festlegen.<br><br>Bearbeiten Sie einen bestehenden Kollegen? Lassen Sie die Passwortfelder leer, wenn das aktuelle Passwort bleiben soll."
+                },
+                {
+                    "label": "E-Mail bei neuen Meldungen",
+                    "text": "Sie können auch einstellen, dass der Kollege eine E-Mail erhält, sobald jemand über einen Unit-QR-Code eine neue Meldung sendet."
+                },
+                {
+                    "label": "Standorte",
+                    "text": "Bei einem Mitarbeiter können Sie festlegen, auf welche Standorte er Zugriff hat.<br><br>Kreuzen Sie die gewünschten Standorte an.<br><br>• Ein oder mehrere Standorte ausgewählt: der Mitarbeiter hat Zugriff auf die ausgewählten Standorte.<br>• Keine Standorte ausgewählt: der Mitarbeiter hat Zugriff auf alle Standorte.<br><br>Ein Administrator hat immer Zugriff auf alle Standorte. Diese Einschränkung gilt also nur für Mitarbeiter."
+                },
+                {
+                    "label": "Mit Microsoft anmelden",
+                    "text": "Auf dem Anmeldebildschirm kann Mit Microsoft anmelden erscheinen.<br><br>Kollegen können sich damit mit ihrem Microsoft-Konto anmelden, wenn die E-Mail-Adresse mit der E-Mail-Adresse ihres WinProx-Kontos übereinstimmt.<br><br>Es wird kein neues WinProx-Konto angelegt. Microsoft dient nur dazu, den bestehenden Kollegen anzumelden.<br><br>Ausführende nutzen diese Anmeldung nicht. Sie melden sich über den QR-Code an der Stempeluhr an."
+                },
+                {
+                    "label": "Stempeluhr",
+                    "text": "Soll ein Kollege neben der Backoffice-Arbeit auch einstempeln können? Dann können Sie diese Person mit einem Ausführenden-Profil verknüpfen.<br><br>Öffnen Sie den Kollegen zum Bearbeiten und wählen Sie ein Stempeluhr-Team. Dieses Feld ist nur sichtbar, wenn die Stempeluhr aktiv ist.<br><br>Was passiert danach?<br><br>WinProx legt automatisch ein Ausführenden-Profil mit demselben Namen an.<br><br>Der Kollege kann dann auch an der Stempeluhr einstempeln und ist dort an Name und Symbol zu erkennen.<br><br>Wichtig: das Ausführenden-Profil zählt nicht als zusätzliche Person oder Lizenz. Der Kollege bleibt eine Person in Ihrer Organisation."
+                },
+                {
+                    "label": "Aktiv oder inaktiv",
+                    "text": "Verlässt ein Kollege Ihre Organisation, oder darf er sich nicht mehr anmelden? Dann können Sie das Konto Deaktivieren.<br><br>Ein deaktivierter Kollege kann sich nicht mehr bei WinProx anmelden. Das Konto und die zugehörigen Daten bleiben erhalten.<br><br>Möchten Sie den Zugriff später wieder erlauben? Dann können Sie das Konto einfach wieder Aktivieren.<br><br>Ihr eigenes Konto erkennen Sie am Label Sie. Damit Sie sich nicht aus Versehen selbst aussperren, können Sie Ihr eigenes Konto hier nicht deaktivieren."
+                },
+                {
+                    "label": "Lizenzen",
+                    "text": "Kollegen und Ausführende nutzen gemeinsam die Lizenzen Ihres WinProx-Abonnements.<br><br>Ein Kollege, der auch ein Ausführenden-Profil hat, um einstempeln zu können, zählt nur als eine Lizenz.<br><br>Sie zahlen also nicht doppelt für jemanden, der sowohl im Backoffice arbeitet als auch an der Stempeluhr einstempelt."
                 }
             ]
         },
