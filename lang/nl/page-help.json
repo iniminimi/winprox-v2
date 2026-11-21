@@ -1716,20 +1716,24 @@
             "title": "Hulp — Units",
             "actions": [
                 {
-                    "label": "Overzicht",
-                    "text": "Tenant-breed overzicht van alle units: naam, locatie, categorie en of unit checks zijn toegestaan. Open een rij om naar de locatie-detail te gaan met die unit in focus."
+                    "label": "Wat u hier ziet",
+                    "text": "Dit is de lijst van al uw units: een kamer, een machine, een voertuig of een ander toestel waar een QR-code op hangt. Per unit ziet u de naam, de locatie en de categorie. Actief betekent dat de unit in gebruik is. Inactief betekent dat hij even uit staat."
                 },
                 {
-                    "label": "Filter",
-                    "text": "Beperk de lijst tot één locatie en/of één categorie. Rechts van de dropdowns staat het aantal units. Wis de filters om opnieuw alle units te zien."
+                    "label": "Zoeken",
+                    "text": "Kies een locatie om de lijst kleiner te maken. Werkt u met categorieën, dan kunt u daar ook op filteren. Naast de keuzes staat hoeveel units u nog ziet. Kies Alle locaties en Alle categorieën om weer alles te tonen."
+                },
+                {
+                    "label": "Een unit openen",
+                    "text": "Klik op een unit. U komt op de locatie, bij die unit. Daar past u hem aan, drukt u de QR af of voegt u een nieuwe unit toe. In deze lijst zelf wijzigt u niets."
                 },
                 {
                     "label": "Unit checks",
-                    "text": "Wanneer unit checks aangevinkt zijn (bij de unit en de categorie waaraan de unit gekoppeld is) kan een uitvoerder in het unit-QR-portaal een snelle check uitvoeren. Daar bevestigt de uitvoerder dat de unit OK of niet OK is. Stel checks in onder Plaatsen → Categorieën / Locaties, en checklists onder Werk → Checklists."
+                    "text": "Staat er Unit checks toegestaan, dan kan iemand na het scannen van de QR snel zeggen of alles in orde is of niet. Dat lukt alleen als de check aanstaat bij de unit. Heeft de unit een categorie, dan moet de check daar ook aanstaan. U zet dat bij Plaatsen, onder Categorieën of bij de unit op de locatie. Een vragenlijst bij de check maakt u onder Werk → Checklists."
                 },
                 {
-                    "label": "Unitmetingen",
-                    "text": "Wanneer unitmetingen aangevinkt zijn (unit én categorie) en meetvelden gekoppeld, kunnen waarden via de unit-QR worden doorgegeven. Meetvelden beheer je onder Werk → Unitmetingen."
+                    "label": "Metingen",
+                    "text": "Een meting, zoals een temperatuur of een tellerstand, stelt u niet in deze lijst in. Zet metingen aan bij de categorie en bij de unit, en kies daar welke velden horen. De velden zelf beheert u onder Werk → Unitmetingen."
                 }
             ]
         },
