@@ -988,20 +988,40 @@
             "title": "Aiuto — Abbonamento",
             "actions": [
                 {
-                    "label": "Periodo di prova",
-                    "text": "Durante la prova avete fino a 5 licenze, 50 unità e 10 documenti, Time (timbratrice) incluso. IoT, ESG e API non sono nella prova. La dashboard mostra i giorni rimanenti."
+                    "label": "Cosa vedete in questa schermata?",
+                    "text": "Qui trovate tutte le informazioni sul vostro abbonamento WinProx.<br><br>Vedete tra l’altro:<br>• Se la vostra organizzazione è ancora in periodo di prova.<br>• Quale formula è attualmente attiva.<br>• Fino a quando vale l’abbonamento.<br>• Quali limiti ha la formula, come il numero di licenze, unità e documenti."
                 },
                 {
-                    "label": "Scelga piano",
-                    "text": "Formule: 5/10/25/50 licenze + Corporate. Scegli e paghi mensilmente con Stripe (Corporate su richiesta). In Corporate un amministratore non può scegliere un altro piano; solo un Superuser lo cambia. Lo stato mostra il numero di units concordato. Contatta info@winprox.app per Corporate o CIAO. CIAO si richiede allo stesso modo; un Superuser lo attiva (Time si attiva; Corporate non serve)."
+                    "label": "Che cos’è una licenza?",
+                    "text": "Una licenza è per una persona che usa WinProx. Può essere qualcuno che lavora nel Backoffice, oppure un esecutore sul campo.<br><br>La stessa persona usa entrambi? Allora conta comunque come una sola licenza. Non pagate due volte."
+                },
+                {
+                    "label": "Periodo di prova",
+                    "text": "Durante il periodo di prova potete provare WinProx con gli stessi limiti della formula WinProx più piccola.<br><br>Avete a disposizione:<br>• Fino a 5 licenze.<br>• Fino a 50 unità.<br>• Fino a 10 documenti.<br><br>Time, compreso l’orologio di presenza, è incluso. IoT, ESG e API non sono disponibili durante la prova.<br><br>Nella schermata iniziale e in questa pagina vedete quanti giorni restano al periodo di prova."
+                },
+                {
+                    "label": "Dopo il periodo di prova",
+                    "text": "Volete continuare a usare WinProx? Scegliete per tempo una formula.<br><br>Se il periodo di prova termina senza abbonamento, ricevete prima e-mail di avviso. Se non viene attivato alcun abbonamento, l’organizzazione può essere eliminata automaticamente in seguito."
+                },
+                {
+                    "label": "Scegliere una formula WinProx",
+                    "text": "WinProx offre formule standard per 5, 10, 25 o 50 licenze.<br><br>Scegliete voi quale formula si adatta meglio alla vostra organizzazione. Il pagamento è mensile tramite Stripe.<br><br>Il numero di unità e documenti dipende dalla formula scelta. Sedi e foto sono illimitate.<br><br>Incluso nelle formule standard:<br>• Orologio di presenza e registrazione ore.<br>• Turni.<br>• CIAO (previdenza sociale), se volete usarlo.<br><br>Non incluso:<br>• IoT.<br>• ESG.<br>• API e webhook.<br><br>Queste possibilità sono disponibili in Corporate.<br><br>Consiglio: vi servono più di 50 licenze o volete collegare il vostro software via API o webhook? Allora Corporate può essere la scelta giusta."
+                },
+                {
+                    "label": "Corporate",
+                    "text": "Corporate è pensato per organizzazioni più grandi o che necessitano di opzioni extra.<br><br>Questa formula è disponibile da circa 100 licenze, ma può interessare anche se servono API o webhook.<br><br>A seconda degli accordi possono essere inclusi:<br>• Time.<br>• IoT.<br>• ESG.<br>• API e webhook.<br><br>Prezzo e limiti disponibili vengono definiti con voi.<br><br>La vostra organizzazione usa Corporate? Allora non potete passare da soli a un’altra formula da questa schermata. Può farlo solo un Superuser.<br><br>Qui vedete comunque il numero di unità concordato per la vostra organizzazione.<br><br>Maggiori informazioni o una proposta? Contattateci a info@winprox.app."
+                },
+                {
+                    "label": "CIAO (previdenza sociale)",
+                    "text": "CIAO è la dichiarazione di presenza alla previdenza sociale.<br><br>Volete usarla? Richiedete l’attivazione a info@winprox.app.<br><br>Un Superuser attiva poi la funzione per la vostra organizzazione.<br><br>Buono a sapersi: per CIAO non serve un abbonamento Corporate. Time viene attivato insieme."
                 },
                 {
                     "label": "Checkmate",
-                    "text": "Checkmate è la formula semplice per le squadre che lavorano sul posto presso i clienti, come le squadre di pulizia. I tuoi operatori timbrano entrata e uscita con lo smartphone. Presso ogni cliente avviano una visita e lo smartphone verifica che si trovino davvero all'indirizzo di lavoro (entro 100 m). Incluso: clienti e indirizzi di lavoro, timbratura con pause, una panoramica delle proprie ore per l'operatore, il tempo lavorato per cliente per l'amministratore e la dichiarazione di presenza all'ONSS (CIAO). Per questo inserisci il tuo numero d'impresa (CBE) in Impostazioni. Non incluso: segnalazioni, attività, unit, documenti e la pianificazione dei turni. Prezzo: 5 € per licenza attiva (collega o operatore) al mese; il numero lo scegli tu. Ti serve di più in seguito? Passa a una formula WinProx; i tuoi dati restano conservati."
+                    "text": "Checkmate è la formula WinProx semplice per squadre che lavorano in diverse sedi dei clienti — ad esempio imprese di pulizia.<br><br>Gli esecutori timbrano ingresso e uscita con il telefono. Presso ogni cliente avviano una visita. WinProx controlla tramite la posizione del telefono se l’esecutore è davvero all’indirizzo di lavoro, entro un raggio di 100 m.<br><br>Cosa è incluso?<br>• <strong>Clienti e indirizzi di lavoro:</strong> gestite i clienti e i luoghi dove lavorano i vostri esecutori.<br>• <strong>Orologio di presenza:</strong> gli esecutori timbrano ingresso e uscita, comprese le pause.<br>• <strong>Ore personali:</strong> ogni esecutore può vedere le ore lavorate.<br>• <strong>Ore per cliente:</strong> come amministratore vedete quanto tempo è stato lavorato presso ogni cliente.<br>• <strong>CIAO (previdenza sociale):</strong> la dichiarazione di presenza è inclusa. Inserite a tal fine il numero aziendale in Impostazioni.<br><br>Cosa non è incluso?<br>• Segnalazioni.<br>• Compiti.<br>• Unità.<br>• Documenti.<br>• Turni.<br><br><strong>Prezzo</strong><br>Pagate 5 € per licenza attiva al mese. Può essere un collega o un esecutore.<br><br>Scegliete voi quante licenze attive vi servono.<br><br><strong>Espandere più avanti?</strong><br>La vostra organizzazione ha bisogno di più possibilità in seguito? Potete passare a una formula WinProx ordinaria.<br><br>I dati esistenti restano salvati. Non dovete ricominciare da zero."
                 },
                 {
-                    "label": "Elimina i dati dell’organizzazione",
-                    "text": "Solo amministratori. Scarica prima un’esportazione da Impostazioni → Privacy ed esportazione dati. Poi in Abbonamento spunta la conferma e inserisci la password. Tutti gli amministratori ricevono un’email di conferma. In prova puoi poi eliminare definitivamente tu stesso (snapshot tecnico senza media, conservato 30 giorni). Con un abbonamento a pagamento c’è un’attesa di 7 giorni con banner e email di promemoria; l’amministrazione WinProx esegue l’eliminazione. Puoi annullare fino ad allora da Abbonamento. Se la prova termina senza abbonamento, seguono e-mail di avviso e l’organizzazione può essere eliminata automaticamente (predefinito intorno al giorno 14)."
+                    "label": "Eliminare organizzazione e dati",
+                    "text": "Volete interrompere WinProx ed eliminare l’intera organizzazione? Può farlo solo un amministratore.<br><br><strong>Passo 1 — Scaricate prima i dati</strong><br>Esportate i dati in anticipo tramite:<br>Impostazioni → Privacy ed esportazione dei dati<br><br>Così avrete ancora i vostri dati quando non userete più WinProx.<br><br><strong>Passo 2 — Richiedete l’eliminazione</strong><br>Andate in Abbonamento e:<br>1. Spuntate la conferma di eliminazione.<br>2. Inserite la password.<br>3. Confermate la richiesta.<br><br>Tutti gli amministratori dell’organizzazione ricevono poi un’e-mail di conferma.<br><br><strong>Cosa succede dopo?</strong><br>Il seguito dipende dall’abbonamento.<br><br>• <strong>Durante il periodo di prova:</strong> dopo la richiesta potete eseguire voi stessi l’eliminazione definitiva.<br>• <strong>Con un abbonamento a pagamento:</strong> prima vale un’attesa di 7 giorni. In quel periodo compare un avviso a schermo e ricevete un’e-mail di promemoria. L’amministrazione WinProx esegue poi l’eliminazione definitiva.<br><br>Durante l’elaborazione WinProx conserva per 30 giorni uno snapshot tecnico senza file multimediali.<br><br>Avete cambiato idea? Potete annullare la richiesta durante l’attesa tramite Abbonamento.<br><br>Importante: scaricate sempre i dati prima di confermare l’eliminazione. Dopo l’eliminazione definitiva non potete più consultare i dati dell’organizzazione tramite WinProx."
                 }
             ]
         },
