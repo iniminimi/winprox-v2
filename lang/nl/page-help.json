@@ -2687,19 +2687,27 @@
             ]
         },
         "activity": {
-            "title": "Hulp — Activiteitenlog",
+            "title": "Hulp — Activiteit",
             "actions": [
                 {
-                    "label": "Wat staat hier?",
-                    "text": "Alle mutaties in uw organisatie: geforceerd gesloten en gecorrigeerde diensten (met reden), aangemaakte of verwijderde uitvoerders, gewijzigde instellingen, toestel- en beveiligingsgebeurtenissen. Nieuwste bovenaan."
+                    "label": "Wat ziet u op dit scherm?",
+                    "text": "Hier ziet u wat er binnen uw organisatie is gebeurd. Belangrijke wijzigingen en gebeurtenissen worden bijgehouden in een activiteitenlog.<br><br>U vindt hier onder andere:<br>• Aangepaste of geforceerd gesloten diensten, telkens met de reden.<br>• Uitvoerders die zijn aangemaakt, gewijzigd of verwijderd.<br>• Wijzigingen aan klanten, locaties of units.<br>• Aanpassingen aan instellingen.<br>• Beveiligingsgebeurtenissen, zoals een gekoppelde gsm, een gereset icoon of een geweigerde QR-scan.<br><br>De nieuwste gebeurtenissen staan bovenaan.<br><br>Goed om te weten: gewone in- en uitklokbewegingen worden niet allemaal in dit log opgenomen. Die volgt u beter via Time → Uren. Het activiteitenlog richt zich vooral op uitzonderingen, wijzigingen en beheeracties."
+                },
+                {
+                    "label": "Hoe leest u een regel?",
+                    "text": "De vetgedrukte tekst beschrijft wat er is gebeurd. Bijvoorbeeld dat een dienst werd gecorrigeerd of dat een uitvoerder werd toegevoegd.<br><br>Daarna ziet u wie de actie heeft uitgevoerd en wanneer dat gebeurde.<br><br>Was er geen persoon betrokken, dan kan er <strong>Systeem</strong> staan.<br><br>Onder de gebeurtenis vindt u soms extra informatie, zoals een naam, e-mailadres of nummer."
+                },
+                {
+                    "label": "Filteren op categorie",
+                    "text": "Bovenaan kunt u de lijst filteren op categorie:<br>• Alles<br>• Tijd & diensten<br>• Uitvoerders<br>• Klanten & locaties<br>• Instellingen<br>• Beveiliging & toestellen<br>• Overig<br><br>Weet u nog niet waar u moet zoeken? Begin dan bij <strong>Alles</strong>. Kies daarna eventueel een categorie om de lijst te verkleinen."
                 },
                 {
                     "label": "Zoeken",
-                    "text": "Zoek op actienaam (bv. 'dienst'), op de naam of het e-mailadres van de gebruiker die de wijziging deed, of op een nummer."
+                    "text": "Met het zoekveld kunt u gericht zoeken in het activiteitenlog.<br><br>U kunt bijvoorbeeld zoeken op:<br>• Een woord uit de gebeurtenis, zoals dienst of uitvoerder.<br>• De naam of het e-mailadres van de collega die de wijziging uitvoerde.<br>• Een nummer dat bij de gebeurtenis vermeld staat.<br><br>Tip: gebruik gewone woorden zoals u ze op het scherm ziet. U hoeft geen technische codes te kennen."
                 },
                 {
-                    "label": "Wie ziet dit?",
-                    "text": "Enkel beheerders van uw organisatie. Uitvoerders, teamleaders en collega's zien dit scherm niet."
+                    "label": "Wie mag dit zien?",
+                    "text": "Alleen beheerders van uw organisatie hebben toegang tot dit scherm.<br><br>Uitvoerders, teamleiders en collega's met een gewone medewerkerrol kunnen het activiteitenlog niet bekijken.<br><br>Goed om te weten: dit log helpt u achteraf na te gaan wat er is gewijzigd, wie dat deed en wanneer. Het is geen vervanging voor rapporten of urenstaten."
                 }
             ]
         }

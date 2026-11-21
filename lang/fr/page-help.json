@@ -2691,19 +2691,27 @@
             ]
         },
         "activity": {
-            "title": "Aide — Journal d'activité",
+            "title": "Aide — Activité",
             "actions": [
                 {
-                    "label": "Que contient cette page ?",
-                    "text": "Toutes les modifications de votre organisation : services clôturés de force et corrigés (avec motif), exécutants créés ou supprimés, paramètres modifiés, événements d'appareil et de sécurité. Le plus récent en haut."
+                    "label": "Que voyez-vous sur cet écran ?",
+                    "text": "Vous voyez ici ce qui s’est passé dans votre organisation. Les modifications et événements importants sont conservés dans un journal d’activité.<br><br>Vous y trouvez notamment :<br>• Des services ajustés ou fermés de force, toujours avec le motif.<br>• Des exécutants créés, modifiés ou supprimés.<br>• Des modifications de clients, sites ou unités.<br>• Des changements de paramètres.<br>• Des événements de sécurité, comme un téléphone lié, une icône réinitialisée ou un scan QR refusé.<br><br>Les événements les plus récents sont en haut.<br><br>Bon à savoir : les pointages d’entrée et de sortie ordinaires ne sont pas tous dans ce journal. Suivez-les plutôt via Time → Heures. Le journal d’activité se concentre surtout sur les exceptions, les modifications et les actions d’administration."
+                },
+                {
+                    "label": "Comment lire une ligne ?",
+                    "text": "Le texte en gras décrit ce qui s’est passé — par exemple qu’un service a été corrigé ou qu’un exécutant a été ajouté.<br><br>Ensuite, vous voyez qui a effectué l’action et quand.<br><br>Si aucune personne n’était impliquée, il peut y avoir <strong>Système</strong>.<br><br>Sous l’événement, vous trouvez parfois des informations supplémentaires, comme un nom, une adresse e-mail ou un numéro."
+                },
+                {
+                    "label": "Filtrer par catégorie",
+                    "text": "En haut, vous pouvez filtrer la liste par catégorie :<br>• Tout<br>• Temps & services<br>• Exécutants<br>• Clients & sites<br>• Paramètres<br>• Sécurité & appareils<br>• Autre<br><br>Vous ne savez pas encore où chercher ? Commencez par <strong>Tout</strong>. Choisissez ensuite éventuellement une catégorie pour réduire la liste."
                 },
                 {
                     "label": "Rechercher",
-                    "text": "Recherchez par nom d'action (p. ex. « service »), par le nom ou l'e-mail de l'utilisateur qui a fait la modification, ou par un numéro."
+                    "text": "Avec le champ de recherche, vous pouvez chercher de façon ciblée dans le journal d’activité.<br><br>Vous pouvez par exemple chercher sur :<br>• Un mot de l’événement, comme service ou exécutant.<br>• Le nom ou l’adresse e-mail du collègue qui a fait la modification.<br>• Un numéro indiqué avec l’événement.<br><br>Conseil : utilisez des mots ordinaires tels que vous les voyez à l’écran. Vous n’avez pas besoin de connaître de codes techniques."
                 },
                 {
                     "label": "Qui peut voir ceci ?",
-                    "text": "Uniquement les administrateurs de votre organisation. Les exécutants, chefs d'équipe et collègues ne voient pas cet écran."
+                    "text": "Seuls les administrateurs de votre organisation ont accès à cet écran.<br><br>Les exécutants, chefs d’équipe et collègues avec un rôle d’employé ordinaire ne peuvent pas consulter le journal d’activité.<br><br>Bon à savoir : ce journal vous aide à vérifier ensuite ce qui a changé, qui l’a fait et quand. Ce n’est pas un remplacement des rapports ou des états d’heures."
                 }
             ]
         }

@@ -2687,19 +2687,27 @@
             ]
         },
         "activity": {
-            "title": "Help — Activity log",
+            "title": "Help — Activity",
             "actions": [
                 {
-                    "label": "What is listed here?",
-                    "text": "All changes in your organisation: force-closed and corrected shifts (with reason), created or deleted workers, changed settings, device and security events. Newest first."
+                    "label": "What do you see on this screen?",
+                    "text": "Here you see what happened in your organisation. Important changes and events are kept in an activity log.<br><br>Among other things, you find:<br>• Adjusted or force-closed shifts, always with the reason.<br>• Workers who were created, changed or deleted.<br>• Changes to customers, locations or units.<br>• Changes to settings.<br>• Security events, such as a linked phone, a reset icon or a refused QR scan.<br><br>The newest events are at the top.<br><br>Good to know: ordinary clock-in and clock-out movements are not all recorded in this log. Follow those via Time → Hours. The activity log focuses mainly on exceptions, changes and admin actions."
+                },
+                {
+                    "label": "How do you read a line?",
+                    "text": "The bold text describes what happened — for example that a shift was corrected or that a worker was added.<br><br>After that you see who performed the action and when it happened.<br><br>If no person was involved, it may say <strong>System</strong>.<br><br>Under the event you sometimes find extra information, such as a name, email address or number."
+                },
+                {
+                    "label": "Filter by category",
+                    "text": "At the top you can filter the list by category:<br>• All<br>• Time & shifts<br>• Workers<br>• Customers & locations<br>• Settings<br>• Security & devices<br>• Other<br><br>Not sure where to look yet? Start with <strong>All</strong>. Then optionally choose a category to narrow the list."
                 },
                 {
                     "label": "Search",
-                    "text": "Search by action name (e.g. 'shift'), by the name or email of the user who made the change, or by a number."
+                    "text": "With the search field you can search the activity log in a targeted way.<br><br>You can search for example on:<br>• A word from the event, such as shift or worker.<br>• The name or email address of the colleague who made the change.<br>• A number shown with the event.<br><br>Tip: use ordinary words as you see them on screen. You do not need to know technical codes."
                 },
                 {
                     "label": "Who can see this?",
-                    "text": "Only administrators of your organisation. Workers, teamleaders and colleagues do not see this screen."
+                    "text": "Only admins of your organisation have access to this screen.<br><br>Workers, team leaders and colleagues with a normal employee role cannot view the activity log.<br><br>Good to know: this log helps you later check what changed, who did it and when. It is not a replacement for reports or timesheets."
                 }
             ]
         }

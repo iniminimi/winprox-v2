@@ -2687,19 +2687,27 @@
             ]
         },
         "activity": {
-            "title": "Hilfe — Aktivitätsprotokoll",
+            "title": "Hilfe — Aktivität",
             "actions": [
                 {
-                    "label": "Was steht hier?",
-                    "text": "Alle Änderungen in Ihrer Organisation: zwangsgeschlossene und korrigierte Dienste (mit Grund), erstellte oder gelöschte Ausführer, geänderte Einstellungen, Geräte- und Sicherheitsereignisse. Neueste zuerst."
+                    "label": "Was sehen Sie auf diesem Bildschirm?",
+                    "text": "Hier sehen Sie, was in Ihrer Organisation geschehen ist. Wichtige Änderungen und Ereignisse werden in einem Aktivitätsprotokoll festgehalten.<br><br>Sie finden hier unter anderem:<br>• Angepasste oder zwangsweise geschlossene Dienste, jeweils mit dem Grund.<br>• Ausführende, die angelegt, geändert oder gelöscht wurden.<br>• Änderungen an Kunden, Standorten oder Units.<br>• Anpassungen an Einstellungen.<br>• Sicherheitsereignisse, etwa ein verknüpftes Handy, ein zurückgesetztes Icon oder ein abgelehnter QR-Scan.<br><br>Die neuesten Ereignisse stehen oben.<br><br>Gut zu wissen: gewöhnliche Ein- und Ausstempelungen stehen nicht alle in diesem Protokoll. Die verfolgen Sie besser über Time → Stunden. Das Aktivitätsprotokoll richtet sich vor allem auf Ausnahmen, Änderungen und Verwaltungsaktionen."
+                },
+                {
+                    "label": "Wie lesen Sie eine Zeile?",
+                    "text": "Der fettgedruckte Text beschreibt, was geschehen ist — zum Beispiel dass ein Dienst korrigiert oder ein Ausführender hinzugefügt wurde.<br><br>Danach sehen Sie, wer die Aktion ausgeführt hat und wann.<br><br>War keine Person beteiligt, kann dort <strong>System</strong> stehen.<br><br>Unter dem Ereignis finden Sie manchmal zusätzliche Informationen, etwa einen Namen, eine E-Mail-Adresse oder eine Nummer."
+                },
+                {
+                    "label": "Nach Kategorie filtern",
+                    "text": "Oben können Sie die Liste nach Kategorie filtern:<br>• Alles<br>• Zeit & Dienste<br>• Ausführende<br>• Kunden & Standorte<br>• Einstellungen<br>• Sicherheit & Geräte<br>• Sonstiges<br><br>Wissen Sie noch nicht, wo Sie suchen sollen? Beginnen Sie mit <strong>Alles</strong>. Wählen Sie danach optional eine Kategorie, um die Liste einzugrenzen."
                 },
                 {
                     "label": "Suchen",
-                    "text": "Suchen Sie nach Aktionsname (z. B. „Dienst“), nach Name oder E-Mail des Benutzers, der die Änderung vorgenommen hat, oder nach einer Nummer."
+                    "text": "Mit dem Suchfeld können Sie gezielt im Aktivitätsprotokoll suchen.<br><br>Sie können zum Beispiel suchen nach:<br>• Einem Wort aus dem Ereignis, etwa Dienst oder Ausführender.<br>• Dem Namen oder der E-Mail-Adresse des Kollegen, der die Änderung vorgenommen hat.<br>• Einer Nummer, die beim Ereignis steht.<br><br>Tipp: verwenden Sie gewöhnliche Wörter, wie Sie sie auf dem Bildschirm sehen. Sie müssen keine technischen Codes kennen."
                 },
                 {
-                    "label": "Wer sieht das?",
-                    "text": "Nur Administratoren Ihrer Organisation. Ausführer, Teamleiter und Kollegen sehen diesen Bildschirm nicht."
+                    "label": "Wer darf das sehen?",
+                    "text": "Nur Administratoren Ihrer Organisation haben Zugang zu diesem Bildschirm.<br><br>Ausführende, Teamleiter und Kollegen mit einer normalen Mitarbeiterrolle können das Aktivitätsprotokoll nicht einsehen.<br><br>Gut zu wissen: dieses Protokoll hilft Ihnen später nachzuvollziehen, was geändert wurde, wer es getan hat und wann. Es ersetzt keine Berichte oder Stundenlisten."
                 }
             ]
         }
