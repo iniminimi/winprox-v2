@@ -2051,52 +2051,89 @@
             "title": "Help — Roster",
             "actions": [
                 {
-                    "label": "View",
-                    "text": "Switch between <strong>week</strong> and <strong>month</strong>. <strong>Weekends</strong> shows Saturday and Sunday (off by default); off = Monday to Friday only. In the month grid a heavy vertical line then separates Friday from Monday. Saving with weekends off leaves Sat/Sun unchanged. Copying a week is week view only. The <strong>Week</strong> and <strong>Month</strong> buttons always go to the current week or month."
+                    "label": "What is the roster for?",
+                    "text": "With the roster you plan who works when. For each worker and each day you set the planned shifts.<br><br>Once you publish a period, workers can view their plan on Clock Point, under <strong>My roster</strong>."
                 },
                 {
-                    "label": "Colours and selection",
-                    "text": "Public holidays tint the date column <strong>blue</strong>, replacement days <strong>green</strong> — the column-header tooltip says which holiday and which effect. On a public holiday the minimum staffing is not shown in red; a replacement day still is when there is a shortfall. A <strong>grey cell</strong> is a fixed day off for that worker (0 minutes in their week pattern); the cell stays editable. Weekend, today and locked days have their own tint. Only the date cells can be selected — names and figure columns cannot."
+                    "label": "Choose a team or a location first",
+                    "text": "The roster loads only after you have selected a team or a location.<br><br>That keeps the overview clear, even when your organisation has many workers."
                 },
                 {
-                    "label": "Codes and free times",
-                    "text": "Type a <strong>code</strong> from the legend or a time <strong>07:00-15:00</strong>. Optionally add a group in the same cell: <strong>D1/G1</strong> or <strong>07:00-12:00/G1</strong> (a space is allowed). Invalid cells have a <strong>red border</strong> — fix them before saving. If a group code exists at more than one location, choose a location filter."
+                    "label": "View a week or a month",
+                    "text": "With <strong>Week</strong> and <strong>Month</strong> you choose how you want to view the roster.<br>• Click Week to go to the current week.<br>• Click Month to go to the current month.<br>• Use the arrows to move to a previous or next period.<br><br><strong>Weekends</strong> is off by default. You then see only Monday to Friday.<br><br>In the month view there is a clear thick line between Friday and the following Monday. That keeps the weeks distinct.<br><br><strong>Good to know:</strong> if you save the roster while Weekends is off, Saturday and Sunday stay untouched. Existing weekend shifts are not overwritten."
                 },
                 {
-                    "label": "Groups",
-                    "text": "First choose a <strong>location filter</strong> — you then only see workers assigned to that site (no floaters). Then tick <strong>groups</strong> (roster codes) and <strong>Ungrouped</strong>. Workers appear under section headers. Set the default group on the worker; the place in a cell (D1/G1) stays separate."
+                    "label": "Enter a shift",
+                    "text": "You can enter a shift in two ways:<br>• Type a code from the legend, for example <strong>V2</strong>.<br>• Type the start and end time yourself, for example <strong>07:00-15:00</strong>.<br><br>You can also add a group straight away. For example:<br>• <strong>D1/G1</strong><br>• <strong>07:00-12:00/G1</strong><br><br>A red border around a cell means the value entered is not correct. Change it before you save the roster.<br><br>Do you use the same group code at several locations? Choose the right location first. Otherwise WinProx does not know which group you mean.<br><br>An absence cannot be linked to a group.<br><br>You open the legend via <strong>Legend</strong>, next to Publish. You manage the codes under <strong>Time → Shift types</strong>. You usually set those up only once."
                 },
                 {
-                    "label": "Save and publish",
-                    "text": "Save stores the visible week or month and workers. If you have unsaved changes, a popup appears when you leave the page or switch week/month. <strong>Publish</strong> makes that period visible on Clock Point (My roster) and sets a badge. Edits after publishing stay published; a new badge only appears if you publish again."
+                    "label": "Several work blocks on one day",
+                    "text": "One cell holds one shift by default.<br><br>Does someone work in the morning and in the evening? Then you enter both work blocks separately via <strong>Edit day</strong>.<br><br>Please note: if you type directly in a cell that already has several work blocks, you replace the whole day with one new block.<br><br>WinProx asks for confirmation before the existing blocks are replaced.<br><br>Via Edit day you can also add a note to a work block.<br><br><strong>Days in the past are locked.</strong> Do you still want to change one? Use <strong>Correct</strong> and give a reason."
                 },
                 {
-                    "label": "Copy week",
-                    "text": "<strong>Copy to next week</strong> is all-or-nothing. If the target week already has shifts, the copy is refused."
+                    "label": "Working with groups",
+                    "text": "Do you want to view the roster by group? Choose a location first.<br><br>You then see only the workers linked to that site. Floaters who may clock in at every location do not appear in this filtered roster.<br><br>You can then tick one or more groups. You can also choose <strong>Ungrouped</strong>.<br><br>The workers are then shown under a separate heading for each group.<br><br>Two things should be kept apart:<br>• <strong>Home group:</strong> you set this on the worker. It decides under which group heading that person appears in the roster.<br>• <strong>Group on the shift:</strong> you fill this in separately in the roster cell, for example G1. It is not taken over automatically from the home group."
+                },
+                {
+                    "label": "Colours in the roster",
+                    "text": "The colours help you recognise special days and situations quickly.<br>• <strong>Blue:</strong> a public holiday.<br>• <strong>Green:</strong> a replacement day.<br>• <strong>Grey:</strong> a fixed day off for the worker. You can still plan a shift here.<br>• <strong>Weekend:</strong> has its own background colour.<br>• <strong>Today:</strong> is marked separately.<br>• <strong>Locked day:</strong> also has its own colour.<br><br>Move the pointer over the date heading of a public holiday or a replacement day to see more. You also see what effect that day has on the roster.<br><br>You can select only the date cells. Worker names and the number columns cannot be selected.<br><br>Is too little staff planned on a particular day? You see that next to that day.<br><br>On a public holiday a shortfall is not shown. On a replacement day the shortfall is shown."
+                },
+                {
+                    "label": "Saving and publishing",
+                    "text": "Saving and publishing are two different actions."
+                },
+                {
+                    "label": "Save",
+                    "text": "With <strong>Save</strong> you store the week or month currently on your screen, for the workers you see at that moment.<br><br>Have you made changes and do you leave the page, or move to another week or month? Then WinProx warns you that there are unsaved changes.<br><br>Save first if you want to keep your changes. Otherwise they are lost.",
+                    "nested": true
+                },
+                {
+                    "label": "Publish",
+                    "text": "With <strong>Publish</strong> you make the whole period visible to workers on Clock Point, under <strong>My roster</strong>.<br><br>The workers receive a notice.<br><br>Do you change something later in a period that is already published? The period stays published. The changes are announced again only when you click Publish once more.<br><br><strong>Important:</strong> publishing has no effect on the NSSO declaration. It only makes the roster available to your workers.",
+                    "nested": true
+                },
+                {
+                    "label": "Repeat a week",
+                    "text": "Do you want to reuse an existing week plan for the coming weeks? Use <strong>Repeat week</strong>.<br><br>This feature is available only in the week view.<br><br>You copy the work shifts of the visible week to following weeks. You choose how many weeks to copy, up to 26 weeks.<br><br>A few rules apply when copying:<br>• Absences are not copied.<br>• Days with approved leave are skipped. WinProx reports which days are not copied because of this.<br>• Does a target week already contain shifts? Then WinProx skips that whole week. The other weeks are still copied.<br><br>That way existing plans are not overwritten by accident."
                 },
                 {
                     "label": "Restore",
-                    "text": "<strong>Restore</strong> (week and month) lists the latest restore points of a roster edit: date, time, source, workers and days. The difference is grouped by effect and by day: what disappears, what comes back and what changes. A locked day, a shift that now sits on another day, or approved leave blocks the restore. If the roster differs or a request is still open, you confirm. That confirmation applies only to the difference you see; if the roster changed in the meantime, nothing is restored and you see the new difference. After a successful restore you can undo that step. Points are kept for 30 days; the list shows at most 40."
+                    "text": "With <strong>Restore</strong> you can put the roster back to an earlier version.<br><br>WinProx keeps restore points that include:<br>• The date and time of the change.<br>• Where the change came from.<br>• Which workers and days were changed.<br><br>Restore points stay available for 30 days. The list shows at most the 40 most recent restore points.<br><br>For each restore point you see in advance what will change:<br>• What disappears.<br>• What comes back.<br>• What is changed.<br><br>Not every earlier situation can simply be restored. That is not possible, for example, when:<br>• A day involved is now locked.<br>• A shift has since been moved to another day.<br>• There is approved leave on that day."
                 },
                 {
-                    "label": "Shift types",
-                    "text": "Use the <strong>Legend</strong> button (next to Publish) for codes, absences and groups. Manage types under Time → <strong>Shift types</strong> (usually once)."
+                    "label": "Extra check when there are differences",
+                    "text": "Has the current roster changed in the meantime, or is a request still open? Then WinProx asks for confirmation first.<br><br>You see which differences there are before you restore. Your confirmation applies only to the differences shown at that moment.<br><br>Has the roster changed again in the meantime? Then WinProx does not restore. You see the new difference first.<br><br>Did the restore succeed? You can still undo that step via <strong>Undo this restore</strong>.",
+                    "nested": true
                 },
                 {
-                    "label": "Absence",
-                    "text": "Shift types can be <strong>leave</strong>, <strong>time off in lieu</strong>, <strong>sick</strong> or <strong>other</strong>. Those codes fill the whole day, count no hours, and cannot sit with work that day. Workers can request leave, TOIL, sick leave or a type under Other from Clock Point (Leave / Absence tile); staff decide under Time → Requests. Sick leave and Other do not count toward leave balance or TOIL."
+                    "label": "Planning an absence",
+                    "text": "An absence code fills the whole day in the roster cell. That day does not count as hours worked.<br><br>WinProx distinguishes four kinds of absence:<br>• <strong>Leave</strong><br>• <strong>Time off in lieu</strong><br>• <strong>Sick</strong><br>• <strong>Other</strong>, for example short leave or a day off of your own.<br><br>Does someone need to be absent for only part of the day, for example next to a planned work block? Open <strong>Edit day</strong>. You can then combine work and absence on the same day."
                 },
                 {
-                    "label": "Find replacement",
-                    "text": "On a planned work block you can find a <strong>replacement</strong>. WinProx suggests candidates (see Time → Shift types: replacement pool and optionally also unplanned). The original block becomes absence; the replacement gets the same time slot, location and unit."
+                    "label": "Requests from workers",
+                    "text": "Workers can request leave, time off in lieu, sick leave or an Other absence themselves on Clock Point, on the <strong>Leave / Absence</strong> tile.<br><br>You handle these requests under <strong>Time → Requests</strong>.<br><br>A sick report must be approved there as well.<br><br>Sick and Other do not affect the leave balance or the time-off-in-lieu balance.",
+                    "nested": true
                 },
                 {
-                    "label": "Planned vs clocked",
-                    "text": "On a <strong>published</strong> period the grid marks deviations (late/early) immediately, including <strong>today</strong>. Up to 15 minutes early still counts as on time; 15 minutes or more late (or more than 15 minutes early) is a deviation. Punches are always stored. Missing punches only after the planned end (or on past days). Unplanned punches and absence without a punch stay as before. A correct clock-in shows a green tick at the top right; a deviation or a missing punch stays a dot. Click the top-right marker in the cell to open <strong>Hours</strong> for that worker on that day. <strong>Print</strong> (next to the title) opens a new window (A4 landscape). Publishing does not send anything to the NSSO."
+                    "label": "Find a replacement",
+                    "text": "Can someone not work a planned shift? Then you can look for another worker via <strong>Replacement…</strong>.<br><br>WinProx suggests workers who:<br>• Already have a shift that day.<br>• Have the setting <strong>Available for replacement</strong>.<br><br>Under <strong>Time → Shift types</strong> you can also set that workers with no planned shift may be suggested.<br><br>Do you choose a replacement? Then the following happens:<br>• The original work block is turned into an absence.<br>• The replacement gets the same time slot.<br>• The location and unit are taken over.<br><br>The original plan stays recognisable, and the replacement is recorded correctly."
                 },
                 {
-                    "label": "Hours columns on the right",
-                    "text": "To the right of the grid each worker has figure columns with a vertical title: <strong>Norm</strong> (contract norm), <strong>Difference</strong> (planned minus norm, signed), <strong>Planned</strong>, <strong>Worked</strong> and per absence <strong>Leave</strong>, <strong>Lieu</strong> and <strong>Sick</strong> (days plus remaining hours). <strong>Flag</strong> shows a count and/or an exclamation mark for incomplete blocks or an open clock registration. Norm and difference stay empty while the norm is not reliable. The weekly norm (38 hours by default) is set on the worker; the monthly norm follows the work pattern — without one, Mon–Fri count per the weekly norm and holidays follow the holiday scheme — without an agreement, the Belgian standard. This is a count, not a judgement on working time."
+                    "label": "Compare planned and clocked",
+                    "text": "For a published period you can compare the planned shifts with the hours actually clocked. That includes the current day.<br><br>WinProx checks whether the worker clocked in close to the planned time.<br><br>The standard tolerance is 15 minutes:<br>• Up to 15 minutes early: correct.<br>• 15 minutes or more late: a deviation.<br>• More than 15 minutes early: a deviation.<br><br>A correct clock-in is shown with a green tick at the top right of the roster cell.<br><br>For a deviation or a missing clock-in you see a dot.<br><br>Click the tick or the dot to open the clocked hours of that worker on that day.<br><br>A missing punch is shown only after the planned shift has ended, or when it is a previous day.<br><br>The original clock records are always kept."
+                },
+                {
+                    "label": "Print the roster",
+                    "text": "With <strong>Print</strong>, next to the title, you open a print-friendly version of the roster.<br><br>It opens in a new window and is laid out for A4 landscape."
+                },
+                {
+                    "label": "The figures on the right: Statistics",
+                    "text": "With <strong>Statistics</strong> you open an overview on the right with the main figures per worker.<br><br>You will find, among others:<br>• <strong>Norm:</strong> the contractual hours, 38 hours a week by default. You set this on the worker.<br>• <strong>Difference:</strong> the difference between the planned hours and the contract norm.<br>• <strong>Planned:</strong> the total planned hours in the selected period.<br>• <strong>Worked:</strong> the total hours actually clocked.<br>• <strong>Leave:</strong> the planned leave hours.<br>• <strong>Lieu:</strong> the planned time-off-in-lieu hours.<br>• <strong>Sick:</strong> the planned sick hours.<br>• <strong>Other:</strong> the other planned absences.<br>• <strong>Flag:</strong> a warning for an incomplete work block or an open clock-in without a clock-out.<br><br>Is the contract norm not reliably available? Then WinProx leaves the figures for Norm and Difference empty."
+                },
+                {
+                    "label": "How is the norm calculated?",
+                    "text": "In the month view WinProx takes the worker’s work pattern into account.<br><br>Is no work pattern set? Then WinProx calculates the norm from the weekly norm, spread over Monday to Friday.<br><br>For public holidays WinProx uses the settings under <strong>Time → Public holidays</strong>. If no specific scheme is set, the Belgian standard applies.<br><br><strong>Good to know:</strong> these statistics are meant as an overview and a check. WinProx does not judge here whether someone worked too much or too little. It shows the plan, the clocked hours and the related differences.",
+                    "nested": true
                 }
             ]
         },

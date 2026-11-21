@@ -2051,52 +2051,89 @@
             "title": "Hulp — Uurrooster",
             "actions": [
                 {
-                    "label": "Weergave",
-                    "text": "Schakel tussen <strong>week</strong> en <strong>maand</strong>. <strong>Weekends</strong> toont zaterdag en zondag (standaard uit); uit = alleen maandag tot vrijdag. In de maandgrid staat dan een zware verticale streep tussen vrijdag en maandag. Opslaan zonder weekends laat za/zo ongewijzigd. Een week kopiëren kan alleen in weekweergave. De knoppen <strong>Week</strong> en <strong>Maand</strong> gaan altijd naar de huidige week of maand."
+                    "label": "Waarvoor dient het uurrooster?",
+                    "text": "Met het uurrooster plant u wie wanneer werkt. Per uitvoerder en per dag legt u de geplande diensten vast.<br><br>Zodra u een periode publiceert, kunnen uitvoerders hun planning bekijken op Clock Point, onder <strong>Mijn rooster</strong>."
                 },
                 {
-                    "label": "Kleuren en selectie",
-                    "text": "Feestdagen kleuren de datumkolom <strong>blauw</strong>, vervangingsdagen <strong>groen</strong> — de tooltip op de kolomkop zegt welke feestdag en welk effect. Op een feestdag staat de minimumbezetting niet rood; een vervangingsdag wel als er een tekort is. Een <strong>grijze cel</strong> is een vaste vrije dag van die uitvoerder (0 minuten in zijn weekpatroon); de cel blijft gewoon invulbaar. Weekend, vandaag en vergrendelde dagen hebben een eigen tint. Alleen de datumcellen kun je selecteren — namen en cijferkolommen niet."
+                    "label": "Eerst een team of locatie kiezen",
+                    "text": "Het rooster wordt pas geladen nadat u een team of een locatie hebt geselecteerd.<br><br>Zo blijft het overzicht overzichtelijk, ook wanneer uw organisatie veel uitvoerders telt."
                 },
                 {
-                    "label": "Codes en vrije tijden",
-                    "text": "Typ een <strong>code</strong> uit de legende of een tijd <strong>07:00-15:00</strong>. Optioneel een groep in dezelfde cel: <strong>D1/G1</strong> of <strong>07:00-12:00/G1</strong> (spatie mag). Ongeldige cellen hebben een <strong>rode rand</strong> — corrigeer die vóór opslaan. Komt een groepscode op meerdere locaties voor, kies dan een locatiefilter."
+                    "label": "Week of maand bekijken",
+                    "text": "Met <strong>Week</strong> en <strong>Maand</strong> kiest u hoe u het rooster wilt bekijken.<br>• Klik op Week om naar de huidige week te gaan.<br>• Klik op Maand om naar de huidige maand te gaan.<br>• Gebruik de pijlen om naar een vorige of volgende periode te bladeren.<br><br><strong>Weekends</strong> staat standaard uit. U ziet dan alleen maandag tot en met vrijdag.<br><br>In de maandweergave staat tussen vrijdag en de volgende maandag een duidelijke dikke streep. Zo blijft het onderscheid tussen de weken zichtbaar.<br><br><strong>Goed om te weten:</strong> slaat u het rooster op terwijl Weekends uitgeschakeld is, dan blijven zaterdag en zondag onaangeroerd. Bestaande weekenddiensten worden dus niet overschreven."
                 },
                 {
-                    "label": "Groepen",
-                    "text": "Kies eerst een <strong>locatiefilter</strong> — dan ziet u alleen uitvoerders die aan die vestiging zijn toegewezen (geen vlinders). Daarna kunt u <strong>groepen</strong> (roostercodes) aanvinken en <strong>Zonder groep</strong>. Uitvoerders staan onder sectiekoppen. De standaardgroep stelt u in bij de uitvoerder; de plek in een cel (D1/G1) blijft apart."
+                    "label": "Een dienst invullen",
+                    "text": "U kunt op twee manieren een dienst invoeren:<br>• Typ een code uit de legende, bijvoorbeeld <strong>V2</strong>.<br>• Typ zelf de begin- en eindtijd, bijvoorbeeld <strong>07:00-15:00</strong>.<br><br>U kunt ook meteen een groep toevoegen. Bijvoorbeeld:<br>• <strong>D1/G1</strong><br>• <strong>07:00-12:00/G1</strong><br><br>Een rode rand rond een cel betekent dat de ingevoerde waarde niet correct is. Pas deze aan voordat u het rooster opslaat.<br><br>Gebruikt u dezelfde groepscode op meerdere locaties? Kies dan eerst de juiste locatie. Anders weet WinProx niet welke groep u bedoelt.<br><br>Een afwezigheid kan niet aan een groep worden gekoppeld.<br><br>De legende opent u via <strong>Legende</strong>, naast Publiceren. De gebruikte codes beheert u onder <strong>Time → Shifttypes</strong>. Dat stelt u doorgaans maar één keer in."
+                },
+                {
+                    "label": "Meerdere werkblokken op één dag",
+                    "text": "Eén cel bevat standaard één dienst.<br><br>Werkt iemand bijvoorbeeld 's morgens én 's avonds? Dan kunt u beide werkblokken afzonderlijk invoeren via <strong>Dag bewerken</strong>.<br><br>Let op: typt u rechtstreeks in een cel waarin al meerdere werkblokken staan, dan vervangt u de volledige dag door één nieuw blok.<br><br>WinProx vraagt eerst om bevestiging voordat de bestaande blokken worden vervangen.<br><br>Via Dag bewerken kunt u ook een notitie toevoegen aan een werkblok.<br><br><strong>Dagen in het verleden zijn vergrendeld.</strong> Wilt u daar toch iets aanpassen? Gebruik dan <strong>Corrigeren</strong> en geef een reden op."
+                },
+                {
+                    "label": "Werken met groepen",
+                    "text": "Wilt u het rooster per groep bekijken? Kies dan eerst een locatie.<br><br>U ziet vervolgens alleen de uitvoerders die aan die vestiging gekoppeld zijn. Invallers die op alle locaties mogen inklokken, verschijnen niet in dit gefilterde rooster.<br><br>Daarna kunt u één of meerdere groepen aanvinken. U kunt ook kiezen voor <strong>Zonder groep</strong>.<br><br>De uitvoerders worden vervolgens onder een afzonderlijke kop per groep weergegeven.<br><br>Er zijn twee zaken die u hierbij uit elkaar moet houden:<br>• <strong>Thuisgroep:</strong> deze stelt u in bij de uitvoerder. Ze bepaalt onder welke groepskop iemand in het rooster verschijnt.<br>• <strong>Groep in de dienst:</strong> deze vult u afzonderlijk in de roostercel in, bijvoorbeeld G1. Die wordt niet automatisch overgenomen uit de thuisgroep."
+                },
+                {
+                    "label": "Kleuren in het uurrooster",
+                    "text": "De kleuren helpen u om bijzondere dagen en situaties snel te herkennen.<br>• <strong>Blauw:</strong> een feestdag.<br>• <strong>Groen:</strong> een vervangingsdag.<br>• <strong>Grijs:</strong> een vaste vrije dag van de uitvoerder. U kunt hier toch een dienst plannen.<br>• <strong>Weekend:</strong> heeft een eigen achtergrondkleur.<br>• <strong>Vandaag:</strong> wordt afzonderlijk aangeduid.<br>• <strong>Vergrendelde dag:</strong> heeft eveneens een eigen kleur.<br><br>Beweeg met uw muis over de datumkop van een feestdag of vervangingsdag om meer informatie te zien. U ontdekt dan ook welke invloed die dag heeft op het rooster.<br><br>U kunt alleen de datumcellen selecteren. De namen van uitvoerders en de cijferkolommen zijn niet selecteerbaar.<br><br>Is er op een bepaalde dag te weinig personeel ingepland? Dan ziet u dat bij de betreffende dag.<br><br>Op een feestdag wordt een tekort niet getoond. Op een vervangingsdag wordt het tekort wel weergegeven."
                 },
                 {
                     "label": "Opslaan en publiceren",
-                    "text": "Opslaan bewaart de zichtbare week of maand en uitvoerders. Bij niet-opgeslagen wijzigingen verschijnt een popup als je de pagina verlaat of van week/maand wisselt. <strong>Publiceren</strong> maakt die periode zichtbaar op Clock Point (Mijn rooster) en zet een badge. Bewerken na publiceren blijft gepubliceerd; een nieuwe badge volgt alleen bij opnieuw publiceren."
+                    "text": "Opslaan en publiceren zijn twee verschillende handelingen."
                 },
                 {
-                    "label": "Week kopiëren",
-                    "text": "<strong>Kopieer naar volgende week</strong> kopieert alles-of-niets. Als de doelweek al diensten heeft, wordt de kopie geweigerd."
+                    "label": "Opslaan",
+                    "text": "Met <strong>Opslaan</strong> bewaart u de week of maand die momenteel op uw scherm staat, voor de uitvoerders die u op dat moment ziet.<br><br>Hebt u wijzigingen aangebracht en verlaat u de pagina of bladert u naar een andere week of maand? Dan waarschuwt WinProx u dat er nog niet-opgeslagen wijzigingen zijn.<br><br>Sla eerst op als u uw aanpassingen wilt behouden. Anders gaan ze verloren.",
+                    "nested": true
+                },
+                {
+                    "label": "Publiceren",
+                    "text": "Met <strong>Publiceren</strong> maakt u de volledige periode zichtbaar voor de uitvoerders op Clock Point, onder <strong>Mijn rooster</strong>.<br><br>De uitvoerders krijgen hiervan een melding.<br><br>Past u achteraf nog iets aan in een reeds gepubliceerde periode? Dan blijft die periode gepubliceerd. De wijzigingen worden pas opnieuw aangekondigd wanneer u opnieuw op Publiceren klikt.<br><br><strong>Belangrijk:</strong> publiceren heeft geen invloed op de RSZ-aangifte. Het is uitsluitend bedoeld om het uurrooster beschikbaar te maken voor uw uitvoerders.",
+                    "nested": true
+                },
+                {
+                    "label": "Een week herhalen",
+                    "text": "Wilt u een bestaande weekplanning overnemen voor de komende weken? Gebruik dan <strong>Herhaal week</strong>.<br><br>Deze functie is alleen beschikbaar in de weekweergave.<br><br>U kopieert de werkdiensten van de zichtbare week naar volgende weken. U kiest zelf hoeveel weken u wilt overnemen, met een maximum van 26 weken.<br><br>Bij het kopiëren gelden enkele regels:<br>• Afwezigheden worden niet overgenomen.<br>• Dagen met goedgekeurd verlof worden overgeslagen. WinProx meldt welke dagen hierdoor niet worden gekopieerd.<br>• Bevat een doelweek al diensten? Dan slaat WinProx die volledige week over. De overige weken worden wel gekopieerd.<br><br>Zo voorkomt u dat bestaande planningen onbedoeld worden overschreven."
                 },
                 {
                     "label": "Herstellen",
-                    "text": "<strong>Herstellen</strong> (week en maand) toont de laatste herstelpunten van een roosterwijziging: datum, tijdstip, bron, uitvoerders en dagen. Het verschil staat per gevolg en per dag: wat verdwijnt, wat terugkomt en wat wijzigt. Een vergrendelde dag, een dienst die intussen op een andere dag staat of goedgekeurd verlof blokkeert het herstel. Wijkt het rooster af of is er een open aanvraag, dan bevestigt u. Die bevestiging geldt alleen voor het verschil dat u ziet; is het rooster intussen gewijzigd, dan wordt niets hersteld en ziet u het nieuwe verschil. Na een geslaagd herstel kunt u die stap terugdraaien. Punten blijven 30 dagen bewaard; de lijst toont er hoogstens 40."
+                    "text": "Met <strong>Herstellen</strong> kunt u het uurrooster terugzetten naar een eerdere versie.<br><br>WinProx bewaart herstelpunten met onder andere:<br>• De datum en het tijdstip van de wijziging.<br>• Waar de wijziging vandaan kwam.<br>• Welke uitvoerders en dagen werden aangepast.<br><br>Herstelpunten blijven 30 dagen beschikbaar. De lijst toont maximaal de 40 meest recente herstelpunten.<br><br>Bij elk herstelpunt ziet u vooraf wat er verandert:<br>• Wat verdwijnt.<br>• Wat terugkomt.<br>• Wat wordt aangepast.<br><br>Niet elke eerdere situatie kan zomaar worden hersteld. Dat lukt bijvoorbeeld niet wanneer:<br>• Een betrokken dag ondertussen vergrendeld is.<br>• Een dienst intussen naar een andere dag werd verplaatst.<br>• Er goedgekeurd verlof op de betreffende dag staat."
                 },
                 {
-                    "label": "Shifttypes",
-                    "text": "Via de knop <strong>Legende</strong> (naast Publiceren) opent u een overzicht van codes, afwezigheid en groepen. Types beheert u onder Time → <strong>Shifttypes</strong> (meestal één keer)."
+                    "label": "Extra controle bij verschillen",
+                    "text": "Is het huidige rooster ondertussen gewijzigd of staat er nog een aanvraag open? Dan vraagt WinProx eerst om bevestiging.<br><br>U ziet welke verschillen er zijn voordat u het herstel uitvoert. Uw bevestiging geldt alleen voor de verschillen die op dat moment worden getoond.<br><br>Is het rooster ondertussen opnieuw gewijzigd? Dan voert WinProx het herstel niet uit. U krijgt eerst het nieuwe verschil te zien.<br><br>Is het herstel gelukt? Dan kunt u die handeling nog terugdraaien via <strong>Dit herstel ongedaan maken</strong>.",
+                    "nested": true
                 },
                 {
-                    "label": "Afwezigheid",
-                    "text": "Shifttypes kunnen <strong>verlof</strong>, <strong>recup</strong>, <strong>ziek</strong> of <strong>andere</strong> zijn. Die codes vullen de hele dag, tellen geen uren en mogen niet samen met werk die dag. Uitvoerders kunnen verlof, recup, ziekte of een type onder Andere aanvragen via Clock Point (tegel Verlof / Afwezigheid); beheer beslist onder Time → Aanvragen — ook ziekte moet worden goedgekeurd. Ziekte en Andere (bv. klein verlet, baaldag) tellen niet mee voor het verlofsaldo of recup."
+                    "label": "Afwezigheid inplannen",
+                    "text": "Een afwezigheidscode vult de volledige dag in de roostercel. Die dag telt niet mee als gewerkte uren.<br><br>WinProx onderscheidt vier soorten afwezigheid:<br>• <strong>Verlof</strong><br>• <strong>Recup</strong><br>• <strong>Ziek</strong><br>• <strong>Andere</strong>, bijvoorbeeld klein verlet of een baaldag.<br><br>Moet iemand slechts een deel van de dag afwezig zijn, bijvoorbeeld naast een gepland werkblok? Open dan <strong>Dag bewerken</strong>. Zo kunt u werk en afwezigheid op dezelfde dag combineren."
                 },
                 {
-                    "label": "Vervanger zoeken",
-                    "text": "Op een gepland werkblok kunt u een <strong>vervanger</strong> zoeken. WinProx stelt kandidaten voor (zie Time → Shifttypes: vervangingspool en optioneel ook zonder planning). Het oorspronkelijke blok wordt afwezigheid; de vervanger krijgt hetzelfde tijdslot, locatie en unit."
+                    "label": "Aanvragen door uitvoerders",
+                    "text": "Uitvoerders kunnen zelf verlof, recup, ziekte of een afwezigheid van het type Andere aanvragen via Clock Point, op de tegel <strong>Verlof / Afwezigheid</strong>.<br><br>U behandelt deze aanvragen onder <strong>Time → Aanvragen</strong>.<br><br>Ook een ziektemelding moet u daar goedkeuren.<br><br>Ziekte en Andere hebben geen invloed op het verlofsaldo of het recupsaldo.",
+                    "nested": true
                 },
                 {
-                    "label": "Gepland vs geklokt",
-                    "text": "Op een <strong>gepubliceerde</strong> periode markeert het rooster afwijkingen (te laat/te vroeg) meteen, ook <strong>vandaag</strong>. Tot 15 minuten te vroeg telt als correct; 15 minuten of meer te laat (of meer dan 15 minuten te vroeg) is een afwijking. Prikken blijven altijd geregistreerd. Ontbrekende prikken pas na het geplande einde (of op vorige dagen). Ongeplande prikken en afwezigheid zonder prik blijven zoals eerder. Een correcte inklok toont een groen vinkje rechtsboven; een afwijking of een ontbrekende prik blijft een bolletje. Klik op de markering rechtsboven in de cel om <strong>Uren</strong> van die uitvoerder die dag te openen. <strong>Afdrukken</strong> (naast de titel) opent een nieuw venster (A4 liggend). Publiceren stuurt niets naar de RSZ."
+                    "label": "Een vervanger zoeken",
+                    "text": "Kan iemand een geplande dienst niet uitvoeren? Dan kunt u via <strong>Vervanger…</strong> een andere uitvoerder zoeken.<br><br>WinProx stelt uitvoerders voor die:<br>• Die dag al een dienst hebben.<br>• De instelling <strong>Beschikbaar voor vervanging</strong> hebben.<br><br>Onder <strong>Time → Shifttypes</strong> kunt u ook instellen dat uitvoerders zonder geplande dienst in aanmerking komen.<br><br>Kiest u een vervanger? Dan gebeurt het volgende:<br>• Het oorspronkelijke werkblok wordt omgezet naar afwezigheid.<br>• De vervanger krijgt hetzelfde tijdslot.<br>• De locatie en unit worden overgenomen.<br><br>Zo blijft de oorspronkelijke planning herkenbaar en wordt de vervanging correct geregistreerd."
                 },
                 {
-                    "label": "Urenkolommen rechts",
-                    "text": "Rechts van het rooster staan per uitvoerder cijferkolommen met verticale titel: <strong>Norm</strong> (contractnorm), <strong>Verschil</strong> (gepland min norm, met teken), <strong>Gepland</strong>, <strong>Gewerkt</strong> en per afwezigheid <strong>Verlof</strong>, <strong>Recup</strong>, <strong>Ziek</strong> en <strong>Andere</strong> (dagen en resturen). <strong>Sein</strong> toont een aantal en/of een uitroepteken bij onvolledige blokken of een openstaande klokregistratie. Norm en verschil blijven leeg zolang de norm niet betrouwbaar is. De weeknorm (standaard 38u) stelt u in bij de uitvoerder; de maandnorm volgt uit de werkregeling — zonder werkregeling telt ma–vr volgens de weeknorm en volgen feestdagen de feestdagenregeling — zonder afspraak de Belgische standaard. Dit is een telling, geen oordeel over arbeidsduur."
+                    "label": "Gepland en geklokt vergelijken",
+                    "text": "Bij een gepubliceerde periode kunt u de geplande diensten vergelijken met de werkelijk geklokte uren. Dat kan ook voor de huidige dag.<br><br>WinProx controleert of de uitvoerder ongeveer op het geplande tijdstip heeft ingeklokt.<br><br>De standaardtolerantie is 15 minuten:<br>• Tot 15 minuten te vroeg: correct.<br>• 15 minuten of meer te laat: afwijking.<br>• Meer dan 15 minuten te vroeg: afwijking.<br><br>Een correcte inklok wordt aangeduid met een groen vinkje rechtsboven in de roostercel.<br><br>Bij een afwijking of ontbrekende inklok ziet u een bolletje.<br><br>Klik op het vinkje of bolletje om de geklokte uren van die uitvoerder op die dag te openen.<br><br>Een ontbrekende prik wordt pas getoond nadat de geplande dienst afgelopen is, of wanneer het om een vorige dag gaat.<br><br>De oorspronkelijke klokregistraties blijven altijd bewaard."
+                },
+                {
+                    "label": "Het uurrooster afdrukken",
+                    "text": "Met <strong>Afdrukken</strong>, naast de titel, opent u een afdrukvriendelijke versie van het rooster.<br><br>Deze wordt geopend in een nieuw venster en is opgemaakt voor A4 in liggende richting."
+                },
+                {
+                    "label": "De cijfers rechts: Statistieken",
+                    "text": "Met <strong>Statistieken</strong> opent u rechts een overzicht met de belangrijkste cijfers per uitvoerder.<br><br>U vindt er onder andere:<br>• <strong>Norm:</strong> de contractuele werkuren, standaard 38 uur per week. Deze stelt u in bij de uitvoerder.<br>• <strong>Verschil:</strong> het verschil tussen de geplande uren en de contractnorm.<br>• <strong>Gepland:</strong> het totaal aantal ingeplande uren in de geselecteerde periode.<br>• <strong>Gewerkt:</strong> het totaal aantal werkelijk geklokte uren.<br>• <strong>Verlof:</strong> de ingeplande verlofuren.<br>• <strong>Recup:</strong> de ingeplande recupuren.<br>• <strong>Ziek:</strong> de ingeplande ziekte-uren.<br>• <strong>Andere:</strong> de overige ingeplande afwezigheden.<br>• <strong>Sein:</strong> een waarschuwing bij een onvolledig werkblok of een openstaande inklok zonder uitklok.<br><br>Is de contractnorm niet betrouwbaar beschikbaar? Dan laat WinProx de cijfers voor Norm en Verschil leeg."
+                },
+                {
+                    "label": "Hoe wordt de norm berekend?",
+                    "text": "In de maandweergave houdt WinProx rekening met de werkregeling van de uitvoerder.<br><br>Is er geen werkregeling ingesteld? Dan berekent WinProx de norm op basis van de weeknorm, verdeeld over maandag tot en met vrijdag.<br><br>Voor feestdagen gebruikt WinProx de instellingen onder <strong>Time → Feestdagen</strong>. Is er geen specifieke regeling ingesteld, dan geldt de Belgische standaard.<br><br><strong>Goed om te weten:</strong> deze statistieken zijn bedoeld als overzicht en controle. WinProx geeft hier geen oordeel over of iemand te veel of te weinig heeft gewerkt. Het toont de planning, de geklokte uren en de bijbehorende verschillen.",
+                    "nested": true
                 }
             ]
         },

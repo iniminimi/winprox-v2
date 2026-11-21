@@ -2055,52 +2055,89 @@
             "title": "Aide — Horaire",
             "actions": [
                 {
-                    "label": "Affichage",
-                    "text": "Basculez entre <strong>semaine</strong> et <strong>mois</strong>. <strong>Week-ends</strong> affiche samedi et dimanche (désactivé par défaut) ; désactivé = lundi à vendredi. Dans la grille mensuelle, une ligne verticale marquée sépare alors vendredi et lundi. Enregistrer sans week-ends laisse sam./dim. inchangés. Copier une semaine n’est possible qu’en vue semaine. Les boutons <strong>Semaine</strong> et <strong>Mois</strong> mènent toujours à la semaine ou au mois en cours."
+                    "label": "À quoi sert le planning ?",
+                    "text": "Avec le planning, vous prévoyez qui travaille et quand. Pour chaque intervenant et chaque jour, vous fixez les services prévus.<br><br>Dès que vous publiez une période, les intervenants peuvent consulter leur planning sur Clock Point, sous <strong>Mon planning</strong>."
                 },
                 {
-                    "label": "Couleurs et sélection",
-                    "text": "Les jours fériés colorent la colonne de date en <strong>bleu</strong>, les jours de remplacement en <strong>vert</strong> — l’infobulle de l’en-tête indique le jour férié et son effet. Un jour férié n’affiche pas l’effectif minimum en rouge ; un jour de remplacement le fait s’il manque du monde. Une <strong>cellule grise</strong> est un jour de repos fixe de cet intervenant (0 minute dans son rythme hebdomadaire); la cellule reste modifiable. Week-end, aujourd’hui et jours verrouillés ont leur propre teinte. Seules les cellules de date sont sélectionnables — ni les noms ni les colonnes de chiffres."
+                    "label": "Choisir d’abord une équipe ou un site",
+                    "text": "Le planning ne se charge qu’après avoir choisi une équipe ou un site.<br><br>L’aperçu reste ainsi clair, même si votre organisation compte beaucoup d’intervenants."
                 },
                 {
-                    "label": "Codes et heures libres",
-                    "text": "Saisissez un <strong>code</strong> de la légende ou une heure <strong>07:00-15:00</strong>. Ajoutez éventuellement un groupe dans la même cellule : <strong>D1/G1</strong> ou <strong>07:00-12:00/G1</strong> (espace autorisé). Les cellules invalides ont une <strong>bordure rouge</strong> — corrigez-les avant d’enregistrer. Si un code de groupe existe sur plusieurs sites, choisissez un filtre de site."
+                    "label": "Voir une semaine ou un mois",
+                    "text": "Avec <strong>Semaine</strong> et <strong>Mois</strong>, vous choisissez comment afficher le planning.<br>• Cliquez sur Semaine pour aller à la semaine en cours.<br>• Cliquez sur Mois pour aller au mois en cours.<br>• Utilisez les flèches pour passer à une période précédente ou suivante.<br><br><strong>Week-ends</strong> est désactivé par défaut. Vous ne voyez alors que du lundi au vendredi.<br><br>Dans la vue mensuelle, un trait épais sépare le vendredi du lundi suivant. Les semaines restent ainsi distinctes.<br><br><strong>Bon à savoir :</strong> si vous enregistrez le planning alors que Week-ends est désactivé, le samedi et le dimanche restent inchangés. Les services de week-end déjà présents ne sont pas écrasés."
                 },
                 {
-                    "label": "Groupes",
-                    "text": "Choisissez d’abord un <strong>filtre de site</strong> — vous ne voyez alors que les exécutants affectés à ce site (pas les volants). Cochez ensuite les <strong>groupes</strong> (codes planning) et <strong>Sans groupe</strong>. Les exécutants apparaissent sous des en-têtes de section. Le groupe par défaut se règle sur l’exécutant ; le lieu dans une cellule (D1/G1) reste séparé."
+                    "label": "Saisir un service",
+                    "text": "Vous pouvez saisir un service de deux façons :<br>• Tapez un code de la légende, par exemple <strong>V2</strong>.<br>• Tapez vous-même l’heure de début et de fin, par exemple <strong>07:00-15:00</strong>.<br><br>Vous pouvez aussi ajouter un groupe tout de suite. Par exemple :<br>• <strong>D1/G1</strong><br>• <strong>07:00-12:00/G1</strong><br><br>Un bord rouge autour d’une cellule signifie que la valeur saisie n’est pas correcte. Corrigez-la avant d’enregistrer le planning.<br><br>Vous utilisez le même code de groupe sur plusieurs sites ? Choisissez d’abord le bon site. Sinon, WinProx ne sait pas quel groupe vous visez.<br><br>Une absence ne peut pas être liée à un groupe.<br><br>Vous ouvrez la légende via <strong>Légende</strong>, à côté de Publier. Vous gérez les codes sous <strong>Time → Types de service</strong>. Vous les réglez en général une seule fois."
+                },
+                {
+                    "label": "Plusieurs blocs de travail le même jour",
+                    "text": "Une cellule contient par défaut un seul service.<br><br>Quelqu’un travaille le matin et le soir ? Saisissez alors les deux blocs séparément via <strong>Modifier le jour</strong>.<br><br>Attention : si vous tapez directement dans une cellule qui contient déjà plusieurs blocs, vous remplacez toute la journée par un seul nouveau bloc.<br><br>WinProx demande d’abord une confirmation avant de remplacer les blocs existants.<br><br>Via Modifier le jour, vous pouvez aussi ajouter une note à un bloc de travail.<br><br><strong>Les jours passés sont verrouillés.</strong> Vous voulez tout de même modifier quelque chose ? Utilisez <strong>Corriger</strong> et indiquez une raison."
+                },
+                {
+                    "label": "Travailler avec des groupes",
+                    "text": "Vous voulez voir le planning par groupe ? Choisissez d’abord un site.<br><br>Vous ne voyez alors que les intervenants liés à ce site. Les remplaçants qui peuvent pointer sur tous les sites n’apparaissent pas dans ce planning filtré.<br><br>Vous pouvez ensuite cocher un ou plusieurs groupes. Vous pouvez aussi choisir <strong>Sans groupe</strong>.<br><br>Les intervenants s’affichent alors sous un titre distinct pour chaque groupe.<br><br>Deux choses sont à distinguer :<br>• <strong>Groupe d’appartenance :</strong> vous le réglez sur l’intervenant. Il détermine sous quel titre de groupe la personne apparaît.<br>• <strong>Groupe du service :</strong> vous le saisissez séparément dans la cellule, par exemple G1. Il n’est pas repris automatiquement du groupe d’appartenance."
+                },
+                {
+                    "label": "Couleurs dans le planning",
+                    "text": "Les couleurs vous aident à reconnaître vite les jours et situations particuliers.<br>• <strong>Bleu :</strong> un jour férié.<br>• <strong>Vert :</strong> un jour de remplacement.<br>• <strong>Gris :</strong> un jour de repos fixe de l’intervenant. Vous pouvez quand même y planifier un service.<br>• <strong>Week-end :</strong> a sa propre couleur de fond.<br>• <strong>Aujourd’hui :</strong> est indiqué à part.<br>• <strong>Jour verrouillé :</strong> a aussi sa propre couleur.<br><br>Passez la souris sur l’en-tête de date d’un jour férié ou d’un jour de remplacement pour en savoir plus. Vous y voyez aussi l’effet de ce jour sur le planning.<br><br>Vous ne pouvez sélectionner que les cellules de date. Les noms des intervenants et les colonnes de chiffres ne sont pas sélectionnables.<br><br>Pas assez de personnel est prévu un certain jour ? Vous le voyez à côté de ce jour.<br><br>Un jour férié n’affiche pas le manque. Un jour de remplacement l’affiche."
                 },
                 {
                     "label": "Enregistrer et publier",
-                    "text": "Enregistrer conserve la semaine ou le mois visible. En cas de modifications non enregistrées, une fenêtre s’affiche si vous quittez la page ou changez de semaine/mois. <strong>Publier</strong> rend la période visible sur le Clock Point (Mon planning) et pose un badge. Les corrections après publication restent publiées."
+                    "text": "Enregistrer et publier sont deux actions distinctes."
                 },
                 {
-                    "label": "Copier la semaine",
-                    "text": "<strong>Copier vers la semaine suivante</strong> est tout ou rien. Si la semaine cible a déjà des services, la copie est refusée."
+                    "label": "Enregistrer",
+                    "text": "Avec <strong>Enregistrer</strong>, vous conservez la semaine ou le mois affiché, pour les intervenants que vous voyez à ce moment.<br><br>Vous avez fait des changements et vous quittez la page, ou vous passez à une autre semaine ou un autre mois ? WinProx vous prévient qu’il reste des changements non enregistrés.<br><br>Enregistrez d’abord si vous voulez garder vos modifications. Sinon, elles sont perdues.",
+                    "nested": true
+                },
+                {
+                    "label": "Publier",
+                    "text": "Avec <strong>Publier</strong>, vous rendez toute la période visible pour les intervenants sur Clock Point, sous <strong>Mon planning</strong>.<br><br>Les intervenants en reçoivent un avis.<br><br>Vous modifiez ensuite une période déjà publiée ? Elle reste publiée. Les changements ne sont annoncés à nouveau que lorsque vous cliquez encore sur Publier.<br><br><strong>Important :</strong> publier n’a pas d’effet sur la déclaration ONSS. Cela sert uniquement à mettre le planning à la disposition de vos intervenants.",
+                    "nested": true
+                },
+                {
+                    "label": "Répéter une semaine",
+                    "text": "Vous voulez reprendre un planning de semaine pour les semaines à venir ? Utilisez <strong>Répéter la semaine</strong>.<br><br>Cette fonction n’est disponible que dans la vue semaine.<br><br>Vous copiez les services de travail de la semaine visible vers les semaines suivantes. Vous choisissez le nombre de semaines, jusqu’à 26.<br><br>Quelques règles s’appliquent :<br>• Les absences ne sont pas reprises.<br>• Les jours avec un congé approuvé sont ignorés. WinProx indique quels jours ne sont pas copiés pour cette raison.<br>• Une semaine cible contient déjà des services ? WinProx ignore alors toute cette semaine. Les autres semaines sont bien copiées.<br><br>Ainsi, les plannings existants ne sont pas écrasés par mégarde."
                 },
                 {
                     "label": "Rétablir",
-                    "text": "<strong>Rétablir</strong> (semaine et mois) montre les derniers points d’une modification du planning : date, heure, source, exécutants et jours. L’écart est groupé par effet et par jour : ce qui disparaît, ce qui revient et ce qui change. Un jour verrouillé, un service désormais sur un autre jour ou un congé approuvé bloque le rétablissement. Si le planning diffère ou qu’une demande est ouverte, vous confirmez. Cette confirmation ne vaut que pour l’écart affiché ; si le planning a changé entre-temps, rien n’est rétabli et vous voyez le nouvel écart. Après un rétablissement réussi, vous pouvez annuler cette étape. Les points sont conservés 30 jours ; la liste en montre au plus 40."
+                    "text": "Avec <strong>Rétablir</strong>, vous pouvez remettre le planning à une version antérieure.<br><br>WinProx conserve des points de restauration qui indiquent notamment :<br>• La date et l’heure du changement.<br>• D’où venait le changement.<br>• Quels intervenants et quels jours ont été modifiés.<br><br>Les points restent disponibles 30 jours. La liste montre au plus les 40 points les plus récents.<br><br>Pour chaque point, vous voyez à l’avance ce qui change :<br>• Ce qui disparaît.<br>• Ce qui revient.<br>• Ce qui est modifié.<br><br>Toute situation antérieure ne peut pas être rétablie. Ce n’est pas possible, par exemple, lorsque :<br>• Un jour concerné est désormais verrouillé.<br>• Un service a été déplacé vers un autre jour.<br>• Un congé approuvé est posé ce jour-là."
                 },
                 {
-                    "label": "Types de service",
-                    "text": "Le bouton <strong>Légende</strong> (à côté de Publier) ouvre codes, absences et groupes. Les types se gèrent sous Time → <strong>Types de service</strong> (en général une fois)."
+                    "label": "Contrôle supplémentaire en cas d’écarts",
+                    "text": "Le planning actuel a changé entre-temps, ou une demande est encore ouverte ? WinProx demande d’abord une confirmation.<br><br>Vous voyez les écarts avant de rétablir. Votre confirmation ne vaut que pour les écarts affichés à ce moment.<br><br>Le planning a encore changé entre-temps ? WinProx ne rétablit rien. Vous voyez d’abord le nouvel écart.<br><br>Le rétablissement a réussi ? Vous pouvez encore annuler cette étape via <strong>Annuler ce rétablissement</strong>.",
+                    "nested": true
                 },
                 {
-                    "label": "Absence",
-                    "text": "Les types de shift peuvent être <strong>congé</strong>, <strong>récup</strong>, <strong>maladie</strong> ou <strong>autre</strong>. Ces codes remplissent toute la journée, ne comptent pas d’heures et ne peuvent pas coexister avec du travail ce jour-là. Les exécutants peuvent demander un congé, une récup, une maladie ou un type Autre sur Clock Point (tuile Congé / Absence) ; la gestion décide sous Time → Demandes. Maladie et Autre ne comptent pas dans le solde de congés ni la récup."
+                    "label": "Planifier une absence",
+                    "text": "Un code d’absence remplit toute la journée dans la cellule. Ce jour ne compte pas comme heures travaillées.<br><br>WinProx distingue quatre sortes d’absence :<br>• <strong>Congé</strong><br>• <strong>Récup</strong><br>• <strong>Maladie</strong><br>• <strong>Autre</strong>, par exemple un petit chômage ou un jour de congé propre.<br><br>Quelqu’un ne doit être absent qu’une partie de la journée, par exemple à côté d’un bloc de travail ? Ouvrez <strong>Modifier le jour</strong>. Vous pouvez alors combiner travail et absence le même jour."
+                },
+                {
+                    "label": "Demandes des intervenants",
+                    "text": "Les intervenants peuvent demander eux-mêmes un congé, une récup, une maladie ou une absence de type Autre sur Clock Point, sur la tuile <strong>Congé / Absence</strong>.<br><br>Vous traitez ces demandes sous <strong>Time → Demandes</strong>.<br><br>Une déclaration de maladie doit aussi y être approuvée.<br><br>Maladie et Autre n’ont pas d’effet sur le solde de congé ni sur le solde de récup.",
+                    "nested": true
                 },
                 {
                     "label": "Chercher un remplaçant",
-                    "text": "Sur un bloc de travail planifié vous pouvez chercher un <strong>remplaçant</strong>. WinProx propose des candidats (voir Time → Types de service : vivier et optionnellement aussi sans planning). Le bloc d’origine devient une absence ; le remplaçant reçoit le même créneau, site et unité."
+                    "text": "Quelqu’un ne peut pas assurer un service prévu ? Cherchez alors un autre intervenant via <strong>Remplaçant…</strong>.<br><br>WinProx propose des intervenants qui :<br>• Ont déjà un service ce jour-là.<br>• Ont le réglage <strong>Disponible pour remplacement</strong>.<br><br>Sous <strong>Time → Types de service</strong>, vous pouvez aussi prévoir que des intervenants sans service prévu soient proposés.<br><br>Vous choisissez un remplaçant ? Voici ce qui se passe :<br>• Le bloc de travail d’origine devient une absence.<br>• Le remplaçant reçoit le même créneau.<br>• Le site et l’unité sont repris.<br><br>Le planning d’origine reste reconnaissable, et le remplacement est enregistré correctement."
                 },
                 {
-                    "label": "Planifié vs pointé",
-                    "text": "Sur une période <strong>publiée</strong>, la grille marque les écarts (en retard/en avance) immédiatement, y compris <strong>aujourd’hui</strong>. Jusqu’à 15 minutes d’avance compte comme à l’heure ; 15 minutes ou plus de retard (ou plus de 15 minutes d’avance) est un écart. Les pointages restent toujours enregistrés. Pointages manquants seulement après la fin prévue (ou les jours passés). Pointages non prévus et absence sans pointage restent comme avant. Un pointage correct affiche une coche verte en haut à droite ; un écart ou un pointage manquant reste un point. Cliquez sur le marqueur en haut à droite pour ouvrir <strong>Heures</strong> de cet exécutant ce jour-là. <strong>Imprimer</strong> (à côté du titre) ouvre une nouvelle fenêtre (A4 paysage)."
+                    "label": "Comparer prévu et pointé",
+                    "text": "Pour une période publiée, vous pouvez comparer les services prévus aux heures réellement pointées. Cela vaut aussi pour le jour même.<br><br>WinProx vérifie si l’intervenant a pointé à peu près à l’heure prévue.<br><br>La tolérance habituelle est de 15 minutes :<br>• Jusqu’à 15 minutes trop tôt : correct.<br>• 15 minutes ou plus de retard : un écart.<br>• Plus de 15 minutes trop tôt : un écart.<br><br>Un pointage correct est indiqué par une coche verte en haut à droite de la cellule.<br><br>En cas d’écart ou de pointage manquant, vous voyez un point.<br><br>Cliquez sur la coche ou le point pour ouvrir les heures pointées de cet intervenant ce jour-là.<br><br>Un pointage manquant n’apparaît qu’après la fin du service prévu, ou s’il s’agit d’un jour précédent.<br><br>Les pointages d’origine sont toujours conservés."
                 },
                 {
-                    "label": "Colonnes d’heures à droite",
-                    "text": "À droite de la grille, chaque exécutant a des colonnes de chiffres à titre vertical : <strong>Norme</strong> (norme de contrat), <strong>Écart</strong> (planifié moins la norme, signé), <strong>Planifié</strong>, <strong>Travaillé</strong> et par absence <strong>Congé</strong>, <strong>Récup</strong>, <strong>Maladie</strong> et <strong>Autre</strong> (jours plus heures restantes). <strong>Signal</strong> montre un nombre et/ou un point d’exclamation pour des blocs incomplets ou un pointage ouvert. Norme et écart restent vides tant que la norme n’est pas fiable. La norme hebdomadaire (38 h par défaut) se règle sur l’exécutant ; la norme mensuelle suit le régime de travail — sans régime, lun–ven comptent selon la norme hebdomadaire et les jours fériés suivent le régime des fériés — sans accord, le standard belge. C’est un décompte, pas un jugement sur la durée du travail."
+                    "label": "Imprimer le planning",
+                    "text": "Avec <strong>Imprimer</strong>, à côté du titre, vous ouvrez une version du planning adaptée à l’impression.<br><br>Elle s’ouvre dans une nouvelle fenêtre et est mise en page pour l’A4 à l’horizontale."
+                },
+                {
+                    "label": "Les chiffres à droite : Statistiques",
+                    "text": "Avec <strong>Statistiques</strong>, vous ouvrez à droite un aperçu des principaux chiffres par intervenant.<br><br>Vous y trouvez notamment :<br>• <strong>Norme :</strong> les heures contractuelles, 38 heures par semaine par défaut. Vous les réglez sur l’intervenant.<br>• <strong>Écart :</strong> la différence entre les heures planifiées et la norme du contrat.<br>• <strong>Planifié :</strong> le total des heures planifiées sur la période choisie.<br>• <strong>Travaillé :</strong> le total des heures réellement pointées.<br>• <strong>Congé :</strong> les heures de congé planifiées.<br>• <strong>Récup :</strong> les heures de récupération planifiées.<br>• <strong>Maladie :</strong> les heures de maladie planifiées.<br>• <strong>Autre :</strong> les autres absences planifiées.<br>• <strong>Signal :</strong> un avertissement en cas de bloc incomplet ou d’une entrée sans sortie.<br><br>La norme du contrat n’est pas disponible de façon fiable ? WinProx laisse alors vides les chiffres de Norme et d’Écart."
+                },
+                {
+                    "label": "Comment la norme est-elle calculée ?",
+                    "text": "Dans la vue mensuelle, WinProx tient compte du régime de travail de l’intervenant.<br><br>Aucun régime n’est défini ? WinProx calcule alors la norme à partir de la norme hebdomadaire, répartie du lundi au vendredi.<br><br>Pour les jours fériés, WinProx utilise les réglages sous <strong>Time → Jours fériés</strong>. Sans régime particulier, la norme belge s’applique.<br><br><strong>Bon à savoir :</strong> ces statistiques servent d’aperçu et de contrôle. WinProx ne juge pas ici si quelqu’un a trop ou trop peu travaillé. Il montre le planning, les heures pointées et les écarts.",
+                    "nested": true
                 }
             ]
         },

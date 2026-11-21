@@ -2048,55 +2048,92 @@
             ]
         },
         "time.schedule": {
-            "title": "Guida — Turni",
+            "title": "Aiuto — Turni",
             "actions": [
                 {
-                    "label": "Vista",
-                    "text": "Passa tra <strong>settimana</strong> e <strong>mese</strong>. <strong>Weekend</strong> mostra sabato e domenica (disattivati di default); disattivati = solo lunedì–venerdì. Nella griglia mensile una linea verticale marcata separa allora venerdì e lunedì. Salvare senza weekend lascia sab/dom invariati. Copiare una settimana solo in vista settimana. I pulsanti <strong>Settimana</strong> e <strong>Mese</strong> portano sempre alla settimana o al mese corrente."
+                    "label": "A che cosa serve il turno?",
+                    "text": "Con i turni pianifica chi lavora e quando. Per ogni operatore e ogni giorno fissa i servizi previsti.<br><br>Appena pubblica un periodo, gli operatori possono vedere la propria pianificazione su Clock Point, in <strong>Il mio turno</strong>."
                 },
                 {
-                    "label": "Colori e selezione",
-                    "text": "I festivi colorano la colonna della data di <strong>blu</strong>, i giorni sostitutivi di <strong>verde</strong> — il tooltip dell’intestazione indica la festa e il suo effetto. In un festivo la presenza minima non è rossa; in un giorno sostitutivo sì, se manca personale. Una <strong>cella grigia</strong> è un giorno libero fisso di quell’esecutore (0 minuti nel suo schema settimanale); la cella resta modificabile. Weekend, oggi e giorni bloccati hanno una tinta propria. Solo le celle delle date si possono selezionare — nomi e colonne di cifre no."
+                    "label": "Scegliere prima un team o una sede",
+                    "text": "Il turno si carica solo dopo che ha scelto un team o una sede.<br><br>Così la panoramica resta chiara, anche se la Sua organizzazione ha molti operatori."
                 },
                 {
-                    "label": "Codici e orari liberi",
-                    "text": "Digita un <strong>codice</strong> della legenda o un orario <strong>07:00-15:00</strong>. Facoltativamente un gruppo nella stessa cella: <strong>D1/G1</strong> o <strong>07:00-12:00/G1</strong> (lo spazio è ammesso). Le celle non valide hanno un <strong>bordo rosso</strong>: correggile prima di salvare. Se un codice gruppo è presente in più sedi, scegli un filtro sede."
+                    "label": "Vedere una settimana o un mese",
+                    "text": "Con <strong>Settimana</strong> e <strong>Mese</strong> sceglie come vedere il turno.<br>• Scelga Settimana per andare alla settimana attuale.<br>• Scelga Mese per andare al mese attuale.<br>• Usi le frecce per passare a un periodo precedente o successivo.<br><br><strong>Weekend</strong> è disattivato per impostazione predefinita. Vede allora solo da lunedì a venerdì.<br><br>Nella vista mensile c’è una linea spessa chiara tra il venerdì e il lunedì successivo. Così le settimane restano distinte.<br><br><strong>Buono a sapersi:</strong> se salva il turno con Weekend disattivato, sabato e domenica restano intatti. I servizi del fine settimana già presenti non vengono sovrascritti."
                 },
                 {
-                    "label": "Gruppi",
-                    "text": "Scegli prima un <strong>filtro sede</strong>: vedi solo gli esecutori assegnati a quella sede (niente sostituti). Poi spunta i <strong>gruppi</strong> (codici turno) e <strong>Senza gruppo</strong>. Gli esecutori compaiono sotto intestazioni di sezione. Il gruppo predefinito si imposta sull’esecutore; il posto in una cella (D1/G1) resta separato."
+                    "label": "Inserire un servizio",
+                    "text": "Può inserire un servizio in due modi:<br>• Scriva un codice della legenda, per esempio <strong>V2</strong>.<br>• Scriva Lei l’ora di inizio e di fine, per esempio <strong>07:00-15:00</strong>.<br><br>Può anche aggiungere subito un gruppo. Per esempio:<br>• <strong>D1/G1</strong><br>• <strong>07:00-12:00/G1</strong><br><br>Un bordo rosso intorno a una cella significa che il valore non è corretto. Lo modifichi prima di salvare.<br><br>Usa lo stesso codice di gruppo in più sedi? Scelga prima la sede giusta. Altrimenti WinProx non sa quale gruppo intende.<br><br>Un’assenza non si può collegare a un gruppo.<br><br>La legenda si apre con <strong>Legenda</strong>, accanto a Pubblica. I codici si gestiscono in <strong>Time → Tipi di turno</strong>. Di solito li imposta una sola volta."
                 },
                 {
-                    "label": "Salva e pubblica",
-                    "text": "Salva conserva la settimana o il mese visibile. Se ci sono modifiche non salvate, compare un avviso quando lasci la pagina o cambi settimana/mese. <strong>Pubblica</strong> rende il periodo visibile sul Clock Point (Il mio turno) e imposta un badge. Le modifiche dopo la pubblicazione restano pubblicate."
+                    "label": "Più blocchi di lavoro nello stesso giorno",
+                    "text": "Una cella contiene per impostazione predefinita un solo servizio.<br><br>Qualcuno lavora la mattina e la sera? Inserisca allora i due blocchi separatamente con <strong>Modifica giorno</strong>.<br><br>Attenzione: se scrive direttamente in una cella che ha già più blocchi, sostituisce l’intera giornata con un solo blocco nuovo.<br><br>WinProx chiede prima conferma prima di sostituire i blocchi esistenti.<br><br>In Modifica giorno può anche aggiungere una nota a un blocco.<br><br><strong>I giorni passati sono bloccati.</strong> Vuole comunque modificare qualcosa? Usi <strong>Corregi</strong> e indichi un motivo."
                 },
                 {
-                    "label": "Copia settimana",
-                    "text": "<strong>Copia nella settimana successiva</strong> è tutto o niente. Se la settimana di destinazione ha già turni, la copia è rifiutata."
+                    "label": "Lavorare con i gruppi",
+                    "text": "Vuole vedere il turno per gruppi? Scelga prima una sede.<br><br>Vede allora solo gli operatori collegati a quella sede. I sostituti che possono timbrare in tutte le sedi non compaiono in questo turno filtrato.<br><br>Poi può selezionare uno o più gruppi. Può anche scegliere <strong>Senza gruppo</strong>.<br><br>Gli operatori compaiono allora sotto un’intestazione distinta per gruppo.<br><br>Due cose vanno tenute distinte:<br>• <strong>Gruppo di appartenenza:</strong> lo imposta sull’operatore. Decide sotto quale intestazione compare quella persona.<br>• <strong>Gruppo del servizio:</strong> lo scrive a parte nella cella, per esempio G1. Non viene preso automaticamente dal gruppo di appartenenza."
                 },
                 {
-                    "label": "Ripristina",
-                    "text": "<strong>Ripristina</strong> (settimana e mese) mostra gli ultimi punti di una modifica al turno: data, ora, origine, esecutori e giorni. La differenza è raggruppata per effetto e per giorno: cosa sparisce, cosa torna e cosa cambia. Un giorno bloccato, un turno finito su un altro giorno o un’assenza approvata blocca il ripristino. Se il turno differisce o c’è una richiesta aperta, si conferma. La conferma vale solo per la differenza mostrata; se il piano è cambiato nel frattempo, non viene ripristinato nulla e si vede la nuova differenza. Dopo un ripristino riuscito si può annullare quel passo. I punti restano 30 giorni; l’elenco ne mostra al massimo 40."
+                    "label": "Colori nel turno",
+                    "text": "I colori La aiutano a riconoscere in fretta giorni e situazioni particolari.<br>• <strong>Blu:</strong> una festività.<br>• <strong>Verde:</strong> un giorno di sostituzione.<br>• <strong>Grigio:</strong> un giorno libero fisso dell’operatore. Può comunque pianificare un servizio.<br>• <strong>Weekend:</strong> ha un colore di sfondo proprio.<br>• <strong>Oggi:</strong> è indicato a parte.<br>• <strong>Giorno bloccato:</strong> ha anch’esso un colore proprio.<br><br>Passi il mouse sull’intestazione della data di una festività o di un giorno di sostituzione per saperne di più. Vede anche che effetto ha quel giorno.<br><br>Può selezionare solo le celle della data. I nomi e le colonne dei numeri non sono selezionabili.<br><br>C’è poco personale pianificato in un giorno? Lo vede accanto a quel giorno.<br><br>In una festività il deficit non viene mostrato. In un giorno di sostituzione sì."
                 },
                 {
-                    "label": "Tipi di turno",
-                    "text": "Il pulsante <strong>Legenda</strong> (accanto a Pubblica) apre codici, assenze e gruppi. I tipi si gestiscono in Time → <strong>Tipi di turno</strong> (di solito una volta)."
+                    "label": "Salvare e pubblicare",
+                    "text": "Salvare e pubblicare sono due azioni diverse."
                 },
                 {
-                    "label": "Assenza",
-                    "text": "I tipi di turno possono essere <strong>ferie</strong>, <strong>recupero</strong>, <strong>malattia</strong> o <strong>altro</strong>. Quei codici riempiono l’intera giornata, non contano ore e non possono stare con lavoro lo stesso giorno. Gli esecutori possono richiedere ferie, recupero, malattia o un tipo in Altro da Clock Point (riquadro Ferie / Assenza); la gestione decide in Time → Richieste. Malattia e Altro non contano nel saldo ferie né nel recupero."
+                    "label": "Salva",
+                    "text": "Con <strong>Salva</strong> conserva la settimana o il mese che ha sullo schermo, per gli operatori che vede in quel momento.<br><br>Ha fatto modifiche e lascia la pagina, oppure passa a un’altra settimana o a un altro mese? WinProx La avvisa che ci sono modifiche non salvate.<br><br>Salvi prima se vuole conservare le modifiche. Altrimenti si perdono.",
+                    "nested": true
                 },
                 {
-                    "label": "Cerca sostituto",
-                    "text": "Su un blocco di lavoro pianificato puoi cercare un <strong>sostituto</strong>. WinProx propone candidati (vedi Time → Tipi di turno: pool e opzionalmente anche senza pianificazione). Il blocco originale diventa assenza; il sostituto riceve lo stesso orario, sede e unità."
+                    "label": "Pubblica",
+                    "text": "Con <strong>Pubblica</strong> rende visibile l’intero periodo agli operatori su Clock Point, in <strong>Il mio turno</strong>.<br><br>Gli operatori ricevono un avviso.<br><br>Modifica qualcosa in un periodo già pubblicato? Il periodo resta pubblicato. Le modifiche vengono annunciate di nuovo solo quando preme ancora Pubblica.<br><br><strong>Importante:</strong> pubblicare non influisce sulla dichiarazione all’ONSS. Serve solo a mettere il turno a disposizione dei Suoi operatori.",
+                    "nested": true
                 },
                 {
-                    "label": "Pianificato vs timbrato",
-                    "text": "In un periodo <strong>pubblicato</strong> la griglia marca gli scostamenti (in ritardo/in anticipo) subito, anche <strong>oggi</strong>. Fino a 15 minuti in anticipo conta come puntuale; 15 minuti o più in ritardo (o più di 15 minuti in anticipo) è uno scostamento. Le timbrature restano sempre registrate. Timbrature mancanti solo dopo la fine prevista (o nei giorni passati). Timbrature non previste e assenza senza timbratura restano come prima. Una timbratura corretta mostra una spunta verde in alto a destra; uno scostamento o una timbratura mancante resta un puntino. Fai clic sul contrassegno in alto a destra per aprire <strong>Ore</strong> di quell’esecutore in quel giorno. <strong>Stampa</strong> (accanto al titolo) apre una nuova finestra (A4 orizzontale)."
+                    "label": "Ripetere una settimana",
+                    "text": "Vuole riusare una pianificazione settimanale per le settimane successive? Usi <strong>Ripeti settimana</strong>.<br><br>Questa funzione è disponibile solo nella vista settimanale.<br><br>Copia i servizi di lavoro della settimana visibile nelle settimane successive. Sceglie Lei quante settimane, fino a 26.<br><br>Nella copia valgono alcune regole:<br>• Le assenze non vengono copiate.<br>• I giorni con ferie approvate vengono saltati. WinProx indica quali giorni non vengono copiati per questo.<br>• Una settimana di destinazione ha già dei servizi? WinProx salta allora l’intera settimana. Le altre vengono copiate.<br><br>Così le pianificazioni esistenti non vengono sovrascritte per sbaglio."
                 },
                 {
-                    "label": "Colonne delle ore a destra",
-                    "text": "A destra della griglia, ogni esecutore ha colonne di cifre con titolo verticale: <strong>Norma</strong> (norma contrattuale), <strong>Scarto</strong> (pianificato meno norma, con segno), <strong>Pianificato</strong>, <strong>Lavorato</strong> e per assenza <strong>Ferie</strong>, <strong>Recupero</strong>, <strong>Malattia</strong> e <strong>Altro</strong> (giorni più ore residue). <strong>Segnale</strong> mostra un numero e/o un punto esclamativo per blocchi incompleti o una timbratura aperta. Norma e scarto restano vuoti finché la norma non è affidabile. La norma settimanale (38 ore predefinita) si imposta sull’esecutore; la norma mensile segue la regola di lavoro — senza regola, lun–ven contano secondo la norma settimanale e i festivi seguono il regime delle festività — senza accordo, lo standard belga. È un conteggio, non un giudizio sull’orario di lavoro."
+                    "label": "Ripristinare",
+                    "text": "Con <strong>Ripristina</strong> può riportare il turno a una versione precedente.<br><br>WinProx conserva punti di ripristino che indicano, tra l’altro:<br>• La data e l’ora della modifica.<br>• Da dove veniva la modifica.<br>• Quali operatori e quali giorni sono stati modificati.<br><br>I punti restano disponibili 30 giorni. L’elenco mostra al massimo i 40 più recenti.<br><br>Per ogni punto vede in anticipo che cosa cambia:<br>• Che cosa sparisce.<br>• Che cosa torna.<br>• Che cosa viene modificato.<br><br>Non ogni situazione precedente si può ripristinare senza altro. Non è possibile, per esempio, quando:<br>• Un giorno interessato è ormai bloccato.<br>• Un servizio è stato spostato a un altro giorno.<br>• Quel giorno ci sono ferie approvate."
+                },
+                {
+                    "label": "Controllo extra se ci sono differenze",
+                    "text": "Il turno attuale è cambiato nel frattempo, oppure c’è ancora una richiesta aperta? WinProx chiede prima una conferma.<br><br>Vede le differenze prima di ripristinare. La conferma vale solo per le differenze mostrate in quel momento.<br><br>Il turno è cambiato di nuovo? Allora WinProx non ripristina nulla. Vede prima la nuova differenza.<br><br>Il ripristino è riuscito? Può ancora annullare quel passaggio con <strong>Annulla questo ripristino</strong>.",
+                    "nested": true
+                },
+                {
+                    "label": "Pianificare un’assenza",
+                    "text": "Un codice di assenza riempie l’intera giornata nella cella. Quel giorno non conta come ore lavorate.<br><br>WinProx distingue quattro tipi:<br>• <strong>Ferie</strong><br>• <strong>Recupero</strong><br>• <strong>Malattia</strong><br>• <strong>Altro</strong>, per esempio un permesso breve o un giorno libero proprio.<br><br>Qualcuno deve assentarsi solo per parte della giornata, per esempio accanto a un blocco di lavoro? Apra <strong>Modifica giorno</strong>. Così può combinare lavoro e assenza nello stesso giorno."
+                },
+                {
+                    "label": "Richieste degli operatori",
+                    "text": "Gli operatori possono richiedere da soli ferie, recupero, malattia o un’assenza del tipo Altro su Clock Point, nella tessera <strong>Ferie / Assenza</strong>.<br><br>Lei tratta queste richieste in <strong>Time → Richieste</strong>.<br><br>Anche una segnalazione di malattia va approvata lì.<br><br>Malattia e Altro non influiscono sul saldo ferie né sul saldo recupero.",
+                    "nested": true
+                },
+                {
+                    "label": "Cercare un sostituto",
+                    "text": "Qualcuno non può svolgere un servizio previsto? Cerchi allora un altro operatore con <strong>Sostituto…</strong>.<br><br>WinProx propone operatori che:<br>• Quel giorno hanno già un servizio.<br>• Hanno l’impostazione <strong>Disponibile per la sostituzione</strong>.<br><br>In <strong>Time → Tipi di turno</strong> può anche stabilire che entrino in considerazione operatori senza un servizio previsto.<br><br>Sceglie un sostituto? Succede questo:<br>• Il blocco di lavoro originale diventa un’assenza.<br>• Il sostituto riceve la stessa fascia oraria.<br>• Sede e unità vengono riprese.<br><br>Così la pianificazione originale resta riconoscibile e la sostituzione è registrata in modo corretto."
+                },
+                {
+                    "label": "Confrontare previsto e timbrato",
+                    "text": "In un periodo pubblicato può confrontare i servizi previsti con le ore realmente timbrate. Vale anche per il giorno corrente.<br><br>WinProx controlla se l’operatore ha timbrato vicino all’orario previsto.<br><br>La tolleranza abituale è di 15 minuti:<br>• Fino a 15 minuti in anticipo: corretto.<br>• 15 minuti o più di ritardo: uno scostamento.<br>• Più di 15 minuti in anticipo: uno scostamento.<br><br>Una timbratura corretta è indicata con un segno verde in alto a destra nella cella.<br><br>In caso di scostamento o di timbratura mancante vede un punto.<br><br>Scelga il segno o il punto per aprire le ore timbrate di quell’operatore in quel giorno.<br><br>Una timbratura mancante compare solo dopo la fine del servizio previsto, oppure se si tratta di un giorno precedente.<br><br>Le timbrature originali restano sempre conservate."
+                },
+                {
+                    "label": "Stampare il turno",
+                    "text": "Con <strong>Stampa</strong>, accanto al titolo, apre una versione del turno adatta alla stampa.<br><br>Si apre in una nuova finestra ed è impostata per A4 in orizzontale."
+                },
+                {
+                    "label": "Le cifre a destra: Statistiche",
+                    "text": "Con <strong>Statistiche</strong> apre a destra una panoramica delle cifre principali per operatore.<br><br>Vi trova, tra l’altro:<br>• <strong>Norma:</strong> le ore contrattuali, per impostazione predefinita 38 ore a settimana. Le imposta sull’operatore.<br>• <strong>Scarto:</strong> la differenza tra le ore pianificate e la norma del contratto.<br>• <strong>Pianificato:</strong> il totale delle ore pianificate nel periodo scelto.<br>• <strong>Lavorato:</strong> il totale delle ore realmente timbrate.<br>• <strong>Ferie:</strong> le ore di ferie pianificate.<br>• <strong>Recupero:</strong> le ore di recupero pianificate.<br>• <strong>Malattia:</strong> le ore di malattia pianificate.<br>• <strong>Altro:</strong> le altre assenze pianificate.<br>• <strong>Segnale:</strong> un avviso se c’è un blocco incompleto o una timbratura di entrata senza uscita.<br><br>La norma del contratto non è disponibile in modo affidabile? Allora WinProx lascia vuote le cifre di Norma e Scarto."
+                },
+                {
+                    "label": "Come si calcola la norma?",
+                    "text": "Nella vista mensile WinProx tiene conto del regime di lavoro dell’operatore.<br><br>Non c’è un regime impostato? Allora WinProx calcola la norma dalla norma settimanale, distribuita da lunedì a venerdì.<br><br>Per le festività WinProx usa le impostazioni in <strong>Time → Festività</strong>. Se non c’è una regola propria, vale lo standard belga.<br><br><strong>Buono a sapersi:</strong> queste statistiche servono da panoramica e da controllo. WinProx non giudica qui se qualcuno ha lavorato troppo o troppo poco. Mostra la pianificazione, le ore timbrate e le differenze.",
+                    "nested": true
                 }
             ]
         },

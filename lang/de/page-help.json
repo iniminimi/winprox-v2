@@ -2051,52 +2051,89 @@
             "title": "Hilfe — Dienstplan",
             "actions": [
                 {
-                    "label": "Ansicht",
-                    "text": "Wechseln Sie zwischen <strong>Woche</strong> und <strong>Monat</strong>. <strong>Wochenenden</strong> zeigt Samstag und Sonntag (standardmäßig aus); aus = nur Montag bis Freitag. Im Monatsraster trennt dann ein kräftiger vertikaler Strich Freitag und Montag. Speichern ohne Wochenenden lässt Sa/So unverändert. Eine Woche kopieren geht nur in der Wochenansicht. Die Schaltflächen <strong>Woche</strong> und <strong>Monat</strong> führen immer zur aktuellen Woche oder zum aktuellen Monat."
+                    "label": "Wozu dient der Dienstplan?",
+                    "text": "Mit dem Dienstplan planen Sie, wer wann arbeitet. Pro ausführende Person und pro Tag legen Sie die geplanten Dienste fest.<br><br>Sobald Sie einen Zeitraum veröffentlichen, können die Personen ihre Planung auf Clock Point ansehen, unter <strong>Mein Dienstplan</strong>."
                 },
                 {
-                    "label": "Farben und Auswahl",
-                    "text": "Feiertage färben die Datumsspalte <strong>blau</strong>, Ersatztage <strong>grün</strong> — der Tooltip der Spaltenüberschrift nennt Feiertag und Wirkung. An einem Feiertag wird die Mindestbesetzung nicht rot gezeigt; an einem Ersatztag schon, wenn etwas fehlt. Eine <strong>graue Zelle</strong> ist ein fester freier Tag dieses Ausführenden (0 Minuten in seinem Wochenmuster); die Zelle bleibt ausfüllbar. Wochenende, heute und gesperrte Tage haben eine eigene Färbung. Nur die Datumszellen sind auswählbar — Namen und Zahlenspalten nicht."
+                    "label": "Zuerst ein Team oder einen Standort wählen",
+                    "text": "Der Dienstplan wird erst geladen, nachdem Sie ein Team oder einen Standort gewählt haben.<br><br>So bleibt die Übersicht klar, auch wenn Ihre Organisation viele Personen hat."
                 },
                 {
-                    "label": "Codes und freie Zeiten",
-                    "text": "Geben Sie einen <strong>Code</strong> aus der Legende oder eine Zeit <strong>07:00-15:00</strong> ein. Optional eine Gruppe in derselben Zelle: <strong>D1/G1</strong> oder <strong>07:00-12:00/G1</strong> (Leerzeichen erlaubt). Ungültige Zellen haben einen <strong>roten Rand</strong> — korrigieren Sie sie vor dem Speichern. Kommt ein Gruppencode an mehreren Standorten vor, wählen Sie einen Standortfilter."
+                    "label": "Woche oder Monat ansehen",
+                    "text": "Mit <strong>Woche</strong> und <strong>Monat</strong> wählen Sie, wie Sie den Dienstplan sehen.<br>• Klicken Sie auf Woche, um zur aktuellen Woche zu gehen.<br>• Klicken Sie auf Monat, um zum aktuellen Monat zu gehen.<br>• Mit den Pfeilen blättern Sie zu einem früheren oder späteren Zeitraum.<br><br><strong>Wochenenden</strong> ist standardmäßig aus. Sie sehen dann nur Montag bis Freitag.<br><br>In der Monatsansicht steht zwischen Freitag und dem folgenden Montag ein deutlicher dicker Strich. So bleiben die Wochen unterscheidbar.<br><br><strong>Gut zu wissen:</strong> Speichern Sie den Dienstplan, während Wochenenden aus ist, bleiben Samstag und Sonntag unberührt. Vorhandene Wochenenddienste werden nicht überschrieben."
                 },
                 {
-                    "label": "Gruppen",
-                    "text": "Wählen Sie zuerst einen <strong>Standortfilter</strong> — dann sehen Sie nur Ausführende, die diesem Standort zugewiesen sind (keine Springer). Danach können Sie <strong>Gruppen</strong> (Dienstplancodes) und <strong>Ohne Gruppe</strong> ankreuzen. Ausführende stehen unter Abschnittsüberschriften. Die Standardgruppe setzen Sie beim Ausführenden; der Ort in einer Zelle (D1/G1) bleibt getrennt."
+                    "label": "Einen Dienst eintragen",
+                    "text": "Sie können einen Dienst auf zwei Arten eintragen:<br>• Tippen Sie einen Code aus der Legende, zum Beispiel <strong>V2</strong>.<br>• Tippen Sie Beginn und Ende selbst, zum Beispiel <strong>07:00-15:00</strong>.<br><br>Sie können auch gleich eine Gruppe hinzufügen. Zum Beispiel:<br>• <strong>D1/G1</strong><br>• <strong>07:00-12:00/G1</strong><br><br>Ein roter Rand um eine Zelle bedeutet, dass der Wert nicht stimmt. Ändern Sie ihn, bevor Sie speichern.<br><br>Verwenden Sie denselben Gruppencode an mehreren Standorten? Wählen Sie zuerst den richtigen Standort. Sonst weiß WinProx nicht, welche Gruppe Sie meinen.<br><br>Eine Abwesenheit kann nicht mit einer Gruppe verknüpft werden.<br><br>Die Legende öffnen Sie über <strong>Legende</strong>, neben Veröffentlichen. Die Codes verwalten Sie unter <strong>Time → Schichttypen</strong>. Das richten Sie in der Regel nur einmal ein."
+                },
+                {
+                    "label": "Mehrere Arbeitsblöcke an einem Tag",
+                    "text": "Eine Zelle enthält standardmäßig einen Dienst.<br><br>Arbeitet jemand morgens und abends? Dann tragen Sie beide Blöcke getrennt über <strong>Tag bearbeiten</strong> ein.<br><br>Achtung: Tippen Sie direkt in eine Zelle, die schon mehrere Blöcke hat, ersetzen Sie den ganzen Tag durch einen neuen Block.<br><br>WinProx fragt zuerst nach einer Bestätigung, bevor die vorhandenen Blöcke ersetzt werden.<br><br>Über Tag bearbeiten können Sie einem Arbeitsblock auch eine Notiz hinzufügen.<br><br><strong>Tage in der Vergangenheit sind gesperrt.</strong> Wollen Sie dort doch etwas ändern? Nutzen Sie <strong>Korrigieren</strong> und geben Sie einen Grund an."
+                },
+                {
+                    "label": "Mit Gruppen arbeiten",
+                    "text": "Wollen Sie den Dienstplan nach Gruppen sehen? Wählen Sie zuerst einen Standort.<br><br>Sie sehen dann nur die Personen, die diesem Standort zugeordnet sind. Springer, die überall stempeln dürfen, erscheinen nicht in diesem gefilterten Plan.<br><br>Danach können Sie eine oder mehrere Gruppen anhaken. Sie können auch <strong>Ohne Gruppe</strong> wählen.<br><br>Die Personen stehen dann unter einer eigenen Überschrift je Gruppe.<br><br>Zwei Dinge sollten Sie auseinanderhalten:<br>• <strong>Stammgruppe:</strong> die stellen Sie bei der Person ein. Sie bestimmt, unter welcher Gruppenüberschrift jemand steht.<br>• <strong>Gruppe im Dienst:</strong> die tragen Sie getrennt in die Zelle ein, zum Beispiel G1. Sie wird nicht automatisch aus der Stammgruppe übernommen."
+                },
+                {
+                    "label": "Farben im Dienstplan",
+                    "text": "Die Farben helfen Ihnen, besondere Tage und Situationen schnell zu erkennen.<br>• <strong>Blau:</strong> ein Feiertag.<br>• <strong>Grün:</strong> ein Ersatztag.<br>• <strong>Grau:</strong> ein fester freier Tag der Person. Sie können dort trotzdem einen Dienst planen.<br>• <strong>Wochenende:</strong> hat eine eigene Hintergrundfarbe.<br>• <strong>Heute:</strong> ist gesondert markiert.<br>• <strong>Gesperrter Tag:</strong> hat ebenfalls eine eigene Farbe.<br><br>Bewegen Sie die Maus über die Datumsspalte eines Feiertags oder Ersatztags, um mehr zu sehen. Sie sehen dann auch, welche Wirkung der Tag hat.<br><br>Sie können nur die Datumszellen auswählen. Namen und Zahlenspalten sind nicht auswählbar.<br><br>Ist an einem Tag zu wenig Personal geplant? Das sehen Sie bei diesem Tag.<br><br>An einem Feiertag wird ein Mangel nicht gezeigt. An einem Ersatztag schon."
                 },
                 {
                     "label": "Speichern und veröffentlichen",
-                    "text": "Speichern bewahrt die sichtbare Woche oder den Monat. Bei ungespeicherten Änderungen erscheint ein Fenster, wenn Sie die Seite verlassen oder Woche/Monat wechseln. <strong>Veröffentlichen</strong> macht den Zeitraum auf dem Clock Point (Mein Dienstplan) sichtbar und setzt ein Badge. Bearbeiten nach dem Veröffentlichen bleibt veröffentlicht."
+                    "text": "Speichern und Veröffentlichen sind zwei verschiedene Handlungen."
                 },
                 {
-                    "label": "Woche kopieren",
-                    "text": "<strong>In nächste Woche kopieren</strong> gilt alles-oder-nichts. Hat die Zielwoche bereits Dienste, wird die Kopie abgelehnt."
+                    "label": "Speichern",
+                    "text": "Mit <strong>Speichern</strong> sichern Sie die Woche oder den Monat, die gerade auf dem Bildschirm stehen, für die Personen, die Sie gerade sehen.<br><br>Haben Sie etwas geändert und verlassen die Seite oder blättern zu einer anderen Woche oder einem anderen Monat? Dann warnt WinProx, dass noch ungespeicherte Änderungen da sind.<br><br>Speichern Sie zuerst, wenn Sie die Änderungen behalten wollen. Sonst gehen sie verloren.",
+                    "nested": true
+                },
+                {
+                    "label": "Veröffentlichen",
+                    "text": "Mit <strong>Veröffentlichen</strong> machen Sie den ganzen Zeitraum für die Personen auf Clock Point sichtbar, unter <strong>Mein Dienstplan</strong>.<br><br>Die Personen erhalten eine Meldung.<br><br>Ändern Sie danach noch etwas in einem bereits veröffentlichten Zeitraum? Der Zeitraum bleibt veröffentlicht. Die Änderungen werden erst wieder angekündigt, wenn Sie erneut auf Veröffentlichen klicken.<br><br><strong>Wichtig:</strong> Veröffentlichen hat keinen Einfluss auf die Meldung an den LSS. Es dient nur dazu, den Dienstplan für Ihre Personen bereitzustellen.",
+                    "nested": true
+                },
+                {
+                    "label": "Eine Woche wiederholen",
+                    "text": "Wollen Sie eine bestehende Wochenplanung für die kommenden Wochen übernehmen? Nutzen Sie <strong>Woche wiederholen</strong>.<br><br>Diese Funktion gibt es nur in der Wochenansicht.<br><br>Sie kopieren die Arbeitsdienste der sichtbaren Woche in die folgenden Wochen. Sie wählen selbst, wie viele Wochen, höchstens 26.<br><br>Beim Kopieren gelten ein paar Regeln:<br>• Abwesenheiten werden nicht übernommen.<br>• Tage mit genehmigtem Urlaub werden übersprungen. WinProx meldet, welche Tage deshalb nicht kopiert werden.<br>• Enthält eine Zielwoche schon Dienste? Dann überspringt WinProx diese ganze Woche. Die übrigen Wochen werden kopiert.<br><br>So werden vorhandene Planungen nicht versehentlich überschrieben."
                 },
                 {
                     "label": "Wiederherstellen",
-                    "text": "<strong>Wiederherstellen</strong> (Woche und Monat) zeigt die letzten Punkte einer Dienstplanänderung: Datum, Uhrzeit, Quelle, Ausführende und Tage. Der Unterschied steht nach Folge und nach Tag: was wegfällt, was zurückkommt und was sich ändert. Ein gesperrter Tag, ein Dienst auf einem anderen Tag oder genehmigter Urlaub blockiert die Wiederherstellung. Weicht der Plan ab oder liegt ein offener Antrag vor, bestätigen Sie. Die Bestätigung gilt nur für den gezeigten Unterschied; hat sich der Plan inzwischen geändert, wird nichts wiederhergestellt und Sie sehen den neuen Unterschied. Nach einer erfolgreichen Wiederherstellung können Sie diesen Schritt rückgängig machen. Punkte bleiben 30 Tage erhalten; die Liste zeigt höchstens 40."
+                    "text": "Mit <strong>Wiederherstellen</strong> können Sie den Dienstplan auf eine frühere Fassung zurücksetzen.<br><br>WinProx bewahrt Wiederherstellungspunkte mit unter anderem:<br>• Datum und Uhrzeit der Änderung.<br>• Woher die Änderung kam.<br>• Welche Personen und Tage geändert wurden.<br><br>Die Punkte bleiben 30 Tage verfügbar. Die Liste zeigt höchstens die 40 neuesten.<br><br>Bei jedem Punkt sehen Sie vorher, was sich ändert:<br>• Was verschwindet.<br>• Was zurückkommt.<br>• Was angepasst wird.<br><br>Nicht jede frühere Lage lässt sich einfach wiederherstellen. Das geht zum Beispiel nicht, wenn:<br>• Ein betroffener Tag inzwischen gesperrt ist.<br>• Ein Dienst inzwischen auf einen anderen Tag verschoben wurde.<br>• An dem Tag genehmigter Urlaub steht."
                 },
                 {
-                    "label": "Schichttypen",
-                    "text": "Über die Schaltfläche <strong>Legende</strong> (neben Veröffentlichen) sehen Sie Codes, Abwesenheiten und Gruppen. Typen verwalten Sie unter Time → <strong>Schichttypen</strong> (meist einmal)."
+                    "label": "Zusätzliche Kontrolle bei Unterschieden",
+                    "text": "Hat sich der aktuelle Plan inzwischen geändert, oder ist noch ein Antrag offen? Dann bittet WinProx zuerst um Bestätigung.<br><br>Sie sehen die Unterschiede, bevor Sie wiederherstellen. Ihre Bestätigung gilt nur für die Unterschiede, die gerade gezeigt werden.<br><br>Hat sich der Plan inzwischen erneut geändert? Dann stellt WinProx nichts wieder her. Sie sehen zuerst den neuen Unterschied.<br><br>Ist die Wiederherstellung gelungen? Dann können Sie diesen Schritt noch rückgängig machen über <strong>Diese Wiederherstellung rückgängig machen</strong>.",
+                    "nested": true
                 },
                 {
-                    "label": "Abwesenheit",
-                    "text": "Schichttypen können <strong>Urlaub</strong>, <strong>Ausgleich</strong>, <strong>Krank</strong> oder <strong>Sonstige</strong> sein. Diese Codes füllen den ganzen Tag, zählen keine Stunden und dürfen nicht zusammen mit Arbeit an diesem Tag stehen. Ausführende können Urlaub, Ausgleich, Krankheit oder einen Typ unter Sonstige über Clock Point beantragen (Kachel Urlaub / Abwesenheit); die Verwaltung entscheidet unter Time → Anträge. Krankheit und Sonstige zählen nicht zum Urlaubssaldo oder Ausgleich."
+                    "label": "Abwesenheit planen",
+                    "text": "Ein Abwesenheitscode füllt den ganzen Tag in der Zelle. Der Tag zählt nicht als gearbeitete Stunden.<br><br>WinProx unterscheidet vier Arten:<br>• <strong>Urlaub</strong><br>• <strong>Ausgleich</strong><br>• <strong>Krank</strong><br>• <strong>Sonstige</strong>, zum Beispiel Kurzarbeit oder einen freien Tag Ihrer Organisation.<br><br>Soll jemand nur einen Teil des Tages fehlen, zum Beispiel neben einem Arbeitsblock? Öffnen Sie <strong>Tag bearbeiten</strong>. So können Sie Arbeit und Abwesenheit am selben Tag kombinieren."
                 },
                 {
-                    "label": "Vertretung suchen",
-                    "text": "Bei einem geplanten Arbeitsblock können Sie eine <strong>Vertretung</strong> suchen. WinProx schlägt Kandidaten vor (siehe Time → Schichttypen: Vertretungspool und optional auch ohne Planung). Der ursprüngliche Block wird zur Abwesenheit; die Vertretung erhält denselben Zeitslot, Standort und Unit."
+                    "label": "Anträge der Personen",
+                    "text": "Die Personen können selbst Urlaub, Ausgleich, Krankheit oder eine Abwesenheit der Art Sonstige über Clock Point beantragen, auf der Kachel <strong>Urlaub / Abwesenheit</strong>.<br><br>Sie bearbeiten diese Anträge unter <strong>Time → Anträge</strong>.<br><br>Auch eine Krankmeldung müssen Sie dort genehmigen.<br><br>Krank und Sonstige haben keinen Einfluss auf das Urlaubssaldo oder das Ausgleichssaldo.",
+                    "nested": true
                 },
                 {
-                    "label": "Geplant vs. gestempelt",
-                    "text": "In einer <strong>veröffentlichten</strong> Periode markiert der Plan Abweichungen (zu spät/zu früh) sofort, auch <strong>heute</strong>. Bis 15 Minuten zu früh zählt als pünktlich; 15 Minuten oder mehr zu spät (oder mehr als 15 Minuten zu früh) ist eine Abweichung. Stempelungen werden immer gespeichert. Fehlende Stempelungen erst nach dem geplanten Ende (oder an vergangenen Tagen). Ungeplante Stempelungen und Abwesenheit ohne Stempelung bleiben wie zuvor. Eine korrekte Stempelung zeigt ein grünes Häkchen oben rechts; eine Abweichung oder eine fehlende Stempelung bleibt ein Punkt. Klicken Sie oben rechts auf die Markierung, um <strong>Stunden</strong> für diesen Ausführenden an diesem Tag zu öffnen. <strong>Drucken</strong> (neben dem Titel) öffnet ein neues Fenster (A4 quer)."
+                    "label": "Eine Vertretung suchen",
+                    "text": "Kann jemand einen geplanten Dienst nicht leisten? Dann suchen Sie über <strong>Vertretung…</strong> eine andere Person.<br><br>WinProx schlägt Personen vor, die:<br>• An dem Tag schon einen Dienst haben.<br>• Die Einstellung <strong>Für Vertretung verfügbar</strong> haben.<br><br>Unter <strong>Time → Schichttypen</strong> können Sie auch festlegen, dass Personen ohne geplanten Dienst infrage kommen.<br><br>Wählen Sie eine Vertretung? Dann geschieht Folgendes:<br>• Der ursprüngliche Arbeitsblock wird zur Abwesenheit.<br>• Die Vertretung erhält dasselbe Zeitfenster.<br>• Standort und Unit werden übernommen.<br><br>So bleibt die ursprüngliche Planung erkennbar, und die Vertretung ist korrekt erfasst."
                 },
                 {
-                    "label": "Stundenspalten rechts",
-                    "text": "Rechts neben dem Plan stehen je Ausführendem Zahlenspalten mit senkrechtem Titel: <strong>Norm</strong> (Vertragsnorm), <strong>Differenz</strong> (geplant minus Norm, mit Vorzeichen), <strong>Geplant</strong>, <strong>Gearbeitet</strong> und je Abwesenheit <strong>Urlaub</strong>, <strong>Ausgleich</strong> und <strong>Krank</strong> (Tage plus Reststunden). <strong>Hinweis</strong> zeigt eine Zahl und/oder ein Ausrufezeichen bei unvollständigen Blöcken oder einer offenen Stempelung. Norm und Differenz bleiben leer, solange die Norm nicht verlässlich ist. Die Wochennorm (standardmäßig 38 h) stellen Sie beim Ausführenden ein; die Monatsnorm folgt aus der Arbeitsregelung — ohne Regelung zählen Mo–Fr nach der Wochennorm und Feiertage folgen der Feiertagsregelung — ohne Vereinbarung dem belgischen Standard. Das ist eine Zählung, kein Urteil über die Arbeitszeit."
+                    "label": "Geplant und gestempelt vergleichen",
+                    "text": "Bei einem veröffentlichten Zeitraum können Sie die geplanten Dienste mit den wirklich gestempelten Stunden vergleichen. Das gilt auch für den heutigen Tag.<br><br>WinProx prüft, ob die Person ungefähr zur geplanten Zeit eingestempelt hat.<br><br>Die übliche Toleranz beträgt 15 Minuten:<br>• Bis 15 Minuten zu früh: korrekt.<br>• 15 Minuten oder mehr zu spät: eine Abweichung.<br>• Mehr als 15 Minuten zu früh: eine Abweichung.<br><br>Ein korrektes Einstempeln wird mit einem grünen Häkchen oben rechts in der Zelle gezeigt.<br><br>Bei einer Abweichung oder einem fehlenden Einstempeln sehen Sie einen Punkt.<br><br>Klicken Sie auf das Häkchen oder den Punkt, um die gestempelten Stunden dieser Person an dem Tag zu öffnen.<br><br>Eine fehlende Stempelung erscheint erst, nachdem der geplante Dienst vorbei ist, oder wenn es um einen früheren Tag geht.<br><br>Die ursprünglichen Stempelungen bleiben immer erhalten."
+                },
+                {
+                    "label": "Den Dienstplan drucken",
+                    "text": "Mit <strong>Drucken</strong>, neben dem Titel, öffnen Sie eine druckfreundliche Fassung des Dienstplans.<br><br>Sie öffnet sich in einem neuen Fenster und ist für A4 quer aufgebaut."
+                },
+                {
+                    "label": "Die Zahlen rechts: Statistiken",
+                    "text": "Mit <strong>Statistiken</strong> öffnen Sie rechts eine Übersicht der wichtigsten Zahlen je Person.<br><br>Sie finden dort unter anderem:<br>• <strong>Norm:</strong> die vertraglichen Stunden, standardmäßig 38 Stunden pro Woche. Die stellen Sie bei der Person ein.<br>• <strong>Differenz:</strong> der Unterschied zwischen den geplanten Stunden und der Vertragsnorm.<br>• <strong>Geplant:</strong> die Summe der geplanten Stunden im gewählten Zeitraum.<br>• <strong>Gearbeitet:</strong> die Summe der wirklich gestempelten Stunden.<br>• <strong>Urlaub:</strong> die geplanten Urlaubsstunden.<br>• <strong>Ausgleich:</strong> die geplanten Ausgleichsstunden.<br>• <strong>Krank:</strong> die geplanten Krankheitsstunden.<br>• <strong>Sonst.:</strong> die übrigen geplanten Abwesenheiten.<br>• <strong>Hinweis:</strong> eine Warnung bei einem unvollständigen Block oder einem offenen Einstempeln ohne Ausstempeln.<br><br>Ist die Vertragsnorm nicht zuverlässig verfügbar? Dann lässt WinProx die Zahlen für Norm und Differenz leer."
+                },
+                {
+                    "label": "Wie wird die Norm berechnet?",
+                    "text": "In der Monatsansicht berücksichtigt WinProx die Arbeitsregelung der Person.<br><br>Ist keine Arbeitsregelung eingestellt? Dann berechnet WinProx die Norm aus der Wochennorm, verteilt auf Montag bis Freitag.<br><br>Für Feiertage nutzt WinProx die Einstellungen unter <strong>Time → Feiertage</strong>. Ohne eigene Regelung gilt der belgische Standard.<br><br><strong>Gut zu wissen:</strong> diese Statistiken sind als Übersicht und Kontrolle gedacht. WinProx urteilt hier nicht, ob jemand zu viel oder zu wenig gearbeitet hat. Es zeigt die Planung, die gestempelten Stunden und die Unterschiede.",
+                    "nested": true
                 }
             ]
         },

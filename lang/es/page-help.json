@@ -2051,52 +2051,89 @@
             "title": "Ayuda — Horario",
             "actions": [
                 {
-                    "label": "Vista",
-                    "text": "Cambie entre <strong>semana</strong> y <strong>mes</strong>. <strong>Fines de semana</strong> muestra sábado y domingo (desactivado por defecto); desactivado = solo lunes a viernes. En la cuadrícula mensual una línea vertical gruesa separa entonces viernes y lunes. Guardar sin fines de semana deja sáb/dom sin cambios. Copiar una semana solo en vista semanal. Los botones <strong>Semana</strong> y <strong>Mes</strong> llevan siempre a la semana o al mes actual."
+                    "label": "¿Para qué sirve el horario?",
+                    "text": "Con el horario planifica quién trabaja y cuándo. Por cada operario y cada día fija los turnos previstos.<br><br>En cuanto publica un periodo, los operarios pueden ver su planificación en Clock Point, en <strong>Mi cuadrante</strong>."
                 },
                 {
-                    "label": "Colores y selección",
-                    "text": "Los festivos tiñen la columna de fecha de <strong>azul</strong> y los días de sustitución de <strong>verde</strong> — la información del encabezado indica el festivo y su efecto. En un festivo la ocupación mínima no se muestra en rojo; en un día de sustitución sí, si falta gente. Una <strong>celda gris</strong> es un día libre fijo de ese operario (0 minutos en su patrón semanal); la celda sigue editable. Fin de semana, hoy y días bloqueados tienen su propio tono. Solo se pueden seleccionar las celdas de fecha — nombres y columnas de cifras no."
+                    "label": "Elegir primero un equipo o una ubicación",
+                    "text": "El horario solo se carga después de que haya elegido un equipo o una ubicación.<br><br>Así el resumen se mantiene claro, también cuando su organización tiene muchos operarios."
                 },
                 {
-                    "label": "Códigos y horas libres",
-                    "text": "Escriba un <strong>código</strong> de la leyenda o una hora <strong>07:00-15:00</strong>. Opcionalmente un grupo en la misma celda: <strong>D1/G1</strong> o <strong>07:00-12:00/G1</strong> (se admite un espacio). Las celdas no válidas tienen un <strong>borde rojo</strong>: corríjalas antes de guardar. Si un código de grupo existe en varias sedes, elija un filtro de sede."
+                    "label": "Ver una semana o un mes",
+                    "text": "Con <strong>Semana</strong> y <strong>Mes</strong> elige cómo quiere ver el horario.<br>• Pulse Semana para ir a la semana actual.<br>• Pulse Mes para ir al mes actual.<br>• Use las flechas para pasar a un periodo anterior o siguiente.<br><br><strong>Fines de semana</strong> está desactivado de forma predeterminada. Entonces solo ve de lunes a viernes.<br><br>En la vista mensual hay una línea gruesa clara entre el viernes y el lunes siguiente. Así se distinguen las semanas.<br><br><strong>Conviene saberlo:</strong> si guarda el horario con Fines de semana desactivado, el sábado y el domingo no se tocan. Los turnos de fin de semana que ya existen no se sobrescriben."
                 },
                 {
-                    "label": "Grupos",
-                    "text": "Elija primero un <strong>filtro de ubicación</strong>: solo verá ejecutores asignados a esa sede (sin relevos). Luego marque <strong>grupos</strong> (códigos de cuadrante) y <strong>Sin grupo</strong>. Los ejecutores aparecen bajo encabezados de sección. El grupo predeterminado se define en el ejecutor; el lugar en una celda (D1/G1) sigue aparte."
+                    "label": "Introducir un turno",
+                    "text": "Puede introducir un turno de dos maneras:<br>• Escriba un código de la leyenda, por ejemplo <strong>V2</strong>.<br>• Escriba usted la hora de inicio y de fin, por ejemplo <strong>07:00-15:00</strong>.<br><br>También puede añadir un grupo enseguida. Por ejemplo:<br>• <strong>D1/G1</strong><br>• <strong>07:00-12:00/G1</strong><br><br>Un borde rojo alrededor de una celda significa que el valor no es correcto. Cámbielo antes de guardar.<br><br>¿Usa el mismo código de grupo en varias ubicaciones? Elija primero la ubicación correcta. Si no, WinProx no sabe qué grupo quiere decir.<br><br>Una ausencia no se puede vincular a un grupo.<br><br>La leyenda se abre con <strong>Leyenda</strong>, junto a Publicar. Los códigos se gestionan en <strong>Time → Tipos de turno</strong>. Normalmente los configura una sola vez."
+                },
+                {
+                    "label": "Varios bloques de trabajo en un día",
+                    "text": "Una celda contiene de forma predeterminada un turno.<br><br>¿Alguien trabaja por la mañana y por la noche? Introduzca entonces ambos bloques por separado con <strong>Editar día</strong>.<br><br>Atención: si escribe directamente en una celda que ya tiene varios bloques, sustituye el día entero por un bloque nuevo.<br><br>WinProx pide confirmación antes de sustituir los bloques existentes.<br><br>En Editar día también puede añadir una nota a un bloque.<br><br><strong>Los días pasados están bloqueados.</strong> ¿Quiere cambiar algo igualmente? Use <strong>Corregir</strong> e indique un motivo."
+                },
+                {
+                    "label": "Trabajar con grupos",
+                    "text": "¿Quiere ver el horario por grupos? Elija primero una ubicación.<br><br>Entonces solo ve a los operarios vinculados a esa sede. Los suplentes que pueden fichar en todas las ubicaciones no aparecen en este horario filtrado.<br><br>Después puede marcar uno o varios grupos. También puede elegir <strong>Sin grupo</strong>.<br><br>Los operarios aparecen entonces bajo un encabezado distinto por grupo.<br><br>Hay dos cosas que conviene separar:<br>• <strong>Grupo base:</strong> lo configura en el operario. Decide bajo qué encabezado aparece esa persona.<br>• <strong>Grupo del turno:</strong> lo escribe aparte en la celda, por ejemplo G1. No se toma automáticamente del grupo base."
+                },
+                {
+                    "label": "Colores en el horario",
+                    "text": "Los colores le ayudan a reconocer rápido días y situaciones especiales.<br>• <strong>Azul:</strong> un festivo.<br>• <strong>Verde:</strong> un día de sustitución.<br>• <strong>Gris:</strong> un día libre fijo del operario. Aun así puede planificar un turno.<br>• <strong>Fin de semana:</strong> tiene un color de fondo propio.<br>• <strong>Hoy:</strong> se marca aparte.<br>• <strong>Día bloqueado:</strong> también tiene un color propio.<br><br>Pase el ratón por la cabecera de la fecha de un festivo o de un día de sustitución para ver más. También verá qué efecto tiene ese día.<br><br>Solo puede seleccionar las celdas de fecha. Los nombres y las columnas de cifras no se pueden seleccionar.<br><br>¿Hay poco personal planificado un día? Lo ve junto a ese día.<br><br>En un festivo no se muestra el déficit. En un día de sustitución sí."
                 },
                 {
                     "label": "Guardar y publicar",
-                    "text": "Guardar conserva la semana o el mes visible. Si hay cambios sin guardar, aparece un aviso al salir de la página o al cambiar de semana/mes. <strong>Publicar</strong> hace visible el periodo en Clock Point (Mi cuadrante) y pone una insignia. Editar después de publicar sigue publicado."
+                    "text": "Guardar y publicar son dos acciones distintas."
                 },
                 {
-                    "label": "Copiar semana",
-                    "text": "<strong>Copiar a la semana siguiente</strong> es todo o nada. Si la semana de destino ya tiene turnos, se rechaza la copia."
+                    "label": "Guardar",
+                    "text": "Con <strong>Guardar</strong> conserva la semana o el mes que tiene en pantalla, para los operarios que ve en ese momento.<br><br>¿Ha hecho cambios y sale de la página, o pasa a otra semana o mes? WinProx le avisa de que hay cambios sin guardar.<br><br>Guarde primero si quiere conservar los cambios. Si no, se pierden.",
+                    "nested": true
+                },
+                {
+                    "label": "Publicar",
+                    "text": "Con <strong>Publicar</strong> hace visible todo el periodo para los operarios en Clock Point, en <strong>Mi cuadrante</strong>.<br><br>Los operarios reciben un aviso.<br><br>¿Cambia algo después en un periodo ya publicado? El periodo sigue publicado. Los cambios solo se anuncian de nuevo cuando vuelve a pulsar Publicar.<br><br><strong>Importante:</strong> publicar no influye en la declaración a la ONSS. Solo sirve para poner el horario a disposición de sus operarios.",
+                    "nested": true
+                },
+                {
+                    "label": "Repetir una semana",
+                    "text": "¿Quiere reutilizar una planificación semanal para las semanas siguientes? Use <strong>Repetir semana</strong>.<br><br>Esta función solo está disponible en la vista semanal.<br><br>Copia los turnos de trabajo de la semana visible a las semanas siguientes. Usted elige cuántas semanas, hasta 26.<br><br>Al copiar se aplican algunas reglas:<br>• Las ausencias no se copian.<br>• Los días con vacaciones aprobadas se omiten. WinProx indica qué días no se copian por eso.<br>• ¿Una semana de destino ya tiene turnos? WinProx omite esa semana entera. Las demás sí se copian.<br><br>Así no se sobrescriben planificaciones existentes sin querer."
                 },
                 {
                     "label": "Restaurar",
-                    "text": "<strong>Restaurar</strong> (semana y mes) muestra los últimos puntos de un cambio del cuadrante: fecha, hora, origen, operarios y días. La diferencia se agrupa por efecto y por día: qué desaparece, qué vuelve y qué cambia. Un día bloqueado, un turno que ya está en otro día o un permiso aprobado bloquea la restauración. Si el cuadrante difiere o hay una solicitud abierta, confirma. Esa confirmación vale solo para la diferencia que ve; si el horario cambió entretanto, no se restaura nada y ve la nueva diferencia. Tras una restauración correcta puede deshacer ese paso. Los puntos se conservan 30 días; la lista muestra como máximo 40."
+                    "text": "Con <strong>Restaurar</strong> puede volver el horario a una versión anterior.<br><br>WinProx guarda puntos de restauración que incluyen, entre otros:<br>• La fecha y la hora del cambio.<br>• De dónde vino el cambio.<br>• Qué operarios y días se modificaron.<br><br>Los puntos siguen disponibles 30 días. La lista muestra como máximo los 40 más recientes.<br><br>En cada punto ve de antemano qué cambia:<br>• Qué desaparece.<br>• Qué vuelve.<br>• Qué se modifica.<br><br>No toda situación anterior se puede restaurar sin más. No es posible, por ejemplo, cuando:<br>• Un día afectado ya está bloqueado.<br>• Un turno se ha movido a otro día.<br>• Hay vacaciones aprobadas ese día."
                 },
                 {
-                    "label": "Tipos de turno",
-                    "text": "El botón <strong>Leyenda</strong> (junto a Publicar) abre códigos, ausencias y grupos. Los tipos se gestionan en Time → <strong>Tipos de turno</strong> (suele ser una vez)."
+                    "label": "Control extra si hay diferencias",
+                    "text": "¿El horario actual ha cambiado entretanto, o queda una solicitud abierta? WinProx pide primero confirmación.<br><br>Ve las diferencias antes de restaurar. Su confirmación solo vale para las diferencias que se muestran en ese momento.<br><br>¿El horario ha vuelto a cambiar? Entonces WinProx no restaura. Primero ve la nueva diferencia.<br><br>¿La restauración ha funcionado? Aún puede deshacer ese paso con <strong>Deshacer esta restauración</strong>.",
+                    "nested": true
                 },
                 {
-                    "label": "Ausencia",
-                    "text": "Los tipos de turno pueden ser <strong>vacaciones</strong>, <strong>descanso compensatorio</strong>, <strong>baja</strong> u <strong>otro</strong>. Esos códigos ocupan el día entero, no cuentan horas y no pueden ir con trabajo ese día. Los trabajadores pueden solicitar vacaciones, recup, baja o un tipo en Otro desde Clock Point (mosaico Vacaciones / Ausencia); la gestión decide en Time → Solicitudes. Baja y Otro no cuentan en el saldo de vacaciones ni en recup."
+                    "label": "Planificar una ausencia",
+                    "text": "Un código de ausencia llena el día entero en la celda. Ese día no cuenta como horas trabajadas.<br><br>WinProx distingue cuatro tipos:<br>• <strong>Vacaciones</strong><br>• <strong>Descanso compensatorio</strong><br>• <strong>Baja</strong><br>• <strong>Otro</strong>, por ejemplo un permiso breve o un día libre propio.<br><br>¿Alguien solo debe ausentarse parte del día, por ejemplo junto a un bloque de trabajo? Abra <strong>Editar día</strong>. Así puede combinar trabajo y ausencia el mismo día."
                 },
                 {
-                    "label": "Buscar sustituto",
-                    "text": "En un bloque de trabajo planificado puedes buscar un <strong>sustituto</strong>. WinProx propone candidatos (ver Time → Tipos de turno: bolsa y opcionalmente también sin planificación). El bloque original pasa a ausencia; el sustituto recibe el mismo horario, sede y unidad."
+                    "label": "Solicitudes de los operarios",
+                    "text": "Los operarios pueden solicitar ellos mismos vacaciones, descanso compensatorio, baja o una ausencia del tipo Otro en Clock Point, en la ficha <strong>Vacaciones / Ausencia</strong>.<br><br>Usted trata esas solicitudes en <strong>Time → Solicitudes</strong>.<br><br>También una baja por enfermedad debe aprobarla allí.<br><br>Baja y Otro no influyen en el saldo de vacaciones ni en el de descanso compensatorio.",
+                    "nested": true
                 },
                 {
-                    "label": "Planificado vs fichado",
-                    "text": "En un periodo <strong>publicado</strong>, la cuadrícula marca desviaciones (tarde/temprano) de inmediato, también <strong>hoy</strong>. Hasta 15 minutos de antelación cuenta como puntual; 15 minutos o más de retraso (o más de 15 minutos de antelación) es una desviación. Los fichajes siempre se registran. Fichajes faltantes solo después del fin previsto (o en días pasados). Fichajes no previstos y ausencia sin fichaje siguen igual. Un fichaje correcto muestra una marca verde arriba a la derecha; una desviación o un fichaje faltante sigue siendo un punto. Haga clic en la marca de arriba a la derecha para abrir <strong>Horas</strong> de ese ejecutor ese día. <strong>Imprimir</strong> (junto al título) abre una ventana nueva (A4 apaisado)."
+                    "label": "Buscar un sustituto",
+                    "text": "¿Alguien no puede hacer un turno previsto? Busque entonces a otro operario con <strong>Sustituto…</strong>.<br><br>WinProx propone operarios que:<br>• Ese día ya tienen un turno.<br>• Tienen la opción <strong>Disponible para sustitución</strong>.<br><br>En <strong>Time → Tipos de turno</strong> también puede indicar que entren en cuenta operarios sin turno previsto.<br><br>¿Elige un sustituto? Ocurre lo siguiente:<br>• El bloque de trabajo original pasa a ser una ausencia.<br>• El sustituto recibe el mismo horario.<br>• Se toman la ubicación y la unidad.<br><br>Así la planificación original sigue siendo reconocible y la sustitución queda registrada."
                 },
                 {
-                    "label": "Columnas de horas a la derecha",
-                    "text": "A la derecha de la cuadrícula, cada ejecutor tiene columnas de cifras con título vertical: <strong>Norma</strong> (norma de contrato), <strong>Diferencia</strong> (planificado menos norma, con signo), <strong>Planificado</strong>, <strong>Trabajado</strong> y por ausencia <strong>Vacaciones</strong>, <strong>Recup</strong> y <strong>Baja</strong> (días más horas restantes). <strong>Aviso</strong> muestra un número y/o un signo de exclamación por bloques incompletos o un fichaje abierto. Norma y diferencia quedan vacías mientras la norma no sea fiable. La norma semanal (38 h por defecto) se define en el ejecutor; la norma mensual sigue la pauta de trabajo — sin pauta, lun–vie cuentan según la norma semanal y los festivos siguen el régimen de festivos — sin acuerdo, el estándar belga. Es un recuento, no un juicio sobre la jornada."
+                    "label": "Comparar lo planificado y lo fichado",
+                    "text": "En un periodo publicado puede comparar los turnos previstos con las horas realmente fichadas. También para el día de hoy.<br><br>WinProx comprueba si el operario fichó cerca de la hora prevista.<br><br>La tolerancia habitual es de 15 minutos:<br>• Hasta 15 minutos antes: correcto.<br>• 15 minutos o más de retraso: una desviación.<br>• Más de 15 minutos antes: una desviación.<br><br>Un fichaje correcto se marca con una marca verde arriba a la derecha de la celda.<br><br>Si hay una desviación o falta el fichaje, ve un punto.<br><br>Pulse la marca o el punto para abrir las horas fichadas de ese operario ese día.<br><br>Un fichaje que falta solo se muestra cuando el turno previsto ha terminado, o si se trata de un día anterior.<br><br>Los fichajes originales se conservan siempre."
+                },
+                {
+                    "label": "Imprimir el horario",
+                    "text": "Con <strong>Imprimir</strong>, junto al título, abre una versión del horario lista para imprimir.<br><br>Se abre en una ventana nueva y está preparada para A4 en horizontal."
+                },
+                {
+                    "label": "Las cifras de la derecha: Estadísticas",
+                    "text": "Con <strong>Estadísticas</strong> abre a la derecha un resumen de las cifras principales por operario.<br><br>Encontrará, entre otras:<br>• <strong>Norma:</strong> las horas contractuales, de forma predeterminada 38 horas por semana. Las configura en el operario.<br>• <strong>Diferencia:</strong> la diferencia entre las horas planificadas y la norma del contrato.<br>• <strong>Planificado:</strong> el total de horas planificadas en el periodo elegido.<br>• <strong>Trabajado:</strong> el total de horas realmente fichadas.<br>• <strong>Vacaciones:</strong> las horas de vacaciones planificadas.<br>• <strong>Recup:</strong> las horas de descanso compensatorio planificadas.<br>• <strong>Baja:</strong> las horas de baja planificadas.<br>• <strong>Otro:</strong> las demás ausencias planificadas.<br>• <strong>Aviso:</strong> un aviso si hay un bloque incompleto o un fichaje de entrada sin salida.<br><br>¿La norma del contrato no está disponible de forma fiable? Entonces WinProx deja vacías las cifras de Norma y Diferencia."
+                },
+                {
+                    "label": "¿Cómo se calcula la norma?",
+                    "text": "En la vista mensual WinProx tiene en cuenta el régimen de trabajo del operario.<br><br>¿No hay régimen configurado? Entonces WinProx calcula la norma a partir de la norma semanal, repartida de lunes a viernes.<br><br>Para los festivos WinProx usa los ajustes de <strong>Time → Festivos</strong>. Si no hay una regulación propia, se aplica el estándar belga.<br><br><strong>Conviene saberlo:</strong> estas estadísticas sirven de resumen y de control. WinProx no juzga aquí si alguien ha trabajado de más o de menos. Muestra la planificación, las horas fichadas y las diferencias.",
+                    "nested": true
                 }
             ]
         },
