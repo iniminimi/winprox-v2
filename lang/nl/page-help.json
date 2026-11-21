@@ -11,48 +11,48 @@
             "title": "Hulp — Dashboard",
             "actions": [
                 {
-                    "label": "Wat wil je doen?",
-                    "text": "Bovenaan staan snelkoppelingen: nieuwe dagtaak via favorieten, nieuwe dagtaak, locatie toevoegen, uitvoerder toevoegen, wie werkt waar vandaag, manueel inklokken, welke taken vandaag en uurrooster bekijken. Zo hoef je niet door de menu’s te zoeken."
+                    "label": "Snel naar een actie",
+                    "text": "Bovenaan vindt u snelkoppelingen naar veelgebruikte acties. Zo hoeft u niet telkens door de menu's te zoeken.<br><br>Afhankelijk van uw rechten en de actieve modules ziet u onder andere:<br>• Nieuwe dagtaak via favorieten<br>• Nieuwe dagtaak plannen<br>• Locatie toevoegen<br>• Uitvoerder toevoegen of Uitvoerders bekijken<br>• Wie werkt waar vandaag<br>• Manueel inklokken<br>• Welke taken vandaag<br>• Uurrooster bekijken<br><br>Niet elke knop is altijd zichtbaar. Dat hangt af van uw rol en van de actieve modules, zoals Time of de kalender."
                 },
                 {
                     "label": "Wat is er nieuw?",
-                    "text": "Staat die kaart bovenaan, dan is er recent iets veranderd. Ze blijft een week staan. Tik erop om de lijst onder Hulp → Nieuw te openen; daarna verdwijnt de kaart."
+                    "text": "Verschijnt bovenaan de kaart <strong>Wat is er nieuw?</strong>, dan is er recent iets veranderd in WinProx.<br><br>De kaart blijft maximaal één week zichtbaar. Klik erop om de recente wijzigingen te bekijken onder Hulp → Nieuw. Daarna verdwijnt de kaart.<br><br>Komt er later een nieuwe nota bij, dan verschijnt de kaart opnieuw."
                 },
                 {
                     "label": "Overzicht",
-                    "text": "Onder Dashboard zie je tellingen van open meldingen, open taken en (met Time) wie er nu aanwezig is. Klik op een kaart om naar het bijhorende scherm te gaan. Open verlof-, recup-, ziek- of Andere-aanvragen verschijnen als extra kaart naar Time → Aanvragen, met het aantal per soort (bijv. 1 Verlof, 1 Ziek, 1 Andere)."
+                    "text": "Onder de titel Dashboard vindt u kaarten met actuele tellingen en aandachtspunten.<br><br>Voorbeelden zijn:<br>• Open meldingen.<br>• Open taken.<br>• Wie er momenteel aanwezig is, als Time actief is.<br><br>Sommige kaarten verschijnen alleen wanneer er iets te doen is. Bijvoorbeeld wanneer er meldingen moeten worden beoordeeld, er aandachtspunten zijn in Time, een nieuwe uitvoerder gecontroleerd moet worden of er open aanvragen of IoT-alarmen zijn.<br><br>Klik op een kaart om meteen naar het bijbehorende scherm te gaan.<br><br>Open aanvragen voor verlof, recup, ziekte of Andere verschijnen als aparte kaart. U ziet het aantal per soort. Klik erop om naar Time → Aanvragen te gaan."
                 },
                 {
-                    "label": "Zet op het bureaublad",
-                    "text": "Je hoeft niets te installeren uit een appwinkel. In Chrome of Edge staat onderaan in de zijbalk de knop Zet op het bureaublad. Daarmee opent het beheer in een eigen venster, zonder adresbalk, en komt er een snelkoppeling op het bureaublad. In Firefox kan dat niet, daarom zie je die knop daar niet. Gebruik je Safari op een Mac, kies dan in het menu Bestand de optie Zet in Dock. Op een iPhone of iPad zet je een icoon op het beginscherm via Deel. De prikklok op de telefoon is een aparte snelkoppeling."
+                    "label": "WinProx op uw bureaublad",
+                    "text": "U hoeft WinProx niet te installeren via een appwinkel. U kunt het beheer wel als een aparte toepassing openen.<br><br>• <strong>Chrome of Edge:</strong> klik onderaan in de zijbalk op <strong>Zet op het bureaublad</strong>. WinProx opent daarna in een eigen venster, zonder adresbalk, en er wordt een snelkoppeling op uw bureaublad geplaatst.<br>• <strong>Firefox:</strong> deze functie is niet beschikbaar.<br>• <strong>Mac met Safari:</strong> kies in het menu Bestand voor <strong>Zet in Dock</strong>.<br>• <strong>iPhone of iPad:</strong> gebruik de optie Deel om WinProx als icoon aan uw beginscherm toe te voegen.<br><br>Belangrijk: het beheer is bedoeld voor een computer of tablet. De prikklok op uw telefoon gebruikt een aparte snelkoppeling."
                 },
                 {
                     "label": "Starttemplate",
-                    "text": "Nieuwe organisaties zien op het dashboard «Wil je op weg geholpen worden?»: kies waarvoor je WinProx gebruikt (eigen locaties, locaties van klanten, of voertuigen en fleet). WinProx maakt een kleine voorbeeldomgeving (teams, categorieën, één locatie, units). Bij werken bij klanten kies je ook de grootte (1–5, 6–20 of 21+). Liever zelf beginnen kan ook. Dit is geen sectorsysteem, alleen een start. Daarna kun je zelf locaties, teams en units toevoegen."
+                    "text": "Nieuwe organisaties krijgen op het dashboard de vraag <strong>Wil je op weg geholpen worden?</strong><br><br>U kunt kiezen waarvoor u WinProx wilt gebruiken:<br>• Eigen locaties.<br>• Locaties van klanten.<br>• Voertuigen en fleet.<br><br>WinProx maakt op basis van uw keuze een kleine voorbeeldomgeving aan met teams, categorieën, één locatie en units.<br><br>Kiest u voor werken bij klanten, dan kunt u ook de grootte van uw organisatie aangeven:<br>• 1–5<br>• 6–20<br>• 21+<br><br>U kunt er ook voor kiezen om zelf te beginnen.<br><br>Goed om te weten: de starttemplate is geen vast sectorsysteem. Het is alleen bedoeld om sneller te starten. U kunt achteraf zelf locaties, teams en units toevoegen of hernoemen."
                 },
                 {
                     "label": "Briefing afdrukken",
-                    "text": "Opent een afdrukbaar overzicht van open taken per team — handig voor de werkvloer."
+                    "text": "Met <strong>Briefing afdrukken</strong> opent u een afdrukbaar overzicht van de open taken van vandaag, gegroepeerd per team.<br><br>Handig om af te drukken en mee te geven aan de uitvoerders op de werkvloer."
                 },
                 {
                     "label": "Proefperiode",
-                    "text": "Tijdens de proef hebt u tot 5 licenties, 50 units en 10 documenten, inclusief Time (prikklok). Het dashboard toont resterende dagen."
+                    "text": "Tijdens de proefperiode kunt u WinProx gebruiken met:<br>• Tot 5 licenties.<br>• Tot 50 units.<br>• Tot 10 documenten.<br>• Time, inclusief prikklok.<br><br>Op het dashboard ziet u hoeveel dagen uw proefperiode nog duurt.<br><br>Meer uitleg over de formules en limieten vindt u onder Organisatie → Abonnement."
                 },
                 {
                     "label": "Melding toevoegen",
-                    "text": "Maak een melding in twee stappen: locatie/unit + omschrijving, daarna een taak voor het juiste team."
+                    "text": "Via <strong>Melding toevoegen</strong> maakt u snel een nieuwe melding aan. Dat gebeurt in twee stappen:<br><br>1. Kies de locatie of unit en vul een omschrijving in.<br>2. Maak daarna een taak aan voor het team dat de melding moet behandelen.<br><br>Zo kunt u meteen de nodige actie koppelen aan een melding.<br><br>De volledige lijst met meldingen vindt u onder Werk → Meldingen."
                 },
                 {
                     "label": "Recente meldingen",
-                    "text": "De laatste meldingen staan onderaan. Bij een bevestigde QR-e-mail zie je de pil Melder bevestigd, naast status en Wacht op controle."
+                    "text": "Onderaan het dashboard vindt u de meest recente meldingen.<br><br>Per melding ziet u onder andere:<br>• De omschrijving.<br>• De locatie of unit.<br>• Het tijdstip.<br>• De status.<br>• Wie de melding heeft aangemaakt.<br><br>Heeft de melder zijn bevestiging via de QR-code uitgevoerd? Dan verschijnt de aanduiding <strong>Melder bevestigd</strong>.<br><br>Een pas aangemaakte melding kan tijdelijk extra geaccentueerd worden in de lijst."
                 }
             ],
-            "status_note": "Meldingstatus op het dashboard volgt de status van de gekoppelde taken.",
+            "status_note": "De status op het dashboard wordt bepaald door de taken die bij de melding horen.",
             "statuses": {
                 "new": "Er is minstens één taak die nog niet gestart is.",
                 "in_progress": "Minstens één taak is in uitvoering.",
-                "done": "Alle taken zijn afgehandeld; een beheerder kan de melding sluiten.",
-                "closed": "Alle taken zijn gesloten — de melding is afgewerkt."
+                "done": "Alle taken zijn afgehandeld. Een beheerder kan de melding daarna sluiten.",
+                "closed": "Alle taken zijn gesloten. De melding is volledig afgewerkt."
             }
         },
         "issues.list": {

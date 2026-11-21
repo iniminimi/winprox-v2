@@ -11,48 +11,48 @@
             "title": "Hilfe — Dashboard",
             "actions": [
                 {
-                    "label": "Was möchten Sie tun?",
-                    "text": "Oben finden Sie Verknüpfungen: neue Tagesaufgabe über Favoriten, neue Tagesaufgabe, Standort hinzufügen, Ausführenden hinzufügen, wer arbeitet wo heute, manuell einstempeln, welche Aufgaben heute und Dienstplan ansehen. So müssen Sie nicht in den Menüs suchen."
+                    "label": "Schnell zu einer Aktion",
+                    "text": "Oben finden Sie Verknüpfungen zu häufig genutzten Aktionen. So müssen Sie nicht jedes Mal durch die Menüs suchen.<br><br>Je nach Rechten und aktiven Modulen sehen Sie unter anderem:<br>• Neue Tagesaufgabe über Favoriten<br>• Neue Tagesaufgabe planen<br>• Standort hinzufügen<br>• Ausführenden hinzufügen oder Ausführende ansehen<br>• Wer arbeitet wo heute<br>• Manuell einstempeln<br>• Welche Aufgaben heute<br>• Dienstplan ansehen<br><br>Nicht jeder Button ist immer sichtbar. Das hängt von Ihrer Rolle und von aktiven Modulen ab, etwa Time oder dem Kalender."
                 },
                 {
                     "label": "Was ist neu?",
-                    "text": "Steht diese Karte oben, hat sich kürzlich etwas geändert. Sie bleibt eine Woche stehen. Tippen Sie darauf, um die Liste unter Hilfe → Neu zu öffnen; danach verschwindet die Karte."
+                    "text": "Erscheint oben die Karte <strong>Was ist neu?</strong>, dann hat sich in WinProx kürzlich etwas geändert.<br><br>Die Karte bleibt höchstens eine Woche sichtbar. Klicken Sie darauf, um die Änderungen unter Hilfe → Neu zu sehen. Danach verschwindet die Karte.<br><br>Kommt später eine neuere Notiz, erscheint die Karte erneut."
                 },
                 {
                     "label": "Übersicht",
-                    "text": "Unter Dashboard sehen Sie Anzahlen offener Meldungen, offener Aufgaben und (mit Time) wer gerade anwesend ist. Klicken Sie auf eine Karte, um zum zugehörigen Bildschirm zu gelangen. Offene Urlaubs- oder Ausgleichsanträge erscheinen als extra Karte zu Time → Anträge, mit der Anzahl je Art (z. B. 1 Urlaub, 1 Krank, 1 Sonstige)."
+                    "text": "Unter dem Titel Dashboard finden Sie Karten mit aktuellen Zählungen und Aufmerksamkeitspunkten.<br><br>Beispiele sind:<br>• Offene Meldungen.<br>• Offene Aufgaben.<br>• Wer gerade anwesend ist, wenn Time aktiv ist.<br><br>Manche Karten erscheinen nur, wenn etwas zu tun ist — zum Beispiel wenn Meldungen geprüft werden müssen, es Aufmerksamkeitspunkte in Time gibt, ein neuer Ausführender kontrolliert werden muss oder offene Anträge bzw. IoT-Alarme vorliegen.<br><br>Klicken Sie auf eine Karte, um direkt zum passenden Bildschirm zu gehen.<br><br>Offene Anträge für Urlaub, Freizeitausgleich, Krankheit oder Andere erscheinen als eigene Karte. Sie sehen die Anzahl pro Art. Klicken Sie darauf, um zu Time → Anträge zu gehen."
                 },
                 {
-                    "label": "Auf den Desktop legen",
-                    "text": "Sie müssen nichts aus einem App-Store installieren. In Chrome oder Edge steht unten in der Seitenleiste der Knopf Auf den Desktop legen. Damit öffnet die Verwaltung in einem eigenen Fenster, ohne Adressleiste, und es kommt eine Verknüpfung auf den Desktop. Firefox kann das nicht, deshalb sehen Sie den Knopf dort nicht. Nutzen Sie Safari auf einem Mac, öffnen Sie das Menü Ablage und wählen Sie Zum Dock hinzufügen. Auf einem iPhone oder iPad setzen Sie ein Symbol auf den Home-Bildschirm über Teilen. Die Stempeluhr auf dem Handy ist eine eigene Verknüpfung."
+                    "label": "WinProx auf Ihrem Desktop",
+                    "text": "Sie müssen WinProx nicht über einen App-Store installieren. Die Verwaltung können Sie trotzdem als eigene Anwendung öffnen.<br><br>• <strong>Chrome oder Edge:</strong> klicken Sie unten in der Seitenleiste auf <strong>Auf den Desktop legen</strong>. WinProx öffnet sich danach in einem eigenen Fenster ohne Adressleiste, und es wird eine Verknüpfung auf Ihrem Desktop angelegt.<br>• <strong>Firefox:</strong> diese Funktion ist nicht verfügbar.<br>• <strong>Mac mit Safari:</strong> wählen Sie im Menü Ablage <strong>Zum Dock hinzufügen</strong>.<br>• <strong>iPhone oder iPad:</strong> nutzen Sie Teilen, um WinProx als Symbol auf dem Startbildschirm hinzuzufügen.<br><br>Wichtig: die Verwaltung ist für Computer oder Tablet gedacht. Die Stempeluhr auf Ihrem Telefon nutzt eine eigene Verknüpfung."
                 },
                 {
                     "label": "Startvorlage",
-                    "text": "Neue Organisationen sehen die Schaltfläche «Möchten Sie Hilfe beim Start?». Wählen Sie, wofür Sie WinProx nutzen: an eigenen Standorten, an Kundenstandorten oder für Fahrzeuge und Fuhrpark. WinProx legt eine kleine Beispielumgebung an (Teams, Kategorien, ein Standort, Units). Bei Arbeit beim Kunden wählen Sie auch die Größe (1–5, 6–20 oder 21+). Das ist kein Sektorsystem, nur ein Start. Danach können Sie selbst Standorte, Teams und Units hinzufügen."
+                    "text": "Neue Organisationen sehen auf dem Dashboard die Frage <strong>Möchten Sie Hilfe beim Start?</strong><br><br>Sie können wählen, wofür Sie WinProx nutzen möchten:<br>• Eigene Standorte.<br>• Kundenstandorte.<br>• Fahrzeuge und Flotte.<br><br>WinProx legt anhand Ihrer Wahl eine kleine Beispielumgebung mit Teams, Kategorien, einem Standort und Units an.<br><br>Wählen Sie Arbeit bei Kunden, können Sie auch die Größe Ihrer Organisation angeben:<br>• 1–5<br>• 6–20<br>• 21+<br><br>Sie können auch selbst beginnen.<br><br>Gut zu wissen: die Startvorlage ist kein festes Branchensystem. Sie dient nur dazu, schneller zu starten. Danach können Sie Standorte, Teams und Units selbst hinzufügen oder umbenennen."
                 },
                 {
                     "label": "Briefing drucken",
-                    "text": "Öffnet eine druckbare Übersicht offener Aufgaben pro Team — praktisch auf der Baustelle."
+                    "text": "Mit <strong>Briefing drucken</strong> öffnen Sie eine druckbare Übersicht der offenen Aufgaben von heute, gruppiert nach Team.<br><br>Praktisch zum Ausdrucken und Mitgeben an Ausführende vor Ort."
                 },
                 {
                     "label": "Testphase",
-                    "text": "In der Testphase haben Sie bis zu 5 Lizenzen, 50 Units und 10 Dokumente, inkl. Time (Stechuhr). Das Dashboard zeigt die restlichen Tage."
+                    "text": "In der Testphase können Sie WinProx nutzen mit:<br>• Bis zu 5 Lizenzen.<br>• Bis zu 50 Units.<br>• Bis zu 10 Dokumenten.<br>• Time inklusive Stempeluhr.<br><br>Auf dem Dashboard sehen Sie, wie viele Tage Ihre Testphase noch dauert.<br><br>Mehr zu Formeln und Grenzen finden Sie unter Organisation → Abonnement."
                 },
                 {
                     "label": "Meldung hinzufügen",
-                    "text": "Erstellen Sie eine Meldung in zwei Schritten: Standort/Unit + Beschreibung, dann eine Aufgabe für das richtige Team."
+                    "text": "Über <strong>Meldung hinzufügen</strong> legen Sie schnell eine neue Meldung an. Das geschieht in zwei Schritten:<br><br>1. Wählen Sie Standort oder Unit und geben Sie eine Beschreibung ein.<br>2. Legen Sie danach eine Aufgabe für das Team an, das die Meldung bearbeiten soll.<br><br>So verknüpfen Sie die nötige Aktion sofort mit einer Meldung.<br><br>Die vollständige Liste der Meldungen finden Sie unter Arbeit → Meldungen."
                 },
                 {
-                    "label": "Aktuelle Meldungen",
-                    "text": "Die neuesten Meldungen stehen unten. Nach bestätigter QR-E-Mail sehen Sie die Pille Melder bestätigt, neben Status und Wartet auf Prüfung."
+                    "label": "Letzte Meldungen",
+                    "text": "Unten auf dem Dashboard finden Sie die neuesten Meldungen.<br><br>Pro Meldung sehen Sie unter anderem:<br>• Die Beschreibung.<br>• Den Standort oder die Unit.<br>• Den Zeitpunkt.<br>• Den Status.<br>• Wer die Meldung angelegt hat.<br><br>Hat der Melder die Bestätigung über den QR-Code ausgeführt? Dann erscheint die Kennzeichnung <strong>Melder bestätigt</strong>.<br><br>Eine gerade angelegte Meldung kann in der Liste vorübergehend hervorgehoben werden."
                 }
             ],
-            "status_note": "Der Meldungsstatus im Dashboard folgt dem Status der verknüpften Aufgaben.",
+            "status_note": "Der Status auf dem Dashboard wird durch die Aufgaben bestimmt, die zur Meldung gehören.",
             "statuses": {
-                "new": "Mindestens eine Aufgabe wurde noch nicht gestartet.",
-                "in_progress": "Mindestens eine Aufgabe ist in Bearbeitung.",
-                "done": "Alle Aufgaben sind erledigt; ein Administrator kann die Meldung schließen.",
-                "closed": "Alle Aufgaben sind geschlossen — die Meldung ist abgeschlossen."
+                "new": "Es gibt mindestens eine Aufgabe, die noch nicht gestartet ist.",
+                "in_progress": "Mindestens eine Aufgabe ist in Ausführung.",
+                "done": "Alle Aufgaben sind erledigt. Ein Administrator kann die Meldung danach schließen.",
+                "closed": "Alle Aufgaben sind geschlossen. Die Meldung ist vollständig abgeschlossen."
             }
         },
         "issues.list": {

@@ -11,48 +11,48 @@
             "title": "Aide — Tableau de bord",
             "actions": [
                 {
-                    "label": "Que voulez-vous faire ?",
-                    "text": "En haut se trouvent des raccourcis : nouvelle tâche du jour via favoris, nouvelle tâche du jour, ajouter un lieu, ajouter un exécutant, qui travaille où aujourd’hui, pointage manuel, quelles tâches aujourd’hui et voir le planning. Ainsi, vous n’avez pas à chercher dans les menus."
+                    "label": "Accès rapide à une action",
+                    "text": "En haut, vous trouvez des raccourcis vers les actions courantes. Ainsi, vous n’avez pas à chercher dans les menus à chaque fois.<br><br>Selon vos droits et les modules actifs, vous voyez notamment :<br>• Nouvelle tâche du jour via favoris<br>• Planifier une nouvelle tâche du jour<br>• Ajouter un site<br>• Ajouter un exécutant ou Voir les exécutants<br>• Qui travaille où aujourd’hui<br>• Pointage manuel<br>• Quelles tâches aujourd’hui<br>• Voir le planning<br><br>Chaque bouton n’est pas toujours visible. Cela dépend de votre rôle et des modules actifs, comme Time ou le calendrier."
                 },
                 {
                     "label": "Quoi de neuf ?",
-                    "text": "Si cette carte est en haut, quelque chose a changé récemment. Elle reste une semaine. Touchez-la pour ouvrir la liste sous Aide → Nouveau ; la carte disparaît ensuite."
+                    "text": "Si la carte <strong>Quoi de neuf ?</strong> apparaît en haut, quelque chose a récemment changé dans WinProx.<br><br>La carte reste visible au maximum une semaine. Cliquez dessus pour voir les changements récents sous Aide → Nouveau. Ensuite, la carte disparaît.<br><br>Si une note plus récente arrive plus tard, la carte réapparaît."
                 },
                 {
-                    "label": "Vue d'ensemble",
-                    "text": "Sous Tableau de bord vous voyez le nombre de signalements ouverts, de tâches ouvertes et (avec Time) qui est présent maintenant. Cliquez sur une carte pour accéder à l’écran correspondant. Les demandes de congé ou de récup ouvertes apparaissent comme carte extra vers Time → Demandes, avec le nombre par type (p. ex. 1 Congé, 1 Maladie, 1 Autre)."
+                    "label": "Aperçu",
+                    "text": "Sous le titre Tableau de bord, vous trouvez des cartes avec des compteurs et points d’attention actuels.<br><br>Exemples :<br>• Signalements ouverts.<br>• Tâches ouvertes.<br>• Qui est présent maintenant, si Time est actif.<br><br>Certaines cartes n’apparaissent que lorsqu’il y a quelque chose à faire — par exemple des signalements à examiner, des points d’attention dans Time, un nouvel exécutant à contrôler, ou des demandes ouvertes ou alarmes IoT.<br><br>Cliquez sur une carte pour aller directement à l’écran correspondant.<br><br>Les demandes ouvertes de congé, récupération, maladie ou Autre apparaissent comme carte séparée. Vous voyez le nombre par type. Cliquez pour aller dans Time → Demandes."
                 },
                 {
-                    "label": "Mettre sur le bureau",
-                    "text": "Vous n’avez rien à installer depuis une boutique d’applications. Dans Chrome ou Edge, le bouton Mettre sur le bureau se trouve en bas de la barre latérale. Il ouvre la gestion dans sa propre fenêtre, sans barre d’adresse, et ajoute un raccourci sur le bureau. Firefox ne peut pas le faire, donc ce bouton n’y apparaît pas. Si vous utilisez Safari sur un Mac, ouvrez le menu Fichier et choisissez Ajouter au Dock. Sur un iPhone ou un iPad, vous ajoutez une icône à l’écran d’accueil via Partager. La pointeuse sur le téléphone est un raccourci à part."
+                    "label": "WinProx sur votre bureau",
+                    "text": "Vous n’avez pas besoin d’installer WinProx via une boutique d’apps. Vous pouvez quand même ouvrir la gestion comme application séparée.<br><br>• <strong>Chrome ou Edge :</strong> cliquez en bas de la barre latérale sur <strong>Ajouter au bureau</strong>. WinProx s’ouvre ensuite dans sa propre fenêtre, sans barre d’adresse, et un raccourci est placé sur votre bureau.<br>• <strong>Firefox :</strong> cette fonction n’est pas disponible.<br>• <strong>Mac avec Safari :</strong> choisissez <strong>Ajouter au Dock</strong> dans le menu Fichier.<br>• <strong>iPhone ou iPad :</strong> utilisez Partager pour ajouter WinProx comme icône sur l’écran d’accueil.<br><br>Important : la gestion est destinée à un ordinateur ou une tablette. La pointeuse sur votre téléphone utilise un raccourci séparé."
                 },
                 {
-                    "label": "Modèle de départ",
-                    "text": "Les nouvelles organisations voient le bouton « Voulez-vous un coup de pouce pour démarrer ? ». Choisissez à quoi sert WinProx : sur vos propres sites, sur les sites des clients, ou pour véhicules et flotte. WinProx crée un petit environnement d’exemple (équipes, catégories, un lieu, units). Pour le travail chez le client, vous choisissez aussi la taille (1–5, 6–20 ou 21+). Ce n’est pas un système de secteurs, seulement un démarrage. Vous pourrez ensuite ajouter vous-même des lieux, équipes et units."
+                    "label": "Modèle de démarrage",
+                    "text": "Les nouvelles organisations voient sur le tableau de bord la question <strong>Voulez-vous un coup de pouce pour démarrer ?</strong><br><br>Vous pouvez choisir à quoi vous voulez utiliser WinProx :<br>• Sites propres.<br>• Sites de clients.<br>• Véhicules et flotte.<br><br>Selon votre choix, WinProx crée un petit environnement d’exemple avec équipes, catégories, un site et des unités.<br><br>Si vous choisissez de travailler chez des clients, vous pouvez aussi indiquer la taille de votre organisation :<br>• 1–5<br>• 6–20<br>• 21+<br><br>Vous pouvez aussi choisir de commencer vous-même.<br><br>Bon à savoir : le modèle de démarrage n’est pas un système de secteur fixe. Il sert seulement à démarrer plus vite. Ensuite, vous pouvez ajouter ou renommer vous-même sites, équipes et unités."
                 },
                 {
                     "label": "Imprimer le briefing",
-                    "text": "Ouvre un aperçu imprimable des tâches ouvertes par équipe — pratique sur le terrain."
+                    "text": "Avec <strong>Imprimer le briefing</strong>, vous ouvrez un aperçu imprimable des tâches ouvertes d’aujourd’hui, regroupées par équipe.<br><br>Pratique à imprimer et à donner aux exécutants sur le terrain."
                 },
                 {
-                    "label": "Période d'essai",
-                    "text": "Pendant l’essai vous avez jusqu’à 50 licences et 50 unités, Time (pointeuse) inclus. Le tableau de bord affiche les jours restants."
+                    "label": "Période d’essai",
+                    "text": "Pendant la période d’essai, vous pouvez utiliser WinProx avec :<br>• Jusqu’à 5 licences.<br>• Jusqu’à 50 unités.<br>• Jusqu’à 10 documents.<br>• Time, y compris la pointeuse.<br><br>Sur le tableau de bord, vous voyez combien de jours il reste à votre période d’essai.<br><br>Plus d’explications sur les formules et limites se trouvent sous Organisation → Abonnement."
                 },
                 {
                     "label": "Ajouter un signalement",
-                    "text": "Créez un signalement en deux étapes : site/unité + description, puis une tâche pour la bonne équipe."
+                    "text": "Via <strong>Ajouter un signalement</strong>, vous créez rapidement un nouveau signalement. Cela se fait en deux étapes :<br><br>1. Choisissez le site ou l’unité et saisissez une description.<br>2. Créez ensuite une tâche pour l’équipe qui doit traiter le signalement.<br><br>Ainsi, vous liez tout de suite l’action nécessaire à un signalement.<br><br>La liste complète des signalements se trouve sous Travail → Signalements."
                 },
                 {
                     "label": "Signalements récents",
-                    "text": "Les derniers signalements apparaissent en bas. Après confirmation e-mail QR, la pastille Déclarant confirmé s’affiche, à côté du statut et En attente de contrôle."
+                    "text": "En bas du tableau de bord, vous trouvez les signalements les plus récents.<br><br>Par signalement, vous voyez notamment :<br>• La description.<br>• Le site ou l’unité.<br>• L’heure.<br>• Le statut.<br>• Qui a créé le signalement.<br><br>Le déclarant a-t-il confirmé via le QR code ? Alors l’indication <strong>Déclarant confirmé</strong> apparaît.<br><br>Un signalement tout juste créé peut être temporairement mis en évidence dans la liste."
                 }
             ],
-            "status_note": "Le statut du signalement sur le tableau de bord suit le statut des tâches liées.",
+            "status_note": "Le statut sur le tableau de bord est déterminé par les tâches liées au signalement.",
             "statuses": {
-                "new": "Au moins une tâche n'a pas encore été démarrée.",
+                "new": "Il y a au moins une tâche qui n’a pas encore démarré.",
                 "in_progress": "Au moins une tâche est en cours.",
-                "done": "Toutes les tâches sont terminées ; un administrateur peut clôturer le signalement.",
-                "closed": "Toutes les tâches sont clôturées — le signalement est terminé."
+                "done": "Toutes les tâches sont traitées. Un administrateur peut ensuite clôturer le signalement.",
+                "closed": "Toutes les tâches sont clôturées. Le signalement est entièrement terminé."
             }
         },
         "issues.list": {

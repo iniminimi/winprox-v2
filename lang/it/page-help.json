@@ -11,48 +11,48 @@
             "title": "Aiuto — Dashboard",
             "actions": [
                 {
-                    "label": "Cosa vuoi fare?",
-                    "text": "In alto ci sono scorciatoie: nuova attività giornaliera dai preferiti, nuova attività giornaliera, aggiungi sede, aggiungi esecutore, chi lavora dove oggi, timbratura manuale, quali attività oggi e visualizza il turno. Così non devi cercare nei menu."
+                    "label": "Vai subito a un’azione",
+                    "text": "In alto trovate scorciatoie alle azioni più usate. Così non dovete ogni volta cercare nei menu.<br><br>A seconda dei diritti e dei moduli attivi vedete, tra le altre:<br>• Nuovo compito del giorno via preferiti<br>• Pianifica nuovo compito del giorno<br>• Aggiungi sede<br>• Aggiungi esecutore o Vedi esecutori<br>• Chi lavora dove oggi<br>• Timbratura manuale<br>• Quali compiti oggi<br>• Vedi turni<br><br>Non ogni pulsante è sempre visibile. Dipende dal vostro ruolo e dai moduli attivi, come Time o il calendario."
                 },
                 {
-                    "label": "Che cosa c'è di nuovo?",
-                    "text": "Se quella scheda è in alto, qualcosa è cambiato di recente. Resta una settimana. Toccala per aprire l’elenco in Aiuto → Novità; poi la scheda sparisce."
+                    "label": "Novità",
+                    "text": "Se in alto compare la scheda <strong>Novità</strong>, qualcosa è cambiato di recente in WinProx.<br><br>La scheda resta visibile al massimo una settimana. Fate clic per vedere le modifiche recenti in Aiuto → Nuovo. Poi la scheda scompare.<br><br>Se in seguito arriva una nota più recente, la scheda riappare."
                 },
                 {
                     "label": "Panoramica",
-                    "text": "Sotto Dashboard vedi i conteggi di segnalazioni aperte, attività aperte e (con Time) chi è presente ora. Clicchi su una scheda per andare alla schermata correlata. Le richieste aperte di ferie o recupero appaiono come scheda extra verso Time → Richieste, con il conteggio per tipo (es. 1 Ferie, 1 Malattia, 1 Altro)."
+                    "text": "Sotto il titolo Dashboard trovate schede con conteggi e punti di attenzione attuali.<br><br>Esempi:<br>• Segnalazioni aperte.<br>• Compiti aperti.<br>• Chi è presente ora, se Time è attivo.<br><br>Alcune schede compaiono solo quando c’è qualcosa da fare — ad esempio segnalazioni da esaminare, punti di attenzione in Time, un nuovo esecutore da controllare, oppure richieste aperte o allarmi IoT.<br><br>Fate clic su una scheda per andare subito alla schermata corrispondente.<br><br>Le richieste aperte di ferie, recupero, malattia o Altro compaiono come scheda separata. Vedete il numero per tipo. Fate clic per andare in Time → Richieste."
                 },
                 {
-                    "label": "Metti sul desktop",
-                    "text": "Non serve installare nulla da uno store di app. In Chrome o Edge, il pulsante Metti sul desktop sta in basso nella barra laterale. Apre la gestione in una finestra propria, senza barra degli indirizzi, e aggiunge un collegamento sul desktop. Firefox non può farlo, quindi quel pulsante lì non compare. Se usa Safari su un Mac, apra il menu File e scelga Aggiungi al Dock. Su un iPhone o un iPad aggiunge un’icona alla schermata Home tramite Condividi. Il timbratore sul telefono è un collegamento a parte."
+                    "label": "WinProx sul desktop",
+                    "text": "Non dovete installare WinProx da un app store. Potete comunque aprire la gestione come applicazione separata.<br><br>• <strong>Chrome o Edge:</strong> fate clic in basso nella barra laterale su <strong>Aggiungi al desktop</strong>. WinProx si apre poi in una finestra propria, senza barra degli indirizzi, e viene creata una scorciatoia sul desktop.<br>• <strong>Firefox:</strong> questa funzione non è disponibile.<br>• <strong>Mac con Safari:</strong> scegliete <strong>Aggiungi al Dock</strong> nel menu File.<br>• <strong>iPhone o iPad:</strong> usate Condividi per aggiungere WinProx come icona nella schermata iniziale.<br><br>Importante: la gestione è pensata per computer o tablet. L’orologio di presenza sul telefono usa una scorciatoia separata."
                 },
                 {
-                    "label": "Modello iniziale",
-                    "text": "Le nuove organizzazioni vedono il pulsante «Vuoi un aiuto per iniziare?». Scegli per cosa usi WinProx: nelle tue sedi, presso i clienti, o per veicoli e flotta. WinProx crea un piccolo ambiente di esempio (team, categorie, una sede, unit). Per il lavoro presso i clienti scegli anche la dimensione (1–5, 6–20 o 21+). Non è un sistema di settori, solo un avvio. Poi puoi aggiungere tu sedi, team e unit."
+                    "label": "Modello di avvio",
+                    "text": "Le nuove organizzazioni vedono sulla dashboard la domanda <strong>Vuoi una mano per iniziare?</strong><br><br>Potete scegliere per cosa volete usare WinProx:<br>• Sedi proprie.<br>• Sedi dei clienti.<br>• Veicoli e flotta.<br><br>In base alla scelta, WinProx crea un piccolo ambiente di esempio con team, categorie, una sede e unità.<br><br>Se scegliete di lavorare presso i clienti, potete anche indicare la dimensione dell’organizzazione:<br>• 1–5<br>• 6–20<br>• 21+<br><br>Potete anche iniziare da soli.<br><br>Buono a sapersi: il modello di avvio non è un sistema di settore fisso. Serve solo per partire più in fretta. Dopo potete aggiungere o rinominare sedi, team e unità voi stessi."
                 },
                 {
                     "label": "Stampa briefing",
-                    "text": "Apre una panoramica stampabile delle attività aperte per team — utile in produzione."
+                    "text": "Con <strong>Stampa briefing</strong> aprite un riepilogo stampabile dei compiti aperti di oggi, raggruppati per team.<br><br>Utile da stampare e dare agli esecutori sul campo."
                 },
                 {
                     "label": "Periodo di prova",
-                    "text": "Durante la prova avete fino a 5 licenze, 50 unità e 10 documenti, Time (timbratrice) incluso. La dashboard mostra i giorni rimanenti."
+                    "text": "Durante il periodo di prova potete usare WinProx con:<br>• Fino a 5 licenze.<br>• Fino a 50 unità.<br>• Fino a 10 documenti.<br>• Time, compreso l’orologio di presenza.<br><br>Sulla dashboard vedete quanti giorni restano al periodo di prova.<br><br>Maggiori dettagli su formule e limiti sono in Organizzazione → Abbonamento."
                 },
                 {
                     "label": "Aggiungi segnalazione",
-                    "text": "Crei una segnalazione in due passi: sede/unità + descrizione, poi un'attività per il team giusto."
+                    "text": "Con <strong>Aggiungi segnalazione</strong> create in fretta una nuova segnalazione. Succede in due passi:<br><br>1. Scegliete la sede o l’unità e inserite una descrizione.<br>2. Create poi un compito per il team che deve gestire la segnalazione.<br><br>Così collegate subito l’azione necessaria a una segnalazione.<br><br>L’elenco completo delle segnalazioni è in Lavoro → Segnalazioni."
                 },
                 {
                     "label": "Segnalazioni recenti",
-                    "text": "Le ultime segnalazioni compaiono in basso. Dopo la conferma e-mail QR vedi la pillola Segnalante confermato, accanto a stato e In attesa di controllo."
+                    "text": "In fondo alla dashboard trovate le segnalazioni più recenti.<br><br>Per ogni segnalazione vedete tra l’altro:<br>• La descrizione.<br>• La sede o l’unità.<br>• L’orario.<br>• Lo stato.<br>• Chi ha creato la segnalazione.<br><br>Il segnalatore ha completato la conferma tramite il codice QR? Allora compare l’indicazione <strong>Segnalatore confermato</strong>.<br><br>Una segnalazione appena creata può essere temporaneamente evidenziata nell’elenco."
                 }
             ],
-            "status_note": "Lo stato segnalazione sulla dashboard segue lo stato delle attività collegate.",
+            "status_note": "Lo stato sulla dashboard è determinato dai compiti collegati alla segnalazione.",
             "statuses": {
-                "new": "Almeno un'attività non è ancora stata avviata.",
-                "in_progress": "Almeno un'attività è in corso.",
-                "done": "Tutte le attività sono completate; un amministratore può chiudere la segnalazione.",
-                "closed": "Tutte le attività sono chiuse — la segnalazione è terminata."
+                "new": "C’è almeno un compito non ancora avviato.",
+                "in_progress": "Almeno un compito è in corso.",
+                "done": "Tutti i compiti sono gestiti. Un amministratore può poi chiudere la segnalazione.",
+                "closed": "Tutti i compiti sono chiusi. La segnalazione è completamente terminata."
             }
         },
         "issues.list": {

@@ -8,51 +8,51 @@
     },
     "pages": {
         "dashboard": {
-            "title": "Ayuda — Panel de control",
+            "title": "Ayuda — Panel",
             "actions": [
                 {
-                    "label": "¿Qué quieres hacer?",
-                    "text": "Arriba hay atajos: nueva tarea del día desde favoritos, nueva tarea del día, añadir ubicación, añadir ejecutor, quién trabaja dónde hoy, fichaje manual, qué tareas hoy y ver el horario. Así no tienes que buscar en los menús."
+                    "label": "Ir rápido a una acción",
+                    "text": "Arriba encuentra accesos directos a acciones habituales. Así no tiene que buscar siempre en los menús.<br><br>Según sus derechos y los módulos activos, puede ver entre otras:<br>• Nueva tarea del día vía favoritos<br>• Planificar nueva tarea del día<br>• Añadir ubicación<br>• Añadir ejecutor o Ver ejecutores<br>• Quién trabaja dónde hoy<br>• Fichar manualmente<br>• Qué tareas hoy<br>• Ver cuadrante<br><br>No todos los botones están siempre visibles. Depende de su rol y de los módulos activos, como Time o el calendario."
                 },
                 {
                     "label": "¿Qué hay de nuevo?",
-                    "text": "Si esa tarjeta está arriba, algo ha cambiado hace poco. Permanece una semana. Tóquela para abrir la lista en Ayuda → Novedades; después desaparece."
+                    "text": "Si aparece arriba la tarjeta <strong>¿Qué hay de nuevo?</strong>, algo ha cambiado recientemente en WinProx.<br><br>La tarjeta permanece visible como máximo una semana. Pulse para ver los cambios recientes en Ayuda → Nuevo. Después desaparece.<br><br>Si más adelante hay una nota más reciente, la tarjeta vuelve a aparecer."
                 },
                 {
                     "label": "Resumen",
-                    "text": "Bajo Panel ves conteos de incidencias abiertas, tareas abiertas y (con Time) quién está presente ahora. Haz clic en una tarjeta para ir a la pantalla relacionada. Las solicitudes abiertas de vacaciones o TOIL aparecen como tarjeta extra hacia Time → Solicitudes, con el conteo por tipo (1 Vacaciones, 1 TOIL, o ambos)."
+                    "text": "Bajo el título Panel encuentra tarjetas con conteos y puntos de atención actuales.<br><br>Ejemplos:<br>• Avisos abiertos.<br>• Tareas abiertas.<br>• Quién está presente ahora, si Time está activo.<br><br>Algunas tarjetas solo aparecen cuando hay algo que hacer — por ejemplo avisos por revisar, puntos de atención en Time, un nuevo ejecutor por comprobar, o solicitudes abiertas o alarmas IoT.<br><br>Pulse una tarjeta para ir directamente a la pantalla correspondiente.<br><br>Las solicitudes abiertas de vacaciones, compensación, enfermedad u Otro aparecen como tarjeta aparte. Ve el número por tipo. Pulse para ir a Time → Solicitudes."
                 },
                 {
-                    "label": "Poner en el escritorio",
-                    "text": "No hace falta instalar nada desde una tienda de aplicaciones. En Chrome o Edge, el botón Poner en el escritorio está abajo en la barra lateral. Abre la gestión en su propia ventana, sin barra de direcciones, y añade un acceso directo en el escritorio. Firefox no puede hacerlo, por eso ese botón no aparece allí. Si usa Safari en un Mac, abra el menú Archivo y elija Añadir al Dock. En un iPhone o un iPad añade un icono a la pantalla de inicio con Compartir. El reloj de fichar en el teléfono es un acceso aparte."
+                    "label": "WinProx en su escritorio",
+                    "text": "No necesita instalar WinProx desde una tienda de aplicaciones. Sí puede abrir la gestión como aplicación aparte.<br><br>• <strong>Chrome o Edge:</strong> pulse abajo en la barra lateral <strong>Añadir al escritorio</strong>. WinProx se abre después en una ventana propia, sin barra de direcciones, y se coloca un acceso directo en su escritorio.<br>• <strong>Firefox:</strong> esta función no está disponible.<br>• <strong>Mac con Safari:</strong> elija <strong>Añadir al Dock</strong> en el menú Archivo.<br>• <strong>iPhone o iPad:</strong> use Compartir para añadir WinProx como icono en la pantalla de inicio.<br><br>Importante: la gestión está pensada para ordenador o tableta. El reloj de fichaje en el teléfono usa un acceso directo aparte."
                 },
                 {
-                    "label": "Plantilla inicial",
-                    "text": "Las organizaciones nuevas ven el botón «¿Quieres ayuda para empezar?». Elige para qué usas WinProx: en tus propias ubicaciones, en ubicaciones de clientes, o para vehículos y flotas. WinProx crea un entorno de ejemplo pequeño (equipos, categorías, una ubicación, units). En trabajo en sede de clientes también eliges el tamaño (1–5, 6–20 o 21+). No es un sistema de sectores, solo un arranque. Después puedes añadir tú mismo ubicaciones, equipos y units."
+                    "label": "Plantilla de inicio",
+                    "text": "Las organizaciones nuevas ven en el panel la pregunta <strong>¿Quieres ayuda para empezar?</strong><br><br>Puede elegir para qué quiere usar WinProx:<br>• Ubicaciones propias.<br>• Ubicaciones de clientes.<br>• Vehículos y flota.<br><br>Según su elección, WinProx crea un pequeño entorno de ejemplo con equipos, categorías, una ubicación y unidades.<br><br>Si elige trabajar en clientes, también puede indicar el tamaño de su organización:<br>• 1–5<br>• 6–20<br>• 21+<br><br>También puede empezar usted mismo.<br><br>Conviene saber: la plantilla de inicio no es un sistema de sector fijo. Solo sirve para empezar más rápido. Después puede añadir o renombrar ubicaciones, equipos y unidades usted mismo."
                 },
                 {
                     "label": "Imprimir briefing",
-                    "text": "Abre un resumen imprimible de tareas abiertas por equipo — útil en el taller."
+                    "text": "Con <strong>Imprimir briefing</strong> abre un resumen imprimible de las tareas abiertas de hoy, agrupadas por equipo.<br><br>Útil para imprimir y entregar a los ejecutores en el terreno."
                 },
                 {
                     "label": "Periodo de prueba",
-                    "text": "Durante la prueba tiene hasta 5 licencias, 50 unidades y 10 documentos, Time (reloj de fichar) incluido. El panel muestra los días restantes."
+                    "text": "Durante el periodo de prueba puede usar WinProx con:<br>• Hasta 5 licencias.<br>• Hasta 50 unidades.<br>• Hasta 10 documentos.<br>• Time, incluido el reloj de fichaje.<br><br>En el panel ve cuántos días le quedan de prueba.<br><br>Más explicación sobre fórmulas y límites está en Organización → Suscripción."
                 },
                 {
-                    "label": "Añadir incidencia",
-                    "text": "Cree una incidencia en dos pasos: ubicación/unidad + descripción, luego una tarea para el equipo correcto."
+                    "label": "Añadir aviso",
+                    "text": "Con <strong>Añadir aviso</strong> crea rápido un aviso nuevo. Eso ocurre en dos pasos:<br><br>1. Elija la ubicación o unidad e indique una descripción.<br>2. Cree después una tarea para el equipo que debe tratar el aviso.<br><br>Así puede vincular de inmediato la acción necesaria a un aviso.<br><br>La lista completa de avisos está en Trabajo → Avisos."
                 },
                 {
                     "label": "Avisos recientes",
-                    "text": "Los últimos avisos aparecen abajo. Tras confirmar el correo QR verá la pastilla Informante confirmado, junto al estado y Pendiente de revisión."
+                    "text": "Al final del panel encuentra los avisos más recientes.<br><br>Por aviso ve, entre otras cosas:<br>• La descripción.<br>• La ubicación o unidad.<br>• La hora.<br>• El estado.<br>• Quién creó el aviso.<br><br>¿El avisador completó la confirmación por el código QR? Entonces aparece la marca <strong>Avisador confirmado</strong>.<br><br>Un aviso recién creado puede resaltarse temporalmente en la lista."
                 }
             ],
-            "status_note": "El estado de la incidencia en el panel de control sigue el estado de las tareas vinculadas.",
+            "status_note": "El estado en el panel lo determinan las tareas vinculadas al aviso.",
             "statuses": {
-                "new": "Al menos una tarea aún no se ha iniciado.",
+                "new": "Hay al menos una tarea que aún no ha empezado.",
                 "in_progress": "Al menos una tarea está en curso.",
-                "done": "Todas las tareas están completadas; un administrador puede cerrar la incidencia.",
-                "closed": "Todas las tareas están cerradas — la incidencia está finalizada."
+                "done": "Todas las tareas están tratadas. Un administrador puede cerrar el aviso después.",
+                "closed": "Todas las tareas están cerradas. El aviso está completamente terminado."
             }
         },
         "issues.list": {

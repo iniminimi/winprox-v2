@@ -11,48 +11,48 @@
             "title": "Help — Dashboard",
             "actions": [
                 {
-                    "label": "What do you want to do?",
-                    "text": "At the top are shortcuts: new day task from favorites, new day task, add a location, add a worker, who works where today, clock in manually, which tasks today and view the roster. So you do not have to dig through the menus."
+                    "label": "Quick actions",
+                    "text": "At the top you find shortcuts to common actions, so you do not have to dig through the menus every time.<br><br>Depending on your rights and active modules you may see, among others:<br>• New day task via favourites<br>• Plan a new day task<br>• Add location<br>• Add worker or View workers<br>• Who works where today<br>• Manual clock-in<br>• Which tasks today<br>• View roster<br><br>Not every button is always visible. That depends on your role and on active modules, such as Time or the calendar."
                 },
                 {
-                    "label": "What's new?",
-                    "text": "If that card is at the top, something changed recently. It stays for a week. Tap it to open the list under Help → What's new; the card then disappears."
+                    "label": "What’s new?",
+                    "text": "If the <strong>What’s new?</strong> card appears at the top, something recently changed in WinProx.<br><br>The card stays visible for up to one week. Click it to view the recent changes under Help → New. After that the card disappears.<br><br>If a newer note appears later, the card shows again."
                 },
                 {
                     "label": "Overview",
-                    "text": "Under Dashboard you see counts of open issues, open tasks and (with Time) who is present now. Click a card to go to the related screen. Open leave, TOIL, sick leave or Other requests appear as an extra card to Time → Requests, with the count per kind (e.g. 1 Leave, 1 Sick, 1 Other)."
+                    "text": "Under the Dashboard title you find cards with current counts and attention points.<br><br>Examples are:<br>• Open reports.<br>• Open tasks.<br>• Who is present now, if Time is active.<br><br>Some cards appear only when there is something to do — for example reports to review, attention points in Time, a new worker to check, or open requests or IoT alarms.<br><br>Click a card to go straight to the matching screen.<br><br>Open leave, time-off-in-lieu, sick or Other requests appear as a separate card. You see the count per type. Click it to go to Time → Requests."
                 },
                 {
-                    "label": "Add to desktop",
-                    "text": "You do not need to install anything from an app store. In Chrome or Edge, the button Add to desktop sits at the bottom of the sidebar. It opens the back office in its own window, without an address bar, and adds a shortcut on the desktop. Firefox cannot do this, so you will not see that button there. If you use Safari on a Mac, open the File menu and choose Add to Dock. On an iPhone or iPad you add a home-screen icon through Share. The punch clock on the phone is a separate shortcut."
+                    "label": "WinProx on your desktop",
+                    "text": "You do not need to install WinProx from an app store. You can still open management as a separate application.<br><br>• <strong>Chrome or Edge:</strong> click <strong>Add to desktop</strong> at the bottom of the sidebar. WinProx then opens in its own window, without an address bar, and a shortcut is placed on your desktop.<br>• <strong>Firefox:</strong> this feature is not available.<br>• <strong>Mac with Safari:</strong> choose <strong>Add to Dock</strong> in the File menu.<br>• <strong>iPhone or iPad:</strong> use Share to add WinProx as an icon on your home screen.<br><br>Important: management is meant for a computer or tablet. The punch clock on your phone uses a separate shortcut."
                 },
                 {
                     "label": "Starter template",
-                    "text": "New organisations see a welcome card on the dashboard («Would you like a hand getting started?»): choose what you use WinProx for — at your own locations, at customer sites, or for vehicles and fleet. WinProx creates a small sample environment (teams, categories, one location, units). For customer-site work you also choose size (1–5, 6–20 or 21+). You can also start on your own. This is not a sector system, only a start. You can add locations, teams and units yourself afterwards."
+                    "text": "New organisations see the question <strong>Would you like a hand getting started?</strong> on the dashboard.<br><br>You can choose what you want to use WinProx for:<br>• Own locations.<br>• Customer locations.<br>• Vehicles and fleet.<br><br>Based on your choice, WinProx creates a small sample environment with teams, categories, one location and units.<br><br>If you choose working at customers, you can also indicate your organisation size:<br>• 1–5<br>• 6–20<br>• 21+<br><br>You can also choose to start yourself.<br><br>Good to know: the starter template is not a fixed sector system. It is only meant to get you started faster. Afterwards you can add or rename locations, teams and units yourself."
                 },
                 {
                     "label": "Print briefing",
-                    "text": "Opens a printable overview of open tasks per team — useful on the shop floor."
+                    "text": "With <strong>Print briefing</strong> you open a printable overview of today’s open tasks, grouped by team.<br><br>Handy to print and hand to workers on the floor."
                 },
                 {
                     "label": "Trial period",
-                    "text": "During the trial you have up to 5 seats, 50 units and 10 documents, including Time (punch clock). The dashboard shows remaining days."
+                    "text": "During the trial period you can use WinProx with:<br>• Up to 5 licences.<br>• Up to 50 units.<br>• Up to 10 documents.<br>• Time, including punch clock.<br><br>On the dashboard you see how many days your trial still lasts.<br><br>More about plans and limits is under Organisation → Subscription."
                 },
                 {
-                    "label": "Add issue",
-                    "text": "Create an issue in two steps: location/unit + description, then a task for the right team."
+                    "label": "Add a report",
+                    "text": "With <strong>Add report</strong> you quickly create a new report. That happens in two steps:<br><br>1. Choose the location or unit and enter a description.<br>2. Then create a task for the team that should handle the report.<br><br>That way you can link the needed action to a report at once.<br><br>The full list of reports is under Work → Reports."
                 },
                 {
-                    "label": "Recent issues",
-                    "text": "The latest issues appear at the bottom. After a confirmed QR email you see the Reporter confirmed pill, next to status and Awaiting review."
+                    "label": "Recent reports",
+                    "text": "At the bottom of the dashboard you find the most recent reports.<br><br>Per report you see, among other things:<br>• The description.<br>• The location or unit.<br>• The time.<br>• The status.<br>• Who created the report.<br><br>Did the reporter complete confirmation via the QR code? Then the <strong>Reporter confirmed</strong> mark appears.<br><br>A newly created report can be temporarily highlighted in the list."
                 }
             ],
-            "status_note": "Issue status on the dashboard follows the status of linked tasks.",
+            "status_note": "The status on the dashboard is determined by the tasks linked to the report.",
             "statuses": {
-                "new": "At least one task has not been started yet.",
+                "new": "There is at least one task that has not started yet.",
                 "in_progress": "At least one task is in progress.",
-                "done": "All tasks are completed; an administrator can close the issue.",
-                "closed": "All tasks are closed — the issue is finished."
+                "done": "All tasks are completed. An admin can then close the report.",
+                "closed": "All tasks are closed. The report is fully finished."
             }
         },
         "issues.list": {
