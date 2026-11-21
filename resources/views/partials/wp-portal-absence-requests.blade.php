@@ -1,3 +1,6 @@
+@php
+    $selectedAbsenceType = $requestableAbsenceTypes->firstWhere('id', $absenceShiftTypeId);
+@endphp
 <div class="wp-stack wp-portal-absence">
     @if ($leaveBalances !== [] || $recupHours !== '')
         <div class="wp-card wp-card-pad wp-stack-tight">
@@ -16,29 +19,15 @@
     <form wire:submit="submitAbsence" class="wp-card wp-card-pad wp-stack">
         <h2 class="wp-section-title">{{ __('time.portal.absence.form_title') }}</h2>
         <div class="wp-field">
-            <label class="wp-label" for="absence-kind">{{ __('time.portal.absence.kind') }}</label>
-            <select id="absence-kind" class="wp-select" wire:model.live="absenceKind">
-                <option value="{{ \App\Enums\ShiftTypeKind::Leave->value }}">{{ __('time.schedule.types.kinds.leave') }}</option>
-                <option value="{{ \App\Enums\ShiftTypeKind::Recup->value }}">{{ __('time.schedule.types.kinds.recup') }}</option>
-                <option value="{{ \App\Enums\ShiftTypeKind::Sick->value }}">{{ __('time.schedule.types.kinds.sick') }}</option>
-                @if ($otherAbsenceTypes->isNotEmpty())
-                    <option value="{{ \App\Enums\ShiftTypeKind::Other->value }}">{{ __('time.schedule.types.kinds.other') }}</option>
-                @endif
+            <label class="wp-label" for="absence-shift-type">{{ __('time.portal.absence.shift_type') }}</label>
+            <select id="absence-shift-type" class="wp-select" wire:model.live="absenceShiftTypeId">
+                <option value="">{{ __('time.portal.absence.shift_type_placeholder') }}</option>
+                @foreach ($requestableAbsenceTypes as $type)
+                    <option value="{{ $type->id }}">{{ $type->code }} ({{ $type->label }})</option>
+                @endforeach
             </select>
-            @error('absenceKind') <p class="wp-error">{{ $message }}</p> @enderror
+            @error('absenceShiftTypeId') <p class="wp-error">{{ $message }}</p> @enderror
         </div>
-        @if ($absenceKind === \App\Enums\ShiftTypeKind::Other->value)
-            <div class="wp-field">
-                <label class="wp-label" for="absence-shift-type">{{ __('time.portal.absence.shift_type') }}</label>
-                <select id="absence-shift-type" class="wp-select" wire:model="absenceShiftTypeId">
-                    <option value="">{{ __('time.portal.absence.shift_type_placeholder') }}</option>
-                    @foreach ($otherAbsenceTypes as $type)
-                        <option value="{{ $type->id }}">{{ $type->code }} — {{ $type->label }}</option>
-                    @endforeach
-                </select>
-                @error('absenceShiftTypeId') <p class="wp-error">{{ $message }}</p> @enderror
-            </div>
-        @endif
         <div class="wp-field">
             <span class="wp-label" id="absence-period-label">{{ __('time.portal.absence.period') }}</span>
             <x-wp-date-range-picker
@@ -51,7 +40,7 @@
             @error('absenceDateFrom') <p class="wp-error">{{ $message }}</p> @enderror
             @error('absenceDateTo') <p class="wp-error">{{ $message }}</p> @enderror
         </div>
-        @if ($absenceKind === \App\Enums\ShiftTypeKind::Leave->value)
+        @if ($selectedAbsenceType?->kind === \App\Enums\ShiftTypeKind::Leave)
             <label class="wp-check wp-check--boxed">
                 <input type="checkbox" wire:model="absenceHalfDay">
                 <span>{{ __('time.portal.absence.half_day') }}</span>
@@ -84,8 +73,8 @@
                     <div class="wp-card wp-portal-hours-day wp-stack-tight" wire:key="absence-{{ $request->id }}">
                         <div class="wp-cluster">
                             <strong>
-                                @if ($request->kind === \App\Enums\ShiftTypeKind::Other && $request->shiftType)
-                                    {{ $request->shiftType->code }} — {{ $request->shiftType->label }}
+                                @if ($request->shiftType)
+                                    {{ $request->shiftType->code }} ({{ $request->shiftType->label }})
                                 @else
                                     {{ __('time.schedule.types.kinds.'.$request->kind->value) }}
                                 @endif

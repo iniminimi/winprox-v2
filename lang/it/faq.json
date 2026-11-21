@@ -384,7 +384,7 @@
             "slug": "time_absence",
             "type": "text",
             "title": "Come funzionano le richieste di ferie e assenza?",
-            "body": "I lavoratori chiedono ferie, recupero, malattia o (se configurato) un tipo in Altro su Clock Point: periodo, per Altro prima il tipo (codice), nota opzionale, max. 31 giorni, non nel passato. La malattia non ammette mezza giornata. Le richieste aperte che si sovrappongono sono rifiutate. La gestione decide in Time → Richieste — anche la malattia va approvata. Il rifiuto richiede un motivo. In approvazione WinProx mette l’assenza sul turno. Altro e malattia non contano nel saldo ferie né nel recupero; se ne occupa il segretariato sociale, non WinProx. Niente e-mail.",
+            "body": "I lavoratori chiedono ferie, recupero, malattia o (se configurato) un tipo in Altro su Clock Point: scegli un tipo di turno come codice (nome), periodo, nota opzionale, max. 31 giorni, non nel passato. La malattia non ammette mezza giornata. Le richieste aperte che si sovrappongono sono rifiutate. La gestione decide in Time → Richieste — anche la malattia va approvata. Il rifiuto richiede un motivo. In approvazione WinProx mette l’assenza sul turno. Altro e malattia non contano nel saldo ferie né nel recupero; se ne occupa il segretariato sociale, non WinProx. Niente e-mail.",
             "summary": "Clock Point: ferie, recupero, malattia o Altro. Time → Richieste. Malattia e Altro fuori dal saldo ferie."
         },
         "time_schedule": {

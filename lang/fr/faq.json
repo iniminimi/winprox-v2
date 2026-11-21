@@ -384,7 +384,7 @@
             "slug": "time_absence",
             "type": "text",
             "title": "Comment fonctionnent les demandes de congé et d’absence ?",
-            "body": "Les collaborateurs demandent un congé, une récup, une maladie ou (si configuré) un type Autre sur Clock Point (tuile Congé / Absence) : période, pour Autre d’abord le type (code), commentaire optionnel, max. 31 jours, pas dans le passé. Pas de demi-journée pour la maladie. Les demandes ouvertes qui se chevauchent sont refusées. La gestion décide sous Time → Demandes — la maladie aussi doit être approuvée. Un refus exige une raison. À l’approbation, WinProx place l’absence sur le planning. Autre et maladie ne comptent pas dans le solde de congés ni la récup ; le secrétariat social s’en charge, pas WinProx. Aucun e-mail.",
+            "body": "Les collaborateurs demandent un congé, une récup, une maladie ou (si configuré) un type Autre sur Clock Point (tuile Congé / Absence) : choisissez un type de service comme code (nom), période, commentaire optionnel, max. 31 jours, pas dans le passé. Pas de demi-journée pour la maladie. Les demandes ouvertes qui se chevauchent sont refusées. La gestion décide sous Time → Demandes — la maladie aussi doit être approuvée. Un refus exige une raison. À l’approbation, WinProx place l’absence sur le planning. Autre et maladie ne comptent pas dans le solde de congés ni la récup ; le secrétariat social s’en charge, pas WinProx. Aucun e-mail.",
             "summary": "Clock Point : congé, récup, maladie ou Autre. Time → Demandes. Maladie et Autre hors solde de congés."
         },
         "time_schedule": {

@@ -94,17 +94,23 @@ class RequestAbsenceAction
 
     private function resolveShiftType(int $tenantId, RequestAbsenceData $data): ?ShiftType
     {
-        if ($data->kind === ShiftTypeKind::Other) {
-            if ($data->shiftTypeId === null) {
+        if ($data->shiftTypeId !== null) {
+            $type = ShiftType::query()
+                ->where('tenant_id', $tenantId)
+                ->whereKey($data->shiftTypeId)
+                ->where('kind', $data->kind)
+                ->where('is_active', true)
+                ->first();
+
+            if ($type === null || ! $data->kind->isRequestableAbsence()) {
                 return null;
             }
 
-            return ShiftType::query()
-                ->where('tenant_id', $tenantId)
-                ->whereKey($data->shiftTypeId)
-                ->where('kind', ShiftTypeKind::Other)
-                ->where('is_active', true)
-                ->first();
+            return $type;
+        }
+
+        if ($data->kind === ShiftTypeKind::Other) {
+            return null;
         }
 
         return $this->firstActiveType($tenantId, $data->kind);

@@ -55,7 +55,7 @@ class RequestAbsenceRequest extends FormRequest
                 ShiftTypeKind::Sick->value,
                 ShiftTypeKind::Other->value,
             ])],
-            'shift_type_id' => ['nullable', 'integer', 'required_if:kind,'.ShiftTypeKind::Other->value],
+            'shift_type_id' => ['nullable', 'integer'],
             'date_from' => ['required', 'date_format:Y-m-d', 'after_or_equal:today'],
             'date_to' => ['required', 'date_format:Y-m-d', 'after_or_equal:date_from'],
             'description' => ['nullable', 'string', 'max:'.TextDescriptionLimits::MAX],

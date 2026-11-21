@@ -831,7 +831,7 @@ class TimePortal extends Component
         $this->closeWorkerLibrary();
         $today = now()->toDateString();
         $this->absenceKind = ShiftTypeKind::Leave->value;
-        $this->absenceShiftTypeId = null;
+        $this->absenceShiftTypeId = $this->defaultRequestableAbsenceTypeId();
         $this->absenceDateFrom = $today;
         $this->absenceDateTo = $today;
         $this->absenceDescription = '';
@@ -840,11 +840,12 @@ class TimePortal extends Component
         $this->absenceListOpen = true;
     }
 
-    public function updatedAbsenceKind(): void
+    public function updatedAbsenceShiftTypeId(): void
     {
-        $this->absenceShiftTypeId = null;
         $this->absenceHalfDay = false;
-        $this->resetErrorBag(['absenceShiftTypeId', 'absenceHalfDay']);
+        $type = $this->requestableAbsenceType((int) ($this->absenceShiftTypeId ?? 0));
+        $this->absenceKind = $type?->kind->value ?? ShiftTypeKind::Leave->value;
+        $this->resetErrorBag(['absenceShiftTypeId', 'absenceHalfDay', 'absenceKind']);
     }
 
     public function closeAbsence(): void
@@ -880,22 +881,19 @@ class TimePortal extends Component
             return;
         }
 
-        $rules = RequestAbsenceRequest::rulesFor();
         $this->validate(
             [
-                'absenceKind' => $rules['kind'],
-                'absenceShiftTypeId' => $rules['shift_type_id'],
-                'absenceDateFrom' => $rules['date_from'],
+                'absenceShiftTypeId' => ['required', 'integer'],
+                'absenceDateFrom' => RequestAbsenceRequest::rulesFor()['date_from'],
                 'absenceDateTo' => ['required', 'date_format:Y-m-d', 'after_or_equal:absenceDateFrom'],
-                'absenceDescription' => $rules['description'],
+                'absenceDescription' => RequestAbsenceRequest::rulesFor()['description'],
             ],
             [
                 'absenceDateFrom.after_or_equal' => __('time.absence.errors.date_in_past'),
                 'absenceDateTo.after_or_equal' => __('time.absence.errors.range_inverted'),
-                'absenceShiftTypeId.required_if' => __('time.absence.errors.shift_type_required'),
+                'absenceShiftTypeId.required' => __('time.absence.errors.shift_type_required'),
             ],
             [
-                'absenceKind' => __('time.portal.absence.kind'),
                 'absenceShiftTypeId' => __('time.portal.absence.shift_type'),
                 'absenceDateFrom' => __('time.portal.absence.date_from'),
                 'absenceDateTo' => __('time.portal.absence.date_to'),
@@ -908,26 +906,32 @@ class TimePortal extends Component
             return;
         }
 
-        $kind = ShiftTypeKind::tryFrom($this->absenceKind);
-        if ($kind === null) {
+        $type = $this->requestableAbsenceType((int) $this->absenceShiftTypeId);
+        if ($type === null) {
+            $this->addError('absenceShiftTypeId', __('time.absence.errors.shift_type_required'));
+
             return;
         }
+
+        $this->absenceKind = $type->kind->value;
 
         try {
             $requestAbsence->handle(
                 $tenant,
                 $worker,
                 new RequestAbsenceData(
-                    $kind,
+                    $type->kind,
                     $this->absenceDateFrom,
                     $this->absenceDateTo,
                     $this->absenceDescription !== '' ? $this->absenceDescription : null,
                     $this->absenceHalfDay,
-                    $kind === ShiftTypeKind::Other ? $this->absenceShiftTypeId : null,
+                    (int) $type->id,
                 ),
             );
         } catch (InvalidArgumentException $e) {
-            $field = $e->getMessage() === 'no_shift_type' ? 'absenceShiftTypeId' : 'absenceDateFrom';
+            $field = in_array($e->getMessage(), ['no_shift_type', 'invalid_kind'], true)
+                ? 'absenceShiftTypeId'
+                : 'absenceDateFrom';
             $this->addError($field, __('time.absence.errors.'.$e->getMessage()));
 
             return;
@@ -935,7 +939,7 @@ class TimePortal extends Component
 
         $this->absenceDescription = '';
         $this->absenceHalfDay = false;
-        $this->absenceShiftTypeId = null;
+        $this->absenceShiftTypeId = $this->defaultRequestableAbsenceTypeId();
         $this->portalFlash('time.portal.absence.submitted');
     }
 
@@ -2372,15 +2376,17 @@ class TimePortal extends Component
         $absenceRequests = collect();
         $leaveBalances = [];
         $recupHours = '';
-        $otherAbsenceTypes = collect();
+        $requestableAbsenceTypes = collect();
         if ($canAct && $this->absenceListOpen && $verifiedWorker !== null && $timeRosterEnabled && ! $checkmateMode) {
             $absenceRequests = $listAbsenceRequests->handle($verifiedWorker, $this->tenantId);
-            $otherAbsenceTypes = ShiftType::query()
-                ->where('tenant_id', $this->tenantId)
-                ->where('kind', ShiftTypeKind::Other)
-                ->where('is_active', true)
-                ->orderBy('code')
-                ->get(['id', 'code', 'label']);
+            $requestableAbsenceTypes = $this->requestableAbsenceTypes();
+            if ($this->absenceShiftTypeId === null && $requestableAbsenceTypes->isNotEmpty()) {
+                $this->absenceShiftTypeId = $this->defaultRequestableAbsenceTypeId();
+                $selected = $requestableAbsenceTypes->firstWhere('id', $this->absenceShiftTypeId);
+                if ($selected instanceof ShiftType) {
+                    $this->absenceKind = $selected->kind->value;
+                }
+            }
             $balanceTenant = Tenant::query()->find($this->tenantId);
             if ($balanceTenant !== null) {
                 $leaveAction = app(WorkerLeaveBalanceAction::class);
@@ -2532,7 +2538,7 @@ class TimePortal extends Component
             'absenceRequests' => $absenceRequests,
             'leaveBalances' => $leaveBalances,
             'recupHours' => $recupHours,
-            'otherAbsenceTypes' => $otherAbsenceTypes,
+            'requestableAbsenceTypes' => $requestableAbsenceTypes,
             'checkmateMode' => $checkmateMode,
             'customerOptions' => ($checkmateMode && $this->customerFormOpen)
                 ? Customer::query()
@@ -3017,6 +3023,51 @@ class TimePortal extends Component
     private function authorizedWorker(): ?Worker
     {
         return $this->verifiedWorker();
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection<int, ShiftType>
+     */
+    private function requestableAbsenceTypes(): \Illuminate\Support\Collection
+    {
+        return ShiftType::query()
+            ->where('tenant_id', $this->tenantId)
+            ->whereIn('kind', [
+                ShiftTypeKind::Leave->value,
+                ShiftTypeKind::Recup->value,
+                ShiftTypeKind::Sick->value,
+                ShiftTypeKind::Other->value,
+            ])
+            ->where('is_active', true)
+            ->orderBy('code')
+            ->get(['id', 'code', 'label', 'kind']);
+    }
+
+    private function requestableAbsenceType(int $id): ?ShiftType
+    {
+        if ($id < 1) {
+            return null;
+        }
+
+        $type = ShiftType::query()
+            ->where('tenant_id', $this->tenantId)
+            ->whereKey($id)
+            ->where('is_active', true)
+            ->first();
+
+        if ($type === null || ! $type->kind->isRequestableAbsence()) {
+            return null;
+        }
+
+        return $type;
+    }
+
+    private function defaultRequestableAbsenceTypeId(): ?int
+    {
+        $types = $this->requestableAbsenceTypes();
+        $leave = $types->first(fn (ShiftType $type) => $type->kind === ShiftTypeKind::Leave);
+
+        return (int) ($leave?->id ?? $types->first()?->id ?: 0) ?: null;
     }
 
     private function hoursMonthStart(): ?Carbon

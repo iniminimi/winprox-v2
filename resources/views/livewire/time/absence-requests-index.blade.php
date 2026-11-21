@@ -42,8 +42,8 @@
                     <div class="wp-grow wp-stack-tight">
                         <p class="wp-issue-card-title">
                             <strong>{{ $request->worker?->displayName() }}</strong>
-                            · @if ($request->kind === \App\Enums\ShiftTypeKind::Other && $request->shiftType)
-                                {{ $request->shiftType->code }} — {{ $request->shiftType->label }}
+                            · @if ($request->shiftType)
+                                {{ $request->shiftType->code }} ({{ $request->shiftType->label }})
                             @else
                                 {{ __('time.schedule.types.kinds.'.$request->kind->value) }}
                             @endif
@@ -98,8 +98,8 @@
                 </div>
                 <p>
                     <strong>{{ $deciding->worker?->displayName() }}</strong>
-                    · @if ($deciding->kind === \App\Enums\ShiftTypeKind::Other && $deciding->shiftType)
-                        {{ $deciding->shiftType->code }} — {{ $deciding->shiftType->label }}
+                    · @if ($deciding->shiftType)
+                        {{ $deciding->shiftType->code }} ({{ $deciding->shiftType->label }})
                     @else
                         {{ __('time.schedule.types.kinds.'.$deciding->kind->value) }}
                     @endif

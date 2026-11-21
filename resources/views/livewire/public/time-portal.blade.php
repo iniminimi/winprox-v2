@@ -375,7 +375,8 @@
                         'absenceRequests' => $absenceRequests,
                         'leaveBalances' => $leaveBalances,
                         'recupHours' => $recupHours,
-                        'otherAbsenceTypes' => $otherAbsenceTypes,
+                        'requestableAbsenceTypes' => $requestableAbsenceTypes,
+                        'absenceShiftTypeId' => $absenceShiftTypeId,
                     ])
                 @elseif ($rosterListOpen && $roster !== null)
                     <x-wp-portal-back wire:click="closeRoster" />

@@ -528,13 +528,14 @@ it('toont geen verlofgetal zonder recht', function () {
 });
 
 it('toont de portaltegel en verstuurt een aanvraag', function () {
-    [, , $clockPoint] = absenceTenant();
+    [, , $clockPoint, , $leaveType] = absenceTenant();
 
     signInAbsenceWorker($clockPoint)
         ->assertSee(__('time.portal.absence.tile'), false)
         ->call('openAbsence')
         ->assertSet('absenceListOpen', true)
-        ->set('absenceKind', ShiftTypeKind::Leave->value)
+        ->assertSee('VL (Verlof)', false)
+        ->set('absenceShiftTypeId', (int) $leaveType->id)
         ->set('absenceDateFrom', '2026-09-23')
         ->set('absenceDateTo', '2026-09-23')
         ->set('absenceDescription', 'Familie')
@@ -549,12 +550,51 @@ it('toont de portaltegel en verstuurt een aanvraag', function () {
         ->and(AbsenceRequest::query()->first()?->status)->toBe(AbsenceRequestStatus::Cancelled);
 });
 
-it('toont een nette fout als de einddatum vóór de startdatum ligt', function () {
-    [, , $clockPoint] = absenceTenant();
+it('toont tenant-shifttypes als code (naam) inclusief Andere', function () {
+    [$tenant, , $clockPoint] = absenceTenant();
+    ShiftType::factory()->create([
+        'tenant_id' => $tenant->id,
+        'code' => 'BAAL',
+        'label' => 'Baaldag',
+        'kind' => ShiftTypeKind::Other,
+        'start_time' => null,
+        'end_time' => null,
+        'break_minutes' => 0,
+        'is_active' => true,
+    ]);
+    $kv = ShiftType::factory()->create([
+        'tenant_id' => $tenant->id,
+        'code' => 'KV',
+        'label' => 'Klein verlet',
+        'kind' => ShiftTypeKind::Other,
+        'start_time' => null,
+        'end_time' => null,
+        'break_minutes' => 0,
+        'is_active' => true,
+    ]);
 
     signInAbsenceWorker($clockPoint)
         ->call('openAbsence')
-        ->set('absenceKind', ShiftTypeKind::Leave->value)
+        ->assertSee('BAAL (Baaldag)', false)
+        ->assertSee('KV (Klein verlet)', false)
+        ->assertSee('VL (Verlof)', false)
+        ->set('absenceShiftTypeId', (int) $kv->id)
+        ->set('absenceDateFrom', '2026-09-25')
+        ->set('absenceDateTo', '2026-09-25')
+        ->call('submitAbsence')
+        ->assertSee(__('time.portal.absence.submitted'), false)
+        ->assertSee('KV (Klein verlet)', false);
+
+    expect(AbsenceRequest::query()->first()?->kind)->toBe(ShiftTypeKind::Other)
+        ->and((int) AbsenceRequest::query()->first()?->shift_type_id)->toBe((int) $kv->id);
+});
+
+it('toont een nette fout als de einddatum vóór de startdatum ligt', function () {
+    [, , $clockPoint, , $leaveType] = absenceTenant();
+
+    signInAbsenceWorker($clockPoint)
+        ->call('openAbsence')
+        ->set('absenceShiftTypeId', (int) $leaveType->id)
         ->set('absenceDateFrom', '2026-09-24')
         ->set('absenceDateTo', '2026-09-23')
         ->call('submitAbsence')
@@ -566,14 +606,14 @@ it('toont een nette fout als de einddatum vóór de startdatum ligt', function (
 });
 
 it('toont de periodekalender en weigert verlof in het verleden', function () {
-    [, , $clockPoint] = absenceTenant();
+    [, , $clockPoint, , $leaveType] = absenceTenant();
 
     signInAbsenceWorker($clockPoint)
         ->call('openAbsence')
         ->assertSee(__('time.portal.absence.period'), false)
         ->assertSee(__('time.portal.absence.period_hint'), false)
         ->assertSeeHtml('wp-date-range')
-        ->set('absenceKind', ShiftTypeKind::Leave->value)
+        ->set('absenceShiftTypeId', (int) $leaveType->id)
         ->set('absenceDateFrom', '2026-09-21')
         ->set('absenceDateTo', '2026-09-23')
         ->call('submitAbsence')
@@ -582,7 +622,6 @@ it('toont de periodekalender en weigert verlof in het verleden', function () {
 
     expect(AbsenceRequest::query()->count())->toBe(0);
 });
-
 it('laat beheer een aanvraag goedkeuren zonder reden', function () {
     [$tenant, $admin, , $worker] = absenceTenant();
     $request = app(RequestAbsenceAction::class)->handle(
