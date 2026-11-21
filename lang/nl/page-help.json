@@ -1941,6 +1941,10 @@
                     "text": "Shifttypes kunnen <strong>verlof</strong>, <strong>recup</strong>, <strong>ziek</strong> of <strong>andere</strong> zijn. Die codes vullen de hele dag, tellen geen uren en mogen niet samen met werk die dag. Uitvoerders kunnen verlof, recup of een type onder Andere aanvragen via Clock Point (tegel Verlof / Afwezigheid); beheer beslist onder Time → Aanvragen. Andere telt niet mee voor het verlofsaldo."
                 },
                 {
+                    "label": "Vervanger zoeken",
+                    "text": "Op een gepland werkblok kunt u een <strong>vervanger</strong> zoeken. WinProx stelt kandidaten voor (zie Time → Shifttypes: vervangingspool en optioneel ook zonder planning). Het oorspronkelijke blok wordt afwezigheid; de vervanger krijgt hetzelfde tijdslot, locatie en unit."
+                },
+                {
                     "label": "Gepland vs geklokt",
                     "text": "Op een <strong>gepubliceerde</strong> periode markeert het rooster afwijkingen (te laat/te vroeg) meteen, ook <strong>vandaag</strong>. Tot 15 minuten te vroeg telt als correct; 15 minuten of meer te laat (of meer dan 15 minuten te vroeg) is een afwijking. Prikken blijven altijd geregistreerd. Ontbrekende prikken pas na het geplande einde (of op vorige dagen). Ongeplande prikken en afwezigheid zonder prik blijven zoals eerder. Een correcte inklok toont een groen vinkje rechtsboven; een afwijking of een ontbrekende prik blijft een bolletje. Klik op de markering rechtsboven in de cel om <strong>Uren</strong> van die uitvoerder die dag te openen. <strong>Afdrukken</strong> (naast de titel) opent een nieuw venster (A4 liggend). Publiceren stuurt niets naar de RSZ."
                 },
@@ -1956,6 +1960,14 @@
                 {
                     "label": "Soort",
                     "text": "Kies <strong>Werk</strong> (start, einde, pauze) of een afwezigheid (verlof, recup, ziek of andere). Afwezigheid heeft geen uren. Bij Andere kies je zelf code en naam (bv. KV — klein verlet); die tellen niet voor het verlofsaldo. Bestaande cellen in het uurrooster wijzigen niet als u later een type aanpast."
+                },
+                {
+                    "label": "Ook zonder planning",
+                    "text": "Bovenaan Shifttypes staat het vinkje <strong>Ook uitvoerders zonder planning voorstellen</strong> (ballon bij hover). Als u op het uurrooster een vervanger zoekt, toont WinProx kandidaten: kies er één en het oorspronkelijke blok wordt afwezigheid; de vervanger krijgt dezelfde uren. <strong>Uit:</strong> alleen wie die dag een dienst heeft met <strong>Beschikbaar voor vervanging</strong>. <strong>Aan:</strong> ook wie die dag nog niets gepland heeft."
+                },
+                {
+                    "label": "Beschikbaar voor vervanging",
+                    "text": "Per shifttype (werk of verlof/recup) kunt u <strong>Beschikbaar voor vervanging</strong> aanzetten. Uitvoerders met zo’n type op die dag verschijnen in de vervangerslijst. Ziekte en Andere tellen nooit mee."
                 },
                 {
                     "label": "Toevoegen",

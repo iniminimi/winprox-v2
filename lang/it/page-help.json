@@ -1941,6 +1941,10 @@
                     "text": "I tipi di turno possono essere <strong>ferie</strong>, <strong>recupero</strong>, <strong>malattia</strong> o <strong>altro</strong>. Quei codici riempiono l’intera giornata, non contano ore e non possono stare con lavoro lo stesso giorno. Gli esecutori possono richiedere ferie, recupero o un tipo in Altro da Clock Point (riquadro Ferie / Assenza); la gestione decide in Time → Richieste. Altro non conta nel saldo ferie."
                 },
                 {
+                    "label": "Cerca sostituto",
+                    "text": "Su un blocco di lavoro pianificato puoi cercare un <strong>sostituto</strong>. WinProx propone candidati (vedi Time → Tipi di turno: pool e opzionalmente anche senza pianificazione). Il blocco originale diventa assenza; il sostituto riceve lo stesso orario, sede e unità."
+                },
+                {
                     "label": "Pianificato vs timbrato",
                     "text": "In un periodo <strong>pubblicato</strong> la griglia marca gli scostamenti (in ritardo/in anticipo) subito, anche <strong>oggi</strong>. Fino a 15 minuti in anticipo conta come puntuale; 15 minuti o più in ritardo (o più di 15 minuti in anticipo) è uno scostamento. Le timbrature restano sempre registrate. Timbrature mancanti solo dopo la fine prevista (o nei giorni passati). Timbrature non previste e assenza senza timbratura restano come prima. Una timbratura corretta mostra una spunta verde in alto a destra; uno scostamento o una timbratura mancante resta un puntino. Fai clic sul contrassegno in alto a destra per aprire <strong>Ore</strong> di quell’esecutore in quel giorno. <strong>Stampa</strong> (accanto al titolo) apre una nuova finestra (A4 orizzontale)."
                 },
@@ -1956,6 +1960,14 @@
                 {
                     "label": "Tipo",
                     "text": "Scegli <strong>Lavoro</strong> (inizio, fine, pausa) o un’assenza (ferie, recupero, malattia o altro). Le assenze non hanno ore. Per Altro scegli codice e nome (es. KV — permesso breve); non contano nel saldo ferie."
+                },
+                {
+                    "label": "Anche senza pianificazione",
+                    "text": "In alto in Tipi di turno c’è <strong>Proporre anche esecutori senza pianificazione</strong> (balloon al passaggio). Quando cerchi un sostituto nel turno, WinProx mostra i candidati: scegline uno e il blocco originale diventa assenza; il sostituto riceve le stesse ore. <strong>Spento:</strong> solo chi quel giorno ha un turno con <strong>Disponibile per la sostituzione</strong>. <strong>Acceso:</strong> anche chi quel giorno non ha nulla di pianificato."
+                },
+                {
+                    "label": "Disponibile per la sostituzione",
+                    "text": "Per tipo di turno (lavoro o ferie/recupero) puoi attivare <strong>Disponibile per la sostituzione</strong>. Chi ha quel tipo quel giorno compare nell’elenco. Malattia e Altro non contano mai."
                 },
                 {
                     "label": "Aggiungi",

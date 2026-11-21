@@ -1941,6 +1941,10 @@
                     "text": "Schichttypen können <strong>Urlaub</strong>, <strong>Ausgleich</strong>, <strong>Krank</strong> oder <strong>Sonstige</strong> sein. Diese Codes füllen den ganzen Tag, zählen keine Stunden und dürfen nicht zusammen mit Arbeit an diesem Tag stehen. Ausführende können Urlaub, Ausgleich oder einen Typ unter Sonstige über Clock Point beantragen (Kachel Urlaub / Abwesenheit); die Verwaltung entscheidet unter Time → Anträge. Sonstige zählt nicht zum Urlaubssaldo."
                 },
                 {
+                    "label": "Vertretung suchen",
+                    "text": "Bei einem geplanten Arbeitsblock können Sie eine <strong>Vertretung</strong> suchen. WinProx schlägt Kandidaten vor (siehe Time → Schichttypen: Vertretungspool und optional auch ohne Planung). Der ursprüngliche Block wird zur Abwesenheit; die Vertretung erhält denselben Zeitslot, Standort und Unit."
+                },
+                {
                     "label": "Geplant vs. gestempelt",
                     "text": "In einer <strong>veröffentlichten</strong> Periode markiert der Plan Abweichungen (zu spät/zu früh) sofort, auch <strong>heute</strong>. Bis 15 Minuten zu früh zählt als pünktlich; 15 Minuten oder mehr zu spät (oder mehr als 15 Minuten zu früh) ist eine Abweichung. Stempelungen werden immer gespeichert. Fehlende Stempelungen erst nach dem geplanten Ende (oder an vergangenen Tagen). Ungeplante Stempelungen und Abwesenheit ohne Stempelung bleiben wie zuvor. Eine korrekte Stempelung zeigt ein grünes Häkchen oben rechts; eine Abweichung oder eine fehlende Stempelung bleibt ein Punkt. Klicken Sie oben rechts auf die Markierung, um <strong>Stunden</strong> für diesen Ausführenden an diesem Tag zu öffnen. <strong>Drucken</strong> (neben dem Titel) öffnet ein neues Fenster (A4 quer)."
                 },
@@ -1956,6 +1960,14 @@
                 {
                     "label": "Art",
                     "text": "Wählen Sie <strong>Arbeit</strong> (Start, Ende, Pause) oder eine Abwesenheit (Urlaub, Ausgleich, Krank oder Sonstige). Abwesenheiten haben keine Stunden. Bei Sonstige wählen Sie Code und Name selbst (z. B. KV — Kurzurlaub); das zählt nicht zum Urlaubssaldo."
+                },
+                {
+                    "label": "Auch ohne Planung",
+                    "text": "Oben bei Schichttypen steht <strong>Auch Ausführende ohne Planung vorschlagen</strong> (Ballon beim Hover). Wenn Sie im Dienstplan eine Vertretung suchen, zeigt WinProx Kandidaten: wählen Sie eine Person und der ursprüngliche Block wird zur Abwesenheit; die Vertretung erhält dieselben Stunden. <strong>Aus:</strong> nur wer an dem Tag einen Dienst mit <strong>Für Vertretung verfügbar</strong> hat. <strong>An:</strong> auch wer an dem Tag noch nichts geplant hat."
+                },
+                {
+                    "label": "Für Vertretung verfügbar",
+                    "text": "Pro Schichttyp (Arbeit oder Urlaub/Ausgleich) können Sie <strong>Für Vertretung verfügbar</strong> einschalten. Mitarbeitende mit diesem Typ an dem Tag erscheinen in der Liste. Krank und Sonstige zählen nie."
                 },
                 {
                     "label": "Hinzufügen",

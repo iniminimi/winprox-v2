@@ -1949,6 +1949,10 @@
                     "text": "Les types de shift peuvent être <strong>congé</strong>, <strong>récup</strong>, <strong>maladie</strong> ou <strong>autre</strong>. Ces codes remplissent toute la journée, ne comptent pas d’heures et ne peuvent pas coexister avec du travail ce jour-là. Les exécutants peuvent demander un congé, une récup ou un type Autre sur Clock Point (tuile Congé / Absence) ; la gestion décide sous Time → Demandes. Autre ne compte pas dans le solde de congés."
                 },
                 {
+                    "label": "Chercher un remplaçant",
+                    "text": "Sur un bloc de travail planifié vous pouvez chercher un <strong>remplaçant</strong>. WinProx propose des candidats (voir Time → Types de service : vivier et optionnellement aussi sans planning). Le bloc d’origine devient une absence ; le remplaçant reçoit le même créneau, site et unité."
+                },
+                {
                     "label": "Planifié vs pointé",
                     "text": "Sur une période <strong>publiée</strong>, la grille marque les écarts (en retard/en avance) immédiatement, y compris <strong>aujourd’hui</strong>. Jusqu’à 15 minutes d’avance compte comme à l’heure ; 15 minutes ou plus de retard (ou plus de 15 minutes d’avance) est un écart. Les pointages restent toujours enregistrés. Pointages manquants seulement après la fin prévue (ou les jours passés). Pointages non prévus et absence sans pointage restent comme avant. Un pointage correct affiche une coche verte en haut à droite ; un écart ou un pointage manquant reste un point. Cliquez sur le marqueur en haut à droite pour ouvrir <strong>Heures</strong> de cet exécutant ce jour-là. <strong>Imprimer</strong> (à côté du titre) ouvre une nouvelle fenêtre (A4 paysage)."
                 },
@@ -1964,6 +1968,14 @@
                 {
                     "label": "Type",
                     "text": "Choisissez <strong>Travail</strong> (début, fin, pause) ou une absence (congé, récup, maladie ou autre). Les absences n’ont pas d’heures. Pour Autre vous choisissez code et nom (p. ex. KV — petit congé) ; cela ne compte pas dans le solde de congés."
+                },
+                {
+                    "label": "Aussi sans planning",
+                    "text": "En haut de Types de service se trouve <strong>Proposer aussi les exécutants sans planning</strong> (ballon au survol). Quand vous cherchez un remplaçant sur le planning, WinProx affiche des candidats : choisissez-en un et le bloc d’origine devient une absence ; le remplaçant reçoit les mêmes heures. <strong>Désactivé :</strong> seulement qui a ce jour un service avec <strong>Disponible pour remplacement</strong>. <strong>Activé :</strong> aussi qui n’a rien de planifié ce jour-là."
+                },
+                {
+                    "label": "Disponible pour remplacement",
+                    "text": "Par type de service (travail ou congé/récup) vous pouvez activer <strong>Disponible pour remplacement</strong>. Les exécutants avec ce type ce jour-là apparaissent dans la liste. Maladie et Autre ne comptent jamais."
                 },
                 {
                     "label": "Ajouter",

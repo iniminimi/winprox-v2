@@ -17,11 +17,12 @@
 
     @can('create', \App\Models\ShiftType::class)
         <div class="wp-card wp-card-pad wp-stack-tight">
-            <label class="wp-check wp-check--boxed">
-                <input type="checkbox" wire:model.live="includeUnplanned">
-                <span>{{ __('time.shift_types.include_unplanned') }}</span>
-            </label>
-            <p class="wp-hint">{{ __('time.shift_types.include_unplanned_hint') }}</p>
+            <x-wp-tooltip :text="__('time.shift_types.include_unplanned_hint')" wrap class="wp-tooltip--block">
+                <label class="wp-check wp-check--boxed">
+                    <input type="checkbox" wire:model.live="includeUnplanned">
+                    <span>{{ __('time.shift_types.include_unplanned') }}</span>
+                </label>
+            </x-wp-tooltip>
         </div>
     @endcan
 

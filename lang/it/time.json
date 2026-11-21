@@ -1088,7 +1088,7 @@
             "inactive": "Inattivo"
         },
         "include_unplanned": "Proporre anche esecutori senza pianificazione",
-        "include_unplanned_hint": "Spento: solo chi quel giorno ha un tipo di turno del pool. Acceso: anche chi quel giorno non ha nessun blocco.",
+        "include_unplanned_hint": "Quando cerchi un sostituto nel turno, WinProx mostra qui i candidati. Se ne scegli uno, il blocco originale diventa assenza e il sostituto riceve le stesse ore. Spento: solo chi quel giorno ha un turno con «Disponibile per la sostituzione». Acceso: anche chi quel giorno non ha nulla di pianificato.",
         "pool": "Pool di sostituzione"
     },
     "holidays": {

@@ -92,9 +92,11 @@ return [
             'patterns' => [
                 'shift types', 'shifttypes', 'shifttype', 'shiftypes', 'shiftype', 'schichttyp', 'types de service',
                 'tipos de turno', 'tipi di turno',
+                'vervangingspool', 'zonder planning', 'beschikbaar voor vervanging',
+                'replacement pool', 'available for replacement', 'unplanned',
             ],
             'page' => 'time.shift_types',
-            'prefer' => ['shifttype', 'shift types', 'schichttyp'],
+            'prefer' => ['shifttype', 'shift types', 'schichttyp', 'vervangingspool'],
         ],
         [
             'patterns' => [
@@ -115,9 +117,11 @@ return [
                 'congé', 'maladie', 'urlaub', 'krank', 'sonstige',
                 'baja', 'permiso', 'ferie', 'malattia', 'altro',
                 'gepland vs geklokt', 'planned vs clocked',
+                'vervanger', 'vervanger zoeken', 'replacement', 'find replacement',
+                'remplaçant', 'vertretung', 'sustituto', 'sostituto',
             ],
             'page' => 'time.schedule',
-            'prefer' => ['afwezigheid', 'absence', 'verlof', 'ziek'],
+            'prefer' => ['afwezigheid', 'absence', 'verlof', 'ziek', 'vervanger'],
         ],
         [
             'patterns' => [

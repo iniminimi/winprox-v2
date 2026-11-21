@@ -1088,7 +1088,7 @@
             "inactive": "Inactivo"
         },
         "include_unplanned": "Proponer también operarios sin planificación",
-        "include_unplanned_hint": "Desactivado: solo quien ese día tiene un tipo de turno de la bolsa. Activado: también quien ese día no tiene ningún bloque.",
+        "include_unplanned_hint": "Cuando buscas un sustituto en el horario, WinProx muestra aquí candidatos. Si eliges uno, el bloque original pasa a ausencia y el sustituto recibe las mismas horas. Desactivado: solo quien ese día tiene un turno con «Disponible para sustitución». Activado: también quien ese día no tiene nada planificado.",
         "pool": "Bolsa de sustitución"
     },
     "holidays": {

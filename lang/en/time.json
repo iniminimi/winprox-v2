@@ -1088,7 +1088,7 @@
             "inactive": "Inactive"
         },
         "include_unplanned": "Also suggest workers with no plan",
-        "include_unplanned_hint": "Off: only people who have a replacement-pool shift type that day. On: also people with no block that day.",
+        "include_unplanned_hint": "When you look for a replacement on the roster, WinProx shows candidates here. Pick one and the original block becomes absence; the replacement gets the same hours. Off: only people with a shift that day marked Available for replacement. On: also people with nothing planned that day.",
         "pool": "Replacement pool"
     },
     "holidays": {

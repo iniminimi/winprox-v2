@@ -1941,6 +1941,10 @@
                     "text": "Los tipos de turno pueden ser <strong>vacaciones</strong>, <strong>descanso compensatorio</strong>, <strong>baja</strong> u <strong>otro</strong>. Esos códigos ocupan el día entero, no cuentan horas y no pueden ir con trabajo ese día. Los trabajadores pueden solicitar vacaciones, recup o un tipo en Otro desde Clock Point (mosaico Vacaciones / Ausencia); la gestión decide en Time → Solicitudes. Otro no cuenta en el saldo de vacaciones."
                 },
                 {
+                    "label": "Buscar sustituto",
+                    "text": "En un bloque de trabajo planificado puedes buscar un <strong>sustituto</strong>. WinProx propone candidatos (ver Time → Tipos de turno: bolsa y opcionalmente también sin planificación). El bloque original pasa a ausencia; el sustituto recibe el mismo horario, sede y unidad."
+                },
+                {
                     "label": "Planificado vs fichado",
                     "text": "En un periodo <strong>publicado</strong>, la cuadrícula marca desviaciones (tarde/temprano) de inmediato, también <strong>hoy</strong>. Hasta 15 minutos de antelación cuenta como puntual; 15 minutos o más de retraso (o más de 15 minutos de antelación) es una desviación. Los fichajes siempre se registran. Fichajes faltantes solo después del fin previsto (o en días pasados). Fichajes no previstos y ausencia sin fichaje siguen igual. Un fichaje correcto muestra una marca verde arriba a la derecha; una desviación o un fichaje faltante sigue siendo un punto. Haga clic en la marca de arriba a la derecha para abrir <strong>Horas</strong> de ese ejecutor ese día. <strong>Imprimir</strong> (junto al título) abre una ventana nueva (A4 apaisado)."
                 },
@@ -1956,6 +1960,14 @@
                 {
                     "label": "Tipo",
                     "text": "Elija <strong>Trabajo</strong> (inicio, fin, pausa) o una ausencia (vacaciones, recup, baja u otro). Las ausencias no tienen horas. En Otro eliges código y nombre (p. ej. KV — permiso breve); no cuentan en el saldo de vacaciones."
+                },
+                {
+                    "label": "También sin planificación",
+                    "text": "Arriba en Tipos de turno está <strong>Proponer también operarios sin planificación</strong> (globo al pasar el ratón). Cuando buscas un sustituto en el horario, WinProx muestra candidatos: eliges uno y el bloque original pasa a ausencia; el sustituto recibe las mismas horas. <strong>Desactivado:</strong> solo quien ese día tiene un turno con <strong>Disponible para sustitución</strong>. <strong>Activado:</strong> también quien ese día no tiene nada planificado."
+                },
+                {
+                    "label": "Disponible para sustitución",
+                    "text": "Por tipo de turno (trabajo o vacaciones/recup) puedes activar <strong>Disponible para sustitución</strong>. Quienes tienen ese tipo ese día aparecen en la lista. Baja y Otro nunca cuentan."
                 },
                 {
                     "label": "Añadir",

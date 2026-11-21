@@ -1088,7 +1088,7 @@
             "inactive": "Inactief"
         },
         "include_unplanned": "Ook uitvoerders zonder planning voorstellen",
-        "include_unplanned_hint": "Staat uit: alleen wie die dag een shifttype uit de vervangingspool heeft. Staat aan: ook wie die dag geen blok heeft.",
+        "include_unplanned_hint": "Als je op het uurrooster een vervanger zoekt, toont WinProx hier kandidaten. Kies je er één, dan wordt het oorspronkelijke blok afwezigheid en krijgt de vervanger dezelfde uren. Uit: alleen wie die dag een dienst heeft met “Beschikbaar voor vervanging”. Aan: ook wie die dag nog niets gepland heeft.",
         "pool": "Vervangingspool"
     },
     "holidays": {

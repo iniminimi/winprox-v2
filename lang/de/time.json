@@ -1088,7 +1088,7 @@
             "inactive": "Inaktiv"
         },
         "include_unplanned": "Auch Ausführende ohne Planung vorschlagen",
-        "include_unplanned_hint": "Aus: nur wer an dem Tag einen Schichttyp aus dem Vertretungspool hat. An: auch wer an dem Tag keinen Block hat.",
+        "include_unplanned_hint": "Wenn Sie im Dienstplan eine Vertretung suchen, zeigt WinProx hier Kandidaten. Wählen Sie eine Person, wird der ursprüngliche Block zur Abwesenheit und die Vertretung erhält dieselben Stunden. Aus: nur wer an dem Tag einen Dienst mit „Für Vertretung verfügbar“ hat. An: auch wer an dem Tag noch nichts geplant hat.",
         "pool": "Vertretungspool"
     },
     "holidays": {
