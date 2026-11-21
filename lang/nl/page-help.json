@@ -630,88 +630,161 @@
             "title": "Hulp — Teams",
             "actions": [
                 {
-                    "label": "Briefing afdrukken",
-                    "text": "Open een afdrukbaar overzicht van open taken per team — handig voor de werkvloer. Dezelfde briefing vind je ook op Dashboard, Meldingen en Kalender."
+                    "label": "Waarvoor dient een team?",
+                    "text": "Een team groepeert uitvoerders die hetzelfde soort werk doen. Denk aan een schoonmaakteam, een technische dienst of de receptie.<br><br>Uitvoerders binnen hetzelfde team zien dezelfde taken. Eén team is voldoende om te starten. Maak pas een extra team aan als er echt een andere groep is.<br><br>U kunt een team koppelen aan één of meer categorieën. Meldingen en taken voor units binnen die categorieën komen dan bij het team terecht."
                 },
                 {
-                    "label": "Operationele teams",
-                    "text": "Eén team is genoeg om te starten (bijvoorbeeld Hotel of Faciliteit). Voeg iedereen die taken uitvoert toe (naam + icoon). Een teamleider is niet nodig. Extra teams alleen als er écht andere groepen zijn. Koppel het team aan categorieën zodat taken landen. Zolang er geen uitvoerders in het team zijn, kun je het team nog verwijderen. Vink **Mag overal inklokken** aan voor invaller- of vlinderteams."
+                    "label": "Een team aanmaken",
+                    "text": "U vindt Teams via <strong>Personen → Teams</strong>.<br><br>Geef het team een naam, bijvoorbeeld Hotel of Faciliteit. Voeg daarna de uitvoerders toe die bij dat team horen.<br><br>Een teamleader is niet verplicht.<br><br>Zolang er nog geen uitvoerders in het team zitten, kunt u het team verwijderen."
                 },
                 {
-                    "label": "Teamvertalingen",
-                    "text": "In het team-bewerkformulier kun je de naam per taal (NL, EN, FR, DE, ES, IT) handmatig bijwerken. Handig als de automatische vertaling door WinProx (periodiek) niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
-                },
-                {
-                    "label": "Clock Point QR-code",
-                    "text": "De Clock Point-QR is de afdrukbare QR waarmee uitvoerders zich aanmelden (naam + icoon). Met Time (prikklok) klokken ze daar ook in of uit. Beheer en print onder <strong>Time → Clock Points</strong> als Time aan staat, anders Personen → Teams."
+                    "label": "Teamnaam in andere talen",
+                    "text": "WinProx vertaalt de teamnaam automatisch naar de beschikbare talen: Nederlands, Engels, Frans, Duits, Spaans en Italiaans.<br><br>Klopt een vertaling niet of ontbreekt ze? Dan kunt u die zelf aanpassen:<br>1. Open het teamformulier.<br>2. Kies de taal.<br>3. Vul de gewenste naam in.<br>4. Sla op.<br><br>Uw aangepaste vertaling wordt daarna de vaste naam voor die taal."
                 },
                 {
                     "label": "Uitvoerders",
-                    "text": "Uitvoerders hebben geen e-mail-login; zij melden zich aan via de Clock Point-QR met naam en icoon (optioneel pincode of biometrie) op één gsm. Op de teampagina zie je statuspills en **Bewerken** — teamleader, prikklok (icoon/gsm/PIN/passkey) en status staan in die modal. Optioneel vestigingen koppelen (leeg = overal). Grote lijsten beheer je onder **Personen → Uitvoerders**."
+                    "text": "Een uitvoerder meldt zich niet aan met een e-mailadres en wachtwoord. Op Clock Point kiest die persoon zijn of haar naam en een eigen icoon. Dat gebeurt op één gsm.<br><br>U kunt daar optioneel een pincode of passkey aan toevoegen.<br><br>Op de teampagina ziet u per uitvoerder of het profiel actief, geblokkeerd of teamleader is. Via <strong>Bewerken</strong> past u de gegevens aan.<br><br>Hebt u veel uitvoerders? Dan kunt u de volledige lijst bekijken en beheren via <strong>Personen → Uitvoerders</strong>."
                 },
                 {
-                    "label": "Documenten en mededelingen",
-                    "text": "Open een team. Daar staan documenten en mededelingen voor de uitvoerders van dat team. Ze horen niet op het meldportaal en tellen niet mee in het documentenquotum. Kies heel het team, of één uitvoerder, bijvoorbeeld een contract. Vink Actief aan om het op Clock Point te tonen. Een persoonlijk bestand verhuist mee als de uitvoerder van team wisselt. Op Clock Point ziet elke uitvoerder alleen wat voor hem bedoeld is. Nieuwe inhoud staat onder de aanmeldkaart met een blauwe teller; na openen zakt de tegel terug naar onderen. In beheer toont de lijst standaard alle actieve items; filter op uitvoerder, status of zoekterm. Klik op de teller bij een uitvoerder (ballon: Documenten beheren of Mededelingen beheren) om de lijst van dat team op die persoon te openen. 25 items per pagina. Per item zie je Geopend, bv. 3/5; klik erop om te zien wie het opende. WinProx bewaart geen datum of uur. Een document telt als geopend na downloaden, een mededeling na het openen van het scherm Mededelingen. Na een nieuw bestand of een aangepaste tekst moet iedereen het opnieuw openen."
+                    "label": "Aanmelden op Clock Point",
+                    "text": "Uitvoerders melden zich aan via de Clock Point-QR-code.<br><br>Staat Time aan? Dan gebruiken ze dezelfde QR-code ook om in en uit te klokken.<br><br>De knop <strong>Clock Point QR-code</strong> vindt u op deze pagina. Staat Time aan, dan beheert en print u de QR-codes via <strong>Time → Clock Points</strong>."
                 },
                 {
-                    "label": "Locatie",
-                    "text": "Kies een vestiging om in elk team alleen de uitvoerders te zien die daar mogen inklokken. Uitvoerders zonder vestiging, en teams die overal mogen inklokken, blijven zichtbaar. Alle locaties toont weer iedereen. Het aantal bij het team telt alleen die uitvoerders."
+                    "label": "Hoe lang blijft een uitvoerder aangemeld?",
+                    "text": "Per team bepaalt u hoelang een uitvoerder aangemeld blijft na het scannen van de Clock Point-QR-code.<br><br>Dit stelt u in bij <strong>Sessieduur van uitvoerders</strong>:<br>• <strong>Dagelijks:</strong> 14 uur. Dit is de standaardinstelling.<br>• <strong>Wekelijks:</strong> 6 werkdagen.<br>• <strong>Specifiek aantal uren:</strong> u vult zelf het gewenste aantal uren in."
                 },
                 {
-                    "label": "Vestigingen per uitvoerder",
-                    "text": "Bij bewerken kies je één of meer vestigingen. Leeg = overal inklokken (standaard voor bestaande uitvoerders). Op Clock Point ziet de uitvoerder zijn naam alleen op toegewezen vestigingen, tenzij het team **Mag overal inklokken** heeft."
-                },
-                {
-                    "label": "Thuisgroep (uurrooster)",
-                    "text": "Optioneel. Waar zie je dit? Op <strong>Time → Uurrooster</strong>, nadat je een locatie filtert: uitvoerders staan dan onder groepen (bijv. G1). Die groepen maak je aan op een unit (<strong>Locaties → unit bewerken → roostercode</strong>). Hier kies je onder welke groep deze persoon hoort. Laat leeg als je geen groepering nodig hebt. Dit plant geen diensten; de plek in een cel (D1/G1) vul je apart in."
-                },
-                {
-                    "label": "Externe uitvoerders",
-                    "text": "Vink bij het toevoegen of bewerken <strong>Externe uitvoerder</strong> aan voor installateurs, schilders, zzp’ers of andere externe krachten. Optioneel vul je daarna een bedrijfsnaam in (bijv. Elektro Peeters). In de lijst herken je hen aan het badge <strong>Ext</strong> en eventueel de bedrijfsnaam. Ze gebruiken dezelfde Clock Point- en unit-QR-flow als interne uitvoerders — geen apart portaal of login."
-                },
-                {
-                    "label": "Sorteervolgorde",
-                    "text": "Bepaal de volgorde waarin teams verschijnen in lijsten en dropdowns. Lagere nummers verschijnen eerst."
-                },
-                {
-                    "label": "Hoe lang blijven uitvoerders aangemeld?",
-                    "text": "Kies hoe lang een uitvoerder ingelogd blijft na het scannen van de Clock Point QR: Dagelijks (14 uur), Wekelijks (144 uur, 6 werkdagen) of Specifiek (custom aantal uren). De standaardwaarde is 14 uur."
+                    "label": "Icoon, pincode of toestel vrijgeven",
+                    "text": "Open <strong>Bewerken</strong> bij de uitvoerder om de beveiligingsinstellingen te beheren."
                 },
                 {
                     "label": "Icoon resetten",
-                    "text": "Open **Bewerken** bij de uitvoerder in Personen → Teams. Resetten wist het icoon, de pincode, eventuele passkeys en de gekoppelde gsm, zodat de uitvoerder zich opnieuw kan aanmelden. Handig bij verloren toestel, lockout of een verkeerd icoon. Staat de pincode aan, dan staat deze knop er niet, toont de lijst geen «Geen icoon bevestigd», en blijft het blok Prikklok weg tot er een actie is. Teamleaders kunnen in hun portal ook iconen verwijderen van hun teamgenoten."
+                    "text": "Met <strong>Icoon resetten</strong> wist u het icoon, de pincode, een eventuele passkey en de gekoppelde gsm.<br><br>De uitvoerder kan zich daarna opnieuw aanmelden. Dit is bijvoorbeeld handig bij een verloren gsm, een blokkade of een verkeerd gekozen icoon.<br><br>Als er een pincode actief is, is deze knop niet beschikbaar. De lijst toont dan ook niet de melding <strong>Geen icoon bevestigd</strong>. Het blok <strong>Prikklok</strong> blijft verborgen zolang er niets te doen is.",
+                    "nested": true
                 },
                 {
-                    "label": "Nieuw toestel of pincode",
-                    "text": "Open **Bewerken**. **Nieuw toestel toestaan** verschijnt als er een gsm gekoppeld is; **Pincode resetten** als er een pincode staat; **Passkey verwijderen** als er een passkey is. Alleen nodig bij verloren gsm, lockout of een nieuw icoon."
+                    "label": "Andere beveiligingsacties",
+                    "text": "De volgende knoppen verschijnen alleen wanneer ze van toepassing zijn:<br>• <strong>Nieuw toestel toestaan:</strong> verschijnt als er een gsm gekoppeld is.<br>• <strong>Pincode resetten:</strong> verschijnt als er een pincode ingesteld is.<br>• <strong>Passkey verwijderen:</strong> verschijnt als er een passkey ingesteld is.<br><br>Een teamleader kan in het portaal ook het icoon van een teamgenoot vrijgeven.",
+                    "nested": true
                 },
                 {
                     "label": "Teamleader",
-                    "text": "Wijs teamleader toe of trek in via **Bewerken**. Teamleaders kunnen in het Clock Point-portaal iconen van teamgenoten vrijgeven, uitvoerders beheren en foto's nemen."
+                    "text": "Via <strong>Bewerken</strong> maakt u iemand teamleader of trekt u die rol weer in.<br><br>Een teamleader kan via het Clock Point-portaal:<br>• Het icoon van een teamgenoot vrijgeven.<br>• Uitvoerders beheren.<br>• Foto's nemen."
                 },
                 {
-                    "label": "Team deactiveren",
-                    "text": "Schakel een team uit zodat het niet meer zichtbaar is in dropdowns en lijsten. Uitvoerders van dit team kunnen geen taken meer bekijken of afhandelen. Reactiveren is mogelijk."
+                    "label": "Vestigingen",
+                    "text": "Bovenaan de teamlijst kunt u een vestiging kiezen. U ziet dan binnen elk team alleen de uitvoerders die op die vestiging mogen inklokken.<br><br>Uitvoerders zonder vaste vestiging en teams die overal mogen inklokken, blijven zichtbaar.<br><br>Met <strong>Alle locaties</strong> toont u opnieuw iedereen. Het aantal bij een team telt alleen de uitvoerders die op dat moment zichtbaar zijn."
                 },
                 {
-                    "label": "Uitvoerder deactiveren",
-                    "text": "Schakel een uitvoerder uit via **Bewerken** in Personen → Teams, zodat deze zich niet meer kan aanmelden via Clock Point QR. De uitvoerder blijft behouden in het systeem en kan later opnieuw worden geactiveerd."
+                    "label": "Vestigingen toewijzen aan een uitvoerder",
+                    "text": "Open de uitvoerder via <strong>Bewerken</strong> en kies één of meer vestigingen.<br><br>Laat u dit veld leeg, dan mag die persoon overal inklokken. Dat is ook de standaardinstelling voor bestaande uitvoerders.<br><br>Op Clock Point ziet een uitvoerder zijn of haar naam alleen op de toegewezen vestigingen, tenzij het team <strong>Mag overal inklokken</strong> ingeschakeld heeft.",
+                    "nested": true
                 },
                 {
-                    "label": "Uitvoerder verwijderen",
-                    "text": "Verwijder een uitvoerder definitief via **Bewerken** in Personen → Teams. Alle historie en taken van deze uitvoerder blijven behouden, maar de uitvoerder kan niet meer worden gebruikt."
+                    "label": "Mag overal inklokken",
+                    "text": "Schakel <strong>Mag overal inklokken</strong> in voor een invaller- of vlinderteam.<br><br>De uitvoerders van dat team zien hun naam dan op elke Clock Point, ook als ze zelf aan een specifieke vestiging gekoppeld zijn."
                 },
                 {
-                    "label": "Import",
-                    "text": "Importeer uitvoerders in bulk via CSV of Excel (.xlsx). Verplichte headers: team_name, first_name, last_name. Optioneel: email, phone, company_name, location_names (komma-gescheiden locatienamen; leeg = overal). Een ingevulde bedrijfsnaam markeert de uitvoerder automatisch als extern. Als headers of verplichte velden ontbreken, wordt de hele import geweigerd met een duidelijke foutmelding per rij. Teams worden automatisch aangemaakt als ze nog niet bestaan."
+                    "label": "Externe uitvoerders",
+                    "text": "Schakel <strong>Externe uitvoerder</strong> in voor iemand die voor een ander bedrijf werkt. Bijvoorbeeld een installateur, schilder of zelfstandige.<br><br>U kunt daarna een bedrijfsnaam invullen, bijvoorbeeld Elektro Peeters.<br><br>In de lijst herkent u deze persoon aan het kenmerk <strong>Ext</strong>, eventueel aangevuld met de bedrijfsnaam.<br><br>Een externe uitvoerder meldt zich op dezelfde manier aan als een interne uitvoerder. Er is geen apart portaal of aparte login."
                 },
                 {
-                    "label": "Recente imports",
-                    "text": "Na een import verschijnt automatisch een overzicht van de laatste 10 imports (30 dagen). Per import zie je de bestandsnaam, datum en het aantal uitvoerders. Klik op Import terugdraaien om de uitvoerders van die batch te verwijderen. Alleen uitvoerders zonder gekoppeld toestel worden verwijderd — uitvoerders die al aangemeld zijn via Clock Point QR (en dus een actief toestel hebben) blijven staan en werden als «Heeft toestellen» aangeduid. De knop verdwijnt zodra alle uitvoerders van een batch verwijderd zijn."
+                    "label": "Documenten en mededelingen",
+                    "text": "Binnen een team kunt u documenten en mededelingen beschikbaar maken voor de uitvoerders.<br><br>Deze verschijnen niet op de QR-pagina van een unit. Ze tellen ook niet mee in het maximumaantal documenten van uw organisatie."
+                },
+                {
+                    "label": "Voor wie is de inhoud bedoeld?",
+                    "text": "U kiest per document of mededeling wie de inhoud mag zien:<br>• Het volledige team.<br>• Eén specifieke uitvoerder.<br><br>Een contract is bijvoorbeeld bedoeld voor één persoon.<br><br>Vink <strong>Actief</strong> aan om het document of de mededeling op Clock Point te tonen.",
+                    "nested": true
+                },
+                {
+                    "label": "Wat gebeurt er bij een teamwissel?",
+                    "text": "• Een document of mededeling voor één uitvoerder verhuist mee als die persoon naar een ander team gaat.<br>• Een document of mededeling voor het volledige team blijft bij dat team.",
+                    "nested": true
+                },
+                {
+                    "label": "Wat ziet de uitvoerder?",
+                    "text": "Op Clock Point ziet een uitvoerder alleen de inhoud die voor hem of haar bedoeld is.<br><br>Nieuwe inhoud verschijnt meteen onder de aanmeldkaart, met een blauwe teller. Opent de uitvoerder de tegel, dan zakt die terug naar beneden. Komt er nieuwe inhoud bij, dan verschijnt de tegel opnieuw bovenaan.",
+                    "nested": true
+                },
+                {
+                    "label": "Beheren en zoeken",
+                    "text": "Op de teampagina ziet u standaard de actieve documenten en mededelingen, 25 per pagina.<br><br>U kunt filteren op:<br>• Uitvoerder.<br>• Status.<br>• Zoekwoord.<br><br>Bij een uitvoerder ziet u een teller. Tik erop om <strong>Documenten beheren</strong> of <strong>Mededelingen beheren</strong> te openen. U komt dan in de lijst van dat team, automatisch gefilterd op die persoon.",
+                    "nested": true
+                },
+                {
+                    "label": "Wie heeft de inhoud geopend?",
+                    "text": "Per item ziet u bijvoorbeeld <strong>Geopend 3/5</strong>. Tik erop om te bekijken wie de inhoud al geopend heeft en wie nog niet.<br><br>WinProx bewaart hierbij geen datum of uur.<br><br>Een item telt als geopend zodra:<br>• <strong>Een document:</strong> de uitvoerder het downloadt.<br>• <strong>Een mededeling:</strong> de uitvoerder het scherm Mededelingen opent.<br><br>Vervangt u een document of past u een mededeling aan? Dan moet iedereen de nieuwe inhoud opnieuw openen.",
+                    "nested": true
+                },
+                {
+                    "label": "Thuisgroep op het uurrooster",
+                    "text": "Deze functie is optioneel.<br><br>Op <strong>Time → Uurrooster</strong> kunt u filteren op een locatie. De uitvoerders verschijnen dan onder groepen, bijvoorbeeld G1.<br><br>Die groepen maakt u aan op een unit via <strong>Locaties → Unit bewerken → Roostercode</strong>.<br><br>Bij de uitvoerder kiest u vervolgens tot welke groep die persoon behoort. Laat dit veld leeg als u geen groepen nodig hebt.<br><br>Dit plant geen diensten. De aanduiding in een uurroostercel, zoals D1 of G1, vult u afzonderlijk in."
+                },
+                {
+                    "label": "Briefing afdrukken",
+                    "text": "Met <strong>Briefing afdrukken</strong> opent u een afdrukbaar overzicht van de open taken per team.<br><br>Handig om op de werkvloer te gebruiken.<br><br>Dezelfde briefing vindt u ook op <strong>Home</strong>, bij <strong>Meldingen</strong> en op de <strong>Kalender</strong>."
+                },
+                {
+                    "label": "Volgorde van de teams",
+                    "text": "Met <strong>Sorteervolgorde</strong> bepaalt u in welke volgorde teams verschijnen in lijsten en keuzelijsten.<br><br>Een lager nummer staat hoger in de lijst."
+                },
+                {
+                    "label": "Pauzes en lange diensten",
+                    "text": "Per team kunt u een minimumpauze instellen, bijvoorbeeld 30 minuten."
                 },
                 {
                     "label": "Minimumpauze",
-                    "text": "Per team kun je een minimum aantal pauzeminuten instellen (bijvoorbeeld 30). Bij uitklokken of sluiten telt WinProx dat minimum op de urenstaat als er minder of geen live pauze is geklokt én de dienst minstens 4 uur duurt. Dat is geen Clock Point-pauze en geen CIAO-event. Op Time → Uren kan een beheerder het minimum nog manueel toepassen of de pauzeminuten corrigeren. Per team stel je ook in na hoeveel uren het alarm Lange shift verschijnt (standaard 10) en na hoeveel uren een open dienst automatisch wordt gesloten (standaard 16, max. 24). Dat zijn kalenderuren sinds inklokken."
+                    "text": "Klokt een uitvoerder uit of sluit WinProx de dienst automatisch, en duurt die dienst minstens 4 uur? Dan houdt WinProx rekening met de ingestelde minimumpauze op de urenstaat.<br><br>Is er minder pauze geklokt dan het ingestelde minimum, of helemaal geen pauze? Dan vult WinProx het verschil aan.<br><br>Dit is geen pauzeregistratie op Clock Point en heeft geen invloed op de CIAO-registratie.<br><br>Via <strong>Time → Uren</strong> kan een beheerder het minimum ook handmatig toepassen of de pauzeminuten aanpassen.",
+                    "nested": true
+                },
+                {
+                    "label": "Alarm en automatisch sluiten",
+                    "text": "Per team stelt u ook twee tijdsgrenzen in. Beide worden berekend vanaf het moment van inklokken.<br>• <strong>Lange shift-alarm:</strong> na hoeveel uur het alarm verschijnt. Standaard 10 uur, maximaal 24 uur.<br>• <strong>Automatisch sluiten:</strong> na hoeveel uur een open dienst vanzelf wordt afgesloten. Standaard 16 uur, maximaal 24 uur.",
+                    "nested": true
+                },
+                {
+                    "label": "Een team of uitvoerder deactiveren",
+                    "text": "U kunt een team of een uitvoerder tijdelijk uitzetten. Een uitvoerder verwijderen is definitief."
+                },
+                {
+                    "label": "Team deactiveren",
+                    "text": "Deactiveert u een team, dan verdwijnt het uit de keuzelijsten.<br><br>De uitvoerders van dat team kunnen geen taken meer bekijken of afhandelen. U kunt het team later opnieuw activeren.",
+                    "nested": true
+                },
+                {
+                    "label": "Uitvoerder deactiveren",
+                    "text": "Deactiveert u een uitvoerder via <strong>Bewerken</strong>, dan kan die persoon zich niet meer aanmelden op Clock Point.<br><br>De gegevens blijven bewaard. U kunt de uitvoerder later opnieuw activeren.",
+                    "nested": true
+                },
+                {
+                    "label": "Uitvoerder verwijderen",
+                    "text": "Verwijderen is definitief.<br><br>De historiek en bestaande taken blijven bestaan, maar u kunt die uitvoerder niet meer gebruiken.",
+                    "nested": true
+                },
+                {
+                    "label": "Uitvoerders importeren",
+                    "text": "U kunt meerdere uitvoerders tegelijk toevoegen met een CSV- of Excel-bestand."
+                },
+                {
+                    "label": "Verplichte kolommen",
+                    "text": "Deze drie kolommen moeten aanwezig zijn:<br>• <strong>team_name</strong><br>• <strong>first_name</strong><br>• <strong>last_name</strong>",
+                    "nested": true
+                },
+                {
+                    "label": "Optionele kolommen",
+                    "text": "U kunt ook deze gegevens meegeven:<br>• <strong>email</strong><br>• <strong>phone</strong><br>• <strong>company_name</strong><br>• <strong>location_names</strong><br><br>Bij <strong>location_names</strong> vult u de namen van de vestigingen in, gescheiden door komma's.<br><br>Laat u dit veld leeg, dan mag de uitvoerder overal inklokken.<br><br>Vult u een bedrijfsnaam in bij <strong>company_name</strong>, dan wordt de uitvoerder automatisch als extern aangemaakt.",
+                    "nested": true
+                },
+                {
+                    "label": "Wat gebeurt er bij de import?",
+                    "text": "Bestaat een team nog niet? Dan maakt WinProx het automatisch aan.<br><br>Klopt een kolomnaam niet of ontbreekt een verplichte naam? Dan wordt er niets geïmporteerd. WinProx toont per rij wat er fout loopt.",
+                    "nested": true
+                },
+                {
+                    "label": "Een import terugdraaien",
+                    "text": "Na een import kunt u de laatste 10 imports van de voorbije 30 dagen bekijken.<br><br>Per import ziet u:<br>• De bestandsnaam.<br>• De datum.<br>• Het aantal geïmporteerde uitvoerders.<br><br>Met <strong>Import terugdraaien</strong> verwijdert u de uitvoerders van die import die nog geen gsm gekoppeld hebben.<br><br>Uitvoerders die zich al op Clock Point hebben aangemeld, blijven behouden. U herkent ze aan <strong>Heeft toestellen</strong>.<br><br>De knop <strong>Import terugdraaien</strong> verdwijnt zodra alle uitvoerders van die import die nog verwijderd konden worden, verwijderd zijn.",
+                    "nested": true
                 }
             ]
         },

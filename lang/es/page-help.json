@@ -630,88 +630,161 @@
             "title": "Ayuda — Teams",
             "actions": [
                 {
-                    "label": "Imprimir briefing",
-                    "text": "Abra un resumen imprimible de tareas abiertas por equipo — útil en el lugar de trabajo. El mismo briefing también está en Panel, Incidencias y Calendario."
+                    "label": "¿Para qué sirve un equipo?",
+                    "text": "Un equipo agrupa a operarios que hacen el mismo tipo de trabajo. Piense en un equipo de limpieza, un servicio técnico o la recepción.<br><br>Los operarios del mismo equipo ven las mismas tareas. Un equipo basta para empezar. Cree otro equipo solo cuando haya de verdad otro grupo.<br><br>Puede vincular un equipo a una o más categorías. Los avisos y las tareas de las unidades de esas categorías llegan entonces al equipo."
                 },
                 {
-                    "label": "Equipos operativos",
-                    "text": "Un equipo basta para empezar (por ejemplo Hotel o Facility). Añada a todos los que ejecutan tareas (nombre + icono). No hace falta un jefe de equipo. Más equipos solo si hay grupos realmente distintos. Vincule el equipo a las categorías para que las tareas lleguen. Mientras no haya operarios en el equipo, aún puede eliminarlo. Marque **Puede fichar en cualquier sede** para equipos de relevo."
+                    "label": "Crear un equipo",
+                    "text": "Encuentra Teams en <strong>Personas → Teams</strong>.<br><br>Dé un nombre al equipo, por ejemplo Hotel o Facility. Después añada los operarios que pertenecen a ese equipo.<br><br>Un jefe de equipo no es obligatorio.<br><br>Mientras el equipo no tenga operarios, puede eliminarlo."
                 },
                 {
-                    "label": "Traducciones de equipo",
-                    "text": "En el formulario de edición de equipo puede actualizar manualmente el nombre por idioma (NL, EN, FR, DE, ES, IT). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
+                    "label": "Nombre del equipo en otros idiomas",
+                    "text": "WinProx traduce el nombre del equipo automáticamente a los idiomas disponibles: neerlandés, inglés, francés, alemán, español e italiano.<br><br>¿Una traducción no es correcta o falta? Puede corregirla usted mismo:<br>1. Abra el formulario del equipo.<br>2. Elija el idioma.<br>3. Escriba el nombre que desea.<br>4. Guarde.<br><br>Su traducción corregida pasa a ser el nombre fijo de ese idioma."
                 },
                 {
-                    "label": "QR Clock Point",
-                    "text": "El QR Clock Point es el QR imprimible con el que los operarios se identifican (nombre + icono). Con Time (reloj de fichar) también fichan allí. Gestione e imprímalo en <strong>Time → Clock Points</strong> si Time está activo; si no, Personas → Equipos."
+                    "label": "Operarios",
+                    "text": "Un operario no inicia sesión con una dirección de correo y una contraseña. En Clock Point elige su nombre y un icono propio. Eso ocurre en un solo teléfono.<br><br>Puede añadir opcionalmente un PIN o una clave de acceso.<br><br>En la página del equipo ve por cada operario si el perfil está activo, bloqueado o es jefe de equipo. Con <strong>Editar</strong> modifica los datos.<br><br>¿Tiene muchos operarios? Puede ver y gestionar la lista completa en <strong>Personas → Ejecutores</strong>."
                 },
                 {
-                    "label": "Trabajadores",
-                    "text": "Los trabajadores no tienen inicio de sesión por correo; se identifican con el QR Clock Point (nombre + icono, PIN o biometría opcionales) en un móvil. La página del equipo muestra pastillas de estado y **Editar**: jefe de equipo, reloj (icono/móvil/PIN/passkey) y estado están en esa ventana. Sedes opcionales (vacío = en todas). Listas grandes: **Personas → Trabajadores**."
+                    "label": "Iniciar sesión en Clock Point",
+                    "text": "Los operarios inician sesión con el código QR de Clock Point.<br><br>¿Time está activado? Entonces usan el mismo código QR también para fichar la entrada y la salida.<br><br>El botón <strong>Código QR Clock Point</strong> está en esta página. Si Time está activado, gestiona e imprime los códigos QR en <strong>Time → Clock Points</strong>."
                 },
                 {
-                    "label": "Documentos y avisos",
-                    "text": "Abra un equipo. Los documentos y avisos son para los ejecutores de ese equipo. No están en el portal de avisos y no cuentan en la cuota de documentos. Elija todo el equipo o un ejecutor, por ejemplo un contrato. Marque Activo para mostrarlo en Clock Point. Un archivo personal se muda con el ejecutor si cambia de equipo. En Clock Point cada ejecutor solo ve lo que es para él. El contenido nuevo aparece bajo la tarjeta de acceso con un contador azul; después de abrirlo, la tarjeta baja de nuevo. En la gestión, la lista muestra por defecto todos los elementos activos; filtre por ejecutor, estado o término de búsqueda. Haga clic en el contador de un ejecutor (globo: Gestionar documentos o Gestionar avisos) para abrir la lista de ese equipo para esa persona. 25 elementos por página. Cada elemento muestra Abierto, p. ej. 3/5; haga clic para ver quién lo abrió. WinProx no guarda fecha ni hora. Un documento cuenta como abierto tras descargarlo, un aviso tras abrir la pantalla de avisos. Tras un archivo nuevo o un texto modificado, todos deben abrirlo de nuevo."
+                    "label": "¿Cuánto tiempo permanece conectado un operario?",
+                    "text": "Por equipo decide cuánto tiempo permanece conectado un operario después de escanear el código QR de Clock Point.<br><br>Lo configura en <strong>Duración de la sesión del trabajador</strong>:<br>• <strong>Diaria:</strong> 14 horas. Es el ajuste predeterminado.<br>• <strong>Semanal:</strong> 6 días laborables.<br>• <strong>Horas personalizadas:</strong> usted indica el número de horas."
                 },
                 {
-                    "label": "Ubicación",
-                    "text": "Elija una sede para ver, en cada equipo, solo a quienes pueden fichar allí. Quienes no tienen sede, y los equipos que pueden fichar en todas partes, siguen visibles. Todas las sedes vuelve a mostrar a todos. El número junto al equipo cuenta solo a esas personas."
-                },
-                {
-                    "label": "Sedes por ejecutor",
-                    "text": "Al editar, elija una o más sedes. Vacío = fichar en cualquier sitio (predeterminado para ejecutores existentes). En Clock Point el ejecutor solo ve su nombre en sedes asignadas, salvo que el equipo tenga **Puede fichar en cualquier sede**."
-                },
-                {
-                    "label": "Grupo base (horario)",
-                    "text": "Opcional. ¿Dónde se ve? En <strong>Time → Horario</strong>, tras filtrar por sede: los operarios aparecen bajo grupos (p. ej. G1). Esos grupos se crean en una unit (<strong>Ubicaciones → editar unit → código de cuadrante</strong>). Aquí elige el grupo de esta persona. Déjelo vacío si no necesita agrupar. No planifica turnos; el lugar en una celda (D1/G1) se rellena aparte."
-                },
-                {
-                    "label": "Trabajadores externos",
-                    "text": "Al añadir o editar, marque <strong>Trabajador externo</strong> para instaladores, pintores, autónomos u otras fuerzas externas. Después puede indicar opcionalmente un nombre de empresa (p. ej. Electricidad García). En la lista se reconocen por la insignia <strong>Ext</strong> y el nombre de empresa si está indicado. Usan el mismo flujo de Clock Point y QR de unidad que los trabajadores internos: sin portal ni inicio de sesión aparte."
-                },
-                {
-                    "label": "Orden",
-                    "text": "Determine el orden en que aparecen los equipos en listas y menús desplegables. Los números más bajos aparecen primero."
-                },
-                {
-                    "label": "¿Cuánto tiempo permanecen conectados los trabajadores?",
-                    "text": "Elija cuánto tiempo permanece conectado un trabajador tras escanear el QR Clock Point: Diario (14 horas), Semanal (144 horas, 6 días laborables) o Personalizado (número de horas personalizado). El valor predeterminado es 14 horas."
+                    "label": "Liberar un icono, un PIN o un dispositivo",
+                    "text": "Abra <strong>Editar</strong> en el operario para gestionar los ajustes de seguridad."
                 },
                 {
                     "label": "Restablecer icono",
-                    "text": "Abra **Editar** en el trabajador en Personas → Equipos. Restablecer borra el icono, el PIN, las claves de acceso y el móvil vinculado para que pueda identificarse de nuevo. Útil si se pierde el dispositivo, hay bloqueo o el icono es incorrecto. Si el PIN es obligatorio, este botón no aparece, la lista no muestra «Sin icono confirmado», y el bloque Reloj de fichar permanece oculto hasta que haya una acción. Los jefes de equipo también pueden eliminar iconos de sus compañeros en su portal."
+                    "text": "Con <strong>Restablecer icono</strong> borra el icono, el PIN, una posible clave de acceso y el teléfono vinculado.<br><br>El operario puede volver a iniciar sesión. Es útil, por ejemplo, si pierde el teléfono, si hay un bloqueo o si eligió un icono incorrecto.<br><br>Si hay un PIN activo, este botón no está disponible. La lista tampoco muestra <strong>Sin icono confirmado</strong>. El bloque <strong>Reloj de fichar</strong> permanece oculto mientras no haya nada que hacer.",
+                    "nested": true
                 },
                 {
-                    "label": "Dispositivo nuevo o PIN",
-                    "text": "Abra **Editar**. **Permitir dispositivo nuevo** aparece si hay un móvil vinculado; **Restablecer PIN** si hay un PIN; **Eliminar clave de acceso** si existe una. Solo hace falta si se pierde el móvil, hay bloqueo o se necesita un icono nuevo."
+                    "label": "Otras acciones de seguridad",
+                    "text": "Los siguientes botones solo aparecen cuando corresponden:<br>• <strong>Permitir dispositivo nuevo:</strong> aparece si hay un teléfono vinculado.<br>• <strong>Restablecer PIN:</strong> aparece si hay un PIN configurado.<br>• <strong>Eliminar clave de acceso:</strong> aparece si hay una clave de acceso configurada.<br><br>Un jefe de equipo también puede liberar el icono de un compañero en el portal.",
+                    "nested": true
                 },
                 {
                     "label": "Jefe de equipo",
-                    "text": "Asigne o quite el rol de jefe de equipo en **Editar**. Los jefes de equipo también pueden liberar iconos de compañeros, gestionar trabajadores y tomar fotos en el portal Clock Point."
+                    "text": "Con <strong>Editar</strong> convierte a alguien en jefe de equipo o retira ese papel.<br><br>Un jefe de equipo puede, desde el portal de Clock Point:<br>• Liberar el icono de un compañero.<br>• Gestionar operarios.<br>• Hacer fotos."
                 },
                 {
-                    "label": "Desactivar equipo",
-                    "text": "Desactive un equipo para que ya no sea visible en menús desplegables y listas. Los trabajadores de este equipo ya no pueden ver ni completar tareas. La reactivación es posible."
+                    "label": "Ubicaciones",
+                    "text": "Arriba en la lista de equipos puede elegir una ubicación. Entonces, en cada equipo, solo ve a los operarios que pueden fichar allí.<br><br>Los operarios sin ubicación fija y los equipos que pueden fichar en cualquier sitio siguen visibles.<br><br>Con <strong>Todas las ubicaciones</strong> vuelve a mostrar a todos. El número junto al equipo solo cuenta a los operarios visibles en ese momento."
                 },
                 {
-                    "label": "Desactivar trabajador",
-                    "text": "Desactive un trabajador desde **Editar** en Personas → Equipos para que ya no pueda iniciar sesión mediante el QR Clock Point. El trabajador permanece en el sistema y puede reactivarse más tarde."
+                    "label": "Asignar ubicaciones a un operario",
+                    "text": "Abra el operario con <strong>Editar</strong> y elija una o más ubicaciones.<br><br>Si deja este campo vacío, esa persona puede fichar en cualquier sitio. También es el ajuste predeterminado para los operarios existentes.<br><br>En Clock Point un operario solo ve su nombre en las ubicaciones asignadas, salvo que el equipo tenga activado <strong>Puede fichar en cualquier sitio (equipo flotante)</strong>.",
+                    "nested": true
                 },
                 {
-                    "label": "Eliminar trabajador",
-                    "text": "Elimine permanentemente un trabajador desde **Editar** en Personas → Equipos. Todo el historial y las tareas de este trabajador se conservan, pero el trabajador ya no puede usarse."
+                    "label": "Puede fichar en cualquier sitio",
+                    "text": "Active <strong>Puede fichar en cualquier sitio (equipo flotante)</strong> para un equipo de sustitución o flotante.<br><br>Los operarios de ese equipo ven entonces su nombre en cada Clock Point, aunque estén vinculados a una ubicación concreta."
                 },
                 {
-                    "label": "Importación",
-                    "text": "Importación masiva por CSV o Excel (.xlsx). Cabeceras obligatorias: team_name, first_name, last_name. Opcional: email, phone, company_name, location_names (nombres de sede separados por comas; vacío = en todas). Un nombre de empresa relleno marca automáticamente como externo. Si faltan cabeceras o campos obligatorios, se rechaza toda la importación con error claro por fila. Los equipos se crean automáticamente si no existen."
+                    "label": "Operarios externos",
+                    "text": "Active <strong>Trabajador externo</strong> para alguien que trabaja para otra empresa. Por ejemplo un instalador, un pintor o un autónomo.<br><br>Después puede escribir un nombre de empresa, por ejemplo Elektro Peeters.<br><br>En la lista reconoce a esa persona por la marca <strong>Ext</strong>, a veces con el nombre de la empresa.<br><br>Un operario externo inicia sesión igual que uno interno. No hay un portal aparte ni un acceso aparte."
                 },
                 {
-                    "label": "Importaciones recientes",
-                    "text": "Tras una importación, aparece automáticamente un resumen de las últimas 10 importaciones (30 días). Por importación ve el nombre del archivo, la fecha y el número de trabajadores. Pulse Deshacer importación para eliminar los trabajadores de ese lote. Solo se eliminan trabajadores sin dispositivo vinculado — los que ya iniciaron sesión vía Clock Point QR (y por tanto tienen un dispositivo activo) permanecen y se marcan como «Con dispositivo». El botón desaparece cuando se han eliminado todos los trabajadores de un lote."
+                    "label": "Documentos y avisos",
+                    "text": "Dentro de un equipo puede poner documentos y avisos a disposición de los operarios.<br><br>No aparecen en la página QR de una unidad. Tampoco cuentan para el máximo de documentos de su organización."
+                },
+                {
+                    "label": "¿Para quién es el contenido?",
+                    "text": "Elige por cada documento o aviso quién puede verlo:<br>• Todo el equipo.<br>• Un operario concreto.<br><br>Un contrato, por ejemplo, es para una sola persona.<br><br>Marque <strong>Activo</strong> para mostrar el documento o el aviso en Clock Point.",
+                    "nested": true
+                },
+                {
+                    "label": "¿Qué ocurre al cambiar de equipo?",
+                    "text": "• Un documento o aviso para un operario se traslada con esa persona si pasa a otro equipo.<br>• Un documento o aviso para todo el equipo se queda en ese equipo.",
+                    "nested": true
+                },
+                {
+                    "label": "¿Qué ve el operario?",
+                    "text": "En Clock Point un operario solo ve el contenido destinado a él.<br><br>El contenido nuevo aparece enseguida bajo la tarjeta de acceso, con un contador azul. Si el operario abre la ficha, baja de nuevo. Si llega contenido nuevo, la ficha vuelve arriba.",
+                    "nested": true
+                },
+                {
+                    "label": "Gestionar y buscar",
+                    "text": "En la página del equipo ve de forma predeterminada los documentos y avisos activos, 25 por página.<br><br>Puede filtrar por:<br>• Operario.<br>• Estado.<br>• Palabra de búsqueda.<br><br>Junto a un operario ve un contador. Púlselo para abrir <strong>Gestionar documentos</strong> o <strong>Gestionar avisos</strong>. Llega entonces a la lista de ese equipo, filtrada por esa persona.",
+                    "nested": true
+                },
+                {
+                    "label": "¿Quién ha abierto el contenido?",
+                    "text": "En cada elemento ve, por ejemplo, <strong>Abierto 3/5</strong>. Púlselo para ver quién ya abrió el contenido y quién no.<br><br>WinProx no guarda fecha ni hora.<br><br>Un elemento cuenta como abierto cuando:<br>• <strong>Un documento:</strong> el operario lo descarga.<br>• <strong>Un aviso:</strong> el operario abre la pantalla Anuncios.<br><br>¿Sustituye un documento o modifica un aviso? Entonces todos deben abrir de nuevo el contenido nuevo.",
+                    "nested": true
+                },
+                {
+                    "label": "Grupo base en el horario",
+                    "text": "Esta función es opcional.<br><br>En <strong>Time → Horario</strong> puede filtrar por una ubicación. Los operarios aparecen entonces bajo grupos, por ejemplo G1.<br><br>Esos grupos los crea en una unidad, en <strong>Ubicaciones → editar la unidad → Código de cuadrante</strong>.<br><br>En el operario elige después a qué grupo pertenece. Deje el campo vacío si no necesita grupos.<br><br>Esto no planifica turnos. La indicación en una celda del horario, como D1 o G1, se rellena aparte."
+                },
+                {
+                    "label": "Imprimir briefing",
+                    "text": "Con <strong>Imprimir briefing</strong> abre un resumen imprimible de las tareas abiertas por equipo.<br><br>Útil para usarlo en el lugar de trabajo.<br><br>El mismo briefing está también en <strong>Inicio</strong>, en <strong>Incidencias</strong> y en el <strong>Calendario</strong>."
+                },
+                {
+                    "label": "Orden de los equipos",
+                    "text": "Con <strong>Orden</strong> decide en qué orden aparecen los equipos en las listas y las listas de elección.<br><br>Un número más bajo aparece más arriba en la lista."
+                },
+                {
+                    "label": "Pausas y turnos largos",
+                    "text": "Por equipo puede definir una pausa mínima, por ejemplo 30 minutos."
                 },
                 {
                     "label": "Pausa mínima",
-                    "text": "Por equipo puedes fijar una pausa mínima (por ejemplo 30 minutos). Al fichar la salida o al cerrar, WinProx cuenta ese mínimo en el parte de horas si se fichó menos pausa o ninguna y el turno dura al menos 4 horas. No es una pausa de Clock Point ni un evento CIAO. En Time → Horas un administrador aún puede aplicar el mínimo manualmente o corregir los minutos de pausa. Por equipo también fija tras cuántas horas aparece la alarma de turno largo (por defecto 10) y tras cuántas horas se cierra automáticamente un turno abierto (por defecto 16, máx. 24). Son horas de calendario desde el fichaje de entrada."
+                    "text": "¿Un operario ficha la salida, o WinProx cierra el turno automáticamente, y ese turno dura al menos 4 horas? Entonces WinProx tiene en cuenta la pausa mínima configurada en la hoja de horas.<br><br>¿Se fichó menos pausa que el mínimo, o ninguna pausa? Entonces WinProx completa la diferencia.<br><br>No es un registro de pausa en Clock Point y no influye en el registro CIAO.<br><br>En <strong>Time → Horas fichadas</strong> un administrador también puede aplicar el mínimo a mano o cambiar los minutos de pausa.",
+                    "nested": true
+                },
+                {
+                    "label": "Alarma y cierre automático",
+                    "text": "Por equipo también configura dos límites de tiempo. Ambos se calculan desde el fichaje de entrada.<br>• <strong>Alarma de turno largo:</strong> tras cuántas horas aparece la alarma. Predeterminado 10 horas, máximo 24 horas.<br>• <strong>Cierre automático:</strong> tras cuántas horas se cierra solo un turno abierto. Predeterminado 16 horas, máximo 24 horas.",
+                    "nested": true
+                },
+                {
+                    "label": "Desactivar un equipo o un operario",
+                    "text": "Puede desactivar temporalmente un equipo o un operario. Eliminar un operario es definitivo."
+                },
+                {
+                    "label": "Desactivar un equipo",
+                    "text": "Si desactiva un equipo, desaparece de las listas de elección.<br><br>Los operarios de ese equipo ya no pueden ver ni resolver tareas. Puede activar el equipo más tarde.",
+                    "nested": true
+                },
+                {
+                    "label": "Desactivar un operario",
+                    "text": "Si desactiva un operario con <strong>Editar</strong>, esa persona ya no puede iniciar sesión en Clock Point.<br><br>Los datos se conservan. Puede activar al operario más tarde.",
+                    "nested": true
+                },
+                {
+                    "label": "Eliminar un operario",
+                    "text": "Eliminar es definitivo.<br><br>El historial y las tareas existentes se mantienen, pero ya no puede usar a ese operario.",
+                    "nested": true
+                },
+                {
+                    "label": "Importar operarios",
+                    "text": "Puede añadir varios operarios a la vez con un archivo CSV o Excel."
+                },
+                {
+                    "label": "Columnas obligatorias",
+                    "text": "Estas tres columnas deben estar presentes:<br>• <strong>team_name</strong><br>• <strong>first_name</strong><br>• <strong>last_name</strong>",
+                    "nested": true
+                },
+                {
+                    "label": "Columnas opcionales",
+                    "text": "También puede incluir estos datos:<br>• <strong>email</strong><br>• <strong>phone</strong><br>• <strong>company_name</strong><br>• <strong>location_names</strong><br><br>En <strong>location_names</strong> escribe los nombres de las ubicaciones, separados por comas.<br><br>Si deja este campo vacío, el operario puede fichar en cualquier sitio.<br><br>Si escribe un nombre de empresa en <strong>company_name</strong>, el operario se crea automáticamente como externo.",
+                    "nested": true
+                },
+                {
+                    "label": "¿Qué ocurre en la importación?",
+                    "text": "¿Un equipo aún no existe? WinProx lo crea automáticamente.<br><br>¿Un nombre de columna no es correcto o falta un nombre obligatorio? Entonces no se importa nada. WinProx muestra por fila qué falla.",
+                    "nested": true
+                },
+                {
+                    "label": "Deshacer una importación",
+                    "text": "Después de una importación puede ver las últimas 10 importaciones de los últimos 30 días.<br><br>En cada importación ve:<br>• El nombre del archivo.<br>• La fecha.<br>• El número de operarios importados.<br><br>Con <strong>Deshacer importación</strong> elimina a los operarios de esa importación que aún no tienen un teléfono vinculado.<br><br>Los operarios que ya iniciaron sesión en Clock Point se conservan. Los reconoce por <strong>Con dispositivo</strong>.<br><br>El botón <strong>Deshacer importación</strong> desaparece cuando ya se han eliminado todos los operarios de esa importación que aún se podían eliminar.",
+                    "nested": true
                 }
             ]
         },

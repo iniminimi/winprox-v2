@@ -631,91 +631,164 @@
             ]
         },
         "team.teams": {
-            "title": "Aide — Équipes",
+            "title": "Aide — Teams",
             "actions": [
                 {
-                    "label": "Imprimer le briefing",
-                    "text": "Ouvrez un aperçu imprimable des tâches ouvertes par équipe — pratique sur le terrain. Le même briefing se trouve aussi sur Tableau de bord, Signalements et Calendrier."
+                    "label": "À quoi sert une équipe ?",
+                    "text": "Une équipe regroupe des intervenants qui font le même type de travail. Pensez à une équipe de nettoyage, à un service technique ou à la réception.<br><br>Les intervenants d’une même équipe voient les mêmes tâches. Une seule équipe suffit pour commencer. Ne créez une équipe supplémentaire que s’il existe vraiment un autre groupe.<br><br>Vous pouvez lier une équipe à une ou plusieurs catégories. Les signalements et les tâches des unités de ces catégories arrivent alors à l’équipe."
                 },
                 {
-                    "label": "Équipes opérationnelles",
-                    "text": "Une équipe suffit pour démarrer (par exemple Hôtel ou Facility). Ajoutez toutes les personnes qui exécutent des tâches (nom + icône). Un chef d’équipe n’est pas nécessaire. D’autres équipes seulement s’il existe vraiment des groupes distincts. Reliez l’équipe aux catégories pour que les tâches aboutissent. Tant qu’il n’y a pas d’exécutants dans l’équipe, vous pouvez encore la supprimer. Cochez **Peut pointer partout** pour les équipes volantes ou de remplacement."
+                    "label": "Créer une équipe",
+                    "text": "Vous trouvez Teams via <strong>Personnes → Teams</strong>.<br><br>Donnez un nom à l’équipe, par exemple Hôtel ou Facility. Ajoutez ensuite les intervenants qui en font partie.<br><br>Un chef d’équipe n’est pas obligatoire.<br><br>Tant que l’équipe n’a pas encore d’intervenants, vous pouvez la supprimer."
                 },
                 {
-                    "label": "Traductions d’équipe",
-                    "text": "Dans le formulaire d’édition d’équipe, vous pouvez mettre à jour manuellement le nom par langue (NL, EN, FR, DE, ES, IT). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
+                    "label": "Nom de l’équipe dans d’autres langues",
+                    "text": "WinProx traduit automatiquement le nom de l’équipe dans les langues disponibles : néerlandais, anglais, français, allemand, espagnol et italien.<br><br>Une traduction est incorrecte ou manque ? Vous pouvez la corriger vous-même :<br>1. Ouvrez le formulaire de l’équipe.<br>2. Choisissez la langue.<br>3. Saisissez le nom souhaité.<br>4. Enregistrez.<br><br>Votre traduction corrigée devient alors le nom fixe pour cette langue."
                 },
                 {
-                    "label": "QR Clock Point",
-                    "text": "Le QR Clock Point est le QR imprimable avec lequel les exécutants s’identifient (nom + icône). Avec Time (pointeuse) ils pointent aussi l’entrée ou la sortie. Gérez-le et imprimez-le via <strong>Time → Clock Points</strong> si Time est actif, sinon Personnes → Équipes."
+                    "label": "Intervenants",
+                    "text": "Un intervenant ne se connecte pas avec une adresse e-mail et un mot de passe. Sur Clock Point, il choisit son nom et une icône personnelle. Cela se fait sur un seul téléphone.<br><br>Vous pouvez y ajouter un code PIN ou une clé d’accès, si vous le souhaitez.<br><br>Sur la page de l’équipe, vous voyez pour chaque intervenant si le profil est actif, bloqué ou chef d’équipe. Vous modifiez les données via <strong>Modifier</strong>.<br><br>Vous avez beaucoup d’intervenants ? Vous pouvez consulter et gérer la liste complète via <strong>Personnes → Exécutants</strong>."
                 },
                 {
-                    "label": "Exécutants",
-                    "text": "Les exécutants n’ont pas de login e-mail ; ils s’identifient via la QR Clock Point avec nom et icône (PIN ou biométrie optionnels) sur un téléphone. La page de l’équipe montre des pastilles de statut et **Modifier** — rôle, pointeuse (icône/téléphone/PIN/passkey) et statut sont dans cette fenêtre. Sites optionnels (vide = partout). Grandes listes : **Personnes → Exécutants**."
+                    "label": "Se connecter sur Clock Point",
+                    "text": "Les intervenants se connectent avec le code QR Clock Point.<br><br>Time est activé ? Ils utilisent alors le même code QR pour pointer à l’arrivée et au départ.<br><br>Vous trouvez le bouton <strong>QR code Clock Point</strong> sur cette page. Si Time est activé, vous gérez et imprimez les codes QR via <strong>Time → Clock Points</strong>."
                 },
                 {
-                    "label": "Documents et annonces",
-                    "text": "Ouvrez une équipe. Les documents et annonces sont destinés aux exécutants de cette équipe. Ils ne sont pas sur le portail de signalement et ne comptent pas dans le quota de documents. Choisissez toute l'équipe, ou un seul exécutant, par exemple un contrat. Cochez Actif pour l'afficher sur Clock Point. Un fichier personnel suit l'exécutant s'il change d'équipe. Sur Clock Point, chaque exécutant ne voit que ce qui lui est destiné. Le nouveau contenu apparaît sous la carte de connexion avec un compteur bleu ; après ouverture, la tuile redescend. En gestion, la liste affiche par défaut tous les éléments actifs ; filtrez par exécutant, statut ou mot-clé. Cliquez sur le compteur d’un exécutant (info-bulle : Gérer les documents ou Gérer les annonces) pour ouvrir la liste de cette équipe pour cette personne. 25 éléments par page. Chaque élément affiche Ouvert, p. ex. 3/5 ; cliquez pour voir qui l’a ouvert. WinProx n’enregistre ni date ni heure. Un document compte comme ouvert après téléchargement, une annonce après l’ouverture de l’écran Annonces. Après un nouveau fichier ou un texte modifié, chacun doit l’ouvrir à nouveau."
+                    "label": "Combien de temps un intervenant reste-t-il connecté ?",
+                    "text": "Pour chaque équipe, vous décidez combien de temps un intervenant reste connecté après avoir scanné le code QR Clock Point.<br><br>Vous le réglez dans <strong>Durée de session des intervenants</strong> :<br>• <strong>Quotidien :</strong> 14 heures. C’est le réglage par défaut.<br>• <strong>Hebdomadaire :</strong> 6 jours ouvrés.<br>• <strong>Heures personnalisées :</strong> vous indiquez vous-même le nombre d’heures."
                 },
                 {
-                    "label": "Site",
-                    "text": "Choisissez un site pour n’afficher, dans chaque équipe, que les exécutants autorisés à pointer là. Les exécutants sans site, et les équipes qui peuvent pointer partout, restent visibles. Tous les sites réaffiche tout le monde. Le nombre à côté de l’équipe ne compte que ces exécutants."
+                    "label": "Libérer une icône, un PIN ou un appareil",
+                    "text": "Ouvrez <strong>Modifier</strong> pour l’intervenant afin de gérer les réglages de sécurité."
                 },
                 {
-                    "label": "Sites par exécutant",
-                    "text": "À la modification, choisissez un ou plusieurs sites. Vide = pointer partout (défaut pour les exécutants existants). Sur Clock Point, le nom n'apparaît que sur les sites assignés, sauf si l'équipe a **Peut pointer partout**."
+                    "label": "Réinitialiser l’icône",
+                    "text": "Avec <strong>Réinitialiser l'icône</strong> vous effacez l’icône, le code PIN, une éventuelle clé d’accès et le téléphone lié.<br><br>L’intervenant peut ensuite se reconnecter. C’est utile, par exemple, en cas de téléphone perdu, de blocage ou d’icône mal choisie.<br><br>Si un code PIN est actif, ce bouton n’est pas disponible. La liste n’affiche alors pas non plus <strong>Aucune icône confirmée</strong>. Le bloc <strong>Pointeuse</strong> reste masqué tant qu’il n’y a rien à faire.",
+                    "nested": true
                 },
                 {
-                    "label": "Groupe d’appartenance (planning)",
-                    "text": "Facultatif. Où le voir ? Sur <strong>Time → Planning</strong>, après un filtre de lieu : les intervenants sont listés sous des groupes (ex. G1). Ces groupes se créent sur une unité (<strong>Lieux → modifier l’unité → code planning</strong>). Ici vous choisissez le groupe de cette personne. Laissez vide si vous n’avez pas besoin de regroupement. Cela ne planifie pas les services ; la place dans une cellule (D1/G1) se remplit à part."
-                },
-                {
-                    "label": "Exécutants externes",
-                    "text": "Lors de l’ajout ou de la modification, cochez <strong>Intervenant externe</strong> pour les installateurs, peintres, indépendants ou autres intervenants externes. Vous pouvez ensuite saisir optionnellement un nom d’entreprise (ex. Électricité Dupont). Dans la liste, ils portent le badge <strong>Ext</strong> et le nom d’entreprise s’il est renseigné. Ils utilisent le même parcours Clock Point et QR d’unité que les exécutants internes — pas de portail ni de connexion séparés."
-                },
-                {
-                    "label": "Ordre de tri",
-                    "text": "Déterminez l'ordre dans lequel les équipes apparaissent dans les listes et menus déroulants. Les numéros inférieurs apparaissent en premier."
-                },
-                {
-                    "label": "Combien de temps les exécutants restent-ils connectés ?",
-                    "text": "Choisissez combien de temps un exécutant reste connecté après avoir scanné le QR Clock Point : Quotidien (14 heures), Hebdomadaire (144 heures, 6 jours ouvrés) ou Personnalisé (nombre d'heures personnalisé). La valeur par défaut est 14 heures."
-                },
-                {
-                    "label": "Réinitialiser l'icône",
-                    "text": "Ouvrez **Modifier** sur l’exécutant dans Personnes → Équipes. La réinitialisation efface l’icône, le code PIN, les clés d’accès éventuelles et le téléphone lié, pour qu’il puisse se reconnecter. Utile en cas d’appareil perdu, de verrouillage ou d’icône erronée. Si le code PIN est obligatoire, ce bouton n’apparaît pas, la liste n’affiche pas « Aucune icône confirmée », et le bloc Pointeuse reste masqué tant qu’il n’y a pas d’action. Les chefs d’équipe peuvent aussi supprimer des icônes de leurs coéquipiers dans leur portail."
-                },
-                {
-                    "label": "Nouvel appareil ou code PIN",
-                    "text": "Ouvrez **Modifier**. **Autoriser un nouvel appareil** apparaît s’il y a un téléphone lié ; **Réinitialiser le PIN** s’il y a un code ; **Supprimer la clé d’accès** s’il y en a une. Uniquement en cas d’appareil perdu, de verrouillage ou d’une nouvelle icône."
+                    "label": "Autres actions de sécurité",
+                    "text": "Les boutons suivants n’apparaissent que lorsqu’ils s’appliquent :<br>• <strong>Autoriser un nouvel appareil :</strong> apparaît si un téléphone est lié.<br>• <strong>Réinitialiser le PIN :</strong> apparaît si un code PIN est défini.<br>• <strong>Supprimer la clé d'accès :</strong> apparaît si une clé d’accès est définie.<br><br>Un chef d’équipe peut aussi libérer l’icône d’un coéquipier dans le portail.",
+                    "nested": true
                 },
                 {
                     "label": "Chef d’équipe",
-                    "text": "Attribuez ou retirez le rôle via **Modifier**. Les chefs d’équipe peuvent aussi libérer les icônes de leurs coéquipiers, gérer les exécutants et prendre des photos dans le portail Clock Point."
+                    "text": "Via <strong>Modifier</strong>, vous désignez quelqu’un comme chef d’équipe ou vous retirez ce rôle.<br><br>Un chef d’équipe peut, via le portail Clock Point :<br>• Libérer l’icône d’un coéquipier.<br>• Gérer les intervenants.<br>• Prendre des photos."
                 },
                 {
-                    "label": "Désactiver l'équipe",
-                    "text": "Désactivez une équipe pour qu'elle ne soit plus visible dans les menus déroulants et listes. Les workers de cette équipe ne peuvent plus voir ou traiter les tâches. La réactivation est possible."
+                    "label": "Sites",
+                    "text": "En haut de la liste des équipes, vous pouvez choisir un site. Vous ne voyez alors, dans chaque équipe, que les intervenants qui peuvent pointer sur ce site.<br><br>Les intervenants sans site fixe, et les équipes qui peuvent pointer partout, restent visibles.<br><br>Avec <strong>Tous les sites</strong>, vous affichez de nouveau tout le monde. Le nombre à côté d’une équipe ne compte que les intervenants visibles à ce moment."
                 },
                 {
-                    "label": "Désactiver l'exécutant",
-                    "text": "Désactivez un exécutant via **Modifier** dans Personnes → Équipes, pour qu’il ne puisse plus se connecter via le QR Clock Point. L’exécutant reste dans le système et peut être réactivé plus tard."
+                    "label": "Attribuer des sites à un intervenant",
+                    "text": "Ouvrez l’intervenant via <strong>Modifier</strong> et choisissez un ou plusieurs sites.<br><br>Si vous laissez ce champ vide, cette personne peut pointer partout. C’est aussi le réglage par défaut pour les intervenants existants.<br><br>Sur Clock Point, un intervenant ne voit son nom que sur les sites attribués, sauf si l’équipe a activé <strong>Peut pointer partout (équipe volante)</strong>.",
+                    "nested": true
                 },
                 {
-                    "label": "Supprimer l'exécutant",
-                    "text": "Supprimez définitivement un exécutant via **Modifier** dans Personnes → Équipes. Tout l’historique et les tâches de cet exécutant sont conservés, mais l’exécutant ne peut plus être utilisé."
+                    "label": "Peut pointer partout",
+                    "text": "Activez <strong>Peut pointer partout (équipe volante)</strong> pour une équipe de remplacement ou volante.<br><br>Les intervenants de cette équipe voient alors leur nom sur chaque Clock Point, même s’ils sont eux-mêmes liés à un site précis."
                 },
                 {
-                    "label": "Import",
-                    "text": "Import en masse via CSV ou Excel (.xlsx). En-têtes obligatoires : team_name, first_name, last_name. Optionnel : email, phone, company_name, location_names (noms de sites séparés par des virgules ; vide = partout). Un nom d'entreprise rempli marque automatiquement comme externe. En-têtes ou champs obligatoires manquants → import entier refusé avec message clair par ligne. Les équipes sont créées automatiquement si besoin."
+                    "label": "Intervenants externes",
+                    "text": "Activez <strong>Intervenant externe</strong> pour quelqu’un qui travaille pour une autre entreprise. Par exemple un installateur, un peintre ou un indépendant.<br><br>Vous pouvez ensuite indiquer un nom d’entreprise, par exemple Elektro Peeters.<br><br>Dans la liste, vous reconnaissez cette personne au badge <strong>Ext</strong>, éventuellement complété du nom de l’entreprise.<br><br>Un intervenant externe se connecte de la même façon qu’un intervenant interne. Il n’y a pas de portail séparé ni de connexion séparée."
                 },
                 {
-                    "label": "Imports récents",
-                    "text": "Après un import, un aperçu des 10 derniers imports (30 jours) apparaît automatiquement. Par import, vous voyez le nom du fichier, la date et le nombre d'exécutants. Cliquez sur Annuler l'import pour supprimer les exécutants de ce lot. Seuls les exécutants sans appareil lié sont supprimés — les exécutants déjà connectés via le QR Clock Point (et donc avec un appareil actif) restent et sont indiqués comme «Appareil lié». Le bouton disparaît lorsque tous les exécutants d'un lot ont été supprimés."
+                    "label": "Documents et annonces",
+                    "text": "Dans une équipe, vous pouvez mettre des documents et des annonces à la disposition des intervenants.<br><br>Ils n’apparaissent pas sur la page QR d’une unité. Ils ne comptent pas non plus dans le nombre maximal de documents de votre organisation."
+                },
+                {
+                    "label": "Pour qui est le contenu ?",
+                    "text": "Pour chaque document ou annonce, vous choisissez qui peut le voir :<br>• Toute l’équipe.<br>• Un intervenant précis.<br><br>Un contrat, par exemple, est destiné à une seule personne.<br><br>Cochez <strong>Actif</strong> pour afficher le document ou l’annonce sur Clock Point.",
+                    "nested": true
+                },
+                {
+                    "label": "Que se passe-t-il lors d’un changement d’équipe ?",
+                    "text": "• Un document ou une annonce pour un seul intervenant suit cette personne si elle passe dans une autre équipe.<br>• Un document ou une annonce pour toute l’équipe reste dans cette équipe.",
+                    "nested": true
+                },
+                {
+                    "label": "Que voit l’intervenant ?",
+                    "text": "Sur Clock Point, un intervenant ne voit que le contenu qui lui est destiné.<br><br>Le nouveau contenu apparaît tout de suite sous la carte de connexion, avec un compteur bleu. Lorsque l’intervenant ouvre la tuile, elle redescend. S’il arrive du nouveau contenu, la tuile revient en haut.",
+                    "nested": true
+                },
+                {
+                    "label": "Gérer et chercher",
+                    "text": "Sur la page de l’équipe, vous voyez par défaut les documents et annonces actifs, 25 par page.<br><br>Vous pouvez filtrer par :<br>• Intervenant.<br>• Statut.<br>• Mot recherché.<br><br>À côté d’un intervenant, vous voyez un compteur. Touchez-le pour ouvrir <strong>Gérer les documents</strong> ou <strong>Gérer les annonces</strong>. Vous arrivez alors dans la liste de cette équipe, filtrée sur cette personne.",
+                    "nested": true
+                },
+                {
+                    "label": "Qui a ouvert le contenu ?",
+                    "text": "Pour chaque élément, vous voyez par exemple <strong>Ouvert 3/5</strong>. Touchez-le pour voir qui a déjà ouvert le contenu et qui ne l’a pas encore fait.<br><br>WinProx ne conserve ni date ni heure.<br><br>Un élément compte comme ouvert dès que :<br>• <strong>Un document :</strong> l’intervenant le télécharge.<br>• <strong>Une annonce :</strong> l’intervenant ouvre l’écran Annonces.<br><br>Vous remplacez un document ou vous modifiez une annonce ? Tout le monde doit alors rouvrir le nouveau contenu.",
+                    "nested": true
+                },
+                {
+                    "label": "Groupe d’appartenance sur le planning",
+                    "text": "Cette fonction est facultative.<br><br>Dans <strong>Time → Horaire</strong>, vous pouvez filtrer sur un lieu. Les intervenants apparaissent alors sous des groupes, par exemple G1.<br><br>Vous créez ces groupes sur une unité via <strong>Sites → modifier l’unité → Code planning</strong>.<br><br>Pour l’intervenant, vous choisissez ensuite le groupe auquel cette personne appartient. Laissez ce champ vide si vous n’avez pas besoin de groupes.<br><br>Cela ne planifie pas de services. L’indication dans une case du planning, comme D1 ou G1, se remplit séparément."
+                },
+                {
+                    "label": "Imprimer le briefing",
+                    "text": "Avec <strong>Imprimer le briefing</strong>, vous ouvrez un aperçu imprimable des tâches ouvertes par équipe.<br><br>Pratique à utiliser sur le lieu de travail.<br><br>Vous trouvez le même briefing sur <strong>Accueil</strong>, dans <strong>Signalements</strong> et sur le <strong>Calendrier</strong>."
+                },
+                {
+                    "label": "Ordre des équipes",
+                    "text": "Avec <strong>Ordre de tri</strong>, vous décidez dans quel ordre les équipes apparaissent dans les listes et les listes de choix.<br><br>Un numéro plus bas apparaît plus haut dans la liste."
+                },
+                {
+                    "label": "Pauses et longues vacations",
+                    "text": "Pour chaque équipe, vous pouvez définir une pause minimale, par exemple 30 minutes."
                 },
                 {
                     "label": "Pause minimale",
-                    "text": "Par équipe, vous pouvez fixer une pause minimale (par exemple 30 minutes). À la sortie ou à la clôture, WinProx compte ce minimum sur la feuille d’heures s’il y a eu moins de pause (ou aucune) et si le service dure au moins 4 heures. Ce n’est pas une pause Clock Point ni un événement CIAO. Dans Time → Heures, un admin peut encore appliquer le minimum manuellement ou corriger les minutes de pause. Par équipe vous réglez aussi après combien d’heures l’alerte longue vacation apparaît (défaut 10) et après combien d’heures une vacation ouverte est fermée automatiquement (défaut 16, max. 24). Ce sont des heures calendaires depuis le pointage d’entrée."
+                    "text": "Un intervenant pointe sa sortie, ou WinProx ferme le service automatiquement, et ce service dure au moins 4 heures ? WinProx tient alors compte de la pause minimale définie sur la feuille d’heures.<br><br>Moins de pause a été pointée que le minimum, ou aucune pause ? WinProx complète alors la différence.<br><br>Ce n’est pas une pause enregistrée sur Clock Point, et cela n’a pas d’effet sur l’enregistrement CIAO.<br><br>Via <strong>Time → Heures pointées</strong>, un administrateur peut aussi appliquer le minimum à la main ou modifier les minutes de pause.",
+                    "nested": true
+                },
+                {
+                    "label": "Alerte et fermeture automatique",
+                    "text": "Pour chaque équipe, vous définissez aussi deux limites de temps. Les deux sont calculées à partir du pointage d’entrée.<br>• <strong>Alerte longue vacation :</strong> après combien d’heures l’alerte apparaît. Par défaut 10 heures, maximum 24 heures.<br>• <strong>Fermeture automatique :</strong> après combien d’heures un service ouvert est fermé automatiquement. Par défaut 16 heures, maximum 24 heures.",
+                    "nested": true
+                },
+                {
+                    "label": "Désactiver une équipe ou un intervenant",
+                    "text": "Vous pouvez désactiver temporairement une équipe ou un intervenant. Supprimer un intervenant est définitif."
+                },
+                {
+                    "label": "Désactiver une équipe",
+                    "text": "Si vous désactivez une équipe, elle disparaît des listes de choix.<br><br>Les intervenants de cette équipe ne peuvent plus consulter ni traiter de tâches. Vous pouvez réactiver l’équipe plus tard.",
+                    "nested": true
+                },
+                {
+                    "label": "Désactiver un intervenant",
+                    "text": "Si vous désactivez un intervenant via <strong>Modifier</strong>, cette personne ne peut plus se connecter sur Clock Point.<br><br>Les données sont conservées. Vous pouvez réactiver l’intervenant plus tard.",
+                    "nested": true
+                },
+                {
+                    "label": "Supprimer un intervenant",
+                    "text": "La suppression est définitive.<br><br>L’historique et les tâches existantes restent, mais vous ne pouvez plus utiliser cet intervenant.",
+                    "nested": true
+                },
+                {
+                    "label": "Importer des intervenants",
+                    "text": "Vous pouvez ajouter plusieurs intervenants en même temps avec un fichier CSV ou Excel."
+                },
+                {
+                    "label": "Colonnes obligatoires",
+                    "text": "Ces trois colonnes doivent être présentes :<br>• <strong>team_name</strong><br>• <strong>first_name</strong><br>• <strong>last_name</strong>",
+                    "nested": true
+                },
+                {
+                    "label": "Colonnes facultatives",
+                    "text": "Vous pouvez aussi fournir ces données :<br>• <strong>email</strong><br>• <strong>phone</strong><br>• <strong>company_name</strong><br>• <strong>location_names</strong><br><br>Dans <strong>location_names</strong>, vous indiquez les noms des sites, séparés par des virgules.<br><br>Si vous laissez ce champ vide, l’intervenant peut pointer partout.<br><br>Si vous indiquez un nom d’entreprise dans <strong>company_name</strong>, l’intervenant est créé automatiquement comme externe.",
+                    "nested": true
+                },
+                {
+                    "label": "Que se passe-t-il lors de l’import ?",
+                    "text": "Une équipe n’existe pas encore ? WinProx la crée automatiquement.<br><br>Un nom de colonne est incorrect ou un nom obligatoire manque ? Rien n’est importé. WinProx indique, ligne par ligne, ce qui ne va pas.",
+                    "nested": true
+                },
+                {
+                    "label": "Annuler un import",
+                    "text": "Après un import, vous pouvez consulter les 10 derniers imports des 30 derniers jours.<br><br>Pour chaque import, vous voyez :<br>• Le nom du fichier.<br>• La date.<br>• Le nombre d’intervenants importés.<br><br>Avec <strong>Annuler l'import</strong>, vous supprimez les intervenants de cet import qui n’ont pas encore de téléphone lié.<br><br>Les intervenants qui se sont déjà connectés sur Clock Point sont conservés. Vous les reconnaissez à <strong>Appareil lié</strong>.<br><br>Le bouton <strong>Annuler l'import</strong> disparaît dès que tous les intervenants de cet import qui pouvaient encore être supprimés l’ont été.",
+                    "nested": true
                 }
             ]
         },

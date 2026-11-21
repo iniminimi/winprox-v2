@@ -630,88 +630,161 @@
             "title": "Hilfe — Teams",
             "actions": [
                 {
-                    "label": "Briefing drucken",
-                    "text": "Öffnen Sie eine druckbare Übersicht offener Aufgaben pro Team — praktisch für die Werkstatt. Dasselbe Briefing finden Sie auch auf Dashboard, Meldungen und Kalender."
+                    "label": "Wozu dient ein Team?",
+                    "text": "Ein Team fasst ausführende Personen zusammen, die dieselbe Art von Arbeit machen. Denken Sie an ein Reinigungsteam, einen technischen Dienst oder die Rezeption.<br><br>Ausführende im selben Team sehen dieselben Aufgaben. Ein Team reicht zum Starten. Legen Sie erst ein weiteres Team an, wenn es wirklich eine andere Gruppe gibt.<br><br>Sie können ein Team mit einer oder mehreren Kategorien verknüpfen. Meldungen und Aufgaben für Units in diesen Kategorien kommen dann beim Team an."
                 },
                 {
-                    "label": "Operative Teams",
-                    "text": "Ein Team reicht zum Start (zum Beispiel Hotel oder Facility). Fügen Sie alle hinzu, die Aufgaben ausführen (Name + Symbol). Ein Teamleiter ist nicht nötig. Weitere Teams nur, wenn es wirklich getrennte Gruppen gibt. Verknüpfen Sie das Team mit Kategorien, damit Aufgaben landen. Solange keine Ausführenden im Team sind, können Sie das Team noch löschen. Aktivieren Sie **Darf überall einstempeln** für Springer- oder Vertretungsteams."
+                    "label": "Ein Team anlegen",
+                    "text": "Teams finden Sie über <strong>Personen → Teams</strong>.<br><br>Geben Sie dem Team einen Namen, zum Beispiel Hotel oder Facility. Fügen Sie danach die ausführenden Personen hinzu, die zu diesem Team gehören.<br><br>Ein Teamleiter ist nicht nötig.<br><br>Solange noch keine ausführenden Personen im Team sind, können Sie das Team löschen."
                 },
                 {
-                    "label": "Team-Übersetzungen",
-                    "text": "Im Team-Bearbeitungsformular können Sie den Namen pro Sprache (NL, EN, FR, DE, ES, IT) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
-                },
-                {
-                    "label": "Clock Point QR-code",
-                    "text": "Der Clock-Point-QR ist der druckbare QR, mit dem Ausführende sich anmelden (Name + Symbol). Mit Time (Stechuhr) stempeln sie dort auch ein oder aus. Verwalten und drucken Sie ihn unter <strong>Time → Clock Points</strong> wenn Time an ist, sonst Personen → Teams."
+                    "label": "Teamname in anderen Sprachen",
+                    "text": "WinProx übersetzt den Teamnamen automatisch in die verfügbaren Sprachen: Niederländisch, Englisch, Französisch, Deutsch, Spanisch und Italienisch.<br><br>Stimmt eine Übersetzung nicht oder fehlt sie? Dann können Sie sie selbst anpassen:<br>1. Öffnen Sie das Teamformular.<br>2. Wählen Sie die Sprache.<br>3. Tragen Sie den gewünschten Namen ein.<br>4. Speichern Sie.<br><br>Ihre angepasste Übersetzung wird danach der feste Name für diese Sprache."
                 },
                 {
                     "label": "Ausführende",
-                    "text": "Ausführende haben kein E-Mail-Login; sie melden sich über den Clock-Point-QR mit Name und Symbol (optionale PIN oder Biometrie) auf einem Handy an. Die Teamseite zeigt Status-Pills und **Bearbeiten** — Teamleiter, Stechuhr (Symbol/Handy/PIN/Passkey) und Status stehen in diesem Dialog. Optional Standorte (leer = überall). Große Listen: **Personen → Ausführende**."
+                    "text": "Eine ausführende Person meldet sich nicht mit E-Mail-Adresse und Passwort an. Auf Clock Point wählt sie ihren Namen und ein eigenes Symbol. Das geschieht auf einem Handy.<br><br>Sie können dort optional eine PIN oder einen Passkey hinzufügen.<br><br>Auf der Teamseite sehen Sie je Person, ob das Profil aktiv, blockiert oder Teamleiter ist. Über <strong>Bearbeiten</strong> passen Sie die Daten an.<br><br>Haben Sie viele ausführende Personen? Dann können Sie die ganze Liste über <strong>Personen → Mitarbeiter</strong> ansehen und verwalten."
                 },
                 {
-                    "label": "Dokumente und Mitteilungen",
-                    "text": "Öffnen Sie ein Team. Dokumente und Mitteilungen dort gelten für die Ausführenden dieses Teams. Sie stehen nicht auf dem Meldeportal und zählen nicht zum Dokumentenkontingent. Wählen Sie das ganze Team oder eine Person, zum Beispiel einen Vertrag. Setzen Sie Aktiv, damit es am Clock Point erscheint. Eine persönliche Datei zieht mit, wenn die Person das Team wechselt. Am Clock Point sieht jede Person nur, was für sie bestimmt ist. Neue Inhalte stehen unter der Anmeldungskarte mit einem blauen Zähler; nach dem Öffnen sinkt die Kachel wieder nach unten. In der Verwaltung zeigt die Liste standardmäßig alle aktiven Einträge; filtern Sie nach Ausführenden, Status oder Suchbegriff. Klicken Sie auf den Zähler bei einem Ausführenden (Sprechblase: Dokumente verwalten oder Mitteilungen verwalten), um die Liste dieses Teams für diese Person zu öffnen. 25 Einträge pro Seite. Jeder Eintrag zeigt Geöffnet, z. B. 3/5; ein Klick zeigt, wer ihn geöffnet hat. WinProx speichert weder Datum noch Uhrzeit. Ein Dokument gilt nach dem Herunterladen als geöffnet, eine Mitteilung nach dem Öffnen des Bildschirms Mitteilungen. Nach einer neuen Datei oder geändertem Text müssen alle es erneut öffnen."
+                    "label": "Auf Clock Point anmelden",
+                    "text": "Ausführende melden sich mit dem Clock-Point-QR-Code an.<br><br>Ist Time eingeschaltet? Dann nutzen sie denselben QR-Code auch zum Ein- und Ausstempeln.<br><br>Die Schaltfläche <strong>Clock Point QR-Code</strong> finden Sie auf dieser Seite. Ist Time eingeschaltet, verwalten und drucken Sie die QR-Codes über <strong>Time → Clock Points</strong>."
                 },
                 {
-                    "label": "Standort",
-                    "text": "Wählen Sie einen Standort, um in jedem Team nur die Ausführenden zu sehen, die dort stempeln dürfen. Ausführende ohne Standort und Teams, die überall stempeln dürfen, bleiben sichtbar. Alle Standorte zeigt wieder alle. Die Zahl beim Team zählt nur diese Ausführenden."
+                    "label": "Wie lange bleibt eine Person angemeldet?",
+                    "text": "Pro Team legen Sie fest, wie lange eine ausführende Person nach dem Scannen des Clock-Point-QR-Codes angemeldet bleibt.<br><br>Das stellen Sie bei <strong>Mitarbeiter-Sitzungsdauer</strong> ein:<br>• <strong>Täglich:</strong> 14 Stunden. Das ist die Standardeinstellung.<br>• <strong>Wöchentlich:</strong> 6 Arbeitstage.<br>• <strong>Benutzerdefinierte Stunden:</strong> Sie tragen die gewünschte Stundenzahl selbst ein."
                 },
                 {
-                    "label": "Standorte pro Ausführendem",
-                    "text": "Beim Bearbeiten einen oder mehrere Standorte wählen. Leer = überall einstempeln (Standard für bestehende Ausführende). Am Clock Point sieht der Ausführende seinen Namen nur an zugewiesenen Standorten, außer das Team hat **Darf überall einstempeln**."
+                    "label": "Symbol, PIN oder Gerät freigeben",
+                    "text": "Öffnen Sie <strong>Bearbeiten</strong> bei der Person, um die Sicherheitseinstellungen zu verwalten."
                 },
                 {
-                    "label": "Stammgruppe (Dienstplan)",
-                    "text": "Optional. Wo sehen Sie das? Unter <strong>Time → Dienstplan</strong>, nach Standortfilter: Ausführende stehen unter Gruppen (z. B. G1). Gruppen legen Sie an einer Unit an (<strong>Standorte → Unit bearbeiten → Dienstplancode</strong>). Hier wählen Sie die Gruppe dieser Person. Leer lassen, wenn Sie keine Gruppierung brauchen. Das plant keine Dienste; der Platz in einer Zelle (D1/G1) wird separat eingetragen."
+                    "label": "Symbol zurücksetzen",
+                    "text": "Mit <strong>Symbol zurücksetzen</strong> löschen Sie das Symbol, die PIN, einen eventuellen Passkey und das verknüpfte Handy.<br><br>Die Person kann sich danach erneut anmelden. Das ist zum Beispiel praktisch bei einem verlorenen Handy, einer Sperre oder einem falsch gewählten Symbol.<br><br>Ist eine PIN aktiv, ist diese Schaltfläche nicht verfügbar. Die Liste zeigt dann auch nicht <strong>Kein Symbol bestätigt</strong>. Der Block <strong>Stechuhr</strong> bleibt verborgen, solange nichts zu tun ist.",
+                    "nested": true
                 },
                 {
-                    "label": "Externe Ausführende",
-                    "text": "Aktivieren Sie beim Anlegen oder Bearbeiten <strong>Externer Mitarbeiter</strong> für Installateure, Maler, Freelancer oder andere externe Kräfte. Optional tragen Sie danach einen Firmennamen ein (z. B. Elektro Müller). In der Liste erkennen Sie sie am Badge <strong>Ext</strong> und ggf. am Firmennamen. Sie nutzen dieselbe Clock-Point- und Unit-QR-Ablauf wie interne Ausführende — kein separates Portal und kein Login."
-                },
-                {
-                    "label": "Sortierreihenfolge",
-                    "text": "Bestimmen Sie die Reihenfolge, in der Teams in Listen und Dropdowns erscheinen. Niedrigere Nummern erscheinen zuerst."
-                },
-                {
-                    "label": "Wie lange bleiben Ausführende angemeldet?",
-                    "text": "Wählen Sie, wie lange ein Ausführender nach dem Scannen der Clock Point QR angemeldet bleibt: Täglich (14 Stunden), Wöchentlich (144 Stunden, 6 Arbeitstage) oder Benutzerdefiniert (benutzerdefinierte Anzahl Stunden). Der Standardwert ist 14 Stunden."
-                },
-                {
-                    "label": "Icon zurücksetzen",
-                    "text": "Öffnen Sie **Bearbeiten** beim Ausführenden unter Personen → Teams. Zurücksetzen löscht Symbol, PIN, etwaige Passkeys und gekoppeltes Handy, damit er sich erneut anmelden kann. Nützlich bei verlorenem Gerät, Sperre oder falschem Symbol. Ist die PIN Pflicht, fehlt diese Schaltfläche, die Liste zeigt kein «Kein Symbol bestätigt», und der Block Stechuhr bleibt ausgeblendet, bis es eine Aktion gibt. Teamleiter können im Portal auch Icons von ihren Teammitgliedern entfernen."
-                },
-                {
-                    "label": "Neues Gerät oder PIN",
-                    "text": "Öffnen Sie **Bearbeiten**. **Neues Gerät zulassen** erscheint, wenn ein Handy gekoppelt ist; **PIN zurücksetzen**, wenn eine PIN gesetzt ist; **Passkey entfernen**, wenn ein Passkey existiert. Nur nötig bei verlorenem Handy, Sperre oder neuem Symbol."
+                    "label": "Weitere Sicherheitsaktionen",
+                    "text": "Die folgenden Schaltflächen erscheinen nur, wenn sie zutreffen:<br>• <strong>Neues Gerät zulassen:</strong> erscheint, wenn ein Handy verknüpft ist.<br>• <strong>PIN zurücksetzen:</strong> erscheint, wenn eine PIN eingestellt ist.<br>• <strong>Passkey entfernen:</strong> erscheint, wenn ein Passkey eingestellt ist.<br><br>Ein Teamleiter kann im Portal auch das Symbol eines Teammitglieds freigeben.",
+                    "nested": true
                 },
                 {
                     "label": "Teamleiter",
-                    "text": "Teamleiter zuweisen oder entziehen über **Bearbeiten**. Teamleiter können im Clock-Point-Portal auch Symbole von Teammitgliedern freigeben, Mitarbeiter verwalten und Fotos aufnehmen."
+                    "text": "Über <strong>Bearbeiten</strong> machen Sie jemanden zum Teamleiter oder nehmen diese Rolle wieder zurück.<br><br>Ein Teamleiter kann über das Clock-Point-Portal:<br>• Das Symbol eines Teammitglieds freigeben.<br>• Ausführende verwalten.<br>• Fotos machen."
                 },
                 {
-                    "label": "Team deaktivieren",
-                    "text": "Deaktivieren Sie ein Team, damit es nicht mehr in Dropdowns und Listen sichtbar ist. Ausführende dieses Teams können keine Aufgaben mehr anzeigen oder erledigen. Reaktivierung ist möglich."
+                    "label": "Standorte",
+                    "text": "Oben in der Teamliste können Sie einen Standort wählen. Sie sehen dann in jedem Team nur die Personen, die dort stempeln dürfen.<br><br>Personen ohne festen Standort und Teams, die überall stempeln dürfen, bleiben sichtbar.<br><br>Mit <strong>Alle Standorte</strong> zeigen Sie wieder alle. Die Zahl beim Team zählt nur die Personen, die gerade sichtbar sind."
                 },
                 {
-                    "label": "Ausführender deaktivieren",
-                    "text": "Deaktivieren Sie einen Ausführenden über **Bearbeiten** unter Personen → Teams, damit er sich nicht mehr über die Clock Point QR anmelden kann. Der Ausführende bleibt im System erhalten und kann später reaktiviert werden."
+                    "label": "Standorte einer Person zuweisen",
+                    "text": "Öffnen Sie die Person über <strong>Bearbeiten</strong> und wählen Sie einen oder mehrere Standorte.<br><br>Lassen Sie dieses Feld leer, darf diese Person überall stempeln. Das ist auch die Standardeinstellung für bestehende Personen.<br><br>Auf Clock Point sieht eine Person ihren Namen nur an den zugewiesenen Standorten, außer das Team hat <strong>Darf überall stempeln (Springer-Team)</strong> eingeschaltet.",
+                    "nested": true
                 },
                 {
-                    "label": "Ausführenden löschen",
-                    "text": "Entfernen Sie einen Ausführenden dauerhaft über **Bearbeiten** unter Personen → Teams. Der gesamte Verlauf und alle Aufgaben dieses Ausführenden bleiben erhalten, aber der Ausführende kann nicht mehr verwendet werden."
+                    "label": "Darf überall stempeln",
+                    "text": "Schalten Sie <strong>Darf überall stempeln (Springer-Team)</strong> für ein Springerteam ein.<br><br>Die Personen dieses Teams sehen ihren Namen dann auf jedem Clock Point, auch wenn sie selbst einem bestimmten Standort zugeordnet sind."
                 },
                 {
-                    "label": "Import",
-                    "text": "Massenimport per CSV oder Excel (.xlsx). Pflicht-Header: team_name, first_name, last_name. Optional: email, phone, company_name, location_names (kommagetrennte Standortnamen; leer = überall). Ausgefüllter Firmenname markiert automatisch als extern. Fehlen Header oder Pflichtfelder, wird der gesamte Import mit klarer Fehlermeldung pro Zeile abgelehnt. Teams werden bei Bedarf automatisch angelegt."
+                    "label": "Externe ausführende Personen",
+                    "text": "Schalten Sie <strong>Externer Mitarbeiter</strong> ein für jemanden, der für ein anderes Unternehmen arbeitet. Zum Beispiel einen Installateur, Maler oder Selbstständigen.<br><br>Danach können Sie einen Firmennamen eintragen, zum Beispiel Elektro Peeters.<br><br>In der Liste erkennen Sie diese Person am Kennzeichen <strong>Ext</strong>, gegebenenfalls mit dem Firmennamen.<br><br>Eine externe Person meldet sich genauso an wie eine interne. Es gibt kein eigenes Portal und keine eigene Anmeldung."
                 },
                 {
-                    "label": "Letzte Imports",
-                    "text": "Nach einem Import erscheint automatisch eine Übersicht der letzten 10 Imports (30 Tage). Pro Import sehen Sie den Dateinamen, das Datum und die Anzahl der Mitarbeiter. Klicken Sie auf Import rückgängig machen, um die Mitarbeiter dieses Batches zu entfernen. Nur Mitarbeiter ohne verknüpftes Gerät werden gelöscht — Mitarbeiter, die bereits über Clock Point QR angemeldet sind (und damit ein aktives Gerät haben), bleiben und mit «Gerät vorhanden» gekennzeichnet werden. Die Schaltfläche verschwindet, sobald alle Mitarbeiter eines Batches gelöscht wurden."
+                    "label": "Dokumente und Mitteilungen",
+                    "text": "In einem Team können Sie Dokumente und Mitteilungen für die ausführenden Personen bereitstellen.<br><br>Sie erscheinen nicht auf der QR-Seite einer Unit. Sie zählen auch nicht zum Höchstwert der Dokumente Ihrer Organisation."
+                },
+                {
+                    "label": "Für wen ist der Inhalt?",
+                    "text": "Sie wählen je Dokument oder Mitteilung, wer den Inhalt sehen darf:<br>• Das ganze Team.<br>• Eine bestimmte Person.<br><br>Ein Vertrag ist zum Beispiel für eine Person bestimmt.<br><br>Haken Sie <strong>Aktiv</strong> an, damit das Dokument oder die Mitteilung auf Clock Point erscheint.",
+                    "nested": true
+                },
+                {
+                    "label": "Was passiert bei einem Teamwechsel?",
+                    "text": "• Ein Dokument oder eine Mitteilung für eine Person zieht mit, wenn diese Person in ein anderes Team wechselt.<br>• Ein Dokument oder eine Mitteilung für das ganze Team bleibt bei diesem Team.",
+                    "nested": true
+                },
+                {
+                    "label": "Was sieht die Person?",
+                    "text": "Auf Clock Point sieht eine Person nur den Inhalt, der für sie bestimmt ist.<br><br>Neuer Inhalt erscheint sofort unter der Anmeldekarte, mit einem blauen Zähler. Öffnet die Person die Kachel, sinkt sie wieder nach unten. Kommt neuer Inhalt hinzu, erscheint die Kachel wieder oben.",
+                    "nested": true
+                },
+                {
+                    "label": "Verwalten und suchen",
+                    "text": "Auf der Teamseite sehen Sie standardmäßig die aktiven Dokumente und Mitteilungen, 25 pro Seite.<br><br>Sie können filtern nach:<br>• Person.<br>• Status.<br>• Suchwort.<br><br>Bei einer Person sehen Sie einen Zähler. Tippen Sie darauf, um <strong>Dokumente verwalten</strong> oder <strong>Mitteilungen verwalten</strong> zu öffnen. Sie gelangen dann in die Liste dieses Teams, automatisch auf diese Person gefiltert.",
+                    "nested": true
+                },
+                {
+                    "label": "Wer hat den Inhalt geöffnet?",
+                    "text": "Je Eintrag sehen Sie zum Beispiel <strong>Geöffnet 3/5</strong>. Tippen Sie darauf, um zu sehen, wer den Inhalt schon geöffnet hat und wer noch nicht.<br><br>WinProx speichert dabei kein Datum und keine Uhrzeit.<br><br>Ein Eintrag gilt als geöffnet, sobald:<br>• <strong>Ein Dokument:</strong> die Person es herunterlädt.<br>• <strong>Eine Mitteilung:</strong> die Person den Bildschirm Mitteilungen öffnet.<br><br>Ersetzen Sie ein Dokument oder ändern Sie eine Mitteilung? Dann muss jeder den neuen Inhalt erneut öffnen.",
+                    "nested": true
+                },
+                {
+                    "label": "Stammgruppe im Dienstplan",
+                    "text": "Diese Funktion ist optional.<br><br>Unter <strong>Time → Dienstplan</strong> können Sie nach einem Standort filtern. Die Personen erscheinen dann unter Gruppen, zum Beispiel G1.<br><br>Diese Gruppen legen Sie auf einer Unit an, über <strong>Standorte → Unit bearbeiten → Dienstplancode</strong>.<br><br>Bei der Person wählen Sie danach, zu welcher Gruppe sie gehört. Lassen Sie das Feld leer, wenn Sie keine Gruppen brauchen.<br><br>Das plant keine Dienste. Die Angabe in einer Dienstplanzelle, wie D1 oder G1, tragen Sie getrennt ein."
+                },
+                {
+                    "label": "Briefing drucken",
+                    "text": "Mit <strong>Briefing drucken</strong> öffnen Sie eine druckbare Übersicht der offenen Aufgaben je Team.<br><br>Praktisch für den Einsatz vor Ort.<br><br>Dasselbe Briefing finden Sie auch auf <strong>Startseite</strong>, bei <strong>Meldungen</strong> und im <strong>Kalender</strong>."
+                },
+                {
+                    "label": "Reihenfolge der Teams",
+                    "text": "Mit <strong>Sortierreihenfolge</strong> legen Sie fest, in welcher Reihenfolge Teams in Listen und Auswahllisten erscheinen.<br><br>Eine niedrigere Nummer steht weiter oben in der Liste."
+                },
+                {
+                    "label": "Pausen und lange Schichten",
+                    "text": "Pro Team können Sie eine Mindestpause einstellen, zum Beispiel 30 Minuten."
                 },
                 {
                     "label": "Mindestpause",
-                    "text": "Pro Team können Sie eine Mindestpause festlegen (z. B. 30 Minuten). Beim Ausstempeln oder Schließen zählt WinProx dieses Minimum auf der Stundenliste, wenn weniger oder keine Live-Pause gestempelt wurde und die Schicht mindestens 4 Stunden dauert. Das ist keine Clock-Point-Pause und kein CIAO-Ereignis. Unter Time → Stunden kann ein Admin das Minimum noch manuell anwenden oder Pauseminuten korrigieren. Pro Team stellen Sie auch ein, nach wie vielen Stunden der Alarm Lange Schicht erscheint (Standard 10) und nach wie vielen Stunden eine offene Schicht automatisch geschlossen wird (Standard 16, max. 24). Das sind Kalenderstunden seit dem Einstempeln."
+                    "text": "Stempelt eine Person aus, oder schließt WinProx die Schicht automatisch, und dauert die Schicht mindestens 4 Stunden? Dann berücksichtigt WinProx die eingestellte Mindestpause auf dem Stundenzettel.<br><br>Wurde weniger Pause gestempelt als das Minimum, oder gar keine Pause? Dann füllt WinProx den Unterschied auf.<br><br>Das ist keine Pausenregistrierung auf Clock Point und hat keinen Einfluss auf die CIAO-Registrierung.<br><br>Über <strong>Time → Gestempelte Stunden</strong> kann ein Administrator das Minimum auch von Hand anwenden oder die Pausenminuten anpassen.",
+                    "nested": true
+                },
+                {
+                    "label": "Alarm und automatisches Schließen",
+                    "text": "Pro Team stellen Sie auch zwei Zeitgrenzen ein. Beide werden ab dem Einstempeln gerechnet.<br>• <strong>Alarm lange Schicht:</strong> nach wie vielen Stunden der Alarm erscheint. Standard 10 Stunden, höchstens 24 Stunden.<br>• <strong>Automatisch schließen:</strong> nach wie vielen Stunden eine offene Schicht von selbst geschlossen wird. Standard 16 Stunden, höchstens 24 Stunden.",
+                    "nested": true
+                },
+                {
+                    "label": "Ein Team oder eine Person deaktivieren",
+                    "text": "Sie können ein Team oder eine Person vorübergehend ausschalten. Eine Person zu löschen ist endgültig."
+                },
+                {
+                    "label": "Team deaktivieren",
+                    "text": "Deaktivieren Sie ein Team, verschwindet es aus den Auswahllisten.<br><br>Die Personen dieses Teams können keine Aufgaben mehr ansehen oder erledigen. Sie können das Team später wieder aktivieren.",
+                    "nested": true
+                },
+                {
+                    "label": "Person deaktivieren",
+                    "text": "Deaktivieren Sie eine Person über <strong>Bearbeiten</strong>, kann sie sich nicht mehr auf Clock Point anmelden.<br><br>Die Daten bleiben erhalten. Sie können die Person später wieder aktivieren.",
+                    "nested": true
+                },
+                {
+                    "label": "Person löschen",
+                    "text": "Löschen ist endgültig.<br><br>Die Historie und die bestehenden Aufgaben bleiben, aber Sie können diese Person nicht mehr verwenden.",
+                    "nested": true
+                },
+                {
+                    "label": "Personen importieren",
+                    "text": "Sie können mehrere Personen gleichzeitig mit einer CSV- oder Excel-Datei hinzufügen."
+                },
+                {
+                    "label": "Pflichtspalten",
+                    "text": "Diese drei Spalten müssen vorhanden sein:<br>• <strong>team_name</strong><br>• <strong>first_name</strong><br>• <strong>last_name</strong>",
+                    "nested": true
+                },
+                {
+                    "label": "Optionale Spalten",
+                    "text": "Sie können auch diese Angaben mitgeben:<br>• <strong>email</strong><br>• <strong>phone</strong><br>• <strong>company_name</strong><br>• <strong>location_names</strong><br><br>Bei <strong>location_names</strong> tragen Sie die Standortnamen ein, getrennt durch Kommas.<br><br>Lassen Sie dieses Feld leer, darf die Person überall stempeln.<br><br>Tragen Sie bei <strong>company_name</strong> einen Firmennamen ein, wird die Person automatisch als extern angelegt.",
+                    "nested": true
+                },
+                {
+                    "label": "Was passiert beim Import?",
+                    "text": "Gibt es ein Team noch nicht? Dann legt WinProx es automatisch an.<br><br>Stimmt ein Spaltenname nicht oder fehlt ein Pflichtname? Dann wird nichts importiert. WinProx zeigt je Zeile, was falsch ist.",
+                    "nested": true
+                },
+                {
+                    "label": "Einen Import rückgängig machen",
+                    "text": "Nach einem Import können Sie die letzten 10 Importe der vergangenen 30 Tage ansehen.<br><br>Je Import sehen Sie:<br>• Den Dateinamen.<br>• Das Datum.<br>• Die Anzahl importierter Personen.<br><br>Mit <strong>Import rükgängig</strong> entfernen Sie die Personen dieses Imports, die noch kein Handy verknüpft haben.<br><br>Personen, die sich schon auf Clock Point angemeldet haben, bleiben erhalten. Sie erkennen sie an <strong>Gerät vorhanden</strong>.<br><br>Die Schaltfläche <strong>Import rükgängig</strong> verschwindet, sobald alle Personen dieses Imports, die noch entfernt werden konnten, entfernt sind.",
+                    "nested": true
                 }
             ]
         },

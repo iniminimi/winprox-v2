@@ -630,88 +630,161 @@
             "title": "Aiuto — Teams",
             "actions": [
                 {
-                    "label": "Stampa briefing",
-                    "text": "Apri un riepilogo stampabile delle attività aperte per team — utile sul campo. Lo stesso briefing si trova anche su Dashboard, Segnalazioni e Calendario."
+                    "label": "A che cosa serve un team?",
+                    "text": "Un team raggruppa operatori che fanno lo stesso tipo di lavoro. Pensi a un team di pulizie, a un servizio tecnico o alla reception.<br><br>Gli operatori dello stesso team vedono le stesse attività. Un team basta per iniziare. Crei un altro team solo quando c’è davvero un altro gruppo.<br><br>Può collegare un team a una o più categorie. Segnalazioni e attività delle unità di quelle categorie arrivano allora al team."
                 },
                 {
-                    "label": "Team operativi",
-                    "text": "Un team basta per iniziare (ad esempio Hotel o Facility). Aggiunga tutti coloro che eseguono attività (nome + icona). Un caposquadra non è necessario. Altri team solo se ci sono gruppi davvero distinti. Colleghi il team alle categorie così le attività arrivano. Finché non ci sono esecutori nel team, può ancora eliminarlo. Spunta **Può timbrare ovunque** per team di sostituzione o volanti."
+                    "label": "Creare un team",
+                    "text": "Trova Teams in <strong>Persone → Teams</strong>.<br><br>Dia un nome al team, per esempio Hotel o Facility. Poi aggiunga gli operatori che ne fanno parte.<br><br>Un team leader non è obbligatorio.<br><br>Finché nel team non ci sono operatori, può eliminare il team."
                 },
                 {
-                    "label": "Traduzioni team",
-                    "text": "Nel modulo di modifica team può aggiornare manualmente il nome per lingua (NL, EN, FR, DE, ES, IT). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
+                    "label": "Nome del team in altre lingue",
+                    "text": "WinProx traduce automaticamente il nome del team nelle lingue disponibili: neerlandese, inglese, francese, tedesco, spagnolo e italiano.<br><br>Una traduzione non è corretta o manca? Può correggerla Lei:<br>1. Apra il modulo del team.<br>2. Scelga la lingua.<br>3. Inserisca il nome desiderato.<br>4. Salvi.<br><br>La traduzione corretta diventa allora il nome fisso per quella lingua."
                 },
                 {
-                    "label": "QR Clock Point",
-                    "text": "Il QR Clock Point è il QR stampabile con cui gli esecutori si identificano (nome + icona). Con Time (timbratrice) timbrano anche entrata o uscita. Gestiscilo e stampalo in <strong>Time → Clock Points</strong> se Time è attivo, altrimenti Persone → Team."
+                    "label": "Operatori",
+                    "text": "Un operatore non accede con indirizzo e-mail e password. Su Clock Point sceglie il proprio nome e un’icona personale. Succede su un solo telefono.<br><br>Può aggiungere, se vuole, un PIN o una passkey.<br><br>Nella pagina del team vede per ogni operatore se il profilo è attivo, bloccato o team leader. Con <strong>Modifica</strong> aggiorna i dati.<br><br>Ha molti operatori? Può vedere e gestire l’elenco completo in <strong>Persone → Esecutori</strong>."
                 },
                 {
-                    "label": "Lavoratori",
-                    "text": "I lavoratori non hanno login e-mail; accedono con il QR Clock Point (nome + icona, PIN o biometria opzionali) su un telefono. La pagina del team mostra pillole di stato e **Modifica**: caposquadra, timbratrice (icona/telefono/PIN/passkey) e stato sono in quella finestra. Sedi opzionali (vuoto = ovunque). Elenchi grandi: **Persone → Lavoratori**."
+                    "label": "Accedere su Clock Point",
+                    "text": "Gli operatori accedono con il codice QR di Clock Point.<br><br>Time è attivo? Allora usano lo stesso codice QR anche per timbrare l’entrata e l’uscita.<br><br>Il pulsante <strong>Codice QR Clock Point</strong> si trova in questa pagina. Se Time è attivo, gestisce e stampa i codici QR in <strong>Time → Clock Points</strong>."
                 },
                 {
-                    "label": "Documenti e comunicazioni",
-                    "text": "Apri un team. I documenti e le comunicazioni sono per gli esecutori di quel team. Non sono sul portale segnalazioni e non contano nella quota documenti. Scegli tutto il team oppure un solo esecutore, per esempio un contratto. Spunta Attivo per mostrarlo su Clock Point. Un file personale segue l'esecutore se cambia team. Su Clock Point ogni esecutore vede solo ciò che è per lui. I nuovi contenuti compaiono sotto la scheda di accesso con un contatore blu; dopo l'apertura il riquadro torna in basso. Nella gestione l’elenco mostra di default tutti gli elementi attivi; filtra per esecutore, stato o termine di ricerca. Clicca sul contatore accanto a un esecutore (fumetto: Gestire i documenti o Gestire le comunicazioni) per aprire l’elenco di quel team per quella persona. 25 elementi per pagina. Ogni elemento mostra Aperto, ad es. 3/5; clicca per vedere chi l’ha aperto. WinProx non salva data né ora. Un documento risulta aperto dopo il download, una comunicazione dopo l’apertura della schermata Comunicazioni. Dopo un nuovo file o un testo modificato, tutti devono riaprirlo."
+                    "label": "Per quanto tempo un operatore resta connesso?",
+                    "text": "Per ogni team decide per quanto tempo un operatore resta connesso dopo la scansione del codice QR di Clock Point.<br><br>Lo imposta in <strong>Durata sessione lavoratore</strong>:<br>• <strong>Giornaliera:</strong> 14 ore. È l’impostazione predefinita.<br>• <strong>Settimanale:</strong> 6 giorni lavorativi.<br>• <strong>Ore personalizzate:</strong> inserisce Lei il numero di ore."
                 },
                 {
-                    "label": "Sede",
-                    "text": "Scegli una sede per vedere, in ogni team, solo chi può timbrare lì. Chi non ha una sede, e i team che possono timbrare ovunque, restano visibili. Tutte le sedi mostra di nuovo tutti. Il numero accanto al team conta solo queste persone."
-                },
-                {
-                    "label": "Sedi per esecutore",
-                    "text": "In modifica, scegli una o più sedi. Vuoto = timbrare ovunque (default per esecutori esistenti). Su Clock Point il nome appare solo sulle sedi assegnate, salvo che il team abbia **Può timbrare ovunque**."
-                },
-                {
-                    "label": "Gruppo di appartenenza (orario)",
-                    "text": "Opzionale. Dove lo vedi? In <strong>Time → Orario</strong>, dopo un filtro sede: gli esecutori compaiono sotto gruppi (es. G1). Quei gruppi si creano su una unit (<strong>Sedi → modifica unit → codice turno</strong>). Qui scegli il gruppo di questa persona. Lascia vuoto se non serve raggruppare. Non pianifica i turni; il posto in una cella (D1/G1) si compila a parte."
-                },
-                {
-                    "label": "Lavoratori esterni",
-                    "text": "In creazione o modifica, selezioni <strong>Lavoratore esterno</strong> per installatori, imbianchini, freelance o altre forze esterne. Può poi inserire facoltativamente un nome azienda (es. Elettricità Rossi). Nell’elenco li riconosce dal badge <strong>Ext</strong> e dal nome azienda se indicato. Usano lo stesso flusso Clock Point e QR unità dei lavoratori interni — nessun portale o accesso separato."
-                },
-                {
-                    "label": "Ordine di visualizzazione",
-                    "text": "Determini l'ordine in cui i team compaiono negli elenchi e nei menu a tendina. I numeri più bassi compaiono per primi."
-                },
-                {
-                    "label": "Quanto tempo restano connessi i lavoratori?",
-                    "text": "Scelga per quanto tempo un lavoratore resta connesso dopo la scansione del QR Clock Point: Giornaliera (14 ore), Settimanale (144 ore, 6 giorni lavorativi) o Personalizzata (numero di ore personalizzato). Il valore predefinito è 14 ore."
+                    "label": "Liberare un’icona, un PIN o un dispositivo",
+                    "text": "Apra <strong>Modifica</strong> sull’operatore per gestire le impostazioni di sicurezza."
                 },
                 {
                     "label": "Reimposta icona",
-                    "text": "Apri **Modifica** sul lavoratore in Persone → Team. Il reset cancella icona, PIN, eventuali passkey e telefono associato, così può accedere di nuovo. Utile in caso di dispositivo perso, blocco o icona sbagliata. Se il PIN è obbligatorio, questo pulsante non compare, l’elenco non mostra «Nessuna icona confermata», e il blocco Timbratrice resta nascosto finché non c’è un’azione. I capisquadra possono anche rimuovere icone dai membri del team nel proprio portale."
+                    "text": "Con <strong>Reimposta icona</strong> cancella l’icona, il PIN, un’eventuale passkey e il telefono collegato.<br><br>L’operatore può poi accedere di nuovo. È utile, per esempio, con un telefono smarrito, un blocco o un’icona scelta male.<br><br>Se un PIN è attivo, questo pulsante non è disponibile. L’elenco non mostra nemmeno <strong>Nessuna icona confermata</strong>. Il blocco <strong>Timbratrice</strong> resta nascosto finché non c’è nulla da fare.",
+                    "nested": true
                 },
                 {
-                    "label": "Nuovo dispositivo o PIN",
-                    "text": "Apri **Modifica**. **Consenti nuovo dispositivo** compare se c’è un telefono associato; **Reimposta PIN** se c’è un PIN; **Rimuovi passkey** se ce n’è una. Serve solo in caso di telefono perso, blocco o nuova icona."
+                    "label": "Altre azioni di sicurezza",
+                    "text": "I pulsanti seguenti compaiono solo quando servono:<br>• <strong>Consenti nuovo dispositivo:</strong> compare se un telefono è collegato.<br>• <strong>Reimposta PIN:</strong> compare se è impostato un PIN.<br>• <strong>Rimuovi passkey:</strong> compare se è impostata una passkey.<br><br>Un team leader può liberare anche l’icona di un collega nel portale.",
+                    "nested": true
                 },
                 {
-                    "label": "Caposquadra",
-                    "text": "Assegna o togli il ruolo da **Modifica**. I capisquadra possono anche sbloccare le icone dei colleghi, gestire i lavoratori e scattare foto nel portale Clock Point."
+                    "label": "Team leader",
+                    "text": "Con <strong>Modifica</strong> nomina qualcuno team leader oppure ritira quel ruolo.<br><br>Un team leader può, dal portale Clock Point:<br>• Liberare l’icona di un collega.<br>• Gestire gli operatori.<br>• Fare foto."
                 },
                 {
-                    "label": "Disattiva team",
-                    "text": "Disattivi un team in modo che non sia più visibile nei menu a tendina e negli elenchi. I lavoratori di questo team non possono più visualizzare o completare attività. La riattivazione è possibile."
+                    "label": "Sedi",
+                    "text": "In alto nell’elenco dei team può scegliere una sede. In ogni team vede allora solo gli operatori che possono timbrare lì.<br><br>Gli operatori senza sede fissa e i team che possono timbrare ovunque restano visibili.<br><br>Con <strong>Tutte le sedi</strong> mostra di nuovo tutti. Il numero accanto al team conta solo gli operatori visibili in quel momento."
                 },
                 {
-                    "label": "Disattiva lavoratore",
-                    "text": "Disattivi un lavoratore da **Modifica** in Persone → Team, così non può più accedere tramite QR Clock Point. Il lavoratore resta nel sistema e può essere riattivato in seguito."
+                    "label": "Assegnare sedi a un operatore",
+                    "text": "Apra l’operatore con <strong>Modifica</strong> e scelga una o più sedi.<br><br>Se lascia vuoto questo campo, quella persona può timbrare ovunque. È anche l’impostazione predefinita per gli operatori già presenti.<br><br>Su Clock Point un operatore vede il proprio nome solo nelle sedi assegnate, salvo che il team abbia attivo <strong>Può timbrare ovunque (team mobile)</strong>.",
+                    "nested": true
                 },
                 {
-                    "label": "Elimina lavoratore",
-                    "text": "Rimuova definitivamente un lavoratore da **Modifica** in Persone → Team. Tutta la cronologia e le attività per questo lavoratore sono conservate, ma il lavoratore non può più essere utilizzato."
+                    "label": "Può timbrare ovunque",
+                    "text": "Attivi <strong>Può timbrare ovunque (team mobile)</strong> per un team di sostituzione o mobile.<br><br>Gli operatori di quel team vedono allora il proprio nome su ogni Clock Point, anche se sono collegati a una sede precisa."
                 },
                 {
-                    "label": "Importazione",
-                    "text": "Import di massa via CSV o Excel (.xlsx). Intestazioni obbligatorie: team_name, first_name, last_name. Opzionale: email, phone, company_name, location_names (nomi sede separati da virgola; vuoto = ovunque). Nome azienda compilato = automaticamente esterno. Intestazioni o campi obbligatori mancanti → import intero rifiutato con errore chiaro per riga. I team vengono creati automaticamente se non esistono."
+                    "label": "Operatori esterni",
+                    "text": "Attivi <strong>Lavoratore esterno</strong> per qualcuno che lavora per un’altra azienda. Per esempio un installatore, un imbianchino o un lavoratore autonomo.<br><br>Può poi inserire un nome di azienda, per esempio Elektro Peeters.<br><br>Nell’elenco riconosce questa persona dal contrassegno <strong>Ext</strong>, eventualmente con il nome dell’azienda.<br><br>Un operatore esterno accede come un operatore interno. Non c’è un portale separato né un accesso separato."
                 },
                 {
-                    "label": "Importazioni recenti",
-                    "text": "Dopo un'importazione compare automaticamente una panoramica delle ultime 10 importazioni (30 giorni). Per importazione vede nome file, data e numero di lavoratori. Clicchi Annulla importazione per rimuovere i lavoratori di quel lotto. Solo i lavoratori senza dispositivo collegato vengono eliminati — i lavoratori già connessi tramite Clock Point QR (e quindi con un dispositivo attivo) restano e sono indicati come «Dispositivo collegato». Il pulsante scompare quando tutti i lavoratori di un lotto sono stati eliminati."
+                    "label": "Documenti e comunicazioni",
+                    "text": "Dentro un team può mettere documenti e comunicazioni a disposizione degli operatori.<br><br>Non compaiono nella pagina QR di un’unità. Non contano nemmeno nel numero massimo di documenti della Sua organizzazione."
+                },
+                {
+                    "label": "Per chi è il contenuto?",
+                    "text": "Per ogni documento o comunicazione sceglie chi può vederlo:<br>• Tutto il team.<br>• Un operatore preciso.<br><br>Un contratto, per esempio, è destinato a una sola persona.<br><br>Selezioni <strong>Attivo</strong> per mostrare il documento o la comunicazione su Clock Point.",
+                    "nested": true
+                },
+                {
+                    "label": "Che cosa succede se qualcuno cambia team?",
+                    "text": "• Un documento o una comunicazione per un solo operatore segue quella persona se passa a un altro team.<br>• Un documento o una comunicazione per tutto il team resta in quel team.",
+                    "nested": true
+                },
+                {
+                    "label": "Che cosa vede l’operatore?",
+                    "text": "Su Clock Point un operatore vede solo il contenuto destinato a lui.<br><br>Il contenuto nuovo compare subito sotto la scheda di accesso, con un contatore blu. Se l’operatore apre la tessera, torna in basso. Se arriva contenuto nuovo, la tessera torna in alto.",
+                    "nested": true
+                },
+                {
+                    "label": "Gestire e cercare",
+                    "text": "Nella pagina del team vede in modo predefinito i documenti e le comunicazioni attivi, 25 per pagina.<br><br>Può filtrare per:<br>• Operatore.<br>• Stato.<br>• Parola di ricerca.<br><br>Accanto a un operatore vede un contatore. Lo tocchi per aprire <strong>Gestire i documenti</strong> o <strong>Gestire le comunicazioni</strong>. Arriva allora all’elenco di quel team, filtrato su quella persona.",
+                    "nested": true
+                },
+                {
+                    "label": "Chi ha aperto il contenuto?",
+                    "text": "Per ogni elemento vede, per esempio, <strong>Aperto 3/5</strong>. Lo tocchi per vedere chi ha già aperto il contenuto e chi no.<br><br>WinProx non conserva data né ora.<br><br>Un elemento conta come aperto quando:<br>• <strong>Un documento:</strong> l’operatore lo scarica.<br>• <strong>Una comunicazione:</strong> l’operatore apre la schermata Annunci.<br><br>Sostituisce un documento o modifica una comunicazione? Allora tutti devono aprire di nuovo il contenuto nuovo.",
+                    "nested": true
+                },
+                {
+                    "label": "Gruppo di appartenenza nei turni",
+                    "text": "Questa funzione è facoltativa.<br><br>In <strong>Time → Turni</strong> può filtrare per una sede. Gli operatori compaiono allora sotto gruppi, per esempio G1.<br><br>Quei gruppi li crea su un’unità, in <strong>Sedi → modifica unità → Codice turno</strong>.<br><br>Sull’operatore sceglie poi a quale gruppo appartiene. Lasci il campo vuoto se non Le servono gruppi.<br><br>Questo non pianifica turni. L’indicazione in una cella, come D1 o G1, si compila a parte."
+                },
+                {
+                    "label": "Stampa briefing",
+                    "text": "Con <strong>Stampa briefing</strong> apre una panoramica stampabile delle attività aperte per team.<br><br>Utile da usare sul posto di lavoro.<br><br>Lo stesso briefing si trova anche in <strong>Home</strong>, in <strong>Segnalazioni</strong> e nel <strong>Calendario</strong>."
+                },
+                {
+                    "label": "Ordine dei team",
+                    "text": "Con <strong>Ordine di visualizzazione</strong> decide in che ordine i team compaiono negli elenchi e nelle liste di scelta.<br><br>Un numero più basso sta più in alto nell’elenco."
+                },
+                {
+                    "label": "Pause e turni lunghi",
+                    "text": "Per ogni team può impostare una pausa minima, per esempio 30 minuti."
                 },
                 {
                     "label": "Pausa minima",
-                    "text": "Per team puoi impostare una pausa minima (ad esempio 30 minuti). All’uscita o alla chiusura WinProx conta quel minimo sul foglio ore se è stata timbrata meno pausa (o nessuna) e il turno dura almeno 4 ore. Non è una pausa Clock Point né un evento CIAO. In Time → Ore un admin può ancora applicare il minimo manualmente o correggere i minuti di pausa. Per team imposti anche dopo quante ore compare l’allarme Turno lungo (predefinito 10) e dopo quante ore un turno aperto viene chiuso automaticamente (predefinito 16, max. 24). Sono ore di calendario dall’entrata."
+                    "text": "Un operatore timbra l’uscita, oppure WinProx chiude il turno automaticamente, e quel turno dura almeno 4 ore? Allora WinProx tiene conto della pausa minima impostata sul foglio ore.<br><br>È stata timbrata meno pausa del minimo, o nessuna pausa? Allora WinProx completa la differenza.<br><br>Non è una registrazione di pausa su Clock Point e non influisce sulla registrazione CIAO.<br><br>In <strong>Time → Ore timbrate</strong> un amministratore può anche applicare il minimo a mano o modificare i minuti di pausa.",
+                    "nested": true
+                },
+                {
+                    "label": "Allarme e chiusura automatica",
+                    "text": "Per ogni team imposta anche due limiti di tempo. Entrambi si calcolano dal momento della timbratura di entrata.<br>• <strong>Allarme turno lungo:</strong> dopo quante ore compare l’allarme. Predefinito 10 ore, massimo 24 ore.<br>• <strong>Chiusura automatica:</strong> dopo quante ore un turno aperto si chiude da solo. Predefinito 16 ore, massimo 24 ore.",
+                    "nested": true
+                },
+                {
+                    "label": "Disattivare un team o un operatore",
+                    "text": "Può disattivare temporaneamente un team o un operatore. Eliminare un operatore è definitivo."
+                },
+                {
+                    "label": "Disattivare un team",
+                    "text": "Se disattiva un team, sparisce dalle liste di scelta.<br><br>Gli operatori di quel team non possono più vedere né svolgere attività. Può riattivare il team più tardi.",
+                    "nested": true
+                },
+                {
+                    "label": "Disattivare un operatore",
+                    "text": "Se disattiva un operatore con <strong>Modifica</strong>, quella persona non può più accedere su Clock Point.<br><br>I dati restano. Può riattivare l’operatore più tardi.",
+                    "nested": true
+                },
+                {
+                    "label": "Eliminare un operatore",
+                    "text": "L’eliminazione è definitiva.<br><br>Lo storico e le attività esistenti restano, ma non può più usare quell’operatore.",
+                    "nested": true
+                },
+                {
+                    "label": "Importare operatori",
+                    "text": "Può aggiungere più operatori insieme con un file CSV o Excel."
+                },
+                {
+                    "label": "Colonne obbligatorie",
+                    "text": "Queste tre colonne devono essere presenti:<br>• <strong>team_name</strong><br>• <strong>first_name</strong><br>• <strong>last_name</strong>",
+                    "nested": true
+                },
+                {
+                    "label": "Colonne facoltative",
+                    "text": "Può anche includere questi dati:<br>• <strong>email</strong><br>• <strong>phone</strong><br>• <strong>company_name</strong><br>• <strong>location_names</strong><br><br>In <strong>location_names</strong> inserisce i nomi delle sedi, separati da virgole.<br><br>Se lascia vuoto questo campo, l’operatore può timbrare ovunque.<br><br>Se inserisce un nome di azienda in <strong>company_name</strong>, l’operatore viene creato automaticamente come esterno.",
+                    "nested": true
+                },
+                {
+                    "label": "Che cosa succede durante l’importazione?",
+                    "text": "Un team non esiste ancora? WinProx lo crea automaticamente.<br><br>Un nome di colonna non è corretto o manca un nome obbligatorio? Allora non viene importato nulla. WinProx mostra per ogni riga che cosa non va.",
+                    "nested": true
+                },
+                {
+                    "label": "Annullare un’importazione",
+                    "text": "Dopo un’importazione può vedere le ultime 10 importazioni degli ultimi 30 giorni.<br><br>Per ogni importazione vede:<br>• Il nome del file.<br>• La data.<br>• Il numero di operatori importati.<br><br>Con <strong>Annulla importazione</strong> rimuove gli operatori di quell’importazione che non hanno ancora un telefono collegato.<br><br>Gli operatori che hanno già effettuato l’accesso su Clock Point restano. Li riconosce da <strong>Dispositivo collegato</strong>.<br><br>Il pulsante <strong>Annulla importazione</strong> sparisce quando sono stati rimossi tutti gli operatori di quell’importazione che si potevano ancora rimuovere.",
+                    "nested": true
                 }
             ]
         },

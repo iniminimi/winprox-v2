@@ -630,88 +630,161 @@
             "title": "Help — Teams",
             "actions": [
                 {
-                    "label": "Print briefing",
-                    "text": "Open a printable overview of open tasks per team — useful on the shop floor. The same briefing is also available on Dashboard, Issues and Calendar."
+                    "label": "What is a team for?",
+                    "text": "A team groups workers who do the same kind of work. Think of a cleaning team, a technical service or reception.<br><br>Workers in the same team see the same tasks. One team is enough to get started. Create an extra team only when there really is a different group.<br><br>You can link a team to one or more categories. Reports and tasks for units in those categories then reach the team."
                 },
                 {
-                    "label": "Operational teams",
-                    "text": "One team is enough to get started (for example Hotel or Facility). Add everyone who carries out tasks (name + icon). A team leader is not required. Extra teams only if there are genuinely separate groups. Link the team to categories so tasks land correctly. As long as there are no workers in the team, you can still delete the team. Tick **May clock in anywhere** for floater or relief teams."
+                    "label": "Creating a team",
+                    "text": "You find Teams via <strong>People → Teams</strong>.<br><br>Give the team a name, for example Hotel or Facility. Then add the workers who belong to that team.<br><br>A team leader is not required.<br><br>As long as the team has no workers yet, you can delete the team."
                 },
                 {
-                    "label": "Team translations",
-                    "text": "In the team edit form you can manually update the name per language (NL, EN, FR, DE, ES, IT). Useful when the automatic translation by WinProx (periodically) is wrong or still missing. Saving finalises the translation for that language."
-                },
-                {
-                    "label": "Clock Point QR code",
-                    "text": "The Clock Point QR is the printable QR that workers use to sign in (name + icon). With Time (punch clock) they also clock in or out there. Manage and print it under <strong>Time → Clock Points</strong> if Time is on, otherwise People → Teams."
+                    "label": "Team name in other languages",
+                    "text": "WinProx translates the team name automatically into the available languages: Dutch, English, French, German, Spanish and Italian.<br><br>Is a translation wrong or missing? You can correct it yourself:<br>1. Open the team form.<br>2. Choose the language.<br>3. Enter the name you want.<br>4. Save.<br><br>Your corrected translation then becomes the fixed name for that language."
                 },
                 {
                     "label": "Workers",
-                    "text": "Workers have no email login; they sign in via the Clock Point QR with name and icon (optional PIN or biometrics) on one phone. The team page shows status pills and **Edit** — team leader, time clock (icon/phone/PIN/passkey) and status live in that modal. Optionally link sites (empty = anywhere). Large lists: **People → Workers**."
+                    "text": "A worker does not sign in with an email address and password. On Clock Point that person chooses their name and a personal icon. That happens on one phone.<br><br>You can optionally add a PIN or a passkey.<br><br>On the team page you see for each worker whether the profile is active, blocked or a team leader. You change the details via <strong>Edit</strong>.<br><br>Do you have many workers? You can view and manage the full list via <strong>People → Workers</strong>."
                 },
                 {
-                    "label": "Documents and announcements",
-                    "text": "Open a team. Documents and announcements there are for that team's workers. They are not on the report portal and do not count toward the document quota. Choose the whole team, or one worker, for example a contract. Tick Active to show it on Clock Point. A personal file moves with the worker when they change team. On Clock Point each worker only sees what is meant for them. New content appears under the sign-in card with a blue counter; after opening, the tile moves back down. In management the list shows all active items by default; filter by worker, status or search term. Click the counter next to a worker (tooltip: Manage documents or Manage announcements) to open this team's list for that person. 25 items per page. Each item shows Opened, e.g. 3/5; click it to see who opened it. WinProx stores no date or time. A document counts as opened after download, an announcement after opening the Announcements screen. After a new file or changed text, everyone has to open it again."
+                    "label": "Signing in on Clock Point",
+                    "text": "Workers sign in with the Clock Point QR code.<br><br>Is Time on? Then they use the same QR code to clock in and out as well.<br><br>You will find the <strong>Clock Point QR code</strong> button on this page. If Time is on, you manage and print the QR codes via <strong>Time → Clock Points</strong>."
                 },
                 {
-                    "label": "Location",
-                    "text": "Pick a location to show, in each team, only the workers who may clock in there. Workers with no location, and teams that may clock in anywhere, stay visible. All locations shows everyone again. The count next to the team only includes those workers."
+                    "label": "How long does a worker stay signed in?",
+                    "text": "For each team you decide how long a worker stays signed in after scanning the Clock Point QR code.<br><br>You set this under <strong>Worker session duration</strong>:<br>• <strong>Daily:</strong> 14 hours. This is the default.<br>• <strong>Weekly:</strong> 6 working days.<br>• <strong>Custom hours:</strong> you enter the number of hours yourself."
                 },
                 {
-                    "label": "Locations per worker",
-                    "text": "When editing, pick one or more locations. Empty = clock in anywhere (default for existing workers). On Clock Point the worker only sees their name at assigned locations, unless the team has **May clock in anywhere**."
-                },
-                {
-                    "label": "Home group (schedule)",
-                    "text": "Optional. Where do you see it? On <strong>Time → Schedule</strong>, after you filter by location: workers are listed under groups (e.g. G1). You create those groups on a unit (<strong>Locations → edit unit → roster code</strong>). Here you choose which group this person belongs to. Leave empty if you don’t need grouping. This does not plan shifts; the place in a cell (D1/G1) is filled in separately."
-                },
-                {
-                    "label": "External workers",
-                    "text": "When adding or editing a worker, tick <strong>External worker</strong> for installers, painters, freelancers or other external staff. You can then optionally enter a company name (e.g. BrightSpark Electrical). In the list they show an <strong>Ext</strong> badge and the company name if set. They use the same Clock Point and unit-QR flow as internal workers — no separate portal or login."
-                },
-                {
-                    "label": "Sort order",
-                    "text": "Determine the order in which teams appear in lists and dropdowns. Lower numbers appear first."
-                },
-                {
-                    "label": "How long do workers stay logged in?",
-                    "text": "Choose how long a worker stays logged in after scanning the Clock Point QR: Daily (14 hours), Weekly (144 hours, 6 working days) or Custom (custom number of hours). The default value is 14 hours."
+                    "label": "Releasing an icon, PIN or device",
+                    "text": "Open <strong>Edit</strong> for the worker to manage the security settings."
                 },
                 {
                     "label": "Reset icon",
-                    "text": "Open **Edit** on the worker in People → Teams. Resetting clears the icon, PIN, any passkeys and bound phone so the worker can sign in again. Useful for a lost device, lockout, or a mistaken icon. When a PIN is required, this button is hidden, the list does not show “No icon confirmed”, and the Time clock block stays hidden until there is an action. Team leaders can also remove icons from their team members in their portal."
+                    "text": "With <strong>Reset icon</strong> you clear the icon, the PIN, any passkey and the linked phone.<br><br>The worker can then sign in again. This is useful, for example, with a lost phone, a lockout or a wrongly chosen icon.<br><br>If a PIN is active, this button is not available. The list then also does not show <strong>No icon confirmed</strong>. The <strong>Time clock</strong> block stays hidden until there is something to do.",
+                    "nested": true
                 },
                 {
-                    "label": "New device or PIN",
-                    "text": "Open **Edit**. **Allow new device** appears if a phone is bound; **Reset PIN** if a PIN is set; **Remove passkey** if a passkey exists. Only needed for a lost phone, lockout, or a new icon."
+                    "label": "Other security actions",
+                    "text": "The following buttons appear only when they apply:<br>• <strong>Allow new device:</strong> appears when a phone is linked.<br>• <strong>Reset PIN:</strong> appears when a PIN is set.<br>• <strong>Remove passkey:</strong> appears when a passkey is set.<br><br>A team leader can also release a teammate’s icon in the portal.",
+                    "nested": true
                 },
                 {
                     "label": "Team leader",
-                    "text": "Assign or remove team leader via **Edit**. Team leaders can also release icons of teammates, manage workers and take photos in the Clock Point portal."
+                    "text": "Via <strong>Edit</strong> you make someone a team leader, or you withdraw that role.<br><br>A team leader can, through the Clock Point portal:<br>• Release a teammate’s icon.<br>• Manage workers.<br>• Take photos."
                 },
                 {
-                    "label": "Deactivate team",
-                    "text": "Disable a team so it is no longer visible in dropdowns and lists. Workers from this team can no longer view or complete tasks. Reactivation is possible."
+                    "label": "Sites",
+                    "text": "At the top of the team list you can choose a site. You then see, in each team, only the workers who may clock in at that site.<br><br>Workers without a fixed site, and teams that may clock in anywhere, stay visible.<br><br>With <strong>All locations</strong> you show everyone again. The count next to a team only includes the workers who are visible at that moment."
                 },
                 {
-                    "label": "Deactivate worker",
-                    "text": "Disable a worker via **Edit** in People → Teams so they can no longer sign in via Clock Point QR. The worker remains in the system and can be reactivated later."
+                    "label": "Assign sites to a worker",
+                    "text": "Open the worker via <strong>Edit</strong> and choose one or more sites.<br><br>If you leave this field empty, that person may clock in anywhere. That is also the default for existing workers.<br><br>On Clock Point a worker sees their name only at the assigned sites, unless the team has <strong>May clock in anywhere (floater team)</strong> switched on.",
+                    "nested": true
                 },
                 {
-                    "label": "Delete worker",
-                    "text": "Permanently remove a worker via **Edit** in People → Teams. All history and tasks for this worker are preserved, but the worker can no longer be used."
+                    "label": "May clock in anywhere",
+                    "text": "Switch on <strong>May clock in anywhere (floater team)</strong> for a relief or floater team.<br><br>The workers in that team then see their name on every Clock Point, even if they are linked to a specific site themselves."
                 },
                 {
-                    "label": "Import",
-                    "text": "Import workers in bulk via CSV or Excel (.xlsx). Required headers: team_name, first_name, last_name. Optional: email, phone, company_name, location_names (comma-separated location names; empty = everywhere). A filled company name automatically marks the worker as external. If headers or required fields are missing, the entire import is rejected with a clear error per row. Teams are created automatically if they do not exist yet."
+                    "label": "External workers",
+                    "text": "Switch on <strong>External worker</strong> for someone who works for another company. For example an installer, a painter or a self-employed person.<br><br>You can then enter a company name, for example Elektro Peeters.<br><br>In the list you recognise this person by the <strong>Ext</strong> badge, possibly together with the company name.<br><br>An external worker signs in in the same way as an internal worker. There is no separate portal and no separate login."
                 },
                 {
-                    "label": "Recent imports",
-                    "text": "After an import, an overview of the last 10 imports (30 days) appears automatically. Per import you see the file name, date and number of workers. Click Undo import to remove the workers of that batch. Only workers without a linked device are deleted — workers who are already signed in via Clock Point QR (and thus have an active device) remain and are marked as «Has devices». The button disappears once all workers in a batch have been deleted."
+                    "label": "Documents and announcements",
+                    "text": "Within a team you can make documents and announcements available to the workers.<br><br>They do not appear on a unit’s QR page. They also do not count towards your organisation’s document limit."
+                },
+                {
+                    "label": "Who is the content for?",
+                    "text": "For each document or announcement you choose who may see it:<br>• The whole team.<br>• One specific worker.<br><br>A contract, for example, is meant for one person.<br><br>Tick <strong>Active</strong> to show the document or announcement on Clock Point.",
+                    "nested": true
+                },
+                {
+                    "label": "What happens when someone changes team?",
+                    "text": "• A document or announcement for one worker moves with that person when they go to another team.<br>• A document or announcement for the whole team stays with that team.",
+                    "nested": true
+                },
+                {
+                    "label": "What does the worker see?",
+                    "text": "On Clock Point a worker only sees the content that is meant for them.<br><br>New content appears straight away under the sign-in card, with a blue counter. When the worker opens the tile, it moves back down. When new content arrives, the tile appears at the top again.",
+                    "nested": true
+                },
+                {
+                    "label": "Managing and searching",
+                    "text": "On the team page you see the active documents and announcements by default, 25 per page.<br><br>You can filter by:<br>• Worker.<br>• Status.<br>• Search term.<br><br>Next to a worker you see a counter. Tap it to open <strong>Manage documents</strong> or <strong>Manage announcements</strong>. You then reach that team’s list, filtered on that person.",
+                    "nested": true
+                },
+                {
+                    "label": "Who opened the content?",
+                    "text": "For each item you see, for example, <strong>Opened 3/5</strong>. Tap it to see who has already opened the content and who has not.<br><br>WinProx does not store a date or time for this.<br><br>An item counts as opened when:<br>• <strong>A document:</strong> the worker downloads it.<br>• <strong>An announcement:</strong> the worker opens the Announcements screen.<br><br>If you replace a document or change an announcement, everyone has to open the new content again.",
+                    "nested": true
+                },
+                {
+                    "label": "Home group on the roster",
+                    "text": "This feature is optional.<br><br>On <strong>Time → Roster</strong> you can filter by a location. The workers then appear under groups, for example G1.<br><br>You create those groups on a unit via <strong>Locations → edit unit → Roster code</strong>.<br><br>For the worker you then choose which group that person belongs to. Leave this field empty if you do not need groups.<br><br>This does not plan shifts. You fill in the label in a roster cell, such as D1 or G1, separately."
+                },
+                {
+                    "label": "Print briefing",
+                    "text": "With <strong>Print briefing</strong> you open a printable overview of the open tasks per team.<br><br>Useful to use on the work floor.<br><br>You will find the same briefing on <strong>Home</strong>, under <strong>Issues</strong> and on the <strong>Calendar</strong>."
+                },
+                {
+                    "label": "Order of the teams",
+                    "text": "With <strong>Sort order</strong> you decide the order in which teams appear in lists and drop-down lists.<br><br>A lower number appears higher in the list."
+                },
+                {
+                    "label": "Breaks and long shifts",
+                    "text": "For each team you can set a minimum break, for example 30 minutes."
                 },
                 {
                     "label": "Minimum break",
-                    "text": "Per team you can set a minimum unpaid break (for example 30 minutes). On clock-out or close, WinProx counts that minimum on the timesheet if less or no live break was clocked and the shift lasts at least 4 hours. That is not a Clock Point break and not a CIAO event. On Time → Hours an admin can still apply the minimum manually or correct break minutes. Per team you also set after how many hours the Long shift alert appears (default 10) and after how many hours an open shift is closed automatically (default 16, max. 24). Those are calendar hours since clock-in."
+                    "text": "Does a worker clock out, or does WinProx close the shift automatically, and does that shift last at least 4 hours? Then WinProx takes the set minimum break into account on the timesheet.<br><br>Was less break clocked than the minimum, or no break at all? Then WinProx fills the difference.<br><br>This is not a break recorded on Clock Point, and it does not affect the CIAO record.<br><br>Via <strong>Time → Clocked hours</strong> an administrator can also apply the minimum manually or change the break minutes.",
+                    "nested": true
+                },
+                {
+                    "label": "Alert and automatic close",
+                    "text": "For each team you also set two time limits. Both are counted from the moment of clocking in.<br>• <strong>Long shift alert:</strong> after how many hours the alert appears. Default 10 hours, maximum 24 hours.<br>• <strong>Auto-close:</strong> after how many hours an open shift is closed automatically. Default 16 hours, maximum 24 hours.",
+                    "nested": true
+                },
+                {
+                    "label": "Deactivate a team or a worker",
+                    "text": "You can switch a team or a worker off for a while. Deleting a worker is permanent."
+                },
+                {
+                    "label": "Deactivate a team",
+                    "text": "If you deactivate a team, it disappears from the drop-down lists.<br><br>The workers in that team can no longer view or complete tasks. You can activate the team again later.",
+                    "nested": true
+                },
+                {
+                    "label": "Deactivate a worker",
+                    "text": "If you deactivate a worker via <strong>Edit</strong>, that person can no longer sign in on Clock Point.<br><br>The details are kept. You can activate the worker again later.",
+                    "nested": true
+                },
+                {
+                    "label": "Delete a worker",
+                    "text": "Deleting is permanent.<br><br>The history and existing tasks remain, but you can no longer use that worker.",
+                    "nested": true
+                },
+                {
+                    "label": "Import workers",
+                    "text": "You can add several workers at once with a CSV or Excel file."
+                },
+                {
+                    "label": "Required columns",
+                    "text": "These three columns must be present:<br>• <strong>team_name</strong><br>• <strong>first_name</strong><br>• <strong>last_name</strong>",
+                    "nested": true
+                },
+                {
+                    "label": "Optional columns",
+                    "text": "You can also include these details:<br>• <strong>email</strong><br>• <strong>phone</strong><br>• <strong>company_name</strong><br>• <strong>location_names</strong><br><br>In <strong>location_names</strong> you enter the site names, separated by commas.<br><br>If you leave this field empty, the worker may clock in anywhere.<br><br>If you enter a company name in <strong>company_name</strong>, the worker is created as external automatically.",
+                    "nested": true
+                },
+                {
+                    "label": "What happens during the import?",
+                    "text": "Does a team not exist yet? Then WinProx creates it automatically.<br><br>Is a column name wrong, or is a required name missing? Then nothing is imported. WinProx shows what is wrong for each row.",
+                    "nested": true
+                },
+                {
+                    "label": "Undo an import",
+                    "text": "After an import you can view the last 10 imports from the past 30 days.<br><br>For each import you see:<br>• The file name.<br>• The date.<br>• The number of imported workers.<br><br>With <strong>Undo import</strong> you remove the workers from that import who do not yet have a linked phone.<br><br>Workers who have already signed in on Clock Point are kept. You recognise them by <strong>Has devices</strong>.<br><br>The <strong>Undo import</strong> button disappears once every worker from that import who could still be removed has been removed.",
+                    "nested": true
                 }
             ]
         },
