@@ -2286,12 +2286,40 @@
             "title": "Hulp — Aanvragen",
             "actions": [
                 {
-                    "label": "Lijst",
-                    "text": "Time → <strong>Aanvragen</strong> toont verlof-, recup-, ziek- en Andere-aanvragen van Clock Point. Geen e-mail, geen inbox bij de uitvoerder. Een groene badge in de navigatie telt open aanvragen. Het dashboard toont het aantal per soort (bijv. 1 Verlof, 1 Ziek, 1 Andere). Bij een beslissing ziet u wie heeft goedgekeurd of geweigerd."
+                    "label": "Waarvoor dient dit scherm?",
+                    "text": "Op dit scherm behandelt u de aanvragen van uitvoerders voor verlof, recup, ziekte of een andere afwezigheid.<br><br>De uitvoerder dient de aanvraag zelf in via Clock Point, op de tegel <strong>Verlof / Afwezigheid</strong>. Er wordt geen e-mail verstuurd. Zodra u de aanvraag goedkeurt of weigert, krijgt de uitvoerder een melding op Clock Point.<br><br>Bij <strong>Aanvragen</strong> ziet u aan de teller hoeveel aanvragen nog openstaan. Op het beginscherm verschijnt dan ook een kaart met het aantal aanvragen per soort, bijvoorbeeld 1 <strong>Verlof</strong>, 1 <strong>Recup</strong> en 1 <strong>Ziek</strong>.<br><br>Ook een ziektemelding moet u hier goedkeuren. Ziekte en <strong>Andere</strong> hebben geen invloed op het verlofsaldo of recupsaldo."
                 },
                 {
-                    "label": "Beoordelen",
-                    "text": "Open een open aanvraag. U ziet de dagen en, als die er zijn, de <strong>bestaande diensten</strong> die zouden verdwijnen. Weigeren vraagt een <strong>reden</strong> (minstens 3 tekens); goedkeuren niet. Bij goedkeuren bewaart WinProx die cellen op de aanvraag en zet daarna gepubliceerde afwezigheid in het uurrooster. Op het uurrooster toont de ballon bij die afwezigheid wat er gepland stond (Was gepland)."
+                    "label": "Goed om te weten",
+                    "text": "• De uitvoerder kiest zelf een type, bijvoorbeeld <strong>Verlof</strong> of Baaldag.<br>• De aangevraagde periode mag niet in het verleden liggen en duurt maximaal 31 dagen.<br>• Bij <strong>Andere</strong> kan de aanvraag maar over één dag gaan.<br>• Een halve dag aanvragen kan alleen bij verlof op één datum.<br>• Twee open aanvragen die elkaar overlappen, kan de uitvoerder niet indienen."
+                },
+                {
+                    "label": "De lijst",
+                    "text": "Bovenaan kunt u de aanvragen filteren op <strong>Alle</strong>, <strong>Open</strong>, <strong>Goedgekeurd</strong>, <strong>Geweigerd</strong> of <strong>Ingetrokken</strong>.<br><br>Per aanvraag ziet u de uitvoerder, het type afwezigheid, de aangevraagde dagen en eventueel een toelichting.<br><br>Na een beslissing ziet u ook wie de aanvraag heeft goedgekeurd of geweigerd."
+                },
+                {
+                    "label": "Een aanvraag beoordelen",
+                    "text": "Klik bij een open aanvraag op <strong>Beoordelen</strong>.<br><br>U ziet de aangevraagde dagen en de eventuele toelichting van de uitvoerder. Staat er <strong>Halve dag</strong>, dan gaat het om een aanvraag voor een halve dag verlof.<br><br>Staan er voor die periode al diensten in het uurrooster? Dan vindt u die onder <strong>Bestaande diensten</strong>.<br><br>Zolang u de aanvraag niet goedkeurt, blijven die diensten gewoon staan. U kunt ze ondertussen nog aanpassen via het uurrooster."
+                },
+                {
+                    "label": "Goedkeuren",
+                    "text": "Bij goedkeuring verwerkt WinProx de afwezigheid meteen in het uurrooster, voor alle dagen van de aanvraag.<br><br>De bestaande diensten worden daarbij bewaard. U kunt ze later nog bekijken in de ballon bij de betrokken dag, onder <strong>Was gepland</strong>.<br><br>Een reden invullen is niet verplicht. Geeft u toch een toelichting mee, dan ziet de uitvoerder die bij de aanvraag onder <strong>Beslissing</strong>."
+                },
+                {
+                    "label": "Weigeren",
+                    "text": "Bij weigering verandert er niets aan het uurrooster.<br><br>U moet wel een reden invullen van minstens 3 tekens. De uitvoerder ziet die reden bij de aanvraag onder <strong>Beslissing</strong>."
+                },
+                {
+                    "label": "Het verlofsaldo",
+                    "text": "Bij een verlofaanvraag ziet u het saldo van het betrokken jaar:<br><br>• <strong>Jaarlijks verlofrecht</strong><br>• <strong>Goedgekeurd verlof</strong><br>• <strong>Gepland verlof</strong><br>• <strong>Resterend saldo</strong><br>• <strong>Deze aanvraag</strong><br><br>Is er geen jaarlijks verlofrecht ingesteld? Dan meldt WinProx dat.<br><br>Komt het resterende saldo door deze aanvraag onder nul, dan krijgt u een waarschuwing. U kunt de aanvraag nog altijd goedkeuren.<br><br>Bij recup, ziekte of <strong>Andere</strong> wordt geen verlofsaldo getoond."
+                },
+                {
+                    "label": "Vanuit het uurrooster",
+                    "text": "Ook vanuit het uurrooster kunt u een open aanvraag bekijken.<br><br>Bij een dag met een open aanvraag staat linksonder in de cel een markering. De ballon vermeldt bijvoorbeeld <strong>Verlof aangevraagd (wacht op goedkeuring)</strong>.<br><br>Klik op de markering. U komt automatisch op dit scherm terecht en de betreffende aanvraag wordt meteen geopend."
+                },
+                {
+                    "label": "Intrekken",
+                    "text": "Een uitvoerder trekt een aanvraag zelf in via Clock Point. Dat kan niet vanuit dit scherm.<br><br>De regels hangen af van de status:<br>• <strong>Open</strong>: een aanvraag kan altijd worden ingetrokken.<br>• <strong>Goedgekeurd</strong>: intrekken kan zolang de eerste dag van de aanvraag nog niet voorbij is. WinProx zet de eerder geplande diensten dan terug in het uurrooster.<br>• <strong>Geweigerd</strong>: een geweigerde aanvraag kan niet meer worden ingetrokken.<br>• <strong>Eerste dag voorbij</strong>: zodra de eerste dag van de aanvraag voorbij is, kan de uitvoerder ze niet meer intrekken.<br><br>U vindt ingetrokken aanvragen terug via het filter <strong>Ingetrokken</strong>."
                 }
             ]
         },

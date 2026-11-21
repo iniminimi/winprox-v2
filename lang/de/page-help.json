@@ -2286,12 +2286,40 @@
             "title": "Hilfe — Anträge",
             "actions": [
                 {
-                    "label": "Liste",
-                    "text": "Time → <strong>Anträge</strong> zeigt Urlaubs-, Ausgleichs-, Krankheits- und Sonstige-Anträge vom Clock Point. Keine E-Mail, kein Posteingang beim Ausführenden. Ein grünes Badge in der Navigation zählt offene Anträge. Das Dashboard zeigt die Anzahl je Art (1 Urlaub, 1 Ausgleich oder beides). Nach der Entscheidung sehen Sie, wer genehmigt oder abgelehnt hat."
+                    "label": "Wozu dient dieser Bildschirm?",
+                    "text": "Auf diesem Bildschirm bearbeiten Sie die Anträge der ausführenden Personen auf Urlaub, Ausgleich, Krank oder eine sonstige Abwesenheit.<br><br>Die Person stellt den Antrag selbst auf Clock Point, auf der Kachel <strong>Urlaub / Abwesenheit</strong>. Es wird keine E-Mail gesendet. Sobald Sie den Antrag genehmigen oder ablehnen, erhält die Person eine Meldung auf Clock Point.<br><br>Bei <strong>Anträge</strong> zeigt der Zähler, wie viele Anträge noch offen sind. Auf dem Startbildschirm erscheint dann auch eine Karte mit der Anzahl je Art, zum Beispiel 1 <strong>Urlaub</strong>, 1 <strong>Ausgleich</strong> und 1 <strong>Krank</strong>.<br><br>Auch eine Krankmeldung müssen Sie hier genehmigen. <strong>Krank</strong> und <strong>Sonstige</strong> haben keinen Einfluss auf den Urlaubssaldo oder den Ausgleichssaldo."
                 },
                 {
-                    "label": "Prüfen",
-                    "text": "Öffnen Sie einen offenen Antrag. Sie sehen die Tage und, falls vorhanden, die <strong>bestehenden Schichten</strong>, die entfallen würden. Ablehnen braucht eine <strong>Begründung</strong> (mindestens 3 Zeichen); Genehmigen nicht. Bei Genehmigung speichert WinProx diese Zellen am Antrag und schreibt danach veröffentlichte Abwesenheit in den Dienstplan."
+                    "label": "Gut zu wissen",
+                    "text": "• Die Person wählt selbst einen Typ, zum Beispiel <strong>Urlaub</strong> oder Baaldag.<br>• Der beantragte Zeitraum darf nicht in der Vergangenheit liegen und dauert höchstens 31 Tage.<br>• Bei <strong>Sonstige</strong> kann der Antrag nur einen Tag umfassen.<br>• Einen halben Tag kann man nur bei Urlaub an einem einzelnen Datum beantragen.<br>• Zwei offene Anträge, die sich überschneiden, kann die Person nicht einreichen."
+                },
+                {
+                    "label": "Die Liste",
+                    "text": "Oben können Sie die Anträge filtern nach <strong>Alle</strong>, <strong>Offen</strong>, <strong>Genehmigt</strong>, <strong>Abgelehnt</strong> oder <strong>Zurückgezogen</strong>.<br><br>Je Antrag sehen Sie die Person, die Art der Abwesenheit, die beantragten Tage und gegebenenfalls eine Erläuterung.<br><br>Nach einer Entscheidung sehen Sie auch, wer den Antrag genehmigt oder abgelehnt hat."
+                },
+                {
+                    "label": "Einen Antrag prüfen",
+                    "text": "Klicken Sie bei einem offenen Antrag auf <strong>Prüfen</strong>.<br><br>Sie sehen die beantragten Tage und die eventuelle Erläuterung der Person. Steht dort <strong>Halber Tag</strong>, geht es um einen Antrag auf einen halben Tag Urlaub.<br><br>Stehen für diesen Zeitraum schon Dienste im Dienstplan? Dann finden Sie sie unter <strong>Bestehende Schichten</strong>.<br><br>Solange Sie den Antrag nicht genehmigen, bleiben diese Dienste stehen. Sie können sie inzwischen noch im Dienstplan anpassen."
+                },
+                {
+                    "label": "Genehmigen",
+                    "text": "Bei der Genehmigung trägt WinProx die Abwesenheit sofort in den Dienstplan ein, für alle Tage des Antrags.<br><br>Die bestehenden Dienste bleiben dabei erhalten. Sie können sie später noch in der Informationsblase beim betreffenden Tag ansehen, unter <strong>War geplant</strong>.<br><br>Eine Begründung ist nicht Pflicht. Geben Sie doch eine Erläuterung mit, sieht die Person sie beim Antrag unter <strong>Entscheidung</strong>."
+                },
+                {
+                    "label": "Ablehnen",
+                    "text": "Bei einer Ablehnung ändert sich nichts am Dienstplan.<br><br>Sie müssen aber eine Begründung von mindestens 3 Zeichen eintragen. Die Person sieht diese Begründung beim Antrag unter <strong>Entscheidung</strong>."
+                },
+                {
+                    "label": "Der Urlaubssaldo",
+                    "text": "Bei einem Urlaubsantrag sehen Sie den Saldo des betreffenden Jahres:<br><br>• <strong>Jahresanspruch</strong><br>• <strong>Genehmigter Urlaub</strong><br>• <strong>Geplanter Urlaub</strong><br>• <strong>Restsaldo</strong><br>• <strong>Dieser Antrag</strong><br><br>Ist kein Jahresanspruch festgelegt? Dann meldet WinProx das.<br><br>Fällt der Restsaldo durch diesen Antrag unter null, erhalten Sie eine Warnung. Sie können den Antrag trotzdem genehmigen.<br><br>Bei Ausgleich, Krank oder <strong>Sonstige</strong> wird kein Urlaubssaldo angezeigt."
+                },
+                {
+                    "label": "Aus dem Dienstplan",
+                    "text": "Auch aus dem Dienstplan können Sie einen offenen Antrag ansehen.<br><br>Bei einem Tag mit einem offenen Antrag steht unten links in der Zelle eine Markierung. Die Informationsblase nennt zum Beispiel <strong>Urlaub beantragt (wartet auf Freigabe)</strong>.<br><br>Klicken Sie auf die Markierung. Sie gelangen automatisch auf diesen Bildschirm, und der betreffende Antrag wird sofort geöffnet."
+                },
+                {
+                    "label": "Zurückziehen",
+                    "text": "Eine Person zieht einen Antrag selbst auf Clock Point zurück. Das geht nicht von diesem Bildschirm aus.<br><br>Die Regeln hängen vom Status ab:<br>• <strong>Offen</strong>: ein Antrag kann immer zurückgezogen werden.<br>• <strong>Genehmigt</strong>: Zurückziehen ist möglich, solange der erste Tag des Antrags noch nicht vorbei ist. WinProx setzt die zuvor geplanten Dienste dann wieder in den Dienstplan.<br>• <strong>Abgelehnt</strong>: ein abgelehnter Antrag kann nicht mehr zurückgezogen werden.<br>• <strong>Erster Tag vorbei</strong>: sobald der erste Tag des Antrags vorbei ist, kann die Person ihn nicht mehr zurückziehen.<br><br>Zurückgezogene Anträge finden Sie über den Filter <strong>Zurückgezogen</strong>."
                 }
             ]
         },

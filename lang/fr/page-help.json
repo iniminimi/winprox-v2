@@ -2290,12 +2290,40 @@
             "title": "Aide — Demandes",
             "actions": [
                 {
-                    "label": "Liste",
-                    "text": "Time → <strong>Demandes</strong> affiche les demandes de congé, de récup, de maladie et Autre de Clock Point. Pas d’e-mail, pas de boîte de réception chez l’exécutant. Un badge vert dans la navigation compte les demandes ouvertes. Le tableau de bord montre le nombre par type (p. ex. 1 Congé, 1 Maladie, 1 Autre). Après décision, vous voyez qui a approuvé ou refusé."
+                    "label": "À quoi sert cet écran ?",
+                    "text": "Sur cet écran, vous traitez les demandes des intervenants pour un congé, une récup, une maladie ou une autre absence.<br><br>L’intervenant introduit la demande lui-même sur Clock Point, sur la tuile <strong>Congé / Absence</strong>. Aucun e-mail n’est envoyé. Dès que vous approuvez ou refusez la demande, l’intervenant reçoit une notification sur Clock Point.<br><br>À côté de <strong>Demandes</strong>, le compteur indique combien de demandes sont encore ouvertes. Une carte apparaît alors aussi sur l’écran d’accueil, avec le nombre par type, par exemple 1 <strong>Congé</strong>, 1 <strong>Récup</strong> et 1 <strong>Maladie</strong>.<br><br>Une déclaration de maladie doit aussi être approuvée ici. <strong>Maladie</strong> et <strong>Autre</strong> n’ont aucun effet sur le solde de congé ni sur le solde de récup."
                 },
                 {
-                    "label": "Traiter",
-                    "text": "Ouvrez une demande ouverte. Vous voyez les jours et, s’il y en a, les <strong>services existants</strong> qui disparaîtraient. Refuser exige un <strong>motif</strong> (au moins 3 caractères) ; approuver non. À l’approbation, WinProx enregistre ces cellules sur la demande, puis écrit une absence publiée dans le planning."
+                    "label": "Bon à savoir",
+                    "text": "• L’intervenant choisit lui-même un type, par exemple <strong>Congé</strong> ou Baaldag.<br>• La période demandée ne peut pas être dans le passé et dure au maximum 31 jours.<br>• Pour <strong>Autre</strong>, la demande ne peut porter que sur un seul jour.<br>• Une demi-journée ne peut être demandée que pour un congé, sur une seule date.<br>• L’intervenant ne peut pas introduire deux demandes ouvertes qui se chevauchent."
+                },
+                {
+                    "label": "La liste",
+                    "text": "En haut, vous pouvez filtrer les demandes sur <strong>Tous</strong>, <strong>Ouvert</strong>, <strong>Approuvé</strong>, <strong>Refusé</strong> ou <strong>Retiré</strong>.<br><br>Pour chaque demande, vous voyez l’intervenant, le type d’absence, les jours demandés et, le cas échéant, une note.<br><br>Après une décision, vous voyez aussi qui a approuvé ou refusé la demande."
+                },
+                {
+                    "label": "Traiter une demande",
+                    "text": "Pour une demande ouverte, cliquez sur <strong>Traiter</strong>.<br><br>Vous voyez les jours demandés et l’éventuelle note de l’intervenant. S’il est indiqué <strong>Demi-journée</strong>, il s’agit d’une demande de congé pour une demi-journée.<br><br>Des services sont-ils déjà prévus dans le planning pour cette période ? Vous les trouvez sous <strong>Services existants</strong>.<br><br>Tant que vous n’approuvez pas la demande, ces services restent en place. Vous pouvez encore les modifier dans le planning."
+                },
+                {
+                    "label": "Approuver",
+                    "text": "Lorsque vous approuvez, WinProx inscrit tout de suite l’absence dans le planning, pour tous les jours de la demande.<br><br>Les services existants sont conservés. Vous pouvez encore les consulter plus tard dans l’info-bulle du jour concerné, sous <strong>Était planifié</strong>.<br><br>Un motif n’est pas obligatoire. Si vous ajoutez tout de même une note, l’intervenant la voit sur la demande, sous <strong>Décision</strong>."
+                },
+                {
+                    "label": "Refuser",
+                    "text": "En cas de refus, rien ne change dans le planning.<br><br>Vous devez toutefois indiquer un motif d’au moins 3 caractères. L’intervenant voit ce motif sur la demande, sous <strong>Décision</strong>."
+                },
+                {
+                    "label": "Le solde de congé",
+                    "text": "Pour une demande de congé, vous voyez le solde de l’année concernée :<br><br>• <strong>Droit annuel</strong><br>• <strong>Congé approuvé</strong><br>• <strong>Congé planifié</strong><br>• <strong>Solde restant</strong><br>• <strong>Cette demande</strong><br><br>Aucun droit annuel n’est défini ? WinProx vous le signale.<br><br>Si cette demande fait passer le solde restant sous zéro, vous recevez un avertissement. Vous pouvez quand même approuver la demande.<br><br>Pour la récup, la maladie ou <strong>Autre</strong>, aucun solde de congé n’est affiché."
+                },
+                {
+                    "label": "Depuis le planning",
+                    "text": "Vous pouvez aussi ouvrir une demande ouverte depuis le planning.<br><br>Pour un jour avec une demande ouverte, un marquage apparaît en bas à gauche de la cellule. L’info-bulle indique par exemple <strong>Congé demandé (en attente d’approbation)</strong>.<br><br>Cliquez sur le marquage. Vous arrivez automatiquement sur cet écran et la demande s’ouvre tout de suite."
+                },
+                {
+                    "label": "Retirer",
+                    "text": "Un intervenant retire lui-même une demande sur Clock Point. Ce n’est pas possible depuis cet écran.<br><br>Les règles dépendent du statut :<br>• <strong>Ouvert</strong> : une demande peut toujours être retirée.<br>• <strong>Approuvé</strong> : le retrait est possible tant que le premier jour de la demande n’est pas passé. WinProx remet alors les services prévus auparavant dans le planning.<br>• <strong>Refusé</strong> : une demande refusée ne peut plus être retirée.<br>• <strong>Premier jour passé</strong> : dès que le premier jour de la demande est passé, l’intervenant ne peut plus la retirer.<br><br>Vous retrouvez les demandes retirées via le filtre <strong>Retiré</strong>."
                 }
             ]
         },

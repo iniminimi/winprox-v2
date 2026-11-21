@@ -2286,12 +2286,40 @@
             "title": "Help — Requests",
             "actions": [
                 {
-                    "label": "List",
-                    "text": "Time → <strong>Requests</strong> shows leave, TOIL, sick leave and Other requests from Clock Point. No email, no inbox for the worker. A green badge in the navigation counts open requests. The dashboard shows the count per kind (e.g. 1 Leave, 1 Sick, 1 Other). After a decision you see who approved or rejected it."
+                    "label": "What is this screen for?",
+                    "text": "On this screen you handle workers’ requests for leave, time off in lieu, sick or another absence.<br><br>The worker submits the request on Clock Point, on the <strong>Leave / Absence</strong> tile. No email is sent. As soon as you approve or reject the request, the worker gets a notice on Clock Point.<br><br>Next to <strong>Requests</strong> the counter shows how many requests are still open. A card then also appears on the home screen with the number per kind, for example 1 <strong>Leave</strong>, 1 <strong>TOIL</strong> and 1 <strong>Sick</strong>.<br><br>A sick report must be approved here too. <strong>Sick</strong> and <strong>Other</strong> do not affect the leave balance or the time off in lieu balance."
                 },
                 {
-                    "label": "Review",
-                    "text": "Open a pending request. You see the days and, if any, the <strong>existing shifts</strong> that would disappear. Reject needs a <strong>reason</strong> (at least 3 characters); approve does not. On approval WinProx stores those cells on the request, then writes published absence on the roster. On the roster the hover balloon on that absence shows what was planned (Was planned)."
+                    "label": "Good to know",
+                    "text": "• The worker chooses a type, for example <strong>Leave</strong> or Baaldag.<br>• The requested period cannot be in the past and lasts at most 31 days.<br>• For <strong>Other</strong>, the request can cover only one day.<br>• A half day can only be requested for leave on a single date.<br>• A worker cannot submit two open requests that overlap."
+                },
+                {
+                    "label": "The list",
+                    "text": "At the top you can filter the requests by <strong>All</strong>, <strong>Open</strong>, <strong>Approved</strong>, <strong>Rejected</strong> or <strong>Withdrawn</strong>.<br><br>For each request you see the worker, the type of absence, the requested days and, if there is one, a note.<br><br>After a decision you also see who approved or rejected the request."
+                },
+                {
+                    "label": "Reviewing a request",
+                    "text": "On an open request, click <strong>Review</strong>.<br><br>You see the requested days and any note from the worker. If it says <strong>Half day</strong>, the request is for half a day of leave.<br><br>Are there already shifts on the roster for that period? You find them under <strong>Existing shifts</strong>.<br><br>Until you approve the request, those shifts stay in place. You can still change them on the roster in the meantime."
+                },
+                {
+                    "label": "Approve",
+                    "text": "When you approve, WinProx writes the absence into the roster straight away, for every day of the request.<br><br>The existing shifts are kept. You can still view them later in the information tip on that day, under <strong>Was planned</strong>.<br><br>A reason is not required. If you do add a note, the worker sees it on the request under <strong>Decision</strong>."
+                },
+                {
+                    "label": "Reject",
+                    "text": "When you reject, nothing changes on the roster.<br><br>You do have to enter a reason of at least 3 characters. The worker sees that reason on the request under <strong>Decision</strong>."
+                },
+                {
+                    "label": "The leave balance",
+                    "text": "For a leave request you see the balance for the year concerned:<br><br>• <strong>Yearly allowance</strong><br>• <strong>Approved leave</strong><br>• <strong>Planned leave</strong><br>• <strong>Remaining balance</strong><br>• <strong>This request</strong><br><br>If no yearly allowance has been set, WinProx tells you.<br><br>If this request would take the remaining balance below zero, you get a warning. You can still approve the request.<br><br>For time off in lieu, sick or <strong>Other</strong>, no leave balance is shown."
+                },
+                {
+                    "label": "From the roster",
+                    "text": "You can also open an open request from the roster.<br><br>On a day with an open request there is a marker at the bottom left of the cell. The information tip says, for example, <strong>Leave requested (awaiting approval)</strong>.<br><br>Click the marker. You land on this screen and that request opens straight away."
+                },
+                {
+                    "label": "Withdraw",
+                    "text": "A worker withdraws a request on Clock Point. That cannot be done from this screen.<br><br>The rules depend on the status:<br>• <strong>Open</strong>: a request can always be withdrawn.<br>• <strong>Approved</strong>: it can be withdrawn as long as the first day of the request has not yet passed. WinProx then puts the previously planned shifts back on the roster.<br>• <strong>Rejected</strong>: a rejected request can no longer be withdrawn.<br>• <strong>First day passed</strong>: once the first day of the request has passed, the worker can no longer withdraw it.<br><br>You find withdrawn requests with the <strong>Withdrawn</strong> filter."
                 }
             ]
         },

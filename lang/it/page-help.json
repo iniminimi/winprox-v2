@@ -2283,15 +2283,43 @@
             ]
         },
         "time.absence_requests": {
-            "title": "Guida — Richieste",
+            "title": "Aiuto — Richieste",
             "actions": [
                 {
-                    "label": "Elenco",
-                    "text": "Time → <strong>Richieste</strong> mostra le richieste di ferie, recupero, malattia e Altro dal Clock Point. Nessuna e-mail, nessuna casella per l’esecutore. Un badge verde nella navigazione conta le richieste aperte. La dashboard mostra il conteggio per tipo (es. 1 Ferie, 1 Malattia, 1 Altro). Dopo la decisione vedi chi ha approvato o rifiutato."
+                    "label": "A che cosa serve questa schermata?",
+                    "text": "In questa schermata gestisce le richieste degli operatori per ferie, recupero, malattia o un’altra assenza.<br><br>L’operatore presenta la richiesta su Clock Point, nella tessera <strong>Ferie / Assenza</strong>. Non viene inviata alcuna e-mail. Appena approva o rifiuta la richiesta, l’operatore riceve un avviso su Clock Point.<br><br>Accanto a <strong>Richieste</strong> il contatore mostra quante richieste sono ancora aperte. Nella schermata iniziale compare allora anche una scheda con il numero per tipo, per esempio 1 <strong>Ferie</strong>, 1 <strong>Recupero</strong> e 1 <strong>Malattia</strong>.<br><br>Anche una segnalazione di malattia va approvata qui. <strong>Malattia</strong> e <strong>Altro</strong> non influiscono sul saldo ferie né sul saldo recupero."
                 },
                 {
-                    "label": "Valuta",
-                    "text": "Apri una richiesta aperta. Vedi i giorni e, se ci sono, i <strong>turni esistenti</strong> che sparirebbero. Rifiutare richiede un <strong>motivo</strong> (almeno 3 caratteri); approvare no. In approvazione WinProx salva quelle celle sulla richiesta e poi scrive l’assenza pubblicata nel turno."
+                    "label": "Buono a sapersi",
+                    "text": "• L’operatore sceglie un tipo, per esempio <strong>Ferie</strong> o Baaldag.<br>• Il periodo richiesto non può essere nel passato e dura al massimo 31 giorni.<br>• Per <strong>Altro</strong> la richiesta può riguardare un solo giorno.<br>• Una mezza giornata si può richiedere solo per le ferie, in una sola data.<br>• L’operatore non può inviare due richieste aperte che si sovrappongono."
+                },
+                {
+                    "label": "L’elenco",
+                    "text": "In alto può filtrare le richieste per <strong>Tutte</strong>, <strong>Aperta</strong>, <strong>Approvata</strong>, <strong>Rifiutata</strong> o <strong>Ritirata</strong>.<br><br>Per ogni richiesta vede l’operatore, il tipo di assenza, i giorni richiesti ed eventualmente una nota.<br><br>Dopo una decisione vede anche chi ha approvato o rifiutato la richiesta."
+                },
+                {
+                    "label": "Valutare una richiesta",
+                    "text": "Su una richiesta aperta, clicchi su <strong>Valuta</strong>.<br><br>Vede i giorni richiesti e l’eventuale nota dell’operatore. Se compare <strong>Mezza giornata</strong>, si tratta di una richiesta di mezza giornata di ferie.<br><br>Per quel periodo ci sono già turni? Li trova sotto <strong>Turni esistenti</strong>.<br><br>Finché non approva la richiesta, quei turni restano al loro posto. Nel frattempo può ancora modificarli nel turno."
+                },
+                {
+                    "label": "Approva",
+                    "text": "All’approvazione WinProx inserisce subito l’assenza nel turno, per tutti i giorni della richiesta.<br><br>I turni esistenti vengono conservati. Più tardi può rivederli nel fumetto informativo del giorno, sotto <strong>Era pianificato</strong>.<br><br>Un motivo non è obbligatorio. Se aggiunge comunque una nota, l’operatore la vede nella richiesta, sotto <strong>Decisione</strong>."
+                },
+                {
+                    "label": "Rifiuta",
+                    "text": "In caso di rifiuto non cambia nulla nel turno.<br><br>Deve però indicare un motivo di almeno 3 caratteri. L’operatore vede quel motivo nella richiesta, sotto <strong>Decisione</strong>."
+                },
+                {
+                    "label": "Il saldo ferie",
+                    "text": "Per una richiesta di ferie vede il saldo dell’anno interessato:<br><br>• <strong>Diritto annuale</strong><br>• <strong>Ferie approvate</strong><br>• <strong>Ferie pianificate</strong><br>• <strong>Saldo restante</strong><br>• <strong>Questa richiesta</strong><br><br>Non è impostato un diritto annuale? WinProx lo segnala.<br><br>Se con questa richiesta il saldo restante scende sotto zero, riceve un avviso. Può comunque approvare la richiesta.<br><br>Per recupero, malattia o <strong>Altro</strong> non viene mostrato il saldo ferie."
+                },
+                {
+                    "label": "Dal turno",
+                    "text": "Può aprire una richiesta aperta anche dal turno.<br><br>In un giorno con una richiesta aperta c’è un contrassegno in basso a sinistra nella cella. Il fumetto informativo indica, per esempio, <strong>Ferie richieste (in attesa di approvazione)</strong>.<br><br>Clicchi sul contrassegno. Arriva su questa schermata e la richiesta si apre subito."
+                },
+                {
+                    "label": "Ritira",
+                    "text": "Un operatore ritira una richiesta su Clock Point. Non può farlo da questa schermata.<br><br>Le regole dipendono dallo stato:<br>• <strong>Aperta</strong>: una richiesta si può sempre ritirare.<br>• <strong>Approvata</strong>: si può ritirare finché il primo giorno della richiesta non è passato. WinProx rimette allora nel turno i servizi previsti in precedenza.<br>• <strong>Rifiutata</strong>: una richiesta rifiutata non si può più ritirare.<br>• <strong>Primo giorno passato</strong>: appena è passato il primo giorno della richiesta, l’operatore non può più ritirarla.<br><br>Le richieste ritirate le trova con il filtro <strong>Ritirata</strong>."
                 }
             ]
         },

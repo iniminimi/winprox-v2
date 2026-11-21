@@ -2286,12 +2286,40 @@
             "title": "Ayuda — Solicitudes",
             "actions": [
                 {
-                    "label": "Lista",
-                    "text": "Time → <strong>Solicitudes</strong> muestra las solicitudes de vacaciones, recup, baja y Otro de Clock Point. Sin correo, sin bandeja para el operario. Una insignia verde en la navegación cuenta las abiertas. El panel muestra el recuento por tipo (p. ej. 1 Vacaciones, 1 Baja, 1 Otro). Tras la decisión verá quién aprobó o rechazó."
+                    "label": "¿Para qué sirve esta pantalla?",
+                    "text": "En esta pantalla trata las solicitudes de los operarios de vacaciones, descanso compensatorio, baja u otra ausencia.<br><br>El operario presenta la solicitud en Clock Point, en la ficha <strong>Vacaciones / Ausencia</strong>. No se envía ningún correo. En cuanto aprueba o rechaza la solicitud, el operario recibe un aviso en Clock Point.<br><br>Junto a <strong>Solicitudes</strong>, el contador muestra cuántas solicitudes siguen abiertas. En la pantalla de inicio aparece entonces también una tarjeta con el número por tipo, por ejemplo 1 <strong>Permiso</strong>, 1 <strong>Compensación</strong> y 1 <strong>Baja</strong>.<br><br>Una baja por enfermedad también debe aprobarla aquí. <strong>Baja</strong> y <strong>Otro</strong> no influyen en el saldo de permiso ni en el de descanso compensatorio."
                 },
                 {
-                    "label": "Revisar",
-                    "text": "Abra una solicitud abierta. Verá los días y, si los hay, los <strong>turnos existentes</strong> que desaparecerían. Rechazar exige un <strong>motivo</strong> (al menos 3 caracteres); aprobar no. Al aprobar, WinProx guarda esas celdas en la solicitud y luego escribe ausencia publicada en el cuadrante."
+                    "label": "Conviene saberlo",
+                    "text": "• El operario elige un tipo, por ejemplo <strong>Vacaciones</strong> o Baaldag.<br>• El periodo solicitado no puede estar en el pasado y dura como máximo 31 días.<br>• En <strong>Otro</strong>, la solicitud solo puede abarcar un día.<br>• Una media jornada solo se puede solicitar en vacaciones, en una sola fecha.<br>• El operario no puede presentar dos solicitudes abiertas que se solapen."
+                },
+                {
+                    "label": "La lista",
+                    "text": "Arriba puede filtrar las solicitudes por <strong>Todas</strong>, <strong>Abierta</strong>, <strong>Aprobada</strong>, <strong>Rechazada</strong> o <strong>Retirada</strong>.<br><br>En cada solicitud ve el operario, el tipo de ausencia, los días solicitados y, si la hay, una nota.<br><br>Después de una decisión también ve quién aprobó o rechazó la solicitud."
+                },
+                {
+                    "label": "Revisar una solicitud",
+                    "text": "En una solicitud abierta, pulse <strong>Revisar</strong>.<br><br>Ve los días solicitados y la nota del operario, si la hay. Si aparece <strong>Media jornada</strong>, se trata de una solicitud de media jornada de vacaciones.<br><br>¿Ya hay turnos en el horario para ese periodo? Los encuentra en <strong>Turnos existentes</strong>.<br><br>Mientras no apruebe la solicitud, esos turnos siguen en su sitio. Mientras tanto aún puede modificarlos en el horario."
+                },
+                {
+                    "label": "Aprobar",
+                    "text": "Al aprobar, WinProx anota la ausencia en el horario de inmediato, para todos los días de la solicitud.<br><br>Los turnos existentes se conservan. Más tarde puede verlos en el globo informativo del día, en <strong>Estaba planificado</strong>.<br><br>No es obligatorio indicar un motivo. Si aun así añade una nota, el operario la ve en la solicitud, en <strong>Decisión</strong>."
+                },
+                {
+                    "label": "Rechazar",
+                    "text": "Al rechazar, no cambia nada en el horario.<br><br>Sí debe indicar un motivo de al menos 3 caracteres. El operario ve ese motivo en la solicitud, en <strong>Decisión</strong>."
+                },
+                {
+                    "label": "El saldo de permiso",
+                    "text": "En una solicitud de vacaciones ve el saldo del año en cuestión:<br><br>• <strong>Derecho anual</strong><br>• <strong>Permiso aprobado</strong><br>• <strong>Permiso planificado</strong><br>• <strong>Saldo restante</strong><br>• <strong>Esta solicitud</strong><br><br>¿No hay un derecho anual configurado? WinProx se lo indica.<br><br>Si con esta solicitud el saldo restante queda por debajo de cero, recibe un aviso. Aun así puede aprobar la solicitud.<br><br>En descanso compensatorio, baja u <strong>Otro</strong> no se muestra el saldo de permiso."
+                },
+                {
+                    "label": "Desde el horario",
+                    "text": "También puede abrir una solicitud abierta desde el horario.<br><br>En un día con una solicitud abierta hay una marca abajo a la izquierda de la celda. El globo informativo indica, por ejemplo, <strong>Vacaciones solicitadas (pendiente de aprobación)</strong>.<br><br>Haga clic en la marca. Llega a esta pantalla y la solicitud se abre enseguida."
+                },
+                {
+                    "label": "Retirar",
+                    "text": "Un operario retira una solicitud en Clock Point. No puede hacerlo desde esta pantalla.<br><br>Las reglas dependen del estado:<br>• <strong>Abierta</strong>: una solicitud siempre se puede retirar.<br>• <strong>Aprobada</strong>: se puede retirar mientras el primer día de la solicitud no haya pasado. WinProx vuelve a poner en el horario los turnos que estaban previstos.<br>• <strong>Rechazada</strong>: una solicitud rechazada ya no se puede retirar.<br>• <strong>Primer día pasado</strong>: en cuanto ha pasado el primer día de la solicitud, el operario ya no puede retirarla.<br><br>Las solicitudes retiradas las encuentra con el filtro <strong>Retirada</strong>."
                 }
             ]
         },
