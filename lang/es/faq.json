@@ -384,7 +384,7 @@
             "slug": "time_absence",
             "type": "text",
             "title": "¿Cómo funcionan las solicitudes de vacaciones y ausencia?",
-            "body": "Los trabajadores solicitan vacaciones, recup, baja u (si está configurado) un tipo en Otro en Clock Point: elige un tipo de turno como código (nombre), periodo, nota opcional, máx. 31 días, no en el pasado. La baja no admite medio día. Las solicitudes abiertas que se solapan se rechazan. La gestión decide en Time → Solicitudes — la baja también debe aprobarse. Rechazar exige un motivo. Al aprobar, WinProx pone la ausencia en el horario. Otro y baja no cuentan en el saldo de vacaciones ni en recup; eso lo trata la secretaría social, no WinProx. Sin correo.",
+            "body": "Los trabajadores solicitan vacaciones, recup, baja u (si está configurado) un tipo en Otro en Clock Point: elige la ausencia por su nombre, periodo, nota opcional, máx. 31 días, no en el pasado. La baja no admite medio día. Las solicitudes abiertas que se solapan se rechazan. La gestión decide en Time → Solicitudes — la baja también debe aprobarse. Rechazar exige un motivo. Al aprobar, WinProx pone la ausencia en el horario. Otro y baja no cuentan en el saldo de vacaciones ni en recup; eso lo trata la secretaría social, no WinProx. Sin correo.",
             "summary": "Clock Point: vacaciones, recup, baja u Otro. Time → Solicitudes. Baja y Otro no afectan el saldo."
         },
         "time_schedule": {

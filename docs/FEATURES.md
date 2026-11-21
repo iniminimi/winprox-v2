@@ -1285,7 +1285,8 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   een bestaande code blijft staan. Geplande diensten blijven bewaard. Time, QR-aanmelding, taken
   en de prikklok blijven aan.
 - **Golf 2 — Verlof / Recup / Ziek / Andere:** Clock Point-tegel. De uitvoerder kiest een **actief
-  afwezigheids-shifttype** van de tenant als `Code (naam)` — geen keuzelijst op soort. Soort
+  afwezigheids-shifttype** van de tenant **op naam** (label) — geen keuzelijst op soort of code.
+  Soort
   (`leave` / `recup` / `sick` / `other`) volgt uit dat type. Van–tot, max. 31 dagen, niet in het
   verleden, optionele toelichting ≤ 500. Overlappende open aanvragen worden geweigerd. Alles via
   goedkeuring onder Time → Aanvragen; geen e-mail. Halve dag alleen bij leave op één datum. Sick en

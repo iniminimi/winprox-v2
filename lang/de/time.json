@@ -573,7 +573,7 @@
             "decision": "Entscheidung",
             "leave_remaining": "Resturlaub :year: :days von :total",
             "recup_balance": "Überstunden (Ausgleich): :hours",
-            "shift_type": "Typ",
+            "shift_type": "Abwesenheit wählen:",
             "shift_type_placeholder": "Typ wählen"
         },
         "now": {

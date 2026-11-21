@@ -573,7 +573,7 @@
             "decision": "Beslissing",
             "leave_remaining": "Resterend verlof :year : :days van :total",
             "recup_balance": "Overuren (recup): :hours",
-            "shift_type": "Type",
+            "shift_type": "Kies de afwezigheid :",
             "shift_type_placeholder": "Kies een type"
         },
         "now": {

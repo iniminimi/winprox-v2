@@ -198,7 +198,7 @@
             "decision": "Decisão",
             "leave_remaining": "Férias restantes :year: :days de :total",
             "recup_balance": "Horas extra (tempo livre): :hours",
-            "shift_type": "Tipo",
+            "shift_type": "Escolha a ausência:",
             "shift_type_placeholder": "Escolha um tipo"
         },
         "now": {

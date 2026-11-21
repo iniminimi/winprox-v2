@@ -573,7 +573,7 @@
             "decision": "Decision",
             "leave_remaining": "Leave left :year: :days of :total",
             "recup_balance": "Overtime (time off): :hours",
-            "shift_type": "Type",
+            "shift_type": "Choose the absence:",
             "shift_type_placeholder": "Choose a type"
         },
         "now": {

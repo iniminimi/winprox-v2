@@ -573,7 +573,7 @@
             "decision": "Decisión",
             "leave_remaining": "Permiso restante :year: :days de :total",
             "recup_balance": "Horas extra (compensación): :hours",
-            "shift_type": "Tipo",
+            "shift_type": "Elige la ausencia:",
             "shift_type_placeholder": "Elige un tipo"
         },
         "now": {

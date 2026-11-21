@@ -21,9 +21,8 @@
         <div class="wp-field">
             <label class="wp-label" for="absence-shift-type">{{ __('time.portal.absence.shift_type') }}</label>
             <select id="absence-shift-type" class="wp-select" wire:model.live="absenceShiftTypeId">
-                <option value="">{{ __('time.portal.absence.shift_type_placeholder') }}</option>
                 @foreach ($requestableAbsenceTypes as $type)
-                    <option value="{{ $type->id }}">{{ $type->code }} ({{ $type->label }})</option>
+                    <option value="{{ $type->id }}">{{ $type->label }}</option>
                 @endforeach
             </select>
             @error('absenceShiftTypeId') <p class="wp-error">{{ $message }}</p> @enderror
@@ -74,7 +73,7 @@
                         <div class="wp-cluster">
                             <strong>
                                 @if ($request->shiftType)
-                                    {{ $request->shiftType->code }} ({{ $request->shiftType->label }})
+                                    {{ $request->shiftType->label }}
                                 @else
                                     {{ __('time.schedule.types.kinds.'.$request->kind->value) }}
                                 @endif

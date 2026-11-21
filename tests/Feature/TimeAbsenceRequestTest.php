@@ -534,7 +534,8 @@ it('toont de portaltegel en verstuurt een aanvraag', function () {
         ->assertSee(__('time.portal.absence.tile'), false)
         ->call('openAbsence')
         ->assertSet('absenceListOpen', true)
-        ->assertSee('VL (Verlof)', false)
+        ->assertSee('Verlof', false)
+        ->assertSee(__('time.portal.absence.shift_type'), false)
         ->set('absenceShiftTypeId', (int) $leaveType->id)
         ->set('absenceDateFrom', '2026-09-23')
         ->set('absenceDateTo', '2026-09-23')
@@ -575,15 +576,16 @@ it('toont tenant-shifttypes als code (naam) inclusief Andere', function () {
 
     signInAbsenceWorker($clockPoint)
         ->call('openAbsence')
-        ->assertSee('BAAL (Baaldag)', false)
-        ->assertSee('KV (Klein verlet)', false)
-        ->assertSee('VL (Verlof)', false)
+        ->assertSee('Baaldag', false)
+        ->assertSee('Klein verlet', false)
+        ->assertSee('Verlof', false)
+        ->assertDontSeeHtml('>BAAL<')
         ->set('absenceShiftTypeId', (int) $kv->id)
         ->set('absenceDateFrom', '2026-09-25')
         ->set('absenceDateTo', '2026-09-25')
         ->call('submitAbsence')
         ->assertSee(__('time.portal.absence.submitted'), false)
-        ->assertSee('KV (Klein verlet)', false);
+        ->assertSee('Klein verlet', false);
 
     expect(AbsenceRequest::query()->first()?->kind)->toBe(ShiftTypeKind::Other)
         ->and((int) AbsenceRequest::query()->first()?->shift_type_id)->toBe((int) $kv->id);

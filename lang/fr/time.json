@@ -573,7 +573,7 @@
             "decision": "Décision",
             "leave_remaining": "Congé restant :year : :days sur :total",
             "recup_balance": "Heures supplémentaires (récup) : :hours",
-            "shift_type": "Type",
+            "shift_type": "Choisissez l’absence :",
             "shift_type_placeholder": "Choisissez un type"
         },
         "now": {

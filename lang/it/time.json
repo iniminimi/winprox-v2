@@ -573,7 +573,7 @@
             "decision": "Decisione",
             "leave_remaining": "Ferie residue :year: :days di :total",
             "recup_balance": "Straordinari (recupero): :hours",
-            "shift_type": "Tipo",
+            "shift_type": "Scegli l’assenza:",
             "shift_type_placeholder": "Scegli un tipo"
         },
         "now": {

@@ -198,7 +198,7 @@
             "decision": "Decizie",
             "leave_remaining": "Concediu rămas :year: :days din :total",
             "recup_balance": "Ore suplimentare (timp liber): :hours",
-            "shift_type": "Tip",
+            "shift_type": "Alegeți absența:",
             "shift_type_placeholder": "Alegeți un tip"
         },
         "now": {

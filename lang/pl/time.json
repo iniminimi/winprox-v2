@@ -198,7 +198,7 @@
             "decision": "Decyzja",
             "leave_remaining": "Pozostały urlop :year: :days z :total",
             "recup_balance": "Nadgodziny (czas wolny): :hours",
-            "shift_type": "Typ",
+            "shift_type": "Wybierz nieobecność:",
             "shift_type_placeholder": "Wybierz typ"
         },
         "now": {
