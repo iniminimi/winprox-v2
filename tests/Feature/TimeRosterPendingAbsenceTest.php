@@ -138,6 +138,49 @@ it('laat de pending-marker weg na goedkeuren', function () {
     expect($pending)->not->toHaveKey($worker->id.':2026-09-23');
 });
 
+it('toont de oorspronkelijke diensten in de roosterpayload na goedkeuren', function () {
+    [$tenant, $admin, $worker] = pendingAbsenceRosterSetup();
+
+    \App\Models\PlannedShift::query()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-09-23',
+        'status' => \App\Enums\PlannedShiftStatus::Published,
+        'kind' => ShiftTypeKind::Work,
+        'start_time' => '09:00',
+        'end_time' => '17:00',
+        'break_minutes' => 0,
+        'unit_code' => 'G1',
+        'unit_name' => 'Groep 1',
+    ]);
+
+    $request = app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Leave, '2026-09-23', '2026-09-23'),
+    );
+
+    app(DecideAbsenceRequestAction::class)->handle(
+        $tenant,
+        $request,
+        new DecideAbsenceRequestData(true, ''),
+        $admin,
+    );
+
+    $payload = app(ListRosterWeekAction::class)->handle(
+        (int) $tenant->id,
+        '2026-09-21',
+        null,
+        $admin,
+    )->toArray();
+
+    expect($payload['replaced_absence_origins'][$worker->id.':2026-09-23'])
+        ->toBe(['09:00-17:00/G1'])
+        ->and($payload['replaced_absence_origin_heading'])
+        ->toBe(__('time.schedule.replaced_absence_origin_heading'))
+        ->and($payload['replaced_absence_origins'])->not->toHaveKey($worker->id.':2026-09-22');
+});
+
 it('toont geen pending-marker voor aanvragen buiten de zichtbare week', function () {
     [$tenant, $admin, $worker] = pendingAbsenceRosterSetup();
 

@@ -324,6 +324,13 @@ class ListRosterWeekAction
 
         $dayFlags = $this->dayFlags($tenantId, $dates, $visibleStart, $visibleEnd);
         $pendingAbsences = $this->pendingAbsences($tenantId, $workerIds, $visibleStart, $visibleEnd, $dates);
+        $replacedAbsenceOrigins = $this->replacedAbsenceOrigins(
+            $tenantId,
+            $workerIds,
+            $visibleStart,
+            $visibleEnd,
+            $dates,
+        );
 
         return new RosterWeekSnapshot(
             weekStart: $weekStartDate,
@@ -360,6 +367,7 @@ class ListRosterWeekAction
                 ShiftTypeKind::Sick->value => __('time.schedule.pending_absence.sick'),
                 ShiftTypeKind::Other->value => __('time.schedule.pending_absence.other'),
             ],
+            replacedAbsenceOrigins: $replacedAbsenceOrigins,
         );
     }
 
@@ -412,6 +420,91 @@ class ListRosterWeekAction
         }
 
         return $map;
+    }
+
+    /**
+     * Snapshot van diensten die bij goedkeuren van een afwezigheid verdwenen,
+     * per worker+dag — voor de hover-ballon op het uurrooster.
+     *
+     * @param  list<int>  $workerIds
+     * @param  list<string>  $dates
+     * @return array<string, list<string>>
+     */
+    private function replacedAbsenceOrigins(
+        int $tenantId,
+        array $workerIds,
+        string $visibleStart,
+        string $visibleEnd,
+        array $dates,
+    ): array {
+        if ($workerIds === [] || $dates === []) {
+            return [];
+        }
+
+        $visible = array_fill_keys($dates, true);
+        $requests = AbsenceRequest::query()
+            ->where('tenant_id', $tenantId)
+            ->whereIn('worker_id', $workerIds)
+            ->where('status', AbsenceRequestStatus::Approved->value)
+            ->whereDate('date_from', '<=', $visibleEnd)
+            ->whereDate('date_to', '>=', $visibleStart)
+            ->whereNotNull('replaced_shifts')
+            ->orderBy('id')
+            ->get(['worker_id', 'replaced_shifts']);
+
+        $map = [];
+        foreach ($requests as $request) {
+            $rows = $request->replaced_shifts;
+            if (! is_array($rows) || $rows === []) {
+                continue;
+            }
+
+            foreach ($rows as $row) {
+                if (! is_array($row)) {
+                    continue;
+                }
+                $date = isset($row['date']) ? (string) $row['date'] : '';
+                if ($date === '' || ! isset($visible[$date])) {
+                    continue;
+                }
+                $line = $this->formatReplacedShiftDisplay($row);
+                if ($line === '') {
+                    continue;
+                }
+                $key = ((int) $request->worker_id).':'.$date;
+                $map[$key][] = $line;
+            }
+        }
+
+        return $map;
+    }
+
+    /**
+     * @param  array<string, mixed>  $row
+     */
+    private function formatReplacedShiftDisplay(array $row): string
+    {
+        $code = trim((string) ($row['code'] ?? ''));
+        $start = isset($row['start']) && $row['start'] !== null && $row['start'] !== ''
+            ? ShiftType::formatTime((string) $row['start'])
+            : null;
+        $end = isset($row['end']) && $row['end'] !== null && $row['end'] !== ''
+            ? ShiftType::formatTime((string) $row['end'])
+            : null;
+        $unit = trim((string) ($row['unit_code'] ?? ''));
+
+        $duty = $code;
+        if ($duty === '' && $start !== null && $end !== null) {
+            $duty = $start.'-'.$end;
+        }
+        if ($duty === '') {
+            $duty = trim((string) ($row['label'] ?? ''));
+        }
+        if ($unit !== '') {
+            $duty = $duty === '' ? $unit : $duty.'/'.$unit;
+        }
+
+        return $duty;
     }
 
     /**

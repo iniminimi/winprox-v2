@@ -23,6 +23,7 @@ final class RosterWeekSnapshot
      * @param  array<string, array{kind: string, label: string}>  $dayFlags
      * @param  array<string, array{kind: string, request_id: int}>  $pendingAbsences
      * @param  array<string, string>  $pendingAbsenceMessages
+     * @param  array<string, list<string>>  $replacedAbsenceOrigins  workerId:date → display lines of prior duties
      */
     public function __construct(
         public string $weekStart,
@@ -48,6 +49,7 @@ final class RosterWeekSnapshot
         public array $dayFlags = [],
         public array $pendingAbsences = [],
         public array $pendingAbsenceMessages = [],
+        public array $replacedAbsenceOrigins = [],
     ) {}
 
     /**
@@ -81,6 +83,8 @@ final class RosterWeekSnapshot
             'off_day_label' => __('time.schedule.day_flag.off_day'),
             'pending_absences' => $this->pendingAbsences,
             'pending_absence_messages' => $this->pendingAbsenceMessages,
+            'replaced_absence_origins' => $this->replacedAbsenceOrigins,
+            'replaced_absence_origin_heading' => __('time.schedule.replaced_absence_origin_heading'),
             'error_messages' => [
                 'time.schedule.errors.unknown_code' => __('time.schedule.errors.unknown_code'),
                 'time.schedule.errors.unknown_unit' => __('time.schedule.errors.unknown_unit'),

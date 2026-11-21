@@ -26,7 +26,8 @@
                 "sick": "Baixa",
                 "other": "Outra"
             }
-        }
+        },
+        "replaced_absence_origin_heading": "Estava planeado"
     },
     "absence": {
         "status": {

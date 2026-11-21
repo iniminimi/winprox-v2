@@ -1085,7 +1085,8 @@
             "open_hint": "Fate clic sul contrassegno in basso a sinistra per aprire la richiesta.",
             "other": "Altra assenza richiesta (in attesa)",
             "sick": "Malattia richiesta (in attesa di approvazione)"
-        }
+        },
+        "replaced_absence_origin_heading": "Era pianificato"
     },
     "shift_types": {
         "title": "Tipi di turno",

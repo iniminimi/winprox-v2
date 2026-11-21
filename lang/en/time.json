@@ -1085,7 +1085,8 @@
             "open_hint": "Click the marker at the bottom left to open the request.",
             "other": "Other absence requested (awaiting approval)",
             "sick": "Sick leave requested (awaiting approval)"
-        }
+        },
+        "replaced_absence_origin_heading": "Was planned"
     },
     "shift_types": {
         "title": "Shift types",

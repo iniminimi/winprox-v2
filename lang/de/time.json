@@ -1085,7 +1085,8 @@
             "open_hint": "Klicken Sie unten links auf die Markierung, um den Antrag zu öffnen.",
             "other": "Sonstige Abwesenheit beantragt (wartet auf Freigabe)",
             "sick": "Krankheit beantragt (warten auf Genehmigung)"
-        }
+        },
+        "replaced_absence_origin_heading": "War geplant"
     },
     "shift_types": {
         "title": "Schichttypen",

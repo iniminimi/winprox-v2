@@ -1085,7 +1085,8 @@
             "open_hint": "Cliquez sur le marquage en bas à gauche pour ouvrir la demande.",
             "other": "Autre absence demandée (en attente)",
             "sick": "Maladie demandée (en attente d’approbation)"
-        }
+        },
+        "replaced_absence_origin_heading": "Était planifié"
     },
     "shift_types": {
         "title": "Types de service",

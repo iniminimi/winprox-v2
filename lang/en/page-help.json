@@ -2026,7 +2026,7 @@
                 },
                 {
                     "label": "Review",
-                    "text": "Open a pending request. You see the days and, if any, the <strong>existing shifts</strong> that would disappear. Reject needs a <strong>reason</strong> (at least 3 characters); approve does not. On approval WinProx stores those cells on the request, then writes published absence on the roster."
+                    "text": "Open a pending request. You see the days and, if any, the <strong>existing shifts</strong> that would disappear. Reject needs a <strong>reason</strong> (at least 3 characters); approve does not. On approval WinProx stores those cells on the request, then writes published absence on the roster. On the roster the hover balloon on that absence shows what was planned (Was planned)."
                 }
             ]
         },

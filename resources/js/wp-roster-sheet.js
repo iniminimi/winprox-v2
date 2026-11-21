@@ -888,6 +888,19 @@ function applyCellClasses(worksheet, payload) {
             } else {
                 applyPendingAbsenceLink(cell, '');
             }
+            // Goedgekeurde afwezigheid: ballon met de diensten die toen verdwenen.
+            const absenceKinds = ['leave', 'recup', 'sick', 'other'];
+            const cellKind = typeof cellDef?.kind === 'string' ? cellDef.kind : '';
+            const origins = attendanceKey ? payload.replaced_absence_origins?.[attendanceKey] : null;
+            if (absenceKinds.includes(cellKind) && Array.isArray(origins) && origins.length > 0) {
+                const heading = payload.replaced_absence_origin_heading || '';
+                const originBlock = [heading, ...origins.map((line) => cellText(line).trim()).filter(Boolean)]
+                    .filter(Boolean)
+                    .join('\n');
+                if (originBlock) {
+                    cell.title = cell.title ? `${cell.title}\n${originBlock}` : originBlock;
+                }
+            }
             // Vergrendelde dag (verleden): cel is readOnly; tooltip legt uit waarom.
             if (isLocked && payload.locked_hint) {
                 cell.title = cell.title ? `${cell.title}\n${payload.locked_hint}` : payload.locked_hint;

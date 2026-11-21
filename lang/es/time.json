@@ -1085,7 +1085,8 @@
             "open_hint": "Haga clic en la marca abajo a la izquierda para abrir la solicitud.",
             "other": "Otra ausencia solicitada (pendiente)",
             "sick": "Baja solicitada (pendiente de aprobación)"
-        }
+        },
+        "replaced_absence_origin_heading": "Estaba planificado"
     },
     "shift_types": {
         "title": "Tipos de turno",
