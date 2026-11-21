@@ -20,7 +20,7 @@
                 },
                 {
                     "label": "Vue d'ensemble",
-                    "text": "Sous Tableau de bord vous voyez le nombre de signalements ouverts, de tâches ouvertes et (avec Time) qui est présent maintenant. Cliquez sur une carte pour accéder à l’écran correspondant. Les demandes de congé ou de récup ouvertes apparaissent comme carte extra vers Time → Demandes, avec le nombre par type (p. ex. 1 Congé, 1 Récup, 1 Autre)."
+                    "text": "Sous Tableau de bord vous voyez le nombre de signalements ouverts, de tâches ouvertes et (avec Time) qui est présent maintenant. Cliquez sur une carte pour accéder à l’écran correspondant. Les demandes de congé ou de récup ouvertes apparaissent comme carte extra vers Time → Demandes, avec le nombre par type (p. ex. 1 Congé, 1 Maladie, 1 Autre)."
                 },
                 {
                     "label": "Mettre sur le bureau",
@@ -1168,7 +1168,7 @@
                 },
                 {
                     "label": "Congé / Absence",
-                    "text": "Après connexion, vous voyez la tuile Congé / Absence. Demandez un congé, une récup ou (si configuré) un type Autre (du–au ; pour Autre d’abord le type ; note facultative, 31 jours max., pas dans le passé). Les demandes ouvertes qui se chevauchent sont refusées. Vos demandes sont sous le formulaire : vous pouvez retirer une demande ouverte ou approuvée (pas encore commencée) ; un congé approuvé rétablit le planning. La gestion décide sous Time → Demandes ; refuser exige un motif, approuver non. Aucun e-mail n’est envoyé. En haut figurent le congé restant de cette année sur le droit, et de l’année suivante s’il y a un droit, plus les heures supplémentaires. Cette année jusqu’à aujourd’hui : temps travaillé moins le planning publié, moins la récup déjà au planning ou en demande ouverte. Pas de salaire."
+                    "text": "Après connexion, vous voyez la tuile Congé / Absence. Demandez un congé, une récup, une maladie ou (si configuré) un type Autre (du–au ; pour Autre d’abord le type ; note facultative, 31 jours max., pas dans le passé). Les demandes ouvertes qui se chevauchent sont refusées. Vos demandes sont sous le formulaire : vous pouvez retirer une demande ouverte ou approuvée (pas encore commencée) ; un congé approuvé rétablit le planning. La gestion décide sous Time → Demandes ; refuser exige un motif, approuver non. Aucun e-mail n’est envoyé. En haut figurent le congé restant de cette année sur le droit, et de l’année suivante s’il y a un droit, plus les heures supplémentaires. Cette année jusqu’à aujourd’hui : temps travaillé moins le planning publié, moins la récup déjà au planning ou en demande ouverte. Pas de salaire."
                 }
             ]
         },
@@ -1946,7 +1946,7 @@
                 },
                 {
                     "label": "Absence",
-                    "text": "Les types de shift peuvent être <strong>congé</strong>, <strong>récup</strong>, <strong>maladie</strong> ou <strong>autre</strong>. Ces codes remplissent toute la journée, ne comptent pas d’heures et ne peuvent pas coexister avec du travail ce jour-là. Les exécutants peuvent demander un congé, une récup ou un type Autre sur Clock Point (tuile Congé / Absence) ; la gestion décide sous Time → Demandes. Autre ne compte pas dans le solde de congés."
+                    "text": "Les types de shift peuvent être <strong>congé</strong>, <strong>récup</strong>, <strong>maladie</strong> ou <strong>autre</strong>. Ces codes remplissent toute la journée, ne comptent pas d’heures et ne peuvent pas coexister avec du travail ce jour-là. Les exécutants peuvent demander un congé, une récup, une maladie ou un type Autre sur Clock Point (tuile Congé / Absence) ; la gestion décide sous Time → Demandes. Maladie et Autre ne comptent pas dans le solde de congés ni la récup."
                 },
                 {
                     "label": "Chercher un remplaçant",
@@ -2030,7 +2030,7 @@
             "actions": [
                 {
                     "label": "Liste",
-                    "text": "Time → <strong>Demandes</strong> affiche les demandes de congé, de récup et Autre de Clock Point. Pas d’e-mail, pas de boîte de réception chez l’exécutant. Un badge vert dans la navigation compte les demandes ouvertes. Le tableau de bord montre le nombre par type (p. ex. 1 Congé, 1 Récup, 1 Autre). Après décision, vous voyez qui a approuvé ou refusé."
+                    "text": "Time → <strong>Demandes</strong> affiche les demandes de congé, de récup, de maladie et Autre de Clock Point. Pas d’e-mail, pas de boîte de réception chez l’exécutant. Un badge vert dans la navigation compte les demandes ouvertes. Le tableau de bord montre le nombre par type (p. ex. 1 Congé, 1 Maladie, 1 Autre). Après décision, vous voyez qui a approuvé ou refusé."
                 },
                 {
                     "label": "Traiter",

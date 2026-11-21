@@ -26,7 +26,8 @@
         "pending_absence_recup": ":count Recupero",
         "iot_alarms": "Allarmi IoT",
         "staffing_shortfalls": "Carenza di personale",
-        "pending_absence_other": ":count Altro"
+        "pending_absence_other": ":count Altro",
+        "pending_absence_sick": ":count Malattia"
     },
     "recent": {
         "title": "Segnalazioni recenti",

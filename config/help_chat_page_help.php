@@ -100,15 +100,15 @@ return [
         ],
         [
             'patterns' => [
-                'verlof aanvr', 'recup aanvr', 'aanvragen verlof', 'andere aanvr',
-                'leave request', 'toil request', 'time off request', 'other absence',
-                'urlaubsantrag', 'ausgleichsantrag', 'sonstige antrag',
-                'demande de congé', 'demande de récup', 'demande autre',
-                'solicitud de permiso', 'solicitud otro', 'richiesta ferie', 'richiesta altro',
-                'klein verlet',
+                'verlof aanvr', 'recup aanvr', 'aanvragen verlof', 'andere aanvr', 'ziekte aanvr', 'ziek melden',
+                'leave request', 'toil request', 'time off request', 'other absence', 'sick leave request',
+                'urlaubsantrag', 'ausgleichsantrag', 'sonstige antrag', 'krankmeldung',
+                'demande de congé', 'demande de récup', 'demande autre', 'demande maladie',
+                'solicitud de permiso', 'solicitud otro', 'solicitud baja', 'richiesta ferie', 'richiesta altro', 'richiesta malattia',
+                'klein verlet', 'baaldag',
             ],
             'page' => 'time.absence_requests',
-            'prefer' => ['verlof aanvr', 'leave request', 'urlaubsantrag', 'andere aanvr'],
+            'prefer' => ['verlof aanvr', 'leave request', 'urlaubsantrag', 'andere aanvr', 'ziekte aanvr'],
         ],
         [
             'patterns' => [

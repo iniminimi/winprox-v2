@@ -52,6 +52,7 @@ class RequestAbsenceRequest extends FormRequest
             'kind' => ['required', Rule::in([
                 ShiftTypeKind::Leave->value,
                 ShiftTypeKind::Recup->value,
+                ShiftTypeKind::Sick->value,
                 ShiftTypeKind::Other->value,
             ])],
             'shift_type_id' => ['nullable', 'integer', 'required_if:kind,'.ShiftTypeKind::Other->value],

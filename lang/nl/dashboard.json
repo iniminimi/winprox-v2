@@ -26,7 +26,8 @@
         "pending_absence_recup": ":count Recup",
         "iot_alarms": "IoT-alarmen",
         "staffing_shortfalls": "Bezettingstekort",
-        "pending_absence_other": ":count Andere"
+        "pending_absence_other": ":count Andere",
+        "pending_absence_sick": ":count Ziek"
     },
     "recent": {
         "title": "Recente meldingen",

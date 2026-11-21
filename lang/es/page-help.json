@@ -1156,7 +1156,7 @@
                 },
                 {
                     "label": "Vacaciones / Ausencia",
-                    "text": "Tras identificarte ves el mosaico Vacaciones / Ausencia. Solicita vacaciones, recup u (si está configurado) un tipo en Otro (desde–hasta; en Otro primero el tipo; nota opcional, máx. 31 días, no en el pasado). Las solicitudes abiertas que se solapan se rechazan. Debajo del formulario están tus propias solicitudes: abiertas o aprobadas (aún no empezadas) puedes retirarlas; si estaba aprobada, el horario vuelve. La gestión decide en Time → Solicitudes; rechazar exige un motivo, aprobar no. No se envía correo. Arriba ves el saldo de vacaciones de este año del derecho, y del año siguiente si hay derecho, más las horas extra. Este año hasta hoy: tiempo trabajado menos el horario publicado, menos recup en el horario o como solicitud abierta. No es nómina."
+                    "text": "Tras identificarte ves el mosaico Vacaciones / Ausencia. Solicita vacaciones, recup, baja u (si está configurado) un tipo en Otro (desde–hasta; en Otro primero el tipo; nota opcional, máx. 31 días, no en el pasado). Las solicitudes abiertas que se solapan se rechazan. Debajo del formulario están tus propias solicitudes: abiertas o aprobadas (aún no empezadas) puedes retirarlas; si estaba aprobada, el horario vuelve. La gestión decide en Time → Solicitudes; rechazar exige un motivo, aprobar no. No se envía correo. Arriba ves el saldo de vacaciones de este año del derecho, y del año siguiente si hay derecho, más las horas extra. Este año hasta hoy: tiempo trabajado menos el horario publicado, menos recup en el horario o como solicitud abierta. No es nómina."
                 },
                 {
                     "label": "Documentos y avisos nuevos",
@@ -1938,7 +1938,7 @@
                 },
                 {
                     "label": "Ausencia",
-                    "text": "Los tipos de turno pueden ser <strong>vacaciones</strong>, <strong>descanso compensatorio</strong>, <strong>baja</strong> u <strong>otro</strong>. Esos códigos ocupan el día entero, no cuentan horas y no pueden ir con trabajo ese día. Los trabajadores pueden solicitar vacaciones, recup o un tipo en Otro desde Clock Point (mosaico Vacaciones / Ausencia); la gestión decide en Time → Solicitudes. Otro no cuenta en el saldo de vacaciones."
+                    "text": "Los tipos de turno pueden ser <strong>vacaciones</strong>, <strong>descanso compensatorio</strong>, <strong>baja</strong> u <strong>otro</strong>. Esos códigos ocupan el día entero, no cuentan horas y no pueden ir con trabajo ese día. Los trabajadores pueden solicitar vacaciones, recup, baja o un tipo en Otro desde Clock Point (mosaico Vacaciones / Ausencia); la gestión decide en Time → Solicitudes. Baja y Otro no cuentan en el saldo de vacaciones ni en recup."
                 },
                 {
                     "label": "Buscar sustituto",
@@ -2022,7 +2022,7 @@
             "actions": [
                 {
                     "label": "Lista",
-                    "text": "Time → <strong>Solicitudes</strong> muestra las solicitudes de vacaciones, recup y Otro de Clock Point. Sin correo, sin bandeja para el operario. Una insignia verde en la navegación cuenta las abiertas. El panel muestra el recuento por tipo (p. ej. 1 Vacaciones, 1 Recup, 1 Otro). Tras la decisión verá quién aprobó o rechazó."
+                    "text": "Time → <strong>Solicitudes</strong> muestra las solicitudes de vacaciones, recup, baja y Otro de Clock Point. Sin correo, sin bandeja para el operario. Una insignia verde en la navegación cuenta las abiertas. El panel muestra el recuento por tipo (p. ej. 1 Vacaciones, 1 Baja, 1 Otro). Tras la decisión verá quién aprobó o rechazó."
                 },
                 {
                     "label": "Revisar",

@@ -43,7 +43,7 @@
                     "Clock in and out, and see who is present.",
                     "Set the recorded hours next to the roster.",
                     "Plan shifts and publish them.",
-                    "Handle leave, TOIL and Other requests.",
+                    "Handle leave, TOIL, sick leave and Other requests.",
                     "Manage issues, tasks and inspection rounds.",
                     "Manage locations, teams, people and units.",
                     "RSZ/CIAO presence reporting can be turned on in settings. Optional GPS work visits tie a visit to a location.",
@@ -101,7 +101,7 @@
                 "title": "Clock Point",
                 "body": "Clock Point is where people open their work tools, in the browser. After clock-in, a welcome screen can show the day’s round as a timeline.",
                 "items": [
-                    "Clock in and out, see the published roster, see one’s own hours, request leave, TOIL or Other.",
+                    "Clock in and out, see the published roster, see one’s own hours, request leave, TOIL, sick leave or Other.",
                     "Carry out tasks, follow an inspection round, and start a work visit when GPS is on.",
                     "An optional clock screen shows a QR code that changes by itself. You pair the screen with a one-time code and a confirmation.",
                     "You choose when the screen is on, for example from 06:00 to 19:00. Outside those hours it can stay off, or show a rest screen: photos, a clock face, a flip clock or a black screen. The sound can be turned on or off per clock screen.",
@@ -132,7 +132,7 @@
             },
             {
                 "title": "Leave and absence",
-                "body": "Workers request leave, TOIL or (if set up) a type under Other via Clock Point. Staff decide under Time → Requests. This request is not for reporting sick, and no e-mail is sent. Other does not count toward leave balance.",
+                "body": "Workers request leave, TOIL, sick leave or (if set up) a type under Other via Clock Point. Staff decide under Time → Requests — sick leave must be approved too. No e-mail is sent. Sick leave and Other (e.g. short leave, personal day) do not count toward leave balance or TOIL; payroll handles that, not WinProx.",
                 "items": [
                     "A request runs from a start date to an end date, at most 31 days, and not in the past.",
                     "In the admin roster, open requests appear as a marker on the relevant days; that marker opens Time → Requests (the shift stays until approval).",
@@ -176,7 +176,7 @@
                 "items": [
                     "Roster and presence, a new day task or inspection round, locations and workers.",
                     "New issues and open tasks. With Time: who is present now.",
-                    "A warning when someone clocks in during leave, TOIL, a public holiday, sickness or Other. Open leave, TOIL and Other requests.",
+                    "A warning when someone clocks in during leave, TOIL, a public holiday, sickness or Other. Open leave, TOIL, sick leave and Other requests.",
                     "New workers a team leader just created, until an administrator saves or deactivates them. Briefings and reports. New organisations choose a starting setup here."
                 ]
             },

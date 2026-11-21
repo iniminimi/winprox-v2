@@ -23,7 +23,10 @@ enum ShiftTypeKind: string
 
     public function isRequestableAbsence(): bool
     {
-        return $this === self::Leave || $this === self::Recup || $this === self::Other;
+        return $this === self::Leave
+            || $this === self::Recup
+            || $this === self::Sick
+            || $this === self::Other;
     }
 
     /** Sick and other never feed the replacement pool. */

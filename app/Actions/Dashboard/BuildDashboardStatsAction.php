@@ -37,6 +37,7 @@ class BuildDashboardStatsAction
         $timeAttention = 0;
         $pendingAbsenceLeave = 0;
         $pendingAbsenceRecup = 0;
+        $pendingAbsenceSick = 0;
         $pendingAbsenceOther = 0;
         $staffingShortfalls = 0;
 
@@ -55,6 +56,7 @@ class BuildDashboardStatsAction
                 $pendingByKind = $this->countPendingAbsence->byKind($tenantId);
                 $pendingAbsenceLeave = $pendingByKind['leave'];
                 $pendingAbsenceRecup = $pendingByKind['recup'];
+                $pendingAbsenceSick = $pendingByKind['sick'];
                 $pendingAbsenceOther = $pendingByKind['other'];
 
                 $weekStart = now()->startOfWeek();
@@ -93,9 +95,10 @@ class BuildDashboardStatsAction
                 ->pendingReview()
                 ->count(),
             timeAttention: $timeAttention,
-            pendingAbsenceRequests: $pendingAbsenceLeave + $pendingAbsenceRecup + $pendingAbsenceOther,
+            pendingAbsenceRequests: $pendingAbsenceLeave + $pendingAbsenceRecup + $pendingAbsenceSick + $pendingAbsenceOther,
             pendingAbsenceLeave: $pendingAbsenceLeave,
             pendingAbsenceRecup: $pendingAbsenceRecup,
+            pendingAbsenceSick: $pendingAbsenceSick,
             pendingAbsenceOther: $pendingAbsenceOther,
             workerFollowUp: $this->countWorkerFollowUp->handle($tenantId),
             iotAlarms: $iotAlarms,

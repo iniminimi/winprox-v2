@@ -20,6 +20,7 @@
             <select id="absence-kind" class="wp-select" wire:model.live="absenceKind">
                 <option value="{{ \App\Enums\ShiftTypeKind::Leave->value }}">{{ __('time.schedule.types.kinds.leave') }}</option>
                 <option value="{{ \App\Enums\ShiftTypeKind::Recup->value }}">{{ __('time.schedule.types.kinds.recup') }}</option>
+                <option value="{{ \App\Enums\ShiftTypeKind::Sick->value }}">{{ __('time.schedule.types.kinds.sick') }}</option>
                 @if ($otherAbsenceTypes->isNotEmpty())
                     <option value="{{ \App\Enums\ShiftTypeKind::Other->value }}">{{ __('time.schedule.types.kinds.other') }}</option>
                 @endif

@@ -43,6 +43,7 @@ class NotifyWorkerAbsenceApprovedAction
         $slug = match ($request->kind) {
             ShiftTypeKind::Leave => 'leave',
             ShiftTypeKind::Recup => 'recup',
+            ShiftTypeKind::Sick => 'sick',
             default => 'other',
         };
         $sameDay = $from === $to;

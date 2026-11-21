@@ -547,7 +547,7 @@
         },
         "absence": {
             "tile": "Ferie / Assenza",
-            "tile_sub": "Richiedi ferie, recupero o altra assenza",
+            "tile_sub": "Richiedi ferie, recupero, malattia o altra assenza",
             "title": "Ferie / Assenza",
             "subtitle": "Vedi le tue richieste e ritirale. La gestione approva o rifiuta.",
             "period": "Periodo",
@@ -662,7 +662,13 @@
             "absence_other_body_range": "La tua assenza dal :from al :to è stata approvata.",
             "absence_other_rejected_title": "Assenza rifiutata",
             "absence_other_rejected_body": "La tua assenza del :date è stata rifiutata.",
-            "absence_other_rejected_body_range": "La tua assenza dal :from al :to è stata rifiutata."
+            "absence_other_rejected_body_range": "La tua assenza dal :from al :to è stata rifiutata.",
+            "absence_sick_title": "Malattia approvata",
+            "absence_sick_body": "La tua malattia del :date è stata approvata.",
+            "absence_sick_body_range": "La tua malattia dal :from al :to è stata approvata.",
+            "absence_sick_rejected_title": "Malattia rifiutata",
+            "absence_sick_rejected_body": "La tua malattia del :date è stata rifiutata.",
+            "absence_sick_rejected_body_range": "La tua malattia dal :from al :to è stata rifiutata."
         }
     },
     "ciao": {
@@ -1076,7 +1082,8 @@
             "leave": "Ferie richieste (in attesa di approvazione)",
             "recup": "Recupero richiesto (in attesa di approvazione)",
             "open_hint": "Fate clic sul contrassegno in basso a sinistra per aprire la richiesta.",
-            "other": "Altra assenza richiesta (in attesa)"
+            "other": "Altra assenza richiesta (in attesa)",
+            "sick": "Malattia richiesta (in attesa di approvazione)"
         }
     },
     "shift_types": {
@@ -1156,7 +1163,7 @@
         },
         "errors": {
             "worker_tenant_mismatch": "Questo esecutore non appartiene a questa organizzazione.",
-            "invalid_kind": "Scegli ferie, recupero o altro.",
+            "invalid_kind": "Scegli ferie, recupero, malattia o altro.",
             "range_inverted": "La data di fine deve essere lo stesso giorno o successiva alla data di inizio.",
             "range_too_long": "Massimo 31 giorni per richiesta.",
             "date_in_past": "La data di inizio non può essere nel passato.",
@@ -1165,7 +1172,7 @@
             "not_pending": "Questa richiesta è già stata gestita.",
             "not_owner": "Puoi ritirare solo la tua richiesta.",
             "reason_required": "Il motivo è obbligatorio (almeno 3 caratteri).",
-            "already_started": "Queste ferie o questo recupero sono già iniziati. Non si può più ritirare.",
+            "already_started": "Questa assenza è già iniziata. Non si può più ritirare.",
             "not_cancellable": "Non puoi ritirare questa richiesta.",
             "half_day_range": "Una mezza giornata può riguardare una sola data.",
             "shift_type_required": "Scegli un tipo."

@@ -20,7 +20,7 @@
                 },
                 {
                     "label": "Panoramica",
-                    "text": "Sotto Dashboard vedi i conteggi di segnalazioni aperte, attività aperte e (con Time) chi è presente ora. Clicchi su una scheda per andare alla schermata correlata. Le richieste aperte di ferie o recupero appaiono come scheda extra verso Time → Richieste, con il conteggio per tipo (es. 1 Ferie, 1 Recupero, 1 Altro)."
+                    "text": "Sotto Dashboard vedi i conteggi di segnalazioni aperte, attività aperte e (con Time) chi è presente ora. Clicchi su una scheda per andare alla schermata correlata. Le richieste aperte di ferie o recupero appaiono come scheda extra verso Time → Richieste, con il conteggio per tipo (es. 1 Ferie, 1 Malattia, 1 Altro)."
                 },
                 {
                     "label": "Metti sul desktop",
@@ -1156,7 +1156,7 @@
                 },
                 {
                     "label": "Ferie / Assenza",
-                    "text": "Dopo l’accesso vedi il riquadro Ferie / Assenza. Richiedi ferie, recupero o (se configurato) un tipo in Altro (dal–al; per Altro prima il tipo; nota facoltativa, max 31 giorni, non nel passato). Le richieste aperte che si sovrappongono vengono rifiutate. Sotto il modulo ci sono le tue richieste: aperte o approvate (non ancora iniziate) puoi ritirarle; se era approvata, il turno torna. La gestione decide in Time → Richieste; il rifiuto richiede un motivo, l’approvazione no. Nessuna e-mail. In alto vedi le ferie residue di quest’anno del diritto, e dell’anno successivo se c’è un diritto, più gli straordinari. Quest’anno fino a oggi: tempo lavorato meno il turno pubblicato, meno recupero sul turno o come richiesta aperta. Non è paga."
+                    "text": "Dopo l’accesso vedi il riquadro Ferie / Assenza. Richiedi ferie, recupero, malattia o (se configurato) un tipo in Altro (dal–al; per Altro prima il tipo; nota facoltativa, max 31 giorni, non nel passato). Le richieste aperte che si sovrappongono vengono rifiutate. Sotto il modulo ci sono le tue richieste: aperte o approvate (non ancora iniziate) puoi ritirarle; se era approvata, il turno torna. La gestione decide in Time → Richieste; il rifiuto richiede un motivo, l’approvazione no. Nessuna e-mail. In alto vedi le ferie residue di quest’anno del diritto, e dell’anno successivo se c’è un diritto, più gli straordinari. Quest’anno fino a oggi: tempo lavorato meno il turno pubblicato, meno recupero sul turno o come richiesta aperta. Non è paga."
                 },
                 {
                     "label": "Nuovi documenti e comunicazioni",
@@ -1938,7 +1938,7 @@
                 },
                 {
                     "label": "Assenza",
-                    "text": "I tipi di turno possono essere <strong>ferie</strong>, <strong>recupero</strong>, <strong>malattia</strong> o <strong>altro</strong>. Quei codici riempiono l’intera giornata, non contano ore e non possono stare con lavoro lo stesso giorno. Gli esecutori possono richiedere ferie, recupero o un tipo in Altro da Clock Point (riquadro Ferie / Assenza); la gestione decide in Time → Richieste. Altro non conta nel saldo ferie."
+                    "text": "I tipi di turno possono essere <strong>ferie</strong>, <strong>recupero</strong>, <strong>malattia</strong> o <strong>altro</strong>. Quei codici riempiono l’intera giornata, non contano ore e non possono stare con lavoro lo stesso giorno. Gli esecutori possono richiedere ferie, recupero, malattia o un tipo in Altro da Clock Point (riquadro Ferie / Assenza); la gestione decide in Time → Richieste. Malattia e Altro non contano nel saldo ferie né nel recupero."
                 },
                 {
                     "label": "Cerca sostituto",
@@ -2022,7 +2022,7 @@
             "actions": [
                 {
                     "label": "Elenco",
-                    "text": "Time → <strong>Richieste</strong> mostra le richieste di ferie, recupero e Altro dal Clock Point. Nessuna e-mail, nessuna casella per l’esecutore. Un badge verde nella navigazione conta le richieste aperte. La dashboard mostra il conteggio per tipo (es. 1 Ferie, 1 Recupero, 1 Altro). Dopo la decisione vedi chi ha approvato o rifiutato."
+                    "text": "Time → <strong>Richieste</strong> mostra le richieste di ferie, recupero, malattia e Altro dal Clock Point. Nessuna e-mail, nessuna casella per l’esecutore. Un badge verde nella navigazione conta le richieste aperte. La dashboard mostra il conteggio per tipo (es. 1 Ferie, 1 Malattia, 1 Altro). Dopo la decisione vedi chi ha approvato o rifiutato."
                 },
                 {
                     "label": "Valuta",

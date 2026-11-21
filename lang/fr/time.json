@@ -547,7 +547,7 @@
         },
         "absence": {
             "tile": "Congé / Absence",
-            "tile_sub": "Demander congé, récup ou autre absence",
+            "tile_sub": "Demander un congé, une récup, une maladie ou une autre absence",
             "title": "Congé / Absence",
             "subtitle": "Consultez vos demandes et retirez-les. La gestion approuve ou refuse.",
             "period": "Période",
@@ -662,7 +662,13 @@
             "absence_other_body_range": "Votre absence du :from au :to a été approuvée.",
             "absence_other_rejected_title": "Absence refusée",
             "absence_other_rejected_body": "Votre absence du :date a été refusée.",
-            "absence_other_rejected_body_range": "Votre absence du :from au :to a été refusée."
+            "absence_other_rejected_body_range": "Votre absence du :from au :to a été refusée.",
+            "absence_sick_title": "Maladie approuvée",
+            "absence_sick_body": "Votre arrêt maladie du :date a été approuvé.",
+            "absence_sick_body_range": "Votre arrêt maladie du :from au :to a été approuvé.",
+            "absence_sick_rejected_title": "Maladie refusée",
+            "absence_sick_rejected_body": "Votre arrêt maladie du :date a été refusé.",
+            "absence_sick_rejected_body_range": "Votre arrêt maladie du :from au :to a été refusé."
         }
     },
     "ciao": {
@@ -1076,7 +1082,8 @@
             "leave": "Congé demandé (en attente d’approbation)",
             "recup": "Récupération demandée (en attente d’approbation)",
             "open_hint": "Cliquez sur le marquage en bas à gauche pour ouvrir la demande.",
-            "other": "Autre absence demandée (en attente)"
+            "other": "Autre absence demandée (en attente)",
+            "sick": "Maladie demandée (en attente d’approbation)"
         }
     },
     "shift_types": {
@@ -1156,7 +1163,7 @@
         },
         "errors": {
             "worker_tenant_mismatch": "Cet exécutant n’appartient pas à cette organisation.",
-            "invalid_kind": "Choisissez congé, récup ou autre.",
+            "invalid_kind": "Choisissez congé, récup, maladie ou autre.",
             "range_inverted": "La date de fin doit être le jour même ou après la date de début.",
             "range_too_long": "31 jours maximum par demande.",
             "date_in_past": "La date de début ne peut pas être dans le passé.",
@@ -1165,7 +1172,7 @@
             "not_pending": "Cette demande a déjà été traitée.",
             "not_owner": "Vous ne pouvez retirer que votre propre demande.",
             "reason_required": "Un motif est obligatoire (au moins 3 caractères).",
-            "already_started": "Ce congé ou cette récup a déjà commencé. Le retrait n’est plus possible.",
+            "already_started": "Cette absence a déjà commencé. Le retrait n’est plus possible.",
             "not_cancellable": "Vous ne pouvez pas retirer cette demande.",
             "half_day_range": "Une demi-journée ne peut concerner qu'une seule date.",
             "shift_type_required": "Choisissez un type."

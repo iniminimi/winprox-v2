@@ -132,7 +132,7 @@ linkt naar zijn lijst):
   - Time-aandacht — open shifts met uitzondering (ook inklokken tijdens verlof, recup, ziekte of feestdag), of evacuatielijst-raadpleging vandaag → Time-alarmen
   - Nieuwe uitvoerder — aangemaakt door een teamleader (alleen naam), tot beheer die persoon
     opslaat of deactiveert → Personen → Uitvoerders, gefilterd op te controleren.
-  - Aanvragen — open verlof-/recup-/Andere-aanvragen, geteld per soort (bijv. 1 Verlof, 1 Recup, 1 Andere) → Time → Aanvragen (Time-module).
+  - Aanvragen — open verlof-/recup-/ziek-/Andere-aanvragen, geteld per soort (bijv. 1 Verlof, 1 Ziek, 1 Andere) → Time → Aanvragen (Time-module).
     Features-fiche, FAQ en handleiding beschrijven dezelfde flow.
   - IoT-alarmen — open IoT-meldingen → IoT Connect (alleen bij IoT-module)
 
@@ -1284,17 +1284,19 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   blokkeert die routes. Het veld Roostercode in Geavanceerde portaal-opties verdwijnt;
   een bestaande code blijft staan. Geplande diensten blijven bewaard. Time, QR-aanmelding, taken
   en de prikklok blijven aan.
-- **Golf 2 — Verlof / Recup / Andere:** Clock Point-tegel. Uitvoerder vraagt `leave`,
-  `recup` of (als er actieve types zijn) `other` met **concreet shifttype** (code+label).
+- **Golf 2 — Verlof / Recup / Ziek / Andere:** Clock Point-tegel. Uitvoerder vraagt `leave`,
+  `recup`, `sick` of (als er actieve types zijn) `other` met **concreet shifttype** (code+label).
   Van–tot, max. 31 dagen, niet in het verleden, optionele toelichting ≤ 500. Overlappende
-  open aanvragen worden geweigerd. Bij leave/recup: eerste actieve shifttype van dat `kind`;
-  bij other: gekozen type. Geen ziek via aanvraag, geen e-mail. Other telt niet voor
-  verlofsaldo. Het verlofsaldo is een teller, geen vakantierechtenberekening: de werkgever vult het jaarlijks recht per uitvoerder in (dit kalenderjaar en het volgende, stappen van een halve dag). Goedgekeurd = verlofdagen op het rooster in dat jaar (hele dag 1, blok met uren of halve aanvraag 0,5, hoogstens 1 per datum), ook als de beheerder ze zelf zet. Gepland = open verlofaanvragen waarvan de dag nog niet als verlof op het rooster staat. Resterend = recht min die twee. Zonder recht geen getal. Recup telt niet mee. Op Clock Point staat het resterende verlof van dit jaar als resterend van het recht (volgend jaar alleen als er een recht is) en de overuren van dit jaar tot vandaag. De uitleg van die overuren staat in de hulp, niet op het portaal. In het beheer staat op de aanwezigheidsbalk Overuren: hetzelfde saldo, totaal naast de naam en daarna per maand. De filter (team, clock point en Toepassen) staat op één lijn. Team en clock point beperken wie in de lijst staat; het saldo blijft dat van het jaar. Berekening: gesloten gewerkte minuten min gepubliceerde werkminuten tot vandaag, min gepubliceerde recup (hele dag = minuten van het weekpatroon, of de standaardverdeling van het contract als er geen patroon is; blok met uren = die minuten) en min open recupaanvragen op dagen die nog niet als recup gepland zijn. Zonder patroon én zonder contract telt een hele recupdag 0 minuten. Conceptrooster telt niet. Geen loon. Op het uurrooster staat het saldo in de ballon bij de naam, niet onder de naam. De beslismodal toont het viertal en waarschuwt onder nul, zonder de goedkeuring te blokkeren. Een halve dag kan alleen als de aanvraag één dag is. Beheer: Time → **Aanvragen** (badge = open);
+  open aanvragen worden geweigerd. Bij leave/recup/sick: eerste actieve shifttype van dat `kind`
+  (één ziek-type volstaat); bij other: gekozen type (bv. KV, baaldag). Alles via goedkeuring
+  onder Time → Aanvragen; geen e-mail. Halve dag alleen bij leave op één datum. Sick en other
+  tellen **niet** voor verlofsaldo noch voor recup/overuren — dat is secretariaatszaak, niet
+  WinProx. Het verlofsaldo is een teller, geen vakantierechtenberekening: de werkgever vult het jaarlijks recht per uitvoerder in (dit kalenderjaar en het volgende, stappen van een halve dag). Goedgekeurd = verlofdagen op het rooster in dat jaar (hele dag 1, blok met uren of halve aanvraag 0,5, hoogstens 1 per datum), ook als de beheerder ze zelf zet. Gepland = open verlofaanvragen waarvan de dag nog niet als verlof op het rooster staat. Resterend = recht min die twee. Zonder recht geen getal. Recup telt niet mee. Op Clock Point staat het resterende verlof van dit jaar als resterend van het recht (volgend jaar alleen als er een recht is) en de overuren van dit jaar tot vandaag. De uitleg van die overuren staat in de hulp, niet op het portaal. In het beheer staat op de aanwezigheidsbalk Overuren: hetzelfde saldo, totaal naast de naam en daarna per maand. De filter (team, clock point en Toepassen) staat op één lijn. Team en clock point beperken wie in de lijst staat; het saldo blijft dat van het jaar. Berekening: gesloten gewerkte minuten min gepubliceerde werkminuten tot vandaag, min gepubliceerde recup (hele dag = minuten van het weekpatroon, of de standaardverdeling van het contract als er geen patroon is; blok met uren = die minuten) en min open recupaanvragen op dagen die nog niet als recup gepland zijn. Zonder patroon én zonder contract telt een hele recupdag 0 minuten. Conceptrooster telt niet. Geen loon. Op het uurrooster staat het saldo in de ballon bij de naam, niet onder de naam. De beslismodal toont het viertal en waarschuwt onder nul, zonder de goedkeuring te blokkeren. Een halve dag kan alleen als de aanvraag één dag is. Beheer: Time → **Aanvragen** (badge = open);
   dashboardtegel alleen als er open aanvragen zijn; toont het aantal per soort
-  (bijv. 1 Verlof, 1 Recup, 1 Andere).
+  (bijv. 1 Verlof, 1 Recup, 1 Ziek, 1 Andere).
   Weigeren eist een reden (min. 3); goedkeuren niet. Aanvragen toont wie heeft goedgekeurd
   of geweigerd.   **Open** aanvragen: overlay in het beheer-uurrooster (week/maand + print)
-  op elke geraakte cel (gestippelde rand + tooltip Verlof/Recup aangevraagd);
+  op elke geraakte cel (gestippelde rand + tooltip Verlof/Recup/Ziek/Andere aangevraagd);
   markering linksonder (of Ctrl/Meta zonder uren-link) opent Time → Aanvragen
   met `?status=pending&decide={id}` (beslismodal). Geen `PlannedShift` tot
   goedkeuring; onderliggende dienst blijft zichtbaar en bewerkbaar.

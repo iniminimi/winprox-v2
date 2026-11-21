@@ -26,7 +26,8 @@
         "pending_absence_recup": ":count TOIL",
         "iot_alarms": "IoT alarms",
         "staffing_shortfalls": "Staffing shortfall",
-        "pending_absence_other": ":count Other"
+        "pending_absence_other": ":count Other",
+        "pending_absence_sick": ":count Sick"
     },
     "recent": {
         "title": "Recent issues",

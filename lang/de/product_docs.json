@@ -43,7 +43,7 @@
                     "Ein- und ausstempeln und sehen, wer anwesend ist.",
                     "Die erfassten Stunden neben den Dienstplan legen.",
                     "Schichten planen und veröffentlichen.",
-                    "Urlaubs-, Ausgleichs- und Sonstige-Anträge bearbeiten.",
+                    "Urlaubs-, Ausgleichs-, Krankheits- und Sonstige-Anträge bearbeiten.",
                     "Meldungen, Aufgaben und Inspektionsrunden verwalten.",
                     "Standorte, Teams, Personen und Units verwalten.",
                     "Die RSZ/CIAO-Meldung kann in den Einstellungen aktiviert werden. Optionale GPS-Arbeitsbesuche verknüpfen einen Besuch mit einem Ort.",
@@ -101,7 +101,7 @@
                 "title": "Clock Point",
                 "body": "Clock Point ist der Ort, an dem Mitarbeitende ihre Arbeitsfunktionen öffnen, im Browser. Nach dem Einstempeln kann ein Willkommensbildschirm die Runde des Tages als Zeitstrahl zeigen.",
                 "items": [
-                    "Ein- und ausstempeln, den eigenen veröffentlichten Dienstplan sehen, die eigenen Stunden sehen, Urlaub, Ausgleich oder Sonstige beantragen.",
+                    "Ein- und ausstempeln, den eigenen veröffentlichten Dienstplan sehen, die eigenen Stunden sehen, Urlaub, Ausgleich, Krankheit oder Sonstige beantragen.",
                     "Aufgaben erledigen, eine Inspektionsrunde folgen und einen Arbeitsbesuch starten, wenn GPS an ist.",
                     "Ein optionales Stempeldisplay zeigt einen QR-Code, der von selbst wechselt. Sie koppeln das Display mit einem Einmalcode und einer Bestätigung.",
                     "Sie wählen, wann das Display an ist, zum Beispiel von 06:00 bis 19:00. Außerhalb kann es aus bleiben oder einen Ruhebildschirm zeigen: Fotos, eine Zeigeruhr, eine Flip-Uhr oder einen schwarzen Bildschirm. Den Ton schalten Sie pro Display ein oder aus.",
@@ -132,7 +132,7 @@
             },
             {
                 "title": "Urlaub und Abwesenheit",
-                "body": "Mitarbeitende beantragen Urlaub, Ausgleich oder (falls eingerichtet) einen Typ unter Sonstige über Clock Point. Die Verwaltung entscheidet unter Time → Anträge. Dieser Antrag ist nicht für Krankheit, und es geht keine E-Mail. Sonstige zählt nicht zum Urlaubssaldo.",
+                "body": "Mitarbeitende beantragen Urlaub, Ausgleich, Krankheit oder (falls eingerichtet) einen Typ unter Sonstige über Clock Point. Die Verwaltung entscheidet unter Time → Anträge — auch Krankheit muss genehmigt werden. Es geht keine E-Mail. Krankheit und Sonstige zählen nicht zum Urlaubssaldo oder Ausgleich; das macht das Sozialsekretariat, nicht WinProx.",
                 "items": [
                     "Ein Antrag läuft von einem Anfangs- bis zu einem Enddatum, höchstens 31 Tage, und nicht in der Vergangenheit.",
                     "Im Verwaltungs-Dienstplan sehen Sie offene Anträge als Markierung an den betreffenden Tagen; über die Markierung öffnen Sie Time → Anträge (der Dienst bleibt bis zur Freigabe stehen).",

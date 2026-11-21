@@ -43,7 +43,7 @@
                     "Fichar la entrada y la salida, y ver quién está presente.",
                     "Poner las horas registradas junto al cuadrante.",
                     "Planificar turnos y publicarlos.",
-                    "Tramitar solicitudes de vacaciones, recup y Otro.",
+                    "Tramitar solicitudes de vacaciones, recup, baja y Otro.",
                     "Gestionar avisos, tareas y rondas de inspección.",
                     "Gestionar sedes, equipos, personas y unidades.",
                     "El registro ONSS/CIAO se puede activar en los ajustes. Las visitas GPS opcionales vinculan una visita a un lugar.",
@@ -101,7 +101,7 @@
                 "title": "Clock Point",
                 "body": "Clock Point es el lugar donde las personas abren sus funciones de trabajo, en el navegador. Tras fichar, una pantalla de bienvenida puede mostrar la ronda del día como una línea de tiempo.",
                 "items": [
-                    "Fichar, ver el cuadrante publicado, ver las propias horas, pedir vacaciones, recup u Otro.",
+                    "Fichar, ver el cuadrante publicado, ver las propias horas, pedir vacaciones, recup, baja u Otro.",
                     "Hacer tareas, seguir una ronda de inspección y empezar una visita cuando el GPS está activo.",
                     "Una pantalla de fichaje opcional muestra un QR que cambia solo. Se vincula con un código de un solo uso y una confirmación.",
                     "Se elige cuándo está encendida la pantalla, por ejemplo de 06:00 a 19:00. Fuera de ese horario puede quedarse apagada o mostrar una pantalla de reposo: fotos, un reloj de agujas, un reloj de paletas o una pantalla negra. El sonido se activa o desactiva por pantalla.",
@@ -132,7 +132,7 @@
             },
             {
                 "title": "Vacaciones y ausencia",
-                "body": "Los trabajadores solicitan vacaciones, recup u (si está configurado) un tipo en Otro vía Clock Point. La gestión decide en Time → Solicitudes. Esta solicitud no sirve para baja, y no se envía correo. Otro no cuenta en el saldo de vacaciones.",
+                "body": "Los trabajadores solicitan vacaciones, recup, baja u (si está configurado) un tipo en Otro vía Clock Point. La gestión decide en Time → Solicitudes — la baja también debe aprobarse. No se envía correo. Baja y Otro no cuentan en el saldo de vacaciones ni en recup; eso lo trata la secretaría social, no WinProx.",
                 "items": [
                     "Una solicitud va de una fecha de inicio a una fecha de fin, como máximo 31 días, y no en el pasado.",
                     "En el cuadrante de administración, las solicitudes abiertas aparecen como una marca en los días correspondientes; esa marca abre Time → Solicitudes (el turno permanece hasta la aprobación).",

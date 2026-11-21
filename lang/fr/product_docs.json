@@ -43,7 +43,7 @@
                     "Pointer l’entrée et la sortie, et voir qui est présent.",
                     "Mettre les heures enregistrées à côté du planning.",
                     "Planifier les services et les publier.",
-                    "Traiter les demandes de congé, de récup et Autre.",
+                    "Traiter les demandes de congé, de récup, de maladie et Autre.",
                     "Gérer les signalements, les tâches et les tournées d’inspection.",
                     "Gérer les sites, les équipes, les personnes et les unités.",
                     "L’enregistrement ONSS/CIAO peut être activé dans les paramètres. Les visites GPS facultatives relient une visite à un lieu.",
@@ -101,7 +101,7 @@
                 "title": "Clock Point",
                 "body": "Clock Point est l’endroit où les personnes ouvrent leurs fonctions de travail, dans le navigateur. Après le pointage, un écran d’accueil peut montrer la tournée du jour comme une ligne du temps.",
                 "items": [
-                    "Pointer, voir son planning publié, voir ses heures, demander un congé, une récup ou Autre.",
+                    "Pointer, voir son planning publié, voir ses heures, demander un congé, une récup, une maladie ou Autre.",
                     "Exécuter des tâches, suivre une tournée d’inspection et démarrer une visite quand le GPS est actif.",
                     "Un écran de pointeuse facultatif affiche un QR qui change tout seul. Vous le reliez avec un code à usage unique et une confirmation.",
                     "Vous choisissez quand l’écran est allumé, par exemple de 06:00 à 19:00. En dehors, il peut rester éteint ou montrer un écran de repos : photos, une horloge à aiguilles, une horloge à palettes ou un écran noir. Le son s’active ou se désactive par écran.",
@@ -132,7 +132,7 @@
             },
             {
                 "title": "Congé et absence",
-                "body": "Les collaborateurs demandent un congé, une récup ou (si configuré) un type Autre via Clock Point. La gestion décide sous Time → Demandes. Cette demande ne sert pas à signaler une maladie, et aucun e-mail n’est envoyé. Autre ne compte pas dans le solde de congés.",
+                "body": "Les collaborateurs demandent un congé, une récup, une maladie ou (si configuré) un type Autre via Clock Point. La gestion décide sous Time → Demandes — la maladie aussi doit être approuvée. Aucun e-mail n’est envoyé. Maladie et Autre ne comptent pas dans le solde de congés ni la récup ; le secrétariat social s’en charge, pas WinProx.",
                 "items": [
                     "Une demande va d’une date de début à une date de fin, 31 jours au maximum, et pas dans le passé.",
                     "Dans le planning d’administration, les demandes ouvertes apparaissent comme un marquage sur les jours concernés ; ce marquage ouvre Time → Demandes (le service reste jusqu’à l’approbation).",

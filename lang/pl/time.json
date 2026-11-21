@@ -37,7 +37,7 @@
         },
         "errors": {
             "worker_tenant_mismatch": "Ten pracownik nie należy do tej organizacji.",
-            "invalid_kind": "Wybierz urlop, odbiór albo inną.",
+            "invalid_kind": "Wybierz urlop, odbiór, chorobowe albo inną.",
             "range_inverted": "Data końcowa musi przypadać w dniu początkowym albo później.",
             "range_too_long": "Najwyżej 31 dni na wniosek.",
             "date_in_past": "Data początkowa nie może być w przeszłości.",
@@ -46,7 +46,7 @@
             "not_pending": "Ten wniosek został już rozpatrzony.",
             "not_owner": "Można wycofać tylko własny wniosek.",
             "reason_required": "Powód jest wymagany (co najmniej 3 znaki).",
-            "already_started": "Ten urlop albo ten odbiór już się rozpoczął. Nie można go już wycofać.",
+            "already_started": "This absence has already started. It can no longer be withdrawn.",
             "not_cancellable": "Tego wniosku nie można wycofać.",
             "half_day_range": "Pół dnia może obejmować tylko jedną datę.",
             "shift_type_required": "Wybierz typ."
@@ -192,7 +192,7 @@
             "form_title": "Nowy wniosek",
             "half_day": "Pół dnia",
             "cancel_confirm": "Wycofać ten wniosek?",
-            "cancel_approved_confirm": "Wycofać tę zatwierdzoną nieobecność? Grafik przywraca poprzednie zmiany.",
+            "cancel_approved_confirm": "Withdraw this approved absence? The roster restores the previous duties.",
             "submitted": "Wniosek wysłany.",
             "cancelled": "Wniosek wycofany.",
             "decision": "Decyzja",
@@ -287,7 +287,13 @@
             "absence_other_body_range": "Twoja nieobecność od :from do :to została zatwierdzona.",
             "absence_other_rejected_title": "Nieobecność odrzucona",
             "absence_other_rejected_body": "Twoja nieobecność w dniu :date została odrzucona.",
-            "absence_other_rejected_body_range": "Twoja nieobecność od :from do :to została odrzucona."
+            "absence_other_rejected_body_range": "Twoja nieobecność od :from do :to została odrzucona.",
+            "absence_sick_title": "Chorobowe zatwierdzone",
+            "absence_sick_body": "Twoje chorobowe w dniu :date zostało zatwierdzone.",
+            "absence_sick_body_range": "Twoje chorobowe od :from do :to zostało zatwierdzone.",
+            "absence_sick_rejected_title": "Chorobowe odrzucone",
+            "absence_sick_rejected_body": "Twoje chorobowe w dniu :date zostało odrzucone.",
+            "absence_sick_rejected_body_range": "Twoje chorobowe od :from do :to zostało odrzucone."
         }
     }
 }

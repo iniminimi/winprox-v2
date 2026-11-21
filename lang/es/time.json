@@ -547,7 +547,7 @@
         },
         "absence": {
             "tile": "Vacaciones / Ausencia",
-            "tile_sub": "Solicitar vacaciones, recup u otra ausencia",
+            "tile_sub": "Solicitar vacaciones, recup, baja u otra ausencia",
             "title": "Vacaciones / Ausencia",
             "subtitle": "Vea sus solicitudes y retírelas. La gestión aprueba o rechaza.",
             "period": "Periodo",
@@ -662,7 +662,13 @@
             "absence_other_body_range": "Tu ausencia del :from al :to fue aprobada.",
             "absence_other_rejected_title": "Ausencia rechazada",
             "absence_other_rejected_body": "Tu ausencia del :date fue rechazada.",
-            "absence_other_rejected_body_range": "Tu ausencia del :from al :to fue rechazada."
+            "absence_other_rejected_body_range": "Tu ausencia del :from al :to fue rechazada.",
+            "absence_sick_title": "Baja aprobada",
+            "absence_sick_body": "Tu baja del :date fue aprobada.",
+            "absence_sick_body_range": "Tu baja del :from al :to fue aprobada.",
+            "absence_sick_rejected_title": "Baja rechazada",
+            "absence_sick_rejected_body": "Tu baja del :date fue rechazada.",
+            "absence_sick_rejected_body_range": "Tu baja del :from al :to fue rechazada."
         }
     },
     "ciao": {
@@ -1076,7 +1082,8 @@
             "leave": "Vacaciones solicitadas (pendiente de aprobación)",
             "recup": "Recup solicitado (pendiente de aprobación)",
             "open_hint": "Haga clic en la marca abajo a la izquierda para abrir la solicitud.",
-            "other": "Otra ausencia solicitada (pendiente)"
+            "other": "Otra ausencia solicitada (pendiente)",
+            "sick": "Baja solicitada (pendiente de aprobación)"
         }
     },
     "shift_types": {
@@ -1156,7 +1163,7 @@
         },
         "errors": {
             "worker_tenant_mismatch": "Este trabajador no pertenece a esta organización.",
-            "invalid_kind": "Elige vacaciones, recup u otro.",
+            "invalid_kind": "Elige vacaciones, recup, baja u otro.",
             "range_inverted": "La fecha de fin debe ser el mismo día o posterior a la de inicio.",
             "range_too_long": "Máximo 31 días por solicitud.",
             "date_in_past": "La fecha de inicio no puede estar en el pasado.",
@@ -1165,7 +1172,7 @@
             "not_pending": "Esta solicitud ya está tramitada.",
             "not_owner": "Solo puedes retirar tu propia solicitud.",
             "reason_required": "El motivo es obligatorio (al menos 3 caracteres).",
-            "already_started": "Este permiso o compensación ya ha empezado. Ya no se puede retirar.",
+            "already_started": "Esta ausencia ya ha empezado. Ya no se puede retirar.",
             "not_cancellable": "No puede retirar esta solicitud.",
             "half_day_range": "Una media jornada solo puede ser una fecha.",
             "shift_type_required": "Elige un tipo."

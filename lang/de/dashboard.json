@@ -26,7 +26,8 @@
         "pending_absence_recup": ":count Ausgleich",
         "iot_alarms": "IoT-Alarme",
         "staffing_shortfalls": "Unterbesetzung",
-        "pending_absence_other": ":count Sonstige"
+        "pending_absence_other": ":count Sonstige",
+        "pending_absence_sick": ":count Krank"
     },
     "recent": {
         "title": "Aktuelle Meldungen",

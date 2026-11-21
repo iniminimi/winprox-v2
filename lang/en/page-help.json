@@ -20,7 +20,7 @@
                 },
                 {
                     "label": "Overview",
-                    "text": "Under Dashboard you see counts of open issues, open tasks and (with Time) who is present now. Click a card to go to the related screen. Open leave, TOIL or Other requests appear as an extra card to Time → Requests, with the count per kind (e.g. 1 Leave, 1 TOIL, 1 Other)."
+                    "text": "Under Dashboard you see counts of open issues, open tasks and (with Time) who is present now. Click a card to go to the related screen. Open leave, TOIL, sick leave or Other requests appear as an extra card to Time → Requests, with the count per kind (e.g. 1 Leave, 1 Sick, 1 Other)."
                 },
                 {
                     "label": "Add to desktop",
@@ -1160,7 +1160,7 @@
                 },
                 {
                     "label": "Leave / Absence",
-                    "text": "After sign-in you see the Leave / Absence tile. Request leave, TOIL or (if set up) a type under Other (from–to; for Other first pick the type; optional note, max. 31 days, not in the past). Overlapping open requests are refused. Your own requests sit below the form: you can withdraw an open or approved request that has not started; approved leave restores the roster. Staff decide under Time → Requests; reject needs a reason, approve does not. No email is sent. At the top you see leave left this year of the entitlement, and next year when an entitlement is set, plus overtime. This year up to today: time worked minus the published roster, minus time off already on the roster or in an open request. Not pay."
+                    "text": "After sign-in you see the Leave / Absence tile. Request leave, TOIL, sick leave or (if set up) a type under Other (from–to; for Other first pick the type; optional note, max. 31 days, not in the past). Overlapping open requests are refused. Your own requests sit below the form: you can withdraw an open or approved request that has not started; approved leave restores the roster. Staff decide under Time → Requests; reject needs a reason, approve does not. No email is sent. At the top you see leave left this year of the entitlement, and next year when an entitlement is set, plus overtime. This year up to today: time worked minus the published roster, minus time off already on the roster or in an open request. Not pay."
                 }
             ]
         },
@@ -1938,7 +1938,7 @@
                 },
                 {
                     "label": "Absence",
-                    "text": "Shift types can be <strong>leave</strong>, <strong>time off in lieu</strong>, <strong>sick</strong> or <strong>other</strong>. Those codes fill the whole day, count no hours, and cannot sit with work that day. Workers can request leave, TOIL or a type under Other from Clock Point (Leave / Absence tile); staff decide under Time → Requests. Other does not count toward leave balance."
+                    "text": "Shift types can be <strong>leave</strong>, <strong>time off in lieu</strong>, <strong>sick</strong> or <strong>other</strong>. Those codes fill the whole day, count no hours, and cannot sit with work that day. Workers can request leave, TOIL, sick leave or a type under Other from Clock Point (Leave / Absence tile); staff decide under Time → Requests. Sick leave and Other do not count toward leave balance or TOIL."
                 },
                 {
                     "label": "Find replacement",
@@ -2022,7 +2022,7 @@
             "actions": [
                 {
                     "label": "List",
-                    "text": "Time → <strong>Requests</strong> shows leave, TOIL and Other requests from Clock Point. No email, no inbox for the worker. A green badge in the navigation counts open requests. The dashboard shows the count per kind (e.g. 1 Leave, 1 TOIL, 1 Other). After a decision you see who approved or rejected it."
+                    "text": "Time → <strong>Requests</strong> shows leave, TOIL, sick leave and Other requests from Clock Point. No email, no inbox for the worker. A green badge in the navigation counts open requests. The dashboard shows the count per kind (e.g. 1 Leave, 1 Sick, 1 Other). After a decision you see who approved or rejected it."
                 },
                 {
                     "label": "Review",

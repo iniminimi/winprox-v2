@@ -37,7 +37,7 @@
         },
         "errors": {
             "worker_tenant_mismatch": "Este trabalhador não pertence a esta organização.",
-            "invalid_kind": "Escolha férias, compensação ou outra.",
+            "invalid_kind": "Escolha férias, compensação, baixa ou outra.",
             "range_inverted": "A data de fim tem de ser no dia de início ou depois.",
             "range_too_long": "Máximo de 31 dias por pedido.",
             "date_in_past": "A data de início não pode estar no passado.",
@@ -46,7 +46,7 @@
             "not_pending": "Este pedido já foi tratado.",
             "not_owner": "Só pode retirar o seu próprio pedido.",
             "reason_required": "É necessário um motivo (pelo menos 3 caracteres).",
-            "already_started": "Estas férias ou esta compensação já começaram. Já não as pode retirar.",
+            "already_started": "This absence has already started. It can no longer be withdrawn.",
             "not_cancellable": "Não pode retirar este pedido.",
             "half_day_range": "Meio dia só pode ser uma única data.",
             "shift_type_required": "Escolha um tipo."
@@ -192,7 +192,7 @@
             "form_title": "Pedido novo",
             "half_day": "Meio dia",
             "cancel_confirm": "Retirar este pedido?",
-            "cancel_approved_confirm": "Retirar esta ausência aprovada? O horário repõe os turnos anteriores.",
+            "cancel_approved_confirm": "Withdraw this approved absence? The roster restores the previous duties.",
             "submitted": "Pedido enviado.",
             "cancelled": "Pedido retirado.",
             "decision": "Decisão",
@@ -287,7 +287,13 @@
             "absence_other_body_range": "A sua ausência de :from a :to foi aprovada.",
             "absence_other_rejected_title": "Ausência recusada",
             "absence_other_rejected_body": "A sua ausência em :date foi recusada.",
-            "absence_other_rejected_body_range": "A sua ausência de :from a :to foi recusada."
+            "absence_other_rejected_body_range": "A sua ausência de :from a :to foi recusada.",
+            "absence_sick_title": "Baixa aprovada",
+            "absence_sick_body": "A sua baixa em :date foi aprovada.",
+            "absence_sick_body_range": "A sua baixa de :from a :to foi aprovada.",
+            "absence_sick_rejected_title": "Baixa recusada",
+            "absence_sick_rejected_body": "A sua baixa em :date foi recusada.",
+            "absence_sick_rejected_body_range": "A sua baixa de :from a :to foi recusada."
         }
     }
 }

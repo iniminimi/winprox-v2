@@ -663,6 +663,56 @@ it('weigert het aanvragen-scherm zonder time-module niet dubbel', function () {
         ->and(WebhookEndpoint::AVAILABLE_EVENTS)->toContain('time.absence.rejected');
 });
 
+it('vraagt ziekte aan, keurt goed naar rooster en weigert halve dag', function () {
+    [$tenant, $admin, , $worker] = absenceTenant();
+    ShiftType::factory()->create([
+        'tenant_id' => $tenant->id,
+        'code' => 'ZK',
+        'label' => 'Ziek',
+        'kind' => ShiftTypeKind::Sick,
+        'start_time' => null,
+        'end_time' => null,
+        'break_minutes' => 0,
+        'is_active' => true,
+    ]);
+
+    expect(fn () => app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Sick, '2026-09-23', '2026-09-23', null, true),
+    ))->toThrow(\InvalidArgumentException::class, 'half_day_range');
+
+    $request = app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Sick, '2026-09-23', '2026-09-24'),
+    );
+
+    expect($request->status)->toBe(AbsenceRequestStatus::Pending)
+        ->and($request->kind)->toBe(ShiftTypeKind::Sick)
+        ->and((float) $request->day_portion)->toBe(1.0);
+
+    $decided = app(DecideAbsenceRequestAction::class)->handle(
+        $tenant,
+        $request,
+        new DecideAbsenceRequestData(true, ''),
+        $admin,
+    );
+
+    expect($decided->status)->toBe(AbsenceRequestStatus::Approved);
+
+    $rows = PlannedShift::query()
+        ->where('worker_id', $worker->id)
+        ->whereDate('work_date', '>=', '2026-09-23')
+        ->whereDate('work_date', '<=', '2026-09-24')
+        ->get();
+
+    expect($rows)->toHaveCount(2);
+    foreach ($rows as $row) {
+        expect($row->kind)->toBe(ShiftTypeKind::Sick);
+    }
+});
+
 it('vraagt Andere afwezigheid aan met gekozen shifttype en zet die op het rooster na goedkeuren', function () {
     [$tenant, $admin, , $worker] = absenceTenant();
     $otherType = ShiftType::factory()->create([

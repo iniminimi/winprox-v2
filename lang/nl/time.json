@@ -547,7 +547,7 @@
         },
         "absence": {
             "tile": "Verlof / Afwezigheid",
-            "tile_sub": "Verlof, recup of andere afwezigheid aanvragen",
+            "tile_sub": "Verlof, recup, ziekte of andere afwezigheid aanvragen",
             "title": "Verlof / Afwezigheid",
             "subtitle": "Bekijk je aanvragen en trek ze in. Beheer keurt goed of weigert.",
             "period": "Periode",
@@ -662,7 +662,13 @@
             "absence_other_body_range": "Je afwezigheid van :from tot :to is goedgekeurd.",
             "absence_other_rejected_title": "Afwezigheid geweigerd",
             "absence_other_rejected_body": "Je afwezigheid op :date is geweigerd.",
-            "absence_other_rejected_body_range": "Je afwezigheid van :from tot :to is geweigerd."
+            "absence_other_rejected_body_range": "Je afwezigheid van :from tot :to is geweigerd.",
+            "absence_sick_title": "Ziekte goedgekeurd",
+            "absence_sick_body": "Je ziekmelding op :date is goedgekeurd.",
+            "absence_sick_body_range": "Je ziekmelding van :from tot :to is goedgekeurd.",
+            "absence_sick_rejected_title": "Ziekte geweigerd",
+            "absence_sick_rejected_body": "Je ziekmelding op :date is geweigerd.",
+            "absence_sick_rejected_body_range": "Je ziekmelding van :from tot :to is geweigerd."
         }
     },
     "ciao": {
@@ -1076,7 +1082,8 @@
             "leave": "Verlof aangevraagd (wacht op goedkeuring)",
             "recup": "Recup aangevraagd (wacht op goedkeuring)",
             "open_hint": "Klik op de markering linksonder om de aanvraag te openen.",
-            "other": "Andere aangevraagd (wacht op goedkeuring)"
+            "other": "Andere aangevraagd (wacht op goedkeuring)",
+            "sick": "Ziekte aangevraagd (wacht op goedkeuring)"
         }
     },
     "shift_types": {
@@ -1156,7 +1163,7 @@
         },
         "errors": {
             "worker_tenant_mismatch": "Deze uitvoerder hoort niet bij deze organisatie.",
-            "invalid_kind": "Kies verlof, recup of andere.",
+            "invalid_kind": "Kies verlof, recup, ziek of andere.",
             "range_inverted": "De einddatum moet op of na de startdatum liggen.",
             "range_too_long": "Maximaal 31 dagen per aanvraag.",
             "date_in_past": "De startdatum mag niet in het verleden liggen.",
@@ -1165,7 +1172,7 @@
             "not_pending": "Deze aanvraag is al afgehandeld.",
             "not_owner": "Je kunt alleen je eigen aanvraag intrekken.",
             "reason_required": "Een reden is verplicht (minstens 3 tekens).",
-            "already_started": "Dit verlof of recup is al begonnen. Intrekken kan niet meer.",
+            "already_started": "Deze afwezigheid is al begonnen. Intrekken kan niet meer.",
             "not_cancellable": "Deze aanvraag kun je niet intrekken.",
             "half_day_range": "Een halve dag kan alleen op één datum.",
             "shift_type_required": "Kies een type."

@@ -37,7 +37,7 @@
         },
         "errors": {
             "worker_tenant_mismatch": "Acest lucrător nu aparține acestei organizații.",
-            "invalid_kind": "Alegeți concediu, recuperare sau altceva.",
+            "invalid_kind": "Alegeți concediu, recuperare, boală sau altceva.",
             "range_inverted": "Data de sfârșit trebuie să fie în ziua de început sau după.",
             "range_too_long": "Maximum 31 de zile pe cerere.",
             "date_in_past": "Data de început nu poate fi în trecut.",
@@ -46,7 +46,7 @@
             "not_pending": "Această cerere a fost deja tratată.",
             "not_owner": "Puteți retrage doar propria cerere.",
             "reason_required": "Este necesar un motiv (cel puțin 3 caractere).",
-            "already_started": "Acest concediu sau această recuperare a început deja. Nu îl mai puteți retrage.",
+            "already_started": "This absence has already started. It can no longer be withdrawn.",
             "not_cancellable": "Nu puteți retrage această cerere.",
             "half_day_range": "O jumătate de zi poate fi doar o singură dată.",
             "shift_type_required": "Alegeți un tip."
@@ -192,7 +192,7 @@
             "form_title": "Cerere nouă",
             "half_day": "Jumătate de zi",
             "cancel_confirm": "Retrageți această cerere?",
-            "cancel_approved_confirm": "Retrageți această absență aprobată? Orarul reface turele anterioare.",
+            "cancel_approved_confirm": "Withdraw this approved absence? The roster restores the previous duties.",
             "submitted": "Cerere trimisă.",
             "cancelled": "Cerere retrasă.",
             "decision": "Decizie",
@@ -287,7 +287,13 @@
             "absence_other_body_range": "Absența dvs. din :from până la :to a fost aprobată.",
             "absence_other_rejected_title": "Absență respinsă",
             "absence_other_rejected_body": "Absența dvs. din :date a fost respinsă.",
-            "absence_other_rejected_body_range": "Absența dvs. din :from până la :to a fost respinsă."
+            "absence_other_rejected_body_range": "Absența dvs. din :from până la :to a fost respinsă.",
+            "absence_sick_title": "Boală aprobată",
+            "absence_sick_body": "Concediul medical din :date a fost aprobat.",
+            "absence_sick_body_range": "Concediul medical din :from până la :to a fost aprobat.",
+            "absence_sick_rejected_title": "Boală respinsă",
+            "absence_sick_rejected_body": "Concediul medical din :date a fost respins.",
+            "absence_sick_rejected_body_range": "Concediul medical din :from până la :to a fost respins."
         }
     }
 }

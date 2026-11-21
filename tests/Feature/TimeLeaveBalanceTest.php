@@ -216,6 +216,52 @@ it('weigert een halve dag over meerdere datums en toont een tekort', function ()
         ->assertSee(__('time.leave_balance.shortfall', ['days' => '−1']), false);
 });
 
+it('telt ziekte niet mee in het verlofsaldo', function () {
+    Carbon::setTestNow(Carbon::parse('2026-11-18 10:00:00'));
+    [$tenant, $admin, , $worker, $leave] = leaveBalanceWorld();
+    app(SetWorkerLeaveEntitlementAction::class)->handle($tenant, $worker, 2026, '2', 2027, null, null);
+
+    ShiftType::factory()->create([
+        'tenant_id' => $tenant->id,
+        'code' => 'ZK',
+        'label' => 'Ziek',
+        'kind' => ShiftTypeKind::Sick,
+        'start_time' => null,
+        'end_time' => null,
+        'break_minutes' => 0,
+        'is_active' => true,
+    ]);
+
+    $request = app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Sick, '2026-11-20', '2026-11-20'),
+    );
+    app(DecideAbsenceRequestAction::class)->handle(
+        $tenant,
+        $request,
+        new DecideAbsenceRequestData(true, ''),
+        $admin,
+    );
+
+    PlannedShift::query()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-11-21',
+        'shift_type_id' => $leave->id,
+        'kind' => ShiftTypeKind::Leave,
+        'status' => PlannedShiftStatus::Published,
+        'break_minutes' => 0,
+    ]);
+
+    $balance = app(WorkerLeaveBalanceAction::class)->handle($tenant, [(int) $worker->id], 2026)[(int) $worker->id];
+
+    expect($balance->entitlementHalves)->toBe(4)
+        ->and($balance->approvedHalves)->toBe(2)
+        ->and($balance->plannedHalves)->toBe(0)
+        ->and($balance->remainingHalves())->toBe(2);
+});
+
 it('telt Andere-afwezigheid niet mee in het verlofsaldo', function () {
     Carbon::setTestNow(Carbon::parse('2026-11-18 10:00:00'));
     [$tenant, $admin, , $worker, $leave] = leaveBalanceWorld();

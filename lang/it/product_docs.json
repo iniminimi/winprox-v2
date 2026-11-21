@@ -43,7 +43,7 @@
                     "Timbrare entrata e uscita, e vedere chi è presente.",
                     "Affiancare le ore registrate ai turni.",
                     "Pianificare i turni e pubblicarli.",
-                    "Gestire le richieste di ferie, recupero e Altro.",
+                    "Gestire le richieste di ferie, recupero, malattia e Altro.",
                     "Gestire segnalazioni, compiti e giri di ispezione.",
                     "Gestire sedi, team, persone e unità.",
                     "La registrazione ONSS/CIAO si può attivare nelle impostazioni. Le visite GPS facoltative collegano una visita a un luogo.",
@@ -101,7 +101,7 @@
                 "title": "Clock Point",
                 "body": "Clock Point è il posto in cui le persone aprono le funzioni di lavoro, nel browser. Dopo la timbratura, una schermata di benvenuto può mostrare il giro del giorno come una sequenza.",
                 "items": [
-                    "Timbrare, vedere il proprio turno pubblicato, vedere le proprie ore, chiedere ferie, recupero o Altro.",
+                    "Timbrare, vedere il proprio turno pubblicato, vedere le proprie ore, chiedere ferie, recupero, malattia o Altro.",
                     "Svolgere compiti, seguire un giro di ispezione e avviare una visita quando il GPS è attivo.",
                     "Uno schermo timbratrice facoltativo mostra un QR che cambia da solo. Si collega con un codice monouso e una conferma.",
                     "Si sceglie quando lo schermo è acceso, per esempio dalle 06:00 alle 19:00. Fuori orario può restare spento o mostrare una schermata di riposo: foto, un orologio a lancette, un orologio a palette o uno schermo nero. Il suono si attiva o disattiva per ogni schermo.",
@@ -132,7 +132,7 @@
             },
             {
                 "title": "Ferie e assenza",
-                "body": "I lavoratori chiedono ferie, recupero o (se configurato) un tipo in Altro via Clock Point. La gestione decide in Time → Richieste. Questa richiesta non serve per la malattia e non parte alcuna e-mail. Altro non conta nel saldo ferie.",
+                "body": "I lavoratori chiedono ferie, recupero, malattia o (se configurato) un tipo in Altro via Clock Point. La gestione decide in Time → Richieste — anche la malattia va approvata. Non parte alcuna e-mail. Malattia e Altro non contano nel saldo ferie né nel recupero; se ne occupa il segretariato sociale, non WinProx.",
                 "items": [
                     "Una richiesta va da una data di inizio a una data di fine, al massimo 31 giorni, e non nel passato.",
                     "Nel turno di amministrazione le richieste aperte compaiono come contrassegno sui giorni interessati; da lì aprite Time → Richieste (il servizio resta fino all’approvazione).",

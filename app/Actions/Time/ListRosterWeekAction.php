@@ -357,6 +357,7 @@ class ListRosterWeekAction
             pendingAbsenceMessages: [
                 ShiftTypeKind::Leave->value => __('time.schedule.pending_absence.leave'),
                 ShiftTypeKind::Recup->value => __('time.schedule.pending_absence.recup'),
+                ShiftTypeKind::Sick->value => __('time.schedule.pending_absence.sick'),
                 ShiftTypeKind::Other->value => __('time.schedule.pending_absence.other'),
             ],
         );

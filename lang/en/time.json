@@ -547,7 +547,7 @@
         },
         "absence": {
             "tile": "Leave / Absence",
-            "tile_sub": "Request leave, TOIL or other absence",
+            "tile_sub": "Request leave, TOIL, sick leave or other absence",
             "title": "Leave / Absence",
             "subtitle": "See your requests and withdraw them. Staff approve or reject.",
             "period": "Period",
@@ -662,7 +662,13 @@
             "absence_other_body_range": "Your absence from :from to :to was approved.",
             "absence_other_rejected_title": "Absence rejected",
             "absence_other_rejected_body": "Your absence on :date was rejected.",
-            "absence_other_rejected_body_range": "Your absence from :from to :to was rejected."
+            "absence_other_rejected_body_range": "Your absence from :from to :to was rejected.",
+            "absence_sick_title": "Sick leave approved",
+            "absence_sick_body": "Your sick leave on :date was approved.",
+            "absence_sick_body_range": "Your sick leave from :from to :to was approved.",
+            "absence_sick_rejected_title": "Sick leave rejected",
+            "absence_sick_rejected_body": "Your sick leave on :date was rejected.",
+            "absence_sick_rejected_body_range": "Your sick leave from :from to :to was rejected."
         }
     },
     "ciao": {
@@ -1076,7 +1082,8 @@
             "leave": "Leave requested (awaiting approval)",
             "recup": "Time off in lieu requested (awaiting approval)",
             "open_hint": "Click the marker at the bottom left to open the request.",
-            "other": "Other absence requested (awaiting approval)"
+            "other": "Other absence requested (awaiting approval)",
+            "sick": "Sick leave requested (awaiting approval)"
         }
     },
     "shift_types": {
@@ -1156,7 +1163,7 @@
         },
         "errors": {
             "worker_tenant_mismatch": "This worker does not belong to this organisation.",
-            "invalid_kind": "Choose leave, TOIL or other.",
+            "invalid_kind": "Choose leave, TOIL, sick or other.",
             "range_inverted": "The end date must be on or after the start date.",
             "range_too_long": "Maximum 31 days per request.",
             "date_in_past": "The start date cannot be in the past.",
@@ -1165,7 +1172,7 @@
             "not_pending": "This request has already been handled.",
             "not_owner": "You can only withdraw your own request.",
             "reason_required": "A reason is required (at least 3 characters).",
-            "already_started": "This leave or TOIL has already started. You can no longer withdraw it.",
+            "already_started": "This absence has already started. It can no longer be withdrawn.",
             "not_cancellable": "You cannot withdraw this request.",
             "half_day_range": "A half day can only be a single date.",
             "shift_type_required": "Choose a type."
