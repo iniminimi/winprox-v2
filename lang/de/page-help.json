@@ -1912,32 +1912,32 @@
             "title": "Hilfe — Ausführende",
             "actions": [
                 {
-                    "label": "Übersicht",
-                    "text": "Mandantenweite Übersicht aller Ausführenden: Name, Team, zugeordnete Standorte, Status und ob das Profil mit einem Kollegen-Login verknüpft ist. Nützlich bei großen Teams (Dutzende bis Hunderte)."
+                    "label": "Was sehen Sie auf diesem Bildschirm?",
+                    "text": "Hier finden Sie alle Ausführenden Ihrer Organisation in einer Übersicht. Praktisch, um jemanden schnell zu finden — besonders bei vielen Ausführenden.<br><br>Pro Ausführendem sehen Sie unter anderem:<br>• Den Namen.<br>• Das Team.<br>• Die Standorte, an denen diese Person einstempeln darf.<br>• Ob das Profil aktiv ist.<br>• Ob der Ausführende mit einem Kollegen verknüpft ist, der auch im Backoffice arbeitet.<br><br>Tipp: dieser Bildschirm dient zum Suchen und Filtern. Ausführende hinzufügen, ändern oder deaktivieren Sie unter Personen → Teams."
                 },
                 {
-                    "label": "Suchen",
-                    "text": "Filtern nach Name, Team, Standort oder Status (aktiv/inaktiv). Leerer Standortfilter zeigt alle; wählen Sie einen Standort, um nur Ausführende zu sehen, die dort einstempeln dürfen (oder überall bei Springer-Teams)."
+                    "label": "Suchen und filtern",
+                    "text": "Nutzen Sie die Filter oben, um die Liste einzugrenzen:<br>• Nach Namen suchen.<br>• Ein Team wählen.<br>• Einen Standort wählen.<br>• Nach aktiven oder inaktiven Ausführenden filtern.<br><br>Lassen Sie den Standort leer, um alle Ausführenden zu sehen. Wählen Sie einen Standort, sehen Sie nur Ausführende, die dort einstempeln dürfen.<br><br>Auch Ausführende ohne festen Standort und Teams, die überall einstempeln dürfen, bleiben sichtbar."
                 },
                 {
                     "label": "Standorte",
-                    "text": "Pro Ausführendem sehen Sie zugewiesene Standorte. Keine Auswahl = überall einstempeln (bestehende Ausführende). Verwalten unter Personen → Teams (bearbeiten) oder Massenimport mit location_names."
+                    "text": "Bei jedem Ausführenden sehen Sie, welchen Standorten diese Person zugewiesen ist.<br><br>Keine Standorte gewählt? Dann darf der Ausführende überall einstempeln. Das ist die Standardeinstellung für bestehende Ausführende.<br><br>Standorte ändern Sie unter Personen → Teams → Bearbeiten. Sie können sie auch bei einem Import mitgeben."
                 },
                 {
-                    "label": "Kollegen-Verknüpfung",
-                    "text": "Ausführende mit verknüpftem Backoffice-Konto (Stempeluhr-Team) zählen als eine Lizenz. Einstempeln erfolgt über Clock Point (Name + Symbol), nicht über das Backoffice-Login."
+                    "label": "Verknüpfung mit einem Kollegen",
+                    "text": "Manche Ausführende sind mit einem Kollegen verknüpft, der auch im Backoffice mit E-Mail-Adresse und Passwort arbeitet.<br><br>Diese Person zählt als eine Lizenz, nicht als zwei.<br><br>Einstempeln erfolgt immer über Clock Point, mit Name und Icon des Ausführenden. Die Backoffice-Anmeldung wird dafür nicht verwendet."
                 },
                 {
                     "label": "Zu prüfen",
-                    "text": "Zeigt nur aktive Ausführende, die ein Teamleiter gerade auf Clock Point angelegt hat, nur mit Vor- und Nachname. Sie haben auch das Badge Zu prüfen und die Dashboard-Kachel Neuer Mitarbeiter. Speichern oder Deaktivieren unter Personen → Teams nimmt sie aus dieser Liste. Nochmal klicken zeigt wieder alle."
+                    "text": "Mit der Schaltfläche <strong>Zu prüfen</strong> zeigen Sie nur aktive Ausführende, die ein Teamleiter gerade auf Clock Point angelegt hat.<br><br>Diese Ausführenden haben vorerst nur Vor- und Nachnamen und erhalten das Badge <strong>Zu prüfen</strong>.<br><br>Auf dem Startbildschirm finden Sie dafür auch die Kachel <strong>Neuer Ausführender</strong>.<br><br>Öffnen Sie den Ausführenden unter Personen → Teams und speichern Sie die Daten oder deaktivieren Sie das Profil. Danach verschwindet der Ausführende aus diesem Filter.<br><br>Klicken Sie erneut auf <strong>Zu prüfen</strong>, um wieder alle Ausführenden zu sehen."
                 },
                 {
-                    "label": "Bearbeiten",
-                    "text": "Ausführende hinzufügen, ändern oder deaktivieren unter Personen → Teams → **Bearbeiten**. Symbol, Handy, PIN, Passkey, Teamleiter und Löschen stehen in diesem Dialog. Diese Seite dient zum schnellen Suchen und Filtern."
+                    "label": "Ausführenden öffnen",
+                    "text": "Klicken Sie auf einen Namen, um zum Team dieses Ausführenden zu gelangen.<br><br>Dort können Sie die Daten anpassen:<br>• Team und Standorte.<br>• Icon.<br>• Handynummer.<br>• PIN und Passkey.<br>• Teamleiter.<br>• Aktiven oder inaktiven Status.<br><br>Sie können den Ausführenden dort auch löschen.<br><br>Einen eigenen Button zum Hinzufügen gibt es auf diesem Bildschirm nicht. Neue Ausführende legen Sie unter Personen → Teams an."
                 },
                 {
                     "label": "Dokumente und Mitteilungen",
-                    "text": "Gibt es ein Dokument oder eine Mitteilung bei einem Ausführenden, sehen Sie denselben Zähler wie auf der Teamseite. Die Sprechblase darunter sagt Dokumente verwalten oder Mitteilungen verwalten. Ein Klick öffnet diese Liste des Teams, gefiltert auf diese Person."
+                    "text": "Hat ein Ausführender Dokumente oder Mitteilungen? Dann sehen Sie bei dieser Person denselben Zähler wie auf der Teamseite.<br><br>Tippen Sie auf den Zähler. Es erscheint ein Hinweis mit <strong>Dokumente verwalten</strong> oder <strong>Mitteilungen verwalten</strong>.<br><br>Sie gelangen dann in die Liste des Teams, automatisch gefiltert auf diesen Ausführenden."
                 }
             ]
         },

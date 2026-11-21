@@ -1912,32 +1912,32 @@
             "title": "Ayuda — Ejecutores",
             "actions": [
                 {
-                    "label": "Resumen",
-                    "text": "Vista de todos los ejecutores del inquilino: nombre, equipo, sedes vinculadas, estado y si el perfil está vinculado a un login de colega. Útil con equipos grandes (decenas o cientos de ejecutores)."
+                    "label": "¿Qué ve en esta pantalla?",
+                    "text": "Aquí encuentra todos los ejecutores de su organización en un solo resumen. Útil para localizar a alguien rápido, sobre todo si tiene muchos ejecutores.<br><br>Por ejecutor ve, entre otras cosas:<br>• El nombre.<br>• El equipo.<br>• Las sedes donde esa persona puede fichar.<br>• Si el perfil está activo.<br>• Si el ejecutor está vinculado a un compañero que también trabaja en el Backoffice.<br><br>Consejo: esta pantalla sirve para buscar y filtrar. Añadir, modificar o desactivar ejecutores se hace en Personas → Equipos."
                 },
                 {
-                    "label": "Buscar",
-                    "text": "Filtrar por nombre, equipo, sede o estado (activo/inactivo). Sin filtro de sede se muestran todos; elija una sede para ver solo quienes pueden fichar allí (o en todas con equipos de relevo)."
+                    "label": "Buscar y filtrar",
+                    "text": "Use los filtros de arriba para reducir la lista:<br>• Busque por nombre.<br>• Elija un equipo.<br>• Elija una sede.<br>• Filtre por ejecutores activos o inactivos.<br><br>Deje la sede vacía para ver a todos. Si elige una sede, solo ve a quienes pueden fichar allí.<br><br>También siguen visibles los ejecutores sin sede fija y los equipos que pueden fichar en todas partes."
                 },
                 {
                     "label": "Sedes",
-                    "text": "Cada ejecutor muestra las sedes asignadas. Sin selección = fichar en cualquier sitio (ejecutores existentes). Gestionar en Personas → Equipos (editar) o importación masiva con location_names."
+                    "text": "En cada ejecutor ve a qué sedes está asignada esa persona.<br><br>¿No hay sedes elegidas? Entonces el ejecutor puede fichar en todas partes. Esa es la configuración predeterminada para los ejecutores existentes.<br><br>Ajuste las sedes en Personas → Equipos → Editar. También puede incluirlas en una importación."
                 },
                 {
-                    "label": "Vínculo con colega",
-                    "text": "Ejecutores vinculados a una cuenta de backoffice (equipo de fichaje) cuentan como una licencia. Fichan vía Clock Point (nombre + icono), no con el login de backoffice."
+                    "label": "Vinculación con un compañero",
+                    "text": "Algunos ejecutores están vinculados a un compañero que también trabaja en el Backoffice con correo electrónico y contraseña.<br><br>Esa persona cuenta como una licencia, no como dos.<br><br>El fichaje siempre se hace por Clock Point, con el nombre y el icono del ejecutor. El inicio de sesión del Backoffice no se usa para esto."
                 },
                 {
                     "label": "Por revisar",
-                    "text": "Muestra solo ejecutores activos que un jefe de equipo acaba de crear en Clock Point, solo con nombre y apellido. También llevan la insignia Por revisar y la ficha Nuevo ejecutor del panel. Guardar o desactivar en Personas → Equipos los quita de esta lista. Otro clic vuelve a mostrar a todos."
+                    "text": "Con el botón <strong>Por revisar</strong> solo muestra ejecutores activos que un líder de equipo acaba de crear en Clock Point.<br><br>Estos ejecutores tienen por ahora solo nombre y apellidos y reciben la insignia <strong>Por revisar</strong>.<br><br>En la pantalla de inicio también encuentra el mosaico <strong>Nuevo ejecutor</strong>.<br><br>Abra el ejecutor en Personas → Equipos y guarde los datos o desactive el perfil. Después, el ejecutor desaparece de este filtro.<br><br>Pulse otra vez <strong>Por revisar</strong> para volver a ver a todos los ejecutores."
                 },
                 {
-                    "label": "Editar",
-                    "text": "Añada, edite o desactive trabajadores en Personas → Equipos → **Editar**. Icono, móvil, PIN, clave de acceso, jefe de equipo y eliminar están en esa ventana. Esta pantalla sirve para buscar y filtrar rápido."
+                    "label": "Abrir un ejecutor",
+                    "text": "Pulse un nombre para ir al equipo de ese ejecutor.<br><br>Allí puede ajustar los datos:<br>• Equipo y sedes.<br>• Icono.<br>• Número de móvil.<br>• PIN y passkey.<br>• Líder de equipo.<br>• Estado activo o inactivo.<br><br>También puede eliminar al ejecutor allí.<br><br>En esta pantalla no hay un botón Añadir aparte. Los nuevos ejecutores se crean en Personas → Equipos."
                 },
                 {
                     "label": "Documentos y avisos",
-                    "text": "Si un ejecutor tiene un documento o un aviso, ve el mismo contador que en la página del equipo. El globo de debajo dice Gestionar documentos o Gestionar avisos. Un clic abre esa lista del equipo, filtrada para esa persona."
+                    "text": "¿Un ejecutor tiene documentos o avisos? Entonces ve el mismo contador que en la página del equipo.<br><br>Toque el contador. Aparece un globo con <strong>Gestionar documentos</strong> o <strong>Gestionar avisos</strong>.<br><br>Luego llega a la lista del equipo, filtrada automáticamente a ese ejecutor."
                 }
             ]
         },

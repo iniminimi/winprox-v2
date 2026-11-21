@@ -1916,32 +1916,32 @@
             "title": "Aide — Exécutants",
             "actions": [
                 {
-                    "label": "Vue d'ensemble",
-                    "text": "Vue tenant de tous les exécutants : nom, équipe, sites liés, statut et lien éventuel avec un compte collègue. Utile pour les grandes équipes (dizaines à centaines d'exécutants)."
+                    "label": "Que voyez-vous sur cet écran ?",
+                    "text": "Vous trouvez ici tous les exécutants de votre organisation dans un seul aperçu. Pratique pour retrouver quelqu’un rapidement, surtout si vous en avez beaucoup.<br><br>Par exécutant, vous voyez notamment :<br>• Le nom.<br>• L’équipe.<br>• Les sites où cette personne peut pointer.<br>• Si le profil est actif.<br>• Si l’exécutant est lié à un collègue qui travaille aussi dans le Backoffice.<br><br>Conseil : cet écran sert à chercher et à filtrer. Ajouter, modifier ou désactiver des exécutants se fait via Personnes → Équipes."
                 },
                 {
-                    "label": "Rechercher",
-                    "text": "Filtrer par nom, équipe, site ou statut (actif/inactif). Sans filtre site, tout le monde ; choisissez un site pour voir uniquement ceux autorisés à pointer là (ou partout pour les équipes volantes)."
+                    "label": "Rechercher et filtrer",
+                    "text": "Utilisez les filtres en haut pour réduire la liste :<br>• Cherchez par nom.<br>• Choisissez une équipe.<br>• Choisissez un site.<br>• Filtrez sur les exécutants actifs ou inactifs.<br><br>Laissez le site vide pour voir tous les exécutants. Si vous choisissez un site, vous ne voyez que ceux qui peuvent y pointer.<br><br>Les exécutants sans site fixe et les équipes qui peuvent pointer partout restent aussi visibles."
                 },
                 {
                     "label": "Sites",
-                    "text": "Chaque exécutant affiche les sites assignés. Aucune sélection = pointer partout (exécutants existants). Gérer via Personnes → Équipes (modifier) ou import en masse avec location_names."
+                    "text": "Pour chaque exécutant, vous voyez à quels sites cette personne est affectée.<br><br>Aucun site choisi ? Alors l’exécutant peut pointer partout. C’est le réglage par défaut pour les exécutants existants.<br><br>Modifiez les sites via Personnes → Équipes → Modifier. Vous pouvez aussi les indiquer lors d’un import."
                 },
                 {
-                    "label": "Lien collègue",
-                    "text": "Les exécutants liés à un compte backoffice (équipe pointeuse) comptent pour une licence. Ils pointent via Clock Point (nom + icône), pas via le login backoffice."
+                    "label": "Lien avec un collègue",
+                    "text": "Certains exécutants sont liés à un collègue qui travaille aussi dans le Backoffice avec une adresse e-mail et un mot de passe.<br><br>Cette personne compte pour une licence, pas deux.<br><br>Le pointage se fait toujours via Clock Point, avec le nom et l’icône de l’exécutant. La connexion Backoffice n’est pas utilisée pour cela."
                 },
                 {
                     "label": "À contrôler",
-                    "text": "Affiche uniquement les exécutants actifs qu’un chef d’équipe vient de créer sur Clock Point, avec seulement le prénom et le nom. Ils portent aussi le badge À contrôler et la tuile Nouvel exécutant du tableau de bord. Enregistrer ou désactiver dans Personnes → Équipes les retire de cette liste. Un second clic réaffiche tout le monde."
+                    "text": "Avec le bouton <strong>À contrôler</strong>, vous n’affichez que les exécutants actifs qu’un chef d’équipe vient de créer sur Clock Point.<br><br>Ces exécutants n’ont pour l’instant qu’un prénom et un nom, et reçoivent le badge <strong>À contrôler</strong>.<br><br>Sur l’écran d’accueil, vous trouvez aussi la tuile <strong>Nouvel exécutant</strong>.<br><br>Ouvrez l’exécutant via Personnes → Équipes et enregistrez les données ou désactivez le profil. Ensuite, l’exécutant quitte ce filtre.<br><br>Cliquez à nouveau sur <strong>À contrôler</strong> pour revoir tous les exécutants."
                 },
                 {
-                    "label": "Modifier",
-                    "text": "Ajoutez, modifiez ou désactivez des exécutants via Personnes → Équipes → **Modifier**. Icône, téléphone, PIN, clé d’accès, chef d’équipe et suppression sont dans cette fenêtre. Cet écran sert à chercher et filtrer rapidement."
+                    "label": "Ouvrir un exécutant",
+                    "text": "Cliquez sur un nom pour aller à l’équipe de cet exécutant.<br><br>Vous pouvez y adapter les données :<br>• Équipe et sites.<br>• Icône.<br>• Numéro de mobile.<br>• Code PIN et passkey.<br>• Chef d’équipe.<br>• Statut actif ou inactif.<br><br>Vous pouvez aussi y supprimer l’exécutant.<br><br>Il n’y a pas de bouton Ajouter séparé sur cet écran. Créez de nouveaux exécutants via Personnes → Équipes."
                 },
                 {
                     "label": "Documents et annonces",
-                    "text": "S’il y a un document ou une annonce chez un exécutant, vous voyez le même compteur que sur la page de l’équipe. L’info-bulle en dessous dit Gérer les documents ou Gérer les annonces. Un clic ouvre cette liste de l’équipe, filtrée sur cette personne."
+                    "text": "Un exécutant a des documents ou des annonces ? Vous voyez alors le même compteur que sur la page d’équipe.<br><br>Touchez le compteur. Une bulle apparaît avec <strong>Gérer les documents</strong> ou <strong>Gérer les annonces</strong>.<br><br>Vous arrivez ensuite dans la liste de l’équipe, déjà filtrée sur cet exécutant."
                 }
             ]
         },
