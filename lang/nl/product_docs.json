@@ -134,7 +134,7 @@
                 "title": "Verlof en afwezigheid",
                 "body": "Medewerkers vragen verlof, recup, ziekte of (als beheer die heeft aangemaakt) een type onder Andere via Clock Point. De beheerder beslist in Time → Aanvragen — ook ziekte moet worden goedgekeurd. Er gaat geen e-mail uit. Ziekte en Andere (bv. klein verlet, baaldag) tellen niet mee voor het verlofsaldo of recup; dat verwerkt het sociaal secretariaat, niet WinProx.",
                 "items": [
-                    "Een aanvraag loopt van een begindatum tot een einddatum, maximaal 31 dagen, en niet in het verleden.",
+                    "Een aanvraag loopt van een begindatum tot een einddatum, maximaal 31 dagen (Andere: één dag), en niet in het verleden. De keuzelijst op Clock Point staat als Verlof, Recup, Ziek, daarna Andere op naam.",
                     "In het beheer-uurrooster ziet u open aanvragen als markering op de betreffende dagen; via die markering opent u Time → Aanvragen (dienst blijft staan tot goedkeuring).",
                     "Een weigering vraagt een reden. Na de beslissing is zichtbaar wie heeft goedgekeurd of geweigerd.",
                     "Een open of goedgekeurde aanvraag kan worden ingetrokken zolang de afwezigheid nog niet begonnen is.",

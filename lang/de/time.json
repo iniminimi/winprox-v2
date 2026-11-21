@@ -574,7 +574,8 @@
             "leave_remaining": "Resturlaub :year: :days von :total",
             "recup_balance": "Überstunden (Ausgleich): :hours",
             "shift_type": "Abwesenheit wählen:",
-            "shift_type_placeholder": "Typ wählen"
+            "shift_type_placeholder": "Typ wählen",
+            "period_hint_single": "Tippen Sie das Datum. Vergangene Tage sind nicht wählbar."
         },
         "now": {
             "status_out": "Nicht eingestempelt",
@@ -1175,7 +1176,8 @@
             "already_started": "Diese Abwesenheit hat bereits begonnen. Zurückziehen ist nicht mehr möglich.",
             "not_cancellable": "Diesen Antrag können Sie nicht zurückziehen.",
             "half_day_range": "Ein halber Tag kann nur ein einzelnes Datum sein.",
-            "shift_type_required": "Typ wählen."
+            "shift_type_required": "Typ wählen.",
+            "other_single_day": "Dieser Typ kann nur für einen einzelnen Tag beantragt werden."
         }
     },
     "leave_balance": {

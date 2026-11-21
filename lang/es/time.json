@@ -574,7 +574,8 @@
             "leave_remaining": "Permiso restante :year: :days de :total",
             "recup_balance": "Horas extra (compensación): :hours",
             "shift_type": "Elige la ausencia:",
-            "shift_type_placeholder": "Elige un tipo"
+            "shift_type_placeholder": "Elige un tipo",
+            "period_hint_single": "Toca la fecha. Los días pasados no se pueden elegir."
         },
         "now": {
             "status_out": "Sin fichar",
@@ -1175,7 +1176,8 @@
             "already_started": "Esta ausencia ya ha empezado. Ya no se puede retirar.",
             "not_cancellable": "No puede retirar esta solicitud.",
             "half_day_range": "Una media jornada solo puede ser una fecha.",
-            "shift_type_required": "Elige un tipo."
+            "shift_type_required": "Elige un tipo.",
+            "other_single_day": "Este tipo solo se puede solicitar para un día."
         }
     },
     "leave_balance": {

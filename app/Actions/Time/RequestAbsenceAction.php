@@ -19,6 +19,8 @@ class RequestAbsenceAction
 {
     public const MAX_DAYS = 31;
 
+    public const OTHER_MAX_DAYS = 1;
+
     public function handle(Tenant $tenant, Worker $worker, RequestAbsenceData $data): AbsenceRequest
     {
         TimeModuleAccess::assertEnabledForTenantId((int) $tenant->id);
@@ -47,6 +49,9 @@ class RequestAbsenceAction
         }
 
         $days = $from->diffInDays($to) + 1;
+        if ($data->kind->limitsAbsenceToSingleDay() && $days > self::OTHER_MAX_DAYS) {
+            throw new InvalidArgumentException('other_single_day');
+        }
         if ($days > self::MAX_DAYS) {
             throw new InvalidArgumentException('range_too_long');
         }

@@ -574,7 +574,8 @@
             "leave_remaining": "Leave left :year: :days of :total",
             "recup_balance": "Overtime (time off): :hours",
             "shift_type": "Choose the absence:",
-            "shift_type_placeholder": "Choose a type"
+            "shift_type_placeholder": "Choose a type",
+            "period_hint_single": "Tap the date. Past days cannot be selected."
         },
         "now": {
             "status_out": "Not clocked in",
@@ -1175,7 +1176,8 @@
             "already_started": "This absence has already started. It can no longer be withdrawn.",
             "not_cancellable": "You cannot withdraw this request.",
             "half_day_range": "A half day can only be a single date.",
-            "shift_type_required": "Choose a type."
+            "shift_type_required": "Choose a type.",
+            "other_single_day": "This type can only be requested for a single day."
         }
     },
     "leave_balance": {

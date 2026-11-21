@@ -134,7 +134,7 @@
                 "title": "Ferie e assenza",
                 "body": "I lavoratori chiedono ferie, recupero, malattia o (se configurato) un tipo in Altro via Clock Point. La gestione decide in Time → Richieste — anche la malattia va approvata. Non parte alcuna e-mail. Malattia e Altro non contano nel saldo ferie né nel recupero; se ne occupa il segretariato sociale, non WinProx.",
                 "items": [
-                    "Una richiesta va da una data di inizio a una data di fine, al massimo 31 giorni, e non nel passato.",
+                    "Una richiesta va da una data di inizio a una data di fine, al massimo 31 giorni (Altro: un giorno), e non nel passato. L’elenco su Clock Point è Ferie, Recupero, Malattia e poi Altro per nome.",
                     "Nel turno di amministrazione le richieste aperte compaiono come contrassegno sui giorni interessati; da lì aprite Time → Richieste (il servizio resta fino all’approvazione).",
                     "Un rifiuto chiede un motivo. Dopo la decisione si vede chi ha approvato o rifiutato.",
                     "Una richiesta aperta o approvata si può ritirare finché l’assenza non è iniziata.",

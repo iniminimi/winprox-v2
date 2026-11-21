@@ -134,7 +134,7 @@
                 "title": "Congé et absence",
                 "body": "Les collaborateurs demandent un congé, une récup, une maladie ou (si configuré) un type Autre via Clock Point. La gestion décide sous Time → Demandes — la maladie aussi doit être approuvée. Aucun e-mail n’est envoyé. Maladie et Autre ne comptent pas dans le solde de congés ni la récup ; le secrétariat social s’en charge, pas WinProx.",
                 "items": [
-                    "Une demande va d’une date de début à une date de fin, 31 jours au maximum, et pas dans le passé.",
+                    "Une demande va d’une date de début à une date de fin, 31 jours au maximum (Autre: un jour), et pas dans le passé. La liste sur Clock Point est Congé, Récup, Maladie, puis Autre par nom.",
                     "Dans le planning d’administration, les demandes ouvertes apparaissent comme un marquage sur les jours concernés ; ce marquage ouvre Time → Demandes (le service reste jusqu’à l’approbation).",
                     "Un refus demande un motif. Après la décision, on voit qui a approuvé ou refusé.",
                     "Une demande ouverte ou approuvée peut être retirée tant que l’absence n’a pas commencé.",

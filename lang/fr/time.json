@@ -574,7 +574,8 @@
             "leave_remaining": "Congé restant :year : :days sur :total",
             "recup_balance": "Heures supplémentaires (récup) : :hours",
             "shift_type": "Choisissez l’absence :",
-            "shift_type_placeholder": "Choisissez un type"
+            "shift_type_placeholder": "Choisissez un type",
+            "period_hint_single": "Touchez la date. Les jours passés ne sont pas sélectionnables."
         },
         "now": {
             "status_out": "Pas pointé",
@@ -1175,7 +1176,8 @@
             "already_started": "Cette absence a déjà commencé. Le retrait n’est plus possible.",
             "not_cancellable": "Vous ne pouvez pas retirer cette demande.",
             "half_day_range": "Une demi-journée ne peut concerner qu'une seule date.",
-            "shift_type_required": "Choisissez un type."
+            "shift_type_required": "Choisissez un type.",
+            "other_single_day": "Ce type ne peut être demandé que pour un seul jour."
         }
     },
     "leave_balance": {

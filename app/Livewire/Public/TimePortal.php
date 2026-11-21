@@ -845,7 +845,10 @@ class TimePortal extends Component
         $this->absenceHalfDay = false;
         $type = $this->requestableAbsenceType((int) ($this->absenceShiftTypeId ?? 0));
         $this->absenceKind = $type?->kind->value ?? ShiftTypeKind::Leave->value;
-        $this->resetErrorBag(['absenceShiftTypeId', 'absenceHalfDay', 'absenceKind']);
+        if ($type?->kind->limitsAbsenceToSingleDay() && $this->absenceDateFrom !== '') {
+            $this->absenceDateTo = $this->absenceDateFrom;
+        }
+        $this->resetErrorBag(['absenceShiftTypeId', 'absenceHalfDay', 'absenceKind', 'absenceDateFrom', 'absenceDateTo']);
     }
 
     public function closeAbsence(): void
@@ -3039,8 +3042,13 @@ class TimePortal extends Component
                 ShiftTypeKind::Other->value,
             ])
             ->where('is_active', true)
-            ->orderBy('code')
-            ->get(['id', 'code', 'label', 'kind']);
+            ->get(['id', 'code', 'label', 'kind'])
+            ->sortBy(fn (ShiftType $type) => sprintf(
+                '%d-%s',
+                $type->kind->requestableListOrder(),
+                mb_strtolower($type->label),
+            ))
+            ->values();
     }
 
     private function requestableAbsenceType(int $id): ?ShiftType

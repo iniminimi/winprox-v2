@@ -574,7 +574,8 @@
             "leave_remaining": "Resterend verlof :year : :days van :total",
             "recup_balance": "Overuren (recup): :hours",
             "shift_type": "Kies de afwezigheid :",
-            "shift_type_placeholder": "Kies een type"
+            "shift_type_placeholder": "Kies een type",
+            "period_hint_single": "Tik de datum. Dagen in het verleden zijn niet kiesbaar."
         },
         "now": {
             "status_out": "Niet ingeklokt",
@@ -1175,7 +1176,8 @@
             "already_started": "Deze afwezigheid is al begonnen. Intrekken kan niet meer.",
             "not_cancellable": "Deze aanvraag kun je niet intrekken.",
             "half_day_range": "Een halve dag kan alleen op één datum.",
-            "shift_type_required": "Kies een type."
+            "shift_type_required": "Kies een type.",
+            "other_single_day": "Voor dit type mag je maar één dag aanvragen."
         }
     },
     "leave_balance": {

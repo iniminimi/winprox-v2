@@ -29,6 +29,24 @@ enum ShiftTypeKind: string
             || $this === self::Other;
     }
 
+    /** Clock Point absence picker: Verlof → Recup → Ziek → Andere. */
+    public function requestableListOrder(): int
+    {
+        return match ($this) {
+            self::Leave => 0,
+            self::Recup => 1,
+            self::Sick => 2,
+            self::Other => 3,
+            self::Work => 9,
+        };
+    }
+
+    /** Andere (KV, baaldag, …) is always a single calendar day. */
+    public function limitsAbsenceToSingleDay(): bool
+    {
+        return $this === self::Other;
+    }
+
     /** Sick and other never feed the replacement pool. */
     public function allowsReplacementPool(): bool
     {

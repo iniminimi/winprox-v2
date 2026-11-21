@@ -551,19 +551,29 @@ it('toont de portaltegel en verstuurt een aanvraag', function () {
         ->and(AbsenceRequest::query()->first()?->status)->toBe(AbsenceRequestStatus::Cancelled);
 });
 
-it('toont tenant-shifttypes op naam inclusief Andere', function () {
+it('toont tenant-shifttypes op naam in vaste volgorde inclusief Andere', function () {
     [$tenant, , $clockPoint] = absenceTenant();
     ShiftType::factory()->create([
         'tenant_id' => $tenant->id,
-        'code' => 'BAAL',
-        'label' => 'Baaldag',
-        'kind' => ShiftTypeKind::Other,
+        'code' => 'ZZ',
+        'label' => 'Ziek',
+        'kind' => ShiftTypeKind::Sick,
         'start_time' => null,
         'end_time' => null,
         'break_minutes' => 0,
         'is_active' => true,
     ]);
-    $kv = ShiftType::factory()->create([
+    ShiftType::factory()->create([
+        'tenant_id' => $tenant->id,
+        'code' => 'AA',
+        'label' => 'Recup',
+        'kind' => ShiftTypeKind::Recup,
+        'start_time' => null,
+        'end_time' => null,
+        'break_minutes' => 0,
+        'is_active' => true,
+    ]);
+    ShiftType::factory()->create([
         'tenant_id' => $tenant->id,
         'code' => 'KV',
         'label' => 'Klein verlet',
@@ -573,22 +583,69 @@ it('toont tenant-shifttypes op naam inclusief Andere', function () {
         'break_minutes' => 0,
         'is_active' => true,
     ]);
+    $baal = ShiftType::factory()->create([
+        'tenant_id' => $tenant->id,
+        'code' => 'BAAL',
+        'label' => 'Baaldag',
+        'kind' => ShiftTypeKind::Other,
+        'start_time' => null,
+        'end_time' => null,
+        'break_minutes' => 0,
+        'is_active' => true,
+    ]);
 
     signInAbsenceWorker($clockPoint)
         ->call('openAbsence')
-        ->assertSee('Baaldag', false)
-        ->assertSee('Klein verlet', false)
-        ->assertSee('Verlof', false)
+        ->assertSeeHtmlInOrder([
+            '>Verlof</option>',
+            '>Recup</option>',
+            '>Ziek</option>',
+            '>Baaldag</option>',
+            '>Klein verlet</option>',
+        ])
         ->assertDontSeeHtml('>BAAL<')
-        ->set('absenceShiftTypeId', (int) $kv->id)
+        ->set('absenceShiftTypeId', (int) $baal->id)
+        ->assertSet('absenceDateTo', '2026-09-22')
         ->set('absenceDateFrom', '2026-09-25')
         ->set('absenceDateTo', '2026-09-25')
         ->call('submitAbsence')
         ->assertSee(__('time.portal.absence.submitted'), false)
-        ->assertSee('Klein verlet', false);
+        ->assertSee('Baaldag', false);
 
     expect(AbsenceRequest::query()->first()?->kind)->toBe(ShiftTypeKind::Other)
-        ->and((int) AbsenceRequest::query()->first()?->shift_type_id)->toBe((int) $kv->id);
+        ->and((int) AbsenceRequest::query()->first()?->shift_type_id)->toBe((int) $baal->id);
+});
+
+it('weigert Andere-afwezigheid over meerdere dagen', function () {
+    [$tenant, , $clockPoint, $worker] = absenceTenant();
+    $otherType = ShiftType::factory()->create([
+        'tenant_id' => $tenant->id,
+        'code' => 'BAAL',
+        'label' => 'Baaldag',
+        'kind' => ShiftTypeKind::Other,
+        'start_time' => null,
+        'end_time' => null,
+        'break_minutes' => 0,
+        'is_active' => true,
+    ]);
+
+    expect(fn () => app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Other, '2026-09-23', '2026-09-24', null, false, (int) $otherType->id),
+    ))->toThrow(\InvalidArgumentException::class, 'other_single_day');
+
+    signInAbsenceWorker($clockPoint)
+        ->call('openAbsence')
+        ->set('absenceShiftTypeId', (int) $otherType->id)
+        ->assertSee(__('time.portal.absence.period_hint_single'), false)
+        ->set('absenceDateFrom', '2026-09-25')
+        ->set('absenceDateTo', '2026-09-26')
+        ->call('submitAbsence')
+        ->assertHasErrors('absenceDateFrom')
+        ->assertSee(__('time.absence.errors.other_single_day'), false);
+
+    expect(AbsenceRequest::query()->count())->toBe(0);
 });
 
 it('toont een nette fout als de einddatum vóór de startdatum ligt', function () {

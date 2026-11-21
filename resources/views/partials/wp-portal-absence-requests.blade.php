@@ -29,11 +29,19 @@
         </div>
         <div class="wp-field">
             <span class="wp-label" id="absence-period-label">{{ __('time.portal.absence.period') }}</span>
+            @php
+                $absenceSingleDay = $selectedAbsenceType?->kind->limitsAbsenceToSingleDay() === true;
+                $absenceMaxDays = $absenceSingleDay
+                    ? \App\Actions\Time\RequestAbsenceAction::OTHER_MAX_DAYS
+                    : \App\Actions\Time\RequestAbsenceAction::MAX_DAYS;
+            @endphp
             <x-wp-date-range-picker
+                wire:key="absence-range-{{ $absenceMaxDays }}"
                 wire:model.from="absenceDateFrom"
                 wire:model.to="absenceDateTo"
                 :min="now()->toDateString()"
-                :max-days="\App\Actions\Time\RequestAbsenceAction::MAX_DAYS"
+                :max-days="$absenceMaxDays"
+                :hint="$absenceSingleDay ? __('time.portal.absence.period_hint_single') : null"
                 aria-labelledby="absence-period-label"
             />
             @error('absenceDateFrom') <p class="wp-error">{{ $message }}</p> @enderror

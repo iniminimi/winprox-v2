@@ -49,7 +49,8 @@
             "already_started": "This absence has already started. It can no longer be withdrawn.",
             "not_cancellable": "Nu puteți retrage această cerere.",
             "half_day_range": "O jumătate de zi poate fi doar o singură dată.",
-            "shift_type_required": "Alegeți un tip."
+            "shift_type_required": "Alegeți un tip.",
+            "other_single_day": "Acest tip poate fi solicitat doar pentru o singură zi."
         }
     },
     "portal": {
@@ -199,7 +200,8 @@
             "leave_remaining": "Concediu rămas :year: :days din :total",
             "recup_balance": "Ore suplimentare (timp liber): :hours",
             "shift_type": "Alegeți absența:",
-            "shift_type_placeholder": "Alegeți un tip"
+            "shift_type_placeholder": "Alegeți un tip",
+            "period_hint_single": "Atingeți data. Zilele din trecut nu pot fi alese."
         },
         "now": {
             "status_out": "Nepontat",

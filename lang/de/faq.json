@@ -384,7 +384,7 @@
             "slug": "time_absence",
             "type": "text",
             "title": "Wie funktionieren Urlaubs- und Abwesenheitsanträge?",
-            "body": "Mitarbeitende beantragen Urlaub, Ausgleich, Krankheit oder (falls eingerichtet) einen Typ unter Sonstige auf Clock Point: wählen Sie die Abwesenheit nach Name, Zeitraum, optionale Bemerkung, max. 31 Tage, nicht in der Vergangenheit. Krankheit ohne halben Tag. Überlappende offene Anträge werden abgelehnt. Die Verwaltung entscheidet unter Time → Anträge — auch Krankheit muss genehmigt werden. Ablehnen braucht einen Grund. Bei Genehmigung setzt WinProx die Abwesenheit in den Dienstplan. Sonstige und Krankheit zählen nicht zum Urlaubssaldo oder Ausgleich; das macht das Sozialsekretariat, nicht WinProx. Keine E-Mail.",
+            "body": "Mitarbeitende beantragen Urlaub, Ausgleich, Krankheit oder (falls eingerichtet) einen Typ unter Sonstige auf Clock Point: wählen Sie die Abwesenheit nach Name (Reihenfolge Urlaub, Ausgleich, Krank, dann Andere), Zeitraum (Andere: ein Tag), optionale Bemerkung, max. 31 Tage, nicht in der Vergangenheit. Krankheit ohne halben Tag. Überlappende offene Anträge werden abgelehnt. Die Verwaltung entscheidet unter Time → Anträge — auch Krankheit muss genehmigt werden. Ablehnen braucht einen Grund. Bei Genehmigung setzt WinProx die Abwesenheit in den Dienstplan. Sonstige und Krankheit zählen nicht zum Urlaubssaldo oder Ausgleich; das macht das Sozialsekretariat, nicht WinProx. Keine E-Mail.",
             "summary": "Clock Point: Urlaub, Ausgleich, Krankheit oder Sonstige. Time → Anträge. Krankheit und Sonstige ohne Urlaubssaldo."
         },
         "time_schedule": {

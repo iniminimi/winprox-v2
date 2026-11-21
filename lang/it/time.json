@@ -574,7 +574,8 @@
             "leave_remaining": "Ferie residue :year: :days di :total",
             "recup_balance": "Straordinari (recupero): :hours",
             "shift_type": "Scegli l’assenza:",
-            "shift_type_placeholder": "Scegli un tipo"
+            "shift_type_placeholder": "Scegli un tipo",
+            "period_hint_single": "Tocca la data. I giorni passati non sono selezionabili."
         },
         "now": {
             "status_out": "Non timbrato",
@@ -1175,7 +1176,8 @@
             "already_started": "Questa assenza è già iniziata. Non si può più ritirare.",
             "not_cancellable": "Non puoi ritirare questa richiesta.",
             "half_day_range": "Una mezza giornata può riguardare una sola data.",
-            "shift_type_required": "Scegli un tipo."
+            "shift_type_required": "Scegli un tipo.",
+            "other_single_day": "Questo tipo può essere richiesto solo per un giorno."
         }
     },
     "leave_balance": {

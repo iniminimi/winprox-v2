@@ -49,7 +49,8 @@
             "already_started": "This absence has already started. It can no longer be withdrawn.",
             "not_cancellable": "Tego wniosku nie można wycofać.",
             "half_day_range": "Pół dnia może obejmować tylko jedną datę.",
-            "shift_type_required": "Wybierz typ."
+            "shift_type_required": "Wybierz typ.",
+            "other_single_day": "Ten typ można zgłosić tylko na jeden dzień."
         }
     },
     "portal": {
@@ -199,7 +200,8 @@
             "leave_remaining": "Pozostały urlop :year: :days z :total",
             "recup_balance": "Nadgodziny (czas wolny): :hours",
             "shift_type": "Wybierz nieobecność:",
-            "shift_type_placeholder": "Wybierz typ"
+            "shift_type_placeholder": "Wybierz typ",
+            "period_hint_single": "Dotknij daty. Dni z przeszłości nie można wybrać."
         },
         "now": {
             "status_out": "Bez wejścia",

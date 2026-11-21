@@ -49,7 +49,8 @@
             "already_started": "This absence has already started. It can no longer be withdrawn.",
             "not_cancellable": "Não pode retirar este pedido.",
             "half_day_range": "Meio dia só pode ser uma única data.",
-            "shift_type_required": "Escolha um tipo."
+            "shift_type_required": "Escolha um tipo.",
+            "other_single_day": "Este tipo só pode ser pedido para um único dia."
         }
     },
     "portal": {
@@ -199,7 +200,8 @@
             "leave_remaining": "Férias restantes :year: :days de :total",
             "recup_balance": "Horas extra (tempo livre): :hours",
             "shift_type": "Escolha a ausência:",
-            "shift_type_placeholder": "Escolha um tipo"
+            "shift_type_placeholder": "Escolha um tipo",
+            "period_hint_single": "Toque na data. Dias no passado não podem ser escolhidos."
         },
         "now": {
             "status_out": "Sem entrada",

@@ -2,12 +2,14 @@
     'min' => null,
     'maxDays' => 31,
     'locale' => null,
+    'hint' => null,
 ])
 
 @php
     $dateLang = \App\Support\Translation\LocaleSupport::dateInputLang($locale);
     $minDate = $min ?: now()->toDateString();
     $maxDays = max(1, (int) $maxDays);
+    $periodHint = $hint ?: __('time.portal.absence.period_hint');
 @endphp
 
 <div
@@ -123,6 +125,12 @@
         },
         pick(iso) {
             if (this.isDisabled(iso)) return;
+            if (this.maxDays === 1) {
+                this.from = iso;
+                this.to = iso;
+                this.pickingEnd = false;
+                return;
+            }
             if (! this.from || ! this.pickingEnd) {
                 this.from = iso;
                 this.to = iso;
@@ -146,7 +154,7 @@
         <strong class="wp-date-range__summary-dates" x-text="summary()"></strong>
         <span class="wp-muted" x-text="daysLabel()"></span>
     </div>
-    <p class="wp-muted wp-date-range__hint">{{ __('time.portal.absence.period_hint') }}</p>
+    <p class="wp-muted wp-date-range__hint">{{ $periodHint }}</p>
 
     <div class="wp-date-range__panel">
         <div class="wp-date-range__nav">
