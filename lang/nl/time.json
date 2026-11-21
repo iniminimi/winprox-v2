@@ -1086,7 +1086,7 @@
             "other": "Andere aangevraagd (wacht op goedkeuring)",
             "sick": "Ziekte aangevraagd (wacht op goedkeuring)"
         },
-        "replaced_absence_origin_heading": "Was gepland"
+        "replaced_absence_origin_heading": "Was gepland :"
     },
     "shift_types": {
         "title": "Shifttypes",

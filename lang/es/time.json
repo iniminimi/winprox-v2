@@ -1086,7 +1086,7 @@
             "other": "Otra ausencia solicitada (pendiente)",
             "sick": "Baja solicitada (pendiente de aprobación)"
         },
-        "replaced_absence_origin_heading": "Estaba planificado"
+        "replaced_absence_origin_heading": "Estaba planificado :"
     },
     "shift_types": {
         "title": "Tipos de turno",

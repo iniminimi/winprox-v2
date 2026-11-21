@@ -1086,7 +1086,7 @@
             "other": "Autre absence demandée (en attente)",
             "sick": "Maladie demandée (en attente d’approbation)"
         },
-        "replaced_absence_origin_heading": "Était planifié"
+        "replaced_absence_origin_heading": "Était planifié :"
     },
     "shift_types": {
         "title": "Types de service",

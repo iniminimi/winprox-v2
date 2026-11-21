@@ -1086,7 +1086,7 @@
             "other": "Sonstige Abwesenheit beantragt (wartet auf Freigabe)",
             "sick": "Krankheit beantragt (warten auf Genehmigung)"
         },
-        "replaced_absence_origin_heading": "War geplant"
+        "replaced_absence_origin_heading": "War geplant :"
     },
     "shift_types": {
         "title": "Schichttypen",

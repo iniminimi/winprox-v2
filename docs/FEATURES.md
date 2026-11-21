@@ -1304,8 +1304,8 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   Niet op gsm-portaal/teamrooster. Bij goedkeuren: bestaande roostercellen
   in die periode tonen, snapshot op de aanvraag, daarna vervangen door gepubliceerde
   afwezigheid (niet stil). Op het beheer-uurrooster toont de hover-ballon op zo’n
-  afwezigheidscel de **oorspronkelijke diensten** uit die snapshot (`Was gepland` +
-  code of uren, eventueel met unit). Alleen bij goedgekeurde aanvragen met snapshot;
+  afwezigheidscel de **oorspronkelijke diensten** uit die snapshot op één regel
+  (`Was gepland : V2`, meerdere blokken met ·). Alleen bij goedgekeurde aanvragen met snapshot;
   handmatig gezette afwezigheid of vervanger-zoeken zonder aanvraag: geen ballon.
   Intrekken op Clock Point: open aanvragen altijd; goedgekeurd
   verlof/recup zolang `date_from` nog niet voorbij is — snapshot zet het rooster terug.

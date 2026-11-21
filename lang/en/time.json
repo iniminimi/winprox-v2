@@ -1086,7 +1086,7 @@
             "other": "Other absence requested (awaiting approval)",
             "sick": "Sick leave requested (awaiting approval)"
         },
-        "replaced_absence_origin_heading": "Was planned"
+        "replaced_absence_origin_heading": "Was planned :"
     },
     "shift_types": {
         "title": "Shift types",

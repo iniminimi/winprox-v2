@@ -893,12 +893,13 @@ function applyCellClasses(worksheet, payload) {
             const cellKind = typeof cellDef?.kind === 'string' ? cellDef.kind : '';
             const origins = attendanceKey ? payload.replaced_absence_origins?.[attendanceKey] : null;
             if (absenceKinds.includes(cellKind) && Array.isArray(origins) && origins.length > 0) {
-                const heading = payload.replaced_absence_origin_heading || '';
-                const originBlock = [heading, ...origins.map((line) => cellText(line).trim()).filter(Boolean)]
-                    .filter(Boolean)
-                    .join('\n');
-                if (originBlock) {
-                    cell.title = cell.title ? `${cell.title}\n${originBlock}` : originBlock;
+                const heading = cellText(payload.replaced_absence_origin_heading || '').trim();
+                const duties = origins.map((line) => cellText(line).trim()).filter(Boolean);
+                const originLine = duties.length === 0
+                    ? ''
+                    : (heading ? `${heading} ${duties.join(' · ')}` : duties.join(' · '));
+                if (originLine) {
+                    cell.title = cell.title ? `${cell.title}\n${originLine}` : originLine;
                 }
             }
             // Vergrendelde dag (verleden): cel is readOnly; tooltip legt uit waarom.

@@ -8124,7 +8124,7 @@ a.wp-worker-hours-link:focus-visible {
     z-index: 90;
     transform: translate(-50%, calc(-100% - 8px));
     width: max-content;
-    max-width: min(340px, 92vw);
+    max-width: min(92vw, 40rem);
     padding: 0.6rem 0.85rem;
     background: var(--wp-surface);
     border: 1px solid var(--wp-border);
