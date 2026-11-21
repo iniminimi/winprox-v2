@@ -365,46 +365,51 @@
             "title": "Hulp — Categorieën",
             "actions": [
                 {
-                    "label": "Categorieën",
-                    "text": "Beheer categorieën om units te groeperen (bijv. boormachines, sanitair, fitnesstoestellen, kantoor, elektriciteit). Categorieën helpen bij het filteren en organiseren van units. Door teams van uitvoerders te koppelen aan specifieke categorieën, zorgt WinProx ervoor dat taken kunnen uitgevoerd worden door het correcte team. Gps locatie categorie : wanneer \"GPS-locatie toestaan\" aangevinkt is, kan de gps-locatie van een unit via het portaal doorgegeven worden. Dit is om gebruikers van mobiele units (vb. kraan, grote machine) toe te laten hun locatie snel te communiceren met de administratie."
+                    "label": "Waar een categorie voor dient",
+                    "text": "Een categorie is een groep units van dezelfde soort. Denk aan sanitair, kantoren, fitnesstoestellen of machines. Zo vindt u ze snel terug. U koppelt er ook het team aan dat het werk doet. Een melding over sanitair komt dan bij de mensen die sanitair doen."
                 },
                 {
-                    "label": "Categorievertalingen",
-                    "text": "In het categorie-bewerkformulier kun je de naam per taal (NL, EN, FR, DE, ES, IT) handmatig bijwerken. Handig als de automatische vertaling door WinProx (periodiek) niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
+                    "label": "De naam in andere talen",
+                    "text": "De naam wordt vanzelf vertaald. Klopt een vertaling niet, of is ze er nog niet, dan past u ze zelf aan. Opslaan maakt die vertaling de vaste naam in die taal."
                 },
                 {
-                    "label": "Portaal-instellingen (categorie)",
-                    "text": "GPS, reserveerbaar, unit checks, unitmetingen, contact en e-mailbevestiging stel je hier in op categorieniveau. Units in deze categorie nemen deze vinkjes automatisch over bij categoriekeuze of -wijziging. Vroegere meldingen zet je hier ook aan of uit; dat geldt voor alle units in de categorie, zonder uitzondering per unit. Wijzig je de categorie-instellingen, dan krijgen units die nog de oude defaults hadden de nieuwe waarden mee. Alleen uitzonderingen per unit stel je in via Geavanceerde portaal-opties op het unit-formulier."
+                    "label": "Wat er op de QR gebeurt",
+                    "text": "De vinkjes hieronder zet u één keer aan voor de hele groep. Een nieuwe unit in deze categorie neemt ze over. Past u ze later aan, dan volgen de units die u niet apart hebt ingesteld. Een unit die u wél apart hebt gezet, blijft zoals u die hebt gelaten. Dat doet u bij de unit zelf, onder Portaal-opties per unit. Eén uitzondering: vroegere meldingen tonen geldt altijd voor elke unit in de categorie. Dat kunt u niet voor één unit uitzetten."
+                },
+                {
+                    "label": "GPS-locatie toestaan",
+                    "nested": true,
+                    "text": "Handig als iets van plaats verandert, zoals een kraan of een grote machine. Via de QR kan dan worden doorgegeven waar de unit nu staat, zodat u die snel terugvindt. Dit stelt u alleen bij de categorie in, niet bij elke unit apart."
                 },
                 {
                     "label": "Reserveerbaar",
                     "nested": true,
-                    "text": "Voor deelbare middelen met tijdslot (vergaderzaal, voertuig, sleutel, …). Units erven dit; op de unit-QR verschijnt de tegel Reserveren wanneer categorie én unit het toestaan. Defectmeldingen blijven via Melding → taak."
+                    "text": "Zet dit aan als iemand een tijdslot moet kunnen vastleggen, bijvoorbeeld een vergaderzaal, een voertuig of een sleutel. Reserveren verschijnt op de QR pas als het bij de categorie én bij de unit aanstaat. Een defect melden blijft een gewone melding."
                 },
                 {
                     "label": "Unit checks toestaan",
                     "nested": true,
-                    "text": "Voor snelle OK/Niet OK-rondes (security, schoonmaak, …). Units erven dit; uitvoerders zien de tegel Unit check pas wanneer categorie én unit aanstaan. Los van ESG-metingen."
+                    "text": "Voor een korte controle: in orde, of niet in orde. Bijvoorbeeld na een schoonmaakronde of een controleronde. De uitvoerder ziet Unit check pas als het bij de categorie én bij de unit aanstaat. Dit is geen meting van een getal of een stand."
                 },
                 {
                     "label": "Contactgegevens invullen verplicht",
                     "nested": true,
-                    "text": "Anonieme melders via de unit-QR moeten voornaam, naam en e-mail invullen. Units erven dit van de categorie. Geldt niet voor ingelogde uitvoerders."
+                    "text": "Wie een melding doet via de QR, zonder aangemeld te zijn, moet voornaam, naam en e-mail invullen. Iemand die al aangemeld is, hoeft dat niet. Het werkt pas als het ook bij de unit aanstaat."
                 },
                 {
                     "label": "E-mailbevestiging verplicht",
                     "nested": true,
-                    "text": "Anonieme melders moeten hun e-mail bevestigen; melding, taak en webhook ontstaan pas na klikken op de link. Units erven dit van de categorie. Geldt niet voor ingelogde uitvoerders."
+                    "text": "De melder krijgt een e-mail en moet op de link klikken. Pas dan komt de melding binnen. Zonder die klik gebeurt er niets. Iemand die al aangemeld is, hoeft dit niet. Het werkt pas als het ook bij de unit aanstaat."
                 },
                 {
                     "label": "Unitmetingen toestaan",
                     "nested": true,
-                    "text": "Meetwaarden via de unit-QR (km, temperatuur, status, …). Units erven dit; koppel meetvelden onder Werk → Unitmetingen. Categorie én unit moeten aanstaan. Los van ESG en unit checks."
+                    "text": "Voor een getal of een stand, zoals kilometers, een temperatuur of een status. De velden daarvoor koppelt u onder Werk → Unitmetingen. Op de QR verschijnt het pas als het bij de categorie én bij de unit aanstaat. Dit is iets anders dan een unit check."
                 },
                 {
                     "label": "Vroegere meldingen tonen",
                     "nested": true,
-                    "text": "Standaard aan: bezoekers zien open meldingen van de unit na een QR-scan. Zet uit als je die lijst niet publiek wilt (hotelkamer, sanitaire ruimte, …). Geldt voor alle units in deze categorie; geen aparte uitzondering per unit."
+                    "text": "Dit staat standaard aan. Na het scannen ziet een bezoeker welke meldingen voor die unit nog openstaan. Zet het uit als die lijst niet voor iedereen is, bijvoorbeeld bij een hotelkamer of een toilet. Het geldt voor alle units in deze categorie. U kunt het niet voor één unit apart uitzetten."
                 }
             ]
         },
