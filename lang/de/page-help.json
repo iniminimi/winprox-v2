@@ -365,46 +365,51 @@
             "title": "Hilfe — Kategorien",
             "actions": [
                 {
-                    "label": "Kategorien",
-                    "text": "Verwalten Sie Kategorien, um Units zu gruppieren (z.B. Bohrmaschinen, Sanitär, Fitnessgeräte, Büro, Elektrik). Kategorien helfen beim Filtern und Organisieren von Units. Durch die Verknüpfung von Ausführerteams mit bestimmten Kategorien stellt WinProx sicher, dass Aufgaben vom richtigen Team ausgeführt werden können. GPS-Standort-Kategorie: wenn „GPS-Standort erlauben“ aktiviert ist, kann der GPS-Standort einer Unit über das Portal übermittelt werden. So können Nutzer mobiler Units (z.B. Kran, große Maschine) ihren Standort schnell an die Verwaltung melden."
+                    "label": "Wozu dient eine Kategorie?",
+                    "text": "Eine Kategorie fasst Units derselben Art zusammen. Denken Sie zum Beispiel an Sanitär, Büros, Fitnessgeräte oder Maschinen. So können Sie Ihre Units leicht ordnen und wiederfinden.<br><br>Sie können auch ein Team mit einer Kategorie verknüpfen. Meldungen und Aufgaben kommen dann bei dem Team an, das für diese Art von Units zuständig ist. Eine Meldung zum Sanitär geht zum Beispiel an das Sanitärteam."
                 },
                 {
-                    "label": "Kategorie-Übersetzungen",
-                    "text": "Im Kategorie-Bearbeitungsformular können Sie den Namen pro Sprache (NL, EN, FR, DE, ES, IT) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
+                    "label": "Der Name in anderen Sprachen",
+                    "text": "WinProx übersetzt den Kategorienamen automatisch in die verfügbaren Sprachen.<br><br>Stimmt eine Übersetzung nicht oder fehlt sie? Dann können Sie sie selbst im Kategorieformular anpassen. Wählen Sie die Sprache, tragen Sie den richtigen Namen ein und speichern Sie. Ihre angepasste Übersetzung wird dann der feste Name für diese Sprache."
                 },
                 {
-                    "label": "Portal-Einstellungen (Kategorie)",
-                    "text": "GPS, reservierbar, Unit-Checks, Unit-Messungen, Kontakt und E-Mail-Bestätigung legen Sie hier auf Kategorieebene fest. Units in dieser Kategorie übernehmen diese Häkchen bei Kategoriewahl oder -änderung automatisch. Frühere Meldungen schalten Sie hier ebenfalls ein oder aus; das gilt für alle Units der Kategorie, ohne Ausnahme pro Unit. Ändern Sie Kategorie-Einstellungen, erhalten Units mit den alten Standardwerten die neuen Werte. Ausnahmen pro Unit stellen Sie unter Erweiterte Portal-Optionen im Unit-Formular ein."
+                    "label": "Was passiert auf der QR-Seite?",
+                    "text": "Mit den Einstellungen unten legen Sie fest, welche Funktionen verfügbar sind, wenn jemand den QR-Code einer Unit scannt.<br><br>Sie stellen diese Optionen auf Kategorieebene ein. Neue Units in der Kategorie übernehmen die Einstellungen automatisch.<br><br>Ändern Sie später etwas? Dann folgen die Units, die noch die Standardeinstellungen der Kategorie verwenden. Haben Sie für eine bestimmte Unit eigene Einstellungen gewählt, bleiben diese erhalten.<br><br>Diese Ausnahmen stellen Sie bei der Unit selbst ein, unter Portal-Optionen pro Unit.<br><br>Achtung: Frühere Meldungen anzeigen ist eine Ausnahme. Diese Einstellung gilt immer für alle Units der Kategorie und kann nicht einzeln pro Unit geändert werden."
+                },
+                {
+                    "label": "GPS-Standort erlauben",
+                    "nested": true,
+                    "text": "Nützlich für mobile Units, die regelmäßig den Ort wechseln, zum Beispiel ein Kran oder eine große Maschine.<br><br>Über den QR-Code kann die Person angeben, wo sich die Unit gerade befindet. So weiß die Verwaltung, wo das Gerät steht, und Sie finden es leichter wieder.<br><br>Diese Einstellung verwalten Sie nur auf Kategorieebene. Sie können sie nicht einzeln pro Unit ändern."
                 },
                 {
                     "label": "Reservierbar",
                     "nested": true,
-                    "text": "Für gemeinsam genutzte Ressourcen mit Zeitfenster (Besprechungsraum, Fahrzeug, Schlüssel, …). Units erben dies; die Unit-QR zeigt die Kachel Reservieren, wenn Kategorie und Unit es erlauben. Störmeldungen bleiben über Meldung → Aufgabe."
+                    "text": "Schalten Sie diese Option ein, wenn Nutzer eine Unit im Voraus für einen bestimmten Zeitraum reservieren können sollen.<br><br>Zum Beispiel einen Besprechungsraum, ein Firmenfahrzeug oder einen Schlüssel.<br><br>Die Kachel Reservieren erscheint auf der QR-Seite, wenn diese Funktion sowohl bei der Kategorie als auch bei der Unit eingeschaltet ist.<br><br>Einen Defekt oder ein Problem melden bleibt über die gewöhnliche Meldung möglich."
                 },
                 {
                     "label": "Unit-Checks erlauben",
                     "nested": true,
-                    "text": "Für schnelle OK/Nicht-OK-Runden (Security, Reinigung, …). Units erben dies; Ausführende sehen die Kachel Unit-Check erst, wenn Kategorie und Unit aktiv sind. Getrennt von ESG-Messungen."
+                    "text": "Mit einem Unit-Check kann eine ausführende Person schnell prüfen, ob etwas in Ordnung ist.<br><br>Zum Beispiel nach einer Reinigungsrunde oder bei einer Sicherheitskontrolle. Die Person gibt einfach an, ob alles OK oder Nicht OK ist.<br><br>Die Kachel Unit-Check erscheint nur, wenn diese Funktion sowohl bei der Kategorie als auch bei der Unit eingeschaltet ist.<br><br>Ein Unit-Check ist eine Kontrolle, keine Erfassung eines Messwerts wie einer Temperatur oder eines Kilometerstands."
                 },
                 {
                     "label": "Kontaktdaten Pflicht",
                     "nested": true,
-                    "text": "Anonyme Melder über die Unit-QR müssen Vorname, Nachname und E-Mail angeben. Units erben dies von der Kategorie. Gilt nicht für angemeldete Ausführende."
+                    "text": "Schalten Sie diese Option ein, wenn Besucher ihre Kontaktdaten ausfüllen sollen, bevor sie eine Meldung über den QR-Code senden können.<br><br>Wer nicht bei WinProx angemeldet ist, muss dann Vorname, Name und E-Mail-Adresse angeben.<br><br>Ausführende, die schon angemeldet sind, müssen das nicht tun.<br><br>Diese Pflicht gilt nur, wenn sie auch bei der betreffenden Unit eingeschaltet ist."
                 },
                 {
                     "label": "E-Mail-Bestätigung Pflicht",
                     "nested": true,
-                    "text": "Anonyme Melder müssen ihre E-Mail bestätigen; Meldung, Aufgabe und Webhook entstehen erst nach Klick auf den Link. Units erben dies von der Kategorie. Gilt nicht für angemeldete Ausführende."
+                    "text": "Möchten Sie prüfen, ob die angegebene E-Mail-Adresse stimmt? Schalten Sie diese Option ein.<br><br>Die meldende Person erhält eine E-Mail mit einem Bestätigungslink. Die Meldung wird erst erstellt und bearbeitet, nachdem sie auf diesen Link klickt.<br><br>Ohne Bestätigung wird keine Meldung erstellt.<br><br>Ausführende, die schon bei WinProx angemeldet sind, müssen ihre E-Mail-Adresse nicht erneut bestätigen.<br><br>Diese Einstellung gilt nur, wenn sie auch bei der betreffenden Unit eingeschaltet ist."
                 },
                 {
                     "label": "Unit-Messungen erlauben",
                     "nested": true,
-                    "text": "Messwerte über die Unit-QR (km, Temperatur, Status, …). Units erben dies; Messfelder unter Arbeit → Unit-Messungen verknüpfen. Kategorie und Unit müssen aktiv sein. Getrennt von ESG und Unit-Checks."
+                    "text": "Mit Unit-Messungen können Nutzer über den QR-Code einen Messwert oder einen Stand erfassen.<br><br>Zum Beispiel:<br>• Den Kilometerstand eines Fahrzeugs.<br>• Die Temperatur eines Raums.<br>• Einen bestimmten Messwert oder einen technischen Status.<br><br>Die Messfelder, die Sie verwenden möchten, richten Sie unter Arbeit → Unit-Messungen ein.<br><br>Die Kachel Messungen erscheint nur, wenn diese Funktion sowohl bei der Kategorie als auch bei der Unit eingeschaltet ist.<br><br>Unit-Messungen sind etwas anderes als Unit-Checks. Bei einem Unit-Check gibt jemand an, ob etwas in Ordnung ist. Bei einer Unit-Messung wird ein konkreter Wert erfasst."
                 },
                 {
                     "label": "Frühere Meldungen anzeigen",
                     "nested": true,
-                    "text": "Standardmäßig an: Besucher sehen offene Meldungen der Unit nach einem QR-Scan. Deaktivieren, wenn die Liste nicht öffentlich sein soll (Hotelzimmer, Sanitärraum, …). Gilt für alle Units dieser Kategorie; keine Ausnahme pro Unit."
+                    "text": "Diese Option ist standardmäßig eingeschaltet.<br><br>Wenn jemand den QR-Code einer Unit scannt, kann diese Person sehen, welche Meldungen für diese Unit noch offen sind.<br><br>Sollen Besucher diese Information nicht sehen? Schalten Sie die Option aus.<br><br>Das kann zum Beispiel bei Hotelzimmern, Toiletten oder anderen Räumen sinnvoll sein, in denen Sie offene Meldungen lieber nicht den Besuchern zeigen.<br><br>Wichtig: Diese Einstellung gilt für alle Units der Kategorie. Sie können sie nicht einzeln pro Unit ändern."
                 }
             ]
         },

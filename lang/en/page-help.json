@@ -365,46 +365,51 @@
             "title": "Help — Categories",
             "actions": [
                 {
-                    "label": "Categories",
-                    "text": "Manage categories to group units (e.g. drills, plumbing, fitness equipment, office, electrical). Categories help with filtering and organizing units. By linking executor teams to specific categories, WinProx ensures that tasks can be carried out by the correct team. GPS location category: when \"Allow GPS location\" is checked, the GPS location of a unit can be submitted via the portal. This lets users of mobile units (e.g. crane, large machine) quickly communicate their location to administration."
+                    "label": "What is a category for?",
+                    "text": "A category groups units of the same type. Think of washrooms, offices, fitness equipment or machines. That way you can organise your units and find them easily.<br><br>You can also link a team to a category. Reports and tasks can then reach the team responsible for that type of unit. A report about washrooms, for example, goes to the washroom team."
                 },
                 {
-                    "label": "Category translations",
-                    "text": "In the category edit form you can manually update the name per language (NL, EN, FR, DE, ES, IT). Useful when the automatic translation by WinProx (periodically) is wrong or still missing. Saving finalises the translation for that language."
+                    "label": "The name in other languages",
+                    "text": "WinProx translates the category name automatically into the available languages.<br><br>Is a translation wrong or missing? You can correct it yourself in the category form. Select the language, enter the right name and save. Your corrected translation then becomes the fixed name for that language."
                 },
                 {
-                    "label": "Portal settings (category)",
-                    "text": "Set GPS, reservable, unit checks, unit measurements, contact and email confirmation at category level. Units in this category inherit these flags when you choose or change the category. Previous reports are also turned on or off here; that applies to all units in the category, with no per-unit exception. When you update category settings, units that still had the old defaults get the new values. Per-unit exceptions go in Advanced portal options on the unit form."
+                    "label": "What happens on the QR page?",
+                    "text": "The settings below decide which features are available when someone scans a unit’s QR code.<br><br>You set these options at category level. New units in the category take the settings over automatically.<br><br>Change something later? Units that still use the category’s standard settings follow along. If you chose your own settings for a particular unit, those stay as they are.<br><br>You set those exceptions on the unit itself, under Per-unit portal options.<br><br>Please note: Show previous reports is an exception. This setting always applies to every unit in the category and cannot be changed separately per unit."
+                },
+                {
+                    "label": "Allow GPS location",
+                    "nested": true,
+                    "text": "Useful for mobile units that often change place, such as a crane or a large machine.<br><br>Through the QR code, the user can say where the unit is at that moment. Administration then knows where the equipment is, and you can find it more easily.<br><br>You manage this setting only at category level. You cannot change it separately per unit."
                 },
                 {
                     "label": "Reservable",
                     "nested": true,
-                    "text": "For shared resources with a time slot (meeting room, vehicle, key, …). Units inherit this; the unit QR shows the Reserve tile when both category and unit allow it. Defect reports remain via Issue → task."
+                    "text": "Turn this on when users need to reserve a unit in advance for a period of time.<br><br>For example a meeting room, a company vehicle or a key.<br><br>The Reserve tile appears on the QR page when this feature is switched on for both the category and the unit.<br><br>Reporting a defect or a problem remains possible through the ordinary report."
                 },
                 {
                     "label": "Allow unit checks",
                     "nested": true,
-                    "text": "For quick OK/Not OK rounds (security, cleaning, …). Units inherit this; workers see the Unit check tile only when both category and unit are on. Separate from ESG measurements."
+                    "text": "With a unit check, a worker can quickly confirm whether something is in order.<br><br>For example after a cleaning round or during a safety check. The worker simply marks everything OK or Not OK.<br><br>The Unit check tile appears only when this feature is switched on for both the category and the unit.<br><br>A unit check is a check, not a record of a reading such as a temperature or a mileage."
                 },
                 {
                     "label": "Require contact details",
                     "nested": true,
-                    "text": "Anonymous reporters via the unit QR must enter first name, last name and email. Units inherit this from the category. Does not apply to signed-in field workers."
+                    "text": "Turn this on when you want visitors to enter their contact details before they can send a report via the QR code.<br><br>Anyone who is not signed in to WinProx must then enter their first name, last name and email address.<br><br>Workers who are already signed in do not have to do this.<br><br>This requirement works only when it is also switched on for that unit."
                 },
                 {
                     "label": "Require email confirmation",
                     "nested": true,
-                    "text": "Anonymous reporters must confirm their email; the report, task and webhook are created only after they click the link. Units inherit this from the category. Does not apply to signed-in field workers."
+                    "text": "Do you want to check that the email address given is correct? Turn this option on.<br><br>The reporter receives an email with a confirmation link. The report is created and processed only after they click that link.<br><br>Without confirmation, no report is created.<br><br>Workers who are already signed in to WinProx do not have to confirm their email address again.<br><br>This setting works only when it is also switched on for that unit."
                 },
                 {
                     "label": "Allow unit measurements",
                     "nested": true,
-                    "text": "Readings via the unit QR (km, temperature, status, …). Units inherit this; link measure fields under Work → Unit measurements. Both category and unit must be on. Separate from ESG and unit checks."
+                    "text": "With unit measurements, users can record a reading or a status via the QR code.<br><br>For example:<br>• The mileage of a vehicle.<br>• The temperature of a room.<br>• A particular reading or technical status.<br><br>You set up the measurement fields you want to use under Work → Unit measurements.<br><br>The measurements tile appears only when this feature is switched on for both the category and the unit.<br><br>Unit measurements are different from unit checks. With a unit check, someone says whether something is in order. With a unit measurement, a specific value is recorded."
                 },
                 {
                     "label": "Show previous reports",
                     "nested": true,
-                    "text": "On by default: visitors see open reports for the unit after a QR scan. Turn off if you do not want that list public (hotel room, restroom, …). Applies to all units in this category; no per-unit exception."
+                    "text": "This option is on by default.<br><br>When someone scans a unit’s QR code, they can see which reports for that unit are still open.<br><br>Do you not want visitors to see this information? Turn the option off.<br><br>That can be useful for hotel rooms, toilets or other spaces where you would rather not show open reports to visitors.<br><br>Important: this setting applies to every unit in the category. You cannot change it separately per unit."
                 }
             ]
         },

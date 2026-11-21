@@ -365,50 +365,51 @@
             "title": "Aide — Catégories",
             "actions": [
                 {
-                    "label": "Catégories",
-                    "text": "Gérez les catégories pour regrouper les unités (ex. perceuses, plomberie, équipements de fitness, bureau, électricité). Les catégories aident à filtrer et organiser les unités. En liant des équipes d'exécutants à des catégories spécifiques, WinProx garantit que les tâches peuvent être effectuées par l'équipe correcte. Catégorie localisation GPS : lorsque « Autoriser la localisation GPS » est coché, la localisation GPS d'une unité peut être transmise via le portail. Cela permet aux utilisateurs d'unités mobiles (ex. grue, grande machine) de communiquer rapidement leur position à l'administration."
+                    "label": "À quoi sert une catégorie ?",
+                    "text": "Une catégorie regroupe des unités du même type. Pensez par exemple aux sanitaires, aux bureaux, aux appareils de fitness ou aux machines. Vous organisez ainsi vos unités et les retrouvez facilement.<br><br>Vous pouvez aussi lier une équipe à une catégorie. Les signalements et les tâches arrivent alors auprès de l’équipe responsable de ce type d’unités. Un signalement sur les sanitaires arrive par exemple à l’équipe sanitaires."
                 },
                 {
-                    "label": "Traductions de catégorie",
-                    "text": "Dans le formulaire d’édition de catégorie, vous pouvez mettre à jour manuellement le nom par langue (NL, EN, FR, DE, ES, IT). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
+                    "label": "Le nom dans d’autres langues",
+                    "text": "WinProx traduit automatiquement le nom de la catégorie dans les langues disponibles.<br><br>Une traduction est incorrecte ou manque ? Vous pouvez la corriger vous-même dans le formulaire de la catégorie. Choisissez la langue, saisissez le bon nom et enregistrez. Votre traduction corrigée devient alors le nom fixe pour cette langue."
                 },
                 {
-                    "label": "Paramètres portail (catégorie)",
-                    "text": "GPS, réservable, contrôles unité, mesures unité, contact et confirmation e-mail se règlent ici au niveau catégorie. Les unités de cette catégorie héritent automatiquement de ces cases lors du choix ou changement de catégorie. Les signalements précédents s’activent ou se masquent aussi ici ; cela s’applique à toutes les unités de la catégorie, sans exception par unité. Si vous modifiez la catégorie, les unités qui avaient encore les anciennes valeurs par défaut reçoivent les nouvelles. Les exceptions par unité se font via Options portail avancées sur le formulaire unité."
+                    "label": "Que se passe-t-il sur la page QR ?",
+                    "text": "Les réglages ci-dessous déterminent quelles fonctions sont disponibles lorsqu’une personne scanne le code QR d’une unité.<br><br>Vous réglez ces options au niveau de la catégorie. Les nouvelles unités de la catégorie reprennent automatiquement ces réglages.<br><br>Vous modifiez quelque chose plus tard ? Les unités qui utilisent encore les réglages standard de la catégorie suivent. Si vous avez choisi des réglages propres pour une unité, ils restent en place.<br><br>Vous réglez ces exceptions sur l’unité elle-même, sous Options portail par unité.<br><br>Attention : Afficher les signalements précédents est une exception. Ce réglage s’applique toujours à toutes les unités de la catégorie et ne peut pas être modifié séparément par unité."
+                },
+                {
+                    "label": "Autoriser la localisation GPS",
+                    "nested": true,
+                    "text": "Utile pour les unités mobiles qui changent souvent de place, comme une grue ou une grosse machine.<br><br>Via le code QR, l’utilisateur peut indiquer où se trouve l’unité à ce moment. L’administration sait ainsi où se trouve le matériel, et vous le retrouvez plus facilement.<br><br>Vous gérez ce réglage uniquement au niveau de la catégorie. Vous ne pouvez pas le modifier séparément par unité."
                 },
                 {
                     "label": "Réservable",
                     "nested": true,
-                    "text": "Pour ressources partagées avec créneau (salle, véhicule, clé, …). Les unités héritent ; la QR unité affiche la tuile Réserver quand catégorie et unité l'autorisent. Les signalements de défaut restent via Signalement → tâche."
+                    "text": "Activez cette option lorsque les utilisateurs doivent pouvoir réserver une unité à l’avance pour une période donnée.<br><br>Par exemple une salle de réunion, un véhicule de société ou une clé.<br><br>La tuile Réserver apparaît sur la page QR lorsque cette fonction est activée à la fois pour la catégorie et pour l’unité.<br><br>Signaler un défaut ou un problème reste possible via le signalement habituel."
                 },
                 {
-                    "label": "Autoriser les contrôles d'unité",
+                    "label": "Autoriser les contrôles d’unité",
                     "nested": true,
-                    "text": "Pour des rondes OK/Non OK rapides (sécurité, ménage, …). Les unités héritent ; les exécutants voient la tuile Contrôle d'unité seulement si catégorie et unité sont actives. Distinct des mesures ESG."
+                    "text": "Avec un contrôle d’unité, un intervenant vérifie rapidement si quelque chose est en ordre.<br><br>Par exemple après une tournée de nettoyage ou lors d’un contrôle de sécurité. L’intervenant indique simplement si tout est OK ou Pas OK.<br><br>La tuile Contrôle unit n’apparaît que lorsque cette fonction est activée à la fois pour la catégorie et pour l’unité.<br><br>Un contrôle d’unité est un contrôle, pas l’enregistrement d’une mesure comme une température ou un kilométrage."
                 },
                 {
                     "label": "Coordonnées obligatoires",
                     "nested": true,
-                    "text": "Les signaleurs anonymes via la QR unité doivent saisir prénom, nom et e-mail. Les unités héritent de la catégorie. Ne s'applique pas aux exécutants connectés."
+                    "text": "Activez cette option si vous voulez que les visiteurs remplissent leurs coordonnées avant d’envoyer un signalement via le code QR.<br><br>Toute personne qui n’est pas connectée à WinProx doit alors indiquer son prénom, son nom et son adresse e-mail.<br><br>Les intervenants déjà connectés n’ont pas à le faire.<br><br>Cette obligation ne fonctionne que si elle est aussi activée pour l’unité concernée."
                 },
                 {
                     "label": "Confirmation e-mail obligatoire",
                     "nested": true,
-                    "text": "Les signaleurs anonymes doivent confirmer leur e-mail ; signalement, tâche et webhook ne sont créés qu'après clic sur le lien. Les unités héritent de la catégorie. Ne s'applique pas aux exécutants connectés."
+                    "text": "Vous voulez vérifier que l’adresse e-mail indiquée est correcte ? Activez cette option.<br><br>Le déclarant reçoit un e-mail avec un lien de confirmation. Le signalement n’est créé et traité qu’après un clic sur ce lien.<br><br>Sans confirmation, aucun signalement n’est créé.<br><br>Les intervenants déjà connectés à WinProx n’ont pas à confirmer à nouveau leur adresse e-mail.<br><br>Ce réglage ne fonctionne que s’il est aussi activé pour l’unité concernée."
                 },
                 {
-                    "label": "Autoriser les mesures d'unité",
+                    "label": "Autoriser les mesures unit",
                     "nested": true,
-                    "text": "Relevés via la QR unité (km, température, statut, …). Les unités héritent ; liez les champs de mesure sous Travail → Mesures d'unité. Catégorie et unité doivent être actives. Distinct de l'ESG et des contrôles d'unité."
+                    "text": "Avec les mesures unit, les utilisateurs peuvent enregistrer une valeur ou un relevé via le code QR.<br><br>Par exemple :<br>• Le kilométrage d’un véhicule.<br>• La température d’une pièce.<br>• Une valeur mesurée ou un état technique.<br><br>Vous définissez les champs de mesure à utiliser sous Travail → Mesures unit.<br><br>La tuile Mesures n’apparaît que lorsque cette fonction est activée à la fois pour la catégorie et pour l’unité.<br><br>Les mesures unit sont différentes des contrôles d’unité. Lors d’un contrôle, quelqu’un indique si quelque chose est en ordre. Lors d’une mesure, une valeur concrète est enregistrée."
                 },
                 {
                     "label": "Afficher les signalements précédents",
                     "nested": true,
-                    "text": "Activé par défaut : les visiteurs voient les signalements ouverts de l’unité après un scan QR. Décochez si la liste ne doit pas être publique (chambre d’hôtel, sanitaires, …). S’applique à toutes les unités de cette catégorie ; pas d’exception par unité."
-                },
-                {
-                    "label": "Autoriser les mesures d’unité",
-                    "text": "Activez Autoriser les mesures sur la catégorie pour les relevés via le QR d’unité (km, température, statut…). Activez aussi par unité et liez les champs (Travail → Mesures d’unité). Les deux drapeaux doivent être actifs. Distinct de l’ESG et des unit checks."
+                    "text": "Cette option est activée par défaut.<br><br>Lorsqu’une personne scanne le code QR d’une unité, elle peut voir quels signalements sont encore ouverts pour cette unité.<br><br>Vous ne voulez pas que les visiteurs voient cette information ? Désactivez l’option.<br><br>Cela peut être utile pour des chambres d’hôtel, des toilettes ou d’autres espaces où vous préférez ne pas montrer les signalements ouverts aux visiteurs.<br><br>Important : ce réglage s’applique à toutes les unités de la catégorie. Vous ne pouvez pas le modifier séparément par unité."
                 }
             ]
         },

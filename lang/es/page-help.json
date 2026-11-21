@@ -365,46 +365,51 @@
             "title": "Ayuda — Categorías",
             "actions": [
                 {
-                    "label": "Categorías",
-                    "text": "Gestione categorías para agrupar unidades (p. ej. taladros, fontanería, equipos de fitness, oficina, electricidad). Las categorías ayudan a filtrar y organizar unidades. Al vincular equipos ejecutores a categorías específicas, WinProx garantiza que las tareas las ejecute el equipo correcto. Categoría ubicación GPS: cuando «Permitir ubicación GPS» está marcado, la ubicación GPS de una unidad puede enviarse mediante el portal. Esto permite a usuarios de unidades móviles (p. ej. grúa, máquina grande) comunicar rápidamente su posición a la administración."
+                    "label": "¿Para qué sirve una categoría?",
+                    "text": "Una categoría agrupa unidades del mismo tipo. Piense por ejemplo en aseos, oficinas, aparatos de fitness o máquinas. Así puede organizar sus unidades y encontrarlas con facilidad.<br><br>También puede vincular un equipo a una categoría. Los avisos y las tareas llegan entonces al equipo responsable de ese tipo de unidades. Un aviso sobre los aseos llega, por ejemplo, al equipo de aseos."
                 },
                 {
-                    "label": "Traducciones de categoría",
-                    "text": "En el formulario de edición de categoría puede actualizar manualmente el nombre por idioma (NL, EN, FR, DE, ES, IT). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
+                    "label": "El nombre en otros idiomas",
+                    "text": "WinProx traduce el nombre de la categoría automáticamente a los idiomas disponibles.<br><br>¿Una traducción no es correcta o falta? Puede corregirla usted mismo en el formulario de la categoría. Seleccione el idioma, escriba el nombre correcto y guarde. Su traducción corregida pasa a ser el nombre fijo de ese idioma."
                 },
                 {
-                    "label": "Ajustes del portal (categoría)",
-                    "text": "GPS, reservable, controles de unidad, mediciones de unidad, contacto y confirmación por e-mail se configuran aquí a nivel categoría. Las unidades de esta categoría heredan estas casillas al elegir o cambiar la categoría. Los informes anteriores también se activan o desactivan aquí; aplica a todas las unidades de la categoría, sin excepción por unidad. Si cambia la categoría, las unidades que aún tenían los valores por defecto anteriores reciben los nuevos. Las excepciones por unidad van en Opciones avanzadas del portal en el formulario de unidad."
+                    "label": "¿Qué ocurre en la página QR?",
+                    "text": "Con los ajustes de abajo decide qué funciones están disponibles cuando alguien escanea el código QR de una unidad.<br><br>Estos ajustes se hacen a nivel de categoría. Las unidades nuevas de la categoría toman los ajustes automáticamente.<br><br>¿Cambia algo más tarde? Entonces siguen las unidades que todavía usan los ajustes estándar de la categoría. Si eligió ajustes propios para una unidad concreta, esos se mantienen.<br><br>Esas excepciones las configura en la propia unidad, en Opciones de portal por unidad.<br><br>Atención: Mostrar informes anteriores es una excepción. Este ajuste vale siempre para todas las unidades de la categoría y no se puede cambiar por separado en cada unidad."
+                },
+                {
+                    "label": "Permitir ubicación GPS",
+                    "nested": true,
+                    "text": "Útil para unidades móviles que cambian de sitio a menudo, como una grúa o una máquina grande.<br><br>A través del código QR, la persona puede indicar dónde está la unidad en ese momento. Así la administración sabe dónde está el material y usted lo encuentra con más facilidad.<br><br>Este ajuste se gestiona solo a nivel de categoría. No puede cambiarlo por separado en cada unidad."
                 },
                 {
                     "label": "Reservable",
                     "nested": true,
-                    "text": "Para recursos compartidos con franja horaria (sala, vehículo, llave, …). Las unidades heredan; el QR de la unidad muestra la ficha Reservar cuando categoría y unidad lo permiten. Los avisos de defecto siguen vía Aviso → tarea."
+                    "text": "Active esta opción cuando los usuarios deban poder reservar una unidad de antemano durante un periodo.<br><br>Por ejemplo una sala de reuniones, un vehículo de la empresa o una llave.<br><br>La ficha Reservar aparece en la página QR cuando esta función está activada tanto en la categoría como en la unidad.<br><br>Avisar de un defecto o un problema sigue siendo posible con el aviso habitual."
                 },
                 {
                     "label": "Permitir comprobaciones de unidad",
                     "nested": true,
-                    "text": "Para rondas OK/No OK rápidas (seguridad, limpieza, …). Las unidades heredan; los ejecutores ven la ficha Comprobación de unidad solo si categoría y unidad están activas. Separado de mediciones ESG."
+                    "text": "Con una comprobación de unidad, un operario puede comprobar rápidamente si algo está en orden.<br><br>Por ejemplo después de una ronda de limpieza o durante un control de seguridad. El operario indica simplemente si todo está OK o No OK.<br><br>La ficha Chequeo de unit solo aparece cuando esta función está activada tanto en la categoría como en la unidad.<br><br>Una comprobación de unidad es un control, no el registro de un valor medido como una temperatura o un kilometraje."
                 },
                 {
                     "label": "Datos de contacto obligatorios",
                     "nested": true,
-                    "text": "Los informantes anónimos vía QR deben indicar nombre, apellidos y e-mail. Las unidades heredan de la categoría. No aplica a ejecutores con sesión iniciada."
+                    "text": "Active esta opción cuando quiera que los visitantes rellenen sus datos de contacto antes de poder enviar un aviso con el código QR.<br><br>Quien no haya iniciado sesión en WinProx debe entonces indicar su nombre, apellidos y dirección de correo.<br><br>Los operarios que ya han iniciado sesión no tienen que hacerlo.<br><br>Esta obligación solo funciona cuando también está activada en la unidad correspondiente."
                 },
                 {
                     "label": "Confirmación de correo obligatoria",
                     "nested": true,
-                    "text": "Los informantes anónimos deben confirmar su correo; aviso, tarea y webhook se crean solo tras hacer clic en el enlace. Las unidades heredan de la categoría. No aplica a ejecutores con sesión iniciada."
+                    "text": "¿Quiere comprobar que la dirección de correo indicada es correcta? Active esta opción.<br><br>Quien avisa recibe un correo con un enlace de confirmación. El aviso solo se crea y se tramita después de que pulse ese enlace.<br><br>Sin confirmación no se crea ningún aviso.<br><br>Los operarios que ya han iniciado sesión en WinProx no tienen que confirmar de nuevo su correo.<br><br>Este ajuste solo funciona cuando también está activado en la unidad correspondiente."
                 },
                 {
-                    "label": "Permitir mediciones de unidad",
+                    "label": "Permitir mediciones de unit",
                     "nested": true,
-                    "text": "Lecturas vía QR de unidad (km, temperatura, estado, …). Las unidades heredan; vincule campos en Trabajo → Mediciones de unidad. Categoría y unidad deben estar activas. Separado de ESG y controles de unidad."
+                    "text": "Con las mediciones de unit, los usuarios pueden registrar un valor medido o un estado mediante el código QR.<br><br>Por ejemplo:<br>• El kilometraje de un vehículo.<br>• La temperatura de una sala.<br>• Un valor medido o un estado técnico.<br><br>Los campos de medición que quiera usar los configura en Trabajo → Mediciones de unit.<br><br>La ficha Mediciones solo aparece cuando esta función está activada tanto en la categoría como en la unidad.<br><br>Las mediciones de unit son distintas de las comprobaciones de unidad. En una comprobación, alguien indica si algo está en orden. En una medición se registra un valor concreto."
                 },
                 {
                     "label": "Mostrar informes anteriores",
                     "nested": true,
-                    "text": "Activado por defecto: los visitantes ven los avisos abiertos de la unidad tras escanear el QR. Desactive si no quiere esa lista pública (habitación de hotel, aseo, …). Aplica a todas las unidades de esta categoría; sin excepción por unidad."
+                    "text": "Esta opción está activada de forma predeterminada.<br><br>Cuando alguien escanea el código QR de una unidad, puede ver qué avisos de esa unidad siguen abiertos.<br><br>¿No quiere que los visitantes vean esta información? Desactive la opción.<br><br>Puede ser útil en habitaciones de hotel, aseos u otros espacios en los que prefiere no mostrar los avisos abiertos a los visitantes.<br><br>Importante: este ajuste vale para todas las unidades de la categoría. No puede cambiarlo por separado en cada unidad."
                 }
             ]
         },

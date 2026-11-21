@@ -365,46 +365,51 @@
             "title": "Aiuto — Categorie",
             "actions": [
                 {
-                    "label": "Categorie",
-                    "text": "Gestisca categorie per raggruppare unità (es. trapani, idraulica, attrezzature fitness, ufficio, elettrico). Le categorie aiutano a filtrare e organizzare le unità. Collegando team esecutori a categorie specifiche, WinProx garantisce che le attività possano essere eseguite dal team corretto. Categoria posizione GPS: quando «Consenti posizione GPS» è selezionato, la posizione GPS di un'unità può essere inviata tramite il portale. Questo permette agli utenti di unità mobili (es. gru, grande macchina) di comunicare rapidamente la propria posizione all'amministrazione."
+                    "label": "A che cosa serve una categoria?",
+                    "text": "Una categoria raggruppa unità dello stesso tipo. Pensi per esempio a servizi igienici, uffici, attrezzi fitness o macchine. Così può organizzare le unità e ritrovarle facilmente.<br><br>Può anche collegare un team a una categoria. Segnalazioni e attività arrivano allora al team responsabile di quel tipo di unità. Una segnalazione sui servizi igienici arriva, per esempio, al team dei servizi igienici."
                 },
                 {
-                    "label": "Traduzioni categoria",
-                    "text": "Nel modulo di modifica categoria può aggiornare manualmente il nome per lingua (NL, EN, FR, DE, ES, IT). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
+                    "label": "Il nome in altre lingue",
+                    "text": "WinProx traduce automaticamente il nome della categoria nelle lingue disponibili.<br><br>Una traduzione non è corretta o manca? Può correggerla Lei nel modulo della categoria. Selezioni la lingua, inserisca il nome giusto e salvi. La traduzione corretta diventa allora il nome fisso per quella lingua."
                 },
                 {
-                    "label": "Impostazioni portale (categoria)",
-                    "text": "GPS, prenotabile, controlli unità, misurazioni unità, contatto e conferma e-mail si impostano qui a livello categoria. Le unit in questa categoria ereditano automaticamente queste spunte alla scelta o modifica della categoria. Le segnalazioni precedenti si attivano o nascondono anche qui; vale per tutte le unit della categoria, senza eccezione per unit. Se modificate la categoria, le unit che avevano ancora i vecchi default ricevono i nuovi valori. Le eccezioni per unit si impostano in Opzioni portale avanzate nel form unit."
+                    "label": "Che cosa succede nella pagina QR?",
+                    "text": "Con le impostazioni qui sotto decide quali funzioni sono disponibili quando qualcuno scansiona il codice QR di un’unità.<br><br>Queste opzioni si impostano a livello di categoria. Le nuove unità della categoria prendono automaticamente le impostazioni.<br><br>Modifica qualcosa in seguito? Allora seguono le unità che usano ancora le impostazioni standard della categoria. Se ha scelto impostazioni proprie per una certa unità, quelle restano.<br><br>Queste eccezioni le imposta sull’unità stessa, sotto Opzioni portale per unità.<br><br>Attenzione: Mostra segnalazioni precedenti è un’eccezione. Questa impostazione vale sempre per tutte le unità della categoria e non si può modificare separatamente per ogni unità."
+                },
+                {
+                    "label": "Consenti posizione GPS",
+                    "nested": true,
+                    "text": "Utile per le unità mobili che cambiano spesso posto, come una gru o una macchina grande.<br><br>Tramite il codice QR la persona può indicare dove si trova l’unità in quel momento. Così l’amministrazione sa dove si trova il mezzo e Lei lo ritrova più facilmente.<br><br>Questa impostazione si gestisce solo a livello di categoria. Non può modificarla separatamente per ogni unità."
                 },
                 {
                     "label": "Prenotabile",
                     "nested": true,
-                    "text": "Per risorse condivise con fascia oraria (sala, veicolo, chiave, …). Le unit ereditano; il QR unit mostra la tessera Prenota quando categoria e unit lo consentono. Le segnalazioni guasto restano via Segnalazione → compito."
+                    "text": "Attivi questa opzione quando gli utenti devono poter prenotare un’unità in anticipo per un certo periodo.<br><br>Per esempio una sala riunioni, un veicolo aziendale o una chiave.<br><br>La tessera Prenota compare nella pagina QR quando questa funzione è attiva sia per la categoria sia per l’unità.<br><br>Segnalare un guasto o un problema resta possibile con la segnalazione ordinaria."
                 },
                 {
                     "label": "Consenti controlli unità",
                     "nested": true,
-                    "text": "Per rapide ronde OK/Non OK (sicurezza, pulizie, …). Le unit ereditano; gli esecutori vedono la tessera Controllo unità solo se categoria e unit sono attive. Separato dalle misurazioni ESG."
+                    "text": "Con un controllo unità un operatore può verificare in fretta se qualcosa è in ordine.<br><br>Per esempio dopo un giro di pulizia o durante un controllo di sicurezza. L’operatore indica semplicemente se tutto è OK o Non OK.<br><br>La tessera Controllo unit compare solo quando questa funzione è attiva sia per la categoria sia per l’unità.<br><br>Un controllo unità è un controllo, non la registrazione di un valore misurato come una temperatura o un chilometraggio."
                 },
                 {
                     "label": "Dati di contatto obbligatori",
                     "nested": true,
-                    "text": "I segnalatori anonimi via QR unit devono inserire nome, cognome e e-mail. Le unit ereditano dalla categoria. Non vale per esecutori con accesso."
+                    "text": "Attivi questa opzione quando vuole che i visitatori compilino i dati di contatto prima di poter inviare una segnalazione con il codice QR.<br><br>Chi non ha effettuato l’accesso a WinProx deve allora indicare nome, cognome e indirizzo e-mail.<br><br>Gli operatori che hanno già effettuato l’accesso non devono farlo.<br><br>Questo obbligo funziona solo quando è attivo anche per l’unità interessata."
                 },
                 {
                     "label": "Conferma e-mail obbligatoria",
                     "nested": true,
-                    "text": "I segnalatori anonimi devono confermare l'e-mail; segnalazione, compito e webhook nascono solo dopo il clic sul link. Le unit ereditano dalla categoria. Non vale per esecutori con accesso."
+                    "text": "Vuole controllare che l’indirizzo e-mail indicato sia corretto? Attivi questa opzione.<br><br>Chi segnala riceve un’e-mail con un link di conferma. La segnalazione viene creata e trattata solo dopo il clic su quel link.<br><br>Senza conferma non viene creata alcuna segnalazione.<br><br>Gli operatori che hanno già effettuato l’accesso a WinProx non devono confermare di nuovo l’indirizzo e-mail.<br><br>Questa impostazione funziona solo quando è attiva anche per l’unità interessata."
                 },
                 {
-                    "label": "Consenti misurazioni unità",
+                    "label": "Consenti misurazioni unit",
                     "nested": true,
-                    "text": "Letture via QR unit (km, temperatura, stato, …). Le unit ereditano; collega i campi in Lavoro → Misurazioni unità. Categoria e unit devono essere attive. Distinto da ESG e controlli unità."
+                    "text": "Con le misurazioni unit gli utenti possono registrare un valore misurato o uno stato tramite il codice QR.<br><br>Per esempio:<br>• Il chilometraggio di un veicolo.<br>• La temperatura di un locale.<br>• Un valore misurato o uno stato tecnico.<br><br>I campi di misurazione che vuole usare li imposta in Lavoro → Misurazioni unit.<br><br>La tessera Misurazioni compare solo quando questa funzione è attiva sia per la categoria sia per l’unità.<br><br>Le misurazioni unit sono diverse dai controlli unità. In un controllo qualcuno indica se qualcosa è in ordine. In una misurazione si registra un valore concreto."
                 },
                 {
                     "label": "Mostra segnalazioni precedenti",
                     "nested": true,
-                    "text": "Attivo di default: i visitatori vedono le segnalazioni aperte della unit dopo la scansione QR. Disattivi se l’elenco non deve essere pubblico (camera d’albergo, servizi, …). Vale per tutte le unit di questa categoria; nessuna eccezione per unit."
+                    "text": "Questa opzione è attiva per impostazione predefinita.<br><br>Quando qualcuno scansiona il codice QR di un’unità, può vedere quali segnalazioni di quell’unità sono ancora aperte.<br><br>Non vuole che i visitatori vedano questa informazione? Disattivi l’opzione.<br><br>Può essere utile per camere d’albergo, servizi igienici o altri spazi in cui preferisce non mostrare ai visitatori le segnalazioni aperte.<br><br>Importante: questa impostazione vale per tutte le unità della categoria. Non può modificarla separatamente per ogni unità."
                 }
             ]
         },

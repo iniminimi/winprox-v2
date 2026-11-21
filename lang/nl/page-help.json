@@ -365,51 +365,51 @@
             "title": "Hulp — Categorieën",
             "actions": [
                 {
-                    "label": "Waar een categorie voor dient",
-                    "text": "Een categorie is een groep units van dezelfde soort. Denk aan sanitair, kantoren, fitnesstoestellen of machines. Zo vindt u ze snel terug. U koppelt er ook het team aan dat het werk doet. Een melding over sanitair komt dan bij de mensen die sanitair doen."
+                    "label": "Waarvoor dient een categorie?",
+                    "text": "Een categorie groepeert units van hetzelfde type. Denk bijvoorbeeld aan sanitair, kantoren, fitnesstoestellen of machines. Zo kunt u uw units gemakkelijk organiseren en terugvinden.<br><br>U kunt ook een team aan een categorie koppelen. Meldingen en taken kunnen zo bij het team terechtkomen dat verantwoordelijk is voor dat type units. Een melding over sanitair komt bijvoorbeeld bij het sanitairteam terecht."
                 },
                 {
                     "label": "De naam in andere talen",
-                    "text": "De naam wordt vanzelf vertaald. Klopt een vertaling niet, of is ze er nog niet, dan past u ze zelf aan. Opslaan maakt die vertaling de vaste naam in die taal."
+                    "text": "WinProx vertaalt de categorienaam automatisch naar de beschikbare talen.<br><br>Klopt een vertaling niet of ontbreekt ze? Dan kunt u ze zelf aanpassen in het categorieformulier. Selecteer de gewenste taal, vul de juiste naam in en sla op. Uw aangepaste vertaling wordt dan de vaste naam voor die taal."
                 },
                 {
-                    "label": "Wat er op de QR gebeurt",
-                    "text": "De vinkjes hieronder zet u één keer aan voor de hele groep. Een nieuwe unit in deze categorie neemt ze over. Past u ze later aan, dan volgen de units die u niet apart hebt ingesteld. Een unit die u wél apart hebt gezet, blijft zoals u die hebt gelaten. Dat doet u bij de unit zelf, onder Portaal-opties per unit. Eén uitzondering: vroegere meldingen tonen geldt altijd voor elke unit in de categorie. Dat kunt u niet voor één unit uitzetten."
+                    "label": "Wat gebeurt er op de QR-pagina?",
+                    "text": "Met de instellingen hieronder bepaalt u welke functies beschikbaar zijn wanneer iemand de QR-code van een unit scant.<br><br>U stelt deze opties in op categorieniveau. Nieuwe units in de categorie nemen de instellingen automatisch over.<br><br>Past u later iets aan? Dan volgen de units die nog de standaardinstellingen van de categorie gebruiken. Hebt u voor een bepaalde unit eigen instellingen gekozen, dan blijven die behouden.<br><br>U kunt deze uitzonderingen instellen bij de unit zelf, onder Portaal-opties per unit.<br><br>Let op: voor Vroegere meldingen tonen geldt een uitzondering. Deze instelling geldt altijd voor alle units in de categorie en kan niet afzonderlijk per unit worden aangepast."
                 },
                 {
                     "label": "GPS-locatie toestaan",
                     "nested": true,
-                    "text": "Handig als iets van plaats verandert, zoals een kraan of een grote machine. Via de QR kan dan worden doorgegeven waar de unit nu staat, zodat u die snel terugvindt. Dit stelt u alleen bij de categorie in, niet bij elke unit apart."
+                    "text": "Handig voor mobiele units die regelmatig van plaats veranderen, zoals een kraan of een grote machine.<br><br>Via de QR-code kan de gebruiker doorgeven waar de unit zich op dat moment bevindt. Zo weet de administratie waar het materieel staat en vindt u het gemakkelijker terug.<br><br>Deze instelling beheert u uitsluitend op categorieniveau. U kunt ze niet afzonderlijk per unit aanpassen."
                 },
                 {
                     "label": "Reserveerbaar",
                     "nested": true,
-                    "text": "Zet dit aan als iemand een tijdslot moet kunnen vastleggen, bijvoorbeeld een vergaderzaal, een voertuig of een sleutel. Reserveren verschijnt op de QR pas als het bij de categorie én bij de unit aanstaat. Een defect melden blijft een gewone melding."
+                    "text": "Schakel deze optie in wanneer gebruikers een unit vooraf voor een bepaalde periode moeten kunnen reserveren.<br><br>Bijvoorbeeld een vergaderzaal, bedrijfsvoertuig of sleutel.<br><br>De tegel Reserveren verschijnt op de QR-pagina wanneer deze functie zowel bij de categorie als bij de unit is ingeschakeld.<br><br>Een defect of probleem melden blijft mogelijk via de gewone meldingsfunctie."
                 },
                 {
                     "label": "Unit checks toestaan",
                     "nested": true,
-                    "text": "Voor een korte controle: in orde, of niet in orde. Bijvoorbeeld na een schoonmaakronde of een controleronde. De uitvoerder ziet Unit check pas als het bij de categorie én bij de unit aanstaat. Dit is geen meting van een getal of een stand."
+                    "text": "Met een unit check kan een uitvoerder snel controleren of iets in orde is.<br><br>Bijvoorbeeld na een schoonmaakronde of tijdens een veiligheidscontrole. De uitvoerder geeft eenvoudig aan of alles OK of Niet OK is.<br><br>De tegel Unit check verschijnt alleen wanneer deze functie zowel bij de categorie als bij de unit is ingeschakeld.<br><br>Een unit check is een controle, geen registratie van meetwaarden zoals een temperatuur of kilometerstand."
                 },
                 {
                     "label": "Contactgegevens invullen verplicht",
                     "nested": true,
-                    "text": "Wie een melding doet via de QR, zonder aangemeld te zijn, moet voornaam, naam en e-mail invullen. Iemand die al aangemeld is, hoeft dat niet. Het werkt pas als het ook bij de unit aanstaat."
+                    "text": "Schakel deze optie in wanneer u wilt dat bezoekers hun contactgegevens invullen voordat ze een melding via de QR-code kunnen versturen.<br><br>Wie niet aangemeld is bij WinProx, moet dan zijn of haar voornaam, naam en e-mailadres invullen.<br><br>Uitvoerders die al aangemeld zijn, hoeven dit niet te doen.<br><br>Deze verplichting werkt alleen wanneer ze ook bij de betreffende unit is ingeschakeld."
                 },
                 {
                     "label": "E-mailbevestiging verplicht",
                     "nested": true,
-                    "text": "De melder krijgt een e-mail en moet op de link klikken. Pas dan komt de melding binnen. Zonder die klik gebeurt er niets. Iemand die al aangemeld is, hoeft dit niet. Het werkt pas als het ook bij de unit aanstaat."
+                    "text": "Wilt u controleren of het opgegeven e-mailadres correct is? Schakel dan deze optie in.<br><br>De melder ontvangt een e-mail met een bevestigingslink. Pas nadat de melder op die link klikt, wordt de melding aangemaakt en verwerkt.<br><br>Zonder bevestiging wordt er geen melding aangemaakt.<br><br>Uitvoerders die al aangemeld zijn bij WinProx, hoeven hun e-mailadres niet opnieuw te bevestigen.<br><br>Deze instelling werkt alleen wanneer ze ook bij de betreffende unit is ingeschakeld."
                 },
                 {
                     "label": "Unitmetingen toestaan",
                     "nested": true,
-                    "text": "Voor een getal of een stand, zoals kilometers, een temperatuur of een status. De velden daarvoor koppelt u onder Werk → Unitmetingen. Op de QR verschijnt het pas als het bij de categorie én bij de unit aanstaat. Dit is iets anders dan een unit check."
+                    "text": "Met unitmetingen kunnen gebruikers via de QR-code een meetwaarde of stand registreren.<br><br>Bijvoorbeeld:<br>• De kilometerstand van een voertuig.<br>• De temperatuur van een ruimte.<br>• Een bepaalde meetwaarde of technische status.<br><br>De meetvelden die u wilt gebruiken, stelt u in onder Werk → Unitmetingen.<br><br>De tegel voor unitmetingen verschijnt alleen wanneer deze functie zowel bij de categorie als bij de unit is ingeschakeld.<br><br>Unitmetingen zijn iets anders dan unit checks. Bij een unit check geeft iemand aan of iets in orde is. Bij een unitmeting wordt een concrete waarde geregistreerd."
                 },
                 {
                     "label": "Vroegere meldingen tonen",
                     "nested": true,
-                    "text": "Dit staat standaard aan. Na het scannen ziet een bezoeker welke meldingen voor die unit nog openstaan. Zet het uit als die lijst niet voor iedereen is, bijvoorbeeld bij een hotelkamer of een toilet. Het geldt voor alle units in deze categorie. U kunt het niet voor één unit apart uitzetten."
+                    "text": "Deze optie staat standaard aan.<br><br>Wanneer iemand de QR-code van een unit scant, kan die persoon zien welke meldingen voor die unit nog openstaan.<br><br>Wilt u niet dat bezoekers deze informatie kunnen bekijken? Schakel de optie dan uit.<br><br>Dat kan bijvoorbeeld nuttig zijn bij hotelkamers, toiletten of andere ruimtes waar u openstaande meldingen liever niet aan bezoekers toont.<br><br>Belangrijk: deze instelling geldt voor alle units binnen de categorie. U kunt ze niet afzonderlijk per unit aanpassen."
                 }
             ]
         },
