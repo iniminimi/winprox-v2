@@ -1966,24 +1966,40 @@
             "title": "Aide — Types de service",
             "actions": [
                 {
-                    "label": "Type",
-                    "text": "Choisissez <strong>Travail</strong> (début, fin, pause) ou une absence (congé, récup, maladie ou autre). Les absences n’ont pas d’heures. Pour Autre vous choisissez code et nom (p. ex. KV — petit congé) ; cela ne compte pas dans le solde de congés."
+                    "label": "Qu’est-ce qu’un type de service ?",
+                    "text": "Un type de service est un <strong>code court</strong> (p. ex. V2 ou VL) avec un <strong>nom</strong> et une <strong>couleur</strong>. Vous saisissez ces codes dans le <strong>planning</strong> pour que chacun reconnaisse les mêmes prestations et absences. Vous les configurez en général une fois, et ne les modifiez que si l’organisation du travail change. Conseil : gardez des codes courts et reconnaissables ; le nom peut être plus long et plus clair."
                 },
                 {
-                    "label": "Aussi sans planning",
-                    "text": "En haut de Types de service se trouve <strong>Proposer aussi les exécutants sans planning</strong> (ballon au survol). Quand vous cherchez un remplaçant sur le planning, WinProx affiche d’éventuels candidats : choisissez-en un et le créneau d’origine devient « absence » ; le remplaçant reçoit les mêmes heures. <strong>Décoché :</strong> seulement qui a ce jour un service avec <strong>Disponible pour remplacement</strong>. <strong>Coché :</strong> aussi qui n’a rien de planifié ce jour-là."
+                    "label": "Ajouter ou modifier",
+                    "text": "Cliquez sur <strong>Ajouter</strong> (ou <strong>Modifier</strong> sur une ligne existante). Indiquez au minimum le <strong>code</strong>, le <strong>nom</strong> et la <strong>catégorie</strong>, choisissez une <strong>couleur</strong> et enregistrez. Important : si vous modifiez un type plus tard (horaires, nom, couleur), les <strong>cellules déjà présentes dans le planning ne changent pas automatiquement</strong>. Seules les nouvelles saisies utilisent les nouveaux réglages. Pour mettre à jour d’anciens jours, corrigez-les dans le planning."
+                },
+                {
+                    "label": "Catégorie : travail",
+                    "text": "Choisissez <strong>Travail</strong> pour une prestation normale. Indiquez <strong>début</strong>, <strong>fin</strong> et éventuellement <strong>pause</strong> (minutes). Dans le planning, saisissez ensuite le code (p. ex. V2) ; WinProx remplit les heures. Vous pouvez aussi saisir des horaires libres (p. ex. 07:00-15:00) sans code — utile pour une exception ponctuelle."
+                },
+                {
+                    "label": "Catégorie : congé, récup ou maladie",
+                    "text": "Choisissez <strong>Congé</strong>, <strong>Récup</strong> ou <strong>Maladie</strong> pour une absence. Ces types n’ont <strong>ni heure de début ni de fin</strong> : ils couvrent toute la journée et ne comptent pas comme heures travaillées. Les exécutants peuvent les demander sur Clock Point (tuile <strong>Congé / Absence</strong>) ; vous décidez sous Time → <strong>Demandes</strong>. Seul le <strong>congé</strong> entre dans le solde de congés. La récup est liée aux heures supplémentaires. La <strong>maladie</strong> n’entre ni dans le solde de congés ni dans la récup — cela reste du ressort du secrétariat social, hors WinProx. Pas de demi-journée pour la maladie ; le congé oui, uniquement si la demande porte sur un seul jour."
+                },
+                {
+                    "label": "Catégorie : autre",
+                    "text": "<strong>Autre</strong> sert aux absences propres à votre organisation (petit congé, jour de « baaldag », etc.). Vous choisissez vous-même le <strong>code</strong> et le <strong>nom</strong> (p. ex. KV — Petit congé). Là aussi sans horaires : absence journée entière. Sur Clock Point, l’exécutant choisit <strong>par nom</strong> ; pour Autre, une seule <strong>journée</strong> par demande. Après approbation, elles apparaissent au planning. Autre ne compte <strong>pas</strong> pour le solde de congés ni la récup."
+                },
+                {
+                    "label": "Dans le planning",
+                    "text": "Sous Time → <strong>Planning</strong>, saisissez le code dans une cellule, ou ouvrez <strong>Modifier le jour</strong> pour plusieurs blocs. Après approbation d’une demande, WinProx remplace les prestations prévues par l’absence ; l’info-bulle sur la cellule montre ce qui était prévu (<strong>Était planifié :</strong> …)."
                 },
                 {
                     "label": "Disponible pour remplacement",
-                    "text": "Par type de service (travail ou congé/récup) vous pouvez activer <strong>Disponible pour remplacement</strong>. Les exécutants avec ce type ce jour-là apparaissent dans la liste. Maladie et Autre ne comptent jamais."
+                    "text": "Sur un type <strong>Travail</strong>, <strong>Congé</strong> ou <strong>Récup</strong>, vous pouvez activer <strong>Disponible pour remplacement</strong>. Les exécutants qui ont ce type au planning ce jour-là apparaissent comme candidats quand vous choisissez <strong>Remplaçant…</strong> dans le planning. Le bloc d’origine devient une absence ; le remplaçant reçoit le même créneau, lieu et unité. <strong>Maladie</strong> et <strong>Autre</strong> ne peuvent jamais rejoindre le pool : une personne malade ou en absence « autre » n’est pas proposée comme remplaçant."
                 },
                 {
-                    "label": "Ajouter",
-                    "text": "Un type est un <strong>code</strong> avec début, fin, pause et couleur. En général une seule fois. Les cellules existantes ne changent pas si vous modifiez un type plus tard."
+                    "label": "Aussi sans planning",
+                    "text": "En haut de cette page se trouve <strong>Aussi proposer les exécutants sans planning</strong> (explication dans l’info-bulle). C’est un réglage pour toute l’organisation, pas par type. <strong>Décoché :</strong> lors de la recherche d’un remplaçant, vous ne voyez que ceux qui ont déjà une prestation ce jour avec <strong>Disponible pour remplacement</strong>. <strong>Coché :</strong> vous voyez aussi les exécutants actifs sans rien de planifié ce jour (autorisés à pointer sur le site du bloc). Utile si vous avez un groupe de remplaçants souvent libres au planning."
                 },
                 {
                     "label": "Désactiver",
-                    "text": "Un code inactif ne peut plus être saisi dans l’horaire. Les services existants restent en heures libres."
+                    "text": "Avec <strong>Désactiver</strong>, le code disparaît des nouveaux choix : vous ne pouvez plus le saisir au planning et les exécutants ne le voient plus pour de nouvelles demandes d’absence. Les prestations déjà présentes avec ce code restent visibles ; elles se comportent alors comme du <strong>temps libre</strong> (sans type actif). Vous pouvez <strong>Activer</strong> à nouveau plus tard. Supprimer l’historique n’est en général pas nécessaire — désactiver suffit."
                 }
             ]
         },

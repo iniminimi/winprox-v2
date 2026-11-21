@@ -1958,24 +1958,40 @@
             "title": "Hilfe — Schichttypen",
             "actions": [
                 {
-                    "label": "Art",
-                    "text": "Wählen Sie <strong>Arbeit</strong> (Start, Ende, Pause) oder eine Abwesenheit (Urlaub, Ausgleich, Krank oder Sonstige). Abwesenheiten haben keine Stunden. Bei Sonstige wählen Sie Code und Name selbst (z. B. KV — Kurzurlaub); das zählt nicht zum Urlaubssaldo."
+                    "label": "Was ist ein Schichttyp?",
+                    "text": "Ein Schichttyp ist ein <strong>kurzer Code</strong> (z. B. V2 oder VL) mit einem <strong>Namen</strong> und einer <strong>Farbe</strong>. Diese Codes tippen Sie im <strong>Dienstplan</strong>, damit alle dieselben Dienste und Abwesenheiten erkennen. Sie richten sie meist einmal ein und ändern sie nur, wenn sich die Planung ändert. Tipp: Codes kurz und erkennbar halten; der Name darf länger und klarer sein."
+                },
+                {
+                    "label": "Hinzufügen oder bearbeiten",
+                    "text": "Klicken Sie auf <strong>Hinzufügen</strong> (oder <strong>Bearbeiten</strong> in einer Zeile). Mindestens <strong>Code</strong>, <strong>Name</strong> und <strong>Art</strong> ausfüllen, eine <strong>Farbe</strong> wählen und speichern. Wichtig: Wenn Sie einen Typ später ändern (Zeiten, Name, Farbe), ändern sich <strong>bestehende Zellen im Dienstplan nicht automatisch</strong>. Nur neue oder erneut eingegebene Dienste nutzen die neuen Einstellungen. Alte Tage passen Sie im Dienstplan selbst an."
+                },
+                {
+                    "label": "Art: Arbeit",
+                    "text": "Wählen Sie <strong>Arbeit</strong> für einen normalen Dienst. Tragen Sie <strong>Beginn</strong>, <strong>Ende</strong> und optional <strong>Pause</strong> (Minuten) ein. Im Dienstplan tippen Sie danach den Code (z. B. V2); WinProx füllt die Zeiten. Sie können in einer Zelle auch freie Zeiten tippen (z. B. 07:00-15:00) ohne Code — praktisch für einmalige Ausnahmen."
+                },
+                {
+                    "label": "Art: Urlaub, Ausgleich oder Krank",
+                    "text": "Wählen Sie <strong>Urlaub</strong>, <strong>Ausgleich</strong> oder <strong>Krank</strong> für eine Abwesenheit. Diese Typen haben <strong>keine Start- oder Endzeit</strong>: sie füllen den ganzen Tag und zählen nicht als Arbeitsstunden. Ausführende können sie am Clock Point beantragen (Kachel <strong>Urlaub / Abwesenheit</strong>); Sie entscheiden unter Time → <strong>Anträge</strong>. Nur <strong>Urlaub</strong> zählt für das Urlaubssaldo. Ausgleich hängt mit Überstunden zusammen. <strong>Krank</strong> zählt weder für Urlaubssaldo noch Ausgleich — das bleibt Sache des Sozialsekretariats außerhalb von WinProx. Krankheit ohne halben Tag; Urlaub mit halbem Tag nur bei einem Antrag für einen einzelnen Tag."
+                },
+                {
+                    "label": "Art: Sonstige",
+                    "text": "<strong>Sonstige</strong> sind eigene Abwesenheiten Ihrer Organisation (z. B. Kleinurlaub oder „Baaldag“). Sie wählen selbst <strong>Code</strong> und <strong>Name</strong> (z. B. KV — Kleinurlaub). Auch hier ohne Zeiten: ganztägige Abwesenheit. Am Clock Point wählt die Person <strong>nach Name</strong>; bei Sonstige nur <strong>einen Tag</strong> pro Antrag. Nach Freigabe stehen sie im Dienstplan. Sonstige zählen <strong>nicht</strong> für Urlaubssaldo oder Ausgleich."
+                },
+                {
+                    "label": "Im Dienstplan",
+                    "text": "Unter Time → <strong>Dienstplan</strong> tippen Sie den Code in eine Zelle oder öffnen <strong>Tag bearbeiten</strong> für mehrere Blöcke. Nach Freigabe eines Antrags ersetzt WinProx die geplanten Dienste durch die Abwesenheit; der Hover-Hinweis auf der Zelle zeigt, was zuerst geplant war (<strong>War geplant :</strong> …)."
+                },
+                {
+                    "label": "Verfügbar für Vertretung",
+                    "text": "Bei <strong>Arbeit</strong>, <strong>Urlaub</strong> oder <strong>Ausgleich</strong> können Sie <strong>Verfügbar für Vertretung</strong> einschalten. Ausführende mit diesem Typ an dem Tag erscheinen als Kandidaten, wenn Sie im Dienstplan <strong>Vertretung…</strong> wählen. Der Originalblock wird Abwesenheit; die Vertretung erhält dasselbe Zeitfenster, denselben Standort und dieselbe Unit. <strong>Krank</strong> und <strong>Sonstige</strong> gehören nie zum Pool: wer krank oder „sonstig“ abwesend ist, wird nicht als Vertretung vorgeschlagen."
                 },
                 {
                     "label": "Auch ohne Planung",
-                    "text": "Oben bei Schichttypen steht <strong>Auch Ausführende ohne Planung vorschlagen</strong> (Ballon beim Hover). Wenn Sie im Dienstplan eine Vertretung suchen, zeigt WinProx mögliche Kandidaten: wählen Sie eine Person und der ursprüngliche Zeitblock wird zu „Abwesenheit“; die Vertretung erhält dieselben Stunden. <strong>Nicht angehakt:</strong> nur wer an dem Tag einen Dienst mit <strong>Für Vertretung verfügbar</strong> hat. <strong>Angehakt:</strong> auch wer an dem Tag noch nichts geplant hat."
-                },
-                {
-                    "label": "Für Vertretung verfügbar",
-                    "text": "Pro Schichttyp (Arbeit oder Urlaub/Ausgleich) können Sie <strong>Für Vertretung verfügbar</strong> einschalten. Mitarbeitende mit diesem Typ an dem Tag erscheinen in der Liste. Krank und Sonstige zählen nie."
-                },
-                {
-                    "label": "Hinzufügen",
-                    "text": "Ein Schichttyp ist ein <strong>Code</strong> mit Start, Ende, Pause und Farbe. Meist einmal einrichten. Bestehende Zellen ändern sich nicht, wenn Sie den Typ später anpassen."
+                    "text": "Oben auf dieser Seite steht <strong>Auch Ausführende ohne Planung vorschlagen</strong> (Erklärung in der Hover-Blase). Das gilt für die ganze Organisation, nicht pro Typ. <strong>Aus:</strong> bei Vertretungssuche sehen Sie nur Personen mit einem Dienst an dem Tag und <strong>Verfügbar für Vertretung</strong>. <strong>An:</strong> Sie sehen auch aktive Ausführende ohne Planung an dem Tag (die am Standort des Blocks einstempeln dürfen). Nützlich, wenn Sie eine feste Springergruppe oft frei im Plan haben."
                 },
                 {
                     "label": "Deaktivieren",
-                    "text": "Einen inaktiven Code können Sie im Plan nicht mehr eingeben. Bestehende Dienste bleiben als freie Zeit stehen."
+                    "text": "Mit <strong>Deaktivieren</strong> verschwindet der Code aus neuen Auswahlmöglichkeiten: Sie können ihn nicht mehr im Dienstplan tippen, und Ausführende sehen ihn nicht mehr bei neuen Abwesenheitsanträgen. Bereits mit diesem Code geplante Dienste bleiben sichtbar; sie verhalten sich dann wie <strong>freie Zeit</strong> (ohne aktiven Typ). Später können Sie wieder <strong>Aktivieren</strong>. Historie löschen ist meist unnötig — Deaktivieren reicht."
                 }
             ]
         },

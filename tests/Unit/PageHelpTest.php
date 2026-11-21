@@ -154,7 +154,7 @@ it('laadt paginahulp voor Time-schermen', function (): void {
         ->and($shiftLabels)->toContain('Minimumpauze')
         ->and($portalLabels)->toContain('Mijn uren')
         ->and($portalLabels)->toContain('Waar moet ik vandaag naartoe')
-        ->and($portalLabels)->toContain('Verlof / Recup')
+        ->and($portalLabels)->toContain('Verlof / Afwezigheid')
         ->and(PageHelp::for('time.absence_requests'))->not->toBeNull()
         ->and(PageHelp::for('time.absence_requests')['title'])->toBe('Hulp — Aanvragen')
         ->and($teamLabels)->toContain('Minimumpauze')

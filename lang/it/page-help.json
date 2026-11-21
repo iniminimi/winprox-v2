@@ -1955,27 +1955,43 @@
             ]
         },
         "time.shift_types": {
-            "title": "Guida — Tipi di turno",
+            "title": "Aiuto — Tipi di turno",
             "actions": [
                 {
-                    "label": "Tipo",
-                    "text": "Scegli <strong>Lavoro</strong> (inizio, fine, pausa) o un’assenza (ferie, recupero, malattia o altro). Le assenze non hanno ore. Per Altro scegli codice e nome (es. KV — permesso breve); non contano nel saldo ferie."
+                    "label": "Che cos’è un tipo di turno?",
+                    "text": "Un tipo di turno è un <strong>codice breve</strong> (es. V2 o VL) con un <strong>nome</strong> e un <strong>colore</strong>. Quei codici si digitano nel <strong>turno</strong> così tutti riconoscono gli stessi servizi e assenze. Di solito si impostano una volta e si modificano solo se cambia l’organizzazione del lavoro. Consiglio: codici corti e riconoscibili; il nome può essere più lungo e chiaro."
+                },
+                {
+                    "label": "Aggiungere o modificare",
+                    "text": "Fare clic su <strong>Aggiungi</strong> (o <strong>Modifica</strong> su una riga). Inserire almeno <strong>codice</strong>, <strong>nome</strong> e <strong>categoria</strong>, scegliere un <strong>colore</strong> e salvare. Importante: se in seguito modificate un tipo (orari, nome, colore), le <strong>celle già presenti nel turno non si aggiornano da sole</strong>. Solo i servizi nuovi o ridigitati usano le nuove impostazioni. I giorni vecchi si correggono a mano nel turno."
+                },
+                {
+                    "label": "Categoria: lavoro",
+                    "text": "Scegliere <strong>Lavoro</strong> per un servizio normale. Indicare <strong>inizio</strong>, <strong>fine</strong> e facoltativamente <strong>pausa</strong> (minuti). Nel turno si digita poi il codice (es. V2); WinProx compila gli orari. Si possono anche digitare orari liberi (es. 07:00-15:00) senza codice — utile per eccezioni una tantum."
+                },
+                {
+                    "label": "Categoria: ferie, recupero o malattia",
+                    "text": "Scegliere <strong>Ferie</strong>, <strong>Recupero</strong> o <strong>Malattia</strong> per un’assenza. Questi tipi <strong>non hanno ora di inizio o fine</strong>: riempiono l’intera giornata e non contano come ore lavorate. Gli esecutori possono richiederli su Clock Point (tessera <strong>Ferie / Assenza</strong>); decidete in Time → <strong>Richieste</strong>. Solo le <strong>ferie</strong> contano nel saldo. Il recupero è legato agli straordinari. La <strong>malattia</strong> non conta per saldo ferie né recupero — resta competenza del segretariato sociale fuori da WinProx. Niente mezza giornata per la malattia; per le ferie sì, solo se la richiesta è di un solo giorno."
+                },
+                {
+                    "label": "Categoria: altro",
+                    "text": "<strong>Altro</strong> serve per assenze proprie dell’organizzazione (permesso breve, «baaldag», ecc.). Scegliete voi <strong>codice</strong> e <strong>nome</strong> (es. KV — Permesso breve). Anche qui senza orari: assenza di giornata intera. Su Clock Point si sceglie <strong>per nome</strong>; per Altro solo <strong>un giorno</strong> per richiesta. Dopo l’approvazione compaiono nel turno. Altro <strong>non</strong> conta per saldo ferie né recupero."
+                },
+                {
+                    "label": "Nel turno",
+                    "text": "In Time → <strong>Turno</strong> digitate il codice in una cella, oppure aprite <strong>Modifica giorno</strong> per più blocchi. Dopo l’approvazione di una richiesta, WinProx sostituisce i servizi previsti con l’assenza; il fumetto sulla cella mostra cosa era pianificato (<strong>Era pianificato :</strong> …)."
+                },
+                {
+                    "label": "Disponibile per sostituzione",
+                    "text": "Su un tipo <strong>Lavoro</strong>, <strong>Ferie</strong> o <strong>Recupero</strong> potete attivare <strong>Disponibile per sostituzione</strong>. Gli esecutori con quel tipo quel giorno compaiono come candidati quando scegliete <strong>Sostituto…</strong> nel turno. Il blocco originale diventa assenza; il sostituto riceve la stessa fascia, sede e unità. <strong>Malattia</strong> e <strong>Altro</strong> non entrano mai nel pool: chi è malato o in assenza «altro» non viene proposto come sostituto."
                 },
                 {
                     "label": "Anche senza pianificazione",
-                    "text": "In alto in Tipi di turno c’è <strong>Proporre anche esecutori senza pianificazione</strong> (balloon al passaggio). Quando cerchi un sostituto nel turno, WinProx mostra possibili candidati: scegline uno e il blocco orario originale diventa «assenza»; il sostituto riceve le stesse ore. <strong>Non selezionato:</strong> solo chi quel giorno ha un turno con <strong>Disponibile per la sostituzione</strong>. <strong>Selezionato:</strong> anche chi quel giorno non ha nulla di pianificato."
+                    "text": "In cima a questa pagina c’è <strong>Proponi anche esecutori senza pianificazione</strong> (spiegazione nel fumetto al passaggio del mouse). È un’impostazione per tutta l’organizzazione, non per tipo. <strong>Non selezionato:</strong> cercando un sostituto vedete solo chi ha già un servizio quel giorno con <strong>Disponibile per sostituzione</strong>. <strong>Selezionato:</strong> vedete anche esecutori attivi senza nulla di pianificato quel giorno (che possono timbrare nella sede del blocco). Utile se avete un gruppo fisso di sostituti spesso liberi nel piano."
                 },
                 {
-                    "label": "Disponibile per la sostituzione",
-                    "text": "Per tipo di turno (lavoro o ferie/recupero) puoi attivare <strong>Disponibile per la sostituzione</strong>. Chi ha quel tipo quel giorno compare nell’elenco. Malattia e Altro non contano mai."
-                },
-                {
-                    "label": "Aggiungi",
-                    "text": "Un tipo di turno è un <strong>codice</strong> con inizio, fine, pausa e colore. Di solito si imposta una volta. Le celle esistenti non cambiano se in seguito modifichi il tipo."
-                },
-                {
-                    "label": "Disattiva",
-                    "text": "Un codice inattivo non si può più digitare nel turno. I servizi esistenti restano come orario libero."
+                    "label": "Disattivare",
+                    "text": "Con <strong>Disattiva</strong> il codice esce dalle nuove scelte: non si può più digitare nel turno e gli esecutori non lo vedono più per nuove richieste di assenza. I servizi già presenti con quel codice restano visibili; si comportano come <strong>tempo libero</strong> (senza tipo attivo). Più tardi potete <strong>Attivare</strong> di nuovo. Cancellare la cronologia di solito non serve: disattivare basta."
                 }
             ]
         },

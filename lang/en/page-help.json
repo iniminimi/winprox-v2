@@ -1958,24 +1958,40 @@
             "title": "Help — Shift types",
             "actions": [
                 {
-                    "label": "Type",
-                    "text": "Choose <strong>Work</strong> (start, end, break) or an absence (leave, TOIL, sick or other). Absences have no hours. For Other you set code and name yourself (e.g. KV — short leave); those do not count toward leave balance. Existing roster cells do not change if you later edit a type."
+                    "label": "What is a shift type?",
+                    "text": "A shift type is a <strong>short code</strong> (e.g. V2 or VL) with a <strong>name</strong> and a <strong>colour</strong>. You type those codes on the <strong>roster</strong> so everyone recognises the same duties and absences. You usually set them once and only change them when your organisation’s planning changes. Tip: keep codes short and recognisable; the name can be longer and clearer."
                 },
                 {
-                    "label": "Also unplanned",
-                    "text": "At the top of Shift types is <strong>Also suggest workers with no plan</strong> (hover balloon). When you look for a replacement on the roster, WinProx shows possible candidates: pick one and the original time block becomes “absence”; the replacement gets the same hours. <strong>Unchecked:</strong> only people with a shift that day marked <strong>Available for replacement</strong>. <strong>Checked:</strong> also people with nothing planned that day."
+                    "label": "Add or edit",
+                    "text": "Click <strong>Add</strong> (or <strong>Edit</strong> on an existing row). Enter at least <strong>code</strong>, <strong>name</strong> and <strong>kind</strong>, pick a <strong>colour</strong> and save. Important: if you later change a type (hours, name, colour), <strong>existing roster cells do not update automatically</strong>. Only new or re-typed duties use the new settings. To update old days, edit them on the roster yourself."
+                },
+                {
+                    "label": "Kind: work",
+                    "text": "Choose <strong>Work</strong> for a normal duty. Enter <strong>start</strong>, <strong>end</strong> and optionally <strong>break</strong> (minutes). On the roster you then type the code (e.g. V2); WinProx fills in the hours. You can also type free times in a cell (e.g. 07:00-15:00) without a code — useful for one-off exceptions."
+                },
+                {
+                    "label": "Kind: leave, TOIL or sick",
+                    "text": "Choose <strong>Leave</strong>, <strong>TOIL</strong> (comp time) or <strong>Sick</strong> for an absence. Those types have <strong>no start or end time</strong>: they fill the whole day and do not count as hours worked. Workers can request them on Clock Point (tile <strong>Leave / Absence</strong>); you decide under Time → <strong>Requests</strong>. Only <strong>leave</strong> counts toward the leave balance. TOIL relates to overtime/comp time. <strong>Sick</strong> does not count toward leave balance or TOIL — that stays a payroll/secretariat matter outside WinProx. Sick has no half day; leave does, but only when the request is a single day."
+                },
+                {
+                    "label": "Kind: other",
+                    "text": "<strong>Other</strong> is for your organisation’s own absences, such as short leave or a “baaldag”. You set <strong>code</strong> and <strong>name</strong> yourself (e.g. KV — Short leave). Again no hours: whole-day absence. On Clock Point the worker picks them <strong>by name</strong>; for Other they may request only <strong>one day</strong> at a time. After approval they appear on the roster. Other does <strong>not</strong> count toward leave balance or TOIL."
+                },
+                {
+                    "label": "On the roster",
+                    "text": "Under Time → <strong>Roster</strong> you type the code in a cell, or open <strong>Edit day</strong> for several blocks. After you approve a request, WinProx replaces the planned duties with the absence; the hover tip on that cell shows what was planned first (<strong>Was planned :</strong> …)."
                 },
                 {
                     "label": "Available for replacement",
-                    "text": "Per shift type (work or leave/TOIL) you can turn on <strong>Available for replacement</strong>. Workers with that type that day appear in the replacement list. Sick and Other never count."
+                    "text": "On a <strong>Work</strong>, <strong>Leave</strong> or <strong>TOIL</strong> type you can turn on <strong>Available for replacement</strong>. Workers who have that type on the roster that day appear as candidates when you choose <strong>Replacement…</strong> on the roster. The original block becomes absence; the replacement gets the same time slot, location and unit. <strong>Sick</strong> and <strong>Other</strong> can never join the replacement pool: someone who is sick or on an “other” absence is not suggested as a cover."
                 },
                 {
-                    "label": "Add",
-                    "text": "A shift type is a <strong>code</strong> with start, end, break and colour. This is usually set once. Existing roster cells do not change if you edit a type later."
+                    "label": "Also unplanned",
+                    "text": "At the top of this page is <strong>Also suggest workers with no plan</strong> (explanation in the hover tip). This is organisation-wide, not per type. <strong>Unchecked:</strong> when finding a replacement you only see people who already have a duty that day marked <strong>Available for replacement</strong>. <strong>Checked:</strong> you also see active workers with nothing planned that day (who may clock in at the block’s location). Useful if you have a fixed cover pool that often has a free day on the plan."
                 },
                 {
                     "label": "Deactivate",
-                    "text": "An inactive code can no longer be typed on the roster. Existing shifts remain as free time."
+                    "text": "With <strong>Deactivate</strong> the code leaves new choices: you can no longer type it on the roster and workers no longer see it for new absence requests. Duties already on the roster with that code stay visible; they then behave as <strong>free time</strong> (without an active type). You can <strong>Activate</strong> again later if you want the code back. You usually do not need to delete history — deactivating is enough."
                 }
             ]
         },

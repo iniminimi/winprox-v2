@@ -1958,24 +1958,40 @@
             "title": "Hulp — Shifttypes",
             "actions": [
                 {
-                    "label": "Soort",
-                    "text": "Kies <strong>Werk</strong> (start, einde, pauze) of een afwezigheid (verlof, recup, ziek of andere). Afwezigheid heeft geen uren. Bij Andere kies je zelf code en naam (bv. KV — klein verlet); die tellen niet voor het verlofsaldo. Bestaande cellen in het uurrooster wijzigen niet als u later een type aanpast."
+                    "label": "Wat is een shifttype?",
+                    "text": "Een shifttype is een <strong>korte code</strong> (bijv. V2 of VL) met een <strong>naam</strong> en een <strong>kleur</strong>. Die codes typt u in het <strong>uurrooster</strong>, zodat iedereen dezelfde diensten en afwezigheden herkent. U stelt ze meestal één keer in en past ze alleen aan als de planning van uw organisatie verandert. Tip: houd codes kort en herkenbaar; de naam mag langer en duidelijker zijn."
                 },
                 {
-                    "label": "Ook zonder planning",
-                    "text": "Bovenaan Shifttypes staat het vinkje <strong>Ook uitvoerders zonder planning voorstellen</strong> (ballon bij hover). Als u op het uurrooster een vervanger zoekt, toont WinProx mogelijke kandidaten: kies er één en het oorspronkelijke uurblok wordt “afwezigheid”; de vervanger krijgt dezelfde uren. <strong>Uitgevinkt:</strong> alleen wie die dag een dienst heeft met <strong>Beschikbaar voor vervanging</strong>. <strong>Aangevinkt:</strong> ook wie die dag nog niets gepland heeft."
+                    "label": "Toevoegen of bewerken",
+                    "text": "Klik op <strong>Toevoegen</strong> (of <strong>Bewerken</strong> op een bestaande rij). Vul minstens <strong>code</strong>, <strong>naam</strong> en <strong>soort</strong> in, kies een <strong>kleur</strong> en sla op. Belangrijk: als u een type later wijzigt (uren, naam, kleur), veranderen <strong>bestaande cellen in het uurrooster niet automatisch</strong>. Alleen nieuwe of opnieuw getypte diensten gebruiken de nieuwe instellingen. Wilt u oude dagen mee bijwerken, dan doet u dat handmatig in het uurrooster."
+                },
+                {
+                    "label": "Soort: werk",
+                    "text": "Kies <strong>Werk</strong> voor een gewone dienst. Vul <strong>start</strong>, <strong>einde</strong> en optioneel <strong>pauze</strong> (minuten) in. Op het uurrooster typt u daarna de code (bijv. V2); WinProx vult de uren in. U mag in een cel ook vrije tijden typen (bijv. 07:00-15:00) zonder code — dat is handig voor eenmalige uitzonderingen."
+                },
+                {
+                    "label": "Soort: verlof, recup of ziek",
+                    "text": "Kies <strong>Verlof</strong>, <strong>Recup</strong> of <strong>Ziek</strong> voor een afwezigheid. Die types hebben <strong>geen start- of einduur</strong>: ze vullen de hele dag en tellen niet als gewerkte uren. Uitvoerders kunnen ze aanvragen via Clock Point (tegel <strong>Verlof / Afwezigheid</strong>); u beslist onder Time → <strong>Aanvragen</strong>. Alleen <strong>verlof</strong> telt mee voor het verlofsaldo. Recup hangt samen met overuren/recup. <strong>Ziek</strong> telt niet voor verlofsaldo of recup — dat blijft secretariaatszaak buiten WinProx. Ziekte heeft geen halve dag; verlof wel, maar alleen als de aanvraag één dag is."
+                },
+                {
+                    "label": "Soort: andere",
+                    "text": "<strong>Andere</strong> is voor eigen afwezigheden van uw organisatie, zoals klein verlet of baaldag. U kiest zelf <strong>code</strong> en <strong>naam</strong> (bijv. KV — Klein verlet, BAAL — Baaldag). Ook hier geen uren: hele dag afwezigheid. Op Clock Point kiest de uitvoerder ze <strong>op naam</strong>; bij Andere mag hij maar <strong>één dag</strong> per aanvraag. Na goedkeuring staan ze op het uurrooster. Andere telt <strong>niet</strong> mee voor verlofsaldo of recup."
+                },
+                {
+                    "label": "Op het uurrooster",
+                    "text": "In Time → <strong>Uurrooster</strong> typt u de code in een cel, of opent u <strong>Dag bewerken</strong> voor meerdere blokken. Na goedkeuring van een aanvraag vervangt WinProx de geplande diensten door de afwezigheid; in de ballon op die cel ziet u wat er eerst gepland stond (<strong>Was gepland :</strong> …)."
                 },
                 {
                     "label": "Beschikbaar voor vervanging",
-                    "text": "Per shifttype (werk of verlof/recup) kunt u <strong>Beschikbaar voor vervanging</strong> aanzetten. Uitvoerders met zo’n type op die dag verschijnen in de vervangerslijst. Ziekte en Andere tellen nooit mee."
+                    "text": "Bij een type <strong>Werk</strong>, <strong>Verlof</strong> of <strong>Recup</strong> kunt u <strong>Beschikbaar voor vervanging</strong> aanzetten. Uitvoerders die die dag zo’n type op het rooster hebben, verschijnen als kandidaat als u op het uurrooster <strong>Vervanger…</strong> kiest. Het oorspronkelijke blok wordt afwezigheid; de vervanger krijgt hetzelfde tijdslot, locatie en unit. <strong>Ziek</strong> en <strong>Andere</strong> kunnen nooit in de vervangingspool: iemand die ziek is of “andere” afwezigheid heeft, wordt niet als vervanger voorgesteld."
                 },
                 {
-                    "label": "Toevoegen",
-                    "text": "Een shifttype is een <strong>code</strong> met start, einde, pauze en kleur. Dat stelt u meestal één keer in. Bestaande cellen in het uurrooster wijzigen niet als u later een type aanpast."
+                    "label": "Ook zonder planning",
+                    "text": "Bovenaan deze pagina staat het vinkje <strong>Ook uitvoerders zonder planning voorstellen</strong> (uitleg in de ballon bij hover). Dit geldt voor de hele organisatie, niet per type. <strong>Uitgevinkt:</strong> bij Vervanger zoeken ziet u alleen wie die dag al een dienst heeft met <strong>Beschikbaar voor vervanging</strong>. <strong>Aangevinkt:</strong> u ziet ook actieve uitvoerders die die dag nog niets gepland hebben (en die mogen inklokken op de locatie van het blok). Handig als u een vaste “invallersgroep” hebt die vaak vrij op de planning staat."
                 },
                 {
                     "label": "Deactiveren",
-                    "text": "Een inactieve code kunt u niet meer in het rooster typen. Bestaande diensten blijven staan als vrije tijd."
+                    "text": "Met <strong>Deactiveren</strong> verdwijnt de code uit nieuwe keuzes: u kunt hem niet meer in het uurrooster typen en uitvoerders zien hem niet meer bij nieuwe afwezigheidsaanvragen. Diensten die al met die code op het rooster staan, blijven zichtbaar; ze gedragen zich dan als <strong>vrije tijd</strong> (zonder actief type). U kunt het type later opnieuw <strong>Activeren</strong> als u de code weer wilt gebruiken. Verwijderen van history is niet nodig — deactiveren volstaat meestal."
                 }
             ]
         },

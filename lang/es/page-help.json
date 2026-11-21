@@ -1958,24 +1958,40 @@
             "title": "Ayuda — Tipos de turno",
             "actions": [
                 {
-                    "label": "Tipo",
-                    "text": "Elija <strong>Trabajo</strong> (inicio, fin, pausa) o una ausencia (vacaciones, recup, baja u otro). Las ausencias no tienen horas. En Otro eliges código y nombre (p. ej. KV — permiso breve); no cuentan en el saldo de vacaciones."
+                    "label": "¿Qué es un tipo de turno?",
+                    "text": "Un tipo de turno es un <strong>código corto</strong> (p. ej. V2 o VL) con un <strong>nombre</strong> y un <strong>color</strong>. Esos códigos se escriben en el <strong>cuadrante</strong> para que todos reconozcan los mismos servicios y ausencias. Suele configurarse una vez y solo se cambia si cambia la organización del trabajo. Consejo: códigos cortos y reconocibles; el nombre puede ser más largo y claro."
                 },
                 {
-                    "label": "También sin planificación",
-                    "text": "Arriba en Tipos de turno está <strong>Proponer también operarios sin planificación</strong> (globo al pasar el ratón). Cuando buscas un sustituto en el horario, WinProx muestra posibles candidatos: eliges uno y el bloque horario original pasa a «ausencia»; el sustituto recibe las mismas horas. <strong>Desmarcado:</strong> solo quien ese día tiene un turno con <strong>Disponible para sustitución</strong>. <strong>Marcado:</strong> también quien ese día no tiene nada planificado."
+                    "label": "Añadir o editar",
+                    "text": "Pulse <strong>Añadir</strong> (o <strong>Editar</strong> en una fila). Indique al menos <strong>código</strong>, <strong>nombre</strong> y <strong>tipo</strong>, elija un <strong>color</strong> y guarde. Importante: si más adelante cambia un tipo (horas, nombre, color), las <strong>celdas ya existentes en el cuadrante no se actualizan solas</strong>. Solo los servicios nuevos o vueltos a escribir usan la nueva configuración. Los días antiguos se corrigen a mano en el cuadrante."
+                },
+                {
+                    "label": "Tipo: trabajo",
+                    "text": "Elija <strong>Trabajo</strong> para un servicio normal. Indique <strong>inicio</strong>, <strong>fin</strong> y opcionalmente <strong>pausa</strong> (minutos). En el cuadrante escriba después el código (p. ej. V2); WinProx rellena las horas. También puede escribir horarios libres (p. ej. 07:00-15:00) sin código — útil para excepciones puntuales."
+                },
+                {
+                    "label": "Tipo: vacaciones, compensatorio o baja",
+                    "text": "Elija <strong>Vacaciones</strong>, <strong>Compensatorio</strong> o <strong>Baja</strong> para una ausencia. Esos tipos <strong>no tienen hora de inicio ni de fin</strong>: ocupan todo el día y no cuentan como horas trabajadas. Los ejecutores pueden solicitarlos en Clock Point (mosaico <strong>Vacaciones / Ausencia</strong>); usted decide en Time → <strong>Solicitudes</strong>. Solo las <strong>vacaciones</strong> cuentan en el saldo. El compensatorio se relaciona con las horas extra. La <strong>baja</strong> no cuenta para saldo ni compensatorio — eso queda fuera de WinProx, en nómina/secretaría. La baja no admite media jornada; las vacaciones sí, solo si la solicitud es de un solo día."
+                },
+                {
+                    "label": "Tipo: otro",
+                    "text": "<strong>Otro</strong> sirve para ausencias propias de su organización (permiso corto, «baaldag», etc.). Usted elige <strong>código</strong> y <strong>nombre</strong> (p. ej. KV — Permiso corto). Tampoco hay horas: ausencia de día completo. En Clock Point se elige <strong>por nombre</strong>; en Otro solo <strong>un día</strong> por solicitud. Tras aprobarlas aparecen en el cuadrante. Otro <strong>no</strong> cuenta para el saldo ni el compensatorio."
+                },
+                {
+                    "label": "En el cuadrante",
+                    "text": "En Time → <strong>Cuadrante</strong> escriba el código en una celda, o abra <strong>Editar día</strong> para varios bloques. Al aprobar una solicitud, WinProx sustituye los servicios previstos por la ausencia; el globo de la celda muestra lo que estaba planificado (<strong>Estaba planificado :</strong> …)."
                 },
                 {
                     "label": "Disponible para sustitución",
-                    "text": "Por tipo de turno (trabajo o vacaciones/recup) puedes activar <strong>Disponible para sustitución</strong>. Quienes tienen ese tipo ese día aparecen en la lista. Baja y Otro nunca cuentan."
+                    "text": "En un tipo <strong>Trabajo</strong>, <strong>Vacaciones</strong> o <strong>Compensatorio</strong> puede activar <strong>Disponible para sustitución</strong>. Los ejecutores con ese tipo ese día aparecen como candidatos al elegir <strong>Sustituto…</strong> en el cuadrante. El bloque original pasa a ausencia; el sustituto recibe el mismo tramo, ubicación y unidad. <strong>Baja</strong> y <strong>Otro</strong> nunca entran en el pool: quien está de baja u «otra» ausencia no se propone como sustituto."
                 },
                 {
-                    "label": "Añadir",
-                    "text": "Un tipo de turno es un <strong>código</strong> con inicio, fin, pausa y color. Suele configurarse una vez. Las celdas existentes no cambian si edita el tipo después."
+                    "label": "También sin planificación",
+                    "text": "Arriba en esta página está <strong>También proponer ejecutores sin planificación</strong> (explicación en el globo al pasar el ratón). Es un ajuste de toda la organización, no por tipo. <strong>Desmarcado:</strong> al buscar sustituto solo ve a quien ya tiene un servicio ese día con <strong>Disponible para sustitución</strong>. <strong>Marcado:</strong> también ve ejecutores activos sin nada planificado ese día (que pueden fichar en la ubicación del bloque). Útil si tiene un grupo fijo de sustitutos a menudo libres en el plan."
                 },
                 {
                     "label": "Desactivar",
-                    "text": "Un código inactivo ya no se puede escribir en el horario. Los turnos existentes siguen como hora libre."
+                    "text": "Con <strong>Desactivar</strong> el código deja de ofrecerse: ya no se puede escribir en el cuadrante y los ejecutores no lo ven en solicitudes nuevas. Los servicios ya puestos con ese código siguen visibles; se comportan como <strong>tiempo libre</strong> (sin tipo activo). Más adelante puede <strong>Activar</strong> de nuevo. Borrar el historial casi nunca hace falta: desactivar basta."
                 }
             ]
         },
