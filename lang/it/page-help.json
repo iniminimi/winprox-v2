@@ -684,19 +684,39 @@
             ]
         },
         "photo-album": {
-            "title": "Aiuto — Album foto",
+            "title": "Aiuto — Album fotografico",
             "actions": [
                 {
-                    "label": "Attivo o no",
-                    "text": "L'album foto vale per tutta l'organizzazione. L'amministratore lo attiva in Impostazioni → La sua organizzazione. Spento, non compare da nessuna parte: né sul QR dell'unità né nel menu."
+                    "label": "A che cosa serve l’album fotografico?",
+                    "text": "Con l’album fotografico gli operatori possono fare foto di un’unità tramite il codice QR. Può poi selezionare queste foto e inviarle per e-mail a qualcuno.<br><br>Per esempio in un asilo nido: le educatrici fanno foto dei bambini durante l’accoglienza. Può poi inoltrare le foto selezionate ai genitori.<br><br>Le foto vengono collegate all’unità in cui sono state fatte. Così può ritrovarle facilmente."
                 },
                 {
-                    "label": "Scattare foto",
-                    "text": "Sul QR dell'unità l'esecutore connesso apre Album fotografico. Le foto sono di quell'unità scansionata; la sede e il nome dell'unità sono indicati. Il telefono le riduce prima. C'è un massimo al giorno."
+                    "label": "Attivare o disattivare l’album fotografico",
+                    "text": "L’album fotografico è disponibile per l’intera organizzazione.<br><br>L’amministratore può attivare la funzione in Impostazioni → La Sua organizzazione.<br><br>L’album fotografico è disattivato? Allora la funzione non è visibile da nessuna parte:<br>• Non nella pagina QR di un’unità.<br>• Non nel menu di WinProx."
                 },
                 {
-                    "label": "Inviare",
-                    "text": "Album foto sta in Sedi, sotto Unità. Lì si sceglie un'unità e un giorno con foto, si selezionano le foto e si indica un indirizzo e-mail. L'indirizzo resta su quell'unità. Nella foto stessa, in basso, compaiono data, ora, esecutore, unità e nome dell'organizzazione. Le foto sono nel messaggio. Dopo una settimana WinProx cancella i file."
+                    "label": "Fare foto",
+                    "text": "Un operatore che ha effettuato l’accesso scansiona il codice QR di un’unità e apre Album fotografico.<br><br>Le foto fatte vengono collegate automaticamente a quell’unità. La posizione e il nome dell’unità vengono conservati con le foto.<br><br>Importante: sono foto che può inviare più tardi per e-mail. Non vengono usate come foto o immagini fisse dell’unità stessa.<br><br><strong>Come funziona?</strong><br>• Il telefono riduce automaticamente le foto prima di salvarle.<br>• Per ogni unità si possono fare al massimo 24 foto al giorno.<br>• Su ogni foto compaiono la data, l’ora, il nome dell’operatore, l’unità e il nome dell’organizzazione.<br>• Un operatore può eliminare le proprie foto di oggi."
+                },
+                {
+                    "label": "Inviare le foto per e-mail",
+                    "text": "Gestisce l’album fotografico da Sedi → Unità → Album fotografico.<br><br><strong>Come invia le foto?</strong><br>1. Scelga l’unità.<br>2. Selezioni il giorno in cui le foto sono state fatte.<br>3. Selezioni le foto che vuole inviare.<br>4. Inserisca l’indirizzo e-mail del destinatario.<br>5. Aggiunga se vuole una descrizione, per esempio Mamma di Lotte.<br>6. Invii le foto."
+                },
+                {
+                    "label": "Conservare gli indirizzi e-mail",
+                    "text": "L’indirizzo e-mail viene conservato per l’unità interessata. Così può selezionarlo di nuovo facilmente a un invio successivo.<br><br>Può modificare in seguito la descrizione o rimuovere l’indirizzo e-mail."
+                },
+                {
+                    "label": "Inviare più foto",
+                    "text": "In ogni e-mail si possono allegare al massimo 8 foto.<br><br>Ne seleziona più di 8? WinProx le suddivide allora automaticamente su più e-mail.<br><br>Le foto vengono inserite direttamente nell’e-mail come allegato. Il destinatario non deve quindi aprire un link di download separato.<br><br>Attenzione: un destinatario si è disiscritto dalle e-mail di WinProx? Allora non vengono inviate foto a quell’indirizzo e-mail."
+                },
+                {
+                    "label": "Conservare e rimuovere le foto",
+                    "text": "Le foto vengono rimosse automaticamente dopo 7 giorni. Così l’album fotografico resta chiaro e le foto non vengono conservate più a lungo del necessario.<br><br>Può anche rimuovere Lei le foto quando non servono più."
+                },
+                {
+                    "label": "Seguire gli invii",
+                    "text": "Sotto Invii trova una panoramica delle e-mail inviate e programmate.<br><br>Per ogni invio può vedere se l’e-mail:<br>• È stata inviata.<br>• È ancora in attesa di invio.<br>• Non ha potuto essere inviata.<br><br>Così può controllare facilmente se le foto sono state inviate al destinatario."
                 }
             ]
         },

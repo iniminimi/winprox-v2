@@ -687,16 +687,36 @@
             "title": "Hilfe — Fotoalbum",
             "actions": [
                 {
-                    "label": "An oder aus",
-                    "text": "Das Fotoalbum gilt für die ganze Organisation. Der Administrator schaltet es unter Einstellungen → Ihre Organisation ein. Aus erscheint es nirgends: nicht auf dem QR-Code der Einheit und nicht im Menü."
+                    "label": "Wozu dient das Fotoalbum?",
+                    "text": "Mit dem Fotoalbum können ausführende Personen über den QR-Code Fotos bei einer Unit machen. Sie können diese Fotos danach auswählen und per E-Mail an jemanden senden.<br><br>Zum Beispiel in einer Kita: Betreuerinnen machen Fotos von den Kindern während der Betreuung. Die ausgewählten Fotos können Sie danach an die Eltern weiterleiten.<br><br>Die Fotos werden der Unit zugeordnet, auf der sie gemacht wurden. So finden Sie sie leicht wieder."
+                },
+                {
+                    "label": "Fotoalbum ein- oder ausschalten",
+                    "text": "Das Fotoalbum steht der gesamten Organisation zur Verfügung.<br><br>Der Administrator kann die Funktion unter Einstellungen → Ihre Organisation einschalten.<br><br>Ist das Fotoalbum aus? Dann ist die Funktion nirgends sichtbar:<br>• Nicht auf der QR-Seite einer Unit.<br>• Nicht im Menü von WinProx."
                 },
                 {
                     "label": "Fotos machen",
-                    "text": "Auf dem QR-Code der Einheit öffnet der angemeldete Ausführende Fotoalbum. Die Fotos gehören zu dieser gescannten Einheit; Standort und Name stehen dabei. Das Telefon verkleinert sie zuerst. Pro Tag gilt ein Maximum."
+                    "text": "Eine angemeldete ausführende Person scannt den QR-Code einer Unit und öffnet Fotoalbum.<br><br>Die gemachten Fotos werden automatisch dieser Unit zugeordnet. Der Standort und der Name der Unit werden bei den Fotos gespeichert.<br><br>Wichtig: Das sind Fotos, die Sie später mailen können. Sie werden nicht als feste Fotos oder Bilder der Unit selbst verwendet.<br><br><strong>Wie funktioniert es?</strong><br>• Das Telefon verkleinert die Fotos automatisch, bevor sie gespeichert werden.<br>• Pro Unit können höchstens 24 Fotos pro Tag gemacht werden.<br>• Auf jedem Foto stehen Datum, Uhrzeit, der Name der ausführenden Person, die Unit und der Name der Organisation.<br>• Eine ausführende Person kann ihre eigenen Fotos von heute löschen."
                 },
                 {
-                    "label": "Senden",
-                    "text": "Fotoalbum steht unter Standorte, unter Units. Dort wählen Sie eine Einheit und einen Tag mit Fotos, haken Fotos an und geben eine E-Mail-Adresse ein. Die Adresse bleibt bei dieser Unit. Im Foto selbst stehen unten Datum, Uhrzeit, Ausführender, Einheit und Organisationsname. Die Fotos stehen in der E-Mail. Nach einer Woche löscht WinProx die Dateien."
+                    "label": "Fotos mailen",
+                    "text": "Sie verwalten das Fotoalbum über Standorte → Units → Fotoalbum.<br><br><strong>Wie senden Sie Fotos?</strong><br>1. Wählen Sie die gewünschte Unit.<br>2. Wählen Sie den Tag, an dem die Fotos gemacht wurden.<br>3. Haken Sie die Fotos an, die Sie senden möchten.<br>4. Tragen Sie die E-Mail-Adresse des Empfängers ein.<br>5. Fügen Sie bei Bedarf eine Beschreibung hinzu, zum Beispiel Mama von Lotte.<br>6. Senden Sie die Fotos."
+                },
+                {
+                    "label": "E-Mail-Adressen speichern",
+                    "text": "Die E-Mail-Adresse wird bei der betreffenden Unit gespeichert. So können Sie sie beim nächsten Versand leicht wieder auswählen.<br><br>Sie können die Beschreibung später ändern oder die E-Mail-Adresse entfernen."
+                },
+                {
+                    "label": "Mehrere Fotos senden",
+                    "text": "Pro E-Mail können höchstens 8 Fotos mitgesendet werden.<br><br>Wählen Sie mehr als 8 Fotos? Dann verteilt WinProx sie automatisch auf mehrere E-Mails.<br><br>Die Fotos werden direkt in der E-Mail als Anhang aufgenommen. Der Empfänger muss also keinen separaten Download-Link öffnen.<br><br>Achtung: Hat sich ein Empfänger von E-Mails von WinProx abgemeldet? Dann werden keine Fotos an diese E-Mail-Adresse gesendet."
+                },
+                {
+                    "label": "Fotos aufbewahren und löschen",
+                    "text": "Fotos werden nach 7 Tagen automatisch gelöscht. So bleibt das Fotoalbum übersichtlich und Fotos werden nicht länger als nötig aufbewahrt.<br><br>Sie können Fotos auch selbst löschen, wenn sie nicht mehr gebraucht werden."
+                },
+                {
+                    "label": "Versendungen nachverfolgen",
+                    "text": "Unter Versendungen finden Sie eine Übersicht der gesendeten und geplanten E-Mails.<br><br>Pro Versand sehen Sie, ob die E-Mail:<br>• Gesendet wurde.<br>• Noch auf den Versand wartet.<br>• Nicht gesendet werden konnte.<br><br>So prüfen Sie leicht, ob die Fotos an den Empfänger gesendet wurden."
                 }
             ]
         },

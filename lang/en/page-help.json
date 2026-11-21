@@ -687,16 +687,36 @@
             "title": "Help — Photo album",
             "actions": [
                 {
-                    "label": "On or off",
-                    "text": "The photo album applies to the whole organisation. An administrator turns it on under Settings → Your organisation. Off, it appears nowhere: not on the unit QR and not in the menu."
+                    "label": "What is the photo album for?",
+                    "text": "With the photo album, workers can take photos of a unit via the QR code. You can then select these photos and send them to someone by email.<br><br>For example in a nursery: carers take photos of the children during childcare. You can then forward the selected photos to the parents.<br><br>The photos are linked to the unit where they were taken. That way you can find them easily."
                 },
                 {
-                    "label": "Take photos",
-                    "text": "On the unit QR a signed-in worker opens Photo album. The photos belong to that scanned unit; the location and unit name are shown. The phone reduces them first. There is a daily maximum."
+                    "label": "Turn the photo album on or off",
+                    "text": "The photo album is available for the whole organisation.<br><br>The administrator can switch the feature on under Settings → Your organisation.<br><br>Is the photo album off? Then the feature is not visible anywhere:<br>• Not on a unit’s QR page.<br>• Not in the WinProx menu."
                 },
                 {
-                    "label": "Email",
-                    "text": "Photo album is under Places, below Units. There you choose a unit and a day that have photos, tick the photos and enter an email address. The address stays with that unit. Inside the photo, at the bottom, are the date, time, worker, unit and organisation name. The photos are in the email. After a week WinProx deletes the files."
+                    "label": "Taking photos",
+                    "text": "A signed-in worker scans a unit’s QR code and opens Photo album.<br><br>The photos taken are linked to that unit automatically. The location and the name of the unit are kept with the photos.<br><br>Important: these are photos you can email later. They are not used as the unit’s fixed photos or images.<br><br><strong>How does it work?</strong><br>• The phone shrinks the photos automatically before they are saved.<br>• Up to 24 photos a day can be taken for each unit.<br>• Each photo shows the date, the time, the worker’s name, the unit and the organisation name.<br>• A worker can delete their own photos from today."
+                },
+                {
+                    "label": "Emailing photos",
+                    "text": "You manage the photo album via Places → Units → Photo album.<br><br><strong>How do you send photos?</strong><br>1. Choose the unit.<br>2. Select the day the photos were taken.<br>3. Tick the photos you want to send.<br>4. Enter the recipient’s email address.<br>5. Add a description if you wish, for example Mum of Lotte.<br>6. Send the photos."
+                },
+                {
+                    "label": "Saving email addresses",
+                    "text": "The email address is saved for that unit. You can select it again easily the next time you send.<br><br>You can change the description later or remove the email address."
+                },
+                {
+                    "label": "Sending several photos",
+                    "text": "Each email can include up to 8 photos.<br><br>Do you select more than 8 photos? WinProx then splits them automatically across several emails.<br><br>The photos are included directly in the email as attachments. The recipient does not need to open a separate download link.<br><br>Please note: has a recipient unsubscribed from WinProx emails? Then no photos are sent to that email address."
+                },
+                {
+                    "label": "Keeping and deleting photos",
+                    "text": "Photos are deleted automatically after 7 days. The photo album stays clear, and photos are not kept longer than needed.<br><br>You can also delete photos yourself when they are no longer needed."
+                },
+                {
+                    "label": "Following up sends",
+                    "text": "Under Sends you will find an overview of emails that have been sent and emails that are scheduled.<br><br>For each send you can see whether the email:<br>• Has been sent.<br>• Is still waiting to be sent.<br>• Could not be sent.<br><br>That way you can easily check whether the photos were sent to the recipient."
                 }
             ]
         },

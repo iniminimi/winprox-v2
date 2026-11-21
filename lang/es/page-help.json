@@ -687,16 +687,36 @@
             "title": "Ayuda — Álbum de fotos",
             "actions": [
                 {
-                    "label": "Activado o no",
-                    "text": "El álbum de fotos vale para toda la organización. El administrador lo activa en Ajustes → Su organización. Desactivado, no aparece en ningún sitio: ni en el QR de la unidad ni en el menú."
+                    "label": "¿Para qué sirve el álbum de fotos?",
+                    "text": "Con el álbum de fotos, los operarios pueden hacer fotos de una unidad mediante el código QR. Después puede seleccionar estas fotos y enviarlas por correo a alguien.<br><br>Por ejemplo en una guardería: las cuidadoras hacen fotos de los niños durante la acogida. Después puede reenviar las fotos seleccionadas a los padres.<br><br>Las fotos quedan vinculadas a la unidad en la que se hicieron. Así puede encontrarlas con facilidad."
+                },
+                {
+                    "label": "Activar o desactivar el álbum de fotos",
+                    "text": "El álbum de fotos está disponible para toda la organización.<br><br>El administrador puede activar la función en Configuración → Su organización.<br><br>¿Está desactivado el álbum de fotos? Entonces la función no se ve en ninguna parte:<br>• No en la página QR de una unidad.<br>• No en el menú de WinProx."
                 },
                 {
                     "label": "Hacer fotos",
-                    "text": "En el QR de la unidad el operario conectado abre Álbum de fotos. Las fotos son de esa unidad escaneada; la sede y el nombre de la unidad aparecen. El teléfono las reduce primero. Hay un máximo por día."
+                    "text": "Un operario que ha iniciado sesión escanea el código QR de una unidad y abre Álbum de fotos.<br><br>Las fotos hechas se vinculan automáticamente a esa unidad. La ubicación y el nombre de la unidad se guardan con las fotos.<br><br>Importante: son fotos que puede enviar por correo más adelante. No se usan como fotos o imágenes fijas de la propia unidad.<br><br><strong>¿Cómo funciona?</strong><br>• El teléfono reduce las fotos automáticamente antes de guardarlas.<br>• Por unidad se pueden hacer como máximo 24 fotos al día.<br>• En cada foto constan la fecha, la hora, el nombre del operario, la unidad y el nombre de la organización.<br>• Un operario puede eliminar sus propias fotos de hoy."
                 },
                 {
-                    "label": "Enviar",
-                    "text": "Álbum de fotos está en Ubicaciones, bajo Unidades. Allí elige una unidad y un día con fotos, marca las fotos e indica un correo. La dirección queda guardada en esa unidad. En la propia foto, abajo, figuran la fecha, la hora, el operario, la unidad y el nombre de la organización. Las fotos van en el correo. Al cabo de una semana WinProx borra los archivos."
+                    "label": "Enviar fotos por correo",
+                    "text": "Usted gestiona el álbum de fotos en Ubicaciones → Unidades → Álbum de fotos.<br><br><strong>¿Cómo envía las fotos?</strong><br>1. Elija la unidad.<br>2. Seleccione el día en que se hicieron las fotos.<br>3. Marque las fotos que quiere enviar.<br>4. Escriba la dirección de correo del destinatario.<br>5. Añada si lo desea una descripción, por ejemplo Mamá de Lotte.<br>6. Envíe las fotos."
+                },
+                {
+                    "label": "Guardar direcciones de correo",
+                    "text": "La dirección de correo se guarda en la unidad correspondiente. Así puede seleccionarla de nuevo con facilidad en un envío siguiente.<br><br>Puede cambiar la descripción más tarde o eliminar la dirección de correo."
+                },
+                {
+                    "label": "Enviar varias fotos",
+                    "text": "En cada correo se pueden adjuntar como máximo 8 fotos.<br><br>¿Selecciona más de 8 fotos? WinProx las reparte entonces automáticamente en varios correos.<br><br>Las fotos se incluyen directamente en el correo como archivo adjunto. El destinatario no tiene que abrir un enlace de descarga aparte.<br><br>Atención: ¿un destinatario se ha dado de baja de los correos de WinProx? Entonces no se envían fotos a esa dirección de correo."
+                },
+                {
+                    "label": "Conservar y eliminar fotos",
+                    "text": "Las fotos se eliminan automáticamente a los 7 días. Así el álbum de fotos se mantiene claro y las fotos no se conservan más tiempo del necesario.<br><br>También puede eliminar fotos usted mismo cuando ya no hagan falta."
+                },
+                {
+                    "label": "Seguir los envíos",
+                    "text": "En Envíos encuentra un resumen de los correos enviados y programados.<br><br>En cada envío puede ver si el correo:<br>• Se ha enviado.<br>• Aún espera el envío.<br>• No se ha podido enviar.<br><br>Así puede comprobar fácilmente si las fotos se enviaron al destinatario."
                 }
             ]
         },

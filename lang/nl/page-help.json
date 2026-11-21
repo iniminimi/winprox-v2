@@ -687,16 +687,36 @@
             "title": "Hulp — Fotoalbum",
             "actions": [
                 {
-                    "label": "Aan of uit",
-                    "text": "Het fotoalbum geldt voor de hele organisatie. De beheerder zet het aan onder Instellingen → Je organisatie. Uit staat het nergens: niet op de unit-QR en niet in het menu."
+                    "label": "Waarvoor dient het fotoalbum?",
+                    "text": "Met het fotoalbum kunnen uitvoerders foto's maken bij een unit via de QR-code. U kunt deze foto's daarna selecteren en per e-mail naar iemand versturen.<br><br>Bijvoorbeeld in een crèche: verzorgsters maken foto's van de kinderen tijdens de opvang. U kunt de geselecteerde foto's daarna doorsturen naar de ouders.<br><br>De foto's worden gekoppeld aan de unit waarop ze gemaakt zijn. Zo kunt u ze gemakkelijk terugvinden."
+                },
+                {
+                    "label": "Fotoalbum aan- of uitzetten",
+                    "text": "Het fotoalbum is beschikbaar voor de volledige organisatie.<br><br>De beheerder kan de functie inschakelen onder Instellingen → Je organisatie.<br><br>Staat het fotoalbum uit? Dan is de functie nergens zichtbaar:<br>• Niet op de QR-pagina van een unit.<br>• Niet in het menu van WinProx."
                 },
                 {
                     "label": "Foto's maken",
-                    "text": "Op de unit-QR opent de aangemelde uitvoerder Fotoalbum. De foto's horen bij die gescande unit; locatie en unitnaam staan erbij. De telefoon verkleint ze eerst. Per dag geldt een maximum."
+                    "text": "Een aangemelde uitvoerder scant de QR-code van een unit en opent Fotoalbum.<br><br>De gemaakte foto's worden automatisch aan die unit gekoppeld. De locatie en de naam van de unit worden bij de foto's bewaard.<br><br>Belangrijk: dit zijn foto's die u later kunt mailen. Ze worden niet gebruikt als vaste foto's of afbeeldingen van de unit zelf.<br><br><strong>Hoe werkt het?</strong><br>• De telefoon verkleint de foto's automatisch voordat ze worden opgeslagen.<br>• Per unit kunnen maximaal 24 foto's per dag worden gemaakt.<br>• Op elke foto worden de datum, het tijdstip, de naam van de uitvoerder, de unit en de organisatienaam vermeld.<br>• Een uitvoerder kan zijn of haar eigen foto's van vandaag verwijderen."
                 },
                 {
-                    "label": "Mailen",
-                    "text": "Fotoalbum staat bij Plaatsen, onder Units. U kiest daar een unit en een dag waarop foto's staan, vinkt foto's aan en vult een e-mailadres in. Het adres blijft bij die unit staan. In de foto zelf staat onderaan datum, tijd, uitvoerder, unit en organisatienaam. De foto's zitten in de mail. Na een week wist WinProx de bestanden."
+                    "label": "Foto's mailen",
+                    "text": "U beheert het fotoalbum via Plaatsen → Units → Fotoalbum.<br><br><strong>Hoe verstuurt u foto's?</strong><br>1. Kies de gewenste unit.<br>2. Selecteer de dag waarop de foto's gemaakt zijn.<br>3. Vink de foto's aan die u wilt versturen.<br>4. Vul het e-mailadres van de ontvanger in.<br>5. Voeg eventueel een omschrijving toe, bijvoorbeeld Mama van Lotte.<br>6. Verstuur de foto's."
+                },
+                {
+                    "label": "E-mailadressen bewaren",
+                    "text": "Het e-mailadres wordt bij de betreffende unit bewaard. Zo kunt u het bij een volgende verzending gemakkelijk opnieuw selecteren.<br><br>U kunt de omschrijving achteraf aanpassen of het e-mailadres verwijderen."
+                },
+                {
+                    "label": "Meerdere foto's versturen",
+                    "text": "Per e-mail kunnen maximaal 8 foto's worden meegestuurd.<br><br>Selecteert u meer dan 8 foto's? Dan verdeelt WinProx ze automatisch over meerdere e-mails.<br><br>De foto's worden rechtstreeks in de e-mail opgenomen als bijlage. De ontvanger hoeft dus geen aparte downloadlink te openen.<br><br>Let op: heeft een ontvanger zich afgemeld voor e-mails van WinProx? Dan worden er geen foto's naar dat e-mailadres verstuurd."
+                },
+                {
+                    "label": "Foto's bewaren en verwijderen",
+                    "text": "Foto's worden automatisch verwijderd na 7 dagen. Zo blijft het fotoalbum overzichtelijk en worden foto's niet onnodig lang bewaard.<br><br>U kunt foto's ook zelf verwijderen wanneer ze niet meer nodig zijn."
+                },
+                {
+                    "label": "Verzendingen opvolgen",
+                    "text": "Onder Verzendingen vindt u een overzicht van de verstuurde en geplande e-mails.<br><br>Per verzending kunt u zien of de e-mail:<br>• Verstuurd is.<br>• Nog wacht op verzending.<br>• Niet verstuurd kon worden.<br><br>Zo kunt u eenvoudig controleren of de foto's naar de ontvanger zijn verzonden."
                 }
             ]
         },
