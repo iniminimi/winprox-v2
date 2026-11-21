@@ -326,38 +326,42 @@
             "title": "Aiuto — Sedi",
             "actions": [
                 {
-                    "label": "Aggiungi sede",
-                    "text": "Crei una nuova sede con indirizzo e dati di base."
+                    "label": "Che cos’è una sede?",
+                    "text": "Una sede è un luogo fisico in cui lavorate. Può essere un edificio, un sito aziendale, un indirizzo del cliente o un cantiere.<br><br>A ogni sede potete poi collegare delle <strong>unità</strong>: locali, macchine, bagni, veicoli o altri mezzi. Un’unità può avere un proprio codice QR con cui gli utenti consultano informazioni, inviano segnalazioni o registrano dati.<br><br>Consiglio: create prima la sede. Poi, nella pagina di dettaglio, gestite unità, codici QR, documenti e annunci."
                 },
                 {
-                    "label": "Importa sedi",
-                    "text": "Importa sedi via CSV o Excel (.xlsx). Per riga: name oppure street + postal_code + city. Opzionale: house_number, country_code (default BE), notes, contractual_relationship_reference (DDT), latitude e longitude (insieme). Header errati o identità mancante rifiutano l'intero import. Il numero si trova sul portale della Sicurezza sociale in <strong>Aangifte van werken</strong>: vai alle tue dichiarazioni e apri quella del cantiere. Nessun accesso? Chiedilo a chi ha presentato la dichiarazione (cliente o appaltatore principale). Per le dichiarazioni di pulizia, il codice QR o l'URL CIaO specifici recuperano il numero automaticamente.",
+                    "label": "Aggiungere una sede",
+                    "text": "Fate clic su <strong>Aggiungi</strong> e inserite i dati di base:<br>• Nome della sede.<br>• Indirizzo della sede.<br><br>Salvate per creare la sede. Potrete poi collegarvi le unità.<br><br>Consiglio: compilate l’indirizzo il più completamente possibile, con numero civico, CAP e comune. È importante per mappe, GPS ed eventuali dichiarazioni."
+                },
+                {
+                    "label": "Aprire una sede",
+                    "text": "Fate clic su una sede nell’elenco per aprire la pagina di dettaglio.<br><br>Lì potete gestire, tra le altre cose:<br>• <strong>Unità e codici QR:</strong> locali, macchine, apparecchi e altri mezzi in questa sede.<br>• <strong>Documenti:</strong> documenti collegati alla sede.<br>• <strong>Annunci:</strong> informazioni da condividere con gli utenti.<br>• <strong>Impostazioni extra:</strong> impostazioni specifiche di questa sede."
+                },
+                {
+                    "label": "Importare sedi",
+                    "text": "Avete già un elenco in Excel o CSV? Potete importare più sedi insieme, senza crearle una per una.<br><br><strong>Quali dati servono?</strong><br>Ogni riga deve contenere almeno uno di questi dati:<br>• Un nome della sede.<br>• Un indirizzo completo con via, CAP e comune.<br><br>Potete anche importare dati extra:<br>• Numero civico.<br>• Paese.<br>• Note.<br>• Coordinate GPS.<br>• Il numero della Dichiarazione di lavori (se CIAO è attivo).<br><br>Importante: WinProx controlla l’intero file prima di creare le sedi. Se i titoli di colonna non sono corretti o mancano dati obbligatori in una riga, l’importazione intera viene rifiutata. Così evitate di caricare solo una parte delle sedi.<br><br><strong>Dove trovate il numero della Dichiarazione di lavori?</strong><br>Nel portale della Sicurezza sociale, sotto <strong>Dichiarazione di lavori</strong>. Aprite la dichiarazione del luogo di lavoro interessato.<br><br>Non avete accesso? Chiedete il numero a chi ha presentato la dichiarazione, ad esempio il cliente o l’appaltatore principale.<br><br>Per alcune dichiarazioni di pulizia WinProx può anche leggere il numero automaticamente da un QR o un link CIAO.",
                     "requires_facility": true
                 },
                 {
-                    "label": "Import sedi recenti",
-                    "text": "Dopo un import vedi gli import recenti (30 giorni). Per import: nome file, data e numero di sedi. Annulla rimuove le sedi senza unit, segnalazioni, documenti o annunci.",
+                    "label": "Importazioni sedi recenti",
+                    "text": "Qui trovate un riepilogo delle importazioni di sedi degli ultimi 30 giorni.<br><br>Per ogni importazione vedete:<br>• Il nome del file importato.<br>• La data dell’importazione.<br>• Il numero di sedi create.<br><br><strong>Annullare l’importazione</strong><br>Avete importato il file sbagliato per errore? Potete annullare l’importazione.<br><br>WinProx elimina allora le sedi create in quell’importazione. Solo se non hanno ancora unità, segnalazioni, documenti o annunci collegati.<br><br>Quando una sede è già in uso, l’importazione non si può più annullare del tutto. Così WinProx evita di cancellare dati già utilizzati.",
                     "requires_facility": true
                 },
                 {
                     "label": "Pin GPS",
-                    "text": "Con Time + visite GPS o CIAO: clicca l’icona rossa di Google Maps, trova la sede, clicca il pin rosso e copia. Incolla le coordinate in WinProx (formato 51.336167, 3.236306). Stesso campo sul pin visita di un’unità."
+                    "text": "Per alcune funzioni, come le visite di lavoro GPS in Time o CIAO, la sede deve stare esattamente sulla mappa.<br><br>L’indirizzo normale a volte non basta. In quel caso potete impostare voi le coordinate GPS.<br><br><strong>Come impostate il pin GPS?</strong><br>1. Fate clic sull’icona rossa di Google Maps.<br>2. Cercate l’indirizzo della sede.<br>3. Spostate il pin rosso sul punto esatto della mappa.<br>4. Copiate le coordinate.<br>5. Incollatele in WinProx.<br><br>Usate questo formato:<br>51.336167, 3.236306<br><br>Il primo valore è la latitudine, il secondo la longitudine.<br><br>Potete usare lo stesso metodo per il pin GPS di una singola unità."
                 },
                 {
                     "label": "Dichiarazione di lavori (DDT)",
-                    "text": "Visibile solo se CIAO è attivo. Inserite per sede il numero tecnico (13 caratteri) della Dichiarazione di lavori ONSS per quel cantiere. Si trova nel portale della sicurezza sociale, in e-Box Enterprise o sul QR/cartello in cantiere. Senza DDT valido (e indirizzo o GPS), le timbrature CIAO vengono saltate."
-                },
-                {
-                    "label": "Apri sede",
-                    "text": "Gestisca unità, documenti, annunci e codici QR per sede."
+                    "text": "Questo campo è visibile solo quando CIAO è attivo.<br><br>Inserite qui il numero tecnico della Dichiarazione di lavori INPS/ONSS di questo luogo di lavoro. Il numero ha 13 caratteri.<br><br>Lo trovate:<br>• Nel portale della Sicurezza sociale.<br>• In e-Box Enterprise.<br>• Sul QR o sul cartello in cantiere.<br><br>Senza una DDT valida (e senza indirizzo o GPS), le timbrature CIAO di questo luogo vengono saltate.<br><br>Dubbi sul numero? Chiedete a chi gestisce la dichiarazione."
                 },
                 {
                     "label": "Mostra inattive",
-                    "text": "Mostri le sedi disattivate per riattivarle o revisionarle."
+                    "text": "Le sedi che non usate più potete disattivarle. Spariscono allora dall’elenco normale.<br><br>Attivate <strong>Mostra inattive</strong> per rivederle, riattivarle o solo consultarle.<br><br>Consiglio: disattivare è di solito meglio che eliminare se volete conservare la cronologia."
                 },
                 {
-                    "label": "Traduzioni sede",
-                    "text": "Nel modulo di modifica sede può aggiornare manualmente il nome per lingua (NL, EN, FR, DE, ES, IT). Utile quando la traduzione automatica via Piattaforma → Traduzioni è errata o ancora mancante. Salvare finalizza la traduzione per quella lingua."
+                    "label": "Traduzioni della sede",
+                    "text": "Nel modulo di modifica potete adattare voi il nome per lingua (NL, EN, FR, DE, ES, IT).<br><br>Utile se la traduzione automatica di WinProx non è corretta o manca ancora.<br><br>Salvare rende definitivo quel nome per quella lingua."
                 }
             ]
         },
@@ -1713,23 +1717,27 @@
             ]
         },
         "units": {
-            "title": "Aiuto — Units",
+            "title": "Aiuto — Unità",
             "actions": [
                 {
-                    "label": "Panoramica",
-                    "text": "Elenco di tutte le unit del tenant: nome, sede, categoria e se i controlli unit sono consentiti. Apri una riga per andare al dettaglio sede con quella unit in evidenza."
+                    "label": "Che cosa vede qui?",
+                    "text": "Qui trova una panoramica di tutte le sue unità. Un’unità è un elemento distinto in una sede, come una stanza, una macchina, un veicolo o un apparecchio.<br><br>A un’unità può essere collegato un proprio codice QR. Gli utenti possono scansionarlo per, ad esempio, fare una segnalazione, eseguire un controllo o registrare dei valori.<br><br>Per ogni unità vede:<br>• Nome: il nome riconoscibile dell’unità.<br>• Sede: il luogo in cui si trova l’unità.<br>• Categoria: il tipo a cui appartiene l’unità.<br>• Attiva o inattiva: indica se l’unità è attualmente in uso.<br><br>Un’unità attiva è disponibile. Un’unità inattiva è temporaneamente fuori uso."
                 },
                 {
-                    "label": "Filtro",
-                    "text": "Limita l’elenco a una sede e/o una categoria. Il numero a destra dei menu è il totale filtrato. Cancella i filtri per vedere di nuovo tutte le unit."
+                    "label": "Cercare e filtrare le unità",
+                    "text": "Ha molte unità? Può ridurre facilmente l’elenco con i filtri.<br><br>• Sede: scelga una sede per vedere solo le unità di quella sede.<br>• Categoria: scelga una categoria per mostrare solo le unità di quel tipo.<br><br>Accanto ai filtri vede quante unità corrispondono alla sua selezione.<br><br>Vuole rivedere tutte le unità? Scelga Tutte le sedi e Tutte le categorie."
                 },
                 {
-                    "label": "Controlli unit",
-                    "text": "Quando i controlli unit sono attivati (sull’unità e sulla categoria a cui l’unità è collegata), un lavoratore può eseguire un controllo rapido nel portale QR dell’unità. Lì conferma che l’unità è OK o non OK. Configura i controlli sotto Luoghi → Categorie / Sedi, e le checklist sotto Lavoro → Checklist."
+                    "label": "Aprire un’unità",
+                    "text": "Faccia clic su un’unità per aprirla.<br><br>Arriva così alla pagina di dettaglio della sede corrispondente, dove può gestire l’unità selezionata.<br><br>Lì può, tra l’altro:<br>• Vedere e modificare i dati dell’unità.<br>• Vedere e stampare il codice QR.<br>• Aggiungere nuove unità alla sede.<br><br>Attenzione: nell’elenco generale delle unità non può modificare i dati. Lì usa la ricerca e i filtri per trovare l’unità giusta. Le modifiche si fanno nella pagina di dettaglio della sede."
                 },
                 {
-                    "label": "Misurazioni unità",
-                    "text": "Se le misurazioni sono attive (unità e categoria) e i campi collegati, i valori si inviano via QR. Gestisci i campi in Lavoro → Misurazioni unità."
+                    "label": "Controlli unità",
+                    "text": "Con un controllo unità, un utente può verificare rapidamente se un’unità è in ordine dopo aver scansionato il codice QR.<br><br>Per esempio durante un giro di pulizia, un controllo di sicurezza o l’ispezione di una macchina.<br><br>Quando è disponibile un controllo unità?<br><br>La funzione deve essere attivata su due livelli:<br>• Nella categoria, se l’unità è collegata a una categoria.<br>• Nell’unità stessa.<br><br>Queste impostazioni si gestiscono in Sedi → Categorie, oppure direttamente sull’unità nella pagina di dettaglio della sede.<br><br>Vuole porre anche domande specifiche durante un controllo? Può creare un questionario in Lavoro → Checklist."
+                },
+                {
+                    "label": "Misurazioni",
+                    "text": "Con le misurazioni delle unità, gli utenti possono registrare valori concreti tramite il codice QR.<br><br>Per esempio:<br>• La temperatura di un locale.<br>• Il chilometraggio di un veicolo.<br>• Una lettura del contatore o un altro valore tecnico.<br><br>Come si imposta?<br><br>Anche per questo la funzione deve essere attivata sia nella categoria sia nell’unità.<br><br>I campi di misurazione si gestiscono in Lavoro → Misurazioni unit. Lì decide quali valori gli utenti possono registrare.<br><br>Importante: le misurazioni delle unità sono diverse dai controlli unità. In un controllo, qualcuno indica se qualcosa è in ordine. In una misurazione, qualcuno registra un valore concreto."
                 }
             ]
         },

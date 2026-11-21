@@ -326,38 +326,42 @@
             "title": "Ayuda — Ubicaciones",
             "actions": [
                 {
+                    "label": "¿Qué es una ubicación?",
+                    "text": "Una ubicación es un lugar físico donde trabaja. Puede ser un edificio, una sede, una dirección de cliente o una obra.<br><br>Más adelante puede vincular <strong>unidades</strong> a cada ubicación: salas, máquinas, aseos, vehículos u otros recursos. Una unidad puede tener su propio código QR para ver información, hacer avisos o registrar datos.<br><br>Consejo: cree primero la ubicación. Después, en su página de detalle, gestione unidades, códigos QR, documentos y avisos."
+                },
+                {
                     "label": "Añadir ubicación",
-                    "text": "Cree una nueva ubicación con dirección y datos básicos."
+                    "text": "Pulse <strong>Añadir</strong> e indique los datos básicos:<br>• Nombre de la ubicación.<br>• Dirección de la ubicación.<br><br>Guarde para crear la ubicación. Después podrá vincularle unidades.<br><br>Consejo: complete la dirección lo más posible, con número, código postal y municipio. Importa para mapas, GPS y posibles declaraciones."
+                },
+                {
+                    "label": "Abrir ubicación",
+                    "text": "Pulse una ubicación de la lista para abrir la página de detalle.<br><br>Ahí puede gestionar, entre otras cosas:<br>• <strong>Unidades y códigos QR:</strong> salas, máquinas, equipos y otros recursos en esta ubicación.<br>• <strong>Documentos:</strong> documentos de la ubicación.<br>• <strong>Avisos:</strong> información que quiere compartir con los usuarios.<br>• <strong>Ajustes extra:</strong> ajustes específicos de esta ubicación."
                 },
                 {
                     "label": "Importar ubicaciones",
-                    "text": "Importe ubicaciones por CSV o Excel (.xlsx). Por fila: name o street + postal_code + city. Opcional: house_number, country_code (BE por defecto), notes, contractual_relationship_reference (DDT), latitude y longitude (juntos). Cabeceras incorrectas o identidad faltante rechazan toda la importación. Encuentra el número en el portal de la Seguridad Social en <strong>Aangifte van werken</strong>: ve a tus declaraciones y abre la de la obra. ¿Sin acceso? Pídelo a quien presentó la declaración (cliente o contratista principal). En declaraciones de limpieza, el código QR o la URL CIaO específicos obtienen el número automáticamente.",
+                    "text": "¿Ya tiene una lista en Excel o CSV? Puede importar varias ubicaciones a la vez, sin crearlas una a una.<br><br><strong>¿Qué datos hacen falta?</strong><br>Cada fila debe incluir al menos uno de estos datos:<br>• Un nombre de ubicación.<br>• Una dirección completa con calle, código postal y municipio.<br><br>También puede importar datos extra:<br>• Número de casa.<br>• País.<br>• Notas.<br>• Coordenadas GPS.<br>• El número de la Declaración de obras (si CIAO está activo).<br><br>Importante: WinProx comprueba todo el archivo antes de crear ubicaciones. Si los títulos de columna no son correctos o faltan datos obligatorios en una fila, se rechaza toda la importación. Así evita cargar solo una parte de sus ubicaciones.<br><br><strong>¿Dónde encuentra el número de la Declaración de obras?</strong><br>En el portal de la Seguridad Social, en <strong>Declaración de obras</strong>. Abra la declaración del lugar de trabajo correspondiente.<br><br>¿No tiene acceso? Pida el número a quien presentó la declaración, por ejemplo su cliente o el contratista principal.<br><br>En algunas declaraciones de limpieza, WinProx también puede leer el número automáticamente desde un QR o enlace CIAO.",
                     "requires_facility": true
                 },
                 {
-                    "label": "Importaciones de ubicaciones recientes",
-                    "text": "Tras una importación verá imports recientes (30 días). Por import: nombre de archivo, fecha y número de ubicaciones. Deshacer elimina ubicaciones sin units, avisos, documentos ni anuncios.",
+                    "label": "Importaciones recientes de ubicaciones",
+                    "text": "Aquí ve un resumen de las importaciones de ubicaciones de los últimos 30 días.<br><br>Por importación verá:<br>• El nombre del archivo importado.<br>• La fecha de la importación.<br>• El número de ubicaciones creadas.<br><br><strong>Deshacer importación</strong><br>¿Importó el archivo equivocado por error? Puede deshacer la importación.<br><br>WinProx elimina entonces las ubicaciones creadas en esa importación. Solo si aún no tienen unidades, avisos, documentos ni comunicados vinculados.<br><br>Cuando una ubicación ya está en uso, la importación ya no se puede deshacer del todo. Así WinProx evita borrar datos que ya se usan.",
                     "requires_facility": true
                 },
                 {
                     "label": "Pin GPS",
-                    "text": "Con Time + visitas GPS o CIAO: pulsa el icono rojo de Google Maps, busca la sede, pulsa el pin rojo y copia. Pega las coordenadas en WinProx (formato 51.336167, 3.236306). El mismo campo en el pin de visita de una unidad."
+                    "text": "Para algunas funciones, como visitas de trabajo con GPS en Time o CIAO, la ubicación debe estar exactamente en el mapa.<br><br>La dirección normal a veces no basta. Entonces puede fijar usted mismo las coordenadas GPS.<br><br><strong>¿Cómo define el pin GPS?</strong><br>1. Pulse el icono rojo de Google Maps.<br>2. Busque la dirección de la ubicación.<br>3. Mueva el pin rojo al punto exacto del mapa.<br>4. Copie las coordenadas.<br>5. Péguelas en WinProx.<br><br>Use este formato:<br>51.336167, 3.236306<br><br>El primer valor es la latitud; el segundo, la longitud.<br><br>Puede usar el mismo método para el pin GPS de una unidad concreta."
                 },
                 {
                     "label": "Declaración de obras (DDT)",
-                    "text": "Solo visible si CIAO está activo. Indique por sede el número técnico (13 caracteres) de la Declaración de obras ONSS de esa obra. Está en el portal de la seguridad social, en e-Box Enterprise o en el QR/cartel en obra. Sin DDT válido (y dirección o GPS), los fichajes CIAO se omiten."
-                },
-                {
-                    "label": "Abrir ubicación",
-                    "text": "Gestione unidades, documentos, anuncios y códigos QR por ubicación."
+                    "text": "Este campo solo es visible cuando CIAO está activo.<br><br>Indique el número técnico de la Declaración de obras de la Seguridad Social de este lugar de trabajo. El número tiene 13 caracteres.<br><br>Lo encontrará:<br>• En el portal de la Seguridad Social.<br>• En e-Box Enterprise.<br>• En el QR o el cartel en obra.<br><br>Sin una DDT válida (y sin dirección o GPS), los fichajes CIAO de este lugar se omiten.<br><br>¿Dudas sobre el número? Pregunte a quien gestiona la declaración."
                 },
                 {
                     "label": "Mostrar inactivas",
-                    "text": "Muestre ubicaciones desactivadas para reactivarlas o revisarlas."
+                    "text": "Las ubicaciones que ya no usa puede desactivarlas. Desaparecen entonces de la lista habitual.<br><br>Active <strong>Mostrar inactivas</strong> para volver a verlas, reactivarlas o solo consultarlas.<br><br>Consejo: desactivar suele ser mejor que eliminar si quiere conservar el historial."
                 },
                 {
-                    "label": "Traducciones de ubicación",
-                    "text": "En el formulario de edición de ubicación puede actualizar manualmente el nombre por idioma (NL, EN, FR, DE, ES, IT). Útil cuando la traducción automática vía Plataforma → Traducciones es incorrecta o aún falta. Guardar finaliza la traducción para ese idioma."
+                    "label": "Traducciones de la ubicación",
+                    "text": "En el formulario de edición puede ajustar usted mismo el nombre por idioma (NL, EN, FR, DE, ES, IT).<br><br>Útil si la traducción automática de WinProx no es correcta o aún falta.<br><br>Guardar hace definitivo ese nombre para ese idioma."
                 }
             ]
         },
@@ -1713,23 +1717,27 @@
             ]
         },
         "units": {
-            "title": "Ayuda — Units",
+            "title": "Ayuda — Unidades",
             "actions": [
                 {
-                    "label": "Resumen",
-                    "text": "Lista de todas las units del tenant: nombre, ubicación, categoría y si las comprobaciones de unit están permitidas. Abra una fila para ir al detalle de la ubicación con esa unit enfocada."
+                    "label": "¿Qué ve aquí?",
+                    "text": "Aquí encuentra un resumen de todas sus unidades. Una unidad es un elemento aparte en una ubicación, como una habitación, una máquina, un vehículo o un aparato.<br><br>Una unidad puede tener su propio código QR. Los usuarios pueden escanearlo para, por ejemplo, hacer un aviso, realizar un control o registrar valores de medición.<br><br>Por cada unidad ve:<br>• Nombre: el nombre reconocible de la unidad.<br>• Ubicación: el lugar donde está la unidad.<br>• Categoría: el tipo al que pertenece la unidad.<br>• Activa o inactiva: indica si la unidad está en uso en este momento.<br><br>Una unidad activa está disponible para su uso. Una unidad inactiva está temporalmente fuera de uso."
                 },
                 {
-                    "label": "Filtro",
-                    "text": "Limite la lista a una ubicación y/o una categoría. El número a la derecha de los desplegables es el total filtrado. Borre los filtros para ver de nuevo todas las units."
+                    "label": "Buscar y filtrar unidades",
+                    "text": "¿Tiene muchas unidades? Puede reducir la lista fácilmente con los filtros.<br><br>• Ubicación: elija una ubicación para ver solo las unidades de esa ubicación.<br>• Categoría: elija una categoría para mostrar solo unidades de ese tipo.<br><br>Junto a los filtros ve cuántas unidades coinciden con su selección.<br><br>¿Quiere ver de nuevo todas las unidades? Elija Todas las ubicaciones y Todas las categorías."
                 },
                 {
-                    "label": "Comprobaciones de unit",
-                    "text": "Cuando las comprobaciones de unit están activadas (en la unit y en la categoría a la que está vinculada), un operario puede realizar una comprobación rápida en el portal QR de unidad. Allí confirma que la unit está OK o no OK. Configure las comprobaciones bajo Lugares → Categorías / Ubicaciones, y las listas bajo Trabajo → Checklists."
+                    "label": "Abrir una unidad",
+                    "text": "Haga clic en una unidad para abrirla.<br><br>Llegará a la página de detalle de la ubicación correspondiente, donde puede gestionar la unidad seleccionada.<br><br>Allí puede, entre otras cosas:<br>• Ver y modificar los datos de la unidad.<br>• Ver e imprimir el código QR.<br>• Añadir nuevas unidades a la ubicación.<br><br>Atención: en la lista general de unidades no puede modificar datos. Allí usa la búsqueda y los filtros para encontrar la unidad correcta. Los cambios se hacen en la página de detalle de la ubicación."
                 },
                 {
-                    "label": "Mediciones de unidad",
-                    "text": "Si las mediciones están activas (unidad y categoría) y hay campos vinculados, se pueden enviar valores por el QR. Gestione campos en Trabajo → Mediciones de unidad."
+                    "label": "Comprobaciones de unidad",
+                    "text": "Con una comprobación de unidad, un usuario puede comprobar rápidamente si una unidad está en orden después de escanear el código QR.<br><br>Por ejemplo durante una ronda de limpieza, un control de seguridad o la inspección de una máquina.<br><br>¿Cuándo está disponible una comprobación de unidad?<br><br>La función debe estar activada en dos niveles:<br>• En la categoría, si la unidad está vinculada a una categoría.<br>• En la propia unidad.<br><br>Gestiona estos ajustes en Ubicaciones → Categorías, o directamente en la unidad, en la página de detalle de la ubicación.<br><br>¿Quiere hacer también preguntas concretas durante un control? Puede crear un cuestionario en Trabajo → Checklists."
+                },
+                {
+                    "label": "Mediciones",
+                    "text": "Con las mediciones de unidad, los usuarios pueden registrar valores concretos a través del código QR.<br><br>Por ejemplo:<br>• La temperatura de una sala.<br>• El kilometraje de un vehículo.<br>• Una lectura de contador u otro valor técnico.<br><br>¿Cómo se configura?<br><br>También aquí la función debe estar activada tanto en la categoría como en la unidad.<br><br>Los campos de medición se gestionan en Trabajo → Mediciones de unit. Allí decide qué valores pueden registrar los usuarios.<br><br>Importante: las mediciones de unidad no son lo mismo que las comprobaciones de unidad. En una comprobación, alguien indica si algo está en orden. En una medición, alguien registra un valor concreto."
                 }
             ]
         },

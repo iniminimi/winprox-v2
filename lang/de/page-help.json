@@ -326,38 +326,42 @@
             "title": "Hilfe — Standorte",
             "actions": [
                 {
+                    "label": "Was ist ein Standort?",
+                    "text": "Ein Standort ist ein physischer Ort, an dem Sie arbeiten. Das kann ein Gebäude, ein Firmengelände, eine Kundenadresse oder eine Baustelle sein.<br><br>Jedem Standort können Sie später <strong>Units</strong> zuordnen. Das sind zum Beispiel Räume, Maschinen, Toiletten, Fahrzeuge oder andere Mittel. Eine Unit kann einen eigenen QR-Code haben, mit dem Nutzer Informationen sehen, Meldungen machen oder Daten erfassen.<br><br>Tipp: legen Sie zuerst den Standort an. Danach verwalten Sie auf der Detailseite Units, QR-Codes, Dokumente und Mitteilungen."
+                },
+                {
                     "label": "Standort hinzufügen",
-                    "text": "Erstellen Sie einen neuen Standort mit Adresse und Basisdaten."
+                    "text": "Klicken Sie auf <strong>Hinzufügen</strong> und tragen Sie die Basisdaten ein:<br>• Name des Standorts.<br>• Adresse des Standorts.<br><br>Speichern Sie, um den Standort anzulegen. Danach können Sie Units zuordnen.<br><br>Tipp: geben Sie die Adresse möglichst vollständig an, inklusive Hausnummer, Postleitzahl und Ort. Das ist wichtig für Karten, GPS und eventuelle Meldungen."
+                },
+                {
+                    "label": "Standort öffnen",
+                    "text": "Klicken Sie in der Liste auf einen Standort, um die Detailseite zu öffnen.<br><br>Dort können Sie unter anderem verwalten:<br>• <strong>Units und QR-Codes:</strong> Räume, Maschinen, Geräte und andere Mittel an diesem Standort.<br>• <strong>Dokumente:</strong> Dokumente zu diesem Standort.<br>• <strong>Mitteilungen:</strong> Informationen für Nutzer.<br>• <strong>Zusätzliche Einstellungen:</strong> Einstellungen speziell für diesen Standort."
                 },
                 {
                     "label": "Standorte importieren",
-                    "text": "Importieren Sie Standorte per CSV oder Excel (.xlsx). Pro Zeile: name oder street + postal_code + city. Optional: house_number, country_code (Standard BE), notes, contractual_relationship_reference (DDT), latitude und longitude (beide). Falsche Header oder fehlende Identität lehnen den gesamten Import ab. Die Nummer finden Sie im Portal der sozialen Sicherheit unter <strong>Aangifte van werken</strong>: gehen Sie zu Ihren Meldungen und öffnen Sie die der Baustelle. Kein Zugriff? Fragen Sie, wer die Meldung eingereicht hat (Kunde oder Hauptunternehmer). Bei Reinigungsmeldungen ruft der spezifische CIaO-QR-Code oder die URL die Nummer automatisch ab.",
+                    "text": "Haben Sie schon eine Liste in Excel oder CSV? Dann können Sie mehrere Standorte auf einmal importieren, statt sie einzeln anzulegen.<br><br><strong>Welche Daten sind nötig?</strong><br>Jede Zeile muss mindestens eines davon enthalten:<br>• Einen Standortnamen.<br>• Eine vollständige Adresse mit Straße, Postleitzahl und Ort.<br><br>Zusätzlich können Sie importieren:<br>• Hausnummer.<br>• Land.<br>• Notizen.<br>• GPS-Koordinaten.<br>• Die Nummer der Arbeitsmeldung (wenn CIAO aktiv ist).<br><br>Wichtig: WinProx prüft die gesamte Importdatei, bevor Standorte angelegt werden. Stimmen Spaltenüberschriften nicht oder fehlen Pflichtangaben in einer Zeile, wird der gesamte Import abgelehnt. So vermeiden Sie, dass nur ein Teil Ihrer Standorte geladen wird.<br><br><strong>Wo finden Sie die Nummer der Arbeitsmeldung?</strong><br>Im Portal der Sozialversicherung unter <strong>Meldung von Arbeiten</strong>. Öffnen Sie die Meldung der betreffenden Arbeitsstelle.<br><br>Kein eigener Zugang? Fragen Sie die Person, die die Meldung eingereicht hat, zum Beispiel Ihren Kunden oder den Hauptauftragnehmer.<br><br>Bei manchen Reinigungsmeldungen kann WinProx die Nummer auch automatisch aus einem CIAO-QR-Code oder -Link lesen.",
                     "requires_facility": true
                 },
                 {
-                    "label": "Aktuelle Standort-Importe",
-                    "text": "Nach einem Import sehen Sie aktuelle Importe (30 Tage). Pro Import: Dateiname, Datum und Anzahl Standorte. Rückgängig machen entfernt Standorte ohne Units, Meldungen, Dokumente oder Mitteilungen.",
+                    "label": "Letzte Standort-Importe",
+                    "text": "Hier sehen Sie die Standort-Importe der letzten 30 Tage.<br><br>Pro Import sehen Sie:<br>• Den Namen der importierten Datei.<br>• Das Importdatum.<br>• Die Anzahl angelegter Standorte.<br><br><strong>Import rückgängig machen</strong><br>Falsche Datei importiert? Dann können Sie den Import rückgängig machen.<br><br>WinProx löscht dabei die in diesem Import angelegten Standorte. Nur wenn noch keine Units, Meldungen, Dokumente oder Mitteilungen daran hängen.<br><br>Sobald ein Standort in Gebrauch ist, lässt sich der Import nicht mehr vollständig rückgängig machen. So verhindert WinProx, dass bereits genutzte Daten gelöscht werden.",
                     "requires_facility": true
                 },
                 {
                     "label": "GPS-Pin",
-                    "text": "Bei Time + GPS-Arbeitsbesuchen oder CIAO: rotes Google-Maps-Symbol klicken, Standort suchen, roten Pin klicken und kopieren. Koordinaten in WinProx einfügen (Format 51.336167, 3.236306). Dasselbe Feld beim Arbeitsbesuch-Pin einer Unit."
+                    "text": "Für manche Funktionen, etwa GPS-Arbeitsbesuche in Time oder CIAO, muss der Standort genau auf der Karte sitzen.<br><br>Die normale Adresse reicht dafür manchmal nicht. Dann können Sie die GPS-Koordinaten selbst setzen.<br><br><strong>So setzen Sie den GPS-Pin:</strong><br>1. Klicken Sie auf das rote Google-Maps-Symbol.<br>2. Suchen Sie die Adresse des Standorts.<br>3. Verschieben Sie den roten Pin an die genaue Stelle auf der Karte.<br>4. Kopieren Sie die Koordinaten.<br>5. Fügen Sie sie in WinProx ein.<br><br>Verwenden Sie dieses Format:<br>51.336167, 3.236306<br><br>Der erste Wert ist die Breite, der zweite die Länge.<br><br>Dieselbe Vorgehensweise gilt für den GPS-Pin einer einzelnen Unit."
                 },
                 {
-                    "label": "Werkmeldung (DDT)",
-                    "text": "Nur sichtbar, wenn CIAO aktiv ist. Tragen Sie pro Standort die technische Nummer (13 Zeichen) der LSS-Werkmeldung für diese Baustelle ein. Zu finden im Sozialversicherungsportal, in e-Box Enterprise oder auf dem QR/Aushang vor Ort. Ohne gültige DDT (und Adresse oder GPS) werden CIAO-Stempelungen übersprungen."
-                },
-                {
-                    "label": "Standort öffnen",
-                    "text": "Verwalten Sie Units, Dokumente, Mitteilungen und QR-Codes pro Standort."
+                    "label": "Meldung von Arbeiten (DDT)",
+                    "text": "Dieses Feld ist nur sichtbar, wenn CIAO aktiv ist.<br><br>Tragen Sie hier die technische Nummer der LSS-Arbeitsmeldung für diese Arbeitsstelle ein. Die Nummer hat 13 Zeichen.<br><br>Sie finden die Nummer:<br>• Im Sozialversicherungsportal.<br>• In e-Box Enterprise.<br>• Auf dem QR-Code oder Aushang vor Ort.<br><br>Ohne gültige DDT (und ohne Adresse oder GPS) werden CIAO-Stempelungen für diese Arbeitsstelle übersprungen.<br><br>Unsicher bei der Nummer? Fragen Sie die Person, die die Meldung verwaltet."
                 },
                 {
                     "label": "Inaktive anzeigen",
-                    "text": "Zeigen Sie deaktivierte Standorte, um sie erneut zu aktivieren oder einzusehen."
+                    "text": "Standorte, die Sie nicht mehr nutzen, können Sie deaktivieren. Sie verschwinden dann aus der normalen Liste.<br><br>Schalten Sie <strong>Inaktive anzeigen</strong> ein, um sie wiederzusehen, erneut zu aktivieren oder nur nachzuschlagen.<br><br>Tipp: Deaktivieren ist meist besser als Löschen, wenn Sie die Historie behalten wollen."
                 },
                 {
                     "label": "Standort-Übersetzungen",
-                    "text": "Im Standort-Bearbeitungsformular können Sie den Namen pro Sprache (NL, EN, FR, DE, ES, IT) manuell aktualisieren. Nützlich, wenn die automatische Übersetzung über Plattform → Übersetzungen falsch oder noch fehlend ist. Speichern macht die Übersetzung für diese Sprache endgültig."
+                    "text": "Im Bearbeitungsformular können Sie den Standortnamen selbst je Sprache anpassen (NL, EN, FR, DE, ES, IT).<br><br>Nützlich, wenn die automatische Übersetzung von WinProx nicht stimmt oder noch fehlt.<br><br>Speichern macht diesen Namen für diese Sprache endgültig."
                 }
             ]
         },
@@ -1716,20 +1720,24 @@
             "title": "Hilfe — Units",
             "actions": [
                 {
-                    "label": "Übersicht",
-                    "text": "Mandantenweite Liste aller Units: Name, Standort, Kategorie und ob Unit-Checks erlaubt sind. Öffnen Sie eine Zeile, um zur Standortdetailseite mit Fokus auf diese Unit zu springen."
+                    "label": "Was sehen Sie hier?",
+                    "text": "Hier finden Sie eine Übersicht aller Ihrer Units. Eine Unit ist ein einzelner Bestandteil an einem Standort, zum Beispiel ein Raum, eine Maschine, ein Fahrzeug oder ein Gerät.<br><br>An eine Unit kann ein eigener QR-Code gekoppelt sein. Nutzer können ihn scannen, um zum Beispiel eine Meldung zu machen, eine Kontrolle durchzuführen oder Messwerte zu erfassen.<br><br>Pro Unit sehen Sie:<br>• Name: der erkennbare Name der Unit.<br>• Standort: der Ort, an dem sich die Unit befindet.<br>• Kategorie: die Art, zu der die Unit gehört.<br>• Aktiv oder inaktiv: zeigt, ob die Unit derzeit in Gebrauch ist.<br><br>Eine aktive Unit ist verfügbar. Eine inaktive Unit ist vorübergehend außer Betrieb."
                 },
                 {
-                    "label": "Filter",
-                    "text": "Liste auf einen Standort und/oder eine Kategorie eingrenzen. Die Zahl rechts neben den Dropdowns ist die gefilterte Anzahl. Filter leeren, um wieder alle Units zu sehen."
+                    "label": "Units suchen und filtern",
+                    "text": "Haben Sie viele Units? Dann können Sie die Liste mit den Filtern einfach eingrenzen.<br><br>• Standort: wählen Sie einen Standort, um nur die Units dieses Standorts zu sehen.<br>• Kategorie: wählen Sie eine Kategorie, um nur Units dieser Art anzuzeigen.<br><br>Neben den Filtern sehen Sie, wie viele Units Ihrer Auswahl entsprechen.<br><br>Möchten Sie wieder alle Units sehen? Wählen Sie Alle Standorte und Alle Kategorien."
+                },
+                {
+                    "label": "Eine Unit öffnen",
+                    "text": "Klicken Sie auf eine Unit, um sie zu öffnen.<br><br>Sie gelangen dann auf die Detailseite des zugehörigen Standorts. Dort verwalten Sie die ausgewählte Unit.<br><br>Dort können Sie unter anderem:<br>• Die Angaben der Unit ansehen und anpassen.<br>• Den QR-Code ansehen und drucken.<br>• Neue Units zum Standort hinzufügen.<br><br>Hinweis: in der allgemeinen Units-Liste können Sie keine Angaben ändern. Dort nutzen Sie die Suche und die Filter, um die richtige Unit zu finden. Änderungen nehmen Sie auf der Detailseite des Standorts vor."
                 },
                 {
                     "label": "Unit-Checks",
-                    "text": "Wenn Unit-Checks aktiviert sind (bei der Unit und bei der Kategorie, der die Unit zugeordnet ist), kann ein Ausführender im Unit-QR-Portal eine schnelle Prüfung durchführen. Dort bestätigt der Ausführende, dass die Unit OK oder nicht OK ist. Checks unter Orte → Kategorien / Standorte; Checklisten unter Arbeit → Checklisten."
+                    "text": "Mit einem Unit-Check kann ein Nutzer nach dem Scannen des QR-Codes schnell prüfen, ob eine Unit in Ordnung ist.<br><br>Zum Beispiel während einer Reinigungsrunde, einer Sicherheitskontrolle oder der Inspektion einer Maschine.<br><br>Wann ist ein Unit-Check verfügbar?<br><br>Die Funktion muss auf zwei Ebenen eingeschaltet sein:<br>• Bei der Kategorie, wenn die Unit einer Kategorie zugeordnet ist.<br>• Bei der Unit selbst.<br><br>Diese Einstellungen verwalten Sie unter Standorte → Kategorien oder direkt bei der Unit auf der Detailseite des Standorts.<br><br>Möchten Sie bei einer Kontrolle auch bestimmte Fragen stellen? Dann können Sie dafür einen Fragenkatalog unter Arbeit → Checklisten anlegen."
                 },
                 {
-                    "label": "Unit-Messungen",
-                    "text": "Wenn Unit-Messungen aktiv (Unit und Kategorie) und Felder verknüpft sind, können Werte per Unit-QR erfasst werden. Felder unter Arbeit → Unit-Messungen."
+                    "label": "Messungen",
+                    "text": "Mit Unit-Messungen können Nutzer über den QR-Code konkrete Werte erfassen.<br><br>Zum Beispiel:<br>• Die Temperatur eines Raums.<br>• Den Kilometerstand eines Fahrzeugs.<br>• Einen Zählerstand oder einen anderen technischen Wert.<br><br>Wie stellen Sie das ein?<br><br>Auch dafür muss die Funktion sowohl bei der Kategorie als auch bei der Unit eingeschaltet sein.<br><br>Die Messfelder selbst verwalten Sie unter Arbeit → Unit-Messungen. Dort legen Sie fest, welche Werte Nutzer erfassen können.<br><br>Wichtig: Unit-Messungen sind etwas anderes als Unit-Checks. Bei einem Unit-Check gibt jemand an, ob etwas in Ordnung ist. Bei einer Unit-Messung erfasst jemand einen konkreten Wert."
                 }
             ]
         },

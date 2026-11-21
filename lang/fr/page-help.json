@@ -326,38 +326,42 @@
             "title": "Aide — Sites",
             "actions": [
                 {
-                    "label": "Ajouter un site",
-                    "text": "Créez un nouveau site avec adresse et données de base."
+                    "label": "Qu’est-ce qu’un site ?",
+                    "text": "Un site est un lieu physique où vous travaillez. Ce peut être un bâtiment, un site d’entreprise, une adresse client ou un chantier.<br><br>Vous pouvez ensuite y rattacher des <strong>unités</strong> : salles, machines, toilettes, véhicules ou autres moyens, par exemple. Une unité peut avoir son propre QR code pour consulter des informations, signaler un problème ou enregistrer des données.<br><br>Conseil : créez d’abord le site. Ensuite, sur sa page de détail, gérez les unités, QR codes, documents et annonces."
                 },
                 {
-                    "label": "Importer des lieux",
-                    "text": "Importez des lieux via CSV ou Excel (.xlsx). Par ligne : name ou street + postal_code + city. Optionnel : house_number, country_code (BE par défaut), notes, contractual_relationship_reference (DDT), latitude et longitude (ensemble). En-têtes incorrects ou identité manquante refusent tout l'import. Retrouvez le numéro sur le portail de la Sécurité sociale sous <strong>Aangifte van werken</strong> : allez dans vos déclarations et ouvrez celle du chantier. Pas d'accès ? Demandez-le à qui a introduit la déclaration (client ou entrepreneur principal). Pour les déclarations de nettoyage, le QR code ou l'URL CIaO spécifique récupère le numéro automatiquement.",
+                    "label": "Ajouter un site",
+                    "text": "Cliquez sur <strong>Ajouter</strong> et saisissez les informations de base :<br>• Nom du site.<br>• Adresse du site.<br><br>Enregistrez pour créer le site. Vous pourrez ensuite y rattacher des unités.<br><br>Conseil : saisissez l’adresse aussi complètement que possible, avec numéro, code postal et commune. C’est important pour les cartes, le GPS et d’éventuelles déclarations."
+                },
+                {
+                    "label": "Ouvrir un site",
+                    "text": "Cliquez sur un site dans la liste pour ouvrir sa page de détail.<br><br>Vous pouvez y gérer notamment :<br>• <strong>Unités et QR codes :</strong> salles, machines, appareils et autres moyens sur ce site.<br>• <strong>Documents :</strong> documents liés au site.<br>• <strong>Annonces :</strong> informations à partager avec les utilisateurs.<br>• <strong>Réglages supplémentaires :</strong> paramètres spécifiques à ce site."
+                },
+                {
+                    "label": "Importer des sites",
+                    "text": "Vous avez déjà une liste de sites en Excel ou CSV ? Vous pouvez en importer plusieurs d’un coup, sans les créer un par un.<br><br><strong>Quelles données sont nécessaires ?</strong><br>Chaque ligne doit contenir au moins l’un de ces éléments :<br>• Un nom de site.<br>• Une adresse complète avec rue, code postal et commune.<br><br>Vous pouvez aussi importer des données supplémentaires :<br>• Numéro de maison.<br>• Pays.<br>• Notes.<br>• Coordonnées GPS.<br>• Le numéro de la Déclaration de travaux (si CIAO est actif).<br><br>Important : WinProx contrôle tout le fichier avant de créer les sites. Si les titres de colonnes sont incorrects ou si des données obligatoires manquent dans une ligne, l’import entier est refusé. Vous évitez ainsi de n’importer qu’une partie des sites.<br><br><strong>Où trouver le numéro de la Déclaration de travaux ?</strong><br>Sur le portail de la Sécurité sociale, sous <strong>Déclaration de travaux</strong>. Ouvrez la déclaration du chantier concerné.<br><br>Pas d’accès vous-même ? Demandez le numéro à la personne qui a introduit la déclaration, par exemple votre client ou l’entrepreneur principal.<br><br>Pour certaines déclarations de nettoyage, WinProx peut aussi lire le numéro automatiquement depuis un QR ou un lien CIAO.",
                     "requires_facility": true
                 },
                 {
-                    "label": "Imports de lieux récents",
-                    "text": "Après un import, vous voyez les imports récents (30 jours). Par import : nom de fichier, date et nombre de lieux. Annuler supprime les lieux sans unités, signalements, documents ni annonces.",
+                    "label": "Imports de sites récents",
+                    "text": "Vous trouvez ici un aperçu des imports de sites des 30 derniers jours.<br><br>Par import, vous voyez :<br>• Le nom du fichier importé.<br>• La date de l’import.<br>• Le nombre de sites créés.<br><br><strong>Annuler l’import</strong><br>Vous avez importé le mauvais fichier par erreur ? Vous pouvez annuler l’import.<br><br>WinProx supprime alors les sites créés lors de cet import. Uniquement s’il n’y a encore ni unités, ni signalements, ni documents, ni annonces liés.<br><br>Dès qu’un site est utilisé, l’import ne peut plus être entièrement annulé. WinProx évite ainsi de supprimer des données déjà utilisées.",
                     "requires_facility": true
                 },
                 {
                     "label": "Pin GPS",
-                    "text": "Avec Time + visites GPS ou CIAO : cliquez l’icône rouge Google Maps, trouvez le site, cliquez l’épingle rouge et copiez. Collez les coordonnées dans WinProx (format 51.336167, 3.236306). Même champ sur le pin de visite d’une unité."
+                    "text": "Pour certaines fonctions, comme les visites de travail GPS dans Time ou CIAO, le site doit être exactement positionné sur la carte.<br><br>L’adresse seule n’est parfois pas assez précise. Dans ce cas, vous pouvez saisir vous-même les bonnes coordonnées GPS.<br><br><strong>Comment définir le pin GPS ?</strong><br>1. Cliquez sur l’icône rouge Google Maps.<br>2. Recherchez l’adresse du site.<br>3. Déplacez le pin rouge à l’endroit exact sur la carte.<br>4. Copiez les coordonnées.<br>5. Collez-les dans WinProx.<br><br>Utilisez ce format :<br>51.336167, 3.236306<br><br>La première valeur est la latitude, la seconde la longitude.<br><br>Vous pouvez utiliser la même méthode pour le pin GPS d’une unité séparée."
                 },
                 {
                     "label": "Déclaration de travaux (DDT)",
-                    "text": "Visible uniquement si CIAO est activé. Indiquez par lieu le numéro technique (13 caractères) de la Déclaration de travaux ONSS pour ce chantier. Disponible sur le portail de la sécurité sociale, dans e-Box Enterprise, ou sur le QR/affiche sur site. Sans DDT valide (et adresse ou GPS), les pointages CIAO sont ignorés."
+                    "text": "Ce champ n’est visible que lorsque CIAO est actif.<br><br>Saisissez ici le numéro technique de la Déclaration de travaux ONSS liée à ce chantier. Le numéro compte 13 caractères.<br><br>Vous le trouvez :<br>• Sur le portail de la Sécurité sociale.<br>• Dans e-Box Enterprise.<br>• Sur le QR ou l’affiche sur le chantier.<br><br>Sans DDT valide (et sans adresse ou GPS), les pointages CIAO pour ce chantier sont ignorés.<br><br>Vous hésitez sur le numéro ? Demandez à la personne qui gère la déclaration."
                 },
                 {
-                    "label": "Ouvrir un site",
-                    "text": "Gérez les unités, documents, annonces et codes QR par site."
+                    "label": "Afficher les inactifs",
+                    "text": "Les sites que vous n’utilisez plus peuvent être désactivés. Ils quittent alors la liste ordinaire.<br><br>Activez <strong>Afficher les inactifs</strong> pour les revoir, les réactiver ou seulement les consulter.<br><br>Conseil : désactiver vaut souvent mieux que supprimer si vous voulez conserver l’historique."
                 },
                 {
-                    "label": "Afficher inactifs",
-                    "text": "Affichez les sites désactivés pour les réactiver ou les consulter."
-                },
-                {
-                    "label": "Traductions de lieu",
-                    "text": "Dans le formulaire d’édition du lieu, vous pouvez mettre à jour manuellement le nom par langue (NL, EN, FR, DE, ES, IT). Utile lorsque la traduction automatique via Plateforme → Traductions est incorrecte ou encore manquante. Enregistrer finalise la traduction pour cette langue."
+                    "label": "Traductions du site",
+                    "text": "Dans le formulaire de modification, vous pouvez adapter vous-même le nom du site par langue (NL, EN, FR, DE, ES, IT).<br><br>Utile si la traduction automatique de WinProx est incorrecte ou encore absente.<br><br>Enregistrer rend ce nom définitif pour cette langue."
                 }
             ]
         },
@@ -1717,23 +1721,27 @@
             ]
         },
         "units": {
-            "title": "Aide — Units",
+            "title": "Aide — Unités",
             "actions": [
                 {
-                    "label": "Aperçu",
-                    "text": "Liste de toutes les units du tenant : nom, lieu, catégorie et si les contrôles d’unité sont autorisés. Ouvrez une ligne pour aller au détail du lieu avec cette unit en focus."
+                    "label": "Que voyez-vous ici ?",
+                    "text": "Vous trouvez ici un aperçu de toutes vos unités. Une unité est un élément distinct sur un site, comme une pièce, une machine, un véhicule ou un appareil.<br><br>Une unité peut avoir son propre code QR. Les utilisateurs peuvent le scanner pour, par exemple, faire un signalement, effectuer un contrôle ou enregistrer des mesures.<br><br>Pour chaque unité, vous voyez :<br>• Nom : le nom reconnaissable de l’unité.<br>• Site : l’endroit où se trouve l’unité.<br>• Catégorie : le type auquel l’unité appartient.<br>• Active ou inactive : indique si l’unité est actuellement en service.<br><br>Une unité active est disponible. Une unité inactive est temporairement hors service."
                 },
                 {
-                    "label": "Filtre",
-                    "text": "Limiter la liste à un lieu et/ou une catégorie. Le nombre à droite des listes est le total filtré. Effacez les filtres pour revoir toutes les units."
+                    "label": "Rechercher et filtrer les unités",
+                    "text": "Vous avez beaucoup d’unités ? Vous pouvez facilement réduire la liste avec les filtres.<br><br>• Site : choisissez un site pour ne voir que les unités de ce site.<br>• Catégorie : choisissez une catégorie pour n’afficher que les unités de ce type.<br><br>À côté des filtres, vous voyez combien d’unités correspondent à votre sélection.<br><br>Vous voulez revoir toutes les unités ? Choisissez Tous les sites et Toutes les catégories."
+                },
+                {
+                    "label": "Ouvrir une unité",
+                    "text": "Cliquez sur une unité pour l’ouvrir.<br><br>Vous arrivez alors sur la page de détail du site concerné, où vous pouvez gérer l’unité sélectionnée.<br><br>Vous pouvez notamment :<br>• Consulter et modifier les données de l’unité.<br>• Consulter et imprimer le code QR.<br>• Ajouter de nouvelles unités au site.<br><br>Attention : dans la liste générale des unités, vous ne pouvez pas modifier les données. Vous y utilisez la recherche et les filtres pour retrouver la bonne unité. Les modifications se font sur la page de détail du site."
                 },
                 {
                     "label": "Contrôles d’unité",
-                    "text": "Lorsque les contrôles d’unité sont activés (sur l’unité et sur la catégorie à laquelle l’unité est liée), un exécutant peut effectuer un contrôle rapide dans le portail QR unité. Il y confirme que l’unité est OK ou non OK. Configurez les contrôles sous Lieux → Catégories / Lieux, et les checklists sous Travail → Checklists."
+                    "text": "Avec un contrôle d’unité, un utilisateur peut, après avoir scanné le code QR, vérifier rapidement si une unité est en ordre.<br><br>Par exemple pendant une tournée de nettoyage, un contrôle de sécurité ou l’inspection d’une machine.<br><br>Quand un contrôle d’unité est-il disponible ?<br><br>La fonction doit être activée à deux niveaux :<br>• Au niveau de la catégorie, si l’unité est liée à une catégorie.<br>• Au niveau de l’unité elle-même.<br><br>Vous gérez ces réglages sous Emplacements → Catégories, ou directement sur l’unité dans la page de détail du site.<br><br>Vous voulez aussi poser des questions précises pendant un contrôle ? Vous pouvez créer un questionnaire sous Travail → Checklists."
                 },
                 {
-                    "label": "Mesures d’unité",
-                    "text": "Si les mesures sont activées (unité et catégorie) et des champs liés, les valeurs peuvent être saisies via le QR. Gérez les champs sous Travail → Mesures d’unité."
+                    "label": "Mesures",
+                    "text": "Avec les mesures d’unité, les utilisateurs peuvent enregistrer des valeurs concrètes via le code QR.<br><br>Par exemple :<br>• La température d’une pièce.<br>• Le kilométrage d’un véhicule.<br>• Un relevé de compteur ou une autre valeur technique.<br><br>Comment le configurer ?<br><br>Ici aussi, la fonction doit être activée à la fois pour la catégorie et pour l’unité.<br><br>Vous gérez les champs de mesure sous Travail → Mesures unit. C’est là que vous déterminez quelles valeurs les utilisateurs peuvent enregistrer.<br><br>Important : les mesures d’unité sont différentes des contrôles d’unité. Lors d’un contrôle, quelqu’un indique si quelque chose est en ordre. Lors d’une mesure, quelqu’un enregistre une valeur concrète."
                 }
             ]
         },

@@ -326,38 +326,42 @@
             "title": "Hulp — Locaties",
             "actions": [
                 {
+                    "label": "Wat is een locatie?",
+                    "text": "Een locatie is een fysieke plaats waar u werkt. Dat kan een gebouw, een bedrijfssite, een klantadres of een werf zijn.<br><br>Aan elke locatie kunt u later <strong>units</strong> koppelen. Dat zijn bijvoorbeeld ruimtes, machines, toiletten, voertuigen of andere middelen. Een unit kan een eigen QR-code hebben waarmee gebruikers informatie kunnen bekijken, meldingen doen of gegevens registreren.<br><br>Tip: maak eerst de locatie aan. Daarna kunt u op de detailpagina van die locatie de units, QR-codes, documenten en mededelingen beheren."
+                },
+                {
                     "label": "Locatie toevoegen",
-                    "text": "Maak een nieuwe site met adres en basisgegevens."
+                    "text": "Klik op <strong>Toevoegen</strong> en vul de basisgegevens in:<br>• Naam van de locatie.<br>• Adres van de locatie.<br><br>Sla op om de locatie aan te maken. U kunt er daarna units aan koppelen.<br><br>Tip: vul het adres zo volledig mogelijk in, inclusief huisnummer, postcode en gemeente. Dat is belangrijk voor een correcte weergave op kaarten, GPS-functies en eventuele aangiftes."
+                },
+                {
+                    "label": "Locatie openen",
+                    "text": "Klik op een locatie in de lijst om de detailpagina te openen.<br><br>Daar kunt u onder andere beheren:<br>• <strong>Units en QR-codes:</strong> ruimtes, machines, toestellen en andere middelen op deze locatie.<br>• <strong>Documenten:</strong> documenten die bij de locatie horen.<br>• <strong>Mededelingen:</strong> informatie die u met gebruikers wilt delen.<br>• <strong>Extra instellingen:</strong> specifieke instellingen voor deze locatie."
                 },
                 {
                     "label": "Locaties importeren",
-                    "text": "Importeer locaties via CSV of Excel (.xlsx). Per rij: name óf street + postal_code + city. Optioneel: house_number, country_code (standaard BE), notes, contractual_relationship_reference (DDT), latitude en longitude (beide). Bij foute headers of ontbrekende identiteit wordt de hele import geweigerd. Het nummer vind je op het portaal van de Sociale Zekerheid onder <strong>Aangifte van werken</strong>: ga naar je aangiften en open die van de werkplaats. Geen toegang? Vraag het bij wie de aangifte indiende (klant of hoofdaannemer). Bij schoonmaakaangiften haalt de specifieke CIaO-QR-code of -URL het nummer automatisch op.",
+                    "text": "Heeft u al een lijst met locaties in Excel of CSV? Dan kunt u meerdere locaties tegelijk importeren. Zo hoeft u ze niet één voor één aan te maken.<br><br><strong>Welke gegevens zijn nodig?</strong><br>Elke rij moet minstens één van deze gegevens bevatten:<br>• Een naam van de locatie.<br>• Een volledig adres met straat, postcode en gemeente.<br><br>U kunt daarnaast ook extra gegevens importeren:<br>• Huisnummer.<br>• Land.<br>• Notities.<br>• GPS-coördinaten.<br>• Het nummer van de Aangifte van werken (als CIAO actief is).<br><br>Belangrijk: WinProx controleert het volledige importbestand voordat de locaties worden aangemaakt. Zijn de kolomtitels niet correct of ontbreken verplichte gegevens in een rij? Dan wordt de volledige import geweigerd. Zo vermijdt u dat slechts een deel van uw locaties wordt ingeladen.<br><br><strong>Waar vindt u het nummer van de Aangifte van werken?</strong><br>U vindt dit nummer op het portaal van de Sociale Zekerheid, onder <strong>Aangifte van werken</strong>. Open de aangifte die bij de betreffende werkplaats hoort.<br><br>Heeft u zelf geen toegang tot deze aangifte? Vraag het nummer dan aan de persoon die de aangifte heeft ingediend, bijvoorbeeld uw klant of hoofdaannemer.<br><br>Bij bepaalde schoonmaakaangiften kan WinProx het nummer ook automatisch uitlezen uit een CIAO-QR-code of -link.",
                     "requires_facility": true
                 },
                 {
                     "label": "Recente locatie-imports",
-                    "text": "Na een import zie je recente imports (30 dagen). Per import: bestandsnaam, datum en aantal locaties. Import terugdraaien verwijdert locaties zonder units, meldingen, documenten of mededelingen.",
+                    "text": "Hier vindt u een overzicht van de locatie-imports van de afgelopen 30 dagen.<br><br>Per import ziet u:<br>• De naam van het geïmporteerde bestand.<br>• De datum van de import.<br>• Het aantal aangemaakte locaties.<br><br><strong>Import terugdraaien</strong><br>Heeft u per ongeluk een verkeerd bestand geïmporteerd? Dan kunt u de import terugdraaien.<br><br>WinProx verwijdert daarbij de locaties die tijdens die import zijn aangemaakt. Dat kan alleen wanneer er nog geen units, meldingen, documenten of mededelingen aan die locaties gekoppeld zijn.<br><br>Zodra een locatie in gebruik is, kan de import dus niet meer volledig worden teruggedraaid. Zo voorkomt WinProx dat u gegevens verwijdert die al in gebruik zijn.",
                     "requires_facility": true
                 },
                 {
                     "label": "GPS-pin",
-                    "text": "Bij Time + GPS-werkbezoeken of CIAO: klik het rode Google Maps-icoon, zoek de locatie, klik de rode pin en kopieer. Plak de coördinaten in WinProx (formaat 51.336167, 3.236306). Zelfde veld bij de werkbezoek-pin van een unit."
+                    "text": "Voor bepaalde functies, zoals GPS-werkbezoeken binnen Time of CIAO, is het belangrijk dat de locatie exact op de kaart staat.<br><br>Het gewone adres is daarvoor soms niet nauwkeurig genoeg. In dat geval kunt u zelf de juiste GPS-coördinaten instellen.<br><br><strong>Hoe bepaalt u de GPS-pin?</strong><br>1. Klik op het rode Google Maps-icoon.<br>2. Zoek het adres van de locatie op.<br>3. Verplaats de rode pin naar de exacte plaats op de kaart.<br>4. Kopieer de coördinaten.<br>5. Plak ze in WinProx.<br><br>Gebruik dit formaat:<br>51.336167, 3.236306<br><br>De eerste waarde is de breedtegraad, de tweede de lengtegraad.<br><br>U kunt dezelfde werkwijze gebruiken om de GPS-pin van een afzonderlijke unit in te stellen."
                 },
                 {
                     "label": "Aangifte van werken (DDT)",
-                    "text": "Alleen zichtbaar als CIAO aanstaat. Vul per locatie het technische nummer (13 tekens) van de RSZ-Aangifte van werken voor die werkplaats in. Dat nummer staat in het socialezekerheidsportaal, in e-Box Enterprise, of op de QR/affiche op de werf. Zonder geldige DDT (en adres of GPS) worden CIAO-prikken overgeslagen."
-                },
-                {
-                    "label": "Locatie openen",
-                    "text": "Klik op een locatie om deze te beheren : wijzig units, documenten, mededelingen en QR-codes per locatie."
+                    "text": "Dit veld is alleen zichtbaar wanneer CIAO actief is.<br><br>Vul hier het technische nummer in van de RSZ-Aangifte van werken die bij deze werkplaats hoort. Het nummer bestaat uit 13 tekens.<br><br>U vindt dit nummer:<br>• In het socialezekerheidsportaal.<br>• In e-Box Enterprise.<br>• Op de QR-code of affiche op de werf.<br><br>Zonder een geldige DDT (én zonder adres of GPS) worden CIAO-prikken voor deze werkplaats overgeslagen.<br><br>Twijfelt u over het juiste nummer? Vraag het na bij de persoon die de aangifte beheert."
                 },
                 {
                     "label": "Inactieve tonen",
-                    "text": "Toon gedeactiveerde locaties om ze opnieuw te activeren of te raadplegen."
+                    "text": "Locaties die u niet meer gebruikt, kunt u deactiveren. Ze verdwijnen dan uit de gewone lijst.<br><br>Zet <strong>Inactieve tonen</strong> aan om ze terug te zien, opnieuw te activeren of alleen te raadplegen.<br><br>Tip: deactiveren is meestal beter dan verwijderen als u de geschiedenis wilt bewaren."
                 },
                 {
                     "label": "Locatievertalingen",
-                    "text": "In het locatie-bewerkformulier kun je de naam per taal (NL, EN, FR, DE, ES, IT) handmatig bijwerken. Handig als de automatische vertaling door WinProx (periodiek) niet klopt of nog ontbreekt. Opslaan maakt de vertaling definitief voor die taal."
+                    "text": "In het bewerkformulier kunt u de naam van de locatie per taal (NL, EN, FR, DE, ES, IT) zelf aanpassen.<br><br>Dat is handig als de automatische vertaling van WinProx niet klopt of nog ontbreekt.<br><br>Opslaan maakt die naam definitief voor die taal."
                 }
             ]
         },
@@ -1716,24 +1720,24 @@
             "title": "Hulp — Units",
             "actions": [
                 {
-                    "label": "Wat u hier ziet",
-                    "text": "Dit is de lijst van al uw units: een kamer, een machine, een voertuig of een ander toestel waar een QR-code op hangt. Per unit ziet u de naam, de locatie en de categorie. Actief betekent dat de unit in gebruik is. Inactief betekent dat hij even uit staat."
+                    "label": "Wat ziet u hier?",
+                    "text": "Hier vindt u een overzicht van al uw units. Een unit is een afzonderlijk onderdeel op een locatie, zoals een kamer, machine, voertuig of toestel.<br><br>Aan een unit kan een eigen QR-code gekoppeld zijn. Gebruikers kunnen die scannen om bijvoorbeeld een melding te doen, een controle uit te voeren of meetwaarden te registreren.<br><br>Per unit ziet u:<br>• Naam: de herkenbare naam van de unit.<br>• Locatie: de plaats waar de unit zich bevindt.<br>• Categorie: het type waartoe de unit behoort.<br>• Actief of inactief: geeft aan of de unit momenteel in gebruik is.<br><br>Een actieve unit is beschikbaar voor gebruik. Een inactieve unit is tijdelijk buiten gebruik."
                 },
                 {
-                    "label": "Zoeken",
-                    "text": "Kies een locatie om de lijst kleiner te maken. Werkt u met categorieën, dan kunt u daar ook op filteren. Naast de keuzes staat hoeveel units u nog ziet. Kies Alle locaties en Alle categorieën om weer alles te tonen."
+                    "label": "Units zoeken en filteren",
+                    "text": "Heeft u veel units? Dan kunt u de lijst eenvoudig verkleinen met de filters.<br><br>• Locatie: kies een locatie om alleen de units van die locatie te bekijken.<br>• Categorie: kies een categorie om alleen units van dat type te tonen.<br><br>Naast de filters ziet u hoeveel units aan uw selectie voldoen.<br><br>Wilt u opnieuw alle units bekijken? Kies dan Alle locaties en Alle categorieën."
                 },
                 {
                     "label": "Een unit openen",
-                    "text": "Klik op een unit. U komt op de locatie, bij die unit. Daar past u hem aan, drukt u de QR af of voegt u een nieuwe unit toe. In deze lijst zelf wijzigt u niets."
+                    "text": "Klik op een unit om deze te openen.<br><br>U komt dan op de detailpagina van de bijbehorende locatie, waar u de geselecteerde unit kunt beheren.<br><br>Daar kunt u onder andere:<br>• De gegevens van de unit bekijken en aanpassen.<br>• De QR-code bekijken en afdrukken.<br>• Nieuwe units toevoegen aan de locatie.<br><br>Let op: in de algemene unitslijst kunt u geen gegevens wijzigen. Daar gebruikt u de zoekfunctie en filters om de juiste unit terug te vinden. Aanpassingen doet u op de detailpagina van de locatie."
                 },
                 {
                     "label": "Unit checks",
-                    "text": "Staat er Unit checks toegestaan, dan kan iemand na het scannen van de QR snel zeggen of alles in orde is of niet. Dat lukt alleen als de check aanstaat bij de unit. Heeft de unit een categorie, dan moet de check daar ook aanstaan. U zet dat bij Plaatsen, onder Categorieën of bij de unit op de locatie. Een vragenlijst bij de check maakt u onder Werk → Checklists."
+                    "text": "Met een unit check kan een gebruiker na het scannen van de QR-code snel controleren of een unit in orde is.<br><br>Bijvoorbeeld tijdens een schoonmaakronde, veiligheidscontrole of inspectie van een machine.<br><br>Wanneer is een unit check beschikbaar?<br><br>De functie moet op twee niveaus ingeschakeld zijn:<br>• Bij de categorie, als de unit aan een categorie gekoppeld is.<br>• Bij de unit zelf.<br><br>U beheert deze instellingen bij Plaatsen → Categorieën of rechtstreeks bij de unit op de detailpagina van de locatie.<br><br>Wilt u tijdens een controle ook specifieke vragen stellen? Dan kunt u daarvoor een vragenlijst aanmaken onder Werk → Checklists."
                 },
                 {
                     "label": "Metingen",
-                    "text": "Een meting, zoals een temperatuur of een tellerstand, stelt u niet in deze lijst in. Zet metingen aan bij de categorie en bij de unit, en kies daar welke velden horen. De velden zelf beheert u onder Werk → Unitmetingen."
+                    "text": "Met unitmetingen kunnen gebruikers via de QR-code concrete waarden registreren.<br><br>Bijvoorbeeld:<br>• De temperatuur van een ruimte.<br>• De kilometerstand van een voertuig.<br>• Een tellerstand of andere technische waarde.<br><br>Hoe stelt u dit in?<br><br>Ook hiervoor moet de functie zowel bij de categorie als bij de unit ingeschakeld zijn.<br><br>De meetvelden zelf beheert u onder Werk → Unitmetingen. Daar bepaalt u welke waarden gebruikers kunnen registreren.<br><br>Belangrijk: unitmetingen zijn iets anders dan unit checks. Bij een unit check geeft iemand aan of iets in orde is. Bij een unitmeting registreert iemand een concrete waarde."
                 }
             ]
         },
