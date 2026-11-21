@@ -1913,31 +1913,31 @@
             "actions": [
                 {
                     "label": "Wat ziet u op dit scherm?",
-                    "text": "Hier vindt u alle uitvoerders van uw organisatie in één overzicht. Handig om snel iemand terug te vinden, zeker als u veel uitvoerders hebt.<br><br>Per uitvoerder ziet u onder andere:<br>• De naam.<br>• Het team.<br>• De vestigingen waar die persoon mag inklokken.<br>• Of het profiel actief is.<br>• Of de uitvoerder gekoppeld is aan een collega die ook in de Backoffice werkt.<br><br>Tip: dit scherm is bedoeld om te zoeken en te filteren. Uitvoerders toevoegen, wijzigen of deactiveren doet u via Personen → Teams."
+                    "text": "Hier vindt u alle uitvoerders van uw organisatie in één lijst. Handig als u snel iemand zoekt, ook als u er veel hebt.<br><br>Per uitvoerder ziet u:<br>• De naam.<br>• Het team.<br>• De locaties waar die persoon mag inklokken. Staat er Alle locaties, dan is er geen beperking.<br>• Of het profiel Actief of Inactief is.<br>• Het label Collega-login, als deze uitvoerder ook een collega is in de Backoffice.<br>• Het label Te controleren, als een teamleider het profiel net heeft aangemaakt.<br><br>Dit scherm is om te zoeken. Toevoegen, wijzigen of deactiveren doet u via Personen → Teams."
                 },
                 {
                     "label": "Zoeken en filteren",
-                    "text": "Gebruik de filters bovenaan om de lijst te verkleinen:<br>• Zoek op naam.<br>• Kies een team.<br>• Kies een vestiging.<br>• Filter op actieve of inactieve uitvoerders.<br><br>Laat de vestiging leeg om alle uitvoerders te zien. Kiest u een vestiging, dan ziet u alleen uitvoerders die daar mogen inklokken.<br><br>Ook uitvoerders zonder vaste vestiging en teams die overal mogen inklokken, blijven zichtbaar."
+                    "text": "Gebruik de filters bovenaan:<br>• Zoek op naam of e-mailadres.<br>• Kies een team, of Alle teams.<br>• Kies een locatie, of Alle locaties.<br>• Kies Actief, Inactief of Alle statussen.<br><br>Naast de filters staat hoeveel uitvoerders u nog ziet.<br><br>Kiest u een locatie, dan ziet u de uitvoerders die daar mogen inklokken. Uitvoerders zonder locatie, en teams die overal mogen inklokken, blijven ook zichtbaar."
                 },
                 {
-                    "label": "Vestigingen",
-                    "text": "Bij elke uitvoerder ziet u aan welke vestigingen die persoon is toegewezen.<br><br>Zijn er geen vestigingen gekozen? Dan mag de uitvoerder overal inklokken. Dat is de standaardinstelling voor bestaande uitvoerders.<br><br>Vestigingen aanpassen doet u via Personen → Teams → Bewerken. U kunt ze ook meegeven bij een import."
+                    "label": "Locaties",
+                    "text": "Bij elke uitvoerder ziet u de locaties die voor die persoon zijn gekozen.<br><br>Zijn er geen locaties gekozen, dan staat er Alle locaties. De uitvoerder mag dan overal inklokken.<br><br>Locaties wijzigt u via Personen → Teams → Bewerken."
                 },
                 {
                     "label": "Koppeling met een collega",
-                    "text": "Sommige uitvoerders zijn gekoppeld aan een collega die ook in de Backoffice werkt met een e-mailadres en wachtwoord.<br><br>Die persoon telt als één licentie, niet als twee.<br><br>Inklokken gebeurt altijd via Clock Point, met de naam en het icoon van de uitvoerder. De aanmelding van de Backoffice wordt hiervoor niet gebruikt."
+                    "text": "Staat er Collega-login, dan hoort deze uitvoerder bij een collega die ook in de Backoffice werkt, met e-mailadres en wachtwoord.<br><br>Die persoon telt als één licentie, niet als twee.<br><br>Inklokken gebeurt via de prikklok, met de naam en het icoon. De aanmelding van de Backoffice wordt daarvoor niet gebruikt."
                 },
                 {
                     "label": "Te controleren",
-                    "text": "Met de knop <strong>Te controleren</strong> toont u alleen actieve uitvoerders die een teamleider pas op Clock Point heeft aangemaakt.<br><br>Deze uitvoerders hebben voorlopig alleen een voor- en achternaam en krijgen de badge <strong>Te controleren</strong>.<br><br>Op het beginscherm vindt u hiervoor ook de tegel <strong>Nieuwe uitvoerder</strong>.<br><br>Open de uitvoerder via Personen → Teams en sla de gegevens op of deactiveer het profiel. Daarna verdwijnt de uitvoerder uit deze filter.<br><br>Klik nogmaals op <strong>Te controleren</strong> om opnieuw alle uitvoerders te zien."
+                    "text": "Met de knop Te controleren ziet u alleen actieve uitvoerders die een teamleider net op Clock Point heeft aangemaakt.<br><br>Zij hebben voorlopig alleen een voor- en achternaam, en het label Te controleren.<br><br>Op het beginscherm staat daarvoor ook de tegel Nieuwe uitvoerder.<br><br>Open de uitvoerder via Personen → Teams en sla de gegevens op, of deactiveer het profiel. Daarna verdwijnt de uitvoerder uit deze filter.<br><br>Klik nogmaals op Te controleren om weer iedereen te zien."
                 },
                 {
                     "label": "Uitvoerder openen",
-                    "text": "Klik op een naam om naar het team van die uitvoerder te gaan.<br><br>Daar kunt u de gegevens aanpassen:<br>• Team en vestigingen.<br>• Icoon.<br>• Gsm-nummer.<br>• Pincode en passkey.<br>• Teamleider.<br>• Actieve of inactieve status.<br><br>U kunt de uitvoerder daar ook verwijderen.<br><br>Een aparte knop om uitvoerders toe te voegen, is er niet op dit scherm. Nieuwe uitvoerders maakt u aan via Personen → Teams."
+                    "text": "Klik op een naam. U komt bij het team van die uitvoerder.<br><br>Daar past u onder andere aan:<br>• Team en locaties.<br>• Icoon.<br>• Gsm-nummer.<br>• Pincode en passkey.<br>• Teamleider.<br>• Actief of inactief.<br><br>U kunt de uitvoerder daar ook verwijderen.<br><br>Op deze lijst zelf voegt u niemand toe. Nieuwe uitvoerders maakt u aan via Personen → Teams."
                 },
                 {
                     "label": "Documenten en mededelingen",
-                    "text": "Heeft een uitvoerder documenten of mededelingen? Dan ziet u bij die persoon dezelfde teller als op de teampagina.<br><br>Tik op de teller. Er verschijnt een ballon met <strong>Documenten beheren</strong> of <strong>Mededelingen beheren</strong>.<br><br>U komt vervolgens in de lijst van het team, automatisch gefilterd op die uitvoerder."
+                    "text": "Heeft een uitvoerder documenten of mededelingen, dan ziet u een teller, dezelfde als op de teampagina.<br><br>Beweeg over de teller. Er staat Documenten beheren of Mededelingen beheren.<br><br>Klik op de teller. U komt in de lijst van het team, gefilterd op die uitvoerder."
                 }
             ]
         },
