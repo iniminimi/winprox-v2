@@ -1088,7 +1088,7 @@
             "inactive": "Inactif"
         },
         "include_unplanned": "Proposer aussi les exécutants sans planning",
-        "include_unplanned_hint": "Quand vous cherchez un remplaçant sur le planning, WinProx affiche ici des candidats. Si vous en choisissez un, le bloc d’origine devient une absence et le remplaçant reçoit les mêmes heures. Désactivé : seulement qui a ce jour un service avec « Disponible pour remplacement ». Activé : aussi qui n’a rien de planifié ce jour-là.",
+        "include_unplanned_hint": "Quand vous cherchez un remplaçant sur le planning, WinProx affiche ici d’éventuels candidats. Si vous en choisissez un, le créneau d’origine devient « absence » et le remplaçant reçoit les mêmes heures. Décoché : seulement qui a ce jour un service avec « Disponible pour remplacement ». Coché : aussi qui n’a rien de planifié ce jour-là.",
         "pool": "Vivier de remplacement"
     },
     "holidays": {

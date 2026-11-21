@@ -1963,7 +1963,7 @@
                 },
                 {
                     "label": "Also unplanned",
-                    "text": "At the top of Shift types is <strong>Also suggest workers with no plan</strong> (hover balloon). When you look for a replacement on the roster, WinProx shows candidates: pick one and the original block becomes absence; the replacement gets the same hours. <strong>Off:</strong> only people with a shift that day marked <strong>Available for replacement</strong>. <strong>On:</strong> also people with nothing planned that day."
+                    "text": "At the top of Shift types is <strong>Also suggest workers with no plan</strong> (hover balloon). When you look for a replacement on the roster, WinProx shows possible candidates: pick one and the original time block becomes “absence”; the replacement gets the same hours. <strong>Unchecked:</strong> only people with a shift that day marked <strong>Available for replacement</strong>. <strong>Checked:</strong> also people with nothing planned that day."
                 },
                 {
                     "label": "Available for replacement",

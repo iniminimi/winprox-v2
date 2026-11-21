@@ -1963,7 +1963,7 @@
                 },
                 {
                     "label": "También sin planificación",
-                    "text": "Arriba en Tipos de turno está <strong>Proponer también operarios sin planificación</strong> (globo al pasar el ratón). Cuando buscas un sustituto en el horario, WinProx muestra candidatos: eliges uno y el bloque original pasa a ausencia; el sustituto recibe las mismas horas. <strong>Desactivado:</strong> solo quien ese día tiene un turno con <strong>Disponible para sustitución</strong>. <strong>Activado:</strong> también quien ese día no tiene nada planificado."
+                    "text": "Arriba en Tipos de turno está <strong>Proponer también operarios sin planificación</strong> (globo al pasar el ratón). Cuando buscas un sustituto en el horario, WinProx muestra posibles candidatos: eliges uno y el bloque horario original pasa a «ausencia»; el sustituto recibe las mismas horas. <strong>Desmarcado:</strong> solo quien ese día tiene un turno con <strong>Disponible para sustitución</strong>. <strong>Marcado:</strong> también quien ese día no tiene nada planificado."
                 },
                 {
                     "label": "Disponible para sustitución",

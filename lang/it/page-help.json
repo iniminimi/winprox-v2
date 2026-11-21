@@ -1963,7 +1963,7 @@
                 },
                 {
                     "label": "Anche senza pianificazione",
-                    "text": "In alto in Tipi di turno c’è <strong>Proporre anche esecutori senza pianificazione</strong> (balloon al passaggio). Quando cerchi un sostituto nel turno, WinProx mostra i candidati: scegline uno e il blocco originale diventa assenza; il sostituto riceve le stesse ore. <strong>Spento:</strong> solo chi quel giorno ha un turno con <strong>Disponibile per la sostituzione</strong>. <strong>Acceso:</strong> anche chi quel giorno non ha nulla di pianificato."
+                    "text": "In alto in Tipi di turno c’è <strong>Proporre anche esecutori senza pianificazione</strong> (balloon al passaggio). Quando cerchi un sostituto nel turno, WinProx mostra possibili candidati: scegline uno e il blocco orario originale diventa «assenza»; il sostituto riceve le stesse ore. <strong>Non selezionato:</strong> solo chi quel giorno ha un turno con <strong>Disponibile per la sostituzione</strong>. <strong>Selezionato:</strong> anche chi quel giorno non ha nulla di pianificato."
                 },
                 {
                     "label": "Disponibile per la sostituzione",

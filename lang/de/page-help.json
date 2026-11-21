@@ -1963,7 +1963,7 @@
                 },
                 {
                     "label": "Auch ohne Planung",
-                    "text": "Oben bei Schichttypen steht <strong>Auch Ausführende ohne Planung vorschlagen</strong> (Ballon beim Hover). Wenn Sie im Dienstplan eine Vertretung suchen, zeigt WinProx Kandidaten: wählen Sie eine Person und der ursprüngliche Block wird zur Abwesenheit; die Vertretung erhält dieselben Stunden. <strong>Aus:</strong> nur wer an dem Tag einen Dienst mit <strong>Für Vertretung verfügbar</strong> hat. <strong>An:</strong> auch wer an dem Tag noch nichts geplant hat."
+                    "text": "Oben bei Schichttypen steht <strong>Auch Ausführende ohne Planung vorschlagen</strong> (Ballon beim Hover). Wenn Sie im Dienstplan eine Vertretung suchen, zeigt WinProx mögliche Kandidaten: wählen Sie eine Person und der ursprüngliche Zeitblock wird zu „Abwesenheit“; die Vertretung erhält dieselben Stunden. <strong>Nicht angehakt:</strong> nur wer an dem Tag einen Dienst mit <strong>Für Vertretung verfügbar</strong> hat. <strong>Angehakt:</strong> auch wer an dem Tag noch nichts geplant hat."
                 },
                 {
                     "label": "Für Vertretung verfügbar",

@@ -1971,7 +1971,7 @@
                 },
                 {
                     "label": "Aussi sans planning",
-                    "text": "En haut de Types de service se trouve <strong>Proposer aussi les exécutants sans planning</strong> (ballon au survol). Quand vous cherchez un remplaçant sur le planning, WinProx affiche des candidats : choisissez-en un et le bloc d’origine devient une absence ; le remplaçant reçoit les mêmes heures. <strong>Désactivé :</strong> seulement qui a ce jour un service avec <strong>Disponible pour remplacement</strong>. <strong>Activé :</strong> aussi qui n’a rien de planifié ce jour-là."
+                    "text": "En haut de Types de service se trouve <strong>Proposer aussi les exécutants sans planning</strong> (ballon au survol). Quand vous cherchez un remplaçant sur le planning, WinProx affiche d’éventuels candidats : choisissez-en un et le créneau d’origine devient « absence » ; le remplaçant reçoit les mêmes heures. <strong>Décoché :</strong> seulement qui a ce jour un service avec <strong>Disponible pour remplacement</strong>. <strong>Coché :</strong> aussi qui n’a rien de planifié ce jour-là."
                 },
                 {
                     "label": "Disponible pour remplacement",

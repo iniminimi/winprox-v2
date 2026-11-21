@@ -1088,7 +1088,7 @@
             "inactive": "Inactivo"
         },
         "include_unplanned": "Proponer también operarios sin planificación",
-        "include_unplanned_hint": "Cuando buscas un sustituto en el horario, WinProx muestra aquí candidatos. Si eliges uno, el bloque original pasa a ausencia y el sustituto recibe las mismas horas. Desactivado: solo quien ese día tiene un turno con «Disponible para sustitución». Activado: también quien ese día no tiene nada planificado.",
+        "include_unplanned_hint": "Cuando buscas un sustituto en el horario, WinProx muestra aquí posibles candidatos. Si eliges uno, el bloque horario original pasa a «ausencia» y el sustituto recibe las mismas horas. Desmarcado: solo quien ese día tiene un turno con «Disponible para sustitución». Marcado: también quien ese día no tiene nada planificado.",
         "pool": "Bolsa de sustitución"
     },
     "holidays": {

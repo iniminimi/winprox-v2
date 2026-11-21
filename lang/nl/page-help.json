@@ -1963,7 +1963,7 @@
                 },
                 {
                     "label": "Ook zonder planning",
-                    "text": "Bovenaan Shifttypes staat het vinkje <strong>Ook uitvoerders zonder planning voorstellen</strong> (ballon bij hover). Als u op het uurrooster een vervanger zoekt, toont WinProx kandidaten: kies er één en het oorspronkelijke blok wordt afwezigheid; de vervanger krijgt dezelfde uren. <strong>Uit:</strong> alleen wie die dag een dienst heeft met <strong>Beschikbaar voor vervanging</strong>. <strong>Aan:</strong> ook wie die dag nog niets gepland heeft."
+                    "text": "Bovenaan Shifttypes staat het vinkje <strong>Ook uitvoerders zonder planning voorstellen</strong> (ballon bij hover). Als u op het uurrooster een vervanger zoekt, toont WinProx mogelijke kandidaten: kies er één en het oorspronkelijke uurblok wordt “afwezigheid”; de vervanger krijgt dezelfde uren. <strong>Uitgevinkt:</strong> alleen wie die dag een dienst heeft met <strong>Beschikbaar voor vervanging</strong>. <strong>Aangevinkt:</strong> ook wie die dag nog niets gepland heeft."
                 },
                 {
                     "label": "Beschikbaar voor vervanging",
