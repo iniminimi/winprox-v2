@@ -45,6 +45,7 @@ final class ManualChapters
         'settings',
         'settings.api',
         'subscription',
+        'activity',
     ];
 
     /** @var list<string> */

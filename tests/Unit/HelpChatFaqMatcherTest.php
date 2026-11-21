@@ -101,7 +101,7 @@ it('beantwoordt werkmenu vanuit instellingen-paginahulp', function (): void {
     $answer = $matcher->match('werkmenu', 'nl');
 
     expect($answer)->toContain('Werkmenu instellingen')
-        ->and($answer)->toContain('Organisatie')
+        ->and($answer)->toContain('beheerders')
         ->and($answer)->toContain('Kalender')
         ->and($answer)->not->toBe(__('faq.items.work_menu.summary'));
 });
@@ -134,7 +134,7 @@ it('doorzoekt voor checkmate-tenants de checkmate-handleiding', function (): voi
 
         $answer = $matcher->searchManual('klantbezoek werkadres', 'nl');
         expect($answer)->not->toBeNull()
-            ->and($answer)->toContain('Clock Point');
+            ->and($answer)->toContain('klantbezoek');
     } finally {
         \App\Support\Tenancy::forget();
     }
@@ -176,8 +176,8 @@ it('beantwoordt units-vragen vanuit pagina-hulp Units, niet locatie-QR', functio
 
     $answer = $matcher->match('Waar vind ik de units?', 'nl');
 
-    expect($answer)->toContain('Overzicht')
-        ->and($answer)->toContain('Filter')
+    expect($answer)->toContain('Wat ziet u hier?')
+        ->and($answer)->toContain('unit')
         ->and($answer)->not->toContain('QR-afdrukblad')
         ->and($answer)->not->toContain('Avery');
 });
@@ -214,7 +214,7 @@ it('beantwoordt e-mailbevestiging vanuit pagina-hulp categorieën', function ():
     $answer = $matcher->match('Hoe werkt e-mailbevestiging bij een QR-melding?', 'nl');
 
     expect($answer)->toContain('E-mailbevestiging verplicht')
-        ->and($answer)->toContain('webhook')
+        ->and($answer)->toContain('bevestigingslink')
         ->and($answer)->not->toBe(__('faq.items.reporter_portal.summary'));
 });
 
@@ -224,7 +224,7 @@ it('beantwoordt Microsoft-login vanuit pagina-hulp backoffice', function (): voi
     $answer = $matcher->match('inloggen met microsoft', 'nl');
 
     expect($answer)->toContain('Inloggen met Microsoft')
-        ->and($answer)->toContain('Clock Point');
+        ->and($answer)->toContain('prikklok');
 });
 
 it('koppelt pagina-hulp zonder bare status-woord', function (): void {

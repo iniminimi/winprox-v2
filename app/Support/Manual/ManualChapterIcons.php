@@ -43,6 +43,7 @@ final class ManualChapterIcons
         'settings' => 'settings',
         'settings.api' => 'api',
         'subscription' => 'subscription',
+        'activity' => 'document',
         'statuses.admin-portal' => 'dashboard',
         'statuses.internet-portal' => 'map-pin',
         'portal.worker.qr' => 'map-pin',

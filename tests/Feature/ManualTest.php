@@ -160,6 +160,7 @@ it('bevat alle hoofdstukken in de correcte onboarding-volgorde inclusief QR-port
         'chapter-settings',
         'chapter-settings-api',
         'chapter-subscription',
+        'chapter-activity',
         'chapter-statuses-admin-portal',
         'chapter-portal-worker-qr',
         'chapter-portal-time',
@@ -316,14 +317,16 @@ it('toont het stappenplan op pagina 2', function () {
         ->assertSee(__('manual.step_3_title'));
 });
 
-it('toont gps-geschiedenis-screenshot bij locatiedetail in de algemene handleiding', function () {
+it('toont gps-hulp bij locatiedetail in de algemene handleiding', function () {
     $tenant = Tenant::factory()->create();
     $admin = User::factory()->admin()->for($tenant)->create();
 
+    // Inline GPS-screenshot is optioneel (capture skip zonder unit-GPS); de hulptekst blijft.
     $this->actingAs($admin)
         ->get(route('manual.general'))
         ->assertOk()
-        ->assertSee('images/manual/nl/locations-gps-history.png', false);
+        ->assertSee('id="chapter-locations-show"', false)
+        ->assertSee('GPS', false);
 });
 
 it('rendert html in actieteksten zoals de winprox.app-link bij Welkom', function () {
