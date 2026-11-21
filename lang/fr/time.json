@@ -77,7 +77,8 @@
                 "leave": "un congé",
                 "recup": "une récupération",
                 "sick": "une maladie",
-                "holiday": "un jour férié"
+                "holiday": "un jour férié",
+                "other": "une autre absence"
             }
         },
         "view_modes": "Affichage",
@@ -499,7 +500,8 @@
             "absence_leave": "Pointé un jour de congé",
             "absence_recup": "Pointé un jour de récup",
             "absence_sick": "Pointé un jour de maladie",
-            "absence_holiday": "Pointé un jour férié"
+            "absence_holiday": "Pointé un jour férié",
+            "absence_other": "Pointé pendant une autre absence"
         },
         "schedule": {
             "tile": "Mon planning",
@@ -544,9 +546,9 @@
             "open_apps": "Vous pourrez ensuite aussi retrouver WinProx parmi vos applications."
         },
         "absence": {
-            "tile": "Congé / Récup",
-            "tile_sub": "Demander ou retirer",
-            "title": "Congé / Récup",
+            "tile": "Congé / Absence",
+            "tile_sub": "Demander congé, récup ou autre absence",
+            "title": "Congé / Absence",
             "subtitle": "Consultez vos demandes et retirez-les. La gestion approuve ou refuse.",
             "period": "Période",
             "period_hint": "Touchez la date de début, puis la date de fin. Les jours passés ne sont pas sélectionnables.",
@@ -565,12 +567,14 @@
             "form_title": "Nouvelle demande",
             "half_day": "Demi-journée",
             "cancel_confirm": "Retirer cette demande ?",
-            "cancel_approved_confirm": "Retirer ce congé ou cette récup approuvé ? Le planning rétablit les services précédents.",
+            "cancel_approved_confirm": "Retirer cette absence approuvée ? Le planning rétablit les services précédents.",
             "submitted": "Demande envoyée.",
             "cancelled": "Demande retirée.",
             "decision": "Décision",
             "leave_remaining": "Congé restant :year : :days sur :total",
-            "recup_balance": "Heures supplémentaires (récup) : :hours"
+            "recup_balance": "Heures supplémentaires (récup) : :hours",
+            "shift_type": "Type",
+            "shift_type_placeholder": "Choisissez un type"
         },
         "now": {
             "status_out": "Pas pointé",
@@ -652,7 +656,13 @@
             "team_task_title": "Nouvelle tâche pour votre équipe",
             "team_task_body": "Une nouvelle tâche attend votre équipe.",
             "recurring_tasks_title": "Tâches du jour",
-            "recurring_tasks_body": ":count nouvelles tâches vous attendent."
+            "recurring_tasks_body": ":count nouvelles tâches vous attendent.",
+            "absence_other_title": "Absence approuvée",
+            "absence_other_body": "Votre absence du :date a été approuvée.",
+            "absence_other_body_range": "Votre absence du :from au :to a été approuvée.",
+            "absence_other_rejected_title": "Absence refusée",
+            "absence_other_rejected_body": "Votre absence du :date a été refusée.",
+            "absence_other_rejected_body_range": "Votre absence du :from au :to a été refusée."
         }
     },
     "ciao": {
@@ -887,10 +897,11 @@
                 "work": "Travail",
                 "leave": "Congé",
                 "recup": "Récup",
-                "sick": "Maladie"
+                "sick": "Maladie",
+                "other": "Autre"
             },
             "replacement_pool": "Disponible pour remplacement",
-            "replacement_pool_hint": "Les exécutants avec ce type de service ce jour-là apparaissent dans la liste des remplaçants. La maladie ne compte jamais."
+            "replacement_pool_hint": "Les collaborateurs avec ce type ce jour-là apparaissent dans la liste de remplacement. Maladie et Autre ne comptent jamais."
         },
         "empty_workers": "Aucun exécutant pour cette période. Ajoutez-les sous Personnes → Équipes.",
         "pick_filter": "Choisissez une équipe ou un site pour charger le planning.",
@@ -933,7 +944,8 @@
                 "recup": "Récup",
                 "sick": "Maladie",
                 "attention": "Signal",
-                "attention_hint": "Blocs incomplets ou un pointage ouvert"
+                "attention_hint": "Blocs incomplets ou un pointage ouvert",
+                "other": "Autre"
             },
             "incomplete_blocks": "{1} :count bloc incomplet|[2,*] :count blocs incomplets",
             "open_registration": "{1} Pointage ouvert depuis le :datetime — entrée pointée sans sortie|[2,*] :count pointages ouverts, le plus ancien depuis le :datetime — entrées pointées sans sortie"
@@ -1063,7 +1075,8 @@
         "pending_absence": {
             "leave": "Congé demandé (en attente d’approbation)",
             "recup": "Récupération demandée (en attente d’approbation)",
-            "open_hint": "Cliquez sur le marquage en bas à gauche pour ouvrir la demande."
+            "open_hint": "Cliquez sur le marquage en bas à gauche pour ouvrir la demande.",
+            "other": "Autre absence demandée (en attente)"
         }
     },
     "shift_types": {
@@ -1143,18 +1156,19 @@
         },
         "errors": {
             "worker_tenant_mismatch": "Cet exécutant n’appartient pas à cette organisation.",
-            "invalid_kind": "Choisissez congé ou récup.",
+            "invalid_kind": "Choisissez congé, récup ou autre.",
             "range_inverted": "La date de fin doit être le jour même ou après la date de début.",
             "range_too_long": "31 jours maximum par demande.",
             "date_in_past": "La date de début ne peut pas être dans le passé.",
-            "no_shift_type": "Aucun type de shift actif pour ce type d’absence.",
+            "no_shift_type": "Aucun type actif pour cette catégorie.",
             "overlapping_pending": "Une demande ouverte chevauche déjà ces jours.",
             "not_pending": "Cette demande a déjà été traitée.",
             "not_owner": "Vous ne pouvez retirer que votre propre demande.",
             "reason_required": "Un motif est obligatoire (au moins 3 caractères).",
             "already_started": "Ce congé ou cette récup a déjà commencé. Le retrait n’est plus possible.",
             "not_cancellable": "Vous ne pouvez pas retirer cette demande.",
-            "half_day_range": "Une demi-journée ne peut concerner qu'une seule date."
+            "half_day_range": "Une demi-journée ne peut concerner qu'une seule date.",
+            "shift_type_required": "Choisissez un type."
         }
     },
     "leave_balance": {

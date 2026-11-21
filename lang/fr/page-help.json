@@ -20,7 +20,7 @@
                 },
                 {
                     "label": "Vue d'ensemble",
-                    "text": "Sous Tableau de bord vous voyez le nombre de signalements ouverts, de tâches ouvertes et (avec Time) qui est présent maintenant. Cliquez sur une carte pour accéder à l’écran correspondant. Les demandes de congé ou de récup ouvertes apparaissent comme carte extra vers Time → Demandes, avec le nombre par type (1 Congé, 1 Récup, ou les deux)."
+                    "text": "Sous Tableau de bord vous voyez le nombre de signalements ouverts, de tâches ouvertes et (avec Time) qui est présent maintenant. Cliquez sur une carte pour accéder à l’écran correspondant. Les demandes de congé ou de récup ouvertes apparaissent comme carte extra vers Time → Demandes, avec le nombre par type (p. ex. 1 Congé, 1 Récup, 1 Autre)."
                 },
                 {
                     "label": "Mettre sur le bureau",
@@ -1167,8 +1167,8 @@
                     "text": "Après connexion, tu vois la tuile Mon planning. Elle n’affiche que tes services et absences <strong>publiés</strong> du <strong>mois</strong> choisi, en tableau (jours vides omis). Un badge signifie un planning tout juste publié ; l’ouvrir l’efface. Un triangle rouge à côté des heures signifie : pas pointé (dès le début prévu) ou au moins 15 minutes de retard."
                 },
                 {
-                    "label": "Congé / Récup",
-                    "text": "Après connexion, vous voyez la tuile Congé / Récup. Demandez un congé ou une récup (du–au, note facultative, 31 jours max., pas dans le passé). Les demandes ouvertes qui se chevauchent sont refusées. Vos demandes sont sous le formulaire : vous pouvez retirer une demande ouverte ou approuvée (pas encore commencée) ; un congé approuvé rétablit le planning. La gestion décide sous Time → Demandes ; refuser exige un motif, approuver non. Aucun e-mail n’est envoyé. En haut figurent le congé restant de cette année sur le droit, et de l’année suivante s’il y a un droit, plus les heures supplémentaires. Cette année jusqu’à aujourd’hui : temps travaillé moins le planning publié, moins la récup déjà au planning ou en demande ouverte. Pas de salaire."
+                    "label": "Congé / Absence",
+                    "text": "Après connexion, vous voyez la tuile Congé / Absence. Demandez un congé, une récup ou (si configuré) un type Autre (du–au ; pour Autre d’abord le type ; note facultative, 31 jours max., pas dans le passé). Les demandes ouvertes qui se chevauchent sont refusées. Vos demandes sont sous le formulaire : vous pouvez retirer une demande ouverte ou approuvée (pas encore commencée) ; un congé approuvé rétablit le planning. La gestion décide sous Time → Demandes ; refuser exige un motif, approuver non. Aucun e-mail n’est envoyé. En haut figurent le congé restant de cette année sur le droit, et de l’année suivante s’il y a un droit, plus les heures supplémentaires. Cette année jusqu’à aujourd’hui : temps travaillé moins le planning publié, moins la récup déjà au planning ou en demande ouverte. Pas de salaire."
                 }
             ]
         },
@@ -1946,7 +1946,7 @@
                 },
                 {
                     "label": "Absence",
-                    "text": "Les types de shift peuvent être <strong>congé</strong>, <strong>récup</strong> ou <strong>maladie</strong>. Ces codes remplissent toute la journée, ne comptent pas d’heures et ne peuvent pas coexister avec du travail ce jour-là. Les exécutants peuvent demander un congé ou une récup sur Clock Point (tuile Congé / Récup) ; la gestion décide sous Time → Demandes."
+                    "text": "Les types de shift peuvent être <strong>congé</strong>, <strong>récup</strong>, <strong>maladie</strong> ou <strong>autre</strong>. Ces codes remplissent toute la journée, ne comptent pas d’heures et ne peuvent pas coexister avec du travail ce jour-là. Les exécutants peuvent demander un congé, une récup ou un type Autre sur Clock Point (tuile Congé / Absence) ; la gestion décide sous Time → Demandes. Autre ne compte pas dans le solde de congés."
                 },
                 {
                     "label": "Planifié vs pointé",
@@ -1954,7 +1954,7 @@
                 },
                 {
                     "label": "Colonnes d’heures à droite",
-                    "text": "À droite de la grille, chaque exécutant a des colonnes de chiffres à titre vertical : <strong>Norme</strong> (norme de contrat), <strong>Écart</strong> (planifié moins la norme, signé), <strong>Planifié</strong>, <strong>Travaillé</strong> et par absence <strong>Congé</strong>, <strong>Récup</strong> et <strong>Maladie</strong> (jours plus heures restantes). <strong>Signal</strong> montre un nombre et/ou un point d’exclamation pour des blocs incomplets ou un pointage ouvert. Norme et écart restent vides tant que la norme n’est pas fiable. La norme hebdomadaire (38 h par défaut) se règle sur l’exécutant ; la norme mensuelle suit le régime de travail — sans régime, lun–ven comptent selon la norme hebdomadaire et les jours fériés suivent le régime des fériés — sans accord, le standard belge. C’est un décompte, pas un jugement sur la durée du travail."
+                    "text": "À droite de la grille, chaque exécutant a des colonnes de chiffres à titre vertical : <strong>Norme</strong> (norme de contrat), <strong>Écart</strong> (planifié moins la norme, signé), <strong>Planifié</strong>, <strong>Travaillé</strong> et par absence <strong>Congé</strong>, <strong>Récup</strong>, <strong>Maladie</strong> et <strong>Autre</strong> (jours plus heures restantes). <strong>Signal</strong> montre un nombre et/ou un point d’exclamation pour des blocs incomplets ou un pointage ouvert. Norme et écart restent vides tant que la norme n’est pas fiable. La norme hebdomadaire (38 h par défaut) se règle sur l’exécutant ; la norme mensuelle suit le régime de travail — sans régime, lun–ven comptent selon la norme hebdomadaire et les jours fériés suivent le régime des fériés — sans accord, le standard belge. C’est un décompte, pas un jugement sur la durée du travail."
                 }
             ]
         },
@@ -1963,7 +1963,7 @@
             "actions": [
                 {
                     "label": "Type",
-                    "text": "Choisissez <strong>Travail</strong> (début, fin, pause) ou une absence. Les absences n’ont pas d’heures."
+                    "text": "Choisissez <strong>Travail</strong> (début, fin, pause) ou une absence (congé, récup, maladie ou autre). Les absences n’ont pas d’heures. Pour Autre vous choisissez code et nom (p. ex. KV — petit congé) ; cela ne compte pas dans le solde de congés."
                 },
                 {
                     "label": "Ajouter",
@@ -2018,7 +2018,7 @@
             "actions": [
                 {
                     "label": "Liste",
-                    "text": "Time → <strong>Demandes</strong> affiche les demandes de congé et de récup de Clock Point. Pas d’e-mail, pas de boîte de réception chez l’exécutant. Un badge vert dans la navigation compte les demandes ouvertes. Le tableau de bord montre le nombre par type (1 Congé, 1 Récup, ou les deux). Après décision, vous voyez qui a approuvé ou refusé."
+                    "text": "Time → <strong>Demandes</strong> affiche les demandes de congé, de récup et Autre de Clock Point. Pas d’e-mail, pas de boîte de réception chez l’exécutant. Un badge vert dans la navigation compte les demandes ouvertes. Le tableau de bord montre le nombre par type (p. ex. 1 Congé, 1 Récup, 1 Autre). Après décision, vous voyez qui a approuvé ou refusé."
                 },
                 {
                     "label": "Traiter",

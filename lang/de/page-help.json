@@ -20,7 +20,7 @@
                 },
                 {
                     "label": "Übersicht",
-                    "text": "Unter Dashboard sehen Sie Anzahlen offener Meldungen, offener Aufgaben und (mit Time) wer gerade anwesend ist. Klicken Sie auf eine Karte, um zum zugehörigen Bildschirm zu gelangen. Offene Urlaubs- oder Ausgleichsanträge erscheinen als extra Karte zu Time → Anträge, mit der Anzahl je Art (1 Urlaub, 1 Ausgleich, oder beides)."
+                    "text": "Unter Dashboard sehen Sie Anzahlen offener Meldungen, offener Aufgaben und (mit Time) wer gerade anwesend ist. Klicken Sie auf eine Karte, um zum zugehörigen Bildschirm zu gelangen. Offene Urlaubs- oder Ausgleichsanträge erscheinen als extra Karte zu Time → Anträge, mit der Anzahl je Art (z. B. 1 Urlaub, 1 Ausgleich, 1 Sonstige)."
                 },
                 {
                     "label": "Auf den Desktop legen",
@@ -1155,8 +1155,8 @@
                     "text": "Nach der Anmeldung siehst du die Kachel Mein Dienstplan. Dort stehen nur deine <strong>veröffentlichten</strong> Dienste und Abwesenheiten des gewählten <strong>Monats</strong> als Tabelle (leere Tage werden übersprungen). Ein Badge bedeutet einen neu veröffentlichten Plan; Öffnen entfernt das Badge. Ein rotes Dreieck neben den Stunden bedeutet: nicht eingestempelt (ab geplanter Startzeit) oder mindestens 15 Minuten zu spät."
                 },
                 {
-                    "label": "Urlaub / Ausgleich",
-                    "text": "Nach der Anmeldung sehen Sie die Kachel Urlaub / Ausgleich. Beantragen Sie Urlaub oder Ausgleich (von–bis, optionaler Hinweis, max. 31 Tage, nicht in der Vergangenheit). Überlappende offene Anträge werden abgelehnt. Ihre Anträge stehen unter dem Formular: offen oder genehmigt (noch nicht begonnen) können Sie zurückziehen; bei Genehmigung kommt der Dienstplan zurück. Die Verwaltung entscheidet unter Time → Anträge; Ablehnen braucht eine Begründung, Genehmigen nicht. Es geht keine E-Mail. Oben steht der Resturlaub dieses Jahres vom Anspruch, und des nächsten Jahres wenn dort ein Anspruch steht, plus die Überstunden. Dieses Jahr bis heute: gearbeitete Zeit minus veröffentlichter Dienstplan, minus Ausgleich im Plan oder als offener Antrag. Kein Lohn."
+                    "label": "Urlaub / Abwesenheit",
+                    "text": "Nach der Anmeldung sehen Sie die Kachel Urlaub / Abwesenheit. Beantragen Sie Urlaub, Ausgleich oder (falls eingerichtet) einen Typ unter Sonstige (von–bis; bei Sonstige zuerst den Typ; optionaler Hinweis, max. 31 Tage, nicht in der Vergangenheit). Überlappende offene Anträge werden abgelehnt. Unter dem Formular stehen Ihre eigenen Anträge: offen oder genehmigt (noch nicht begonnen) können Sie zurückziehen; bei Genehmigung kommt der Dienstplan zurück. Die Verwaltung entscheidet unter Time → Anträge; Ablehnen braucht einen Grund, Genehmigen nicht. Keine E-Mail. Oben sehen Sie den restlichen Urlaub dieses Jahres vom Recht, und vom nächsten Jahr wenn ein Recht gesetzt ist, plus Überstunden. Dieses Jahr bis heute: gearbeitete Zeit minus veröffentlichter Plan, minus Ausgleich auf dem Plan oder als offener Antrag. Kein Lohn."
                 },
                 {
                     "label": "Neue Dokumente und Mitteilungen",
@@ -1938,7 +1938,7 @@
                 },
                 {
                     "label": "Abwesenheit",
-                    "text": "Schichttypen können <strong>Urlaub</strong>, <strong>Ausgleich</strong> oder <strong>Krank</strong> sein. Diese Codes füllen den ganzen Tag, zählen keine Stunden und dürfen nicht mit Arbeit am selben Tag stehen. Ausführende können Urlaub oder Ausgleich am Clock Point beantragen (Kachel Urlaub / Ausgleich); die Verwaltung entscheidet unter Time → Anträge."
+                    "text": "Schichttypen können <strong>Urlaub</strong>, <strong>Ausgleich</strong>, <strong>Krank</strong> oder <strong>Sonstige</strong> sein. Diese Codes füllen den ganzen Tag, zählen keine Stunden und dürfen nicht zusammen mit Arbeit an diesem Tag stehen. Ausführende können Urlaub, Ausgleich oder einen Typ unter Sonstige über Clock Point beantragen (Kachel Urlaub / Abwesenheit); die Verwaltung entscheidet unter Time → Anträge. Sonstige zählt nicht zum Urlaubssaldo."
                 },
                 {
                     "label": "Geplant vs. gestempelt",
@@ -1955,7 +1955,7 @@
             "actions": [
                 {
                     "label": "Art",
-                    "text": "Wählen Sie <strong>Arbeit</strong> (Start, Ende, Pause) oder eine Abwesenheit. Abwesenheiten haben keine Stunden."
+                    "text": "Wählen Sie <strong>Arbeit</strong> (Start, Ende, Pause) oder eine Abwesenheit (Urlaub, Ausgleich, Krank oder Sonstige). Abwesenheiten haben keine Stunden. Bei Sonstige wählen Sie Code und Name selbst (z. B. KV — Kurzurlaub); das zählt nicht zum Urlaubssaldo."
                 },
                 {
                     "label": "Hinzufügen",
@@ -2010,7 +2010,7 @@
             "actions": [
                 {
                     "label": "Liste",
-                    "text": "Time → <strong>Anträge</strong> zeigt Urlaubs- und Ausgleichsanträge vom Clock Point. Keine E-Mail, kein Posteingang beim Ausführenden. Ein grünes Badge in der Navigation zählt offene Anträge. Das Dashboard zeigt die Anzahl je Art (1 Urlaub, 1 Ausgleich oder beides). Nach der Entscheidung sehen Sie, wer genehmigt oder abgelehnt hat."
+                    "text": "Time → <strong>Anträge</strong> zeigt Urlaubs-, Ausgleichs- und Sonstige-Anträge vom Clock Point. Keine E-Mail, kein Posteingang beim Ausführenden. Ein grünes Badge in der Navigation zählt offene Anträge. Das Dashboard zeigt die Anzahl je Art (1 Urlaub, 1 Ausgleich oder beides). Nach der Entscheidung sehen Sie, wer genehmigt oder abgelehnt hat."
                 },
                 {
                     "label": "Prüfen",

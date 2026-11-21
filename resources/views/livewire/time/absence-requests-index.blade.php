@@ -42,7 +42,11 @@
                     <div class="wp-grow wp-stack-tight">
                         <p class="wp-issue-card-title">
                             <strong>{{ $request->worker?->displayName() }}</strong>
-                            · {{ __('time.schedule.types.kinds.'.$request->kind->value) }}
+                            · @if ($request->kind === \App\Enums\ShiftTypeKind::Other && $request->shiftType)
+                                {{ $request->shiftType->code }} — {{ $request->shiftType->label }}
+                            @else
+                                {{ __('time.schedule.types.kinds.'.$request->kind->value) }}
+                            @endif
                         </p>
                         <p class="wp-issue-card-meta">
                             {{ $request->date_from->format('d-m-Y') }}
@@ -94,7 +98,11 @@
                 </div>
                 <p>
                     <strong>{{ $deciding->worker?->displayName() }}</strong>
-                    · {{ __('time.schedule.types.kinds.'.$deciding->kind->value) }}
+                    · @if ($deciding->kind === \App\Enums\ShiftTypeKind::Other && $deciding->shiftType)
+                        {{ $deciding->shiftType->code }} — {{ $deciding->shiftType->label }}
+                    @else
+                        {{ __('time.schedule.types.kinds.'.$deciding->kind->value) }}
+                    @endif
                     · {{ $deciding->date_from->format('d-m-Y') }}
                     @if ($deciding->date_from->toDateString() !== $deciding->date_to->toDateString())
                         – {{ $deciding->date_to->format('d-m-Y') }}

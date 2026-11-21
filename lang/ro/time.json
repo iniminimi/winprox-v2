@@ -5,7 +5,8 @@
                 "leave": "concediu",
                 "recup": "recuperare",
                 "sick": "concediu medical",
-                "holiday": "o sărbătoare legală"
+                "holiday": "o sărbătoare legală",
+                "other": "o altă absență"
             }
         }
     },
@@ -22,7 +23,8 @@
                 "work": "Lucru",
                 "leave": "Concediu",
                 "recup": "Recuperare",
-                "sick": "Medical"
+                "sick": "Medical",
+                "other": "Altele"
             }
         }
     },
@@ -35,7 +37,7 @@
         },
         "errors": {
             "worker_tenant_mismatch": "Acest lucrător nu aparține acestei organizații.",
-            "invalid_kind": "Alegeți concediu sau recuperare.",
+            "invalid_kind": "Alegeți concediu, recuperare sau altceva.",
             "range_inverted": "Data de sfârșit trebuie să fie în ziua de început sau după.",
             "range_too_long": "Maximum 31 de zile pe cerere.",
             "date_in_past": "Data de început nu poate fi în trecut.",
@@ -46,7 +48,8 @@
             "reason_required": "Este necesar un motiv (cel puțin 3 caractere).",
             "already_started": "Acest concediu sau această recuperare a început deja. Nu îl mai puteți retrage.",
             "not_cancellable": "Nu puteți retrage această cerere.",
-            "half_day_range": "O jumătate de zi poate fi doar o singură dată."
+            "half_day_range": "O jumătate de zi poate fi doar o singură dată.",
+            "shift_type_required": "Alegeți un tip."
         }
     },
     "portal": {
@@ -122,7 +125,8 @@
             "absence_leave": "Pontat într-o zi de concediu",
             "absence_recup": "Pontat într-o zi de recuperare",
             "absence_sick": "Pontat într-o zi de concediu medical",
-            "absence_holiday": "Pontat într-o sărbătoare legală"
+            "absence_holiday": "Pontat într-o sărbătoare legală",
+            "absence_other": "Pontaj în timpul altei absențe"
         },
         "schedule": {
             "tile": "Orarul meu",
@@ -188,12 +192,14 @@
             "form_title": "Cerere nouă",
             "half_day": "Jumătate de zi",
             "cancel_confirm": "Retrageți această cerere?",
-            "cancel_approved_confirm": "Retrageți acest concediu sau această recuperare aprobată? Orarul reface turele anterioare.",
+            "cancel_approved_confirm": "Retrageți această absență aprobată? Orarul reface turele anterioare.",
             "submitted": "Cerere trimisă.",
             "cancelled": "Cerere retrasă.",
             "decision": "Decizie",
             "leave_remaining": "Concediu rămas :year: :days din :total",
-            "recup_balance": "Ore suplimentare (timp liber): :hours"
+            "recup_balance": "Ore suplimentare (timp liber): :hours",
+            "shift_type": "Tip",
+            "shift_type_placeholder": "Alegeți un tip"
         },
         "now": {
             "status_out": "Nepontat",
@@ -275,7 +281,13 @@
             "team_task_title": "Sarcină nouă pentru echipa dvs.",
             "team_task_body": "O sarcină nouă așteaptă echipa dvs.",
             "recurring_tasks_title": "Sarcinile de azi",
-            "recurring_tasks_body": ":count sarcini noi vă așteaptă."
+            "recurring_tasks_body": ":count sarcini noi vă așteaptă.",
+            "absence_other_title": "Absență aprobată",
+            "absence_other_body": "Absența dvs. din :date a fost aprobată.",
+            "absence_other_body_range": "Absența dvs. din :from până la :to a fost aprobată.",
+            "absence_other_rejected_title": "Absență respinsă",
+            "absence_other_rejected_body": "Absența dvs. din :date a fost respinsă.",
+            "absence_other_rejected_body_range": "Absența dvs. din :from până la :to a fost respinsă."
         }
     }
 }

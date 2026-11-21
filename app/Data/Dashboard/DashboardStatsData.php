@@ -17,6 +17,7 @@ final class DashboardStatsData
         public int $pendingAbsenceRequests,
         public int $pendingAbsenceLeave,
         public int $pendingAbsenceRecup,
+        public int $pendingAbsenceOther = 0,
         public int $workerFollowUp,
         public int $iotAlarms,
         public int $staffingShortfalls = 0,
@@ -93,6 +94,9 @@ final class DashboardStatsData
         }
         if ($this->pendingAbsenceRecup > 0) {
             $parts[] = __('dashboard.kpi.pending_absence_recup', ['count' => $this->pendingAbsenceRecup]);
+        }
+        if ($this->pendingAbsenceOther > 0) {
+            $parts[] = __('dashboard.kpi.pending_absence_other', ['count' => $this->pendingAbsenceOther]);
         }
 
         return implode(' - ', $parts);

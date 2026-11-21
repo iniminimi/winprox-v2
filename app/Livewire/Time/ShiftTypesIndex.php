@@ -137,7 +137,7 @@ class ShiftTypesIndex extends Component
                         color: $color,
                         isActive: $type->is_active,
                         kind: $kind,
-                        isReplacementPool: $kind === ShiftTypeKind::Sick ? false : $this->typeReplacementPool,
+                        isReplacementPool: $kind->allowsReplacementPool() ? $this->typeReplacementPool : false,
                     ),
                     auth()->id(),
                     $type->id,
@@ -155,7 +155,7 @@ class ShiftTypesIndex extends Component
                         color: $color,
                         isActive: true,
                         kind: $kind,
-                        isReplacementPool: $kind === ShiftTypeKind::Sick ? false : $this->typeReplacementPool,
+                        isReplacementPool: $kind->allowsReplacementPool() ? $this->typeReplacementPool : false,
                     ),
                     auth()->id(),
                 );

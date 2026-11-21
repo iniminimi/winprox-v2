@@ -62,7 +62,12 @@ class CollectAbsenceClockInAttentionAction
             ->whereIn('worker_id', $workerIds)
             ->whereIn('work_date', $workDates)
             ->when($plannedStatus instanceof PlannedShiftStatus, fn ($query) => $query->where('status', $plannedStatus))
-            ->whereIn('kind', [ShiftTypeKind::Leave, ShiftTypeKind::Recup, ShiftTypeKind::Sick])
+            ->whereIn('kind', [
+                ShiftTypeKind::Leave,
+                ShiftTypeKind::Recup,
+                ShiftTypeKind::Sick,
+                ShiftTypeKind::Other,
+            ])
             ->get()
             ->groupBy(fn (PlannedShift $row) => $row->worker_id.'|'.$row->work_date->toDateString());
 
@@ -116,6 +121,7 @@ class CollectAbsenceClockInAttentionAction
                 ShiftTypeKind::Sick => 0,
                 ShiftTypeKind::Leave => 1,
                 ShiftTypeKind::Recup => 2,
+                ShiftTypeKind::Other => 3,
                 default => 9,
             };
             if ($rank >= $bestRank) {
@@ -126,6 +132,7 @@ class CollectAbsenceClockInAttentionAction
                 ShiftTypeKind::Sick => 'sick',
                 ShiftTypeKind::Leave => 'leave',
                 ShiftTypeKind::Recup => 'recup',
+                ShiftTypeKind::Other => 'other',
                 default => null,
             };
         }

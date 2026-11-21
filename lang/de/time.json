@@ -77,7 +77,8 @@
                 "leave": "Urlaub",
                 "recup": "Zeitausgleich",
                 "sick": "Krankheit",
-                "holiday": "einen Feiertag"
+                "holiday": "einen Feiertag",
+                "other": "eine sonstige Abwesenheit"
             }
         },
         "view_modes": "Ansicht",
@@ -499,7 +500,8 @@
             "absence_leave": "An einem Urlaubstag eingestempelt",
             "absence_recup": "An einem Ausgleichstag eingestempelt",
             "absence_sick": "An einem Kranktag eingestempelt",
-            "absence_holiday": "An einem Feiertag eingestempelt"
+            "absence_holiday": "An einem Feiertag eingestempelt",
+            "absence_other": "Eingestempelt während sonstiger Abwesenheit"
         },
         "schedule": {
             "tile": "Mein Dienstplan",
@@ -544,9 +546,9 @@
             "open_apps": "Danach finden Sie WinProx auch unter Ihren Apps."
         },
         "absence": {
-            "tile": "Urlaub / Ausgleich",
-            "tile_sub": "Beantragen oder zurückziehen",
-            "title": "Urlaub / Ausgleich",
+            "tile": "Urlaub / Abwesenheit",
+            "tile_sub": "Urlaub, Ausgleich oder sonstige Abwesenheit beantragen",
+            "title": "Urlaub / Abwesenheit",
             "subtitle": "Sehen Sie Ihre Anträge und ziehen Sie sie zurück. Die Verwaltung genehmigt oder lehnt ab.",
             "period": "Zeitraum",
             "period_hint": "Tippen Sie das Startdatum, danach das Enddatum. Vergangene Tage sind nicht wählbar.",
@@ -565,12 +567,14 @@
             "form_title": "Neuer Antrag",
             "half_day": "Halber Tag",
             "cancel_confirm": "Diesen Antrag zurückziehen?",
-            "cancel_approved_confirm": "Diesen genehmigten Urlaub oder Ausgleich zurückziehen? Der Dienstplan stellt die früheren Schichten wieder her.",
+            "cancel_approved_confirm": "Diese genehmigte Abwesenheit zurückziehen? Der Dienstplan stellt die früheren Schichten wieder her.",
             "submitted": "Antrag gesendet.",
             "cancelled": "Antrag zurückgezogen.",
             "decision": "Entscheidung",
             "leave_remaining": "Resturlaub :year: :days von :total",
-            "recup_balance": "Überstunden (Ausgleich): :hours"
+            "recup_balance": "Überstunden (Ausgleich): :hours",
+            "shift_type": "Typ",
+            "shift_type_placeholder": "Typ wählen"
         },
         "now": {
             "status_out": "Nicht eingestempelt",
@@ -652,7 +656,13 @@
             "team_task_title": "Neue Aufgabe für Ihr Team",
             "team_task_body": "Eine neue Aufgabe wartet auf Ihr Team.",
             "recurring_tasks_title": "Aufgaben für heute",
-            "recurring_tasks_body": ":count neue Aufgaben warten auf Sie."
+            "recurring_tasks_body": ":count neue Aufgaben warten auf Sie.",
+            "absence_other_title": "Abwesenheit genehmigt",
+            "absence_other_body": "Ihre Abwesenheit am :date wurde genehmigt.",
+            "absence_other_body_range": "Ihre Abwesenheit vom :from bis :to wurde genehmigt.",
+            "absence_other_rejected_title": "Abwesenheit abgelehnt",
+            "absence_other_rejected_body": "Ihre Abwesenheit am :date wurde abgelehnt.",
+            "absence_other_rejected_body_range": "Ihre Abwesenheit vom :from bis :to wurde abgelehnt."
         }
     },
     "ciao": {
@@ -887,10 +897,11 @@
                 "work": "Arbeit",
                 "leave": "Urlaub",
                 "recup": "Ausgleich",
-                "sick": "Krank"
+                "sick": "Krank",
+                "other": "Sonstige"
             },
             "replacement_pool": "Für Vertretung verfügbar",
-            "replacement_pool_hint": "Ausführende mit diesem Schichttyp an dem Tag erscheinen in der Vertretungsliste. Krankheit zählt nie."
+            "replacement_pool_hint": "Mitarbeitende mit diesem Schichttyp an dem Tag erscheinen in der Ersatzliste. Krank und Sonstige zählen nie."
         },
         "empty_workers": "Keine Ausführenden in diesem Zeitraum. Legen Sie sie unter Personen → Teams an.",
         "pick_filter": "Wählen Sie ein Team oder einen Standort, um den Dienstplan zu laden.",
@@ -933,7 +944,8 @@
                 "recup": "Ausgleich",
                 "sick": "Krank",
                 "attention": "Hinweis",
-                "attention_hint": "Unvollständige Blöcke oder eine offene Zeiterfassung"
+                "attention_hint": "Unvollständige Blöcke oder eine offene Zeiterfassung",
+                "other": "Sonst."
             },
             "incomplete_blocks": "{1} :count Block unvollständig|[2,*] :count Blöcke unvollständig",
             "open_registration": "{1} Offene Stempelung seit :datetime — eingestempelt, nicht ausgestempelt|[2,*] :count offene Stempelungen, älteste seit :datetime — eingestempelt, nicht ausgestempelt"
@@ -1063,7 +1075,8 @@
         "pending_absence": {
             "leave": "Urlaub beantragt (wartet auf Freigabe)",
             "recup": "Ausgleich beantragt (wartet auf Freigabe)",
-            "open_hint": "Klicken Sie unten links auf die Markierung, um den Antrag zu öffnen."
+            "open_hint": "Klicken Sie unten links auf die Markierung, um den Antrag zu öffnen.",
+            "other": "Sonstige Abwesenheit beantragt (wartet auf Freigabe)"
         }
     },
     "shift_types": {
@@ -1143,18 +1156,19 @@
         },
         "errors": {
             "worker_tenant_mismatch": "Diese Person gehört nicht zu dieser Organisation.",
-            "invalid_kind": "Wählen Sie Urlaub oder Ausgleich.",
+            "invalid_kind": "Wählen Sie Urlaub, Ausgleich oder Sonstige.",
             "range_inverted": "Das Enddatum muss am oder nach dem Startdatum liegen.",
             "range_too_long": "Höchstens 31 Tage pro Antrag.",
             "date_in_past": "Das Startdatum darf nicht in der Vergangenheit liegen.",
-            "no_shift_type": "Es gibt keinen aktiven Schichttyp für diese Abwesenheit.",
+            "no_shift_type": "Kein aktiver Typ für diese Art.",
             "overlapping_pending": "Ein offener Antrag überschneidet bereits diese Tage.",
             "not_pending": "Dieser Antrag ist bereits bearbeitet.",
             "not_owner": "Sie können nur Ihren eigenen Antrag zurückziehen.",
             "reason_required": "Eine Begründung ist Pflicht (mindestens 3 Zeichen).",
             "already_started": "Dieser Urlaub oder Ausgleich hat bereits begonnen. Zurückziehen ist nicht mehr möglich.",
             "not_cancellable": "Diesen Antrag können Sie nicht zurückziehen.",
-            "half_day_range": "Ein halber Tag kann nur ein einzelnes Datum sein."
+            "half_day_range": "Ein halber Tag kann nur ein einzelnes Datum sein.",
+            "shift_type_required": "Typ wählen."
         }
     },
     "leave_balance": {

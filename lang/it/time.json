@@ -77,7 +77,8 @@
                 "leave": "ferie",
                 "recup": "recupero",
                 "sick": "malattia",
-                "holiday": "un giorno festivo"
+                "holiday": "un giorno festivo",
+                "other": "un’altra assenza"
             }
         },
         "view_modes": "Vista",
@@ -499,7 +500,8 @@
             "absence_leave": "Timbrato in un giorno di ferie",
             "absence_recup": "Timbrato in un giorno di recupero",
             "absence_sick": "Timbrato in un giorno di malattia",
-            "absence_holiday": "Timbrato in un giorno festivo"
+            "absence_holiday": "Timbrato in un giorno festivo",
+            "absence_other": "Entrata durante un’altra assenza"
         },
         "schedule": {
             "tile": "Il mio turno",
@@ -544,9 +546,9 @@
             "open_apps": "Da quel momento trovi WinProx anche tra le tue app."
         },
         "absence": {
-            "tile": "Ferie / Recupero",
-            "tile_sub": "Richiedi o ritira",
-            "title": "Ferie / Recupero",
+            "tile": "Ferie / Assenza",
+            "tile_sub": "Richiedi ferie, recupero o altra assenza",
+            "title": "Ferie / Assenza",
             "subtitle": "Vedi le tue richieste e ritirale. La gestione approva o rifiuta.",
             "period": "Periodo",
             "period_hint": "Toccate la data di inizio, poi quella di fine. I giorni passati non sono selezionabili.",
@@ -565,12 +567,14 @@
             "form_title": "Nuova richiesta",
             "half_day": "Mezza giornata",
             "cancel_confirm": "Ritirare questa richiesta?",
-            "cancel_approved_confirm": "Ritirare queste ferie o recupero approvati? Il turno ripristina i servizi precedenti.",
+            "cancel_approved_confirm": "Ritirare questa assenza approvata? Il turno ripristina i servizi precedenti.",
             "submitted": "Richiesta inviata.",
             "cancelled": "Richiesta ritirata.",
             "decision": "Decisione",
             "leave_remaining": "Ferie residue :year: :days di :total",
-            "recup_balance": "Straordinari (recupero): :hours"
+            "recup_balance": "Straordinari (recupero): :hours",
+            "shift_type": "Tipo",
+            "shift_type_placeholder": "Scegli un tipo"
         },
         "now": {
             "status_out": "Non timbrato",
@@ -652,7 +656,13 @@
             "team_task_title": "Nuova attività per il suo team",
             "team_task_body": "Una nuova attività aspetta il suo team.",
             "recurring_tasks_title": "Attività di oggi",
-            "recurring_tasks_body": ":count nuove attività la stanno aspettando."
+            "recurring_tasks_body": ":count nuove attività la stanno aspettando.",
+            "absence_other_title": "Assenza approvata",
+            "absence_other_body": "La tua assenza del :date è stata approvata.",
+            "absence_other_body_range": "La tua assenza dal :from al :to è stata approvata.",
+            "absence_other_rejected_title": "Assenza rifiutata",
+            "absence_other_rejected_body": "La tua assenza del :date è stata rifiutata.",
+            "absence_other_rejected_body_range": "La tua assenza dal :from al :to è stata rifiutata."
         }
     },
     "ciao": {
@@ -887,10 +897,11 @@
                 "work": "Lavoro",
                 "leave": "Ferie",
                 "recup": "Recupero",
-                "sick": "Malattia"
+                "sick": "Malattia",
+                "other": "Altro"
             },
             "replacement_pool": "Disponibile per la sostituzione",
-            "replacement_pool_hint": "Gli esecutori con questo tipo di turno quel giorno compaiono nell'elenco dei sostituti. La malattia non conta mai."
+            "replacement_pool_hint": "I lavoratori con questo tipo quel giorno compaiono nell’elenco sostituti. Malattia e Altro non contano mai."
         },
         "empty_workers": "Nessun esecutore in questo periodo. Aggiungili in Persone → Team.",
         "pick_filter": "Scegli un team o una sede per caricare il turnario.",
@@ -933,7 +944,8 @@
                 "recup": "Recupero",
                 "sick": "Malattia",
                 "attention": "Segnale",
-                "attention_hint": "Blocchi incompleti o una registrazione aperta"
+                "attention_hint": "Blocchi incompleti o una registrazione aperta",
+                "other": "Altro"
             },
             "incomplete_blocks": "{1} :count blocco incompleto|[2,*] :count blocchi incompleti",
             "open_registration": "{1} Timbratura aperta dal :datetime — entrata timbrata senza uscita|[2,*] :count timbrature aperte, la più vecchia dal :datetime — entrate timbrate senza uscita"
@@ -1063,7 +1075,8 @@
         "pending_absence": {
             "leave": "Ferie richieste (in attesa di approvazione)",
             "recup": "Recupero richiesto (in attesa di approvazione)",
-            "open_hint": "Fate clic sul contrassegno in basso a sinistra per aprire la richiesta."
+            "open_hint": "Fate clic sul contrassegno in basso a sinistra per aprire la richiesta.",
+            "other": "Altra assenza richiesta (in attesa)"
         }
     },
     "shift_types": {
@@ -1143,18 +1156,19 @@
         },
         "errors": {
             "worker_tenant_mismatch": "Questo esecutore non appartiene a questa organizzazione.",
-            "invalid_kind": "Scegli ferie o recupero.",
+            "invalid_kind": "Scegli ferie, recupero o altro.",
             "range_inverted": "La data di fine deve essere lo stesso giorno o successiva alla data di inizio.",
             "range_too_long": "Massimo 31 giorni per richiesta.",
             "date_in_past": "La data di inizio non può essere nel passato.",
-            "no_shift_type": "Non c’è un tipo di turno attivo per questa assenza.",
+            "no_shift_type": "Nessun tipo attivo per questa categoria.",
             "overlapping_pending": "C’è già una richiesta aperta che si sovrappone a questi giorni.",
             "not_pending": "Questa richiesta è già stata gestita.",
             "not_owner": "Puoi ritirare solo la tua richiesta.",
             "reason_required": "Il motivo è obbligatorio (almeno 3 caratteri).",
             "already_started": "Queste ferie o questo recupero sono già iniziati. Non si può più ritirare.",
             "not_cancellable": "Non puoi ritirare questa richiesta.",
-            "half_day_range": "Una mezza giornata può riguardare una sola data."
+            "half_day_range": "Una mezza giornata può riguardare una sola data.",
+            "shift_type_required": "Scegli un tipo."
         }
     },
     "leave_balance": {

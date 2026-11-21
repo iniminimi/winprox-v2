@@ -112,6 +112,7 @@ class ResolveWorkerPortalRosterAlertsAction
                     'sick' => PortalRosterClockAlert::AbsenceSick,
                     'leave' => PortalRosterClockAlert::AbsenceLeave,
                     'recup' => PortalRosterClockAlert::AbsenceRecup,
+                    'other' => PortalRosterClockAlert::AbsenceOther,
                     default => PortalRosterClockAlert::AbsenceHoliday,
                 };
             }
@@ -137,7 +138,7 @@ class ResolveWorkerPortalRosterAlertsAction
             return [];
         }
 
-        $rank = ['sick' => 0, 'leave' => 1, 'recup' => 2, 'holiday' => 3];
+        $rank = ['sick' => 0, 'leave' => 1, 'recup' => 2, 'other' => 3, 'holiday' => 4];
         $byDate = [];
         foreach ($this->absenceClockIns->handle($tenantId, $punches, PlannedShiftStatus::Published) as $item) {
             $date = $item->shift?->clock_in_at?->toDateString();

@@ -357,6 +357,7 @@ class ListRosterWeekAction
             pendingAbsenceMessages: [
                 ShiftTypeKind::Leave->value => __('time.schedule.pending_absence.leave'),
                 ShiftTypeKind::Recup->value => __('time.schedule.pending_absence.recup'),
+                ShiftTypeKind::Other->value => __('time.schedule.pending_absence.other'),
             ],
         );
     }
@@ -551,7 +552,7 @@ class ListRosterWeekAction
         }
         $columns[] = $this->hoursColumn('planned', 46);
         $columns[] = $this->hoursColumn('worked', 46);
-        foreach ([ShiftTypeKind::Leave, ShiftTypeKind::Recup, ShiftTypeKind::Sick] as $kind) {
+        foreach ([ShiftTypeKind::Leave, ShiftTypeKind::Recup, ShiftTypeKind::Sick, ShiftTypeKind::Other] as $kind) {
             $columns[] = [
                 'key' => $kind->value,
                 'title' => __('time.schedule.week_hours.headers.'.$kind->value),
@@ -602,7 +603,7 @@ class ListRosterWeekAction
         }
         $figures[] = $this->figure($this->formatMinutes($plannedMinutes));
         $figures[] = $this->figure($this->formatMinutes($workedMinutes));
-        foreach ([ShiftTypeKind::Leave, ShiftTypeKind::Recup, ShiftTypeKind::Sick] as $kind) {
+        foreach ([ShiftTypeKind::Leave, ShiftTypeKind::Recup, ShiftTypeKind::Sick, ShiftTypeKind::Other] as $kind) {
             $figures[] = $this->figure($this->absenceFigure($absences[$kind->value] ?? null));
         }
         $figures[] = $this->attentionFigure($incompleteBlocks, $openRegistrations, $oldestOpenClockInAt);

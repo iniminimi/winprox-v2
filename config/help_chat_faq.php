@@ -100,12 +100,12 @@ return [
         ],
         [
             'patterns' => [
-                'verlof', 'recup', 'toil',
-                'leave request', 'time off in lieu',
-                'urlaub', 'ausgleich',
-                'congé', 'récup', 'demandes de congé',
-                'permiso', 'compensación',
-                'ferie', 'recupero',
+                'verlof', 'recup', 'toil', 'andere', 'klein verlet',
+                'leave request', 'time off in lieu', 'other absence',
+                'urlaub', 'ausgleich', 'sonstige',
+                'congé', 'récup', 'demandes de congé', 'autre',
+                'permiso', 'compensación', 'otro',
+                'ferie', 'recupero', 'altro',
             ],
             'body_key' => 'faq.items.time_absence.summary',
         ],

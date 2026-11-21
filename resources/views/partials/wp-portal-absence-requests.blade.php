@@ -17,12 +17,27 @@
         <h2 class="wp-section-title">{{ __('time.portal.absence.form_title') }}</h2>
         <div class="wp-field">
             <label class="wp-label" for="absence-kind">{{ __('time.portal.absence.kind') }}</label>
-            <select id="absence-kind" class="wp-select" wire:model="absenceKind">
+            <select id="absence-kind" class="wp-select" wire:model.live="absenceKind">
                 <option value="{{ \App\Enums\ShiftTypeKind::Leave->value }}">{{ __('time.schedule.types.kinds.leave') }}</option>
                 <option value="{{ \App\Enums\ShiftTypeKind::Recup->value }}">{{ __('time.schedule.types.kinds.recup') }}</option>
+                @if ($otherAbsenceTypes->isNotEmpty())
+                    <option value="{{ \App\Enums\ShiftTypeKind::Other->value }}">{{ __('time.schedule.types.kinds.other') }}</option>
+                @endif
             </select>
             @error('absenceKind') <p class="wp-error">{{ $message }}</p> @enderror
         </div>
+        @if ($absenceKind === \App\Enums\ShiftTypeKind::Other->value)
+            <div class="wp-field">
+                <label class="wp-label" for="absence-shift-type">{{ __('time.portal.absence.shift_type') }}</label>
+                <select id="absence-shift-type" class="wp-select" wire:model="absenceShiftTypeId">
+                    <option value="">{{ __('time.portal.absence.shift_type_placeholder') }}</option>
+                    @foreach ($otherAbsenceTypes as $type)
+                        <option value="{{ $type->id }}">{{ $type->code }} — {{ $type->label }}</option>
+                    @endforeach
+                </select>
+                @error('absenceShiftTypeId') <p class="wp-error">{{ $message }}</p> @enderror
+            </div>
+        @endif
         <div class="wp-field">
             <span class="wp-label" id="absence-period-label">{{ __('time.portal.absence.period') }}</span>
             <x-wp-date-range-picker
@@ -67,7 +82,13 @@
                 @foreach ($absenceRequests as $request)
                     <div class="wp-card wp-portal-hours-day wp-stack-tight" wire:key="absence-{{ $request->id }}">
                         <div class="wp-cluster">
-                            <strong>{{ __('time.schedule.types.kinds.'.$request->kind->value) }}</strong>
+                            <strong>
+                                @if ($request->kind === \App\Enums\ShiftTypeKind::Other && $request->shiftType)
+                                    {{ $request->shiftType->code }} — {{ $request->shiftType->label }}
+                                @else
+                                    {{ __('time.schedule.types.kinds.'.$request->kind->value) }}
+                                @endif
+                            </strong>
                             <span @class([
                                 'wp-pill',
                                 'wp-pill--progress' => $request->status === \App\Enums\AbsenceRequestStatus::Pending,

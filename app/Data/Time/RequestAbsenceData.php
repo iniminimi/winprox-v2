@@ -12,5 +12,7 @@ final class RequestAbsenceData
         public string $dateTo,
         public ?string $description = null,
         public bool $halfDay = false,
+        /** Required for kind=other: concrete ShiftType id. Leave/recup use first active type. */
+        public ?int $shiftTypeId = null,
     ) {}
 }

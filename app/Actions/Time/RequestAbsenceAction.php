@@ -51,7 +51,7 @@ class RequestAbsenceAction
             throw new InvalidArgumentException('range_too_long');
         }
 
-        $shiftType = $this->firstActiveType((int) $tenant->id, $data->kind);
+        $shiftType = $this->resolveShiftType((int) $tenant->id, $data);
         if ($shiftType === null) {
             throw new InvalidArgumentException('no_shift_type');
         }
@@ -90,6 +90,24 @@ class RequestAbsenceAction
         );
 
         return $request->fresh(['worker', 'shiftType']) ?? $request;
+    }
+
+    private function resolveShiftType(int $tenantId, RequestAbsenceData $data): ?ShiftType
+    {
+        if ($data->kind === ShiftTypeKind::Other) {
+            if ($data->shiftTypeId === null) {
+                return null;
+            }
+
+            return ShiftType::query()
+                ->where('tenant_id', $tenantId)
+                ->whereKey($data->shiftTypeId)
+                ->where('kind', ShiftTypeKind::Other)
+                ->where('is_active', true)
+                ->first();
+        }
+
+        return $this->firstActiveType($tenantId, $data->kind);
     }
 
     private function parseDate(string $value): ?CarbonImmutable

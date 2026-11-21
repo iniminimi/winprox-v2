@@ -11,5 +11,6 @@ enum PortalRosterClockAlert: string
     case AbsenceLeave = 'absence_leave';
     case AbsenceRecup = 'absence_recup';
     case AbsenceSick = 'absence_sick';
+    case AbsenceOther = 'absence_other';
     case AbsenceHoliday = 'absence_holiday';
 }

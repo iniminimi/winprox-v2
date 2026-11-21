@@ -20,7 +20,7 @@
                 },
                 {
                     "label": "Overview",
-                    "text": "Under Dashboard you see counts of open issues, open tasks and (with Time) who is present now. Click a card to go to the related screen. Open leave or TOIL requests appear as an extra card to Time → Requests, with the count per kind (1 Leave, 1 TOIL, or both)."
+                    "text": "Under Dashboard you see counts of open issues, open tasks and (with Time) who is present now. Click a card to go to the related screen. Open leave, TOIL or Other requests appear as an extra card to Time → Requests, with the count per kind (e.g. 1 Leave, 1 TOIL, 1 Other)."
                 },
                 {
                     "label": "Add to desktop",
@@ -1159,8 +1159,8 @@
                     "text": "After signing in you see the My roster tile. It shows only your <strong>published</strong> shifts and absences for the chosen <strong>month</strong>, as a table (empty days are skipped). A badge means a newly published roster; opening it clears the badge. A red triangle next to the hours means not clocked in (from the planned start) or at least 15 minutes late."
                 },
                 {
-                    "label": "Leave / TOIL",
-                    "text": "After sign-in you see the Leave / TOIL tile. Request leave or time off in lieu (from–to, optional note, max. 31 days, not in the past). Overlapping open requests are refused. Your own requests sit below the form: you can withdraw an open or approved request that has not started; approved leave restores the roster. Staff decide under Time → Requests; reject needs a reason, approve does not. No email is sent. At the top you see leave left this year of the entitlement, and next year when an entitlement is set, plus overtime. This year up to today: time worked minus the published roster, minus time off already on the roster or in an open request. Not pay."
+                    "label": "Leave / Absence",
+                    "text": "After sign-in you see the Leave / Absence tile. Request leave, TOIL or (if set up) a type under Other (from–to; for Other first pick the type; optional note, max. 31 days, not in the past). Overlapping open requests are refused. Your own requests sit below the form: you can withdraw an open or approved request that has not started; approved leave restores the roster. Staff decide under Time → Requests; reject needs a reason, approve does not. No email is sent. At the top you see leave left this year of the entitlement, and next year when an entitlement is set, plus overtime. This year up to today: time worked minus the published roster, minus time off already on the roster or in an open request. Not pay."
                 }
             ]
         },
@@ -1938,7 +1938,7 @@
                 },
                 {
                     "label": "Absence",
-                    "text": "Shift types can be <strong>leave</strong>, <strong>time off in lieu</strong> or <strong>sick</strong>. Those codes fill the whole day, count no hours, and cannot sit with work that day. Workers can request leave or TOIL from Clock Point (Leave / TOIL tile); staff decide under Time → Requests."
+                    "text": "Shift types can be <strong>leave</strong>, <strong>time off in lieu</strong>, <strong>sick</strong> or <strong>other</strong>. Those codes fill the whole day, count no hours, and cannot sit with work that day. Workers can request leave, TOIL or a type under Other from Clock Point (Leave / Absence tile); staff decide under Time → Requests. Other does not count toward leave balance."
                 },
                 {
                     "label": "Planned vs clocked",
@@ -1955,7 +1955,7 @@
             "actions": [
                 {
                     "label": "Type",
-                    "text": "Choose <strong>Work</strong> (start, end, break) or an absence. Absences have no hours. Existing roster cells do not change if you later edit a type."
+                    "text": "Choose <strong>Work</strong> (start, end, break) or an absence (leave, TOIL, sick or other). Absences have no hours. For Other you set code and name yourself (e.g. KV — short leave); those do not count toward leave balance. Existing roster cells do not change if you later edit a type."
                 },
                 {
                     "label": "Add",
@@ -2010,7 +2010,7 @@
             "actions": [
                 {
                     "label": "List",
-                    "text": "Time → <strong>Requests</strong> shows leave and TOIL requests from Clock Point. No email, no inbox for the worker. A green badge in the navigation counts open requests. The dashboard shows the count per kind (1 Leave, 1 TOIL, or both). After a decision you see who approved or rejected it."
+                    "text": "Time → <strong>Requests</strong> shows leave, TOIL and Other requests from Clock Point. No email, no inbox for the worker. A green badge in the navigation counts open requests. The dashboard shows the count per kind (e.g. 1 Leave, 1 TOIL, 1 Other). After a decision you see who approved or rejected it."
                 },
                 {
                     "label": "Review",

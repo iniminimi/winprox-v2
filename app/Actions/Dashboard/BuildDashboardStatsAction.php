@@ -37,6 +37,7 @@ class BuildDashboardStatsAction
         $timeAttention = 0;
         $pendingAbsenceLeave = 0;
         $pendingAbsenceRecup = 0;
+        $pendingAbsenceOther = 0;
         $staffingShortfalls = 0;
 
         $timeRosterEnabled = $hasTimeModule && TimeModuleAccess::rosterEnabledForTenantId($tenantId);
@@ -54,6 +55,7 @@ class BuildDashboardStatsAction
                 $pendingByKind = $this->countPendingAbsence->byKind($tenantId);
                 $pendingAbsenceLeave = $pendingByKind['leave'];
                 $pendingAbsenceRecup = $pendingByKind['recup'];
+                $pendingAbsenceOther = $pendingByKind['other'];
 
                 $weekStart = now()->startOfWeek();
                 $staffingShortfalls = $this->staffingShortfalls->handle(
@@ -91,9 +93,10 @@ class BuildDashboardStatsAction
                 ->pendingReview()
                 ->count(),
             timeAttention: $timeAttention,
-            pendingAbsenceRequests: $pendingAbsenceLeave + $pendingAbsenceRecup,
+            pendingAbsenceRequests: $pendingAbsenceLeave + $pendingAbsenceRecup + $pendingAbsenceOther,
             pendingAbsenceLeave: $pendingAbsenceLeave,
             pendingAbsenceRecup: $pendingAbsenceRecup,
+            pendingAbsenceOther: $pendingAbsenceOther,
             workerFollowUp: $this->countWorkerFollowUp->handle($tenantId),
             iotAlarms: $iotAlarms,
             staffingShortfalls: $staffingShortfalls,

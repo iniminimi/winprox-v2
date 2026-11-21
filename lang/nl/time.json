@@ -77,7 +77,8 @@
                 "leave": "verlof",
                 "recup": "recup",
                 "sick": "ziekte",
-                "holiday": "een feestdag"
+                "holiday": "een feestdag",
+                "other": "een andere afwezigheid"
             }
         },
         "view_modes": "Weergave",
@@ -499,7 +500,8 @@
             "absence_leave": "Ingeklokt op een verlofdag",
             "absence_recup": "Ingeklokt op een recupdag",
             "absence_sick": "Ingeklokt op een ziektedag",
-            "absence_holiday": "Ingeklokt op een feestdag"
+            "absence_holiday": "Ingeklokt op een feestdag",
+            "absence_other": "Ingeklokt tijdens een andere afwezigheid"
         },
         "schedule": {
             "tile": "Mijn rooster",
@@ -544,9 +546,9 @@
             "open_apps": "WinProx kan je vanaf dan ook terugvinden tussen je APP's."
         },
         "absence": {
-            "tile": "Verlof / Recup",
-            "tile_sub": "Aanvragen of intrekken",
-            "title": "Verlof / Recup",
+            "tile": "Verlof / Afwezigheid",
+            "tile_sub": "Verlof, recup of andere afwezigheid aanvragen",
+            "title": "Verlof / Afwezigheid",
             "subtitle": "Bekijk je aanvragen en trek ze in. Beheer keurt goed of weigert.",
             "period": "Periode",
             "period_hint": "Tik de begindatum, daarna de einddatum. Dagen in het verleden zijn niet kiesbaar.",
@@ -565,12 +567,14 @@
             "form_title": "Nieuwe aanvraag",
             "half_day": "Halve dag",
             "cancel_confirm": "Deze aanvraag intrekken?",
-            "cancel_approved_confirm": "Dit goedgekeurde verlof of recup intrekken? Het uurrooster zet de eerdere diensten terug.",
+            "cancel_approved_confirm": "Deze goedgekeurde afwezigheid intrekken? Het uurrooster zet de eerdere diensten terug.",
             "submitted": "Aanvraag verstuurd.",
             "cancelled": "Aanvraag ingetrokken.",
             "decision": "Beslissing",
             "leave_remaining": "Resterend verlof :year : :days van :total",
-            "recup_balance": "Overuren (recup): :hours"
+            "recup_balance": "Overuren (recup): :hours",
+            "shift_type": "Type",
+            "shift_type_placeholder": "Kies een type"
         },
         "now": {
             "status_out": "Niet ingeklokt",
@@ -652,7 +656,13 @@
             "team_task_title": "Nieuwe taak voor je team",
             "team_task_body": "Er staat een nieuwe taak voor je team klaar.",
             "recurring_tasks_title": "Taken voor vandaag",
-            "recurring_tasks_body": "Er staan :count nieuwe taken voor je klaar."
+            "recurring_tasks_body": "Er staan :count nieuwe taken voor je klaar.",
+            "absence_other_title": "Afwezigheid goedgekeurd",
+            "absence_other_body": "Je afwezigheid op :date is goedgekeurd.",
+            "absence_other_body_range": "Je afwezigheid van :from tot :to is goedgekeurd.",
+            "absence_other_rejected_title": "Afwezigheid geweigerd",
+            "absence_other_rejected_body": "Je afwezigheid op :date is geweigerd.",
+            "absence_other_rejected_body_range": "Je afwezigheid van :from tot :to is geweigerd."
         }
     },
     "ciao": {
@@ -887,10 +897,11 @@
                 "work": "Werk",
                 "leave": "Verlof",
                 "recup": "Recup",
-                "sick": "Ziek"
+                "sick": "Ziek",
+                "other": "Andere"
             },
             "replacement_pool": "Beschikbaar voor vervanging",
-            "replacement_pool_hint": "Uitvoerders met dit shifttype op die dag verschijnen in de vervangerslijst. Ziekte telt nooit mee."
+            "replacement_pool_hint": "Uitvoerders met dit shifttype op die dag verschijnen in de vervangerslijst. Ziekte en Andere tellen nooit mee."
         },
         "empty_workers": "Geen uitvoerders in deze periode. Voeg uitvoerders toe onder Personen → Teams.",
         "pick_filter": "Kies een team of locatie om het rooster te laden.",
@@ -933,7 +944,8 @@
                 "recup": "Recup",
                 "sick": "Ziek",
                 "attention": "Sein",
-                "attention_hint": "Onvolledige blokken of een open registratie"
+                "attention_hint": "Onvolledige blokken of een open registratie",
+                "other": "Andere"
             },
             "incomplete_blocks": "{1} :count blok onvolledig|[2,*] :count blokken onvolledig",
             "open_registration": "{1} Open klokregistratie sinds :datetime — ingeclockt zonder uit te klokken|[2,*] :count open klokregistraties, oudste sinds :datetime — ingeclockt zonder uit te klokken"
@@ -1063,7 +1075,8 @@
         "pending_absence": {
             "leave": "Verlof aangevraagd (wacht op goedkeuring)",
             "recup": "Recup aangevraagd (wacht op goedkeuring)",
-            "open_hint": "Klik op de markering linksonder om de aanvraag te openen."
+            "open_hint": "Klik op de markering linksonder om de aanvraag te openen.",
+            "other": "Andere aangevraagd (wacht op goedkeuring)"
         }
     },
     "shift_types": {
@@ -1143,18 +1156,19 @@
         },
         "errors": {
             "worker_tenant_mismatch": "Deze uitvoerder hoort niet bij deze organisatie.",
-            "invalid_kind": "Kies verlof of recup.",
+            "invalid_kind": "Kies verlof, recup of andere.",
             "range_inverted": "De einddatum moet op of na de startdatum liggen.",
             "range_too_long": "Maximaal 31 dagen per aanvraag.",
             "date_in_past": "De startdatum mag niet in het verleden liggen.",
-            "no_shift_type": "Er is geen actief shifttype voor dit soort afwezigheid.",
+            "no_shift_type": "Geen actief type gevonden voor deze soort.",
             "overlapping_pending": "Er loopt al een aanvraag die deze dagen overlapt.",
             "not_pending": "Deze aanvraag is al afgehandeld.",
             "not_owner": "Je kunt alleen je eigen aanvraag intrekken.",
             "reason_required": "Een reden is verplicht (minstens 3 tekens).",
             "already_started": "Dit verlof of recup is al begonnen. Intrekken kan niet meer.",
             "not_cancellable": "Deze aanvraag kun je niet intrekken.",
-            "half_day_range": "Een halve dag kan alleen op één datum."
+            "half_day_range": "Een halve dag kan alleen op één datum.",
+            "shift_type_required": "Kies een type."
         }
     },
     "leave_balance": {

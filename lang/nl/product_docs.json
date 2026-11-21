@@ -43,7 +43,7 @@
                     "In- en uitklokken, en zien wie er aanwezig is.",
                     "De geregistreerde uren naast het uurrooster leggen.",
                     "Diensten plannen en publiceren.",
-                    "Verlof- en recupaanvragen behandelen.",
+                    "Verlof-, recup- en Andere-aanvragen behandelen.",
                     "Meldingen, taken en inspectierondes beheren.",
                     "Locaties, teams, medewerkers en units beheren.",
                     "De RSZ/CIAO-registratie kan via de instellingen worden geactiveerd. Optionele GPS-werkbezoeken koppelen een bezoek aan een locatie.",
@@ -101,7 +101,7 @@
                 "title": "Clock Point",
                 "body": "Clock Point is de plek waar medewerkers hun werkfuncties openen, in de browser. Na het inklokken kan een welkomstscherm de ronde van de dag als tijdlijn tonen.",
                 "items": [
-                    "In- en uitklokken, het eigen gepubliceerde uurrooster, de eigen uren, verlof of recup aanvragen.",
+                    "In- en uitklokken, het eigen gepubliceerde uurrooster, de eigen uren, verlof, recup of Andere aanvragen.",
                     "Taken uitvoeren, een inspectieronde opvolgen, en een werkbezoek starten wanneer GPS aanstaat.",
                     "Een optioneel klokscherm toont een QR-code die vanzelf verandert. U koppelt het scherm met een eenmalige code en een bevestiging.",
                     "U kiest wanneer het scherm aanstaat, bijvoorbeeld van 06:00 tot 19:00. Daarbuiten kan het uit, of een rustscherm tonen: foto’s, een wijzerklok, een flipklok of een zwart scherm. Het geluid van het scherm zet u per klokscherm aan of uit.",
@@ -118,7 +118,7 @@
                     "U kopieert een week naar maximaal 26 opeenvolgende weken. Dagen die al diensten of afwezigheden hebben, slaat WinProx over. Notities gaan niet mee.",
                     "Niet-opgeslagen wijzigingen vraagt WinProx eerst op te slaan als u de pagina verlaat of van week of maand wisselt.",
                     "Vervanging zoeken: WinProx stelt uitvoerders voor die die dag een shifttype uit de vervangingspool hebben. Het oorspronkelijke blok wordt een afwezigheid en de vervanger krijgt hetzelfde tijdslot.",
-                    "Verlof, recup en ziekte kunnen een hele dag of een deel van de dag zijn. Die blokken tellen niet als gewerkte uren. Het verlofsaldo is het jaarlijks recht dat u per uitvoerder invult, min de verlofdagen op het rooster en de open verlofaanvragen. De soorten diensten stelt u in via Time → Shifttypes. Feestdagen en vervangingsdagen staan onder Time → Feestdagen.",
+                    "Verlof, recup, ziekte en Andere kunnen een hele dag of een deel van de dag zijn. Die blokken tellen niet als gewerkte uren. Het verlofsaldo is het jaarlijks recht dat u per uitvoerder invult, min de verlofdagen op het rooster en de open verlofaanvragen — Andere telt daar niet mee. De soorten diensten stelt u in via Time → Shifttypes (bij Andere eigen code en naam). Feestdagen en vervangingsdagen staan onder Time → Feestdagen.",
                     "Feestdagen en vervangingsdagen hebben een eigen kleur. Een vaste vrije dag is grijs en blijft invulbaar.",
                     "Standaard is de weeknorm 38 uur, aanpasbaar per uitvoerder. Normen en verschillen houden rekening met de werkregeling en de feestdagen. Zonder betrouwbare norm blijft het cijfer leeg. Dat is een telling voor het overzicht, geen oordeel over de arbeidsduur.",
                     "Per locatie stelt u een minimumbezetting in: hoeveel medewerkers per diensttype nodig zijn. WinProx toont waar de geplande bezetting tekortschiet. Een feestdag telt niet mee. Een tekort blokkeert opslaan of publiceren niet.",
@@ -131,8 +131,8 @@
                 ]
             },
             {
-                "title": "Verlof en recup",
-                "body": "Medewerkers vragen verlof of recup via Clock Point. De beheerder beslist in Time → Aanvragen. Deze aanvraag is niet bedoeld om ziekte te melden, en er gaat geen e-mail uit.",
+                "title": "Verlof en afwezigheid",
+                "body": "Medewerkers vragen verlof, recup of (als beheer die heeft aangemaakt) een type onder Andere via Clock Point. De beheerder beslist in Time → Aanvragen. Deze aanvraag is niet bedoeld om ziekte te melden, en er gaat geen e-mail uit. Andere (bv. klein verlet) telt niet mee voor het verlofsaldo.",
                 "items": [
                     "Een aanvraag loopt van een begindatum tot een einddatum, maximaal 31 dagen, en niet in het verleden.",
                     "In het beheer-uurrooster ziet u open aanvragen als markering op de betreffende dagen; via die markering opent u Time → Aanvragen (dienst blijft staan tot goedkeuring).",
@@ -176,7 +176,7 @@
                 "items": [
                     "Uurrooster en aanwezigheid, een nieuwe dagtaak of inspectieronde, locaties en uitvoerders.",
                     "Nieuwe meldingen en open taken. Met Time: wie er nu aanwezig is.",
-                    "Een waarschuwing als iemand inklokt tijdens verlof, recup, een feestdag of ziekte. Openstaande verlof- en recupaanvragen.",
+                    "Een waarschuwing als iemand inklokt tijdens verlof, recup, een feestdag, ziekte of Andere. Openstaande verlof-, recup- en Andere-aanvragen.",
                     "Nieuwe uitvoerders die een teamleader net aanmaakte, tot beheer ze opslaat of deactiveert. Briefings en rapporten. Nieuwe organisaties kiezen hier een startconfiguratie."
                 ]
             },
@@ -538,7 +538,7 @@
         "label": "API & Webhooks",
         "tagline": "Integreer WinProx met je bestaande software via API's en webhooks.",
         "highlight": "WinProx is geen vervanger van bestaande IWMS- of ERP-systemen. Dankzij API's en webhooks werkt WinProx er net mee samen.",
-        "intro": "WinProx is gebouwd zodat andere software dezelfde gegevens, meldingen, taken en unit checks kan gebruiken als WinProx zelf. Beheer en documentatie staan onder Instellingen → API. Desktop Inloggen met Microsoft is geen API-koppeling: andere software gebruikt tokens, niet SSO. Verlof- en recupaanvragen hebben events time.absence.* (geen REST-schrijf-API in deze slice).",
+        "intro": "WinProx is gebouwd zodat andere software dezelfde gegevens, meldingen, taken en unit checks kan gebruiken als WinProx zelf. Beheer en documentatie staan onder Instellingen → API. Desktop Inloggen met Microsoft is geen API-koppeling: andere software gebruikt tokens, niet SSO. Verlof-, recup- en Andere-aanvragen hebben events time.absence.* (geen REST-schrijf-API in deze slice).",
         "footer_left": "WinProx · info@winprox.app · API & Webhooks (Corporate)",
         "footer_right": "Zie ook: Functies en mogelijkheden · Technische fiche",
         "left": [

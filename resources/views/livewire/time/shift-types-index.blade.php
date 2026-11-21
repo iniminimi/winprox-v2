@@ -111,7 +111,7 @@
                     @error('typeBreak') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
                 @endif
-                @if ($typeKind !== \App\Enums\ShiftTypeKind::Sick->value)
+                @if (\App\Enums\ShiftTypeKind::tryFrom($typeKind)?->allowsReplacementPool())
                     <label class="wp-check wp-check--boxed">
                         <input type="checkbox" wire:model="typeReplacementPool">
                         <span>{{ __('time.schedule.types.replacement_pool') }}</span>

@@ -46,7 +46,7 @@ class SaveShiftTypeAction
             'break_minutes' => $breakMinutes,
             'color' => $data->color,
             'is_active' => $data->isActive,
-            'is_replacement_pool' => $data->kind === ShiftTypeKind::Sick ? false : $data->isReplacementPool,
+            'is_replacement_pool' => $data->kind->allowsReplacementPool() ? $data->isReplacementPool : false,
         ];
 
         if ($shiftTypeId !== null) {

@@ -662,3 +662,51 @@ it('weigert het aanvragen-scherm zonder time-module niet dubbel', function () {
         ->and(WebhookEndpoint::AVAILABLE_EVENTS)->toContain('time.absence.approved')
         ->and(WebhookEndpoint::AVAILABLE_EVENTS)->toContain('time.absence.rejected');
 });
+
+it('vraagt Andere afwezigheid aan met gekozen shifttype en zet die op het rooster na goedkeuren', function () {
+    [$tenant, $admin, , $worker] = absenceTenant();
+    $otherType = ShiftType::factory()->create([
+        'tenant_id' => $tenant->id,
+        'code' => 'KV',
+        'label' => 'Klein verlet',
+        'kind' => ShiftTypeKind::Other,
+        'start_time' => null,
+        'end_time' => null,
+        'break_minutes' => 0,
+        'is_active' => true,
+    ]);
+
+    expect(fn () => app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Other, '2026-09-23', '2026-09-23'),
+    ))->toThrow(\InvalidArgumentException::class);
+
+    $request = app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Other, '2026-09-23', '2026-09-23', 'Familie', false, (int) $otherType->id),
+    );
+
+    expect($request->status)->toBe(AbsenceRequestStatus::Pending)
+        ->and($request->kind)->toBe(ShiftTypeKind::Other)
+        ->and((int) $request->shift_type_id)->toBe((int) $otherType->id);
+
+    $decided = app(DecideAbsenceRequestAction::class)->handle(
+        $tenant,
+        $request,
+        new DecideAbsenceRequestData(true, ''),
+        $admin,
+    );
+
+    expect($decided->status)->toBe(AbsenceRequestStatus::Approved);
+
+    $row = PlannedShift::query()
+        ->where('worker_id', $worker->id)
+        ->whereDate('work_date', '2026-09-23')
+        ->first();
+
+    expect($row)->not->toBeNull()
+        ->and($row->kind)->toBe(ShiftTypeKind::Other)
+        ->and((int) $row->shift_type_id)->toBe((int) $otherType->id);
+});

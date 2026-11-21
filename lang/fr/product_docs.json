@@ -43,7 +43,7 @@
                     "Pointer l’entrée et la sortie, et voir qui est présent.",
                     "Mettre les heures enregistrées à côté du planning.",
                     "Planifier les services et les publier.",
-                    "Traiter les demandes de congé et de récupération.",
+                    "Traiter les demandes de congé, de récup et Autre.",
                     "Gérer les signalements, les tâches et les tournées d’inspection.",
                     "Gérer les sites, les équipes, les personnes et les unités.",
                     "L’enregistrement ONSS/CIAO peut être activé dans les paramètres. Les visites GPS facultatives relient une visite à un lieu.",
@@ -101,7 +101,7 @@
                 "title": "Clock Point",
                 "body": "Clock Point est l’endroit où les personnes ouvrent leurs fonctions de travail, dans le navigateur. Après le pointage, un écran d’accueil peut montrer la tournée du jour comme une ligne du temps.",
                 "items": [
-                    "Pointer, voir son planning publié, voir ses heures, demander un congé ou une récupération.",
+                    "Pointer, voir son planning publié, voir ses heures, demander un congé, une récup ou Autre.",
                     "Exécuter des tâches, suivre une tournée d’inspection et démarrer une visite quand le GPS est actif.",
                     "Un écran de pointeuse facultatif affiche un QR qui change tout seul. Vous le reliez avec un code à usage unique et une confirmation.",
                     "Vous choisissez quand l’écran est allumé, par exemple de 06:00 à 19:00. En dehors, il peut rester éteint ou montrer un écran de repos : photos, une horloge à aiguilles, une horloge à palettes ou un écran noir. Le son s’active ou se désactive par écran.",
@@ -118,7 +118,7 @@
                     "Vous copiez une semaine vers 26 semaines d’affilée au maximum. WinProx saute les jours qui ont déjà des services ou des absences. Les notes ne suivent pas.",
                     "WinProx demande d’abord d’enregistrer les changements non sauvés si vous quittez la page ou changez de semaine ou de mois.",
                     "Chercher un remplaçant : WinProx propose les exécutants qui ont ce jour-là un type de service du vivier de remplacement. Le bloc d’origine devient une absence et le remplaçant reçoit le même créneau.",
-                    "Congé, récupération et maladie peuvent couvrir toute la journée ou une partie. Ces blocs ne comptent pas comme heures travaillées. Le solde de congé est le droit annuel que vous saisissez par exécutant, moins les jours de congé au planning et les demandes ouvertes. Vous réglez les types sous Time → Types de service. Jours fériés et jours de remplacement sont sous Time → Jours fériés.",
+                    "Congé, récupération, maladie et Autre peuvent couvrir toute la journée ou une partie. Ces blocs ne comptent pas comme heures travaillées. Le solde de congé est le droit annuel que vous saisissez par exécutant, moins les jours de congé au planning et les demandes ouvertes — Autre n’y compte pas. Vous réglez les types sous Time → Types de service (pour Autre code et nom à vous). Jours fériés et jours de remplacement sont sous Time → Jours fériés.",
                     "Les jours fériés et les jours de remplacement ont leur propre couleur. Un jour de repos fixe est gris et reste remplissable.",
                     "La norme de semaine par défaut est de 38 heures, adaptable par exécutant. Normes et écarts tiennent compte du régime de travail et des jours fériés. Sans norme fiable, le chiffre reste vide. C’est un décompte pour la vue d’ensemble, pas un jugement sur la durée du travail.",
                     "Par site, vous fixez un effectif minimum : combien de personnes par type de service. WinProx montre où l’effectif prévu est insuffisant. Un jour férié ne compte pas. Un manque ne bloque ni l’enregistrement ni la publication.",
@@ -131,8 +131,8 @@
                 ]
             },
             {
-                "title": "Congé et récupération",
-                "body": "Les personnes demandent un congé ou une récupération via Clock Point. Le gestionnaire décide dans Time → Demandes. Cette demande ne sert pas à signaler une maladie, et aucun e-mail n’est envoyé.",
+                "title": "Congé et absence",
+                "body": "Les collaborateurs demandent un congé, une récup ou (si configuré) un type Autre via Clock Point. La gestion décide sous Time → Demandes. Cette demande ne sert pas à signaler une maladie, et aucun e-mail n’est envoyé. Autre ne compte pas dans le solde de congés.",
                 "items": [
                     "Une demande va d’une date de début à une date de fin, 31 jours au maximum, et pas dans le passé.",
                     "Dans le planning d’administration, les demandes ouvertes apparaissent comme un marquage sur les jours concernés ; ce marquage ouvre Time → Demandes (le service reste jusqu’à l’approbation).",
@@ -176,7 +176,7 @@
                 "items": [
                     "Planning et présence, une nouvelle tâche du jour ou tournée d’inspection, sites et exécutants.",
                     "Nouveaux signalements et tâches ouvertes. Avec Time : qui est présent maintenant.",
-                    "Un avertissement si quelqu’un pointe pendant un congé, une récupération, un jour férié ou une maladie. Demandes de congé et de récupération ouvertes.",
+                    "Un avertissement si quelqu’un pointe pendant un congé, une récupération, un jour férié, une maladie ou Autre. Demandes de congé, de récup et Autre ouvertes.",
                     "Nouveaux exécutants qu’un chef d’équipe vient de créer, jusqu’à ce que la gestion les enregistre ou les désactive. Briefings et rapports. Les nouvelles organisations choisissent ici une configuration de départ."
                 ]
             },
@@ -538,7 +538,7 @@
         "label": "API & Webhooks",
         "tagline": "Intégrez WinProx à vos logiciels existants via des API et des webhooks.",
         "highlight": "WinProx ne remplace pas les systèmes IWMS ou ERP existants. Grâce aux API et webhooks, WinProx fonctionne avec eux.",
-        "intro": "WinProx est conçu pour que d’autres logiciels utilisent les mêmes données, signalements, tâches et contrôles d’unité que WinProx. Gestion et docs sont sous Paramètres → API. Se connecter avec Microsoft sur le bureau n’est pas un lien API : les autres logiciels utilisent des jetons, pas le SSO. Les demandes de congé ou récup ont les événements time.absence.* (pas d’API REST d’écriture dans cette slice).",
+        "intro": "WinProx est conçu pour que d’autres logiciels utilisent les mêmes données, signalements, tâches et contrôles d’unité que WinProx. Gestion et docs sont sous Paramètres → API. Se connecter avec Microsoft sur le bureau n’est pas un lien API : les autres logiciels utilisent des jetons, pas le SSO. Les demandes de congé, de récup et Autre ont les événements time.absence.* (pas d’API REST d’écriture dans cette slice).",
         "footer_left": "WinProx · info@winprox.app · API & Webhooks (Corporate)",
         "footer_right": "Voir aussi : Fonctions et possibilités · Fiche technique",
         "left": [

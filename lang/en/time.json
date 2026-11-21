@@ -77,7 +77,8 @@
                 "leave": "leave",
                 "recup": "time off in lieu",
                 "sick": "sick leave",
-                "holiday": "a public holiday"
+                "holiday": "a public holiday",
+                "other": "another absence"
             }
         },
         "view_modes": "View",
@@ -499,7 +500,8 @@
             "absence_leave": "Clocked in on a leave day",
             "absence_recup": "Clocked in on a TOIL day",
             "absence_sick": "Clocked in on a sick day",
-            "absence_holiday": "Clocked in on a public holiday"
+            "absence_holiday": "Clocked in on a public holiday",
+            "absence_other": "Clocked in during another absence"
         },
         "schedule": {
             "tile": "My roster",
@@ -544,9 +546,9 @@
             "open_apps": "From then on you can also find WinProx among your apps."
         },
         "absence": {
-            "tile": "Leave / TOIL",
-            "tile_sub": "Request or withdraw",
-            "title": "Leave / TOIL",
+            "tile": "Leave / Absence",
+            "tile_sub": "Request leave, TOIL or other absence",
+            "title": "Leave / Absence",
             "subtitle": "See your requests and withdraw them. Staff approve or reject.",
             "period": "Period",
             "period_hint": "Tap the start date, then the end date. Past days cannot be selected.",
@@ -565,12 +567,14 @@
             "form_title": "New request",
             "half_day": "Half day",
             "cancel_confirm": "Withdraw this request?",
-            "cancel_approved_confirm": "Withdraw this approved leave or TOIL? The roster restores the previous duties.",
+            "cancel_approved_confirm": "Withdraw this approved absence? The roster restores the previous duties.",
             "submitted": "Request sent.",
             "cancelled": "Request withdrawn.",
             "decision": "Decision",
             "leave_remaining": "Leave left :year: :days of :total",
-            "recup_balance": "Overtime (time off): :hours"
+            "recup_balance": "Overtime (time off): :hours",
+            "shift_type": "Type",
+            "shift_type_placeholder": "Choose a type"
         },
         "now": {
             "status_out": "Not clocked in",
@@ -652,7 +656,13 @@
             "team_task_title": "New task for your team",
             "team_task_body": "A new task is waiting for your team.",
             "recurring_tasks_title": "Tasks for today",
-            "recurring_tasks_body": ":count new tasks are waiting for you."
+            "recurring_tasks_body": ":count new tasks are waiting for you.",
+            "absence_other_title": "Absence approved",
+            "absence_other_body": "Your absence on :date was approved.",
+            "absence_other_body_range": "Your absence from :from to :to was approved.",
+            "absence_other_rejected_title": "Absence rejected",
+            "absence_other_rejected_body": "Your absence on :date was rejected.",
+            "absence_other_rejected_body_range": "Your absence from :from to :to was rejected."
         }
     },
     "ciao": {
@@ -887,10 +897,11 @@
                 "work": "Work",
                 "leave": "Leave",
                 "recup": "Time off in lieu",
-                "sick": "Sick"
+                "sick": "Sick",
+                "other": "Other"
             },
             "replacement_pool": "Available for replacement",
-            "replacement_pool_hint": "Workers with this shift type that day appear in the replacement list. Sickness never counts."
+            "replacement_pool_hint": "Workers with this shift type that day appear in the replacement list. Sick and Other never count."
         },
         "empty_workers": "No workers in this period. Add workers under People → Teams.",
         "pick_filter": "Choose a team or location to load the roster.",
@@ -933,7 +944,8 @@
                 "recup": "Lieu",
                 "sick": "Sick",
                 "attention": "Flag",
-                "attention_hint": "Incomplete blocks or an open time record"
+                "attention_hint": "Incomplete blocks or an open time record",
+                "other": "Other"
             },
             "incomplete_blocks": "{1} :count block incomplete|[2,*] :count blocks incomplete",
             "open_registration": "{1} Open clock-in since :datetime — clocked in, never clocked out|[2,*] :count open clock-ins, oldest since :datetime — clocked in, never clocked out"
@@ -1063,7 +1075,8 @@
         "pending_absence": {
             "leave": "Leave requested (awaiting approval)",
             "recup": "Time off in lieu requested (awaiting approval)",
-            "open_hint": "Click the marker at the bottom left to open the request."
+            "open_hint": "Click the marker at the bottom left to open the request.",
+            "other": "Other absence requested (awaiting approval)"
         }
     },
     "shift_types": {
@@ -1143,18 +1156,19 @@
         },
         "errors": {
             "worker_tenant_mismatch": "This worker does not belong to this organisation.",
-            "invalid_kind": "Choose leave or time off in lieu.",
+            "invalid_kind": "Choose leave, TOIL or other.",
             "range_inverted": "The end date must be on or after the start date.",
             "range_too_long": "Maximum 31 days per request.",
             "date_in_past": "The start date cannot be in the past.",
-            "no_shift_type": "There is no active shift type for this absence kind.",
+            "no_shift_type": "No active type found for this kind.",
             "overlapping_pending": "An open request already overlaps these days.",
             "not_pending": "This request has already been handled.",
             "not_owner": "You can only withdraw your own request.",
             "reason_required": "A reason is required (at least 3 characters).",
             "already_started": "This leave or TOIL has already started. You can no longer withdraw it.",
             "not_cancellable": "You cannot withdraw this request.",
-            "half_day_range": "A half day can only be a single date."
+            "half_day_range": "A half day can only be a single date.",
+            "shift_type_required": "Choose a type."
         }
     },
     "leave_balance": {

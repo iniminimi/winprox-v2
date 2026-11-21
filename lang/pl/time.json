@@ -5,7 +5,8 @@
                 "leave": "urlop",
                 "recup": "odbiór",
                 "sick": "zwolnienie lekarskie",
-                "holiday": "święto"
+                "holiday": "święto",
+                "other": "inną nieobecność"
             }
         }
     },
@@ -22,7 +23,8 @@
                 "work": "Praca",
                 "leave": "Urlop",
                 "recup": "Odbiór",
-                "sick": "Chorobowe"
+                "sick": "Chorobowe",
+                "other": "Inne"
             }
         }
     },
@@ -35,7 +37,7 @@
         },
         "errors": {
             "worker_tenant_mismatch": "Ten pracownik nie należy do tej organizacji.",
-            "invalid_kind": "Proszę wybrać urlop albo odbiór.",
+            "invalid_kind": "Wybierz urlop, odbiór albo inną.",
             "range_inverted": "Data końcowa musi przypadać w dniu początkowym albo później.",
             "range_too_long": "Najwyżej 31 dni na wniosek.",
             "date_in_past": "Data początkowa nie może być w przeszłości.",
@@ -46,7 +48,8 @@
             "reason_required": "Powód jest wymagany (co najmniej 3 znaki).",
             "already_started": "Ten urlop albo ten odbiór już się rozpoczął. Nie można go już wycofać.",
             "not_cancellable": "Tego wniosku nie można wycofać.",
-            "half_day_range": "Pół dnia może obejmować tylko jedną datę."
+            "half_day_range": "Pół dnia może obejmować tylko jedną datę.",
+            "shift_type_required": "Wybierz typ."
         }
     },
     "portal": {
@@ -122,7 +125,8 @@
             "absence_leave": "Wejście w dniu urlopu",
             "absence_recup": "Wejście w dniu odbioru",
             "absence_sick": "Wejście w dniu zwolnienia lekarskiego",
-            "absence_holiday": "Wejście w święto"
+            "absence_holiday": "Wejście w święto",
+            "absence_other": "Wejście podczas innej nieobecności"
         },
         "schedule": {
             "tile": "Mój grafik",
@@ -188,12 +192,14 @@
             "form_title": "Nowy wniosek",
             "half_day": "Pół dnia",
             "cancel_confirm": "Wycofać ten wniosek?",
-            "cancel_approved_confirm": "Wycofać ten zatwierdzony urlop albo odbiór? Grafik przywraca poprzednie zmiany.",
+            "cancel_approved_confirm": "Wycofać tę zatwierdzoną nieobecność? Grafik przywraca poprzednie zmiany.",
             "submitted": "Wniosek wysłany.",
             "cancelled": "Wniosek wycofany.",
             "decision": "Decyzja",
             "leave_remaining": "Pozostały urlop :year: :days z :total",
-            "recup_balance": "Nadgodziny (czas wolny): :hours"
+            "recup_balance": "Nadgodziny (czas wolny): :hours",
+            "shift_type": "Typ",
+            "shift_type_placeholder": "Wybierz typ"
         },
         "now": {
             "status_out": "Bez wejścia",
@@ -275,7 +281,13 @@
             "team_task_title": "Nowe zadanie dla zespołu",
             "team_task_body": "Na Twój zespół czeka nowe zadanie.",
             "recurring_tasks_title": "Zadania na dziś",
-            "recurring_tasks_body": "Czeka na Ciebie nowych zadań: :count."
+            "recurring_tasks_body": "Czeka na Ciebie nowych zadań: :count.",
+            "absence_other_title": "Nieobecność zatwierdzona",
+            "absence_other_body": "Twoja nieobecność w dniu :date została zatwierdzona.",
+            "absence_other_body_range": "Twoja nieobecność od :from do :to została zatwierdzona.",
+            "absence_other_rejected_title": "Nieobecność odrzucona",
+            "absence_other_rejected_body": "Twoja nieobecność w dniu :date została odrzucona.",
+            "absence_other_rejected_body_range": "Twoja nieobecność od :from do :to została odrzucona."
         }
     }
 }

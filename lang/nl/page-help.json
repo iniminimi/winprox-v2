@@ -20,7 +20,7 @@
                 },
                 {
                     "label": "Overzicht",
-                    "text": "Onder Dashboard zie je tellingen van open meldingen, open taken en (met Time) wie er nu aanwezig is. Klik op een kaart om naar het bijhorende scherm te gaan. Open verlof- of recupaanvragen verschijnen als extra kaart naar Time → Aanvragen, met het aantal per soort (1 Verlof, 1 Recup, of beide)."
+                    "text": "Onder Dashboard zie je tellingen van open meldingen, open taken en (met Time) wie er nu aanwezig is. Klik op een kaart om naar het bijhorende scherm te gaan. Open verlof-, recup- of Andere-aanvragen verschijnen als extra kaart naar Time → Aanvragen, met het aantal per soort (bijv. 1 Verlof, 1 Recup, 1 Andere)."
                 },
                 {
                     "label": "Zet op het bureaublad",
@@ -1159,8 +1159,8 @@
                     "text": "Na aanmelden zie je de tegel Mijn rooster. Daar staan alleen jouw <strong>gepubliceerde</strong> diensten en afwezigheden van de gekozen <strong>maand</strong>, als tabel (lege dagen worden overgeslagen). Een groene badge betekent een nieuw gepubliceerd rooster; openen zet de badge weg. Een rood driehoekje naast de uren betekent: niet ingeklokt (vanaf de geplande start) of minstens 15 minuten te laat."
                 },
                 {
-                    "label": "Verlof / Recup",
-                    "text": "Na aanmelden zie je de tegel Verlof / Recup. Vraag verlof of recup aan (van–tot, optionele toelichting, max. 31 dagen, niet in het verleden). Open aanvragen die overlappen worden geweigerd. Onder het formulier staan je eigen aanvragen: open of goedgekeurd (nog niet begonnen) kun je intrekken; bij goedgekeurd komt het uurrooster terug. Beheer beslist onder Time → Aanvragen; weigeren vraagt een reden, goedkeuren niet. Er gaat geen e-mail. Bovenaan staat het resterende verlof van dit jaar van het recht, en van volgend jaar als daar een recht is, plus de overuren. Dit jaar tot vandaag: gewerkte tijd min het gepubliceerde rooster, min recup op het rooster of als open aanvraag. Geen loon."
+                    "label": "Verlof / Afwezigheid",
+                    "text": "Na aanmelden zie je de tegel Verlof / Afwezigheid. Vraag verlof, recup of (als beheer die heeft aangemaakt) een type onder Andere aan (van–tot; bij Andere eerst het type; optionele toelichting, max. 31 dagen, niet in het verleden). Open aanvragen die overlappen worden geweigerd. Onder het formulier staan je eigen aanvragen: open of goedgekeurd (nog niet begonnen) kun je intrekken; bij goedgekeurd komt het uurrooster terug. Beheer beslist onder Time → Aanvragen; weigeren vraagt een reden, goedkeuren niet. Er gaat geen e-mail. Bovenaan staat het resterende verlof van dit jaar van het recht, en van volgend jaar als daar een recht is, plus de overuren. Dit jaar tot vandaag: gewerkte tijd min het gepubliceerde rooster, min recup op het rooster of als open aanvraag. Geen loon."
                 }
             ]
         },
@@ -1938,7 +1938,7 @@
                 },
                 {
                     "label": "Afwezigheid",
-                    "text": "Shifttypes kunnen <strong>verlof</strong>, <strong>recup</strong> of <strong>ziek</strong> zijn. Die codes vullen de hele dag, tellen geen uren en mogen niet samen met werk die dag. Halve dagen zitten niet in deze slice. Uitvoerders kunnen verlof of recup aanvragen via Clock Point (tegel Verlof / Recup); beheer beslist onder Time → Aanvragen."
+                    "text": "Shifttypes kunnen <strong>verlof</strong>, <strong>recup</strong>, <strong>ziek</strong> of <strong>andere</strong> zijn. Die codes vullen de hele dag, tellen geen uren en mogen niet samen met werk die dag. Uitvoerders kunnen verlof, recup of een type onder Andere aanvragen via Clock Point (tegel Verlof / Afwezigheid); beheer beslist onder Time → Aanvragen. Andere telt niet mee voor het verlofsaldo."
                 },
                 {
                     "label": "Gepland vs geklokt",
@@ -1946,7 +1946,7 @@
                 },
                 {
                     "label": "Urenkolommen rechts",
-                    "text": "Rechts van het rooster staan per uitvoerder cijferkolommen met verticale titel: <strong>Norm</strong> (contractnorm), <strong>Verschil</strong> (gepland min norm, met teken), <strong>Gepland</strong>, <strong>Gewerkt</strong> en per afwezigheid <strong>Verlof</strong>, <strong>Recup</strong> en <strong>Ziek</strong> (dagen en resturen). <strong>Sein</strong> toont een aantal en/of een uitroepteken bij onvolledige blokken of een openstaande klokregistratie. Norm en verschil blijven leeg zolang de norm niet betrouwbaar is. De weeknorm (standaard 38u) stelt u in bij de uitvoerder; de maandnorm volgt uit de werkregeling — zonder werkregeling telt ma–vr volgens de weeknorm en volgen feestdagen de feestdagenregeling — zonder afspraak de Belgische standaard. Dit is een telling, geen oordeel over arbeidsduur."
+                    "text": "Rechts van het rooster staan per uitvoerder cijferkolommen met verticale titel: <strong>Norm</strong> (contractnorm), <strong>Verschil</strong> (gepland min norm, met teken), <strong>Gepland</strong>, <strong>Gewerkt</strong> en per afwezigheid <strong>Verlof</strong>, <strong>Recup</strong>, <strong>Ziek</strong> en <strong>Andere</strong> (dagen en resturen). <strong>Sein</strong> toont een aantal en/of een uitroepteken bij onvolledige blokken of een openstaande klokregistratie. Norm en verschil blijven leeg zolang de norm niet betrouwbaar is. De weeknorm (standaard 38u) stelt u in bij de uitvoerder; de maandnorm volgt uit de werkregeling — zonder werkregeling telt ma–vr volgens de weeknorm en volgen feestdagen de feestdagenregeling — zonder afspraak de Belgische standaard. Dit is een telling, geen oordeel over arbeidsduur."
                 }
             ]
         },
@@ -1955,7 +1955,7 @@
             "actions": [
                 {
                     "label": "Soort",
-                    "text": "Kies <strong>Werk</strong> (start, einde, pauze) of een afwezigheid. Afwezigheid heeft geen uren. Bestaande cellen in het uurrooster wijzigen niet als u later een type aanpast."
+                    "text": "Kies <strong>Werk</strong> (start, einde, pauze) of een afwezigheid (verlof, recup, ziek of andere). Afwezigheid heeft geen uren. Bij Andere kies je zelf code en naam (bv. KV — klein verlet); die tellen niet voor het verlofsaldo. Bestaande cellen in het uurrooster wijzigen niet als u later een type aanpast."
                 },
                 {
                     "label": "Toevoegen",
@@ -2010,7 +2010,7 @@
             "actions": [
                 {
                     "label": "Lijst",
-                    "text": "Time → <strong>Aanvragen</strong> toont verlof- en recupaanvragen van Clock Point. Geen e-mail, geen inbox bij de uitvoerder. Een groene badge in de navigatie telt open aanvragen. Het dashboard toont het aantal per soort (1 Verlof, 1 Recup, of beide). Bij een beslissing ziet u wie heeft goedgekeurd of geweigerd."
+                    "text": "Time → <strong>Aanvragen</strong> toont verlof-, recup- en Andere-aanvragen van Clock Point. Geen e-mail, geen inbox bij de uitvoerder. Een groene badge in de navigatie telt open aanvragen. Het dashboard toont het aantal per soort (bijv. 1 Verlof, 1 Recup, 1 Andere). Bij een beslissing ziet u wie heeft goedgekeurd of geweigerd."
                 },
                 {
                     "label": "Beoordelen",

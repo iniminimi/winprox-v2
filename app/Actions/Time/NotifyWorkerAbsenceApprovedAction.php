@@ -24,7 +24,7 @@ class NotifyWorkerAbsenceApprovedAction
             return;
         }
 
-        if ($request->kind !== ShiftTypeKind::Leave && $request->kind !== ShiftTypeKind::Recup) {
+        if (! $request->kind->isRequestableAbsence()) {
             return;
         }
 
@@ -40,9 +40,13 @@ class NotifyWorkerAbsenceApprovedAction
 
         $from = $request->date_from->format('d-m-Y');
         $to = $request->date_to->format('d-m-Y');
-        $leave = $request->kind === ShiftTypeKind::Leave;
+        $slug = match ($request->kind) {
+            ShiftTypeKind::Leave => 'leave',
+            ShiftTypeKind::Recup => 'recup',
+            default => 'other',
+        };
         $sameDay = $from === $to;
-        $prefix = 'time.portal.push.absence_'.($leave ? 'leave' : 'recup').($approved ? '' : '_rejected');
+        $prefix = 'time.portal.push.absence_'.$slug.($approved ? '' : '_rejected');
 
         $this->dispatchPush->handle(
             $tenant,

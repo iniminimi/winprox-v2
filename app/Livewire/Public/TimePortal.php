@@ -74,6 +74,7 @@ use App\Models\ClockPoint;
 use App\Models\Customer;
 use App\Models\InternalTeam;
 use App\Models\Location;
+use App\Models\ShiftType;
 use App\Models\Task;
 use App\Models\TeamAnnouncement;
 use App\Models\TeamDocument;
@@ -238,6 +239,8 @@ class TimePortal extends Component
     public array $freshAnnouncementIds = [];
 
     public string $absenceKind = 'leave';
+
+    public ?int $absenceShiftTypeId = null;
 
     public bool $absenceHalfDay = false;
 
@@ -589,7 +592,7 @@ class TimePortal extends Component
     private function forgetPortalSignInState(): void
     {
         $this->taskBaselineSyncedThisVisit = false;
-        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'ownDeviceReleaseOffered', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'scheduleChangedDates', 'schedulePublishedFrom', 'teamScheduleOpen', 'teamScheduleWeek', 'absenceListOpen', 'absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceHalfDay', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'flashMessageKey', 'flashMessageReplace', 'homescreenHelpOpen', 'teamleaderOpen', 'teamDocumentsOpen', 'teamAnnouncementsOpen', 'openScreen']);
+        $this->reset(['first_name', 'last_name', 'sign_in_icon_slug', 'selected_icon_slug', 'showRegisterForm', 'pin_code', 'pin_code_confirm', 'ownDeviceReleaseOffered', 'rosterAckOpen', 'rosterListOpen', 'hoursListOpen', 'hoursMonth', 'rosterAcknowledged', 'scheduleListOpen', 'scheduleMonth', 'scheduleChangedDates', 'schedulePublishedFrom', 'teamScheduleOpen', 'teamScheduleWeek', 'absenceListOpen', 'absenceKind', 'absenceShiftTypeId', 'absenceDateFrom', 'absenceDateTo', 'absenceHalfDay', 'absenceDescription', 'completingTaskId', 'checkingUnitId', 'skipRoundTaskId', 'flashMessage', 'flashMessageKey', 'flashMessageReplace', 'homescreenHelpOpen', 'teamleaderOpen', 'teamDocumentsOpen', 'teamAnnouncementsOpen', 'openScreen']);
         $this->resetErrorBag(['identify', 'sign_in_icon_slug', 'selected_icon_slug', 'pin_code', 'pin_code_confirm', 'rosterAcknowledged']);
     }
 
@@ -828,12 +831,20 @@ class TimePortal extends Component
         $this->closeWorkerLibrary();
         $today = now()->toDateString();
         $this->absenceKind = ShiftTypeKind::Leave->value;
+        $this->absenceShiftTypeId = null;
         $this->absenceDateFrom = $today;
         $this->absenceDateTo = $today;
         $this->absenceDescription = '';
         $this->absenceHalfDay = false;
-        $this->resetErrorBag(['absenceKind', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription', 'absenceHalfDay']);
+        $this->resetErrorBag(['absenceKind', 'absenceShiftTypeId', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription', 'absenceHalfDay']);
         $this->absenceListOpen = true;
+    }
+
+    public function updatedAbsenceKind(): void
+    {
+        $this->absenceShiftTypeId = null;
+        $this->absenceHalfDay = false;
+        $this->resetErrorBag(['absenceShiftTypeId', 'absenceHalfDay']);
     }
 
     public function closeAbsence(): void
@@ -873,6 +884,7 @@ class TimePortal extends Component
         $this->validate(
             [
                 'absenceKind' => $rules['kind'],
+                'absenceShiftTypeId' => $rules['shift_type_id'],
                 'absenceDateFrom' => $rules['date_from'],
                 'absenceDateTo' => ['required', 'date_format:Y-m-d', 'after_or_equal:absenceDateFrom'],
                 'absenceDescription' => $rules['description'],
@@ -880,9 +892,11 @@ class TimePortal extends Component
             [
                 'absenceDateFrom.after_or_equal' => __('time.absence.errors.date_in_past'),
                 'absenceDateTo.after_or_equal' => __('time.absence.errors.range_inverted'),
+                'absenceShiftTypeId.required_if' => __('time.absence.errors.shift_type_required'),
             ],
             [
                 'absenceKind' => __('time.portal.absence.kind'),
+                'absenceShiftTypeId' => __('time.portal.absence.shift_type'),
                 'absenceDateFrom' => __('time.portal.absence.date_from'),
                 'absenceDateTo' => __('time.portal.absence.date_to'),
                 'absenceDescription' => __('time.portal.absence.description'),
@@ -909,16 +923,19 @@ class TimePortal extends Component
                     $this->absenceDateTo,
                     $this->absenceDescription !== '' ? $this->absenceDescription : null,
                     $this->absenceHalfDay,
+                    $kind === ShiftTypeKind::Other ? $this->absenceShiftTypeId : null,
                 ),
             );
         } catch (InvalidArgumentException $e) {
-            $this->addError('absenceDateFrom', __('time.absence.errors.'.$e->getMessage()));
+            $field = $e->getMessage() === 'no_shift_type' ? 'absenceShiftTypeId' : 'absenceDateFrom';
+            $this->addError($field, __('time.absence.errors.'.$e->getMessage()));
 
             return;
         }
 
         $this->absenceDescription = '';
         $this->absenceHalfDay = false;
+        $this->absenceShiftTypeId = null;
         $this->portalFlash('time.portal.absence.submitted');
     }
 
@@ -2355,8 +2372,15 @@ class TimePortal extends Component
         $absenceRequests = collect();
         $leaveBalances = [];
         $recupHours = '';
+        $otherAbsenceTypes = collect();
         if ($canAct && $this->absenceListOpen && $verifiedWorker !== null && $timeRosterEnabled && ! $checkmateMode) {
             $absenceRequests = $listAbsenceRequests->handle($verifiedWorker, $this->tenantId);
+            $otherAbsenceTypes = ShiftType::query()
+                ->where('tenant_id', $this->tenantId)
+                ->where('kind', ShiftTypeKind::Other)
+                ->where('is_active', true)
+                ->orderBy('code')
+                ->get(['id', 'code', 'label']);
             $balanceTenant = Tenant::query()->find($this->tenantId);
             if ($balanceTenant !== null) {
                 $leaveAction = app(WorkerLeaveBalanceAction::class);
@@ -2508,6 +2532,7 @@ class TimePortal extends Component
             'absenceRequests' => $absenceRequests,
             'leaveBalances' => $leaveBalances,
             'recupHours' => $recupHours,
+            'otherAbsenceTypes' => $otherAbsenceTypes,
             'checkmateMode' => $checkmateMode,
             'customerOptions' => ($checkmateMode && $this->customerFormOpen)
                 ? Customer::query()

@@ -22,12 +22,20 @@ use App\Models\User;
 use App\Models\Worker;
 use App\Models\WorkerLeaveEntitlement;
 use App\Support\Tenancy;
+use Carbon\Carbon;
 use Livewire\Livewire;
 
-afterEach(fn () => Tenancy::forget());
+afterEach(function () {
+    Carbon::setTestNow();
+    Tenancy::forget();
+});
 
 function leaveBalanceWorld(): array
 {
+    if (Carbon::getTestNow() === null) {
+        Carbon::setTestNow(Carbon::parse('2026-11-09 10:00:00'));
+    }
+
     $tenant = Tenant::factory()->create(['has_time_module' => true]);
     Tenancy::actAs($tenant->id);
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
@@ -206,4 +214,50 @@ it('weigert een halve dag over meerdere datums en toont een tekort', function ()
         ->test(AbsenceRequestsIndex::class)
         ->call('openDecide', $request->id)
         ->assertSee(__('time.leave_balance.shortfall', ['days' => '−1']), false);
+});
+
+it('telt Andere-afwezigheid niet mee in het verlofsaldo', function () {
+    Carbon::setTestNow(Carbon::parse('2026-11-18 10:00:00'));
+    [$tenant, $admin, , $worker, $leave] = leaveBalanceWorld();
+    app(SetWorkerLeaveEntitlementAction::class)->handle($tenant, $worker, 2026, '2', 2027, null, null);
+
+    $other = ShiftType::factory()->create([
+        'tenant_id' => $tenant->id,
+        'code' => 'KV',
+        'label' => 'Klein verlet',
+        'kind' => ShiftTypeKind::Other,
+        'start_time' => null,
+        'end_time' => null,
+        'break_minutes' => 0,
+        'is_active' => true,
+    ]);
+
+    $request = app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Other, '2026-11-20', '2026-11-20', null, false, (int) $other->id),
+    );
+    app(DecideAbsenceRequestAction::class)->handle(
+        $tenant,
+        $request,
+        new DecideAbsenceRequestData(true, ''),
+        $admin,
+    );
+
+    PlannedShift::query()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'work_date' => '2026-11-21',
+        'shift_type_id' => $leave->id,
+        'kind' => ShiftTypeKind::Leave,
+        'status' => PlannedShiftStatus::Published,
+        'break_minutes' => 0,
+    ]);
+
+    $balance = app(WorkerLeaveBalanceAction::class)->handle($tenant, [(int) $worker->id], 2026)[(int) $worker->id];
+
+    expect($balance->entitlementHalves)->toBe(4)
+        ->and($balance->approvedHalves)->toBe(2)
+        ->and($balance->plannedHalves)->toBe(0)
+        ->and($balance->remainingHalves())->toBe(2);
 });

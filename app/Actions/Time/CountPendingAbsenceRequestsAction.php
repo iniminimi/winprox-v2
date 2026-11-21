@@ -15,7 +15,7 @@ class CountPendingAbsenceRequestsAction
     }
 
     /**
-     * @return array{leave: int, recup: int}
+     * @return array{leave: int, recup: int, other: int}
      */
     public function byKind(int $tenantId): array
     {
@@ -32,6 +32,7 @@ class CountPendingAbsenceRequestsAction
         return [
             'leave' => (int) ($counts[ShiftTypeKind::Leave->value] ?? 0),
             'recup' => (int) ($counts[ShiftTypeKind::Recup->value] ?? 0),
+            'other' => (int) ($counts[ShiftTypeKind::Other->value] ?? 0),
         ];
     }
 }

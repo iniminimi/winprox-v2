@@ -43,7 +43,7 @@
                     "Timbrare entrata e uscita, e vedere chi è presente.",
                     "Affiancare le ore registrate ai turni.",
                     "Pianificare i turni e pubblicarli.",
-                    "Gestire le richieste di ferie e di recupero.",
+                    "Gestire le richieste di ferie, recupero e Altro.",
                     "Gestire segnalazioni, compiti e giri di ispezione.",
                     "Gestire sedi, team, persone e unità.",
                     "La registrazione ONSS/CIAO si può attivare nelle impostazioni. Le visite GPS facoltative collegano una visita a un luogo.",
@@ -101,7 +101,7 @@
                 "title": "Clock Point",
                 "body": "Clock Point è il posto in cui le persone aprono le funzioni di lavoro, nel browser. Dopo la timbratura, una schermata di benvenuto può mostrare il giro del giorno come una sequenza.",
                 "items": [
-                    "Timbrare, vedere il proprio turno pubblicato, vedere le proprie ore, chiedere ferie o recupero.",
+                    "Timbrare, vedere il proprio turno pubblicato, vedere le proprie ore, chiedere ferie, recupero o Altro.",
                     "Svolgere compiti, seguire un giro di ispezione e avviare una visita quando il GPS è attivo.",
                     "Uno schermo timbratrice facoltativo mostra un QR che cambia da solo. Si collega con un codice monouso e una conferma.",
                     "Si sceglie quando lo schermo è acceso, per esempio dalle 06:00 alle 19:00. Fuori orario può restare spento o mostrare una schermata di riposo: foto, un orologio a lancette, un orologio a palette o uno schermo nero. Il suono si attiva o disattiva per ogni schermo.",
@@ -118,7 +118,7 @@
                     "Si copia una settimana su al massimo 26 settimane di fila. WinProx salta i giorni che hanno già turni o assenze. Le note non vengono copiate.",
                     "WinProx chiede di salvare prima le modifiche non salvate se uscite dalla pagina o cambiate settimana o mese.",
                     "Cercare un sostituto: WinProx propone esecutori che quel giorno hanno un tipo di turno del pool di sostituzione. Il blocco originale diventa un’assenza e il sostituto riceve la stessa fascia.",
-                    "Ferie, recupero e malattia possono essere un giorno intero o parte del giorno. Quei blocchi non contano come ore lavorate. Il saldo ferie è il diritto annuale che inserite per esecutore, meno i giorni di ferie in turnario e le richieste aperte. I tipi di turno si impostano in Time → Tipi di turno. Festivi e giorni sostitutivi stanno in Time → Festività.",
+                    "Ferie, recupero, malattia e Altro possono essere un giorno intero o parte del giorno. Quei blocchi non contano come ore lavorate. Il saldo ferie è il diritto annuale che inserite per esecutore, meno i giorni di ferie in turnario e le richieste aperte — Altro non conta. I tipi di turno si impostano in Time → Tipi di turno. Festivi e giorni sostitutivi stanno in Time → Festività.",
                     "I festivi e i giorni sostitutivi hanno un colore proprio. Un giorno libero fisso è grigio e resta compilabile.",
                     "La norma settimanale predefinita è di 38 ore, modificabile per esecutore. Norme e scostamenti tengono conto del regime di lavoro e dei festivi. Senza una norma affidabile la cifra resta vuota. È un conteggio per la vista d’insieme, non un giudizio sull’orario di lavoro.",
                     "Per sede impostate una presenza minima: quante persone servono per tipo di turno. WinProx mostra dove la presenza prevista non basta. Un festivo non conta. Una carenza non blocca il salvataggio né la pubblicazione.",
@@ -131,8 +131,8 @@
                 ]
             },
             {
-                "title": "Ferie e recupero",
-                "body": "Le persone chiedono ferie o recupero su Clock Point. L’amministratore decide in Time → Richieste. Questa richiesta non serve a segnalare una malattia, e non parte nessuna e-mail.",
+                "title": "Ferie e assenza",
+                "body": "I lavoratori chiedono ferie, recupero o (se configurato) un tipo in Altro via Clock Point. La gestione decide in Time → Richieste. Questa richiesta non serve per la malattia e non parte alcuna e-mail. Altro non conta nel saldo ferie.",
                 "items": [
                     "Una richiesta va da una data di inizio a una data di fine, al massimo 31 giorni, e non nel passato.",
                     "Nel turno di amministrazione le richieste aperte compaiono come contrassegno sui giorni interessati; da lì aprite Time → Richieste (il servizio resta fino all’approvazione).",
@@ -176,7 +176,7 @@
                 "items": [
                     "Turni e presenza, un nuovo compito del giorno o giro di ispezione, sedi ed esecutori.",
                     "Segnalazioni nuove e compiti aperti. Con Time: chi è presente adesso.",
-                    "Un avviso se qualcuno timbra durante ferie, recupero, un festivo o una malattia. Richieste aperte di ferie e di recupero.",
+                    "Un avviso se qualcuno timbra durante ferie, recupero, un festivo, una malattia o Altro. Richieste aperte di ferie, recupero e Altro.",
                     "Nuovi esecutori appena creati da un caposquadra, finché la gestione li salva o li disattiva. Briefing e rapporti. Le organizzazioni nuove scelgono qui una configurazione di partenza."
                 ]
             },
@@ -538,7 +538,7 @@
         "label": "API & Webhooks",
         "tagline": "Integra WinProx con il tuo software esistente tramite API e webhook.",
         "highlight": "WinProx non sostituisce i sistemi IWMS o ERP esistenti. Grazie ad API e webhook, WinProx lavora insieme a loro.",
-        "intro": "WinProx è pensato perché altri software usino gli stessi dati, segnalazioni, compiti e controlli unità di WinProx. Gestione e docs sono in Impostazioni → API. Accedi con Microsoft sul desktop non è un collegamento API: gli altri software usano token, non SSO. Le richieste di ferie o recupero hanno eventi time.absence.* (niente API REST di scrittura in questa slice).",
+        "intro": "WinProx è pensato perché altri software usino gli stessi dati, segnalazioni, compiti e controlli unità di WinProx. Gestione e docs sono in Impostazioni → API. Accedi con Microsoft sul desktop non è un collegamento API: gli altri software usano token, non SSO. Le richieste di ferie, recupero o Altro hanno eventi time.absence.* (niente API REST di scrittura in questa slice).",
         "footer_left": "WinProx · info@winprox.app · API & Webhooks (Corporate)",
         "footer_right": "Vedi anche: Funzioni e possibilità · Scheda tecnica",
         "left": [

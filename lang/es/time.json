@@ -77,7 +77,8 @@
                 "leave": "vacaciones",
                 "recup": "horas de recupero",
                 "sick": "una baja",
-                "holiday": "un festivo"
+                "holiday": "un festivo",
+                "other": "otra ausencia"
             }
         },
         "view_modes": "Vista",
@@ -499,7 +500,8 @@
             "absence_leave": "Fichado en un día de vacaciones",
             "absence_recup": "Fichado en un día de recupero",
             "absence_sick": "Fichado en un día de baja",
-            "absence_holiday": "Fichado en un festivo"
+            "absence_holiday": "Fichado en un festivo",
+            "absence_other": "Fichado durante otra ausencia"
         },
         "schedule": {
             "tile": "Mi cuadrante",
@@ -544,9 +546,9 @@
             "open_apps": "A partir de entonces también encontrarás WinProx entre tus aplicaciones."
         },
         "absence": {
-            "tile": "Permiso / Compensación",
-            "tile_sub": "Solicitar o retirar",
-            "title": "Permiso / Compensación",
+            "tile": "Vacaciones / Ausencia",
+            "tile_sub": "Solicitar vacaciones, recup u otra ausencia",
+            "title": "Vacaciones / Ausencia",
             "subtitle": "Vea sus solicitudes y retírelas. La gestión aprueba o rechaza.",
             "period": "Periodo",
             "period_hint": "Toque la fecha de inicio y después la de fin. No se pueden elegir días pasados.",
@@ -565,12 +567,14 @@
             "form_title": "Nueva solicitud",
             "half_day": "Media jornada",
             "cancel_confirm": "¿Retirar esta solicitud?",
-            "cancel_approved_confirm": "¿Retirar este permiso o compensación aprobado? El cuadrante restaura los turnos anteriores.",
+            "cancel_approved_confirm": "¿Retirar esta ausencia aprobada? El cuadrante restaura los turnos anteriores.",
             "submitted": "Solicitud enviada.",
             "cancelled": "Solicitud retirada.",
             "decision": "Decisión",
             "leave_remaining": "Permiso restante :year: :days de :total",
-            "recup_balance": "Horas extra (compensación): :hours"
+            "recup_balance": "Horas extra (compensación): :hours",
+            "shift_type": "Tipo",
+            "shift_type_placeholder": "Elige un tipo"
         },
         "now": {
             "status_out": "Sin fichar",
@@ -652,7 +656,13 @@
             "team_task_title": "Nueva tarea para su equipo",
             "team_task_body": "Su equipo tiene una nueva tarea pendiente.",
             "recurring_tasks_title": "Tareas de hoy",
-            "recurring_tasks_body": "Tiene :count tareas nuevas pendientes."
+            "recurring_tasks_body": "Tiene :count tareas nuevas pendientes.",
+            "absence_other_title": "Ausencia aprobada",
+            "absence_other_body": "Tu ausencia del :date fue aprobada.",
+            "absence_other_body_range": "Tu ausencia del :from al :to fue aprobada.",
+            "absence_other_rejected_title": "Ausencia rechazada",
+            "absence_other_rejected_body": "Tu ausencia del :date fue rechazada.",
+            "absence_other_rejected_body_range": "Tu ausencia del :from al :to fue rechazada."
         }
     },
     "ciao": {
@@ -887,10 +897,11 @@
                 "work": "Trabajo",
                 "leave": "Vacaciones",
                 "recup": "Descanso compensatorio",
-                "sick": "Baja"
+                "sick": "Baja",
+                "other": "Otro"
             },
             "replacement_pool": "Disponible para sustitución",
-            "replacement_pool_hint": "Los operarios con este tipo de turno ese día aparecen en la lista de sustitutos. La baja nunca cuenta."
+            "replacement_pool_hint": "Los trabajadores con este tipo ese día aparecen en la lista de sustitución. Enfermedad y Otro nunca cuentan."
         },
         "empty_workers": "No hay operarios en este periodo. Añádalos en Personas → Equipos.",
         "pick_filter": "Elige un equipo o una ubicación para cargar el horario.",
@@ -933,7 +944,8 @@
                 "recup": "Recup",
                 "sick": "Baja",
                 "attention": "Aviso",
-                "attention_hint": "Bloques incompletos o un registro abierto"
+                "attention_hint": "Bloques incompletos o un registro abierto",
+                "other": "Otro"
             },
             "incomplete_blocks": "{1} :count bloque incompleto|[2,*] :count bloques incompletos",
             "open_registration": "{1} Fichaje abierto desde :datetime — entrada fichada sin salida|[2,*] :count fichajes abiertos, el más antiguo desde :datetime — entradas fichadas sin salida"
@@ -1063,7 +1075,8 @@
         "pending_absence": {
             "leave": "Vacaciones solicitadas (pendiente de aprobación)",
             "recup": "Recup solicitado (pendiente de aprobación)",
-            "open_hint": "Haga clic en la marca abajo a la izquierda para abrir la solicitud."
+            "open_hint": "Haga clic en la marca abajo a la izquierda para abrir la solicitud.",
+            "other": "Otra ausencia solicitada (pendiente)"
         }
     },
     "shift_types": {
@@ -1143,18 +1156,19 @@
         },
         "errors": {
             "worker_tenant_mismatch": "Este trabajador no pertenece a esta organización.",
-            "invalid_kind": "Elige permiso o compensación.",
+            "invalid_kind": "Elige vacaciones, recup u otro.",
             "range_inverted": "La fecha de fin debe ser el mismo día o posterior a la de inicio.",
             "range_too_long": "Máximo 31 días por solicitud.",
             "date_in_past": "La fecha de inicio no puede estar en el pasado.",
-            "no_shift_type": "No hay un tipo de turno activo para esta ausencia.",
+            "no_shift_type": "No hay tipo activo para esta clase.",
             "overlapping_pending": "Ya hay una solicitud abierta que solapa estos días.",
             "not_pending": "Esta solicitud ya está tramitada.",
             "not_owner": "Solo puedes retirar tu propia solicitud.",
             "reason_required": "El motivo es obligatorio (al menos 3 caracteres).",
             "already_started": "Este permiso o compensación ya ha empezado. Ya no se puede retirar.",
             "not_cancellable": "No puede retirar esta solicitud.",
-            "half_day_range": "Una media jornada solo puede ser una fecha."
+            "half_day_range": "Una media jornada solo puede ser una fecha.",
+            "shift_type_required": "Elige un tipo."
         }
     },
     "leave_balance": {

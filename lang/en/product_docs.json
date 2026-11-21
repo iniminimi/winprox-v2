@@ -43,7 +43,7 @@
                     "Clock in and out, and see who is present.",
                     "Set the recorded hours next to the roster.",
                     "Plan shifts and publish them.",
-                    "Handle leave and time-off requests.",
+                    "Handle leave, TOIL and Other requests.",
                     "Manage issues, tasks and inspection rounds.",
                     "Manage locations, teams, people and units.",
                     "RSZ/CIAO presence reporting can be turned on in settings. Optional GPS work visits tie a visit to a location.",
@@ -101,7 +101,7 @@
                 "title": "Clock Point",
                 "body": "Clock Point is where people open their work tools, in the browser. After clock-in, a welcome screen can show the day’s round as a timeline.",
                 "items": [
-                    "Clock in and out, see the published roster, see one’s own hours, request leave or time off.",
+                    "Clock in and out, see the published roster, see one’s own hours, request leave, TOIL or Other.",
                     "Carry out tasks, follow an inspection round, and start a work visit when GPS is on.",
                     "An optional clock screen shows a QR code that changes by itself. You pair the screen with a one-time code and a confirmation.",
                     "You choose when the screen is on, for example from 06:00 to 19:00. Outside those hours it can stay off, or show a rest screen: photos, a clock face, a flip clock or a black screen. The sound can be turned on or off per clock screen.",
@@ -118,7 +118,7 @@
                     "You copy a week to at most 26 weeks in a row. WinProx skips days that already have shifts or absences. Notes are not copied.",
                     "WinProx asks you to save unsaved changes first if you leave the page or switch week or month.",
                     "Find a replacement: WinProx suggests workers who have a replacement-pool shift type that day. The original block becomes an absence and the replacement gets the same time slot.",
-                    "Leave, time off and sickness can be a whole day or part of a day. Those blocks do not count as hours worked. The leave balance is the yearly allowance you enter per worker, minus leave days on the roster and open leave requests. You set the shift types under Time → Shift types. Public holidays and replacement days live under Time → Public holidays.",
+                    "Leave, TOIL, sickness and Other can be a whole day or part of a day. Those blocks do not count as hours worked. The leave balance is the yearly allowance you enter per worker, minus leave days on the roster and open leave requests — Other does not count toward it. You set the shift types under Time → Shift types (for Other your own code and name). Public holidays and replacement days live under Time → Public holidays.",
                     "Public holidays and replacement days have their own colour. A fixed day off is grey and can still be filled in.",
                     "The default week target is 38 hours, adjustable per worker. Targets and differences take the work pattern and public holidays into account. Without a reliable target the figure stays empty. It is a count for the overview, not a judgement on working time.",
                     "Per location you set a minimum staffing level: how many people are needed per shift type. WinProx shows where the planned staffing falls short. A public holiday is not counted. A shortfall does not block saving or publishing.",
@@ -131,8 +131,8 @@
                 ]
             },
             {
-                "title": "Leave and time off",
-                "body": "People request leave or time off on Clock Point. An administrator decides in Time → Requests. This request is not for reporting sickness, and no email is sent.",
+                "title": "Leave and absence",
+                "body": "Workers request leave, TOIL or (if set up) a type under Other via Clock Point. Staff decide under Time → Requests. This request is not for reporting sick, and no e-mail is sent. Other does not count toward leave balance.",
                 "items": [
                     "A request runs from a start date to an end date, at most 31 days, and not in the past.",
                     "In the admin roster, open requests appear as a marker on the relevant days; that marker opens Time → Requests (the shift stays until approval).",
@@ -176,7 +176,7 @@
                 "items": [
                     "Roster and presence, a new day task or inspection round, locations and workers.",
                     "New issues and open tasks. With Time: who is present now.",
-                    "A warning when someone clocks in during leave, time off, a public holiday or sickness. Open leave and time-off requests.",
+                    "A warning when someone clocks in during leave, TOIL, a public holiday, sickness or Other. Open leave, TOIL and Other requests.",
                     "New workers a team leader just created, until an administrator saves or deactivates them. Briefings and reports. New organisations choose a starting setup here."
                 ]
             },
@@ -538,7 +538,7 @@
         "label": "API & Webhooks",
         "tagline": "Integrate WinProx with your existing software via APIs and webhooks.",
         "highlight": "WinProx is not a replacement for existing IWMS or ERP systems. Thanks to APIs and webhooks, WinProx works alongside them.",
-        "intro": "WinProx is built so other software can use the same data, issues, tasks and unit checks as WinProx itself. Admin and docs live under Settings → API. Desktop Sign in with Microsoft is not an API link: other software uses tokens, not SSO. Leave and TOIL requests have time.absence.* events (no write REST API in this slice).",
+        "intro": "WinProx is built so other software can use the same data, issues, tasks and unit checks as WinProx itself. Admin and docs live under Settings → API. Desktop Sign in with Microsoft is not an API link: other software uses tokens, not SSO. Leave, TOIL and Other requests have time.absence.* events (no write REST API in this slice).",
         "footer_left": "WinProx · info@winprox.app · API & Webhooks (Corporate)",
         "footer_right": "See also: Features and capabilities · Technical fact sheet",
         "left": [

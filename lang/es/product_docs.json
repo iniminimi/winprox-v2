@@ -43,7 +43,7 @@
                     "Fichar la entrada y la salida, y ver quién está presente.",
                     "Poner las horas registradas junto al cuadrante.",
                     "Planificar turnos y publicarlos.",
-                    "Tramitar solicitudes de permiso y de compensación.",
+                    "Tramitar solicitudes de vacaciones, recup y Otro.",
                     "Gestionar avisos, tareas y rondas de inspección.",
                     "Gestionar sedes, equipos, personas y unidades.",
                     "El registro ONSS/CIAO se puede activar en los ajustes. Las visitas GPS opcionales vinculan una visita a un lugar.",
@@ -101,7 +101,7 @@
                 "title": "Clock Point",
                 "body": "Clock Point es el lugar donde las personas abren sus funciones de trabajo, en el navegador. Tras fichar, una pantalla de bienvenida puede mostrar la ronda del día como una línea de tiempo.",
                 "items": [
-                    "Fichar, ver el cuadrante publicado, ver las propias horas, pedir permiso o compensación.",
+                    "Fichar, ver el cuadrante publicado, ver las propias horas, pedir vacaciones, recup u Otro.",
                     "Hacer tareas, seguir una ronda de inspección y empezar una visita cuando el GPS está activo.",
                     "Una pantalla de fichaje opcional muestra un QR que cambia solo. Se vincula con un código de un solo uso y una confirmación.",
                     "Se elige cuándo está encendida la pantalla, por ejemplo de 06:00 a 19:00. Fuera de ese horario puede quedarse apagada o mostrar una pantalla de reposo: fotos, un reloj de agujas, un reloj de paletas o una pantalla negra. El sonido se activa o desactiva por pantalla.",
@@ -118,7 +118,7 @@
                     "Se copia una semana hacia un máximo de 26 semanas seguidas. WinProx omite los días que ya tienen turnos o ausencias. Las notas no se copian.",
                     "WinProx pide guardar primero los cambios no guardados si sale de la página o cambia de semana o de mes.",
                     "Buscar un sustituto: WinProx propone operarios que ese día tienen un tipo de turno de la bolsa de sustitución. El bloque original pasa a ser una ausencia y el sustituto recibe el mismo tramo.",
-                    "Permiso, compensación y baja pueden ser un día entero o parte del día. Esos bloques no cuentan como horas trabajadas. El saldo de permiso es el derecho anual que usted indica por operario, menos los días de permiso en el horario y las solicitudes abiertas. Los tipos de turno se definen en Time → Tipos de turno. Festivos y días de sustitución están en Time → Festivos.",
+                    "Vacaciones, recup, baja y Otro pueden ser un día entero o parte del día. Esos bloques no cuentan como horas trabajadas. El saldo de vacaciones es el derecho anual que usted indica por operario, menos los días de vacaciones en el horario y las solicitudes abiertas — Otro no cuenta. Los tipos de turno se definen en Time → Tipos de turno (en Otro código y nombre propios). Festivos y días de sustitución están en Time → Festivos.",
                     "Los festivos y los días de sustitución tienen un color propio. Un día libre fijo se ve gris y se puede rellenar.",
                     "La norma semanal por defecto es de 38 horas, ajustable por ejecutor. Normas y diferencias tienen en cuenta el régimen de trabajo y los festivos. Sin una norma fiable, la cifra queda vacía. Es un recuento para la vista general, no un juicio sobre la jornada.",
                     "Por sede se fija una ocupación mínima: cuántas personas hacen falta por tipo de turno. WinProx muestra dónde la ocupación prevista se queda corta. Un festivo no cuenta. Un déficit no bloquea guardar ni publicar.",
@@ -131,8 +131,8 @@
                 ]
             },
             {
-                "title": "Permiso y compensación",
-                "body": "Las personas piden permiso o compensación en Clock Point. El administrador decide en Time → Solicitudes. Esta solicitud no sirve para comunicar una baja, y no se envía ningún correo.",
+                "title": "Vacaciones y ausencia",
+                "body": "Los trabajadores solicitan vacaciones, recup u (si está configurado) un tipo en Otro vía Clock Point. La gestión decide en Time → Solicitudes. Esta solicitud no sirve para baja, y no se envía correo. Otro no cuenta en el saldo de vacaciones.",
                 "items": [
                     "Una solicitud va de una fecha de inicio a una fecha de fin, como máximo 31 días, y no en el pasado.",
                     "En el cuadrante de administración, las solicitudes abiertas aparecen como una marca en los días correspondientes; esa marca abre Time → Solicitudes (el turno permanece hasta la aprobación).",
@@ -176,7 +176,7 @@
                 "items": [
                     "Cuadrante y presencia, una nueva tarea del día o ronda de inspección, sedes y ejecutores.",
                     "Avisos nuevos y tareas abiertas. Con Time: quién está presente ahora.",
-                    "Un aviso si alguien ficha durante un permiso, una compensación, un festivo o una baja. Solicitudes abiertas de permiso y de compensación.",
+                    "Un aviso si alguien ficha durante vacaciones, recup, un festivo, una baja u Otro. Solicitudes abiertas de vacaciones, recup y Otro.",
                     "Ejecutores nuevos que acaba de crear un jefe de equipo, hasta que la administración los guarda o los desactiva. Briefings e informes. Las organizaciones nuevas eligen aquí una configuración de inicio."
                 ]
             },
@@ -538,7 +538,7 @@
         "label": "API & Webhooks",
         "tagline": "Integre WinProx con su software existente mediante API y webhooks.",
         "highlight": "WinProx no sustituye los sistemas IWMS o ERP existentes. Gracias a las API y webhooks, WinProx trabaja con ellos.",
-        "intro": "WinProx está pensado para que otro software use los mismos datos, avisos, tareas y controles de unidad que WinProx. Gestión y docs están en Ajustes → API. Iniciar sesión con Microsoft en el escritorio no es un enlace API: el otro software usa tokens, no SSO. Las solicitudes de permiso o compensación tienen eventos time.absence.* (sin API REST de escritura en este corte).",
+        "intro": "WinProx está pensado para que otro software use los mismos datos, avisos, tareas y controles de unidad que WinProx. Gestión y docs están en Ajustes → API. Iniciar sesión con Microsoft en el escritorio no es un enlace API: el otro software usa tokens, no SSO. Las solicitudes de vacaciones, recup u Otro tienen eventos time.absence.* (sin API REST de escritura en este corte).",
         "footer_left": "WinProx · info@winprox.app · API & Webhooks (Corporate)",
         "footer_right": "Véase también: Funciones y posibilidades · Ficha técnica",
         "left": [

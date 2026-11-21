@@ -20,7 +20,7 @@
                 },
                 {
                     "label": "Panoramica",
-                    "text": "Sotto Dashboard vedi i conteggi di segnalazioni aperte, attività aperte e (con Time) chi è presente ora. Clicchi su una scheda per andare alla schermata correlata. Le richieste aperte di ferie o recupero appaiono come scheda extra verso Time → Richieste, con il conteggio per tipo (1 Ferie, 1 Recupero, o entrambi)."
+                    "text": "Sotto Dashboard vedi i conteggi di segnalazioni aperte, attività aperte e (con Time) chi è presente ora. Clicchi su una scheda per andare alla schermata correlata. Le richieste aperte di ferie o recupero appaiono come scheda extra verso Time → Richieste, con il conteggio per tipo (es. 1 Ferie, 1 Recupero, 1 Altro)."
                 },
                 {
                     "label": "Metti sul desktop",
@@ -1155,8 +1155,8 @@
                     "text": "Dopo l’accesso vedi la tessera Il mio turno. Mostra solo i tuoi turni e assenze <strong>pubblicati</strong> del <strong>mese</strong> scelto, in tabella (giorni vuoti saltati). Un badge indica un turno appena pubblicato; aprendolo il badge sparisce. Un triangolo rosso accanto agli orari significa: non timbrato (dall’inizio previsto) o almeno 15 minuti in ritardo."
                 },
                 {
-                    "label": "Ferie / Recupero",
-                    "text": "Dopo l’accesso vedi il riquadro Ferie / Recupero. Richiedi ferie o recupero (dal–al, nota facoltativa, max 31 giorni, non nel passato). Le richieste aperte che si sovrappongono vengono rifiutate. Le tue richieste stanno sotto il modulo: puoi ritirare una aperta o approvata (non ancora iniziata); ferie approvate ripristinano il turno. La gestione decide in Time → Richieste; rifiutare chiede un motivo, approvare no. Non parte nessuna e-mail. In alto ci sono le ferie residue di quest’anno sul diritto, e dell’anno prossimo se c’è un diritto, più gli straordinari. Quest’anno fino a oggi: tempo lavorato meno il turno pubblicato, meno il recupero già in turno o in una richiesta aperta. Non è paga."
+                    "label": "Ferie / Assenza",
+                    "text": "Dopo l’accesso vedi il riquadro Ferie / Assenza. Richiedi ferie, recupero o (se configurato) un tipo in Altro (dal–al; per Altro prima il tipo; nota facoltativa, max 31 giorni, non nel passato). Le richieste aperte che si sovrappongono vengono rifiutate. Sotto il modulo ci sono le tue richieste: aperte o approvate (non ancora iniziate) puoi ritirarle; se era approvata, il turno torna. La gestione decide in Time → Richieste; il rifiuto richiede un motivo, l’approvazione no. Nessuna e-mail. In alto vedi le ferie residue di quest’anno del diritto, e dell’anno successivo se c’è un diritto, più gli straordinari. Quest’anno fino a oggi: tempo lavorato meno il turno pubblicato, meno recupero sul turno o come richiesta aperta. Non è paga."
                 },
                 {
                     "label": "Nuovi documenti e comunicazioni",
@@ -1938,7 +1938,7 @@
                 },
                 {
                     "label": "Assenza",
-                    "text": "I tipi di turno possono essere <strong>ferie</strong>, <strong>recupero</strong> o <strong>malattia</strong>. Quei codici riempiono l’intera giornata, non contano ore e non possono stare insieme al lavoro quel giorno. Gli esecutori possono richiedere ferie o recupero sul Clock Point (riquadro Ferie / Recupero); la gestione decide in Time → Richieste."
+                    "text": "I tipi di turno possono essere <strong>ferie</strong>, <strong>recupero</strong>, <strong>malattia</strong> o <strong>altro</strong>. Quei codici riempiono l’intera giornata, non contano ore e non possono stare con lavoro lo stesso giorno. Gli esecutori possono richiedere ferie, recupero o un tipo in Altro da Clock Point (riquadro Ferie / Assenza); la gestione decide in Time → Richieste. Altro non conta nel saldo ferie."
                 },
                 {
                     "label": "Pianificato vs timbrato",
@@ -1946,7 +1946,7 @@
                 },
                 {
                     "label": "Colonne delle ore a destra",
-                    "text": "A destra della griglia, ogni esecutore ha colonne di cifre con titolo verticale: <strong>Norma</strong> (norma contrattuale), <strong>Scarto</strong> (pianificato meno norma, con segno), <strong>Pianificato</strong>, <strong>Lavorato</strong> e per assenza <strong>Ferie</strong>, <strong>Recupero</strong> e <strong>Malattia</strong> (giorni più ore residue). <strong>Segnale</strong> mostra un numero e/o un punto esclamativo per blocchi incompleti o una timbratura aperta. Norma e scarto restano vuoti finché la norma non è affidabile. La norma settimanale (38 ore predefinita) si imposta sull’esecutore; la norma mensile segue la regola di lavoro — senza regola, lun–ven contano secondo la norma settimanale e i festivi seguono il regime delle festività — senza accordo, lo standard belga. È un conteggio, non un giudizio sull’orario di lavoro."
+                    "text": "A destra della griglia, ogni esecutore ha colonne di cifre con titolo verticale: <strong>Norma</strong> (norma contrattuale), <strong>Scarto</strong> (pianificato meno norma, con segno), <strong>Pianificato</strong>, <strong>Lavorato</strong> e per assenza <strong>Ferie</strong>, <strong>Recupero</strong>, <strong>Malattia</strong> e <strong>Altro</strong> (giorni più ore residue). <strong>Segnale</strong> mostra un numero e/o un punto esclamativo per blocchi incompleti o una timbratura aperta. Norma e scarto restano vuoti finché la norma non è affidabile. La norma settimanale (38 ore predefinita) si imposta sull’esecutore; la norma mensile segue la regola di lavoro — senza regola, lun–ven contano secondo la norma settimanale e i festivi seguono il regime delle festività — senza accordo, lo standard belga. È un conteggio, non un giudizio sull’orario di lavoro."
                 }
             ]
         },
@@ -1955,7 +1955,7 @@
             "actions": [
                 {
                     "label": "Tipo",
-                    "text": "Scegli <strong>Lavoro</strong> (inizio, fine, pausa) o un’assenza. Le assenze non hanno ore."
+                    "text": "Scegli <strong>Lavoro</strong> (inizio, fine, pausa) o un’assenza (ferie, recupero, malattia o altro). Le assenze non hanno ore. Per Altro scegli codice e nome (es. KV — permesso breve); non contano nel saldo ferie."
                 },
                 {
                     "label": "Aggiungi",
@@ -2010,7 +2010,7 @@
             "actions": [
                 {
                     "label": "Elenco",
-                    "text": "Time → <strong>Richieste</strong> mostra le richieste di ferie e recupero dal Clock Point. Nessuna e-mail, nessuna casella per l’esecutore. Un badge verde nella navigazione conta le richieste aperte. La dashboard mostra il conteggio per tipo (1 Ferie, 1 Recupero, o entrambi). Dopo la decisione vedi chi ha approvato o rifiutato."
+                    "text": "Time → <strong>Richieste</strong> mostra le richieste di ferie, recupero e Altro dal Clock Point. Nessuna e-mail, nessuna casella per l’esecutore. Un badge verde nella navigazione conta le richieste aperte. La dashboard mostra il conteggio per tipo (es. 1 Ferie, 1 Recupero, 1 Altro). Dopo la decisione vedi chi ha approvato o rifiutato."
                 },
                 {
                     "label": "Valuta",

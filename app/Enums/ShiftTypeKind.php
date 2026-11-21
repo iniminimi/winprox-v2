@@ -8,6 +8,8 @@ enum ShiftTypeKind: string
     case Leave = 'leave';
     case Recup = 'recup';
     case Sick = 'sick';
+    /** Tenant-labelled absences (klein verlet, omstandigheid, …) — not leave balance. */
+    case Other = 'other';
 
     public function isWork(): bool
     {
@@ -21,6 +23,12 @@ enum ShiftTypeKind: string
 
     public function isRequestableAbsence(): bool
     {
-        return $this === self::Leave || $this === self::Recup;
+        return $this === self::Leave || $this === self::Recup || $this === self::Other;
+    }
+
+    /** Sick and other never feed the replacement pool. */
+    public function allowsReplacementPool(): bool
+    {
+        return $this !== self::Sick && $this !== self::Other;
     }
 }
