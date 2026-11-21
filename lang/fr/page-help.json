@@ -327,7 +327,7 @@
             "actions": [
                 {
                     "label": "Qu’est-ce qu’un site ?",
-                    "text": "Un site est un lieu physique où vous travaillez. Ce peut être un bâtiment, un site d’entreprise, une adresse client ou un chantier.<br><br>Vous pouvez ensuite y rattacher des <strong>unités</strong> : salles, machines, toilettes, véhicules ou autres moyens, par exemple. Une unité peut avoir son propre QR code pour consulter des informations, signaler un problème ou enregistrer des données.<br><br>Conseil : créez d’abord le site. Ensuite, sur sa page de détail, gérez les unités, QR codes, documents et annonces."
+                    "text": "Un site est un lieu physique où vous travaillez. Ce peut être un bâtiment, un site d’entreprise, une adresse client ou un chantier.<br><br>Vous pouvez ensuite y rattacher des unités : salles, machines, toilettes, véhicules ou autres moyens, par exemple. Une unité peut avoir son propre QR code pour consulter des informations, signaler un problème ou enregistrer des données.<br><br>Conseil : créez d’abord le site. Ensuite, sur sa page de détail, gérez les unités, QR codes, documents et annonces."
                 },
                 {
                     "label": "Ajouter un site",
@@ -353,15 +353,15 @@
                 },
                 {
                     "label": "Déclaration de travaux (DDT)",
-                    "text": "Ce champ n’est visible que lorsque CIAO est actif.<br><br>Saisissez ici le numéro technique de la Déclaration de travaux ONSS liée à ce chantier. Le numéro compte 13 caractères.<br><br>Vous le trouvez :<br>• Sur le portail de la Sécurité sociale.<br>• Dans e-Box Enterprise.<br>• Sur le QR ou l’affiche sur le chantier.<br><br>Sans DDT valide (et sans adresse ou GPS), les pointages CIAO pour ce chantier sont ignorés.<br><br>Vous hésitez sur le numéro ? Demandez à la personne qui gère la déclaration."
+                    "text": "Ce champ n’est visible que lorsque CIAO est actif.<br><br>Saisissez ici le numéro technique de la Déclaration de travaux ONSS liée à ce chantier.<br><br>Le numéro compte 13 caractères et est lié à ce chantier précis.<br><br><strong>Où trouver ce numéro ?</strong><br>Vous pouvez le retrouver :<br>• Sur le portail de la Sécurité sociale.<br>• Dans e-Box Enterprise.<br>• Sur le QR ou l’affiche de la déclaration sur le chantier.<br><br>Important pour CIAO : pour traiter correctement les pointages, WinProx a besoin d’une DDT valide, avec l’adresse ou la position GPS du chantier.<br><br>Sans numéro valide ou sans les informations de lieu requises, les pointages CIAO pour ce chantier sont ignorés.<br><br>Vous hésitez sur le numéro ? Demandez à la personne qui gère la déclaration."
                 },
                 {
-                    "label": "Afficher les inactifs",
-                    "text": "Les sites que vous n’utilisez plus peuvent être désactivés. Ils quittent alors la liste ordinaire.<br><br>Activez <strong>Afficher les inactifs</strong> pour les revoir, les réactiver ou seulement les consulter.<br><br>Conseil : désactiver vaut souvent mieux que supprimer si vous voulez conserver l’historique."
+                    "label": "Afficher les sites inactifs",
+                    "text": "Vous n’utilisez plus un site ? Vous pouvez le <strong>Désactiver</strong>.<br><br>Le site quitte alors la liste ordinaire, mais n’est pas supprimé. L’historique est conservé.<br><br>Activez <strong>Afficher les inactifs</strong> pour rendre ces sites à nouveau visibles.<br><br>Vous pouvez alors :<br>• Les réactiver si vous voulez les réutiliser.<br>• Les ouvrir pour consulter les données existantes.<br><br>Conseil : désactiver vaut souvent mieux que supprimer. Vous conservez ainsi l’historique des sites que vous n’utilisez plus."
                 },
                 {
                     "label": "Traductions du site",
-                    "text": "Dans le formulaire de modification, vous pouvez adapter vous-même le nom du site par langue (NL, EN, FR, DE, ES, IT).<br><br>Utile si la traduction automatique de WinProx est incorrecte ou encore absente.<br><br>Enregistrer rend ce nom définitif pour cette langue."
+                    "text": "WinProx traduit automatiquement les noms de sites dans les langues disponibles.<br><br>Une traduction est incorrecte ou absente ? Vous pouvez adapter le nom vous-même dans le formulaire de modification.<br><br>Vous pouvez définir le nom par langue : néerlandais, anglais, français, allemand, espagnol et italien.<br><br>Sélectionnez la langue, saisissez le bon nom et enregistrez. Votre traduction adaptée devient alors le nom fixe pour cette langue."
                 }
             ]
         },

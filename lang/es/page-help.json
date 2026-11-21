@@ -327,7 +327,7 @@
             "actions": [
                 {
                     "label": "¿Qué es una ubicación?",
-                    "text": "Una ubicación es un lugar físico donde trabaja. Puede ser un edificio, una sede, una dirección de cliente o una obra.<br><br>Más adelante puede vincular <strong>unidades</strong> a cada ubicación: salas, máquinas, aseos, vehículos u otros recursos. Una unidad puede tener su propio código QR para ver información, hacer avisos o registrar datos.<br><br>Consejo: cree primero la ubicación. Después, en su página de detalle, gestione unidades, códigos QR, documentos y avisos."
+                    "text": "Una ubicación es un lugar físico donde trabaja. Puede ser un edificio, una sede, una dirección de cliente o una obra.<br><br>Más adelante puede vincular unidades a cada ubicación: salas, máquinas, aseos, vehículos u otros recursos. Una unidad puede tener su propio código QR para ver información, hacer avisos o registrar datos.<br><br>Consejo: cree primero la ubicación. Después, en su página de detalle, gestione unidades, códigos QR, documentos y avisos."
                 },
                 {
                     "label": "Añadir ubicación",
@@ -349,19 +349,19 @@
                 },
                 {
                     "label": "Pin GPS",
-                    "text": "Para algunas funciones, como visitas de trabajo con GPS en Time o CIAO, la ubicación debe estar exactamente en el mapa.<br><br>La dirección normal a veces no basta. Entonces puede fijar usted mismo las coordenadas GPS.<br><br><strong>¿Cómo define el pin GPS?</strong><br>1. Pulse el icono rojo de Google Maps.<br>2. Busque la dirección de la ubicación.<br>3. Mueva el pin rojo al punto exacto del mapa.<br>4. Copie las coordenadas.<br>5. Péguelas en WinProx.<br><br>Use este formato:<br>51.336167, 3.236306<br><br>El primer valor es la latitud; el segundo, la longitud.<br><br>Puede usar el mismo método para el pin GPS de una unidad concreta."
+                    "text": "Para algunas funciones, como visitas de trabajo con GPS en Time o CIAO, la ubicación debe estar exactamente en el mapa.<br><br>La dirección normal a veces no basta. Entonces puede fijar usted mismo las coordenadas GPS correctas.<br><br><strong>¿Cómo define el pin GPS?</strong><br>1. Pulse el icono rojo de Google Maps.<br>2. Busque la dirección de la ubicación.<br>3. Mueva el pin rojo al punto exacto del mapa.<br>4. Copie las coordenadas.<br>5. Péguelas en WinProx.<br><br>Use este formato:<br>51.336167, 3.236306<br><br>El primer valor es la latitud; el segundo, la longitud.<br><br>Puede usar el mismo método para el pin GPS de una unidad concreta."
                 },
                 {
                     "label": "Declaración de obras (DDT)",
-                    "text": "Este campo solo es visible cuando CIAO está activo.<br><br>Indique el número técnico de la Declaración de obras de la Seguridad Social de este lugar de trabajo. El número tiene 13 caracteres.<br><br>Lo encontrará:<br>• En el portal de la Seguridad Social.<br>• En e-Box Enterprise.<br>• En el QR o el cartel en obra.<br><br>Sin una DDT válida (y sin dirección o GPS), los fichajes CIAO de este lugar se omiten.<br><br>¿Dudas sobre el número? Pregunte a quien gestiona la declaración."
+                    "text": "Este campo solo es visible cuando CIAO está activo.<br><br>Indique el número técnico de la Declaración de obras de la Seguridad Social de este lugar de trabajo.<br><br>El número tiene 13 caracteres y está vinculado a ese lugar concreto.<br><br><strong>¿Dónde encuentra este número?</strong><br>Puede encontrarlo:<br>• En el portal de la Seguridad Social.<br>• En e-Box Enterprise.<br>• En el QR o el cartel de la declaración en obra.<br><br>Importante para CIAO: para procesar bien los fichajes, WinProx necesita una DDT válida junto con la dirección o la ubicación GPS del lugar de trabajo.<br><br>Si falta un número válido o la información de ubicación necesaria, los fichajes CIAO de ese lugar se omiten.<br><br>¿Dudas sobre el número? Pregunte a quien gestiona la declaración."
                 },
                 {
-                    "label": "Mostrar inactivas",
-                    "text": "Las ubicaciones que ya no usa puede desactivarlas. Desaparecen entonces de la lista habitual.<br><br>Active <strong>Mostrar inactivas</strong> para volver a verlas, reactivarlas o solo consultarlas.<br><br>Consejo: desactivar suele ser mejor que eliminar si quiere conservar el historial."
+                    "label": "Mostrar ubicaciones inactivas",
+                    "text": "¿Ya no usa una ubicación? Puede <strong>Desactivarla</strong>.<br><br>La ubicación desaparece de la lista habitual, pero no se elimina. Así se conserva el historial existente.<br><br>Active <strong>Mostrar inactivas</strong> para volver a verlas.<br><br>Entonces podrá:<br>• Reactivarlas si quiere usarlas de nuevo.<br>• Abrirlas para consultar los datos existentes.<br><br>Consejo: desactivar suele ser mejor que eliminar. Así conserva el historial de ubicaciones que ya no usa."
                 },
                 {
                     "label": "Traducciones de la ubicación",
-                    "text": "En el formulario de edición puede ajustar usted mismo el nombre por idioma (NL, EN, FR, DE, ES, IT).<br><br>Útil si la traducción automática de WinProx no es correcta o aún falta.<br><br>Guardar hace definitivo ese nombre para ese idioma."
+                    "text": "WinProx traduce automáticamente los nombres de ubicación a los idiomas disponibles.<br><br>¿Una traducción no es correcta o falta? Puede ajustar el nombre usted mismo en el formulario de edición.<br><br>Puede fijar el nombre por idioma: neerlandés, inglés, francés, alemán, español e italiano.<br><br>Seleccione el idioma, escriba el nombre correcto y guarde. Su traducción ajustada pasa a ser el nombre fijo de ese idioma."
                 }
             ]
         },

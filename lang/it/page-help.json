@@ -327,7 +327,7 @@
             "actions": [
                 {
                     "label": "Che cos’è una sede?",
-                    "text": "Una sede è un luogo fisico in cui lavorate. Può essere un edificio, un sito aziendale, un indirizzo del cliente o un cantiere.<br><br>A ogni sede potete poi collegare delle <strong>unità</strong>: locali, macchine, bagni, veicoli o altri mezzi. Un’unità può avere un proprio codice QR con cui gli utenti consultano informazioni, inviano segnalazioni o registrano dati.<br><br>Consiglio: create prima la sede. Poi, nella pagina di dettaglio, gestite unità, codici QR, documenti e annunci."
+                    "text": "Una sede è un luogo fisico in cui lavorate. Può essere un edificio, un sito aziendale, un indirizzo del cliente o un cantiere.<br><br>A ogni sede potete poi collegare delle unità: locali, macchine, bagni, veicoli o altri mezzi. Un’unità può avere un proprio codice QR con cui gli utenti consultano informazioni, inviano segnalazioni o registrano dati.<br><br>Consiglio: create prima la sede. Poi, nella pagina di dettaglio, gestite unità, codici QR, documenti e annunci."
                 },
                 {
                     "label": "Aggiungere una sede",
@@ -349,19 +349,19 @@
                 },
                 {
                     "label": "Pin GPS",
-                    "text": "Per alcune funzioni, come le visite di lavoro GPS in Time o CIAO, la sede deve stare esattamente sulla mappa.<br><br>L’indirizzo normale a volte non basta. In quel caso potete impostare voi le coordinate GPS.<br><br><strong>Come impostate il pin GPS?</strong><br>1. Fate clic sull’icona rossa di Google Maps.<br>2. Cercate l’indirizzo della sede.<br>3. Spostate il pin rosso sul punto esatto della mappa.<br>4. Copiate le coordinate.<br>5. Incollatele in WinProx.<br><br>Usate questo formato:<br>51.336167, 3.236306<br><br>Il primo valore è la latitudine, il secondo la longitudine.<br><br>Potete usare lo stesso metodo per il pin GPS di una singola unità."
+                    "text": "Per alcune funzioni, come le visite di lavoro GPS in Time o CIAO, la sede deve stare esattamente sulla mappa.<br><br>L’indirizzo normale a volte non basta. In quel caso potete impostare voi le coordinate GPS corrette.<br><br><strong>Come impostate il pin GPS?</strong><br>1. Fate clic sull’icona rossa di Google Maps.<br>2. Cercate l’indirizzo della sede.<br>3. Spostate il pin rosso sul punto esatto della mappa.<br>4. Copiate le coordinate.<br>5. Incollatele in WinProx.<br><br>Usate questo formato:<br>51.336167, 3.236306<br><br>Il primo valore è la latitudine, il secondo la longitudine.<br><br>Potete usare lo stesso metodo per il pin GPS di una singola unità."
                 },
                 {
                     "label": "Dichiarazione di lavori (DDT)",
-                    "text": "Questo campo è visibile solo quando CIAO è attivo.<br><br>Inserite qui il numero tecnico della Dichiarazione di lavori INPS/ONSS di questo luogo di lavoro. Il numero ha 13 caratteri.<br><br>Lo trovate:<br>• Nel portale della Sicurezza sociale.<br>• In e-Box Enterprise.<br>• Sul QR o sul cartello in cantiere.<br><br>Senza una DDT valida (e senza indirizzo o GPS), le timbrature CIAO di questo luogo vengono saltate.<br><br>Dubbi sul numero? Chiedete a chi gestisce la dichiarazione."
+                    "text": "Questo campo è visibile solo quando CIAO è attivo.<br><br>Inserite qui il numero tecnico della Dichiarazione di lavori ONSS di questo luogo di lavoro.<br><br>Il numero ha 13 caratteri ed è collegato a quel luogo specifico.<br><br><strong>Dove trovate questo numero?</strong><br>Lo potete trovare:<br>• Nel portale della Sicurezza sociale.<br>• In e-Box Enterprise.<br>• Sul QR o sul cartello della dichiarazione in cantiere.<br><br>Importante per CIAO: per elaborare correttamente le timbrature, WinProx serve una DDT valida insieme all’indirizzo o alla posizione GPS del luogo di lavoro.<br><br>Se manca un numero valido o le informazioni di luogo richieste, le timbrature CIAO di quel luogo vengono saltate.<br><br>Dubbi sul numero? Chiedete a chi gestisce la dichiarazione."
                 },
                 {
-                    "label": "Mostra inattive",
-                    "text": "Le sedi che non usate più potete disattivarle. Spariscono allora dall’elenco normale.<br><br>Attivate <strong>Mostra inattive</strong> per rivederle, riattivarle o solo consultarle.<br><br>Consiglio: disattivare è di solito meglio che eliminare se volete conservare la cronologia."
+                    "label": "Mostra sedi inattive",
+                    "text": "Non usate più una sede? Potete <strong>Disattivarla</strong>.<br><br>La sede sparisce dall’elenco normale, ma non viene eliminata. Così resta la cronologia esistente.<br><br>Attivate <strong>Mostra inattive</strong> per renderle di nuovo visibili.<br><br>Potete allora:<br>• Riattivarle se volete riusarle.<br>• Aprirle per consultare i dati esistenti.<br><br>Consiglio: disattivare è di solito meglio che eliminare. Così conservate la cronologia delle sedi che non usate più."
                 },
                 {
                     "label": "Traduzioni della sede",
-                    "text": "Nel modulo di modifica potete adattare voi il nome per lingua (NL, EN, FR, DE, ES, IT).<br><br>Utile se la traduzione automatica di WinProx non è corretta o manca ancora.<br><br>Salvare rende definitivo quel nome per quella lingua."
+                    "text": "WinProx traduce automaticamente i nomi delle sedi nelle lingue disponibili.<br><br>Una traduzione non è corretta o manca? Potete adattare il nome voi nel modulo di modifica.<br><br>Potete impostare il nome per lingua: olandese, inglese, francese, tedesco, spagnolo e italiano.<br><br>Selezionate la lingua, inserite il nome corretto e salvate. La vostra traduzione adattata diventa allora il nome fisso per quella lingua."
                 }
             ]
         },

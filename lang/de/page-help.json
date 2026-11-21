@@ -327,7 +327,7 @@
             "actions": [
                 {
                     "label": "Was ist ein Standort?",
-                    "text": "Ein Standort ist ein physischer Ort, an dem Sie arbeiten. Das kann ein Gebäude, ein Firmengelände, eine Kundenadresse oder eine Baustelle sein.<br><br>Jedem Standort können Sie später <strong>Units</strong> zuordnen. Das sind zum Beispiel Räume, Maschinen, Toiletten, Fahrzeuge oder andere Mittel. Eine Unit kann einen eigenen QR-Code haben, mit dem Nutzer Informationen sehen, Meldungen machen oder Daten erfassen.<br><br>Tipp: legen Sie zuerst den Standort an. Danach verwalten Sie auf der Detailseite Units, QR-Codes, Dokumente und Mitteilungen."
+                    "text": "Ein Standort ist ein physischer Ort, an dem Sie arbeiten. Das kann ein Gebäude, ein Firmengelände, eine Kundenadresse oder eine Baustelle sein.<br><br>Jedem Standort können Sie später Units zuordnen. Das sind zum Beispiel Räume, Maschinen, Toiletten, Fahrzeuge oder andere Mittel. Eine Unit kann einen eigenen QR-Code haben, mit dem Nutzer Informationen sehen, Meldungen machen oder Daten erfassen.<br><br>Tipp: legen Sie zuerst den Standort an. Danach verwalten Sie auf der Detailseite Units, QR-Codes, Dokumente und Mitteilungen."
                 },
                 {
                     "label": "Standort hinzufügen",
@@ -349,19 +349,19 @@
                 },
                 {
                     "label": "GPS-Pin",
-                    "text": "Für manche Funktionen, etwa GPS-Arbeitsbesuche in Time oder CIAO, muss der Standort genau auf der Karte sitzen.<br><br>Die normale Adresse reicht dafür manchmal nicht. Dann können Sie die GPS-Koordinaten selbst setzen.<br><br><strong>So setzen Sie den GPS-Pin:</strong><br>1. Klicken Sie auf das rote Google-Maps-Symbol.<br>2. Suchen Sie die Adresse des Standorts.<br>3. Verschieben Sie den roten Pin an die genaue Stelle auf der Karte.<br>4. Kopieren Sie die Koordinaten.<br>5. Fügen Sie sie in WinProx ein.<br><br>Verwenden Sie dieses Format:<br>51.336167, 3.236306<br><br>Der erste Wert ist die Breite, der zweite die Länge.<br><br>Dieselbe Vorgehensweise gilt für den GPS-Pin einer einzelnen Unit."
+                    "text": "Für manche Funktionen, etwa GPS-Arbeitsbesuche in Time oder CIAO, muss der Standort genau auf der Karte sitzen.<br><br>Die normale Adresse reicht dafür manchmal nicht. Dann können Sie die richtigen GPS-Koordinaten selbst setzen.<br><br><strong>So setzen Sie den GPS-Pin:</strong><br>1. Klicken Sie auf das rote Google-Maps-Symbol.<br>2. Suchen Sie die Adresse des Standorts.<br>3. Verschieben Sie den roten Pin an die genaue Stelle auf der Karte.<br>4. Kopieren Sie die Koordinaten.<br>5. Fügen Sie sie in WinProx ein.<br><br>Verwenden Sie dieses Format:<br>51.336167, 3.236306<br><br>Der erste Wert ist die Breite, der zweite die Länge.<br><br>Dieselbe Vorgehensweise gilt für den GPS-Pin einer einzelnen Unit."
                 },
                 {
                     "label": "Meldung von Arbeiten (DDT)",
-                    "text": "Dieses Feld ist nur sichtbar, wenn CIAO aktiv ist.<br><br>Tragen Sie hier die technische Nummer der LSS-Arbeitsmeldung für diese Arbeitsstelle ein. Die Nummer hat 13 Zeichen.<br><br>Sie finden die Nummer:<br>• Im Sozialversicherungsportal.<br>• In e-Box Enterprise.<br>• Auf dem QR-Code oder Aushang vor Ort.<br><br>Ohne gültige DDT (und ohne Adresse oder GPS) werden CIAO-Stempelungen für diese Arbeitsstelle übersprungen.<br><br>Unsicher bei der Nummer? Fragen Sie die Person, die die Meldung verwaltet."
+                    "text": "Dieses Feld ist nur sichtbar, wenn CIAO aktiv ist.<br><br>Tragen Sie hier die technische Nummer der LSS-Arbeitsmeldung für diese Arbeitsstelle ein.<br><br>Die Nummer hat 13 Zeichen und ist an diese konkrete Arbeitsstelle gebunden.<br><br><strong>Wo finden Sie diese Nummer?</strong><br>Sie finden sie:<br>• Im Sozialversicherungsportal.<br>• In e-Box Enterprise.<br>• Auf dem QR-Code oder Aushang der Meldung vor Ort.<br><br>Wichtig für CIAO: damit Stempelungen korrekt verarbeitet werden, braucht WinProx eine gültige DDT zusammen mit Adresse oder GPS-Position der Arbeitsstelle.<br><br>Fehlt eine gültige Nummer oder die nötige Ortsangabe, werden CIAO-Stempelungen für diese Arbeitsstelle übersprungen.<br><br>Unsicher bei der Nummer? Fragen Sie die Person, die die Meldung verwaltet."
                 },
                 {
-                    "label": "Inaktive anzeigen",
-                    "text": "Standorte, die Sie nicht mehr nutzen, können Sie deaktivieren. Sie verschwinden dann aus der normalen Liste.<br><br>Schalten Sie <strong>Inaktive anzeigen</strong> ein, um sie wiederzusehen, erneut zu aktivieren oder nur nachzuschlagen.<br><br>Tipp: Deaktivieren ist meist besser als Löschen, wenn Sie die Historie behalten wollen."
+                    "label": "Inaktive Standorte anzeigen",
+                    "text": "Nutzen Sie einen Standort nicht mehr? Dann können Sie ihn <strong>Deaktivieren</strong>.<br><br>Der Standort verschwindet danach aus der normalen Liste, wird aber nicht gelöscht. Die bestehende Geschichte bleibt erhalten.<br><br>Schalten Sie <strong>Inaktive anzeigen</strong> ein, um diese Standorte wieder sichtbar zu machen.<br><br>Dann können Sie sie:<br>• Erneut aktivieren, wenn Sie sie wieder nutzen wollen.<br>• Öffnen, um die vorhandenen Daten nachzuschlagen.<br><br>Tipp: Deaktivieren ist meist besser als Löschen. So behalten Sie die Historie von Standorten, die Sie nicht mehr nutzen."
                 },
                 {
                     "label": "Standort-Übersetzungen",
-                    "text": "Im Bearbeitungsformular können Sie den Standortnamen selbst je Sprache anpassen (NL, EN, FR, DE, ES, IT).<br><br>Nützlich, wenn die automatische Übersetzung von WinProx nicht stimmt oder noch fehlt.<br><br>Speichern macht diesen Namen für diese Sprache endgültig."
+                    "text": "WinProx übersetzt Standortnamen automatisch in die verfügbaren Sprachen.<br><br>Stimmt eine Übersetzung nicht oder fehlt sie? Dann können Sie den Namen selbst im Bearbeitungsformular anpassen.<br><br>Sie können den Namen je Sprache festlegen: Niederländisch, Englisch, Französisch, Deutsch, Spanisch und Italienisch.<br><br>Wählen Sie die Sprache, tragen Sie den richtigen Namen ein und speichern Sie. Ihre angepasste Übersetzung wird dann der feste Name für diese Sprache."
                 }
             ]
         },

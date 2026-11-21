@@ -327,7 +327,7 @@
             "actions": [
                 {
                     "label": "Wat is een locatie?",
-                    "text": "Een locatie is een fysieke plaats waar u werkt. Dat kan een gebouw, een bedrijfssite, een klantadres of een werf zijn.<br><br>Aan elke locatie kunt u later <strong>units</strong> koppelen. Dat zijn bijvoorbeeld ruimtes, machines, toiletten, voertuigen of andere middelen. Een unit kan een eigen QR-code hebben waarmee gebruikers informatie kunnen bekijken, meldingen doen of gegevens registreren.<br><br>Tip: maak eerst de locatie aan. Daarna kunt u op de detailpagina van die locatie de units, QR-codes, documenten en mededelingen beheren."
+                    "text": "Een locatie is een fysieke plaats waar u werkt. Dat kan een gebouw, een bedrijfssite, een klantadres of een werf zijn.<br><br>Aan elke locatie kunt u later units koppelen. Dat zijn bijvoorbeeld ruimtes, machines, toiletten, voertuigen of andere middelen. Een unit kan een eigen QR-code hebben waarmee gebruikers informatie kunnen bekijken, meldingen doen of gegevens registreren.<br><br>Tip: maak eerst de locatie aan. Daarna kunt u op de detailpagina van die locatie de units, QR-codes, documenten en mededelingen beheren."
                 },
                 {
                     "label": "Locatie toevoegen",
@@ -353,15 +353,15 @@
                 },
                 {
                     "label": "Aangifte van werken (DDT)",
-                    "text": "Dit veld is alleen zichtbaar wanneer CIAO actief is.<br><br>Vul hier het technische nummer in van de RSZ-Aangifte van werken die bij deze werkplaats hoort. Het nummer bestaat uit 13 tekens.<br><br>U vindt dit nummer:<br>• In het socialezekerheidsportaal.<br>• In e-Box Enterprise.<br>• Op de QR-code of affiche op de werf.<br><br>Zonder een geldige DDT (én zonder adres of GPS) worden CIAO-prikken voor deze werkplaats overgeslagen.<br><br>Twijfelt u over het juiste nummer? Vraag het na bij de persoon die de aangifte beheert."
+                    "text": "Dit veld is alleen zichtbaar wanneer CIAO actief is.<br><br>Vul hier het technische nummer in van de RSZ-Aangifte van werken die bij deze werkplaats hoort.<br><br>Het nummer bestaat uit 13 tekens en is gekoppeld aan de specifieke werkplaats.<br><br><strong>Waar vindt u dit nummer?</strong><br>U kunt het terugvinden:<br>• Op het portaal van de Sociale Zekerheid.<br>• In e-Box Enterprise.<br>• Op de QR-code of affiche van de aangifte op de werf.<br><br>Belangrijk voor CIAO: om prikregistraties correct te verwerken, heeft WinProx een geldige DDT nodig, samen met het adres of de GPS-locatie van de werkplaats.<br><br>Ontbreekt een geldig nummer of de vereiste locatie-informatie? Dan worden de CIAO-prikken voor die werkplaats overgeslagen.<br><br>Twijfelt u over het juiste nummer? Vraag het na bij de persoon die de aangifte beheert."
                 },
                 {
-                    "label": "Inactieve tonen",
-                    "text": "Locaties die u niet meer gebruikt, kunt u deactiveren. Ze verdwijnen dan uit de gewone lijst.<br><br>Zet <strong>Inactieve tonen</strong> aan om ze terug te zien, opnieuw te activeren of alleen te raadplegen.<br><br>Tip: deactiveren is meestal beter dan verwijderen als u de geschiedenis wilt bewaren."
+                    "label": "Inactieve locaties tonen",
+                    "text": "Gebruikt u een locatie niet meer? Dan kunt u ze <strong>Deactiveren</strong>.<br><br>De locatie verdwijnt daarna uit de gewone lijst, maar wordt niet verwijderd. Zo blijft de bestaande geschiedenis bewaard.<br><br>Schakel <strong>Inactieve tonen</strong> in om deze locaties opnieuw zichtbaar te maken.<br><br>U kunt ze dan:<br>• Opnieuw activeren als u ze weer wilt gebruiken.<br>• Openen om de bestaande gegevens te raadplegen.<br><br>Tip: deactiveren is meestal beter dan verwijderen. Zo behoudt u de historiek van locaties die u niet langer gebruikt."
                 },
                 {
                     "label": "Locatievertalingen",
-                    "text": "In het bewerkformulier kunt u de naam van de locatie per taal (NL, EN, FR, DE, ES, IT) zelf aanpassen.<br><br>Dat is handig als de automatische vertaling van WinProx niet klopt of nog ontbreekt.<br><br>Opslaan maakt die naam definitief voor die taal."
+                    "text": "WinProx vertaalt locatienamen automatisch naar de beschikbare talen.<br><br>Klopt een vertaling niet of ontbreekt ze? Dan kunt u de naam zelf aanpassen in het bewerkformulier.<br><br>U kunt de naam per taal instellen: Nederlands, Engels, Frans, Duits, Spaans en Italiaans.<br><br>Selecteer de gewenste taal, vul de juiste naam in en sla op. Uw aangepaste vertaling wordt dan de vaste naam voor die taal."
                 }
             ]
         },
@@ -586,11 +586,35 @@
             "actions": [
                 {
                     "label": "Collega-gebruikers",
-                    "text": "Beheer administratieve medewerkers die vooral op een pc werken. Zij melden zich aan met e-mail en wachtwoord, of via **Inloggen met Microsoft** (het Microsoft-e-mailadres moet overeenkomen met het bestaande WinProx-account; er wordt geen nieuw account aangemaakt). Een beheerder is de hoofdgebruiker die bedrijfsgegevens kan wijzigen. Meerdere beheerders zijn mogelijk. Collega's (beheerder en medewerker) en uitvoerders delen het plaatslimiet van je abonnement. Uitvoerders gebruiken geen Microsoft-aanmelding (Clock Point-QR). Optioneel wijs je collega's vestigingen toe (leeg = alle vestigingen in de backoffice)."
+                    "text": "Hier beheert u de collega’s die in WinProx werken op een computer. Zij melden zich aan met een e-mailadres en een wachtwoord.<br><br>Uitvoerders op de werkvloer staan hier niet. Die werken via de QR-code op de prikklok, zonder e-mailaccount.<br><br>Per collega ziet u de naam, het e-mailadres, de rol en of het account actief is."
                 },
                 {
-                    "label": "Prikklok-team (collega's)",
-                    "text": "Collega's die zelf moeten inklokken krijgen onder Backoffice → bewerken een **Prikklok-team**. WinProx maakt dan automatisch een gekoppeld uitvoerderprofiel (naam uit het collega-account). Dat profiel telt niet dubbel als licentie. Inklokken verloopt via Clock Point (naam + icoon)."
+                    "label": "Rollen",
+                    "text": "Er zijn twee rollen.<br><br>• Beheerder: mag de organisatie beheren, ook collega’s, bedrijfsgegevens en het abonnement. U kunt meerdere beheerders hebben.<br>• Medewerker: werkt mee in WinProx, maar beheert geen accounts, bedrijfsgegevens of het abonnement."
+                },
+                {
+                    "label": "Een collega toevoegen",
+                    "text": "Klik op Gebruiker toevoegen. Vul de naam, het werk-e-mailadres, de taal en de rol in.<br><br>Kies een wachtwoord, of vink aan dat WinProx meteen een mail stuurt. Daarmee stelt de collega zelf een wachtwoord in.<br><br>Bij een bestaande collega laat u de wachtwoordvelden leeg als het wachtwoord hetzelfde mag blijven.<br><br>U kunt ook aanvinken dat de collega een e-mail krijgt bij elke nieuwe melding via de QR-code."
+                },
+                {
+                    "label": "Locaties",
+                    "text": "Bij een medewerker kunt u vestigingen aanvinken. Laat u die leeg, dan ziet de medewerker alle locaties. Een beheerder ziet altijd alle locaties."
+                },
+                {
+                    "label": "Inloggen met Microsoft",
+                    "text": "Staat op het aanmeldscherm Inloggen met Microsoft, dan kan een collega dat gebruiken. Het Microsoft-adres moet hetzelfde zijn als het WinProx-account. Er wordt geen nieuw account gemaakt.<br><br>Uitvoerders gebruiken dit niet. Zij melden zich aan via de QR-code op de prikklok."
+                },
+                {
+                    "label": "Prikklok",
+                    "text": "Moet een collega ook inklokken? Kies dan bij bewerken een Prikklok-team. Dit veld verschijnt alleen als de prikklok aanstaat.<br><br>WinProx maakt dan een uitvoerdersprofiel met dezelfde naam. Inklokken gebeurt op de prikklok, met naam en icoon.<br><br>Dat profiel telt niet als extra licentie. De collega blijft één persoon."
+                },
+                {
+                    "label": "Actief of inactief",
+                    "text": "Deactiveer een collega die niet meer mag aanmelden. Het account blijft bestaan en u kunt het later weer activeren.<br><br>Uw eigen account herkent u aan Jij. Dat kunt u hier niet uitzetten."
+                },
+                {
+                    "label": "Licenties",
+                    "text": "Collega’s en uitvoerders delen de licenties van uw abonnement. Een collega die ook inklokt, telt als één licentie, niet als twee."
                 }
             ]
         },

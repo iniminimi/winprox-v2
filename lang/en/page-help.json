@@ -327,7 +327,7 @@
             "actions": [
                 {
                     "label": "What is a location?",
-                    "text": "A location is a physical place where you work. That can be a building, a company site, a customer address or a construction site.<br><br>You can later attach <strong>units</strong> to each location. Those are rooms, machines, toilets, vehicles or other assets, for example. A unit can have its own QR code so users can view information, submit reports or register data.<br><br>Tip: create the location first. Then, on that location’s detail page, manage units, QR codes, documents and announcements."
+                    "text": "A location is a physical place where you work. That can be a building, a company site, a customer address or a construction site.<br><br>You can later attach units to each location. Those are rooms, machines, toilets, vehicles or other assets, for example. A unit can have its own QR code so users can view information, submit reports or register data.<br><br>Tip: create the location first. Then, on that location’s detail page, manage units, QR codes, documents and announcements."
                 },
                 {
                     "label": "Add a location",
@@ -349,19 +349,19 @@
                 },
                 {
                     "label": "GPS pin",
-                    "text": "For some features, such as GPS work visits in Time or CIAO, the location must sit exactly on the map.<br><br>A normal address is sometimes not precise enough. In that case you can set the GPS coordinates yourself.<br><br><strong>How do you set the GPS pin?</strong><br>1. Click the red Google Maps icon.<br>2. Search for the location address.<br>3. Move the red pin to the exact place on the map.<br>4. Copy the coordinates.<br>5. Paste them in WinProx.<br><br>Use this format:<br>51.336167, 3.236306<br><br>The first value is latitude, the second longitude.<br><br>You can use the same approach to set the GPS pin of an individual unit."
+                    "text": "For some features, such as GPS work visits in Time or CIAO, the location must sit exactly on the map.<br><br>A normal address is sometimes not precise enough. In that case you can set the correct GPS coordinates yourself.<br><br><strong>How do you set the GPS pin?</strong><br>1. Click the red Google Maps icon.<br>2. Search for the location address.<br>3. Move the red pin to the exact place on the map.<br>4. Copy the coordinates.<br>5. Paste them in WinProx.<br><br>Use this format:<br>51.336167, 3.236306<br><br>The first value is latitude, the second longitude.<br><br>You can use the same approach to set the GPS pin of an individual unit."
                 },
                 {
                     "label": "Declaration of works (DDT)",
-                    "text": "This field is only visible when CIAO is active.<br><br>Enter the technical number of the NSSO Declaration of works for this workplace. The number has 13 characters.<br><br>You find this number:<br>• On the Social Security portal.<br>• In e-Box Enterprise.<br>• On the QR code or poster on site.<br><br>Without a valid DDT (and without address or GPS), CIAO clock punches for this workplace are skipped.<br><br>Unsure about the number? Ask the person who manages the declaration."
+                    "text": "This field is only visible when CIAO is active.<br><br>Enter the technical number of the NSSO Declaration of works for this workplace.<br><br>The number has 13 characters and is linked to that specific workplace.<br><br><strong>Where do you find this number?</strong><br>You can find it:<br>• On the Social Security portal.<br>• In e-Box Enterprise.<br>• On the declaration QR code or poster on site.<br><br>Important for CIAO: to process clock punches correctly, WinProx needs a valid DDT together with the workplace address or GPS location.<br><br>If a valid number or the required location information is missing, CIAO punches for that workplace are skipped.<br><br>Unsure about the number? Ask the person who manages the declaration."
                 },
                 {
-                    "label": "Show inactive",
-                    "text": "Locations you no longer use can be deactivated. They then leave the normal list.<br><br>Turn on <strong>Show inactive</strong> to see them again, reactivate them or just look them up.<br><br>Tip: deactivating is usually better than deleting if you want to keep the history."
+                    "label": "Show inactive locations",
+                    "text": "No longer using a location? You can <strong>Deactivate</strong> it.<br><br>The location then leaves the normal list, but is not deleted. That keeps the existing history.<br><br>Turn on <strong>Show inactive</strong> to make these locations visible again.<br><br>You can then:<br>• Activate them again if you want to use them.<br>• Open them to consult the existing data.<br><br>Tip: deactivating is usually better than deleting. That way you keep the history of locations you no longer use."
                 },
                 {
                     "label": "Location translations",
-                    "text": "In the edit form you can adjust the location name yourself per language (NL, EN, FR, DE, ES, IT).<br><br>Handy if WinProx’s automatic translation is wrong or still missing.<br><br>Saving makes that name final for that language."
+                    "text": "WinProx translates location names automatically into the available languages.<br><br>Is a translation wrong or missing? You can adjust the name yourself in the edit form.<br><br>You can set the name per language: Dutch, English, French, German, Spanish and Italian.<br><br>Select the language, enter the correct name and save. Your adjusted translation then becomes the fixed name for that language."
                 }
             ]
         },

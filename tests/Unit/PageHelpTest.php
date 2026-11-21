@@ -236,12 +236,13 @@ it('laadt paginahulp voor Categorieën en Locaties apart', function (): void {
 
     expect($categories)->not->toBeNull()
         ->and($categories['title'])->toBe('Hulp — Categorieën')
-        ->and(collect($categories['actions'])->pluck('label')->all())->toContain('Categorieën')
+        ->and(collect($categories['actions'])->pluck('label')->all())->toContain('Waarvoor dient een categorie?')
         ->and(collect($categories['actions'])->pluck('label')->all())->not->toContain('Locatie toevoegen')
         ->and($locations)->not->toBeNull()
         ->and($locations['title'])->toBe('Hulp — Locaties')
         ->and(collect($locations['actions'])->pluck('label')->all())->toContain('Locatie toevoegen')
         ->and(collect($locations['actions'])->pluck('label')->all())->toContain('GPS-pin')
+        ->and(collect($locations['actions'])->pluck('label')->all())->toContain('Inactieve locaties tonen')
         ->and(collect($locations['actions'])->pluck('label')->all())->not->toContain('Categorieën');
 });
 
