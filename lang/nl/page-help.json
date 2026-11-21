@@ -1536,37 +1536,37 @@
             "title": "Hulp — Aanwezigheid",
             "actions": [
                 {
-                    "label": "Dashboard",
-                    "text": "Bovenaan ziet u live KPI's: <strong>Ingeklokt</strong> (iedereen met een open dienst), <strong>Actief</strong> (ingeklokt en niet op pauze), <strong>Pauze</strong>, <strong>Niet ingeklokt</strong> en <strong>Aandacht</strong>. Ingeklokt = Actief + Pauze. Klik op een tegel om te filteren. <strong>Aandacht</strong> telt evacuatielijst-raadplegingen van vandaag; Time → Alarmen bewaart de volledige lijst."
+                    "label": "Wat vindt u op dit scherm?",
+                    "text": "Hier ziet u in één oogopslag wie momenteel aan het werk is en wie niet is ingeklokt. Het overzicht wordt automatisch bijgewerkt. U hoeft de pagina dus niet zelf te vernieuwen.<br><br>Bovenaan vindt u vijf tegels:<br>• Ingeklokt: iedereen met een open dienst. Dit zijn zowel de uitvoerders die aan het werk zijn als degenen die pauze hebben.<br>• Actief: uitvoerders die ingeklokt zijn en momenteel niet op pauze staan.<br>• Pauze: uitvoerders die ingeklokt zijn en op pauze staan.<br>• Niet ingeklokt: actieve uitvoerders die momenteel geen open dienst hebben.<br>• Aandacht: hier vindt u situaties die mogelijk nagekeken moeten worden. Bijvoorbeeld iemand die te lang ingeklokt is, geen pauze heeft genomen, zich te snel heeft verplaatst, tijdens verlof heeft ingeklokt of de evacuatielijst heeft geraadpleegd. Klik op deze tegel om naar Alarmen te gaan.<br><br>Klik op Actief, Pauze of Niet ingeklokt om alleen die groep te bekijken. Met Ingeklokt keert u terug naar het volledige overzicht van ingeklokte uitvoerders.<br><br>Op het aanwezigheidsbord vindt u twee kolommen:<br>• Aanwezig: uitvoerders met een open dienst.<br>• Afwezig / Extra actie: uitvoerders die niet zijn ingeklokt of waarvoor een extra actie mogelijk nodig is.<br><br>Bij elke ingeklokte uitvoerder ziet u de naam, het team, het tijdstip van inklokken en de gewerkte tijd.<br><br>Staat er Pauze, dan is de uitvoerder momenteel met pauze. Staat er Aan het werk, dan is die persoon op een werkadres.<br><br>Een uitroepteken wijst op iets dat aandacht vraagt. Bijvoorbeeld wanneer iemand tijdens een goedgekeurde verlofperiode heeft ingeklokt."
                 },
                 {
                     "label": "Weergave",
-                    "text": "Kies <strong>Board</strong> (live lijst), <strong>Teams</strong> (per team uitklappen) of <strong>Locaties</strong> (ingeklokt per vestiging)."
+                    "text": "Onder de filters kiest u hoe u de aanwezigheid wilt bekijken.<br><br>• Board: een live overzicht met wie aanwezig is en wie niet is ingeklokt. Dit is de handigste weergave om de dagelijkse aanwezigheid op te volgen.<br>• Teams: bekijk de aanwezigheid per team. U kunt elk team openklappen om te zien hoeveel uitvoerders actief zijn, pauze hebben of niet zijn ingeklokt.<br>• Locaties: bekijk wie er per vestiging is ingeklokt. Met Teams tonen krijgt u ook de teams van die locatie te zien."
                 },
                 {
-                    "label": "Filters",
-                    "text": "Verfijn op team, locatie, clock point of zoek op naam. Status filtert u via de tegels bovenaan."
+                    "label": "Zoeken en filteren",
+                    "text": "Met de filters vindt u snel de juiste uitvoerders:<br>• Zoek medewerker: zoek op naam.<br>• Team: kies een specifiek team of Alle teams.<br>• Locatie: kies een vestiging of Alle locaties.<br>• Clock Point: kies een specifiek aanmeldpunt of Alle clock points.<br><br>Selecteert u een locatie of Clock Point? Dan ziet u alleen de uitvoerders die daar zijn ingeklokt.<br><br>Uitvoerders die niet zijn ingeklokt, verdwijnen dan uit het overzicht. Er is voor hen immers geen locatie of Clock Point beschikbaar."
                 },
                 {
-                    "label": "Urenoverzicht",
-                    "text": "Klik op een uitvoerder om Time → Uren te openen, gefilterd op die persoon voor de <strong>laatste drie weken</strong>."
+                    "label": "De uren van een uitvoerder bekijken",
+                    "text": "Wilt u de geklokte uren van iemand bekijken?<br><br>Klik op de naam van de uitvoerder. U komt dan rechtstreeks bij Geklokte uren, met de gegevens van die persoon over de laatste drie weken."
                 },
                 {
-                    "label": "Shift sluiten",
-                    "text": "Sluit een open shift met de huidige tijd wanneer iemand is vergeten uit te klokken. De reden gaat in het auditlog. Heeft het team een minimumpauze en duurt de dienst minstens 4 uur, dan telt die op de urenstaat (geen extra CIAO-event)."
-                },
-                {
-                    "label": "Clock Point QR",
-                    "text": "Uitvoerders klokken in en uit via de QR-sticker op een clock point (<code>/time/…</code>). Identificatie gebeurt met naam en icoon (optioneel pincode of biometrie) op één gsm — geen aparte login."
+                    "label": "Een shift sluiten",
+                    "text": "Is iemand vergeten uit te klokken? Dan kunt u de openstaande shift zelf afsluiten.<br><br>Klik bij de betreffende uitvoerder op Shift sluiten.<br><br>De shift wordt afgesloten op het huidige tijdstip. U vult ook een reden in. Die reden wordt bewaard bij de registratie.<br><br>Heeft het team een ingestelde minimumpauze en duurt de shift minstens vier uur? Dan wordt die pauze automatisch meegerekend in de urenregistratie."
                 },
                 {
                     "label": "Manueel inklokken",
                     "requires_facility": true,
-                    "text": "Beheerder en medewerker kunnen een uitvoerder <strong>manueel inklokken</strong> op het juiste Clock Point (bijvoorbeeld gsm vergeten). Er wordt geen toestel gekoppeld. Verplichte reden gaat naar het auditlog. Op aanwezigheid, uren en Clock Point verschijnt de pil <strong>Manueel ingeklokt</strong>. Uitklokken later via de QR of via Shift sluiten."
+                    "text": "Heeft een uitvoerder zijn gsm niet bij of lukt het niet om de QR-code te scannen? Dan kunt u die persoon zelf manueel inklokken.<br><br>Klik op Manueel inklokken en kies:<br>• De uitvoerder.<br>• Het Clock Point waarop de persoon moet inklokken.<br>• Een reden voor de manuele registratie.<br><br>WinProx koppelt hiervoor geen toestel aan de uitvoerder.<br><br>Na het inklokken verschijnt bij die persoon het label Manueel ingeklokt. U ziet hetzelfde label ook bij de geklokte uren en op het Clock Point.<br><br>Uitklokken gebeurt later via een nieuwe QR-scan of u sluit de shift zelf af via Shift sluiten."
+                },
+                {
+                    "label": "Hoe klokken uitvoerders in en uit?",
+                    "text": "Uitvoerders gebruiken hiervoor de QR-code van een Clock Point.<br><br>Ze scannen de code met hun gsm en kiezen vervolgens hun naam en icoon. Afhankelijk van uw instellingen moeten ze ook een pincode of passkey invoeren.<br><br>Een afzonderlijk account voor de prikklok is niet nodig.<br><br>Belangrijk: elke in- of uitklokbeweging vraagt een nieuwe QR-scan. Een eerder geopende browserpagina of de snelkoppeling op het startscherm volstaat niet. De uitvoerder moet telkens opnieuw de QR-code op de locatie scannen."
                 },
                 {
                     "label": "Evacuatielijst",
-                    "text": "Als de evacuatielijst in Instellingen aanstaat (standaard uit), staat ze op het Clock Point-portaal na aanmelden (tegel Evacuatielijst). Geen aparte QR. Voor de lijst bevestigt de uitvoerder dat de raadpleging uitzonderlijk is en wordt gelogd (voornaam, naam, datum en uur). Raadplegingen van vandaag lichten <strong>Aandacht</strong> op (aanwezigheid en dashboard). Time → Alarmen houdt de volledige lijst (datum en uur, nieuwste bovenaan)."
+                    "text": "Met de evacuatielijst kunt u bij een noodgeval nagaan wie mogelijk aanwezig is in uw organisatie.<br><br>Deze functie staat standaard uit. U activeert ze via:<br><br>Instellingen → Prikklok-beveiliging → Evacuatielijst op Clock Point.<br><br>Na het aanmelden op een Clock Point zien uitvoerders vervolgens de tegel Evacuatielijst.<br><br>Voordat ze de lijst kunnen openen, moeten ze bevestigen dat ze dit uitzonderlijk doen.<br><br>Elke raadpleging wordt geregistreerd met de voornaam, naam, datum en het tijdstip.<br><br>Een raadpleging van vandaag verschijnt automatisch bij Aandacht. De volledige historiek, inclusief raadplegingen van eerdere dagen, vindt u terug bij Alarmen."
                 }
             ]
         },

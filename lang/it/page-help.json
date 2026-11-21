@@ -1533,40 +1533,40 @@
             ]
         },
         "time.presence": {
-            "title": "Aiuto — Presenze",
+            "title": "Aiuto — Presenza",
             "actions": [
                 {
-                    "label": "Dashboard",
-                    "text": "KPI live in alto: <strong>Timbrato</strong> (tutti con turno aperto), <strong>Attivo</strong> (timbrato e non in pausa), <strong>Pausa</strong>, <strong>Non timbrato</strong> e <strong>Attenzione</strong>. Timbrato = Attivo + Pausa. Clicca una tessera per filtrare. <strong>Attenzione</strong> conta le consultazioni di oggi; Time → Allarmi conserva l’elenco completo."
+                    "label": "Che cosa trova in questa schermata?",
+                    "text": "Qui vede a colpo d’occhio chi sta lavorando adesso e chi non ha timbrato. La panoramica si aggiorna da sola. Non deve quindi ricaricare la pagina.<br><br>In alto trova cinque riquadri:<br>• Timbrato: tutte le persone con un turno aperto. Sono gli esecutori che stanno lavorando e quelli in pausa.<br>• Attivo: esecutori timbrati che in questo momento non sono in pausa.<br>• Pausa: esecutori timbrati che sono in pausa.<br>• Non timbrato: esecutori attivi che in questo momento non hanno un turno aperto.<br>• Attenzione: situazioni che forse vanno controllate. Per esempio qualcuno che è timbrato da troppo tempo, non ha fatto pausa, si è spostato troppo in fretta, ha timbrato durante le ferie o ha consultato l’elenco evacuazione. Faccia clic su questo riquadro per andare ad Allarmi.<br><br>Faccia clic su Attivo, Pausa o Non timbrato per vedere solo quel gruppo. Con Timbrato torna alla panoramica completa degli esecutori timbrati.<br><br>Sulla bacheca della presenza trova due colonne:<br>• Presente: esecutori con un turno aperto.<br>• Assente / Azione extra: esecutori che non hanno timbrato o per i quali può servire un’azione in più.<br><br>Per ogni esecutore timbrato vede il nome, il team, l’ora di timbratura e il tempo lavorato.<br><br>Se c’è scritto Pausa, l’esecutore è in pausa. Se c’è scritto Al lavoro, quella persona è in un luogo di lavoro.<br><br>Un punto esclamativo segnala qualcosa che richiede attenzione. Per esempio quando qualcuno ha timbrato durante ferie approvate."
                 },
                 {
                     "label": "Vista",
-                    "text": "Scegli <strong>Bacheca</strong> (elenco live), <strong>Team</strong> (apri per squadra) o <strong>Sedi</strong> (timbrati per sede)."
+                    "text": "Sotto i filtri sceglie come vedere la presenza.<br><br>• Bacheca: una panoramica in diretta di chi è presente e chi non ha timbrato. È la vista più pratica per seguire la presenza del giorno.<br>• Team: la presenza per team. Può aprire ogni team per vedere quanti esecutori sono attivi, in pausa o non timbrati.<br>• Sedi: chi ha timbrato in ogni sede. Con Mostra team vede anche i team di quella sede."
                 },
                 {
-                    "label": "Filtri",
-                    "text": "Filtra per squadra, sede, clock point o cerca per nome. Lo stato si filtra dalle tessere in alto."
+                    "label": "Cercare e filtrare",
+                    "text": "Con i filtri trova presto gli esecutori giusti:<br>• Cerca lavoratore: cerchi per nome.<br>• Team: scelga un team oppure Tutti i team.<br>• Sede: scelga una sede oppure Tutte le sedi.<br>• Clock Point: scelga un Clock Point oppure Tutti i clock points.<br><br>Seleziona una sede o un Clock Point? Allora vede solo gli esecutori timbrati lì.<br><br>Gli esecutori che non hanno timbrato spariscono dalla panoramica. Per loro non c’è una sede né un Clock Point."
                 },
                 {
-                    "label": "Riepilogo ore",
-                    "text": "Fai clic su un esecutore per aprire Time → Ore, filtrato su quella persona per le <strong>ultime tre settimane</strong>."
+                    "label": "Vedere le ore di un esecutore",
+                    "text": "Vuole vedere le ore timbrate di qualcuno?<br><br>Faccia clic sul nome dell’esecutore. Arriva direttamente a Ore timbrate, con i dati di quella persona delle ultime tre settimane."
                 },
                 {
-                    "label": "Chiudi turno",
-                    "text": "Chiuda un turno aperto all’ora attuale se qualcuno ha dimenticato di timbrare l’uscita. Il motivo va nel log di audit. Se il team ha una pausa minima e il turno dura almeno 4 ore, conta sul foglio ore (nessun evento CIAO extra)."
-                },
-                {
-                    "label": "QR Clock Point",
-                    "text": "Gli esecutori timbrano tramite l'adesivo QR su un clock point (<code>/time/…</code>). Identificazione con nome e icona (PIN o biometria opzionali) su un solo telefono — nessun accesso separato."
+                    "label": "Chiudere un turno",
+                    "text": "Qualcuno ha dimenticato di timbrare l’uscita? Può chiudere Lei il turno aperto.<br><br>Faccia clic su Chiudi turno accanto a quell’esecutore.<br><br>Il turno si chiude all’ora attuale. Indica anche un motivo. Quel motivo resta registrato.<br><br>Il team ha una pausa minima e il turno dura almeno quattro ore? Allora quella pausa viene conteggiata automaticamente nel registro ore."
                 },
                 {
                     "label": "Timbratura manuale",
                     "requires_facility": true,
-                    "text": "Un amministratore o un collaboratore può <strong>timbrare manualmente un esecutore</strong> sul Clock Point corretto (ad es. telefono dimenticato). Nessun dispositivo viene collegato. Il motivo obbligatorio va nel log di audit. Presenza, ore e Clock Point mostrano la pillola <strong>Timbrato manualmente</strong>. Timbrare l’uscita più tardi via QR o Chiudi turno."
+                    "text": "Un esecutore non ha il telefono, o non riesce a scansionare il codice QR? Può timbrarlo Lei.<br><br>Faccia clic su Timbratura manuale e scelga:<br>• L’esecutore.<br>• Il Clock Point in cui la persona deve timbrare.<br>• Un motivo per la registrazione manuale.<br><br>WinProx non collega un dispositivo all’esecutore per questo.<br><br>Dopo la timbratura, accanto a quella persona compare l’etichetta Timbrato manualmente. Vede la stessa etichetta nelle ore timbrate e sul Clock Point.<br><br>L’uscita avviene più tardi con una nuova scansione del codice QR, oppure chiude il turno con Chiudi turno."
+                },
+                {
+                    "label": "Come timbrano gli esecutori?",
+                    "text": "Gli esecutori usano il codice QR di un Clock Point.<br><br>Scansionano il codice con il telefono e poi scelgono nome e icona. In base alle impostazioni inseriscono anche un PIN o una passkey.<br><br>Non serve un account a parte per la timbratrice.<br><br>Importante: ogni entrata o uscita richiede una nuova scansione del codice QR. Una pagina del browser già aperta, o il collegamento nella schermata iniziale, non basta. L’esecutore deve scansionare di nuovo il codice QR sul posto."
                 },
                 {
                     "label": "Elenco evacuazione",
-                    "text": "Se l’elenco evacuazione è attivo in Impostazioni (disattivato di default), è sul portale Clock Point dopo l’accesso (riquadro Elenco evacuazione). Nessun QR separato. Prima dell’elenco l’esecutore conferma che la consultazione è eccezionale e viene registrata (nome, cognome, data e ora). Le consultazioni di oggi accendono <strong>Attenzione</strong> (presenza e dashboard). Time → Allarmi conserva l’elenco completo (data e ora, la più recente in alto)."
+                    "text": "Con l’elenco evacuazione può verificare, in un’emergenza, chi può essere presente nella sua organizzazione.<br><br>Questa funzione è disattivata per impostazione predefinita. La attiva in:<br><br>Impostazioni → Sicurezza marcatura → Elenco evacuazione su Clock Point.<br><br>Dopo l’accesso su un Clock Point, gli esecutori vedono il riquadro Elenco evacuazione.<br><br>Prima di aprire l’elenco, devono confermare che lo fanno in via eccezionale.<br><br>Ogni consultazione viene registrata con nome, cognome, data e ora.<br><br>Una consultazione di oggi compare automaticamente in Attenzione. Lo storico completo, comprese le consultazioni dei giorni precedenti, si trova in Allarmi."
                 }
             ]
         },

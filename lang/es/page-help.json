@@ -1536,37 +1536,37 @@
             "title": "Ayuda — Presencia",
             "actions": [
                 {
-                    "label": "Panel",
-                    "text": "KPI en vivo arriba: <strong>Fichado</strong> (todos con turno abierto), <strong>Activo</strong> (fichado y no en pausa), <strong>Pausa</strong>, <strong>No fichado</strong> y <strong>Atención</strong>. Fichado = Activo + Pausa. Pulse una tarjeta para filtrar. <strong>Atención</strong> cuenta las consultas de hoy; Time → Alertas conserva la lista completa."
+                    "label": "¿Qué encuentra en esta pantalla?",
+                    "text": "Aquí ve de un vistazo quién está trabajando ahora y quién no ha fichado. El resumen se actualiza solo. No tiene que recargar la página.<br><br>Arriba encuentra cinco fichas:<br>• Fichado: todas las personas con un turno abierto. Son los ejecutores que están trabajando y los que están en pausa.<br>• Activo: ejecutores fichados que ahora no están en pausa.<br>• Pausa: ejecutores fichados que están en pausa.<br>• Sin fichar: ejecutores activos que ahora no tienen un turno abierto.<br>• Atención: situaciones que quizá deba revisar. Por ejemplo alguien que lleva demasiado tiempo fichado, no ha hecho pausa, se ha desplazado demasiado rápido, ha fichado durante unas vacaciones o ha consultado la lista de evacuación. Haga clic en esta ficha para ir a Alarmas.<br><br>Haga clic en Activo, Pausa o Sin fichar para ver solo ese grupo. Con Fichado vuelve al resumen completo de los ejecutores fichados.<br><br>En el tablero de presencia encuentra dos columnas:<br>• Presente: ejecutores con un turno abierto.<br>• Ausente / Acción extra: ejecutores que no han fichado o para los que puede hacer falta una acción extra.<br><br>En cada ejecutor fichado ve el nombre, el equipo, la hora de fichaje y el tiempo trabajado.<br><br>Si pone Pausa, el ejecutor está en pausa. Si pone Trabajando en, esa persona está en un lugar de trabajo.<br><br>Un signo de exclamación indica algo que requiere atención. Por ejemplo cuando alguien ha fichado durante unas vacaciones aprobadas."
                 },
                 {
                     "label": "Vista",
-                    "text": "Elija <strong>Tablero</strong> (lista en vivo), <strong>Equipos</strong> (abrir por equipo) o <strong>Ubicaciones</strong> (fichados por sede)."
+                    "text": "Bajo los filtros elige cómo quiere ver la presencia.<br><br>• Tablero: un resumen en directo de quién está presente y quién no ha fichado. Es la vista más práctica para seguir la presencia del día.<br>• Equipos: la presencia por equipo. Puede abrir cada equipo para ver cuántos ejecutores están activos, en pausa o sin fichar.<br>• Ubicaciones: quién ha fichado en cada sede. Con Mostrar equipos ve también los equipos de esa ubicación."
                 },
                 {
-                    "label": "Filtros",
-                    "text": "Filtre por equipo, sede, clock point o busque por nombre. El estado se filtra con las tarjetas de arriba."
+                    "label": "Buscar y filtrar",
+                    "text": "Con los filtros encuentra pronto a los ejecutores correctos:<br>• Buscar trabajador: busque por nombre.<br>• Equipo: elija un equipo o Todos los equipos.<br>• Ubicación: elija una sede o Todas las ubicaciones.<br>• Clock Point: elija un Clock Point o Todos los clock points.<br><br>¿Selecciona una ubicación o un Clock Point? Entonces solo ve a los ejecutores fichados allí.<br><br>Los ejecutores que no han fichado desaparecen del resumen. Para ellos no hay ubicación ni Clock Point."
                 },
                 {
-                    "label": "Resumen de horas",
-                    "text": "Haga clic en un operario para abrir Time → Horas, filtrado a esa persona en las <strong>últimas tres semanas</strong>."
+                    "label": "Ver las horas de un ejecutor",
+                    "text": "¿Quiere ver las horas fichadas de alguien?<br><br>Haga clic en el nombre del ejecutor. Llega directamente a Horas fichadas, con los datos de esa persona de las últimas tres semanas."
                 },
                 {
-                    "label": "Cerrar turno",
-                    "text": "Cierre un turno abierto con la hora actual si alguien olvidó fichar la salida. El motivo va al registro de auditoría. Si el equipo tiene pausa mínima y el turno dura al menos 4 horas, cuenta en el parte (sin evento CIAO extra)."
-                },
-                {
-                    "label": "QR Clock Point",
-                    "text": "Los operarios fichan mediante la pegatina QR en un clock point (<code>/time/…</code>). Identificación con nombre e icono (PIN o biometría opcionales) en un solo móvil — sin inicio de sesión aparte."
+                    "label": "Cerrar un turno",
+                    "text": "¿Alguien olvidó fichar la salida? Puede cerrar usted el turno abierto.<br><br>Haga clic en Cerrar turno junto a ese ejecutor.<br><br>El turno se cierra a la hora actual. También indica un motivo. Ese motivo se guarda con el registro.<br><br>¿El equipo tiene una pausa mínima y el turno dura al menos cuatro horas? Entonces esa pausa se cuenta automáticamente en el registro de horas."
                 },
                 {
                     "label": "Fichar manualmente",
                     "requires_facility": true,
-                    "text": "Un administrador o un empleado puede <strong>fichar a un ejecutor manualmente</strong> en el Clock Point correcto (por ejemplo, si olvidó el teléfono). No se vincula ningún dispositivo. El motivo obligatorio se guarda en la auditoría. Presencia, horas y Clock Point muestran la pastilla <strong>Fichado manualmente</strong>. Fichar la salida más tarde por QR o Cerrar turno."
+                    "text": "¿Un ejecutor no tiene el móvil o no consigue escanear el código QR? Puede ficharlo usted mismo.<br><br>Haga clic en Fichar manualmente y elija:<br>• El ejecutor.<br>• El Clock Point en el que debe fichar.<br>• Un motivo para el registro manual.<br><br>WinProx no vincula un dispositivo al ejecutor para esto.<br><br>Después de fichar, aparece junto a esa persona la etiqueta Fichado manualmente. Ve la misma etiqueta en las horas fichadas y en el Clock Point.<br><br>La salida se hace más tarde con un nuevo escaneo del código QR, o usted cierra el turno con Cerrar turno."
+                },
+                {
+                    "label": "¿Cómo fichan los ejecutores?",
+                    "text": "Los ejecutores usan para ello el código QR de un Clock Point.<br><br>Escanean el código con el móvil y después eligen su nombre y su icono. Según su configuración, también introducen un PIN o una passkey.<br><br>No hace falta una cuenta aparte para el reloj de fichar.<br><br>Importante: cada entrada o salida pide un nuevo escaneo del código QR. Una página del navegador ya abierta, o el acceso directo de la pantalla de inicio, no basta. El ejecutor debe escanear de nuevo el código QR en el lugar."
                 },
                 {
                     "label": "Lista de evacuación",
-                    "text": "Si la lista de evacuación está activada en Ajustes (desactivada por defecto), está en el portal Clock Point tras identificarse (ficha Lista de evacuación). No hay un QR aparte. Antes de la lista, el ejecutor confirma que la consulta es excepcional y se registra (nombre, apellidos, fecha y hora). Las consultas de hoy encienden <strong>Atención</strong> (presencia y panel). Time → Alertas conserva la lista completa (fecha y hora, la más reciente arriba)."
+                    "text": "Con la lista de evacuación puede comprobar, en una emergencia, quién puede estar presente en su organización.<br><br>Esta función está desactivada por defecto. La activa en:<br><br>Configuración → Seguridad del fichaje → Lista de evacuación en Clock Point.<br><br>Después de identificarse en un Clock Point, los ejecutores ven la ficha Lista de evacuación.<br><br>Antes de abrir la lista, deben confirmar que lo hacen de forma excepcional.<br><br>Cada consulta se registra con el nombre, los apellidos, la fecha y la hora.<br><br>Una consulta de hoy aparece automáticamente en Atención. El historial completo, incluidas las consultas de días anteriores, está en Alarmas."
                 }
             ]
         },

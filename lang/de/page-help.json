@@ -1536,37 +1536,37 @@
             "title": "Hilfe — Anwesenheit",
             "actions": [
                 {
-                    "label": "Dashboard",
-                    "text": "Oben sehen Sie Live-KPIs: <strong>Eingestempelt</strong> (alle mit offener Schicht), <strong>Aktiv</strong> (eingestempelt und nicht in Pause), <strong>Pause</strong>, <strong>Nicht eingestempelt</strong> und <strong>Aufmerksamkeit</strong>. Eingestempelt = Aktiv + Pause. Klicken Sie eine Kachel zum Filtern. <strong>Aufmerksamkeit</strong> zählt heutige Einsichten in die Evakuierungsliste; Time → Alarme behält die vollständige Liste."
+                    "label": "Was finden Sie auf diesem Bildschirm?",
+                    "text": "Hier sehen Sie auf einen Blick, wer gerade arbeitet und wer nicht eingestempelt ist. Die Übersicht aktualisiert sich von selbst. Sie müssen die Seite also nicht selbst neu laden.<br><br>Oben finden Sie fünf Kacheln:<br>• Eingestempelt: alle mit einer offenen Schicht. Das sind die Mitarbeitenden, die arbeiten, und diejenigen, die Pause haben.<br>• Aktiv: Mitarbeitende, die eingestempelt sind und gerade keine Pause haben.<br>• Pause: Mitarbeitende, die eingestempelt sind und Pause haben.<br>• Nicht eingestempelt: aktive Mitarbeitende, die gerade keine offene Schicht haben.<br>• Aufmerksamkeit: Situationen, die Sie möglicherweise prüfen sollten. Zum Beispiel jemand, der zu lange eingestempelt ist, keine Pause gemacht hat, sich zu schnell bewegt hat, während des Urlaubs eingestempelt hat oder die Evakuierungsliste angesehen hat. Klicken Sie auf diese Kachel, um zu Alarme zu gehen.<br><br>Klicken Sie auf Aktiv, Pause oder Nicht eingestempelt, um nur diese Gruppe zu sehen. Mit Eingestempelt kehren Sie zur vollständigen Übersicht der eingestempelten Mitarbeitenden zurück.<br><br>Auf dem Anwesenheitsboard finden Sie zwei Spalten:<br>• Anwesend: Mitarbeitende mit einer offenen Schicht.<br>• Abwesend / Extra Aktion: Mitarbeitende, die nicht eingestempelt sind oder bei denen eine zusätzliche Aktion nötig sein kann.<br><br>Bei jeder eingestempelten Person sehen Sie den Namen, das Team, die Einstempelzeit und die gearbeitete Zeit.<br><br>Steht dort Pause, hat die Person gerade Pause. Steht dort Bei der Arbeit, ist diese Person an einer Arbeitsadresse.<br><br>Ein Ausrufezeichen weist auf etwas hin, das Aufmerksamkeit braucht. Zum Beispiel wenn jemand während eines genehmigten Urlaubs eingestempelt hat."
                 },
                 {
                     "label": "Ansicht",
-                    "text": "Wählen Sie <strong>Board</strong> (Live-Liste), <strong>Teams</strong> (pro Team aufklappen) oder <strong>Standorte</strong> (eingestempelt je Standort)."
+                    "text": "Unter den Filtern wählen Sie, wie Sie die Anwesenheit sehen möchten.<br><br>• Board: eine Live-Übersicht, wer anwesend ist und wer nicht eingestempelt ist. Das ist die praktischste Ansicht für die tägliche Anwesenheit.<br>• Teams: die Anwesenheit pro Team. Sie können jedes Team aufklappen und sehen, wie viele Mitarbeitende aktiv sind, Pause haben oder nicht eingestempelt sind.<br>• Standorte: wer pro Standort eingestempelt ist. Mit Teams zeigen sehen Sie auch die Teams dieses Standorts."
                 },
                 {
-                    "label": "Filter",
-                    "text": "Filtern Sie nach Team, Standort, Clock Point oder Namen. Den Status filtern Sie über die Kacheln oben."
+                    "label": "Suchen und filtern",
+                    "text": "Mit den Filtern finden Sie schnell die richtigen Personen:<br>• Mitarbeitende suchen: suchen Sie nach dem Namen.<br>• Team: wählen Sie ein bestimmtes Team oder Alle Teams.<br>• Standort: wählen Sie einen Standort oder Alle Standorte.<br>• Clock Point: wählen Sie einen bestimmten Clock Point oder Alle Clock Points.<br><br>Wählen Sie einen Standort oder einen Clock Point? Dann sehen Sie nur die Personen, die dort eingestempelt sind.<br><br>Personen, die nicht eingestempelt sind, verschwinden dann aus der Übersicht. Für sie gibt es keinen Standort und keinen Clock Point."
                 },
                 {
-                    "label": "Stundenübersicht",
-                    "text": "Klicken Sie auf einen Ausführenden, um Time → Stunden zu öffnen, gefiltert auf diese Person für die <strong>letzten drei Wochen</strong>."
+                    "label": "Die Stunden einer Person ansehen",
+                    "text": "Möchten Sie die gestempelten Stunden von jemandem ansehen?<br><br>Klicken Sie auf den Namen. Sie kommen direkt zu Gestempelte Stunden, mit den Daten dieser Person der letzten drei Wochen."
                 },
                 {
-                    "label": "Schicht schließen",
-                    "text": "Schließen Sie eine offene Schicht mit der aktuellen Zeit, wenn jemand das Ausstempeln vergessen hat. Der Grund steht im Auditlog. Hat das Team eine Mindestpause und die Schicht dauert mindestens 4 Stunden, zählt sie auf der Stundenliste (kein extra CIAO-Ereignis)."
-                },
-                {
-                    "label": "Clock Point QR",
-                    "text": "Ausführende stempeln ein und aus über den QR-Aufkleber an einem Clock Point (<code>/time/…</code>). Identifikation mit Name und Symbol (optional PIN oder Biometrie) auf einem Handy — keine separate Anmeldung."
+                    "label": "Eine Schicht schließen",
+                    "text": "Hat jemand vergessen auszustempeln? Dann können Sie die offene Schicht selbst schließen.<br><br>Klicken Sie bei der betreffenden Person auf Schicht schließen.<br><br>Die Schicht endet zur aktuellen Uhrzeit. Sie geben auch einen Grund ein. Dieser Grund wird bei der Registrierung gespeichert.<br><br>Hat das Team eine festgelegte Mindestpause und dauert die Schicht mindestens vier Stunden? Dann wird diese Pause automatisch in der Stundenerfassung mitgezählt."
                 },
                 {
                     "label": "Manuell einstempeln",
                     "requires_facility": true,
-                    "text": "Administrator und Mitarbeiter können eine ausführende Person am richtigen Clock Point <strong>manuell einstempeln</strong> (z. B. Handy vergessen). Es wird kein Gerät gekoppelt. Ein Pflichtgrund steht im Audit-Log. Anwesenheit, Stunden und Clock Point zeigen die Pille <strong>Manuell eingestempelt</strong>. Ausstempeln später per QR oder Schicht schließen."
+                    "text": "Hat eine Person das Handy nicht dabei oder gelingt der Scan des QR-Codes nicht? Dann können Sie diese Person selbst einstempeln.<br><br>Klicken Sie auf Manuell einstempeln und wählen Sie:<br>• Die Person.<br>• Den Clock Point, an dem die Person einstempeln soll.<br>• Einen Grund für die manuelle Registrierung.<br><br>WinProx koppelt dafür kein Gerät an die Person.<br><br>Nach dem Einstempeln erscheint bei dieser Person das Label Manuell eingestempelt. Dasselbe Label sehen Sie bei den gestempelten Stunden und am Clock Point.<br><br>Ausgestempelt wird später mit einem neuen QR-Scan, oder Sie schließen die Schicht selbst über Schicht schließen."
+                },
+                {
+                    "label": "Wie stempeln Mitarbeitende ein und aus?",
+                    "text": "Mitarbeitende nutzen dafür den QR-Code eines Clock Point.<br><br>Sie scannen den Code mit dem Handy und wählen dann Namen und Symbol. Je nach Ihren Einstellungen geben sie auch eine PIN oder eine Passkey ein.<br><br>Ein eigenes Konto für die Stempeluhr ist nicht nötig.<br><br>Wichtig: jedes Ein- oder Ausstempeln braucht einen neuen QR-Scan. Eine bereits geöffnete Browserseite oder die Verknüpfung auf dem Startbildschirm reicht nicht. Die Person muss den QR-Code vor Ort jedes Mal neu scannen."
                 },
                 {
                     "label": "Evakuierungsliste",
-                    "text": "Wenn die Evakuierungsliste in Einstellungen an ist (standardmäßig aus), steht sie nach der Anmeldung auf dem Clock-Point-Portal (Kachel Evakuierungsliste). Kein eigener QR. Vor der Liste bestätigt der Ausführende, dass die Einsicht ausnahmsweise erfolgt und protokolliert wird (Vorname, Name, Datum und Uhrzeit). Einsichten von heute lassen <strong>Aufmerksamkeit</strong> aufleuchten (Anwesenheit und Dashboard). Time → Alarme behält die vollständige Liste (Datum und Uhrzeit, neueste oben)."
+                    "text": "Mit der Evakuierungsliste können Sie im Notfall nachsehen, wer möglicherweise in Ihrer Organisation anwesend ist.<br><br>Diese Funktion ist standardmäßig aus. Sie schalten sie ein über:<br><br>Einstellungen → Stempeluhr-Sicherheit → Evakuierungsliste am Clock Point.<br><br>Nach der Anmeldung an einem Clock Point sehen Mitarbeitende dann die Kachel Evakuierungsliste.<br><br>Bevor sie die Liste öffnen können, müssen sie bestätigen, dass sie das ausnahmsweise tun.<br><br>Jede Einsicht wird mit Vorname, Name, Datum und Uhrzeit festgehalten.<br><br>Eine Einsicht von heute erscheint automatisch bei Aufmerksamkeit. Die vollständige Historie, auch Einsichten früherer Tage, finden Sie bei Alarme."
                 }
             ]
         },

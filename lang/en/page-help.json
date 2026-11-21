@@ -1536,37 +1536,37 @@
             "title": "Help — Presence",
             "actions": [
                 {
-                    "label": "Dashboard",
-                    "text": "Live KPIs at the top: <strong>Clocked in</strong> (everyone with an open shift), <strong>Active</strong> (clocked in and not on break), <strong>Break</strong>, <strong>Not clocked in</strong> and <strong>Attention</strong>. Clocked in = Active + Break. Click a tile to filter. <strong>Attention</strong> counts today’s evacuation-list views; Time → Alarms keeps the full list."
+                    "label": "What do you find on this screen?",
+                    "text": "Here you see at a glance who is working now and who is not clocked in. The overview updates by itself. You do not need to refresh the page.<br><br>At the top you find five tiles:<br>• Clocked in: everyone with an open shift. These are the workers who are working and those who are on a break.<br>• Active: workers who are clocked in and are not on a break right now.<br>• Break: workers who are clocked in and are on a break.<br>• Not clocked in: active workers who do not have an open shift right now.<br>• Attention: situations you may need to check. For example someone who has been clocked in for too long, has not taken a break, moved too quickly, clocked in during leave, or viewed the evacuation list. Click this tile to go to Alarms.<br><br>Click Active, Break or Not clocked in to see only that group. With Clocked in you return to the full overview of clocked-in workers.<br><br>On the presence board you find two columns:<br>• Present: workers with an open shift.<br>• Absent / Extra action: workers who are not clocked in, or for whom an extra action may be needed.<br><br>For each clocked-in worker you see the name, the team, the clock-in time and the time worked.<br><br>If it says Break, the worker is on a break. If it says Working at, that person is at a work address.<br><br>An exclamation mark points to something that needs attention. For example when someone clocked in during approved leave."
                 },
                 {
-                    "label": "Views",
-                    "text": "Choose <strong>Board</strong> (live list), <strong>Teams</strong> (expand per team) or <strong>Locations</strong> (clocked in per site)."
+                    "label": "View",
+                    "text": "Under the filters you choose how you want to see presence.<br><br>• Board: a live overview of who is present and who is not clocked in. This is the most useful view for following daily presence.<br>• Teams: see presence by team. You can open each team to see how many workers are active, on a break or not clocked in.<br>• Locations: see who is clocked in at each site. With Show teams you also see the teams of that location."
                 },
                 {
-                    "label": "Filters",
-                    "text": "Narrow by team, location, clock point or search by name. Filter status via the tiles at the top."
+                    "label": "Search and filter",
+                    "text": "With the filters you quickly find the right workers:<br>• Search worker: search by name.<br>• Team: choose a specific team, or All teams.<br>• Location: choose a site, or All locations.<br>• Clock Point: choose a specific Clock Point, or All clock points.<br><br>Do you select a location or Clock Point? Then you only see the workers clocked in there.<br><br>Workers who are not clocked in then disappear from the overview. There is no location or Clock Point for them."
                 },
                 {
-                    "label": "Hours overview",
-                    "text": "Click a worker to open Time → Hours, filtered to that person for the <strong>last three weeks</strong>."
+                    "label": "View a worker’s hours",
+                    "text": "Do you want to see someone’s clocked hours?<br><br>Click the worker’s name. You go straight to Clocked hours, with that person’s details for the last three weeks."
                 },
                 {
-                    "label": "Close shift",
-                    "text": "Close an open shift at the current time when someone forgot to clock out. The reason goes in the audit log. If the team has a minimum break and the shift lasts at least 4 hours, it is counted on the timesheet (no extra CIAO event)."
-                },
-                {
-                    "label": "Clock Point QR",
-                    "text": "Field workers clock in and out via the QR sticker on a clock point (<code>/time/…</code>). Identification uses name and icon (optional PIN or biometrics) on one phone — no separate login."
+                    "label": "Close a shift",
+                    "text": "Did someone forget to clock out? You can close the open shift yourself.<br><br>Click Close shift for that worker.<br><br>The shift closes at the current time. You also fill in a reason. That reason is kept with the registration.<br><br>Does the team have a set minimum break, and does the shift last at least four hours? Then that break is counted automatically in the hours."
                 },
                 {
                     "label": "Clock in manually",
                     "requires_facility": true,
-                    "text": "An administrator or staff user can <strong>clock a worker in manually</strong> at the correct Clock Point (for example if they forgot their phone). No device is bound. A required reason is stored in the audit log. Presence, hours and Clock Point show the <strong>Clocked in manually</strong> pill. Clock out later via the QR or Close shift."
+                    "text": "Does a worker not have their phone, or can they not scan the QR code? You can clock that person in yourself.<br><br>Click Clock in manually and choose:<br>• The worker.<br>• The Clock Point where the person should clock in.<br>• A reason for the manual registration.<br><br>WinProx does not link a device to the worker for this.<br><br>After clocking in, the label Clocked in manually appears for that person. You see the same label with the clocked hours and on the Clock Point.<br><br>Clocking out happens later with a new QR scan, or you close the shift yourself with Close shift."
+                },
+                {
+                    "label": "How do workers clock in and out?",
+                    "text": "Workers use the QR code of a Clock Point for this.<br><br>They scan the code with their phone and then choose their name and icon. Depending on your settings, they also enter a PIN or passkey.<br><br>A separate account for the punch clock is not needed.<br><br>Important: every clock-in or clock-out needs a new QR scan. A browser page that was already open, or the shortcut on the home screen, is not enough. The worker must scan the QR code on site again each time."
                 },
                 {
                     "label": "Evacuation list",
-                    "text": "If the evacuation list is on in Settings (off by default), it is on the Clock Point portal after sign-in (Evacuation list tile). No extra QR. Before the list, the field worker confirms that the consultation is exceptional and is logged (first name, last name, date and time). Views from today light up <strong>Attention</strong> (presence and dashboard). Time → Alarms keeps the full list (date and time, newest first)."
+                    "text": "With the evacuation list you can see, in an emergency, who may be present in your organisation.<br><br>This feature is off by default. You turn it on via:<br><br>Settings → Punch clock security → Evacuation list on Clock Point.<br><br>After signing in at a Clock Point, workers then see the tile Evacuation list.<br><br>Before they can open the list, they must confirm that they are doing this exceptionally.<br><br>Each view is recorded with the first name, last name, date and time.<br><br>A view from today appears automatically under Attention. The full history, including views from earlier days, is in Alarms."
                 }
             ]
         },

@@ -1540,37 +1540,37 @@
             "title": "Aide — Présence",
             "actions": [
                 {
-                    "label": "Tableau de bord",
-                    "text": "KPI en direct en haut : <strong>Pointé</strong> (tous avec une vacation ouverte), <strong>Actif</strong> (pointé et pas en pause), <strong>Pause</strong>, <strong>Non pointé</strong> et <strong>À surveiller</strong>. Pointé = Actif + Pause. Cliquez une tuile pour filtrer. <strong>À surveiller</strong> compte les consultations d’aujourd’hui ; Time → Alertes conserve la liste complète."
+                    "label": "Que trouvez-vous sur cet écran ?",
+                    "text": "Ici, vous voyez d’un coup d’œil qui travaille en ce moment et qui n’est pas pointé. L’aperçu se met à jour tout seul. Vous n’avez donc pas à actualiser la page.<br><br>En haut, vous trouvez cinq tuiles :<br>• Pointé : toute personne avec un service ouvert. Ce sont les exécutants qui travaillent et ceux qui sont en pause.<br>• Actif : les exécutants pointés qui ne sont pas en pause pour le moment.<br>• Pause : les exécutants pointés qui sont en pause.<br>• Non pointé : les exécutants actifs qui n’ont pas de service ouvert pour le moment.<br>• Attention : des situations à vérifier éventuellement. Par exemple quelqu’un qui est pointé depuis trop longtemps, n’a pas pris de pause, s’est déplacé trop vite, a pointé pendant un congé ou a consulté la liste d’évacuation. Cliquez sur cette tuile pour aller aux Alarmes.<br><br>Cliquez sur Actif, Pause ou Non pointé pour ne voir que ce groupe. Avec Pointé, vous revenez à l’aperçu complet des exécutants pointés.<br><br>Sur le tableau de présence, vous trouvez deux colonnes :<br>• Présent : exécutants avec un service ouvert.<br>• Absent / Action extra : exécutants qui ne sont pas pointés, ou pour lesquels une action supplémentaire peut être nécessaire.<br><br>Pour chaque exécutant pointé, vous voyez le nom, l’équipe, l’heure de pointage et le temps travaillé.<br><br>S’il est indiqué Pause, l’exécutant est en pause. S’il est indiqué Au travail, cette personne est sur un lieu de travail.<br><br>Un point d’exclamation signale quelque chose qui demande de l’attention. Par exemple lorsqu’une personne a pointé pendant un congé approuvé."
                 },
                 {
                     "label": "Affichage",
-                    "text": "Choisissez <strong>Tableau</strong> (liste en direct), <strong>Équipes</strong> (ouvrir par équipe) ou <strong>Sites</strong> (pointés par site)."
+                    "text": "Sous les filtres, vous choisissez comment voir la présence.<br><br>• Tableau : un aperçu en direct de qui est présent et qui n’est pas pointé. C’est l’affichage le plus pratique pour suivre la présence du jour.<br>• Équipes : la présence par équipe. Vous pouvez ouvrir chaque équipe pour voir combien d’exécutants sont actifs, en pause ou non pointés.<br>• Sites : qui est pointé par site. Avec Afficher les équipes, vous voyez aussi les équipes de ce site."
                 },
                 {
-                    "label": "Filtres",
-                    "text": "Affinez par équipe, site, clock point ou recherchez un nom. Le statut se filtre via les tuiles en haut."
+                    "label": "Rechercher et filtrer",
+                    "text": "Avec les filtres, vous trouvez vite les bons exécutants :<br>• Rechercher un collaborateur : recherchez par nom.<br>• Équipe : choisissez une équipe, ou Toutes les équipes.<br>• Site : choisissez un site, ou Tous les sites.<br>• Clock Point : choisissez un Clock Point, ou Tous les clock points.<br><br>Vous sélectionnez un site ou un Clock Point ? Vous ne voyez alors que les exécutants pointés à cet endroit.<br><br>Les exécutants qui ne sont pas pointés disparaissent alors de l’aperçu. Il n’y a en effet ni site ni Clock Point pour eux."
                 },
                 {
-                    "label": "Aperçu des heures",
-                    "text": "Cliquez un exécutant pour ouvrir Time → Heures, filtré sur cette personne pour les <strong>trois dernières semaines</strong>."
+                    "label": "Voir les heures d’un exécutant",
+                    "text": "Vous voulez voir les heures pointées de quelqu’un ?<br><br>Cliquez sur le nom de l’exécutant. Vous arrivez directement dans Heures pointées, avec les données de cette personne sur les trois dernières semaines."
                 },
                 {
-                    "label": "Fermer le shift",
-                    "text": "Fermez un shift ouvert à l’heure actuelle si quelqu’un a oublié de pointer la sortie. Le motif va au journal d’audit. Si l’équipe a une pause minimale et que le service dure au moins 4 heures, elle compte sur la feuille d’heures (pas d’événement CIAO extra)."
-                },
-                {
-                    "label": "QR Clock Point",
-                    "text": "Les exécutants pointent via l'autocollant QR sur un clock point (<code>/time/…</code>). Identification par nom et icône (PIN ou biométrie optionnels) sur un seul téléphone — pas de connexion séparée."
+                    "label": "Clôturer un shift",
+                    "text": "Quelqu’un a oublié de pointer la sortie ? Vous pouvez clôturer le shift ouvert vous-même.<br><br>Cliquez sur Clôturer le shift pour cet exécutant.<br><br>Le shift se termine à l’heure actuelle. Vous indiquez aussi une raison. Cette raison est conservée avec l’enregistrement.<br><br>L’équipe a une pause minimale et le shift dure au moins quatre heures ? Cette pause est alors comptée automatiquement dans les heures."
                 },
                 {
                     "label": "Pointer manuellement",
                     "requires_facility": true,
-                    "text": "Un administrateur ou un collaborateur peut <strong>pointer un exécutant manuellement</strong> sur le bon Clock Point (par ex. téléphone oublié). Aucun appareil n’est lié. Un motif obligatoire est enregistré dans le journal d’audit. Présence, heures et Clock Point affichent la pilule <strong>Pointé manuellement</strong>. Pointer la sortie plus tard via le QR ou Fermer le shift."
+                    "text": "Un exécutant n’a pas son téléphone, ou le scan du code QR ne fonctionne pas ? Vous pouvez le pointer vous-même.<br><br>Cliquez sur Pointer manuellement et choisissez :<br>• L’exécutant.<br>• Le Clock Point où la personne doit pointer.<br>• Une raison pour l’enregistrement manuel.<br><br>WinProx ne lie pas d’appareil à l’exécutant pour cela.<br><br>Après le pointage, l’étiquette Pointé manuellement apparaît pour cette personne. Vous voyez la même étiquette dans les heures pointées et sur le Clock Point.<br><br>La sortie se fait plus tard avec un nouveau scan du code QR, ou vous clôturez le shift vous-même avec Clôturer le shift."
+                },
+                {
+                    "label": "Comment les exécutants pointent-ils ?",
+                    "text": "Les exécutants utilisent pour cela le code QR d’un Clock Point.<br><br>Ils scannent le code avec leur téléphone, puis choisissent leur nom et leur icône. Selon vos paramètres, ils saisissent aussi un code PIN ou une passkey.<br><br>Un compte distinct pour la pointeuse n’est pas nécessaire.<br><br>Important : chaque entrée ou sortie demande un nouveau scan du code QR. Une page de navigateur déjà ouverte, ou le raccourci sur l’écran d’accueil, ne suffit pas. L’exécutant doit à chaque fois scanner à nouveau le code QR sur place."
                 },
                 {
                     "label": "Liste d’évacuation",
-                    "text": "Si la liste d’évacuation est activée dans Paramètres (désactivée par défaut), elle est sur le portail Clock Point après connexion (tuile Liste d’évacuation). Pas de QR distinct. Avant la liste, l’exécutant confirme que la consultation est exceptionnelle et enregistrée (prénom, nom, date et heure). Les consultations d’aujourd’hui allument <strong>À surveiller</strong> (présence et tableau de bord). Time → Alertes conserve la liste complète (date et heure, plus récente en haut)."
+                    "text": "Avec la liste d’évacuation, vous pouvez en cas d’urgence voir qui est éventuellement présent dans votre organisation.<br><br>Cette fonction est désactivée par défaut. Vous l’activez via :<br><br>Paramètres → Sécurité de la pointeuse → Liste d’évacuation sur Clock Point.<br><br>Après la connexion sur un Clock Point, les exécutants voient ensuite la tuile Liste d’évacuation.<br><br>Avant de pouvoir ouvrir la liste, ils doivent confirmer qu’ils le font de façon exceptionnelle.<br><br>Chaque consultation est enregistrée avec le prénom, le nom, la date et l’heure.<br><br>Une consultation d’aujourd’hui apparaît automatiquement dans Attention. L’historique complet, y compris les consultations des jours précédents, se trouve dans Alarmes."
                 }
             ]
         },
