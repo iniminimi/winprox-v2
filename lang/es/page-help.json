@@ -1912,32 +1912,32 @@
             "title": "Ayuda — Ejecutores",
             "actions": [
                 {
-                    "label": "¿Qué ve en esta pantalla?",
-                    "text": "Aquí encuentra todos los ejecutores de su organización en un solo resumen. Útil para localizar a alguien rápido, sobre todo si tiene muchos ejecutores.<br><br>Por ejecutor ve, entre otras cosas:<br>• El nombre.<br>• El equipo.<br>• Las sedes donde esa persona puede fichar.<br>• Si el perfil está activo.<br>• Si el ejecutor está vinculado a un compañero que también trabaja en el Backoffice.<br><br>Consejo: esta pantalla sirve para buscar y filtrar. Añadir, modificar o desactivar ejecutores se hace en Personas → Equipos."
+                    "label": "¿Qué encuentra en esta pantalla?",
+                    "text": "Aquí encuentra a todos los ejecutores de su organización en un solo resumen. Así localiza a alguien con facilidad, aunque su organización tenga muchas personas.<br><br>Por cada ejecutor ve:<br>• Nombre: el nombre del ejecutor.<br>• Equipo: el equipo al que pertenece el ejecutor.<br>• Ubicaciones: las ubicaciones donde el ejecutor puede fichar. Si pone Todas las ubicaciones, esa persona puede fichar en cualquier sitio.<br>• Estado: Activo o Inactivo.<br>• Inicio de sesión colega: este ejecutor es también un colega con acceso al Backoffice.<br>• Por revisar: el perfil lo creó hace poco un jefe de equipo y aún hay que completarlo.<br><br>Este resumen sirve para buscar ejecutores. Añadir, modificar o desactivar se hace en Personas → Teams."
                 },
                 {
                     "label": "Buscar y filtrar",
-                    "text": "Use los filtros de arriba para reducir la lista:<br>• Busque por nombre.<br>• Elija un equipo.<br>• Elija una sede.<br>• Filtre por ejecutores activos o inactivos.<br><br>Deje la sede vacía para ver a todos. Si elige una sede, solo ve a quienes pueden fichar allí.<br><br>También siguen visibles los ejecutores sin sede fija y los equipos que pueden fichar en todas partes."
+                    "text": "Con los filtros de arriba encuentra pronto al ejecutor correcto:<br>• Busque por nombre o correo.<br>• Seleccione un equipo o elija Todos los equipos.<br>• Seleccione una ubicación o elija Todas las ubicaciones.<br>• Filtre por Activo, Inactivo o Todos los estados.<br><br>Junto a los filtros ve cuántos ejecutores coinciden con su selección.<br><br>Cuando elige una ubicación, siguen visibles los ejecutores sin una ubicación concreta. Lo mismo ocurre con los ejecutores cuyo equipo puede fichar en todas las ubicaciones."
                 },
                 {
-                    "label": "Sedes",
-                    "text": "En cada ejecutor ve a qué sedes está asignada esa persona.<br><br>¿No hay sedes elegidas? Entonces el ejecutor puede fichar en todas partes. Esa es la configuración predeterminada para los ejecutores existentes.<br><br>Ajuste las sedes en Personas → Equipos → Editar. También puede incluirlas en una importación."
+                    "label": "Ubicaciones",
+                    "text": "En cada ejecutor ve en qué ubicaciones puede fichar esa persona.<br><br>¿No hay ubicaciones concretas? Entonces pone Todas las ubicaciones. El ejecutor puede fichar en cualquier ubicación.<br><br>¿Quiere cambiar las ubicaciones? Vaya a Personas → Teams → Editar."
                 },
                 {
-                    "label": "Vinculación con un compañero",
-                    "text": "Algunos ejecutores están vinculados a un compañero que también trabaja en el Backoffice con correo electrónico y contraseña.<br><br>Esa persona cuenta como una licencia, no como dos.<br><br>El fichaje siempre se hace por Clock Point, con el nombre y el icono del ejecutor. El inicio de sesión del Backoffice no se usa para esto."
+                    "label": "Vínculo con un colega",
+                    "text": "¿Ve la etiqueta Inicio de sesión colega? Entonces este ejecutor está vinculado a un colega que también tiene acceso al Backoffice, con su propio correo y contraseña.<br><br>Los dos perfiles usan juntos una sola licencia. No paga dos veces.<br><br>Fichar se hace siempre en el reloj de fichar, con el nombre y el icono del ejecutor. Los datos de acceso del Backoffice no se usan para eso."
                 },
                 {
                     "label": "Por revisar",
-                    "text": "Con el botón <strong>Por revisar</strong> solo muestra ejecutores activos que un líder de equipo acaba de crear en Clock Point.<br><br>Estos ejecutores tienen por ahora solo nombre y apellidos y reciben la insignia <strong>Por revisar</strong>.<br><br>En la pantalla de inicio también encuentra el mosaico <strong>Nuevo ejecutor</strong>.<br><br>Abra el ejecutor en Personas → Equipos y guarde los datos o desactive el perfil. Después, el ejecutor desaparece de este filtro.<br><br>Pulse otra vez <strong>Por revisar</strong> para volver a ver a todos los ejecutores."
+                    "text": "Con el botón Por revisar ve los ejecutores activos que un jefe de equipo creó hace poco mediante Clock Point.<br><br>De momento estos perfiles solo tienen nombre y apellido, y llevan la etiqueta Por revisar.<br><br>En la pantalla de inicio también está el recuadro Nuevo ejecutor.<br><br>Abra el perfil en Personas → Teams y complete los datos que faltan. Guarde el perfil, o desactívelo si el ejecutor no hace falta.<br><br>En cuanto guarda o desactiva el perfil, desaparece de este filtro.<br><br>Vuelva a hacer clic en Por revisar para volver al resumen completo."
                 },
                 {
                     "label": "Abrir un ejecutor",
-                    "text": "Pulse un nombre para ir al equipo de ese ejecutor.<br><br>Allí puede ajustar los datos:<br>• Equipo y sedes.<br>• Icono.<br>• Número de móvil.<br>• PIN y passkey.<br>• Líder de equipo.<br>• Estado activo o inactivo.<br><br>También puede eliminar al ejecutor allí.<br><br>En esta pantalla no hay un botón Añadir aparte. Los nuevos ejecutores se crean en Personas → Equipos."
+                    "text": "Haga clic en el nombre de un ejecutor para ir al equipo al que pertenece esa persona.<br><br>Allí puede modificar, entre otras cosas:<br>• El equipo y las ubicaciones permitidas.<br>• El icono que aparece en el reloj de fichar.<br>• El número de móvil.<br>• El código PIN y la passkey.<br>• Si el ejecutor es jefe de equipo.<br>• El estado: Activo o Inactivo.<br><br>Allí también puede eliminar al ejecutor.<br><br>Los ejecutores nuevos se crean en Personas → Teams. No se puede hacer directamente desde este resumen."
                 },
                 {
                     "label": "Documentos y avisos",
-                    "text": "¿Un ejecutor tiene documentos o avisos? Entonces ve el mismo contador que en la página del equipo.<br><br>Toque el contador. Aparece un globo con <strong>Gestionar documentos</strong> o <strong>Gestionar avisos</strong>.<br><br>Luego llega a la lista del equipo, filtrada automáticamente a ese ejecutor."
+                    "text": "¿Un ejecutor tiene documentos o avisos? Entonces ve un contador junto al nombre. Muestra el mismo número que en la página del equipo.<br><br>Pase el ratón por el contador para ver si se trata de Gestionar documentos o de Gestionar avisos.<br><br>Haga clic en el contador para ir directamente a la lista del equipo. Esa lista queda filtrada por ese ejecutor."
                 }
             ]
         },

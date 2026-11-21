@@ -1909,35 +1909,35 @@
             ]
         },
         "team.workers_index": {
-            "title": "Hilfe — Ausführende",
+            "title": "Hilfe — Mitarbeiter",
             "actions": [
                 {
-                    "label": "Was sehen Sie auf diesem Bildschirm?",
-                    "text": "Hier finden Sie alle Ausführenden Ihrer Organisation in einer Übersicht. Praktisch, um jemanden schnell zu finden — besonders bei vielen Ausführenden.<br><br>Pro Ausführendem sehen Sie unter anderem:<br>• Den Namen.<br>• Das Team.<br>• Die Standorte, an denen diese Person einstempeln darf.<br>• Ob das Profil aktiv ist.<br>• Ob der Ausführende mit einem Kollegen verknüpft ist, der auch im Backoffice arbeitet.<br><br>Tipp: dieser Bildschirm dient zum Suchen und Filtern. Ausführende hinzufügen, ändern oder deaktivieren Sie unter Personen → Teams."
+                    "label": "Was finden Sie auf diesem Bildschirm?",
+                    "text": "Hier finden Sie alle Mitarbeiter Ihrer Organisation in einer Übersicht. So finden Sie jemanden leicht wieder, auch wenn Ihre Organisation viele Personen hat.<br><br>Pro Mitarbeiter sehen Sie:<br>• Name: der Name des Mitarbeiters.<br>• Team: das Team, zu dem der Mitarbeiter gehört.<br>• Standorte: die Standorte, an denen der Mitarbeiter einstempeln darf. Steht dort Alle Standorte, darf diese Person überall einstempeln.<br>• Status: Aktiv oder Inaktiv.<br>• Kollegen-Login: dieser Mitarbeiter ist auch ein Kollege mit Zugang zum Backoffice.<br>• Zu prüfen: das Profil wurde kürzlich von einem Teamleiter angelegt und muss noch ergänzt werden.<br><br>Diese Übersicht dient dazu, Mitarbeiter zu suchen. Hinzufügen, ändern oder deaktivieren tun Sie unter Personen → Teams."
                 },
                 {
                     "label": "Suchen und filtern",
-                    "text": "Nutzen Sie die Filter oben, um die Liste einzugrenzen:<br>• Nach Namen suchen.<br>• Ein Team wählen.<br>• Einen Standort wählen.<br>• Nach aktiven oder inaktiven Ausführenden filtern.<br><br>Lassen Sie den Standort leer, um alle Ausführenden zu sehen. Wählen Sie einen Standort, sehen Sie nur Ausführende, die dort einstempeln dürfen.<br><br>Auch Ausführende ohne festen Standort und Teams, die überall einstempeln dürfen, bleiben sichtbar."
+                    "text": "Mit den Filtern oben finden Sie schnell den richtigen Mitarbeiter:<br>• Suchen Sie nach Name oder E-Mail-Adresse.<br>• Wählen Sie ein Team oder Alle Teams.<br>• Wählen Sie einen Standort oder Alle Standorte.<br>• Filtern Sie auf Aktiv, Inaktiv oder Alle Status.<br><br>Neben den Filtern sehen Sie, wie viele Mitarbeiter Ihrer Auswahl entsprechen.<br><br>Wenn Sie einen Standort wählen, bleiben auch Mitarbeiter ohne bestimmten Standort sichtbar. Dasselbe gilt für Mitarbeiter, deren Team an allen Standorten einstempeln darf."
                 },
                 {
                     "label": "Standorte",
-                    "text": "Bei jedem Ausführenden sehen Sie, welchen Standorten diese Person zugewiesen ist.<br><br>Keine Standorte gewählt? Dann darf der Ausführende überall einstempeln. Das ist die Standardeinstellung für bestehende Ausführende.<br><br>Standorte ändern Sie unter Personen → Teams → Bearbeiten. Sie können sie auch bei einem Import mitgeben."
+                    "text": "Bei jedem Mitarbeiter sehen Sie, an welchen Standorten diese Person einstempeln darf.<br><br>Sind keine bestimmten Standorte festgelegt? Dann steht dort Alle Standorte. Der Mitarbeiter kann dann an jedem Standort einstempeln.<br><br>Möchten Sie die Standorte ändern? Gehen Sie zu Personen → Teams → Bearbeiten."
                 },
                 {
                     "label": "Verknüpfung mit einem Kollegen",
-                    "text": "Manche Ausführende sind mit einem Kollegen verknüpft, der auch im Backoffice mit E-Mail-Adresse und Passwort arbeitet.<br><br>Diese Person zählt als eine Lizenz, nicht als zwei.<br><br>Einstempeln erfolgt immer über Clock Point, mit Name und Icon des Ausführenden. Die Backoffice-Anmeldung wird dafür nicht verwendet."
+                    "text": "Sehen Sie das Label Kollegen-Login? Dann ist dieser Mitarbeiter mit einem Kollegen verknüpft, der auch Zugang zum Backoffice hat, mit eigener E-Mail-Adresse und eigenem Passwort.<br><br>Beide Profile nutzen zusammen nur eine Lizenz. Sie zahlen also nicht doppelt.<br><br>Eingestempelt wird immer an der Stempeluhr, mit Name und Symbol des Mitarbeiters. Die Anmeldedaten des Backoffice werden dafür nicht verwendet."
                 },
                 {
                     "label": "Zu prüfen",
-                    "text": "Mit der Schaltfläche <strong>Zu prüfen</strong> zeigen Sie nur aktive Ausführende, die ein Teamleiter gerade auf Clock Point angelegt hat.<br><br>Diese Ausführenden haben vorerst nur Vor- und Nachnamen und erhalten das Badge <strong>Zu prüfen</strong>.<br><br>Auf dem Startbildschirm finden Sie dafür auch die Kachel <strong>Neuer Ausführender</strong>.<br><br>Öffnen Sie den Ausführenden unter Personen → Teams und speichern Sie die Daten oder deaktivieren Sie das Profil. Danach verschwindet der Ausführende aus diesem Filter.<br><br>Klicken Sie erneut auf <strong>Zu prüfen</strong>, um wieder alle Ausführenden zu sehen."
+                    "text": "Mit der Schaltfläche Zu prüfen sehen Sie aktive Mitarbeiter, die ein Teamleiter kürzlich über Clock Point angelegt hat.<br><br>Diese Profile enthalten vorerst nur Vor- und Nachname und tragen das Label Zu prüfen.<br><br>Auf dem Startbildschirm finden Sie dafür auch die Kachel Neuer Mitarbeiter.<br><br>Öffnen Sie das Profil über Personen → Teams und ergänzen Sie die fehlenden Angaben. Speichern Sie das Profil, oder deaktivieren Sie es, wenn der Mitarbeiter nicht gebraucht wird.<br><br>Sobald Sie das Profil gespeichert oder deaktiviert haben, verschwindet es aus diesem Filter.<br><br>Klicken Sie erneut auf Zu prüfen, um zur vollständigen Übersicht zurückzukehren."
                 },
                 {
-                    "label": "Ausführenden öffnen",
-                    "text": "Klicken Sie auf einen Namen, um zum Team dieses Ausführenden zu gelangen.<br><br>Dort können Sie die Daten anpassen:<br>• Team und Standorte.<br>• Icon.<br>• Handynummer.<br>• PIN und Passkey.<br>• Teamleiter.<br>• Aktiven oder inaktiven Status.<br><br>Sie können den Ausführenden dort auch löschen.<br><br>Einen eigenen Button zum Hinzufügen gibt es auf diesem Bildschirm nicht. Neue Ausführende legen Sie unter Personen → Teams an."
+                    "label": "Einen Mitarbeiter öffnen",
+                    "text": "Klicken Sie auf den Namen eines Mitarbeiters, um zum Team zu gehen, zu dem diese Person gehört.<br><br>Dort können Sie unter anderem ändern:<br>• Das Team und die erlaubten Standorte.<br>• Das Symbol, das an der Stempeluhr erscheint.<br>• Die Handynummer.<br>• Die PIN und die Passkey.<br>• Ob der Mitarbeiter Teamleiter ist.<br>• Den Status: Aktiv oder Inaktiv.<br><br>Sie können den Mitarbeiter dort auch löschen.<br><br>Neue Mitarbeiter legen Sie über Personen → Teams an. Das geht nicht direkt aus dieser Übersicht."
                 },
                 {
                     "label": "Dokumente und Mitteilungen",
-                    "text": "Hat ein Ausführender Dokumente oder Mitteilungen? Dann sehen Sie bei dieser Person denselben Zähler wie auf der Teamseite.<br><br>Tippen Sie auf den Zähler. Es erscheint ein Hinweis mit <strong>Dokumente verwalten</strong> oder <strong>Mitteilungen verwalten</strong>.<br><br>Sie gelangen dann in die Liste des Teams, automatisch gefiltert auf diesen Ausführenden."
+                    "text": "Hat ein Mitarbeiter Dokumente oder Mitteilungen? Dann sehen Sie neben dem Namen einen Zähler. Er zeigt dieselbe Anzahl wie auf der Teamseite.<br><br>Bewegen Sie die Maus über den Zähler, um zu sehen, ob es um Dokumente verwalten oder Mitteilungen verwalten geht.<br><br>Klicken Sie auf den Zähler, um direkt zur Liste des Teams zu gehen. Diese Liste ist dann auf den betreffenden Mitarbeiter gefiltert."
                 }
             ]
         },

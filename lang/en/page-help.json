@@ -1912,32 +1912,32 @@
             "title": "Help — Workers",
             "actions": [
                 {
-                    "label": "What do you see on this screen?",
-                    "text": "Here you find all workers in your organisation in one overview. Handy to find someone quickly, especially if you have many workers.<br><br>Per worker you see, among other things:<br>• The name.<br>• The team.<br>• The sites where that person may clock in.<br>• Whether the profile is active.<br>• Whether the worker is linked to a colleague who also works in the Backoffice.<br><br>Tip: this screen is for searching and filtering. Add, edit or deactivate workers via People → Teams."
+                    "label": "What do you find on this screen?",
+                    "text": "Here you find every worker in your organisation in one overview. That makes it easy to find someone, even when your organisation has many people.<br><br>For each worker you see:<br>• Name: the worker’s name.<br>• Team: the team the worker belongs to.<br>• Locations: the locations where the worker may clock in. If it says All locations, that person may clock in anywhere.<br>• Status: Active or Inactive.<br>• Colleague login: this worker is also a colleague with access to the Backoffice.<br>• To review: a team leader created the profile recently and it still needs to be completed.<br><br>This overview is for finding workers. You add, change or deactivate them via People → Teams."
                 },
                 {
                     "label": "Search and filter",
-                    "text": "Use the filters at the top to narrow the list:<br>• Search by name.<br>• Choose a team.<br>• Choose a site.<br>• Filter on active or inactive workers.<br><br>Leave the site empty to see all workers. If you choose a site, you only see workers who may clock in there.<br><br>Workers without a fixed site, and teams that may clock in everywhere, stay visible too."
+                    "text": "Use the filters at the top to find the right worker quickly:<br>• Search by name or email address.<br>• Select a team, or choose All teams.<br>• Select a location, or choose All locations.<br>• Filter on Active, Inactive or All statuses.<br><br>Next to the filters you see how many workers match your selection.<br><br>When you choose a location, workers without a specific location stay visible too. The same applies to workers whose team may clock in at every location."
                 },
                 {
-                    "label": "Sites",
-                    "text": "For each worker you see which sites that person is assigned to.<br><br>No sites selected? Then the worker may clock in everywhere. That is the default for existing workers.<br><br>Change sites via People → Teams → Edit. You can also include them in an import."
+                    "label": "Locations",
+                    "text": "For each worker you see the locations where that person may clock in.<br><br>If no specific locations are set, it says All locations. The worker can then clock in at every location.<br><br>Want to change the locations? Go to People → Teams → Edit."
                 },
                 {
-                    "label": "Link to a colleague",
-                    "text": "Some workers are linked to a colleague who also works in the Backoffice with an email address and password.<br><br>That person counts as one licence, not two.<br><br>Clocking in always happens via Clock Point, with the worker’s name and icon. The Backoffice login is not used for this."
+                    "label": "Link with a colleague",
+                    "text": "Do you see the label Colleague login? Then this worker is linked to a colleague who also has access to the Backoffice, with their own email address and password.<br><br>Both profiles together use only one licence. You do not pay twice.<br><br>Clocking in always happens on the punch clock, with the worker’s name and icon. The Backoffice sign-in details are not used for that."
                 },
                 {
                     "label": "To review",
-                    "text": "With the <strong>To review</strong> button you only show active workers that a team leader has just created on Clock Point.<br><br>These workers temporarily have only a first and last name and get the <strong>To review</strong> badge.<br><br>On the home screen you also find the <strong>New worker</strong> tile for this.<br><br>Open the worker via People → Teams and save the details or deactivate the profile. After that the worker leaves this filter.<br><br>Click <strong>To review</strong> again to show all workers once more."
+                    "text": "The button To review shows active workers that a team leader recently created via Clock Point.<br><br>For now these profiles only contain a first and last name, and they carry the label To review.<br><br>On the home screen you also find the tile New worker for this.<br><br>Open the profile via People → Teams and fill in the missing details. Save the profile, or deactivate it if the worker is not needed.<br><br>Once you have saved or deactivated the profile, it disappears from this filter.<br><br>Click To review again to return to the full overview."
                 },
                 {
                     "label": "Open a worker",
-                    "text": "Click a name to go to that worker’s team.<br><br>There you can adjust the details:<br>• Team and sites.<br>• Icon.<br>• Mobile number.<br>• PIN and passkey.<br>• Team leader.<br>• Active or inactive status.<br><br>You can also delete the worker there.<br><br>There is no separate Add button on this screen. Create new workers via People → Teams."
+                    "text": "Click a worker’s name to go to the team that person belongs to.<br><br>There you can change, among other things:<br>• The team and the allowed locations.<br>• The icon that appears on the punch clock.<br>• The mobile number.<br>• The PIN and passkey.<br>• Whether the worker is a team leader.<br>• The status: Active or Inactive.<br><br>You can also delete the worker there.<br><br>You create new workers via People → Teams. You cannot do that directly from this overview."
                 },
                 {
                     "label": "Documents and announcements",
-                    "text": "Does a worker have documents or announcements? Then you see the same counter for that person as on the team page.<br><br>Tap the counter. A tip appears with <strong>Manage documents</strong> or <strong>Manage announcements</strong>.<br><br>You then open the team’s list, automatically filtered to that worker."
+                    "text": "Does a worker have documents or announcements? Then you see a counter next to the name. It shows the same number as on the team page.<br><br>Move your mouse over the counter to see whether it is Manage documents or Manage announcements.<br><br>Click the counter to go straight to the team’s list. That list is then filtered to that worker."
                 }
             ]
         },

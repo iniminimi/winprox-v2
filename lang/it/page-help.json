@@ -1912,32 +1912,32 @@
             "title": "Aiuto — Esecutori",
             "actions": [
                 {
-                    "label": "Cosa vedete in questa schermata?",
-                    "text": "Qui trovate tutti gli esecutori della vostra organizzazione in un unico riepilogo. Utile per ritrovare qualcuno in fretta, soprattutto se ne avete molti.<br><br>Per ogni esecutore vedete, tra le altre cose:<br>• Il nome.<br>• Il team.<br>• Le sedi in cui quella persona può timbrare.<br>• Se il profilo è attivo.<br>• Se l’esecutore è collegato a un collega che lavora anche nel Backoffice.<br><br>Consiglio: questa schermata serve a cercare e filtrare. Aggiungere, modificare o disattivare esecutori si fa in Persone → Team."
+                    "label": "Che cosa trova in questa schermata?",
+                    "text": "Qui trova tutti gli esecutori della sua organizzazione in un’unica panoramica. Così ritrova facilmente qualcuno, anche se l’organizzazione ha molte persone.<br><br>Per ogni esecutore vede:<br>• Nome: il nome dell’esecutore.<br>• Team: il team a cui appartiene l’esecutore.<br>• Sedi: le sedi in cui l’esecutore può timbrare. Se c’è scritto Tutte le sedi, quella persona può timbrare ovunque.<br>• Stato: Attivo o Inattivo.<br>• Login collega: questo esecutore è anche un collega con accesso al Backoffice.<br>• Da controllare: il profilo è stato creato di recente da un caposquadra e va ancora completato.<br><br>Questa panoramica serve a cercare gli esecutori. Aggiungere, modificare o disattivare si fa in Persone → Teams."
                 },
                 {
                     "label": "Cercare e filtrare",
-                    "text": "Usate i filtri in alto per restringere l’elenco:<br>• Cercate per nome.<br>• Scegliete un team.<br>• Scegliete una sede.<br>• Filtrate sugli esecutori attivi o inattivi.<br><br>Lasciate la sede vuota per vedere tutti. Se scegliete una sede, vedete solo chi può timbrare lì.<br><br>Restano visibili anche gli esecutori senza sede fissa e i team che possono timbrare ovunque."
+                    "text": "Con i filtri in alto trova presto l’esecutore giusto:<br>• Cerchi per nome o indirizzo e-mail.<br>• Selezioni un team oppure Tutti i team.<br>• Selezioni una sede oppure Tutte le sedi.<br>• Filtri per Attivo, Inattivo o Tutti gli stati.<br><br>Accanto ai filtri vede quanti esecutori corrispondono alla sua selezione.<br><br>Quando sceglie una sede, restano visibili anche gli esecutori senza una sede precisa. Lo stesso vale per gli esecutori il cui team può timbrare in tutte le sedi."
                 },
                 {
                     "label": "Sedi",
-                    "text": "Per ogni esecutore vedete a quali sedi è assegnata quella persona.<br><br>Nessuna sede scelta? Allora l’esecutore può timbrare ovunque. È l’impostazione predefinita per gli esecutori esistenti.<br><br>Modificate le sedi in Persone → Team → Modifica. Potete anche indicarle in un’importazione."
+                    "text": "Per ogni esecutore vede in quali sedi quella persona può timbrare.<br><br>Non ci sono sedi precise? Allora c’è scritto Tutte le sedi. L’esecutore può timbrare in ogni sede.<br><br>Vuole modificare le sedi? Vada in Persone → Teams → Modifica."
                 },
                 {
-                    "label": "Collegamento a un collega",
-                    "text": "Alcuni esecutori sono collegati a un collega che lavora anche nel Backoffice con indirizzo e-mail e password.<br><br>Quella persona conta come una licenza, non come due.<br><br>La timbratura avviene sempre tramite Clock Point, con il nome e l’icona dell’esecutore. L’accesso al Backoffice non viene usato per questo."
+                    "label": "Collegamento con un collega",
+                    "text": "Vede l’etichetta Login collega? Allora questo esecutore è collegato a un collega che ha anche accesso al Backoffice, con il proprio indirizzo e-mail e la propria password.<br><br>I due profili usano insieme una sola licenza. Non paga quindi due volte.<br><br>La timbratura avviene sempre sulla timbratrice, con il nome e l’icona dell’esecutore. I dati di accesso del Backoffice non si usano per questo."
                 },
                 {
                     "label": "Da controllare",
-                    "text": "Con il pulsante <strong>Da controllare</strong> mostrate solo gli esecutori attivi che un team leader ha appena creato su Clock Point.<br><br>Questi esecutori hanno per ora solo nome e cognome e ricevono il badge <strong>Da controllare</strong>.<br><br>Nella schermata iniziale trovate anche il riquadro <strong>Nuovo esecutore</strong>.<br><br>Aprite l’esecutore in Persone → Team e salvate i dati o disattivate il profilo. Poi l’esecutore esce da questo filtro.<br><br>Fate di nuovo clic su <strong>Da controllare</strong> per rivedere tutti gli esecutori."
+                    "text": "Con il pulsante Da controllare vede gli esecutori attivi creati di recente da un caposquadra tramite Clock Point.<br><br>Per ora questi profili contengono solo nome e cognome e portano l’etichetta Da controllare.<br><br>Nella schermata iniziale trova anche il riquadro Nuovo esecutore.<br><br>Apra il profilo in Persone → Teams e completi i dati mancanti. Salvi il profilo, oppure lo disattivi se l’esecutore non serve.<br><br>Appena salva o disattiva il profilo, sparisce da questo filtro.<br><br>Faccia di nuovo clic su Da controllare per tornare alla panoramica completa."
                 },
                 {
                     "label": "Aprire un esecutore",
-                    "text": "Fate clic su un nome per andare al team di quell’esecutore.<br><br>Lì potete adattare i dati:<br>• Team e sedi.<br>• Icona.<br>• Numero di cellulare.<br>• PIN e passkey.<br>• Team leader.<br>• Stato attivo o inattivo.<br><br>Potete anche eliminare l’esecutore lì.<br><br>In questa schermata non c’è un pulsante Aggiungi separato. I nuovi esecutori si creano in Persone → Team."
+                    "text": "Faccia clic sul nome di un esecutore per andare al team a cui appartiene quella persona.<br><br>Lì può modificare, tra l’altro:<br>• Il team e le sedi consentite.<br>• L’icona che compare sulla timbratrice.<br>• Il numero di cellulare.<br>• Il codice PIN e la passkey.<br>• Se l’esecutore è caposquadra.<br>• Lo stato: Attivo o Inattivo.<br><br>Lì può anche eliminare l’esecutore.<br><br>I nuovi esecutori si creano in Persone → Teams. Non si può fare direttamente da questa panoramica."
                 },
                 {
-                    "label": "Documenti e annunci",
-                    "text": "Un esecutore ha documenti o annunci? Allora vedete lo stesso contatore della pagina del team.<br><br>Toccate il contatore. Compare un fumetto con <strong>Gestisci documenti</strong> o <strong>Gestisci annunci</strong>.<br><br>Arrivate poi all’elenco del team, già filtrato su quell’esecutore."
+                    "label": "Documenti e comunicazioni",
+                    "text": "Un esecutore ha documenti o comunicazioni? Allora vede un contatore accanto al nome. Mostra lo stesso numero della pagina del team.<br><br>Passi il mouse sul contatore per vedere se si tratta di Gestire i documenti o di Gestire le comunicazioni.<br><br>Faccia clic sul contatore per andare direttamente all’elenco del team. Quell’elenco è allora filtrato su quell’esecutore."
                 }
             ]
         },
