@@ -1650,32 +1650,40 @@
             "title": "Hulp — Clock Points",
             "actions": [
                 {
-                    "label": "Wat is een clock point?",
-                    "text": "Beheer inklokpunten en printbare QR-codes via Time → Clock Points. Er wordt automatisch een standaard clock point aangemaakt indien nodig."
+                    "label": "Wat is een Clock Point?",
+                    "text": "Een Clock Point is een vast aanmeldpunt op een vestiging. Dat kan een eenvoudige sticker met een QR-code zijn, maar ook een klokscherm waarop voortdurend een nieuwe QR-code verschijnt.<br><br>Uitvoerders scannen de QR-code met hun gsm en kiezen vervolgens hun naam en icoon. Zo melden ze zich aan bij WinProx.<br><br>Belangrijk: aanmelden is nog niet hetzelfde als inklokken. Om in of uit te klokken, moet de uitvoerder daarna opnieuw een verse QR-code scannen op dezelfde locatie.<br><br>Tip: maak eerst een Clock Point aan voor elke vestiging. Print daarna de QR-codes en hang ze op de juiste plaatsen."
                 },
                 {
-                    "label": "QR",
-                    "text": "Via <strong>QR</strong> opent u een venster: bekijken/afdrukken in de browser, of een Word-afdrukblad (A6, A5 of A4) met dezelfde branding als bij Instellingen → QR-afdrukblad. Via <strong>E-mail</strong> of <strong>WhatsApp</strong> deelt u de aanmeldlink (aanmelden zonder inklokken) met een uitvoerder op locatie. Elke clock point heeft een unieke code."
+                    "label": "Een Clock Point toevoegen",
+                    "text": "Klik op <strong>Toevoegen</strong> en vul de volgende gegevens in:<br>• <strong>Naam:</strong> kies een herkenbare naam, bijvoorbeeld Receptie of Magazijn.<br>• <strong>Vestiging:</strong> koppel het Clock Point eventueel aan de juiste vestiging.<br>• <strong>Sorteervolgorde:</strong> geef optioneel aan waar het Clock Point in de lijst moet verschijnen.<br><br>Klik op <strong>Opslaan</strong>. WinProx maakt automatisch een unieke QR-code aan voor dit Clock Point.<br><br>Tip: koppel elk Clock Point aan de juiste vestiging. Zo kunt u later bij de aanwezigheid en urenregistratie gemakkelijk zien waar iemand heeft ingeprikt."
+                },
+                {
+                    "label": "QR-code bekijken en delen",
+                    "text": "Klik bij een Clock Point op <strong>QR</strong> om de bijbehorende QR-code te openen.<br><br>U kunt vervolgens:<br>• De QR-code bekijken en rechtstreeks afdrukken via uw browser.<br>• Een Word-afdrukblad downloaden in A6-, A5- of A4-formaat. De opmaak is dezelfde als bij Instellingen → QR-afdrukblad.<br>• De aanmeldlink kopiëren of delen via e-mail of WhatsApp.<br><br>De aanmeldlink dient om zich aan te melden bij WinProx. Om effectief in of uit te klokken via een vaste prikklok, is daarna nog altijd een nieuwe QR-scan ter plaatse nodig.<br><br>Tip: hang de afgedrukte QR-code op een goed zichtbare plaats, bij voorkeur dicht bij de ingang."
                 },
                 {
                     "label": "QR-rotatie",
-                    "text": "Onder <strong>QR-rotatie</strong> stelt u een interval in (maanden) én vernieuwt u de QR per Clock Point (verloren sticker of vermoed misbruik). Het systeem beveelt op een willekeurig moment binnen dat interval aan om de sticker te vernieuwen. De oude code werkt nog enkele dagen (grace-periode), daarna wordt die geblokkeerd. Tot u vernieuwt blijft inklokken gewoon werken — het interval is een aanbeveling, geen automatische wissel."
+                    "text": "Bovenaan vindt u het onderdeel <strong>QR-rotatie</strong>.<br><br>Daar stelt u in na hoeveel maanden WinProx u mag herinneren om de QR-stickers te vernieuwen.<br><br>Bent u een sticker kwijt of vermoedt u dat iemand de QR-code misbruikt? Selecteer dan het betreffende Clock Point en klik op <strong>Vernieuwen</strong>.<br><br>De oude QR-code blijft na de vernieuwing nog enkele dagen geldig. Daarna wordt ze geweigerd.<br><br>Belangrijk: zolang u zelf geen vernieuwing uitvoert, blijft alles gewoon werken. Het ingestelde interval is alleen een herinnering. WinProx vervangt de QR-code dus niet automatisch."
                 },
                 {
                     "label": "Vorige QR-code",
-                    "text": "Na vernieuwen werkt de vorige QR nog enkele dagen. Daarna wordt een scan geweigerd. Staat hier een regel, dan is die vorige code in de laatste 7 dagen nog gescand."
+                    "text": "Na een vernieuwing kunt u hier controleren of de oude QR-code in de afgelopen 7 dagen nog werd gescand.<br><br>Staat er een registratie? Dan is de oude sticker of een eerder gemaakte foto van de QR-code mogelijk nog in gebruik.<br><br>Tip: vervang verloren stickers of QR-codes die openbaar gedeeld werden zo snel mogelijk. Hang daarna de nieuwe QR-code op."
                 },
                 {
-                    "label": "Actief / inactief",
-                    "text": "Deactiveer een clock point tijdelijk (bv. bij werken op locatie). Het portaal toont dan dat inklokken niet beschikbaar is."
+                    "label": "Klokscherm",
+                    "text": "Wilt u liever een scherm gebruiken dan een afgedrukte sticker? Dan kunt u bij een Clock Point via <strong>Scherm</strong> een fysiek klokscherm koppelen.<br><br>Het scherm toont automatisch een wisselende QR-code. Uitvoerders scannen die met hun gsm, net zoals bij een gewone sticker.<br><br>Meer uitleg over het koppelen van het scherm, de schermuren, het geluid en de screensaver vindt u in de hulp bij het klokscherm zelf."
                 },
                 {
-                    "label": "Link op het startscherm van de gsm",
-                    "text": "Op elk Clock Point-portaal staat rechts van <strong>Aanmelden</strong> een WinProx-icoon. De uitvoerder tikt erop om de aanmeldlink op het startscherm van zijn gsm te zetten. Zo opent hij het portaal voortaan met één tik, net als een app — zonder iets uit een app store te installeren. Op iPhone gaat dat via ⋯ (onderaan) → <strong>Deel</strong> → Toon meer → + Zet op beginscherm."
+                    "label": "Een Clock Point activeren of deactiveren",
+                    "text": "Gebruikt u een Clock Point tijdelijk niet? Dan kunt u het op <strong>Inactief</strong> zetten.<br><br>Het Clock Point blijft bewaard, maar uitvoerders kunnen via de bijbehorende QR-code niet meer inklokken. WinProx geeft dit ook duidelijk aan in het portaal.<br><br>Wanneer u het punt opnieuw nodig hebt, activeert u het gewoon weer.<br><br>Tip: deactiveren is meestal beter dan verwijderen. Zo behoudt u de bestaande gegevens en historiek."
+                },
+                {
+                    "label": "WinProx op het startscherm van de gsm",
+                    "text": "Op het Clock Point-portaal vindt u rechts naast <strong>Aanmelden</strong> een WinProx-icoon.<br><br>Een uitvoerder kan daarop tikken om de aanmeldpagina als snelkoppeling op het startscherm van de gsm te plaatsen. Daarna opent het portaal met één tik, zonder dat er een app uit de App Store of Play Store nodig is.<br><br>Op een iPhone gaat dat als volgt:<br>1. Tik op ⋯ onderaan.<br>2. Kies <strong>Deel</strong>.<br>3. Tik op <strong>Toon meer</strong>.<br>4. Kies <strong>Zet op beginscherm</strong>.<br><br>Belangrijk: via deze snelkoppeling kan de uitvoerder zich aanmelden en zijn of haar naam kiezen. Om op een vaste prikklok in of uit te klokken, blijft een verse QR-scan van de sticker of het klokscherm nodig."
                 },
                 {
                     "label": "Pushmeldingen op de gsm",
-                    "text": "De uitvoerder zet WinProx eerst op het startscherm via het logo met het plusje. Open daarna dat icoon. Alleen in die app staat de knop Pushmeldingen aanzetten. Hij tikt erop en staat meldingen toe. De knop verdwijnt meteen; de pagina hoeft niet ververst te worden. Daarna kan zijn gsm een melding tonen als een dienst wijzigt, verlof of recup is goedgekeurd, er een document of mededeling klaarstaat, of hij na het einde van de dienst nog ingeklokt is. Ook bij een nieuwe taak voor hem of zijn team, één keer per ochtend voor wederkerende taken, en als verlof of recup geweigerd wordt. Op een iPhone werkt dat alleen vanuit het startscherm-icoon. Alleen op de gekoppelde gsm. De melding bevat geen tekst uit het document."
+                    "text": "Uitvoerders kunnen meldingen van WinProx ontvangen op hun gsm. Zo blijven ze op de hoogte van belangrijke wijzigingen, ook wanneer ze WinProx niet geopend hebben.<br><br>Daarvoor moet WinProx eerst als snelkoppeling op het startscherm staan. Gebruik hiervoor het WinProx-logo met het plusje.<br><br>Open daarna WinProx via die snelkoppeling. Alleen daar verschijnt de knop <strong>Pushmeldingen aanzetten</strong>.<br><br>Tik op de knop en geef toestemming om meldingen te ontvangen. De knop verdwijnt daarna automatisch.<br><br>De uitvoerder kan onder andere een melding ontvangen bij:<br>• Een gewijzigde dienst.<br>• Goedgekeurd of geweigerd verlof of recup.<br>• Een nieuw document of een nieuwe mededeling.<br>• Vergeten uit te klokken na het einde van de dienst.<br>• Een nieuwe taak voor de uitvoerder of het team.<br><br>Goed om te weten:<br>• Op een iPhone werken pushmeldingen alleen wanneer WinProx via het startscherm-icoon wordt geopend.<br>• Meldingen worden alleen ontvangen op de gsm waarop ze werden ingesteld.<br>• De melding zelf bevat geen inhoud uit het document."
                 }
             ]
         },

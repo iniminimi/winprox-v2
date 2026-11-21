@@ -1650,32 +1650,40 @@
             "title": "Ayuda — Clock Points",
             "actions": [
                 {
-                    "label": "¿Qué es un clock point?",
-                    "text": "Gestione puntos de fichaje y códigos QR imprimibles en Time → Clock Points. Se crea automáticamente un clock point predeterminado si es necesario."
+                    "label": "¿Qué es un Clock Point?",
+                    "text": "Un Clock Point es un punto fijo de registro en una sede. Puede ser un simple adhesivo con código QR, o una pantalla de reloj que muestra continuamente un QR nuevo.<br><br>Los ejecutores escanean el QR con el móvil y eligen después su nombre e icono. Así se registran en WinProx.<br><br>Importante: registrarse aún no es fichar. Para fichar la entrada o la salida, el ejecutor debe escanear después otro QR fresco en el mismo lugar.<br><br>Consejo: cree primero un Clock Point por sede. Luego imprima los QR y colóquelos en los sitios adecuados."
                 },
                 {
-                    "label": "QR",
-                    "text": "Con <strong>QR</strong> abre un diálogo: ver/imprimir en el navegador, o una hoja Word (A6, A5 o A4) con la misma marca que Ajustes → Hoja de impresión QR. Con <strong>Correo</strong> o <strong>WhatsApp</strong> comparte el enlace de acceso (acceso sin fichar la entrada) con un operario en la ubicación. Cada clock point tiene un código único."
+                    "label": "Añadir un Clock Point",
+                    "text": "Pulse <strong>Añadir</strong> e indique estos datos:<br>• <strong>Nombre:</strong> elija un nombre claro, por ejemplo Recepción o Almacén.<br>• <strong>Sede:</strong> vincule opcionalmente el Clock Point a la sede correcta.<br>• <strong>Orden:</strong> indique opcionalmente dónde debe aparecer en la lista.<br><br>Pulse <strong>Guardar</strong>. WinProx crea automáticamente un código QR único para este Clock Point.<br><br>Consejo: vincule cada Clock Point a la sede correcta. Así verá después en presencia y horas dónde ha fichado alguien."
+                },
+                {
+                    "label": "Ver y compartir el código QR",
+                    "text": "En un Clock Point, pulse <strong>QR</strong> para abrir el código QR asociado.<br><br>A continuación puede:<br>• Ver el QR e imprimirlo directamente desde el navegador.<br>• Descargar una hoja Word en A6, A5 o A4. El diseño es el mismo que en Ajustes → Hoja de impresión QR.<br>• Copiar el enlace de registro o compartirlo por correo o WhatsApp.<br><br>El enlace de registro sirve para registrarse en WinProx. Para fichar de verdad la entrada o la salida en un reloj fijo, después sigue haciendo falta un escaneo QR nuevo in situ.<br><br>Consejo: cuelgue el QR impreso en un sitio bien visible, preferiblemente cerca de la entrada."
                 },
                 {
                     "label": "Rotación QR",
-                    "text": "En <strong>Rotación QR</strong> configura un intervalo (meses) y renueva el QR por Clock Point (pegatina perdida o sospecha de uso indebido). El sistema recomienda la renovación en un momento aleatorio de ese intervalo. El código antiguo sigue funcionando unos días (periodo de gracia) y luego se bloquea. Hasta renovar, el fichaje sigue — el intervalo es una recomendación, no un cambio automático."
+                    "text": "Arriba encuentra el apartado <strong>Rotación QR</strong>.<br><br>Ahí indica cada cuántos meses WinProx puede recordarle renovar los adhesivos QR.<br><br>¿Ha perdido un adhesivo o sospecha un uso indebido del QR? Seleccione el Clock Point correspondiente y pulse <strong>Renovar</strong>.<br><br>Tras la renovación, el QR antiguo sigue válido unos días. Después se rechaza.<br><br>Importante: mientras no renueve usted mismo, todo sigue funcionando. El intervalo es solo un recordatorio. WinProx no sustituye el QR automáticamente."
                 },
                 {
-                    "label": "QR anterior",
-                    "text": "Tras renovarlo, el QR anterior sigue funcionando unos días. Después se rechaza el escaneo. Una línea aquí significa que ese código anterior se ha escaneado de nuevo en los últimos 7 días."
+                    "label": "Código QR anterior",
+                    "text": "Tras una renovación puede comprobar aquí si el QR antiguo se escaneó en los últimos 7 días.<br><br>¿Hay un registro? Entonces el adhesivo antiguo o una foto anterior del QR quizá siga en uso.<br><br>Consejo: sustituya lo antes posible adhesivos perdidos o QR compartidos en público. Luego cuelgue el nuevo QR."
                 },
                 {
-                    "label": "Activo / inactivo",
-                    "text": "Desactive temporalmente un clock point (p. ej. por trabajos en el lugar). El portal indica entonces que el fichaje no está disponible."
+                    "label": "Pantalla de reloj",
+                    "text": "¿Prefiere una pantalla a un adhesivo impreso? En un Clock Point puede vincular una pantalla física mediante <strong>Pantalla</strong>.<br><br>La pantalla muestra automáticamente un QR cambiante. Los ejecutores lo escanean con el móvil, igual que con un adhesivo normal.<br><br>Más información sobre el enlace, las horas de pantalla, el sonido y el salvapantallas está en la ayuda de la propia pantalla de reloj."
                 },
                 {
-                    "label": "Clock Point en la pantalla de inicio del teléfono",
-                    "text": "Cada portal Clock Point muestra un icono WinProx a la derecha de <strong>Inicio de sesión</strong>. El operario lo toca para poner el enlace de acceso en la pantalla de inicio de su teléfono. Así abre el portal con un solo toque, como una app — sin instalar nada de una tienda. En iPhone mediante ⋯ (abajo) → <strong>Compartir</strong> → Mostrar más → + Añadir a pantalla de inicio."
+                    "label": "Activar o desactivar un Clock Point",
+                    "text": "¿No usa un Clock Point durante un tiempo? Puede ponerlo en <strong>Inactivo</strong>.<br><br>El Clock Point se conserva, pero los ejecutores ya no pueden fichar con su QR. WinProx también lo indica claramente en el portal.<br><br>Cuando vuelva a necesitarlo, actívelo de nuevo.<br><br>Consejo: desactivar suele ser mejor que eliminar. Así conserva los datos y el historial existentes."
                 },
                 {
-                    "label": "Avisos push en el teléfono",
-                    "text": "El operario pone primero WinProx en la pantalla de inicio con el logo del signo más. Abra después ese icono. El botón Activar avisos push solo está en esa app. Lo pulsa y permite los avisos. El botón desaparece enseguida; no hace falta actualizar la página. Su teléfono puede mostrar un aviso si cambia un turno, se aprueba un permiso o una compensación, hay un documento o un aviso listo, o sigue fichado después del turno. También por una tarea nueva para él o su equipo, una vez por la mañana para las tareas recurrentes, y si se rechaza un permiso o una compensación. En un iPhone solo funciona desde el icono de la pantalla de inicio. Solo en el teléfono vinculado. El aviso no incluye el texto del documento."
+                    "label": "WinProx en la pantalla de inicio del móvil",
+                    "text": "En el portal Clock Point, a la derecha de <strong>Registrarse</strong>, encuentra un icono de WinProx.<br><br>Un ejecutor puede tocarlo para colocar la página de registro como acceso directo en la pantalla de inicio. Después el portal se abre con un toque, sin app de la App Store o Play Store.<br><br>En iPhone se hace así:<br>1. Toque ⋯ abajo.<br>2. Elija <strong>Compartir</strong>.<br>3. Toque <strong>Mostrar más</strong>.<br>4. Elija <strong>Añadir a pantalla de inicio</strong>.<br><br>Importante: con este acceso directo el ejecutor puede registrarse y elegir su nombre. Para fichar entrada o salida en un reloj fijo sigue haciendo falta un escaneo QR fresco del adhesivo o de la pantalla de reloj."
+                },
+                {
+                    "label": "Notificaciones push en el móvil",
+                    "text": "Los ejecutores pueden recibir avisos de WinProx en el móvil. Así se enteran de cambios importantes aunque no tengan WinProx abierto.<br><br>Para ello, WinProx debe estar primero como acceso directo en la pantalla de inicio. Use el logo de WinProx con el signo más.<br><br>Abra después WinProx con ese acceso directo. Solo ahí aparece el botón <strong>Activar notificaciones push</strong>.<br><br>Toque el botón y permita las notificaciones. El botón desaparece después automáticamente.<br><br>El ejecutor puede recibir, entre otros, un aviso por:<br>• Un turno modificado.<br>• Vacaciones o compensación aprobadas o rechazadas.<br>• Un documento o aviso nuevo.<br>• Olvidar fichar la salida al final del turno.<br>• Una tarea nueva para el ejecutor o el equipo.<br><br>Conviene saber:<br>• En iPhone, las notificaciones push solo funcionan si se abre WinProx desde el icono de la pantalla de inicio.<br>• Las notificaciones solo llegan al móvil donde se configuraron.<br>• El aviso en sí no incluye el contenido del documento."
                 }
             ]
         },

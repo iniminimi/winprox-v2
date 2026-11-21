@@ -37,7 +37,7 @@ it('beschrijft de locatiefilter in de hulp van teams', function (): void {
     app()->setLocale('nl');
 
     $help = PageHelp::for('team.teams');
-    $action = collect($help['actions'] ?? [])->first(fn (array $item): bool => $item['label'] === 'Locatie');
+    $action = collect($help['actions'] ?? [])->first(fn (array $item): bool => $item['label'] === 'Vestigingen');
 
     expect($action)->not->toBeNull()
         ->and($action['text'])->toContain('vestiging');

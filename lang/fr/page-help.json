@@ -1654,32 +1654,40 @@
             "title": "Aide — Clock Points",
             "actions": [
                 {
-                    "label": "Qu'est-ce qu'un clock point ?",
-                    "text": "Gérez les points de pointage et les QR imprimables via Time → Clock Points. Un clock point par défaut est créé automatiquement si nécessaire."
+                    "label": "Qu’est-ce qu’un Clock Point ?",
+                    "text": "Un Clock Point est un point d’inscription fixe sur un site. Ce peut être un simple autocollant avec un QR code, ou un écran d’horloge qui affiche en permanence un nouveau QR code.<br><br>Les exécutants scannent le QR code avec leur téléphone, puis choisissent leur nom et leur icône. C’est ainsi qu’ils s’inscrivent dans WinProx.<br><br>Important : s’inscrire n’est pas encore pointer. Pour pointer l’entrée ou la sortie, l’exécutant doit ensuite rescanner un QR code frais au même endroit.<br><br>Conseil : créez d’abord un Clock Point pour chaque site. Imprimez ensuite les QR codes et placez-les aux bons endroits."
                 },
                 {
-                    "label": "QR",
-                    "text": "Via <strong>QR</strong>, vous ouvrez une fenêtre : afficher/imprimer dans le navigateur, ou une feuille Word (A6, A5 ou A4) avec la même charte que Paramètres → Feuille d'impression QR. Via <strong>E-mail</strong> ou <strong>WhatsApp</strong>, vous partagez le lien de connexion (connexion sans pointage) avec un exécutant sur site. Chaque clock point a un code unique."
+                    "label": "Ajouter un Clock Point",
+                    "text": "Cliquez sur <strong>Ajouter</strong> et saisissez les informations suivantes :<br>• <strong>Nom :</strong> choisissez un nom clair, par exemple Réception ou Magasin.<br>• <strong>Site :</strong> rattachez éventuellement le Clock Point au bon site.<br>• <strong>Ordre de tri :</strong> indiquez éventuellement où le Clock Point doit apparaître dans la liste.<br><br>Cliquez sur <strong>Enregistrer</strong>. WinProx crée automatiquement un QR code unique pour ce Clock Point.<br><br>Conseil : rattachez chaque Clock Point au bon site. Plus tard, présence et heures montrent facilement où quelqu’un a pointé."
+                },
+                {
+                    "label": "Voir et partager le QR code",
+                    "text": "Chez un Clock Point, cliquez sur <strong>QR</strong> pour ouvrir le QR code associé.<br><br>Vous pouvez ensuite :<br>• Voir le QR code et l’imprimer directement depuis votre navigateur.<br>• Télécharger une fiche Word en A6, A5 ou A4. La mise en page est la même que sous Paramètres → Fiche d’impression QR.<br>• Copier le lien d’inscription ou le partager par e-mail ou WhatsApp.<br><br>Le lien d’inscription sert à s’inscrire dans WinProx. Pour pointer réellement entrée ou sortie sur une pointeuse fixe, un nouveau scan QR sur place reste nécessaire.<br><br>Conseil : placez le QR code imprimé bien en vue, de préférence près de l’entrée."
                 },
                 {
                     "label": "Rotation QR",
-                    "text": "Sous <strong>Rotation QR</strong> vous définissez un intervalle (mois) et renouvelez le QR par Clock Point (autocollant perdu ou suspicion d’abus). Le système recommande le renouvellement à un moment aléatoire dans cet intervalle. L’ancien code fonctionne encore quelques jours (période de grâce), puis il est bloqué. Jusqu’au renouvellement, le pointage continue — l’intervalle est une recommandation, pas un changement automatique."
+                    "text": "En haut, vous trouvez la section <strong>Rotation QR</strong>.<br><br>Vous y indiquez après combien de mois WinProx peut vous rappeler de renouveler les autocollants QR.<br><br>Vous avez perdu un autocollant, ou suspectez un abus du QR code ? Sélectionnez le Clock Point concerné et cliquez sur <strong>Renouveler</strong>.<br><br>Après renouvellement, l’ancien QR code reste valable quelques jours. Ensuite, il est refusé.<br><br>Important : tant que vous ne renouvelez pas vous-même, tout continue de fonctionner. L’intervalle n’est qu’un rappel. WinProx ne remplace donc pas le QR code automatiquement."
                 },
                 {
-                    "label": "Ancien code QR",
-                    "text": "Après renouvellement, l’ancien QR fonctionne encore quelques jours. Ensuite un scan est refusé. Une ligne ici signifie que cet ancien code a encore été scanné au cours des 7 derniers jours."
+                    "label": "QR code précédent",
+                    "text": "Après un renouvellement, vous pouvez vérifier ici si l’ancien QR code a encore été scanné au cours des 7 derniers jours.<br><br>Y a-t-il une inscription ? Alors l’ancien autocollant ou une photo antérieure du QR code est peut-être encore utilisée.<br><br>Conseil : remplacez au plus vite les autocollants perdus ou les QR codes partagés publiquement. Placez ensuite le nouveau QR code."
                 },
                 {
-                    "label": "Actif / inactif",
-                    "text": "Désactivez temporairement un clock point (p. ex. lors de travaux sur site). Le portail indique alors que le pointage n'est pas disponible."
+                    "label": "Écran d’horloge",
+                    "text": "Vous préférez un écran à un autocollant imprimé ? Chez un Clock Point, vous pouvez lier un écran d’horloge physique via <strong>Écran</strong>.<br><br>L’écran affiche automatiquement un QR code changeant. Les exécutants le scannent avec leur téléphone, comme avec un autocollant ordinaire.<br><br>Plus d’explications sur le couplage, les heures d’écran, le son et l’économiseur d’écran se trouvent dans l’aide de l’écran d’horloge lui-même."
                 },
                 {
-                    "label": "Clock Point sur l’écran d’accueil du téléphone",
-                    "text": "Chaque portail Clock Point affiche une icône WinProx à droite de <strong>Connexion</strong>. L'exécutant la touche pour placer le lien de connexion sur l'écran d'accueil de son téléphone. Il ouvre ensuite le portail d'une seule touche, comme une application — sans rien installer depuis un store. Sur iPhone : ⋯ (en bas) → <strong>Partager</strong> → Afficher plus → + Sur l’écran d’accueil."
+                    "label": "Activer ou désactiver un Clock Point",
+                    "text": "Vous n’utilisez plus un Clock Point temporairement ? Vous pouvez le passer en <strong>Inactif</strong>.<br><br>Le Clock Point est conservé, mais les exécutants ne peuvent plus pointer via son QR code. WinProx l’indique aussi clairement dans le portail.<br><br>Quand vous en avez à nouveau besoin, réactivez-le simplement.<br><br>Conseil : désactiver vaut souvent mieux que supprimer. Vous conservez ainsi les données et l’historique existants."
+                },
+                {
+                    "label": "WinProx sur l’écran d’accueil du téléphone",
+                    "text": "Sur le portail Clock Point, à droite de <strong>S’inscrire</strong>, vous trouvez une icône WinProx.<br><br>Un exécutant peut y appuyer pour placer la page d’inscription en raccourci sur l’écran d’accueil. Ensuite, le portail s’ouvre d’un tap, sans application App Store ou Play Store.<br><br>Sur iPhone, cela se fait ainsi :<br>1. Appuyez sur ⋯ en bas.<br>2. Choisissez <strong>Partager</strong>.<br>3. Appuyez sur <strong>Afficher plus</strong>.<br>4. Choisissez <strong>Sur l’écran d’accueil</strong>.<br><br>Important : via ce raccourci, l’exécutant peut s’inscrire et choisir son nom. Pour pointer entrée ou sortie sur une pointeuse fixe, un scan QR frais de l’autocollant ou de l’écran d’horloge reste nécessaire."
                 },
                 {
                     "label": "Notifications push sur le téléphone",
-                    "text": "L’exécutant met d’abord WinProx sur l’écran d’accueil via le logo avec le plus. Ouvrez ensuite cette icône. Le bouton Activer les notifications push n’est que dans cette app. Il le touche et autorise les notifications. Le bouton disparaît tout de suite ; inutile de rafraîchir la page. Son téléphone peut ensuite afficher une alerte si un service change, un congé ou une récupération est approuvé, un document ou une annonce est prêt, ou s’il est encore pointé après la fin du service. Aussi pour une nouvelle tâche pour lui ou son équipe, une fois le matin pour les tâches récurrentes, et si un congé ou une récupération est refusé. Sur iPhone, cela ne fonctionne que depuis l’icône de l’écran d’accueil. Seulement sur le téléphone lié. L’alerte ne contient pas le texte du document."
+                    "text": "Les exécutants peuvent recevoir des notifications WinProx sur leur téléphone. Ils restent ainsi informés des changements importants, même sans ouvrir WinProx.<br><br>Pour cela, WinProx doit d’abord être en raccourci sur l’écran d’accueil. Utilisez le logo WinProx avec le plus.<br><br>Ouvrez ensuite WinProx via ce raccourci. Le bouton <strong>Activer les notifications push</strong> n’apparaît que là.<br><br>Appuyez sur le bouton et autorisez les notifications. Le bouton disparaît ensuite automatiquement.<br><br>L’exécutant peut notamment recevoir une notification pour :<br>• Un service modifié.<br>• Un congé ou une récupération approuvé(e) ou refusé(e).<br>• Un nouveau document ou une nouvelle annonce.<br>• Un oubli de pointer la sortie après la fin du service.<br>• Une nouvelle tâche pour l’exécutant ou l’équipe.<br><br>Bon à savoir :<br>• Sur iPhone, les notifications push ne fonctionnent que si WinProx est ouvert via l’icône d’écran d’accueil.<br>• Les notifications n’arrivent que sur le téléphone où elles ont été configurées.<br>• La notification elle-même ne contient pas le contenu du document."
                 }
             ]
         },

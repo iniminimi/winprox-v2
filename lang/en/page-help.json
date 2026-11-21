@@ -1650,32 +1650,40 @@
             "title": "Help — Clock Points",
             "actions": [
                 {
-                    "label": "What is a clock point?",
-                    "text": "Manage clock-in points and printable QR codes under Time → Clock Points. A default clock point is created automatically if needed."
+                    "label": "What is a Clock Point?",
+                    "text": "A Clock Point is a fixed sign-in point at a site. That can be a simple sticker with a QR code, or a clock display that keeps showing a fresh QR code.<br><br>Workers scan the QR code with their phone and then choose their name and icon. That is how they sign in to WinProx.<br><br>Important: signing in is not the same as clocking in. To clock in or out, the worker must then scan a fresh QR code again at the same place.<br><br>Tip: create a Clock Point for each site first. Then print the QR codes and put them up in the right places."
                 },
                 {
-                    "label": "QR",
-                    "text": "Use <strong>QR</strong> to open a dialog: view/print in the browser, or download a Word print sheet (A6, A5 or A4) with the same branding as Settings → QR print sheet. Use <strong>Email</strong> or <strong>WhatsApp</strong> to share the sign-in link (sign-in without clocking in) with a worker on site. Each clock point has a unique code."
+                    "label": "Add a Clock Point",
+                    "text": "Click <strong>Add</strong> and enter the following details:<br>• <strong>Name:</strong> choose a clear name, for example Reception or Warehouse.<br>• <strong>Site:</strong> optionally link the Clock Point to the right site.<br>• <strong>Sort order:</strong> optionally set where the Clock Point should appear in the list.<br><br>Click <strong>Save</strong>. WinProx automatically creates a unique QR code for this Clock Point.<br><br>Tip: link each Clock Point to the right site. Later, presence and time records make it easy to see where someone clocked in."
+                },
+                {
+                    "label": "View and share the QR code",
+                    "text": "At a Clock Point, click <strong>QR</strong> to open the matching QR code.<br><br>You can then:<br>• View the QR code and print it directly from your browser.<br>• Download a Word print sheet in A6, A5 or A4. The layout matches Settings → QR print sheet.<br>• Copy the sign-in link or share it by email or WhatsApp.<br><br>The sign-in link is for signing in to WinProx. To actually clock in or out at a fixed punch clock, a fresh on-site QR scan is still required afterwards.<br><br>Tip: put the printed QR code somewhere easy to see, preferably near the entrance."
                 },
                 {
                     "label": "QR rotation",
-                    "text": "Under <strong>QR rotation</strong> you set an interval (months) and renew the QR per Clock Point (lost sticker or suspected misuse). The system recommends renewal at a random moment within that interval. The old code still works for a few days (grace period), then it is blocked. Until you renew, clocking in still works — the interval is a recommendation, not an automatic swap."
+                    "text": "At the top you find the <strong>QR rotation</strong> section.<br><br>There you set after how many months WinProx may remind you to renew the QR stickers.<br><br>Lost a sticker, or do you suspect someone is misusing the QR code? Select that Clock Point and click <strong>Renew</strong>.<br><br>After renewal, the old QR code stays valid for a few more days. Then it is refused.<br><br>Important: as long as you do not renew yourself, everything keeps working. The interval is only a reminder. WinProx does not replace the QR code automatically."
                 },
                 {
                     "label": "Previous QR code",
-                    "text": "After renewal the previous QR still works for a few days. After that a scan is refused. A line here means that previous code was scanned again in the last 7 days."
+                    "text": "After a renewal you can check here whether the old QR code was still scanned in the last 7 days.<br><br>Is there a record? Then the old sticker or an earlier photo of the QR code may still be in use.<br><br>Tip: replace lost stickers or QR codes that were shared publicly as soon as possible. Then put up the new QR code."
                 },
                 {
-                    "label": "Active / inactive",
-                    "text": "Deactivate a clock point temporarily (e.g. during off-site work). The portal then shows that clock-in is unavailable."
+                    "label": "Clock display",
+                    "text": "Prefer a screen instead of a printed sticker? At a Clock Point you can link a physical clock display via <strong>Display</strong>.<br><br>The display automatically shows a rotating QR code. Workers scan it with their phone, just like a normal sticker.<br><br>More about linking the display, display hours, sound and the screensaver is in the help for the clock display itself."
                 },
                 {
-                    "label": "Clock Point on the phone’s home screen",
-                    "text": "Every Clock Point portal shows a WinProx icon to the right of <strong>Sign in</strong>. The worker taps it to put the sign-in link on their phone's home screen. From then on they open the portal with one tap, like an app — without installing anything from an app store. On iPhone this works via ⋯ (at the bottom) → <strong>Share</strong> → Show more → + Add to Home Screen."
+                    "label": "Activate or deactivate a Clock Point",
+                    "text": "Not using a Clock Point for a while? You can set it to <strong>Inactive</strong>.<br><br>The Clock Point is kept, but workers can no longer clock in via its QR code. WinProx also shows this clearly in the portal.<br><br>When you need the point again, simply activate it.<br><br>Tip: deactivating is usually better than deleting. That way you keep the existing data and history."
+                },
+                {
+                    "label": "WinProx on the phone home screen",
+                    "text": "On the Clock Point portal, to the right of <strong>Sign in</strong>, you find a WinProx icon.<br><br>A worker can tap it to place the sign-in page as a shortcut on the phone home screen. After that the portal opens with one tap, without an app from the App Store or Play Store.<br><br>On an iPhone that goes like this:<br>1. Tap ⋯ at the bottom.<br>2. Choose <strong>Share</strong>.<br>3. Tap <strong>Show more</strong>.<br>4. Choose <strong>Add to Home Screen</strong>.<br><br>Important: with this shortcut the worker can sign in and choose their name. To clock in or out at a fixed punch clock, a fresh QR scan of the sticker or clock display is still required."
                 },
                 {
                     "label": "Push notifications on the phone",
-                    "text": "The worker puts WinProx on the home screen first, using the logo with the plus. Then open that icon. The button Turn on push notifications is only inside that app. They tap it and allow notifications. The button disappears at once; the page does not need a refresh. Their phone can then show an alert when a shift changes, leave or time off is approved, a document or announcement is ready, or they are still clocked in after the shift. Also for a new task for them or their team, once each morning for recurring tasks, and when leave or time off is declined. On an iPhone this only works from the home screen icon. Only on the linked phone. The alert does not include text from the document."
+                    "text": "Workers can receive WinProx notifications on their phone. That way they stay informed of important changes even when WinProx is not open.<br><br>First, WinProx must be on the home screen as a shortcut. Use the WinProx logo with the plus for that.<br><br>Then open WinProx via that shortcut. Only there does the <strong>Enable push notifications</strong> button appear.<br><br>Tap the button and allow notifications. The button then disappears automatically.<br><br>Among other things, the worker can get a notification for:<br>• A changed shift.<br>• Approved or refused leave or time off in lieu.<br>• A new document or announcement.<br>• Still clocked in after the end of the shift.<br>• A new task for the worker or the team.<br><br>Good to know:<br>• On an iPhone, push notifications only work when WinProx is opened via the home-screen icon.<br>• Notifications are only received on the phone where they were set up.<br>• The notification itself does not contain document content."
                 }
             ]
         },
