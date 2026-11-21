@@ -551,7 +551,7 @@ it('toont de portaltegel en verstuurt een aanvraag', function () {
         ->and(AbsenceRequest::query()->first()?->status)->toBe(AbsenceRequestStatus::Cancelled);
 });
 
-it('toont tenant-shifttypes als code (naam) inclusief Andere', function () {
+it('toont tenant-shifttypes op naam inclusief Andere', function () {
     [$tenant, , $clockPoint] = absenceTenant();
     ShiftType::factory()->create([
         'tenant_id' => $tenant->id,
