@@ -2046,6 +2046,11 @@ button.wp-issue-row:disabled {
     transform: translateY(0.2rem);
 }
 
+/* Langere uitleg (bv. Shifttypes → ook zonder planning). */
+.wp-tooltip--wide .wp-tooltip__bubble--wrap {
+    max-width: min(27rem, 85vw);
+}
+
 .wp-tooltip__bubble--wrap::before,
 .wp-tooltip__bubble--wrap::after {
     left: 0.85rem;

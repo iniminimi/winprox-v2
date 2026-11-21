@@ -17,7 +17,7 @@
 
     @can('create', \App\Models\ShiftType::class)
         <div class="wp-card wp-card-pad wp-stack-tight">
-            <x-wp-tooltip :text="__('time.shift_types.include_unplanned_hint')" wrap class="wp-tooltip--block">
+            <x-wp-tooltip :text="__('time.shift_types.include_unplanned_hint')" wrap class="wp-tooltip--block wp-tooltip--wide">
                 <label class="wp-check wp-check--boxed">
                     <input type="checkbox" wire:model.live="includeUnplanned">
                     <span>{{ __('time.shift_types.include_unplanned') }}</span>
