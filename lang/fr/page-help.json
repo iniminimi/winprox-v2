@@ -833,77 +833,123 @@
             "title": "Aide — Paramètres",
             "actions": [
                 {
-                    "label": "Aperçu de la configuration",
-                    "requires_facility": true,
-                    "text": "Tout en haut se trouve un aperçu repliable de l'état de configuration de votre environnement. Dépliez-le pour voir le indicateur de complétude, huit compteurs (sites, unités, équipes et exécutants inactifs ; catégories avec ou sans GPS ; documents actifs et inactifs) et les principaux points d'action avec un lien <strong>Corriger</strong> direct. Si le panneau affiche un badge, des points d'action sont ouverts. Via <strong>Ouvrir l'aperçu complet</strong>, vous accédez à la page de configuration dédiée avec tous les points d'action et des cartes de filtre par type."
+                    "label": "Que trouvez-vous sur cet écran ?",
+                    "text": "Ici, vous réglez WinProx selon le fonctionnement et les souhaits de votre organisation.<br><br>Vous y gérez notamment les données de l’organisation, les fonctions disponibles, la sécurité de la pointeuse et l’apparence de WinProx.<br><br>Tout le monde ne voit pas les mêmes paramètres :<br>• Les administrateurs peuvent modifier les paramètres de toute l’organisation.<br>• Les collaborateurs peuvent régler leurs propres notifications par e-mail et leur style WinProx personnel.<br>• Les utilisateurs de Time ont des paramètres supplémentaires pour la pointeuse, le planning et la déclaration de présence à l’ONSS (CIAO)."
                 },
                 {
-                    "label": "Données de l'organisation",
-                    "text": "Sous Votre organisation, deux blocs : Données de l'organisation (nom, e-mail, téléphone et adresse — seul l'administrateur peut modifier via 'Modifier les données de l'organisation') et Logo de l'organisation (téléversement PNG/JPG, max. 2 Mo). En tant qu'employé, vous voyez les données et le logo uniquement à titre informatif. Le logo apparaît au centre de chaque QR code sur les autocollants et dans le portail de signalement. Pour le placement en coin sur les autocollants, voir la rubrique Logo et adresse sous Feuilles d'autocollants QR."
+                    "label": "Aperçu de la configuration",
+                    "requires_facility": true,
+                    "text": "En haut, vous trouvez Aperçu de la configuration. Il est replié par défaut.<br><br>Un nombre apparaît à côté ? Il reste alors des points d’action qui demandent attention.<br><br>Ouvrez l’aperçu pour voir où en est votre organisation. Vous y trouvez aussi des compteurs, comme les lieux, unités, équipes et exécutants inactifs.<br><br>Pour les points d’action principaux, vous pouvez cliquer directement sur Corriger.<br><br>Vous voulez tout voir ? Choisissez Ouvrir l’aperçu complet. Vous arrivez sur une page à part, avec tous les points qui demandent encore attention."
+                },
+                {
+                    "label": "Votre organisation",
+                    "text": "Ici, vous trouvez les paramètres et les données de votre organisation."
+                },
+                {
+                    "label": "Données de l’organisation",
+                    "nested": true,
+                    "text": "Vous voyez le nom, l’adresse e-mail, le numéro de téléphone et l’adresse de votre organisation.<br><br>En tant qu’administrateur, vous modifiez ces données avec Modifier les données de l’organisation.<br><br>Ces données sont utilisées notamment sur les codes QR imprimés."
+                },
+                {
+                    "label": "Logo de l’organisation",
+                    "nested": true,
+                    "text": "Téléversez le logo de votre organisation en fichier PNG ou JPG de 2 Mo au maximum.<br><br>Le logo apparaît sur le portail WinProx et sur les codes QR.<br><br>En tant que collaborateur, vous pouvez seulement voir le logo. Seul un administrateur peut le modifier."
                 },
                 {
                     "label": "Album photo",
+                    "nested": true,
                     "requires_facility": true,
-                    "text": "Sous Votre organisation, l'administrateur active ou désactive l'album photo pour toute l'organisation. Activé : les exécutants prennent des photos sur le QR de l'unité, et vous les envoyez via Album photo. Les fichiers sont effacés après une semaine."
+                    "text": "Seul un administrateur peut activer ou désactiver l’album photo. Le réglage s’applique tout de suite.<br><br>• Activé : les exécutants peuvent prendre des photos via le code QR d’une unité. Dans Album photo, vous pouvez ensuite envoyer ces photos à une adresse e-mail. Les fichiers sont supprimés automatiquement après une semaine.<br>• Désactivé : la fonction photo n’est pas disponible."
                 },
                 {
-                    "label": "Notifications e-mail",
+                    "label": "Notifications par e-mail",
+                    "nested": true,
                     "requires_facility": true,
-                    "text": "Préférence personnelle par utilisateur : un e-mail à chaque nouveau signalement QR. En tant qu'employé, vous pouvez l'activer ou la désactiver vous-même."
-                },
-                {
-                    "label": "Style de portail personnalisé",
-                    "text": "Deux blocs : Arrière-plan du portail (image optionnelle pour le portail de signalement après un scan QR, PNG/JPG, max. 4 Mo — pas l'arrière-plan de l'autocollant) et Couleurs du portail (couleurs d'arrière-plan et de bouton). Cliquez sur Enregistrer pour appliquer les couleurs au portail de signalement. La carte d'aperçu montre ce que voient les signaleurs après un scan. Cela ne concerne pas l'interface d'administration."
-                },
-                {
-                    "label": "Feuille d’impression QR",
-                    "text": "Image de marque pour les autocollants Avery 62×89-R imprimés (9 étiquettes par feuille). Téléchargez la feuille par emplacement via le pack QR."
-                },
-                {
-                    "label": "Texte",
-                    "nested": true,
-                    "text": "Votre texte personnalisé apparaît en haut de l'autocollant (max. 120 caractères). Si vide, WinProx utilise automatiquement nom de l'emplacement · unité. Le numéro d'autocollant apparaît toujours sous le QR code. L'aperçu à droite se met à jour en direct. Cliquez sur 'Enregistrer' pour sauvegarder le texte (et les réglages du logo)."
-                },
-                {
-                    "label": "Logo et adresse",
-                    "nested": true,
-                    "text": "Choisissez où placer le logo de l'organisation sur l'autocollant (en bas à droite, en bas à gauche, …) — uniquement si un logo a été téléversé. Cochez l'option d'adresse pour l'afficher en bas à gauche. L'adresse et le logo en bas partagent un seul bandeau blanc sur toute la largeur ; en haut, chaque élément reste séparé. Le logo au centre du QR code est fixe (votre logo ou WinProx) et ne peut pas être déplacé ici."
-                },
-                {
-                    "label": "Arrière-plan",
-                    "nested": true,
-                    "text": "Choisissez une image (PNG/JPG, max. 4 Mo) ; elle est enregistrée immédiatement. Sans arrière-plan personnalisé, WinProx utilise le design par défaut. 'Supprimer l'arrière-plan personnalisé' rétablit ce design."
-                },
-                {
-                    "label": "Aperçu",
-                    "nested": true,
-                    "text": "À droite (sur un écran large), un aperçu en direct d'un autocollant avec QR code et numéro de démonstration. Lors de l'export sur un emplacement, les vrais QR codes d'unités et numéros d'autocollants de cet emplacement sont utilisés."
+                    "text": "C’est un réglage personnel. Chaque utilisateur décide s’il veut recevoir des e-mails.<br><br>Activez Recevoir un e-mail pour chaque nouveau signalement si vous voulez aussi un e-mail pour chaque nouveau signalement via un code QR.<br><br>Le réglage s’applique tout de suite.<br><br>Les collaborateurs peuvent aussi modifier cette préférence eux-mêmes."
                 },
                 {
                     "label": "Paramètres du menu Travail",
                     "requires_facility": true,
-                    "text": "Via Organisation → Paramètres → Paramètres du menu Travail, l'administrateur peut choisir par organisation quels éléments Travail sont visibles : Calendrier, Réservations, Tournées d'inspection et Mesures d'unité. Désactivé, l'élément disparaît de la barre latérale et les routes back-office renvoient interdit. Les réglages de réservation ou de mesure existants sur unités et catégories restent actifs sur le portail QR ; réactivation impossible tant que l'élément du menu Travail est désactivé. Les unit checks ne sont pas affectés si Tournées d'inspection est désactivé. Signalements & tâches est l'interrupteur principal du menu Travail : désactivé, tous les autres éléments Travail sont aussi désactivés."
+                    "text": "Seuls les administrateurs choisissent quels éléments apparaissent sous Travail dans le menu.<br><br>Ainsi le menu reste clair et n’affiche que les fonctions que votre organisation utilise.<br><br>Activez ou désactivez les éléments voulus, puis cliquez sur Confirmer.<br><br>Voici les réglages disponibles :<br>• Signalements & tâches : c’est l’interrupteur principal des signalements et des tâches. Si vous le désactivez, les signalements et les tâches disparaissent du menu, de l’écran d’accueil et du portail des exécutants. Les autres interrupteurs ci-dessous ne sont alors plus disponibles.<br>• Tournées d’inspection : active ou désactive la liste et la planification des tournées d’inspection. Les unit checks restent disponibles à part.<br>• Checklists : choisissez si vous voulez utiliser les modèles de checklist dans le back-office. Les unit checks restent disponibles à part.<br>• Unit checks : gérez les résultats des unit checks et les contrôles via le code QR. Si vous désactivez cette fonction, les unit checks via code QR s’arrêtent aussi sur les unités où elle était activée.<br>• Calendrier : active le calendrier pour les tâches, les signalements et les réservations.<br>• Réservations : active ou désactive la gestion des réservations dans WinProx. Les réservations déjà disponibles sur des unités existantes continuent de fonctionner via le code QR. Vous ne pouvez pas activer de nouvelles réservations sur une unité tant que ce réglage est désactivé.<br>• Mesures d’unité : gérez les champs de mesure et l’historique des mesures. Les mesures via code QR continuent sur les unités où elles étaient déjà activées. Vous ne pouvez pas activer de nouvelles mesures tant que ce réglage est désactivé."
+                },
+                {
+                    "label": "Clients sur site",
+                    "text": "Seuls les administrateurs peuvent régler cette fonction.<br><br>Votre organisation travaille chez des clients, par exemple avec des équipes de nettoyage ou de construction ? Activez alors Travaille avec des clients sur site.<br><br>Pour les organisations qui travaillent seulement sur leurs propres sites, comme une crèche ou un bureau, laissez ce réglage désactivé.<br><br>• Activé : Clients apparaît dans le menu. Vous pouvez ensuite lier vos lieux à des clients.<br>• Désactivé : l’élément disparaît du menu. Les données clients déjà créées sont conservées.<br><br>Cliquez sur Enregistrer pour garder votre choix."
                 },
                 {
                     "label": "Sécurité de la pointeuse",
-                    "text": "Uniquement avec Time : PIN, biométrie (clé d’accès), GPS à la pointe, visites GPS sur Clock Point, et en option le pointage depuis la barre latérale pour les collègues avec une équipe de pointage (désactivé par défaut). La carte Planning est sous Sécurité de la pointeuse (activée par défaut). Désactivée, elle coupe la planification ; la connexion QR, les tâches et la pointeuse restent, les services existants sont conservés."
+                    "text": "Cette partie n’apparaît que lorsque Time est actif.<br><br>Ici, vous choisissez comment les exécutants se connectent et comment la pointeuse est sécurisée.<br><br>Chaque exécutant pointe avec son propre téléphone. Un autre appareil est refusé jusqu’à ce que vous ou un chef d’équipe autorisiez ce nouvel appareil.<br><br>La plupart des options de sécurité sont désactivées par défaut. N’activez que ce dont votre organisation a besoin."
                 },
                 {
-                    "label": "Liste d'évacuation",
+                    "label": "Réglages généraux",
+                    "nested": true,
+                    "text": "• Pointer depuis le back-office : les administrateurs et les collaborateurs qui font partie d’une équipe de pointage peuvent se pointer depuis la barre latérale. Ils se connectent avec leur adresse e-mail et leur mot de passe.<br>• Autoriser les intervenants externes : vous pouvez indiquer qu’un exécutant est une personne externe. Vous pouvez aussi remplir le nom de l’entreprise.<br>• Horaire d’équipe visible pour les exécutants : ce réglage n’apparaît que lorsque le planning est actif. Les exécutants peuvent alors voir sur leur téléphone l’horaire des collègues de leurs lieux.<br>• Exiger un PIN à 4 chiffres à la connexion Clock Point : les exécutants doivent saisir un code PIN personnel en se connectant à un Clock Point, au lieu de choisir seulement leur icône. L’icône reste valable pour le code QR d’une unité.<br>• Connexion par empreinte ou visage (clé d’accès) : les exécutants peuvent se connecter avec la sécurité de leur téléphone, par exemple une empreinte ou la reconnaissance du visage. La connexion par code PIN ou icône reste possible.<br>• Liste d’évacuation sur Clock Point : après la connexion, les exécutants ont accès à la liste d’évacuation. Avant de l’ouvrir, ils doivent confirmer qu’il s’agit d’une consultation exceptionnelle. Chaque consultation est enregistrée."
+                },
+                {
+                    "label": "Travail sur site (GPS)",
+                    "nested": true,
+                    "text": "Votre organisation travaille chez des clients sur plusieurs lieux ? Vous pouvez alors régler le contrôle GPS ici.<br><br>Ces réglages ne sont pas nécessaires lorsque tout le monde pointe sur une pointeuse fixe dans le même bâtiment.<br><br>• Demander le GPS à l’entrée et à la sortie : à l’entrée, le téléphone doit transmettre une position. Si cela échoue, l’exécutant ne peut pas pointer l’entrée. La sortie reste possible.<br>• Visites GPS (démarrer/arrêter le travail sur le pin du site ou d’une unité) : les exécutants peuvent démarrer et arrêter leur visite de travail chez un client. Le téléphone doit se trouver dans la distance définie par rapport à l’adresse de travail.<br>• Rayon (mètres) : à quelle distance l’exécutant doit se trouver de l’adresse de travail. Le réglage par défaut est de 50 mètres.<br><br>Cliquez sur Enregistrer la sécurité pointeuse pour enregistrer vos modifications."
+                },
+                {
+                    "label": "Planning",
                     "requires_facility": true,
-                    "text": "Désactivée par défaut ; activez-la ici si les exécutants peuvent voir qui est pointé après connexion (chaque consultation est enregistrée)."
+                    "text": "Ce réglage se trouve dans un cadre à part, sous Sécurité de la pointeuse.<br><br>Désactivez Utiliser le planning si votre organisation ne planifie pas dans WinProx.<br><br>Les éléments suivants disparaissent alors du menu :<br>• Horaire.<br>• Types de service.<br>• Jours fériés.<br>• Effectif minimal.<br>• Demandes.<br><br>Bon à savoir : les autres fonctions continuent de marcher. La connexion par QR, les tâches et la pointeuse restent disponibles. Les services déjà créés ne sont pas supprimés. Ils sont conservés.<br><br>Cliquez sur Enregistrer pour confirmer votre choix."
                 },
                 {
-                    "label": "Style WinProx",
-                    "text": "Choisissez l'apparence de WinProx pour vous en administration : Standard ou Sombre. Votre choix s'applique sur tous les appareils où vous êtes connecté. En bas de page, juste avant la rubrique d'export."
+                    "label": "Personnaliser le style WinProx",
+                    "text": "Ici, vous choisissez l’apparence de WinProx lorsque vous travaillez dans le Backoffice.<br><br>Votre choix vaut sur tous les appareils où vous êtes connecté et s’applique tout de suite.<br><br>Vous pouvez choisir parmi trois styles :<br>• Moderne : le style par défaut, avec une barre de menu sombre et des cartes à l’aspect verre.<br>• Standard : un affichage clair et calme, sans photo de fond.<br>• Sombre : un affichage entièrement sombre.<br><br>En tant qu’administrateur, vous pouvez aussi adapter ci-dessous l’arrière-plan et les couleurs du portail."
+                },
+                {
+                    "label": "Arrière-plan",
+                    "nested": true,
+                    "text": "À Appliquer à, vous choisissez où utiliser l’image.<br><br>Il y a deux possibilités :<br>• Arrière-plan du portail : l’arrière-plan que quelqu’un voit après avoir scanné un code QR. Ce n’est pas l’arrière-plan de l’étiquette QR elle-même.<br>• Arrière-plan du back-office : l’image derrière l’écran de gestion. Elle est visible dans le style Moderne.<br><br>Vous pouvez choisir un arrière-plan standard ou téléverser votre propre image.<br><br>Votre choix est enregistré tout de suite. Si vous téléversez votre propre image, elle remplace l’arrière-plan standard.<br><br>Avec le bouton de suppression, vous revenez à l’arrière-plan standard."
+                },
+                {
+                    "label": "Couleurs du portail",
+                    "nested": true,
+                    "text": "Ici, vous choisissez la couleur de fond et la couleur des boutons du portail de signalement.<br><br>À droite, vous voyez un aperçu de l’écran pour quelqu’un qui scanne un code QR et veut envoyer un signalement.<br><br>Ces couleurs ne changent pas l’apparence du Backoffice.<br><br>Cliquez sur Enregistrer pour garder votre choix de couleurs."
+                },
+                {
+                    "label": "Feuille d’impression QR",
+                    "requires_facility": true,
+                    "text": "Ici, vous choisissez l’apparence des étiquettes QR et des feuilles d’impression de votre organisation.<br><br>Vous pouvez adapter la présentation, puis télécharger les feuilles par lieu.<br><br>Cliquez sur Enregistrer pour garder le texte, le logo et l’adresse. Un arrière-plan personnalisé est enregistré tout de suite."
+                },
+                {
+                    "label": "Texte sur l’étiquette",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "En haut de l’étiquette, vous pouvez placer votre propre texte de 120 caractères au maximum.<br><br>Vous laissez ce champ vide ? WinProx utilise alors automatiquement le nom du lieu et l’unité.<br><br>Sous le code QR figure toujours le numéro unique de l’étiquette."
+                },
+                {
+                    "label": "Logo et adresse",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "Vous choisissez vous-même où le logo de l’organisation et l’adresse apparaissent sur l’étiquette.<br><br>Pour les deux, vous pouvez choisir parmi quatre coins :<br>• En bas à droite.<br>• En bas à gauche.<br>• En haut à droite.<br>• En haut à gauche.<br><br>Vous pouvez aussi choisir Ne pas afficher si vous préférez omettre le logo ou l’adresse.<br><br>Le logo au centre du code QR reste toujours en place. Vous ne pouvez pas le déplacer ici."
+                },
+                {
+                    "label": "Arrière-plan",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "Vous pouvez utiliser un arrière-plan standard ou téléverser votre propre image.<br><br>Votre propre arrière-plan doit être un fichier PNG ou JPG de 4 Mo au maximum.<br><br>Sans image propre, WinProx utilise le modèle standard.<br><br>Vous voulez à nouveau le modèle standard ? Cliquez sur Supprimer l’arrière-plan personnalisé."
+                },
+                {
+                    "label": "Aperçu",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "À droite, vous voyez un aperçu d’une étiquette avec vos réglages.<br><br>Lorsque vous ouvrez une feuille depuis un lieu, les vrais codes QR et numéros d’étiquette de ce lieu sont utilisés.<br><br>Vous voyez ainsi à l’avance à quoi vos étiquettes ressembleront."
                 },
                 {
                     "label": "Présence ONSS (CIAO)",
-                    "text": "Cette rubrique est en bas, au-dessus de Confidentialité. Grisée par défaut : CIAO est exceptionnel et ne s’active pas ici. Demandez-le via <strong>info@winprox.app</strong> ; un superuser l’active ensuite. Ensuite, indiquez seulement le <strong>numéro d’entreprise (BCE)</strong>. WinProx gère le lien technique avec l’ONSS."
+                    "text": "Vous trouvez cette partie en bas des paramètres, juste au-dessus de Confidentialité. Elle est repliée par défaut.<br><br>Vous ne pouvez pas activer CIAO vous-même.<br><br>Vous voulez utiliser la déclaration de présence à l’ONSS ? Demandez l’activation via info@winprox.app.<br><br>WinProx active ensuite la fonction pour votre organisation."
                 },
                 {
-                    "label": "Confidentialité & export de données",
-                    "text": "Seul l'administrateur peut télécharger un aperçu lisible par machine (JSON) du compte et de l'activité pertinente dans votre environnement. Cette rubrique n'apparaît dans Paramètres que pour l'administrateur. Le fichier peut contenir des données sensibles — conservez-le en lieu sûr."
+                    "label": "Configurer CIAO",
+                    "nested": true,
+                    "text": "Après l’activation, vous remplissez votre numéro d’entreprise (BCE).<br><br>Votre organisation n’a pas de numéro d’entreprise belge ? Remplissez alors le numéro de TVA étranger.<br><br>Si le champ Régime apparaît, choisissez le régime qui s’applique :<br>• Nettoyage (CIAO).<br>• Construction / béton (CIAO).<br><br>Cliquez sur Enregistrer les paramètres CIAO pour garder vos données.<br><br>Avec Tous les envois CIAO, vous ouvrez l’aperçu des déclarations de présence envoyées à l’ONSS."
+                },
+                {
+                    "label": "Confidentialité et export de données",
+                    "text": "Cette partie est réservée aux administrateurs.<br><br>Avec Télécharger l’export de données, vous téléchargez un fichier avec les données de votre organisation et l’activité pertinente dans WinProx.<br><br>L’export peut aussi contenir des informations sensibles.<br><br>Conservez donc le fichier en lieu sûr et ne le partagez qu’avec des personnes autorisées à accéder à ces données."
                 }
             ]
         },

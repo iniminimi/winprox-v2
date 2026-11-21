@@ -829,77 +829,123 @@
             "title": "Hilfe — Einstellungen",
             "actions": [
                 {
+                    "label": "Was finden Sie auf diesem Bildschirm?",
+                    "text": "Hier richten Sie WinProx nach der Arbeitsweise und den Wünschen Ihrer Organisation ein.<br><br>Sie verwalten dort unter anderem die Organisationsdaten, die verfügbaren Funktionen, die Sicherheit der Stempeluhr und das Aussehen von WinProx.<br><br>Nicht jeder sieht dieselben Einstellungen:<br>• Administratoren können die Einstellungen der gesamten Organisation anpassen.<br>• Mitarbeitende können ihre eigenen E-Mail-Benachrichtigungen und ihren persönlichen WinProx-Stil einstellen.<br>• Time-Nutzer erhalten zusätzliche Einstellungen für die Stempeluhr, den Dienstplan und die Anwesenheitsmeldung an die LSS (CIAO)."
+                },
+                {
                     "label": "Konfigurationsübersicht",
                     "requires_facility": true,
-                    "text": "Ganz oben finden Sie eine aufklappbare Übersicht des Konfigurationsstatus Ihrer Umgebung. Klappen Sie sie auf, um die Vollständigkeitsanzeige, acht Zähler (inaktive Standorte, Units, Teams und Mitarbeiter; Kategorien mit oder ohne GPS; aktive und inaktive Dokumente) und die wichtigsten Maßnahmen mit direktem Link <strong>Beheben</strong> zu sehen. Zeigt das Feld ein Badge, liegen offene Maßnahmen vor. Über <strong>Vollständige Übersicht öffnen</strong> gelangen Sie zur eigenen Konfigurationsseite mit allen Maßnahmen und Filterkarten pro Typ."
+                    "text": "Oben finden Sie Konfigurationsübersicht. Sie ist standardmäßig eingeklappt.<br><br>Steht daneben eine Zahl? Dann gibt es noch Aktionspunkte, die Aufmerksamkeit brauchen.<br><br>Klappen Sie die Übersicht auf, um zu sehen, wie weit Ihre Organisation mit der Einrichtung ist. Sie finden dort auch Zählungen, etwa inaktive Standorte, Units, Teams und Ausführende.<br><br>Bei den wichtigsten Aktionspunkten können Sie direkt auf Beheben klicken.<br><br>Möchten Sie alles sehen? Wählen Sie Vollständige Übersicht öffnen. Sie kommen auf eine eigene Seite mit allen Punkten, die noch Aufmerksamkeit brauchen."
+                },
+                {
+                    "label": "Ihre Organisation",
+                    "text": "Hier finden Sie die Einstellungen und Daten Ihrer Organisation."
                 },
                 {
                     "label": "Organisationsdaten",
-                    "text": "Unter Ihre Organisation finden Sie zwei Bereiche: Organisationsdaten (Name, E-Mail, Telefon und Adresse — nur der Administrator kann über 'Organisationsdaten bearbeiten' ändern) und Organisationslogo (Upload PNG/JPG, max. 2 MB). Als Mitarbeiter sehen Sie Daten und Logo nur zur Information. Das Logo erscheint in der Mitte jedes QR-Codes auf Aufklebern und im Meldeportal. Für die Eckplatzierung auf Aufklebern siehe den Bereich Logo und Adresse unter QR-Aufkleberbögen."
+                    "nested": true,
+                    "text": "Sie sehen den Namen, die E-Mail-Adresse, die Telefonnummer und die Adresse Ihrer Organisation.<br><br>Als Administrator ändern Sie diese Daten über Organisationsdaten bearbeiten.<br><br>Die Daten werden unter anderem auf gedruckten QR-Codes verwendet."
+                },
+                {
+                    "label": "Organisationslogo",
+                    "nested": true,
+                    "text": "Laden Sie das Logo Ihrer Organisation als PNG- oder JPG-Datei von höchstens 2 MB hoch.<br><br>Das Logo erscheint im WinProx-Portal und auf den QR-Codes.<br><br>Als Mitarbeitender können Sie das Logo nur ansehen. Ändern kann es nur ein Administrator."
                 },
                 {
                     "label": "Fotoalbum",
+                    "nested": true,
                     "requires_facility": true,
-                    "text": "Unter Ihre Organisation schaltet der Administrator das Fotoalbum für die ganze Organisation ein oder aus. Ein: Ausführende machen Fotos über den QR-Code der Einheit, und Sie mailen sie über Fotoalbum. Die Dateien werden nach einer Woche gelöscht."
+                    "text": "Nur ein Administrator kann das Fotoalbum ein- oder ausschalten. Die Einstellung gilt sofort.<br><br>• Ein: Ausführende können über den QR-Code einer Unit Fotos machen. Im Fotoalbum können Sie diese Fotos danach an eine E-Mail-Adresse senden. Die Dateien werden nach einer Woche automatisch gelöscht.<br>• Aus: die Fotofunktion ist nicht verfügbar."
                 },
                 {
                     "label": "E-Mail-Benachrichtigungen",
+                    "nested": true,
                     "requires_facility": true,
-                    "text": "Persönliche Einstellung pro Benutzer: eine E-Mail bei jeder neuen QR-Meldung. Als Mitarbeiter können Sie dies selbst ein- oder ausschalten."
-                },
-                {
-                    "label": "Eigenes Portal-Design",
-                    "text": "Zwei Bereiche: Portal-Hintergrund (optionales Bild für das Meldeportal nach einem QR-Scan, PNG/JPG, max. 4 MB — nicht derselbe Hintergrund wie auf Stickern) und Portal-Farben (Hintergrund- und Schaltflächenfarbe). Klicken Sie auf Speichern, um die Farben auf das Meldeportal anzuwenden. Die Vorschaukarte zeigt, wie Melder das Portal nach einem Scan sehen. Das gilt nicht für die Verwaltungsoberfläche."
-                },
-                {
-                    "label": "QR-Druckbogen",
-                    "text": "Branding für gedruckte Avery 62×89-R-Aufkleber (9 Etiketten pro Bogen). Den Aufkleberbogen laden Sie pro Standort über das QR-Paket herunter."
-                },
-                {
-                    "label": "Text",
-                    "nested": true,
-                    "text": "Ihr eigener Text steht oben auf dem Aufkleber (max. 120 Zeichen). Bleibt er leer, verwendet WinProx automatisch Standortname · Unit. Die Aufklebernummer steht immer unter dem QR-Code. Die Vorschau rechts aktualisiert sich live. Klicken Sie auf 'Speichern', um Text (und Logo-Einstellungen) zu sichern."
-                },
-                {
-                    "label": "Logo und Adresse",
-                    "nested": true,
-                    "text": "Wählen Sie, wo Ihr Organisationslogo auf dem Aufkleber erscheint (unten rechts, unten links, …) — nur wenn ein Logo hochgeladen wurde. Aktivieren Sie die Adressoption für die Anzeige unten links. Adresse und Logo unten teilen sich ein weißes Band über die volle Breite; oben bleibt jedes Element separat. Das Logo in der Mitte des QR-Codes ist fest (Ihr Logo oder WinProx) und kann hier nicht verschoben werden."
-                },
-                {
-                    "label": "Hintergrund",
-                    "nested": true,
-                    "text": "Wählen Sie ein eigenes Bild (PNG/JPG, max. 4 MB); es wird sofort gespeichert. Ohne eigenen Hintergrund nutzt WinProx das Standard-Aufkleberdesign. Mit 'Eigenen Hintergrund entfernen' kehren Sie zu diesem Standard zurück."
-                },
-                {
-                    "label": "Vorschau",
-                    "nested": true,
-                    "text": "Rechts (auf einem breiten Bildschirm) sehen Sie eine Live-Vorschau eines Aufklebers mit Demo-QR-Code und -Nummer. Beim Export an einem Standort werden die echten Unit-QR-Codes und Aufklebernummern dieses Standorts verwendet."
+                    "text": "Das ist eine persönliche Einstellung. Jede Person entscheidet selbst, ob sie E-Mails erhalten möchte.<br><br>Schalten Sie E-Mail bei jeder neuen Meldung erhalten ein, wenn Sie bei jeder neuen Meldung über einen QR-Code auch eine E-Mail möchten.<br><br>Die Einstellung gilt sofort.<br><br>Auch Mitarbeitende können diese Vorgabe selbst ändern."
                 },
                 {
                     "label": "Arbeitsmenü-Einstellungen",
                     "requires_facility": true,
-                    "text": "Über Organisation → Einstellungen → Arbeitsmenü-Einstellungen kann der Administrator pro Organisation festlegen, welche Arbeitsmenü-Einträge sichtbar sind: Kalender, Reservierungen, Inspektionsrunden und Unit-Messungen. Deaktiviert verschwindet der Eintrag aus der Seitenleiste und Backoffice-Routen sind gesperrt. Bestehende Reservierungs- oder Mess-Einstellungen auf Units und Kategorien funktionieren im QR-Portal weiter; neu aktivieren ist nicht möglich, solange der Menüeintrag aus ist. Unit Checks werden nicht beeinflusst, wenn Inspektionsrunden aus ist. Meldungen & Aufgaben ist der Hauptschalter des Arbeitsmenüs: deaktiviert fallen auch alle anderen Einträge weg."
+                    "text": "Nur Administratoren legen fest, welche Teile unter Arbeit im Menü erscheinen.<br><br>So bleibt das Menü übersichtlich und zeigt nur die Funktionen, die Ihre Organisation nutzt.<br><br>Schalten Sie die gewünschten Teile ein oder aus und klicken Sie danach auf Bestätigen.<br><br>Das sind die verfügbaren Einstellungen:<br>• Meldungen & Aufgaben: das ist der Hauptschalter für Meldungen und Aufgaben. Schalten Sie ihn aus, verschwinden Meldungen und Aufgaben aus dem Menü, vom Startbildschirm und aus dem Portal der Ausführenden. Die anderen Schalter darunter sind dann nicht mehr verfügbar.<br>• Inspektionsrunden: damit schalten Sie die Liste und die Planung der Inspektionsrunden ein oder aus. Unit Checks bleiben getrennt verfügbar.<br>• Checklisten: damit legen Sie fest, ob Sie die Checklistenvorlagen in der Verwaltung nutzen. Unit Checks bleiben getrennt verfügbar.<br>• Unit Checks: damit verwalten Sie die Ergebnisse der Unit Checks und die Kontrollen über den QR-Code. Schalten Sie diese Funktion aus, stoppen auch die Unit Checks über QR-Codes bei Units, bei denen sie zuvor eingeschaltet war.<br>• Kalender: damit schalten Sie den Kalender für Aufgaben, Meldungen und Reservierungen ein.<br>• Reservierungen: damit schalten Sie die Verwaltung von Reservierungen in WinProx ein oder aus. Reservierungen, die auf bestehenden Units schon verfügbar waren, funktionieren weiter über den QR-Code. Neue Reservierungen auf einer Unit aktivieren geht nicht, solange diese Einstellung aus ist.<br>• Unit-Messungen: damit verwalten Sie die Messfelder und die Historie der Messungen. Messungen über QR-Codes funktionieren weiter auf Units, wo sie schon eingeschaltet waren. Neue Messungen aktivieren geht nicht, solange diese Einstellung aus ist."
+                },
+                {
+                    "label": "Kunden vor Ort",
+                    "text": "Nur Administratoren können diese Funktion einstellen.<br><br>Arbeitet Ihre Organisation bei Kunden vor Ort, zum Beispiel mit Reinigungs- oder Bauteams? Schalten Sie dann Arbeitet mit Kunden vor Ort ein.<br><br>Für Organisationen, die nur an eigenen Standorten arbeiten, etwa eine Kita oder ein Büro, lassen Sie diese Einstellung aus.<br><br>• Ein: Kunden erscheint im Menü. Sie können Ihre Standorte danach Kunden zuordnen.<br>• Aus: der Eintrag verschwindet aus dem Menü. Bereits angelegte Kundendaten bleiben erhalten.<br><br>Klicken Sie auf Speichern, um Ihre Wahl zu sichern."
                 },
                 {
                     "label": "Stempeluhr-Sicherheit",
-                    "text": "Nur mit Time: PIN, Biometrie (Passkey), GPS beim Stempeln und GPS-Arbeitsbesuche am Clock Point. Die Karte Dienstplan steht unter Stempeluhr-Sicherheit (standardmäßig an). Aus schaltet die Planung aus; QR-Anmeldung, Aufgaben und die Stechuhr bleiben, bestehende Dienste bleiben gespeichert."
+                    "text": "Dieser Teil erscheint nur, wenn Time aktiv ist.<br><br>Hier legen Sie fest, wie Ausführende sich anmelden und wie die Stempeluhr gesichert wird.<br><br>Jede ausführende Person stempelt mit einem eigenen Handy. Ein anderes Gerät wird abgelehnt, bis Sie oder ein Teamleiter dieses neue Gerät zulassen.<br><br>Die meisten Sicherheitsoptionen sind standardmäßig aus. Schalten Sie nur ein, was Ihre Organisation braucht."
                 },
                 {
-                    "label": "Evakuierungsliste",
+                    "label": "Allgemeine Einstellungen",
+                    "nested": true,
+                    "text": "• Einstempeln aus dem Backoffice: Administratoren und Mitarbeitende in einem Stempeluhr-Team können sich über die Seitenleiste selbst einstempeln. Sie melden sich dafür mit E-Mail-Adresse und Passwort an.<br>• Externe Mitarbeiter erlauben: damit können Sie bei einer Person angeben, dass es sich um eine externe Person handelt. Sie können dabei auch den Firmennamen eintragen.<br>• Team-Dienstplan für Ausführer sichtbar: diese Einstellung erscheint nur, wenn der Dienstplan aktiv ist. Ausführende können dann auf dem Handy den Dienstplan der Kollegen an ihren Standorten sehen.<br>• 4-stellige PIN bei der Clock-Point-Anmeldung verlangen: Ausführende müssen sich an einem Clock Point mit einer persönlichen PIN anmelden, statt nur ihr Symbol zu wählen. Das Symbol gilt weiter für den QR-Code einer Unit.<br>• Anmeldung per Fingerabdruck oder Gesicht (Passkey): Ausführende können sich mit der Sicherung ihres Handys anmelden, zum Beispiel per Fingerabdruck oder Gesichtserkennung. Die Anmeldung mit PIN oder Symbol bleibt möglich.<br>• Evakuierungsliste am Clock Point: nach der Anmeldung erhalten Ausführende Zugang zur Evakuierungsliste. Bevor sie sie öffnen, müssen sie bestätigen, dass es eine außergewöhnliche Einsicht ist. Jede Einsicht wird festgehalten."
+                },
+                {
+                    "label": "Arbeiten vor Ort (GPS)",
+                    "nested": true,
+                    "text": "Arbeitet Ihre Organisation bei Kunden an verschiedenen Standorten? Dann können Sie hier die GPS-Kontrolle einstellen.<br><br>Diese Einstellungen sind nicht nötig, wenn alle an einer festen Stempeluhr im selben Gebäude einstempeln.<br><br>• GPS beim Ein- und Ausstempeln anfragen: beim Einstempeln muss das Handy einen Standort übermitteln. Gelingt das nicht, kann die Person nicht einstempeln. Ausstempeln bleibt möglich.<br>• GPS-Arbeitsbesuche (Arbeit an Standort- oder Unit-Pin starten/beenden): Ausführende können ihren Arbeitsbesuch bei einem Kunden starten und beenden. Das Handy muss dafür innerhalb der eingestellten Entfernung zur Arbeitsadresse sein.<br>• Radius (Meter): wie nah die Person an der Arbeitsadresse sein muss. Die Standardeinstellung ist 50 Meter.<br><br>Klicken Sie auf Stempeluhr-Sicherheit speichern, um Ihre Änderungen zu sichern."
+                },
+                {
+                    "label": "Dienstplan",
                     "requires_facility": true,
-                    "text": "Standardmäßig aus; schalten Sie sie hier ein, wenn Ausführende nach der Anmeldung sehen dürfen, wer eingestempelt ist (jede Einsicht wird protokolliert)."
+                    "text": "Diese Einstellung steht in einem eigenen Bereich unter Stempeluhr-Sicherheit.<br><br>Schalten Sie Dienstplan verwenden aus, wenn Ihre Organisation nicht in WinProx plant.<br><br>Diese Einträge verschwinden dann aus dem Menü:<br>• Dienstplan.<br>• Schichttypen.<br>• Feiertage.<br>• Mindestbesetzung.<br>• Anträge.<br><br>Gut zu wissen: die anderen Funktionen arbeiten weiter. Anmelden per QR, Aufgaben und die Stempeluhr bleiben verfügbar. Bereits angelegte Dienste werden nicht gelöscht. Sie bleiben gespeichert.<br><br>Klicken Sie auf Speichern, um Ihre Wahl zu bestätigen."
                 },
                 {
-                    "label": "WinProx-Stil",
-                    "text": "Wählen Sie, wie WinProx für Sie in der Verwaltung aussieht: Standard oder Dunkel. Ihre Wahl gilt auf allen Geräten, auf denen Sie angemeldet sind. Steht unten auf der Seite, direkt vor dem Export-Bereich."
+                    "label": "WinProx-Stil anpassen",
+                    "text": "Hier legen Sie fest, wie WinProx aussieht, wenn Sie im Backoffice arbeiten.<br><br>Ihre Wahl gilt auf allen Geräten, auf denen Sie angemeldet sind, und wird sofort angewendet.<br><br>Sie können aus drei Stilen wählen:<br>• Modern: der Standardstil mit dunkler Menüleiste und Karten mit Glaseffekt.<br>• Standard: eine helle, ruhige Darstellung ohne Hintergrundfoto.<br>• Dunkel: eine vollständig dunkle Darstellung.<br><br>Als Administrator können Sie darunter auch den Hintergrund und die Farben des Portals anpassen."
                 },
                 {
-                    "label": "RSZ-Anwesenheit (CIAO)",
-                    "text": "Dieser Bereich steht unten, vor Datenschutz. Standardmäßig grau: CIAO ist ausnahmsweise und hier nicht selbst einschaltbar. Beantragen Sie es über <strong>info@winprox.app</strong>; ein Superuser schaltet es danach ein. Danach tragen Sie nur die <strong>Unternehmensnummer (KBO)</strong> ein. WinProx übernimmt die technische Anbindung an das LSS."
+                    "label": "Hintergrund",
+                    "nested": true,
+                    "text": "Bei Anwenden auf wählen Sie, wo Sie das Bild verwenden möchten.<br><br>Es gibt zwei Möglichkeiten:<br>• Portal-Hintergrund: der Hintergrund, den jemand sieht, nachdem er einen QR-Code gescannt hat. Das ist nicht der Hintergrund des QR-Etiketts selbst.<br>• Backoffice-Hintergrund: das Bild hinter dem Verwaltungsbildschirm. Es ist im Stil Modern sichtbar.<br><br>Sie können einen Standardhintergrund wählen oder selbst ein Bild hochladen.<br><br>Ihre Wahl wird sofort gespeichert. Laden Sie ein eigenes Bild hoch, ersetzt es den Standardhintergrund.<br><br>Mit der Schaltfläche zum Entfernen kehren Sie zum Standardhintergrund zurück."
+                },
+                {
+                    "label": "Portal-Farben",
+                    "nested": true,
+                    "text": "Hier wählen Sie die Hintergrundfarbe und die Schaltflächenfarbe des Meldeportals.<br><br>Rechts sehen Sie eine Vorschau, wie der Bildschirm für jemanden aussieht, der einen QR-Code scannt und eine Meldung senden möchte.<br><br>Diese Farben ändern das Aussehen des Backoffice nicht.<br><br>Klicken Sie auf Speichern, um Ihre Farbwahl zu sichern."
+                },
+                {
+                    "label": "QR-Druckbogen",
+                    "requires_facility": true,
+                    "text": "Hier legen Sie fest, wie die QR-Etiketten und Druckbögen Ihrer Organisation aussehen.<br><br>Sie können die Gestaltung anpassen und danach Druckbögen pro Standort herunterladen.<br><br>Klicken Sie auf Speichern, um Text, Logo und Adresse zu sichern. Ein eigener Hintergrund wird sofort gespeichert."
+                },
+                {
+                    "label": "Text auf dem Etikett",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "Oben auf dem Etikett können Sie einen eigenen Text von höchstens 120 Zeichen setzen.<br><br>Lassen Sie das Feld leer? Dann verwendet WinProx automatisch den Namen des Standorts und der Unit.<br><br>Unter dem QR-Code steht immer die eindeutige Etikettennummer."
+                },
+                {
+                    "label": "Logo und Adresse",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "Sie bestimmen selbst, wo das Organisationslogo und die Adresse auf dem Etikett erscheinen.<br><br>Für beides können Sie aus vier Ecken wählen:<br>• Unten rechts.<br>• Unten links.<br>• Oben rechts.<br>• Oben links.<br><br>Sie können auch Nicht anzeigen wählen, wenn Sie Logo oder Adresse lieber weglassen.<br><br>Das Logo in der Mitte des QR-Codes bleibt immer stehen. Das können Sie hier nicht verschieben."
+                },
+                {
+                    "label": "Hintergrund",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "Sie können einen Standardhintergrund verwenden oder selbst ein Bild hochladen.<br><br>Ein eigener Hintergrund muss eine PNG- oder JPG-Datei von höchstens 4 MB sein.<br><br>Ohne eigenes Bild verwendet WinProx das Standarddesign.<br><br>Möchten Sie wieder das Standarddesign? Klicken Sie auf Eigenen Hintergrund entfernen."
+                },
+                {
+                    "label": "Vorschau",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "Rechts sehen Sie eine Vorschau eines Etiketts mit Ihren gewählten Einstellungen.<br><br>Wenn Sie einen Druckbogen von einem Standort aus öffnen, werden die echten QR-Codes und Etikettennummern dieses Standorts verwendet.<br><br>So sehen Sie vorher, wie Ihre Etiketten aussehen werden."
+                },
+                {
+                    "label": "LSS-Anwesenheit (CIAO)",
+                    "text": "Diesen Teil finden Sie unten in den Einstellungen, direkt über Datenschutz. Er ist standardmäßig eingeklappt.<br><br>CIAO können Sie nicht selbst aktivieren.<br><br>Möchten Sie die Anwesenheitsmeldung an die LSS nutzen? Fordern Sie die Aktivierung über info@winprox.app an.<br><br>WinProx aktiviert die Funktion danach für Ihre Organisation."
+                },
+                {
+                    "label": "CIAO einrichten",
+                    "nested": true,
+                    "text": "Nach der Aktivierung tragen Sie Ihre Unternehmensnummer (KBO) ein.<br><br>Hat Ihre Organisation keine belgische Unternehmensnummer? Dann tragen Sie die ausländische Umsatzsteuer-Nummer ein.<br><br>Erscheint das Feld Regime, wählen Sie das passende Regime:<br>• Reinigung (CIAO).<br>• Bau / Beton (CIAO).<br><br>Klicken Sie auf CIAO-Einstellungen speichern, um Ihre Daten zu sichern.<br><br>Mit Alle CIAO-Übermittlungen öffnen Sie die Übersicht der Anwesenheitsmeldungen, die an die LSS gesendet wurden."
                 },
                 {
                     "label": "Datenschutz & Datenexport",
-                    "text": "Nur der Administrator kann eine maschinenlesbare Übersicht (JSON) des Kontos und relevanter Aktivität in Ihrer Umgebung herunterladen. Dieser Bereich erscheint in Einstellungen nur für den Administrator. Die Datei kann sensible Daten enthalten — sicher aufbewahren."
+                    "text": "Dieser Teil ist nur für Administratoren verfügbar.<br><br>Mit Datenexport herunterladen laden Sie eine Datei mit den Daten Ihrer Organisation und der relevanten Aktivität in WinProx herunter.<br><br>Der Export kann auch sensible Informationen enthalten.<br><br>Bewahren Sie die Datei deshalb an einem sicheren Ort auf und teilen Sie sie nur mit Personen, die auf diese Daten zugreifen dürfen."
                 }
             ]
         },

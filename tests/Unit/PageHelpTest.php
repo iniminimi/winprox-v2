@@ -110,7 +110,7 @@ it('ondersteunt geneste acties in paginahulp', function (): void {
 
     expect($help)->not->toBeNull();
 
-    $nested = collect($help['actions'])->first(fn (array $a): bool => $a['label'] === 'Tekst');
+    $nested = collect($help['actions'])->first(fn (array $a): bool => $a['label'] === 'Tekst op de sticker');
 
     expect($nested)->not->toBeNull()
         ->and($nested['nested'])->toBeTrue();

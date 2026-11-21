@@ -829,77 +829,123 @@
             "title": "Hulp — Instellingen",
             "actions": [
                 {
+                    "label": "Wat vindt u op dit scherm?",
+                    "text": "Hier stelt u WinProx in volgens de werking en de wensen van uw organisatie.<br><br>U beheert er onder andere de organisatiegegevens, de beschikbare functies, de beveiliging van de prikklok en de vormgeving van WinProx.<br><br>Niet iedereen ziet dezelfde instellingen:<br>• Beheerders kunnen de instellingen van de volledige organisatie aanpassen.<br>• Medewerkers kunnen hun eigen e-mailmeldingen en persoonlijke WinProx-stijl instellen.<br>• Time-gebruikers krijgen extra instellingen voor de prikklok, het uurrooster en de aanwezigheidsmelding aan de RSZ (CIAO)."
+                },
+                {
                     "label": "Configuratie-overzicht",
                     "requires_facility": true,
-                    "text": "Helemaal bovenaan staat een inklapbaar overzicht van de configuratiestatus van jullie omgeving. Klap het open om de volledigheidsmeter te zien, acht tellingen (inactieve locaties, units, teams en uitvoerders; categorieën met of zonder GPS; actieve en inactieve documenten) en de belangrijkste actiepunten met een directe <strong>Oplossen</strong>-link. Staat er een badge op het kader, dan zijn er openstaande actiepunten. Via <strong>Volledig overzicht openen</strong> ga je naar de aparte configuratiepagina met alle actiepunten en filterkaarten per type."
+                    "text": "Bovenaan vindt u het onderdeel Configuratie-overzicht. Dit staat standaard ingeklapt.<br><br>Staat er een getal naast? Dan zijn er nog actiepunten die aandacht vragen.<br><br>Klap het overzicht open om te zien hoe ver uw organisatie staat met de inrichting. U vindt er ook enkele tellingen, zoals het aantal inactieve locaties, units, teams en uitvoerders.<br><br>Bij de belangrijkste actiepunten kunt u rechtstreeks op Oplossen klikken.<br><br>Wilt u alles bekijken? Kies dan Volledig overzicht openen. U komt op een aparte pagina met alle punten die nog aandacht vragen."
+                },
+                {
+                    "label": "Je organisatie",
+                    "text": "Hier vindt u de instellingen en gegevens die bij uw organisatie horen."
                 },
                 {
                     "label": "Organisatiegegevens",
-                    "text": "Onder Je organisatie staan twee delen: Organisatiegegevens (naam, e-mail, telefoon en adres — alleen de beheerder kan bewerken via 'Organisatiegegevens bewerken') en Organisatielogo (upload PNG/JPG, max. 2 MB). Als medewerker zie je gegevens en logo alleen ter informatie. Het logo staat in het midden van elke QR-code op stickers en in het meldportaal. Voor hoekplaatsing op stickers zie je de rubriek Logo en adres onder QR-code stickervellen."
+                    "nested": true,
+                    "text": "U ziet hier de naam, het e-mailadres, het telefoonnummer en het adres van uw organisatie.<br><br>Als beheerder kunt u deze gegevens aanpassen via Organisatiegegevens bewerken.<br><br>De gegevens worden onder andere gebruikt op de afgedrukte QR-codes."
+                },
+                {
+                    "label": "Organisatielogo",
+                    "nested": true,
+                    "text": "Upload het logo van uw organisatie als PNG- of JPG-bestand van maximaal 2 MB.<br><br>Het logo verschijnt op het WinProx-portaal en op de QR-codes.<br><br>Als medewerker kunt u het logo alleen bekijken. Aanpassen kan alleen door een beheerder."
                 },
                 {
                     "label": "Fotoalbum",
+                    "nested": true,
                     "requires_facility": true,
-                    "text": "Onder Je organisatie zet de beheerder het fotoalbum aan of uit voor de hele organisatie. Aan: uitvoerders maken foto's op de unit-QR, en u mailt ze via Fotoalbum. De bestanden worden na een week gewist."
+                    "text": "Alleen een beheerder kan het fotoalbum aan- of uitzetten. De instelling wordt onmiddellijk toegepast.<br><br>• Aan: uitvoerders kunnen foto’s maken via de QR-code van een unit. Via Fotoalbum kunt u die foto’s vervolgens naar een e-mailadres versturen. De bestanden worden na één week automatisch verwijderd.<br>• Uit: de fotofunctie is niet beschikbaar."
                 },
                 {
                     "label": "E-mailmeldingen",
+                    "nested": true,
                     "requires_facility": true,
-                    "text": "Persoonlijke voorkeur per gebruiker: een e-mail bij elke nieuwe QR-melding. Als medewerker kun je dit zelf aan- of uitzetten."
-                },
-                {
-                    "label": "Eigen portaal-stijl",
-                    "text": "Twee delen: Portaal-achtergrond (optionele afbeelding voor het meldportaal na een QR-scan, PNG/JPG, max. 4 MB — niet hetzelfde als de sticker-achtergrond) en Portaal kleuren (achtergrond- en knopkleur). Klik Opslaan om kleuren toe te passen op het meldportaal. Het voorbeeldkaartje toont hoe melders het portaal zien na een scan. Dit geldt niet voor het beheerscherm."
-                },
-                {
-                    "label": "QR-afdrukblad",
-                    "text": "Branding voor gedrukte Avery 62×89-R stickers (9 etiketten per vel). Het stickervel download je per locatie via het QR-pack."
-                },
-                {
-                    "label": "Tekst",
-                    "nested": true,
-                    "text": "Bovenaan de sticker staat je eigen tekst (max. 120 tekens). Laat je het leeg, dan gebruikt WinProx automatisch locatienaam · unit. Onder de QR-code staat altijd het stickernummer. Het voorbeeld rechts werkt live mee. Klik 'Opslaan' om tekst (en logo-instellingen) te bewaren."
-                },
-                {
-                    "label": "Logo en adres",
-                    "nested": true,
-                    "text": "Kies waar je organisatielogo op de sticker komt (rechtsonder, linksonder, …) — alleen mogelijk als je een logo hebt geüpload. Vink 'Adres locatie op de sticker' aan om het organisatieadres linksonder te tonen. Adres en logo onderaan delen één wit vak over de volle breedte van de sticker; bovenaan blijft elk element los. Het logo in het midden van de QR-code is vast (jouw logo of WinProx) en kan hier niet verplaatst worden."
-                },
-                {
-                    "label": "Achtergrond",
-                    "nested": true,
-                    "text": "Kies een eigen afbeelding (PNG/JPG, max. 4 MB); die wordt meteen opgeslagen. Zonder eigen achtergrond gebruikt WinProx het standaard stickerdesign. Met 'Eigen achtergrond verwijderen' keer je terug naar dat standaarddesign."
-                },
-                {
-                    "label": "Voorbeeld",
-                    "nested": true,
-                    "text": "Rechts (op een breed scherm) zie je een live voorbeeld van één sticker met demo-QR en -nummer. Bij export op een locatie worden de echte unit-QR-codes en stickernummers van die locatie gebruikt."
+                    "text": "Dit is een persoonlijke instelling. Iedere gebruiker bepaalt zelf of hij of zij e-mails wil ontvangen.<br><br>Schakel Ontvang een e-mail bij elke nieuwe melding in als u bij elke nieuwe melding via een QR-code ook een e-mail wilt ontvangen.<br><br>De instelling wordt onmiddellijk toegepast.<br><br>Ook medewerkers kunnen deze voorkeur zelf aanpassen."
                 },
                 {
                     "label": "Werkmenu instellingen",
                     "requires_facility": true,
-                    "text": "Via Organisatie → Instellingen → Werkmenu instellingen kan de beheerder per organisatie bepalen welke onderdelen onder Werk zichtbaar zijn: Kalender, Reserveringen, Inspectierondes en Unitmetingen. Uitgeschakeld verdwijnt het item uit de sidebar en zijn de backoffice-routes niet bereikbaar. Bestaande reserverings- of meet-instellingen op units en categorieën blijven op het QR-portaal werken; nieuw inschakelen kan niet zolang het werkmenu-item uit staat. Unit checks worden niet beïnvloed door Inspectierondes uit. Meldingen & taken is de hoofdschakelaar van het Werk-menu: staat die uit, dan vallen alle andere Werk-items weg."
+                    "text": "Alleen beheerders kunnen bepalen welke onderdelen onder Werk in het menu verschijnen.<br><br>Zo houdt u het menu overzichtelijk en toont u alleen de functies die uw organisatie gebruikt.<br><br>Schakel de gewenste onderdelen in of uit en klik daarna op Bevestigen.<br><br>Dit zijn de beschikbare instellingen:<br>• Meldingen & taken: dit is de hoofdschakelaar voor meldingen en taken. Zet u deze uit, dan verdwijnen meldingen en taken uit het menu, het beginscherm en het portaal van de uitvoerders. De andere schakelaars hieronder zijn dan niet meer beschikbaar.<br>• Inspectierondes: hiermee schakelt u de lijst en de planning van inspectierondes in of uit. Unit checks blijven afzonderlijk beschikbaar.<br>• Checklists: hiermee bepaalt u of u de checklistsjablonen in het beheer wilt gebruiken. Unit checks blijven afzonderlijk beschikbaar.<br>• Unit checks: hiermee beheert u de resultaten van unit checks en de controles via de QR-code. Zet u deze functie uit, dan stoppen ook de unit checks via QR-codes bij units waarvoor deze functie eerder was ingeschakeld.<br>• Kalender: hiermee schakelt u de kalender in voor taken, meldingen en reserveringen.<br>• Reserveringen: hiermee schakelt u het beheer van reserveringen in WinProx in of uit. Reserveringen die op bestaande units al beschikbaar waren, blijven via de QR-code werken. Nieuwe reserveringen activeren op een unit kan niet zolang deze instelling uitstaat.<br>• Unitmetingen: hiermee beheert u de meetvelden en de historiek van metingen. Metingen via QR-codes blijven werken op units waar ze al waren ingeschakeld. Nieuwe metingen activeren kan niet zolang deze instelling uitstaat."
+                },
+                {
+                    "label": "Klanten op locatie",
+                    "text": "Alleen beheerders kunnen deze functie instellen.<br><br>Werkt uw organisatie bij klanten op locatie, bijvoorbeeld met schoonmaak- of bouwploegen? Schakel dan Werkt met klanten op locatie in.<br><br>Voor organisaties die uitsluitend op hun eigen vestigingen werken, zoals een crèche of kantoor, laat u deze instelling uitgeschakeld.<br><br>• Aan: het onderdeel Klanten verschijnt in het menu. U kunt uw locaties vervolgens aan klanten koppelen.<br>• Uit: het onderdeel verdwijnt uit het menu. Reeds aangemaakte klantgegevens blijven bewaard.<br><br>Klik op Opslaan om uw keuze te bewaren."
                 },
                 {
                     "label": "Prikklok-beveiliging",
-                    "text": "Alleen bij Time: pincode, biometrie (passkey), GPS bij de prik, GPS-werkbezoeken op Clock Point, en optioneel inklokken vanuit de zijbalk voor collega's met een prikklok-team (standaard uit). Onder Prikklok-beveiliging staat de kaart Uurrooster (standaard aan). Uit zet de planning uit; QR-aanmelding, taken en de prikklok blijven, bestaande diensten blijven bewaard."
+                    "text": "Dit onderdeel verschijnt alleen wanneer Time actief is.<br><br>Hier bepaalt u hoe uitvoerders zich aanmelden en hoe de prikklok wordt beveiligd.<br><br>Elke uitvoerder klokt in met een eigen gsm. Een ander toestel wordt geweigerd totdat u of een teamleider dat nieuwe toestel toestaat.<br><br>De meeste beveiligingsopties staan standaard uit. U schakelt alleen in wat uw organisatie nodig heeft."
                 },
                 {
-                    "label": "Evacuatielijst",
+                    "label": "Algemene instellingen",
+                    "nested": true,
+                    "text": "• Inklokken vanuit beheer: beheerders en medewerkers die behoren tot een prikklok-team kunnen zichzelf via de zijbalk inklokken. Ze melden zich daarvoor aan met hun e-mailadres en wachtwoord.<br>• Externe uitvoerders toestaan: hiermee kunt u bij een uitvoerder aangeven dat het om een externe persoon gaat. U kunt daarbij ook de naam van het bedrijf invullen.<br>• Teamrooster zichtbaar voor uitvoerders: deze instelling verschijnt alleen wanneer het uurrooster actief is. Uitvoerders kunnen dan op hun gsm het rooster bekijken van collega’s op hun locaties.<br>• Pincode (4 cijfers) verplicht bij aanmelden op Clock Point: uitvoerders moeten bij het aanmelden op een Clock Point een persoonlijke pincode ingeven in plaats van alleen hun icoon te kiezen. Het icoon blijft wel van toepassing bij de QR-code van een unit.<br>• Aanmelden met vingerafdruk of gezicht (passkey): uitvoerders kunnen zich aanmelden met de beveiliging van hun gsm, bijvoorbeeld een vingerafdruk of gezichtsherkenning. Aanmelden met pincode of icoon blijft eveneens mogelijk.<br>• Evacuatielijst op Clock Point: na het aanmelden krijgen uitvoerders toegang tot de evacuatielijst. Voordat ze deze openen, moeten ze bevestigen dat het om een uitzonderlijke raadpleging gaat. Elke raadpleging wordt geregistreerd."
+                },
+                {
+                    "label": "Werken op locatie (GPS)",
+                    "nested": true,
+                    "text": "Werkt uw organisatie bij klanten op verschillende locaties? Dan kunt u hier de GPS-controle instellen.<br><br>Deze instellingen zijn niet nodig wanneer iedereen gewoon op een vaste prikklok in hetzelfde gebouw inklokt.<br><br>• GPS vragen bij in- en uitklokken: bij het inklokken moet de gsm een locatie doorgeven. Lukt dat niet, dan kan de uitvoerder niet inklokken. Uitklokken blijft wel mogelijk.<br>• GPS-werkbezoeken: hiermee kunnen uitvoerders hun werkbezoek bij een klant starten en stoppen. De gsm moet zich daarvoor binnen de ingestelde afstand van het werkadres bevinden.<br>• Straal (meter): bepaalt hoe dicht de uitvoerder bij het werkadres moet zijn. De standaardinstelling is 50 meter.<br><br>Klik op Prikklok-beveiliging opslaan om uw wijzigingen te bewaren."
+                },
+                {
+                    "label": "Uurrooster",
                     "requires_facility": true,
-                    "text": "Standaard uit; zet ze hier aan als uitvoerders na aanmelden mogen zien wie is ingeklokt (elke raadpleging wordt gelogd)."
+                    "text": "Deze instelling staat in een afzonderlijk vak onder Prikklok-beveiliging.<br><br>Schakel Uurrooster gebruiken uit als uw organisatie geen planning via WinProx gebruikt.<br><br>De volgende onderdelen verdwijnen dan uit het menu:<br>• Uurrooster.<br>• Shifttypes.<br>• Feestdagen.<br>• Minimumbezetting.<br>• Verlofaanvragen.<br><br>Goed om te weten: de andere functies blijven gewoon werken. Aanmelden via QR, taken en de prikklok blijven beschikbaar. Reeds aangemaakte diensten worden niet verwijderd, maar blijven bewaard.<br><br>Klik op Opslaan om uw keuze te bevestigen."
                 },
                 {
-                    "label": "WinProx-stijl",
-                    "text": "Kies hoe WinProx er voor jou uitziet in beheer: Modern (standaard), Standaard of Donker. Je keuze geldt op al je ingelogde apparaten."
+                    "label": "WinProx-stijl aanpassen",
+                    "text": "Hier bepaalt u hoe WinProx eruitziet wanneer u in de Backoffice werkt.<br><br>Uw keuze geldt op al uw apparaten waarop u bent aangemeld en wordt onmiddellijk toegepast.<br><br>U kunt kiezen uit drie stijlen:<br>• Modern: de standaardstijl met een donkere menubalk en kaarten met een glazen uitstraling.<br>• Standaard: een lichte, rustige weergave zonder achtergrondfoto.<br>• Donker: een volledig donkere weergave.<br><br>Als beheerder kunt u hieronder ook de achtergrond en de kleuren van het portaal aanpassen."
+                },
+                {
+                    "label": "Achtergrond",
+                    "nested": true,
+                    "text": "Bij Toepassen op kiest u waar u de afbeelding wilt gebruiken.<br><br>Er zijn twee mogelijkheden:<br>• Portaal-achtergrond: de achtergrond die iemand ziet nadat hij of zij een QR-code heeft gescand. Dit is niet de achtergrond van de QR-sticker zelf.<br>• Backoffice-achtergrond: de afbeelding achter het beheerscherm. Deze is zichtbaar in de stijl Modern.<br><br>U kunt een standaardachtergrond kiezen of zelf een afbeelding uploaden.<br><br>Uw keuze wordt onmiddellijk opgeslagen. Uploadt u een eigen afbeelding, dan vervangt die de standaardachtergrond.<br><br>Met de verwijderknop keert u terug naar de standaardachtergrond."
+                },
+                {
+                    "label": "Portaal kleuren",
+                    "nested": true,
+                    "text": "Hier kiest u de achtergrondkleur en de knopkleur van het meldportaal.<br><br>Rechts ziet u een voorbeeld van hoe het scherm eruitziet voor iemand die een QR-code scant en een melding wil doorgeven.<br><br>Deze kleuren hebben geen invloed op het uiterlijk van de Backoffice.<br><br>Klik op Opslaan om uw kleurkeuze te bewaren."
+                },
+                {
+                    "label": "QR-afdrukblad",
+                    "requires_facility": true,
+                    "text": "Hier bepaalt u hoe de QR-stickers en afdrukbladen voor uw organisatie eruitzien.<br><br>U kunt de vormgeving aanpassen en vervolgens afdrukbladen downloaden per locatie.<br><br>Klik op Opslaan om de tekst, het logo en het adres te bewaren. Een aangepaste achtergrond wordt onmiddellijk opgeslagen."
+                },
+                {
+                    "label": "Tekst op de sticker",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "Bovenaan de sticker kunt u een eigen tekst plaatsen van maximaal 120 tekens.<br><br>Laat u dit veld leeg? Dan gebruikt WinProx automatisch de naam van de locatie en de unit.<br><br>Onder de QR-code staat altijd het unieke stickernummer."
+                },
+                {
+                    "label": "Logo en adres",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "U bepaalt zelf waar het organisatielogo en het adres op de sticker verschijnen.<br><br>Voor beide kunt u kiezen uit vier hoeken:<br>• Rechtsonder.<br>• Linksonder.<br>• Rechtsboven.<br>• Linksboven.<br><br>U kunt ook kiezen voor Niet tonen als u het logo of adres liever weglaat.<br><br>Het logo in het midden van de QR-code blijft altijd staan. Dat kunt u hier niet verplaatsen."
+                },
+                {
+                    "label": "Achtergrond",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "U kunt een standaardachtergrond gebruiken of zelf een afbeelding uploaden.<br><br>Een eigen achtergrond moet een PNG- of JPG-bestand zijn van maximaal 4 MB.<br><br>Zonder eigen afbeelding gebruikt WinProx het standaardontwerp.<br><br>Wilt u opnieuw het standaardontwerp gebruiken? Klik dan op Eigen achtergrond verwijderen."
+                },
+                {
+                    "label": "Voorbeeld",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "Rechts ziet u een voorbeeld van één sticker met uw gekozen instellingen.<br><br>Wanneer u een afdrukblad opent vanuit een locatie, worden de echte QR-codes en stickernummers van die locatie gebruikt.<br><br>Zo ziet u vooraf hoe uw stickers eruit zullen zien."
                 },
                 {
                     "label": "Aanwezigheid RSZ (CIAO)",
-                    "text": "Dit kader staat onderaan, boven Privacy. Standaard grijs: CIAO is uitzonderlijk en niet zelf in te schakelen. Vraag het aan via <strong>info@winprox.app</strong>; een superuser zet het daarna aan. Daarna vult u alleen het <strong>ondernemingsnummer (KBO)</strong> in. WinProx regelt de technische koppeling met de RSZ."
+                    "text": "Dit onderdeel vindt u onderaan de instellingen, net boven Privacy. Het staat standaard ingeklapt.<br><br>CIAO kunt u niet zelf activeren.<br><br>Wilt u gebruikmaken van de aanwezigheidsmelding aan de RSZ? Vraag de activering aan via info@winprox.app.<br><br>WinProx activeert de functie vervolgens voor uw organisatie."
+                },
+                {
+                    "label": "CIAO instellen",
+                    "nested": true,
+                    "text": "Na de activering vult u uw ondernemingsnummer (KBO) in.<br><br>Heeft uw organisatie geen Belgisch ondernemingsnummer? Dan vult u het buitenlandse btw-nummer in.<br><br>Verschijnt het veld Regime, dan kiest u het toepasselijke regime:<br>• Schoonmaak.<br>• Bouw / beton.<br><br>Klik op CIAO-instellingen opslaan om uw gegevens te bewaren.<br><br>Met Alle CIAO-inzendingen opent u het overzicht van de aanwezigheidsmeldingen die naar de RSZ werden verstuurd."
                 },
                 {
                     "label": "Privacy & export van gegevens",
-                    "text": "Alleen de beheerder kan een machineleesbaar overzicht (JSON) van het account en relevante activiteit binnen jullie omgeving downloaden. Deze rubriek staat alleen op Instellingen voor de beheerder. Het bestand kan gevoelige gegevens bevatten — bewaar het veilig."
+                    "text": "Dit onderdeel is alleen beschikbaar voor beheerders.<br><br>Met Gegevensexport downloaden kunt u een bestand downloaden met de gegevens van uw organisatie en de relevante activiteit binnen WinProx.<br><br>De export kan ook gevoelige informatie bevatten.<br><br>Bewaar het bestand daarom op een veilige plaats en deel het alleen met personen die toegang tot deze gegevens mogen hebben."
                 }
             ]
         },

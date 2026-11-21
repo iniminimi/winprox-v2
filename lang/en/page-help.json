@@ -829,77 +829,123 @@
             "title": "Help — Settings",
             "actions": [
                 {
+                    "label": "What do you find on this screen?",
+                    "text": "Here you set up WinProx to match how your organisation works and what it needs.<br><br>You manage the organisation details, the available features, punch clock security and how WinProx looks.<br><br>Not everyone sees the same settings:<br>• Administrators can change the settings for the whole organisation.<br>• Employees can set their own email notifications and personal WinProx style.<br>• Time users get extra settings for the punch clock, the roster and presence reporting to the NSSO (CIAO)."
+                },
+                {
                     "label": "Configuration overview",
                     "requires_facility": true,
-                    "text": "At the very top you will find a collapsible overview of your environment's configuration status. Expand it to see the completeness meter, eight counts (inactive locations, units, teams and workers; categories with or without GPS; active and inactive documents) and the most important action items with a direct <strong>Fix</strong> link. If the panel shows a badge, there are open action items. Use <strong>Open full overview</strong> to go to the dedicated configuration page with all action items and filter cards per type."
+                    "text": "At the top you find Configuration overview. It is collapsed by default.<br><br>Is there a number next to it? Then there are still action items that need attention.<br><br>Open the overview to see how far your organisation is with the setup. You also find counts, such as inactive locations, units, teams and workers.<br><br>For the main action items you can click Fix straight away.<br><br>Want to see everything? Choose Open full overview. You go to a separate page with every item that still needs attention."
+                },
+                {
+                    "label": "Your organisation",
+                    "text": "Here you find the settings and details that belong to your organisation."
                 },
                 {
                     "label": "Organisation details",
-                    "text": "Under Your organisation you will find two blocks: Organisation details (name, email, phone and address — only the administrator can edit via 'Edit organisation details') and Organisation logo (upload PNG/JPG, max. 2 MB). As an employee you only see details and logo for reference. The logo appears in the centre of every QR code on stickers and in the reporting portal. For corner placement on stickers, see the Logo and address section under QR sticker sheets."
+                    "nested": true,
+                    "text": "You see the name, email address, phone number and address of your organisation.<br><br>As an administrator you change these details with Edit organisation details.<br><br>The details are used on printed QR codes, among other places."
+                },
+                {
+                    "label": "Organisation logo",
+                    "nested": true,
+                    "text": "Upload your organisation logo as a PNG or JPG file of at most 2 MB.<br><br>The logo appears on the WinProx portal and on the QR codes.<br><br>As an employee you can only view the logo. Only an administrator can change it."
                 },
                 {
                     "label": "Photo album",
+                    "nested": true,
                     "requires_facility": true,
-                    "text": "Under Your organisation an administrator turns the photo album on or off for the whole organisation. On: workers take photos on the unit QR, and you email them via Photo album. The files are deleted after a week."
+                    "text": "Only an administrator can turn the photo album on or off. The setting applies immediately.<br><br>• On: workers can take photos via the QR code of a unit. In Photo album you can then email those photos to an address. The files are deleted automatically after one week.<br>• Off: the photo feature is not available."
                 },
                 {
                     "label": "Email notifications",
+                    "nested": true,
                     "requires_facility": true,
-                    "text": "Personal preference per user: an email for each new QR report. As an employee you can toggle this yourself."
-                },
-                {
-                    "label": "Custom portal style",
-                    "text": "Two blocks: Portal background (optional image for the reporting portal after a QR scan, PNG/JPG, max. 4 MB — not the same as the sticker background) and Portal colours (background and button colour). Click Save to apply colours to the reporting portal. The preview card shows how reporters see the portal after a scan. This does not affect the admin interface."
-                },
-                {
-                    "label": "QR print sheet",
-                    "text": "Branding for printed Avery 62×89-R stickers (9 labels per sheet). Download the sticker sheet per location from the QR pack."
-                },
-                {
-                    "label": "Text",
-                    "nested": true,
-                    "text": "Your custom text appears at the top of the sticker (max. 120 characters). If left empty, WinProx uses location name · unit automatically. The sticker number always appears below the QR code. The preview on the right updates live. Click 'Save' to store text (and logo settings)."
-                },
-                {
-                    "label": "Logo and address",
-                    "nested": true,
-                    "text": "Choose where your organisation logo appears on the sticker (bottom right, bottom left, …) — only if you have uploaded a logo. Tick 'Show location address on sticker' to print address details at the bottom left. Address and bottom logo share one full-width white band at the bottom of the sticker; at the top each element stays separate. The logo in the centre of the QR code is fixed (your logo or WinProx) and cannot be moved here."
-                },
-                {
-                    "label": "Background",
-                    "nested": true,
-                    "text": "Pick a custom image (PNG/JPG, max. 4 MB); it is saved immediately. Without a custom background WinProx uses the default sticker design. Use 'Remove custom background' to return to that default."
-                },
-                {
-                    "label": "Preview",
-                    "nested": true,
-                    "text": "On the right (on a wide screen) you see a live preview of one sticker with a demo QR code and number. When exporting at a location, the real unit QR codes and sticker numbers for that location are used."
+                    "text": "This is a personal setting. Each user decides whether they want to receive emails.<br><br>Turn on Receive an email for every new report if you also want an email for every new report via a QR code.<br><br>The setting applies immediately.<br><br>Employees can change this preference themselves too."
                 },
                 {
                     "label": "Work menu settings",
                     "requires_facility": true,
-                    "text": "Via Organisation → Settings → Work menu settings, the administrator can choose per organisation which Work items are visible: Calendar, Reservations, Inspection rounds and Unit measurements. When disabled, the item disappears from the sidebar and backoffice routes return forbidden. Existing reservation or measurement settings on units and categories keep working on the QR portal; you cannot newly enable them while the work menu item is off. Unit checks are not affected when Inspection rounds is off. Issues & tasks is the master switch of the Work menu: when off, all other Work items are switched off too."
+                    "text": "Only administrators can choose which items appear under Work in the menu.<br><br>That keeps the menu clear and shows only the features your organisation uses.<br><br>Turn the items you want on or off, then click Confirm.<br><br>These are the available settings:<br>• Issues & tasks: this is the main switch for issues and tasks. If you turn it off, issues and tasks disappear from the menu, the home screen and the workers’ portal. The other switches below are then no longer available.<br>• Inspection rounds: turn the list and planning of inspection rounds on or off. Unit checks stay available separately.<br>• Checklists: choose whether you want to use checklist templates in the backoffice. Unit checks stay available separately.<br>• Unit checks: manage unit check results and checks via the QR code. If you turn this off, unit checks via QR codes also stop on units where this was turned on before.<br>• Calendar: turn on the calendar for tasks, issues and reservations.<br>• Reservations: turn reservation management in WinProx on or off. Reservations that were already available on existing units keep working via the QR code. You cannot turn on new reservations on a unit while this setting is off.<br>• Unit measurements: manage the measure fields and the history of measurements. Measurements via QR codes keep working on units where they were already on. You cannot turn on new measurements while this setting is off."
+                },
+                {
+                    "label": "Customers on location",
+                    "text": "Only administrators can set this.<br><br>Does your organisation work at customer sites, for example with cleaning or construction crews? Then turn on Works with customers on location.<br><br>For organisations that only work at their own sites, such as a daycare or an office, leave this off.<br><br>• On: Customers appears in the menu. You can then link your locations to customers.<br>• Off: the item disappears from the menu. Customer details that were already created are kept.<br><br>Click Save to keep your choice."
                 },
                 {
                     "label": "Punch clock security",
-                    "text": "Time only: PIN, biometrics (passkey), GPS at the punch, GPS work visits on Clock Point, and optionally clock-in from the sidebar for colleagues with a punch-clock team (off by default). The Roster card sits under Punch clock security (on by default). Off turns planning off; QR sign-in, tasks and the clock stay, and existing shifts are kept."
+                    "text": "This section appears only when Time is on.<br><br>Here you choose how workers sign in and how the punch clock is secured.<br><br>Each worker clocks in with their own phone. Another device is refused until you or a team leader allows that new device.<br><br>Most security options are off by default. Turn on only what your organisation needs."
                 },
                 {
-                    "label": "Evacuation list",
+                    "label": "General settings",
+                    "nested": true,
+                    "text": "• Clock in from back office: administrators and employees who belong to a punch clock team can clock themselves in from the sidebar. They sign in with their email address and password.<br>• Allow external workers: you can mark a worker as an external person. You can also enter the company name.<br>• Team roster visible to workers: this setting appears only when the roster is on. Workers can then see the roster of colleagues at their locations on their phone.<br>• Require a 4-digit PIN when signing in at Clock Point: workers must enter a personal PIN when signing in at a Clock Point, instead of only choosing their icon. The icon still applies to the QR code of a unit.<br>• Sign in with fingerprint or face (passkey): workers can sign in with the security of their phone, for example a fingerprint or face recognition. Signing in with a PIN or icon remains possible.<br>• Evacuation list on Clock Point: after signing in, workers can open the evacuation list. Before they open it, they must confirm that the view is exceptional. Each view is recorded."
+                },
+                {
+                    "label": "Working on location (GPS)",
+                    "nested": true,
+                    "text": "Does your organisation work at customers on different sites? Then you can set the GPS check here.<br><br>These settings are not needed when everyone clocks in at a fixed punch clock in the same building.<br><br>• Ask for GPS when clocking in or out: when clocking in, the phone must share a location. If that fails, the worker cannot clock in. Clocking out remains possible.<br>• GPS work visits (start/stop work on a location or unit pin): workers can start and stop their work visit at a customer. The phone must be within the set distance of the work address.<br>• Radius (metres): how close the worker must be to the work address. The default is 50 metres.<br><br>Click Save punch clock security to keep your changes."
+                },
+                {
+                    "label": "Roster",
                     "requires_facility": true,
-                    "text": "Off by default; turn it on here if workers may see who is clocked in after sign-in (each view is logged)."
+                    "text": "This setting is in a separate section under Punch clock security.<br><br>Turn off Use the roster if your organisation does not plan in WinProx.<br><br>These items then disappear from the menu:<br>• Roster.<br>• Shift types.<br>• Public holidays.<br>• Minimum staffing.<br>• Requests.<br><br>Good to know: the other features keep working. Signing in via QR, tasks and the punch clock stay available. Shifts that were already created are not deleted. They are kept.<br><br>Click Save to confirm your choice."
                 },
                 {
-                    "label": "WinProx style",
-                    "text": "Choose how WinProx looks in the back office: Modern (default), Standard or Dark. Your choice applies on all signed-in devices."
+                    "label": "Customise WinProx style",
+                    "text": "Here you choose how WinProx looks when you work in the Backoffice.<br><br>Your choice applies on every device where you are signed in, and it applies immediately.<br><br>You can choose from three styles:<br>• Modern: the default style, with a dark menu bar and cards with a glass look.<br>• Standard: a light, calm look without a background photo.<br>• Dark: a fully dark look.<br><br>As an administrator you can also change the background and the portal colours below."
                 },
                 {
-                    "label": "RSZ presence (CIAO)",
-                    "text": "This section sits at the bottom, above Privacy. It is grey by default: CIAO is exceptional and cannot be turned on here. Request it via <strong>info@winprox.app</strong>; a superuser then enables it. After that you only enter the <strong>enterprise number (CBE)</strong>. WinProx handles the technical link to the NSSO."
+                    "label": "Background",
+                    "nested": true,
+                    "text": "At Apply to you choose where to use the image.<br><br>There are two options:<br>• Portal background: the background someone sees after scanning a QR code. This is not the background of the QR sticker itself.<br>• Backoffice background: the image behind the backoffice screen. It is visible in the Modern style.<br><br>You can choose a standard background or upload your own image.<br><br>Your choice is saved immediately. If you upload your own image, it replaces the standard background.<br><br>The remove button takes you back to the standard background."
+                },
+                {
+                    "label": "Portal colours",
+                    "nested": true,
+                    "text": "Here you choose the background colour and the button colour of the reporting portal.<br><br>On the right you see a preview of the screen for someone who scans a QR code and wants to send a report.<br><br>These colours do not change how the Backoffice looks.<br><br>Click Save to keep your colour choice."
+                },
+                {
+                    "label": "QR print sheet",
+                    "requires_facility": true,
+                    "text": "Here you choose how the QR stickers and print sheets for your organisation look.<br><br>You can change the design and then download print sheets per location.<br><br>Click Save to keep the text, the logo and the address. A custom background is saved immediately."
+                },
+                {
+                    "label": "Text on the sticker",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "At the top of the sticker you can place your own text of at most 120 characters.<br><br>Leave this field empty? Then WinProx uses the location name and the unit.<br><br>Under the QR code the unique sticker number is always shown."
+                },
+                {
+                    "label": "Logo and address",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "You choose where the organisation logo and the address appear on the sticker.<br><br>For both you can choose from four corners:<br>• Bottom right.<br>• Bottom left.<br>• Top right.<br>• Top left.<br><br>You can also choose Do not show if you prefer to leave out the logo or the address.<br><br>The logo in the centre of the QR code always stays. You cannot move it here."
+                },
+                {
+                    "label": "Background",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "You can use a standard background or upload your own image.<br><br>Your own background must be a PNG or JPG file of at most 4 MB.<br><br>Without your own image, WinProx uses the standard design.<br><br>Want to use the standard design again? Click Remove custom background."
+                },
+                {
+                    "label": "Preview",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "On the right you see a preview of one sticker with your chosen settings.<br><br>When you open a print sheet from a location, the real QR codes and sticker numbers of that location are used.<br><br>That way you see in advance how your stickers will look."
+                },
+                {
+                    "label": "NSSO presence (CIAO)",
+                    "text": "You find this section at the bottom of the settings, just above Privacy. It is collapsed by default.<br><br>You cannot turn CIAO on yourself.<br><br>Do you want to use presence reporting to the NSSO? Request activation via info@winprox.app.<br><br>WinProx then turns the feature on for your organisation."
+                },
+                {
+                    "label": "Set up CIAO",
+                    "nested": true,
+                    "text": "After activation you fill in your enterprise number (CBE).<br><br>Does your organisation not have a Belgian enterprise number? Then fill in the foreign VAT number.<br><br>If the field Regime appears, choose the regime that applies:<br>• Cleaning (CIAO).<br>• Construction / concrete (CIAO).<br><br>Click Save CIAO settings to keep your details.<br><br>With All CIAO submissions you open the overview of the presence reports that were sent to the NSSO."
                 },
                 {
                     "label": "Privacy & data export",
-                    "text": "Only the administrator can download a machine-readable overview (JSON) of the account and relevant activity within your environment. This section appears on Settings for administrators only. The file may contain sensitive data — keep it secure."
+                    "text": "This section is only available to administrators.<br><br>With Download data export you can download a file with your organisation’s details and the relevant activity in WinProx.<br><br>The export can also contain sensitive information.<br><br>Keep the file in a safe place and share it only with people who may access these details."
                 }
             ]
         },

@@ -829,77 +829,123 @@
             "title": "Ayuda — Configuración",
             "actions": [
                 {
+                    "label": "¿Qué encuentra en esta pantalla?",
+                    "text": "Aquí configura WinProx según el funcionamiento y los deseos de su organización.<br><br>Gestiona, entre otras cosas, los datos de la organización, las funciones disponibles, la seguridad del fichaje y el aspecto de WinProx.<br><br>No todo el mundo ve los mismos ajustes:<br>• Los administradores pueden modificar los ajustes de toda la organización.<br>• Los empleados pueden configurar sus propias notificaciones por correo y su estilo personal de WinProx.<br>• Quienes usan Time tienen ajustes extra para el fichaje, el cuadrante y la comunicación de presencia a la ONSS (CIAO)."
+                },
+                {
                     "label": "Resumen de configuración",
                     "requires_facility": true,
-                    "text": "En la parte superior hay un resumen plegable del estado de configuración de su entorno. Despliéguelo para ver el indicador de completitud, ocho recuentos (ubicaciones, unidades, equipos y trabajadores inactivos; categorías con o sin GPS; documentos activos e inactivos) y las acciones principales con un enlace directo <strong>Corregir</strong>. Si el panel muestra una insignia, hay acciones pendientes. Mediante <strong>Abrir resumen completo</strong> accede a la página de configuración dedicada con todas las acciones y tarjetas de filtro por tipo."
+                    "text": "Arriba encuentra Resumen de configuración. Está plegado por defecto.<br><br>¿Hay un número al lado? Entonces quedan puntos de acción que requieren atención.<br><br>Abra el resumen para ver cómo va la organización con la configuración. También hay recuentos, como ubicaciones, unidades, equipos y ejecutores inactivos.<br><br>En los puntos de acción principales puede hacer clic directamente en Corregir.<br><br>¿Quiere verlo todo? Elija Abrir resumen completo. Llega a una página aparte con todos los puntos que aún requieren atención."
+                },
+                {
+                    "label": "Su organización",
+                    "text": "Aquí encuentra los ajustes y los datos de su organización."
                 },
                 {
                     "label": "Datos de la organización",
-                    "text": "En Su organización hay dos bloques: Datos de la organización (nombre, correo, teléfono y dirección — solo el administrador puede editar mediante «Editar datos de la organización») y Logotipo de la organización (subida PNG/JPG, máx. 2 MB). Como empleado solo ve datos y logotipo como referencia. El logotipo aparece en el centro de cada código QR en las pegatinas y en el portal de informes. Para la colocación en esquina en las pegatinas, consulte la sección Logotipo y dirección bajo Hojas de pegatinas QR."
+                    "nested": true,
+                    "text": "Ve el nombre, el correo, el teléfono y la dirección de su organización.<br><br>Como administrador modifica estos datos con Editar datos de la organización.<br><br>Los datos se usan, entre otros sitios, en los códigos QR impresos."
+                },
+                {
+                    "label": "Logotipo de la organización",
+                    "nested": true,
+                    "text": "Suba el logotipo de su organización como archivo PNG o JPG de 2 MB como máximo.<br><br>El logotipo aparece en el portal de WinProx y en los códigos QR.<br><br>Como empleado solo puede ver el logotipo. Solo un administrador puede cambiarlo."
                 },
                 {
                     "label": "Álbum de fotos",
+                    "nested": true,
                     "requires_facility": true,
-                    "text": "En Su organización el administrador activa o desactiva el álbum de fotos para toda la organización. Activado: los operarios hacen fotos en el QR de la unidad y usted las envía desde Álbum de fotos. Los archivos se borran al cabo de una semana."
+                    "text": "Solo un administrador puede activar o desactivar el álbum de fotos. El ajuste se aplica al momento.<br><br>• Activado: los ejecutores pueden hacer fotos con el código QR de una unidad. En Álbum de fotos puede enviar esas fotos a una dirección de correo. Los archivos se eliminan automáticamente al cabo de una semana.<br>• Desactivado: la función de fotos no está disponible."
                 },
                 {
                     "label": "Notificaciones por correo",
+                    "nested": true,
                     "requires_facility": true,
-                    "text": "Preferencia personal por usuario: un correo por cada nuevo informe QR. Como empleado puede activarlo o desactivarlo usted mismo."
-                },
-                {
-                    "label": "Estilo personalizado del portal",
-                    "text": "Dos bloques: Fondo del portal (imagen opcional para el portal de informes tras un escaneo QR, PNG/JPG, máx. 4 MB — no es el fondo de la pegatina) y Colores del portal (color de fondo y de botones). Haga clic en Guardar para aplicar los colores al portal de informes. La tarjeta de vista previa muestra cómo ven el portal los reportadores tras un escaneo. No afecta a la interfaz de administración."
-                },
-                {
-                    "label": "Hoja de impresión QR",
-                    "text": "Marca para pegatinas Avery 62×89-R impresas (9 etiquetas por hoja). Descargue la hoja de pegatinas por ubicación desde el paquete QR."
-                },
-                {
-                    "label": "Texto",
-                    "nested": true,
-                    "text": "Su texto personalizado aparece en la parte superior de la pegatina (máx. 120 caracteres). Si se deja vacío, WinProx usa automáticamente nombre de ubicación · unidad. El número de pegatina siempre aparece debajo del código QR. La vista previa a la derecha se actualiza en directo. Haga clic en «Guardar» para almacenar el texto (y la configuración del logotipo)."
-                },
-                {
-                    "label": "Logotipo y dirección",
-                    "nested": true,
-                    "text": "Elija dónde aparece el logotipo de su organización en la pegatina (abajo a la derecha, abajo a la izquierda, …) — solo si ha subido un logotipo. Marque «Mostrar dirección de la ubicación en la pegatina» para imprimir los datos de dirección abajo a la izquierda. La dirección y el logotipo inferior comparten una franja blanca a todo el ancho; arriba cada elemento sigue separado. El logotipo en el centro del código QR es fijo (su logotipo o WinProx) y no se puede mover aquí."
-                },
-                {
-                    "label": "Fondo",
-                    "nested": true,
-                    "text": "Elija una imagen personalizada (PNG/JPG, máx. 4 MB); se guarda inmediatamente. Sin fondo personalizado, WinProx usa el diseño predeterminado de la pegatina. Use «Eliminar fondo personalizado» para volver a ese diseño."
-                },
-                {
-                    "label": "Vista previa",
-                    "nested": true,
-                    "text": "A la derecha (en pantalla ancha) ve una vista previa en directo de una pegatina con un código QR de demostración y número. Al exportar en una ubicación, se usan los códigos QR de unidad y números de pegatina reales de esa ubicación."
+                    "text": "Es un ajuste personal. Cada usuario decide si quiere recibir correos.<br><br>Active Recibir un correo por cada nuevo informe si también quiere un correo por cada nuevo informe a través de un código QR.<br><br>El ajuste se aplica al momento.<br><br>Los empleados también pueden cambiar esta preferencia."
                 },
                 {
                     "label": "Ajustes del menú Trabajo",
                     "requires_facility": true,
-                    "text": "En Organización → Ajustes → Ajustes del menú Trabajo, el administrador puede elegir por organización qué elementos de Trabajo son visibles: Calendario, Reservas, Rondas de inspección y Mediciones de unidad. Desactivado, el elemento desaparece de la barra lateral y las rutas de backoffice devuelven prohibido. Los ajustes de reserva o medición existentes en unidades y categorías siguen funcionando en el portal QR; no se pueden activar de nuevo mientras el elemento del menú Trabajo esté desactivado. Los unit checks no se ven afectados si Rondas de inspección está desactivado. Avisos & tareas es el interruptor principal del menú Trabajo: desactivado, todos los demás elementos también se desactivan."
+                    "text": "Solo los administradores deciden qué partes aparecen bajo Trabajo en el menú.<br><br>Así el menú se mantiene claro y solo muestra las funciones que usa su organización.<br><br>Active o desactive lo que necesite y después haga clic en Confirmar.<br><br>Estos son los ajustes disponibles:<br>• Avisos & tareas: es el interruptor principal de avisos y tareas. Si lo desactiva, los avisos y las tareas desaparecen del menú, de la pantalla de inicio y del portal de los ejecutores. Los otros interruptores de abajo dejan de estar disponibles.<br>• Rondas de inspección: activa o desactiva la lista y la planificación de las rondas de inspección. Los unit checks siguen disponibles por separado.<br>• Checklists: decide si quiere usar las plantillas de checklist en el backoffice. Los unit checks siguen disponibles por separado.<br>• Unit checks: gestiona los resultados de los unit checks y los controles por código QR. Si desactiva esta función, también se detienen los unit checks por código QR en las unidades donde estaba activada.<br>• Calendario: activa el calendario para tareas, avisos y reservas.<br>• Reservas: activa o desactiva la gestión de reservas en WinProx. Las reservas que ya estaban disponibles en unidades existentes siguen funcionando por código QR. No se pueden activar reservas nuevas en una unidad mientras este ajuste esté desactivado.<br>• Mediciones de unidad: gestiona los campos de medición y el historial de mediciones. Las mediciones por código QR siguen en las unidades donde ya estaban activadas. No se pueden activar mediciones nuevas mientras este ajuste esté desactivado."
+                },
+                {
+                    "label": "Clientes en ubicación",
+                    "text": "Solo los administradores pueden configurar esta función.<br><br>¿Su organización trabaja en casa del cliente, por ejemplo con equipos de limpieza o de obra? Active entonces Trabaja con clientes en ubicación.<br><br>Para organizaciones que solo trabajan en sus propias sedes, como una guardería o una oficina, deje este ajuste desactivado.<br><br>• Activado: Clientes aparece en el menú. Después puede vincular sus ubicaciones a clientes.<br>• Desactivado: el apartado desaparece del menú. Los datos de clientes ya creados se conservan.<br><br>Haga clic en Guardar para conservar su elección."
                 },
                 {
                     "label": "Seguridad del fichaje",
-                    "text": "Solo con Time: PIN, biometría (clave de acceso), GPS al fichar, visitas GPS en Clock Point y, opcionalmente, fichar desde la barra lateral para colegas con un equipo de fichaje (desactivado por defecto). La tarjeta Cuadrante está bajo Seguridad del fichaje (activada por defecto). Desactivada apaga la planificación; el acceso por QR, las tareas y el reloj siguen, y los turnos existentes se conservan."
+                    "text": "Esta parte solo aparece cuando Time está activo.<br><br>Aquí decide cómo se identifican los ejecutores y cómo se protege el fichaje.<br><br>Cada ejecutor ficha con su propio móvil. Otro dispositivo se rechaza hasta que usted o un jefe de equipo permita ese dispositivo nuevo.<br><br>La mayoría de las opciones de seguridad están desactivadas por defecto. Active solo lo que su organización necesita."
                 },
                 {
-                    "label": "Lista de evacuación",
+                    "label": "Ajustes generales",
+                    "nested": true,
+                    "text": "• Fichar desde el back office: los administradores y empleados que pertenecen a un equipo de fichaje pueden fichar ellos mismos desde la barra lateral. Se identifican con su correo y su contraseña.<br>• Permitir trabajadores externos: puede indicar que un ejecutor es una persona externa. También puede rellenar el nombre de la empresa.<br>• Cuadrante del equipo visible para ejecutores: este ajuste solo aparece cuando el cuadrante está activo. Los ejecutores pueden ver entonces en el móvil el cuadrante de los compañeros de sus ubicaciones.<br>• Exigir un PIN de 4 dígitos al identificarse en Clock Point: los ejecutores deben introducir un PIN personal al identificarse en un Clock Point, en lugar de elegir solo su icono. El icono sigue valiendo para el código QR de una unidad.<br>• Inicio de sesión con huella o cara (clave de acceso): los ejecutores pueden identificarse con la seguridad de su móvil, por ejemplo la huella o el reconocimiento facial. Identificarse con PIN o icono sigue siendo posible.<br>• Lista de evacuación en Clock Point: después de identificarse, los ejecutores acceden a la lista de evacuación. Antes de abrirla, deben confirmar que se trata de una consulta excepcional. Cada consulta queda registrada."
+                },
+                {
+                    "label": "Trabajo en ubicación (GPS)",
+                    "nested": true,
+                    "text": "¿Su organización trabaja en clientes de distintas ubicaciones? Entonces puede configurar aquí el control GPS.<br><br>Estos ajustes no hacen falta cuando todo el mundo ficha en un reloj fijo del mismo edificio.<br><br>• Pedir GPS al fichar entrada o salida: al fichar la entrada, el móvil debe enviar una ubicación. Si no lo consigue, el ejecutor no puede fichar la entrada. La salida sigue siendo posible.<br>• Visitas GPS (iniciar/detener trabajo en el pin de sede o unidad): los ejecutores pueden iniciar y detener su visita de trabajo en un cliente. El móvil debe estar dentro de la distancia configurada respecto a la dirección de trabajo.<br>• Radio (metros): lo cerca que debe estar el ejecutor de la dirección de trabajo. El valor predeterminado es 50 metros.<br><br>Haga clic en Guardar seguridad del fichaje para conservar los cambios."
+                },
+                {
+                    "label": "Cuadrante",
                     "requires_facility": true,
-                    "text": "Desactivada por defecto; actívela aquí si los ejecutores pueden ver quién está fichado tras identificarse (cada consulta se registra)."
+                    "text": "Este ajuste está en un apartado aparte, bajo Seguridad del fichaje.<br><br>Desactive Usar el cuadrante si su organización no planifica en WinProx.<br><br>Entonces desaparecen del menú:<br>• Horario.<br>• Tipos de turno.<br>• Festivos.<br>• Dotación mínima.<br>• Solicitudes.<br><br>Conviene saberlo: las demás funciones siguen funcionando. Identificarse por QR, las tareas y el fichaje siguen disponibles. Los turnos ya creados no se eliminan. Se conservan.<br><br>Haga clic en Guardar para confirmar su elección."
                 },
                 {
-                    "label": "Estilo WinProx",
-                    "text": "Elija cómo se ve WinProx para usted en administración: Estándar u Oscuro. Su elección se aplica en todos los dispositivos donde haya iniciado sesión. Al final de la página, justo antes de la sección de exportación."
+                    "label": "Personalizar el estilo WinProx",
+                    "text": "Aquí decide cómo se ve WinProx cuando trabaja en el Backoffice.<br><br>Su elección vale en todos los dispositivos en los que haya iniciado sesión y se aplica al momento.<br><br>Puede elegir entre tres estilos:<br>• Moderno: el estilo predeterminado, con barra de menú oscura y tarjetas de aspecto de cristal.<br>• Estándar: una vista clara y tranquila, sin foto de fondo.<br>• Oscuro: una vista completamente oscura.<br><br>Como administrador también puede ajustar debajo el fondo y los colores del portal."
+                },
+                {
+                    "label": "Fondo",
+                    "nested": true,
+                    "text": "En Aplicar a elige dónde quiere usar la imagen.<br><br>Hay dos posibilidades:<br>• Fondo del portal: el fondo que ve alguien después de escanear un código QR. No es el fondo de la etiqueta QR.<br>• Fondo del backoffice: la imagen detrás de la pantalla de gestión. Se ve en el estilo Moderno.<br><br>Puede elegir un fondo predeterminado o subir su propia imagen.<br><br>Su elección se guarda al momento. Si sube una imagen propia, sustituye al fondo predeterminado.<br><br>Con el botón de eliminar vuelve al fondo predeterminado."
+                },
+                {
+                    "label": "Colores del portal",
+                    "nested": true,
+                    "text": "Aquí elige el color de fondo y el color de los botones del portal de avisos.<br><br>A la derecha ve un ejemplo de cómo se ve la pantalla para quien escanea un código QR y quiere enviar un aviso.<br><br>Estos colores no cambian el aspecto del Backoffice.<br><br>Haga clic en Guardar para conservar su elección de colores."
+                },
+                {
+                    "label": "Hoja de impresión QR",
+                    "requires_facility": true,
+                    "text": "Aquí decide cómo se ven las etiquetas QR y las hojas de impresión de su organización.<br><br>Puede adaptar el diseño y después descargar hojas por ubicación.<br><br>Haga clic en Guardar para conservar el texto, el logotipo y la dirección. Un fondo propio se guarda al momento."
+                },
+                {
+                    "label": "Texto de la etiqueta",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "En la parte superior de la etiqueta puede poner un texto propio de 120 caracteres como máximo.<br><br>¿Deja el campo vacío? Entonces WinProx usa automáticamente el nombre de la ubicación y de la unidad.<br><br>Bajo el código QR aparece siempre el número único de la etiqueta."
+                },
+                {
+                    "label": "Logotipo y dirección",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "Usted decide dónde aparecen el logotipo de la organización y la dirección en la etiqueta.<br><br>Para ambos puede elegir entre cuatro esquinas:<br>• Abajo a la derecha.<br>• Abajo a la izquierda.<br>• Arriba a la derecha.<br>• Arriba a la izquierda.<br><br>También puede elegir No mostrar si prefiere omitir el logotipo o la dirección.<br><br>El logotipo del centro del código QR permanece siempre. Aquí no puede moverlo."
+                },
+                {
+                    "label": "Fondo",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "Puede usar un fondo predeterminado o subir su propia imagen.<br><br>Un fondo propio debe ser un archivo PNG o JPG de 4 MB como máximo.<br><br>Sin imagen propia, WinProx usa el diseño predeterminado.<br><br>¿Quiere volver al diseño predeterminado? Haga clic en Eliminar fondo propio."
+                },
+                {
+                    "label": "Vista previa",
+                    "nested": true,
+                    "requires_facility": true,
+                    "text": "A la derecha ve una vista previa de una etiqueta con los ajustes elegidos.<br><br>Cuando abre una hoja desde una ubicación, se usan los códigos QR y los números de etiqueta reales de esa ubicación.<br><br>Así ve de antemano cómo quedarán sus etiquetas."
                 },
                 {
                     "label": "Presencia ONSS (CIAO)",
-                    "text": "Esta sección está abajo, encima de Privacidad. En gris por defecto: CIAO es excepcional y no se activa aquí. Solicítelo en <strong>info@winprox.app</strong>; un superusuario lo activa después. Luego solo indica el <strong>número de empresa (CBE)</strong>. WinProx gestiona el enlace técnico con la ONSS."
+                    "text": "Esta parte está al final de la configuración, justo encima de Privacidad. Está plegada por defecto.<br><br>No puede activar CIAO usted mismo.<br><br>¿Quiere usar la comunicación de presencia a la ONSS? Solicite la activación en info@winprox.app.<br><br>WinProx activa después la función para su organización."
+                },
+                {
+                    "label": "Configurar CIAO",
+                    "nested": true,
+                    "text": "Después de la activación, rellene su número de empresa (CBE).<br><br>¿Su organización no tiene un número de empresa belga? Entonces rellene el número de IVA extranjero.<br><br>Si aparece el campo Régimen, elija el régimen que corresponda:<br>• Limpieza (CIAO).<br>• Construcción / hormigón (CIAO).<br><br>Haga clic en Guardar ajustes CIAO para conservar sus datos.<br><br>Con Todos los envíos CIAO abre el resumen de las comunicaciones de presencia enviadas a la ONSS."
                 },
                 {
                     "label": "Privacidad y exportación de datos",
-                    "text": "Solo el administrador puede descargar un resumen legible por máquina (JSON) de la cuenta y la actividad relevante dentro de su entorno. Esta sección aparece en Configuración solo para administradores. El archivo puede contener datos sensibles — guárdelo de forma segura."
+                    "text": "Esta parte solo está disponible para administradores.<br><br>Con Descargar exportación de datos descarga un archivo con los datos de su organización y la actividad relevante en WinProx.<br><br>La exportación también puede contener información sensible.<br><br>Guarde el archivo en un lugar seguro y compártalo solo con personas que puedan acceder a estos datos."
                 }
             ]
         },
