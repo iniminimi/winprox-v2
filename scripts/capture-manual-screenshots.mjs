@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { existsSync, mkdirSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -26,17 +26,11 @@ const checkmatePassword = process.env.MANUAL_CAPTURE_CHECKMATE_PASSWORD ?? '';
 const onlyPrefix = process.env.MANUAL_CAPTURE_ONLY ?? '';
 const outputDir = process.env.MANUAL_CAPTURE_OUTPUT_DIR ?? join(process.cwd(), 'public/images/manual');
 const configPath = process.env.MANUAL_CAPTURE_CONFIG_PATH ?? join(__dirname, 'manual-capture.config.json');
-// Locale-detectie: echte taalmappen bevatten direct *.json; geneste varianten
-// (bv. lang/markets/nl) zijn geen locales en mogen geen manual-shots krijgen.
+// Alleen de backoffice-talen uit config/locales.php (supported).
+// Portaal-extra (pt, ro, pl) heeft wel JSON, maar geen handleiding.
 const locales = process.env.MANUAL_CAPTURE_LOCALES
     ? process.env.MANUAL_CAPTURE_LOCALES.split(',').map((l) => l.trim()).filter(Boolean)
-    : readdirSync(join(process.cwd(), 'lang'))
-        .filter((e) => {
-            const dir = join(process.cwd(), 'lang', e);
-            return statSync(dir).isDirectory()
-                && readdirSync(dir).some((f) => f.endsWith('.json'));
-        })
-        .sort();
+    : supportedManualLocales();
 
 const pathVars = {
     location_id: process.env.MANUAL_CAPTURE_LOCATION_ID ?? '',
@@ -331,6 +325,18 @@ try {
  *
  * @returns {import('playwright').LaunchOptions}
  */
+function supportedManualLocales() {
+    const php = readFileSync(join(process.cwd(), 'config/locales.php'), 'utf8');
+    const block = php.match(/'supported'\s*=>\s*\[([^\]]*)\]/);
+    const codes = block ? [...block[1].matchAll(/'([a-z]{2})'/g)].map((match) => match[1]) : [];
+    if (codes.length === 0) {
+        console.error('Geen supported-talen in config/locales.php.');
+        process.exit(1);
+    }
+
+    return codes;
+}
+
 function resolveChromiumLaunchOptions() {
     const browsersPath = process.env.PLAYWRIGHT_BROWSERS_PATH ?? '';
     const lowResource = process.env.MANUAL_CAPTURE_CHROME_LOW_RESOURCE === '1';
