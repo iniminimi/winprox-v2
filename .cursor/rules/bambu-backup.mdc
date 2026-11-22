@@ -1,0 +1,36 @@
+---
+description: Backup vóór elke wijziging aan een 3D-bestand in C:\werkmap\Bambu
+alwaysApply: true
+---
+
+# Backup van 3D-bestanden
+
+Vóór je een bestand onder `C:\werkmap\Bambu` wijzigt of overschrijft, kopieer
+het eerst naar `C:\werkmap\Bambu\Backup`. Niet achteraf.
+
+## Wat
+
+Niet alleen de `.py`. Die is de bron, maar één script schrijft in dezelfde run
+ook de printbestanden. Zonder die kopie is een goede STL weg, ook als de oude
+`.py` er nog is.
+
+Kopieer elk bestand dat deze wijziging zal overschrijven:
+
+- de bron die je bewerkt (`.py`)
+- elke uitvoer die vervangen wordt (`.stl`, `.step`, `.3mf`)
+
+Een `.3mf` hoort erbij zodra dat project zelf wijzigt: laaghoogte en wanden
+staan niet in de Python.
+
+Niet kopiëren: `__pycache__`, de map `Backup` zelf, en voorbeeldfoto's die je
+niet vervangt.
+
+## Waar
+
+`C:\werkmap\Bambu\Backup\<relatief pad>\<jjjjmmdd-uummss>_<bestandsnaam>`
+
+Voorbeeld:
+
+`Backup\Seeed_D1_box\20261122-1112_Seeed D1 enclosure.py`
+
+De werkbestanden blijven op hun plaats. De backup is alleen om terug te zetten.
