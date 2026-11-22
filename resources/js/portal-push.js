@@ -5,6 +5,7 @@
  */
 
 const LEGACY_DECIDED_KEY = 'wp-push-decided';
+const DECLINED_KEY = 'wp-push-declined';
 
 let synced = false;
 
@@ -41,6 +42,27 @@ function clearLegacyDecided() {
     } catch {
         // Private mode.
     }
+}
+
+function readDeclined() {
+    try {
+        return window.localStorage.getItem(DECLINED_KEY) === '1';
+    } catch {
+        return false;
+    }
+}
+
+function writeDeclined(on) {
+    try {
+        if (on) {
+            window.localStorage.setItem(DECLINED_KEY, '1');
+        } else {
+            window.localStorage.removeItem(DECLINED_KEY);
+        }
+    } catch {
+        // Private mode.
+    }
+    document.documentElement.classList.toggle('wp-push-declined', on);
 }
 
 function setPushState(state) {
@@ -137,6 +159,7 @@ async function subscribe(root) {
         });
     }
     await storeSubscription(root, subscription);
+    writeDeclined(false);
     setPushState('ready');
     closeBlockedHelp();
 }
@@ -173,13 +196,19 @@ document.addEventListener('click', (event) => {
         return;
     }
 
+    if (target.closest('[data-wp-push-decline]')) {
+        writeDeclined(true);
+        closeBlockedHelp();
+        return;
+    }
+
     if (target.closest('[data-wp-push-blocked]')) {
         openBlockedHelp();
         return;
     }
 
     const button = target.closest('[data-wp-push-enable]');
-    const root = button?.closest('[data-wp-push]');
+    const root = button?.closest('[data-wp-push]') || pushRoot();
     if (!button || !root || !canAsk()) {
         return;
     }
@@ -228,6 +257,7 @@ window.addEventListener('focus', () => {
 });
 
 clearLegacyDecided();
+writeDeclined(readDeclined());
 syncStandaloneClass();
 ['standalone', 'fullscreen', 'minimal-ui'].forEach((mode) => {
     window.matchMedia(`(display-mode: ${mode})`).addEventListener('change', refreshPush);

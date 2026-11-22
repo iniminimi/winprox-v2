@@ -80,10 +80,13 @@
                             <p class="wp-muted">{{ __('time.portal.homescreen.help_push_examples') }}</p>
                             <p class="wp-muted wp-homescreen-help__ios">{{ __('time.portal.homescreen.help_push_ios') }}</p>
                         </div>
-                        <button type="button" class="wp-portal-push-card__btn" data-wp-push-enable>
+                        <button type="button" class="btn btn--primary btn--block" data-wp-push-enable>
                             {{ __('time.portal.push.enable') }}
                         </button>
-                        <button type="button" class="wp-portal-push-card__btn" data-wp-push-blocked>
+                        <button type="button" class="btn btn--ghost btn--block" data-wp-push-decline>
+                            {{ __('time.portal.push.decline') }}
+                        </button>
+                        <button type="button" class="btn btn--surface btn--block" data-wp-push-blocked>
                             {{ __('time.portal.push.blocked') }}
                         </button>
                         <div
@@ -1122,6 +1125,13 @@
                                     <span class="wp-tile-title">{{ __('time.roster.tile') }}</span>
                                 </span>
                                 <span class="wp-tile-sub">{{ __('time.roster.tile_sub') }}</span>
+                            </button>
+                        </div>
+                    @endif
+                    @if (($pushPublicKey ?? '') !== '')
+                        <div class="wp-portal-push-quiet">
+                            <button type="button" class="btn btn--primary btn--block" data-wp-push-enable>
+                                {{ __('time.portal.push.enable') }}
                             </button>
                         </div>
                     @endif

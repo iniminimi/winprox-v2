@@ -104,6 +104,8 @@ it('toont het startscherm-icoon ook na aanmelden', function () {
         ->call('signInWithIcon')
         ->assertSeeHtml('data-wp-homescreen-install')
         ->assertSee(__('time.portal.homescreen.help_push_title'), false)
+        ->assertSee(__('time.portal.push.decline'), false)
+        ->assertSeeHtml('wp-portal-push-quiet')
         ->assertDontSeeHtml('data-wp-homescreen-stale')
         ->assertDontSeeHtml('<h1 class="wp-page-title">'.e(__('time.portal.title')).'</h1>');
 });

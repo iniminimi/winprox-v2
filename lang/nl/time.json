@@ -636,6 +636,7 @@
         },
         "push": {
             "enable": "Pushmeldingen aanzetten",
+            "decline": "Geen Pushmeldingen",
             "blocked": "Meldingen staan uit",
             "blocked_title": "Meldingen staan uit op deze gsm",
             "blocked_intro": "WinProx mag geen meldingen sturen. Zet ze eerst aan in de instellingen van je telefoon. Tik daarna op Opnieuw controleren.",

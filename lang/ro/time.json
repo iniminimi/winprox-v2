@@ -263,6 +263,7 @@
         },
         "push": {
             "enable": "Activați notificările push",
+            "decline": "Fără notificări push",
             "blocked": "Notificările sunt oprite",
             "blocked_title": "Notificările sunt oprite pe acest telefon",
             "blocked_intro": "WinProx nu poate trimite notificări. Activați-le în setările telefonului, apoi apăsați Verifică din nou.",

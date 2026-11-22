@@ -263,6 +263,7 @@
         },
         "push": {
             "enable": "Włącz powiadomienia push",
+            "decline": "Bez powiadomień push",
             "blocked": "Powiadomienia wyłączone",
             "blocked_title": "Powiadomienia są wyłączone na tym telefonie",
             "blocked_intro": "WinProx nie może wysyłać powiadomień. Włącz je w ustawieniach telefonu, a potem stuknij Sprawdź ponownie.",

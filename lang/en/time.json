@@ -636,6 +636,7 @@
         },
         "push": {
             "enable": "Turn on push notifications",
+            "decline": "No push notifications",
             "blocked": "Notifications are off",
             "blocked_title": "Notifications are off on this phone",
             "blocked_intro": "WinProx is not allowed to send notifications. Turn them on in your phone settings, then tap Check again.",

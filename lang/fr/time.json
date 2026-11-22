@@ -636,6 +636,7 @@
         },
         "push": {
             "enable": "Activer les notifications push",
+            "decline": "Pas de notifications push",
             "blocked": "Notifications désactivées",
             "blocked_title": "Les notifications sont désactivées sur ce téléphone",
             "blocked_intro": "WinProx n’a pas l’autorisation d’envoyer des notifications. Activez-les dans les réglages du téléphone, puis touchez Vérifier à nouveau.",

@@ -263,6 +263,7 @@
         },
         "push": {
             "enable": "Ativar notificações push",
+            "decline": "Sem notificações push",
             "blocked": "Avisos desativados",
             "blocked_title": "Os avisos estão desativados neste telemóvel",
             "blocked_intro": "O WinProx não pode enviar avisos. Ative-os nas definições do telemóvel e depois toque em Verificar de novo.",

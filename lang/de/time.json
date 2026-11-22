@@ -636,6 +636,7 @@
         },
         "push": {
             "enable": "Push-Mitteilungen einschalten",
+            "decline": "Keine Push-Mitteilungen",
             "blocked": "Mitteilungen sind aus",
             "blocked_title": "Mitteilungen sind auf diesem Telefon aus",
             "blocked_intro": "WinProx darf keine Mitteilungen senden. Schalten Sie sie in den Telefoneinstellungen ein und tippen Sie danach auf Erneut prüfen.",

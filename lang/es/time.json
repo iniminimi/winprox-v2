@@ -636,6 +636,7 @@
         },
         "push": {
             "enable": "Activar avisos push",
+            "decline": "Sin avisos push",
             "blocked": "Avisos desactivados",
             "blocked_title": "Los avisos están desactivados en este teléfono",
             "blocked_intro": "WinProx no puede enviar avisos. Actívelos en los ajustes del teléfono y luego pulse Comprobar de nuevo.",

@@ -3866,19 +3866,25 @@ a.wp-pagination__page:active:not(.is-active) {
 }
 
 [data-wp-push-enable],
-[data-wp-push-blocked] {
+[data-wp-push-blocked],
+[data-wp-push-decline] {
     display: none !important;
 }
 
-html.wp-pwa-standalone.wp-push-offer:not(.wp-push-asking):not(.wp-push-ready) [data-wp-push-enable] {
-    display: inline-flex !important;
-}
-
+html.wp-pwa-standalone.wp-push-offer:not(.wp-push-asking):not(.wp-push-ready):not(.wp-push-declined) .wp-portal-push-card [data-wp-push-enable],
 html.wp-pwa-standalone.wp-push-blocked:not(.wp-push-ready) [data-wp-push-blocked] {
     display: inline-flex !important;
 }
 
-html.wp-pwa-standalone.wp-push-offer:not(.wp-push-asking):not(.wp-push-ready) .wp-portal-push-card [data-wp-push-enable],
+html.wp-pwa-standalone.wp-push-offer:not(.wp-push-asking):not(.wp-push-ready):not(.wp-push-declined) [data-wp-push-decline] {
+    display: flex !important;
+}
+
+html.wp-pwa-standalone.wp-push-declined.wp-push-offer:not(.wp-push-asking):not(.wp-push-ready) .wp-portal-push-quiet [data-wp-push-enable] {
+    display: flex !important;
+}
+
+html.wp-pwa-standalone.wp-push-offer:not(.wp-push-asking):not(.wp-push-ready):not(.wp-push-declined) .wp-portal-push-card [data-wp-push-enable],
 html.wp-pwa-standalone.wp-push-blocked:not(.wp-push-ready) .wp-portal-push-card [data-wp-push-blocked] {
     display: flex !important;
 }
@@ -8823,8 +8829,17 @@ a.wp-worker-hours-link:focus-visible {
     display: none;
 }
 
-html.wp-pwa-standalone.wp-push-offer:not(.wp-push-asking):not(.wp-push-ready) .wp-portal-push-card,
+html.wp-pwa-standalone.wp-push-offer:not(.wp-push-asking):not(.wp-push-ready):not(.wp-push-declined) .wp-portal-push-card,
 html.wp-pwa-standalone.wp-push-blocked:not(.wp-push-ready) .wp-portal-push-card {
+    display: block;
+}
+
+.wp-portal-push-quiet {
+    display: none;
+    margin-top: 0.75rem;
+}
+
+html.wp-pwa-standalone.wp-push-declined.wp-push-offer:not(.wp-push-asking):not(.wp-push-ready) .wp-portal-push-quiet {
     display: block;
 }
 
@@ -8858,25 +8873,6 @@ html.wp-homescreen-android .wp-homescreen-help__ios {
 
 .wp-homescreen-stale[hidden] {
     display: none;
-}
-
-.wp-portal-push-card__btn {
-    display: none;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-    border: 0;
-    background: none;
-    box-shadow: none;
-    color: var(--wp-text);
-    font: inherit;
-    font-size: 0.9375rem;
-    font-weight: 600;
-    line-height: 1.3;
-    text-align: center;
-    white-space: nowrap;
-    cursor: pointer;
 }
 
 .wp-homescreen-shortcut-wrap {
