@@ -182,6 +182,9 @@ try {
                 }
             }
 
+            let finished = false;
+            for (let attempt = 1; attempt <= 2 && !finished; attempt++) {
+            try {
             await page.goto(captureUrl(navigationPath, locale, useAuth), { waitUntil: 'networkidle' });
 
             if (target.workerSignIn) {
@@ -192,7 +195,8 @@ try {
                 if (signInPath === null) {
                     console.warn(`Skip ${target.id}: unresolved worker sign-in path`);
                     skipped++;
-                    continue;
+                    finished = true;
+                    break;
                 }
 
                 if (signInPath !== resolvedPath) {
@@ -203,7 +207,8 @@ try {
                 if (!signedIn) {
                     console.warn(`Skip ${target.id}: worker sign-in failed (check MANUAL_CAPTURE_${useCheckmate ? 'CHECKMATE_' : ''}WORKER_* and team token)`);
                     skipped++;
-                    continue;
+                    finished = true;
+                    break;
                 }
 
                 if (signInPath !== resolvedPath) {
@@ -229,7 +234,8 @@ try {
                         `Skip ${target.id}: prepareClick not visible (${target.prepareClick}). ${hint}`,
                     );
                     skipped++;
-                    continue;
+                    finished = true;
+                    break;
                 }
             }
 
@@ -241,7 +247,8 @@ try {
                         await runSteps(page, target.cleanup, { ignoreErrors: true });
                     }
                     skipped++;
-                    continue;
+                    finished = true;
+                    break;
                 }
             }
 
@@ -270,7 +277,8 @@ try {
                         `Skip ${target.id}: selector not visible (${target.selector}) op ${currentUrl}. ${hint}`,
                     );
                     skipped++;
-                    continue;
+                    finished = true;
+                    break;
                 }
 
                 if (currentPath.includes('/subscription')) {
@@ -297,6 +305,16 @@ try {
             if (Array.isArray(target.cleanup)) {
                 // Best-effort: cleanup-falen mag de capture niet breken.
                 await runSteps(page, target.cleanup, { ignoreErrors: true });
+            }
+            finished = true;
+            } catch (error) {
+                if (attempt === 2) {
+                    throw error;
+                }
+                console.warn(
+                    'Opnieuw ' + locale + '/' + target.id + ': ' + (error instanceof Error ? error.message : String(error)),
+                );
+            }
             }
         }
     }
@@ -450,8 +468,20 @@ function captureUrl(path, locale, useAuth) {
  * @param {string} outputPath
  */
 async function captureElementScreenshot(page, locator, viewport, outputPath) {
-    const box = await locator.boundingBox();
-    if (box !== null) {
+    // boundingBox() wacht tot het element "stabiel" is. Een Livewire-morph
+    // (modal die even loskomt) laat dat 30s hangen en breekt de hele run.
+    let box = null;
+    try {
+        box = await locator.evaluate((el) => {
+            const rect = el.getBoundingClientRect();
+
+            return { y: rect.top + window.scrollY, height: rect.height };
+        }, null, { timeout: 8_000 });
+    } catch {
+        box = null;
+    }
+
+    if (box !== null && box.height > 0) {
         const needed = Math.ceil(box.y + box.height) + 8;
         const vp = page.viewportSize() ?? viewport;
         if (needed > vp.height) {
@@ -460,19 +490,21 @@ async function captureElementScreenshot(page, locator, viewport, outputPath) {
     }
 
     await page.addStyleTag({ content: '.wp-help { display: none !important; }' });
-    await locator.screenshot({ path: outputPath });
+    await locator.screenshot({ path: outputPath, animations: 'disabled', timeout: 15_000 });
 }
 
 /**
  * Sequentiële UI-stappen vóór (steps) of na (cleanup) de screenshot.
- * Elke stap is een CSS-selector of { click, waitFor }.
+ * Elke stap is een CSS-selector of { click, waitFor, skipWhen }.
  * Met { click, optional: true } wordt de stap overgeslagen als het element
  * niet zichtbaar is — voor state-afhankelijke cleanup (bv. disclosure die
- * al open kan staan). { reload: true } herlaadt de pagina — nodig vóór een
- * tweede prik (in/uit), want ClockPointScanGrant staat één prik per QR-scan toe.
+ * al open kan staan). { skipWhen } slaat de klik over als die selector al
+ * zichtbaar is (bv. al ingeklokt). { reload: true } herlaadt de pagina —
+ * nodig vóór een tweede prik (in/uit), want ClockPointScanGrant staat één
+ * prik per QR-scan toe.
  *
  * @param {import('playwright').Page} page
- * @param {Array<string|{click?: string, waitFor?: string, optional?: boolean, reload?: boolean}>} steps
+ * @param {Array<string|{click?: string, waitFor?: string, skipWhen?: string, optional?: boolean, reload?: boolean}>} steps
  * @param {{ ignoreErrors?: boolean }} [options]
  */
 async function runSteps(page, steps, options = {}) {
@@ -484,7 +516,15 @@ async function runSteps(page, steps, options = {}) {
 
         const click = typeof step === 'string' ? step : step.click;
         const waitFor = typeof step === 'string' ? null : (step.waitFor ?? null);
+        const skipWhen = typeof step === 'object' ? (step.skipWhen ?? null) : null;
         const optional = typeof step === 'object' && step.optional === true;
+
+        if (skipWhen !== null) {
+            const already = await page.locator(skipWhen).first().isVisible().catch(() => false);
+            if (already) {
+                continue;
+            }
+        }
 
         try {
             const trigger = page.locator(click).first();

@@ -432,8 +432,8 @@
             "geolocation": true,
             "optional": true,
             "steps": [
-                { "click": "[data-manual-capture-trigger=\"portal-primary-action\"]", "waitFor": "[data-manual-capture-trigger=\"portal-find-nearby\"]" },
-                { "click": "[data-manual-capture-trigger=\"portal-find-nearby\"]", "waitFor": "[data-manual-capture=\"time-today\"] .wp-btn--prio-pulse" }
+                { "click": "[data-manual-capture-trigger=\"portal-primary-action\"]", "waitFor": "[data-manual-capture-trigger=\"portal-find-nearby\"], [data-manual-capture=\"time-today\"] .wp-btn--prio-pulse", "skipWhen": "[data-manual-capture=\"time-today\"]" },
+                { "click": "[data-manual-capture-trigger=\"portal-find-nearby\"]", "waitFor": "[data-manual-capture=\"time-today\"] .wp-btn--prio-pulse", "skipWhen": "[data-manual-capture=\"time-today\"] .wp-btn--prio-pulse" }
             ],
             "cleanup": [
                 { "reload": true },

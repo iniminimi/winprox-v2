@@ -115,7 +115,7 @@
                     x-show="direct || left > 0"
                     x-cloak
                     @click="withGps('{{ $action['method'] }}')"
-                    data-manual-capture-trigger="portal-primary-action"
+                    data-manual-capture-trigger="{{ $action['method'] === 'clockOut' ? 'portal-clock-out' : 'portal-primary-action' }}"
                 >{{ $action['label'] }}</button>
                 <div
                     x-show="!direct && left <= 0"

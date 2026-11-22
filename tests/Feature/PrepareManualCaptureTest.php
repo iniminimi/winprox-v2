@@ -1,11 +1,17 @@
 <?php
 
 use App\Actions\Manual\PrepareManualCaptureTenantAction;
+use App\Enums\WorkShiftStatus;
 use App\Models\ClockPoint;
+use App\Models\InternalTeam;
+use App\Models\Location;
 use App\Models\Tenant;
+use App\Models\Unit;
+use App\Models\UnitGpsReport;
 use App\Models\User;
 use App\Models\Worker;
 use App\Models\WorkerDevice;
+use App\Models\WorkShift;
 
 it('zet has_esg_module aan voor de capture-tenant', function () {
     $tenant = Tenant::factory()->create(['has_esg_module' => false]);
@@ -153,6 +159,68 @@ it('zet de capture-worker op teamleader en maakt een geblokkeerde collega', func
     expect($blocked)->not->toBeNull()
         ->and($blocked->field_icon_locked_at)->not->toBeNull()
         ->and($blocked->field_icon_slug)->toBe('heart');
+});
+
+it('zet een gps-pin op de eerste unit van de capture-locatie', function () {
+    $tenant = Tenant::factory()->create([
+        'has_esg_module' => true,
+        'has_iot_module' => true,
+        'has_time_module' => true,
+    ]);
+    User::factory()->admin()->for($tenant)->create(['email' => 'capture@example.com']);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $first = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Alpha',
+    ]);
+    Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Zulu',
+    ]);
+    config([
+        'manual_capture.email' => 'capture@example.com',
+        'manual_capture.location_id' => $location->id,
+    ]);
+
+    app(PrepareManualCaptureTenantAction::class)->handle();
+
+    expect(UnitGpsReport::query()->where('unit_id', $first->id)->exists())->toBeTrue()
+        ->and(UnitGpsReport::query()->where('tenant_id', $tenant->id)->count())->toBe(1);
+});
+
+it('klokt een open dienst van de capture-worker uit', function () {
+    $tenant = Tenant::factory()->create([
+        'has_esg_module' => true,
+        'has_iot_module' => true,
+        'has_time_module' => true,
+    ]);
+    User::factory()->admin()->for($tenant)->create(['email' => 'capture@example.com']);
+    $team = InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    $worker = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $team->id,
+        'first_name' => 'John',
+        'last_name' => 'Workman',
+    ]);
+    $point = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $shift = WorkShift::factory()->create([
+        'tenant_id' => $tenant->id,
+        'worker_id' => $worker->id,
+        'internal_team_id' => $team->id,
+        'clock_in_clock_point_id' => $point->id,
+        'status' => WorkShiftStatus::Open,
+    ]);
+    config([
+        'manual_capture.email' => 'capture@example.com',
+        'manual_capture.worker_first_name' => 'John',
+        'manual_capture.worker_last_name' => 'Workman',
+    ]);
+
+    app(PrepareManualCaptureTenantAction::class)->handle();
+
+    expect($shift->fresh()->status)->toBe(WorkShiftStatus::Closed);
 });
 
 it('weigert voorbereiden zonder capture-email', function () {

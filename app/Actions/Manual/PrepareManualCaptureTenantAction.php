@@ -6,11 +6,20 @@ namespace App\Actions\Manual;
 
 use App\Actions\TenantPurge\CancelOpenExpiredTrialPurgesForTenantAction;
 use App\Actions\Time\ClearWorkerClockDeviceAction;
+use App\Actions\Time\ClockOutAction;
 use App\Actions\Time\EnsureDefaultClockPointAction;
+use App\Actions\Time\FindOpenWorkShiftForWorkerAction;
+use App\Actions\Units\RecordUnitGpsReportAction;
+use App\Data\Units\RecordUnitGpsReportData;
+use App\Enums\ClockSource;
 use App\Models\ClockPoint;
+use App\Models\Location;
 use App\Models\Tenant;
+use App\Models\Unit;
+use App\Models\UnitGpsReport;
 use App\Models\User;
 use App\Models\Worker;
+use Carbon\CarbonImmutable;
 use InvalidArgumentException;
 
 final class PrepareManualCaptureTenantAction
@@ -98,7 +107,66 @@ final class PrepareManualCaptureTenantAction
 
         $this->prepareCaptureWorker($tenant, $user, $checkmate);
 
+        if (! $checkmate) {
+            $this->ensureCaptureLocationGpsPin($tenant, $user);
+        }
+
         return $tenant->refresh();
+    }
+
+    /**
+     * De locatiepagina toont 20 units op naam. Zonder pin op die eerste
+     * pagina slaat de capture `locations-gps-history` over.
+     */
+    private function ensureCaptureLocationGpsPin(Tenant $tenant, User $user): void
+    {
+        $locationId = (int) config('manual_capture.location_id');
+        if ($locationId <= 0) {
+            return;
+        }
+
+        $location = Location::query()
+            ->where('tenant_id', $tenant->id)
+            ->find($locationId);
+
+        if ($location === null) {
+            return;
+        }
+
+        $firstPageIds = Unit::query()
+            ->where('tenant_id', $tenant->id)
+            ->where('location_id', $location->id)
+            ->orderBy('name')
+            ->limit(20)
+            ->pluck('id');
+
+        if ($firstPageIds->isEmpty()) {
+            return;
+        }
+
+        $hasPin = UnitGpsReport::query()
+            ->where('tenant_id', $tenant->id)
+            ->whereIn('unit_id', $firstPageIds)
+            ->exists();
+
+        if ($hasPin) {
+            return;
+        }
+
+        $unit = Unit::query()->find($firstPageIds->first());
+        if ($unit === null) {
+            return;
+        }
+
+        $latitude = (float) (config('manual_capture.geo_latitude') ?: 51.0289);
+        $longitude = (float) (config('manual_capture.geo_longitude') ?: 4.4803);
+
+        app(RecordUnitGpsReportAction::class)->handle(
+            $unit,
+            new RecordUnitGpsReportData($latitude, $longitude, CarbonImmutable::now()),
+            (int) $tenant->id,
+            (int) $user->id,
+        );
     }
 
     /**
@@ -124,6 +192,10 @@ final class PrepareManualCaptureTenantAction
         if ($worker === null) {
             return;
         }
+
+        // Een vorige capture kan de uitvoerder ingeklokt achterlaten. Het
+        // bezoek-shot klokt dan uit in plaats van in, en de volgende taal faalt.
+        $this->closeOpenCaptureShift($worker, $tenant);
 
         // De capture-browser is per run een "nieuw toestel"; Time koppelt max.
         // één gsm per uitvoerder. Zonder vrijgave weigert elke verse sessie.
@@ -181,6 +253,34 @@ final class PrepareManualCaptureTenantAction
             'is_active' => true,
             'is_teamleader' => false,
         ]);
+    }
+
+    private function closeOpenCaptureShift(Worker $worker, Tenant $tenant): void
+    {
+        if (! $tenant->hasTimeModule()) {
+            return;
+        }
+
+        $open = app(FindOpenWorkShiftForWorkerAction::class)->handle($worker);
+        if ($open === null) {
+            return;
+        }
+
+        $clockPoint = ClockPoint::query()
+            ->where('tenant_id', $tenant->id)
+            ->orderBy('sort_order')
+            ->orderBy('name')
+            ->first();
+
+        if ($clockPoint === null) {
+            return;
+        }
+
+        app(ClockOutAction::class)->handle(
+            $worker,
+            $clockPoint,
+            source: ClockSource::Backoffice,
+        );
     }
 
     public function clockPointQrToken(Tenant $tenant): ?string
