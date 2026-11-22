@@ -547,7 +547,7 @@
         },
         "absence": {
             "tile": "Congé / Absence",
-            "tile_sub": "Demander un congé, une récup, une maladie ou une autre absence",
+            "tile_sub": "Congé, récup, maladie ou autre absence",
             "title": "Congé / Absence",
             "subtitle": "Consultez vos demandes et retirez-les. La gestion approuve ou refuse.",
             "period": "Période",

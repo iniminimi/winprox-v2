@@ -547,7 +547,7 @@
         },
         "absence": {
             "tile": "Vacaciones / Ausencia",
-            "tile_sub": "Solicitar vacaciones, recup, baja u otra ausencia",
+            "tile_sub": "Vacaciones, recup, baja u otra ausencia",
             "title": "Vacaciones / Ausencia",
             "subtitle": "Vea sus solicitudes y retírelas. La gestión aprueba o rechaza.",
             "period": "Periodo",

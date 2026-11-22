@@ -547,7 +547,7 @@
         },
         "absence": {
             "tile": "Urlaub / Abwesenheit",
-            "tile_sub": "Urlaub, Ausgleich, Krankheit oder sonstige Abwesenheit beantragen",
+            "tile_sub": "Urlaub, Ausgleich, Krankheit oder sonstige Abwesenheit",
             "title": "Urlaub / Abwesenheit",
             "subtitle": "Sehen Sie Ihre Anträge und ziehen Sie sie zurück. Die Verwaltung genehmigt oder lehnt ab.",
             "period": "Zeitraum",

@@ -547,7 +547,7 @@
         },
         "absence": {
             "tile": "Verlof / Afwezigheid",
-            "tile_sub": "Verlof, recup, ziekte of andere afwezigheid aanvragen",
+            "tile_sub": "Verlof, recup, ziekte of andere afwezigheid",
             "title": "Verlof / Afwezigheid",
             "subtitle": "Bekijk je aanvragen en trek ze in. Beheer keurt goed of weigert.",
             "period": "Periode",

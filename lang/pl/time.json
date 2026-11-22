@@ -174,7 +174,7 @@
         },
         "absence": {
             "tile": "Urlop / odbiór",
-            "tile_sub": "Złóż wniosek albo wycofaj",
+            "tile_sub": "Urlop, odbiór, choroba lub inna nieobecność",
             "title": "Urlop / odbiór",
             "subtitle": "Proszę przejrzeć wnioski i je wycofać. Personel zatwierdza albo odrzuca.",
             "period": "Okres",

@@ -174,7 +174,7 @@
         },
         "absence": {
             "tile": "Férias / compensação",
-            "tile_sub": "Pedir ou retirar",
+            "tile_sub": "Férias, compensação, doença ou outra ausência",
             "title": "Férias / compensação",
             "subtitle": "Veja os pedidos e retire-os. O pessoal aprova ou recusa.",
             "period": "Período",

@@ -547,7 +547,7 @@
         },
         "absence": {
             "tile": "Leave / Absence",
-            "tile_sub": "Request leave, TOIL, sick leave or other absence",
+            "tile_sub": "Leave, TOIL, sick leave or other absence",
             "title": "Leave / Absence",
             "subtitle": "See your requests and withdraw them. Staff approve or reject.",
             "period": "Period",

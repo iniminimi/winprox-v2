@@ -547,7 +547,7 @@
         },
         "absence": {
             "tile": "Ferie / Assenza",
-            "tile_sub": "Richiedi ferie, recupero, malattia o altra assenza",
+            "tile_sub": "Ferie, recupero, malattia o altra assenza",
             "title": "Ferie / Assenza",
             "subtitle": "Vedi le tue richieste e ritirale. La gestione approva o rifiuta.",
             "period": "Periodo",

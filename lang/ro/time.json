@@ -174,7 +174,7 @@
         },
         "absence": {
             "tile": "Concediu / recuperare",
-            "tile_sub": "Cereți sau retrageți",
+            "tile_sub": "Concediu, recuperare, boală sau altă absență",
             "title": "Concediu / recuperare",
             "subtitle": "Vedeți cererile și retrageți-le. Personalul aprobă sau respinge.",
             "period": "Perioadă",
