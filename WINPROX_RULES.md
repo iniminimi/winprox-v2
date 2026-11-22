@@ -645,6 +645,8 @@ verwijder je het concept. Wijzigingen niet tot morgen verzwijgen. Een nota met e
 - Publiceren = het bestand verplaatsen naar `docs/release-notes/published/` en
   de statusregel zetten op `Status: gepubliceerd`. Daarna toont de pagina het,
   nieuwste dag bovenaan, onder Nieuw, Verbeterd, Opgelost en Belangrijk.
+  Alleen nota’s van de laatste week (vandaag en de zes dagen ervoor). Oudere
+  dagen blijven in `published/` staan, maar verschijnen niet op de pagina.
 - Dat doe je **alleen** nadat de gebruiker bevestigt dat díe wijzigingen op
   productie staan. Niet na de push, niet aan het eind van de dag, niet per mail,
   en niet door de tekst in de productfiches of de website te zetten.

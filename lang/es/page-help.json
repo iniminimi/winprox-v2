@@ -1076,7 +1076,7 @@
             "actions": [
                 {
                     "label": "Historial de versiones",
-                    "text": "Aquí ve lo que ha cambiado recientemente, el día más reciente arriba. Cada día está bajo Nuevo, Mejorado, Resuelto o Importante."
+                    "text": "Aquí ve solo lo que ha cambiado en la última semana, el día más reciente arriba. Cada día está bajo Nuevo, Mejorado, Resuelto o Importante. Los días anteriores se conservan, pero no aparecen en esta página."
                 }
             ]
         },

@@ -101,6 +101,7 @@ fouttype per uur (met het aantal herhalingen) en 10 per uur in totaal. Zie
 - **Wat is er nieuw?**: eerste tegel zolang de nieuwste gepubliceerde nota hooguit een week oud is
   en deze gebruiker Hulp → Nieuw nog niet opende. Een klik opent die pagina en haalt de tegel weg.
   Een nieuwere nota toont de tegel opnieuw, opnieuw voor een week.
+  Hulp → Nieuw toont alleen diezelfde week: vandaag en de zes dagen ervoor.
 - Extra ruimte tussen intent-sectie en **Dashboard**-kop; daaronder KPI’s, recente meldingen, briefing en starttemplate.
 
 **Starttemplate (optioneel, nieuwe organisaties)**

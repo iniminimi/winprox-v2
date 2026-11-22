@@ -37,10 +37,8 @@ it('toont de versiegeschiedenis nieuwste dag eerst en haalt de kaart weg', funct
         ->test(WhatsNew::class)
         ->assertSee(__('whats_new.title'), false)
         ->assertSee('video/assistant_new.mp4', false)
-        ->assertSeeInOrder([
-            'Bij een uitvoerder zie je hoeveel documenten en mededelingen er zijn.',
-            'Je kunt het beheer op de computer als eigen venster zetten',
-        ]);
+        ->assertSee('Bij een uitvoerder zie je hoeveel documenten en mededelingen er zijn.', false)
+        ->assertDontSee('Je kunt het beheer op de computer als eigen venster zetten', false);
 
     $user->refresh();
     expect($user->whats_new_dismissed_on?->toDateString())->toBe($latest->date->toDateString());
@@ -64,9 +62,11 @@ it('verbergt de kaart na een week en slaat een bestand zonder datum over', funct
     expect($notes->handle($dir))->toHaveCount(1);
 
     Carbon::setTestNow('2026-11-07');
+    expect($notes->recent($dir))->toHaveCount(1);
     expect($show->handle($user, null, $dir))->toBeTrue();
 
     Carbon::setTestNow('2026-11-08');
+    expect($notes->recent($dir))->toHaveCount(0);
     expect($show->handle($user, null, $dir))->toBeFalse();
 
     File::deleteDirectory($dir);

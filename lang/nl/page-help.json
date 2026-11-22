@@ -1076,7 +1076,7 @@
             "actions": [
                 {
                     "label": "Versiegeschiedenis",
-                    "text": "Hier zie je wat er recent veranderde, nieuwste dag bovenaan. Elke dag staat onder Nieuw, Verbeterd, Opgelost of Belangrijk."
+                    "text": "Hier zie je alleen wat er de laatste week veranderde, nieuwste dag bovenaan. Elke dag staat onder Nieuw, Verbeterd, Opgelost of Belangrijk. Oudere dagen blijven bewaard, maar staan niet op deze pagina."
                 }
             ]
         },

@@ -1076,7 +1076,7 @@
             "actions": [
                 {
                     "label": "Versionsverlauf",
-                    "text": "Hier sehen Sie, was sich zuletzt geändert hat, der neueste Tag oben. Jeder Tag steht unter Neu, Verbessert, Behoben oder Wichtig."
+                    "text": "Hier sehen Sie nur, was sich in der letzten Woche geändert hat, der neueste Tag oben. Jeder Tag steht unter Neu, Verbessert, Behoben oder Wichtig. Ältere Tage bleiben gespeichert, stehen aber nicht auf dieser Seite."
                 }
             ]
         },

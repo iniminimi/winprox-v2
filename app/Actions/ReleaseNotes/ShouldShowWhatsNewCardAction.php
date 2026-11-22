@@ -19,10 +19,9 @@ class ShouldShowWhatsNewCardAction
         }
 
         $zone = (string) config('app.timezone');
-        $today = ($now ?? now())->timezone($zone)->startOfDay();
         $noteDay = $latest->date->copy()->timezone($zone)->startOfDay();
 
-        if ($noteDay->lt($today->copy()->subDays(6))) {
+        if (! $this->notes->isInLastWeek($latest->date, $now)) {
             return false;
         }
 

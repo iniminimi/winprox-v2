@@ -31,7 +31,7 @@ class WhatsNew extends Component
     public function render(ListPublishedReleaseNotesAction $notes)
     {
         return view('livewire.pages.whats-new', [
-            'notes' => $notes->handle(),
+            'notes' => $notes->recent(),
         ]);
     }
 }

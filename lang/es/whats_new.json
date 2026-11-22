@@ -1,9 +1,9 @@
 {
     "title": "Novedades",
-    "subtitle": "Lo que ha cambiado recientemente en WinProx.",
+    "subtitle": "Lo que ha cambiado en WinProx en la última semana.",
     "card_title": "¿Qué hay de nuevo?",
     "card_body": "Consulte las últimas actualizaciones de WinProx.",
-    "empty": "Todavía no hay actualizaciones.",
+    "empty": "No hay actualizaciones de la última semana.",
     "categories": {
         "new": "Nuevo",
         "improved": "Mejorado",

@@ -1076,7 +1076,7 @@
             "actions": [
                 {
                     "label": "Cronologia delle versioni",
-                    "text": "Qui vedi che cosa è cambiato di recente, il giorno più recente in alto. Ogni giorno sta sotto Nuovo, Migliorato, Risolto o Importante."
+                    "text": "Qui vede solo che cosa è cambiato nell’ultima settimana, il giorno più recente in alto. Ogni giorno sta sotto Nuovo, Migliorato, Risolto o Importante. I giorni più vecchi restano conservati, ma non compaiono in questa pagina."
                 }
             ]
         },

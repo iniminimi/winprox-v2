@@ -1076,7 +1076,7 @@
             "actions": [
                 {
                     "label": "Version history",
-                    "text": "Here you see what changed recently, newest day first. Each day is grouped under New, Improved, Fixed or Important."
+                    "text": "Here you see only what changed in the last week, newest day first. Each day is grouped under New, Improved, Fixed or Important. Older days are kept, but they are not shown on this page."
                 }
             ]
         },

@@ -1080,7 +1080,7 @@
             "actions": [
                 {
                     "label": "Historique des versions",
-                    "text": "Vous voyez ici ce qui a changé récemment, le jour le plus récent en haut. Chaque jour est rangé sous Nouveau, Amélioré, Corrigé ou Important."
+                    "text": "Vous voyez ici seulement ce qui a changé au cours de la dernière semaine, le jour le plus récent en haut. Chaque jour est rangé sous Nouveau, Amélioré, Corrigé ou Important. Les jours plus anciens sont conservés, mais n’apparaissent pas sur cette page."
                 }
             ]
         },

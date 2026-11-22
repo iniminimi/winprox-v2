@@ -6,6 +6,7 @@ namespace App\Actions\ReleaseNotes;
 
 use App\Data\ReleaseNotes\ReleaseNoteData;
 use Carbon\CarbonImmutable;
+use Carbon\CarbonInterface;
 use Illuminate\Support\Facades\File;
 
 class ListPublishedReleaseNotesAction
@@ -49,6 +50,24 @@ class ListPublishedReleaseNotesAction
     public function latest(?string $directory = null): ?ReleaseNoteData
     {
         return $this->handle($directory)[0] ?? null;
+    }
+
+    /** @return list<ReleaseNoteData> */
+    public function recent(?string $directory = null, ?CarbonInterface $now = null): array
+    {
+        return array_values(array_filter(
+            $this->handle($directory),
+            fn (ReleaseNoteData $note): bool => $this->isInLastWeek($note->date, $now),
+        ));
+    }
+
+    public function isInLastWeek(CarbonInterface $date, ?CarbonInterface $now = null): bool
+    {
+        $zone = (string) config('app.timezone');
+        $today = ($now ?? now())->timezone($zone)->startOfDay();
+        $noteDay = $date->copy()->timezone($zone)->startOfDay();
+
+        return ! $noteDay->lt($today->copy()->subDays(6));
     }
 
     public function parse(string $markdown, string $date): ReleaseNoteData
