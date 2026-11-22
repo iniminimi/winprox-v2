@@ -1657,45 +1657,57 @@
             "title": "Hulp — Geklokte uren",
             "actions": [
                 {
-                    "label": "Periode en filters",
-                    "text": "De lijst opent op vandaag. Kies een van- en tot-datum en filter optioneel op team, uitvoerder of clock point. <strong>Weekends</strong> staat standaard uit: zaterdag en zondag verdwijnen. Zet het aan om ze te tonen. Druk op <strong>Toepassen</strong> om de lijst bij te werken. Bij alle uitvoerders klik je op een naam om de week van die persoon te openen."
+                    "label": "Wat vindt u hier?",
+                    "text": "Op dit scherm ziet u wanneer uw uitvoerders hebben in- en uitgeklokt, hoeveel ze gewerkt hebben en op welke locatie ze zich hebben aangemeld.<br><br>Standaard opent het scherm op vandaag. U kunt zelf een andere periode kiezen om eerdere prestaties te bekijken."
                 },
                 {
-                    "label": "Weekweergave",
-                    "text": "Kies bovenaan <strong>Week</strong>, kies een uitvoerder en druk op <strong>Toepassen</strong>. Je ziet de dagen van die week met de uren van de dag (zaterdag en zondag alleen als Weekends aan staat): elk blok is een dienst van inklokken tot uitklokken, met de pauze gearceerd en de geplande dienst als stippellijn erachter. Bovenaan staan het totaal per dag en voor de week. Blader met de pijlen; klik op een blok om te corrigeren of een open dienst te sluiten."
+                    "label": "Lijst of week?",
+                    "text": "U kunt de geklokte uren op twee manieren bekijken: Lijst of Week.<br><br>• <strong>Lijst</strong>: alle diensten onder elkaar, met de bijbehorende registraties.<br>• <strong>Week</strong>: de dagen van één uitvoerder, met de diensten op het uur.<br><br>Standaard zijn de weekends verborgen. Zet <strong>Weekends</strong> aan als u ook zaterdag en zondag wilt zien. De wijziging wordt meteen toegepast."
                 },
                 {
-                    "label": "Download rapport",
-                    "text": "Submenu CSV + Afdrukken: download de gefilterde shifts als CSV (Excel-vriendelijk) of open een afdrukbare urenstaat (Ctrl+P naar PDF). Zelfde filters als het overzicht; niet alleen de huidige pagina (max. 5000 rijen)."
+                    "label": "De lijst bekijken",
+                    "text": "Kies de gewenste periode bij <strong>Van</strong> en <strong>Tot</strong>. U kunt het overzicht verder verfijnen op <strong>Team</strong>, <strong>Medewerker</strong> of <strong>Clock Point</strong>.<br><br>Klik op <strong>Toepassen</strong> om het overzicht te vernieuwen.<br><br>Per dienst ziet u:<br><br>• De naam van de uitvoerder en het team.<br>• Het aantal gewerkte uren en de pauze.<br>• De datum en eventueel <strong>Gepland</strong>, als er voor die dag een dienst in het uurrooster staat.<br>• Alle in- en uitklokregistraties.<br>• De huidige status van de dienst.<br><br>Staat bij <strong>Medewerker</strong> de keuze <strong>Alle medewerkers</strong> geselecteerd? Dan kunt u op een naam klikken om meteen het weekoverzicht van die uitvoerder te openen, in de week waarin de dienst viel.<br><br>Onder een dienst kunnen ook bijkomende gegevens staan, zoals:<br><br>• <strong>Verplaatsingen tijdens deze dienst</strong><br>• <strong>Werkbezoeken</strong><br>• <strong>Taken tijdens deze shift</strong>"
                 },
                 {
-                    "label": "Corrigeren",
-                    "text": "Bij een gesloten shift kan een beheerder in- en uitkloktijden of pauzeminuten aanpassen met een verplichte reden. Uitklok leeg laten heropent de dienst (foutieve uitklok), tenzij die uitvoerder al een andere open dienst heeft. Wijzigingen gaan in het auditlog. Geen extra CIAO IN/OUT. Ontbreekt de teampauze, gebruik dan <strong>Minimumpauze toepassen</strong>."
+                    "label": "Het weekoverzicht bekijken",
+                    "text": "Kies <strong>Week</strong>, selecteer bij <strong>Medewerker</strong> een uitvoerder en klik op <strong>Toepassen</strong>. Hebt u nog niemand geselecteerd? Dan vraagt WinProx eerst om een uitvoerder te kiezen.<br><br>U krijgt een overzicht van alle dagen in die week, met de bijbehorende diensten.<br><br>Elk blok stelt een dienst voor, van het moment van inklokken tot het uitklokken. Een dienst die nog bezig is, loopt door tot het huidige tijdstip.<br><br>De pauze wordt gearceerd weergegeven. Staat er voor die dag ook een geplande dienst in het uurrooster? Dan ziet u die als een stippellijn achter de geklokte uren.<br><br>Bovenaan vindt u het totaal aantal uren per dag en voor de volledige week. Een volledige afwezigheidsdag, bijvoorbeeld verlof, staat bij het dagtotaal. Die uren tellen niet mee als gewerkt.<br><br>Met de pijltjes bladert u naar een andere week. Klik op <strong>Vandaag</strong> om terug te keren naar de huidige week.<br><br>Wilt u iets aanpassen? Klik dan op een dienstblok. U kunt een gesloten dienst corrigeren of een nog openstaande dienst sluiten.<br><br><strong>Goed om te weten:</strong> een nachtdienst die over middernacht loopt, wordt op beide kalenderdagen weergegeven. De gewerkte uren tellen voor het dagtotaal bij de dag waarop de uitvoerder is ingeklokt.<br><br>Ook wanneer Weekends uitgeschakeld staat, blijft een nachtdienst die op vrijdag begint en doorloopt tot zaterdag bij vrijdag meetellen."
                 },
                 {
-                    "label": "Shift sluiten",
-                    "text": "Open shifts in dit overzicht kunnen hier ook geforceerd worden gesloten, net als op Aanwezigheid. Heeft het team een minimumpauze en duurt de dienst minstens 4 uur, dan telt die op de urenstaat (geen extra CIAO-event)."
+                    "label": "De registraties bekijken",
+                    "text": "Onder <strong>Registraties</strong> vindt u alle prikmomenten van een dienst.<br><br>U ziet telkens:<br><br>• Het geregistreerde tijdstip.<br>• <strong>In</strong> of <strong>Uit</strong>.<br>• De locatie waar de uitvoerder zich heeft aangemeld.<br><br>Ook pauzes worden duidelijk weergegeven als een tijdsblok, bijvoorbeeld 12:00–12:30 Pauze. Is de pauze nog bezig? Dan loopt het tijdsblok door tot het huidige tijdstip.<br><br>Gebruikt u een Clock Point met de naam Aanmelden? Dan toont WinProx de gekoppelde vestiging. Is er geen vestiging ingesteld, dan wordt gewoon Clock Point weergegeven."
+                },
+                {
+                    "label": "Wat betekenen de statussen?",
+                    "text": "Aan de status ziet u meteen wat er met een dienst gebeurd is.<br><br>• <strong>Open</strong>: de uitvoerder is nog ingeklokt.<br>• <strong>Gesloten</strong>: de uitvoerder heeft normaal uitgeklokt.<br>• <strong>Gesloten (admin)</strong>: een beheerder heeft de dienst zelf afgesloten.<br>• <strong>Gesloten (automatisch)</strong>: WinProx heeft een vergeten dienst automatisch afgesloten. Standaard gebeurt dat na 16 uur. Deze tijdsgrens kunt u per team instellen.<br>• <strong>Manueel ingeklokt</strong>: een beheerder heeft de uitvoerder zelf ingeklokt."
+                },
+                {
+                    "label": "Een geklokte dienst corrigeren",
+                    "text": "Is een uitvoerder vergeten uit te klokken of is een registratie niet correct? Dan kunt u een gesloten dienst aanpassen.<br><br>Klik bij de dienst op <strong>Corrigeren</strong>.<br><br>U kunt de volgende gegevens wijzigen:<br><br>• Het tijdstip van inklokken.<br>• Het tijdstip van uitklokken.<br>• Het aantal pauzeminuten.<br><br>U moet altijd een reden invullen. WinProx houdt bij wie de wijziging heeft uitgevoerd en waarom. Zo blijft elke aanpassing traceerbaar.<br><br>Laat u het tijdstip van uitklokken leeg? Dan wordt de dienst opnieuw geopend. Dat is bijvoorbeeld handig wanneer iemand per ongeluk heeft uitgeklokt.<br><br>Dit kan alleen als de uitvoerder niet al een andere openstaande dienst heeft.<br><br>Een open dienst kunt u niet rechtstreeks corrigeren. Sluit die eerst af met <strong>Shift sluiten</strong>.<br><br><strong>Goed om te weten:</strong> een correctie past de urenstaat aan. Er wordt geen nieuwe in- of uitklokregistratie naar de RSZ verstuurd."
+                },
+                {
+                    "label": "Een open dienst afsluiten",
+                    "text": "Is een uitvoerder vergeten uit te klokken? Dan kunt u de dienst zelf afsluiten.<br><br>Klik bij de open dienst op <strong>Shift sluiten</strong>. WinProx sluit de dienst af op het huidige tijdstip. U geeft ook een reden op.<br><br>Heeft het team een ingestelde minimumpauze en duurt de dienst minstens 4 uur? Dan wordt die pauze mee verrekend in de uren.<br><br>U kunt een open dienst op dezelfde manier afsluiten via Aanwezigheid."
                 },
                 {
                     "label": "Manueel inklokken",
-                    "requires_facility": true,
-                    "text": "Zelfde actie als op Aanwezigheid: klok een uitvoerder in op een Clock Point zonder gsm. Geen toestelkoppeling; verplichte reden in het auditlog; pil <strong>Manueel ingeklokt</strong>."
-                },
-                {
-                    "label": "Statussen",
-                    "text": "<strong>Open</strong> — nog ingeklokt. <strong>Gesloten</strong> — normaal uitgeklokt. <strong>Gesloten (admin)</strong> — handmatig gesloten door beheerder. <strong>Gesloten (automatisch)</strong> — systeem sloot een vergeten shift na de drempel."
-                },
-                {
-                    "label": "Registraties",
-                    "text": "Onder <strong>Registraties</strong> staan de priktijden: uur + In of Uit, met de plek eronder. De generieke Clock Point-naam Aanmelden wordt niet getoond; u ziet de locatie (of Clock Point als er geen locatie is)."
-                },
-                {
-                    "label": "Taken koppelen",
-                    "text": "Start of rond een taak af via het unit-QR-portaal terwijl de uitvoerder ingeklokt is — dan wordt die taak automatisch aan de open shift gekoppeld. Bij uitklokken worden nog open gekoppelde taken afgesloten."
+                    "text": "Heeft een uitvoerder geen gsm bij de hand? Of lukt het tijdelijk niet om zelf in te klokken? Dan kunt u dat als beheerder manueel doen.<br><br>Klik op <strong>Manueel inklokken</strong> en selecteer:<br><br>• De uitvoerder.<br>• Het Clock Point.<br>• De reden van de manuele registratie.<br><br>De uitvoerder wordt ingeklokt zonder dat er een gsm aan de registratie wordt gekoppeld.<br><br>Bij de dienst verschijnt de status <strong>Manueel ingeklokt</strong>.<br><br>Later kan de uitvoerder zelf uitklokken met een QR-scan. U kunt de dienst ook als beheerder afsluiten via <strong>Shift sluiten</strong>.",
+                    "requires_facility": true
                 },
                 {
                     "label": "Minimumpauze",
-                    "text": "Als een team een minimumpauze heeft en een gesloten dienst minder pauzeminuten toont, kan een beheerder <strong>Minimumpauze toepassen</strong> (auditlog) of de minuten via <strong>Corrigeren</strong> aanpassen. Bij uitklokken gebeurt het minimum automatisch als de dienst minstens 4 uur duurt. Geen extra CIAO IN/OUT."
+                    "text": "U kunt per team een verplichte minimumpauze instellen.<br><br>Duurt een gesloten dienst minstens 4 uur en heeft de uitvoerder minder pauze genomen dan het ingestelde minimum? Dan vult WinProx de pauze bij het uitklokken automatisch aan.<br><br>U herkent dit aan de vermelding <strong>Aangevuld tot … (teamregel)</strong>.<br><br>Is de pauze niet automatisch aangevuld? Dan kunt u dit alsnog doen met <strong>Aanvullen tot …</strong>. U kunt de pauzeminuten ook zelf aanpassen via <strong>Corrigeren</strong>.<br><br>De aanvulling geldt niet voor diensten korter dan 4 uur of voor diensten die nog openstaan.<br><br><strong>Belangrijk:</strong> de aangevulde pauze wordt verwerkt in de urenstaat. Het is geen bijkomende, effectief geklokte pauze. Er wordt ook geen nieuwe registratie naar de RSZ verstuurd."
+                },
+                {
+                    "label": "Taken tijdens een dienst",
+                    "text": "Gebruikt een uitvoerder tijdens de dienst een QR-code van een unit om een taak te starten of af te werken? Dan koppelt WinProx die taak automatisch aan de openstaande dienst.<br><br>Zo kunt u achteraf ook zien welke taken tijdens een bepaalde dienst werden uitgevoerd.<br><br>Bij het uitklokken sluit WinProx eventuele nog openstaande, gekoppelde taken automatisch af."
+                },
+                {
+                    "label": "Een rapport downloaden",
+                    "text": "Wilt u de geklokte uren bewaren, verder verwerken of afdrukken? Klik dan op <strong>Download rapport</strong>.<br><br>U kunt kiezen uit:<br><br>• <strong>CSV</strong>: download een bestand dat u onder andere in Excel kunt openen en verder bewerken.<br>• <strong>Afdrukken (PDF)</strong>: open een overzicht dat u kunt afdrukken of als pdf bewaren.<br><br>Het rapport houdt rekening met dezelfde filters als het scherm. Ook diensten die niet op de huidige pagina zichtbaar zijn, worden meegenomen.<br><br>Hebt u <strong>Weekends</strong> uitgeschakeld? Dan worden zaterdag en zondag ook niet in het rapport opgenomen.<br><br>Een rapport bevat maximaal 5.000 diensten. Zijn het er meer? Verklein dan de gekozen periode of gebruik extra filters."
+                },
+                {
+                    "label": "Vanuit andere schermen",
+                    "text": "U kunt de geklokte uren ook rechtstreeks vanuit andere onderdelen van WinProx openen.<br><br>• <strong>Aanwezigheid</strong>: klik op de naam van een uitvoerder. U komt meteen in het overzicht van die persoon, met de laatste drie weken als periode.<br>• <strong>Uurrooster</strong>: klik op het vinkje of bolletje in een dagcel. WinProx toont de geklokte uren van die uitvoerder op die specifieke dag."
                 }
             ]
         },

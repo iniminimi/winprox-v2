@@ -1661,45 +1661,57 @@
             "title": "Aide — Heures pointées",
             "actions": [
                 {
-                    "label": "Période et filtres",
-                    "text": "La liste s'ouvre sur aujourd'hui. Choisissez une date de début et de fin et filtrez éventuellement par équipe, exécutant ou clock point. <strong>Week-ends</strong> est désactivé par défaut : samedi et dimanche disparaissent. Activez-le pour les afficher. Cliquez sur <strong>Appliquer</strong> pour mettre à jour la liste. Avec tous les exécutants, cliquez sur un nom pour ouvrir la semaine de cette personne."
+                    "label": "Que trouvez-vous ici ?",
+                    "text": "Sur cet écran, vous voyez quand vos exécutants ont pointé à l’arrivée et au départ, combien ils ont travaillé et sur quel site ils se sont connectés.<br><br>Par défaut, l’écran s’ouvre sur aujourd’hui. Vous pouvez choisir une autre période pour revoir des prestations plus anciennes."
                 },
                 {
-                    "label": "Vue semaine",
-                    "text": "Choisissez <strong>Semaine</strong> en haut, sélectionnez un exécutant et cliquez sur <strong>Appliquer</strong>. Vous voyez les jours de cette semaine avec les heures de la journée (samedi et dimanche seulement si Week-ends est activé) : chaque bloc est un service du pointage d’entrée à la sortie, la pause hachurée et le service planifié en pointillés derrière. En haut figurent le total par jour et pour la semaine. Naviguez avec les flèches ; cliquez sur un bloc pour le corriger ou clôturer un service ouvert."
+                    "label": "Liste ou semaine ?",
+                    "text": "Vous pouvez voir les heures pointées de deux façons : Liste ou Semaine.<br><br>• <strong>Liste</strong> : tous les services l’un sous l’autre, avec les pointages.<br>• <strong>Semaine</strong> : les jours d’un seul exécutant, avec les services sur les heures.<br><br>Les week-ends sont masqués par défaut. Activez <strong>Week-ends</strong> si vous voulez aussi voir le samedi et le dimanche. Le changement s’applique tout de suite."
                 },
                 {
-                    "label": "Télécharger le rapport",
-                    "text": "Sous-menu CSV + Imprimer : téléchargez les shifts filtrés en CSV (compatible Excel) ou ouvrez une feuille d'heures imprimable (Ctrl+P vers PDF). Mêmes filtres que la liste ; pas seulement la page actuelle (max. 5000 lignes)."
+                    "label": "Consulter la liste",
+                    "text": "Choisissez la période avec <strong>Du</strong> et <strong>Au</strong>. Vous pouvez encore affiner l’aperçu par <strong>Équipe</strong>, <strong>Collaborateur</strong> ou <strong>Clock Point</strong>.<br><br>Cliquez sur <strong>Appliquer</strong> pour actualiser l’aperçu.<br><br>Pour chaque service, vous voyez :<br><br>• Le nom de l’exécutant et l’équipe.<br>• Les heures travaillées et la pause.<br>• La date et éventuellement <strong>Planifié</strong>, s’il y a un service dans le planning ce jour-là.<br>• Tous les pointages d’arrivée et de départ.<br>• Le statut actuel du service.<br><br><strong>Tous les collaborateurs</strong> est-il choisi sous <strong>Collaborateur</strong> ? Vous pouvez alors cliquer sur un nom pour ouvrir tout de suite la semaine de cet exécutant, dans la semaine du service.<br><br>Sous un service, des informations supplémentaires peuvent aussi apparaître, comme :<br><br>• <strong>Déplacements pendant cette vacation</strong><br>• <strong>Visites de travail</strong><br>• <strong>Tâches pendant ce shift</strong>"
                 },
                 {
-                    "label": "Corriger",
-                    "text": "Sur un service clos, un admin peut modifier les heures d’entrée/sortie ou les minutes de pause avec un motif obligatoire. Laisser la sortie vide rouvre le service (sortie par erreur), sauf si cet exécutant a déjà un autre service ouvert. Les changements vont au journal d’audit. Pas d’IN/OUT CIAO extra. Si la pause d’équipe manque, utilisez <strong>Appliquer la pause minimale</strong>."
+                    "label": "Consulter la semaine",
+                    "text": "Choisissez <strong>Semaine</strong>, sélectionnez un exécutant sous <strong>Collaborateur</strong> et cliquez sur <strong>Appliquer</strong>. Personne n’est encore choisi ? WinProx demande d’abord de choisir un exécutant.<br><br>Vous obtenez un aperçu de tous les jours de cette semaine, avec les services correspondants.<br><br>Chaque bloc représente un service, du pointage d’arrivée au pointage de départ. Un service encore en cours continue jusqu’à l’heure actuelle.<br><br>La pause est hachurée. Un service est-il aussi prévu dans le planning ce jour-là ? Vous le voyez en pointillés derrière les heures pointées.<br><br>En haut, vous trouvez le total d’heures par jour et pour toute la semaine. Une journée d’absence complète, par exemple un congé, figure à côté du total du jour. Ces heures ne comptent pas comme travaillées.<br><br>Avec les flèches, vous passez à une autre semaine. Cliquez sur <strong>Aujourd'hui</strong> pour revenir à la semaine en cours.<br><br>Vous voulez modifier quelque chose ? Cliquez sur un bloc. Vous pouvez corriger un service clôturé ou clôturer un service encore ouvert.<br><br><strong>Bon à savoir :</strong> un service de nuit qui passe minuit s’affiche sur les deux jours. Les heures travaillées comptent dans le total du jour où l’exécutant a pointé à l’arrivée.<br><br>Même si Week-ends est désactivé, un service de nuit qui commence le vendredi et continue le samedi reste compté avec le vendredi."
                 },
                 {
-                    "label": "Fermer le shift",
-                    "text": "Les services ouverts de cette liste peuvent aussi être fermés ici, comme sur Présence. Si l’équipe a une pause minimale et que le service dure au moins 4 heures, elle compte sur la feuille d’heures (pas d’événement CIAO extra)."
+                    "label": "Consulter les pointages",
+                    "text": "Sous <strong>Pointages</strong>, vous trouvez tous les pointages d’un service.<br><br>Vous voyez à chaque fois :<br><br>• L’heure enregistrée.<br>• <strong>Entrée</strong> ou <strong>Sortie</strong>.<br>• Le site où l’exécutant s’est connecté.<br><br>Les pauses apparaissent aussi comme un bloc horaire, par exemple 12:00–12:30 Pause. La pause est encore en cours ? Le bloc continue jusqu’à l’heure actuelle.<br><br>Vous utilisez un Clock Point nommé Connexion ? WinProx affiche alors le site lié. S’il n’y a pas de site, Clock Point s’affiche simplement."
+                },
+                {
+                    "label": "Que signifient les statuts ?",
+                    "text": "Le statut montre tout de suite ce qui s’est passé pour un service.<br><br>• <strong>Ouvert</strong> : l’exécutant est encore pointé.<br>• <strong>Clôturé</strong> : l’exécutant a pointé son départ normalement.<br>• <strong>Clôturé (admin)</strong> : un administrateur a clôturé le service lui-même.<br>• <strong>Clôturé (automatique)</strong> : WinProx a clôturé automatiquement un service oublié. Par défaut, cela se fait après 16 heures. Vous pouvez régler cette limite par équipe.<br>• <strong>Pointé manuellement</strong> : un administrateur a pointé l’exécutant lui-même."
+                },
+                {
+                    "label": "Corriger un service pointé",
+                    "text": "Un exécutant a oublié de pointer son départ, ou un pointage n’est pas correct ? Vous pouvez alors adapter un service clôturé.<br><br>Cliquez sur <strong>Corriger</strong> pour ce service.<br><br>Vous pouvez modifier :<br><br>• L’heure d’arrivée.<br>• L’heure de départ.<br>• Le nombre de minutes de pause.<br><br>Vous devez toujours indiquer un motif. WinProx retient qui a fait la modification et pourquoi. Chaque adaptation reste traçable.<br><br>Vous laissez l’heure de départ vide ? Le service est rouvert. C’est pratique, par exemple, quand quelqu’un a pointé son départ par erreur.<br><br>Cela n’est possible que si l’exécutant n’a pas déjà un autre service ouvert.<br><br>Vous ne pouvez pas corriger directement un service ouvert. Clôturez-le d’abord avec <strong>Clôturer le shift</strong>.<br><br><strong>Bon à savoir :</strong> une correction adapte la feuille d’heures. Aucun nouveau pointage d’arrivée ou de départ n’est envoyé à l’ONSS."
+                },
+                {
+                    "label": "Clôturer un service ouvert",
+                    "text": "Un exécutant a oublié de pointer son départ ? Vous pouvez clôturer le service vous-même.<br><br>Cliquez sur <strong>Clôturer le shift</strong> pour le service ouvert. WinProx clôture le service à l’heure actuelle. Vous indiquez aussi un motif.<br><br>L’équipe a une pause minimale et le service dure au moins 4 heures ? Cette pause est alors comptée dans les heures.<br><br>Vous pouvez clôturer un service ouvert de la même façon via Présence."
                 },
                 {
                     "label": "Pointer manuellement",
-                    "requires_facility": true,
-                    "text": "Même action que sur Présence : pointez un exécutant sur un Clock Point sans téléphone. Aucun appareil lié ; motif obligatoire dans le journal d’audit ; pilule <strong>Pointé manuellement</strong>."
-                },
-                {
-                    "label": "Statuts",
-                    "text": "<strong>Ouvert</strong> — encore pointé. <strong>Fermé</strong> — sortie normale. <strong>Fermé (admin)</strong> — fermé manuellement par l'administrateur. <strong>Fermé (automatique)</strong> — le système ferme un shift oublié après le seuil."
-                },
-                {
-                    "label": "Pointages",
-                    "text": "Sous <strong>Pointages</strong>, les pointages apparaissent : heure + Entrée ou Sortie, avec le lieu en dessous. Le nom générique Connexion n’est pas affiché ; vous voyez le site (ou Clock Point s’il n’y a pas de site)."
-                },
-                {
-                    "label": "Lier les tâches",
-                    "text": "Démarrez ou terminez une tâche via le portail QR unité pendant que l’exécutant est pointé — la tâche est alors automatiquement liée au shift ouvert. À la sortie, les tâches liées encore ouvertes sont clôturées."
+                    "text": "Un exécutant n’a pas son gsm, ou il ne peut temporairement pas pointer lui-même ? Vous pouvez le faire manuellement en tant qu’administrateur.<br><br>Cliquez sur <strong>Pointer manuellement</strong> et choisissez :<br><br>• L’exécutant.<br>• Le Clock Point.<br>• Le motif du pointage manuel.<br><br>L’exécutant est pointé sans qu’un gsm soit lié au pointage.<br><br>Le statut <strong>Pointé manuellement</strong> apparaît sur le service.<br><br>Plus tard, l’exécutant peut pointer son départ avec un scan du QR. Vous pouvez aussi clôturer le service en tant qu’administrateur via <strong>Clôturer le shift</strong>.",
+                    "requires_facility": true
                 },
                 {
                     "label": "Pause minimale",
-                    "text": "Si une équipe a une pause minimale et qu’un service clos affiche moins de minutes, un admin peut <strong>Appliquer la pause minimale</strong> (journal d’audit) ou modifier les minutes via <strong>Corriger</strong>. À la sortie, le minimum s’applique automatiquement si le service dure au moins 4 heures. Pas d’IN/OUT CIAO supplémentaire."
+                    "text": "Vous pouvez définir une pause minimale obligatoire par équipe.<br><br>Un service clôturé dure au moins 4 heures et l’exécutant a pris moins de pause que le minimum ? WinProx complète alors la pause automatiquement au pointage de départ.<br><br>Vous le reconnaissez à la mention <strong>Complétée jusqu'à … (règle d'équipe).</strong>.<br><br>La pause n’a pas été complétée automatiquement ? Vous pouvez encore le faire avec <strong>Compléter jusqu'à …</strong>. Vous pouvez aussi adapter vous-même les minutes de pause via <strong>Corriger</strong>.<br><br>Le complément ne vaut pas pour les services de moins de 4 heures, ni pour les services encore ouverts.<br><br><strong>Important :</strong> la pause complétée est enregistrée sur la feuille d’heures. Ce n’est pas une pause supplémentaire réellement pointée. Aucun nouveau pointage n’est envoyé à l’ONSS."
+                },
+                {
+                    "label": "Tâches pendant un service",
+                    "text": "Un exécutant utilise pendant le service le QR d’une unit pour démarrer ou terminer une tâche ? WinProx relie alors cette tâche automatiquement au service ouvert.<br><br>Vous pouvez ainsi voir ensuite quelles tâches ont été faites pendant un service donné.<br><br>Au pointage de départ, WinProx clôture automatiquement les tâches liées qui sont encore ouvertes."
+                },
+                {
+                    "label": "Télécharger un rapport",
+                    "text": "Vous voulez conserver les heures pointées, les traiter ou les imprimer ? Cliquez sur <strong>Télécharger le rapport</strong>.<br><br>Vous pouvez choisir :<br><br>• <strong>CSV</strong> : téléchargez un fichier que vous pouvez ouvrir et modifier dans Excel, entre autres.<br>• <strong>Imprimer (PDF)</strong> : ouvrez un aperçu que vous pouvez imprimer ou enregistrer en pdf.<br><br>Le rapport tient compte des mêmes filtres que l’écran. Les services qui ne sont pas sur la page actuelle sont aussi repris.<br><br><strong>Week-ends</strong> est désactivé ? Le samedi et le dimanche ne figurent alors pas non plus dans le rapport.<br><br>Un rapport contient au maximum 5 000 services. Il y en a plus ? Réduisez la période ou ajoutez des filtres."
+                },
+                {
+                    "label": "Depuis d’autres écrans",
+                    "text": "Vous pouvez aussi ouvrir les heures pointées directement depuis d’autres parties de WinProx.<br><br>• <strong>Présence</strong> : cliquez sur le nom d’un exécutant. Vous arrivez tout de suite dans l’aperçu de cette personne, avec les trois dernières semaines comme période.<br>• <strong>Horaire</strong> : cliquez sur la coche ou le point dans une cellule du jour. WinProx affiche les heures pointées de cet exécutant pour ce jour-là."
                 }
             ]
         },

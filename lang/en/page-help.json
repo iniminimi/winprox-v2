@@ -1657,45 +1657,57 @@
             "title": "Help — Clocked hours",
             "actions": [
                 {
-                    "label": "Period and filters",
-                    "text": "The list opens on today. Choose from and to dates and optionally filter by team, worker, or clock point. <strong>Weekends</strong> is off by default: Saturday and Sunday are hidden. Turn it on to show them. Click <strong>Apply</strong> to refresh the list. With all workers, click a name to open that person's week."
+                    "label": "What do you find here?",
+                    "text": "On this screen you see when your workers clocked in and out, how much they worked, and at which location they signed in.<br><br>By default the screen opens on today. You can choose another period to look at earlier work."
                 },
                 {
-                    "label": "Week view",
-                    "text": "Choose <strong>Week</strong> at the top, pick a worker and click <strong>Apply</strong>. You see the days of that week with the hours of the day (Saturday and Sunday only when Weekends is on): each block is a shift from clock-in to clock-out, with the break hatched and the planned shift as a dotted outline behind it. The top shows the total per day and for the week. Use the arrows to browse; click a block to correct it or close an open shift."
+                    "label": "List or week?",
+                    "text": "You can view the clocked hours in two ways: List or Week.<br><br>• <strong>List</strong>: all shifts one under the other, with their registrations.<br>• <strong>Week</strong>: the days of one worker, with the shifts on the hours.<br><br>Weekends are hidden by default. Turn <strong>Weekends</strong> on if you also want to see Saturday and Sunday. The change applies straight away."
                 },
                 {
-                    "label": "Download report",
-                    "text": "Submenu CSV + Print: download the filtered shifts as CSV (Excel-friendly) or open a printable timesheet (Ctrl+P to PDF). Same filters as the list; not only the current page (max. 5000 rows)."
+                    "label": "Viewing the list",
+                    "text": "Choose the period under <strong>From</strong> and <strong>To</strong>. You can narrow the overview further by <strong>Team</strong>, <strong>Worker</strong> or <strong>Clock Point</strong>.<br><br>Click <strong>Apply</strong> to refresh the overview.<br><br>For each shift you see:<br><br>• The worker’s name and the team.<br>• The hours worked and the break.<br>• The date and, if there is one, <strong>Planned</strong>, when a shift is on the roster for that day.<br>• All clock-in and clock-out registrations.<br>• The current status of the shift.<br><br>Is <strong>All workers</strong> selected under <strong>Worker</strong>? Then you can click a name to open that worker’s week straight away, in the week of the shift.<br><br>Under a shift there can also be extra details, such as:<br><br>• <strong>Moves during this shift</strong><br>• <strong>Work visits</strong><br>• <strong>Tasks during this shift</strong>"
                 },
                 {
-                    "label": "Correct",
-                    "text": "On a closed shift an admin can change clock-in/out times or break minutes with a required reason. Leaving clock-out empty reopens the shift (mistaken clock-out), unless that worker already has another open shift. Changes go in the audit log. No extra CIAO IN/OUT. If the team break is missing, use <strong>Apply minimum break</strong>."
+                    "label": "Viewing the week",
+                    "text": "Choose <strong>Week</strong>, select a worker under <strong>Worker</strong> and click <strong>Apply</strong>. If you have not selected anyone yet, WinProx first asks you to choose a worker.<br><br>You get an overview of every day in that week, with the shifts that belong to it.<br><br>Each block is a shift, from clock-in to clock-out. A shift that is still running continues until the current time.<br><br>The break is shown hatched. Is there also a planned shift on the roster for that day? You see it as a dotted line behind the clocked hours.<br><br>At the top you find the total hours per day and for the whole week. A full day of absence, for example leave, is shown next to the day total. Those hours do not count as worked.<br><br>Use the arrows to move to another week. Click <strong>Today</strong> to return to the current week.<br><br>Want to change something? Click a shift block. You can correct a closed shift or close a shift that is still open.<br><br><strong>Good to know:</strong> a night shift that runs past midnight is shown on both calendar days. The hours worked count toward the day total of the day the worker clocked in.<br><br>Even when Weekends is off, a night shift that starts on Friday and continues into Saturday still counts with Friday."
                 },
                 {
-                    "label": "Close shift",
-                    "text": "Open shifts in this list can also be force-closed here, as on Presence. If the team has a minimum break and the shift lasts at least 4 hours, it is counted on the timesheet (no extra CIAO event)."
+                    "label": "Viewing the registrations",
+                    "text": "Under <strong>Registrations</strong> you find every punch of a shift.<br><br>Each time you see:<br><br>• The recorded time.<br>• <strong>In</strong> or <strong>Out</strong>.<br>• The location where the worker signed in.<br><br>Breaks are also shown as a time block, for example 12:00–12:30 Break. Is the break still running? Then the block continues until the current time.<br><br>Do you use a Clock Point named Sign in? Then WinProx shows the linked site. If no site is set, it simply shows Clock Point."
                 },
                 {
-                    "label": "Clock in manually",
-                    "requires_facility": true,
-                    "text": "Same action as on Presence: clock a worker in at a Clock Point without a phone. No device bind; required reason in the audit log; <strong>Clocked in manually</strong> pill."
+                    "label": "What do the statuses mean?",
+                    "text": "The status shows straight away what happened to a shift.<br><br>• <strong>Open</strong>: the worker is still clocked in.<br>• <strong>Closed</strong>: the worker clocked out normally.<br>• <strong>Closed (admin)</strong>: an administrator closed the shift.<br>• <strong>Closed (automatic)</strong>: WinProx closed a forgotten shift automatically. By default that happens after 16 hours. You can set this limit per team.<br>• <strong>Clocked in manually</strong>: an administrator clocked the worker in."
                 },
                 {
-                    "label": "Statuses",
-                    "text": "<strong>Open</strong> — still clocked in. <strong>Closed</strong> — clocked out normally. <strong>Closed (admin)</strong> — manually closed by admin. <strong>Closed (automatic)</strong> — system closed a forgotten shift after the threshold."
+                    "label": "Correcting a clocked shift",
+                    "text": "Did a worker forget to clock out, or is a registration wrong? Then you can adjust a closed shift.<br><br>Click <strong>Correct</strong> on the shift.<br><br>You can change:<br><br>• The clock-in time.<br>• The clock-out time.<br>• The break minutes.<br><br>You must always enter a reason. WinProx keeps who made the change and why. Every adjustment stays traceable.<br><br>If you leave the clock-out time empty, the shift opens again. That is useful, for example, when someone clocked out by mistake.<br><br>This only works if the worker does not already have another open shift.<br><br>You cannot correct an open shift directly. Close it first with <strong>Close shift</strong>.<br><br><strong>Good to know:</strong> a correction updates the timesheet. No new clock-in or clock-out is sent to the NSSO."
                 },
                 {
-                    "label": "Registrations",
-                    "text": "Under <strong>Registrations</strong> the punches are listed: time + In or Out, with the place underneath. The generic Clock Point name Sign in is hidden; you see the location (or Clock Point if there is no location)."
+                    "label": "Closing an open shift",
+                    "text": "Did a worker forget to clock out? Then you can close the shift yourself.<br><br>On the open shift, click <strong>Close shift</strong>. WinProx closes the shift at the current time. You also give a reason.<br><br>Does the team have a minimum break, and did the shift last at least 4 hours? Then that break is included in the hours.<br><br>You can close an open shift in the same way from Presence."
                 },
                 {
-                    "label": "Link tasks",
-                    "text": "Start or complete a task via the unit QR portal while clocked in — the task is automatically linked to the open shift. Open links are closed on clock-out."
+                    "label": "Clocking in manually",
+                    "text": "Does a worker not have a phone, or is it temporarily not possible to clock in? Then you can do it manually as an administrator.<br><br>Click <strong>Clock in manually</strong> and select:<br><br>• The worker.<br>• The Clock Point.<br>• The reason for the manual registration.<br><br>The worker is clocked in without a phone being linked to the registration.<br><br>The status <strong>Clocked in manually</strong> appears on the shift.<br><br>Later the worker can clock out with a QR scan. You can also close the shift as an administrator with <strong>Close shift</strong>.",
+                    "requires_facility": true
                 },
                 {
                     "label": "Minimum break",
-                    "text": "If a team has a minimum break and a closed shift shows fewer break minutes, an admin can <strong>Apply minimum break</strong> (audit log) or change minutes via <strong>Correct</strong>. On clock-out the minimum is applied automatically if the shift lasts at least 4 hours. No extra CIAO IN/OUT."
+                    "text": "You can set a required minimum break per team.<br><br>Did a closed shift last at least 4 hours, and did the worker take less break than the minimum? Then WinProx fills the break up automatically on clock-out.<br><br>You recognise this by <strong>Filled up to … (team rule)</strong>.<br><br>Was the break not filled up automatically? You can still do it with <strong>Fill up to …</strong>. You can also change the break minutes yourself with <strong>Correct</strong>.<br><br>The fill-up does not apply to shifts shorter than 4 hours, or to shifts that are still open.<br><br><strong>Important:</strong> the filled-up break is recorded on the timesheet. It is not an extra break that was actually clocked. No new registration is sent to the NSSO either."
+                },
+                {
+                    "label": "Tasks during a shift",
+                    "text": "Does a worker use a unit QR code during the shift to start or finish a task? Then WinProx links that task to the open shift automatically.<br><br>Afterwards you can also see which tasks were done during a particular shift.<br><br>On clock-out, WinProx automatically closes any linked tasks that are still open."
+                },
+                {
+                    "label": "Downloading a report",
+                    "text": "Do you want to keep the clocked hours, process them further or print them? Click <strong>Download report</strong>.<br><br>You can choose:<br><br>• <strong>CSV</strong>: download a file you can open and edit in Excel, among other tools.<br>• <strong>Print (PDF)</strong>: open an overview you can print or save as a pdf.<br><br>The report uses the same filters as the screen. Shifts that are not on the current page are included too.<br><br>Is <strong>Weekends</strong> off? Then Saturday and Sunday are left out of the report as well.<br><br>A report contains at most 5,000 shifts. Are there more? Shorten the period or use extra filters."
+                },
+                {
+                    "label": "From other screens",
+                    "text": "You can also open the clocked hours directly from other parts of WinProx.<br><br>• <strong>Presence</strong>: click a worker’s name. You go straight to that person’s overview, with the last three weeks as the period.<br>• <strong>Roster</strong>: click the tick or the dot in a day cell. WinProx shows that worker’s clocked hours on that day."
                 }
             ]
         },

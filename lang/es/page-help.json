@@ -1657,45 +1657,57 @@
             "title": "Ayuda — Horas fichadas",
             "actions": [
                 {
-                    "label": "Período y filtros",
-                    "text": "La lista se abre en hoy. Elija fechas de inicio y fin y filtre opcionalmente por equipo, operario o clock point. <strong>Fines de semana</strong> está desactivado por defecto: sábado y domingo desaparecen. Actívelo para mostrarlos. Pulse <strong>Aplicar</strong> para actualizar la lista. Con todos los operarios, pulse un nombre para abrir la semana de esa persona."
+                    "label": "¿Qué encuentra aquí?",
+                    "text": "En esta pantalla ve cuándo sus ejecutores han fichado la entrada y la salida, cuánto han trabajado y en qué sede se han identificado.<br><br>De forma predeterminada la pantalla se abre en hoy. Puede elegir otro periodo para ver prestaciones anteriores."
                 },
                 {
-                    "label": "Vista semanal",
-                    "text": "Elija <strong>Semana</strong> arriba, seleccione un operario y pulse <strong>Aplicar</strong>. Verá los días de esa semana con las horas del día (sábado y domingo solo si Fines de semana está activo): cada bloque es un turno desde el fichaje de entrada hasta la salida, con la pausa rayada y el turno planificado en línea discontinua detrás. Arriba aparecen el total por día y de la semana. Navegue con las flechas; pulse un bloque para corregirlo o cerrar un turno abierto."
+                    "label": "¿Lista o semana?",
+                    "text": "Puede ver las horas fichadas de dos maneras: Lista o Semana.<br><br>• <strong>Lista</strong>: todos los turnos uno debajo de otro, con los registros.<br>• <strong>Semana</strong>: los días de un solo ejecutor, con los turnos sobre las horas.<br><br>Los fines de semana están ocultos de forma predeterminada. Active <strong>Fines de semana</strong> si también quiere ver el sábado y el domingo. El cambio se aplica enseguida."
                 },
                 {
-                    "label": "Descargar informe",
-                    "text": "Submenú CSV + Imprimir: descargue los turnos filtrados como CSV (compatible con Excel) o abra una hoja de horas imprimible (Ctrl+P a PDF). Los mismos filtros que la lista; no solo la página actual (máx. 5000 filas)."
+                    "label": "Ver la lista",
+                    "text": "Elija el periodo en <strong>Desde</strong> y <strong>Hasta</strong>. Puede afinar el resumen por <strong>Equipo</strong>, <strong>Trabajador</strong> o <strong>Clock Point</strong>.<br><br>Haga clic en <strong>Aplicar</strong> para actualizar el resumen.<br><br>En cada turno ve:<br><br>• El nombre del ejecutor y el equipo.<br>• Las horas trabajadas y la pausa.<br>• La fecha y, si la hay, <strong>Planificado</strong>, cuando ese día hay un turno en el horario.<br>• Todos los registros de entrada y de salida.<br>• El estado actual del turno.<br><br>¿Está elegida <strong>Todos los trabajadores</strong> en <strong>Trabajador</strong>? Entonces puede hacer clic en un nombre para abrir enseguida la semana de ese ejecutor, en la semana del turno.<br><br>Debajo de un turno también pueden aparecer datos adicionales, como:<br><br>• <strong>Trasladados durante este turno</strong><br>• <strong>Visitas de trabajo</strong><br>• <strong>Tareas durante este turno</strong>"
                 },
                 {
-                    "label": "Corregir",
-                    "text": "En un turno cerrado un administrador puede cambiar horas de entrada/salida o minutos de pausa con motivo obligatorio. Dejar la salida vacía reabre el turno (salida por error), salvo que ese trabajador ya tenga otro turno abierto. Los cambios van al registro de auditoría. Sin IN/OUT CIAO extra. Si falta la pausa de equipo, use <strong>Aplicar pausa mínima</strong>."
+                    "label": "Ver la semana",
+                    "text": "Elija <strong>Semana</strong>, seleccione un ejecutor en <strong>Trabajador</strong> y haga clic en <strong>Aplicar</strong>. ¿Aún no ha elegido a nadie? WinProx pide primero que elija un ejecutor.<br><br>Obtiene un resumen de todos los días de esa semana, con los turnos correspondientes.<br><br>Cada bloque es un turno, desde el fichaje de entrada hasta el de salida. Un turno que sigue en curso llega hasta la hora actual.<br><br>La pausa se muestra rallada. ¿Ese día también hay un turno previsto en el horario? Lo ve como una línea de puntos detrás de las horas fichadas.<br><br>Arriba encuentra el total de horas por día y de toda la semana. Un día completo de ausencia, por ejemplo vacaciones, aparece junto al total del día. Esas horas no cuentan como trabajadas.<br><br>Con las flechas pasa a otra semana. Haga clic en <strong>Hoy</strong> para volver a la semana actual.<br><br>¿Quiere cambiar algo? Haga clic en un bloque. Puede corregir un turno cerrado o cerrar un turno que aún está abierto.<br><br><strong>Conviene saberlo:</strong> un turno de noche que pasa de medianoche se muestra en los dos días. Las horas trabajadas cuentan en el total del día en que el ejecutor fichó la entrada.<br><br>Aunque Fines de semana esté desactivado, un turno de noche que empieza el viernes y sigue el sábado sigue contando con el viernes."
                 },
                 {
-                    "label": "Cerrar turno",
-                    "text": "Los turnos abiertos de esta lista también se pueden cerrar aquí, como en Presencia. Si el equipo tiene pausa mínima y el turno dura al menos 4 horas, cuenta en el parte (sin evento CIAO extra)."
+                    "label": "Ver los registros",
+                    "text": "En <strong>Registros</strong> encuentra todos los fichajes de un turno.<br><br>Cada vez ve:<br><br>• La hora registrada.<br>• <strong>Entrada</strong> o <strong>Salida</strong>.<br>• La sede en la que se identificó el ejecutor.<br><br>Las pausas también aparecen como un bloque de tiempo, por ejemplo 12:00–12:30 Pausa. ¿La pausa sigue en curso? Entonces el bloque continúa hasta la hora actual.<br><br>¿Usa un Clock Point con el nombre Inicio de sesión? WinProx muestra entonces la sede vinculada. Si no hay sede, se muestra simplemente Clock Point."
+                },
+                {
+                    "label": "¿Qué significan los estados?",
+                    "text": "En el estado ve enseguida qué ha pasado con un turno.<br><br>• <strong>Abierto</strong>: el ejecutor sigue fichado.<br>• <strong>Cerrado</strong>: el ejecutor ha fichado la salida con normalidad.<br>• <strong>Cerrado (admin)</strong>: un administrador ha cerrado el turno.<br>• <strong>Cerrado (automático)</strong>: WinProx ha cerrado automáticamente un turno olvidado. De forma predeterminada ocurre a las 16 horas. Puede fijar este límite por equipo.<br>• <strong>Fichado manualmente</strong>: un administrador ha fichado al ejecutor."
+                },
+                {
+                    "label": "Corregir un turno fichado",
+                    "text": "¿Un ejecutor ha olvidado fichar la salida, o un registro no es correcto? Puede ajustar un turno cerrado.<br><br>Haga clic en <strong>Corregir</strong> en el turno.<br><br>Puede cambiar:<br><br>• La hora de entrada.<br>• La hora de salida.<br>• Los minutos de pausa.<br><br>Siempre debe indicar un motivo. WinProx guarda quién hizo el cambio y por qué. Así cada ajuste se puede seguir.<br><br>¿Deja vacía la hora de salida? El turno se vuelve a abrir. Es útil, por ejemplo, cuando alguien ha fichado la salida por error.<br><br>Solo es posible si el ejecutor no tiene ya otro turno abierto.<br><br>No puede corregir directamente un turno abierto. Ciérrelo primero con <strong>Cerrar turno</strong>.<br><br><strong>Conviene saberlo:</strong> una corrección adapta la hoja de horas. No se envía un nuevo fichaje de entrada o de salida a la ONSS."
+                },
+                {
+                    "label": "Cerrar un turno abierto",
+                    "text": "¿Un ejecutor ha olvidado fichar la salida? Puede cerrar el turno usted mismo.<br><br>En el turno abierto, haga clic en <strong>Cerrar turno</strong>. WinProx cierra el turno a la hora actual. Indique también un motivo.<br><br>¿El equipo tiene una pausa mínima y el turno dura al menos 4 horas? Esa pausa se incluye en las horas.<br><br>Puede cerrar un turno abierto de la misma forma desde Presencia."
                 },
                 {
                     "label": "Fichar manualmente",
-                    "requires_facility": true,
-                    "text": "Misma acción que en Presencia: fiche a un ejecutor en un Clock Point sin teléfono. Sin vincular dispositivo; motivo obligatorio en auditoría; pastilla <strong>Fichado manualmente</strong>."
-                },
-                {
-                    "label": "Estados",
-                    "text": "<strong>Abierto</strong> — aún fichado. <strong>Cerrado</strong> — salida normal. <strong>Cerrado (admin)</strong> — cerrado manualmente por el administrador. <strong>Cerrado (automático)</strong> — el sistema cierra un turno olvidado tras el umbral."
-                },
-                {
-                    "label": "Registros",
-                    "text": "En <strong>Registros</strong> los fichajes se listan: hora + Entrada o Salida, con el lugar debajo. El nombre genérico Iniciar sesión no se muestra; ve la sede (o Clock Point si no hay sede)."
-                },
-                {
-                    "label": "Vincular tareas",
-                    "text": "Inicie o complete una tarea mediante el portal QR de unidad mientras el operario está fichado — entonces esa tarea se vincula automáticamente al turno abierto. Al fichar salida, las tareas vinculadas aún abiertas se cierran."
+                    "text": "¿Un ejecutor no tiene el móvil a mano? ¿O de momento no puede fichar? Puede hacerlo manualmente como administrador.<br><br>Haga clic en <strong>Fichar manualmente</strong> y seleccione:<br><br>• El ejecutor.<br>• El Clock Point.<br>• El motivo del registro manual.<br><br>El ejecutor queda fichado sin que se vincule un móvil al registro.<br><br>En el turno aparece el estado <strong>Fichado manualmente</strong>.<br><br>Más tarde el ejecutor puede fichar la salida con un escaneo del QR. También puede cerrar el turno como administrador con <strong>Cerrar turno</strong>.",
+                    "requires_facility": true
                 },
                 {
                     "label": "Pausa mínima",
-                    "text": "Si un equipo tiene pausa mínima y un turno cerrado muestra menos minutos, un administrador puede <strong>Aplicar pausa mínima</strong> (registro de auditoría) o cambiar los minutos con <strong>Corregir</strong>. Al fichar la salida el mínimo se aplica solo si el turno dura al menos 4 horas. Sin IN/OUT CIAO extra."
+                    "text": "Puede fijar una pausa mínima obligatoria por equipo.<br><br>¿Un turno cerrado dura al menos 4 horas y el ejecutor ha hecho menos pausa que el mínimo? WinProx completa la pausa automáticamente al fichar la salida.<br><br>Lo reconoce por la mención <strong>Completada hasta … (regla del equipo).</strong>.<br><br>¿La pausa no se completó automáticamente? Aún puede hacerlo con <strong>Completar hasta …</strong>. También puede ajustar los minutos de pausa con <strong>Corregir</strong>.<br><br>El complemento no vale para turnos de menos de 4 horas ni para turnos que aún están abiertos.<br><br><strong>Importante:</strong> la pausa completada se registra en la hoja de horas. No es una pausa extra realmente fichada. Tampoco se envía un registro nuevo a la ONSS."
+                },
+                {
+                    "label": "Tareas durante un turno",
+                    "text": "¿Un ejecutor usa durante el turno el QR de una unit para empezar o terminar una tarea? WinProx vincula esa tarea automáticamente al turno abierto.<br><br>Así puede ver después qué tareas se hicieron durante un turno concreto.<br><br>Al fichar la salida, WinProx cierra automáticamente las tareas vinculadas que aún estén abiertas."
+                },
+                {
+                    "label": "Descargar un informe",
+                    "text": "¿Quiere guardar las horas fichadas, seguir trabajándolas o imprimirlas? Haga clic en <strong>Descargar informe</strong>.<br><br>Puede elegir:<br><br>• <strong>CSV</strong>: descargue un archivo que puede abrir y editar en Excel, entre otros.<br>• <strong>Imprimir (PDF)</strong>: abra un resumen que puede imprimir o guardar como pdf.<br><br>El informe usa los mismos filtros que la pantalla. También se incluyen los turnos que no están en la página actual.<br><br>¿Tiene <strong>Fines de semana</strong> desactivado? Entonces el sábado y el domingo tampoco entran en el informe.<br><br>Un informe contiene como máximo 5.000 turnos. ¿Hay más? Reduzca el periodo o use más filtros."
+                },
+                {
+                    "label": "Desde otras pantallas",
+                    "text": "También puede abrir las horas fichadas directamente desde otras partes de WinProx.<br><br>• <strong>Presencia</strong>: haga clic en el nombre de un ejecutor. Llega enseguida al resumen de esa persona, con las últimas tres semanas como periodo.<br>• <strong>Horario</strong>: haga clic en la marca o el punto de una celda del día. WinProx muestra las horas fichadas de ese ejecutor en ese día."
                 }
             ]
         },

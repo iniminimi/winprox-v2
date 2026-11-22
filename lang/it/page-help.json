@@ -1657,45 +1657,57 @@
             "title": "Aiuto — Ore timbrate",
             "actions": [
                 {
-                    "label": "Periodo e filtri",
-                    "text": "L'elenco si apre su oggi. Scelga date di inizio e fine e filtri facoltativamente per team, esecutore o clock point. <strong>Weekend</strong> è disattivato per impostazione predefinita: sabato e domenica spariscono. Lo attivi per mostrarli. Clicchi <strong>Applica</strong> per aggiornare l'elenco. Con tutti gli esecutori, clicchi un nome per aprire la settimana di quella persona."
+                    "label": "Che cosa trova qui?",
+                    "text": "In questa schermata vede quando i Suoi esecutori hanno timbrato l’entrata e l’uscita, quanto hanno lavorato e in quale sede si sono identificati.<br><br>Per impostazione predefinita la schermata si apre su oggi. Può scegliere un altro periodo per rivedere prestazioni precedenti."
                 },
                 {
-                    "label": "Vista settimanale",
-                    "text": "Scelga <strong>Settimana</strong> in alto, selezioni un esecutore e clicchi <strong>Applica</strong>. Vede i giorni di quella settimana con le ore della giornata (sabato e domenica solo se Weekend è attivo): ogni blocco è un turno dall’entrata all’uscita, con la pausa tratteggiata e il turno pianificato con linea punteggiata dietro. In alto ci sono il totale per giorno e per la settimana. Scorra con le frecce; clicchi su un blocco per correggerlo o chiudere un turno aperto."
+                    "label": "Elenco o settimana?",
+                    "text": "Può vedere le ore timbrate in due modi: Elenco o Settimana.<br><br>• <strong>Elenco</strong>: tutti i turni uno sotto l’altro, con le registrazioni.<br>• <strong>Settimana</strong>: i giorni di un solo esecutore, con i turni sulle ore.<br><br>I fine settimana sono nascosti per impostazione predefinita. Attivi <strong>Weekend</strong> se vuole vedere anche il sabato e la domenica. La modifica si applica subito."
                 },
                 {
-                    "label": "Scarica rapporto",
-                    "text": "Sottomenu CSV + Stampa: scarica i turni filtrati come CSV (compatibile Excel) oppure apri un foglio ore stampabile (Ctrl+P a PDF). Stessi filtri dell'elenco; non solo la pagina corrente (max. 5000 righe)."
+                    "label": "Vedere l’elenco",
+                    "text": "Scelga il periodo in <strong>Da</strong> e <strong>A</strong>. Può restringere la panoramica per <strong>Team</strong>, <strong>Lavoratore</strong> o <strong>Clock Point</strong>.<br><br>Faccia clic su <strong>Applica</strong> per aggiornare la panoramica.<br><br>Per ogni turno vede:<br><br>• Il nome dell’esecutore e il team.<br>• Le ore lavorate e la pausa.<br>• La data ed eventualmente <strong>Pianificato</strong>, se per quel giorno c’è un turno nel planning.<br>• Tutte le registrazioni di entrata e di uscita.<br>• Lo stato attuale del turno.<br><br>In <strong>Lavoratore</strong> è selezionato <strong>Tutti i lavoratori</strong>? Può allora fare clic su un nome per aprire subito la settimana di quell’esecutore, nella settimana del turno.<br><br>Sotto un turno possono comparire anche dati aggiuntivi, come:<br><br>• <strong>Spostamenti durante questo turno</strong><br>• <strong>Visite di lavoro</strong><br>• <strong>Attività durante questo turno</strong>"
                 },
                 {
-                    "label": "Correggi",
-                    "text": "Su un turno chiuso un admin può modificare orari di ingresso/uscita o minuti di pausa con motivo obbligatorio. Lasciare l’uscita vuota riapre il turno (uscita per errore), salvo che quell’esecutore abbia già un altro turno aperto. Le modifiche vanno nel log di audit. Nessun IN/OUT CIAO extra. Se manca la pausa team, usa <strong>Applica pausa minima</strong>."
+                    "label": "Vedere la settimana",
+                    "text": "Scelga <strong>Settimana</strong>, selezioni un esecutore in <strong>Lavoratore</strong> e faccia clic su <strong>Applica</strong>. Non ha ancora scelto nessuno? WinProx chiede prima di scegliere un esecutore.<br><br>Ottiene una panoramica di tutti i giorni di quella settimana, con i turni corrispondenti.<br><br>Ogni blocco è un turno, dalla timbratura di entrata a quella di uscita. Un turno ancora in corso arriva fino all’ora attuale.<br><br>La pausa è tratteggiata. Per quel giorno c’è anche un turno previsto nel planning? Lo vede come una linea punteggiata dietro le ore timbrate.<br><br>In alto trova il totale delle ore per giorno e per l’intera settimana. Un giorno intero di assenza, per esempio ferie, compare accanto al totale del giorno. Quelle ore non contano come lavorate.<br><br>Con le frecce passa a un’altra settimana. Faccia clic su <strong>Oggi</strong> per tornare alla settimana attuale.<br><br>Vuole modificare qualcosa? Faccia clic su un blocco. Può correggere un turno chiuso o chiudere un turno ancora aperto.<br><br><strong>Buono a sapersi:</strong> un turno notturno che passa la mezzanotte compare in entrambi i giorni. Le ore lavorate contano nel totale del giorno in cui l’esecutore ha timbrato l’entrata.<br><br>Anche con Weekend disattivato, un turno notturno che inizia venerdì e prosegue sabato resta conteggiato con il venerdì."
                 },
                 {
-                    "label": "Chiudi turno",
-                    "text": "I turni aperti di questo elenco si possono chiudere anche qui, come in Presenza. Se il team ha una pausa minima e il turno dura almeno 4 ore, conta sul foglio ore (nessun evento CIAO extra)."
+                    "label": "Vedere le registrazioni",
+                    "text": "Sotto <strong>Registrazioni</strong> trova tutte le timbrature di un turno.<br><br>Ogni volta vede:<br><br>• L’ora registrata.<br>• <strong>Entrata</strong> o <strong>Uscita</strong>.<br>• La sede in cui l’esecutore si è identificato.<br><br>Anche le pause compaiono come un blocco orario, per esempio 12:00–12:30 Pausa. La pausa è ancora in corso? Il blocco prosegue fino all’ora attuale.<br><br>Usa un Clock Point con il nome Accesso? WinProx mostra allora la sede collegata. Se non c’è una sede, compare semplicemente Clock Point."
+                },
+                {
+                    "label": "Che cosa significano gli stati?",
+                    "text": "Dallo stato vede subito che cosa è successo a un turno.<br><br>• <strong>Aperto</strong>: l’esecutore è ancora timbrato.<br>• <strong>Chiuso</strong>: l’esecutore ha timbrato l’uscita normalmente.<br>• <strong>Chiuso (admin)</strong>: un amministratore ha chiuso il turno.<br>• <strong>Chiuso (automatico)</strong>: WinProx ha chiuso automaticamente un turno dimenticato. Per impostazione predefinita avviene dopo 16 ore. Può impostare questo limite per team.<br>• <strong>Timbrato manualmente</strong>: un amministratore ha timbrato l’esecutore."
+                },
+                {
+                    "label": "Correggere un turno timbrato",
+                    "text": "Un esecutore ha dimenticato di timbrare l’uscita, o una registrazione non è corretta? Può modificare un turno chiuso.<br><br>Faccia clic su <strong>Correggi</strong> nel turno.<br><br>Può modificare:<br><br>• L’ora di entrata.<br>• L’ora di uscita.<br>• I minuti di pausa.<br><br>Deve sempre indicare un motivo. WinProx registra chi ha fatto la modifica e perché. Ogni adattamento resta rintracciabile.<br><br>Lascia vuota l’ora di uscita? Il turno si riapre. È utile, per esempio, quando qualcuno ha timbrato l’uscita per errore.<br><br>È possibile solo se l’esecutore non ha già un altro turno aperto.<br><br>Non può correggere direttamente un turno aperto. Lo chiuda prima con <strong>Chiudi turno</strong>.<br><br><strong>Buono a sapersi:</strong> una correzione aggiorna il foglio ore. Non viene inviata una nuova timbratura di entrata o di uscita all’ONSS."
+                },
+                {
+                    "label": "Chiudere un turno aperto",
+                    "text": "Un esecutore ha dimenticato di timbrare l’uscita? Può chiudere il turno Lei stesso.<br><br>Nel turno aperto, faccia clic su <strong>Chiudi turno</strong>. WinProx chiude il turno all’ora attuale. Indichi anche un motivo.<br><br>Il team ha una pausa minima e il turno dura almeno 4 ore? Quella pausa viene conteggiata nelle ore.<br><br>Può chiudere un turno aperto allo stesso modo da Presenza."
                 },
                 {
                     "label": "Timbratura manuale",
-                    "requires_facility": true,
-                    "text": "Stessa azione di Presenza: timbra un esecutore su un Clock Point senza telefono. Nessun dispositivo collegato; motivo obbligatorio nel log di audit; pillola <strong>Timbrato manualmente</strong>."
-                },
-                {
-                    "label": "Stati",
-                    "text": "<strong>Aperto</strong> — ancora timbrato. <strong>Chiuso</strong> — uscita normale. <strong>Chiuso (admin)</strong> — chiuso manualmente dall'amministratore. <strong>Chiuso (automatico)</strong> — il sistema chiude un turno dimenticato dopo la soglia."
-                },
-                {
-                    "label": "Registrazioni",
-                    "text": "In <strong>Registrazioni</strong> le timbrature sono elencate: ora + Entrata o Uscita, con il luogo sotto. Il nome generico Accedi non viene mostrato; vedi la sede (o Clock Point se non c’è una sede)."
-                },
-                {
-                    "label": "Collega attività",
-                    "text": "Avvii o completi un'attività tramite il portale QR unità mentre l’esecutore è timbrato — l'attività viene collegata automaticamente al turno aperto. All'uscita, le attività collegate ancora aperte vengono chiuse."
+                    "text": "Un esecutore non ha il telefono con sé? O per il momento non riesce a timbrare? Può farlo manualmente come amministratore.<br><br>Faccia clic su <strong>Timbratura manuale</strong> e selezioni:<br><br>• L’esecutore.<br>• Il Clock Point.<br>• Il motivo della registrazione manuale.<br><br>L’esecutore viene timbrato senza che un telefono sia collegato alla registrazione.<br><br>Nel turno compare lo stato <strong>Timbrato manualmente</strong>.<br><br>Più tardi l’esecutore può timbrare l’uscita con una scansione del QR. Può anche chiudere il turno come amministratore con <strong>Chiudi turno</strong>.",
+                    "requires_facility": true
                 },
                 {
                     "label": "Pausa minima",
-                    "text": "Se un team ha una pausa minima e un turno chiuso mostra meno minuti, un admin può <strong>Applica pausa minima</strong> (audit log) o modificare i minuti con <strong>Correggi</strong>. All’uscita il minimo si applica automaticamente se il turno dura almeno 4 ore. Nessun IN/OUT CIAO extra."
+                    "text": "Può impostare una pausa minima obbligatoria per team.<br><br>Un turno chiuso dura almeno 4 ore e l’esecutore ha fatto meno pausa del minimo? WinProx integra allora la pausa automaticamente alla timbratura di uscita.<br><br>Lo riconosce dalla dicitura <strong>Completata fino a … (regola del team).</strong>.<br><br>La pausa non è stata integrata automaticamente? Può ancora farlo con <strong>Completare fino a …</strong>. Può anche modificare i minuti di pausa con <strong>Correggi</strong>.<br><br>L’integrazione non vale per i turni più brevi di 4 ore né per i turni ancora aperti.<br><br><strong>Importante:</strong> la pausa integrata viene registrata nel foglio ore. Non è una pausa aggiuntiva realmente timbrata. Non viene inviata nemmeno una nuova registrazione all’ONSS."
+                },
+                {
+                    "label": "Attività durante un turno",
+                    "text": "Un esecutore usa durante il turno il QR di una unit per avviare o chiudere un’attività? WinProx collega allora quell’attività automaticamente al turno aperto.<br><br>Così può vedere in seguito quali attività sono state svolte durante un determinato turno.<br><br>Alla timbratura di uscita WinProx chiude automaticamente le attività collegate ancora aperte."
+                },
+                {
+                    "label": "Scaricare un rapporto",
+                    "text": "Vuole conservare le ore timbrate, elaborarle o stamparle? Faccia clic su <strong>Scarica rapporto</strong>.<br><br>Può scegliere:<br><br>• <strong>CSV</strong>: scarichi un file che può aprire e modificare in Excel, tra gli altri.<br>• <strong>Stampa (PDF)</strong>: apra una panoramica che può stampare o salvare come pdf.<br><br>Il rapporto usa gli stessi filtri della schermata. Sono inclusi anche i turni che non sono nella pagina attuale.<br><br><strong>Weekend</strong> è disattivato? Allora sabato e domenica non entrano nemmeno nel rapporto.<br><br>Un rapporto contiene al massimo 5.000 turni. Sono di più? Riduca il periodo o usi altri filtri."
+                },
+                {
+                    "label": "Da altre schermate",
+                    "text": "Può aprire le ore timbrate anche direttamente da altre parti di WinProx.<br><br>• <strong>Presenza</strong>: faccia clic sul nome di un esecutore. Arriva subito alla panoramica di quella persona, con le ultime tre settimane come periodo.<br>• <strong>Turni</strong>: faccia clic sul segno di spunta o sul pallino in una cella del giorno. WinProx mostra le ore timbrate di quell’esecutore in quel giorno."
                 }
             ]
         },

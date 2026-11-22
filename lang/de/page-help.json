@@ -1657,45 +1657,57 @@
             "title": "Hilfe — Gestempelte Stunden",
             "actions": [
                 {
-                    "label": "Zeitraum und Filter",
-                    "text": "Die Liste öffnet auf heute. Wählen Sie ein Von- und Bis-Datum und filtern Sie optional nach Team, Ausführendem oder Clock Point. <strong>Wochenenden</strong> ist standardmäßig aus: Samstag und Sonntag verschwinden. Schalten Sie es ein, um sie zu zeigen. Drücken Sie <strong>Anwenden</strong>, um die Liste zu aktualisieren. Bei allen Ausführenden öffnet ein Klick auf den Namen die Woche dieser Person."
+                    "label": "Was finden Sie hier?",
+                    "text": "Auf diesem Bildschirm sehen Sie, wann Ihre ausführenden Personen ein- und ausgestempelt haben, wie viel sie gearbeitet haben und an welchem Standort sie sich angemeldet haben.<br><br>Standardmäßig öffnet sich der Bildschirm auf heute. Sie können selbst einen anderen Zeitraum wählen, um frühere Leistungen anzusehen."
                 },
                 {
-                    "label": "Wochenansicht",
-                    "text": "Wählen Sie oben <strong>Woche</strong>, eine ausführende Person und drücken Sie <strong>Anwenden</strong>. Sie sehen die Tage dieser Woche mit den Stunden des Tages (Samstag und Sonntag nur wenn Wochenenden an ist): Jeder Block ist eine Schicht vom Ein- bis zum Ausstempeln, die Pause schraffiert und die geplante Schicht gestrichelt dahinter. Oben stehen die Summe pro Tag und für die Woche. Blättern Sie mit den Pfeilen; ein Klick auf einen Block öffnet die Korrektur oder das Schließen einer offenen Schicht."
+                    "label": "Liste oder Woche?",
+                    "text": "Sie können die gestempelten Stunden auf zwei Arten ansehen: Liste oder Woche.<br><br>• <strong>Liste</strong>: alle Schichten untereinander, mit den Stempelungen.<br>• <strong>Woche</strong>: die Tage einer ausführenden Person, mit den Schichten auf den Stunden.<br><br>Wochenenden sind standardmäßig ausgeblendet. Schalten Sie <strong>Wochenenden</strong> ein, wenn Sie auch Samstag und Sonntag sehen wollen. Die Änderung gilt sofort."
                 },
                 {
-                    "label": "Bericht herunterladen",
-                    "text": "Untermenü CSV + Drucken: laden Sie die gefilterten Schichten als CSV herunter (Excel-freundlich) oder öffnen Sie eine druckbare Stundenübersicht (Strg+P zu PDF). Dieselben Filter wie die Liste; nicht nur die aktuelle Seite (max. 5000 Zeilen)."
+                    "label": "Die Liste ansehen",
+                    "text": "Wählen Sie den Zeitraum bei <strong>Von</strong> und <strong>Bis</strong>. Sie können die Übersicht weiter eingrenzen nach <strong>Team</strong>, <strong>Mitarbeitende</strong> oder <strong>Clock Point</strong>.<br><br>Klicken Sie auf <strong>Anwenden</strong>, um die Übersicht zu aktualisieren.<br><br>Je Schicht sehen Sie:<br><br>• Den Namen der ausführenden Person und das Team.<br>• Die gearbeiteten Stunden und die Pause.<br>• Das Datum und gegebenenfalls <strong>Geplant</strong>, wenn für diesen Tag eine Schicht im Dienstplan steht.<br>• Alle Ein- und Ausstempelungen.<br>• Den aktuellen Status der Schicht.<br><br>Ist unter <strong>Mitarbeitende</strong> die Auswahl <strong>Alle Mitarbeitenden</strong> gewählt? Dann können Sie auf einen Namen klicken, um sofort die Woche dieser ausführenden Person zu öffnen, in der Woche der Schicht.<br><br>Unter einer Schicht können auch weitere Angaben stehen, zum Beispiel:<br><br>• <strong>Verschiebungen in dieser Schicht</strong><br>• <strong>Arbeitsbesuche</strong><br>• <strong>Aufgaben während dieser Schicht</strong>"
                 },
                 {
-                    "label": "Korrigieren",
-                    "text": "Bei einer geschlossenen Schicht kann ein Admin Ein-/Ausstempelzeiten oder Pauseminuten mit Pflichtgrund ändern. Ausstempelzeit leer lassen öffnet die Schicht wieder (falsches Ausstempeln), außer der Mitarbeiter hat bereits eine andere offene Schicht. Änderungen stehen im Auditlog. Kein extra CIAO IN/OUT. Fehlt die Team-Pause, nutzen Sie <strong>Mindestpause anwenden</strong>."
+                    "label": "Die Woche ansehen",
+                    "text": "Wählen Sie <strong>Woche</strong>, wählen Sie unter <strong>Mitarbeitende</strong> eine ausführende Person und klicken Sie auf <strong>Anwenden</strong>. Ist noch niemand gewählt? Dann bittet WinProx zuerst, eine ausführende Person zu wählen.<br><br>Sie erhalten eine Übersicht aller Tage dieser Woche mit den zugehörigen Schichten.<br><br>Jeder Block ist eine Schicht, vom Einstempeln bis zum Ausstempeln. Eine Schicht, die noch läuft, geht bis zur aktuellen Uhrzeit.<br><br>Die Pause ist schraffiert. Steht für diesen Tag auch eine geplante Schicht im Dienstplan? Dann sehen Sie sie als gestrichelte Linie hinter den gestempelten Stunden.<br><br>Oben finden Sie die Summe der Stunden je Tag und für die ganze Woche. Ein voller Abwesenheitstag, zum Beispiel Urlaub, steht beim Tagestotal. Diese Stunden zählen nicht als gearbeitet.<br><br>Mit den Pfeilen blättern Sie zu einer anderen Woche. Klicken Sie auf <strong>Heute</strong>, um zur aktuellen Woche zurückzukehren.<br><br>Möchten Sie etwas ändern? Klicken Sie auf einen Schichtblock. Sie können eine geschlossene Schicht korrigieren oder eine noch offene Schicht schließen.<br><br><strong>Gut zu wissen:</strong> eine Nachtschicht, die über Mitternacht geht, wird an beiden Kalendertagen angezeigt. Die gearbeiteten Stunden zählen beim Tagestotal des Tages, an dem die ausführende Person eingestempelt hat.<br><br>Auch wenn Wochenenden ausgeschaltet ist, zählt eine Nachtschicht, die am Freitag beginnt und bis Samstag weiterläuft, bei Freitag mit."
                 },
                 {
-                    "label": "Schicht schließen",
-                    "text": "Offene Schichten in dieser Liste können hier ebenfalls zwangsweise geschlossen werden, wie unter Anwesenheit. Hat das Team eine Mindestpause und die Schicht dauert mindestens 4 Stunden, zählt sie auf der Stundenliste (kein extra CIAO-Ereignis)."
+                    "label": "Die Stempelungen ansehen",
+                    "text": "Unter <strong>Stempelungen</strong> finden Sie alle Stempelungen einer Schicht.<br><br>Sie sehen jeweils:<br><br>• Die erfasste Uhrzeit.<br>• <strong>Ein</strong> oder <strong>Aus</strong>.<br>• Den Standort, an dem sich die ausführende Person angemeldet hat.<br><br>Pausen stehen ebenfalls als Zeitblock da, zum Beispiel 12:00–12:30 Pause. Läuft die Pause noch? Dann geht der Block bis zur aktuellen Uhrzeit.<br><br>Verwenden Sie einen Clock Point mit dem Namen Anmeldung? Dann zeigt WinProx den verknüpften Standort. Ist kein Standort festgelegt, steht einfach Clock Point."
+                },
+                {
+                    "label": "Was bedeuten die Status?",
+                    "text": "Am Status sehen Sie sofort, was mit einer Schicht geschehen ist.<br><br>• <strong>Offen</strong>: die ausführende Person ist noch eingestempelt.<br>• <strong>Geschlossen</strong>: die ausführende Person hat normal ausgestempelt.<br>• <strong>Geschlossen (Admin)</strong>: ein Administrator hat die Schicht selbst geschlossen.<br>• <strong>Geschlossen (automatisch)</strong>: WinProx hat eine vergessene Schicht automatisch geschlossen. Standardmäßig geschieht das nach 16 Stunden. Diese Grenze stellen Sie je Team ein.<br>• <strong>Manuell eingestempelt</strong>: ein Administrator hat die ausführende Person selbst eingestempelt."
+                },
+                {
+                    "label": "Eine gestempelte Schicht korrigieren",
+                    "text": "Hat eine ausführende Person das Ausstempeln vergessen, oder stimmt eine Stempelung nicht? Dann können Sie eine geschlossene Schicht anpassen.<br><br>Klicken Sie bei der Schicht auf <strong>Korrigieren</strong>.<br><br>Sie können ändern:<br><br>• Die Einstempelzeit.<br>• Die Ausstempelzeit.<br>• Die Pausenminuten.<br><br>Sie müssen immer einen Grund eintragen. WinProx hält fest, wer die Änderung gemacht hat und warum. So bleibt jede Anpassung nachvollziehbar.<br><br>Lassen Sie die Ausstempelzeit leer? Dann wird die Schicht wieder geöffnet. Das ist zum Beispiel praktisch, wenn jemand versehentlich ausgestempelt hat.<br><br>Das geht nur, wenn die ausführende Person nicht schon eine andere offene Schicht hat.<br><br>Eine offene Schicht können Sie nicht direkt korrigieren. Schließen Sie sie zuerst mit <strong>Schicht schließen</strong>.<br><br><strong>Gut zu wissen:</strong> eine Korrektur passt die Stundenliste an. Es geht keine neue Ein- oder Ausstempelung an die LSS."
+                },
+                {
+                    "label": "Eine offene Schicht schließen",
+                    "text": "Hat eine ausführende Person das Ausstempeln vergessen? Dann können Sie die Schicht selbst schließen.<br><br>Klicken Sie bei der offenen Schicht auf <strong>Schicht schließen</strong>. WinProx schließt die Schicht zur aktuellen Uhrzeit. Sie geben auch einen Grund an.<br><br>Hat das Team eine Mindestpause und dauert die Schicht mindestens 4 Stunden? Dann wird diese Pause in den Stunden mitgerechnet.<br><br>Eine offene Schicht können Sie auf dieselbe Weise über Anwesenheit schließen."
                 },
                 {
                     "label": "Manuell einstempeln",
-                    "requires_facility": true,
-                    "text": "Gleiche Aktion wie unter Anwesenheit: stempeln Sie eine ausführende Person ohne Handy ein. Keine Gerätekopplung; Pflichtgrund im Audit-Log; Pille <strong>Manuell eingestempelt</strong>."
-                },
-                {
-                    "label": "Status",
-                    "text": "<strong>Offen</strong> — noch eingestempelt. <strong>Geschlossen</strong> — normal ausgestempelt. <strong>Geschlossen (Admin)</strong> — manuell vom Administrator geschlossen. <strong>Geschlossen (automatisch)</strong> — System schließt eine vergessene Schicht nach der Schwelle."
-                },
-                {
-                    "label": "Stempelungen",
-                    "text": "Unter <strong>Stempelungen</strong> stehen die Stempelzeiten: Uhrzeit + Ein oder Aus, darunter der Ort. Der generische Name Anmelden wird nicht gezeigt; Sie sehen den Standort (oder Clock Point ohne Standort)."
-                },
-                {
-                    "label": "Aufgaben verknüpfen",
-                    "text": "Starten oder schließen Sie eine Aufgabe über das Unit-QR-Portal, während der Ausführende eingestempelt ist — dann wird diese Aufgabe automatisch mit der offenen Schicht verknüpft. Beim Ausstempeln werden noch offene verknüpfte Aufgaben abgeschlossen."
+                    "text": "Hat eine ausführende Person kein Handy dabei? Oder gelingt das Einstempeln vorübergehend nicht? Dann können Sie das als Administrator manuell tun.<br><br>Klicken Sie auf <strong>Manuell einstempeln</strong> und wählen Sie:<br><br>• Die ausführende Person.<br>• Den Clock Point.<br>• Den Grund der manuellen Erfassung.<br><br>Die ausführende Person wird eingestempelt, ohne dass ein Handy mit der Erfassung verknüpft wird.<br><br>Bei der Schicht erscheint der Status <strong>Manuell eingestempelt</strong>.<br><br>Später kann die ausführende Person selbst mit einem QR-Scan ausstempeln. Sie können die Schicht auch als Administrator über <strong>Schicht schließen</strong> schließen.",
+                    "requires_facility": true
                 },
                 {
                     "label": "Mindestpause",
-                    "text": "Hat ein Team eine Mindestpause und eine geschlossene Schicht weniger Pauseminuten, kann ein Admin <strong>Mindestpause anwenden</strong> (Auditlog) oder die Minuten über <strong>Korrigieren</strong> ändern. Beim Ausstempeln gilt das Minimum automatisch, wenn die Schicht mindestens 4 Stunden dauert. Kein zusätzliches CIAO IN/OUT."
+                    "text": "Sie können je Team eine verpflichtende Mindestpause festlegen.<br><br>Dauert eine geschlossene Schicht mindestens 4 Stunden und hat die ausführende Person weniger Pause genommen als das Minimum? Dann füllt WinProx die Pause beim Ausstempeln automatisch auf.<br><br>Sie erkennen das an der Angabe <strong>Aufgefüllt auf … (Teamregel).</strong>.<br><br>Wurde die Pause nicht automatisch aufgefüllt? Dann können Sie das noch mit <strong>Auffüllen auf …</strong> tun. Die Pausenminuten können Sie auch selbst über <strong>Korrigieren</strong> anpassen.<br><br>Die Ergänzung gilt nicht für Schichten unter 4 Stunden und nicht für Schichten, die noch offen sind.<br><br><strong>Wichtig:</strong> die aufgefüllte Pause wird in der Stundenliste verarbeitet. Es ist keine zusätzliche, tatsächlich gestempelte Pause. Es geht auch keine neue Erfassung an die LSS."
+                },
+                {
+                    "label": "Aufgaben während einer Schicht",
+                    "text": "Nutzt eine ausführende Person während der Schicht einen QR-Code einer Unit, um eine Aufgabe zu starten oder abzuschließen? Dann verknüpft WinProx diese Aufgabe automatisch mit der offenen Schicht.<br><br>So sehen Sie hinterher auch, welche Aufgaben während einer bestimmten Schicht erledigt wurden.<br><br>Beim Ausstempeln schließt WinProx noch offene, verknüpfte Aufgaben automatisch ab."
+                },
+                {
+                    "label": "Einen Bericht herunterladen",
+                    "text": "Möchten Sie die gestempelten Stunden aufbewahren, weiterverarbeiten oder drucken? Klicken Sie auf <strong>Bericht herunterladen</strong>.<br><br>Sie können wählen:<br><br>• <strong>CSV</strong>: laden Sie eine Datei herunter, die Sie unter anderem in Excel öffnen und weiterbearbeiten können.<br>• <strong>Drucken (PDF)</strong>: öffnen Sie eine Übersicht, die Sie drucken oder als PDF speichern können.<br><br>Der Bericht berücksichtigt dieselben Filter wie der Bildschirm. Auch Schichten, die nicht auf der aktuellen Seite stehen, werden übernommen.<br><br>Ist <strong>Wochenenden</strong> ausgeschaltet? Dann fehlen Samstag und Sonntag auch im Bericht.<br><br>Ein Bericht enthält höchstens 5.000 Schichten. Sind es mehr? Verkleinern Sie den Zeitraum oder nutzen Sie zusätzliche Filter."
+                },
+                {
+                    "label": "Aus anderen Bildschirmen",
+                    "text": "Sie können die gestempelten Stunden auch direkt aus anderen Teilen von WinProx öffnen.<br><br>• <strong>Anwesenheit</strong>: klicken Sie auf den Namen einer ausführenden Person. Sie gelangen sofort in die Übersicht dieser Person, mit den letzten drei Wochen als Zeitraum.<br>• <strong>Dienstplan</strong>: klicken Sie auf das Häkchen oder den Punkt in einer Tageszelle. WinProx zeigt die gestempelten Stunden dieser ausführenden Person an diesem Tag."
                 }
             ]
         },
