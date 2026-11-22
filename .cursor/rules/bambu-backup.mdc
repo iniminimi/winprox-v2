@@ -5,16 +5,15 @@ alwaysApply: true
 
 # Backup van 3D-bestanden
 
-Vóór je een bestand onder `C:\werkmap\Bambu` wijzigt of overschrijft, maak er
-eerst een zip van in `C:\werkmap\Bambu\Backup`. Niet achteraf. Geen losse kopie.
+Vóór je bestanden onder `C:\werkmap\Bambu` wijzigt of overschrijft, stop je ze
+eerst samen in **één zip** in `C:\werkmap\Bambu\Backup`. Niet achteraf. Geen
+losse kopie en geen zip per bestand.
 
 ## Wat
 
 Niet alleen de `.py`. Die is de bron, maar één script schrijft in dezelfde run
-ook de printbestanden. Zonder die zip is een goede STL weg, ook als de oude
-`.py` er nog is.
-
-Zip elk bestand dat deze wijziging zal overschrijven, elk in zijn eigen zip:
+ook de printbestanden. Alles wat deze wijziging zal overschrijven gaat in
+die ene zip:
 
 - de bron die je bewerkt (`.py`)
 - elke uitvoer die vervangen wordt (`.stl`, `.step`, `.3mf`)
@@ -22,18 +21,19 @@ Zip elk bestand dat deze wijziging zal overschrijven, elk in zijn eigen zip:
 Een `.3mf` hoort erbij zodra dat project zelf wijzigt: laaghoogte en wanden
 staan niet in de Python.
 
-Niet zippen: `__pycache__`, de map `Backup` zelf, en voorbeeldfoto's die je
+Niet meenemen: `__pycache__`, de map `Backup` zelf, en voorbeeldfoto's die je
 niet vervangt.
 
 ## Waar
 
-`C:\werkmap\Bambu\Backup\<relatief pad>\<jjjjmmdd-uummss>_<bestandsnaam>.zip`
+`C:\werkmap\Bambu\Backup\<relatief pad>\<jjjjmmdd-uummss>_<set>.zip`
 
-Voorbeeld:
+In de zip staan de bestanden onder hun gewone naam. Voorbeeld:
 
-`Backup\Seeed_D1_box\20261122-1112_Seeed D1 enclosure.py.zip`
+`Backup\Seeed_D1_box\20261122-1112_Seeed D1 enclosure.zip`
 
-In de zip staat het bestand onder zijn gewone naam. Per bestand blijven de
-**10 nieuwste** zips staan. Komt er een elfde bij, dan verwijder je de oudste
-van diezelfde bestandsnaam tot er weer 10 zijn. De werkbestanden blijven op
-hun plaats. De zip is alleen om terug te zetten.
+met daarin `Seeed D1 enclosure.py`, `.stl` en `.step`.
+
+Per set blijven de **10 nieuwste** zips staan. Komt er een elfde bij, dan
+verwijder je de oudste van die set tot er weer 10 zijn. De werkbestanden
+blijven op hun plaats. De zip is alleen om terug te zetten.
