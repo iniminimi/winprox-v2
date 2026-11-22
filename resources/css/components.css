@@ -8830,9 +8830,34 @@ html.wp-pwa-standalone.wp-push-blocked:not(.wp-push-ready) .wp-portal-push-card 
 
 .wp-portal-push-card__actions {
     display: flex;
+    flex-direction: column;
     width: 100%;
-    align-items: center;
-    justify-content: center;
+    align-items: stretch;
+    gap: 0.75rem;
+}
+
+.wp-portal-push-card__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.wp-homescreen-steps {
+    margin: 0.25rem 0 0;
+    padding-left: 1.25rem;
+}
+
+.wp-homescreen-steps li + li {
+    margin-top: 0.35rem;
+}
+
+html.wp-homescreen-ios .wp-homescreen-help__android,
+html.wp-homescreen-android .wp-homescreen-help__ios {
+    display: none;
+}
+
+.wp-homescreen-stale[hidden] {
+    display: none;
 }
 
 .wp-portal-push-card__btn {

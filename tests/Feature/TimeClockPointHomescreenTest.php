@@ -73,6 +73,11 @@ it('opent de startscherm-hulp op elk clock point', function () {
         ->call('openHomescreenHelp')
         ->assertSet('homescreenHelpOpen', true)
         ->assertSee(__('time.portal.homescreen.help_title'), false)
+        ->assertSee(__('time.portal.homescreen.help_ios_1'), false)
+        ->assertSee(__('time.portal.homescreen.help_android'), false)
+        ->assertSee(__('time.portal.homescreen.help_done'), false)
+        ->assertDontSee(__('time.portal.homescreen.help_push_title'), false)
+        ->assertSeeHtml('data-wp-homescreen-stale hidden')
         ->call('closeHomescreenHelp')
         ->assertSet('homescreenHelpOpen', false);
 });
@@ -88,6 +93,8 @@ it('toont het startscherm-icoon ook na aanmelden', function () {
         'field_icon_slug' => 'heart',
     ]);
 
+    config(['push.public_key' => 'test-public']);
+
     Livewire::test(TimePortal::class, ['token' => $clockPoint->qr_token])
         ->assertSeeHtml('data-wp-homescreen-install')
         ->set('first_name', 'Jan')
@@ -96,6 +103,8 @@ it('toont het startscherm-icoon ook na aanmelden', function () {
         ->set('sign_in_icon_slug', 'heart')
         ->call('signInWithIcon')
         ->assertSeeHtml('data-wp-homescreen-install')
+        ->assertSee(__('time.portal.homescreen.help_push_title'), false)
+        ->assertDontSeeHtml('data-wp-homescreen-stale')
         ->assertDontSeeHtml('<h1 class="wp-page-title">'.e(__('time.portal.title')).'</h1>');
 });
 

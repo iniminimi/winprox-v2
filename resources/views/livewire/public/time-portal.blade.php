@@ -7,6 +7,14 @@
             <meta name="apple-mobile-web-app-title" content="WinProx">
             <link rel="apple-touch-icon" href="{{ asset('images/pwa/winprox-192.png') }}">
             <meta name="theme-color" content="#059669">
+            <script>
+                (function () {
+                    var ua = navigator.userAgent || '';
+                    var ios = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+                    var android = /Android/i.test(ua);
+                    document.documentElement.classList.add(ios ? 'wp-homescreen-ios' : (android ? 'wp-homescreen-android' : 'wp-homescreen-other'));
+                })();
+            </script>
         @endpush
     @endif
     <script>
@@ -45,6 +53,10 @@
                 <div class="wp-card wp-card-pad wp-portal-homescreen-card wp-card--prio-pulse">
                     @include('partials.wp-homescreen-shortcut')
                 </div>
+                <div class="wp-card wp-card-pad wp-stack wp-homescreen-stale" data-wp-homescreen-stale hidden>
+                    <h2 class="wp-h2">{{ __('time.portal.homescreen.help_existing_title') }}</h2>
+                    <p>{{ __('time.portal.homescreen.help_existing') }}</p>
+                </div>
             @endif
         @else
             @if ($offerHomescreenShortcut ?? false)
@@ -55,12 +67,19 @@
             @if (($pushPublicKey ?? '') !== '')
                 <div class="wp-card wp-card-pad wp-portal-push-card wp-card--prio-pulse">
                     <div
-                        class="wp-portal-push-card__actions"
+                        class="wp-stack wp-portal-push-card__actions"
                         data-wp-push
                         data-public-key="{{ $pushPublicKey }}"
                         data-url="{{ route('public.time-portal.push-subscription') }}"
                         data-locale="{{ str_replace('_', '-', app()->getLocale()) }}"
                     >
+                        <div class="wp-stack wp-portal-push-card__copy">
+                            <h2 class="wp-h2">{{ __('time.portal.homescreen.help_push_title') }}</h2>
+                            <p>{{ __('time.portal.homescreen.help_push_intro') }}</p>
+                            <p class="wp-muted">{{ __('time.portal.homescreen.help_push') }}</p>
+                            <p class="wp-muted">{{ __('time.portal.homescreen.help_push_examples') }}</p>
+                            <p class="wp-muted wp-homescreen-help__ios">{{ __('time.portal.homescreen.help_push_ios') }}</p>
+                        </div>
                         <button type="button" class="wp-portal-push-card__btn" data-wp-push-enable>
                             {{ __('time.portal.push.enable') }}
                         </button>
@@ -169,7 +188,7 @@
                 </form>
             </div>
         @elseif ($showIdentify)
-            <div class="wp-card wp-card-pad wp-stack" data-manual-capture="portal-team-identify">
+            <div class="wp-card wp-card-pad wp-stack" data-wp-signin="identify" data-manual-capture="portal-team-identify">
                 <h2 class="wp-section-title">{{ __('portal.worker.title') }}</h2>
                 <p class="wp-muted">{{ __('portal.worker.identify_hint') }}</p>
                 <form wire:submit="identifyWorker" class="wp-stack">
@@ -191,7 +210,7 @@
                 @endif
             </div>
         @elseif ($showPinSetup)
-            <div class="wp-card wp-card-pad wp-stack">
+            <div class="wp-card wp-card-pad wp-stack" data-wp-signin="pin-setup">
                 <h2 class="wp-section-title">{{ __('portal.worker.pin_setup_title') }}</h2>
                 <p class="wp-muted">
                     {{ __('portal.worker.pin_setup_hint') }}
@@ -212,7 +231,7 @@
                 </form>
             </div>
         @elseif ($showPinVerify)
-            <div class="wp-card wp-card-pad wp-stack @if ($deviceWorkerHasPasskey ?? false) wp-card--passkey @endif"
+            <div class="wp-card wp-card-pad wp-stack @if ($deviceWorkerHasPasskey ?? false) wp-card--passkey @endif" data-wp-signin="pin"
                 @if ($deviceWorkerHasPasskey ?? false)
                     x-data="wpPortalPasskey({
                         urls: {
@@ -258,7 +277,7 @@
                 @endif
             </div>
         @elseif ($showVerify)
-            <div class="wp-card wp-card-pad wp-stack @if ($deviceWorkerHasPasskey ?? false) wp-card--passkey @endif"
+            <div class="wp-card wp-card-pad wp-stack @if ($deviceWorkerHasPasskey ?? false) wp-card--passkey @endif" data-wp-signin="icon"
                 @if ($deviceWorkerHasPasskey ?? false)
                     x-data="wpPortalPasskey({
                         urls: {
@@ -1139,6 +1158,7 @@
                 <h2 id="wp-pwa-open-title" class="wp-h2">{{ __('time.portal.homescreen.open_title') }}</h2>
                 <p class="wp-muted">{{ __('time.portal.homescreen.open_text') }}</p>
                 <p class="wp-muted">{{ __('time.portal.homescreen.open_apps') }}</p>
+                <p class="wp-muted">{{ __('time.portal.homescreen.help_store') }}</p>
                 <button type="button" class="btn btn--primary" data-wp-pwa-open-dismiss>{{ __('common.button.close') }}</button>
             </div>
         </div>
@@ -1152,10 +1172,23 @@
                     <x-wp-modal-close wire:click="closeHomescreenHelp" />
                 </div>
                 <p>{{ __('time.portal.homescreen.help_intro') }}</p>
-                <p class="wp-muted">{{ __('time.portal.homescreen.help_android') }}</p>
-                <p class="wp-muted">{{ __('time.portal.homescreen.help_ios') }}</p>
-                <p class="wp-muted">{{ __('time.portal.homescreen.help_existing') }}</p>
-                <p class="wp-muted">{{ __('time.portal.homescreen.help_push') }}</p>
+                <div class="wp-homescreen-help__ios">
+                    <p><strong>{{ __('time.portal.homescreen.help_ios_label') }}</strong></p>
+                    <ol class="wp-homescreen-steps">
+                        <li>{{ __('time.portal.homescreen.help_ios_1') }}</li>
+                        <li>{{ __('time.portal.homescreen.help_ios_2') }}</li>
+                        <li>{{ __('time.portal.homescreen.help_ios_3') }}</li>
+                        <li>{{ __('time.portal.homescreen.help_ios_4') }}</li>
+                    </ol>
+                </div>
+                <div class="wp-homescreen-help__android">
+                    <p><strong>{{ __('time.portal.homescreen.help_android_label') }}</strong></p>
+                    <p>{{ __('time.portal.homescreen.help_android') }}</p>
+                </div>
+                <p><strong>{{ __('time.portal.homescreen.help_done_title') }}</strong></p>
+                <p>{{ __('time.portal.homescreen.help_done') }}</p>
+                <p class="wp-muted">{{ __('time.portal.homescreen.help_clock') }}</p>
+                <p class="wp-muted">{{ __('time.portal.homescreen.help_store') }}</p>
                 <div class="wp-cluster">
                     <button type="button" class="btn btn--primary" wire:click="closeHomescreenHelp">{{ __('common.button.close') }}</button>
                 </div>

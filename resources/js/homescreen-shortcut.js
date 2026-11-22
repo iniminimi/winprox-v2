@@ -273,12 +273,132 @@ function bindPwaNav() {
     sync();
 }
 
+const STALE_KEY = 'wp-pwa-stale-icon';
+const SIGN_IN_METHODS = new Set(['identifyWorker', 'signInWithIcon', 'signInWithPin', 'completePinSetup']);
+const SIGN_IN_CARD = {
+    identify: '[data-wp-signin="identify"]',
+    icon: '[data-wp-signin="icon"]',
+    pin: '[data-wp-signin="pin"]',
+    'pin-setup': '[data-wp-signin="pin-setup"]',
+};
+
+let pendingSignInStep = null;
+let staleTimer = null;
+
+function staleNode() {
+    return document.querySelector('[data-wp-homescreen-stale]');
+}
+
+function writeStale(on) {
+    try {
+        if (on) {
+            window.sessionStorage.setItem(STALE_KEY, '1');
+        } else {
+            window.sessionStorage.removeItem(STALE_KEY);
+        }
+    } catch {
+        // Private mode.
+    }
+}
+
+function readStale() {
+    try {
+        return window.sessionStorage.getItem(STALE_KEY) === '1';
+    } catch {
+        return false;
+    }
+}
+
+function showStaleIcon() {
+    const node = staleNode();
+    if (!node) {
+        return;
+    }
+    writeStale(true);
+    node.hidden = false;
+}
+
+function signInStillStuck(step) {
+    const selector = SIGN_IN_CARD[step];
+    const card = selector ? document.querySelector(selector) : null;
+    if (!card || card.querySelector('.wp-error') || document.querySelector('.wp-flash')) {
+        return false;
+    }
+    return card.querySelector('[wire\\:click="releaseOwnClockDevice"]') === null;
+}
+
+function syncStaleIcon() {
+    if (document.querySelector('[data-wp-homescreen-install]') && !staleNode()) {
+        writeStale(false);
+        return;
+    }
+    const node = staleNode();
+    if (node && readStale()) {
+        node.hidden = false;
+    }
+}
+
+document.addEventListener('click', (event) => {
+    if (!isStandaloneDisplay()) {
+        return;
+    }
+    const card = event.target.closest('[data-wp-signin]');
+    const submit = event.target.closest('button[type="submit"], [wire\\:click="signInWithIcon"]');
+    if (!card || !submit || submit.disabled) {
+        return;
+    }
+    pendingSignInStep = card.getAttribute('data-wp-signin');
+    window.clearTimeout(staleTimer);
+    const step = pendingSignInStep;
+    staleTimer = window.setTimeout(() => {
+        if (step && isStandaloneDisplay() && signInStillStuck(step)) {
+            showStaleIcon();
+        }
+    }, 8000);
+}, true);
+
+function bindStaleSignIn() {
+    if (!window.Livewire || window.Livewire.__wpStaleBound) {
+        return;
+    }
+    window.Livewire.__wpStaleBound = true;
+    window.Livewire.hook('commit', ({ commit, succeed, fail }) => {
+        const calls = (commit && commit.calls) || [];
+        const signingIn = calls.some((call) => SIGN_IN_METHODS.has(call.method));
+        if (!signingIn) {
+            return;
+        }
+        const step = pendingSignInStep;
+        const finish = () => {
+            pendingSignInStep = null;
+            window.clearTimeout(staleTimer);
+        };
+        fail(finish);
+        succeed(() => {
+            finish();
+            window.queueMicrotask(() => {
+                if (step && isStandaloneDisplay() && signInStillStuck(step)) {
+                    showStaleIcon();
+                    return;
+                }
+                syncStaleIcon();
+            });
+        });
+    });
+}
+
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         hideShortcutWhenInstalled();
         bindPwaNav();
+        syncStaleIcon();
+        bindStaleSignIn();
     }, { once: true });
 } else {
     hideShortcutWhenInstalled();
     bindPwaNav();
+    syncStaleIcon();
+    bindStaleSignIn();
 }
+
+document.addEventListener('livewire:init', bindStaleSignIn, { once: true });
