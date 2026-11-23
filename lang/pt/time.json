@@ -56,6 +56,10 @@
     },
     "portal": {
         "title": "Iniciar sessão",
+        "desktop": {
+            "title": "Abra esta página no telemóvel",
+            "body": "A ligação de acesso funciona num smartphone. Abra a ligação do e-mail no telemóvel."
+        },
         "clock": {
             "not_clocked_in": "Ainda não registou a entrada",
             "signed_in_at": "Sessão iniciada no WinProx às :time",

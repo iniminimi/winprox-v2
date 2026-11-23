@@ -429,6 +429,10 @@
     },
     "portal": {
         "title": "Sign in",
+        "desktop": {
+            "title": "Open this page on your phone",
+            "body": "The sign-in link works on a smartphone. Open the link from the email on your phone."
+        },
         "clock": {
             "not_clocked_in": "Not clocked in yet",
             "signed_in_at": "Signed in on WinProx at :time",

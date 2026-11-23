@@ -429,6 +429,10 @@
     },
     "portal": {
         "title": "Inicio de sesión",
+        "desktop": {
+            "title": "Abra esta página en su móvil",
+            "body": "El enlace de acceso funciona en un smartphone. Abra el enlace del correo en su móvil."
+        },
         "clock": {
             "not_clocked_in": "Aún no ha fichado",
             "signed_in_at": "Sesión iniciada en WinProx a las :time",

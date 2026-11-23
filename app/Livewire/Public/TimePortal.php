@@ -84,6 +84,7 @@ use App\Models\Worker;
 use App\Models\WorkerDevice;
 use App\Models\WorkShift;
 use App\Support\Checkmate\CheckmateMode;
+use App\Support\Http\PhoneUserAgent;
 use App\Support\Portal\ClockPointScanGrant;
 use App\Support\Portal\PortalEntryToken;
 use App\Support\Portal\TimePortalData;
@@ -2177,6 +2178,11 @@ class TimePortal extends Component
     public function render(FindOpenWorkShiftForWorkerAction $findShift, SyncWorkerOpenTaskBaselineAction $syncBaseline, ListOpenTimeRosterAction $listRoster, ListWorkerHoursAction $listHours, ListPublishedWorkerRosterAction $listSchedule, ListPublishedLocationRosterAction $listTeamSchedule, ListWorkerNotificationsAction $listNotifications, ListWorkDestinationsForWorkerAction $listDestinations, ResolveWorkerPortalRosterAlertsAction $rosterAlerts, ListWorkerAbsenceRequestsAction $listAbsenceRequests, CollectAbsenceClockInAttentionAction $absenceClockIns)
     {
         app()->setLocale($this->locale);
+
+        if (request()->routeIs('public.time-portal.cp') && ! PhoneUserAgent::isPhone(request()->userAgent())) {
+            return view('livewire.public.time-portal-phone');
+        }
+
         $this->refreshPortalFlash();
 
         $verifiedWorker = $this->verifiedWorker();

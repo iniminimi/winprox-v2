@@ -56,6 +56,10 @@
     },
     "portal": {
         "title": "Autentificare",
+        "desktop": {
+            "title": "Deschideți această pagină pe telefon",
+            "body": "Linkul de conectare funcționează pe un smartphone. Deschideți linkul din e-mail pe telefon."
+        },
         "clock": {
             "not_clocked_in": "Nu sunteți încă pontat",
             "signed_in_at": "Autentificat în WinProx la :time",

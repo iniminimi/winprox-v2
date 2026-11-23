@@ -429,6 +429,10 @@
     },
     "portal": {
         "title": "Aanmelden",
+        "desktop": {
+            "title": "Open deze pagina op je gsm",
+            "body": "De aanmeldlink werkt op een smartphone. Open de link uit de e-mail op je gsm."
+        },
         "clock": {
             "not_clocked_in": "Nog niet ingeklokt",
             "signed_in_at": "Aangemeld op WinProx om :time",

@@ -429,6 +429,10 @@
     },
     "portal": {
         "title": "Connexion",
+        "desktop": {
+            "title": "Ouvrez cette page sur votre téléphone",
+            "body": "Le lien de connexion fonctionne sur un smartphone. Ouvrez le lien de l'e-mail sur votre téléphone."
+        },
         "clock": {
             "not_clocked_in": "Pas encore pointé",
             "signed_in_at": "Connecté sur WinProx à :time",

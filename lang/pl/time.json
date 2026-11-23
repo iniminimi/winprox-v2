@@ -56,6 +56,10 @@
     },
     "portal": {
         "title": "Logowanie",
+        "desktop": {
+            "title": "Otwórz tę stronę na telefonie",
+            "body": "Link do logowania działa na smartfonie. Otwórz link z e-maila na telefonie."
+        },
         "clock": {
             "not_clocked_in": "Wejście nie zostało jeszcze zarejestrowane",
             "signed_in_at": "Zalogowano w WinProx o :time",
