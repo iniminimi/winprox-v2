@@ -431,7 +431,7 @@
         "title": "Connexion",
         "desktop": {
             "title": "Ouvrez cette page sur votre téléphone",
-            "body": "Le lien de connexion fonctionne sur un smartphone. Ouvrez le lien de l'e-mail sur votre téléphone."
+            "body": "Cette page est pour le téléphone. Ouvrez le lien ou scannez le QR code avec votre smartphone."
         },
         "clock": {
             "not_clocked_in": "Pas encore pointé",

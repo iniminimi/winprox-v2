@@ -912,7 +912,8 @@ it('blokkeert een verlopen QR-token, logt de poging en toont de foutkaart', func
         'blocked_at' => now(),
     ]);
 
-    $this->get('/time/'.$history->qr_token)
+    $this->withHeader('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1')
+        ->get('/time/'.$history->qr_token)
         ->assertNotFound()
         ->assertSee(__('qr.invalid.title'))
         ->assertSee(__('qr.invalid.message_sticker'))
@@ -943,7 +944,8 @@ it('biedt een weg naar het portaal bij een verlopen scherm-QR', function () {
         ClockDisplayQr::currentWindow() - 5,
     );
 
-    $this->get('/time/'.$staleToken)
+    $this->withHeader('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1')
+        ->get('/time/'.$staleToken)
         ->assertNotFound()
         ->assertSee(__('qr.invalid.message_display'))
         ->assertSee(__('qr.invalid.portal_home'))
@@ -979,7 +981,8 @@ it('toont alleen scans van een vorige QR-code', function () {
 });
 
 it('toont de QR-foutkaart voor een onbekend clock-point-token', function () {
-    $this->get('/time/aaaaaaaaaaaaaaaaaaaaaaaa')
+    $this->withHeader('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1')
+        ->get('/time/aaaaaaaaaaaaaaaaaaaaaaaa')
         ->assertNotFound()
         ->assertSee(__('qr.invalid.title'))
         ->assertDontSee(__('error.404.title'));

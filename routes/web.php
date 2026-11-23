@@ -174,7 +174,7 @@ Route::get('/locale/{locale}', LocaleController::class)->name('locale.switch');
 
 Route::post('/stripe/webhook', StripeWebhookController::class)->name('stripe.webhook');
 
-Route::get('/q/{token}', QrController::class)->name('qr.scan');
+Route::get('/q/{token}', QrController::class)->middleware('worker.phone')->name('qr.scan');
 
 Route::get('/e/{token}', ConfirmUserEmailController::class)
     ->middleware('throttle:20,1')
@@ -198,14 +198,14 @@ Route::get('/melden/e/{token}', ConfirmQrReportEmail::class)
     ->where('token', '[a-z0-9]{20,64}')
     ->name('public.qr-report-email-confirm');
 Route::redirect('/melden/bevestig-email/{token}', '/melden/e/{token}', 301);
-Route::get('/melden/{token}', UnitPortal::class)->name('public.unit-portal');
+Route::get('/melden/{token}', UnitPortal::class)->middleware('worker.phone')->name('public.unit-portal');
 Route::post('/portal/push-subscription', SaveWorkerPushSubscriptionController::class)
     ->middleware('throttle:20,1')
     ->name('public.time-portal.push-subscription');
 Route::post('/portal/field-sync', FieldSyncController::class)
     ->middleware('throttle:60,1')
     ->name('portal.field-sync');
-Route::get('/melden/onbekend/{token}', UnassignedQrPortal::class)->name('public.unassigned-qr-portal');
+Route::get('/melden/onbekend/{token}', UnassignedQrPortal::class)->middleware('worker.phone')->name('public.unassigned-qr-portal');
 Route::get('/reservations/confirm/{token}', ReservationConfirm::class)->name('reservations.confirm');
 Route::get('/reservations/manage/{token}', ReservationManage::class)->name('reservations.manage');
 
@@ -216,6 +216,7 @@ Route::get('/time-portal/{tenant}/manifest.webmanifest', TenantHomescreenManifes
     ->name('public.time-portal.tenant.manifest');
 Route::get('/time-portal/{tenant}', TimePortalHomeController::class)
     ->whereNumber('tenant')
+    ->middleware('worker.phone')
     ->name('public.time-portal.home');
 Route::get('/time/{token}/manifest.webmanifest', ClockPointHomescreenManifestController::class)
     ->where('token', '[a-z0-9]{20,64}')
@@ -241,10 +242,12 @@ Route::post('/time-portal/{tenant}/passkey/assert', [WorkerPasskeyController::cl
     ->name('public.time-portal.passkey.assert');
 Route::get('/time/{token}', TimePortal::class)
     ->where('token', '[a-z0-9]{20,64}')
+    ->middleware('worker.phone')
     ->name('public.time-portal');
 // Short neutral path for e-mail links (same portal; avoids /time/{long-token} phishing score).
 Route::get('/cp/{token}', TimePortal::class)
     ->where('token', '[a-z0-9]{20,64}')
+    ->middleware('worker.phone')
     ->name('public.time-portal.cp');
 Route::get('/team-documents/{teamDocument}/file', TeamDocumentFileController::class)
     ->whereNumber('teamDocument')
@@ -400,7 +403,7 @@ Route::post('/promo/track/engage', PromoEngageTrackController::class)
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', Login::class)->middleware('backoffice.desktop')->name('login');
-    Route::get('/register', Register::class)->middleware('promo.follow')->name('register');
+    Route::get('/register', Register::class)->middleware(['promo.follow', 'backoffice.desktop'])->name('register');
     Route::get('/forgot-password', ForgotPassword::class)->name('password.request');
     Route::get('/reset-password/{token}', ResetPassword::class)->name('password.reset');
     Route::get('/auth/microsoft/redirect', [MicrosoftAuthController::class, 'redirect'])->middleware('backoffice.desktop')->name('auth.microsoft.redirect');

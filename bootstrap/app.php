@@ -9,6 +9,7 @@ use App\Http\Middleware\AuthenticateIotGateway;
 use App\Http\Middleware\CheckApiAccess;
 use App\Http\Middleware\ConfineMarketHost;
 use App\Http\Middleware\EnsureBackofficeDesktop;
+use App\Http\Middleware\EnsureWorkerPhone;
 use App\Http\Middleware\EnsureCheckmateRouteAllowed;
 use App\Http\Middleware\EnsureTimeRosterEnabled;
 use App\Http\Middleware\EnsureRequestIdempotency;
@@ -46,6 +47,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'superuser' => EnsureSuperuser::class,
             'backoffice.desktop' => EnsureBackofficeDesktop::class,
+            'worker.phone' => EnsureWorkerPhone::class,
             'promo.follow' => RecordPromoFollowVisit::class,
             'support.tenant' => RequireSupportTenantForSuperuser::class,
             'checkmate.allowed' => EnsureCheckmateRouteAllowed::class,

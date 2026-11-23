@@ -379,7 +379,8 @@ it('vuurt na een in-portal scan meteen de pendende prik af', function () {
 
     signInPunchScanWorker($clockPoint);
 
-    $this->get(route('public.time-portal', $clockPoint->qr_token).'?scan_punch=clockIn')
+    $this->withHeader('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1')
+        ->get(route('public.time-portal', $clockPoint->qr_token).'?scan_punch=clockIn')
         ->assertOk()
         ->assertSeeHtml('autoPunch: true');
 });
@@ -390,7 +391,8 @@ it('vuurt zonder de scan-markering van de in-portal scanner niet automatisch', f
 
     signInPunchScanWorker($clockPoint);
 
-    $this->get(route('public.time-portal', $clockPoint->qr_token))
+    $this->withHeader('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1')
+        ->get(route('public.time-portal', $clockPoint->qr_token))
         ->assertOk()
         ->assertSeeHtml('autoPunch: false');
 });
@@ -402,11 +404,13 @@ it('vuurt geen andere prik af dan de gescande intentie', function () {
     app(ClockInAction::class)->handle($worker, $clockPoint);
     signInPunchScanWorker($clockPoint);
 
-    $this->get(route('public.time-portal', $clockPoint->qr_token).'?scan_punch=clockIn')
+    $this->withHeader('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1')
+        ->get(route('public.time-portal', $clockPoint->qr_token).'?scan_punch=clockIn')
         ->assertOk()
         ->assertSeeHtml('autoPunch: false');
 
-    $this->get(route('public.time-portal', $clockPoint->qr_token).'?scan_punch=clockOut')
+    $this->withHeader('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1')
+        ->get(route('public.time-portal', $clockPoint->qr_token).'?scan_punch=clockOut')
         ->assertOk()
         ->assertSeeHtml('autoPunch: true');
 });
@@ -417,7 +421,8 @@ it('negeert een ongeldige scan-markering', function () {
 
     signInPunchScanWorker($clockPoint);
 
-    $this->get(route('public.time-portal', $clockPoint->qr_token).'?scan_punch=signOut')
+    $this->withHeader('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1')
+        ->get(route('public.time-portal', $clockPoint->qr_token).'?scan_punch=signOut')
         ->assertOk()
         ->assertSeeHtml('autoPunch: false');
 });
@@ -469,18 +474,35 @@ it('vraagt op een computer om de aanmeldlink op een gsm te openen', function () 
     $this->withHeader('User-Agent', $desktop)
         ->get(route('public.time-portal', $clockPoint->qr_token))
         ->assertOk()
-        ->assertSee(__('time.portal.title'))
-        ->assertDontSee(__('time.portal.desktop.title'), false);
+        ->assertSee(__('time.portal.desktop.title'))
+        ->assertDontSee(__('time.portal.title'), false);
+
+    $tablet = 'Mozilla/5.0 (iPad; CPU OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1';
+    $this->withHeader('User-Agent', $tablet)
+        ->get(route('public.time-portal', $clockPoint->qr_token))
+        ->assertOk()
+        ->assertSee(__('time.portal.desktop.title'), false);
 });
 
 it('geeft een scan op de sticker en niet op de aanmeldlink', function () {
     [, $clockPoint] = punchScanTenant();
     $clockPoint->update(['qr_token' => str_repeat('b', 32)]);
 
-    $this->get(route('public.time-portal.cp', $clockPoint->qr_token))->assertOk();
+    $phone = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1';
+
+    $this->withHeader('User-Agent', $phone)
+        ->get(route('public.time-portal.cp', $clockPoint->qr_token))
+        ->assertOk();
     expect(ClockPointScanGrant::isValid($clockPoint->id))->toBeFalse();
 
-    $this->get(route('public.time-portal', $clockPoint->qr_token))->assertOk();
+    $this->withHeader('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36')
+        ->get(route('public.time-portal', $clockPoint->qr_token))
+        ->assertOk();
+    expect(ClockPointScanGrant::isValid($clockPoint->id))->toBeFalse();
+
+    $this->withHeader('User-Agent', $phone)
+        ->get(route('public.time-portal', $clockPoint->qr_token))
+        ->assertOk();
     expect(ClockPointScanGrant::isValid($clockPoint->id))->toBeTrue();
 });
 

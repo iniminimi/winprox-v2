@@ -58,7 +58,7 @@
         "title": "Iniciar sessão",
         "desktop": {
             "title": "Abra esta página no telemóvel",
-            "body": "A ligação de acesso funciona num smartphone. Abra a ligação do e-mail no telemóvel."
+            "body": "Esta página é para o telemóvel. Abra a ligação ou leia o código QR com o smartphone."
         },
         "clock": {
             "not_clocked_in": "Ainda não registou a entrada",

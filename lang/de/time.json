@@ -431,7 +431,7 @@
         "title": "Anmeldung",
         "desktop": {
             "title": "Öffnen Sie diese Seite auf Ihrem Handy",
-            "body": "Der Anmeldelink funktioniert auf einem Smartphone. Öffnen Sie den Link aus der E-Mail auf Ihrem Handy."
+            "body": "Diese Seite ist für das Handy. Öffnen Sie den Link oder scannen Sie den QR-Code mit Ihrem Smartphone."
         },
         "clock": {
             "not_clocked_in": "Noch nicht eingestempelt",

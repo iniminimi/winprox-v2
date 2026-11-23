@@ -69,6 +69,14 @@ it('meldt een smartphone niet aan via het loginformulier', function () {
     expect(auth()->check())->toBeFalse();
 });
 
+it('toont op een smartphone geen registratieformulier', function () {
+    $this->withHeader('User-Agent', IPHONE_UA)
+        ->get(route('register'))
+        ->assertOk()
+        ->assertSee(__('auth.phone.title'))
+        ->assertDontSee(__('auth.register.title'), false);
+});
+
 it('laat de website en wachtwoordherstel op een smartphone open', function () {
     $this->withHeader('User-Agent', IPHONE_UA)
         ->get(route('welcome', ['locale' => 'nl']))

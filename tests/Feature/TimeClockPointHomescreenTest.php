@@ -13,6 +13,10 @@ use App\Support\Tenancy;
 use App\Support\Time\ClockDisplayQr;
 use Livewire\Livewire;
 
+beforeEach(function () {
+    $this->withHeader('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1');
+});
+
 afterEach(fn () => Tenancy::forget());
 
 function homescreenClockPointSetup(array $clockPointAttrs = []): array

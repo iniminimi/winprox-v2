@@ -431,7 +431,7 @@
         "title": "Sign in",
         "desktop": {
             "title": "Open this page on your phone",
-            "body": "The sign-in link works on a smartphone. Open the link from the email on your phone."
+            "body": "This page is for a phone. Open the link or scan the QR code with your smartphone."
         },
         "clock": {
             "not_clocked_in": "Not clocked in yet",

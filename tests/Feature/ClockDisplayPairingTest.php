@@ -315,7 +315,10 @@ it('opent het publieke portaal met een geldige dynamische token', function () {
     $point->refresh();
 
     $token = $point->display_id.ClockDisplayQr::dynFor($point->display_secret, ClockDisplayQr::currentWindow());
-    $this->get('/time/'.$token)->assertOk();
+    $this->withHeader('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1')
+        ->get('/time/'.$token)
+        ->assertOk()
+        ->assertDontSee(__('time.portal.desktop.title'), false);
 });
 
 it('behandelt de claim- en status-endpoints end-to-end', function () {

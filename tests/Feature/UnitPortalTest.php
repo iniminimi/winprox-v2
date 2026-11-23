@@ -79,7 +79,8 @@ it('shows tenant welcome title and unit context above home tiles', function () {
 it('renders powered-by as a button to the public site in the portal language', function () {
     unitPortalScaffold();
 
-    $this->get(route('public.unit-portal', ['token' => 'unit-token', 'lang' => 'fr']))
+    $this->withHeader('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1')
+        ->get(route('public.unit-portal', ['token' => 'unit-token', 'lang' => 'fr']))
         ->assertOk()
         ->assertSee('href="https://www.winprox.app/fr"', false)
         ->assertSee('>'.__('portal.powered_by').'</a>', false)
@@ -95,7 +96,8 @@ it('includes portal open graph meta tags on the unit portal page', function () {
         copy(public_path('images/promo/og_1.jpg'), $og2Path);
     }
 
-    $this->get(route('public.unit-portal', ['token' => 'unit-token']))
+    $this->withHeader('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1')
+        ->get(route('public.unit-portal', ['token' => 'unit-token']))
         ->assertOk()
         ->assertSee('property="og:title" content="'.__('portal.social.og_title').'"', false)
         ->assertSee('property="og:description" content="'.__('portal.social.og_description').'"', false)
@@ -491,7 +493,8 @@ it('applies the existing public report rate limit when creating an email hold', 
 });
 
 it('shows the invalid scan card for an unknown unit token', function () {
-    $this->get('/melden/bestaat-niet')
+    $this->withHeader('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1')
+        ->get('/melden/bestaat-niet')
         ->assertNotFound()
         ->assertSee(__('qr.invalid.title'))
         ->assertSee(__('qr.invalid.welcome'))

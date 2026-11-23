@@ -431,7 +431,7 @@
         "title": "Inicio de sesión",
         "desktop": {
             "title": "Abra esta página en su móvil",
-            "body": "El enlace de acceso funciona en un smartphone. Abra el enlace del correo en su móvil."
+            "body": "Esta página es para el móvil. Abra el enlace o escanee el código QR con su smartphone."
         },
         "clock": {
             "not_clocked_in": "Aún no ha fichado",

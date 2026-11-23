@@ -431,7 +431,7 @@
         "title": "Accesso",
         "desktop": {
             "title": "Apri questa pagina sul telefono",
-            "body": "Il link di accesso funziona su uno smartphone. Apri il link dell'e-mail sul telefono."
+            "body": "Questa pagina è per il telefono. Apri il link o scansiona il codice QR con lo smartphone."
         },
         "clock": {
             "not_clocked_in": "Non ancora timbrato",

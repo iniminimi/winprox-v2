@@ -58,7 +58,7 @@
         "title": "Autentificare",
         "desktop": {
             "title": "Deschideți această pagină pe telefon",
-            "body": "Linkul de conectare funcționează pe un smartphone. Deschideți linkul din e-mail pe telefon."
+            "body": "Această pagină este pentru telefon. Deschideți linkul sau scanați codul QR cu smartphone-ul."
         },
         "clock": {
             "not_clocked_in": "Nu sunteți încă pontat",

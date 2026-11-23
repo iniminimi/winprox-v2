@@ -431,7 +431,7 @@
         "title": "Aanmelden",
         "desktop": {
             "title": "Open deze pagina op je gsm",
-            "body": "De aanmeldlink werkt op een smartphone. Open de link uit de e-mail op je gsm."
+            "body": "Deze pagina is voor de gsm. Open de link of scan de QR-code met je smartphone."
         },
         "clock": {
             "not_clocked_in": "Nog niet ingeklokt",

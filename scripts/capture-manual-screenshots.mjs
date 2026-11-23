@@ -73,13 +73,17 @@ if (checkmateTargetsPresent && ! checkmateAvailable) {
 
 const browser = await chromium.launch(resolveChromiumLaunchOptions());
 const contextOptions = hostHeader !== '' ? { extraHTTPHeaders: { Host: hostHeader } } : {};
+const phoneContextOptions = {
+    ...contextOptions,
+    userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1',
+};
 
 try {
     const adminContext = await browser.newContext(contextOptions);
     const adminPage = await adminContext.newPage();
     await login(adminPage, email, password);
 
-    const publicContext = await browser.newContext(contextOptions);
+    const publicContext = await browser.newContext(phoneContextOptions);
     const publicPage = await publicContext.newPage();
 
     let checkmateContext = null;
@@ -104,7 +108,7 @@ try {
         const key = checkmate ? 'checkmate' : 'default';
         let session = portalSessions.get(key);
         if (session === undefined) {
-            const context = await browser.newContext(contextOptions);
+            const context = await browser.newContext(phoneContextOptions);
             session = { context, page: await context.newPage() };
             portalSessions.set(key, session);
         }

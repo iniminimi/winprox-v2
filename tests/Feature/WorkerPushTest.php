@@ -377,7 +377,8 @@ it('geeft de open-parameter door naar het portaal', function () {
         'is_active' => true,
     ]);
 
-    $this->get(route('public.time-portal.home', ['tenant' => $tenant->id, 'open' => 'documents']))
+    $this->withHeader('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1')
+        ->get(route('public.time-portal.home', ['tenant' => $tenant->id, 'open' => 'documents']))
         ->assertRedirect(route('public.time-portal.cp', ['token' => $clock->qr_token, 'open' => 'documents']));
 
     $this->get(route('public.time-portal.home', ['tenant' => $tenant->id, 'open' => 'nope']))
