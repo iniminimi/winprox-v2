@@ -60,15 +60,30 @@ class SectorLandingController extends Controller
             'layoutSocialTitle' => __("{$key}.social.og_title"),
             'layoutSocialDescription' => __("{$key}.social.og_description"),
             'layoutSocialImage' => PromoOgImage::forLanding($landing),
-            'layoutJsonLdGraphs' => [
-                JsonLd::organization(),
-                JsonLd::softwareApplication(),
-                ...array_map(
-                    JsonLd::videoObject(...),
-                    SitemapVideo::forRoute($landing->routeName(), $locale)
-                ),
-            ],
+            'layoutJsonLdGraphs' => $this->jsonLdGraphs($landing, $locale, $key),
         ]);
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    private function jsonLdGraphs(PromoLanding $landing, string $locale, string $key): array
+    {
+        $graphs = [
+            JsonLd::organization(),
+            JsonLd::softwareApplication(),
+            ...array_map(
+                JsonLd::videoObject(...),
+                SitemapVideo::forRoute($landing->routeName(), $locale)
+            ),
+        ];
+
+        $faqItems = __("{$key}.faq.items");
+        if (is_array($faqItems) && $faqItems !== []) {
+            $graphs[] = JsonLd::faqItems($faqItems);
+        }
+
+        return $graphs;
     }
 
     /**

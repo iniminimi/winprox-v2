@@ -1929,7 +1929,7 @@ Login, mail en `APP_URL` blijven op `.app`. `.nl` verschijnt pas in hreflang als
 - **Hero (één viewport):** foto `images/welcome/welcome_reception.jpg` in een afgerond kader
   (niet pagina-breed); copy-kader (80% dekkend beige) **op** de foto, links, zodat de
   receptie rechts zichtbaar blijft.
-  *Bespaar als een PRO.* · *Minder administratie. Meer resultaat.* ·
+  *Bespaar als een PRO.* · *Digitale prikklok. Minder administratie.* ·
   *Urenregistratie, meldingen, taken en metingen. WinProx registreert, organiseert en volgt op.
   Zo bespaart u tijd en voorkomt u fouten.* · **Scan → Prik → Uren → Secretariaat**
   (met iconen) · CTA's **Gratis proberen** / **Bekijk hoe het werkt**.

@@ -23,7 +23,6 @@ final class JsonLd
             'url' => url('/'),
             'logo' => asset('images/Winprox_logo_100.png'),
             'description' => __('welcome.social.og_description', [], 'en'),
-            'sameAs' => [],
         ]);
     }
 
@@ -33,16 +32,48 @@ final class JsonLd
     public static function softwareApplication(): array
     {
         // Locale-aware: de pagina-taal bepaalt URL en beschrijving, zodat de
-        // markup op /nl/ ook Nederlands spreekt.
+        // markup op /nl/ ook Nederlands spreekt. Prijzen komen uit de publieke
+        // catalogus (€5 per uitvoerder, pakketten €59–€349) plus de huur van
+        // het klokscherm. Corporate heeft geen vaste prijs.
         $offers = [];
-        if (! MarketingDomain::routeHidden('checkmate')) {
+        $pricingUrl = route('pricing', absolute: true);
+        foreach (config('billing.plans', []) as $plan) {
+            if (! is_array($plan) || ! ($plan['public_catalog'] ?? false)) {
+                continue;
+            }
+
+            $labelKey = $plan['label_key'] ?? null;
+            if (! is_string($labelKey) || $labelKey === '') {
+                continue;
+            }
+
+            if (isset($plan['per_worker_monthly_eur'])) {
+                if (MarketingDomain::routeHidden('checkmate')) {
+                    continue;
+                }
+                $offers[] = [
+                    '@type' => 'Offer',
+                    'name' => __($labelKey),
+                    'price' => (string) (int) $plan['per_worker_monthly_eur'],
+                    'priceCurrency' => 'EUR',
+                    'description' => 'Per active worker per month',
+                    'url' => $pricingUrl,
+                ];
+
+                continue;
+            }
+
+            $monthly = $plan['package_monthly_eur'] ?? null;
+            if (! is_numeric($monthly) || (int) $monthly <= 0) {
+                continue;
+            }
+
             $offers[] = [
                 '@type' => 'Offer',
-                'name' => 'Checkmate',
-                'price' => '5',
+                'name' => __($labelKey),
+                'price' => (string) (int) $monthly,
                 'priceCurrency' => 'EUR',
-                'description' => 'Per active worker per month',
-                'url' => route('pricing', absolute: true),
+                'url' => $pricingUrl,
             ];
         }
         $offers[] = [
@@ -81,6 +112,43 @@ final class JsonLd
         foreach (FaqSections::orderedItems() as $item) {
             $question = (string) ($item['title'] ?? '');
             $answer = self::faqAnswerText($item);
+            if ($question === '' || $answer === '') {
+                continue;
+            }
+
+            $entities[] = [
+                '@type' => 'Question',
+                'name' => $question,
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text' => $answer,
+                ],
+            ];
+        }
+
+        return self::withMarketLanguage([
+            '@context' => 'https://schema.org',
+            '@type' => 'FAQPage',
+            'mainEntity' => $entities,
+        ]);
+    }
+
+    /**
+     * FAQPage uit zichtbare vraag/antwoord-paren (landings, o.a. prikklok).
+     *
+     * @param  list<array{q?: string, a?: string}>  $items
+     * @return array<string, mixed>
+     */
+    public static function faqItems(array $items): array
+    {
+        $entities = [];
+
+        foreach ($items as $item) {
+            if (! is_array($item)) {
+                continue;
+            }
+            $question = trim((string) ($item['q'] ?? ''));
+            $answer = trim((string) ($item['a'] ?? ''));
             if ($question === '' || $answer === '') {
                 continue;
             }

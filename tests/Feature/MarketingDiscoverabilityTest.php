@@ -111,7 +111,31 @@ it('promoveert de homepage-headline tot H1 met prikklok-signalen', function () {
         ->assertOk()
         ->assertSee('<h1 class="wp-welcome-hero-minimal__headline">', false)
         ->assertSee(__('welcome.hero.headline', [], 'nl'))
+        ->assertSee(__('articles.tijdsregistratie_2027.nav_label', [], 'nl'), false)
+        ->assertDontSee('articles.tijdsregistratie_2027.nav_label', false)
         ->assertSee('<title>WinProx — Digitale prikklok en urenregistratie</title>', false);
+});
+
+it('zet de catalogusprijzen in SoftwareApplication en laat een lege sameAs weg', function () {
+    $this->get(route('about', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee('"price":"5"', false)
+        ->assertSee('"price":"59"', false)
+        ->assertSee('"price":"99"', false)
+        ->assertSee('"price":"199"', false)
+        ->assertSee('"price":"349"', false)
+        ->assertSee('"price":"'.config('marketing.clock_rent_monthly_eur').'"', false)
+        ->assertDontSee('"sameAs"', false);
+});
+
+it('zet FAQPage-schema op de prikklok-landing met de zichtbare vragen', function () {
+    $question = __('landings.prikklok.faq.items.0.q', [], 'nl');
+
+    $this->get(route('prikklok', ['locale' => 'nl']))
+        ->assertOk()
+        ->assertSee($question, false)
+        ->assertSee('"@type":"FAQPage"', false)
+        ->assertSee('"name":"'.$question.'"', false);
 });
 
 it('stuurt SoftwareApplication JSON-LD in de pagina-taal', function () {
