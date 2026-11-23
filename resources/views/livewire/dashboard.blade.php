@@ -145,7 +145,7 @@
             <div class="wp-cluster wp-cluster--center">
                 <a href="{{ $checkmatePwaVideoUrl }}" target="_blank" rel="noopener noreferrer" class="btn btn--surface">
                     <x-wp-icon name="video" class="wp-icon" />
-                    <span>{{ __('customers.video_button') }}</span>
+                    <span>{{ __('dashboard.checkmate.pwa_video') }}</span>
                 </a>
             </div>
         @endif

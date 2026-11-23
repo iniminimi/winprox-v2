@@ -1356,7 +1356,7 @@ it('toont de Checkmate-instructievideo tussen de tegels en laatste activiteit, a
     $this->actingAs($admin)->get('/dashboard')
         ->assertOk()
         ->assertSee('video/checkmate_PWA.mp4', false)
-        ->assertSee(__('customers.video_button'), false)
+        ->assertSee(__('dashboard.checkmate.pwa_video'), false)
         ->assertSee('target="_blank"', false)
         ->assertSeeInOrder([
             'class="wp-kpis"',

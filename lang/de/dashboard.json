@@ -160,6 +160,7 @@
     },
     "checkmate": {
         "subtitle": "Checkmate — ein- und ausstempeln und Kundenbesuche vor Ort.",
+        "pwa_video": "Anleitungsvideo App-Installation",
         "onboarding": {
             "workers_title": "Ersten Mitarbeiter hinzufügen",
             "workers_body": "Mitarbeiter stempeln über den Clock-Point-QR auf ihrem Smartphone.",

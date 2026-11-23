@@ -160,6 +160,7 @@
     },
     "checkmate": {
         "subtitle": "Checkmate — timbrature e visite ai clienti sul posto.",
+        "pwa_video": "Video di istruzioni installazione dell'app",
         "onboarding": {
             "workers_title": "Aggiungi il primo operatore",
             "workers_body": "Gli operatori timbrano tramite il QR del Clock Point sullo smartphone.",

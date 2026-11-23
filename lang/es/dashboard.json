@@ -160,6 +160,7 @@
     },
     "checkmate": {
         "subtitle": "Checkmate — fichaje y visitas a clientes en obra.",
+        "pwa_video": "Vídeo de instrucciones instalación de la app",
         "onboarding": {
             "workers_title": "Añade tu primer operario",
             "workers_body": "Los operarios fichan con el QR del Clock Point en su móvil.",

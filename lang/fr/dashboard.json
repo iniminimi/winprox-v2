@@ -160,6 +160,7 @@
     },
     "checkmate": {
         "subtitle": "Checkmate — pointage et visites clients sur site.",
+        "pwa_video": "Vidéo d'instruction installation de l'application",
         "onboarding": {
             "workers_title": "Ajoutez votre premier exécutant",
             "workers_body": "Les exécutants pointent via le QR du Clock Point sur leur smartphone.",

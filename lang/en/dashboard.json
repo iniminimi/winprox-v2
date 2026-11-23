@@ -160,6 +160,7 @@
     },
     "checkmate": {
         "subtitle": "Checkmate — clocking in and customer visits on location.",
+        "pwa_video": "Instruction video app installation",
         "onboarding": {
             "workers_title": "Add your first worker",
             "workers_body": "Workers clock in and out via the Clock Point QR on their phone.",
