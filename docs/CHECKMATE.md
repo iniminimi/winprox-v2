@@ -85,8 +85,8 @@ Whitelist-schermen:
 - **Dashboard** — Checkmate-variant: pending-CIAO-banner (§6), mini-onboarding
   (eerste uitvoerder → eerste klant), snelacties (klant/uitvoerder/aanwezigheid).
   KPI's (nu aanwezig, bezoeken vandaag, seats, actieve klanten)
-  plus **Clock Point QR** rechts daarvan (opent print/mail-popup; pulse tot de
-  eerste dienst). Pulserende kaart met actieve uitvoerders zonder
+  plus **Clock Point QR** rechts daarvan (zelfde popup als Time → Clock Points →
+  Aanmelden: QR, aanmeldlink, WhatsApp en mail; pulse tot de eerste dienst). Pulserende kaart met actieve uitvoerders zonder
   rijksregisternummer; een naam opent die uitvoerder op het teamscherm.
   Laatste klantbezoeken. Geen facility-tegels, starter packs of
   meldingen-feed.

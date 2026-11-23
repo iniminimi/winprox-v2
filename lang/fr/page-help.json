@@ -2429,7 +2429,7 @@
                 {
                     "label": "QR Clock Point",
                     "nested": true,
-                    "text": "Pas un compteur mais un bouton : affiche le QR du Clock Point à montrer, imprimer ou envoyer par e-mail. Pulse tant qu'aucune intervention n'a eu lieu."
+                    "text": "Pas un compteur mais un bouton : affiche le QR du Clock Point à montrer, imprimer, partager le lien de connexion (aussi via WhatsApp) ou envoyer par e-mail. Pulse tant qu'aucune intervention n'a eu lieu."
                 },
                 {
                     "label": "Numéro de registre national manquant",

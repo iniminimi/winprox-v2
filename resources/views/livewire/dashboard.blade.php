@@ -207,37 +207,15 @@
                 :download-failed="__('time.clock_points.qr.pack.download_failed')"
             >
                 <x-slot:email>
-                    <div class="wp-modal-section">
-                        <div class="wp-stack-tight">
-                            <h3 class="wp-label">{{ __('time.clock_points.qr.email.heading') }}</h3>
-                            <p class="wp-muted">{{ __('time.clock_points.qr.email.hint') }}</p>
-                        </div>
-                        @if ($checkmateQrMailFlash)
-                            <div class="wp-flash wp-flash--success">{{ $checkmateQrMailFlash }}</div>
-                        @endif
-                        <div class="wp-field">
-                            <div class="wp-cluster wp-cluster--wrap">
-                                <input
-                                    id="checkmate-dash-qr-mail-email"
-                                    type="email"
-                                    class="wp-input"
-                                    wire:model="checkmateQrMailEmail"
-                                    autocomplete="email"
-                                    aria-label="{{ __('time.clock_points.qr.email.label') }}"
-                                    placeholder="{{ __('time.clock_points.qr.email.label') }}"
-                                >
-                                <button
-                                    type="button"
-                                    class="btn btn--primary"
-                                    wire:click="sendCheckmateClockPointQrMail"
-                                    wire:loading.attr="disabled"
-                                >
-                                    {{ __('time.clock_points.qr.email.send') }}
-                                </button>
-                            </div>
-                            @error('checkmateQrMailEmail') <p class="wp-error">{{ $message }}</p> @enderror
-                        </div>
-                    </div>
+                    @include('partials.wp-clock-point-qr-share', [
+                        'clockPoint' => $checkmateQrClockPoint,
+                        'linkInputId' => 'checkmate-dash-signin-link',
+                        'emailInputId' => 'checkmate-dash-qr-mail-email',
+                        'emailModel' => 'checkmateQrMailEmail',
+                        'sendMethod' => 'sendCheckmateClockPointQrMail',
+                        'errorKey' => 'checkmateQrMailEmail',
+                        'flash' => $checkmateQrMailFlash,
+                    ])
                 </x-slot:email>
             </x-wp-qr-cluster-modal>
         @endif

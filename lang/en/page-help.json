@@ -2425,7 +2425,7 @@
                 {
                     "label": "Clock Point QR",
                     "nested": true,
-                    "text": "Not a counter but a button: opens the Clock Point QR to show, print or email. Pulses until the first shift has run."
+                    "text": "Not a counter but a button: opens the Clock Point QR to show, print, share the sign-in link (including WhatsApp) or email. Pulses until the first shift has run."
                 },
                 {
                     "label": "National register number missing",

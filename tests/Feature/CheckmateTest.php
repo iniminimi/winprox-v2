@@ -1318,7 +1318,7 @@ it('opent de Clock Point-QR-popup vanaf de KPI-tegel met pulse tot de eerste die
     Tenancy::actAs($tenant->id);
     $admin = User::factory()->admin()->for($tenant)->create();
 
-    Livewire::actingAs($admin)
+    $popup = Livewire::actingAs($admin)
         ->test(Dashboard::class)
         ->assertSee(__('dashboard.checkmate.kpi.clock_point_qr'), false)
         ->assertSee(__('dashboard.checkmate.kpi.clock_point_qr_body'), false)
@@ -1329,9 +1329,14 @@ it('opent de Clock Point-QR-popup vanaf de KPI-tegel met pulse tot de eerste die
         ->call('openCheckmateClockPointQr')
         ->assertSet('showCheckmateClockPointQrModal', true)
         ->assertSee(__('time.clock_points.qr.email.heading'), false)
+        ->assertSee(__('time.clock_points.qr.email.link_label'), false)
+        ->assertSee(__('time.clock_points.qr.email.link_whatsapp'), false)
         ->assertSee(__('common.qr.print'), false);
 
-    expect(ClockPoint::query()->where('tenant_id', $tenant->id)->count())->toBe(1);
+    $clockPoint = ClockPoint::query()->where('tenant_id', $tenant->id)->sole();
+    $popup
+        ->assertSee($clockPoint->emailPortalUrl(), false)
+        ->assertSee('https://wa.me/?text='.rawurlencode($clockPoint->emailPortalUrl()), false);
 });
 
 it('toont checkmate-onboarding voor uitvoerders in plaats van facility-starter packs', function () {

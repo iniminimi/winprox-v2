@@ -2425,7 +2425,7 @@
                 {
                     "label": "QR del Clock Point",
                     "nested": true,
-                    "text": "Non un contatore ma un pulsante: apre il QR del Clock Point da mostrare, stampare o inviare via e-mail. Lampeggia finché non c’è stato ancora nessun turno."
+                    "text": "Non un contatore ma un pulsante: apre il QR del Clock Point da mostrare, stampare, condividere il link di accesso (anche via WhatsApp) o inviare via e-mail. Lampeggia finché non c’è stato ancora nessun turno."
                 },
                 {
                     "label": "Manca il numero di registro nazionale",

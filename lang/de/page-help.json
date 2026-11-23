@@ -2425,7 +2425,7 @@
                 {
                     "label": "Clock-Point-QR",
                     "nested": true,
-                    "text": "Kein Zähler, sondern ein Button: öffnet den Clock-Point-QR zum Anzeigen, Drucken oder Mailen. Pulsiert, solange noch keine Schicht gelaufen ist."
+                    "text": "Kein Zähler, sondern ein Button: öffnet den Clock-Point-QR zum Anzeigen, Drucken, Teilen des Anmeldelinks (auch per WhatsApp) oder Mailen. Pulsiert, solange noch keine Schicht gelaufen ist."
                 },
                 {
                     "label": "Nationalregisternummer fehlt",

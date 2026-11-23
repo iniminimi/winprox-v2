@@ -2425,7 +2425,7 @@
                 {
                     "label": "QR del Clock Point",
                     "nested": true,
-                    "text": "No es un contador sino un botón: abre el QR del Clock Point para mostrarlo, imprimirlo o enviarlo por correo. Parpadea mientras aún no ha habido ningún turno."
+                    "text": "No es un contador sino un botón: abre el QR del Clock Point para mostrarlo, imprimirlo, compartir el enlace de acceso (también por WhatsApp) o enviarlo por correo. Parpadea mientras aún no ha habido ningún turno."
                 },
                 {
                     "label": "Falta el número de registro nacional",
