@@ -1349,6 +1349,28 @@ it('toont checkmate-onboarding voor uitvoerders in plaats van facility-starter p
         ->assertDontSee(__('dashboard.starter_pack.offer_title'));
 });
 
+it('toont de Checkmate-instructievideo tussen de tegels en laatste activiteit, alleen in het Nederlands', function () {
+    $tenant = checkmateTenant();
+    $admin = User::factory()->admin()->for($tenant)->create(['locale' => 'nl']);
+
+    $this->actingAs($admin)->get('/dashboard')
+        ->assertOk()
+        ->assertSee('video/checkmate_PWA.mp4', false)
+        ->assertSee(__('customers.video_button'), false)
+        ->assertSee('target="_blank"', false)
+        ->assertSeeInOrder([
+            'class="wp-kpis"',
+            'video/checkmate_PWA.mp4',
+            __('dashboard.checkmate.recent.title'),
+        ], false);
+
+    $admin->update(['locale' => 'en']);
+
+    $this->actingAs($admin->fresh())->get('/dashboard')
+        ->assertOk()
+        ->assertDontSee('video/checkmate_PWA.mp4', false);
+});
+
 it('houdt het facility-dashboard ongewijzigd voor niet-checkmate tenants', function () {
     $tenant = Tenant::factory()->create([
         'checkmate_mode' => false,

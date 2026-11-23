@@ -323,8 +323,14 @@ class Dashboard extends Component
                 ->find($this->checkmateQrClockPointId)
             : null;
 
+        $checkmatePwaVideoRel = 'video/checkmate_PWA.mp4';
+        $checkmatePwaVideoUrl = $isCheckmate && app()->getLocale() === 'nl' && is_file(public_path($checkmatePwaVideoRel))
+            ? asset($checkmatePwaVideoRel)
+            : null;
+
         return view('livewire.dashboard', [
             'checkmate' => $checkmateData,
+            'checkmatePwaVideoUrl' => $checkmatePwaVideoUrl,
             'checkmateQrClockPoint' => $checkmateQrClockPoint,
             'checkmateQrPackTemplates' => QrStickerSheetTemplate::printableDownloadCases(),
             'stats' => $stats,

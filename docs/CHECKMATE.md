@@ -88,7 +88,9 @@ Whitelist-schermen:
   plus **Clock Point QR** rechts daarvan (zelfde popup als Time → Clock Points →
   Aanmelden: QR, aanmeldlink, WhatsApp en mail; pulse tot de eerste dienst). Pulserende kaart met actieve uitvoerders zonder
   rijksregisternummer; een naam opent die uitvoerder op het teamscherm.
-  Laatste klantbezoeken. Geen facility-tegels, starter packs of
+  Laatste klantbezoeken. Tussen de tegels en laatste activiteit: de instructievideo
+  (`checkmate_PWA.mp4`), alleen bij Nederlands, zelfde knop als op Klanten.
+  Geen facility-tegels, starter packs of
   meldingen-feed.
 - **Plaatsen** — **Klanten**, **Locaties** (geen Units/Categorieën in het menu).
   Bij plan-activatie/site-unit wordt stil een defaultcategorie «Klantlocatie»

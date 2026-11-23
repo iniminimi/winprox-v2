@@ -141,6 +141,15 @@
             @endforeach
         </div>
 
+        @if ($checkmatePwaVideoUrl)
+            <div class="wp-cluster wp-cluster--center">
+                <a href="{{ $checkmatePwaVideoUrl }}" target="_blank" rel="noopener noreferrer" class="btn btn--surface">
+                    <x-wp-icon name="video" class="wp-icon" />
+                    <span>{{ __('customers.video_button') }}</span>
+                </a>
+            </div>
+        @endif
+
         <div class="wp-card wp-card-pad wp-stack">
             <div class="wp-row">
                 <h2 class="wp-section-title">{{ __('dashboard.checkmate.recent.title') }}</h2>
