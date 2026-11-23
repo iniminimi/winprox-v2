@@ -53,10 +53,6 @@
                 <div class="wp-card wp-card-pad wp-portal-homescreen-card wp-card--prio-pulse">
                     @include('partials.wp-homescreen-shortcut')
                 </div>
-                <div class="wp-card wp-card-pad wp-stack wp-homescreen-stale" data-wp-homescreen-stale hidden>
-                    <h2 class="wp-h2">{{ __('time.portal.homescreen.help_existing_title') }}</h2>
-                    <p>{{ __('time.portal.homescreen.help_existing') }}</p>
-                </div>
             @endif
         @else
             @if ($offerHomescreenShortcut ?? false)

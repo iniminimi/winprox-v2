@@ -179,8 +179,6 @@
             "help_done": "WinProx este acum pe ecranul de start. Apăsați pictograma pentru a vă autentifica. Nu trebuie să scanați un cod QR pentru asta.",
             "help_clock": "La un pontaj fix vă pontați la intrare scanând autocolantul sau ecranul.",
             "help_store": "Nu este nevoie de o aplicație din App Store sau Google Play.",
-            "help_existing_title": "Pictogramă veche?",
-            "help_existing": "Ștergeți pictograma veche, reîmprospătați această pagină și apăsați din nou plusul.",
             "help_push_title": "Un mesaj pe telefon?",
             "help_push_intro": "Vreți un mesaj când se schimbă ceva?",
             "help_push": "Deschideți WinProx din pictograma de pe ecranul de start. Apăsați Activați notificările push și alegeți Permite.",

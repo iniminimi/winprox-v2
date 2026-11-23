@@ -552,8 +552,6 @@
             "help_done": "WinProx est maintenant sur votre écran d’accueil. Touchez l’icône pour vous connecter. Vous n’avez pas besoin de scanner un code QR pour cela.",
             "help_clock": "Sur une pointeuse fixe, vous pointez en scannant l’autocollant ou l’écran de la pointeuse.",
             "help_store": "Aucune application à télécharger sur l’App Store ou Google Play.",
-            "help_existing_title": "Ancienne icône ?",
-            "help_existing": "Supprimez l’ancienne icône, actualisez cette page et touchez à nouveau le plus.",
             "help_push_title": "Une alerte sur votre téléphone ?",
             "help_push_intro": "Vous voulez une alerte quand quelque chose change ?",
             "help_push": "Ouvrez WinProx via l’icône sur l’écran d’accueil. Touchez Activer les notifications push et choisissez Autoriser.",

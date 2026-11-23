@@ -552,8 +552,6 @@
             "help_done": "WinProx liegt jetzt auf Ihrem Startbildschirm. Tippen Sie auf das Symbol, um sich anzumelden. Dafür müssen Sie keinen QR-Code scannen.",
             "help_clock": "An einer festen Stempeluhr stempeln Sie ein, indem Sie den Aufkleber oder den Uhrenbildschirm scannen.",
             "help_store": "Keine App aus dem App Store oder bei Google Play nötig.",
-            "help_existing_title": "Altes Symbol?",
-            "help_existing": "Entfernen Sie das alte Symbol, laden Sie diese Seite neu und tippen Sie erneut auf das Plus.",
             "help_push_title": "Ein Hinweis auf dem Handy?",
             "help_push_intro": "Möchten Sie einen Hinweis, wenn sich etwas ändert?",
             "help_push": "Öffnen Sie WinProx über das Symbol auf dem Startbildschirm. Tippen Sie auf Push-Mitteilungen einschalten und wählen Sie Erlauben.",

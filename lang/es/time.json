@@ -552,8 +552,6 @@
             "help_done": "WinProx ya está en tu pantalla de inicio. Toca el icono para identificarte. No hace falta escanear un código QR para eso.",
             "help_clock": "En un reloj fijo fichas la entrada escaneando la pegatina o la pantalla del reloj.",
             "help_store": "No hace falta una app de la App Store ni de Google Play.",
-            "help_existing_title": "¿Icono antiguo?",
-            "help_existing": "Borra el icono antiguo, actualiza esta página y toca de nuevo el signo más.",
             "help_push_title": "¿Un aviso en el móvil?",
             "help_push_intro": "¿Quieres un aviso cuando cambie algo?",
             "help_push": "Abre WinProx desde el icono de la pantalla de inicio. Toca Activar avisos push y elige Permitir.",

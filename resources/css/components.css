@@ -8871,10 +8871,6 @@ html.wp-homescreen-android .wp-homescreen-help__ios {
     display: none;
 }
 
-.wp-homescreen-stale[hidden] {
-    display: none;
-}
-
 .wp-homescreen-shortcut-wrap {
     display: flex;
     width: 100%;

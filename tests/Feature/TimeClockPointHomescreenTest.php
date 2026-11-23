@@ -81,7 +81,8 @@ it('opent de startscherm-hulp op elk clock point', function () {
         ->assertSee(__('time.portal.homescreen.help_android'), false)
         ->assertSee(__('time.portal.homescreen.help_done'), false)
         ->assertDontSee(__('time.portal.homescreen.help_push_title'), false)
-        ->assertSeeHtml('data-wp-homescreen-stale hidden')
+        ->assertDontSeeHtml('data-wp-homescreen-stale')
+        ->assertDontSee('Oud icoon?', false)
         ->call('closeHomescreenHelp')
         ->assertSet('homescreenHelpOpen', false);
 });

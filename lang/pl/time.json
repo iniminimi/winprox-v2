@@ -179,8 +179,6 @@
             "help_done": "WinProx jest już na ekranie głównym. Proszę stuknąć ikonę, aby się zalogować. Nie trzeba w tym celu skanować kodu QR.",
             "help_clock": "Przy stałym zegarze wejście rejestruje się, skanując naklejkę albo ekran zegara.",
             "help_store": "Nie trzeba aplikacji z App Store ani Google Play.",
-            "help_existing_title": "Stara ikona?",
-            "help_existing": "Proszę usunąć starą ikonę, odświeżyć tę stronę i stuknąć plus jeszcze raz.",
             "help_push_title": "Powiadomienie na telefonie?",
             "help_push_intro": "Czy chcą Państwo dostać powiadomienie, gdy coś się zmieni?",
             "help_push": "Proszę otworzyć WinProx z ikony na ekranie głównym. Proszę stuknąć Włącz powiadomienia push i wybrać Zezwól.",

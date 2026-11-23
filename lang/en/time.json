@@ -552,8 +552,6 @@
             "help_done": "WinProx is now on your home screen. Tap the icon to sign in. You do not need to scan a QR code for that.",
             "help_clock": "At a fixed clock you clock in by scanning the sticker or the clock screen.",
             "help_store": "No app from the App Store or Google Play needed.",
-            "help_existing_title": "Old icon?",
-            "help_existing": "Delete the old icon, refresh this page and tap the plus again.",
             "help_push_title": "A notification on your phone?",
             "help_push_intro": "Do you want a notification when something changes?",
             "help_push": "Open WinProx from the icon on your home screen. Tap Turn on push notifications and choose Allow.",
