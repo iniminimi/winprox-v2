@@ -36,8 +36,14 @@
                         </p>
                     </div>
                     @can('setPassword', $user)
-                        <button type="button" class="btn btn--ghost btn--sm" wire:click="openPassword({{ $user->id }})">
-                            {{ __('platform.users.password.button') }}
+                        <button
+                            type="button"
+                            class="btn btn--ghost btn--sm"
+                            wire:click="openPassword({{ $user->id }})"
+                            title="{{ __('platform.users.password.button') }}"
+                            aria-label="{{ __('platform.users.password.button') }}"
+                        >
+                            <x-wp-icon name="key" class="wp-icon" />
                         </button>
                     @endcan
                 </li>
