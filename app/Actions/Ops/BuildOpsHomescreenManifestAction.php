@@ -15,7 +15,8 @@ final class BuildOpsHomescreenManifestAction
      */
     public function handle(): array
     {
-        $appId = rtrim(url('/ops'), '/').'/';
+        $appId = route('public.ops');
+        $scope = rtrim(url('/ops'), '/').'/';
         $manifestUrl = route('public.ops.manifest');
         $icon192 = url('/images/pwa/winprox-192.png').'?v=4';
         $icon512 = url('/images/pwa/winprox-512.png').'?v=4';
@@ -29,7 +30,7 @@ final class BuildOpsHomescreenManifestAction
             'short_name' => 'OPS',
             'start_url' => $appId,
             // Alleen /ops/* — niet de hele site, anders blokkeert Chrome de uitvoerders-PWA.
-            'scope' => $appId,
+            'scope' => $scope,
             'handle_links' => 'not-preferred',
             'launch_handler' => [
                 'client_mode' => 'navigate-existing',

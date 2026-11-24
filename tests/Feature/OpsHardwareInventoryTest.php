@@ -147,20 +147,20 @@ it('toont platform toestellen en OPS-portaal voor superuser', function () {
         ->assertSee('SN-UI-1')
         ->assertSee($portal->portalUrl(), false);
 
-    $this->get('/ops/')
+    $this->get(route('public.ops'))
         ->assertOk()
         ->assertSee(__('ops.portal.title'), false)
         ->assertSee('manifest.webmanifest', false)
         ->assertSeeHtml('data-wp-ops-homescreen-install');
 
-    $this->get('/ops')->assertRedirect('/ops/');
+    $this->get('/ops')->assertRedirect(route('public.ops'));
 
     $this->get(route('public.ops.manifest'))
         ->assertOk()
         ->assertJsonPath('name', 'WinProx OPS')
         ->assertJsonPath('short_name', 'OPS')
-        ->assertJsonPath('start_url', url('/ops').'/')
-        ->assertJsonPath('id', url('/ops').'/')
+        ->assertJsonPath('start_url', route('public.ops'))
+        ->assertJsonPath('id', route('public.ops'))
         ->assertJsonPath('scope', url('/ops').'/');
 
     $this->get(route('public.ops-portal', $portal->token))

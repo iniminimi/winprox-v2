@@ -253,9 +253,12 @@ Route::get('/cp/{token}', TimePortal::class)
     ->name('public.time-portal.cp');
 Route::get('/ops/manifest.webmanifest', \App\Http\Controllers\Ops\OpsHomescreenManifestController::class)
     ->name('public.ops.manifest');
-Route::get('/ops/', OpsPortal::class)
+// /ops/home = canonieke PWA-start (scope /ops/); /ops blijft een korte alias.
+Route::get('/ops/home', OpsPortal::class)
     ->name('public.ops');
-Route::permanentRedirect('/ops', '/ops/');
+Route::get('/ops', function () {
+    return redirect()->route('public.ops');
+});
 Route::get('/ops/{token}', OpsPortal::class)
     ->where('token', '[a-z0-9]{20,64}')
     ->name('public.ops-portal');

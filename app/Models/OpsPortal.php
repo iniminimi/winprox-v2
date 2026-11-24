@@ -28,7 +28,7 @@ class OpsPortal extends Model
 
     public function portalUrl(): string
     {
-        return rtrim(route('public.ops'), '/').'/';
+        return route('public.ops');
     }
 
     public function tokenUrl(): string
