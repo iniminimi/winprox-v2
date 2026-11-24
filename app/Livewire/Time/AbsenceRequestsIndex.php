@@ -12,10 +12,13 @@ use App\Enums\AbsenceRequestStatus;
 use App\Http\Requests\Time\DecideAbsenceRequestRequest;
 use App\Livewire\Concerns\ProvidesTimeNavAlarmCount;
 use App\Models\AbsenceRequest;
+use App\Models\InternalTeam;
 use App\Models\Tenant;
+use App\Models\Worker;
 use App\Support\Tenancy;
 use App\Support\Time\TimeModuleAccess;
 use App\Support\Validation\TextDescriptionLimits;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use InvalidArgumentException;
@@ -36,6 +39,18 @@ class AbsenceRequestsIndex extends Component
 
     #[Url(as: 'photos')]
     public ?string $photosFilter = null;
+
+    #[Url(as: 'team')]
+    public ?int $teamFilter = null;
+
+    #[Url(as: 'worker')]
+    public ?int $workerFilter = null;
+
+    #[Url(as: 'from')]
+    public string $from = '';
+
+    #[Url(as: 'to')]
+    public string $to = '';
 
     #[Url(as: 'decide')]
     public ?int $decide = null;
@@ -73,6 +88,12 @@ class AbsenceRequestsIndex extends Component
     public function clearPhotosFilter(): void
     {
         $this->photosFilter = null;
+    }
+
+    public function applyFilters(): void
+    {
+        $this->from = $this->normalizedFilterDate($this->from);
+        $this->to = $this->normalizedFilterDate($this->to);
     }
 
     public function openDecide(int $id): void
@@ -134,6 +155,19 @@ class AbsenceRequestsIndex extends Component
         $this->closeDecide();
     }
 
+    private function normalizedFilterDate(string $value): string
+    {
+        if (! preg_match('/^\d{4}-\d{2}-\d{2}$/', $value)) {
+            return '';
+        }
+
+        try {
+            return Carbon::parse($value)->toDateString();
+        } catch (\Throwable) {
+            return '';
+        }
+    }
+
     public function render(
         ListAbsenceRequestsAction $list,
         ListAbsenceRequestConflictsAction $listConflicts,
@@ -143,7 +177,16 @@ class AbsenceRequestsIndex extends Component
         $tenantId = (int) Tenancy::id();
         $status = AbsenceRequestStatus::tryFrom((string) $this->statusFilter);
         $expiringPhotos = $this->photosFilter === 'expiring';
-        $requests = $list->handle($tenantId, $status, 100, $expiringPhotos);
+        $requests = $list->handle(
+            $tenantId,
+            $status,
+            100,
+            $expiringPhotos,
+            $this->teamFilter,
+            $this->workerFilter,
+            $this->normalizedFilterDate($this->from),
+            $this->normalizedFilterDate($this->to),
+        );
         $deciding = $this->decidingId !== null
             ? AbsenceRequest::query()->with(['worker', 'shiftType', 'photos'])->find($this->decidingId)
             : null;
@@ -162,6 +205,8 @@ class AbsenceRequestsIndex extends Component
             'alarmCount' => $this->timeNavAlarmCount(),
             'pendingCount' => $countPending->handle($tenantId),
             'photosFilter' => $expiringPhotos ? 'expiring' : null,
+            'teams' => InternalTeam::query()->with('translations')->orderBy('sort_order')->orderBy('name')->get(),
+            'workers' => Worker::query()->where('is_active', true)->orderBy('last_name')->orderBy('first_name')->get(),
             'reasonMax' => TextDescriptionLimits::MAX,
         ]);
     }

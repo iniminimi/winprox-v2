@@ -13,14 +13,29 @@ class ListAbsenceRequestsAction
     /**
      * @return Collection<int, AbsenceRequest>
      */
-    public function handle(int $tenantId, ?AbsenceRequestStatus $status = null, int $limit = 100, bool $expiringPhotos = false): Collection
-    {
+    public function handle(
+        int $tenantId,
+        ?AbsenceRequestStatus $status = null,
+        int $limit = 100,
+        bool $expiringPhotos = false,
+        ?int $teamId = null,
+        ?int $workerId = null,
+        ?string $from = null,
+        ?string $to = null,
+    ): Collection {
         TimeModuleAccess::assertEnabledForTenantId($tenantId);
 
         return AbsenceRequest::query()
             ->with(['worker', 'shiftType', 'decidedBy', 'photos'])
             ->where('tenant_id', $tenantId)
             ->when($status !== null, fn ($q) => $q->where('status', $status))
+            ->when($teamId, fn ($q) => $q->whereHas(
+                'worker',
+                fn ($worker) => $worker->where('internal_team_id', $teamId),
+            ))
+            ->when($workerId, fn ($q) => $q->where('worker_id', $workerId))
+            ->when($from !== null && $from !== '', fn ($q) => $q->whereDate('date_to', '>=', $from))
+            ->when($to !== null && $to !== '', fn ($q) => $q->whereDate('date_from', '<=', $to))
             ->when($expiringPhotos, function ($query) {
                 $query->whereHas('photos', function ($photos) {
                     $photos->where('created_at', '<=', AbsencePhotoRetention::warnBefore())

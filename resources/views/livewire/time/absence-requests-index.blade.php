@@ -16,6 +16,44 @@
         <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
     @endif
 
+    <div class="wp-card wp-filter-panel wp-time-shifts-toolbar">
+        <div class="wp-filter-form wp-time-shifts-toolbar__form">
+            <div class="wp-time-shifts-toolbar__top">
+                <div class="wp-filter-cell">
+                    <label class="wp-filter-inline-label" for="absence-from">{{ __('time.filters.from') }}</label>
+                    <input id="absence-from" type="date" class="wp-input" wire:model="from">
+                </div>
+                <div class="wp-filter-cell">
+                    <label class="wp-filter-inline-label" for="absence-to">{{ __('time.filters.to') }}</label>
+                    <input id="absence-to" type="date" class="wp-input" wire:model="to">
+                </div>
+                <div class="wp-filter-form__actions">
+                    <button type="button" class="btn btn--primary btn--sm" wire:click="applyFilters">{{ __('time.filters.apply') }}</button>
+                </div>
+            </div>
+            <div class="wp-time-shifts-toolbar__choices">
+                <div class="wp-filter-cell">
+                    <label class="wp-filter-inline-label" for="absence-team">{{ __('time.filters.team') }}</label>
+                    <select id="absence-team" class="wp-select" wire:model="teamFilter">
+                        <option value="">{{ __('time.filters.all_teams') }}</option>
+                        @foreach ($teams as $team)
+                            <option value="{{ $team->id }}">{{ $team->localizedName() }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="wp-filter-cell">
+                    <label class="wp-filter-inline-label" for="absence-worker">{{ __('time.filters.worker') }}</label>
+                    <select id="absence-worker" class="wp-select" wire:model="workerFilter">
+                        <option value="">{{ __('time.filters.all_workers') }}</option>
+                        @foreach ($workers as $worker)
+                            <option value="{{ $worker->id }}">{{ $worker->displayName() }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <p class="wp-muted">{{ __('time.absence.photos_kept') }}</p>
 
     @if ($photosFilter === 'expiring')

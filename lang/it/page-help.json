@@ -2307,7 +2307,7 @@
                 },
                 {
                     "label": "L’elenco",
-                    "text": "In alto può filtrare le richieste per <strong>Tutte</strong>, <strong>Aperta</strong>, <strong>Approvata</strong>, <strong>Rifiutata</strong> o <strong>Ritirata</strong>.<br><br>Per ogni richiesta vede l’operatore, il tipo di assenza, i giorni richiesti ed eventualmente una nota.<br><br>Dopo una decisione vede anche chi ha approvato o rifiutato la richiesta.<br><br>Se c’è una foto, la vede con la richiesta. WinProx conserva le foto 6 mesi e poi le cancella. Da 5 mesi la schermata iniziale avvisa. Conservi una copia se le servono più a lungo."
+                    "text": "Filtra anche per team, operatore e periodo (da–a), come nelle ore timbrate. Una richiesta resta visibile se tocca quel periodo. Faccia clic su <strong>Applica</strong>.<br><br>In alto può filtrare le richieste per <strong>Tutte</strong>, <strong>Aperta</strong>, <strong>Approvata</strong>, <strong>Rifiutata</strong> o <strong>Ritirata</strong>.<br><br>Per ogni richiesta vede l’operatore, il tipo di assenza, i giorni richiesti ed eventualmente una nota.<br><br>Dopo una decisione vede anche chi ha approvato o rifiutato la richiesta.<br><br>Se c’è una foto, la vede con la richiesta. WinProx conserva le foto 6 mesi e poi le cancella. Da 5 mesi la schermata iniziale avvisa. Conservi una copia se le servono più a lungo."
                 },
                 {
                     "label": "Valutare una richiesta",

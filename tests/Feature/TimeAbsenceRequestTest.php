@@ -1015,3 +1015,51 @@ it('wist foto\'s ouder dan zes maanden en waarschuwt na vijf', function () {
     Carbon::setTestNow(Carbon::parse('2026-09-22 10:00:00'));
     expect(app(CountExpiringAbsencePhotosAction::class)->handle((int) $tenant->id))->toBe(0);
 });
+
+it('filtert aanvragen op team, medewerker en periode', function () {
+    [$tenant, $admin, , $worker] = absenceTenant();
+    seedTenantPastOnboarding($tenant);
+
+    $otherTeam = InternalTeam::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Andere ploeg',
+    ]);
+    $other = Worker::factory()->create([
+        'tenant_id' => $tenant->id,
+        'internal_team_id' => $otherTeam->id,
+        'first_name' => 'Piet',
+        'last_name' => 'Pieters',
+        'is_active' => true,
+    ]);
+
+    app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Leave, '2026-09-23', '2026-09-25'),
+    );
+    app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $other,
+        new RequestAbsenceData(ShiftTypeKind::Leave, '2026-10-01', '2026-10-02'),
+    );
+
+    Livewire::actingAs($admin)
+        ->test(AbsenceRequestsIndex::class)
+        ->assertSee('23-09-2026')
+        ->assertSee('01-10-2026')
+        ->set('workerFilter', $worker->id)
+        ->call('applyFilters')
+        ->assertSee('23-09-2026')
+        ->assertDontSee('01-10-2026')
+        ->set('workerFilter', null)
+        ->set('teamFilter', $otherTeam->id)
+        ->call('applyFilters')
+        ->assertSee('01-10-2026')
+        ->assertDontSee('23-09-2026')
+        ->set('teamFilter', null)
+        ->set('from', '2026-09-24')
+        ->set('to', '2026-09-24')
+        ->call('applyFilters')
+        ->assertSee('23-09-2026')
+        ->assertDontSee('01-10-2026');
+});
