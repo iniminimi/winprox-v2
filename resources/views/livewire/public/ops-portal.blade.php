@@ -115,12 +115,6 @@
             @if ($screen === 'help')
                 @include('livewire.public.ops.partials.help')
             @endif
-
-            <div class="wp-cluster">
-                <button type="button" class="btn btn--surface btn--sm" wire:click="logout">
-                    {{ __('ops.portal.logout') }}
-                </button>
-            </div>
         @endif
     @endunless
 </div>
