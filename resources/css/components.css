@@ -9390,24 +9390,26 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
 }
 
 .wp-sense-card__head {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1.85rem minmax(0, 1fr) 1.85rem;
     align-items: center;
-    gap: 0.75rem;
+    column-gap: 0.45rem;
 }
 
 .wp-sense-leaf {
     width: 1.75rem;
     height: 1.75rem;
     color: var(--sense-green, #00d26a);
-    flex: none;
+    justify-self: center;
 }
 
 .wp-sense-card__title {
     margin: 0;
+    color: var(--sense-text, #fff);
     font-size: 1.35rem;
     font-weight: 700;
     letter-spacing: -0.02em;
-    flex: 1;
+    text-align: center;
     min-width: 0;
 }
 
@@ -9420,7 +9422,7 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    flex: none;
+    justify-self: center;
 }
 
 .wp-sense-state--bad {
