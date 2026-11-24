@@ -1837,19 +1837,43 @@
             ]
         },
         "units.screen": {
-            "title": "Aiuto — Schermo",
+            "title": "Aiuto — Impostazioni dello schermo",
             "actions": [
                 {
-                    "label": "Collegare",
-                    "text": "Sul locale scegliete Schermo. Lì impostate orari, suono e salvaschermo di quello schermo. Il QR del locale cambia ogni ora. Attivate Sense in quella pagina se è un D1S."
+                    "label": "Che cos’è questo schermo?",
+                    "text": "Uno schermo fisico in questo locale. Mostra un QR che cambia ogni ora. Una scansione apre la stessa pagina di segnalazione dell’adesivo sulla porta. Una foto dello schermo vale fino all’ora successiva, e dopo no."
                 },
                 {
                     "label": "Sense",
                     "text": "Attivate <strong>Sense</strong> se è un D1S. Lo schermo misura allora temperatura, umidità, CO₂ e qualità dell’aria. Lasciatelo spento per un D1. Lo stesso interruttore sta su un Clock Point. La scheda nera appartiene solo a questo schermo. Per temperatura e umidità trascini o digiti il valore basso, l’obiettivo e il valore alto, oppure scegli Inverno o Estate. Il 1° maggio passa da solo all’estate, il 1° ottobre all’inverno. L’obiettivo è solo un riferimento. Il CO₂ chiede attenzione sopra il limite. L’indice VOC va dal verde al rosso; l’attenzione arriva solo se un valore alto resta per mezz’ora. Sense spento nasconde la scheda e ferma l’attenzione nella schermata iniziale; i limiti restano salvati. Non nasce nessuna segnalazione né attività."
                 },
                 {
+                    "label": "Orari dello schermo",
+                    "text": "Impostate tra quali ore lo schermo è acceso, p. es. asilo 06:00–19:00. Fuori da quella fascia lo schermo si spegne. Entrambi i campi vuoti = sempre acceso; una fascia oltre la mezzanotte (p. es. 22:00–06:00) funziona comunque."
+                },
+                {
+                    "label": "Suono",
+                    "text": "Con l’interruttore accendete o spegnete il suono di questo schermo. Acceso: lo schermo emette un bip a ogni tasto e dopo un’azione. Spento: lo schermo resta in silenzio. Lo schermo applica la scelta al contatto successivo (±1 minuto)."
+                },
+                {
+                    "label": "Salvaschermo",
+                    "text": "Durante al massimo due fasce — solo nei giorni spuntati — lo schermo mostra una schermata di riposo al posto del QR. Scegliete cosa mostrare: <strong>foto</strong> (10 secondi ciascuna), un <strong>orologio a lancette</strong> con secondi rossi, un <strong>orologio a palette</strong>, uno <strong>schermo nero</strong> (illuminazione spenta, consuma di meno) o <strong>codice QR</strong> — allora resta il QR normale. Un tocco mostra subito il QR. Caricate le foto con <strong>Aggiungi foto</strong>: le ritagliate e vengono ridotte da sole. Massimo 12 foto per schermo. Lo schermo scarica le foto nuove al contatto successivo (±1 minuto) e le tiene in locale — le foto eliminate spariscono anche dallo schermo."
+                },
+                {
+                    "label": "QR di questo locale",
+                    "text": "In basso vedete il codice che lo schermo mostra. Cambia ogni ora. Una scansione apre la stessa pagina di segnalazione dell’adesivo sulla porta. L’adesivo stesso non cambia."
+                },
+                {
+                    "label": "Codice di collegamento",
+                    "text": "<strong>Genera codice</strong> crea un codice monouso (XXXX-XXXX, valido 10 minuti). Inseritelo sullo schermo; la richiesta compare qui sotto <strong>Uno schermo chiede di collegarsi</strong>. Confermate solo se siete sicuri che sia il vostro apparecchio. Al massimo uno schermo per locale — una nuova conferma sostituisce l’apparecchio precedente. Se uno schermo è già collegato, qui vedete quale apparecchio è e quando è stato collegato. Lì lo scollegate anche."
+                },
+                {
                     "label": "Scollegare",
-                    "text": "Scollegare ferma l’apparecchio per questo locale. Poi potete collegarne un altro."
+                    "text": "Scollegare ferma l’apparecchio per questo locale. Lo schermo non può più mostrare un QR valido e torna in modalità collegamento. Poi potete collegarne un altro."
+                },
+                {
+                    "label": "Offline",
+                    "text": "Lo schermo si segnala ogni minuto. Dopo ±24 ore senza contatto col server mostra un avviso; dopo 7 giorni offline il QR si ferma del tutto. Gli orari di accensione continuano a funzionare offline."
                 }
             ]
         },

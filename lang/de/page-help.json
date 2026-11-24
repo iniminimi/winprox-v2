@@ -1837,19 +1837,43 @@
             ]
         },
         "units.screen": {
-            "title": "Hilfe — Display",
+            "title": "Hilfe — Display-Einstellungen",
             "actions": [
                 {
-                    "label": "Koppeln",
-                    "text": "Am Raum wählen Sie Display. Dort stellen Sie Zeiten, Ton und Bildschirmschoner für dieses Display ein. Der QR des Raums wechselt einmal pro Stunde. Sense schalten Sie dort ein, wenn dies ein D1S ist."
+                    "label": "Was ist dieses Display?",
+                    "text": "Ein physisches Display an diesem Raum. Es zeigt einen QR-Code, der einmal pro Stunde wechselt. Ein Scan öffnet dieselbe Meldeseite wie der Aufkleber an der Tür. Ein Foto des Displays gilt bis zur nächsten Stunde, danach nicht mehr."
                 },
                 {
                     "label": "Sense",
                     "text": "Schalten Sie <strong>Sense ein</strong>, wenn dies ein D1S ist. Das Display misst dann Temperatur, Feuchte, CO₂ und Luftqualität. Für ein D1 lassen Sie es aus. Derselbe Schalter steht an einem Clock Point. Die schwarze Karte gehört nur zu diesem Display. Bei Temperatur und Feuchte ziehen oder tippen Sie unten, Ziel und oben, oder Sie wählen Winter oder Sommer. Am 1. Mai wechselt das von selbst auf Sommer, am 1. Oktober auf Winter. Der Zielwert ist nur ein Richtwert. CO₂ bittet um Aufmerksamkeit über der Grenze. Der VOC-Index färbt von Grün bis Rot; Aufmerksamkeit folgt erst, wenn ein hoher Wert eine halbe Stunde anhält. Sense aus blendet die Karte aus und stoppt die Aufmerksamkeit auf dem Startbildschirm; die Grenzen bleiben gespeichert. Es entsteht keine Meldung und keine Aufgabe."
                 },
                 {
+                    "label": "Bildschirmzeiten",
+                    "text": "Stellen Sie ein, zwischen welchen Stunden das Display an ist, z. B. Kita 06:00–19:00. Außerhalb dieses Fensters geht das Display aus. Beide Felder leer = immer an; ein Fenster über Mitternacht (z. B. 22:00–06:00) funktioniert auch."
+                },
+                {
+                    "label": "Ton",
+                    "text": "Mit dem Schalter schalten Sie den Ton dieses Displays ein oder aus. Ein: das Display piept bei jeder Taste und nach einer Eingabe. Aus: das Display bleibt still. Das Display übernimmt die Wahl bei der nächsten Meldung (±1 Minute)."
+                },
+                {
+                    "label": "Bildschirmschoner",
+                    "text": "Während höchstens zwei Zeitblöcken — nur an den angehakten Wochentagen — zeigt das Display einen Ruhebildschirm statt des QR-Codes. Wählen Sie, was gezeigt wird: <strong>Fotos</strong> (je 10 Sekunden), eine <strong>Zeigeruhr</strong> mit rotem Sekundenzeiger, eine digitale <strong>Klappuhr</strong>, ein <strong>schwarzes Display</strong> (Beleuchtung aus, verbraucht am wenigsten) oder <strong>QR-Code</strong> — dann bleibt der normale QR sichtbar. Ein Tipp zeigt sofort den QR-Code. Fotos laden Sie über <strong>Foto hinzufügen</strong> hoch: Sie schneiden sie zu und sie werden automatisch verkleinert. Höchstens 12 Fotos pro Display. Das Display lädt neue Fotos bei der nächsten Meldung (±1 Minute) und speichert sie lokal — gelöschte Fotos verschwinden auch vom Display."
+                },
+                {
+                    "label": "QR dieses Raums",
+                    "text": "Unten sehen Sie den Code, den das Display zeigt. Er wechselt einmal pro Stunde. Ein Scan öffnet dieselbe Meldeseite wie der Aufkleber an der Tür. Der Aufkleber selbst ändert sich nicht."
+                },
+                {
+                    "label": "Koppelcode",
+                    "text": "<strong>Koppelcode erzeugen</strong> macht einen einmaligen Code (XXXX-XXXX, 10 Minuten gültig). Tippen Sie ihn auf dem Display ein; die Anfrage erscheint hier unter <strong>Ein Display möchte sich koppeln</strong>. Bestätigen Sie erst, wenn Sie sicher sind, dass es Ihr Gerät ist. Höchstens ein Display pro Raum — eine neue Bestätigung ersetzt das alte Gerät. Ist schon ein Display gekoppelt, steht hier welches Gerät es ist und wann es gekoppelt wurde. Dort trennen Sie es auch."
+                },
+                {
                     "label": "Trennen",
-                    "text": "Trennen stoppt das Gerät für diesen Raum. Danach können Sie ein anderes Display koppeln."
+                    "text": "Trennen stoppt das Gerät für diesen Raum. Das Display kann keinen gültigen QR-Code mehr zeigen und kehrt in den Kopplungsmodus zurück. Danach können Sie ein anderes Display koppeln."
+                },
+                {
+                    "label": "Offline",
+                    "text": "Das Display meldet sich jede Minute. Nach ±24 Stunden ohne Serverkontakt zeigt es eine Warnung; nach 7 Tagen offline stoppt der QR ganz. Die Einschaltzeiten funktionieren auch offline."
                 }
             ]
         },

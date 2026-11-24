@@ -1837,19 +1837,43 @@
             ]
         },
         "units.screen": {
-            "title": "Ayuda — Pantalla",
+            "title": "Ayuda — Ajustes de la pantalla",
             "actions": [
                 {
-                    "label": "Vincular",
-                    "text": "En la sala elija Pantalla. Allí ajusta las horas, el sonido y el salvapantallas de esa pantalla. El QR de la sala cambia cada hora. Active Sense en esa página si es un D1S."
+                    "label": "Qué es esta pantalla",
+                    "text": "Una pantalla física en esta sala. Muestra un QR que cambia cada hora. Un escaneo abre la misma página de aviso que la pegatina de la puerta. Una foto de la pantalla vale hasta la hora siguiente, y después ya no."
                 },
                 {
                     "label": "Sense",
                     "text": "Active <strong>Sense</strong> si es un D1S. La pantalla mide entonces temperatura, humedad, CO₂ y calidad del aire. Déjelo apagado para un D1. El mismo interruptor está en un Clock Point. La tarjeta negra pertenece solo a esta pantalla. En temperatura y humedad arrastra o escribe el valor bajo, el objetivo y el alto, o elige Invierno o Verano. El 1 de mayo pasa solo al verano y el 1 de octubre al invierno. El objetivo solo orienta. El CO₂ pide atención por encima del límite. El índice VOC pasa de verde a rojo; la atención llega solo si un valor alto se mantiene media hora. Sense apagado oculta la tarjeta y detiene la atención en el inicio; los límites se conservan. No se crea ningún aviso ni tarea."
                 },
                 {
+                    "label": "Horas de pantalla",
+                    "text": "Indique entre qué horas está encendida la pantalla, p. ej. guardería 06:00–19:00. Fuera de esa franja la pantalla se apaga. Los dos campos vacíos = siempre encendida; una franja que pasa de medianoche (p. ej. 22:00–06:00) también vale."
+                },
+                {
+                    "label": "Sonido",
+                    "text": "Con el interruptor enciende o apaga el sonido de esta pantalla. Encendido: la pantalla pita en cada tecla y tras una pulsación. Apagado: la pantalla permanece en silencio. La pantalla toma la elección en el siguiente contacto (±1 minuto)."
+                },
+                {
+                    "label": "Salvapantallas",
+                    "text": "Durante como máximo dos franjas — solo los días marcados — la pantalla muestra un descanso en lugar del QR. Elija qué se muestra: <strong>fotos</strong> (10 segundos cada una), un <strong>reloj de agujas</strong> con segundero rojo, un <strong>reloj de paletas</strong>, una <strong>pantalla negra</strong> (iluminación apagada, la que menos consume) o <strong>código QR</strong> — entonces sigue el QR normal. Un toque muestra el QR al momento. Suba fotos con <strong>Añadir foto</strong>: las recorta y se reducen solas. Máximo 12 fotos por pantalla. La pantalla descarga las fotos nuevas en el siguiente contacto (±1 minuto) y las guarda en local — las fotos borradas desaparecen también de la pantalla."
+                },
+                {
+                    "label": "QR de esta sala",
+                    "text": "Abajo ve el código que muestra la pantalla. Cambia cada hora. Un escaneo abre la misma página de aviso que la pegatina de la puerta. La pegatina en sí no cambia."
+                },
+                {
+                    "label": "Código de vinculación",
+                    "text": "<strong>Generar código</strong> crea un código de un solo uso (XXXX-XXXX, válido 10 minutos). Escríbalo en la pantalla; la solicitud aparece aquí bajo <strong>Una pantalla pide vincularse</strong>. Confirme solo si está seguro de que es su aparato. Como máximo una pantalla por sala — una confirmación nueva sustituye al aparato anterior. Si ya hay una pantalla vinculada, aquí ve cuál es y cuándo se vinculó. Ahí también la desvincula."
+                },
+                {
                     "label": "Desvincular",
-                    "text": "Desvincular detiene el aparato para esta sala. Después puede vincular otra pantalla."
+                    "text": "Desvincular detiene el aparato para esta sala. La pantalla ya no puede mostrar un QR válido y vuelve al modo de vinculación. Después puede vincular otra pantalla."
+                },
+                {
+                    "label": "Sin conexión",
+                    "text": "La pantalla se comunica cada minuto. Tras ±24 h sin contacto con el servidor muestra un aviso; tras 7 días sin conexión el QR se detiene por completo. El horario de encendido sigue funcionando sin conexión."
                 }
             ]
         },

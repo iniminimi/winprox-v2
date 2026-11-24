@@ -1837,19 +1837,43 @@
             ]
         },
         "units.screen": {
-            "title": "Hulp — Scherm",
+            "title": "Hulp — Scherm instellingen",
             "actions": [
                 {
-                    "label": "Koppelen",
-                    "text": "Op het lokaal kiest u Scherm. Daar stelt u de uren, het geluid en de screensaver van dat scherm in. De QR van het lokaal wisselt elk uur. Sense zet u aan op die pagina als dit een D1S is."
+                    "label": "Wat is dit scherm?",
+                    "text": "Een fysiek scherm bij dit lokaal. Het toont een QR-code die elk uur wisselt. Een scan opent dezelfde meldpagina als de sticker op de deur. Een foto van het scherm werkt tot het volgende uur, en daarna niet meer."
                 },
                 {
                     "label": "Sense",
                     "text": "Zet <strong>Sense aan</strong> als dit een D1S is. Het scherm meet dan temperatuur, vocht, CO₂ en luchtkwaliteit. Een D1 laat u uit. Hetzelfde geldt bij een Clock Point. De zwarte kaart hoort alleen bij dit scherm. Bij temperatuur en vocht sleept of typt u onder, streef en boven, of u kiest Winter of Zomer. Op 1 mei gaat dit vanzelf naar de zomer, op 1 oktober naar de winter. De streefwaarde is alleen een richtpunt. CO₂ vraagt aandacht boven de grens. De VOC-index kleurt van groen tot rood; aandacht volgt pas als een hoge waarde een half uur aanhoudt. Sense uit verbergt de kaart en stopt de aandacht op het beginscherm; de grenzen blijven bewaard. Er komt geen melding en geen taak."
                 },
                 {
+                    "label": "Schermuren",
+                    "text": "Stel in tussen welke uren het scherm aan staat, bv. crèche 06:00–19:00. Buiten dit venster gaat het scherm uit. Beide velden leeg = altijd aan; een venster over middernacht (bv. 22:00–06:00) werkt ook."
+                },
+                {
+                    "label": "Geluid",
+                    "text": "Met de schakelaar zet u het geluid van dit scherm aan of uit. Aan: het scherm piept bij elke toets en na een prikking. Uit: het scherm blijft stil. Het scherm neemt de keuze over bij de eerstvolgende melding (±1 minuut)."
+                },
+                {
+                    "label": "Screensaver",
+                    "text": "Tijdens maximaal twee ingestelde tijdsblokken — alleen op de aangevinkte weekdagen — toont het scherm een rust-scherm i.p.v. de QR-code. Kies wat er getoond wordt: <strong>foto’s</strong> (elke foto 10 seconden), een <strong>wijzerklok</strong> met rode secondewijzer, een digitale <strong>flipklok</strong>, een <strong>zwart scherm</strong> (verlichting uit, verbruikt het minst), of <strong>QR-code</strong> — dan blijft de gewone QR zichtbaar. Een tik op het scherm toont meteen de QR-code. Upload foto’s via <strong>Foto toevoegen</strong>: u snijdt ze bij en ze worden automatisch verkleind. Per scherm maximaal 12 foto’s. Het scherm downloadt nieuwe foto’s vanzelf bij de eerstvolgende melding (±1 minuut) en bewaart ze lokaal — verwijderde foto’s verdwijnen dan ook van het scherm."
+                },
+                {
+                    "label": "QR van dit lokaal",
+                    "text": "Onderaan ziet u de code die het scherm toont. Die wisselt elk uur. Een scan opent dezelfde meldpagina als de sticker op de deur. De sticker zelf verandert niet."
+                },
+                {
+                    "label": "Koppelcode",
+                    "text": "<strong>Genereer koppelcode</strong> maakt een eenmalige code (XXXX-XXXX, 10 minuten geldig). Tik die in op het scherm; de aanvraag verschijnt hier onder <strong>Scherm vraagt om te koppelen</strong>. Bevestig pas als u zeker weet dat het uw toestel is. Er is maximaal één scherm per lokaal — een nieuwe bevestiging vervangt het oude toestel. Is er al een scherm gekoppeld, dan staat hier welk toestel het is en wanneer het gekoppeld werd. Daar koppelt u het ook los."
+                },
+                {
                     "label": "Loskoppelen",
-                    "text": "Loskoppelen stopt het toestel voor dit lokaal. U kunt daarna een ander scherm koppelen."
+                    "text": "Loskoppelen stopt het toestel voor dit lokaal. Het scherm kan geen geldige QR-code meer tonen en valt terug naar de koppelmodus. U kunt daarna een ander scherm koppelen."
+                },
+                {
+                    "label": "Offline-gedrag",
+                    "text": "Het scherm meldt zich elke minuut. Na ±24 uur zonder servercontact toont het een waarschuwing; na 7 dagen offline stopt de QR volledig. De aan-uren blijven offline gewoon werken."
                 }
             ]
         },

@@ -1841,19 +1841,43 @@
             ]
         },
         "units.screen": {
-            "title": "Aide — Écran",
+            "title": "Aide — Réglages de l’écran",
             "actions": [
                 {
-                    "label": "Coupler",
-                    "text": "Sur le local, choisissez Écran. Vous y réglez les heures, le son et l’écran de veille de cet écran. Le QR du local change toutes les heures. Activez Sense sur cette page s’il s’agit d’un D1S."
+                    "label": "Quel est cet écran ?",
+                    "text": "Un écran physique dans ce local. Il affiche un QR qui change toutes les heures. Un scan ouvre la même page de signalement que l’autocollant sur la porte. Une photo de l’écran fonctionne jusqu’à l’heure suivante, et plus après."
                 },
                 {
                     "label": "Sense",
                     "text": "Activez <strong>Sense</strong> s’il s’agit d’un D1S. L’écran mesure alors la température, l’humidité, le CO₂ et la qualité de l’air. Laissez éteint pour un D1. Le même interrupteur se trouve sur un Clock Point. La carte noire n’appartient qu’à cet écran. Pour la température et l’humidité, faites glisser ou saisissez le bas, la cible et le haut, ou choisissez Hiver ou Été. Le 1er mai cela passe tout seul à l’été, le 1er octobre à l’hiver. La cible est seulement un repère. Le CO₂ demande attention au-dessus de la limite. L’indice VOC passe du vert au rouge ; l’attention suit seulement si une valeur haute dure une demi-heure. Sense désactivé cache la carte et arrête l’attention à l’accueil ; les repères restent enregistrés. Aucun signalement ni tâche n’est créé."
                 },
                 {
+                    "label": "Heures d’écran",
+                    "text": "Indiquez entre quelles heures l’écran est allumé, p. ex. crèche 06:00–19:00. En dehors de cette plage, l’écran s’éteint. Les deux champs vides = toujours allumé ; une plage après minuit (p. ex. 22:00–06:00) fonctionne aussi."
+                },
+                {
+                    "label": "Son",
+                    "text": "Avec l’interrupteur, vous activez ou coupez le son de cet écran. Activé : l’écran bipe à chaque touche et après une action. Désactivé : l’écran reste silencieux. L’écran reprend le choix à son prochain contact (±1 minute)."
+                },
+                {
+                    "label": "Écran de veille",
+                    "text": "Pendant au plus deux plages horaires — seulement les jours cochés — l’écran montre un écran de repos à la place du QR. Choisissez ce qui s’affiche : des <strong>photos</strong> (10 secondes chacune), une <strong>horloge à aiguilles</strong> avec trotteuse rouge, une <strong>horloge à palettes</strong>, un <strong>écran noir</strong> (éclairage éteint, le moins gourmand), ou le <strong>QR</strong> — le QR habituel reste alors visible. Un toucher affiche tout de suite le QR. Ajoutez des photos via <strong>Ajouter une photo</strong> : vous les recadrez et elles sont réduites automatiquement. Maximum 12 photos par écran. L’écran télécharge les nouvelles photos au prochain contact (±1 minute) et les garde en local — les photos supprimées disparaissent aussi de l’écran."
+                },
+                {
+                    "label": "QR de ce local",
+                    "text": "En bas vous voyez le code que l’écran affiche. Il change toutes les heures. Un scan ouvre la même page de signalement que l’autocollant sur la porte. L’autocollant lui-même ne change pas."
+                },
+                {
+                    "label": "Code de couplage",
+                    "text": "<strong>Générer un code</strong> crée un code à usage unique (XXXX-XXXX, valable 10 minutes). Saisissez-le sur l’écran ; la demande apparaît ici sous <strong>Un écran demande à se relier</strong>. Confirmez seulement si vous êtes sûr que c’est votre appareil. Un seul écran par local — une nouvelle confirmation remplace l’ancien appareil. Si un écran est déjà relié, la page indique quel appareil c’est et quand il a été relié. C’est aussi là que vous le détachez."
+                },
+                {
                     "label": "Détacher",
-                    "text": "Détacher arrête l’appareil pour ce local. Vous pouvez ensuite relier un autre écran."
+                    "text": "Détacher arrête l’appareil pour ce local. L’écran ne peut plus afficher de QR valide et repasse en mode couplage. Vous pouvez ensuite relier un autre écran."
+                },
+                {
+                    "label": "Hors ligne",
+                    "text": "L’écran se signale chaque minute. Après ±24 h sans contact avec le serveur, il affiche un avertissement ; après 7 jours hors ligne, le QR s’arrête complètement. Les heures d’allumage continuent de fonctionner hors ligne."
                 }
             ]
         },

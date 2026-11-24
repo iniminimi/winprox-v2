@@ -1837,19 +1837,43 @@
             ]
         },
         "units.screen": {
-            "title": "Help — Screen",
+            "title": "Help — Screen settings",
             "actions": [
                 {
-                    "label": "Pairing",
-                    "text": "On the room, choose Screen. There you set the hours, sound and screensaver for that screen. The room QR changes once an hour. Turn Sense on there when this is a D1S."
+                    "label": "What is this screen?",
+                    "text": "A physical screen at this room. It shows a QR code that changes once an hour. A scan opens the same report page as the sticker on the door. A photo of the screen works until the next hour, and not after that."
                 },
                 {
                     "label": "Sense",
                     "text": "Turn <strong>Sense on</strong> when this is a D1S. The screen then measures temperature, humidity, CO₂ and air quality. Leave it off for a D1. The same switch is on a Clock Point. The black card belongs only to this screen. For temperature and humidity you drag or type the low, target and high marks, or you choose Winter or Summer. On 1 May this switches to summer on its own, on 1 October to winter. The target is only a guide. CO₂ asks for attention above the mark. The VOC index colours from green to red; attention follows only when a high value lasts half an hour. Sense off hides the card and stops the attention on the home screen; the marks stay saved. No issue and no task is created."
                 },
                 {
+                    "label": "Screen hours",
+                    "text": "Set between which hours the screen is on, e.g. nursery 06:00–19:00. Outside this window the screen is off. Both fields empty = always on; an overnight window (e.g. 22:00–06:00) works too."
+                },
+                {
+                    "label": "Sound",
+                    "text": "Use the switch to turn the sound of this screen on or off. On: the screen beeps on every key and after a press. Off: the screen stays silent. The screen picks up the choice at its next check-in (±1 minute)."
+                },
+                {
+                    "label": "Screensaver",
+                    "text": "During up to two configured time blocks — only on the checked weekdays — the screen shows an idle screen instead of the QR code. Choose what is shown: <strong>photos</strong> (10 seconds each), an <strong>analog clock</strong> with a red second hand, a digital <strong>flip clock</strong>, a <strong>black screen</strong> (backlight off, uses the least power), or <strong>QR code</strong> — the regular QR then stays visible. One tap shows the QR code immediately. Upload photos via <strong>Add photo</strong>: you crop them and they are resized automatically. Up to 12 photos per screen. The screen downloads new photos at its next check-in (±1 minute) and stores them locally — deleted photos disappear from the screen as well."
+                },
+                {
+                    "label": "QR for this room",
+                    "text": "At the bottom you see the code the screen shows. It changes once an hour. A scan opens the same report page as the sticker on the door. The sticker itself does not change."
+                },
+                {
+                    "label": "Pairing code",
+                    "text": "<strong>Generate pairing code</strong> creates a one-time code (XXXX-XXXX, valid 10 minutes). Type it on the screen; the request appears here under <strong>A screen is asking to pair</strong>. Confirm only when you are sure it is your device. There is at most one screen per room — confirming a new request replaces the old device. If a screen is already linked, this page shows which device it is and when it was paired. That is also where you unlink it."
+                },
+                {
                     "label": "Unlink",
-                    "text": "Unlink stops the device for this room. You can pair another screen afterwards."
+                    "text": "Unlink stops the device for this room. The screen can no longer show a valid QR code and returns to pairing mode. You can pair another screen afterwards."
+                },
+                {
+                    "label": "Offline behaviour",
+                    "text": "The screen checks in every minute. After ±24 hours without server contact it shows a warning; after 7 days offline the QR stops entirely. The on-hours keep working offline."
                 }
             ]
         },
