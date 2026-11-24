@@ -105,7 +105,7 @@ function markOpsInstalled() {
     markInstalled(OPS_INSTALLED_KEY, 'wp-ops-pwa-installed');
 }
 
-async function relatedWebAppInstalled() {
+async function relatedWebAppInstalledWhere(matchHaystack) {
     if (typeof navigator.getInstalledRelatedApps !== 'function') {
         return false;
     }
@@ -113,10 +113,25 @@ async function relatedWebAppInstalled() {
     try {
         const apps = await navigator.getInstalledRelatedApps();
 
-        return apps.some((app) => app.platform === 'webapp');
+        return apps.some((app) => {
+            if (app.platform !== 'webapp') {
+                return false;
+            }
+            const hay = `${app.id || ''} ${app.url || ''}`.toLowerCase();
+
+            return matchHaystack(hay);
+        });
     } catch {
         return false;
     }
+}
+
+async function relatedWorkerWebAppInstalled() {
+    return relatedWebAppInstalledWhere((hay) => hay.includes('/time-portal/'));
+}
+
+async function relatedBackofficeWebAppInstalled() {
+    return relatedWebAppInstalledWhere((hay) => hay.includes('/backoffice'));
 }
 
 async function hideShortcutWhenInstalled() {
@@ -126,7 +141,7 @@ async function hideShortcutWhenInstalled() {
             markHomescreenInstalled();
         } else if (homescreenCanInstall) {
             clearInstalled(INSTALLED_KEY, 'wp-pwa-installed');
-        } else if (await relatedWebAppInstalled() && !homescreenCanInstall) {
+        } else if (await relatedWorkerWebAppInstalled() && !homescreenCanInstall) {
             markHomescreenInstalled();
         } else {
             clearInstalled(INSTALLED_KEY, 'wp-pwa-installed');
@@ -163,7 +178,7 @@ async function hideShortcutWhenInstalled() {
         return;
     }
 
-    if (await relatedWebAppInstalled() && !backofficeCanInstall) {
+    if (await relatedBackofficeWebAppInstalled() && !backofficeCanInstall) {
         markBackofficeInstalled();
         return;
     }

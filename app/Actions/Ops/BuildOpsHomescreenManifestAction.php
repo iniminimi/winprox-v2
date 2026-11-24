@@ -6,6 +6,7 @@ namespace App\Actions\Ops;
 
 /**
  * Aparte PWA voor WinProx OPS (superuser-gsm), los van Clock Point en Beheer.
+ * Scope blijft onder /ops/ zodat Chrome ook de gewone WinProx-PWA toelaat.
  */
 final class BuildOpsHomescreenManifestAction
 {
@@ -14,11 +15,8 @@ final class BuildOpsHomescreenManifestAction
      */
     public function handle(): array
     {
-        $appId = url('/ops');
+        $appId = rtrim(url('/ops'), '/').'/';
         $manifestUrl = route('public.ops.manifest');
-        // Eigen app-id; scope = site-root zodat /ops zonder trailing slash binnen scope valt.
-        // handle_links niet-preferred: sticker-/Clock Point-scans openen de uitvoerders-PWA.
-        $scope = rtrim(url('/'), '/').'/';
         $icon192 = url('/images/pwa/winprox-192.png').'?v=4';
         $icon512 = url('/images/pwa/winprox-512.png').'?v=4';
         $maskable192 = url('/images/pwa/winprox-maskable-192.png').'?v=4';
@@ -30,7 +28,8 @@ final class BuildOpsHomescreenManifestAction
             'name' => 'WinProx OPS',
             'short_name' => 'OPS',
             'start_url' => $appId,
-            'scope' => $scope,
+            // Alleen /ops/* — niet de hele site, anders blokkeert Chrome de uitvoerders-PWA.
+            'scope' => $appId,
             'handle_links' => 'not-preferred',
             'launch_handler' => [
                 'client_mode' => 'navigate-existing',
