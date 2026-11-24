@@ -4,7 +4,12 @@
     "title": "Scherm instellingen voor :name",
     "subtitle": "Uren, geluid, screensaver en de QR van dit lokaal. De QR wisselt elk uur.",
     "back": "Terug naar de locatie",
-    "limits": "De grenzen stelt u in bij",
+    "sense": {
+        "title": "Sense",
+        "hint": "Zet dit aan voor een D1S. Het scherm meet dan temperatuur, vocht, CO₂ en luchtkwaliteit. Een D1 laat u uit.",
+        "on": "Sense aan",
+        "off": "Sense uit"
+    },
     "qr": {
         "title": "QR van dit lokaal",
         "hint": "Het scherm toont deze code. Ze wisselt elk uur. Een scan opent dezelfde meldpagina als de sticker op de deur."

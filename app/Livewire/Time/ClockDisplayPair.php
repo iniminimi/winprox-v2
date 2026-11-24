@@ -2,6 +2,9 @@
 
 namespace App\Livewire\Time;
 
+use App\Actions\Screens\DisableSenseOnScreenAction;
+use App\Actions\Screens\EnableSenseOnScreenAction;
+use App\Actions\Screens\EnsureClockScreenAction;
 use App\Actions\Ops\ResolveHardwareDeviceByMacAction;
 use App\Actions\Time\ConfirmClockDisplayClaimAction;
 use App\Actions\Time\DeleteClockDisplayImageAction;
@@ -334,6 +337,20 @@ class ClockDisplayPair extends Component
         session()->flash('time_flash', __('time.clock_displays.album.saved'));
     }
 
+    public function toggleSense(EnableSenseOnScreenAction $enable, DisableSenseOnScreenAction $disable): void
+    {
+        $this->authorize('create', \App\Models\SensePoint::class);
+        $screen = app(EnsureClockScreenAction::class)->handle($this->clockPoint);
+
+        if ($screen->has_sense) {
+            $disable->handle($screen, (int) $this->clockPoint->tenant_id, auth()->id());
+
+            return;
+        }
+
+        $enable->handle($screen, (int) $this->clockPoint->tenant_id, auth()->id());
+    }
+
     public function render(
         ListClockDisplayPairHistoryAction $listHistory,
         ResolveHardwareDeviceByMacAction $resolveDevice,
@@ -359,8 +376,13 @@ class ClockDisplayPair extends Component
             }
         }
 
+        $screen = $point !== null
+            ? app(EnsureClockScreenAction::class)->handle($point)
+            : null;
+
         return view('livewire.time.clock-display-pair', [
             'point' => $point,
+            'screen' => $screen?->load('sensePoint'),
             'pendingClaim' => $pendingClaim,
             'pairHistory' => $pairHistory,
             'linkedInventory' => $linkedInventory,

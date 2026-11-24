@@ -26,23 +26,7 @@ class ListSenseRoomsAction
             ->with(['unit.location'])
             ->get();
 
-        $rooms = $points->map(function (SensePoint $point): SenseRoomView {
-            $unit = $point->unit;
-            $name = $unit !== null ? SenseBands::roomLabel($unit) : '';
-            $ok = SenseBands::attentions($point) === [];
-
-            return new SenseRoomView(
-                id: (int) $point->id,
-                name: $name,
-                ok: $ok,
-                preset: $this->presetKey($point),
-                lastLabel: $this->lastLabel($point),
-                temperature: $this->band($point, SenseMetric::Temperature),
-                humidity: $this->band($point, SenseMetric::Humidity),
-                co2: $this->ceiling($point, SenseMetric::Co2),
-                voc: $this->scale($point, SenseMetric::Voc),
-            );
-        })->sort(function (SenseRoomView $a, SenseRoomView $b): int {
+        $rooms = $points->map(fn (SensePoint $point): SenseRoomView => $this->view($point))->sort(function (SenseRoomView $a, SenseRoomView $b): int {
             if ($a->ok !== $b->ok) {
                 return $a->ok <=> $b->ok;
             }
@@ -51,6 +35,26 @@ class ListSenseRoomsAction
         })->values();
 
         return $rooms->all();
+    }
+
+    public function view(SensePoint $point): SenseRoomView
+    {
+        $point->loadMissing(['unit.location', 'screen.clockPoint']);
+        $name = $point->unit !== null
+            ? SenseBands::roomLabel($point->unit)
+            : (string) ($point->screen?->clockPoint?->name ?? '');
+
+        return new SenseRoomView(
+            id: (int) $point->id,
+            name: $name,
+            ok: SenseBands::attentions($point) === [],
+            preset: $this->presetKey($point),
+            lastLabel: $this->lastLabel($point),
+            temperature: $this->band($point, SenseMetric::Temperature),
+            humidity: $this->band($point, SenseMetric::Humidity),
+            co2: $this->ceiling($point, SenseMetric::Co2),
+            voc: $this->scale($point, SenseMetric::Voc),
+        );
     }
 
     private function lastLabel(SensePoint $point): string

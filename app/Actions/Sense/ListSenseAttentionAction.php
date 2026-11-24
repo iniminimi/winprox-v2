@@ -21,14 +21,13 @@ class ListSenseAttentionAction
 
         $points = SensePoint::query()
             ->where('tenant_id', $tenantId)
-            ->with(['unit.location'])
+            ->whereHas('screen', fn ($query) => $query->where('has_sense', true))
+            ->with(['unit.location', 'screen.clockPoint', 'screen.unit'])
             ->get()
-            ->sortBy(fn (SensePoint $point): string => mb_strtolower(
-                $point->unit !== null ? SenseBands::roomLabel($point->unit) : ''
-            ));
+            ->sortBy(fn (SensePoint $point): string => mb_strtolower($this->placeName($point)));
 
         foreach ($points as $point) {
-            $room = $point->unit !== null ? SenseBands::roomLabel($point->unit) : '';
+            $room = $this->placeName($point);
             foreach (SenseBands::attentions($point) as $row) {
                 $lines[] = new SenseAttentionLine(
                     sensePointId: (int) $point->id,
@@ -40,10 +39,34 @@ class ListSenseAttentionAction
                         $row['limit'],
                         $row['recorded_at'],
                     ),
+                    url: $this->settingsUrl($point),
                 );
             }
         }
 
         return $lines;
+    }
+
+    private function placeName(SensePoint $point): string
+    {
+        if ($point->unit !== null) {
+            return SenseBands::roomLabel($point->unit);
+        }
+
+        return (string) ($point->screen?->clockPoint?->name ?? '');
+    }
+
+    private function settingsUrl(SensePoint $point): string
+    {
+        $screen = $point->screen;
+        if ($screen?->clock_point_id !== null) {
+            return route('time.clock-displays.pair', $screen->clock_point_id);
+        }
+
+        if ($screen?->unit_id !== null) {
+            return route('screens.pair', $screen->unit_id);
+        }
+
+        return route('dashboard');
     }
 }

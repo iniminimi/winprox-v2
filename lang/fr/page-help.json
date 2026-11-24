@@ -1841,7 +1841,7 @@
             "actions": [
                 {
                     "label": "Coupler",
-                    "text": "Sur le local, choisissez Écran. Vous y réglez les heures, le son et l’écran de veille de cet écran. Le QR du local change toutes les heures. Les repères restent dans Lieux → Sense."
+                    "text": "Sur le local, choisissez Écran. Vous y réglez les heures, le son et l’écran de veille de cet écran. Le QR du local change toutes les heures. Activez Sense sur cette page s’il s’agit d’un D1S."
                 },
                 {
                     "label": "Détacher",

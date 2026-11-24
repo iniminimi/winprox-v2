@@ -77,7 +77,6 @@ use App\Livewire\Esg\MeasurementsIndex as EsgMeasurementsIndex;
 use App\Livewire\Esg\PointHistory as EsgPointHistory;
 use App\Livewire\Iot\Index as IotIndex;
 use App\Livewire\Screens\Pair as ScreenPair;
-use App\Livewire\Sense\Index as SenseIndex;
 use App\Livewire\Issues\Index as IssueIndex;
 use App\Livewire\Issues\Show as IssueShow;
 use App\Livewire\Locations\Index as LocationIndex;
@@ -523,7 +522,6 @@ Route::middleware(['auth', 'backoffice.desktop'])->group(function () {
         Route::get('/locations/{location}', LocationShow::class)->name('locations.show');
         Route::get('/locations/{location}/qr-pack', LocationQrPackDownloadController::class)->name('locations.qr-pack');
         Route::get('/units', UnitsIndex::class)->name('units.index');
-        Route::get('/sense', SenseIndex::class)->name('sense.index');
         Route::get('/units/{unit}/screen', ScreenPair::class)->name('screens.pair');
         Route::get('/units/{unit}/qr', UnitQrController::class)->name('units.qr');
         Route::get('/units/{unit}/qr-pack', UnitQrPackDownloadController::class)->name('units.qr-pack');

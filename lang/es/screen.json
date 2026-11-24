@@ -4,7 +4,12 @@
     "title": "Ajustes de la pantalla para :name",
     "subtitle": "Horas, sonido, salvapantallas y el QR de esta sala. El QR cambia cada hora.",
     "back": "Volver al lugar",
-    "limits": "Los límites se ajustan en",
+    "sense": {
+        "title": "Sense",
+        "hint": "Actívelo para un D1S. La pantalla mide entonces temperatura, humedad, CO₂ y calidad del aire. Déjelo apagado para un D1.",
+        "on": "Sense activado",
+        "off": "Sense desactivado"
+    },
     "qr": {
         "title": "QR de esta sala",
         "hint": "La pantalla muestra este código. Cambia cada hora. Un escaneo abre la misma página de aviso que la pegatina de la puerta."

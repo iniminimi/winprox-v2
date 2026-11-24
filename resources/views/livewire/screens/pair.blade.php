@@ -18,6 +18,16 @@
         <div class="wp-flash wp-flash--success">{{ session('screen_flash') }}</div>
     @endif
 
+    <x-wp-settings-section :title="__('screen.sense.title')">
+        <p class="wp-muted">{{ __('screen.sense.hint') }}</p>
+        <button type="button" @class(['btn', 'btn--sm', 'btn--primary' => $screen?->has_sense, 'btn--ghost' => ! $screen?->has_sense]) wire:click="toggleSense">
+            {{ $screen?->has_sense ? __('screen.sense.on') : __('screen.sense.off') }}
+        </button>
+        @if ($screen?->has_sense && $screen->sensePoint)
+            <livewire:screens.sense-card :screen-id="$screen->id" :key="'sense-card-'.$screen->id" />
+        @endif
+    </x-wp-settings-section>
+
     <x-wp-settings-section :title="__('time.clock_displays.schedule.title')">
         <p class="wp-muted wp-text-sm">{{ __('time.clock_displays.schedule.hint') }}</p>
         @php
@@ -180,10 +190,6 @@
 
     <x-wp-settings-section :title="__('screen.qr.title')">
         <p class="wp-muted">{{ __('screen.qr.hint') }}</p>
-        <p class="wp-muted">
-            {{ __('screen.limits') }}
-            <a href="{{ route('sense.index') }}">{{ __('common.nav.sense') }}</a>
-        </p>
         @if ($qrSvg)
             <div class="wp-cluster">{!! $qrSvg !!}</div>
         @endif

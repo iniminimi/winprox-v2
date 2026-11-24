@@ -35,6 +35,7 @@ it('koppelt een scherm aan een lokaal en geeft de sleutel alleen aan het toestel
     $page = Livewire::actingAs($admin)
         ->test(Pair::class, ['unit' => $unit])
         ->assertSee('Babylokaal')
+        ->call('toggleSense')
         ->call('issueCode');
 
     $code = $page->get('pairingCode');

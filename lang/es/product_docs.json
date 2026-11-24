@@ -291,7 +291,7 @@
             },
             {
                 "title": "Sense",
-                "body": "Sense muestra por sala la temperatura, la humedad, el CO₂ y el índice VOC. Usted ajusta los límites. En la sala vincula la pantalla con el botón Pantalla. El inicio pide atención si un valor sale de la banda o si la pantalla deja de enviar.",
+                "body": "Sense muestra por pantalla la temperatura, la humedad, el CO₂ y el índice VOC. Active Sense en los ajustes de la pantalla, en una sala o en un Clock Point. El inicio pide atención si un valor sale de la banda o si la pantalla deja de enviar.",
                 "items": [
                     "No se crea ningún aviso ni tarea.",
                     "Una sala sigue la mitad del año: verano del 1 de mayo al 30 de septiembre, invierno del 1 de octubre al 30 de abril. El CO₂ pide atención por encima de 900. El índice VOC pasa de verde a rojo y pide atención solo tras media hora."

@@ -533,7 +533,7 @@
                                 && ($authUser?->can('viewAny', \App\Models\UnitAlbumPhoto::class) ?? false);
                             $placesGroupActive = request()->routeIs('locations.*')
                                 || $unitsActive
-                                || request()->routeIs('sense.*')
+                                || request()->routeIs('screens.pair')
                                 || ($showCustomersNav && request()->routeIs('customers.*'))
                                 || ($showPhotoAlbumNavItem && request()->routeIs('photo-album.*'));
 
@@ -685,13 +685,6 @@
                                        @click="nav = false">
                                         <span>{{ __('units.title') }}</span>
                                     </a>
-                                    @can('viewAny', App\Models\SensePoint::class)
-                                        <a href="{{ route('sense.index') }}"
-                                           class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('sense.*') ? 'is-active' : '' }}"
-                                           @click="nav = false">
-                                            <span>{{ __('common.nav.sense') }}</span>
-                                        </a>
-                                    @endcan
                                     @if ($showPhotoAlbumNavItem)
                                         <a href="{{ route('photo-album.index') }}"
                                            class="wp-nav-link wp-nav-link--sub {{ request()->routeIs('photo-album.*') ? 'is-active' : '' }}"

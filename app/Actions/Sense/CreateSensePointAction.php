@@ -4,17 +4,20 @@ declare(strict_types=1);
 
 namespace App\Actions\Sense;
 
+use App\Actions\Screens\EnableSenseOnScreenAction;
+use App\Actions\Screens\EnsureUnitScreenAction;
 use App\Models\SensePoint;
 use App\Models\Unit;
-use App\Support\Audit\AuditRecorder;
 use App\Support\Checkmate\CheckmateMode;
-use App\Support\Sense\SenseSeason;
 use App\Models\Tenant;
 use Illuminate\Validation\ValidationException;
 
 class CreateSensePointAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private EnsureUnitScreenAction $ensureScreen,
+        private EnableSenseOnScreenAction $enableSense,
+    ) {}
 
     /**
      * @return array{point: SensePoint, plain_token: string}
@@ -45,42 +48,12 @@ class CreateSensePointAction
             ]);
         }
 
-        $token = SensePoint::issueToken();
-        $season = SenseSeason::current();
-        $preset = config('sense.presets.'.$season);
-        $defaults = config('sense.defaults');
-
-        $point = SensePoint::query()->create([
-            'tenant_id' => $tenantId,
-            'unit_id' => $unit->id,
-            'token_hash' => $token['hash'],
-            'token_prefix' => $token['prefix'],
-            'temperature_low' => $preset['temperature']['low'],
-            'temperature_target' => $preset['temperature']['target'],
-            'temperature_high' => $preset['temperature']['high'],
-            'humidity_low' => $preset['humidity']['low'],
-            'humidity_target' => $preset['humidity']['target'],
-            'humidity_high' => $preset['humidity']['high'],
-            'co2_high' => $defaults['co2_high'],
-            'voc_high' => $defaults['voc_high'],
-            'season_applied' => $season,
-        ]);
-
-        $this->audit->record(
-            userId: $actorUserId,
-            tenantId: $tenantId,
-            action: 'sense_point.created',
-            modelType: SensePoint::class,
-            modelId: (int) $point->id,
-            payload: [
-                'unit_id' => $unit->id,
-                'token_prefix' => $point->token_prefix,
-            ],
-        );
+        $screen = $this->ensureScreen->handle($unit, $tenantId);
+        $created = $this->enableSense->handle($screen, $tenantId, $actorUserId);
 
         return [
-            'point' => $point,
-            'plain_token' => $token['plain'],
+            'point' => $created['point'],
+            'plain_token' => (string) $created['plain_token'],
         ];
     }
 }

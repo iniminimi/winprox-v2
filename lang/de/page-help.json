@@ -1837,7 +1837,7 @@
             "actions": [
                 {
                     "label": "Koppeln",
-                    "text": "Am Raum wählen Sie Display. Dort stellen Sie Zeiten, Ton und Bildschirmschoner für dieses Display ein. Der QR des Raums wechselt einmal pro Stunde. Die Grenzen bleiben unter Orte → Sense."
+                    "text": "Am Raum wählen Sie Display. Dort stellen Sie Zeiten, Ton und Bildschirmschoner für dieses Display ein. Der QR des Raums wechselt einmal pro Stunde. Sense schalten Sie dort ein, wenn dies ein D1S ist."
                 },
                 {
                     "label": "Trennen",

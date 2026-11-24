@@ -9,5 +9,6 @@ final class SenseAttentionLine
     public function __construct(
         public int $sensePointId,
         public string $sentence,
+        public string $url,
     ) {}
 }

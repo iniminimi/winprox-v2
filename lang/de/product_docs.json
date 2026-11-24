@@ -291,7 +291,7 @@
             },
             {
                 "title": "Sense",
-                "body": "Sense zeigt je Raum Temperatur, Luftfeuchtigkeit, CO₂ und den VOC-Index. Sie stellen die Grenzen ein. Am Raum koppeln Sie das Display mit der Taste Display. Der Startbildschirm bittet um Aufmerksamkeit, wenn ein Wert außerhalb der Spanne liegt oder das Display nichts mehr sendet.",
+                "body": "Sense zeigt je Display Temperatur, Luftfeuchtigkeit, CO₂ und den VOC-Index. Sie schalten Sense in den Display-Einstellungen ein, an einem Raum oder an einem Clock Point. Der Startbildschirm bittet um Aufmerksamkeit, wenn ein Wert außerhalb der Spanne liegt oder das Display nichts mehr sendet.",
                 "items": [
                     "Es entsteht keine Meldung und keine Aufgabe.",
                     "Ein Raum folgt der Jahreshälfte: Sommer vom 1. Mai bis 30. September, Winter vom 1. Oktober bis 30. April. CO₂ bittet um Aufmerksamkeit über 900. Der VOC-Index färbt von Grün bis Rot und bittet erst nach einer halben Stunde um Aufmerksamkeit."

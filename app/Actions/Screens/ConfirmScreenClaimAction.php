@@ -6,7 +6,6 @@ namespace App\Actions\Screens;
 
 use App\Actions\Sense\CreateSensePointAction;
 use App\Enums\ScreenClaimStatus;
-use App\Enums\ScreenRole;
 use App\Models\Screen;
 use App\Models\ScreenClaim;
 use App\Models\SensePoint;
@@ -41,13 +40,15 @@ class ConfirmScreenClaimAction
 
             $screen = Screen::query()->whereKey($locked->screen_id)->lockForUpdate()->first();
 
-            if ($screen === null || $screen->role !== ScreenRole::Sense || $screen->unit_id === null) {
+            if ($screen === null || $screen->unit_id === null) {
                 throw ValidationException::withMessages([
                     'claim' => [__('screen.errors.not_pending')],
                 ]);
             }
 
-            $plain = $this->senseKey($screen, $tenantId, $actorUserId);
+            $plain = $screen->has_sense
+                ? $this->senseKey($screen, $tenantId, $actorUserId)
+                : null;
             $displayId = $screen->display_id ?? $this->displayId();
 
             $screen->update([
@@ -86,7 +87,7 @@ class ConfirmScreenClaimAction
 
     private function senseKey(Screen $screen, int $tenantId, ?int $actorUserId): string
     {
-        $point = SensePoint::query()->where('unit_id', $screen->unit_id)->first();
+        $point = SensePoint::query()->where('screen_id', $screen->id)->first();
 
         if ($point === null) {
             return $this->createPoint->handle((int) $screen->unit_id, $tenantId, $actorUserId)['plain_token'];

@@ -4,7 +4,12 @@
     "title": "Display-Einstellungen für :name",
     "subtitle": "Zeiten, Ton, Bildschirmschoner und der QR dieses Raums. Der QR wechselt einmal pro Stunde.",
     "back": "Zurück zum Standort",
-    "limits": "Die Grenzen stellen Sie ein unter",
+    "sense": {
+        "title": "Sense",
+        "hint": "Schalten Sie dies für ein D1S ein. Das Display misst dann Temperatur, Feuchte, CO₂ und Luftqualität. Für ein D1 lassen Sie es aus.",
+        "on": "Sense ein",
+        "off": "Sense aus"
+    },
     "qr": {
         "title": "QR dieses Raums",
         "hint": "Das Display zeigt diesen Code. Er wechselt einmal pro Stunde. Ein Scan öffnet dieselbe Meldeseite wie der Aufkleber an der Tür."

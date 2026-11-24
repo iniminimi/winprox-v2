@@ -18,6 +18,7 @@ class SensePoint extends Model
     protected $fillable = [
         'tenant_id',
         'unit_id',
+        'screen_id',
         'token_hash',
         'token_prefix',
         'temperature_low',
@@ -58,6 +59,11 @@ class SensePoint extends Model
     public function unit(): BelongsTo
     {
         return $this->belongsTo(Unit::class);
+    }
+
+    public function screen(): BelongsTo
+    {
+        return $this->belongsTo(Screen::class);
     }
 
     public function readings(): HasMany

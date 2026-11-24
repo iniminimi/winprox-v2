@@ -4,7 +4,12 @@
     "title": "Réglages de l’écran pour :name",
     "subtitle": "Heures, son, écran de veille et le QR de ce local. Le QR change toutes les heures.",
     "back": "Retour au lieu",
-    "limits": "Vous réglez les repères dans",
+    "sense": {
+        "title": "Sense",
+        "hint": "Activez ceci pour un D1S. L’écran mesure alors la température, l’humidité, le CO₂ et la qualité de l’air. Laissez éteint pour un D1.",
+        "on": "Sense activé",
+        "off": "Sense désactivé"
+    },
     "qr": {
         "title": "QR de ce local",
         "hint": "L’écran montre ce code. Il change toutes les heures. Un scan ouvre la même page de signalement que l’autocollant sur la porte."

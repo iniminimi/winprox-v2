@@ -2,7 +2,7 @@
 
 Device key for one room. The admin screen does not show it. Does not create issues or tasks.
 
-Pairing: on the room, Scherm issues a code. The device posts `POST /api/v1/screens/claim` with `{ "code", "device_hint" }` and polls `GET /api/v1/screens/claim-status/{claim_token}`. After the admin confirms, that poll returns `sense_key`, `display_id`, `display_secret` and `qr_window_seconds` (3600 for a room). The key is not shown in the admin UI. The room QR opens `/melden/{token}` and changes once an hour.
+Pairing: on the room, Scherm issues a code. The device posts `POST /api/v1/screens/claim` with `{ "code", "device_hint" }` and polls `GET /api/v1/screens/claim-status/{claim_token}`. After the admin confirms, that poll returns `display_id`, `display_secret` and `qr_window_seconds` (3600 for a room). `sense_key` is included only when Sense is on for that screen. The key is not shown in the admin UI. The room QR opens `/melden/{token}` and changes once an hour.
 
 ## Auth
 

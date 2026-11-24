@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Screen extends Model
 {
@@ -20,6 +21,7 @@ class Screen extends Model
         'unit_id',
         'clock_point_id',
         'role',
+        'has_sense',
         'display_id',
         'display_secret',
         'qr_window_seconds',
@@ -43,6 +45,7 @@ class Screen extends Model
     {
         return [
             'role' => ScreenRole::class,
+            'has_sense' => 'boolean',
             'display_secret' => 'encrypted',
             'display_sound_enabled' => 'boolean',
             'album_days' => 'integer',
@@ -71,6 +74,11 @@ class Screen extends Model
     public function images(): HasMany
     {
         return $this->hasMany(ClockDisplayImage::class);
+    }
+
+    public function sensePoint(): HasOne
+    {
+        return $this->hasOne(SensePoint::class);
     }
 
     public function isLinked(): bool

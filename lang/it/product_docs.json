@@ -291,7 +291,7 @@
             },
             {
                 "title": "Sense",
-                "body": "Sense mostra per locale temperatura, umidità, CO₂ e indice VOC. Si impostano i limiti. Sul locale si collega lo schermo con il pulsante Schermo. La schermata iniziale chiede attenzione se un valore esce dalla fascia o se lo schermo non invia più nulla.",
+                "body": "Sense mostra per schermo temperatura, umidità, CO₂ e indice VOC. Si attiva Sense nelle impostazioni dello schermo, su un locale o su un Clock Point. La schermata iniziale chiede attenzione se un valore esce dalla fascia o se lo schermo non invia più nulla.",
                 "items": [
                     "Non nasce nessuna segnalazione né attività.",
                     "Un locale segue la metà dell’anno: estate dal 1° maggio al 30 settembre, inverno dal 1° ottobre al 30 aprile. Il CO₂ chiede attenzione sopra 900. L’indice VOC va dal verde al rosso e chiede attenzione solo dopo mezz’ora."

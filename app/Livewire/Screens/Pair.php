@@ -6,6 +6,8 @@ namespace App\Livewire\Screens;
 
 use App\Actions\Screens\ConfirmScreenClaimAction;
 use App\Actions\Screens\DenyScreenClaimAction;
+use App\Actions\Screens\DisableSenseOnScreenAction;
+use App\Actions\Screens\EnableSenseOnScreenAction;
 use App\Actions\Screens\EnsureUnitScreenAction;
 use App\Actions\Screens\IssueScreenPairingCodeAction;
 use App\Actions\Screens\UnlinkScreenAction;
@@ -71,6 +73,20 @@ class Pair extends Component
         $this->unitId = $unit->id;
         $screen = $ensure->handle($unit, (int) Tenancy::id());
         $this->fillFromScreen($screen);
+    }
+
+    public function toggleSense(EnableSenseOnScreenAction $enable, DisableSenseOnScreenAction $disable): void
+    {
+        $screen = $this->screen();
+        $this->authorize('create', \App\Models\SensePoint::class);
+
+        if ($screen->has_sense) {
+            $disable->handle($screen, (int) Tenancy::id(), auth()->id());
+
+            return;
+        }
+
+        $enable->handle($screen, (int) Tenancy::id(), auth()->id());
     }
 
     public function issueCode(IssueScreenPairingCodeAction $issue): void
@@ -262,7 +278,7 @@ class Pair extends Component
 
     private function unit(): Unit
     {
-        return Unit::query()->with('screen')->findOrFail($this->unitId);
+        return Unit::query()->with(['screen.sensePoint'])->findOrFail($this->unitId);
     }
 
     private function screen(): Screen

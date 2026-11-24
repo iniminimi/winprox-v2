@@ -4,7 +4,12 @@
     "title": "Screen settings for :name",
     "subtitle": "Hours, sound, screensaver and the QR for this room. The QR changes once an hour.",
     "back": "Back to the location",
-    "limits": "You set the marks under",
+    "sense": {
+        "title": "Sense",
+        "hint": "Turn this on for a D1S. The screen then measures temperature, humidity, CO₂ and air quality. Leave it off for a D1.",
+        "on": "Sense on",
+        "off": "Sense off"
+    },
     "qr": {
         "title": "QR for this room",
         "hint": "The screen shows this code. It changes once an hour. A scan opens the same report page as the sticker on the door."

@@ -51,10 +51,9 @@ it('zet sense onder plaatsen en toont aandacht zonder melding', function () {
     expect(Issue::query()->count())->toBe(0);
 
     $this->actingAs($admin)
-        ->get(route('sense.index'))
+        ->get(route('screens.pair', $unit))
         ->assertOk()
         ->assertSee('Babylokaal')
-        ->assertSee('Sense')
         ->assertSee('Winter')
         ->assertSee('Zomer');
 
@@ -290,7 +289,7 @@ it('bewaart de echte meting en toont de schaalgrens op de kaart', function () {
         ->and((int) $point->last_co2)->toBe(2000);
 
     $this->actingAs($admin)
-        ->get(route('sense.index'))
+        ->get(route('screens.pair', $unit))
         ->assertOk()
         ->assertSee('12-')
         ->assertSee('30%-')
@@ -303,10 +302,10 @@ it('verbergt sense voor een medewerker en voor checkmate', function () {
     $tenant = Tenant::factory()->create();
     $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
 
-    $this->actingAs($employee)->get(route('sense.index'))->assertForbidden();
+    $this->actingAs($employee)->get('/sense')->assertNotFound();
 
     $checkmate = Tenant::factory()->create(['checkmate_mode' => true]);
     $admin = User::factory()->admin()->create(['tenant_id' => $checkmate->id]);
 
-    $this->actingAs($admin)->get(route('sense.index'))->assertNotFound();
+    $this->actingAs($admin)->get('/sense')->assertNotFound();
 });

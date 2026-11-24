@@ -1837,7 +1837,7 @@
             "actions": [
                 {
                     "label": "Collegare",
-                    "text": "Sul locale scegliete Schermo. Lì impostate orari, suono e salvaschermo di quello schermo. Il QR del locale cambia ogni ora. I limiti restano in Luoghi → Sense."
+                    "text": "Sul locale scegliete Schermo. Lì impostate orari, suono e salvaschermo di quello schermo. Il QR del locale cambia ogni ora. Attivate Sense in quella pagina se è un D1S."
                 },
                 {
                     "label": "Scollegare",

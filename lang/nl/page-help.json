@@ -1837,7 +1837,7 @@
             "actions": [
                 {
                     "label": "Koppelen",
-                    "text": "Op het lokaal kiest u Scherm. Daar stelt u de uren, het geluid en de screensaver van dat scherm in. De QR van het lokaal wisselt elk uur. De grenzen blijven bij Plaatsen → Sense."
+                    "text": "Op het lokaal kiest u Scherm. Daar stelt u de uren, het geluid en de screensaver van dat scherm in. De QR van het lokaal wisselt elk uur. Sense zet u aan op die pagina als dit een D1S is."
                 },
                 {
                     "label": "Loskoppelen",

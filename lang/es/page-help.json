@@ -1837,7 +1837,7 @@
             "actions": [
                 {
                     "label": "Vincular",
-                    "text": "En la sala elija Pantalla. Allí ajusta las horas, el sonido y el salvapantallas de esa pantalla. El QR de la sala cambia cada hora. Los límites siguen en Lugares → Sense."
+                    "text": "En la sala elija Pantalla. Allí ajusta las horas, el sonido y el salvapantallas de esa pantalla. El QR de la sala cambia cada hora. Active Sense en esa página si es un D1S."
                 },
                 {
                     "label": "Desvincular",
