@@ -1062,4 +1062,19 @@ it('filtert aanvragen op team, medewerker en periode', function () {
         ->call('applyFilters')
         ->assertSee('23-09-2026')
         ->assertDontSee('01-10-2026');
+
+    $here = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Noord']);
+    $away = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Zuid']);
+    $worker->locations()->attach($here->id);
+    $other->locations()->attach($away->id);
+    $point = ClockPoint::factory()->forLocation($here)->create(['name' => 'Poort Noord filter']);
+
+    Livewire::actingAs($admin)
+        ->test(AbsenceRequestsIndex::class)
+        ->set('from', '')
+        ->set('to', '')
+        ->set('clockPointFilter', $point->id)
+        ->call('applyFilters')
+        ->assertSee('23-09-2026')
+        ->assertDontSee('01-10-2026');
 });

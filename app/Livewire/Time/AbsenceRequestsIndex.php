@@ -12,6 +12,7 @@ use App\Enums\AbsenceRequestStatus;
 use App\Http\Requests\Time\DecideAbsenceRequestRequest;
 use App\Livewire\Concerns\ProvidesTimeNavAlarmCount;
 use App\Models\AbsenceRequest;
+use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Tenant;
 use App\Models\Worker;
@@ -45,6 +46,9 @@ class AbsenceRequestsIndex extends Component
 
     #[Url(as: 'worker')]
     public ?int $workerFilter = null;
+
+    #[Url(as: 'clock_point')]
+    public ?int $clockPointFilter = null;
 
     #[Url(as: 'from')]
     public string $from = '';
@@ -186,6 +190,7 @@ class AbsenceRequestsIndex extends Component
             $this->workerFilter,
             $this->normalizedFilterDate($this->from),
             $this->normalizedFilterDate($this->to),
+            $this->clockPointFilter,
         );
         $deciding = $this->decidingId !== null
             ? AbsenceRequest::query()->with(['worker', 'shiftType', 'photos'])->find($this->decidingId)
@@ -207,6 +212,7 @@ class AbsenceRequestsIndex extends Component
             'photosFilter' => $expiringPhotos ? 'expiring' : null,
             'teams' => InternalTeam::query()->with('translations')->orderBy('sort_order')->orderBy('name')->get(),
             'workers' => Worker::query()->where('is_active', true)->orderBy('last_name')->orderBy('first_name')->get(),
+            'clockPoints' => ClockPoint::query()->orderBy('sort_order')->orderBy('name')->get(),
             'reasonMax' => TextDescriptionLimits::MAX,
         ]);
     }

@@ -50,6 +50,15 @@
                         @endforeach
                     </select>
                 </div>
+                <div class="wp-filter-cell">
+                    <label class="wp-filter-inline-label" for="absence-clock-point">{{ __('time.filters.clock_point') }}</label>
+                    <select id="absence-clock-point" class="wp-select" wire:model="clockPointFilter">
+                        <option value="">{{ __('time.filters.all_clock_points') }}</option>
+                        @foreach ($clockPoints as $clockPoint)
+                            <option value="{{ $clockPoint->id }}">{{ $clockPoint->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
         </div>
     </div>
