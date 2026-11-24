@@ -91,6 +91,11 @@
                 wire:click="setStatusFilter(@js($value))"
             >{{ $label }}</button>
         @endforeach
+        <button
+            type="button"
+            @class(['btn', 'btn--sm', $photosFilter === 'with' ? 'btn--primary' : 'btn--surface'])
+            wire:click="toggleWithPhoto"
+        >{{ __('time.absence.photos_with') }}</button>
     </div>
 
     <div class="wp-card wp-card-pad wp-stack">

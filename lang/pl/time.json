@@ -58,7 +58,8 @@
         },
         "photos_kept": "Zdjęcia przy wniosku zostają na 6 miesięcy. Potem są usuwane. Zachowaj kopię, jeśli potrzebujesz ich dłużej.",
         "photos_expiring_note": "Te zdjęcia zostaną usunięte w ciągu miesiąca.",
-        "photos_show_all": "Wszystkie wnioski"
+        "photos_show_all": "Wszystkie wnioski",
+        "photos_with": "Ze zdjęciem"
     },
     "portal": {
         "title": "Logowanie",

@@ -1212,7 +1212,8 @@
         },
         "photos_kept": "Las fotos de una solicitud se guardan 6 meses. Después se borran. Guarde una copia si las necesita más tiempo.",
         "photos_expiring_note": "Estas fotos se borrarán en un mes.",
-        "photos_show_all": "Todas las solicitudes"
+        "photos_show_all": "Todas las solicitudes",
+        "photos_with": "Con foto"
     },
     "leave_balance": {
         "short": ":days d",

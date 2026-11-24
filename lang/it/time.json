@@ -1212,7 +1212,8 @@
         },
         "photos_kept": "Le foto di una richiesta restano 6 mesi. Poi vengono cancellate. Conservi una copia se le servono più a lungo.",
         "photos_expiring_note": "Queste foto saranno cancellate entro un mese.",
-        "photos_show_all": "Tutte le richieste"
+        "photos_show_all": "Tutte le richieste",
+        "photos_with": "Con foto"
     },
     "leave_balance": {
         "short": ":days g",

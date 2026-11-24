@@ -58,7 +58,8 @@
         },
         "photos_kept": "As fotos de um pedido ficam 6 meses. Depois são apagadas. Guarde uma cópia se precisar delas por mais tempo.",
         "photos_expiring_note": "Estas fotos serão apagadas dentro de um mês.",
-        "photos_show_all": "Todos os pedidos"
+        "photos_show_all": "Todos os pedidos",
+        "photos_with": "Com foto"
     },
     "portal": {
         "title": "Iniciar sessão",

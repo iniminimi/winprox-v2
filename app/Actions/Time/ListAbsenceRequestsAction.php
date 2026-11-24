@@ -25,6 +25,7 @@ class ListAbsenceRequestsAction
         ?string $from = null,
         ?string $to = null,
         ?int $clockPointId = null,
+        bool $withPhotos = false,
     ): Collection {
         TimeModuleAccess::assertEnabledForTenantId($tenantId);
 
@@ -38,6 +39,7 @@ class ListAbsenceRequestsAction
             ))
             ->when($workerId, fn ($q) => $q->where('worker_id', $workerId))
             ->when($clockPointId, fn ($q) => $this->whereWorkerMayClockAt($q, $tenantId, $clockPointId))
+            ->when($withPhotos, fn ($q) => $q->whereHas('photos'))
             ->when($from !== null && $from !== '', fn ($q) => $q->whereDate('date_to', '>=', $from))
             ->when($to !== null && $to !== '', fn ($q) => $q->whereDate('date_from', '<=', $to))
             ->when($expiringPhotos, function ($query) {

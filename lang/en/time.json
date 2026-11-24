@@ -1212,7 +1212,8 @@
         },
         "photos_kept": "Photos with a request are kept for 6 months. Then they are deleted. Keep your own copy if you need them longer.",
         "photos_expiring_note": "These photos will be deleted within a month.",
-        "photos_show_all": "All requests"
+        "photos_show_all": "All requests",
+        "photos_with": "With photo"
     },
     "leave_balance": {
         "short": ":days d",

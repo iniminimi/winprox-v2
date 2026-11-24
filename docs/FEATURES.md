@@ -1298,7 +1298,7 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   (bijv. 1 Verlof, 1 Recup, 1 Ziek, 1 Andere).
   Weigeren eist een reden (min. 3); goedkeuren niet. Aanvragen toont wie heeft goedgekeurd
   of geweigerd. Filterbalk zoals Geklokte uren: team, medewerker, Clock Point, van–tot en Toepassen.
-  De periode houdt een aanvraag als ze die dagen raakt. Een Clock Point toont aanvragen van uitvoerders die daar mogen inklokken.   **Open** aanvragen: overlay in het beheer-uurrooster (week/maand + print)
+  De periode houdt een aanvraag als ze die dagen raakt. Een Clock Point toont aanvragen van uitvoerders die daar mogen inklokken. De knop Met foto beperkt de lijst tot aanvragen met een foto.   **Open** aanvragen: overlay in het beheer-uurrooster (week/maand + print)
   op elke geraakte cel (gestippelde rand + tooltip Verlof/Recup/Ziek/Andere aangevraagd);
   markering linksonder (of Ctrl/Meta zonder uren-link) opent Time → Aanvragen
   met `?status=pending&decide={id}` (beslismodal). Geen `PlannedShift` tot

@@ -58,7 +58,8 @@
         },
         "photos_kept": "Fotografiile unei cereri rămân 6 luni. Apoi sunt șterse. Păstrați o copie dacă vă trebuie mai mult timp.",
         "photos_expiring_note": "Aceste fotografii vor fi șterse în decurs de o lună.",
-        "photos_show_all": "Toate cererile"
+        "photos_show_all": "Toate cererile",
+        "photos_with": "Cu fotografie"
     },
     "portal": {
         "title": "Autentificare",

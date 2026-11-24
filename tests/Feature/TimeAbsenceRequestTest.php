@@ -1078,3 +1078,38 @@ it('filtert aanvragen op team, medewerker en periode', function () {
         ->assertSee('23-09-2026')
         ->assertDontSee('01-10-2026');
 });
+
+it('toont met de knop Met foto alleen aanvragen met een foto', function () {
+    [$tenant, $admin, , $worker] = absenceTenant();
+    seedTenantPastOnboarding($tenant);
+
+    app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(
+            ShiftTypeKind::Leave,
+            '2026-09-23',
+            '2026-09-23',
+            null,
+            false,
+            null,
+            [UploadedFile::fake()->image('brief.jpg', 20, 20)],
+        ),
+    );
+    app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Leave, '2026-09-24', '2026-09-24'),
+    );
+
+    Livewire::actingAs($admin)
+        ->test(AbsenceRequestsIndex::class)
+        ->assertSee(__('time.absence.photos_with'))
+        ->assertSee('23-09-2026')
+        ->assertSee('24-09-2026')
+        ->call('toggleWithPhoto')
+        ->assertSee('23-09-2026')
+        ->assertDontSee('24-09-2026')
+        ->call('toggleWithPhoto')
+        ->assertSee('24-09-2026');
+});

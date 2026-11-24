@@ -1212,7 +1212,8 @@
         },
         "photos_kept": "Fotos zu einem Antrag bleiben 6 Monate gespeichert. Danach werden sie gelöscht. Bewahren Sie selbst eine Kopie auf, wenn Sie sie länger brauchen.",
         "photos_expiring_note": "Diese Fotos werden innerhalb eines Monats gelöscht.",
-        "photos_show_all": "Alle Anträge"
+        "photos_show_all": "Alle Anträge",
+        "photos_with": "Mit Foto"
     },
     "leave_balance": {
         "short": ":days T",

@@ -1212,7 +1212,8 @@
         },
         "photos_kept": "Foto's bij een aanvraag blijven 6 maanden bewaard. Daarna worden ze gewist. Bewaar zelf een kopie als u ze langer nodig hebt.",
         "photos_expiring_note": "Deze foto's worden binnen een maand gewist.",
-        "photos_show_all": "Alle aanvragen"
+        "photos_show_all": "Alle aanvragen",
+        "photos_with": "Met foto"
     },
     "leave_balance": {
         "short": ":days d",
