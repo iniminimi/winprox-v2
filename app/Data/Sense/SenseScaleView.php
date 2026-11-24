@@ -43,6 +43,7 @@ final class SenseScaleView
             'high' => $this->high,
             'colors' => $colors,
             'decimal' => app()->getLocale() === 'en' ? '.' : ',',
+            'center' => ($center = config('sense.ranges.'.$this->metric.'.center')) !== null ? (float) $center : null,
         ];
     }
 

@@ -81,7 +81,7 @@ class ListSenseRoomsAction
             target: (float) $point->{$targetKey},
             high: (float) $point->{$highKey},
             value: $value !== null ? (float) $value : null,
-            valueLabel: $value !== null ? SenseNumber::withUnit($metric, (float) $value) : '—',
+            valueLabel: $value !== null ? SenseNumber::onScale($metric, (float) $value) : '—',
             title: __($metric->labelKey()),
         );
     }
@@ -122,7 +122,7 @@ class ListSenseRoomsAction
             target: null,
             high: (float) $point->{$metric->value.'_high'},
             value: $value !== null ? (float) $value : null,
-            valueLabel: $value !== null ? SenseNumber::withUnit($metric, (float) $value) : '—',
+            valueLabel: $value !== null ? SenseNumber::onScale($metric, (float) $value) : '—',
             title: __($metric->labelKey()),
         );
     }
@@ -144,7 +144,7 @@ class ListSenseRoomsAction
             target: null,
             high: (float) $point->{$highKey},
             value: $value !== null ? (float) $value : null,
-            valueLabel: $value !== null ? SenseNumber::withUnit($metric, (float) $value) : '—',
+            valueLabel: $value !== null ? SenseNumber::onScale($metric, (float) $value) : '—',
             title: __($metric->labelKey()),
         );
     }

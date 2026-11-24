@@ -58,7 +58,7 @@
             </span>
         </template>
         <template x-if="mode === 'band'">
-            <span class="wp-sense-mark" :style="`left:${percent(target)}%; color:${colors.target}`">
+            <span class="wp-sense-mark wp-sense-mark--target" :style="`left:${percent(target)}%; color:${colors.target}`">
                 <button type="button" x-show="editing !== 'target'" @click="beginEdit('target')" x-text="label(target) + (metric === 'temperature' ? ' °C' : ' %')"></button>
                 <input x-show="editing === 'target'" x-ref="editTarget" class="wp-sense-input" x-model="draft" inputmode="decimal"
                        @keydown.enter.prevent="commitEdit()" @blur="commitEdit()">

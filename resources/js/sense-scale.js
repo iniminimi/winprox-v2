@@ -11,6 +11,7 @@ document.addEventListener('alpine:init', () => {
         high: Number(config.high),
         colors: config.colors || {},
         decimal: config.decimal || ',',
+        center: config.center === null || config.center === undefined ? null : Number(config.center),
         dragging: null,
         editing: null,
         draft: '',
@@ -21,11 +22,33 @@ document.addEventListener('alpine:init', () => {
         },
 
         percent(value) {
-            if (this.max <= this.min) {
+            const v = Number(value);
+            if (!(this.max > this.min)) {
                 return 0;
             }
 
-            return ((Number(value) - this.min) / (this.max - this.min)) * 100;
+            if (this.center !== null && this.center > this.min && this.center < this.max) {
+                if (v <= this.center) {
+                    return Math.min(50, Math.max(0, ((v - this.min) / (this.center - this.min)) * 50));
+                }
+
+                return Math.min(100, Math.max(50, 50 + ((v - this.center) / (this.max - this.center)) * 50));
+            }
+
+            return Math.min(100, Math.max(0, ((v - this.min) / (this.max - this.min)) * 100));
+        },
+
+        valueFromRatio(ratio) {
+            const t = Math.min(1, Math.max(0, ratio));
+            if (this.center !== null && this.center > this.min && this.center < this.max) {
+                if (t <= 0.5) {
+                    return this.min + ((t / 0.5) * (this.center - this.min));
+                }
+
+                return this.center + (((t - 0.5) / 0.5) * (this.max - this.center));
+            }
+
+            return this.min + (t * (this.max - this.min));
         },
 
         trackStyle() {
@@ -80,7 +103,7 @@ document.addEventListener('alpine:init', () => {
 
             const rect = track.getBoundingClientRect();
             const ratio = rect.width <= 0 ? 0 : (event.clientX - rect.left) / rect.width;
-            let value = this.snap(this.min + (Math.min(1, Math.max(0, ratio)) * (this.max - this.min)));
+            let value = this.snap(this.valueFromRatio(ratio));
             this.place(this.dragging, value);
         },
 

@@ -36,9 +36,9 @@ return [
     ],
 
     'ranges' => [
-        'temperature' => ['min' => 10, 'max' => 35, 'step' => 0.5],
-        'humidity' => ['min' => 0, 'max' => 100, 'step' => 1],
-        'co2' => ['min' => 400, 'max' => 2000, 'step' => 50],
+        'temperature' => ['min' => 12, 'max' => 34, 'step' => 0.5],
+        'humidity' => ['min' => 30, 'max' => 80, 'step' => 1],
+        'co2' => ['min' => 400, 'max' => 1600, 'step' => 50, 'center' => 900],
         'voc' => ['min' => 1, 'max' => 500, 'step' => 1],
     ],
 

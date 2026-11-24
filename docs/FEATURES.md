@@ -820,6 +820,7 @@ stuurt events; WinProx zet die om in workflow.
 - Eén punt per unit. De kaart toont de unitnaam; een site-unit toont de locatienaam. Zwarte kaart, dezelfde verzadigde kleuren als het lcd.
 - Temperatuur en vocht volgen de jaarhelft (Europe/Brussels): zomer 1 mei–30 september (22 / 24 / 26 °C, vocht 30 / 50 / 70 %), winter 1 oktober–30 april (20 / 21 / 24 °C, vocht 40 / 50 / 60 %). `winprox:sense-sync-season` om 00:05, en opnieuw bij openen van Sense of het beginscherm. Een tik op Winter of Zomer blijft tot de volgende grens. Streef is geen alarm. CO₂-bovengrens start op 900 ppm.
 - VOC-index (SGP40, 1–500, geen µg/m³): groen tot 100, geel tot 150, oranje tot 250, daarna rood. 100 is het 24-uurgemiddelde van de sensor, geen gezondheidsgrens. Aandacht pas boven 150 én 30 minuten volgehouden.
+- De kaart toont temperatuur van 12 tot 34 (daarbuiten `12-` / `34+`), vocht van 30 tot 80 % (`30%-` / `80%+`) en CO₂ van 400 tot 1.600 met 900 in het midden (`400-` / `1.600+`). De opgeslagen meting blijft de echte waarde. De streefwaarde staat op een tweede regel, zodat 20 en 21 niet op elkaar liggen.
 - `POST /api/v1/sense/readings` met `X-WinProx-Sense-Key` (`wpsense_…`). De beheerder ziet die sleutel niet; koppelen van het scherm volgt als de D1S er is. Zie `docs/api/sense.md`.
 - Opnames van een camera horen hier niet bij.
 

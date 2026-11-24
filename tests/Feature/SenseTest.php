@@ -267,6 +267,38 @@ it('springt op 1 mei naar de zomer en op 1 oktober naar de winter', function () 
     Carbon::setTestNow();
 });
 
+it('bewaart de echte meting en toont de schaalgrens op de kaart', function () {
+    Carbon::setTestNow('2026-11-24 12:00:00');
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    seedTenantPastOnboarding($tenant);
+    Tenancy::actAs($tenant->id);
+    [$unit] = senseRoom($tenant);
+    $created = app(CreateSensePointAction::class)->handle((int) $unit->id, (int) $tenant->id, (int) $admin->id);
+
+    app(RecordSenseReadingAction::class)->handle($created['point'], new RecordSenseReadingData(
+        temperature: 8.0,
+        humidity: 20.0,
+        co2: 2000,
+        voc: 40,
+        recordedAt: CarbonImmutable::now(),
+    ));
+
+    $point = $created['point']->fresh();
+    expect((float) $point->last_temperature)->toBe(8.0)
+        ->and((float) $point->last_humidity)->toBe(20.0)
+        ->and((int) $point->last_co2)->toBe(2000);
+
+    $this->actingAs($admin)
+        ->get(route('sense.index'))
+        ->assertOk()
+        ->assertSee('12-')
+        ->assertSee('30%-')
+        ->assertSee('1.600+');
+
+    Carbon::setTestNow();
+});
+
 it('verbergt sense voor een medewerker en voor checkmate', function () {
     $tenant = Tenant::factory()->create();
     $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);

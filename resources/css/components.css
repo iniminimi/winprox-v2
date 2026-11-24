@@ -9520,7 +9520,7 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
 
 .wp-sense-marks {
     position: relative;
-    height: 1.6rem;
+    height: 2.7rem;
     margin: 0 0.7rem;
 }
 
@@ -9532,6 +9532,10 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
     font-weight: 700;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
+}
+
+.wp-sense-mark--target {
+    top: 1.15rem;
 }
 
 .wp-sense-mark button {

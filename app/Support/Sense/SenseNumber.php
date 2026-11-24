@@ -33,6 +33,27 @@ final class SenseNumber
         return number_format($rounded, $decimals, $decimal, $thousand);
     }
 
+    public static function onScale(SenseMetric $metric, float $value): string
+    {
+        if ($metric === SenseMetric::Voc || $metric === SenseMetric::Stale) {
+            return self::withUnit($metric, $value);
+        }
+
+        $range = config('sense.ranges.'.$metric->value);
+        $min = (float) ($range['min'] ?? $value);
+        $max = (float) ($range['max'] ?? $value);
+
+        if ($value < $min) {
+            return self::edge($metric, $min).'-';
+        }
+
+        if ($value > $max) {
+            return self::edge($metric, $max).'+';
+        }
+
+        return self::withUnit($metric, $value);
+    }
+
     public static function withUnit(SenseMetric $metric, float $value): string
     {
         $decimals = $metric === SenseMetric::Temperature ? 1 : 0;
@@ -45,5 +66,12 @@ final class SenseNumber
             SenseMetric::Voc => $number,
             SenseMetric::Stale => $number,
         };
+    }
+
+    private static function edge(SenseMetric $metric, float $bound): string
+    {
+        $number = self::format($bound, 0);
+
+        return $metric === SenseMetric::Humidity ? $number.'%' : $number;
     }
 }
