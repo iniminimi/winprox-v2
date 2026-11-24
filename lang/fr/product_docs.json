@@ -103,7 +103,7 @@
                 "items": [
                     "Pointer, voir son planning publié, voir ses heures, demander un congé, une récup, une maladie ou Autre.",
                     "Exécuter des tâches, suivre une tournée d’inspection et démarrer une visite quand le GPS est actif.",
-                    "Un écran de pointeuse facultatif affiche un QR qui change tout seul. Vous le reliez avec un code à usage unique et une confirmation.",
+                    "Un écran de pointeuse facultatif affiche un QR qui change tout seul. Vous le reliez avec un code à usage unique et une confirmation. Le numéro de série de l’écran est envoyé et conservé lors de la liaison.",
                     "Vous choisissez quand l’écran est allumé, par exemple de 06:00 à 19:00. En dehors, il peut rester éteint ou montrer un écran de repos : photos, une horloge à aiguilles, une horloge à palettes ou un écran noir. Le son s’active ou se désactive par écran.",
                     "Sans smartphone : touchez l’écran, cherchez le prénom par lettres ; en service ouvert choisissez pause ou sortie, puis le code personnel à quatre chiffres. Qui n’a pas encore de code le choisit sur place, deux fois. Sous Sortie, vous changez ce code : d’abord le code actuel, puis le nouveau deux fois.",
                     "Après deux essais faux, cet exécutant est bloqué une minute."
@@ -498,7 +498,7 @@
                 "items": [
                     "Écran tactile fixe optionnel sur site, lié à un Clock Point. Location à part avec l’abonnement ; pas d’achat via WinProx.",
                     "Réseau : **Wi‑Fi 2,4 GHz**, **WPA2** et **WPA3-Personal**. Connexion à WinProx via **HTTPS** (UE).",
-                    "Couplage avec un code à usage unique dans le back-office. Le découplage retire l’appareil.",
+                    "Couplage avec un code à usage unique dans le back-office ; l’écran envoie son numéro de série. Le découplage retire l’appareil.",
                     "Sans smartphone : prénom et PIN pour l’entrée, la sortie et la **pause**. Vous changez le code à l’écran sans pointer. Les tentatives erronées répétées sont bloquées temporairement.",
                     "Marquage CE pour un usage professionnel ; alimentation USB-C (5 V)."
                 ]

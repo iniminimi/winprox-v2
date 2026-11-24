@@ -1354,6 +1354,9 @@ binnen ~30–90 s dood.
   `POST /api/v1/time/clock-displays/claim` maakt een **pending** claim → admin
   **bevestigt/weigert** expliciet → device pollt `claim-status` en krijgt
   `wpclk_`-token + `display_secret` + servertijd + offline-drempels.
+  Het scherm stuurt bij claim zijn **serienummer** (`device_hint` = MAC zonder
+  `:`) mee; dat verschijnt bij de koppelcode (huidig + pending) en in de
+  **koppelgeschiedenis** (bevestigde claims met datum) voor inventaris.
 - **Claims:** max 1 pending per punt (DB-unique via `pending_slot` generated column);
   zelfde device_hint retryt idempotent, ander device → `claim_pending`. Nieuwe code
   doodt open claims (`denied/code_reissued`); admin deny → `denied/admin`; verlopen

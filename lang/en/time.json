@@ -336,7 +336,8 @@
             "device": "Device",
             "paired_at": "Active since",
             "last_seen": "last seen",
-            "unlink": "Unlink display"
+            "unlink": "Unlink display",
+            "serial": "Serial number"
         },
         "code": {
             "title": "Pairing code",
@@ -352,7 +353,8 @@
             "device": "Device",
             "expires": "Expires :time",
             "confirm": "Confirm",
-            "deny": "Deny"
+            "deny": "Deny",
+            "serial": "Serial number"
         },
         "schedule": {
             "title": "Screen hours",
@@ -421,6 +423,11 @@
             "mode_flipclock": "Flip clock",
             "mode_black": "Black screen",
             "mode_none": "QR code"
+        },
+        "history": {
+            "title": "Pairing history",
+            "hint": "Which screen (serial number) was paired to this clock point and when.",
+            "current": "Current"
         }
     },
     "duration": {

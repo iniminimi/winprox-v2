@@ -336,7 +336,8 @@
             "device": "Appareil",
             "paired_at": "Actif depuis",
             "last_seen": "vu pour la dernière fois",
-            "unlink": "Dissocier l'écran"
+            "unlink": "Dissocier l'écran",
+            "serial": "Numéro de série"
         },
         "code": {
             "title": "Code d'association",
@@ -352,7 +353,8 @@
             "device": "Appareil",
             "expires": "Expire :time",
             "confirm": "Confirmer",
-            "deny": "Refuser"
+            "deny": "Refuser",
+            "serial": "Numéro de série"
         },
         "schedule": {
             "title": "Heures d'écran",
@@ -421,6 +423,11 @@
             "mode_flipclock": "Horloge flip",
             "mode_black": "Écran noir",
             "mode_none": "Code QR"
+        },
+        "history": {
+            "title": "Historique des liaisons",
+            "hint": "Quel écran (numéro de série) a été lié à ce point d’horloge et quand.",
+            "current": "Actuel"
         }
     },
     "duration": {

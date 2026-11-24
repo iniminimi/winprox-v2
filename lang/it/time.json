@@ -336,7 +336,8 @@
             "device": "Dispositivo",
             "paired_at": "Attivo dal",
             "last_seen": "visto l'ultima volta",
-            "unlink": "Scollega schermo"
+            "unlink": "Scollega schermo",
+            "serial": "Numero di serie"
         },
         "code": {
             "title": "Codice di collegamento",
@@ -352,7 +353,8 @@
             "device": "Dispositivo",
             "expires": "Scade :time",
             "confirm": "Conferma",
-            "deny": "Rifiuta"
+            "deny": "Rifiuta",
+            "serial": "Numero di serie"
         },
         "schedule": {
             "title": "Orari dello schermo",
@@ -421,6 +423,11 @@
             "mode_flipclock": "Orologio flip",
             "mode_black": "Schermo nero",
             "mode_none": "Codice QR"
+        },
+        "history": {
+            "title": "Cronologia collegamenti",
+            "hint": "Quale schermo (numero di serie) è stato collegato a questo Clock Point e quando.",
+            "current": "Attuale"
         }
     },
     "duration": {

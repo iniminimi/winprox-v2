@@ -226,12 +226,12 @@
             @endif
         </div>
 
-        {{-- Gekoppeld scherm: status in hetzelfde blok als de koppelcode --}}
+        {{-- Gekoppeld scherm: serienummer + status bij de koppelcode --}}
         @if ($point?->hasLinkedDisplay())
             <div class="wp-settings-subblock wp-stack-tight">
                 <h3 class="wp-settings-subblock-title">{{ __('time.clock_displays.linked.title') }}</h3>
                 <p class="wp-issue-card-meta">
-                    {{ __('time.clock_displays.linked.device') }}: <strong>{{ $point->display_device_hint }}</strong>
+                    {{ __('time.clock_displays.linked.serial') }}: <strong>{{ $point->display_device_hint }}</strong>
                 </p>
                 <p class="wp-issue-card-meta">
                     {{ __('time.clock_displays.linked.paired_at') }}: {{ $point->display_paired_at?->format('d/m/Y H:i') }}
@@ -239,6 +239,24 @@
                         — {{ __('time.clock_displays.linked.last_seen') }}: {{ $point->display_last_seen_at->diffForHumans() }}
                     @endif
                 </p>
+            </div>
+        @endif
+
+        @if ($pairHistory->isNotEmpty())
+            <div class="wp-settings-subblock wp-stack-tight">
+                <h3 class="wp-settings-subblock-title">{{ __('time.clock_displays.history.title') }}</h3>
+                <p class="wp-muted wp-text-sm">{{ __('time.clock_displays.history.hint') }}</p>
+                <ul class="wp-stack-tight">
+                    @foreach ($pairHistory as $entry)
+                        <li class="wp-issue-card-meta">
+                            <strong>{{ $entry->device_hint }}</strong>
+                            — {{ $entry->confirmed_at?->format('d/m/Y H:i') }}
+                            @if ($point?->hasLinkedDisplay() && $point->display_device_hint === $entry->device_hint && $loop->first)
+                                <span class="wp-pill wp-pill--done">{{ __('time.clock_displays.history.current') }}</span>
+                            @endif
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         @endif
     </x-wp-settings-section>
@@ -251,7 +269,7 @@
                 <span class="wp-pill wp-pill--progress">{{ __('time.clock_displays.pending.waiting') }}</span>
             </div>
             <p class="wp-issue-card-meta">
-                {{ __('time.clock_displays.pending.device') }}: <strong>{{ $pendingClaim->device_hint }}</strong>
+                {{ __('time.clock_displays.pending.serial') }}: <strong>{{ $pendingClaim->device_hint }}</strong>
                 @if ($pendingClaim->ip)
                     — IP {{ $pendingClaim->ip }}
                 @endif

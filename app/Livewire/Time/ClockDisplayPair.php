@@ -6,6 +6,7 @@ use App\Actions\Time\ConfirmClockDisplayClaimAction;
 use App\Actions\Time\DeleteClockDisplayImageAction;
 use App\Actions\Time\DenyClockDisplayClaimAction;
 use App\Actions\Time\IssueClockDisplayPairingCodeAction;
+use App\Actions\Time\ListClockDisplayPairHistoryAction;
 use App\Actions\Time\UnlinkClockPointDisplayAction;
 use App\Actions\Time\UpdateClockDisplayAlbumWindowsAction;
 use App\Actions\Time\UpdateClockDisplayScheduleAction;
@@ -331,14 +332,18 @@ class ClockDisplayPair extends Component
         session()->flash('time_flash', __('time.clock_displays.album.saved'));
     }
 
-    public function render()
+    public function render(ListClockDisplayPairHistoryAction $listHistory)
     {
         $point = $this->clockPoint->fresh();
         $pendingClaim = $point?->displayClaims()->activePending()->latest('id')->first();
+        $pairHistory = $point !== null
+            ? $listHistory->handle($point, (int) $point->tenant_id)
+            : collect();
 
         return view('livewire.time.clock-display-pair', [
             'point' => $point,
             'pendingClaim' => $pendingClaim,
+            'pairHistory' => $pairHistory,
             'albumImages' => $point !== null
                 ? ClockDisplayImage::queryForPoint($point)->get()
                 : collect(),

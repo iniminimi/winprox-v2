@@ -336,7 +336,8 @@
             "device": "Dispositivo",
             "paired_at": "Activa desde",
             "last_seen": "vista por última vez",
-            "unlink": "Desvincular pantalla"
+            "unlink": "Desvincular pantalla",
+            "serial": "Número de serie"
         },
         "code": {
             "title": "Código de vinculación",
@@ -352,7 +353,8 @@
             "device": "Dispositivo",
             "expires": "Expira :time",
             "confirm": "Confirmar",
-            "deny": "Rechazar"
+            "deny": "Rechazar",
+            "serial": "Número de serie"
         },
         "schedule": {
             "title": "Horario de pantalla",
@@ -421,6 +423,11 @@
             "mode_flipclock": "Reloj flip",
             "mode_black": "Pantalla negra",
             "mode_none": "Código QR"
+        },
+        "history": {
+            "title": "Historial de vinculación",
+            "hint": "Qué pantalla (número de serie) se vinculó a este punto de fichaje y cuándo.",
+            "current": "Actual"
         }
     },
     "duration": {

@@ -7,6 +7,7 @@ use App\Actions\Time\DeleteClockDisplayImageAction;
 use App\Actions\Time\DenyClockDisplayClaimAction;
 use App\Actions\Time\ExpireClockDisplayClaimsAction;
 use App\Actions\Time\IssueClockDisplayPairingCodeAction;
+use App\Actions\Time\ListClockDisplayPairHistoryAction;
 use App\Actions\Time\ResolveClockPointPortalTokenAction;
 use App\Actions\Time\RotateClockPointDisplaySecretAction;
 use App\Actions\Time\SubmitClockDisplayClaimAction;
@@ -185,6 +186,33 @@ it('vervangt een gekoppeld scherm expliciet bij re-pair (unlinked + confirmed au
         ->whereIn('action', ['clock_point.display_unlinked', 'clock_point.display_claim_confirmed'])
         ->pluck('action');
     expect($auditActions)->toContain('clock_point.display_unlinked');
+});
+
+it('bewaart serienummers in de koppelgeschiedenis nieuwste eerst', function () {
+    $tenant = displayTenant();
+    Tenancy::actAs($tenant->id);
+    $point = displayPoint($tenant);
+
+    $code1 = app(IssueClockDisplayPairingCodeAction::class)->handle($point, $tenant->id, null);
+    $claim1 = app(SubmitClockDisplayClaimAction::class)->handle($code1, 'AABBCCDDEE01', null);
+    app(ConfirmClockDisplayClaimAction::class)->handle($claim1, $tenant->id, null);
+
+    $code2 = app(IssueClockDisplayPairingCodeAction::class)->handle($point->fresh(), $tenant->id, null);
+    $claim2 = app(SubmitClockDisplayClaimAction::class)->handle($code2, 'AABBCCDDEE02', null);
+    app(ConfirmClockDisplayClaimAction::class)->handle($claim2, $tenant->id, null);
+
+    $history = app(ListClockDisplayPairHistoryAction::class)->handle($point->fresh(), $tenant->id);
+
+    expect($history)->toHaveCount(2)
+        ->and($history->pluck('device_hint')->all())->toBe(['AABBCCDDEE02', 'AABBCCDDEE01']);
+
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    $this->actingAs($admin);
+
+    Livewire::test(\App\Livewire\Time\ClockDisplayPair::class, ['clockPoint' => $point->fresh()])
+        ->assertSee('AABBCCDDEE02', false)
+        ->assertSee(__('time.clock_displays.linked.serial'), false)
+        ->assertSee(__('time.clock_displays.history.title'), false);
 });
 
 it('ontkoppelt een scherm en houdt display_id voor het audit-spoor', function () {

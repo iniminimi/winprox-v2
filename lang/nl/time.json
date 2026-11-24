@@ -336,7 +336,8 @@
             "device": "Toestel",
             "paired_at": "Actief sinds",
             "last_seen": "laatst gezien",
-            "unlink": "Scherm ontkoppelen"
+            "unlink": "Scherm ontkoppelen",
+            "serial": "Serienummer"
         },
         "code": {
             "title": "Koppelcode",
@@ -352,7 +353,8 @@
             "device": "Toestel",
             "expires": "Verloopt :time",
             "confirm": "Bevestigen",
-            "deny": "Weigeren"
+            "deny": "Weigeren",
+            "serial": "Serienummer"
         },
         "schedule": {
             "title": "Schermuren",
@@ -421,6 +423,11 @@
             "mode_flipclock": "Flipklok",
             "mode_black": "Zwart scherm",
             "mode_none": "QR-code"
+        },
+        "history": {
+            "title": "Koppelgeschiedenis",
+            "hint": "Welk scherm (serienummer) wanneer aan dit clock point gekoppeld werd.",
+            "current": "Huidig"
         }
     },
     "duration": {

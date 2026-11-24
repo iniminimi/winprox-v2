@@ -336,7 +336,8 @@
             "device": "Gerät",
             "paired_at": "Aktiv seit",
             "last_seen": "zuletzt gesehen",
-            "unlink": "Display trennen"
+            "unlink": "Display trennen",
+            "serial": "Seriennummer"
         },
         "code": {
             "title": "Kopplungscode",
@@ -352,7 +353,8 @@
             "device": "Gerät",
             "expires": "Läuft ab :time",
             "confirm": "Bestätigen",
-            "deny": "Ablehnen"
+            "deny": "Ablehnen",
+            "serial": "Seriennummer"
         },
         "schedule": {
             "title": "Bildschirmzeiten",
@@ -421,6 +423,11 @@
             "mode_flipclock": "Flip-Uhr",
             "mode_black": "Schwarzer Bildschirm",
             "mode_none": "QR-Code"
+        },
+        "history": {
+            "title": "Kopplungsverlauf",
+            "hint": "Welcher Bildschirm (Seriennummer) wann mit diesem Clock Point gekoppelt wurde.",
+            "current": "Aktuell"
         }
     },
     "duration": {
