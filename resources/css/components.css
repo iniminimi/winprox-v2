@@ -9003,16 +9003,20 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
 /* Koppelgeschiedenis op clock-display-pair. */
 .wp-clock-pair-history-wrap {
     overflow-x: auto;
-    margin-top: 0.35rem;
+    margin-top: 0.65rem;
     border: 1px solid var(--wp-border);
     border-radius: var(--wp-radius);
     background: var(--wp-surface);
+    box-shadow: var(--wp-shadow-sm);
 }
 
 .wp-clock-pair-history {
     width: 100%;
+    min-width: 36rem;
     border-collapse: collapse;
-    font-size: 0.875rem;
+    table-layout: auto;
+    font-size: 0.75rem;
+    line-height: 1.35;
     font-weight: 400;
     color: var(--wp-text);
     font-variant-numeric: tabular-nums;
@@ -9020,25 +9024,34 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
 
 .wp-clock-pair-history th,
 .wp-clock-pair-history td {
-    padding: 0.55rem 0.75rem;
+    padding: 0.7rem 1rem;
     text-align: left;
     vertical-align: middle;
     border-bottom: 1px solid var(--wp-border);
     white-space: nowrap;
-    font-size: inherit;
-    font-weight: inherit;
+    font-size: 0.75rem;
+    font-weight: 400;
     font-family: inherit;
-    color: inherit;
+    color: var(--wp-text);
 }
 
 .wp-clock-pair-history thead th {
-    font-size: 0.75rem;
+    padding: 0.55rem 1rem;
+    font-size: 0.6875rem;
     font-weight: 600;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--wp-text-muted);
-    background: var(--wp-surface-2, color-mix(in srgb, var(--wp-surface) 88%, var(--wp-text) 12%));
-    border-bottom-color: var(--wp-border);
+    background: color-mix(in srgb, var(--wp-text) 6%, var(--wp-surface) 94%);
+    border-bottom: 1px solid var(--wp-border);
+}
+
+.wp-clock-pair-history tbody tr:nth-child(odd) td {
+    background: var(--wp-surface);
+}
+
+.wp-clock-pair-history tbody tr:nth-child(even) td {
+    background: color-mix(in srgb, var(--wp-text) 4.5%, var(--wp-surface) 95.5%);
 }
 
 .wp-clock-pair-history tbody tr:last-child td {
@@ -9046,15 +9059,19 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
 }
 
 .wp-clock-pair-history tbody tr:hover td {
-    background: color-mix(in srgb, var(--wp-accent) 6%, var(--wp-surface) 94%);
+    background: color-mix(in srgb, var(--wp-accent) 9%, var(--wp-surface) 91%);
 }
 
 .wp-clock-pair-history__row--current td {
-    background: color-mix(in srgb, var(--wp-accent) 10%, var(--wp-surface) 90%);
+    background: color-mix(in srgb, var(--wp-accent) 14%, var(--wp-surface) 86%);
+}
+
+.wp-clock-pair-history__row--current:hover td {
+    background: color-mix(in srgb, var(--wp-accent) 18%, var(--wp-surface) 82%);
 }
 
 .wp-clock-pair-history .wp-pill {
-    font-size: 0.75rem;
+    font-size: 0.6875rem;
 }
 
 /* In-portal QR-scanner (ItsMe-stijl): camera-overlay om de Clock Point-QR te lezen. */
