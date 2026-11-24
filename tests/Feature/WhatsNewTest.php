@@ -37,7 +37,7 @@ it('toont de versiegeschiedenis nieuwste dag eerst en haalt de kaart weg', funct
         ->test(WhatsNew::class)
         ->assertSee(__('whats_new.title'), false)
         ->assertSee('video/assistant_new.mp4', false)
-        ->assertSee('Bij een uitvoerder zie je hoeveel documenten en mededelingen er zijn.', false)
+        ->assertSee('Bij een lokaal kiest u Camera.', false)
         ->assertDontSee('Je kunt het beheer op de computer als eigen venster zetten', false);
 
     $user->refresh();
