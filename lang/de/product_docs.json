@@ -294,7 +294,8 @@
                 "body": "Sense zeigt je Display Temperatur, Luftfeuchtigkeit, CO₂ und den VOC-Index. Sie schalten Sense in den Display-Einstellungen ein, an einem Raum oder an einem Clock Point. Der Startbildschirm bittet um Aufmerksamkeit, wenn ein Wert außerhalb der Spanne liegt oder das Display nichts mehr sendet.",
                 "items": [
                     "Es entsteht keine Meldung und keine Aufgabe.",
-                    "Ein Raum folgt der Jahreshälfte: Sommer vom 1. Mai bis 30. September, Winter vom 1. Oktober bis 30. April. CO₂ bittet um Aufmerksamkeit über 900. Der VOC-Index färbt von Grün bis Rot und bittet erst nach einer halben Stunde um Aufmerksamkeit."
+                    "Ein Display ohne Sense zeigt kein Klima. Ausschalten behält die Grenzen.",
+                    "Das Display folgt der Jahreshälfte: Sommer vom 1. Mai bis 30. September, Winter vom 1. Oktober bis 30. April. CO₂ bittet um Aufmerksamkeit über 900. Der VOC-Index färbt von Grün bis Rot und bittet erst nach einer halben Stunde um Aufmerksamkeit."
                 ]
             },
             {
@@ -510,6 +511,14 @@
                     "Koppeln mit einem Einmalcode in der Verwaltung; das Display sendet seine Seriennummer mit. Entkoppeln zieht das Gerät ein.",
                     "Ohne Smartphone: Vorname und PIN für Ein- und Ausstempeln und **Pause**. Die PIN ändern Sie am Display, ohne ein- oder auszustempeln. Wiederholte Fehlversuche werden vorübergehend gesperrt.",
                     "CE-Kennzeichnung für den professionellen Einsatz; Versorgung über USB-C (5 V)."
+                ]
+            },
+            {
+                "title": "Sense (optional)",
+                "items": [
+                    "Ein Display kann auch Temperatur, Feuchte, CO₂ und Luftqualität messen. Sie schalten das je Display in den Display-Einstellungen ein, an einem Raum oder an einem Clock Point.",
+                    "Die Messungen bleiben in Ihrer Organisation. Es entsteht keine Meldung und keine Aufgabe. Der Startbildschirm bittet um Aufmerksamkeit, wenn ein Wert außerhalb der Spanne liegt oder das Display nichts mehr sendet.",
+                    "Gleiches Netz wie das Uhrdisplay: WLAN und HTTPS."
                 ]
             },
             {

@@ -294,7 +294,8 @@
                 "body": "Sense mostra per schermo temperatura, umidità, CO₂ e indice VOC. Si attiva Sense nelle impostazioni dello schermo, su un locale o su un Clock Point. La schermata iniziale chiede attenzione se un valore esce dalla fascia o se lo schermo non invia più nulla.",
                 "items": [
                     "Non nasce nessuna segnalazione né attività.",
-                    "Un locale segue la metà dell’anno: estate dal 1° maggio al 30 settembre, inverno dal 1° ottobre al 30 aprile. Il CO₂ chiede attenzione sopra 900. L’indice VOC va dal verde al rosso e chiede attenzione solo dopo mezz’ora."
+                    "Uno schermo senza Sense non mostra il clima. Spegnere conserva i limiti.",
+                    "Lo schermo segue la metà dell’anno: estate dal 1° maggio al 30 settembre, inverno dal 1° ottobre al 30 aprile. Il CO₂ chiede attenzione sopra 900. L’indice VOC va dal verde al rosso e chiede attenzione solo dopo mezz’ora."
                 ]
             },
             {
@@ -510,6 +511,14 @@
                     "Associazione con un codice monouso in gestione; lo schermo invia il suo numero di serie. Lo scollegamento ritira il dispositivo.",
                     "Senza smartphone: nome e PIN per entrata, uscita e **pausa**. Il PIN si cambia sullo schermo senza timbrare. I tentativi errati ripetuti vengono bloccati temporaneamente.",
                     "Marchio CE per uso professionale; alimentazione USB-C (5 V)."
+                ]
+            },
+            {
+                "title": "Sense (opzionale)",
+                "items": [
+                    "Uno schermo può anche misurare temperatura, umidità, CO₂ e qualità dell’aria. Si attiva per schermo nelle impostazioni dello schermo, su un locale o su un Clock Point.",
+                    "Le misure restano nella vostra organizzazione. Non nasce nessuna segnalazione né attività. La schermata iniziale chiede attenzione se un valore esce dalla fascia o se lo schermo non invia più nulla.",
+                    "Stessa rete dello schermo orologio: Wi‑Fi e HTTPS."
                 ]
             },
             {

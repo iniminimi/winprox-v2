@@ -1749,7 +1749,7 @@
                 },
                 {
                     "label": "Pantalla de reloj",
-                    "text": "¿Prefiere una pantalla a un adhesivo impreso? En un Clock Point puede vincular una pantalla física mediante <strong>Pantalla</strong>.<br><br>La pantalla muestra automáticamente un QR cambiante. Los ejecutores lo escanean con el móvil, igual que con un adhesivo normal.<br><br>Más información sobre el enlace, las horas de pantalla, el sonido y el salvapantallas está en la ayuda de la propia pantalla de reloj."
+                    "text": "¿Prefiere una pantalla a un adhesivo impreso? En un Clock Point puede vincular una pantalla física mediante <strong>Pantalla</strong>.<br><br>La pantalla muestra automáticamente un QR cambiante. Los ejecutores lo escanean con el móvil, igual que con un adhesivo normal.<br><br>Más información sobre el enlace, las horas de pantalla, el sonido, el salvapantallas y Sense está en la ayuda de la propia pantalla de reloj."
                 },
                 {
                     "label": "Activar o desactivar un Clock Point",
@@ -1791,6 +1791,10 @@
                 {
                     "label": "Salvapantallas",
                     "text": "Durante un máximo de dos franjas configuradas — solo en los días marcados — la pantalla muestra una pantalla de descanso en lugar del código QR — por ejemplo fuera de las horas punta. Elija qué se muestra: <strong>fotos</strong> (10 segundos cada una), un <strong>reloj analógico</strong> con segundero rojo, un <strong>reloj flip</strong> digital, una <strong>pantalla negra</strong> (retroiluminación apagada, es lo que menos consume), o <strong>Código QR</strong> — entonces el reloj QR normal sigue visible. Un toque muestra el código QR inmediatamente; otro toque abre el registro manual. Suba fotos con <strong>Añadir foto</strong>: las recorta en rectángulo y se redimensionan automáticamente. Cada pantalla admite como máximo 12 fotos: sus propias fotos y las fotos para todas las pantallas, en total. Marque <strong>Mostrar en todas las pantallas</strong> para las imágenes visibles en cada pantalla de la organización. La pantalla descarga las fotos nuevas en su siguiente contacto (±1 minuto) y las guarda localmente — las fotos eliminadas también desaparecen de la pantalla. Sin conexión, el último álbum descargado y el reloj siguen funcionando."
+                },
+                {
+                    "label": "Sense",
+                    "text": "Active <strong>Sense</strong> si es un D1S. La pantalla mide entonces temperatura, humedad, CO₂ y calidad del aire. Déjelo apagado para un D1. El mismo interruptor está en una sala, con Pantalla. La tarjeta negra pertenece solo a esta pantalla. En temperatura y humedad arrastra o escribe el valor bajo, el objetivo y el alto, o elige Invierno o Verano. El 1 de mayo pasa solo al verano y el 1 de octubre al invierno. El objetivo solo orienta. El CO₂ pide atención por encima del límite. El índice VOC pasa de verde a rojo; la atención llega solo si un valor alto se mantiene media hora. Sense apagado oculta la tarjeta y detiene la atención en el inicio; los límites se conservan. No se crea ningún aviso ni tarea."
                 },
                 {
                     "label": "Desvincular",
@@ -1840,25 +1844,12 @@
                     "text": "En la sala elija Pantalla. Allí ajusta las horas, el sonido y el salvapantallas de esa pantalla. El QR de la sala cambia cada hora. Active Sense en esa página si es un D1S."
                 },
                 {
+                    "label": "Sense",
+                    "text": "Active <strong>Sense</strong> si es un D1S. La pantalla mide entonces temperatura, humedad, CO₂ y calidad del aire. Déjelo apagado para un D1. El mismo interruptor está en un Clock Point. La tarjeta negra pertenece solo a esta pantalla. En temperatura y humedad arrastra o escribe el valor bajo, el objetivo y el alto, o elige Invierno o Verano. El 1 de mayo pasa solo al verano y el 1 de octubre al invierno. El objetivo solo orienta. El CO₂ pide atención por encima del límite. El índice VOC pasa de verde a rojo; la atención llega solo si un valor alto se mantiene media hora. Sense apagado oculta la tarjeta y detiene la atención en el inicio; los límites se conservan. No se crea ningún aviso ni tarea."
+                },
+                {
                     "label": "Desvincular",
                     "text": "Desvincular detiene el aparato para esta sala. Después puede vincular otra pantalla."
-                }
-            ]
-        },
-        "sense.index": {
-            "title": "Ayuda — Sense",
-            "actions": [
-                {
-                    "label": "Qué es esta pantalla",
-                    "text": "Sense muestra por sala la temperatura, la humedad, el CO₂ y el índice VOC. Los límites se ajustan en la tarjeta negra. Esa tarjeta sigue la pantalla de la sala."
-                },
-                {
-                    "label": "Límites",
-                    "text": "En temperatura y humedad arrastra o escribe el valor bajo, el objetivo y el alto, o elige Invierno o Verano. El 1 de mayo pasa solo al verano y el 1 de octubre al invierno. El objetivo solo orienta. El CO₂ pide atención por encima del límite. El índice VOC pasa de verde a rojo; la atención llega solo si un valor alto se mantiene media hora."
-                },
-                {
-                    "label": "Pantalla de inicio",
-                    "text": "Si una sala queda fuera de la banda, o la pantalla deja de enviar, aparece en el inicio. No se crea ningún aviso ni tarea."
                 }
             ]
         },

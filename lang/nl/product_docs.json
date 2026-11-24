@@ -294,7 +294,8 @@
                 "body": "Sense toont per scherm temperatuur, luchtvochtigheid, CO₂ en de VOC-index. U zet Sense aan op Scherm instellingen, op een lokaal of op een Clock Point. Het beginscherm vraagt aandacht als een waarde buiten de band valt of als het scherm niets meer stuurt.",
                 "items": [
                     "Er ontstaat geen melding en geen taak.",
-                    "Een lokaal volgt de jaarhelft: zomer van 1 mei tot 30 september, winter van 1 oktober tot 30 april. CO₂ vraagt aandacht boven 900. De VOC-index kleurt van groen tot rood en vraagt aandacht pas na een half uur."
+                    "Een scherm zonder Sense toont geen klimaat. Uitzetten bewaart de grenzen.",
+                    "Het scherm volgt de jaarhelft: zomer van 1 mei tot 30 september, winter van 1 oktober tot 30 april. CO₂ vraagt aandacht boven 900. De VOC-index kleurt van groen tot rood en vraagt aandacht pas na een half uur."
                 ]
             },
             {
@@ -510,6 +511,14 @@
                     "Koppelen met een eenmalige code in beheer; het scherm stuurt zijn serienummer mee. Ontkoppelen trekt het toestel in.",
                     "Zonder smartphone: voornaam en PIN voor inklokken, uitklokken en **pauze**. De code wijzig je op het scherm zonder in of uit te klokken. Herhaalde foute pogingen worden tijdelijk geblokkeerd.",
                     "CE-gekeurd voor professioneel gebruik; voeding via USB-C (5 V)."
+                ]
+            },
+            {
+                "title": "Sense (optioneel)",
+                "items": [
+                    "Een scherm kan ook temperatuur, vocht, CO₂ en luchtkwaliteit meten. U zet dat per scherm aan op Scherm instellingen, op een lokaal of op een Clock Point.",
+                    "De metingen blijven in uw organisatie. Er ontstaat geen melding en geen taak. Het beginscherm vraagt aandacht als een waarde buiten de band valt of als het scherm niets meer stuurt.",
+                    "Zelfde netwerk als het klokscherm: Wi‑Fi en HTTPS."
                 ]
             },
             {

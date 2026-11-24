@@ -294,7 +294,8 @@
                 "body": "Sense shows temperature, humidity, CO₂ and the VOC index for a screen. You turn Sense on in Screen settings, on a room or on a Clock Point. The home screen asks for attention when a value leaves the band or the screen stops sending.",
                 "items": [
                     "No issue and no task is created.",
-                    "A room follows the half-year: summer from 1 May to 30 September, winter from 1 October to 30 April. CO₂ asks for attention above 900. The VOC index colours from green to red and asks for attention only after half an hour."
+                    "A screen without Sense shows no climate. Turning it off keeps the marks.",
+                    "The screen follows the half-year: summer from 1 May to 30 September, winter from 1 October to 30 April. CO₂ asks for attention above 900. The VOC index colours from green to red and asks for attention only after half an hour."
                 ]
             },
             {
@@ -510,6 +511,14 @@
                     "Pair with a one-time code in the back office; the screen sends its serial number. Unlinking revokes the device.",
                     "Without a smartphone: first name and PIN for clock-in, clock-out and **break**. You change the code on the screen without clocking in or out. Repeated wrong attempts are temporarily blocked.",
                     "CE-marked for professional use; powered via USB-C (5 V)."
+                ]
+            },
+            {
+                "title": "Sense (optional)",
+                "items": [
+                    "A screen can also measure temperature, humidity, CO₂ and air quality. You turn that on per screen in Screen settings, on a room or on a Clock Point.",
+                    "The readings stay in your organisation. No issue and no task is created. The home screen asks for attention when a value leaves the band or the screen stops sending.",
+                    "Same network as the clock display: Wi‑Fi and HTTPS."
                 ]
             },
             {

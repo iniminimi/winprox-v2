@@ -1749,7 +1749,7 @@
                 },
                 {
                     "label": "Uhrbildschirm",
-                    "text": "Lieber ein Display statt eines gedruckten Aufklebers? Dann können Sie bei einem Clock Point über <strong>Bildschirm</strong> ein physisches Uhrdisplay koppeln.<br><br>Das Display zeigt automatisch einen wechselnden QR-Code. Ausführende scannen ihn mit dem Handy, genau wie bei einem normalen Aufkleber.<br><br>Mehr zur Kopplung, zu Bildschirmzeiten, Ton und Bildschirmschoner steht in der Hilfe zum Uhrbildschirm selbst."
+                    "text": "Lieber ein Display statt eines gedruckten Aufklebers? Dann können Sie bei einem Clock Point über <strong>Bildschirm</strong> ein physisches Uhrdisplay koppeln.<br><br>Das Display zeigt automatisch einen wechselnden QR-Code. Ausführende scannen ihn mit dem Handy, genau wie bei einem normalen Aufkleber.<br><br>Mehr zur Kopplung, zu Bildschirmzeiten, Ton, Bildschirmschoner und Sense steht in der Hilfe zum Uhrbildschirm selbst."
                 },
                 {
                     "label": "Einen Clock Point aktivieren oder deaktivieren",
@@ -1791,6 +1791,10 @@
                 {
                     "label": "Bildschirmschoner",
                     "text": "Während maximal zwei eingestellter Zeitblöcke — nur an den angehakten Wochentagen — zeigt der Bildschirm einen Ruhebildschirm statt des QR-Codes — z. B. außerhalb der Stoßzeiten. Wählen Sie, was angezeigt wird: <strong>Fotos</strong> (jeweils 10 Sekunden), eine <strong>Analoguhr</strong> mit rotem Sekundenzeiger, eine digitale <strong>Flip-Uhr</strong>, einen <strong>schwarzen Bildschirm</strong> (Beleuchtung aus, verbraucht am wenigsten) oder <strong>QR-Code</strong> — dann bleibt die normale QR-Uhr sichtbar. Ein Tippen zeigt sofort den QR-Code, ein weiteres Tippen öffnet die manuelle Anmeldung. Fotos über <strong>Foto hinzufügen</strong> hochladen: Sie schneiden sie rechteckig zu und sie werden automatisch verkleinert. Pro Bildschirm sind maximal 12 Fotos möglich: eigene Fotos und Fotos für alle Bildschirme zusammen. <strong>Auf allen Bildschirmen zeigen</strong> aktivieren, damit ein Bild auf jedem Bildschirm der Organisation erscheint. Der Bildschirm lädt neue Fotos beim nächsten Kontakt (±1 Minute) automatisch herunter und speichert sie lokal — gelöschte Fotos verschwinden dann auch vom Bildschirm. Offline laufen das zuletzt geladene Album und die Uhr weiter."
+                },
+                {
+                    "label": "Sense",
+                    "text": "Schalten Sie <strong>Sense ein</strong>, wenn dies ein D1S ist. Das Display misst dann Temperatur, Feuchte, CO₂ und Luftqualität. Für ein D1 lassen Sie es aus. Derselbe Schalter steht an einem Raum über Display. Die schwarze Karte gehört nur zu diesem Display. Bei Temperatur und Feuchte ziehen oder tippen Sie unten, Ziel und oben, oder Sie wählen Winter oder Sommer. Am 1. Mai wechselt das von selbst auf Sommer, am 1. Oktober auf Winter. Der Zielwert ist nur ein Richtwert. CO₂ bittet um Aufmerksamkeit über der Grenze. Der VOC-Index färbt von Grün bis Rot; Aufmerksamkeit folgt erst, wenn ein hoher Wert eine halbe Stunde anhält. Sense aus blendet die Karte aus und stoppt die Aufmerksamkeit auf dem Startbildschirm; die Grenzen bleiben gespeichert. Es entsteht keine Meldung und keine Aufgabe."
                 },
                 {
                     "label": "Entkoppeln",
@@ -1840,25 +1844,12 @@
                     "text": "Am Raum wählen Sie Display. Dort stellen Sie Zeiten, Ton und Bildschirmschoner für dieses Display ein. Der QR des Raums wechselt einmal pro Stunde. Sense schalten Sie dort ein, wenn dies ein D1S ist."
                 },
                 {
+                    "label": "Sense",
+                    "text": "Schalten Sie <strong>Sense ein</strong>, wenn dies ein D1S ist. Das Display misst dann Temperatur, Feuchte, CO₂ und Luftqualität. Für ein D1 lassen Sie es aus. Derselbe Schalter steht an einem Clock Point. Die schwarze Karte gehört nur zu diesem Display. Bei Temperatur und Feuchte ziehen oder tippen Sie unten, Ziel und oben, oder Sie wählen Winter oder Sommer. Am 1. Mai wechselt das von selbst auf Sommer, am 1. Oktober auf Winter. Der Zielwert ist nur ein Richtwert. CO₂ bittet um Aufmerksamkeit über der Grenze. Der VOC-Index färbt von Grün bis Rot; Aufmerksamkeit folgt erst, wenn ein hoher Wert eine halbe Stunde anhält. Sense aus blendet die Karte aus und stoppt die Aufmerksamkeit auf dem Startbildschirm; die Grenzen bleiben gespeichert. Es entsteht keine Meldung und keine Aufgabe."
+                },
+                {
                     "label": "Trennen",
                     "text": "Trennen stoppt das Gerät für diesen Raum. Danach können Sie ein anderes Display koppeln."
-                }
-            ]
-        },
-        "sense.index": {
-            "title": "Hilfe — Sense",
-            "actions": [
-                {
-                    "label": "Was ist dieser Bildschirm?",
-                    "text": "Sense zeigt je Raum Temperatur, Luftfeuchtigkeit, CO₂ und den VOC-Index. Die Grenzen stellen Sie auf der schwarzen Karte ein. Die Karte entspricht dem Display im Raum."
-                },
-                {
-                    "label": "Grenzen",
-                    "text": "Bei Temperatur und Feuchte ziehen oder tippen Sie unten, Ziel und oben, oder Sie wählen Winter oder Sommer. Am 1. Mai wechselt das von selbst auf Sommer, am 1. Oktober auf Winter. Der Zielwert ist nur ein Richtwert. CO₂ bittet um Aufmerksamkeit über der Grenze. Der VOC-Index färbt von Grün bis Rot; Aufmerksamkeit folgt erst, wenn ein hoher Wert eine halbe Stunde anhält."
-                },
-                {
-                    "label": "Startbildschirm",
-                    "text": "Liegt ein Raum außerhalb der Spanne, oder sendet das Display eine Zeit lang nichts, steht das auf dem Startbildschirm. Es entsteht keine Meldung und keine Aufgabe."
                 }
             ]
         },

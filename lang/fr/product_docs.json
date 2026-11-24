@@ -294,7 +294,8 @@
                 "body": "Sense montre par écran la température, l’humidité, le CO₂ et l’indice VOC. Vous activez Sense dans les réglages de l’écran, sur un local ou sur un Clock Point. L’accueil demande attention si une valeur sort de la bande ou si l’écran n’envoie plus rien.",
                 "items": [
                     "Aucun signalement ni tâche n’est créé.",
-                    "Un local suit la moitié de l’année : été du 1er mai au 30 septembre, hiver du 1er octobre au 30 avril. Le CO₂ demande attention au-dessus de 900. L’indice VOC passe du vert au rouge et ne demande attention qu’après une demi-heure."
+                    "Un écran sans Sense n’affiche pas le climat. Le désactiver conserve les repères.",
+                    "L’écran suit la moitié de l’année : été du 1er mai au 30 septembre, hiver du 1er octobre au 30 avril. Le CO₂ demande attention au-dessus de 900. L’indice VOC passe du vert au rouge et ne demande attention qu’après une demi-heure."
                 ]
             },
             {
@@ -510,6 +511,14 @@
                     "Couplage avec un code à usage unique dans le back-office ; l’écran envoie son numéro de série. Le découplage retire l’appareil.",
                     "Sans smartphone : prénom et PIN pour l’entrée, la sortie et la **pause**. Vous changez le code à l’écran sans pointer. Les tentatives erronées répétées sont bloquées temporairement.",
                     "Marquage CE pour un usage professionnel ; alimentation USB-C (5 V)."
+                ]
+            },
+            {
+                "title": "Sense (optionnel)",
+                "items": [
+                    "Un écran peut aussi mesurer la température, l’humidité, le CO₂ et la qualité de l’air. Vous l’activez par écran dans les réglages de l’écran, sur un local ou sur un Clock Point.",
+                    "Les mesures restent dans votre organisation. Aucun signalement ni tâche n’est créé. L’accueil demande attention si une valeur sort de la bande ou si l’écran n’envoie plus rien.",
+                    "Même réseau que l’écran d’horloge : Wi‑Fi et HTTPS."
                 ]
             },
             {

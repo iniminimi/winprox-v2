@@ -1749,7 +1749,7 @@
                 },
                 {
                     "label": "Clock display",
-                    "text": "Prefer a screen instead of a printed sticker? At a Clock Point you can link a physical clock display via <strong>Display</strong>.<br><br>The display automatically shows a rotating QR code. Workers scan it with their phone, just like a normal sticker.<br><br>More about linking the display, display hours, sound and the screensaver is in the help for the clock display itself."
+                    "text": "Prefer a screen instead of a printed sticker? At a Clock Point you can link a physical clock display via <strong>Display</strong>.<br><br>The display automatically shows a rotating QR code. Workers scan it with their phone, just like a normal sticker.<br><br>More about linking the display, display hours, sound, the screensaver and Sense is in the help for the clock display itself."
                 },
                 {
                     "label": "Activate or deactivate a Clock Point",
@@ -1791,6 +1791,10 @@
                 {
                     "label": "Screensaver",
                     "text": "During up to two configured time blocks — only on the checked weekdays — the screen shows an idle screen instead of the QR code — e.g. outside peak clock-in hours. Choose what is shown: <strong>photos</strong> (10 seconds each), an <strong>analog clock</strong> with a red second hand, a digital <strong>flip clock</strong>, a <strong>black screen</strong> (backlight off, uses the least power), or <strong>QR code</strong> — the regular QR clock then stays visible. One tap shows the QR code immediately, a second tap opens manual clock-in. Upload photos via <strong>Add photo</strong>: you crop them to a rectangle and they are resized automatically. Each clock display can use up to 12 photos: its own photos and photos for all clock displays combined. Tick <strong>Show on all clock displays</strong> for images that may appear on every screen in the organisation. The screen downloads new photos automatically at its next check-in (±1 minute) and stores them locally — deleted photos disappear from the screen as well. Offline, the last downloaded album and the clocks keep working."
+                },
+                {
+                    "label": "Sense",
+                    "text": "Turn <strong>Sense on</strong> when this is a D1S. The screen then measures temperature, humidity, CO₂ and air quality. Leave it off for a D1. The same switch is on a room, via Screen. The black card belongs only to this screen. For temperature and humidity you drag or type the low, target and high marks, or you choose Winter or Summer. On 1 May this switches to summer on its own, on 1 October to winter. The target is only a guide. CO₂ asks for attention above the mark. The VOC index colours from green to red; attention follows only when a high value lasts half an hour. Sense off hides the card and stops the attention on the home screen; the marks stay saved. No issue and no task is created."
                 },
                 {
                     "label": "Unlink",
@@ -1840,25 +1844,12 @@
                     "text": "On the room, choose Screen. There you set the hours, sound and screensaver for that screen. The room QR changes once an hour. Turn Sense on there when this is a D1S."
                 },
                 {
+                    "label": "Sense",
+                    "text": "Turn <strong>Sense on</strong> when this is a D1S. The screen then measures temperature, humidity, CO₂ and air quality. Leave it off for a D1. The same switch is on a Clock Point. The black card belongs only to this screen. For temperature and humidity you drag or type the low, target and high marks, or you choose Winter or Summer. On 1 May this switches to summer on its own, on 1 October to winter. The target is only a guide. CO₂ asks for attention above the mark. The VOC index colours from green to red; attention follows only when a high value lasts half an hour. Sense off hides the card and stops the attention on the home screen; the marks stay saved. No issue and no task is created."
+                },
+                {
                     "label": "Unlink",
                     "text": "Unlink stops the device for this room. You can pair another screen afterwards."
-                }
-            ]
-        },
-        "sense.index": {
-            "title": "Help — Sense",
-            "actions": [
-                {
-                    "label": "What is this screen?",
-                    "text": "Sense shows temperature, humidity, CO₂ and the VOC index for each room. You set the marks on the black card. That card matches the screen in the room."
-                },
-                {
-                    "label": "Marks",
-                    "text": "For temperature and humidity you drag or type the lower mark, the target and the upper mark, or you choose Winter or Summer. On 1 May this moves to summer by itself, on 1 October to winter. The target is only a guide. CO₂ asks for attention above its mark. The VOC index colours from green to red; attention follows only when a high value holds for half an hour."
-                },
-                {
-                    "label": "Home screen",
-                    "text": "When a room is outside the band, or the screen stops sending, it shows on the home screen. No issue and no task is created."
                 }
             ]
         },

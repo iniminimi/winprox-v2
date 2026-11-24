@@ -1749,7 +1749,7 @@
                 },
                 {
                     "label": "Klokscherm",
-                    "text": "Wilt u liever een scherm gebruiken dan een afgedrukte sticker? Dan kunt u bij een Clock Point via <strong>Scherm</strong> een fysiek klokscherm koppelen.<br><br>Het scherm toont automatisch een wisselende QR-code. Uitvoerders scannen die met hun gsm, net zoals bij een gewone sticker.<br><br>Meer uitleg over het koppelen van het scherm, de schermuren, het geluid en de screensaver vindt u in de hulp bij het klokscherm zelf."
+                    "text": "Wilt u liever een scherm gebruiken dan een afgedrukte sticker? Dan kunt u bij een Clock Point via <strong>Scherm</strong> een fysiek klokscherm koppelen.<br><br>Het scherm toont automatisch een wisselende QR-code. Uitvoerders scannen die met hun gsm, net zoals bij een gewone sticker.<br><br>Meer uitleg over het koppelen van het scherm, de schermuren, het geluid, de screensaver en Sense vindt u in de hulp bij het klokscherm zelf."
                 },
                 {
                     "label": "Een Clock Point activeren of deactiveren",
@@ -1791,6 +1791,10 @@
                 {
                     "label": "Screensaver",
                     "text": "Tijdens maximaal twee ingestelde tijdsblokken — alleen op de aangevinkte weekdagen — toont het scherm een rust-scherm i.p.v. de QR-code — bv. buiten de piek-klokuren. Kies wat er getoond wordt: <strong>foto’s</strong> (elke foto 10 seconden), een <strong>wijzerklok</strong> met rode secondewijzer, een digitale <strong>flipklok</strong>, een <strong>zwart scherm</strong> (verlichting uit, verbruikt het minst), of <strong>QR-code</strong> — dan blijft de gewone QR-klok zichtbaar. Een tik op het scherm toont meteen de QR-code, nog een tik opent manueel aanmelden. Upload foto’s via <strong>Foto toevoegen</strong>: u snijdt ze bij en ze worden automatisch verkleind. Per klokscherm kunt u maximaal 12 foto’s gebruiken: eigen foto’s en foto’s voor alle klokschermen samen. Vink <strong>Toon op alle klokschermen</strong> aan voor beelden die op elk scherm van de organisatie mogen. Het scherm downloadt nieuwe foto’s vanzelf bij de eerstvolgende melding (±1 minuut) en bewaart ze lokaal — verwijderde foto’s verdwijnen dan ook van het scherm. Offline blijven het laatst gedownloade album én de klok gewoon werken."
+                },
+                {
+                    "label": "Sense",
+                    "text": "Zet <strong>Sense aan</strong> als dit een D1S is. Het scherm meet dan temperatuur, vocht, CO₂ en luchtkwaliteit. Een D1 laat u uit. Hetzelfde geldt op een lokaal via Scherm. De zwarte kaart hoort alleen bij dit scherm. Bij temperatuur en vocht sleept of typt u onder, streef en boven, of u kiest Winter of Zomer. Op 1 mei gaat dit vanzelf naar de zomer, op 1 oktober naar de winter. De streefwaarde is alleen een richtpunt. CO₂ vraagt aandacht boven de grens. De VOC-index kleurt van groen tot rood; aandacht volgt pas als een hoge waarde een half uur aanhoudt. Sense uit verbergt de kaart en stopt de aandacht op het beginscherm; de grenzen blijven bewaard. Er komt geen melding en geen taak."
                 },
                 {
                     "label": "Ontkoppelen",
@@ -1840,25 +1844,12 @@
                     "text": "Op het lokaal kiest u Scherm. Daar stelt u de uren, het geluid en de screensaver van dat scherm in. De QR van het lokaal wisselt elk uur. Sense zet u aan op die pagina als dit een D1S is."
                 },
                 {
+                    "label": "Sense",
+                    "text": "Zet <strong>Sense aan</strong> als dit een D1S is. Het scherm meet dan temperatuur, vocht, CO₂ en luchtkwaliteit. Een D1 laat u uit. Hetzelfde geldt bij een Clock Point. De zwarte kaart hoort alleen bij dit scherm. Bij temperatuur en vocht sleept of typt u onder, streef en boven, of u kiest Winter of Zomer. Op 1 mei gaat dit vanzelf naar de zomer, op 1 oktober naar de winter. De streefwaarde is alleen een richtpunt. CO₂ vraagt aandacht boven de grens. De VOC-index kleurt van groen tot rood; aandacht volgt pas als een hoge waarde een half uur aanhoudt. Sense uit verbergt de kaart en stopt de aandacht op het beginscherm; de grenzen blijven bewaard. Er komt geen melding en geen taak."
+                },
+                {
                     "label": "Loskoppelen",
                     "text": "Loskoppelen stopt het toestel voor dit lokaal. U kunt daarna een ander scherm koppelen."
-                }
-            ]
-        },
-        "sense.index": {
-            "title": "Hulp — Sense",
-            "actions": [
-                {
-                    "label": "Wat is dit scherm?",
-                    "text": "Sense toont per lokaal de temperatuur, de luchtvochtigheid, CO₂ en de VOC-index. U stelt de grenzen in op de zwarte kaart. Die kaart volgt het scherm in het lokaal."
-                },
-                {
-                    "label": "Grenzen",
-                    "text": "Bij temperatuur en vocht sleept of typt u onder, streef en boven, of u kiest Winter of Zomer. Op 1 mei gaat dit vanzelf naar de zomer, op 1 oktober naar de winter. De streefwaarde is alleen een richtpunt. CO₂ vraagt aandacht boven de grens. De VOC-index kleurt van groen tot rood; aandacht volgt pas als een hoge waarde een half uur aanhoudt."
-                },
-                {
-                    "label": "Beginscherm",
-                    "text": "Valt een lokaal buiten de band, of stuurt het scherm een tijd niets meer, dan staat dat op het beginscherm. Er komt geen melding en geen taak."
                 }
             ]
         },

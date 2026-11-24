@@ -294,7 +294,8 @@
                 "body": "Sense muestra por pantalla la temperatura, la humedad, el CO₂ y el índice VOC. Active Sense en los ajustes de la pantalla, en una sala o en un Clock Point. El inicio pide atención si un valor sale de la banda o si la pantalla deja de enviar.",
                 "items": [
                     "No se crea ningún aviso ni tarea.",
-                    "Una sala sigue la mitad del año: verano del 1 de mayo al 30 de septiembre, invierno del 1 de octubre al 30 de abril. El CO₂ pide atención por encima de 900. El índice VOC pasa de verde a rojo y pide atención solo tras media hora."
+                    "Una pantalla sin Sense no muestra el clima. Apagarlo conserva los límites.",
+                    "La pantalla sigue la mitad del año: verano del 1 de mayo al 30 de septiembre, invierno del 1 de octubre al 30 de abril. El CO₂ pide atención por encima de 900. El índice VOC pasa de verde a rojo y pide atención solo tras media hora."
                 ]
             },
             {
@@ -510,6 +511,14 @@
                     "Emparejar con un código de un solo uso en gestión; la pantalla envía su número de serie. Desvincular retira el aparato.",
                     "Sin smartphone: nombre y PIN para entrada, salida y **pausa**. El PIN se cambia en la pantalla sin fichar. Los intentos erróneos repetidos se bloquean temporalmente.",
                     "Marcado CE para uso profesional; alimentación por USB-C (5 V)."
+                ]
+            },
+            {
+                "title": "Sense (opcional)",
+                "items": [
+                    "Una pantalla también puede medir temperatura, humedad, CO₂ y calidad del aire. Lo activa por pantalla en los ajustes de la pantalla, en una sala o en un Clock Point.",
+                    "Las mediciones quedan en su organización. No se crea ningún aviso ni tarea. El inicio pide atención si un valor sale de la banda o si la pantalla deja de enviar.",
+                    "La misma red que la pantalla de reloj: Wi‑Fi y HTTPS."
                 ]
             },
             {
