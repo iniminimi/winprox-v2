@@ -1,7 +1,11 @@
-<div class="wp-card wp-card-pad wp-stack">
-    <p class="wp-subhead">{{ __('ops.menu.help') }}</p>
-    <p class="wp-muted wp-text-sm">{{ __('platform.help.unanswered_title') }}</p>
+<x-wp-page-head-title
+    variant="portal"
+    icon="help"
+    :title="__('ops.menu.help')"
+    :subtitle="__('platform.help.unanswered_title')"
+/>
 
+<div class="wp-card wp-card-pad wp-stack">
     @if ($answeringQuestionId)
         <form wire:submit="saveAnswer" class="wp-stack">
             <p class="wp-muted wp-text-sm">{{ __('platform.help.answer_context') }}</p>

@@ -91,8 +91,6 @@
         "not_superuser": "Alleen platform-superusers mogen WinProx OPS gebruiken."
     },
     "menu": {
-        "title": "Kies een taak",
-        "back": "Terug naar menu",
         "register": "Toestel registreren",
         "register_hint": "Foto of typ het sticker-serienummer.",
         "devices": "Toestel zoeken",
@@ -100,7 +98,6 @@
         "users": "Gebruiker / wachtwoord",
         "users_hint": "Zoek een gebruiker en zet een nieuw wachtwoord.",
         "help": "Help-vragen",
-        "help_hint": "Doorgestuurde assistent-vragen beantwoorden.",
-        "help_open": ":count open"
+        "help_hint": "Doorgestuurde assistent-vragen beantwoorden."
     }
 }

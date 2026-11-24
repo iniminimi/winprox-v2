@@ -91,8 +91,6 @@
         "not_superuser": "Nur Plattform-Superuser dürfen WinProx OPS nutzen."
     },
     "menu": {
-        "title": "Aufgabe wählen",
-        "back": "Zurück zum Menü",
         "register": "Gerät registrieren",
         "register_hint": "Foto oder Seriennummer der Aufkleber tippen.",
         "devices": "Gerät suchen",
@@ -100,7 +98,6 @@
         "users": "Benutzer / Passwort",
         "users_hint": "Benutzer finden und neues Passwort setzen.",
         "help": "Hilfe-Fragen",
-        "help_hint": "Weitergeleitete Assistentenfragen beantworten.",
-        "help_open": ":count offen"
+        "help_hint": "Weitergeleitete Assistentenfragen beantworten."
     }
 }

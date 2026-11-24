@@ -8990,38 +8990,6 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
     text-align: center;
 }
 
-/* WinProx OPS gsm-portaal — menu + logo. */
-.wp-ops-logo {
-    max-width: 100px;
-    max-height: 100px;
-    object-fit: contain;
-}
-
-.wp-ops-menu {
-    gap: 0.65rem;
-}
-
-.wp-ops-menu__btn {
-    width: 100%;
-    height: auto;
-    min-height: var(--wp-btn-height);
-    padding: 0.85rem 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-    text-align: left;
-    white-space: normal;
-}
-
-.wp-ops-menu__label {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.4rem;
-    font-weight: 700;
-}
-
 /* Klokscherm-koppelcode (time.clock-displays) — groot intikbaar op het scherm. */
 .wp-display-code {
     margin: 0;

@@ -91,8 +91,6 @@
         "not_superuser": "Solo los superusuarios de plataforma pueden usar WinProx OPS."
     },
     "menu": {
-        "title": "Elige una tarea",
-        "back": "Volver al menú",
         "register": "Registrar dispositivo",
         "register_hint": "Foto o escribe el número de serie de la pegatina.",
         "devices": "Buscar dispositivo",
@@ -100,7 +98,6 @@
         "users": "Usuario / contraseña",
         "users_hint": "Busca un usuario y asigna una nueva contraseña.",
         "help": "Preguntas de ayuda",
-        "help_hint": "Responder preguntas enviadas al soporte.",
-        "help_open": ":count abiertas"
+        "help_hint": "Responder preguntas enviadas al soporte."
     }
 }

@@ -1,5 +1,11 @@
+<x-wp-page-head-title
+    variant="portal"
+    icon="search"
+    :title="__('ops.menu.devices')"
+    :subtitle="__('ops.menu.devices_hint')"
+/>
+
 <div class="wp-card wp-card-pad wp-stack">
-    <p class="wp-subhead">{{ __('ops.menu.devices') }}</p>
     <label class="wp-label" for="ops-device-search">{{ __('ops.devices.search') }}</label>
     <input
         id="ops-device-search"

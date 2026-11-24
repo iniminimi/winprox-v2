@@ -91,8 +91,6 @@
         "not_superuser": "Only platform superusers may use WinProx OPS."
     },
     "menu": {
-        "title": "Choose a task",
-        "back": "Back to menu",
         "register": "Register device",
         "register_hint": "Photo or type the sticker serial number.",
         "devices": "Find device",
@@ -100,7 +98,6 @@
         "users": "User / password",
         "users_hint": "Find a user and set a new password.",
         "help": "Help questions",
-        "help_hint": "Answer escalated assistant questions.",
-        "help_open": ":count open"
+        "help_hint": "Answer escalated assistant questions."
     }
 }

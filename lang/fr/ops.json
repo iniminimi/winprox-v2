@@ -91,8 +91,6 @@
         "not_superuser": "Seuls les superusers plateforme peuvent utiliser WinProx OPS."
     },
     "menu": {
-        "title": "Choisir une tâche",
-        "back": "Retour au menu",
         "register": "Enregistrer un appareil",
         "register_hint": "Photo ou saisie du numéro de série.",
         "devices": "Rechercher un appareil",
@@ -100,7 +98,6 @@
         "users": "Utilisateur / mot de passe",
         "users_hint": "Trouver un utilisateur et définir un nouveau mot de passe.",
         "help": "Questions d’aide",
-        "help_hint": "Répondre aux questions transmises à l’assistance.",
-        "help_open": ":count ouvertes"
+        "help_hint": "Répondre aux questions transmises à l’assistance."
     }
 }

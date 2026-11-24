@@ -91,8 +91,6 @@
         "not_superuser": "Solo i superuser di piattaforma possono usare WinProx OPS."
     },
     "menu": {
-        "title": "Scegli un’attività",
-        "back": "Torna al menu",
         "register": "Registra dispositivo",
         "register_hint": "Foto o digita il numero di serie dell’adesivo.",
         "devices": "Cerca dispositivo",
@@ -100,7 +98,6 @@
         "users": "Utente / password",
         "users_hint": "Trova un utente e imposta una nuova password.",
         "help": "Domande di aiuto",
-        "help_hint": "Rispondi alle domande inoltrate all’assistenza.",
-        "help_open": ":count aperte"
+        "help_hint": "Rispondi alle domande inoltrate all’assistenza."
     }
 }

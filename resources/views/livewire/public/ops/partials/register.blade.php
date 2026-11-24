@@ -1,7 +1,11 @@
-<div class="wp-card wp-card-pad wp-stack">
-    <p class="wp-subhead">{{ __('ops.menu.register') }}</p>
-    <p class="wp-muted wp-text-sm">{{ __('ops.devices.register_hint') }}</p>
+<x-wp-page-head-title
+    variant="portal"
+    icon="plus"
+    :title="__('ops.menu.register')"
+    :subtitle="__('ops.devices.register_hint')"
+/>
 
+<div class="wp-card wp-card-pad wp-stack">
     <div
         wire:ignore
         x-data="wpOpsBarcodeScanner({

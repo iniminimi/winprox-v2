@@ -1,7 +1,11 @@
-<div class="wp-card wp-card-pad wp-stack">
-    <p class="wp-subhead">{{ __('ops.menu.users') }}</p>
-    <p class="wp-muted wp-text-sm">{{ __('platform.users.subtitle') }}</p>
+<x-wp-page-head-title
+    variant="portal"
+    icon="team"
+    :title="__('ops.menu.users')"
+    :subtitle="__('platform.users.subtitle')"
+/>
 
+<div class="wp-card wp-card-pad wp-stack">
     <label class="wp-label" for="ops-user-search">{{ __('ops.devices.search') }}</label>
     <input
         id="ops-user-search"
