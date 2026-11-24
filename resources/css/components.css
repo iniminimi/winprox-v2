@@ -9387,6 +9387,8 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
     display: flex;
     flex-direction: column;
     gap: 0.85rem;
+    width: 100%;
+    max-width: 28rem;
 }
 
 .wp-sense-card__head {
