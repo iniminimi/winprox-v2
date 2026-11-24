@@ -20,7 +20,7 @@
                 },
                 {
                     "label": "Resumen",
-                    "text": "Bajo el título Panel encuentra tarjetas con conteos y puntos de atención actuales.<br><br>Ejemplos:<br>• Avisos abiertos.<br>• Tareas abiertas.<br>• Quién está presente ahora, si Time está activo.<br><br>Algunas tarjetas solo aparecen cuando hay algo que hacer — por ejemplo avisos por revisar, puntos de atención en Time, un nuevo ejecutor por comprobar, o solicitudes abiertas o alarmas IoT.<br><br>Pulse una tarjeta para ir directamente a la pantalla correspondiente.<br><br>Las solicitudes abiertas de vacaciones, compensación, enfermedad u Otro aparecen como tarjeta aparte. Ve el número por tipo. Pulse para ir a Time → Solicitudes."
+                    "text": "Bajo el título Panel encuentra tarjetas con conteos y puntos de atención actuales.<br><br>Ejemplos:<br>• Avisos abiertos.<br>• Tareas abiertas.<br>• Quién está presente ahora, si Time está activo.<br><br>Algunas tarjetas solo aparecen cuando hay algo que hacer — por ejemplo avisos por revisar, puntos de atención en Time, un nuevo ejecutor por comprobar, o solicitudes abiertas o alarmas IoT.<br><br>Pulse una tarjeta para ir directamente a la pantalla correspondiente.<br><br>Las solicitudes abiertas de vacaciones, compensación, enfermedad u Otro aparecen como tarjeta aparte. Ve el número por tipo. Pulse para ir a Time → Solicitudes.<br><br>Si hay fotos de una ausencia con más de 5 meses, aparece una tarjeta. Se borrarán en un mes. Haga clic para verlas en Solicitudes y guardar una copia."
                 },
                 {
                     "label": "WinProx en su escritorio",
@@ -1356,7 +1356,7 @@
                 },
                 {
                     "label": "Vacaciones / Ausencia",
-                    "text": "Tras identificarte ves el mosaico Vacaciones / Ausencia. Solicita vacaciones, recup, baja u (si está configurado) un tipo en Otro (desde–hasta; en Otro primero el tipo; nota opcional, máx. 31 días, no en el pasado). Las solicitudes abiertas que se solapan se rechazan. Debajo del formulario están tus propias solicitudes: abiertas o aprobadas (aún no empezadas) puedes retirarlas; si estaba aprobada, el horario vuelve. La gestión decide en Time → Solicitudes; rechazar exige un motivo, aprobar no. No se envía correo. Arriba ves el saldo de vacaciones de este año del derecho, y del año siguiente si hay derecho, más las horas extra. Este año hasta hoy: tiempo trabajado menos el horario publicado, menos recup en el horario o como solicitud abierta. No es nómina."
+                    "text": "Tras identificarte ves el mosaico Vacaciones / Ausencia. Solicita vacaciones, recup, baja u (si está configurado) un tipo en Otro (desde–hasta; en Otro primero el tipo; nota opcional, máx. 31 días, no en el pasado). Las solicitudes abiertas que se solapan se rechazan. Debajo del formulario están tus propias solicitudes: abiertas o aprobadas (aún no empezadas) puedes retirarlas; si estaba aprobada, el horario vuelve. La gestión decide en Time → Solicitudes; rechazar exige un motivo, aprobar no. No se envía correo. Arriba ves el saldo de vacaciones de este año del derecho, y del año siguiente si hay derecho, más las horas extra. Este año hasta hoy: tiempo trabajado menos el horario publicado, menos recup en el horario o como solicitud abierta. No es nómina. Puede adjuntar una foto de un justificante, hasta cuatro. WinProx la guarda 6 meses y después la borra. Guarde una copia si la necesita más tiempo."
                 },
                 {
                     "label": "Documentos y avisos nuevos",
@@ -2189,7 +2189,7 @@
                 },
                 {
                     "label": "Solicitudes de los operarios",
-                    "text": "Los operarios pueden solicitar ellos mismos vacaciones, descanso compensatorio, baja o una ausencia del tipo Otro en Clock Point, en la ficha <strong>Vacaciones / Ausencia</strong>.<br><br>Usted trata esas solicitudes en <strong>Time → Solicitudes</strong>.<br><br>También una baja por enfermedad debe aprobarla allí.<br><br>Baja y Otro no influyen en el saldo de vacaciones ni en el de descanso compensatorio.",
+                    "text": "Los operarios pueden solicitar ellos mismos vacaciones, descanso compensatorio, baja o una ausencia del tipo Otro en Clock Point, en la ficha <strong>Vacaciones / Ausencia</strong>.<br><br>Usted trata esas solicitudes en <strong>Time → Solicitudes</strong>.<br><br>También una baja por enfermedad debe aprobarla allí.<br><br>Baja y Otro no influyen en el saldo de vacaciones ni en el de descanso compensatorio.<br><br>El operario puede adjuntar una foto de un justificante. Permanece 6 meses con la solicitud. Después WinProx la borra. Guarde una copia si la necesita más tiempo.",
                     "nested": true
                 },
                 {
@@ -2307,7 +2307,7 @@
                 },
                 {
                     "label": "La lista",
-                    "text": "Arriba puede filtrar las solicitudes por <strong>Todas</strong>, <strong>Abierta</strong>, <strong>Aprobada</strong>, <strong>Rechazada</strong> o <strong>Retirada</strong>.<br><br>En cada solicitud ve el operario, el tipo de ausencia, los días solicitados y, si la hay, una nota.<br><br>Después de una decisión también ve quién aprobó o rechazó la solicitud."
+                    "text": "Arriba puede filtrar las solicitudes por <strong>Todas</strong>, <strong>Abierta</strong>, <strong>Aprobada</strong>, <strong>Rechazada</strong> o <strong>Retirada</strong>.<br><br>En cada solicitud ve el operario, el tipo de ausencia, los días solicitados y, si la hay, una nota.<br><br>Después de una decisión también ve quién aprobó o rechazó la solicitud.<br><br>Si hay una foto, la ve con la solicitud. WinProx guarda las fotos 6 meses y después las borra. A partir de 5 meses, la pantalla de inicio avisa. Guarde una copia si las necesita más tiempo."
                 },
                 {
                     "label": "Revisar una solicitud",

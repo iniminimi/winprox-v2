@@ -20,7 +20,7 @@
                 },
                 {
                     "label": "Aperçu",
-                    "text": "Sous le titre Tableau de bord, vous trouvez des cartes avec des compteurs et points d’attention actuels.<br><br>Exemples :<br>• Signalements ouverts.<br>• Tâches ouvertes.<br>• Qui est présent maintenant, si Time est actif.<br><br>Certaines cartes n’apparaissent que lorsqu’il y a quelque chose à faire — par exemple des signalements à examiner, des points d’attention dans Time, un nouvel exécutant à contrôler, ou des demandes ouvertes ou alarmes IoT.<br><br>Cliquez sur une carte pour aller directement à l’écran correspondant.<br><br>Les demandes ouvertes de congé, récupération, maladie ou Autre apparaissent comme carte séparée. Vous voyez le nombre par type. Cliquez pour aller dans Time → Demandes."
+                    "text": "Sous le titre Tableau de bord, vous trouvez des cartes avec des compteurs et points d’attention actuels.<br><br>Exemples :<br>• Signalements ouverts.<br>• Tâches ouvertes.<br>• Qui est présent maintenant, si Time est actif.<br><br>Certaines cartes n’apparaissent que lorsqu’il y a quelque chose à faire — par exemple des signalements à examiner, des points d’attention dans Time, un nouvel exécutant à contrôler, ou des demandes ouvertes ou alarmes IoT.<br><br>Cliquez sur une carte pour aller directement à l’écran correspondant.<br><br>Les demandes ouvertes de congé, récupération, maladie ou Autre apparaissent comme carte séparée. Vous voyez le nombre par type. Cliquez pour aller dans Time → Demandes.<br><br>Si des photos d’une absence ont plus de 5 mois, une carte apparaît. Elles seront effacées dans un mois. Cliquez dessus pour les voir sous Demandes et en garder une copie."
                 },
                 {
                     "label": "WinProx sur votre bureau",
@@ -1364,7 +1364,7 @@
                 },
                 {
                     "label": "Congé / Absence",
-                    "text": "Après connexion, vous voyez la tuile Congé / Absence. Demandez un congé, une récup, une maladie ou (si configuré) un type Autre (du–au ; pour Autre d’abord le type ; note facultative, 31 jours max., pas dans le passé). Les demandes ouvertes qui se chevauchent sont refusées. Vos demandes sont sous le formulaire : vous pouvez retirer une demande ouverte ou approuvée (pas encore commencée) ; un congé approuvé rétablit le planning. La gestion décide sous Time → Demandes ; refuser exige un motif, approuver non. Aucun e-mail n’est envoyé. En haut figurent le congé restant de cette année sur le droit, et de l’année suivante s’il y a un droit, plus les heures supplémentaires. Cette année jusqu’à aujourd’hui : temps travaillé moins le planning publié, moins la récup déjà au planning ou en demande ouverte. Pas de salaire."
+                    "text": "Après connexion, vous voyez la tuile Congé / Absence. Demandez un congé, une récup, une maladie ou (si configuré) un type Autre (du–au ; pour Autre d’abord le type ; note facultative, 31 jours max., pas dans le passé). Les demandes ouvertes qui se chevauchent sont refusées. Vos demandes sont sous le formulaire : vous pouvez retirer une demande ouverte ou approuvée (pas encore commencée) ; un congé approuvé rétablit le planning. La gestion décide sous Time → Demandes ; refuser exige un motif, approuver non. Aucun e-mail n’est envoyé. En haut figurent le congé restant de cette année sur le droit, et de l’année suivante s’il y a un droit, plus les heures supplémentaires. Cette année jusqu’à aujourd’hui : temps travaillé moins le planning publié, moins la récup déjà au planning ou en demande ouverte. Pas de salaire. Vous pouvez joindre une photo d’un document, quatre au maximum. WinProx la garde 6 mois, puis l’efface. Gardez une copie si vous en avez besoin plus longtemps."
                 }
             ]
         },
@@ -2193,7 +2193,7 @@
                 },
                 {
                     "label": "Demandes des intervenants",
-                    "text": "Les intervenants peuvent demander eux-mêmes un congé, une récup, une maladie ou une absence de type Autre sur Clock Point, sur la tuile <strong>Congé / Absence</strong>.<br><br>Vous traitez ces demandes sous <strong>Time → Demandes</strong>.<br><br>Une déclaration de maladie doit aussi y être approuvée.<br><br>Maladie et Autre n’ont pas d’effet sur le solde de congé ni sur le solde de récup.",
+                    "text": "Les intervenants peuvent demander eux-mêmes un congé, une récup, une maladie ou une absence de type Autre sur Clock Point, sur la tuile <strong>Congé / Absence</strong>.<br><br>Vous traitez ces demandes sous <strong>Time → Demandes</strong>.<br><br>Une déclaration de maladie doit aussi y être approuvée.<br><br>Maladie et Autre n’ont pas d’effet sur le solde de congé ni sur le solde de récup.<br><br>L’intervenant peut joindre une photo d’un document. Elle reste 6 mois avec la demande. Ensuite WinProx l’efface. Gardez une copie si vous en avez besoin plus longtemps.",
                     "nested": true
                 },
                 {
@@ -2311,7 +2311,7 @@
                 },
                 {
                     "label": "La liste",
-                    "text": "En haut, vous pouvez filtrer les demandes sur <strong>Tous</strong>, <strong>Ouvert</strong>, <strong>Approuvé</strong>, <strong>Refusé</strong> ou <strong>Retiré</strong>.<br><br>Pour chaque demande, vous voyez l’intervenant, le type d’absence, les jours demandés et, le cas échéant, une note.<br><br>Après une décision, vous voyez aussi qui a approuvé ou refusé la demande."
+                    "text": "En haut, vous pouvez filtrer les demandes sur <strong>Tous</strong>, <strong>Ouvert</strong>, <strong>Approuvé</strong>, <strong>Refusé</strong> ou <strong>Retiré</strong>.<br><br>Pour chaque demande, vous voyez l’intervenant, le type d’absence, les jours demandés et, le cas échéant, une note.<br><br>Après une décision, vous voyez aussi qui a approuvé ou refusé la demande.<br><br>S’il y a une photo, vous la voyez avec la demande. WinProx garde les photos 6 mois, puis les efface. À partir de 5 mois, l’écran d’accueil prévient. Gardez une copie si vous en avez besoin plus longtemps."
                 },
                 {
                     "label": "Traiter une demande",

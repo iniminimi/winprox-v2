@@ -478,7 +478,8 @@
                     "Optional email confirmation for a QR issue: an unconfirmed draft is deleted automatically, including photos. No user account.",
                     "A planned roster is optional. Restoring a previous version is limited to people who may edit the roster, and only for a limited time.",
                     "Optional presence reporting to the Belgian social security office (CIAO). The national register number is stored encrypted. The customer enters the enterprise number. Successful submissions are deleted after a limited period. An export without the national register number is available.",
-                    "Technical error logs are kept on the server only, for at most 14 days."
+                    "Technical error logs are kept on the server only, for at most 14 days.",
+                    "A photo with an absence request is visible only to the worker and to whoever handles the request. WinProx keeps it for 6 months and then deletes it. From 5 months the home screen warns you. Keep your own copy if you need it longer."
                 ],
                 "key": "privacy"
             },

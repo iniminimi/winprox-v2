@@ -478,7 +478,8 @@
                     "Optionele e-mailbevestiging bij een QR-melding: een onbevestigd concept wordt automatisch verwijderd, inclusief foto’s. Geen gebruikersaccount.",
                     "Een gepland uurrooster is optioneel. Een vorige versie terugzetten kan alleen wie het rooster mag bewerken, en alleen gedurende een beperkte tijd.",
                     "Optionele doorgifte van aanwezigheid naar de Belgische RSZ (CIAO). Het rijksregisternummer wordt versleuteld bewaard. De klant vult het ondernemingsnummer in. Geslaagde doorgiftes worden na een beperkte termijn verwijderd. Een export zonder rijksregisternummer is beschikbaar.",
-                    "Technische foutlogs staan alleen op de server en worden maximaal 14 dagen bewaard."
+                    "Technische foutlogs staan alleen op de server en worden maximaal 14 dagen bewaard.",
+                    "Een foto bij een afwezigheidsaanvraag is alleen zichtbaar voor de uitvoerder en voor wie de aanvraag behandelt. WinProx bewaart ze 6 maanden en wist ze daarna. Vanaf 5 maanden waarschuwt het beginscherm. Bewaar zelf een kopie als u ze langer nodig hebt."
                 ],
                 "key": "privacy"
             },

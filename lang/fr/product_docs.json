@@ -478,7 +478,8 @@
                     "Confirmation e-mail optionnelle pour un signalement QR : un brouillon non confirmé est supprimé automatiquement, photos comprises. Pas de compte utilisateur.",
                     "Un horaire planifié est optionnel. Revenir à une version précédente est réservé à qui peut modifier l’horaire, et seulement pendant une durée limitée.",
                     "Transmission optionnelle des présences vers l’ONSS belge (CIAO). Le numéro de registre national est stocké chiffré. Le client indique le numéro d’entreprise. Les envois réussis sont supprimés après une durée limitée. Un export sans numéro de registre national est disponible.",
-                    "Les journaux d'erreurs techniques restent uniquement sur le serveur et sont conservés 14 jours au maximum."
+                    "Les journaux d'erreurs techniques restent uniquement sur le serveur et sont conservés 14 jours au maximum.",
+                    "Une photo jointe à une demande d’absence n’est visible que par l’intervenant et par qui traite la demande. WinProx la garde 6 mois, puis l’efface. À partir de 5 mois, l’écran d’accueil prévient. Gardez une copie si vous en avez besoin plus longtemps."
                 ],
                 "key": "privacy"
             },

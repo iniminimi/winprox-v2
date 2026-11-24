@@ -478,7 +478,8 @@
                     "Confirmación de correo opcional en un aviso QR: un borrador no confirmado se elimina solo, fotos incluidas. Sin cuenta de usuario.",
                     "Un horario planificado es opcional. Restaurar una versión anterior solo puede quien puede editar el horario, y solo durante un tiempo limitado.",
                     "Envío opcional de presencia a la seguridad social belga (CIAO). El número de registro nacional se guarda cifrado. El cliente indica el número de empresa. Los envíos correctos se eliminan tras un plazo limitado. Hay una exportación sin el número de registro nacional.",
-                    "Los registros técnicos de errores se guardan solo en el servidor y durante un máximo de 14 días."
+                    "Los registros técnicos de errores se guardan solo en el servidor y durante un máximo de 14 días.",
+                    "Una foto con una solicitud de ausencia solo la ve el operario y quien trata la solicitud. WinProx la guarda 6 meses y después la borra. A partir de 5 meses, la pantalla de inicio avisa. Guarde una copia si la necesita más tiempo."
                 ],
                 "key": "privacy"
             },

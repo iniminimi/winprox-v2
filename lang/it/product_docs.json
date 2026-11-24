@@ -478,7 +478,8 @@
                     "Conferma e-mail opzionale per una segnalazione QR: una bozza non confermata viene eliminata in automatico, foto comprese. Nessun account utente.",
                     "Un turno pianificato è opzionale. Ripristinare una versione precedente può solo chi può modificare il turno, e solo per un tempo limitato.",
                     "Invio opzionale delle presenze all’ente previdenziale belga (CIAO). Il numero di registro nazionale è conservato cifrato. Il cliente indica il numero d’impresa. Gli invii riusciti sono eliminati dopo un periodo limitato. È disponibile un export senza il numero di registro nazionale.",
-                    "I log tecnici degli errori restano solo sul server e sono conservati al massimo 14 giorni."
+                    "I log tecnici degli errori restano solo sul server e sono conservati al massimo 14 giorni.",
+                    "Una foto con una richiesta di assenza è visibile solo all’operatore e a chi tratta la richiesta. WinProx la conserva 6 mesi e poi la cancella. Da 5 mesi la schermata iniziale avvisa. Conservi una copia se le serve più a lungo."
                 ],
                 "key": "privacy"
             },

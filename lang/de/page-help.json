@@ -20,7 +20,7 @@
                 },
                 {
                     "label": "Übersicht",
-                    "text": "Unter dem Titel Dashboard finden Sie Karten mit aktuellen Zählungen und Aufmerksamkeitspunkten.<br><br>Beispiele sind:<br>• Offene Meldungen.<br>• Offene Aufgaben.<br>• Wer gerade anwesend ist, wenn Time aktiv ist.<br><br>Manche Karten erscheinen nur, wenn etwas zu tun ist — zum Beispiel wenn Meldungen geprüft werden müssen, es Aufmerksamkeitspunkte in Time gibt, ein neuer Ausführender kontrolliert werden muss oder offene Anträge bzw. IoT-Alarme vorliegen.<br><br>Klicken Sie auf eine Karte, um direkt zum passenden Bildschirm zu gehen.<br><br>Offene Anträge für Urlaub, Freizeitausgleich, Krankheit oder Andere erscheinen als eigene Karte. Sie sehen die Anzahl pro Art. Klicken Sie darauf, um zu Time → Anträge zu gehen."
+                    "text": "Unter dem Titel Dashboard finden Sie Karten mit aktuellen Zählungen und Aufmerksamkeitspunkten.<br><br>Beispiele sind:<br>• Offene Meldungen.<br>• Offene Aufgaben.<br>• Wer gerade anwesend ist, wenn Time aktiv ist.<br><br>Manche Karten erscheinen nur, wenn etwas zu tun ist — zum Beispiel wenn Meldungen geprüft werden müssen, es Aufmerksamkeitspunkte in Time gibt, ein neuer Ausführender kontrolliert werden muss oder offene Anträge bzw. IoT-Alarme vorliegen.<br><br>Klicken Sie auf eine Karte, um direkt zum passenden Bildschirm zu gehen.<br><br>Offene Anträge für Urlaub, Freizeitausgleich, Krankheit oder Andere erscheinen als eigene Karte. Sie sehen die Anzahl pro Art. Klicken Sie darauf, um zu Time → Anträge zu gehen.<br><br>Sind Fotos zu einer Abwesenheit älter als 5 Monate, erscheint eine Karte. Innerhalb eines Monats werden sie gelöscht. Klicken Sie darauf, um sie unter Anträge anzusehen und selbst eine Kopie zu behalten."
                 },
                 {
                     "label": "WinProx auf Ihrem Desktop",
@@ -1356,7 +1356,7 @@
                 },
                 {
                     "label": "Urlaub / Abwesenheit",
-                    "text": "Nach der Anmeldung sehen Sie die Kachel Urlaub / Abwesenheit. Beantragen Sie Urlaub, Ausgleich, Krankheit oder (falls eingerichtet) einen Typ unter Sonstige (von–bis; bei Sonstige zuerst den Typ; optionaler Hinweis, max. 31 Tage, nicht in der Vergangenheit). Überlappende offene Anträge werden abgelehnt. Unter dem Formular stehen Ihre eigenen Anträge: offen oder genehmigt (noch nicht begonnen) können Sie zurückziehen; bei Genehmigung kommt der Dienstplan zurück. Die Verwaltung entscheidet unter Time → Anträge; Ablehnen braucht einen Grund, Genehmigen nicht. Keine E-Mail. Oben sehen Sie den restlichen Urlaub dieses Jahres vom Recht, und vom nächsten Jahr wenn ein Recht gesetzt ist, plus Überstunden. Dieses Jahr bis heute: gearbeitete Zeit minus veröffentlichter Plan, minus Ausgleich auf dem Plan oder als offener Antrag. Kein Lohn."
+                    "text": "Nach der Anmeldung sehen Sie die Kachel Urlaub / Abwesenheit. Beantragen Sie Urlaub, Ausgleich, Krankheit oder (falls eingerichtet) einen Typ unter Sonstige (von–bis; bei Sonstige zuerst den Typ; optionaler Hinweis, max. 31 Tage, nicht in der Vergangenheit). Überlappende offene Anträge werden abgelehnt. Unter dem Formular stehen Ihre eigenen Anträge: offen oder genehmigt (noch nicht begonnen) können Sie zurückziehen; bei Genehmigung kommt der Dienstplan zurück. Die Verwaltung entscheidet unter Time → Anträge; Ablehnen braucht einen Grund, Genehmigen nicht. Keine E-Mail. Oben sehen Sie den restlichen Urlaub dieses Jahres vom Recht, und vom nächsten Jahr wenn ein Recht gesetzt ist, plus Überstunden. Dieses Jahr bis heute: gearbeitete Zeit minus veröffentlichter Plan, minus Ausgleich auf dem Plan oder als offener Antrag. Kein Lohn. Sie können ein Foto eines Scheins mitschicken, höchstens vier. WinProx bewahrt es 6 Monate auf und löscht es danach. Bewahren Sie selbst eine Kopie auf, wenn Sie es länger brauchen."
                 },
                 {
                     "label": "Neue Dokumente und Mitteilungen",
@@ -2189,7 +2189,7 @@
                 },
                 {
                     "label": "Anträge der Personen",
-                    "text": "Die Personen können selbst Urlaub, Ausgleich, Krankheit oder eine Abwesenheit der Art Sonstige über Clock Point beantragen, auf der Kachel <strong>Urlaub / Abwesenheit</strong>.<br><br>Sie bearbeiten diese Anträge unter <strong>Time → Anträge</strong>.<br><br>Auch eine Krankmeldung müssen Sie dort genehmigen.<br><br>Krank und Sonstige haben keinen Einfluss auf das Urlaubssaldo oder das Ausgleichssaldo.",
+                    "text": "Die Personen können selbst Urlaub, Ausgleich, Krankheit oder eine Abwesenheit der Art Sonstige über Clock Point beantragen, auf der Kachel <strong>Urlaub / Abwesenheit</strong>.<br><br>Sie bearbeiten diese Anträge unter <strong>Time → Anträge</strong>.<br><br>Auch eine Krankmeldung müssen Sie dort genehmigen.<br><br>Krank und Sonstige haben keinen Einfluss auf das Urlaubssaldo oder das Ausgleichssaldo.<br><br>Die Person kann ein Foto eines Scheins mitschicken. Es bleibt 6 Monate beim Antrag. Danach löscht WinProx es. Bewahren Sie selbst eine Kopie auf, wenn Sie es länger brauchen.",
                     "nested": true
                 },
                 {
@@ -2307,7 +2307,7 @@
                 },
                 {
                     "label": "Die Liste",
-                    "text": "Oben können Sie die Anträge filtern nach <strong>Alle</strong>, <strong>Offen</strong>, <strong>Genehmigt</strong>, <strong>Abgelehnt</strong> oder <strong>Zurückgezogen</strong>.<br><br>Je Antrag sehen Sie die Person, die Art der Abwesenheit, die beantragten Tage und gegebenenfalls eine Erläuterung.<br><br>Nach einer Entscheidung sehen Sie auch, wer den Antrag genehmigt oder abgelehnt hat."
+                    "text": "Oben können Sie die Anträge filtern nach <strong>Alle</strong>, <strong>Offen</strong>, <strong>Genehmigt</strong>, <strong>Abgelehnt</strong> oder <strong>Zurückgezogen</strong>.<br><br>Je Antrag sehen Sie die Person, die Art der Abwesenheit, die beantragten Tage und gegebenenfalls eine Erläuterung.<br><br>Nach einer Entscheidung sehen Sie auch, wer den Antrag genehmigt oder abgelehnt hat.<br><br>Liegt ein Foto bei, sehen Sie es beim Antrag. WinProx bewahrt Fotos 6 Monate auf und löscht sie danach. Ab 5 Monaten warnt der Startbildschirm. Bewahren Sie selbst eine Kopie auf, wenn Sie sie länger brauchen."
                 },
                 {
                     "label": "Einen Antrag prüfen",

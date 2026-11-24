@@ -20,7 +20,7 @@
                 },
                 {
                     "label": "Overview",
-                    "text": "Under the Dashboard title you find cards with current counts and attention points.<br><br>Examples are:<br>• Open reports.<br>• Open tasks.<br>• Who is present now, if Time is active.<br><br>Some cards appear only when there is something to do — for example reports to review, attention points in Time, a new worker to check, or open requests or IoT alarms.<br><br>Click a card to go straight to the matching screen.<br><br>Open leave, time-off-in-lieu, sick or Other requests appear as a separate card. You see the count per type. Click it to go to Time → Requests."
+                    "text": "Under the Dashboard title you find cards with current counts and attention points.<br><br>Examples are:<br>• Open reports.<br>• Open tasks.<br>• Who is present now, if Time is active.<br><br>Some cards appear only when there is something to do — for example reports to review, attention points in Time, a new worker to check, or open requests or IoT alarms.<br><br>Click a card to go straight to the matching screen.<br><br>Open leave, time-off-in-lieu, sick or Other requests appear as a separate card. You see the count per type. Click it to go to Time → Requests.<br><br>If photos with an absence are older than 5 months, a card appears. They will be deleted within a month. Click it to view them under Requests and keep your own copy."
                 },
                 {
                     "label": "WinProx on your desktop",
@@ -1360,7 +1360,7 @@
                 },
                 {
                     "label": "Leave / Absence",
-                    "text": "After sign-in you see the Leave / Absence tile. Choose the absence by name (e.g. Leave, Sick, Personal day) — types come from your organisation’s shift types. The list is Leave, Comp time, Sick, then Other (by name). Then from–to (Other: one day), optional note, max. 31 days, not in the past. Overlapping open requests are refused. Your own requests sit below the form: you can withdraw an open or approved request that has not started; approved leave restores the roster. Staff decide under Time → Requests; reject needs a reason, approve does not. No email is sent. At the top you see leave left this year of the entitlement, and next year when an entitlement is set, plus overtime. This year up to today: time worked minus the published roster, minus time off already on the roster or in an open request. Not pay."
+                    "text": "After sign-in you see the Leave / Absence tile. Choose the absence by name (e.g. Leave, Sick, Personal day) — types come from your organisation’s shift types. The list is Leave, Comp time, Sick, then Other (by name). Then from–to (Other: one day), optional note, max. 31 days, not in the past. Overlapping open requests are refused. Your own requests sit below the form: you can withdraw an open or approved request that has not started; approved leave restores the roster. Staff decide under Time → Requests; reject needs a reason, approve does not. No email is sent. At the top you see leave left this year of the entitlement, and next year when an entitlement is set, plus overtime. This year up to today: time worked minus the published roster, minus time off already on the roster or in an open request. Not pay. You can add a photo of a note, up to four. WinProx keeps it for 6 months and then deletes it. Keep your own copy if you need it longer."
                 }
             ]
         },
@@ -2189,7 +2189,7 @@
                 },
                 {
                     "label": "Requests from workers",
-                    "text": "Workers can request leave, time off in lieu, sick leave or an Other absence themselves on Clock Point, on the <strong>Leave / Absence</strong> tile.<br><br>You handle these requests under <strong>Time → Requests</strong>.<br><br>A sick report must be approved there as well.<br><br>Sick and Other do not affect the leave balance or the time-off-in-lieu balance.",
+                    "text": "Workers can request leave, time off in lieu, sick leave or an Other absence themselves on Clock Point, on the <strong>Leave / Absence</strong> tile.<br><br>You handle these requests under <strong>Time → Requests</strong>.<br><br>A sick report must be approved there as well.<br><br>Sick and Other do not affect the leave balance or the time-off-in-lieu balance.<br><br>The worker can add a photo of a note. It stays with the request for 6 months. Then WinProx deletes it. Keep your own copy if you need it longer.",
                     "nested": true
                 },
                 {
@@ -2307,7 +2307,7 @@
                 },
                 {
                     "label": "The list",
-                    "text": "At the top you can filter the requests by <strong>All</strong>, <strong>Open</strong>, <strong>Approved</strong>, <strong>Rejected</strong> or <strong>Withdrawn</strong>.<br><br>For each request you see the worker, the type of absence, the requested days and, if there is one, a note.<br><br>After a decision you also see who approved or rejected the request."
+                    "text": "At the top you can filter the requests by <strong>All</strong>, <strong>Open</strong>, <strong>Approved</strong>, <strong>Rejected</strong> or <strong>Withdrawn</strong>.<br><br>For each request you see the worker, the type of absence, the requested days and, if there is one, a note.<br><br>After a decision you also see who approved or rejected the request.<br><br>If there is a photo, you see it with the request. WinProx keeps photos for 6 months and then deletes them. From 5 months the home screen warns you. Keep your own copy if you need them longer."
                 },
                 {
                     "label": "Reviewing a request",
