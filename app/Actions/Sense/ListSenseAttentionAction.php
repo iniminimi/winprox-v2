@@ -29,16 +29,23 @@ class ListSenseAttentionAction
         foreach ($points as $point) {
             $room = $this->placeName($point);
             foreach (SenseBands::attentions($point) as $row) {
+                $sentence = SenseBands::sentence(
+                    $room,
+                    $row['metric'],
+                    $row['direction'],
+                    $row['value'],
+                    $row['limit'],
+                    $row['recorded_at'],
+                );
+                $prefix = $room.' · ';
+                $detail = str_starts_with($sentence, $prefix)
+                    ? mb_substr($sentence, mb_strlen($prefix))
+                    : $sentence;
+
                 $lines[] = new SenseAttentionLine(
                     sensePointId: (int) $point->id,
-                    sentence: SenseBands::sentence(
-                        $room,
-                        $row['metric'],
-                        $row['direction'],
-                        $row['value'],
-                        $row['limit'],
-                        $row['recorded_at'],
-                    ),
+                    room: $room,
+                    detail: $detail,
                     url: $this->settingsUrl($point),
                 );
             }

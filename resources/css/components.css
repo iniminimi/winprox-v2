@@ -1156,12 +1156,14 @@ button.wp-kpi {
 .wp-kpi--time_attention .wp-kpi-kicker,
 .wp-kpi--pending_absence .wp-kpi-kicker,
 .wp-kpi--iot_alarms .wp-kpi-kicker,
-.wp-kpi--staffing_shortfalls .wp-kpi-kicker {
+.wp-kpi--staffing_shortfalls .wp-kpi-kicker,
+.wp-kpi--sense .wp-kpi-kicker {
     color: var(--wp-warning-text);
 }
 
-/* Bezettingstekort: duidelijke amber rand zodat de tegel opvalt. */
-.wp-kpi--staffing_shortfalls.wp-kpi--alert {
+/* Bezettingstekort en Sense: duidelijke amber rand zodat de tegel opvalt. */
+.wp-kpi--staffing_shortfalls.wp-kpi--alert,
+.wp-kpi--sense.wp-kpi--alert {
     border-color: var(--wp-warning);
     box-shadow: inset 0 0 0 1px var(--wp-warning);
 }
@@ -1274,7 +1276,8 @@ button.wp-kpi {
 .wp-kpi--time_attention .wp-kpi-icon,
 .wp-kpi--pending_absence .wp-kpi-icon,
 .wp-kpi--iot_alarms .wp-kpi-icon,
-.wp-kpi--staffing_shortfalls .wp-kpi-icon {
+.wp-kpi--staffing_shortfalls .wp-kpi-icon,
+.wp-kpi--sense .wp-kpi-icon {
     background-color: var(--wp-warning-soft);
     border-color: var(--wp-warning-border);
     color: var(--wp-warning-text);
@@ -9614,20 +9617,5 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
 
 .wp-sense-tools {
     align-items: center;
-}
-
-.wp-sense-attention {
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-}
-
-.wp-sense-attention a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.wp-sense-attention a:hover {
-    text-decoration: underline;
 }
 

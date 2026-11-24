@@ -22,7 +22,6 @@
         "last_none": "Nog geen meting"
     },
     "attention": {
-        "title": "Sense vraagt aandacht",
         "below": ":room · :metric :value · onder :limit",
         "above": ":room · :metric :value · boven :limit",
         "stale": ":room · geen meting sinds :when",

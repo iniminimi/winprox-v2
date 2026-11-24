@@ -22,7 +22,6 @@
         "last_none": "Pas encore de mesure"
     },
     "attention": {
-        "title": "Sense demande attention",
         "below": ":room · :metric :value · sous :limit",
         "above": ":room · :metric :value · au-dessus de :limit",
         "stale": ":room · aucune mesure depuis :when",

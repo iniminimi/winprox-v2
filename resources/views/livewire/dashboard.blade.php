@@ -546,18 +546,22 @@
                     </div>
                 </a>
             @endforeach
+            @foreach (array_slice($senseAttention ?? [], 0, 8) as $line)
+                <a href="{{ $line->url }}"
+                   class="wp-kpi wp-kpi--sense wp-kpi--alert"
+                   wire:key="sense-attention-{{ $line->sensePointId }}-{{ $loop->index }}">
+                    <div class="wp-kpi-body">
+                        <span class="wp-kpi-icon" aria-hidden="true">
+                            <x-wp-icon name="sensor" />
+                        </span>
+                        <div class="wp-kpi-main">
+                            <p class="wp-kpi-kicker">{{ $line->room }}</p>
+                            <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ $line->detail }}</p>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
         </div>
-
-        @if (($senseAttention ?? []) !== [])
-            <div class="wp-card wp-card-pad wp-stack-tight">
-                <h2 class="wp-section-title">{{ __('sense.attention.title') }}</h2>
-                <div class="wp-sense-attention">
-                    @foreach (array_slice($senseAttention, 0, 8) as $line)
-                        <a href="{{ $line->url }}">{{ $line->sentence }}</a>
-                    @endforeach
-                </div>
-            </div>
-        @endif
 
         @if ($showIssuesTasksUi ?? true)
             <div class="wp-card wp-card-pad wp-stack">

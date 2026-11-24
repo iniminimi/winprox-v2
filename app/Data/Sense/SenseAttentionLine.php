@@ -8,7 +8,8 @@ final class SenseAttentionLine
 {
     public function __construct(
         public int $sensePointId,
-        public string $sentence,
+        public string $room,
+        public string $detail,
         public string $url,
     ) {}
 }
