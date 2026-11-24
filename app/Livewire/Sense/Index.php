@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Livewire\Sense;
 
+use App\Actions\Sense\ApplySensePresetAction;
 use App\Actions\Sense\CreateSensePointAction;
 use App\Actions\Sense\DeleteSensePointAction;
 use App\Actions\Sense\ListSenseRoomsAction;
@@ -68,6 +69,13 @@ class Index extends Component
         }
 
         $this->closeCreate();
+    }
+
+    public function applyPreset(int $pointId, string $preset, ApplySensePresetAction $apply): void
+    {
+        $point = SensePoint::query()->findOrFail($pointId);
+        $this->authorize('update', $point);
+        $apply->handle($point, $preset, (int) Tenancy::id(), (int) auth()->id());
     }
 
     public function saveBands(int $pointId, string $metric, float $low, ?float $target, float $high, UpdateSenseBandsAction $update): bool

@@ -31,6 +31,10 @@
         "yesterday_at": "gisteren om :time",
         "date_at": ":date om :time"
     },
+    "presets": {
+        "winter": "Winter",
+        "summer": "Zomer"
+    },
     "errors": {
         "unavailable": "Sense is hier niet beschikbaar.",
         "unit_invalid": "Kies een lokaal.",

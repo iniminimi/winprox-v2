@@ -7,6 +7,7 @@ namespace App\Support\Sense;
 use App\Enums\SenseAttentionDirection;
 use App\Enums\SenseMetric;
 use App\Models\SensePoint;
+use App\Models\SenseReading;
 use App\Models\Unit;
 use Carbon\CarbonInterface;
 
@@ -71,7 +72,7 @@ final class SenseBands
         }
 
         $voc = (int) $point->last_voc;
-        if ($voc > (int) $point->voc_high) {
+        if ($voc > (int) $point->voc_high && self::vocHolds($point, (int) $point->voc_high)) {
             $rows[] = self::row(SenseMetric::Voc, SenseAttentionDirection::Above, (float) $voc, (float) $point->voc_high, $point->last_recorded_at);
         }
 
@@ -120,6 +121,30 @@ final class SenseBands
             'date' => $local->format('d-m-Y'),
             'time' => $time,
         ]);
+    }
+
+    private static function vocHolds(SensePoint $point, int $limit): bool
+    {
+        $minutes = (int) config('sense.voc.attention_minutes', 30);
+        $since = now()->subMinutes($minutes);
+
+        $readings = SenseReading::query()
+            ->where('sense_point_id', $point->id)
+            ->where('recorded_at', '>=', $since)
+            ->orderBy('recorded_at')
+            ->get(['voc', 'recorded_at']);
+
+        if ($readings->isEmpty()) {
+            return false;
+        }
+
+        foreach ($readings as $reading) {
+            if ((int) $reading->voc <= $limit) {
+                return false;
+            }
+        }
+
+        return $readings->first()->recorded_at->lte($since);
     }
 
     /**

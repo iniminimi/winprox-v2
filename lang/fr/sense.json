@@ -31,6 +31,10 @@
         "yesterday_at": "hier à :time",
         "date_at": ":date à :time"
     },
+    "presets": {
+        "winter": "Hiver",
+        "summer": "Été"
+    },
     "errors": {
         "unavailable": "Sense n'est pas disponible ici.",
         "unit_invalid": "Choisissez un local.",

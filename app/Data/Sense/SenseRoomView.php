@@ -10,6 +10,7 @@ final class SenseRoomView
         public int $id,
         public string $name,
         public bool $ok,
+        public ?string $preset,
         public string $lastLabel,
         public SenseScaleView $temperature,
         public SenseScaleView $humidity,

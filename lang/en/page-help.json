@@ -1841,7 +1841,7 @@
                 },
                 {
                     "label": "Marks",
-                    "text": "For temperature and humidity you drag or type the lower mark, the target and the upper mark. The target is only a guide. Attention starts below the lower mark or above the upper mark. CO₂ and the VOC index have only an upper mark."
+                    "text": "For temperature and humidity you drag or type the lower mark, the target and the upper mark, or you choose Winter or Summer. The target is only a guide. CO₂ asks for attention above its mark. The VOC index colours from green to red; attention follows only when a high value holds for half an hour."
                 },
                 {
                     "label": "Home screen",

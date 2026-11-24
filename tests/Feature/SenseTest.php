@@ -54,7 +54,9 @@ it('zet sense onder plaatsen en toont aandacht zonder melding', function () {
         ->get(route('sense.index'))
         ->assertOk()
         ->assertSee('Babylokaal')
-        ->assertSee('Sense');
+        ->assertSee('Sense')
+        ->assertSee('Winter')
+        ->assertSee('Zomer');
 
     $this->actingAs($admin)
         ->get(route('dashboard'))
@@ -155,6 +157,65 @@ it('toont een stilgevallen scherm als aandacht', function () {
         ->get(route('dashboard'))
         ->assertOk()
         ->assertSee('geen meting sinds');
+
+    Carbon::setTestNow();
+});
+
+it('start met de winterwaarden van een leefruimte', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    [$unit] = senseRoom($tenant);
+    $created = app(CreateSensePointAction::class)->handle((int) $unit->id, (int) $tenant->id);
+    $point = $created['point'];
+
+    expect((float) $point->temperature_low)->toBe(20.0)
+        ->and((float) $point->temperature_target)->toBe(21.0)
+        ->and((float) $point->temperature_high)->toBe(24.0)
+        ->and((float) $point->humidity_low)->toBe(40.0)
+        ->and((float) $point->humidity_high)->toBe(60.0)
+        ->and((int) $point->co2_high)->toBe(900)
+        ->and((int) $point->voc_high)->toBe(150);
+});
+
+it('zet de zomerwaarden zonder de co2-grens te wijzigen', function () {
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    [$unit] = senseRoom($tenant);
+    $created = app(CreateSensePointAction::class)->handle((int) $unit->id, (int) $tenant->id);
+
+    $point = app(\App\Actions\Sense\ApplySensePresetAction::class)->handle($created['point'], 'summer', (int) $tenant->id);
+
+    expect((float) $point->temperature_low)->toBe(22.0)
+        ->and((float) $point->temperature_target)->toBe(24.0)
+        ->and((float) $point->temperature_high)->toBe(26.0)
+        ->and((float) $point->humidity_low)->toBe(30.0)
+        ->and((float) $point->humidity_target)->toBe(50.0)
+        ->and((float) $point->humidity_high)->toBe(70.0)
+        ->and((int) $point->co2_high)->toBe(900);
+});
+
+it('vraagt pas aandacht als de voc-index een half uur hoog blijft', function () {
+    Carbon::setTestNow('2026-11-24 12:00:00');
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    [$unit] = senseRoom($tenant);
+    $created = app(CreateSensePointAction::class)->handle((int) $unit->id, (int) $tenant->id);
+    $record = app(RecordSenseReadingAction::class);
+
+    $record->handle($created['point'], new RecordSenseReadingData(21, 50, 700, 180, CarbonImmutable::parse('2026-11-24 12:00:00')));
+
+    expect(\App\Support\Sense\SenseBands::attentions($created['point']->fresh()))->toBe([]);
+
+    $record->handle($created['point']->fresh(), new RecordSenseReadingData(21, 50, 700, 180, CarbonImmutable::parse('2026-11-24 11:30:00')));
+    $record->handle($created['point']->fresh(), new RecordSenseReadingData(21, 50, 700, 180, CarbonImmutable::parse('2026-11-24 12:00:00')));
+
+    $held = \App\Support\Sense\SenseBands::attentions($created['point']->fresh());
+    expect($held)->toHaveCount(1)
+        ->and($held[0]['metric'])->toBe(\App\Enums\SenseMetric::Voc);
+
+    $record->handle($created['point']->fresh(), new RecordSenseReadingData(21, 50, 700, 80, CarbonImmutable::parse('2026-11-24 11:45:00')));
+
+    expect(\App\Support\Sense\SenseBands::attentions($created['point']->fresh()))->toBe([]);
 
     Carbon::setTestNow();
 });

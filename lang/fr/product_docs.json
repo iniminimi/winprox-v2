@@ -294,7 +294,7 @@
                 "body": "Sense montre par local la température, l’humidité, le CO₂ et l’indice VOC. Vous réglez les repères. L’accueil demande attention si une valeur sort de la bande ou si l’écran n’envoie plus rien.",
                 "items": [
                     "Aucun signalement ni tâche n’est créé.",
-                    "Le CO₂ et l’indice VOC n’ont qu’une limite haute. Pour la température et l’humidité, la cible est un repère."
+                    "Un nouveau local démarre sur les valeurs d’hiver d’une pièce de vie. Été remplit température et humidité d’un coup. Le CO₂ demande attention au-dessus de 900. L’indice VOC passe du vert au rouge et ne demande attention qu’après une demi-heure."
                 ]
             },
             {

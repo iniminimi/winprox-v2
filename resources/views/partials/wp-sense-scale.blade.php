@@ -1,11 +1,13 @@
 @php
     $alpine = $scale->alpine($pointId);
 @endphp
-<div class="wp-sense-metric"
-     x-data="wpSenseScale(@js($alpine))"
-     @pointermove.window="moveDrag($event)"
-     @pointerup.window="endDrag()"
-     @pointercancel.window="endDrag()">
+<div @class(['wp-sense-metric'])
+     @if ($scale->mode !== 'scale')
+         x-data="wpSenseScale(@js($alpine))"
+         @pointermove.window="moveDrag($event)"
+         @pointerup.window="endDrag()"
+         @pointercancel.window="endDrag()"
+     @endif>
     <div class="wp-sense-metric__head">
         <span class="wp-sense-metric__icon" aria-hidden="true">
             @if ($scale->metric === 'temperature')
@@ -22,6 +24,18 @@
         <span class="wp-sense-metric__value">{{ $scale->valueLabel }}</span>
     </div>
 
+    @if ($scale->mode === 'scale')
+        <div class="wp-sense-track" style="{{ $scale->zoneTrack() }}">
+            @if ($scale->valuePercent() !== null)
+                <span class="wp-sense-now" style="left: {{ $scale->valuePercent() }}%"></span>
+            @endif
+        </div>
+        <div class="wp-sense-marks">
+            @foreach ($scale->zoneMarks() as $mark)
+                <span class="wp-sense-mark" style="left: {{ $mark['percent'] }}%; color: {{ $mark['color'] }}">{{ $mark['label'] }}</span>
+            @endforeach
+        </div>
+    @else
     <div class="wp-sense-track" x-ref="track" :style="trackStyle()">
         <template x-if="mode === 'band'">
             <button type="button" class="wp-sense-handle" :style="`left:${percent(low)}%; background:${colors.low}`"
@@ -57,4 +71,5 @@
                    @keydown.enter.prevent="commitEdit()" @blur="commitEdit()">
         </span>
     </div>
+    @endif
 </div>

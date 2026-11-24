@@ -1845,7 +1845,7 @@
                 },
                 {
                     "label": "Repères",
-                    "text": "Pour la température et l’humidité, faites glisser ou saisissez le bas, la cible et le haut. La cible est seulement un repère. L’attention commence sous le bas ou au-dessus du haut. Le CO₂ et l’indice VOC n’ont qu’une limite haute."
+                    "text": "Pour la température et l’humidité, faites glisser ou saisissez le bas, la cible et le haut, ou choisissez Hiver ou Été. La cible est seulement un repère. Le CO₂ demande attention au-dessus de la limite. L’indice VOC passe du vert au rouge ; l’attention suit seulement si une valeur haute dure une demi-heure."
                 },
                 {
                     "label": "Écran d’accueil",

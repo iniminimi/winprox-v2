@@ -34,11 +34,12 @@ class ListSenseRoomsAction
                 id: (int) $point->id,
                 name: $name,
                 ok: $ok,
+                preset: $this->presetKey($point),
                 lastLabel: $this->lastLabel($point),
                 temperature: $this->band($point, SenseMetric::Temperature),
                 humidity: $this->band($point, SenseMetric::Humidity),
                 co2: $this->ceiling($point, SenseMetric::Co2),
-                voc: $this->ceiling($point, SenseMetric::Voc),
+                voc: $this->scale($point, SenseMetric::Voc),
             );
         })->sort(function (SenseRoomView $a, SenseRoomView $b): int {
             if ($a->ok !== $b->ok) {
@@ -78,6 +79,47 @@ class ListSenseRoomsAction
             low: (float) $point->{$lowKey},
             target: (float) $point->{$targetKey},
             high: (float) $point->{$highKey},
+            value: $value !== null ? (float) $value : null,
+            valueLabel: $value !== null ? SenseNumber::withUnit($metric, (float) $value) : '—',
+            title: __($metric->labelKey()),
+        );
+    }
+
+    private function presetKey(SensePoint $point): ?string
+    {
+        foreach (config('sense.presets', []) as $key => $preset) {
+            if ($this->same($point->temperature_low, $preset['temperature']['low'])
+                && $this->same($point->temperature_target, $preset['temperature']['target'])
+                && $this->same($point->temperature_high, $preset['temperature']['high'])
+                && $this->same($point->humidity_low, $preset['humidity']['low'])
+                && $this->same($point->humidity_target, $preset['humidity']['target'])
+                && $this->same($point->humidity_high, $preset['humidity']['high'])) {
+                return (string) $key;
+            }
+        }
+
+        return null;
+    }
+
+    private function same(mixed $stored, mixed $preset): bool
+    {
+        return round((float) $stored, 1) === round((float) $preset, 1);
+    }
+
+    private function scale(SensePoint $point, SenseMetric $metric): SenseScaleView
+    {
+        $range = config('sense.ranges.'.$metric->value);
+        $value = $point->{'last_'.$metric->value};
+
+        return new SenseScaleView(
+            metric: $metric->value,
+            mode: 'scale',
+            min: (float) $range['min'],
+            max: (float) $range['max'],
+            step: (float) $range['step'],
+            low: (float) $range['min'],
+            target: null,
+            high: (float) $point->{$metric->value.'_high'},
             value: $value !== null ? (float) $value : null,
             valueLabel: $value !== null ? SenseNumber::withUnit($metric, (float) $value) : '—',
             title: __($metric->labelKey()),

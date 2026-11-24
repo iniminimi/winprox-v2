@@ -294,7 +294,7 @@
                 "body": "Sense shows temperature, humidity, CO₂ and the VOC index for each room. You set the marks. The home screen asks for attention when a value leaves the band or the screen stops sending.",
                 "items": [
                     "No issue and no task is created.",
-                    "CO₂ and the VOC index have only an upper mark. For temperature and humidity the target is a guide."
+                    "A new room starts on winter values for a living space. Summer fills in temperature and humidity at once. CO₂ asks for attention above 900. The VOC index colours from green to red and asks for attention only after half an hour."
                 ]
             },
             {

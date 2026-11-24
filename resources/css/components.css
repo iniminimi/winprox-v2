@@ -9487,6 +9487,17 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
     touch-action: none;
 }
 
+.wp-sense-now {
+    position: absolute;
+    top: 50%;
+    width: 0.28rem;
+    height: 1.15rem;
+    border-radius: 999px;
+    background: var(--sense-text, #fff);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 55%);
+}
+
 .wp-sense-handle {
     position: absolute;
     top: 50%;

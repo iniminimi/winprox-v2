@@ -31,6 +31,10 @@
         "yesterday_at": "ayer a las :time",
         "date_at": ":date a las :time"
     },
+    "presets": {
+        "winter": "Invierno",
+        "summer": "Verano"
+    },
     "errors": {
         "unavailable": "Sense no está disponible aquí.",
         "unit_invalid": "Elija una sala.",

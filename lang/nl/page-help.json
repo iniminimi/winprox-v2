@@ -1841,7 +1841,7 @@
                 },
                 {
                     "label": "Grenzen",
-                    "text": "Bij temperatuur en vocht sleept of typt u onder, streef en boven. De streefwaarde is alleen een richtpunt. Aandacht ontstaat onder de ondergrens of boven de bovengrens. CO₂ en de VOC-index hebben alleen een bovengrens."
+                    "text": "Bij temperatuur en vocht sleept of typt u onder, streef en boven, of u kiest Winter of Zomer. De streefwaarde is alleen een richtpunt. CO₂ vraagt aandacht boven de grens. De VOC-index kleurt van groen tot rood; aandacht volgt pas als een hoge waarde een half uur aanhoudt."
                 },
                 {
                     "label": "Beginscherm",

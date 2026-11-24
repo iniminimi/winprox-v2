@@ -818,7 +818,8 @@ stuurt events; WinProx zet die om in workflow.
 
 - Menu: **Plaatsen → Sense**. Alleen admin. Checkmate ziet het niet.
 - Eén punt per unit. De kaart toont de unitnaam; een site-unit toont de locatienaam. Zwarte kaart, dezelfde verzadigde kleuren als het lcd.
-- Temperatuur en vocht: onder, streef, boven. Streef is geen alarm. CO₂ en VOC: alleen boven.
+- Nieuw lokaal start als leefruimte in de winter: temperatuur 20 / 21 / 24 °C, vocht 40 / 50 / 60 %. Knop Zomer zet 22 / 24 / 26 °C en 30 / 50 / 70 %. Streef is geen alarm. CO₂-bovengrens start op 900 ppm.
+- VOC-index (SGP40, 1–500, geen µg/m³): groen tot 100, geel tot 150, oranje tot 250, daarna rood. 100 is het 24-uurgemiddelde van de sensor, geen gezondheidsgrens. Aandacht pas boven 150 én 30 minuten volgehouden.
 - `POST /api/v1/sense/readings` met `X-WinProx-Sense-Key` (`wpsense_…`). De beheerder ziet die sleutel niet; koppelen van het scherm volgt als de D1S er is. Zie `docs/api/sense.md`.
 - Opnames van een camera horen hier niet bij.
 

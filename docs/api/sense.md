@@ -26,6 +26,6 @@ The tenant must be active. Checkmate tenants are refused.
 
 All four values are required. The same `recorded_at` for the same room is stored once.
 
-`data.attention` is true when the reading is outside the lower or upper band, or when CO₂ or the VOC index is above its upper mark. The target mark is not an alarm.
+`data.attention` is true when temperature or humidity is outside the lower or upper mark, or when CO₂ is above its upper mark. The target mark is not an alarm. The VOC index (1–500) turns attention on only after it stays above the room limit (default 150) for 30 minutes. One high sample is not attention. 100 is the sensor’s own 24-hour average, not a health limit.
 
 Send about every five minutes. A room with no reading for 15 minutes is shown as attention in WinProx.

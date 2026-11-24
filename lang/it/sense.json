@@ -31,6 +31,10 @@
         "yesterday_at": "ieri alle :time",
         "date_at": ":date alle :time"
     },
+    "presets": {
+        "winter": "Inverno",
+        "summer": "Estate"
+    },
     "errors": {
         "unavailable": "Sense non è disponibile qui.",
         "unit_invalid": "Scegli un locale.",

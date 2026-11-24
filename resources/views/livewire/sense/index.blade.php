@@ -55,6 +55,12 @@
 
                     @if ($canManage)
                         <div class="wp-cluster wp-sense-tools">
+                            <button type="button" @class(['btn', 'btn--sm', 'btn--primary' => $room->preset === 'winter', 'btn--ghost' => $room->preset !== 'winter']) wire:click="applyPreset({{ $room->id }}, 'winter')">
+                                {{ __('sense.presets.winter') }}
+                            </button>
+                            <button type="button" @class(['btn', 'btn--sm', 'btn--primary' => $room->preset === 'summer', 'btn--ghost' => $room->preset !== 'summer']) wire:click="applyPreset({{ $room->id }}, 'summer')">
+                                {{ __('sense.presets.summer') }}
+                            </button>
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="askDelete({{ $room->id }})">
                                 {{ __('common.button.delete') }}
                             </button>

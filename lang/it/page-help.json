@@ -1841,7 +1841,7 @@
                 },
                 {
                     "label": "Limiti",
-                    "text": "Per temperatura e umidità trascini o digiti il valore basso, l’obiettivo e il valore alto. L’obiettivo è solo un riferimento. L’attenzione scatta sotto il minimo o sopra il massimo. CO₂ e l’indice VOC hanno solo un massimo."
+                    "text": "Per temperatura e umidità trascini o digiti il valore basso, l’obiettivo e il valore alto, oppure scegli Inverno o Estate. L’obiettivo è solo un riferimento. Il CO₂ chiede attenzione sopra il limite. L’indice VOC va dal verde al rosso; l’attenzione arriva solo se un valore alto resta per mezz’ora."
                 },
                 {
                     "label": "Schermata iniziale",

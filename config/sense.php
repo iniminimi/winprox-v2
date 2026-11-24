@@ -9,10 +9,29 @@ return [
     'stale_after_minutes' => 15,
 
     'defaults' => [
-        'temperature' => ['low' => 18, 'target' => 21, 'high' => 24],
+        'temperature' => ['low' => 20, 'target' => 21, 'high' => 24],
         'humidity' => ['low' => 40, 'target' => 50, 'high' => 60],
-        'co2_high' => 1200,
-        'voc_high' => 200,
+        'co2_high' => 900,
+        'voc_high' => 150,
+    ],
+
+    // Leefruimte. Winter is de start. Zomer vervangt alleen temperatuur en vocht.
+    'presets' => [
+        'winter' => [
+            'temperature' => ['low' => 20, 'target' => 21, 'high' => 24],
+            'humidity' => ['low' => 40, 'target' => 50, 'high' => 60],
+        ],
+        'summer' => [
+            'temperature' => ['low' => 22, 'target' => 24, 'high' => 26],
+            'humidity' => ['low' => 30, 'target' => 50, 'high' => 70],
+        ],
+    ],
+
+    // SGP40-index, geen µg/m³. 100 is het gemiddelde van de sensor over 24 uur, geen gezondheidsgrens.
+    // Groen tot 100, geel tot 150, oranje tot 250, daarna rood. Aandacht pas boven 150 én een half uur volgehouden.
+    'voc' => [
+        'attention_minutes' => 30,
+        'zones' => [100, 150, 250],
     ],
 
     'ranges' => [

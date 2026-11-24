@@ -31,6 +31,10 @@
         "yesterday_at": "yesterday at :time",
         "date_at": ":date at :time"
     },
+    "presets": {
+        "winter": "Winter",
+        "summer": "Summer"
+    },
     "errors": {
         "unavailable": "Sense is not available here.",
         "unit_invalid": "Choose a room.",

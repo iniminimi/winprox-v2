@@ -294,7 +294,7 @@
                 "body": "Sense mostra per locale temperatura, umidità, CO₂ e indice VOC. Si impostano i limiti. La schermata iniziale chiede attenzione se un valore esce dalla fascia o se lo schermo non invia più nulla.",
                 "items": [
                     "Non nasce nessuna segnalazione né attività.",
-                    "CO₂ e l’indice VOC hanno solo un massimo. Per temperatura e umidità l’obiettivo è un riferimento."
+                    "Un locale nuovo parte dai valori invernali di uno spazio di vita. Estate compila temperatura e umidità in un colpo. Il CO₂ chiede attenzione sopra 900. L’indice VOC va dal verde al rosso e chiede attenzione solo dopo mezz’ora."
                 ]
             },
             {
