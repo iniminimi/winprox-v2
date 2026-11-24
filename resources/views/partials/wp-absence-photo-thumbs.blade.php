@@ -1,5 +1,5 @@
 @if ($photos->isNotEmpty())
-    <div class="wp-cluster wp-cluster--tight">
+    <div class="wp-photo-grid wp-photo-grid--gallery wp-absence-photo-thumbs">
         @foreach ($photos as $photo)
             <a
                 href="{{ route('absence-photos.file', $photo) }}"

@@ -3716,6 +3716,20 @@ a.wp-pagination__page:active:not(.is-active) {
     gap: var(--wp-photo-thumb-gap);
 }
 
+/* Briefjes bij een afwezigheid: klein en gelijk, op beheer en op het portaal. */
+.wp-absence-photo-thumbs.wp-photo-grid--gallery {
+    --wp-photo-thumb-size: 4rem;
+    grid-template-columns: repeat(auto-fill, var(--wp-photo-thumb-size));
+    justify-content: start;
+    margin-top: 0.5rem;
+}
+
+.wp-absence-photo-thumbs .wp-photo-thumb {
+    width: var(--wp-photo-thumb-size);
+    height: var(--wp-photo-thumb-size);
+    min-width: 0;
+}
+
 .wp-photo-thumb {
     position: relative;
     aspect-ratio: 1 / 1;
