@@ -601,7 +601,9 @@
             "recup_balance": "Overuren (recup): :hours",
             "shift_type": "Kies de afwezigheid :",
             "shift_type_placeholder": "Kies een type",
-            "period_hint_single": "Tik de datum. Dagen in het verleden zijn niet kiesbaar."
+            "period_hint_single": "Tik de datum. Dagen in het verleden zijn niet kiesbaar.",
+            "photos_add": "Foto van een briefje",
+            "photos_hint": "Optioneel. WinProx bewaart een foto 6 maanden en wist ze daarna. Bewaar zelf een kopie als je ze langer nodig hebt."
         },
         "now": {
             "status_out": "Niet ingeklokt",
@@ -1205,8 +1207,14 @@
             "not_cancellable": "Deze aanvraag kun je niet intrekken.",
             "half_day_range": "Een halve dag kan alleen op één datum.",
             "shift_type_required": "Kies een type.",
-            "other_single_day": "Voor dit type mag je maar één dag aanvragen."
-        }
+            "other_single_day": "Voor dit type mag je maar één dag aanvragen.",
+            "photos_max": "Hoogstens 4 foto's.",
+            "photos_image": "Alleen foto's.",
+            "photos_size": "Een foto is te groot."
+        },
+        "photos_kept": "Foto's bij een aanvraag blijven 6 maanden bewaard. Daarna worden ze gewist. Bewaar zelf een kopie als u ze langer nodig hebt.",
+        "photos_expiring_note": "Deze foto's worden binnen een maand gewist.",
+        "photos_show_all": "Alle aanvragen"
     },
     "leave_balance": {
         "short": ":days d",

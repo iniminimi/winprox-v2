@@ -207,5 +207,10 @@
             "missing_employer_body": "CIAO is on, but without a CBE number WinProx cannot send anything to the NSSO. Enter your CBE number to activate the feed.",
             "missing_employer_cta": "Go to settings"
         }
+    },
+    "absence_photos": {
+        "title": "Photos with an absence",
+        "body": "Some photos are older than 5 months. They will be deleted within a month. Keep your own copy if you need them longer.",
+        "cta": "View the photos"
     }
 }

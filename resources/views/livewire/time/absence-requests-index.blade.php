@@ -16,6 +16,17 @@
         <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
     @endif
 
+    <p class="wp-muted">{{ __('time.absence.photos_kept') }}</p>
+
+    @if ($photosFilter === 'expiring')
+        <div class="wp-cluster wp-cluster--tight">
+            <p class="wp-muted">{{ __('time.absence.photos_expiring_note') }}</p>
+            <button type="button" class="btn btn--surface btn--sm" wire:click="clearPhotosFilter">
+                {{ __('time.absence.photos_show_all') }}
+            </button>
+        </div>
+    @endif
+
     <div class="wp-cluster wp-cluster--tight" role="tablist" aria-label="{{ __('time.absence.status_filters') }}">
         @php
             $statusFilters = [
@@ -62,6 +73,7 @@
                                 · {{ __('time.absence.decided_by_rejected', ['name' => $request->decidedBy->name]) }}
                             @endif
                         </p>
+                        @include('partials.wp-absence-photo-thumbs', ['photos' => $request->photos])
                     </div>
                     <div class="wp-cluster wp-cluster--wrap">
                         <span @class([
@@ -111,6 +123,7 @@
                 @if ($deciding->description)
                     <p>{{ $deciding->description }}</p>
                 @endif
+                @include('partials.wp-absence-photo-thumbs', ['photos' => $deciding->photos])
                 @if ((int) round(((float) $deciding->day_portion) * 2) === 1)
                     <p>{{ __('time.leave_balance.half_day') }}</p>
                 @endif

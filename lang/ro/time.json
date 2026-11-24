@@ -51,8 +51,14 @@
             "not_cancellable": "Nu puteți retrage această cerere.",
             "half_day_range": "O jumătate de zi poate fi doar o singură dată.",
             "shift_type_required": "Alegeți un tip.",
-            "other_single_day": "Acest tip poate fi solicitat doar pentru o singură zi."
-        }
+            "other_single_day": "Acest tip poate fi solicitat doar pentru o singură zi.",
+            "photos_max": "Cel mult 4 fotografii.",
+            "photos_image": "Doar fotografii.",
+            "photos_size": "O fotografie este prea mare."
+        },
+        "photos_kept": "Fotografiile unei cereri rămân 6 luni. Apoi sunt șterse. Păstrați o copie dacă vă trebuie mai mult timp.",
+        "photos_expiring_note": "Aceste fotografii vor fi șterse în decurs de o lună.",
+        "photos_show_all": "Toate cererile"
     },
     "portal": {
         "title": "Autentificare",
@@ -218,7 +224,9 @@
             "recup_balance": "Ore suplimentare (timp liber): :hours",
             "shift_type": "Alegeți absența:",
             "shift_type_placeholder": "Alegeți un tip",
-            "period_hint_single": "Atingeți data. Zilele din trecut nu pot fi alese."
+            "period_hint_single": "Atingeți data. Zilele din trecut nu pot fi alese.",
+            "photos_add": "Fotografie a unui document",
+            "photos_hint": "Opțional. WinProx păstrează o fotografie 6 luni și apoi o șterge. Păstrați o copie dacă vă trebuie mai mult timp."
         },
         "now": {
             "status_out": "Nepontat",

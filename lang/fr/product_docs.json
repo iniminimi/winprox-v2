@@ -132,7 +132,7 @@
             },
             {
                 "title": "Congé et absence",
-                "body": "Les collaborateurs demandent un congé, une récup, une maladie ou (si configuré) un type Autre via Clock Point. La gestion décide sous Time → Demandes — la maladie aussi doit être approuvée. Aucun e-mail n’est envoyé. Maladie et Autre ne comptent pas dans le solde de congés ni la récup ; le secrétariat social s’en charge, pas WinProx.",
+                "body": "Les collaborateurs demandent un congé, une récup, une maladie ou (si configuré) un type Autre via Clock Point. La gestion décide sous Time → Demandes — la maladie aussi doit être approuvée. Aucun e-mail n’est envoyé. Maladie et Autre ne comptent pas dans le solde de congés ni la récup ; le secrétariat social s’en charge, pas WinProx. Une photo jointe à la demande est conservée 6 mois, puis effacée. Gardez une copie si vous en avez besoin plus longtemps.",
                 "items": [
                     "Une demande va d’une date de début à une date de fin, 31 jours au maximum (Autre: un jour), et pas dans le passé. La liste sur Clock Point est Congé, Récup, Maladie, puis Autre par nom.",
                     "Dans le planning d’administration, les demandes ouvertes apparaissent comme un marquage sur les jours concernés ; ce marquage ouvre Time → Demandes (le service reste jusqu’à l’approbation).",

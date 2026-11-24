@@ -601,7 +601,9 @@
             "recup_balance": "Overtime (time off): :hours",
             "shift_type": "Choose the absence:",
             "shift_type_placeholder": "Choose a type",
-            "period_hint_single": "Tap the date. Past days cannot be selected."
+            "period_hint_single": "Tap the date. Past days cannot be selected.",
+            "photos_add": "Photo of a note",
+            "photos_hint": "Optional. WinProx keeps a photo for 6 months and then deletes it. Keep your own copy if you need it longer."
         },
         "now": {
             "status_out": "Not clocked in",
@@ -1205,8 +1207,14 @@
             "not_cancellable": "You cannot withdraw this request.",
             "half_day_range": "A half day can only be a single date.",
             "shift_type_required": "Choose a type.",
-            "other_single_day": "This type can only be requested for a single day."
-        }
+            "other_single_day": "This type can only be requested for a single day.",
+            "photos_max": "At most 4 photos.",
+            "photos_image": "Photos only.",
+            "photos_size": "A photo is too large."
+        },
+        "photos_kept": "Photos with a request are kept for 6 months. Then they are deleted. Keep your own copy if you need them longer.",
+        "photos_expiring_note": "These photos will be deleted within a month.",
+        "photos_show_all": "All requests"
     },
     "leave_balance": {
         "short": ":days d",

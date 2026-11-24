@@ -22,6 +22,7 @@ use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\Locations\LocationQrPackDownloadController;
 use App\Http\Controllers\Locations\UnitQrController;
 use App\Http\Controllers\Locations\UnitQrPackDownloadController;
+use App\Http\Controllers\Ops\OpsHomescreenManifestController;
 use App\Http\Controllers\PhotoAlbum\UnitAlbumPhotoFileController;
 use App\Http\Controllers\Portal\FieldSyncController;
 use App\Http\Controllers\Portal\SaveWorkerPushSubscriptionController;
@@ -44,6 +45,7 @@ use App\Http\Controllers\Tasks\TaskExportController;
 use App\Http\Controllers\Tasks\TaskPrintController;
 use App\Http\Controllers\Team\TeamDocumentFileController;
 use App\Http\Controllers\TenantPurgeConfirmController;
+use App\Http\Controllers\Time\AbsenceRequestPhotoFileController;
 use App\Http\Controllers\Time\ClockPointHomescreenManifestController;
 use App\Http\Controllers\Time\ClockPointQrController;
 use App\Http\Controllers\Time\ClockPointQrPackDownloadController;
@@ -89,7 +91,6 @@ use App\Livewire\Pages\CheckmateManualIndex;
 use App\Livewire\Pages\Contact;
 use App\Livewire\Pages\Demo;
 use App\Livewire\Pages\Faq;
-use App\Livewire\Pages\WhatsNew;
 use App\Livewire\Pages\FeaturePage;
 use App\Livewire\Pages\Health;
 use App\Livewire\Pages\Legal;
@@ -105,6 +106,7 @@ use App\Livewire\Pages\Team;
 use App\Livewire\Pages\TeamleaderManualIndex;
 use App\Livewire\Pages\UnitChecksIndex;
 use App\Livewire\Pages\UnitsIndex;
+use App\Livewire\Pages\WhatsNew;
 use App\Livewire\Pages\WorkerManualIndex;
 use App\Livewire\Pages\WorkersIndex;
 use App\Livewire\Platform\Audit as PlatformAudit;
@@ -251,7 +253,7 @@ Route::get('/cp/{token}', TimePortal::class)
     ->where('token', '[a-z0-9]{20,64}')
     ->middleware('worker.phone')
     ->name('public.time-portal.cp');
-Route::get('/ops/manifest.webmanifest', \App\Http\Controllers\Ops\OpsHomescreenManifestController::class)
+Route::get('/ops/manifest.webmanifest', OpsHomescreenManifestController::class)
     ->name('public.ops.manifest');
 // /ops/home = canonieke PWA-start (scope /ops/); /ops blijft een korte alias.
 Route::get('/ops/home', OpsPortal::class)
@@ -262,6 +264,10 @@ Route::get('/ops', function () {
 Route::get('/ops/{token}', OpsPortal::class)
     ->where('token', '[a-z0-9]{20,64}')
     ->name('public.ops-portal');
+Route::get('/absence-photos/{photo}', AbsenceRequestPhotoFileController::class)
+    ->whereNumber('photo')
+    ->middleware('throttle:60,1')
+    ->name('absence-photos.file');
 Route::get('/team-documents/{teamDocument}/file', TeamDocumentFileController::class)
     ->whereNumber('teamDocument')
     ->middleware('throttle:60,1')

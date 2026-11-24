@@ -8,6 +8,7 @@ use App\Models\Concerns\BelongsToTenant;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AbsenceRequest extends Model
 {
@@ -38,6 +39,11 @@ class AbsenceRequest extends Model
         'decided_at' => 'datetime',
         'replaced_shifts' => 'array',
     ];
+
+    public function photos(): HasMany
+    {
+        return $this->hasMany(AbsenceRequestPhoto::class);
+    }
 
     public function worker(): BelongsTo
     {

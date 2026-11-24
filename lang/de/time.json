@@ -601,7 +601,9 @@
             "recup_balance": "Überstunden (Ausgleich): :hours",
             "shift_type": "Abwesenheit wählen:",
             "shift_type_placeholder": "Typ wählen",
-            "period_hint_single": "Tippen Sie das Datum. Vergangene Tage sind nicht wählbar."
+            "period_hint_single": "Tippen Sie das Datum. Vergangene Tage sind nicht wählbar.",
+            "photos_add": "Foto eines Scheins",
+            "photos_hint": "Optional. WinProx bewahrt ein Foto 6 Monate auf und löscht es danach. Bewahren Sie selbst eine Kopie auf, wenn Sie es länger brauchen."
         },
         "now": {
             "status_out": "Nicht eingestempelt",
@@ -1205,8 +1207,14 @@
             "not_cancellable": "Diesen Antrag können Sie nicht zurückziehen.",
             "half_day_range": "Ein halber Tag kann nur ein einzelnes Datum sein.",
             "shift_type_required": "Typ wählen.",
-            "other_single_day": "Dieser Typ kann nur für einen einzelnen Tag beantragt werden."
-        }
+            "other_single_day": "Dieser Typ kann nur für einen einzelnen Tag beantragt werden.",
+            "photos_max": "Höchstens 4 Fotos.",
+            "photos_image": "Nur Fotos.",
+            "photos_size": "Ein Foto ist zu groß."
+        },
+        "photos_kept": "Fotos zu einem Antrag bleiben 6 Monate gespeichert. Danach werden sie gelöscht. Bewahren Sie selbst eine Kopie auf, wenn Sie sie länger brauchen.",
+        "photos_expiring_note": "Diese Fotos werden innerhalb eines Monats gelöscht.",
+        "photos_show_all": "Alle Anträge"
     },
     "leave_balance": {
         "short": ":days T",

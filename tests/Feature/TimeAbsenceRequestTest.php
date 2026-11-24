@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
+use App\Actions\Retention\PruneAbsenceRequestPhotosAction;
 use App\Actions\Time\CancelAbsenceRequestAction;
+use App\Actions\Time\CountExpiringAbsencePhotosAction;
 use App\Actions\Time\DecideAbsenceRequestAction;
 use App\Actions\Time\RequestAbsenceAction;
 use App\Data\Time\DecideAbsenceRequestData;
@@ -10,10 +12,12 @@ use App\Data\Time\RequestAbsenceData;
 use App\Enums\AbsenceRequestStatus;
 use App\Enums\PlannedShiftStatus;
 use App\Enums\ShiftTypeKind;
+use App\Events\Time\AbsenceRequested;
 use App\Livewire\Dashboard;
 use App\Livewire\Public\TimePortal;
 use App\Livewire\Time\AbsenceRequestsIndex;
 use App\Models\AbsenceRequest;
+use App\Models\AbsenceRequestPhoto;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Location;
@@ -26,9 +30,12 @@ use App\Models\WebhookEndpoint;
 use App\Models\Worker;
 use App\Models\WorkerLeaveEntitlement;
 use App\Models\WorkShift;
+use App\Support\Portal\WorkerDeviceSession;
 use App\Support\Tenancy;
 use App\Support\Time\WorkDurationFormatter;
 use Carbon\Carbon;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
 
 afterEach(function () {
@@ -633,7 +640,7 @@ it('weigert Andere-afwezigheid over meerdere dagen', function () {
         $tenant,
         $worker,
         new RequestAbsenceData(ShiftTypeKind::Other, '2026-09-23', '2026-09-24', null, false, (int) $otherType->id),
-    ))->toThrow(\InvalidArgumentException::class, 'other_single_day');
+    ))->toThrow(InvalidArgumentException::class, 'other_single_day');
 
     signInAbsenceWorker($clockPoint)
         ->call('openAbsence')
@@ -778,7 +785,7 @@ it('vraagt ziekte aan, keurt goed naar rooster en weigert halve dag', function (
         $tenant,
         $worker,
         new RequestAbsenceData(ShiftTypeKind::Sick, '2026-09-23', '2026-09-23', null, true),
-    ))->toThrow(\InvalidArgumentException::class, 'half_day_range');
+    ))->toThrow(InvalidArgumentException::class, 'half_day_range');
 
     $request = app(RequestAbsenceAction::class)->handle(
         $tenant,
@@ -828,7 +835,7 @@ it('vraagt Andere afwezigheid aan met gekozen shifttype en zet die op het rooste
         $tenant,
         $worker,
         new RequestAbsenceData(ShiftTypeKind::Other, '2026-09-23', '2026-09-23'),
-    ))->toThrow(\InvalidArgumentException::class);
+    ))->toThrow(InvalidArgumentException::class);
 
     $request = app(RequestAbsenceAction::class)->handle(
         $tenant,
@@ -857,4 +864,154 @@ it('vraagt Andere afwezigheid aan met gekozen shifttype en zet die op het rooste
     expect($row)->not->toBeNull()
         ->and($row->kind)->toBe(ShiftTypeKind::Other)
         ->and((int) $row->shift_type_id)->toBe((int) $otherType->id);
+});
+
+it('bewaart een foto bij de aanvraag op de privé-schijf', function () {
+    Storage::fake('local');
+    [$tenant, $admin, $clockPoint, $worker] = absenceTenant();
+    $team = $worker->team;
+    $photo = UploadedFile::fake()->image('brief.jpg', 40, 40);
+
+    $request = app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(
+            ShiftTypeKind::Leave,
+            '2026-09-23',
+            '2026-09-23',
+            null,
+            false,
+            null,
+            [$photo],
+        ),
+    );
+
+    $stored = AbsenceRequestPhoto::query()->where('absence_request_id', $request->id)->first();
+    expect($stored)->not->toBeNull()
+        ->and($stored->path)->toStartWith('absence-request-photos/'.$tenant->id.'/');
+    Storage::disk('local')->assertExists($stored->path);
+
+    $payload = json_encode((new AbsenceRequested(
+        (int) $tenant->id,
+        (int) $request->id,
+        (int) $worker->id,
+        $request->kind->value,
+        $request->date_from->toDateString(),
+        $request->date_to->toDateString(),
+    ))->webhookPayload());
+    expect($payload)->not->toContain($stored->path);
+
+    $this->actingAs($admin)
+        ->get(route('absence-photos.file', $stored))
+        ->assertOk();
+
+    auth()->logout();
+    $this->flushSession();
+    $this->get(route('absence-photos.file', $stored))->assertForbidden();
+
+    $otherTenant = Tenant::factory()->create(['has_time_module' => true]);
+    $other = User::factory()->admin()->create(['tenant_id' => $otherTenant->id]);
+    $this->actingAs($other)
+        ->get(route('absence-photos.file', $stored))
+        ->assertForbidden();
+
+    auth()->logout();
+    $this->flushSession();
+    $this->withSession([
+        WorkerDeviceSession::rememberedWorkerSessionKey((int) $team->id) => $worker->id,
+    ])->get(route('absence-photos.file', $stored))->assertOk();
+});
+
+it('weigert meer dan vier foto\'s bij een aanvraag', function () {
+    [$tenant, , , $worker] = absenceTenant();
+    $photos = [];
+    for ($i = 0; $i < 5; $i++) {
+        $photos[] = UploadedFile::fake()->image('brief-'.$i.'.jpg', 20, 20);
+    }
+
+    expect(fn () => app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(ShiftTypeKind::Leave, '2026-09-23', '2026-09-23', null, false, null, $photos),
+    ))->toThrow(InvalidArgumentException::class, 'photos_max');
+
+    expect(AbsenceRequest::query()->count())->toBe(0);
+});
+
+it('toont de bewaartermijn en neemt de foto mee op het portaal', function () {
+    Storage::fake('local');
+    [$tenant, , $clockPoint] = absenceTenant();
+
+    signInAbsenceWorker($clockPoint)
+        ->call('openAbsence')
+        ->assertSee(__('time.portal.absence.photos_hint'))
+        ->set('absencePhotos', [UploadedFile::fake()->image('brief.jpg', 30, 30)])
+        ->set('absenceDateFrom', '2026-09-23')
+        ->set('absenceDateTo', '2026-09-23')
+        ->call('submitAbsence')
+        ->assertHasNoErrors();
+
+    expect(AbsenceRequestPhoto::query()->where('tenant_id', $tenant->id)->count())->toBe(1);
+});
+
+it('wist foto\'s ouder dan zes maanden en waarschuwt na vijf', function () {
+    Storage::fake('local');
+    [$tenant, $admin, , $worker] = absenceTenant();
+    seedTenantPastOnboarding($tenant);
+
+    $old = app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(
+            ShiftTypeKind::Leave,
+            '2026-09-23',
+            '2026-09-23',
+            null,
+            false,
+            null,
+            [UploadedFile::fake()->image('oud.jpg', 20, 20)],
+        ),
+    );
+    $fresh = app(RequestAbsenceAction::class)->handle(
+        $tenant,
+        $worker,
+        new RequestAbsenceData(
+            ShiftTypeKind::Leave,
+            '2026-09-24',
+            '2026-09-24',
+            null,
+            false,
+            null,
+            [UploadedFile::fake()->image('nieuw.jpg', 20, 20)],
+        ),
+    );
+
+    $oldPhoto = $old->photos()->first();
+    $freshPhoto = $fresh->photos()->first();
+    $oldPhoto->forceFill(['created_at' => Carbon::parse('2026-04-01 10:00:00')])->save();
+    $freshPhoto->forceFill(['created_at' => Carbon::parse('2026-09-01 10:00:00')])->save();
+
+    expect(app(CountExpiringAbsencePhotosAction::class)->handle((int) $tenant->id))->toBe(1);
+
+    Livewire::actingAs($admin)
+        ->test(Dashboard::class)
+        ->assertSee(__('dashboard.absence_photos.title'))
+        ->assertSee(__('dashboard.absence_photos.body'));
+
+    Livewire::actingAs($admin)
+        ->test(AbsenceRequestsIndex::class, ['photosFilter' => 'expiring'])
+        ->assertSee('23-09-2026')
+        ->assertDontSee('24-09-2026');
+
+    $path = $oldPhoto->path;
+    $stats = app(PruneAbsenceRequestPhotosAction::class)->handle(false, Carbon::parse('2026-10-02 10:00:00'));
+
+    expect($stats['removed'])->toBe(1)
+        ->and(AbsenceRequestPhoto::query()->whereKey($oldPhoto->id)->exists())->toBeFalse()
+        ->and(AbsenceRequestPhoto::query()->whereKey($freshPhoto->id)->exists())->toBeTrue()
+        ->and(AbsenceRequest::query()->whereKey($old->id)->exists())->toBeTrue();
+    Storage::disk('local')->assertMissing($path);
+
+    Carbon::setTestNow(Carbon::parse('2026-09-22 10:00:00'));
+    expect(app(CountExpiringAbsencePhotosAction::class)->handle((int) $tenant->id))->toBe(0);
 });

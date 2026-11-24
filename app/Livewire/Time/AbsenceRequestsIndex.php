@@ -16,6 +16,7 @@ use App\Models\Tenant;
 use App\Support\Tenancy;
 use App\Support\Time\TimeModuleAccess;
 use App\Support\Validation\TextDescriptionLimits;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
@@ -32,6 +33,9 @@ class AbsenceRequestsIndex extends Component
 
     #[Url(as: 'status')]
     public ?string $statusFilter = null;
+
+    #[Url(as: 'photos')]
+    public ?string $photosFilter = null;
 
     #[Url(as: 'decide')]
     public ?int $decide = null;
@@ -55,7 +59,7 @@ class AbsenceRequestsIndex extends Component
             }
             try {
                 $this->openDecide((int) $this->decide);
-            } catch (\Illuminate\Database\Eloquent\ModelNotFoundException) {
+            } catch (ModelNotFoundException) {
                 $this->decide = null;
             }
         }
@@ -64,6 +68,11 @@ class AbsenceRequestsIndex extends Component
     public function setStatusFilter(string $status = ''): void
     {
         $this->statusFilter = $status === '' ? null : $status;
+    }
+
+    public function clearPhotosFilter(): void
+    {
+        $this->photosFilter = null;
     }
 
     public function openDecide(int $id): void
@@ -133,9 +142,10 @@ class AbsenceRequestsIndex extends Component
     ) {
         $tenantId = (int) Tenancy::id();
         $status = AbsenceRequestStatus::tryFrom((string) $this->statusFilter);
-        $requests = $list->handle($tenantId, $status);
+        $expiringPhotos = $this->photosFilter === 'expiring';
+        $requests = $list->handle($tenantId, $status, 100, $expiringPhotos);
         $deciding = $this->decidingId !== null
-            ? AbsenceRequest::query()->with(['worker', 'shiftType'])->find($this->decidingId)
+            ? AbsenceRequest::query()->with(['worker', 'shiftType', 'photos'])->find($this->decidingId)
             : null;
         $conflicts = $deciding instanceof AbsenceRequest
             ? $listConflicts->handle($deciding)
@@ -151,6 +161,7 @@ class AbsenceRequestsIndex extends Component
             'leaveBalances' => $leaveBalances,
             'alarmCount' => $this->timeNavAlarmCount(),
             'pendingCount' => $countPending->handle($tenantId),
+            'photosFilter' => $expiringPhotos ? 'expiring' : null,
             'reasonMax' => TextDescriptionLimits::MAX,
         ]);
     }

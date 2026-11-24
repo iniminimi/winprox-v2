@@ -51,8 +51,14 @@
             "not_cancellable": "Não pode retirar este pedido.",
             "half_day_range": "Meio dia só pode ser uma única data.",
             "shift_type_required": "Escolha um tipo.",
-            "other_single_day": "Este tipo só pode ser pedido para um único dia."
-        }
+            "other_single_day": "Este tipo só pode ser pedido para um único dia.",
+            "photos_max": "No máximo 4 fotos.",
+            "photos_image": "Apenas fotos.",
+            "photos_size": "Uma foto é demasiado grande."
+        },
+        "photos_kept": "As fotos de um pedido ficam 6 meses. Depois são apagadas. Guarde uma cópia se precisar delas por mais tempo.",
+        "photos_expiring_note": "Estas fotos serão apagadas dentro de um mês.",
+        "photos_show_all": "Todos os pedidos"
     },
     "portal": {
         "title": "Iniciar sessão",
@@ -218,7 +224,9 @@
             "recup_balance": "Horas extra (tempo livre): :hours",
             "shift_type": "Escolha a ausência:",
             "shift_type_placeholder": "Escolha um tipo",
-            "period_hint_single": "Toque na data. Dias no passado não podem ser escolhidos."
+            "period_hint_single": "Toque na data. Dias no passado não podem ser escolhidos.",
+            "photos_add": "Foto de um comprovativo",
+            "photos_hint": "Opcional. O WinProx guarda uma foto durante 6 meses e depois apaga-a. Guarde uma cópia se precisar dela por mais tempo."
         },
         "now": {
             "status_out": "Sem entrada",

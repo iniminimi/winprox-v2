@@ -16,7 +16,7 @@
             @endif
         </div>
     @endif
-    <form wire:submit="submitAbsence" class="wp-card wp-card-pad wp-stack">
+    <form class="wp-card wp-card-pad wp-stack" @submit.prevent="await window.wpAwaitPhotoUploads($el); $wire.submitAbsence()">
         <h2 class="wp-section-title">{{ __('time.portal.absence.form_title') }}</h2>
         <div class="wp-field">
             <label class="wp-label" for="absence-shift-type">{{ __('time.portal.absence.shift_type') }}</label>
@@ -65,6 +65,15 @@
             ></textarea>
             @error('absenceDescription') <p class="wp-error">{{ $message }}</p> @enderror
         </div>
+        @include('partials.wp-issue-photo-upload', [
+            'model' => 'absencePhotos',
+            'removeMethod' => 'removeAbsencePhoto',
+            'preferCamera' => true,
+            'hintKey' => 'time.portal.absence.photos_hint',
+            'photoAltKey' => 'time.portal.absence.photos_add',
+        ])
+        @error('absencePhotos') <p class="wp-error">{{ $message }}</p> @enderror
+        @error('absencePhotos.*') <p class="wp-error">{{ $message }}</p> @enderror
         <button type="submit" class="btn btn--primary btn--block">{{ __('time.portal.absence.submit') }}</button>
     </form>
 
@@ -106,6 +115,7 @@
                         @if ($request->description)
                             <p>{{ $request->description }}</p>
                         @endif
+                        @include('partials.wp-absence-photo-thumbs', ['photos' => $request->photos])
                         @if ($request->decision_description)
                             <p class="wp-muted">{{ __('time.portal.absence.decision') }}: {{ $request->decision_description }}</p>
                         @endif

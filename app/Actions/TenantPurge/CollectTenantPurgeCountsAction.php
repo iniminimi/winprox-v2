@@ -54,6 +54,7 @@ final class CollectTenantPurgeCountsAction
         'roster_restore_points',
         'tenant_holiday_agreements',
         'tenant_qr_sticker_sheet_settings',
+        'absence_request_photos',
         'unit_album_photos',
         'unit_album_recipients',
         'unit_album_sends',

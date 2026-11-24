@@ -132,7 +132,7 @@
             },
             {
                 "title": "Vacaciones y ausencia",
-                "body": "Los trabajadores solicitan vacaciones, recup, baja u (si está configurado) un tipo en Otro vía Clock Point. La gestión decide en Time → Solicitudes — la baja también debe aprobarse. No se envía correo. Baja y Otro no cuentan en el saldo de vacaciones ni en recup; eso lo trata la secretaría social, no WinProx.",
+                "body": "Los trabajadores solicitan vacaciones, recup, baja u (si está configurado) un tipo en Otro vía Clock Point. La gestión decide en Time → Solicitudes — la baja también debe aprobarse. No se envía correo. Baja y Otro no cuentan en el saldo de vacaciones ni en recup; eso lo trata la secretaría social, no WinProx. Una foto con la solicitud se guarda 6 meses y después se borra. Guarde una copia si la necesita más tiempo.",
                 "items": [
                     "Una solicitud va de una fecha de inicio a una fecha de fin, como máximo 31 días (Otro: un día), y no en el pasado. La lista en Clock Point es Vacaciones, Compensatorio, Enfermedad y luego Otro por nombre.",
                     "En el cuadrante de administración, las solicitudes abiertas aparecen como una marca en los días correspondientes; esa marca abre Time → Solicitudes (el turno permanece hasta la aprobación).",

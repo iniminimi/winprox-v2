@@ -207,5 +207,10 @@
             "missing_employer_body": "CIAO ist aktiv, aber ohne KBO-Nummer kann WinProx nichts an die LSS senden. Tragen Sie Ihre KBO-Nummer ein, um die Übermittlung zu aktivieren.",
             "missing_employer_cta": "Zu den Einstellungen"
         }
+    },
+    "absence_photos": {
+        "title": "Fotos zur Abwesenheit",
+        "body": "Manche Fotos sind älter als 5 Monate. Innerhalb eines Monats werden sie gelöscht. Bewahren Sie selbst eine Kopie auf, wenn Sie sie länger brauchen.",
+        "cta": "Fotos ansehen"
     }
 }

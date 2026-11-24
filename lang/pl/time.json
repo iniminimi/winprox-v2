@@ -51,8 +51,14 @@
             "not_cancellable": "Tego wniosku nie można wycofać.",
             "half_day_range": "Pół dnia może obejmować tylko jedną datę.",
             "shift_type_required": "Wybierz typ.",
-            "other_single_day": "Ten typ można zgłosić tylko na jeden dzień."
-        }
+            "other_single_day": "Ten typ można zgłosić tylko na jeden dzień.",
+            "photos_max": "Najwyżej 4 zdjęcia.",
+            "photos_image": "Tylko zdjęcia.",
+            "photos_size": "Zdjęcie jest za duże."
+        },
+        "photos_kept": "Zdjęcia przy wniosku zostają na 6 miesięcy. Potem są usuwane. Zachowaj kopię, jeśli potrzebujesz ich dłużej.",
+        "photos_expiring_note": "Te zdjęcia zostaną usunięte w ciągu miesiąca.",
+        "photos_show_all": "Wszystkie wnioski"
     },
     "portal": {
         "title": "Logowanie",
@@ -218,7 +224,9 @@
             "recup_balance": "Nadgodziny (czas wolny): :hours",
             "shift_type": "Wybierz nieobecność:",
             "shift_type_placeholder": "Wybierz typ",
-            "period_hint_single": "Dotknij daty. Dni z przeszłości nie można wybrać."
+            "period_hint_single": "Dotknij daty. Dni z przeszłości nie można wybrać.",
+            "photos_add": "Zdjęcie zaświadczenia",
+            "photos_hint": "Opcjonalnie. WinProx przechowuje zdjęcie przez 6 miesięcy, a potem je usuwa. Zachowaj kopię, jeśli potrzebujesz go dłużej."
         },
         "now": {
             "status_out": "Bez wejścia",

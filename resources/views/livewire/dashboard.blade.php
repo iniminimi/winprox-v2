@@ -411,6 +411,10 @@
             <div class="wp-flash wp-flash--success">{{ session('time_flash') }}</div>
         @endif
 
+        @if ($expiringAbsencePhotos > 0)
+            @include('partials.wp-absence-photo-expiry-card')
+        @endif
+
         @if ($intentHub !== null)
             <section class="wp-stack wp-dashboard-intent" aria-label="{{ __('dashboard.intent.title') }}">
                 <x-wp-page-head-title

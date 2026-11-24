@@ -29,4 +29,11 @@ return [
     | Foto's van het fotoalbum per unit (bestand + rij). De verzendhistoriek blijft.
     */
     'unit_album_photos_days' => (int) env('RETENTION_UNIT_ALBUM_PHOTOS_DAYS', 7),
+
+    /*
+    | Foto's bij een afwezigheidsaanvraag (bestand + rij). De aanvraag blijft.
+    | Na warn_months waarschuwt het beginscherm; na absence_photos_months wist de prune.
+    */
+    'absence_photos_months' => (int) env('RETENTION_ABSENCE_PHOTOS_MONTHS', 6),
+    'absence_photos_warn_months' => (int) env('RETENTION_ABSENCE_PHOTOS_WARN_MONTHS', 5),
 ];

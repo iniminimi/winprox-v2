@@ -6,14 +6,14 @@ use App\Actions\Billing\ApplyPlanEntitlementsAction;
 use App\Actions\Billing\RealignSubscriptionPeriodAction;
 use App\Actions\Checkmate\BuildCheckmateDashboardDataAction;
 use App\Actions\Dashboard\BuildDashboardIntentHubAction;
-use App\Actions\ReleaseNotes\ShouldShowWhatsNewCardAction;
 use App\Actions\Dashboard\BuildDashboardStatsAction;
 use App\Actions\Dashboard\ListDashboardRecentIssuesAction;
 use App\Actions\Onboarding\ApplyTenantStarterPackAction;
 use App\Actions\Onboarding\DismissTenantStarterPackResultAction;
 use App\Actions\Onboarding\RemoveTenantStarterPackAction;
+use App\Actions\ReleaseNotes\ShouldShowWhatsNewCardAction;
+use App\Actions\Time\CountExpiringAbsencePhotosAction;
 use App\Actions\Time\EnsureDefaultClockPointAction;
-use App\Livewire\Concerns\ManagesManualClockIn;
 use App\Actions\Time\SendClockPointQrMailAction;
 use App\Data\Onboarding\ApplyTenantStarterPackData;
 use App\Data\Time\SendClockPointQrMailData;
@@ -21,6 +21,7 @@ use App\Enums\TenantStarterPackSize;
 use App\Enums\TenantStarterPackType;
 use App\Http\Requests\Onboarding\ApplyTenantStarterPackRequest;
 use App\Http\Requests\Time\SendClockPointQrMailRequest;
+use App\Livewire\Concerns\ManagesManualClockIn;
 use App\Models\ClockPoint;
 use App\Models\Tenant;
 use App\Models\User;
@@ -253,6 +254,7 @@ class Dashboard extends Component
         ListDashboardRecentIssuesAction $listRecentIssues,
         BuildCheckmateDashboardDataAction $buildCheckmate,
         ShouldShowWhatsNewCardAction $shouldShowWhatsNew,
+        CountExpiringAbsencePhotosAction $countExpiringAbsencePhotos,
     ) {
         $tenant = $this->resolveTenant();
         if ($tenant !== null) {
@@ -264,6 +266,9 @@ class Dashboard extends Component
 
         $tenantId = (int) (Tenancy::id() ?? $tenant?->id ?? 0);
         $hasTimeModule = $tenant?->hasTimeModule() ?? false;
+        $expiringAbsencePhotos = $tenantId > 0
+            ? $countExpiringAbsencePhotos->handle($tenantId)
+            : 0;
         $hasIotModule = $tenant?->hasIotModule() ?? false;
         // Checkmate: eigen dashboard-variant — geen facility-onboarding,
         // geen meldingen/taken-KPI's (docs/CHECKMATE.md §5).
@@ -343,6 +348,7 @@ class Dashboard extends Component
             'portalBatteryState' => $tenant?->portalDashboardBatteryState(),
             'onboarding' => $onboarding,
             'hasTimeModule' => $hasTimeModule,
+            'expiringAbsencePhotos' => $expiringAbsencePhotos,
             'canApplyStarterPack' => $canApplyStarterPack,
             'showStarterPackChooser' => $showStarterPackChooser,
             'canManageStarterPack' => $canManageStarterPack,

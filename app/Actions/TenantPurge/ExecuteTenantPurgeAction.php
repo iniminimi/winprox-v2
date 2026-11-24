@@ -47,12 +47,14 @@ final class ExecuteTenantPurgeAction
 
     /** Kolommen met paden op de privé-disk (`local`), zelfde opbouw als MEDIA_PATH_COLUMNS. */
     public const PRIVATE_MEDIA_PATH_COLUMNS = [
+        'absence_request_photos' => ['path'],
         'unit_album_photos' => ['path'],
         'team_documents' => ['file_path'],
     ];
 
     /** Mappen op de privé-disk met de tenant-id in het pad. */
     public const PRIVATE_MEDIA_TENANT_DIRECTORIES = [
+        'absence-request-photos',
         'unit-album',
         'team-documents',
     ];

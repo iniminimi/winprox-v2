@@ -22,7 +22,7 @@ class ListWorkerAbsenceRequestsAction
         }
 
         return AbsenceRequest::query()
-            ->with(['shiftType'])
+            ->with(['shiftType', 'photos'])
             ->where('tenant_id', $tenantId)
             ->where('worker_id', $worker->id)
             ->orderByDesc('created_at')

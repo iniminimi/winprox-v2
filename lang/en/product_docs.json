@@ -132,7 +132,7 @@
             },
             {
                 "title": "Leave and absence",
-                "body": "Workers request leave, TOIL, sick leave or (if set up) a type under Other via Clock Point. Staff decide under Time → Requests — sick leave must be approved too. No e-mail is sent. Sick leave and Other (e.g. short leave, personal day) do not count toward leave balance or TOIL; payroll handles that, not WinProx.",
+                "body": "Workers request leave, TOIL, sick leave or (if set up) a type under Other via Clock Point. Staff decide under Time → Requests — sick leave must be approved too. No e-mail is sent. Sick leave and Other (e.g. short leave, personal day) do not count toward leave balance or TOIL; payroll handles that, not WinProx. A photo with the request is kept for 6 months and then deleted. Keep your own copy if you need it longer.",
                 "items": [
                     "A request runs from a start date to an end date, at most 31 days (Other: one day), and not in the past. The Clock Point list is Leave, Comp time, Sick, then Other by name.",
                     "In the admin roster, open requests appear as a marker on the relevant days; that marker opens Time → Requests (the shift stays until approval).",

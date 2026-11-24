@@ -207,5 +207,10 @@
             "missing_employer_body": "CIAO staat aan, maar zonder KBO-nummer kan WinProx niets naar de RSZ sturen. Vul je KBO-nummer in om de doorgifte te activeren.",
             "missing_employer_cta": "Naar instellingen"
         }
+    },
+    "absence_photos": {
+        "title": "Foto's bij afwezigheid",
+        "body": "Sommige foto's zijn ouder dan 5 maanden. Binnen een maand worden ze gewist. Bewaar zelf een kopie als u ze langer nodig hebt.",
+        "cta": "Bekijk de foto's"
     }
 }

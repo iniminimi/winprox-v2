@@ -53,8 +53,8 @@ use App\Enums\ClockDeviceRefusalReason;
 use App\Enums\ClockSource;
 use App\Enums\PortalRosterClockAlert;
 use App\Enums\ShiftTypeKind;
-use App\Enums\TeamLibraryKind;
 use App\Enums\TaskStatus;
+use App\Enums\TeamLibraryKind;
 use App\Enums\UnitCheckResult;
 use App\Enums\UnitCheckSource;
 use App\Enums\WorkerNotificationType;
@@ -102,6 +102,7 @@ use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -249,6 +250,9 @@ class TimePortal extends Component
     public string $absenceDateTo = '';
 
     public string $absenceDescription = '';
+
+    /** @var array<int, mixed> */
+    public array $absencePhotos = [];
 
     public string $scheduleMonth = '';
 
@@ -836,8 +840,10 @@ class TimePortal extends Component
         $this->absenceDateTo = $today;
         $this->absenceDescription = '';
         $this->absenceHalfDay = false;
-        $this->resetErrorBag(['absenceKind', 'absenceShiftTypeId', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription', 'absenceHalfDay']);
+        $this->absencePhotos = [];
+        $this->resetErrorBag(['absenceKind', 'absenceShiftTypeId', 'absenceDateFrom', 'absenceDateTo', 'absenceDescription', 'absenceHalfDay', 'absencePhotos']);
         $this->absenceListOpen = true;
+        $this->dispatch('wp-prepare-photo-inputs');
     }
 
     public function updatedAbsenceShiftTypeId(): void
@@ -854,6 +860,15 @@ class TimePortal extends Component
     public function closeAbsence(): void
     {
         $this->absenceListOpen = false;
+        $this->absencePhotos = [];
+        $this->dispatch('wp-clear-photo-previews');
+    }
+
+    public function removeAbsencePhoto(int $index): void
+    {
+        if (isset($this->absencePhotos[$index])) {
+            array_splice($this->absencePhotos, $index, 1);
+        }
     }
 
     public function openTeamleader(): void
@@ -890,17 +905,23 @@ class TimePortal extends Component
                 'absenceDateFrom' => RequestAbsenceRequest::rulesFor()['date_from'],
                 'absenceDateTo' => ['required', 'date_format:Y-m-d', 'after_or_equal:absenceDateFrom'],
                 'absenceDescription' => RequestAbsenceRequest::rulesFor()['description'],
+                'absencePhotos' => ['nullable', 'array', 'max:'.RequestAbsenceAction::MAX_PHOTOS],
+                'absencePhotos.*' => ['image', 'max:10240'],
             ],
             [
                 'absenceDateFrom.after_or_equal' => __('time.absence.errors.date_in_past'),
                 'absenceDateTo.after_or_equal' => __('time.absence.errors.range_inverted'),
                 'absenceShiftTypeId.required' => __('time.absence.errors.shift_type_required'),
+                'absencePhotos.max' => __('time.absence.errors.photos_max'),
+                'absencePhotos.*.image' => __('time.absence.errors.photos_image'),
+                'absencePhotos.*.max' => __('time.absence.errors.photos_size'),
             ],
             [
                 'absenceShiftTypeId' => __('time.portal.absence.shift_type'),
                 'absenceDateFrom' => __('time.portal.absence.date_from'),
                 'absenceDateTo' => __('time.portal.absence.date_to'),
                 'absenceDescription' => __('time.portal.absence.description'),
+                'absencePhotos' => __('time.portal.absence.photos_add'),
             ],
         );
 
@@ -929,12 +950,15 @@ class TimePortal extends Component
                     $this->absenceDescription !== '' ? $this->absenceDescription : null,
                     $this->absenceHalfDay,
                     (int) $type->id,
+                    array_values($this->absencePhotos),
                 ),
             );
         } catch (InvalidArgumentException $e) {
-            $field = in_array($e->getMessage(), ['no_shift_type', 'invalid_kind'], true)
-                ? 'absenceShiftTypeId'
-                : 'absenceDateFrom';
+            $field = match ($e->getMessage()) {
+                'no_shift_type', 'invalid_kind' => 'absenceShiftTypeId',
+                'photos_max' => 'absencePhotos',
+                default => 'absenceDateFrom',
+            };
             $this->addError($field, __('time.absence.errors.'.$e->getMessage()));
 
             return;
@@ -942,7 +966,9 @@ class TimePortal extends Component
 
         $this->absenceDescription = '';
         $this->absenceHalfDay = false;
+        $this->absencePhotos = [];
         $this->absenceShiftTypeId = $this->defaultRequestableAbsenceTypeId();
+        $this->dispatch('wp-clear-photo-previews');
         $this->portalFlash('time.portal.absence.submitted');
     }
 
@@ -3029,9 +3055,9 @@ class TimePortal extends Component
     }
 
     /**
-     * @return \Illuminate\Support\Collection<int, ShiftType>
+     * @return Collection<int, ShiftType>
      */
-    private function requestableAbsenceTypes(): \Illuminate\Support\Collection
+    private function requestableAbsenceTypes(): Collection
     {
         return ShiftType::query()
             ->where('tenant_id', $this->tenantId)

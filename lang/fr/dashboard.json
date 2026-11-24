@@ -207,5 +207,10 @@
             "missing_employer_body": "CIAO est activé, mais sans numéro BCE WinProx ne peut rien envoyer à l'ONSS. Encodez votre numéro BCE pour activer la transmission.",
             "missing_employer_cta": "Vers les paramètres"
         }
+    },
+    "absence_photos": {
+        "title": "Photos d'absence",
+        "body": "Certaines photos ont plus de 5 mois. Elles seront effacées dans un mois. Gardez une copie si vous en avez besoin plus longtemps.",
+        "cta": "Voir les photos"
     }
 }

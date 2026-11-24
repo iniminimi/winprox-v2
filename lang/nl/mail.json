@@ -174,6 +174,7 @@
                 "unit_check_photos": "Unit check-foto's: :count",
                 "planned_shifts": "Geplande diensten: :count",
                 "absence_requests": "Verlofaanvragen: :count",
+                "absence_request_photos": "Foto's bij afwezigheid: :count",
                 "shift_types": "Diensttypes: :count",
                 "worker_notifications": "Meldingen aan uitvoerders: :count",
                 "clock_display_claims": "Klokscherm-koppelingen: :count",

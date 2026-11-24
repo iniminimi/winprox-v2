@@ -207,5 +207,10 @@
             "missing_employer_body": "CIAO está activo, pero sin número CBE WinProx no puede enviar nada a la ONSS. Indique su número CBE para activar la transmisión.",
             "missing_employer_cta": "Ir a configuración"
         }
+    },
+    "absence_photos": {
+        "title": "Fotos de ausencia",
+        "body": "Algunas fotos tienen más de 5 meses. Se borrarán en un mes. Guarde una copia si las necesita más tiempo.",
+        "cta": "Ver las fotos"
     }
 }

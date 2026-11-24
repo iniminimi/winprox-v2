@@ -132,7 +132,7 @@
             },
             {
                 "title": "Urlaub und Abwesenheit",
-                "body": "Mitarbeitende beantragen Urlaub, Ausgleich, Krankheit oder (falls eingerichtet) einen Typ unter Sonstige über Clock Point. Die Verwaltung entscheidet unter Time → Anträge — auch Krankheit muss genehmigt werden. Es geht keine E-Mail. Krankheit und Sonstige zählen nicht zum Urlaubssaldo oder Ausgleich; das macht das Sozialsekretariat, nicht WinProx.",
+                "body": "Mitarbeitende beantragen Urlaub, Ausgleich, Krankheit oder (falls eingerichtet) einen Typ unter Sonstige über Clock Point. Die Verwaltung entscheidet unter Time → Anträge — auch Krankheit muss genehmigt werden. Es geht keine E-Mail. Krankheit und Sonstige zählen nicht zum Urlaubssaldo oder Ausgleich; das macht das Sozialsekretariat, nicht WinProx. Ein Foto zum Antrag bleibt 6 Monate gespeichert und wird danach gelöscht. Bewahren Sie selbst eine Kopie auf, wenn Sie es länger brauchen.",
                 "items": [
                     "Ein Antrag läuft von einem Anfangs- bis zu einem Enddatum, höchstens 31 Tage (Andere: ein Tag), und nicht in der Vergangenheit. Die Liste auf Clock Point ist Urlaub, Ausgleich, Krank, danach Andere nach Name.",
                     "Im Verwaltungs-Dienstplan sehen Sie offene Anträge als Markierung an den betreffenden Tagen; über die Markierung öffnen Sie Time → Anträge (der Dienst bleibt bis zur Freigabe stehen).",

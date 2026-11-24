@@ -601,7 +601,9 @@
             "recup_balance": "Heures supplémentaires (récup) : :hours",
             "shift_type": "Choisissez l’absence :",
             "shift_type_placeholder": "Choisissez un type",
-            "period_hint_single": "Touchez la date. Les jours passés ne sont pas sélectionnables."
+            "period_hint_single": "Touchez la date. Les jours passés ne sont pas sélectionnables.",
+            "photos_add": "Photo d'un document",
+            "photos_hint": "Facultatif. WinProx garde une photo 6 mois, puis l'efface. Gardez une copie si vous en avez besoin plus longtemps."
         },
         "now": {
             "status_out": "Pas pointé",
@@ -1205,8 +1207,14 @@
             "not_cancellable": "Vous ne pouvez pas retirer cette demande.",
             "half_day_range": "Une demi-journée ne peut concerner qu'une seule date.",
             "shift_type_required": "Choisissez un type.",
-            "other_single_day": "Ce type ne peut être demandé que pour un seul jour."
-        }
+            "other_single_day": "Ce type ne peut être demandé que pour un seul jour.",
+            "photos_max": "4 photos au maximum.",
+            "photos_image": "Uniquement des photos.",
+            "photos_size": "Une photo est trop grande."
+        },
+        "photos_kept": "Les photos d'une demande restent 6 mois. Ensuite elles sont effacées. Gardez une copie si vous en avez besoin plus longtemps.",
+        "photos_expiring_note": "Ces photos seront effacées dans un mois.",
+        "photos_show_all": "Toutes les demandes"
     },
     "leave_balance": {
         "short": ":days j",

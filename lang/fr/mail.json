@@ -174,6 +174,7 @@
                 "unit_check_photos": "Photos de contrôle d'unité: :count",
                 "planned_shifts": "Services planifiés: :count",
                 "absence_requests": "Demandes d'absence: :count",
+                "absence_request_photos": "Photos d'absence: :count",
                 "shift_types": "Types de service: :count",
                 "worker_notifications": "Notifications aux exécutants: :count",
                 "clock_display_claims": "Couplages d'écrans de pointage: :count",

@@ -132,7 +132,7 @@
             },
             {
                 "title": "Verlof en afwezigheid",
-                "body": "Medewerkers vragen verlof, recup, ziekte of (als beheer die heeft aangemaakt) een type onder Andere via Clock Point. De beheerder beslist in Time → Aanvragen — ook ziekte moet worden goedgekeurd. Er gaat geen e-mail uit. Ziekte en Andere (bv. klein verlet, baaldag) tellen niet mee voor het verlofsaldo of recup; dat verwerkt het sociaal secretariaat, niet WinProx.",
+                "body": "Medewerkers vragen verlof, recup, ziekte of (als beheer die heeft aangemaakt) een type onder Andere via Clock Point. De beheerder beslist in Time → Aanvragen — ook ziekte moet worden goedgekeurd. Er gaat geen e-mail uit. Ziekte en Andere (bv. klein verlet, baaldag) tellen niet mee voor het verlofsaldo of recup; dat verwerkt het sociaal secretariaat, niet WinProx. Een foto bij de aanvraag blijft 6 maanden bewaard en wordt daarna gewist. Bewaar zelf een kopie als u ze langer nodig hebt.",
                 "items": [
                     "Een aanvraag loopt van een begindatum tot een einddatum, maximaal 31 dagen (Andere: één dag), en niet in het verleden. De keuzelijst op Clock Point staat als Verlof, Recup, Ziek, daarna Andere op naam.",
                     "In het beheer-uurrooster ziet u open aanvragen als markering op de betreffende dagen; via die markering opent u Time → Aanvragen (dienst blijft staan tot goedkeuring).",
