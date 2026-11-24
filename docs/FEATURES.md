@@ -819,7 +819,7 @@ stuurt events; WinProx zet die om in workflow.
 - Menu: **Plaatsen → Sense**. Alleen admin. Checkmate ziet het niet.
 - Eén punt per unit. De kaart toont de unitnaam; een site-unit toont de locatienaam. Zwarte kaart, dezelfde verzadigde kleuren als het lcd.
 - Temperatuur en vocht: onder, streef, boven. Streef is geen alarm. CO₂ en VOC: alleen boven.
-- `POST /api/v1/sense/readings` met `X-WinProx-Sense-Key` (`wpsense_…`, één keer zichtbaar). Zie `docs/api/sense.md`.
+- `POST /api/v1/sense/readings` met `X-WinProx-Sense-Key` (`wpsense_…`). De beheerder ziet die sleutel niet; koppelen van het scherm volgt als de D1S er is. Zie `docs/api/sense.md`.
 - Opnames van een camera horen hier niet bij.
 
 ---

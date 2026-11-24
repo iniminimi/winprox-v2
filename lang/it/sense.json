@@ -31,12 +31,6 @@
         "yesterday_at": "ieri alle :time",
         "date_at": ":date alle :time"
     },
-    "token": {
-        "title": "Chiave di questo locale",
-        "once": "Questa chiave si vede una sola volta. Lo schermo la usa per inviare le misurazioni.",
-        "rotate": "Nuova chiave",
-        "prefix": "Chiave :prefix…"
-    },
     "errors": {
         "unavailable": "Sense non è disponibile qui.",
         "unit_invalid": "Scegli un locale.",

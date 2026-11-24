@@ -1,6 +1,6 @@
 # Sense readings
 
-Device key for one room (shown once in **Plaatsen → Sense**). Does not create issues or tasks.
+Device key for one room. The admin screen does not show it. Does not create issues or tasks.
 
 ## Auth
 

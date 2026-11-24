@@ -31,12 +31,6 @@
         "yesterday_at": "gestern um :time",
         "date_at": ":date um :time"
     },
-    "token": {
-        "title": "Schlüssel für diesen Raum",
-        "once": "Diesen Schlüssel sehen Sie einmal. Das Display sendet damit die Messwerte.",
-        "rotate": "Neuer Schlüssel",
-        "prefix": "Schlüssel :prefix…"
-    },
     "errors": {
         "unavailable": "Sense ist hier nicht verfügbar.",
         "unit_invalid": "Wählen Sie einen Raum.",

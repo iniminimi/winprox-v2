@@ -31,12 +31,6 @@
         "yesterday_at": "yesterday at :time",
         "date_at": ":date at :time"
     },
-    "token": {
-        "title": "Key for this room",
-        "once": "You see this key once. The screen uses it to send readings.",
-        "rotate": "New key",
-        "prefix": "Key :prefix…"
-    },
     "errors": {
         "unavailable": "Sense is not available here.",
         "unit_invalid": "Choose a room.",

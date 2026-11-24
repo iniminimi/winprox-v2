@@ -53,17 +53,13 @@
                         </p>
                     </div>
 
-                    <div class="wp-cluster wp-sense-tools">
-                        <span class="wp-muted">{{ __('sense.token.prefix', ['prefix' => $room->tokenPrefix]) }}</span>
-                        @if ($canManage)
-                            <button type="button" class="btn btn--ghost btn--sm" wire:click="rotateToken({{ $room->id }})">
-                                {{ __('sense.token.rotate') }}
-                            </button>
+                    @if ($canManage)
+                        <div class="wp-cluster wp-sense-tools">
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="askDelete({{ $room->id }})">
                                 {{ __('common.button.delete') }}
                             </button>
-                        @endif
-                    </div>
+                        </div>
+                    @endif
                 </article>
             @endforeach
         </div>
@@ -92,20 +88,6 @@
                         <button type="button" class="btn btn--ghost" wire:click="closeCreate">{{ __('common.button.cancel') }}</button>
                     </div>
                 @endif
-            </div>
-        </x-wp-modal>
-    @endif
-
-    @if ($showToken)
-        <x-wp-modal closeMethod="closeToken">
-            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
-                <div class="wp-modal-head">
-                    <h2 class="wp-section-title">{{ __('sense.token.title') }}</h2>
-                    <x-wp-modal-close wire:click="closeToken" />
-                </div>
-                <p class="wp-text-body">{{ __('sense.token.once') }}</p>
-                <code class="wp-input">{{ $plainToken }}</code>
-                <button type="button" class="btn btn--primary" wire:click="closeToken">{{ __('common.button.close') }}</button>
             </div>
         </x-wp-modal>
     @endif

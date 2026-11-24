@@ -31,12 +31,6 @@
         "yesterday_at": "hier à :time",
         "date_at": ":date à :time"
     },
-    "token": {
-        "title": "Clé de ce local",
-        "once": "Cette clé ne s'affiche qu'une fois. L'écran l'utilise pour envoyer les mesures.",
-        "rotate": "Nouvelle clé",
-        "prefix": "Clé :prefix…"
-    },
     "errors": {
         "unavailable": "Sense n'est pas disponible ici.",
         "unit_invalid": "Choisissez un local.",

@@ -8,7 +8,6 @@ use App\Actions\Sense\CreateSensePointAction;
 use App\Actions\Sense\DeleteSensePointAction;
 use App\Actions\Sense\ListSenseRoomsAction;
 use App\Actions\Sense\ListSenseUnitChoicesAction;
-use App\Actions\Sense\RotateSensePointTokenAction;
 use App\Actions\Sense\UpdateSenseBandsAction;
 use App\Models\SensePoint;
 use App\Support\Tenancy;
@@ -26,15 +25,11 @@ class Index extends Component
 
     public bool $showCreate = false;
 
-    public bool $showToken = false;
-
     public bool $showDelete = false;
 
     public ?int $unitId = null;
 
     public ?int $deleteId = null;
-
-    public ?string $plainToken = null;
 
     public ?string $bandError = null;
 
@@ -64,7 +59,7 @@ class Index extends Component
         ]);
 
         try {
-            $result = $create->handle((int) $this->unitId, (int) Tenancy::id(), (int) auth()->id());
+            $create->handle((int) $this->unitId, (int) Tenancy::id(), (int) auth()->id());
         } catch (ValidationException $exception) {
             $message = collect($exception->errors())->flatten()->first();
             $this->addError('unitId', is_string($message) ? $message : __('sense.errors.unit_invalid'));
@@ -73,14 +68,6 @@ class Index extends Component
         }
 
         $this->closeCreate();
-        $this->plainToken = $result['plain_token'];
-        $this->showToken = true;
-    }
-
-    public function closeToken(): void
-    {
-        $this->showToken = false;
-        $this->plainToken = null;
     }
 
     public function saveBands(int $pointId, string $metric, float $low, ?float $target, float $high, UpdateSenseBandsAction $update): bool
@@ -103,15 +90,6 @@ class Index extends Component
         }
 
         return true;
-    }
-
-    public function rotateToken(int $pointId, RotateSensePointTokenAction $rotate): void
-    {
-        $point = SensePoint::query()->findOrFail($pointId);
-        $this->authorize('update', $point);
-        $result = $rotate->handle($point, (int) Tenancy::id(), (int) auth()->id());
-        $this->plainToken = $result['plain_token'];
-        $this->showToken = true;
     }
 
     public function askDelete(int $pointId): void

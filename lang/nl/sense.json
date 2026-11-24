@@ -31,12 +31,6 @@
         "yesterday_at": "gisteren om :time",
         "date_at": ":date om :time"
     },
-    "token": {
-        "title": "Sleutel voor dit lokaal",
-        "once": "Deze sleutel zie je één keer. Het scherm stuurt daarmee zijn metingen.",
-        "rotate": "Nieuwe sleutel",
-        "prefix": "Sleutel :prefix…"
-    },
     "errors": {
         "unavailable": "Sense is hier niet beschikbaar.",
         "unit_invalid": "Kies een lokaal.",

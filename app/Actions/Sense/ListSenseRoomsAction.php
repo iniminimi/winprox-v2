@@ -34,7 +34,6 @@ class ListSenseRoomsAction
                 id: (int) $point->id,
                 name: $name,
                 ok: $ok,
-                tokenPrefix: (string) $point->token_prefix,
                 lastLabel: $this->lastLabel($point),
                 temperature: $this->band($point, SenseMetric::Temperature),
                 humidity: $this->band($point, SenseMetric::Humidity),
