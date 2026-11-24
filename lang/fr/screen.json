@@ -1,0 +1,41 @@
+{
+    "button": "Écran",
+    "pill": "Écran",
+    "title": "Écran pour :name",
+    "subtitle": "Saisissez le code affiché sur l’appareil. Vous voyez ensuite quel écran est relié.",
+    "back": "Retour au lieu",
+    "limits": "Vous réglez les repères dans",
+    "code": {
+        "title": "Couplage",
+        "hint": "L’appareil affiche un écran pour saisir le code. Vous confirmez ici de quel appareil il s’agit.",
+        "issue": "Générer un code",
+        "valid_until": "Valable jusqu’à :time"
+    },
+    "linked": {
+        "title": "Écran relié",
+        "device": "Appareil",
+        "paired_at": "Relié le",
+        "unlink": "Détacher"
+    },
+    "pending": {
+        "title": "Un écran demande à se relier",
+        "confirm": "Relier",
+        "deny": "Refuser"
+    },
+    "unlink_modal": {
+        "title": "Détacher l’écran",
+        "body": "L’appareil s’arrête pour ce local. Vous pouvez ensuite relier un autre écran.",
+        "confirm": "Détacher"
+    },
+    "flash": {
+        "issued": "Code de couplage prêt.",
+        "confirmed": "Écran relié.",
+        "denied": "Demande refusée.",
+        "unlinked": "Écran détaché."
+    },
+    "errors": {
+        "unit_invalid": "Ce local n’appartient pas à cette organisation.",
+        "code_invalid": "Ce code est invalide ou expiré.",
+        "not_pending": "Cette demande n’est plus ouverte."
+    }
+}

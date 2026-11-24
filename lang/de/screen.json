@@ -1,0 +1,41 @@
+{
+    "button": "Display",
+    "pill": "Display",
+    "title": "Display für :name",
+    "subtitle": "Geben Sie den Code ein, der auf dem Gerät steht. Danach sehen Sie, welches Display hängt.",
+    "back": "Zurück zum Standort",
+    "limits": "Die Grenzen stellen Sie ein unter",
+    "code": {
+        "title": "Koppeln",
+        "hint": "Das Gerät zeigt ein Feld für den Code. Hier bestätigen Sie danach, welches Gerät es ist.",
+        "issue": "Koppelcode erzeugen",
+        "valid_until": "Gültig bis :time"
+    },
+    "linked": {
+        "title": "Gekoppeltes Display",
+        "device": "Gerät",
+        "paired_at": "Gekoppelt am",
+        "unlink": "Trennen"
+    },
+    "pending": {
+        "title": "Ein Display möchte sich koppeln",
+        "confirm": "Koppeln",
+        "deny": "Ablehnen"
+    },
+    "unlink_modal": {
+        "title": "Display trennen",
+        "body": "Das Gerät stoppt für diesen Raum. Danach können Sie ein anderes Display koppeln.",
+        "confirm": "Trennen"
+    },
+    "flash": {
+        "issued": "Koppelcode bereit.",
+        "confirmed": "Display gekoppelt.",
+        "denied": "Anfrage abgelehnt.",
+        "unlinked": "Display getrennt."
+    },
+    "errors": {
+        "unit_invalid": "Dieser Raum gehört nicht zu dieser Organisation.",
+        "code_invalid": "Dieser Code ist ungültig oder abgelaufen.",
+        "not_pending": "Diese Anfrage ist nicht mehr offen."
+    }
+}

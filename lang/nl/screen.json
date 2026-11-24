@@ -1,0 +1,41 @@
+{
+    "button": "Scherm",
+    "pill": "Scherm",
+    "title": "Scherm voor :name",
+    "subtitle": "Toets de code in die op het toestel staat. Daarna ziet u welk scherm er hangt.",
+    "back": "Terug naar de locatie",
+    "limits": "De grenzen stelt u in bij",
+    "code": {
+        "title": "Koppelen",
+        "hint": "Het toestel toont een scherm om de code in te toetsen. Daarna bevestigt u hier welk toestel het is.",
+        "issue": "Genereer koppelcode",
+        "valid_until": "Geldig tot :time"
+    },
+    "linked": {
+        "title": "Gekoppeld scherm",
+        "device": "Toestel",
+        "paired_at": "Gekoppeld op",
+        "unlink": "Loskoppelen"
+    },
+    "pending": {
+        "title": "Scherm vraagt om te koppelen",
+        "confirm": "Koppelen",
+        "deny": "Weigeren"
+    },
+    "unlink_modal": {
+        "title": "Scherm loskoppelen",
+        "body": "Het toestel stopt voor dit lokaal. U kunt daarna een ander scherm koppelen.",
+        "confirm": "Loskoppelen"
+    },
+    "flash": {
+        "issued": "Koppelcode klaar.",
+        "confirmed": "Scherm gekoppeld.",
+        "denied": "Aanvraag geweigerd.",
+        "unlinked": "Scherm losgekoppeld."
+    },
+    "errors": {
+        "unit_invalid": "Dit lokaal hoort niet bij deze organisatie.",
+        "code_invalid": "Deze code is ongeldig of verlopen.",
+        "not_pending": "Deze aanvraag is niet meer open."
+    }
+}

@@ -90,6 +90,11 @@ class Unit extends Model
         return $this->hasOne(SensePoint::class);
     }
 
+    public function screen(): HasOne
+    {
+        return $this->hasOne(Screen::class);
+    }
+
     public function hasWorkVisitPin(): bool
     {
         return $this->latitude !== null && $this->longitude !== null;

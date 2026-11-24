@@ -291,7 +291,7 @@
             },
             {
                 "title": "Sense",
-                "body": "Sense montre par local la température, l’humidité, le CO₂ et l’indice VOC. Vous réglez les repères. L’accueil demande attention si une valeur sort de la bande ou si l’écran n’envoie plus rien.",
+                "body": "Sense montre par local la température, l’humidité, le CO₂ et l’indice VOC. Vous réglez les repères. Sur le local, le bouton Écran relie l’appareil. L’accueil demande attention si une valeur sort de la bande ou si l’écran n’envoie plus rien.",
                 "items": [
                     "Aucun signalement ni tâche n’est créé.",
                     "Un local suit la moitié de l’année : été du 1er mai au 30 septembre, hiver du 1er octobre au 30 avril. Le CO₂ demande attention au-dessus de 900. L’indice VOC passe du vert au rouge et ne demande attention qu’après une demi-heure."

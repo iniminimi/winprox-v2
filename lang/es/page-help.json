@@ -1832,6 +1832,19 @@
                 }
             ]
         },
+        "units.screen": {
+            "title": "Ayuda — Pantalla",
+            "actions": [
+                {
+                    "label": "Vincular",
+                    "text": "En la sala elija Pantalla. Genere un código y escríbalo en el aparato. Después confirme de qué aparato se trata. En una sala la pantalla muestra las cifras de Sense. Los límites siguen en Lugares → Sense."
+                },
+                {
+                    "label": "Desvincular",
+                    "text": "Desvincular detiene el aparato para esta sala. Después puede vincular otra pantalla."
+                }
+            ]
+        },
         "sense.index": {
             "title": "Ayuda — Sense",
             "actions": [

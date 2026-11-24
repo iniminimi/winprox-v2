@@ -1836,6 +1836,19 @@
                 }
             ]
         },
+        "units.screen": {
+            "title": "Aide — Écran",
+            "actions": [
+                {
+                    "label": "Coupler",
+                    "text": "Sur le local, choisissez Écran. Vous générez un code et le saisissez sur l’appareil. Ensuite vous confirmez de quel appareil il s’agit. Sur un local, l’écran montre les chiffres Sense. Les repères restent dans Lieux → Sense."
+                },
+                {
+                    "label": "Détacher",
+                    "text": "Détacher arrête l’appareil pour ce local. Vous pouvez ensuite relier un autre écran."
+                }
+            ]
+        },
         "sense.index": {
             "title": "Aide — Sense",
             "actions": [

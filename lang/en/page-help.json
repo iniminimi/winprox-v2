@@ -1832,6 +1832,19 @@
                 }
             ]
         },
+        "units.screen": {
+            "title": "Help — Screen",
+            "actions": [
+                {
+                    "label": "Pairing",
+                    "text": "On the room, choose Screen. Generate a code and type it on the device. Then confirm which device it is. On a room the screen shows the Sense figures. The marks stay under Places → Sense."
+                },
+                {
+                    "label": "Unlink",
+                    "text": "Unlink stops the device for this room. You can pair another screen afterwards."
+                }
+            ]
+        },
         "sense.index": {
             "title": "Help — Sense",
             "actions": [

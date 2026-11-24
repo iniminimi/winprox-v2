@@ -1832,6 +1832,19 @@
                 }
             ]
         },
+        "units.screen": {
+            "title": "Hulp — Scherm",
+            "actions": [
+                {
+                    "label": "Koppelen",
+                    "text": "Op het lokaal kiest u Scherm. U genereert een code en toetst die in op het toestel. Daarna bevestigt u welk toestel het is. Aan een lokaal toont het scherm de Sense-cijfers. De grenzen blijven bij Plaatsen → Sense."
+                },
+                {
+                    "label": "Loskoppelen",
+                    "text": "Loskoppelen stopt het toestel voor dit lokaal. U kunt daarna een ander scherm koppelen."
+                }
+            ]
+        },
         "sense.index": {
             "title": "Hulp — Sense",
             "actions": [

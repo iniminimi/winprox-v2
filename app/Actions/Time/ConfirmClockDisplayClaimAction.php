@@ -3,6 +3,7 @@
 namespace App\Actions\Time;
 
 use App\Actions\Ops\SyncHardwareDeviceOnDisplayClaimAction;
+use App\Actions\Screens\SyncClockScreenAction;
 use App\Enums\ClockDisplayClaimStatus;
 use App\Models\ClockDisplayClaim;
 use App\Models\ClockPoint;
@@ -26,6 +27,7 @@ class ConfirmClockDisplayClaimAction
     public function __construct(
         private AuditRecorder $audit,
         private SyncHardwareDeviceOnDisplayClaimAction $syncHardwareDevice,
+        private SyncClockScreenAction $syncScreen,
     ) {}
 
     public function handle(ClockDisplayClaim $claim, int $tenantId, ?int $actorUserId): ClockDisplayClaim
@@ -111,11 +113,15 @@ class ConfirmClockDisplayClaimAction
                 ],
             );
 
+            $freshPoint = $lockedPoint->fresh();
+
             $this->syncHardwareDevice->handle(
-                $lockedPoint->fresh(),
+                $freshPoint,
                 $locked->device_hint,
                 $actorUserId,
             );
+
+            $this->syncScreen->linked($freshPoint);
 
             return $locked;
         });

@@ -1,0 +1,41 @@
+{
+    "button": "Schermo",
+    "pill": "Schermo",
+    "title": "Schermo per :name",
+    "subtitle": "Inserite il codice mostrato sull’apparecchio. Poi vedete quale schermo è collegato.",
+    "back": "Torna al luogo",
+    "limits": "I limiti si impostano in",
+    "code": {
+        "title": "Collegamento",
+        "hint": "L’apparecchio mostra una schermata per inserire il codice. Qui confermate di quale apparecchio si tratta.",
+        "issue": "Genera codice",
+        "valid_until": "Valido fino alle :time"
+    },
+    "linked": {
+        "title": "Schermo collegato",
+        "device": "Apparecchio",
+        "paired_at": "Collegato il",
+        "unlink": "Scollega"
+    },
+    "pending": {
+        "title": "Uno schermo chiede di collegarsi",
+        "confirm": "Collega",
+        "deny": "Rifiuta"
+    },
+    "unlink_modal": {
+        "title": "Scollega lo schermo",
+        "body": "L’apparecchio si ferma per questo locale. Poi potete collegarne un altro.",
+        "confirm": "Scollega"
+    },
+    "flash": {
+        "issued": "Codice pronto.",
+        "confirmed": "Schermo collegato.",
+        "denied": "Richiesta rifiutata.",
+        "unlinked": "Schermo scollegato."
+    },
+    "errors": {
+        "unit_invalid": "Questo locale non appartiene a questa organizzazione.",
+        "code_invalid": "Questo codice non è valido o è scaduto.",
+        "not_pending": "Questa richiesta non è più aperta."
+    }
+}

@@ -1307,7 +1307,7 @@ class Show extends Component
                 'category.translations',
                 'category.teams.translations',
             ]))
-            ->with('translations')
+            ->with(['translations', 'screen'])
             ->withExists('gpsReports')
             ->withCount('issues')
             ->when($categoriesEnabled && $this->unitCategoryFilter !== '', fn ($q) => $q->where('category_id', (int) $this->unitCategoryFilter))

@@ -1832,6 +1832,19 @@
                 }
             ]
         },
+        "units.screen": {
+            "title": "Hilfe — Display",
+            "actions": [
+                {
+                    "label": "Koppeln",
+                    "text": "Am Raum wählen Sie Display. Sie erzeugen einen Code und geben ihn auf dem Gerät ein. Danach bestätigen Sie, welches Gerät es ist. An einem Raum zeigt das Display die Sense-Zahlen. Die Grenzen bleiben unter Orte → Sense."
+                },
+                {
+                    "label": "Trennen",
+                    "text": "Trennen stoppt das Gerät für diesen Raum. Danach können Sie ein anderes Display koppeln."
+                }
+            ]
+        },
         "sense.index": {
             "title": "Hilfe — Sense",
             "actions": [

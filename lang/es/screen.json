@@ -1,0 +1,41 @@
+{
+    "button": "Pantalla",
+    "pill": "Pantalla",
+    "title": "Pantalla para :name",
+    "subtitle": "Escriba el código que muestra el aparato. Después verá qué pantalla está unida.",
+    "back": "Volver al lugar",
+    "limits": "Los límites se ajustan en",
+    "code": {
+        "title": "Vincular",
+        "hint": "El aparato muestra una pantalla para escribir el código. Aquí confirma de qué aparato se trata.",
+        "issue": "Generar código",
+        "valid_until": "Válido hasta :time"
+    },
+    "linked": {
+        "title": "Pantalla vinculada",
+        "device": "Aparato",
+        "paired_at": "Vinculada el",
+        "unlink": "Desvincular"
+    },
+    "pending": {
+        "title": "Una pantalla pide vincularse",
+        "confirm": "Vincular",
+        "deny": "Rechazar"
+    },
+    "unlink_modal": {
+        "title": "Desvincular la pantalla",
+        "body": "El aparato se detiene para esta sala. Después puede vincular otra pantalla.",
+        "confirm": "Desvincular"
+    },
+    "flash": {
+        "issued": "Código listo.",
+        "confirmed": "Pantalla vinculada.",
+        "denied": "Solicitud rechazada.",
+        "unlinked": "Pantalla desvinculada."
+    },
+    "errors": {
+        "unit_invalid": "Esta sala no pertenece a esta organización.",
+        "code_invalid": "Este código no es válido o ha caducado.",
+        "not_pending": "Esta solicitud ya no está abierta."
+    }
+}

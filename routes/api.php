@@ -16,6 +16,7 @@ use App\Http\Controllers\Api\V1\UnitCheckController;
 use App\Http\Controllers\Api\V1\UnitMeasurementController;
 use App\Http\Controllers\Api\V1\PromoCampaignController;
 use App\Http\Controllers\Api\V1\ReservationController;
+use App\Http\Controllers\Api\V1\ScreenClaimController;
 use App\Http\Controllers\Api\V1\SenseReadingController;
 use App\Http\Controllers\Api\V1\WorkerController;
 use App\Http\Controllers\Api\V1\WorkShiftController;
@@ -40,6 +41,13 @@ Route::prefix('v1')->group(function () {
 
     // Klokschermen (ESP32-TFT): pairing-claim + status-poll publiek (code +
     // admin-confirm zijn de poort), ping achter wpclk_-device-token.
+    Route::post('screens/claim', [ScreenClaimController::class, 'store'])
+        ->middleware('throttle:10,1')
+        ->name('api.v1.screens.claim');
+    Route::get('screens/claim-status/{claimToken}', [ScreenClaimController::class, 'show'])
+        ->middleware('throttle:60,1')
+        ->name('api.v1.screens.claim-status');
+
     Route::post('time/clock-displays/claim', [ClockDisplayController::class, 'claim'])
         ->middleware('throttle:10,1')
         ->name('api.v1.time.clock-displays.claim');

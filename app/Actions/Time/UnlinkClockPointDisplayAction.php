@@ -2,6 +2,7 @@
 
 namespace App\Actions\Time;
 
+use App\Actions\Screens\SyncClockScreenAction;
 use App\Models\ClockPoint;
 use App\Support\Audit\AuditRecorder;
 use Illuminate\Support\Facades\DB;
@@ -15,7 +16,10 @@ use InvalidArgumentException;
  */
 class UnlinkClockPointDisplayAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private SyncClockScreenAction $syncScreen,
+    ) {}
 
     public function handle(ClockPoint $clockPoint, int $tenantId, ?int $actorUserId): ClockPoint
     {
@@ -47,6 +51,8 @@ class UnlinkClockPointDisplayAction
                 'display_paired_at' => null,
                 'display_last_seen_at' => null,
             ]);
+
+            $this->syncScreen->unlinked($locked);
 
             $this->audit->record(
                 userId: $actorUserId,

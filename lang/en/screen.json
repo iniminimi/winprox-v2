@@ -1,0 +1,41 @@
+{
+    "button": "Screen",
+    "pill": "Screen",
+    "title": "Screen for :name",
+    "subtitle": "Type the code shown on the device. Then you see which screen is attached.",
+    "back": "Back to the location",
+    "limits": "You set the marks under",
+    "code": {
+        "title": "Pairing",
+        "hint": "The device shows a screen where you type the code. Then you confirm here which device it is.",
+        "issue": "Generate pairing code",
+        "valid_until": "Valid until :time"
+    },
+    "linked": {
+        "title": "Attached screen",
+        "device": "Device",
+        "paired_at": "Paired on",
+        "unlink": "Unlink"
+    },
+    "pending": {
+        "title": "A screen is asking to pair",
+        "confirm": "Pair",
+        "deny": "Refuse"
+    },
+    "unlink_modal": {
+        "title": "Unlink screen",
+        "body": "The device stops for this room. You can pair another screen afterwards.",
+        "confirm": "Unlink"
+    },
+    "flash": {
+        "issued": "Pairing code ready.",
+        "confirmed": "Screen paired.",
+        "denied": "Request refused.",
+        "unlinked": "Screen unlinked."
+    },
+    "errors": {
+        "unit_invalid": "This room does not belong to this organisation.",
+        "code_invalid": "This code is invalid or expired.",
+        "not_pending": "This request is no longer open."
+    }
+}

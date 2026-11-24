@@ -157,6 +157,9 @@
                             @if (! $unit->is_active)
                                 <span class="wp-pill wp-pill--closed">{{ __('locations.inactive') }}</span>
                             @endif
+                            @if ($unit->screen?->isLinked())
+                                <span class="wp-pill wp-pill--done">{{ __('screen.pill') }}</span>
+                            @endif
                         </div>
                         <div class="wp-cluster">
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditUnit({{ $unit->id }})">{{ __('common.button.edit') }}</button>
@@ -167,6 +170,9 @@
                             @endif
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteUnit({{ $unit->id }})"
                                     @disabled(! $canDelete)>{{ __('common.button.delete') }}</button>
+                            @can('create', \App\Models\Screen::class)
+                                <a href="{{ route('screens.pair', $unit) }}" class="btn btn--ghost btn--sm">{{ __('screen.button') }}</a>
+                            @endcan
                             <a href="{{ route('units.qr', $unit) }}" target="_blank" class="btn btn--ghost btn--sm">{{ __('locations.unit_qr') }}</a>
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="openUnitQrPackModal({{ $unit->id }})">{{ __('locations.unit_qr_pack.button') }}</button>
                             @if ($hasEsgModule && in_array($unit->id, $unitIdsWithEsgMeasurements, true))
