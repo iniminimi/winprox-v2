@@ -73,7 +73,11 @@
         "open": "Barcode scannen",
         "manual_only": "Kamerascan nicht verfügbar; Seriennummer eintippen.",
         "unsupported": "Dieser Browser kann keine Barcodes scannen. Bitte manuell eingeben.",
-        "denied": "Kamerazugriff verweigert. Manuell eingeben oder Zugriff erlauben."
+        "denied": "Kamerazugriff verweigert. Manuell eingeben oder Zugriff erlauben.",
+        "hint": "Halten Sie den Aufkleber im Rahmen, 15–30 cm von der Linse. Tippen Sie auf das Bild zum Scharfstellen.",
+        "slow": "Klappt nicht? Tippen Sie zum Fokussieren, schalten Sie das Licht ein oder tippen Sie die Seriennummer.",
+        "torch_on": "Licht an",
+        "torch_off": "Licht aus"
     },
     "flash": {
         "registered": "Gerät :serial wurde erfasst.",

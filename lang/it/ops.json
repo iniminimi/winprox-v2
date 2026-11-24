@@ -73,7 +73,11 @@
         "open": "Scansiona codice a barre",
         "manual_only": "Scansione fotocamera non disponibile; digita il numero.",
         "unsupported": "Questo browser non legge i codici a barre. Digita manualmente.",
-        "denied": "Accesso fotocamera negato. Digita manualmente o consenti l’accesso."
+        "denied": "Accesso fotocamera negato. Digita manualmente o consenti l’accesso.",
+        "hint": "Tieni l’adesivo nel riquadro, a 15–30 cm dall’obiettivo. Tocca l’immagine per mettere a fuoco.",
+        "slow": "Non funziona? Tocca l’immagine, accendi la luce o digita il numero di serie.",
+        "torch_on": "Luce on",
+        "torch_off": "Luce off"
     },
     "flash": {
         "registered": "Dispositivo :serial registrato.",

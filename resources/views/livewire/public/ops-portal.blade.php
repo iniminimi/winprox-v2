@@ -1,11 +1,4 @@
-<div class="wp-stack"
-     x-data="wpOpsBarcodeScanner({
-         i18n: {
-             unsupported: @js(__('ops.scanner.unsupported')),
-             denied: @js(__('ops.scanner.denied')),
-         }
-     })"
->
+<div class="wp-stack">
     <div class="wp-portal-head">
         <div class="wp-portal-head-top">
             <span class="wp-brand">
@@ -58,10 +51,56 @@
         </div>
 
         <div class="wp-card wp-card-pad wp-stack">
-            <button type="button" class="btn btn--surface" x-show="supported" x-cloak @click="openScanner()">
-                {{ __('ops.scanner.open') }}
-            </button>
-            <p class="wp-muted wp-text-sm" x-show="!supported" x-cloak>{{ __('ops.scanner.manual_only') }}</p>
+            {{-- Alpine los van Livewire-morph (zelfde patroon als portal QR-scanner) --}}
+            <div
+                wire:ignore
+                x-data="wpOpsBarcodeScanner({
+                    i18n: {
+                        unsupported: @js(__('ops.scanner.unsupported')),
+                        denied: @js(__('ops.scanner.denied')),
+                        slow: @js(__('ops.scanner.slow')),
+                    }
+                })"
+            >
+                <button type="button" class="btn btn--surface" x-show="supported" x-cloak @click="openScanner()">
+                    {{ __('ops.scanner.open') }}
+                </button>
+                <p class="wp-muted wp-text-sm" x-show="!supported" x-cloak>{{ __('ops.scanner.manual_only') }}</p>
+
+                <template x-teleport="body">
+                    <div
+                        class="wp-scan-overlay"
+                        x-show="scannerOpen"
+                        x-cloak
+                        @keydown.escape.window="closeScanner()"
+                    >
+                        <div class="wp-scan-dialog" role="dialog" aria-modal="true" aria-label="{{ __('ops.scanner.open') }}">
+                            <p class="wp-scan-title">{{ __('ops.scanner.open') }}</p>
+                            <div class="wp-scan-viewport" @click="tapToFocus($event)">
+                                <video x-ref="scanVideo" playsinline muted autoplay></video>
+                                <span class="wp-scan-frame wp-scan-frame--barcode" aria-hidden="true"></span>
+                            </div>
+                            <p class="wp-scan-hint">{{ __('ops.scanner.hint') }}</p>
+                            <p class="wp-scan-hint" x-show="slowHint" x-text="i18n.slow" x-cloak></p>
+                            <p class="wp-scan-error" x-show="errorKey !== null" x-text="errorText" x-cloak></p>
+                            <div class="wp-cluster wp-cluster--wrap">
+                                <button
+                                    type="button"
+                                    class="btn btn--ghost btn--sm"
+                                    x-show="torchAvailable"
+                                    x-cloak
+                                    @click="toggleTorch()"
+                                >
+                                    <span x-text="torchOn ? @js(__('ops.scanner.torch_off')) : @js(__('ops.scanner.torch_on'))"></span>
+                                </button>
+                                <button type="button" class="btn btn--ghost btn--sm" @click="closeScanner()">
+                                    {{ __('common.button.cancel') }}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
 
             @if ($mode === 'register')
                 <form wire:submit="register" class="wp-stack">
@@ -128,19 +167,4 @@
             @endif
         </div>
     @endunless
-
-    <div
-        x-show="scannerOpen"
-        x-cloak
-        class="wp-ops-scanner"
-        role="dialog"
-        aria-modal="true"
-        aria-label="{{ __('ops.scanner.open') }}"
-    >
-        <div class="wp-ops-scanner__panel wp-stack">
-            <video x-ref="scanVideo" class="wp-ops-scanner__video" playsinline muted></video>
-            <p class="wp-muted" x-text="errorText" x-show="errorText"></p>
-            <button type="button" class="btn btn--ghost" @click="closeScanner()">{{ __('common.button.cancel') }}</button>
-        </div>
-    </div>
 </div>

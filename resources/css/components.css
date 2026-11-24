@@ -9263,28 +9263,7 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
     height: auto;
 }
 
-.wp-ops-scanner {
-    position: fixed;
-    inset: 0;
-    z-index: 80;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
-    background: color-mix(in srgb, #000 55%, transparent);
-}
-
-.wp-ops-scanner__panel {
-    width: min(28rem, 100%);
-    background: var(--wp-surface);
-    border-radius: var(--wp-radius);
-    padding: 1rem;
-}
-
-.wp-ops-scanner__video {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    border-radius: var(--wp-radius);
-    background: #000;
+/* 1D-sticker: brede horizontale leeszone i.p.v. vierkant QR-kader */
+.wp-scan-frame--barcode {
+    inset: 32% 8%;
 }
