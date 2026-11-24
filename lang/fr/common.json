@@ -143,5 +143,9 @@
         "of": "sur",
         "results": "résultats",
         "go_to_page": "Aller à la page :page"
+    },
+    "photo": {
+        "crop_title": "Recadrer la photo",
+        "crop_apply": "Utiliser la sélection"
     }
 }

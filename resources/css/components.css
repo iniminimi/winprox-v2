@@ -4486,8 +4486,17 @@ svg.wp-release-worker-row__icon,
     max-width: 100%;
 }
 
-/* Rond crop-masker enkel waar expliciet gevraagd (worker-avatar);
-   vierkant is de default (bv. klokscherm-album). */
+/* Rond crop-masker enkel voor de uitvoerdersfoto. Andere foto's zijn een vrije rechthoek. */
+.wp-worker-photo-crop--free .wp-worker-photo-crop__panel {
+    width: min(40rem, 100%);
+}
+
+.wp-worker-photo-crop--free .wp-worker-photo-crop__stage {
+    min-height: 18rem;
+    max-height: min(60vh, 28rem);
+}
+
+/* Rond crop-masker enkel waar expliciet gevraagd (worker-avatar). */
 .wp-worker-photo-crop--round .wp-worker-photo-crop__stage .cropper-view-box,
 .wp-worker-photo-crop--round .wp-worker-photo-crop__stage .cropper-face {
     border-radius: 50%;

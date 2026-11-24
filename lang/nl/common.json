@@ -143,5 +143,9 @@
         "of": "van",
         "results": "resultaten",
         "go_to_page": "Ga naar pagina :page"
+    },
+    "photo": {
+        "crop_title": "Foto bijsnijden",
+        "crop_apply": "Gebruik selectie"
     }
 }

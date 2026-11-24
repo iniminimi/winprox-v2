@@ -143,5 +143,9 @@
         "of": "di",
         "results": "risultati",
         "go_to_page": "Vai alla pagina :page"
+    },
+    "photo": {
+        "crop_title": "Ritaglia foto",
+        "crop_apply": "Usa selezione"
     }
 }

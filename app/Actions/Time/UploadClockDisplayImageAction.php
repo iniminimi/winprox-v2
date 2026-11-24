@@ -12,7 +12,7 @@ use InvalidArgumentException;
 
 /**
  * Voegt één foto toe aan het slideshow-album van het klokscherm.
- * Het bestand is client-side al vierkant (1:1) en ~480px gecomprimeerd —
+ * Het bestand is client-side al bijgesneden (vrije rechthoek, langste zijde ~480px) —
  * geen server-resize (WINPROX_RULES.md §7). `clockPoint = null` = globaal
  * ("toon op alle clockpoints").
  */

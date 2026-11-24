@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 /**
  * Eén foto uit het slideshow-album van een klokscherm.
  * `clock_point_id = null` = globaal: zichtbaar op álle klokschermen van de tenant.
- * Bestand is client-side al vierkant (1:1) en ~480px gecomprimeerd — geen
+ * Bestand is client-side al bijgesneden (vrije rechthoek, langste zijde ~480px) — geen
  * server-resize (WINPROX_RULES.md §7).
  */
 class ClockDisplayImage extends Model

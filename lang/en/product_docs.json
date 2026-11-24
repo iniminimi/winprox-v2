@@ -234,7 +234,7 @@
                 "items": [
                     "Examples of measurements: mileage, temperature, or the status of a device. The fields live under Work → Unit measurements and you switch them on per category and per unit.",
                     "Measurements arrive via a QR code or the API. A measurement can reach other software through the webhook unit.measurement.recorded.",
-                    "Up to four photos on an issue, a completion or a unit check. Per unit, up to four unit photos and one background photo. Photos are reduced on the device before upload. A reporter’s photos on the public portal become visible only after the issue is approved.",
+                    "Up to four photos on an issue, a completion or a unit check. Per unit, up to four unit photos and one background photo. Photos are reduced on the device before upload. Before saving you can crop the photo to a rectangle. A worker portrait stays round. A reporter’s photos on the public portal become visible only after the issue is approved.",
                     "For mobile units, such as a vehicle or a machine, the location can be recorded. You switch that on per category. You open the history in the back office, and a point opens in Maps."
                 ],
                 "key": "measurements"

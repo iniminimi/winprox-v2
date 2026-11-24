@@ -290,6 +290,40 @@ function wpShowUploadError(message) {
 }
 
 /**
+ * Rechthoekig bijsnijden, één foto per keer. Annuleren slaat die foto over.
+ * De ronde uitvoerdersfoto gebruikt wpCropImageFile zelf en komt hier niet langs.
+ *
+ * @param {File[]} files
+ * @param {number} maxEdge
+ * @returns {Promise<File[]>}
+ */
+async function wpCropPhotoFiles(files, maxEdge) {
+    if (typeof window.wpCropImageFile !== 'function') {
+        return files;
+    }
+
+    const labels = window.__translations || {};
+    /** @type {File[]} */
+    const kept = [];
+
+    for (const file of files) {
+        const cropped = await window.wpCropImageFile(file, {
+            free: true,
+            maxEdge,
+            title: labels['common.photo.crop_title'] || 'Crop photo',
+            applyLabel: labels['common.photo.crop_apply'] || 'Use selection',
+            cancelLabel: labels['common.button.cancel'] || 'Cancel',
+        });
+
+        if (cropped instanceof File) {
+            kept.push(cropped);
+        }
+    }
+
+    return kept;
+}
+
+/**
  * Optioneel kleinere foto's per upload-area (bv. fotoalbum dat per mail gaat).
  *
  * @param {HTMLElement} area
@@ -320,7 +354,15 @@ async function wpProcessPhotoBatch(area, input, propertyName, files) {
         return;
     }
 
-    const entries = files.map((file) => {
+    const compressOptions = wpAreaCompressOptions(area);
+    const maxEdge = compressOptions.maxDimension ?? DEFAULT_MAX_DIMENSION;
+    const croppedFiles = await wpCropPhotoFiles(files, maxEdge);
+
+    if (croppedFiles.length === 0) {
+        return;
+    }
+
+    const entries = croppedFiles.map((file) => {
         const objectUrl = URL.createObjectURL(file);
         const wrap = wpAppendLocalPhotoPreview(area, previewRoot, objectUrl, component, removeMethod);
 
@@ -329,7 +371,7 @@ async function wpProcessPhotoBatch(area, input, propertyName, files) {
 
     try {
         const compressedFiles = await Promise.all(
-            files.map((file) => wpCompressImageFile(file, wpAreaCompressOptions(area))),
+            croppedFiles.map((file) => wpCompressImageFile(file, compressOptions)),
         );
 
         if (area.dataset.wpPhotoStore === 'local') {
@@ -410,7 +452,7 @@ export function wpPrepareIssuePhotoInputs(root = document) {
  * @returns {Promise<void>}
  */
 export async function wpAwaitPhotoUploads(formOrArea, options = {}) {
-    const timeoutMs = options.timeoutMs ?? 90_000;
+    const timeoutMs = options.timeoutMs ?? 180_000;
     /** @type {HTMLElement[]} */
     const areas = [];
 

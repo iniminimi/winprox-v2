@@ -234,7 +234,7 @@
                 "items": [
                     "Beispiele für Messwerte: Kilometerstand, Temperatur oder der Status eines Geräts. Die Felder stehen unter Arbeit → Unit-Messungen und schalten Sie je Kategorie und je Unit ein.",
                     "Messwerte kommen über einen QR-Code oder die API herein. Eine Messung kann andere Software über den Webhook unit.measurement.recorded erreichen.",
-                    "Bis zu vier Fotos bei einer Meldung, einem Abschluss oder einer Unit-Kontrolle. Pro Unit bis zu vier Unit-Fotos und ein Hintergrundfoto. Fotos werden auf dem Gerät verkleinert, bevor sie hochgeladen werden. Fotos einer meldenden Person auf dem öffentlichen Portal sind erst nach Freigabe der Meldung sichtbar.",
+                    "Bis zu vier Fotos bei einer Meldung, einem Abschluss oder einer Unit-Kontrolle. Pro Unit bis zu vier Unit-Fotos und ein Hintergrundfoto. Fotos werden auf dem Gerät verkleinert, bevor sie hochgeladen werden. Vor dem Speichern können Sie das Foto rechteckig zuschneiden. Ein Porträt einer Person bleibt rund. Fotos einer meldenden Person auf dem öffentlichen Portal sind erst nach Freigabe der Meldung sichtbar.",
                     "Für mobile Units, etwa ein Fahrzeug oder eine Maschine, kann der Standort festgehalten werden. Das schalten Sie je Kategorie ein. Den Verlauf öffnen Sie in der Verwaltung, und ein Punkt öffnet in Maps."
                 ],
                 "key": "measurements"

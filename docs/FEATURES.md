@@ -505,8 +505,8 @@ de meldingenlijst te vervuilen. Los van ESG.
       Plaatsen → Categorieën / unit bewerken).
 - Tegel **Unit check** even breed als **Melding maken** (primaire tegel).
 - Keuze **OK** of **Niet OK**; optioneel GPS als locatiebewijs.
-- Optioneel per unit een **opmerking** (max. 500) en tot **4 foto’s** (client-side
-  compressie, golden path). Bewijs hangt aan de `unit_checks`-rij van die cyclus,
+- Optioneel per unit een **opmerking** (max. 500) en tot **4 foto’s** (eerst rechthoekig
+  bijsnijden, daarna client-side compressie, golden path). Bewijs hangt aan de `unit_checks`-rij van die cyclus,
   niet aan de meldingenlijst. **Niet OK** blijft de bestaande meldflow openen.
 - **OK** → rij in `unit_checks`, terug naar home.
 - **Niet OK** → rij in `unit_checks`, daarna bestaande meldflow (`new`) blijft beschikbaar.
@@ -603,7 +603,7 @@ backoffice kiest welke foto's naar één e-mailadres gaan. Algemeen, niet sector
   niet de vaste foto's van de unit.
 - De gescande unit is de enige unit. Locatie en unitnaam staan op het scherm. Geen dropdown
   en geen thuisgroep als fotokeuze.
-- Max. **24 foto's per unit per dag** (`config/unit_photo_album.php`); client-side compressie
+- Max. **24 foto's per unit per dag** (`config/unit_photo_album.php`); eerst rechthoekig bijsnijden, daarna client-side compressie
   (golden path, max. 1000 px). De server verkleint de foto niet. Onder het beeld komt een
   zwarte balk in het bestand (witte tekst, gecentreerd): datum en tijd, uitvoerder, unit en
   organisatie. De balk en de letters schalen mee met de breedte. Eigen foto's van vandaag wissen kan.
@@ -1417,8 +1417,8 @@ binnen ~30–90 s dood.
   blijven lopen) of gewoon de QR; eerste tik → QR, tweede tik →
   PIN-login. Firmware die `black` niet kent, valt terug op de foto's (zonder
   foto's: de QR).
-  Upload op de Scherm-pagina met client-side vierkant-
-  crop (`wpCropImageFile`, `aspectRatio: 1`) + compressie naar 480 px — geen
+  Upload op de Scherm-pagina met client-side vrije rechthoek
+  (`wpCropImageFile`, `free: true`, langste zijde 480 px) + compressie — geen
   server-resize. `clock_display_images.clock_point_id NULL` = "toon op alle
   klokschermen" van de tenant; het scherm krijgt eigen + globale beelden
   (`queryForPoint` filtert expliciet op de tenant van het punt — de global

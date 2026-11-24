@@ -12,5 +12,9 @@
         "done": "Finalizat",
         "closed": "Închis"
     },
-    "welcome": "Bun venit"
+    "welcome": "Bun venit",
+    "photo": {
+        "crop_title": "Decupați fotografia",
+        "crop_apply": "Folosiți selecția"
+    }
 }

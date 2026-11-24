@@ -12,8 +12,10 @@ import 'cropperjs/dist/cropper.css';
  *   title?: string,
  *   applyLabel?: string,
  *   cancelLabel?: string,
- *   circle?: boolean,           // rond crop-masker (worker-avatar); vierkant anders
- *   outputSize?: number,        // grootste dimensie van de uitvoer (default 400)
+ *   circle?: boolean,           // rond crop-masker (worker-avatar)
+ *   free?: boolean,             // vrije rechthoek; anders vaste verhouding (default 1)
+ *   outputSize?: number,        // vaste uitvoer bij een vaste verhouding (default 400)
+ *   maxEdge?: number,           // langste zijde bij een vrije rechthoek
  * }} [options]
  * @returns {Promise<File|null>} cropped file, or null if cancelled
  */
@@ -22,7 +24,8 @@ export function wpCropImageFile(file, options = {}) {
         return Promise.resolve(file);
     }
 
-    const aspectRatio = options.aspectRatio ?? 1;
+    const free = options.free === true;
+    const aspectRatio = free ? NaN : (options.aspectRatio ?? 1);
     const title = options.title ?? 'Crop';
     const applyLabel = options.applyLabel ?? 'Apply';
     const cancelLabel = options.cancelLabel ?? 'Cancel';
@@ -37,6 +40,9 @@ export function wpCropImageFile(file, options = {}) {
         root.className = 'wp-worker-photo-crop';
         if (options.circle) {
             root.classList.add('wp-worker-photo-crop--round');
+        }
+        if (free) {
+            root.classList.add('wp-worker-photo-crop--free');
         }
         root.setAttribute('role', 'dialog');
         root.setAttribute('aria-modal', 'true');
@@ -77,6 +83,7 @@ export function wpCropImageFile(file, options = {}) {
                 return;
             }
             event.preventDefault();
+            event.stopPropagation();
             event.stopImmediatePropagation();
             finish(null);
         };
@@ -88,10 +95,15 @@ export function wpCropImageFile(file, options = {}) {
                 return;
             }
 
-            const out = options.outputSize ?? 400;
+            const size = croppedCanvasSize(cropper, {
+                free,
+                aspectRatio,
+                outputSize: options.outputSize,
+                maxEdge: options.maxEdge,
+            });
             const canvas = cropper.getCroppedCanvas({
-                width: aspectRatio >= 1 ? out : Math.round(out * aspectRatio),
-                height: aspectRatio >= 1 ? Math.round(out / aspectRatio) : out,
+                width: size.width,
+                height: size.height,
                 imageSmoothingEnabled: true,
                 imageSmoothingQuality: 'high',
             });
@@ -141,6 +153,38 @@ export function wpCropImageFile(file, options = {}) {
         document.body.appendChild(root);
         applyBtn.focus();
     });
+}
+
+/**
+ * @param {Cropper} cropper
+ * @param {{ free: boolean, aspectRatio: number, outputSize?: number, maxEdge?: number }} options
+ * @returns {{ width: number, height: number }}
+ */
+function croppedCanvasSize(cropper, options) {
+    if (!options.free && options.maxEdge == null) {
+        const out = options.outputSize ?? 400;
+        const ratio = Number.isFinite(options.aspectRatio) && options.aspectRatio > 0
+            ? options.aspectRatio
+            : 1;
+
+        return {
+            width: ratio >= 1 ? out : Math.round(out * ratio),
+            height: ratio >= 1 ? Math.round(out / ratio) : out,
+        };
+    }
+
+    const box = cropper.getData(true);
+    let width = Math.max(1, Math.round(box.width));
+    let height = Math.max(1, Math.round(box.height));
+    const cap = options.maxEdge ?? options.outputSize;
+
+    if (cap && Math.max(width, height) > cap) {
+        const scale = cap / Math.max(width, height);
+        width = Math.max(1, Math.round(width * scale));
+        height = Math.max(1, Math.round(height * scale));
+    }
+
+    return { width, height };
 }
 
 /**

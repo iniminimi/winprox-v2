@@ -10,7 +10,7 @@ Baseline: **winprox V1** `image-upload-compress.js` + `wp-issue-photo-upload.bla
 
 ## Golden path
 
-1. **Client-side eerst** — `wpCompressImageFile` (max 1600px, JPEG ~72%, EXIF `imageOrientation: 'from-image'`).
+1. **Client-side eerst** — na het kiezen: vrije rechthoek bijsnijden (`wpCropImageFile`, `free: true`; annuleren slaat die foto over), daarna `wpCompressImageFile` (max 1600px, JPEG ~72%, EXIF `imageOrientation: 'from-image'`). De ronde uitvoerdersfoto blijft buiten deze wachtrij.
 2. **Preview meteen** — lokale `objectURL` vóór upload.
 3. **Per-area queue** — `wpSchedulePhotoJob` / `_wpPhotoUploadChain`.
 4. **`uploadMultiple`** wanneer meerdere bestanden in één pick.

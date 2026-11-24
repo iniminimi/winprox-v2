@@ -234,7 +234,7 @@
                 "items": [
                     "Esempi di misure: chilometraggio, temperatura o lo stato di un apparecchio. I campi stanno in Lavoro → Misurazioni unit e si attivano per categoria e per unità.",
                     "Le misure arrivano da un QR o dall’API. Una misura può raggiungere altro software tramite il webhook unit.measurement.recorded.",
-                    "Fino a quattro foto su una segnalazione, una chiusura o un controllo unità. Per unità, fino a quattro foto dell’unità e una foto di sfondo. Le foto si riducono sul dispositivo prima del caricamento. Le foto di chi segnala sul portale pubblico si vedono solo dopo l’approvazione.",
+                    "Fino a quattro foto su una segnalazione, una chiusura o un controllo unità. Per unità, fino a quattro foto dell’unità e una foto di sfondo. Le foto si riducono sul dispositivo prima del caricamento. Prima di salvare può ritagliare la foto in rettangolo. Il ritratto di un operatore resta rotondo. Le foto di chi segnala sul portale pubblico si vedono solo dopo l’approvazione.",
                     "Per le unità mobili, come un veicolo o una macchina, si può registrare la posizione. Si attiva per categoria. Lo storico si apre in gestione, e un punto si apre in Maps."
                 ],
                 "key": "measurements"

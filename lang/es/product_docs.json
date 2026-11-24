@@ -234,7 +234,7 @@
                 "items": [
                     "Ejemplos de mediciones: kilometraje, temperatura o el estado de un aparato. Los campos están en Trabajo → Mediciones de unit y se activan por categoría y por unidad.",
                     "Las mediciones llegan por un QR o por la API. Una medición puede llegar a otro software por el webhook unit.measurement.recorded.",
-                    "Hasta cuatro fotos en un aviso, un cierre o una comprobación de unidad. Por unidad, hasta cuatro fotos de unidad y una foto de fondo. Las fotos se reducen en el aparato antes de subirlas. Las fotos de quien avisa en el portal público solo se ven tras aprobar el aviso.",
+                    "Hasta cuatro fotos en un aviso, un cierre o una comprobación de unidad. Por unidad, hasta cuatro fotos de unidad y una foto de fondo. Las fotos se reducen en el aparato antes de subirlas. Antes de guardar puede recortar la foto en rectángulo. El retrato de un operario sigue siendo redondo. Las fotos de quien avisa en el portal público solo se ven tras aprobar el aviso.",
                     "Para unidades móviles, como un vehículo o una máquina, se puede registrar la ubicación. Se activa por categoría. El historial se abre en la administración, y un punto se abre en Maps."
                 ],
                 "key": "measurements"

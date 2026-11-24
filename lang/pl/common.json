@@ -12,5 +12,9 @@
         "done": "Zakończone",
         "closed": "Zamknięte"
     },
-    "welcome": "Witamy"
+    "welcome": "Witamy",
+    "photo": {
+        "crop_title": "Przytnij zdjęcie",
+        "crop_apply": "Użyj zaznaczenia"
+    }
 }

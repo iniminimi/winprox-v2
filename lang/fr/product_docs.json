@@ -234,7 +234,7 @@
                 "items": [
                     "Exemples de mesures : kilométrage, température ou l’état d’un appareil. Les champs sont sous Travail → Mesures unit et s’activent par catégorie et par unité.",
                     "Les mesures arrivent via un QR ou via l’API. Une mesure peut atteindre un autre logiciel via le webhook unit.measurement.recorded.",
-                    "Jusqu’à quatre photos sur un signalement, une clôture ou un contrôle d’unité. Par unité, jusqu’à quatre photos d’unité et une photo de fond. Les photos sont réduites sur l’appareil avant l’envoi. Les photos d’un auteur sur le portail public ne sont visibles qu’après approbation du signalement.",
+                    "Jusqu’à quatre photos sur un signalement, une clôture ou un contrôle d’unité. Par unité, jusqu’à quatre photos d’unité et une photo de fond. Les photos sont réduites sur l’appareil avant l’envoi. Avant l’enregistrement, vous pouvez recadrer la photo en rectangle. Le portrait d’un intervenant reste rond. Les photos d’un auteur sur le portail public ne sont visibles qu’après approbation du signalement.",
                     "Pour les unités mobiles, comme un véhicule ou une machine, l’emplacement peut être enregistré. Vous l’activez par catégorie. Vous ouvrez l’historique dans la gestion, et un point s’ouvre dans Maps."
                 ],
                 "key": "measurements"

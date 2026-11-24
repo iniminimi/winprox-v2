@@ -143,5 +143,9 @@
         "of": "of",
         "results": "results",
         "go_to_page": "Go to page :page"
+    },
+    "photo": {
+        "crop_title": "Crop photo",
+        "crop_apply": "Use selection"
     }
 }

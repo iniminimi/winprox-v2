@@ -147,10 +147,10 @@
                     if (!file) { return; }
                     const crop = typeof window.wpCropImageFile === 'function'
                         ? window.wpCropImageFile(file, {
-                            aspectRatio: 1,
-                            outputSize: 480,
-                            title: @js(__('time.clock_displays.album.crop_title')),
-                            applyLabel: @js(__('time.clock_displays.album.crop_apply')),
+                            free: true,
+                            maxEdge: 480,
+                            title: @js(__('common.photo.crop_title')),
+                            applyLabel: @js(__('common.photo.crop_apply')),
                             cancelLabel: @js(__('common.button.cancel')),
                           })
                         : Promise.resolve(file);

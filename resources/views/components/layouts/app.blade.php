@@ -1022,6 +1022,12 @@
 
     @livewireScripts
     <script>
+        window.__translations = window.__translations || {};
+        window.__translations['common.photo.crop_title'] = @json(__('common.photo.crop_title'));
+        window.__translations['common.photo.crop_apply'] = @json(__('common.photo.crop_apply'));
+        window.__translations['common.button.cancel'] = @json(__('common.button.cancel'));
+    </script>
+    <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/sw-portal.js?v=4', { scope: '/', updateViaCache: 'none' }).catch(() => {});
         }

@@ -234,7 +234,7 @@
                 "items": [
                     "Voorbeelden van meetwaarden: kilometerstand, temperatuur, of de status van een toestel. De velden staan onder Werk → Unitmetingen en zet u aan per categorie en per unit.",
                     "Meetwaarden komen binnen via een QR-code of via de API. Een meting kan andere software bereiken via de webhook unit.measurement.recorded.",
-                    "Tot vier foto’s bij een melding, een afhandeling of een unit check. Per unit tot vier unitfoto’s en één achtergrondfoto. Foto’s worden op het toestel verkleind vóór het opladen. Foto’s van een melder op het openbare portaal zijn pas zichtbaar na goedkeuring van de melding.",
+                    "Tot vier foto’s bij een melding, een afhandeling of een unit check. Per unit tot vier unitfoto’s en één achtergrondfoto. Foto’s worden op het toestel verkleind vóór het opladen. Voor het opslaan kunt u de foto rechthoekig bijsnijden. Een portret van een uitvoerder blijft rond. Foto’s van een melder op het openbare portaal zijn pas zichtbaar na goedkeuring van de melding.",
                     "Voor mobiele units, zoals een voertuig of een machine, kan de locatie worden vastgelegd. Dat zet u aan per categorie. De historiek opent u in beheer, en een punt opent in Maps."
                 ],
                 "key": "measurements"

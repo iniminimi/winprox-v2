@@ -123,6 +123,9 @@
         window.__translations['portal.field_sync.error'] = @json(__('portal.field_sync.error'));
         window.__translations['portal.field_sync.queue_full'] = @json(__('portal.field_sync.queue_full'));
         window.__translations['portal.field_sync.will_sync'] = @json(__('portal.field_sync.will_sync'));
+        window.__translations['common.photo.crop_title'] = @json(__('common.photo.crop_title'));
+        window.__translations['common.photo.crop_apply'] = @json(__('common.photo.crop_apply'));
+        window.__translations['common.button.cancel'] = @json(__('common.button.cancel'));
         window.__wpFieldSync = Object.assign(window.__wpFieldSync || {}, {
             url: @json(route('portal.field-sync')),
         });
