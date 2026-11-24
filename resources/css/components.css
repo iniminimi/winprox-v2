@@ -1884,9 +1884,8 @@ button.wp-issue-row:disabled {
 }
 
 .wp-issue-row--unit {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .wp-issue-row--unit:has([aria-expanded='true']) {
@@ -1899,15 +1898,16 @@ button.wp-issue-row:disabled {
     align-items: flex-start;
     justify-content: space-between;
     gap: 1rem;
+    flex: 1 1 16rem;
+    min-width: 0;
 }
 
 .wp-unit-row__actions {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: flex-end;
     gap: 0.5rem;
-    padding-top: 0.75rem;
-    border-top: 1px solid var(--wp-border);
 }
 
 .wp-issue-row--highlight {
