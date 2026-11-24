@@ -71,6 +71,7 @@
     "units_title": "Units",
     "units_subtitle": "Manage units linked to this location.",
     "units_add": "+ Add unit",
+    "units_more": "More actions",
     "bulk_add": "Bulk add units",
     "location_qr": "Location QR (general)",
     "location_qr_subtitle": "General location QR for reports without a unit.",

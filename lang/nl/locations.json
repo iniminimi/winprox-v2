@@ -71,6 +71,7 @@
     "units_title": "Units",
     "units_subtitle": "Beheer units gekoppeld aan deze locatie.",
     "units_add": "+ Unit toevoegen",
+    "units_more": "Meer acties",
     "bulk_add": "Bulk units toevoegen",
     "location_qr": "QR-code locatie (algemeen)",
     "location_qr_subtitle": "Algemene locatie-QR voor meldingen zonder unit.",

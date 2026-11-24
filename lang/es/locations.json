@@ -71,6 +71,7 @@
     "units_title": "Unidades",
     "units_subtitle": "Gestione las unidades vinculadas a esta ubicación.",
     "units_add": "+ Añadir unidad",
+    "units_more": "Más acciones",
     "bulk_add": "Añadir unidades en bloque",
     "location_qr": "QR de ubicación (general)",
     "location_qr_subtitle": "QR general de la ubicación para informes sin unidad.",

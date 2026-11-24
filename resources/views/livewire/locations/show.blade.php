@@ -131,59 +131,69 @@
                     @php
                         $canDelete = \App\Support\Units\UnitDeletionGuard::canDelete($unit);
                     @endphp
-                    <div @class(['wp-issue-row', 'wp-issue-row--focus' => $focusUnitId === $unit->id]) id="unit-row-{{ $unit->id }}" wire:key="unit-{{ $unit->id }}">
-                        <div class="wp-grow wp-stack-tight">
-                            <p class="wp-issue-card-title wp-unit-title-row">
-                                <span>{{ $unit->localizedName() }}</span>
-                                @include('livewire.locations.partials.unit-gps-trigger', ['unit' => $unit, 'inline' => true])
-                            </p>
-                            @if ($unit->category || ($unit->category?->teams && $unit->category->teams->isNotEmpty()))
-                                <p class="wp-issue-card-meta">
-                                    @if ($unit->category)
-                                        {{ __('locations.units.meta_category', ['category' => $unit->category->localizedName()]) }}@if ($unit->category->teams && $unit->category->teams->isNotEmpty()), {{ __('locations.units.meta_team', ['team' => $unit->category->teams->first()->localizedName()]) }}@endif
-                                    @endif
+                    <div @class(['wp-issue-row', 'wp-issue-row--unit', 'wp-issue-row--focus' => $focusUnitId === $unit->id]) id="unit-row-{{ $unit->id }}" wire:key="unit-{{ $unit->id }}">
+                        <div class="wp-unit-row__head">
+                            <div class="wp-grow wp-stack-tight">
+                                <p class="wp-issue-card-title wp-unit-title-row">
+                                    <span>{{ $unit->localizedName() }}</span>
+                                    @include('livewire.locations.partials.unit-gps-trigger', ['unit' => $unit, 'inline' => true])
                                 </p>
-                            @endif
-                            @if ($unit->qrCodes && $unit->qrCodes->isNotEmpty())
-                                <p class="wp-issue-card-meta">
-                                    {{ __('locations.units.meta_qr_linked', ['sticker' => $unit->qrCodes->first()->display_sticker_number]) }}
-                                </p>
-                            @endif
+                                @if ($unit->category || ($unit->category?->teams && $unit->category->teams->isNotEmpty()))
+                                    <p class="wp-issue-card-meta">
+                                        @if ($unit->category)
+                                            {{ __('locations.units.meta_category', ['category' => $unit->category->localizedName()]) }}@if ($unit->category->teams && $unit->category->teams->isNotEmpty()), {{ __('locations.units.meta_team', ['team' => $unit->category->teams->first()->localizedName()]) }}@endif
+                                        @endif
+                                    </p>
+                                @endif
+                                @if ($unit->qrCodes && $unit->qrCodes->isNotEmpty())
+                                    <p class="wp-issue-card-meta">
+                                        {{ __('locations.units.meta_qr_linked', ['sticker' => $unit->qrCodes->first()->display_sticker_number]) }}
+                                    </p>
+                                @endif
+                            </div>
+                            <div class="wp-issue-row-meta">
+                                @if ($unit->hasOpenIssues())
+                                    <span class="wp-pill wp-pill--new">{{ __('locations.units.open_issue') }}</span>
+                                @endif
+                                @if (! $unit->is_active)
+                                    <span class="wp-pill wp-pill--closed">{{ __('locations.inactive') }}</span>
+                                @endif
+                                @if ($unit->screen?->isLinked())
+                                    <span class="wp-pill wp-pill--done">{{ __('screen.pill') }}</span>
+                                @endif
+                                @if ($unit->camera?->isLinked())
+                                    <span class="wp-pill wp-pill--done">{{ __('camera.linked_pill') }}</span>
+                                @endif
+                            </div>
                         </div>
-                        <div class="wp-issue-row-meta">
-                            @if ($unit->hasOpenIssues())
-                                <span class="wp-pill wp-pill--new">{{ __('locations.units.open_issue') }}</span>
-                            @endif
-                            @if (! $unit->is_active)
-                                <span class="wp-pill wp-pill--closed">{{ __('locations.inactive') }}</span>
-                            @endif
-                            @if ($unit->screen?->isLinked())
-                                <span class="wp-pill wp-pill--done">{{ __('screen.pill') }}</span>
-                            @endif
-                            @if ($unit->camera?->isLinked())
-                                <span class="wp-pill wp-pill--done">{{ __('camera.linked_pill') }}</span>
-                            @endif
-                        </div>
-                        <div class="wp-cluster">
+                        <div class="wp-unit-row__actions">
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditUnit({{ $unit->id }})">{{ __('common.button.edit') }}</button>
-                            @if ($unit->is_active)
-                                <button type="button" class="btn btn--ghost btn--sm" wire:click="deactivateUnit({{ $unit->id }})">{{ __('locations.deactivate') }}</button>
-                            @else
-                                <button type="button" class="btn btn--ghost btn--sm" wire:click="activateUnit({{ $unit->id }})">{{ __('locations.activate') }}</button>
-                            @endif
-                            <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteUnit({{ $unit->id }})"
-                                    @disabled(! $canDelete)>{{ __('common.button.delete') }}</button>
                             @can('create', \App\Models\Screen::class)
                                 <a href="{{ route('screens.pair', $unit) }}" class="btn btn--ghost btn--sm">{{ __('screen.button') }}</a>
                             @endcan
                             @can('create', \App\Models\Camera::class)
                                 <a href="{{ route('cameras.show', $unit) }}" class="btn btn--ghost btn--sm">{{ __('camera.open') }}</a>
                             @endcan
-                            <a href="{{ route('units.qr', $unit) }}" target="_blank" class="btn btn--ghost btn--sm">{{ __('locations.unit_qr') }}</a>
-                            <button type="button" class="btn btn--ghost btn--sm" wire:click="openUnitQrPackModal({{ $unit->id }})">{{ __('locations.unit_qr_pack.button') }}</button>
-                            @if ($hasEsgModule && in_array($unit->id, $unitIdsWithEsgMeasurements, true))
-                                <a href="{{ route('esg.point.history', ['unit' => $unit->id]) }}" class="btn btn--ghost btn--sm">{{ __('esg.point.link') }}</a>
-                            @endif
+                            <div class="wp-groups-dropdown" x-data="{ open: false }" @click.outside="open = false" @keydown.escape.window="open = false">
+                                <button type="button" class="btn btn--ghost btn--sm wp-groups-dropdown__trigger" @click="open = !open" :aria-expanded="open.toString()">
+                                    <span>{{ __('locations.units_more') }}</span>
+                                    <x-wp-icon name="chevron-down" class="wp-icon wp-icon--sm" />
+                                </button>
+                                <div class="wp-groups-dropdown__panel wp-groups-dropdown__panel--menu" x-show="open" x-cloak @click="open = false">
+                                    @if ($unit->is_active)
+                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="deactivateUnit({{ $unit->id }})">{{ __('locations.deactivate') }}</button>
+                                    @else
+                                        <button type="button" class="btn btn--ghost btn--sm" wire:click="activateUnit({{ $unit->id }})">{{ __('locations.activate') }}</button>
+                                    @endif
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteUnit({{ $unit->id }})"
+                                            @disabled(! $canDelete)>{{ __('common.button.delete') }}</button>
+                                    <a href="{{ route('units.qr', $unit) }}" target="_blank" class="btn btn--ghost btn--sm">{{ __('locations.unit_qr') }}</a>
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="openUnitQrPackModal({{ $unit->id }})">{{ __('locations.unit_qr_pack.button') }}</button>
+                                    @if ($hasEsgModule && in_array($unit->id, $unitIdsWithEsgMeasurements, true))
+                                        <a href="{{ route('esg.point.history', ['unit' => $unit->id]) }}" class="btn btn--ghost btn--sm">{{ __('esg.point.link') }}</a>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                     </div>
                 @empty

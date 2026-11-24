@@ -71,6 +71,7 @@
     "units_title": "Units",
     "units_subtitle": "Units an diesem Standort verwalten.",
     "units_add": "+ Unit hinzufügen",
+    "units_more": "Weitere Aktionen",
     "bulk_add": "Units massenhaft hinzufügen",
     "location_qr": "Standort-QR (allgemein)",
     "location_qr_subtitle": "Allgemeiner Standort-QR für Meldungen ohne Unit.",

@@ -71,6 +71,7 @@
     "units_title": "Unités",
     "units_subtitle": "Gérez les unités liées à ce site.",
     "units_add": "+ Ajouter une unité",
+    "units_more": "Plus d’actions",
     "bulk_add": "Ajout en masse d'unités",
     "location_qr": "QR site (général)",
     "location_qr_subtitle": "QR général du site pour les signalements sans unité.",

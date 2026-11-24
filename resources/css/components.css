@@ -917,6 +917,16 @@ a.wp-pill:hover {
     box-shadow: var(--wp-shadow-tip);
 }
 
+.wp-groups-dropdown__panel--menu {
+    gap: 0.15rem;
+    padding: 0.35rem;
+}
+
+.wp-groups-dropdown__panel--menu .btn {
+    width: 100%;
+    justify-content: flex-start;
+}
+
 /* Periode-label als anker in de werkbalk. */
 .wp-time-roster-period {
     font-weight: 700;
@@ -1871,6 +1881,33 @@ button.wp-issue-row:disabled {
     background-color: var(--wp-surface-2);
     border-color: var(--wp-border-strong);
     text-decoration: none;
+}
+
+.wp-issue-row--unit {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+}
+
+.wp-issue-row--unit:has([aria-expanded='true']) {
+    position: relative;
+    z-index: 5;
+}
+
+.wp-unit-row__head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.wp-unit-row__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--wp-border);
 }
 
 .wp-issue-row--highlight {
