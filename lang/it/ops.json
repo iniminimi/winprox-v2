@@ -77,7 +77,13 @@
         "hint": "Riempi il riquadro sottile con il codice a barre (vicino, ~8–15 cm). Tocca per mettere a fuoco.",
         "slow": "Troppo piccolo? Avvicinati, tocca per il focus, accendi la luce o digita il numero.",
         "torch_on": "Luce on",
-        "torch_off": "Luce off"
+        "torch_off": "Luce off",
+        "photo_capture": "Scatta foto",
+        "photo_gallery": "Scegli foto",
+        "photo_busy": "Lettura codice…",
+        "photo_hint": "Scatta un primo piano nitido del piccolo codice a barre (la fotocamera di sistema mette a fuoco meglio). Oppure scegli una foto.",
+        "photo_no_code": "Nessun codice trovato. Scatta un primo piano più nitido o digita il numero.",
+        "photo_failed": "Impossibile leggere la foto. Riprova o digita il numero."
     },
     "flash": {
         "registered": "Dispositivo :serial registrato.",

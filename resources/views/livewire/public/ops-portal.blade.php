@@ -59,13 +59,62 @@
                         unsupported: @js(__('ops.scanner.unsupported')),
                         denied: @js(__('ops.scanner.denied')),
                         slow: @js(__('ops.scanner.slow')),
+                        photo_no_code: @js(__('ops.scanner.photo_no_code')),
+                        photo_failed: @js(__('ops.scanner.photo_failed')),
                     }
                 })"
             >
-                <button type="button" class="btn btn--surface" x-show="supported" x-cloak @click="openScanner()">
-                    {{ __('ops.scanner.open') }}
-                </button>
-                <p class="wp-muted wp-text-sm" x-show="!supported" x-cloak>{{ __('ops.scanner.manual_only') }}</p>
+                <input
+                    type="file"
+                    accept="image/*"
+                    capture="environment"
+                    class="sr-only"
+                    x-ref="photoCapture"
+                    @change="onPhotoSelected($event)"
+                >
+                <input
+                    type="file"
+                    accept="image/*"
+                    class="sr-only"
+                    x-ref="photoGallery"
+                    @change="onPhotoSelected($event)"
+                >
+                <div class="wp-cluster wp-cluster--wrap">
+                    <button
+                        type="button"
+                        class="btn btn--primary"
+                        x-show="canDetect"
+                        x-cloak
+                        @click="openPhotoPicker(true)"
+                        :disabled="photoBusy"
+                    >
+                        <span x-show="!photoBusy">{{ __('ops.scanner.photo_capture') }}</span>
+                        <span x-show="photoBusy" x-cloak>{{ __('ops.scanner.photo_busy') }}</span>
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn--surface"
+                        x-show="canDetect"
+                        x-cloak
+                        @click="openPhotoPicker(false)"
+                        :disabled="photoBusy"
+                    >
+                        {{ __('ops.scanner.photo_gallery') }}
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn--ghost"
+                        x-show="supported && canDetect"
+                        x-cloak
+                        @click="openScanner()"
+                        :disabled="photoBusy"
+                    >
+                        {{ __('ops.scanner.open') }}
+                    </button>
+                </div>
+                <p class="wp-muted wp-text-sm" x-show="canDetect" x-cloak>{{ __('ops.scanner.photo_hint') }}</p>
+                <p class="wp-muted wp-text-sm" x-show="!canDetect" x-cloak>{{ __('ops.scanner.manual_only') }}</p>
+                <p class="wp-error" x-show="photoErrorText" x-text="photoErrorText" x-cloak></p>
 
                 <template x-teleport="body">
                     <div

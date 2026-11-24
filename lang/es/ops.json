@@ -77,7 +77,13 @@
         "hint": "Llena el marco fino con el código de barras (cerca, ~8–15 cm). Toca para enfocar.",
         "slow": "¿Demasiado pequeño? Acércate, toca para enfocar, enciende la luz o escribe el número.",
         "torch_on": "Luz on",
-        "torch_off": "Luz off"
+        "torch_off": "Luz off",
+        "photo_capture": "Hacer foto",
+        "photo_gallery": "Elegir foto",
+        "photo_busy": "Leyendo código…",
+        "photo_hint": "Haz un primer plano nítido del código pequeño (la cámara del sistema enfoca mejor). O elige una foto.",
+        "photo_no_code": "No se encontró código de barras. Haz un primer plano más nítido o escribe el número.",
+        "photo_failed": "No se pudo leer la foto. Inténtalo de nuevo o escribe el número."
     },
     "flash": {
         "registered": "Dispositivo :serial registrado.",

@@ -23,6 +23,8 @@ function registerAlpineComponent() {
         slowHint: false,
         torchOn: false,
         torchAvailable: false,
+        photoBusy: false,
+        photoError: null,
         _stream: null,
         _track: null,
         _detector1d: null,
@@ -49,8 +51,197 @@ function registerAlpineComponent() {
             return this.errorKey !== null ? (this.i18n[this.errorKey] ?? '') : '';
         },
 
+        get photoErrorText() {
+            return this.photoError !== null ? (this.i18n[this.photoError] ?? '') : '';
+        },
+
+        async ensureDetectors() {
+            if (this._detector1d || this._detectorQr) {
+                return true;
+            }
+            if (!this.canDetect) {
+                return false;
+            }
+            try {
+                const formats = await window.BarcodeDetector.getSupportedFormats();
+                const oneD = ['code_128', 'code_39', 'ean_13', 'ean_8', 'upc_a', 'upc_e', 'itf', 'codabar', 'data_matrix']
+                    .filter((f) => Array.isArray(formats) && formats.includes(f));
+                const qr = ['qr_code'].filter((f) => Array.isArray(formats) && formats.includes(f));
+                if (oneD.length === 0 && qr.length === 0) {
+                    return false;
+                }
+                if (oneD.length > 0) {
+                    this._detector1d = new window.BarcodeDetector({ formats: oneD });
+                }
+                if (qr.length > 0) {
+                    this._detectorQr = new window.BarcodeDetector({ formats: qr });
+                }
+                return true;
+            } catch (e) {
+                return false;
+            }
+        },
+
+        ensureCanvas() {
+            if (!this._canvas) {
+                this._canvas = document.createElement('canvas');
+                this._ctx = this._canvas.getContext('2d', { willReadFrequently: true, alpha: false });
+            }
+        },
+
+        openPhotoPicker(useCapture) {
+            this.photoError = null;
+            const input = useCapture ? this.$refs.photoCapture : this.$refs.photoGallery;
+            if (input) {
+                input.value = '';
+                input.click();
+            }
+        },
+
+        async onPhotoSelected(event) {
+            const file = event?.target?.files?.[0];
+            if (!file) {
+                return;
+            }
+            this.photoBusy = true;
+            this.photoError = null;
+            try {
+                if (! await this.ensureDetectors()) {
+                    this.photoError = 'unsupported';
+                    return;
+                }
+                this.ensureCanvas();
+                const bitmap = await this.loadImageBitmap(file);
+                if (!bitmap) {
+                    this.photoError = 'photo_failed';
+                    return;
+                }
+                const value = await this.detectFromStill(bitmap);
+                if (typeof bitmap.close === 'function') {
+                    bitmap.close();
+                }
+                if (!value) {
+                    this.photoError = 'photo_no_code';
+                    return;
+                }
+                this.applyScanResult(value);
+            } catch (e) {
+                this.photoError = 'photo_failed';
+            } finally {
+                this.photoBusy = false;
+                if (event?.target) {
+                    event.target.value = '';
+                }
+            }
+        },
+
+        async loadImageBitmap(file) {
+            try {
+                if (typeof createImageBitmap === 'function') {
+                    return await createImageBitmap(file);
+                }
+            } catch (e) {}
+            return await new Promise((resolve, reject) => {
+                const url = URL.createObjectURL(file);
+                const img = new Image();
+                img.onload = () => {
+                    URL.revokeObjectURL(url);
+                    resolve(img);
+                };
+                img.onerror = () => {
+                    URL.revokeObjectURL(url);
+                    reject(new Error('image_load'));
+                };
+                img.src = url;
+            });
+        },
+
+        /**
+         * Stilstaande foto: volle beeld + horizontale stroken × opschalen.
+         * Native camera-app focust wél; live getUserMedia vaak niet.
+         */
+        async detectFromStill(source) {
+            const w = source.width || source.naturalWidth || 0;
+            const h = source.height || source.naturalHeight || 0;
+            if (w < 8 || h < 8) {
+                return null;
+            }
+
+            if (this._detectorQr) {
+                try {
+                    const qrHits = await this._detectorQr.detect(source);
+                    const qr = Array.isArray(qrHits) ? qrHits.find((hit) => hit && hit.rawValue) : null;
+                    if (qr) {
+                        return String(qr.rawValue);
+                    }
+                } catch (e) {}
+            }
+
+            if (this._detector1d) {
+                try {
+                    const fullHits = await this._detector1d.detect(source);
+                    const full = Array.isArray(fullHits) ? fullHits.find((hit) => hit && hit.rawValue) : null;
+                    if (full) {
+                        return String(full.rawValue);
+                    }
+                } catch (e) {}
+
+                const bands = [
+                    { left: 0.02, top: 0.30, width: 0.96, height: 0.40 },
+                    { left: 0.05, top: 0.40, width: 0.90, height: 0.20 },
+                    { left: 0.08, top: 0.45, width: 0.84, height: 0.12 },
+                    { left: 0.00, top: 0.20, width: 1.00, height: 0.60 },
+                ];
+                for (const band of bands) {
+                    for (const scale of [1, 2, 3, 4]) {
+                        const canvas = this.drawBand(source, w, h, band, scale);
+                        if (!canvas) {
+                            continue;
+                        }
+                        try {
+                            const hits = await this._detector1d.detect(canvas);
+                            const hit = Array.isArray(hits) ? hits.find((item) => item && item.rawValue) : null;
+                            if (hit) {
+                                return String(hit.rawValue);
+                            }
+                        } catch (e) {}
+                    }
+                }
+            }
+
+            return null;
+        },
+
+        drawBand(source, w, h, band, scale) {
+            if (!this._ctx) {
+                return null;
+            }
+            const sx = Math.floor(w * band.left);
+            const sy = Math.floor(h * band.top);
+            const sw = Math.max(8, Math.floor(w * band.width));
+            const sh = Math.max(8, Math.floor(h * band.height));
+            this._canvas.width = Math.round(sw * scale);
+            this._canvas.height = Math.round(sh * scale);
+            this._ctx.imageSmoothingEnabled = scale > 1 ? false : true;
+            this._ctx.drawImage(source, sx, sy, sw, sh, 0, 0, this._canvas.width, this._canvas.height);
+            return this._canvas;
+        },
+
+        applyScanResult(value) {
+            const trimmed = String(value).trim();
+            if (!trimmed) {
+                return;
+            }
+            this.closeScanner();
+            this.photoError = null;
+            if (typeof this.$wire?.onBarcodeScanned === 'function') {
+                this.$wire.onBarcodeScanned(trimmed);
+            }
+        },
+
         openScanner() {
             this.errorKey = null;
+            this.photoError = null;
             this.slowHint = false;
             this.torchOn = false;
             this.torchAvailable = false;
@@ -67,25 +258,11 @@ function registerAlpineComponent() {
         },
 
         async startCamera() {
-            try {
-                const formats = await window.BarcodeDetector.getSupportedFormats();
-                const oneD = ['code_128', 'code_39', 'ean_13', 'ean_8', 'upc_a', 'upc_e', 'itf', 'codabar', 'data_matrix']
-                    .filter((f) => Array.isArray(formats) && formats.includes(f));
-                const qr = ['qr_code'].filter((f) => Array.isArray(formats) && formats.includes(f));
-                if (oneD.length === 0 && qr.length === 0) {
-                    this.errorKey = 'unsupported';
-                    return;
-                }
-                if (oneD.length > 0) {
-                    this._detector1d = new window.BarcodeDetector({ formats: oneD });
-                }
-                if (qr.length > 0) {
-                    this._detectorQr = new window.BarcodeDetector({ formats: qr });
-                }
-            } catch (e) {
+            if (! await this.ensureDetectors()) {
                 this.errorKey = 'unsupported';
                 return;
             }
+            this.ensureCanvas();
 
             try {
                 this._stream = await navigator.mediaDevices.getUserMedia({
@@ -110,9 +287,6 @@ function registerAlpineComponent() {
             this._focusTimer = window.setTimeout(() => {
                 this.applyFocusAndZoom(true);
             }, 700);
-
-            this._canvas = document.createElement('canvas');
-            this._ctx = this._canvas.getContext('2d', { willReadFrequently: true, alpha: false });
 
             const video = this.$refs.scanVideo;
             if (!video) {
@@ -311,10 +485,7 @@ function registerAlpineComponent() {
             if (this._matchCount < CONFIRM_READS) {
                 return;
             }
-            this.closeScanner();
-            if (typeof this.$wire?.onBarcodeScanned === 'function') {
-                this.$wire.onBarcodeScanned(trimmed);
-            }
+            this.applyScanResult(trimmed);
         },
 
         closeScanner() {

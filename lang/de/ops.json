@@ -77,7 +77,13 @@
         "hint": "Füllen Sie den schmalen Rahmen mit dem Barcode (nah, ~8–15 cm). Tippen zum Fokussieren.",
         "slow": "Zu klein? Näher heran, tippen zum Fokussieren, Licht an, oder Seriennummer tippen.",
         "torch_on": "Licht an",
-        "torch_off": "Licht aus"
+        "torch_off": "Licht aus",
+        "photo_capture": "Foto aufnehmen",
+        "photo_gallery": "Foto wählen",
+        "photo_busy": "Barcode lesen…",
+        "photo_hint": "Machen Sie eine scharfe Nahaufnahme des kleinen Barcodes (Systemkamera fokussiert besser). Oder wählen Sie ein Foto.",
+        "photo_no_code": "Kein Barcode gefunden. Schärfere Nahaufnahme oder Seriennummer tippen.",
+        "photo_failed": "Foto konnte nicht gelesen werden. Erneut versuchen oder Seriennummer tippen."
     },
     "flash": {
         "registered": "Gerät :serial wurde erfasst.",

@@ -77,7 +77,13 @@
         "hint": "Remplissez le cadre étroit avec le code-barres (près, ~8–15 cm). Touchez pour la mise au point.",
         "slow": "Trop petit ? Approchez, touchez pour focuser, allumez la lumière, ou saisissez le numéro.",
         "torch_on": "Lumière on",
-        "torch_off": "Lumière off"
+        "torch_off": "Lumière off",
+        "photo_capture": "Prendre une photo",
+        "photo_gallery": "Choisir une photo",
+        "photo_busy": "Lecture du code-barres…",
+        "photo_hint": "Prenez un gros plan net du petit code-barres (l’appareil photo système fait mieux la mise au point). Ou choisissez une photo.",
+        "photo_no_code": "Aucun code-barres trouvé. Reprenez un gros plan plus net ou saisissez le numéro.",
+        "photo_failed": "Impossible de lire la photo. Réessayez ou saisissez le numéro."
     },
     "flash": {
         "registered": "Appareil :serial enregistré.",
