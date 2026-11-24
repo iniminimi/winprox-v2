@@ -74,8 +74,8 @@
         "manual_only": "Camera scan unavailable; type the serial number.",
         "unsupported": "This browser cannot scan barcodes. Type it manually.",
         "denied": "Camera access denied. Type manually or allow access.",
-        "hint": "Hold the sticker in the frame, 15–30 cm from the lens. Tap the image to focus.",
-        "slow": "Not working? Tap the image to focus, turn on the light, or type the serial number.",
+        "hint": "Fill the thin frame with the barcode (close, ~8–15 cm). Tap to focus.",
+        "slow": "Barcode too small? Move closer, tap to focus, turn on the light, or type the serial.",
         "torch_on": "Light on",
         "torch_off": "Light off"
     },

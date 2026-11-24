@@ -76,7 +76,7 @@
                     >
                         <div class="wp-scan-dialog" role="dialog" aria-modal="true" aria-label="{{ __('ops.scanner.open') }}">
                             <p class="wp-scan-title">{{ __('ops.scanner.open') }}</p>
-                            <div class="wp-scan-viewport" @click="tapToFocus($event)">
+                            <div class="wp-scan-viewport wp-scan-viewport--barcode" @click="tapToFocus($event)">
                                 <video x-ref="scanVideo" playsinline muted autoplay></video>
                                 <span class="wp-scan-frame wp-scan-frame--barcode" aria-hidden="true"></span>
                             </div>

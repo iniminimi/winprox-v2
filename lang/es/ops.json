@@ -74,8 +74,8 @@
         "manual_only": "Escaneo con cámara no disponible; escribe el número.",
         "unsupported": "Este navegador no puede escanear códigos. Escríbelo manualmente.",
         "denied": "Acceso a la cámara denegado. Escribe manualmente o permite el acceso.",
-        "hint": "Mantén la pegatina en el marco, a 15–30 cm de la lente. Toca la imagen para enfocar.",
-        "slow": "¿No funciona? Toca la imagen, enciende la luz o escribe el número de serie.",
+        "hint": "Llena el marco fino con el código de barras (cerca, ~8–15 cm). Toca para enfocar.",
+        "slow": "¿Demasiado pequeño? Acércate, toca para enfocar, enciende la luz o escribe el número.",
         "torch_on": "Luz on",
         "torch_off": "Luz off"
     },

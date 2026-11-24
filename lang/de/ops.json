@@ -74,8 +74,8 @@
         "manual_only": "Kamerascan nicht verfügbar; Seriennummer eintippen.",
         "unsupported": "Dieser Browser kann keine Barcodes scannen. Bitte manuell eingeben.",
         "denied": "Kamerazugriff verweigert. Manuell eingeben oder Zugriff erlauben.",
-        "hint": "Halten Sie den Aufkleber im Rahmen, 15–30 cm von der Linse. Tippen Sie auf das Bild zum Scharfstellen.",
-        "slow": "Klappt nicht? Tippen Sie zum Fokussieren, schalten Sie das Licht ein oder tippen Sie die Seriennummer.",
+        "hint": "Füllen Sie den schmalen Rahmen mit dem Barcode (nah, ~8–15 cm). Tippen zum Fokussieren.",
+        "slow": "Zu klein? Näher heran, tippen zum Fokussieren, Licht an, oder Seriennummer tippen.",
         "torch_on": "Licht an",
         "torch_off": "Licht aus"
     },

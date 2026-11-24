@@ -74,8 +74,8 @@
         "manual_only": "Camera-scan niet beschikbaar; typ het serienummer handmatig.",
         "unsupported": "Deze browser kan geen barcodes scannen. Typ handmatig.",
         "denied": "Cameratoegang geweigerd. Typ handmatig of geef toegang.",
-        "hint": "Houd de sticker in het kader, 15–30 cm van de lens. Tik op het beeld om te scherpstellen.",
-        "slow": "Lukt het niet? Tik op het beeld voor focus, zet het licht aan, of typ het serienummer.",
+        "hint": "Vul het smalle kader met de barcode (dichtbij, ~8–15 cm). Tik om te focussen.",
+        "slow": "Barcode te klein? Dichterbij, tik voor focus, licht aan, of typ het serienummer.",
         "torch_on": "Licht aan",
         "torch_off": "Licht uit"
     },
