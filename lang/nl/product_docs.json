@@ -294,7 +294,7 @@
                 "body": "Sense toont per lokaal temperatuur, luchtvochtigheid, CO₂ en de VOC-index. U stelt de grenzen in. Het beginscherm vraagt aandacht als een waarde buiten de band valt of als het scherm niets meer stuurt.",
                 "items": [
                     "Er ontstaat geen melding en geen taak.",
-                    "Een nieuw lokaal start op winterwaarden voor een leefruimte. Zomer vult temperatuur en vocht in één keer. CO₂ vraagt aandacht boven 900. De VOC-index kleurt van groen tot rood en vraagt aandacht pas na een half uur."
+                    "Een lokaal volgt de jaarhelft: zomer van 1 mei tot 30 september, winter van 1 oktober tot 30 april. CO₂ vraagt aandacht boven 900. De VOC-index kleurt van groen tot rood en vraagt aandacht pas na een half uur."
                 ]
             },
             {

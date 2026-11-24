@@ -294,7 +294,7 @@
                 "body": "Sense muestra por sala la temperatura, la humedad, el CO₂ y el índice VOC. Usted ajusta los límites. El inicio pide atención si un valor sale de la banda o si la pantalla deja de enviar.",
                 "items": [
                     "No se crea ningún aviso ni tarea.",
-                    "Una sala nueva empieza con los valores de invierno de una sala de estar. Verano rellena temperatura y humedad de una vez. El CO₂ pide atención por encima de 900. El índice VOC pasa de verde a rojo y pide atención solo tras media hora."
+                    "Una sala sigue la mitad del año: verano del 1 de mayo al 30 de septiembre, invierno del 1 de octubre al 30 de abril. El CO₂ pide atención por encima de 900. El índice VOC pasa de verde a rojo y pide atención solo tras media hora."
                 ]
             },
             {

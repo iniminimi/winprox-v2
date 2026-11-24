@@ -15,7 +15,8 @@ return [
         'voc_high' => 150,
     ],
 
-    // Leefruimte. Winter is de start. Zomer vervangt alleen temperatuur en vocht.
+    // Leefruimte. Warme jaarhelft 1 mei–30 september, koude jaarhelft 1 oktober–30 april.
+    // SyncSenseSeasonAction zet temperatuur en vocht om op die grens. CO₂ en VOC blijven staan.
     'presets' => [
         'winter' => [
             'temperature' => ['low' => 20, 'target' => 21, 'high' => 24],

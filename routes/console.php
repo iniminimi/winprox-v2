@@ -8,6 +8,7 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote');
 
+Schedule::command('winprox:sense-sync-season')->dailyAt('00:05')->timezone('Europe/Brussels');
 Schedule::command('winprox:reservations-expire-pending')->everyFiveMinutes();
 Schedule::command('winprox:qr-report-email-holds-expire')->everyFiveMinutes();
 Schedule::command('winprox:recurrence-tick')->dailyAt('06:00');

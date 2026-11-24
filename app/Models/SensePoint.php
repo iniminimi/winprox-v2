@@ -28,6 +28,7 @@ class SensePoint extends Model
         'humidity_high',
         'co2_high',
         'voc_high',
+        'season_applied',
         'last_temperature',
         'last_humidity',
         'last_co2',

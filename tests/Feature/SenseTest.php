@@ -162,6 +162,7 @@ it('toont een stilgevallen scherm als aandacht', function () {
 });
 
 it('start met de winterwaarden van een leefruimte', function () {
+    Carbon::setTestNow('2026-11-24 12:00:00');
     $tenant = Tenant::factory()->create();
     Tenancy::actAs($tenant->id);
     [$unit] = senseRoom($tenant);
@@ -174,7 +175,10 @@ it('start met de winterwaarden van een leefruimte', function () {
         ->and((float) $point->humidity_low)->toBe(40.0)
         ->and((float) $point->humidity_high)->toBe(60.0)
         ->and((int) $point->co2_high)->toBe(900)
-        ->and((int) $point->voc_high)->toBe(150);
+        ->and((int) $point->voc_high)->toBe(150)
+        ->and($point->season_applied)->toBe('winter');
+
+    Carbon::setTestNow();
 });
 
 it('zet de zomerwaarden zonder de co2-grens te wijzigen', function () {
@@ -216,6 +220,49 @@ it('vraagt pas aandacht als de voc-index een half uur hoog blijft', function () 
     $record->handle($created['point']->fresh(), new RecordSenseReadingData(21, 50, 700, 80, CarbonImmutable::parse('2026-11-24 11:45:00')));
 
     expect(\App\Support\Sense\SenseBands::attentions($created['point']->fresh()))->toBe([]);
+
+    Carbon::setTestNow();
+});
+
+it('springt op 1 mei naar de zomer en op 1 oktober naar de winter', function () {
+    Carbon::setTestNow('2026-04-30 12:00:00');
+    $tenant = Tenant::factory()->create();
+    Tenancy::actAs($tenant->id);
+    [$unit] = senseRoom($tenant);
+    $created = app(CreateSensePointAction::class)->handle((int) $unit->id, (int) $tenant->id);
+    $sync = app(\App\Actions\Sense\SyncSenseSeasonAction::class);
+
+    expect($created['point']->season_applied)->toBe('winter');
+
+    app(UpdateSenseBandsAction::class)->handle($created['point'], [
+        'metric' => 'humidity',
+        'low' => 42,
+        'target' => 52,
+        'high' => 62,
+    ], (int) $tenant->id);
+
+    Carbon::setTestNow('2026-04-30 18:00:00');
+    expect($sync->handleTenant((int) $tenant->id))->toBe(0)
+        ->and((float) $created['point']->fresh()->humidity_low)->toBe(42.0);
+
+    Carbon::setTestNow('2026-05-01 00:10:00');
+    expect($sync->handleTenant((int) $tenant->id))->toBe(1);
+    $summer = $created['point']->fresh();
+    expect((float) $summer->temperature_low)->toBe(22.0)
+        ->and((float) $summer->temperature_target)->toBe(24.0)
+        ->and((float) $summer->temperature_high)->toBe(26.0)
+        ->and((float) $summer->humidity_low)->toBe(30.0)
+        ->and((float) $summer->humidity_high)->toBe(70.0)
+        ->and((int) $summer->co2_high)->toBe(900)
+        ->and($summer->season_applied)->toBe('summer');
+
+    Carbon::setTestNow('2026-09-30 12:00:00');
+    expect($sync->handleTenant((int) $tenant->id))->toBe(0);
+
+    Carbon::setTestNow('2026-10-01 00:10:00');
+    expect($sync->handleTenant((int) $tenant->id))->toBe(1)
+        ->and((float) $created['point']->fresh()->temperature_low)->toBe(20.0)
+        ->and($created['point']->fresh()->season_applied)->toBe('winter');
 
     Carbon::setTestNow();
 });

@@ -15,6 +15,8 @@ class ListSenseAttentionAction
      */
     public function handle(int $tenantId): array
     {
+        app(SyncSenseSeasonAction::class)->handleTenant($tenantId);
+
         $lines = [];
 
         $points = SensePoint::query()

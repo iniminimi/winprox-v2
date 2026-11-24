@@ -294,7 +294,7 @@
                 "body": "Sense zeigt je Raum Temperatur, Luftfeuchtigkeit, CO₂ und den VOC-Index. Sie stellen die Grenzen ein. Der Startbildschirm bittet um Aufmerksamkeit, wenn ein Wert außerhalb der Spanne liegt oder das Display nichts mehr sendet.",
                 "items": [
                     "Es entsteht keine Meldung und keine Aufgabe.",
-                    "Ein neuer Raum startet mit Winterwerten für einen Wohnraum. Sommer füllt Temperatur und Feuchte auf einmal. CO₂ bittet um Aufmerksamkeit über 900. Der VOC-Index färbt von Grün bis Rot und bittet erst nach einer halben Stunde um Aufmerksamkeit."
+                    "Ein Raum folgt der Jahreshälfte: Sommer vom 1. Mai bis 30. September, Winter vom 1. Oktober bis 30. April. CO₂ bittet um Aufmerksamkeit über 900. Der VOC-Index färbt von Grün bis Rot und bittet erst nach einer halben Stunde um Aufmerksamkeit."
                 ]
             },
             {

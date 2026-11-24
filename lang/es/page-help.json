@@ -1841,7 +1841,7 @@
                 },
                 {
                     "label": "Límites",
-                    "text": "En temperatura y humedad arrastra o escribe el valor bajo, el objetivo y el alto, o elige Invierno o Verano. El objetivo solo orienta. El CO₂ pide atención por encima del límite. El índice VOC pasa de verde a rojo; la atención llega solo si un valor alto se mantiene media hora."
+                    "text": "En temperatura y humedad arrastra o escribe el valor bajo, el objetivo y el alto, o elige Invierno o Verano. El 1 de mayo pasa solo al verano y el 1 de octubre al invierno. El objetivo solo orienta. El CO₂ pide atención por encima del límite. El índice VOC pasa de verde a rojo; la atención llega solo si un valor alto se mantiene media hora."
                 },
                 {
                     "label": "Pantalla de inicio",

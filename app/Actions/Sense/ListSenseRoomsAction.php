@@ -19,6 +19,7 @@ class ListSenseRoomsAction
      */
     public function handle(int $tenantId): array
     {
+        app(SyncSenseSeasonAction::class)->handleTenant($tenantId);
         /** @var Collection<int, SensePoint> $points */
         $points = SensePoint::query()
             ->where('tenant_id', $tenantId)

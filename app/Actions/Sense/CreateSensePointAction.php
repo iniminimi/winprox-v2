@@ -8,6 +8,7 @@ use App\Models\SensePoint;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Checkmate\CheckmateMode;
+use App\Support\Sense\SenseSeason;
 use App\Models\Tenant;
 use Illuminate\Validation\ValidationException;
 
@@ -45,6 +46,8 @@ class CreateSensePointAction
         }
 
         $token = SensePoint::issueToken();
+        $season = SenseSeason::current();
+        $preset = config('sense.presets.'.$season);
         $defaults = config('sense.defaults');
 
         $point = SensePoint::query()->create([
@@ -52,14 +55,15 @@ class CreateSensePointAction
             'unit_id' => $unit->id,
             'token_hash' => $token['hash'],
             'token_prefix' => $token['prefix'],
-            'temperature_low' => $defaults['temperature']['low'],
-            'temperature_target' => $defaults['temperature']['target'],
-            'temperature_high' => $defaults['temperature']['high'],
-            'humidity_low' => $defaults['humidity']['low'],
-            'humidity_target' => $defaults['humidity']['target'],
-            'humidity_high' => $defaults['humidity']['high'],
+            'temperature_low' => $preset['temperature']['low'],
+            'temperature_target' => $preset['temperature']['target'],
+            'temperature_high' => $preset['temperature']['high'],
+            'humidity_low' => $preset['humidity']['low'],
+            'humidity_target' => $preset['humidity']['target'],
+            'humidity_high' => $preset['humidity']['high'],
             'co2_high' => $defaults['co2_high'],
             'voc_high' => $defaults['voc_high'],
+            'season_applied' => $season,
         ]);
 
         $this->audit->record(
