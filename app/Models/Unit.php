@@ -85,6 +85,11 @@ class Unit extends Model
         return $this->belongsTo(Location::class);
     }
 
+    public function sensePoint(): HasOne
+    {
+        return $this->hasOne(SensePoint::class);
+    }
+
     public function hasWorkVisitPin(): bool
     {
         return $this->latitude !== null && $this->longitude !== null;

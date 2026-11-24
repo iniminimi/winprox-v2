@@ -548,6 +548,17 @@
             @endforeach
         </div>
 
+        @if (($senseAttention ?? []) !== [])
+            <div class="wp-card wp-card-pad wp-stack-tight">
+                <h2 class="wp-section-title">{{ __('sense.attention.title') }}</h2>
+                <div class="wp-sense-attention">
+                    @foreach (array_slice($senseAttention, 0, 8) as $line)
+                        <a href="{{ route('sense.index') }}">{{ $line->sentence }}</a>
+                    @endforeach
+                </div>
+            </div>
+        @endif
+
         @if ($showIssuesTasksUi ?? true)
             <div class="wp-card wp-card-pad wp-stack">
                 <div class="wp-row">

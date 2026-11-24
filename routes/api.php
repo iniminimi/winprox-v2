@@ -16,6 +16,7 @@ use App\Http\Controllers\Api\V1\UnitCheckController;
 use App\Http\Controllers\Api\V1\UnitMeasurementController;
 use App\Http\Controllers\Api\V1\PromoCampaignController;
 use App\Http\Controllers\Api\V1\ReservationController;
+use App\Http\Controllers\Api\V1\SenseReadingController;
 use App\Http\Controllers\Api\V1\WorkerController;
 use App\Http\Controllers\Api\V1\WorkShiftController;
 use App\Http\Controllers\Api\V1\TimeScheduleController;
@@ -32,6 +33,10 @@ Route::prefix('v1')->group(function () {
     Route::post('iot/events', [IotEventController::class, 'store'])
         ->middleware(['iot.gateway', 'throttle:120,1', 'idempotency'])
         ->name('api.v1.iot.events.store');
+
+    Route::post('sense/readings', [SenseReadingController::class, 'store'])
+        ->middleware(['sense.point', 'throttle:120,1'])
+        ->name('api.v1.sense.readings.store');
 
     // Klokschermen (ESP32-TFT): pairing-claim + status-poll publiek (code +
     // admin-confirm zijn de poort), ping achter wpclk_-device-token.

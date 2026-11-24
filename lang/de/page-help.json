@@ -1832,6 +1832,23 @@
                 }
             ]
         },
+        "sense.index": {
+            "title": "Hilfe — Sense",
+            "actions": [
+                {
+                    "label": "Was ist dieser Bildschirm?",
+                    "text": "Sense zeigt je Raum Temperatur, Luftfeuchtigkeit, CO₂ und den VOC-Index. Die Grenzen stellen Sie auf der schwarzen Karte ein. Die Karte entspricht dem Display im Raum."
+                },
+                {
+                    "label": "Grenzen",
+                    "text": "Bei Temperatur und Feuchte ziehen oder tippen Sie unten, Ziel und oben. Der Zielwert ist nur ein Richtwert. Aufmerksamkeit entsteht unter der unteren oder über der oberen Grenze. CO₂ und der VOC-Index haben nur eine Obergrenze."
+                },
+                {
+                    "label": "Startbildschirm",
+                    "text": "Liegt ein Raum außerhalb der Spanne, oder sendet das Display eine Zeit lang nichts, steht das auf dem Startbildschirm. Es entsteht keine Meldung und keine Aufgabe."
+                }
+            ]
+        },
         "iot.index": {
             "title": "Hilfe — IoT Connect",
             "actions": [

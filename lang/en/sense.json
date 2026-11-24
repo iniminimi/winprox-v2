@@ -1,0 +1,47 @@
+{
+    "title": "Sense",
+    "subtitle": "WinProx Sense",
+    "add": "Add room",
+    "empty": "No room yet. Add a room and set the bands. The screen will send the readings after that.",
+    "no_units": "Every room already has Sense, or there is no unit yet.",
+    "delete_title": "Remove Sense",
+    "delete_body": "The readings for this room are removed. No issue or task is created.",
+    "fields": {
+        "room": "Room",
+        "choose": "Choose a room"
+    },
+    "metrics": {
+        "temperature": "Temperature",
+        "humidity": "Humidity",
+        "co2": "CO₂",
+        "voc": "VOC index",
+        "stale": "Reading"
+    },
+    "card": {
+        "last": "Last reading: :when",
+        "last_none": "No reading yet"
+    },
+    "attention": {
+        "title": "Sense needs attention",
+        "below": ":room · :metric :value · below :limit",
+        "above": ":room · :metric :value · above :limit",
+        "stale": ":room · no reading since :when",
+        "missing": ":room · no reading yet",
+        "today_at": "today at :time",
+        "yesterday_at": "yesterday at :time",
+        "date_at": ":date at :time"
+    },
+    "token": {
+        "title": "Key for this room",
+        "once": "You see this key once. The screen uses it to send readings.",
+        "rotate": "New key",
+        "prefix": "Key :prefix…"
+    },
+    "errors": {
+        "unavailable": "Sense is not available here.",
+        "unit_invalid": "Choose a room.",
+        "unit_taken": "This room already has Sense.",
+        "band_range": "That value is outside the scale.",
+        "band_order": "The target sits between the lower and upper mark."
+    }
+}

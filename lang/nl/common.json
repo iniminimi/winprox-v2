@@ -41,7 +41,8 @@
         "checklists": "Checklists",
         "workers": "Uitvoerders",
         "activity": "Activiteit",
-        "photo_album": "Fotoalbum"
+        "photo_album": "Fotoalbum",
+        "sense": "Sense"
     },
     "status": {
         "new": "Open",

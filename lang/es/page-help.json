@@ -1832,6 +1832,23 @@
                 }
             ]
         },
+        "sense.index": {
+            "title": "Ayuda — Sense",
+            "actions": [
+                {
+                    "label": "Qué es esta pantalla",
+                    "text": "Sense muestra por sala la temperatura, la humedad, el CO₂ y el índice VOC. Los límites se ajustan en la tarjeta negra. Esa tarjeta sigue la pantalla de la sala."
+                },
+                {
+                    "label": "Límites",
+                    "text": "En temperatura y humedad arrastra o escribe el valor bajo, el objetivo y el alto. El objetivo solo orienta. La atención aparece por debajo del mínimo o por encima del máximo. CO₂ y el índice VOC solo tienen un máximo."
+                },
+                {
+                    "label": "Pantalla de inicio",
+                    "text": "Si una sala queda fuera de la banda, o la pantalla deja de enviar, aparece en el inicio. No se crea ningún aviso ni tarea."
+                }
+            ]
+        },
         "iot.index": {
             "title": "Ayuda — IoT Connect",
             "actions": [

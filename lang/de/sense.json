@@ -1,0 +1,47 @@
+{
+    "title": "Sense",
+    "subtitle": "WinProx Sense",
+    "add": "Raum hinzufügen",
+    "empty": "Noch kein Raum. Fügen Sie einen Raum hinzu und stellen Sie die Grenzen ein. Das Display sendet danach die Messwerte.",
+    "no_units": "Alle Räume haben bereits Sense, oder es gibt noch keine Unit.",
+    "delete_title": "Sense entfernen",
+    "delete_body": "Die Messwerte dieses Raums werden gelöscht. Es entsteht keine Meldung und keine Aufgabe.",
+    "fields": {
+        "room": "Raum",
+        "choose": "Raum wählen"
+    },
+    "metrics": {
+        "temperature": "Temperatur",
+        "humidity": "Luftfeuchtigkeit",
+        "co2": "CO₂",
+        "voc": "VOC-Index",
+        "stale": "Messung"
+    },
+    "card": {
+        "last": "Letzte Messung: :when",
+        "last_none": "Noch keine Messung"
+    },
+    "attention": {
+        "title": "Sense braucht Aufmerksamkeit",
+        "below": ":room · :metric :value · unter :limit",
+        "above": ":room · :metric :value · über :limit",
+        "stale": ":room · keine Messung seit :when",
+        "missing": ":room · noch keine Messung",
+        "today_at": "heute um :time",
+        "yesterday_at": "gestern um :time",
+        "date_at": ":date um :time"
+    },
+    "token": {
+        "title": "Schlüssel für diesen Raum",
+        "once": "Diesen Schlüssel sehen Sie einmal. Das Display sendet damit die Messwerte.",
+        "rotate": "Neuer Schlüssel",
+        "prefix": "Schlüssel :prefix…"
+    },
+    "errors": {
+        "unavailable": "Sense ist hier nicht verfügbar.",
+        "unit_invalid": "Wählen Sie einen Raum.",
+        "unit_taken": "Dieser Raum hat bereits Sense.",
+        "band_range": "Dieser Wert liegt außerhalb der Skala.",
+        "band_order": "Der Zielwert liegt zwischen unten und oben."
+    }
+}

@@ -290,6 +290,14 @@
                 "badge_mod": "corp"
             },
             {
+                "title": "Sense",
+                "body": "Sense toont per lokaal temperatuur, luchtvochtigheid, CO₂ en de VOC-index. U stelt de grenzen in. Het beginscherm vraagt aandacht als een waarde buiten de band valt of als het scherm niets meer stuurt.",
+                "items": [
+                    "Er ontstaat geen melding en geen taak.",
+                    "CO₂ en de VOC-index hebben alleen een bovengrens. Bij temperatuur en vocht is de streefwaarde een richtpunt."
+                ]
+            },
+            {
                 "title": "API en webhooks",
                 "body": "De API en de webhooks laten andere software gegevens met WinProx uitwisselen. Een API haalt gegevens op of stuurt ze door. Een webhook stuurt zelf een bericht zodra er iets gebeurt.",
                 "items": [

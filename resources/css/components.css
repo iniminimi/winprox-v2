@@ -9365,3 +9365,213 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
     height: auto;
 }
 
+/* Sense — zwarte kaart, dezelfde verzadigde kleuren als het D1S-lcd. */
+.wp-sense-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(22rem, 28rem));
+    gap: 1.25rem;
+    align-items: start;
+}
+
+.wp-sense-room {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.wp-sense-card {
+    background: var(--sense-bg, #000);
+    color: var(--sense-text, #fff);
+    border-radius: 1.25rem;
+    padding: 1rem 1rem 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.wp-sense-card__head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.wp-sense-leaf {
+    width: 1.75rem;
+    height: 1.75rem;
+    color: var(--sense-green, #00d26a);
+    flex: none;
+}
+
+.wp-sense-card__title {
+    margin: 0;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    flex: 1;
+    min-width: 0;
+}
+
+.wp-sense-state {
+    width: 1.85rem;
+    height: 1.85rem;
+    border-radius: 999px;
+    background: var(--sense-green, #00d26a);
+    color: #000;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+}
+
+.wp-sense-state--bad {
+    background: var(--sense-red, #ff2d2d);
+    color: #fff;
+}
+
+.wp-sense-svg {
+    width: 1.35rem;
+    height: 1.35rem;
+    display: block;
+}
+
+.wp-sense-state .wp-sense-svg {
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+.wp-sense-metric__head {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+}
+
+.wp-sense-metric__icon {
+    width: 1.6rem;
+    color: var(--sense-text, #fff);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+}
+
+.wp-sense-metric__title {
+    font-weight: 700;
+    flex: 1;
+}
+
+.wp-sense-metric__value {
+    font-size: 1.35rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+
+.wp-sense-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.7rem;
+    height: 1.35rem;
+    padding: 0 0.2rem;
+    border-radius: 0.35rem;
+    background: var(--sense-green, #00d26a);
+    color: #000;
+    font-size: 0.62rem;
+    font-weight: 800;
+}
+
+.wp-sense-track {
+    position: relative;
+    height: 0.55rem;
+    margin: 0.85rem 0.7rem 0.35rem;
+    border-radius: 999px;
+    touch-action: none;
+}
+
+.wp-sense-handle {
+    position: absolute;
+    top: 50%;
+    width: 1.35rem;
+    height: 1.35rem;
+    margin: 0;
+    padding: 0;
+    border: 3px solid var(--sense-text, #fff);
+    border-radius: 999px;
+    transform: translate(-50%, -50%);
+    cursor: grab;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 40%);
+}
+
+.wp-sense-handle:active {
+    cursor: grabbing;
+}
+
+.wp-sense-marks {
+    position: relative;
+    height: 1.6rem;
+    margin: 0 0.7rem;
+}
+
+.wp-sense-mark {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    font-size: 0.82rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.wp-sense-mark button {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+.wp-sense-input {
+    width: 4.5rem;
+    padding: 0.1rem 0.3rem;
+    border: 1px solid var(--sense-muted, #a3a3a3);
+    border-radius: 0.4rem;
+    background: #111;
+    color: #fff;
+    font: inherit;
+    text-align: center;
+}
+
+.wp-sense-card__foot {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0.2rem 0 0;
+    color: var(--sense-muted, #a3a3a3);
+    font-size: 0.85rem;
+}
+
+.wp-sense-card__foot .wp-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+.wp-sense-tools {
+    align-items: center;
+}
+
+.wp-sense-attention {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.wp-sense-attention a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.wp-sense-attention a:hover {
+    text-decoration: underline;
+}
+

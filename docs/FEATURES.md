@@ -812,6 +812,18 @@ stuurt events; WinProx zet die om in workflow.
 
 ---
 
+## 5d. Sense
+
+**Doel:** per lokaal temperatuur, luchtvochtigheid, CO₂ en VOC-index tonen (D1S). Geen melding, geen taak. Aandacht op het beginscherm als een waarde onder of boven de band zit, of als het scherm 15 minuten niets stuurt.
+
+- Menu: **Plaatsen → Sense**. Alleen admin. Checkmate ziet het niet.
+- Eén punt per unit. De kaart toont de unitnaam; een site-unit toont de locatienaam. Zwarte kaart, dezelfde verzadigde kleuren als het lcd.
+- Temperatuur en vocht: onder, streef, boven. Streef is geen alarm. CO₂ en VOC: alleen boven.
+- `POST /api/v1/sense/readings` met `X-WinProx-Sense-Key` (`wpsense_…`, één keer zichtbaar). Zie `docs/api/sense.md`.
+- Opnames van een camera horen hier niet bij.
+
+---
+
 ## 5g. Time (prikklok) & RSZ-aanwezigheid (CIAO)
 
 **Status specificatie:** vastgelegd in `WINPROX_RULES.md` §4.5. **Implementatie golf 1:**

@@ -41,7 +41,8 @@
         "checklists": "Checklists",
         "workers": "Ejecutores",
         "activity": "Actividad",
-        "photo_album": "Álbum de fotos"
+        "photo_album": "Álbum de fotos",
+        "sense": "Sense"
     },
     "status": {
         "new": "Abierta",

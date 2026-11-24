@@ -1832,6 +1832,23 @@
                 }
             ]
         },
+        "sense.index": {
+            "title": "Help — Sense",
+            "actions": [
+                {
+                    "label": "What is this screen?",
+                    "text": "Sense shows temperature, humidity, CO₂ and the VOC index for each room. You set the marks on the black card. That card matches the screen in the room."
+                },
+                {
+                    "label": "Marks",
+                    "text": "For temperature and humidity you drag or type the lower mark, the target and the upper mark. The target is only a guide. Attention starts below the lower mark or above the upper mark. CO₂ and the VOC index have only an upper mark."
+                },
+                {
+                    "label": "Home screen",
+                    "text": "When a room is outside the band, or the screen stops sending, it shows on the home screen. No issue and no task is created."
+                }
+            ]
+        },
         "iot.index": {
             "title": "Help — IoT Connect",
             "actions": [

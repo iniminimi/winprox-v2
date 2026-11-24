@@ -290,6 +290,14 @@
                 "badge_mod": "corp"
             },
             {
+                "title": "Sense",
+                "body": "Sense shows temperature, humidity, CO₂ and the VOC index for each room. You set the marks. The home screen asks for attention when a value leaves the band or the screen stops sending.",
+                "items": [
+                    "No issue and no task is created.",
+                    "CO₂ and the VOC index have only an upper mark. For temperature and humidity the target is a guide."
+                ]
+            },
+            {
                 "title": "API and webhooks",
                 "body": "The API and webhooks let other software exchange data with WinProx. An API fetches data or sends it in. A webhook sends a message on its own as soon as something happens.",
                 "items": [

@@ -1832,6 +1832,23 @@
                 }
             ]
         },
+        "sense.index": {
+            "title": "Hulp — Sense",
+            "actions": [
+                {
+                    "label": "Wat is dit scherm?",
+                    "text": "Sense toont per lokaal de temperatuur, de luchtvochtigheid, CO₂ en de VOC-index. U stelt de grenzen in op de zwarte kaart. Die kaart volgt het scherm in het lokaal."
+                },
+                {
+                    "label": "Grenzen",
+                    "text": "Bij temperatuur en vocht sleept of typt u onder, streef en boven. De streefwaarde is alleen een richtpunt. Aandacht ontstaat onder de ondergrens of boven de bovengrens. CO₂ en de VOC-index hebben alleen een bovengrens."
+                },
+                {
+                    "label": "Beginscherm",
+                    "text": "Valt een lokaal buiten de band, of stuurt het scherm een tijd niets meer, dan staat dat op het beginscherm. Er komt geen melding en geen taak."
+                }
+            ]
+        },
         "iot.index": {
             "title": "Hulp — IoT Connect",
             "actions": [

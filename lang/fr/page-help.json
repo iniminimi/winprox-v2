@@ -1836,6 +1836,23 @@
                 }
             ]
         },
+        "sense.index": {
+            "title": "Aide — Sense",
+            "actions": [
+                {
+                    "label": "Quel est cet écran ?",
+                    "text": "Sense montre par local la température, l’humidité, le CO₂ et l’indice VOC. Vous réglez les repères sur la carte noire. Cette carte suit l’écran du local."
+                },
+                {
+                    "label": "Repères",
+                    "text": "Pour la température et l’humidité, faites glisser ou saisissez le bas, la cible et le haut. La cible est seulement un repère. L’attention commence sous le bas ou au-dessus du haut. Le CO₂ et l’indice VOC n’ont qu’une limite haute."
+                },
+                {
+                    "label": "Écran d’accueil",
+                    "text": "Si un local sort de la bande, ou si l’écran n’envoie plus rien, cela apparaît à l’accueil. Aucun signalement ni tâche n’est créé."
+                }
+            ]
+        },
         "iot.index": {
             "title": "Aide — IoT Connect",
             "actions": [

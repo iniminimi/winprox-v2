@@ -1,0 +1,47 @@
+{
+    "title": "Sense",
+    "subtitle": "WinProx Sense",
+    "add": "Aggiungi locale",
+    "empty": "Nessun locale ancora. Aggiungi un locale e imposta le fasce. Lo schermo invierà poi le misurazioni.",
+    "no_units": "Tutti i locali hanno già Sense, oppure non c'è ancora un'unità.",
+    "delete_title": "Rimuovi Sense",
+    "delete_body": "Le misurazioni di questo locale vengono eliminate. Non nasce nessuna segnalazione né attività.",
+    "fields": {
+        "room": "Locale",
+        "choose": "Scegli un locale"
+    },
+    "metrics": {
+        "temperature": "Temperatura",
+        "humidity": "Umidità",
+        "co2": "CO₂",
+        "voc": "Indice VOC",
+        "stale": "Misurazione"
+    },
+    "card": {
+        "last": "Ultima misurazione: :when",
+        "last_none": "Nessuna misurazione"
+    },
+    "attention": {
+        "title": "Sense richiede attenzione",
+        "below": ":room · :metric :value · sotto :limit",
+        "above": ":room · :metric :value · sopra :limit",
+        "stale": ":room · nessuna misurazione dal :when",
+        "missing": ":room · nessuna misurazione",
+        "today_at": "oggi alle :time",
+        "yesterday_at": "ieri alle :time",
+        "date_at": ":date alle :time"
+    },
+    "token": {
+        "title": "Chiave di questo locale",
+        "once": "Questa chiave si vede una sola volta. Lo schermo la usa per inviare le misurazioni.",
+        "rotate": "Nuova chiave",
+        "prefix": "Chiave :prefix…"
+    },
+    "errors": {
+        "unavailable": "Sense non è disponibile qui.",
+        "unit_invalid": "Scegli un locale.",
+        "unit_taken": "Questo locale ha già Sense.",
+        "band_range": "Quel valore è fuori scala.",
+        "band_order": "Il valore obiettivo sta tra il limite basso e quello alto."
+    }
+}

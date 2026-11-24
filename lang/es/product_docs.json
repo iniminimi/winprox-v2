@@ -290,6 +290,14 @@
                 "badge_mod": "corp"
             },
             {
+                "title": "Sense",
+                "body": "Sense muestra por sala la temperatura, la humedad, el CO₂ y el índice VOC. Usted ajusta los límites. El inicio pide atención si un valor sale de la banda o si la pantalla deja de enviar.",
+                "items": [
+                    "No se crea ningún aviso ni tarea.",
+                    "El CO₂ y el índice VOC solo tienen un máximo. En temperatura y humedad el objetivo es una referencia."
+                ]
+            },
+            {
                 "title": "API y webhooks",
                 "body": "La API y los webhooks permiten que otro software intercambie datos con WinProx. Una API obtiene datos o los envía. Un webhook manda un mensaje por sí solo en cuanto ocurre algo.",
                 "items": [

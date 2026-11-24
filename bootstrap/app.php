@@ -6,6 +6,7 @@ use App\Support\Errors\ErrorReference;
 use App\Support\ResolveAppLocale;
 use App\Http\Middleware\AuthenticateClockDisplay;
 use App\Http\Middleware\AuthenticateIotGateway;
+use App\Http\Middleware\AuthenticateSensePoint;
 use App\Http\Middleware\CheckApiAccess;
 use App\Http\Middleware\ConfineMarketHost;
 use App\Http\Middleware\EnsureBackofficeDesktop;
@@ -54,6 +55,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'time.roster' => EnsureTimeRosterEnabled::class,
             'api.access' => CheckApiAccess::class,
             'iot.gateway' => AuthenticateIotGateway::class,
+            'sense.point' => AuthenticateSensePoint::class,
             'clock.display' => AuthenticateClockDisplay::class,
             'idempotency' => EnsureRequestIdempotency::class,
         ]);

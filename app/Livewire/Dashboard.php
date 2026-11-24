@@ -7,6 +7,7 @@ use App\Actions\Billing\RealignSubscriptionPeriodAction;
 use App\Actions\Checkmate\BuildCheckmateDashboardDataAction;
 use App\Actions\Dashboard\BuildDashboardIntentHubAction;
 use App\Actions\Dashboard\BuildDashboardStatsAction;
+use App\Actions\Sense\ListSenseAttentionAction;
 use App\Actions\Dashboard\ListDashboardRecentIssuesAction;
 use App\Actions\Onboarding\ApplyTenantStarterPackAction;
 use App\Actions\Onboarding\DismissTenantStarterPackResultAction;
@@ -255,6 +256,7 @@ class Dashboard extends Component
         BuildCheckmateDashboardDataAction $buildCheckmate,
         ShouldShowWhatsNewCardAction $shouldShowWhatsNew,
         CountExpiringAbsencePhotosAction $countExpiringAbsencePhotos,
+        ListSenseAttentionAction $listSenseAttention,
     ) {
         $tenant = $this->resolveTenant();
         if ($tenant !== null) {
@@ -362,6 +364,9 @@ class Dashboard extends Component
             'starterPackUnitsHref' => $starterPackSummary !== null
                 ? TenantOnboardingState::unitsOnboardingHref()
                 : null,
+            'senseAttention' => (! $isCheckmate && $user instanceof User && $user->can('viewAny', \App\Models\SensePoint::class))
+                ? $listSenseAttention->handle($tenantId)
+                : [],
         ]);
     }
 

@@ -1832,6 +1832,23 @@
                 }
             ]
         },
+        "sense.index": {
+            "title": "Aiuto — Sense",
+            "actions": [
+                {
+                    "label": "Che cos’è questa schermata?",
+                    "text": "Sense mostra per locale temperatura, umidità, CO₂ e indice VOC. I limiti si impostano sulla scheda nera. Quella scheda segue lo schermo nel locale."
+                },
+                {
+                    "label": "Limiti",
+                    "text": "Per temperatura e umidità trascini o digiti il valore basso, l’obiettivo e il valore alto. L’obiettivo è solo un riferimento. L’attenzione scatta sotto il minimo o sopra il massimo. CO₂ e l’indice VOC hanno solo un massimo."
+                },
+                {
+                    "label": "Schermata iniziale",
+                    "text": "Se un locale esce dalla fascia, o lo schermo non invia più nulla, compare nella schermata iniziale. Non nasce nessuna segnalazione né attività."
+                }
+            ]
+        },
         "iot.index": {
             "title": "Guida — IoT Connect",
             "actions": [

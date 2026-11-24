@@ -290,6 +290,14 @@
                 "badge_mod": "corp"
             },
             {
+                "title": "Sense",
+                "body": "Sense zeigt je Raum Temperatur, Luftfeuchtigkeit, CO₂ und den VOC-Index. Sie stellen die Grenzen ein. Der Startbildschirm bittet um Aufmerksamkeit, wenn ein Wert außerhalb der Spanne liegt oder das Display nichts mehr sendet.",
+                "items": [
+                    "Es entsteht keine Meldung und keine Aufgabe.",
+                    "CO₂ und der VOC-Index haben nur eine Obergrenze. Bei Temperatur und Feuchte ist der Zielwert ein Richtwert."
+                ]
+            },
+            {
                 "title": "API und Webhooks",
                 "body": "Die API und die Webhooks lassen andere Software Daten mit WinProx austauschen. Eine API holt Daten oder schickt sie. Ein Webhook sendet von selbst eine Nachricht, sobald etwas geschieht.",
                 "items": [

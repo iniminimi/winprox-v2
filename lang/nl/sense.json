@@ -1,0 +1,47 @@
+{
+    "title": "Sense",
+    "subtitle": "WinProx Sense",
+    "add": "Lokaal toevoegen",
+    "empty": "Nog geen lokaal. Voeg een lokaal toe en stel de banden in. Het scherm stuurt daarna de metingen.",
+    "no_units": "Alle lokalen hebben al Sense, of er is nog geen unit.",
+    "delete_title": "Sense weghalen",
+    "delete_body": "De metingen van dit lokaal verdwijnen. Er komt geen melding of taak.",
+    "fields": {
+        "room": "Lokaal",
+        "choose": "Kies een lokaal"
+    },
+    "metrics": {
+        "temperature": "Temperatuur",
+        "humidity": "Luchtvochtigheid",
+        "co2": "CO₂",
+        "voc": "VOC-index",
+        "stale": "Meting"
+    },
+    "card": {
+        "last": "Laatste meting: :when",
+        "last_none": "Nog geen meting"
+    },
+    "attention": {
+        "title": "Sense vraagt aandacht",
+        "below": ":room · :metric :value · onder :limit",
+        "above": ":room · :metric :value · boven :limit",
+        "stale": ":room · geen meting sinds :when",
+        "missing": ":room · nog geen meting",
+        "today_at": "vandaag om :time",
+        "yesterday_at": "gisteren om :time",
+        "date_at": ":date om :time"
+    },
+    "token": {
+        "title": "Sleutel voor dit lokaal",
+        "once": "Deze sleutel zie je één keer. Het scherm stuurt daarmee zijn metingen.",
+        "rotate": "Nieuwe sleutel",
+        "prefix": "Sleutel :prefix…"
+    },
+    "errors": {
+        "unavailable": "Sense is hier niet beschikbaar.",
+        "unit_invalid": "Kies een lokaal.",
+        "unit_taken": "Dit lokaal heeft al Sense.",
+        "band_range": "Die waarde valt buiten de schaal.",
+        "band_order": "De streefwaarde staat tussen onder en boven."
+    }
+}

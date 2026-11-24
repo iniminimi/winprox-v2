@@ -1,0 +1,47 @@
+{
+    "title": "Sense",
+    "subtitle": "WinProx Sense",
+    "add": "Añadir sala",
+    "empty": "Todavía no hay sala. Añada una sala y ajuste las bandas. La pantalla enviará después las mediciones.",
+    "no_units": "Todas las salas ya tienen Sense, o todavía no hay una unidad.",
+    "delete_title": "Quitar Sense",
+    "delete_body": "Las mediciones de esta sala desaparecen. No se crea ningún aviso ni tarea.",
+    "fields": {
+        "room": "Sala",
+        "choose": "Elija una sala"
+    },
+    "metrics": {
+        "temperature": "Temperatura",
+        "humidity": "Humedad",
+        "co2": "CO₂",
+        "voc": "Índice VOC",
+        "stale": "Medición"
+    },
+    "card": {
+        "last": "Última medición: :when",
+        "last_none": "Aún no hay medición"
+    },
+    "attention": {
+        "title": "Sense pide atención",
+        "below": ":room · :metric :value · por debajo de :limit",
+        "above": ":room · :metric :value · por encima de :limit",
+        "stale": ":room · sin medición desde :when",
+        "missing": ":room · aún no hay medición",
+        "today_at": "hoy a las :time",
+        "yesterday_at": "ayer a las :time",
+        "date_at": ":date a las :time"
+    },
+    "token": {
+        "title": "Clave de esta sala",
+        "once": "Esta clave se muestra una sola vez. La pantalla la usa para enviar las mediciones.",
+        "rotate": "Nueva clave",
+        "prefix": "Clave :prefix…"
+    },
+    "errors": {
+        "unavailable": "Sense no está disponible aquí.",
+        "unit_invalid": "Elija una sala.",
+        "unit_taken": "Esta sala ya tiene Sense.",
+        "band_range": "Ese valor queda fuera de la escala.",
+        "band_order": "El valor objetivo está entre el inferior y el superior."
+    }
+}
