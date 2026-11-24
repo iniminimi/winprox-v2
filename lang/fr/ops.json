@@ -1,9 +1,9 @@
 {
     "portal": {
         "title": "WinProx OPS",
-        "subtitle": "Enregistrez les numéros de série à la réception. Collez la MAC plus tard sur le bureau (Platform → Appareils) après le flash.",
+        "subtitle": "Appareils, mots de passe et questions d’aide — depuis votre téléphone, sans ordinateur.",
         "qr_title": "QR OPS pour le téléphone",
-        "qr_hint": "Scannez ce code avec votre téléphone pour enregistrer sans retaper.",
+        "qr_hint": "Scannez ce code avec votre téléphone pour WinProx OPS (appareils, mot de passe, aide).",
         "qr_phone": "Réservé aux superusers. Connexion sur le téléphone dans ce portail.",
         "login_title": "Connexion",
         "login_hint": "Superusers plateforme uniquement. Ce n’est pas l’admin client.",
@@ -76,7 +76,9 @@
     "flash": {
         "registered": "Appareil :serial enregistré.",
         "updated": "Appareil mis à jour.",
-        "mac_linked": "MAC :mac lié à :serial."
+        "mac_linked": "MAC :mac lié à :serial.",
+        "help_answered": "Réponse enregistrée dans la base de connaissances.",
+        "help_dismissed": "Question retirée de la liste."
     },
     "errors": {
         "serial_already_registered": "Ce numéro de série existe déjà.",
@@ -87,5 +89,18 @@
         "tenant_not_found": "Organisation introuvable.",
         "auth_failed": "Échec de la connexion.",
         "not_superuser": "Seuls les superusers plateforme peuvent utiliser WinProx OPS."
+    },
+    "menu": {
+        "title": "Choisir une tâche",
+        "back": "Retour au menu",
+        "register": "Enregistrer un appareil",
+        "register_hint": "Photo ou saisie du numéro de série.",
+        "devices": "Rechercher un appareil",
+        "devices_hint": "Recherche par numéro de série ou MAC.",
+        "users": "Utilisateur / mot de passe",
+        "users_hint": "Trouver un utilisateur et définir un nouveau mot de passe.",
+        "help": "Questions d’aide",
+        "help_hint": "Répondre aux questions transmises à l’assistance.",
+        "help_open": ":count ouvertes"
     }
 }

@@ -1,9 +1,9 @@
 {
     "portal": {
         "title": "WinProx OPS",
-        "subtitle": "Registra los números de serie al recibir. Pega la MAC luego en el escritorio (Platform → Dispositivos) tras flashear.",
+        "subtitle": "Dispositivos, contraseñas y preguntas de ayuda — desde el móvil, sin portátil.",
         "qr_title": "QR OPS para el móvil",
-        "qr_hint": "Escanea este código con el móvil para registrar sin teclear.",
+        "qr_hint": "Escanea este código con el móvil para WinProx OPS (dispositivos, contraseña, ayuda).",
         "qr_phone": "Solo superusuarios. El inicio de sesión es en el móvil en este portal.",
         "login_title": "Iniciar sesión",
         "login_hint": "Solo superusuarios de plataforma. No es administración de cliente.",
@@ -76,7 +76,9 @@
     "flash": {
         "registered": "Dispositivo :serial registrado.",
         "updated": "Dispositivo actualizado.",
-        "mac_linked": "MAC :mac vinculada a :serial."
+        "mac_linked": "MAC :mac vinculada a :serial.",
+        "help_answered": "Respuesta guardada en la base de conocimientos.",
+        "help_dismissed": "Pregunta eliminada de la lista."
     },
     "errors": {
         "serial_already_registered": "Este número de serie ya existe.",
@@ -87,5 +89,18 @@
         "tenant_not_found": "Organización no encontrada.",
         "auth_failed": "Error al iniciar sesión.",
         "not_superuser": "Solo los superusuarios de plataforma pueden usar WinProx OPS."
+    },
+    "menu": {
+        "title": "Elige una tarea",
+        "back": "Volver al menú",
+        "register": "Registrar dispositivo",
+        "register_hint": "Foto o escribe el número de serie de la pegatina.",
+        "devices": "Buscar dispositivo",
+        "devices_hint": "Busca por número de serie o MAC.",
+        "users": "Usuario / contraseña",
+        "users_hint": "Busca un usuario y asigna una nueva contraseña.",
+        "help": "Preguntas de ayuda",
+        "help_hint": "Responder preguntas enviadas al soporte.",
+        "help_open": ":count abiertas"
     }
 }

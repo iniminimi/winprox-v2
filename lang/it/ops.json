@@ -1,10 +1,10 @@
 {
     "portal": {
         "title": "WinProx OPS",
-        "subtitle": "Registra i numeri di serie alla ricezione. Incolla il MAC più tardi sul desktop (Platform → Dispositivi) dopo il flash.",
+        "subtitle": "Dispositivi, password e domande di aiuto — dal telefono, senza laptop.",
         "qr_title": "QR OPS per il telefono",
-        "qr_hint": "Scansiona questo codice con il telefono per registrare senza ridigitare.",
-        "qr_phone": "Solo superuser. Accesso sul telefono in questo portale.",
+        "qr_hint": "Scansiona questo codice con il telefono per WinProx OPS (dispositivi, password, aiuto).",
+        "qr_phone": "Solo per superuser. L’accesso avviene sul telefono in questo portale.",
         "login_title": "Accedi",
         "login_hint": "Solo superuser di piattaforma. Non è l’admin del cliente.",
         "login_submit": "Accedi",
@@ -76,7 +76,9 @@
     "flash": {
         "registered": "Dispositivo :serial registrato.",
         "updated": "Dispositivo aggiornato.",
-        "mac_linked": "MAC :mac collegato a :serial."
+        "mac_linked": "MAC :mac collegato a :serial.",
+        "help_answered": "Risposta salvata nella knowledge base.",
+        "help_dismissed": "Domanda rimossa dall’elenco."
     },
     "errors": {
         "serial_already_registered": "Questo numero di serie esiste già.",
@@ -87,5 +89,18 @@
         "tenant_not_found": "Organizzazione non trovata.",
         "auth_failed": "Accesso non riuscito.",
         "not_superuser": "Solo i superuser di piattaforma possono usare WinProx OPS."
+    },
+    "menu": {
+        "title": "Scegli un’attività",
+        "back": "Torna al menu",
+        "register": "Registra dispositivo",
+        "register_hint": "Foto o digita il numero di serie dell’adesivo.",
+        "devices": "Cerca dispositivo",
+        "devices_hint": "Cerca per numero di serie o MAC.",
+        "users": "Utente / password",
+        "users_hint": "Trova un utente e imposta una nuova password.",
+        "help": "Domande di aiuto",
+        "help_hint": "Rispondi alle domande inoltrate all’assistenza.",
+        "help_open": ":count aperte"
     }
 }

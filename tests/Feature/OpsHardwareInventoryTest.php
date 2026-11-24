@@ -19,8 +19,11 @@ use App\Livewire\Platform\Devices;
 use App\Livewire\Public\OpsPortal;
 use App\Models\ClockPoint;
 use App\Models\HardwareDevice;
+use App\Models\HelpChatKnowledgeBaseEntry;
+use App\Models\HelpChatUnansweredQuestion;
 use App\Models\Tenant;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Livewire;
 
 function opsSuperuser(): User
@@ -153,11 +156,61 @@ it('toont platform toestellen en OPS-portaal voor superuser', function () {
         ->set('password', 'password')
         ->call('login')
         ->assertHasNoErrors()
+        ->assertSet('screen', 'home')
+        ->call('openScreen', 'register')
         ->set('serial_number', 'SN-PHONE-1')
         ->call('register')
         ->assertHasNoErrors();
 
     expect(HardwareDevice::query()->where('serial_number', 'SN-PHONE-1')->exists())->toBeTrue();
+});
+
+it('laat via OPS gsm wachtwoord zetten, toestel zoeken en help beantwoorden', function () {
+    $super = opsSuperuser();
+    $tenant = Tenant::factory()->create(['name' => 'Acme OPS']);
+    $colleague = User::factory()->admin()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Locked User',
+        'email' => 'locked-ops@example.com',
+    ]);
+    HardwareDevice::factory()->withMac('AABBCCDDEE55')->create([
+        'serial_number' => 'SN-FIND-55',
+        'tenant_id' => $tenant->id,
+    ]);
+    $question = HelpChatUnansweredQuestion::query()->create([
+        'tenant_id' => $tenant->id,
+        'user_id' => $colleague->id,
+        'locale' => 'nl',
+        'question' => 'Hoe reset ik mijn wachtwoord in OPS test?',
+    ]);
+    $portal = app(EnsureOpsPortalAction::class)->handle();
+
+    Livewire::test(OpsPortal::class, ['token' => $portal->token])
+        ->set('email', $super->email)
+        ->set('password', 'password')
+        ->call('login')
+        ->assertHasNoErrors()
+        ->call('openScreen', 'devices')
+        ->set('deviceSearch', 'SN-FIND-55')
+        ->assertSee('SN-FIND-55')
+        ->assertSee('AA:BB:CC:DD:EE:55', false)
+        ->call('openScreen', 'users')
+        ->set('userSearch', 'locked-ops@example.com')
+        ->call('openPassword', $colleague->id)
+        ->set('newPassword', 'nieuw-wachtwoord-123')
+        ->set('newPasswordConfirmation', 'nieuw-wachtwoord-123')
+        ->call('savePassword')
+        ->assertHasNoErrors()
+        ->call('openScreen', 'help')
+        ->assertSee('Hoe reset ik mijn wachtwoord in OPS test?')
+        ->call('openAnswerQuestion', $question->id)
+        ->set('kbAnswer', 'Via Platform of OPS kun je een nieuw wachtwoord zetten.')
+        ->call('saveAnswer')
+        ->assertHasNoErrors();
+
+    expect(Hash::check('nieuw-wachtwoord-123', $colleague->fresh()->password))->toBeTrue()
+        ->and(HelpChatUnansweredQuestion::query()->whereKey($question->id)->exists())->toBeFalse()
+        ->and(HelpChatKnowledgeBaseEntry::query()->where('match_key', 'like', '%wachtwoord%')->exists())->toBeTrue();
 });
 
 it('weigert niet-superusers op platform toestellen', function () {

@@ -1,10 +1,10 @@
 {
     "portal": {
         "title": "WinProx OPS",
-        "subtitle": "Register sticker serials on receipt. Paste the MAC later on desktop (Platform → Devices) after flashing.",
+        "subtitle": "Devices, passwords and help questions — from your phone, without a laptop.",
         "qr_title": "OPS QR for your phone",
-        "qr_hint": "Scan this code with your phone to register devices without retyping.",
-        "qr_phone": "Superusers only. Sign in on the phone inside this portal.",
+        "qr_hint": "Scan this code with your phone for WinProx OPS (devices, password, help).",
+        "qr_phone": "Superusers only. Sign in on the phone in this portal.",
         "login_title": "Sign in",
         "login_hint": "Platform superusers only. This is not tenant admin.",
         "login_submit": "Sign in",
@@ -76,7 +76,9 @@
     "flash": {
         "registered": "Device :serial has been registered.",
         "updated": "Device updated.",
-        "mac_linked": "MAC :mac linked to :serial."
+        "mac_linked": "MAC :mac linked to :serial.",
+        "help_answered": "Answer saved to the knowledge base.",
+        "help_dismissed": "Question removed from the list."
     },
     "errors": {
         "serial_already_registered": "This serial number already exists.",
@@ -87,5 +89,18 @@
         "tenant_not_found": "Organisation not found.",
         "auth_failed": "Sign-in failed.",
         "not_superuser": "Only platform superusers may use WinProx OPS."
+    },
+    "menu": {
+        "title": "Choose a task",
+        "back": "Back to menu",
+        "register": "Register device",
+        "register_hint": "Photo or type the sticker serial number.",
+        "devices": "Find device",
+        "devices_hint": "Search by serial number or MAC.",
+        "users": "User / password",
+        "users_hint": "Find a user and set a new password.",
+        "help": "Help questions",
+        "help_hint": "Answer escalated assistant questions.",
+        "help_open": ":count open"
     }
 }

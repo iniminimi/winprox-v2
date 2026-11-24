@@ -1,10 +1,10 @@
 {
     "portal": {
         "title": "WinProx OPS",
-        "subtitle": "Erfassen Sie Aufkleber-Seriennummern beim Empfang. MAC später am Desktop einfügen (Platform → Geräte) nach dem Flashen.",
+        "subtitle": "Geräte, Passwörter und Hilfe-Fragen — vom Handy, ohne Laptop.",
         "qr_title": "OPS-QR fürs Handy",
-        "qr_hint": "Scannen Sie diesen Code mit dem Handy, um Geräte ohne Abtippen zu erfassen.",
-        "qr_phone": "Nur Superuser. Anmeldung erfolgt am Handy in diesem Portal.",
+        "qr_hint": "Scanne diesen Code mit dem Handy für WinProx OPS (Geräte, Passwort, Hilfe).",
+        "qr_phone": "Nur für Superuser. Anmeldung erfolgt am Handy in diesem Portal.",
         "login_title": "Anmelden",
         "login_hint": "Nur Plattform-Superuser. Kein Mandanten-Admin.",
         "login_submit": "Anmelden",
@@ -76,7 +76,9 @@
     "flash": {
         "registered": "Gerät :serial wurde erfasst.",
         "updated": "Gerät aktualisiert.",
-        "mac_linked": "MAC :mac mit :serial verknüpft."
+        "mac_linked": "MAC :mac mit :serial verknüpft.",
+        "help_answered": "Antwort in der Wissensdatenbank gespeichert.",
+        "help_dismissed": "Frage aus der Liste entfernt."
     },
     "errors": {
         "serial_already_registered": "Diese Seriennummer existiert bereits.",
@@ -87,5 +89,18 @@
         "tenant_not_found": "Organisation nicht gefunden.",
         "auth_failed": "Anmeldung fehlgeschlagen.",
         "not_superuser": "Nur Plattform-Superuser dürfen WinProx OPS nutzen."
+    },
+    "menu": {
+        "title": "Aufgabe wählen",
+        "back": "Zurück zum Menü",
+        "register": "Gerät registrieren",
+        "register_hint": "Foto oder Seriennummer der Aufkleber tippen.",
+        "devices": "Gerät suchen",
+        "devices_hint": "Suche nach Seriennummer oder MAC.",
+        "users": "Benutzer / Passwort",
+        "users_hint": "Benutzer finden und neues Passwort setzen.",
+        "help": "Hilfe-Fragen",
+        "help_hint": "Weitergeleitete Assistentenfragen beantworten.",
+        "help_open": ":count offen"
     }
 }

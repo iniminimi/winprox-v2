@@ -1359,10 +1359,12 @@ binnen ~30–90 s dood.
   **koppelgeschiedenis**. Staat het toestel in **WinProx OPS** (platform-
   inventaris), dan tonen we het **sticker-serienummer** (S/N) en de MAC apart.
 - **WinProx OPS** (superuser): Platform → **Toestellen** + gsm-portaal `/ops/{token}`
-  (QR op desktop). Gsm: sticker-S/N registreren (foto). Desktop: na flashen MAC
-  plakken bij het S/N (S/N↔MAC vast voor hergebruik). Tenant koppelt het scherm
-  zelf via Klokscherm. Toewijzing + event-log; bevestigde claim matcht inventaris
-  op MAC (`in_use` + clock point).
+  (QR op desktop). Gsm-portaal (na login): menu met **toestel registreren** (foto
+  S/N), **toestel zoeken** (S/N/MAC), **gebruiker / nieuw wachtwoord**, en
+  **help-vragen** (doorgestuurde assistent-vragen beantwoorden of verwijderen).
+  Desktop: na flashen MAC plakken bij het S/N (S/N↔MAC vast voor hergebruik).
+  Tenant koppelt het scherm zelf via Klokscherm. Toewijzing + event-log;
+  bevestigde claim matcht inventaris op MAC (`in_use` + clock point).
 - **Claims:** max 1 pending per punt (DB-unique via `pending_slot` generated column);
   zelfde device_hint retryt idempotent, ander device → `claim_pending`. Nieuwe code
   doodt open claims (`denied/code_reissued`); admin deny → `denied/admin`; verlopen

@@ -1,9 +1,9 @@
 {
     "portal": {
         "title": "WinProx OPS",
-        "subtitle": "Registreer stickerserienummers bij ontvangst. MAC plak je later op desktop (Platform → Toestellen) na het flashen.",
+        "subtitle": "Toestellen, wachtwoorden en help-vragen — vanaf je gsm, zonder laptop.",
         "qr_title": "OPS-QR voor de gsm",
-        "qr_hint": "Scan deze code met je telefoon om toestellen te registreren zonder overtypen.",
+        "qr_hint": "Scan deze code met je telefoon voor WinProx OPS (toestellen, wachtwoord, help).",
         "qr_phone": "Alleen voor superusers. Login gebeurt op de telefoon in dit portaal.",
         "login_title": "Aanmelden",
         "login_hint": "Alleen platform-superusers. Dit is geen tenant-beheer.",
@@ -76,7 +76,9 @@
     "flash": {
         "registered": "Toestel :serial is geregistreerd.",
         "updated": "Toestel bijgewerkt.",
-        "mac_linked": "MAC :mac gekoppeld aan :serial."
+        "mac_linked": "MAC :mac gekoppeld aan :serial.",
+        "help_answered": "Antwoord opgeslagen in de kennisbank.",
+        "help_dismissed": "Vraag verwijderd uit de lijst."
     },
     "errors": {
         "serial_already_registered": "Dit serienummer bestaat al.",
@@ -87,5 +89,18 @@
         "tenant_not_found": "Organisatie niet gevonden.",
         "auth_failed": "Aanmelden mislukt.",
         "not_superuser": "Alleen platform-superusers mogen WinProx OPS gebruiken."
+    },
+    "menu": {
+        "title": "Kies een taak",
+        "back": "Terug naar menu",
+        "register": "Toestel registreren",
+        "register_hint": "Foto of typ het sticker-serienummer.",
+        "devices": "Toestel zoeken",
+        "devices_hint": "Zoek op serienummer of MAC.",
+        "users": "Gebruiker / wachtwoord",
+        "users_hint": "Zoek een gebruiker en zet een nieuw wachtwoord.",
+        "help": "Help-vragen",
+        "help_hint": "Doorgestuurde assistent-vragen beantwoorden.",
+        "help_open": ":count open"
     }
 }
