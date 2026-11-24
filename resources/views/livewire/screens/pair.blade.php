@@ -7,7 +7,7 @@
                 help-page="units.screen"
             />
             <p>
-                <a href="{{ route('locations.show', $unit->location_id) }}" class="btn btn--ghost btn--sm">
+                <a href="{{ route('locations.show', ['location' => $unit->location_id, 'unit_id' => $unit->id]) }}" class="btn btn--ghost btn--sm">
                     ← {{ __('screen.back') }}
                 </a>
             </p>

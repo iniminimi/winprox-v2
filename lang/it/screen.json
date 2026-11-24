@@ -3,7 +3,7 @@
     "pill": "Schermo",
     "title": "Impostazioni dello schermo per :name",
     "subtitle": "Orari, suono, salvaschermo e il QR di questo locale. Il QR cambia ogni ora.",
-    "back": "Torna al luogo",
+    "back": "Torna alle unità",
     "sense": {
         "title": "Sense",
         "hint": "Attivatelo per un D1S. Lo schermo misura allora temperatura, umidità, CO₂ e qualità dell’aria. Lasciatelo spento per un D1.",

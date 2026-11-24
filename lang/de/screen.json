@@ -3,7 +3,7 @@
     "pill": "Display",
     "title": "Display-Einstellungen für :name",
     "subtitle": "Zeiten, Ton, Bildschirmschoner und der QR dieses Raums. Der QR wechselt einmal pro Stunde.",
-    "back": "Zurück zum Standort",
+    "back": "Zurück zu Units",
     "sense": {
         "title": "Sense",
         "hint": "Schalten Sie dies für ein D1S ein. Das Display misst dann Temperatur, Feuchte, CO₂ und Luftqualität. Für ein D1 lassen Sie es aus.",

@@ -3,7 +3,7 @@
     "pill": "Scherm",
     "title": "Scherm instellingen voor :name",
     "subtitle": "Uren, geluid, screensaver en de QR van dit lokaal. De QR wisselt elk uur.",
-    "back": "Terug naar de locatie",
+    "back": "Terug naar Units",
     "sense": {
         "title": "Sense",
         "hint": "Zet dit aan voor een D1S. Het scherm meet dan temperatuur, vocht, CO₂ en luchtkwaliteit. Een D1 laat u uit.",

@@ -3,7 +3,7 @@
     "pill": "Écran",
     "title": "Réglages de l’écran pour :name",
     "subtitle": "Heures, son, écran de veille et le QR de ce local. Le QR change toutes les heures.",
-    "back": "Retour au lieu",
+    "back": "Retour aux unités",
     "sense": {
         "title": "Sense",
         "hint": "Activez ceci pour un D1S. L’écran mesure alors la température, l’humidité, le CO₂ et la qualité de l’air. Laissez éteint pour un D1.",

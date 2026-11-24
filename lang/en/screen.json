@@ -3,7 +3,7 @@
     "pill": "Screen",
     "title": "Screen settings for :name",
     "subtitle": "Hours, sound, screensaver and the QR for this room. The QR changes once an hour.",
-    "back": "Back to the location",
+    "back": "Back to Units",
     "sense": {
         "title": "Sense",
         "hint": "Turn this on for a D1S. The screen then measures temperature, humidity, CO₂ and air quality. Leave it off for a D1.",
