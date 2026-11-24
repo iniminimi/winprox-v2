@@ -68,12 +68,22 @@
             <div class="wp-modal-body wp-stack">
                 <div class="wp-field">
                     <label class="wp-label" for="ops-user-password">{{ __('platform.users.password.password') }}</label>
-                    <input id="ops-user-password" type="password" class="wp-input" wire:model="newPassword" autocomplete="new-password">
+                    <x-wp-password-input
+                        id="ops-user-password"
+                        wire-model="newPassword"
+                        autocomplete="new-password"
+                        :visible-by-default="true"
+                    />
                     @error('newPassword') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
                 <div class="wp-field">
                     <label class="wp-label" for="ops-user-password-confirmation">{{ __('platform.users.password.confirmation') }}</label>
-                    <input id="ops-user-password-confirmation" type="password" class="wp-input" wire:model="newPasswordConfirmation" autocomplete="new-password">
+                    <x-wp-password-input
+                        id="ops-user-password-confirmation"
+                        wire-model="newPasswordConfirmation"
+                        autocomplete="new-password"
+                        :visible-by-default="true"
+                    />
                     @error('newPasswordConfirmation') <p class="wp-error">{{ $message }}</p> @enderror
                 </div>
             </div>

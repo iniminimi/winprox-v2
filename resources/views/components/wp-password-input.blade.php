@@ -3,11 +3,12 @@
     'id' => null,
     'placeholder' => '',
     'autocomplete' => 'new-password',
+    'visibleByDefault' => false,
 ])
 
-<div class="wp-input-group" x-data="{ show: false }">
+<div class="wp-input-group" x-data="{ show: @js((bool) $visibleByDefault) }">
     <input
-        type="password"
+        type="{{ $visibleByDefault ? 'text' : 'password' }}"
         :type="show ? 'text' : 'password'"
         @if ($id) id="{{ $id }}" @endif
         class="wp-input"
