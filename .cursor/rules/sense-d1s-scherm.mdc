@@ -1,0 +1,18 @@
+---
+description: Eindbeeld van het Sense-scherm op de Seeed D1S (480×480). Gebruik bij Sense op het klokscherm, D1S-firmware of de vier klimaatkaders.
+alwaysApply: false
+---
+
+# Sense-scherm D1S — eindbeeld
+
+Goedgekeurd op 24 november 2026. De gebruiker wil het scherm uiteindelijk zo.
+Het doelbeeld staat in `C:\werkmap\winprox-clock\docs\sense-d1s-doel.jpg`.
+Niet bouwen tot de gebruiker dat vraagt.
+
+Vier kaders op 480×480, donkere randen, Sense-merk in het midden: TEMP (koraal,
+thermometer), VOCHTIGHEID (blauw, lachende druppel), CO₂ (groen, wolk), VOC
+(paars, molecule). Elk kader is een JPEG met verloop, gloed, icoon en golfjes,
+dezelfde decoder als de screensaverfoto’s. Het getal en de status zijn tekst
+eroverheen. Per kader een kort icoon-loopje. Geen MP4, geen Lottie, geen
+filmpje over het hele scherm. VOC op het toestel is de index (1–500), niet
+mg/m³.
