@@ -33,7 +33,7 @@ class DeleteClockDisplayImageAction
                 modelId: $image->id,
                 payload: [
                     'clock_point_id' => $image->clock_point_id,
-                    'all_clock_points' => $image->clock_point_id === null,
+                    'all_clock_points' => $image->clock_point_id === null && $image->screen_id === null,
                 ],
             );
         });

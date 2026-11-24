@@ -9,6 +9,7 @@ use App\Actions\PhotoAlbum\DeleteUnitAlbumPhotoAction;
 use App\Actions\PhotoAlbum\LoadWorkerPhotoAlbumAction;
 use App\Actions\PhotoAlbum\UploadUnitAlbumPhotoAction;
 use App\Actions\Public\RecordUnitPortalVisitAction;
+use App\Actions\Screens\ResolveUnitScreenTokenAction;
 use App\Actions\Public\SubmitReportAction;
 use App\Actions\Reservations\CancelReservationAction;
 use App\Actions\Reservations\CreateReservationAction;
@@ -160,14 +161,13 @@ class UnitPortal extends Component
 
     public function mount(string $token, RecordUnitPortalVisitAction $recordVisit): void
     {
-        $unit = Unit::withoutGlobalScope('tenant')
-            ->with(['location', 'category', 'tenant', 'qrCodes' => fn ($q) => $q->where('status', \App\Enums\QrCodeStatus::Active)])
-            ->where('qr_token', $token)
-            ->first();
+        $unit = $this->unitForToken($token);
 
         if (! $unit) {
             InvalidQrResponse::abort();
         }
+
+        $unit->load(['location', 'category', 'tenant', 'qrCodes' => fn ($q) => $q->where('status', \App\Enums\QrCodeStatus::Active)]);
 
         $recordVisit->handle($unit, request()->ip());
 
@@ -195,14 +195,22 @@ class UnitPortal extends Component
         $this->bootstrapFieldWorker($unit);
     }
 
+    private function unitForToken(string $token): ?Unit
+    {
+        $unit = Unit::withoutGlobalScope('tenant')->where('qr_token', $token)->first();
+        if ($unit !== null) {
+            return $unit;
+        }
+
+        return app(ResolveUnitScreenTokenAction::class)->handle($token);
+    }
+
     public function booted(): void
     {
         // Identiteit elke request server-side opnieuw afleiden van de QR-token
         // (het enige bewijs van toegang). Livewire public props zijn
         // client-muteerbaar en mogen nooit zelf de tenant-scope bepalen.
-        $unit = Unit::withoutGlobalScope('tenant')
-            ->where('qr_token', $this->token)
-            ->first();
+        $unit = $this->unitForToken($this->token);
 
         if (! $unit) {
             InvalidQrResponse::abort();

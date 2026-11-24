@@ -1,10 +1,14 @@
 {
     "button": "Schermo",
     "pill": "Schermo",
-    "title": "Schermo per :name",
-    "subtitle": "Inserite il codice mostrato sull’apparecchio. Poi vedete quale schermo è collegato.",
+    "title": "Impostazioni dello schermo per :name",
+    "subtitle": "Orari, suono, salvaschermo e il QR di questo locale. Il QR cambia ogni ora.",
     "back": "Torna al luogo",
     "limits": "I limiti si impostano in",
+    "qr": {
+        "title": "QR di questo locale",
+        "hint": "Lo schermo mostra questo codice. Cambia ogni ora. Una scansione apre la stessa pagina di segnalazione dell’adesivo sulla porta."
+    },
     "code": {
         "title": "Collegamento",
         "hint": "L’apparecchio mostra una schermata per inserire il codice. Qui confermate di quale apparecchio si tratta.",

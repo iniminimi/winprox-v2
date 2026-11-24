@@ -2,6 +2,7 @@
 
 namespace App\Actions\Time;
 
+use App\Actions\Screens\SyncClockScreenAction;
 use App\Models\ClockPoint;
 use App\Support\Audit\AuditRecorder;
 use Illuminate\Support\Facades\DB;
@@ -46,6 +47,8 @@ class UpdateClockDisplayScheduleAction
                 'display_on_from' => $from,
                 'display_on_until' => $until,
             ]);
+
+            app(SyncClockScreenAction::class)->copySettings($locked);
 
             $this->audit->record(
                 userId: $actorUserId,

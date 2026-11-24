@@ -1,10 +1,14 @@
 {
     "button": "Screen",
     "pill": "Screen",
-    "title": "Screen for :name",
-    "subtitle": "Type the code shown on the device. Then you see which screen is attached.",
+    "title": "Screen settings for :name",
+    "subtitle": "Hours, sound, screensaver and the QR for this room. The QR changes once an hour.",
     "back": "Back to the location",
     "limits": "You set the marks under",
+    "qr": {
+        "title": "QR for this room",
+        "hint": "The screen shows this code. It changes once an hour. A scan opens the same report page as the sticker on the door."
+    },
     "code": {
         "title": "Pairing",
         "hint": "The device shows a screen where you type the code. Then you confirm here which device it is.",

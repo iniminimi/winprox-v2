@@ -1766,7 +1766,7 @@
             ]
         },
         "time.clock_display": {
-            "title": "Hilfe — Uhrdisplay",
+            "title": "Hilfe — Display-Einstellungen",
             "actions": [
                 {
                     "label": "Was ist dieses Display?",
@@ -1837,7 +1837,7 @@
             "actions": [
                 {
                     "label": "Koppeln",
-                    "text": "Am Raum wählen Sie Display. Sie erzeugen einen Code und geben ihn auf dem Gerät ein. Danach bestätigen Sie, welches Gerät es ist. An einem Raum zeigt das Display die Sense-Zahlen. Die Grenzen bleiben unter Orte → Sense."
+                    "text": "Am Raum wählen Sie Display. Dort stellen Sie Zeiten, Ton und Bildschirmschoner für dieses Display ein. Der QR des Raums wechselt einmal pro Stunde. Die Grenzen bleiben unter Orte → Sense."
                 },
                 {
                     "label": "Trennen",

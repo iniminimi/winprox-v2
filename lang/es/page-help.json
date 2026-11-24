@@ -1766,7 +1766,7 @@
             ]
         },
         "time.clock_display": {
-            "title": "Ayuda — Pantalla de fichaje",
+            "title": "Ayuda — Ajustes de la pantalla",
             "actions": [
                 {
                     "label": "¿Qué es esta pantalla?",
@@ -1837,7 +1837,7 @@
             "actions": [
                 {
                     "label": "Vincular",
-                    "text": "En la sala elija Pantalla. Genere un código y escríbalo en el aparato. Después confirme de qué aparato se trata. En una sala la pantalla muestra las cifras de Sense. Los límites siguen en Lugares → Sense."
+                    "text": "En la sala elija Pantalla. Allí ajusta las horas, el sonido y el salvapantallas de esa pantalla. El QR de la sala cambia cada hora. Los límites siguen en Lugares → Sense."
                 },
                 {
                     "label": "Desvincular",

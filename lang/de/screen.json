@@ -1,10 +1,14 @@
 {
     "button": "Display",
     "pill": "Display",
-    "title": "Display für :name",
-    "subtitle": "Geben Sie den Code ein, der auf dem Gerät steht. Danach sehen Sie, welches Display hängt.",
+    "title": "Display-Einstellungen für :name",
+    "subtitle": "Zeiten, Ton, Bildschirmschoner und der QR dieses Raums. Der QR wechselt einmal pro Stunde.",
     "back": "Zurück zum Standort",
     "limits": "Die Grenzen stellen Sie ein unter",
+    "qr": {
+        "title": "QR dieses Raums",
+        "hint": "Das Display zeigt diesen Code. Er wechselt einmal pro Stunde. Ein Scan öffnet dieselbe Meldeseite wie der Aufkleber an der Tür."
+    },
     "code": {
         "title": "Koppeln",
         "hint": "Das Gerät zeigt ein Feld für den Code. Hier bestätigen Sie danach, welches Gerät es ist.",

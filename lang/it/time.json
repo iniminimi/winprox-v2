@@ -324,8 +324,8 @@
     "clock_displays": {
         "button": "Schermo",
         "pill": "Schermo",
-        "title": "Schermo orologio — :name",
-        "subtitle": "Collega uno schermo TFT con QR rotante a questo punto di timbratura.",
+        "title": "Impostazioni dello schermo — :name",
+        "subtitle": "Orari, suono, salvaschermo e il QR di questo punto. Il QR cambia ogni 30 secondi.",
         "back": "Torna ai Clock Points",
         "confirmed": "Schermo collegato.",
         "denied": "Richiesta di collegamento rifiutata.",

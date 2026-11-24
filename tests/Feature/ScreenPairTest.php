@@ -89,3 +89,60 @@ it('verbergt het scherm voor een medewerker en voor checkmate', function () {
 
     $this->actingAs($admin)->get(route('screens.pair', $checkUnit))->assertNotFound();
 });
+
+it('bewaart de uren per scherm en laat de QR van een lokaal een uur meegaan', function () {
+    $tenant = Tenant::factory()->create();
+    $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
+    seedTenantPastOnboarding($tenant);
+    Tenancy::actAs($tenant->id);
+
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $first = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Babylokaal',
+    ]);
+    $second = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $location->id,
+        'name' => 'Slaaplokaal',
+    ]);
+
+    Livewire::actingAs($admin)
+        ->test(Pair::class, ['unit' => $first])
+        ->assertSee('Screen settings')
+        ->assertSee('once an hour')
+        ->set('displayOnFrom', '06:00')
+        ->set('displayOnUntil', '19:00')
+        ->call('saveSchedule');
+
+    $page = Livewire::actingAs($admin)
+        ->test(Pair::class, ['unit' => $first])
+        ->call('issueCode');
+
+    $this->postJson(route('api.v1.screens.claim'), [
+        'code' => $page->get('pairingCode'),
+        'device_hint' => 'D1S-babylokaal',
+    ])->assertCreated();
+
+    $page->call('confirmClaim', ScreenClaim::query()->first()->id);
+
+    $screen = $first->fresh()->screen;
+    $other = $second->fresh()->screen;
+    expect($screen->qr_window_seconds)->toBe(3600)
+        ->and(substr((string) $screen->display_on_from, 0, 5))->toBe('06:00')
+        ->and($other)->toBeNull();
+
+    $phone = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1';
+    $token = \App\Support\Screens\ScreenQr::tokenFor($screen);
+
+    $this->withHeader('User-Agent', $phone)
+        ->get(route('public.unit-portal', $token))
+        ->assertOk()
+        ->assertSee('Babylokaal');
+
+    $stale = \App\Support\Screens\ScreenQr::tokenFor($screen, time() - 7200);
+    $this->withHeader('User-Agent', $phone)
+        ->get(route('public.unit-portal', $stale))
+        ->assertNotFound();
+});

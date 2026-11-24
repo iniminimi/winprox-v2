@@ -2,6 +2,7 @@
 
 namespace App\Actions\Time;
 
+use App\Actions\Screens\SyncClockScreenAction;
 use App\Models\ClockPoint;
 use App\Support\Audit\AuditRecorder;
 use Illuminate\Support\Facades\DB;
@@ -78,6 +79,8 @@ class UpdateClockDisplayAlbumWindowsAction
                 'album_mode' => $albumMode,
                 'album_days' => $albumDays,
             ]);
+
+            app(SyncClockScreenAction::class)->copySettings($locked);
 
             $this->audit->record(
                 userId: $actorUserId,

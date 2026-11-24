@@ -23,6 +23,7 @@ class ClockDisplayImage extends Model
     protected $fillable = [
         'tenant_id',
         'clock_point_id',
+        'screen_id',
         'path',
         'sort_order',
     ];
@@ -41,7 +42,7 @@ class ClockDisplayImage extends Model
             ->where('tenant_id', $point->tenant_id)
             ->where(fn ($q) => $q
                 ->where('clock_point_id', $point->id)
-                ->orWhereNull('clock_point_id'))
+                ->orWhere(fn ($q) => $q->whereNull('clock_point_id')->whereNull('screen_id')))
             ->orderByRaw('clock_point_id IS NULL')   // eerst eigen, dan globaal
             ->orderBy('sort_order')
             ->orderBy('id');

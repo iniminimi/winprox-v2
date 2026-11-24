@@ -21,6 +21,17 @@ class Screen extends Model
         'clock_point_id',
         'role',
         'display_id',
+        'display_secret',
+        'qr_window_seconds',
+        'display_on_from',
+        'display_on_until',
+        'display_sound_enabled',
+        'album_mode',
+        'album1_from',
+        'album1_until',
+        'album2_from',
+        'album2_until',
+        'album_days',
         'pairing_code',
         'pairing_expires_at',
         'device_hint',
@@ -32,6 +43,10 @@ class Screen extends Model
     {
         return [
             'role' => ScreenRole::class,
+            'display_secret' => 'encrypted',
+            'display_sound_enabled' => 'boolean',
+            'album_days' => 'integer',
+            'qr_window_seconds' => 'integer',
             'pairing_expires_at' => 'datetime',
             'paired_at' => 'datetime',
             'last_seen_at' => 'datetime',
@@ -51,6 +66,11 @@ class Screen extends Model
     public function claims(): HasMany
     {
         return $this->hasMany(ScreenClaim::class);
+    }
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(ClockDisplayImage::class);
     }
 
     public function isLinked(): bool

@@ -324,8 +324,8 @@
     "clock_displays": {
         "button": "Pantalla",
         "pill": "Pantalla",
-        "title": "Pantalla de reloj — :name",
-        "subtitle": "Vincula una pantalla TFT con QR rotativo a este punto de fichaje.",
+        "title": "Ajustes de la pantalla — :name",
+        "subtitle": "Horas, sonido, salvapantallas y el QR de este punto de fichaje. El QR cambia cada 30 segundos.",
         "back": "Volver a Clock Points",
         "confirmed": "Pantalla vinculada.",
         "denied": "Solicitud de vinculación rechazada.",

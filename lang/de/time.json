@@ -324,8 +324,8 @@
     "clock_displays": {
         "button": "Display",
         "pill": "Display",
-        "title": "Uhr-Display — :name",
-        "subtitle": "Verbinde ein TFT-Display mit rotierendem QR mit diesem Stempelpunkt.",
+        "title": "Display-Einstellungen — :name",
+        "subtitle": "Zeiten, Ton, Bildschirmschoner und der QR dieses Stempelpunkts. Der QR wechselt alle 30 Sekunden.",
         "back": "Zurück zu Clock Points",
         "confirmed": "Display verbunden.",
         "denied": "Verbindungsanfrage abgelehnt.",

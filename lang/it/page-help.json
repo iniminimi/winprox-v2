@@ -1766,7 +1766,7 @@
             ]
         },
         "time.clock_display": {
-            "title": "Aiuto — Schermo di timbratura",
+            "title": "Aiuto — Impostazioni dello schermo",
             "actions": [
                 {
                     "label": "Cos’è questo schermo?",
@@ -1837,7 +1837,7 @@
             "actions": [
                 {
                     "label": "Collegare",
-                    "text": "Sul locale scegliete Schermo. Generate un codice e lo inserite sull’apparecchio. Poi confermate di quale apparecchio si tratta. Su un locale lo schermo mostra i numeri di Sense. I limiti restano in Luoghi → Sense."
+                    "text": "Sul locale scegliete Schermo. Lì impostate orari, suono e salvaschermo di quello schermo. Il QR del locale cambia ogni ora. I limiti restano in Luoghi → Sense."
                 },
                 {
                     "label": "Scollegare",

@@ -324,8 +324,8 @@
     "clock_displays": {
         "button": "Scherm",
         "pill": "Scherm",
-        "title": "Klokscherm — :name",
-        "subtitle": "Koppel een TFT-scherm met roterende QR aan dit clock point.",
+        "title": "Scherm instellingen — :name",
+        "subtitle": "Uren, geluid, screensaver en de QR van dit Clock Point. De QR wisselt elke 30 seconden.",
         "back": "Terug naar Clock Points",
         "confirmed": "Scherm gekoppeld.",
         "denied": "Koppelaanvraag geweigerd.",

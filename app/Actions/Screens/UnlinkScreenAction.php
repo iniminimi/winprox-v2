@@ -27,6 +27,7 @@ class UnlinkScreenAction
 
             $screen->update([
                 'device_hint' => null,
+                'display_secret' => null,
                 'paired_at' => null,
                 'last_seen_at' => null,
                 'pairing_code' => null,

@@ -1,10 +1,14 @@
 {
     "button": "Pantalla",
     "pill": "Pantalla",
-    "title": "Pantalla para :name",
-    "subtitle": "Escriba el código que muestra el aparato. Después verá qué pantalla está unida.",
+    "title": "Ajustes de la pantalla para :name",
+    "subtitle": "Horas, sonido, salvapantallas y el QR de esta sala. El QR cambia cada hora.",
     "back": "Volver al lugar",
     "limits": "Los límites se ajustan en",
+    "qr": {
+        "title": "QR de esta sala",
+        "hint": "La pantalla muestra este código. Cambia cada hora. Un escaneo abre la misma página de aviso que la pegatina de la puerta."
+    },
     "code": {
         "title": "Vincular",
         "hint": "El aparato muestra una pantalla para escribir el código. Aquí confirma de qué aparato se trata.",

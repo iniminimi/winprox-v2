@@ -1,10 +1,14 @@
 {
     "button": "Scherm",
     "pill": "Scherm",
-    "title": "Scherm voor :name",
-    "subtitle": "Toets de code in die op het toestel staat. Daarna ziet u welk scherm er hangt.",
+    "title": "Scherm instellingen voor :name",
+    "subtitle": "Uren, geluid, screensaver en de QR van dit lokaal. De QR wisselt elk uur.",
     "back": "Terug naar de locatie",
     "limits": "De grenzen stelt u in bij",
+    "qr": {
+        "title": "QR van dit lokaal",
+        "hint": "Het scherm toont deze code. Ze wisselt elk uur. Een scan opent dezelfde meldpagina als de sticker op de deur."
+    },
     "code": {
         "title": "Koppelen",
         "hint": "Het toestel toont een scherm om de code in te toetsen. Daarna bevestigt u hier welk toestel het is.",

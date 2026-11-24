@@ -1766,7 +1766,7 @@
             ]
         },
         "time.clock_display": {
-            "title": "Hulp — Klokscherm",
+            "title": "Hulp — Scherm instellingen",
             "actions": [
                 {
                     "label": "Wat is dit scherm?",
@@ -1837,7 +1837,7 @@
             "actions": [
                 {
                     "label": "Koppelen",
-                    "text": "Op het lokaal kiest u Scherm. U genereert een code en toetst die in op het toestel. Daarna bevestigt u welk toestel het is. Aan een lokaal toont het scherm de Sense-cijfers. De grenzen blijven bij Plaatsen → Sense."
+                    "text": "Op het lokaal kiest u Scherm. Daar stelt u de uren, het geluid en de screensaver van dat scherm in. De QR van het lokaal wisselt elk uur. De grenzen blijven bij Plaatsen → Sense."
                 },
                 {
                     "label": "Loskoppelen",

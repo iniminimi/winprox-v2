@@ -52,6 +52,8 @@ class ConfirmScreenClaimAction
 
             $screen->update([
                 'display_id' => $displayId,
+                'display_secret' => $screen->display_secret ?? bin2hex(random_bytes(32)),
+                'qr_window_seconds' => 3600,
                 'device_hint' => $locked->device_hint,
                 'paired_at' => now(),
                 'last_seen_at' => now(),

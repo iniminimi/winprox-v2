@@ -42,8 +42,13 @@ class ScreenClaimController extends Controller
         ];
 
         if ($claim->status === ScreenClaimStatus::Confirmed && $claim->issued_token !== null && $claim->expires_at?->isFuture()) {
+            $screen = $claim->screen;
             $data['sense_key'] = $claim->issued_token;
             $data['role'] = 'sense';
+            $data['display_id'] = $screen?->display_id;
+            $data['display_secret'] = $screen?->display_secret;
+            $data['qr_window_seconds'] = (int) ($screen?->qr_window_seconds ?? 3600);
+            $data['portal_url_template'] = route('public.unit-portal', '__TOKEN__');
         }
 
         return $this->success($data);

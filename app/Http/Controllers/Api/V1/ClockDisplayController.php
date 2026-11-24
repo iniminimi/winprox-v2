@@ -18,6 +18,7 @@ use App\Http\Requests\Api\V1\SubmitClockDisplayClaimRequest;
 use App\Models\ClockDisplayClaim;
 use App\Models\ClockDisplayImage;
 use App\Models\ClockPoint;
+use App\Models\Screen;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use InvalidArgumentException;
@@ -317,13 +318,24 @@ class ClockDisplayController extends Controller
             // Piep bij toets en prikking; uit = stil scherm.
             'sound_enabled' => (bool) ($clockPoint?->display_sound_enabled ?? true),
             'album' => $this->albumManifest($clockPoint),
-            'rotation_seconds' => (int) config('time.display_window_seconds', 30),
+            'rotation_seconds' => $this->rotationSeconds($clockPoint),
             'offline_warn_hours' => (int) config('time.display_offline_warn_hours', 24),
             'offline_block_hours' => (int) config('time.display_offline_block_hours', 168),
             // Scherm vult hier {display_id}{dyn} in; display_id volgt mee in
             // de claim-status-response (of staat in NVS na provisioning).
             'portal_url_template' => route('public.time-portal', '__TOKEN__'),
         ];
+    }
+
+    private function rotationSeconds(?ClockPoint $clockPoint): int
+    {
+        if ($clockPoint === null) {
+            return (int) config('time.display_window_seconds', 30);
+        }
+
+        $window = Screen::query()->where('clock_point_id', $clockPoint->id)->value('qr_window_seconds');
+
+        return $window !== null ? (int) $window : (int) config('time.display_window_seconds', 30);
     }
 
     /**

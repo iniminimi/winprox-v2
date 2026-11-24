@@ -324,8 +324,8 @@
     "clock_displays": {
         "button": "Écran",
         "pill": "Écran",
-        "title": "Écran horloge — :name",
-        "subtitle": "Associez un écran TFT avec QR tournant à ce point de badgeage.",
+        "title": "Réglages de l’écran — :name",
+        "subtitle": "Heures, son, écran de veille et le QR de ce point de badgeage. Le QR change toutes les 30 secondes.",
         "back": "Retour aux Clock Points",
         "confirmed": "Écran associé.",
         "denied": "Demande d'association refusée.",

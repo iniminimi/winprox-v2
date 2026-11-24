@@ -324,8 +324,8 @@
     "clock_displays": {
         "button": "Display",
         "pill": "Display",
-        "title": "Clock display — :name",
-        "subtitle": "Pair a TFT display with rotating QR to this clock point.",
+        "title": "Screen settings — :name",
+        "subtitle": "Hours, sound, screensaver and the QR for this clock point. The QR changes every 30 seconds.",
         "back": "Back to Clock Points",
         "confirmed": "Display paired.",
         "denied": "Pairing request denied.",

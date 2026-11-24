@@ -38,6 +38,7 @@ class IssueScreenPairingCodeAction
                     'tenant_id' => $tenantId,
                     'unit_id' => $unit->id,
                     'role' => ScreenRole::Sense,
+                    'qr_window_seconds' => 3600,
                 ]);
             }
 

@@ -2,6 +2,7 @@
 
 namespace App\Actions\Time;
 
+use App\Actions\Screens\SyncClockScreenAction;
 use App\Models\ClockPoint;
 use App\Support\Audit\AuditRecorder;
 use Illuminate\Support\Facades\DB;
@@ -36,6 +37,8 @@ class UpdateClockDisplaySoundAction
             }
 
             $locked->update(['display_sound_enabled' => $enabled]);
+
+            app(SyncClockScreenAction::class)->copySettings($locked);
 
             $this->audit->record(
                 userId: $actorUserId,

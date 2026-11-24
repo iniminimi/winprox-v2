@@ -1766,7 +1766,7 @@
             ]
         },
         "time.clock_display": {
-            "title": "Help — Clock display",
+            "title": "Help — Screen settings",
             "actions": [
                 {
                     "label": "What is this display?",
@@ -1837,7 +1837,7 @@
             "actions": [
                 {
                     "label": "Pairing",
-                    "text": "On the room, choose Screen. Generate a code and type it on the device. Then confirm which device it is. On a room the screen shows the Sense figures. The marks stay under Places → Sense."
+                    "text": "On the room, choose Screen. There you set the hours, sound and screensaver for that screen. The room QR changes once an hour. The marks stay under Places → Sense."
                 },
                 {
                     "label": "Unlink",

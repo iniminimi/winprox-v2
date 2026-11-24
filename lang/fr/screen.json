@@ -1,10 +1,14 @@
 {
     "button": "Écran",
     "pill": "Écran",
-    "title": "Écran pour :name",
-    "subtitle": "Saisissez le code affiché sur l’appareil. Vous voyez ensuite quel écran est relié.",
+    "title": "Réglages de l’écran pour :name",
+    "subtitle": "Heures, son, écran de veille et le QR de ce local. Le QR change toutes les heures.",
     "back": "Retour au lieu",
     "limits": "Vous réglez les repères dans",
+    "qr": {
+        "title": "QR de ce local",
+        "hint": "L’écran montre ce code. Il change toutes les heures. Un scan ouvre la même page de signalement que l’autocollant sur la porte."
+    },
     "code": {
         "title": "Couplage",
         "hint": "L’appareil affiche un écran pour saisir le code. Vous confirmez ici de quel appareil il s’agit.",
