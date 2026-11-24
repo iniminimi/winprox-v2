@@ -3,8 +3,8 @@
         "title": "WinProx OPS",
         "subtitle": "Devices, passwords and help questions — from your phone, without a laptop.",
         "qr_title": "OPS QR for your phone",
-        "qr_hint": "Scan this code with your phone for WinProx OPS (devices, password, help).",
-        "qr_phone": "Superusers only. Sign in on the phone in this portal.",
+        "qr_hint": "Scan this code or open winprox.app/ops. Then add OPS to your home screen.",
+        "qr_phone": "Superusers only. After install you open OPS without a QR.",
         "login_title": "Sign in",
         "login_hint": "Platform superusers only. This is not tenant admin.",
         "login_submit": "Sign in",
@@ -99,5 +99,22 @@
         "users_hint": "Find a user and set a new password.",
         "help": "Help questions",
         "help_hint": "Answer escalated assistant questions."
+    },
+    "homescreen": {
+        "title": "Add WinProx OPS to your home screen",
+        "help_title": "Add WinProx OPS to your home screen",
+        "help_intro": "Open OPS with one tap next time — no QR or laptop.",
+        "help_ios_label": "iPhone",
+        "help_ios_1": "Tap the plus.",
+        "help_ios_2": "Tap ⋯ at the bottom.",
+        "help_ios_3": "Choose Share, then Show more.",
+        "help_ios_4": "Scroll down and tap Add to Home Screen.",
+        "help_android_label": "Android",
+        "help_android": "Tap the plus and choose Add to Home screen.",
+        "help_done_title": "Done!",
+        "help_done": "WinProx OPS is on your home screen. Tap the icon to sign in.",
+        "help_store": "No App Store or Google Play app needed.",
+        "open_title": "Done!",
+        "open_text": "WinProx OPS is on your home screen. Tap the icon to sign in."
     }
 }

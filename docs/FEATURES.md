@@ -1358,9 +1358,11 @@ binnen ~30–90 s dood.
   Die verschijnt bij de koppelcode (huidig + pending) en in de
   **koppelgeschiedenis**. Staat het toestel in **WinProx OPS** (platform-
   inventaris), dan tonen we het **sticker-serienummer** (S/N) en de MAC apart.
-- **WinProx OPS** (superuser): Platform → **Toestellen** + gsm-portaal `/ops/{token}`
-  (QR op desktop). Gsm-portaal (na login): menu met **toestel registreren** (foto
-  S/N), **toestel zoeken** (S/N/MAC), **gebruiker / nieuw wachtwoord**, en
+- **WinProx OPS** (superuser): Platform → **Toestellen** + gsm-portaal `/ops`
+  (stabiele URL; `/ops/{token}` blijft werken) + QR op desktop. Aparte **PWA**
+  “WinProx OPS” op het startscherm (los van uitvoerdersportaal en Beheer).
+  Gsm-portaal (na login): menu met **toestel registreren** (foto S/N),
+  **toestel zoeken** (S/N/MAC), **gebruiker / nieuw wachtwoord**, en
   **help-vragen** (doorgestuurde assistent-vragen beantwoorden of verwijderen).
   Desktop: na flashen MAC plakken bij het S/N (S/N↔MAC vast voor hergebruik).
   Tenant koppelt het scherm zelf via Klokscherm. Toewijzing + event-log;

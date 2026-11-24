@@ -28,6 +28,11 @@ class OpsPortal extends Model
 
     public function portalUrl(): string
     {
+        return route('public.ops');
+    }
+
+    public function tokenUrl(): string
+    {
         return route('public.ops-portal', $this->token);
     }
 }

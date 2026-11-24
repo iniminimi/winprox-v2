@@ -8947,8 +8947,13 @@ html.wp-homescreen-android .wp-homescreen-help__ios {
     }
 }
 
-html.wp-pwa-installed .wp-portal-homescreen-card,
-html.wp-pwa-installed .wp-homescreen-shortcut-wrap {
+html.wp-pwa-installed .wp-portal-homescreen-card:not(.wp-ops-homescreen-card),
+html.wp-pwa-installed .wp-homescreen-shortcut-wrap:not([data-wp-ops-homescreen-install]) {
+    display: none;
+}
+
+html.wp-ops-pwa-installed .wp-ops-homescreen-card,
+html.wp-ops-pwa-installed [data-wp-ops-homescreen-install] {
     display: none;
 }
 

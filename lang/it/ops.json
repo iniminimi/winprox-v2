@@ -3,8 +3,8 @@
         "title": "WinProx OPS",
         "subtitle": "Dispositivi, password e domande di aiuto — dal telefono, senza laptop.",
         "qr_title": "QR OPS per il telefono",
-        "qr_hint": "Scansiona questo codice con il telefono per WinProx OPS (dispositivi, password, aiuto).",
-        "qr_phone": "Solo per superuser. L’accesso avviene sul telefono in questo portale.",
+        "qr_hint": "Scansiona questo codice o apri winprox.app/ops. Poi metti OPS sulla Home.",
+        "qr_phone": "Solo per superuser. Dopo l’installazione apri OPS senza QR.",
         "login_title": "Accedi",
         "login_hint": "Solo superuser di piattaforma. Non è l’admin del cliente.",
         "login_submit": "Accedi",
@@ -99,5 +99,22 @@
         "users_hint": "Trova un utente e imposta una nuova password.",
         "help": "Domande di aiuto",
         "help_hint": "Rispondi alle domande inoltrate all’assistenza."
+    },
+    "homescreen": {
+        "title": "Metti WinProx OPS sulla schermata Home",
+        "help_title": "Metti WinProx OPS sulla schermata Home",
+        "help_intro": "Apri OPS con un tocco — senza QR o laptop.",
+        "help_ios_label": "iPhone",
+        "help_ios_1": "Tocca il plus.",
+        "help_ios_2": "Tocca ⋯ in basso.",
+        "help_ios_3": "Scegli Condividi e poi Mostra altro.",
+        "help_ios_4": "Scorri e tocca Aggiungi a Home.",
+        "help_android_label": "Android",
+        "help_android": "Tocca il plus e scegli Aggiungi a schermata Home.",
+        "help_done_title": "Fatto!",
+        "help_done": "WinProx OPS è sulla Home. Tocca l’icona per accedere.",
+        "help_store": "Niente App Store o Google Play.",
+        "open_title": "Fatto!",
+        "open_text": "WinProx OPS è sulla Home. Tocca l’icona per accedere."
     }
 }

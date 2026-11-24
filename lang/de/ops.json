@@ -3,8 +3,8 @@
         "title": "WinProx OPS",
         "subtitle": "Geräte, Passwörter und Hilfe-Fragen — vom Handy, ohne Laptop.",
         "qr_title": "OPS-QR fürs Handy",
-        "qr_hint": "Scanne diesen Code mit dem Handy für WinProx OPS (Geräte, Passwort, Hilfe).",
-        "qr_phone": "Nur für Superuser. Anmeldung erfolgt am Handy in diesem Portal.",
+        "qr_hint": "Scanne diesen Code oder öffne winprox.app/ops. Setze OPS danach auf den Startbildschirm.",
+        "qr_phone": "Nur für Superuser. Nach der Installation öffnest du OPS ohne QR.",
         "login_title": "Anmelden",
         "login_hint": "Nur Plattform-Superuser. Kein Mandanten-Admin.",
         "login_submit": "Anmelden",
@@ -99,5 +99,22 @@
         "users_hint": "Benutzer finden und neues Passwort setzen.",
         "help": "Hilfe-Fragen",
         "help_hint": "Weitergeleitete Assistentenfragen beantworten."
+    },
+    "homescreen": {
+        "title": "WinProx OPS auf den Startbildschirm",
+        "help_title": "WinProx OPS auf den Startbildschirm",
+        "help_intro": "OPS später mit einem Tippen öffnen — ohne QR oder Laptop.",
+        "help_ios_label": "iPhone",
+        "help_ios_1": "Tippe auf das Plus.",
+        "help_ios_2": "Tippe unten auf ⋯.",
+        "help_ios_3": "Wähle Teilen und dann Mehr anzeigen.",
+        "help_ios_4": "Scrolle nach unten und tippe auf Zum Home-Bildschirm.",
+        "help_android_label": "Android",
+        "help_android": "Tippe auf das Plus und wähle Zum Startbildschirm hinzufügen.",
+        "help_done_title": "Fertig!",
+        "help_done": "WinProx OPS liegt auf dem Startbildschirm. Tippe zum Anmelden auf das Symbol.",
+        "help_store": "Kein App Store oder Google Play nötig.",
+        "open_title": "Fertig!",
+        "open_text": "WinProx OPS liegt auf dem Startbildschirm. Tippe zum Anmelden auf das Symbol."
     }
 }

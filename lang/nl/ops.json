@@ -3,8 +3,8 @@
         "title": "WinProx OPS",
         "subtitle": "Toestellen, wachtwoorden en help-vragen — vanaf je gsm, zonder laptop.",
         "qr_title": "OPS-QR voor de gsm",
-        "qr_hint": "Scan deze code met je telefoon voor WinProx OPS (toestellen, wachtwoord, help).",
-        "qr_phone": "Alleen voor superusers. Login gebeurt op de telefoon in dit portaal.",
+        "qr_hint": "Scan deze code of open winprox.app/ops. Zet OPS daarna op je startscherm.",
+        "qr_phone": "Alleen voor superusers. Na installatie open je OPS zonder QR.",
         "login_title": "Aanmelden",
         "login_hint": "Alleen platform-superusers. Dit is geen tenant-beheer.",
         "login_submit": "Aanmelden",
@@ -99,5 +99,22 @@
         "users_hint": "Zoek een gebruiker en zet een nieuw wachtwoord.",
         "help": "Help-vragen",
         "help_hint": "Doorgestuurde assistent-vragen beantwoorden."
+    },
+    "homescreen": {
+        "title": "Zet WinProx OPS op je startscherm",
+        "help_title": "Zet WinProx OPS op je startscherm",
+        "help_intro": "Zo open je OPS voortaan met één tik — zonder QR of laptop.",
+        "help_ios_label": "iPhone",
+        "help_ios_1": "Tik op het plusje.",
+        "help_ios_2": "Tik onderaan op ⋯.",
+        "help_ios_3": "Kies Deel en daarna Toon meer.",
+        "help_ios_4": "Scroll naar beneden en tik op Zet op beginscherm.",
+        "help_android_label": "Android",
+        "help_android": "Tik op het plusje en kies Toevoegen aan startscherm.",
+        "help_done_title": "Klaar!",
+        "help_done": "WinProx OPS staat nu op je startscherm. Tik op het icoon om aan te melden.",
+        "help_store": "Geen app uit de App Store of Google Play nodig.",
+        "open_title": "Klaar!",
+        "open_text": "WinProx OPS staat nu op je startscherm. Tik op het icoon om aan te melden."
     }
 }

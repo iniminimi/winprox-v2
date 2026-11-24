@@ -2,16 +2,20 @@
  * Home-screen and desktop install shortcuts.
  * Clock Point: Android Chrome captures beforeinstallprompt on the WinProx icon.
  * Backoffice: the same prompt installs a desktop window in Chrome or Edge.
+ * OPS: separate phone PWA for WinProx OPS (superuser).
  * Each shortcut keeps its own installed flag so one app does not hide the other.
  */
 
 let deferredPrompt = null;
 let deferredBackofficePrompt = null;
+let deferredOpsPrompt = null;
 let homescreenCanInstall = false;
 let backofficeCanInstall = false;
+let opsCanInstall = false;
 
 const INSTALLED_KEY = 'wp-pwa-installed';
 const BACKOFFICE_INSTALLED_KEY = 'wp-backoffice-pwa-installed';
+const OPS_INSTALLED_KEY = 'wp-ops-pwa-installed';
 
 function isStandaloneDisplay() {
     return window.matchMedia('(display-mode: standalone)').matches
@@ -97,6 +101,10 @@ function markBackofficeInstalled() {
     document.documentElement.classList.remove('wp-backoffice-pwa-available');
 }
 
+function markOpsInstalled() {
+    markInstalled(OPS_INSTALLED_KEY, 'wp-ops-pwa-installed');
+}
+
 async function relatedWebAppInstalled() {
     if (typeof navigator.getInstalledRelatedApps !== 'function') {
         return false;
@@ -122,6 +130,19 @@ async function hideShortcutWhenInstalled() {
             markHomescreenInstalled();
         } else {
             clearInstalled(INSTALLED_KEY, 'wp-pwa-installed');
+        }
+    }
+
+    const opsHomescreen = document.querySelector('[data-wp-ops-homescreen-install]');
+    if (opsHomescreen) {
+        if (isStandaloneDisplay()) {
+            markOpsInstalled();
+        } else if (opsCanInstall) {
+            clearInstalled(OPS_INSTALLED_KEY, 'wp-ops-pwa-installed');
+        } else if (readFlag(OPS_INSTALLED_KEY)) {
+            markOpsInstalled();
+        } else {
+            clearInstalled(OPS_INSTALLED_KEY, 'wp-ops-pwa-installed');
         }
     }
 
@@ -154,7 +175,8 @@ async function hideShortcutWhenInstalled() {
 window.addEventListener('beforeinstallprompt', (event) => {
     const homescreen = document.querySelector('[data-wp-homescreen-install]');
     const backoffice = document.querySelector('[data-wp-backoffice-install]');
-    if (!homescreen && !backoffice) {
+    const opsHomescreen = document.querySelector('[data-wp-ops-homescreen-install]');
+    if (!homescreen && !backoffice && !opsHomescreen) {
         return;
     }
 
@@ -170,6 +192,11 @@ window.addEventListener('beforeinstallprompt', (event) => {
         clearInstalled(BACKOFFICE_INSTALLED_KEY, 'wp-backoffice-pwa-installed');
         deferredBackofficePrompt = event;
         syncBackofficeInstallButton();
+    }
+    if (opsHomescreen && !isStandaloneDisplay()) {
+        opsCanInstall = true;
+        clearInstalled(OPS_INSTALLED_KEY, 'wp-ops-pwa-installed');
+        deferredOpsPrompt = event;
     }
 });
 
@@ -188,6 +215,26 @@ document.addEventListener('click', (event) => {
     promptEvent.userChoice.then((choice) => {
         if (choice.outcome === 'accepted') {
             markHomescreenInstalled();
+            showOpenAppScreen();
+        }
+    }).catch(() => {});
+}, true);
+
+document.addEventListener('click', (event) => {
+    const trigger = event.target.closest('[data-wp-ops-homescreen-install]');
+    if (!trigger || isStandaloneDisplay() || !deferredOpsPrompt) {
+        return;
+    }
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    const promptEvent = deferredOpsPrompt;
+    deferredOpsPrompt = null;
+    promptEvent.prompt();
+    promptEvent.userChoice.then((choice) => {
+        if (choice.outcome === 'accepted') {
+            markOpsInstalled();
             showOpenAppScreen();
         }
     }).catch(() => {});
@@ -221,6 +268,10 @@ document.addEventListener('click', (event) => {
 window.addEventListener('appinstalled', () => {
     if (document.querySelector('[data-wp-homescreen-install]')) {
         markHomescreenInstalled();
+        showOpenAppScreen();
+    }
+    if (document.querySelector('[data-wp-ops-homescreen-install]')) {
+        markOpsInstalled();
         showOpenAppScreen();
     }
     if (document.querySelector('[data-wp-backoffice-install]')) {

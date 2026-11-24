@@ -1,3 +1,20 @@
+@push('head')
+    <link rel="manifest" href="{{ route('public.ops.manifest') }}">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="OPS">
+    <link rel="apple-touch-icon" href="{{ asset('images/pwa/winprox-192.png') }}">
+    <meta name="theme-color" content="#059669">
+    <script>
+        (function () {
+            var ua = navigator.userAgent || '';
+            var ios = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            var android = /Android/i.test(ua);
+            document.documentElement.classList.add(ios ? 'wp-homescreen-ios' : (android ? 'wp-homescreen-android' : 'wp-homescreen-other'));
+        })();
+    </script>
+@endpush
+
 <div class="wp-stack">
     <div class="wp-portal-head">
         <div class="wp-portal-head-top">
@@ -19,6 +36,12 @@
             'wp-flash--success' => $flashType !== 'error',
             'wp-flash--danger' => $flashType === 'error',
         ])>{{ $flashMessage }}</div>
+    @endif
+
+    @if (! $authed || $screen === 'home')
+        <div class="wp-card wp-card-pad wp-portal-homescreen-card wp-ops-homescreen-card wp-card--prio-pulse">
+            @include('partials.wp-ops-homescreen-shortcut')
+        </div>
     @endif
 
     @unless ($authed)
@@ -117,4 +140,45 @@
             @endif
         @endif
     @endunless
+
+    <div class="wp-pwa-open-screen" hidden role="dialog" aria-modal="true" aria-labelledby="wp-ops-pwa-open-title">
+        <div class="wp-card wp-card-pad wp-stack wp-pwa-open-screen__card">
+            <img src="{{ asset('images/pwa/winprox-192.png') }}" alt="" width="72" height="72">
+            <h2 id="wp-ops-pwa-open-title" class="wp-h2">{{ __('ops.homescreen.open_title') }}</h2>
+            <p class="wp-muted">{{ __('ops.homescreen.open_text') }}</p>
+            <p class="wp-muted">{{ __('ops.homescreen.help_store') }}</p>
+            <button type="button" class="btn btn--primary" data-wp-pwa-open-dismiss>{{ __('common.button.close') }}</button>
+        </div>
+    </div>
+
+    @if ($homescreenHelpOpen)
+        <x-wp-modal closeMethod="closeHomescreenHelp" aria-labelledby="ops-homescreen-help-title">
+            <div class="wp-card wp-card-pad wp-stack wp-modal-card">
+                <div class="wp-modal-head">
+                    <h2 id="ops-homescreen-help-title" class="wp-h2">{{ __('ops.homescreen.help_title') }}</h2>
+                    <x-wp-modal-close wire:click="closeHomescreenHelp" />
+                </div>
+                <p>{{ __('ops.homescreen.help_intro') }}</p>
+                <div class="wp-homescreen-help__ios">
+                    <p><strong>{{ __('ops.homescreen.help_ios_label') }}</strong></p>
+                    <ol class="wp-homescreen-steps">
+                        <li>{{ __('ops.homescreen.help_ios_1') }}</li>
+                        <li>{{ __('ops.homescreen.help_ios_2') }}</li>
+                        <li>{{ __('ops.homescreen.help_ios_3') }}</li>
+                        <li>{{ __('ops.homescreen.help_ios_4') }}</li>
+                    </ol>
+                </div>
+                <div class="wp-homescreen-help__android">
+                    <p><strong>{{ __('ops.homescreen.help_android_label') }}</strong></p>
+                    <p>{{ __('ops.homescreen.help_android') }}</p>
+                </div>
+                <p><strong>{{ __('ops.homescreen.help_done_title') }}</strong></p>
+                <p>{{ __('ops.homescreen.help_done') }}</p>
+                <p class="wp-muted">{{ __('ops.homescreen.help_store') }}</p>
+                <div class="wp-cluster">
+                    <button type="button" class="btn btn--primary" wire:click="closeHomescreenHelp">{{ __('common.button.close') }}</button>
+                </div>
+            </div>
+        </x-wp-modal>
+    @endif
 </div>

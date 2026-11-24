@@ -1,0 +1,82 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Actions\Ops;
+
+/**
+ * Aparte PWA voor WinProx OPS (superuser-gsm), los van Clock Point en Beheer.
+ */
+final class BuildOpsHomescreenManifestAction
+{
+    /**
+     * @return array<string, mixed>
+     */
+    public function handle(): array
+    {
+        $appId = url('/ops');
+        $manifestUrl = route('public.ops.manifest');
+        // Eigen app-id; scope = site-root zodat /ops zonder trailing slash binnen scope valt.
+        // handle_links niet-preferred: sticker-/Clock Point-scans openen de uitvoerders-PWA.
+        $scope = rtrim(url('/'), '/').'/';
+        $icon192 = url('/images/pwa/winprox-192.png').'?v=4';
+        $icon512 = url('/images/pwa/winprox-512.png').'?v=4';
+        $maskable192 = url('/images/pwa/winprox-maskable-192.png').'?v=4';
+        $maskable512 = url('/images/pwa/winprox-maskable-512.png').'?v=4';
+        $badge = url('/images/pwa/winprox-badge-96.png').'?v=2';
+
+        return [
+            'id' => $appId,
+            'name' => 'WinProx OPS',
+            'short_name' => 'OPS',
+            'start_url' => $appId,
+            'scope' => $scope,
+            'handle_links' => 'not-preferred',
+            'launch_handler' => [
+                'client_mode' => 'navigate-existing',
+            ],
+            'related_applications' => [
+                [
+                    'platform' => 'webapp',
+                    'url' => $manifestUrl,
+                    'id' => $appId,
+                ],
+            ],
+            'display' => 'standalone',
+            'background_color' => '#ffffff',
+            'theme_color' => '#059669',
+            'icons' => [
+                [
+                    'src' => $icon192,
+                    'sizes' => '192x192',
+                    'type' => 'image/png',
+                    'purpose' => 'any',
+                ],
+                [
+                    'src' => $icon512,
+                    'sizes' => '512x512',
+                    'type' => 'image/png',
+                    'purpose' => 'any',
+                ],
+                [
+                    'src' => $maskable192,
+                    'sizes' => '192x192',
+                    'type' => 'image/png',
+                    'purpose' => 'maskable',
+                ],
+                [
+                    'src' => $maskable512,
+                    'sizes' => '512x512',
+                    'type' => 'image/png',
+                    'purpose' => 'maskable',
+                ],
+                [
+                    'src' => $badge,
+                    'sizes' => '96x96',
+                    'type' => 'image/png',
+                    'purpose' => 'monochrome',
+                ],
+            ],
+        ];
+    }
+}

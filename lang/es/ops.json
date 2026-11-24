@@ -3,8 +3,8 @@
         "title": "WinProx OPS",
         "subtitle": "Dispositivos, contraseñas y preguntas de ayuda — desde el móvil, sin portátil.",
         "qr_title": "QR OPS para el móvil",
-        "qr_hint": "Escanea este código con el móvil para WinProx OPS (dispositivos, contraseña, ayuda).",
-        "qr_phone": "Solo superusuarios. El inicio de sesión es en el móvil en este portal.",
+        "qr_hint": "Escanea este código o abre winprox.app/ops. Luego pon OPS en la pantalla de inicio.",
+        "qr_phone": "Solo superusuarios. Tras instalar, abres OPS sin QR.",
         "login_title": "Iniciar sesión",
         "login_hint": "Solo superusuarios de plataforma. No es administración de cliente.",
         "login_submit": "Entrar",
@@ -99,5 +99,22 @@
         "users_hint": "Busca un usuario y asigna una nueva contraseña.",
         "help": "Preguntas de ayuda",
         "help_hint": "Responder preguntas enviadas al soporte."
+    },
+    "homescreen": {
+        "title": "Pon WinProx OPS en la pantalla de inicio",
+        "help_title": "Pon WinProx OPS en la pantalla de inicio",
+        "help_intro": "Abre OPS con un toque — sin QR ni portátil.",
+        "help_ios_label": "iPhone",
+        "help_ios_1": "Toca el plus.",
+        "help_ios_2": "Toca ⋯ abajo.",
+        "help_ios_3": "Elige Compartir y luego Mostrar más.",
+        "help_ios_4": "Desplázate y toca Añadir a pantalla de inicio.",
+        "help_android_label": "Android",
+        "help_android": "Toca el plus y elige Añadir a pantalla de inicio.",
+        "help_done_title": "Listo!",
+        "help_done": "WinProx OPS está en la pantalla de inicio. Toca el icono para iniciar sesión.",
+        "help_store": "No hace falta App Store ni Google Play.",
+        "open_title": "Listo!",
+        "open_text": "WinProx OPS está en la pantalla de inicio. Toca el icono para iniciar sesión."
     }
 }

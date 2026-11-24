@@ -7,6 +7,7 @@ namespace App\Livewire\Public;
 use App\Actions\HelpChat\DismissHelpChatUnansweredQuestionAction;
 use App\Actions\HelpChat\SaveHelpChatKbEntryAction;
 use App\Actions\Ops\AuthenticateOpsSuperuserAction;
+use App\Actions\Ops\EnsureOpsPortalAction;
 use App\Actions\Ops\RegisterHardwareDeviceAction;
 use App\Actions\Platform\SetPlatformUserPasswordAction;
 use App\Data\Ops\RegisterHardwareDeviceData;
@@ -87,13 +88,32 @@ class OpsPortal extends Component
 
     public string $flashType = 'success';
 
-    public function mount(string $token): void
+    public bool $homescreenHelpOpen = false;
+
+    public function mount(?string $token = null): void
     {
+        if ($token === null || $token === '') {
+            $this->portal = app(EnsureOpsPortalAction::class)->handle();
+            $this->token = $this->portal->token;
+
+            return;
+        }
+
         $this->token = $token;
         $this->portal = OpsPortalModel::query()
             ->where('token', $token)
             ->where('is_active', true)
             ->firstOrFail();
+    }
+
+    public function openHomescreenHelp(): void
+    {
+        $this->homescreenHelpOpen = true;
+    }
+
+    public function closeHomescreenHelp(): void
+    {
+        $this->homescreenHelpOpen = false;
     }
 
     public function login(AuthenticateOpsSuperuserAction $action): void
