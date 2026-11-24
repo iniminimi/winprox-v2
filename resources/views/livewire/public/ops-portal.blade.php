@@ -40,13 +40,7 @@
             </form>
         </div>
     @else
-        <div class="wp-cluster wp-cluster--wrap">
-            <button type="button" @class(['btn', 'btn--primary' => $mode === 'register', 'btn--ghost' => $mode !== 'register']) wire:click="setMode('register')">
-                {{ __('ops.portal.tab_register') }}
-            </button>
-            <button type="button" @class(['btn', 'btn--primary' => $mode === 'mac', 'btn--ghost' => $mode !== 'mac']) wire:click="setMode('mac')">
-                {{ __('ops.portal.tab_mac') }}
-            </button>
+        <div class="wp-cluster">
             <button type="button" class="btn btn--ghost" wire:click="logout">{{ __('ops.portal.logout') }}</button>
         </div>
 
@@ -82,69 +76,51 @@
                 <p class="wp-error" x-show="photoErrorText" x-text="photoErrorText" x-cloak></p>
             </div>
 
-            @if ($mode === 'register')
-                <form wire:submit="register" class="wp-stack">
-                    <div>
-                        <label class="wp-label" for="ops-sn">{{ __('ops.fields.serial_number') }}</label>
-                        <input id="ops-sn" type="text" class="wp-input" wire:model="serial_number" autocomplete="off">
-                        @error('serial_number') <p class="wp-error">{{ $message }}</p> @enderror
+            <form wire:submit="register" class="wp-stack">
+                <div>
+                    <label class="wp-label" for="ops-sn">{{ __('ops.fields.serial_number') }}</label>
+                    <input id="ops-sn" type="text" class="wp-input" wire:model="serial_number" autocomplete="off">
+                    @error('serial_number') <p class="wp-error">{{ $message }}</p> @enderror
+                </div>
+                <div class="wp-cluster wp-cluster--wrap">
+                    <div class="wp-grow">
+                        <label class="wp-label" for="ops-brand">{{ __('ops.fields.brand') }}</label>
+                        <input id="ops-brand" type="text" class="wp-input" wire:model="brand" autocomplete="off">
                     </div>
-                    <div class="wp-cluster wp-cluster--wrap">
-                        <div class="wp-grow">
-                            <label class="wp-label" for="ops-brand">{{ __('ops.fields.brand') }}</label>
-                            <input id="ops-brand" type="text" class="wp-input" wire:model="brand" autocomplete="off">
-                        </div>
-                        <div class="wp-grow">
-                            <label class="wp-label" for="ops-model">{{ __('ops.fields.model') }}</label>
-                            <input id="ops-model" type="text" class="wp-input" wire:model="model" autocomplete="off">
-                        </div>
+                    <div class="wp-grow">
+                        <label class="wp-label" for="ops-model">{{ __('ops.fields.model') }}</label>
+                        <input id="ops-model" type="text" class="wp-input" wire:model="model" autocomplete="off">
                     </div>
-                    <div class="wp-cluster wp-cluster--wrap">
-                        <div class="wp-grow">
-                            <label class="wp-label" for="ops-type">{{ __('ops.fields.type') }}</label>
-                            <select id="ops-type" class="wp-input" wire:model="registerType">
-                                @foreach ($types as $typeCase)
-                                    <option value="{{ $typeCase->value }}">{{ __($typeCase->labelKey()) }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="wp-grow">
-                            <label class="wp-label" for="ops-sku">{{ __('ops.fields.sku') }}</label>
-                            <input id="ops-sku" type="text" class="wp-input" wire:model="sku" autocomplete="off"
-                                   placeholder="{{ __('ops.fields.sku_optional') }}">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="wp-label" for="ops-condition">{{ __('ops.fields.condition') }}</label>
-                        <select id="ops-condition" class="wp-input" wire:model="condition">
-                            @foreach ($conditions as $conditionCase)
-                                <option value="{{ $conditionCase->value }}">{{ __($conditionCase->labelKey()) }}</option>
+                </div>
+                <div class="wp-cluster wp-cluster--wrap">
+                    <div class="wp-grow">
+                        <label class="wp-label" for="ops-type">{{ __('ops.fields.type') }}</label>
+                        <select id="ops-type" class="wp-input" wire:model="registerType">
+                            @foreach ($types as $typeCase)
+                                <option value="{{ $typeCase->value }}">{{ __($typeCase->labelKey()) }}</option>
                             @endforeach
                         </select>
                     </div>
-                    <div>
-                        <label class="wp-label" for="ops-purchase">{{ __('ops.fields.purchase_ref') }}</label>
-                        <input id="ops-purchase" type="text" class="wp-input" wire:model="purchase_ref" autocomplete="off">
+                    <div class="wp-grow">
+                        <label class="wp-label" for="ops-sku">{{ __('ops.fields.sku') }}</label>
+                        <input id="ops-sku" type="text" class="wp-input" wire:model="sku" autocomplete="off"
+                               placeholder="{{ __('ops.fields.sku_optional') }}">
                     </div>
-                    <button type="submit" class="btn btn--primary">{{ __('ops.devices.register_submit') }}</button>
-                </form>
-            @else
-                <form wire:submit="bindMac" class="wp-stack">
-                    <div>
-                        <label class="wp-label" for="ops-mac-sn">{{ __('ops.fields.serial_number') }}</label>
-                        <input id="ops-mac-sn" type="text" class="wp-input" wire:model="macSerial" autocomplete="off">
-                        @error('macSerial') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                    <div>
-                        <label class="wp-label" for="ops-mac">{{ __('ops.fields.mac') }}</label>
-                        <input id="ops-mac" type="text" class="wp-input" wire:model="mac" autocomplete="off"
-                               placeholder="{{ __('ops.fields.mac_placeholder') }}">
-                        <p class="wp-muted wp-text-sm">{{ __('ops.devices.mac_hint') }}</p>
-                        @error('mac') <p class="wp-error">{{ $message }}</p> @enderror
-                    </div>
-                    <button type="submit" class="btn btn--primary">{{ __('ops.portal.mac_submit') }}</button>
-                </form>
-            @endif
+                </div>
+                <div>
+                    <label class="wp-label" for="ops-condition">{{ __('ops.fields.condition') }}</label>
+                    <select id="ops-condition" class="wp-input" wire:model="condition">
+                        @foreach ($conditions as $conditionCase)
+                            <option value="{{ $conditionCase->value }}">{{ __($conditionCase->labelKey()) }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div>
+                    <label class="wp-label" for="ops-purchase">{{ __('ops.fields.purchase_ref') }}</label>
+                    <input id="ops-purchase" type="text" class="wp-input" wire:model="purchase_ref" autocomplete="off">
+                </div>
+                <button type="submit" class="btn btn--primary">{{ __('ops.devices.register_submit') }}</button>
+            </form>
         </div>
     @endunless
 </div>

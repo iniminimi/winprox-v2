@@ -1,17 +1,14 @@
 {
     "portal": {
         "title": "WinProx OPS",
-        "subtitle": "Inventario hardware: scansiona i numeri di serie e collega gli indirizzi MAC.",
+        "subtitle": "Registra i numeri di serie alla ricezione. Incolla il MAC più tardi sul desktop (Platform → Dispositivi) dopo il flash.",
         "qr_title": "QR OPS per il telefono",
         "qr_hint": "Scansiona questo codice con il telefono per registrare senza ridigitare.",
         "qr_phone": "Solo superuser. Accesso sul telefono in questo portale.",
         "login_title": "Accedi",
         "login_hint": "Solo superuser di piattaforma. Non è l’admin del cliente.",
         "login_submit": "Accedi",
-        "logout": "Esci",
-        "tab_register": "Nuovo dispositivo",
-        "tab_mac": "Collega MAC",
-        "mac_submit": "Salva MAC"
+        "logout": "Esci"
     },
     "devices": {
         "nav": "Dispositivi",
@@ -34,7 +31,7 @@
         "edit_title": "Modifica dispositivo",
         "save": "Salva",
         "mac_missing": "nessun MAC",
-        "mac_hint": "MAC senza due punti, come inviato dal display (12 hex). Una volta impostato, S/N↔MAC resta fisso.",
+        "mac_hint": "Incolla il MAC dall’output del flash (Ctrl+V). Senza due punti, 12 hex. Una volta impostato, S/N↔MAC resta fisso. I clienti collegano lo schermo da soli.",
         "no_tenant": "In magazzino",
         "scanned_at": "scansionato"
     },

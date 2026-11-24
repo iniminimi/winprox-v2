@@ -1,17 +1,14 @@
 {
     "portal": {
         "title": "WinProx OPS",
-        "subtitle": "Inventario de hardware: escanea números de serie y vincula direcciones MAC.",
+        "subtitle": "Registra los números de serie al recibir. Pega la MAC luego en el escritorio (Platform → Dispositivos) tras flashear.",
         "qr_title": "QR OPS para el móvil",
         "qr_hint": "Escanea este código con el móvil para registrar sin teclear.",
         "qr_phone": "Solo superusuarios. El inicio de sesión es en el móvil en este portal.",
         "login_title": "Iniciar sesión",
         "login_hint": "Solo superusuarios de plataforma. No es administración de cliente.",
         "login_submit": "Entrar",
-        "logout": "Cerrar sesión",
-        "tab_register": "Nuevo dispositivo",
-        "tab_mac": "Vincular MAC",
-        "mac_submit": "Guardar MAC"
+        "logout": "Cerrar sesión"
     },
     "devices": {
         "nav": "Dispositivos",
@@ -34,7 +31,7 @@
         "edit_title": "Editar dispositivo",
         "save": "Guardar",
         "mac_missing": "sin MAC",
-        "mac_hint": "MAC sin dos puntos, como la envía la pantalla (12 hex). Una vez fijada, S/N↔MAC no cambia.",
+        "mac_hint": "Pega la MAC de la salida del flash (Ctrl+V). Sin dos puntos, 12 hex. Una vez fijada, S/N↔MAC no cambia. Los clientes emparejan la pantalla ellos mismos.",
         "no_tenant": "En stock",
         "scanned_at": "escaneado"
     },

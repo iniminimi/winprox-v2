@@ -1,17 +1,14 @@
 {
     "portal": {
         "title": "WinProx OPS",
-        "subtitle": "Hardware-Inventar: Seriennummern scannen und MAC-Adressen verknüpfen.",
+        "subtitle": "Erfassen Sie Aufkleber-Seriennummern beim Empfang. MAC später am Desktop einfügen (Platform → Geräte) nach dem Flashen.",
         "qr_title": "OPS-QR fürs Handy",
         "qr_hint": "Scannen Sie diesen Code mit dem Handy, um Geräte ohne Abtippen zu erfassen.",
         "qr_phone": "Nur Superuser. Anmeldung erfolgt am Handy in diesem Portal.",
         "login_title": "Anmelden",
         "login_hint": "Nur Plattform-Superuser. Kein Mandanten-Admin.",
         "login_submit": "Anmelden",
-        "logout": "Abmelden",
-        "tab_register": "Neues Gerät",
-        "tab_mac": "MAC verknüpfen",
-        "mac_submit": "MAC speichern"
+        "logout": "Abmelden"
     },
     "devices": {
         "nav": "Geräte",
@@ -34,7 +31,7 @@
         "edit_title": "Gerät bearbeiten",
         "save": "Speichern",
         "mac_missing": "keine MAC",
-        "mac_hint": "MAC ohne Doppelpunkte, wie das Display beim Koppeln sendet (12 Hex-Zeichen). Einmal gesetzt bleibt S/N↔MAC fest.",
+        "mac_hint": "MAC aus der Flash-Ausgabe einfügen (Strg+V). Ohne Doppelpunkte, 12 Hex-Zeichen. Einmal gesetzt bleibt S/N↔MAC fest. Mandanten koppeln das Display selbst.",
         "no_tenant": "Auf Lager",
         "scanned_at": "gescannt"
     },

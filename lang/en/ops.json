@@ -1,17 +1,14 @@
 {
     "portal": {
         "title": "WinProx OPS",
-        "subtitle": "Hardware inventory: scan serial numbers and link MAC addresses.",
+        "subtitle": "Register sticker serials on receipt. Paste the MAC later on desktop (Platform → Devices) after flashing.",
         "qr_title": "OPS QR for your phone",
         "qr_hint": "Scan this code with your phone to register devices without retyping.",
         "qr_phone": "Superusers only. Sign in on the phone inside this portal.",
         "login_title": "Sign in",
         "login_hint": "Platform superusers only. This is not tenant admin.",
         "login_submit": "Sign in",
-        "logout": "Sign out",
-        "tab_register": "New device",
-        "tab_mac": "Link MAC",
-        "mac_submit": "Save MAC"
+        "logout": "Sign out"
     },
     "devices": {
         "nav": "Devices",
@@ -34,7 +31,7 @@
         "edit_title": "Edit device",
         "save": "Save",
         "mac_missing": "no MAC",
-        "mac_hint": "MAC without colons, as the display sends when pairing (12 hex chars). Once set, S/N↔MAC stays fixed.",
+        "mac_hint": "Paste the MAC from the flash output (Ctrl+V). No colons, 12 hex chars. Once set, S/N↔MAC stays fixed. Tenants pair the screen themselves.",
         "no_tenant": "In stock",
         "scanned_at": "scanned"
     },

@@ -1,17 +1,14 @@
 {
     "portal": {
         "title": "WinProx OPS",
-        "subtitle": "Hardware inventaris: scan serienummers en koppel MAC-adressen.",
+        "subtitle": "Registreer stickerserienummers bij ontvangst. MAC plak je later op desktop (Platform → Toestellen) na het flashen.",
         "qr_title": "OPS-QR voor de gsm",
         "qr_hint": "Scan deze code met je telefoon om toestellen te registreren zonder overtypen.",
         "qr_phone": "Alleen voor superusers. Login gebeurt op de telefoon in dit portaal.",
         "login_title": "Aanmelden",
         "login_hint": "Alleen platform-superusers. Dit is geen tenant-beheer.",
         "login_submit": "Aanmelden",
-        "logout": "Afmelden",
-        "tab_register": "Nieuw toestel",
-        "tab_mac": "MAC koppelen",
-        "mac_submit": "MAC opslaan"
+        "logout": "Afmelden"
     },
     "devices": {
         "nav": "Toestellen",
@@ -34,7 +31,7 @@
         "edit_title": "Toestel bewerken",
         "save": "Opslaan",
         "mac_missing": "geen MAC",
-        "mac_hint": "MAC zonder dubbele punten, zoals het scherm bij koppelen stuurt (12 hex-tekens). Eenmaal gezet blijft S/N↔MAC vast.",
+        "mac_hint": "Plak de MAC van de flash-output (Ctrl+V). Zonder dubbele punten, 12 hex-tekens. Eenmaal gezet blijft S/N↔MAC vast. Tenants koppelen het scherm zelf.",
         "no_tenant": "Op voorraad",
         "scanned_at": "gescand"
     },
