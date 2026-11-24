@@ -31,7 +31,7 @@
         "edit_title": "Gerät bearbeiten",
         "save": "Speichern",
         "mac_missing": "keine MAC",
-        "mac_hint": "MAC aus der Flash-Ausgabe einfügen (Strg+V). Ohne Doppelpunkte, 12 Hex-Zeichen. Einmal gesetzt bleibt S/N↔MAC fest. Mandanten koppeln das Display selbst.",
+        "mac_hint": "Fügen Sie die MAC so ein, wie Sie sie nach dem Flashen erhalten (z. B. AA:BB:CC:DD:EE:FF). Einmal gesetzt bleibt sie bei dieser Seriennummer.",
         "no_tenant": "Auf Lager",
         "scanned_at": "gescannt"
     },
@@ -43,7 +43,7 @@
         "sku": "SKU",
         "sku_optional": "Optional",
         "mac": "MAC",
-        "mac_placeholder": "AABBCCDDEEFF",
+        "mac_placeholder": "AA:BB:CC:DD:EE:FF",
         "status": "Status",
         "condition": "Zustand",
         "tenant": "Organisation",
@@ -80,7 +80,7 @@
     },
     "errors": {
         "serial_already_registered": "Diese Seriennummer existiert bereits.",
-        "mac_invalid": "Ungültige MAC-Adresse (12 Hex-Zeichen erwartet).",
+        "mac_invalid": "Ungültige MAC-Adresse.",
         "mac_already_linked": "Diese MAC gehört bereits zu einem anderen Gerät.",
         "mac_already_set": "Dieses Gerät hat bereits eine MAC; sie ändert sich nicht.",
         "device_not_found": "Gerät nicht gefunden.",

@@ -31,7 +31,7 @@
         "edit_title": "Edit device",
         "save": "Save",
         "mac_missing": "no MAC",
-        "mac_hint": "Paste the MAC from the flash output (Ctrl+V). No colons, 12 hex chars. Once set, S/N↔MAC stays fixed. Tenants pair the screen themselves.",
+        "mac_hint": "Paste the MAC as you get it after flashing (e.g. AA:BB:CC:DD:EE:FF). Once set, it stays with this serial.",
         "no_tenant": "In stock",
         "scanned_at": "scanned"
     },
@@ -43,7 +43,7 @@
         "sku": "SKU",
         "sku_optional": "Optional",
         "mac": "MAC",
-        "mac_placeholder": "AABBCCDDEEFF",
+        "mac_placeholder": "AA:BB:CC:DD:EE:FF",
         "status": "Status",
         "condition": "Condition",
         "tenant": "Organisation",
@@ -80,7 +80,7 @@
     },
     "errors": {
         "serial_already_registered": "This serial number already exists.",
-        "mac_invalid": "Invalid MAC address (expected 12 hex characters).",
+        "mac_invalid": "Invalid MAC address.",
         "mac_already_linked": "This MAC already belongs to another device.",
         "mac_already_set": "This device already has a MAC; it cannot change.",
         "device_not_found": "Device not found.",

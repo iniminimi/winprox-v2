@@ -31,7 +31,7 @@
         "edit_title": "Modifier l’appareil",
         "save": "Enregistrer",
         "mac_missing": "pas de MAC",
-        "mac_hint": "Collez la MAC depuis la sortie du flash (Ctrl+V). Sans deux-points, 12 caractères hex. Une fois définie, S/N↔MAC reste fixe. Les clients associent l’écran eux-mêmes.",
+        "mac_hint": "Collez la MAC telle que vous la recevez après le flash (ex. AA:BB:CC:DD:EE:FF). Une fois définie, elle reste liée à ce numéro de série.",
         "no_tenant": "En stock",
         "scanned_at": "scanné"
     },
@@ -43,7 +43,7 @@
         "sku": "SKU",
         "sku_optional": "Facultatif",
         "mac": "MAC",
-        "mac_placeholder": "AABBCCDDEEFF",
+        "mac_placeholder": "AA:BB:CC:DD:EE:FF",
         "status": "Statut",
         "condition": "État",
         "tenant": "Organisation",
@@ -80,7 +80,7 @@
     },
     "errors": {
         "serial_already_registered": "Ce numéro de série existe déjà.",
-        "mac_invalid": "Adresse MAC invalide (12 caractères hex attendus).",
+        "mac_invalid": "Adresse MAC invalide.",
         "mac_already_linked": "Cette MAC appartient déjà à un autre appareil.",
         "mac_already_set": "Cet appareil a déjà une MAC ; elle ne change pas.",
         "device_not_found": "Appareil introuvable.",

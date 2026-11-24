@@ -31,7 +31,7 @@
         "edit_title": "Modifica dispositivo",
         "save": "Salva",
         "mac_missing": "nessun MAC",
-        "mac_hint": "Incolla il MAC dall’output del flash (Ctrl+V). Senza due punti, 12 hex. Una volta impostato, S/N↔MAC resta fisso. I clienti collegano lo schermo da soli.",
+        "mac_hint": "Incolla il MAC come lo ricevi dopo il flash (es. AA:BB:CC:DD:EE:FF). Una volta impostato resta legato a questo numero di serie.",
         "no_tenant": "In magazzino",
         "scanned_at": "scansionato"
     },
@@ -43,7 +43,7 @@
         "sku": "SKU",
         "sku_optional": "Facoltativo",
         "mac": "MAC",
-        "mac_placeholder": "AABBCCDDEEFF",
+        "mac_placeholder": "AA:BB:CC:DD:EE:FF",
         "status": "Stato",
         "condition": "Condizione",
         "tenant": "Organizzazione",
@@ -80,7 +80,7 @@
     },
     "errors": {
         "serial_already_registered": "Questo numero di serie esiste già.",
-        "mac_invalid": "MAC non valido (attesi 12 caratteri hex).",
+        "mac_invalid": "Indirizzo MAC non valido.",
         "mac_already_linked": "Questa MAC appartiene già a un altro dispositivo.",
         "mac_already_set": "Questo dispositivo ha già una MAC; non cambia.",
         "device_not_found": "Dispositivo non trovato.",

@@ -31,7 +31,7 @@
         "edit_title": "Toestel bewerken",
         "save": "Opslaan",
         "mac_missing": "geen MAC",
-        "mac_hint": "Plak de MAC van de flash-output (Ctrl+V). Zonder dubbele punten, 12 hex-tekens. Eenmaal gezet blijft S/N↔MAC vast. Tenants koppelen het scherm zelf.",
+        "mac_hint": "Plak de MAC zoals je die na het flashen krijgt (bijv. AA:BB:CC:DD:EE:FF). Eenmaal gezet blijft die bij dit serienummer.",
         "no_tenant": "Op voorraad",
         "scanned_at": "gescand"
     },
@@ -43,7 +43,7 @@
         "sku": "SKU",
         "sku_optional": "Optioneel",
         "mac": "MAC",
-        "mac_placeholder": "AABBCCDDEEFF",
+        "mac_placeholder": "AA:BB:CC:DD:EE:FF",
         "status": "Status",
         "condition": "Conditie",
         "tenant": "Organisatie",
@@ -80,7 +80,7 @@
     },
     "errors": {
         "serial_already_registered": "Dit serienummer bestaat al.",
-        "mac_invalid": "Ongeldig MAC-adres (verwacht 12 hex-tekens).",
+        "mac_invalid": "Ongeldig MAC-adres.",
         "mac_already_linked": "Dit MAC-adres hoort al bij een ander toestel.",
         "mac_already_set": "Dit toestel heeft al een MAC; die wijzigt niet.",
         "device_not_found": "Toestel niet gevonden.",
