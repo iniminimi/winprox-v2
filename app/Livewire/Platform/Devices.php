@@ -24,6 +24,7 @@ use App\Http\Requests\Ops\UpdateHardwareDeviceRequest;
 use App\Models\HardwareDevice;
 use App\Models\OpsPortal;
 use App\Models\Tenant;
+use App\Support\Ops\HardwareMac;
 use App\Support\Qr\QrSvg;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use InvalidArgumentException;
@@ -204,7 +205,9 @@ class Devices extends Component
         $this->editCondition = $device->condition->value;
         $this->editPurchaseRef = (string) ($device->purchase_ref ?? '');
         $this->editNotes = (string) ($device->notes ?? '');
-        $this->editMac = (string) ($device->mac ?? '');
+        $this->editMac = $device->mac !== null
+            ? (string) (HardwareMac::formatForDisplay($device->mac) ?? $device->mac)
+            : '';
         $this->editMacLocked = $device->mac !== null;
         $this->editTenantId = $device->tenant_id !== null ? (string) $device->tenant_id : '';
     }

@@ -93,7 +93,7 @@
                                     · SKU {{ $device->sku }}
                                 @endif
                                 @if ($device->mac)
-                                    · MAC {{ $device->mac }}
+                                    · MAC {{ \App\Support\Ops\HardwareMac::formatForDisplay($device->mac) }}
                                 @else
                                     · {{ __('ops.devices.mac_missing') }}
                                 @endif

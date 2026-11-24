@@ -236,7 +236,8 @@
                 </p>
                 @if ($linkedInventory?->serial_number && $point->display_device_hint)
                     <p class="wp-issue-card-meta">
-                        {{ __('time.clock_displays.linked.mac') }}: <strong>{{ $point->display_device_hint }}</strong>
+                        {{ __('time.clock_displays.linked.mac') }}:
+                        <strong>{{ \App\Support\Ops\HardwareMac::formatForDisplay($point->display_device_hint) }}</strong>
                     </p>
                 @endif
                 <p class="wp-issue-card-meta">
@@ -255,9 +256,9 @@
                 <ul class="wp-stack-tight">
                     @foreach ($pairHistory as $entry)
                         <li class="wp-issue-card-meta">
-                            <strong>{{ $historySerials[$entry->id] ?? $entry->device_hint }}</strong>
+                            <strong>{{ $historySerials[$entry->id] ?? \App\Support\Ops\HardwareMac::formatForDisplay($entry->device_hint) }}</strong>
                             @if (! empty($historySerials[$entry->id]) && $entry->device_hint)
-                                <span class="wp-muted">({{ $entry->device_hint }})</span>
+                                <span class="wp-muted">({{ \App\Support\Ops\HardwareMac::formatForDisplay($entry->device_hint) }})</span>
                             @endif
                             — {{ $entry->confirmed_at?->format('d/m/Y H:i') }}
                             @if ($point?->hasLinkedDisplay() && $point->display_device_hint === $entry->device_hint && $loop->first)
@@ -281,7 +282,7 @@
                 {{ __('time.clock_displays.pending.serial') }}:
                 <strong>{{ $pendingInventory?->serial_number ?? $pendingClaim->device_hint }}</strong>
                 @if ($pendingInventory?->serial_number && $pendingClaim->device_hint)
-                    — {{ __('time.clock_displays.linked.mac') }} {{ $pendingClaim->device_hint }}
+                    — {{ __('time.clock_displays.linked.mac') }} {{ \App\Support\Ops\HardwareMac::formatForDisplay($pendingClaim->device_hint) }}
                 @endif
                 @if ($pendingClaim->ip)
                     — IP {{ $pendingClaim->ip }}

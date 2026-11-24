@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace App\Support\Ops;
 
 /**
- * Normaliseert MAC / device_hint naar 12 hex-tekens zonder scheidingstekens.
+ * MAC / device_hint: opslag = 12 hex zonder scheidingstekens;
+ * weergave = AA:BB:CC:DD:EE:FF.
  */
 final class HardwareMac
 {
@@ -31,5 +32,20 @@ final class HardwareMac
         }
 
         return (bool) preg_match('/^[0-9A-F]{12}$/', $normalized);
+    }
+
+    /** Leesbare weergave; ongeldige/korte waarden blijven ongewijzigd. */
+    public static function formatForDisplay(?string $value): ?string
+    {
+        $normalized = self::normalize($value);
+        if ($normalized === null) {
+            return $value !== null && trim($value) !== '' ? trim($value) : null;
+        }
+
+        if (! self::isValid($normalized)) {
+            return $normalized;
+        }
+
+        return implode(':', str_split($normalized, 2));
     }
 }
