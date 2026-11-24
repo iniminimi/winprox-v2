@@ -80,9 +80,9 @@
         "torch_off": "Licht aus",
         "photo_capture": "Foto aufnehmen",
         "photo_gallery": "Foto wählen",
-        "photo_busy": "Barcode lesen…",
-        "photo_hint": "Machen Sie eine scharfe Nahaufnahme des kleinen Barcodes (Systemkamera fokussiert besser). Oder wählen Sie ein Foto.",
-        "photo_no_code": "Kein Barcode gefunden. Schärfere Nahaufnahme oder Seriennummer tippen.",
+        "photo_busy": "Nummer lesen…",
+        "photo_hint": "Scharfe Nahaufnahme von Barcode und Nummer darunter. Zuerst die Striche, sonst die Ziffern.",
+        "photo_no_code": "Kein Barcode oder Seriennummer gefunden. Nummer unter dem Barcode scharf fotografieren oder tippen.",
         "photo_failed": "Foto konnte nicht gelesen werden. Erneut versuchen oder Seriennummer tippen."
     },
     "flash": {

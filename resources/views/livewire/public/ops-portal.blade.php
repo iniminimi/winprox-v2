@@ -83,8 +83,6 @@
                     <button
                         type="button"
                         class="btn btn--primary"
-                        x-show="canDetect"
-                        x-cloak
                         @click="openPhotoPicker(true)"
                         :disabled="photoBusy"
                     >
@@ -94,8 +92,6 @@
                     <button
                         type="button"
                         class="btn btn--surface"
-                        x-show="canDetect"
-                        x-cloak
                         @click="openPhotoPicker(false)"
                         :disabled="photoBusy"
                     >
@@ -112,8 +108,7 @@
                         {{ __('ops.scanner.open') }}
                     </button>
                 </div>
-                <p class="wp-muted wp-text-sm" x-show="canDetect" x-cloak>{{ __('ops.scanner.photo_hint') }}</p>
-                <p class="wp-muted wp-text-sm" x-show="!canDetect" x-cloak>{{ __('ops.scanner.manual_only') }}</p>
+                <p class="wp-muted wp-text-sm">{{ __('ops.scanner.photo_hint') }}</p>
                 <p class="wp-error" x-show="photoErrorText" x-text="photoErrorText" x-cloak></p>
 
                 <template x-teleport="body">

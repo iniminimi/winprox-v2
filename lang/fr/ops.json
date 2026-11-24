@@ -80,9 +80,9 @@
         "torch_off": "Lumière off",
         "photo_capture": "Prendre une photo",
         "photo_gallery": "Choisir une photo",
-        "photo_busy": "Lecture du code-barres…",
-        "photo_hint": "Prenez un gros plan net du petit code-barres (l’appareil photo système fait mieux la mise au point). Ou choisissez une photo.",
-        "photo_no_code": "Aucun code-barres trouvé. Reprenez un gros plan plus net ou saisissez le numéro.",
+        "photo_busy": "Lecture du numéro…",
+        "photo_hint": "Prenez un gros plan net du code-barres et du numéro en dessous. Nous lisons d’abord les barres, sinon les chiffres.",
+        "photo_no_code": "Aucun code-barres ni numéro trouvé. Le numéro sous le code doit être net, ou saisissez-le.",
         "photo_failed": "Impossible de lire la photo. Réessayez ou saisissez le numéro."
     },
     "flash": {

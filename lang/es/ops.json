@@ -80,9 +80,9 @@
         "torch_off": "Luz off",
         "photo_capture": "Hacer foto",
         "photo_gallery": "Elegir foto",
-        "photo_busy": "Leyendo código…",
-        "photo_hint": "Haz un primer plano nítido del código pequeño (la cámara del sistema enfoca mejor). O elige una foto.",
-        "photo_no_code": "No se encontró código de barras. Haz un primer plano más nítido o escribe el número.",
+        "photo_busy": "Leyendo número…",
+        "photo_hint": "Haz un primer plano nítido del código y el número debajo. Primero las barras; si no, los dígitos.",
+        "photo_no_code": "No se encontró código ni número. Asegura que el número bajo el código salga nítido, o escríbelo.",
         "photo_failed": "No se pudo leer la foto. Inténtalo de nuevo o escribe el número."
     },
     "flash": {

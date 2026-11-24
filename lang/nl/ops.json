@@ -80,9 +80,9 @@
         "torch_off": "Licht uit",
         "photo_capture": "Foto maken",
         "photo_gallery": "Foto kiezen",
-        "photo_busy": "Barcode lezen…",
-        "photo_hint": "Maak een scherpe close-up van de kleine barcode (systeemcamera focust beter). Of kies een foto uit de galerij.",
-        "photo_no_code": "Geen barcode gevonden op de foto. Maak een scherpere close-up of typ het serienummer.",
+        "photo_busy": "Nummer lezen…",
+        "photo_hint": "Maak een scherpe close-up van barcode én het nummer eronder. We lezen eerst de streepjes, anders de cijfers.",
+        "photo_no_code": "Geen barcode of serienummer gevonden. Zorg dat het nummer onder de barcode scherp op de foto staat, of typ het.",
         "photo_failed": "Foto kon niet gelezen worden. Probeer opnieuw of typ het serienummer."
     },
     "flash": {

@@ -80,9 +80,9 @@
         "torch_off": "Light off",
         "photo_capture": "Take photo",
         "photo_gallery": "Choose photo",
-        "photo_busy": "Reading barcode…",
-        "photo_hint": "Take a sharp close-up of the small barcode (the system camera focuses better). Or pick a gallery photo.",
-        "photo_no_code": "No barcode found in the photo. Take a sharper close-up or type the serial number.",
+        "photo_busy": "Reading number…",
+        "photo_hint": "Take a sharp close-up of the barcode and the number underneath. We read the bars first, otherwise the digits.",
+        "photo_no_code": "No barcode or serial found. Make sure the number under the barcode is sharp, or type it.",
         "photo_failed": "Could not read the photo. Try again or type the serial number."
     },
     "flash": {

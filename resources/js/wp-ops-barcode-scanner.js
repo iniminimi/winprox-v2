@@ -1,7 +1,7 @@
 /**
- * WinProx OPS: camera-barcode voor kleine sticker-S/N (~2 cm × 5 mm).
- * QR: volle frame (werkt al). 1D: crop van de smalle leeszone + opschalen
- * + sterke zoom/dichtbij-focus — anders blijven de streepjes te klein.
+ * WinProx OPS: sticker-S/N via barcode én via de leesbare cijfers eronder.
+ * Foto: eerst barcode, dan OCR (TextDetector / Tesseract) op het nummer
+ * onder de streepjes — dat focust via de systeemcamera beter dan live-scan.
  */
 
 const DECODE_EVERY_NTH_FRAME = 2;
@@ -9,6 +9,33 @@ const CONFIRM_READS = 2;
 /** Zelfde verhouding als .wp-scan-frame--barcode (CSS inset). */
 const CROP = { left: 0.06, top: 0.40, width: 0.88, height: 0.20 };
 const UPSCALE_PASSES = [2, 3, 4];
+
+/**
+ * Haalt een serienummer-achtige digit-run uit OCR/barcode-tekst.
+ * Seeed-stickers: typisch 10–24 cijfers onder de barcode.
+ */
+function extractSerialCandidate(text) {
+    if (!text) {
+        return null;
+    }
+    const raw = String(text);
+    let best = null;
+    const spaced = raw.match(/\d(?:[\d\s\-_.]{8,30})\d/g) || [];
+    for (const run of spaced) {
+        const digits = run.replace(/\D/g, '');
+        if (digits.length >= 10 && digits.length <= 24 && (!best || digits.length > best.length)) {
+            best = digits;
+        }
+    }
+    const compact = raw.replace(/[\s\-_.]/g, '');
+    const blocks = compact.match(/\d{10,24}/g) || [];
+    for (const digits of blocks) {
+        if (!best || digits.length > best.length) {
+            best = digits;
+        }
+    }
+    return best;
+}
 
 function registerAlpineComponent() {
     if (!window.Alpine || window.Alpine.__wpOpsBarcodeScanner) {
@@ -106,10 +133,7 @@ function registerAlpineComponent() {
             this.photoBusy = true;
             this.photoError = null;
             try {
-                if (! await this.ensureDetectors()) {
-                    this.photoError = 'unsupported';
-                    return;
-                }
+                await this.ensureDetectors();
                 this.ensureCanvas();
                 const bitmap = await this.loadImageBitmap(file);
                 if (!bitmap) {
@@ -157,8 +181,7 @@ function registerAlpineComponent() {
         },
 
         /**
-         * Stilstaande foto: volle beeld + horizontale stroken × opschalen.
-         * Native camera-app focust wél; live getUserMedia vaak niet.
+         * Stilstaande foto: barcode, daarna OCR op de cijfers onder de barcode.
          */
         async detectFromStill(source) {
             const w = source.width || source.naturalWidth || 0;
@@ -167,47 +190,119 @@ function registerAlpineComponent() {
                 return null;
             }
 
+            const fromBarcode = await this.detectBarcodeStill(source, w, h);
+            if (fromBarcode) {
+                return fromBarcode;
+            }
+
+            return await this.detectSerialText(source, w, h);
+        },
+
+        async detectBarcodeStill(source, w, h) {
             if (this._detectorQr) {
                 try {
                     const qrHits = await this._detectorQr.detect(source);
                     const qr = Array.isArray(qrHits) ? qrHits.find((hit) => hit && hit.rawValue) : null;
                     if (qr) {
-                        return String(qr.rawValue);
+                        const serial = extractSerialCandidate(qr.rawValue) || String(qr.rawValue).trim();
+                        if (serial) {
+                            return serial;
+                        }
                     }
                 } catch (e) {}
             }
 
-            if (this._detector1d) {
+            if (!this._detector1d) {
+                return null;
+            }
+
+            try {
+                const fullHits = await this._detector1d.detect(source);
+                const full = Array.isArray(fullHits) ? fullHits.find((hit) => hit && hit.rawValue) : null;
+                if (full) {
+                    return extractSerialCandidate(full.rawValue) || String(full.rawValue).trim();
+                }
+            } catch (e) {}
+
+            const bands = [
+                { left: 0.02, top: 0.30, width: 0.96, height: 0.40 },
+                { left: 0.05, top: 0.40, width: 0.90, height: 0.20 },
+                { left: 0.08, top: 0.45, width: 0.84, height: 0.12 },
+                { left: 0.00, top: 0.20, width: 1.00, height: 0.60 },
+            ];
+            for (const band of bands) {
+                for (const scale of [1, 2, 3, 4]) {
+                    const canvas = this.drawBand(source, w, h, band, scale);
+                    if (!canvas) {
+                        continue;
+                    }
+                    try {
+                        const hits = await this._detector1d.detect(canvas);
+                        const hit = Array.isArray(hits) ? hits.find((item) => item && item.rawValue) : null;
+                        if (hit) {
+                            return extractSerialCandidate(hit.rawValue) || String(hit.rawValue).trim();
+                        }
+                    } catch (e) {}
+                }
+            }
+
+            return null;
+        },
+
+        async detectSerialText(source, w, h) {
+            // Zone waar typisch de leesbare S/N onder de barcode staat.
+            const textBands = [
+                { left: 0.02, top: 0.45, width: 0.96, height: 0.50 },
+                { left: 0.05, top: 0.55, width: 0.90, height: 0.35 },
+                { left: 0.00, top: 0.00, width: 1.00, height: 1.00 },
+            ];
+
+            if (typeof window.TextDetector === 'function') {
                 try {
-                    const fullHits = await this._detector1d.detect(source);
-                    const full = Array.isArray(fullHits) ? fullHits.find((hit) => hit && hit.rawValue) : null;
-                    if (full) {
-                        return String(full.rawValue);
+                    const textDetector = new window.TextDetector();
+                    for (const band of textBands) {
+                        const canvas = this.drawBand(source, w, h, band, 2);
+                        const target = canvas || source;
+                        const hits = await textDetector.detect(target);
+                        const joined = Array.isArray(hits)
+                            ? hits.map((hit) => hit?.rawValue || '').join(' ')
+                            : '';
+                        const serial = extractSerialCandidate(joined);
+                        if (serial) {
+                            return serial;
+                        }
                     }
                 } catch (e) {}
+            }
 
-                const bands = [
-                    { left: 0.02, top: 0.30, width: 0.96, height: 0.40 },
-                    { left: 0.05, top: 0.40, width: 0.90, height: 0.20 },
-                    { left: 0.08, top: 0.45, width: 0.84, height: 0.12 },
-                    { left: 0.00, top: 0.20, width: 1.00, height: 0.60 },
-                ];
-                for (const band of bands) {
-                    for (const scale of [1, 2, 3, 4]) {
-                        const canvas = this.drawBand(source, w, h, band, scale);
+            try {
+                const { createWorker } = await import('tesseract.js');
+                const worker = await createWorker('eng', 1, {
+                    // Vite: workers/lang data via CDN zodat de bundle licht blijft.
+                    workerPath: 'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/worker.min.js',
+                    corePath: 'https://cdn.jsdelivr.net/npm/tesseract.js-core@5/tesseract-core.wasm.js',
+                    langPath: 'https://tessdata.projectnaptha.com/4.0.0',
+                });
+                await worker.setParameters({
+                    tessedit_char_whitelist: '0123456789',
+                    tessedit_pageseg_mode: '6',
+                });
+                try {
+                    for (const band of textBands) {
+                        const canvas = this.drawBand(source, w, h, band, 2);
                         if (!canvas) {
                             continue;
                         }
-                        try {
-                            const hits = await this._detector1d.detect(canvas);
-                            const hit = Array.isArray(hits) ? hits.find((item) => item && item.rawValue) : null;
-                            if (hit) {
-                                return String(hit.rawValue);
-                            }
-                        } catch (e) {}
+                        const { data } = await worker.recognize(canvas);
+                        const serial = extractSerialCandidate(data?.text || '');
+                        if (serial) {
+                            return serial;
+                        }
                     }
+                } finally {
+                    await worker.terminate();
                 }
-            }
+            } catch (e) {}
 
             return null;
         },
