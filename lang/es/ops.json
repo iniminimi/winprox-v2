@@ -70,16 +70,7 @@
         "faulty": "Defectuoso"
     },
     "scanner": {
-        "open": "Escanear código de barras",
-        "manual_only": "Escaneo con cámara no disponible; escribe el número.",
-        "unsupported": "Este navegador no puede escanear códigos. Escríbelo manualmente.",
-        "denied": "Acceso a la cámara denegado. Escribe manualmente o permite el acceso.",
-        "hint": "Llena el marco fino con el código de barras (cerca, ~8–15 cm). Toca para enfocar.",
-        "slow": "¿Demasiado pequeño? Acércate, toca para enfocar, enciende la luz o escribe el número.",
-        "torch_on": "Luz on",
-        "torch_off": "Luz off",
         "photo_capture": "Hacer foto",
-        "photo_gallery": "Elegir foto",
         "photo_busy": "Leyendo número…",
         "photo_hint": "Haz un primer plano nítido del código y el número debajo. Primero las barras; si no, los dígitos.",
         "photo_no_code": "No se encontró código ni número. Asegura que el número bajo el código salga nítido, o escríbelo.",

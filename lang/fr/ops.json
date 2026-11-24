@@ -70,16 +70,7 @@
         "faulty": "Défectueux"
     },
     "scanner": {
-        "open": "Scanner le code-barres",
-        "manual_only": "Scan caméra indisponible ; saisissez le numéro manuellement.",
-        "unsupported": "Ce navigateur ne lit pas les codes-barres. Saisissez manuellement.",
-        "denied": "Accès caméra refusé. Saisissez manuellement ou autorisez l’accès.",
-        "hint": "Remplissez le cadre étroit avec le code-barres (près, ~8–15 cm). Touchez pour la mise au point.",
-        "slow": "Trop petit ? Approchez, touchez pour focuser, allumez la lumière, ou saisissez le numéro.",
-        "torch_on": "Lumière on",
-        "torch_off": "Lumière off",
         "photo_capture": "Prendre une photo",
-        "photo_gallery": "Choisir une photo",
         "photo_busy": "Lecture du numéro…",
         "photo_hint": "Prenez un gros plan net du code-barres et du numéro en dessous. Nous lisons d’abord les barres, sinon les chiffres.",
         "photo_no_code": "Aucun code-barres ni numéro trouvé. Le numéro sous le code doit être net, ou saisissez-le.",

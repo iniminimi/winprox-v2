@@ -9263,11 +9263,3 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
     height: auto;
 }
 
-/* 1D-sticker (~2 cm × 5 mm): smalle horizontale leeszone; decoder cropped dezelfde zone */
-.wp-scan-viewport--barcode {
-    aspect-ratio: 4 / 3;
-}
-
-.wp-scan-frame--barcode {
-    inset: 40% 6%;
-}

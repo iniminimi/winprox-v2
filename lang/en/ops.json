@@ -70,16 +70,7 @@
         "faulty": "Faulty"
     },
     "scanner": {
-        "open": "Scan barcode",
-        "manual_only": "Camera scan unavailable; type the serial number.",
-        "unsupported": "This browser cannot scan barcodes. Type it manually.",
-        "denied": "Camera access denied. Type manually or allow access.",
-        "hint": "Fill the thin frame with the barcode (close, ~8–15 cm). Tap to focus.",
-        "slow": "Barcode too small? Move closer, tap to focus, turn on the light, or type the serial.",
-        "torch_on": "Light on",
-        "torch_off": "Light off",
         "photo_capture": "Take photo",
-        "photo_gallery": "Choose photo",
         "photo_busy": "Reading number…",
         "photo_hint": "Take a sharp close-up of the barcode and the number underneath. We read the bars first, otherwise the digits.",
         "photo_no_code": "No barcode or serial found. Make sure the number under the barcode is sharp, or type it.",

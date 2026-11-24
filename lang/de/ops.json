@@ -70,16 +70,7 @@
         "faulty": "Defekt"
     },
     "scanner": {
-        "open": "Barcode scannen",
-        "manual_only": "Kamerascan nicht verfügbar; Seriennummer eintippen.",
-        "unsupported": "Dieser Browser kann keine Barcodes scannen. Bitte manuell eingeben.",
-        "denied": "Kamerazugriff verweigert. Manuell eingeben oder Zugriff erlauben.",
-        "hint": "Füllen Sie den schmalen Rahmen mit dem Barcode (nah, ~8–15 cm). Tippen zum Fokussieren.",
-        "slow": "Zu klein? Näher heran, tippen zum Fokussieren, Licht an, oder Seriennummer tippen.",
-        "torch_on": "Licht an",
-        "torch_off": "Licht aus",
         "photo_capture": "Foto aufnehmen",
-        "photo_gallery": "Foto wählen",
         "photo_busy": "Nummer lesen…",
         "photo_hint": "Scharfe Nahaufnahme von Barcode und Nummer darunter. Zuerst die Striche, sonst die Ziffern.",
         "photo_no_code": "Kein Barcode oder Seriennummer gefunden. Nummer unter dem Barcode scharf fotografieren oder tippen.",

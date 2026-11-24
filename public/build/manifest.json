@@ -1,14 +1,14 @@
 {
-  "_index-hSfa4ZP9.js": {
-    "file": "assets/index-hSfa4ZP9.js",
+  "_index-uL5ntv6p.js": {
+    "file": "assets/index-uL5ntv6p.js",
     "name": "index",
     "isDynamicEntry": true,
     "imports": [
       "resources/js/app.js"
     ]
   },
-  "_jsQR-BDMzVGho.js": {
-    "file": "assets/jsQR-BDMzVGho.js",
+  "_jsQR-l6wvosbY.js": {
+    "file": "assets/jsQR-l6wvosbY.js",
     "name": "jsQR",
     "isDynamicEntry": true,
     "imports": [
@@ -48,18 +48,18 @@
     "src": "node_modules/@fontsource/inter/files/inter-latin-700-normal.woff2"
   },
   "resources/css/app.css": {
-    "file": "assets/app-BmZlFhRK.css",
+    "file": "assets/app-CcstZLo9.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-DUSL5qzj.js",
+    "file": "assets/app-g7mkLAH2.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
     "dynamicImports": [
-      "_jsQR-BDMzVGho.js",
-      "_index-hSfa4ZP9.js"
+      "_jsQR-l6wvosbY.js",
+      "_index-uL5ntv6p.js"
     ],
     "css": [
       "assets/app-C2Xlxaxh.css"

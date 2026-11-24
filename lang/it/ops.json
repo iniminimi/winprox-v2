@@ -70,16 +70,7 @@
         "faulty": "Difettoso"
     },
     "scanner": {
-        "open": "Scansiona codice a barre",
-        "manual_only": "Scansione fotocamera non disponibile; digita il numero.",
-        "unsupported": "Questo browser non legge i codici a barre. Digita manualmente.",
-        "denied": "Accesso fotocamera negato. Digita manualmente o consenti l’accesso.",
-        "hint": "Riempi il riquadro sottile con il codice a barre (vicino, ~8–15 cm). Tocca per mettere a fuoco.",
-        "slow": "Troppo piccolo? Avvicinati, tocca per il focus, accendi la luce o digita il numero.",
-        "torch_on": "Luce on",
-        "torch_off": "Luce off",
         "photo_capture": "Scatta foto",
-        "photo_gallery": "Scegli foto",
         "photo_busy": "Lettura numero…",
         "photo_hint": "Scatta un primo piano nitido del codice e del numero sotto. Prima le barre, altrimenti le cifre.",
         "photo_no_code": "Nessun codice o numero trovato. Assicurati che il numero sotto il codice sia nitido, o digitalo.",

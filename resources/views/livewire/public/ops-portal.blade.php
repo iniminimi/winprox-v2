@@ -51,14 +51,11 @@
         </div>
 
         <div class="wp-card wp-card-pad wp-stack">
-            {{-- Alpine los van Livewire-morph (zelfde patroon als portal QR-scanner) --}}
+            {{-- Alpine los van Livewire-morph --}}
             <div
                 wire:ignore
                 x-data="wpOpsBarcodeScanner({
                     i18n: {
-                        unsupported: @js(__('ops.scanner.unsupported')),
-                        denied: @js(__('ops.scanner.denied')),
-                        slow: @js(__('ops.scanner.slow')),
                         photo_no_code: @js(__('ops.scanner.photo_no_code')),
                         photo_failed: @js(__('ops.scanner.photo_failed')),
                     }
@@ -72,78 +69,17 @@
                     x-ref="photoCapture"
                     @change="onPhotoSelected($event)"
                 >
-                <input
-                    type="file"
-                    accept="image/*"
-                    class="sr-only"
-                    x-ref="photoGallery"
-                    @change="onPhotoSelected($event)"
+                <button
+                    type="button"
+                    class="btn btn--primary"
+                    @click="openPhotoCapture()"
+                    :disabled="photoBusy"
                 >
-                <div class="wp-cluster wp-cluster--wrap">
-                    <button
-                        type="button"
-                        class="btn btn--primary"
-                        @click="openPhotoPicker(true)"
-                        :disabled="photoBusy"
-                    >
-                        <span x-show="!photoBusy">{{ __('ops.scanner.photo_capture') }}</span>
-                        <span x-show="photoBusy" x-cloak>{{ __('ops.scanner.photo_busy') }}</span>
-                    </button>
-                    <button
-                        type="button"
-                        class="btn btn--surface"
-                        @click="openPhotoPicker(false)"
-                        :disabled="photoBusy"
-                    >
-                        {{ __('ops.scanner.photo_gallery') }}
-                    </button>
-                    <button
-                        type="button"
-                        class="btn btn--ghost"
-                        x-show="supported && canDetect"
-                        x-cloak
-                        @click="openScanner()"
-                        :disabled="photoBusy"
-                    >
-                        {{ __('ops.scanner.open') }}
-                    </button>
-                </div>
+                    <span x-show="!photoBusy">{{ __('ops.scanner.photo_capture') }}</span>
+                    <span x-show="photoBusy" x-cloak>{{ __('ops.scanner.photo_busy') }}</span>
+                </button>
                 <p class="wp-muted wp-text-sm">{{ __('ops.scanner.photo_hint') }}</p>
                 <p class="wp-error" x-show="photoErrorText" x-text="photoErrorText" x-cloak></p>
-
-                <template x-teleport="body">
-                    <div
-                        class="wp-scan-overlay"
-                        x-show="scannerOpen"
-                        x-cloak
-                        @keydown.escape.window="closeScanner()"
-                    >
-                        <div class="wp-scan-dialog" role="dialog" aria-modal="true" aria-label="{{ __('ops.scanner.open') }}">
-                            <p class="wp-scan-title">{{ __('ops.scanner.open') }}</p>
-                            <div class="wp-scan-viewport wp-scan-viewport--barcode" @click="tapToFocus($event)">
-                                <video x-ref="scanVideo" playsinline muted autoplay></video>
-                                <span class="wp-scan-frame wp-scan-frame--barcode" aria-hidden="true"></span>
-                            </div>
-                            <p class="wp-scan-hint">{{ __('ops.scanner.hint') }}</p>
-                            <p class="wp-scan-hint" x-show="slowHint" x-text="i18n.slow" x-cloak></p>
-                            <p class="wp-scan-error" x-show="errorKey !== null" x-text="errorText" x-cloak></p>
-                            <div class="wp-cluster wp-cluster--wrap">
-                                <button
-                                    type="button"
-                                    class="btn btn--ghost btn--sm"
-                                    x-show="torchAvailable"
-                                    x-cloak
-                                    @click="toggleTorch()"
-                                >
-                                    <span x-text="torchOn ? @js(__('ops.scanner.torch_off')) : @js(__('ops.scanner.torch_on'))"></span>
-                                </button>
-                                <button type="button" class="btn btn--ghost btn--sm" @click="closeScanner()">
-                                    {{ __('common.button.cancel') }}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </template>
             </div>
 
             @if ($mode === 'register')

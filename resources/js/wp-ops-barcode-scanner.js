@@ -1,14 +1,7 @@
 /**
- * WinProx OPS: sticker-S/N via barcode én via de leesbare cijfers eronder.
- * Foto: eerst barcode, dan OCR (TextDetector / Tesseract) op het nummer
- * onder de streepjes — dat focust via de systeemcamera beter dan live-scan.
+ * WinProx OPS: sticker-S/N via systeemcamera-foto.
+ * Eerst barcode op de stilstaande foto, anders OCR op de cijfers eronder.
  */
-
-const DECODE_EVERY_NTH_FRAME = 2;
-const CONFIRM_READS = 2;
-/** Zelfde verhouding als .wp-scan-frame--barcode (CSS inset). */
-const CROP = { left: 0.06, top: 0.40, width: 0.88, height: 0.20 };
-const UPSCALE_PASSES = [2, 3, 4];
 
 /**
  * Haalt een serienummer-achtige digit-run uit OCR/barcode-tekst.
@@ -45,38 +38,12 @@ function registerAlpineComponent() {
 
     window.Alpine.data('wpOpsBarcodeScanner', (config = {}) => ({
         i18n: config.i18n ?? {},
-        scannerOpen: false,
-        errorKey: null,
-        slowHint: false,
-        torchOn: false,
-        torchAvailable: false,
         photoBusy: false,
         photoError: null,
-        _stream: null,
-        _track: null,
         _detector1d: null,
         _detectorQr: null,
-        _detectBusy: false,
-        _frame: null,
-        _frameNo: 0,
-        _openAt: 0,
-        _lastValue: null,
-        _matchCount: 0,
-        _focusTimer: null,
         _canvas: null,
         _ctx: null,
-
-        get supported() {
-            return !!(navigator.mediaDevices && typeof navigator.mediaDevices.getUserMedia === 'function');
-        },
-
-        get canDetect() {
-            return typeof window.BarcodeDetector === 'function';
-        },
-
-        get errorText() {
-            return this.errorKey !== null ? (this.i18n[this.errorKey] ?? '') : '';
-        },
 
         get photoErrorText() {
             return this.photoError !== null ? (this.i18n[this.photoError] ?? '') : '';
@@ -86,7 +53,7 @@ function registerAlpineComponent() {
             if (this._detector1d || this._detectorQr) {
                 return true;
             }
-            if (!this.canDetect) {
+            if (typeof window.BarcodeDetector !== 'function') {
                 return false;
             }
             try {
@@ -116,9 +83,9 @@ function registerAlpineComponent() {
             }
         },
 
-        openPhotoPicker(useCapture) {
+        openPhotoCapture() {
             this.photoError = null;
-            const input = useCapture ? this.$refs.photoCapture : this.$refs.photoGallery;
+            const input = this.$refs.photoCapture;
             if (input) {
                 input.value = '';
                 input.click();
@@ -180,9 +147,6 @@ function registerAlpineComponent() {
             });
         },
 
-        /**
-         * Stilstaande foto: barcode, daarna OCR op de cijfers onder de barcode.
-         */
         async detectFromStill(source) {
             const w = source.width || source.naturalWidth || 0;
             const h = source.height || source.naturalHeight || 0;
@@ -250,7 +214,6 @@ function registerAlpineComponent() {
         },
 
         async detectSerialText(source, w, h) {
-            // Zone waar typisch de leesbare S/N onder de barcode staat.
             const textBands = [
                 { left: 0.02, top: 0.45, width: 0.96, height: 0.50 },
                 { left: 0.05, top: 0.55, width: 0.90, height: 0.35 },
@@ -278,7 +241,6 @@ function registerAlpineComponent() {
             try {
                 const { createWorker } = await import('tesseract.js');
                 const worker = await createWorker('eng', 1, {
-                    // Vite: workers/lang data via CDN zodat de bundle licht blijft.
                     workerPath: 'https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/worker.min.js',
                     corePath: 'https://cdn.jsdelivr.net/npm/tesseract.js-core@5/tesseract-core.wasm.js',
                     langPath: 'https://tessdata.projectnaptha.com/4.0.0',
@@ -327,287 +289,9 @@ function registerAlpineComponent() {
             if (!trimmed) {
                 return;
             }
-            this.closeScanner();
             this.photoError = null;
             if (typeof this.$wire?.onBarcodeScanned === 'function') {
                 this.$wire.onBarcodeScanned(trimmed);
-            }
-        },
-
-        openScanner() {
-            this.errorKey = null;
-            this.photoError = null;
-            this.slowHint = false;
-            this.torchOn = false;
-            this.torchAvailable = false;
-            this._lastValue = null;
-            this._matchCount = 0;
-            this._frameNo = 0;
-            this._openAt = Date.now();
-            this.scannerOpen = true;
-            if (!this.supported || !this.canDetect) {
-                this.errorKey = 'unsupported';
-                return;
-            }
-            this.$nextTick(() => this.startCamera());
-        },
-
-        async startCamera() {
-            if (! await this.ensureDetectors()) {
-                this.errorKey = 'unsupported';
-                return;
-            }
-            this.ensureCanvas();
-
-            try {
-                this._stream = await navigator.mediaDevices.getUserMedia({
-                    video: {
-                        facingMode: { ideal: 'environment' },
-                        width: { ideal: 1920 },
-                        height: { ideal: 1080 },
-                    },
-                    audio: false,
-                });
-            } catch (e) {
-                try {
-                    this._stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
-                } catch (e2) {
-                    this.errorKey = 'denied';
-                    return;
-                }
-            }
-
-            this._track = this._stream.getVideoTracks()[0] ?? null;
-            await this.applyFocusAndZoom(true);
-            this._focusTimer = window.setTimeout(() => {
-                this.applyFocusAndZoom(true);
-            }, 700);
-
-            const video = this.$refs.scanVideo;
-            if (!video) {
-                this.stopStream();
-                return;
-            }
-            video.srcObject = this._stream;
-            try {
-                await video.play();
-            } catch (e) {}
-            this.decodeLoop(video);
-        },
-
-        async applyFocusAndZoom(aggressive = false) {
-            const track = this._track;
-            if (!track || typeof track.getCapabilities !== 'function') {
-                return;
-            }
-            try {
-                const caps = track.getCapabilities() || {};
-                const advanced = [];
-                if (Array.isArray(caps.focusMode) && caps.focusMode.includes('continuous')) {
-                    advanced.push({ focusMode: 'continuous' });
-                }
-                // Kleine sticker dichtbij: focusDistance naar dichtbij als de lens dat kan.
-                if (caps.focusDistance && typeof caps.focusDistance.min === 'number') {
-                    const near = caps.focusDistance.min;
-                    const far = typeof caps.focusDistance.max === 'number' ? caps.focusDistance.max : near;
-                    const target = near + (far - near) * 0.08;
-                    advanced.push({ focusDistance: target });
-                }
-                // Sterke digitale zoom: streepjes van ~2 cm moeten het kader vullen.
-                if (caps.zoom && typeof caps.zoom.min === 'number' && typeof caps.zoom.max === 'number') {
-                    const span = caps.zoom.max - caps.zoom.min;
-                    const factor = aggressive ? 0.55 : 0.35;
-                    const target = Math.min(
-                        caps.zoom.max,
-                        Math.max(caps.zoom.min, caps.zoom.min + Math.max(1.5, span * factor)),
-                    );
-                    if (target > caps.zoom.min) {
-                        advanced.push({ zoom: target });
-                    }
-                }
-                if (advanced.length > 0) {
-                    await track.applyConstraints({ advanced });
-                }
-                this.torchAvailable = caps.torch === true;
-            } catch (e) {}
-        },
-
-        async tapToFocus(event) {
-            const track = this._track;
-            if (!track || typeof track.getCapabilities !== 'function') {
-                return;
-            }
-            try {
-                const caps = track.getCapabilities() || {};
-                const advanced = [];
-                if (Array.isArray(caps.focusMode)) {
-                    if (caps.focusMode.includes('single-shot')) {
-                        advanced.push({ focusMode: 'single-shot' });
-                    } else if (caps.focusMode.includes('continuous')) {
-                        advanced.push({ focusMode: 'continuous' });
-                    }
-                }
-                if (caps.focusDistance && typeof caps.focusDistance.min === 'number') {
-                    advanced.push({ focusDistance: caps.focusDistance.min });
-                }
-                if (Array.isArray(caps.pointsOfInterest) || caps.pointsOfInterest === true) {
-                    const el = event?.currentTarget;
-                    if (el) {
-                        const rect = el.getBoundingClientRect();
-                        const x = (event.clientX - rect.left) / Math.max(1, rect.width);
-                        const y = (event.clientY - rect.top) / Math.max(1, rect.height);
-                        advanced.push({ pointsOfInterest: [{ x, y }] });
-                    }
-                }
-                if (advanced.length > 0) {
-                    await track.applyConstraints({ advanced });
-                }
-            } catch (e) {}
-        },
-
-        async toggleTorch() {
-            const track = this._track;
-            if (!track || !this.torchAvailable) {
-                return;
-            }
-            try {
-                this.torchOn = !this.torchOn;
-                await track.applyConstraints({ advanced: [{ torch: this.torchOn }] });
-            } catch (e) {
-                this.torchOn = false;
-            }
-        },
-
-        /**
-         * Knip de smalle leeszone uit en schaal ×2–4 zodat 5 mm streepjes
-         * genoeg pixels hebben voor Code 128.
-         */
-        buildCropCanvas(video, scale) {
-            const vw = video.videoWidth;
-            const vh = video.videoHeight;
-            if (vw < 16 || vh < 16 || !this._ctx) {
-                return null;
-            }
-            const sx = Math.floor(vw * CROP.left);
-            const sy = Math.floor(vh * CROP.top);
-            const sw = Math.max(8, Math.floor(vw * CROP.width));
-            const sh = Math.max(8, Math.floor(vh * CROP.height));
-            this._canvas.width = Math.round(sw * scale);
-            this._canvas.height = Math.round(sh * scale);
-            // Nearest-neighbor: houdt zwarte/witte strepen scherp bij opschalen.
-            this._ctx.imageSmoothingEnabled = false;
-            this._ctx.drawImage(
-                video,
-                sx, sy, sw, sh,
-                0, 0, this._canvas.width, this._canvas.height,
-            );
-            return this._canvas;
-        },
-
-        async detectFrame(video) {
-            // 1) QR: volle frame (groot genoeg, werkt al).
-            if (this._detectorQr) {
-                try {
-                    const qrHits = await this._detectorQr.detect(video);
-                    const qr = Array.isArray(qrHits) ? qrHits.find((h) => h && h.rawValue) : null;
-                    if (qr) {
-                        return String(qr.rawValue);
-                    }
-                } catch (e) {}
-            }
-
-            // 2) 1D: crop + multi-scale upscale van de smalle zone.
-            if (this._detector1d) {
-                const scale = UPSCALE_PASSES[Math.floor(this._frameNo / DECODE_EVERY_NTH_FRAME) % UPSCALE_PASSES.length];
-                const canvas = this.buildCropCanvas(video, scale);
-                if (canvas) {
-                    try {
-                        const hits = await this._detector1d.detect(canvas);
-                        const hit = Array.isArray(hits) ? hits.find((h) => h && h.rawValue) : null;
-                        if (hit) {
-                            return String(hit.rawValue);
-                        }
-                    } catch (e) {}
-                }
-            }
-
-            return null;
-        },
-
-        decodeLoop(video) {
-            if (!this.scannerOpen || this._stream === null) {
-                return;
-            }
-            this._frameNo += 1;
-            if (!this.slowHint && Date.now() - this._openAt > 10000) {
-                this.slowHint = true;
-            }
-            if (
-                !this._detectBusy
-                && video.readyState >= 2
-                && video.videoWidth > 0
-                && this._frameNo % DECODE_EVERY_NTH_FRAME === 0
-            ) {
-                this._detectBusy = true;
-                this.detectFrame(video).then((value) => {
-                    this._detectBusy = false;
-                    if (value && this.scannerOpen) {
-                        this.handleDecoded(value);
-                    } else {
-                        this._lastValue = null;
-                        this._matchCount = 0;
-                    }
-                }).catch(() => {
-                    this._detectBusy = false;
-                });
-            }
-            if (this.scannerOpen) {
-                this._frame = window.requestAnimationFrame(() => this.decodeLoop(video));
-            }
-        },
-
-        handleDecoded(value) {
-            const trimmed = value.trim();
-            if (!trimmed) {
-                return;
-            }
-            if (trimmed === this._lastValue) {
-                this._matchCount += 1;
-            } else {
-                this._lastValue = trimmed;
-                this._matchCount = 1;
-            }
-            if (this._matchCount < CONFIRM_READS) {
-                return;
-            }
-            this.applyScanResult(trimmed);
-        },
-
-        closeScanner() {
-            this.scannerOpen = false;
-            this.errorKey = null;
-            this.slowHint = false;
-            this.torchOn = false;
-            if (this._frame !== null) {
-                window.cancelAnimationFrame(this._frame);
-                this._frame = null;
-            }
-            if (this._focusTimer !== null) {
-                window.clearTimeout(this._focusTimer);
-                this._focusTimer = null;
-            }
-            this.stopStream();
-        },
-
-        stopStream() {
-            if (this._stream !== null) {
-                this._stream.getTracks().forEach((track) => track.stop());
-                this._stream = null;
-            }
-            this._track = null;
-            const video = this.$refs.scanVideo;
-            if (video) {
-                video.srcObject = null;
             }
         },
     }));

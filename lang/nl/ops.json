@@ -70,16 +70,7 @@
         "faulty": "Defect"
     },
     "scanner": {
-        "open": "Barcode scannen",
-        "manual_only": "Camera-scan niet beschikbaar; typ het serienummer handmatig.",
-        "unsupported": "Deze browser kan geen barcodes scannen. Typ handmatig.",
-        "denied": "Cameratoegang geweigerd. Typ handmatig of geef toegang.",
-        "hint": "Vul het smalle kader met de barcode (dichtbij, ~8–15 cm). Tik om te focussen.",
-        "slow": "Barcode te klein? Dichterbij, tik voor focus, licht aan, of typ het serienummer.",
-        "torch_on": "Licht aan",
-        "torch_off": "Licht uit",
         "photo_capture": "Foto maken",
-        "photo_gallery": "Foto kiezen",
         "photo_busy": "Nummer lezen…",
         "photo_hint": "Maak een scherpe close-up van barcode én het nummer eronder. We lezen eerst de streepjes, anders de cijfers.",
         "photo_no_code": "Geen barcode of serienummer gevonden. Zorg dat het nummer onder de barcode scherp op de foto staat, of typ het.",
