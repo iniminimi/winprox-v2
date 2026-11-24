@@ -21,7 +21,7 @@
     @else
         <ul class="wp-list-plain wp-stack-tight">
             @foreach ($users as $user)
-                <li class="wp-list-row" wire:key="ops-user-{{ $user->id }}">
+                <li class="wp-list-row wp-list-row--end" wire:key="ops-user-{{ $user->id }}">
                     <div class="wp-grow">
                         <p class="wp-text-body">
                             <strong>{{ $user->name }}</strong>

@@ -460,6 +460,27 @@
     border-bottom: none;
 }
 
+/* Rij met icoon/actie rechts: niet wrappen, tekst mag inkorten. */
+.wp-list-row--end {
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+}
+
+.wp-list-row--end > .wp-grow {
+    min-width: 0;
+}
+
+.wp-list-row--end > .btn {
+    flex-shrink: 0;
+}
+
+.wp-list-row--end .wp-text-body,
+.wp-list-row--end .wp-muted {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .wp-sidebar-bottom {
     margin-top: 1.5rem;
     padding-top: 1rem;
