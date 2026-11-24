@@ -1994,6 +1994,10 @@
                 {
                     "label": "Mediciones",
                     "text": "Con las mediciones de unidad, los usuarios pueden registrar valores concretos a través del código QR.<br><br>Por ejemplo:<br>• La temperatura de una sala.<br>• El kilometraje de un vehículo.<br>• Una lectura de contador u otro valor técnico.<br><br>¿Cómo se configura?<br><br>También aquí la función debe estar activada tanto en la categoría como en la unidad.<br><br>Los campos de medición se gestionan en Trabajo → Mediciones de unit. Allí decide qué valores pueden registrar los usuarios.<br><br>Importante: las mediciones de unidad no son lo mismo que las comprobaciones de unidad. En una comprobación, alguien indica si algo está en orden. En una medición, alguien registra un valor concreto."
+                },
+                {
+                    "label": "Añadir una pantalla",
+                    "text": "En el lugar, en la unidad, elija <strong>Pantalla</strong>. Allí vincula una pantalla a esa sala y la ajusta.<br><br>Esa pantalla puede:<br>• Mostrar el QR de la sala. Cambia cada hora. Un escaneo abre la misma página de aviso que la pegatina de la puerta. Una foto de la pantalla vale hasta la hora siguiente.<br>• Estar encendida en las horas que usted elige, y apagada fuera de ellas.<br>• Tener el sonido encendido o apagado.<br>• Mostrar un descanso: fotos, un reloj o una pantalla negra.<br>• Medir Sense, si lo activa: temperatura, humedad, CO₂ y calidad del aire. Los límites se ajustan en la misma página. El inicio pide atención si un valor sale de la banda. No se crea ningún aviso ni tarea.<br><br>La vincula con un código que escribe en la pantalla y confirma aquí. Desvincular detiene el aparato para esta sala."
                 }
             ]
         },

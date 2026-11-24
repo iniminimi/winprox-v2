@@ -1994,6 +1994,10 @@
                 {
                     "label": "Measurements",
                     "text": "With unit measurements, people can record specific values via the QR code.<br><br>For example:<br>• The temperature of a room.<br>• The mileage of a vehicle.<br>• A meter reading or another technical value.<br><br>How do you set this up?<br><br>For this too, the feature must be switched on for both the category and the unit.<br><br>You manage the measurement fields under Work → Unit measurements. There you decide which values people can record.<br><br>Important: unit measurements are different from unit checks. With a unit check, someone says whether something is in order. With a unit measurement, someone records a specific value."
+                },
+                {
+                    "label": "Add a screen",
+                    "text": "On the location, at the unit, choose <strong>Screen</strong>. There you attach a screen to that room and set it up.<br><br>That screen can:<br>• Show the QR of the room. It changes once an hour. A scan opens the same report page as the sticker on the door. A photo of the screen works until the next hour.<br>• Stay on during the hours you choose, and off outside them.<br>• Have sound on or off.<br>• Show a rest screen: photos, a clock or a black screen.<br>• Measure Sense, when you turn that on: temperature, humidity, CO₂ and air quality. You set the marks on the same page. The home screen asks for attention when a value leaves the band. No issue and no task is created.<br><br>You pair it with a code you type on the screen and confirm here. Unlink stops the device for this room."
                 }
             ]
         },

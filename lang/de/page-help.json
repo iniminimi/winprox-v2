@@ -1994,6 +1994,10 @@
                 {
                     "label": "Messungen",
                     "text": "Mit Unit-Messungen können Nutzer über den QR-Code konkrete Werte erfassen.<br><br>Zum Beispiel:<br>• Die Temperatur eines Raums.<br>• Den Kilometerstand eines Fahrzeugs.<br>• Einen Zählerstand oder einen anderen technischen Wert.<br><br>Wie stellen Sie das ein?<br><br>Auch dafür muss die Funktion sowohl bei der Kategorie als auch bei der Unit eingeschaltet sein.<br><br>Die Messfelder selbst verwalten Sie unter Arbeit → Unit-Messungen. Dort legen Sie fest, welche Werte Nutzer erfassen können.<br><br>Wichtig: Unit-Messungen sind etwas anderes als Unit-Checks. Bei einem Unit-Check gibt jemand an, ob etwas in Ordnung ist. Bei einer Unit-Messung erfasst jemand einen konkreten Wert."
+                },
+                {
+                    "label": "Ein Display hinzufügen",
+                    "text": "Am Standort, bei der Unit, wählen Sie <strong>Display</strong>. Dort koppeln Sie ein Display an diesen Raum und stellen es ein.<br><br>Dieses Display kann:<br>• Den QR des Raums zeigen. Er wechselt einmal pro Stunde. Ein Scan öffnet dieselbe Meldeseite wie der Aufkleber an der Tür. Ein Foto des Displays gilt bis zur nächsten Stunde.<br>• In den Stunden an sein, die Sie wählen, und sonst aus.<br>• Ton ein oder aus haben.<br>• Einen Ruhebildschirm zeigen: Fotos, eine Uhr oder ein schwarzes Display.<br>• Sense messen, wenn Sie das einschalten: Temperatur, Feuchte, CO₂ und Luftqualität. Die Grenzen stellen Sie auf derselben Seite ein. Der Startbildschirm bittet um Aufmerksamkeit, wenn ein Wert außerhalb der Spanne liegt. Es entsteht keine Meldung und keine Aufgabe.<br><br>Sie koppeln es mit einem Code, den Sie auf dem Display eintippen und hier bestätigen. Trennen stoppt das Gerät für diesen Raum."
                 }
             ]
         },

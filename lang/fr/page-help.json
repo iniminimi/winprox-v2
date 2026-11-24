@@ -1998,6 +1998,10 @@
                 {
                     "label": "Mesures",
                     "text": "Avec les mesures d’unité, les utilisateurs peuvent enregistrer des valeurs concrètes via le code QR.<br><br>Par exemple :<br>• La température d’une pièce.<br>• Le kilométrage d’un véhicule.<br>• Un relevé de compteur ou une autre valeur technique.<br><br>Comment le configurer ?<br><br>Ici aussi, la fonction doit être activée à la fois pour la catégorie et pour l’unité.<br><br>Vous gérez les champs de mesure sous Travail → Mesures unit. C’est là que vous déterminez quelles valeurs les utilisateurs peuvent enregistrer.<br><br>Important : les mesures d’unité sont différentes des contrôles d’unité. Lors d’un contrôle, quelqu’un indique si quelque chose est en ordre. Lors d’une mesure, quelqu’un enregistre une valeur concrète."
+                },
+                {
+                    "label": "Ajouter un écran",
+                    "text": "Sur le lieu, à l’unité, choisissez <strong>Écran</strong>. Vous y reliez un écran à ce local et vous le réglez.<br><br>Cet écran peut :<br>• Montrer le QR du local. Il change toutes les heures. Un scan ouvre la même page de signalement que l’autocollant sur la porte. Une photo de l’écran fonctionne jusqu’à l’heure suivante.<br>• Rester allumé aux heures que vous choisissez, et éteint en dehors.<br>• Avoir le son activé ou coupé.<br>• Montrer un écran de repos : des photos, une horloge ou un écran noir.<br>• Mesurer Sense, si vous l’activez : température, humidité, CO₂ et qualité de l’air. Vous réglez les repères sur la même page. L’accueil demande attention si une valeur sort de la bande. Aucun signalement ni tâche n’est créé.<br><br>Vous le reliez avec un code que vous saisissez sur l’écran et confirmez ici. Détacher arrête l’appareil pour ce local."
                 }
             ]
         },

@@ -1994,6 +1994,10 @@
                 {
                     "label": "Metingen",
                     "text": "Met unitmetingen kunnen gebruikers via de QR-code concrete waarden registreren.<br><br>Bijvoorbeeld:<br>• De temperatuur van een ruimte.<br>• De kilometerstand van een voertuig.<br>• Een tellerstand of andere technische waarde.<br><br>Hoe stelt u dit in?<br><br>Ook hiervoor moet de functie zowel bij de categorie als bij de unit ingeschakeld zijn.<br><br>De meetvelden zelf beheert u onder Werk → Unitmetingen. Daar bepaalt u welke waarden gebruikers kunnen registreren.<br><br>Belangrijk: unitmetingen zijn iets anders dan unit checks. Bij een unit check geeft iemand aan of iets in orde is. Bij een unitmeting registreert iemand een concrete waarde."
+                },
+                {
+                    "label": "Een scherm toevoegen",
+                    "text": "Op de locatie, bij de unit, kiest u <strong>Scherm</strong>. Daar koppelt u een scherm aan dat lokaal en stelt u het in.<br><br>Dat scherm kan:<br>• De QR van het lokaal tonen. Die wisselt elk uur. Een scan opent dezelfde meldpagina als de sticker op de deur. Een foto van het scherm werkt tot het volgende uur.<br>• Aan staan op de uren die u kiest, en daarbuiten uit.<br>• Geluid aan of uit hebben.<br>• Een rustscherm tonen: foto’s, een klok of een zwart scherm.<br>• Sense meten, als u dat aanzet: temperatuur, vocht, CO₂ en luchtkwaliteit. De grenzen stelt u op diezelfde pagina. Het beginscherm vraagt aandacht als een waarde buiten de band valt. Er komt geen melding en geen taak.<br><br>Koppelen doet u met een code die u op het scherm intikt en hier bevestigt. Loskoppelen stopt het toestel voor dit lokaal."
                 }
             ]
         },

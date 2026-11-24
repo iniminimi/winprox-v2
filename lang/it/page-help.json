@@ -1994,6 +1994,10 @@
                 {
                     "label": "Misurazioni",
                     "text": "Con le misurazioni delle unità, gli utenti possono registrare valori concreti tramite il codice QR.<br><br>Per esempio:<br>• La temperatura di un locale.<br>• Il chilometraggio di un veicolo.<br>• Una lettura del contatore o un altro valore tecnico.<br><br>Come si imposta?<br><br>Anche per questo la funzione deve essere attivata sia nella categoria sia nell’unità.<br><br>I campi di misurazione si gestiscono in Lavoro → Misurazioni unit. Lì decide quali valori gli utenti possono registrare.<br><br>Importante: le misurazioni delle unità sono diverse dai controlli unità. In un controllo, qualcuno indica se qualcosa è in ordine. In una misurazione, qualcuno registra un valore concreto."
+                },
+                {
+                    "label": "Aggiungere uno schermo",
+                    "text": "Nel luogo, sull’unità, scegliete <strong>Schermo</strong>. Lì collegate uno schermo a quel locale e lo impostate.<br><br>Quello schermo può:<br>• Mostrare il QR del locale. Cambia ogni ora. Una scansione apre la stessa pagina di segnalazione dell’adesivo sulla porta. Una foto dello schermo vale fino all’ora successiva.<br>• Restare acceso nelle ore che scegliete, e spento fuori.<br>• Avere il suono acceso o spento.<br>• Mostrare una schermata di riposo: foto, un orologio o uno schermo nero.<br>• Misurare Sense, se lo attivate: temperatura, umidità, CO₂ e qualità dell’aria. I limiti si impostano sulla stessa pagina. La schermata iniziale chiede attenzione se un valore esce dalla fascia. Non nasce nessuna segnalazione né attività.<br><br>Lo collegate con un codice che inserite sullo schermo e confermate qui. Scollegare ferma l’apparecchio per questo locale."
                 }
             ]
         },
