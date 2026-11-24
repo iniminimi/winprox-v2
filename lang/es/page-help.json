@@ -1877,6 +1877,31 @@
                 }
             ]
         },
+        "cameras.show": {
+            "title": "Ayuda — Cámara",
+            "actions": [
+                {
+                    "label": "¿Qué es esta pantalla?",
+                    "text": "Una cámara para esta sala. Las fotos se quedan en la tarjeta del aparato. Si activa el <strong>reenvío</strong>, el aparato puede enviar copias cuando hay wifi. Solo un administrador ve esas copias. No se crea ningún aviso ni tarea."
+                },
+                {
+                    "label": "Reenvío",
+                    "text": "<strong>Reenvío desactivado</strong> deja las fotos solo en la tarjeta. <strong>Reenvío activado</strong> permite al aparato enviar copias. Puede desactivarlo más tarde. Las fotos que ya llegaron siguen hasta que caduquen."
+                },
+                {
+                    "label": "Vincular",
+                    "text": "<strong>Generar código de vinculación</strong> crea un código de un solo uso. Escríbalo en la cámara. La solicitud aparece aquí. Confirme solo si está seguro de que es su aparato. La clave va solo al aparato, no a esta pantalla."
+                },
+                {
+                    "label": "Desvincular",
+                    "text": "Desvincular detiene el reenvío. Este aparato ya no puede enviar copias. Las fotos que ya están en WinProx siguen hasta que caduquen. La tarjeta del aparato no se toca."
+                },
+                {
+                    "label": "Fotos",
+                    "text": "Aquí solo aparecen las copias que llegaron, la más reciente primero. Toque una foto para verla más grande. Una lista vacía significa que la cámara guarda las fotos en la tarjeta. Las copias se conservan 30 días."
+                }
+            ]
+        },
         "iot.index": {
             "title": "Ayuda — IoT Connect",
             "actions": [
@@ -1998,6 +2023,10 @@
                 {
                     "label": "Añadir una pantalla",
                     "text": "En el lugar, en la unidad, elija <strong>Pantalla</strong>. Allí vincula una pantalla a esa sala y la ajusta.<br><br>Esa pantalla puede:<br>• Mostrar el QR de la sala. Cambia cada hora. Un escaneo abre la misma página de aviso que la pegatina de la puerta. Una foto de la pantalla vale hasta la hora siguiente.<br>• Estar encendida en las horas que usted elige, y apagada fuera de ellas.<br>• Tener el sonido encendido o apagado.<br>• Mostrar un descanso: fotos, un reloj o una pantalla negra.<br>• Medir Sense, si lo activa: temperatura, humedad, CO₂ y calidad del aire. Los límites se ajustan en la misma página. El inicio pide atención si un valor sale de la banda. No se crea ningún aviso ni tarea.<br><br>La vincula con un código que escribe en la pantalla y confirma aquí. Desvincular detiene el aparato para esta sala."
+                },
+                {
+                    "label": "Añadir una cámara",
+                    "text": "En el lugar, en la unidad, elija <strong>Cámara</strong>. Puede ir junto a una pantalla, o sin pantalla.<br><br>Las fotos se quedan en la tarjeta del aparato. Active el <strong>reenvío</strong> si quiere ver copias en WinProx. Solo un administrador ve esas fotos. Se conservan 30 días. WinProx no borra la tarjeta.<br><br>La vincula con un código que escribe en la cámara y confirma aquí. Desvincular detiene el reenvío."
                 }
             ]
         },

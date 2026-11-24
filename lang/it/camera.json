@@ -1,0 +1,58 @@
+{
+    "open": "Telecamera",
+    "linked_pill": "Telecamera",
+    "title": "Telecamera per :name",
+    "subtitle": "Le foto restano sulla scheda nell’apparecchio. Solo un amministratore vede le copie che arrivano qui.",
+    "back": "Torna alle unità",
+    "forward": {
+        "title": "Inoltro",
+        "hint": "Spento: le foto restano solo sulla scheda. Acceso: l’apparecchio può inviare copie se c’è il Wi-Fi.",
+        "on": "Inoltro acceso",
+        "off": "Inoltro spento"
+    },
+    "code": {
+        "title": "Collegare",
+        "hint": "L’apparecchio mostra una schermata per inserire il codice. Poi confermate qui di quale apparecchio si tratta.",
+        "issue": "Genera codice di collegamento",
+        "valid_until": "Valido fino alle :time"
+    },
+    "linked": {
+        "title": "Telecamera collegata",
+        "device": "Apparecchio",
+        "paired_at": "Collegata il",
+        "last_seen": "Vista l’ultima volta",
+        "unlink": "Scollegare"
+    },
+    "pending": {
+        "title": "La telecamera chiede di collegarsi",
+        "confirm": "Collegare",
+        "deny": "Rifiutare"
+    },
+    "photos": {
+        "title": "Foto",
+        "empty": "Ancora nessuna copia. La telecamera tiene le foto sulla scheda e le invia solo se l’inoltro è acceso e c’è il Wi-Fi.",
+        "older": "Le copie che stanno qui restano 30 giorni. La scheda nell’apparecchio non viene toccata.",
+        "previous": "Foto più vecchie",
+        "next": "Foto più recenti"
+    },
+    "unlink_modal": {
+        "title": "Scollegare la telecamera",
+        "body": "L’inoltro si ferma e questo apparecchio non può più inviare copie. Le foto già arrivate restano finché non scadono.",
+        "confirm": "Scollegare"
+    },
+    "flash": {
+        "forwarding_on": "L’inoltro è acceso.",
+        "forwarding_off": "L’inoltro è spento. Le foto nuove restano sulla scheda.",
+        "issued": "Codice di collegamento pronto.",
+        "confirmed": "Telecamera collegata.",
+        "denied": "Richiesta rifiutata.",
+        "unlinked": "Telecamera scollegata."
+    },
+    "errors": {
+        "unit_invalid": "Questo locale non appartiene a questa organizzazione.",
+        "code_invalid": "Questo codice non è valido o è scaduto.",
+        "not_pending": "Questa richiesta non è più aperta.",
+        "forwarding_off": "L’inoltro è spento.",
+        "store": "La foto non è stata salvata."
+    }
+}

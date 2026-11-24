@@ -213,7 +213,10 @@
                 "team_documents": "Documentos para ejecutores: :count",
                 "unit_album_photos": "Fotos del álbum: :count",
                 "unit_album_recipients": "Destinatarios del álbum: :count",
-                "unit_album_sends": "Envíos del álbum: :count"
+                "unit_album_sends": "Envíos del álbum: :count",
+                "cameras": "Cámaras: :count",
+                "camera_claims": "Vinculaciones de cámara: :count",
+                "camera_photos": "Fotos de cámara: :count"
             }
         },
         "link_fallback": "Si el botón no funciona, copie este enlace:",

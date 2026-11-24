@@ -299,6 +299,16 @@
                 ]
             },
             {
+                "title": "Caméra",
+                "body": "Une caméra dans un local garde les photos sur la carte dans l’appareil. Si vous activez le transfert, des copies arrivent dans WinProx. Seul un administrateur voit ces copies.",
+                "items": [
+                    "Sur le lieu, à l’unité, vous choisissez Caméra. Le local peut avoir un écran, une caméra, ou les deux.",
+                    "Désactivé : les photos restent sur la carte. Activé : l’appareil peut envoyer des copies s’il y a du Wi-Fi.",
+                    "Les copies dans WinProx restent 30 jours. La carte dans l’appareil n’est pas touchée.",
+                    "Aucun signalement ni tâche. Pas de reconnaissance et pas d’image en direct."
+                ]
+            },
+            {
                 "title": "API et webhooks",
                 "body": "L’API et les webhooks permettent à un autre logiciel d’échanger des données avec WinProx. Une API va chercher des données ou en envoie. Un webhook envoie lui-même un message dès qu’il se passe quelque chose.",
                 "items": [
@@ -519,6 +529,15 @@
                     "Un écran peut aussi mesurer la température, l’humidité, le CO₂ et la qualité de l’air. Vous l’activez par écran dans les réglages de l’écran, sur un local ou sur un Clock Point.",
                     "Les mesures restent dans votre organisation. Aucun signalement ni tâche n’est créé. L’accueil demande attention si une valeur sort de la bande ou si l’écran n’envoie plus rien.",
                     "Même réseau que l’écran d’horloge : Wi‑Fi et HTTPS."
+                ]
+            },
+            {
+                "title": "Caméra (optionnel)",
+                "items": [
+                    "Une caméra appartient à un local. Le couplage se fait avec un code à usage unique. La clé va uniquement à l’appareil.",
+                    "Les photos restent sur la carte dans l’appareil. Seul un administrateur active le transfert vers WinProx.",
+                    "Les copies sont dans un endroit fermé. Un collaborateur ne les voit pas. Après le délai de conservation, elles disparaissent. WinProx n’efface pas la carte.",
+                    "Même réseau que l’écran : Wi‑Fi et HTTPS. Aucun signalement ni tâche n’est créé."
                 ]
             },
             {

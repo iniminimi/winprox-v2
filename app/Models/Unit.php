@@ -95,6 +95,16 @@ class Unit extends Model
         return $this->hasOne(Screen::class);
     }
 
+    public function cameras(): HasMany
+    {
+        return $this->hasMany(Camera::class);
+    }
+
+    public function camera(): HasOne
+    {
+        return $this->hasOne(Camera::class);
+    }
+
     public function hasWorkVisitPin(): bool
     {
         return $this->latitude !== null && $this->longitude !== null;

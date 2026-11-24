@@ -23,6 +23,7 @@ This policy is a draft and requires legal approval.
 | Time / Clock Point | Shifts, breaks (including team-applied timesheet minimum; not an RSZ event), bound device, hashed PIN, optional GPS at punch, own-hours view, planned roster and absences (leave / time off in lieu / sick) entered by the customer, worker in-app roster notifications, evacuation-list views, opened yes/no per team document and announcement (no timestamp) | Contract period + 36 months | Delete with tenant / related records |
 | Roster restore points | Previous shifts of a roster edit (worker, day, times, note), kept so an admin can undo that edit | 30 days (configurable) | Daily `winprox:retention-prune`; also deleted with the tenant |
 | Absence request photos | Optional photo with a leave / time-off / sick request (private disk; the request row stays) | 6 months (warning on the dashboard from 5 months) | Daily `winprox:retention-prune`; also deleted with the tenant |
+| Camera photos | Copies a paired camera forwarded over Wi-Fi (private disk). The micro-SD in the device is not WinProx data and is not deleted. | 30 days | Daily `winprox:retention-prune`; also deleted with the unit or the tenant |
 | Issue translations | AI-generated translations of issue descriptions | Contract period + 36 months | Delete with parent issue |
 | Owner contacts | Name, email, phone | While linked + 24 months | Delete if no legal need remains |
 | Notification logs | Sent/failed recipients, subject | 24 months | Delete or aggregate stats only |
@@ -40,6 +41,7 @@ This policy is a draft and requires legal approval.
 - **Application error logs**: Laravel daily log (`LOG_STACK=daily`, `LOG_DAILY_DAYS=14`). Only server administration can read `storage/logs`; users see a reference code (`WP-XXXXXX`), never technical details.
 - **Roster restore points**: Verwijdert uurrooster-herstelpunten ouder dan 30 dagen (`RETENTION_ROSTER_RESTORE_POINTS_DAYS`).
 - **Absence request photos**: Verwijdert foto's bij afwezigheidsaanvragen ouder dan 6 maanden (`RETENTION_ABSENCE_PHOTOS_MONTHS`). De aanvraag blijft. Vanaf 5 maanden (`RETENTION_ABSENCE_PHOTOS_WARN_MONTHS`) waarschuwt het beginscherm.
+- **Camera photos**: Verwijdert doorgestuurde camerafoto's ouder dan 30 dagen (`config/camera.php` `retention_days`). De micro-SD in het toestel blijft buiten WinProx.
 - **Inactive tenant facility data**: Verwijdert data van inactieve tenants (meldingen, foto's) volgens retentiebeleid.
 - Voer steeds **`--dry-run`** uit om te tellen zonder te wissen. Productie-aanzetten pas na legal / operations sign-off.
 - Admin export vóór verwijdering waar nodig: **TODO** (proces).

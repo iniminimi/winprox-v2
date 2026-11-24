@@ -1,0 +1,58 @@
+{
+    "open": "Camera",
+    "linked_pill": "Camera",
+    "title": "Camera voor :name",
+    "subtitle": "Foto's blijven op de kaart in het toestel. Alleen een beheerder ziet kopieën die hier binnenkomen.",
+    "back": "Terug naar Units",
+    "forward": {
+        "title": "Doorsturen",
+        "hint": "Uit: de foto's blijven alleen op de kaart. Aan: het toestel mag kopieën sturen als er wifi is.",
+        "on": "Doorsturen aan",
+        "off": "Doorsturen uit"
+    },
+    "code": {
+        "title": "Koppelen",
+        "hint": "Het toestel toont een scherm om de code in te toetsen. Daarna bevestigt u hier welk toestel het is.",
+        "issue": "Genereer koppelcode",
+        "valid_until": "Geldig tot :time"
+    },
+    "linked": {
+        "title": "Gekoppelde camera",
+        "device": "Toestel",
+        "paired_at": "Gekoppeld op",
+        "last_seen": "Laatst gezien",
+        "unlink": "Loskoppelen"
+    },
+    "pending": {
+        "title": "Camera vraagt om te koppelen",
+        "confirm": "Koppelen",
+        "deny": "Weigeren"
+    },
+    "photos": {
+        "title": "Foto's",
+        "empty": "Nog geen kopieën. De camera bewaart foto's op de kaart en stuurt ze alleen door als doorsturen aan staat en er wifi is.",
+        "older": "Kopieën die hier staan, blijven 30 dagen. De kaart in het toestel blijft onaangeroerd.",
+        "previous": "Oudere foto's",
+        "next": "Nieuwere foto's"
+    },
+    "unlink_modal": {
+        "title": "Camera loskoppelen",
+        "body": "Doorsturen stopt en dit toestel kan geen kopieën meer sturen. Foto's die al binnen zijn, blijven tot ze verlopen.",
+        "confirm": "Loskoppelen"
+    },
+    "flash": {
+        "forwarding_on": "Doorsturen staat aan.",
+        "forwarding_off": "Doorsturen staat uit. Nieuwe foto's blijven op de kaart.",
+        "issued": "Koppelcode klaar.",
+        "confirmed": "Camera gekoppeld.",
+        "denied": "Aanvraag geweigerd.",
+        "unlinked": "Camera losgekoppeld."
+    },
+    "errors": {
+        "unit_invalid": "Dit lokaal hoort niet bij deze organisatie.",
+        "code_invalid": "Deze code is ongeldig of verlopen.",
+        "not_pending": "Deze aanvraag is niet meer open.",
+        "forwarding_off": "Doorsturen staat uit.",
+        "store": "De foto is niet bewaard."
+    }
+}

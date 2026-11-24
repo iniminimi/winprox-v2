@@ -1877,6 +1877,31 @@
                 }
             ]
         },
+        "cameras.show": {
+            "title": "Aiuto — Telecamera",
+            "actions": [
+                {
+                    "label": "Che cos’è questa schermata?",
+                    "text": "Una telecamera per questo locale. Le foto restano sulla scheda nell’apparecchio. Se accendete l’<strong>inoltro</strong>, l’apparecchio può inviare copie quando c’è il Wi-Fi. Solo un amministratore vede quelle copie. Non nasce nessuna segnalazione né attività."
+                },
+                {
+                    "label": "Inoltro",
+                    "text": "<strong>Inoltro spento</strong> lascia le foto solo sulla scheda. <strong>Inoltro acceso</strong> permette all’apparecchio di inviare copie. Potete spegnerlo più tardi. Le foto già arrivate restano finché non scadono."
+                },
+                {
+                    "label": "Collegare",
+                    "text": "<strong>Genera codice di collegamento</strong> crea un codice usa e getta. Inseritelo sulla telecamera. La richiesta compare qui. Confermate solo se siete sicuri che sia il vostro apparecchio. La chiave va solo all’apparecchio, non su questa schermata."
+                },
+                {
+                    "label": "Scollegare",
+                    "text": "Scollegare ferma l’inoltro. Questo apparecchio non può più inviare copie. Le foto già in WinProx restano finché non scadono. La scheda nell’apparecchio non viene toccata."
+                },
+                {
+                    "label": "Foto",
+                    "text": "Qui compaiono solo le copie arrivate, la più recente per prima. Toccate una foto per ingrandirla. Un elenco vuoto significa che la telecamera tiene le foto sulla scheda. Le copie restano 30 giorni."
+                }
+            ]
+        },
         "iot.index": {
             "title": "Guida — IoT Connect",
             "actions": [
@@ -1998,6 +2023,10 @@
                 {
                     "label": "Aggiungere uno schermo",
                     "text": "Nel luogo, sull’unità, scegliete <strong>Schermo</strong>. Lì collegate uno schermo a quel locale e lo impostate.<br><br>Quello schermo può:<br>• Mostrare il QR del locale. Cambia ogni ora. Una scansione apre la stessa pagina di segnalazione dell’adesivo sulla porta. Una foto dello schermo vale fino all’ora successiva.<br>• Restare acceso nelle ore che scegliete, e spento fuori.<br>• Avere il suono acceso o spento.<br>• Mostrare una schermata di riposo: foto, un orologio o uno schermo nero.<br>• Misurare Sense, se lo attivate: temperatura, umidità, CO₂ e qualità dell’aria. I limiti si impostano sulla stessa pagina. La schermata iniziale chiede attenzione se un valore esce dalla fascia. Non nasce nessuna segnalazione né attività.<br><br>Lo collegate con un codice che inserite sullo schermo e confermate qui. Scollegare ferma l’apparecchio per questo locale."
+                },
+                {
+                    "label": "Aggiungere una telecamera",
+                    "text": "Nel luogo, sull’unità, scegliete <strong>Telecamera</strong>. Può stare accanto a uno schermo, oppure senza schermo.<br><br>Le foto restano sulla scheda nell’apparecchio. Accendete l’<strong>inoltro</strong> se volete vedere le copie in WinProx. Solo un amministratore vede quelle foto. Restano 30 giorni. WinProx non cancella la scheda.<br><br>La collegate con un codice che inserite sulla telecamera e confermate qui. Scollegare ferma l’inoltro."
                 }
             ]
         },

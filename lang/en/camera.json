@@ -1,0 +1,58 @@
+{
+    "open": "Camera",
+    "linked_pill": "Camera",
+    "title": "Camera for :name",
+    "subtitle": "Photos stay on the card in the device. Only an administrator sees copies that arrive here.",
+    "back": "Back to Units",
+    "forward": {
+        "title": "Forwarding",
+        "hint": "Off: photos stay on the card only. On: the device may send copies when there is Wi-Fi.",
+        "on": "Forwarding on",
+        "off": "Forwarding off"
+    },
+    "code": {
+        "title": "Pairing",
+        "hint": "The device shows a screen to enter the code. You then confirm here which device it is.",
+        "issue": "Generate pairing code",
+        "valid_until": "Valid until :time"
+    },
+    "linked": {
+        "title": "Linked camera",
+        "device": "Device",
+        "paired_at": "Linked on",
+        "last_seen": "Last seen",
+        "unlink": "Unlink"
+    },
+    "pending": {
+        "title": "Camera is asking to pair",
+        "confirm": "Pair",
+        "deny": "Refuse"
+    },
+    "photos": {
+        "title": "Photos",
+        "empty": "No copies yet. The camera keeps photos on the card and sends them only when forwarding is on and there is Wi-Fi.",
+        "older": "Copies kept here stay for 30 days. The card in the device is left untouched.",
+        "previous": "Older photos",
+        "next": "Newer photos"
+    },
+    "unlink_modal": {
+        "title": "Unlink camera",
+        "body": "Forwarding stops and this device can no longer send copies. Photos that already arrived stay until they expire.",
+        "confirm": "Unlink"
+    },
+    "flash": {
+        "forwarding_on": "Forwarding is on.",
+        "forwarding_off": "Forwarding is off. New photos stay on the card.",
+        "issued": "Pairing code ready.",
+        "confirmed": "Camera linked.",
+        "denied": "Request refused.",
+        "unlinked": "Camera unlinked."
+    },
+    "errors": {
+        "unit_invalid": "This room does not belong to this organisation.",
+        "code_invalid": "This code is invalid or expired.",
+        "not_pending": "This request is no longer open.",
+        "forwarding_off": "Forwarding is off.",
+        "store": "The photo was not saved."
+    }
+}

@@ -1877,6 +1877,31 @@
                 }
             ]
         },
+        "cameras.show": {
+            "title": "Hulp — Camera",
+            "actions": [
+                {
+                    "label": "Wat is dit scherm?",
+                    "text": "Een camera bij dit lokaal. De foto’s blijven op de kaart in het toestel. Als u <strong>Doorsturen</strong> aanzet, mag het toestel kopieën sturen wanneer er wifi is. Alleen een beheerder ziet die kopieën. Er komt geen melding en geen taak."
+                },
+                {
+                    "label": "Doorsturen",
+                    "text": "<strong>Doorsturen uit</strong> laat de foto’s alleen op de kaart. <strong>Doorsturen aan</strong> laat het toestel kopieën sturen. U kunt dat later weer uitzetten. Foto’s die al binnen zijn, blijven tot ze verlopen."
+                },
+                {
+                    "label": "Koppelen",
+                    "text": "<strong>Genereer koppelcode</strong> maakt een eenmalige code. Tik die in op de camera. De aanvraag verschijnt hier. Bevestig pas als u zeker weet dat het uw toestel is. De sleutel gaat alleen naar het toestel, niet naar dit scherm."
+                },
+                {
+                    "label": "Loskoppelen",
+                    "text": "Loskoppelen stopt het doorsturen. Dit toestel kan geen kopieën meer sturen. Foto’s die al in WinProx staan, blijven tot ze verlopen. De kaart in het toestel blijft onaangeroerd."
+                },
+                {
+                    "label": "Foto’s",
+                    "text": "Hier staan alleen kopieën die zijn aangekomen, de nieuwste eerst. Tik op een foto om ze groter te zien. Een lege lijst betekent dat de camera de foto’s op de kaart houdt. Kopieën blijven 30 dagen."
+                }
+            ]
+        },
         "iot.index": {
             "title": "Hulp — IoT Connect",
             "actions": [
@@ -1998,6 +2023,10 @@
                 {
                     "label": "Een scherm toevoegen",
                     "text": "Op de locatie, bij de unit, kiest u <strong>Scherm</strong>. Daar koppelt u een scherm aan dat lokaal en stelt u het in.<br><br>Dat scherm kan:<br>• De QR van het lokaal tonen. Die wisselt elk uur. Een scan opent dezelfde meldpagina als de sticker op de deur. Een foto van het scherm werkt tot het volgende uur.<br>• Aan staan op de uren die u kiest, en daarbuiten uit.<br>• Geluid aan of uit hebben.<br>• Een rustscherm tonen: foto’s, een klok of een zwart scherm.<br>• Sense meten, als u dat aanzet: temperatuur, vocht, CO₂ en luchtkwaliteit. De grenzen stelt u op diezelfde pagina. Het beginscherm vraagt aandacht als een waarde buiten de band valt. Er komt geen melding en geen taak.<br><br>Koppelen doet u met een code die u op het scherm intikt en hier bevestigt. Loskoppelen stopt het toestel voor dit lokaal."
+                },
+                {
+                    "label": "Een camera toevoegen",
+                    "text": "Op de locatie, bij de unit, kiest u <strong>Camera</strong>. Dat kan naast een scherm, of zonder scherm.<br><br>De foto’s blijven op de kaart in het toestel. Zet <strong>Doorsturen</strong> aan als u kopieën in WinProx wilt zien. Alleen een beheerder ziet die foto’s. Ze blijven 30 dagen. De kaart zelf wist WinProx niet.<br><br>Koppelen doet u met een code die u op de camera intikt en hier bevestigt. Loskoppelen stopt het doorsturen."
                 }
             ]
         },

@@ -299,6 +299,16 @@
                 ]
             },
             {
+                "title": "Telecamera",
+                "body": "Una telecamera in un locale tiene le foto sulla scheda nell’apparecchio. Se accendete l’inoltro, le copie arrivano in WinProx. Solo un amministratore vede quelle copie.",
+                "items": [
+                    "Nel luogo, sull’unità, scegliete Telecamera. Il locale può avere uno schermo, una telecamera, o entrambi.",
+                    "Spento: le foto restano sulla scheda. Acceso: l’apparecchio può inviare copie se c’è il Wi-Fi.",
+                    "Le copie in WinProx restano 30 giorni. La scheda nell’apparecchio non viene toccata.",
+                    "Non nasce nessuna segnalazione né attività. Nessun riconoscimento e nessuna immagine in diretta."
+                ]
+            },
+            {
                 "title": "API e webhook",
                 "body": "L’API e i webhook permettono ad altro software di scambiare dati con WinProx. Un’API legge dati o li invia. Un webhook manda da solo un messaggio appena succede qualcosa.",
                 "items": [
@@ -519,6 +529,15 @@
                     "Uno schermo può anche misurare temperatura, umidità, CO₂ e qualità dell’aria. Si attiva per schermo nelle impostazioni dello schermo, su un locale o su un Clock Point.",
                     "Le misure restano nella vostra organizzazione. Non nasce nessuna segnalazione né attività. La schermata iniziale chiede attenzione se un valore esce dalla fascia o se lo schermo non invia più nulla.",
                     "Stessa rete dello schermo orologio: Wi‑Fi e HTTPS."
+                ]
+            },
+            {
+                "title": "Telecamera (opzionale)",
+                "items": [
+                    "Una telecamera appartiene a un locale. Il collegamento usa un codice usa e getta. La chiave va solo all’apparecchio.",
+                    "Le foto restano sulla scheda nell’apparecchio. Solo un amministratore accende l’inoltro verso WinProx.",
+                    "Le copie stanno in un posto chiuso. Un collaboratore non le vede. Dopo il periodo di conservazione spariscono. WinProx non cancella la scheda.",
+                    "Stessa rete dello schermo: Wi‑Fi e HTTPS. Non nasce nessuna segnalazione né attività."
                 ]
             },
             {

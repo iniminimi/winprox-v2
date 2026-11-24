@@ -827,6 +827,20 @@ stuurt events; WinProx zet die om in workflow.
 
 ---
 
+## 5e. Camera
+
+Een camera hoort bij een **unit**, los van het scherm. Een lokaal kan een scherm hebben, een camera, of allebei. De firmware van de XIAO hoort niet bij deze laag.
+
+- Op de locatie, bij de unit: knop **Camera**. Alleen een beheerder. Checkmate ziet de pagina niet (`cameras.show` staat buiten de Checkmate-whitelist).
+- Foto’s blijven op de micro-SD in het toestel. **Doorsturen** uit = geen kopie in WinProx. Aan = het toestel mag JPEG/PNG/WebP posten (max. `config/camera.php` `max_upload_kb`, standaard 8 MB).
+- Kopieën op de privé-disk `local`, pad `cameras/{tenant}/{camera}/…`. Geen publieke URL. Alleen de beheerder streamt ze via `cameras.photos.show`.
+- Bewaartermijn **30 dagen** (`camera.retention_days`), daarna `winprox:retention-prune`. Wissen van de unit of de tenant verwijdert de bestanden ook. De SD-kaart wordt niet aangeraakt.
+- Koppelen zoals een scherm: eenmalige code, bevestigen in beheer, sleutel `wpcam_…` alleen in de claim-status voor het toestel. Nooit in de beheer-HTML. Loskoppelen zet doorsturen uit en trekt de sleutel in. Al ontvangen foto’s blijven tot de bewaartermijn.
+- `POST /api/v1/cameras/claim`, `GET /api/v1/cameras/claim-status/{token}`, `GET /api/v1/cameras/status` en `POST /api/v1/cameras/photos` met `X-WinProx-Camera-Key`. Zie `docs/api/camera.md`.
+- Geen melding, geen taak, geen herkenning, geen livebeeld, geen mail, niet op het QR-portaal.
+
+---
+
 ## 5g. Time (prikklok) & RSZ-aanwezigheid (CIAO)
 
 **Status specificatie:** vastgelegd in `WINPROX_RULES.md` §4.5. **Implementatie golf 1:**

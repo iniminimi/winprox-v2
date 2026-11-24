@@ -2,6 +2,7 @@
 
 namespace App\Actions\Locations;
 
+use App\Actions\Cameras\DeleteCameraMediaForUnitAction;
 use App\Models\Unit;
 use App\Support\Audit\AuditRecorder;
 use App\Support\Units\UnitDeletionGuard;
@@ -9,7 +10,10 @@ use InvalidArgumentException;
 
 class DeleteUnitAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private DeleteCameraMediaForUnitAction $cameraMedia,
+    ) {}
 
     public function handle(Unit $unit, ?int $actorUserId = null): void
     {
@@ -17,6 +21,8 @@ class DeleteUnitAction
         if ($reason !== null) {
             throw new InvalidArgumentException($reason);
         }
+
+        $this->cameraMedia->handle($unit);
 
         $tenantId = (int) $unit->tenant_id;
         $id = (int) $unit->id;

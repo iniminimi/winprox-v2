@@ -1877,6 +1877,31 @@
                 }
             ]
         },
+        "cameras.show": {
+            "title": "Help — Camera",
+            "actions": [
+                {
+                    "label": "What is this screen?",
+                    "text": "A camera for this room. Photos stay on the card in the device. When you turn <strong>Forwarding</strong> on, the device may send copies when there is Wi-Fi. Only an administrator sees those copies. No issue and no task is created."
+                },
+                {
+                    "label": "Forwarding",
+                    "text": "<strong>Forwarding off</strong> leaves photos on the card only. <strong>Forwarding on</strong> lets the device send copies. You can turn it off again later. Photos that already arrived stay until they expire."
+                },
+                {
+                    "label": "Pairing",
+                    "text": "<strong>Generate pairing code</strong> makes a one-time code. Type it on the camera. The request appears here. Confirm only when you are sure it is your device. The key goes only to the device, not to this screen."
+                },
+                {
+                    "label": "Unlink",
+                    "text": "Unlink stops forwarding. This device can no longer send copies. Photos already in WinProx stay until they expire. The card in the device is left untouched."
+                },
+                {
+                    "label": "Photos",
+                    "text": "Only copies that arrived are shown here, newest first. Tap a photo to enlarge it. An empty list means the camera is keeping photos on the card. Copies stay for 30 days."
+                }
+            ]
+        },
         "iot.index": {
             "title": "Help — IoT Connect",
             "actions": [
@@ -1998,6 +2023,10 @@
                 {
                     "label": "Add a screen",
                     "text": "On the location, at the unit, choose <strong>Screen</strong>. There you attach a screen to that room and set it up.<br><br>That screen can:<br>• Show the QR of the room. It changes once an hour. A scan opens the same report page as the sticker on the door. A photo of the screen works until the next hour.<br>• Stay on during the hours you choose, and off outside them.<br>• Have sound on or off.<br>• Show a rest screen: photos, a clock or a black screen.<br>• Measure Sense, when you turn that on: temperature, humidity, CO₂ and air quality. You set the marks on the same page. The home screen asks for attention when a value leaves the band. No issue and no task is created.<br><br>You pair it with a code you type on the screen and confirm here. Unlink stops the device for this room."
+                },
+                {
+                    "label": "Add a camera",
+                    "text": "On the location, at the unit, choose <strong>Camera</strong>. That can sit next to a screen, or without a screen.<br><br>Photos stay on the card in the device. Turn <strong>Forwarding</strong> on if you want to see copies in WinProx. Only an administrator sees those photos. They stay for 30 days. WinProx does not wipe the card.<br><br>You pair it with a code you type on the camera and confirm here. Unlink stops forwarding."
                 }
             ]
         },

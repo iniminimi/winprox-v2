@@ -299,6 +299,16 @@
                 ]
             },
             {
+                "title": "Camera",
+                "body": "Een camera bij een lokaal bewaart de foto’s op de kaart in het toestel. Als u doorsturen aanzet, komen kopieën in WinProx. Alleen een beheerder ziet die kopieën.",
+                "items": [
+                    "Op de locatie, bij de unit, kiest u Camera. Het lokaal kan een scherm hebben, een camera, of allebei.",
+                    "Uit betekent: de foto’s blijven op de kaart. Aan betekent: het toestel mag kopieën sturen als er wifi is.",
+                    "Kopieën in WinProx blijven 30 dagen. De kaart in het toestel blijft onaangeroerd.",
+                    "Er komt geen melding en geen taak. Geen herkenning en geen livebeeld."
+                ]
+            },
+            {
                 "title": "API en webhooks",
                 "body": "De API en de webhooks laten andere software gegevens met WinProx uitwisselen. Een API haalt gegevens op of stuurt ze door. Een webhook stuurt zelf een bericht zodra er iets gebeurt.",
                 "items": [
@@ -519,6 +529,15 @@
                     "Een scherm kan ook temperatuur, vocht, CO₂ en luchtkwaliteit meten. U zet dat per scherm aan op Scherm instellingen, op een lokaal of op een Clock Point.",
                     "De metingen blijven in uw organisatie. Er ontstaat geen melding en geen taak. Het beginscherm vraagt aandacht als een waarde buiten de band valt of als het scherm niets meer stuurt.",
                     "Zelfde netwerk als het klokscherm: Wi‑Fi en HTTPS."
+                ]
+            },
+            {
+                "title": "Camera (optioneel)",
+                "items": [
+                    "Een camera hoort bij een lokaal. Koppelen gebeurt met een eenmalige code. De sleutel gaat alleen naar het toestel.",
+                    "Foto’s blijven op de kaart in het toestel. Doorsturen naar WinProx zet alleen een beheerder aan.",
+                    "Kopieën staan op een afgesloten plek. Een medewerker ziet ze niet. Na de bewaartermijn verdwijnen ze. De kaart zelf wist WinProx niet.",
+                    "Zelfde netwerk als het scherm: Wi‑Fi en HTTPS. Er ontstaat geen melding en geen taak."
                 ]
             },
             {

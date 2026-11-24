@@ -1,0 +1,58 @@
+{
+    "open": "Cámara",
+    "linked_pill": "Cámara",
+    "title": "Cámara de :name",
+    "subtitle": "Las fotos se quedan en la tarjeta del aparato. Solo un administrador ve las copias que llegan aquí.",
+    "back": "Volver a Unidades",
+    "forward": {
+        "title": "Reenvío",
+        "hint": "Desactivado: las fotos se quedan solo en la tarjeta. Activado: el aparato puede enviar copias si hay wifi.",
+        "on": "Reenvío activado",
+        "off": "Reenvío desactivado"
+    },
+    "code": {
+        "title": "Vincular",
+        "hint": "El aparato muestra una pantalla para escribir el código. Después confirma aquí de qué aparato se trata.",
+        "issue": "Generar código de vinculación",
+        "valid_until": "Válido hasta :time"
+    },
+    "linked": {
+        "title": "Cámara vinculada",
+        "device": "Aparato",
+        "paired_at": "Vinculada el",
+        "last_seen": "Vista por última vez",
+        "unlink": "Desvincular"
+    },
+    "pending": {
+        "title": "La cámara pide vincularse",
+        "confirm": "Vincular",
+        "deny": "Rechazar"
+    },
+    "photos": {
+        "title": "Fotos",
+        "empty": "Aún no hay copias. La cámara guarda las fotos en la tarjeta y solo las envía si el reenvío está activado y hay wifi.",
+        "older": "Las copias que están aquí se conservan 30 días. La tarjeta del aparato no se toca.",
+        "previous": "Fotos anteriores",
+        "next": "Fotos más recientes"
+    },
+    "unlink_modal": {
+        "title": "Desvincular la cámara",
+        "body": "El reenvío se detiene y este aparato ya no puede enviar copias. Las fotos que ya llegaron siguen hasta que caduquen.",
+        "confirm": "Desvincular"
+    },
+    "flash": {
+        "forwarding_on": "El reenvío está activado.",
+        "forwarding_off": "El reenvío está desactivado. Las fotos nuevas se quedan en la tarjeta.",
+        "issued": "Código de vinculación listo.",
+        "confirmed": "Cámara vinculada.",
+        "denied": "Solicitud rechazada.",
+        "unlinked": "Cámara desvinculada."
+    },
+    "errors": {
+        "unit_invalid": "Esta sala no pertenece a esta organización.",
+        "code_invalid": "Este código no es válido o ha caducado.",
+        "not_pending": "Esta solicitud ya no está abierta.",
+        "forwarding_off": "El reenvío está desactivado.",
+        "store": "La foto no se ha guardado."
+    }
+}

@@ -213,7 +213,10 @@
                 "team_documents": "Documenten voor uitvoerders: :count",
                 "unit_album_photos": "Foto's fotoalbum: :count",
                 "unit_album_recipients": "Ontvangers fotoalbum: :count",
-                "unit_album_sends": "Verzendingen fotoalbum: :count"
+                "unit_album_sends": "Verzendingen fotoalbum: :count",
+                "cameras": "Camera's: :count",
+                "camera_claims": "Camerakoppelingen: :count",
+                "camera_photos": "Camerafoto's: :count"
             }
         },
         "link_fallback": "Als de knop niet werkt, kopieer dan deze link:",

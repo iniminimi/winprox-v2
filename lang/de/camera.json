@@ -1,0 +1,58 @@
+{
+    "open": "Kamera",
+    "linked_pill": "Kamera",
+    "title": "Kamera für :name",
+    "subtitle": "Fotos bleiben auf der Karte im Gerät. Nur ein Administrator sieht Kopien, die hier ankommen.",
+    "back": "Zurück zu Units",
+    "forward": {
+        "title": "Weiterleiten",
+        "hint": "Aus: die Fotos bleiben nur auf der Karte. An: das Gerät darf Kopien senden, wenn WLAN da ist.",
+        "on": "Weiterleiten an",
+        "off": "Weiterleiten aus"
+    },
+    "code": {
+        "title": "Koppeln",
+        "hint": "Das Gerät zeigt einen Bildschirm, um den Code einzugeben. Danach bestätigen Sie hier, welches Gerät es ist.",
+        "issue": "Kopplungscode erzeugen",
+        "valid_until": "Gültig bis :time"
+    },
+    "linked": {
+        "title": "Gekoppelte Kamera",
+        "device": "Gerät",
+        "paired_at": "Gekoppelt am",
+        "last_seen": "Zuletzt gesehen",
+        "unlink": "Trennen"
+    },
+    "pending": {
+        "title": "Kamera möchte gekoppelt werden",
+        "confirm": "Koppeln",
+        "deny": "Ablehnen"
+    },
+    "photos": {
+        "title": "Fotos",
+        "empty": "Noch keine Kopien. Die Kamera behält Fotos auf der Karte und sendet sie nur, wenn Weiterleiten an ist und WLAN da ist.",
+        "older": "Kopien, die hier stehen, bleiben 30 Tage. Die Karte im Gerät bleibt unberührt.",
+        "previous": "Ältere Fotos",
+        "next": "Neuere Fotos"
+    },
+    "unlink_modal": {
+        "title": "Kamera trennen",
+        "body": "Weiterleiten stoppt und dieses Gerät kann keine Kopien mehr senden. Fotos, die schon da sind, bleiben bis sie ablaufen.",
+        "confirm": "Trennen"
+    },
+    "flash": {
+        "forwarding_on": "Weiterleiten ist an.",
+        "forwarding_off": "Weiterleiten ist aus. Neue Fotos bleiben auf der Karte.",
+        "issued": "Kopplungscode bereit.",
+        "confirmed": "Kamera gekoppelt.",
+        "denied": "Anfrage abgelehnt.",
+        "unlinked": "Kamera getrennt."
+    },
+    "errors": {
+        "unit_invalid": "Dieser Raum gehört nicht zu dieser Organisation.",
+        "code_invalid": "Dieser Code ist ungültig oder abgelaufen.",
+        "not_pending": "Diese Anfrage ist nicht mehr offen.",
+        "forwarding_off": "Weiterleiten ist aus.",
+        "store": "Das Foto wurde nicht gespeichert."
+    }
+}

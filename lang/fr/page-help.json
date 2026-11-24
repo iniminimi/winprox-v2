@@ -1881,6 +1881,31 @@
                 }
             ]
         },
+        "cameras.show": {
+            "title": "Aide — Caméra",
+            "actions": [
+                {
+                    "label": "Quel est cet écran ?",
+                    "text": "Une caméra pour ce local. Les photos restent sur la carte dans l’appareil. Si vous activez le <strong>transfert</strong>, l’appareil peut envoyer des copies lorsqu’il y a du Wi-Fi. Seul un administrateur voit ces copies. Aucun signalement ni tâche n’est créé."
+                },
+                {
+                    "label": "Transfert",
+                    "text": "<strong>Transfert désactivé</strong> laisse les photos uniquement sur la carte. <strong>Transfert activé</strong> permet à l’appareil d’envoyer des copies. Vous pouvez le couper plus tard. Les photos déjà arrivées restent jusqu’à leur expiration."
+                },
+                {
+                    "label": "Coupler",
+                    "text": "<strong>Générer un code de couplage</strong> crée un code à usage unique. Saisissez-le sur la caméra. La demande apparaît ici. Confirmez seulement si vous êtes sûr que c’est votre appareil. La clé va uniquement à l’appareil, pas sur cet écran."
+                },
+                {
+                    "label": "Détacher",
+                    "text": "Détacher arrête le transfert. Cet appareil ne peut plus envoyer de copies. Les photos déjà dans WinProx restent jusqu’à leur expiration. La carte dans l’appareil n’est pas touchée."
+                },
+                {
+                    "label": "Photos",
+                    "text": "Seules les copies arrivées figurent ici, les plus récentes d’abord. Touchez une photo pour l’agrandir. Une liste vide signifie que la caméra garde les photos sur la carte. Les copies restent 30 jours."
+                }
+            ]
+        },
         "iot.index": {
             "title": "Aide — IoT Connect",
             "actions": [
@@ -2002,6 +2027,10 @@
                 {
                     "label": "Ajouter un écran",
                     "text": "Sur le lieu, à l’unité, choisissez <strong>Écran</strong>. Vous y reliez un écran à ce local et vous le réglez.<br><br>Cet écran peut :<br>• Montrer le QR du local. Il change toutes les heures. Un scan ouvre la même page de signalement que l’autocollant sur la porte. Une photo de l’écran fonctionne jusqu’à l’heure suivante.<br>• Rester allumé aux heures que vous choisissez, et éteint en dehors.<br>• Avoir le son activé ou coupé.<br>• Montrer un écran de repos : des photos, une horloge ou un écran noir.<br>• Mesurer Sense, si vous l’activez : température, humidité, CO₂ et qualité de l’air. Vous réglez les repères sur la même page. L’accueil demande attention si une valeur sort de la bande. Aucun signalement ni tâche n’est créé.<br><br>Vous le reliez avec un code que vous saisissez sur l’écran et confirmez ici. Détacher arrête l’appareil pour ce local."
+                },
+                {
+                    "label": "Ajouter une caméra",
+                    "text": "Sur le lieu, à l’unité, choisissez <strong>Caméra</strong>. Elle peut accompagner un écran, ou être seule.<br><br>Les photos restent sur la carte dans l’appareil. Activez le <strong>transfert</strong> si vous voulez voir des copies dans WinProx. Seul un administrateur voit ces photos. Elles restent 30 jours. WinProx n’efface pas la carte.<br><br>Vous la couplez avec un code saisi sur la caméra et confirmé ici. Détacher arrête le transfert."
                 }
             ]
         },

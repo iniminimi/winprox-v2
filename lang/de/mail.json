@@ -213,7 +213,10 @@
                 "team_documents": "Dokumente für Ausführende: :count",
                 "unit_album_photos": "Fotoalbum-Fotos: :count",
                 "unit_album_recipients": "Fotoalbum-Empfänger: :count",
-                "unit_album_sends": "Fotoalbum-Versendungen: :count"
+                "unit_album_sends": "Fotoalbum-Versendungen: :count",
+                "cameras": "Kameras: :count",
+                "camera_claims": "Kamera-Kopplungen: :count",
+                "camera_photos": "Kamerafotos: :count"
             }
         },
         "link_fallback": "Wenn die Schaltfläche nicht funktioniert, kopieren Sie diesen Link:",

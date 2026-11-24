@@ -16,6 +16,8 @@ use App\Http\Controllers\Api\V1\UnitCheckController;
 use App\Http\Controllers\Api\V1\UnitMeasurementController;
 use App\Http\Controllers\Api\V1\PromoCampaignController;
 use App\Http\Controllers\Api\V1\ReservationController;
+use App\Http\Controllers\Api\V1\CameraClaimController;
+use App\Http\Controllers\Api\V1\CameraPhotoController;
 use App\Http\Controllers\Api\V1\ScreenClaimController;
 use App\Http\Controllers\Api\V1\SenseReadingController;
 use App\Http\Controllers\Api\V1\WorkerController;
@@ -47,6 +49,19 @@ Route::prefix('v1')->group(function () {
     Route::get('screens/claim-status/{claimToken}', [ScreenClaimController::class, 'show'])
         ->middleware('throttle:60,1')
         ->name('api.v1.screens.claim-status');
+
+    Route::post('cameras/claim', [CameraClaimController::class, 'store'])
+        ->middleware('throttle:10,1')
+        ->name('api.v1.cameras.claim');
+    Route::get('cameras/claim-status/{claimToken}', [CameraClaimController::class, 'show'])
+        ->middleware('throttle:60,1')
+        ->name('api.v1.cameras.claim-status');
+    Route::get('cameras/status', [CameraClaimController::class, 'status'])
+        ->middleware(['camera.device', 'throttle:60,1'])
+        ->name('api.v1.cameras.status');
+    Route::post('cameras/photos', [CameraPhotoController::class, 'store'])
+        ->middleware(['camera.device', 'throttle:30,1'])
+        ->name('api.v1.cameras.photos.store');
 
     Route::post('time/clock-displays/claim', [ClockDisplayController::class, 'claim'])
         ->middleware('throttle:10,1')

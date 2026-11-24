@@ -160,6 +160,9 @@
                             @if ($unit->screen?->isLinked())
                                 <span class="wp-pill wp-pill--done">{{ __('screen.pill') }}</span>
                             @endif
+                            @if ($unit->camera?->isLinked())
+                                <span class="wp-pill wp-pill--done">{{ __('camera.linked_pill') }}</span>
+                            @endif
                         </div>
                         <div class="wp-cluster">
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditUnit({{ $unit->id }})">{{ __('common.button.edit') }}</button>
@@ -172,6 +175,9 @@
                                     @disabled(! $canDelete)>{{ __('common.button.delete') }}</button>
                             @can('create', \App\Models\Screen::class)
                                 <a href="{{ route('screens.pair', $unit) }}" class="btn btn--ghost btn--sm">{{ __('screen.button') }}</a>
+                            @endcan
+                            @can('create', \App\Models\Camera::class)
+                                <a href="{{ route('cameras.show', $unit) }}" class="btn btn--ghost btn--sm">{{ __('camera.open') }}</a>
                             @endcan
                             <a href="{{ route('units.qr', $unit) }}" target="_blank" class="btn btn--ghost btn--sm">{{ __('locations.unit_qr') }}</a>
                             <button type="button" class="btn btn--ghost btn--sm" wire:click="openUnitQrPackModal({{ $unit->id }})">{{ __('locations.unit_qr_pack.button') }}</button>

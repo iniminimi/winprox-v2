@@ -213,7 +213,10 @@
                 "team_documents": "Documents for workers: :count",
                 "unit_album_photos": "Photo album photos: :count",
                 "unit_album_recipients": "Photo album recipients: :count",
-                "unit_album_sends": "Photo album sends: :count"
+                "unit_album_sends": "Photo album sends: :count",
+                "cameras": "Cameras: :count",
+                "camera_claims": "Camera pairings: :count",
+                "camera_photos": "Camera photos: :count"
             }
         },
         "link_fallback": "If the button does not work, copy this link:",

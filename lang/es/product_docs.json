@@ -299,6 +299,16 @@
                 ]
             },
             {
+                "title": "Cámara",
+                "body": "Una cámara en una sala guarda las fotos en la tarjeta del aparato. Si activa el reenvío, llegan copias a WinProx. Solo un administrador ve esas copias.",
+                "items": [
+                    "En el lugar, en la unidad, elige Cámara. La sala puede tener una pantalla, una cámara, o las dos.",
+                    "Desactivado: las fotos se quedan en la tarjeta. Activado: el aparato puede enviar copias si hay wifi.",
+                    "Las copias en WinProx se conservan 30 días. La tarjeta del aparato no se toca.",
+                    "No se crea ningún aviso ni tarea. Sin reconocimiento y sin imagen en directo."
+                ]
+            },
+            {
                 "title": "API y webhooks",
                 "body": "La API y los webhooks permiten que otro software intercambie datos con WinProx. Una API obtiene datos o los envía. Un webhook manda un mensaje por sí solo en cuanto ocurre algo.",
                 "items": [
@@ -519,6 +529,15 @@
                     "Una pantalla también puede medir temperatura, humedad, CO₂ y calidad del aire. Lo activa por pantalla en los ajustes de la pantalla, en una sala o en un Clock Point.",
                     "Las mediciones quedan en su organización. No se crea ningún aviso ni tarea. El inicio pide atención si un valor sale de la banda o si la pantalla deja de enviar.",
                     "La misma red que la pantalla de reloj: Wi‑Fi y HTTPS."
+                ]
+            },
+            {
+                "title": "Cámara (opcional)",
+                "items": [
+                    "Una cámara pertenece a una sala. La vinculación usa un código de un solo uso. La clave va solo al aparato.",
+                    "Las fotos se quedan en la tarjeta del aparato. Solo un administrador activa el reenvío a WinProx.",
+                    "Las copias están en un lugar cerrado. Un empleado no las ve. Tras el plazo de conservación desaparecen. WinProx no borra la tarjeta.",
+                    "La misma red que la pantalla: Wi‑Fi y HTTPS. No se crea ningún aviso ni tarea."
                 ]
             },
             {

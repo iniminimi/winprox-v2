@@ -299,6 +299,16 @@
                 ]
             },
             {
+                "title": "Camera",
+                "body": "A camera in a room keeps the photos on the card in the device. When you turn forwarding on, copies arrive in WinProx. Only an administrator sees those copies.",
+                "items": [
+                    "On the location, at the unit, you choose Camera. The room can have a screen, a camera, or both.",
+                    "Off means the photos stay on the card. On means the device may send copies when there is Wi-Fi.",
+                    "Copies in WinProx stay for 30 days. The card in the device is left untouched.",
+                    "No issue and no task is created. No recognition and no live view."
+                ]
+            },
+            {
                 "title": "API and webhooks",
                 "body": "The API and webhooks let other software exchange data with WinProx. An API fetches data or sends it in. A webhook sends a message on its own as soon as something happens.",
                 "items": [
@@ -519,6 +529,15 @@
                     "A screen can also measure temperature, humidity, CO₂ and air quality. You turn that on per screen in Screen settings, on a room or on a Clock Point.",
                     "The readings stay in your organisation. No issue and no task is created. The home screen asks for attention when a value leaves the band or the screen stops sending.",
                     "Same network as the clock display: Wi‑Fi and HTTPS."
+                ]
+            },
+            {
+                "title": "Camera (optional)",
+                "items": [
+                    "A camera belongs to a room. Pairing uses a one-time code. The key goes only to the device.",
+                    "Photos stay on the card in the device. Only an administrator turns forwarding to WinProx on.",
+                    "Copies sit in a closed place. A staff member does not see them. After the retention period they disappear. WinProx does not wipe the card.",
+                    "Same network as the screen: Wi‑Fi and HTTPS. No issue and no task is created."
                 ]
             },
             {

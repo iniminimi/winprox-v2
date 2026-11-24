@@ -1877,6 +1877,31 @@
                 }
             ]
         },
+        "cameras.show": {
+            "title": "Hilfe — Kamera",
+            "actions": [
+                {
+                    "label": "Was ist dieser Bildschirm?",
+                    "text": "Eine Kamera für diesen Raum. Die Fotos bleiben auf der Karte im Gerät. Wenn Sie <strong>Weiterleiten</strong> einschalten, darf das Gerät Kopien senden, sobald WLAN da ist. Nur ein Administrator sieht diese Kopien. Es entsteht keine Meldung und keine Aufgabe."
+                },
+                {
+                    "label": "Weiterleiten",
+                    "text": "<strong>Weiterleiten aus</strong> lässt die Fotos nur auf der Karte. <strong>Weiterleiten an</strong> erlaubt dem Gerät, Kopien zu senden. Sie können es später wieder ausschalten. Fotos, die schon da sind, bleiben bis sie ablaufen."
+                },
+                {
+                    "label": "Koppeln",
+                    "text": "<strong>Kopplungscode erzeugen</strong> macht einen einmaligen Code. Tippen Sie ihn auf der Kamera ein. Die Anfrage erscheint hier. Bestätigen Sie erst, wenn Sie sicher sind, dass es Ihr Gerät ist. Der Schlüssel geht nur an das Gerät, nicht auf diesen Bildschirm."
+                },
+                {
+                    "label": "Trennen",
+                    "text": "Trennen stoppt das Weiterleiten. Dieses Gerät kann keine Kopien mehr senden. Fotos, die schon in WinProx sind, bleiben bis sie ablaufen. Die Karte im Gerät bleibt unberührt."
+                },
+                {
+                    "label": "Fotos",
+                    "text": "Hier stehen nur Kopien, die angekommen sind, die neueste zuerst. Tippen Sie ein Foto an, um es größer zu sehen. Eine leere Liste heißt: die Kamera behält die Fotos auf der Karte. Kopien bleiben 30 Tage."
+                }
+            ]
+        },
         "iot.index": {
             "title": "Hilfe — IoT Connect",
             "actions": [
@@ -1998,6 +2023,10 @@
                 {
                     "label": "Ein Display hinzufügen",
                     "text": "Am Standort, bei der Unit, wählen Sie <strong>Display</strong>. Dort koppeln Sie ein Display an diesen Raum und stellen es ein.<br><br>Dieses Display kann:<br>• Den QR des Raums zeigen. Er wechselt einmal pro Stunde. Ein Scan öffnet dieselbe Meldeseite wie der Aufkleber an der Tür. Ein Foto des Displays gilt bis zur nächsten Stunde.<br>• In den Stunden an sein, die Sie wählen, und sonst aus.<br>• Ton ein oder aus haben.<br>• Einen Ruhebildschirm zeigen: Fotos, eine Uhr oder ein schwarzes Display.<br>• Sense messen, wenn Sie das einschalten: Temperatur, Feuchte, CO₂ und Luftqualität. Die Grenzen stellen Sie auf derselben Seite ein. Der Startbildschirm bittet um Aufmerksamkeit, wenn ein Wert außerhalb der Spanne liegt. Es entsteht keine Meldung und keine Aufgabe.<br><br>Sie koppeln es mit einem Code, den Sie auf dem Display eintippen und hier bestätigen. Trennen stoppt das Gerät für diesen Raum."
+                },
+                {
+                    "label": "Eine Kamera hinzufügen",
+                    "text": "Am Standort, bei der Unit, wählen Sie <strong>Kamera</strong>. Das kann neben einem Display stehen, oder ohne Display.<br><br>Die Fotos bleiben auf der Karte im Gerät. Schalten Sie <strong>Weiterleiten</strong> ein, wenn Sie Kopien in WinProx sehen wollen. Nur ein Administrator sieht diese Fotos. Sie bleiben 30 Tage. WinProx löscht die Karte nicht.<br><br>Sie koppeln sie mit einem Code, den Sie auf der Kamera eintippen und hier bestätigen. Trennen stoppt das Weiterleiten."
                 }
             ]
         },

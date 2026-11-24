@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Actions\Retention\PruneAbsenceRequestPhotosAction;
+use App\Actions\Retention\PruneCameraPhotosAction;
 use App\Actions\Retention\PruneClosedIssueMediaAction;
 use App\Actions\Retention\PruneInactiveTenantFacilityDataAction;
 use App\Actions\Retention\PrunePresenceSubmissionsAction;
@@ -23,6 +24,7 @@ class RetentionPruneCommand extends Command
         PruneRosterRestorePointsAction $pruneRosterRestorePoints,
         PruneUnitAlbumPhotosAction $pruneUnitAlbumPhotos,
         PruneAbsenceRequestPhotosAction $pruneAbsencePhotos,
+        PruneCameraPhotosAction $pruneCameraPhotos,
     ): int {
         $dryRun = (bool) $this->option('dry-run');
 
@@ -59,6 +61,14 @@ class RetentionPruneCommand extends Command
             'Afwezigheidsfoto\'s: %d gescand, %d %s',
             $absencePhotos['scanned'],
             $absencePhotos['removed'],
+            $dryRun ? '(zou verwijderen)' : 'verwijderd',
+        ));
+
+        $cameraPhotos = $pruneCameraPhotos->handle($dryRun);
+        $this->info(sprintf(
+            'Camerafoto\'s: %d gescand, %d %s',
+            $cameraPhotos['scanned'],
+            $cameraPhotos['removed'],
             $dryRun ? '(zou verwijderen)' : 'verwijderd',
         ));
 

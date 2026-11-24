@@ -299,6 +299,16 @@
                 ]
             },
             {
+                "title": "Kamera",
+                "body": "Eine Kamera in einem Raum behält die Fotos auf der Karte im Gerät. Wenn Sie Weiterleiten einschalten, kommen Kopien in WinProx an. Nur ein Administrator sieht diese Kopien.",
+                "items": [
+                    "Am Standort, bei der Unit, wählen Sie Kamera. Der Raum kann ein Display haben, eine Kamera, oder beides.",
+                    "Aus heißt: die Fotos bleiben auf der Karte. An heißt: das Gerät darf Kopien senden, wenn WLAN da ist.",
+                    "Kopien in WinProx bleiben 30 Tage. Die Karte im Gerät bleibt unberührt.",
+                    "Es entsteht keine Meldung und keine Aufgabe. Keine Erkennung und kein Livebild."
+                ]
+            },
+            {
                 "title": "API und Webhooks",
                 "body": "Die API und die Webhooks lassen andere Software Daten mit WinProx austauschen. Eine API holt Daten oder schickt sie. Ein Webhook sendet von selbst eine Nachricht, sobald etwas geschieht.",
                 "items": [
@@ -519,6 +529,15 @@
                     "Ein Display kann auch Temperatur, Feuchte, CO₂ und Luftqualität messen. Sie schalten das je Display in den Display-Einstellungen ein, an einem Raum oder an einem Clock Point.",
                     "Die Messungen bleiben in Ihrer Organisation. Es entsteht keine Meldung und keine Aufgabe. Der Startbildschirm bittet um Aufmerksamkeit, wenn ein Wert außerhalb der Spanne liegt oder das Display nichts mehr sendet.",
                     "Gleiches Netz wie das Uhrdisplay: WLAN und HTTPS."
+                ]
+            },
+            {
+                "title": "Kamera (optional)",
+                "items": [
+                    "Eine Kamera gehört zu einem Raum. Das Koppeln geschieht mit einem einmaligen Code. Der Schlüssel geht nur an das Gerät.",
+                    "Fotos bleiben auf der Karte im Gerät. Nur ein Administrator schaltet das Weiterleiten nach WinProx ein.",
+                    "Kopien liegen an einem geschlossenen Ort. Ein Mitarbeiter sieht sie nicht. Nach der Aufbewahrungsfrist verschwinden sie. WinProx löscht die Karte nicht.",
+                    "Gleiches Netz wie das Display: WLAN und HTTPS. Es entsteht keine Meldung und keine Aufgabe."
                 ]
             },
             {

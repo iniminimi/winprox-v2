@@ -4,6 +4,7 @@ use App\Http\Middleware\ApplySupportTenantContext;
 use App\Actions\Errors\SendErrorAlertAction;
 use App\Support\Errors\ErrorReference;
 use App\Support\ResolveAppLocale;
+use App\Http\Middleware\AuthenticateCamera;
 use App\Http\Middleware\AuthenticateClockDisplay;
 use App\Http\Middleware\AuthenticateIotGateway;
 use App\Http\Middleware\AuthenticateSensePoint;
@@ -56,6 +57,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'api.access' => CheckApiAccess::class,
             'iot.gateway' => AuthenticateIotGateway::class,
             'sense.point' => AuthenticateSensePoint::class,
+            'camera.device' => AuthenticateCamera::class,
             'clock.display' => AuthenticateClockDisplay::class,
             'idempotency' => EnsureRequestIdempotency::class,
         ]);
