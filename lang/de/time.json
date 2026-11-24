@@ -428,7 +428,9 @@
         "history": {
             "title": "Kopplungsverlauf",
             "hint": "Welches Display (Aufkleber-Seriennummer oder MAC) wann an diesen Clock Point gekoppelt wurde.",
-            "current": "Aktuell"
+            "current": "Aktuell",
+            "paired_at": "Gekoppelt am",
+            "status": "Status"
         }
     },
     "duration": {

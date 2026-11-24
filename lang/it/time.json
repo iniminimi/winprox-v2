@@ -428,7 +428,9 @@
         "history": {
             "title": "Cronologia collegamenti",
             "hint": "Quale display (numero di serie adesivo o MAC) è stato collegato a questo clock point e quando.",
-            "current": "Attuale"
+            "current": "Attuale",
+            "paired_at": "Associato il",
+            "status": "Stato"
         }
     },
     "duration": {

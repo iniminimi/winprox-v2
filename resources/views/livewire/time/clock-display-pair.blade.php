@@ -253,20 +253,41 @@
             <div class="wp-settings-subblock wp-stack-tight">
                 <h3 class="wp-settings-subblock-title">{{ __('time.clock_displays.history.title') }}</h3>
                 <p class="wp-muted wp-text-sm">{{ __('time.clock_displays.history.hint') }}</p>
-                <ul class="wp-stack-tight">
-                    @foreach ($pairHistory as $entry)
-                        <li class="wp-issue-card-meta">
-                            <strong>{{ $historySerials[$entry->id] ?? \App\Support\Ops\HardwareMac::formatForDisplay($entry->device_hint) }}</strong>
-                            @if (! empty($historySerials[$entry->id]) && $entry->device_hint)
-                                <span class="wp-muted">({{ \App\Support\Ops\HardwareMac::formatForDisplay($entry->device_hint) }})</span>
-                            @endif
-                            — {{ $entry->confirmed_at?->format('d/m/Y H:i') }}
-                            @if ($point?->hasLinkedDisplay() && $point->display_device_hint === $entry->device_hint && $loop->first)
-                                <span class="wp-pill wp-pill--done">{{ __('time.clock_displays.history.current') }}</span>
-                            @endif
-                        </li>
-                    @endforeach
-                </ul>
+                <div class="wp-clock-pair-history-wrap">
+                    <table class="wp-clock-pair-history">
+                        <thead>
+                            <tr>
+                                <th scope="col">{{ __('time.clock_displays.linked.serial') }}</th>
+                                <th scope="col">{{ __('time.clock_displays.linked.mac') }}</th>
+                                <th scope="col">{{ __('time.clock_displays.history.paired_at') }}</th>
+                                <th scope="col">{{ __('time.clock_displays.history.status') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($pairHistory as $entry)
+                                @php
+                                    $serial = $historySerials[$entry->id] ?? null;
+                                    $mac = \App\Support\Ops\HardwareMac::formatForDisplay($entry->device_hint);
+                                    $isCurrent = $point?->hasLinkedDisplay()
+                                        && $point->display_device_hint === $entry->device_hint
+                                        && $loop->first;
+                                @endphp
+                                <tr @class(['wp-clock-pair-history__row--current' => $isCurrent])>
+                                    <td>{{ $serial ?: '—' }}</td>
+                                    <td>{{ $mac ?: '—' }}</td>
+                                    <td>{{ $entry->confirmed_at?->format('d/m/Y H:i') ?? '—' }}</td>
+                                    <td>
+                                        @if ($isCurrent)
+                                            <span class="wp-pill wp-pill--done">{{ __('time.clock_displays.history.current') }}</span>
+                                        @else
+                                            <span class="wp-muted">—</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
         @endif
     </x-wp-settings-section>

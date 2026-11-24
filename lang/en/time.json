@@ -428,7 +428,9 @@
         "history": {
             "title": "Pairing history",
             "hint": "Which display (sticker serial or MAC) was paired to this clock point and when.",
-            "current": "Current"
+            "current": "Current",
+            "paired_at": "Paired at",
+            "status": "Status"
         }
     },
     "duration": {

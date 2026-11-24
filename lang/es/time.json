@@ -428,7 +428,9 @@
         "history": {
             "title": "Historial de vinculación",
             "hint": "Qué pantalla (número de serie de pegatina o MAC) se vinculó a este clock point y cuándo.",
-            "current": "Actual"
+            "current": "Actual",
+            "paired_at": "Vinculado el",
+            "status": "Estado"
         }
     },
     "duration": {

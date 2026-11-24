@@ -428,7 +428,9 @@
         "history": {
             "title": "Koppelgeschiedenis",
             "hint": "Welk scherm (sticker-serienummer of MAC) wanneer aan dit clock point gekoppeld werd.",
-            "current": "Huidig"
+            "current": "Huidig",
+            "paired_at": "Gekoppeld op",
+            "status": "Status"
         }
     },
     "duration": {
