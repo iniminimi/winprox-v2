@@ -337,7 +337,8 @@
             "paired_at": "Activa desde",
             "last_seen": "vista por última vez",
             "unlink": "Desvincular pantalla",
-            "serial": "Número de serie"
+            "serial": "Número de serie",
+            "mac": "MAC"
         },
         "code": {
             "title": "Código de vinculación",
@@ -426,7 +427,7 @@
         },
         "history": {
             "title": "Historial de vinculación",
-            "hint": "Qué pantalla (número de serie) se vinculó a este punto de fichaje y cuándo.",
+            "hint": "Qué pantalla (número de serie de pegatina o MAC) se vinculó a este clock point y cuándo.",
             "current": "Actual"
         }
     },

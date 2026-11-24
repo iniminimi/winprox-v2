@@ -1,0 +1,93 @@
+{
+    "portal": {
+        "title": "WinProx OPS",
+        "subtitle": "Hardware inventory: scan serial numbers and link MAC addresses.",
+        "qr_title": "OPS QR for your phone",
+        "qr_hint": "Scan this code with your phone to register devices without retyping.",
+        "qr_phone": "Superusers only. Sign in on the phone inside this portal.",
+        "login_title": "Sign in",
+        "login_hint": "Platform superusers only. This is not tenant admin.",
+        "login_submit": "Sign in",
+        "logout": "Sign out",
+        "tab_register": "New device",
+        "tab_mac": "Link MAC",
+        "mac_submit": "Save MAC"
+    },
+    "devices": {
+        "nav": "Devices",
+        "title": "Devices",
+        "subtitle": "WinProx OPS inventory of clock displays and other hardware.",
+        "search": "Search",
+        "search_placeholder": "S/N, MAC, brand, model, SKU…",
+        "filter_status": "Status",
+        "filter_type": "Type",
+        "filter_tenant": "Organisation",
+        "filter_all": "All",
+        "filter_no_tenant": "No organisation",
+        "filter_without_mac": "Without MAC only",
+        "empty": "No devices registered yet.",
+        "register": "Register device",
+        "register_title": "New device",
+        "register_hint": "Scan or type the sticker serial number on receipt.",
+        "register_submit": "Register",
+        "edit": "Edit",
+        "edit_title": "Edit device",
+        "save": "Save",
+        "mac_missing": "no MAC",
+        "mac_hint": "MAC without colons, as the display sends when pairing (12 hex chars). Once set, S/N↔MAC stays fixed.",
+        "no_tenant": "In stock",
+        "scanned_at": "scanned"
+    },
+    "fields": {
+        "serial_number": "Serial number (S/N)",
+        "brand": "Brand",
+        "type": "Type",
+        "model": "Model",
+        "sku": "SKU",
+        "sku_optional": "Optional",
+        "mac": "MAC",
+        "mac_placeholder": "AABBCCDDEEFF",
+        "status": "Status",
+        "condition": "Condition",
+        "tenant": "Organisation",
+        "purchase_ref": "Purchase reference",
+        "notes": "Notes"
+    },
+    "device_type": {
+        "clock_display": "Clock display"
+    },
+    "device_status": {
+        "in_stock": "In stock",
+        "assigned": "Assigned",
+        "in_use": "In use",
+        "returned": "Returned",
+        "retired": "Retired",
+        "lost": "Lost"
+    },
+    "device_condition": {
+        "new": "New",
+        "refurbished": "Refurbished",
+        "faulty": "Faulty"
+    },
+    "scanner": {
+        "open": "Scan barcode",
+        "manual_only": "Camera scan unavailable; type the serial number.",
+        "unsupported": "This browser cannot scan barcodes. Type it manually.",
+        "denied": "Camera access denied. Type manually or allow access."
+    },
+    "flash": {
+        "registered": "Device :serial has been registered.",
+        "updated": "Device updated.",
+        "mac_linked": "MAC :mac linked to :serial."
+    },
+    "errors": {
+        "serial_already_registered": "This serial number already exists.",
+        "mac_invalid": "Invalid MAC address (expected 12 hex characters).",
+        "mac_already_linked": "This MAC already belongs to another device.",
+        "mac_already_set": "This device already has a MAC; it cannot change.",
+        "device_not_found": "Device not found.",
+        "tenant_not_found": "Organisation not found.",
+        "auth_failed": "Sign-in failed.",
+        "not_superuser": "Only platform superusers may use WinProx OPS."
+    }
+}

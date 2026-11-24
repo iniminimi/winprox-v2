@@ -337,7 +337,8 @@
             "paired_at": "Aktiv seit",
             "last_seen": "zuletzt gesehen",
             "unlink": "Display trennen",
-            "serial": "Seriennummer"
+            "serial": "Seriennummer",
+            "mac": "MAC"
         },
         "code": {
             "title": "Kopplungscode",
@@ -426,7 +427,7 @@
         },
         "history": {
             "title": "Kopplungsverlauf",
-            "hint": "Welcher Bildschirm (Seriennummer) wann mit diesem Clock Point gekoppelt wurde.",
+            "hint": "Welches Display (Aufkleber-Seriennummer oder MAC) wann an diesen Clock Point gekoppelt wurde.",
             "current": "Aktuell"
         }
     },

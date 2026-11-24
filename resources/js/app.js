@@ -16,4 +16,5 @@ import './welcome-text-reveal';
 import './reservation-default-window';
 import './wp-roster-sheet';
 import './wp-portal-qr-scanner';
+import './wp-ops-barcode-scanner';
 import './wp-portal-passkey';

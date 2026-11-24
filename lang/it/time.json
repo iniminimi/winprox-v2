@@ -337,7 +337,8 @@
             "paired_at": "Attivo dal",
             "last_seen": "visto l'ultima volta",
             "unlink": "Scollega schermo",
-            "serial": "Numero di serie"
+            "serial": "Numero di serie",
+            "mac": "MAC"
         },
         "code": {
             "title": "Codice di collegamento",
@@ -426,7 +427,7 @@
         },
         "history": {
             "title": "Cronologia collegamenti",
-            "hint": "Quale schermo (numero di serie) è stato collegato a questo Clock Point e quando.",
+            "hint": "Quale display (numero di serie adesivo o MAC) è stato collegato a questo clock point e quando.",
             "current": "Attuale"
         }
     },

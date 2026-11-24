@@ -110,6 +110,7 @@ use App\Livewire\Pages\WorkersIndex;
 use App\Livewire\Platform\Audit as PlatformAudit;
 use App\Livewire\Platform\ContactMessages;
 use App\Livewire\Platform\Dashboard as PlatformDashboard;
+use App\Livewire\Platform\Devices as PlatformDevices;
 use App\Livewire\Platform\EmailUnsubscribes;
 use App\Livewire\Platform\Help as PlatformHelp;
 use App\Livewire\Platform\ManualScreenshots as PlatformManualScreenshots;
@@ -121,6 +122,7 @@ use App\Livewire\Platform\Tenants as PlatformTenants;
 use App\Livewire\Platform\TranslationSync as PlatformTranslationSync;
 use App\Livewire\Platform\Users as PlatformUsers;
 use App\Livewire\Public\ConfirmQrReportEmail;
+use App\Livewire\Public\OpsPortal;
 use App\Livewire\Public\ReservationConfirm;
 use App\Livewire\Public\ReservationManage;
 use App\Livewire\Public\TimePortal;
@@ -249,6 +251,9 @@ Route::get('/cp/{token}', TimePortal::class)
     ->where('token', '[a-z0-9]{20,64}')
     ->middleware('worker.phone')
     ->name('public.time-portal.cp');
+Route::get('/ops/{token}', OpsPortal::class)
+    ->where('token', '[a-z0-9]{20,64}')
+    ->name('public.ops-portal');
 Route::get('/team-documents/{teamDocument}/file', TeamDocumentFileController::class)
     ->whereNumber('teamDocument')
     ->middleware('throttle:60,1')
@@ -430,6 +435,9 @@ Route::middleware(['auth', 'backoffice.desktop'])->group(function () {
     Route::get('/platform/users', PlatformUsers::class)
         ->middleware('superuser')
         ->name('platform.users');
+    Route::get('/platform/devices', PlatformDevices::class)
+        ->middleware('superuser')
+        ->name('platform.devices');
     Route::get('/platform/audit', PlatformAudit::class)
         ->middleware('superuser')
         ->name('platform.audit');

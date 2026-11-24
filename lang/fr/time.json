@@ -337,7 +337,8 @@
             "paired_at": "Actif depuis",
             "last_seen": "vu pour la dernière fois",
             "unlink": "Dissocier l'écran",
-            "serial": "Numéro de série"
+            "serial": "Numéro de série",
+            "mac": "MAC"
         },
         "code": {
             "title": "Code d'association",
@@ -426,7 +427,7 @@
         },
         "history": {
             "title": "Historique des liaisons",
-            "hint": "Quel écran (numéro de série) a été lié à ce point d’horloge et quand.",
+            "hint": "Quel écran (numéro de série autocollant ou MAC) a été lié à ce point d’horloge et quand.",
             "current": "Actuel"
         }
     },

@@ -2,6 +2,7 @@
 
 namespace App\Actions\Time;
 
+use App\Actions\Ops\SyncHardwareDeviceOnDisplayClaimAction;
 use App\Enums\ClockDisplayClaimStatus;
 use App\Models\ClockDisplayClaim;
 use App\Models\ClockPoint;
@@ -22,7 +23,10 @@ use InvalidArgumentException;
  */
 class ConfirmClockDisplayClaimAction
 {
-    public function __construct(private AuditRecorder $audit) {}
+    public function __construct(
+        private AuditRecorder $audit,
+        private SyncHardwareDeviceOnDisplayClaimAction $syncHardwareDevice,
+    ) {}
 
     public function handle(ClockDisplayClaim $claim, int $tenantId, ?int $actorUserId): ClockDisplayClaim
     {
@@ -105,6 +109,12 @@ class ConfirmClockDisplayClaimAction
                     'ip' => $locked->ip,
                     'replaced_linked_display' => $wasLinked,
                 ],
+            );
+
+            $this->syncHardwareDevice->handle(
+                $lockedPoint->fresh(),
+                $locked->device_hint,
+                $actorUserId,
             );
 
             return $locked;

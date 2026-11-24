@@ -337,7 +337,8 @@
             "paired_at": "Active since",
             "last_seen": "last seen",
             "unlink": "Unlink display",
-            "serial": "Serial number"
+            "serial": "Serial number",
+            "mac": "MAC"
         },
         "code": {
             "title": "Pairing code",
@@ -426,7 +427,7 @@
         },
         "history": {
             "title": "Pairing history",
-            "hint": "Which screen (serial number) was paired to this clock point and when.",
+            "hint": "Which display (sticker serial or MAC) was paired to this clock point and when.",
             "current": "Current"
         }
     },

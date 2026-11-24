@@ -103,7 +103,7 @@
                 "items": [
                     "Ein- und ausstempeln, den eigenen veröffentlichten Dienstplan sehen, die eigenen Stunden sehen, Urlaub, Ausgleich, Krankheit oder Sonstige beantragen.",
                     "Aufgaben erledigen, eine Inspektionsrunde folgen und einen Arbeitsbesuch starten, wenn GPS an ist.",
-                    "Ein optionales Stempeldisplay zeigt einen QR-Code, der von selbst wechselt. Sie koppeln das Display mit einem Einmalcode und einer Bestätigung. Die Seriennummer des Displays wird bei der Kopplung mitgesendet und gespeichert.",
+                    "Ein optionales Stempeldisplay zeigt einen QR-Code, der von selbst wechselt. Sie koppeln das Display mit einem Einmalcode und einer Bestätigung. Die Display-Seriennummer wird mit der Kopplung gesendet und gespeichert. Steht das Gerät im Inventar, sehen Sie die Aufkleber-Seriennummer; sonst die technische MAC.",
                     "Sie wählen, wann das Display an ist, zum Beispiel von 06:00 bis 19:00. Außerhalb kann es aus bleiben oder einen Ruhebildschirm zeigen: Fotos, eine Zeigeruhr, eine Flip-Uhr oder einen schwarzen Bildschirm. Den Ton schalten Sie pro Display ein oder aus.",
                     "Ohne Smartphone: Display antippen, den Vornamen über Buchstaben suchen; bei offener Schicht Pause oder Ausstempeln wählen, dann die persönliche vierstellige PIN. Wer noch keine PIN hat, wählt sie vor Ort, zweimal. Unter Ausstempeln ändern Sie diese PIN: zuerst die aktuelle, dann die neue zweimal.",
                     "Nach zwei Fehlversuchen ist dieser Ausführende eine Minute gesperrt."

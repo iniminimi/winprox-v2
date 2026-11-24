@@ -1,0 +1,93 @@
+{
+    "portal": {
+        "title": "WinProx OPS",
+        "subtitle": "Hardware inventaris: scan serienummers en koppel MAC-adressen.",
+        "qr_title": "OPS-QR voor de gsm",
+        "qr_hint": "Scan deze code met je telefoon om toestellen te registreren zonder overtypen.",
+        "qr_phone": "Alleen voor superusers. Login gebeurt op de telefoon in dit portaal.",
+        "login_title": "Aanmelden",
+        "login_hint": "Alleen platform-superusers. Dit is geen tenant-beheer.",
+        "login_submit": "Aanmelden",
+        "logout": "Afmelden",
+        "tab_register": "Nieuw toestel",
+        "tab_mac": "MAC koppelen",
+        "mac_submit": "MAC opslaan"
+    },
+    "devices": {
+        "nav": "Toestellen",
+        "title": "Toestellen",
+        "subtitle": "WinProx OPS-inventaris van klokschermen en andere hardware.",
+        "search": "Zoeken",
+        "search_placeholder": "S/N, MAC, merk, model, SKU…",
+        "filter_status": "Status",
+        "filter_type": "Type",
+        "filter_tenant": "Organisatie",
+        "filter_all": "Alles",
+        "filter_no_tenant": "Geen organisatie",
+        "filter_without_mac": "Alleen zonder MAC",
+        "empty": "Nog geen toestellen geregistreerd.",
+        "register": "Toestel registreren",
+        "register_title": "Nieuw toestel",
+        "register_hint": "Scan of typ het sticker-serienummer bij ontvangst.",
+        "register_submit": "Registreren",
+        "edit": "Bewerken",
+        "edit_title": "Toestel bewerken",
+        "save": "Opslaan",
+        "mac_missing": "geen MAC",
+        "mac_hint": "MAC zonder dubbele punten, zoals het scherm bij koppelen stuurt (12 hex-tekens). Eenmaal gezet blijft S/N↔MAC vast.",
+        "no_tenant": "Op voorraad",
+        "scanned_at": "gescand"
+    },
+    "fields": {
+        "serial_number": "Serienummer (S/N)",
+        "brand": "Merk",
+        "type": "Type",
+        "model": "Model",
+        "sku": "SKU",
+        "sku_optional": "Optioneel",
+        "mac": "MAC",
+        "mac_placeholder": "AABBCCDDEEFF",
+        "status": "Status",
+        "condition": "Conditie",
+        "tenant": "Organisatie",
+        "purchase_ref": "Aankoopreferentie",
+        "notes": "Notities"
+    },
+    "device_type": {
+        "clock_display": "Klokscherm"
+    },
+    "device_status": {
+        "in_stock": "Op voorraad",
+        "assigned": "Toegewezen",
+        "in_use": "In gebruik",
+        "returned": "Terug",
+        "retired": "Afgeschreven",
+        "lost": "Zoekgeraakt"
+    },
+    "device_condition": {
+        "new": "Nieuw",
+        "refurbished": "Refurbished",
+        "faulty": "Defect"
+    },
+    "scanner": {
+        "open": "Barcode scannen",
+        "manual_only": "Camera-scan niet beschikbaar; typ het serienummer handmatig.",
+        "unsupported": "Deze browser kan geen barcodes scannen. Typ handmatig.",
+        "denied": "Cameratoegang geweigerd. Typ handmatig of geef toegang."
+    },
+    "flash": {
+        "registered": "Toestel :serial is geregistreerd.",
+        "updated": "Toestel bijgewerkt.",
+        "mac_linked": "MAC :mac gekoppeld aan :serial."
+    },
+    "errors": {
+        "serial_already_registered": "Dit serienummer bestaat al.",
+        "mac_invalid": "Ongeldig MAC-adres (verwacht 12 hex-tekens).",
+        "mac_already_linked": "Dit MAC-adres hoort al bij een ander toestel.",
+        "mac_already_set": "Dit toestel heeft al een MAC; die wijzigt niet.",
+        "device_not_found": "Toestel niet gevonden.",
+        "tenant_not_found": "Organisatie niet gevonden.",
+        "auth_failed": "Aanmelden mislukt.",
+        "not_superuser": "Alleen platform-superusers mogen WinProx OPS gebruiken."
+    }
+}

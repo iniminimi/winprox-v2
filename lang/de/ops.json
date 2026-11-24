@@ -1,0 +1,93 @@
+{
+    "portal": {
+        "title": "WinProx OPS",
+        "subtitle": "Hardware-Inventar: Seriennummern scannen und MAC-Adressen verknüpfen.",
+        "qr_title": "OPS-QR fürs Handy",
+        "qr_hint": "Scannen Sie diesen Code mit dem Handy, um Geräte ohne Abtippen zu erfassen.",
+        "qr_phone": "Nur Superuser. Anmeldung erfolgt am Handy in diesem Portal.",
+        "login_title": "Anmelden",
+        "login_hint": "Nur Plattform-Superuser. Kein Mandanten-Admin.",
+        "login_submit": "Anmelden",
+        "logout": "Abmelden",
+        "tab_register": "Neues Gerät",
+        "tab_mac": "MAC verknüpfen",
+        "mac_submit": "MAC speichern"
+    },
+    "devices": {
+        "nav": "Geräte",
+        "title": "Geräte",
+        "subtitle": "WinProx-OPS-Inventar von Uhrdisplays und anderer Hardware.",
+        "search": "Suchen",
+        "search_placeholder": "S/N, MAC, Marke, Modell, SKU…",
+        "filter_status": "Status",
+        "filter_type": "Typ",
+        "filter_tenant": "Organisation",
+        "filter_all": "Alle",
+        "filter_no_tenant": "Keine Organisation",
+        "filter_without_mac": "Nur ohne MAC",
+        "empty": "Noch keine Geräte erfasst.",
+        "register": "Gerät erfassen",
+        "register_title": "Neues Gerät",
+        "register_hint": "Scannen oder tippen Sie die Aufkleber-Seriennummer beim Empfang.",
+        "register_submit": "Erfassen",
+        "edit": "Bearbeiten",
+        "edit_title": "Gerät bearbeiten",
+        "save": "Speichern",
+        "mac_missing": "keine MAC",
+        "mac_hint": "MAC ohne Doppelpunkte, wie das Display beim Koppeln sendet (12 Hex-Zeichen). Einmal gesetzt bleibt S/N↔MAC fest.",
+        "no_tenant": "Auf Lager",
+        "scanned_at": "gescannt"
+    },
+    "fields": {
+        "serial_number": "Seriennummer (S/N)",
+        "brand": "Marke",
+        "type": "Typ",
+        "model": "Modell",
+        "sku": "SKU",
+        "sku_optional": "Optional",
+        "mac": "MAC",
+        "mac_placeholder": "AABBCCDDEEFF",
+        "status": "Status",
+        "condition": "Zustand",
+        "tenant": "Organisation",
+        "purchase_ref": "Kaufreferenz",
+        "notes": "Notizen"
+    },
+    "device_type": {
+        "clock_display": "Uhrdisplay"
+    },
+    "device_status": {
+        "in_stock": "Auf Lager",
+        "assigned": "Zugewiesen",
+        "in_use": "In Betrieb",
+        "returned": "Zurück",
+        "retired": "Ausgemustert",
+        "lost": "Verloren"
+    },
+    "device_condition": {
+        "new": "Neu",
+        "refurbished": "Refurbished",
+        "faulty": "Defekt"
+    },
+    "scanner": {
+        "open": "Barcode scannen",
+        "manual_only": "Kamerascan nicht verfügbar; Seriennummer eintippen.",
+        "unsupported": "Dieser Browser kann keine Barcodes scannen. Bitte manuell eingeben.",
+        "denied": "Kamerazugriff verweigert. Manuell eingeben oder Zugriff erlauben."
+    },
+    "flash": {
+        "registered": "Gerät :serial wurde erfasst.",
+        "updated": "Gerät aktualisiert.",
+        "mac_linked": "MAC :mac mit :serial verknüpft."
+    },
+    "errors": {
+        "serial_already_registered": "Diese Seriennummer existiert bereits.",
+        "mac_invalid": "Ungültige MAC-Adresse (12 Hex-Zeichen erwartet).",
+        "mac_already_linked": "Diese MAC gehört bereits zu einem anderen Gerät.",
+        "mac_already_set": "Dieses Gerät hat bereits eine MAC; sie ändert sich nicht.",
+        "device_not_found": "Gerät nicht gefunden.",
+        "tenant_not_found": "Organisation nicht gefunden.",
+        "auth_failed": "Anmeldung fehlgeschlagen.",
+        "not_superuser": "Nur Plattform-Superuser dürfen WinProx OPS nutzen."
+    }
+}

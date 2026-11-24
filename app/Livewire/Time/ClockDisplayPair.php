@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Time;
 
+use App\Actions\Ops\ResolveHardwareDeviceByMacAction;
 use App\Actions\Time\ConfirmClockDisplayClaimAction;
 use App\Actions\Time\DeleteClockDisplayImageAction;
 use App\Actions\Time\DenyClockDisplayClaimAction;
@@ -15,6 +16,7 @@ use App\Actions\Time\UploadClockDisplayImageAction;
 use App\Models\ClockDisplayClaim;
 use App\Models\ClockDisplayImage;
 use App\Models\ClockPoint;
+use App\Models\HardwareDevice;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use InvalidArgumentException;
 use Livewire\Attributes\Layout;
@@ -332,18 +334,38 @@ class ClockDisplayPair extends Component
         session()->flash('time_flash', __('time.clock_displays.album.saved'));
     }
 
-    public function render(ListClockDisplayPairHistoryAction $listHistory)
-    {
+    public function render(
+        ListClockDisplayPairHistoryAction $listHistory,
+        ResolveHardwareDeviceByMacAction $resolveDevice,
+    ) {
         $point = $this->clockPoint->fresh();
         $pendingClaim = $point?->displayClaims()->activePending()->latest('id')->first();
         $pairHistory = $point !== null
             ? $listHistory->handle($point, (int) $point->tenant_id)
             : collect();
 
+        $linkedInventory = $point?->display_device_hint
+            ? $resolveDevice->handle($point->display_device_hint)
+            : null;
+        $pendingInventory = $pendingClaim?->device_hint
+            ? $resolveDevice->handle($pendingClaim->device_hint)
+            : null;
+
+        $historySerials = [];
+        foreach ($pairHistory as $entry) {
+            $device = $resolveDevice->handle($entry->device_hint);
+            if ($device instanceof HardwareDevice) {
+                $historySerials[$entry->id] = $device->serial_number;
+            }
+        }
+
         return view('livewire.time.clock-display-pair', [
             'point' => $point,
             'pendingClaim' => $pendingClaim,
             'pairHistory' => $pairHistory,
+            'linkedInventory' => $linkedInventory,
+            'pendingInventory' => $pendingInventory,
+            'historySerials' => $historySerials,
             'albumImages' => $point !== null
                 ? ClockDisplayImage::queryForPoint($point)->get()
                 : collect(),

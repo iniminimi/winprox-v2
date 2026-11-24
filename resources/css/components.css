@@ -9249,3 +9249,42 @@ html.wp-pwa-open-app .wp-pwa-open-screen {
 .wp-date-range__day--single {
     border-radius: var(--wp-radius);
 }
+
+/* WinProx OPS — inventaris QR + barcode-scanner */
+.wp-ops-qr {
+    width: 240px;
+    max-width: 100%;
+    flex-shrink: 0;
+}
+
+.wp-ops-qr svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.wp-ops-scanner {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background: color-mix(in srgb, #000 55%, transparent);
+}
+
+.wp-ops-scanner__panel {
+    width: min(28rem, 100%);
+    background: var(--wp-surface);
+    border-radius: var(--wp-radius);
+    padding: 1rem;
+}
+
+.wp-ops-scanner__video {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: var(--wp-radius);
+    background: #000;
+}

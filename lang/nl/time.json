@@ -337,7 +337,8 @@
             "paired_at": "Actief sinds",
             "last_seen": "laatst gezien",
             "unlink": "Scherm ontkoppelen",
-            "serial": "Serienummer"
+            "serial": "Serienummer",
+            "mac": "MAC"
         },
         "code": {
             "title": "Koppelcode",
@@ -426,7 +427,7 @@
         },
         "history": {
             "title": "Koppelgeschiedenis",
-            "hint": "Welk scherm (serienummer) wanneer aan dit clock point gekoppeld werd.",
+            "hint": "Welk scherm (sticker-serienummer of MAC) wanneer aan dit clock point gekoppeld werd.",
             "current": "Huidig"
         }
     },
