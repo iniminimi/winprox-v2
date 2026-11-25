@@ -1194,6 +1194,29 @@ a.wp-pill:hover {
     height: auto;
 }
 
+.wp-dashboard-intent .wp-kpi[data-wp-intent-tile] {
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
+.wp-dashboard-intent > .wp-kpis.is-sorting {
+    touch-action: none;
+}
+
+.wp-dashboard-intent > .wp-kpis.is-sorting .wp-kpi {
+    transition: none;
+}
+
+.wp-dashboard-intent .wp-kpi.is-dragging {
+    position: relative;
+    z-index: 3;
+    cursor: grabbing;
+    transform: scale(1.03);
+    box-shadow: var(--wp-shadow);
+}
+
 .wp-dashboard-intent .wp-kpi-kicker {
     white-space: normal;
     overflow: visible;

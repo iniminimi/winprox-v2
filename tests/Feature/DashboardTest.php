@@ -253,7 +253,7 @@ it('toont conditionele actie-KPIâ€™s alleen bij telling groter dan nul', fu
         ->assertSee(__('dashboard.kpi.present_now'))
         ->assertDontSee(__('dashboard.kpi.pending_review'))
         ->assertDontSeeHtml('wp-kpi--pending_absence')
-        ->assertDontSee(__('dashboard.kpi.iot_alarms'));
+        ->assertDontSeeHtml('wp-kpi--iot_alarms');
 
     Issue::factory()->create([
         'tenant_id' => $tenant->id,
@@ -304,7 +304,7 @@ it('verbergt IoT-KPI zonder IoT-module ook bij open IoT-meldingen', function () 
 
     Livewire::actingAs($user)
         ->test(Dashboard::class)
-        ->assertDontSee(__('dashboard.kpi.iot_alarms'));
+        ->assertDontSeeHtml('wp-kpi--iot_alarms');
 });
 
 it('toont de intent-hub boven de KPI’s met begroeting en snelkoppelingen', function () {
@@ -359,6 +359,45 @@ it('toont de intent-hub boven de KPI’s met begroeting en snelkoppelingen', fun
         ->call('openManualClockIn')
         ->assertSet('showManualClockInModal', true)
         ->assertSee(__('time.manual_clock_in.subtitle'));
+});
+
+it('onthoudt de volgorde van de snelkoppelingen per gebruiker', function () {
+    $tenant = Tenant::factory()->create([
+        'has_time_module' => true,
+        'work_menu_inspection_rounds_enabled' => true,
+    ]);
+    $user = User::factory()->create([
+        'tenant_id' => $tenant->id,
+        'name' => 'Anna Peeters',
+    ]);
+
+    Tenancy::actAs($tenant->id);
+
+    InternalTeam::factory()->create(['tenant_id' => $tenant->id]);
+    Worker::factory()->create(['tenant_id' => $tenant->id]);
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
+    ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+
+    Livewire::actingAs($user)
+        ->test(Dashboard::class)
+        ->assertSeeHtml('data-wp-intent-tile="roster"')
+        ->call('reorderIntentTiles', ['roster', 'nope', 'worker', 'roster'])
+        ->assertSeeInOrder([
+            __('dashboard.intent.tiles.roster.title'),
+            __('dashboard.intent.tiles.worker.title'),
+            __('dashboard.intent.tiles.day_task_favorites.title'),
+        ]);
+
+    expect($user->refresh()->dashboard_intent_order)->toBe(['roster', 'worker']);
+
+    Livewire::actingAs($user)
+        ->test(Dashboard::class)
+        ->assertSeeInOrder([
+            __('dashboard.intent.tiles.roster.title'),
+            __('dashboard.intent.tiles.worker.title'),
+        ]);
 });
 
 it('verbergt Time-tegels in de intent-hub zonder Time-module', function () {

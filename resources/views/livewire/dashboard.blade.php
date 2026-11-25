@@ -429,7 +429,15 @@
                 />
 
                 @if ($showWhatsNew || ! $intentHub->isEmpty() || $canAddDevice)
-                    <div class="wp-kpis">
+                    <div class="wp-kpis"
+                         x-data="wpIntentTiles"
+                         @pointerdown="onPointerDown($event)"
+                         @pointermove.window="onPointerMove($event)"
+                         @pointerup.window="onPointerUp($event)"
+                         @pointercancel.window="onPointerUp($event)"
+                         @click.capture="onClick($event)"
+                         @contextmenu="onContextMenu($event)"
+                         @dragstart.prevent>
                         @if ($showWhatsNew)
                             @include('partials.whats-new-card')
                         @endif
@@ -438,6 +446,8 @@
                                 <button type="button"
                                         wire:click="{{ $tile['action'] }}"
                                         @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
+                                        data-wp-intent-tile="{{ $tile['key'] }}"
+                                        draggable="false"
                                         wire:key="intent-{{ $tile['key'] }}">
                                     <div class="wp-kpi-body">
                                         <span class="wp-kpi-icon" aria-hidden="true">
@@ -452,6 +462,8 @@
                             @else
                                 <a href="{{ $tile['href'] }}"
                                    @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
+                                   data-wp-intent-tile="{{ $tile['key'] }}"
+                                   draggable="false"
                                    wire:key="intent-{{ $tile['key'] }}">
                                     <div class="wp-kpi-body">
                                         <span class="wp-kpi-icon" aria-hidden="true">
@@ -464,13 +476,7 @@
                                     </div>
                                 </a>
                             @endif
-                            @if ($canAddDevice && $tile['key'] === 'workers')
-                                @include('partials.wp-add-device-tile')
-                            @endif
                         @endforeach
-                    @if ($canAddDevice && ! collect($intentHub->tiles)->contains(fn (array $tile): bool => ($tile['key'] ?? '') === 'workers'))
-                        @include('partials.wp-add-device-tile')
-                    @endif
                     </div>
                     @if ($canAddDevice)
                         <livewire:add-device />

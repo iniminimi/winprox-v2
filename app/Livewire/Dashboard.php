@@ -7,6 +7,7 @@ use App\Actions\Billing\RealignSubscriptionPeriodAction;
 use App\Actions\Checkmate\BuildCheckmateDashboardDataAction;
 use App\Actions\Dashboard\BuildDashboardIntentHubAction;
 use App\Actions\Dashboard\BuildDashboardStatsAction;
+use App\Actions\Dashboard\SaveDashboardIntentOrderAction;
 use App\Actions\Dashboard\ListDashboardRecentIssuesAction;
 use App\Actions\Onboarding\ApplyTenantStarterPackAction;
 use App\Actions\Onboarding\DismissTenantStarterPackResultAction;
@@ -67,6 +68,23 @@ class Dashboard extends Component
     public string $checkmateQrMailEmail = '';
 
     public ?string $checkmateQrMailFlash = null;
+
+    public function openAddDevice(): void
+    {
+        $this->authorize('pairDeviceAny', Location::class);
+        $this->dispatch('open-add-device');
+    }
+
+    /**
+     * @param  list<mixed>  $keys
+     */
+    public function reorderIntentTiles(array $keys): void
+    {
+        $user = auth()->user();
+        abort_unless($user instanceof User, 403);
+
+        app(SaveDashboardIntentOrderAction::class)->handle($user, $keys);
+    }
 
     public function openCheckmateClockPointQr(EnsureDefaultClockPointAction $ensureDefault): void
     {

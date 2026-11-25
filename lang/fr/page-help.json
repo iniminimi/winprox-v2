@@ -16,7 +16,7 @@
                 },
                 {
                     "label": "Accès rapide à une action",
-                    "text": "En haut, vous trouvez des raccourcis vers les actions courantes. Ainsi, vous n’avez pas à chercher dans les menus à chaque fois.<br><br>Selon vos droits et les modules actifs, vous voyez notamment :<br>• Nouvelle tâche du jour via favoris<br>• Planifier une nouvelle tâche du jour<br>• Ajouter un site<br>• Ajouter un exécutant ou Voir les exécutants<br>• Qui travaille où aujourd’hui<br>• Pointage manuel<br>• Quelles tâches aujourd’hui<br>• Voir le planning<br><br>Chaque bouton n’est pas toujours visible. Cela dépend de votre rôle et des modules actifs, comme Time ou le calendrier."
+                    "text": "En haut, vous trouvez des raccourcis vers les actions courantes. Ainsi, vous n’avez pas à chercher dans les menus à chaque fois. Un appui ouvre le raccourci. Maintenez la tuile et faites-la glisser ailleurs. Cet ordre reste enregistré pour vous.<br><br>Selon vos droits et les modules actifs, vous voyez notamment :<br>• Nouvelle tâche du jour via favoris<br>• Planifier une nouvelle tâche du jour<br>• Ajouter un site<br>• Ajouter un exécutant ou Voir les exécutants<br>• Qui travaille où aujourd’hui<br>• Pointage manuel<br>• Quelles tâches aujourd’hui<br>• Voir le planning<br><br>Chaque bouton n’est pas toujours visible. Cela dépend de votre rôle et des modules actifs, comme Time ou le calendrier."
                 },
                 {
                     "label": "Quoi de neuf ?",

@@ -174,7 +174,7 @@
             },
             {
                 "title": "Dashboard",
-                "body": "The dashboard is the start of the day. At the top is the question What do you want to do?, with shortcuts to the main tools, including clocking someone in who could not do it themselves. A What's new? card points to Help → What's new for a week, until you open it.",
+                "body": "The dashboard is the start of the day. At the top is the question What do you want to do?, with shortcuts to the main tools, including clocking someone in who could not do it themselves. A What's new? card points to Help → What's new for a week, until you open it. A tap opens a shortcut. Hold the tile and slide it somewhere else. That order stays saved for you.",
                 "items": [
                     "Roster and presence, a new day task or inspection round, locations and workers.",
                     "New issues and open tasks. With Time: who is present now.",

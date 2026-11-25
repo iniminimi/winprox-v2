@@ -15,6 +15,20 @@ use Carbon\CarbonInterface;
 
 class BuildDashboardIntentHubAction
 {
+    /** @var list<string> */
+    public const TILE_KEYS = [
+        'day_task_favorites',
+        'day_task',
+        'location',
+        'worker',
+        'presence',
+        'manual_clock_in',
+        'today_tasks',
+        'roster',
+        'workers',
+        'add_device',
+    ];
+
     public function handle(Tenant $tenant, User $user, ?CarbonInterface $now = null): DashboardIntentHubData
     {
         $now ??= now();
@@ -136,10 +150,55 @@ class BuildDashboardIntentHubAction
             ];
         }
 
+        if ($user->can('pairDeviceAny', Location::class)) {
+            $tiles[] = [
+                'key' => 'add_device',
+                'icon' => 'key',
+                'tone' => 'units',
+                'title' => 'dashboard.add_device.title',
+                'body' => 'dashboard.add_device.body',
+                'action' => 'openAddDevice',
+            ];
+        }
+
         return new DashboardIntentHubData(
             greeting: __($greetingKey, ['name' => $name]),
-            tiles: $tiles,
+            tiles: $this->applySavedOrder($tiles, $user->dashboard_intent_order),
         );
+    }
+
+    /**
+     * @param  list<array<string, mixed>>  $tiles
+     * @param  list<mixed>|null  $saved
+     * @return list<array<string, mixed>>
+     */
+    private function applySavedOrder(array $tiles, ?array $saved): array
+    {
+        if ($saved === null || $saved === []) {
+            return $tiles;
+        }
+
+        $byKey = [];
+        foreach ($tiles as $tile) {
+            $byKey[$tile['key']] = $tile;
+        }
+
+        $ordered = [];
+        foreach ($saved as $key) {
+            if (! is_string($key) || ! isset($byKey[$key])) {
+                continue;
+            }
+            $ordered[] = $byKey[$key];
+            unset($byKey[$key]);
+        }
+
+        foreach ($tiles as $tile) {
+            if (isset($byKey[$tile['key']])) {
+                $ordered[] = $tile;
+            }
+        }
+
+        return $ordered;
     }
 
     private function displayName(User $user): string
