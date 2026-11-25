@@ -423,7 +423,7 @@
                     :subtitle="__('dashboard.intent.title')"
                 />
 
-                @if ($showWhatsNew || ! $intentHub->isEmpty())
+                @if ($showWhatsNew || ! $intentHub->isEmpty() || $canAddDevice)
                     <div class="wp-kpis">
                         @if ($showWhatsNew)
                             @include('partials.whats-new-card')
@@ -459,15 +459,20 @@
                                     </div>
                                 </a>
                             @endif
+                            @if ($canAddDevice && $tile['key'] === 'workers')
+                                @include('partials.wp-add-device-tile')
+                            @endif
                         @endforeach
+                    @if ($canAddDevice && ! collect($intentHub->tiles)->contains(fn (array $tile): bool => ($tile['key'] ?? '') === 'workers'))
+                        @include('partials.wp-add-device-tile')
+                    @endif
                     </div>
+                    @if ($canAddDevice)
+                        <livewire:add-device />
+                    @endif
                 @endif
             </section>
         @endif
-
-        @can('create', \App\Models\Screen::class)
-            <livewire:add-device />
-        @endcan
 
         <div @class(['wp-page-head', 'wp-dashboard-overview' => $intentHub !== null])>
             <div class="wp-grow wp-stack-tight">

@@ -39,7 +39,7 @@ function addDeviceReady(Tenant $tenant): void
     ClockPoint::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id]);
 }
 
-it('toont Toestel toevoegen boven Dashboard voor een beheerder', function () {
+it('toont Toestel toevoegen naast Uitvoerders bekijken', function () {
     $tenant = addDeviceTenant();
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
     Tenancy::actAs($tenant->id);
@@ -47,7 +47,10 @@ it('toont Toestel toevoegen boven Dashboard voor een beheerder', function () {
 
     Livewire::actingAs($admin)
         ->test(Dashboard::class)
-        ->assertSee(__('dashboard.add_device.title'))
+        ->assertSeeInOrder([
+            __('dashboard.intent.tiles.workers.title'),
+            __('dashboard.add_device.title'),
+        ])
         ->assertSee(__('dashboard.add_device.body'));
 });
 
@@ -83,14 +86,21 @@ it('geeft een prikklokcode voor het gekozen Clock Point en bevestigt de aanvraag
     $tenant = addDeviceTenant();
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
     Tenancy::actAs($tenant->id);
-    $here = ClockPoint::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Ingang']);
-    $elsewhere = ClockPoint::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Achterdeur']);
+    $gate = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Poort']);
+    $back = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Achterkant']);
+    $here = ClockPoint::factory()->forLocation($gate)->create(['name' => 'Ingang']);
+    $elsewhere = ClockPoint::factory()->forLocation($back)->create(['name' => 'Achterdeur']);
 
     $component = Livewire::actingAs($admin)
         ->test(AddDevice::class)
         ->call('openModal')
         ->assertSee(__('dashboard.add_device.type_clock'))
         ->set('deviceType', 'clock')
+        ->assertSee('Poort')
+        ->assertDontSee('Ingang')
+        ->set('locationId', $gate->id)
+        ->assertSee('Ingang')
+        ->assertDontSee('Achterdeur')
         ->set('placeId', $here->id)
         ->call('issue');
 
@@ -104,6 +114,7 @@ it('geeft een prikklokcode voor het gekozen Clock Point en bevestigt de aanvraag
         ->test(AddDevice::class)
         ->set('open', true)
         ->set('deviceType', 'clock')
+        ->set('locationId', $back->id)
         ->set('placeId', $elsewhere->id)
         ->call('confirmClaim', $claim->id)
         ->assertNotFound();
@@ -112,6 +123,7 @@ it('geeft een prikklokcode voor het gekozen Clock Point en bevestigt de aanvraag
         ->test(AddDevice::class)
         ->set('open', true)
         ->set('deviceType', 'clock')
+        ->set('locationId', $gate->id)
         ->set('placeId', $here->id)
         ->assertSee('aabbccddeeff')
         ->call('confirmClaim', $claim->id)
@@ -125,11 +137,13 @@ it('weigert een prikklokaanvraag in hetzelfde venster', function () {
     $tenant = addDeviceTenant();
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
     Tenancy::actAs($tenant->id);
-    $point = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $location = Location::factory()->create(['tenant_id' => $tenant->id]);
+    $point = ClockPoint::factory()->forLocation($location)->create(['tenant_id' => $tenant->id]);
 
     Livewire::actingAs($admin)
         ->test(AddDevice::class)
         ->set('deviceType', 'clock')
+        ->set('locationId', $location->id)
         ->set('placeId', $point->id)
         ->call('issue');
 
@@ -140,6 +154,7 @@ it('weigert een prikklokaanvraag in hetzelfde venster', function () {
         ->test(AddDevice::class)
         ->set('open', true)
         ->set('deviceType', 'clock')
+        ->set('locationId', $location->id)
         ->set('placeId', $point->id)
         ->call('denyClaim', $claim->id)
         ->assertSee(__('dashboard.add_device.denied'));
@@ -153,7 +168,9 @@ it('koppelt een lokaalscherm en een camera aan een unit, niet aan een andere org
     $admin = User::factory()->admin()->create(['tenant_id' => $tenant->id]);
     Tenancy::actAs($tenant->id);
     $location = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Magazijn']);
+    $office = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Kantoor']);
     $unit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $location->id, 'name' => 'Hal']);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $office->id, 'name' => 'Balie']);
     $other = Unit::factory()->create();
 
     Livewire::actingAs($admin)
@@ -161,7 +178,11 @@ it('koppelt een lokaalscherm en een camera aan een unit, niet aan een andere org
         ->call('openModal')
         ->assertDontSee(__('dashboard.add_device.type_clock'))
         ->set('deviceType', 'screen')
-        ->assertSee('Magazijn — Hal')
+        ->assertSee('Magazijn')
+        ->assertDontSee('Hal')
+        ->set('locationId', $location->id)
+        ->assertSee('Hal')
+        ->assertDontSee('Balie')
         ->set('placeId', $unit->id)
         ->call('issue');
 
@@ -172,6 +193,7 @@ it('koppelt een lokaalscherm en een camera aan een unit, niet aan een andere org
     Livewire::actingAs($admin)
         ->test(AddDevice::class)
         ->set('deviceType', 'screen')
+        ->set('locationId', $location->id)
         ->set('placeId', $other->id)
         ->call('issue')
         ->assertNotFound();
@@ -179,6 +201,7 @@ it('koppelt een lokaalscherm en een camera aan een unit, niet aan een andere org
     Livewire::actingAs($admin)
         ->test(AddDevice::class)
         ->set('deviceType', 'camera')
+        ->set('locationId', $location->id)
         ->set('placeId', $unit->id)
         ->call('issue');
 

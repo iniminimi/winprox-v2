@@ -178,7 +178,7 @@
                     "New issues and open tasks. With Time: who is present now.",
                     "A warning when someone clocks in during leave, TOIL, a public holiday, sickness or Other. Open leave, TOIL, sick leave and Other requests.",
                     "New workers a team leader just created, until an administrator saves or deactivates them. Briefings and reports. New organisations choose a starting setup here.",
-                    "An administrator links a time clock, a room screen or a camera here. They choose the place, get a code for the technician and confirm the device in the same window."
+                    "An administrator links a time clock, a room screen or a camera here. They choose the location first and then the unit, get a code for the technician and confirm the device in the same window."
                 ]
             },
             {

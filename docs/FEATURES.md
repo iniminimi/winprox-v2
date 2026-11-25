@@ -103,7 +103,7 @@ fouttype per uur (met het aantal herhalingen) en 10 per uur in totaal. Zie
   Een nieuwere nota toont de tegel opnieuw, opnieuw voor een week.
   Hulp → Nieuw toont alleen diezelfde week: vandaag en de zes dagen ervoor.
 - Extra ruimte tussen intent-sectie en **Dashboard**-kop; daaronder KPI’s, recente meldingen, briefing en starttemplate.
-- **Toestel toevoegen** (alleen beheerder, niet Checkmate, niet zolang de startstappen het dashboard blokkeren): één kaart boven de Dashboard-kop. Popup: type **prikklok** (Clock Point), **lokaalscherm** (unit) of **camera** (unit) → bestaande koppelcode → het toestel vraagt om te koppelen → bevestigen of weigeren in hetzelfde venster. Geen nieuwe koppeling; de bestaande issue/confirm-actions.
+- **Toestel toevoegen** (alleen beheerder, niet Checkmate, niet zolang de startstappen het dashboard blokkeren): dezelfde tegel als de andere, meteen na **Uitvoerders bekijken**. Popup: type **prikklok**, **lokaalscherm** of **camera** → eerst de locatie, dan het Clock Point of de unit van die locatie → bestaande koppelcode → het toestel vraagt om te koppelen → bevestigen of weigeren in hetzelfde venster. Geen nieuwe koppeling; de bestaande issue/confirm-actions.
 
 **Starttemplate (optioneel, nieuwe organisaties)**
 - Op het dashboard zolang er nog geen teams/categorieën/units zijn: **welkomkaart**

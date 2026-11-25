@@ -17,6 +17,7 @@ use App\Models\Camera;
 use App\Models\CameraClaim;
 use App\Models\ClockDisplayClaim;
 use App\Models\ClockPoint;
+use App\Models\Location;
 use App\Models\Screen;
 use App\Models\ScreenClaim;
 use App\Models\Unit;
@@ -25,6 +26,7 @@ use App\Support\Tenancy;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 use InvalidArgumentException;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 /**
@@ -37,10 +39,13 @@ class AddDevice extends Component
 
     public string $deviceType = '';
 
+    public ?int $locationId = null;
+
     public ?int $placeId = null;
 
     public ?string $flash = null;
 
+    #[On('open-add-device')]
     public function openModal(): void
     {
         $this->authorize('create', Screen::class);
@@ -55,6 +60,14 @@ class AddDevice extends Component
     }
 
     public function updatedDeviceType(): void
+    {
+        $this->locationId = null;
+        $this->placeId = null;
+        $this->flash = null;
+        $this->resetValidation();
+    }
+
+    public function updatedLocationId(): void
     {
         $this->placeId = null;
         $this->flash = null;
@@ -147,6 +160,7 @@ class AddDevice extends Component
     {
         $user = auth()->user();
         $allowed = $user instanceof User && $user->can('create', Screen::class);
+        $locations = $allowed && $this->open ? $this->locationOptions() : [];
         $places = $allowed && $this->open ? $this->placeOptions() : [];
         $code = $allowed && $this->open ? $this->openCode() : null;
         $pending = $allowed && $this->open && $this->placeId !== null ? $this->pendingClaim() : null;
@@ -154,6 +168,7 @@ class AddDevice extends Component
         return view('livewire.add-device', [
             'allowed' => $allowed,
             'types' => $allowed ? $this->allowedTypes() : [],
+            'locations' => $locations,
             'places' => $places,
             'code' => $code === null ? null : $this->formatCode($code['code']),
             'validUntil' => $code['until'] ?? null,
@@ -165,6 +180,7 @@ class AddDevice extends Component
     private function resetForm(): void
     {
         $this->deviceType = '';
+        $this->locationId = null;
         $this->placeId = null;
         $this->flash = null;
         $this->resetValidation();
@@ -188,9 +204,11 @@ class AddDevice extends Component
     {
         $this->validate([
             'deviceType' => ['required', Rule::in($this->allowedTypes())],
+            'locationId' => ['required', 'integer', 'min:0'],
             'placeId' => ['required', 'integer'],
         ], [], [
             'deviceType' => __('dashboard.add_device.type_label'),
+            'locationId' => __('dashboard.add_device.place_location'),
             'placeId' => $this->deviceType === 'clock'
                 ? __('dashboard.add_device.place_clock')
                 : __('dashboard.add_device.place_unit'),
@@ -211,6 +229,11 @@ class AddDevice extends Component
             ->where('tenant_id', $this->tenantId())
             ->whereKey($this->placeId)
             ->where('is_active', true)
+            ->when(
+                $this->selectedLocationId() === null,
+                fn ($query) => $query->whereNull('location_id'),
+                fn ($query) => $query->where('location_id', $this->selectedLocationId()),
+            )
             ->first();
         abort_if($point === null, 404);
         $this->authorize('update', $point);
@@ -224,6 +247,11 @@ class AddDevice extends Component
             ->where('tenant_id', $this->tenantId())
             ->whereKey($this->placeId)
             ->where('is_active', true)
+            ->when(
+                $this->selectedLocationId() === null,
+                fn ($query) => $query->whereNull('location_id'),
+                fn ($query) => $query->where('location_id', $this->selectedLocationId()),
+            )
             ->first();
         abort_if($unit === null, 404);
 
@@ -233,45 +261,92 @@ class AddDevice extends Component
     /**
      * @return list<array{id: int, label: string}>
      */
+    private function locationOptions(): array
+    {
+        if (! in_array($this->deviceType, ['clock', 'screen', 'camera'], true)) {
+            return [];
+        }
+
+        $places = $this->deviceType === 'clock'
+            ? ClockPoint::query()->where('tenant_id', $this->tenantId())->where('is_active', true)
+            : Unit::query()->where('tenant_id', $this->tenantId())->where('is_active', true);
+
+        $options = Location::query()
+            ->where('tenant_id', $this->tenantId())
+            ->where('is_active', true)
+            ->whereIn('id', (clone $places)->whereNotNull('location_id')->select('location_id'))
+            ->orderBy('name')
+            ->get()
+            ->map(fn (Location $location): array => [
+                'id' => (int) $location->id,
+                'label' => $location->localizedName(),
+            ])
+            ->sortBy('label', SORT_NATURAL | SORT_FLAG_CASE)
+            ->values();
+
+        if ((clone $places)->whereNull('location_id')->exists()) {
+            $options->push([
+                'id' => 0,
+                'label' => __('dashboard.add_device.no_location'),
+            ]);
+        }
+
+        return $options->all();
+    }
+
+    /**
+     * @return list<array{id: int, label: string}>
+     */
     private function placeOptions(): array
     {
+        if ($this->locationId === null || ! in_array($this->deviceType, ['clock', 'screen', 'camera'], true)) {
+            return [];
+        }
+
+        $locationId = $this->locationId === 0 ? null : $this->locationId;
+
         if ($this->deviceType === 'clock') {
             return ClockPoint::query()
                 ->where('tenant_id', $this->tenantId())
                 ->where('is_active', true)
-                ->with('location:id,name')
+                ->when(
+                    $locationId === null,
+                    fn ($query) => $query->whereNull('location_id'),
+                    fn ($query) => $query->where('location_id', $locationId),
+                )
                 ->orderBy('name')
                 ->get()
                 ->map(fn (ClockPoint $point): array => [
                     'id' => (int) $point->id,
-                    'label' => $point->location !== null
-                        ? $point->location->localizedName().' — '.$point->name
-                        : (string) $point->name,
+                    'label' => (string) $point->name,
                 ])
-                ->sortBy('label', SORT_NATURAL | SORT_FLAG_CASE)
-                ->values()
                 ->all();
-        }
-
-        if (! in_array($this->deviceType, ['screen', 'camera'], true)) {
-            return [];
         }
 
         return Unit::query()
             ->where('tenant_id', $this->tenantId())
             ->where('is_active', true)
-            ->with('location:id,name')
+            ->when(
+                $locationId === null,
+                fn ($query) => $query->whereNull('location_id'),
+                fn ($query) => $query->where('location_id', $locationId),
+            )
             ->orderBy('name')
             ->get()
             ->map(fn (Unit $unit): array => [
                 'id' => (int) $unit->id,
-                'label' => $unit->location !== null
-                    ? $unit->location->localizedName().' — '.$unit->localizedName()
-                    : $unit->localizedName(),
+                'label' => $unit->localizedName(),
             ])
             ->sortBy('label', SORT_NATURAL | SORT_FLAG_CASE)
             ->values()
             ->all();
+    }
+
+    private function selectedLocationId(): ?int
+    {
+        abort_if($this->locationId === null, 404);
+
+        return $this->locationId === 0 ? null : $this->locationId;
     }
 
     /**

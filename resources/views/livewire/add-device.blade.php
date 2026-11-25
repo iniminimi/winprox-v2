@@ -1,20 +1,5 @@
 <div class="wp-dashboard-add-device">
-    @if ($allowed)
-        <div class="wp-kpis">
-            <button type="button" class="wp-kpi" wire:click="openModal">
-                <div class="wp-kpi-body">
-                    <span class="wp-kpi-icon" aria-hidden="true">
-                        <x-wp-icon name="key" />
-                    </span>
-                    <div class="wp-kpi-main">
-                        <p class="wp-kpi-kicker">{{ __('dashboard.add_device.title') }}</p>
-                        <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ __('dashboard.add_device.body') }}</p>
-                    </div>
-                </div>
-            </button>
-        </div>
-
-        @if ($open)
+    @if ($allowed && $open)
             <x-wp-modal closeMethod="closeModal" aria-labelledby="add-device-title">
                 <div @class(['wp-card', 'wp-card-pad', 'wp-stack', 'wp-modal-card']) @if ($placeId !== null) wire:poll.5s @endif>
                     <div class="wp-modal-head">
@@ -42,7 +27,24 @@
                         @error('deviceType') <p class="wp-error">{{ $message }}</p> @enderror
                     </fieldset>
 
+                    @error('locationId') <p class="wp-error">{{ $message }}</p> @enderror
+
                     @if ($deviceType !== '')
+                        <div class="wp-field">
+                            <label class="wp-label" for="add-device-location">{{ __('dashboard.add_device.place_location') }}</label>
+                            @if ($locations === [])
+                                <p class="wp-muted">{{ __('dashboard.add_device.no_locations') }}</p>
+                            @else
+                                <select id="add-device-location" class="wp-select" wire:model.live="locationId">
+                                    <option value="">{{ __('dashboard.add_device.place_placeholder') }}</option>
+                                    @foreach ($locations as $location)
+                                        <option value="{{ $location['id'] }}">{{ $location['label'] }}</option>
+                                    @endforeach
+                                </select>
+                            @endif
+                        </div>
+
+                        @if ($locationId !== null && $locations !== [])
                         <div class="wp-field">
                             <label class="wp-label" for="add-device-place">
                                 {{ $deviceType === 'clock' ? __('dashboard.add_device.place_clock') : __('dashboard.add_device.place_unit') }}
@@ -55,7 +57,7 @@
                                 <select id="add-device-place" class="wp-select" wire:model.live="placeId">
                                     <option value="">{{ __('dashboard.add_device.place_placeholder') }}</option>
                                     @foreach ($places as $place)
-                                        <option value="{{ $place['id'] }}" wire:key="add-device-place-{{ $place['id'] }}">{{ $place['label'] }}</option>
+                                        <option value="{{ $place['id'] }}">{{ $place['label'] }}</option>
                                     @endforeach
                                 </select>
                             @endif
@@ -97,6 +99,7 @@
                                 </div>
                             </div>
                         @endif
+                        @endif
                     @endif
 
                     <div class="wp-cluster">
@@ -104,6 +107,5 @@
                     </div>
                 </div>
             </x-wp-modal>
-        @endif
     @endif
 </div>

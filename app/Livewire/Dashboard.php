@@ -7,12 +7,12 @@ use App\Actions\Billing\RealignSubscriptionPeriodAction;
 use App\Actions\Checkmate\BuildCheckmateDashboardDataAction;
 use App\Actions\Dashboard\BuildDashboardIntentHubAction;
 use App\Actions\Dashboard\BuildDashboardStatsAction;
-use App\Actions\Sense\ListSenseAttentionAction;
 use App\Actions\Dashboard\ListDashboardRecentIssuesAction;
 use App\Actions\Onboarding\ApplyTenantStarterPackAction;
 use App\Actions\Onboarding\DismissTenantStarterPackResultAction;
 use App\Actions\Onboarding\RemoveTenantStarterPackAction;
 use App\Actions\ReleaseNotes\ShouldShowWhatsNewCardAction;
+use App\Actions\Sense\ListSenseAttentionAction;
 use App\Actions\Time\CountExpiringAbsencePhotosAction;
 use App\Actions\Time\EnsureDefaultClockPointAction;
 use App\Actions\Time\SendClockPointQrMailAction;
@@ -24,6 +24,8 @@ use App\Http\Requests\Onboarding\ApplyTenantStarterPackRequest;
 use App\Http\Requests\Time\SendClockPointQrMailRequest;
 use App\Livewire\Concerns\ManagesManualClockIn;
 use App\Models\ClockPoint;
+use App\Models\Screen;
+use App\Models\SensePoint;
 use App\Models\Tenant;
 use App\Models\User;
 use App\Support\Checkmate\CheckmateMode;
@@ -364,9 +366,10 @@ class Dashboard extends Component
             'starterPackUnitsHref' => $starterPackSummary !== null
                 ? TenantOnboardingState::unitsOnboardingHref()
                 : null,
-            'senseAttention' => (! $isCheckmate && $user instanceof User && $user->can('viewAny', \App\Models\SensePoint::class))
+            'senseAttention' => (! $isCheckmate && $user instanceof User && $user->can('viewAny', SensePoint::class))
                 ? $listSenseAttention->handle($tenantId)
                 : [],
+            'canAddDevice' => $user instanceof User && $user->can('create', Screen::class),
         ]);
     }
 

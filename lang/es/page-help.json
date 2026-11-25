@@ -12,7 +12,7 @@
             "actions": [
                 {
                     "label": "Añadir un dispositivo",
-                    "text": "Encima del título Panel está Añadir un dispositivo. Solo un administrador ve ese botón.<br><br>Elige un reloj de fichar, una pantalla de local o una cámara. Un reloj de fichar pertenece a un Clock Point. Una pantalla de local o una cámara pertenece a una unit.<br><br>Recibe un código. El técnico lo escribe en el dispositivo. Cuando el dispositivo pide vincularse, lo confirma en la misma ventana. El código vale unos 10 minutos."
+                    "text": "Junto a Ver ejecutores está Añadir un dispositivo. Solo un administrador ve ese botón.<br><br>Elige un reloj de fichar, una pantalla de local o una cámara. Después elige primero la sede y luego la unit. Un reloj de fichar pertenece a un Clock Point de esa sede.<br><br>Recibe un código. El técnico lo escribe en el dispositivo. Cuando el dispositivo pide vincularse, lo confirma en la misma ventana. El código vale unos 10 minutos."
                 },
                 {
                     "label": "Ir rápido a una acción",
