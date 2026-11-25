@@ -5,7 +5,9 @@ namespace App\Policies;
 use App\Models\Location;
 use App\Models\Tenant;
 use App\Models\User;
+use App\Support\Checkmate\CheckmateMode;
 use App\Support\Platform\SuperuserTenantAccess;
+use App\Support\Tenancy;
 
 class LocationPolicy
 {
@@ -46,6 +48,17 @@ class LocationPolicy
         return $this->manage($user, $location);
     }
 
+    /** Beginscherm: een toestel koppelen. Een medewerker alleen op haar locatie. */
+    public function pairDeviceAny(User $user): bool
+    {
+        return $this->mayPairDevice($user);
+    }
+
+    public function pairDevice(User $user, Location $location): bool
+    {
+        return $this->mayPairDevice($user) && $this->view($user, $location);
+    }
+
     private function mayManage(User $user, ?Location $location): bool
     {
         if ($location !== null && ! $this->view($user, $location)) {
@@ -67,5 +80,24 @@ class LocationPolicy
         $tenant = $user->relationLoaded('tenant') ? $user->tenant : $user->tenant()->first();
 
         return $tenant instanceof Tenant && $tenant->employeesMayManageLocations();
+    }
+
+    private function mayPairDevice(User $user): bool
+    {
+        $tenantId = Tenancy::id() ?? $user->tenant_id;
+        if ($tenantId === null) {
+            return false;
+        }
+
+        $tenant = Tenant::query()->find($tenantId);
+        if (! $tenant instanceof Tenant || CheckmateMode::isActive($tenant)) {
+            return false;
+        }
+
+        if ($user->is_superuser && Tenancy::id() !== null) {
+            return true;
+        }
+
+        return $user->isAdmin() || $user->isEmployee();
     }
 }

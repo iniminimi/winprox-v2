@@ -48,7 +48,7 @@ class AddDevice extends Component
     #[On('open-add-device')]
     public function openModal(): void
     {
-        $this->authorize('create', Screen::class);
+        $this->authorize('pairDeviceAny', Location::class);
         $this->resetForm();
         $this->open = true;
     }
@@ -85,7 +85,7 @@ class AddDevice extends Component
         IssueScreenPairingCodeAction $screen,
         IssueCameraPairingCodeAction $camera,
     ): void {
-        $this->authorize('create', Screen::class);
+        $this->authorize('pairDeviceAny', Location::class);
         $this->validatePlace();
         $this->flash = null;
 
@@ -110,7 +110,7 @@ class AddDevice extends Component
         ConfirmScreenClaimAction $screen,
         ConfirmCameraClaimAction $camera,
     ): void {
-        $this->authorize('create', Screen::class);
+        $this->authorize('pairDeviceAny', Location::class);
         $tenantId = $this->tenantId();
         $actorId = auth()->id();
 
@@ -136,7 +136,7 @@ class AddDevice extends Component
         DenyScreenClaimAction $screen,
         DenyCameraClaimAction $camera,
     ): void {
-        $this->authorize('create', Screen::class);
+        $this->authorize('pairDeviceAny', Location::class);
         $tenantId = $this->tenantId();
         $actorId = auth()->id();
 
@@ -159,7 +159,7 @@ class AddDevice extends Component
     public function render(): View
     {
         $user = auth()->user();
-        $allowed = $user instanceof User && $user->can('create', Screen::class);
+        $allowed = $user instanceof User && $user->can('pairDeviceAny', Location::class);
         $locations = $allowed && $this->open ? $this->locationOptions() : [];
         $places = $allowed && $this->open ? $this->placeOptions() : [];
         $code = $allowed && $this->open ? $this->openCode() : null;
@@ -237,6 +237,7 @@ class AddDevice extends Component
             ->first();
         abort_if($point === null, 404);
         $this->authorize('update', $point);
+        $this->authorizePlace($point->location_id !== null ? (int) $point->location_id : null);
 
         return $point;
     }
@@ -254,6 +255,7 @@ class AddDevice extends Component
             )
             ->first();
         abort_if($unit === null, 404);
+        $this->authorizePlace($unit->location_id !== null ? (int) $unit->location_id : null);
 
         return $unit;
     }
@@ -271,10 +273,14 @@ class AddDevice extends Component
             ? ClockPoint::query()->where('tenant_id', $this->tenantId())->where('is_active', true)
             : Unit::query()->where('tenant_id', $this->tenantId())->where('is_active', true);
 
+        $viewer = auth()->user();
+        $allowedIds = $viewer instanceof User ? $viewer->accessibleLocationIds() : [];
+
         $options = Location::query()
             ->where('tenant_id', $this->tenantId())
             ->where('is_active', true)
             ->whereIn('id', (clone $places)->whereNotNull('location_id')->select('location_id'))
+            ->when(is_array($allowedIds), fn ($query) => $query->whereIn('id', $allowedIds === [] ? [0] : $allowedIds))
             ->orderBy('name')
             ->get()
             ->map(fn (Location $location): array => [
@@ -284,7 +290,7 @@ class AddDevice extends Component
             ->sortBy('label', SORT_NATURAL | SORT_FLAG_CASE)
             ->values();
 
-        if ((clone $places)->whereNull('location_id')->exists()) {
+        if ($viewer instanceof User && $viewer->hasUnrestrictedLocationAccess() && (clone $places)->whereNull('location_id')->exists()) {
             $options->push([
                 'id' => 0,
                 'label' => __('dashboard.add_device.no_location'),
@@ -299,7 +305,7 @@ class AddDevice extends Component
      */
     private function placeOptions(): array
     {
-        if ($this->locationId === null || ! in_array($this->deviceType, ['clock', 'screen', 'camera'], true)) {
+        if ($this->locationId === null || ! in_array($this->deviceType, ['clock', 'screen', 'camera'], true) || ! $this->mayListPlaces()) {
             return [];
         }
 
@@ -347,6 +353,45 @@ class AddDevice extends Component
         abort_if($this->locationId === null, 404);
 
         return $this->locationId === 0 ? null : $this->locationId;
+    }
+
+    private function authorizePlace(?int $locationId): void
+    {
+        $user = auth()->user();
+        abort_unless($user instanceof User, 403);
+        $this->authorize('pairDeviceAny', Location::class);
+
+        if ($locationId === null) {
+            abort_unless($user->hasUnrestrictedLocationAccess(), 403);
+
+            return;
+        }
+
+        $location = Location::query()
+            ->where('tenant_id', $this->tenantId())
+            ->whereKey($locationId)
+            ->first();
+        abort_if($location === null, 404);
+        $this->authorize('pairDevice', $location);
+    }
+
+    private function mayListPlaces(): bool
+    {
+        $user = auth()->user();
+        if (! $user instanceof User) {
+            return false;
+        }
+
+        if ($this->locationId === 0) {
+            return $user->hasUnrestrictedLocationAccess();
+        }
+
+        $location = Location::query()
+            ->where('tenant_id', $this->tenantId())
+            ->whereKey($this->locationId)
+            ->first();
+
+        return $location instanceof Location && $user->can('pairDevice', $location);
     }
 
     /**
@@ -446,7 +491,6 @@ class AddDevice extends Component
         $claim = ScreenClaim::query()->whereKey($claimId)->first();
         $screen = $claim?->screen;
         abort_if($claim === null || $screen === null || (int) $screen->unit_id !== (int) $unit->id, 404);
-        $this->authorize('update', $screen);
 
         return $claim;
     }
@@ -457,7 +501,6 @@ class AddDevice extends Component
         $claim = CameraClaim::query()->whereKey($claimId)->first();
         $camera = $claim?->camera;
         abort_if($claim === null || $camera === null || (int) $camera->unit_id !== (int) $unit->id, 404);
-        $this->authorize('update', $camera);
 
         return $claim;
     }

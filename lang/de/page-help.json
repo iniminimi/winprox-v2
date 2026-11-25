@@ -12,7 +12,7 @@
             "actions": [
                 {
                     "label": "Gerät hinzufügen",
-                    "text": "Neben Ausführende ansehen steht Gerät hinzufügen. Nur ein Administrator sieht diese Schaltfläche.<br><br>Sie wählen eine Stechuhr, einen Raumbildschirm oder eine Kamera. Danach wählen Sie zuerst den Standort und dann die Unit. Eine Stechuhr gehört zu einem Clock Point an diesem Standort.<br><br>Sie erhalten einen Code. Der Techniker gibt ihn am Gerät ein. Wenn das Gerät um eine Verbindung bittet, bestätigen Sie das im selben Fenster. Der Code gilt etwa 10 Minuten."
+                    "text": "Neben Ausführende ansehen steht Gerät hinzufügen. Ein Administrator sieht alle Standorte. Eine Mitarbeiterin sieht nur die Standorte, die ihr zugewiesen sind. Ohne Zuweisung gelten alle Standorte.<br><br>Sie wählen eine Stechuhr, einen Raumbildschirm oder eine Kamera. Danach wählen Sie zuerst den Standort und dann die Unit. Eine Stechuhr gehört zu einem Clock Point an diesem Standort.<br><br>Sie erhalten einen Code. Der Techniker gibt ihn am Gerät ein. Wenn das Gerät um eine Verbindung bittet, bestätigen Sie das im selben Fenster. Der Code gilt etwa 10 Minuten."
                 },
                 {
                     "label": "Schnell zu einer Aktion",

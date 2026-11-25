@@ -12,7 +12,7 @@
             "actions": [
                 {
                     "label": "Add a device",
-                    "text": "Next to View workers is Add a device. Only an administrator sees that button.<br><br>You choose a time clock, a room screen or a camera. Then you choose the location first and the unit after that. A time clock belongs to a Clock Point at that location.<br><br>You receive a code. The technician types it on the device. When the device asks to link, you confirm in the same window. The code lasts about 10 minutes."
+                    "text": "Next to View workers is Add a device. An administrator sees every location. An employee sees only the locations assigned to her. With no assignment, every location applies.<br><br>You choose a time clock, a room screen or a camera. Then you choose the location first and the unit after that. A time clock belongs to a Clock Point at that location.<br><br>You receive a code. The technician types it on the device. When the device asks to link, you confirm in the same window. The code lasts about 10 minutes."
                 },
                 {
                     "label": "Quick actions",

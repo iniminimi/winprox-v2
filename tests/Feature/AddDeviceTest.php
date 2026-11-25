@@ -54,7 +54,7 @@ it('toont Toestel toevoegen naast Uitvoerders bekijken', function () {
         ->assertSee(__('dashboard.add_device.body'));
 });
 
-it('verbergt Toestel toevoegen voor een medewerker en voor Checkmate', function () {
+it('toont Toestel toevoegen aan een medewerker en verbergt het in Checkmate', function () {
     $tenant = addDeviceTenant();
     $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
     Tenancy::actAs($tenant->id);
@@ -62,7 +62,7 @@ it('verbergt Toestel toevoegen voor een medewerker en voor Checkmate', function 
 
     Livewire::actingAs($employee)
         ->test(Dashboard::class)
-        ->assertDontSee(__('dashboard.add_device.body'));
+        ->assertSee(__('dashboard.add_device.body'));
 
     $checkmate = Tenant::factory()->create([
         'checkmate_mode' => true,
@@ -208,16 +208,34 @@ it('koppelt een lokaalscherm en een camera aan een unit, niet aan een andere org
     expect(Camera::query()->where('unit_id', $unit->id)->first()?->pairing_code)->not->toBeNull();
 });
 
-it('laat een medewerker geen code maken', function () {
-    $tenant = addDeviceTenant();
+it('laat een medewerker alleen een toestel koppelen op haar locatie', function () {
+    $tenant = addDeviceTenant(false);
     $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
     Tenancy::actAs($tenant->id);
-    $point = ClockPoint::factory()->create(['tenant_id' => $tenant->id]);
+    $hers = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Magazijn']);
+    $other = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Kantoor']);
+    $unit = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $hers->id, 'name' => 'Hal']);
+    $elsewhere = Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $other->id, 'name' => 'Balie']);
+    $employee->locations()->attach($hers->id);
 
     Livewire::actingAs($employee)
         ->test(AddDevice::class)
-        ->set('deviceType', 'clock')
-        ->set('placeId', $point->id)
+        ->call('openModal')
+        ->set('deviceType', 'screen')
+        ->assertSee('Magazijn')
+        ->assertDontSee('Kantoor')
+        ->set('locationId', $hers->id)
+        ->assertSee('Hal')
+        ->set('placeId', $unit->id)
+        ->call('issue');
+
+    expect(Screen::query()->where('unit_id', $unit->id)->first()?->pairing_code)->not->toBeNull();
+
+    Livewire::actingAs($employee)
+        ->test(AddDevice::class)
+        ->set('deviceType', 'screen')
+        ->set('locationId', $other->id)
+        ->set('placeId', $elsewhere->id)
         ->call('issue')
         ->assertForbidden();
 });

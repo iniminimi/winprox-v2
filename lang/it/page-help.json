@@ -12,7 +12,7 @@
             "actions": [
                 {
                     "label": "Aggiungi un dispositivo",
-                    "text": "Accanto a Vedi esecutori c’è Aggiungi un dispositivo. Solo un amministratore vede quel pulsante.<br><br>Scegliete una timbratrice, uno schermo di locale o una telecamera. Poi scegliete prima la sede e dopo la unit. Una timbratrice appartiene a un Clock Point di quella sede.<br><br>Ricevete un codice. Il tecnico lo digita sul dispositivo. Quando il dispositivo chiede di collegarsi, confermate nella stessa finestra. Il codice vale circa 10 minuti."
+                    "text": "Accanto a Vedi esecutori c’è Aggiungi un dispositivo. Un amministratore vede tutte le sedi. Una collaboratrice vede solo le sedi che le sono assegnate. Senza assegnazione valgono tutte le sedi.<br><br>Scegliete una timbratrice, uno schermo di locale o una telecamera. Poi scegliete prima la sede e dopo la unit. Una timbratrice appartiene a un Clock Point di quella sede.<br><br>Ricevete un codice. Il tecnico lo digita sul dispositivo. Quando il dispositivo chiede di collegarsi, confermate nella stessa finestra. Il codice vale circa 10 minuti."
                 },
                 {
                     "label": "Vai subito a un’azione",

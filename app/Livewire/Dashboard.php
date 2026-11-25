@@ -24,7 +24,7 @@ use App\Http\Requests\Onboarding\ApplyTenantStarterPackRequest;
 use App\Http\Requests\Time\SendClockPointQrMailRequest;
 use App\Livewire\Concerns\ManagesManualClockIn;
 use App\Models\ClockPoint;
-use App\Models\Screen;
+use App\Models\Location;
 use App\Models\SensePoint;
 use App\Models\Tenant;
 use App\Models\User;
@@ -369,7 +369,7 @@ class Dashboard extends Component
             'senseAttention' => (! $isCheckmate && $user instanceof User && $user->can('viewAny', SensePoint::class))
                 ? $listSenseAttention->handle($tenantId)
                 : [],
-            'canAddDevice' => $user instanceof User && $user->can('create', Screen::class),
+            'canAddDevice' => $user instanceof User && $user->can('pairDeviceAny', Location::class),
         ]);
     }
 
