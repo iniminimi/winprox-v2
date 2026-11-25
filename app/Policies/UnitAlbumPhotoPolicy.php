@@ -20,8 +20,12 @@ class UnitAlbumPhotoPolicy
 
     public function view(User $user, UnitAlbumPhoto $photo): bool
     {
+        $photo->loadMissing('unit');
+
         return $this->viewAny($user)
-            && SuperuserTenantAccess::canAccessTenant($user, (int) $photo->tenant_id);
+            && SuperuserTenantAccess::canAccessTenant($user, (int) $photo->tenant_id)
+            && $photo->unit !== null
+            && $user->can('view', $photo->unit);
     }
 
     public function send(User $user): bool

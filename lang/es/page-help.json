@@ -24,7 +24,7 @@
                 },
                 {
                     "label": "Resumen",
-                    "text": "Bajo el título Panel encuentra tarjetas con conteos y puntos de atención actuales.<br><br>Ejemplos:<br>• Avisos abiertos.<br>• Tareas abiertas.<br>• Quién está presente ahora, si Time está activo.<br><br>Algunas tarjetas solo aparecen cuando hay algo que hacer — por ejemplo avisos por revisar, puntos de atención en Time, un nuevo ejecutor por comprobar, o solicitudes abiertas o alarmas IoT.<br><br>Pulse una tarjeta para ir directamente a la pantalla correspondiente.<br><br>Las solicitudes abiertas de vacaciones, compensación, enfermedad u Otro aparecen como tarjeta aparte. Ve el número por tipo. Pulse para ir a Time → Solicitudes.<br><br>Si hay fotos de una ausencia con más de 5 meses, aparece una tarjeta. Se borrarán en un mes. Haga clic para verlas en Solicitudes y guardar una copia.<br><br>Un empleado con sedes elegidas solo ve las cifras de esas sedes. La barra de búsqueda de arriba solo encuentra sedes, unidades, avisos, tareas, ejecutores y compañeros de esas sedes."
+                    "text": "Bajo el título Panel encuentra tarjetas con conteos y puntos de atención actuales.<br><br>Ejemplos:<br>• Avisos abiertos.<br>• Tareas abiertas.<br>• Quién está presente ahora, si Time está activo.<br><br>Algunas tarjetas solo aparecen cuando hay algo que hacer — por ejemplo avisos por revisar, puntos de atención en Time, un nuevo ejecutor por comprobar, o solicitudes abiertas o alarmas IoT.<br><br>Pulse una tarjeta para ir directamente a la pantalla correspondiente.<br><br>Las solicitudes abiertas de vacaciones, compensación, enfermedad u Otro aparecen como tarjeta aparte. Ve el número por tipo. Pulse para ir a Time → Solicitudes.<br><br>Si hay fotos de una ausencia con más de 5 meses, aparece una tarjeta. Se borrarán en un mes. Haga clic para verlas en Solicitudes y guardar una copia.<br><br>Un empleado con sedes elegidas solo ve las cifras de esas sedes. La barra de búsqueda de arriba encuentra sedes, unidades, ejecutores y compañeros de esas sedes. Los avisos y las tareas de toda la organización sí aparecen. La página de detalle de otra sede no se abre."
                 },
                 {
                     "label": "WinProx en su escritorio",
@@ -610,7 +610,7 @@
                 },
                 {
                     "label": "Ubicaciones",
-                    "text": "En un empleado puede decidir a qué ubicaciones tiene acceso.<br><br>Marque las ubicaciones que quiera.<br><br>• Una o varias ubicaciones seleccionadas: el empleado tiene acceso a esas ubicaciones.<br>• Ninguna ubicación seleccionada: el empleado tiene acceso a todas las ubicaciones.<br><br>Un administrador tiene siempre acceso a todas las ubicaciones. Este límite solo se aplica a los empleados. Ese empleado solo ve y edita después a los ejecutores y compañeros de esas ubicaciones. La búsqueda, las cifras de la pantalla de inicio, las horas extra, las alarmas y las solicitudes de ausencia siguen esas mismas ubicaciones."
+                    "text": "En un empleado puede decidir a qué ubicaciones tiene acceso.<br><br>Marque las ubicaciones que quiera.<br><br>• Una o varias ubicaciones seleccionadas: el empleado tiene acceso a esas ubicaciones.<br>• Ninguna ubicación seleccionada: el empleado tiene acceso a todas las ubicaciones.<br><br>Un administrador tiene siempre acceso a todas las ubicaciones. Este límite solo se aplica a los empleados. Ese empleado solo ve y edita después a los ejecutores y compañeros de esas ubicaciones. Las cifras de la pantalla de inicio, las horas extra, las alarmas, las solicitudes de ausencia, los Clock Points y el álbum de fotos siguen esas mismas ubicaciones. La búsqueda también muestra avisos y tareas de otras ubicaciones, pero esa página de detalle no se abre."
                 },
                 {
                     "label": "Iniciar sesión con Microsoft",
@@ -809,7 +809,7 @@
                 },
                 {
                     "label": "Enviar fotos por correo",
-                    "text": "Usted gestiona el álbum de fotos en Ubicaciones → Unidades → Álbum de fotos.<br><br><strong>¿Cómo envía las fotos?</strong><br>1. Elija la unidad.<br>2. Seleccione el día en que se hicieron las fotos.<br>3. Marque las fotos que quiere enviar.<br>4. Escriba la dirección de correo del destinatario.<br>5. Añada si lo desea una descripción, por ejemplo Mamá de Lotte.<br>6. Envíe las fotos."
+                    "text": "Usted gestiona el álbum de fotos en Ubicaciones → Unidades → Álbum de fotos.<br><br><strong>¿Cómo envía las fotos?</strong><br>1. Elija la unidad.<br>2. Seleccione el día en que se hicieron las fotos.<br>3. Marque las fotos que quiere enviar.<br>4. Escriba la dirección de correo del destinatario.<br>5. Añada si lo desea una descripción, por ejemplo Mamá de Lotte.<br>6. Envíe las fotos. Un empleado con sedes elegidas solo ve las unidades de esas sedes."
                 },
                 {
                     "label": "Guardar direcciones de correo",

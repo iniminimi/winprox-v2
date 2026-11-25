@@ -83,6 +83,33 @@ class Issue extends Model
         return $this->hasMany(IssueRoundStop::class)->orderBy('sort_order')->orderBy('id');
     }
 
+    /**
+     * Een medewerker met gekozen locaties opent geen melding van een andere locatie.
+     * Een ronde zonder eigen locatie alleen als elke stop bij haar hoort.
+     */
+    public function isVisibleTo(User $user): bool
+    {
+        $allowed = $user->accessibleLocationIds();
+        if ($allowed === null) {
+            return true;
+        }
+
+        if ($this->location_id !== null) {
+            return in_array((int) $this->location_id, $allowed, true);
+        }
+
+        $this->loadMissing('roundStops.unit');
+        if ($this->roundStops->isEmpty()) {
+            return false;
+        }
+
+        return $this->roundStops->every(function (IssueRoundStop $stop) use ($allowed): bool {
+            $locationId = $stop->unit?->location_id;
+
+            return $locationId !== null && in_array((int) $locationId, $allowed, true);
+        });
+    }
+
     public function esgIndicator(): BelongsTo
     {
         return $this->belongsTo(EsgIndicator::class);

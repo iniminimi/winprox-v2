@@ -13,8 +13,10 @@ use App\Data\PhotoAlbum\SendUnitAlbumPhotosData;
 use App\Enums\UnitAlbumSendStatus;
 use App\Http\Requests\PhotoAlbum\SendUnitAlbumPhotosRequest;
 use App\Http\Requests\PhotoAlbum\UpdateUnitAlbumRecipientRequest;
+use App\Models\Unit;
 use App\Models\UnitAlbumPhoto;
 use App\Models\UnitAlbumRecipient;
+use App\Models\User;
 use App\Support\Tenancy;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Validator;
@@ -79,6 +81,10 @@ class PhotoAlbumIndex extends Component
     {
         $this->authorize('send', UnitAlbumPhoto::class);
         $this->statusMessage = null;
+        $unit = Unit::query()->where('tenant_id', Tenancy::id())->find($this->unitId ?? $this->currentUnitId());
+        if ($unit instanceof Unit) {
+            $this->authorize('view', $unit);
+        }
 
         $input = [
             'unit_id' => $this->unitId ?? $this->currentUnitId(),
@@ -203,7 +209,7 @@ class PhotoAlbumIndex extends Component
 
     public function render(LoadUnitPhotoAlbumAction $load): View
     {
-        $album = $load->handle((int) Tenancy::id(), $this->unitId, $this->day !== '' ? $this->day : null);
+        $album = $load->handle((int) Tenancy::id(), $this->actor(), $this->unitId, $this->day !== '' ? $this->day : null);
         $resolvedUnitId = $album['unit']?->id !== null ? (int) $album['unit']->id : null;
         if ($this->unitId !== $resolvedUnitId) {
             $this->unitId = $resolvedUnitId;
@@ -218,9 +224,17 @@ class PhotoAlbumIndex extends Component
         ]);
     }
 
+    private function actor(): User
+    {
+        $user = auth()->user();
+        abort_unless($user instanceof User, 403);
+
+        return $user;
+    }
+
     private function currentUnitId(): ?int
     {
-        $unit = app(LoadUnitPhotoAlbumAction::class)->handle((int) Tenancy::id(), null, null)['unit'];
+        $unit = app(LoadUnitPhotoAlbumAction::class)->handle((int) Tenancy::id(), $this->actor(), null, null)['unit'];
 
         return $unit?->id !== null ? (int) $unit->id : null;
     }

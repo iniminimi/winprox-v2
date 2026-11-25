@@ -24,7 +24,7 @@
                 },
                 {
                     "label": "Aperçu",
-                    "text": "Sous le titre Tableau de bord, vous trouvez des cartes avec des compteurs et points d’attention actuels.<br><br>Exemples :<br>• Signalements ouverts.<br>• Tâches ouvertes.<br>• Qui est présent maintenant, si Time est actif.<br><br>Certaines cartes n’apparaissent que lorsqu’il y a quelque chose à faire — par exemple des signalements à examiner, des points d’attention dans Time, un nouvel exécutant à contrôler, ou des demandes ouvertes ou alarmes IoT.<br><br>Cliquez sur une carte pour aller directement à l’écran correspondant.<br><br>Les demandes ouvertes de congé, récupération, maladie ou Autre apparaissent comme carte séparée. Vous voyez le nombre par type. Cliquez pour aller dans Time → Demandes.<br><br>Si des photos d’une absence ont plus de 5 mois, une carte apparaît. Elles seront effacées dans un mois. Cliquez dessus pour les voir sous Demandes et en garder une copie.<br><br>Un collaborateur avec des sites choisis ne voit que les chiffres de ces sites. La barre de recherche en haut ne trouve que les sites, unités, signalements, tâches, exécutants et collègues de ces sites."
+                    "text": "Sous le titre Tableau de bord, vous trouvez des cartes avec des compteurs et points d’attention actuels.<br><br>Exemples :<br>• Signalements ouverts.<br>• Tâches ouvertes.<br>• Qui est présent maintenant, si Time est actif.<br><br>Certaines cartes n’apparaissent que lorsqu’il y a quelque chose à faire — par exemple des signalements à examiner, des points d’attention dans Time, un nouvel exécutant à contrôler, ou des demandes ouvertes ou alarmes IoT.<br><br>Cliquez sur une carte pour aller directement à l’écran correspondant.<br><br>Les demandes ouvertes de congé, récupération, maladie ou Autre apparaissent comme carte séparée. Vous voyez le nombre par type. Cliquez pour aller dans Time → Demandes.<br><br>Si des photos d’une absence ont plus de 5 mois, une carte apparaît. Elles seront effacées dans un mois. Cliquez dessus pour les voir sous Demandes et en garder une copie.<br><br>Un collaborateur avec des sites choisis ne voit que les chiffres de ces sites. La barre de recherche en haut trouve les sites, unités, exécutants et collègues de ces sites. Les signalements et les tâches de toute l’organisation apparaissent quand même. La page de détail d’un autre site ne s’ouvre pas."
                 },
                 {
                     "label": "WinProx sur votre bureau",
@@ -614,7 +614,7 @@
                 },
                 {
                     "label": "Sites",
-                    "text": "Pour un employé, vous pouvez choisir les sites auxquels il a accès.<br><br>Cochez les sites souhaités.<br><br>• Un ou plusieurs sites sélectionnés : l’employé a accès aux sites sélectionnés.<br>• Aucun site sélectionné : l’employé a accès à tous les sites.<br><br>Un administrateur a toujours accès à tous les sites. Cette limite ne concerne donc que les employés. Cet employé ne voit et ne modifie ensuite que les exécutants et les collègues de ces sites. La recherche, les chiffres de l’écran d’accueil, les heures supplémentaires, les alarmes et les demandes d’absence suivent ces mêmes sites."
+                    "text": "Pour un employé, vous pouvez choisir les sites auxquels il a accès.<br><br>Cochez les sites souhaités.<br><br>• Un ou plusieurs sites sélectionnés : l’employé a accès aux sites sélectionnés.<br>• Aucun site sélectionné : l’employé a accès à tous les sites.<br><br>Un administrateur a toujours accès à tous les sites. Cette limite ne concerne donc que les employés. Cet employé ne voit et ne modifie ensuite que les exécutants et les collègues de ces sites. Les chiffres de l’écran d’accueil, les heures supplémentaires, les alarmes, les demandes d’absence, les Clock Points et l’album photo suivent ces mêmes sites. La recherche montre aussi les signalements et les tâches des autres sites, mais cette page de détail ne s’ouvre pas."
                 },
                 {
                     "label": "Se connecter avec Microsoft",
@@ -813,7 +813,7 @@
                 },
                 {
                     "label": "Envoyer des photos par e-mail",
-                    "text": "Vous gérez l’album photo via Emplacements → Unités → Album photo.<br><br><strong>Comment envoyer des photos ?</strong><br>1. Choisissez l’unité.<br>2. Sélectionnez le jour où les photos ont été prises.<br>3. Cochez les photos que vous voulez envoyer.<br>4. Indiquez l’adresse e-mail du destinataire.<br>5. Ajoutez éventuellement une description, par exemple Maman de Lotte.<br>6. Envoyez les photos."
+                    "text": "Vous gérez l’album photo via Emplacements → Unités → Album photo.<br><br><strong>Comment envoyer des photos ?</strong><br>1. Choisissez l’unité.<br>2. Sélectionnez le jour où les photos ont été prises.<br>3. Cochez les photos que vous voulez envoyer.<br>4. Indiquez l’adresse e-mail du destinataire.<br>5. Ajoutez éventuellement une description, par exemple Maman de Lotte.<br>6. Envoyez les photos. Un collaborateur avec des sites choisis ne voit que les unités de ces sites."
                 },
                 {
                     "label": "Conserver les adresses e-mail",

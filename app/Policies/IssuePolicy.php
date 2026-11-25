@@ -26,7 +26,8 @@ class IssuePolicy
     public function view(User $user, Issue $issue): bool
     {
         return $this->sameTenant($user, $issue->tenant_id)
-            && $this->mayUseIssue($user, $issue);
+            && $this->mayUseIssue($user, $issue)
+            && $issue->isVisibleTo($user);
     }
 
     public function create(User $user): bool
@@ -44,14 +45,16 @@ class IssuePolicy
     {
         return $this->sameTenant($user, $issue->tenant_id)
             && ($user->isAdmin() || $user->isEmployee())
-            && $this->mayUseIssue($user, $issue);
+            && $this->mayUseIssue($user, $issue)
+            && $issue->isVisibleTo($user);
     }
 
     public function update(User $user, Issue $issue): bool
     {
         return $this->sameTenant($user, $issue->tenant_id)
             && ($user->isAdmin() || $user->isEmployee())
-            && $this->mayUseIssue($user, $issue);
+            && $this->mayUseIssue($user, $issue)
+            && $issue->isVisibleTo($user);
     }
 
     public function viewInspectionRounds(User $user): bool

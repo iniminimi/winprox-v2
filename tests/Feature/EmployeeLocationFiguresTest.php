@@ -76,13 +76,13 @@ it('beperkt overuren, alarmen, verlof, cijfers en zoeken tot de locaties van de 
         'path' => 'absence-request-photos/'.$tenant->id.'/weg.jpg',
     ]);
 
-    Issue::factory()->create([
+    $issueHere = Issue::factory()->create([
         'tenant_id' => $tenant->id,
         'location_id' => $here->id,
         'description' => 'Lek Hier',
         'status' => TaskStatus::New,
     ]);
-    Issue::factory()->create([
+    $issueAway = Issue::factory()->create([
         'tenant_id' => $tenant->id,
         'location_id' => $away->id,
         'description' => 'Lek Daar',
@@ -131,17 +131,26 @@ it('beperkt overuren, alarmen, verlof, cijfers en zoeken tot de locaties van de 
         ->and($stats->timeAttention)->toBe(1)
         ->and($stats->pendingAbsenceRequests)->toBe(1);
 
+    expect(Gate::forUser($employee)->allows('view', $issueHere))->toBeTrue()
+        ->and(Gate::forUser($employee)->allows('view', $issueAway))->toBeFalse();
+
     $found = app(SearchTenantGlobalAction::class)->handle($employee, $tenant->id, 'Daar');
+    $awayHit = $found->get('issues')?->first(fn (array $row): bool => str_contains((string) $row['title'], 'Lek Daar'));
     expect($found->get('locations'))->toBeNull()
         ->and($found->get('units'))->toBeNull()
-        ->and($found->get('issues'))->toBeNull();
+        ->and($awayHit)->not->toBeNull()
+        ->and($awayHit['url'])->toBe('');
 
     $foundHere = app(SearchTenantGlobalAction::class)->handle($employee, $tenant->id, 'Magazijn');
     expect($foundHere->get('locations')?->pluck('title')->all())->toBe(['Magazijn A']);
 
     $foundIssue = app(SearchTenantGlobalAction::class)->handle($employee, $tenant->id, 'Lek');
-    expect($foundIssue->get('issues')?->pluck('title')->filter(fn (string $title) => str_contains($title, 'Lek Hier'))->isNotEmpty())->toBeTrue()
-        ->and($foundIssue->get('issues')?->pluck('title')->filter(fn (string $title) => str_contains($title, 'Lek Daar'))->isEmpty())->toBeTrue();
+    $hereHit = $foundIssue->get('issues')?->first(fn (array $row): bool => str_contains((string) $row['title'], 'Lek Hier'));
+    $thereHit = $foundIssue->get('issues')?->first(fn (array $row): bool => str_contains((string) $row['title'], 'Lek Daar'));
+    expect($hereHit)->not->toBeNull()
+        ->and($hereHit['url'])->not->toBe('')
+        ->and($thereHit)->not->toBeNull()
+        ->and($thereHit['url'])->toBe('');
 });
 
 it('toont een medewerker alleen de clock points van haar locatie', function () {

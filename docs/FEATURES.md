@@ -610,7 +610,7 @@ backoffice kiest welke foto's naar één e-mailadres gaan. Algemeen, niet sector
   organisatie. De balk en de letters schalen mee met de breedte. Eigen foto's van vandaag wissen kan.
 
 ### Beheer (`/photo-album`, Plaatsen → Fotoalbum, onder Units)
-- Alleen units en dagen waarop nog foto's staan (binnen de bewaartermijn). Foto's als kleine thumbnails, zoals bij meldingen: aanvinken en wissen.
+- Alleen units en dagen waarop nog foto's staan (binnen de bewaartermijn). Een medewerker met gekozen locaties ziet alleen de units van die locaties. Foto's als kleine thumbnails, zoals bij meldingen: aanvinken en wissen.
 - **Eén ontvanger per verzending**; adres + vrije omschrijving worden per unit bewaard
   (`unit_album_recipients`) en voorgesteld; beheren/verwijderen in hetzelfde scherm.
 - Max. **8 foto's per mail**, ingesloten (CID), onder elkaar in simpele HTML, geen links; meer foto's = meerdere mails.
@@ -1526,7 +1526,7 @@ Worker-aanmelding loopt via **Clock Point-QR** (`/time/{token}`), niet via een a
   welkomst-/accountmail (set-password-link via reset-broker). `users.is_active` → inactief = geen login.
 - Medewerker: optioneel **locatie-multi-select** (leeg = alle vestigingen). Met Time-module:
   optioneel **prikklok-team** → gekoppeld worker-profiel (`workers.user_id`, telt niet dubbel als licentie).
-- Sidebar **Personen → Backoffice** (`/team?section=backoffice`). Een medewerker ziet de collega’s van haar locaties. Alleen een beheerder voegt collega’s toe of bewerkt hun account. Zoeken, de cijfers op het beginscherm, overuren, alarmen en afwezigheidsaanvragen (ook de foto) volgen diezelfde locaties. Onder Je organisatie kan een beheerder toelaten dat een medewerker ook de aanwezigheid van andere Clock Points ziet. Standaard uit.
+- Sidebar **Personen → Backoffice** (`/team?section=backoffice`). Een medewerker ziet de collega’s van haar locaties. Alleen een beheerder voegt collega’s toe of bewerkt hun account. De cijfers op het beginscherm, overuren, alarmen en afwezigheidsaanvragen (ook de foto), Clock Points en het fotoalbum volgen diezelfde locaties. Zoeken toont ook meldingen en taken van andere locaties, maar die detailpagina opent niet. Onder Je organisatie kan een beheerder toelaten dat een medewerker ook de aanwezigheid van andere Clock Points ziet. Standaard uit.
 
 ### 6.2 Teams
 - Sidebar **Personen → Teams** (`/team?section=teams`): teamlijst (geen checklists).

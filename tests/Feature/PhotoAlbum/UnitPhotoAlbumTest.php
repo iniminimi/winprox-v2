@@ -45,6 +45,29 @@ function albumPhoto(Unit $unit, Worker $worker): UnitAlbumPhoto
     return app(UploadUnitAlbumPhotoAction::class)->handle($unit, UploadedFile::fake()->image('a.jpg', 100, 100), (int) $unit->tenant_id, $worker);
 }
 
+it('toont een medewerker alleen het album van haar locatie', function () {
+    [$tenant, $unit, $worker] = albumContext();
+    $awayLocation = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Andere']);
+    $awayUnit = Unit::factory()->create([
+        'tenant_id' => $tenant->id,
+        'location_id' => $awayLocation->id,
+        'name' => 'Lokaal Weg',
+    ]);
+    albumPhoto($unit, $worker);
+    $awayPhoto = albumPhoto($awayUnit, $worker);
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+    $employee->locations()->sync([$unit->location_id]);
+
+    Livewire::actingAs($employee)
+        ->test(PhotoAlbumIndex::class)
+        ->assertSee('Lokaal 1')
+        ->assertDontSee('Lokaal Weg');
+
+    $this->actingAs($employee)
+        ->get(route('photo-album.photos.show', $awayPhoto))
+        ->assertForbidden();
+});
+
 it('bewaart foto privé en stopt bij het maximum per dag', function () {
     [, $unit, $worker] = albumContext();
     config(['unit_photo_album.max_photos_per_day' => 2]);

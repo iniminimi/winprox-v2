@@ -47,15 +47,26 @@
                     <h3 class="wp-search-section-title">{{ __('search.'.$type) }}</h3>
                     <div class="wp-search-list">
                         @foreach ($items as $item)
-                            <a href="{{ $item['url'] }}" class="wp-search-item">
-                                <div class="wp-search-item-content">
-                                    <span class="wp-search-item-title">{{ $item['title'] }}</span>
-                                    @if ($item['subtitle'])
-                                        <span class="wp-search-item-subtitle">{{ $item['subtitle'] }}</span>
-                                    @endif
+                            @if ($item['url'] !== '')
+                                <a href="{{ $item['url'] }}" class="wp-search-item">
+                                    <div class="wp-search-item-content">
+                                        <span class="wp-search-item-title">{{ $item['title'] }}</span>
+                                        @if ($item['subtitle'])
+                                            <span class="wp-search-item-subtitle">{{ $item['subtitle'] }}</span>
+                                        @endif
+                                    </div>
+                                    <x-wp-icon name="arrow-right" class="wp-search-item-icon" />
+                                </a>
+                            @else
+                                <div class="wp-search-item">
+                                    <div class="wp-search-item-content">
+                                        <span class="wp-search-item-title">{{ $item['title'] }}</span>
+                                        @if ($item['subtitle'])
+                                            <span class="wp-search-item-subtitle">{{ $item['subtitle'] }}</span>
+                                        @endif
+                                    </div>
                                 </div>
-                                <x-wp-icon name="arrow-right" class="wp-search-item-icon" />
-                            </a>
+                            @endif
                         @endforeach
                     </div>
                 </div>

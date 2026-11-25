@@ -24,7 +24,7 @@
                 },
                 {
                     "label": "Overzicht",
-                    "text": "Onder de titel Dashboard vindt u kaarten met actuele tellingen en aandachtspunten.<br><br>Voorbeelden zijn:<br>• Open meldingen.<br>• Open taken.<br>• Wie er momenteel aanwezig is, als Time actief is.<br><br>Sommige kaarten verschijnen alleen wanneer er iets te doen is. Bijvoorbeeld wanneer er meldingen moeten worden beoordeeld, er aandachtspunten zijn in Time, een nieuwe uitvoerder gecontroleerd moet worden of er open aanvragen of IoT-alarmen zijn.<br><br>Klik op een kaart om meteen naar het bijbehorende scherm te gaan.<br><br>Open aanvragen voor verlof, recup, ziekte of Andere verschijnen als aparte kaart. U ziet het aantal per soort. Klik erop om naar Time → Aanvragen te gaan.<br><br>Zijn er foto's bij een afwezigheid die ouder zijn dan 5 maanden, dan verschijnt een kaart. Binnen een maand worden ze gewist. Klik erop om ze bij Aanvragen te bekijken en zelf een kopie te bewaren.<br><br>Een medewerker met gekozen locaties ziet alleen de cijfers van die locaties. De zoekbalk bovenaan vindt alleen locaties, units, meldingen, taken, uitvoerders en collega’s van die locaties."
+                    "text": "Onder de titel Dashboard vindt u kaarten met actuele tellingen en aandachtspunten.<br><br>Voorbeelden zijn:<br>• Open meldingen.<br>• Open taken.<br>• Wie er momenteel aanwezig is, als Time actief is.<br><br>Sommige kaarten verschijnen alleen wanneer er iets te doen is. Bijvoorbeeld wanneer er meldingen moeten worden beoordeeld, er aandachtspunten zijn in Time, een nieuwe uitvoerder gecontroleerd moet worden of er open aanvragen of IoT-alarmen zijn.<br><br>Klik op een kaart om meteen naar het bijbehorende scherm te gaan.<br><br>Open aanvragen voor verlof, recup, ziekte of Andere verschijnen als aparte kaart. U ziet het aantal per soort. Klik erop om naar Time → Aanvragen te gaan.<br><br>Zijn er foto's bij een afwezigheid die ouder zijn dan 5 maanden, dan verschijnt een kaart. Binnen een maand worden ze gewist. Klik erop om ze bij Aanvragen te bekijken en zelf een kopie te bewaren.<br><br>Een medewerker met gekozen locaties ziet alleen de cijfers van die locaties. De zoekbalk bovenaan vindt locaties, units, uitvoerders en collega’s van die locaties. Meldingen en taken van de hele organisatie verschijnen wel. De detailpagina van een andere locatie opent niet."
                 },
                 {
                     "label": "WinProx op uw bureaublad",
@@ -610,7 +610,7 @@
                 },
                 {
                     "label": "Locaties",
-                    "text": "Bij een medewerker kunt u bepalen tot welke locaties die toegang heeft.<br><br>Vink de gewenste locaties aan.<br><br>• Eén of meerdere locaties geselecteerd: de medewerker heeft toegang tot de geselecteerde locaties.<br>• Geen locaties geselecteerd: de medewerker krijgt toegang tot alle locaties.<br><br>Een beheerder heeft altijd toegang tot alle locaties. Deze beperking geldt dus alleen voor medewerkers. Die medewerker ziet en bewerkt daarna alleen uitvoerders en collega’s van die locaties. Zoeken, de cijfers op het beginscherm, overuren, alarmen en afwezigheidsaanvragen volgen diezelfde locaties."
+                    "text": "Bij een medewerker kunt u bepalen tot welke locaties die toegang heeft.<br><br>Vink de gewenste locaties aan.<br><br>• Eén of meerdere locaties geselecteerd: de medewerker heeft toegang tot de geselecteerde locaties.<br>• Geen locaties geselecteerd: de medewerker krijgt toegang tot alle locaties.<br><br>Een beheerder heeft altijd toegang tot alle locaties. Deze beperking geldt dus alleen voor medewerkers. Die medewerker ziet en bewerkt daarna alleen uitvoerders en collega’s van die locaties. De cijfers op het beginscherm, overuren, alarmen, afwezigheidsaanvragen, Clock Points en het fotoalbum volgen diezelfde locaties. Zoeken toont ook meldingen en taken van andere locaties, maar die detailpagina opent niet."
                 },
                 {
                     "label": "Inloggen met Microsoft",
@@ -809,7 +809,7 @@
                 },
                 {
                     "label": "Foto's mailen",
-                    "text": "U beheert het fotoalbum via Plaatsen → Units → Fotoalbum.<br><br><strong>Hoe verstuurt u foto's?</strong><br>1. Kies de gewenste unit.<br>2. Selecteer de dag waarop de foto's gemaakt zijn.<br>3. Vink de foto's aan die u wilt versturen.<br>4. Vul het e-mailadres van de ontvanger in.<br>5. Voeg eventueel een omschrijving toe, bijvoorbeeld Mama van Lotte.<br>6. Verstuur de foto's."
+                    "text": "U beheert het fotoalbum via Plaatsen → Units → Fotoalbum.<br><br><strong>Hoe verstuurt u foto's?</strong><br>1. Kies de gewenste unit.<br>2. Selecteer de dag waarop de foto's gemaakt zijn.<br>3. Vink de foto's aan die u wilt versturen.<br>4. Vul het e-mailadres van de ontvanger in.<br>5. Voeg eventueel een omschrijving toe, bijvoorbeeld Mama van Lotte.<br>6. Verstuur de foto's. Een medewerker met gekozen locaties ziet alleen de units van die locaties."
                 },
                 {
                     "label": "E-mailadressen bewaren",

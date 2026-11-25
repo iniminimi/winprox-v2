@@ -6,6 +6,7 @@ namespace App\Actions\PhotoAlbum;
 
 use App\Models\Tenant;
 use App\Models\Unit;
+use App\Models\User;
 use App\Models\UnitAlbumPhoto;
 use App\Models\UnitAlbumRecipient;
 use App\Models\UnitAlbumSend;
@@ -30,7 +31,7 @@ final class LoadUnitPhotoAlbumAction
      *     retentionDays: int
      * }
      */
-    public function handle(int $tenantId, ?int $unitId, ?string $day): array
+    public function handle(int $tenantId, User $actor, ?int $unitId, ?string $day): array
     {
         $retention = max(1, (int) config('data_retention.unit_album_photos_days', 7));
         $empty = [
@@ -60,6 +61,7 @@ final class LoadUnitPhotoAlbumAction
             ->where('tenant_id', $tenantId)
             ->whereIn('id', $unitIds)
             ->where('is_active', true)
+            ->accessibleTo($actor)
             ->with(['location', 'translations'])
             ->orderBy('name')
             ->get();

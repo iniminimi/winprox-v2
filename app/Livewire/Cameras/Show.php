@@ -36,6 +36,7 @@ class Show extends Component
 
     public function mount(Unit $unit, EnsureCameraAction $ensure): void
     {
+        $this->authorize('view', $unit);
         $this->authorize('create', Camera::class);
 
         if ((int) $unit->tenant_id !== (int) Tenancy::id()) {

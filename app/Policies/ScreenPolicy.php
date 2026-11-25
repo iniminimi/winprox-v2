@@ -24,7 +24,7 @@ class ScreenPolicy
 
     public function update(User $user, Screen $screen): bool
     {
-        return $this->viewAny($user) && $this->sameTenant($screen);
+        return $this->viewAny($user) && $this->sameTenant($screen) && $this->placeAllowed($user, $screen);
     }
 
     private function allowed(User $user): bool
@@ -39,6 +39,29 @@ class ScreenPolicy
         }
 
         return $user->isAdmin();
+    }
+
+    private function placeAllowed(User $user, Screen $screen): bool
+    {
+        $screen->loadMissing(['unit', 'clockPoint']);
+
+        if ($screen->clock_point_id !== null) {
+            $locationId = $screen->clockPoint?->location_id;
+
+            return $locationId !== null
+                ? $user->canAccessLocation((int) $locationId)
+                : $user->accessibleLocationIds() === null;
+        }
+
+        if ($screen->unit_id !== null) {
+            $locationId = $screen->unit?->location_id;
+
+            return $locationId !== null
+                ? $user->canAccessLocation((int) $locationId)
+                : $user->accessibleLocationIds() === null;
+        }
+
+        return $user->accessibleLocationIds() === null;
     }
 
     private function sameTenant(Screen $screen): bool

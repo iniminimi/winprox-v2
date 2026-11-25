@@ -25,12 +25,19 @@ class CameraPolicy
 
     public function update(User $user, Camera $camera): bool
     {
-        return $this->viewAny($user) && $this->sameTenant($camera->tenant_id);
+        return $this->viewAny($user)
+            && $this->sameTenant($camera->tenant_id)
+            && $this->placeAllowed($user, $camera);
     }
 
     public function view(User $user, CameraPhoto $photo): bool
     {
-        return $this->viewAny($user) && $this->sameTenant($photo->tenant_id);
+        $photo->loadMissing('camera');
+
+        return $this->viewAny($user)
+            && $this->sameTenant($photo->tenant_id)
+            && $photo->camera !== null
+            && $this->placeAllowed($user, $photo->camera);
     }
 
     private function allowed(User $user): bool
@@ -45,6 +52,16 @@ class CameraPolicy
         }
 
         return $user->isAdmin();
+    }
+
+    private function placeAllowed(User $user, Camera $camera): bool
+    {
+        $camera->loadMissing('unit');
+        $locationId = $camera->unit?->location_id;
+
+        return $locationId !== null
+            ? $user->canAccessLocation((int) $locationId)
+            : $user->accessibleLocationIds() === null;
     }
 
     private function sameTenant(int $tenantId): bool

@@ -25,6 +25,10 @@ class TaskPolicy
 
         $task->loadMissing('issue');
 
+        if (! $this->issueVisible($user, $task)) {
+            return false;
+        }
+
         if ($task->issue?->isApproved()) {
             return $this->mayUseTask($user, $task);
         }
@@ -48,7 +52,17 @@ class TaskPolicy
         $task->loadMissing('issue');
 
         return ($task->issue?->isApproved() ?? false)
+            && $this->issueVisible($user, $task)
             && $this->mayUseTask($user, $task);
+    }
+
+    private function issueVisible(User $user, Task $task): bool
+    {
+        if ($task->issue === null) {
+            return $user->accessibleLocationIds() === null;
+        }
+
+        return $task->issue->isVisibleTo($user);
     }
 
     private function mayUseTask(User $user, Task $task): bool

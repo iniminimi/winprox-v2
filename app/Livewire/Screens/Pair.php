@@ -64,6 +64,7 @@ class Pair extends Component
 
     public function mount(Unit $unit, EnsureUnitScreenAction $ensure): void
     {
+        $this->authorize('view', $unit);
         $this->authorize('create', Screen::class);
 
         if ((int) $unit->tenant_id !== (int) Tenancy::id()) {

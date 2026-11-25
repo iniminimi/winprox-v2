@@ -24,7 +24,7 @@
                 },
                 {
                     "label": "Panoramica",
-                    "text": "Sotto il titolo Dashboard trovate schede con conteggi e punti di attenzione attuali.<br><br>Esempi:<br>• Segnalazioni aperte.<br>• Compiti aperti.<br>• Chi è presente ora, se Time è attivo.<br><br>Alcune schede compaiono solo quando c’è qualcosa da fare — ad esempio segnalazioni da esaminare, punti di attenzione in Time, un nuovo esecutore da controllare, oppure richieste aperte o allarmi IoT.<br><br>Fate clic su una scheda per andare subito alla schermata corrispondente.<br><br>Le richieste aperte di ferie, recupero, malattia o Altro compaiono come scheda separata. Vedete il numero per tipo. Fate clic per andare in Time → Richieste.<br><br>Se ci sono foto di un’assenza più vecchie di 5 mesi, compare una scheda. Saranno cancellate entro un mese. Faccia clic per vederle in Richieste e conservare una copia.<br><br>Un dipendente con sedi scelte vede solo le cifre di quelle sedi. La barra di ricerca in alto trova solo sedi, unità, segnalazioni, compiti, esecutori e colleghi di quelle sedi."
+                    "text": "Sotto il titolo Dashboard trovate schede con conteggi e punti di attenzione attuali.<br><br>Esempi:<br>• Segnalazioni aperte.<br>• Compiti aperti.<br>• Chi è presente ora, se Time è attivo.<br><br>Alcune schede compaiono solo quando c’è qualcosa da fare — ad esempio segnalazioni da esaminare, punti di attenzione in Time, un nuovo esecutore da controllare, oppure richieste aperte o allarmi IoT.<br><br>Fate clic su una scheda per andare subito alla schermata corrispondente.<br><br>Le richieste aperte di ferie, recupero, malattia o Altro compaiono come scheda separata. Vedete il numero per tipo. Fate clic per andare in Time → Richieste.<br><br>Se ci sono foto di un’assenza più vecchie di 5 mesi, compare una scheda. Saranno cancellate entro un mese. Faccia clic per vederle in Richieste e conservare una copia.<br><br>Un dipendente con sedi scelte vede solo le cifre di quelle sedi. La barra di ricerca in alto trova sedi, unità, esecutori e colleghi di quelle sedi. Le segnalazioni e i compiti di tutta l’organizzazione compaiono comunque. La pagina di dettaglio di un’altra sede non si apre."
                 },
                 {
                     "label": "WinProx sul desktop",
@@ -610,7 +610,7 @@
                 },
                 {
                     "label": "Sedi",
-                    "text": "Per un dipendente può scegliere a quali sedi ha accesso.<br><br>Selezioni le sedi desiderate.<br><br>• Una o più sedi selezionate: il dipendente ha accesso alle sedi selezionate.<br>• Nessuna sede selezionata: il dipendente ha accesso a tutte le sedi.<br><br>Un amministratore ha sempre accesso a tutte le sedi. Questo limite vale quindi solo per i dipendenti. Quel dipendente vede e modifica poi solo gli esecutori e i colleghi di quelle sedi. La ricerca, le cifre della schermata iniziale, gli straordinari, gli allarmi e le richieste di assenza seguono le stesse sedi."
+                    "text": "Per un dipendente può scegliere a quali sedi ha accesso.<br><br>Selezioni le sedi desiderate.<br><br>• Una o più sedi selezionate: il dipendente ha accesso alle sedi selezionate.<br>• Nessuna sede selezionata: il dipendente ha accesso a tutte le sedi.<br><br>Un amministratore ha sempre accesso a tutte le sedi. Questo limite vale quindi solo per i dipendenti. Quel dipendente vede e modifica poi solo gli esecutori e i colleghi di quelle sedi. Le cifre della schermata iniziale, gli straordinari, gli allarmi, le richieste di assenza, i Clock Point e l’album fotografico seguono le stesse sedi. La ricerca mostra anche segnalazioni e compiti di altre sedi, ma quella pagina di dettaglio non si apre."
                 },
                 {
                     "label": "Accedi con Microsoft",
@@ -809,7 +809,7 @@
                 },
                 {
                     "label": "Inviare le foto per e-mail",
-                    "text": "Gestisce l’album fotografico da Sedi → Unità → Album fotografico.<br><br><strong>Come invia le foto?</strong><br>1. Scelga l’unità.<br>2. Selezioni il giorno in cui le foto sono state fatte.<br>3. Selezioni le foto che vuole inviare.<br>4. Inserisca l’indirizzo e-mail del destinatario.<br>5. Aggiunga se vuole una descrizione, per esempio Mamma di Lotte.<br>6. Invii le foto."
+                    "text": "Gestisce l’album fotografico da Sedi → Unità → Album fotografico.<br><br><strong>Come invia le foto?</strong><br>1. Scelga l’unità.<br>2. Selezioni il giorno in cui le foto sono state fatte.<br>3. Selezioni le foto che vuole inviare.<br>4. Inserisca l’indirizzo e-mail del destinatario.<br>5. Aggiunga se vuole una descrizione, per esempio Mamma di Lotte.<br>6. Invii le foto. Un dipendente con sedi scelte vede solo le unità di quelle sedi."
                 },
                 {
                     "label": "Conservare gli indirizzi e-mail",

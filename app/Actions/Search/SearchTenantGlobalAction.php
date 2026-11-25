@@ -269,10 +269,8 @@ final class SearchTenantGlobalAction
      */
     private function searchIssues(int $tenantId, array $terms, User $actor): Collection
     {
-        $allowed = $actor->accessibleLocationIds();
         $query = Issue::query()
             ->where('tenant_id', $tenantId)
-            ->when($allowed !== null, fn (Builder $issues) => $issues->whereIn('location_id', $allowed ?: [0]))
             ->with(['location:id,name', 'unit:id,name', 'translations']);
 
         GlobalSearchQuery::applyAllTerms($query, $terms, static function (Builder $termQuery, string $term): void {
@@ -306,12 +304,12 @@ final class SearchTenantGlobalAction
             ->latest()
             ->limit(self::RESULT_LIMIT)
             ->get()
-            ->map(static fn (Issue $issue): array => [
+            ->map(fn (Issue $issue): array => [
                 'id' => $issue->id,
                 'type' => 'issue',
                 'title' => '#'.$issue->id.' - '.mb_strimwidth($issue->localizedDescription(), 0, 50, '...'),
                 'subtitle' => trim((string) ($issue->location?->localizedName() ?? '').($issue->unit ? ' · '.$issue->unit->localizedName() : '')),
-                'url' => route('issues.show', ['issue' => $issue->id]),
+                'url' => $actor->can('view', $issue) ? route('issues.show', ['issue' => $issue->id]) : '',
             ]);
     }
 
@@ -321,14 +319,9 @@ final class SearchTenantGlobalAction
      */
     private function searchTasks(int $tenantId, array $terms, User $actor): Collection
     {
-        $allowed = $actor->accessibleLocationIds();
         $query = Task::query()
             ->forApprovedIssue()
             ->where('tenant_id', $tenantId)
-            ->when($allowed !== null, fn (Builder $tasks) => $tasks->whereHas(
-                'issue',
-                fn (Builder $issue) => $issue->whereIn('location_id', $allowed ?: [0]),
-            ))
             ->with(['issue.location', 'issue.unit', 'team' => fn ($q) => $q->select('id', 'name', 'original_language')->with('translations')]);
 
         GlobalSearchQuery::applyAllTerms($query, $terms, static function (Builder $termQuery, string $term): void {
@@ -358,12 +351,12 @@ final class SearchTenantGlobalAction
             ->latest()
             ->limit(self::RESULT_LIMIT)
             ->get()
-            ->map(static fn (Task $task): array => [
+            ->map(fn (Task $task): array => [
                 'id' => $task->id,
                 'type' => 'task',
                 'title' => '#'.$task->id.($task->displayDescription() !== '' ? ' - '.mb_strimwidth($task->displayDescription(), 0, 40, '...') : ''),
                 'subtitle' => trim((string) ($task->team?->localizedName() ?? '').($task->issue?->location?->localizedName() ? ' · '.$task->issue->location->localizedName() : '')),
-                'url' => route('tasks.show', ['task' => $task->id]),
+                'url' => $actor->can('view', $task) ? route('tasks.show', ['task' => $task->id]) : '',
             ]);
     }
 
