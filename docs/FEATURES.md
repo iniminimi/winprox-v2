@@ -1270,7 +1270,7 @@ uitvoerdersmodal; de feestdagafspraken staan centraal op **Time → Feestdagen**
   de geplande eenheid (`unit_id`) → vaste groep van de uitvoerder
   (`default_unit`) → exact één toegewezen locatie; zonder enige
   locatie-aanknoping telt de dienst **nergens** mee (bekende v1-beperking).
-  Weergegeven locaties: actor-locaties ∩ actief locatiefilter.
+  Weergegeven locaties: actor-locaties ∩ actief locatiefilter. Op het beginscherm telt het bezettingstekort voor een medewerker alleen haar locaties die een actief Clock Point hebben.
   Inactieve/verwijderde types worden overgeslagen én blijven als vergrijsde
   rij in de config staan tot de beheerder ze verwijdert — opslaan wist ze
   nooit ongemerkt. Max. 5 tekorten globaal (sorteer: datum → locatie → code),

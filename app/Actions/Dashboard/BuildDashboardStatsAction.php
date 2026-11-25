@@ -68,6 +68,7 @@ class BuildDashboardStatsAction
                     $tenantId,
                     array_map(fn (int $i) => $weekStart->copy()->addDays($i)->toDateString(), range(0, 6)),
                     $actorLocationIds,
+                    onlyLocationsWithClockPoint: $actorLocationIds !== null,
                 )['total'];
             }
         }

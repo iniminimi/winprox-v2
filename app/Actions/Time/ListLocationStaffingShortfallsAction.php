@@ -4,6 +4,7 @@ namespace App\Actions\Time;
 
 use App\Enums\ShiftTypeKind;
 use App\Models\BelgianPublicHoliday;
+use App\Models\ClockPoint;
 use App\Models\Location;
 use App\Models\PlannedShift;
 use App\Models\ShiftType;
@@ -16,7 +17,8 @@ use Illuminate\Support\Facades\DB;
  *
  * Regels (afgesproken):
  * - Telling is tenant-breed per locatie; weergave beperkt tot actor-locaties
- *   en het actieve locatiefilter.
+ *   en het actieve locatiefilter. Met `onlyLocationsWithClockPoint` telt een
+ *   locatie alleen mee als zij een actief Clock Point heeft (beginscherm).
  * - Enkel zichtbare dagen >= vandaag (weekenden enkel als getoond).
  * - Een feestdag (kalenderdatum) telt niet mee. Een vervangingsdag wel.
  * - Enkel unieke uitvoerders tellen (split-shifts = 1), enkel werk-kind,
@@ -42,6 +44,7 @@ final class ListLocationStaffingShortfallsAction
         array $visibleDates,
         ?array $actorLocationIds = null,
         ?int $activeLocationId = null,
+        bool $onlyLocationsWithClockPoint = false,
     ): array {
         $empty = ['total' => 0, 'locations' => []];
 
@@ -68,6 +71,21 @@ final class ListLocationStaffingShortfallsAction
             ->get(['id', 'name', 'min_staffing'])
             ->filter(fn (Location $location) => is_array($location->min_staffing) && $location->min_staffing !== [])
             ->values();
+
+        if ($onlyLocationsWithClockPoint && $actorLocationIds !== null) {
+            $clockPointLocationIds = ClockPoint::query()
+                ->withoutGlobalScope('tenant')
+                ->where('tenant_id', $tenantId)
+                ->where('is_active', true)
+                ->whereIn('location_id', $actorLocationIds === [] ? [0] : $actorLocationIds)
+                ->pluck('location_id')
+                ->map(fn ($id) => (int) $id)
+                ->all();
+
+            $locations = $locations
+                ->filter(fn (Location $location) => in_array((int) $location->id, $clockPointLocationIds, true))
+                ->values();
+        }
 
         if ($locations->isEmpty()) {
             return $empty;

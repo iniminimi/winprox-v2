@@ -6,6 +6,9 @@ use App\Enums\ShiftTypeKind;
 use App\Models\BelgianPublicHoliday;
 use App\Livewire\Time\StaffingIndex;
 use App\Livewire\Time\RosterIndex;
+use App\Livewire\Dashboard;
+use App\Models\Category;
+use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Location;
 use App\Models\PlannedShift;
@@ -339,6 +342,51 @@ it('beperkt weergegeven locaties tot actor-toegang en locatiefilter', function (
     );
     expect($filtered['total'])->toBe(1)
         ->and($filtered['locations'][0]['name'])->toBe('Verborgen');
+});
+
+it('telt voor een medewerker alleen een tekort op haar locatie met een clock point', function () {
+    [$tenant, $admin, $team] = staffingTenant();
+    $here = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Hier']);
+    $away = Location::factory()->create(['tenant_id' => $tenant->id, 'name' => 'Daar']);
+    $type = staffingType($tenant, 'D');
+    $here->update(['min_staffing' => [(string) $type->id => 1]]);
+    $away->update(['min_staffing' => [(string) $type->id => 1]]);
+    $point = ClockPoint::factory()->forLocation($here)->create();
+    ClockPoint::factory()->forLocation($away)->create();
+    Category::factory()->create(['tenant_id' => $tenant->id]);
+    Unit::factory()->create(['tenant_id' => $tenant->id, 'location_id' => $here->id]);
+    $employee = User::factory()->employee()->create(['tenant_id' => $tenant->id]);
+    $employee->locations()->sync([$here->id]);
+    $today = Carbon::today()->toDateString();
+
+    $scoped = app(ListLocationStaffingShortfallsAction::class)->handle(
+        (int) $tenant->id,
+        [$today],
+        actorLocationIds: [$here->id],
+        onlyLocationsWithClockPoint: true,
+    );
+    expect($scoped['total'])->toBe(1)
+        ->and($scoped['locations'][0]['name'])->toBe('Hier');
+
+    $point->update(['is_active' => false]);
+
+    $withoutPoint = app(ListLocationStaffingShortfallsAction::class)->handle(
+        (int) $tenant->id,
+        [$today],
+        actorLocationIds: [$here->id],
+        onlyLocationsWithClockPoint: true,
+    );
+    expect($withoutPoint['total'])->toBe(0);
+
+    Livewire::actingAs($employee)
+        ->test(Dashboard::class)
+        ->assertDontSee(__('dashboard.kpi.staffing_shortfalls'));
+
+    $point->update(['is_active' => true]);
+
+    Livewire::actingAs($employee)
+        ->test(Dashboard::class)
+        ->assertSee(__('dashboard.kpi.staffing_shortfalls'));
 });
 
 it('telt drafts én gepubliceerde diensten, maar geen afwezigheden', function () {
