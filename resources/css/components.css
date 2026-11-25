@@ -481,7 +481,7 @@ a.wp-pill:hover {
     flex-wrap: wrap;
 }
 
-/* Flipklok: ongeveer 70% van de eerste maat. */
+/* Flipklok: ongeveer 70% van de eerste maat. In de paginakop altijd rechts, ook naast knoppen. */
 .wp-flip-clock {
     display: inline-flex;
     align-items: center;
@@ -489,6 +489,25 @@ a.wp-pill:hover {
     margin-left: auto;
     flex-shrink: 0;
     height: 1.8375rem;
+}
+
+.wp-page-head:has(.wp-flip-clock) {
+    --wp-flip-clock-inset: 0;
+    position: relative;
+    padding-inline-end: calc(var(--wp-flip-clock-inset) + 7.1rem);
+}
+
+.wp-page-head .wp-flip-clock {
+    position: absolute;
+    z-index: 1;
+    inset-inline-end: var(--wp-flip-clock-inset);
+    top: 50%;
+    margin-inline-start: 0;
+    transform: translateY(-50%);
+}
+
+[data-theme='modern'] .wp-page-head:has(.wp-flip-clock) {
+    --wp-flip-clock-inset: 1rem;
 }
 
 .wp-print .wp-flip-clock {
@@ -625,6 +644,10 @@ a.wp-pill:hover {
 @media print {
     .wp-flip-clock {
         display: none;
+    }
+
+    .wp-page-head:has(.wp-flip-clock) {
+        padding-inline-end: 0;
     }
 }
 
