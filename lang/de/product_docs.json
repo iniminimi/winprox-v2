@@ -183,7 +183,7 @@
             },
             {
                 "title": "Organisation, Standorte und Personen",
-                "body": "Die Verwaltung richtet die Organisation mit Standorten, Teams, Personen und Units ein. Eine Unit kann ein Raum, ein Fahrzeug, eine Maschine oder ein anderes Mittel sein. Jeder Standort kann auch eine Unit für den ganzen Ort haben.",
+                "body": "Die Verwaltung richtet die Organisation mit Standorten, Teams, Personen und Units ein. Eine Unit kann ein Raum, ein Fahrzeug, eine Maschine oder ein anderes Mittel sein. Jeder Standort kann auch eine Unit für den ganzen Ort haben. Standorte hinzufügen, ändern oder inaktiv setzen kann ein Mitarbeitender nur, wenn ein Administrator das unter Einstellungen bei der Organisation erlaubt.",
                 "items": [
                     "Kategorien und Standorte verwalten. Units einzeln oder gesammelt hinzufügen, auch über CSV.",
                     "Ausführende suchen und verwalten unter Personen → Mitarbeiter. Ein Porträtfoto ist optional.",

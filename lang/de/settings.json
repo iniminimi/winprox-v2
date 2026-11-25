@@ -53,7 +53,9 @@
         "shell_background_upload_label": "Eigenes Bild",
         "shell_background_preview_alt": "Aktueller Backoffice-Hintergrund",
         "shell_background_remove": "Backoffice-Hintergrund entfernen",
-        "shell_background_remove_confirm": "Backoffice-Hintergrund entfernen? Das Backoffice verwendet wieder den Standardhintergrund."
+        "shell_background_remove_confirm": "Backoffice-Hintergrund entfernen? Das Backoffice verwendet wieder den Standardhintergrund.",
+        "employees_manage_locations_label": "Mitarbeitende dürfen Standorte hinzufügen und verwalten",
+        "employees_manage_locations_hint": "Standardmäßig aus. Nur ein Administrator fügt Standorte hinzu, ändert sie oder setzt sie inaktiv. Ein: Mitarbeitende im Backoffice dürfen das ebenfalls."
     },
     "qr_stickers": {
         "title": "QR-Druckbogen",

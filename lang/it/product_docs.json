@@ -183,7 +183,7 @@
             },
             {
                 "title": "Organizzazione, sedi e persone",
-                "body": "La gestione organizza l’azienda con sedi, team, persone e unità. Un’unità può essere una stanza, un veicolo, una macchina o un altro mezzo. Ogni sede può avere anche un’unità per l’intera sede.",
+                "body": "La gestione organizza l’azienda con sedi, team, persone e unità. Un’unità può essere una stanza, un veicolo, una macchina o un altro mezzo. Ogni sede può avere anche un’unità per l’intera sede. Un dipendente può aggiungere, modificare o disattivare sedi solo se un amministratore lo consente in Impostazioni, nell’organizzazione.",
                 "items": [
                     "Gestire categorie e sedi. Aggiungere unità una a una o in blocco, anche da CSV.",
                     "Cercare e gestire gli esecutori in Persone → Esecutori. Una foto ritratto è facoltativa.",

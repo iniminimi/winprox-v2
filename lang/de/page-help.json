@@ -851,6 +851,11 @@
                     "text": "Sie sehen den Namen, die E-Mail-Adresse, die Telefonnummer und die Adresse Ihrer Organisation.<br><br>Als Administrator ändern Sie diese Daten über Organisationsdaten bearbeiten.<br><br>Die Daten werden unter anderem auf gedruckten QR-Codes verwendet."
                 },
                 {
+                    "label": "Standorte verwalten",
+                    "nested": true,
+                    "text": "Nur ein Administrator kann dies einschalten. Die Einstellung gilt sofort.<br><br>• Aus: nur ein Administrator fügt Standorte hinzu, ändert sie oder setzt sie inaktiv.<br>• Ein: Mitarbeitende im Backoffice dürfen das ebenfalls.<br><br>Units, Meldungen und Aufgaben bleiben für Mitarbeitende verfügbar."
+                },
+                {
                     "label": "Organisationslogo",
                     "nested": true,
                     "text": "Laden Sie das Logo Ihrer Organisation als PNG- oder JPG-Datei von höchstens 2 MB hoch.<br><br>Das Logo erscheint im WinProx-Portal und auf den QR-Codes.<br><br>Als Mitarbeitender können Sie das Logo nur ansehen. Ändern kann es nur ein Administrator."

@@ -855,6 +855,11 @@
                     "text": "Vous voyez le nom, l’adresse e-mail, le numéro de téléphone et l’adresse de votre organisation.<br><br>En tant qu’administrateur, vous modifiez ces données avec Modifier les données de l’organisation.<br><br>Ces données sont utilisées notamment sur les codes QR imprimés."
                 },
                 {
+                    "label": "Gérer les sites",
+                    "nested": true,
+                    "text": "Seul un administrateur peut activer ceci. Le réglage s’applique tout de suite.<br><br>• Désactivé : seul un administrateur ajoute des sites, les modifie ou les rend inactifs.<br>• Activé : les collaborateurs du backoffice peuvent le faire aussi.<br><br>Les unités, les signalements et les tâches restent disponibles pour les collaborateurs."
+                },
+                {
                     "label": "Logo de l’organisation",
                     "nested": true,
                     "text": "Téléversez le logo de votre organisation en fichier PNG ou JPG de 2 Mo au maximum.<br><br>Le logo apparaît sur le portail WinProx et sur les codes QR.<br><br>En tant que collaborateur, vous pouvez seulement voir le logo. Seul un administrateur peut le modifier."

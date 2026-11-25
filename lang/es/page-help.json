@@ -851,6 +851,11 @@
                     "text": "Ve el nombre, el correo, el teléfono y la dirección de su organización.<br><br>Como administrador modifica estos datos con Editar datos de la organización.<br><br>Los datos se usan, entre otros sitios, en los códigos QR impresos."
                 },
                 {
+                    "label": "Gestionar sedes",
+                    "nested": true,
+                    "text": "Solo un administrador puede activar esto. El ajuste se aplica al momento.<br><br>• Desactivado: solo un administrador añade sedes, las modifica o las marca como inactivas.<br>• Activado: el personal de backoffice también puede hacerlo.<br><br>Las unidades, los informes y las tareas siguen disponibles para el personal."
+                },
+                {
                     "label": "Logotipo de la organización",
                     "nested": true,
                     "text": "Suba el logotipo de su organización como archivo PNG o JPG de 2 MB como máximo.<br><br>El logotipo aparece en el portal de WinProx y en los códigos QR.<br><br>Como empleado solo puede ver el logotipo. Solo un administrador puede cambiarlo."

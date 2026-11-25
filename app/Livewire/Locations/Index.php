@@ -173,7 +173,7 @@ class Index extends Component
     public function openEdit(int $locationId): void
     {
         $location = Location::findOrFail($locationId);
-        $this->authorize('update', $location);
+        $this->authorize('manage', $location);
 
         $this->editingLocationId = $location->id;
         $this->locationFormName = (string) $location->name;
@@ -218,7 +218,7 @@ class Index extends Component
             ->with('translations')
             ->findOrFail($this->editingLocationId);
 
-        $this->authorize('update', $location);
+        $this->authorize('manage', $location);
 
         if (! $location->is_active) {
             $this->addError('locationTranslationName', __('locations.errors.translation_requires_active'));
@@ -337,7 +337,7 @@ class Index extends Component
             session()->flash('success', __('locations.flash.created'));
         } else {
             $location = Location::findOrFail($this->editingLocationId);
-            $this->authorize('update', $location);
+            $this->authorize('manage', $location);
             $validated = UpdateLocationRequest::validatePayload($payload, requireName: true);
             $updateLocation->handle($location, $validated, (int) auth()->id());
             session()->flash('success', __('locations.flash.updated'));
@@ -357,7 +357,7 @@ class Index extends Component
     public function activate(int $locationId, ActivateLocationAction $activateLocation): void
     {
         $location = Location::findOrFail($locationId);
-        $this->authorize('update', $location);
+        $this->authorize('activate', $location);
         $activateLocation->handle($location, (int) auth()->id());
         session()->flash('success', __('locations.flash.activated'));
     }

@@ -183,7 +183,7 @@
             },
             {
                 "title": "Organización, sedes y personas",
-                "body": "La administración organiza la empresa con sedes, equipos, personas y unidades. Una unidad puede ser una sala, un vehículo, una máquina u otro medio. Cada sede puede tener también una unidad para toda la sede.",
+                "body": "La administración organiza la empresa con sedes, equipos, personas y unidades. Una unidad puede ser una sala, un vehículo, una máquina u otro medio. Cada sede puede tener también una unidad para toda la sede. Un empleado puede añadir, modificar o desactivar sedes solo si un administrador lo permite en Ajustes, en la organización.",
                 "items": [
                     "Gestionar categorías y sedes. Añadir unidades una a una o en bloque, también por CSV.",
                     "Buscar y gestionar ejecutores en Personas → Ejecutores. Una foto de retrato es opcional.",

@@ -94,10 +94,12 @@
                             @unless ($customer->is_active)
                                 <span class="wp-pill wp-pill--closed">{{ __('customers.inactive') }}</span>
                             @endunless
-                            @can('update', $customer)
+                            @can('create', \App\Models\Location::class)
                                 <button type="button" class="btn btn--ghost btn--sm" wire:click="openLocationCreate({{ $customer->id }})">
                                     {{ __('customers.add_location') }}
                                 </button>
+                            @endcan
+                            @can('update', $customer)
                                 <button type="button" class="btn btn--ghost btn--sm" wire:click="openEdit({{ $customer->id }})">{{ __('common.button.edit') }}</button>
                                 <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleCustomerActive({{ $customer->id }})">
                                     {{ $customer->is_active ? __('locations.deactivate') : __('locations.activate') }}
@@ -137,7 +139,7 @@
                                             @unless ($location->is_active)
                                                 <span class="wp-pill wp-pill--closed">{{ __('customers.inactive') }}</span>
                                             @endunless
-                                            @can('update', $location)
+                                            @can('manage', $location)
                                                 <button type="button" class="btn btn--ghost btn--sm" wire:click="openLocationEdit({{ $location->id }})">{{ __('common.button.edit') }}</button>
                                                 <button type="button" class="btn btn--ghost btn--sm" wire:click="toggleLocationActive({{ $location->id }})">
                                                     {{ $location->is_active ? __('locations.deactivate') : __('locations.activate') }}

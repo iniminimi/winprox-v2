@@ -851,6 +851,11 @@
                     "text": "You see the name, email address, phone number and address of your organisation.<br><br>As an administrator you change these details with Edit organisation details.<br><br>The details are used on printed QR codes, among other places."
                 },
                 {
+                    "label": "Manage locations",
+                    "nested": true,
+                    "text": "Only an administrator can turn this on. The setting applies immediately.<br><br>• Off: only an administrator adds locations, edits them or marks them inactive.<br>• On: backoffice staff may do that too.<br><br>Units, reports and tasks stay available to staff."
+                },
+                {
                     "label": "Organisation logo",
                     "nested": true,
                     "text": "Upload your organisation logo as a PNG or JPG file of at most 2 MB.<br><br>The logo appears on the WinProx portal and on the QR codes.<br><br>As an employee you can only view the logo. Only an administrator can change it."

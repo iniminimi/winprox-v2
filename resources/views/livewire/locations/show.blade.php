@@ -45,11 +45,13 @@
         @if ($location->notes)
             <p class="wp-muted">{{ $location->notes }}</p>
         @endif
-        <div class="wp-cluster">
-            <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditLocation">{{ __('locations.edit') }}</button>
-            <button type="button" class="btn btn--ghost btn--sm" wire:click="deactivateLocation"
-                    wire:confirm="{{ __('locations.confirm_deactivate') }}">{{ __('locations.deactivate') }}</button>
-        </div>
+        @can('manage', $location)
+            <div class="wp-cluster">
+                <button type="button" class="btn btn--ghost btn--sm" wire:click="openEditLocation">{{ __('locations.edit') }}</button>
+                <button type="button" class="btn btn--ghost btn--sm" wire:click="deactivateLocation"
+                        wire:confirm="{{ __('locations.confirm_deactivate') }}">{{ __('locations.deactivate') }}</button>
+            </div>
+        @endcan
     </x-wp-disclosure-card>
 
     @unless ($checkmateMode ?? false)

@@ -68,6 +68,7 @@ class Tenant extends Model
         'work_menu_issues_tasks_enabled',
         'work_menu_unit_measurements_enabled',
         'photo_album_enabled',
+        'employees_may_manage_locations',
         'starter_pack_key',
         'starter_pack_applied_at',
         'starter_pack_payload',
@@ -110,6 +111,7 @@ class Tenant extends Model
             'work_menu_issues_tasks_enabled' => 'boolean',
             'work_menu_unit_measurements_enabled' => 'boolean',
             'photo_album_enabled' => 'boolean',
+            'employees_may_manage_locations' => 'boolean',
             'starter_pack_applied_at' => 'datetime',
             'starter_pack_payload' => 'array',
             'starter_pack_result_dismissed_at' => 'datetime',
@@ -416,6 +418,12 @@ class Tenant extends Model
     public function hasRecordedUnitChecks(): bool
     {
         return UnitCheck::query()->where('tenant_id', $this->id)->exists();
+    }
+
+    /** Backoffice-medewerkers mogen locaties toevoegen en beheren. Standaard uit. */
+    public function employeesMayManageLocations(): bool
+    {
+        return (bool) $this->employees_may_manage_locations;
     }
 
     /** Fotoalbum voor de hele organisatie. Nooit in Checkmate. */

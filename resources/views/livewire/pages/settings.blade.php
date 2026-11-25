@@ -116,6 +116,20 @@
                     @endif
                 </div>
 
+                @if ($canManageOrganisation)
+                    <div class="wp-settings-subblock">
+                        <h3 class="wp-settings-subblock-title">{{ __('settings.org.employees_manage_locations_label') }}</h3>
+                        <label class="wp-switch wp-check--boxed">
+                            <input type="checkbox" wire:model.live="employeesMayManageLocations">
+                            <span class="wp-switch__track" aria-hidden="true"></span>
+                            <span>
+                                {{ __('settings.org.employees_manage_locations_label') }}
+                                <br><span class="wp-hint">{{ __('settings.org.employees_manage_locations_hint') }}</span>
+                            </span>
+                        </label>
+                    </div>
+                @endif
+
                 @if ($canManageOrganisation && ! ($checkmateMode ?? false))
                     <div class="wp-settings-subblock">
                         <h3 class="wp-settings-subblock-title">{{ __('settings.org.photo_album_label') }}</h3>

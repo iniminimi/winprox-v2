@@ -230,6 +230,7 @@ class Index extends Component
     {
         $customer = Customer::findOrFail($customerId);
         $this->authorize('update', $customer);
+        $this->authorize('create', Location::class);
 
         $this->locationCustomerId = (int) $customer->id;
         $this->editingLocationId = null;
@@ -241,7 +242,7 @@ class Index extends Component
     public function openLocationEdit(int $locationId): void
     {
         $location = Location::findOrFail($locationId);
-        $this->authorize('update', $location);
+        $this->authorize('manage', $location);
 
         $this->editingLocationId = (int) $location->id;
         $this->locationCustomerId = $location->customer_id !== null ? (int) $location->customer_id : null;
@@ -289,7 +290,7 @@ class Index extends Component
 
         if ($this->editingLocationId !== null) {
             $location = Location::findOrFail($this->editingLocationId);
-            $this->authorize('update', $location);
+            $this->authorize('manage', $location);
             $validated = UpdateLocationRequest::validatePayload($payload);
             $update->handle($location, $validated, (int) auth()->id());
 
@@ -305,6 +306,7 @@ class Index extends Component
             return;
         }
         $this->authorize('update', $customer);
+        $this->authorize('create', Location::class);
 
         $validated = StoreLocationRequest::validatePayload($payload);
 
@@ -339,7 +341,7 @@ class Index extends Component
     public function toggleLocationActive(int $locationId, ActivateLocationAction $activate, DeactivateLocationAction $deactivate): void
     {
         $location = Location::findOrFail($locationId);
-        $this->authorize('update', $location);
+        $this->authorize('manage', $location);
 
         if ($location->is_active) {
             $deactivate->handle($location, (int) auth()->id());

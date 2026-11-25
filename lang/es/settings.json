@@ -53,7 +53,9 @@
         "shell_background_upload_label": "Imagen propia",
         "shell_background_preview_alt": "Fondo actual del backoffice",
         "shell_background_remove": "Eliminar fondo del backoffice",
-        "shell_background_remove_confirm": "¿Eliminar el fondo del backoffice? El backoffice volverá a usar el fondo predeterminado."
+        "shell_background_remove_confirm": "¿Eliminar el fondo del backoffice? El backoffice volverá a usar el fondo predeterminado.",
+        "employees_manage_locations_label": "El personal puede añadir y gestionar sedes",
+        "employees_manage_locations_hint": "Desactivado por defecto. Solo un administrador añade sedes, las modifica o las marca como inactivas. Activado: el personal de backoffice también puede hacerlo."
     },
     "qr_stickers": {
         "title": "Hoja de impresión QR",

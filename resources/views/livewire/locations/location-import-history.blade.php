@@ -19,10 +19,12 @@
                         </div>
                         <div class="wp-issue-row-meta">
                             @if ($batch['can_delete'])
-                                <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteLocationImportBatch('{{ $batch['batch_id'] }}')"
-                                        wire:confirm="{{ __('locations.locations_import_history.confirm_delete', ['count' => $batch['deletable']]) }}">
-                                    {{ __('locations.locations_import_history.delete_button', ['count' => $batch['deletable']]) }}
-                                </button>
+                                @can('create', \App\Models\Location::class)
+                                    <button type="button" class="btn btn--ghost btn--sm" wire:click="deleteLocationImportBatch('{{ $batch['batch_id'] }}')"
+                                            wire:confirm="{{ __('locations.locations_import_history.confirm_delete', ['count' => $batch['deletable']]) }}">
+                                        {{ __('locations.locations_import_history.delete_button', ['count' => $batch['deletable']]) }}
+                                    </button>
+                                @endcan
                             @elseif ($batch['blocked'] > 0)
                                 <span class="wp-pill wp-pill--closed">{{ __('locations.locations_import_history.has_content') }}</span>
                             @else

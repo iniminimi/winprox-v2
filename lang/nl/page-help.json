@@ -851,6 +851,11 @@
                     "text": "U ziet hier de naam, het e-mailadres, het telefoonnummer en het adres van uw organisatie.<br><br>Als beheerder kunt u deze gegevens aanpassen via Organisatiegegevens bewerken.<br><br>De gegevens worden onder andere gebruikt op de afgedrukte QR-codes."
                 },
                 {
+                    "label": "Locaties beheren",
+                    "nested": true,
+                    "text": "Alleen een beheerder kan dit aanzetten. De instelling wordt meteen toegepast.<br><br>• Uit: alleen een beheerder voegt locaties toe, wijzigt ze of zet ze inactief.<br>• Aan: medewerkers van de backoffice mogen dat ook.<br><br>Units, meldingen en taken blijven voor medewerkers beschikbaar."
+                },
+                {
                     "label": "Organisatielogo",
                     "nested": true,
                     "text": "Upload het logo van uw organisatie als PNG- of JPG-bestand van maximaal 2 MB.<br><br>Het logo verschijnt op het WinProx-portaal en op de QR-codes.<br><br>Als medewerker kunt u het logo alleen bekijken. Aanpassen kan alleen door een beheerder."

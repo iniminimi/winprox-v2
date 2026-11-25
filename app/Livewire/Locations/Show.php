@@ -238,7 +238,7 @@ class Show extends Component
 
     public function openEditLocation(): void
     {
-        $this->authorize('update', $this->location);
+        $this->authorize('manage', $this->location);
         $this->location->refresh();
         $this->location->loadMissing('translations');
         $this->fillLocationFormFromModel();
@@ -264,7 +264,7 @@ class Show extends Component
 
     public function saveLocationTranslationOverride(ImportLocationTranslationsAction $importLocationTranslations): void
     {
-        $this->authorize('update', $this->location);
+        $this->authorize('manage', $this->location);
 
         if (! $this->location->is_active) {
             $this->addError('locationTranslationName', __('locations.errors.translation_requires_active'));
@@ -317,7 +317,7 @@ class Show extends Component
 
     public function saveLocation(UpdateLocationAction $updateLocation): void
     {
-        $this->authorize('update', $this->location);
+        $this->authorize('manage', $this->location);
         $validated = UpdateLocationRequest::validatePayload($this->locationFormPayload(), requireName: true);
         $this->location = $updateLocation->handle($this->location, $validated, (int) auth()->id());
         $this->showLocationModal = false;

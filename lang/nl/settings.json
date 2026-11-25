@@ -53,7 +53,9 @@
         "shell_background_upload_label": "Eigen afbeelding",
         "shell_background_preview_alt": "Huidige backoffice-achtergrond",
         "shell_background_remove": "Backoffice-achtergrond verwijderen",
-        "shell_background_remove_confirm": "Backoffice-achtergrond verwijderen? De backoffice gebruikt daarna weer de standaardachtergrond."
+        "shell_background_remove_confirm": "Backoffice-achtergrond verwijderen? De backoffice gebruikt daarna weer de standaardachtergrond.",
+        "employees_manage_locations_label": "Medewerkers mogen locaties toevoegen en beheren",
+        "employees_manage_locations_hint": "Standaard uit. Alleen een beheerder voegt locaties toe, wijzigt ze of zet ze inactief. Aan: medewerkers van de backoffice mogen dat ook."
     },
     "qr_stickers": {
         "title": "QR-afdrukblad",

@@ -53,7 +53,9 @@
         "shell_background_upload_label": "Image personnalisée",
         "shell_background_preview_alt": "Arrière-plan actuel du back-office",
         "shell_background_remove": "Supprimer l’arrière-plan du back-office",
-        "shell_background_remove_confirm": "Supprimer l’arrière-plan du back-office ? Le back-office utilisera à nouveau l’arrière-plan par défaut."
+        "shell_background_remove_confirm": "Supprimer l’arrière-plan du back-office ? Le back-office utilisera à nouveau l’arrière-plan par défaut.",
+        "employees_manage_locations_label": "Les collaborateurs peuvent ajouter et gérer des sites",
+        "employees_manage_locations_hint": "Désactivé par défaut. Seul un administrateur ajoute des sites, les modifie ou les rend inactifs. Activé : les collaborateurs du backoffice peuvent le faire aussi."
     },
     "qr_stickers": {
         "title": "Feuille d’impression QR",

@@ -851,6 +851,11 @@
                     "text": "Vede il nome, l’indirizzo e-mail, il numero di telefono e l’indirizzo della sua organizzazione.<br><br>Come amministratore modifica questi dati con Modifica dati organizzazione.<br><br>I dati sono usati, tra l’altro, sui codici QR stampati."
                 },
                 {
+                    "label": "Gestire le sedi",
+                    "nested": true,
+                    "text": "Solo un amministratore può attivarlo. L’impostazione si applica subito.<br><br>• Disattivo: solo un amministratore aggiunge sedi, le modifica o le rende inattive.<br>• Attivo: anche i dipendenti del backoffice possono farlo.<br><br>Unità, segnalazioni e attività restano disponibili per i dipendenti."
+                },
+                {
                     "label": "Logo organizzazione",
                     "nested": true,
                     "text": "Carichi il logo della sua organizzazione come file PNG o JPG di al massimo 2 MB.<br><br>Il logo compare nel portale WinProx e sui codici QR.<br><br>Come dipendente può solo vedere il logo. Può modificarlo solo un amministratore."

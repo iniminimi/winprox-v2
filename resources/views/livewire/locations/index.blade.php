@@ -47,9 +47,11 @@
                             </button>
                         @endcan
                     @endif
-                    <button type="button" @class(['btn', 'btn--primary', 'wp-btn--prio-pulse' => $pulseAddLocationButton]) wire:click="openCreate">
-                        {{ __('locations.add') }}
-                    </button>
+                    @can('create', \App\Models\Location::class)
+                        <button type="button" @class(['btn', 'btn--primary', 'wp-btn--prio-pulse' => $pulseAddLocationButton]) wire:click="openCreate">
+                            {{ __('locations.add') }}
+                        </button>
+                    @endcan
                 </div>
             @endif
         </div>
@@ -143,14 +145,18 @@
                             @endif
                         </div>
                         @if ($location->is_active)
-                            <button type="button" class="btn btn--ghost btn--sm" wire:click="deactivate({{ $location->id }})"
-                                    wire:confirm="{{ __('locations.confirm_deactivate') }}">
-                                {{ __('locations.deactivate') }}
-                            </button>
+                            @can('deactivate', $location)
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="deactivate({{ $location->id }})"
+                                        wire:confirm="{{ __('locations.confirm_deactivate') }}">
+                                    {{ __('locations.deactivate') }}
+                                </button>
+                            @endcan
                         @else
-                            <button type="button" class="btn btn--ghost btn--sm" wire:click="activate({{ $location->id }})">
-                                {{ __('locations.activate') }}
-                            </button>
+                            @can('activate', $location)
+                                <button type="button" class="btn btn--ghost btn--sm" wire:click="activate({{ $location->id }})">
+                                    {{ __('locations.activate') }}
+                                </button>
+                            @endcan
                         @endif
                     </div>
                 @empty
