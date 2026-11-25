@@ -24,7 +24,7 @@
                 },
                 {
                     "label": "Panoramica",
-                    "text": "Sotto il titolo Dashboard trovate schede con conteggi e punti di attenzione attuali.<br><br>Esempi:<br>• Segnalazioni aperte.<br>• Compiti aperti.<br>• Chi è presente ora, se Time è attivo.<br><br>Alcune schede compaiono solo quando c’è qualcosa da fare — ad esempio segnalazioni da esaminare, punti di attenzione in Time, un nuovo esecutore da controllare, oppure richieste aperte o allarmi IoT.<br><br>Fate clic su una scheda per andare subito alla schermata corrispondente.<br><br>Le richieste aperte di ferie, recupero, malattia o Altro compaiono come scheda separata. Vedete il numero per tipo. Fate clic per andare in Time → Richieste.<br><br>Se ci sono foto di un’assenza più vecchie di 5 mesi, compare una scheda. Saranno cancellate entro un mese. Faccia clic per vederle in Richieste e conservare una copia."
+                    "text": "Sotto il titolo Dashboard trovate schede con conteggi e punti di attenzione attuali.<br><br>Esempi:<br>• Segnalazioni aperte.<br>• Compiti aperti.<br>• Chi è presente ora, se Time è attivo.<br><br>Alcune schede compaiono solo quando c’è qualcosa da fare — ad esempio segnalazioni da esaminare, punti di attenzione in Time, un nuovo esecutore da controllare, oppure richieste aperte o allarmi IoT.<br><br>Fate clic su una scheda per andare subito alla schermata corrispondente.<br><br>Le richieste aperte di ferie, recupero, malattia o Altro compaiono come scheda separata. Vedete il numero per tipo. Fate clic per andare in Time → Richieste.<br><br>Se ci sono foto di un’assenza più vecchie di 5 mesi, compare una scheda. Saranno cancellate entro un mese. Faccia clic per vederle in Richieste e conservare una copia.<br><br>Un dipendente con sedi scelte vede solo le cifre di quelle sedi. La barra di ricerca in alto trova solo sedi, unità, segnalazioni, compiti, esecutori e colleghi di quelle sedi."
                 },
                 {
                     "label": "WinProx sul desktop",
@@ -1650,7 +1650,7 @@
             "actions": [
                 {
                     "label": "Scopo",
-                    "text": "Mostra tutto ciò che richiede attenzione: timbratura troppo lunga, uscita dimenticata, nessuna pausa, salto troppo rapido tra Clock Point, o consultazione dell’elenco evacuazione. Le consultazioni restano in questo elenco (data e ora, la più recente in alto); il badge Attenzione conta solo oggi."
+                    "text": "Mostra tutto ciò che richiede attenzione: timbratura troppo lunga, uscita dimenticata, nessuna pausa, salto troppo rapido tra Clock Point, o consultazione dell’elenco evacuazione. Le consultazioni restano in questo elenco (data e ora, la più recente in alto); il badge Attenzione conta solo oggi. Un dipendente con sedi scelte vede solo gli allarmi dei Clock Point e degli esecutori di quelle sedi."
                 },
                 {
                     "label": "Tipi",
@@ -1725,7 +1725,7 @@
             "actions": [
                 {
                     "label": "Totale e per mese",
-                    "text": "Straordinari mostra per persona il saldo di quest’anno civile fino a oggi. Il totale sta accanto al nome, poi i mesi. I mesi precedenti di quest’anno contano. Il 1° gennaio il saldo ricomincia. La cifra è il tempo lavorato dei servizi chiusi meno il turno pubblicato, meno il recupero già in turno o in una richiesta aperta. Un giorno intero di recupero segue lo schema settimanale o la ripartizione ordinaria del contratto. Non è paga."
+                    "text": "Straordinari mostra per persona il saldo di quest’anno civile fino a oggi. Il totale sta accanto al nome, poi i mesi. I mesi precedenti di quest’anno contano. Il 1° gennaio il saldo ricomincia. La cifra è il tempo lavorato dei servizi chiusi meno il turno pubblicato, meno il recupero già in turno o in una richiesta aperta. Un giorno intero di recupero segue lo schema settimanale o la ripartizione ordinaria del contratto. Non è paga. Un dipendente con sedi scelte vede qui solo gli esecutori di quelle sedi."
                 },
                 {
                     "label": "Team e clock point",
@@ -2386,7 +2386,7 @@
             "actions": [
                 {
                     "label": "A che cosa serve questa schermata?",
-                    "text": "In questa schermata gestisce le richieste degli operatori per ferie, recupero, malattia o un’altra assenza.<br><br>L’operatore presenta la richiesta su Clock Point, nella tessera <strong>Ferie / Assenza</strong>. Non viene inviata alcuna e-mail. Appena approva o rifiuta la richiesta, l’operatore riceve un avviso su Clock Point.<br><br>Accanto a <strong>Richieste</strong> il contatore mostra quante richieste sono ancora aperte. Nella schermata iniziale compare allora anche una scheda con il numero per tipo, per esempio 1 <strong>Ferie</strong>, 1 <strong>Recupero</strong> e 1 <strong>Malattia</strong>.<br><br>Anche una segnalazione di malattia va approvata qui. <strong>Malattia</strong> e <strong>Altro</strong> non influiscono sul saldo ferie né sul saldo recupero."
+                    "text": "In questa schermata gestisce le richieste degli operatori per ferie, recupero, malattia o un’altra assenza.<br><br>L’operatore presenta la richiesta su Clock Point, nella tessera <strong>Ferie / Assenza</strong>. Non viene inviata alcuna e-mail. Appena approva o rifiuta la richiesta, l’operatore riceve un avviso su Clock Point.<br><br>Accanto a <strong>Richieste</strong> il contatore mostra quante richieste sono ancora aperte. Nella schermata iniziale compare allora anche una scheda con il numero per tipo, per esempio 1 <strong>Ferie</strong>, 1 <strong>Recupero</strong> e 1 <strong>Malattia</strong>.<br><br>Anche una segnalazione di malattia va approvata qui. <strong>Malattia</strong> e <strong>Altro</strong> non influiscono sul saldo ferie né sul saldo recupero. Un dipendente con sedi scelte vede solo le richieste degli esecutori di quelle sedi, anche le foto."
                 },
                 {
                     "label": "Buono a sapersi",

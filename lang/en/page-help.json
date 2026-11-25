@@ -24,7 +24,7 @@
                 },
                 {
                     "label": "Overview",
-                    "text": "Under the Dashboard title you find cards with current counts and attention points.<br><br>Examples are:<br>• Open reports.<br>• Open tasks.<br>• Who is present now, if Time is active.<br><br>Some cards appear only when there is something to do — for example reports to review, attention points in Time, a new worker to check, or open requests or IoT alarms.<br><br>Click a card to go straight to the matching screen.<br><br>Open leave, time-off-in-lieu, sick or Other requests appear as a separate card. You see the count per type. Click it to go to Time → Requests.<br><br>If photos with an absence are older than 5 months, a card appears. They will be deleted within a month. Click it to view them under Requests and keep your own copy."
+                    "text": "Under the Dashboard title you find cards with current counts and attention points.<br><br>Examples are:<br>• Open reports.<br>• Open tasks.<br>• Who is present now, if Time is active.<br><br>Some cards appear only when there is something to do — for example reports to review, attention points in Time, a new worker to check, or open requests or IoT alarms.<br><br>Click a card to go straight to the matching screen.<br><br>Open leave, time-off-in-lieu, sick or Other requests appear as a separate card. You see the count per type. Click it to go to Time → Requests.<br><br>If photos with an absence are older than 5 months, a card appears. They will be deleted within a month. Click it to view them under Requests and keep your own copy.<br><br>A staff member with selected locations only sees the figures for those locations. The search bar at the top only finds locations, units, reports, tasks, workers and colleagues from those locations."
                 },
                 {
                     "label": "WinProx on your desktop",
@@ -1650,7 +1650,7 @@
             "actions": [
                 {
                     "label": "Purpose",
-                    "text": "Shows everything that needs attention: clocked in too long, forgotten clock-out, no break recorded, a too-quick hop between Clock Points, or an evacuation-list view. Consultations stay in this list (date and time, newest first); the Attention badge counts only today."
+                    "text": "Shows everything that needs attention: clocked in too long, forgotten clock-out, no break recorded, a too-quick hop between Clock Points, or an evacuation-list view. Consultations stay in this list (date and time, newest first); the Attention badge counts only today. A staff member with selected locations only sees alarms for the Clock Points and workers of those locations."
                 },
                 {
                     "label": "Types",
@@ -1725,7 +1725,7 @@
             "actions": [
                 {
                     "label": "Total and by month",
-                    "text": "Overtime shows each worker’s balance for this calendar year up to today. The total sits next to the name, then the months. Earlier months of this year are included. On 1 January the balance starts again. The figure is time worked on closed shifts minus the published roster, minus time off already on the roster or in an open request. A full day of time off follows the week pattern or the ordinary split of the contract. Not pay."
+                    "text": "Overtime shows each worker’s balance for this calendar year up to today. The total sits next to the name, then the months. Earlier months of this year are included. On 1 January the balance starts again. The figure is time worked on closed shifts minus the published roster, minus time off already on the roster or in an open request. A full day of time off follows the week pattern or the ordinary split of the contract. Not pay. A staff member with selected locations only sees workers from those locations here."
                 },
                 {
                     "label": "Team and clock point",
@@ -2386,7 +2386,7 @@
             "actions": [
                 {
                     "label": "What is this screen for?",
-                    "text": "On this screen you handle workers’ requests for leave, time off in lieu, sick or another absence.<br><br>The worker submits the request on Clock Point, on the <strong>Leave / Absence</strong> tile. No email is sent. As soon as you approve or reject the request, the worker gets a notice on Clock Point.<br><br>Next to <strong>Requests</strong> the counter shows how many requests are still open. A card then also appears on the home screen with the number per kind, for example 1 <strong>Leave</strong>, 1 <strong>TOIL</strong> and 1 <strong>Sick</strong>.<br><br>A sick report must be approved here too. <strong>Sick</strong> and <strong>Other</strong> do not affect the leave balance or the time off in lieu balance."
+                    "text": "On this screen you handle workers’ requests for leave, time off in lieu, sick or another absence.<br><br>The worker submits the request on Clock Point, on the <strong>Leave / Absence</strong> tile. No email is sent. As soon as you approve or reject the request, the worker gets a notice on Clock Point.<br><br>Next to <strong>Requests</strong> the counter shows how many requests are still open. A card then also appears on the home screen with the number per kind, for example 1 <strong>Leave</strong>, 1 <strong>TOIL</strong> and 1 <strong>Sick</strong>.<br><br>A sick report must be approved here too. <strong>Sick</strong> and <strong>Other</strong> do not affect the leave balance or the time off in lieu balance. A staff member with selected locations only sees requests from workers at those locations, including the photos."
                 },
                 {
                     "label": "Good to know",

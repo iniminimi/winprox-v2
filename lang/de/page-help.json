@@ -24,7 +24,7 @@
                 },
                 {
                     "label": "Übersicht",
-                    "text": "Unter dem Titel Dashboard finden Sie Karten mit aktuellen Zählungen und Aufmerksamkeitspunkten.<br><br>Beispiele sind:<br>• Offene Meldungen.<br>• Offene Aufgaben.<br>• Wer gerade anwesend ist, wenn Time aktiv ist.<br><br>Manche Karten erscheinen nur, wenn etwas zu tun ist — zum Beispiel wenn Meldungen geprüft werden müssen, es Aufmerksamkeitspunkte in Time gibt, ein neuer Ausführender kontrolliert werden muss oder offene Anträge bzw. IoT-Alarme vorliegen.<br><br>Klicken Sie auf eine Karte, um direkt zum passenden Bildschirm zu gehen.<br><br>Offene Anträge für Urlaub, Freizeitausgleich, Krankheit oder Andere erscheinen als eigene Karte. Sie sehen die Anzahl pro Art. Klicken Sie darauf, um zu Time → Anträge zu gehen.<br><br>Sind Fotos zu einer Abwesenheit älter als 5 Monate, erscheint eine Karte. Innerhalb eines Monats werden sie gelöscht. Klicken Sie darauf, um sie unter Anträge anzusehen und selbst eine Kopie zu behalten."
+                    "text": "Unter dem Titel Dashboard finden Sie Karten mit aktuellen Zählungen und Aufmerksamkeitspunkten.<br><br>Beispiele sind:<br>• Offene Meldungen.<br>• Offene Aufgaben.<br>• Wer gerade anwesend ist, wenn Time aktiv ist.<br><br>Manche Karten erscheinen nur, wenn etwas zu tun ist — zum Beispiel wenn Meldungen geprüft werden müssen, es Aufmerksamkeitspunkte in Time gibt, ein neuer Ausführender kontrolliert werden muss oder offene Anträge bzw. IoT-Alarme vorliegen.<br><br>Klicken Sie auf eine Karte, um direkt zum passenden Bildschirm zu gehen.<br><br>Offene Anträge für Urlaub, Freizeitausgleich, Krankheit oder Andere erscheinen als eigene Karte. Sie sehen die Anzahl pro Art. Klicken Sie darauf, um zu Time → Anträge zu gehen.<br><br>Sind Fotos zu einer Abwesenheit älter als 5 Monate, erscheint eine Karte. Innerhalb eines Monats werden sie gelöscht. Klicken Sie darauf, um sie unter Anträge anzusehen und selbst eine Kopie zu behalten.<br><br>Ein Mitarbeitender mit ausgewählten Standorten sieht nur die Zahlen dieser Standorte. Die Suchleiste oben findet nur Standorte, Units, Meldungen, Aufgaben, Ausführende und Kollegen dieser Standorte."
                 },
                 {
                     "label": "WinProx auf Ihrem Desktop",
@@ -1650,7 +1650,7 @@
             "actions": [
                 {
                     "label": "Zweck",
-                    "text": "Zeigt alles mit Handlungsbedarf: zu lange eingestempelt, vergessene Ausstempelung, keine Pause, zu schneller Wechsel zwischen Clock Points oder Einsicht in die Evakuierungsliste. Einsichten bleiben in dieser Liste (Datum und Uhrzeit, neueste oben); das Aufmerksamkeit-Badge zählt nur heute."
+                    "text": "Zeigt alles mit Handlungsbedarf: zu lange eingestempelt, vergessene Ausstempelung, keine Pause, zu schneller Wechsel zwischen Clock Points oder Einsicht in die Evakuierungsliste. Einsichten bleiben in dieser Liste (Datum und Uhrzeit, neueste oben); das Aufmerksamkeit-Badge zählt nur heute. Ein Mitarbeitender mit ausgewählten Standorten sieht nur Alarme der Clock Points und Ausführenden dieser Standorte."
                 },
                 {
                     "label": "Typen",
@@ -1725,7 +1725,7 @@
             "actions": [
                 {
                     "label": "Summe und pro Monat",
-                    "text": "Überstunden zeigt je Person das Saldo dieses Kalenderjahres bis heute. Die Summe steht neben dem Namen, danach die Monate. Frühere Monate dieses Jahres zählen mit. Am 1. Januar beginnt das Saldo neu. Die Zahl ist gearbeitete Zeit geschlossener Dienste minus veröffentlichter Dienstplan, minus Ausgleich der schon im Plan steht oder als Antrag offen ist. Ein ganzer Ausgleichstag folgt dem Wochenmuster oder der gewöhnlichen Verteilung des Vertrags. Kein Lohn."
+                    "text": "Überstunden zeigt je Person das Saldo dieses Kalenderjahres bis heute. Die Summe steht neben dem Namen, danach die Monate. Frühere Monate dieses Jahres zählen mit. Am 1. Januar beginnt das Saldo neu. Die Zahl ist gearbeitete Zeit geschlossener Dienste minus veröffentlichter Dienstplan, minus Ausgleich der schon im Plan steht oder als Antrag offen ist. Ein ganzer Ausgleichstag folgt dem Wochenmuster oder der gewöhnlichen Verteilung des Vertrags. Kein Lohn. Ein Mitarbeitender mit ausgewählten Standorten sieht hier nur Ausführende dieser Standorte."
                 },
                 {
                     "label": "Team und Clock Point",
@@ -2386,7 +2386,7 @@
             "actions": [
                 {
                     "label": "Wozu dient dieser Bildschirm?",
-                    "text": "Auf diesem Bildschirm bearbeiten Sie die Anträge der ausführenden Personen auf Urlaub, Ausgleich, Krank oder eine sonstige Abwesenheit.<br><br>Die Person stellt den Antrag selbst auf Clock Point, auf der Kachel <strong>Urlaub / Abwesenheit</strong>. Es wird keine E-Mail gesendet. Sobald Sie den Antrag genehmigen oder ablehnen, erhält die Person eine Meldung auf Clock Point.<br><br>Bei <strong>Anträge</strong> zeigt der Zähler, wie viele Anträge noch offen sind. Auf dem Startbildschirm erscheint dann auch eine Karte mit der Anzahl je Art, zum Beispiel 1 <strong>Urlaub</strong>, 1 <strong>Ausgleich</strong> und 1 <strong>Krank</strong>.<br><br>Auch eine Krankmeldung müssen Sie hier genehmigen. <strong>Krank</strong> und <strong>Sonstige</strong> haben keinen Einfluss auf den Urlaubssaldo oder den Ausgleichssaldo."
+                    "text": "Auf diesem Bildschirm bearbeiten Sie die Anträge der ausführenden Personen auf Urlaub, Ausgleich, Krank oder eine sonstige Abwesenheit.<br><br>Die Person stellt den Antrag selbst auf Clock Point, auf der Kachel <strong>Urlaub / Abwesenheit</strong>. Es wird keine E-Mail gesendet. Sobald Sie den Antrag genehmigen oder ablehnen, erhält die Person eine Meldung auf Clock Point.<br><br>Bei <strong>Anträge</strong> zeigt der Zähler, wie viele Anträge noch offen sind. Auf dem Startbildschirm erscheint dann auch eine Karte mit der Anzahl je Art, zum Beispiel 1 <strong>Urlaub</strong>, 1 <strong>Ausgleich</strong> und 1 <strong>Krank</strong>.<br><br>Auch eine Krankmeldung müssen Sie hier genehmigen. <strong>Krank</strong> und <strong>Sonstige</strong> haben keinen Einfluss auf den Urlaubssaldo oder den Ausgleichssaldo. Ein Mitarbeitender mit ausgewählten Standorten sieht nur Anträge von Ausführenden dieser Standorte, auch die Fotos."
                 },
                 {
                     "label": "Gut zu wissen",

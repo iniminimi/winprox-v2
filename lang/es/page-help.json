@@ -24,7 +24,7 @@
                 },
                 {
                     "label": "Resumen",
-                    "text": "Bajo el título Panel encuentra tarjetas con conteos y puntos de atención actuales.<br><br>Ejemplos:<br>• Avisos abiertos.<br>• Tareas abiertas.<br>• Quién está presente ahora, si Time está activo.<br><br>Algunas tarjetas solo aparecen cuando hay algo que hacer — por ejemplo avisos por revisar, puntos de atención en Time, un nuevo ejecutor por comprobar, o solicitudes abiertas o alarmas IoT.<br><br>Pulse una tarjeta para ir directamente a la pantalla correspondiente.<br><br>Las solicitudes abiertas de vacaciones, compensación, enfermedad u Otro aparecen como tarjeta aparte. Ve el número por tipo. Pulse para ir a Time → Solicitudes.<br><br>Si hay fotos de una ausencia con más de 5 meses, aparece una tarjeta. Se borrarán en un mes. Haga clic para verlas en Solicitudes y guardar una copia."
+                    "text": "Bajo el título Panel encuentra tarjetas con conteos y puntos de atención actuales.<br><br>Ejemplos:<br>• Avisos abiertos.<br>• Tareas abiertas.<br>• Quién está presente ahora, si Time está activo.<br><br>Algunas tarjetas solo aparecen cuando hay algo que hacer — por ejemplo avisos por revisar, puntos de atención en Time, un nuevo ejecutor por comprobar, o solicitudes abiertas o alarmas IoT.<br><br>Pulse una tarjeta para ir directamente a la pantalla correspondiente.<br><br>Las solicitudes abiertas de vacaciones, compensación, enfermedad u Otro aparecen como tarjeta aparte. Ve el número por tipo. Pulse para ir a Time → Solicitudes.<br><br>Si hay fotos de una ausencia con más de 5 meses, aparece una tarjeta. Se borrarán en un mes. Haga clic para verlas en Solicitudes y guardar una copia.<br><br>Un empleado con sedes elegidas solo ve las cifras de esas sedes. La barra de búsqueda de arriba solo encuentra sedes, unidades, avisos, tareas, ejecutores y compañeros de esas sedes."
                 },
                 {
                     "label": "WinProx en su escritorio",
@@ -1650,7 +1650,7 @@
             "actions": [
                 {
                     "label": "Objetivo",
-                    "text": "Muestra todo lo que requiere atención: demasiado tiempo fichado, salida olvidada, sin pausa, salto demasiado rápido entre Clock Points, o consulta de la lista de evacuación. Las consultas permanecen en esta lista (fecha y hora, la más reciente arriba); la insignia Atención solo cuenta las de hoy."
+                    "text": "Muestra todo lo que requiere atención: demasiado tiempo fichado, salida olvidada, sin pausa, salto demasiado rápido entre Clock Points, o consulta de la lista de evacuación. Las consultas permanecen en esta lista (fecha y hora, la más reciente arriba); la insignia Atención solo cuenta las de hoy. Un empleado con sedes elegidas solo ve las alarmas de los Clock Points y de los ejecutores de esas sedes."
                 },
                 {
                     "label": "Tipos",
@@ -1725,7 +1725,7 @@
             "actions": [
                 {
                     "label": "Total y por mes",
-                    "text": "Horas extra muestra por persona el saldo de este año natural hasta hoy. El total está junto al nombre y después los meses. Los meses anteriores de este año cuentan. El 1 de enero el saldo vuelve a empezar. La cifra es el tiempo trabajado de servicios cerrados menos el cuadrante publicado, menos la compensación ya en el cuadrante o en una solicitud abierta. Un día entero de compensación sigue el patrón semanal o el reparto ordinario del contrato. No es nómina."
+                    "text": "Horas extra muestra por persona el saldo de este año natural hasta hoy. El total está junto al nombre y después los meses. Los meses anteriores de este año cuentan. El 1 de enero el saldo vuelve a empezar. La cifra es el tiempo trabajado de servicios cerrados menos el cuadrante publicado, menos la compensación ya en el cuadrante o en una solicitud abierta. Un día entero de compensación sigue el patrón semanal o el reparto ordinario del contrato. No es nómina. Un empleado con sedes elegidas solo ve aquí a los ejecutores de esas sedes."
                 },
                 {
                     "label": "Equipo y clock point",
@@ -2386,7 +2386,7 @@
             "actions": [
                 {
                     "label": "¿Para qué sirve esta pantalla?",
-                    "text": "En esta pantalla trata las solicitudes de los operarios de vacaciones, descanso compensatorio, baja u otra ausencia.<br><br>El operario presenta la solicitud en Clock Point, en la ficha <strong>Vacaciones / Ausencia</strong>. No se envía ningún correo. En cuanto aprueba o rechaza la solicitud, el operario recibe un aviso en Clock Point.<br><br>Junto a <strong>Solicitudes</strong>, el contador muestra cuántas solicitudes siguen abiertas. En la pantalla de inicio aparece entonces también una tarjeta con el número por tipo, por ejemplo 1 <strong>Permiso</strong>, 1 <strong>Compensación</strong> y 1 <strong>Baja</strong>.<br><br>Una baja por enfermedad también debe aprobarla aquí. <strong>Baja</strong> y <strong>Otro</strong> no influyen en el saldo de permiso ni en el de descanso compensatorio."
+                    "text": "En esta pantalla trata las solicitudes de los operarios de vacaciones, descanso compensatorio, baja u otra ausencia.<br><br>El operario presenta la solicitud en Clock Point, en la ficha <strong>Vacaciones / Ausencia</strong>. No se envía ningún correo. En cuanto aprueba o rechaza la solicitud, el operario recibe un aviso en Clock Point.<br><br>Junto a <strong>Solicitudes</strong>, el contador muestra cuántas solicitudes siguen abiertas. En la pantalla de inicio aparece entonces también una tarjeta con el número por tipo, por ejemplo 1 <strong>Permiso</strong>, 1 <strong>Compensación</strong> y 1 <strong>Baja</strong>.<br><br>Una baja por enfermedad también debe aprobarla aquí. <strong>Baja</strong> y <strong>Otro</strong> no influyen en el saldo de permiso ni en el de descanso compensatorio. Un empleado con sedes elegidas solo ve las solicitudes de los ejecutores de esas sedes, también las fotos."
                 },
                 {
                     "label": "Conviene saberlo",

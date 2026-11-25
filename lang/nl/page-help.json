@@ -24,7 +24,7 @@
                 },
                 {
                     "label": "Overzicht",
-                    "text": "Onder de titel Dashboard vindt u kaarten met actuele tellingen en aandachtspunten.<br><br>Voorbeelden zijn:<br>• Open meldingen.<br>• Open taken.<br>• Wie er momenteel aanwezig is, als Time actief is.<br><br>Sommige kaarten verschijnen alleen wanneer er iets te doen is. Bijvoorbeeld wanneer er meldingen moeten worden beoordeeld, er aandachtspunten zijn in Time, een nieuwe uitvoerder gecontroleerd moet worden of er open aanvragen of IoT-alarmen zijn.<br><br>Klik op een kaart om meteen naar het bijbehorende scherm te gaan.<br><br>Open aanvragen voor verlof, recup, ziekte of Andere verschijnen als aparte kaart. U ziet het aantal per soort. Klik erop om naar Time → Aanvragen te gaan.<br><br>Zijn er foto's bij een afwezigheid die ouder zijn dan 5 maanden, dan verschijnt een kaart. Binnen een maand worden ze gewist. Klik erop om ze bij Aanvragen te bekijken en zelf een kopie te bewaren."
+                    "text": "Onder de titel Dashboard vindt u kaarten met actuele tellingen en aandachtspunten.<br><br>Voorbeelden zijn:<br>• Open meldingen.<br>• Open taken.<br>• Wie er momenteel aanwezig is, als Time actief is.<br><br>Sommige kaarten verschijnen alleen wanneer er iets te doen is. Bijvoorbeeld wanneer er meldingen moeten worden beoordeeld, er aandachtspunten zijn in Time, een nieuwe uitvoerder gecontroleerd moet worden of er open aanvragen of IoT-alarmen zijn.<br><br>Klik op een kaart om meteen naar het bijbehorende scherm te gaan.<br><br>Open aanvragen voor verlof, recup, ziekte of Andere verschijnen als aparte kaart. U ziet het aantal per soort. Klik erop om naar Time → Aanvragen te gaan.<br><br>Zijn er foto's bij een afwezigheid die ouder zijn dan 5 maanden, dan verschijnt een kaart. Binnen een maand worden ze gewist. Klik erop om ze bij Aanvragen te bekijken en zelf een kopie te bewaren.<br><br>Een medewerker met gekozen locaties ziet alleen de cijfers van die locaties. De zoekbalk bovenaan vindt alleen locaties, units, meldingen, taken, uitvoerders en collega’s van die locaties."
                 },
                 {
                     "label": "WinProx op uw bureaublad",
@@ -1650,7 +1650,7 @@
             "actions": [
                 {
                     "label": "Doel",
-                    "text": "Toont alles wat aandacht vraagt: te lang ingeklokt, vergeten uit te klokken, geen pauze, te snelle hop tussen Clock Points, of raadpleging van de evacuatielijst. Raadplegingen blijven in deze lijst staan (datum en uur, nieuwste bovenaan); de Aandacht-badge telt alleen vandaag."
+                    "text": "Toont alles wat aandacht vraagt: te lang ingeklokt, vergeten uit te klokken, geen pauze, te snelle hop tussen Clock Points, of raadpleging van de evacuatielijst. Raadplegingen blijven in deze lijst staan (datum en uur, nieuwste bovenaan); de Aandacht-badge telt alleen vandaag. Een medewerker met gekozen locaties ziet alleen alarmen van de Clock Points en uitvoerders van die locaties."
                 },
                 {
                     "label": "Typen",
@@ -1725,7 +1725,7 @@
             "actions": [
                 {
                     "label": "Totaal en per maand",
-                    "text": "Overuren toont per uitvoerder het saldo van dit kalenderjaar tot vandaag. Het totaal staat naast de naam, daarna de maanden. Vorige maanden van dit jaar tellen mee. Op 1 januari begint het saldo opnieuw. Het getal is gewerkte tijd van gesloten diensten min het gepubliceerde rooster, min recup die al op het rooster staat of als aanvraag openstaat. Een hele recupdag volgt het weekpatroon of de gewone verdeling van het contract. Geen loon."
+                    "text": "Overuren toont per uitvoerder het saldo van dit kalenderjaar tot vandaag. Het totaal staat naast de naam, daarna de maanden. Vorige maanden van dit jaar tellen mee. Op 1 januari begint het saldo opnieuw. Het getal is gewerkte tijd van gesloten diensten min het gepubliceerde rooster, min recup die al op het rooster staat of als aanvraag openstaat. Een hele recupdag volgt het weekpatroon of de gewone verdeling van het contract. Geen loon. Een medewerker met gekozen locaties ziet hier alleen uitvoerders van die locaties."
                 },
                 {
                     "label": "Team en clock point",
@@ -2386,7 +2386,7 @@
             "actions": [
                 {
                     "label": "Waarvoor dient dit scherm?",
-                    "text": "Op dit scherm behandelt u de aanvragen van uitvoerders voor verlof, recup, ziekte of een andere afwezigheid.<br><br>De uitvoerder dient de aanvraag zelf in via Clock Point, op de tegel <strong>Verlof / Afwezigheid</strong>. Er wordt geen e-mail verstuurd. Zodra u de aanvraag goedkeurt of weigert, krijgt de uitvoerder een melding op Clock Point.<br><br>Bij <strong>Aanvragen</strong> ziet u aan de teller hoeveel aanvragen nog openstaan. Op het beginscherm verschijnt dan ook een kaart met het aantal aanvragen per soort, bijvoorbeeld 1 <strong>Verlof</strong>, 1 <strong>Recup</strong> en 1 <strong>Ziek</strong>.<br><br>Ook een ziektemelding moet u hier goedkeuren. Ziekte en <strong>Andere</strong> hebben geen invloed op het verlofsaldo of recupsaldo."
+                    "text": "Op dit scherm behandelt u de aanvragen van uitvoerders voor verlof, recup, ziekte of een andere afwezigheid.<br><br>De uitvoerder dient de aanvraag zelf in via Clock Point, op de tegel <strong>Verlof / Afwezigheid</strong>. Er wordt geen e-mail verstuurd. Zodra u de aanvraag goedkeurt of weigert, krijgt de uitvoerder een melding op Clock Point.<br><br>Bij <strong>Aanvragen</strong> ziet u aan de teller hoeveel aanvragen nog openstaan. Op het beginscherm verschijnt dan ook een kaart met het aantal aanvragen per soort, bijvoorbeeld 1 <strong>Verlof</strong>, 1 <strong>Recup</strong> en 1 <strong>Ziek</strong>.<br><br>Ook een ziektemelding moet u hier goedkeuren. Ziekte en <strong>Andere</strong> hebben geen invloed op het verlofsaldo of recupsaldo. Een medewerker met gekozen locaties ziet alleen aanvragen van uitvoerders van die locaties, ook de foto’s."
                 },
                 {
                     "label": "Goed om te weten",

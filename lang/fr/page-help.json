@@ -24,7 +24,7 @@
                 },
                 {
                     "label": "Aperçu",
-                    "text": "Sous le titre Tableau de bord, vous trouvez des cartes avec des compteurs et points d’attention actuels.<br><br>Exemples :<br>• Signalements ouverts.<br>• Tâches ouvertes.<br>• Qui est présent maintenant, si Time est actif.<br><br>Certaines cartes n’apparaissent que lorsqu’il y a quelque chose à faire — par exemple des signalements à examiner, des points d’attention dans Time, un nouvel exécutant à contrôler, ou des demandes ouvertes ou alarmes IoT.<br><br>Cliquez sur une carte pour aller directement à l’écran correspondant.<br><br>Les demandes ouvertes de congé, récupération, maladie ou Autre apparaissent comme carte séparée. Vous voyez le nombre par type. Cliquez pour aller dans Time → Demandes.<br><br>Si des photos d’une absence ont plus de 5 mois, une carte apparaît. Elles seront effacées dans un mois. Cliquez dessus pour les voir sous Demandes et en garder une copie."
+                    "text": "Sous le titre Tableau de bord, vous trouvez des cartes avec des compteurs et points d’attention actuels.<br><br>Exemples :<br>• Signalements ouverts.<br>• Tâches ouvertes.<br>• Qui est présent maintenant, si Time est actif.<br><br>Certaines cartes n’apparaissent que lorsqu’il y a quelque chose à faire — par exemple des signalements à examiner, des points d’attention dans Time, un nouvel exécutant à contrôler, ou des demandes ouvertes ou alarmes IoT.<br><br>Cliquez sur une carte pour aller directement à l’écran correspondant.<br><br>Les demandes ouvertes de congé, récupération, maladie ou Autre apparaissent comme carte séparée. Vous voyez le nombre par type. Cliquez pour aller dans Time → Demandes.<br><br>Si des photos d’une absence ont plus de 5 mois, une carte apparaît. Elles seront effacées dans un mois. Cliquez dessus pour les voir sous Demandes et en garder une copie.<br><br>Un collaborateur avec des sites choisis ne voit que les chiffres de ces sites. La barre de recherche en haut ne trouve que les sites, unités, signalements, tâches, exécutants et collègues de ces sites."
                 },
                 {
                     "label": "WinProx sur votre bureau",
@@ -1654,7 +1654,7 @@
             "actions": [
                 {
                     "label": "Objectif",
-                    "text": "Affiche tout ce qui demande une attention : trop longtemps pointé, sortie oubliée, pas de pause, saut trop rapide entre Clock Points, ou consultation de la liste d’évacuation. Les consultations restent dans cette liste (date et heure, plus récente en haut) ; le badge Attention ne compte que aujourd’hui."
+                    "text": "Affiche tout ce qui demande une attention : trop longtemps pointé, sortie oubliée, pas de pause, saut trop rapide entre Clock Points, ou consultation de la liste d’évacuation. Les consultations restent dans cette liste (date et heure, plus récente en haut) ; le badge Attention ne compte que aujourd’hui. Un collaborateur avec des sites choisis ne voit que les alarmes des Clock Points et des exécutants de ces sites."
                 },
                 {
                     "label": "Types",
@@ -1729,7 +1729,7 @@
             "actions": [
                 {
                     "label": "Total et par mois",
-                    "text": "Heures supplémentaires montre par personne le solde de cette année civile jusqu’à aujourd’hui. Le total est à côté du nom, puis les mois. Les mois précédents de cette année comptent. Le 1er janvier le solde recommence. Le chiffre est le temps travaillé des services clos moins le planning publié, moins la récup déjà au planning ou en demande ouverte. Une journée entière de récup suit le schéma de semaine ou la répartition ordinaire du contrat. Pas de salaire."
+                    "text": "Heures supplémentaires montre par personne le solde de cette année civile jusqu’à aujourd’hui. Le total est à côté du nom, puis les mois. Les mois précédents de cette année comptent. Le 1er janvier le solde recommence. Le chiffre est le temps travaillé des services clos moins le planning publié, moins la récup déjà au planning ou en demande ouverte. Une journée entière de récup suit le schéma de semaine ou la répartition ordinaire du contrat. Pas de salaire. Un collaborateur avec des sites choisis ne voit ici que les exécutants de ces sites."
                 },
                 {
                     "label": "Équipe et clock point",
@@ -2390,7 +2390,7 @@
             "actions": [
                 {
                     "label": "À quoi sert cet écran ?",
-                    "text": "Sur cet écran, vous traitez les demandes des intervenants pour un congé, une récup, une maladie ou une autre absence.<br><br>L’intervenant introduit la demande lui-même sur Clock Point, sur la tuile <strong>Congé / Absence</strong>. Aucun e-mail n’est envoyé. Dès que vous approuvez ou refusez la demande, l’intervenant reçoit une notification sur Clock Point.<br><br>À côté de <strong>Demandes</strong>, le compteur indique combien de demandes sont encore ouvertes. Une carte apparaît alors aussi sur l’écran d’accueil, avec le nombre par type, par exemple 1 <strong>Congé</strong>, 1 <strong>Récup</strong> et 1 <strong>Maladie</strong>.<br><br>Une déclaration de maladie doit aussi être approuvée ici. <strong>Maladie</strong> et <strong>Autre</strong> n’ont aucun effet sur le solde de congé ni sur le solde de récup."
+                    "text": "Sur cet écran, vous traitez les demandes des intervenants pour un congé, une récup, une maladie ou une autre absence.<br><br>L’intervenant introduit la demande lui-même sur Clock Point, sur la tuile <strong>Congé / Absence</strong>. Aucun e-mail n’est envoyé. Dès que vous approuvez ou refusez la demande, l’intervenant reçoit une notification sur Clock Point.<br><br>À côté de <strong>Demandes</strong>, le compteur indique combien de demandes sont encore ouvertes. Une carte apparaît alors aussi sur l’écran d’accueil, avec le nombre par type, par exemple 1 <strong>Congé</strong>, 1 <strong>Récup</strong> et 1 <strong>Maladie</strong>.<br><br>Une déclaration de maladie doit aussi être approuvée ici. <strong>Maladie</strong> et <strong>Autre</strong> n’ont aucun effet sur le solde de congé ni sur le solde de récup. Un collaborateur avec des sites choisis ne voit que les demandes des exécutants de ces sites, y compris les photos."
                 },
                 {
                     "label": "Bon à savoir",
