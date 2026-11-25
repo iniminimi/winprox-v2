@@ -382,8 +382,12 @@ it('onthoudt de volgorde van de snelkoppelingen per gebruiker', function () {
 
     Livewire::actingAs($user)
         ->test(Dashboard::class)
+        ->assertSeeHtml('data-wp-intent-tile="arrange_hint"')
+        ->assertSee(__('dashboard.intent.tiles.arrange_hint.title'))
+        ->assertSee(__('dashboard.intent.tiles.arrange_hint.body'))
         ->assertSeeHtml('data-wp-intent-tile="roster"')
         ->call('reorderIntentTiles', ['roster', 'nope', 'worker', 'roster'])
+        ->assertDontSee(__('dashboard.intent.tiles.arrange_hint.title'))
         ->assertSeeInOrder([
             __('dashboard.intent.tiles.roster.title'),
             __('dashboard.intent.tiles.worker.title'),

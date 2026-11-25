@@ -155,6 +155,10 @@
             "manual_clock_in": {
                 "title": "Manuell einstempeln",
                 "body": "Stempeln Sie jemanden ein, der selbst nicht konnte."
+            },
+            "arrange_hint": {
+                "title": "Diese Kacheln können Sie anordnen.",
+                "body": "Klicken und halten, dann können Sie diese verschieben."
             }
         }
     },

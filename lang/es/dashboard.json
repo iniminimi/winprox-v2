@@ -155,6 +155,10 @@
             "manual_clock_in": {
                 "title": "Fichaje manual",
                 "body": "Ficha a alguien que no pudo fichar por sí mismo."
+            },
+            "arrange_hint": {
+                "title": "Puedes ordenar estos cuadros.",
+                "body": "Haz clic y mantén pulsado, puedes mover este."
             }
         }
     },

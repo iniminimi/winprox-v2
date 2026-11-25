@@ -155,6 +155,10 @@
             "manual_clock_in": {
                 "title": "Pointage manuel",
                 "body": "Pointez quelqu’un qui n’a pas pu pointer lui-même."
+            },
+            "arrange_hint": {
+                "title": "Vous pouvez ranger ces cadres.",
+                "body": "Cliquez et maintenez, vous pouvez déplacer celui-ci."
             }
         }
     },

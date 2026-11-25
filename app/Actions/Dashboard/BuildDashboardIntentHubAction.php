@@ -161,9 +161,20 @@ class BuildDashboardIntentHubAction
             ];
         }
 
+        $ordered = $this->applySavedOrder($tiles, $user->dashboard_intent_order);
+        if ($ordered !== [] && ($user->dashboard_intent_order === null || $user->dashboard_intent_order === [])) {
+            array_unshift($ordered, [
+                'key' => 'arrange_hint',
+                'icon' => 'grip-hand',
+                'tone' => 'present_now',
+                'title' => 'dashboard.intent.tiles.arrange_hint.title',
+                'body' => 'dashboard.intent.tiles.arrange_hint.body',
+            ]);
+        }
+
         return new DashboardIntentHubData(
             greeting: __($greetingKey, ['name' => $name]),
-            tiles: $this->applySavedOrder($tiles, $user->dashboard_intent_order),
+            tiles: $ordered,
         );
     }
 

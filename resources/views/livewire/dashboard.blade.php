@@ -459,7 +459,7 @@
                                         </div>
                                     </div>
                                 </button>
-                            @else
+                            @elseif (($tile['href'] ?? null) !== null)
                                 <a href="{{ $tile['href'] }}"
                                    @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
                                    data-wp-intent-tile="{{ $tile['key'] }}"
@@ -475,6 +475,20 @@
                                         </div>
                                     </div>
                                 </a>
+                            @else
+                                <div @class(['wp-kpi', 'wp-kpi--'.$tile['tone']])
+                                     data-wp-intent-tile="{{ $tile['key'] }}"
+                                     wire:key="intent-{{ $tile['key'] }}">
+                                    <div class="wp-kpi-body">
+                                        <span class="wp-kpi-icon" aria-hidden="true">
+                                            <x-wp-icon :name="$tile['icon']" />
+                                        </span>
+                                        <div class="wp-kpi-main">
+                                            <p class="wp-kpi-kicker">{{ __($tile['title']) }}</p>
+                                            <p class="wp-kpi-meta wp-kpi-meta--wrap">{{ __($tile['body']) }}</p>
+                                        </div>
+                                    </div>
+                                </div>
                             @endif
                         @endforeach
                     </div>

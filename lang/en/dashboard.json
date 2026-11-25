@@ -155,6 +155,10 @@
             "manual_clock_in": {
                 "title": "Clock in manually",
                 "body": "Clock someone in who could not clock in themselves."
+            },
+            "arrange_hint": {
+                "title": "You can arrange these cards.",
+                "body": "Click and hold, then you can move this one."
             }
         }
     },

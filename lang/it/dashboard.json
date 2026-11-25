@@ -155,6 +155,10 @@
             "manual_clock_in": {
                 "title": "Timbratura manuale",
                 "body": "Timbra chi non è riuscito a timbrare da solo."
+            },
+            "arrange_hint": {
+                "title": "Puoi riordinare queste schede.",
+                "body": "Clicca e tieni premuto, puoi spostare questa."
             }
         }
     },

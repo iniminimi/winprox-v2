@@ -155,6 +155,10 @@
             "manual_clock_in": {
                 "title": "Manueel inklokken",
                 "body": "Klok iemand in die zelf niet kon inklokken."
+            },
+            "arrange_hint": {
+                "title": "Deze kaders kan je rangschikken.",
+                "body": "Klik en hou vast, je kan deze verplaatsen."
             }
         }
     },
