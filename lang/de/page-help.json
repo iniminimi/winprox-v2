@@ -610,7 +610,7 @@
                 },
                 {
                     "label": "Standorte",
-                    "text": "Bei einem Mitarbeiter können Sie festlegen, auf welche Standorte er Zugriff hat.<br><br>Kreuzen Sie die gewünschten Standorte an.<br><br>• Ein oder mehrere Standorte ausgewählt: der Mitarbeiter hat Zugriff auf die ausgewählten Standorte.<br>• Keine Standorte ausgewählt: der Mitarbeiter hat Zugriff auf alle Standorte.<br><br>Ein Administrator hat immer Zugriff auf alle Standorte. Diese Einschränkung gilt also nur für Mitarbeiter. Dieser Mitarbeiter sieht und bearbeitet danach nur Ausführende und Kollegen dieser Standorte."
+                    "text": "Bei einem Mitarbeiter können Sie festlegen, auf welche Standorte er Zugriff hat.<br><br>Kreuzen Sie die gewünschten Standorte an.<br><br>• Ein oder mehrere Standorte ausgewählt: der Mitarbeiter hat Zugriff auf die ausgewählten Standorte.<br>• Keine Standorte ausgewählt: der Mitarbeiter hat Zugriff auf alle Standorte.<br><br>Ein Administrator hat immer Zugriff auf alle Standorte. Diese Einschränkung gilt also nur für Mitarbeiter. Dieser Mitarbeiter sieht und bearbeitet danach nur Ausführende und Kollegen dieser Standorte. Suche, die Zahlen auf dem Startbildschirm, Überstunden, Alarme und Abwesenheitsanträge folgen denselben Standorten."
                 },
                 {
                     "label": "Mit Microsoft anmelden",

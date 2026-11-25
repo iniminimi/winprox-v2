@@ -270,9 +270,7 @@ class Dashboard extends Component
 
         $tenantId = (int) (Tenancy::id() ?? $tenant?->id ?? 0);
         $hasTimeModule = $tenant?->hasTimeModule() ?? false;
-        $expiringAbsencePhotos = $tenantId > 0
-            ? $countExpiringAbsencePhotos->handle($tenantId)
-            : 0;
+        $expiringAbsencePhotos = 0;
         $hasIotModule = $tenant?->hasIotModule() ?? false;
         // Checkmate: eigen dashboard-variant — geen facility-onboarding,
         // geen meldingen/taken-KPI's (docs/CHECKMATE.md §5).
@@ -282,6 +280,12 @@ class Dashboard extends Component
             : null;
         $onboarding = $isCheckmate ? null : TenantOnboardingState::current();
         $user = auth()->user();
+        if ($tenantId > 0) {
+            $expiringAbsencePhotos = $countExpiringAbsencePhotos->handle(
+                $tenantId,
+                $user instanceof User ? $user->accessibleLocationIds() : null,
+            );
+        }
         $canManageStarterPack = $user instanceof User
             && $tenant !== null
             && ! $isCheckmate

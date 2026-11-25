@@ -751,7 +751,10 @@
                                             <span>{{ __('time.nav.absence_requests') }}</span>
                                             @php
                                                 $sidebarAbsenceCount = app(\App\Actions\Time\CountPendingAbsenceRequestsAction::class)
-                                                    ->handle((int) $activeTenant->id);
+                                                    ->handle(
+                                                        (int) $activeTenant->id,
+                                                        $authUser instanceof \App\Models\User ? $authUser->accessibleLocationIds() : null,
+                                                    );
                                             @endphp
                                             @if ($sidebarAbsenceCount > 0)
                                                 <span class="wp-pill wp-pill--progress">{{ $sidebarAbsenceCount }}</span>

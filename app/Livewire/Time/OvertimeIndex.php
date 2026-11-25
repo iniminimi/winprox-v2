@@ -7,6 +7,7 @@ use App\Livewire\Concerns\ProvidesTimeNavAlarmCount;
 use App\Models\ClockPoint;
 use App\Models\InternalTeam;
 use App\Models\Tenant;
+use App\Models\User;
 use App\Models\Worker;
 use App\Models\WorkShift;
 use App\Support\Tenancy;
@@ -49,8 +50,16 @@ class OvertimeIndex extends Component
     public function render(WorkerRecupBalanceAction $overtime)
     {
         $tenant = Tenant::query()->find((int) Tenancy::id());
+        $viewer = auth()->user();
+        $allowed = $viewer instanceof User ? $viewer->accessibleLocationIds() : null;
+        if ($allowed !== null && $this->clockPointFilter !== null) {
+            $pointLocation = ClockPoint::query()->whereKey($this->clockPointFilter)->value('location_id');
+            if ($pointLocation === null || ! in_array((int) $pointLocation, $allowed, true)) {
+                $this->clockPointFilter = null;
+            }
+        }
         $workers = $tenant instanceof Tenant
-            ? $this->workersForFilters($tenant)
+            ? $this->workersForFilters($tenant, $viewer instanceof User ? $viewer : null)
             : collect();
 
         $byWorker = $tenant instanceof Tenant
@@ -98,7 +107,11 @@ class OvertimeIndex extends Component
                 ? InternalTeam::query()->with('translations')->orderBy('sort_order')->orderBy('name')->get()
                 : collect(),
             'clockPoints' => $tenant instanceof Tenant
-                ? ClockPoint::query()->orderBy('sort_order')->orderBy('name')->get()
+                ? ClockPoint::query()
+                    ->when($allowed !== null, fn ($query) => $query->whereIn('location_id', $allowed))
+                    ->orderBy('sort_order')
+                    ->orderBy('name')
+                    ->get()
                 : collect(),
             'alarmCount' => $this->timeNavAlarmCount(),
         ]);
@@ -110,13 +123,14 @@ class OvertimeIndex extends Component
      *
      * @return \Illuminate\Support\Collection<int, Worker>
      */
-    private function workersForFilters(Tenant $tenant)
+    private function workersForFilters(Tenant $tenant, ?User $viewer)
     {
         $yearStart = now()->startOfYear();
         $tomorrow = now()->startOfDay()->addDay();
 
         return Worker::query()
             ->where('tenant_id', $tenant->id)
+            ->when($viewer instanceof User, fn ($query) => $query->visibleTo($viewer))
             ->when($this->teamFilter, fn ($q) => $q->where('internal_team_id', $this->teamFilter))
             ->when($this->clockPointFilter, function ($q) use ($tenant, $yearStart, $tomorrow): void {
                 $clockedIds = WorkShift::query()

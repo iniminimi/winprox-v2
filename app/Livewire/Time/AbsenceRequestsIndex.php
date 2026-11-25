@@ -184,6 +184,14 @@ class AbsenceRequestsIndex extends Component
         WorkerLeaveBalanceAction $leaveBalance,
     ) {
         $tenantId = (int) Tenancy::id();
+        $viewer = auth()->user();
+        $allowed = $viewer instanceof \App\Models\User ? $viewer->accessibleLocationIds() : null;
+        if ($allowed !== null && $this->clockPointFilter !== null) {
+            $pointLocation = ClockPoint::query()->whereKey($this->clockPointFilter)->value('location_id');
+            if ($pointLocation === null || ! in_array((int) $pointLocation, $allowed, true)) {
+                $this->clockPointFilter = null;
+            }
+        }
         $status = AbsenceRequestStatus::tryFrom((string) $this->statusFilter);
         $expiringPhotos = $this->photosFilter === 'expiring';
         $requests = $list->handle(
@@ -215,7 +223,7 @@ class AbsenceRequestsIndex extends Component
             'conflicts' => $conflicts,
             'leaveBalances' => $leaveBalances,
             'alarmCount' => $this->timeNavAlarmCount(),
-            'pendingCount' => $countPending->handle($tenantId),
+            'pendingCount' => $countPending->handle($tenantId, $allowed),
             'photosFilter' => in_array($this->photosFilter, ['expiring', 'with'], true) ? $this->photosFilter : null,
             'teams' => InternalTeam::query()->with('translations')->orderBy('sort_order')->orderBy('name')->get(),
             'workers' => Worker::query()
@@ -224,7 +232,11 @@ class AbsenceRequestsIndex extends Component
                 ->orderBy('last_name')
                 ->orderBy('first_name')
                 ->get(),
-            'clockPoints' => ClockPoint::query()->orderBy('sort_order')->orderBy('name')->get(),
+            'clockPoints' => ClockPoint::query()
+                ->when($allowed !== null, fn ($query) => $query->whereIn('location_id', $allowed))
+                ->orderBy('sort_order')
+                ->orderBy('name')
+                ->get(),
             'reasonMax' => TextDescriptionLimits::MAX,
         ]);
     }

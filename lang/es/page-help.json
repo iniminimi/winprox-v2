@@ -610,7 +610,7 @@
                 },
                 {
                     "label": "Ubicaciones",
-                    "text": "En un empleado puede decidir a qué ubicaciones tiene acceso.<br><br>Marque las ubicaciones que quiera.<br><br>• Una o varias ubicaciones seleccionadas: el empleado tiene acceso a esas ubicaciones.<br>• Ninguna ubicación seleccionada: el empleado tiene acceso a todas las ubicaciones.<br><br>Un administrador tiene siempre acceso a todas las ubicaciones. Este límite solo se aplica a los empleados. Ese empleado solo ve y edita después a los ejecutores y compañeros de esas ubicaciones."
+                    "text": "En un empleado puede decidir a qué ubicaciones tiene acceso.<br><br>Marque las ubicaciones que quiera.<br><br>• Una o varias ubicaciones seleccionadas: el empleado tiene acceso a esas ubicaciones.<br>• Ninguna ubicación seleccionada: el empleado tiene acceso a todas las ubicaciones.<br><br>Un administrador tiene siempre acceso a todas las ubicaciones. Este límite solo se aplica a los empleados. Ese empleado solo ve y edita después a los ejecutores y compañeros de esas ubicaciones. La búsqueda, las cifras de la pantalla de inicio, las horas extra, las alarmas y las solicitudes de ausencia siguen esas mismas ubicaciones."
                 },
                 {
                     "label": "Iniciar sesión con Microsoft",

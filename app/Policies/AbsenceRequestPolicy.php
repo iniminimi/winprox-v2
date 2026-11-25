@@ -18,8 +18,18 @@ class AbsenceRequestPolicy
 
     public function view(User $user, AbsenceRequest $absenceRequest): bool
     {
-        return $this->staffWithModule($user)
-            && SuperuserTenantAccess::canAccessTenant($user, (int) $absenceRequest->tenant_id);
+        if (! $this->staffWithModule($user)
+            || ! SuperuserTenantAccess::canAccessTenant($user, (int) $absenceRequest->tenant_id)) {
+            return false;
+        }
+
+        $absenceRequest->loadMissing('worker');
+        $worker = $absenceRequest->worker;
+        if ($worker === null) {
+            return $user->accessibleLocationIds() === null;
+        }
+
+        return $worker->isVisibleTo($user);
     }
 
     public function decide(User $user, AbsenceRequest $absenceRequest): bool

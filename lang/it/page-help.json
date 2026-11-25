@@ -610,7 +610,7 @@
                 },
                 {
                     "label": "Sedi",
-                    "text": "Per un dipendente può scegliere a quali sedi ha accesso.<br><br>Selezioni le sedi desiderate.<br><br>• Una o più sedi selezionate: il dipendente ha accesso alle sedi selezionate.<br>• Nessuna sede selezionata: il dipendente ha accesso a tutte le sedi.<br><br>Un amministratore ha sempre accesso a tutte le sedi. Questo limite vale quindi solo per i dipendenti. Quel dipendente vede e modifica poi solo gli esecutori e i colleghi di quelle sedi."
+                    "text": "Per un dipendente può scegliere a quali sedi ha accesso.<br><br>Selezioni le sedi desiderate.<br><br>• Una o più sedi selezionate: il dipendente ha accesso alle sedi selezionate.<br>• Nessuna sede selezionata: il dipendente ha accesso a tutte le sedi.<br><br>Un amministratore ha sempre accesso a tutte le sedi. Questo limite vale quindi solo per i dipendenti. Quel dipendente vede e modifica poi solo gli esecutori e i colleghi di quelle sedi. La ricerca, le cifre della schermata iniziale, gli straordinari, gli allarmi e le richieste di assenza seguono le stesse sedi."
                 },
                 {
                     "label": "Accedi con Microsoft",

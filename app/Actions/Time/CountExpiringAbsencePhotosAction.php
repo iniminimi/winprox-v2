@@ -11,7 +11,10 @@ use App\Support\Time\TimeModuleAccess;
  */
 class CountExpiringAbsencePhotosAction
 {
-    public function handle(int $tenantId): int
+    /**
+     * @param  list<int>|null  $actorLocationIds  null = alle locaties
+     */
+    public function handle(int $tenantId, ?array $actorLocationIds = null): int
     {
         if (! TimeModuleAccess::rosterEnabledForTenantId($tenantId)) {
             return 0;
@@ -21,6 +24,10 @@ class CountExpiringAbsencePhotosAction
             ->where('tenant_id', $tenantId)
             ->where('created_at', '<=', AbsencePhotoRetention::warnBefore())
             ->where('created_at', '>', AbsencePhotoRetention::dropBefore())
+            ->when($actorLocationIds !== null, fn ($query) => $query->whereHas(
+                'absenceRequest.worker.locations',
+                fn ($locations) => $locations->whereIn('locations.id', $actorLocationIds ?: [0]),
+            ))
             ->count();
     }
 }

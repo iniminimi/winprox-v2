@@ -183,7 +183,7 @@
             },
             {
                 "title": "Organisation, locations and people",
-                "body": "Administrators set up the organisation with locations, teams, people and units. A unit can be a room, a vehicle, a machine or another asset. Each location can also have a unit for the whole site. A staff member can add, edit or deactivate locations only when an administrator allows that under Settings, in the organisation section. A staff member with selected locations only sees and edits workers and colleagues from those locations.",
+                "body": "Administrators set up the organisation with locations, teams, people and units. A unit can be a room, a vehicle, a machine or another asset. Each location can also have a unit for the whole site. A staff member can add, edit or deactivate locations only when an administrator allows that under Settings, in the organisation section. A staff member with selected locations only sees and edits workers and colleagues from those locations. Search, the figures on the home screen, overtime, alarms and absence requests follow those same locations.",
                 "items": [
                     "Manage categories and locations. Add units one by one or in bulk, including from CSV.",
                     "Find and manage workers under People → Workers. A portrait photo is optional.",

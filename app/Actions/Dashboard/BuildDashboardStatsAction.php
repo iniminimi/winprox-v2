@@ -48,12 +48,16 @@ class BuildDashboardStatsAction
                 ->where('tenant_id', $tenantId)
                 ->where('status', WorkShiftStatus::Open)
                 ->whereDoesntHave('breaks', fn ($query) => $query->whereNull('ended_at'))
+                ->when($actorLocationIds !== null, fn ($query) => $query->whereHas(
+                    'presenceClockPoint',
+                    fn ($point) => $point->whereIn('location_id', $actorLocationIds ?: [0]),
+                ))
                 ->count();
 
-            $timeAttention = $this->countTimeAttention->handle($tenantId);
+            $timeAttention = $this->countTimeAttention->handle($tenantId, $actorLocationIds);
 
             if ($timeRosterEnabled) {
-                $pendingByKind = $this->countPendingAbsence->byKind($tenantId);
+                $pendingByKind = $this->countPendingAbsence->byKind($tenantId, $actorLocationIds);
                 $pendingAbsenceLeave = $pendingByKind['leave'];
                 $pendingAbsenceRecup = $pendingByKind['recup'];
                 $pendingAbsenceSick = $pendingByKind['sick'];
@@ -74,25 +78,40 @@ class BuildDashboardStatsAction
                 ->where('tenant_id', $tenantId)
                 ->where('source', IssueSource::Iot)
                 ->where('status', '!=', TaskStatus::Closed)
+                ->when($actorLocationIds !== null, fn ($query) => $query->whereIn('location_id', $actorLocationIds ?: [0]))
                 ->count();
         }
 
+        $locationScope = fn ($query) => $query->when(
+            $actorLocationIds !== null,
+            fn ($scoped) => $scoped->whereIn('location_id', $actorLocationIds ?: [0]),
+        );
+
         return new DashboardStatsData(
-            locations: Location::query()->where('tenant_id', $tenantId)->count(),
-            units: Unit::query()->where('tenant_id', $tenantId)->count(),
+            locations: Location::query()
+                ->where('tenant_id', $tenantId)
+                ->when($actorLocationIds !== null, fn ($query) => $query->whereIn('id', $actorLocationIds ?: [0]))
+                ->count(),
+            units: Unit::query()->where('tenant_id', $tenantId)->tap($locationScope)->count(),
             newIssues: Issue::query()
                 ->where('tenant_id', $tenantId)
                 ->where('status', TaskStatus::New->value)
+                ->tap($locationScope)
                 ->count(),
             openTasks: Task::query()
                 ->where('tenant_id', $tenantId)
                 ->forApprovedIssue()
                 ->whereIn('status', TaskStatus::openValues())
+                ->when($actorLocationIds !== null, fn ($query) => $query->whereHas(
+                    'issue',
+                    fn ($issue) => $issue->whereIn('location_id', $actorLocationIds ?: [0]),
+                ))
                 ->count(),
             presentNow: $presentNow,
             pendingReview: Issue::query()
                 ->where('tenant_id', $tenantId)
                 ->pendingReview()
+                ->tap($locationScope)
                 ->count(),
             timeAttention: $timeAttention,
             pendingAbsenceRequests: $pendingAbsenceLeave + $pendingAbsenceRecup + $pendingAbsenceSick + $pendingAbsenceOther,
@@ -100,7 +119,7 @@ class BuildDashboardStatsAction
             pendingAbsenceRecup: $pendingAbsenceRecup,
             pendingAbsenceSick: $pendingAbsenceSick,
             pendingAbsenceOther: $pendingAbsenceOther,
-            workerFollowUp: $this->countWorkerFollowUp->handle($tenantId),
+            workerFollowUp: $this->countWorkerFollowUp->handle($tenantId, $actorLocationIds),
             iotAlarms: $iotAlarms,
             staffingShortfalls: $staffingShortfalls,
             hasTimeModule: $hasTimeModule,

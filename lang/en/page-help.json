@@ -610,7 +610,7 @@
                 },
                 {
                     "label": "Locations",
-                    "text": "For an employee you can choose which locations they can access.<br><br>Tick the locations you want.<br><br>• One or more locations selected: the employee can access those locations.<br>• No locations selected: the employee can access all locations.<br><br>An administrator always has access to all locations. This limit applies only to employees. That employee then only sees and edits workers and colleagues from those locations."
+                    "text": "For an employee you can choose which locations they can access.<br><br>Tick the locations you want.<br><br>• One or more locations selected: the employee can access those locations.<br>• No locations selected: the employee can access all locations.<br><br>An administrator always has access to all locations. This limit applies only to employees. That employee then only sees and edits workers and colleagues from those locations. Search, the figures on the home screen, overtime, alarms and absence requests follow those same locations."
                 },
                 {
                     "label": "Sign in with Microsoft",

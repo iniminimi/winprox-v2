@@ -610,7 +610,7 @@
                 },
                 {
                     "label": "Locaties",
-                    "text": "Bij een medewerker kunt u bepalen tot welke locaties die toegang heeft.<br><br>Vink de gewenste locaties aan.<br><br>• Eén of meerdere locaties geselecteerd: de medewerker heeft toegang tot de geselecteerde locaties.<br>• Geen locaties geselecteerd: de medewerker krijgt toegang tot alle locaties.<br><br>Een beheerder heeft altijd toegang tot alle locaties. Deze beperking geldt dus alleen voor medewerkers. Die medewerker ziet en bewerkt daarna alleen uitvoerders en collega’s van die locaties."
+                    "text": "Bij een medewerker kunt u bepalen tot welke locaties die toegang heeft.<br><br>Vink de gewenste locaties aan.<br><br>• Eén of meerdere locaties geselecteerd: de medewerker heeft toegang tot de geselecteerde locaties.<br>• Geen locaties geselecteerd: de medewerker krijgt toegang tot alle locaties.<br><br>Een beheerder heeft altijd toegang tot alle locaties. Deze beperking geldt dus alleen voor medewerkers. Die medewerker ziet en bewerkt daarna alleen uitvoerders en collega’s van die locaties. Zoeken, de cijfers op het beginscherm, overuren, alarmen en afwezigheidsaanvragen volgen diezelfde locaties."
                 },
                 {
                     "label": "Inloggen met Microsoft",

@@ -35,14 +35,14 @@ final class SearchTenantGlobalAction
         $results = collect();
 
         if ($actor->can('viewAny', Location::class)) {
-            $locations = $this->searchLocations($tenantId, $terms);
+            $locations = $this->searchLocations($tenantId, $terms, $actor);
             if ($locations->isNotEmpty()) {
                 $results['locations'] = $locations;
             }
         }
 
         if ($actor->can('viewAny', Unit::class)) {
-            $units = $this->searchUnits($tenantId, $terms, $query);
+            $units = $this->searchUnits($tenantId, $terms, $query, $actor);
             if ($units->isNotEmpty()) {
                 $results['units'] = $units;
             }
@@ -70,14 +70,14 @@ final class SearchTenantGlobalAction
         }
 
         if ($actor->can('viewAny', Issue::class)) {
-            $issues = $this->searchIssues($tenantId, $terms);
+            $issues = $this->searchIssues($tenantId, $terms, $actor);
             if ($issues->isNotEmpty()) {
                 $results['issues'] = $issues;
             }
         }
 
         if ($actor->can('viewAny', Task::class)) {
-            $tasks = $this->searchTasks($tenantId, $terms);
+            $tasks = $this->searchTasks($tenantId, $terms, $actor);
             if ($tasks->isNotEmpty()) {
                 $results['tasks'] = $tasks;
             }
@@ -100,11 +100,12 @@ final class SearchTenantGlobalAction
      * @param  list<string>  $terms
      * @return Collection<int, array{id: int|string, type: string, title: string, subtitle: string, url: string}>
      */
-    private function searchLocations(int $tenantId, array $terms): Collection
+    private function searchLocations(int $tenantId, array $terms, User $actor): Collection
     {
         $query = Location::query()
             ->where('tenant_id', $tenantId)
-            ->where('is_active', true);
+            ->where('is_active', true)
+            ->accessibleTo($actor);
 
         GlobalSearchQuery::applyAllTerms($query, $terms, static function (Builder $termQuery, string $term): void {
             GlobalSearchQuery::applyColumnLike($termQuery, $term, [
@@ -135,11 +136,12 @@ final class SearchTenantGlobalAction
      * @param  list<string>  $terms
      * @return Collection<int, array{id: int|string, type: string, title: string, subtitle: string, url: string}>
      */
-    private function searchUnits(int $tenantId, array $terms, string $rawQuery): Collection
+    private function searchUnits(int $tenantId, array $terms, string $rawQuery, User $actor): Collection
     {
         $query = Unit::query()
             ->where('tenant_id', $tenantId)
             ->where('is_active', true)
+            ->accessibleTo($actor)
             ->with('location:id,name');
 
         GlobalSearchQuery::applyAllTerms($query, $terms, static function (Builder $termQuery, string $term): void {
@@ -265,10 +267,12 @@ final class SearchTenantGlobalAction
      * @param  list<string>  $terms
      * @return Collection<int, array{id: int|string, type: string, title: string, subtitle: string, url: string}>
      */
-    private function searchIssues(int $tenantId, array $terms): Collection
+    private function searchIssues(int $tenantId, array $terms, User $actor): Collection
     {
+        $allowed = $actor->accessibleLocationIds();
         $query = Issue::query()
             ->where('tenant_id', $tenantId)
+            ->when($allowed !== null, fn (Builder $issues) => $issues->whereIn('location_id', $allowed ?: [0]))
             ->with(['location:id,name', 'unit:id,name', 'translations']);
 
         GlobalSearchQuery::applyAllTerms($query, $terms, static function (Builder $termQuery, string $term): void {
@@ -315,11 +319,16 @@ final class SearchTenantGlobalAction
      * @param  list<string>  $terms
      * @return Collection<int, array{id: int|string, type: string, title: string, subtitle: string, url: string}>
      */
-    private function searchTasks(int $tenantId, array $terms): Collection
+    private function searchTasks(int $tenantId, array $terms, User $actor): Collection
     {
+        $allowed = $actor->accessibleLocationIds();
         $query = Task::query()
             ->forApprovedIssue()
             ->where('tenant_id', $tenantId)
+            ->when($allowed !== null, fn (Builder $tasks) => $tasks->whereHas(
+                'issue',
+                fn (Builder $issue) => $issue->whereIn('location_id', $allowed ?: [0]),
+            ))
             ->with(['issue.location', 'issue.unit', 'team' => fn ($q) => $q->select('id', 'name', 'original_language')->with('translations')]);
 
         GlobalSearchQuery::applyAllTerms($query, $terms, static function (Builder $termQuery, string $term): void {

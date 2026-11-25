@@ -16,11 +16,15 @@ class ListTimeRosterViewsAction
      *
      * @return Collection<int, TimeRosterViewAttention>
      */
+    /**
+     * @param  list<int>|null  $actorLocationIds  null = alle locaties
+     */
     public function handle(
         int $tenantId,
         ?int $teamId = null,
         ?string $search = null,
         bool $onlyToday = true,
+        ?array $actorLocationIds = null,
     ): Collection {
         TimeModuleAccess::assertEnabledForTenantId($tenantId);
 
@@ -52,7 +56,7 @@ class ListTimeRosterViewsAction
             : Worker::query()
                 ->where('tenant_id', $tenantId)
                 ->whereIn('id', $workerIds)
-                ->with('team.translations')
+                ->with(['team.translations', 'locations'])
                 ->get()
                 ->keyBy('id');
 
@@ -79,7 +83,7 @@ class ListTimeRosterViewsAction
                     viewedAt: $viewedAt,
                 );
             })
-            ->filter(function (TimeRosterViewAttention $view) use ($teamId, $needle) {
+            ->filter(function (TimeRosterViewAttention $view) use ($teamId, $needle, $workers, $actorLocationIds) {
                 if ($teamId !== null && (int) $view->teamId !== (int) $teamId) {
                     return false;
                 }
@@ -88,7 +92,18 @@ class ListTimeRosterViewsAction
                     return false;
                 }
 
-                return true;
+                if ($actorLocationIds === null) {
+                    return true;
+                }
+
+                $worker = $workers->get($view->workerId);
+                if ($worker === null) {
+                    return false;
+                }
+
+                $locationIds = $worker->locations->pluck('id')->map(fn ($id) => (int) $id)->all();
+
+                return array_intersect($locationIds, $actorLocationIds) !== [];
             })
             ->values();
     }

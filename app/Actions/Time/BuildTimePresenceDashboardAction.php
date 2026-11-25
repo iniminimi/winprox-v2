@@ -44,11 +44,20 @@ class BuildTimePresenceDashboardAction
         $isSearchMode = $needle !== '';
         $expandedTeamIds = array_map(intval(...), $expandedTeamIds);
 
+        $rosterLocationIds = null;
+        if ($scopeLocationIds !== null) {
+            $rosterLocationIds = $locationId !== null && in_array($locationId, $scopeLocationIds, true)
+                ? [$locationId]
+                : ($locationId !== null ? [] : $scopeLocationIds);
+        }
+
         $clockPointIdsForLocation = $this->clockPointIdsForLocation($tenantId, $locationId);
-        if ($clockPointIdsForLocation === null && $scopeLocationIds !== null && $scopeLocationIds !== []) {
+        if ($scopeLocationIds !== null && $locationId !== null && ! in_array($locationId, $scopeLocationIds, true)) {
+            $clockPointIdsForLocation = [];
+        } elseif ($clockPointIdsForLocation === null && $scopeLocationIds !== null) {
             $clockPointIdsForLocation = ClockPoint::query()
                 ->where('tenant_id', $tenantId)
-                ->whereIn('location_id', $scopeLocationIds)
+                ->whereIn('location_id', $scopeLocationIds ?: [0])
                 ->pluck('id')
                 ->all();
         }
@@ -76,7 +85,7 @@ class BuildTimePresenceDashboardAction
         $checkmateMode = (bool) Tenant::query()->whereKey($tenantId)->value('checkmate_mode');
         $attentionItems = TimePresenceAttentionRules::collect($openShifts, $checkmateMode)
             ->concat($this->absenceClockIns->handle($tenantId, $openShifts))
-            ->concat($this->rosterViewItems($tenantId, $teamId, $needle, $includeHistoricalRosterViews))
+            ->concat($this->rosterViewItems($tenantId, $teamId, $needle, $includeHistoricalRosterViews, $rosterLocationIds))
             ->values();
 
         if ($attentionOnly && ! $isSearchMode) {
@@ -448,11 +457,15 @@ class BuildTimePresenceDashboardAction
     /**
      * @return Collection<int, TimePresenceAttentionItem>
      */
+    /**
+     * @param  list<int>|null  $actorLocationIds
+     */
     private function rosterViewItems(
         int $tenantId,
         ?int $teamId,
         string $needle,
         bool $includeHistoricalRosterViews,
+        ?array $actorLocationIds = null,
     ): Collection {
         return $this->listRosterViews
             ->handle(
@@ -460,6 +473,7 @@ class BuildTimePresenceDashboardAction
                 $teamId,
                 $needle !== '' ? $needle : null,
                 onlyToday: ! $includeHistoricalRosterViews,
+                actorLocationIds: $actorLocationIds,
             )
             ->map(fn (TimeRosterViewAttention $view) => new TimePresenceAttentionItem(
                 TimePresenceAttentionType::RosterViewed,

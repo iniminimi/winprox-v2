@@ -14,11 +14,18 @@ class CountTimePresenceAttentionAction
         private CollectAbsenceClockInAttentionAction $absenceClockIns,
     ) {}
 
-    public function handle(int $tenantId): int
+    /**
+     * @param  list<int>|null  $actorLocationIds  null = alle locaties
+     */
+    public function handle(int $tenantId, ?array $actorLocationIds = null): int
     {
         $openShifts = WorkShift::query()
             ->where('tenant_id', $tenantId)
             ->where('status', WorkShiftStatus::Open)
+            ->when($actorLocationIds !== null, fn ($query) => $query->whereHas(
+                'presenceClockPoint',
+                fn ($point) => $point->whereIn('location_id', $actorLocationIds ?: [0]),
+            ))
             ->with(['openBreak', 'breaks', 'team'])
             ->get();
 
@@ -26,6 +33,6 @@ class CountTimePresenceAttentionAction
 
         return TimePresenceAttentionRules::collect($openShifts, $checkmateMode)->count()
             + $this->absenceClockIns->handle($tenantId, $openShifts)->count()
-            + $this->listRosterViews->handle($tenantId)->count();
+            + $this->listRosterViews->handle($tenantId, actorLocationIds: $actorLocationIds)->count();
     }
 }

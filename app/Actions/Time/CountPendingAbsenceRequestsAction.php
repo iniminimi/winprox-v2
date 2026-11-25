@@ -9,21 +9,29 @@ use App\Support\Time\TimeModuleAccess;
 
 class CountPendingAbsenceRequestsAction
 {
-    public function handle(int $tenantId): int
+    /**
+     * @param  list<int>|null  $actorLocationIds  null = alle locaties
+     */
+    public function handle(int $tenantId, ?array $actorLocationIds = null): int
     {
-        return array_sum($this->byKind($tenantId));
+        return array_sum($this->byKind($tenantId, $actorLocationIds));
     }
 
     /**
+     * @param  list<int>|null  $actorLocationIds  null = alle locaties
      * @return array{leave: int, recup: int, sick: int, other: int}
      */
-    public function byKind(int $tenantId): array
+    public function byKind(int $tenantId, ?array $actorLocationIds = null): array
     {
         TimeModuleAccess::assertEnabledForTenantId($tenantId);
 
         $counts = AbsenceRequest::query()
             ->where('tenant_id', $tenantId)
             ->where('status', AbsenceRequestStatus::Pending)
+            ->when($actorLocationIds !== null, fn ($query) => $query->whereHas(
+                'worker.locations',
+                fn ($locations) => $locations->whereIn('locations.id', $actorLocationIds ?: [0]),
+            ))
             ->toBase()
             ->selectRaw('kind, COUNT(*) as aggregate')
             ->groupBy('kind')

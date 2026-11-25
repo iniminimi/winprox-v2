@@ -614,7 +614,7 @@
                 },
                 {
                     "label": "Sites",
-                    "text": "Pour un employé, vous pouvez choisir les sites auxquels il a accès.<br><br>Cochez les sites souhaités.<br><br>• Un ou plusieurs sites sélectionnés : l’employé a accès aux sites sélectionnés.<br>• Aucun site sélectionné : l’employé a accès à tous les sites.<br><br>Un administrateur a toujours accès à tous les sites. Cette limite ne concerne donc que les employés. Cet employé ne voit et ne modifie ensuite que les exécutants et les collègues de ces sites."
+                    "text": "Pour un employé, vous pouvez choisir les sites auxquels il a accès.<br><br>Cochez les sites souhaités.<br><br>• Un ou plusieurs sites sélectionnés : l’employé a accès aux sites sélectionnés.<br>• Aucun site sélectionné : l’employé a accès à tous les sites.<br><br>Un administrateur a toujours accès à tous les sites. Cette limite ne concerne donc que les employés. Cet employé ne voit et ne modifie ensuite que les exécutants et les collègues de ces sites. La recherche, les chiffres de l’écran d’accueil, les heures supplémentaires, les alarmes et les demandes d’absence suivent ces mêmes sites."
                 },
                 {
                     "label": "Se connecter avec Microsoft",
