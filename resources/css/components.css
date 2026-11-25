@@ -521,11 +521,15 @@ a.wp-pill:hover {
     perspective: 10rem;
     border-radius: 0.4rem;
     background: var(--wp-surface);
-    box-shadow: var(--wp-shadow);
+    box-shadow:
+        0 2px 0 rgba(15, 23, 42, 0.16),
+        0 6px 10px rgba(15, 23, 42, 0.28);
 }
 
 [data-theme='dark'] .wp-flip {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+    box-shadow:
+        0 2px 0 rgba(0, 0, 0, 0.7),
+        0 6px 12px rgba(0, 0, 0, 0.62);
 }
 
 .wp-flip::after {
