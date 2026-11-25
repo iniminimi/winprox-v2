@@ -424,6 +424,7 @@
                 <x-wp-page-head-title
                     icon="home-greeting"
                     :title="$intentHub->greeting"
+                    help-page="dashboard"
                     :subtitle="__('dashboard.intent.title')"
                 />
 
@@ -483,7 +484,7 @@
                 <x-wp-page-head-title
                     icon="dashboard"
                     :title="__('dashboard.title')"
-                    help-page="dashboard"
+                    :help-page="$intentHub === null ? 'dashboard' : null"
                     :subtitle="__('dashboard.subtitle')"
                 />
             </div>
